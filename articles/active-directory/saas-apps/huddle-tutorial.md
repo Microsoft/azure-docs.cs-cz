@@ -1,10 +1,10 @@
 ---
-title: 'Kurz: Integrace Azure Active Directory s tlačí se k | Dokumentace Microsoftu'
+title: 'Kurz: Integrace s tlačí se k Azure Active Directory | Dokumentace Microsoftu'
 description: Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a tlačí se k.
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.assetid: 8389ba4c-f5f8-4ede-b2f4-32eae844ceb0
 ms.service: active-directory
 ms.component: saas-app-tutorial
@@ -14,14 +14,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/08/2018
 ms.author: jeedes
-ms.openlocfilehash: 050a5a210ab10a557b149513a0416b188f4618ba
-ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
+ms.openlocfilehash: d9d145aa5da636574426f1ff4ad978eb857ab252
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2018
-ms.locfileid: "48885899"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54827920"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-huddle"></a>Kurz: Integrace Azure Active Directory s tlačí se k
+# <a name="tutorial-azure-active-directory-integration-with-huddle"></a>Kurz: Integrace s tlačí se k Azure Active Directory
 
 V tomto kurzu se dozvíte, jak integrovat tlačí se k Azure Active Directory (Azure AD).
 
@@ -251,7 +251,7 @@ V této části Testování služby Azure AD jednotné přihlašování – konf
 Když kliknete na dlaždici tlačí se k na přístupovém panelu, měli byste obdržet automaticky přihlašovací stránku tlačí se k aplikaci.
 Další informace o přístupovém panelu, naleznete v tématu [Úvod k přístupovému panelu](../user-help/active-directory-saas-access-panel-introduction.md).
 
-## <a name="additional-resources"></a>Další zdroje informací:
+## <a name="additional-resources"></a>Další materiály
 
 * [Seznam kurzů o integraci aplikací SaaS pomocí Azure Active Directory](tutorial-list.md)
 * [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](../manage-apps/what-is-single-sign-on.md)

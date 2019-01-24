@@ -3,9 +3,9 @@ title: Jak používat fronty služby Service Bus pomocí PHP | Dokumentace Micro
 description: Naučte se používat fronty Service Bus v Azure. Ukázky kódu napsané v jazyce PHP.
 services: service-bus-messaging
 documentationcenter: php
-author: spelluru
+author: axisc
 manager: timlt
-editor: ''
+editor: spelluru
 ms.assetid: e29c829b-44c5-4350-8f2e-39e0c380a9f2
 ms.service: service-bus-messaging
 ms.workload: na
@@ -13,13 +13,13 @@ ms.tgt_pltfrm: na
 ms.devlang: PHP
 ms.topic: article
 ms.date: 09/10/2018
-ms.author: spelluru
-ms.openlocfilehash: 08894741f4b7c4d3ccb808a4e70ec1eeb4f6af49
-ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
+ms.author: aschhab
+ms.openlocfilehash: c320e06881c73feb228b9d5f49243d7e1d321f52
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47392189"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54847557"
 ---
 # <a name="how-to-use-service-bus-queues-with-php"></a>Jak používat fronty služby Service Bus pomocí PHP
 [!INCLUDE [service-bus-selector-queues](../../includes/service-bus-selector-queues.md)]
@@ -162,7 +162,7 @@ Fronty Service Bus podporují maximální velikost zprávy 256 KB [na úrovni St
 
 ## <a name="receive-messages-from-a-queue"></a>Příjem zpráv z fronty
 
-Nejlepší způsob, jak přijímá zprávy z fronty je použití `ServiceBusRestProxy->receiveQueueMessage` metoda. Může být přijaty zprávy ve dvou různých režimech: [ *ReceiveAndDelete* ](/dotnet/api/microsoft.servicebus.messaging.receivemode) a [ *PeekLock*](/dotnet/api/microsoft.servicebus.messaging.receivemode#Microsoft_ServiceBus_Messaging_ReceiveMode_PeekLock). Výchozí hodnota je **PeekLock**.
+Nejlepší způsob, jak přijímá zprávy z fronty je použití `ServiceBusRestProxy->receiveQueueMessage` metoda. Může být přijaty zprávy ve dvou různých režimech: [*ReceiveAndDelete* ](/dotnet/api/microsoft.servicebus.messaging.receivemode) a [ *PeekLock*](/dotnet/api/microsoft.servicebus.messaging.receivemode#Microsoft_ServiceBus_Messaging_ReceiveMode_PeekLock). Výchozí hodnota je **PeekLock**.
 
 Při použití [ReceiveAndDelete](/dotnet/api/microsoft.servicebus.messaging.receivemode) režimu přijímat je jednorázová operace; to znamená, když Service Bus přijme požadavek čtení zprávy ve frontě, označí zprávu jako spotřebovávanou a vrátí ji do aplikace. Režim [ReceiveAndDelete](/dotnet/api/microsoft.servicebus.messaging.receivemode) je nejjednodušší model a funguje nejlépe ve scénářích, kde aplikace může tolerovat možnost, že v případě selhání se zpráva nezpracuje. Pro lepší vysvětlení si představte scénář, ve kterém spotřebitel vyšle požadavek na přijetí, ale než ji může zpracovat, dojde v něm k chybě a ukončí se. Vzhledem k tomu, že Service Bus se už ale zprávu označila jako spotřebovávanou, pak když aplikace znovu spustí a začne znovu přijímat zprávy, ji budou pravděpodobně nenalezlo zprávu, která se spotřebovala před pádem vynechá.
 

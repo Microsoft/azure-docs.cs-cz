@@ -4,7 +4,7 @@ description: Principy synchronizace ve spravované doméně Azure Active Directo
 services: active-directory-ds
 documentationcenter: ''
 author: eringreenlee
-manager: mtillman
+manager: daveba
 editor: curtand
 ms.assetid: 57cbf436-fc1d-4bab-b991-7d25b6e987ef
 ms.service: active-directory
@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/30/2018
 ms.author: ergreenl
-ms.openlocfilehash: e0fc1b64514adb710ebcbdd417f65e9e3b3b3d66
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.openlocfilehash: 40b66b85f88cde28cc6a1c52cb456157d8acd68c
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50155554"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54846933"
 ---
 # <a name="synchronization-in-an-azure-ad-domain-services-managed-domain"></a>Synchronizace ve spravované doméně služby Azure AD Domain Services
 Následující diagram znázorňuje, jak funguje synchronizace ve službě Azure AD Domain Services spravované domény.
@@ -50,12 +50,12 @@ Naproti tomu vašeho tenanta Azure AD je mnohem jednodušší a plochý obor ná
 ## <a name="exclusions---what-isnt-synchronized-to-your-managed-domain"></a>Vyloučení – co není synchronizována do spravované domény
 Následující objekty nebo atributy nejsou synchronizovány do svého tenanta Azure AD nebo ke spravované doméně:
 
-* **Vyloučené atributy:** můžete vyloučit určité atributy z z vaší místní domény pomocí služby Azure AD Connect nesynchronizuje do vašeho tenanta Azure AD. Tyto atributy vyloučené nejsou k dispozici ve vaší spravované doméně.
-* **Zásady skupiny:** nakonfigurovaný ve vaší doméně místní zásady skupiny nejsou synchronizovány do spravované domény.
-* **Sdílená složka SYSVOL:** Podobně obsah sdílené složky Sysvol v místní doméně nejsou synchronizovány do spravované domény.
-* **Objekty počítače:** objekty počítačů pro počítače připojené k místní doméně nejsou synchronizovány do spravované domény. Tyto počítače nemají vztah důvěryhodnosti s vaší spravované domény a patří do vaší místní domény. Ve vaší spravované doméně najít objekty počítače pouze pro počítače, které můžete mít explicitně připojených k doméně do spravované domény.
-* **Atributy historie čísel SID pro uživatele a skupiny:** primárního uživatele a skupiny primární SID z vaší místní domény jsou synchronizovány do spravované domény. Ale existující atributy historie čísel SID pro uživatele a skupiny nejsou synchronizované z vaší místní domény do spravované domény.
-* **Struktury organizační jednotky (OU):** organizační jednotky, které jsou definovány v místní doméně nejsou synchronizována do spravované domény. Existují dvě předdefinované organizační jednotky ve spravované doméně. Vaše spravovaná doména má ve výchozím nastavení ploché struktury organizační jednotky. Můžete však rozhodnout [vytvořit vlastní organizační jednotky ve spravované doméně](active-directory-ds-admin-guide-create-ou.md).
+* **Vyloučené atributy:** Můžete vyloučit určité atributy z z vaší místní domény pomocí služby Azure AD Connect nesynchronizuje do vašeho tenanta Azure AD. Tyto atributy vyloučené nejsou k dispozici ve vaší spravované doméně.
+* **Zásady skupiny:** Zásady skupiny nakonfigurované v místní doméně nejsou synchronizovány do spravované domény.
+* **Sdílená složka SYSVOL:** Obsah sdílené složky Sysvol v místní doméně podobně nejsou synchronizovány do spravované domény.
+* **Objekty počítače:** Objekty počítače pro počítače připojené k místní doméně nejsou synchronizovány do spravované domény. Tyto počítače nemají vztah důvěryhodnosti s vaší spravované domény a patří do vaší místní domény. Ve vaší spravované doméně najít objekty počítače pouze pro počítače, které můžete mít explicitně připojených k doméně do spravované domény.
+* **Atributy historie čísel SID pro uživatele a skupiny:** Primární uživatel a primární skupinu SID z vaší místní domény jsou synchronizovány do spravované domény. Ale existující atributy historie čísel SID pro uživatele a skupiny nejsou synchronizované z vaší místní domény do spravované domény.
+* **Struktury organizační jednotky (OU):** Organizační jednotky, které jsou definovány v místní doméně nejsou synchronizována do spravované domény. Existují dvě předdefinované organizační jednotky ve spravované doméně. Vaše spravovaná doména má ve výchozím nastavení ploché struktury organizační jednotky. Můžete však rozhodnout [vytvořit vlastní organizační jednotky ve spravované doméně](active-directory-ds-admin-guide-create-ou.md).
 
 ## <a name="how-specific-attributes-are-synchronized-to-your-managed-domain"></a>Jak se konkrétní atributy synchronizují do spravované domény
 Následující tabulka uvádí některé běžné atributy a popisuje, jak se synchronizují do spravované domény.
@@ -69,7 +69,7 @@ Následující tabulka uvádí některé běžné atributy a popisuje, jak se sy
 | Historie identifikátorů SID pro uživatele a skupiny |Místní primární uživatele a identifikátor SID skupiny |Atribut historie čísel SID pro uživatele a skupiny ve vaší spravované doméně je nastaven tak, aby odpovídaly odpovídající primární uživatele nebo skupinu SID v místní doméně. Tato funkce pomáhá usnadnit lift and shift místních aplikací do spravované domény, protože není potřeba znovu ACL prostředků. |
 
 > [!NOTE]
-> **Přihlaste se k spravované doméně pomocí formátu UPN:** atribut The SAMAccountName pravděpodobně automaticky generované pro některé uživatelské účty ve vaší spravované doméně. Pokud máte více uživatelů stejné atributu mailNickname nebo uživatelé mají příliš dlouhou předpony (UPN), může být automaticky generované SAMAccountName pro tyto uživatele. Proto formátu SAMAccountName (například "CONTOSO100\joeuser') není vždy spolehlivě pro přihlášení k doméně. Automaticky generované SAMAccountName uživatele může lišit od jejich předpona názvu UPN. Použijte formát hlavního názvu uživatele (například "joeuser@contoso100.com") se přihlásit ke spravované doméně spolehlivě.
+> **Přihlaste se k spravované doméně pomocí formátu UPN:** Atribut SAMAccountName může být automaticky generované pro některé uživatelské účty ve vaší spravované doméně. Pokud máte více uživatelů stejné atributu mailNickname nebo uživatelé mají příliš dlouhou předpony (UPN), může být automaticky generované SAMAccountName pro tyto uživatele. Proto formátu SAMAccountName (například "CONTOSO100\joeuser') není vždy spolehlivě pro přihlášení k doméně. Automaticky generované SAMAccountName uživatele může lišit od jejich předpona názvu UPN. Použijte formát hlavního názvu uživatele (například "joeuser@contoso100.com") se přihlásit ke spravované doméně spolehlivě.
 >
 >
 
@@ -91,7 +91,7 @@ Následující tabulka ukazuje, jak se konkrétní atributy pro uživatelské ob
 | mailNickname |SAMAccountName (může být někdy automaticky vygenerovaný) |
 | Mobilní zařízení |Mobilní zařízení |
 | ID objektu |msDS-AzureADObjectId |
-| OnPremiseSecurityIdentifier |historie čísel SID |
+| onPremiseSecurityIdentifier |historie čísel SID |
 | passwordPolicies |userAccountControl (Zapne nebo vypne DONT_EXPIRE_PASSWORD bit) |
 | physicalDeliveryOfficeName |physicalDeliveryOfficeName |
 | PSČ |PSČ |
@@ -112,7 +112,7 @@ Následující tabulka popisuje, jak se konkrétní atributy pro skupinu objekt�
 | mail |mail |
 | mailNickname |msDS-AzureADMailNickname |
 | ID objektu |msDS-AzureADObjectId |
-| OnPremiseSecurityIdentifier |historie čísel SID |
+| onPremiseSecurityIdentifier |historie čísel SID |
 | securityEnabled |groupType |
 
 ## <a name="password-hash-synchronization-and-security-considerations"></a>Heslo hash synchronizace a aspekty zabezpečení

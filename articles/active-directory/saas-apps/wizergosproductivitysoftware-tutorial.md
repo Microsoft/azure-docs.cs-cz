@@ -1,10 +1,10 @@
 ---
-title: 'Kurz: Integrace Azure Active Directory se službou Wizergos kancelářský Software | Dokumentace Microsoftu'
+title: 'Kurz: Integrace Azure Active Directory s Wizergos kancelářský Software | Dokumentace Microsoftu'
 description: Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a Wizergos kancelářský Software.
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.reviewer: joflore
 ms.assetid: acc04396-13c5-4c24-ab9a-30fbc9234ebd
 ms.service: active-directory
@@ -15,14 +15,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/24/2017
 ms.author: jeedes
-ms.openlocfilehash: e117b6e791bde3a8311b35ea5d651dad6bf88737
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 5f43423ea7e0f03baedccc86f76a0b052ff5cde0
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52845667"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54826563"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-wizergos-productivity-software"></a>Kurz: Integrace Azure Active Directory se službou Wizergos kancelářský Software
+# <a name="tutorial-azure-active-directory-integration-with-wizergos-productivity-software"></a>Kurz: Integrace Azure Active Directory s Wizergos kancelářský Software
 
 V tomto kurzu se dozvíte, jak integrovat Wizergos kancelářský Software s Azure Active Directory (Azure AD).
 
@@ -149,7 +149,7 @@ V této části Povolení služby Azure AD jednotného přihlašování na port�
     e. Klikněte na tlačítko **Uložit** tlačítko.
 
 > [!TIP]
-> Teď si můžete přečíst stručné verzi těchto pokynů uvnitř [webu Azure portal](https://portal.azure.com), zatímco jsou nastavení aplikace!  Po přidání této aplikace z **služby Active Directory > podnikové aplikace** části, stačí kliknout **Single Sign-On** kartu a přístup k vložené dokumentaci prostřednictvím  **Konfigurace** oblast v dolní části. Další informace o funkci vložená dokumentace: [dokumentace ke službě Azure AD embedded]( https://go.microsoft.com/fwlink/?linkid=845985)
+> Teď si můžete přečíst stručné verzi těchto pokynů uvnitř [webu Azure portal](https://portal.azure.com), zatímco jsou nastavení aplikace!  Po přidání této aplikace z **služby Active Directory > podnikové aplikace** části, stačí kliknout **Single Sign-On** kartu a přístup k vložené dokumentaci prostřednictvím  **Konfigurace** oblast v dolní části. Další informace o funkci vložená dokumentace: [Dokumentace ke službě Azure AD, embedded]( https://go.microsoft.com/fwlink/?linkid=845985)
 > 
 
 ### <a name="create-an-azure-ad-test-user"></a>Vytvořit testovacího uživatele Azure AD

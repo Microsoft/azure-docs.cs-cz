@@ -3,9 +3,9 @@ title: Přehled zpracování transakcí v Azure Service Bus | Dokumentace Micros
 description: Přehled služby Azure Service Bus atomické transakce a odeslat prostřednictvím
 services: service-bus-messaging
 documentationcenter: .net
-author: spelluru
+author: axisc
 manager: timlt
-editor: ''
+editor: spelluru
 ms.assetid: 64449247-1026-44ba-b15a-9610f9385ed8
 ms.service: service-bus-messaging
 ms.devlang: na
@@ -13,13 +13,13 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/22/2018
-ms.author: spelluru
-ms.openlocfilehash: 6be1605ee1bb385c303d100729238a8eb71605d0
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.author: aschhab
+ms.openlocfilehash: 69dc9c974c259f51ac0c6c9d64bfcda7ee65e181
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47407327"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54844581"
 ---
 # <a name="overview-of-service-bus-transaction-processing"></a>Přehled služby Service Bus zpracování transakcí
 
@@ -37,8 +37,8 @@ Service Bus podporuje operace seskupení u jedné entity zasílání zpráv (fro
 
 Operace, které lze provést v rámci oboru transakce jsou následující:
 
-* **[QueueClient](/dotnet/api/microsoft.azure.servicebus.queueclient), [MessageSender](/dotnet/api/microsoft.azure.servicebus.core.messagesender), [TopicClient](/dotnet/api/microsoft.azure.servicebus.topicclient)**: odeslání, SendAsync SendBatch, SendBatchAsync 
-* **[BrokeredMessage](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage)**: dokončení CompleteAsync, zrušení, AbandonAsync, nedoručených zpráv, DeadletterAsync, odložit, DeferAsync, RenewLock, RenewLockAsync 
+* **[QueueClient](/dotnet/api/microsoft.azure.servicebus.queueclient), [MessageSender](/dotnet/api/microsoft.azure.servicebus.core.messagesender), [TopicClient](/dotnet/api/microsoft.azure.servicebus.topicclient)**: Odeslat, SendAsync, SendBatch SendBatchAsync 
+* **[BrokeredMessage](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage)**: Complete, CompleteAsync, Abandon, AbandonAsync, Deadletter, DeadletterAsync, Defer, DeferAsync, RenewLock, RenewLockAsync 
 
 Zobrazí operace nejsou zahrnuty, protože se předpokládá, že aplikace získá zprávy pomocí [ReceiveMode.PeekLock](/dotnet/api/microsoft.azure.servicebus.receivemode) smyčka příjmu režimu do některých nebo s [OnMessage](/dotnet/api/microsoft.servicebus.messaging.queueclient.onmessage) zpětné volání, a teprve potom se otevře oboru transakce pro zpracování zprávy.
 

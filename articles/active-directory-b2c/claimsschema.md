@@ -3,19 +3,19 @@ title: ClaimsSchema – Azure Active Directory B2C | Dokumentace Microsoftu
 description: Zadejte element ClaimsSchema vlastní zásady v Azure Active Directory B2C.
 services: active-directory-b2c
 author: davidmu1
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 09/10/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 2d11283ccf58fdc356742d6f4042afd15bf6faab
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.openlocfilehash: a49553941b83e323f23f20b794a464f47ef31981
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51568638"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54849086"
 ---
 # <a name="claimsschema"></a>ClaimsSchema
 
@@ -38,11 +38,11 @@ ms.locfileid: "51568638"
       <UserInputType>TextBox</UserInputType>
 ```
 
-## <a name="claimtype"></a>Typ ClaimType
+## <a name="claimtype"></a>ClaimType
 
 **Typu deklarace identity** prvek obsahuje následující atribut:
 
-| Atribut | Požaduje se | Popis |
+| Atribut | Požadováno | Popis |
 | --------- | -------- | ----------- |
 | ID | Ano | Identifikátor, který se používá pro typ deklarace identity. Další prvky můžete pomocí tohoto identifikátoru v zásadách. |
 
@@ -69,9 +69,9 @@ PredicateValidationReference| 0:1 | Odkaz na **PredicateValidationsInput** eleme
 
 **Protokol** prvek obsahuje následující atributy:
 
-| Atribut | Požaduje se | Popis |
+| Atribut | Požadováno | Popis |
 | --------- | -------- | ----------- |
-| Název | Ano | Název platný protokol podporovaný službou Azure AD B2C. Možné hodnoty jsou: OAuth1, OAuth2, typu SAML2, OpenIdConnect, WsFed nebo WsTrust. |
+| Název | Ano | Název platný protokol podporovaný službou Azure AD B2C. Možné hodnoty:  OAuth1, OAuth2, typu SAML2, OpenIdConnect, WsFed nebo WsTrust. |
 | PartnerClaimType | Ano | Název typu deklarace identity se použije. |
 
 V následujícím příkladu, při architekturu rozhraní identit interakci s zprostředkovatele identity typu SAML2 nebo aplikaci předávající strany **příjmení** deklarace identity se mapuje na `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname`, OpenIdConnect a OAuth2, je deklarace identity mapovat na `family_name`.
@@ -104,10 +104,10 @@ V důsledku toho tokenu JWT vydaného službou Azure AD B2C, generuje `family_na
 
 **Maska** prvek obsahuje následující atributy:
 
-| Atribut | Požaduje se | Popis |
+| Atribut | Požadováno | Popis |
 | --------- | -------- | ----------- |
 | Typ | Ano | Typ deklarace identity masky. Možné hodnoty: `Simple` nebo `Regex`. `Simple` Hodnota označuje, že maska jednoduchý text platí pro přední části deklarace řetězec. `Regex` Hodnota značí, že regulární výraz se použije k deklaraci řetězec jako celek.  Pokud `Regex` není zadána hodnota, volitelný atribut musí být také definován pomocí regulárních výrazů používat. |
-| regulární výraz | Ne | Pokud **typ** je nastavena na `Regex`, zadejte regulární výraz k použití.
+| Regex | Ne | Pokud **typ** je nastavena na `Regex`, zadejte regulární výraz k použití.
 
 Následující příklad nastaví **PhoneNumber** deklarace identity s `Simple` masky:
 
@@ -144,7 +144,7 @@ Architekturu rozhraní identit vykreslí pouze první písmeno e-mailovou adresu
 
 **Omezení** element může obsahovat následující atribut:
 
-| Atribut | Požaduje se | Popis |
+| Atribut | Požadováno | Popis |
 | --------- | -------- | ----------- |
 | MergeBehavior | Ne | Metoda použitá ke sloučení hodnoty výčtu s ClaimType v nadřazené zásady se stejným identifikátorem. Pomocí tohoto atributu při přepsání deklarace zadané v základních zásadách. Možné hodnoty: `Append`, `Prepend`, nebo `ReplaceAll`. `Append` Hodnota je kolekce dat, která má být připojen na konec kolekce zadaná v nadřazené zásady. `Prepend` Hodnota je kolekce dat, která by se měl přidat před kolekce zadaná v nadřazené zásady. `ReplaceAll` Hodnota je kolekce dat zadaná v nadřazené zásady, které mají být ignorovány. |
 
@@ -159,7 +159,7 @@ Architekturu rozhraní identit vykreslí pouze první písmeno e-mailovou adresu
 
 **Výčet** prvek obsahuje následující atributy:
 
-| Atribut | Požaduje se | Popis |
+| Atribut | Požadováno | Popis |
 | --------- | -------- | ----------- |
 | Text | Ano | Řetězec zobrazení, která se zobrazí uživateli uživatelské rozhraní pro tuto možnost. |
 |Hodnota | Ano | Hodnota deklarace identity, která souvisí s výběrem této možnosti. |
@@ -188,7 +188,7 @@ Rozevírací seznam město s výchozí nastavenou na New York:
 
 **Vzor** element může obsahovat následující atributy:
 
-| Atribut | Požaduje se | Popis |
+| Atribut | Požadováno | Popis |
 | --------- | -------- | ----------- |
 | Regulární výraz | Ano | Regulární výraz, aby byla platná musí odpovídat deklarace identity tohoto typu. |
 | HelpText | Ne | Vzor nebo regulární výraz pro tuto deklaraci. |

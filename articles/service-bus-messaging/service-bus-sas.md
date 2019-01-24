@@ -3,9 +3,9 @@ title: Azure Service Bus řízení přístupu pomocí sdílených přístupovýc
 description: Přehled řízení přístupu služby Service Bus pomocí sdílených přístupových podpisů přehled, podrobnosti o autorizace SAS pomocí služby Azure Service Bus.
 services: service-bus-messaging
 documentationcenter: na
-author: spelluru
+author: axisc
 manager: timlt
-editor: ''
+editor: spelluru
 ms.assetid: ''
 ms.service: service-bus-messaging
 ms.devlang: na
@@ -13,13 +13,13 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/14/2018
-ms.author: spelluru
-ms.openlocfilehash: daefb07761217ff4bb0800dfd9f1f05b6e22c1e1
-ms.sourcegitcommit: 022cf0f3f6a227e09ea1120b09a7f4638c78b3e2
+ms.author: aschhab
+ms.openlocfilehash: 3e2fa51bcf6040eb94a9d270a7f5f375f726e62a
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/21/2018
-ms.locfileid: "52284910"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54846332"
 ---
 # <a name="service-bus-access-control-with-shared-access-signatures"></a>Řízení přístupu služby Service Bus se sdílenými přístupovými podpisy
 
@@ -96,13 +96,13 @@ SAS token je platný pro všechny prostředky s předponou `<resourceURI>` použ
 
 Doporučujeme pravidelně obnovovat klíče používané v [SharedAccessAuthorizationRule](/dotnet/api/microsoft.servicebus.messaging.sharedaccessauthorizationrule) objektu. Primární a sekundární klíče sloty existují, takže můžete obměňovat klíče postupně. Pokud vaše aplikace se obvykle používá primární klíč, můžete zkopírujte primární klíč do sekundárního klíče slotu a pak znovu vygenerovat primární klíč. Nová hodnota primárního klíče může být nakonfigurována do klientské aplikace, které mít nadále přístup pomocí staré primární klíč v sekundárním slot. Jakmile všichni klienti se aktualizují, můžete obnovit sekundární klíč se nakonec vyřadit staré primární klíč.
 
-Pokud znáte nebo podezření, že dojde k narušení klíč a je nutné odvolat klíče, můžete vygenerovat znovu i [PrimaryKey](/dotnet/api/microsoft.servicebus.messaging.sharedaccessauthorizationrule#Microsoft_ServiceBus_Messaging_SharedAccessAuthorizationRule_PrimaryKey) a [sekundární klíč](/dotnet/api/microsoft.servicebus.messaging.sharedaccessauthorizationrule#Microsoft_ServiceBus_Messaging_SharedAccessAuthorizationRule_SecondaryKey) z [SharedAccessAuthorizationRule](/dotnet/api/microsoft.servicebus.messaging.sharedaccessauthorizationrule), jejich náhradu za nové klíče. Tento postup zruší platnost všech tokenů, které jsou podepsané pomocí starého klíče.
+Pokud znáte nebo podezření, že dojde k narušení klíč a je nutné odvolat klíče, můžete vygenerovat znovu i [PrimaryKey](/dotnet/api/microsoft.servicebus.messaging.sharedaccessauthorizationrule#Microsoft_ServiceBus_Messaging_SharedAccessAuthorizationRule_PrimaryKey) a [sekundární klíč](/dotnet/api/microsoft.servicebus.messaging.sharedaccessauthorizationrule) z [SharedAccessAuthorizationRule](/dotnet/api/microsoft.servicebus.messaging.sharedaccessauthorizationrule), jejich náhradu za nové klíče. Tento postup zruší platnost všech tokenů, které jsou podepsané pomocí starého klíče.
 
 ## <a name="shared-access-signature-authentication-with-service-bus"></a>Ověření pomocí sdíleného přístupového podpisu se Service Bus
 
 Následujícím způsobem popsané scénáře patří konfigurace autorizačních pravidel, generování tokenů SAS a autorizaci klientů.
 
-Pro úplný pracovní ukázkové aplikace Service Bus, která znázorňuje konfiguraci a použití SAS autorizace, naleznete v tématu [sdílený přístupový podpis ověřování pomocí služby Service Bus](https://code.msdn.microsoft.com/Shared-Access-Signature-0a88adf8). Související ukázky, která ukazuje použití SAS autorizační pravidla, která je nakonfigurovaná na obory názvů nebo témata k zabezpečení odběry služby Service Bus je k dispozici tady: [ověřování pomocí sdíleného přístupového podpisu (SAS) se odběry služby Service Bus](https://code.msdn.microsoft.com/Using-Shared-Access-e605b37c).
+Pro úplný pracovní ukázkové aplikace Service Bus, která znázorňuje konfiguraci a použití SAS autorizace, naleznete v tématu [sdílený přístupový podpis ověřování pomocí služby Service Bus](https://code.msdn.microsoft.com/Shared-Access-Signature-0a88adf8). Související ukázky, která ukazuje použití SAS autorizační pravidla, která je nakonfigurovaná na obory názvů nebo témata k zabezpečení odběry služby Service Bus je k dispozici zde: [Odběry služby Service Bus pomocí sdíleného přístupového podpisu (SAS) ověřování](https://code.msdn.microsoft.com/Using-Shared-Access-e605b37c).
 
 ## <a name="access-shared-access-authorization-rules-on-an-entity"></a>Přístup sdíleného přístup autorizačních pravidel na entitu
 

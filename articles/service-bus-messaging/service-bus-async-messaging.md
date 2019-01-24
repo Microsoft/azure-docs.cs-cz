@@ -3,23 +3,23 @@ title: Asynchronní zasílání zpráv Service Bus | Dokumentace Microsoftu
 description: Popis asynchronní zasílání zpráv Azure Service Bus.
 services: service-bus-messaging
 documentationcenter: na
-author: spelluru
+author: axisc
 manager: timlt
-editor: ''
+editor: spelluru
 ms.assetid: f1435549-e1f2-40cb-a280-64ea07b39fc7
 ms.service: service-bus-messaging
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/26/2018
-ms.author: spelluru
-ms.openlocfilehash: 9bacce96e65a7aef611bec3ddae8b1872d5f9fae
-ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
+ms.date: 01/23/2019
+ms.author: aschhab
+ms.openlocfilehash: 0ecc277e1b9bd94558c54b1c808fdc24f47c402e
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47391459"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54845074"
 ---
 # <a name="asynchronous-messaging-patterns-and-high-availability"></a>Asynchronní schémata zasílání zpráv a vysoká dostupnost
 
@@ -75,9 +75,9 @@ V obou případech havárie přírodních a lidmi vybudovaných způsobila probl
 ## <a name="paired-namespaces"></a>Spárované obory názvů
 [Spárované obory názvů] [ paired namespaces] funkce podporuje scénáře, ve kterém entita služby Service Bus nebo nasazení v rámci datového centra k dispozici. Když k této události dochází zřídka, distribuované systémy stále musí být připravena ke zpracování nejhorší scénáře. Obvykle této události dojde, protože nějaký element, na kterém závisí služby Service Bus dochází k problému s krátkodobé. Zachování dostupnosti aplikace během výpadku, Service Bus uživatelé můžou dva samostatné obory názvů, pokud možno ve používat samostatná datová centra, k hostování svých entit pro zasílání zpráv. Zbývající část této části používá následující terminologií:
 
-* Primární obor názvů: obor názvů, které vaše aplikace pracuje, pro odesílání a operace příjmu.
-* Sekundární obor názvů: obor názvů, který slouží jako záložní pro primární obor názvů. Aplikace logiky nekomunikuje s Tento obor názvů.
-* Interval převzetí služeb při selhání: množství času tak, aby přijímal normální selhání předtím, než aplikace se přepne z primárního oboru názvů sekundární obor.
+* Primární obor názvů: Obor názvů, které vaše aplikace pracuje, pro odesílání a operace příjmu.
+* Sekundární obor názvů: Obor názvů, který slouží jako záložní pro primární obor názvů. Aplikace logiky nekomunikuje s Tento obor názvů.
+* Interval převzetí služeb při selhání: Množství času tak, aby přijímal běžné chyby a teprve aplikace se přepne z primárního oboru názvů sekundární obor názvů.
 
 Spárované obory názvů podporují *odeslat dostupnosti*. Posílejte zachovává dostupnost schopnost posílání zpráv. Můžete odeslat dostupnosti vaší aplikace musí splňovat následující požadavky:
 
@@ -109,11 +109,11 @@ public SendAvailabilityPairedNamespaceOptions(
 
 Tyto parametry mají následující význam:
 
-* *secondaryNamespaceManager*: inicializovali [NamespaceManager] [ NamespaceManager] instance pro sekundární obor názvů, který [PairNamespaceAsync] [ PairNamespaceAsync] metodu můžete použít k nastavení sekundární obor názvů. Obor názvů správce se používá získat seznam front v oboru názvů a ujistěte se, že existují požadované nevyřízených položek fronty. Tyto fronty neexistují, jsou vytvořeny. [NamespaceManager] [ NamespaceManager] vyžaduje schopnost vytvořit token se **spravovat** deklarací identity.
+* *secondaryNamespaceManager*: Inicializovali [NamespaceManager] [ NamespaceManager] instance pro sekundární obor názvů, který [PairNamespaceAsync] [ PairNamespaceAsync] metodu můžete použít k nastavení až sekundární obor názvů. Obor názvů správce se používá získat seznam front v oboru názvů a ujistěte se, že existují požadované nevyřízených položek fronty. Tyto fronty neexistují, jsou vytvořeny. [NamespaceManager] [ NamespaceManager] vyžaduje schopnost vytvořit token se **spravovat** deklarací identity.
 * *messagingFactory*: [MessagingFactory] [ MessagingFactory] instance pro sekundární obor názvů. [MessagingFactory] [ MessagingFactory] objektu se používá k odesílání a, pokud [EnableSyphon] [ EnableSyphon] je nastavena na **true**, příjem zpráv z fronty nevyřízených položek.
-* *backlogQueueCount*: počet nevyřízených položek fronty vytvořit. Tato hodnota musí být aspoň 1. Při odesílání zpráv do nevyřízených položek, jeden z těchto front náhodně zvolí. Pokud nastavíte hodnotu na 1, pak pouze jedna fronta někdy slouží. Když k tomu dojde, do jednoho protokolu nevyřízených položek fronty generuje chyby klienta není možné jiné nevyřízených položek fronty a odeslání vaší zprávy se pravděpodobně nezdaří. Doporučujeme tuto hodnotu nastavíte na některé větší hodnotu a výchozí hodnota 10. Toto můžete změnit na hodnotu vyšší nebo nižší v závislosti na tom, kolik dat vaše aplikace odešle za den. Každá fronta nevyřízených položek může obsahovat až 5 GB zprávy.
-* *failoverInterval*: dobu, během kterého bude přijímat selhání u primárního oboru názvů před přepnutím jakékoli jedné entity na sekundární obor názvů. Na základě entity entity dojde k převzetí služeb při selhání. Entity v jednoho oboru názvů často žijí v různých uzlech v rámci služby Service Bus. Selhání v jedné entitě neznamená selhání v jiném. Nastavte tuto hodnotu na [System.TimeSpan.Zero] [ System.TimeSpan.Zero] převzetí služeb při selhání do sekundární lokality okamžitě po první, nepřechodných selhání. Minimalizovaly chyby aktivující časovače převzetí služeb při selhání jsou všechny [MessagingException] [ MessagingException] ve kterém [IsTransient] [ IsTransient] vlastnost má hodnotu false, nebo [ System.TimeoutException][System.TimeoutException]. Ostatní výjimky, jako například [UnauthorizedAccessException] [ UnauthorizedAccessException] nezpůsobí převzetí služeb při selhání, protože indikuje, že klient není nakonfigurován správně. A [ServerBusyException] [ ServerBusyException] nemá příčina převzetí služeb při selhání protože správné vzor je 10 sekund počkat zprávu odešlete znovu.
-* *enableSyphon*: Určuje, že tato konkrétní párování by měl také syphon zprávy ze sekundární obor názvů zpět do primárního oboru názvů. Obecně platí, nastavte tuto hodnotu na aplikace, které odesílání zpráv **false**; aplikace, které přijímají zprávy by měla tuto hodnotu nastavit na **true**. Důvodem je, že často, jsou méně příjemci zprávy než odesílatelé zpráv. V závislosti na počtu příjemců můžete mít jednu aplikaci instanci zpracování Trativod povinností. Použití mnoha příjemci má vliv na fakturaci pro každou frontu nevyřízených položek.
+* *backlogQueueCount*: Počet nevyřízených položek fronty vytvořit. Tato hodnota musí být aspoň 1. Při odesílání zpráv do nevyřízených položek, jeden z těchto front náhodně zvolí. Pokud nastavíte hodnotu na 1, pak pouze jedna fronta někdy slouží. Když k tomu dojde, do jednoho protokolu nevyřízených položek fronty generuje chyby klienta není možné jiné nevyřízených položek fronty a odeslání vaší zprávy se pravděpodobně nezdaří. Doporučujeme tuto hodnotu nastavíte na některé větší hodnotu a výchozí hodnota 10. Toto můžete změnit na hodnotu vyšší nebo nižší v závislosti na tom, kolik dat vaše aplikace odešle za den. Každá fronta nevyřízených položek může obsahovat až 5 GB zprávy.
+* *failoverInterval*: Množství času, během kterého bude přijímat selhání u primárního oboru názvů před přepnutím jakékoli jedné entity na sekundární obor názvů. Na základě entity entity dojde k převzetí služeb při selhání. Entity v jednoho oboru názvů často žijí v různých uzlech v rámci služby Service Bus. Selhání v jedné entitě neznamená selhání v jiném. Nastavte tuto hodnotu na [System.TimeSpan.Zero] [ System.TimeSpan.Zero] převzetí služeb při selhání do sekundární lokality okamžitě po první, nepřechodných selhání. Minimalizovaly chyby aktivující časovače převzetí služeb při selhání jsou všechny [MessagingException] [ MessagingException] ve kterém [IsTransient] [ IsTransient] vlastnost má hodnotu false, nebo [ System.TimeoutException][System.TimeoutException]. Ostatní výjimky, jako například [UnauthorizedAccessException] [ UnauthorizedAccessException] nezpůsobí převzetí služeb při selhání, protože indikuje, že klient není nakonfigurován správně. A [ServerBusyException] [ ServerBusyException] nemá příčina převzetí služeb při selhání protože správné vzor je 10 sekund počkat zprávu odešlete znovu.
+* *enableSyphon*: Označuje, že tato konkrétní párování by měl také syphon zprávy ze sekundární obor názvů zpět do primárního oboru názvů. Obecně platí, nastavte tuto hodnotu na aplikace, které odesílání zpráv **false**; aplikace, které přijímají zprávy by měla tuto hodnotu nastavit na **true**. Důvodem je, že často, jsou méně příjemci zprávy než odesílatelé zpráv. V závislosti na počtu příjemců můžete mít jednu aplikaci instanci zpracování Trativod povinností. Použití mnoha příjemci má vliv na fakturaci pro každou frontu nevyřízených položek.
 
 Chcete-li použít kód, vytvořit primární [MessagingFactory] [ MessagingFactory] instance, sekundární [MessagingFactory] [ MessagingFactory] instance, sekundární [ NamespaceManager] [ NamespaceManager] instance a [SendAvailabilityPairedNamespaceOptions] [ SendAvailabilityPairedNamespaceOptions] instance. Volání může být stejně snadné jako následující:
 

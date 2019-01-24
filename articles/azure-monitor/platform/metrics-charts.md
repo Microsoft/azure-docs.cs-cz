@@ -5,15 +5,15 @@ author: vgorbenko
 services: azure-monitor
 ms.service: azure-monitor
 ms.topic: conceptual
-ms.date: 12/20/2018
+ms.date: 01/22/2019
 ms.author: vitalyg
 ms.subservice: metrics
-ms.openlocfilehash: 0e204e945960ddaf452db1907568e4102631c28f
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: 2b6d982f514f347dc2a59f9ca8f3c33b8c24849b
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 01/23/2019
-ms.locfileid: "54467583"
+ms.locfileid: "54827444"
 ---
 # <a name="azure-monitor-metrics-explorer"></a>Průzkumník metrik Azure monitoru
 
@@ -112,7 +112,7 @@ Budete přesměrováni do podokna vytváření pravidla upozornění se základn
 
 ![Vytvořit pravidlo upozornění](./media/metrics-charts/016.png)
 
-Rezervovat to [článku](alerts-metric.md) Další informace o nastavení upozornění na metriku.
+Podívejte se na to [článku](alerts-metric.md) Další informace o nastavení upozornění na metriku.
 
 ## <a name="lock-boundaries-of-chart-y-axis"></a>Zámek hranice osa y grafu
 
@@ -138,6 +138,16 @@ Pokud chcete připnout nakonfigurované graf na řídicí panel:
 Po dokončení konfigurace diagramu, klikněte na **grafu akce** nabídky v pravém horním rohu grafu top a klikněte na **připnout na řídicí panel**.
 
 ![metriky image](./media/metrics-charts/00013.png)
+
+## <a name="troubleshooting"></a>Řešení potíží
+
+*Nevidím žádná data v grafu.*
+
+* Filtry platí pro všechny grafy v podokně. Ujistěte se, že když se zaměříte na jednom grafu, nenastavili jste filtr, který vylučuje všechna data na další.
+
+* Pokud chcete nastavit filtry, jiné na různých grafů, vytvořte je v jiné listy, uložte jako samostatné Oblíbené položky. Pokud chcete, můžete ho připnout na řídicí panel, tak, aby si ji můžete zobrazit vedle sebe navzájem.
+
+* Pokud je graf segmentovat podle vlastnost, která není definována v metriku, pak nebude nic v grafu. Vymažte segmentace (rozdělení), nebo zvolte jinou vlastnost.
 
 ## <a name="next-steps"></a>Další postup
 

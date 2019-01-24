@@ -9,12 +9,12 @@ ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 11/06/2018
 ms.author: hrasheed
-ms.openlocfilehash: da6435c6e3ea5fe88b605bd65c5d0e10f1772450
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: fca14eb5a51799e6d3c0e4f96cb956e4e6886cdb
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53717462"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54844819"
 ---
 # <a name="use-empty-edge-nodes-on-apache-hadoop-clusters-in-hdinsight"></a>Použití prázdných hraničních uzlů v clusterech Apache Hadoop v HDInsight
 
@@ -65,8 +65,8 @@ Po vytvoření hraniční uzel může připojit k hraničnímu uzlu pomocí SSH 
 >
 > Pokud používáte technologie Apache, je možné k vyhledání pomoci prostřednictvím Apache projektovým webům na [ https://apache.org ](https://apache.org), například [Apache Hadoop](https://hadoop.apache.org/) lokality.
 
-> [!NOTE]  
-> Stejně jako ostatní uzly clusteru hraniční uzly jsou také patch spravované.  Další informace najdete v tématu [opravy operačního systému pro HDInsight](./hdinsight-os-patching.md).
+> [!IMPORTANT]
+> K dispozici pro vytvoření nového clusteru HDInsight 3 měsících publikování Image Ubuntu. Od ledna 2019 spuštěné clustery (včetně hraničních uzlů) jsou **není** automaticky opravit. Zákazníkům musíte použít akce skriptů nebo jiných mechanismů o opravu spuštěný cluster.  Další informace najdete v tématu [opravy operačního systému pro HDInsight](./hdinsight-os-patching.md).
 
 ## <a name="add-an-edge-node-to-an-existing-cluster"></a>Přidat hraniční uzel do existujícího clusteru
 V této části pomocí šablony Resource Manageru pro přidání hraniční uzel do existujícího clusteru HDInsight.  Šablony Resource Manageru najdete v [Githubu](https://azure.microsoft.com/resources/templates/101-hdinsight-linux-add-edge-node/). Šablony Resource Manageru volá akci skriptu umístěného v https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-hdinsight-linux-add-edge-node/scripts/EmptyNodeSetup.sh. Skript nebude provádět žádné akce.  Je k předvedení akce volání skriptu z šablony Resource Manageru.

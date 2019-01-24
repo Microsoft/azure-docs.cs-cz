@@ -4,7 +4,7 @@ description: Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.reviewer: barbkess
 ms.assetid: 3e4bbd5b-290e-4951-971b-ec0c1c11aaa2
 ms.service: Azure-Active-Directory
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 12/31/2018
 ms.author: jeedes
-ms.openlocfilehash: acfc9c5ff98bfcef90144b9a080fe9d220a4c117
-ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
+ms.openlocfilehash: c70d0d077bb3b3002226bc05eae1fedebe29b03f
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/07/2019
-ms.locfileid: "54062737"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54827478"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-mobileiron"></a>Kurz: Integrace Azure Active Directory s MobileIron
 

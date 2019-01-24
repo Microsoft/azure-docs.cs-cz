@@ -1,10 +1,10 @@
 ---
-title: 'Azure Active Directory Domain Services: Připojit virtuální počítač s CoreOS Linux ke spravované doméně | Dokumentace Microsoftu'
+title: 'Azure Active Directory Domain Services: Připojení virtuálního počítače s CoreOS Linux ke spravované doméně | Dokumentace Microsoftu'
 description: Připojení virtuálního počítače s CoreOS Linux do Azure AD Domain Services
 services: active-directory-ds
 documentationcenter: ''
 author: eringreenlee
-manager: mtillman
+manager: daveba
 editor: curtand
 ms.assetid: 5db65f30-bf69-4ea3-9ea5-add1db83fdb8
 ms.service: active-directory
@@ -15,19 +15,19 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/22/2018
 ms.author: ergreenl
-ms.openlocfilehash: 0552085eb5ee5e5b3d1379482e9463a7ae802388
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.openlocfilehash: a2b8c3c0c38349b4c68f85a32bddb2c9b3e60c6f
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50158444"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54850680"
 ---
 # <a name="join-a-coreos-linux-virtual-machine-to-a-managed-domain"></a>Připojení virtuálního počítače s CoreOS Linux ke spravované doméně
 V tomto článku se dozvíte, jak propojit virtuální počítač s Linuxem CoreOS v Azure k spravované doméně služby Azure AD Domain Services.
 
 [!INCLUDE [active-directory-ds-prerequisites.md](../../includes/active-directory-ds-prerequisites.md)]
 
-## <a name="before-you-begin"></a>Než začnete
+## <a name="before-you-begin"></a>Před zahájením
 K provádění úkolů uvedených v tomto článku, budete potřebovat:
 1. Platný **předplatného Azure**.
 2. **Adresář Azure AD** – buď synchronizaci s místním adresářem nebo výhradně cloudový adresář.

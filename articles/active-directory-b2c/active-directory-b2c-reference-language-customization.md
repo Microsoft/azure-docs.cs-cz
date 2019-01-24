@@ -3,19 +3,19 @@ title: Přizpůsobení jazyka v Azure Active Directory B2C | Dokumentace Microso
 description: Další informace o přizpůsobení prostředí jazyka.
 services: active-directory-b2c
 author: davidmu1
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 11/30/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: e115db18770ef304d823ff9c35d7d2cf302d5ccf
-ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
+ms.openlocfilehash: 0eee98ebb449cd1b96ae9805010e55499e006474
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54187758"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54845029"
 ---
 # <a name="language-customization-in-azure-active-directory-b2c"></a>Přizpůsobení jazyka v Azure Active Directory B2C
 
@@ -191,7 +191,7 @@ Chrome a Firefox, které obě žádosti pro své jazykové sady. Pokud je podpor
 | Finština               | fi            |
 | Francouzština                | fr            |
 | Gudžarátština              | gu            |
-| Hindština                 | Ahoj            |
+| Hindština                 | hi            |
 | Chorvatština              | h            |
 | Maďarština             | hu            |
 | italština               | it            |

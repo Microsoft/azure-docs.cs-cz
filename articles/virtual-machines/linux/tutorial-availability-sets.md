@@ -16,14 +16,14 @@ ms.topic: tutorial
 ms.date: 08/24/2018
 ms.author: zarhoads
 ms.custom: mvc
-ms.openlocfilehash: f7bf5e233307703dca522974d52a86bc193186b8
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
-ms.translationtype: HT
+ms.openlocfilehash: 9391db9bf270511f734a31a621985f5b6ad31ec0
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49465827"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54848729"
 ---
-# <a name="tutorial-create-and-deploy-highly-available-virtual-machines-with-the-azure-cli"></a>Kurz: Vytvoření a nasazení vysoce dostupných virtuálních počítačů pomocí Azure CLI
+# <a name="tutorial-create-and-deploy-highly-available-virtual-machines-with-the-azure-cli"></a>Kurz: Vytváření a nasazování vysoce dostupných virtuálních počítačů pomocí Azure CLI
 
 V tomto kurzu zjistíte, jak zvýšit dostupnost a spolehlivost svých řešení, která využívají virtuální počítače v Azure, pomocí funkce označované jako skupiny dostupnosti. Skupiny dostupnosti zajišťují distribuci virtuálních počítačů nasazených v Azure napříč několika izolovanými hardwarovými clustery. To zajišťuje, že pokud dojde k selhání hardwaru nebo softwaru v rámci Azure, ovlivní to pouze podmnožinu vašich virtuálních počítačů a vaše celkové řešení zůstane dostupné a funkční.
 
@@ -70,7 +70,7 @@ Skupiny dostupnosti umožňují izolovat prostředky napříč doménami selhán
 
 Virtuální počítače je nutné vytvořit ve skupině dostupnosti, abyste měli jistotu, že jsou správně distribuované napříč hardwarem. Existující virtuální počítač není možné přidat do vytvořené skupiny dostupnosti.
 
-Při vytvoření virtuálního počítače pomocí příkazu [az vm create](/cli/azure/vm#az_vm_create) použijte parametr `--availability-set` k zadání názvu skupiny dostupnosti.
+Při vytvoření virtuálního počítače pomocí příkazu [az vm create](/cli/azure/vm) použijte parametr `--availability-set` k zadání názvu skupiny dostupnosti.
 
 ```azurecli-interactive
 for i in `seq 1 2`; do
@@ -104,7 +104,7 @@ az vm availability-set list-sizes \
      --output table
 ```
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 V tomto kurzu jste se naučili:
 

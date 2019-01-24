@@ -3,7 +3,7 @@ title: Nastavit hesla aplikací pomocí informací o zabezpečení – Azure Act
 description: Nastavit automaticky generované hesla (hesla aplikací) pro použití s každou aplikaci nezaložené na prohlížeči, nezávislá na normální heslo pomocí bezpečnostních údajů.
 services: active-directory
 author: eross-msft
-manager: mtillman
+manager: daveba
 ms.reviewer: sahenry
 ms.service: active-directory
 ms.workload: identity
@@ -11,12 +11,12 @@ ms.component: user-help
 ms.topic: conceptual
 ms.date: 07/30/2018
 ms.author: lizross
-ms.openlocfilehash: e527a0eaec433b96b5c37c5ec22f392a7166dfe8
-ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
+ms.openlocfilehash: 211e282dc4334753b90d050dc82c8bf35ad145cd
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44162440"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54826203"
 ---
 # <a name="manage-app-passwords-using-security-info-preview"></a>Správa hesel aplikací pomocí informací o zabezpečení (preview)
 

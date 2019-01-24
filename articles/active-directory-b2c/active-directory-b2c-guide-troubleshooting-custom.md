@@ -3,19 +3,19 @@ title: Řešení potíží s vlastních zásad v Azure Active Directory B2C | Do
 description: Další informace o přístup k řešení chyb při práci s vlastními zásadami v Azure Active Directory B2C.
 services: active-directory-b2c
 author: davidmu1
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 05/07/2017
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 8bb95ae776c329e67e9f9936213a9f4c2a0c8f62
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: be3a3a50d3ace369964814bc7fcc0fa0d353a332
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52842590"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54842898"
 ---
 # <a name="troubleshoot-azure-ad-b2c-custom-policies-and-identity-experience-framework"></a>Řešení potíží s vlastní zásady Azure AD B2C a architekturu rozhraní identit
 
@@ -57,7 +57,7 @@ Chyba fragment kódu: `Reason: User is currently logged as a user of 'yourtenant
 
 * Použití `Run Now` a `https://jwt.io` k otestování vašich zásad nezávisle na svou webovou nebo mobilní aplikaci. Tento web se chová jako aplikaci předávající strany. Zobrazí obsah z JSON Web Token (JWT), který je generován zásady Azure AD B2C. Vytvoření aplikace testů v rozhraní prostředí pro Identity, použijte následující hodnoty:
     * Název: TestApp
-    * Webovou aplikaci/webové rozhraní API: Ne
+    * Webové aplikace/webové rozhraní API: Ne
     * Nativní klient systému: Ne
 
 * Pro sledování výměny zpráv mezi prohlížeče klienta a Azure AD B2C, použijte [Fiddler](https://www.telerik.com/fiddler). Pomůže vám zajistit indikaci, kde se nedaří vaší cesty uživatele v postupu k orchestraci.

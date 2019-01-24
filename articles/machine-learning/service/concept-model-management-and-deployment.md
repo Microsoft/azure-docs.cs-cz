@@ -11,12 +11,12 @@ author: chris-lauren
 ms.author: clauren
 ms.date: 09/24/2018
 ms.custom: seodec18
-ms.openlocfilehash: 467af0f04708c9c6758531fb1cd71d79e9ddd6d7
-ms.sourcegitcommit: 70471c4febc7835e643207420e515b6436235d29
+ms.openlocfilehash: 44f61d7b90018b76b1903a04d219dcf0226f95e0
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2019
-ms.locfileid: "54302965"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54852316"
 ---
 # <a name="manage-deploy-and-monitor-models-with-azure-machine-learning-service"></a>Spravovat, nasazovat a sledovat modely pomocí služby Azure Machine Learning
 
@@ -39,7 +39,7 @@ Každý krok lze provést, samostatně nebo jako součást příkazu pro jedno n
 
 Registrace modelu umožňuje ukládat a verzí vašich modelů v cloudu Azure, ve vašem pracovním prostoru. Model registru usnadňuje uspořádat a sledovat, trénované modely.
  
-Registrované modely jsou identifikovány názvem a verzí. Pokaždé, když zaregistrujete model se stejným názvem jako existující registr zvýší verzi. Během registrace, který se dá použít při vyhledávání pro modely můžete zadat také další metadata značky. Služba Azure Machine Learning podporuje modely uložit pomocí jakéhokoli modelu, který lze načíst pomocí Python 3. 
+Registrované modely jsou identifikovány názvem a verzí. Pokaždé, když zaregistrujete model se stejným názvem jako existující registr zvýší verzi. Během registrace, který se dá použít při vyhledávání pro modely můžete zadat také další metadata značky. Služba Azure Machine Learning podporuje všechny modely, které je možné načíst pomocí Python 3. 
 
 Nelze odstranit modely, které se používají v obrázku.
 
@@ -63,13 +63,13 @@ Image můžete také zahrnout součásti sady SDK pro protokolování a monitoro
 Azure Machine Learning podporuje oblíbených architektur, ale obecně můžete pracovat libovolné architektury, které mohou být nainstalovány nástrojem pip.
 
 Při vytvoření pracovního prostoru, takže ostatní několik dalších prostředků Azure použil tento pracovní prostor.
-Všechny objekty používané k vytvoření této image se ukládají v účtu úložiště Azure ve vašem pracovním prostoru. Image se vytvoří a uloží v Azure Container Registry. Při vytváření bitové kopie, které jsou uloženy v registru image a může být dotazována k vyhledání bitové kopie můžete zadat další metadata značky.
+Všechny objekty používané k vytvoření této image se ukládají v účtu úložiště Azure ve vašem pracovním prostoru. Při vytváření bitové kopie můžete zadat další metadata značky. Značky metadata jsou také uloženy v registru image a může být dotazována k vyhledání bitové kopie.
 
 Další informace naleznete v tématu Konfigurace a registrace oddíl bitové kopie z [nasazovat modely](how-to-deploy-and-where.md#configureimage).
 
 ## <a name="step-3-deploy-image"></a>Krok 3: Nasazení bitové kopie
 
-Registrovaný imagí můžete nasadit do cloudu nebo na hraničních zařízeních. Proces nasazení vytvoří všechny prostředky potřebné k monitorování, Vyrovnávání zatížení a automatické škálování vašeho modelu. Přístup k nasazeným službám dá se zabezpečit s ověřováním na základě certifikátů tím, že poskytuje prostředky zabezpečení během nasazení. Rovněž lze upgradovat stávajícího nasazení použít novější image.
+Registrovaný imagí můžete nasadit do cloudu nebo na hraničních zařízeních. Proces nasazení vytvoří všechny prostředky potřebné k monitorování, Vyrovnávání zatížení a automatické škálování vašeho modelu. Přístup k nasazeným službám můžete zabezpečený pomocí ověřování prostřednictvím certifikátu tím, že poskytuje prostředky zabezpečení během nasazení. Rovněž lze upgradovat stávajícího nasazení použít novější image.
 
 Nasazení webové služby je také možné prohledávat. Můžete například vyhledat všechny nasazení konkrétní model nebo image.
 

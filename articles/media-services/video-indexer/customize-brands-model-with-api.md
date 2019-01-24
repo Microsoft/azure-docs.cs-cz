@@ -9,12 +9,12 @@ ms.service: media-services
 ms.topic: article
 ms.date: 12/03/2018
 ms.author: anzaman
-ms.openlocfilehash: 5591c36a13291432f2d790b4c83e98270b4bc035
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: f970f535f83bc3b3c2a850ec126a7afff2af739f
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53284868"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54827580"
 ---
 # <a name="customize-a-brands-model-with-the-video-indexer-api"></a>Přizpůsobení modelu značky s rozhraním API pro Video Indexer
 
@@ -41,7 +41,7 @@ https://api.videoindexer.ai/{location}/Accounts/{accountId}/Customization/Brands
 |**Název**|**Typ**|**Požadováno**|**Popis**|
 |---|---|---|---|
 |location|řetězec|Ano|Oblasti Azure, ke které se mají směrovat volání. Další informace najdete v tématu [oblastí Azure a Video Indexer](regions.md).|
-|ID účtu|řetězec|Ano|Globálně jedinečný identifikátor účtu|
+|accountId|řetězec|Ano|Globálně jedinečný identifikátor účtu|
 |accessToken|řetězec|Ano|Přístupový token (musí být z rozsahu [účet přístupový Token](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Account-Access-Token?)) k ověřování na základě volání. Přístupové tokeny vyprší za 1 hodinu.|
 
 ### <a name="request-body"></a>Text požadavku
@@ -103,7 +103,7 @@ https://api.videoindexer.ai/{location}/Accounts/{accountId}/Customization/Brands
 |**Název**|**Typ**|**Požadováno**|**Popis**|
 |---|---|---|---|
 |location|řetězec|Ano|Oblasti Azure, ke které se mají směrovat volání. Další informace najdete v tématu [oblastí Azure a Video Indexer](regions.md).|
-|ID účtu|řetězec|Ano|Globálně jedinečný identifikátor účtu|
+|accountId|řetězec|Ano|Globálně jedinečný identifikátor účtu|
 |id|integer|Ano|Id značky (generovány, pokud byl vytvořen značka)|
 |accessToken|řetězec|Ano|Přístupový token (musí být z rozsahu [účet přístupový Token](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Account-Access-Token?)) k ověřování na základě volání. Přístupové tokeny vyprší za 1 hodinu.|
 
@@ -132,7 +132,7 @@ https://api.videoindexer.ai/{location}/Accounts/{accountId}/Customization/Brands
 |**Název**|**Typ**|**Požadováno**|**Popis**|
 |---|---|---|---|
 |location|řetězec|Ano|Oblasti Azure, ke které se mají směrovat volání. Další informace najdete v tématu [oblastí Azure a Video Indexer](regions.md).|
-|ID účtu|řetězec|Ano|Globálně jedinečný identifikátor účtu|
+|accountId|řetězec|Ano|Globálně jedinečný identifikátor účtu|
 |id|integer|Ano|ID značky (generovány, pokud byl vytvořen značka)|
 |accessToken|řetězec|Ano|Přístupový token (musí být z rozsahu [účet přístupový Token](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Account-Access-Token?)) k ověřování na základě volání. Přístupové tokeny vyprší za 1 hodinu.|
 
@@ -182,7 +182,7 @@ https://api.videoindexer.ai/{location}/Accounts/{accountId}/Customization/Brands
 |**Název**|**Typ**|**Požadováno**|**Popis**|
 |---|---|---|---|
 |location|řetězec|Ano|Oblasti Azure, ke které se mají směrovat volání. Další informace najdete v tématu [oblastí Azure a Video Indexer](regions.md).|
-|ID účtu|řetězec|Ano|Globálně jedinečný identifikátor účtu|
+|accountId|řetězec|Ano|Globálně jedinečný identifikátor účtu|
 |id|integer|Ano|ID značky (generovány, pokud byl vytvořen značka)|
 |accessToken|řetězec|Ano|Přístupový token (musí být z rozsahu [účet přístupový Token](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Account-Access-Token?)) k ověřování na základě volání. Přístupové tokeny vyprší za 1 hodinu.|
 
@@ -215,7 +215,7 @@ Odpověď obsahuje aktualizované informace o značku, kterou jste aktualizovali
   "referenceUrl": null,
   "id": 97974,
   "name": "Example",
-  "accountId": "SampeAccountId",
+  "accountId": "SampleAccountId",
   "lastModifierUserName": "SampleUserName",
   "Created": "2018-04-25T14:59:52.7433333",
   "lastModified": "2018-04-25T15:37:50.67",
@@ -245,7 +245,7 @@ https://api.videoindexer.ai/{location}/Accounts/{accountId}/Customization/Brands
 |**Název**|**Typ**|**Požadováno**|**Popis**|
 |---|---|---|---|
 |location|řetězec|Ano|Oblasti Azure, ke které se mají směrovat volání. Další informace najdete v tématu [oblastí Azure a Video Indexer](regions.md).|
-|ID účtu|řetězec|Ano|Globálně jedinečný identifikátor účtu|
+|accountId|řetězec|Ano|Globálně jedinečný identifikátor účtu|
 |accessToken|řetězec|Ano|Přístupový token (musí být z rozsahu [účet přístupový Token](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Account-Access-Token?)) k ověřování na základě volání. Přístupové tokeny vyprší za 1 hodinu.|
 
 ### <a name="request-body"></a>Text požadavku
@@ -305,7 +305,7 @@ https://api.videoindexer.ai/{location}/Accounts/{accountId}/Customization/Brands
 |**Název**|**Typ**|**Požadováno**|**Popis**|
 |---|---|---|---|
 |location|řetězec|Ano|Oblasti Azure, ke které se mají směrovat volání. Další informace najdete v tématu [oblastí Azure a Video Indexer](regions.md).|
-|ID účtu|řetězec|Ano|Globálně jedinečný identifikátor účtu|
+|accountId|řetězec|Ano|Globálně jedinečný identifikátor účtu|
 |accessToken|řetězec|Ano|Přístupový token (musí být z rozsahu [účet přístupový Token](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Account-Access-Token?)) k ověřování na základě volání. Přístupové tokeny vyprší za 1 hodinu.|
 
 ### <a name="request-body"></a>Text požadavku
@@ -342,7 +342,7 @@ https://api.videoindexer.ai/{location}/Accounts/{accountId}/Customization/Brands
 |**Název**|**Typ**|**Požadováno**|**Popis**|
 |---|---|---|---|
 |location|řetězec|Ano|Oblasti Azure, ke které se mají směrovat volání. Další informace najdete v tématu [oblastí Azure a Video Indexer](regions.md).|
-|ID účtu|řetězec|Ano|Globálně jedinečný identifikátor účtu|
+|accountId|řetězec|Ano|Globálně jedinečný identifikátor účtu|
 |accessToken|řetězec|Ano|Přístupový token (musí být z rozsahu [účet přístupový Token](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Account-Access-Token?)) k ověřování na základě volání. Přístupové tokeny vyprší za 1 hodinu.|
 
 ### <a name="request-body"></a>Text požadavku

@@ -3,19 +3,19 @@ title: Řetězec deklaraci příklady transformaci identita prostředí Framewor
 description: Řetězec deklaraci příklady transformaci identita prostředí Framework schéma z Azure Active Directory B2C.
 services: active-directory-b2c
 author: davidmu1
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 09/10/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: f2823ec32b6658aa22c38294c09c9738c9121c39
-ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
+ms.openlocfilehash: 1a382b845b621e47d30869a1081549b7f30348aa
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54121579"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54850726"
 ---
 # <a name="string-claims-transformations"></a>Řetězec deklarace identity transformace
 
@@ -35,7 +35,7 @@ Porovnat dvě deklarace identity a vyvolat výjimku, pokud nejsou stejné podle 
 
 **AssertStringClaimsAreEqual** transformaci deklarací identity je vždy spuštěn z [technický profil ověření](validation-technical-profile.md) , který je volán [držitelem s prohlašovanou technický profil](self-asserted-technical-profile.md). **UserMessageIfClaimsTransformationStringsAreNotEqual** technického profilu s vlastním potvrzením řídí, která se zobrazí uživateli chybovou zprávu.
 
-![Spuštění AssertStringClaimsAreEqual](./media/string-transformations/assert-execution.png)
+![AssertStringClaimsAreEqual execution](./media/string-transformations/assert-execution.png)
 
 Můžete použít tato deklarace identity transformace, abyste měli jistotu, dva ClaimTypes mají stejnou hodnotu. V opačném případě je vyvolána chybovou zprávu. Následující příklad kontroluje, zda **strongAuthenticationEmailAddress** typu deklarace identity rovná **e-mailu** typu deklarace identity. V opačném případě je vyvolána chybovou zprávu. 
 
@@ -223,7 +223,7 @@ Můžete použít tato deklarace identity transformace, která zjistí, zda je d
 - Vstupní deklarace identity:
     - **inputClaim1**: v1
 - Vstupní parametry:
-    - **Metoda CompareTo**: V1
+    - **compareTo**: V1
     - **Operátor**: ROVNO 
     - **ignoreCase**: true
 - Výstupní deklarace identit:
@@ -237,7 +237,7 @@ Vytvoří náhodný řetězec za použití generátor náhodných čísel. Pokud
 | ---- | ----------------------- | --------- | ----- |
 | InputParameter | randomGeneratorType | řetězec | Určuje náhodnou hodnotu chcete vygenerovat, `GUID` (globální jedinečné ID) nebo `INTEGER` (číslo). |
 | InputParameter | stringFormat | řetězec | [Volitelné] Formátování náhodnou hodnotu. |
-| InputParameter | ve formátu Base64 | Boolean | [Volitelné] Převeďte náhodnou hodnotu ve formátu Base64. Pokud je použit formát řetězce, hodnota po formát řetězce je zakódovaný ve formátu Base64. |
+| InputParameter | base64 | Boolean | [Volitelné] Převeďte náhodnou hodnotu ve formátu Base64. Pokud je použit formát řetězce, hodnota po formát řetězce je zakódovaný ve formátu Base64. |
 | InputParameter | maximumNumber | int | [Volitelné] Pro `INTEGER` randomGeneratorType pouze. Určuje maximální počet. |
 | InputParameter | Počáteční hodnota  | int | [Volitelné] Pro `INTEGER` randomGeneratorType pouze. Zadejte počáteční hodnotu pro náhodnou hodnotu. Poznámka: stejné počáteční hodnoty vrací stejnou posloupnost náhodných čísel. |
 | outputClaim | outputClaim | řetězec | Zavolání ClaimTypes, který bude vytvořen poté, co to transformace deklarací identity. Náhodná hodnota. |
@@ -355,11 +355,11 @@ Použijte tato deklarace identity transformace na formát některé řetězce se
 
 - Vstupní deklarace identity:
     - **inputClaim1**: Joe
-    - **inputClaim2**: Ostrov Fernando
+    - **inputClaim2**: Fernando
 - Vstupní parametry:
     - **stringFormat**: {0} {1}
 - Výstupní deklarace identit:
-    - **outputClaim**: Ostrov Joe Fernando
+    - **outputClaim**: Joe Fernando
 
 ## <a name="getmappedvaluefromlocalizedcollection"></a>GetMappedValueFromLocalizedCollection
 
@@ -439,12 +439,12 @@ Vyhledá v následujícím příkladu je název domény v jedné z kolekcí vstu
 - Vstupní deklarace identity:
     - **inputParameterId**: test.com
 - Vstupní parametry:
-    - **contoso.com**: 13c15f79-8FB1-4e29-a6c9-be0d36ff19f1
-    - **Microsoft.com**: 0213308f-17cb-4398-b97e-01da7bd4804e
+    - **contoso.com**: 13c15f79-8fb1-4e29-a6c9-be0d36ff19f1
+    - **microsoft.com**: 0213308f-17cb-4398-b97e-01da7bd4804e
     - **test.com**: c7026f88-4299-4cdb-965d-3f166464b8a9
     - **errorOnFailedLookup**: false
 - Výstupní deklarace identit:
-    - **outputClaim**: c7026f88-4299-4cdb-965d-3f166464b8a9
+    - **outputClaim**:  c7026f88-4299-4cdb-965d-3f166464b8a9
 
 ## <a name="nullclaim"></a>NullClaim
 
@@ -475,7 +475,7 @@ Vrátí část domény e-mailovou adresu.
 
 | Položka | TransformationClaimType | Typ dat | Poznámky |
 | ---- | ----------------------- | --------- | ----- |
-| InputClaim | EmailAddress | řetězec | Typ ClaimType, který obsahuje e-mailovou adresu. |
+| InputClaim | emailAddress | řetězec | Typ ClaimType, který obsahuje e-mailovou adresu. |
 | outputClaim | Doména | řetězec | Zavolání typu deklarace identity, který je vytvořen po to transformace deklarací identity - doméně. |
 
 Použijte tato deklarace identity transformace parsovat název domény po uživatele, symbol @. To může být užitečné při odebírání identifikovatelné osobní údaje (PII) z data auditu. Následující deklarace identity transformace ukazuje, jak analyzovat název domény z **e-mailu** deklarací identity.

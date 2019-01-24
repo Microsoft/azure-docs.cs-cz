@@ -11,28 +11,53 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/04/2018
+ms.date: 01/22/2019
 ms.author: kraigb
-ms.openlocfilehash: d948be88fd75202dea010520d3531f151d6934b0
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 31cbe2e62582ae810d165ddef5db6a20c52ff050
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53104080"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54847539"
 ---
 # <a name="manage-and-configure-projects"></a>Správa a konfigurace projektů
 
 Projekt v poznámkových bloků Azure je v podstatě konfiguraci základní virtuální počítač s Linuxem ve kterém je spuštěný poznámkové bloky Jupyter, spolu s složku souborů a popisnými metadaty. Řídicí panel projekt v poznámkových bloků Azure umožňuje spravovat soubory a jinak konfigurovat vlastnosti projektu:
 
-- Projekt metadata obsahují název, popis, identifikátor, který se používá při sdílení projektu a zda je projekt veřejné nebo soukromé.
-- Stejně jako u jakéhokoli souborové systému spravovat projektu Poznámkový blok, data a jiné soubory.
-- Konfiguraci projektu prostředí prostřednictvím spouštění skriptů nebo přímo prostřednictvím terminálu.
-- Pomocí terminálu máte přístup k protokolům.
+- Úrovně výpočetních na kterém běží projekt, který může být na úrovni free nebo virtuálním počítači Azure.
+- Projekt metadat, která obsahuje název, popis, identifikátor, který se používá při sdílení projektu a zda je projekt veřejné nebo soukromé.
+- Poznámkový blok v projektu, dat a další soubory, které můžete spravovat jako jakéhokoli souborové systému.
+- Prostředí projektu, které lze spravovat prostřednictvím spouštění skriptů nebo přímo přes terminál.
+- Protokoly, které přistupujete prostřednictvím terminálu.
 
 > [!Note]
-> Nelze spravovat projektu, které nevlastníte, pokud není vlastník projektu provedl spolupracovníka. Správa a konfigurace funkcí je zde popsáno, jinak nejsou k dispozici pro vás.
+> Správa a konfigurace funkcí je zde popsáno, jsou k dispozici pouze vlastník projektu, který původně vytvořil projektu. Klonování projektu z do vlastního účtu může, ale v takovém případě stát vlastníkem a můžete podle potřeby nakonfigurujte projekt.
 
 Poznámkových bloků Azure spustí základní virtuální počítač se při každém spuštění poznámkového bloku nebo jiného souboru. Server automaticky ukládá soubory a ukončí po 60 minutách nečinnosti. Taky můžete zastavit server kdykoli s **vypnutí** příkazu (Klávesová zkratka: h).
+
+## <a name="compute-tier"></a>Služba COMPUTE úrovně
+
+**Spustit** rozevíracího seznamu na řídicím panelu Projekt slouží k výběru výpočetní úroveň, na kterém běží projektu. Ve výchozím nastavení, spouštět projekty **bezplatné Compute** úroveň, která je omezena na 4 GB paměti a 1 GB dat, aby se zabránilo zneužití:
+
+![COMPUTE úrovně rozevíracího seznamu na řídicím panelu Projekt](media/project-compute-tier-list.png)
+
+Tato omezení můžete obejít a použít jiný virtuální počítač, který zřídíte v předplatném Azure. Jupyter je také nutné nainstalovat na tomto virtuálním počítači. Image virtuálního počítače pro datové vědy jsou vhodná rozhodnutí, protože patří mezi ně Jupyter ve výchozím nastavení.
+
+Můžete připojit k jakékoli vhodně nakonfigurovaných virtuálních počítačů Azure pomocí **přímé Compute** možnost v rozevíracím seznamu. Výběrem této možnosti vás vyzve k zadání názvu (Chcete-li zobrazit v seznamu), IP adresu Virtuálního počítače a port (obvykle 8000, výchozí port, na které naslouchá JupyterHub) a přihlašovací údaje virtuálního počítače:
+
+![Výzva ke shromažďování informací serveru pro možnost přímého Compute](media/project-compute-tier-direct.png)
+
+Pokud jsou splněny následující podmínky, rozevírací seznam také zobrazuje [dat virtuálního počítače VĚDY](/azure/machine-learning/data-science-virtual-machine) instancí. (Pokud nejsou splněny některé z těchto podmínek, můžete se připojit k datové VĚDY použít možnost Compute s přímým přístupem a zadat hodnoty získané z portálu Azure portal.)
+
+- Jste se přihlásili do poznámkových bloků Azure pomocí účtu, který používá Azure Active Directory (AAD), jako je například účet společnosti.
+- Váš účet připojený k předplatnému Azure.
+- Máte jeden nebo více virtuálních počítačů v tomto předplatném s alespoň čtečky přístup, použijte virtuální počítač pro datové vědy pro Linux (Ubuntu) image.
+
+![Instance data Science virtuálních počítačů v rozevíracím seznamu v řídicím panelu Projekt](media/project-compute-tier-dsvm.png)
+
+Při výběru DSVM instance poznámkových bloků Azure může výzvu pro konkrétní počítač pověření použitá při vytváření virtuálního počítače.
+
+Pokud chcete vytvořit novou instanci DSVM, postupujte podle pokynů [vytvoření virtuálního počítače s Ubuntu Data Science](/azure/machine-learning/data-science-virtual-machine/dsvm-ubuntu-intro). Můžete *musí* použít **virtuální počítač pro datové vědy pro Linux (Ubuntu)** image, protože poznámkových bloků Azure nezobrazí datové, které používají Image Windows nebo CentOS.
 
 ## <a name="edit-project-metadata"></a>Úprava metadat projektu
 
@@ -66,7 +91,7 @@ Na řídicím panelu Projekt, vyberte **nastavení projektu**a pak **informace**
 
 ### <a name="upload-files"></a>Nahrání souborů
 
-**Nahrát** příkaz poskytuje dvě možnosti, jak importovat data z jiných míst: **z adresy URL** a **z počítače**. Další informace najdete v tématu [práce s datovými soubory v projektech poznámkového bloku Azure](work-with-project-data-files.md).
+**Nahrát** příkaz poskytuje dvě možnosti, jak importovat data z jiných míst: **Z adresy URL** a **z počítače**. Další informace najdete v tématu [práce s datovými soubory v projektech poznámkového bloku Azure](work-with-project-data-files.md).
 
 ### <a name="select-file-specific-commands"></a>Vyberte soubor konkrétní příkazy
 
@@ -127,11 +152,11 @@ Chcete-li přidat, vyberte nejdřív **+ přidat**, vyberte odpovídající typ 
 
 Informace, které pak projektu závisí na typu operace, kterou jste zvolili:
 
-- **Soubor Requirements.txt**: ve druhém seznamu, rozevíracího seznamu vyberte *souboru requirements.txt* soubor, který je již v projektu. Vyberte ze seznamu třetí rozevíracího seznamu, který se zobrazí verze Pythonu. Pomocí *souboru requirements.txt* souborů, spuštění poznámkových bloků Azure `pip install -r` s *souboru requirements.txt* souboru při spuštění serveru poznámkového bloku. Není nutné explicitně instalace balíčků z v rámci samotného poznámkového bloku.
+- **Soubor Requirements.txt**: Ve druhém seznamu, rozevíracího seznamu vyberte *souboru requirements.txt* soubor, který je již v projektu. Vyberte ze seznamu třetí rozevíracího seznamu, který se zobrazí verze Pythonu. Pomocí *souboru requirements.txt* souborů, spuštění poznámkových bloků Azure `pip install -r` s *souboru requirements.txt* souboru při spuštění serveru poznámkového bloku. Není nutné explicitně instalace balíčků z v rámci samotného poznámkového bloku.
 
-- **Skript prostředí**: ve druhém seznamu, rozevíracího seznamu vyberte skript prostředí bash v projektu (obvykle soubor s *.sh* rozšíření), která obsahuje všechny příkazy, které chcete spustit inicializace prostředí.
+- **Skript prostředí**: Ve druhém seznamu, rozevíracího seznamu vyberte skript prostředí bash v projektu (obvykle soubor s *.sh* rozšíření), která obsahuje všechny příkazy, které chcete spustit inicializace prostředí.
 
-- **Environment.yml**: ve druhém seznamu, rozevíracího seznamu vyberte *environments.yml* souborů pro projekty v Pythonu pomocí prostředí conda.
+- **Environment.yml**: Ve druhém seznamu, rozevíracího seznamu vyberte *environments.yml* souborů pro projekty v Pythonu pomocí prostředí conda.
 
 Až dokončíte přidávání kroků, vyberte **Uložit**.
 
@@ -186,5 +211,5 @@ Můžete také použít příkaz z buňky kódu do poznámkového bloku Python:
 
 ## <a name="next-steps"></a>Další postup
 
-- [Postupy: práce s datovými soubory projektu](work-with-project-data-files.md)
+- [Postup: Práce s datovými soubory projektu](work-with-project-data-files.md)
 - [Přístup k datům cloudu v poznámkovém bloku](access-data-resources-jupyter-notebooks.md)

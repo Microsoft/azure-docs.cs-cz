@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.service: azure-policy
 ms.custom: mvc
 manager: carmonm
-ms.openlocfilehash: 7cfcb71567931b1581618cf8f2239fb004befff8
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: ecebeef509f1f23e34ade6a79b8ffe39d4cbb0a5
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53087027"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54845618"
 ---
 # <a name="create-and-manage-policies-to-enforce-compliance"></a>Vytváření a správa zásad pro vynucování dodržování předpisů
 
@@ -110,7 +110,7 @@ Teď, když jste přiřadili předdefinovanou definici zásady, můžete se slu�
     }
     ```
 
-    *Pole* vlastnost v pravidlu zásad musí být jedna z následujících hodnot: název, typ, umístění, značky nebo alias. Příkladem aliasu může být `"Microsoft.Compute/VirtualMachines/Size"`.
+    *Pole* vlastnost v pravidlu zásad musí být jedna z následujících hodnot: Název, typ, umístění, značky nebo alias. Příkladem aliasu může být `"Microsoft.Compute/VirtualMachines/Size"`.
 
     Další ukázky zásad Azure najdete v [ukázkách pro Azure Policy](../samples/index.md).
 
@@ -160,12 +160,12 @@ Přiložte podobný text žádosti jako v následujícím příkladu:
 
 Než budete pokračovat k příkladu Powershellu, ujistěte se, že jste nainstalovali nejnovější verzi Azure Powershellu. Parametry zásady byly přidány ve verzi 3.6.0. Pokud máte starší verzi, uvedené příklady vrátí chybu s informacemi, že parametr nebyl nalezen.
 
-Definici zásady můžete vytvořit pomocí rutiny `New-AzureRmPolicyDefinition`.
+Definici zásady můžete vytvořit pomocí rutiny `New-AzPolicyDefinition`.
 
 Pokud chcete vytvořit definici zásady ze souboru, předejte cestu k souboru. Pro externí soubor použijte následující příklad:
 
 ```azurepowershell-interactive
-$definition = New-AzureRmPolicyDefinition `
+$definition = New-AzPolicyDefinition `
     -Name 'denyCoolTiering' `
     -DisplayName 'Deny cool access tiering for storage' `
     -Policy 'https://raw.githubusercontent.com/Azure/azure-policy-samples/master/samples/Storage/storage-account-access-tier/azurepolicy.rules.json'
@@ -174,7 +174,7 @@ $definition = New-AzureRmPolicyDefinition `
 Pro místní soubor použijte následující příklad:
 
 ```azurepowershell-interactive
-$definition = New-AzureRmPolicyDefinition `
+$definition = New-AzPolicyDefinition `
     -Name 'denyCoolTiering' `
     -Description 'Deny cool access tiering for storage' `
     -Policy 'c:\policies\coolAccessTier.json'
@@ -183,7 +183,7 @@ $definition = New-AzureRmPolicyDefinition `
 Pokud chcete vytvořit definici zásady s vloženým pravidlem, použijte následující příklad:
 
 ```azurepowershell-interactive
-$definition = New-AzureRmPolicyDefinition -Name 'denyCoolTiering' -Description 'Deny cool access tiering for storage' -Policy '{
+$definition = New-AzPolicyDefinition -Name 'denyCoolTiering' -Description 'Deny cool access tiering for storage' -Policy '{
     "if": {
         "allOf": [{
                 "field": "type",
@@ -238,7 +238,7 @@ $parameters = '{
     }
 }'
 
-$definition = New-AzureRmPolicyDefinition -Name 'storageLocations' -Description 'Policy to specify locations for storage accounts.' -Policy $policy -Parameter $parameters
+$definition = New-AzPolicyDefinition -Name 'storageLocations' -Description 'Policy to specify locations for storage accounts.' -Policy $policy -Parameter $parameters
 ```
 
 ### <a name="view-policy-definitions-with-powershell"></a>Zobrazení definic zásad pomocí PowerShellu
@@ -246,7 +246,7 @@ $definition = New-AzureRmPolicyDefinition -Name 'storageLocations' -Description 
 Pokud chcete zobrazit všechny definice zásad ve svém předplatném, použijte následující příkaz:
 
 ```azurepowershell-interactive
-Get-AzureRmPolicyDefinition
+Get-AzPolicyDefinition
 ```
 
 Příkaz vrátí všechny dostupné definice zásad, včetně předdefinovaných zásad. Všechny zásady se vrátí v následujícím formátu:
@@ -338,7 +338,7 @@ Pomocí definice iniciativy můžete seskupit několik definic zásad za účele
 
 1. Zadejte **Název** a **Popis** iniciativy.
 
-   V tomto příkladu ověřuje, zda jsou prostředky v souladu s definicemi zásad zajištěním zabezpečení. Pojmenujte iniciativu **Zajištění zabezpečení** a nastavte popis na: **Tato iniciativa byla vytvořená za účelem zpracování všech definic zásad souvisejících se zabezpečením prostředků**.
+   V tomto příkladu ověřuje, zda jsou prostředky v souladu s definicemi zásad zajištěním zabezpečení. Název iniciativy **zajištění zabezpečení** a nastavit popis jako: **Tato iniciativa byla vytvořená za účelem zpracování všech definic zásad souvisejících se zabezpečením prostředků**.
 
 1. V části **Kategorie** zvolte některou z existujících možností nebo vytvořte novou kategorii.
 
@@ -367,7 +367,7 @@ Pomocí definice iniciativy můžete seskupit několik definic zásad za účele
 
 1. Na levé straně stránky služby Azure Policy v části **Vytváření obsahu** vyberte **Definice**.
 
-1. Vyhledejte definici iniciativy **Zajištění zabezpečení**, kterou jste vytvořili dříve, a klikněte na ni. V horní části stránky vyberte **Přiřadit** a otevřete stránku **Zajištění zabezpečení: Přiřadit iniciativu**.
+1. Vyhledejte definici iniciativy **Zajištění zabezpečení**, kterou jste vytvořili dříve, a klikněte na ni. Vyberte **přiřadit** v horní části stránky a otevře **zajištění zabezpečení: Přiřadit iniciativu** stránky.
 
    ![Přiřazení definice](../media/create-and-manage/assign-definition.png)
 
@@ -375,13 +375,13 @@ Pomocí definice iniciativy můžete seskupit několik definic zásad za účele
 
    ![Kliknutí pravým tlačítkem na řádek](../media/create-and-manage/select-right-click.png)
 
-1. Vyplňte stránku **Zajištění zabezpečení: Přiřadit iniciativu** zadáním následujících ukázkových údajů. Můžete použít vlastní údaje.
+1. Vyplňte **zajištění zabezpečení: Přiřadit iniciativu** stránky zadáním následujících ukázkových údajů. Můžete použít vlastní údaje.
 
-   - Obor: Výchozím oborem se stane skupina pro správu nebo předplatné, kam jste iniciativu uložili.  Obor můžete změnit a přiřadit tak iniciativu k předplatnému nebo ke skupině prostředků v rámci umístění pro uložení.
-   - Vyloučení: Můžete nakonfigurovat jakékoli prostředky v rámci oboru, na které se nebude přiřazení iniciativy vztahovat.
-   - Název definice a přiřazení iniciativy: Zajištění zabezpečení (předem se vyplní název přiřazované iniciativy).
+   - Rozsah: Skupiny pro správu nebo předplatného, které jste si uložili iniciativa zaměřená na stane výchozí.  Obor můžete změnit a přiřadit tak iniciativu k předplatnému nebo ke skupině prostředků v rámci umístění pro uložení.
+   - Vyloučení: Konfigurujte všechny prostředky v rámci oboru, aby se zabránilo přiřazení iniciativy se použily k nim.
+   - Definice iniciativy a název úlohy: Získáte zabezpečené (předem vyplní názvem přiřazení iniciativy).
    - Popis: Toto přiřazení iniciativy je přizpůsobené k vynucování této skupiny definic zásad.
-   - Přiřadil: Automaticky se vyplní podle toho, kdo je přihlášený. Toto pole je volitelné, takže do něj můžete zadat vlastní hodnoty.
+   - Přiřadil: Automaticky vyplní podle toho, který je přihlášen. Toto pole je volitelné, takže do něj můžete zadávat vlastní hodnoty.
 
 1. Políčko **Vytvořit spravovanou identitu** ponechte nezaškrtnuté. Toto políčko _musí_ být vráceny, pokud obsahuje zásady nebo iniciativa přiřazení zásad s [deployIfNotExists](../concepts/effects.md#deployifnotexists) vliv. Jak zásady používané pro účely tohoto kurzu není, ponechte prázdné. Další informace najdete v tématech věnovaných [spravovaným identitám](../../../active-directory/managed-identities-azure-resources/overview.md) a [principu fungování zabezpečení náprav](../how-to/remediate-resources.md#how-remediation-security-works).
 
@@ -408,15 +408,15 @@ V následujícím příkladu je v jedné skupině prostředků povolená jakáko
 
 Nasazení brání přiřazené zásady nebo iniciativa si můžou prohlédnout ve dvou umístěních:
 
-- Ve skupině prostředků. cílem nasazení: vyberte **nasazení** v levé části stránky klikněte a klikněte na kartu **název nasazení** selhání nasazení. U zamítnutého prostředku je uvedený stav _Zakázáno_. Pokud chcete určit zásadu nebo iniciativu a přiřazení, které prostředek zamítlo, klikněte na **Selhání. Podrobnosti zobrazíte kliknutím sem ->** na stránce Přehled nasazení. Na pravé straně stránky se otevře okno s informacemi o chybě. V části **podrobnosti o chybě** jsou identifikátory GUID objektů souvisejících zásad.
+- Cílem nasazení skupiny prostředků: Vyberte **nasazení** v levé části stránky klikněte a klikněte na kartu **název nasazení** selhání nasazení. U zamítnutého prostředku je uvedený stav _Zakázáno_. Pokud chcete určit zásadu nebo iniciativu a přiřazení, které prostředek zamítlo, klikněte na **Selhání. Podrobnosti zobrazíte kliknutím sem ->** na stránce Přehled nasazení. Na pravé straně stránky se otevře okno s informacemi o chybě. V části **podrobnosti o chybě** jsou identifikátory GUID objektů souvisejících zásad.
 
   ![Nasazení zamítnuté přiřazením zásady](../media/create-and-manage/rg-deployment-denied.png)
 
-- Na stránce služby Azure Policy. Na levé straně stránky vyberte **Dodržování předpisů** a klikněte na zásadu **Vyžadovat SQL Server verze 12.0**. Na stránce, která se otevře, se zobrazí zvýšení počtu **Zamítnutí**. V části **události** kartu, také uvidíte, kteří se pokusili nasazení, který byl odepřen v zásadách.
+- Na stránce Azure Policy: Vyberte **dodržování předpisů** v levé části stránky a klikněte na kartu **vyžadovat SQL Server verze 12.0** zásad. Na stránce, která se otevře, se zobrazí zvýšení počtu **Zamítnutí**. V části **události** kartu, také uvidíte, kteří se pokusili nasazení, který byl odepřen v zásadách.
 
   ![Přehled dodržování předpisů přiřazené zásady](../media/create-and-manage/compliance-overview.png)
 
-V tomto příkladu požadovanou práci prováděl Trent Baker, jeden z hlavních odborníků na virtualizaci ve společnosti Contoso. Budeme muset udělit Trent výjimku, ale nechceme systémy SQL Server verze 12.0 v právě libovolné skupině prostředků. Vytvořili jsme novou skupinu prostředků **SQLServers_Excluded** a teď jí udělíme výjimku pro toto přiřazení zásady.
+V tomto příkladu dělal Trent Svoboda, jeden hlavní virtualizace odborníků společnosti Contoso, požadovanou práci. Budeme muset udělit Trent výjimku, ale nechceme systémy SQL Server verze 12.0 v právě libovolné skupině prostředků. Vytvořili jsme novou skupinu prostředků **SQLServers_Excluded** a teď jí udělíme výjimku pro toto přiřazení zásady.
 
 ### <a name="update-assignment-with-exclusion"></a>Aktualizace přiřazení o vyloučení
 

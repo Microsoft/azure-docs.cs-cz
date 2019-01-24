@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/11/2019
 ms.author: kraigb
-ms.openlocfilehash: 110ba7f13b2a0d44277c881d67f0c794c8658cd1
-ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
+ms.openlocfilehash: dcee7df0b5da53bd7014a26f1f09695fe874833d
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/12/2019
-ms.locfileid: "54244576"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54849650"
 ---
 # <a name="tutorial-create-and-run-a-jupyter-notebook-with-python"></a>Kurz: vytvoření a spuštění poznámkového bloku Jupyter s využitím Pythonu
 
@@ -128,7 +128,7 @@ Připraveno datový soubor a nastavení prostředí projektu můžete teď vytvo
 1. Vzhledem k tomu, že máte *souboru requirements.txt* soubor v nastavení prostředí se zobrazí zpráva "časový limit na kontejnerech dokončete připravuje." Můžete vybrat **OK** zavřete zprávu a pokračovat v práci v poznámkovém bloku; nelze spustit buňky kódu, ale dokud je plně nastavení prostředí.
 1. Poznámkový blok se otevře v rozhraní Jupyter s buňky jeden prázdný kód jako výchozí.
 
-    [![](media/tutorial/tutorial-new-notebook.png "Počáteční zobrazení nového poznámkového bloku v poznámkových bloků Azure")](media/tutorial/tutorial-new-notebook.png#lightbox)
+    [![Počáteční zobrazení nového poznámkového bloku v poznámkových bloků Azure](media/tutorial/tutorial-new-notebook.png)](media/tutorial/tutorial-new-notebook.png#lightbox)
 
 ## <a name="tour-the-notebook-interface"></a>Přehled rozhraní poznámkového bloku
 
@@ -144,7 +144,7 @@ Nabídka (C) A s příkazy pro práci s poznámkového bloku.
 (F) ukazatelem toho, jestli je důvěryhodný Poznámkový blok (výchozí hodnota je **není důvěryhodné**).
 (G) jádru používá ke spouštění spolu s indikátorem aktivity poznámkového bloku.
 
-[![](media/tutorial/tutorial-notebook-ui.png "Primární oblasti uživatelského rozhraní Jupyter")](media/tutorial/tutorial-notebook-ui.png#lightbox)
+[![Primární oblasti uživatelského rozhraní Jupyter](media/tutorial/tutorial-notebook-ui.png)](media/tutorial/tutorial-notebook-ui.png#lightbox)
 
 Jupyter poskytuje integrované si základní prvky uživatelského rozhraní. Spusťte prohlídku kliknutím na položku **pomáhají** > **uživatelské rozhraní Tour** příkazu a klikání automaticky otevíraná okna.
 

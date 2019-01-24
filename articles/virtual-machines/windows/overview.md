@@ -16,12 +16,12 @@ ms.topic: get-started-article
 ms.date: 10/04/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 0db867b31776f19aa3fef28f1e8b5c8798ff958a
-ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
+ms.openlocfilehash: bc9907930283e07ef8df826d2e7653b96f116518
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/19/2019
-ms.locfileid: "54410541"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54852044"
 ---
 # <a name="overview-of-windows-virtual-machines-in-azure"></a>Přehled virtuálních počítačů s Windows v Azure
 
@@ -63,7 +63,7 @@ Tato tabulka ukazuje několik způsobů, jak můžete získat seznam dostupných
 | portál Azure |Při vytváření virtuálního počítače vyberte umístění ze seznamu. |
 | Azure PowerShell |Použijte příkaz [Get-AzureRmLocation](/powershell/module/azurerm.resources/get-azurermlocation). |
 | REST API |Použijte operaci [Vypsat umístění](https://docs.microsoft.com/rest/api/resources/subscriptions#Subscriptions_ListLocations). |
-| Azure CLI |Použijte operaci [az account list-locations](https://docs.microsoft.com/cli/azure/account?view=azure-cli-latest#az_account_list_locations). |
+| Azure CLI |Použijte operaci [az account list-locations](https://docs.microsoft.com/cli/azure/account?view=azure-cli-latest). |
 
 ### <a name="vm-size"></a>Velikost virtuálního počítače
 [Velikost](sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) virtuálního počítače, který použijete, se určuje podle úlohy, kterou chcete spustit. Velikost, kterou vyberete, pak určuje další faktory, jako například výpočetní výkon, paměť a kapacitu úložiště. Azure nabízí širokou škálu velikostí, které podporují mnoho typů použití.

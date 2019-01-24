@@ -1,10 +1,10 @@
 ---
-title: 'Kurz: Integrace Azure Active Directory se službou GaggleAMP | Dokumentace Microsoftu'
+title: 'Kurz: Integrace Azure Active Directory s GaggleAMP | Dokumentace Microsoftu'
 description: Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a GaggleAMP.
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.assetid: 9cc1a4b7-964b-406b-9e0c-05cb1a7c9856
 ms.service: active-directory
 ms.component: saas-app-tutorial
@@ -14,14 +14,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/06/2018
 ms.author: jeedes
-ms.openlocfilehash: 828dd1e1dcef900a7105143088f6782032b4f22e
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: fdec0ecf829bbceddd0dd2c876b5fdff9986c358
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39436508"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54826186"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-gaggleamp"></a>Kurz: Integrace Azure Active Directory se službou GaggleAMP
+# <a name="tutorial-azure-active-directory-integration-with-gaggleamp"></a>Kurz: Integrace Azure Active Directory s GaggleAMP
 
 V tomto kurzu se dozvíte, jak integrovat GaggleAMP s Azure Active Directory (Azure AD).
 
@@ -37,7 +37,7 @@ Pokud chcete zjistit další podrobnosti o integraci aplikací SaaS v Azure AD, 
 
 Konfigurace integrace Azure AD s GaggleAMP, potřebujete následující položky:
 
-- S předplatným služby Azure AD
+- Předplatné Azure AD
 - GaggleAMP jednotného přihlašování povolená předplatného
 
 > [!NOTE]
@@ -59,7 +59,7 @@ Konfigurace integrace GaggleAMP do služby Azure AD, budete muset přidat Gaggle
 
 **Chcete-li přidat GaggleAMP z galerie, postupujte následovně:**
 
-1. V  **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu. 
+1. V **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu. 
 
     ![Active Directory][1]
 
@@ -224,7 +224,7 @@ Cílem této části je testování konfigurace jednotného přihlašování k A
 
 Po kliknutí na dlaždici GaggleAMP na přístupovém panelu, vám by měl získat automaticky přihlášení k aplikaci GaggleAMP.
 
-## <a name="additional-resources"></a>Další zdroje informací:
+## <a name="additional-resources"></a>Další materiály
 
 * [Seznam kurzů o integraci aplikací SaaS pomocí Azure Active Directory](tutorial-list.md)
 * [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](../manage-apps/what-is-single-sign-on.md)

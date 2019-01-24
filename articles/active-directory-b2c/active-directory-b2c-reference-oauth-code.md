@@ -3,21 +3,21 @@ title: Tok autorizačního kódu v Azure Active Directory B2C | Dokumentace Micr
 description: Naučte se vytvářet webové aplikace pomocí Azure AD B2C a OpenID Connect ověřovací protokol.
 services: active-directory-b2c
 author: davidmu1
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 11/30/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: c6d976869f2a068c393a643bb97cae2f7ac1a470
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 17409bc763c89ac7898ee4533ecec90613f48674
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52843185"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54846043"
 ---
-# <a name="azure-active-directory-b2c-oauth-20-authorization-code-flow"></a>Azure Active Directory B2C: Tok autorizačního kódu OAuth 2.0
+# <a name="azure-active-directory-b2c-oauth-20-authorization-code-flow"></a>Azure Active Directory B2C: Tok kódu při autorizaci OAuth 2.0
 Udělení autorizačního kódu OAuth 2.0 můžete použít v aplikacích, které jsou nainstalované v zařízení získat přístup k chráněným prostředkům, jako je například webové rozhraní API. Pomocí Azure Active Directory B2C (Azure AD B2C) provádění OAuth 2.0, můžete přidat registrace, přihlašování a identity management. Další úkoly do vašich mobilních a desktopových aplikací. Tento článek je nezávislým na jazyku. V následujícím článku zjistíte, jak posílat a přijímat zprávy HTTP bez použití jakékoli knihovny open-source.
 
 Tok autorizačního kódu OAuth 2.0 je popsaný v [části 4.1 specifikace OAuth 2.0](https://tools.ietf.org/html/rfc6749). Můžete ho použít pro ověřování a autorizace ve většině [typy aplikací](active-directory-b2c-apps.md), včetně webových aplikací a nativně nainstalovaných aplikací. Tok autorizačního kódu OAuth 2.0 můžete použít k zabezpečenému získat přístupové tokeny a obnovovacích tokenů pro vaše aplikace, které je možné použít pro přístup k prostředkům, které jsou zabezpečené pomocí [autorizační server](active-directory-b2c-reference-protocols.md).  Obnovovací token umožňuje klientovi získat přístup k nové (a aktualizace) tokeny po vypršení platnosti přístupového tokenu, obvykle po jedné hodině.
@@ -130,7 +130,7 @@ grant_type=authorization_code&client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6&sco
 | --- | --- | --- |
 | p |Požaduje se |Tok uživatele, který byl použitý k získání autorizačního kódu. V této žádosti nelze použít tok jiný uživatel. Všimněte si, že přidáte tento parametr *řetězec dotazu*, ne v textu POST. |
 | client_id |Požaduje se |ID aplikace přiřazené vaší aplikaci v [webu Azure portal](https://portal.azure.com). |
-| Parametr grant_type |Požaduje se |Typ udělení. Tok autorizačního kódu, musí být typ udělení `authorization_code`. |
+| grant_type |Požaduje se |Typ udělení. Tok autorizačního kódu, musí být typ udělení `authorization_code`. |
 | scope |Doporučené |Seznam oborů oddělených mezerami. Hodnota jeden obor značí do služby Azure AD i oprávnění, které jsou požadovány. Pomocí ID klienta jako obor Určuje, že vaše aplikace potřebuje přístupový token, dá se použít pro vlastní služba nebo webové rozhraní API, reprezentovaný stejné ID klienta.  `offline_access` Obor Určuje, že vaše aplikace potřebuje obnovovací token pro dlouhodobé přístup k prostředkům.  Můžete také použít `openid` oboru k vyžádání tokenu ID z Azure AD B2C. |
 | kód |Požaduje se |Autorizační kód, který jste získali v první fáze toku. |
 | redirect_uri |Požaduje se |Identifikátor URI pro přesměrování aplikace, kterou jste dostali autorizační kód. |
@@ -194,8 +194,8 @@ grant_type=refresh_token&client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6&client_s
 | --- | --- | --- |
 | p |Požaduje se |Tok uživatele, který byl použitý k získání původní token obnovení. V této žádosti nelze použít tok jiný uživatel. Všimněte si, že přidáte tento parametr *řetězec dotazu*, ne v textu POST. |
 | client_id |Požaduje se |ID aplikace přiřazené vaší aplikaci v [webu Azure portal](https://portal.azure.com). |
-| Hodnota client_secret |Požaduje se |Hodnota client_secret přidružené k vaší client_id v [webu Azure portal](https://portal.azure.com). |
-| Parametr grant_type |Požaduje se |Typ udělení. Pro tuto větev tok autorizačního kódu musí být typ udělení `refresh_token`. |
+| client_secret |Požaduje se |Hodnota client_secret přidružené k vaší client_id v [webu Azure portal](https://portal.azure.com). |
+| grant_type |Požaduje se |Typ udělení. Pro tuto větev tok autorizačního kódu musí být typ udělení `refresh_token`. |
 | scope |Doporučené |Seznam oborů oddělených mezerami. Hodnota jeden obor značí do služby Azure AD i oprávnění, které jsou požadovány. Pomocí ID klienta jako obor Určuje, že vaše aplikace potřebuje přístupový token, dá se použít pro vlastní služba nebo webové rozhraní API, reprezentovaný stejné ID klienta.  `offline_access` Obor Určuje, že vaše aplikace bude potřebovat obnovovací token pro dlouhodobé přístup k prostředkům.  Můžete také použít `openid` oboru k vyžádání tokenu ID z Azure AD B2C. |
 | redirect_uri |Nepovinné |Identifikátor URI pro přesměrování aplikace, kterou jste dostali autorizační kód. |
 | refresh_token |Požaduje se |Původní token obnovení, kterou jste získali v druhé fáze toku. |

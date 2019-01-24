@@ -14,14 +14,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/09/2017
 ms.author: juliako;mingfeiy
-ms.openlocfilehash: 531b90b905df8549846c6027fe547521d16cf082
-ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
+ms.openlocfilehash: 0c16369cca4fae89733ad281aa3332c393be2aff
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/06/2018
-ms.locfileid: "37868496"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54828413"
 ---
-# <a name="dynamic-encryption-configure-a-content-key-authorization-policy"></a>Dynamické šifrování: Nakonfigurujte zásady autorizace klíče obsahu
+# <a name="dynamic-encryption-configure-a-content-key-authorization-policy"></a>Dynamické šifrování: Konfigurace zásad autorizace klíče obsahu
 [!INCLUDE [media-services-selector-content-key-auth-policy](../../../includes/media-services-selector-content-key-auth-policy.md)]
 
 ## <a name="overview"></a>Přehled
@@ -31,7 +31,7 @@ Služba Media Services také poskytuje služba doručování klíčů/licencí z
 
 Pokud chcete Media Services k šifrování assetu, musíte přidružit šifrovacího klíče (CommonEncryption nebo EnvelopeEncryption) assetu. Další informace najdete v tématu [vytvoření klíčů ContentKeys s využitím .NET](media-services-dotnet-create-contentkey.md). Musíte také nakonfigurovat zásady autorizace pro klíč (jak je popsáno v tomto článku).
 
-Datový proud je žádost přehrávač, využívá Media Services se zadaným klíčem k dynamické šifrování obsahu pomocí šifrování AES a DRM. K dešifrování datového proudu, přehrávače požádá službu doručování klíčů klíč. Pokud chcete zjistit, zda je uživatel oprávnění k získání klíče, služba vyhodnocuje zásady autorizace, které jste zadali pro klíč.
+Datový proud je žádost přehrávač, využívá Media Services se zadaným klíčem k dynamické šifrování obsahu pomocí šifrování AES a DRM. K dešifrování streamu si přehrávač vyžádá klíč ze služby doručování klíčů. Pokud chcete zjistit, zda je uživatel oprávnění k získání klíče, služba vyhodnocuje zásady autorizace, které jste zadali pro klíč.
 
 Služba Media Services podporuje více způsobů ověřování uživatelů, kteří žádají o klíč. Zásady autorizace klíče obsahu může mít jednu nebo více omezení autorizace. Možnosti jsou otevřené nebo s tokenem omezení. Zásady omezení tokenem musí být doplněny tokenem vydaným službou tokenů zabezpečení (STS). Služba Media Services podporuje tokeny ve jednoduchý webový token ([SWT](https://msdn.microsoft.com/library/gg185950.aspx#BKMK_2)) formát a webových tokenů JSON ([JWT](https://msdn.microsoft.com/library/gg185950.aspx#BKMK_3)) formát.
 
@@ -88,7 +88,7 @@ Následující příklad vytvoří zásadu autorizace otevřít a přidá jej do
 
         policy.Options.Add(policyOption);
 
-        // Add ContentKeyAutorizationPolicy to ContentKey
+        // Add ContentKeyAuthorizationPolicy to ContentKey
         contentKey.AuthorizationPolicyId = policy.Id;
         IContentKey updatedKey = contentKey.UpdateAsync().Result;
         Console.WriteLine("Adding Key to Asset: Key ID is " + updatedKey.Id);
@@ -185,7 +185,7 @@ Následující příklad vytvoří zásadu autorizace se omezení s tokenem. V t
 
         policy.Options.Add(policyOption);
 
-        // Add ContentKeyAutorizationPolicy to ContentKey
+        // Add ContentKeyAuthorizationPolicy to ContentKey
         contentKey.AuthorizationPolicyId = policy.Id;
         IContentKey updatedKey = contentKey.UpdateAsync().Result;
         Console.WriteLine("Adding Key to Asset: Key ID is " + updatedKey.Id);
@@ -315,7 +315,7 @@ Konfigurace omezení s tokenem možnost, budete muset použít XML pro popis tok
 
         policy.Options.Add(policyOption);
 
-        // Add ContentKeyAutorizationPolicy to ContentKey
+        // Add ContentKeyAuthorizationPolicy to ContentKey
         contentKeyAuthorizationPolicy.Options.Add(policyOption);
 
         // Associate the content key authorization policy with the content key

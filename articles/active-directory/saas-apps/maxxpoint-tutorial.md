@@ -1,10 +1,10 @@
 ---
-title: 'Kurz: Integrace Azure Active Directory se službou MaxxPoint | Dokumentace Microsoftu'
+title: 'Kurz: Integrace Azure Active Directory s MaxxPoint | Dokumentace Microsoftu'
 description: Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a MaxxPoint.
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.assetid: 15ba026e-96fc-4ae8-b135-0169da810e99
 ms.service: active-directory
 ms.component: saas-app-tutorial
@@ -14,14 +14,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/13/2017
 ms.author: jeedes
-ms.openlocfilehash: ca10db225947fbd98b8d5919cdaa371710b0ce46
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: b4cf7c8388b0a5a278298fff274ba49d542bae36
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39442662"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54806959"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-maxxpoint"></a>Kurz: Integrace Azure Active Directory se službou MaxxPoint
+# <a name="tutorial-azure-active-directory-integration-with-maxxpoint"></a>Kurz: Integrace Azure Active Directory s MaxxPoint
 
 V tomto kurzu se dozvíte, jak integrovat MaxxPoint s Azure Active Directory (Azure AD).
 
@@ -37,7 +37,7 @@ Pokud chcete zjistit další podrobnosti o integraci aplikací SaaS v Azure AD, 
 
 Konfigurace integrace Azure AD s MaxxPoint, potřebujete následující položky:
 
-- S předplatným služby Azure AD
+- Předplatné Azure AD
 - MaxxPoint jednotného přihlašování povolená předplatného
 
 > [!NOTE]
@@ -60,7 +60,7 @@ Konfigurace integrace MaxxPoint do služby Azure AD, budete muset přidat MaxxPo
 
 **Chcete-li přidat MaxxPoint z galerie, postupujte následovně:**
 
-1. V  **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu. 
+1. V **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu. 
 
     ![Active Directory][1]
 
@@ -135,7 +135,7 @@ V této části Povolení služby Azure AD jednotného přihlašování na port�
 1. Chcete-li získat jednotné přihlašování nakonfigurované pro vaši aplikaci, zavolejte MaxxPoint tým podpory na **888-728-0950** a budete vám dál pomůžou o tom, jak je zadat na stažený **soubor XML s metadaty** souboru. 
 
 > [!TIP]
-> Teď si můžete přečíst stručné verzi těchto pokynů uvnitř [webu Azure portal](https://portal.azure.com), zatímco jsou nastavení aplikace!  Po přidání této aplikace z **služby Active Directory > podnikové aplikace** jednoduše klikněte na tlačítko **Single Sign-On** kartu a přístup k vložené dokumentaci prostřednictvím  **Konfigurace** oblast v dolní části. Další informace o funkci vložená dokumentace: [dokumentace ke službě Azure AD embedded]( https://go.microsoft.com/fwlink/?linkid=845985)
+> Teď si můžete přečíst stručné verzi těchto pokynů uvnitř [webu Azure portal](https://portal.azure.com), zatímco jsou nastavení aplikace!  Po přidání této aplikace z **služby Active Directory > podnikové aplikace** jednoduše klikněte na tlačítko **Single Sign-On** kartu a přístup k vložené dokumentaci prostřednictvím  **Konfigurace** oblast v dolní části. Další informace o funkci vložená dokumentace: [Dokumentace ke službě Azure AD, embedded]( https://go.microsoft.com/fwlink/?linkid=845985)
 
 ### <a name="creating-an-azure-ad-test-user"></a>Vytváří se testovací uživatele služby Azure AD
 Cílem této části je vytvoření zkušebního uživatele na webu Azure Portal volá Britta Simon.
@@ -209,7 +209,7 @@ V této části Testování služby Azure AD jednotné přihlašování – konf
 Po kliknutí na dlaždici MaxxPoint na přístupovém panelu, vám by měl získat automaticky přihlášení k aplikaci MaxxPoint.
 
 
-## <a name="additional-resources"></a>Další zdroje informací:
+## <a name="additional-resources"></a>Další materiály
 
 * [Seznam kurzů o integraci aplikací SaaS pomocí Azure Active Directory](tutorial-list.md)
 * [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](../manage-apps/what-is-single-sign-on.md)

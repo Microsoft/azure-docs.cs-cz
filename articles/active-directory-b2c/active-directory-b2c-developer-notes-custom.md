@@ -3,19 +3,19 @@ title: Poznámky pro vývojáře o použití vlastních zásad v Azure Active Di
 description: Poznámky pro vývojáře na konfiguraci a správu Azure AD B2C s vlastními zásadami.
 services: active-directory-b2c
 author: davidmu1
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 10/13/2017
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: ea884f6fecc1e8a0de1f6a0f8a4daafcdf612e9f
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: e0a3a295350fc75915cd839d4ac0da8e03866907
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53272694"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54844972"
 ---
 # <a name="release-notes-for-azure-active-directory-b2c-custom-policy-public-preview"></a>Zpráva k vydání verze pro verzi public preview pro Azure Active Directory B2C vlastních zásad
 Funkce sadu vlastních zásad je nyní k dispozici pro vyhodnocování v rámci verze public preview pro všechny Azure Active Directory B2C (Azure AD B2C) zákazníkům. Tato sada funkcí je cílena na vývojáře identity pokročilé vytváření nejsložitější řešení identit.  
@@ -64,10 +64,10 @@ Rozhraní s externí komponenty a aplikace
 
 | Funkce | Vývoj | Preview | GA | Poznámky |
 |---------------------------------------------|-------------|---------|----|-------|
-| Zprostředkovatel identity OpenIDConnect |  | x |  | například Google + |
-| ZPROSTŘEDKOVATEL IDENTITY OAUTH2 |  | x |  | například Facebook  |
-| ZPROSTŘEDKOVATEL IDENTITY OAUTH1 |  | x |  | například na Twitteru |
-| SAML ZPROSTŘEDKOVATELE IDENTITY |  | x |  | například Salesforce, služby AD FS |
+| IDP-OpenIDConnect |  | x |  | například Google + |
+| IDP-OAUTH2 |  | x |  | například Facebook  |
+| IDP-OAUTH1 |  | x |  | například na Twitteru |
+| IDP-SAML |  | x |  | například Salesforce, služby AD FS |
 | IDP-WSFED | x |  |  |  |
 | Předávající strany OAUTH |  | x |  |  |
 | Předávající strany OIDC |  | x |  |  |
@@ -134,7 +134,7 @@ Rozhraní s externí komponenty a aplikace
 | Funkce | Vývoj | Preview | GA | Poznámky |
 |---------------------------------------------|-------------|---------|----|-------|
 | Azure Portal IEF uživatelského prostředí |  | x |  |  |
-| Application Insights UserJourney protokoly  |  | x |  |  |
+| Application Insights UserJourney Logs  |  | x |  |  |
 | Protokoly událostí Application Insights |x|  |  |  |
 
 

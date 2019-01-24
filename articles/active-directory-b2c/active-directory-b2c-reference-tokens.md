@@ -3,21 +3,21 @@ title: Token odkaz v Azure Active Directory B2C | Dokumentace Microsoftu
 description: Typy tokenů vydaných v Azure Active Directory B2C
 services: active-directory-b2c
 author: davidmu1
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 11/30/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: d1c9101f10342f98803a4ace420abbed5d49ba23
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: 47cfd5820c80a0f53772f5424f674603acdaf18d
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52880110"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54848933"
 ---
-# <a name="azure-ad-b2c-token-reference"></a>Azure AD B2C: Referenci tokenu
+# <a name="azure-ad-b2c-token-reference"></a>Azure AD B2C: Referenční informace o tokenech
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
@@ -138,9 +138,9 @@ Popis toho, jak provádět ověření podpisu je mimo rámec tohoto dokumentu. �
 ### <a name="validate-the-claims"></a>Ověřit deklarace identity
 Když svou aplikaci nebo API obdrží ID token, má také provést několik kontrol před deklarací identity v tokenu ID. Ty zahrnují, ale nejsou omezené na:
 
-* **Cílovou skupinu** deklarace identity: ověří, že ID token měla předávat do aplikace.
-* **Není před** a **čas vypršení platnosti** deklarací identity: tyto ověřte, že nevypršela platnost tokenu ID.
-* **Vystavitele** deklarace identity: ověří, že byl token vydán do vaší aplikace pomocí Azure AD.
+* **Cílovou skupinu** deklarace identity: Ověří, že ID token měla předávat do aplikace.
+* **Není před** a **čas vypršení platnosti** deklarací identity: Tyto ověřte, že nevypršela platnost tokenu ID.
+* **Vystavitele** deklarace identity: Ověří, zda byl token vydán do vaší aplikace pomocí Azure AD.
 * **Nonce**: Toto je strategii omezení rizik útoků opětovného přehrání tokenu.
 
 Úplný seznam ověření by měla aplikace provádět, najdete [OpenID Connect specifikace](https://openid.net). Podrobnosti o očekávané hodnoty pro tyto deklarace jsou zahrnuty v předchozím [token části](#types-of-tokens).  

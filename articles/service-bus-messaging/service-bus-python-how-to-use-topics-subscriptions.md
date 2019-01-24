@@ -3,9 +3,9 @@ title: Jak používat témata služby Azure Service Bus pomocí Pythonu | Dokume
 description: Další informace o použití Azure Service Bus, témat a odběrů z Pythonu.
 services: service-bus-messaging
 documentationcenter: python
-author: spelluru
+author: axisc
 manager: timlt
-editor: ''
+editor: spelluru
 ms.assetid: c4f1d76c-7567-4b33-9193-3788f82934e4
 ms.service: service-bus-messaging
 ms.workload: na
@@ -13,13 +13,13 @@ ms.tgt_pltfrm: na
 ms.devlang: python
 ms.topic: article
 ms.date: 09/20/2018
-ms.author: spelluru
-ms.openlocfilehash: ba95eb7742af611cc3365fdb07b75c785ba42681
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.author: aschhab
+ms.openlocfilehash: 280901c4b7af9cc65163ebc453a54fb7ec5d5111
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47406885"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54849392"
 ---
 # <a name="how-to-use-service-bus-topics-and-subscriptions-with-python"></a>Jak používat témata a odběry Service Bus pomocí Pythonu
 

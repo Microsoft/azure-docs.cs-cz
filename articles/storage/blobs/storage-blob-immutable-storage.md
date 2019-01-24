@@ -5,15 +5,15 @@ services: storage
 author: xyh1
 ms.service: storage
 ms.topic: article
-ms.date: 11/05/2018
+ms.date: 01/21/2019
 ms.author: hux
 ms.component: blobs
-ms.openlocfilehash: 53c719fbeb31d605bd9dff170a798b262d44698a
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.openlocfilehash: f3a67c2eddba2b7bd734237466243da8f43a862a
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53634265"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54848644"
 ---
 # <a name="store-business-critical-data-in-azure-blob-storage"></a>Store důležitých podnikových dat ve službě Azure Blob storage
 
@@ -197,7 +197,7 @@ Ano. Při prvním vytvoření zásady uchovávání informací podle času je *o
 
 **Je tato funkce dostupná v národních cloudech a cloudech pro státní správu?**
 
-Neměnné úložiště je aktuálně dostupná jenom v oblastech Azure. Pokud vás zajímají konkrétní národních cloudů, e-mailu azurestoragefeedback@microsoft.com.
+Neměnné storage je dostupné v oblastech Azure veřejné, Číny a vládního. Pokud neměnné úložiště není k dispozici ve vaší oblasti, e-mailu azurestoragefeedback@microsoft.com.
 
 ## <a name="sample-powershell-code"></a>Ukázkový kód Powershellu
 

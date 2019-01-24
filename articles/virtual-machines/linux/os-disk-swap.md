@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/24/2018
 ms.author: cynthn
-ms.openlocfilehash: 983c2e6d03735ba26f7660fc07dcf1a05ef88189
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 291bcec5a2a3d1ed2d49816b0ed7317bcfb07995
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46960392"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54851852"
 ---
 # <a name="change-the-os-disk-used-by-an-azure-vm-using-the-cli"></a>Změnit disk s operačním systémem používané Virtuálním počítači Azure pomocí rozhraní příkazového řádku
 
@@ -34,7 +34,7 @@ Ujistěte se, že typ velikosti a úložiště virtuálního počítače jsou ko
 Tento článek vyžaduje použití Azure CLI verze 2.0.25 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI]( /cli/azure/install-azure-cli). 
 
 
-Použití [az disk list](/cli/azure/disk#list) k získání seznamu disků ve vaší skupině prostředků.
+Použití [az disk list](/cli/azure/disk) k získání seznamu disků ve vaší skupině prostředků.
 
 ```azurecli-interactive
 az disk list \

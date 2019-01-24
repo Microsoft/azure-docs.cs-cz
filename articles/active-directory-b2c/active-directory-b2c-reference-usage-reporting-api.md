@@ -3,19 +3,19 @@ title: Ukázky rozhraní API vytváření sestav využití a definice v Azure Ac
 description: Příručka a ukázky na získání sestavy v tenantovi Azure AD B2C, uživatelů, ověřování a ověřování službou Multi-Factor Authentication.
 services: active-directory-b2c
 author: davidmu1
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.topic: conceptual
 ms.workload: identity
 ms.date: 08/04/2017
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 544b0618f9135b684846c42bb7edeb37cf599883
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: cce6d71864d1c3e957937e374e90ee95a99e9f3c
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37445530"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54844353"
 ---
 # <a name="accessing-usage-reports-in-azure-ad-b2c-via-the-reporting-api"></a>Přístup k použití sestav v Azure AD B2C prostřednictvím rozhraní API pro generování sestav
 
@@ -97,18 +97,18 @@ if ($oauth.access_token -ne $null) {
 
 
 ## <a name="usage-report-definitions"></a>Definice sestav využití
-* **tenantUserCount**: počet uživatelů v tenantovi typem zprostředkovatele identity, každý den za posledních 30 dní. (Volitelně můžete `TimeStamp` filtr poskytuje počty uživatelů od zadaného data na aktuální datum). Tato sestava poskytuje:
-  * **TotalUserCount**: počet všech objektů uživatelů.
-  * **OtherUserCount**: počet uživatelů Azure Active Directory (nikoli uživatele Azure AD B2C).
-  * **LocalUserCount**: počet uživatelských účtů Azure AD B2C vytvořené pomocí přihlašovacích údajů místního do tenanta Azure AD B2C.
+* **tenantUserCount**: Počet uživatelů v tenantovi typem zprostředkovatele identity, každý den za posledních 30 dní. (Volitelně můžete `TimeStamp` filtr poskytuje počty uživatelů od zadaného data na aktuální datum). Tato sestava poskytuje:
+  * **TotalUserCount**: Počet všech objektů uživatelů.
+  * **OtherUserCount**: Počet uživatelů Azure Active Directory (nikoli uživatele Azure AD B2C).
+  * **LocalUserCount**: Počet Azure AD B2C uživatelské účty vytvořené pomocí přihlašovacích údajů místního do tenanta Azure AD B2C.
 
-* **AlternateIdUserCount**: počet uživatelů Azure AD B2C zaregistrovaného externích zprostředkovatelů identity (například Facebook, účet Microsoft nebo jiného tenanta Azure Active Directory, také nazývané `OrgId`).
+* **AlternateIdUserCount**: Počet uživatelů Azure AD B2C zaregistrovaného externích zprostředkovatelů identity (například Facebook, účet Microsoft nebo jiného tenanta Azure Active Directory, také nazývané `OrgId`).
 
-* **b2cAuthenticationCountSummary**: Souhrn denní počet účtovaných ověření za posledních 30 dní, den a typu tok ověřování.
+* **b2cAuthenticationCountSummary**: Shrnutí denních počet účtovaných ověření za posledních 30 dní, den a typu tok ověřování.
 
-* **b2cAuthenticationCount**: počet ověření v časovém období. Výchozí hodnota je v posledních 30 dnech.  (Volitelné: na začátek a konec `TimeStamp` definovat parametry za určité časové období.) Výstup obsahuje `StartTimeStamp` (nejstarší data aktivity pro tohoto tenanta) a `EndTimeStamp` (nejnovější aktualizace).
+* **b2cAuthenticationCount**: Počet ověření v časovém období. Výchozí hodnota je v posledních 30 dnech.  (Volitelné: Na začátek a konec `TimeStamp` definovat parametry za určité časové období.) Výstup obsahuje `StartTimeStamp` (nejstarší data aktivity pro tohoto tenanta) a `EndTimeStamp` (nejnovější aktualizace).
 
-* **b2cMfaRequestCountSummary**: Souhrn dennímu počtu ověřování službou Multi-Factor Authentication, den a typ (SMS nebo hlasových).
+* **b2cMfaRequestCountSummary**: Souhrn denního počtu ověřování službou Multi-Factor Authentication, den a typ (SMS nebo hlasových).
 
 
 ## <a name="limitations"></a>Omezení

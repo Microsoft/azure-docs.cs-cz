@@ -4,7 +4,7 @@ description: Vytvoření certifikátem protokolu secure LDAP pro Azure AD Domain
 services: active-directory-ds
 documentationcenter: ''
 author: eringreenlee
-manager: mtillman
+manager: daveba
 editor: curtand
 ms.assetid: c6da94b6-4328-4230-801a-4b646055d4d7
 ms.service: active-directory
@@ -15,20 +15,20 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 08/01/2017
 ms.author: ergreenl
-ms.openlocfilehash: a97b16451392ce0e84eb7b49a6fc71fb03adab12
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.openlocfilehash: d7fbfda9249f8276feed13204e8d6b1062fe2672
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50157288"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54846349"
 ---
 # <a name="create-a-pfx-file-with-the-secure-ldap-ldaps-certificate-for-a-managed-domain"></a>Vytvoření. Soubor PFX s certifikátem zabezpečeného protokolu LDAP (LDAPS) pro spravovanou doménu
 
-## <a name="before-you-begin"></a>Než začnete
+## <a name="before-you-begin"></a>Před zahájením
 Kompletní [úkol 1: získání certifikátu pro protokol secure LDAP](active-directory-ds-admin-guide-configure-secure-ldap.md).
 
 
-## <a name="task-2-export-the-secure-ldap-certificate-to-a-pfx-file"></a>Úloha 2: Export certifikát protokolu secure LDAP pro. Soubor PFX
+## <a name="task-2-export-the-secure-ldap-certificate-to-a-pfx-file"></a>Úloha 2: Exportujte certifikát protokolu secure LDAP pro. Soubor PFX
 Předtím, než se pustíte do této úlohy, získat certifikát protokolu secure LDAP od veřejné certifikační autority nebo vytvořit certifikát podepsaný svým držitelem.
 
 Export certifikátu protokolu LDAPS pro. Soubor PFX:

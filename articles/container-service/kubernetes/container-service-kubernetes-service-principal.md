@@ -9,12 +9,12 @@ ms.topic: get-started-article
 ms.date: 02/26/2018
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: 53bb09824a88980a171fa4067a9efd2fc067a898
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: da4fda3d0cfa6cb33d2dd8bb3bb844f18654c30a
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52992163"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54851891"
 ---
 # <a name="deprecated-set-up-an-azure-ad-service-principal-for-a-kubernetes-cluster-in-container-service"></a>(NEPOUŽÍVANÉ) Nastavení instančního objektu služby Azure AD pro cluster Kubernetes ve službě Container Service
 
@@ -33,17 +33,17 @@ Tento článek ukazuje různé možnosti nastavení instančního objektu pro cl
 
 Můžete vytvořit existující instanční objekt služby Azure AD splňující následující požadavky nebo můžete vytvořit nový.
 
-* **Obor:** Skupina prostředků
+* **Obor**: Skupina prostředků
 
-* **Role:** Přispěvatel
+* **Role**: Přispěvatel
 
-* **Tajný klíč klienta:** Musí to být heslo. V současné době nemůžete použít instanční objekt nastavený pro ověření certifikátu.
+* **Tajný kód klienta**: Musí to být heslo. V současné době nemůžete použít instanční objekt nastavený pro ověření certifikátu.
 
 > [!IMPORTANT]
 > Abyste mohli vytvořit instanční objekt, musíte mít oprávnění k registraci aplikace v tenantu Azure AD a přiřazení aplikace k roli v předplatném. Pokud chcete zjistit, jestli máte požadovaná oprávnění, [podívejte se na portál](../../active-directory/develop/howto-create-service-principal-portal.md#required-permissions).
 >
 
-## <a name="option-1-create-a-service-principal-in-azure-ad"></a>Možnost 1: Vytvoření instančního objektu v Azure AD
+## <a name="option-1-create-a-service-principal-in-azure-ad"></a>Option 1: Vytvoření instančního objektu ve službě Azure AD
 
 Pokud chcete instanční objekt služby Azure AD vytvořit před nasazením clusteru Kubernetes, Azure k tomu nabízí několik metod.
 
@@ -97,7 +97,7 @@ Následující příklad ukazuje jeden ze způsobů předání parametrů pomoc�
     ```
 
 
-## <a name="option-2-generate-a-service-principal-when-creating-the-cluster-with-az-acs-create"></a>Možnost 2: Vygenerování instančního objektu při vytváření clusteru pomocí příkazu `az acs create`
+## <a name="option-2-generate-a-service-principal-when-creating-the-cluster-with-az-acs-create"></a>Option 2: Vygenerování instančního objektu při vytváření clusteru pomocí `az acs create`
 
 Pokud vytváříte cluster Kubernetes spuštěním příkazu [`az acs create`](/cli/azure/acs#az-acs-create), máte možnost instanční objekt vygenerovat automaticky.
 
@@ -149,7 +149,7 @@ Výstup (zkrácené zobrazení):
 ...
 ```
 
-Pokud vypršela platnost přihlašovacích údajů instančního objektu, použijte příkaz [az ad sp reset-credentials](/cli/azure/ad/sp#az-ad-sp-reset-credentials), abyste přihlašovací údaje aktualizovali:
+Pokud vypršela platnost přihlašovacích údajů instančního objektu, použijte příkaz [az ad sp reset-credentials](/cli/azure/ad/sp), abyste přihlašovací údaje aktualizovali:
 
 ```azurecli
 az ad sp reset-credentials --name <appId>

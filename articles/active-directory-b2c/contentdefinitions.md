@@ -3,19 +3,19 @@ title: ContentDefinitions – Azure Active Directory B2C | Dokumentace Microsoft
 description: Zadejte element ContentDefinitions vlastní zásady v Azure Active Directory B2C.
 services: active-directory-b2c
 author: davidmu1
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 09/10/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: f51b058b14525cc5a4af312696330a3a39ea44e1
-ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
+ms.openlocfilehash: 1fa5688b5895ed7418161234f6af06fecace631c
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44381229"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54849375"
 ---
 # <a name="contentdefinitions"></a>ContentDefinitions
 
@@ -61,7 +61,7 @@ Metadata **LocalAccountSignUpWithLogonEmail** držitelem s prohlašovanou techni
 
 **ContentDefinition** prvek obsahuje následující atribut:
 
-| Atribut | Požaduje se | Popis |
+| Atribut | Požadováno | Popis |
 | --------- | -------- | ----------- |
 | ID | Ano | Identifikátor pro definici obsahu. Hodnotu zadanou v **obsahu definice ID** dále v této stránce. |
 
@@ -71,11 +71,11 @@ Metadata **LocalAccountSignUpWithLogonEmail** držitelem s prohlašovanou techni
 | ------- | ----------- | ----------- |
 | LoadUri | 1:1 | Řetězec, který obsahuje adresu URL stránky HTML5 pro definici obsahu. |
 | RecoveryUri | 0:1 | Řetězec, který obsahuje adresu URL stránky HTML k chybě týkající se obsahu definice zobrazení. | 
-| Parametr | 1:1 | Řetězec, který obsahuje relativní adresu URL souboru HTML, který poskytuje uživatelské prostředí, která se má vyvolat pro krok. |  
+| DataUri | 1:1 | Řetězec, který obsahuje relativní adresu URL souboru HTML, který poskytuje uživatelské prostředí, která se má vyvolat pro krok. |  
 | Metadata | 1:1 | Kolekce dvojic klíč/hodnota, která obsahuje metadata využívaných definici obsahu. | 
 | LocalizedResourcesReferences | 0:1 | Kolekce odkazů na lokalizované prostředky. Tento element slouží k přizpůsobení lokalizace uživatelského rozhraní a deklarace atributu. |
 
-### <a name="datauri"></a>Parametr
+### <a name="datauri"></a>DataUri
 
 **Parametr** element slouží k určení identifikátoru stránky. Azure AD B2C používá identifikátor stránky pro načtení a zahájit prvky uživatelského rozhraní a JavaScript na straně klienta. Formát hodnoty je `urn:com:microsoft:aad:b2c:elements:page-name:version`.  V následující tabulce jsou uvedeny identifikátorů stránky, která vám pomůže.
 
@@ -99,7 +99,7 @@ Metadata **LocalAccountSignUpWithLogonEmail** držitelem s prohlašovanou techni
 
 **LocalizedResourcesReferences** prvek obsahuje následující atributy:
 
-| Atribut | Požaduje se | Popis |
+| Atribut | Požadováno | Popis |
 | --------- | -------- | ----------- |
 | Jazyk | Ano | Řetězec, který obsahuje podporovaný jazyk pro zásady souladu s RFC 5646 – značky pro identifikaci jazyků. |
 | LocalizedResourcesReferenceId | Ano | Identifikátor **LocalizedResources** elementu. |
@@ -144,11 +144,11 @@ Atribut ID **ContentDefinition** prvek určuje typ stránky, která má vztah k 
 | ID | Výchozí šablona | Popis | 
 | -- | ---------------- | ----------- |
 | **api.error** | [exception.cshtml](https://login.microsoftonline.com/static/tenant/default/exception.cshtml) | **Chybová stránka** – zobrazí chybu stránku při výjimce nebo dojde k chybě. |
-| **API.idpselections** | [idpSelector.cshtml](https://login.microsoftonline.com/static/tenant/default/idpSelector.cshtml) | **Stránka výběru zprostředkovatele identit** -obsahuje seznam zprostředkovatelů identity, které uživatelé můžou vybírat při přihlašování. Možnosti jsou obvykle enterprise zprostředkovatelů identity, zprostředkovatelé sociálních identit, jako je Facebook a Google + nebo místním účtům. |
+| **api.idpselections** | [idpSelector.cshtml](https://login.microsoftonline.com/static/tenant/default/idpSelector.cshtml) | **Stránka výběru zprostředkovatele identit** -obsahuje seznam zprostředkovatelů identity, které uživatelé můžou vybírat při přihlašování. Možnosti jsou obvykle enterprise zprostředkovatelů identity, zprostředkovatelé sociálních identit, jako je Facebook a Google + nebo místním účtům. |
 | **api.idpselections.signup** | [idpSelector.cshtml](https://login.microsoftonline.com/static/tenant/default/idpSelector.cshtml) | **Výběr zprostředkovatele identity pro registraci** -obsahuje seznam zprostředkovatelů identity, které uživatelé můžou vybírat při registraci. Možnosti jsou obvykle enterprise zprostředkovatelů identity, zprostředkovatelé sociálních identit, jako je Facebook a Google + nebo místním účtům. |
 | **api.localaccountpasswordreset** | [selfasserted.html](https://login.microsoftonline.com/static/tenant/default/selfAsserted.cshtml) | **Stránka zapomenuté heslo** – zobrazí formulář, který uživatelé musí dokončit k zahájení resetování hesla. |
-| **API.localaccountsignin** | [selfasserted.html](https://login.microsoftonline.com/static/tenant/default/selfAsserted.cshtml) | **Místní účet přihlašovací stránku** – zobrazí formulář pro přihlašování pomocí místní účet, který je založen na e-mailovou adresu nebo jméno uživatele. Formulář může obsahovat pole textového zadání a pole pro zadání hesla. |
-| **API.localaccountsignup** | [selfasserted.html](https://login.microsoftonline.com/static/tenant/default/selfAsserted.cshtml) | **Stránku pro přihlášení místním účtem** – zobrazí formulář pro registraci místního účtu, který je založen na e-mailovou adresu nebo jméno uživatele. Formulář může obsahovat různé vstupní ovládací prvky, jako například: textový vstup pole, pole pro zadání hesla, přepínací tlačítko, rozevírací seznamy výběru jednoho a víc zaškrtněte políčka. |
+| **api.localaccountsignin** | [selfasserted.html](https://login.microsoftonline.com/static/tenant/default/selfAsserted.cshtml) | **Místní účet přihlašovací stránku** – zobrazí formulář pro přihlašování pomocí místní účet, který je založen na e-mailovou adresu nebo jméno uživatele. Formulář může obsahovat pole textového zadání a pole pro zadání hesla. |
+| **api.localaccountsignup** | [selfasserted.html](https://login.microsoftonline.com/static/tenant/default/selfAsserted.cshtml) | **Stránku pro přihlášení místním účtem** – zobrazí formulář pro registraci místního účtu, který je založen na e-mailovou adresu nebo jméno uživatele. Formulář může obsahovat různé vstupní ovládací prvky, jako například: textový vstup pole, pole pro zadání hesla, přepínací tlačítko, rozevírací seznamy výběru jednoho a víc zaškrtněte políčka. |
 | **api.phonefactor** | [multifactor-1.0.0.cshtml](https://login.microsoftonline.com/static/tenant/default/multifactor-1.0.0.cshtml) | **Stránka služby Multi-Factor authentication** -ověří telefonní čísla pomocí textových nebo hlasových během registrace nebo přihlášení. |
 | **api.selfasserted** | [selfasserted.html](https://login.microsoftonline.com/static/tenant/default/selfAsserted.cshtml) | **Stránka registrace sociálního účtu** – zobrazí formulář, který uživatelé musí dokončit při registraci pomocí existující účet od poskytovatele identity v sociálních sítích. Tato stránka je podobný jako předchozí účtu na sociální síti registrační stránku, s výjimkou pole pro zadání hesla. |
 | **api.selfasserted.profileupdate** | [updateprofile.html](https://login.microsoftonline.com/static/tenant/default/updateProfile.cshtml) | **Stránka pro aktualizaci profilu** – zobrazí formulář, který mohou uživatelé aktualizovat svůj profil. Tato stránka je podobný na přihlašovací stránku, s výjimkou pole pro zadání hesla účtu na sociální síti. |

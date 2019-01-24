@@ -3,7 +3,7 @@ title: Sestavy rizikových přihlášení na portálu Azure Active Directory | D
 description: Informace o sestavách rizikových přihlášení na portálu Azure Active Directory
 services: active-directory
 author: priyamohanram
-manager: mtillman
+manager: daveba
 ms.assetid: 7728fcd7-3dd5-4b99-a0e4-949c69788c0f
 ms.service: active-directory
 ms.devlang: na
@@ -14,12 +14,12 @@ ms.component: report-monitor
 ms.date: 11/13/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 8e92288883a7779130e3b7f7a8433b61f76aa18c
-ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
+ms.openlocfilehash: 402aae15ae4fe8e6961fbc76a4ddaa470b8c797a
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/12/2019
-ms.locfileid: "54244711"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54807758"
 ---
 # <a name="risky-sign-ins-report-in-the-azure-active-directory-portal"></a>Sestavy rizikových přihlášení na portálu Azure Active Directory
 
@@ -61,9 +61,9 @@ Všechny edice Azure AD poskytují sestavy rizikových přihlášení. Úroveň 
 
 Edice free a basic služby Azure AD poskytují seznam rizikových přihlášení, které byly zjištěny pro vaše uživatele. Každý záznam obsahuje následující atributy:
 
-- **Uživatel** – Jméno uživatele použité během přihlašovací operace
-- **IP** – IP adresa zařízení použitá pro připojení k Azure Active Directory
-- **Umístění** – Umístění použité pro připojení k Azure Active Directory
+- **Uživatel** – jméno uživatele použité během přihlašovací operace.
+- **IP** – IP adresa zařízení, která byla použita pro připojení k Azure Active Directory.
+- **Umístění** – umístění použité pro připojení ke službě Azure Active Directory. Toto je nejlepší aproximace úsilí na základě trasování, klíče registru, zpětného vyhledávání a další informace.
 - **Čas přihlášení** – Čas, kdy k přihlášení došlo
 - **Stav** – Stav přihlášení
 
@@ -106,6 +106,9 @@ Při výběru rizikové události získáte zobrazení podrobné sestavy pro tut
 - Ruční zavření rizikové události. 
 
 ![Riziková přihlášení](./media/concept-risky-sign-ins/457.png)
+
+> [!IMPORTANT]
+> V některých případech může být pro vás rizikové události bez odpovídající přihlášení záznam v [sestavy přihlášení](concept-sign-ins.md). Důvodem je, že Identity Protection vyhodnocuje riziko pro obě **interaktivní** a **neinteraktivní** přihlášení, zatímco v sestavě přihlášení se zobrazí pouze interaktivní přihlášení.
 
 Po výběru uživatele získáte podrobné zobrazení sestavy pro tohoto uživatele, které vám umožňuje:
 

@@ -8,15 +8,17 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 03/21/2017
-ms.openlocfilehash: 30ad0c5ee069df4cd58cb76b779f611d0272d571
-ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
+ms.openlocfilehash: 0f8d6290e779872d73b0cf7a9d0d820d2ea5e007
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53741585"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54848151"
 ---
 # <a name="os-patching-for-hdinsight"></a>Opravy operačního systému pro HDInsight 
-Spravovaná služba, Apache Hadoop HDInsight postará o opravy OS základních virtuálních počítačů, které jsou používané clustery HDInsight. Od 1. srpna 2016 jsme změnili zásady použití dílčích oprav operačního systému hosta clusterech HDInsight založených na Linuxu (verze 3.4). Cílem nové zásady je výrazně snížil počet restartování z důvodu opravy. Nová zásada bude nadále opravu virtuálních počítačů (VM) na clusterech s Linuxem každé pondělí a čtvrtek, od 00: 00 UTC postupný způsobem napříč uzly v jakémkoliv daného clusteru. Libovolný daný virtuální počítač se restartuje však pouze maximálně jednou za 30 dnů z důvodu opravy hostovaného operačního systému. Kromě toho první restartování pro nově vytvořený cluster se neprovede dřív než 30 dní od data vytvoření clusteru. Opravy začnou platit, až se virtuální počítače se restartují.
+
+> [!IMPORTANT]
+> K dispozici pro vytvoření nového clusteru HDInsight 3 měsících publikování Image Ubuntu. Od ledna 2019 spuštěné clustery jsou **není** automaticky opravit. Zákazníkům musíte použít akce skriptů nebo jiných mechanismů o opravu spuštěný cluster.
 
 ## <a name="how-to-configure-the-os-patching-schedule-for-linux-based-hdinsight-clusters"></a>Jak nakonfigurovat plán pro clustery HDInsight založené na Linuxu oprav operačního systému
 Virtuální počítače v clusteru služby HDInsight je potřeba restartovat příležitostně tak, že je možné nainstalovat důležité opravy. Od 1. srpna 2016 se restartují nových clusterů HDInsight založených na Linuxu (verze 3.4,), pomocí následujícího plánu:

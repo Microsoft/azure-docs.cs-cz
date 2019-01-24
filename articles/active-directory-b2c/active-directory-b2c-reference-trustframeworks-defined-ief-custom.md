@@ -3,19 +3,19 @@ title: Reference – důvěryhodnosti architektury v Azure Active Directory B2C 
 description: Téma o vlastní zásady pro Azure Active Directory B2C a architekturu rozhraní identit.
 services: active-directory-b2c
 author: davidmu1
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 08/04/2017
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 00d2f37068c5bedb17ba9a4064d1f5058f5ab72c
-ms.sourcegitcommit: bf522c6af890984e8b7bd7d633208cb88f62a841
+ms.openlocfilehash: 694d463c158f8c8beb0396edf22ac749c03e9e97
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39185774"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54845686"
 ---
 # <a name="define-trust-frameworks-with-azure-ad-b2c-identity-experience-framework"></a>Definice architektury důvěryhodnosti s architekturu rozhraní identit Azure AD B2C
 
@@ -52,10 +52,10 @@ TFs jsou linchpins modelu rozhraní Framework důvěřovat otevřít Identity Ex
 - **Popis digitálních informací o identitě, který má nabízí/vyžadováno účastníci**.
 
 - **Technické zásady pro produkci a využití digitálních identit a proto pro měření Symbolů a LOP. Tyto zásady písemné obvykle zahrnují následující kategorie zásad:**
-    - Identita kontroly pravopisu zásady, třeba: *jak důrazně se informace o identitě osoby prověřeny?*
-    - Zásady zabezpečení, například: *jak důrazně jsou informace integritu a důvěrnost chráněných?*
-    - Zásady ochrany osobních údajů, například: *jaké ovládacího prvku uživatel nemá přes osobní identifikovatelné údaje (PII)*?
-    - Přežití zásad, například: *zprostředkovatele přestane operace, jak funguje kontinuity podnikových procesů a ochranu funkce identifikovatelné osobní údaje?*
+    - Identita kontroly pravopisu zásady, třeba: *Jak důrazně se informace o identitě osoby prověřeny?*
+    - Zásady zabezpečení, například: *Jak důrazně jsou chráněné informace integrity a důvěrnosti?*
+    - Zásady ochrany osobních údajů, například: *Jaké ovládacího prvku uživatel nemá přes osobní identifikovatelné údaje (PII)*?
+    - Přežití zásady, například: *Pokud zprostředkovatele přestane operace, jak funguje kontinuity podnikových procesů a ochranu funkce identifikovatelné osobní údaje?*
 
 - **Technické profily pro produkci a využití digitálních identit. Tyto profily zahrnují:**
     - Obor rozhraní, pro které je k dispozici na zadané Symbolů digitální identity informace.

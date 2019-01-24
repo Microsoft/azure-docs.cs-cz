@@ -3,19 +3,19 @@ title: Datum deklaraci příklady transformaci identita prostředí Framework sc
 description: Datum deklaraci příklady transformaci identita prostředí Framework schéma z Azure Active Directory B2C.
 services: active-directory-b2c
 author: davidmu1
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 09/10/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: ac7cc404998fed6897de1bed4b6bd31fca43e820
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: 6a49e940c988d25da1e6f6a3c6f372e15fd2136f
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49405816"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54850055"
 ---
 # <a name="date-claims-transformations"></a>Datum deklarace identity transformace
 
@@ -37,7 +37,7 @@ Kontroluje, že jeden datum a čas deklarace identity (datový typ string) je po
 
 **AssertDateTimeIsGreaterThan** transformaci deklarací identity je vždy spuštěn z [technický profil ověření](validation-technical-profile.md) , který je volán [držitelem s prohlašovanou technický profil](self-asserted-technical-profile.md). **DateTimeGreaterThan** technického profilu s vlastním potvrzením určuje chybovou zprávu, která se uživateli zobrazí technický profil.
 
-![Spuštění AssertStringClaimsAreEqual](./media/date-transformations/assert-execution.png)
+![AssertStringClaimsAreEqual execution](./media/date-transformations/assert-execution.png)
 
 Následující příklad porovnává `currentDateTime` deklarace identity s `approvedDateTime` deklarací identity. Pokud je vyvolána chyba `currentDateTime` je pozdější než `approvedDateTime`. Transformace považuje za hodnoty rovny, pokud jsou v rámci rozdíl (30000 milisekund) 5 minut.
 

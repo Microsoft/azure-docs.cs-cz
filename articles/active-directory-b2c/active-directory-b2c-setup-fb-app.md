@@ -3,19 +3,19 @@ title: Nastavení registrace a přihlášení pomocí účtu sítě Facebook pom
 description: Zaregistrujte se a přihlaste se poskytují zákazníkům s účty služby Facebook ve svých aplikacích pomocí služby Azure Active Directory B2C.
 services: active-directory-b2c
 author: davidmu1
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 09/11/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 183afaeb40b90de078a44f4677dd0218b8d86ba8
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: 855b43c39ac8bc3a1b6bb818a9770897e983c2ea
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53968976"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54843595"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-a-facebook-account-using-azure-active-directory-b2c"></a>Nastavení registrace a přihlášení pomocí účtu sítě Facebook pomocí Azure Active Directory B2C
 

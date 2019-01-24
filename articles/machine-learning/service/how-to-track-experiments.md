@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: article
 ms.date: 12/04/2018
 ms.custom: seodec18
-ms.openlocfilehash: c45023a462a5c01dfde806d7abbb9714aaf09b85
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: 99b3a65feb232526cffecac4fec68d56fcd16ccb
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53189468"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54846281"
 ---
 # <a name="track-experiments-and-training-metrics-in-azure-machine-learning"></a>Sledujte experimenty a vzdělávání metriky ve službě Azure Machine Learning
 
@@ -60,7 +60,7 @@ Před přidáním protokolování a odeslání experimentu, musíte nastavit pra
                resource_group = <<resource_group>>)
    ```
   
-## <a name="option-1-use-startlogging"></a>Možnost 1: Použití start_logging
+## <a name="option-1-use-startlogging"></a>Option 1: Použití start_logging
 
 **start_logging** vytvoří interaktivní spuštění pro použití ve scénářích, jako je například poznámkových bloků. Všechny metriky, které jsou zaznamenány během relace jsou přidány do běhu záznam v experimentu.
 
@@ -122,16 +122,16 @@ Následující příklad trénovat jednoduchý model skriptu sklearn Ridge míst
 
 Skript končí ```run.complete()```, spustit označí jako dokončenou.  Tato funkce se obvykle používá ve scénářích interaktivní poznámkového bloku.
 
-## <a name="option-2-use-scriptrunconfig"></a>Možnost 2: Použití ScriptRunConfig
+## <a name="option-2-use-scriptrunconfig"></a>Option 2: Použití ScriptRunConfig
 
 **ScriptRunConfig** je třída pro nastavení konfigurace pro skript spustí. Pomocí této možnosti přidáte kód monitorování, abyste dostávali oznámení o dokončení nebo chcete-li získat vizuální pomůcky pro monitorování.
 
 Tento příklad rozšiřuje základní model skriptu sklearn Ridge výše. Provádí jednoduché parametr parametrů k vyčištění přes alfa hodnoty modelu, který má zachytávat metriky a trénované modely ve spuštění v rámci testu. V příkladu spustí místně prostředí spravované uživatele. 
 
-1. Vytvoření trénovací skript. Tento kód používá ```%%writefile%%``` vypsat školení kódu do složky skriptu jako ```train.py```.
+1. Vytvoření trénovací skript `train.py`.
 
   ```python
-  %%writefile $project_folder/train.py
+  # train.py
 
   import os
   from sklearn.datasets import load_diabetes
@@ -182,10 +182,11 @@ Tento příklad rozšiřuje základní model skriptu sklearn Ridge výše. Prov�
   
   ```
 
-2. ```train.py``` Odkazy na skripty ```mylib.py```. Tento soubor umožňuje získat seznam hodnot alfa pro použití v modelu ridge.
+2. `train.py` Odkazy na skripty `mylib.py` který umožňuje získat seznam hodnot alfa pro použití v modelu ridge.
 
   ```python
-  %%writefile $script_folder/mylib.py
+  # mylib.py
+  
   import numpy as np
 
   def get_alphas():
@@ -216,7 +217,31 @@ Tento příklad rozšiřuje základní model skriptu sklearn Ridge výše. Prov�
   src = ScriptRunConfig(source_directory = './', script = 'train.py', run_config = run_config_user_managed)
   run = experiment.submit(src)
   ```
+
+## <a name="cancel-a-run"></a>Zrušit běh
+Odeslání hřívací zařízení spustit i v případě, že jste ztratili odkazu na objekt, za předpokladu, které znáte název experimentu a id spuštění, můžete ho zrušit. 
+
+```python
+from azureml.core import Experiment
+exp = Experiment(ws, "my-experiment-name")
+
+# if you don't know the run id, you can list all runs under an experiment
+for r in exp.get_runs():  
+    print(r.id, r.get_status())
+
+# if you know the run id, you can "rehydrate" the run
+from azureml.core import get_run
+r = get_run(experiment=exp, run_id="my_run_id", rehydrate=True)
   
+# check the returned run type and status
+print(type(r), r.get_status())
+
+# you can only cancel a run if the status is Running
+if r.get_status() == 'Running':
+    r.cancel()
+```
+Všimněte si, že momentálně se podporuje jenom ScriptRun a PipelineRun typů podporuje operace zrušení.
+
 ## <a name="view-run-details"></a>Zobrazení podrobností o spuštění
 
 ### <a name="monitor-run-with-jupyter-notebook-widgets"></a>Monitorování spuštění pomocí widgetů poznámkového bloku Jupyter

@@ -11,12 +11,12 @@ ms.workload: ''
 ms.topic: article
 ms.date: 11/17/2018
 ms.author: juliako
-ms.openlocfilehash: 95d3f0aac4acdfbd70dcadd8db5c13456e83a7e7
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: 20aef7f971b4c4bf8dcff98c633aa0b0aa69811a
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53344308"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54828175"
 ---
 # <a name="analyzing-video-and-audio-files"></a>Analýza videosouborů a zvukových souborů
 
@@ -55,7 +55,7 @@ Přednastavení umožňuje extrahovat více audio a video přehledy z videosoubo
 * Moderování obsahu Visual – část videa, která jsou opatření příznakem jako pro dospělé nebo pikantního ze své podstaty
 * Poznámka – výsledek přidávání poznámek videa podle předem daného objektový model
 
-##  <a name="insightsjson-elements"></a>insights.JSON elementy
+##  <a name="insightsjson-elements"></a>insights.json elements
 
 Výstup obsahuje všechny informace, které byly nalezeny v video nebo zvuk soubor JSON (insights.json). Ve formátu json může obsahovat následující prvky:
 
@@ -148,10 +148,10 @@ Příklad:
 |jméno|Název vzhledu. Může být "Neznámý #0", identifikovaný celebrit nebo trénovaného osoba zákazníka.|
 |spolehlivosti|Identifikace spolehlivosti pro rozpoznávání tváře.|
 |description|Popis celebrity. |
-|thumbnalId|ID miniatury této pro rozpoznávání tváře.|
+|thumbnailId|ID miniatury této pro rozpoznávání tváře.|
 |knownPersonId|Pokud se jedná o známé osoba, jeho interní ID.|
 |referenceId|Pokud je celebrit Bing, jeho ID Bingu.|
-|Hodnota referenceType|Aktuálně jenom Bingu.|
+|referenceType|Aktuálně jenom Bingu.|
 |název|Pokud se jedná celebrit, jeho název (například "CEO společnosti Microsoft").|
 |imageUrl|Pokud se jedná celebrit jeho adresa url obrázku.|
 |instance|Toto jsou instance z kde zobrazovaly plochu v daném časovém rozsahu. Každá instance má také thumbnailsId. |
@@ -190,7 +190,7 @@ Příklad:
 |Název|Popis|
 |---|---|
 |id|Snímek ID.|
-|klíčové snímky|Seznam klíčových snímků v rámci snímku (každý má ID a seznam instancí časových rozsahů). Instance klíčové snímky mají thumbnailId pole s Miniatura na klíčový snímek ID.|
+|keyFrames|Seznam klíčových snímků v rámci snímku (každý má ID a seznam instancí časových rozsahů). Instance klíčové snímky mají thumbnailId pole s Miniatura na klíčový snímek ID.|
 |instance|Seznam časových rozsahů tento snímek (snímky mají jenom 1 instance).|
 
 ```json
@@ -260,7 +260,7 @@ Zabarvení se agregují podle jejich sentimentType pole (neutrální/kladné neb
 |Název|Popis|
 |---|---|
 |id|ID mínění.|
-|Průměr |Průměr všech skóre všech instancí tohoto typu mínění – pozitivní nebo neutrální nebo negativní|
+|averageScore |Průměr všech skóre všech instancí tohoto typu mínění – pozitivní nebo neutrální nebo negativní|
 |instance|Seznam časových rozsahů, ve kterém se objevil tento mínění.|
 |sentimentType |Typ může být "Pozitivní", 'Neutrální' nebo "Záporné".|
 

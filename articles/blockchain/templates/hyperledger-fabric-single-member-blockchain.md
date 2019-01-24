@@ -1,5 +1,5 @@
 ---
-title: Konsorcium Hyperledger Fabric
+title: Hyperledger Fabric Consortium jednoho člena
 description: Pomocí šablony řešení Hyperledger Fabric Consortium můžete nasadit a nakonfigurovat síť jednoho člena
 services: azure-blockchain
 keywords: ''
@@ -10,12 +10,12 @@ ms.topic: article
 ms.service: azure-blockchain
 ms.reviewer: coborn
 manager: femila
-ms.openlocfilehash: c08557156848d4e7fcf0b1adbe6c8faa4ee00c82
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+ms.openlocfilehash: a6aa6d925d47ad9d24de68342f4a6e76a1d9d81f
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50231368"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54828226"
 ---
 # <a name="hyperledger-fabric-single-member-network"></a>Síť Hyperledger Fabric jednoho člena
 
@@ -36,9 +36,9 @@ Tato šablona nasadí topologii pro testování a simulovat produkční prostře
 
 Síť se skládá ze tří typů uzlů:
 
-1. **Člen uzlu**: uzlu se systémem služby členství prostředků infrastruktury, která registruje a spravuje členy sítě. Tento uzel může být Clusterované pro zajištění škálovatelnosti a vysoké dostupnosti; Ale v tomto testovacím prostředí se dá použít uzlu jeden člen.
-2. **Uzly orderer**: uzlu se systémem komunikační služby implementace záruky doručení, jako je například celkový počet pořadí všesměrového vysílání nebo atomické transakce.
-3. **Navázání partnerského vztahu mezi uzly**: uzel, který potvrdí transakce a udržuje stav a kopie distribuované účetní knihy.
+1. **Člen uzlu**: Uzlu se systémem služby členství prostředků infrastruktury, která registruje a spravuje členy sítě. Tento uzel může být Clusterované pro zajištění škálovatelnosti a vysoké dostupnosti; Ale v tomto testovacím prostředí se dá použít uzlu jeden člen.
+2. **Uzly orderer**: Uzel komunikační službou implementace záruky doručení, jako je například celkový pořadí vysílání nebo atomické transakce.
+3. **Navázání partnerského vztahu mezi uzly**: Uzel, který potvrdí transakce a udržuje stav a kopie distribuované účetní knihy.
 
 ## <a name="getting-started"></a>Začínáme
 
@@ -59,7 +59,7 @@ Jakmile budete mít předplatné, přejděte [webu Azure portal](https://portal.
 
 Pokud chcete začít, vyberte **Hyperledger Fabric jeden člen Blockchain** a klikněte na tlačítko **vytvořit** otevřete **Základy** okno v průvodci.
 
-Šablona nasazení vás provede procesem konfigurace sítě více uzly. Tok nasazení je rozdělené do tří kroků: Základy konfigurace sítě a konfigurace prostředků infrastruktury.
+Šablona nasazení vás provede procesem konfigurace sítě více uzly. Tok nasazení je rozdělené do tří kroků: Základní informace o konfiguraci sítě a konfigurace prostředků infrastruktury.
 
 ### <a name="basics"></a>Základy
 
@@ -90,9 +90,9 @@ Název parametru| Popis| Povolené hodnoty|Výchozí hodnota
 ---|---|---|---
 **Počet uzlů členství**|Počet uzlů, na kterých běží služby členství. Další podrobnosti o službě členství, podívejte se na zabezpečení a členství služby v rámci Hyperledger [dokumentaci](https://media.readthedocs.org/pdf/hyperledger-fabric/latest/hyperledger-fabric.pdf).<br /><br />Tato hodnota je momentálně omezené jenom na 1 uzel, ale plánujeme podporují horizontální navýšení kapacity pomocí clusteringu v příští revize.|1| 1
 **Počet uzlů Orderer** |Počet uzlů, které pořadí (organizace) transakce do bloku.--> to je příkaz rozvláčný a chaoticky. Další podrobnosti o řazení služby, najdete Hyperledger [dokumentaci](https://hyperledger-fabric.readthedocs.io/en/release-1.1/ordering-service-faq.html).<br /><br />Tato hodnota je momentálně omezené jenom na 1 uzel. |1 |1
-**Počet partnerské uzly**| Uzly, které jsou vlastněny consortium členy, které provádějí transakce a Udržovat stav a kopii hlavní knihy.<br /><br />Další podrobnosti o řazení služby, najdete Hyperledger [dokumentaci](https://hyperledger-fabric.readthedocs.io/en/latest/glossary.html).|3| 3 – 9
+**Počet partnerské uzly**| Uzly, které jsou vlastněny consortium členy, které provádějí transakce a Udržovat stav a kopii hlavní knihy.<br /><br />Další podrobnosti o řazení služby, najdete Hyperledger [dokumentaci](https://hyperledger-fabric.readthedocs.io/en/latest/glossary.html).|3| 3 - 9
 **Výkon úložiště**|Typ úložiště, zálohování, každý z nasazených uzlů. Další informace o službě storage najdete v tématu [Úvod do Microsoft Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-introduction) a [Premium Storage](https://docs.microsoft.com/azure/virtual-machines/windows/premium-storage).|Úrovně Standard nebo Premium|Standard
-**Velikost virtuálního počítače** |Velikost virtuálního počítače použít pro všechny uzly v síti|Standardní A<br />Standardní D<br />Standardní D-v2<br />Standardní řada F<br />Standard DS<br />a Standard služby FS|Standardní D1_v2
+**Velikost virtuálního počítače** |Velikost virtuálního počítače použít pro všechny uzly v síti|Standardní A<br />Standardní D<br />Standardní D-v2<br />Standardní řada F<br />Standard DS<br />and Standard FS|Standard D1_v2
 
 ### <a name="fabric-specific-settings"></a>Nastavení prostředků infrastruktury
 
@@ -102,7 +102,7 @@ Nakonec v části **nastavení prostředků infrastruktury**, zadejte nastavení
 
 Název parametru| Popis| Povolené hodnoty|Výchozí hodnota
 ---|---|---|---
-**Spuštění uživatelského jména**| Počáteční autorizovaný uživatel, který se zaregistruje do služby člena v nasazené sítě.|9 nebo méně znaků|Správce
+**Spuštění uživatelského jména**| Počáteční autorizovaný uživatel, který se zaregistruje do služby člena v nasazené sítě.|9 nebo méně znaků|admin
 **Heslo uživatele Bootstrap pro prostředky infrastruktury certifikační Autority**|Heslo správce používá k zabezpečení účtu certifikační Autority infrastruktury importovat do uzlu členství.<br /><br />Heslo musí obsahovat jedno velké písmeno, jedno malé písmeno a jednu číslici.|12 znaků|Není k dispozici
 
 ### <a name="deploy"></a>Nasazení
@@ -137,7 +137,7 @@ Shrnutí nasazení, za nímž následuje tři užitečné výstupních parametr�
 - _PŘEDPONU_ , označované také jako _nasazení předponu_ , jednoznačně identifikuje vašich prostředků a nasazení. Použije se při použití nástroje příkazového řádku založené na.
 - _SSH k první virtuální počítač_ poskytuje vám předem sestavený příkaz "SSH" se všemi správné parametry požadované pro připojení k první virtuální počítač v síti. Pro Hyperledger Fabric bude uzel Fabric certifikační Autority.
 
-Můžete se vzdáleně připojit k virtuálním počítačům pro každý uzel přes protokol SSH s klíč správce zadané uživatelské jméno a heslo nebo SSH. Vzhledem k tomu, že virtuální počítače uzlů nemají vlastní veřejné IP adresy, je potřeba projít nástroje pro vyrovnávání zatížení a zadejte číslo portu. Příkaz SSH pro přístup k první uzel transakce je třetí výstup šablony ** SSH k první virtuální počítač (pro ukázkové nasazení: `sh -p 3000 azureuser@hlf2racpt.northeurope.cloudapp.azure.com`). Pokud chcete vrátit do transakce další uzly, zvyšovat číslo portu jednou (například první uzel transakce je na port 3000, druhá je na 3001, třetí je na 3002, atd.).
+Můžete se vzdáleně připojit k virtuálním počítačům pro každý uzel přes protokol SSH s klíč správce zadané uživatelské jméno a heslo nebo SSH. Vzhledem k tomu, že virtuální počítače uzlů nemají vlastní veřejné IP adresy, je potřeba projít nástroje pro vyrovnávání zatížení a zadejte číslo portu. Příkaz SSH pro přístup k první uzel transakce je třetí výstup šablony *SSH k první virtuální počítač* (pro ukázkové nasazení: `sh -p 3000 azureuser@hlf2racpt.northeurope.cloudapp.azure.com`). Pokud chcete vrátit do transakce další uzly, zvyšovat číslo portu jednou (například první uzel transakce je na port 3000, druhá je na 3001, třetí je na 3002, atd.).
 
 ## <a name="next-steps"></a>Další postup
 

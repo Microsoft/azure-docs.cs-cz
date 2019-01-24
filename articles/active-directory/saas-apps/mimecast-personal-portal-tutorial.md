@@ -4,7 +4,7 @@ description: Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.reviewer: barbkess
 ms.assetid: 345b22be-d87e-45a4-b4c0-70a67eaf9bfd
 ms.service: Azure-Active-Directory
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 12/24/2018
 ms.author: jeedes
-ms.openlocfilehash: dbc9b3f4d32dec44b695ef90f1dce4e88000b2b7
-ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
+ms.openlocfilehash: 24bd6fe29e05f84d78316d0bb3e8ffc0d25157f3
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/07/2019
-ms.locfileid: "54065660"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54828031"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-mimecast-personal-portal"></a>Kurz: Integrace Azure Active Directory s Mimecast osobní portálu
 
@@ -256,7 +256,7 @@ Budete muset zaregistrovat k doméně, než budete moct vytvořit uživatele.
 
 3. Klikněte na tlačítko **zaregistrovat novou doménu**.
    
-    ![Zaregistrujte novou doménu](./media/mimecast-personal-portal-tutorial/ic795004.png "zaregistrovat nové domény")
+    ![Register New Domain](./media/mimecast-personal-portal-tutorial/ic795004.png "Register New Domain")
 
 4. Po vytvoření nové domény, klikněte na tlačítko **novou adresu**.
    

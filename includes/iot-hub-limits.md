@@ -4,12 +4,12 @@ ms.service: iot-hub
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: dobett
-ms.openlocfilehash: 1807dc67d09b521e66314fb98535fb2c1225d34f
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
-ms.translationtype: HT
+ms.openlocfilehash: e1618ded270cddca13145195522d7b42a00d6585
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50964551"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54841402"
 ---
 Následující tabulka uvádí omezení spojená s různými úrovněmi služeb (S1, S2, S3, F1). Informace o nákladech na jednotlivé *jednotky* v každé úrovni najdete v tématu [Ceny služby IoT Hub](https://azure.microsoft.com/pricing/details/iot-hub/).
 
@@ -48,6 +48,8 @@ Následující tabulka uvádí omezení, která se vztahují na prostředky slu�
 | Maximální počet souběžných úloh | 10 (pro S3), 5 (pro S2), 1 (pro S1) |
 | Maximální počet dalších koncových bodů | 10 (pro S1, S2, S3) |
 | Maximální počet pravidel směrování zpráv | 100 (pro S1, S2, S3) |
+| Maximální počet současně připojených zařízení datových proudů | 50 (pro S1, S2, S3 a pouze F1) |
+| Přenos dat stream maximální zařízení | 300 MB za den (pro S1, S2, S3 a pouze F1) |
 
 
 > [!NOTE]
@@ -72,3 +74,4 @@ Služba IoT Hub omezuje žádosti při překročení následujících kvót:
 | Aktualizace dvojčat zařízení | 50/s/jednotku (pro S3), maximálně 10/s nebo 1/s/jednotku (pro S2), 10/s (pro S1) |
 | Operace úloh <br/> (vytvoření, aktualizace, výpis, odstranění) | (5 000/min/jednotku) (pro S3), 1.67/sec/unit 83.33/sec/Unit (100/min/jednotku) (pro S2), 1.67/sec/unit (100/min/jednotku) (pro S1) |
 | Propustnost operací úloh jednotlivých zařízení | 50/s/jednotku (pro S3), maximálně 10/s nebo 1/s/jednotku (pro S2), 10/s (pro S1) |
+| Rychlost zahájení streamování zařízení | 5 nových datových proudů za sekundu (pro S1, S2, S3 a pouze F1) |

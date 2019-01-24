@@ -3,7 +3,7 @@ title: Přidat místní aplikace – Proxy aplikace ve službě Azure Active Dir
 description: Azure Active Directory (Azure AD) obsahuje Proxy aplikace služby, který umožňuje uživatelům přistupovat k místním aplikacím, když se přihlásíte pomocí svého účtu Azure AD. V tomto kurzu se dozvíte, jak připravit prostředí pro použití se službou Proxy aplikací a potom pomocí webu Azure portal přidat místní aplikace do svého tenanta Azure AD.
 services: active-directory
 author: barbkess
-manager: daveba
+manager: mtillman
 ms.service: active-directory
 ms.component: app-mgmt
 ms.workload: identity
@@ -11,12 +11,12 @@ ms.topic: tutorial
 ms.date: 12/07/2018
 ms.author: barbkess
 ms.reviewer: japere
-ms.openlocfilehash: 0ea948760c7639f24031a0177df0d42f9706d006
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: ed275638c1b217f18d5d1335b9d039879ae55004
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54471208"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54846302"
 ---
 # <a name="tutorial-add-an-on-premises-application-for-remote-access-through-application-proxy-in-azure-active-directory"></a>Kurz: Přidat místní aplikace pro vzdálený přístup prostřednictvím Proxy aplikací v Azure Active Directory
 
@@ -181,6 +181,7 @@ Teď, když jste připravit vaše prostředí a nainstalujete konektor, jste př
     | **Časový limit pro back-endu aplikace** | Nastavte tuto hodnotu na **dlouhé** pouze v případě, že vaše aplikace se ověřili a připojili. |
     | **Použít soubor Cookie jenom pro protokol HTTP** | Nastavte tuto hodnotu na **Ano** Pokud chcete, aby Proxy aplikací služby soubory cookie, zahrňte příznak HTTPOnly v hlavičce odpovědi protokolu HTTP. Pokud pomocí služby Vzdálená plocha, nastavte tuto hodnotu na **ne**.|
     | **Použití zabezpečeného souboru Cookie**| Nastavte tuto hodnotu na **Ano** k přenosu přes zabezpečený kanál například požadavek HTTPS šifrované soubory cookie.
+    | **Použít trvalého souboru Cookie**| Ponechte tuto hodnotu nastavit na **ne**. Toto nastavení by měla sloužit pouze pro aplikace, které nelze sdílení souborů cookie mezi procesy. Další informace o nastavení souborů cookie najdete v části [nastavení souborů Cookie pro přístup k místním aplikacím v Azure Active Directory](https://docs.microsoft.com/en-us/azure/active-directory/manage-apps/application-proxy-configure-cookie-settings)
     | **Překládat adresy URL v hlavičkách** | Ponechte tuto hodnotu jako **Ano** Pokud vaše aplikace vyžaduje hlavičku původního hostitele v žádosti o ověření. |
     | **Překládat adresy URL v těle žádosti** | Ponechte tuto hodnotu jako **ne** Pokud nemáte pevně zakódované HTML odkazy na další místní aplikace a nebude se používat vlastní domény. Další informace najdete v tématu [propojit překlad textů pomocí Proxy aplikací](application-proxy-configure-hard-coded-link-translation.md).<br><br>Nastavte tuto hodnotu na **Ano** Pokud máte v plánu pro monitorování této aplikace s Microsoft Cloud App Security (MCAS). Další informace najdete v tématu [konfigurace aplikací v reálném čase přístup k monitorování pomocí Microsoft Cloud App Security a Azure Active Directory](application-proxy-integrate-with-microsoft-cloud-application-security.md) |
    

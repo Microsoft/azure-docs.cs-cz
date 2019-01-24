@@ -3,19 +3,19 @@ title: Vlastní zásady služby Azure Active Directory B2C | Dokumentace Microso
 description: Vývoj aplikací určených pomocí Azure Active Directory B2C pomocí vlastních zásad.
 services: active-directory-b2c
 author: davidmu1
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 5/06/2017
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 26469d735d7165e8b21665df6c169bc4668d8a5a
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: 25ee27b5abc086d123034b28c57c313713dbbe06
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37440514"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54843459"
 ---
 # <a name="sign-up-and-sign-in-consumers-in-your-applications-using-custom-policies-in-azure-active-directory-b2c"></a>Registrace a přihlašování uživatelů ve svých aplikacích pomocí vlastních zásad v Azure Active Directory B2C
 

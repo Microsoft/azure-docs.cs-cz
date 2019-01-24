@@ -3,21 +3,21 @@ title: Žádosti o tokeny přístupu v Azure Active Directory B2C | Dokumentace 
 description: Tento článek vám ukáže postup nastavení klienta aplikace a získání přístupového tokenu.
 services: active-directory-b2c
 author: davidmu1
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 08/09/2017
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 2043e0fc9fa63903073311856e7e8d31fb34c506
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: f3db56c7ce61960fca0e5347b2385bcc65a88354
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51015345"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54845142"
 ---
-# <a name="azure-ad-b2c-requesting-access-tokens"></a>Azure AD B2C: Žádosti o přístupové tokeny
+# <a name="azure-ad-b2c-requesting-access-tokens"></a>Azure AD B2C: Žádá se o přístupové tokeny.
 
 Přístupový token (označené jako **přístup\_token** v odpovědi z Azure AD B2C) je forma tokenu zabezpečení, který může klient používat pro přístup k prostředkům, které jsou zabezpečené pomocí [autorizační server](active-directory-b2c-reference-protocols.md), jako je například webové rozhraní API. Přístupové tokeny jsou reprezentovány ve formě [tokeny Jwt](active-directory-b2c-reference-tokens.md) a obsahují informace o serveru zamýšleného prostředku a udělená oprávnění k serveru. Při volání serveru prostředku, musí být přístupový token v požadavku HTTP.
 
@@ -105,8 +105,8 @@ Může vyžadovat další obory (oprávnění) pro určitý prostředek, než ja
 
 Standard OpenID Connect určuje několik hodnot speciální "rozsah". Následující speciální obory představují oprávnění "přistupovat k profilu uživatele":
 
-* **openid**: to vyžádá ID token
-* **offline\_přístup**: to žádá token aktualizace (pomocí [toku kódu autorizace](active-directory-b2c-reference-oauth-code.md)).
+* **openid**: To vyžaduje ID token
+* **offline\_access**: To vyžaduje obnovovací token (pomocí [toku kódu autorizace](active-directory-b2c-reference-oauth-code.md)).
 
 Pokud `response_type` parametr `/authorize` požadavek zahrnuje `token`, `scope` parametr musí obsahovat nejméně jeden prostředek oboru (jiné než `openid` a `offline_access`), která budou udělena. V opačném případě `/authorize` požadavek bude ukončena s chybou.
 

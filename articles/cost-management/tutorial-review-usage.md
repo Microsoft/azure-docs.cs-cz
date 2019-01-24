@@ -10,12 +10,12 @@ ms.topic: tutorial
 ms.service: cost-management
 ms.custom: seodec18
 manager: benshy
-ms.openlocfilehash: 928b8fd8ef076afa2c60c870fb705a9a682003d1
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: e96119abd4fc77c576fb65281c3f48b8263e020d
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53093603"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54849970"
 ---
 <!-- Intent: As a cloud-consuming user, I need to view usage and costs for my cloud resources and services.
 -->
@@ -89,19 +89,27 @@ Kliknutím na symbol plus vedle položky **List of Candidates** (Seznam kandidá
 
 Pokud chcete zhlédnout výukové video o zjišťování nedostatečné efektivity využití, podívejte se na video [Optimizing VM Size in Cloudyn](https://youtu.be/1xaZBNmV704) (Optimalizace velikosti virtuálního počítače v Cloudyn).
 
-Azure Cost Management poskytuje doporučení pro úsporu nákladů i pro služby Azure. Další informace najdete v [kurzu optimalizace nákladů na základě doporučení](tutorial-acm-opt-recommendations.md).
+Azure Cost Management poskytuje doporučení pro úsporu nákladů i pro služby Azure. Další informace najdete v tématu [kurzu: Optimalizace nákladů od doporučení](tutorial-acm-opt-recommendations.md).
 
 ## <a name="create-alerts-for-unusual-spending"></a>Vytváření upozornění na neobvyklé výdaje
 
-Ostatní účastníky můžete automaticky upozorňovat na anomálie ve výdajích a rizika nadměrných výdajů. Upozornění můžete snadno a rychle vytvořit pomocí sestav, které podporují upozornění na základě prahových hodnot rozpočtu a nákladů.
+Výstrahy umožňují automaticky zasílání oznámení účastníkům útraty anomálie a rizika nadměrných výdajů. Můžete vytvořit výstrah pomocí sestavy, že podporují výstrahy na základě rozpočtu a prahových hodnot nákladů.
 
-Upozornění na jakékoli výdaje můžete vytvořit pomocí kterékoli sestavy nákladů. V tomto příkladu budete pomocí sestavy Actual Cost Over Time (Skutečné náklady v průběhu času) upozorňovat na to, že se výdaje blíží k celkové výši rozpočtu. K vytvoření upozornění je potřeba provést všechny následující kroky. V nabídce v horní části portálu klikněte na **Costs** > **Cost Analysis** > **Actual Cost Over Time** (Náklady > Analýza nákladů > Skutečné náklady v průběhu času). U položky **Groups** (Skupiny) nastavte hodnotu **Service** (Služba) a u položky **Filter on the service** (Filtrovat podle služby) hodnotu **Azure/VM** (Azure / virtuální počítač). V pravé horní části sestavy klikněte na **Actions** (Akce) a potom vyberte **Schedule report** (Naplánovat sestavu).
+V tomto příkladu **Actual Cost Over Time** sestavy k odesílání oznámení, pokud vaší útraty na Virtuálním počítači Azure přiblíží celkový rozpočet. V tomto scénáři máte celkový rozpočet 20 000 a chcete dostávat oznámení, když náklady se začali přibližovat polovinu vašemu rozpočtu, 9 000 $ a další výstrahy po náklady na 10 000 USD.
 
-V okně Save or Schedule this report (Uložit nebo naplánovat tuto sestavu) na kartě **Scheduling** (Plánování) naplánujte, že se vám má sestava s požadovanou frekvencí zasílat e-mailem. Nezapomeňte vybrat možnost **Send via email** (Odeslat e-mailem). Součástí sestavy v e-mailu budou všechny značky, seskupení a filtry, které jste použili. Klikněte na kartu **Threshold** (Prahová hodnota) a vyberte **Actual Cost vs. Threshold** (Skutečné náklady vs. prahová hodnota). Pokud máte celkový rozpočet 20 000 USD a chcete dostat oznámení, když se náklady přiblíží polovině, vytvořte výstrahu **Red alert** (Červená výstraha) na částce 10 000 USD a výstrahu **Yellow alert** (Žlutá výstraha) na částce 9 000 USD. V zadávaných hodnotách nepoužívejte čárky. Potom vyberte počet po sobě jdoucích výstrah. Až dostanete celkový počet výstrah, který jste zadali, už vám žádné další výstrahy chodit nebudou. Uložte naplánovanou sestavu.
+1. V nabídce v horní části portálu Cloudyn, zvolte **náklady** > **Cost Analysis** > **Actual Cost Over Time**. 
+2. U položky **Groups** (Skupiny) nastavte hodnotu **Service** (Služba) a u položky **Filter on the service** (Filtrovat podle služby) hodnotu **Azure/VM** (Azure / virtuální počítač). 
+3. V horní části přímo ze sestavy, vyberte **akce** a pak vyberte **Naplánování sestavy**.
+4. Pošlete sami sobě e-mail sestavy v naplánovaných intervalech, vyberte **plánování** kartu **uložit nebo naplánovat tuto** dialogové okno sestavy. Nezapomeňte vybrat možnost **Send via email** (Odeslat e-mailem). Všechny značky, seskupení a filtry, které jste použití jsou zahrnuty v e-mailem sestavu. 
+5. Vyberte **prahová hodnota** kartu a potom vyberte **Actual Cost vs. Threshold** (Skutečné náklady vs. prahová hodnota). 
+   1. V **červenou výstrahu** prahovou hodnotu zadejte 10000. 
+   2. V **žlutá výstraha** zadejte 9000 prahovou hodnotu. 
+   3. V **počet po sobě jdoucích výstrah** zadejte počet po sobě jdoucích výstrah pro příjem. Až dostanete celkový počet výstrah, které jste zadali, žádné další výstrahy chodit nebudou. 
+6. Vyberte **Uložit**.
 
 ![Příklad zobrazující červené a žluté výstrahy podle útraty prahové hodnoty](./media/tutorial-review-usage/schedule-alert01.png)
 
-K vytváření výstrah můžete také vybrat metriku Cost Percentage vs. Budget (Procento nákladů z rozpočtu). Pokud použijete tuto metriku, budou se místo částek zobrazovat procenta z rozpočtu.
+Můžete také **metriku Cost Percentage vs. Rozpočet** prahová hodnota metriky vytvářet upozornění. To umožňuje zadejte prahové hodnoty jako procenta z rozpočtu místo částek.
 
 ## <a name="export-data"></a>Exportovat data
 

@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/22/2018
 ms.author: juliako
-ms.openlocfilehash: e36673c7baa03e1bcf36c149851e6455cea798fe
-ms.sourcegitcommit: 9e179a577533ab3b2c0c7a4899ae13a7a0d5252b
+ms.openlocfilehash: 6e829d617aa978f94b99cc9d018b5ca863eaaef0
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49945565"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54807316"
 ---
 # <a name="use-azure-ad-authentication-to-access-azure-media-services-api-with-net"></a>Ověřování pomocí služby Azure AD pro přístup k rozhraní API služby Azure Media Services s .NET
 
@@ -80,7 +80,7 @@ Pro připojení k rozhraní API služby Azure Media pomocí možnosti ověřová
 
 Hodnoty těchto parametrů najdete v **AzureEnvironments.AzureCloudEnvironment**. **AzureEnvironments.AzureCloudEnvironment** konstanta je pomocné rutiny v sadě .NET SDK pro získání správné prostředí proměnné nastavení pro veřejné datového centra Azure. 
 
-Obsahuje nastavení předem definovaných prostředí pro přístup k Media Services v pouze veřejné datových centrech. Pro cloudové oblasti suverénních nebo státní správu, můžete použít **AzureChinaCloudEnvironment**, **AzureUsGovernmentEnvrionment**, nebo **AzureGermanCloudEnvironment** v uvedeném pořadí.
+Obsahuje nastavení předem definovaných prostředí pro přístup k Media Services v pouze veřejné datových centrech. Pro cloudové oblasti suverénních nebo státní správu, můžete použít **AzureChinaCloudEnvironment**, **AzureUsGovernmentEnvironment**, nebo **AzureGermanCloudEnvironment** v uvedeném pořadí.
 
 Následující příklad kódu vytvoří token:
     
@@ -122,7 +122,7 @@ Následující příklad ukazuje, jak vytvořit token Azure AD a kontextu:
     }
 
 >[!NOTE]
->Pokud se zobrazí výjimka, která říká "vzdálený server vrátil chybu: (401) Neoprávněno" najdete v článku [řízení přístupu](media-services-use-aad-auth-to-access-ams-api.md#access-control) část přístup k API služby Azure Media Services pomocí ověřování Azure AD – Přehled.
+>Pokud se zobrazí výjimka, která říká "vzdálený server vrátil chybu: (401) Neoprávněno"najdete v článku [řízení přístupu](media-services-use-aad-auth-to-access-ams-api.md#access-control) část přístup k API služby Azure Media Services pomocí ověřování Azure AD – Přehled.
 
 ## <a name="use-service-principal-authentication"></a>Použít ověřování instančních objektů
     

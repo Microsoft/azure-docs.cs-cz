@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 03/29/2018
 ms.author: renash
 ms.component: files
-ms.openlocfilehash: 4b844fe50623782f23c1819c14eb7626eb9506cf
-ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
+ms.openlocfilehash: df701c6b3131686d5b3b4c093b23de2f6d22bdbc
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51614938"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54827461"
 ---
 # <a name="use-azure-files-with-linux"></a>Použití služby Soubory Azure s Linuxem
 Služba [Soubory Azure](storage-files-introduction.md) je snadno použitelný cloudový systém souborů od Microsoftu. Sdílené složky Azure je možné připojit v Linuxových distribucích pomocí [klient SMB jádra](https://wiki.samba.org/index.php/LinuxCIFS). Tento článek ukazuje dva způsoby připojení sdílené složky Azure: na vyžádání pomocí `mount` příkazů a na spouštění tak, že vytvoříte položku v `/etc/fstab`.
@@ -24,7 +24,7 @@ Služba [Soubory Azure](storage-files-introduction.md) je snadno použitelný cl
 ## <a name="prerequisites-for-mounting-an-azure-file-share-with-linux-and-the-cifs-utils-package"></a>Požadavky pro připojení sdílené složky Azure se systémy Linux a cifs utils balíčku
 <a id="smb-client-reqs"></a>
 * **Můžete si vyberte Linuxová distribuce vytvořená tak, aby odpovídala vašim potřebám připojení.**  
-      Služba soubory Azure je možné připojit přes protokol SMB 2.1, tak i SMB 3.0. Pro připojení pocházející z klientů na místní nebo v jiných oblastech Azure Azure Files odmítnou SMB 2.1 (nebo bez šifrování protokolu SMB 3.0). Pokud *vyžadovat zabezpečený přenos* je povolená pro účet úložiště, pouze soubory Azure umožní připojení pomocí šifrování SMB 3.0.
+      Služba soubory Azure je možné připojit přes protokol SMB 2.1, tak i SMB 3.0. Pro připojení pocházející z klientů na místní nebo v jiných oblastech Azure musíte použít protokol SMB 3.0; Služba soubory Azure, bude taková SMB 2.1 (nebo bez šifrování protokolu SMB 3.0). Sdílená složka Azure při práci z virtuálního počítače v rámci stejné oblasti Azure, může přístup sdílené složky pomocí protokolu SMB 2.1, pokud a pouze tehdy, pokud *vyžadovat zabezpečený přenos* je zakázaná pro účet úložiště, který hostuje sdílenou složku Azure. Doporučujeme vždy vyžaduje zabezpečený přenos a používání pouze protokolu SMB 3.0 pomocí šifrování.
     
     Podpora šifrování protokolu SMB 3.0 byla zavedena v systému Linux verze jádra 4.11 a jestli se přeneseny zpět do starší verze jádra pro oblíbené distribuce Linuxu. V době publikování tohoto dokumentu následujících distribucích z Galerie Azure podporují možnost připojení zadaný v záhlaví tabulky. 
 
@@ -32,12 +32,12 @@ Služba [Soubory Azure](storage-files-introduction.md) je snadno použitelný cl
     
     |   | SMB 2.1 <br>(Připojení na virtuálních počítačích v rámci stejné oblasti Azure) | SMB 3.0 <br>(Připojení z na místě a mezi oblastmi) |
     | --- | :---: | :---: |
-    | Ubuntu Server | 14.04 + | 16.04 + |
-    | RHEL | 7 + | 7.5+ |
-    | CentOS | 7 + |  7.5+ |
+    | Ubuntu Server | 14.04+ | 16.04+ |
+    | RHEL | 7+ | 7.5+ |
+    | CentOS | 7+ |  7.5+ |
     | Debian | 8+ |   |
-    | openSUSE | 13.2 + | 42.3 + |
-    | SUSE Linux Enterprise Server | 12 | 12 SP3 + |
+    | openSUSE | 13.2+ | 42.3+ |
+    | SUSE Linux Enterprise Server | 12 | 12 SP3+ |
     
     Pokud tu není uvedený vaší distribuci Linuxu, můžete zkontrolovat verzi jádra systému Linux pomocí následujícího příkazu:    
 
@@ -71,16 +71,16 @@ Služba [Soubory Azure](storage-files-introduction.md) je snadno použitelný cl
     
 * **Při rozhodování o oprávnění adresářů a souborů připojené sdílené složky**: V příkladech níže oprávnění `0777` je slouží k pojmenování pro čtení, zápisu a spouštěcích oprávnění pro všechny uživatele. Nahradit ho s jinými [chmod oprávnění](https://en.wikipedia.org/wiki/Chmod) podle potřeby. 
 
-* **Název účtu úložiště**: pro připojení sdílené složky Azure, budete potřebovat název účtu úložiště.
+* **Název účtu úložiště**: Připojte sdílenou složku Azure, budete potřebovat název účtu úložiště.
 
-* **Klíč účtu úložiště**: pro připojení sdílené složky Azure, musíte primární (nebo sekundární) klíč úložiště. Klíče SAS aktuálně nejsou pro připojení podporovány.
+* **Klíč účtu úložiště**: Připojte sdílenou složku Azure, musíte primární (nebo sekundární) klíč úložiště. Klíče SAS aktuálně nejsou pro připojení podporovány.
 
-* **Zkontrolujte, jestli je port 445 otevřený**: protokol SMB komunikuje přes port TCP 445 – zkontrolujte porty, pokud chcete zobrazit, pokud brána firewall neblokuje TCP 445 z klientského počítače.
+* **Zkontrolujte, jestli je port 445 otevřený**: Protokol SMB komunikuje přes protokol TCP 445 – zkontrolujte, že brána firewall neblokuje port TCP 445 z klientského počítače.
 
 ## <a name="mount-the-azure-file-share-on-demand-with-mount"></a>Připojení Azure file sdílené složky na vyžádání pomocí `mount`
 1. **[Nainstalovat balíček cifs utils pro vaši Linuxovou distribuci](#install-cifs-utils)**.
 
-2. **Vytvořte složku k přípojnému bodu**: složku pro bod připojení je vytvořit kdekoli v systému souborů, ale je běžné konvence k vytvoření tohoto pod `/mnt` složky. Příklad:
+2. **Vytvořte složku k přípojnému bodu**: Složka pro bod připojení je vytvořit kdekoli v systému souborů, ale je běžné konvence k vytvoření tohoto pod `/mnt` složky. Příklad:
 
     ```bash
     mkdir /mnt/MyAzureFileShare
@@ -98,7 +98,7 @@ Služba [Soubory Azure](storage-files-introduction.md) je snadno použitelný cl
 ## <a name="create-a-persistent-mount-point-for-the-azure-file-share-with-etcfstab"></a>Vytvořit bod trvalé připojení pro sdílenou složku Azure pomocí `/etc/fstab`
 1. **[Nainstalovat balíček cifs utils pro vaši Linuxovou distribuci](#install-cifs-utils)**.
 
-2. **Vytvořte složku k přípojnému bodu**: složku pro bod připojení je vytvořit kdekoli v systému souborů, ale je běžné konvence k vytvoření tohoto pod `/mnt` složky. Bez ohledu na to vytvoříte, mějte na paměti absolutní cestu ke složce. Například následující příkaz vytvoří novou složku s `/mnt` (cesta je absolutní cesta).
+2. **Vytvořte složku k přípojnému bodu**: Složka pro bod připojení je vytvořit kdekoli v systému souborů, ale je běžné konvence k vytvoření tohoto pod `/mnt` složky. Bez ohledu na to vytvoříte, mějte na paměti absolutní cestu ke složce. Například následující příkaz vytvoří novou složku s `/mnt` (cesta je absolutní cesta).
 
     ```bash
     sudo mkdir /mnt/MyAzureFileShare

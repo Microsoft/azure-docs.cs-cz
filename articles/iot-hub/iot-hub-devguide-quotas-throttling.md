@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 09/05/2018
 ms.author: dobett
-ms.openlocfilehash: b7ef5d2853cdf4a7b09aa52c510c268cb42a245f
-ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
+ms.openlocfilehash: 23dbc8d935e46fc4fb12257f360371d4cc61235a
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49395152"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54827376"
 ---
 # <a name="reference---iot-hub-quotas-and-throttling"></a>Reference – IoT Hub kvóty a omezování
 
@@ -21,7 +21,7 @@ ms.locfileid: "49395152"
 
 Každé předplatné Azure může mít maximálně 50 centra IoT hub a nejvýše 1 bezplatný rozbočovače.
 
-Každé centrum IoT se služnou počet jednotek v konkrétní úroveň. Úrovně a počtu jednotek určit maximální denní kvótu zpráv, které můžete odeslat. Velikost zprávy, který slouží k výpočtu je denní kvóty pro rozbočovač na úrovni free po 0,5 KB a 4 KB pro všechny další úrovně. Další informace najdete v tématu [ceny služby Azure IoT Hub](https://azure.microsoft.com/pricing/details/iot-hub/).
+Každé centrum IoT se zřizuje s určitým počtem jednotek na konkrétní úrovni. Úrovně a počtu jednotek určit maximální denní kvótu zpráv, které můžete odeslat. Velikost zprávy, který slouží k výpočtu je denní kvóty pro rozbočovač na úrovni free po 0,5 KB a 4 KB pro všechny další úrovně. Další informace najdete v tématu [ceny služby Azure IoT Hub](https://azure.microsoft.com/pricing/details/iot-hub/).
 
 Na úrovni také určuje omezení, které služby IoT Hub vynucuje pro všechny operace.
 
@@ -47,9 +47,12 @@ V následující tabulce jsou uvedeny vynucené omezení. Hodnoty se vztahují j
 | Úlohy operace<sup>1,3</sup> <br/> (vytvoření, aktualizace, výpis, odstranění) | 1.67/sec/Unit (100/min/jednotku) | 1.67/sec/Unit (100/min/jednotku) | 83.33/sec/Unit (5 000/min/jednotku) |
 | Úlohy zařízení operace<sup>1</sup> <br/> (aktualizovat dvojče, vyvolání přímé metody) | 10 za sekundu | Vyšší 10/s nebo 1/s/jednotku | 50/s/jednotku |
 | Konfigurace a nasazení hraniční<sup>1</sup> <br/> (vytvoření, aktualizace, výpis, odstranění) | 0.33/sec/Unit (20/min/jednotku) | 0.33/sec/Unit (20/min/jednotku) | 0.33/sec/Unit (20/min/jednotku) |
+| Rychlost zahájení streamování zařízení<sup>4</sup> | 5 nových datových proudů za sekundu | 5 nových datových proudů za sekundu | 5 nových datových proudů za sekundu |
+| Maximální počet současně připojených zařízení datových proudů<sup>4</sup> | 50 | 50 | 50 |
+| Přenos dat stream maximální zařízení<sup>4</sup> (agregovat svazku za den) | 300 MB | 300 MB | 300 MB |
 
 
-<sup>1</sup>tato funkce není k dispozici na úrovni basic služby IoT Hub. Další informace najdete v tématu [návodu k výběru správné služby IoT Hub](iot-hub-scaling.md). <br/><sup>2</sup>funguje omezování měření velikosti 8 KB. <br/><sup>3</sup>současně můžete mít jenom jednu úlohu importu/exportu aktivních zařízení.
+<sup>1</sup>tato funkce není k dispozici na úrovni basic služby IoT Hub. Další informace najdete v tématu [návodu k výběru správné služby IoT Hub](iot-hub-scaling.md). <br/><sup>2</sup>funguje omezování měření velikosti 8 KB. <br/><sup>3</sup>současně můžete mít jenom jednu úlohu importu/exportu aktivních zařízení. <br/><sup>4</sup>datové proudy IoT Hub zařízení jsou dostupné jenom pro S1, S2, S3 a F1 SKU.
 
 *Připojení zařízení* řídí omezení frekvence, ve kterém je možné navázat nová připojení zařízení pomocí služby IoT hub. *Připojení zařízení* omezení neřídí maximální počet současně připojených zařízení. *Připojení zařízení* omezení frekvence závisí na počtu jednotek, které jsou zřízené pro službu IoT hub.
 

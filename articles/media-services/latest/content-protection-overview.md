@@ -11,15 +11,15 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/08/2018
+ms.date: 01/22/2019
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: 2a5383952f64edb08717b1a100c74352c9b4246f
-ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
+ms.openlocfilehash: 848d6ffbccc809df1ab5c012c38174e13eacc391
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54187973"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54828248"
 ---
 # <a name="content-protection-overview"></a>Přehled ochrany obsahu
 
@@ -39,9 +39,9 @@ Pro úspěšné dokončení návrhu "content protection" systému nebo aplikace,
 
 1. Azure Media Services kódu
   
-  * Šablony licencí PlayReady, Widevine a FairPlay. Šablony umožňují nakonfigurovat práva a oprávnění pro každou používané technologiemi DRM
-  * Povolení doručování licencí, určíte logiku kontroly autorizace na základě deklarací identity do tokenů JWT
-  * Symetrické klíče, streamování protokolů a odpovídající technologiemi DRM použije, definující šifrování DRM
+  * Konfigurace šablony licencí PlayReady, Widevine a FairPlay. Šablony umožňují nakonfigurovat práva a oprávnění pro každou používané technologiemi DRM.
+  * Definujte autorizace doručování licencí, určíte logiku kontroly autorizace na základě deklarací identity do tokenů JWT.
+  * Konfigurace šifrování DRM zadáním klíče obsahu a streamování protokolů, které by měla sloužit.
 
   > [!NOTE]
   > Každý prostředek můžete zašifrovat i pomocí několika typů šifrování (AES-128, PlayReady, Widevine, FairPlay). V článku [Typy streamovacích protokolů a šifrování](#streaming-protocols-and-encryption-types) se dozvíte, jaké kombinace dávají smysl.

@@ -7,14 +7,14 @@ author: Juliako
 manager: femila
 ms.service: media-services
 ms.topic: article
-ms.date: 12/25/2018
+ms.date: 01/21/2019
 ms.author: juliako
-ms.openlocfilehash: 2c07cfcba473e2e27f14ff0118e6ca8a8f484df1
-ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
+ms.openlocfilehash: d5ec82decbb441c27fd0c5e8f1132caa126edbc1
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/27/2018
-ms.locfileid: "53791810"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54807741"
 ---
 # <a name="embed-video-indexer-widgets-into-your-applications"></a>Vložení widgetů Video Indexer do vašich aplikací
 
@@ -22,6 +22,8 @@ Tento článek ukazuje, jak vložit widgety Video Indexeru do vašich aplikací.
 
 > [!NOTE]
 > Počínaje 1. února 2018 se verze 1 **kognitivní přehledy** widgetu se přestanou používat. Vložit adresu URL verze bude ve výchozím nastavení `version=2`.
+
+Od verze 2, widgetu základní adresa URL obsahuje oblast účtu. Například generuje účet v oblasti USA – západ: `https://wus2.videoindexer.ai/embed/insights/...`.
 
 ## <a name="widget-types"></a>Typy widgetů
 
@@ -69,7 +71,7 @@ Kód pro vložení můžete z modálního okna vložení (znázorněného v pře
 
 Pokud chcete vložit **soukromé** video, musíte do atributu **src** prvku **iframe** předat přístupový token:
 
-     https://www.videoindexer.ai/embed/[insights | player]/<accountId>/<videoId>/?accessToken=<accessToken>
+`https://www.videoindexer.ai/embed/[insights | player]/<accountId>/<videoId>/?accessToken=<accessToken>`
     
 Pomocí rozhraní API [**Get Insights Widget**](https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-insights-widget?) (Získat widget přehledů) získejte obsah widgetu Cognitive Insights nebo použijte API [**Get Video Access Token**](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Video-Access-Token?) (Získat přístupový token videa) a přidejte ho jako parametr dotazu do adresy URL, jak je vidět výše. Tuto adresu URL zadejte jako hodnotu **src** prvku **iframe**.
 
@@ -94,13 +96,13 @@ Pokud se rozhodnete implementovat vlastní kód přehrávače a provést integra
 
 Tato část ukazuje, jak dosáhnout interakce mezi dvěma widgety Video Indexeru tak, že když uživatel klikne na ovládací prvek přehledu ve vaší aplikaci, přehrávač přejde na příslušnou pozici videa.
 
-    <script src="https://breakdown.blob.core.windows.net/public/vb.widgets.mediator.js"></script> 
+`<script src="https://breakdown.blob.core.windows.net/public/vb.widgets.mediator.js"></script> `
 
 1. Zkopírujte kód pro vložení widgetu **Player**.
 2. Zkopírujte kód pro vložení widgetu **Cognitive Insights**.
 3. Přidejte [**zprostředkující soubor**](https://breakdown.blob.core.windows.net/public/vb.widgets.mediator.js) ke zpracování komunikace mezi oběma widgety:
 
-    <script src="https://breakdown.blob.core.windows.net/public/vb.widgets.mediator.js"></script>
+`<script src="https://breakdown.blob.core.windows.net/public/vb.widgets.mediator.js"></script>`
 
 Když teď uživatel klikne na ovládací prvek přehledu ve vaší aplikaci, přehrávač přejde na příslušnou pozici videa.
 
@@ -110,11 +112,7 @@ Další informace najdete v [této ukázce](https://codepen.io/videoindexer/pen/
 
 Tato část ukazuje, jak dosáhnout interakce mezi widgetem **Cognitive Insights** a instancí Azure Media Playeru pomocí [plug-inu pro AMP](https://breakdown.blob.core.windows.net/public/amp-vb.plugin.js).
  
-1. Přidejte plug-in Video Indexeru pro přehrávač AMP.
-
-        <script src="https://breakdown.blob.core.windows.net/public/amp-vb.plugin.js"></script>
-
-
+1. Přidejte plug-in Video Indexeru pro přehrávač AMP.<br/> `<script src="https://breakdown.blob.core.windows.net/public/amp-vb.plugin.js"></script>`
 2. Vytvořte instanci Azure Media Playeru pomocí plug-inu Video Indexeru.
 
         // Init Source
@@ -209,7 +207,6 @@ Pokud používáte vlastní přehrávač, musíte se sami postarat o manipulaci 
         
         </script>
 
-
 Další informace najdete v [této ukázce](https://codepen.io/videoindexer/pen/YEyPLd).
 
 ## <a name="adding-subtitles"></a>Přidání titulků
@@ -219,30 +216,41 @@ Pokud vložíte přehledy Video Indexeru s vlastním přehrávačem AMP, můžet
 ## <a name="customizing-embeddable-widgets"></a>Přizpůsobení vložitelných widgetů
 
 ### <a name="cognitive-insights-widget"></a>Widget Cognitive Insights
-Typy přehledů, které chcete, můžete zvolit tak, že je zadáte jako hodnotu do následujícího parametru URL přidaného do získaného kódu pro vložení (z rozhraní API nebo z webové aplikace):
 
-**&widgets=** \<seznam požadovaných widgetů>
+Můžete zvolit typy přehledů, které chcete, aby tak, že zadáte jako hodnotu pro následující parametr URL přidat kód pro vložení získáte (z rozhraní API nebo z webové aplikace): `&widgets=<list of wanted widgets>`.
 
 Možné hodnoty jsou: people (lidé), keywords (klíčová slova), sentiments (citová zabarvení), transcript (přepis), search (vyhledávání).
 
-Pokud třeba chcete vložit widget obsahující jenom přehledy lidí a vyhledávání, bude adresa URL vložení prvku iframe vypadat takto: https://www.videoindexer.ai/embed/insights/<accountId>/<videoId>/?widgets=people,search
+Například pokud chcete pro vložení widgetu, který obsahuje pouze lidé a vyhledávání informací adresu URL vložení prvku iframe bude vypadat takto:
 
-Název okna iframe se taky dá přizpůsobit zadáním **&title=**<YourTitle> do URL prvku iframe. (Přizpůsobí se tím hodnota html \<title>).
-Pokud třeba chcete oknu iframe dát název „MojePrehledy“, adresa URL bude vypadat takto: https://www.videoindexer.ai/embed/insights/<accountId>/<videoId>/?title=MojePrehledy. Všimněte si, že je tato možnost relevantní jenom v případech, když přehledy potřebujete otevřít v novém okně.
+`https://www.videoindexer.ai/embed/insights/<accountId>/<videoId>/?widgets=people,search`
+
+Záhlaví okna iframe se taky dají upravit poskytnutím `&title=<YourTitle>` na adresu URL elementu iframe. (Přizpůsobí se tím hodnota html \<title>).
+    
+Například pokud chcete poskytnout název "MyInsights" okno iframe, adresa URL bude vypadat takto:
+
+`https://www.videoindexer.ai/embed/insights/<accountId>/<videoId>/?title=MyInsights`
+
+Všimněte si, že je tato možnost relevantní jenom v případech, když přehledy potřebujete otevřít v novém okně.
 
 ### <a name="player-widget"></a>Widget Player
+
 Pokud vložíte přehrávač Video Indexeru, můžete zvolit velikost přehrávače zadáním velikosti prvku iframe.
 
 Příklad:
 
-    <iframe width="640" height="360" src="https://www.videoindexer.ai/embed/player/<accountId>/<videoId>/" frameborder="0" allowfullscreen />
+`<iframe width="640" height="360" src="https://www.videoindexer.ai/embed/player/<accountId>/<videoId>/" frameborder="0" allowfullscreen />`
 
 Ve výchozím nastavení bude mít přehrávač Video Indexeru automaticky generované titulky založené na přepisu videa, který se z videa extrahoval pomocí zdrojového jazyka zvoleného při nahrávání videa.
 
-Pokud chcete vložení provést s jiným jazykem, můžete do URL vložení přehrávače přidat **&captions=< Language | ”all” | “false” >** nebo jako hodnotu zadat „all“, pokud chcete mít titulky ve všech dostupných jazycích.
-Pokud chcete, aby se titulky ve výchozím nastavení zobrazovaly, můžete předat parametr **&showCaptions=true**
+Pokud chcete vložit v jiném jazyce, můžete přidat `&captions=< Language | ”all” | “false” >` player vloženou adresu URL nebo put "all" jako hodnotu, pokud budete chtít mít všechny dostupné jazyky titulky.
+Pokud chcete popisky, který se má zobrazit ve výchozím nastavení, můžete předat `&showCaptions=true`.
 
-Adresa URL vložení pak bude vypadat třeba takto: https://www.videoindexer.ai/embed/player/<accountId>/<videoId>/?captions=italian. Pokud chcete titulky vypnout, můžete jako hodnotu parametru titulků předat „false“.
+Adresa URL vložení pak bude vypadat například takto: 
+
+`https://www.videoindexer.ai/embed/player/<accountId>/<videoId>/?captions=italian`
+
+Pokud chcete titulky vypnout, můžete jako hodnotu parametru titulků předat „false“.
 
 Auto play – ve výchozím nastavení začne přehrávač přehrávat video. Můžete to změnit, když do adresy URL vložení předáte &autoplay=false.
 

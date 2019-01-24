@@ -3,9 +3,9 @@ title: Výjimky zasílání zpráv Azure Service Bus | Dokumentace Microsoftu
 description: Seznam výjimky zasílání zpráv služby Service Bus a doporučené akce.
 services: service-bus-messaging
 documentationcenter: na
-author: spelluru
+author: axisc
 manager: timlt
-editor: ''
+editor: spelluru
 ms.assetid: 3d8526fe-6e47-4119-9f3e-c56d916a98f9
 ms.service: service-bus-messaging
 ms.devlang: na
@@ -13,13 +13,13 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/21/2018
-ms.author: spelluru
-ms.openlocfilehash: d96982f4dff523e1a262ee4f9d8bdc2dfc8480e1
-ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
+ms.author: aschhab
+ms.openlocfilehash: e0d319526bf9e604a98a1c926f7b6fc4f2834466
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51037596"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54851143"
 ---
 # <a name="service-bus-messaging-exceptions"></a>Výjimky zasílání zpráv Service Bus
 Tento článek uvádí některé výjimky generované zasílání zpráv rozhraní API Microsoft Azure Service Bus. Tento odkaz se může změnit, proto zkontrolujte novinky.
@@ -59,7 +59,7 @@ Následující tabulka uvádí zasílání zpráv typy výjimek a jejich příč
 | [NoMatchingSubscriptionException](/dotnet/api/microsoft.servicebus.messaging.nomatchingsubscriptionexception) |Service Bus vrátí tuto výjimku, pokud odešlete zprávu, která má povolené předem filtrování a neodpovídá žádná filtry. |Zajistěte, aby aspoň jeden filtr hledá shodu. |Opakování nepomůže. |
 | [MessageSizeExceededException](/dotnet/api/microsoft.servicebus.messaging.messagesizeexceededexception) |Tělo zprávy překračuje limit 256 KB. Celková velikost zpráv, který může obsahovat systémové vlastnosti a rezervy .NET je limit 256 KB. |Zmenšit velikost datové části zprávy a potom zkuste operaci zopakovat. |Opakování nepomůže. |
 | [TransactionException](https://msdn.microsoft.com/library/system.transactions.transactionexception.aspx) |Ambientní transakce (*Transaction.Current*) je neplatný. Může byla dokončena nebo zrušena. Vnitřní výjimku, kde mohou poskytnout další informace. | |Opakování nepomůže. |
-| [Transactionindoubtexception –](https://msdn.microsoft.com/library/system.transactions.transactionindoubtexception.aspx) |Pokus o operaci na transakci, která je nejistá, nebo je proveden pokus o potvrzení transakce a transakce stane nejistým výsledkem. |Ke zpracování potřeba aplikace tuto výjimku (jako speciální případ), protože transakce může již byly potvrzeny. |- |
+| [TransactionInDoubtException](https://msdn.microsoft.com/library/system.transactions.transactionindoubtexception.aspx) |Pokus o operaci na transakci, která je nejistá, nebo je proveden pokus o potvrzení transakce a transakce stane nejistým výsledkem. |Ke zpracování potřeba aplikace tuto výjimku (jako speciální případ), protože transakce může již byly potvrzeny. |- |
 
 ## <a name="quotaexceededexception"></a>QuotaExceededException
 [QuotaExceededException](/dotnet/api/microsoft.azure.servicebus.quotaexceededexception) označuje, že byla překročena kvóta pro konkrétní entitu.

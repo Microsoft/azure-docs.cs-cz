@@ -1,10 +1,10 @@
 ---
-title: 'Azure Active Directory Domain Services: Nasazení služby Proxy aplikací Azure Active Directory | Dokumentace Microsoftu'
+title: 'Azure Active Directory Domain Services: Nasazení služby Proxy aplikace Azure Active Directory | Dokumentace Microsoftu'
 description: Použít Proxy aplikace služby Azure AD na spravovaných domén Azure Active Directory Domain Services
 services: active-directory-ds
 documentationcenter: ''
 author: eringreenlee
-manager: mtillman
+manager: daveba
 editor: curtand
 ms.assetid: 938a5fbc-2dd1-4759-bcce-628a6e19ab9d
 ms.service: active-directory
@@ -15,21 +15,21 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/22/2018
 ms.author: ergreenl
-ms.openlocfilehash: 4621122d805f37be1578aa7b7c9ae059f3141c77
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: fc428ddc5c9a99e04f932dec620d99a23f366d28
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52840295"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54845431"
 ---
 # <a name="deploy-azure-ad-application-proxy-on-an-azure-ad-domain-services-managed-domain"></a>Nasazení Proxy aplikací Azure AD ve spravované doméně Azure AD Domain Services
 Proxy aplikací služby Azure Active Directory (AD) umožňuje podporu vzdálených pracovních procesů publikováním místních aplikací, aby byly přístupné přes internet. S Azure AD Domain Services můžete nyní lift and shift starší aplikace spuštěné v místním se službami infrastruktury Azure. Pak můžete publikovat tyto aplikace pomocí Azure AD Application Proxy, k zajištění bezpečného vzdáleného přístupu pro uživatele ve vaší organizaci.
 
-Pokud se službou Azure AD Application Proxy teprve začínáte, přečtěte si informace o této funkci se v následujícím článku: [jak poskytnout zabezpečený vzdálený přístup k místním aplikacím](../active-directory/manage-apps/application-proxy.md).
+Pokud začínáte Proxy aplikací služby Azure AD, přečtěte si informace o této funkci se v následujícím článku: [Jak poskytnout zabezpečený vzdálený přístup k místním aplikacím](../active-directory/manage-apps/application-proxy.md).
 
 [!INCLUDE [active-directory-ds-prerequisites.md](../../includes/active-directory-ds-prerequisites.md)]
 
-## <a name="before-you-begin"></a>Než začnete
+## <a name="before-you-begin"></a>Před zahájením
 K provádění úkolů uvedených v tomto článku, budete potřebovat:
 
 1. Platný **předplatného Azure**.
@@ -96,9 +96,9 @@ Dříve zřízení virtuálního počítače s Windows serverem a k ní připoji
 ## <a name="next-steps"></a>Další kroky
 Nastavení Proxy aplikací služby Azure AD a integrovaná s vaší spravované doméně Azure AD Domain Services.
 
-* **Migrace aplikací na virtuálních počítačích Azure:** můžete lift and shift aplikací z místních serverů do virtuálních počítačů Azure připojené k vaší spravované domény. To pomáhá vám zbavit náklady na infrastrukturu serverů v místním.
+* **Migrace aplikací na virtuálních počítačích Azure:** Je to možné lift and shift aplikací z místních serverů do virtuálních počítačů Azure připojené k vaší spravované domény. To pomáhá vám zbavit náklady na infrastrukturu serverů v místním.
 
-* **Publikování aplikací pomocí Proxy aplikací Azure AD:** publikovat aplikace běžící na virtuálních počítačů Azure pomocí Azure AD Application Proxy. Další informace najdete v tématu [publikování aplikací pomocí Proxy aplikací Azure AD](../active-directory/manage-apps/application-proxy-publish-azure-portal.md)
+* **Publikování aplikací pomocí Proxy aplikací Azure AD:** Publikování aplikace běžící na virtuálních počítačů Azure pomocí Azure AD Application Proxy. Další informace najdete v tématu [publikování aplikací pomocí Proxy aplikací Azure AD](../active-directory/manage-apps/application-proxy-publish-azure-portal.md)
 
 
 ## <a name="deployment-note---publish-iwa-integrated-windows-authentication-applications-using-azure-ad-application-proxy"></a>Poznámka: nasazení pomocí Azure AD Application Proxy aplikace publikovat IWA (integrované ověřování Windows)

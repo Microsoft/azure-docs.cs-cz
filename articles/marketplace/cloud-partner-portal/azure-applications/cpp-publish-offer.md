@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: pbutlerm
-ms.openlocfilehash: deab8298d09972a4e60be5c72d6d7e43dc2683e6
-ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
+ms.openlocfilehash: ad62b306849b2291c81399cedc1634057e2eec9d
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54329986"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54828090"
 ---
 # <a name="publish-azure-application-offer"></a>Publikovat nabídku aplikací Azure
 
@@ -36,7 +36,7 @@ Následující tabulka uvádí a popisuje jednotlivé kroky pro publikování a 
 |  **Publikování kroku**           | **čas**    | **Popis**                                                            |
 |  -------------------           | --------    | ---------------                                                            |
 | Ověřit požadované součásti         | < 15 min    | Poskytuje informace a nabídku, nastavení se ověří.                        |
-| Ověřte nastavení vliv na výnosy | < 15 min  |      |
+| Ověřte nastavení vliv na výnosy | < 15 min  | Je zaškrtnuté políčko attribution využití prostředků Azure pro tuto nabídku.             |
 | Certifikace                  | < 1 den     | Nabídka se analyzuje tým certifikace Azure. Nabídka je vyhledány viry, malware, dodržování bezpečnostních předpisů a problémy se zabezpečením. Nabídka je zaškrtnuté políčko, pokud chcete zobrazit, zda splňuje všechna kritéria způsobilosti. Další informace najdete v tématu [požadavky](./cpp-prerequisites.md). Pokud je nalezen problém poskytnutí zpětné vazby. |
 | Ověření testů jednotky          | < 2 hodiny   | (Volitelné) Pokud Test Drive je k dispozici, Microsoft ověřuje, že je nasadit a replikovat.  |
 | Balení a registrace generování potenciálních zákazníků | < 1 hodina  | Technické prostředky nabídky jsou zabaleny pro používání zákazníka a systémy potenciálních zákazníků jsou konfigurovány a nasazeny. |

@@ -13,18 +13,18 @@ ms.devlang: na
 ms.topic: overview
 ms.date: 01/11/2019
 ms.author: kraigb
-ms.openlocfilehash: ba06e568b3d7b0125d5868c1ad4a85e5e42f7e18
-ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
+ms.openlocfilehash: ffceeeeb5a55b0fab1dd1cf91aebfcd4cfd852ef
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/12/2019
-ms.locfileid: "54246207"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54848593"
 ---
 # <a name="overview-of-azure-notebooks"></a>Přehled Azure poznámkové bloky
 
 Azure Notebooks je bezplatná hostovaná služba pro vývoj a spouštění poznámkových bloků Jupyter v cloudu, která nevyžaduje instalaci. [Jupyter](https://jupyter.org/) (dříve IPython) je opensourcový projekt, který vám umožní snadno kombinovat text Markdownu, spustitelného kódu, trvalá data, grafiky a vizualizace na jedné, které se dají sdílet plátno, *Poznámkový blok* (image poskytuje jupyter.org):
 
-[![](https://jupyter.org/assets/jupyterpreview.png "Poznámkové bloky Jupyter")](https://jupyter.org/assets/jupyterpreview.png#lightbox)
+[![Příklady poznámkové bloky Jupyter](https://jupyter.org/assets/jupyterpreview.png)](https://jupyter.org/assets/jupyterpreview.png#lightbox)
 
 Z důvodu této výkonnou kombinaci vysvětlující text, kód a grafické Jupyter získal oblibu pro mnoho účelů, včetně data science instrukce, čištění dat a transformace, číselná simulace, statistické modelování a vývoj modely strojového učení.
 
@@ -55,9 +55,9 @@ Stručně řečeno poznámkových bloků Azure vám pomůže provádět práci e
 
 ## <a name="pricing-and-quotas"></a>Ceny a kvóty
 
-Poznámkových bloků Azure je bezplatná služba, ale každý projekt je omezena na 4 GB paměti a 1 GB dat, aby se zabránilo zneužití. Oprávněným uživatelům, které tyto limity překročit najdete v článku v rámci kontroly Captcha k pokračování ve spouštění poznámkových bloků.
+Poznámkových bloků Azure je bezplatná služba, ale každý projekt je omezena na 4GB paměti a 1GB dat, aby se zabránilo zneužití. Oprávněným uživatelům, které tyto limity překročit najdete v článku v rámci kontroly Captcha k pokračování ve spouštění poznámkových bloků.
 
-Uvolnit všechna omezení, přihlaste se poznámkových bloků Azure pomocí účtu služby pomocí Azure Active Directory (například účet organizace). Pokud tento účet je přidružený předplatnému Azure, můžete použít virtuální počítač Azure datové vědy výpočetní úrovně.
+Uvolnit všechna omezení, přihlaste se poznámkových bloků Azure pomocí účtu služby pomocí Azure Active Directory (například účet organizace). Pokud tento účet je přidružený předplatnému Azure, můžete připojit k libovolné instance virtuálního počítače Azure datové vědy v rámci tohoto předplatného. Další informace najdete v tématu [spravovat a konfigurovat projekty – výpočetní vrstva](configure-manage-azure-notebooks-projects.md#compute-tier).
 
 ## <a name="available-kernels-and-environments"></a>Dostupná jádra a prostředí
 

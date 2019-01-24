@@ -3,19 +3,19 @@ title: Definování profilu s vlastním potvrzením technické vlastních zásad
 description: Definování profilu s vlastním potvrzením technické vlastních zásad v Azure Active Directory B2C.
 services: active-directory-b2c
 author: davidmu1
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 09/10/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 262c4e622d7ef915e59f29c8f4272e488acaeccf
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.openlocfilehash: 7a783e496b7bb6fcdf2c80247baad2bfc901d857
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47166907"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54850990"
 ---
 # <a name="define-a-self-asserted-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Definování profilu s vlastním potvrzením technické ve vlastních zásadách pro Azure Active Directory B2C
 
@@ -127,7 +127,7 @@ Můžete také volat rozhraní REST API technický profil s obchodní logikou, p
 
 ## <a name="metadata"></a>Metadata
 
-| Atribut | Požaduje se | Popis |
+| Atribut | Požadováno | Popis |
 | --------- | -------- | ----------- |
 | setting.showContinueButton | Ne | Zobrazí tlačítko Pokračovat. Možné hodnoty: `true` (výchozí), nebo `false` |
 | setting.showCancelButton | Ne | Zobrazí tlačítko Storno. Možné hodnoty: `true` (výchozí), nebo `false` |

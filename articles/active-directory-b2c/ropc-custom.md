@@ -3,19 +3,19 @@ title: Nakonfigurujte tok přihlašovacího hesla vlastníka prostředku v Azure
 description: Zjistěte, jak nakonfigurovat tok přihlašovacího hesla vlastníka prostředku v Azure Active Directory B2C.
 services: active-directory-b2c
 author: davidmu1
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 7de41e4e904452d01cc0c7902d411070f7384a51
-ms.sourcegitcommit: 7862449050a220133e5316f0030a259b1c6e3004
+ms.openlocfilehash: a7647e4a54cdfa4eff284c4b1d8bd579e51fdbe3
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/22/2018
-ms.locfileid: "53756458"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54847522"
 ---
 # <a name="configure-the-resource-owner-password-credentials-flow-in-azure-active-directory-b2c-using-a-custom-policy"></a>Konfigurace tok vlastníka prostředku heslo přihlašovacích údajů v Azure Active Directory B2C pomocí vlastních zásad
 
@@ -271,7 +271,7 @@ Generovat volání rozhraní API pomocí aplikace pro vývoj oblíbených rozhra
 | --- | ----- |
 | uživatelské jméno | `user-account` |
 | heslo | `password1` |
-| Parametr grant_type | heslo |
+| grant_type | heslo |
 | scope | openid `application-id` offline_access |
 | client_id | `application-id` |
 | response_type | Token požadavku id_token |
@@ -315,7 +315,7 @@ Vytvoření volání POST podobný tomu, který je vidět tady. Pomocí informac
 
 | Klíč | Hodnota |
 | --- | ----- |
-| Parametr grant_type | refresh_token |
+| grant_type | refresh_token |
 | response_type | id_token |
 | client_id | `application-id` |
 | prostředek | `application-id` |

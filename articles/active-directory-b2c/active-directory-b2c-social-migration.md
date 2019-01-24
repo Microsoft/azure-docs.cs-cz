@@ -3,19 +3,19 @@ title: Migrace uživatelů se sociálními identitami v Azure Active Directory B
 description: Základní koncepty se popisují na migraci uživatelů se sociálními identitami do Azure AD B2C pomocí rozhraní Graph API.
 services: active-directory-b2c
 author: davidmu1
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 03/03/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: b9378face28b4d053dcd5f01b8f87126457cf339
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: 0ca73b8bfaca481d3e0404d068a74e1a6b0e4dcb
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37445139"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54846553"
 ---
 # <a name="azure-active-directory-b2c-migrate-users-with-social-identities"></a>Azure Active Directory B2C: Migrace uživatelů se sociálními identitami
 Při plánování migrace vašeho zprostředkovatele identity do Azure AD B2C, budete také muset migrace uživatelů se sociálními identitami. Tento článek vysvětluje, jak provést migraci existujících účtů sociálních identit, jako například: Facebook, LinkedIn, Microsoft nebo Google účty Azure AD B2C. Tento článek se týká také federované identity, ale jsou méně běžné tyto migrace.
@@ -63,13 +63,13 @@ V následujícím seznamu jsou uvedeny vlastnosti, které jsou potřeba při vyt
 * **userIdentities** – jeden nebo více záznamů identity uživatele, které určují sociálního účtu typu a jedinečný uživatelský identifikátor zprostředkovatele identity v sociálních sítích.
 * [volitelné] **otherMails** – účtu na sociální síti, e-mailové adresy uživatele 
 
-Další informace najdete v tématu: [reference k rozhraní Graph API](https://msdn.microsoft.com/library/azure/ad/graph/api/users-operations#CreateLocalAccountUser)
+Další informace naleznete v tématu: [Odkaz na rozhraní Graph API](https://msdn.microsoft.com/library/azure/ad/graph/api/users-operations#CreateLocalAccountUser)
 
 ## <a name="migrate-social-account-only"></a>Migrace účtu na sociální síti (jenom)
 K vytvoření účtu na sociální síti pouze bez přihlašovacích údajů místního účtu. Odešlete požadavek POST protokolu HTTPS pro rozhraní Graph API. Text požadavku obsahuje vlastnosti tohoto uživatelského účtu na sociální síti vytvořit. Minimálně je nutné zadat požadované vlastnosti. 
 
 
-**PŘÍSPĚVEK**  https://graph.windows.net/tenant-name.onmicrosoft.com/users
+**POST**  https://graph.windows.net/tenant-name.onmicrosoft.com/users
 
 Následující data formuláře odešlete: 
 
@@ -100,7 +100,7 @@ Následující data formuláře odešlete:
 ## <a name="migrate-social-account-with-local-account"></a>Migrace účtu na sociální síti pomocí místního účtu
 Vytvoření kombinované místní účet se sociálními identitami. Odešlete požadavek POST protokolu HTTPS pro rozhraní Graph API. Text požadavku obsahuje vlastnosti tohoto uživatelského účtu na sociální síti vytvořit. Minimálně je nutné zadat požadované vlastnosti. 
 
-**PŘÍSPĚVEK**  https://graph.windows.net/tenant-name.onmicrosoft.com/users
+**POST**  https://graph.windows.net/tenant-name.onmicrosoft.com/users
 
 Odešlete následující formulář dat: 
 
@@ -236,4 +236,4 @@ Odešlete následující formulář dat:
 > [!NOTE]
 > Pokud nechcete aktualizovat soubor UsersData.json ve vzorku s daty, můžete se přihlásit pomocí přihlašovacích údajů místního účtu vzorku, ale ne s příklady účtu na sociální síti. Pokud chcete migrovat vaše účtů na sociálních sítích, poskytují reálná data.
 
-Další informace jak použít ukázkovou aplikaci, najdete v článku [Azure Active Directory B2C: migraci uživatelů](active-directory-b2c-user-migration.md)
+Další informace jak použít ukázkovou aplikaci, najdete v článku [Azure Active Directory B2C: Migrace uživatelů](active-directory-b2c-user-migration.md)

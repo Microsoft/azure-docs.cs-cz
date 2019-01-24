@@ -3,19 +3,19 @@ title: Userjourney | Dokumentace Microsoftu
 description: Zadejte element Userjourney vlastní zásady v Azure Active Directory B2C.
 services: active-directory-b2c
 author: davidmu1
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 09/10/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 231a3e87692e47ec33f8a613832acf5102257c96
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.openlocfilehash: c6933a3d50807f38c0704f41dff7c9bcb3351949
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51567056"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54850635"
 ---
 # <a name="userjourneys"></a>UserJourneys
 
@@ -35,7 +35,7 @@ K definování cest uživatele podporovaného zásadami, **Userjourney** prvek p
 
 **UserJourney** prvek obsahuje následující atribut:
 
-| Atribut | Požaduje se | Popis |
+| Atribut | Požadováno | Popis |
 | --------- | -------- | ----------- |
 | ID | Ano | Identifikátor cesty uživatele, který slouží k odkazování z dalších prvků v zásadách. **DefaultUserJourney** elementu [předávající strana zásad](relyingparty.md) odkazuje na tento atribut. |
 
@@ -61,7 +61,7 @@ Chcete-li určit seřazený seznam kroků Orchestrace, **OrchestrationSteps** pr
 
 **OrchestrationStep** prvek obsahuje následující atributy:
 
-| Atribut | Požaduje se | Popis |
+| Atribut | Požadováno | Popis |
 | --------- | -------- | ----------- |
 | Objednání | Ano | Pořadí kroků Orchestrace. | 
 | Typ | Ano | Typ kroku Orchestrace. Možné hodnoty: <ul><li>**ClaimsProviderSelection** – označuje, že krok Orchestrace představuje různých zprostředkovatelů deklarací identity k uživateli vybrat jednu.</li><li>**CombinedSignInAndSignUp** – označuje, že krok Orchestrace představuje kombinovanou poskytovatele sociálních sítí registrační stránku pro přihlášení a místní účet.</li><li>**ClaimsExchange** – označuje, že krok Orchestrace výměny deklarací identity se zprostředkovatelem deklarací identity.</li><li>**SendClaims** – označuje, že krok Orchestrace, odešle se u tokenu vydaného službou deklarace identity vystavitele deklarace identity na přijímající straně.</li></ul> | 
@@ -90,7 +90,7 @@ Chcete-li určit seřazený seznam kroků Orchestrace, **OrchestrationSteps** pr
 
 **Předběžné podmínky** prvek obsahuje následující atribut:
 
-| Atribut | Požaduje se | Popis |
+| Atribut | Požadováno | Popis |
 | --------- | -------- | ----------- |
 | Typ | Ano | Typ kontroly nebo dotaz k provedení této předběžné podmínky. Hodnota může být **ClaimsExist**, která určuje, že by měl provést akce, pokud zadané deklarace existuje v aktuální sadě deklarací identity uživatele nebo **ClaimEquals**, která určuje, že akce je třeba provést, pokud existuje zadaný deklarace identity a jeho hodnota se rovná se zadanou hodnotou. |
 | ExecuteActionsIf | Ano | Použijte hodnotu true nebo false test se rozhodnout, pokud by provádět akce v předpoklad. | 
@@ -158,7 +158,7 @@ Předběžné podmínky můžete zkontrolovat několik podmínek. Následující
 </OrchestrationStep>
 ```
 
-## <a name="claimsproviderselection"></a>ClaimsProviderSelection.
+## <a name="claimsproviderselection"></a>ClaimsProviderSelection
 
 Na krok Orchestrace typu `ClaimsProviderSelection` nebo `CombinedSignInAndSignUp` může obsahovat seznam zprostředkovatelů deklarací identity, které uživatel může přihlásit pomocí. Pořadí prvků uvnitř `ClaimsProviderSelections` elementy určuje pořadí poskytovatelů identit budou zobrazovat uživateli.
 
@@ -166,11 +166,11 @@ Na krok Orchestrace typu `ClaimsProviderSelection` nebo `CombinedSignInAndSignUp
 
 | Element | Výskyty | Popis |
 | ------- | ----------- | ----------- |
-| ClaimsProviderSelection. | 0: n | Poskytuje seznam zprostředkovatelů deklarací identity, které je možné vybrat.|
+| ClaimsProviderSelection | 0: n | Poskytuje seznam zprostředkovatelů deklarací identity, které je možné vybrat.|
 
 **ClaimsProviderSelection** prvek obsahuje následující atributy: 
 
-| Atribut | Požaduje se | Popis |
+| Atribut | Požadováno | Popis |
 | --------- | -------- | ----------- |
 | TargetClaimsExchangeId | Ne | Identifikátor výměna deklarací identit, který je proveden v dalším kroku Orchestrace výběru zprostředkovatele deklarací identity. Atribut ValidationClaimsExchangeId nebo tento atribut musí být zadaný, ale ne obojí. | 
 | ValidationClaimsExchangeId | Ne | Identifikátor výměna deklarací identit, který je proveden v aktuální krok Orchestrace ověření výběru zprostředkovatele deklarací identity. Atribut TargetClaimsExchangeId nebo tento atribut musí být zadaný, ale ne obojí. |
@@ -222,7 +222,7 @@ V následujícím kroku Orchestrace můžete uživatele k přihlášení pomocí
 
 **ClaimsExchange** prvek obsahuje následující atributy:
 
-| Atribut | Požaduje se | Popis |
+| Atribut | Požadováno | Popis |
 | --------- | -------- | ----------- |
 | ID | Ano | Identifikátor kroku exchange deklarací identity. Tento identifikátor slouží k odkazu krok výměna deklarací identit z výběru zprostředkovatele deklarací identity v zásadách. | 
 | TechnicalProfileReferenceId | Ano | Identifikátor technický profil, který má být provedena. |

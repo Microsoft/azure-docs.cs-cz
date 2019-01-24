@@ -3,22 +3,22 @@ title: Pozastavit entit pro zasílání zpráv Azure Service Bus | Dokumentace M
 description: Pozastavení a opětovná aktivace entit zpráv Azure Service Bus.
 services: service-bus-messaging
 documentationcenter: ''
-author: clemensv
+author: axisc
 manager: timlt
-editor: ''
+editor: spelluru
 ms.service: service-bus-messaging
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/26/2018
-ms.author: spelluru
-ms.openlocfilehash: b7ea8c14bfc3f2ba3720ad919d6c36ec50c3823e
-ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
+ms.date: 01/23/2019
+ms.author: aschhab
+ms.openlocfilehash: 8feee92e9105259bddf45114ac48a54347266cd7
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48854471"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54845995"
 ---
 # <a name="suspend-and-reactivate-messaging-entities-disable"></a>Pozastavení a opětovná aktivace entit zasílání zpráv (zakázat)
 
@@ -38,10 +38,10 @@ Na portálu povoluje jen zcela zakazuje fronty. Můžete také zakázat odesíl�
 
 Stavy, které lze nastavit pro fronty jsou:
 
--   **Aktivní**: fronty je aktivní.
--   **Zakázané**: fronta je pozastavená.
--   **SendDisabled**: fronty částečně je pozastaveno, s receive je povolené.
--   **ReceiveDisabled**: fronty částečně je pozastaveno, s odešlete povoleno.
+-   **Aktivní**: Fronta je aktivní.
+-   **Zakázané**: Fronta je pozastavená.
+-   **SendDisabled**: Fronta je částečně pozastaveno, s receive je povolené.
+-   **ReceiveDisabled**: Fronta je částečně pozastavený, s odešlete povoleno.
 
 U předplatných a témat, pouze **aktivní** a **zakázané** lze nastavit.
 

@@ -10,12 +10,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 11/29/2017
 ms.author: cshoe
-ms.openlocfilehash: 3cee083096584d30fb979aaf58bfdc2edf2e6c4f
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: 1ddb993a3e4d41647a4afcf5a5daed03a834db9f
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53971644"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54825988"
 ---
 # <a name="azure-functions-sendgrid-bindings"></a>Azure vazby služby SendGrid funkce
 
@@ -47,17 +47,21 @@ Podívejte se na příklad specifické pro jazyk:
 
 Následující příklad ukazuje [funkce jazyka C#](functions-dotnet-class-library.md) , že používá fronty Service Bus aktivovat a výstupní vazby služby SendGrid.
 
+#### <a name="synchronous-c-example"></a>Synchronní C# příkladu:
+
 ```cs
 [FunctionName("SendEmail")]
 public static void Run(
-    [ServiceBusTrigger("myqueue", Connection = "ServiceBusConnection")] OutgoingEmail email,
+    [ServiceBusTrigger("myqueue", Connection = "ServiceBusConnection")] Message email,
     [SendGrid(ApiKey = "CustomSendGridKeyAppSettingName")] out SendGridMessage message)
 {
-    message = new SendGridMessage();
-    message.AddTo(email.To);
-    message.AddContent("text/html", email.Body);
-    message.SetFrom(new EmailAddress(email.From));
-    message.SetSubject(email.Subject);
+var emailObject = JsonConvert.DeserializeObject<OutgoingEmail>(Encoding.UTF8.GetString(email.Body));
+
+var message = new SendGridMessage();
+message.AddTo(emailObject.To);
+message.AddContent("text/html", emailObject.Body);
+message.SetFrom(new EmailAddress(emailObject.From));
+message.SetSubject(emailObject.Subject);
 }
 
 public class OutgoingEmail
@@ -66,6 +70,33 @@ public class OutgoingEmail
     public string From { get; set; }
     public string Subject { get; set; }
     public string Body { get; set; }
+}
+```
+#### <a name="asynchronous-c-example"></a>Asynchronní C# příkladu:
+
+```cs
+[FunctionName("SendEmail")]
+public static async void Run(
+ [ServiceBusTrigger("myqueue", Connection = "ServiceBusConnection")] Message email,
+ [SendGrid(ApiKey = "CustomSendGridKeyAppSettingName")] IAsyncCollector<SendGridMessage> messageCollector)
+{
+ var emailObject = JsonConvert.DeserializeObject<OutgoingEmail>(Encoding.UTF8.GetString(email.Body));
+
+ var message = new SendGridMessage();
+ message.AddTo(emailObject.To);
+ message.AddContent("text/html", emailObject.Body);
+ message.SetFrom(new EmailAddress(emailObject.From));
+ message.SetSubject(emailObject.Subject);
+ 
+ await messageCollector.AddAsync(message);
+}
+
+public class OutgoingEmail
+{
+ public string To { get; set; }
+ public string From { get; set; }
+ public string Subject { get; set; }
+ public string Body { get; set; }
 }
 ```
 
@@ -200,9 +231,9 @@ Následující tabulka popisuje vlastnosti konfigurace vazby, které jste nastav
 |**direction**|| Povinné – musí být nastavena na `out`.|
 |**Jméno**|| Požadovaná: název této proměnné v kódu funkce žádosti nebo text žádosti. Tato hodnota je ```$return``` po pouze jeden návratovou hodnotu. |
 |**apiKey**|**ApiKey**| Název nastavení aplikace, která obsahuje váš klíč rozhraní API. Pokud není nastaven, nastavení aplikace výchozí název je "AzureWebJobsSendGridApiKey".|
-|**k**|**Komu**| příjemce e-mailovou adresu. |
+|**to**|**Komu**| příjemce e-mailovou adresu. |
 |**z**|**z**| E-mailová adresa odesílatele. |
-|**Předmět**|**Předmět**| Předmět e-mailu. |
+|**subject**|**Předmět**| Předmět e-mailu. |
 |**Text**|**Text**| obsah e-mailu. |
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]

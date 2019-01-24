@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 06/03/2018
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 5835e8275bedebaca01d585a992930d6856edfd7
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: edf99f57fe2166e5ea7f91817dde978015af9348
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53553386"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54841403"
 ---
 # <a name="frequently-asked-questions-about-azure-iaas-vm-disks-and-managed-and-unmanaged-premium-disks"></a>Nejčastější dotazy týkající se disky virtuálního počítače Azure IaaS a spravovaných a nespravovaných prémiové disky
 
@@ -101,6 +101,10 @@ Zákazníkům můžete pořídit snímek jejich spravované disky a pak pomocí 
 
 Ano, spravované a nespravované disky se podporují. Doporučujeme použít spravované disky pro nové úlohy a aktuálních úloh migrace na spravované disky.
 
+**Můžu na jednom virtuálním počítači vyhledejte společně spravované a nespravované disky?**
+
+Ne.
+
 **Je-li vytvořit 128 GB disk a potom dojít ke zvětšení na 130 GB, bude mi účtovat další velikost disku (256 GB)?**
 
 Ano.
@@ -124,10 +128,6 @@ Ne. Nelze aktualizovat vlastnost název počítače. Nový virtuální počíta�
 **Kde najdu ukázkové šablony Azure Resource Manageru k vytvoření virtuálních počítačů se spravovanými disky?**
 * [Seznam šablon využití služby Managed Disks](https://github.com/Azure/azure-quickstart-templates/blob/master/managed-disk-support-list.md)
 * https://github.com/chagarw/MDPP
-
-**Můžu na jednom virtuálním počítači vyhledejte společně spravované a nespravované disky?**
-
-Ne.
 
 **Při vytváření disku z objektu blob, je k dispozici žádné průběžně existující relaci se tento zdrojový objekt blob?**
 
@@ -317,8 +317,8 @@ Nemusíte upgradovat svoje stávající nástroje Azure k vytvoření, připojen
 |Nástroje Azure      | Podporované verze                                |
 |-----------------|---------------------------------------------------|
 |Azure PowerShell | Číslo verze 4.1.0: Verzi z června 2017 nebo novější|
-|Azure CLI verze 1     | Číslo verze 0.10.13: Verze. května 2017 nebo novější|
-|Azure CLI verze 2     | Číslo verze 2.0.12: Verzi z července 2017 nebo novější|
+|Azure CLI v1     | Číslo verze 0.10.13: Verze. května 2017 nebo novější|
+|Azure CLI v2     | Číslo verze 2.0.12: Verzi z července 2017 nebo novější|
 |AzCopy           | Číslo verze 6.1.0: Verzi z června 2017 nebo novější|
 
 **Podporují se velikosti disků P4 a P6 pro nespravované disky a objekty BLOB stránky?**

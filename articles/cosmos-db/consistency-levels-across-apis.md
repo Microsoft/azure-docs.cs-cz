@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 10/23/2018
 ms.reviewer: sngun
-ms.openlocfilehash: a506c696cdb9ca6c6221b54c63d2446b7cb86a69
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: 4d2994ea6ab6d6472ec56f0f2e378062590c8920
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54430552"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54806993"
 ---
 # <a name="consistency-levels-and-azure-cosmos-db-apis"></a>Úrovně konzistence a rozhraní API služby Cosmos DB
 
@@ -26,196 +26,46 @@ V následujících částech se dozvíte mapování mezi konzistence dat požado
 
 Tato tabulka uvádí mapování konzistence mezi Apache Cassandra a úrovně konzistence ve službě Azure Cosmos DB. Pro každý z Cassandra čtení a zápis úrovní konzistence odpovídající úroveň konzistence Cosmos DB nabízí silnější, například přísnější záruky.
 
+Následující tabulka ukazuje **zápisu konzistence mapování** mezi Azure Cosmos DB a Cassandra:
 
-<table>
-<tr> 
-  <th rowspan="2">Úroveň konzistence Cassandra</th> 
-  <th rowspan="2">Úroveň konzistence cosmos DB</th> 
-  <th colspan="3">Zápis konzistence mapování</th> 
-  <th colspan="3">Mapování konzistenci pro čtení</th> 
-</tr> 
+| Cassandra | Azure Cosmos DB | Záruka |
+| - | - | - |
+|VŠE|Silné  | Linearizovatelnost |
+| EACH_QUORUM   | Silné    | Linearizovatelnost | 
+| KVORA, SÉRIOVÉHO PORTU |  Silné |    Linearizovatelnost |
+| LOCAL_QUORUM, THREE, TWO, ONE, LOCAL_ONE, ANY | Konzistentní předpona |Global Consistent Prefix |
+| EACH_QUORUM   | Silné    | Linearizovatelnost |
+| KVORA, SÉRIOVÉHO PORTU |  Silné |    Linearizovatelnost |
+| LOCAL_QUORUM, THREE, TWO, ONE, LOCAL_ONE, ANY | Konzistentní předpona | Global Consistent Prefix |
+| KVORA, SÉRIOVÉHO PORTU | Silné   | Linearizovatelnost |
+| LOCAL_QUORUM, THREE, TWO, ONE, LOCAL_ONE, ANY | Konzistentní předpona | Global Consistent Prefix |
+| LOCAL_QUORUM, LOCAL_SERIAL, TWO, THREE    | Omezená neaktuálnost | <ul><li>Omezená Neaktuálnost.</li><li>Maximálně K verzí nebo t čas za bránou.</li><li>Přečtěte si nejnovější potvrzená hodnota v oblasti.</li></ul> |
+| ONE, LOCAL_ONE, ANY   | Konzistentní předpona | Konzistentní předpona v jednotlivých oblastech |
 
+Následující tabulka ukazuje **čtení konzistence mapování** mezi Azure Cosmos DB a Cassandra:
 
- 
- <tr> 
-  <th>Cassandra</th> 
-  <th>Databáze Cosmos</th> 
-  <th>Záruka</th> 
-  <th>Z Cassandry</th> 
-  <th>Ke službě Cosmos DB</th> 
-  <th>Záruka</th> 
- </tr> 
- 
-  <tr> 
-  <td rowspan="6">VŠE</td> 
-  <td rowspan="6">Silné</td> 
-  <td>VŠE</td> 
-  <td>Silné</td> 
-  <td>Linearizovatelnost</td> 
-  <td>ALL, QUORUM, SERIAL, LOCAL_QUORUM, LOCAL_SERIAL, THREE, TWO, ONE, LOCAL_ONE</td> 
-  <td>Silné</td> 
-  <td>Linearizovatelnost</td> 
- </tr> 
- 
- <tr> 
-  <td rowspan="2">EACH_QUORUM</td> 
-  <td rowspan="2">Silné</td> 
-  <td rowspan="2">Linearizovatelnost</td> 
-  <td>ALL, QUORUM, SERIAL,  LOCAL_QUORUM, LOCAL_SERIAL, THREE, TWO</td> 
-  <td>Silné</td> 
-  <td >Linearizovatelnost</td> 
- </tr> 
- 
- <tr>
- <td>LOCAL_ONE, ONE</td>
-  <td>Konzistentní předpona</td>
-   <td>Global Consistent Prefix</td>
- </tr>
- 
+| Cassandra | Azure Cosmos DB | Záruka |
+| - | - | - |
+| ALL, QUORUM, SERIAL, LOCAL_QUORUM, LOCAL_SERIAL, THREE, TWO, ONE, LOCAL_ONE | Silné  | Linearizovatelnost|
+| ALL, QUORUM, SERIAL, LOCAL_QUORUM, LOCAL_SERIAL, THREE, TWO   |Silné |   Linearizovatelnost |
+|LOCAL_ONE, ONE | Konzistentní předpona | Global Consistent Prefix |
+| VŠECHNY KVORA, SÉRIOVÉ   | Silné    | Linearizovatelnost |
+| LOCAL_ONE, ONE, LOCAL_QUORUM, LOCAL_SERIAL, TWO, THREE |  Konzistentní předpona   | Global Consistent Prefix |
+| LOCAL_ONE, ONE, TWO, THREE, LOCAL_QUORUM, QUORUM |    Konzistentní předpona   | Global Consistent Prefix |
+| ALL, QUORUM, SERIAL, LOCAL_QUORUM, LOCAL_SERIAL, THREE, TWO   |Silné |   Linearizovatelnost |
+| LOCAL_ONE, ONE    | Konzistentní předpona | Global Consistent Prefix|
+| VŠECHNY KVORA, SERIAL silné Linearizovatelnosti
+LOCAL_ONE, ONE, LOCAL_QUORUM, LOCAL_SERIAL, TWO, THREE  |Konzistentní předpona  | Global Consistent Prefix |
+|VŠE    |Silné |Linearizovatelnost |
+| LOCAL_ONE, ONE, TWO, THREE, LOCAL_QUORUM, QUORUM  |Konzistentní předpona  |Global Consistent Prefix|
+|VŠECHNY KVORA, SERIAL silné Linearizovatelnosti
+LOCAL_ONE, ONE, LOCAL_QUORUM, LOCAL_SERIAL, TWO, THREE  |Konzistentní předpona  |Global Consistent Prefix |
+|VŠE    |Silné | Linearizovatelnost |
+| LOCAL_ONE, ONE, TWO, THREE, LOCAL_QUORUM, QUORUM  | Konzistentní předpona | Global Consistent Prefix |
+| QUORUM, LOCAL_QUORUM, LOCAL_SERIAL, TWO, THREE |  Omezená neaktuálnost   | <ul><li>Omezená Neaktuálnost.</li><li>Maximálně K verzí nebo t čas za bránou. </li><li>Přečtěte si nejnovější potvrzená hodnota v oblasti.</li></ul>
+| LOCAL_ONE, ONE |Konzistentní předpona | Konzistentní předpona v jednotlivých oblastech |
+| LOCAL_ONE, ONE, TWO, THREE, LOCAL_QUORUM, QUORUM  | Konzistentní předpona | Konzistentní předpona v jednotlivých oblastech |
 
- <tr> 
-  <td rowspan="2">KVORA, SÉRIOVÉHO PORTU</td> 
-  <td rowspan="2">Silné</td> 
-  <td rowspan="2">Linearizovatelnost</td> 
-  <td>VŠECHNY KVORA, SÉRIOVÉ</td> 
-  <td>Silné</td> 
-  <td >Linearizovatelnost</td> 
- </tr> 
-
- <tr>
-   <td>LOCAL_ONE, ONE, LOCAL_QUORUM, LOCAL_SERIAL, TWO, THREE</td>
-   <td>Konzistentní předpona</td>
-   <td>Global Consistent Prefix</td>
- </tr>
- 
- 
- <tr> 
- <td>LOCAL_QUORUM, THREE, TWO, ONE, LOCAL_ONE, <b>ANY</b></td> 
-  <td>Konzistentní předpona</td> 
-  <td>Global Consistent Prefix</td> 
-  <td>LOCAL_ONE, ONE, TWO, THREE, LOCAL_QUORUM, QUORUM</td> 
-  <td>Konzistentní předpona</td> 
-  <td>Global Consistent Prefix</td>
- </tr> 
- 
- 
-  <tr> 
-  <td rowspan="6">EACH_QUORUM</td> 
-  <td rowspan="6">Silné</td> 
-  <td rowspan="2">EACH_QUORUM</td> 
-  <td rowspan="2">Silné</td> 
-  <td rowspan="2">Linearizovatelnost</td> 
-  <td>ALL, QUORUM, SERIAL,  LOCAL_QUORUM, LOCAL_SERIAL, THREE, TWO</td> 
-  <td>Silné</td> 
-  <td>Linearizovatelnost</td> 
- </tr> 
- 
- <tr>
- <td>LOCAL_ONE, ONE</td>
-  <td>Konzistentní předpona</td>
-   <td>Global Consistent Prefix</td>
- </tr>
- 
- 
- 
- <tr> 
-  <td rowspan="2">KVORA, SÉRIOVÉHO PORTU</td> 
-  <td rowspan="2">Silné</td> 
-  <td rowspan="2">Linearizovatelnost</td> 
-  <td>VŠECHNY KVORA, SÉRIOVÉ</td> 
-  <td>Silné</td> 
-  <td>Linearizovatelnost</td> 
- </tr> 
- 
- <tr>
- <td>LOCAL_ONE, ONE, LOCAL_QUORUM, LOCAL_SERIAL, TWO, THREE</td>
-  <td>Konzistentní předpona</td>
-   <td>Global Consistent Prefix</td>
- </tr>
- 
- 
-  <tr> 
-  <td rowspan="2">LOCAL_QUORUM, THREE, TWO, ONE, LOCAL_ONE, ANY</td> 
-  <td rowspan="2">Konzistentní předpona</td> 
-  <td rowspan="2">Global Consistent Prefix</td> 
-  <td>VŠE</td> 
-  <td>Silné</td> 
-  <td>Linearizovatelnost</td> 
- </tr> 
- 
- <tr>
- <td>LOCAL_ONE, ONE, TWO, THREE, LOCAL_QUORUM, QUORUM</td>
-  <td>Konzistentní předpona</td>
-   <td>Global Consistent Prefix</td>
- </tr>
-
-
-  <tr> 
-  <td rowspan="4">KVORA</td> 
-  <td rowspan="4">Silné</td> 
-  <td rowspan="2">KVORA, SÉRIOVÉHO PORTU</td> 
-  <td rowspan="2">Silné</td> 
-  <td rowspan="2">Linearizovatelnost</td> 
-  <td>VŠECHNY KVORA, SÉRIOVÉ</td> 
-  <td>Silné</td> 
-  <td>Linearizovatelnost</td> 
- </tr> 
- 
- <tr>
- <td>LOCAL_ONE, ONE, LOCAL_QUORUM, LOCAL_SERIAL, TWO, THREE</td>
-  <td>Konzistentní předpona</td>
-   <td>Global Consistent Prefix</td>
- </tr>
- 
- 
- <tr> 
-  <td rowspan="2">LOCAL_QUORUM, THREE, TWO, ONE, LOCAL_ONE, ANY</td> 
-  <td rowspan="2">Konzistentní předpona </td> 
-  <td rowspan="2">Global Consistent Prefix </td> 
-  <td>VŠE</td> 
-  <td>Silné</td> 
-  <td>Linearizovatelnost</td> 
- </tr> 
- 
- <tr>
- <td>LOCAL_ONE, ONE, TWO, THREE, LOCAL_QUORUM, QUORUM</td>
-  <td>Konzistentní předpona</td>
-   <td>Global Consistent Prefix</td>
- </tr>
- 
- <tr> 
-  <td rowspan="4">LOCAL_QUORUM, THREE, TWO</td> 
-  <td rowspan="4">Omezená neaktuálnost</td> 
-  <td rowspan="2">LOCAL_QUORUM, LOCAL_SERIAL, TWO, THREE</td> 
-  <td rowspan="2">Omezená neaktuálnost</td> 
-  <td rowspan="2">Omezená Neaktuálnost.<br/>
-Maximálně K verzí nebo t čas za bránou.<br/>
-Přečtěte si nejnovější potvrzená hodnota v oblasti. 
-</td> 
-  
-  <td>QUORUM, LOCAL_QUORUM, LOCAL_SERIAL, TWO, THREE</td> 
-  <td>Omezená neaktuálnost</td> 
-  <td>Omezená Neaktuálnost.<br/>
-Maximálně K verzí nebo t čas za bránou. <br/>
-Přečtěte si nejnovější potvrzená hodnota v oblasti. </td> 
- </tr> 
- 
- <tr>
- <td>LOCAL_ONE, ONE</td>
-  <td>Konzistentní předpona</td>
-   <td>Konzistentní předpona v jednotlivých oblastech</td>
- </tr>
- 
- 
- <tr> 
-  <td>ONE, LOCAL_ONE, ANY</td> 
-  <td>Konzistentní předpona </td> 
-  <td >Konzistentní předpona v jednotlivých oblastech </td> 
-  <td>LOCAL_ONE, ONE, TWO, THREE, LOCAL_QUORUM, QUORUM</td> 
-  <td>Konzistentní předpona</td> 
-  <td>Konzistentní předpona v jednotlivých oblastech</td> 
- </tr> 
-</table>
 
 ## <a id="mongo-mapping"></a>Mapování mezi úrovněmi konzistence MongoDB 3.4 a Azure Cosmos DB
 

@@ -3,19 +3,19 @@ title: Ověřování, registrace, upravte profil v Azure Active Directory B2C | 
 description: Jak sestavit aplikaci klasické pracovní plochy Windows, která zahrnuje přihlášení, registraci, a správy profilů pomocí Azure Active Directory B2C.
 services: active-directory-b2c
 author: davidmu1
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 01/07/2017
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: fc32cf40266bdad1aa5365b30a27210ad735f299
-ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
+ms.openlocfilehash: 96cdbca1b0a5a75c24b9d0e75eaf1fc861bf764a
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54354378"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54843119"
 ---
 # <a name="azure-ad-b2c-build-a-windows-desktop-app"></a>Azure AD B2C: Vytváření desktopových aplikací pro Windows
 Pomocí Azure Active Directory (Azure AD) B2C můžete přidat funkce správy identity výkonné samoobslužné služby do aplikace klasické pracovní plochy v několika krocích. Tento článek vám ukáže jak vytvořit aplikaci "seznam úkolů".NET Windows Presentation Foundation (WPF), která zahrnuje uživatelské registrace, přihlašování a správy profilů. Aplikace bude zahrnovat podporu registrace a přihlášení pomocí uživatelského jména nebo e-mailu. Bude také zahrnovat podporu registrace a přihlášení pomocí účtů na sociálních sítích, jako je například Facebook nebo Google.

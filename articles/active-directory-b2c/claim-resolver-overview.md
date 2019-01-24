@@ -3,19 +3,19 @@ title: Informace o deklaraci identity překladače ve vlastních zásad Azure Ac
 description: Další informace o použití překladačů deklarace identity ve vlastních zásadách v Azure Active Directory B2C.
 services: active-directory-b2c
 author: davidmu1
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 10/08/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: dccb597cda1f5aba30d18b0f71371caa6ceee9b4
-ms.sourcegitcommit: 7804131dbe9599f7f7afa59cacc2babd19e1e4b9
+ms.openlocfilehash: 6b7f3dc79e3b4c06b2b974e0cdca0bf20221c3ad
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/17/2018
-ms.locfileid: "51852374"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54845006"
 ---
 # <a name="about-claim-resolvers-in-azure-active-directory-b2c-custom-policies"></a>O překladače deklarace identity v Azure Active Directory B2C vlastních zásad
 
@@ -49,17 +49,17 @@ Překladače deklarace identity k dispozici v následujících částech.
 | ----- | ----------- | --------|
 | {Jazyková verze: LanguageName} | Dvě písmena kód ISO pro jazyk. | en |
 | {Jazyková verze: LCID}   | LCID kód jazyka. | 5 |
-| {Jazyková verze: RegionName} | Dvě písmena kód ISO pro danou oblast. | USA |
-| {Jazyková verze: RFC5646} | Kód jazyka RFC5646. | cs-CZ |
+| {Culture:RegionName} | Dvě písmena kód ISO pro danou oblast. | USA |
+| {Jazyková verze: RFC5646} | Kód jazyka RFC5646. | en-US |
 
 ### <a name="policy"></a>Zásada
 
 | Deklarovat | Popis | Příklad: |
 | ----- | ----------- | --------|
-| {Zásad: PolicyId} | Název zásad přijímající strany. | B2C_1A_signup_signin |
-| {Zásad: RelyingPartyTenantId} | ID tenanta předávající strana zásad. | vaše tenant.onmicrosoft.com |
-| {Zásad: TenantObjectId} | ID objektu tenanta předávající strana zásad. | 00000000-0000-0000-0000-000000000000 |
-| {Zásad: TrustFrameworkTenantId} | ID tenanta Framework vztah důvěryhodnosti. | vaše tenant.onmicrosoft.com |
+| {Policy:PolicyId} | Název zásad přijímající strany. | B2C_1A_signup_signin |
+| {Policy:RelyingPartyTenantId} | ID tenanta předávající strana zásad. | vaše tenant.onmicrosoft.com |
+| {Policy:TenantObjectId} | ID objektu tenanta předávající strana zásad. | 00000000-0000-0000-0000-000000000000 |
+| {Policy:TrustFrameworkTenantId} | ID tenanta Framework vztah důvěryhodnosti. | vaše tenant.onmicrosoft.com |
 
 ### <a name="openid-connect"></a>OpenID Connect
 
@@ -67,7 +67,7 @@ Překladače deklarace identity k dispozici v následujících částech.
 | ----- | ----------- | --------|
 | {OIDC:AuthenticationContextReferences} |`acr_values` Parametr řetězce dotazu. | neuvedeno |
 | {OIDC:ClientId} |`client_id` Parametr řetězce dotazu. | 00000000-0000-0000-0000-000000000000 |
-| {OIDC:DomainHint} |`domain_hint` Parametr řetězce dotazu. | Facebook.com |
+| {OIDC:DomainHint} |`domain_hint` Parametr řetězce dotazu. | facebook.com |
 | {OIDC:LoginHint} |  `login_hint` Parametr řetězce dotazu. | someone@contoso.com |
 | {OIDC:MaxAge} | `max_age`. | neuvedeno |
 | {OIDC:Nonce} |`Nonce` Parametr řetězce dotazu. | defaultNonce |
@@ -80,10 +80,10 @@ Překladače deklarace identity k dispozici v následujících částech.
 | Deklarovat | Popis | Příklad: |
 | ----- | ----------- | --------|
 | {Kontextu: ČísloSestavení} | Verze rozhraní prostředí pro Identity (číslo sestavení).  | 1.0.507.0 |
-| {Kontextu: CorrelationId} | ID korelace.  | 00000000-0000-0000-0000-000000000000 |
-| {Kontextu: DateTimeInUtc} |Datum čas ve standardu UTC.  | 10/10/2018 12:00:00 PM |
-| {Kontextu: DeploymentMode} |Režim nasazení zásady.  | Výroba |
-| {Kontextu: IPAddress} | IP adresy uživatele. | 11.111.111.11 |
+| {Context:CorrelationId} | ID korelace.  | 00000000-0000-0000-0000-000000000000 |
+| {Context:DateTimeInUtc} |Datum čas ve standardu UTC.  | 10/10/2018 12:00:00 PM |
+| {Context:DeploymentMode} |Režim nasazení zásady.  | Výroba |
+| {Context:IPAddress} | IP adresy uživatele. | 11.111.111.11 |
 
 
 ### <a name="non-protocol-parameters"></a>Parametry bez protokolu
@@ -92,7 +92,7 @@ Libovolný název parametru jako součást požadavku OIDC nebo OAuth2 lze mapov
 
 | Deklarovat | Popis | Příklad: |
 | ----- | ----------------------- | --------|
-| {OAUTH-KV:campaignId} | Parametr řetězce dotazu. | Havajské ostrovy |
+| {OAUTH-KV:campaignId} | Parametr řetězce dotazu. | hawaii |
 | {OAUTH-KV:app_session} | Parametr řetězce dotazu. | A3C5R |
 | {OAUTH-KV:loyalty_number} | Parametr řetězce dotazu. | 1234 |
 | {OAUTH KV: všechny vlastní řetězec dotazu} | Parametr řetězce dotazu. | neuvedeno |

@@ -3,7 +3,7 @@ title: Potenciál důvody pro chybová zpráva "Se tam nelze dostat z tohoto" ve
 description: Řešení potíží s potenciální důvody, které se vám chybová zpráva "Se tam nelze dostat z tohoto".
 services: active-directory
 author: eross-msft
-manager: mtillman
+manager: daveba
 ms.assetid: 8ad0156c-0812-4855-8563-6fbff6194174
 ms.service: active-directory
 ms.component: user-help
@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 10/10/2018
 ms.author: lizross
 ms.reviewer: jairoc
-ms.openlocfilehash: c34b096766b6b7dda26c51559bf58e40d95715e7
-ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
+ms.openlocfilehash: eb924a612188d905eb6c7127067fed2fd4b0f218
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49651410"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54825523"
 ---
 # <a name="potential-reasons-for-the-you-cant-get-there-from-here-error-message"></a>Možné důvody chybová zpráva "Se tam nelze dostat z tohoto"
 Při přístupu k interním webu aplikacím nebo službám vaší organizace, může se zobrazit chybová zpráva s upozorněním, **se tam nelze dostat z tohoto**. Tato zpráva znamená, že vaše organizace má zavést zásady zařízení brání v přístupu k prostředkům vaší organizace. Zatímco může skončit by bylo nutné kontaktovat Helpdesk chcete tento problém vyřešit, tady je pár věcí, které můžete nejdřív vyzkoušet.

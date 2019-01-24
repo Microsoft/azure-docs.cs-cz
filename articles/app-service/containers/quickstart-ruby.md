@@ -13,22 +13,22 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: quickstart
-ms.date: 08/24/2018
+ms.date: 01/23/2019
 ms.author: cfowler
 ms.custom: seodec18
-ms.openlocfilehash: 13686951324a10c1de621f0fe507be062c9d2095
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: 3ddf98abf0c52d3bc1fb0a6ce43755d5adcf87fa
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53252469"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54848627"
 ---
 # <a name="create-a-ruby-on-rails-app-in-app-service-on-linux"></a>Vytvoření aplikace v Ruby on Rails ve službě App Service v Linuxu
 
 [Azure App Service v Linuxu](app-service-linux-intro.md) je vysoce škálovatelná služba s automatickými opravami pro hostování webů. V tomto rychlém startu se dozvíte, jak vytvořit základní aplikaci v [Ruby on Rails](https://rubyonrails.org/), kterou pak můžete nasadit do Azure jako webovou aplikaci v Linuxu.
 
 > [!NOTE]
-> Vývojová sada Ruby podporuje v současnosti jen Ruby on Rails. Pokud chcete použít jinou platformu, například Sinatra, přečtěte si prosím rychlý start pro [Web App for Containers](https://docs.microsoft.com/azure/app-service/containers/).
+> Vývojová sada Ruby podporuje v současnosti jen Ruby on Rails. Pokud chcete použít různé platformy, jako je například Sinatra, nebo pokud chcete použít [Nepodporovaná verze Ruby](app-service-linux-intro.md), najdete v tomto rychlém startu pro [Web App for Containers](https://docs.microsoft.com/azure/app-service/containers/).
 
 ![Hello World](./media/quickstart-ruby/hello-world-updated.png)
 

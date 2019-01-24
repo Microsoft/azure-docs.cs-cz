@@ -3,19 +3,19 @@ title: Ukázky kódu pro Azure Active Directory B2C | Microsoft Docs
 description: Ukázky kódu pro mobilní, desktopové, webové a jednostránkové aplikace Azure Active Directory B2C.
 services: active-directory-b2c
 author: davidmu1
-manager: mtillman
+manager: daveba
 ms.author: davidmu
 ms.date: 01/23/2018
 ms.custom: mvc
 ms.topic: sample
 ms.service: active-directory
 ms.component: B2C
-ms.openlocfilehash: ffb60ab07ef21a94a7ba978fe354948f18479a37
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
-ms.translationtype: HT
+ms.openlocfilehash: d78d3193cfc01fefec7e04f751432dc053b7f8ec
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37446556"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54846111"
 ---
 # <a name="azure-active-directory-b2c-code-samples"></a>Ukázky kódu pro Azure Active Directory B2C
 

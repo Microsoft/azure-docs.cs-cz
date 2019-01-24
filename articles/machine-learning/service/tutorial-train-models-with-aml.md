@@ -11,12 +11,12 @@ ms.author: haining
 ms.reviewer: sgilley
 ms.date: 12/04/2018
 ms.custom: seodec18
-ms.openlocfilehash: 5008aebfea8fc284b1b85797f0523bc4fb11c7bd
-ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
+ms.openlocfilehash: a9fc0655a3666f09fed342af5b4f14e2097290ab
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54075936"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54828246"
 ---
 # <a name="tutorial-train-an-image-classification-model-with-azure-machine-learning-service"></a>Kurz: Trénování modelu klasifikace obrázků pomocí služby Azure Machine Learning
 
@@ -42,7 +42,7 @@ Pokud nemáte předplatné Azure, vytvořte si bezplatný účet, před zahájen
 
 ## <a name="get-the-notebook"></a>Získání poznámkového bloku
 
-V zájmu usnadnění práce je tento kurz dostupný jako [poznámkový blok Jupyter](https://github.com/Azure/MachineLearningNotebooks/blob/master/tutorials/img-classification-part1-training.ipynb). Spusťte poznámkový blok `tutorials/img-classification-part1-training.ipynb` ve službě Azure Notebooks nebo na vlastním serveru poznámkového bloku Jupyter.
+V zájmu usnadnění práce je tento kurz dostupný jako [poznámkový blok Jupyter](https://github.com/Azure/MachineLearningNotebooks/blob/master/tutorials/img-classification-part1-training.ipynb). Spustit `tutorials/img-classification-part1-training.ipynb` poznámkového bloku v [poznámkových bloků Azure](https://notebooks.azure.com/) nebo vlastní server poznámkového bloku Jupyter.
 
 [!INCLUDE [aml-clone-in-azure-notebook](../../../includes/aml-clone-in-azure-notebook.md)]
 

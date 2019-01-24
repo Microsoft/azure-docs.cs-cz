@@ -3,21 +3,21 @@ title: Kurz – Povolení ověřování účtů pomocí Azure Active Directory B
 description: Kurz týkající se použití Azure Active Directory B2C k zajištění přihlašování uživatelů v jednostránkové aplikaci (JavaScript).
 services: active-directory-b2c
 author: davidmu1
-manager: mtillman
+manager: daveba
 ms.author: davidmu
 ms.date: 11/30/2018
 ms.custom: mvc
 ms.topic: tutorial
 ms.service: active-directory
 ms.component: B2C
-ms.openlocfilehash: cce76a0e97e039ec6e6c3a976d1fc7caca7fde73
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 08372700e9740ca69ba73dfba49f9d120dfabc6d
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52834430"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54850327"
 ---
-# <a name="tutorial-enable-single-page-app-authentication-with-accounts-using-azure-active-directory-b2c"></a>Kurz: Povolení ověřování účtů pomocí Azure Active Directory B2C pro jednostránkovou aplikaci
+# <a name="tutorial-enable-single-page-app-authentication-with-accounts-using-azure-active-directory-b2c"></a>Kurz: Povolit jednostránkové aplikace ověřování účtů pomocí Azure Active Directory B2C
 
 V tomto kurzu se dozvíte, jak použít Azure Active Directory (Azure AD) B2C k registraci a přihlašování uživatelů v jednostránkové aplikaci (SPA). Azure AD B2C umožňuje aplikacím provádět ověřování účtů na sociálních sítích, podnikových účtů a účtů Azure Active Directory s využitím protokolů s otevřenými standardy.
 

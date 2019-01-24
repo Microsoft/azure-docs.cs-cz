@@ -4,7 +4,7 @@ description: Porovnání služeb Azure Active Directory Domain Services k řadi�
 services: active-directory-ds
 documentationcenter: ''
 author: eringreenlee
-manager: mtillman
+manager: daveba
 editor: curtand
 ms.assetid: 165249d5-e0e7-4ed1-aa26-91a05a87bdc9
 ms.service: active-directory
@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 07/07/2017
 ms.author: ergreenl
-ms.openlocfilehash: f7455076d59e447ade9c15203593d260cf676894
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.openlocfilehash: 45c1629aba2124230aa55f67583ff08584ab3c93
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50155793"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54847624"
 ---
 # <a name="how-to-decide-if-azure-ad-domain-services-is-right-for-your-use-case"></a>Jak určit, pokud Azure AD Domain Services bude vyhovovat vašemu případu použití
 S Azure AD Domain Services můžete nasadit úlohy ve službách infrastruktury Azure, aniž byste museli starat o údržbu infrastruktury identity v Azure. Této spravované služby se liší od typické nasazení systému Windows Server Active Directory, která můžete nasadit a spravovat sami. Služba je snadné nasazení a poskytuje automatizované stavu sledování a náprava. Neustále vyvíjíme službu s přidanou podporou pro běžné scénáře nasazení.
@@ -59,7 +59,7 @@ Domény Azure AD Domain Services spravuje Microsoft. Není nutné se starat o op
 Spravovaná doména je bezpečně uzamčené podle doporučení zabezpečení od Microsoftu pro nasazení AD. Tato doporučení vyplývají z produktového týmu AD desítky let praxe s technickými a podporuje AD nasazení. Sestavili nasazení musíte provést kroky nasazení specifické pro uzamčení dolů a zabezpečení vašeho nasazení.
 
 #### <a name="dns-server"></a>DNS server
-Spravované domény služby Azure AD Domain Services obsahuje spravované služby DNS. Členové skupiny "Správci AAD DC" můžete spravovat DNS ve spravované doméně. Členové této skupiny jsou uvedeny úplná oprávnění pro správu DNS pro spravovanou doménu. Správa služby DNS je možné provádět pomocí "DNS konzoly pro správu' obsažené v balíčku vzdálenou správu serveru (RSAT).
+An Azure AD Domain Services managed domain includes managed DNS services. Členové skupiny "Správci AAD DC" můžete spravovat DNS ve spravované doméně. Členové této skupiny jsou uvedeny úplná oprávnění pro správu DNS pro spravovanou doménu. Správa služby DNS je možné provádět pomocí "DNS konzoly pro správu' obsažené v balíčku vzdálenou správu serveru (RSAT).
 [Další informace](active-directory-ds-admin-guide-administer-dns.md)
 
 #### <a name="domain-or-enterprise-administrator-privileges"></a>Oprávnění domény nebo správce podnikové sítě
@@ -106,9 +106,9 @@ Spravované domény služby Azure AD Domain Services jsou k dispozici v jedné v
 ## <a name="do-it-yourself-diy-ad-deployment-options"></a>Možnosti nasazení "Sestavili" (DIY) AD
 Může mít použití nasazené tam, kde potřebujete některé možnosti nabízené instalace systému Windows Server AD. V těchto případech zvažte jednu z následujících možností sestavili (DIY):
 
-* **Samostatné domény cloudu:** můžete nastavit samostatný cloudové doméně pomocí služby Azure virtual machines, které jsou nakonfigurované jako řadiče domény. Tato infrastruktura nejde integrovat místní prostředí AD. Tato možnost bude vyžadovat jinou sadu 'přihlašovací údaje do cloudu' k přihlášení a správa virtuálních počítačů v cloudu.
-* **Nasazení doménové struktury prostředků:** můžete nastavit domény v doménové struktuře topologii prostředků pomocí Azure virtual machines, které jsou nakonfigurované jako řadiče domény. Dále je nutné nakonfigurovat vztah důvěryhodnosti AD s vaší místní prostředí AD. Připojení k doméně počítače (virtuální počítače Azure) můžete do této doménové struktury prostředků v cloudu. Ověření uživatele se stane buď přes připojení VPN/ExpressRoute do místního adresáře.
-* **Rozšíření místní domény do Azure:** službě Azure virtual network můžete připojit k místní síti pomocí připojení VPN/ExpressRoute. Toto nastavení umožňuje virtuální počítače Azure k místní AD. Další možností je zvýšení úrovně řadičů domény repliky vaší místní domény v Azure jako virtuální počítač. Vám může potom ho nastavit pro replikaci přes připojení VPN/ExpressRoute do místního adresáře. Tento režim nasazení efektivně rozšiřuje vaši místní doménu do Azure.
+* **Samostatné domény cloudu:** Můžete nastavit samostatný cloudové doméně pomocí služby Azure virtual machines, které jsou nakonfigurované jako řadiče domény. Tato infrastruktura nejde integrovat místní prostředí AD. Tato možnost bude vyžadovat jinou sadu 'přihlašovací údaje do cloudu' k přihlášení a správa virtuálních počítačů v cloudu.
+* **Nasazení doménové struktury prostředků:** Můžete nastavit domény v doménové struktuře topologii prostředků pomocí Azure virtual machines, které jsou nakonfigurované jako řadiče domény. Dále je nutné nakonfigurovat vztah důvěryhodnosti AD s vaší místní prostředí AD. Připojení k doméně počítače (virtuální počítače Azure) můžete do této doménové struktury prostředků v cloudu. Ověření uživatele se stane buď přes připojení VPN/ExpressRoute do místního adresáře.
+* **Rozšíření místní domény do Azure:** Služby Azure virtual network můžete připojit k místní síti pomocí připojení VPN/ExpressRoute. Toto nastavení umožňuje virtuální počítače Azure k místní AD. Další možností je zvýšení úrovně řadičů domény repliky vaší místní domény v Azure jako virtuální počítač. Vám může potom ho nastavit pro replikaci přes připojení VPN/ExpressRoute do místního adresáře. Tento režim nasazení efektivně rozšiřuje vaši místní doménu do Azure.
 
 > [!NOTE]
 > Můžete určit, že rozběhněte zcela možnost je vhodnější pro vaše nasazení případy použití. Vezměte v úvahu [sdílení zpětné vazby](active-directory-ds-contact-us.md) který nám pomůže zjistit, co by funkce pomáhají jste si zvolili Azure AD Domain Services v budoucnu. Tato zpětná vazba nám vyvíjí služby, aby lépe vyhovovala požadavků na nasazení a případy použití.

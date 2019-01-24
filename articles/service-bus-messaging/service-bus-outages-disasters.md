@@ -2,18 +2,19 @@
 title: Izolační aplikace Azure Service Bus proti výpadků a havárií | Dokumentace Microsoftu
 description: Techniky pro ochranu aplikací proti potenciální výpadek služby Service Bus.
 services: service-bus-messaging
-author: spelluru
+author: axisc
 manager: timlt
+editor: spelluru
 ms.service: service-bus-messaging
 ms.topic: article
 ms.date: 09/14/2018
-ms.author: spelluru
-ms.openlocfilehash: 85481deceeadaf4154659d35fccf777f489bd782
-ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
+ms.author: aschhab
+ms.openlocfilehash: e9fb1795ecb26fc87fd8f3ff000d125d71e9d594
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47393703"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54846706"
 ---
 # <a name="best-practices-for-insulating-applications-against-service-bus-outages-and-disasters"></a>Osvědčené postupy pro izolační aplikace využívající službu Service Bus výpadků a havárií
 
@@ -69,7 +70,7 @@ Obecně je levnější než replikace služby active pasivní replikace, protož
 
 Při použití pasivní replikace v následujících scénářích zprávy ztráta nebo přijatých dvakrát:
 
-* **Zpráva zpoždění nebo ztrátou**: předpokládají, že odesílatel zprávy m1 úspěšně odeslán do primární fronty, a potom fronty není k dispozici před příjemce dostane m1. Odesílatel odešle m2 následnou zprávu do sekundární fronty. Pokud se primární fronta je dočasně nedostupná, příjemce dostane m1 po fronty opět k dispozici. V případě havárie příjemce nikdy nedostane m1.
+* **Zpráva zpoždění nebo ztrátou**: Předpokládejme, že odesílatel zprávy m1 úspěšně odeslán do primární fronty, a potom fronty není k dispozici před příjemce dostane m1. Odesílatel odešle m2 následnou zprávu do sekundární fronty. Pokud se primární fronta je dočasně nedostupná, příjemce dostane m1 po fronty opět k dispozici. V případě havárie příjemce nikdy nedostane m1.
 * **Duplicitní příjem**: Předpokládejme, že odesílatel odešle zprávu m do primární fronty. Service Bus úspěšně zpracuje m, ale selže k odeslání odpovědi. Jakmile vyprší časový limit operace send, odesílatel odešle totožnou kopii m sekundární fronty. Pokud je příjemce schopný přijímat prvního kopírování m předtím, než primární fronty přestane být k dispozici, příjemce obdrží obou kopiích m v přibližně ve stejnou dobu. Pokud příjemce nemůže přijímat prvního kopírování m předtím, než primární fronty přestane být k dispozici, příjemce zpočátku přijímá pouze druhé kopie m, ale pak obdrží kopii m druhý, jakmile je k dispozici primární fronty.
 
 [Geografickou replikaci pomocí služby Service Bus zprostředkovaných zpráv] [ Geo-replication with Service Bus Brokered Messages] ukázce pasivní replikaci entity pro zasílání zpráv.

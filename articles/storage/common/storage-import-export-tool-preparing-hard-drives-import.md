@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 06/29/2017
 ms.author: muralikk
 ms.component: common
-ms.openlocfilehash: b16a476f1960c79c378cd3aa18eae789c289eb54
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 44d39dcfd8c271cc97a88da7d1f0bec84bd866df
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51244028"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54828362"
 ---
 # <a name="preparing-hard-drives-for-an-import-job"></a>Příprava pevných disků pro úlohu importu
 
@@ -78,10 +78,10 @@ BasePath,DstBlobPathOrPrefix,BlobType,Disposition,MetadataFile,PropertiesFile
 
 | Pole | Popis |
 | --- | --- |
-| BasePath | **[Povinné]**<br/>Hodnota tohoto parametru představuje zdroj, kde se nachází data, která mají být importována. Nástroj se rekurzivně kopírovat všechna data nachází v rámci této cesty.<br><br/>**Povolené hodnoty**: to musí být platná cesta na místním počítači nebo cesta platné sdílené složky a musí být přístupné pro uživatele. Cesta k adresáři musí být absolutní cesta (nikoli relativní cestu). Pokud cesta končí "\\", představuje jiný adresář cesty končí bez"\\" představuje soubor.<br/>V tomto poli je povolený žádný regulární výraz. Pokud cesta obsahuje mezery, vložit ho do "".<br><br/>**Příklad**: "c:\Directory\c\Directory\File.txt"<br>"\\\\FBaseFilesharePath.domain.net\sharename\directory\"  |
+| BasePath | **[Povinné]**<br/>Hodnota tohoto parametru představuje zdroj, kde se nachází data, která mají být importována. Nástroj se rekurzivně kopírovat všechna data nachází v rámci této cesty.<br><br/>**Povolené hodnoty**: To musí být platná cesta na místním počítači nebo cestu ke sdílené složce platný a musí být přístupné pro uživatele. Cesta k adresáři musí být absolutní cesta (nikoli relativní cestu). Pokud cesta končí "\\", představuje jiný adresář cesty končí bez"\\" představuje soubor.<br/>V tomto poli je povolený žádný regulární výraz. Pokud cesta obsahuje mezery, vložit ho do "".<br><br/>**Příklad**: "c:\Directory\c\Directory\File.txt"<br>"\\\\FBaseFilesharePath.domain.net\sharename\directory\"  |
 | DstBlobPathOrPrefix | **[Povinné]**<br/> Cesta k cílové virtuální adresář ve vašem účtu úložiště Windows Azure. Virtuální adresář může nebo nemusí již existují. Pokud neexistuje, služba Import/Export ho vytvoří.<br/><br/>Nezapomeňte použít názvy platný kontejner při zadání cílové virtuální adresáře nebo objekty BLOB. Uvědomte si, že názvy kontejnerů musí obsahovat malá písmena. Pravidla pojmenování kontejneru, naleznete v tématu [pojmenování a odkazování na kontejnerů, objektů BLOB a metadat](/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata). Pokud pouze root není zadána, struktura adresářů zdroje jsou replikovány v cílový kontejner objektů blob. Pokud struktura jiný adresář než ten, který ve zdroji více řádků mapování ve sdíleném svazku clusteru<br/><br/>Můžete zadat kontejner nebo objekt blob předpony jako je hudba/70s /. Cílový adresář musí začínat název kontejneru, za nímž následuje lomítko "/" a může volitelně zahrnovat blob virtuální adresář, který končí na "/".<br/><br/>Pokud cílový kontejner je kořenový kontejner, je nutné explicitně zadat kořenový kontejner, včetně lomítka jako $root /. Protože objekty BLOB v kořenovém kontejneru nemůže obsahovat "/" v jejich názvy, nebude všech podadresářích ve zdrojovém adresáři kopírovat, pokud cílový adresář je kořenový kontejner.<br/><br/>**Příklad**<br/>Pokud je cesta k cílovému objektu blob https://mystorageaccount.blob.core.windows.net/video, hodnota tohoto pole může být videa /  |
 | BlobType | **[Volitelné]**  bloku &#124; stránky<br/>Služba Import/Export momentálně podporuje 2 typy objektů BLOB. Stránka objekty BLOB a výchozí BlobsBy bloku, které budou importovány všechny soubory jako objekty BLOB bloku. A \*VHD a \*.vhdx se naimportují, jak BlobsThere stránky, je omezený na objekt blob bloku a povolenou velikost stránky – objekt blob. Zobrazit [cíle škálovatelnosti úložiště](storage-scalability-targets.md) Další informace.  |
-| Dispozice | **[Volitelné]**  přejmenovat &#124; přepsat bez &#124; přepsat <br/> Toto pole určuje chování kopírování během importu tj Když se nahrávaných dat do účtu úložiště z disku. Dostupné možnosti: přejmenování&#124;přepsal&#124;přepsat č. Výchozí hodnota je "přejmenovat", pokud není nic zadané. <br/><br/>**Přejmenovat**: Pokud se nachází objekt se stejným názvem, vytvoří kopii v cílovém umístění.<br/>Přepsat: soubor novější soubor přepíše. Soubor se last-modified wins.<br/>**Ne přepsat**: přeskočení zápisu do souboru, pokud již existuje.|
+| Dispozice | **[Volitelné]**  přejmenovat &#124; přepsat bez &#124; přepsat <br/> Toto pole určuje chování kopírování během importu tj Když se nahrávaných dat do účtu úložiště z disku. Dostupné možnosti: přejmenování&#124;přepsal&#124;přepsat č. Výchozí hodnota je "přejmenovat", pokud není nic zadané. <br/><br/>**Přejmenovat**: Pokud se nachází objekt se stejným názvem, vytvoří kopii v cílovém umístění.<br/>Přepsat: soubor novější soubor přepíše. Soubor se last-modified wins.<br/>**No-overwrite**: Přeskakuje se zápis souboru, pokud je již k dispozici.|
 | MetadataFile | **[Volitelné]** <br/>Hodnota, která má toto pole je soubor metadat, které lze zadat, pokud je potřeba zachovat metadata objektů nebo zadat vlastní metadata. Cesta k souboru metadat pro cílové objektů BLOB. Zobrazit [metadat a formát souboru vlastností služby Import/Export](../storage-import-export-file-format-metadata-and-properties.md) Další informace |
 | PropertiesFile | **[Volitelné]** <br/>Cesta k souboru vlastnost cílové objektů BLOB. Zobrazit [metadat a formát souboru vlastností služby Import/Export](../storage-import-export-file-format-metadata-and-properties.md) Další informace. |
 
@@ -107,12 +107,12 @@ H,Format,SilentMode,Encrypt,
 
 ### <a name="driveset-csv-file-fields"></a>Pole souborů Driveset sdíleného svazku clusteru
 
-| Fields (Pole) | Hodnota |
+| Pole | Hodnota |
 | --- | --- |
 | Písmeno_jednotky | **[Povinné]**<br/> Každé jednotky, který se právě poskytuje nástroje, jako cíl musí mít jednoduchý svazek NTFS na ně a písmeno jednotky přiřazené k němu.<br/> <br/>**Příklad**: R nebo r |
-| FormatOption | **[Povinné]**  Formátu &#124; AlreadyFormatted<br/><br/> **Formát**: určení tohoto naformátuje všechna data na disku. <br/>**AlreadyFormatted**: nástroje se přeskočí, formátování, pokud je zadána tato hodnota. |
-| SilentOrPromptOnFormat | **[Povinné]**  SilentMode &#124; PromptOnFormat<br/><br/>**SilentMode**: zadání této hodnoty se povolení uživatele chcete nástroj spustit v bezobslužném režimu. <br/>**PromptOnFormat**: nástroje se zobrazí výzva k potvrzení, jestli akce je ve skutečnosti určený v každé formátu.<br/><br/>Pokud není nastavený, příkaz přerušit, který se zobrazí chybová zpráva: "Nesprávná hodnota pro SilentOrPromptOnFormat: žádná" |
-| Šifrování | **[Povinné]**  Šifrování &#124; AlreadyEncrypted<br/> Hodnotou tohoto pole rozhodne není na disku, který k šifrování a které. <br/><br/>**Šifrování**: nástroje se formátování disku. Pokud je hodnota "FormatOption" pole "Formát" pak tato hodnota musí být "Šifrovat". -Li zadána v tomto případě "AlreadyEncrypted", jinak dojde k chybě "Když je určený formát šifrování musí být zadaná také".<br/>**AlreadyEncrypted**: nástroj dešifruje jednotku s použitím BitLockerKey zadané v poli "ExistingBitLockerKey". Pokud je hodnota "FormatOption" pole "AlreadyFormatted", pak tato hodnota může být "Šifrovat" nebo "AlreadyEncrypted" |
+| FormatOption | **[Povinné]**  Formátu &#124; AlreadyFormatted<br/><br/> **Formát**: Určení tohoto naformátuje všechna data na disku. <br/>**AlreadyFormatted**: Nástroj se přeskočí, formátování, pokud je zadána tato hodnota. |
+| SilentOrPromptOnFormat | **[Povinné]**  SilentMode &#124; PromptOnFormat<br/><br/>**SilentMode**: Zadání této hodnoty se povolení uživatele chcete nástroj spustit v bezobslužném režimu. <br/>**PromptOnFormat**: Nástroj se zobrazí výzva k potvrzení, jestli akce je ve skutečnosti určený v každé formátu.<br/><br/>Pokud není nastavený, příkaz přerušit, který se zobrazí chybová zpráva: "Nesprávná hodnota pro SilentOrPromptOnFormat: žádná" |
+| Šifrování | **[Povinné]**  Šifrování &#124; AlreadyEncrypted<br/> Hodnotou tohoto pole rozhodne není na disku, který k šifrování a které. <br/><br/>**šifrování**: Nástroj se formátování disku. Pokud je hodnota "FormatOption" pole "Formát" pak tato hodnota musí být "Šifrovat". -Li zadána v tomto případě "AlreadyEncrypted", jinak dojde k chybě "Když je určený formát šifrování musí být zadaná také".<br/>**AlreadyEncrypted**: Nástroj dešifruje jednotku s použitím BitLockerKey zadané v poli "ExistingBitLockerKey". Pokud je hodnota "FormatOption" pole "AlreadyFormatted", pak tato hodnota může být "Šifrovat" nebo "AlreadyEncrypted" |
 | ExistingBitLockerKey | **[Povinné]**  Pokud je hodnota "Šifrování" pole "AlreadyEncrypted"<br/> Hodnota tohoto pole je klíč Bitlockeru, který je spojen s konkrétním diskem. <br/><br/>Toto pole by měla být ponecháno prázdné, pokud je hodnota "Šifrování" pole "Šifrovat".  Pokud v tomto případě je zadaný klíč nástroje BitLocker, jinak dojde k chybě "By neměl být zadaný klíč Bitlockeru".<br/>  **Příklad**: 060456-014509-132033-080300-252615-584177-672089-411631|
 
 ##  <a name="preparing-disk-for-import-job"></a>Příprava disku pro úlohu importu
@@ -201,23 +201,23 @@ WAImportExport.exe PrepImport /j:JournalTest.jrn /id:session#2 /ResumeSession
 
 | Parametry | Popis |
 | --- | --- |
-|     /j:&lt;JournalFile&gt;  | **Vyžaduje**<br/> Cesta k souboru deníku. Soubor deníku Sada disků sleduje a zaznamenává průběh při přípravě těchto jednotek. Soubor deníku musí být vždy zadán.  |
+|     /j:&lt;JournalFile&gt;  | **Požadováno**<br/> Cesta k souboru deníku. Soubor deníku Sada disků sleduje a zaznamenává průběh při přípravě těchto jednotek. Soubor deníku musí být vždy zadán.  |
 |     /logdir:&lt;LogDirectory&gt;  | **Volitelné**. Adresář protokolu.<br/> Podrobné soubory protokolů, jakož i některé dočasné soubory, se zapíšou do tohoto adresáře. Pokud není zadaný, aktuální adresář se použije jako adresář protokolu. Adresář protokolu se dá nastavit jenom jednou pro stejný soubor deníku.  |
-|     /ID:&lt;SessionId&gt;  | **Vyžaduje**<br/> Relace, Id se používá k identifikaci kopírování relace. Používá se k zajištění přesných obnovení relace přerušené kopírování.  |
+|     /ID:&lt;SessionId&gt;  | **Požadováno**<br/> Relace, Id se používá k identifikaci kopírování relace. Používá se k zajištění přesných obnovení relace přerušené kopírování.  |
 |     / ResumeSession  | Volitelné. Pokud poslední relace kopie byla neobvykle ukončena, můžete tento parametr zadán k obnovení relace.   |
-|     / AbortSession  | Volitelné. Pokud poslední relace kopie byla neobvykle ukončena, tento parametr lze zadat pro přerušení relace.  |
-|     /sn:&lt;StorageAccountName&gt;  | **Vyžaduje**<br/> Platí jenom pro RepairImport a RepairExport. Název účtu úložiště.  |
-|     /Sk:&lt;StorageAccountKey&gt;  | **Vyžaduje**<br/> Klíč účtu úložiště. |
-|     / InitialDriveSet:&lt;driveset.csv&gt;  | **Vyžaduje** při spuštění prvního kopírování relace<br/> Soubor CSV obsahující seznam jednotek přípravy.  |
-|     / AdditionalDriveSet:&lt;driveset.csv&gt; | **Vyžaduje**. Při přidávání disků do aktuální relace kopírování. <br/> Soubor CSV obsahující seznam dalších jednotek, které mají být přidány.  |
+|     /AbortSession  | Volitelné. Pokud poslední relace kopie byla neobvykle ukončena, tento parametr lze zadat pro přerušení relace.  |
+|     /sn:&lt;StorageAccountName&gt;  | **Požadováno**<br/> Platí jenom pro RepairImport a RepairExport. Název účtu úložiště.  |
+|     /Sk:&lt;StorageAccountKey&gt;  | **Požadováno**<br/> Klíč účtu úložiště. |
+|     /InitialDriveSet:&lt;driveset.csv&gt;  | **Vyžaduje** při spuštění prvního kopírování relace<br/> Soubor CSV obsahující seznam jednotek přípravy.  |
+|     /AdditionalDriveSet:&lt;driveset.csv&gt; | **Vyžaduje**. Při přidávání disků do aktuální relace kopírování. <br/> Soubor CSV obsahující seznam dalších jednotek, které mají být přidány.  |
 |      / r:&lt;RepairFile&gt; | **Vyžaduje** platí jenom pro RepairImport a RepairExport.<br/> Cesta k souboru pro sledování pokroku opravit. Každá jednotka musí mít jeden a pouze jeden soubor opravy.  |
 |     / d:&lt;TargetDirectories&gt; | **Vyžaduje**. Platí jenom pro RepairImport a RepairExport. Pro RepairImport jeden nebo více oddělených středníkem adresářů opravit; RepairExport, jeden adresář, pokud chcete opravit, například kořenový adresář jednotky.  |
-|     / CopyLogFile:&lt;DriveCopyLogFile&gt; | **Vyžaduje** platí jenom pro RepairImport a RepairExport. Cesta k souboru protokolu kopie disku (podrobný nebo chyba).  |
-|     / ManifestFile:&lt;DriveManifestFile&gt; | **Vyžaduje** platí jenom pro RepairExport.<br/> Cesta k souboru manifestu jednotky.  |
-|     / PathMapFile:&lt;DrivePathMapFile&gt; | **Volitelné**. Platí jenom pro RepairImport.<br/> Cesta k souboru, který obsahuje mapování cesty k souborům relativně vzhledem k kořen jednotky do umístění skutečné souborech (oddělený tabulátory). Při první zadaný ji naplní cesty k souborům s prázdnou cíle, což znamená, že nebyly nalezeny v TargetDirectories přístup byl odepřen, s neplatným názvem, nebo že existují ve více adresářů. Cesta k souboru mapy můžete ručně upravit tak, aby správné cílové cesty zahrnutí a zadat znovu pro nástroj, který správně přeložit cesty k souborům.  |
+|     /CopyLogFile:&lt;DriveCopyLogFile&gt; | **Vyžaduje** platí jenom pro RepairImport a RepairExport. Cesta k souboru protokolu kopie disku (podrobný nebo chyba).  |
+|     /ManifestFile:&lt;DriveManifestFile&gt; | **Vyžaduje** platí jenom pro RepairExport.<br/> Cesta k souboru manifestu jednotky.  |
+|     /PathMapFile:&lt;DrivePathMapFile&gt; | **Volitelné**. Platí jenom pro RepairImport.<br/> Cesta k souboru, který obsahuje mapování cesty k souborům relativně vzhledem k kořen jednotky do umístění skutečné souborech (oddělený tabulátory). Při první zadaný ji naplní cesty k souborům s prázdnou cíle, což znamená, že nebyly nalezeny v TargetDirectories přístup byl odepřen, s neplatným názvem, nebo že existují ve více adresářů. Cesta k souboru mapy můžete ručně upravit tak, aby správné cílové cesty zahrnutí a zadat znovu pro nástroj, který správně přeložit cesty k souborům.  |
 |     / ExportBlobListFile:&lt;ExportBlobListFile&gt; | **Vyžaduje**. Platí jenom pro PreviewExport.<br/> Cesta k souboru XML soubor obsahující seznam cesty k objektům blob nebo objekt blob předpony cesty pro objekty BLOB nelze exportovat. Formát souboru je stejný jako formát objektů blob v seznamu objektů blob v operaci Put úlohy z rozhraní REST API služby Import/Export.  |
 |     / DriveSize:&lt;DriveSize&gt; | **Vyžaduje**. Platí jenom pro PreviewExport.<br/>  Velikost disků se použije pro export. Například 500 GB, 1,5 TB. Poznámka: 1 GB = 1 000 000 000 bytes1 TB = 1,000,000,000,000 bajtů  |
-|     / DataSet:&lt;dataset.csv&gt; | **Vyžaduje**<br/> Soubor CSV obsahující seznam adresářů a/nebo seznam souborů, které mají být zkopírován do cílové jednotky.  |
+|     /DataSet:&lt;dataset.csv&gt; | **Požadováno**<br/> Soubor CSV obsahující seznam adresářů a/nebo seznam souborů, které mají být zkopírován do cílové jednotky.  |
 |     /silentmode  | **Volitelné**.<br/> Pokud není zadán, bude vás upozorní na požadavek jednotky a potřebovat vaše potvrzení, abyste mohli pokračovat.  |
 
 ## <a name="tool-output"></a>Výstup nástroje
@@ -341,7 +341,7 @@ Nejmíň jeden prázdný 2,5 nebo 3, 5palcová SATAII o rychlosti nebo III nebo 
 
 #### <a name="how-can-i-enable-bitlocker-on-my-machine"></a>Jak můžu povolit nástroj BitLocker na mém počítači?
 
-Kliknutím pravým tlačítkem myši na systémové jednotce je jednoduchý způsob, jak zkontrolovat. Zobrazí se možnosti pro nástroje Bitlocker v případě, že je zapnutá možnost. Pokud má hodnotu off, nezobrazí se.
+Kliknutím pravým tlačítkem myši na systémové jednotce je jednoduchý způsob, jak zkontrolovat. Zobrazí se možnosti pro nástroje BitLocker v případě, že je zapnutá možnost. Pokud má hodnotu off, nezobrazí se.
 
 ![Zkontrolujte nástroj BitLocker](./media/storage-import-export-tool-preparing-hard-drives-import/BitLocker.png)
 

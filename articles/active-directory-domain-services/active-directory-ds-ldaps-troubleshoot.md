@@ -4,7 +4,7 @@ description: Řešení potíží s Secure LDAP (LDAPS) pro spravované domény s
 services: active-directory-ds
 documentationcenter: ''
 author: eringreenlee
-manager: mtillman
+manager: daveba
 editor: curtand
 ms.assetid: 445c60da-e115-447b-841d-96739975bdf6
 ms.service: active-directory
@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 08/01/2018
 ms.author: ergreenl
-ms.openlocfilehash: 3925db10a490be3c6d572f6d107e556595be8237
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.openlocfilehash: a055c73ea868ba40065638d90fadf66f5204276c
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50155776"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54848746"
 ---
 # <a name="troubleshoot-secure-ldap-ldaps-for-an-azure-ad-domain-services-managed-domain"></a>Řešení potíží s Secure LDAP (LDAPS) pro spravované domény služby Azure AD Domain Services
 
@@ -34,7 +34,7 @@ Pokud máte potíže s připojením ke spravované doméně pomocí protokolu se
 * Nastavení skupiny zabezpečení sítě pro virtuální síť musí umožňovat provoz na portu 636 z Internetu. Tento krok platí jenom v případě, že jste povolili přístup protokolu secure LDAP přes internet.
 
 
-## <a name="need-help"></a>Potřebujete pomoct?
+## <a name="need-help"></a>Potřebujete pomoc?
 Pokud stále máte potíže s připojením ke spravované doméně pomocí protokolu secure LDAP [kontaktováním produktového týmu](active-directory-ds-contact-us.md) nápovědu. Uveďte následující informace umožňující provádět lepší diagnostiku problému:
 * Snímek obrazovky s ldp.exe vytváření připojení a selhání.
 * Vaše ID tenanta Azure AD a název domény DNS vaší spravované domény.

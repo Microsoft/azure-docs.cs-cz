@@ -1,35 +1,35 @@
 ---
-title: Načtení prostředků do Azure Media výřez | Microsoft Docs
-description: Kroky pro načtení prostředků do Azure Media výřez
+title: Načtení prostředků do Azure Media Clipperu | Dokumentace Microsoftu
+description: Kroky pro načtení prostředků do Azure Media Clipperu
 services: media-services
-keywords: klip; subclip; kódování; média
+keywords: Galerie, dílčí klip, kódování, médií
 author: dbgeorge
 manager: jasonsue
 ms.author: dwgeo
 ms.date: 11/10/2017
 ms.topic: article
 ms.service: media-services
-ms.openlocfilehash: 6a479218ff8bd5addf4273b23c06380859e0ea08
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 415f58d9c6880bc7ef9ba6b6ba3f575fae382f04
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33788295"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54806879"
 ---
-# <a name="loading-assets-into-azure-media-clipper"></a>Načítání prostředků do Azure Media výřez
-Prostředky je možné načíst do výřez média Azure pomocí dvou metod:
+# <a name="loading-assets-into-azure-media-clipper"></a>Načítání prostředků do Azure Media Clipperu
+Prostředky je možné načíst do Azure Media Clipperem pomocí dvou metod:
 1. Staticky předávání v knihovně prostředků
-2. Dynamicky generování seznamu datových zdrojů prostřednictvím rozhraní API
+2. Dynamické generování seznamu sad prostředky přes rozhraní API
 
-## <a name="statically-load-videos-into-clipper"></a>Staticky načtení videa do výřez
-Staticky načtení videa do výřez koncovým uživatelům k vytvoření klipů bez výběru videa z panelu Výběr asset.
+## <a name="statically-load-videos-into-clipper"></a>Staticky načtení videa do Clipperem
+Staticky načtení videa do Clipperem povolit koncovým uživatelům vytvářet klipy nevybírejte videa z panel výběru prostředku.
 
-V takovém případě můžete předat statické sadu prostředků výřez. Každý prostředek zahrnuje AMS asset nebo filtr ID, název, publikované streamovací adresa URL. Pokud je k dispozici, ochrana obsahu ověřovací token nebo pole miniaturu adresy URL může být předán. Pokud je předaná, naplní se do rozhraní miniatur. Ve scénářích, kde je knihovna asset malé i statické abyste mohli předávat asset kontrakt pro každý prostředek v knihovně.
+V takovém případě předáte statickou sadu prostředků Clipperem. Každý prostředek zahrnuje AMS prostředek/filtru ID, název, publikovanou adresu URL streamování. Pokud je k dispozici, tokenu ověřování ochrana obsahu nebo pole thumbnail adresy URL možné předat v. Pokud předaná, naplní se do rozhraní pro miniatury. Ve scénářích, ve kterém prostředek knihovny statických a malé můžete předat ve smlouvě prostředku pro každý prostředek v knihovně.
 
 > [!NOTE]
-> Při načítání staticky prostředky do výřez, prostředky se přidají **přímo na časové ose** a **není vykreslen asset podokně**. První asset se přidá do časové osy a zbytek prostředky jsou skládaný na pravé straně časovou osu).
+> Při načítání staticky prostředky do Clipperem, se přidají prostředky **přímo na časové ose** a **asset podokně nevykreslí**. První prostředek se přidá na časovou osu a zbývající prostředky jsou uspořádány na pravé straně časovou osu).
 
-Chcete-li načíst knihovnu statické asset, použijte **načíst** metoda předávat reprezentaci JSON každý prostředek. Následující příklad kódu ukazuje reprezentace JSON pro jeden prostředek.
+Chcete-li načíst knihovnu statických prostředků, použijte **načíst** metody a zajistěte tak předání JSON s reprezentací provedených každého prostředku. Následující příklad kódu ukazuje reprezentaci JSON pro jeden prostředek.
 
 ```javascript
 var assets = [
@@ -98,10 +98,10 @@ subclipper.ready(function () {
 ```
 
 > [!NOTE]
-> Doporučujeme řetěz volání metody load() s ready(handler) metodou, jak je znázorněno v předchozím příkladu. V předchozím příkladu zaručuje, že widgetu je připraven před načtením prostředky.
+> Doporučujeme řetěz volání metody load() ready(handler) metodou, jak je znázorněno v předchozím příkladu. V předchozím příkladu zaručuje, že widgetu připravený před načtením prostředky.
 
 > [!NOTE]
-> Pro miniaturu adres URL pro fungovat podle očekávání v časové ose výřez musí být rovnoměrně rozdělené mezi video (podle doba trvání) a v chronologickém pořadí v rámci pole. Jako ukázkový odkaz pro generování obrázků s procesor "Media Encoder Standard" můžete použít následující přednastavené fragmentu kódu JSON:
+> Pro miniaturu adresy URL fungovat podle očekávání na časové ose Clipperem musí být rovnoměrně rozdělené mezi video (založené na době trvání) a v chronologickém pořadí v poli. Můžete použít následující přednastavených fragmentu kódu JSON jako ukázkový odkaz pro generování bitových kopií procesor "Media Encoder Standard":
 
 ```json
 {
@@ -119,13 +119,13 @@ subclipper.ready(function () {
 }
 ```
 
-## <a name="dynamically-load-videos-in-clipper"></a>Dynamické načtení videa v výřez
-Dynamické načtení videa do výřez koncovým uživatelům a vyberte z panelu asset výběr do Galerie proti videa.
+## <a name="dynamically-load-videos-in-clipper"></a>Dynamické načtení videa v Clipperem
+Dynamicky načtěte videa do Clipperem povolit koncovým uživatelům výběr videa z panel výběru prostředku do Galerie proti.
 
-Alternativně můžete načíst prostředky dynamicky prostřednictvím zpětné volání. Ve scénářích, kde jsou prostředky dynamicky generované nebo velký knihovny by se měly načíst prostřednictvím zpětné volání. Dynamicky načíst asset, je nutné implementovat onLoadAssets volitelné funkce zpětného volání. Tato funkce je předán do výřez při inicializaci. Vyřešený prostředky by měl splňovat stejné smlouvy jako staticky načíst prostředky. Následující příklad kódu ukazuje podpis metody, očekávaný vstup a očekávaný výstup.
+Alternativně můžete načíst prostředky dynamicky prostřednictvím zpětné volání. Ve scénářích, kde jsou prostředky dynamicky generované nebo knihovny je velká by měla načíst prostřednictvím zpětného volání. Dynamicky načíst prostředek, je nutné implementovat onLoadAssets volitelné funkce zpětného volání. Tato funkce je předána do Clipperem při inicializaci. Vyřešené prostředky by měly dodržovat stejný kontrakt jako staticky načtená prostředky. Následující příklad kódu ukazuje podpis metody, očekávaný vstup a očekávaný výstup.
 
 > [!NOTE]
-> Při načítání dynamicky prostředky do výřez, prostředky se zobrazují v **panel výběru asset**.
+> Při načítání dynamické prostředky do Clipperem, prostředky se zobrazují v **panel výběru asset**.
 
 ```javascript
 // Video Assets Pane Callback
@@ -136,7 +136,7 @@ Alternativně můžete načíst prostředky dynamicky prostřednictvím zpětné
     // - take: int value used for pagination in the back-end that allows defining the number of assets to include in the response.
     // - type: ('filter', 'asset') value that will be used in the back-end to filter assets by type.
     //
-    // Returns: a Promise object that, when resolved, retuns an object containing an array of assets (input contract)
+    // Returns: a Promise object that, when resolved, returns an object containing an array of assets (input contract)
     //          that satisfies the filter parameters, plus optionally the total types of files available:
     // {
     //  total: 100,

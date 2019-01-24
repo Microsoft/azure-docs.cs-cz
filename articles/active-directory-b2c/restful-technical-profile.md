@@ -3,19 +3,19 @@ title: Definování rozhraní RESTful technický profil ve vlastních zásadách
 description: Definujte rozhraní RESTful technický profil ve vlastních zásadách v Azure Active Directory B2C.
 services: active-directory-b2c
 author: davidmu1
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 09/10/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 930cdddd8a9e039fa9c29a348a0a66eb25d254fe
-ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
+ms.openlocfilehash: d9dfef68e35cc07d395bb247af3476e8b73da642
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44381145"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54843884"
 ---
 # <a name="define-a-restful-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Definování rozhraní RESTful technický profil ve vlastních zásadách pro Azure Active Directory B2C
 
@@ -83,11 +83,11 @@ Technický profil také vrátí hodnotu deklarace identity, které nejsou vráce
 
 ## <a name="metadata"></a>Metadata
 
-| Atribut | Požaduje se | Popis |
+| Atribut | Požadováno | Popis |
 | --------- | -------- | ----------- |
 | ServiceUrl | Ano | Adresa URL koncového bodu rozhraní REST API. | 
-| authenticationType. | Ano | Typ ověřování prováděné poskytovatelem deklarací identit RESTful. Možné hodnoty: `None`, `Basic`, nebo `ClientCertificate`. `None` Hodnota značí, že není anonymní rozhraní REST API. `Basic` Hodnota značí, že je rozhraní REST API zabezpečené pomocí základního ověřování protokolu HTTP. Jenom ověřit uživatele, včetně Azure AD B2C, můžete přístup k rozhraní API. `ClientCertificate` (Doporučeno) hodnota značí, že rozhraní REST API omezuje přístup pomocí ověření klientského certifikátu. Pouze služby, které mají příslušné certifikáty, jako je například Azure AD B2C můžete přístup ke službě. | 
-| Parametru SendClaimsIn | Ne | Určuje, jak se mezi vstupními deklaracemi identity odesílají do zprostředkovatele deklarací identit RESTful. Možné hodnoty: `Body` (výchozí), `Form`, `Header`, nebo `QueryString`. `Body` Hodnota je vstupní deklaraci identity, která je odeslána v textu požadavku ve formátu JSON. `Form` Hodnota je vstupní deklaraci identity, který posílá v těle požadavku ampersand ' a ' oddělené klíče ve formátu. `Header` Hodnota je vstupní deklaraci identity odeslaný v hlavičce požadavku. `QueryString` Hodnota je vstupní deklaraci identity, která je odeslána v řetězci dotazu požadavku. | 
+| AuthenticationType | Ano | Typ ověřování prováděné poskytovatelem deklarací identit RESTful. Možné hodnoty: `None`, `Basic`, nebo `ClientCertificate`. `None` Hodnota značí, že není anonymní rozhraní REST API. `Basic` Hodnota značí, že je rozhraní REST API zabezpečené pomocí základního ověřování protokolu HTTP. Jenom ověřit uživatele, včetně Azure AD B2C, můžete přístup k rozhraní API. `ClientCertificate` (Doporučeno) hodnota značí, že rozhraní REST API omezuje přístup pomocí ověření klientského certifikátu. Pouze služby, které mají příslušné certifikáty, jako je například Azure AD B2C můžete přístup ke službě. | 
+| SendClaimsIn | Ne | Určuje, jak se mezi vstupními deklaracemi identity odesílají do zprostředkovatele deklarací identit RESTful. Možné hodnoty: `Body` (výchozí), `Form`, `Header`, nebo `QueryString`. `Body` Hodnota je vstupní deklaraci identity, která je odeslána v textu požadavku ve formátu JSON. `Form` Hodnota je vstupní deklaraci identity, který posílá v těle požadavku ampersand ' a ' oddělené klíče ve formátu. `Header` Hodnota je vstupní deklaraci identity odeslaný v hlavičce požadavku. `QueryString` Hodnota je vstupní deklaraci identity, která je odeslána v řetězci dotazu požadavku. | 
 | ClaimsFormat | Ne | Určuje formát pro výstupní deklarace identit. Možné hodnoty: `Body` (výchozí), `Form`, `Header`, nebo `QueryString`. `Body` Hodnota je výstupní deklarací, které je odesláno v textu požadavku ve formátu JSON. `Form` Hodnotu, která se odešle v textu požadavku v ampersand ' a ' oddělené klíče ve formátu deklarace identity výstup. `Header` Hodnota je výstupní deklarací odeslaný v hlavičce požadavku. `QueryString` Hodnota je výstupní deklarací, které je odesláno v řetězci dotazu požadavku. | 
 | Režim DebugMode | Ne | Technický profil se spustí v režimu ladění. V režimu ladění rozhraní REST API můžete vrátit další informace. Naleznete v části vracející chybová zpráva. | 
 
@@ -109,7 +109,7 @@ Pokud typ ověřování nastavený na `None`, **CryptographicKeys** není použi
 
 Pokud typ ověřování nastavený na `Basic`, **CryptographicKeys** prvek obsahuje následující atributy:
 
-| Atribut | Požaduje se | Popis |
+| Atribut | Požadováno | Popis |
 | --------- | -------- | ----------- |
 | BasicAuthenticationUsername | Ano | Uživatelské jméno, který se používá k ověření. | 
 | BasicAuthenticationPassword | Ano | Heslo, které se používá k ověření. |
@@ -134,7 +134,7 @@ Následující příklad ukazuje technického profilu se základním ověřován
 
 Pokud typ ověřování nastavený na `ClientCertificate`, **CryptographicKeys** prvek obsahuje následující atribut:
 
-| Atribut | Požaduje se | Popis |
+| Atribut | Požadováno | Popis |
 | --------- | -------- | ----------- |
 | ClientCertificate | Ano | X509 certifikát (sadu klíčů RSA) se má použít k ověření. | 
 
@@ -157,12 +157,12 @@ Pokud typ ověřování nastavený na `ClientCertificate`, **CryptographicKeys**
 
 Rozhraní REST API může být zapotřebí vracet chybová zpráva, například "uživatel nebyl nalezen v systému CRM". K chybě dojde, rozhraní REST API by měla vrátit chybovou zprávu protokolu HTTP 409 (konflikt stavový kód odpovědi) s následujícími atributy:
 
-| Atribut | Požaduje se | Popis |
+| Atribut | Požadováno | Popis |
 | --------- | -------- | ----------- |
-| verze | Ano | 1.0.0 | 
+| version | Ano | 1.0.0 | 
 | status | Ano | 409 | 
 | kód | Ne | Kód chyby z poskytovatele RESTful koncový bod, který se zobrazí, když `DebugMode` je povolená. | 
-| ID žádosti | Ne | Identifikátor žádosti od poskytovatele koncový bod RESTful, které se zobrazí, když `DebugMode` je povolená. | 
+| requestId | Ne | Identifikátor žádosti od poskytovatele koncový bod RESTful, které se zobrazí, když `DebugMode` je povolená. | 
 | userMessage | Ano | Chybová zpráva, která se zobrazí uživateli. | 
 | developerMessage | Ne | Podrobný popis problému a vyřešit, který se zobrazí, když `DebugMode` je povolená. | 
 | moreInfo | Ne | Identifikátor URI, který odkazuje na další informace, které se zobrazí, když `DebugMode` je povolená. | 
@@ -171,13 +171,13 @@ Následující příklad ukazuje rozhraní REST API, která vrátí chybovou zpr
 
 ```JSON
 {
-  "version": "1.0.0",
-  "status": 409,
-  "code": "API12345",
-  "requestId": "50f0bd91-2ff4-4b8f-828f-00f170519ddb",
-  "userMessage": "Message for the user", 
-  "developerMessage": "Verbose description of problem and how to fix it.", 
-  "moreInfo": "https://restapi/error/API12345/moreinfo" 
+  "version": "1.0.0",
+  "status": 409,
+  "code": "API12345",
+  "requestId": "50f0bd91-2ff4-4b8f-828f-00f170519ddb",
+  "userMessage": "Message for the user", 
+  "developerMessage": "Verbose description of problem and how to fix it.", 
+  "moreInfo": "https://restapi/error/API12345/moreinfo" 
 }
 ```
 

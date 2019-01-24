@@ -3,21 +3,21 @@ title: Kurz – Povolení ověřování účtů pomocí Azure Active Directory B
 description: Kurz týkající se použití Azure Active Directory B2C k zajištění přihlašování uživatelů ve webové aplikaci ASP.NET.
 services: active-directory-b2c
 author: davidmu1
-manager: mtillman
+manager: daveba
 ms.author: davidmu
 ms.date: 11/30/2018
 ms.custom: mvc
 ms.topic: tutorial
 ms.service: active-directory
 ms.component: B2C
-ms.openlocfilehash: 8b482391dfafdda0e54b3f9e2b8a3a7de2f2d5cd
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 30a94cb5de2d618938f17c4e5733821ac7247785
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52834719"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54851517"
 ---
-# <a name="tutorial-enable-a-web-application-to-authenticate-with-accounts-using-azure-active-directory-b2c"></a>Kurz: Povolení ověřování účtů pomocí Azure Active Directory B2C pro webovou aplikaci
+# <a name="tutorial-enable-a-web-application-to-authenticate-with-accounts-using-azure-active-directory-b2c"></a>Kurz: Povolení ověřování účtů pomocí Azure Active Directory B2C webové aplikace
 
 V tomto kurzu se dozvíte, jak použít Azure Active Directory (Azure AD) B2C k registraci a přihlašování uživatelů ve webové aplikaci ASP.NET. Azure AD B2C umožňuje aplikacím provádět ověřování účtů na sociálních sítích, podnikových účtů a účtů Azure Active Directory s využitím protokolů s otevřenými standardy.
 
@@ -171,7 +171,7 @@ Ukázková webová aplikace ASP.NET je jednoduchá aplikace seznamu úkolů umo�
 
 Ukázkové řešení obsahuje dva projekty:
 
-**Ukázková webová aplikace (TaskWebApp):** Webová aplikace umožňující vytvoření a úpravy seznamu úkolů. Tato webová aplikace používá **registrace nebo přihlašování** tok uživatele k registraci nebo přihlašování uživatelů.
+**Ukázková webová aplikace (TaskWebApp):** Webové aplikace můžete vytvářet a upravovat seznam úkolu. Tato webová aplikace používá **registrace nebo přihlašování** tok uživatele k registraci nebo přihlašování uživatelů.
 
 **Ukázková aplikace webového rozhraní API (TaskService):** Webové rozhraní API, které podporuje funkce vytvoření, čtení, aktualizace a odstranění seznamu úkolů. Toto webové rozhraní API je chráněné službou Azure AD B2C a volané webovou aplikací.
 

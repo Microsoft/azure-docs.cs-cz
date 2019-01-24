@@ -4,7 +4,7 @@ description: Připojte se k virtuálnímu počítači s Windows serverem do Azur
 services: active-directory-ds
 documentationcenter: ''
 author: eringreenlee
-manager: mtillman
+manager: daveba
 editor: curtand
 ms.assetid: 29316313-c76c-4fb9-8954-5fa5ec82609e
 ms.service: active-directory
@@ -15,19 +15,19 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/21/2018
 ms.author: ergreenl
-ms.openlocfilehash: 748345bf89e7f746b8ef388ad5cabc987a07d1f8
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: fc55fcef9977abcd8c40752d459088c1132cf2c1
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52957661"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54850361"
 ---
 # <a name="join-a-windows-server-virtual-machine-to-a-managed-domain"></a>Připojení virtuálního počítače Windows Server ke spravované doméně
 Tento článek popisuje postup nasazení virtuálního počítače s Windows serverem pomocí webu Azure portal. Následně ukazuje, jak připojit virtuální počítač k spravované doméně služby Azure Active Directory Domain Services (Azure AD DS).
 
 [!INCLUDE [active-directory-ds-prerequisites.md](../../includes/active-directory-ds-prerequisites.md)]
 
-## <a name="step-1-create-a-windows-server-virtual-machine"></a>Krok 1: Vytvoření virtuálního počítače s Windows serverem
+## <a name="step-1-create-a-windows-server-virtual-machine"></a>Krok 1: Vytvoření virtuálního počítače s Windows Serverem
 K vytvoření virtuálního počítače s Windows, který je připojený k virtuální síti, ve kterém jste povolili službu Azure AD DS, proveďte následující kroky:
 
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
@@ -107,9 +107,9 @@ K připojení virtuálních počítačů s Windows serverem do Azure AD DS sprav
 
 7. Zadejte přihlašovací údaje v některém z následujících způsobů:
 
-   * **Formát UPN**: (doporučeno) zadejte hlavní název uživatele (UPN) příponu pro uživatelský účet, protože nakonfigurovaná ve službě Azure AD. V tomto příkladu přípona UPN uživatele *bob* je *bob@domainservicespreview.onmicrosoft.com*.
+   * **Formát UPN**: (Doporučeno) Příponou hlavního názvu (UPN) uživatele pro uživatelský účet, zadejte, jak nakonfigurovat ve službě Azure AD. V tomto příkladu přípona UPN uživatele *bob* je *bob@domainservicespreview.onmicrosoft.com*.
 
-   * **Formátu SAMAccountName**: můžete zadat název účtu ve formátu SAMAccountName. V tomto příkladu uživatel *bob* by bylo potřeba zadat *CONTOSO100\bob*.
+   * **Formátu SAMAccountName**: Můžete zadat název účtu ve formátu SAMAccountName. V tomto příkladu uživatel *bob* by bylo potřeba zadat *CONTOSO100\bob*.
 
      > [!TIP]
      > **Doporučujeme použít formát hlavního názvu uživatele k zadání přihlašovacích údajů.**

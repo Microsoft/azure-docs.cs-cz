@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 10/04/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: f1ed355e7df6a58096743fd57ca1cbc65578d285
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: d9dfc70c7158c5f808367b8b2041725b03b9060d
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54439132"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54846179"
 ---
 # <a name="startstop-vms-during-off-hours-solution-in-azure-automation"></a>Spuštění/zastavení virtuálních počítačů v době mimo špičku řešení ve službě Azure Automation
 
@@ -59,7 +59,7 @@ Proveďte následující kroky pro přidání spouštění/zastavování virtuá
    ![Stránka Přidat řešení správy virtuálních počítačů](media/automation-solution-vm-management/azure-portal-add-solution-01.png)
 
 4. Na **přidat řešení** stránce **pracovní prostor**. Vyberte pracovní prostor Log Analytics, který je propojený s předplatným Azure, který obsahuje příslušný účet Automation. Pokud nemáte pracovní prostor, vyberte **vytvořit nový pracovní prostor**. Na **pracovní prostor Log Analytics** stránce, proveďte následující kroky:
-   - Zadejte název pro nový **pracovní prostor Log Analytics**.
+   - Zadejte název pro nový **pracovní prostor Log Analytics**, jako je například "ContosoLAWorkspace".
    - Vyberte **předplatné** k propojení, výběrem z rozevíracího seznamu, pokud výchozí vybrané není vhodné.
    - Pro **skupiny prostředků**, můžete vytvořit novou skupinu prostředků nebo vyberte existující.
    - Vyberte **Umístění**. V současné době jsou k dispozici pouze umístění **Austrálie – jihovýchod**, **Kanada – střed**, **střed Indie**, **USA – východ**, **Japonsko – východ**, **jihovýchodní Asie**, **Velká Británie – jih**, a **západní Evropa**.

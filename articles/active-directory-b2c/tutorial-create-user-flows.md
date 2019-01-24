@@ -3,18 +3,18 @@ title: Kurz – vytvoření toky uživatelů v Azure Active Directory B2C | Doku
 description: Naučíte se vytvářet toky uživatelů pro aplikace v Azure Active Directory B2C na webu Azure portal.
 services: active-directory-b2c
 author: davidmu1
-manager: mtillman
+manager: daveba
 ms.service: active-directory-b2c
 ms.workload: identity
 ms.topic: article
 ms.date: 01/11/2019
 ms.author: davidmu
-ms.openlocfilehash: eb69262b41351b8e0b813175b56ad4c93b1ce69b
-ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
+ms.openlocfilehash: 6e651d23e3b5cced78088d59979507eb09723165
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/12/2019
-ms.locfileid: "54248911"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54845588"
 ---
 # <a name="tutorial-create-user-flows-in-azure-active-directory-b2c"></a>Kurz: Vytvořit toky uživatelů v Azure Active Directory B2C
 

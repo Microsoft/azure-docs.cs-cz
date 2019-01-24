@@ -7,16 +7,16 @@ ms.topic: conceptual
 ms.date: 09/18/2018
 ms.author: snmuvva
 ms.subservice: alerts
-ms.openlocfilehash: d871cecda8e7957e3d0d3c37078b8a1fa2ab5214
-ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
+ms.openlocfilehash: 117b65265c853194e93a97fe5e2b2dcc6e9f5bc2
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54451251"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54807384"
 ---
 # <a name="create-view-and-manage-metric-alerts-using-azure-monitor"></a>Vytvořit, zobrazit a spravovat upozornění na metriku pomocí Azure monitoru
 
-Upozornění metrik ve službě Azure Monitor poskytují způsob, jak chcete dostávat oznámení, když jeden metriky překročí prahovou hodnotu. Upozornění na metriku pracovat na celou řadu multidimenzionální platformy metriky, vlastní metriky, Application Insights standardní a vlastní metriky. V tomto článku jsme popisuje, jak vytvořit, zobrazit a spravovat pravidla upozornění na metriky prostřednictvím webu Azure portal a rozhraní příkazového řádku Azure. Můžete také vytvořit pravidla upozornění na metriky pomocí šablon Azure Resource Manageru, která je popsána v [věnovaný samostatný článek](../../azure-monitor/platform/alerts-enable-template.md).
+Upozornění metrik ve službě Azure Monitor poskytují způsob, jak chcete dostávat oznámení, když jeden metriky překročí prahovou hodnotu. Upozornění na metriku pracovat na celou řadu multidimenzionální platformy metriky, vlastní metriky, Application Insights standardní a vlastní metriky. V tomto článku jsme popisuje, jak vytvořit, zobrazit a spravovat pravidla upozornění na metriky prostřednictvím webu Azure portal a rozhraní příkazového řádku Azure. Můžete také vytvořit pravidla upozornění na metriky pomocí šablon Azure Resource Manageru, která je popsána v [věnovaný samostatný článek](alerts-metric-create-templates.md).
 
 Přečtěte si víc o tom, jak metriky upozornění fungují z [přehled výstrah metrika](alerts-metric-overview.md).
 

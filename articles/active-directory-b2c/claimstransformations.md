@@ -3,19 +3,19 @@ title: ClaimsTransformations – Azure Active Directory B2C | Dokumentace Micros
 description: Definice elementu ClaimsTransformations v Identity prostředí Framework schéma z Azure Active Directory B2C.
 services: active-directory-b2c
 author: davidmu1
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 09/10/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: b569fe6a354bed315fd2136cafdade667b6f3a8b
-ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
+ms.openlocfilehash: 152149f94bba9077909d5b5c6bf92f3706b31b8c
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47432789"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54848440"
 ---
 # <a name="claimstransformations"></a>ClaimsTransformations
 
@@ -35,7 +35,7 @@ Seznam funkcí transformace deklarací identity, které je možné zahrnout cest
 
 **ClaimsTransformation** element conatains následující atributy:
 
-| Atribut |Požaduje se | Popis |
+| Atribut |Požadováno | Popis |
 | --------- |-------- | ----------- |
 | ID |Ano | Identifikátor, který slouží k jednoznačné identifikaci transformace deklarací identity. Identifikátor je odkazováno z dalších prvky XML v zásadách. |
 | TransformationMethod | Ano | Metoda transformace používané k transformaci deklarací identity. Každá transformace deklarací identity má své vlastní hodnoty. Zobrazit [odkaz na transformaci deklarací](#Claims-transformations-reference) úplný seznam dostupných hodnot. |
@@ -77,7 +77,7 @@ Seznam funkcí transformace deklarací identity, které je možné zahrnout cest
 
 **InputClaim** prvek obsahuje následující atributy:
 
-| Atribut |Požaduje se | Popis |
+| Atribut |Požadováno | Popis |
 | --------- | ----------- | ----------- |
 | ClaimTypeReferenceId |Ano | Odkaz na typu deklarace identity, již definovaná v části ClaimsSchema v zásadách. |
 | TransformationClaimType |Ano | Typ deklarace identifikátoru tak, aby odkazovaly transformaci. Každá transformace deklarací identity má své vlastní hodnoty. Zobrazit [odkaz na transformaci deklarací](#Claims-transformations-reference) úplný seznam dostupných hodnot. |
@@ -92,7 +92,7 @@ Seznam funkcí transformace deklarací identity, které je možné zahrnout cest
 
 #### <a name="inputparameter"></a>InputParameter
 
-| Atribut | Požaduje se |Popis |
+| Atribut | Požadováno |Popis |
 | --------- | ----------- |----------- |
 | ID | Ano | Identifikátor, který je odkaz na parametr metody transformace deklarací identity. Každá metoda transformace deklarací identity má své vlastní hodnoty. V tabulce transformace deklarací identity pro úplný seznam dostupných hodnot. |
 | DataType | Ano | Typ dat parametr, jako je řetězec, logická hodnota, Int nebo data a času podle výčtu datového typu ve schématu XML vlastní zásady. Tento typ se používá k provedení aritmetické operace správně. Každá transformace deklarací identity má své vlastní hodnoty. Zobrazit [odkaz na transformaci deklarací](#Claims-transformations-reference) úplný seznam dostupných hodnot. |
@@ -110,7 +110,7 @@ Seznam funkcí transformace deklarací identity, které je možné zahrnout cest
 
 **OutputClaim** prvek obsahuje následující atributy:
 
-| Atribut |Požaduje se | Popis |
+| Atribut |Požadováno | Popis |
 | --------- | ----------- |----------- |
 | ClaimTypeReferenceId | Ano | Odkaz na typu deklarace identity, již definovaná v části ClaimsSchema v zásadách.
 | TransformationClaimType | Ano | Typ deklarace identifikátoru tak, aby odkazovaly transformaci. Každá transformace deklarací identity má své vlastní hodnoty. Zobrazit [odkaz na transformaci deklarací](#Claims-transformations-reference) úplný seznam dostupných hodnot. |
@@ -161,10 +161,10 @@ Příklady transformace deklarací naleznete na následujících stránkách odk
 
 - [Datový typ Boolean](boolean-transformations.md)
 - [Datum](date-transformations.md)
-- [celé číslo](integer-transformations.md)
+- [Integer](integer-transformations.md)
 - [JSON](json-transformations.md)
 - [Obecné](general-transformations.md)
 - [Účtu na sociální síti](social-transformations.md)
 - [řetězec](string-transformations.md)
-- [Třída stringCollection](stringcollection-transformations.md)
+- [StringCollection](stringcollection-transformations.md)
 

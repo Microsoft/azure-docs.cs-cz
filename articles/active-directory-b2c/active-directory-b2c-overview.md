@@ -3,19 +3,19 @@ title: Co je Azure Active Directory B2C? | Dokumenty Microsoft
 description: Zjistěte, jak vytvořit a spravovat přihlašovací prostředí aplikace pomocí Azure Active Directory B2C.
 services: active-directory-b2c
 author: davidmu1
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: overview
 ms.date: 11/30/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 2f9c4acc1a2a98978e12aaf5356a5bc270b8d017
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.openlocfilehash: b667934fefe0b9afb5aeca786839f5e105be2c4d
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52724022"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54844989"
 ---
 # <a name="what-is-azure-active-directory-b2c"></a>Co je Azure Active Directory B2C?
 
@@ -102,13 +102,13 @@ V Azure AD B2C představuje tenant vaši organizaci a je také adresářem uživ
 
 Propojte svého tenanta Azure AD B2C s předplatným Azure, aby se povolily všechny funkce a poplatky za využívání. Pokud chcete zákazníkům umožnit přihlášení k vaší aplikaci, zaregistrujte ji v tenantovi Azure AD B2C.
 
-Před konfigurací aplikace k používání Azure AD B2C musíte nejprve vytvořit tenanta Azure AD B2C a zaregistrovat si aplikaci. Pokud si chcete zaregistrovat aplikaci, proveďte kroky v článku [Kurz: Registrace aplikace k povolení registrování a přihlašování pomocí služby Azure AD B2C](tutorial-register-applications.md).
+Před konfigurací aplikace k používání Azure AD B2C musíte nejprve vytvořit tenanta Azure AD B2C a zaregistrovat si aplikaci. Chcete-li zaregistrovat aplikaci, proveďte kroky v [kurzu: Registrace aplikace k povolení registrace a přihlášení pomocí služby Azure AD B2C](tutorial-register-applications.md).
   
-Pokud jste vývojář webové aplikace ASP.NET, nastavte aplikaci na ověřování účtů pomocí postupu v článku [Kurz: Povolení ověřování s účty pomocí Azure AD B2C přes webovou aplikaci](active-directory-b2c-tutorials-web-app.md).
+Pokud jste vývojáři ASP.NET webové aplikace, nastavení aplikace k ověřování účtů pomocí postupu v [kurzu: Povolení ověřování účtů pomocí Azure AD B2C webovou aplikaci](active-directory-b2c-tutorials-web-app.md).
 
-Pokud jste vývojář desktopové aplikace, nastavte aplikaci na ověřování účtů pomocí postupu v článku [Kurz: Povolení ověřování s účty pomocí Azure AD B2C přes desktopovou aplikaci](active-directory-b2c-tutorials-desktop-app.md).
+Pokud jste vývojář aplikace klasické pracovní plochy, nastavení aplikace k ověřování účtů pomocí postupu v [kurzu: Povolení ověřování účtů pomocí Azure AD B2C aplikace klasické pracovní plochy](active-directory-b2c-tutorials-desktop-app.md).
 
-Pokud jste vývojář jednostránkové aplikace pomocí Node.js, nastavte aplikaci na ověřování účtů pomocí postupu v článku [Kurz: Povolení ověřování s účty pomocí Azure AD B2C přes jednostránkovou aplikaci](active-directory-b2c-tutorials-spa.md).
+Pokud jste vývojář jednostránkové aplikace využívající Node.js, nastavení aplikace k ověřování účtů pomocí postupu v [kurzu: Povolit jednostránkovou aplikaci k ověřování účtů pomocí Azure AD B2C](active-directory-b2c-tutorials-spa.md).
 
 ## <a name="next-steps"></a>Další postup
 

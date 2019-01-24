@@ -13,12 +13,12 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 01/17/2019
 ms.author: cenkdin;juliako
-ms.openlocfilehash: 2f8fb8b50cf564a2a1a7c345eae889f6a6ee426c
-ms.sourcegitcommit: c31a2dd686ea1b0824e7e695157adbc219d9074f
+ms.openlocfilehash: 3f4641f6a97d265bf2c2ad9dadb548ff754ad434
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/18/2019
-ms.locfileid: "54401586"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54828107"
 ---
 # <a name="how-to-perform-live-streaming-with-on-premises-encoders-using-net"></a>Jak provést živé streamování pomocí místních kodérů pomocí .NET
 > [!div class="op_single_selector"]
@@ -84,8 +84,8 @@ namespace AMSLiveTest
     {
         private const string StreamingEndpointName = "streamingendpoint001";
         private const string ChannelName = "channel001";
-        private const string AssetlName = "asset001";
-        private const string ProgramlName = "program001";
+        private const string AssetName = "asset001";
+        private const string ProgramName = "program001";
 
         // Read values from the App.config file.
         private static readonly string _AADTenantDomain =
@@ -228,11 +228,11 @@ namespace AMSLiveTest
 
         public static IProgram CreateAndStartProgram(IChannel channel)
         {
-            IAsset asset = _context.Assets.Create(AssetlName, AssetCreationOptions.None);
+            IAsset asset = _context.Assets.Create(AssetName, AssetCreationOptions.None);
 
             // Create a Program on the Channel. You can have multiple Programs that overlap or are sequential;
             // however each Program must have a unique name within your Media Services account.
-            IProgram program = channel.Programs.Create(ProgramlName, TimeSpan.FromHours(3), asset.Id);
+            IProgram program = channel.Programs.Create(ProgramName, TimeSpan.FromHours(3), asset.Id);
             program.Start();
 
             return program;

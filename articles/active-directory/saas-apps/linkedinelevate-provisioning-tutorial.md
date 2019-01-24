@@ -1,11 +1,11 @@
 ---
-title: 'Kurz: Konfigurace rozvoji Linkedinem pro automatické zřizování uživatelů pomocí Azure Active Directory | Dokumentace Microsoftu'
+title: 'Kurz: Konfigurace zvýšení oprávnění LinkedIn pro automatické zřizování uživatelů pomocí Azure Active Directory | Dokumentace Microsoftu'
 description: Zjistěte, jak konfigurovat Azure Active Directory a automaticky zřizovat a rušit zřízení uživatelských účtů ke zvýšení LinkedIn.
 services: active-directory
 documentationcenter: ''
 author: asmalser-msft
 writer: asmalser-msft
-manager: mtillman
+manager: daveba
 ms.assetid: d4ca2365-6729-48f7-bb7f-c0f5ffe740a3
 ms.service: active-directory
 ms.component: saas-app-tutorial
@@ -15,14 +15,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/28/2018
 ms.author: asmalser-msft
-ms.openlocfilehash: 1dcc198c1a1cc798e991f489e6897d4b930c0593
-ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
+ms.openlocfilehash: 3c45388878675f5e0ee7df486747c7df41729694
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44348494"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54807997"
 ---
-# <a name="tutorial-configure-linkedin-elevate-for-automatic-user-provisioning"></a>Kurz: Konfigurace rozvoji Linkedinem pro automatické zřizování uživatelů
+# <a name="tutorial-configure-linkedin-elevate-for-automatic-user-provisioning"></a>Kurz: Konfigurace zvýšení oprávnění LinkedIn pro automatické zřizování uživatelů
 
 
 Cílem tohoto kurzu je zobrazit kroky, které je třeba provést v rozvoji Linkedinem a Azure AD automaticky zřizovat a rušit zřízení uživatelských účtů ze služby Azure AD k rozvoji Linkedinem. 
@@ -57,7 +57,7 @@ Před konfigurací a povolení služby zřizování, je potřeba rozhodnout, jak
 
 Tato část vás provede připojení služby Azure AD na LinkedIn zvýšení SCIM uživatelský účet rozhraní API zřizování a konfigurace služby zřizování vytvářet, aktualizovat a vypnout přiřazení uživatelských účtů v Linkedinu zvýšit oprávnění na základě uživatele a přiřazení skupiny ve službě Azure AD.
 
-**Tip:** můžete také povolit založené na SAML jednotného přihlašování pro zvýšení oprávnění LinkedIn, postupujte podle pokynů uvedených v [webu Azure portal](https://portal.azure.com). Jednotné přihlašování se dá nakonfigurovat nezávisle na automatické zřizování, i když tyto dvě funkce se vzájemně doplňují.
+**Tip:** Můžete také povolena založené na SAML jednotného přihlašování pro zvýšení LinkedIn, postupujte podle pokynů uvedených v [webu Azure portal](https://portal.azure.com). Jednotné přihlašování se dá nakonfigurovat nezávisle na automatické zřizování, i když tyto dvě funkce se vzájemně doplňují.
 
 
 ### <a name="to-configure-automatic-user-account-provisioning-to-linkedin-elevate-in-azure-ad"></a>Postup konfigurace automatického zřizování uživatelských účtů ke zvýšení LinkedIn ve službě Azure AD:

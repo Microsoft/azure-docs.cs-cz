@@ -12,15 +12,15 @@ ms.workload: web
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: quickstart
-ms.date: 10/09/2018
+ms.date: 01/23/2019
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 3af8f57cab6e420a7c7515bdf32b7ef382441cf9
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.openlocfilehash: f23aa49d44e8f29f860174ebde2447fad79c8c52
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53633143"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54843374"
 ---
 # <a name="create-a-python-app-in-azure-app-service-on-linux-preview"></a>Vytvoření aplikace v Pythonu v Azure App Service v Linuxu (Preview)
 
@@ -47,6 +47,8 @@ V okně terminálu naklonujte spuštěním následujících příkazů ukázkovo
 git clone https://github.com/Azure-Samples/python-docs-hello-world
 cd python-docs-hello-world
 ```
+
+Obsahuje úložiště *application.py*, která informuje službu App Service, že úložiště obsahuje aplikaci Flask. Další informace najdete v tématu [proces spuštění kontejneru a přizpůsobení](how-to-configure-python.md).
 
 ## <a name="run-the-app-locally"></a>Místní spuštění aplikace
 
@@ -181,7 +183,7 @@ Integrovaná image v Pythonu v rámci služby App Service v Linuxu je aktuálně
 > [Konfigurace vlastního spouštěcího příkazu](how-to-configure-python.md#custom-startup-command)
 
 > [!div class="nextstepaction"]
-> [Odstraňování potíží](how-to-configure-python.md#troubleshooting)
+> [Řešení potíží](how-to-configure-python.md#troubleshooting)
 
 > [!div class="nextstepaction"]
 > [Použití vlastní image](tutorial-custom-docker-image.md)

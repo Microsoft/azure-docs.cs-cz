@@ -3,19 +3,19 @@ title: Zakázání ověření e-mailu během příjemce registrace v Azure Activ
 description: Téma ukazuje, jak k zakázání ověření e-mailu během registrace v Azure Active Directory B2C příjemce.
 services: active-directory-b2c
 author: davidmu1
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 11/30/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 0a03be96895ea88ae033fd56df861b985317295b
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.openlocfilehash: 7bfbf4da0b5af447eaa88f9c9187a67a7998d0e4
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52719194"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54842881"
 ---
 # <a name="disable-email-verification-during-consumer-sign-up-in-azure-active-directory-b2c"></a>Zakázání ověření e-mailu během registrace v Azure Active Directory B2C příjemce 
 Při povolení služby Azure Active Directory (Azure AD) B2C dává možnost zaregistrovat do aplikace tak, že poskytuje e-mailovou adresu a vytvoření místního účtu příjemce. Azure AD B2C zajišťuje platné e-mailové adresy vyžadováním příjemci k ověření během procesu registrace. Zabrání také škodlivý automatizovaný proces generování falešné účty pro aplikace.

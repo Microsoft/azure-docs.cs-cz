@@ -3,19 +3,19 @@ title: Zabezpečení služby RESTful pomocí základního ověřování protokol
 description: Zabezpečené výměny deklarací identity vaše vlastní rozhraní REST API ve vaší Azure AD B2C s využitím základního ověřování protokolu HTTP.
 services: active-directory-b2c
 author: davidmu1
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 09/25/2017
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: e6cff4e2daf86b63bc0db0d4f2d537322d2841df
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.openlocfilehash: dcabcbbce78b83c0d4328e0f5b1088c172bcfedb
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47409299"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54850673"
 ---
 # <a name="secure-your-restful-services-by-using-http-basic-authentication"></a>Zabezpečení služby RESTful pomocí základního ověřování protokolu HTTP
 
@@ -32,7 +32,7 @@ Proveďte kroky v [integrace rozhraní REST API deklarací výměny na vaší ce
 
 ## <a name="step-1-add-authentication-support"></a>Krok 1: Přidání podpory ověřování
 
-### <a name="step-11-add-application-settings-to-your-projects-webconfig-file"></a>Krok 1.1: Přidání nastavení aplikace do souboru web.config vašeho projektu
+### <a name="step-11-add-application-settings-to-your-projects-webconfig-file"></a>Krok 1.1: Přidat nastavení aplikace do souboru web.config vašeho projektu
 1. Otevřete projekt aplikace Visual Studio, který jste vytvořili dříve. 
 
 2. Přidáním následujícího nastavení aplikace v souboru web.config v rámci `appSettings` element:
@@ -54,7 +54,7 @@ Proveďte kroky v [integrace rozhraní REST API deklarací výměny na vaší ce
     [System.Convert]::ToBase64String($bytes)
     ```
 
-### <a name="step-12-install-owin-libraries"></a>Krok 1.2: Instalace knihovny OWIN
+### <a name="step-12-install-owin-libraries"></a>Krok 1.2: Nainstalujte knihovny OWIN
 Pokud chcete začít, přidáte do projektu balíčky NuGet middleware OWIN pomocí konzole Správce balíčků Visual Studio:
 
 ```
@@ -216,13 +216,13 @@ Otevřete Controllers\IdentityController.cs a přidejte `[Authorize]` značky t�
 
 ![Přidat značku Authorize ke kontroleru](media/aadb2c-ief-rest-api-netfw-secure-basic/rest-api-netfw-secure-basic-authorize.png)
 
-## <a name="step-2-publish-to-azure"></a>Krok 2: Publikování aplikace do Azure
+## <a name="step-2-publish-to-azure"></a>Krok 2: Publikování aplikací do Azure
 Publikování projektu v Průzkumníku řešení, klikněte pravým tlačítkem myši **Contoso.AADB2C.API** projektu a pak vyberte **publikovat**.
 
 ## <a name="step-3-add-the-restful-services-app-id-and-app-secret-to-azure-ad-b2c"></a>Krok 3: Přidání služby typu REST ID aplikace a tajný kód aplikace do Azure AD B2C
 Poté, co vaše služba RESTful ochrání ID klienta (uživatelské jméno) a tajný klíč, musíte uložit přihlašovací údaje ve vašem tenantovi Azure AD B2C. Vlastní zásady poskytuje přihlašovací údaje při vyvolá služby RESTful. 
 
-### <a name="step-31-add-a-restful-services-client-id"></a>Krok 3.1: Přidejte ID klienta služby typu REST
+### <a name="step-31-add-a-restful-services-client-id"></a>Krok 3.1: Přidat ID klienta služby typu REST
 1. Ve vašem tenantovi Azure AD B2C vyberte **nastavení B2C** > **architekturu rozhraní identit**.
 
 
@@ -243,7 +243,7 @@ Poté, co vaše služba RESTful ochrání ID klienta (uživatelské jméno) a ta
 
 9. Potvrďte, že jste vytvořili `B2C_1A_B2cRestClientId` klíč.
 
-### <a name="step-32-add-a-restful-services-client-secret"></a>Krok 3.2: Přidáte tajný klíč klienta služby typu REST
+### <a name="step-32-add-a-restful-services-client-secret"></a>Krok 3.2: Přidat tajný klíč klienta služby typu REST
 1. Ve vašem tenantovi Azure AD B2C vyberte **nastavení B2C** > **architekturu rozhraní identit**.
 
 2. Vyberte **klíče zásad** zobrazíte klíče, které jsou k dispozici ve vašem tenantovi.
@@ -263,7 +263,7 @@ Poté, co vaše služba RESTful ochrání ID klienta (uživatelské jméno) a ta
 
 9. Potvrďte, že jste vytvořili `B2C_1A_B2cRestClientSecret` klíč.
 
-## <a name="step-4-change-the-technical-profile-to-support-basic-authentication-in-your-extension-policy"></a>Krok 4: Změna technický profil pro podporu základní ověřování ve svojí zásadě rozšíření
+## <a name="step-4-change-the-technical-profile-to-support-basic-authentication-in-your-extension-policy"></a>Krok 4: Změnit technický profil pro podporu základní ověřování ve svojí zásadě rozšíření
 1. Ve svém pracovním adresáři otevřete soubor rozšíření zásad (TrustFrameworkExtensions.xml).
 
 2. Hledat `<TechnicalProfile>` uzel, který zahrnuje `Id="REST-API-SignUp"`.
@@ -287,7 +287,7 @@ Poté, co vaše služba RESTful ochrání ID klienta (uživatelské jméno) a ta
     
     ![Přidání prvků XML základní ověřování](media/aadb2c-ief-rest-api-netfw-secure-basic/rest-api-netfw-secure-basic-add-1.png)
 
-## <a name="step-5-upload-the-policy-to-your-tenant"></a>Krok 5: Nahrajte zásady pro vašeho tenanta
+## <a name="step-5-upload-the-policy-to-your-tenant"></a>Krok 5: Odeslání zásady do vašeho tenanta
 
 1. V [webu Azure portal](https://portal.azure.com), přepněte [kontextu vašeho tenanta Azure AD B2C](active-directory-b2c-navigate-to-b2c-context.md)a pak otevřete **Azure AD B2C**.
 
@@ -301,7 +301,7 @@ Poté, co vaše služba RESTful ochrání ID klienta (uživatelské jméno) a ta
 
 6. Nahrát *TrustFrameworkExtensions.xml* souboru a poté se ujistěte, že projde úspěšně ověřovacím.
 
-## <a name="step-6-test-the-custom-policy-by-using-run-now"></a>Krok 6: Testování spustit pomocí vlastních zásad
+## <a name="step-6-test-the-custom-policy-by-using-run-now"></a>Krok 6: Testování vlastní zásady pomocí možnosti spustit hned
 1. Otevřít **nastavení Azure AD B2C**a pak vyberte **architekturu rozhraní identit**.
 
     >[!NOTE]

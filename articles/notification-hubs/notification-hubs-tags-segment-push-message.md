@@ -12,14 +12,14 @@ ms.workload: mobile
 ms.tgt_pltfrm: mobile-multiple
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 01/04/2019
+ms.date: 01/23/2019
 ms.author: jowargo
-ms.openlocfilehash: f52900d06049623a0a81e509abdc5e9ef76f95e5
-ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
+ms.openlocfilehash: 31a22aabc7b0f1d51a673ef8642037103badcc02
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54451472"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54828158"
 ---
 # <a name="routing-and-tag-expressions"></a>Směrování a značky výrazů
 
@@ -29,8 +29,7 @@ Výrazy označení vám umožní cílit na konkrétní sady zařízení nebo př
 
 ## <a name="targeting-specific-registrations"></a>Cílení na konkrétní registrace
 
-Jediný způsob, jak cíl konkrétní upozornění registrace je umožní přiřadit značky s nimi, pak cílit na těchto značek. Jak je popsáno v [Správa registrací](notification-hubs-push-notification-registration-management.md), aby bylo možné přijímat nabízená oznámení aplikace má k registraci zařízení zpracování na centrum oznámení. Po vytvoření registrace v centru oznámení back-end aplikace může odesílat nabízená oznámení k němu.
-Back-endu aplikací můžete zvolit registrace k cíli s konkrétní oznámení následujícími způsoby:
+Jediný způsob, jak cíl konkrétní upozornění registrace je umožní přiřadit značky s nimi, pak cílit na těchto značek. Jak je popsáno v [Správa registrací](notification-hubs-push-notification-registration-management.md), aby bylo možné přijímat nabízená oznámení aplikace má k registraci zařízení zpracování na centrum oznámení. Po vytvoření registrace v centru oznámení back-end aplikace může odesílat nabízená oznámení k němu. Back-endu aplikací můžete zvolit registrace k cíli s konkrétní oznámení následujícími způsoby:
 
 1. **Vysílání**: všechny registrace v centru oznámení dostávat oznámení.
 2. **Značka**: všechny registrace, které obsahují stanovené značky přijímat oznámení.
@@ -71,6 +70,9 @@ Na tomto obrázku je žádající o aktualizaci pro Beatles Alice a Bob se žád
 Přestože můžete kódovat více připomínky můžete vystavit ve značky (například "band_Beatles" nebo "follows_Charlie"), značky jsou jednoduché řetězce a nikoli vlastnosti s hodnotami. Registrace je nalezena shoda, pouze na přítomnosti nebo nepřítomnosti s konkrétní značkou.
 
 Celý podrobný kurz o tom, jak používat značky pro odesílání zájmových skupin, najdete v části [novinkách](notification-hubs-windows-notification-dotnet-push-xplat-segmented-wns.md).
+
+> [!NOTE]
+> Azure Notification Hubs podporuje maximálně 60 značek na registraci.
 
 ## <a name="using-tags-to-target-users"></a>Pomocí značek pro cílové uživatele
 

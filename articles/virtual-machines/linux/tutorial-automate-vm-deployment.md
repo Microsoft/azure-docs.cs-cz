@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 05/30/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: a023d9f600f63d1ead4cf7c7e2a3cceec794d28b
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
-ms.translationtype: HT
+ms.openlocfilehash: 4f4456ed81fba4648f5bc3efaa415b1e44e5e415
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46972586"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54852112"
 ---
 # <a name="tutorial---how-to-use-cloud-init-to-customize-a-linux-virtual-machine-in-azure-on-first-boot"></a>Kurz: Jak používat cloud-init k přizpůsobení virtuálního počítače s Linuxem v Azure při prvním spuštění počítače
 
@@ -171,7 +171,7 @@ az keyvault certificate create \
 
 
 ### <a name="prepare-certificate-for-use-with-vm"></a>Příprava certifikátu k použití na virtuálním počítači
-Pokud chcete certifikát použít během procesu vytváření virtuálního počítače, získejte ID vašeho certifikátu pomocí příkazu [az keyvault secret list-versions](/cli/azure/keyvault/secret#az-keyvault-secret-list-versions). Certifikát je do virtuálního počítače nutné při spuštění vložit v určitém formátu, proto jej převeďte pomocí příkazu [az vm secret format](/cli/azure/vm#az-vm-secret-format). Z důvodu snadnějšího použití v dalších krocích přiřadí následující příklad výstup těchto příkazů do proměnných:
+Pokud chcete certifikát použít během procesu vytváření virtuálního počítače, získejte ID vašeho certifikátu pomocí příkazu [az keyvault secret list-versions](/cli/azure/keyvault/secret#az-keyvault-secret-list-versions). Certifikát je do virtuálního počítače nutné při spuštění vložit v určitém formátu, proto jej převeďte pomocí příkazu [az vm secret format](/cli/azure/vm). Z důvodu snadnějšího použití v dalších krocích přiřadí následující příklad výstup těchto příkazů do proměnných:
 
 ```azurecli-interactive
 secret=$(az keyvault secret list-versions \
@@ -271,7 +271,7 @@ Následně se zobrazí váš zabezpečený web NGINX a aplikace v Node.js, jak j
 ![Zobrazení spuštěného zabezpečeného webu NGINX](./media/tutorial-automate-vm-deployment/secured-nginx.png)
 
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 V tomto kurzu jste nakonfigurovali virtuální počítače při prvním spuštění pomocí nástroje cloud-init. Naučili jste se tyto postupy:
 
 > [!div class="checklist"]

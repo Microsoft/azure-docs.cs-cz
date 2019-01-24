@@ -3,19 +3,19 @@ title: Nastavení registrace a přihlášení s účtem Weibo pomocí Azure Acti
 description: Zaregistrujte se a přihlaste se poskytují zákazníkům s účty Weibo ve svých aplikacích pomocí služby Azure Active Directory B2C.
 services: active-directory-b2c
 author: davidmu1
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 09/11/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: b0044387698e6b7b682061d48249d6e635b32cd5
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: ca2b2b7303af0f713c4f21f4fac0af738e25951c
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52842437"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54842480"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-a-weibo-account-using-azure-active-directory-b2c"></a>Nastavení registrace a přihlášení s účtem Weibo pomocí Azure Active Directory B2C
 

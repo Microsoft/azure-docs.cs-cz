@@ -1,10 +1,10 @@
 ---
-title: 'Kurz: Integrace Azure Active Directory se službou Teamphoria | Dokumentace Microsoftu'
+title: 'Kurz: Integrace Azure Active Directory s Teamphoria | Dokumentace Microsoftu'
 description: Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a Teamphoria.
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.assetid: d569c705-6f0f-4ec1-b485-ba82526b5d32
 ms.service: active-directory
 ms.component: saas-app-tutorial
@@ -14,14 +14,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/23/2018
 ms.author: jeedes
-ms.openlocfilehash: 554930b18a271a677aeb5e82c3e62a94965a8e7f
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 8232af95cf8414df67343f5004975b11df4488a0
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39439605"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54826713"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-teamphoria"></a>Kurz: Integrace Azure Active Directory se službou Teamphoria
+# <a name="tutorial-azure-active-directory-integration-with-teamphoria"></a>Kurz: Integrace Azure Active Directory s Teamphoria
 
 V tomto kurzu se dozvíte, jak integrovat Teamphoria s Azure Active Directory (Azure AD).
 
@@ -37,7 +37,7 @@ Pokud chcete zjistit další podrobnosti o integraci aplikací SaaS v Azure AD, 
 
 Konfigurace integrace Azure AD s Teamphoria, potřebujete následující položky:
 
-- S předplatným služby Azure AD
+- Předplatné Azure AD
 - Teamphoria jednotného přihlašování povolená předplatného
 
 > [!NOTE]
@@ -142,13 +142,13 @@ V této části Povolení služby Azure AD jednotného přihlašování na port�
 
     ![Konfigurace jednotného přihlašování](./media/teamphoria-tutorial/Teamphoria_sso_save.png)
 
-    a. **ZOBRAZOVANÝ název**: Zadejte zobrazovaný název modulu plug-in na stránky pro správu.
+    a. **ZOBRAZOVANÝ NÁZEV**: Na stránce správce zadejte zobrazovaný název modulu plug-in.
 
-    b. **Název TLAČÍTKA**: název karty, které se zobrazí na přihlašovací stránku pro přihlášení pomocí jednotného přihlašování.
+    b. **NÁZEV TLAČÍTKA**: Název karty, které se zobrazí na přihlašovací stránku pro přihlášení pomocí jednotného přihlašování.
 
-    c. **CERTIFIKÁT**: otevřít certifikátu dříve stáhli z portálu Azure v programu Poznámkový blok, zkopírujte obsah stejné a vložte ho do pole.
+    c. **CERTIFIKÁT**: Otevřete certifikát předtím stáhli z portálu Azure v programu Poznámkový blok, zkopírujte obsah stejné a vložte ho do pole.
 
-    d. **VSTUPNÍ bod**: Vložit **SAML jednotné přihlašování – adresa URL služby** zkopírovali z portálu Azure portal.
+    d. **VSTUPNÍ BOD**: Vložit **SAML jednotné přihlašování – adresa URL služby** zkopírovali z portálu Azure portal.
 
     e. Přepněte možnost **ON** a klikněte na **Uložit**.
 
@@ -247,7 +247,7 @@ V této části Testování služby Azure AD jednotné přihlašování – konf
 
 Pokud chcete otestovat jednotné přihlašování – nastavení, otevřete na přístupovém panelu. Další informace o přístupovém panelu, naleznete v tématu [Úvod k přístupovému panelu](../user-help/active-directory-saas-access-panel-introduction.md).
 
-## <a name="additional-resources"></a>Další zdroje informací:
+## <a name="additional-resources"></a>Další materiály
 
 * [Seznam kurzů o integraci aplikací SaaS pomocí Azure Active Directory](tutorial-list.md)
 * [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](../manage-apps/what-is-single-sign-on.md)

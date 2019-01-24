@@ -3,19 +3,19 @@ title: Dynamické přizpůsobení uživatelského rozhraní Azure Active Directo
 description: Podpora více značky prostředí směřovat HTML5 a CSS, která se dynamicky mění v době běhu.
 services: active-directory-b2c
 author: davidmu1
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 09/20/2017
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: f078c1389e36b82f95b011ca1fbd7fbd1c4f895e
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 87634539b9709e057c0e51297569c1005a7bea1f
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52834217"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54852095"
 ---
 # <a name="azure-active-directory-b2c-configure-the-ui-with-dynamic-content-by-using-custom-policies"></a>Azure Active Directory B2C: Konfigurace uživatelského rozhraní s dynamickým obsahem pomocí vlastních zásad
 
@@ -42,11 +42,11 @@ Ve vlastních zásadách definuje definici obsahu stránky HTML5 identifikátor 
 | ID obsahu definice | Výchozí šablona HTML5| Popis | 
 |-----------------------|--------|-------------|
 | *api.error* | [exception.cshtml](https://login.microsoftonline.com/static/tenant/default/exception.cshtml) | **Chybová stránka**. Na této stránce se zobrazí, když došlo k výjimce nebo došlo k chybě. |
-| *API.idpselections* | [idpSelector.cshtml](https://login.microsoftonline.com/static/tenant/default/idpSelector.cshtml) | **Stránka výběru zprostředkovatele identit**. Tato stránka obsahuje seznam zprostředkovatelů identity, které uživatelé můžou vybírat při přihlašování. Možnosti jsou obvykle enterprise zprostředkovatelů identity, zprostředkovatelé sociálních identit, jako je Facebook a Google + nebo místním účtům. |
+| *api.idpselections* | [idpSelector.cshtml](https://login.microsoftonline.com/static/tenant/default/idpSelector.cshtml) | **Stránka výběru zprostředkovatele identit**. Tato stránka obsahuje seznam zprostředkovatelů identity, které uživatelé můžou vybírat při přihlašování. Možnosti jsou obvykle enterprise zprostředkovatelů identity, zprostředkovatelé sociálních identit, jako je Facebook a Google + nebo místním účtům. |
 | *api.idpselections.signup* | [idpSelector.cshtml](https://login.microsoftonline.com/static/tenant/default/idpSelector.cshtml) | **Výběr zprostředkovatele identity pro registraci**. Tato stránka obsahuje seznam zprostředkovatelů identity, které uživatelé můžou vybírat při registraci. Možnosti jsou organizace zprostředkovatelů identity, zprostředkovatelé sociálních identit, jako je Facebook nebo Google + nebo místním účtům. |
 | *api.localaccountpasswordreset* | [selfasserted.html](https://login.microsoftonline.com/static/tenant/default/selfAsserted.cshtml) | **Stránka zapomenuté heslo**. Tato stránka obsahuje formulář, který uživatelé musí dokončit k zahájení resetování hesla.  |
-| *API.localaccountsignin* | [selfasserted.html](https://login.microsoftonline.com/static/tenant/default/selfAsserted.cshtml) | **Místní účet přihlašovací stránku**. Tato stránka obsahuje formulář pro přihlašování pomocí místní účet, který je založen na e-mailovou adresu nebo jméno uživatele. Formulář může obsahovat pole textového zadání a pole pro zadání hesla. |
-| *API.localaccountsignup* | [selfasserted.html](https://login.microsoftonline.com/static/tenant/default/selfAsserted.cshtml) | **Místní účet registrační stránku**. Tato stránka obsahuje formulář pro registraci místního účtu, který je založen na e-mailovou adresu nebo jméno uživatele. Formulář může obsahovat různé vstupní ovládací prvky, jako například: textový vstup pole, pole pro zadání hesla, přepínací tlačítko, rozevírací seznamy výběru jednoho a víc zaškrtněte políčka. |
+| *api.localaccountsignin* | [selfasserted.html](https://login.microsoftonline.com/static/tenant/default/selfAsserted.cshtml) | **Místní účet přihlašovací stránku**. Tato stránka obsahuje formulář pro přihlašování pomocí místní účet, který je založen na e-mailovou adresu nebo jméno uživatele. Formulář může obsahovat pole textového zadání a pole pro zadání hesla. |
+| *api.localaccountsignup* | [selfasserted.html](https://login.microsoftonline.com/static/tenant/default/selfAsserted.cshtml) | **Místní účet registrační stránku**. Tato stránka obsahuje formulář pro registraci místního účtu, který je založen na e-mailovou adresu nebo jméno uživatele. Formulář může obsahovat různé vstupní ovládací prvky, jako například: textový vstup pole, pole pro zadání hesla, přepínací tlačítko, rozevírací seznamy výběru jednoho a víc zaškrtněte políčka. |
 | *api.phonefactor* | [multifactor-1.0.0.cshtml](https://login.microsoftonline.com/static/tenant/default/multifactor-1.0.0.cshtml) | **Stránka služby Multi-Factor authentication**. Na této stránce si uživatelé mohli ověřit jejich telefonní čísla (pomocí textových nebo hlasových) během registrace nebo přihlášení. |
 | *api.selfasserted* | [selfasserted.html](https://login.microsoftonline.com/static/tenant/default/selfAsserted.cshtml) | **Stránka registrace sociálního účtu**. Tato stránka obsahuje formulář, který uživatelé musí dokončit při registraci pomocí existující účet od poskytovatele identity v sociálních sítích. Tato stránka je podobný předchozí stránka registrace sociálního účtu, s výjimkou pole pro zadání hesla. |
 | *api.selfasserted.profileupdate* | [updateprofile.html](https://login.microsoftonline.com/static/tenant/default/updateProfile.cshtml) | **Stránka pro aktualizaci profilu**. Tato stránka obsahuje formulář, který mohou uživatelé aktualizovat svůj profil. Tato stránka je podobná stránka registrace sociálního účtu s výjimkou pole pro zadání hesla. |
@@ -82,11 +82,11 @@ V tomto podrobném návodu můžete:
 
 6. Vyberte **OK** a vytvořte projekt.
 
-## <a name="step-2-create-mvc-view"></a>Krok 2: Vytvoření zobrazení MVC
-### <a name="step-21-download-the-b2c-built-in-html5-template"></a>Krok 2.1: Stáhněte šablonu B2C integrované HTML5
+## <a name="step-2-create-mvc-view"></a>Krok 2: Vytvořit zobrazení MVC
+### <a name="step-21-download-the-b2c-built-in-html5-template"></a>Krok 2.1: Stáhněte si šablonu B2C integrované HTML5
 Vaše vlastní HTML5 šablona je založena na Azure AD B2C integrovanou šablonu HTML5. Můžete stáhnout [unified.html souboru](https://login.microsoftonline.com/static/tenant/default/unified.cshtml) nebo stáhnout šablonu z [starter pack](https://github.com/AzureADQuickStarts/B2C-AzureBlobStorage-Client/tree/master/sample_templates/wingtip). Tento soubor HTML5 použijete k vytvoření jednotná stránka registrace nebo přihlášení.
 
-### <a name="step-22-add-the-mvc-view"></a>Krok 2.2: Přidat zobrazení MVC
+### <a name="step-22-add-the-mvc-view"></a>Krok 2.2: Přidání zobrazení MVC
 1. Klikněte pravým tlačítkem na zobrazení/domovské složky a potom **přidat** > **nová položka**.
 
     ![Přidat novou položku MVC](media/active-directory-b2c-ui-customization-custom-dynamic/aadb2c-ief-ui-customization-add-view1.png)
@@ -119,13 +119,13 @@ Vaše vlastní HTML5 šablona je založena na Azure AD B2C integrovanou šablonu
 
     ![Unified.cshtml souboru po přidání HTML5](media/active-directory-b2c-ui-customization-custom-dynamic/aadb2c-ief-ui-customization-edit-view1.png)
 
-### <a name="step-23-change-the-background-image"></a>Krok 2.3: Změna obrázku pozadí
+### <a name="step-23-change-the-background-image"></a>Krok 2.3: Změnit obrázek pozadí
 
 Vyhledejte `<img>` element, který obsahuje `ID` hodnotu *background_background_image*a potom nahraďte `src` hodnotu **https://kbdevstorage1.blob.core.windows.net/asset-blobs/19889_en_1** nebo jakékoli jiné Obrázek pozadí, který chcete použít.
 
 ![Změnit na pozadí stránky](media/active-directory-b2c-ui-customization-custom-dynamic/aadb2c-ief-ui-customization-add-static-background.png)
 
-### <a name="step-24-add-your-view-to-the-mvc-controller"></a>2.4 krok: Přidání zobrazení do kontroler MVC
+### <a name="step-24-add-your-view-to-the-mvc-controller"></a>Krok 2.4: Přidat zobrazení kontroler MVC
 
 1. Otevřít **Controllers\HomeController.cs**a přidejte následující metodu: 
 
@@ -143,7 +143,7 @@ Vyhledejte `<img>` element, který obsahuje `ID` hodnotu *background_background_
 
 2. Ladění webových aplikací a ujistěte se, že _jednotné_ stránka je přístupná (například `http://localhost:<Port number>/Home/unified`).
 
-### <a name="step-25-publish-to-azure"></a>Krok 2.5: Publikování aplikace do Azure
+### <a name="step-25-publish-to-azure"></a>Krok 2.5: Publikování aplikací do Azure
 1. V **Průzkumníka řešení**, klikněte pravým tlačítkem myši **Contoso.AADB2C.UI** projektu a pak vyberte **publikovat**.
 
     ![Publikování do Microsoft Azure App Service](media/active-directory-b2c-ui-customization-custom-dynamic/aadb2c-ief-ui-customization-publish1.png)
@@ -198,7 +198,7 @@ Vyhledejte `<img>` element, který obsahuje `ID` hodnotu *background_background_
 * Obsloužit obsah je zabezpečené přes **HTTPS**.
 * Používáte *absolutní adresy URL*, jako například *https://yourdomain/content*, pro všechny odkazy, obsah šablony stylů CSS a obrázky.
 
-## <a name="step-5-configure-your-content-definition"></a>Krok 5: Konfigurace vaší definice obsahu
+## <a name="step-5-configure-your-content-definition"></a>Krok 5: Konfigurace obsahu definice
 Ke konfiguraci `ContentDefinition`, postupujte takto:
 1. Otevřete soubor základní zásady (například *TrustFrameworkBase.xml*).
 
@@ -215,7 +215,7 @@ Ke konfiguraci `ContentDefinition`, postupujte takto:
     
     ![Vaše definice obsahu](media/active-directory-b2c-ui-customization-custom-dynamic/aadb2c-ief-ui-customization-content-definition.png)
 
-## <a name="step-6-upload-the-policy-to-your-tenant"></a>Krok 6: Nahrajte zásady pro vašeho tenanta
+## <a name="step-6-upload-the-policy-to-your-tenant"></a>Krok 6: Odeslání zásady do vašeho tenanta
 1. V [webu Azure portal](https://portal.azure.com), přepněte [kontextu vašeho tenanta Azure AD B2C](active-directory-b2c-navigate-to-b2c-context.md)a pak vyberte **Azure AD B2C**.
 
 2. Vyberte **architekturu rozhraní identit**.
@@ -228,7 +228,7 @@ Ke konfiguraci `ContentDefinition`, postupujte takto:
 
 6. Nahrát *TrustFrameworkExtensions.xml* souboru a ujistěte se, že projde úspěšně ověřovacím.
 
-## <a name="step-7-test-the-custom-policy-by-using-run-now"></a>Krok 7: Test spustit pomocí vlastních zásad
+## <a name="step-7-test-the-custom-policy-by-using-run-now"></a>Krok 7: Testování vlastní zásady pomocí možnosti spustit hned
 1. Vyberte **nastavení Azure AD B2C**a pak vyberte **architekturu rozhraní identit**.
 
     >[!NOTE]
@@ -292,7 +292,7 @@ Upravit HomeController `unified` metodu tak, aby přijímal campaignId parametru
 
     ![Změnit na pozadí stránky](media/active-directory-b2c-ui-customization-custom-dynamic/aadb2c-ief-ui-customization-add-dynamic-background.png)
 
-### <a name="83-upload-the-changes-and-publish-your-policy"></a>8.3: odešlete změny a publikovat zásady
+### <a name="83-upload-the-changes-and-publish-your-policy"></a>8.3: Odešlete změny a publikovat zásady
 1. Publikování projektu sady Visual Studio do služby Azure App Service.
 
 2. Nahrát *SignUpOrSignin.xml* zásady Azure AD B2C.
@@ -315,7 +315,7 @@ Upravit HomeController `unified` metodu tak, aby přijímal campaignId parametru
 
     ![Změnit na pozadí stránky](media/active-directory-b2c-ui-customization-custom-dynamic/aadb2c-ief-ui-customization-demo3.png)
 
-## <a name="step-9-change-the-rest-of-the-user-journey"></a>Krok 9: Změna zbývající část cesty uživatele
+## <a name="step-9-change-the-rest-of-the-user-journey"></a>Krok 9: Změnit zbývající část cesty uživatele
 Pokud vyberete **zaregistrujte se hned teď** odkaz na přihlašovací stránce v prohlížeči se zobrazí výchozí obrázek na pozadí, definice není obrázek. Toto chování mohou nastat, protože jste změnili pouze stránky registrace nebo přihlášení. Chcete-li změnit rest svým vyhodnocení obsahu definice:
 1. Přejděte zpět do "Krok 2" a postupujte takto:
 

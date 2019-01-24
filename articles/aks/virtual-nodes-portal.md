@@ -6,12 +6,12 @@ author: iainfoulds
 ms.service: container-service
 ms.date: 12/03/2018
 ms.author: iainfou
-ms.openlocfilehash: 3b99afe82f77b6bd89b5afa458179abee4c98e4f
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: a47910083083787000b749a0b5b3256df5e702c8
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52999133"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54845397"
 ---
 # <a name="create-and-configure-an-azure-kubernetes-services-aks-cluster-to-use-virtual-nodes-in-the-azure-portal"></a>Vytvoření a konfigurace clusteru služby Azure Kubernetes služby (AKS) používat virtuální uzly na webu Azure Portal
 
@@ -20,7 +20,7 @@ Rychlé nasazení úloh v clusteru služby Azure Kubernetes Service (AKS), můž
 > [!IMPORTANT]
 > Virtuální uzly pro AKS jsou nyní v **ve verzi preview**. Verze Preview vám zpřístupňujeme pod podmínkou, že budete souhlasit s [dodatečnými podmínkami použití](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). Některé aspekty této funkce se můžou před zveřejněním změnit.
 
-## <a name="sign-in-to-azure"></a>Přihlášení k Azure
+## <a name="sign-in-to-azure"></a>Přihlásit se k Azure
 
 Přihlaste se k webu Azure Portal na adrese https://portal.azure.com.
 
@@ -30,9 +30,9 @@ V levém horním rohu webu Azure Portal vyberte **Vytvořit prostředek** > **Ku
 
 Na **Základy** stránce, nakonfigurujte následující možnosti:
 
-- *PODROBNOSTI O PROJEKTU:* Vyberte předplatné Azure a pak vyberte nebo vytvořte skupinu prostředků Azure, například *myResourceGroup*. Zadejte **Název clusteru Kubernetes**, například *myAKSCluster*.
-- *PODROBNOSTI O CLUSTERU:* Vyberte oblast, verzi Kubernetes a předponu názvu DNS pro cluster AKS.
-- *ŠKÁLOVÁNÍ:* Vyberte velikost virtuálního počítače pro uzly AKS. Velikost virtuálního počítače **nejde** změnit po nasazení clusteru AKS.
+- *PODROBNOSTI O PROJEKTU*: Vyberte předplatné Azure, pak vyberte nebo vytvořte skupinu prostředků Azure, jako *myResourceGroup*. Zadejte **Název clusteru Kubernetes**, například *myAKSCluster*.
+- *PODROBNOSTI O CLUSTERU*: Vyberte oblast, verze Kubernetes a předpona názvu DNS pro AKS cluster.
+- *ŠKÁLOVÁNÍ*: Vyberte velikost virtuálního počítače pro uzly AKS. Velikost virtuálního počítače **nejde** změnit po nasazení clusteru AKS.
     - Vyberte počet uzlů, které se mají do clusteru nasadit. Pro účely tohoto článku nastavte **počet uzlů** k *1*. Počet uzlů **jde** upravit po nasazení clusteru.
     - V části **virtuální uzly**vyberte *povoleno*.
 
@@ -126,6 +126,9 @@ virtual-node-helloworld-9b55975f-bnmfl   1/1       Running   0          4m      
 
 Pod přiřazena vnitřní IP adresu z podsítě virtuální sítě Azure delegované pro použití s virtuálními uzly.
 
+> [!NOTE]
+> Pokud používáte Image uložená ve službě Azure Container Registry, [nakonfigurovat a používat tajného kódu Kubernetes][acr-aks-secrets]. Aktuální omezení virtuální uzly, které ve verzi preview je, že nemůžete použít integrované ověřování instančních objektů Azure AD. Pokud nepoužíváte tajného klíče, pody naplánována na virtuální uzly nepodaří spustit a nahlaste jim chybu `HTTP response status code 400 error code "InaccessibleImage"`.
+
 ## <a name="test-the-virtual-node-pod"></a>Testovat virtuální uzel pod
 
 K otestování spuštěný na virtuální uzel pod, přejděte na ukázkovou aplikaci pomocí webového klienta. Jak chcete pod přiřazena vnitřní IP adresu, můžete rychle otestovat toto připojení z jiného podu na clusteru AKS. Vytvoření testů pod a připojit se k němu Terminálové relaci:
@@ -183,3 +186,5 @@ Virtuální uzly jsou jedna komponenta škálování řešení ve službě AKS. 
 [aks-hpa]: tutorial-kubernetes-scale.md
 [aks-cluster-autoscaler]: autoscaler.md
 [aks-basic-ingress]: ingress-basic.md
+[acr-aks-secrets]: ../container-registry/container-registry-auth-aks.md#access-with-kubernetes-secret
+

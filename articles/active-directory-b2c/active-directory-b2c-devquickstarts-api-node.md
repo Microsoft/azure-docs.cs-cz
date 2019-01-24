@@ -3,19 +3,19 @@ title: Zabezpečení webového rozhraní API s použitím prostředí Node.js v 
 description: Jak vytvořit webové aplikace Node.js API, které přijímá tokeny z klienta B2C.
 services: active-directory-b2c
 author: davidmu1
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 01/07/2017
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 4016a81cd743149d846d425f1e2f7d5774a9e1fb
-ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
+ms.openlocfilehash: 5dbb932173bccea32d3463fe5e645df58b287990
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54449074"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54845943"
 ---
 # <a name="secure-a-web-api-by-using-nodejs-in-azure-active-directory-b2c"></a>Zabezpečení webového rozhraní API s použitím prostředí Node.js v Azure Active Directory B2C
 

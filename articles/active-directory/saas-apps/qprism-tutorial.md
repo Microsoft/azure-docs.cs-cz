@@ -1,10 +1,10 @@
 ---
-title: 'Kurz: Integrace Azure Active Directory se službou QPrism | Dokumentace Microsoftu'
+title: 'Kurz: Integrace Azure Active Directory s QPrism | Dokumentace Microsoftu'
 description: Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a QPrism.
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.reviewer: joflore
 ms.assetid: 72ab75ba-132b-4f83-a34b-d28b81b6d7bc
 ms.service: active-directory
@@ -15,14 +15,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/23/2018
 ms.author: jeedes
-ms.openlocfilehash: ddf22491d7531daecf4448e62e8594c3326d7b77
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 8278b26f023ada109a8e6fa3965476e3dc4526c7
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39420270"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54828056"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-qprism"></a>Kurz: Integrace Azure Active Directory se službou QPrism
+# <a name="tutorial-azure-active-directory-integration-with-qprism"></a>Kurz: Integrace Azure Active Directory s QPrism
 
 V tomto kurzu se dozvíte, jak integrovat QPrism s Azure Active Directory (Azure AD).
 
@@ -38,7 +38,7 @@ Další informace o integraci aplikací SaaS v Azure AD, najdete v článku [co 
 
 Konfigurace integrace Azure AD s QPrism, potřebujete následující položky:
 
-- S předplatným služby Azure AD
+- Předplatné Azure AD
 - QPrism jednotného přihlašování povolená předplatného
 
 Pokud chcete vyzkoušet kroky v tomto kurzu, postupujte podle následujících doporučení:
@@ -112,7 +112,7 @@ V této části Povolení služby Azure AD jednotného přihlašování na port�
     > [!NOTE] 
     > Tyto hodnoty nejsou skutečný. Aktualizujte tyto hodnoty se skutečné identifikátorem a adresa URL přihlašování. Kontakt [tým podpory QPrism klienta](mailto:qsupport-ce@quatrro.com) k získání těchto hodnot. 
 
-1. Na **podpisový certifikát SAML** klikněte na tlačítko Kopírovat zkopírujte **adresa Url federačních metadat aplikace** a vložte ho do poznámkového bloku.
+1. Na **podpisový certifikát SAML** klikněte na tlačítko Kopírovat zkopírujte **adresa Url federačních metadat aplikace** a vložte ho do poznámkového bloku.
 
      ![Odkaz ke stažení certifikátu](./media/qprism-tutorial/tutorial_qprism_certificate.png)
 
@@ -156,7 +156,7 @@ Cílem této části je vytvoření zkušebního uživatele na webu Azure Portal
  
 ### <a name="create-a-qprism-test-user"></a>Vytvoření zkušebního uživatele QPrism
 
-V této části vytvoříte uživatele v QPrism jako Britta Simon. Práce s [tým podpory QPrism](mailto:qsupport-ce@quatrro.com) přidat uživatele na platformě QPrism. Uživatelé musí vytvořit a aktivovat, než použití jednotného přihlašování. 
+V této části vytvoříte uživatele v QPrism jako Britta Simon. Práce s [tým podpory QPrism](mailto:qsupport-ce@quatrro.com) přidat uživatele na platformě QPrism. Uživatelé musí vytvořit a aktivovat, než použití jednotného přihlašování. 
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřadit uživatele Azure AD
 
@@ -188,14 +188,14 @@ V této části je povolit Britta Simon k udělení přístupu k QPrism použit�
 
 1. V části **přidat přiřazení**vyberte **přiřadit**.
     
-### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování
+### <a name="test-single-sign-on"></a>Test jednotného přihlašování
 
 V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 
 Na přístupovém panelu vyberete dlaždici QPrism vám by měl získat automaticky přihlášený k QPrism aplikace.
 Další informace o přístupovém panelu, naleznete v tématu [Úvod k přístupovému panelu](../user-help/active-directory-saas-access-panel-introduction.md). 
 
-## <a name="additional-resources"></a>Další zdroje informací:
+## <a name="additional-resources"></a>Další materiály
 
 * [Seznam kurzů o integraci aplikací SaaS pomocí Azure Active Directory](tutorial-list.md)
 * [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](../manage-apps/what-is-single-sign-on.md)

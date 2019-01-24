@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 09/28/2018
 ms.author: danlep
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: b9fed56746f5b26269f6a70aeedd06ba9b19548f
-ms.sourcegitcommit: 7bc4a872c170e3416052c87287391bc7adbf84ff
+ms.openlocfilehash: 2ff08b0f155be54ee57d2d9999c47aa56a366d09
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48018821"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54852197"
 ---
 # <a name="how-to-find-linux-vm-images-in-the-azure-marketplace-with-the-azure-cli"></a>Postup vyhledání imagí virtuálních počítačů s Linuxem na webu Azure Marketplace pomocí Azure CLI
 Toto téma popisuje, jak používat rozhraní příkazového řádku Azure k vyhledání imagí virtuálních počítačů na webu Azure Marketplace. Tyto informace slouží k určení Marketplace image, pokud vytvoříte virtuální počítač programově pomocí rozhraní příkazového řádku, šablon Resource Manageru nebo jiných nástrojů.
@@ -128,7 +128,7 @@ Debian   credativ     8                  credativ:Debian:8:8.0.201706210        
 ```
 
 ## <a name="navigate-the-images"></a>Procházením imagí 
-Dalším způsobem, jak najít image v umístění je spustit [az virtuálního počítače image list-publishers](/cli/azure/vm/image#az_vm_image_list_publishers), [az virtuální počítač image list-offers](/cli/azure/vm/image#az_vm_image_list_offers), a [az image list-skladové položky virtuálních počítačů](/cli/azure/vm/image#az_vm_image_list_skus) příkazy v pořadí. Tyto hodnoty můžete určit pomocí následujících příkazů:
+Dalším způsobem, jak najít image v umístění je spustit [az virtuálního počítače image list-publishers](/cli/azure/vm/image#az_vm_image_list_publishers), [az virtuální počítač image list-offers](/cli/azure/vm/image), a [az image list-skladové položky virtuálních počítačů](/cli/azure/vm/image#az_vm_image_list_skus) příkazy v pořadí. Tyto hodnoty můžete určit pomocí následujících příkazů:
 
 1. Vypsat vydavatele imagí.
 2. Pro daného vydavatele vypsat jeho nabídky.
@@ -249,7 +249,7 @@ UbuntuServer  Canonical    16.04-LTS  Canonical:UbuntuServer:16.04-LTS:16.04.201
 
 Nyní můžete přesně tu image, kterou chcete použít provedením poznamenejte si hodnotu URN. Předat tuto hodnotu `--image` při vytváření virtuálního počítače se [vytvořit az vm](/cli/azure/vm#az_vm_create) příkaz. Mějte na paměti, že můžete volitelně nahradit číslo verze v URN "poslední zálohy". Tato verze je vždy nejnovější verzi image. 
 
-Pokud provádíte nasazení virtuálního počítače pomocí šablony Resource Manageru, můžete nastavit parametry image jednotlivě v `imageReference` vlastnosti. Zobrazit [referenčními informacemi k šablonám](/azure/templates/microsoft.compute/virtualmachines).
+Pokud provádíte nasazení virtuálního počítače pomocí šablony Resource Manageru, můžete nastavit parametry image jednotlivě v `imageReference` vlastnosti. Viz [referenční informace k šablonám](/azure/templates/microsoft.compute/virtualmachines).
 
 [!INCLUDE [virtual-machines-common-marketplace-plan](../../../includes/virtual-machines-common-marketplace-plan.md)]
 

@@ -3,9 +3,9 @@ title: Jak používat témata služby Azure Service Bus pomocí Javy | Dokumenta
 description: Použijte témata a odběry Service Bus v Azure.
 services: service-bus-messaging
 documentationcenter: java
-author: spelluru
+author: axisc
 manager: timlt
-editor: ''
+editor: spelluru
 ms.assetid: 63d6c8bd-8a22-4292-befc-545ffb52e8eb
 ms.service: service-bus-messaging
 ms.workload: tbd
@@ -13,13 +13,13 @@ ms.tgt_pltfrm: na
 ms.devlang: Java
 ms.topic: article
 ms.date: 09/17/2018
-ms.author: spelluru
-ms.openlocfilehash: 501d15ebbb373c100dd735e97bebf2f085a9579e
-ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
+ms.author: aschhab
+ms.openlocfilehash: cd2d5812d1b61e1d8fcc00fbc824be8ceac696de
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50241307"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54849953"
 ---
 # <a name="how-to-use-service-bus-topics-and-subscriptions-with-java"></a>Jak používat témata a odběry Service Bus pomocí Javy
 
@@ -67,7 +67,7 @@ Vytvořením nového oboru názvů se automaticky vygeneruje počáteční pravi
 1. Klikněte na **Všechny prostředky** a pak klikněte na název nově vytvořeného oboru názvů.
 2. V okně oboru názvů klikněte na **Zásady sdíleného přístupu**.
 3. Na obrazovce **Zásady sdíleného přístupu** klikněte na **RootManageSharedAccessKey**.
-4. V okně **Zásada: RootManageSharedAccessKey** klikněte na tlačítko **Kopírovat** vedle položky **Primární připojovací řetězec** a zkopírujte si připojovací řetězec do schránky pro pozdější použití. Vložte tuto hodnotu do Poznámkového bloku nebo jiného dočasného umístění.
+4. V **zásad: RootManageSharedAccessKey** okna, klikněte na tlačítko **kopírování** vedle **primární připojovací řetězec**, zkopírujte připojovací řetězec do schránky pro pozdější použití. Vložte tuto hodnotu do Poznámkového bloku nebo jiného dočasného umístění.
 
     ![connection-string](./media/service-bus-tutorial-topics-subscriptions-portal/connection-string.png)
 5. Opakujte předchozí krok, zkopírujte si hodnotu pro **primární klíč** a vložte ji do dočasného umístění pro pozdější použití.
@@ -95,9 +95,9 @@ Ujistěte se, že jste nainstalovali [sady Azure SDK pro Javu] [ Azure SDK for J
 
 Také je potřeba přidat následující JAR do cesta sestavení Java:
 
-- gson 2.6.2.jar
-- Commons-cli-1.4.jar
-- kanálem. j 0.21.0.jar
+- gson-2.6.2.jar
+- commons-cli-1.4.jar
+- proton-j-0.21.0.jar
 
 Přidat třídu s **hlavní** metoda a potom přidejte následující `import` příkazů v horní části souboru Java:
 

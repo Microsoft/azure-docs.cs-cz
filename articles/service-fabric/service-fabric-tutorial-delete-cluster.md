@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 09/26/2018
 ms.author: ryanwi
 ms.custom: mvc
-ms.openlocfilehash: 43ec39df594ee682c78bfe12e2c8cafc48dda3a1
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: 5174bb696b456a66cfc0666ac5c475437e441d82
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54428354"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54848848"
 ---
 # <a name="tutorial-remove-a-service-fabric-cluster-running-in-azure"></a>Kurz: Odebrání clusteru Service Fabric běžící v Azure
 
@@ -50,7 +50,7 @@ Než začnete s tímto kurzem:
 ## <a name="delete-the-resource-group-containing-the-service-fabric-cluster"></a>Odstranění skupiny prostředků obsahující cluster Service Fabric
 Nejjednodušší způsob, jak odstranit cluster a všechny prostředky, které využívá, je odstranit příslušnou skupinu prostředků.
 
-Přihlaste se k Azure a vyberte ID předplatného, pro které chcete cluster odebrat.  Své ID předplatného můžete zjistit po přihlášení k webu [Azure Portal](http://portal.azure.com). Odstraňte skupinu prostředků a všechny prostředky clusteru pomocí rutiny [Remove-AzureRMResourceGroup](/powershell/module/azurerm.resources/remove-azurermresourcegroup) nebo příkazu [az group delete](/cli/azure/group?view=azure-cli-latest#az_group_delete).
+Přihlaste se k Azure a vyberte ID předplatného, pro které chcete cluster odebrat.  Své ID předplatného můžete zjistit po přihlášení k webu [Azure Portal](http://portal.azure.com). Odstraňte skupinu prostředků a všechny prostředky clusteru pomocí rutiny [Remove-AzureRMResourceGroup](/powershell/module/azurerm.resources/remove-azurermresourcegroup) nebo příkazu [az group delete](/cli/azure/group?view=azure-cli-latest).
 
 ```powershell
 Connect-AzureRmAccount

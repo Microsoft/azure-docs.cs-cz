@@ -8,14 +8,14 @@ manager: cgronlun
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
-ms.date: 09/10/2018
+ms.date: 01/23/2019
 ms.author: diberry
-ms.openlocfilehash: 8cddea1757b37ca462611874af7ace1af70c9646
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: 8ab5000f1f50e10195c02b6198fa0bcffd0408b5
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54425168"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54844754"
 ---
 # <a name="language-understanding-glossary-of-common-vocabulary-and-concepts"></a>Glosář Principy jazyka common slovník a koncepty
 Language Understanding (LUIS) Glosář vysvětluje podmínky, které můžete narazit při práci se službou LUIS rozhraní API.

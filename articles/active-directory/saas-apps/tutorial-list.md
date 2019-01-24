@@ -4,7 +4,7 @@ description: Konfigurace integrace Azure Active Directory jednotné přihlašov�
 services: active-directory
 documentationcenter: ''
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.assetid: 08c0c52b-76d9-4250-936a-6bec0edb8816
 ms.service: active-directory
 ms.component: saas-app-tutorial
@@ -16,12 +16,12 @@ ms.date: 09/26/2018
 ms.author: jeedes
 ms.custom: it-pro
 ms.reviewer: jeedes
-ms.openlocfilehash: 0a1cb952058c61b66bced88f27d8618af729ff36
-ms.sourcegitcommit: 3150596c9d4a53d3650cc9254c107871ae0aab88
+ms.openlocfilehash: 0cc501feea2e7c92ef448c8ca4820d75af0d1ce9
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47419759"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54827512"
 ---
 # <a name="tutorials-for-integrating-saas-applications-with-azure-active-directory"></a>Kurzy integrace aplikací SaaS pomocí Azure Active Directory
 
@@ -33,14 +33,14 @@ Seznam všech aplikací SaaS, které byly předem integrované do služby Azure 
 
 | Logo | Kurz vývoje aplikace pro jednotné přihlašování | Kurz vývoje aplikace pro zřizování uživatelů |
 | :---: | :--- | :--- |
-| ![Logo](./media/tutorial-list/active-directory-saas-google-apps-tutorial.png)| [G Suite](google-apps-tutorial.md)|[G Suite - zřizování uživatelů](google-apps-provisioning-tutorial.md)|
-| ![Logo](./media/tutorial-list/active-directory-saas-amazon-web-service-tutorial.png)| [Amazon Web Services (AWS)](amazon-web-service-tutorial.md)| [Amazon Web Services (AWS) - Role zřizování](amazon-web-service-tutorial.md#configure-azure-ad-single-sign-on)|
-| ![Logo](./media/tutorial-list/active-directory-saas-servicenow-tutorial.png)| [ServiceNow](servicenow-tutorial.md)|[ServiceNow - zřizování uživatelů](servicenow-provisioning-tutorial.md)|
-| ![Logo](./media/tutorial-list/active-directory-saas-salesforce-tutorial.png)| [Salesforce](salesforce-tutorial.md)|[Salesforce – zřizování uživatelů](salesforce-provisioning-tutorial.md)|
-| ![Logo](./media/tutorial-list/active-directory-saas-workday-tutorial.png)| [Pracovní den](workday-tutorial.md)| [WORKDAY - zřizování uživatelů](workday-inbound-tutorial.md)|
-| ![Logo](./media/tutorial-list/active-directory-saas-atlassian-cloud-tutorial.png)| [Cloud od společnosti Atlassian](atlassian-cloud-tutorial.md)|
-| ![Logo](./media/tutorial-list/active-directory-saas-successfactors-tutorial.png)| [SuccessFactors](successfactors-tutorial.md)|
-| ![Logo](./media/tutorial-list/active-directory-saas-slack-tutorial.png)| [Slack](slack-tutorial.md)|[Slack - zřizování uživatelů](slack-provisioning-tutorial.md)|
+| ![logo](./media/tutorial-list/active-directory-saas-google-apps-tutorial.png)| [G Suite](google-apps-tutorial.md)|[G Suite - zřizování uživatelů](google-apps-provisioning-tutorial.md)|
+| ![logo](./media/tutorial-list/active-directory-saas-amazon-web-service-tutorial.png)| [Amazon Web Services (AWS)](amazon-web-service-tutorial.md)| [Amazon Web Services (AWS) - Role zřizování](amazon-web-service-tutorial.md#configure-azure-ad-single-sign-on)|
+| ![logo](./media/tutorial-list/active-directory-saas-servicenow-tutorial.png)| [ServiceNow](servicenow-tutorial.md)|[ServiceNow - zřizování uživatelů](servicenow-provisioning-tutorial.md)|
+| ![logo](./media/tutorial-list/active-directory-saas-salesforce-tutorial.png)| [Salesforce](salesforce-tutorial.md)|[Salesforce – zřizování uživatelů](salesforce-provisioning-tutorial.md)|
+| ![logo](./media/tutorial-list/active-directory-saas-workday-tutorial.png)| [Pracovní den](workday-tutorial.md)| [WORKDAY - zřizování uživatelů](workday-inbound-tutorial.md)|
+| ![logo](./media/tutorial-list/active-directory-saas-atlassian-cloud-tutorial.png)| [Atlassian Cloud](atlassian-cloud-tutorial.md)|
+| ![logo](./media/tutorial-list/active-directory-saas-successfactors-tutorial.png)| [SuccessFactors](successfactors-tutorial.md)|
+| ![logo](./media/tutorial-list/active-directory-saas-slack-tutorial.png)| [Slack](slack-tutorial.md)|[Slack - zřizování uživatelů](slack-provisioning-tutorial.md)|
 
 Další kurzy najdete pomocí obsahu na levé straně. 
 

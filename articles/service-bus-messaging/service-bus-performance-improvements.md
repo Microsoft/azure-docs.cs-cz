@@ -3,18 +3,19 @@ title: Osvědčené postupy pro zlepšení výkonu pomocí Azure Service Bus | D
 description: Popisuje, jak můžete optimalizovat výkon při výměně zprostředkovaných zpráv Service Bus.
 services: service-bus-messaging
 documentationcenter: na
-author: spelluru
+author: axisc
 manager: timlt
+editor: spelluru
 ms.service: service-bus-messaging
 ms.topic: article
 ms.date: 09/14/2018
-ms.author: spelluru
-ms.openlocfilehash: cfce11546249310ce00e5f19ba81520cc9dd78cf
-ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
+ms.author: aschhab
+ms.openlocfilehash: 37e2dcc13ed41911c8117dc1841a389c14e5867f
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47392631"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54848568"
 ---
 # <a name="best-practices-for-performance-improvements-using-service-bus-messaging"></a>Osvědčené postupy pro zlepšení výkonu pomocí zasílání zpráv Service Bus
 
@@ -29,14 +30,14 @@ Tyto části přinášejí několik konceptů, které používá služby Service
 Service Bus umožní klientům posílat a přijímat zprávy přes jeden ze tří protokolů:
 
 1. Pokročilé řízení front zpráv (AMQP) protokolu
-2. Protokol (SBMP) zasílání zpráv Service Bus
+2. Service Bus Messaging Protocol (SBMP)
 3. HTTP
 
 AMQP a SBMP jsou efektivnější, protože udržují připojení k Service Bus, dokud existuje objekt pro vytváření zpráv. Implementuje navíc dávkové zpracování a předběžné načítání. Pokud není výslovně uvedeno, veškerý obsah v tomto článku se předpokládá použití připojení přes AMQP nebo SBMP.
 
 ## <a name="reusing-factories-and-clients"></a>Opětovné použití objekty pro vytváření a klientů
 
-Klient služby Service Bus objekty, jako například [QueueClient] [ QueueClient] nebo [MessageSender][MessageSender], jsou vytvořené prostřednictvím [ MessagingFactory] [ MessagingFactory] objektu, který také obsahuje interní správu připojení. Doporučuje se, že neukončíte zasílání zpráv objekty pro vytváření nebo fronty, témata a odběru klientům po odeslání zprávy a pak odeslat další zprávy znovu vytvořit. Připojení ke službě Service Bus messaging factory zavření odstraní a nové připojení se naváže při opětovném vytváření objekt pro vytváření. Navazování připojení je náročná operace, které můžete se vyhnout opětovné použití stejný objekt pro vytváření a objekty klientů pro více operací. Můžete bezpečně používat [QueueClient] [ QueueClient] objektu pro odesílání zpráv ze souběžných asynchronních operací a více vláken. 
+Klient služby Service Bus objekty, jako například [QueueClient] [ QueueClient] nebo [MessageSender][MessageSender], jsou vytvořené prostřednictvím [ MessagingFactory] [ MessagingFactory] objektu, který také obsahuje interní správu připojení. Doporučuje se, že neukončíte zasílání zpráv objekty pro vytváření nebo fronty, témata a odběru klientům po odeslání zprávy a pak odeslat další zprávy znovu vytvořit. Připojení ke službě Service Bus messaging factory zavření odstraní a nové připojení se naváže při opětovném vytváření objekt pro vytváření. Navazování připojení je náročná operace, které můžete se vyhnout opětovné použití stejný objekt pro vytváření a objekty klientů pro více operací. Tyto objekty klienta může bezpečně použít pro souběžné asynchronní operace a z více vláken. 
 
 ## <a name="concurrent-operations"></a>Souběžné operace
 
@@ -71,7 +72,7 @@ Klient naplánuje souběžných operací pomocí provádí asynchronní operace.
 
 ## <a name="receive-mode"></a>Zobrazí režim
 
-Při vytváření fronty nebo odběru klienta, můžete zadat režim příjmu: *neboli Peek-lock* nebo *přijme a odstraní*. Zobrazí výchozí režim je [PeekLock][PeekLock]. Při fungování v tomto režimu, klient odešle žádost o přijetí zprávy ze služby Service Bus. Po přijetí zprávy klient odešle žádost dokončit zprávu.
+Při vytváření fronty nebo odběru klienta, když zadáte režim příjmu: *Neboli Peek-lock* nebo *přijme a odstraní*. Zobrazí výchozí režim je [PeekLock][PeekLock]. Při fungování v tomto režimu, klient odešle žádost o přijetí zprávy ze služby Service Bus. Po přijetí zprávy klient odešle žádost dokončit zprávu.
 
 Při nastavování režimu příjmu na [ReceiveAndDelete][ReceiveAndDelete], oba kroky jsou zkombinované v jedné žádosti. Tyto kroky snížit celkový počet operací a zkvalitnit celkovou propustnost zpráv. Toto zvýšení výkonu se dodává nese došlo ke ztrátě zpráv.
 
@@ -127,38 +128,9 @@ Vlastnost time to live (TTL) zprávy je kontroluje server v době, kdy server od
 
 Předběžné načítání nemá vliv na počet účtovaných operací zasílání zpráv a je dostupná jenom pro protokol klienta služby Service Bus. Protokol HTTP nepodporuje předběžné načítání. Předběžné načítání je k dispozici pro synchronní a asynchronní operace příjmu.
 
-## <a name="express-queues-and-topics"></a>Express fronty a témata
-
-Expresní entity povolit scénáře snížené latenci a vysokou propustnost a jsou podporovány pouze na úrovni Standard zasílání zpráv. Entity vytvořené v [názvové prostory úrovně Premium](service-bus-premium-messaging.md) nepodporují možnost express. Expresní entity v případě zprávy do fronty nebo tématu, zpráva se uloží okamžitě v úložišti pro přenos zpráv. Místo toho je tam uložena v paměti. Pokud zpráva zůstane ve frontě déle než několik sekund, se automaticky zapisuje do stabilní úložiště, tedy chránit před ztrátou kvůli výpadku. Zapsat zprávu do mezipaměti zvyšuje propustnost a snižuje latence, protože neexistuje žádný přístup k úložišti stabilní v době, kdy je zpráva odeslána. Zprávy, které se spotřebovávají během několika sekund nejsou zapsány do úložiště zpráv. Následující příklad vytvoří express tématu.
-
-```csharp
-TopicDescription td = new TopicDescription(TopicName);
-td.EnableExpress = true;
-namespaceManager.CreateTopic(td);
-```
-
-Pokud je odeslána zpráva obsahující důležité informace, které nesmí dojít ke ztrátě je do expresní entity, odesílatel můžete vynutit služby Service Bus se okamžitě zachovat zpráva, kterou chcete stabilní úložiště tak, že nastavíte [ForcePersistence] [ ForcePersistence] vlastnost **true**.
-
-> [!NOTE]
-> Expresní entity nepodporují transakce.
-
-## <a name="partitioned-queues-or-topics"></a>Dělené fronty a témata
-
-Interně stejný uzel používá služby Service Bus a zasílání zpráv ukládat pro zpracování a ukládání všech zpráv pro entity pro zasílání zpráv (fronty nebo tématu). A [dělená fronta nebo téma](service-bus-partitioning.md), na druhé straně je distribuovaná mezi více uzlů zasílání zpráv a úložiště. Dělené fronty a témata nejen přinést vyšší výkon než regulární fronty a témata, jsou také vykazuje nejvyšší dostupnost. Chcete-li vytvořit dělené entity, nastavte [EnablePartitioning] [ EnablePartitioning] vlastnost **true**, jak je znázorněno v následujícím příkladu. Další informace o dělené entity, naleznete v tématu [segmentované entity zasílání zpráv][Partitioned messaging entities].
-
-> [!NOTE]
-> Dělené entity se nepodporují v [SKU úrovně Premium](service-bus-premium-messaging.md). 
-
-```csharp
-// Create partitioned queue.
-QueueDescription qd = new QueueDescription(QueueName);
-qd.EnablePartitioning = true;
-namespaceManager.CreateQueue(qd);
-```
-
 ## <a name="multiple-queues"></a>Více front
 
-Pokud není možné použít dělená fronta nebo téma nebo nelze zpracovat očekávané zatížení jednoho dělené fronty nebo tématu, je nutné použít více entit pro zasílání zpráv. Při použití více entit, vytvořte vyhrazený klienta pro každou entitu, namísto použití stejného klienta pro všechny entity.
+Pokud nelze zpracovat očekávané zatížení jednoho dělené fronty nebo tématu, je nutné použít více entit pro zasílání zpráv. Při použití více entit, vytvořte vyhrazený klienta pro každou entitu, namísto použití stejného klienta pro všechny entity.
 
 ## <a name="development-and-testing-features"></a>Vývoj a testování funkcí
 
@@ -172,7 +144,7 @@ Následující části popisují některé typické scénáře zasílání zprá
 
 ### <a name="high-throughput-queue"></a>Fronty s vysokou propustností
 
-Cíl: Maximalizuje propustnost jediné fronty. Je malý počet odesílateli a příjemci.
+Cíl: Maximalizujte propustnost jediné fronty. Je malý počet odesílateli a příjemci.
 
 * Pokud chcete zvýšit celkovou rychlost odesílání do fronty, použijte k vytvoření odesílatelů více. Pro každý odesílatele použijte asynchronní operace nebo více vláken.
 * Ke zvýšení celková míra přijímání z fronty, použijte více vytvořte příjemce.
@@ -229,7 +201,7 @@ Maximalizuje propustnost, postupujte takto:
 
 ### <a name="topic-with-a-small-number-of-subscriptions"></a>Téma s malý počet předplatných
 
-Cíl: Maximalizuje propustnost téma s malý počet předplatných. Zprávu přijme mnoha předplatnými, což znamená, že je větší než frekvence odesílání míra kombinované receive nad Všechna předplatná. Počet uživatelů je malý. Je malý počet přijímačů na jedno předplatné.
+Cíl: Maximalizujte propustnost téma s malý počet předplatných. Zprávu přijme mnoha předplatnými, což znamená, že je větší než frekvence odesílání míra kombinované receive nad Všechna předplatná. Počet uživatelů je malý. Je malý počet přijímačů na jedno předplatné.
 
 Maximalizuje propustnost, postupujte takto:
 

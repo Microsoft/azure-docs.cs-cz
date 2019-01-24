@@ -5,14 +5,14 @@ services: dns
 author: vhorne
 ms.service: dns
 ms.topic: article
-ms.date: 1/10/2019
+ms.date: 1/23/2019
 ms.author: victorh
-ms.openlocfilehash: e426e38ce5366f7c0d8b8bc20a639d827ea9e261
-ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
+ms.openlocfilehash: 4b5b98b5695901ca6d136682e454f059f157b743
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54200512"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54826475"
 ---
 # <a name="use-azure-dns-for-private-domains"></a>Použití Azure DNS pro privátní domény
 
@@ -64,9 +64,9 @@ Azure DNS poskytuje následující možnosti:
 Azure DNS má následující omezení:
 
 * Jednu privátní zónu je povolen pouze jeden registrační virtuální síť.
-* Až 10 řešení virtuálních sítí jsou povoleny jednu privátní zónu.
+* Až 10 řešení virtuálních sítí jsou povoleny jednu privátní zónu. Toto omezení se odeberou, když tato funkce je obecně dostupná.
 * Konkrétnímu virtuálnímu síťovému může být propojený jenom jednu privátní zónu jako registrační virtuální síť.
-* Konkrétnímu virtuálnímu síťovému nesmí být propojení až 10 privátních zón jako virtuální síť pro překlad.
+* Konkrétnímu virtuálnímu síťovému nesmí být propojení až 10 privátních zón jako virtuální síť pro překlad. Toto omezení se odeberou, když tato funkce je obecně dostupná.
 * Pokud chcete zadat registrační virtuální síť, nejsou záznamy DNS pro virtuální počítače z této virtuální sítě, které jsou registrovány k privátní zóně zobrazitelné nebo získat z prostředí Azure Powershell a rozhraní API pro Azure CLI. Záznamy virtuálního počítače jsou ve skutečnosti zaregistrované a vyřeší úspěšně.
 * Reverzní DNS funguje pouze pro privátní adresní prostor IP v registrační virtuální síť.
 * Reverzní DNS pro privátní IP adresa, která není registrována v privátní zóny (například privátní IP adresy pro virtuální počítač ve virtuální síti, který se propojí jako virtuální síť pro překlad pro privátní zóny) vrátí *internal.cloudapp.net* jako příponu DNS. Tato přípona však není možné přeložit.

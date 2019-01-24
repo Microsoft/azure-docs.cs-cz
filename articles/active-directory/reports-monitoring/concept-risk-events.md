@@ -4,7 +4,7 @@ description: Tohoto článku poskytuje podrobný přehled o rizikové události 
 services: active-directory
 keywords: Azure active directory identity protection, zabezpečení, rizika, úroveň rizika, ohrožení zabezpečení, zásady zabezpečení
 author: priyamohanram
-manager: mtillman
+manager: daveba
 ms.assetid: fa2c8b51-d43d-4349-8308-97e87665400b
 ms.service: active-directory
 ms.workload: identity
@@ -15,12 +15,12 @@ ms.component: report-monitor
 ms.date: 11/13/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 4bca7ed2f10ce6b0231a260a9cf5b7468476343f
-ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
+ms.openlocfilehash: 7c352b92edede8bb986a00d5db846bda7b299df2
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/20/2018
-ms.locfileid: "53652145"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54808081"
 ---
 # <a name="azure-active-directory-risk-events"></a>Azure Active Directory rizikových událostí
 
@@ -44,6 +44,9 @@ V současné době Azure Active Directory zjistí šest typy rizikových událos
 - [Přihlášení z neznámých míst](#sign-in-from-unfamiliar-locations) 
 
 ![Riziková událost](./media/concept-risk-events/91.png)
+
+> [!IMPORTANT]
+> V některých případech může být pro vás rizikové události bez odpovídající přihlášení záznam v [sestavy přihlášení](concept-sign-ins.md). Důvodem je, že Identity Protection vyhodnocuje riziko pro obě **interaktivní** a **neinteraktivní** přihlášení, zatímco v sestavě přihlášení se zobrazí pouze interaktivní přihlášení.
 
 Podrobnější informace o získání zjištěné rizikové události se váže k předplatnému služby Azure AD. 
 

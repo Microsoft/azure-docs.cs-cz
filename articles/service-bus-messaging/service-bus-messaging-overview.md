@@ -3,20 +3,20 @@ title: Přehled přenosu zpráv ve službě Azure Service Bus | Dokumentace Micr
 description: Popis zasílání zpráv služby Service Bus
 services: service-bus-messaging
 documentationcenter: ''
-author: spelluru
+author: axisc
 manager: timlt
-editor: ''
+editor: spelluru
 ms.service: service-bus-messaging
 ms.topic: overview
 ms.date: 09/22/2018
 ms.custom: mvc
-ms.author: spelluru
-ms.openlocfilehash: 55a651080c4ed1d22901681317046f0853e257f0
-ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
+ms.author: aschhab
+ms.openlocfilehash: ab1b68b8ca8339389a27d1c09aa8752cfdaec0d5
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53163102"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54851781"
 ---
 # <a name="what-is-azure-service-bus"></a>Co je Azure Service Bus?
 

@@ -3,23 +3,23 @@ title: Začínáme s frontami služby Azure Service Bus | Dokumentace Microsoftu
 description: Napíšeme konzolovou aplikaci C# využívající fronty zasílání zpráv služby Service Bus.
 services: service-bus-messaging
 documentationcenter: .net
-author: spelluru
+author: axisc
 manager: timlt
-editor: ''
+editor: spelluru
 ms.assetid: 68a34c00-5600-43f6-bbcc-fea599d500da
 ms.service: service-bus-messaging
 ms.devlang: tbd
 ms.topic: hero-article
 ms.tgt_pltfrm: dotnet
 ms.workload: na
-ms.date: 09/07/2018
-ms.author: spelluru
-ms.openlocfilehash: 1dd47dea86478c76ed5bf6f8b393964f97231908
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
-ms.translationtype: HT
+ms.date: 01/23/2019
+ms.author: aschhab
+ms.openlocfilehash: 81bc37a4bbd63beda122d7254409e2b16f0e3cb1
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51226953"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54852152"
 ---
 # <a name="get-started-with-service-bus-queues"></a>Začínáme s frontami služby Service Bus
 
@@ -410,7 +410,7 @@ Pokud chcete přijímat zprávy, které jste právě odeslali, vytvořte další
 
 Blahopřejeme! Vytvořili jste frontu, do této fronty jste odeslali sadu zpráv a ze stejné fronty jste tyto zprávy přijali.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Podívejte se na naše [úložiště GitHub s ukázkami](https://github.com/Azure/azure-service-bus/tree/master/samples), které předvádějí některé pokročilejší funkce zasílání zpráv služby Service Bus.
 

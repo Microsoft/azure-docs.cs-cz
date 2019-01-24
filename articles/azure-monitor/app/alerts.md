@@ -11,14 +11,14 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
-ms.date: 03/14/2017
+ms.date: 01/23/2019
 ms.author: mbullwin
-ms.openlocfilehash: fe63813220d526536a31efb48b6ec29b6ae383e8
-ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
+ms.openlocfilehash: 233ce5623195a9a661f67b5c3ded40e68c8eb33a
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54121137"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54843510"
 ---
 # <a name="set-alerts-in-application-insights"></a>Nastavení upozornění ve službě Application Insights
 [Azure Application Insights] [ start] může vás upozornit na změny v metrikách výkonu nebo využití ve vaší webové aplikaci. 
@@ -89,7 +89,20 @@ Oblíbené výstrahy obsahují:
 * **Doba odezvy serveru** pro webové aplikace na straně serveru. A také nastavení výstrah, sledovat tuto metriku, pokud chcete zobrazit, pokud se mění nepřiměřeně s vysokou požadavků: změna může znamenat, že vaše aplikace běží nemá dostatek prostředků. 
 * **Serverové výjimky** – Pokud chcete zobrazit, budete muset provést některé [další nastavení](../../azure-monitor/app/asp-net-exceptions.md).
 
-Nezapomeňte, že [proaktivní míra Diagnostika chyb](../../azure-monitor/app/proactive-failure-diagnostics.md) automaticky sledovat rychlost, jakou aplikace reaguje na požadavky s kódy selhání. 
+Nezapomeňte, že [proaktivní míra Diagnostika chyb](../../azure-monitor/app/proactive-failure-diagnostics.md) automaticky sledovat rychlost, jakou aplikace reaguje na požadavky s kódy selhání.
+
+## <a name="who-receives-the-classic-alert-notifications"></a>Kdo přijímá oznámení výstrah (klasické)?
+
+V této části pouze platí pro upozornění classic a pomůže vám optimalizovat vaše oznámení o výstrahách Ujistěte se, že pouze požadované příjemci dostávat oznámení. Bližší informace o rozdílech mezi [klasických upozornění](../platform/alerts-classic.overview.md) a předložit nové prostředí upozornění [výstrahy přehledovém článku](../platform/alerts-overview.md). K řízení oznámení oznámení v nové výstrahy prostředí použijte [skupiny akcí](../platform/action-groups.md).
+
+* Doporučujeme vám používat konkrétním příjemcům classic oznámení výstrah.
+
+* Pro výstrahy týkající se všech metrik Application Insights (včetně metrik dostupnosti) **hromadné/skupiny** zaškrtávací políčko, pokud je povoleno, odešle uživatelům s rolí vlastník, Přispěvatel nebo Čtenář v rámci předplatného. V důsledku toho _všechny_ uživatelé s přístupem k předplatnému prostředku Application Insights jsou v rozsahu a budou dostávat oznámení. 
+
+> [!NOTE]
+> Pokud aktuálně používáte službu **hromadné/skupiny** zaškrtávací políčko a zakázat, nebude možné vrátit zpět změny.
+
+Pomocí nové výstrahy prostředí/v – v reálném čase výstrahy, pokud je potřeba upozornit uživatele na základě jejich rolí. S [skupiny akcí](../platform/action-groups.md), můžete nakonfigurovat e-mailová oznámení pro uživatele s libovolnou z role přispěvatele nebo vlastníka/reader (ne zkopírovat dohromady jako jednu možnost).
 
 ## <a name="automation"></a>Automation
 * [Použití Powershellu k automatizaci nastavení výstrahy](../../azure-monitor/app/powershell-alerts.md)

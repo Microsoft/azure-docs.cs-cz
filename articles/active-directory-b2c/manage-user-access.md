@@ -3,19 +3,19 @@ title: Správa přístupu uživatelů v Azure Active Directory B2C | Dokumentace
 description: Zjistěte, jak identifikovat nezletilé osoby, shromažďovat data narození a zemi data a získat přijetí podmínek použití ve vaší aplikaci pomocí Azure AD B2C.
 services: active-directory-b2c
 author: davidmu1
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 07/24/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 6709fb8ae328f749b367c58f95b8a9ef8da9bc65
-ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
+ms.openlocfilehash: 982587fa7da41ea1de5fd11bb054f87039596da1
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2018
-ms.locfileid: "42054234"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54852027"
 ---
 # <a name="manage-user-access-in-azure-active-directory-b2c"></a>Správa přístupu uživatelů v Azure Active Directory B2C
 
@@ -34,11 +34,11 @@ Aplikace a organizace rozhodnout zablokovat nezletilým pomocí aplikací a slu�
 
 Pokud je uživatel identifikován jako za, můžete nastavit tok uživatele v Azure AD B2C na jednu ze tří možností:
 
-- **Odeslat podepsaný token JWT id_token zpět do aplikace**: uživatel je zaregistrován v adresáři, a vrátí se token do aplikace. Aplikace pak pokračuje s použitím obchodních pravidel. Například může aplikace pokračovat v procesu svolení rodičů. Pokud chcete použít tuto metodu, zvolte pro příjem **ageGroup** a **consentProvidedForMinor** deklarace identity z aplikace.
+- **Odeslat podepsaný token JWT id_token zpět do aplikace**: Uživatel je zaregistrován v adresáři a vrátí se token do aplikace. Aplikace pak pokračuje s použitím obchodních pravidel. Například může aplikace pokračovat v procesu svolení rodičů. Pokud chcete použít tuto metodu, zvolte pro příjem **ageGroup** a **consentProvidedForMinor** deklarace identity z aplikace.
 
 - **Odeslat do aplikace bez znaménka tokenu JSON**: Azure AD B2C upozorní aplikaci, že uživatel je za a obsahuje informace o stavu uživatele svolení rodičů. Aplikace pak pokračuje s použitím obchodních pravidel. JSON token nedokončí úspěšné ověřování s aplikací. Aplikace musí zpracovat neověřený uživatel podle deklarací identity zahrnuje do tokenu JSON, které mohou zahrnovat **název**, **e-mailu**, **ageGroup**a **consentProvidedForMinor**.
 
-- **Zablokuje uživateli**: Pokud je uživatel za a nebyl zadán svolení rodičů, Azure AD B2C můžete uživatele upozornit, že uživatel je blokován. Žádný token vystaven, zablokuje se přístup a uživatelský účet není vytvořeno během registrace cesty. K implementaci toto oznámení, poskytují vhodné obsahu stránky HTML/CSS informovat uživatele a k dispozici odpovídající možnosti. V žádosti o nové registrace není potřeba žádná další akce.
+- **Zablokuje uživateli**: Pokud je uživatel za a nebyl zadán svolení rodičů, Azure AD B2C můžete upozornit uživatele, že uživatel je blokován. Žádný token vystaven, zablokuje se přístup a uživatelský účet není vytvořeno během registrace cesty. K implementaci toto oznámení, poskytují vhodné obsahu stránky HTML/CSS informovat uživatele a k dispozici odpovídající možnosti. V žádosti o nové registrace není potřeba žádná další akce.
 
 ## <a name="get-parental-consent"></a>Získat svolení rodičů
 

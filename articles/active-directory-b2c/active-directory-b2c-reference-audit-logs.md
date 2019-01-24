@@ -3,19 +3,19 @@ title: Protokoly auditu definice a ukázky v Azure Active Directory B2C | Dokume
 description: Příručka a ukázky na přístup k protokolům auditu Azure AD B2C.
 services: active-directory-b2c
 author: davidmu1
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.topic: conceptual
 ms.workload: identity
 ms.date: 08/04/2017
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 93ca61c610856ebba64bff46b2338090f317ad56
-ms.sourcegitcommit: 70471c4febc7835e643207420e515b6436235d29
+ms.openlocfilehash: 56bd0dec5a829b055148668c4cad17055b2ed0e5
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2019
-ms.locfileid: "54302030"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54843668"
 ---
 # <a name="accessing-azure-ad-b2c-audit-logs"></a>Přístup k protokolům auditu Azure AD B2C
 

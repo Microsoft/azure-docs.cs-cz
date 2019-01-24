@@ -1,10 +1,10 @@
 ---
-title: 'Kurz: Integrace Azure Active Directory se službou Allocadia | Dokumentace Microsoftu'
+title: 'Kurz: Integrace Azure Active Directory s Allocadia | Dokumentace Microsoftu'
 description: Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a Allocadia.
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.assetid: c415fc55-6dc1-49f2-a8a2-2fc6e3790d65
 ms.service: active-directory
 ms.component: saas-app-tutorial
@@ -14,14 +14,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/23/2017
 ms.author: jeedes
-ms.openlocfilehash: a25fbd4daaa4d1fb09d788ba7ab61392ffb100f2
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: bebd375365e36026e02aa0d7f447a8b0c3529139
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39043910"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54807863"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-allocadia"></a>Kurz: Integrace Azure Active Directory se službou Allocadia
+# <a name="tutorial-azure-active-directory-integration-with-allocadia"></a>Kurz: Integrace Azure Active Directory s Allocadia
 
 V tomto kurzu se dozvíte, jak integrovat Allocadia s Azure Active Directory (Azure AD).
 
@@ -37,7 +37,7 @@ Pokud chcete zjistit další podrobnosti o integraci aplikací SaaS v Azure AD, 
 
 Konfigurace integrace Azure AD s Allocadia, potřebujete následující položky:
 
-- S předplatným služby Azure AD
+- Předplatné Azure AD
 - Allocadia jednotného přihlašování povolená předplatného
 
 > [!NOTE]
@@ -59,7 +59,7 @@ Konfigurace integrace Allocadia do služby Azure AD, budete muset přidat Alloca
 
 **Chcete-li přidat Allocadia z galerie, postupujte následovně:**
 
-1. V  **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu. 
+1. V **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu. 
 
     ![Active Directory][1]
 
@@ -137,7 +137,7 @@ V této části Povolení služby Azure AD jednotného přihlašování na port�
     | ------------------- | -------------------- |    
     | jméno | user.givenname |
     | Příjmení | user.surname |
-    | e-mail | User.Mail |
+    | e-mail | user.mail |
     
     a. Klikněte na tlačítko **přidat atribut** otevřít **přidat atribut** dialogového okna.
 
@@ -165,7 +165,7 @@ V této části Povolení služby Azure AD jednotného přihlašování na port�
 8. Ke konfiguraci jednotného přihlašování na **Allocadia** straně, je nutné odeslat na stažený **soubor XML s metadaty** k [tým podpory Allocadia](mailTo:support@allocadia.com). Nastavují tohoto nastavení můžete mít správně nastavené na obou stranách připojení SAML SSO.
 
 > [!TIP]
-> Teď si můžete přečíst stručné verzi těchto pokynů uvnitř [webu Azure portal](https://portal.azure.com), zatímco jsou nastavení aplikace!  Po přidání této aplikace z **služby Active Directory > podnikové aplikace** části, stačí kliknout **Single Sign-On** kartu a přístup k vložené dokumentaci prostřednictvím  **Konfigurace** oblast v dolní části. Další informace o funkci vložená dokumentace: [dokumentace ke službě Azure AD embedded]( https://go.microsoft.com/fwlink/?linkid=845985)
+> Teď si můžete přečíst stručné verzi těchto pokynů uvnitř [webu Azure portal](https://portal.azure.com), zatímco jsou nastavení aplikace!  Po přidání této aplikace z **služby Active Directory > podnikové aplikace** části, stačí kliknout **Single Sign-On** kartu a přístup k vložené dokumentaci prostřednictvím  **Konfigurace** oblast v dolní části. Další informace o funkci vložená dokumentace: [Dokumentace ke službě Azure AD, embedded]( https://go.microsoft.com/fwlink/?linkid=845985)
 > 
 
 ### <a name="creating-an-azure-ad-test-user"></a>Vytváří se testovací uživatele služby Azure AD
@@ -240,10 +240,10 @@ V této části Testování služby Azure AD jednotné přihlašování – konf
 Po kliknutí na dlaždici Allocadia na přístupovém panelu, vám by měl získat automaticky přihlášení k aplikaci Allocadia.
 Další informace o přístupovém panelu, naleznete v tématu [Úvod do přístupového panelu](../user-help/active-directory-saas-access-panel-introduction.md)
 
-## <a name="additional-resources"></a>Další zdroje informací:
+## <a name="additional-resources"></a>Další materiály
 
 * [Seznam kurzů o integraci aplikací SaaS pomocí Azure Active Directory](tutorial-list.md)
-* [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
+* [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](../manage-apps/what-is-single-sign-on.md)
 
 
 

@@ -7,12 +7,12 @@ ms.service: postgresql
 ms.devlang: azurecli
 ms.topic: conceptual
 ms.date: 02/28/2018
-ms.openlocfilehash: d566f317595e314c91cf510ba2459638e624d8c3
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: fb9123d792c3b522debb3b1c8d539cbd6cd24f59
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53539732"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54843630"
 ---
 # <a name="customize-server-configuration-parameters-using-azure-cli"></a>Přizpůsobení parametrů konfigurace serveru pomocí Azure CLI
 Seznam, zobrazit a aktualizovat parametry konfigurace pro server Azure PostgreSQL pomocí rozhraní příkazového řádku (Azure CLI). Podmnožina stroj konfigurace je zveřejněný na úrovni serveru a je možné upravit. 
@@ -30,7 +30,7 @@ Můžete vytvořit seznam parametrů konfigurace serveru pro server **mydemoserv
 az postgres server configuration list --resource-group myresourcegroup --server mydemoserver
 ```
 ## <a name="show-server-configuration-parameter-details"></a>Detaily parametr konfigurace serveru
-Chcete-li zobrazit podrobnosti o konkrétní konfiguraci parametru pro server, spusťte [az postgres server configuration show](/cli/azure/postgres/server/configuration#az_postgres_server_configuration_show) příkazu.
+Chcete-li zobrazit podrobnosti o konkrétní konfiguraci parametru pro server, spusťte [az postgres server configuration show](/cli/azure/postgres/server/configuration) příkazu.
 
 Tento příklad ukazuje podrobnosti o **protokolu\_min\_zprávy** parametr konfigurace serveru pro server **mydemoserver.postgres.database.azure.com** v rámci skupiny prostředků **myresourcegroup.**
 ```azurecli-interactive

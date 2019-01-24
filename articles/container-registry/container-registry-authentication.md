@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 12/21/2018
 ms.author: stevelas
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: a68e4f70dac7aace9d49a41ecf282525ce6b1fd6
-ms.sourcegitcommit: 7862449050a220133e5316f0030a259b1c6e3004
+ms.openlocfilehash: 665ceabe062fce454db377a384b1d12ba6868c40
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/22/2018
-ms.locfileid: "53752873"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54851721"
 ---
 # <a name="authenticate-with-a-private-docker-container-registry"></a>Ověřování pomocí privátního registru kontejnerů Dockeru
 
@@ -26,13 +26,15 @@ Služba Azure Container Registry nepodporuje neověřené operace Dockeru nebo a
 
 ## <a name="individual-login-with-azure-ad"></a>Jednotlivé přihlášení pomocí Azure AD
 
-Při práci s registrem přímo, jako je například přetahující Image do a nahráním Image z vaší pracovní stanici, ověřit pomocí [az acr login](/cli/azure/acr?view=azure-cli-latest#az-acr-login) v příkaz [rozhraní příkazového řádku Azure](/cli/azure/install-azure-cli):
+Při práci s registrem přímo, jako je například přetahující Image do a nahráním Image z pracovní stanice vývoj ověřovat pomocí [az acr login](/cli/azure/acr?view=azure-cli-latest#az-acr-login) v příkaz [rozhraní příkazového řádku Azure](/cli/azure/install-azure-cli):
 
 ```azurecli
 az acr login --name <acrName>
 ```
 
 Po přihlášení pomocí `az acr login`, rozhraní příkazového řádku používá token, který vytvoří, když jste spustili [az login](/cli/azure/reference-index#az-login) bez problémů ověřování relace k vašemu registru. Po přihlášení tímto způsobem své přihlašovací údaje jsou uložené v mezipaměti a následné `docker` příkazy nevyžadují, aby uživatelské jméno nebo heslo. Pokud vyprší platnost vašeho tokenu, můžete ho aktualizovat pomocí `az acr login` příkazu donutit. Pomocí `az acr login` s identitami, Azure poskytuje [přístupu podle rolí](../role-based-access-control/role-assignments-portal.md).
+
+Pro některé scénáře můžete chtít přihlásit k registru s vlastním jednotlivé identity ve službě Azure AD. Pro scénáře mezi službami nebo pro zvládání potřeb pracovní skupiny, pokud nechcete spravovat jednotlivé přístup, můžete se také přihlásit [spravované identity pro prostředky Azure](container-registry-authentication-managed-identity.md).
 
 ## <a name="service-principal"></a>Instanční objekt
 

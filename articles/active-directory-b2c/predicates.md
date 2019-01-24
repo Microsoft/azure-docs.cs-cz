@@ -3,19 +3,19 @@ title: Predikáty a PredicateValidations – Azure Active Directory B2C | Dokume
 description: Účtu na sociální síti deklaraci příklady transformaci identita prostředí Framework schéma z Azure Active Directory B2C.
 services: active-directory-b2c
 author: davidmu1
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 09/10/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: d00bbddc6523f75b3208a41296b5b94f9f06a5ed
-ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
+ms.openlocfilehash: 24aa6bf67b3b841b950e047a5c2509f04a3546b7
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47432167"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54850854"
 ---
 # <a name="predicates-and-predicatevalidations"></a>Predikáty a PredicateValidations
 
@@ -39,7 +39,7 @@ Následující diagram znázorňuje vztah mezi elementy:
 
 **Predikátu** prvek obsahuje následující atributy:
 
-| Atribut | Požaduje se | Popis |
+| Atribut | Požadováno | Popis |
 | --------- | -------- | ----------- |
 | ID | Ano | Identifikátor, který se používá pro predikát. Další prvky můžete pomocí tohoto identifikátoru v zásadách. |
 | Metoda | Ano | Typ metody pro účely ověření. Možné hodnoty: **IsLengthRange**, **MatchesRegex**, **IncludesCharacters**, nebo **IsDateRange**. **IsLengthRange** hodnotu zkontroluje, zda je délka řetězcovou hodnotu deklarace identity v rozsahu minimální a maximální parametry zadané. **MatchesRegex** hodnotu kontroluje, zda řetězcovou hodnotu deklarace identity odpovídá regulárnímu výrazu. **IncludesCharacters** hodnotu kontroluje, zda obsahuje hodnotu deklarace identity řetězce znakovou sadu. **IsDateRange** hodnotu zkontroluje, zda hodnota deklarace identity data mezi širokou škálou minimální a maximální parametry zadané. |
@@ -138,7 +138,7 @@ Při ověřování do kontroly oproti typu deklarace identity, definujte predik�
 
 **PredicateValidation** prvek obsahuje následující atribut:
 
-| Atribut | Požaduje se | Popis |
+| Atribut | Požadováno | Popis |
 | --------- | -------- | ----------- |
 | ID | Ano | Identifikátor, který se používá pro ověřování predikátu. **Typu deklarace identity** element můžete pomocí tohoto identifikátoru v zásadách. |
 
@@ -156,7 +156,7 @@ Při ověřování do kontroly oproti typu deklarace identity, definujte predik�
 
 **PredicateGroup** prvek obsahuje následující atribut:
 
-| Atribut | Požaduje se | Popis |
+| Atribut | Požadováno | Popis |
 | --------- | -------- | ----------- |
 | ID | Ano | Identifikátor, který se používá pro skupinu predikátu.  |
 
@@ -169,7 +169,7 @@ Při ověřování do kontroly oproti typu deklarace identity, definujte predik�
 
 **PredicateReferences** prvek obsahuje následující atributy:
 
-| Atribut | Požaduje se | Popis |
+| Atribut | Požadováno | Popis |
 | --------- | -------- | ----------- |
 | MatchAtLeast | Ne | Určuje, že tato hodnota shodovala alespoň, že mnoho predikátu definice pro vstup na přijetí. |
 
@@ -181,7 +181,7 @@ Při ověřování do kontroly oproti typu deklarace identity, definujte predik�
 
 **PredicateReference** prvek obsahuje následující atributy:
 
-| Atribut | Požaduje se | Popis |
+| Atribut | Požadováno | Popis |
 | --------- | -------- | ----------- |
 | ID | Ano | Identifikátor, který se používá pro ověřování predikátu.  |
 
@@ -262,7 +262,7 @@ S **predikáty** a **PredicateValidationsInput** můžete řídit požadavky na 
 Po definování základní ověření můžete kombinovat společně a vytvořit zásady pro hesla, které používáte ve svojí zásadě:
 
 - **SimplePassword** ověří DisallowedWhitespace, AllowedAADCharacters a IsLengthBetween8And64
-- **StrongPassword** IsLengthBetween8And64 DisallowedWhitespace AllowedAADCharacters, ověří. Poslední skupinu `CharacterClasses` spustí další sadu predikáty s `MatchAtLeast` nastaven na hodnotu 3. Uživatelské heslo musí být tvořeno 8 až 16 znaků a tři z následujících znaků: malá, velká písmena, čísla nebo Symbol.
+- **StrongPassword** IsLengthBetween8And64 DisallowedWhitespace AllowedAADCharacters, ověří. Poslední skupinu `CharacterClasses` spustí další sadu predikáty s `MatchAtLeast` nastaven na hodnotu 3. Uživatelské heslo musí být dlouhé 8 až 16 znaků a tři z následujících znaků: Malá písmena, velká písmena, čísla nebo Symbol.
 - **CustomPassword** ověří pouze DisallowedWhitespace, AllowedAADCharacters. Uživatel tedy můžete zadat jakékoli heslo o libovolné délce znaky jsou platné.
 
 ```XML

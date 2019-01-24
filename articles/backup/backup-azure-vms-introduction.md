@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 01/08/2019
 ms.author: raynew
-ms.openlocfilehash: 128e389a8d6928f9f133fe9d649d0fc7e982e4df
-ms.sourcegitcommit: c31a2dd686ea1b0824e7e695157adbc219d9074f
+ms.openlocfilehash: 57d52412648cbe8a0791aa306075018a2092bf51
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/18/2019
-ms.locfileid: "54402350"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54827325"
 ---
 # <a name="about-azure-vm-backup"></a>Informace o zálohování virtuálních počítačů Azure
 
@@ -40,7 +40,7 @@ Zde je, jak Azure Backup dokončení zálohování pro virtuální počítače A
 
 Azure Backup nepodporuje šifrování dat jako součást procesu zálohování. Azure Backup podporuje zálohování virtuálních počítačů Azure, které jsou šifrované pomocí Azure Disk Encryption.
 
-- Zálohování virtuálních počítačů šifrované pomocí nástroje Bitlocker šifrování Key(BEK) pouze a klíče BEK spolu s Key(KEK) šifrovací klíč je podporována pro spravované a nespravované virtuální počítače Azure.
+- Zálohování virtuálních počítačů šifrované pomocí nástroje BitLocker šifrování Key(BEK) pouze a klíče BEK spolu s Key(KEK) šifrovací klíč je podporována pro spravované a nespravované virtuální počítače Azure.
 - BEK(secrets) a KEK(keys) zálohovat se šifrují, aby mohl být číst a použít jenom při obnovení zpět do služby key vault Autorizovaní uživatelé.
 - Protože klíč BEK je také zálohovat, v situacích, kdy dojde ke ztrátě nebo klíče BEK oprávněným uživatelům můžete obnovit klíče BEK pro trezor klíčů a obnovení šifrovaných virtuálních počítačů. Klíče a tajné kódy šifrované virtuální počítače jsou zálohovány v zašifrované podobě, aby neoprávnění uživatelé ani Azure může číst nebo použití zálohovaných klíčů a tajných kódů. Pouze uživatelé s správnou úroveň oprávnění může zálohování a obnovení šifrovaných virtuálních počítačů, jakož i klíče a tajné kódy.
 

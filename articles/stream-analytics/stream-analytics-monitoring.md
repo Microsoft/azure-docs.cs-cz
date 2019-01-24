@@ -9,16 +9,16 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.custom: seodec18
-ms.openlocfilehash: 656f749fd2a930c51bfd7d1a99642fae87694846
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 600651b6c9140aba178bf073675c49957987d10d
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53096578"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54844734"
 ---
 # <a name="understand-stream-analytics-job-monitoring-and-how-to-monitor-queries"></a>Porozumění sledování úlohu Stream Analytics a monitorování dotazů
 
-## <a name="introduction-the-monitor-page"></a>Představení: Stránka sledování
+## <a name="introduction-the-monitor-page"></a>Představení: Na stránce monitorování
 Azure portal i zařízení surface klíčové metriky výkonu, který slouží k monitorování a ladění výkonu dotazů a úlohy. Pokud chcete zobrazit tyto metriky, přejděte na úlohu Stream Analytics mají zájem o metriky pro zobrazení a zobrazení **monitorování** části na stránce Přehled.  
 
 ![Úlohy Stream Analytics monitorování odkaz](./media/stream-analytics-monitoring/02-stream-analytics-monitoring-block.png)
@@ -30,17 +30,17 @@ Jak je znázorněno, objeví se okno:
 ## <a name="metrics-available-for-stream-analytics"></a>Metriky, které jsou k dispozici pro Stream Analytics
 | Metrika                 | Definice                               |
 | ---------------------- | ---------------------------------------- |
-| Vstupní události v backlogu       | Počet vstupních událostí, které jsou v backlogu. |
-| Chyby převodu dat | Počet výstupních událostech, které nebylo možné převést na očekávaný výstup schématu. |
-| Události předčasného vstupu       | Počet událostí přijatých již v rané fázi. |
+| Vstupní události v backlogu       | Počet vstupních událostí, které jsou v backlogu. Nenulové hodnoty pro tuto metriku znamená, že vaše úloha není schopné udržovat tempo s počtem příchozí události. Pokud je tato hodnota pomalu rostoucí nebo konzistentně nula, byste měli horizontálně vaši úlohu. Další informace najdete [principy a úpravy jednotek streamování](stream-analytics-streaming-unit-consumption.md). |
+| Chyby převodu dat | Počet výstupních událostech, které nebylo možné převést na očekávaný výstup schématu. Chybové zásady můžete změnit na "Rozevírací" odpojit události, ke které dojde k této situaci. |
+| Události předčasného vstupu       | Události, jejichž aplikace časové razítko je dřívější než čas jejich doručení o víc než 5 minut. |
 | Nezdařené požadavky na funkce | Počet neúspěšných volání funkce Azure Machine Learning (pokud existuje). |
 | Události funkcí        | Počet událostí odeslaných do funkce Azure Machine Learning (pokud existuje). |
 | Požadavky na funkce      | Počet volání funkce Azure Machine Learning (pokud existuje). |
-| Chyby deserializace vstupu       | Počet událostí, které se nepodařilo deserializovat.  |
+| Chyby deserializace vstupu       | Počet vstupních událostí, které se nepodařilo deserializovat.  |
 | Bajty vstupních událostí      | Objem dat přijatých úlohy Stream Analytics, v bajtech. To lze použít k ověření, že vstupní zdroj odeslání události. |
-| Vstupní události           | Objem dat přijatých úloze Stream Analytics v počtu událostí. To lze použít k ověření, že vstupní zdroj odeslání události. |
-| Přijaté vstupní zdroje       | Počet událostí přicházejících z vstupního zdroje. |
-| Pozdní vstupní události      | Počet událostí přicházejících pozdní ze zdroje, které buď byla vyřazena nebo jejich časového razítka byl upraven na základě zásady řazení událostí Konfigurace nastavení zpoždění okno Tolerance pozdního přijetí. |
+| Vstupní události           | Počet záznamů rekonstruovat z události vstupu. |
+| Přijaté vstupní zdroje       | Počet přijatých úloze událostí. To lze použít k ověření, že vstupní zdroj odeslání události. |
+| Pozdní vstupní události      | Události, které byly přijaty později než nakonfigurované pozdní okno tolerance pozdního přijetí. Další informace o [aspekty pořadí událostí Azure Stream Analytics](stream-analytics-out-of-order-and-late-events.md) . |
 | Události mimo pořadí    | Počet událostí přijatých mimo pořadí, ve kterém byly vyřazeny nebo zadaný upravené časové razítko na základě zásad řazení událostí. To může mít vliv konfigurace okna pro toleranci mimo pořadí z nastavení. |
 | Výstupní události          | Objem dat odesílaných úlohy Stream Analytics na cíl výstupu v počtu událostí. |
 | Chyby za běhu         | Celkový počet chyb souvisejících s zpracování dotazů (s výjimkou chyby při ingestování události nebo výsledky outputing) |

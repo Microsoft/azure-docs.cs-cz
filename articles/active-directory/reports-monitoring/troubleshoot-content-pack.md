@@ -4,7 +4,7 @@ description: Poskytuje seznam chybových zpráv balíčku obsahu aktivit Azure A
 services: active-directory
 documentationcenter: ''
 author: priyamohanram
-manager: mtillman
+manager: daveba
 editor: ''
 ms.assetid: ffce7eb1-99da-4ea7-9c4d-2322b755c8ce
 ms.service: active-directory
@@ -16,12 +16,12 @@ ms.component: report-monitor
 ms.date: 11/13/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 65747da92a3cad770cd9d474d27645782f7306b9
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: 461c61fdd38fe8801a71c1ac34cd3e7114838207
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52998738"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54825353"
 ---
 # <a name="troubleshooting-azure-active-directory-activity-logs-content-pack-errors"></a>Řešení potíží s Azure Active Directory aktivity chyby balíčku obsahu protokolů 
 
@@ -38,9 +38,9 @@ Při práci s balíčkem obsahu Power BI pro Azure Active Directory (Azure AD), 
 
 Tento článek obsahuje informace o možných příčinách a jak tyto chyby opravit.
  
-## <a name="refresh-failed"></a>Aktualizace se nezdařila. 
+## <a name="refresh-failed"></a>Aktualizace se nezdařila 
  
-**Jak se zobrazí tato chyba**: e-mailů z Power BI nebo stavu selhání v historii aktualizace. 
+**Jak se zobrazí tato chyba**: E-mailu z Power BI nebo stavu selhání v historii aktualizace. 
 
 
 | Příčina | K vyřešení |
@@ -51,7 +51,7 @@ Tento článek obsahuje informace o možných příčinách a jak tyto chyby opr
  
 ## <a name="failed-to-update-data-source-credentials"></a>Nepovedlo se aktualizovat přihlašovací údaje ke zdroji dat 
  
-**Jak se zobrazí tato chyba**: balíčku obsahu protokolů v Power BI, když se připojíte k aktivit Azure AD. 
+**Jak se zobrazí tato chyba**: V Power BI, když se připojíte k balíčku obsahu protokolů aktivit Azure AD. 
 
 | Příčina | K vyřešení |
 | ---   | ---        |
@@ -62,7 +62,7 @@ Tento článek obsahuje informace o možných příčinách a jak tyto chyby opr
 
 ## <a name="data-import-is-too-slow"></a>Import dat je pomalý 
  
-**Jak se zobrazí tato chyba**: V Power BI připojíte balíček obsahu, proces importu dat spustí řídicí panel Příprava aktivit Azure AD protokoly. Zobrazí se zpráva: **importu dat...**  bez jakékoli další krok.  
+**Jak se zobrazí tato chyba**: V Power BI připojíte balíček obsahu, proces importu dat spustí Příprava řídicí panel aktivit Azure AD protokoly. Zobrazí se tato zpráva: **Importují se data...**  bez jakékoli další krok.  
 
 | Příčina | K vyřešení |
 | ---   | ---        |

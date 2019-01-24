@@ -4,7 +4,7 @@ description: Správa spravované domény Azure Active Directory Domain Services
 services: active-directory-ds
 documentationcenter: ''
 author: eringreenlee
-manager: mtillman
+manager: daveba
 editor: curtand
 ms.assetid: d4fdbc75-3e6b-4e20-8494-5dcc3bf2220a
 ms.service: active-directory
@@ -15,19 +15,19 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/22/2018
 ms.author: ergreenl
-ms.openlocfilehash: dab1547ca17acaeda3cb168d78b342661ebe4615
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 81e7eb6a95dea5bf68af62e4eeae20f958ec4790
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51230474"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54844802"
 ---
 # <a name="administer-an-azure-active-directory-domain-services-managed-domain"></a>Správa spravované domény služby Azure Active Directory Domain Services
 Tento článek ukazuje, jak Správa spravované domény služby Azure Active Directory (AD) Domain Services.
 
 [!INCLUDE [active-directory-ds-prerequisites.md](../../includes/active-directory-ds-prerequisites.md)]
 
-## <a name="before-you-begin"></a>Než začnete
+## <a name="before-you-begin"></a>Před zahájením
 K dokončení úkolů uvedených v tomto článku, budete potřebovat:
 
 1. Platný **předplatného Azure**.
@@ -112,7 +112,7 @@ Teď můžete použít nástroje pro správu systému Windows Server AD zkoumat 
     ![Centrum ADAC – zobrazení domény](./media/active-directory-domain-services-admin-guide/adac-domain-view.png)
 4. Klikněte na kontejner volá **uživatelé AADDC** zobrazíte všechny uživatele a skupiny, které patří do spravované domény. Měli byste vidět uživatelských účtů a skupin ze služby Azure AD tenant zobrazit v tomto kontejneru. Všimněte si, že v tomto příkladu, uživatelský účet pro uživatele "bob" a skupinu s názvem "Správci AAD DC' jsou k dispozici v tomto kontejneru.
 
-    ![Centrum ADAC – uživatelé domény](./media/active-directory-domain-services-admin-guide/adac-aaddc-users.png)
+    ![ADAC - domain users](./media/active-directory-domain-services-admin-guide/adac-aaddc-users.png)
 5. Klikněte na kontejner volá **kontejnery počítače AADDC** a zobrazit tak počítače připojené k této spravované doméně. Měli byste vidět položku pro aktuální virtuální počítač, který je připojený k doméně. Účty počítače pro všechny počítače, které jsou připojeny k spravované doméně služby Azure AD Domain Services jsou uložené v tomto kontejneru "Kontejnery počítače AADDC".
 
     ![Centrum ADAC - počítače připojené k doméně](./media/active-directory-domain-services-admin-guide/adac-aaddc-computers.png)

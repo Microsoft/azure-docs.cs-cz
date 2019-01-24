@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 07/18/2018
 ms.author: dobett
-ms.openlocfilehash: 3b49d568b1ca19a99359314bb181712f56ca5615
-ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
+ms.openlocfilehash: ecde1c19a56a7f99284fe738a19eac07322c2dae
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54201053"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54826169"
 ---
 # <a name="control-access-to-iot-hub"></a>Řízení přístupu k IoT Hubu
 
@@ -139,7 +139,7 @@ Tady jsou očekávané hodnoty:
 | {podpis} |Řetězec podpisu HMAC SHA256 formuláře: `{URL-encoded-resourceURI} + "\n" + expiry`. **Důležité**: Klíč je dekódovat z formátu base64 a použít jako klíč pro provádění výpočtů HMAC SHA256. |
 | {resourceURI} |Předponu identifikátoru URI (podle segmentů) koncových bodů, které lze přistupovat pomocí tohoto tokenu, počínaje název hostitele služby IoT hub (žádný protokol). Například `myHub.azure-devices.net/devices/device1`. |
 | {expiry} |Řetězce UTF8 pro počet sekund od 00:00:00 UTC epocha na 1. ledna 1970. |
-| {Adresu URL-encoded-resourceURI} |Nižší malá a velká kódování URL z identifikátoru URI prostředku malými písmeny |
+| {URL-encoded-resourceURI} |Nižší malá a velká kódování URL z identifikátoru URI prostředku malými písmeny |
 | {policyName} |Název zásad sdíleného přístupu, na který odkazuje tento token. Uveden v případě token, který odkazuje na přihlašovací údaje registru zařízení. |
 
 **Poznámka: na předponě**: Předponu identifikátoru URI se počítá podle segmentu a ne podle znaku. Například `/a/b` je předpona pro `/a/b/c` , ale nikoli pro `/a/bc`.
@@ -160,7 +160,7 @@ var generateSasToken = function(resourceUri, signingKey, policyName, expiresInMi
     hmac.update(toSign);
     var base64UriEncoded = encodeURIComponent(hmac.digest('base64'));
 
-    // Construct autorization string
+    // Construct authorization string
     var token = "SharedAccessSignature sr=" + resourceUri + "&sig="
     + base64UriEncoded + "&se=" + expires;
     if (policyName) token += "&skn="+policyName;
@@ -438,8 +438,8 @@ V následující tabulce jsou uvedeny oprávnění, která slouží k řízení 
 
 | Oprávnění | Poznámky |
 | --- | --- |
-| **registryRead** |Uděluje přístup pro čtení k registru identit. Další informace najdete v tématu [registr identit](iot-hub-devguide-identity-registry.md). <br/>Toto oprávnění je použít cloudové back endové služby. |
-| **registryReadWrite** |Uděluje přístup čtení a zápis do registru identit. Další informace najdete v tématu [registr identit](iot-hub-devguide-identity-registry.md). <br/>Toto oprávnění je použít cloudové back endové služby. |
+| **RegistryRead** |Uděluje přístup pro čtení k registru identit. Další informace najdete v tématu [registr identit](iot-hub-devguide-identity-registry.md). <br/>Toto oprávnění je použít cloudové back endové služby. |
+| **RegistryReadWrite** |Uděluje přístup čtení a zápis do registru identit. Další informace najdete v tématu [registr identit](iot-hub-devguide-identity-registry.md). <br/>Toto oprávnění je použít cloudové back endové služby. |
 | **ServiceConnect** |Uděluje přístup ke cloudovým komunikace a monitorování koncových bodů služby přístupem. <br/>Uděluje oprávnění pro příjem zpráv typu zařízení cloud, odesílat zprávy typu cloud zařízení a načtení odpovídajícího doručení potvrzení. <br/>Uděluje oprávnění k načtení potvrzení o doručení pro soubor nahraje. <br/>Uděluje oprávnění k přístupu dvojčat aktualizovat značky a požadované vlastnosti, načtení ohlášených vlastností a spouštět dotazy. <br/>Toto oprávnění je použít cloudové back endové služby. |
 | **DeviceConnect** |Uděluje přístup ke koncovým bodům přístupem k zařízení. <br/>Uděluje oprávnění k odesílání zpráv typu zařízení cloud a příjem zpráv typu cloud zařízení. <br/>Uděluje oprávnění k provedení nahrávání souborů ze zařízení. <br/>Uděluje oprávnění přijímat oznámení vlastnost požadovaného dvojče zařízení a aktualizovat dvojče zařízení ohlášené vlastnosti. <br/>Uděluje oprávnění k provedení soubor nahraje. <br/>Toto oprávnění se používají zařízení. |
 

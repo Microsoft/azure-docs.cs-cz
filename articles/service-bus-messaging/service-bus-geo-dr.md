@@ -2,18 +2,19 @@
 title: Azure Service Bus Geo-zotavení po havárii | Dokumentace Microsoftu
 description: Použití geografických oblastí na převzetí služeb při selhání a provádět zotavení po havárii v Azure Service Bus
 services: service-bus-messaging
-author: spelluru
+author: axisc
 manager: timlt
+editor: spelluru
 ms.service: service-bus-messaging
 ms.topic: article
-ms.date: 09/14/2018
-ms.author: spelluru
-ms.openlocfilehash: 0436248dac2812c447d25de16a4ac6b45bd7248f
-ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
+ms.date: 01/23/2019
+ms.author: aschhab
+ms.openlocfilehash: d98ff2c5b9d18c36e7d16ec19d3e136be03b8d4c
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48855169"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54847998"
 ---
 # <a name="azure-service-bus-geo-disaster-recovery"></a>Azure Service Bus Geo-zotavení po havárii
 
@@ -35,13 +36,13 @@ Funkce zotavení po havárii implementuje zotavení po havárii metadata a spol�
 
 V tomto článku se používají následující termíny:
 
--  *Alias*: název pro konfigurace zotavení po havárii, které jste nastavili. Alias poskytuje jeden řetězec připojení stabilní plně kvalifikovaný název domény (FQDN). Aplikace použít tento připojovací řetězec aliasu pro připojení k oboru názvů. 
+-  *Alias*: Název konfigurace zotavení po havárii, které jste nastavili. Alias poskytuje jeden řetězec připojení stabilní plně kvalifikovaný název domény (FQDN). Aplikace použít tento připojovací řetězec aliasu pro připojení k oboru názvů. 
 
--  *Obor názvů primárního a sekundárního*: obory názvů, které odpovídají na alias. Primární obor názvů je "aktivní" a přijímá zprávy (to může být existující nebo nový obor názvů). Sekundární obor názvů je "pasivní" a nepřijímá zprávy. Metadata mezi oběma jsou synchronizované, tak i hladce přijmout zprávy bez nutnosti jakkoli měnit aplikace kódu nebo připojovací řetězec. Aby bylo zajištěno, že pouze aktivní obor názvů přijímá zprávy, musíte použít alias. 
+-  *Obor názvů primárního a sekundárního*: Obory názvů, které odpovídají na alias. Primární obor názvů je "aktivní" a přijímá zprávy (to může být existující nebo nový obor názvů). Sekundární obor názvů je "pasivní" a nepřijímá zprávy. Metadata mezi oběma jsou synchronizované, tak i hladce přijmout zprávy bez nutnosti jakkoli měnit aplikace kódu nebo připojovací řetězec. Aby bylo zajištěno, že pouze aktivní obor názvů přijímá zprávy, musíte použít alias. 
 
--  *Metadata*: entity jako jsou fronty, témata a odběry; a jejich vlastnosti služby, které jsou spojeny s oborem názvů. Všimněte si, že se automaticky replikují jenom entity a jejich nastavení. Zprávy se nereplikují. 
+-  *Metadata*: Entity, jako jsou fronty, témata a odběry; a jejich vlastnosti služby, které jsou spojeny s oborem názvů. Všimněte si, že se automaticky replikují jenom entity a jejich nastavení. Zprávy se nereplikují. 
 
--  *Převzetí služeb při selhání*: proces aktivace sekundární obor názvů.
+-  *Převzetí služeb při selhání*: Proces aktivace sekundární obor názvů.
 
 ## <a name="setup-and-failover-flow"></a>Instalační program a převzetí služeb při selhání toku
 

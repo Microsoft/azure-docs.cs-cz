@@ -3,19 +3,19 @@ title: Definování technického profilu služby Azure Active Directory ve vlast
 description: Technický profil Azure Active Directory definování ve vlastních zásadách v Azure Active Directory B2C.
 services: active-directory-b2c
 author: davidmu1
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 09/10/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: cf7b051703e01493f365c1850ab815747321230b
-ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
+ms.openlocfilehash: dc9cda92ef725bbfc1a12756912656f0c39474cd
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44381165"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54846740"
 ---
 # <a name="define-an-azure-active-directory-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Definování technického profilu služby Azure Active Directory ve vlastních zásadách pro Azure Active Directory B2C
 
@@ -252,7 +252,7 @@ Následující technický profil odstraní sociální uživatelský účet pomoc
 ```
 ## <a name="metadata"></a>Metadata
 
-| Atribut | Požaduje se | Popis |
+| Atribut | Požadováno | Popis |
 | --------- | -------- | ----------- |
 | Operace | Ano | Operace, která se má provést. Možné hodnoty: `Read`, `Write`, `DeleteClaims`, nebo `DeleteClaimsPrincipal`. | 
 | RaiseErrorIfClaimsPrincipalDoesNotExist | Ne | Vyvolá chybu, pokud objekt uživatele neexistuje v adresáři. Možné hodnoty: `true` nebo `false`. | 
@@ -260,7 +260,7 @@ Následující technický profil odstraní sociální uživatelský účet pomoc
 | RaiseErrorIfClaimsPrincipalAlreadyExists | Ne | Vyvolat chybu, pokud již existuje objekt uživatele. Možné hodnoty: `true` nebo `false`.| 
 | UserMessageIfClaimsPrincipalAlreadyExists | Ne | Pokud chybu, je vyvolána (viz popis atributu RaiseErrorIfClaimsPrincipalAlreadyExists), zadejte zprávu, která se zobrazí uživateli, pokud objekt uživatele již existuje. Hodnota může být [lokalizované](localization.md).| 
 | ApplicationObjectId | Ne | Identifikátor objektu aplikace pro atributy rozšíření. Hodnota: ID objektu aplikace. Další informace najdete v tématu [použití vlastních atributů ve vlastním profilu upravit zásadu](active-directory-b2c-create-custom-attributes-profile-edit-custom.md). | 
-| ID klienta | Ne | Identifikátor klienta pro přístup k tenantovi v roli třetích stran. Další informace najdete v tématu [použití vlastních atributů ve vlastním profilu upravit zásadu](active-directory-b2c-create-custom-attributes-profile-edit-custom.md) | 
+| ClientId | Ne | Identifikátor klienta pro přístup k tenantovi v roli třetích stran. Další informace najdete v tématu [použití vlastních atributů ve vlastním profilu upravit zásadu](active-directory-b2c-create-custom-attributes-profile-edit-custom.md) | 
 
 
 

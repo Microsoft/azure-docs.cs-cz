@@ -9,12 +9,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 8/6/2018
 ms.author: trinadhk
-ms.openlocfilehash: 5262c99fae965201d4f9519495163d0e16836a7a
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.openlocfilehash: f5695da01752d701e1b688700580982f2d2e6154
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52726538"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54827410"
 ---
 # <a name="questions-about-the-azure-backup-agent"></a>Dotazy týkající se agenta Azure Backup
 Tento článek obsahuje odpovědi na běžné dotazy, které vám pomůžou rychle porozumět komponentám agenta Azure Backup. Některé odpovědi zahrnují odkazy na články obsahující komplexní informace. Otázky týkající se služby Azure Backup můžete také publikovat na [diskusním fóru](https://social.msdn.microsoft.com/forums/azure/home?forum=windowsazureonlinebackup).
@@ -30,11 +30,11 @@ Ano, přihlašovací údaje trezoru vyprší po 48 hodinách. Pokud soubor vypr�
 Nemůžete zálohovat následující jednotky a svazky:
 
 * Vyměnitelné médium: Všechny zdroje položek k zálohování se musí hlásit jako pevné.
-* Svazky jen pro čtení: Svazek musí být zapisovatelný, aby fungovala služba Stínová kopie svazku (VSS).
-* Offline svazky: Svazek musí být online, aby fungovala služba VSS.
-* Sdílené síťové složky: Svazek musí být místní pro server, aby mohl být zálohovaný pomocí online zálohování.
-* Svazky chráněné nástrojem Bitlocker: Předtím, než může dojít k zálohování, musí být svazek odemčený.
-* Identifikace systému souborů: Jediným podporovaným systémem souborů je NTFS.
+* Svazky jen pro čtení: Svazek musí být zapisovatelný služby Stínová kopie svazku (VSS) fungovat.
+* Offline svazky: Svazek musí být online služby VSS, aby funkce.
+* Sdílené síťové složky: Svazek musí být místní pro server zálohování pomocí online zálohování.
+* Svazky chráněné nástrojem BitLocker: Předtím, než může dojít k zálohování, musí být svazek odemčený.
+* Identifikace systému souborů: Je jediným podporovaným systémem souborů NTFS.
 
 ### <a name="what-file-and-folder-types-can-i-back-up-from-my-serverbr"></a>Jaké typy souborů a složek mohu zálohovat ze svého serveru?<br/>
 Jsou podporovány následující typy:
@@ -46,8 +46,8 @@ Jsou podporovány následující typy:
 * Pevné odkazy: Není podporováno, vynecháno
 * Bod rozboru: Není podporováno, vynecháno
 * Šifrované a řídké: Není podporováno, vynecháno
-* Komprimovaný datový proud: Není podporováno, vynecháno
-* Řídký datový proud: Není podporováno, vynecháno
+* Komprimovaný Stream: Není podporováno, vynecháno
+* Zhuštěný Stream: Není podporováno, vynecháno
 
 ### <a name="can-i-install-the-azure-backup-agent-on-an-azure-vm-already-backed-by-the-azure-backup-service-using-the-vm-extension-br"></a>Mohu nainstalovat agenta Azure Backup na virtuální počítač Azure, který už je zálohovaný službou Azure Backup pomocí rozšíření virtuálního počítače? <br/>
 Jistě. Azure Backup poskytuje zálohování na úrovni virtuálních počítačů pro virtuální počítače Azure, které používají rozšíření virtuálního počítače. Pokud chcete chránit soubory a složky na hostovaném operačním systému Windows, nainstalujte na něj agenta Azure Backup.
@@ -94,7 +94,7 @@ Po úspěšném dokončení vytvoření zálohy v novém umístění mezipaměti
 ### <a name="where-can-i-put-the-cache-folder-for-the-azure-backup-agent-to-work-as-expectedbr"></a>Kam můžu dát složku mezipaměti, aby agent Azure Backup fungoval podle očekávání?<br/>
 Pro složku mezipaměti nedoporučujeme používat následující umístění:
 
-* Sdílenou síťovou složku nebo vyměnitelné médium: Složka mezipaměti musí být místní pro server, který potřebuje zálohování pomocí online zálohování. Síťová umístění a vyměnitelná média jako jednotky USB nejsou podporovány.
+* Sdílené síťové složky nebo vyměnitelné médium: Složka mezipaměti musí být místní pro server, který potřebuje zálohování pomocí online zálohování. Síťová umístění a vyměnitelná média jako jednotky USB nejsou podporovány.
 * Offline svazky: Složka mezipaměti musí být online pro očekávané zálohování pomocí agenta Azure Backup
 
 ### <a name="are-there-any-attributes-of-the-cache-folder-that-are-not-supportedbr"></a>Jsou nějaké atributy složky mezipaměti, které nejsou podporované?<br/>

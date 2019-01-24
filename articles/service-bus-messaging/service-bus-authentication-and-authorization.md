@@ -3,23 +3,23 @@ title: Azure Service Bus ověřování a autorizace | Dokumentace Microsoftu
 description: Ověření aplikace ke službě Service Bus pomocí sdíleného přístupového podpisu (SAS) ověřování.
 services: service-bus-messaging
 documentationcenter: na
-author: spelluru
+author: axisc
 manager: timlt
-editor: ''
+editor: spelluru
 ms.assetid: 18bad0ed-1cee-4a5c-a377-facc4785c8c9
 ms.service: service-bus-messaging
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/14/2018
-ms.author: spelluru
-ms.openlocfilehash: 726e414566622d28817c34c92bd45653677d590f
-ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
+ms.date: 01/23/2019
+ms.author: aschhab
+ms.openlocfilehash: 7c5a45504b7c44d97ff2250663ef9c47ef6e3595
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47392716"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54851551"
 ---
 # <a name="service-bus-authentication-and-authorization"></a>Ověřování a autorizace Service Bus
 

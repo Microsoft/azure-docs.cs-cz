@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/04/2018
 ms.author: kraigb
-ms.openlocfilehash: 151d945bbeda9f7dd496f8469f8f858e8369da8f
-ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
+ms.openlocfilehash: 8961a863f1b268a034310554230096cc0f9d5260
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53164411"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54844054"
 ---
 # <a name="create-and-clone-projects"></a>Vytváření a klonování projektů
 
@@ -30,7 +30,7 @@ Projekt také udržuje metadat a dalších nastavení konfigurace, které mají 
 
 Vaše **projekty** řídicí panel na `https://notebooks.azure.com/<userID>/projects` zobrazovat, spravovat, a vytvářet projekty:
 
-[![](media/my-projects-dashboard.png "Můj řídicí panel projektů v poznámkových bloků Azure")](media/my-projects-dashboard.png#lightbox)
+[![Můj řídicí panel projektů v poznámkových bloků Azure](media/my-projects-dashboard.png)](media/my-projects-dashboard.png#lightbox)
 
 Co můžete dělat na řídicím panelu, závisí na tom, jestli jste přihlášení pomocí účtu, který vlastní ID uživatele:
 
@@ -105,9 +105,9 @@ Naklonujte projekt:
 ## <a name="next-steps"></a>Další postup
 
 - [Prozkoumejte ukázkové poznámkové bloky](azure-notebooks-samples.md)
-- [Jak: Konfigurace a správa projektů](configure-manage-azure-notebooks-projects.md)
-- [Jak: Instalace balíčků z v rámci poznámkového bloku](install-packages-jupyter-notebook.md)
-- [Jak: K dispozici prezentace](present-jupyter-notebooks-slideshow.md)
-- [Jak: Práce s datovými soubory](work-with-project-data-files.md)
-- [Jak: Přístup k prostředkům data](access-data-resources-jupyter-notebooks.md)
-- [Jak: Použití Azure Machine Learning Services](use-machine-learning-services-jupyter-notebooks.md)
+- [Postup: Konfigurace a správa projektů](configure-manage-azure-notebooks-projects.md)
+- [Postup: Instalace balíčků z v rámci poznámkového bloku](install-packages-jupyter-notebook.md)
+- [Postup: K dispozici prezentace](present-jupyter-notebooks-slideshow.md)
+- [Postup: Práce s datovými soubory](work-with-project-data-files.md)
+- [Postup: Přístup k prostředkům data](access-data-resources-jupyter-notebooks.md)
+- [Postup: Použití Azure Machine Learning Services](use-machine-learning-services-jupyter-notebooks.md)

@@ -1,10 +1,10 @@
 ---
-title: 'Kurz: Integrace Azure Active Directory se službou Lessonly.com | Dokumentace Microsoftu'
+title: 'Kurz: Integrace Azure Active Directory s Lessonly.com | Dokumentace Microsoftu'
 description: Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a Lessonly.com.
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.assetid: 8c9dc6e6-5d85-4553-8a35-c7137064b928
 ms.service: active-directory
 ms.component: saas-app-tutorial
@@ -14,14 +14,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/23/2017
 ms.author: jeedes
-ms.openlocfilehash: 2a4bae196e956d92548944637509b23f78ceb5d2
-ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
+ms.openlocfilehash: d9f1cfb125c2fa5cd513ae7c2e20c41b8d98f01b
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44348000"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54808336"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-lessonlycom"></a>Kurz: Integrace Azure Active Directory se službou Lessonly.com
+# <a name="tutorial-azure-active-directory-integration-with-lessonlycom"></a>Kurz: Integrace Azure Active Directory s Lessonly.com
 
 V tomto kurzu se dozvíte, jak integrovat Lessonly.com s Azure Active Directory (Azure AD).
 
@@ -140,10 +140,10 @@ V této části Povolení služby Azure AD jednotného přihlašování na port�
 
     | Název atributu   | Hodnota atributu |
     | ---------------  | ----------------|
-    | název urn: oid:2.5.4.42 |user.givenname |
-    | název urn: oid:2.5.4.4  |user.surname |
-    | urn:oid:0.9.2342.19200300.100.1.3 |User.Mail |
-    | urn:oid:1.3.6.1.4.1.5923.1.1.1.10 |User.ObjectId |
+    | urn:oid:2.5.4.42 |user.givenname |
+    | urn:oid:2.5.4.4  |user.surname |
+    | urn:oid:0.9.2342.19200300.100.1.3 |user.mail |
+    | urn:oid:1.3.6.1.4.1.5923.1.1.1.10 |user.objectid |
 
     a. Klikněte na tlačítko **přidat atribut** otevřít **přidat atribut** dialogového okna.
 
@@ -168,7 +168,7 @@ V této části Povolení služby Azure AD jednotného přihlašování na port�
 1. Ke konfiguraci jednotného přihlašování na **Lessonly.com** straně, je nutné odeslat na stažený **Certificate(Base64)** a **URL odhlašování SAML Entity ID a SAML jednotné přihlašování – adresa URL služby** k [tým podpory Lessonly.com](mailto:support@lessonly.com).
 
 > [!TIP]
-> Teď si můžete přečíst stručné verzi těchto pokynů uvnitř [webu Azure portal](https://portal.azure.com), zatímco jsou nastavení aplikace!  Po přidání této aplikace z **služby Active Directory > podnikové aplikace** části, stačí kliknout **Single Sign-On** kartu a přístup k vložené dokumentaci prostřednictvím  **Konfigurace** oblast v dolní části. Další informace o funkci vložená dokumentace: [dokumentace ke službě Azure AD embedded]( https://go.microsoft.com/fwlink/?linkid=845985)
+> Teď si můžete přečíst stručné verzi těchto pokynů uvnitř [webu Azure portal](https://portal.azure.com), zatímco jsou nastavení aplikace!  Po přidání této aplikace z **služby Active Directory > podnikové aplikace** části, stačí kliknout **Single Sign-On** kartu a přístup k vložené dokumentaci prostřednictvím  **Konfigurace** oblast v dolní části. Další informace o funkci vložená dokumentace: [Dokumentace ke službě Azure AD, embedded]( https://go.microsoft.com/fwlink/?linkid=845985)
 
 ### <a name="creating-an-azure-ad-test-user"></a>Vytváří se testovací uživatele služby Azure AD
 Cílem této části je vytvoření zkušebního uživatele na webu Azure Portal volá Britta Simon.
@@ -246,7 +246,7 @@ Cílem této části je test vaší konfigurace Azure AD jednotné přihlašová
 
 Po kliknutí na dlaždici Lessonly.com na přístupovém panelu, vám by měl získat automaticky přihlášení k aplikaci Lessonly.com.
 
-## <a name="additional-resources"></a>Další zdroje informací:
+## <a name="additional-resources"></a>Další materiály
 
 * [Seznam kurzů o integraci aplikací SaaS pomocí Azure Active Directory](tutorial-list.md)
 * [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](../manage-apps/what-is-single-sign-on.md)

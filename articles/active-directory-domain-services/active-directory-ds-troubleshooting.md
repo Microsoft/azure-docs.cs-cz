@@ -4,7 +4,7 @@ description: Průvodce odstraňováním potíží pro Azure AD Domain Services
 services: active-directory-ds
 documentationcenter: ''
 author: eringreenlee
-manager: mtillman
+manager: daveba
 editor: curtand
 ms.assetid: 4bc8c604-f57c-4f28-9dac-8b9164a0cf0b
 ms.service: active-directory
@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/08/2018
 ms.author: ergreenl
-ms.openlocfilehash: e2b7eb4f5be5e73e70f883f9510e7fc6a13d6bea
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.openlocfilehash: 8b752585fc72b7f4be8e7b9320290f8ad56f53c2
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50156082"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54844649"
 ---
 # <a name="azure-ad-domain-services---troubleshooting-guide"></a>Azure AD Domain Services – Průvodce odstraňováním potíží
 Tento článek obsahuje pokyny k odstranění potíží pro problémy, na které můžete narazit při nastavení a Správa služby Azure Active Directory (AD) Domain Services.
@@ -128,7 +128,7 @@ Chcete-li vyřešit tuto chybu, povolte tuto aplikaci a potom se pokuste pro va�
 ## <a name="users-are-unable-to-sign-in-to-the-azure-ad-domain-services-managed-domain"></a>Uživatelé se nemůžou přihlásit ke spravované doméně Azure AD Domain Services
 Pokud jeden nebo více uživatelů ve vašem tenantovi Azure AD se nepodařilo přihlásit ke spravované doméně nově vytvořený, proveďte následující kroky:
 
-* **Přihlásit pomocí formátu UPN:** zkuste se přihlásit pomocí formátu UPN (například "joeuser@contoso.com') namísto formátu SAMAccountName (CONTOSO\joeuser). SAMAccountName automaticky vygeneruje se pro uživatele, jehož předpona hlavní název uživatele je příliš dlouhá nebo je stejný jako jiný uživatel ve spravované doméně. Formát UPN je musí být jedinečný v rámci tenanta služby Azure AD.
+* **Přihlásit pomocí formátu UPN:** Zkuste se přihlásit pomocí formátu UPN (například joeuser@contoso.com) namísto formátu SAMAccountName (CONTOSO\joeuser). SAMAccountName automaticky vygeneruje se pro uživatele, jehož předpona hlavní název uživatele je příliš dlouhá nebo je stejný jako jiný uživatel ve spravované doméně. Formát UPN je musí být jedinečný v rámci tenanta služby Azure AD.
 
 > [!NOTE]
 > Doporučujeme použít formát hlavního názvu uživatele přihlásit ke spravované doméně služby Azure AD Domain Services.
@@ -137,7 +137,7 @@ Pokud jeden nebo více uživatelů ve vašem tenantovi Azure AD se nepodařilo p
 
 * Zkontrolujte, že jste [povolili synchronizaci hesel](active-directory-ds-getting-started-password-sync.md) podle kroků uvedených v příručce Začínáme.
 * **Externí účty:** Ujistěte se, že příslušný uživatelský účet není externím účtem v tenantovi Azure AD. Příklady externí účty jsou účty Microsoft (například "joe@live.com") nebo uživatelské účty z externí adresář Azure AD. Protože Azure AD Domain Services nemá žádné přihlašovací údaje pro takové uživatelské účty, tito uživatelé přihlásit ke spravované doméně.
-* **Synchronizovat účty:** Pokud příslušné uživatelské účty synchronizované z místního adresáře, ověřte, že:
+* **Synchronizace účtů:** Pokud jsou příslušné uživatelské účty synchronizované z místního adresáře, ověřte, že:
 
   * Nasazení nebo aktualizovat, aby [nejnovější doporučená verze služby Azure AD Connect](https://www.microsoft.com/download/details.aspx?id=47594).
   * Nakonfigurovali jste Azure AD Connect k [provádět úplnou synchronizaci](active-directory-ds-getting-started-password-sync.md).

@@ -3,21 +3,21 @@ title: Kurz – Poskytnutí přístupu k webovému rozhraní API ASP.NET Core z 
 description: Kurz popisující použití Active Directory B2C k ochraně webového rozhraní API .NET Core a jeho volání z jednostránkové aplikace.
 services: active-directory-b2c
 author: davidmu1
-manager: mtillman
+manager: daveba
 ms.author: davidmu
 ms.date: 3/02/2018
 ms.custom: mvc
 ms.topic: tutorial
 ms.service: active-directory
 ms.component: B2C
-ms.openlocfilehash: efe975fa4f89a262faef82df3cc79820d393b60e
-ms.sourcegitcommit: 616e63d6258f036a2863acd96b73770e35ff54f8
-ms.translationtype: HT
+ms.openlocfilehash: 4a1787f0a6d222f91eefd6f96e265ba825ca9e82
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45605755"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54848087"
 ---
-# <a name="tutorial-grant-access-to-an-aspnet-core-web-api-from-a-single-page-app-using-azure-active-directory-b2c"></a>Kurz: Poskytnutí přístupu k webovému rozhraní API ASP.NET Core z jednostránkové aplikace pomocí Azure Active Directory B2C
+# <a name="tutorial-grant-access-to-an-aspnet-core-web-api-from-a-single-page-app-using-azure-active-directory-b2c"></a>Kurz: Udělení přístupu k webovému rozhraní API ASP.NET Core z jednostránkové aplikace pomocí Azure Active Directory B2C
 
 V tomto kurzu se dozvíte, jak volat prostředek webového rozhraní API ASP.NET Core chráněný službou Azure Active Directory (Azure AD) B2C z jednostránkové aplikace.
 
@@ -214,7 +214,7 @@ Jakmile se zaregistrujete nebo přihlásíte pomocí uživatelského účtu, uk�
 
 Svého tenanta Azure AD B2C můžete použít i k vyzkoušení dalších kurzů k Azure AD B2C. Jakmile už ho nebudete potřebovat, můžete [svého tenanta Azure AD B2C odstranit](active-directory-b2c-faqs.md#how-do-i-delete-my-azure-ad-b2c-tenant).
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Tento článek vás provedl ochranou webového rozhraní API prostřednictvím registrace a definice oborů v Azure AD B2C. Další informace najdete v dostupných ukázkách kódu pro Azure AD B2C.
 

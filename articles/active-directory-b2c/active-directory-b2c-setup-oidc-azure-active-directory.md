@@ -3,24 +3,24 @@ title: Nastavení přihlášení pro organizace Azure Active Directory v Azure A
 description: Nastavení přihlášení pro konkrétní organizace Azure Active Directory v Azure Active Directory B2C.
 services: active-directory-b2c
 author: davidmu1
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 11/30/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: c48e4696d572b87a4e1553f9d4a2dc9921361388
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.openlocfilehash: 06630d93925875a2c9a492d018f5dd211f437430
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52719908"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54846485"
 ---
 # <a name="set-up-sign-in-for-a-specific-azure-active-directory-organization-in-azure-active-directory-b2c"></a>Nastavení přihlášení pro konkrétní organizace Azure Active Directory v Azure Active Directory B2C
 
 >[!NOTE]
-> Tato funkce je ve verzi public preview. Nepoužívejte tuto funkci v produkčním prostředí.
+> Tato funkce je ve verzi Public Preview. Nepoužívejte tuto funkci v produkčním prostředí.
 
 V tomto článku se dozvíte, jak povolit přihlášení pro uživatele z konkrétní organizace Azure Active Directory (Azure AD) pomocí tok uživatele v Azure Active Directory (Azure AD) B2C.
 

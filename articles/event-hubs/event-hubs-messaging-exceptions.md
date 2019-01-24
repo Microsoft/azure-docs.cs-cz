@@ -13,12 +13,12 @@ ms.workload: na
 ms.custom: seodec18
 ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: f5996a55a38d7f7bd1cd2d2db2500a3c978b457e
-ms.sourcegitcommit: c31a2dd686ea1b0824e7e695157adbc219d9074f
+ms.openlocfilehash: f40bd280a1f3b5a1bffc0c72d56e76a6d19b343c
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/18/2019
-ms.locfileid: "54402230"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54851058"
 ---
 # <a name="event-hubs-messaging-exceptions"></a>Výjimky zasílání zpráv služby Event Hubs
 
@@ -46,7 +46,7 @@ Následující tabulka uvádí zasílání zpráv typy výjimek a jejich příč
 | [Microsoft.ServiceBus.Messaging MessagingEntityNotFoundException](/dotnet/api/microsoft.servicebus.messaging.messagingentitynotfoundexception) <br /><br/> [Microsoft.Azure.EventHubs MessagingEntityNotFoundException](/dotnet/api/microsoft.azure.eventhubs.messagingentitynotfoundexception) | Entity přidružené operaci neexistuje nebo byl odstraněn. | Ujistěte se, že entita existuje. | Opakování nepomůže. |
 | [MessagingCommunicationException](/dotnet/api/microsoft.servicebus.messaging.messagingcommunicationexception) | Klient není schopen navázat připojení do centra událostí. |Ujistěte se, že je správný název zadaného hostitele a hostitel je dostupný. | Opakování může pomoci, pokud dojde k problémům přerušovaným připojením. |
 | [Microsoft.ServiceBus.Messaging ServerBusyException ](/dotnet/api/microsoft.servicebus.messaging.serverbusyexception) <br /> <br/>[Microsoft.Azure.EventHubs ServerBusyException](/dotnet/api/microsoft.azure.eventhubs.serverbusyexception) | Službu není možné na zpracování žádosti. v tuto chvíli. | Klienta můžete počkat určitou dobu a pak zkuste operaci zopakovat. <br /> Zobrazit [ServerBusyException](#serverbusyexception). | Klient může po určité době opakujte. Pokud opakování vede k jiné výjimce, podívejte se na chování při opakování této výjimky. |
-| [MessagingException](/dotnet/api/microsoft.servicebus.messaging.messagingexception) | Obecný zasílání zpráv výjimku, která může být vyvolána v následujících případech: Je proveden pokus o vytvoření [QueueClient](/dotnet/api/microsoft.servicebus.messaging.queueclient) pomocí názvu nebo cesty, která patří k jiné entitě typu (například téma). Je proveden pokus o odeslání zprávy větší než 1 MB. Server nebo službu došlo k chybě při zpracování požadavku. Zobrazit zpráva o výjimce podrobnosti. Tato výjimka je obvykle s přechodnou výjimkou. | Zkontrolujte kód a ujistěte se, že pouze serializovatelné objekty se používají pro tělo zprávy (nebo použijte vlastní serializátor). V dokumentaci pro typy podporovaná hodnota vlastnosti a pouze použití podporované typy. Zkontrolujte, [IsTransient](/dotnet/api/microsoft.servicebus.messaging.messagingexception#Microsoft_ServiceBus_Messaging_MessagingException_IsTransient) vlastnost. Pokud je **true**, můžete operaci opakovat. | Chování při opakování není definována a nemusí nápovědy. |
+| [MessagingException](/dotnet/api/microsoft.servicebus.messaging.messagingexception) | Obecný zasílání zpráv výjimku, která může být vyvolána v následujících případech: Je proveden pokus o vytvoření [QueueClient](/dotnet/api/microsoft.servicebus.messaging.queueclient) pomocí názvu nebo cesty, která patří k jiné entitě typu (například téma). Je proveden pokus o odeslání zprávy větší než 1 MB. Server nebo službu došlo k chybě při zpracování požadavku. Zobrazit zpráva o výjimce podrobnosti. Tato výjimka je obvykle s přechodnou výjimkou. | Zkontrolujte kód a ujistěte se, že pouze serializovatelné objekty se používají pro tělo zprávy (nebo použijte vlastní serializátor). V dokumentaci pro typy podporovaná hodnota vlastnosti a pouze použití podporované typy. Zkontrolujte, [IsTransient](/dotnet/api/microsoft.servicebus.messaging.messagingexception) vlastnost. Pokud je **true**, můžete operaci opakovat. | Chování při opakování není definována a nemusí nápovědy. |
 | [MessagingEntityAlreadyExistsException](/dotnet/api/microsoft.servicebus.messaging.messagingentityalreadyexistsexception) | Pokuste se vytvořit entitu s názvem, který se už používá jiná entita v tomto oboru názvů služby. | Odstraňte existující entity nebo vyberte jiný název entity, který se má vytvořit. | Opakování nepomůže. |
 | [QuotaExceededException](/dotnet/api/microsoft.servicebus.messaging.quotaexceededexception) | Entity pro zasílání zpráv dosáhl maximální povolenou velikost. Tato výjimka může dojít, pokud již bylo otevřeno maximální počet přijímačů (což je 5) na úrovni skupiny – příjemce. | Příjem zpráv z entity nebo jeho podfronty k vytvoření prostoru v dané entitě. <br /> Zobrazit [QuotaExceededException](#quotaexceededexception) | Pokud do té doby byly odebrány zprávy, mohou pomoci při opakování. |
 | [MessagingEntityDisabledException](/dotnet/api/microsoft.servicebus.messaging.messagingentitydisabledexception) | Žádost o operaci runtime na entitu, zakázané. |Aktivujte entity. | Pokud entita byla aktivována mezitím, mohou pomoci při opakování. |

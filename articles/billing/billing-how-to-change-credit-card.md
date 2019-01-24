@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/11/2018
 ms.author: cwatson
-ms.openlocfilehash: 69c24e08ce2434c39b8bb67cb53173f9ceaee51b
-ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
+ms.openlocfilehash: 7c856a076a3958cdd3aef4134c703128194fcc5d
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52581438"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54849783"
 ---
 # <a name="add-update-or-remove-a-credit-or-debit-card-for-azure"></a>Přidání, aktualizace nebo odebrání kreditní nebo debetní kartou pro Azure
 
@@ -32,7 +32,7 @@ V centru účtů můžete přidat novou platební kartu, aktualizovat stávajíc
 
 ## <a name="add-a-new-credit-or-debit-card"></a>Přidat novou kreditní nebo debetní kartu
 
-1. Přihlaste se k [centra pro účty](https://account.windowsazure.com/Subscriptions) jako správce účtu.
+1. Přihlaste se k [centra pro účty](https://account.windowsazure.com/Subscriptions) jako [správce účtu](billing-subscription-transfer.md#whoisaa).
 1. Vyberte předplatné.
 1. Na pravé straně stránky vyberte **Spravovat způsoby platby**.
 
@@ -49,7 +49,7 @@ Pokud dojde k chybě po přidat platební kartu, najdete v článku [odmítl pla
 
 Pokud vaší platební karty získá obnoveno a počet zůstala stejná, aktualizujte existující platební karty podrobnosti jako datum vypršení platnosti. Pokud změny číslo platební karty protože karty dojde ke ztrátě nebo vám ho někdo ukradne, nebo vypršela jeho platnost, postupujte podle pokynů [přidat platební kartu jako způsob platby](#addcard) oddílu. Není nutné aktualizovat CVV.
 
-1. Přihlaste se k [centra účtů Azure](https://account.windowsazure.com/Subscriptions) jako správce účtu.
+1. Přihlaste se k [centra účtů Azure](https://account.windowsazure.com/Subscriptions) jako [správce účtu](billing-subscription-transfer.md#whoisaa).
 1. Vyberte předplatné, který je spojen s kartou.
 1. Vyberte **spravovat způsoby platby**.
 1. Vyberte **upravit** vedle karty, které chcete aktualizovat.
@@ -58,14 +58,14 @@ Pokud vaší platební karty získá obnoveno a počet zůstala stejná, aktuali
 
 ## <a name="use-a-different-credit-card-for-the-azure-subscription"></a>Použití jiné platební karty pro předplatné Azure
 
-1. Přihlaste se k [centra účtů Azure](https://account.windowsazure.com/Subscriptions) jako správce účtu.
+1. Přihlaste se k [centra účtů Azure](https://account.windowsazure.com/Subscriptions) jako [správce účtu](billing-subscription-transfer.md#whoisaa).
 1. Vyberte předplatné, který je spojen s kartou.
 1. Na pravé straně stránky vyberte **Spravovat způsoby platby**.
 1. Klikněte na tlačítko **místo toho použijte** vedle karty, kterou chcete použít. Tím se aktualizuje také další předplatná, aktuálně přiřazen k této karty. 
 
 ## <a name="remove-a-credit-or-debit-card-from-the-account"></a>Odebrat kreditní nebo debetní kartu z účtu
 
-1. Přihlaste se k [centra účtů Azure](https://account.windowsazure.com/Subscriptions) jako správce účtu.
+1. Přihlaste se k [centra účtů Azure](https://account.windowsazure.com/Subscriptions) jako [správce účtu](billing-subscription-transfer.md#whoisaa).
 1. Vyberte předplatné, který je spojen s kartou.
 3. Na pravé straně stránky vyberte **Spravovat způsoby platby**.
 4. Klikněte na tlačítko **odstranit** pro platební karty, kterou chcete odstranit.
@@ -102,6 +102,6 @@ Bohužel Azure v současné době nepodporuje platby jednorázové pro kreditní
 
 Chcete-li přidat nebo aktualizovat daňové identifikační číslo, navštivte [ **profilu** v centru účtů Azure](https://account.azure.com/Profile)a pak vyberte **daňové záznam**. Toto DIČ slouží k výpočtu slevy na dani a zobrazí se na vaší faktuře.
 
-## <a name="need-help-contact-us"></a>Potřebujete pomoct? Kontaktujte nás.
+## <a name="need-help-contact-us"></a>Potřebujete pomoc? Kontaktujte nás.
 
 Pokud máte otázky nebo potřebujete pomoc, [vytvořit žádost o podporu](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest).

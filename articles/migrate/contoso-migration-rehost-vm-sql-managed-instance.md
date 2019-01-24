@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 10/11/2018
 ms.author: raynew
-ms.openlocfilehash: 3564288c55716a9c64ae2460048cb255a60dcc02
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: 6e15d4376fae576f615cac7c094f53dfcc22618e
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 01/23/2019
-ms.locfileid: "54469572"
+ms.locfileid: "54826611"
 ---
 # <a name="contoso-migration-rehost-an-on-premises-app-on-an-azure-vm-and-sql-database-managed-instance"></a>Migrace Contoso: Změna hostitele aplikace on-premises na virtuálním počítači Azure a SQL Database, spravované Instance
 
@@ -432,7 +432,7 @@ Nastavit zdrojové prostředí správce společnosti Contoso takto:
 
 Správce společnosti Contoso, nakonfigurujte cílové prostředí replikace:
 
-1. V **připravit infrastrukturu** > **cílové**, jejich selecs nastavení cíle.
+1. V **připravit infrastrukturu** > **cílové**, vyberou nastavení cíle.
 2. Site Recovery zkontroluje, že je účet úložiště a síť do zadaného cíle.
 
 ### <a name="create-a-replication-policy"></a>Vytvoření zásady replikace
@@ -473,7 +473,7 @@ Správce společnosti Contoso teď můžete spustit replikaci WebVM.
 
     ![Povolení replikace – vyberte virtuální počítač](./media/contoso-migration-rehost-vm-sql-managed-instance/enable-replication3.png)
 
-5. Zkontrolujte, že je vybraná správná zásada replikace a povolení replikace pro **WEBVM**. Jejich tracs průběh replikace v **úlohy**. Po spuštění úlohy **Dokončit ochranu** je počítač připravený k převzetí služeb při selhání.
+5. Zkontrolujte, že je vybraná správná zásada replikace a povolení replikace pro **WEBVM**. Sledují průběh replikace v **úlohy**. Po spuštění úlohy **Dokončit ochranu** je počítač připravený k převzetí služeb při selhání.
 6. V **Essentials** na webu Azure Portal, můžete zobrazit stav pro virtuální počítače, které replikujete do Azure:
 
     ![Zobrazení infrastruktury](./media/contoso-migration-rehost-vm-sql-managed-instance/essentials.png)
@@ -519,7 +519,7 @@ Správce společnosti Contoso je potřeba vytvořit projekt Database Migration S
         ![Database Migration Service – konfigurace nastavení migrace](./media/contoso-migration-rehost-vm-sql-managed-instance/dms-migration-settings.png)
 
 5. Uložte nastavení migrace a potom spusťte migrace.
-6. V **přehled**, jejich monitos stavu migrace.
+6. V **přehled**, i sledování stavu migrace.
 
     ![Služba Database Migration Service – monitorování](./media/contoso-migration-rehost-vm-sql-managed-instance/dms-monitor1.png)
 

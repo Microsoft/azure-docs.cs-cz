@@ -13,18 +13,28 @@ ms.topic: article
 ms.date: 11/26/2018
 ms.author: mabrigg
 ms.reviewer: johnhas
-ms.openlocfilehash: 735f1d7cce8621a29e5a582917d3eea8ee399b8f
-ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
+ms.openlocfilehash: ce16ab3b723b9a6c87c7b980e3cc76c389609da6
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2019
-ms.locfileid: "54319643"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54847897"
 ---
 # <a name="release-notes-for-validation-as-a-service"></a>Zpráva k vydání verze pro ověření jako služba
 
 [!INCLUDE [Azure_Stack_Partner](./includes/azure-stack-partner-appliesto.md)]
 
 Tento článek obsahuje poznámky k verzi pro Azure Stack ověření jako služba.
+
+## <a name="version-405"></a>Verze 4.0.5
+2019 ledna 17
+
+-  Test identifikace disku aktualizovat, aby adresa nekonzistence fondu úložiště. Verze: 5.1.14.0  -> 5.1.15.0
+-  Azure Stack měsíční aktualizace ověření aktualizovat na adresu schválený software a obsah ověření nekonzistence. Verze: 5.1.14.0  -> 5.1.15.0
+-  Ověření balíčku výrobce OEM rozšíření aktualizovat, aby provést nezbytné kontroly *před* krok aktualizace služby Azure Stack. Verze: 5.1.14.0  -> 5.1.15.0
+-  Interní opravy chyb
+
+
 
 ## <a name="version-402"></a>Verze 4.0.2
 

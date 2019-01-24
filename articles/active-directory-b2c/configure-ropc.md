@@ -3,19 +3,19 @@ title: Nakonfigurujte tok přihlašovacího hesla vlastníka prostředku v Azure
 description: Zjistěte, jak nakonfigurovat tok přihlašovacího hesla vlastníka prostředku v Azure AD B2C.
 services: active-directory-b2c
 author: davidmu1
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 11/30/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 1b07825bd3ff46267764467bba815c1097278084
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.openlocfilehash: afbcacb299fa76a19cd7aaa20d3a4f2c2eb26d5c
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52726283"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54845873"
 ---
 # <a name="configure-the-resource-owner-password-credentials-flow-in-azure-ad-b2c"></a>Nakonfigurujte tok přihlašovacího hesla vlastníka prostředku v Azure AD B2C
 
@@ -26,14 +26,14 @@ Tok přihlašovacích údajů (ROPC) hesla vlastníka prostředku je tok, který
 
 V Azure Active Directory (Azure AD) B2C jsou podporovány následující možnosti:
 
-- **Nativní klient systému**: interakce s uživatelem během ověřování se stane, když kód běží na uživatele na straně zařízení. Zařízení může být mobilní aplikace, která běží v nativním operačním systému, jako je například Android, nebo v prohlížeči, třeba JavaScript.
-- **Tok veřejným klientem**: pouze přihlašovací údaje uživatele, shromážděné aplikaci, která se odesílají v volání rozhraní API. Přihlašovací údaje aplikace neodešlou.
+- **Nativní klient systému**: Interakce s uživatelem během ověřování se stane, když kód běží na uživatele na straně zařízení. Zařízení může být mobilní aplikace, která běží v nativním operačním systému, jako je například Android, nebo v prohlížeči, třeba JavaScript.
+- **Tok veřejným klientem**: Pouze přihlašovací údaje uživatele, shromážděné aplikaci, která se odesílají v volání rozhraní API. Přihlašovací údaje aplikace neodešlou.
 - **Přidání nových deklarací identity**: ID tokenu obsah lze změnit pro přidání nových deklarací identity. 
 
 Nejsou podporovány v následujících tocích:
 
-- **Na serveru**: systému identity protection potřebuje shromážděných z volající (Nativní klient) jako součást interakce spolehlivé IP adresu. Ve volání rozhraní API na straně serveru je použít jenom IP adresa serveru. Pokud dojde k překročení dynamická prahová hodnota neúspěšné ověřování, může systém ochrany identit identifikovat opakované IP adresu jako útočník.
-- **Tok důvěrnému klientovi**: ověření ID klienta aplikace, ale neověří tajný klíč aplikace.
+- **Server-to-server**: Systém ochrany identit musí shromážděných z volající (Nativní klient) jako součást interakce spolehlivé IP adresu. Ve volání rozhraní API na straně serveru je použít jenom IP adresa serveru. Pokud dojde k překročení dynamická prahová hodnota neúspěšné ověřování, může systém ochrany identit identifikovat opakované IP adresu jako útočník.
+- **Tok důvěrnému klientovi**: Ověřit ID klienta aplikace, ale neověří tajný klíč aplikace.
 
 ##  <a name="create-a-resource-owner-user-flow"></a>Vytvořit tok uživatele vlastníka prostředku
 
@@ -73,9 +73,9 @@ Generovat volání rozhraní API pomocí oblíbených rozhraní API vývoje apli
 | --- | ----- |
 | uživatelské jméno | leadiocl@outlook.com |
 | heslo | Passxword1 |
-| Parametr grant_type | heslo |
-| scope | openid \<bef2222d56-552f-4a5b-b90a-1988a7d634c3 > offline_access |
-| client_id | \<bef2222d56 552f-4a5b-b90a-1988a7d634c3 > |
+| grant_type | heslo |
+| scope | openid \<bef2222d56-552f-4a5b-b90a-1988a7d634c3> offline_access |
+| client_id | \<bef2222d56-552f-4a5b-b90a-1988a7d634c3> |
 | response_type | Token požadavku id_token |
 
 *Client_id* je hodnota, kterou jste si předtím poznamenali jako ID aplikace. *Offline_access* je volitelný, pokud chcete dostávat obnovovací token. Uživatelské jméno a heslo, které používáte, musí být přihlašovací údaje stávajícího uživatele ve vašem tenantovi Azure AD B2C.
@@ -111,10 +111,10 @@ Vytvoření volání POST podobný tomu vidíte tady pomocí informací v násle
 
 | Klíč | Hodnota |
 | --- | ----- |
-| Parametr grant_type | refresh_token |
+| grant_type | refresh_token |
 | response_type | id_token |
-| client_id | \<bef2222d56 552f-4a5b-b90a-1988a7d634c3 > |
-| prostředek | \<bef2222d56 552f-4a5b-b90a-1988a7d634c3 > |
+| client_id | \<bef2222d56-552f-4a5b-b90a-1988a7d634c3> |
+| prostředek | \<bef2222d56-552f-4a5b-b90a-1988a7d634c3> |
 | refresh_token | eyJraWQiOiJacW9pQlp2TW5pYVc2MUY0TnlfR3... |
 
 *Client_id* a *prostředků* jsou hodnoty, které jste si předtím poznamenali jako ID aplikace. *Refresh_token* je token, který jste obdrželi v ověřovacím hovoru, již bylo zmíněno dříve.
