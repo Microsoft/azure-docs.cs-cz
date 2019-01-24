@@ -1,70 +1,64 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 02922cea6e26b820dc193d73ef38f9e716a477be
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
-ms.translationtype: HT
-ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50233034"
 documentType: LandingData
 title: Dokumentace k Azure Policy
 metadata:
-  title: Dokumentace k Azure Policy – kurzy, reference k rozhraní API
-  description: Azure Policy pomáhá zajišťovat správu a prevenci potíží s IT prostřednictvím definic zásad, které vynucují pravidla a efekty pro vaše prostředky. Když použijete Azure Policy, prostředky budou odpovídat vašim firemním standardům a smlouvám o úrovni služeb. Naučte se vytvářet, přiřazovat a spravovat definice zásad prostřednictvím našich šablon Rychlý start, výukových kurzů a ukázek.
+  title: 'Dokumentace k Azure Policy – kurzy, reference k rozhraní API'
+  description: 'Azure Policy pomáhá zajišťovat správu a prevenci potíží s IT prostřednictvím definic zásad, které vynucují pravidla a efekty pro vaše prostředky. Když použijete Azure Policy, prostředky budou odpovídat vašim firemním standardům a smlouvám o úrovni služeb. Naučte se vytvářet, přiřazovat a spravovat definice zásad prostřednictvím našich šablon Rychlý start, výukových kurzů a ukázek.'
   services: azure-policy
   author: DCtheGeek
   manager: carmonm
   ms.service: azure-policy
   ms.topic: landing-page
-  ms.date: 09/18/2018
+  ms.date: 01/23/2019
   ms.author: dacoulte
 abstract:
-  description: Azure Policy pomáhá zajišťovat správu a prevenci potíží s IT prostřednictvím definic zásad, které vynucují pravidla a efekty pro vaše prostředky. Když použijete Azure Policy, prostředky budou odpovídat vašim firemním standardům a smlouvám o úrovni služeb. Naučte se vytvářet, přiřazovat a spravovat definice zásad prostřednictvím našich šablon Rychlý start, výukových kurzů a ukázek.
+  description: 'Azure Policy pomáhá zajišťovat správu a prevenci potíží s IT prostřednictvím definic zásad, které vynucují pravidla a efekty pro vaše prostředky. Když použijete Azure Policy, prostředky budou odpovídat vašim firemním standardům a smlouvám o úrovni služeb. Naučte se vytvářet, přiřazovat a spravovat definice zásad prostřednictvím našich šablon Rychlý start, výukových kurzů a ukázek.'
 sections:
-- title: Zprovoznění během 5 minut
-  items:
-  - type: paragraph
-    text: Další informace o vytváření, přiřazování a správě definic zásad v Azure
-  - type: list
-    style: icon48
+  - title: Zprovoznění během 5 minut
     items:
-    - image:
-        src: ./media/portal.svg
-      text: Azure Portal
-      href: ./assign-policy-portal
-    - image:
-        src: ./media/powershell.svg
-      text: Azure PowerShell
-      href: ./assign-policy-powershell
-    - image:
-        src: ./media/cli.svg
-      text: Azure CLI
-      href: ./assign-policy-azurecli
-- title: Podrobné kurzy
-  items:
-  - type: paragraph
-    text: Další informace o vytváření, přiřazování a správě definic zásad v Azure
-  - type: list
-    style: unordered
+      - type: paragraph
+        text: 'Další informace o vytváření, přiřazování a správě definic zásad v Azure'
+      - type: list
+        style: icon48
+        items:
+          - image:
+              src: ./media/portal.svg
+            text: Azure Portal
+            href: ./assign-policy-portal
+          - image:
+              src: ./media/powershell.svg
+            text: Azure PowerShell
+            href: ./assign-policy-powershell
+          - image:
+              src: ./media/cli.svg
+            text: Azure CLI
+            href: ./assign-policy-azurecli
+  - title: Podrobné kurzy
     items:
-    - html: <a href="/azure/governance/policy/tutorials/create-and-manage">Vytváření a správa Azure Policy</a>
-- title: Ukázky
-  items:
-  - type: paragraph
-    text: Následující ukázky JSON vám pomůžou vytvořit definice zásad v Azure.
-  - type: list
-    style: unordered
-    className: spaced noBullet
+      - type: paragraph
+        text: 'Další informace o vytváření, přiřazování a správě definic zásad v Azure'
+      - type: list
+        style: unordered
+        items:
+          - html: <a href="/azure/governance/policy/tutorials/create-and-manage">Vytváření a správa Azure Policy</a>
+  - title: Ukázky
     items:
-    - html: <a href="/azure/governance/policy/samples/index">Azure PowerShell</a>
-- title: Referenční informace
-  items:
-  - type: list
-    style: cards
-    className: cardsD
+      - type: paragraph
+        text: Následující ukázky JSON vám pomůžou vytvořit definice zásad v Azure.
+      - type: list
+        style: unordered
+        className: spaced noBullet
+        items:
+          - html: <a href="/azure/governance/policy/samples/index">Azure PowerShell</a>
+  - title: Referenční informace
     items:
-    - title: Příkazový řádek
-      html: <p><a href="/cli/azure/policy">Azure CLI</a></p>
-    - title: PowerShell
-      html: <p><a href="/powershell/module/azurerm.resources/#policies">Azure PowerShell</a></p>
-    - title: REST API
-      html: <p><a href="/rest/api/policy-insights/policyevents">Události</a></p><p><a href="/rest/api/policy-insights/policystates">Stavy</a></p><p><a href="/rest/api/resources/policyassignments">Přiřazení</a></p><p><a href="/rest/api/resources/policydefinitions">Definice zásad</a></p><p><a href="/rest/api/resources/policysetdefinitions">Definice iniciativ</a></p><p><a href="/rest/api/policy-insights/policytrackedresources">Prostředky sledované zásadami</a></p><p><a href="/rest/api/policy-insights/remediations">Nápravy</a></p>
+      - type: list
+        style: cards
+        className: cardsD
+        items:
+          - title: Příkazový řádek
+            html: <p><a href="/cli/azure/policy">Azure CLI</a></p>
+          - title: PowerShell
+            html: '<p><a href="/powershell/module/az.resources/#policies">Azure PowerShell</a></p>'
+          - title: REST API
+            html: <p><a href="/rest/api/policy-insights/policyevents">Události</a></p><p><a href="/rest/api/policy-insights/policystates">Stavy</a></p><p><a href="/rest/api/resources/policyassignments">Přiřazení</a></p><p><a href="/rest/api/resources/policydefinitions">Definice zásad</a></p><p><a href="/rest/api/resources/policysetdefinitions">Definice iniciativ</a></p><p><a href="/rest/api/policy-insights/policytrackedresources">Prostředky sledované zásadami</a></p><p><a href="/rest/api/policy-insights/remediations">Nápravy</a></p>

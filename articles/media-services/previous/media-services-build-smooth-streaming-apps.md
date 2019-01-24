@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/11/2017
 ms.author: juliako
-ms.openlocfilehash: 7b742840f461744e0be8c7a4ab4d9b392238de4e
-ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
+ms.openlocfilehash: 9558a924ee151f47033178b0762a39e2d1e1f538
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54232681"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54828311"
 ---
 # <a name="how-to-build-a-smooth-streaming-windows-store-application"></a>Jak vytvořit využívající Smooth Streaming aplikace Windows Store
 
@@ -47,7 +47,7 @@ Dokončené řešení pro každá lekce si můžete stáhnout z ukázky kódu v�
 * [Lekce 3](https://code.msdn.microsoft.com/A-Windows-8-Smooth-883c3b44) – Windows 8 Smooth Streaming Media Player se výběrem Stream  
 * [Lekce 4](https://code.msdn.microsoft.com/A-Windows-8-Smooth-aa9e4907) – Windows 8 Smooth Streaming Media Player se výběrem sledování.
 
-## <a name="lesson-1-create-a-basic-smooth-streaming-store-application"></a>Lekce 1: Vytvoření základní technologie Smooth Streaming Store aplikaci
+## <a name="lesson-1-create-a-basic-smooth-streaming-store-application"></a>Lesson 1: Vytvoření základní technologie Smooth Streaming Store aplikaci
 
 V této lekci vytvoříte aplikace Windows Store pomocí ovládacího prvku MediaElement Stream hladké přehrávání obsahu.  Spuštěné aplikace vypadá takto:
 
@@ -142,7 +142,7 @@ Po přidání odkazy, musíte vybrat cílovou platformu (x64 nebo x86), přidáv
    Řízení elementu MediaElement se používá k přehrávání médií. Posuvník s názvem sliderProgress se použije v další lekci k řízení průběhu média.
 3. Stisknutím klávesy **CTRL + S** k uložení souboru.
 
-Řízení elementu MediaElement nepodporuje vysílání funkce Smooth Streaming obsahu out-of-box. Pokud chcete povolit podporu technologie Smooth Streaming, je nutné zaregistrovat obslužnou rutinu Bajtový proud Smooth Streaming příponu názvu souboru a typu MIME.  Pro registraci, použijte metodu MediaExtensionManager.RegisterByteStremHandler Windows.Media oboru názvů.
+Řízení elementu MediaElement nepodporuje vysílání funkce Smooth Streaming obsahu out-of-box. Pokud chcete povolit podporu technologie Smooth Streaming, je nutné zaregistrovat obslužnou rutinu Bajtový proud Smooth Streaming příponu názvu souboru a typu MIME.  Pro registraci, použijte metodu MediaExtensionManager.RegisterByteStreamHandler Windows.Media oboru názvů.
 
 V tomto souboru XAML jsou některé obslužné rutiny události související s ovládacími prvky.  Je nutné definovat tyto obslužné rutiny událostí.
 
@@ -221,7 +221,7 @@ Dokončené souboru kódu by měl vypadat nějak takto:
 
 Dokončili jste lesson1.  V této lekci pomocí ovládacího prvku MediaElement k přehrávání obsahu Smooth Streaming.  V další lekci se přidá posuvníku pro ovládací prvek průběh obsah Smooth Streaming.
 
-## <a name="lesson-2-add-a-slider-bar-to-control-the-media-progress"></a>Lekce 2: Přidání posuvníku pro ovládací prvek průběh média
+## <a name="lesson-2-add-a-slider-bar-to-control-the-media-progress"></a>Lesson 2: Přidání posuvníku pro ovládací prvek průběh média
 
 V lekci 1 vytvořil aplikaci Windows Store pomocí ovládacího prvku MediaElement XAML pro přehrávání mediálního obsahu Smooth Streaming.  Obsahuje některé funkce základní média jako je spuštění, zastavení a pozastavit.  V této lekci přidáte ovládací prvek posuvníku panelu do aplikace.
 
@@ -541,7 +541,7 @@ Stejné události jsou k dispozici na adaptivní správce úroveň zdroje, kter�
 
 Dokončili jste Lekce 2.  V této lekci jste přidali ovládací prvek posuvník do aplikace. 
 
-## <a name="lesson-3-select-smooth-streaming-streams"></a>Lekce 3: Vyberte datové proudy technologie Smooth Streaming
+## <a name="lesson-3-select-smooth-streaming-streams"></a>Lesson 3: Vyberte datové proudy technologie Smooth Streaming
 Technologie Smooth Streaming je schopen ke streamování obsahu s více zvukové stopy jazyka, které lze vybrat prohlížeče.  V této lekci vám umožní uživatelům k výběru datové proudy. V této lekci obsahuje následující postupy:
 
 1. Upravte soubor XAML
@@ -817,11 +817,11 @@ Technologie Smooth Streaming je schopen ke streamování obsahu s více zvukové
 
 Dokončili jste Lekce 3.  V této lekci se přidat funkci, která zvolte datové proudy.
 
-## <a name="lesson-4-select-smooth-streaming-tracks"></a>Lekce 4: Vyberte sleduje technologie Smooth Streaming
+## <a name="lesson-4-select-smooth-streaming-tracks"></a>Lesson 4: Vyberte sleduje technologie Smooth Streaming
 Prezentace technologie Smooth Streaming může obsahovat více videosoubory zakódovány různé úrovně kvality (přenosové rychlosti) a jejich řešení. V této lekci vám umožní uživatelům vybrat stopy. V této lekci obsahuje následující postupy:
 
 1. Upravte soubor XAML
-2. Upravte soubor behand kódu
+2. Úprava souboru kódu na pozadí
 3. Kompilace a testování aplikace
 
 **K úpravě souboru XAML**

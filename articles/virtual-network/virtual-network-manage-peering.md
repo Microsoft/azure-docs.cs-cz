@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/24/2018
 ms.author: jdial;anavin
-ms.openlocfilehash: 068ebfb9bdb7874a5596adaa7133ba270853f983
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: 10f8b6b2b1ab6249eff4776c8cba869d72f448c5
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54434117"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54851670"
 ---
 # <a name="create-change-or-delete-a-virtual-network-peering"></a>Vytvoření, změna nebo odstranění partnerského vztahu virtuálních sítí
 
@@ -107,7 +107,7 @@ Pokud chcete, aby virtuální sítě ke komunikaci v některých případech, al
 
 **Příkazy**
 
-- **Azure CLI**: [az sítě vnet partnerského vztahu delete](/cli/azure/network/vnet/peering#az_network_vnet_peering_delete)
+- **Azure CLI**: [az sítě vnet partnerského vztahu delete](/cli/azure/network/vnet/peering)
 - **PowerShell**: [Remove-AzureRmVirtualNetworkPeering](/powershell/module/azurerm.network/remove-azurermvirtualnetworkpeering)
 
 ## <a name="requirements-and-constraints"></a>Požadavky a omezení 

@@ -4,7 +4,7 @@ description: Povolit Azure Active Directory Domain Services pomocí webu Azure p
 services: active-directory-ds
 documentationcenter: ''
 author: eringreenlee
-manager: mtillman
+manager: daveba
 editor: curtand
 ms.assetid: ace1ed4a-bf7f-43c1-a64a-6b51a2202473
 ms.service: active-directory
@@ -15,18 +15,18 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/23/2018
 ms.author: ergreenl
-ms.openlocfilehash: a795691959c744f5358966d62449882e514eb8eb
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.openlocfilehash: 07dbc96e94c736b4e4c80dd212f0674bfeffce45
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50155078"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54850412"
 ---
 # <a name="enable-azure-active-directory-domain-services-using-the-azure-portal"></a>Povolit Azure Active Directory Domain Services pomocí webu Azure portal
 Tento článek ukazuje, jak povolit Azure Active Directory Domain Services (Azure AD DS) pomocí webu Azure portal.
 
 
-## <a name="before-you-begin"></a>Než začnete
+## <a name="before-you-begin"></a>Před zahájením
 K dokončení úkolů uvedených v tomto článku, budete potřebovat:
 
 * Platný **předplatného Azure**.
@@ -43,11 +43,11 @@ Ke spuštění **povolit Azure AD Domain Services** průvodce, proveďte násled
 2. V levém podokně klikněte na **Vytvořit prostředek**.
 3. V **nový** zadejte **Domain Services** do panelu hledání.
 
-    ![Vyhledávání pro službu domain services](./media/getting-started/search-domain-services.png)
+    ![Search for domain services](./media/getting-started/search-domain-services.png)
 
 4. Kliknutím vyberte **Azure AD Domain Services** ze seznamu návrhy hledání. Na **Azure AD Domain Services** stránky, klikněte na tlačítko **vytvořit** tlačítko.
 
-    ![Zobrazení služeb domény](./media/getting-started/domain-services-blade.png)
+    ![Domain services view](./media/getting-started/domain-services-blade.png)
 
 5. **Povolit Azure AD Domain Services** se spustí průvodce.
 
@@ -61,11 +61,11 @@ V **Základy** stránku průvodce, zadejte název domény DNS pro spravovanou do
 
    > [!NOTE]
    > **Pokyny pro výběr názvu domény DNS**
-   > * **Název předdefinované domény:** ve výchozím nastavení, průvodce určuje název domény výchozí/vestavěné adresáře (s **. onmicrosoft.com** přípona) za vás. Pokud se rozhodnete povolit přístup ke spravované doméně secure LDAP přes internet, očekávat, že problémy s vytvořením veřejný záznam DNS nebo získání certifikátem protokolu secure LDAP od veřejné certifikační Autority pro tento název domény. Microsoft je vlastníkem *. onmicrosoft.com* domény a certifikačních autorit nevydá certifikáty ručící pro tuto doménu.
-   * **Vlastní názvy domén:** také můžete zadat vlastní název domény. V tomto příkladu je použit vlastní název domény *contoso100.com*.
-   * **Přípony směrovatelných v jiných domén:** obecně doporučujeme přípony názvu nesměrovatelných domény. Například je lepší vyhýbat vytváření domény s názvem domény DNS "contoso.local". Přípona DNS ".local" není směrovatelný a může způsobit problémy s překladem DNS.
-   * **Omezení domény předpona:** předpona zadaného názvu domény (například *contoso100* v *contoso100.com* název domény) musí obsahovat nejvýše 15 znaků. Nelze vytvořit spravovanou doménu s předponou delší než 15 znaků.
-   * **Název je v konfliktu sítě:** Ujistěte se, že název domény DNS, který jste zvolili pro spravovanou doménu ve virtuální síti už neexistuje. Zejména zkontrolujte, zda:
+   > * **Název předdefinované domény:** Ve výchozím nastavení, průvodce určuje název výchozí/vestavěné domény adresáře (s **. onmicrosoft.com** přípona) za vás. Pokud se rozhodnete povolit přístup ke spravované doméně secure LDAP přes internet, očekávat, že problémy s vytvořením veřejný záznam DNS nebo získání certifikátem protokolu secure LDAP od veřejné certifikační Autority pro tento název domény. Microsoft je vlastníkem *. onmicrosoft.com* domény a certifikačních autorit nevydá certifikáty ručící pro tuto doménu.
+   * **Vlastní názvy domén:** Můžete také zadat název vlastní domény. V tomto příkladu je použit vlastní název domény *contoso100.com*.
+   * **Přípony směrovatelných v jiných domén:** Obecně doporučujeme přípony názvu nesměrovatelných domény. Například je lepší vyhýbat vytváření domény s názvem domény DNS "contoso.local". Přípona DNS ".local" není směrovatelný a může způsobit problémy s překladem DNS.
+   * **Omezení předpona domény:** Předpona zadaného názvu domény (například contoso100 v případě názvu domény *contoso100.com*) musí obsahovat nejvýše 15 znaků. Nelze vytvořit spravovanou doménu s předponou delší než 15 znaků.
+   * **Název konflikty v síti:** Ujistěte se, že vámi zvolený název domény DNS pro spravovanou doménu ještě ve virtuální síti neexistuje. Zejména zkontrolujte, zda:
        * Už máte doménu služby Active Directory se stejným názvem domény DNS ve virtuální síti.
        * Virtuální síť, ve kterém budete chtít povolit spravované domény má připojení VPN s vaší místní sítí. V tomto scénáři Ujistěte se, že nemáte doménu se stejným názvem domény DNS ve vaší místní síti.
        * Ve virtuální síti existuje cloudová služba s tímto názvem.

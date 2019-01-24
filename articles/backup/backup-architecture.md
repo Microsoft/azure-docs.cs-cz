@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 01/15/2019
 ms.author: raynew
-ms.openlocfilehash: d3e6a17ba9d0712d921d8e0a1d0bcbcd68ce5cfb
-ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
+ms.openlocfilehash: 84890c0658970aa9f61a06764cf902a5e5ee4379
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54360246"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54812555"
 ---
 # <a name="azure-backup-architecture"></a>Architektura služby Azure Backup
 
@@ -163,7 +163,7 @@ Zálohování disků s odstraněním duplicit | | | ![Částečně][yellow]<br/>
 - Virtuální počítače Azure využívají disky k ukládání svůj operační systém, aplikace a data.
 - Virtuální počítače Azure obsahovat aspoň dva disky. Jeden pro operační systém a dočasný disk. Můžou také mít datové disky pro data aplikací. Disky se ukládají jako virtuální pevné disky.
 - Virtuální pevné disky jsou uložené jako objekty BLOB stránky v účtech úložiště úrovně standard nebo premium v Azure.
-    - Storage úrovně Standard: Podporu spolehlivé, úsporné disků pro virtuální počítače spuštěné úlohy, které nejsou citlivá na latenci. Storage úrovně Standard můžete použít standardní disky SSD nebo standardní disky SSD).
+    - Storage úrovně Standard: Podporu spolehlivé, úsporné disků pro virtuální počítače spuštěné úlohy, které nejsou citlivá na latenci. Storage úrovně Standard můžete použít standardní disky SSD nebo standardní HDD disky.
     - Storage úrovně Premium: Podporu vysoce výkonných disků. Využívá disky SSD úrovně premium.
 - Existují jiné výkonové úrovně pro disky:
     - Standardní disk na pevný disk: Založená na jednotkách HDD a použít pro nákladově efektivní úložiště.

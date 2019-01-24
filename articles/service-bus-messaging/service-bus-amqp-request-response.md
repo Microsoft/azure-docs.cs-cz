@@ -3,23 +3,23 @@ title: AMQP 1.0 v Azure Service Bus založené na žádost odpověď operace | D
 description: Seznam operací založené na požadavku nebo odpovědi služby Microsoft Azure Service Bus.
 services: service-bus-messaging
 documentationcenter: na
-author: spelluru
+author: axisc
 manager: timlt
-editor: ''
+editor: spelluru
 ms.assetid: ''
 ms.service: service-bus-messaging
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/22/2018
-ms.author: spelluru
-ms.openlocfilehash: 6ba3d8e4273d0f2ce2626d8876c386a3714d5355
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.date: 01/23/2019
+ms.author: aschhab
+ms.openlocfilehash: 113ed80910e396361396a9c1298fc04a55ac4800
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50159090"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54852471"
 ---
 # <a name="amqp-10-in-microsoft-azure-service-bus-request-response-based-operations"></a>AMQP 1.0 ve službě Microsoft Azure Service Bus: operace založené na žádost odpověď
 
@@ -188,7 +188,7 @@ Zpráva odpovědi musí obsahovat následující vlastnosti aplikace:
   
 |Klíč|Typ hodnoty|Požaduje se|Hodnota obsahu|  
 |---------|----------------|--------------|--------------------|  
-|statusCode|int|Ano|Kód odpovědi HTTP [RFC2616]<br /><br /> 200: OK – nemá další zprávy<br /><br /> 204: obsahu – bez žádné další zprávy|  
+|statusCode|int|Ano|Kód odpovědi HTTP [RFC2616]<br /><br /> 200: OK – nemá další zprávy<br /><br /> 204: Bez obsahu – žádné další zprávy|  
 |statusDescription|řetězec|Ne|Popis stavu.|  
   
 Textu odpovědi se musí skládat z **amqp hodnotu** část obsahující **mapy** s následující položky:  
@@ -308,7 +308,7 @@ Zpráva odpovědi musí obsahovat následující vlastnosti aplikace:
   
 |Klíč|Typ hodnoty|Požaduje se|Hodnota obsahu|  
 |---------|----------------|--------------|--------------------|  
-|statusCode|int|Ano|Kód odpovědi HTTP [RFC2616]<br /><br /> 200: OK – nemá další zprávy<br /><br /> 204: obsahu – bez žádné další zprávy|  
+|statusCode|int|Ano|Kód odpovědi HTTP [RFC2616]<br /><br /> 200: OK – nemá další zprávy<br /><br /> 204: Bez obsahu – žádné další zprávy|  
 |statusDescription|řetězec|Ne|Popis stavu.|  
   
 Textu odpovědi se musí skládat z **amqp hodnotu** oddíl obsahující mapy s následující položky:  
@@ -344,7 +344,7 @@ Zpráva odpovědi musí obsahovat následující vlastnosti aplikace:
   
 |Klíč|Typ hodnoty|Požaduje se|Hodnota obsahu|  
 |---------|----------------|--------------|--------------------|  
-|statusCode|int|Ano|Kód odpovědi HTTP [RFC2616]<br /><br /> 200: OK – nemá další zprávy<br /><br /> 204: obsahu – bez žádné další zprávy|  
+|statusCode|int|Ano|Kód odpovědi HTTP [RFC2616]<br /><br /> 200: OK – nemá další zprávy<br /><br /> 204: Bez obsahu – žádné další zprávy|  
 |statusDescription|řetězec|Ne|Popis stavu.|  
   
 Textu odpovědi se musí skládat z **amqp hodnotu** oddíl obsahující mapy s následující položky:  
@@ -449,7 +449,7 @@ Zpráva odpovědi musí obsahovat následující vlastnosti aplikace:
   
 |Klíč|Typ hodnoty|Požaduje se|Hodnota obsahu|  
 |---------|----------------|--------------|--------------------|  
-|statusCode|int|Ano|Kód odpovědi HTTP [RFC2616]<br /><br /> 200: OK – nemá další zprávy<br /><br /> 204: obsahu – bez žádné další zprávy|  
+|statusCode|int|Ano|Kód odpovědi HTTP [RFC2616]<br /><br /> 200: OK – nemá další zprávy<br /><br /> 204: Bez obsahu – žádné další zprávy|  
 |statusDescription|řetězec|Ne|Popis stavu.|  
   
 Textu odpovědi se musí skládat z **amqp hodnotu** část obsahující **mapy** s následující položky:  
@@ -485,7 +485,7 @@ Tělo zprávy požadavku musí obsahovat **amqp hodnotu** část obsahující **
 |---------|----------------|--------------|--------------------|  
 |Filtr SQL|map|Ano|`sql-filter`, jak je uvedeno v následující části.|  
 |Korelační filtr|map|Ano|`correlation-filter`, jak je uvedeno v následující části.|  
-|Akce pravidla SQL|map|Ano|`sql-rule-action`, jak je uvedeno v následující části.|  
+|sql-rule-action|map|Ano|`sql-rule-action`, jak je uvedeno v následující části.|  
   
 Mapa filtrem sql, musí obsahovat následující položky:  
   
@@ -504,7 +504,7 @@ Mapa filtrem sql, musí obsahovat následující položky:
 |label|řetězec|Ne||  
 |id relace|řetězec|Ne||  
 |odpověď k relaci id|řetězec|Ne||  
-|Typ obsahu|řetězec|Ne||  
+|content-type|řetězec|Ne||  
 |properties|map|Ne|Mapuje se na Service Bus [BrokeredMessage.Properties](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage#Microsoft_ServiceBus_Messaging_BrokeredMessage_Properties).|  
   
 **Akce pravidla sql** mapování musí zahrnovat následující položky:  
@@ -623,7 +623,7 @@ Každá položka mapování pole obsahuje následující vlastnosti:
 | Název popisovače | Popisovač kódu | Hodnota |
 | --- | --- | ---|
 | `com.microsoft:empty-rule-action:list` | 0x0000013700000005 | Prázdné pravidlo akce – akce žádná pravidla, která je k dispozici |
-| `com.microsoft:sql-rule-action:list` | 0x0000013700000006 | Akce pravidla SQL |
+| `com.microsoft:sql-rule-action:list` | 0x0000013700000006 | SQL Rule Action |
 
 `com.microsoft:sql-rule-action:list` je pole objektů popsáno, jehož první položka je řetězec, který obsahuje výraz akce pravidla SQL.
 
@@ -647,7 +647,7 @@ Tělo zprávy požadavku musí obsahovat **amqp hodnotu** část obsahující **
 |Klíč|Typ hodnoty|Požaduje se|Hodnota obsahu|  
 |---------|----------------|--------------|--------------------|  
 |pořadová čísla|pole dlouho|Ano|Pořadová čísla.|  
-|příjemce vyrovnání režimu|ubyte|Ano|**Příjemce vyrovnání** režimu, jak je uvedeno v protokolu AMQP 1.0 core.|  
+|receiver-settle-mode|ubyte|Ano|**Příjemce vyrovnání** režimu, jak je uvedeno v protokolu AMQP 1.0 core.|  
   
 #### <a name="response"></a>Odpověď  
 
@@ -688,11 +688,11 @@ Tělo zprávy požadavku musí obsahovat **amqp hodnotu** část obsahující **
   
 |Klíč|Typ hodnoty|Požaduje se|Hodnota obsahu|  
 |---------|----------------|--------------|--------------------|  
-|Disposition-status|řetězec|Ano|completed<br /><br /> opuštění<br /><br /> Pozastaveno|  
+|disposition-status|řetězec|Ano|completed<br /><br /> opuštění<br /><br /> Pozastaveno|  
 |Lock – tokeny|pole identifikátoru uuid|Ano|Tokeny uzamčení zprávy k aktualizaci stavu dispozice.|  
-|Důvod nedoručených zpráv|řetězec|Ne|Může nastavit, pokud je nastaven stav dispozice **pozastaveno**.|  
+|deadletter-reason|řetězec|Ne|Může nastavit, pokud je nastaven stav dispozice **pozastaveno**.|  
 |Popis nedoručených zpráv|řetězec|Ne|Může nastavit, pokud je nastaven stav dispozice **pozastaveno**.|  
-|vlastnosti upravit|map|Ne|Seznam služby Service Bus zprostředkovaných vlastností zprávy upravit.|  
+|properties-to-modify|map|Ne|Seznam služby Service Bus zprostředkovaných vlastností zprávy upravit.|  
   
 #### <a name="response"></a>Odpověď  
 

@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: mayg
-ms.openlocfilehash: befc979b84c5ace3b8c787b184e52f09ada9ea2b
-ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
+ms.openlocfilehash: 7ff73051abc5168b4dc3852a9008adc22d7d56c6
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2019
-ms.locfileid: "54321396"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54811855"
 ---
 # <a name="install-a-linux-master-target-server-for-failback"></a>Instalace hlavního cílového serveru s Linuxem pro navrácení služeb po obnovení
 Po převzetí služeb při selhání virtuálních počítačů do Azure, které můžete navrácení služeb po obnovení virtuálních počítačů do místní lokality. K navrácení služeb po obnovení, budete muset znovu nastavit ochranu virtuálního počítače z Azure do místní lokality. Tento proces je nutné místní hlavní cílový server pro příjem provozu. 
@@ -185,7 +185,7 @@ Azure Site Recovery hlavní cílový server vyžaduje určitou verzi Ubuntu a uj
 #### <a name="download-and-install-additional-packages"></a>Stáhnout a nainstalovat další balíčky
 
 > [!NOTE]
-> Ujistěte se, že máte připojení k Internetu stáhnout a nainstalovat další balíčky. Pokud nemáte připojení k Internetu, musíte ručně vyhledat tyto balíčky ot. / min a nainstalujte je.
+> Ujistěte se, že máte připojení k Internetu stáhnout a nainstalovat další balíčky. Pokud nemáte připojení k Internetu, musíte ručně vyhledat tyto balíčky Deb a nainstalujte je.
 
  `apt-get install -y multipath-tools lsscsi python-pyasn1 lvm2 kpartx`
 

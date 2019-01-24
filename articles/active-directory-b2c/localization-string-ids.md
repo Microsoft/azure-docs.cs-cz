@@ -3,19 +3,19 @@ title: Lokalizace řetězec ID – Azure Active Directory B2C | Dokumentace Micr
 description: Určete ID pro definici obsahu s Id api.signuporsignin vlastních zásad v Azure Active Directory B2C.
 services: active-directory-b2c
 author: davidmu1
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 09/10/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 7619ebf038e164c9e586118c70e34955ca7c4767
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: 72ed1f7f6d9fe9958bbd78b001d727feb5f8861c
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47222660"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54848406"
 ---
 # <a name="localization-string-ids"></a>ID lokalizace řetězce
 
@@ -29,22 +29,22 @@ Následující ID se používají pro definici obsahu s ID `api.signuporsignin`.
 
 | ID | Výchozí hodnota |
 | -- | ------------- |
-| **local_intro_email** | Přihlaste se svým stávajícím účtem. |
+| **local_intro_email** | Přihlaste se se svým existujícím účtem. |
 | **logonIdentifier_email** | E-mailová adresa |
 | **requiredField_email** | Zadejte prosím svůj e-mail. |
 | **invalid_email** | Zadejte prosím platnou e-mailovou adresu. |
-| **email_pattern** | ^ [a-zA-Z0-9.! #$% &'' * +/ =? ^ _' {}|} ~-]+@[a-zA-Z0-9-]+ (?:\\. [ -zA-Z0 - 9-] +) * $ |
-| **local_intro_username** | Přihlaste se svým uživatelským jménem. |
+| **email_pattern** | ^ [a-zA-Z0-9.! #$% &'' * +/ =? ^ _' {}|}~-]+@[a-zA-Z0-9-]+(?:\\.[a-zA-Z0-9-]+)*$ |
+| **local_intro_username** | Přihlásit uživatelským jménem |
 | **logonIdentifier_username** | Uživatelské jméno |
-| **requiredField_username** | Zadejte prosím svoje uživatelské jméno. |
+| **requiredField_username** | Zadejte prosím své uživatelské jméno. |
 | **Heslo** | Heslo |
-| **requiredField_password** | Zadejte prosím svoje heslo. |
+| **requiredField_password** | Zadejte prosím své heslo. |
 | **invalid_password** | Heslo, které jste zadali, nemá očekávaný formát. |
 | **forgotpassword_link** | Zapomněli jste heslo? |
 | **createaccount_intro** | Nemáte účet? |
 | **createaccount_link** | Zaregistrujte se |
 | **divider_title** | NEBO |
-| **cancel_message** | Uživatel zapomněl heslo. |
+| **cancel_message** | Uživatel zapomněl svoje heslo. |
 | **button_signin** | Přihlášení |
 | **social_intro** | Přihlaste se svým sociálním účtem. |
   **remember_me** |Neodhlašovat|
@@ -97,20 +97,20 @@ Toto jsou ID pro definici obsahu s ID `api.localaccountsignup` nebo jakékoli de
 
 | ID | Výchozí hodnota |
 | -- | ------------- |
-| **ver_sent** | Ověřovací kód se poslal sem: |
+| **ver_sent** | Ověřovací kód se odeslal na: |
 | **ver_but_default** | Výchozí |
 | **cancel_message** | Uživatel zrušil zadávání s vlastním potvrzením informací |
 | **preloader_alt** | Počkejte prosím. |
 | **ver_but_send** | Poslat ověřovací kód |
 | **alert_yes** | Ano |
 | **error_fieldIncorrect** | Jeden nebo více polí se vyplní nesprávně. Zkontrolujte zadání a akci opakujte. |
-| **Rok** | Rok |
-| **verifying_blurb** | Počkejte prosím, než zpracujeme vaše informace. |
+| **year** | Rok |
+| **verifying_blurb** | Počkejte prosím, než zpracujeme vaše údaje. |
 | **button_cancel** | Zrušit |
 | **ver_fail_no_retry** | Provedli jste příliš mnoho pokusů o nesprávné. Zkuste to prosím znova později. |
 | **Měsíc** | Měsíc |
 | **ver_success_msg** | Ověřit e-mailovou adresu. Teď můžete pokračovat. |
-| **Měsíců** | leden, únor, březen, duben, květen, červen, červenec, srpen, září, říjen, listopad, prosinec |
+| **months** | leden, únor, březen, duben, květen, červen, červenec, srpen, září, říjen, listopad, prosinec |
 | **ver_fail_server** | Máme potíže s ověřením vaší e-mailovou adresu. Zadejte platnou e-mailovou adresu a zkuste to znovu. |
 | **error_requiredFieldMissing** | Chybí povinné pole. Vyplňte všechna povinná pole a akci opakujte. |
 | **initial_intro** | Zadejte prosím následující údaje. |
@@ -126,9 +126,9 @@ Toto jsou ID pro definici obsahu s ID `api.localaccountsignup` nebo jakékoli de
 | **ver_fail_throttled** | Byly příliš mnoho žádostí o ověření tuto e-mailovou adresu. Prosím počkejte a zkuste to znovu. |
 | **helplink_text** | Co je to? |
 | **ver_fail_retry** | Tento kód je nesprávný. Zkuste to prosím znovu. |
-| **alert_title** | Zrušit zadávání podrobností |
+| **alert_title** | Zrušit zadávání údajů |
 | **required_field** | Tyto informace jsou požadovány. |
-| **alert_message** | Určitě chcete zrušit zadávání podrobností? |
+| **alert_message** | Opravdu chcete zrušit zadávání údajů? |
 | **ver_intro_msg** | Ověření je nezbytné. Klepnutím na tlačítko Odeslat. |
 | **ver_input** | Ověřovací kód |
 
@@ -182,10 +182,10 @@ Toto jsou ID pro definici obsahu s ID `api.phonefactor`.
 | **invalid_number** | Zadejte platné telefonní číslo. |
 | **intro_sms** | Máme následující číslo záznamu za vás. Pošleme kód zprávou SMS k vašemu ověření. |
 | **intro_entry_mixed** | Níže zadejte číslo, na které můžeme poslat kód přes SMS nebo zavolat, abychom vás ověřili. |
-| **number_pattern** | ^\\+ (?: [0-9] [\\x20-]?) {6,14}[0-9] $ |
+| **number_pattern** | ^\\+(?:[0-9][\\x20-]?){6,14}[0-9]$ |
 | **intro_sms_p** |Pro vás máme následující čísla na záznam. Zvolte číslo, že vám můžeme poslat kód prostřednictvím SMS k vašemu ověření. |
 | **requiredField_countryCode** | Vyberte prosím kód země. |
-| **requiredField_number** | Zadejte prosím své telefonní číslo. |
+| **requiredField_number** | Zadejte prosím svoje telefonní číslo. |
 | **country_code_input_placeholder_text** |Země nebo oblast |
 | **number_label** | Telefonní číslo |
 | **error_tryagain** | Telefonní číslo, které jste zadali, je zaneprázdněná nebo není k dispozici. Zkontrolujte číslo a zkuste to znovu. |
