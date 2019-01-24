@@ -7,12 +7,12 @@ ms.service: storage
 ms.date: 01/02/2019
 ms.author: renash
 ms.component: files
-ms.openlocfilehash: 70370db841a08ae8ee62bda83bec4b1b9e2e7cf2
-ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
+ms.openlocfilehash: cce2254ef54483e7d0c4d26fbc4b08de3b2366c3
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "54001528"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54825149"
 ---
 # <a name="frequently-asked-questions-faq-about-azure-files"></a>O službě soubory Azure – nejčastější dotazy (FAQ)
 [Služba soubory Azure](storage-files-introduction.md) nabízí plně spravované sdílené složky v cloudu, které jsou přístupné prostřednictvím standardních průmyslových [zprávy bloku SMB (Server) protokol](https://msdn.microsoft.com/library/windows/desktop/aa365233.aspx). Sdílené složky Azure je možné připojit současně v cloudových i místních nasazení systémů Windows, Linux a macOS. Také můžete ukládat do mezipaměti sdílených složek Azure v počítačích s Windows serverem pomocí Azure File Sync pro rychlý přístup blízko, ve kterém jsou využívány.
@@ -98,7 +98,7 @@ Tento článek obsahuje odpovědi na běžné otázky o Azure Files funkce a fun
 * <a id="afs-conflict-resolution"></a>**Pokud je stejný soubor změněn na dva servery na přibližně ve stejnou dobu, co se stane?**  
     Azure File Sync používá strategii jednoduché řešení konfliktů: uchováváme obě změny na soubory, které jsou změněny na dva servery ve stejnou dobu. Nedávno písemné změnu zachová původní název souboru. Starší soubor má počítač "zdroj" a číslo konflikt připojeným k názvu. Splňuje tato taxonomie: 
    
-    \<FileNameWithoutExtension\>-\<MachineName\>\[-#\].\< ext, přípona\>  
+    \<FileNameWithoutExtension\>-\<MachineName\>\[-#\].\<ext\>  
 
     Například první konflikt CompanyReport.docx by se mohla stát CompanyReport CentralServer.docx při CentralServer, kde došlo k starší zápisu. Druhý konflikt by se pojmenoval CompanyReport. CentralServer 1.docx.
 
@@ -129,9 +129,9 @@ Tento článek obsahuje odpovědi na běžné otázky o Azure Files funkce a fun
 * <a id="afs-files-excluded"></a>
 **Které soubory nebo složky jsou automaticky vyloučeny Azure File Sync?**  
     Azure File Sync ve výchozím nastavení, vyloučí následující soubory:
-    * Desktop.ini
-    * Thumbs.DB
-    * ehthumbs.DB
+    * desktop.ini
+    * thumbs.db
+    * ehthumbs.db
     * ~$\*.\*
     * \*.laccdb
     * \*TMP
@@ -298,7 +298,7 @@ Tento článek obsahuje odpovědi na běžné otázky o Azure Files funkce a fun
     
     Pokud potřebujete funkce snímku souborů, dejte nám vědět v [UserVoice soubory Azure](https://feedback.azure.com/forums/217298-storage/category/180670-files).
 
-* <a id="encypted-snapshots"></a>
+* <a id="encrypted-snapshots"></a>
 **Můžete vytvořit snímky sdílené složky nebo do sdílené složky souborů EFS?**  
     Udělat snímek sdílené složky ze sdílených složek Azure, které mají šifrování v klidovém stavu povolená. Soubory můžete obnovit ze snímku sdílené složky do sdílené složky zašifrované. Pokud je šifrovaný s ve sdílené složce vaší snímku sdílené složky jsou zašifrovaná, i.
 

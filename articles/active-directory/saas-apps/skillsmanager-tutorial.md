@@ -4,7 +4,7 @@ description: Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.reviewer: joflore
 ms.assetid: dab8debd-3b7b-4656-9bf0-1963ad8fce05
 ms.service: active-directory
@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/24/2017
 ms.author: jeedes
-ms.openlocfilehash: ee112cef53eec92ec449c66e0c927a78a087a32c
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: bdb053d1f9f85c446e4ac48b836c4b24bb40f93f
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39448053"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54821815"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-skills-manager"></a>Kurz: Integrace Azure Active Directory pomocí Správce dovednosti
 
@@ -38,7 +38,7 @@ Pokud chcete zjistit další podrobnosti o integraci aplikací SaaS v Azure AD, 
 
 Konfigurace integrace Azure AD pomocí Správce dovednosti, potřebujete následující položky:
 
-- S předplatným služby Azure AD
+- Předplatné Azure AD
 - Dovednosti správce jednotného přihlašování povolená předplatného
 
 > [!NOTE]
@@ -60,7 +60,7 @@ Konfigurace integrace správce dovednosti do služby Azure AD, musíte přidat s
 
 **Chcete-li přidat správce dovednosti z galerie, postupujte následovně:**
 
-1. V  **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu. 
+1. V **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu. 
 
     ![Tlačítko Azure Active Directory][1]
 
@@ -132,7 +132,7 @@ V této části Povolení služby Azure AD jednotného přihlašování na port�
 1. Ke konfiguraci jednotného přihlašování na **dovednosti správce** straně, je nutné odeslat na stažený **Certificate(Base64)**, **URL odhlašování SAML Entity ID a SAML jednotné přihlašování – adresa URL služby** k [tým podpory dovednosti správce](https://www.ibm.com/support/uk/?lnk=msu_uk). Nastavují tohoto nastavení můžete mít správně nastavené na obou stranách připojení SAML SSO.
 
 > [!TIP]
-> Teď si můžete přečíst stručné verzi těchto pokynů uvnitř [webu Azure portal](https://portal.azure.com), zatímco jsou nastavení aplikace!  Po přidání této aplikace z **služby Active Directory > podnikové aplikace** části, stačí kliknout **Single Sign-On** kartu a přístup k vložené dokumentaci prostřednictvím  **Konfigurace** oblast v dolní části. Další informace o funkci vložená dokumentace: [dokumentace ke službě Azure AD embedded]( https://go.microsoft.com/fwlink/?linkid=845985)
+> Teď si můžete přečíst stručné verzi těchto pokynů uvnitř [webu Azure portal](https://portal.azure.com), zatímco jsou nastavení aplikace!  Po přidání této aplikace z **služby Active Directory > podnikové aplikace** části, stačí kliknout **Single Sign-On** kartu a přístup k vložené dokumentaci prostřednictvím  **Konfigurace** oblast v dolní části. Další informace o funkci vložená dokumentace: [Dokumentace ke službě Azure AD, embedded]( https://go.microsoft.com/fwlink/?linkid=845985)
 
 ### <a name="create-an-azure-ad-test-user"></a>Vytvořit testovacího uživatele Azure AD
 
@@ -168,7 +168,7 @@ Cílem této části je vytvoření zkušebního uživatele na webu Azure Portal
   
 ### <a name="create-a-skills-manager-test-user"></a>Vytvoření zkušebního uživatele správce dovednosti
 
-V této části vytvořte uživatele Britta Simon ve Správci dovednosti. Práce s [tým podpory dovednosti správce](https://www.ibm.com/support/uk/?lnk=msu_uk) přidat uživatele na platformě správce dovednosti. Uživatelé musí vytvořit a aktivovat, než použití jednotného přihlašování.
+V této části vytvořte uživatele Britta Simon ve Správci dovednosti. Práce s [tým podpory dovednosti správce](https://www.ibm.com/support/uk/?lnk=msu_uk) přidat uživatele na platformě správce dovednosti. Uživatelé musí vytvořit a aktivovat, než použití jednotného přihlašování.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřadit uživatele Azure AD
 
@@ -200,7 +200,7 @@ V této části je povolit Britta Simon používat jednotné přihlašování Az
 
 1. Klikněte na tlačítko **přiřadit** tlačítko **přidat přiřazení** dialogového okna.
     
-### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování
+### <a name="test-single-sign-on"></a>Test jednotného přihlašování
 
 V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 

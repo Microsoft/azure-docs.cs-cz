@@ -8,12 +8,12 @@ ms.subservice: disk
 ms.topic: article
 ms.date: 01/10/2019
 ms.author: alkohli
-ms.openlocfilehash: 13e42ae9b25c769a468a8c9839fd1aaf0abf2787
-ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
+ms.openlocfilehash: f7b3cc638e28e4f28694f668660a28ffe6e9fa51
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54213140"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54817992"
 ---
 # <a name="troubleshoot-issues-in-azure-data-box-disk"></a>Řešení potíží v disku Azure Data Box
 
@@ -68,12 +68,12 @@ Protokoly aktivit se uchovávají 90 dnů. Můžete se dotazovat na libovolný r
 
 | Chybová zpráva / chování nástroje      | Doporučení                                                                                               |
 |-------------------------------------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------|
-| Žádný<br><br>Odemykací nástroj Data Box Disku skončí s chybou.                                                                            | BitLocker není nainstalovaný. Ujistěte se, že na hostitelském počítači, na kterém běží odemykací nástroj Data Box Disku, je nainstalovaný nástroj BitLocker.                                                                            |
+| Žádný<br><br>Odemykací nástroj Data Box Disku skončí s chybou.                                                                            | BitLocker není nainstalovaná. Ujistěte se, že na hostitelském počítači, na kterém běží odemykací nástroj Data Box Disku, je nainstalovaný nástroj BitLocker.                                                                            |
 | Aktuální rozhraní .NET Framework není podporováno. Podporovány jsou verze 4.5 a vyšší.<br><br>Nástroj skončí s chybovou zprávou.  | Rozhraní .NET 4.5 není nainstalováno. Na hostitelský počítač, na kterém běží odemykací nástroj Data Box Disku, nainstalujte rozhraní .NET 4.5 nebo novější.                                                                            |
 | Nepodařilo se odemknout nebo ověřit žádné svazky. Obraťte se na podporu Microsoftu.  <br><br>Nástroji se nepodařilo odemknout nebo ověřit žádnou uzamčenou jednotku. | Nástroji se s použitím zadaného klíče nepodařilo odemknout žádnou ze zamčených jednotek. O dalších krocích se poraďte s podporou Microsoftu.                                                |
 | Následující svazky jsou odemčené a ověřené. <br>Svazek písmena jednotek: E:<br>Nepodařilo se odemknout žádné svazky s použitím následujících klíčů: werwerqomnf, qwerwerqwdfda <br><br>Nástroj odemkl některé jednotky a zobrazil písmena úspěšných a neúspěšných jednotek.| Částečný úspěch. Nástroji se s použitím zadaného klíče nepodařilo odemknout některé ze zamčených jednotek. O dalších krocích se poraďte s podporou Microsoftu. |
 | Nepovedlo se najít zamčené svazky. Zkontrolujte, že je disk od Microsoftu správně připojený a zamčený.          | Nástroji se nepodařilo najít žádné zamčené jednotky. Buď jsou jednotky už odemčené, nebo nebyly nalezeny. Zkontrolujte, že jsou jednotky připojené a zamčené.                                                           |
-| Závažná chyba: Neplatný parametr<br>Název parametru: invalid_arg<br>POUŽITÍ:<br>DataBoxDiskUnlock /PassKeys:<seznam_klíčů_oddělený_středníky><br><br>Příklad: DataBoxDiskUnlock /PassKeys:passkey1; passkey2; passkey3<br>Příklad: DataBoxDiskUnlock /SystemCheck<br>Příklad: / Help DataBoxDiskUnlock<br><br>/ Klíčů:       Tento klíč získáte z objednávka disku Azure DataBox. Klíč vaše disky odemkne.<br>/ Help:           Tato možnost poskytuje nápovědy k rutině využití a příklady.<br>/ SystemCheck:    Tato možnost zkontroluje, pokud váš systém splňuje požadavky na spuštění nástroje.<br><br>Nástroj ukončíte stisknutím libovolné klávesy. | Byl zadán neplatný parametr. Jediné povolené parametry jsou /SystemCheck /PassKey a /Help.                                                                            |
+| Závažná chyba: Neplatný parametr<br>Název parametru: invalid_arg<br>POUŽITÍ:<br>DataBoxDiskUnlock /PassKeys:<seznam_klíčů_oddělený_středníky><br><br>Příklad: DataBoxDiskUnlock /PassKeys:passkey1;passkey2;passkey3<br>Příklad: DataBoxDiskUnlock /SystemCheck<br>Příklad: / Help DataBoxDiskUnlock<br><br>/ Klíčů:       Tento klíč získáte z objednávka disku Azure DataBox. Klíč vaše disky odemkne.<br>/ Help:           Tato možnost poskytuje nápovědy k rutině využití a příklady.<br>/ SystemCheck:    Tato možnost zkontroluje, pokud váš systém splňuje požadavky na spuštění nástroje.<br><br>Nástroj ukončíte stisknutím libovolné klávesy. | Byl zadán neplatný parametr. Jediné povolené parametry jsou /SystemCheck /PassKey a /Help.                                                                            |
 
 ## <a name="data-box-disk-split-copy-tool-errors"></a>Chyby nástroje rozdělení/kopírování Data Box Disku
 

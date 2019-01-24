@@ -4,17 +4,17 @@ description: Použijte Azure Resource Graph ke spuštění některých pokročil
 services: resource-graph
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 10/22/2018
+ms.date: 01/23/2019
 ms.topic: quickstart
 ms.service: resource-graph
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: 8599d535a3a522d742207a655a8f4098d6f3f18f
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: cb2755384f8b87c74aa283af0c75f9f869fb31cd
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53309369"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54854662"
 ---
 # <a name="advanced-resource-graph-queries"></a>Pokročilé dotazy na Resource Graph
 
@@ -28,6 +28,8 @@ Projdeme následující rozšířené dotazy:
 > - [Virtuální počítače odpovídající regulárnímu výrazu](#vm-regex)
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free) před tím, než začnete.
+
+[!INCLUDE [az-powershell-update](../../../../includes/updated-for-az.md)]
 
 ## <a name="language-support"></a>Podpora jazyků
 
@@ -49,7 +51,7 @@ az graph query -q "where type=~ 'microsoft.compute/virtualmachinescalesets' | wh
 ```
 
 ```azurepowershell-interactive
-Search-AzureRmGraph -Query "where type=~ 'microsoft.compute/virtualmachinescalesets' | where name contains 'contoso' | project subscriptionId, name, location, resourceGroup, Capacity = toint(sku.capacity), Tier = sku.name | order by Capacity desc"
+Search-AzGraph -Query "where type=~ 'microsoft.compute/virtualmachinescalesets' | where name contains 'contoso' | project subscriptionId, name, location, resourceGroup, Capacity = toint(sku.capacity), Tier = sku.name | order by Capacity desc"
 ```
 
 ## <a name="list-all-tags"></a>Vypsat všechny názvy značek
@@ -66,7 +68,7 @@ az graph query -q "project tags | summarize buildschema(tags)"
 ```
 
 ```azurepowershell-interactive
-Search-AzureRmGraph -Query "project tags | summarize buildschema(tags)"
+Search-AzGraph -Query "project tags | summarize buildschema(tags)"
 ```
 
 ## <a name="vm-regex"></a>Virtuální počítače odpovídající regulárnímu výrazu
@@ -96,7 +98,7 @@ az graph query -q "where type =~ 'microsoft.compute/virtualmachines' and name ma
 ```
 
 ```azurepowershell-interactive
-Search-AzureRmGraph -Query "where type =~ 'microsoft.compute/virtualmachines' and name matches regex @'^Contoso(.*)[0-9]+$' | project name | order by name asc"
+Search-AzGraph -Query "where type =~ 'microsoft.compute/virtualmachines' and name matches regex @'^Contoso(.*)[0-9]+$' | project name | order by name asc"
 ```
 
 ## <a name="next-steps"></a>Další postup

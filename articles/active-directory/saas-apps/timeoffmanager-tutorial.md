@@ -1,10 +1,10 @@
 ---
-title: 'Kurz: Integrace Azure Active Directory se službou TimeOffManager | Dokumentace Microsoftu'
+title: 'Kurz: Integrace Azure Active Directory s TimeOffManager | Dokumentace Microsoftu'
 description: Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a TimeOffManager.
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.reviewer: joflore
 ms.assetid: 3685912f-d5aa-4730-ab58-35a088fc1cc3
 ms.service: active-directory
@@ -15,14 +15,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/27/2017
 ms.author: jeedes
-ms.openlocfilehash: e7f0f6bb778dedeea61b74b5ca0c2edbadd5279b
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 4ca13640f64c88164aa98c5434c252d844cebd72
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39430283"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54825172"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-timeoffmanager"></a>Kurz: Integrace Azure Active Directory se službou TimeOffManager
+# <a name="tutorial-azure-active-directory-integration-with-timeoffmanager"></a>Kurz: Integrace Azure Active Directory s TimeOffManager
 
 V tomto kurzu se dozvíte, jak integrovat TimeOffManager s Azure Active Directory (Azure AD).
 
@@ -38,7 +38,7 @@ Pokud chcete zjistit další podrobnosti o integraci aplikací SaaS v Azure AD, 
 
 Konfigurace integrace Azure AD s TimeOffManager, potřebujete následující položky:
 
-- S předplatným služby Azure AD
+- Předplatné Azure AD
 - TimeOffManager jednotného přihlašování povolená předplatného
 
 > [!NOTE]
@@ -60,7 +60,7 @@ Konfigurace integrace TimeOffManager do služby Azure AD, budete muset přidat T
 
 **Chcete-li přidat TimeOffManager z galerie, postupujte následovně:**
 
-1. V  **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu. 
+1. V **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu. 
 
     ![Active Directory][1]
 
@@ -128,7 +128,7 @@ V této části Povolení služby Azure AD jednotného přihlašování na port�
     | --- | --- |
     | jméno |User.givenName |
     | Příjmení |User.Surname |
-    | Email |User.Mail |
+    | Email |User.mail |
     
     a.  Pro každý řádek dat v tabulce výše, klikněte na tlačítko **přidat atribut uživatele**.
     
@@ -178,7 +178,7 @@ V této části Povolení služby Azure AD jednotného přihlašování na port�
       ![Jednotné přihlašování – nastavení](./media/timeoffmanager-tutorial/ic795915.png "jednotné přihlašování – nastavení")
 
 > [!TIP]
-> Teď si můžete přečíst stručné verzi těchto pokynů uvnitř [webu Azure portal](https://portal.azure.com), zatímco jsou nastavení aplikace!  Po přidání této aplikace z **služby Active Directory > podnikové aplikace** části, stačí kliknout **Single Sign-On** kartu a přístup k vložené dokumentaci prostřednictvím  **Konfigurace** oblast v dolní části. Další informace o funkci vložená dokumentace: [dokumentace ke službě Azure AD embedded]( https://go.microsoft.com/fwlink/?linkid=845985)
+> Teď si můžete přečíst stručné verzi těchto pokynů uvnitř [webu Azure portal](https://portal.azure.com), zatímco jsou nastavení aplikace!  Po přidání této aplikace z **služby Active Directory > podnikové aplikace** části, stačí kliknout **Single Sign-On** kartu a přístup k vložené dokumentaci prostřednictvím  **Konfigurace** oblast v dolní části. Další informace o funkci vložená dokumentace: [Dokumentace ke službě Azure AD, embedded]( https://go.microsoft.com/fwlink/?linkid=845985)
 > 
 
 ### <a name="create-an-azure-ad-test-user"></a>Vytvořit testovacího uživatele Azure AD
@@ -254,13 +254,13 @@ V této části je povolit Britta Simon k udělení přístupu k TimeOffManager 
 
 1. Klikněte na tlačítko **přiřadit** tlačítko **přidat přiřazení** dialogového okna.
     
-### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování
+### <a name="test-single-sign-on"></a>Test jednotného přihlašování
 
 V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 
 Po kliknutí na dlaždici TimeOffManager na přístupovém panelu, vám by měl získat automaticky přihlášení k aplikaci TimeOffManager. Další informace o přístupovém panelu, naleznete v tématu [Úvod k přístupovému panelu](../user-help/active-directory-saas-access-panel-introduction.md).
 
-## <a name="additional-resources"></a>Další zdroje informací:
+## <a name="additional-resources"></a>Další materiály
 
 * [Seznam kurzů o integraci aplikací SaaS pomocí Azure Active Directory](tutorial-list.md)
 * [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](../manage-apps/what-is-single-sign-on.md)

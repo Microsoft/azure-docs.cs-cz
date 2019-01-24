@@ -1,10 +1,10 @@
 ---
-title: 'Kurz: Integrace Azure Active Directory se službou ThousandEyes | Dokumentace Microsoftu'
+title: 'Kurz: Integrace Azure Active Directory s ThousandEyes | Dokumentace Microsoftu'
 description: Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a ThousandEyes.
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.assetid: 790e3f1e-1591-4dd6-87df-590b7bf8b4ba
 ms.service: active-directory
 ms.component: saas-app-tutorial
@@ -14,14 +14,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/16/2018
 ms.author: jeedes
-ms.openlocfilehash: b6af7a3322b1a01c1d822df78d827121c19e21e1
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 046832913a07c99310280d37ac1c6792692dd0cf
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39444398"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54824707"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-thousandeyes"></a>Kurz: Integrace Azure Active Directory se službou ThousandEyes
+# <a name="tutorial-azure-active-directory-integration-with-thousandeyes"></a>Kurz: Integrace Azure Active Directory s ThousandEyes
 
 V tomto kurzu se dozvíte, jak integrovat ThousandEyes s Azure Active Directory (Azure AD).
 
@@ -37,7 +37,7 @@ Pokud chcete zjistit další podrobnosti o integraci aplikací SaaS v Azure AD, 
 
 Konfigurace integrace Azure AD s ThousandEyes, potřebujete následující položky:
 
-- S předplatným služby Azure AD
+- Předplatné Azure AD
 - ThousandEyes jednotného přihlašování povolená předplatného
 
 > [!NOTE]
@@ -46,7 +46,7 @@ Konfigurace integrace Azure AD s ThousandEyes, potřebujete následující polo�
 Pokud chcete vyzkoušet kroky v tomto kurzu, postupujte podle těchto doporučení:
 
 - Nepoužívejte produkčním prostředí, pokud to není nutné.
-- Pokud nemáte prostředí zkušební verzi Azure AD, můžete získat měsíční zkušební tady: [nabídka zkušební verze](https://azure.microsoft.com/pricing/free-trial/).
+- Pokud nemáte prostředí zkušební verzi Azure AD, můžete získat měsíční zkušební tady: [Zkušební nabídka](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="scenario-description"></a>Popis scénáře
 V tomto kurzu je otestovat Azure AD jednotné přihlašování v testovacím prostředí. Scénář popsaný v tomto kurzu se skládá ze dvou hlavních stavebních bloků:
@@ -59,7 +59,7 @@ Konfigurace integrace ThousandEyes do služby Azure AD, budete muset přidat Tho
 
 **Chcete-li přidat ThousandEyes z galerie, postupujte následovně:**
 
-1. V  **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu. 
+1. V **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu. 
 
     ![Active Directory][1]
 
@@ -261,7 +261,7 @@ Po kliknutí na dlaždici ThousandEyes na přístupovém panelu, vám by měl z�
 
 Další informace o přístupovém panelu, naleznete v tématu [Úvod k přístupovému panelu](../user-help/active-directory-saas-access-panel-introduction.md).
 
-## <a name="additional-resources"></a>Další zdroje informací:
+## <a name="additional-resources"></a>Další materiály
 
 * [Seznam kurzů o integraci aplikací SaaS pomocí Azure Active Directory](tutorial-list.md)
 * [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](../manage-apps/what-is-single-sign-on.md)

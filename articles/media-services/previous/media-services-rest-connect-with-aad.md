@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/22/2018
 ms.author: willzhan;juliako;johndeu
-ms.openlocfilehash: d9d1fa7d8cf25057339e560c371deb939997b578
-ms.sourcegitcommit: 9e179a577533ab3b2c0c7a4899ae13a7a0d5252b
+ms.openlocfilehash: 17c25181709e6c75de2d23fb02fd55c0e6e41ae3
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49945073"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54818026"
 ---
 # <a name="use-azure-ad-authentication-to-access-the-azure-media-services-api-with-rest"></a>Ověřování pomocí služby Azure AD pro přístup k rozhraní API Azure Media Services pomocí REST
 
@@ -50,7 +50,7 @@ V tomto kurzu se naučíte:
 - Zkontrolujte [přístup k API služby Azure Media pomocí ověřování Azure AD – přehled](media-services-use-aad-auth-to-access-ams-api.md) článku.
 - Nainstalujte [Postman](https://www.getpostman.com/) klienta REST k provedení rozhraní REST API služby uvedené v tomto článku. 
 
-    V tomto kurzu jsme naplánovaném **Postman** ale bude vhodné libovolný nástroj REST. Další možnosti jsou: **Visual Studio Code** s pluginem REST nebo **Telerik Fiddler**. 
+    V tomto kurzu používáme **Postman** ale bude vhodné libovolný nástroj REST. Další možnosti jsou: **Visual Studio Code** pomocí modulu plug-in REST nebo **Telerik Fiddler**. 
 
 ## <a name="get-the-authentication-information-from-the-azure-portal"></a>Získejte informace o ověřování na webu Azure Portal
 
@@ -79,7 +79,7 @@ Pokud chcete získat informace, postupujte takto:
 5. Vyberte existující **aplikaci Azure AD** nebo vytvořte novou (viz dole).
 
     > [!NOTE]
-    > Azure Media REST žádosti úspěšné, musí mít volajícího uživatele **Přispěvatel** nebo **vlastníka** roli pro tento účet Media Services se pokouší o přístup. Pokud se zobrazí výjimka, která říká "vzdálený server vrátil chybu: (401) Neoprávněno" v tématu [řízení přístupu](media-services-use-aad-auth-to-access-ams-api.md#access-control).
+    > Azure Media REST žádosti úspěšné, musí mít volajícího uživatele **Přispěvatel** nebo **vlastníka** roli pro tento účet Media Services se pokouší o přístup. Pokud se zobrazí výjimka, která říká "vzdálený server vrátil chybu: (401) Neoprávněno"v tématu [řízení přístupu](media-services-use-aad-auth-to-access-ams-api.md#access-control).
 
     Pokud je potřeba vytvořit novou aplikaci AD, postupujte podle těchto kroků:
     
@@ -118,7 +118,7 @@ Přidejte hodnoty pro parametry připojení AD do souboru web.config nebo app.co
 
 ## <a name="get-the-access-token-using-postman"></a>Získání přístupového tokenu pomocí nástroje Postman
 
-Tato část ukazuje způsob použití **Postman** ke spuštění rozhraní REST API, která vrací tokenů nosiče JWT (přístupový token). K volání jakékoli REST API služby Media Services, budete muset přidat hlavičku "Autorizace" do volání a přidejte hodnotu "nosiče *your_access_token*" ke každému volání (jak je znázorněno v následující části tohoto kurzu). 
+Tato část ukazuje způsob použití **Postman** ke spuštění rozhraní REST API, která vrací tokenů nosiče JWT (přístupový token). K volání jakékoli REST API služby Media Services, budete muset přidat hlavičku "Autorizace" do volání a přidejte hodnotu "nosiče *your_access_token*" ke každému volání (jak je znázorněno v následující části tohoto kurzu). 
 
 1. Otevřít **Postman**.
 2. Vyberte **POST**.

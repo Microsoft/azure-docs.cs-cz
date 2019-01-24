@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/01/2017
 ms.author: TomSh
-ms.openlocfilehash: b58d6315c4399a7bb23514eb90ab5a94acda2592
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: c74c208e77539833c2bc5e1323713191e29aec64
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51249026"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54820236"
 ---
 # <a name="azure-security-technical-capabilities"></a>Technické možnosti zabezpečení Azure
 
@@ -91,7 +91,7 @@ Tady jsou základní možnosti správy identit Azure:
 
 - Registrace zařízení
 
-- Privileged identity management.
+- Privileged Identity Management
 
 - Ochrana identit
 
@@ -139,7 +139,7 @@ Při použití Azure Active Directory B2C uživatele můžete zaregistrovat pro 
 
 V kombinaci s [správu mobilních zařízení (MDM)](https://www.microsoft.com/itshowcase/Article/Content/588/Mobile-device-management-at-Microsoft) řešení, třeba Intune, budou atributy zařízení ve službě Azure Active Directory aktualizovány o další informace o zařízení. To vám umožňuje vytvořit pravidla podmíněného přístupu, která vynucují, aby přístup měla pouze taková zařízení, která splňují vaše standardy zabezpečení a dodržování předpisů. 
 
-#### <a name="privileged-identity-management"></a>Privileged identity management.
+#### <a name="privileged-identity-management"></a>Privileged Identity Management
 
 [Azure Active Directory (AD) Privileged Identity Management](https://docs.microsoft.com/azure/active-directory/active-directory-privileged-identity-management-configure) umožňuje spravovat, řídit a monitorovat privilegované identity a přístup k prostředkům ve službě Azure AD a dalších online službách Microsoftu jako Office 365 nebo Microsoft Intune.
 
@@ -181,7 +181,7 @@ Jeden z klíčů na ochranu dat v cloudu je připadajících na možné stavy, k
 
 - V klidovém stavu: To zahrnuje všechny informace, které objekty úložiště, kontejnery a typy, které existují staticky na fyzickém médiu, být magnetické nebo optické disku.
 
-- V cestě: Když data přenášena mezi komponentami, umístění nebo programy, například jako více než síť, přes službu Service bus (z místních do cloudu (a naopak), včetně hybridních připojení, jako je například ExpressRoute), nebo během vstupně výstupní , je představit jako za provozu.
+- V cestě: Když data přenášejí mezi komponentami, umístění nebo programy, jako například v síti přes service bus (z místních do cloudu a naopak, včetně hybridních připojení, jako je například ExpressRoute), nebo během vstupně výstupní, je myšlenky o jako za provozu.
 
 ### <a name="encryption-at-rest"></a>Šifrování v klidovém stavu
 
@@ -216,9 +216,9 @@ Zvažte, jaké úložiště k ukládání dat používáte. Příklad:
 
 Pro každé úložiště, které používáte využijte stávající šifrování na webu podpory Rest.
 
-- Azure Storage: Viz [šifrování služby Azure Storage pro neaktivní uložená Data](https://docs.microsoft.com/azure/storage/storage-service-encryption),
+- Azure Storage: Zobrazit [šifrování služby Azure Storage pro neaktivní uložená Data](https://docs.microsoft.com/azure/storage/storage-service-encryption),
 
-- SQL Azure: Viz [transparentní šifrování dat (TDE) SQL Always Encrypted](https://msdn.microsoft.com/library/mt163865.aspx)
+- SQL Azure: Zobrazit [transparentní šifrování dat (TDE) SQL Always Encrypted](https://msdn.microsoft.com/library/mt163865.aspx)
 
 - VM & místní diskové úložiště ([Azure Disk Encryption](https://docs.microsoft.com/azure/security/azure-security-disk-encryption))
 
@@ -248,7 +248,7 @@ Pokud podporujete spravovaná zákazníkem klíčů, budete muset poskytnout už
 
 Šifrování v klidovém stavu zahrnuje šifrování hostitele, infrastruktury a klientského data, ke ztrátě klíče z důvodu selhání systému nebo může znamenat škodlivou aktivitu, šifrovaná data je ztraceny. Proto je důležité, že má vaše šifrování v řešení Rest scénáře obnovení po havárii komplexní odolné vůči selhání systému a škodlivé aktivity.
 
-Služby, které implementují šifrování v klidovém stavu jsou obvykle přesto náchylné k šifrovacím klíčům nebo data ponechána nešifrované podobě na jednotce hostitele (například v souboru stránky hostitelský operační systém.) Proto služby musíte zajistit, že svazek hostitele pro jejich služby se šifrují. Pro usnadnění tohoto výpočetní povolila týmu nasazení šifrování hostitele, který používá [Bitlocker](https://technet.microsoft.com/library/dn306081.aspx) NKP a rozšíření pro službu DCM a agenta pro šifrování svazku hostitele.
+Služby, které implementují šifrování v klidovém stavu jsou obvykle přesto náchylné k šifrovacím klíčům nebo data ponechána nešifrované podobě na jednotce hostitele (například v souboru stránky hostitelský operační systém.) Proto služby musíte zajistit, že svazek hostitele pro jejich služby se šifrují. Pro usnadnění tohoto výpočetní povolila týmu nasazení šifrování hostitele, který používá [BitLocker](https://technet.microsoft.com/library/dn306081.aspx) NKP a rozšíření pro službu DCM a agenta pro šifrování svazku hostitele.
 
 Většina služeb jsou implementovány ve standardní virtuální počítače Azure. Tyto služby by měl získat [hostitele šifrování](https://docs.microsoft.com/azure/security/azure-security-disk-encryption) automaticky při výpočetní povolí ho. Pro služby spuštěné na výpočty spravované clustery hostitelů je povolené šifrování automaticky při nasazení Windows serveru 2016.
 
@@ -370,7 +370,7 @@ Microsoft Antimalware pro Azure Cloud Services a Virtual Machines je funkce ochr
 
 [Azure Site Recovery](https://docs.microsoft.com/azure/site-recovery/site-recovery-overview) pomáhá Orchestrace replikace, převzetí služeb při selhání a obnovení úloh a aplikací tak, aby byly k dispozici ze sekundární lokality v případě, že primární lokalita ocitne mimo provoz.
 
-## <a name="ensure-compliance-cloud-services-due-diligence-checklist-protect"></a>Zajištění dodržování předpisů: Cloud services z důvodu kontrolní seznam co nejopatrněji (Ochrana)
+## <a name="ensure-compliance-cloud-services-due-diligence-checklist-protect"></a>Zajištění dodržování předpisů: Cloudové služby z důvodu kontrolní seznam co nejopatrněji (Ochrana)
 
 Microsoft vyvinuté [kontrolní vypršení platnosti co Nejopatrněji Cloud Services](https://aka.ms/cloudchecklist.download) umožňující organizacím vykonávat co nejopatrněji vypršení platnosti v rámci zvažování migrace do cloudu. Poskytuje strukturu pro organizaci jakékoli velikosti a typu – soukromých podniků a organizací ve veřejném sektoru, včetně státní správy na všech úrovních a neziskové organizace – identifikovat vlastní výkon, služby, správu dat a cíle zásad správného řízení a požadavky. To umožňuje jejich porovnání nabídek různí poskytovatelé cloudových služeb, takže v konečném důsledku tvoří základ pro smlouvu o cloudových služeb.
 
@@ -517,7 +517,7 @@ Další informace o zabezpečení najdete některé z našich podrobných zabezp
 
 - [Auditování a protokolování](https://www.microsoft.com/en-us/trustcenter/security/auditingandlogging)
 
-- [Potírání](https://www.microsoft.com/en-us/trustcenter/security/cybercrime)
+- [Cybercrime](https://www.microsoft.com/en-us/trustcenter/security/cybercrime)
 
 - [Celkové řešení a provozní zabezpečení](https://www.microsoft.com/en-us/trustcenter/security/designopsecurity)
 

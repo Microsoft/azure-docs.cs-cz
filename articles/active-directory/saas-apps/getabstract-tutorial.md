@@ -1,10 +1,10 @@
 ---
-title: 'Kurz: Integrace Azure Active Directory se službou Getabstract | Dokumentace Microsoftu'
+title: 'Kurz: Integrace Azure Active Directory s Getabstract | Dokumentace Microsoftu'
 description: Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a Getabstract.
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.reviewer: joflore
 ms.assetid: 2b63d048-b529-4fad-9e90-f244323409dd
 ms.service: active-directory
@@ -15,14 +15,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/15/2017
 ms.author: jeedes
-ms.openlocfilehash: 1bb43f65bd77315be398a9c22e7fc1500de07754
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 11515f74ae95cc317fe27de323da2de6c46c163c
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39424816"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54825098"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-getabstract"></a>Kurz: Integrace Azure Active Directory se službou Getabstract
+# <a name="tutorial-azure-active-directory-integration-with-getabstract"></a>Kurz: Integrace Azure Active Directory s Getabstract
 
 V tomto kurzu se dozvíte, jak integrovat Getabstract s Azure Active Directory (Azure AD).
 
@@ -38,7 +38,7 @@ Pokud chcete zjistit další podrobnosti o integraci aplikací SaaS v Azure AD, 
 
 Konfigurace integrace Azure AD s Getabstract, potřebujete následující položky:
 
-- S předplatným služby Azure AD
+- Předplatné Azure AD
 - Getabstract jednotného přihlašování povolená předplatného
 
 > [!NOTE]
@@ -60,7 +60,7 @@ Konfigurace integrace Getabstract do služby Azure AD, budete muset přidat Geta
 
 **Chcete-li přidat Getabstract z galerie, postupujte následovně:**
 
-1. V  **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu. 
+1. V **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu. 
 
     ![Tlačítko Azure Active Directory][1]
 
@@ -146,7 +146,7 @@ V této části Povolení služby Azure AD jednotného přihlašování na port�
 1. Ke konfiguraci jednotného přihlašování na **Getabstract** straně, je nutné odeslat na stažený **soubor XML s metadaty** k [tým podpory Getabstract](https://www.getabstract.com/en/contact). Nastavují tohoto nastavení můžete mít správně nastavené na obou stranách připojení SAML SSO.
 
 > [!TIP]
-> Teď si můžete přečíst stručné verzi těchto pokynů uvnitř [webu Azure portal](https://portal.azure.com), zatímco jsou nastavení aplikace!  Po přidání této aplikace z **služby Active Directory > podnikové aplikace** části, stačí kliknout **Single Sign-On** kartu a přístup k vložené dokumentaci prostřednictvím  **Konfigurace** oblast v dolní části. Další informace o funkci vložená dokumentace: [dokumentace ke službě Azure AD embedded]( https://go.microsoft.com/fwlink/?linkid=845985)
+> Teď si můžete přečíst stručné verzi těchto pokynů uvnitř [webu Azure portal](https://portal.azure.com), zatímco jsou nastavení aplikace!  Po přidání této aplikace z **služby Active Directory > podnikové aplikace** části, stačí kliknout **Single Sign-On** kartu a přístup k vložené dokumentaci prostřednictvím  **Konfigurace** oblast v dolní části. Další informace o funkci vložená dokumentace: [Dokumentace ke službě Azure AD, embedded]( https://go.microsoft.com/fwlink/?linkid=845985)
 
 ### <a name="create-an-azure-ad-test-user"></a>Vytvořit testovacího uživatele Azure AD
 
@@ -184,7 +184,7 @@ Cílem této části je vytvoření zkušebního uživatele na webu Azure Portal
 
 Cílem této části je vytvořte uživatele Britta Simon v Getabstract. Getabstract podporuje just-in-time zřizování, který je ve výchozím nastavení povolená. Neexistuje žádná položka akce pro vás v této části. Nový uživatel se vytvoří během pokusu o přístup k Getabstract, pokud ještě neexistuje.
 >[!Note]
->Pokud je potřeba ručně vytvořit uživatele, obraťte se na [Getabstract tým podpory](https://www.getabstract.com/en/contact)
+>Pokud je potřeba ručně vytvořit uživatele, obraťte se na [Getabstract tým podpory](https://www.getabstract.com/en/contact)
 
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřadit uživatele Azure AD
@@ -217,7 +217,7 @@ V této části je povolit Britta Simon k udělení přístupu k Getabstract pou
 
 1. Klikněte na tlačítko **přiřadit** tlačítko **přidat přiřazení** dialogového okna.
     
-### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování
+### <a name="test-single-sign-on"></a>Test jednotného přihlašování
 
 V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 

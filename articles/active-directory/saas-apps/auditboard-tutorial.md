@@ -4,7 +4,7 @@ description: Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.reviewer: barbkess
 ms.assetid: 072724b9-d1c8-4c22-9571-d1d0d7eb5ea2
 ms.service: Azure-Active-Directory
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 12/18/2018
 ms.author: jeedes
-ms.openlocfilehash: cb8eb2b13f82deb5f0146d413a917362301fc8a1
-ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
+ms.openlocfilehash: 0d8ee0049a12d18c95736fc7d7b2589a2b41e702
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/27/2018
-ms.locfileid: "53797206"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54820372"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-auditboard"></a>Kurz: Integrace Azure Active Directory s AuditBoard
 

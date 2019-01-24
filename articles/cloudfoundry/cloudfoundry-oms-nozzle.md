@@ -8,19 +8,19 @@ manager: jeconnoc
 editor: ''
 tags: Cloud-Foundry
 ms.assetid: 00c76c49-3738-494b-b70d-344d8efc0853
-ms.service: virtual-machines-linux
+ms.service: azure-monitor
 ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 07/22/2017
 ms.author: ningk
-ms.openlocfilehash: 0039536caf917a051f0ddabd6be7cf2b1be90ba2
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: 198d6e596faf47528c508a9323ab22de563dfc62
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49404898"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54819029"
 ---
 # <a name="deploy-azure-log-analytics-nozzle-for-cloud-foundry-system-monitoring"></a>Nasazení Azure Log Analytics Nozzle pro monitorování systému Cloud Foundry
 
@@ -65,9 +65,9 @@ Pracovní prostor Log Analytics můžete vytvořit ručně nebo pomocí šablony
 
    * **Pracovní prostor log Analytics**: Zadejte název pro váš pracovní prostor.
    * **Předplatné**: Pokud máte více předplatných, vyberte ten, který je stejný jako vaše nasazení CF.
-   * **Skupina prostředků**: můžete vytvořit novou skupinu prostředků nebo použijte to samé s nasazením CF.
+   * **Skupina prostředků**: Můžete vytvořit novou skupinu prostředků nebo použijte to samé s nasazením CF.
    * **Umístění**: Zadejte umístění.
-   * **Cenová úroveň**: vyberte **OK** dokončete.
+   * **Cenová úroveň**: Vyberte **OK** dokončete.
 
 Další informace najdete v tématu [Začínáme se službou Log Analytics](https://docs.microsoft.com/azure/log-analytics/log-analytics-get-started).
 
@@ -83,8 +83,8 @@ Další informace najdete v tématu [Začínáme se službou Log Analytics](http
     * **Umístění skupiny prostředků**: Vyberte umístění skupiny prostředků.
     * **OMS_Workspace_Name**: Zadejte název pracovního prostoru, pokud pracovní prostor neexistuje, tato šablona vytvoří nový.
     * **OMS_Workspace_Region**: Vyberte umístění pro pracovní prostor.
-    * **OMS_Workspace_Pricing_Tier**: Vyberte skladovou Položku pracovního prostoru Log Analytics. Zobrazit [doprovodné materiály k cenám](https://azure.microsoft.com/pricing/details/log-analytics/) pro referenci.
-    * **Právní podmínky**: klikněte na právní podmínky, klepněte na tlačítko "Vytvořit" aby přijal právní podmínky.
+    * **OMS_Workspace_Pricing_Tier**: Vyberte pracovní prostor Log Analytics SKU. Zobrazit [doprovodné materiály k cenám](https://azure.microsoft.com/pricing/details/log-analytics/) pro referenci.
+    * **Právní podmínky**: Klikněte na právní podmínky a pak klikněte na "Vytvořit", aby přijal právní podmínky.
 - Jakmile jsou zadány všechny parametry, klikněte na možnost "Vytvořit" k nasazení šablony. Když se nasazení dokončí, stav se zobrazí na kartě oznámení.
 
 
@@ -197,14 +197,14 @@ Je možné [vytvoření výstrahy](https://docs.microsoft.com/azure/log-analytic
 
 | Vyhledávací dotaz                                                                  | Generovat výstrahu na základě | Popis                                                                       |
 | ----------------------------------------------------------------------------- | ----------------------- | --------------------------------------------------------------------------------- |
-| Typ = CF_ValueMetric_CL Origin_s = bbs Name_s = "Domain.cf aplikace"                   | Počet výsledků < 1   | **BBS. Aplikace Domain.cf** značí, zda je aktuální domény aplikace cf. To znamená, že aplikace CF požadavky z cloudu řadiče jsou synchronizovány do bbs. LRPsDesired (AIs požadovaného Diegu) pro spuštění. Nepřišla žádná data znamená, že aplikace cf domény není aktuální v zadané časové okno. |
-| Typ = CF_ValueMetric_CL Origin_s = zástupce Name_s = UnhealthyCell Value_d > 1            | Počet výsledků > 0   | Diego buněk 0 znamená, že jsou v pořádku a 1 znamená, že není v pořádku. Nastavte upozornění, pokud více buněk není v pořádku Diegu nalezených v zadané časové okno. |
+| Type=CF_ValueMetric_CL Origin_s=bbs Name_s="Domain.cf-apps"                   | Počet výsledků < 1   | **BBS. Aplikace Domain.cf** značí, zda je aktuální domény aplikace cf. To znamená, že aplikace CF požadavky z cloudu řadiče jsou synchronizovány do bbs. LRPsDesired (AIs požadovaného Diegu) pro spuštění. Nepřišla žádná data znamená, že aplikace cf domény není aktuální v zadané časové okno. |
+| Type=CF_ValueMetric_CL Origin_s=rep Name_s=UnhealthyCell Value_d>1            | Počet výsledků > 0   | Diego buněk 0 znamená, že jsou v pořádku a 1 znamená, že není v pořádku. Nastavte upozornění, pokud více buněk není v pořádku Diegu nalezených v zadané časové okno. |
 | Type=CF_ValueMetric_CL Origin_s="bosh-hm-forwarder" Name_s="system.healthy" Value_d=0 | Počet výsledků > 0 | 1 znamená, že systém je v pořádku a 0 znamená, že v systému není v pořádku. |
-| Typ = CF_ValueMetric_CL Origin_s = route_emitter Name_s ConsulDownMode Value_d = > 0 | Počet výsledků > 0   | Konzul pravidelně vydává její dobrý stav. 0 znamená, že systém je v pořádku a 1 znamená, že vysílače trasy zjistí, že konzul dolů. |
-| Typ = CF_CounterEvent_CL Origin_s Delta_d DopplerServer (Name_s="TruncatingBuffer.DroppedMessages" nebo Name_s="doppler.shedEnvelopes") = > 0 | Počet výsledků > 0 | Rozdílová počet zpráv podle Doppler záměrně vynechaný kvůli protitlak. |
-| Typ = CF_LogMessage_CL SourceType_s = LGR MessageType_s = ERR                      | Počet výsledků > 0   | Vysílá Loggregator **LGR** případné problémy s procesem protokolování. Příkladem takových problém při výstupní zprávy protokolu je příliš vysoká. |
-| Typ = CF_ValueMetric_CL Name_s = slowConsumerAlert                               | Počet výsledků > 0   | Když se Nozzle obdrží upozornění na pomalé příjemce od loggregator, odešle **slowConsumerAlert** ValueMetric ke službě Log Analytics. |
-| Typ = CF_CounterEvent_CL Job_s = nozzle Name_s = ztracené Delta_d události > 0              | Počet výsledků > 0   | Pokud počet delta ke ztrátě událostí, které dosáhne prahové hodnoty, znamená to, že nozzle máte problém se spuštěním. |
+| Type=CF_ValueMetric_CL Origin_s=route_emitter Name_s=ConsulDownMode Value_d>0 | Počet výsledků > 0   | Konzul pravidelně vydává její dobrý stav. 0 znamená, že systém je v pořádku a 1 znamená, že vysílače trasy zjistí, že konzul dolů. |
+| Type=CF_CounterEvent_CL Origin_s=DopplerServer (Name_s="TruncatingBuffer.DroppedMessages" or Name_s="doppler.shedEnvelopes") Delta_d>0 | Počet výsledků > 0 | Rozdílová počet zpráv podle Doppler záměrně vynechaný kvůli protitlak. |
+| Type=CF_LogMessage_CL SourceType_s=LGR MessageType_s=ERR                      | Počet výsledků > 0   | Vysílá Loggregator **LGR** případné problémy s procesem protokolování. Příkladem takových problém při výstupní zprávy protokolu je příliš vysoká. |
+| Type=CF_ValueMetric_CL Name_s=slowConsumerAlert                               | Počet výsledků > 0   | Když se Nozzle obdrží upozornění na pomalé příjemce od loggregator, odešle **slowConsumerAlert** ValueMetric ke službě Log Analytics. |
+| Type=CF_CounterEvent_CL Job_s=nozzle Name_s=eventsLost Delta_d>0              | Počet výsledků > 0   | Pokud počet delta ke ztrátě událostí, které dosáhne prahové hodnoty, znamená to, že nozzle máte problém se spuštěním. |
 
 ## <a name="scale"></a>Měřítko
 

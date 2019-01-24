@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/22/2018
 ms.author: manayar
-ms.openlocfilehash: f15b2154c1bac4d699af91980a4bc2a7192bb0c9
-ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
+ms.openlocfilehash: 5d92aa78b132b661af3cdc53b47c0340a0758dd8
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/01/2018
-ms.locfileid: "50740871"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54855308"
 ---
 # <a name="understand-instance-ids-for-azure-vm-scale-set-vms"></a>Vysvětlení ID instancí pro Azure VM scale sady virtuálních počítačů
 Tento článek popisuje ID instancí škálovací sady a různé způsoby, že surface.
@@ -41,7 +41,7 @@ Rozhraní REST API: `GET https://management.azure.com/subscriptions/{subscriptio
 
 Prostředí PowerShell: `Get-AzureRmVmssVM -ResourceGroupName {resourceGroupName} -VMScaleSetName {vmScaleSetName}` (Další informace najdete v tématu [dokumentaci k Powershellu](https://docs.microsoft.com/powershell/module/azurerm.compute/get-azurermvmssvm))
 
-Rozhraní příkazového řádku: `az vmss list-instances -g {resourceGroupName} -n {vmScaleSetName}` (Další informace najdete v tématu [dokumentace k rozhraní příkazového řádku](https://docs.microsoft.com/cli/azure/vmss?view=azure-cli-latest#az_vmss_list_instances)).
+Rozhraní příkazového řádku: `az vmss list-instances -g {resourceGroupName} -n {vmScaleSetName}` (Další informace najdete v tématu [dokumentace k rozhraní příkazového řádku](https://docs.microsoft.com/cli/azure/vmss?view=azure-cli-latest)).
 
 Můžete také použít [resources.azure.com](https://resources.azure.com) nebo [sady Azure SDK](https://azure.microsoft.com/downloads/) seznam virtuálních počítačů ve škálovací sadě.
 

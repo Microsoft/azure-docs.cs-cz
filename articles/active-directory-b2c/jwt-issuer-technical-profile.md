@@ -3,19 +3,19 @@ title: Definování technický profil pro vystavitele tokenu JWT ve vlastních z
 description: Definice technický profil vystavitele tokenu JWT ve vlastních zásadách v Azure Active Directory B2C.
 services: active-directory-b2c
 author: davidmu1
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 10/30/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 25352d12e578c289ccb4ab8aab60dc55a444762e
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: ae9f55943d4b178096230269215ac771ee1d20a1
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50413498"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54856096"
 ---
 # <a name="define-a-technical-profile-for-a-jwt-token-issuer-in-an-azure-active-directory-b2c-custom-policy"></a>Definování technický profil pro vystavitele tokenu JWT ve vlastních zásadách pro Azure Active Directory B2C
 
@@ -44,7 +44,7 @@ Následující příklad ukazuje technický profil pro `JwtIssuer`:
 
 ## <a name="metadata"></a>Metadata
 
-| Atribut | Požaduje se | Popis |
+| Atribut | Požadováno | Popis |
 | --------- | -------- | ----------- |
 | issuer_refresh_token_user_identity_claim_type | Ano | Deklarace identity, který se má použít jako identitu uživatele deklarací identity v rámci OAuth2 autorizační kódy a obnovovacích tokenů. Ve výchozím nastavení, měli byste ho nastavit `objectId`, pokud neurčíte jinou SubjectNamingInfo typ deklarace identity. | 
 | SendTokenResponseBodyWithJsonNumbers | Ne | Vždy nastaven na hodnotu `true`. Pro starší verze formátu, ve kterém jsou číselné hodnoty zadané jako řetězce místo čísla JSON, nastavte na `false`. Tento atribut je potřeba pro klienty, kteří trvalo závislost na předchozích implementace, která vrátí vlastnosti jako řetězce. | 
@@ -60,7 +60,7 @@ Následující příklad ukazuje technický profil pro `JwtIssuer`:
 
 CryptographicKeys element obsahuje následující atributy:
 
-| Atribut | Požaduje se | Popis |
+| Atribut | Požadováno | Popis |
 | --------- | -------- | ----------- |
 | issuer_secret | Ano | X509 certifikát (sadu klíčů RSA) se má použít k podepisování tokenů JWT token. Toto je `B2C_1A_TokenSigningKeyContainer` klíče, které jste cofigured v [začít pracovat s vlastními zásadami](active-directory-b2c-get-started-custom.md). | 
 | issuer_refresh_token_key | Ano | X509 certifikát (sadu klíčů RSA) se má použít k šifrování tokenu obnovení. Můžete nakonfigurovat `B2C_1A_TokenEncryptionKeyContainer` klíče v [začít pracovat s vlastními zásadami](active-directory-b2c-get-started-custom.md) |

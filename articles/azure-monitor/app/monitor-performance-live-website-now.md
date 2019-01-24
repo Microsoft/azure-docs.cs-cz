@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 09/05/2018
 ms.author: mbullwin
-ms.openlocfilehash: f84be4dffb601d3748d951da15050e381e1cecc1
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: 2c8c8233e8d471b0f1934df9ff7e0f2b4b3e3860
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 01/23/2019
-ms.locfileid: "54464846"
+ms.locfileid: "54819131"
 ---
 # <a name="instrument-web-apps-at-runtime-with-application-insights-status-monitor"></a>Instrumentace webových aplikací za běhu pomocí monitorování stavu Application Insights
 
@@ -36,6 +36,7 @@ Máte možnost volby dvě tras, jak použít Application Insights do webových a
 
 * **Čas sestavení:** [Přidejte Application Insights SDK] [ greenbrown] na kód vaší webové aplikace.
 * **Čas spuštění:** Instrumentace webové aplikace na serveru, jak je popsáno níže, bez znovu sestavovat a nasazovat kód.
+
 > [!NOTE]
 > Pokud používáte instrumentace čas sestavení, spuštění instrumentace nebude fungovat i v případě, že je zapnutý.
 

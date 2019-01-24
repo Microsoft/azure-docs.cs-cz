@@ -1,10 +1,10 @@
 ---
-title: 'Kurz: Integrace Azure Active Directory se službou Achieve3000 | Dokumentace Microsoftu'
+title: 'Kurz: Integrace Azure Active Directory s Achieve3000 | Dokumentace Microsoftu'
 description: Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a Achieve3000.
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.reviewer: joflore
 ms.assetid: 83a83d07-ff9c-46c4-b5ba-25fe2b2cd003
 ms.service: active-directory
@@ -15,14 +15,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/19/2017
 ms.author: jeedes
-ms.openlocfilehash: 72e327f3cfa81b1ff27fcad743f5bb9a98737ed9
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: bdee3d64348b734488f7fb19bf6c57353908ae9b
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39053602"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54822718"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-achieve3000"></a>Kurz: Integrace Azure Active Directory se službou Achieve3000
+# <a name="tutorial-azure-active-directory-integration-with-achieve3000"></a>Kurz: Integrace Azure Active Directory s Achieve3000
 
 V tomto kurzu se dozvíte, jak integrovat Achieve3000 s Azure Active Directory (Azure AD).
 
@@ -38,7 +38,7 @@ Pokud chcete zjistit další podrobnosti o integraci aplikací SaaS v Azure AD, 
 
 Konfigurace integrace Azure AD s Achieve3000, potřebujete následující položky:
 
-- S předplatným služby Azure AD
+- Předplatné Azure AD
 - Achieve3000 jednotného přihlašování povolená předplatného
 
 > [!NOTE]
@@ -60,7 +60,7 @@ Konfigurace integrace Achieve3000 do služby Azure AD, budete muset přidat Achi
 
 **Chcete-li přidat Achieve3000 z galerie, postupujte následovně:**
 
-1. V  **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu. 
+1. V **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu. 
 
     ![Tlačítko Azure Active Directory][1]
 
@@ -129,7 +129,7 @@ V této části Povolení služby Azure AD jednotného přihlašování na port�
     
     | Název atributu | Hodnota atributu |
     | ------------------- | -------------------- |    
-    | StudentID               | User.Mail |
+    | studentID               | user.mail |
 
     a. Klikněte na tlačítko **přidat atribut** otevřít **přidat atribut** dialogového okna.
 
@@ -150,7 +150,7 @@ V této části Povolení služby Azure AD jednotného přihlašování na port�
 8. Ke konfiguraci jednotného přihlašování na **Achieve3000** straně, je nutné odeslat na stažený **soubor XML s metadaty** k [tým podpory Achieve3000](https://www.achieve3000.com/contact-us/). Nastavují tohoto nastavení můžete mít správně nastavené na obou stranách připojení SAML SSO.
 
 > [!TIP]
-> Teď si můžete přečíst stručné verzi těchto pokynů uvnitř [webu Azure portal](https://portal.azure.com), zatímco jsou nastavení aplikace!  Po přidání této aplikace z **služby Active Directory > podnikové aplikace** části, stačí kliknout **Single Sign-On** kartu a přístup k vložené dokumentaci prostřednictvím  **Konfigurace** oblast v dolní části. Další informace o funkci vložená dokumentace: [dokumentace ke službě Azure AD embedded]( https://go.microsoft.com/fwlink/?linkid=845985)
+> Teď si můžete přečíst stručné verzi těchto pokynů uvnitř [webu Azure portal](https://portal.azure.com), zatímco jsou nastavení aplikace!  Po přidání této aplikace z **služby Active Directory > podnikové aplikace** části, stačí kliknout **Single Sign-On** kartu a přístup k vložené dokumentaci prostřednictvím  **Konfigurace** oblast v dolní části. Další informace o funkci vložená dokumentace: [Dokumentace ke službě Azure AD, embedded]( https://go.microsoft.com/fwlink/?linkid=845985)
 
 ### <a name="create-an-azure-ad-test-user"></a>Vytvořit testovacího uživatele Azure AD
 
@@ -186,7 +186,7 @@ Cílem této části je vytvoření zkušebního uživatele na webu Azure Portal
  
 ### <a name="create-an-achieve3000-test-user"></a>Vytvořit testovacího uživatele Achieve3000
 
-V této části vytvoříte uživatele v Achieve3000 jako Britta Simon. Práce s [tým podpory Achieve3000](https://www.achieve3000.com/contact-us/) přidat uživatele na platformě Achieve3000. Uživatelé musí vytvořit a aktivovat, než použití jednotného přihlašování. 
+V této části vytvoříte uživatele v Achieve3000 jako Britta Simon. Práce s [tým podpory Achieve3000](https://www.achieve3000.com/contact-us/) přidat uživatele na platformě Achieve3000. Uživatelé musí vytvořit a aktivovat, než použití jednotného přihlašování. 
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřadit uživatele Azure AD
 
@@ -218,7 +218,7 @@ V této části je povolit Britta Simon k udělení přístupu k Achieve3000 pou
 
 7. Klikněte na tlačítko **přiřadit** tlačítko **přidat přiřazení** dialogového okna.
     
-### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování
+### <a name="test-single-sign-on"></a>Test jednotného přihlašování
 
 V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 
@@ -228,7 +228,7 @@ Další informace o přístupovém panelu, naleznete v tématu [Úvod k přístu
 ## <a name="additional-resources"></a>Další zdroje informací:
 
 * [Seznam kurzů o integraci aplikací SaaS pomocí Azure Active Directory](tutorial-list.md)
-* [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
+* [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](../manage-apps/what-is-single-sign-on.md)
 
 
 

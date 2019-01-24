@@ -1,10 +1,10 @@
 ---
-title: 'Kurz: Integrace Azure Active Directory se službou financování portál | Dokumentace Microsoftu'
+title: 'Kurz: Integrace Azure Active Directory s financování portál | Dokumentace Microsoftu'
 description: Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a financování portál.
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.assetid: 4663cc8a-976a-4c6c-b3b4-1e5df9b66744
 ms.service: active-directory
 ms.component: saas-app-tutorial
@@ -14,14 +14,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
 ms.author: jeedes
-ms.openlocfilehash: d45712a94a6a2eb18088c99d7175b73b29e62ce3
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: ada7a35f36dbac74fa67111c8fa2571dce70069d
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39428396"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54822123"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-the-funding-portal"></a>Kurz: Integrace Azure Active Directory se službou financování portál
+# <a name="tutorial-azure-active-directory-integration-with-the-funding-portal"></a>Kurz: Integrace Azure Active Directory s financování portál
 
 V tomto kurzu se dozvíte, jak integrovat financování portál Azure Active Directory (Azure AD).
 
@@ -37,7 +37,7 @@ Pokud chcete zjistit další podrobnosti o integraci aplikací SaaS v Azure AD, 
 
 Konfigurace integrace Azure AD s financování portál, potřebujete následující položky:
 
-- S předplatným služby Azure AD
+- Předplatné Azure AD
 - Financování portál jednotného přihlašování povolená předplatného
 
 > [!NOTE]
@@ -59,7 +59,7 @@ Konfigurace integrace financování portál do služby Azure AD, budete muset p�
 
 **Chcete-li přidat portál financování z galerie, postupujte následovně:**
 
-1. V  **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu. 
+1. V **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu. 
 
     ![Active Directory][1]
 
@@ -127,7 +127,7 @@ V této části Povolení služby Azure AD jednotného přihlašování na port�
 
     | Název atributu | Hodnota atributu |
     | ------------------- | ---------------- |
-    | externalId1 | User.extensionattribute1 |
+    | externalId1 | user.extensionattribute1 |
 
     a. Klikněte na tlačítko **přidat atribut** otevřít **přidat atribut** dialogového okna.
 
@@ -152,7 +152,7 @@ V této části Povolení služby Azure AD jednotného přihlašování na port�
 1. Ke konfiguraci jednotného přihlašování na **financování portál** straně, je nutné odeslat na stažený **soubor XML s metadaty** k [tým podpory portálu financování](mailto:info@regenteducation.com). Nastavují tohoto nastavení můžete mít správně nastavené na obou stranách připojení SAML SSO.
 
 > [!TIP]
-> Teď si můžete přečíst stručné verzi těchto pokynů uvnitř [webu Azure portal](https://portal.azure.com), zatímco jsou nastavení aplikace!  Po přidání této aplikace z **služby Active Directory > podnikové aplikace** části, stačí kliknout **Single Sign-On** kartu a přístup k vložené dokumentaci prostřednictvím  **Konfigurace** oblast v dolní části. Další informace o funkci vložená dokumentace: [dokumentace ke službě Azure AD embedded]( https://go.microsoft.com/fwlink/?linkid=845985)
+> Teď si můžete přečíst stručné verzi těchto pokynů uvnitř [webu Azure portal](https://portal.azure.com), zatímco jsou nastavení aplikace!  Po přidání této aplikace z **služby Active Directory > podnikové aplikace** části, stačí kliknout **Single Sign-On** kartu a přístup k vložené dokumentaci prostřednictvím  **Konfigurace** oblast v dolní části. Další informace o funkci vložená dokumentace: [Dokumentace ke službě Azure AD, embedded]( https://go.microsoft.com/fwlink/?linkid=845985)
 > 
 
 ### <a name="creating-an-azure-ad-test-user"></a>Vytváří se testovací uživatele služby Azure AD
@@ -226,7 +226,7 @@ Cílem této části je test vaší konfigurace Azure AD jednotné přihlašová
 
 Po kliknutí na dlaždici financování portál na přístupovém panelu, vám by měl získat automaticky přihlášení k aplikaci financování portál.
 
-## <a name="additional-resources"></a>Další zdroje informací:
+## <a name="additional-resources"></a>Další materiály
 
 * [Seznam kurzů o integraci aplikací SaaS pomocí Azure Active Directory](tutorial-list.md)
 * [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](../manage-apps/what-is-single-sign-on.md)

@@ -1,5 +1,5 @@
 ---
-title: Služba Azure branou – služby Vyrovnávání zatížení se sadou Azure aplikace dodání | Dokumentace Microsoftu
+title: Služba Azure branou – služby Vyrovnávání zatížení s Azure application delivery suite | Dokumentace Microsoftu
 description: Tento článek pomáhá získat informace o tom, jak Azure doporučuje Vyrovnávání zatížení pomocí jeho doručení sada aplikací
 services: frontdoor
 documentationcenter: ''
@@ -11,17 +11,17 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/10/2018
 ms.author: sharadag
-ms.openlocfilehash: 4c9f92481af1e69a111869cb6fc1305923bb0484
-ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
+ms.openlocfilehash: 5403b5506a3758ede5ad06640335b873b6b9aa96
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50026003"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54820815"
 ---
 # <a name="load-balancing-with-azures-application-delivery-suite"></a>Vyrovnávání zatížení s využitím sady pro doručování aplikací Azure
 
 ## <a name="introduction"></a>Úvod
-Microsoft Azure poskytuje několik globální a místní služby pro správu, jak se distribuuje síťový provoz s vyrovnáváním zatížení: Traffic Manageru, branou služby, služba Application Gateway a nástroj pro vyrovnávání zatížení.  Spolu s mnoha oblastí Azure a zónové architektury, pomocí těchto služeb společně umožňují vytvářet robustní a škálovatelné vysoce výkonné aplikace.
+Microsoft Azure poskytuje několik globální a místní služby pro správu, jak se distribuuje síťový provoz s vyrovnáváním zatížení: Traffic Manager, branou služby, služba Application Gateway a nástroje pro vyrovnávání zatížení.  Spolu s mnoha oblastí Azure a zónové architektury, pomocí těchto služeb společně umožňují vytvářet robustní a škálovatelné vysoce výkonné aplikace.
 
 ![Sada doručování aplikací ][1]
  
@@ -51,16 +51,16 @@ Nástroj pro vyrovnávání zatížení je nedílnou součástí Azure SDN stack
 
 ## <a name="choosing-a-global-load-balancer"></a>Nástroj pro vyrovnávání zatížení globálního výběru
 Při výběru nástroj pro vyrovnávání zatížení globálního mezi Traffic Manageru a Azure branou pro globální směrování, měli byste zvážit, co je podobné a čím se liší tyto dvě služby.   Obě služby poskytují
-- **Redundance geografickým oblastem:** Pokud jedné oblasti ocitne mimo provoz, provoz bez problémů směruje do nejbližší oblasti bez jakéhokoli zásahu od vlastníka aplikace.
-- **Nejbližší oblast směrování:** provozu se automaticky směrují na nejbližší oblasti
+- **Více geografická redundance:** Pokud jedna oblast ocitne mimo provoz, provoz bez problémů směruje do nejbližší oblasti bez jakéhokoli zásahu od vlastníka aplikace.
+- **Nejbližší oblast směrování:** Provoz se automaticky směrují na nejbližší oblasti
 
 </br>Následující tabulka popisuje rozdíly mezi Traffic Manageru a branou služby Azure:</br>
 
 | Traffic Manager | Azure Front Door Service |
 | --------------- | ------------------------ |
-|**Libovolný protokol:** protože Traffic Manager funguje ve vrstvě DNS, můžete směrovat jakýkoli typ síťového provozu; HTTP, TCP, UDP, atd. | **Akcelerace HTTP:** přenosy s branou jsou směrovány přes proxy server v hraniční z Microsoftu pro sítě.  Z tohoto důvodu žádosti protokolu HTTP (S), najdete v článku latenci a propustnost vylepšení snížení latence pro vyjednávání protokolu SSL a používání aktivní připojení z AFD do vaší aplikace.|
-|**Směrování na místní:** se směrováním ve vrstvě DNS, provoz směrován vždy bodu z bodu.  Směrování od firemní pobočka do vašeho datového centra v místním prostředí může trvat přímé cestu. dokonce i ve vaší síti pomocí Traffic Manageru. | **Nezávislého škálování:** protože branou funguje s žádostí HTTP, je možné směrovat požadavky do jiné cesty adresy URL na různé back-end / regionálních služeb fondů (mikroslužeb) na základě pravidel a stavu jednotlivých aplikací mikroslužeb.|
-|**Formát fakturace:** škáluje s uživateli a služby s více uživateli, plateaus ke snížení nákladů na vyšší využití fakturaci na základě DNS. |**Vložené zabezpečení:** branou povoluje pravidla, jako je například omezení rychlosti a seznamu ACL IP-ing vám neumožňuje chránit váš back-end před přenosy přicházejí vaší aplikace. 
+|**Libovolný protokol:** Vzhledem k tomu, že Traffic Manager funguje ve vrstvě DNS, můžete směrovat jakýkoli typ síťového provozu; HTTP, TCP, UDP, atd. | **Akcelerace HTTP:** Přenosy s branou jsou směrovány přes proxy server v síti Edge z Microsoftu pro.  Z tohoto důvodu žádosti protokolu HTTP (S), najdete v článku latenci a propustnost vylepšení snížení latence pro vyjednávání protokolu SSL a používání aktivní připojení z AFD do vaší aplikace.|
+|**Místní směrování:** Směrování ve vrstvě DNS, provoz se směruje vždy bodu z bodu.  Směrování od firemní pobočka do vašeho datového centra v místním prostředí může trvat přímé cestu. dokonce i ve vaší síti pomocí Traffic Manageru. | **Nezávislého škálování:** Protože branou funguje s žádostí HTTP, požadavky na různých cest URL může být směrované na různé back-end / místní služby fondy (mikroslužeb) na základě pravidel a stavu jednotlivých aplikací mikroslužeb.|
+|**Fakturace formát:** Účtování podle DNS škáluje s uživateli a služby s více uživateli, plateaus ke snížení nákladů na vyšší využití. |**Vložené zabezpečení:** Přední dveře povoluje pravidla, jako je například omezení rychlosti a seznamu ACL IP-ing vám neumožňuje chránit váš back-end před přenosy přicházejí vaší aplikace. 
 
 </br>Z důvodu výkonu, požadavky na provoz a výhody zabezpečení pro úlohy HTTP s branou doporučujeme, abyste zákazníci využívat branou pro své úlohy HTTP.    Traffic Manager a branou umožňuje paralelní sloužit veškerý provoz pro vaši aplikaci. 
 

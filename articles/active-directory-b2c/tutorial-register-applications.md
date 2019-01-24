@@ -3,18 +3,18 @@ title: Kurz – registrace aplikace v Azure Active Directory B2C | Dokumentace M
 description: Informace o postupu registrace aplikace v Azure Active Directory B2C na webu Azure portal.
 services: active-directory-b2c
 author: davidmu1
-manager: mtillman
+manager: daveba
 ms.service: active-directory-b2c
 ms.workload: identity
 ms.topic: article
 ms.date: 01/11/2019
 ms.author: davidmu
-ms.openlocfilehash: 511e1e9f29e6ae7602a977819f5295f76236595d
-ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
+ms.openlocfilehash: 99ad1bbaa732b1207ead9da8da36f345d4978241
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/12/2019
-ms.locfileid: "54248981"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54856022"
 ---
 # <a name="tutorial-register-your-applications-in-azure-active-directory-b2c"></a>Kurz: Registrace aplikace v Azure Active Directory B2C
 

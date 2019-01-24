@@ -4,7 +4,7 @@ description: Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.reviewer: barbkess
 ms.assetid: 26704ca7-13ed-4261-bf24-fd6252e2072b
 ms.service: Azure-Active-Directory
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 1/4/2019
 ms.author: jeedes
-ms.openlocfilehash: 61ea0874f76fb054ddb1ae23d42a7161bea2f96b
-ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
+ms.openlocfilehash: e718d37bc1d34bccf1ea8d0ce2607ff83fc355d1
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/07/2019
-ms.locfileid: "54064302"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54824402"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-cisco-webex"></a>Kurz: Integrace Azure Active Directory s Cisco Webex
 
@@ -151,7 +151,7 @@ Ke konfiguraci Azure AD jednotné přihlašování s Cisco Webex, proveďte nás
     | ---------------| --------------- | --------- |
     |   jméno    | user.givenname |
     |   Příjmení    | user.surname |
-    |   UID    | User.Mail |
+    |   uid    | user.mail |
 
     a. Klikněte na tlačítko **přidat novou deklaraci** otevřít **spravovat deklarace identity uživatelů** dialogového okna.
 

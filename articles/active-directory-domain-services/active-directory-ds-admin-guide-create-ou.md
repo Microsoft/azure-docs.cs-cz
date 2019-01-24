@@ -1,10 +1,10 @@
 ---
-title: 'Azure Active Directory Domain Services: Příručka pro správu | Dokumentace Microsoftu'
+title: 'Azure Active Directory Domain Services: Příručka věnovaná | Dokumentace Microsoftu'
 description: Vytvoření organizační jednotce (OU) v Azure AD Domain Services spravované domény
 services: active-directory-ds
 documentationcenter: ''
 author: eringreenlee
-manager: mtillman
+manager: daveba
 editor: curtand
 ms.assetid: 52602ad8-2b93-4082-8487-427bdcfa8126
 ms.service: active-directory
@@ -15,19 +15,19 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/22/2018
 ms.author: ergreenl
-ms.openlocfilehash: cd4964939aa9b9ebd96a2fb29e1a6f7bf422d477
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.openlocfilehash: 49b915242ca0a4775236da3314eed816fde7ea6b
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50154824"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54856260"
 ---
 # <a name="create-an-organizational-unit-ou-on-an-azure-ad-domain-services-managed-domain"></a>Vytvořit organizační jednotce (OU) ve spravované doméně Azure AD Domain Services
 Spravované domény služby Azure AD Domain Services patří dvě předdefinované kontejnery nazývá "Kontejnery počítače AADDC" a "Uživatelé AADDC" v uvedeném pořadí. Kontejner 'Kontejnery počítače AADDC' obsahuje objekty počítače pro všechny počítače, které jsou připojené ke spravované doméně. Kontejner 'Uživatelé AADDC' obsahuje uživatele a skupiny v tenantovi Azure AD. V některých případech může být potřeba vytvořit účty služeb ve spravované doméně nasazování úloh. K tomuto účelu můžete vytvořit vlastní organizační jednotce (OU) ve spravované doméně a vytvořit účty služeb v rámci dané organizační jednotce. Tento článek ukazuje, jak vytvoření OU ve spravované doméně.
 
 [!INCLUDE [active-directory-ds-prerequisites.md](../../includes/active-directory-ds-prerequisites.md)]
 
-## <a name="before-you-begin"></a>Než začnete
+## <a name="before-you-begin"></a>Před zahájením
 K provádění úkolů uvedených v tomto článku, budete potřebovat:
 
 1. Platný **předplatného Azure**.
@@ -83,5 +83,5 @@ Teď, když jste vytvořili vlastní organizační jednotky, můžete pokračova
 ## <a name="related-content"></a>Související obsah
 * [Správa spravované domény služby Azure AD Domain Services](active-directory-ds-admin-guide-administer-domain.md)
 * [Konfigurace zásad skupiny ve spravované doméně](active-directory-ds-admin-guide-administer-group-policy.md)
-* [Centrum správy služby Active Directory: Začínáme](https://technet.microsoft.com/library/dd560651.aspx)
+* [Centrum správy služby Active Directory: Začínáme se službou](https://technet.microsoft.com/library/dd560651.aspx)
 * [Podrobný průvodce účty služby](https://technet.microsoft.com/library/dd548356.aspx)

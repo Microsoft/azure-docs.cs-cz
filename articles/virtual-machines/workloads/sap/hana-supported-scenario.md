@@ -14,12 +14,12 @@ ms.workload: infrastructure
 ms.date: 07/06/2018
 ms.author: saghorpa
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 0e9d57c224150454677a03462368038ed8c63edf
-ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
+ms.openlocfilehash: 4e8253238bf5edb5e0ea3f89fe67d6aa39f4a2d7
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45576489"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54855451"
 ---
 # <a name="supported-scenarios-for-hana-large-instances"></a>Podporované scénáře pro velké instance HANA
 Tento dokument popisuje podporované scénáře a jejich podrobnosti architektury pro HANA velké instance (HLI).
@@ -31,13 +31,13 @@ Než budete pokračovat s zřizování jednotek HLI ověření návrh s použit�
 ## <a name="terms-and-definitions"></a>Termíny a definice
 Nyní se pokusíme pochopit pojmy a definice použitá v dokumentu.
 
-- SID: Identifikátor systém HANA system.
+- SID: Identifikátor systému pro systém HANA.
 - HLI: Velké instance Hana.
-- Zotavení po Havárii: Lokalitě zotavení po havárii.
-- Normální zotavení po Havárii: systém nastavení s vyhrazeným prostředkem pro účely zotavení po Havárii použít pouze.
-- Zotavení po Havárii Multipurpose: Systému v lokalitě zotavení po Havárii konfigurován pro použití neprodukčním prostředí, spolu s produkční instance konfigurován pro použití na událost zotavení po Havárii. 
-- Jeden identifikátor SID: Systému s jednou instancí, které jsou nainstalované.
-- Více identifikátorů SID: Systému s více instancemi nakonfigurované. Zkratka MCOS prostředí.
+- ZOTAVENÍ PO HAVÁRII: Web pro zotavení po havárii.
+- Normální zotavení po Havárii: Nastavení systému s vyhrazeným prostředkem pro účely zotavení po Havárii použít pouze.
+- Multipurpose zotavení po Havárii: Systém v lokalitě zotavení po Havárii konfigurován pro použití neprodukčním prostředí, spolu s produkční instance konfigurován pro použití na událost zotavení po Havárii. 
+- Jeden identifikátor SID:  Systém s jednou instancí, které jsou nainstalované.
+- Více identifikátorů SID: Systém s více instancemi nakonfigurované. Zkratka MCOS prostředí.
 
 
 ## <a name="overview"></a>Přehled
@@ -50,14 +50,14 @@ Návrh architektury odvozené je výhradně z hlediska infrastruktury a musí ko
 Tento dokument popisuje podrobnosti ze dvou částí v jednotlivé podporované architektury:
 
 - Ethernet
-- Úložiště
+- Storage
 
 ### <a name="ethernet"></a>Ethernet
 
 Každý server zřízené vybavená předem nakonfigurovaným rozhraním sady rozhraní sítě ethernet. Tady jsou podrobnosti o rozhraní sítě ethernet na každou jednotku HLI nakonfigurované.
 
-- **A**: Toto rozhraní se používá pro/přístup klienta.
-- **B**: Toto rozhraní se používá ke komunikaci uzlu k uzlu. Toto rozhraní je nakonfigurovaná na všech serverech (bez ohledu na topologii požadovaná), ale používá jenom pro 
+- **A**: Toto rozhraní je používán pro/klientský přístup.
+- **B**: Toto rozhraní se používá pro komunikaci na uzly. Toto rozhraní je nakonfigurovaná na všech serverech (bez ohledu na topologii požadovaná), ale používá jenom pro 
 - scénáře škálování na víc systémů.
 - **C**: Toto rozhraní se používá pro uzel k připojení úložiště.
 - **D**: Toto rozhraní se používá pro uzel k připojení zařízení ISCSI využitím techniky STONITH instalace. Toto rozhraní je konfigurovat pouze pokud je požadované nastavení HSR.  
@@ -97,7 +97,7 @@ V případech nasazení HANA System Replication nebo horizontální navýšení 
 - Ethernet "D" by měla sloužit pouze pro přístup k zařízení využitím techniky STONITH pro pacemaker. Toto rozhraní se ale vyžaduje při konfiguraci HANA System Replication (HSR) a chcete dosáhnout automatického převzetí služeb při selhání na operační systém pomocí SBD na základě zařízení.
 
 
-### <a name="storage"></a>Úložiště
+### <a name="storage"></a>Storage
 Úložiště je předem nakonfigurován založeny na topologii požadavku. Velikosti svazku a přípojný bod se liší v závislosti na počet serverů, SKU a topologii nakonfigurována. Zkontrolujte požadované scénáře (dále v tomto dokumentu) Chcete-li získat další informace. Pokud je potřeba větší úložiště, můžete ji zakoupit v TB přírůstcích.
 
 >[!NOTE]
@@ -131,7 +131,7 @@ Tato topologie podporuje jeden uzel v vertikálního navýšení konfiguraci s j
 
 ### <a name="architecture-diagram"></a>Diagram architektury  
 
-![Single – uzlu s jeden – SID.png](media/hana-supported-scenario/Single-node-with-one-SID.png)
+![Single-node-with-one-SID.png](media/hana-supported-scenario/Single-node-with-one-SID.png)
 
 ### <a name="ethernet"></a>Ethernet
 Následující síťová rozhraní jsou předem nakonfigurovány:
@@ -147,13 +147,13 @@ Následující síťová rozhraní jsou předem nakonfigurovány:
 | C | TYP II | síť VLAN < tenantNo + 1 > | team0.tenant + 1 | Uzel úložiště |
 | D | TYP II | síť VLAN < tenantNo + 3 > | team0.tenant + 3 | Nakonfigurované ale nepoužívá |
 
-### <a name="storage"></a>Úložiště
+### <a name="storage"></a>Storage
 Je předem nakonfigurované následující přípojné body:
 
 | Přípojný bod | Případ použití | 
 | --- | --- |
 |/Hana/Shared/SID | Instalace HANA | 
-|/Hana/data/SID/mnt00001 | Nainstalujte datové soubory | 
+|/hana/data/SID/mnt00001 | Nainstalujte datové soubory | 
 |/Hana/log/SID/mnt00001 | Nainstalujte soubory protokolu | 
 |/Hana/logbackups/SID | Znovu protokoly |
 
@@ -166,7 +166,7 @@ Tato topologie podporuje jeden uzel v vertikálního navýšení konfigurací s 
 
 ### <a name="architecture-diagram"></a>Diagram architektury  
 
-![Single-node-mcos.png](media/hana-supported-scenario/single-node-mcos.png)
+![single-node-mcos.png](media/hana-supported-scenario/single-node-mcos.png)
 
 ### <a name="ethernet"></a>Ethernet
 Následující síťová rozhraní jsou předem nakonfigurovány:
@@ -182,7 +182,7 @@ Následující síťová rozhraní jsou předem nakonfigurovány:
 | C | TYP II | síť VLAN < tenantNo + 1 > | team0.tenant + 1 | Uzel úložiště |
 | D | TYP II | síť VLAN < tenantNo + 3 > | team0.tenant + 3 | Nakonfigurované ale nepoužívá |
 
-### <a name="storage"></a>Úložiště
+### <a name="storage"></a>Storage
 Je předem nakonfigurované následující přípojné body:
 
 | Přípojný bod | Případ použití | 
@@ -192,7 +192,7 @@ Je předem nakonfigurované následující přípojné body:
 |/Hana/log/SID1/mnt00001 | Soubory protokolu instalace SID1 | 
 |/Hana/logbackups/SID1 | Znovu protokoly pro SID1 |
 |/Hana/Shared/SID2 | Instalace HANA SID2 | 
-|/Hana/data/SID2/mnt00001 | Datové soubory instalace SID2 | 
+|/hana/data/SID2/mnt00001 | Datové soubory instalace SID2 | 
 |/Hana/log/SID2/mnt00001 | Soubory protokolu instalace SID2 | 
 |/Hana/logbackups/SID2 | Znovu protokoly pro SID2 |
 
@@ -206,7 +206,7 @@ Tato topologie podporuje jeden uzel v vertikálního navýšení konfigurace s j
 
 ### <a name="architecture-diagram"></a>Diagram architektury  
 
-![Jeden uzel s dr.png](media/hana-supported-scenario/Single-node-with-dr.png)
+![Single-node-with-dr.png](media/hana-supported-scenario/Single-node-with-dr.png)
 
 ### <a name="ethernet"></a>Ethernet
 Následující síťová rozhraní jsou předem nakonfigurovány:
@@ -222,22 +222,22 @@ Následující síťová rozhraní jsou předem nakonfigurovány:
 | C | TYP II | síť VLAN < tenantNo + 1 > | team0.tenant + 1 | Uzel úložiště |
 | D | TYP II | síť VLAN < tenantNo + 3 > | team0.tenant + 3 | Nakonfigurované ale nepoužívá |
 
-### <a name="storage"></a>Úložiště
+### <a name="storage"></a>Storage
 Je předem nakonfigurované následující přípojné body:
 
 | Přípojný bod | Případ použití | 
 | --- | --- |
 |/Hana/Shared/SID | Instalace HANA pro identifikátor zabezpečení SID | 
-|/Hana/data/SID/mnt00001 | Nainstalujte datové soubory pro identifikátor zabezpečení SID | 
+|/hana/data/SID/mnt00001 | Nainstalujte datové soubory pro identifikátor zabezpečení SID | 
 |/Hana/log/SID/mnt00001 | Soubory protokolu instalace pro identifikátor zabezpečení SID | 
 |/Hana/logbackups/SID | Znovu protokoly pro identifikátor zabezpečení SID |
 
 
 ### <a name="key-considerations"></a>Klíčové aspekty
 - /USR/SAP/SID je symbolický odkaz na /hana/shared/SID.
-- U MCOS: Distribuce velikost svazku závisí vypnout velikost databáze v paměti. Odkazovat [přehled a architektura](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture) multisid prostředí podporuje části se dozvíte, jaké databáze o velikosti v paměti.
-- Na zotavení po Havárii: svazky a přípojné body se konfigurují (označené jako "Vyžadované pro instalaci HANA") pro produkční prostředí instalace HANA Instance na jednotku HLI zotavení po Havárii. 
-- Na zotavení po Havárii: data, logbackups a sdílené svazky (označené jako "Replikace úložiště") se replikují pomocí snímků z pracoviště. Jsou tyto svazky připojené během doby převzetí služeb při selhání. Další informace najdete v dokumentu [postup převzetí služeb při selhání pro zotavení po havárii](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-high-availability-disaster-recovery#disaster-recovery-failover-procedure) další podrobnosti.
+- Pro MCOS: Rozdělení velikosti svazku je založená velikosti databáze v paměti. Odkazovat [přehled a architektura](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture) multisid prostředí podporuje části se dozvíte, jaké databáze o velikosti v paměti.
+- Na zotavení po Havárii: Svazky a přípojné body se konfigurují (označené jako "Vyžadované pro instalaci HANA") pro produkční prostředí instalace HANA Instance na jednotku HLI zotavení po Havárii. 
+- Na zotavení po Havárii: Data, logbackups a sdílené svazky (označené jako "Replikace úložiště") se replikují pomocí snímků z pracoviště. Jsou tyto svazky připojené během doby převzetí služeb při selhání. Další informace najdete v dokumentu [postup převzetí služeb při selhání pro zotavení po havárii](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-high-availability-disaster-recovery) další podrobnosti.
 - Spouštěcí svazek pro **typ SKU můžu třídy** se replikuje do uzlu zotavení po Havárii.
 
 
@@ -247,7 +247,7 @@ Tato topologie podporuje jeden uzel v vertikálního navýšení konfigurace s j
 
 ### <a name="architecture-diagram"></a>Diagram architektury  
 
-![Single – uzlu s-zotavení po havárii – multipurpose.png](media/hana-supported-scenario/single-node-with-dr-multipurpose.png)
+![single-node-with-dr-multipurpose.png](media/hana-supported-scenario/single-node-with-dr-multipurpose.png)
 
 ### <a name="ethernet"></a>Ethernet
 Následující síťová rozhraní jsou předem nakonfigurovány:
@@ -263,31 +263,31 @@ Následující síťová rozhraní jsou předem nakonfigurovány:
 | C | TYP II | síť VLAN < tenantNo + 1 > | team0.tenant + 1 | Uzel úložiště |
 | D | TYP II | síť VLAN < tenantNo + 3 > | team0.tenant + 3 | Nakonfigurované ale nepoužívá |
 
-### <a name="storage"></a>Úložiště
+### <a name="storage"></a>Storage
 Je předem nakonfigurované následující přípojné body:
 
 | Přípojný bod | Případ použití | 
 | --- | --- |
 |**V primární lokalitě**|
 |/Hana/Shared/SID | HANA instalaci pro produkční prostředí SID | 
-|/Hana/data/SID/mnt00001 | Nainstalujte datové soubory pro produkční prostředí SID | 
+|/hana/data/SID/mnt00001 | Nainstalujte datové soubory pro produkční prostředí SID | 
 |/Hana/log/SID/mnt00001 | Soubory protokolu instalace pro produkční prostředí SID | 
 |/Hana/logbackups/SID | Protokoly pro produkční prostředí SID znovu: |
 |**V lokalitě zotavení po Havárii**|
 |/Hana/Shared/SID | HANA instalaci pro produkční prostředí SID | 
-|/Hana/data/SID/mnt00001 | Nainstalujte datové soubory pro produkční prostředí SID | 
+|/hana/data/SID/mnt00001 | Nainstalujte datové soubory pro produkční prostředí SID | 
 |/Hana/log/SID/mnt00001 | Soubory protokolu instalace pro produkční prostředí SID | 
 |/Hana/Shared/QA-SID | Instalace HANA pro identifikátor zabezpečení SID dotazů a odpovědí | 
-|/Hana/data/QA-SID/mnt00001 | Nainstalujte datové soubory pro identifikátor zabezpečení SID dotazů a odpovědí | 
+|/hana/data/QA-SID/mnt00001 | Nainstalujte datové soubory pro identifikátor zabezpečení SID dotazů a odpovědí | 
 |/Hana/log/QA-SID/mnt00001 | Soubory protokolu instalace pro identifikátor zabezpečení SID dotazů a odpovědí |
 |/Hana/logbackups/QA-SID | Znovu protokoly pro identifikátor zabezpečení SID dotazů a odpovědí |
 
 ### <a name="key-considerations"></a>Klíčové aspekty
 - /USR/SAP/SID je symbolický odkaz na /hana/shared/SID.
-- U MCOS: Distribuce velikost svazku závisí vypnout velikost databáze v paměti. Odkazovat [přehled a architektura](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture) multisid prostředí podporuje části se dozvíte, jaké databáze o velikosti v paměti.
-- Na zotavení po Havárii: svazky a přípojné body se konfigurují (označené jako "Vyžadované pro instalaci HANA") pro produkční prostředí instalace HANA Instance na jednotku HLI zotavení po Havárii. 
-- Na zotavení po Havárii: data, logbackups a sdílené svazky (označené jako "Replikace úložiště") se replikují pomocí snímků z pracoviště. Jsou tyto svazky připojené během doby převzetí služeb při selhání. Další informace najdete v dokumentu [postup převzetí služeb při selhání pro zotavení po havárii](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-high-availability-disaster-recovery#disaster-recovery-failover-procedure) další podrobnosti. 
-- Na zotavení po Havárii: data, logbackups, log, sdílené svazky pro kontrolu kvality (označené jako "QA Instance instalace") jsou nakonfigurované pro instalaci instance dotazů a odpovědí.
+- Pro MCOS: Rozdělení velikosti svazku je založená velikosti databáze v paměti. Odkazovat [přehled a architektura](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture) multisid prostředí podporuje části se dozvíte, jaké databáze o velikosti v paměti.
+- Na zotavení po Havárii: Svazky a přípojné body se konfigurují (označené jako "Vyžadované pro instalaci HANA") pro produkční prostředí instalace HANA Instance na jednotku HLI zotavení po Havárii. 
+- Na zotavení po Havárii: Data, logbackups a sdílené svazky (označené jako "Replikace úložiště") se replikují pomocí snímků z pracoviště. Jsou tyto svazky připojené během doby převzetí služeb při selhání. Další informace najdete v dokumentu [postup převzetí služeb při selhání pro zotavení po havárii](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-high-availability-disaster-recovery) další podrobnosti. 
+- Na zotavení po Havárii: Data, logbackups, log, sdílené svazky pro kontrolu kvality (označené jako "QA Instance instalace") jsou nakonfigurované pro instalaci instance dotazů a odpovědí.
 - Spouštěcí svazek pro **typ SKU můžu třídy** se replikuje do uzlu zotavení po Havárii.
 
 ## <a name="5-hsr-with-stonith"></a>5. HSR s využitím techniky STONITH
@@ -299,7 +299,7 @@ Tato topologie podporují dva uzly pro konfiguraci HANA System Replication (HSR)
 
 ### <a name="architecture-diagram"></a>Diagram architektury  
 
-![HSR s STONITH.png](media/hana-supported-scenario/HSR-with-STONITH.png)
+![HSR-with-STONITH.png](media/hana-supported-scenario/HSR-with-STONITH.png)
 
 
 
@@ -317,26 +317,26 @@ Následující síťová rozhraní jsou předem nakonfigurovány:
 | C | TYP II | síť VLAN < tenantNo + 1 > | team0.tenant + 1 | Uzel úložiště |
 | D | TYP II | síť VLAN < tenantNo + 3 > | team0.tenant + 3 | Používá pro využitím techniky STONITH |
 
-### <a name="storage"></a>Úložiště
+### <a name="storage"></a>Storage
 Je předem nakonfigurované následující přípojné body:
 
 | Přípojný bod | Případ použití | 
 | --- | --- |
 |**Na primárním uzlu**|
 |/Hana/Shared/SID | HANA instalaci pro produkční prostředí SID | 
-|/Hana/data/SID/mnt00001 | Nainstalujte datové soubory pro produkční prostředí SID | 
+|/hana/data/SID/mnt00001 | Nainstalujte datové soubory pro produkční prostředí SID | 
 |/Hana/log/SID/mnt00001 | Soubory protokolu instalace pro produkční prostředí SID | 
 |/Hana/logbackups/SID | Protokoly pro produkční prostředí SID znovu: |
 |**Na sekundárním uzlu**|
 |/Hana/Shared/SID | HANA instalace pro sekundární SID | 
-|/Hana/data/SID/mnt00001 | Datové soubory instalace pro sekundární SID | 
+|/hana/data/SID/mnt00001 | Datové soubory instalace pro sekundární SID | 
 |/Hana/log/SID/mnt00001 | Soubory protokolu instalace pro sekundární SID | 
 |/Hana/logbackups/SID | Znovu protokoly pro sekundární SID |
 
 ### <a name="key-considerations"></a>Klíčové aspekty
 - /USR/SAP/SID je symbolický odkaz na /hana/shared/SID.
-- U MCOS: Distribuce velikost svazku závisí vypnout velikost databáze v paměti. Odkazovat [přehled a architektura](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture) multisid prostředí podporuje části se dozvíte, jaké databáze o velikosti v paměti.
-- Využitím techniky STONITH: SBD je nakonfigurován pro instalační program využitím techniky STONITH. Nicméně použití využitím techniky STONITH je volitelný.
+- Pro MCOS: Rozdělení velikosti svazku je založená velikosti databáze v paměti. Odkazovat [přehled a architektura](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture) multisid prostředí podporuje části se dozvíte, jaké databáze o velikosti v paměti.
+- STONITH: SBD je nakonfigurovaný pro nastavení využitím techniky STONITH. Nicméně použití využitím techniky STONITH je volitelný.
 
 
 ## <a name="6-hsr-with-dr"></a>6. HSR pomocí zotavení po Havárii
@@ -349,7 +349,7 @@ V diagramu multipurpose scénář je znázorněn tam, kde v lokalitě zotavení 
 
 ### <a name="architecture-diagram"></a>Diagram architektury  
 
-![HSR s DR.png](media/hana-supported-scenario/HSR-with-DR.png)
+![HSR-with-DR.png](media/hana-supported-scenario/HSR-with-DR.png)
 
 ### <a name="ethernet"></a>Ethernet
 Následující síťová rozhraní jsou předem nakonfigurovány:
@@ -365,38 +365,38 @@ Následující síťová rozhraní jsou předem nakonfigurovány:
 | C | TYP II | síť VLAN < tenantNo + 1 > | team0.tenant + 1 | Uzel úložiště |
 | D | TYP II | síť VLAN < tenantNo + 3 > | team0.tenant + 3 | Používá pro využitím techniky STONITH |
 
-### <a name="storage"></a>Úložiště
+### <a name="storage"></a>Storage
 Je předem nakonfigurované následující přípojné body:
 
 | Přípojný bod | Případ použití | 
 | --- | --- |
 |**Na primárním uzlu v primární lokalitě**|
 |/Hana/Shared/SID | HANA instalaci pro produkční prostředí SID | 
-|/Hana/data/SID/mnt00001 | Nainstalujte datové soubory pro produkční prostředí SID | 
+|/hana/data/SID/mnt00001 | Nainstalujte datové soubory pro produkční prostředí SID | 
 |/Hana/log/SID/mnt00001 | Soubory protokolu instalace pro produkční prostředí SID | 
 |/Hana/logbackups/SID | Protokoly pro produkční prostředí SID znovu: |
 |**Na sekundárním uzlu v primární lokalitě**|
 |/Hana/Shared/SID | HANA instalace pro sekundární SID | 
-|/Hana/data/SID/mnt00001 | Datové soubory instalace pro sekundární SID | 
+|/hana/data/SID/mnt00001 | Datové soubory instalace pro sekundární SID | 
 |/Hana/log/SID/mnt00001 | Soubory protokolu instalace pro sekundární SID | 
 |/Hana/logbackups/SID | Znovu protokoly pro sekundární SID |
 |**V lokalitě zotavení po Havárii**|
 |/Hana/Shared/SID | HANA instalaci pro produkční prostředí SID | 
-|/Hana/data/SID/mnt00001 | Nainstalujte datové soubory pro produkční prostředí SID | 
+|/hana/data/SID/mnt00001 | Nainstalujte datové soubory pro produkční prostředí SID | 
 |/Hana/log/SID/mnt00001 | Soubory protokolu instalace pro produkční prostředí SID | 
 |/Hana/Shared/QA-SID | Instalace HANA pro identifikátor zabezpečení SID dotazů a odpovědí | 
-|/Hana/data/QA-SID/mnt00001 | Nainstalujte datové soubory pro identifikátor zabezpečení SID dotazů a odpovědí | 
+|/hana/data/QA-SID/mnt00001 | Nainstalujte datové soubory pro identifikátor zabezpečení SID dotazů a odpovědí | 
 |/Hana/log/QA-SID/mnt00001 | Soubory protokolu instalace pro identifikátor zabezpečení SID dotazů a odpovědí |
 |/Hana/logbackups/QA-SID | Znovu protokoly pro identifikátor zabezpečení SID dotazů a odpovědí |
 
 ### <a name="key-considerations"></a>Klíčové aspekty
 - /USR/SAP/SID je symbolický odkaz na /hana/shared/SID.
-- U MCOS: Distribuce velikost svazku závisí vypnout velikost databáze v paměti. Odkazovat [přehled a architektura](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture) multisid prostředí podporuje části se dozvíte, jaké databáze o velikosti v paměti.
-- Využitím techniky STONITH: SBD je nakonfigurován pro instalační program využitím techniky STONITH. Nicméně použití využitím techniky STONITH je volitelný.
-- Na zotavení po Havárii: **dvě sady úložiště svazky jsou požadovány** pro replikaci primárního a sekundárního uzlu.
-- Na zotavení po Havárii: svazky a přípojné body se konfigurují (označené jako "Vyžadované pro instalaci HANA") pro produkční prostředí instalace HANA Instance na jednotku HLI zotavení po Havárii. 
-- Na zotavení po Havárii: data, logbackups a sdílené svazky (označené jako "Replikace úložiště") se replikují pomocí snímků z pracoviště. Jsou tyto svazky připojené během doby převzetí služeb při selhání. Další informace najdete v dokumentu [postup převzetí služeb při selhání pro zotavení po havárii](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-high-availability-disaster-recovery#disaster-recovery-failover-procedure) další podrobnosti. 
-- Na zotavení po Havárii: data, logbackups, log, sdílené svazky pro kontrolu kvality (označené jako "QA Instance instalace") jsou nakonfigurované pro instalaci instance dotazů a odpovědí.
+- Pro MCOS: Rozdělení velikosti svazku je založená velikosti databáze v paměti. Odkazovat [přehled a architektura](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture) multisid prostředí podporuje části se dozvíte, jaké databáze o velikosti v paměti.
+- STONITH: SBD je nakonfigurovaný pro nastavení využitím techniky STONITH. Nicméně použití využitím techniky STONITH je volitelný.
+- Na zotavení po Havárii: **Dvě sady úložiště svazky jsou požadovány** pro replikaci primárního a sekundárního uzlu.
+- Na zotavení po Havárii: Svazky a přípojné body se konfigurují (označené jako "Vyžadované pro instalaci HANA") pro produkční prostředí instalace HANA Instance na jednotku HLI zotavení po Havárii. 
+- Na zotavení po Havárii: Data, logbackups a sdílené svazky (označené jako "Replikace úložiště") se replikují pomocí snímků z pracoviště. Jsou tyto svazky připojené během doby převzetí služeb při selhání. Další informace najdete v dokumentu [postup převzetí služeb při selhání pro zotavení po havárii](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-high-availability-disaster-recovery) další podrobnosti. 
+- Na zotavení po Havárii: Data, logbackups, log, sdílené svazky pro kontrolu kvality (označené jako "QA Instance instalace") jsou nakonfigurované pro instalaci instance dotazů a odpovědí.
 - Spouštěcí svazek pro **typ SKU můžu třídy** se replikuje do uzlu zotavení po Havárii.
 
 
@@ -408,7 +408,7 @@ Tato topologie podporuje dva uzly v konfiguraci automatického převzetí služe
 
 ### <a name="architecture-diagram"></a>Diagram architektury  
 
-![SCA](media/hana-supported-scenario/scaleup-with-standby.png)
+![sca](media/hana-supported-scenario/scaleup-with-standby.png)
 
 ### <a name="ethernet"></a>Ethernet
 Následující síťová rozhraní jsou předem nakonfigurovány:
@@ -424,14 +424,14 @@ Následující síťová rozhraní jsou předem nakonfigurovány:
 | C | TYP II | síť VLAN < tenantNo + 1 > | team0.tenant + 1 | Uzel úložiště |
 | D | TYP II | síť VLAN < tenantNo + 3 > | team0.tenant + 3 | Nakonfigurované ale nepoužívá |
 
-### <a name="storage"></a>Úložiště
+### <a name="storage"></a>Storage
 Je předem nakonfigurované následující přípojné body:
 
 | Přípojný bod | Případ použití | 
 | --- | --- |
 |**Na hlavní a pohotovostní uzly**|
 |/ hana/sdílené | HANA instalaci pro produkční prostředí SID | 
-|/Hana/data/SID/mnt00001 | Nainstalujte datové soubory pro produkční prostředí SID | 
+|/hana/data/SID/mnt00001 | Nainstalujte datové soubory pro produkční prostředí SID | 
 |/Hana/log/SID/mnt00001 | Soubory protokolu instalace pro produkční prostředí SID | 
 |/Hana/logbackups/SID | Protokoly pro produkční prostředí SID znovu: |
 
@@ -439,7 +439,7 @@ Je předem nakonfigurované následující přípojné body:
 
 ### <a name="key-considerations"></a>Klíčové aspekty
 - /USR/SAP/SID je symbolický odkaz na /hana/shared/SID.
-- V pohotovostním režimu: svazky a přípojné body se konfigurují (označené jako "Vyžadované pro instalaci HANA") pro instalaci HANA Instance na pohotovostní jednotky.
+- V pohotovostním režimu: Svazky a přípojné body se konfigurují (označené jako "Vyžadované pro instalaci HANA") pro instalaci HANA Instance na pohotovostní jednotky.
  
 
 ## <a name="8-scale-out-with-standby"></a>8. Horizontální navýšení kapacity s pohotovostním režimem:
@@ -465,14 +465,14 @@ Následující síťová rozhraní jsou předem nakonfigurovány:
 | C | TYP II | síť VLAN < tenantNo + 1 > | team0.tenant + 1 | Uzel úložiště |
 | D | TYP II | síť VLAN < tenantNo + 3 > | team0.tenant + 3 | Nakonfigurované ale nepoužívá |
 
-### <a name="storage"></a>Úložiště
+### <a name="storage"></a>Storage
 Je předem nakonfigurované následující přípojné body:
 
 | Přípojný bod | Případ použití | 
 | --- | --- |
 |**Na uzlech master, pracovních procesů a pohotovostní režim**|
 |/ hana/sdílené | HANA instalaci pro produkční prostředí SID | 
-|/Hana/data/SID/mnt00001 | Nainstalujte datové soubory pro produkční prostředí SID | 
+|/hana/data/SID/mnt00001 | Nainstalujte datové soubory pro produkční prostředí SID | 
 |/Hana/log/SID/mnt00001 | Soubory protokolu instalace pro produkční prostředí SID | 
 |/Hana/logbackups/SID | Protokoly pro produkční prostředí SID znovu: |
 
@@ -484,7 +484,7 @@ Tato topologie podporuje více uzlů v konfiguraci horizontální navýšení ka
 
 ### <a name="architecture-diagram"></a>Diagram architektury  
 
-![nm.png horizontálním navýšením kapacity](media/hana-supported-scenario/scaleout-nm.png)
+![scaleout-nm.png](media/hana-supported-scenario/scaleout-nm.png)
 
 
 ### <a name="ethernet"></a>Ethernet
@@ -501,14 +501,14 @@ Následující síťová rozhraní jsou předem nakonfigurovány:
 | C | TYP II | síť VLAN < tenantNo + 1 > | team0.tenant + 1 | Uzel úložiště |
 | D | TYP II | síť VLAN < tenantNo + 3 > | team0.tenant + 3 | Nakonfigurované ale nepoužívá |
 
-### <a name="storage"></a>Úložiště
+### <a name="storage"></a>Storage
 Je předem nakonfigurované následující přípojné body:
 
 | Přípojný bod | Případ použití | 
 | --- | --- |
 |**Na hlavní server a pracovní uzly**|
 |/ hana/sdílené | HANA instalaci pro produkční prostředí SID | 
-|/Hana/data/SID/mnt00001 | Nainstalujte datové soubory pro produkční prostředí SID | 
+|/hana/data/SID/mnt00001 | Nainstalujte datové soubory pro produkční prostředí SID | 
 |/Hana/log/SID/mnt00001 | Soubory protokolu instalace pro produkční prostředí SID | 
 |/Hana/logbackups/SID | Protokoly pro produkční prostředí SID znovu: |
 
@@ -523,7 +523,7 @@ Tato topologie podporuje více uzlů v škálování se zotavení po Havárii. N
 
 ### <a name="architecture-diagram"></a>Diagram architektury  
 
-![škálování s dr.png](media/hana-supported-scenario/scaleout-with-dr.png)
+![scaleout-with-dr.png](media/hana-supported-scenario/scaleout-with-dr.png)
 
 
 ### <a name="ethernet"></a>Ethernet
@@ -540,26 +540,26 @@ Následující síťová rozhraní jsou předem nakonfigurovány:
 | C | TYP II | síť VLAN < tenantNo + 1 > | team0.tenant + 1 | Uzel úložiště |
 | D | TYP II | síť VLAN < tenantNo + 3 > | team0.tenant + 3 | Nakonfigurované ale nepoužívá |
 
-### <a name="storage"></a>Úložiště
+### <a name="storage"></a>Storage
 Je předem nakonfigurované následující přípojné body:
 
 | Přípojný bod | Případ použití | 
 | --- | --- |
 |**Na primárním uzlu**|
 |/ hana/sdílené | HANA instalaci pro produkční prostředí SID | 
-|/Hana/data/SID/mnt00001 | Nainstalujte datové soubory pro produkční prostředí SID | 
+|/hana/data/SID/mnt00001 | Nainstalujte datové soubory pro produkční prostředí SID | 
 |/Hana/log/SID/mnt00001 | Soubory protokolu instalace pro produkční prostředí SID | 
 |/Hana/logbackups/SID | Protokoly pro produkční prostředí SID znovu: |
 |**V uzlu zotavení po Havárii**|
 |/ hana/sdílené | HANA instalaci pro produkční prostředí SID | 
-|/Hana/data/SID/mnt00001 | Nainstalujte datové soubory pro produkční prostředí SID | 
+|/hana/data/SID/mnt00001 | Nainstalujte datové soubory pro produkční prostředí SID | 
 |/Hana/log/SID/mnt00001 | Soubory protokolu instalace pro produkční prostředí SID | 
 
 
 ### <a name="key-considerations"></a>Klíčové aspekty
 - /USR/SAP/SID je symbolický odkaz na /hana/shared/SID.
--  Na zotavení po Havárii: svazky a přípojné body se konfigurují (označené jako "Vyžadované pro instalaci HANA") pro produkční prostředí instalace HANA Instance na jednotku HLI zotavení po Havárii. 
-- Na zotavení po Havárii: data, logbackups a sdílené svazky (označené jako "Replikace úložiště") se replikují pomocí snímků z pracoviště. Jsou tyto svazky připojené během doby převzetí služeb při selhání. Další informace najdete v dokumentu [postup převzetí služeb při selhání pro zotavení po havárii](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-high-availability-disaster-recovery#disaster-recovery-failover-procedure) další podrobnosti. 
+-  Na zotavení po Havárii: Svazky a přípojné body se konfigurují (označené jako "Vyžadované pro instalaci HANA") pro produkční prostředí instalace HANA Instance na jednotku HLI zotavení po Havárii. 
+- Na zotavení po Havárii: Data, logbackups a sdílené svazky (označené jako "Replikace úložiště") se replikují pomocí snímků z pracoviště. Jsou tyto svazky připojené během doby převzetí služeb při selhání. Další informace najdete v dokumentu [postup převzetí služeb při selhání pro zotavení po havárii](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-high-availability-disaster-recovery) další podrobnosti. 
 - Spouštěcí svazek pro **typ SKU můžu třídy** se replikuje do uzlu zotavení po Havárii.
 
 

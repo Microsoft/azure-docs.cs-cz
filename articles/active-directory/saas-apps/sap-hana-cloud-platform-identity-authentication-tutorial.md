@@ -4,7 +4,7 @@ description: Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.reviewer: joflore
 ms.assetid: 1c1320d1-7ba4-4b5f-926f-4996b44d9b5e
 ms.service: active-directory
@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/03/2018
 ms.author: jeedes
-ms.openlocfilehash: 266c9523f45294899e3cddbe782cbc54846eb119
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: ecd9df8efdcd6d7fd7da26ff5cf569ef7e63573f
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39422303"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54822055"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sap-cloud-platform-identity-authentication"></a>Kurz: Integrace Azure Active Directory s ověřováním identit cloudové platformy SAP
 
@@ -188,7 +188,7 @@ V této části Povolení služby Azure AD jednotného přihlašování na port�
 
     ![Konfigurace propojené přihlašování](./media/sap-hana-cloud-platform-identity-authentication-tutorial/linked_sign_on.png)
 
-1. Uložte konfiguraci.
+1. Konfiguraci uložte.
 
 >[!NOTE] 
 >Nová aplikace využívá konfiguraci jednotné přihlašování předtím u aplikace SAP. Ujistěte se, že používáte stejné podnikové zprostředkovatelé Identity v konzole pro správu ověřováním identit cloudové platformy SAP.
@@ -269,7 +269,7 @@ V této části je povolit Britta Simon používat jednotné přihlašování Az
 
 1. Vyberte **přiřadit** tlačítko **přidat přiřazení** dialogové okno.
     
-### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování
+### <a name="test-single-sign-on"></a>Test jednotného přihlašování
 
 V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 
@@ -277,7 +277,7 @@ Když vyberete dlaždici ověřováním identit cloudové platformy SAP na pří
 
 Další informace o přístupovém panelu, naleznete v tématu [Úvod k přístupovému panelu](../user-help/active-directory-saas-access-panel-introduction.md). 
 
-## <a name="additional-resources"></a>Další zdroje informací:
+## <a name="additional-resources"></a>Další materiály
 
 * [Seznam kurzů o integraci aplikací SaaS pomocí Azure Active Directory](tutorial-list.md)
 * [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](../manage-apps/what-is-single-sign-on.md)

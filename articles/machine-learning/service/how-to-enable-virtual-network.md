@@ -1,7 +1,7 @@
 ---
-title: Spouštění experimentů a odvozování ve virtuální síti
+title: Spouštění experimentů & odvození ve virtuální síti
 titleSuffix: Azure Machine Learning service
-description: Zjistěte, jak bezpečně spouštět experimenty strojového učení a odvozování uvnitř virtuální sítě Azure. V tomto článku se naučíte, jak vytvořit cílových výpočetních prostředí použít k trénování modelů a provádět odvozování uvnitř virtuální sítě Azure. Popisuje také požadavky pro zabezpečené virtuální sítě, jako například požadovat příchozí a odchozí porty.
+description: Spouštět experimenty strojového učení a odvozování zabezpečení ve službě Azure Virtual Network. Zjistěte, jak vytvořit cílových výpočetních prostředí pro trénování modelu a jak odvození v rámci virtuální sítě Azure. Popisuje také požadavky pro zabezpečené virtuální sítě, jako například požadovat příchozí a odchozí porty.
 services: machine-learning
 ms.service: machine-learning
 ms.component: core
@@ -10,12 +10,12 @@ ms.reviewer: jmartens
 ms.author: aashishb
 author: aashishb
 ms.date: 01/08/2019
-ms.openlocfilehash: 1890f830f9b2a4b108328de056636335fd3746e3
-ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
+ms.openlocfilehash: 21c4a9042a64a58f67f1f94c300b6438895eea5d
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/12/2019
-ms.locfileid: "54248897"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54856277"
 ---
 # <a name="securely-run-experiments-and-inferencing-inside-an-azure-virtual-network"></a>Bezpečné spuštění experimentů a odvozování uvnitř virtuální sítě Azure
 
@@ -149,7 +149,7 @@ Použití virtuálního počítače nebo clusteru HDInsight ve virtuální síti
 
     * __Zdroj__: Vyberte __Značka služby__.
 
-    * __Značka zdrojové služby__: Vyberte __AzureMachineLearning__
+    * __Značka zdrojové služby__: Select __AzureMachineLearning__
 
     * __Zdrojové rozsahy portů__: Vyberte __*__
 

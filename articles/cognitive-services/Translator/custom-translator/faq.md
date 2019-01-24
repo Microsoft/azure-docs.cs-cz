@@ -9,12 +9,12 @@ ms.component: custom-translator
 ms.date: 11/13/2018
 ms.author: v-rada
 ms.topic: reference
-ms.openlocfilehash: 38ebde9179d79c091edb269c1be4c9c956f34006
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: 415866bc4ef396a1b9397c4996d65cf10d78400b
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51627304"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54854781"
 ---
 # <a name="frequently-asked-questions"></a>Nejčastější dotazy
 
@@ -46,7 +46,7 @@ Nasazené systémy přístupné prostřednictvím Microsoft Translator Text API 
 
 ## <a name="how-do-i-skip-alignment-and-sentence-breaking-if-my-data-is-already-sentence-aligned"></a>Jak přeskočit zarovnání a rozdělení dat je již věty zarovnané věty?
 
-Vlastní překladač přeskočí zarovnání věty a větu zásadní pro soubory TMX a vyhledat textové soubory s `.align` rozšíření. `.align` soubory uživatelům možnost vlastní Translator věty dopadem na dřívější kód a zarovnání proces pro soubory, které jsou perfektně zarovnaný a nutné žádné další zpracování. Doporučujeme používat `.align` rozšíření pouze pro soubory, které jsou perfektně zarovnaný.
+Vlastní překladač přeskočí zarovnání věty a větu zásadní pro soubory TMX a vyhledat textové soubory s `.align` rozšíření. `.align` soubory uživatelům možnost pro přeskočení vlastní Translator věty dopadem na dřívější kód a zarovnání proces pro soubory, které jsou perfektně zarovnaný a nutné žádné další zpracování. Doporučujeme používat `.align` rozšíření pouze pro soubory, které jsou perfektně zarovnaný.
 
 Pokud počet extrahované věty se neshoduje s dva soubory se stejný základní název, vlastní Translator bude stále spuštěn aligner větu `.align` soubory.
 

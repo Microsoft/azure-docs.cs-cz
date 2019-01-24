@@ -8,15 +8,15 @@ ms.topic: article
 ms.date: 01/23/2017
 ms.author: muralikk
 ms.component: common
-ms.openlocfilehash: 0d58a384a6ca7c249a3b0e8b690095202fe373a2
-ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
+ms.openlocfilehash: 8a5c25cd5836c3bde630684eff24da7dc8b62fc6
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/19/2019
-ms.locfileid: "54413613"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54855801"
 ---
 # <a name="diagnostics-and-error-recovery-for-azure-importexport-jobs"></a>Diagnostika a zotavení z chyb pro úlohy Azure Import/Export
-Pro každou jednotku zpracována služba Azure Import/Export vytvoří protokol chyb do přidruženého účtu úložiště. Můžete také povolit podrobné protokolování tak, že nastavíte `LogLevel` vlastnost `Verbose` při volání [úlohy umístit](/rest/api/storageimportexport/jobs#Jobs_CreateOrUpdate) nebo [aktualizovat vlastnosti úlohy](/rest/api/storageimportexport/jobs#Jobs_Update) operace.
+Pro každou jednotku zpracována služba Azure Import/Export vytvoří protokol chyb do přidruženého účtu úložiště. Můžete také povolit podrobné protokolování tak, že nastavíte `LogLevel` vlastnost `Verbose` při volání [úlohy umístit](/rest/api/storageimportexport/jobs) nebo [aktualizovat vlastnosti úlohy](/rest/api/storageimportexport/jobs) operace.
 
  Ve výchozím nastavení, protokoly se zapisují do kontejneru s názvem `waimportexport`. Můžete zadat jiný název tak, že nastavíte `DiagnosticsPath` vlastnost při volání `Put Job` nebo `Update Job Properties` operace. Protokoly se ukládají jako objekty BLOB bloku s následujícími zásadami vytváření názvů: `waies/jobname_driveid_timestamp_logtype.xml`.
 

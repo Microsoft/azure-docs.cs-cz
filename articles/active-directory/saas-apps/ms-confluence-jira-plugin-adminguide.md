@@ -4,7 +4,7 @@ description: Příručka pro správce pro použití s Azure Active Directory (Az
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.reviewer: joflore
 ms.service: active-directory
 ms.workload: identity
@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/19/2018
 ms.author: jeedes
-ms.openlocfilehash: 65649c3fdc11d74b5888b26b81ae85e10f2788bd
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.openlocfilehash: 77aba012d4e8d333d6f57f8f6a7a12927e6a35ec
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52426872"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54820542"
 ---
 # <a name="atlassian-jira-and-confluence-admin-guide-for-azure-active-directory"></a>Od společnosti Atlassian Jira a Confluence příručky pro správce Azure Active Directory
 
@@ -109,39 +109,39 @@ Na obrazovce pro konfiguraci v systému Jira a Confluence na následujícím obr
 
 ![Obrazovka Konfigurace modulu plug-in](./media/ms-confluence-jira-plugin-adminguide/jira.png)
 
-*   **Adresa URL metadat**: adresa URL federačních metadat získat ze služby Azure AD.
+*   **Adresa URL metadat**: Adresa URL federačních metadat získat ze služby Azure AD.
 
-*   **Identifikátory**: adresa URL služby Azure AD používá ověřit zdroj požadavku. Mapuje **identifikátor** element ve službě Azure AD. Modul plug-in automaticky odvozuje tuto adresu URL jako https://*< domény: port >*/.
+*   **Identifikátory**: Adresa URL, která používá Azure AD ověřit zdroj požadavku. Mapuje **identifikátor** element ve službě Azure AD. Modul plug-in automaticky odvozuje tuto adresu URL jako https://*< domény: port >*/.
 
-*   **Adresa URL pro odpověď**: adresa URL odpovědi ve zprostředkovateli identity (IdP), která inicializuje přihlášení SAML. Mapuje **adresy URL odpovědi** element ve službě Azure AD. Modul plug-in automaticky odvozuje tuto adresu URL jako https://*< domény: port >*/plugins/servlet/saml/auth.
+*   **Adresa URL pro odpověď**: Adresa URL odpovědi ve zprostředkovateli identity (IdP), která inicializuje přihlášení SAML. Mapuje **adresy URL odpovědi** element ve službě Azure AD. Modul plug-in automaticky odvozuje tuto adresu URL jako https://*< domény: port >*/plugins/servlet/saml/auth.
 
-*   **Přihlašovací adresa URL**: adresu URL přihlašování svého zprostředkovatele identity, který iniciuje přihlášení SAML. Mapuje **přihlašování** element ve službě Azure AD. Modul plug-in automaticky odvozuje tuto adresu URL jako https://*< domény: port >*/plugins/servlet/saml/auth.
+*   **Přihlašovací adresa URL**: Přihlašovací adresa URL v svého zprostředkovatele identity, který iniciuje přihlášení SAML. Mapuje **přihlašování** element ve službě Azure AD. Modul plug-in automaticky odvozuje tuto adresu URL jako https://*< domény: port >*/plugins/servlet/saml/auth.
 
-*   **IdP Entity ID**: ID entity, která používá svého zprostředkovatele identity. Toto pole se vyplní když adresa URL metadat je vyřešený.
+*   **ID IdP Entity**: ID entity, která používá svého zprostředkovatele identity. Toto pole se vyplní když adresa URL metadat je vyřešený.
 
-*   **Adresa URL pro přihlášení**: adresu URL přihlásit ze svého zprostředkovatele identity. Toto pole se naplní ze služby Azure AD, pokud je adresa URL metadat vyřešit.
+*   **Adresa URL pro přihlášení**: Přihlašovací adresa URL ze svého zprostředkovatele identity. Toto pole se naplní ze služby Azure AD, pokud je adresa URL metadat vyřešit.
 
-*   **Odhlašovací adresa URL**: adresu URL pro odhlášení z svého zprostředkovatele identity. Toto pole se naplní ze služby Azure AD, pokud je adresa URL metadat vyřešit.
+*   **Odhlašovací adresa URL**: Odhlašovací adresa URL ze svého zprostředkovatele identity. Toto pole se naplní ze služby Azure AD, pokud je adresa URL metadat vyřešit.
 
-*   **Certifikát X.509**: certifikát X.509 vašeho zprostředkovatele identity. Toto pole se naplní ze služby Azure AD, pokud je adresa URL metadat vyřešit.
+*   **Certifikát X.509**: Certifikát X.509 svého zprostředkovatele identity. Toto pole se naplní ze služby Azure AD, pokud je adresa URL metadat vyřešit.
 
-*   **Přihlašovací jméno tlačítko**: název přihlašovací tlačítko, které vaše organizace chce, aby se uživatelům zobrazit na přihlašovací stránku.
+*   **Přihlašovací jméno tlačítko**: Název tlačítka přihlašování, které vaše organizace chce, aby se uživatelům zobrazit na přihlašovací stránku.
 
-*   **Umístění ID uživatele SAML**: umístění, kde se očekává ID uživatele Jira nebo Confluence odpověď SAML. Může být v **NameID** nebo v názvu vlastního atributu.
+*   **Umístění ID uživatele SAML**: Umístění, kde se očekává ID uživatele Jira nebo Confluence odpověď SAML. Může být v **NameID** nebo v názvu vlastního atributu.
 
-*   **Atribut název**: název atributu, kde se očekává ID uživatele.
+*   **Atribut název**: Název atributu, kde se očekává ID uživatele.
 
-*   **Povolit zjišťování domovské sféry**: výběr, ujistěte se, pokud společnost používá služby Active Directory Federation Services (AD FS) - based sign - v.
+*   **Zjišťování povolit domovské sféry**: Výběr, ujistěte se, pokud společnost používá služby Active Directory Federation Services (AD FS) - based sign - v.
 
-*   **Název domény**: název domény při přihlášení na základě služby AD FS.
+*   **Domain Name**: Pokud přihlášení je název domény na základě služby AD FS.
 
 *   **Povolit jednotné odhlášení**: Ujistěte se, pokud se chcete odhlásit se ze služby Azure AD při odhlášení uživatele ze systému Jira nebo Confluence výběru.
 
 ## <a name="troubleshooting"></a>Řešení potíží
 
-* **Více chyby certifikátu**: Přihlaste se k Azure AD a odebírat více certifikátů, které jsou k dispozici pro aplikaci. Ujistěte se, že je k dispozici pouze jeden certifikát.
+* **Více chyby certifikátu**: Přihlaste se k Azure AD a odebrat víc certifikátů, které jsou k dispozici pro aplikaci. Ujistěte se, že je k dispozici pouze jeden certifikát.
 
-* **Certifikátu brzy vyprší platnost ve službě Azure AD**: doplňky postará o automatické výměny certifikátu. Pokud certifikátu brzy vyprší platnost, nový certifikát by měl být označena jako aktivní a nepoužívané certifikáty by měly být odstraněny. Když uživatel se pokusí přihlásit do nástroje Jira v tomto scénáři, modul plug-in načte a uloží nový certifikát.
+* **Certifikátu brzy vyprší platnost ve službě Azure AD**: Doplňky se postará o automatické výměny certifikátu. Pokud certifikátu brzy vyprší platnost, nový certifikát by měl být označena jako aktivní a nepoužívané certifikáty by měly být odstraněny. Když uživatel se pokusí přihlásit do nástroje Jira v tomto scénáři, modul plug-in načte a uloží nový certifikát.
 
 * **Chcete zakázat WebSudo (zakázání relace zabezpečení správce)**:
 
@@ -157,11 +157,11 @@ Na obrazovce pro konfiguraci v systému Jira a Confluence na následujícím obr
 
 * **Je interní chybu serveru**: Zkontrolujte protokoly v adresáři protokolu instalace. Pokud dochází k chybě při pokusu uživatele o přihlášení pomocí jednotného přihlašování k Azure AD, můžete protokoly sdílet se na tým podpory.
 
-* **Když se uživatel pokusí přihlásit dochází k chybě "ID uživatele nebyl nalezen"**: vytvořit ID uživatele v systému Jira nebo Confluence.
+* **Když se uživatel pokusí přihlásit dochází k chybě "ID uživatele nebyl nalezen"**: Vytvořte ID uživatele v systému Jira nebo Confluence.
 
-* **Ve službě Azure AD je chyba "Aplikace nebyla nalezena"**: zobrazit, pokud příslušné adrese URL se mapuje na aplikaci ve službě Azure AD.
+* **Ve službě Azure AD je chyba "Aplikace nebyla nalezena"**: Podívejte se, pokud příslušné adrese URL se mapuje na aplikaci ve službě Azure AD.
 
-* **Potřebujete podporu**: oslovení [týmu Integrace jednotného přihlašování k Azure AD](<mailto:SaaSApplicationIntegrations@service.microsoft.com>). Tým odpovídá ve 24 nebo 48 pracovní doby.
+* **Potřebujete podporu**: Oslovení [týmu Integrace jednotného přihlašování k Azure AD](<mailto:SaaSApplicationIntegrations@service.microsoft.com>). Tým odpovídá ve 24 nebo 48 pracovní doby.
 
   Můžete také zvýšit lístek podpory s Microsoftem přes Azure portal kanál.
 

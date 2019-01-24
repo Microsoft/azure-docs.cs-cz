@@ -11,12 +11,12 @@ ms.component: core
 ms.topic: conceptual
 ms.date: 01/08/2019
 ms.custom: seodec18
-ms.openlocfilehash: 981f974450c6761b7e649838abb52acaa9d37067
-ms.sourcegitcommit: ba9f95cf821c5af8e24425fd8ce6985b998c2982
+ms.openlocfilehash: 865d00d4a6608e422fdfca1297962913ee205827
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54382770"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54823432"
 ---
 # <a name="configure-automated-machine-learning-experiments"></a>Konfigurace automatizovaného se strojovým učením
 
@@ -235,7 +235,7 @@ Vlastnost |  Popis | Výchozí hodnota
 `model_explainability` | _Volitelné_ True nebo False <br/>  Hodnota TRUE povolí experimentovat provádět funkce důležitosti pro každou iteraci. Metoda explain_model() konkrétní iteraci slouží také povolit funkci důležitost na vyžádání pro danou iteraci po dokončení testu. | False
 `enable_ensembling`|Příznak pro povolení iterace ensembling po dokončení všech iterací.| True 
 `ensemble_iterations`|Počet iterací, během kterých jsme zvolili vybavené kanálu jako součást konečné skupiny stromů.| 15
-`experiment_timeout_minutes`| Omezuje množství času (minues), který může mít celý běh experimentu | Žádný
+`experiment_timeout_minutes`| Omezuje množství času (v minutách), který může mít celý běh experimentu | Žádný
 
 ## <a name="data-pre-processing-and-featurization"></a>Předběžné zpracování dat a snadné
 
@@ -275,7 +275,7 @@ Tyto metriky jsou uloženy v každé iteraci pro úlohu klasifikace.
 |Primární metriku|Popis|Výpočet|Další parametry
 --|--|--|--|
 AUC_Macro| AUC je oblasti pod křivkou charakteristiku provozní příjemce. Makro je aritmetický průměr AUC pro každou třídu.  | [Výpočet](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.roc_auc_score.html) | Průměrná = "makro"|
-AUC_Micro| AUC je oblasti pod křivkou charakteristiku provozní příjemce. Micro je vypočítán globably kombinací pravdivě pozitivní i falešně pozitivních výsledků z každé třídě| [Výpočet](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.roc_auc_score.html) | Průměrná = "micro"|
+AUC_Micro| AUC je oblasti pod křivkou charakteristiku provozní příjemce. Micro je vypočítán globálně kombinací pravdivě pozitivní i falešně pozitivních výsledků z každé třídě| [Výpočet](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.roc_auc_score.html) | Průměrná = "micro"|
 AUC_Weighted  | AUC je oblasti pod křivkou charakteristiku provozní příjemce. Váha je aritmetický průměr skóre pro každou třídu váženo podle počtu true instancí každé třídy| [Výpočet](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.roc_auc_score.html)|Průměrná = "váha"
 accuracy|Přesnost je procento předpokládané popisky, které přesně odpovídají true popisky. |[Výpočet](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.accuracy_score.html) |Žádný|
 average_precision_score_macro|Průměrná přesnost shrnuje křivky přesnosti a úplnosti jako vážený průměr přesnosti dosáhnout při každé prahové hodnotě, zvýšení spojené s vracením z předchozí prahové hodnoty použít jako váhu. Aritmetický průměr přesnost skóre každé třídy je – makro|[Výpočet](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.average_precision_score.html)|Průměrná = "makro"|
@@ -310,7 +310,7 @@ normalized_median_absolute_error|Normalizovaná střední absolutní chyba je st
 root_mean_squared_error|Kořenové bude kvadratická chyba odmocninu očekávané kvadratickému rozdílu mezi cílem a do predikce.|[Výpočet](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.mean_squared_error.html)|Žádný|
 normalized_root_mean_squared_error|Normalizovaná kořenové bude kvadratická chyba kořenové střední kvadratické chyby rozdělené podle rozsahu dat|[Výpočet](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.mean_squared_error.html)|Rozdělit podle rozsahu dat|
 root_mean_squared_log_error|Kořenové znamenat protokolu kvadratických chyb je odmocninu očekávané kvadratická chyba logaritmické|[Výpočet](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.mean_squared_log_error.html)|Žádný|
-normalized_root_mean_squared_log_error|Chyba mean ve čtverci protokolu Noramlized kořenový se kořenový mean ve čtverci protokolu chybu rozdělené podle rozsahu dat|[Výpočet](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.mean_squared_log_error.html)|Rozdělit podle rozsahu dat|
+normalized_root_mean_squared_log_error|Normalizované kořenové mean ve čtverci protokolu chyba je chyba mean ve čtverci protokolu kořenové rozdělené podle rozsahu dat|[Výpočet](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.mean_squared_log_error.html)|Rozdělit podle rozsahu dat|
 
 ## <a name="explain-the-model"></a>Vysvětlují modelu
 
@@ -322,7 +322,7 @@ Existují dva způsoby, jak generovat funkci význam.
 
 *   Až se experiment dokončí, můžete použít `explain_model` metodu na kteroukoli iteraci.
 
-    ```
+    ```python
     from azureml.train.automl.automlexplainer import explain_model
     
     shap_values, expected_values, overall_summary, overall_imp, per_class_summary, per_class_imp = \
@@ -339,7 +339,7 @@ Existují dva způsoby, jak generovat funkci význam.
 
 *   Chcete-li zobrazit funkci význam pro všechny iterace, nastavte `model_explainability` příznak `True` v AutoMLConfig.  
 
-    ```
+    ```python
     automl_config = AutoMLConfig(task = 'classification',
                                  debug_log = 'automl_errors.log',
                                  primary_metric = 'AUC_weighted',
@@ -356,7 +356,7 @@ Existují dva způsoby, jak generovat funkci význam.
 
     Až to bude hotové, můžete načíst význam funkce pro konkrétní iteraci retrieve_model_explanation metody.
 
-    ```
+    ```python
     from azureml.train.automl.automlexplainer import retrieve_model_explanation
     
     shap_values, expected_values, overall_summary, overall_imp, per_class_summary, per_class_imp = \

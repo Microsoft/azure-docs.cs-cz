@@ -4,7 +4,7 @@ description: Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.assetid: 7c2cd1f0-d14c-42f0-94a8-9b800008b285
 ms.service: active-directory
 ms.component: saas-app-tutorial
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/06/2018
 ms.author: jeedes
-ms.openlocfilehash: 7e693a721e5556970607fafd8ff187d3b06c913e
-ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
+ms.openlocfilehash: 6bb197b820b9f4262eb5c93665c46c14f9497d0f
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44092882"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54822650"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-direct"></a>Kurz: Integrace Azure Active Directory s přímým
 
@@ -118,7 +118,7 @@ V této části Povolení služby Azure AD jednotného přihlašování na port�
 
     ![Konfigurace jednotného přihlašování](./media/direct-tutorial/tutorial_direct_url1.png)
 
-     V **přihlašovací adresa URL** textového pole zadejte adresu URL: `https://direct4b.com/sso` 
+     V **přihlašovací adresa URL** textového pole zadejte adresu URL: `https://direct4b.com/sso` 
 
 5. Na **podpisový certifikát SAML** klikněte na tlačítko **soubor XML s metadaty** a uložte soubor metadat ve vašem počítači.
 
@@ -164,7 +164,7 @@ Cílem této části je vytvoření zkušebního uživatele na webu Azure Portal
 
 ### <a name="creating-a-direct-test-user"></a>Vytváří se uživatel – přímý test
 
-V této části vytvořte uživatele Britta Simon přímo. Práce s [přímou podporu týmu](https://direct4b.com/ja/support.html#inquiry) přidat uživatele na platformě s přímým přístupem. Uživatelé musí vytvořit a aktivovat, než použití jednotného přihlašování. 
+V této části vytvořte uživatele Britta Simon přímo. Práce s [přímou podporu týmu](https://direct4b.com/ja/support.html#inquiry) přidat uživatele na platformě s přímým přístupem. Uživatelé musí vytvořit a aktivovat, než použití jednotného přihlašování. 
 
 ### <a name="assigning-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
@@ -212,7 +212,7 @@ V této části Testování služby Azure AD jednotné přihlašování – konf
 
 Další informace o přístupovém panelu, naleznete v tématu [Úvod k přístupovému panelu](../user-help/active-directory-saas-access-panel-introduction.md).
 
-## <a name="additional-resources"></a>Další zdroje informací:
+## <a name="additional-resources"></a>Další materiály
 
 * [Seznam kurzů o integraci aplikací SaaS pomocí Azure Active Directory](tutorial-list.md)
 * [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](../manage-apps/what-is-single-sign-on.md)

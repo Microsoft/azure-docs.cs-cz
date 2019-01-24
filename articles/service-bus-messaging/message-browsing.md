@@ -3,22 +3,22 @@ title: Procházení zpráv v Azure Service Bus | Dokumentace Microsoftu
 description: Procházet a prohlížení zpráv služby Service Bus
 services: service-bus-messaging
 documentationcenter: ''
-author: clemensv
+author: axisc
 manager: timlt
-editor: ''
+editor: spelluru
 ms.service: service-bus-messaging
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/25/2018
-ms.author: spelluru
-ms.openlocfilehash: 7ce2e870be0178420d80682bd18adbef814c162f
-ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
+ms.date: 01/23/2019
+ms.author: aschhab
+ms.openlocfilehash: 425cf262b80e83a4d06074a567a2921eee12f9c2
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48857461"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54855937"
 ---
 # <a name="message-browsing"></a>Procházení zpráv
 
@@ -34,7 +34,7 @@ Náhled vrátí zprávy, které byly uzamčeny a jsou právě zpracovávána pom
 
 ## <a name="peek-apis"></a>Náhled rozhraní API
 
-[Náhled/PeekAsync](/dotnet/api/microsoft.azure.servicebus.core.messagereceiver.peekasync#Microsoft_Azure_ServiceBus_Core_MessageReceiver_PeekAsync) a [PeekBatch/PeekBatchAsync](/dotnet/api/microsoft.servicebus.messaging.queueclient.peekbatchasync#Microsoft_ServiceBus_Messaging_QueueClient_PeekBatchAsync_System_Int64_System_Int32_) metody existují v klientské knihovny pro všechny .NET a Javu a pro všechny objekty příjemce: **MessageReceiver**, **Popsaným**, **QueueClient**, a **SubscriptionClient**. Operace Peek funguje pro všechny fronty a předplatná a jejich příslušné fronty nedoručených zpráv.
+[Náhled/PeekAsync](/dotnet/api/microsoft.azure.servicebus.core.messagereceiver.peekasync#Microsoft_Azure_ServiceBus_Core_MessageReceiver_PeekAsync) a [PeekBatch/PeekBatchAsync](/dotnet/api/microsoft.servicebus.messaging.queueclient.peekbatchasync#Microsoft_ServiceBus_Messaging_QueueClient_PeekBatchAsync_System_Int64_System_Int32_) metody existují v klientské knihovny pro všechny .NET a Javu a pro všechny objekty příjemce: **MessageReceiver**, **popsaným**, **QueueClient**, a **SubscriptionClient**. Operace Peek funguje pro všechny fronty a předplatná a jejich příslušné fronty nedoručených zpráv.
 
 Při volání opakovaně, metody Peek zobrazí všechny zprávy, které existují v protokolu fronty nebo odběru v pořadí podle čísla pořadí, od nejnižší dostupné pořadové číslo k nejvyšší. To je v tom pořadí, ve kterém byly zpráv zařazených do fronty a není pořadí, ve kterém může být nakonec načten zprávy.
 

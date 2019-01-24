@@ -4,7 +4,7 @@ description: Scénáře nasazení pro Azure AD Domain Services
 services: active-directory-ds
 documentationcenter: ''
 author: eringreenlee
-manager: mtillman
+manager: daveba
 editor: curtand
 ms.assetid: c5216ec9-4c4f-4b7e-830b-9d70cf176b20
 ms.service: active-directory
@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/21/2017
 ms.author: ergreenl
-ms.openlocfilehash: b660bb2675332612b73879e95b89ace9c7714bbf
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.openlocfilehash: 80b0ecade7183a015656e1e6e77d08876a8df116
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50155282"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54855121"
 ---
 # <a name="deployment-scenarios-and-use-cases"></a>Scénáře nasazení a případy použití
 V této části se podíváme na několik scénáře a případy použití, které využívají samosprávné domény služby Azure Active Directory (AD).

@@ -3,19 +3,19 @@ title: Přizpůsobení uživatelského rozhraní cesty uživatele pomocí vlastn
 description: Další informace o vlastních zásadách Azure Active Directory B2C.
 services: active-directory-b2c
 author: davidmu1
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 04/25/2017
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 8c3684f93bbf5b9fe9f5ea9167396b9822e70c48
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 1953e23c0676a0c81576a47f3f3ca36c3861935f
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52841621"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54855051"
 ---
 # <a name="customize-the-ui-of-a-user-journey-with-custom-policies"></a>Přizpůsobení uživatelského rozhraní cesty uživatele pomocí vlastních zásad
 
@@ -111,7 +111,7 @@ Předpokladem je budete muset vytvořit účet úložiště. Budete potřebovat 
     c.  Název kontejneru úložiště objektů blob storage, *containerName*, například *b2c*.
     d.  Cesta *Starter Pack* ukázkové soubory, například *... \B2CTemplates\wingtiptoys*.
 
-Pokud jste postupovali podle předchozích kroků, HTML5 a CSS soubory *sady přizpůsobení uživatelského rozhraní* pro fiktivní společnost **Northwind** nyní odkazuje na vašem účtu úložiště.  Můžete ověřit, že obsah je nahraná správně tak, že otevřete podokno související kontejner na webu Azure Portal. Můžete také ověřit, že obsah je nahraná správně přístupem na stránku v prohlížeči. Další informace najdete v tématu [Azure Active Directory B2C: pomocným nástrojem použitá k předvedení stránce uživatelského rozhraní (UI) přizpůsobení funkce](active-directory-b2c-reference-ui-customization-helper-tool.md).
+Pokud jste postupovali podle předchozích kroků, HTML5 a CSS soubory *sady přizpůsobení uživatelského rozhraní* pro fiktivní společnost **Northwind** nyní odkazuje na vašem účtu úložiště.  Můžete ověřit, že obsah je nahraná správně tak, že otevřete podokno související kontejner na webu Azure Portal. Můžete také ověřit, že obsah je nahraná správně přístupem na stránku v prohlížeči. Další informace najdete v tématu [Azure Active Directory B2C: Pomocný nástroj použitá k předvedení stránce uživatelského rozhraní (UI) přizpůsobení funkce](active-directory-b2c-reference-ui-customization-helper-tool.md).
 
 ## <a name="ensure-the-storage-account-has-cors-enabled"></a>Ujistěte se, že účet úložiště má zapnuté CORS
 
@@ -126,7 +126,7 @@ Ověřte, že úložiště, které hostují váš obsah na má zapnuté CORS, po
 -->
 
 3. V **adresa URL vzdáleného úložiště**, zadejte úplnou adresu URL pro váš obsah unified.html a klikněte na tlačítko **odeslat požadavek**.
-4. Ověřte, že výstup v **výsledky** oddíl obsahuje *XHR stav: 200*, což znamená, že je povoleno CORS.
+4. Ověřte, že výstup v **výsledky** oddíl obsahuje *XHR stavu: 200*, což znamená, že je povoleno CORS.
 <!--
 ![CORS enabled](../../media/active-directory-b2c-customize-ui-of-a-user-journey/cors-enabled.png)
 -->
@@ -157,11 +157,11 @@ Následující tabulka popisuje sadu obsahu ID definic uznané identity Azure AD
 | ID obsahu definice | Popis |
 |-----------------------|-------------|
 | *api.error* | **Chybová stránka**. Na této stránce se zobrazí, když došlo k výjimce nebo došlo k chybě. |
-| *API.idpselections* | **Stránka výběru zprostředkovatele identit**. Tato stránka obsahuje seznam zprostředkovatelů identity, které může uživatel vybrat při přihlašování. Zprostředkovatelé jsou enterprise zprostředkovatelů identity, zprostředkovatelé sociálních identit, jako je Facebook nebo Google + nebo místní účty (podle e-mailové adresy nebo uživatelského jména). |
+| *api.idpselections* | **Stránka výběru zprostředkovatele identit**. Tato stránka obsahuje seznam zprostředkovatelů identity, které může uživatel vybrat při přihlašování. Zprostředkovatelé jsou enterprise zprostředkovatelů identity, zprostředkovatelé sociálních identit, jako je Facebook nebo Google + nebo místní účty (podle e-mailové adresy nebo uživatelského jména). |
 | *api.idpselections.signup* | **Výběr zprostředkovatele identity pro registraci**. Tato stránka obsahuje seznam zprostředkovatelů identity, které může uživatel vybírat během registrace. Zprostředkovatelé jsou enterprise zprostředkovatelů identity, zprostředkovatelé sociálních identit, jako je Facebook nebo Google + nebo místní účty (podle e-mailové adresy nebo uživatelského jména). |
 | *api.localaccountpasswordreset* | **Stránka zapomenuté heslo**. Tato stránka obsahuje formulář, který má uživatel k vyplnění zahájíte resetování hesla.  |
-| *API.localaccountsignin* | **Místní účet přihlašovací stránku**. Tato stránka obsahuje přihlašovací formulář, který má uživatel k vyplnění při přihlašování pomocí místní účet, který je založen na e-mailovou adresu nebo jméno uživatele. Formulář může obsahovat pole textového zadání a pole pro zadání hesla. |
-| *API.localaccountsignup* | **Stránku pro přihlášení místním účtem**. Tato stránka obsahuje registrace formulář, který má uživatel k vyplnění při přihlašování k odběru pro místní účet, který je založen na e-mailovou adresu nebo jméno uživatele. Formulář může obsahovat různé vstupní ovládací prvky, jako je například pole textového zadání, pole pro zadání hesla, přepínač, jedním výběrem rozevírací seznamy a vyberte zaškrtávací políčka. |
+| *api.localaccountsignin* | **Místní účet přihlašovací stránku**. Tato stránka obsahuje přihlašovací formulář, který má uživatel k vyplnění při přihlašování pomocí místní účet, který je založen na e-mailovou adresu nebo jméno uživatele. Formulář může obsahovat pole textového zadání a pole pro zadání hesla. |
+| *api.localaccountsignup* | **Stránku pro přihlášení místním účtem**. Tato stránka obsahuje registrace formulář, který má uživatel k vyplnění při přihlašování k odběru pro místní účet, který je založen na e-mailovou adresu nebo jméno uživatele. Formulář může obsahovat různé vstupní ovládací prvky, jako je například pole textového zadání, pole pro zadání hesla, přepínač, jedním výběrem rozevírací seznamy a vyberte zaškrtávací políčka. |
 | *api.phonefactor* | **Stránka služby Multi-Factor authentication**. Na této stránce si uživatelé mohli ověřit jejich telefonních čísel (pomocí textových nebo hlasových) během registrace nebo přihlášení. |
 | *api.selfasserted* | **Stránka registrace sociálního účtu**. Tato stránka obsahuje registrace formulář, který má uživatel k vyplnění při přihlašování k odběru pomocí existujícího účtu ze zprostředkovatele sociální identity, jako je Facebook nebo Google +. Tato stránka je podobný jako předchozí stránka registrace sociálního účtu s výjimkou pole pro zadání hesla. |
 | *api.selfasserted.profileupdate* | **Stránka pro aktualizaci profilu**. Tato stránka obsahuje formulář, který může uživatel použít k aktualizaci jejich profilů. Tato stránka je podobný jako předchozí stránka registrace sociálního účtu s výjimkou pole pro zadání hesla. |

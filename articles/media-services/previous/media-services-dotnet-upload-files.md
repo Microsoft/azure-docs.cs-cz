@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/21/2018
 ms.author: juliako
-ms.openlocfilehash: 9edfa8ea0c9e469d09cef7ddbd1c7edda4484b47
-ms.sourcegitcommit: fab878ff9aaf4efb3eaff6b7656184b0bafba13b
+ms.openlocfilehash: 43da365a6424fa9d489db1f5cd74ff6aeb8f0d7c
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/22/2018
-ms.locfileid: "42444625"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54819879"
 ---
 # <a name="upload-files-into-a-media-services-account-using-net"></a>Nahrání souborů do účtu Azure Media Services pomocí rozhraní .NET
 > [!div class="op_single_selector"]
@@ -54,9 +54,9 @@ Když vytvoříte prostředky, můžete zadat následující možnosti šifrová
   
     Pokud váš asset používá šifrování úložiště, musíte nakonfigurovat zásady doručení assetu. Další informace najdete v tématu [konfigurace zásad doručení assetu](media-services-dotnet-configure-asset-delivery-policy.md).
 
-Pokud zadáte pro váš prostředek mají být šifrována pomocí **CommonEncrypted** možnost, nebo **EnvelopeEncypted** možnost, je nutné přidružit asset s **ContentKey**. Další informace najdete v tématu [jak vytvořit ContentKey](media-services-dotnet-create-contentkey.md). 
+Pokud zadáte pro váš prostředek mají být šifrována pomocí **CommonEncrypted** možnost, nebo **EnvelopeEncrypted** možnost, je nutné přidružit asset s **ContentKey**. Další informace najdete v tématu [jak vytvořit ContentKey](media-services-dotnet-create-contentkey.md). 
 
-Pokud zadáte pro váš prostředek mají být šifrována pomocí **StorageEncrypted** možnost, Media Services SDK pro .NET vytvoří **StorateEncrypted** **ContentKey** pro váš prostředek.
+Pokud zadáte pro váš prostředek mají být šifrována pomocí **StorageEncrypted** možnost, Media Services SDK pro .NET vytvoří **StorageEncrypted** **ContentKey** pro váš prostředek.
 
 Tento článek ukazuje, jak používat sadu Media Services .NET SDK, tak jak rozšíření Media Services .NET SDK k nahrání souborů do assetu Media Services.
 

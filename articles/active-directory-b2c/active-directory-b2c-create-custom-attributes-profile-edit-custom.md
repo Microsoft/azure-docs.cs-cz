@@ -3,19 +3,19 @@ title: Přidat vlastní atributy pro vlastní zásady v Azure Active Directory B
 description: Návod k použití vlastnosti rozšíření a vlastní atributy a jejich zahrnování v uživatelském rozhraní.
 services: active-directory-b2c
 author: davidmu1
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 08/04/2017
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 5513e0ff434862ea7eee42cb94ff2a0f67f6d390
-ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
+ms.openlocfilehash: 7ebce84e6d8d3e7b1b8d3852951127ce954f9019
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/31/2018
-ms.locfileid: "43338740"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54854050"
 ---
 # <a name="azure-active-directory-b2c-use-custom-attributes-in-a-custom-profile-edit-policy"></a>Azure Active Directory B2C: Použití vlastních atributů ve vlastním profilu upravit zásadu
 
@@ -53,14 +53,14 @@ Pokyny jsou součástí **další kroky** části v tomto článku.
 2. Vyberte **Azure Active Directory** v levé navigační nabídce. Možná budete muset najít tak, že vyberete **další služby**.
 3. Vyberte **Registrace aplikací**. Vyberte **Registrace nové aplikace**.
 4. Zadejte následující položky:
-    * Název webové aplikace: **webové aplikace. GraphAPI DirectoryExtensions**.
-    * Typ aplikace: **webové aplikace nebo rozhraní API**.
+    * Název webové aplikace: **WebApp-GraphAPI-DirectoryExtensions**.
+    * Typ aplikace: **Webové aplikace nebo rozhraní API**.
     * Adresa URL přihlašování: **https://{tenantName}.onmicrosoft.com/WebApp-GraphAPI-DirectoryExtensions**.
 5. Vyberte **Vytvořit**.
 6. Vyberte nově vytvořenou webovou aplikaci.
 7. Vyberte **nastavení** > **požadovaná oprávnění**.
 8. Vyberte rozhraní API **Windows Azure Active Directory**.
-9. Zaškrtněte oprávnění aplikací: **pro čtení a zápis dat adresáře**. Potom vyberte **Uložit**.
+9. Zaškrtněte oprávnění aplikací: **Čtení a zápis dat adresáře**. Potom vyberte **Uložit**.
 10. Zvolte **udělit oprávnění** a potvrďte **Ano**.
 11. Zkopírujte následující identifikátory do schránky a uloží:
     * **ID aplikace**. Příklad: `103ee0e6-f92d-4183-b576-8c3739027780`.
@@ -240,7 +240,7 @@ Pokud jste postupovali podle kroků v [Azure Active Directory B2C: Začínáme s
 1. Vyberte vlastní zásadu, kterou jste nahráli. Vyberte **spustit nyní**.
 1. Přihlásit se pomocí e-mailovou adresu.
 
-ID token odeslaných zpět do vaší aplikace obsahuje nové vlastnosti rozšíření jako vlastní deklarace identity předchází **extension_loyaltyId**. Podívejte se na následující příklad:
+ID token odeslaných zpět do vaší aplikace obsahuje nové vlastnosti rozšíření jako vlastní deklarace identity předchází **extension_loyaltyId**. Prohlédněte si následující příklad:
 
 ```json
 {

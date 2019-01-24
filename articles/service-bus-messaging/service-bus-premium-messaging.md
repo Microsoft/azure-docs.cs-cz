@@ -3,9 +3,9 @@ title: Přehled cenových úrovní zasílání zpráv Azure Service Bus Premium 
 description: Úrovně zasílání zpráv Service Bus Premium a Standard
 services: service-bus-messaging
 documentationcenter: .net
-author: djrosanova
+author: axisc
 manager: timlt
-editor: ''
+editor: spelluru
 ms.assetid: e211774d-821c-4d79-8563-57472d746c58
 ms.service: service-bus-messaging
 ms.workload: na
@@ -13,13 +13,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
 ms.date: 08/30/2018
-ms.author: spelluru
-ms.openlocfilehash: 33dda074bd1aeb6b6187ca01347f31219ac86e91
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
-ms.translationtype: HT
+ms.author: aschhab
+ms.openlocfilehash: ae35f73e601cfa83fc960c5331f9956863677941
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51250199"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54855291"
 ---
 # <a name="service-bus-premium-and-standard-messaging-tiers"></a>Úrovně zasílání zpráv Service Bus Premium a Standard
 
@@ -63,7 +63,7 @@ Využití zasílání zpráv na úrovni Premium je jednoduché a je podobné sta
 
 Můžete také vytvářet [obory názvů Premium pomocí šablon Azure Resource Manageru](https://azure.microsoft.com/resources/templates/101-servicebus-pn-ar/).
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Pokud se o zasílání zpráv Service Bus chcete dozvědět více, podívejte se na následující odkazy:
 

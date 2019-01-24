@@ -4,7 +4,7 @@ description: Vytvořit vazbu k spravované doméně služby Azure AD Domain Serv
 services: active-directory-ds
 documentationcenter: ''
 author: eringreenlee
-manager: mtillman
+manager: daveba
 editor: curtand
 ms.assetid: 6871374a-0300-4275-9a45-a39a52c65ae4
 ms.service: active-directory
@@ -15,20 +15,20 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 08/01/2018
 ms.author: ergreenl
-ms.openlocfilehash: e421d3219f50c0dbb635dfe5b9cb3e9a24d4fa61
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.openlocfilehash: b1266a464e315dfb5b381cc1925591c80aed7f74
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50158530"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54856855"
 ---
 # <a name="bind-to-an-azure-ad-domain-services-managed-domain-using-secure-ldap-ldaps"></a>Vytvořit vazbu k spravované doméně služby Azure AD Domain Services pomocí zabezpečeného protokolu LDAP (LDAPS)
 
-## <a name="before-you-begin"></a>Než začnete
+## <a name="before-you-begin"></a>Před zahájením
 Kompletní [úloha 4 – konfigurace služby DNS pro přístup ke spravované doméně z Internetu](active-directory-ds-ldaps-configure-dns.md).
 
 
-## <a name="task-5-bind-to-the-managed-domain-over-ldap-using-ldpexe"></a>Úkol 5: Vytvoření vazby ke spravované doméně přes LDAP použití LDP.exe
+## <a name="task-5-bind-to-the-managed-domain-over-ldap-using-ldpexe"></a>Úloha 5: Vytvoření vazby ke spravované doméně přes LDP.exe pomocí protokolu LDAP
 Můžete používat nástroje LDP.exe, který je součástí balíčku nástroje pro vzdálenou správu serveru pro svázání a vyhledávání protokolu LDAP.
 
 Nejprve spustit nástroj LDP a připojte se k spravované doméně. Klikněte na tlačítko **připojení** a klikněte na tlačítko **připojit...**  v nabídce. Zadejte název domény DNS pro spravovanou doménu. Zadejte port pro připojení používat. Pro připojení LDAP použijte portu 389. Pro připojení protokolu LDAPS musí používejte port 636. Klikněte na tlačítko **OK** tlačítko pro připojení ke spravované doméně.
@@ -46,7 +46,7 @@ Vyberte **zobrazení**a pak vyberte **stromu** v nabídce. Základní rozlišuj�
 Další informace – [základy dotazů protokolu LDAP](https://technet.microsoft.com/library/aa996205.aspx)
 
 
-## <a name="task-6-lock-down-secure-ldap-access-to-your-managed-domain-over-the-internet"></a>Krok 6: Uzamčení přístupu k vaší spravované doméně přes internet secure LDAP
+## <a name="task-6-lock-down-secure-ldap-access-to-your-managed-domain-over-the-internet"></a>Krok 6: Zamezit přístup ke spravované doméně secure LDAP přes internet
 > [!NOTE]
 > Pokud jste ještě nepovolili přístup protokolu LDAPS ke spravované doméně přes internet, přeskočte tuto úlohu konfigurace.
 >

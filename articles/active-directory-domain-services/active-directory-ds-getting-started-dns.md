@@ -4,7 +4,7 @@ description: Začínáme se službou Azure Active Directory Domain Services
 services: active-directory-ds
 documentationcenter: ''
 author: eringreenlee
-manager: mtillman
+manager: daveba
 editor: curtand
 ms.assetid: d4f3e82c-6807-4690-b298-4eabad2b7927
 ms.service: active-directory
@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/30/2018
 ms.author: ergreenl
-ms.openlocfilehash: 7d2902c997259fc115a1f204f123983038821887
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.openlocfilehash: 84484be80ec0932b45f520482938f74ecf54d1e8
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50157339"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54856651"
 ---
 # <a name="enable-azure-active-directory-domain-services"></a>Povolení služby Azure Active Directory Domain Services
 

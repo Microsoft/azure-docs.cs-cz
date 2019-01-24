@@ -4,7 +4,7 @@ description: Referenční informace ke kódům chyb v sestavě aktivit přihlaš
 services: active-directory
 documentationcenter: ''
 author: priyamohanram
-manager: mtillman
+manager: daveba
 editor: ''
 ms.assetid: 4b18127b-d1d0-4bdc-8f9c-6a4c991c5f75
 ms.service: active-directory
@@ -16,12 +16,12 @@ ms.component: report-monitor
 ms.date: 11/13/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: b6f8d3c3017a914f261c7e4f8bbe0e42d1edf8a9
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: 0de3ced9974941399875ca98991430f10d4f8525
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51622427"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54820151"
 ---
 # <a name="sign-in-activity-report-error-codes"></a>Kódy chyb sestavě aktivit přihlašování 
 
@@ -43,7 +43,7 @@ Filtrovat sestavu pro zobrazení všech neúspěšných přihlášení tak, že 
 
 ![Aktivita přihlašování](./media/reference-sign-ins-error-codes/06.png "Aktivita přihlašování")
 
-Výběrem položky z filtrovaný seznam otevře **podrobnosti o aktivitě: přihlášení** okno. Toto zobrazení vám poskytne další informace o neúspěšných události přihlášení, včetně **kódu chyby přihlášení** a **důvod selhání**.
+Výběrem položky z filtrovaný seznam otevře **podrobnosti o aktivitě: Přihlášení** okno. Toto zobrazení vám poskytne další informace o neúspěšných události přihlášení, včetně **kódu chyby přihlášení** a **důvod selhání**.
 
 ![Aktivita přihlašování](./media/reference-sign-ins-error-codes/05.png "Aktivita přihlašování")
 
@@ -135,7 +135,7 @@ Můžete také programově přistupovat pomocí data přihlášení [API pro vyt
 |53002|Použitá aplikace není schválenou aplikací pro podmíněný přístup. Pokud chce uživatel získat přístup, musí použít jednu z aplikací na seznamu schválených aplikací.|
 |53003|Přístup se zablokoval kvůli zásadám podmíněného přístupu.|
 |53004|Uživatel musí dokončit registraci pro vícefaktorové ověřování, než získá přístup k tomuto obsahu. Uživatel by se měl zaregistrovat k vícefaktorovému ověřování.|
-|65001|Aplikace X nemá oprávnění pro přístup k aplikaci Y nebo oprávnění bylo odvoláno. Nebo Uživatel nebo správce nevyjádřil souhlas s použitím aplikace s ID X. Odešlete interaktivní žádost o autorizaci pro tohoto uživatele a prostředek. Nebo Uživatel nebo správce nevyjádřil souhlas s použitím aplikace s ID X. Odešlete správci tenanta žádost o autorizaci k jednání jménem aplikace Y pro prostředek Z.|
+|65001|Aplikace X nemá oprávnění pro přístup k aplikaci Y nebo oprávnění bylo odvoláno. Nebo Uživatel nebo správce nevyjádřil souhlas s použitím aplikace s ID X. Odešlete interaktivní žádost o autorizaci pro tohoto uživatele a prostředek. Nebo uživatel nebo správce nevyjádřil souhlas s použitím aplikace s ID X. odešlete správci tenanta žádost o autorizaci k jednání jménem aplikace: Y pro prostředek: Z.|
 |65004|Uživatel odmítl souhlas s udělením přístupu aplikace. Požádejte uživatele, aby se zkusil znovu přihlásit a udělil aplikaci souhlas.|
 |65005|Přístupový seznam požadovaných prostředků aplikace neobsahuje aplikace zjistitelné tímto prostředkem; klientská aplikace požadovala přístup k prostředku, který nebyl zadán v jejím přístupovém seznamu požadovaných prostředků; služba Graph vrátila chybnou žádost; nebo prostředek nebyl nalezen. Pokud aplikace podporuje SAML, pravděpodobně jste ji nakonfigurovali pomocí špatného identifikátoru (entity). Vyzkoušejte řešení uvedené pro SAML v následujícím odkazu: [https://docs.microsoft.com/azure/active-directory/application-sign-in-problem-federated-sso-gallery?/?WT.mc_id=DMC_AAD_Manage_Apps_Troubleshooting_Nav#no-resource-in-requiredresourceaccess-list](https://docs.microsoft.com/azure/active-directory/application-sign-in-problem-federated-sso-gallery?/?WT.mc_id=DMC_AAD_Manage_Apps_Troubleshooting_Nav#no-resource-in-requiredresourceaccess-list)|
 |70000|Udělení oprávnění může být neplatné z následujících důvodů:<ul><li>Požadovaný kontrolní výraz SAML 2.0 má neplatnou metodu potvrzení subjektu.</li><li>Tok OnBehalfOf aplikace se u V2 nepodporuje.</li><li>Primární obnovovací token není podepsaný klíčem relace.</li><li>Externí obnovovací token je neplatný.</li><li>Udělení oprávnění bylo získáno pro jiného tenanta.</li></ul>|
@@ -160,7 +160,7 @@ Můžete také programově přistupovat pomocí data přihlášení [API pro vyt
 |80001|Ověřovací agent se nemohl připojit k Active Directory. Přesvědčte se, že je ověřovací agent nainstalovaný na počítači s připojením k doméně a že počítač má na dohled datové centrum, které může vyřídit požadavek na přihlášení uživatele.|
 |80002|Vnitřní chyba. Vypršel časový limit žádosti o ověření hesla. Požadavek na ověření se nám nepodařilo interní hybridní službě identit odeslat. Pokud chcete získat o této chybě více informací, [otevřete lístek podpory](../fundamentals/active-directory-troubleshooting-support-howto.md).|
 |80003|Ověřovací agent přijal neplatnou odpověď. Při pokusu o ověření pomocí místní služby Active Directory došlo k neznámé chybě. Pokud chcete získat o této chybě více informací, [otevřete lístek podpory](../fundamentals/active-directory-troubleshooting-support-howto.md).|
-|80005|Ověřovací agent: během zpracování odpovědi od ověřovacího agenta došlo k neznámé chybě. Pokud chcete získat o této chybě více informací, [otevřete lístek podpory](../fundamentals/active-directory-troubleshooting-support-howto.md).|
+|80005|Ověřovací Agent: Při zpracování odpovědi z ověřování agenta došlo k neznámé chybě. Pokud chcete získat o této chybě více informací, [otevřete lístek podpory](../fundamentals/active-directory-troubleshooting-support-howto.md).|
 |80007|Ověřovací agent nebyl schopen ověřit heslo uživatele.|
 |80010|Ověřovací agent nebyl schopen dešifrovat heslo. |
 |80011|Ověřovacímu agentovi se nepodařilo získat šifrovací klíč.|

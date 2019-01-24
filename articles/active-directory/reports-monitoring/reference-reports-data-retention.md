@@ -4,7 +4,7 @@ description: Zásady uchovávání informací na data sestavy ve službě Azure 
 services: active-directory
 documentationcenter: ''
 author: priyamohanram
-manager: mtillman
+manager: daveba
 editor: ''
 ms.assetid: 183e53b0-0647-42e7-8abe-3e9ff424de12
 ms.service: active-directory
@@ -16,12 +16,12 @@ ms.component: report-monitor
 ms.date: 11/13/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 0ed23c8efcf43213b288945c2910edf4c97bb63e
-ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
+ms.openlocfilehash: 932290c3b42b0ea55725fbc17de6b81886fe1217
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54214466"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54822514"
 ---
 # <a name="azure-active-directory-report-retention-policies"></a>Zásady uchování sestav Azure Active Directory
 
@@ -29,7 +29,7 @@ V tomto článku se dozvíte o zásad uchovávání dat pro různé aktivity ses
 
 ### <a name="when-does-azure-ad-start-collecting-data"></a>Pokud Azure AD spusťte shromažďování dat?
 
-| Edice Azure AD | Počáteční kolekce |
+| Azure AD Edition | Počáteční kolekce |
 | :--              | :--   |
 | Azure AD Premium P1 <br /> Azure AD Premium P2 | Když se zaregistrujete k předplatnému |
 | Azure AD Free <br /> Azure AD Basic | Při prvním otevření [okno Azure Active Directory](https://ms.portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Overview) nebo použijte [rozhraní API pro generování sestav](https://aka.ms/aadreports)  |

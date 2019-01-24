@@ -1,10 +1,10 @@
 ---
-title: 'Kurz: Integrace Azure Active Directory se službou O.C. Nováková - AppreciateHub | Dokumentace Microsoftu'
+title: 'Kurz: Integrace Azure Active Directory s O.C. Nováková - AppreciateHub | Dokumentace Microsoftu'
 description: Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a O.C. Nováková - AppreciateHub.
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.assetid: dee8fbca-0b60-4a21-8917-1fb6919de5a0
 ms.service: active-directory
 ms.component: saas-app-tutorial
@@ -14,14 +14,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/09/2017
 ms.author: jeedes
-ms.openlocfilehash: 2a3c6641c3fd9402ede2176e3c5c3f3ec15ed9de
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: a2234db09ecd8d2b3f654a18017d50f43c8caca6
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39438701"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54822293"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-oc-tanner---appreciatehub"></a>Kurz: Integrace Azure Active Directory se službou O.C. Nováková - AppreciateHub
+# <a name="tutorial-azure-active-directory-integration-with-oc-tanner---appreciatehub"></a>Kurz: Integrace Azure Active Directory s O.C. Nováková - AppreciateHub
 
 V tomto kurzu se dozvíte, jak integrovat O.C. Nováková - AppreciateHub s Azure Active Directory (Azure AD).
 
@@ -37,8 +37,8 @@ Pokud chcete zjistit další podrobnosti o integraci aplikací SaaS v Azure AD, 
 
 Konfigurace integrace Azure AD s O.C. Nováková - AppreciateHub, potřebujete následující položky:
 
-- S předplatným služby Azure AD
-- O.C. Nováková - AppreciateHub jednotného přihlašování povolená předplatného
+- Předplatné Azure AD
+- A O.C. Nováková - AppreciateHub jednotného přihlašování povolená předplatného
 
 > [!NOTE]
 > Pokud chcete vyzkoušet kroky v tomto kurzu, nedoporučujeme použití produkční prostředí.
@@ -59,7 +59,7 @@ Konfigurace integrace O.C. Nováková - AppreciateHub do služby Azure AD, je t�
 
 **Chcete-li přidat O.C. Nováková - AppreciateHub z galerie, proveďte následující kroky:**
 
-1. V  **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu. 
+1. V **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu. 
 
     ![Active Directory][1]
 
@@ -138,7 +138,7 @@ V této části Povolení služby Azure AD jednotného přihlašování na port�
 1. Ke konfiguraci jednotného přihlašování na **O.C. Nováková - AppreciateHub** straně, je nutné odeslat na stažený **soubor XML s metadaty** k [O.C. Nováková - tým podpory AppreciateHub](mailto:sso@octanner.com).
 
 > [!TIP]
-> Teď si můžete přečíst stručné verzi těchto pokynů uvnitř [webu Azure portal](https://portal.azure.com), zatímco jsou nastavení aplikace!  Po přidání této aplikace z **služby Active Directory > podnikové aplikace** části, stačí kliknout **Single Sign-On** kartu a přístup k vložené dokumentaci prostřednictvím  **Konfigurace** oblast v dolní části. Další informace o funkci vložená dokumentace: [dokumentace ke službě Azure AD embedded]( https://go.microsoft.com/fwlink/?linkid=845985)
+> Teď si můžete přečíst stručné verzi těchto pokynů uvnitř [webu Azure portal](https://portal.azure.com), zatímco jsou nastavení aplikace!  Po přidání této aplikace z **služby Active Directory > podnikové aplikace** části, stačí kliknout **Single Sign-On** kartu a přístup k vložené dokumentaci prostřednictvím  **Konfigurace** oblast v dolní části. Další informace o funkci vložená dokumentace: [Dokumentace ke službě Azure AD, embedded]( https://go.microsoft.com/fwlink/?linkid=845985)
 > 
 
 ### <a name="creating-an-azure-ad-test-user"></a>Vytváří se testovací uživatele služby Azure AD
@@ -215,7 +215,7 @@ V této části povolíte Britta Simon používat jednotné přihlašování Azu
 Cílem této části je test vaší konfigurace Azure AD jednotné přihlašování pomocí přístupového panelu.  
 Když kliknete O.C. Nováková - AppreciateHub dlaždici na přístupovém panelu, vám by měl získat automaticky přihlášení k vaší O.C. Nováková - AppreciateHub aplikace.
 
-## <a name="additional-resources"></a>Další zdroje informací:
+## <a name="additional-resources"></a>Další materiály
 
 * [Seznam kurzů o integraci aplikací SaaS pomocí Azure Active Directory](tutorial-list.md)
 * [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](../manage-apps/what-is-single-sign-on.md)

@@ -1,10 +1,10 @@
 ---
-title: 'Kurz: Integrace Azure Active Directory se službou FilesAnywhere | Dokumentace Microsoftu'
+title: 'Kurz: Integrace Azure Active Directory s FilesAnywhere | Dokumentace Microsoftu'
 description: Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a FilesAnywhere.
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.assetid: 28acce3e-22a0-4a37-8b66-6e518d777350
 ms.service: active-directory
 ms.component: saas-app-tutorial
@@ -14,14 +14,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/17/2017
 ms.author: jeedes
-ms.openlocfilehash: 220b5a486f5bb5d22c671ac6935e610a6eef62cf
-ms.sourcegitcommit: 4eddd89f8f2406f9605d1a46796caf188c458f64
+ms.openlocfilehash: 2dab43499d5f55474117f88cfaa1cecd1a50bf3e
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49115981"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54822038"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-filesanywhere"></a>Kurz: Integrace Azure Active Directory se službou FilesAnywhere
+# <a name="tutorial-azure-active-directory-integration-with-filesanywhere"></a>Kurz: Integrace Azure Active Directory s FilesAnywhere
 
 V tomto kurzu se dozvíte, jak integrovat FilesAnywhere s Azure Active Directory (Azure AD).
 
@@ -252,7 +252,7 @@ V této části Testování služby Azure AD jednotné přihlašování – konf
 Po kliknutí na dlaždici FilesAnywhere na přístupovém panelu, vám by měl získat automaticky přihlášení k aplikaci FilesAnywhere.
 
 
-## <a name="additional-resources"></a>Další zdroje informací:
+## <a name="additional-resources"></a>Další materiály
 
 * [Seznam kurzů o integraci aplikací SaaS pomocí Azure Active Directory](tutorial-list.md)
 * [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](../manage-apps/what-is-single-sign-on.md)

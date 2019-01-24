@@ -1,10 +1,10 @@
 ---
-title: 'Kurz: Integrace Azure Active Directory se službou Trakopolis | Dokumentace Microsoftu'
+title: 'Kurz: Integrace Azure Active Directory s Trakopolis | Dokumentace Microsoftu'
 description: Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a Trakopolis.
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.assetid: 73d67c3e-4b4b-4d3b-aa58-6699ea1ccea3
 ms.service: active-directory
 ms.component: saas-app-tutorial
@@ -14,14 +14,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/10/2017
 ms.author: jeedes
-ms.openlocfilehash: 4f85ad5618132b86b01296d7aebae0c2aad09164
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: af872295e52323744ff50179471abd9319b5cb9d
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39443583"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54822769"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-trakopolis"></a>Kurz: Integrace Azure Active Directory se službou Trakopolis
+# <a name="tutorial-azure-active-directory-integration-with-trakopolis"></a>Kurz: Integrace Azure Active Directory s Trakopolis
 
 V tomto kurzu se dozvíte, jak integrovat Trakopolis s Azure Active Directory (Azure AD).
 
@@ -37,7 +37,7 @@ Pokud chcete zjistit další podrobnosti o integraci aplikací SaaS v Azure AD, 
 
 Konfigurace integrace Azure AD s Trakopolis, potřebujete následující položky:
 
-- S předplatným služby Azure AD
+- Předplatné Azure AD
 - Trakopolis jednotného přihlašování povolená předplatného
 
 > [!NOTE]
@@ -59,7 +59,7 @@ Konfigurace integrace Trakopolis do služby Azure AD, budete muset přidat Trako
 
 **Chcete-li přidat Trakopolis z galerie, postupujte následovně:**
 
-1. V  **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu. 
+1. V **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu. 
 
     ![Active Directory][1]
 
@@ -134,7 +134,7 @@ V této části Povolení služby Azure AD jednotného přihlašování na port�
 1. Ke konfiguraci jednotného přihlašování na **Trakopolis** straně, je nutné odeslat na stažený **soubor XML s metadaty, adresa URL odhlašování, SAML Entity ID a SAML jednotné přihlašování – adresa URL služby** k [Trakopolis podpory tým](mailto:support@cantelematics.com). Nastavují tohoto nastavení můžete mít správně nastavené na obou stranách připojení SAML SSO.
 
 > [!TIP]
-> Teď si můžete přečíst stručné verzi těchto pokynů uvnitř [webu Azure portal](https://portal.azure.com), zatímco jsou nastavení aplikace!  Po přidání této aplikace z **služby Active Directory > podnikové aplikace** části, stačí kliknout **Single Sign-On** kartu a přístup k vložené dokumentaci prostřednictvím  **Konfigurace** oblast v dolní části. Další informace o funkci vložená dokumentace: [dokumentace ke službě Azure AD embedded]( https://go.microsoft.com/fwlink/?linkid=845985)
+> Teď si můžete přečíst stručné verzi těchto pokynů uvnitř [webu Azure portal](https://portal.azure.com), zatímco jsou nastavení aplikace!  Po přidání této aplikace z **služby Active Directory > podnikové aplikace** části, stačí kliknout **Single Sign-On** kartu a přístup k vložené dokumentaci prostřednictvím  **Konfigurace** oblast v dolní části. Další informace o funkci vložená dokumentace: [Dokumentace ke službě Azure AD, embedded]( https://go.microsoft.com/fwlink/?linkid=845985)
 
 ### <a name="creating-an-azure-ad-test-user"></a>Vytváří se testovací uživatele služby Azure AD
 Cílem této části je vytvoření zkušebního uživatele na webu Azure Portal volá Britta Simon.
@@ -169,7 +169,7 @@ Cílem této části je vytvoření zkušebního uživatele na webu Azure Portal
  
 ### <a name="creating-a-trakopolis-test-user"></a>Vytvoření zkušebního uživatele Trakopolis
 
-V této části vytvoříte uživatele v Trakopolis jako Britta Simon. Práce s [tým podpory Trakopolis](mailto:support@cantelematics.com) přidat uživatele na platformě Trakopolis. Uživatelé musí vytvořit a aktivovat, než použití jednotného přihlašování.
+V této části vytvoříte uživatele v Trakopolis jako Britta Simon. Práce s [tým podpory Trakopolis](mailto:support@cantelematics.com) přidat uživatele na platformě Trakopolis. Uživatelé musí vytvořit a aktivovat, než použití jednotného přihlašování.
 
 ### <a name="assigning-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
@@ -206,7 +206,7 @@ V této části je povolit Britta Simon k udělení přístupu k Trakopolis pou�
 Cílem této části je test vaší konfigurace Azure AD jednotné přihlašování pomocí přístupového panelu.  
 Po kliknutí na dlaždici Trakopolis na přístupovém panelu, vám by měl získat automaticky přihlášení k aplikaci Trakopolis.
 
-## <a name="additional-resources"></a>Další zdroje informací:
+## <a name="additional-resources"></a>Další materiály
 
 * [Seznam kurzů o integraci aplikací SaaS pomocí Azure Active Directory](tutorial-list.md)
 * [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](../manage-apps/what-is-single-sign-on.md)

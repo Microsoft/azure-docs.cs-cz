@@ -12,16 +12,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: reference
-ms.date: 01/11/2019
+ms.date: 01/23/2019
 ms.author: celested
 ms.reviewer: hirsin, justhu
 ms.custom: aaddev
-ms.openlocfilehash: 1e3dc984de15fa2c94fc5150020f1af1579e2c5c
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: e550eeba9b154e271cdad9df5cdfe9a308efbbe9
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54434100"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54820304"
 ---
 # <a name="authentication-and-authorization-error-codes"></a>Kódy chyb autorizace a ověřování
 
@@ -79,7 +79,7 @@ Hledáte informace o chybových kódech AADSTS, které jsou vráceny od služby 
 | AADSTS50058 | UserInformationNotProvided – to znamená, že uživatel není přihlášený. Toto je běžnou chybou, která očekává se, když uživatel není ověřena a ještě nepřihlásil.</br>Pokud tato chyba je podporována v kontextu SSO. Pokud uživatel už přihlašoval, to znamená, že relace jednotného přihlašování nebyl nalezen nebo je neplatný.</br>Tuto chybu mohou být vráceny do aplikace, pokud příkazový řádek = není zadaný žádný. |
 | AADSTS50059 | MissingTenantRealmAndNoUserInformationProvided - Tenanta identifikační informace se nenašel v jednom požadavku nebo odvozené od všech zadaných přihlašovacích údajů. Uživatel může kontaktovat správce tenanta, který vám pomůže vyřešit problém. |
 | AADSTS50061 | SignoutInvalidRequest – odhlášení požadavek je neplatný. |
-| AADSTS50064 | CredentialAuthenticationError – ověření přihlašovacích údajů se nezdařilo. |
+| AADSTS50064 | CredentialAuthenticationError – ověření přihlašovacích údajů na uživatelské jméno nebo heslo se nepovedlo. |
 | AADSTS50068 | SignoutInitiatorNotParticipant – odhlášení se nezdařilo. Aplikace, která iniciovala signout není účastníkem v aktuální relaci. |
 | AADSTS50070 | SignoutUnknownSessionIdentifier – odhlášení se nezdařilo. Žádost o odhlášení zadat identifikátor názvu, který neodpovídal stávajících relací. |
 | AADSTS50071 | SignoutMessageExpired – odhlášení žádosti vypršela. |

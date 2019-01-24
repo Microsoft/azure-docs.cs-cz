@@ -4,7 +4,7 @@ description: Získejte přehled o aktivitách auditování, které můžete prot
 services: active-directory
 documentationcenter: ''
 author: priyamohanram
-manager: mtillman
+manager: daveba
 editor: ''
 ms.assetid: a1f93126-77d1-4345-ab7d-561066041161
 ms.service: active-directory
@@ -16,12 +16,12 @@ ms.component: report-monitor
 ms.date: 11/13/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: db801acbed649c4baa039858ce1d097237c8e227
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: a851d9cd4322f2460bfa7f74854c44e77a52e0a6
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53971371"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54818179"
 ---
 # <a name="azure-ad-audit-activity-reference"></a>Referenční informace k aktivitám auditování Azure AD
 

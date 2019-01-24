@@ -4,7 +4,7 @@ description: Rozhodování mezi připojení ke službě Azure AD a Azure AD Doma
 services: active-directory-ds
 documentationcenter: ''
 author: eringreenlee
-manager: mtillman
+manager: daveba
 editor: curtand
 ms.assetid: 31a71d36-58c1-4839-b958-80da0c6a77eb
 ms.service: active-directory
@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 10/26/2017
 ms.author: ergreenl
-ms.openlocfilehash: 275f537511f721ea3f01c22a962462bab458129c
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.openlocfilehash: 8db95f0bcc715967bf942827c140312572b03095
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50156575"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54853965"
 ---
 # <a name="choose-between-azure-active-directory-join-and-azure-active-directory-domain-services"></a>Výběr mezi připojení k Azure Active Directory a Azure Active Directory Domain Services
 Tento článek popisuje rozdíly mezi připojení ke službě Azure Active Directory (AD) a Azure AD Domain Services a pomůže vám zvolit založené na případy použití.
@@ -56,7 +56,7 @@ Na počítači připojeném k doméně dojde ověřování uživatelů pomocí o
 ## <a name="summary---key-differences"></a>Shrnutí – klíčové rozdíly
 | **Aspekt** | **Azure AD Join** | **Azure AD Domain Services** |
 |:---| --- | --- |
-| Řídí zařízení | Azure AD | Spravovaná doména služby Azure AD Domain Services |
+| Řídí zařízení | Azure AD | Azure AD Domain Services managed domain |
 | Reprezentace v adresáři | Objekty zařízení v adresáři Azure AD. | Počítačových objektů ve spravované doméně AAD DS. |
 | Authentication | Protokoly založené na účtu OAuth/OpenID Connect | Protokol Kerberos, NTLM protokoly |
 | Správa | Software správy mobilních zařízení (MDM), jako je Intune | Zásada skupiny |

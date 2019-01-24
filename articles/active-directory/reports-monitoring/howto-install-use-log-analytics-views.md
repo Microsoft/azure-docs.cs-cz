@@ -4,7 +4,7 @@ description: Zjistěte, jak nainstalovat a používat zobrazení Log Analytics p
 services: active-directory
 documentationcenter: ''
 author: priyamohanram
-manager: mtillman
+manager: daveba
 editor: ''
 ms.assetid: 2290de3c-2858-4da0-b4ca-a00107702e26
 ms.service: active-directory
@@ -16,18 +16,18 @@ ms.component: report-monitor
 ms.date: 11/13/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 7f3db8b16e275ff130cc3d8cb162780d595a7f32
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: fbe5515f05c66fb0763943c20ed8aaa4374e3d87
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51624637"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54825200"
 ---
 # <a name="install-and-use-the-log-analytics-views-for-azure-active-directory"></a>Nainstalovat a používat zobrazení Log Analytics pro Azure Active Directory
 
 Azure Active Directory Log Analytics zobrazení pomáhá analyzovat a protokoly aktivit vyhledávání Azure AD ve vašem tenantovi Azure AD. Aktivit služby Azure AD protokolů zahrnují:
 
-* Protokoly auditu: [sestava aktivit protokolů auditu](concept-audit-logs.md) dává vám přístup k historii každé úlohy, které se provádí ve vašem tenantovi.
+* Protokoly auditu: [Sestava aktivit protokolů auditu](concept-audit-logs.md) dává vám přístup k historii každé úlohy, které se provádí ve vašem tenantovi.
 * Protokoly přihlášení: S [sestavy aktivit přihlašování](concept-sign-ins.md), můžete určit, kdo provedl úlohy, které jsou hlášeny v protokolech auditování.
 
 ## <a name="prerequisites"></a>Požadavky
@@ -50,7 +50,7 @@ Pokud chcete použít v zobrazeních Log Analytics, budete potřebovat:
 
 2. Jakmile budete v pracovním prostoru, vyberte **shrnutí pracovního prostoru**. Měli byste vidět následující tři zobrazení:
 
-    * **Azure AD účet zřizování události**: Toto zobrazení uvádí sestavy k auditování aktivity zajišťování na aktivitu, jako je počet nových uživatelů, které jsou zřízené a selhání zřizování, počet uživatelů, aktualizovat a aktualizovat při selhání a počet uživatelů zruší a odpovídající selhání.    
+    * **Účet Azure AD zřizování události**: Toto zobrazení uvádí sestavy k auditování aktivity zajišťování na aktivitu, jako je počet nových uživatelů, které jsou zřízené a selhání zřizování, počet uživatelů, aktualizovat a aktualizovat chyby a počet uživatelů, zrušení zřízení a odpovídající selhání.    
     * **Události přihlášení**: Toto zobrazení uvádí relevantní zprávy související s monitorování aktivit přihlašování, jako je například přihlášení aplikace, uživatelů, zařízení, stejně jako přehled sledování počet přihlášení v čase.
 
 3. Vyberte některou z těchto zobrazení přejít v jednotlivých sestavách. Můžete také nastavit výstrahy na některý z parametrů sestavy. Například můžeme nastavit výstrahu týkající se pokaždé, když dochází k chybě přihlášení. Chcete-li to provést, vyberte nejdřív **události přihlášení** zobrazit, vyberte možnost **chyby přihlášení v průběhu času** sestavy a pak vyberte **Analytics** otevřete stránku podrobností s samotný dotaz dané sestavy. 

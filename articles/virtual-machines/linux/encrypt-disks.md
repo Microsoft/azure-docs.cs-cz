@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 10/30/2018
 ms.author: cynthn
-ms.openlocfilehash: b80c2fe44ddd15e0e31a83e5baab37736dc57fca
-ms.sourcegitcommit: 799a4da85cf0fec54403688e88a934e6ad149001
+ms.openlocfilehash: 2a057c311a8b080b695492664df0eaabc5609b35
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50913763"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54856787"
 ---
 # <a name="how-to-encrypt-a-linux-virtual-machine-in-azure"></a>Jak šifrování virtuálního počítače s Linuxem v Azure
 
@@ -162,7 +162,7 @@ az vm encryption enable \
     --name myVM \
     --disk-encryption-keyvault $keyvault_name \
     --key-encryption-key myKey \
-    --volume-type all
+    --volume-type data
 ```
 
 

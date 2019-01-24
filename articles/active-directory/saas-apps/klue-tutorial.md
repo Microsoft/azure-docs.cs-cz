@@ -1,10 +1,10 @@
 ---
-title: 'Kurz: Integrace Azure Active Directory se službou Klue | Dokumentace Microsoftu'
+title: 'Kurz: Integrace Azure Active Directory s Klue | Dokumentace Microsoftu'
 description: Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a Klue.
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.assetid: 08341008-980b-4111-adb2-97bbabbf1e47
 ms.service: active-directory
 ms.component: saas-app-tutorial
@@ -14,14 +14,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/28/2018
 ms.author: jeedes
-ms.openlocfilehash: 4afe11d6d241e86b57ebb40d54e4c2dceb63a46c
-ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
+ms.openlocfilehash: 9312006af84e74aa039d762abdfc6edba79a47fb
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43123052"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54824792"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-klue"></a>Kurz: Integrace Azure Active Directory se službou Klue
+# <a name="tutorial-azure-active-directory-integration-with-klue"></a>Kurz: Integrace Azure Active Directory s Klue
 
 V tomto kurzu se dozvíte, jak integrovat Klue s Azure Active Directory (Azure AD).
 
@@ -206,7 +206,7 @@ Cílem této části je vytvoření zkušebního uživatele na webu Azure Portal
 Cílem této části je vytvořte uživatele Britta Simon v Klue. Klue podporuje just-in-time zřizování, který je ve výchozím nastavení povolená. Neexistuje žádná položka akce pro vás v této části. Nový uživatel se vytvoří během pokusu o přístup k Klue, pokud ještě neexistuje.
 
 > [!Note]
-> Pokud je potřeba ručně vytvořit uživatele, obraťte se na [tým podpory Klue](mailto:support@klue.com).
+> Pokud je potřeba ručně vytvořit uživatele, obraťte se na [tým podpory Klue](mailto:support@klue.com).
 
 ### <a name="assigning-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 

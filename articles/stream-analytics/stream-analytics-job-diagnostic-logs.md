@@ -7,14 +7,14 @@ ms.author: jeanb
 ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 01/19/2018
+ms.date: 01/19/2019
 ms.custom: seodec18
-ms.openlocfilehash: e712dfd755082e6b36066b0058ec18545d5c8417
-ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
+ms.openlocfilehash: 34f994bfca8bdeaffde6732572f47aeaa86b2ac5
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/19/2019
-ms.locfileid: "54412831"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54818927"
 ---
 # <a name="troubleshoot-azure-stream-analytics-by-using-diagnostics-logs"></a>Řešení potíží s Azure Stream Analytics s využitím diagnostických protokolů
 

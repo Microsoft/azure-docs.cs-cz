@@ -1,10 +1,10 @@
 ---
-title: 'Kurz: Integrace Azure Active Directory se službou vxMaintain | Dokumentace Microsoftu'
+title: 'Kurz: Integrace Azure Active Directory s vxMaintain | Dokumentace Microsoftu'
 description: Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a vxMaintain.
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.assetid: 841a1066-593c-4603-9abe-f48496d73d10
 ms.service: active-directory
 ms.component: saas-app-tutorial
@@ -14,14 +14,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/26/2018
 ms.author: jeedes
-ms.openlocfilehash: 7e444692dfeab5ca14fbd896043cc28e2cbd8717
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 590c7961444a36c8958fd82aaf67b05ee2213e74
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39433990"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54819896"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-vxmaintain"></a>Kurz: Integrace Azure Active Directory se službou vxMaintain
+# <a name="tutorial-azure-active-directory-integration-with-vxmaintain"></a>Kurz: Integrace Azure Active Directory s vxMaintain
 
 V tomto kurzu se dozvíte, jak integrovat vxMaintain s Azure Active Directory (Azure AD).
 
@@ -37,7 +37,7 @@ Další informace o integraci aplikací SaaS v Azure AD, najdete v článku [co 
 
 Konfigurace integrace Azure AD s vxMaintain, potřebujete následující položky:
 
-- S předplatným služby Azure AD
+- Předplatné Azure AD
 - VxMaintain podporou jednotného přihlašování k odběru
 
 > [!NOTE]
@@ -161,7 +161,7 @@ V této části můžete vytvořit testovacího uživatele Britta Simon na webu 
  
 ### <a name="create-a-vxmaintain-test-user"></a>Vytvoření zkušebního uživatele vxMaintain
 
-V této části můžete vytvořit testovacího uživatele Britta Simon v vxMaintain. Přidat uživatele na platformě vxMaintain, pracovat [tým podpory vxMaintain](https://www.hubspot.com/company/contact). Před použitím jednotného přihlašování k vytvoření a aktivace uživatele.
+V této části můžete vytvořit testovacího uživatele Britta Simon v vxMaintain. Přidat uživatele na platformě vxMaintain, pracovat [tým podpory vxMaintain](https://www.hubspot.com/company/contact). Před použitím jednotného přihlašování k vytvoření a aktivace uživatele.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřadit uživatele Azure AD
 

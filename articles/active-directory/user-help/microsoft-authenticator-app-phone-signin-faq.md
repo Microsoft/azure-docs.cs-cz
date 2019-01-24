@@ -3,7 +3,7 @@ title: Microsoft Authenticator přihlašování telefonem - účtů Azure a Micr
 description: Váš telefon používáte k přihlášení ke svému účtu Microsoft místo zadávání hesla. Tento článek obsahuje nejčastější dotazy k odpovědi informace o této funkci.
 services: active-directory
 author: eross-msft
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.component: user-help
@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 08/12/2017
 ms.author: lizross
 ms.reviewer: librown
-ms.openlocfilehash: 3df4be80e1a979590a05ff10601485e950de54bd
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 39ad9beeb6e562a4487588967910efaf0cbe4d84
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52962213"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54822531"
 ---
 # <a name="sign-in-with-your-phone-not-your-password"></a>Přihlášení pomocí telefonu, ne pomocí hesla
 Aplikace Microsoft Authenticator, nejen pomáhá vám zabezpečit vaše účty pomocí provádí dvoustupňové ověřování za vás zadejte svoje heslo, ale teď ji může nahradit hesla k vašemu účtu Microsoft zcela.

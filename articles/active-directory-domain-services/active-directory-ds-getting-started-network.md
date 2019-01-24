@@ -4,7 +4,7 @@ description: Povolit Azure Active Directory Domain Services pomocí webu Azure p
 services: active-directory-ds
 documentationcenter: ''
 author: eringreenlee
-manager: mtillman
+manager: daveba
 editor: curtand
 ms.assetid: ace1ed4a-bf7f-43c1-a64a-6b51a2202473
 ms.service: active-directory
@@ -15,17 +15,17 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/23/2018
 ms.author: ergreenl
-ms.openlocfilehash: 70dee552ec575f4969593eac4e91fdbb18b426f1
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.openlocfilehash: d73d9d269ce4c78c87e718aed752206f88276770
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50156183"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54857028"
 ---
 # <a name="enable-azure-active-directory-domain-services-using-the-azure-portal"></a>Povolit Azure Active Directory Domain Services pomocí webu Azure portal
 
 
-## <a name="before-you-begin"></a>Než začnete
+## <a name="before-you-begin"></a>Před zahájením
 Přečtěte si článek [Důležité informace o sítích pro Azure Active Directory Domain Services](active-directory-ds-networking.md).
 
 
@@ -44,7 +44,7 @@ Další úlohou konfigurace je vytvoření virtuální sítě Azure a vyhrazenou
   > **Vaši spravovanou doménu nelze přesunout do jiné virtuální sítě po povolení služby Azure AD Domain Services.** Můžete si vyberte správnou virtuální síť umožňuje vaší spravované domény. Po vytvoření spravované domény, nemůžete ho přesunout do jiné virtuální sítě, bez odstranění spravované domény. Doporučujeme vám, že zkontrolujete [sítě důležité informace týkající se Azure Active Directory Domain Services](active-directory-ds-networking.md) předtím, než budete pokračovat.  
   >
 
-4. **Vytvořit virtuální síť:** klikněte na tlačítko **vytvořit nový** při vytváření nové virtuální sítě. Pro službu Azure AD Domain Services použijte vyhrazenou podsíť. Například vytvořte podsíť s názvem "DomainServices' to vám usnadní ostatním správcům pochopit, co je nasazen v rámci podsítě. Klikněte na tlačítko **OK** po dokončení.
+4. **Vytvoření virtuální sítě:** Klikněte na tlačítko **vytvořit nový** při vytváření nové virtuální sítě. Pro službu Azure AD Domain Services použijte vyhrazenou podsíť. Například vytvořte podsíť s názvem "DomainServices' to vám usnadní ostatním správcům pochopit, co je nasazen v rámci podsítě. Klikněte na tlačítko **OK** po dokončení.
 
     ![Vyberte virtuální síť](./media/getting-started/domain-services-blade-network-pick-vnet.png)
 

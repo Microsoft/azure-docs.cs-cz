@@ -8,84 +8,51 @@ author: jejiang
 ms.author: jejiang
 ms.reviewer: jasonh
 ms.topic: conceptual
-ms.date: 10/27/2017
-ms.openlocfilehash: bf47915ba93a4a3a7dec338395cfe0ce6aa3cdf6
-ms.sourcegitcommit: fd488a828465e7acec50e7a134e1c2cab117bee8
+ms.date: 1/17/2019
+ms.openlocfilehash: ef33d8962848636ee53ac6fd3f084b9c2a59e29d
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "53993826"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54820567"
 ---
 # <a name="set-up-the-pyspark-interactive-environment-for-visual-studio-code"></a>Nastavení interaktivního prostředí PySpark pro Visual Studio Code
 
-Následující kroky ukazují, jak nainstalovat balíčky Pythonu spuštěním **HDInsight: PySpark interaktivní**.
+Následující kroky ukazují, jak nastavit interaktivního prostředí PySpark ve VS Code.
 
-## <a name="set-up-the-pyspark-interactive-environment-on-macos-and-linux"></a>Nastavení interaktivního prostředí PySpark v systémech macOS a Linux
-Pokud používáte **python 3.x**, budete muset použít příkaz **pip3** pro následující kroky:
+Používáme **python a pip** příkaz k vytvoření virtuálního prostředí v cestě Domovská stránka. Pokud chcete použít jinou verzi, musíte změnit výchozí verzi **python a pip** příkaz ručně. Další podrobnosti najdete v tématu [aktualizace alternativy](https://linux.die.net/man/8/update-alternatives).
 
-1. Ujistěte se, že **Python** a **pip** jsou nainstalovány.
+1. Nainstalujte [Python](https://www.python.org/) a [pip](https://pip.pypa.io/en/stable/installing/).
+   
+   + Instalace Pythonu z [ https://pip.pypa.io/en/stable/installing ](https://www.python.org/).
+   + Instalace pip z [ https://pip.pypa.io/en/stable/installing ](https://pip.pypa.io/en/stable/installing/). (Pokud není nainstalovaná v instalaci Pythonu)
+   + Ověření Python a pip se instalují úspěšně pomocí následujících příkazů. (Volitelné)
  
-    ![Verze Pythonu pip](./media/set-up-pyspark-interactive-environment/check-python-pip-version.png)
+        ![Verze Pythonu pip](./media/set-up-pyspark-interactive-environment/check-python-pip-version.png)
 
-2.  Instalace Jupyteru.
-    ```
-    sudo pip install jupyter
-    ```
-   Může se zobrazit následující chybová zpráva na Linuxu a macOS:
+    > [!NOTE]
+    > Doporučuje se ručně nainstalovat Python místo použití výchozí verze MacOS.
 
-   ![Chyba: 1](./media/set-up-pyspark-interactive-environment/error1.png)
 
-   ```Resolve:
-    sudo pip uninstall asyncio
-    sudo pip install trollies
-    ```
+2. Nainstalujte **virtualenv** spuštěním následujícího příkazu.
+   
+   ```
+   pip install virtualenv
+   ```
 
-3. Nainstalujte **libkrb5 dev** (pro pouze Linux). Může se zobrazit následující chybová zpráva:
-
-   ![Chyba 2](./media/set-up-pyspark-interactive-environment/error2.png)
+3. Pouze Linux nainstalujte požadované balíčky spuštěním příkazů zmeškáte, pokud narazíte na chybovou zprávu.
+   
+    ![Verze Pythonu pip](./media/set-up-pyspark-interactive-environment/install-libkrb5-package.png)
        
-   ```Resolve:
+   ```
    sudo apt-get install libkrb5-dev 
    ```
 
-3. Nainstalujte **sparkmagic**.
    ```
-   sudo pip install sparkmagic
-   ```
-
-4. Ujistěte se, že **ipywidgets** je správně nainstalována, spusťte následující:
-   ```
-   sudo jupyter nbextension enable --py --sys-prefix widgetsnbextension
-   ```
-   ![Instalace jádra obálky](./media/set-up-pyspark-interactive-environment/ipywidget-enable.png)
- 
-
-5. Instalace jádra obálky. Spustit **pip zobrazit sparkmagic**. Výstup zobrazuje cestu **sparkmagic** instalace. 
-
-    ![sparkmagic umístění](./media/set-up-pyspark-interactive-environment/sparkmagic-location.png)
-   
-6. Přejděte do umístění a potom spusťte:
-
-   ```Python2
-   sudo jupyter-kernelspec install sparkmagic/kernels/pysparkkernel   
-   ```
-   ```Python3
-   sudo jupyter-kernelspec install sparkmagic/kernels/pyspark3kernel
+   sudo apt-get install python-dev
    ```
 
-   ![instalace kernelspec jupyter](./media/set-up-pyspark-interactive-environment/jupyter-kernelspec-install.png)
-7. Zkontrolujte stav instalace.
-
-    ```
-    jupyter-kernelspec list
-    ```
-    ![seznam kernelspec jupyter](./media/set-up-pyspark-interactive-environment/jupyter-kernelspec-list.png)
-
-    Pro dostupná jádra: 
-    - **python2** a **pysparkkernel** odpovídají **python 2.x**. 
-    - **pythonu3** a **pyspark3kernel** odpovídají **python 3.x**. 
-
-8. Restartujte VS Code a pak přejděte zpět na editor skriptů, na kterém běží **HDInsight: PySpark interaktivní**.
+4. Restartujte VS Code a pak přejděte zpět na editor skriptů, na kterém běží **HDInsight: PySpark interaktivní**.
 
 ## <a name="next-steps"></a>Další postup
 

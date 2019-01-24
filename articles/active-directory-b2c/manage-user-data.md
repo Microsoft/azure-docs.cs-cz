@@ -3,19 +3,19 @@ title: Správa údajů uživatele ve službě Azure Active Directory B2C | Dokum
 description: Zjistěte, jak odstranit nebo export dat uživatele v Azure AD B2C.
 services: active-directory-b2c
 author: davidmu1
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 05/06/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 49e9efa537ad1f2a1d7f06dd7f8a68a409c7d4e0
-ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
+ms.openlocfilehash: fc49191fe6141470ddd5304bdd12cec1d40bd1ee
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2018
-ms.locfileid: "42058661"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54854016"
 ---
 # <a name="manage-user-data-in-azure-active-directory-b2c"></a>Správa údajů uživatele ve službě Azure Active Directory B2C
 
@@ -46,8 +46,8 @@ Proces exportu zákaznická data z Azure AD B2C je podobný procesu odstranění
 
 Data uživatele Azure AD B2C je omezený na:
 
-- **Data uložená v Azure Active Directory**: data v cestě uživatele ověřování Azure AD B2C můžete načíst pomocí ID objektu nebo jakékoli přihlašovací jméno, například uživatelské jméno nebo e-mailovou adresu. 
-- **Události sestavy auditování uživatelská**: můžete indexovat data s použitím ID objektu.
+- **Data uložená v Azure Active Directory**: Načtení dat v cestě uživatele ověřování Azure AD B2C s použitím ID objektu nebo jakékoli přihlašovací jméno, například uživatelské jméno nebo e-mailovou adresu. 
+- **Události sestavy auditování uživatelská**: Můžete indexovat data s použitím ID objektu.
 
 V následujícím příkladu toku dat exportu kroky, které jsou popsány jako prováděného aplikace lze také provést pomocí back-endový proces nebo uživatel s rolí správce v adresáři:
 

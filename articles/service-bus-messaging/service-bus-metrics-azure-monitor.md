@@ -3,18 +3,19 @@ title: Metriky Azure Service Bus ve službě Azure Monitor (preview) | Dokumenta
 description: Monitorování entit služby Service Bus pomocí Azure Monitoring
 services: service-bus-messaging
 documentationcenter: .NET
-author: spelluru
+author: axisc
 manager: timlt
+editor: spelluru
 ms.service: service-bus-messaging
 ms.topic: article
 ms.date: 11/06/2018
-ms.author: spelluru
-ms.openlocfilehash: 5175d768f4aa62365e4151b4c8fed372038f1d95
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.author: aschhab
+ms.openlocfilehash: fda6ca26c39d49c0d16c9933cc0a14f0bfea90a9
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53548795"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54857110"
 ---
 # <a name="azure-service-bus-metrics-in-azure-monitor-preview"></a>Metriky Azure Service Bus ve službě Azure Monitor (preview)
 

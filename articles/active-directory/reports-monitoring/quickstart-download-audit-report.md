@@ -4,7 +4,7 @@ description: Zjistěte, jak stáhnout sestavu auditování pomocí portálu Azur
 services: active-directory
 documentationcenter: ''
 author: priyamohanram
-manager: mtillman
+manager: daveba
 editor: ''
 ms.assetid: 4de121ea-f4aa-4c8a-aae4-700c2c5e97a2
 ms.service: active-directory
@@ -16,12 +16,12 @@ ms.component: report-monitor
 ms.date: 11/13/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 0184fb058e467e8a9981edcf223613dfc431b933
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: afa92c40bd3cebea1024cf783a746450d3430a8d
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 01/23/2019
-ms.locfileid: "54464319"
+ms.locfileid: "54821810"
 ---
 # <a name="quickstart-download-an-audit-report-using-the-azure-portal"></a>Rychlý start: Stáhněte si sestavu auditování pomocí webu Azure portal
 

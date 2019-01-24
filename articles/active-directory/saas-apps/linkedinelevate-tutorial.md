@@ -4,7 +4,7 @@ description: Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.assetid: 2ad9941b-c574-42c3-bd0f-5d6ec68537ef
 ms.service: active-directory
 ms.component: saas-app-tutorial
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/16/2018
 ms.author: jeedes
-ms.openlocfilehash: 8b11b5e3e420577590e95c6839673f54c52d078b
-ms.sourcegitcommit: 4eddd89f8f2406f9605d1a46796caf188c458f64
+ms.openlocfilehash: 209f87a77ff6e18fa08943385d9cf61bbf915089
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49116172"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54822633"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-linkedin-elevate"></a>Kurz: Integrace Azure Active Directory s rozvoji Linkedinem
 
@@ -137,7 +137,7 @@ V této části Povolení služby Azure AD jednotného přihlašování na port�
 
     | Název atributu | Hodnota atributu |
     | --- | --- |
-    | Oddělení| User.Department |
+    | Oddělení| user.department |
 
       ![Vytváří se testovací uživatele služby Azure AD](./media/linkedinelevate-tutorial/userattribute.png)
 
@@ -238,9 +238,9 @@ V této části Testování služby Azure AD jednotné přihlašování – konf
 
 Po kliknutí na dlaždici rozvoji Linkedinem na přístupovém panelu, měli byste získat na stránce Azure Sign-on a na po úspěšném přihlášení, měli byste obdržet do své aplikace rozvoji Linkedinem.
 
-## <a name="additional-resources"></a>Další zdroje informací:
+## <a name="additional-resources"></a>Další materiály
 
-* [Kurz: Konfigurace rozvoji Linkedinem pro automatické zřizování uživatelů pomocí Azure Active Directory](linkedinelevate-provisioning-tutorial.md)
+* [Kurz: Konfigurace zvýšení oprávnění LinkedIn pro automatické zřizování uživatelů pomocí Azure Active Directory](linkedinelevate-provisioning-tutorial.md)
 * [Seznam kurzů o integraci aplikací SaaS pomocí Azure Active Directory](tutorial-list.md)
 * [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](../manage-apps/what-is-single-sign-on.md)
 * [Konfigurace zřizování uživatelů](linkedinelevate-provisioning-tutorial.md)

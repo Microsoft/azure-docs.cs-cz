@@ -3,19 +3,19 @@ title: Lokalizace – Azure Active Directory B2C | Dokumentace Microsoftu
 description: Zadejte vlastní zásady element Localization v Azure Active Directory B2C.
 services: active-directory-b2c
 author: davidmu1
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 09/10/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: e9442302b8d15a3a6a4c9fe148b48845b3535204
-ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
+ms.openlocfilehash: a0abf2fd3502238af0e0f02cb8f9917cfb90b586
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44381166"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54854968"
 ---
 # <a name="localization"></a>Lokalizace
 
@@ -39,7 +39,7 @@ ms.locfileid: "44381166"
 
 **Lokalizace** prvek obsahuje následující atributy:
 
-| Atribut | Požaduje se | Popis |
+| Atribut | Požadováno | Popis |
 | --------- | -------- | ----------- |
 | Povoleno | Ne | Možné hodnoty: `true` nebo `false`. |
 
@@ -54,7 +54,7 @@ ms.locfileid: "44381166"
 
 **SupportedLanguages** prvek obsahuje následující atributy:
 
-| Atribut | Požaduje se | Popis |
+| Atribut | Požadováno | Popis |
 | --------- | -------- | ----------- |
 | DefaultLanguage | Ano | Jazyk, který má být použita jako výchozí pro lokalizované prostředky. |
 | MergeBehavior | Ne | Výčtových hodnot z hodnot, které jsou slučovány spolu s jakékoli typu deklarace identity k dispozici v nadřazené zásady se stejným identifikátorem. Pomocí tohoto atributu při přepsání deklarace zadané v základních zásadách. Možné hodnoty: `Append`, `Prepend`, nebo `ReplaceAll`. `Append` Hodnota určuje, že shromažďování dat, které jsou k dispozici, má být připojen na konec kolekce zadaná v nadřazené zásady. `Prepend` Hodnota určuje, že shromažďování dat, které jsou k dispozici by se měl přidat před kolekce zadaná v nadřazené zásady. `ReplaceAll` Hodnota určuje, že shromažďování dat, které jsou definovány v nadřazené zásady by měl být ignorovány, místo toho použít data definovaná v aktuální zásady. |
@@ -71,7 +71,7 @@ ms.locfileid: "44381166"
 
 **LocalizedResources** prvek obsahuje následující atributy:
 
-| Atribut | Požaduje se | Popis |
+| Atribut | Požadováno | Popis |
 | --------- | -------- | ----------- |
 | ID | Ano | Identifikátor, který slouží k jednoznačné identifikaci lokalizované prostředky. |
 
@@ -94,7 +94,7 @@ ms.locfileid: "44381166"
 
 **LocalizedCollection** prvek obsahuje následující atributy:
 
-| Atribut | Požaduje se | Popis |
+| Atribut | Požadováno | Popis |
 | --------- | -------- | ----------- |
 | ElementType | Ano | Odkazuje na element typu deklarace identity nebo prvek uživatelského rozhraní v souboru zásad. |
 | ElementId | Ano | Řetězec, který již obsahuje odkaz na typ deklarace identity definovaný v sekci ClaimsSchema, který se používá v případě **ElementType** nastavena typu deklarace identity. |
@@ -108,7 +108,7 @@ ms.locfileid: "44381166"
 
 **Položky** prvek obsahuje následující atributy:
 
-| Atribut | Požaduje se | Popis |
+| Atribut | Požadováno | Popis |
 | --------- | -------- | ----------- |
 | Text | Ano | Popisný Zobrazovaný řetězec, který má být zobrazena uživateli v uživatelském rozhraní pro tuto možnost. |
 | Hodnota | Ano | Řetězec deklarace identity hodnotu přidruženou k výběru této možnosti. |
@@ -144,7 +144,7 @@ Následující příklad ukazuje použití **LocalizedCollections** elementu. Ob
 
 **LocalizedString** prvek obsahuje následující atributy:
 
-| Atribut | Požaduje se | Popis |
+| Atribut | Požadováno | Popis |
 | --------- | -------- | ----------- |
 | ElementType | Ano | Odkaz na element typu deklarace identity nebo prvek uživatelského rozhraní v zásadách. Možné hodnoty: `ClaimType`, `UxElement`, `ErrorMessage`, `Predicate`, nebo. `ClaimType` Hodnota slouží k lokalizaci jeden z atributů deklarace identity, jako zadané v poli řetězců. `UxElement` Hodnota slouží k lokalizaci jeden z prvků uživatelského rozhraní, jako zadané v poli řetězců. `ErrorMessage` Hodnota slouží k lokalizaci některá z chybových zpráv systému jako zadané v poli řetězců. `Predicate` Hodnota slouží k lokalizaci některou [predikátu](predicates.md) chybové zprávy, jako zadané v poli řetězců. `InputValidation` Hodnota slouží k lokalizaci některou [PredicateValidation](predicates.md) skupině chybové zprávy jako zadané v poli řetězců. |
 | ElementId | Ano | Pokud **ElementType** je nastavena na `ClaimType`, `Predicate`, nebo `InputValidation`, tento prvek obsahuje odkaz na typ deklarace identity již definovaná v části ClaimsSchema. | 
@@ -222,7 +222,7 @@ Přidat **LocalizedResources** elementů v rámci **lokalizace** elementu po uza
 
 Každý **LocalizedResources** element obsahuje všechny požadované **LocalizedStrings** prvky s několika **LocalizedString** elementy a  **LocalizedCollections** prvky s několika **LocalizedCollection** elementy.  Následující příklad přidá anglické lokalizace stránku pro přihlášení: 
 
-Poznámka: Tento příklad vytvoří odkaz na `Gender` a `City` typy deklarací identity. Pokud chcete použít v tomto příkladu, ujistěte se, že definovat tyto deklarace identit. Další informace najdete v tématu [ClaimsSchema](claimsschema.md).
+Poznámka: V tomto příkladu odkazuje na `Gender` a `City` typy deklarací identity. Pokud chcete použít v tomto příkladu, ujistěte se, že definovat tyto deklarace identit. Další informace najdete v tématu [ClaimsSchema](claimsschema.md).
 
 ```XML
 <LocalizedResources Id="api.localaccountsignup.en">

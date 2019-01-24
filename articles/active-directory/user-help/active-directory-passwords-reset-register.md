@@ -3,7 +3,7 @@ title: Registrace pro samoobslužné resetování hesla – Azure Active Directo
 description: Registrace ověřovacích dat pro hesla pomocí samoobslužné služby Azure AD resetování
 services: active-directory
 author: eross-msft
-manager: mtillman
+manager: daveba
 ms.reviewer: sahenry
 ms.assetid: ''
 ms.service: active-directory
@@ -12,12 +12,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 01/11/2018
 ms.author: lizross
-ms.openlocfilehash: f8b4fb8861760d2b5b10f61b3ab6a8c718f849b6
-ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
+ms.openlocfilehash: 2a9e65e36e31f4b2b382fac2bd9898580be18900
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47106827"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54821664"
 ---
 # <a name="register-for-self-service-password-reset"></a>Registrace pro samoobslužné resetování hesla
 
@@ -31,9 +31,9 @@ Jako koncový uživatel můžete obnovit heslo nebo odemknout účet sami, pokud
 1. Otevřete webový prohlížeč na zařízení a přejděte [registrační stránku pro resetování hesla](https://aka.ms/ssprsetup).
 2. Zadejte svoje uživatelské jméno a heslo, které vám poskytl správce.
 3. V závislosti na tom, jak vaši pracovníci IT nakonfiguroval věcí jsou k dispozici pro konfiguraci a ověřit jeden nebo více z následujících možností. Pokud správce má váš souhlas s používáním vašich informací, jsou některé z informací můžete naplnit.
-    * **Telefon do kanceláře**: pouze správce může nastavit tuto možnost.
-    * **Telefon pro ověření**: tuto možnost nastavte na jiné telefonní číslo, které máte přístup. Příkladem je mobilní telefon, který může být text nebo volání.
-    * **E-mail pro ověření**: tuto možnost nastavte na alternativní e-mailovou adresu, která lze přistupovat bez použití chcete resetovat heslo.
+    * **Telefon do kanceláře**: Tuto možnost můžete nastavit pouze správce.
+    * **Telefon pro ověření**: Tuto možnost nastavte na jiné telefonní číslo, které máte přístup. Příkladem je mobilní telefon, který může být text nebo volání.
+    * **E-mail pro ověření**: Tuto možnost nastavte na alternativní e-mailovou adresu, která lze přistupovat bez použití hesla, které chcete obnovit.
     * **Bezpečnostní otázky**: Správce schválil tento seznam otázek, na které odpovíte. Nelze použít stejný dotaz nebo odpověď více než jednou.
 4. Zadejte a zkontrolujte informace, které vyžaduje váš správce. Pokud je k dispozici více než jednu možnost, doporučujeme, že zaregistrujete několik metod. To nabízí flexibilitu při jedné z metod není k dispozici. Je například při cestování a budete moci přistupovat k telefonu do kanceláře.
 

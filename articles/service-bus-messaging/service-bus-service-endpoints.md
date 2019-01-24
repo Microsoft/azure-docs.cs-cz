@@ -3,19 +3,20 @@ title: Koncové body služeb virtuální sítě a pravidel pro Azure Service Bus
 description: Přidáte koncový bod služby Microsoft.ServiceBus k virtuální síti.
 services: service-bus
 documentationcenter: ''
-author: clemensv
+author: axisc
 manager: timlt
+editor: spelluru
 ms.service: service-bus
 ms.devlang: na
 ms.topic: article
 ms.date: 09/05/2018
-ms.author: clemensv
-ms.openlocfilehash: 87a89ffd627454752924bfc69e44da87b071b5e5
-ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
+ms.author: aschhab
+ms.openlocfilehash: 3e55da5a6ebb0db26b32f51d67f013cb65438104
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/20/2018
-ms.locfileid: "53651431"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54854798"
 ---
 # <a name="use-virtual-network-service-endpoints-with-azure-service-bus"></a>Koncové body služeb virtuální sítě pomocí Azure Service Bus
 
@@ -34,7 +35,7 @@ Výsledkem je privátní a izolované relaci mezi úlohami, které jsou vázány
 > - Azure Monitor
 > - Azure Stream Analytics
 > - Integrace s Azure Event Grid
-> - Směruje Azure IoT Hub
+> - Azure IoT Hub Routes
 > - Azure IoT Device Explorer
 > - Průzkumník dat Azure
 >

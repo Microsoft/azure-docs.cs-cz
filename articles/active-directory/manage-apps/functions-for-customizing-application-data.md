@@ -11,14 +11,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 09/11/2018
-ms.author: barbkess
-ms.openlocfilehash: 61aeb6a80d492a82dffa66491742899df0acc237
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.date: 01/21/2019
+ms.author: chmutali
+ms.openlocfilehash: 05be48817334dacac803eeccf2dc08e5a4bbd407
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 01/23/2019
-ms.locfileid: "54470048"
+ms.locfileid: "54823672"
 ---
 # <a name="writing-expressions-for-attribute-mappings-in-azure-active-directory"></a>Zápis výrazů pro mapování atributů ve službě Azure Active Directory
 Při konfiguraci zřizování pro aplikace SaaS, je jedním z typů mapování atributů, které můžete zadat mapování výrazu. Pro ty musíte napsat skript jako výraz, který umožňuje transformovat data uživatelů na formáty, které jsou více přijatelné pro aplikace SaaS.
@@ -37,7 +37,7 @@ Syntaxe výrazů pro mapování atributů je připomínající Visual Basic pro 
 * Pro řetězcové konstanty Pokud potřebujete zpětného lomítka (\) nebo uvozovky (") v řetězci, se musejí být uvozeny symbol zpětného lomítka (\). Příklad: "Název společnosti: \"Contoso\""
 
 ## <a name="list-of-functions"></a>Seznam funkcí
-[Připojit](#append) &nbsp; &nbsp; &nbsp; &nbsp; [FormatDateTime](#formatdatetime) &nbsp; &nbsp; &nbsp; &nbsp; [připojení](#join) &nbsp; &nbsp; &nbsp; &nbsp; [Mid](#mid) &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; [NormalizeDiacritics](#normalizediacritics) [není](#not) &nbsp; &nbsp; &nbsp; &nbsp; [nahradit](#replace) &nbsp; &nbsp; &nbsp; &nbsp; [SelectUniqueValue](#selectuniquevalue) &nbsp; &nbsp; &nbsp; &nbsp; [SingleAppRoleAssignment](#singleapproleassignment) &nbsp; &nbsp; &nbsp; &nbsp; [StripSpaces](#stripspaces) &nbsp; &nbsp; &nbsp; &nbsp; [Přepínače](#switch)
+[Připojit](#append) &nbsp; &nbsp; &nbsp; &nbsp; [FormatDateTime](#formatdatetime) &nbsp; &nbsp; &nbsp; &nbsp; [připojení](#join) &nbsp; &nbsp; &nbsp; &nbsp; [Mid](#mid) &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; [NormalizeDiacritics](#normalizediacritics) [není](#not) &nbsp; &nbsp; &nbsp; &nbsp; [nahradit](#replace) &nbsp; &nbsp; &nbsp; &nbsp; [SelectUniqueValue](#selectuniquevalue) &nbsp; &nbsp; &nbsp; &nbsp; [SingleAppRoleAssignment](#singleapproleassignment) &nbsp; &nbsp; &nbsp; &nbsp; [StripSpaces](#stripspaces) &nbsp; &nbsp; &nbsp; &nbsp; [Přepínač](#switch) &nbsp; &nbsp; &nbsp; &nbsp; [ToLower](#tolower) &nbsp; &nbsp; &nbsp; &nbsp; [ToUpper](#toupper)
 
 - - -
 ### <a name="append"></a>Připojit
@@ -209,6 +209,32 @@ Nahradí hodnoty v řetězci. V závislosti na parametry, které poskytnou fungu
 | **key** |Požaduje se |Řetězec |**Klíč** k porovnání **zdroj** hodnotu. |
 | **value** |Požaduje se |Řetězec |Nahrazující hodnotou pro **zdroj** odpovídající klíči. |
 
+- - -
+### <a name="tolower"></a>toLower
+**Funkce:**<br> ToLower (zdroj, jazyková verze)
+
+**Popis:**<br> Přijímá *zdroj* řetězcová hodnota a převede ho na malá písmena pomocí jazykové verze pravidla, které jsou určeny. Pokud není žádný *jazykovou verzi* informace zadané, pak bude použita invariantní jazyková verze.
+
+**Parametry:**<br> 
+
+| Název | Požadovaný / s opakováním | Typ | Poznámky |
+| --- | --- | --- | --- |
+| **Zdroj** |Požaduje se |Řetězec |Obvykle název atributu ze zdrojového objektu |
+| **Jazyková verze** |Nepovinné |Řetězec |Formát pro název jazykové verze podle RFC 4646 *languagecode2 – země/regioncode2*, kde *languagecode2* je kód jazyka dvoupísmenné a *země/regioncode2*dvoupísmenné subkulturu kód. Mezi příklady patří ja-JP japonština (Japonsko) a en US pro angličtinu (Spojené státy). V případech, kdy kód jazyka dvoupísmenné není k dispozici se používá třípísmenný kód odvozené ze souboru ISO 639-2.|
+
+- - -
+### <a name="toupper"></a>toUpper
+**Funkce:**<br> ToUpper (zdroj, jazyková verze)
+
+**Popis:**<br> Přijímá *zdroj* řetězcová hodnota a převede ho na velká písmena pomocí jazykové verze pravidla, které jsou určeny. Pokud není žádný *jazykovou verzi* informace zadané, pak bude použita invariantní jazyková verze.
+
+**Parametry:**<br> 
+
+| Název | Požadovaný / s opakováním | Typ | Poznámky |
+| --- | --- | --- | --- |
+| **Zdroj** |Požaduje se |Řetězec |Obvykle název atributu ze zdrojového objektu |
+| **Jazyková verze** |Nepovinné |Řetězec |Formát pro název jazykové verze podle RFC 4646 *languagecode2 – země/regioncode2*, kde *languagecode2* je kód jazyka dvoupísmenné a *země/regioncode2*dvoupísmenné subkulturu kód. Mezi příklady patří ja-JP japonština (Japonsko) a en US pro angličtinu (Spojené státy). V případech, kdy kód jazyka dvoupísmenné není k dispozici se používá třípísmenný kód odvozené ze souboru ISO 639-2.|
+
 ## <a name="examples"></a>Příklady
 ### <a name="strip-known-domain-name"></a>Název domény známý pruhu
 Je potřeba odstranit název domény známý z e-mailu uživatele k získání uživatelského jména. <br>
@@ -283,6 +309,18 @@ Pokud kód stavu neodpovídá žádné z předdefinovaných možností, použijt
 
 * **VSTUP** (stav): "QLD"
 * **VÝSTUP**: "Austrálie/Brisbane"
+
+### <a name="convert-generated-userprincipalname-upn-value-to-lower-case"></a>Hodnotu generovanou userPrincipalName (UPN) převést na malá písmena
+
+V následujícím příkladu se zřetězením polí zdroj PreferredFirstName a PreferredLastName vygeneruje hodnotu hlavního názvu uživatele a funkce ToLower pracuje vygenerovaný řetězec převádí všechny znaky na malá písmena. 
+
+`ToLower(Join("@", NormalizeDiacritics(StripSpaces(Join(".",  [PreferredFirstName], [PreferredLastName]))), "contoso.com"))`
+
+**Ukázkový vstup/výstup:**
+
+* **INPUT** (PreferredFirstName): "John"
+* **INPUT** (PreferredLastName): "Macek"
+* **VÝSTUP**: "john.smith@contoso.com"
 
 ### <a name="generate-unique-value-for-userprincipalname-upn-attribute"></a>Generovat jedinečnou hodnotu pro atribut userPrincipalName (UPN)
 

@@ -14,22 +14,22 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
-ms.openlocfilehash: 79803a749b6d08c94bcbf5f3ca66aac8b7294fa3
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: be702571d178fc67eeb92de4e52a48d5bef72b18
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52844647"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54824622"
 ---
-# <a name="security-frame-cryptography--mitigations"></a>Zabezpečení Frame: Šifrování | Zmírnění rizik 
+# <a name="security-frame-cryptography--mitigations"></a>Zabezpečení rámce: Kryptografie | Zmírnění rizik 
 | Produkt nebo službu | Článek |
 | --------------- | ------- |
 | **Webové aplikace** | <ul><li>[Používat pouze schválený symetrický blokové šifry a délky klíčů](#cipher-length)</li><li>[Použití schválené režimy šifrování bloku a inicializační vektory pro symetrické šifrování](#vector-ciphers)</li><li>[Použití schválené asymetrické algoritmy, délky klíčů a odsazení](#padding)</li><li>[Použití schválené generátorů náhodných čísel](#numgen)</li><li>[Nepoužívejte stream symetrického šifrování](#stream-ciphers)</li><li>[Použití schválené MAC/HMAC/označenými hashovacích algoritmů](#mac-hash)</li><li>[Používat pouze funkce schválené kryptografické hodnoty hash](#hash-functions)</li></ul> |
 | **Database** | <ul><li>[Používat silné šifrovací algoritmy k šifrování dat v databázi](#strong-db)</li><li>[Balíčků služby SSIS by měl být zašifrované a digitálně podepsané](#ssis-signed)</li><li>[Přidat digitální podpis zabezpečitelným prostředkům kritické databáze](#securables-db)</li><li>[Použít systém SQL server EKM chrání šifrovací klíče](#ekm-keys)</li><li>[Pokud šifrovací klíče by neměl být odhalena k databázovému stroji AlwaysEncrypted funkci používat](#keys-engine)</li></ul> |
 | **Zařízení IoT** | <ul><li>[Bezpečně Store kryptografických klíčů v zařízení IoT](#keys-iot)</li></ul> | 
-| **Brána IoT cloudu** | <ul><li>[Generování náhodného symetrického klíče dostatečně dlouhé pro ověření do služby IoT Hub](#random-hub)</li></ul> | 
-| **Mobilní klient Dynamics CRM** | <ul><li>[Ujistěte se, že zásady správy zařízení je v místě, ke kterému potřebuje použít PIN kód a umožňuje vzdálené vymazání](#pin-remote)</li></ul> | 
-| **Klient Dynamics CRM Outlook** | <ul><li>[Ujistěte se, že zásady správy zařízení je v místě, ke kterému vyžaduje kód PIN a hesla/automatické zamykání a šifruje všechna data (např. Bitlocker)](#bitlocker)</li></ul> | 
+| **IoT Cloud Gateway** | <ul><li>[Generování náhodného symetrického klíče dostatečně dlouhé pro ověření do služby IoT Hub](#random-hub)</li></ul> | 
+| **Dynamics CRM Mobile Client** | <ul><li>[Ujistěte se, že zásady správy zařízení je v místě, ke kterému potřebuje použít PIN kód a umožňuje vzdálené vymazání](#pin-remote)</li></ul> | 
+| **Dynamics CRM Outlook Client** | <ul><li>[Ujistěte se, že zásady správy zařízení je v místě, ke kterému vyžaduje kód PIN a hesla/automatické zamykání a šifruje všechna data (např. BitLocker)](#bitlocker)</li></ul> | 
 | **Serveru identit** | <ul><li>[Ujistěte se, že podpisové klíče jsou jednotlivě při použití serveru identit](#rolled-server)</li><li>[Ujistěte se, že ID přidělení kryptograficky silného klienta, tajného klíče klienta jsou použity na serveru identit](#client-server)</li></ul> | 
 
 ## <a id="cipher-length"></a>Používat pouze schválený symetrický blokové šifry a délky klíčů
@@ -74,7 +74,7 @@ ms.locfileid: "52844647"
 | **Použitelných technologiích** | Obecné |
 | **Atributy**              | neuvedeno  |
 | **Odkazy**              | neuvedeno  |
-| **Kroky** | <p>Produkty musí používat schválené generátorů náhodných čísel. Pseudonáhodná funkce jako rand funkce modulu runtime jazyka C, rozhraní .NET Framework třída System.Random nebo systémové funkce, jako je například GetTickCount musí proto nikdy používat ve takového kódu. Použít duální eliptické křivky náhodných čísel generátor (DUAL_EC_DRBG) je zakázaná.</p><ul><li>**CNG -** BCryptGenRandom (pomocí příznaku BCRYPT_USE_SYSTEM_PREFERRED_RNG nedoporučuje, pokud volající může spustit na libovolné úrovni IRQL větší než 0 [PASSIVE_LEVEL])</li><li>**CAPI -** cryptGenRandom</li><li>**Win32/64-** RtlGenRandom (nové implementace používejte BCryptGenRandom nebo CryptGenRandom) * rand_s – * SystemPrng (pro režim jádra)</li><li>**. NET -** RNGCryptoServiceProvider nebo RNGCng</li><li>**Windows Store Apps -** Windows.Security.Cryptography.CryptographicBuffer.GenerateRandom nebo. GenerateRandomNumber</li><li>**Apple OS X (10.7+)/iOS(2.0+) -** int SecRandomCopyBytes (SecRandomRef náhodně výpočtu size_t, uint8_t \*bajtů)</li><li>**Apple OS X (< 10.7)-** použijte/dev/náhodné k načtení náhodná čísla</li><li>**Java(Including Google Android Java Code) -** java.security.SecureRandom třídy. Mějte na paměti, že pro Android verze 4.3 položku (Jelly Bean), vývojáři musí postupovat podle Android doporučená alternativní řešení a aktualizovat svoje aplikace explicitně inicializovat PRNG s entropie /dev/urandom nebo /dev/random</li></ul>|
+| **Kroky** | <p>Produkty musí používat schválené generátorů náhodných čísel. Pseudonáhodná funkce jako rand funkce modulu runtime jazyka C, rozhraní .NET Framework třída System.Random nebo systémové funkce, jako je například GetTickCount musí proto nikdy používat ve takového kódu. Použít duální eliptické křivky náhodných čísel generátor (DUAL_EC_DRBG) je zakázaná.</p><ul><li>**CNG -** BCryptGenRandom (pomocí příznaku BCRYPT_USE_SYSTEM_PREFERRED_RNG nedoporučuje, pokud volající může spustit na libovolné úrovni IRQL větší než 0 [PASSIVE_LEVEL])</li><li>**CAPI -** cryptGenRandom</li><li>**Win32/64-** RtlGenRandom (nové implementace používejte BCryptGenRandom nebo CryptGenRandom) * rand_s – * SystemPrng (pro režim jádra)</li><li>**.NET-** RNGCryptoServiceProvider or RNGCng</li><li>**Windows Store Apps -** Windows.Security.Cryptography.CryptographicBuffer.GenerateRandom nebo. GenerateRandomNumber</li><li>**Apple OS X (10.7+)/iOS(2.0+) -** int SecRandomCopyBytes (SecRandomRef náhodně výpočtu size_t, uint8_t \*bajtů)</li><li>**Apple OS X (< 10.7)-** použijte/dev/náhodné k načtení náhodná čísla</li><li>**Java(Including Google Android Java Code) -** java.security.SecureRandom třídy. Mějte na paměti, že pro Android verze 4.3 položku (Jelly Bean), vývojáři musí postupovat podle Android doporučená alternativní řešení a aktualizovat svoje aplikace explicitně inicializovat PRNG s entropie /dev/urandom nebo /dev/random</li></ul>|
 
 ## <a id="stream-ciphers"></a>Nepoužívejte stream symetrického šifrování
 
@@ -139,8 +139,8 @@ ms.locfileid: "52844647"
 | **SDL fáze**               | Sestavení |  
 | **Použitelných technologiích** | Obecné |
 | **Atributy**              | neuvedeno  |
-| **Odkazy**              | [Přidejte podpis (Transact-SQL)](https://msdn.microsoft.com/library/ms181700) |
-| **Kroky** | V případech, kde integrity zabezpečitelných kritické databáze musí být ověřena by měla sloužit digitální podpisy. Databáze zabezpečitelné prostředky, jako jsou uložené procedury, funkce, sestavení nebo aktivační událost může být digitálně podepsané. Níže je příklad, když to může být užitečné: dejte nám říct, ISV (nezávislý výrobce softwaru) poskytuje podporu pro software doručit do jedné z jejich zákazníků. Ještě před poskytnutím podpory, ISV vhodné zajistit, že databáze zabezpečeného softwaru nebylo manipulováno omylem nebo při pokusu škodlivé. Pokud zabezpečený je digitálně podepsané, výrobci můžete ověřit digitální podpis a ověřit jeho integritu.| 
+| **Odkazy**              | [ADD SIGNATURE (Transact-SQL)](https://msdn.microsoft.com/library/ms181700) |
+| **Kroky** | V případech, kde integrity zabezpečitelných kritické databáze musí být ověřena by měla sloužit digitální podpisy. Databáze zabezpečitelné prostředky, jako jsou uložené procedury, funkce, sestavení nebo aktivační událost může být digitálně podepsané. Níže je příklad, když to může být užitečné: Dejte nám Řekněme, že ISV (nezávislý výrobce softwaru) poskytuje podporu pro software doručit do jedné z jejich zákazníků. Ještě před poskytnutím podpory, ISV vhodné zajistit, že databáze zabezpečeného softwaru nebylo manipulováno omylem nebo při pokusu škodlivé. Pokud zabezpečený je digitálně podepsané, výrobci můžete ověřit digitální podpis a ověřit jeho integritu.| 
 
 ## <a id="ekm-keys"></a>Použít systém SQL server EKM chrání šifrovací klíče
 
@@ -191,7 +191,7 @@ Jak je vidět, primární klíč zařízení není k dispozici v kódu. Místo t
 
 | Titul                   | Podrobnosti      |
 | ----------------------- | ------------ |
-| **Komponenta**               | Brána IoT cloudu | 
+| **Komponenta**               | IoT Cloud Gateway | 
 | **SDL fáze**               | Sestavení |  
 | **Použitelných technologiích** | Obecné |
 | **Atributy**              | Výběr brány - Azure IoT Hub |
@@ -202,23 +202,23 @@ Jak je vidět, primární klíč zařízení není k dispozici v kódu. Místo t
 
 | Titul                   | Podrobnosti      |
 | ----------------------- | ------------ |
-| **Komponenta**               | Mobilní klient Dynamics CRM | 
+| **Komponenta**               | Dynamics CRM Mobile Client | 
 | **SDL fáze**               | Nasazení |  
 | **Použitelných technologiích** | Obecné |
 | **Atributy**              | neuvedeno  |
 | **Odkazy**              | neuvedeno  |
 | **Kroky** | Ujistěte se, že zásady správy zařízení je v místě, ke kterému potřebuje použít PIN kód a umožňuje vzdálené vymazání |
 
-## <a id="bitlocker"></a>Ujistěte se, že zásady správy zařízení je v místě, ke kterému vyžaduje kód PIN a hesla/automatické zamykání a šifruje všechna data (např. Bitlocker)
+## <a id="bitlocker"></a>Ujistěte se, že zásady správy zařízení je v místě, ke kterému vyžaduje kód PIN a hesla/automatické zamykání a šifruje všechna data (např. BitLocker)
 
 | Titul                   | Podrobnosti      |
 | ----------------------- | ------------ |
-| **Komponenta**               | Klient Dynamics CRM Outlook | 
+| **Komponenta**               | Dynamics CRM Outlook Client | 
 | **SDL fáze**               | Sestavení |  
 | **Použitelných technologiích** | Obecné |
 | **Atributy**              | neuvedeno  |
 | **Odkazy**              | neuvedeno  |
-| **Kroky** | Ujistěte se, že zásady správy zařízení je v místě, ke kterému vyžaduje kód PIN a hesla/automatické zamykání a šifruje všechna data (např. Bitlocker) |
+| **Kroky** | Ujistěte se, že zásady správy zařízení je v místě, ke kterému vyžaduje kód PIN a hesla/automatické zamykání a šifruje všechna data (např. BitLocker) |
 
 ## <a id="rolled-server"></a>Ujistěte se, že podpisové klíče jsou jednotlivě při použití serveru identit
 

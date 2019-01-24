@@ -4,7 +4,7 @@ description: Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.reviewer: barbkess
 ms.assetid: 7adf1eb3-d063-45d6-96a8-fd53b329b3f3
 ms.service: Azure-Active-Directory
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 01/02/2019
 ms.author: jeedes
-ms.openlocfilehash: 6272565d0c9a4167af229d91255e53a78fc3441d
-ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
+ms.openlocfilehash: a3f5d3c26d3510accb161c47733b309b244fb186
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/07/2019
-ms.locfileid: "54065235"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54822803"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-ceridian-dayforce-hcm"></a>Kurz: Integrace Azure Active Directory s Ceridian Dayforce HCM
 
@@ -136,7 +136,7 @@ Ke konfiguraci Azure AD jednotné přihlašování s Ceridian Dayforce HCM, prov
     
     | Název | Zdrojový atribut|
     | ---------| --------- |
-    | jméno  | User.extensionattribute2 |
+    | jméno  | user.extensionattribute2 |
 
     a. Klikněte na tlačítko **přidat novou deklaraci** otevřít **spravovat deklarace identity uživatelů** dialogového okna.
 

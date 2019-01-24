@@ -11,12 +11,12 @@ ms.author: nilesha
 ms.reviewer: sgilley
 ms.date: 12/04/2018
 ms.custom: seodec18
-ms.openlocfilehash: 86a3430f6109eb4b61baa0c7014752d07063fe85
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: 97910241cb4f903deeeb9ff6971839530903efe2
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 01/23/2019
-ms.locfileid: "54468723"
+ms.locfileid: "54823007"
 ---
 # <a name="tutorial-use-automated-machine-learning-to-build-your-regression-model"></a>Kurz: Automatizované machine learningu k vytváření regresní model
 
@@ -44,11 +44,11 @@ Pokud nemáte předplatné Azure, vytvořte si bezplatný účet, před zahájen
 ## <a name="prerequisites"></a>Požadavky
 
 > * [Spustit kurz přípravy dat](tutorial-data-prep.md).
-> * Automatizované strojového učení nakonfigurované prostředí. Příklady jsou poznámkových bloků Azure, místním prostředí Python nebo virtuální počítač pro datové vědy. [Nastavit automatizované strojového učení](samples-notebooks.md).
+> * Automatizované strojového učení nakonfigurované prostředí. Mezi příklady patří [poznámkových bloků Azure](https://notebooks.azure.com/), místní prostředí Python nebo virtuální počítač pro datové vědy. [Nastavit automatizované strojového učení](samples-notebooks.md).
 
 ## <a name="get-the-notebook"></a>Získání poznámkového bloku
 
-V zájmu usnadnění práce je tento kurz dostupný jako [poznámkový blok Jupyter](https://github.com/Azure/MachineLearningNotebooks/blob/master/tutorials/regression-part2-automated-ml.ipynb). Spustit `regression-part2-automated-ml.ipynb` poznámkového bloku v poznámkových bloků Azure nebo v serveru Poznámkový blok Jupyter.
+V zájmu usnadnění práce je tento kurz dostupný jako [poznámkový blok Jupyter](https://github.com/Azure/MachineLearningNotebooks/blob/master/tutorials/regression-part2-automated-ml.ipynb). Spustit `regression-part2-automated-ml.ipynb` poznámkového bloku v [poznámkových bloků Azure](https://notebooks.azure.com/) nebo vlastní aplikace Jupyter Notebook server.
 
 [!INCLUDE [aml-clone-in-azure-notebook](../../../includes/aml-clone-in-azure-notebook.md)]
 

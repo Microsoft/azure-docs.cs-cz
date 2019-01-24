@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 01/14/2019
 ms.author: patricka
 ms.reviewer: fiseraci
-ms.openlocfilehash: cd3aa913bd17498ddc58994196bc8faa96c4de51
-ms.sourcegitcommit: 70471c4febc7835e643207420e515b6436235d29
+ms.openlocfilehash: fba4020c5e947c135d9e17cfb1d0b2a79ad8a502
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2019
-ms.locfileid: "54306450"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54819335"
 ---
 # <a name="azure-stack-infrastructure-security-posture"></a>Stav zabezpečení infrastruktury služby Azure Stack
 

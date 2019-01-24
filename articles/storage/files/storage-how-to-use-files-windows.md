@@ -8,12 +8,12 @@ ms.topic: get-started-article
 ms.date: 06/07/2018
 ms.author: renash
 ms.component: files
-ms.openlocfilehash: b068744f7dac1cc4cdd6fd41b35c6131e1b00903
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: 4f9225f319eb4a2bbcbb5a79379fc46675ff4c04
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54430804"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54854731"
 ---
 # <a name="use-an-azure-file-share-with-windows"></a>Použití sdílené složky Azure s Windows
 Služba [Soubory Azure](storage-files-introduction.md) je snadno použitelný cloudový systém souborů od Microsoftu. Sdílené složky Azure je možné bez problémů používat v systémech Windows a Windows Server. Tento článek popisuje důležité informace o používání sdílené složky Azure s Windows a Windows Serverem.
@@ -40,14 +40,12 @@ Sdílené složky Azure můžete používat v instalaci Windows na virtuálním 
 > [!Note]  
 > Vždy doporučujeme získat nejnovější aktualizaci KB pro vaši verzi systému Windows.
 
-[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
-
 ## <a name="prerequisites"></a>Požadavky 
 * **Název účtu úložiště**: Připojení sdílené složky Azure, potřebujete název účtu úložiště.
 
 * **Klíč účtu úložiště**: Připojení sdílené složky Azure, musíte primární (nebo sekundární) klíč úložiště. Klíče SAS aktuálně nejsou pro připojení podporovány.
 
-* **Zkontrolujte, jestli je port 445 otevřený**: Protokol SMB vyžaduje port TCP 445 být otevřená. připojení se nezdaří, pokud je port 445 blokovaný. Ke kontrole, jestli vaše brána firewall neblokuje port 445, můžete použít rutinu `Test-NetConnection`. Následující kód PowerShellu předpokládá, že máte nainstalovaný modul AzureRM PowerShell. Další informace najdete v tématu [Instalace modulu Azure PowerShell](/powershell/azure/azurerm/install-azurerm-ps). Nezapomeňte nahradit `<your-storage-account-name>` a `<your-resoure-group-name>` odpovídajícími názvy pro váš účet úložiště.
+* **Zkontrolujte, jestli je port 445 otevřený**: Protokol SMB vyžaduje port TCP 445 být otevřená. připojení se nezdaří, pokud je port 445 blokovaný. Ke kontrole, jestli vaše brána firewall neblokuje port 445, můžete použít rutinu `Test-NetConnection`. Následující kód PowerShellu předpokládá, že máte nainstalovaný modul AzureRM PowerShell. Další informace najdete v tématu [Instalace modulu Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-az-ps). Nezapomeňte nahradit `<your-storage-account-name>` a `<your-resoure-group-name>` odpovídajícími názvy pro váš účet úložiště.
 
     ```PowerShell
     $resourceGroupName = "<your-resource-group-name>"
@@ -55,12 +53,12 @@ Sdílené složky Azure můžete používat v instalaci Windows na virtuálním 
 
     # This command requires you to be logged into your Azure account, run Login-AzureRmAccount if you haven't
     # already logged in.
-    $storageAccount = Get-AzureRmStorageAccount -ResourceGroupName $resourceGroupName -Name $storageAccountName
+    $storageAccount = Get-AzStorageAccount -ResourceGroupName $resourceGroupName -Name $storageAccountName
 
     # The ComputerName, or host, is <storage-account>.file.core.windows.net for Azure Public Regions.
     # $storageAccount.Context.FileEndpoint is used because non-Public Azure regions, such as sovereign clouds
     # or Azure Stack deployments, will have different hosts for Azure file shares (and other storage resources).
-    Test-NetConnection -ComputerName [System.Uri]::new($storageAccount.Context.FileEndPoint).Host -Port 445
+    Test-NetConnection -ComputerName ([System.Uri]::new($storageAccount.Context.FileEndPoint).Host) -Port 445
     ```
 
     Pokud připojení proběhne úspěšně, měl by se zobrazit následující výstup:

@@ -1,10 +1,10 @@
 ---
-title: 'Kurz: Integrace Azure Active Directory se službou Shmoop pro školy | Dokumentace Microsoftu'
+title: 'Kurz: Integrace Azure Active Directory s Shmoop pro školy | Dokumentace Microsoftu'
 description: Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a Shmoop pro školy.
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.reviewer: joflore
 ms.assetid: 1d75560a-55b3-42e9-bda1-92b01c572d8e
 ms.service: active-directory
@@ -15,14 +15,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/23/2018
 ms.author: jeedes
-ms.openlocfilehash: b5826fd3067ac337808b9e27040dee808cd6a01c
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: 5c1dbf6429387c02f226e4005164e8824abdc102
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39045953"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54818944"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-shmoop-for-schools"></a>Kurz: Integrace Azure Active Directory se službou Shmoop pro školy
+# <a name="tutorial-azure-active-directory-integration-with-shmoop-for-schools"></a>Kurz: Integrace Azure Active Directory s Shmoop pro školy
 
 V tomto kurzu se dozvíte, jak integrovat Azure Active Directory (Azure AD) Shmoop pro školy.
 
@@ -38,7 +38,7 @@ Další informace o integraci aplikací SaaS v Azure AD najdete v tématu [co je
 
 Konfigurace integrace Azure AD s Shmoop pro školy, potřebujete následující položky:
 
-- S předplatným služby Azure AD
+- Předplatné Azure AD
 - Shmoop pro školy jednotného přihlašování povolená předplatného
 
 > [!NOTE]
@@ -120,7 +120,7 @@ V této části Povolení služby Azure AD jednotného přihlašování na port�
     ![Konfigurace jednotného přihlašování](./media/shmoopforschools-tutorial/tutorial_attribute.png)
 
     > [!NOTE]
-    > Shmoop školy podporuje dvě role pro uživatele: **učitelů** a **Student**. Nastavení těchto rolí ve službě Azure AD tak, aby uživatelům je možné přiřadit příslušné role. Chcete-li pochopit, jak nakonfigurovat role ve službě Azure AD, přečtěte si téma [správě přístupu pomocí RBAC a webu Azure portal](../../role-based-access-control/role-assignments-portal.md).
+    > Shmoop školy podporuje dvě role pro uživatele: **Učitelů** a **Student**. Nastavení těchto rolí ve službě Azure AD tak, aby uživatelům je možné přiřadit příslušné role. Chcete-li pochopit, jak nakonfigurovat role ve službě Azure AD, přečtěte si téma [správě přístupu pomocí RBAC a webu Azure portal](../../role-based-access-control/role-assignments-portal.md).
     
 5. V **atributy uživatele** tématu **jednotného přihlašování** dialogového okna nastavte atribut tokenu SAML, jak je znázorněno na předchozím obrázku.  Pak proveďte následující kroky:
 
@@ -140,13 +140,13 @@ V této části Povolení služby Azure AD jednotného přihlašování na port�
 
     d. Nechte **Namespace** prázdné.
     
-    e. Vyberte **Ok**.
+    e. Vyberte **OK**.
 
 6. Vyberte tlačítko **Uložit**.
 
     ![Konfigurace jednotného přihlašování](./media/shmoopforschools-tutorial/tutorial_general_400.png)
 
-7. Na **podpisový certifikát SAML** klikněte na tlačítko Kopírovat zkopírujte **adresa Url federačních metadat aplikace** a vložte ho do poznámkového bloku.
+7. Na **podpisový certifikát SAML** klikněte na tlačítko Kopírovat zkopírujte **adresa Url federačních metadat aplikace** a vložte ho do poznámkového bloku.
 
     ![Odkaz ke stažení certifikátu](./media/shmoopforschools-tutorial/tutorial_shmoopforschools_certificate.png)
 
@@ -221,7 +221,7 @@ V této části je povolit Britta Simon používat jednotné přihlašování Az
 
 7. V **přidat přiřazení** dialogové okno, vyberte **přiřadit** tlačítko.
     
-### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování
+### <a name="test-single-sign-on"></a>Test jednotného přihlašování
 
 V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 
@@ -229,10 +229,10 @@ Když vyberete **Shmoop pro školy** na přístupovém panelu, dlaždice, by mě
 
 Další informace o přístupovém panelu, naleznete v tématu [Úvod k přístupovému panelu](../user-help/active-directory-saas-access-panel-introduction.md). 
 
-## <a name="additional-resources"></a>Další zdroje informací:
+## <a name="additional-resources"></a>Další materiály
 
 * [Seznam kurzů o integraci aplikací SaaS pomocí Azure Active Directory](tutorial-list.md)
-* [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
+* [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](../manage-apps/what-is-single-sign-on.md)
 
 <!--Image references-->
 

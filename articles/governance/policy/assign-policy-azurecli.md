@@ -4,17 +4,17 @@ description: Pomocí Azure CLI k vytvoření přiřazení Azure Policy pro ident
 services: azure-policy
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 12/06/2018
+ms.date: 01/23/2019
 ms.topic: quickstart
 ms.service: azure-policy
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: 99e8b782f3f52ed89b5188de19d70cb276a0eb84
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: 3b4f71e420c0d80594193f27739fd120881247d4
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53315826"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54856226"
 ---
 # <a name="create-a-policy-assignment-to-identify-non-compliant-resources-with-azure-cli"></a>Vytvoření přiřazení zásady pro identifikaci neodpovídajících prostředků pomocí Azure CLI
 
@@ -65,11 +65,11 @@ Předchozí příkaz používá následující informace:
 Pokud chcete zobrazit prostředky, které nedodržují předpisy v rámci tohoto nového přiřazení, získejte ID přiřazení zásady spuštěním následujících příkazů:
 
 ```azurepowershell-interactive
-$policyAssignment = Get-AzureRmPolicyAssignment | Where-Object { $_.Properties.DisplayName -eq 'Audit VMs without managed disks Assignment' }
+$policyAssignment = Get-AzPolicyAssignment | Where-Object { $_.Properties.DisplayName -eq 'Audit VMs without managed disks Assignment' }
 $policyAssignment.PolicyAssignmentId
 ```
 
-Další informace o ID přiřazení zásad najdete v tématu věnovaném příkazu [Get-AzureRMPolicyAssignment](/powershell/module/azurerm.resources/get-azurermpolicyassignment).
+Další informace o ID přiřazení zásad najdete v tématu [Get-AzPolicyAssignment](/powershell/module/az.resources/get-azpolicyassignment).
 
 Pak spuštěním následujícího příkazu získejte a zapište do souboru JSON ID prostředků, které nedodržují předpisy:
 

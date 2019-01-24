@@ -1,10 +1,10 @@
 ---
-title: 'Kurz: Integrace Azure Active Directory se Zscalerem privátní přístup (ZPA) | Dokumentace Microsoftu'
+title: 'Kurz: Integrace s Azure Active Directory se Zscalerem privátní přístup (ZPA) | Dokumentace Microsoftu'
 description: Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a Zscalerem privátní přístup (ZPA).
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.assetid: 83711115-1c4f-4dd7-907b-3da24b37c89e
 ms.service: active-directory
 ms.component: saas-app-tutorial
@@ -14,14 +14,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/06/2017
 ms.author: jeedes
-ms.openlocfilehash: 5858ab1846ccdc2e2b78f2be4173ea3cc17a3605
-ms.sourcegitcommit: 4eddd89f8f2406f9605d1a46796caf188c458f64
+ms.openlocfilehash: 5610316fdadb9a169c90e7e7761d9ddd2a74dcbe
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49116568"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54819114"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-zscaler-private-access-zpa"></a>Kurz: Integrace Azure Active Directory se Zscalerem privátní přístup (ZPA)
+# <a name="tutorial-azure-active-directory-integration-with-zscaler-private-access-zpa"></a>Kurz: Integrace s Azure Active Directory se Zscalerem privátní přístup (ZPA)
 
 V tomto kurzu se dozvíte, jak integrovat Zscalerem privátní přístup (ZPA) se službou Azure Active Directory (Azure AD).
 
@@ -241,7 +241,7 @@ V této části Testování služby Azure AD jednotné přihlašování – konf
 Po kliknutí na dlaždici Zscalerem privátní přístup (ZPA) na přístupovém panelu, vám by měl získat automaticky přihlášení k aplikaci Zscalerem privátní přístup (ZPA).
 
 
-## <a name="additional-resources"></a>Další zdroje informací:
+## <a name="additional-resources"></a>Další materiály
 
 * [Seznam kurzů o integraci aplikací SaaS pomocí Azure Active Directory](tutorial-list.md)
 * [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](../manage-apps/what-is-single-sign-on.md)

@@ -4,7 +4,7 @@ description: Připojte se k virtuálnímu počítači s Windows serverem do spra
 services: active-directory-ds
 documentationcenter: ''
 author: eringreenlee
-manager: mtillman
+manager: daveba
 editor: curtand
 ms.assetid: 4eabfd8e-5509-4acd-86b5-1318147fddb5
 ms.service: active-directory
@@ -15,19 +15,19 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/22/2018
 ms.author: ergreenl
-ms.openlocfilehash: a083bd2fe730f9723330abf9bce03d760b7442d8
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.openlocfilehash: 32b670a4b51c2dc60fe89bc2b9ad0ef18b0ac263
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50157254"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54856634"
 ---
 # <a name="join-a-windows-server-virtual-machine-to-a-managed-domain-using-a-resource-manager-template"></a>Připojte se k virtuálnímu počítači s Windows serverem do spravované domény pomocí šablony Resource Manageru
 V tomto článku se dozvíte, jak propojit virtuální počítače s Windows serverem do spravované domény služby Azure AD Domain Services pomocí šablon Resource Manageru.
 
 [!INCLUDE [active-directory-ds-prerequisites.md](../../includes/active-directory-ds-prerequisites.md)]
 
-## <a name="before-you-begin"></a>Než začnete
+## <a name="before-you-begin"></a>Před zahájením
 K provádění úkolů uvedených v tomto článku, budete potřebovat:
 1. Platný **předplatného Azure**.
 2. **Adresář Azure AD** – buď synchronizaci s místním adresářem nebo výhradně cloudový adresář.
@@ -38,12 +38,12 @@ K provádění úkolů uvedených v tomto článku, budete potřebovat:
 
 ## <a name="install-and-configure-required-tools"></a>Instalace a konfigurace požadované nástroje
 K provedení kroků uvedených v tomto dokumentu můžete použít kteroukoli z následujících možností:
-* **Prostředí Azure PowerShell**: [instalace a konfigurace](https://azure.microsoft.com/documentation/articles/powershell-install-configure/)
-* **Azure CLI**: [instalace a konfigurace](https://azure.microsoft.com/documentation/articles/xplat-cli-install/)
+* **Azure PowerShell**: [Instalace a konfigurace](https://azure.microsoft.com/documentation/articles/powershell-install-configure/)
+* **Azure CLI**: [Instalace a konfigurace](https://azure.microsoft.com/documentation/articles/xplat-cli-install/)
 
 
-## <a name="option-1-provision-a-new-windows-server-vm-and-join-it-to-a-managed-domain"></a>Možnost 1: Zřizování nového virtuálního počítače Windows Server a připojte ho ke spravované doméně
-**Název šablony rychlý start**: [201-vm-připojení k doméně](https://azure.microsoft.com/resources/templates/201-vm-domain-join/)
+## <a name="option-1-provision-a-new-windows-server-vm-and-join-it-to-a-managed-domain"></a>Option 1: Zřízení nového virtuálního počítače Windows Server a připojte ho ke spravované doméně
+**Název šablony rychlý start**: [201-vm-domain-join](https://azure.microsoft.com/resources/templates/201-vm-domain-join/)
 
 Nasazení virtuálního počítače s Windows serverem a připojte ho ke spravované doméně, proveďte následující kroky:
 1. Přejděte [šablony rychlý start](https://azure.microsoft.com/resources/templates/201-vm-domain-join/).
@@ -73,8 +73,8 @@ Nasazení virtuálního počítače s Windows serverem a připojte ho ke spravov
 Po úspěšném dokončení nasazení vaše nově zřízeného virtuálního počítače Windows je připojen ke spravované doméně.
 
 
-## <a name="option-2-join-an-existing-windows-server-vm-to-a-managed-domain"></a>Možnost 2: Připojte se k existující virtuální počítač Windows Server ke spravované doméně
-**Šablony rychlý start**: [201-virtuálního počítače – domény spojení existující](https://azure.microsoft.com/resources/templates/201-vm-domain-join-existing/)
+## <a name="option-2-join-an-existing-windows-server-vm-to-a-managed-domain"></a>Option 2: Připojení existujícího virtuálního počítače serveru systému Windows k spravované doméně
+**Šablony rychlý start**: [201-vm-domain-join-existing](https://azure.microsoft.com/resources/templates/201-vm-domain-join-existing/)
 
 Připojit existující virtuální počítač Windows Server ke spravované doméně, proveďte následující kroky:
 1. Přejděte [šablony rychlý start](https://azure.microsoft.com/resources/templates/201-vm-domain-join-existing/).

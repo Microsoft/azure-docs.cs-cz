@@ -10,12 +10,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 12/15/2018
-ms.openlocfilehash: cd9f2df7987f033b4d4c234109cf712b8291d1b7
-ms.sourcegitcommit: ba9f95cf821c5af8e24425fd8ce6985b998c2982
+ms.openlocfilehash: cd7c4014752fb5fa014fd8b5204206cd4efbfdce
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54382846"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54818519"
 ---
 # <a name="use-azure-hdinsight-tools-for-visual-studio-code"></a>Použití Azure HDInsight Tools pro Visual Studio Code
 
@@ -50,11 +50,11 @@ Po dokončení instalace požadované součásti můžete nainstalovat nástroje
 
    ![HDInsight pro Visual Studio kódu Python instalaci](./media/hdinsight-for-vscode/install-hdInsight-plugin.png)
 
-## <a name="open-hdinsight-workspace"></a>Otevřete pracovní prostor HDInsight
+## <a name="open-hdinsight-work-folder"></a>Otevřít pracovní složky HDInsight
 
-Vytvoření pracovního prostoru v nástroji VS Code, předtím, než se můžete připojit k Azure.
+Vytvořte pracovní složky ve VS Code, předtím, než se můžete připojit k Azure.
 
-### <a name="to-open-a-workspace"></a>Otevřete pracovní prostor
+### <a name="to-open-a-work-folder"></a>Chcete-li otevřít pracovní složky
 
 1. Na **souboru** nabídce vyberte možnost **otevřít složku**. Poté určíte existující složku jako vaše pracovní složky nebo vytvořte novou. Složka se zobrazí v levém podokně.
 
@@ -77,7 +77,7 @@ Před odesláním skriptů do clusterů HDInsight z VS Code, budete muset připo
     ![Nástroje HDInsight pro Visual Studio Code přihlášení](./media/hdinsight-for-vscode/hdinsight-for-vscode-extension-login.png)
 
 3. Pro přihlášení, přihlaste podle pokynů **výstup** podokně.
-    + Pro globální prostředí HDInsight přihlášení aktivují Azure přihlášení v procesu.
+    + Pro prostředí Azure globální **HDInsight: Přihlášení** spustí příkaz **přihlášení k Azure** akce v Průzkumníku HDInsight a naopak.
 
         ![Pokyny pro azure k přihlášení](./media/hdinsight-for-vscode/hdi-azure-hdinsight-azure-signin.png)
 
@@ -140,7 +140,7 @@ Normální cluster můžete propojit s použitím [Apache Ambari](https://ambari
 Pokud chcete otestovat připojení, můžete vytvořit seznam clusterů HDInsight:
 
 ### <a name="to-list-hdinsight-clusters-under-your-azure-subscription"></a>Seznam clusterů HDInsight v rámci vašeho předplatného Azure
-1. Otevřete pracovní prostor a pak se připojte k Azure. Další informace najdete v tématu [pracovní prostor otevřít HDInsight](#open-hdinsight-workspace) a [připojit se k Azure](#connect-to-hdinsight-cluster).
+1. Otevřete pracovní složky a pak se připojte k Azure. Další informace najdete v tématu [otevřít HDInsight funguje složky](#open-hdinsight-work-folder) a [připojit se k Azure](#connect-to-hdinsight-cluster).
 
 2. Pravým tlačítkem myši na editor skriptů a pak vyberte **HDInsight: Seznam clusteru** v místní nabídce. 
 
@@ -149,7 +149,7 @@ Pokud chcete otestovat připojení, můžete vytvořit seznam clusterů HDInsigh
     ![Nastavit výchozí konfiguraci clusteru](./media/hdinsight-for-vscode/list-cluster-result.png)
 
 ## <a name="set-a-default-cluster"></a>Nastavit výchozí clusteru
-1. Otevřete pracovní prostor a připojení k Azure. Zobrazit [pracovní prostor otevřít HDInsight](#open-hdinsight-workspace) a [připojit se k Azure](#connect-to-hdinsight-cluster).
+1. Otevřete pracovní složky a připojení k Azure. Zobrazit [pracovní složky otevřít HDInsight](#open-hdinsight-work-folder) a [připojit se k Azure](#connect-to-hdinsight-cluster).
 
 2. Pravým tlačítkem myši na editor skriptů a pak vyberte **HDInsight: Nastavit výchozí clusteru**. 
 
@@ -183,7 +183,7 @@ Pomocí nástrojů HDInsight pro VS Code můžete odeslat interaktivních dotaz�
     ```
 4. Pravým tlačítkem myši na editor skriptů, vyberte **HDInsight: Interaktivní Hive** chcete odeslat dotaz, nebo použijte klávesovou zkratku **Ctrl + Alt + I**. Vyberte **HDInsight: Hive Batch** odešlete skript, nebo použijte klávesovou zkratku **Ctrl + Alt + H**. 
 
-5. Vyberte cluster, pokud jste nezadali výchozí clusteru. Nástroje také umožňují odeslat pomocí místní nabídky místo celého souboru skriptu blok kódu. Po chvíli zobrazí výsledky dotazu v nové záložce.
+5. Vyberte cluster, pokud jste nezadali výchozí clusteru. Nástroje také umožňují odeslat pomocí místní nabídky místo celého souboru skriptu blok kódu. Po chvíli se zobrazí výsledky dotazu v nové záložce.
 
    ![Výsledky interaktivního Hivu](./media/hdinsight-for-vscode/interactive-hive-result.png)
 
@@ -195,7 +195,12 @@ Pomocí nástrojů HDInsight pro VS Code můžete odeslat interaktivních dotaz�
 
 ### <a name="to-submit-interactive-pyspark-queries-to-hdinsight-spark-clusters"></a>K zadávání dotazů interaktivní PySpark na clusterech HDInsight Spark.
 
-1. Pokud ještě nemáte je vytvoření nové pracovní složky a nový soubor skriptu s příponou .py.
+1. Pokud ještě nemáte je vytvořte novou pracovní složku a vytvoří nový soubor .py.
+
+    > [!NOTE]
+    > VSCode doporučuje že nainstalovat rozšíření Python pro soubor .py. Můžete nainstalovat rozšíření nebo zavřete dialogové okno.
+    > 
+    >![HDInsight pro Visual Studio kódu Python instalaci](./media/hdinsight-for-vscode/hdinsight-vscode-install-python.png)
 
 2. Pokud jste tak ještě neučinili, připojte ke svému účtu Azure.
 
@@ -213,36 +218,19 @@ Pomocí nástrojů HDInsight pro VS Code můžete odeslat interaktivních dotaz�
    for i in range(0, 5):
         print(sortedCollection[i])
    ```
-4. Zvýrazněte tento skript. Klikněte pravým tlačítkem myši na editor skriptů a vyberte **HDInsight: PySpark interaktivní**, nebo použijte klávesovou zkratku **Ctrl + Alt + I**.
+4. Instalace prostředí Pythonu Pokud jste neudělali, přečtěte si téma [nastavení interaktivního prostředí PySpark pro Visual Studio Code](set-up-pyspark-interactive-environment.md).
 
-5. Pokud jste ještě nenainstalovali **Python** rozšíření ve VS Code, vyberte **nainstalovat** tlačítko, jak je znázorněno na následujícím obrázku:
+5. Zvýrazněte tento skript. Klikněte pravým tlačítkem myši na editor skriptů a vyberte **HDInsight: PySpark interaktivní**, nebo použijte klávesovou zkratku **Ctrl + Alt + I**.
 
-    ![HDInsight pro Visual Studio kódu Python instalaci](./media/hdinsight-for-vscode/hdinsight-vscode-install-python.png)
-
-6. Pokud jste tak dosud neučinili, nainstalujte prostředí Pythonu ve vašem systému. 
-   - Pro Windows, stáhněte a nainstalujte [Python](https://www.python.org/downloads/). Ujistěte se, `Python` a `pip` jsou ve vašem systému CESTU.
-
-   - Pokyny pro macOS a Linux najdete v tématu [nastavení interaktivního prostředí PySpark pro Visual Studio Code](set-up-pyspark-interactive-environment.md).
-
-7. Vyberte cluster, do které chcete odeslat dotaz PySpark. Brzy NATO výsledku dotazu můžete vidět v nové záložce vpravo:
+6. Vyberte cluster, do které chcete odeslat dotaz PySpark. Brzy NATO výsledku dotazu můžete vidět v nové záložce vpravo:
 
    ![Odeslat výsledek úlohy Pythonu](./media/hdinsight-for-vscode/pyspark-interactive-result.png) 
-8. Nástroj podporuje také **SQL klauzule** dotazu.
+7. Nástroj podporuje také **SQL klauzule** dotazu.
 
    ![Odeslat výsledek úlohy Python](./media/hdinsight-for-vscode/pyspark-ineteractive-select-result.png) Stav odeslání se zobrazí v levém dolním stavovém řádku při spouštění dotazů. Neodesílejte další dotazy, pokud je stav **jádra PySpark (zaneprázdněn)**. 
 
 >[!NOTE]  
 >Clustery můžete spravovat informace o relaci. Definované proměnné, funkce a hodnoty, které odpovídají jsou uloženy v relaci, takže může být odkazováno mezi víc volání služeb pro stejného clusteru. 
-
-### <a name="to-disable-environment-check"></a>Chcete-li zakázat kontrolu prostředí
-
-Ve výchozím nastavení, nástrojů HDInsight zkontroluje prostředí a nainstalujte závislé balíčky při odeslání interaktivní dotazy PySpark. Chcete-li zakázat kontrolu prostředí, nastavte **hdinsight.disablePysparkEnvironmentValidation** k **Ano** pod **UŽIVATELSKÁ nastavení**.
-
-   ![Nastavit prostředí zaškrtnutí od nastavení](./media/hdinsight-for-vscode/hdi-azure-hdinsight-environment-check.png)
-
-Alternativně klepněte na tlačítko **zakázat ověření** tlačítko otevře dialogové okno.
-
-   ![Nastavte zaškrtávací prostředí z dialogového okna](./media/hdinsight-for-vscode/hdi-azure-hdinsight-environment-check-dialog.png)
 
 ### <a name="pyspark3-is-not-supported-with-spark2223"></a>PySpark3 nepodporuje Spark2.2/2.3
 

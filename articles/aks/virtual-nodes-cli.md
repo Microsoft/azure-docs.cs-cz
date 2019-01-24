@@ -6,12 +6,12 @@ author: iainfoulds
 ms.service: container-service
 ms.date: 12/03/2018
 ms.author: iainfou
-ms.openlocfilehash: 7d12e0f53796713df83b1cbb9e55695598c29077
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.openlocfilehash: 0aff1040a9c7532ff5efe724382a074120801eb3
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53607383"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54856481"
 ---
 # <a name="create-and-configure-an-azure-kubernetes-services-aks-cluster-to-use-virtual-nodes-using-the-azure-cli"></a>Vytvoření a konfigurace clusteru služby Azure Kubernetes služby (AKS) používat virtuální uzly pomocí Azure CLI
 
@@ -243,6 +243,9 @@ aci-helloworld-9b55975f-bnmfl   1/1       Running   0          4m        10.241.
 
 Pod přiřazena vnitřní IP adresu z podsítě virtuální sítě Azure delegované pro použití s virtuálními uzly.
 
+> [!NOTE]
+> Pokud používáte Image uložená ve službě Azure Container Registry, [nakonfigurovat a používat tajného kódu Kubernetes][acr-aks-secrets]. Aktuální omezení virtuální uzly, které ve verzi preview je, že nemůžete použít integrované ověřování instančních objektů Azure AD. Pokud nepoužíváte tajného klíče, pody naplánována na virtuální uzly nepodaří spustit a nahlaste jim chybu `HTTP response status code 400 error code "InaccessibleImage"`.
+
 ## <a name="test-the-virtual-node-pod"></a>Testovat virtuální uzel pod
 
 K otestování spuštěný na virtuální uzel pod, přejděte na ukázkovou aplikaci pomocí webového klienta. Jak chcete pod přiřazena vnitřní IP adresu, můžete rychle otestovat toto připojení z jiného podu na clusteru AKS. Vytvoření testů pod a připojit se k němu Terminálové relaci:
@@ -341,3 +344,4 @@ Virtuální uzly jsou často jedna komponenta škálování řešení ve služb�
 [aks-basic-ingress]: ingress-basic.md
 [az-provider-list]: /cli/azure/provider#az-provider-list
 [az-provider-register]: /cli/azure/provider#az-provider-register
+[acr-aks-secrets]: ../container-registry/container-registry-auth-aks.md#access-with-kubernetes-secret

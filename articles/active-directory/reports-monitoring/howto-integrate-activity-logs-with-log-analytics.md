@@ -4,7 +4,7 @@ description: Zjistěte, jak integrace protokolů Azure Active Directory pomocí 
 services: active-directory
 documentationcenter: ''
 author: priyamohanram
-manager: mtillman
+manager: daveba
 editor: ''
 ms.assetid: 2c3db9a8-50fa-475a-97d8-f31082af6593
 ms.service: active-directory
@@ -16,12 +16,12 @@ ms.component: report-monitor
 ms.date: 11/13/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 7509081bbf43aeaf39570f84afef81b6dd5a39fe
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: 8b9189ef3fff75023316d5272bd93c136106cf94
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51621662"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54824673"
 ---
 # <a name="integrate-azure-ad-logs-with-log-analytics-using-azure-monitor-preview"></a>Integrace protokolů Azure AD pomocí služby Log Analytics pomocí Azure monitoru (preview)
 
@@ -41,8 +41,8 @@ V tomto článku se dozvíte, jak integrovat protokoly služby Azure Active Dire
 
 Ke službě Log Analytics můžete směrovat protokoly aktivit auditu a protokolů aktivit přihlašování pro další analýzy. 
 
-* **Protokoly auditu:** [Sestava aktivit protokolů auditu](concept-audit-logs.md) poskytuje přístup k historii každé úlohy provedené ve vašem tenantovi.
-* **Protokoly přihlašování:** Se [sestavou aktivit přihlašování](concept-sign-ins.md) můžete určit, kdo provedl úlohy hlášené v protokolech auditu.
+* **Protokoly auditu**: [Sestava aktivit protokolů auditu](concept-audit-logs.md) dává vám přístup k historii každé úlohy, které se provádí ve vašem tenantovi.
+* **Protokoly přihlášení**: S [sestavy aktivit přihlašování](concept-sign-ins.md), můžete určit, kdo provedl úlohy, které jsou hlášeny v protokolech auditování.
 
 > [!NOTE]
 > Zatím není dostupná podpora protokolů aktivit auditu a přihlašování souvisejících s B2C.

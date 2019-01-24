@@ -10,12 +10,12 @@ ms.topic: article
 ms.workload: powerbi
 ms.date: 09/20/2017
 ms.author: maghan
-ms.openlocfilehash: 94476486ed87662f3d6b989b8d5360dd792f8824
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: caa877a265fb8665e062cc0069247bca0994c4bf
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43041176"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54857093"
 ---
 # <a name="embed-a-report-in-power-bi-workspace-collections"></a>Vložení sestavy do kolekce pracovních prostorů Power BI
 
@@ -84,7 +84,7 @@ using (var response = request.GetResponse() as System.Net.HttpWebResponse)
 
 Použití Power BI kolekce pracovních prostorů vložené tokeny, které jsou HMAC podepsané webových tokenů JSON. Tokeny jsou podepsány pomocí přístupového klíče z vaší kolekce pracovních prostorů Power BI. Vložené tokeny, ve výchozím nastavení, se používají k zajištění přístup jen pro čtení pro sestavy k vložení do aplikace. Vložit tokeny budou vydány pro konkrétní sestavu a by měly být přidružené adrese URL vložení.
 
-Přístupové tokeny by být vytvořeny na serveru, které přístupové klíče se používají k přihlašování a šifrování tokenů. Informace o tom, jak vytvořit token přístupu najdete v tématu [ověřování a autorizace pomocí kolekcí pracovních prostorů Power BI](app-token-flow.md). Můžete také zkontrolovat [CreateReportEmbedToken](https://docs.microsoft.com/dotnet/api/microsoft.powerbi.security.powerbitoken?redirectedfrom=MSDN#methods_) metody. Tady je příklad co to může vypadat třeba pomocí sady .NET SDK pro Power BI.
+Přístupové tokeny by být vytvořeny na serveru, které přístupové klíče se používají k přihlašování a šifrování tokenů. Informace o tom, jak vytvořit token přístupu najdete v tématu [ověřování a autorizace pomocí kolekcí pracovních prostorů Power BI](app-token-flow.md). Můžete také zkontrolovat [CreateReportEmbedToken](https://docs.microsoft.com/dotnet/api/microsoft.powerbi.security.powerbitoken?redirectedfrom=MSDN) metody. Tady je příklad co to může vypadat třeba pomocí sady .NET SDK pro Power BI.
 
 Můžete použít ID sestavy, které jste získali dříve. Jakmile se vytvoří token pro vložení, pak použijete přístupový klíč k vygenerování tokenu, který můžete použít z pohledu jazyka javascript. *PowerBIToken třídy* je nutné nainstalovat [Power BI základní NuGut balíček](https://www.nuget.org/packages/Microsoft.PowerBI.Core/).
 
@@ -147,12 +147,12 @@ Sestava bude automaticky vložen v závislosti na velikosti svého kontejneru. P
 
 [Začínáme s ukázkou](get-started-sample.md)  
 [Ověřování a autorizace v kolekcích Pracovních prostorů Power BI](app-token-flow.md)  
-[CreateReportEmbedToken](https://docs.microsoft.com/dotnet/api/microsoft.powerbi.security.powerbitoken?redirectedfrom=MSDN#methods_)  
+[CreateReportEmbedToken](https://docs.microsoft.com/dotnet/api/microsoft.powerbi.security.powerbitoken?redirectedfrom=MSDN)  
 [Vložená ukázka JavaScriptu](https://microsoft.github.io/PowerBI-JavaScript/demo/)  
 [Power BI JavaScript balíčku](https://www.nuget.org/packages/Microsoft.PowerBI.JavaScript/)  
 [Power BI NuGet rozhraní API balíčku](https://www.nuget.org/profiles/powerbi)
 [Power BI základní NuGut balíček](https://www.nuget.org/packages/Microsoft.PowerBI.Core/)  
-[Úložiště Git PowerBI-CSharp](https://github.com/Microsoft/PowerBI-CSharp)  
+[PowerBI-CSharp Git Repo](https://github.com/Microsoft/PowerBI-CSharp)  
 [Power BI uzlu úložiště Git](https://github.com/Microsoft/PowerBI-Node)  
 
 Chcete se ještě na něco zeptat? [Vyzkoušejte komunitu Power BI](http://community.powerbi.com/)

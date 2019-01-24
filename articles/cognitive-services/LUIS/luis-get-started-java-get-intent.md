@@ -8,14 +8,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: quickstart
-ms.date: 09/10/2018
+ms.date: 01/23/2019
 ms.author: diberry
-ms.openlocfilehash: c55721e803b85c536067a90019f75dd5aa0f7845
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 3b50678691342b5b106a375e79380cb8cc1515e4
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53085344"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54855665"
 ---
 # <a name="quickstart-get-intent-using-java"></a>Rychlý start: Získání záměru pomocí Javy
 

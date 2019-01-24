@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 5/8/2018
 ms.author: saurse
-ms.openlocfilehash: 1a0e196f4d96494aca1c19a7527ac7d81837fb5c
-ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
+ms.openlocfilehash: 01b90d6bb18addd6a0235101f86b9d51953cc096
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "34606473"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54818553"
 ---
 # <a name="offline-backup-workflow-for-dpm-and-azure-backup-server"></a>Pracovní postup offline zálohování DPM a Azure Backup Server
 Azure Backup obsahuje několik předdefinovaných úspor, které ukládají náklady na síť a úložiště během počáteční úplné zálohování dat do Azure. Počáteční úplné zálohování obvykle přenos velkých objemů dat a vyžadují větší šířku pásma sítě, ve srovnání s následné zálohy, které přenášejí pouze rozdíly/přírůstková. Azure Backup komprimuje prvotní zálohy. Procesem offline předvyplnění Azure Backup můžete použít disky k nahrání komprimované počáteční zálohovací data do offline režimu do Azure.
@@ -74,12 +74,12 @@ Informace v této části vám pomůže dokončit pracovní postup offline zálo
 
     Popis vstupy vypadá takto:
 
-    * **Pracovní umístění**: umístění dočasného úložiště, ke kterému je zapsán kopie prvotní zálohy. Pracovní umístění může být ve sdílené síťové složce nebo v místním počítači. Pokud počítač kopírování a zdrojový počítač se liší, doporučujeme, že zadáte úplná síťová cesta pracovního umístění.
-    * **Název úlohy Azure Import**: jedinečný název, který Import úložiště Azure service a Azure Backup a sledovat přenosu dat odesílaných na discích do Azure.
-    * **Nastavení publikování Azure**: Zadejte místní cestu k souboru nastavení publikování.
+    * **Pracovní umístění**: Umístění dočasného úložiště, ke kterému je zapsán kopie prvotní zálohy. Pracovní umístění může být ve sdílené síťové složce nebo v místním počítači. Pokud počítač kopírování a zdrojový počítač se liší, doporučujeme, že zadáte úplná síťová cesta pracovního umístění.
+    * **Název úlohy importu do Azure**: Jedinečný název, který Import úložiště Azure service a Azure Backup a sledovat přenosu dat odesílaných na discích do Azure.
+    * **Nastavení publikování v Azure**: Zadejte místní cestu k souboru nastavení publikování.
     * **ID předplatného Azure**: ID předplatného Azure pro předplatné, ze které jste stáhli soubor nastavení publikování v Azure. 
-    * **Účet služby Azure Storage**: název účtu úložiště v rámci předplatného Azure přidružené k souboru nastavení publikování v Azure.
-    * **Kontejner Azure Storage**: název cílový objekt blob storage v účtu úložiště Azure, kterého se naimportuje data záloh.
+    * **Azure Storage Account**: Název účtu úložiště v rámci předplatného Azure přidružené k souboru nastavení publikování v Azure.
+    * **Azure Storage Container**: Název cílové objektů blob úložiště v účtu úložiště Azure, kterého se naimportuje data záloh.
 
      Uložit *pracovní umístění* a *název úlohy importu Azure* jste zadali, protože je nutné připravit disky.  
      

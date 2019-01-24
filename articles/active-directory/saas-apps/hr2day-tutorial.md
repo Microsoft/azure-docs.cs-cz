@@ -1,10 +1,10 @@
 ---
-title: 'Kurz: Integrace Azure Active Directory se službou HR2day podle Merces | Dokumentace Microsoftu'
+title: 'Kurz: Integrace Azure Active Directory s HR2day podle Merces | Dokumentace Microsoftu'
 description: Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a HR2day podle Merces.
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.assetid: 853d08c9-27b1-48d4-b8e7-3705140eb67f
 ms.service: active-directory
 ms.component: saas-app-tutorial
@@ -14,14 +14,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/24/2017
 ms.author: jeedes
-ms.openlocfilehash: 984e2e9999a2aba7a595034f1fec8bafb976f310
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 327e6d94cbabd679531935ba330d3096d73f8897
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39441608"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54821018"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-hr2day-by-merces"></a>Kurz: Integrace Azure Active Directory se službou HR2day podle Merces
+# <a name="tutorial-azure-active-directory-integration-with-hr2day-by-merces"></a>Kurz: Integrace Azure Active Directory s HR2day podle Merces
 
 V tomto kurzu se dozvíte, jak integrovat HR2day podle Merces s Azure Active Directory (Azure AD).
 
@@ -88,11 +88,11 @@ V HR2day podle Merces přiřadit **uživatelské jméno** ve službě Azure AD *
 
 Nakonfigurovat a otestovat Azure AD jednotné přihlašování s HR2day podle Merces, které potřebujete k dokončení následujících stavebních bloků:
 
-1. [Konfigurace služby Azure AD jednotného přihlašování](#configuring-azure-ad-single-sign-on): aby uživatelé mohli tuto funkci používat.
-1. [Vytvořit testovacího uživatele Azure AD](#creating-an-azure-ad-test-user): testovací služby Azure AD jednotné přihlašování s Britta Simon.
-1. [Vytvoření HR2day Merces testovací uživatel](#creating-an-hr2day-by-merces-test-user): vytvoření protějšek Britta Simon v HR2day podle Merces, který je propojený s Azure AD reprezentace uživatele.
-1. [Přiřadit uživatele Azure AD](#assigning-the-azure-ad-test-user): Povolit Britta Simon používat Azure AD jednotného přihlašování.
-1. [Otestovat jednotné přihlašování](#testing-single-sign-on): Ověřte, jestli funguje v konfiguraci.
+1. [Konfigurace služby Azure AD jednotného přihlašování](#configuring-azure-ad-single-sign-on): Umožní vašim uživatelům tuto funkci používat.
+1. [Vytvořit testovacího uživatele Azure AD](#creating-an-azure-ad-test-user): Vyzkoušejte Azure AD jednotné přihlašování s Britta Simon.
+1. [Vytvoření HR2day Merces testovací uživatel](#creating-an-hr2day-by-merces-test-user): Vytvoření protějšek Britta Simon v HR2day podle Merces, který je propojený s Azure AD reprezentace uživatele.
+1. [Přiřadit uživatele Azure AD](#assigning-the-azure-ad-test-user): Povolte Britta Simon používat Azure AD jednotného přihlašování.
+1. [Otestovat jednotné přihlašování](#testing-single-sign-on): Zkontrolujte, jestli funguje v konfiguraci.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Konfigurace služby Azure AD jednotného přihlašování
 
@@ -243,13 +243,13 @@ V této části je povolit Britta Simon používat jednotné přihlašování Az
 
 1. V **přidat přiřazení** dialogu **přiřadit**.
     
-### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování
+### <a name="test-single-sign-on"></a>Test jednotného přihlašování
 
 Cílem této části je test vaší konfigurace Azure AD jednotné přihlašování pomocí přístupového panelu.  
 
 Při výběru HR2day podle Merces dlaždici na přístupovém panelu, můžete automaticky získat přihlášení k vaší HR2day Merces aplikací.
 
-## <a name="additional-resources"></a>Další zdroje informací:
+## <a name="additional-resources"></a>Další materiály
 
 * [Seznam kurzů o integraci aplikací typu SaaS pomocí Azure Active Directory](tutorial-list.md)
 * [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](../manage-apps/what-is-single-sign-on.md)

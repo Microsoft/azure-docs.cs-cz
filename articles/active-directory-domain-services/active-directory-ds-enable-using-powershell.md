@@ -4,7 +4,7 @@ description: Povolit Azure Active Directory Domain Services pomocí Powershellu
 services: active-directory-ds
 documentationcenter: ''
 author: eringreenlee
-manager: mtillman
+manager: daveba
 editor: curtand
 ms.assetid: d4bc5583-6537-4cd9-bc4b-7712fdd9272a
 ms.service: active-directory
@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 12/06/2017
 ms.author: ergreenl
-ms.openlocfilehash: ce6d3815e562e5ada2a70ebaff04f9abc20b714c
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: 5ebb9f706d2e59b9c1227cec6fcc0e0619374069
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54426535"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54855002"
 ---
 # <a name="enable-azure-active-directory-domain-services-using-powershell"></a>Povolit Azure Active Directory Domain Services pomocí Powershellu
 Tento článek popisuje, jak povolit Azure Active Directory (AD) Domain Services pomocí Powershellu.

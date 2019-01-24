@@ -4,7 +4,7 @@ description: Přehled služby Azure Active Directory Domain Services
 services: active-directory-ds
 documentationcenter: ''
 author: eringreenlee
-manager: mtillman
+manager: daveba
 editor: curtand
 ms.assetid: 0d47178f-773e-45f9-9ff4-9e8cffa4ffa2
 ms.service: active-directory
@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/10/2019
 ms.author: ergreenl
-ms.openlocfilehash: ed89954836fe262ba60f7401bd7b040e87b60101
-ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
+ms.openlocfilehash: ef8395f7fab2b2673c4eadd1eb6db6405432b75a
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54215180"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54856097"
 ---
 # <a name="azure-active-directory-ad-domain-services"></a>Doména služby Azure Active Directory (AD)
 ## <a name="overview"></a>Přehled
@@ -42,7 +42,7 @@ Jsme navrhovali Azure AD Domain Services poskytují jednodušší alternativu.
 
 >[!VIDEO https://www.youtube.com/embed/T1Nd9APNceQ]
 
-## <a name="introducing-azure-ad-domain-services"></a>Úvod do služby Azure AD Domain Services
+## <a name="introducing-azure-ad-domain-services"></a>Introducing Azure AD Domain Services
 
 Azure AD Domain Services poskytuje služby spravované domény, jako je například připojení k doméně, skupiny zásad, LDAP, Kerberos nebo NTLM, které jsou plně kompatibilní s Windows Server Active Directory. Můžete využívat tyto domény služby bez nutnosti nasazovat, spravovat a oprava řadiče domény v cloudu. Azure AD Domain Services se integruje s existujícím tenantovi Azure AD a tím umožnit uživatelům přihlášení pomocí svých podnikových přihlašovacích údajů. Kromě toho vám pomůže stávajících skupin a uživatelské účty zabezpečení přístupu k prostředkům, čímž zajišťuje hladší "lift a shift" on-premises prostředků se službami infrastruktury Azure.
 
@@ -52,7 +52,7 @@ Funkce Azure AD Domain Services funguje bez problémů bez ohledu na to, jestli 
 
 Výhradně cloudového tenanta Azure AD (označovaný také jako "spravované tenantů") nemá žádné místní identity nároky na místo. Jinými slovy uživatelské účty, jejich hesla a členství ve skupinách jsou všechny nativní pro cloud – to znamená, vytvářet a spravovat ve službě Azure AD. Vezměte v úvahu na chvíli zastavíme Contoso je výhradně cloudového tenanta Azure AD. Jak je znázorněno na následujícím obrázku, správce společnosti Contoso má nakonfigurovanou virtuální síť ve službách infrastruktury Azure. Aplikace a úlohy serveru jsou nasazené v této virtuální síti ve službě Azure virtual machines. Protože Contoso je výhradně cloudový tenant, všechny identity uživatelů, jejich přihlašovacích údajů a členství ve skupinách se vytvářet a spravovat ve službě Azure AD.
 
-![Přehled služby Azure Active Directory Domain Services](./media/active-directory-domain-services-overview/aadds-overview.png)
+![Azure AD Domain Services Overview](./media/active-directory-domain-services-overview/aadds-overview.png)
 
 Společnosti Contoso IT správce může povolit Azure AD Domain Services pro svého tenanta Azure AD a zvolit, jestli služby domain services k dispozici v této virtuální síti. Po tomto datu Azure AD Domain Services zřizuje spravované domény a zpřístupňuje je ve virtuální síti. Všechny uživatelské účty, členství ve skupinách a přihlašovacích údajů uživatele ve společnosti Contoso tenantovi Azure AD k dispozici jsou také k dispozici v tomto nově vytvořené domény. Tato funkce umožňuje uživatelům v organizaci přihlásit k doméně pomocí podnikových přihlašovacích údajů – například při vzdáleném připojení k doméně počítače přes vzdálenou plochu. Správci můžou zřizovat přístup k prostředkům v doméně pomocí existujícího členství ve skupinách. Aplikace nasazenými na virtuálních počítačích ve virtuální síti můžou využívat funkce, jako je připojení k doméně, LDAP pro čtení, LDAP bind, ověřování protokolů NTLM a Kerberos a zásad skupiny.
 
@@ -72,7 +72,7 @@ Společnost litware má nasazený [Azure AD Connect](../active-directory/hybrid/
 >
 >
 
-![Azure AD Domain Services pro společnost Litware](./media/active-directory-domain-services-overview/aadds-overview-synced-tenant.png)
+![Azure AD Domain Services for Litware Corporation](./media/active-directory-domain-services-overview/aadds-overview-synced-tenant.png)
 
 Na předchozím obrázku ukazuje, jak organizace s hybridní infrastrukturu IT, jako jsou společnosti Litware, můžete použít Azure AD Domain Services. Společnosti Litware aplikací a úloh serveru, které vyžadují služby domain services se nasadí ve virtuální síti ve službách infrastruktury Azure. Společnosti Litware správce IT můžete povolit Azure AD Domain Services pro svého tenanta Azure AD a zvolit, jestli spravovaná doména k dispozici v této virtuální síti. Protože společnost Litware organizaci s hybridní infrastrukturu IT, uživatelské účty, skupiny a přihlašovací údaje jsou synchronizovány do svého tenanta Azure AD ze svého místního adresáře. Tato funkce umožňuje uživatelům umožní přihlásit k doméně pomocí podnikových přihlašovacích údajů – například při vzdálené připojení pro počítače připojené k doméně přes vzdálenou plochu. Správci můžou zřizovat přístup k prostředkům v doméně pomocí existujícího členství ve skupinách. Aplikace nasazenými na virtuálních počítačích ve virtuální síti můžou využívat funkce, jako je připojení k doméně, LDAP pro čtení, LDAP bind, ověřování protokolů NTLM a Kerberos a zásad skupiny.
 

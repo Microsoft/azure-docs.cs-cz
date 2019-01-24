@@ -9,14 +9,14 @@ editor: ''
 ms.service: media-services
 ms.workload: na
 ms.topic: article
-ms.date: 01/09/2019
+ms.date: 01/22/2019
 ms.author: juliako
-ms.openlocfilehash: bf80f78cc464fe274e83eca2f8afa420c2a8c453
-ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
+ms.openlocfilehash: a1d52e0c6f87b9075d73508c97bd270d67d3ecf5
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54229952"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54817618"
 ---
 # <a name="azure-media-services-v3-release-notes"></a>Azure Media Services v3 poznámky k verzi
 
@@ -33,6 +33,14 @@ Abyste mohli používat aktuální pomocí nejnovější vývoj, tento článek 
 > V současné době nelze použít na webu Azure portal ke správě prostředků v3. Použití [rozhraní REST API](https://aka.ms/ams-v3-rest-sdk), rozhraní příkazového řádku, nebo jeden z podporovaných sad SDK.
 
 Další informace najdete v tématu [pokyny k migraci pro přechod ze služby Media Services v2 na v3](migrate-from-v2-to-v3.md#known-issues).
+
+## <a name="january-2019"></a>2019. ledna
+
+### <a name="media-encoder-standard-and-mpi-files"></a>Soubory kodéru Media Encoder Standard a MPI 
+
+Při kódování pomocí Media Encoder Standard na vytvářejí soubory MP4, je nový soubor .mpi generují a přidávají do výstupu Asset. Tento soubor MPI slouží pro zvýšení výkonu pro dynamické balení a streamování scénáře.
+
+Nesmí změnit nebo odebrat soubor MPI či provést všechny závislosti ve své službě existence (nebo nemusíte) tyto souboru.
 
 ## <a name="december-2018"></a>Prosinec 2018
 
@@ -51,13 +59,13 @@ Modul CLI 2.0 je nyní k dispozici pro [všeobecné dostupnosti služby Azure Me
 
 - [AZ jeden účet ams](https://docs.microsoft.com/cli/azure/ams/account?view=azure-cli-latest)
 - [účet ams az-filtru](https://docs.microsoft.com/cli/azure/ams/account-filter?view=azure-cli-latest)
-- [AZ ams asset](https://docs.microsoft.com/cli/azure/ams/asset?view=azure-cli-latest)
+- [az ams asset](https://docs.microsoft.com/cli/azure/ams/asset?view=azure-cli-latest)
 - [asset ams az-filtru](https://docs.microsoft.com/cli/azure/ams/asset-filter?view=azure-cli-latest)
-- [AZ ams obsah key-policy](https://docs.microsoft.com/cli/azure/ams/content-key-policy?view=azure-cli-latest)
-- [Úloha az ams](https://docs.microsoft.com/cli/azure/ams/job?view=azure-cli-latest)
+- [az ams content-key-policy](https://docs.microsoft.com/cli/azure/ams/content-key-policy?view=azure-cli-latest)
+- [az ams job](https://docs.microsoft.com/cli/azure/ams/job?view=azure-cli-latest)
 - [živá ams az – událost](https://docs.microsoft.com/cli/azure/ams/live-event?view=azure-cli-latest)
-- [ams az live-output](https://docs.microsoft.com/cli/azure/ams/live-output?view=azure-cli-latest)
-- [streamování ams az-endpoint](https://docs.microsoft.com/cli/azure/ams/streaming-endpoint?view=azure-cli-latest)
+- [az ams live-output](https://docs.microsoft.com/cli/azure/ams/live-output?view=azure-cli-latest)
+- [az ams streaming-endpoint](https://docs.microsoft.com/cli/azure/ams/streaming-endpoint?view=azure-cli-latest)
 - [streamování ams az-lokátoru](https://docs.microsoft.com/cli/azure/ams/streaming-locator?view=azure-cli-latest)
 - [AZ ams account naposledy použité položky](https://docs.microsoft.com/cli/azure/ams/account/mru?view=azure-cli-latest) – umožňuje spravovat rezervované jednotky médií
 
@@ -166,7 +174,7 @@ Pokud jste vytvořili prostředky nebo filtry účtů 09/28 až 10/12 pomocí Me
 
 ## <a name="may-2018---preview"></a>Květen 2018 – Preview
 
-### <a name="net-sdk"></a>.NET SDK
+### <a name="net-sdk"></a>.Net SDK
 
 Následující funkce jsou k dispozici v rozhraní .net SDK:
 

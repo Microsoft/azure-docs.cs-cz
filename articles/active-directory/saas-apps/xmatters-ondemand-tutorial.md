@@ -1,10 +1,10 @@
 ---
-title: 'Kurz: Integrace Azure Active Directory se službou xMatters OnDemand | Dokumentace Microsoftu'
+title: 'Kurz: Integrace Azure Active Directory s xMatters OnDemand | Dokumentace Microsoftu'
 description: Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a xMatters OnDemand.
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.assetid: ca0633db-4f95-432e-b3db-0168193b5ce9
 ms.service: active-directory
 ms.component: saas-app-tutorial
@@ -14,14 +14,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/16/2018
 ms.author: jeedes
-ms.openlocfilehash: a235b85887e64e0a5ca35aae8f31734250a78bb5
-ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
+ms.openlocfilehash: 1086343f165ad61b2e4fe91b5d52996722a33646
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44160230"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54820984"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-xmatters-ondemand"></a>Kurz: Integrace Azure Active Directory se službou xMatters OnDemand.
+# <a name="tutorial-azure-active-directory-integration-with-xmatters-ondemand"></a>Kurz: Integrace Azure Active Directory s xMatters OnDemand.
 
 V tomto kurzu se dozvíte, jak integrovat xMatters OnDemand s Azure Active Directory (Azure AD).
 
@@ -265,7 +265,7 @@ V této části Testování služby Azure AD jednotné přihlašování – konf
 Po kliknutí na xMatters OnDemand dlaždici na přístupovém panelu, vám by měl získat automaticky přihlášení k vaší xMatters OnDemand aplikace.
 Další informace o přístupovém panelu, naleznete v tématu [Úvod k přístupovému panelu](../user-help/active-directory-saas-access-panel-introduction.md).
 
-## <a name="additional-resources"></a>Další zdroje informací:
+## <a name="additional-resources"></a>Další materiály
 
 * [Seznam kurzů o integraci aplikací SaaS pomocí Azure Active Directory](tutorial-list.md)
 * [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](../manage-apps/what-is-single-sign-on.md)

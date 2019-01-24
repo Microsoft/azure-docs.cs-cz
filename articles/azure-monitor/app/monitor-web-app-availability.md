@@ -10,15 +10,15 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
-ms.date: 12/05/2018
+ms.date: 01/22/2019
 ms.reviewer: sdash
 ms.author: lagayhar
-ms.openlocfilehash: ca266df563cb7e50463548dd0e786cec8e886ec4
-ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
+ms.openlocfilehash: d3127b7f9bea9a35d9ac25d0724700cad72fa509
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54359693"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54857144"
 ---
 # <a name="monitor-availability-and-responsiveness-of-any-web-site"></a>Sledování dostupnosti a odezvy libovolných webů
 Po nasazení webové aplikace nebo webu na libovolném serveru můžete nastavit testy ke sledování dostupnosti a odezvy. [Azure Application Insights](../../azure-monitor/app/app-insights-overview.md) odesílá do vaší aplikace webové požadavky v pravidelných intervalech z bodů po celém světě. Upozorní vás v případě, že vaše aplikace reaguje pomalu nebo nereaguje vůbec.
@@ -186,7 +186,7 @@ Klikněte na červenou tečku.
 V výsledek testu dostupnosti můžete zobrazit podrobnosti o transakci napříč všemi komponentami. Zde můžete:
 
 * Kontrolovat odpověď přijatou ze serveru.
-* Diagnostikujte selhání pomocí telemetrie na straně korelační serveru získané při zpracování test dostupnosti se nezdařilo.
+* Diagnostikujte selhání pomocí korelační telemetrická data na straně serveru získané při zpracování test dostupnosti se nezdařilo.
 * Protokolovat chyby nebo pracovní položky v Gitu nebo panely Azure kvůli sledování problému. Chyba bude obsahovat odkaz na tuto událost.
 * Otevřít výsledek webového testu v sadě Visual Studio.
 
@@ -203,7 +203,7 @@ Může mít následující typy pravidel upozornění na dostupnost dat pomocí 
 3. Průměrná doba trvání zvýšení nad prahovou hodnotou
 
 ### <a name="alert-on-x-out-of-y-locations-reporting-failures"></a>Upozornění na X z Y míst hlášení chyb
-X z Y umístění, pravidlo upozornění je povolená ve výchozím nastavení [oznámení pro nové sjednocené prostředí](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-unified-alerts), když vytvoříte nový test dostupnosti. Je můžete odhlásit výběrem možnosti "klasickém" nebo zakázání pravidla upozornění.
+X z Y umístění, pravidlo upozornění je povolená ve výchozím nastavení [oznámení pro nové sjednocené prostředí](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-unified-alerts), když vytvoříte nový test dostupnosti. Výběrem možnosti "klasickém" nebo zakázání pravidla upozornění, můžete se odhlásit.
 
 ![Vytvoření prostředí](./media/monitor-web-app-availability/appinsights-71webtestUpload.png)
 
@@ -297,9 +297,9 @@ Po dokončení testu se zobrazí časy odezvy a míra úspěšnosti.
 
     * Má váš test "Analýzy závislé požadavky" povolené? Který má za následek striktní kontrolu na prostředky, jako jsou skripty, obrázků apod. Tyto typy selhání nemusí být patrné v prohlížeči. Zkontrolujte všechny image, skripty, šablony stylů a všechny další soubory, které stránka načetla. Pokud některý z nich selže, test se ohlásí jako neúspěšný i v případě, že se hlavní html stránka načte bez problémů. Pokud chcete snížit citlivost testu vůči selháním těchto prostředků, v konfiguraci testu jednoduše zrušte zaškrtnutí možnosti „Analyzovat závislé požadavky“. 
 
-    * Abyste snížili riziko výskytu krátkodobých síťových výkyvů apod., zkontrolujte, zda je v konfiguraci zaškrtnutá možnost „Povolit opakované pokusy pro neúspěšné testy“. Můžete také provádět testy z více umístění a vhodným způsobem upravovat prahovou hodnotu pravidla pro výstrahy. Tím zabráníte zbytečným výstrahám, které by byly způsobeny potížemi v konkrétním umístění.
+    * Abyste snížili riziko výskytu krátkodobých síťových výkyvů apod., zkontrolujte, zda je v konfiguraci zaškrtnutá možnost „Povolit opakované pokusy pro neúspěšné testy“. Můžete také testy z více umístění a spravovat pravidla upozornění prahové hodnoty odpovídajícím způsobem zabránit způsobí zbytečným výstrahám, které vyhledávají chyby specifické pro umístění.
 
-    * Kliknutím na kteroukoli z červené tečky z prostředí dostupnosti nebo jakékoli neúspěchy dostupnosti z Průzkumníka služby Search můžete zobrazit podrobnosti o proč jsme hlášené chyby. Výsledek testu, spolu s telemetrie na straně serveru korelační (je-li povoleno) by měly pomoci pochopit, proč test selhal. Běžné příčiny přechodné problémy jsou problémy s sítě nebo připojení. 
+    * Kliknutím na kteroukoli z červené tečky z prostředí dostupnosti nebo jakékoli neúspěchy dostupnosti z Průzkumníka služby Search můžete zobrazit podrobnosti o proč jsme hlášené chyby. Výsledek testu, spolu s korelační telemetrická data na straně serveru (Pokud je povoleno) by měly pomoci pochopit, proč test selhal. Běžné příčiny přechodné problémy jsou problémy s sítě nebo připojení. 
 
     * Nebyla časový limit testu? Jsme přerušit testy po 2 minuty. Pokud váš příkaz ping nebo vícekrokový test trvá déle než 2 minuty, jsme budou hlásit jako selhání. Zvažte rozdělení do několika ty, které lze provést v kratších dob trvání testu.
 
@@ -356,6 +356,22 @@ Po dokončení testu se zobrazí časy odezvy a míra úspěšnosti.
 * *Jak spustím test s klientskými certifikáty?*
 
     Tuto možnost nepodporujeme, je nám líto.
+
+## <a name="who-receives-the-classic-alert-notifications"></a>Kdo přijímá oznámení výstrah (klasické)?
+
+V této části pouze platí pro upozornění classic a pomůže vám optimalizovat vaše oznámení o výstrahách Ujistěte se, že pouze požadované příjemci dostávat oznámení. Bližší informace o rozdílech mezi [klasických upozornění](../platform/alerts-classic.overview.md)a předložit nové prostředí upozornění [výstrahy přehledovém článku](../platform/alerts-overview.md). K řízení oznámení oznámení v nové výstrahy prostředí použijte [skupiny akcí](../platform/action-groups.md).
+
+* Doporučujeme vám používat konkrétním příjemcům classic oznámení výstrah.
+
+* Pro výstrahy týkající se selhání z X z Y umístění **hromadné/skupiny** zaškrtávací políčko, pokud je povoleno, odešle uživatelům s rolí správce nebo spolusprávce.  V podstatě _všechny_ správci _předplatné_ obdrží oznámení.
+
+* Pro výstrahy týkající se dostupnosti metriky (nebo jakékoli metriky Application Insights pro tento účel) **hromadné/skupiny** zaškrtávací políčko Pokud je povoleno, odešle uživatelům s rolí vlastník, Přispěvatel nebo Čtenář v rámci předplatného. V důsledku toho _všechny_ uživatelé s přístupem k předplatnému prostředku Application Insights jsou v rozsahu a budou dostávat oznámení. 
+
+> [!NOTE]
+> Pokud aktuálně používáte službu **hromadné/skupiny** zaškrtávací políčko a zakázat, nebude možné vrátit zpět změny.
+
+Pomocí nové výstrahy prostředí/v – v reálném čase výstrahy, pokud je potřeba upozornit uživatele na základě jejich rolí. S [skupiny akcí](../platform/action-groups.md), můžete nakonfigurovat e-mailová oznámení pro uživatele s libovolnou z role přispěvatele nebo vlastníka/reader (ne zkopírovat dohromady jako jednu možnost).
+
 
 
 ## <a name="next"></a>Další kroky

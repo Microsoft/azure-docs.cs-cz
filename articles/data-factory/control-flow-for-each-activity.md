@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 11/26/2018
+ms.date: 01/23/2019
 ms.author: shlo
-ms.openlocfilehash: 90c36e728a8ec91606f93c080258eeca9c3825e6
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 68cdabd8d6e5921eabaa200169c0523352461733
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54020774"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54856940"
 ---
 # <a name="foreach-activity-in-azure-data-factory"></a>Aktivita ForEach ve službě Azure Data Factory
 Aktivita ForEach definuje ve vašem kanálu opakovaný tok řízení. Tato aktivita se používá k opakování v kolekci a spouští zadané aktivity ve smyčce. Implementace smyčky této aktivity se podobá struktuře smyčky Foreach v programovacích jazycích.
@@ -235,6 +235,7 @@ Je možné k iteraci přes několik aktivit (například: kopírování a webov�
 }
 
 ```
+
 ### <a name="example"></a>Příklad:
 **Scénář:** Iterujte přes InnerPipeline v rámci aktivity ForEach s aktivita spuštění kanálu. Vnitřní kanál kopíruje s definice schémat s parametry.
 
@@ -469,108 +470,13 @@ Je možné k iteraci přes několik aktivit (například: kopírování a webov�
     ]
     
 }
-
 ```
-## <a name="aggregating-metric-output"></a>Agregace metrik výstupu
-Výraz pro shromažďování výstupu všechny iterace ForEach `@activity('NameofInnerActivity')`. Například pokud aktivitu ForEach procházen "MyCopyActivity" syntaxe by: `@activity('MyCopyActivity')`. Výstupem je pole, s každou položku, která poskytuje podrobnosti o konkrétní iteraci.
 
-> [!NOTE]
-> Pokud chcete podrobnosti o konkrétní iteraci, by syntax byla následující: `@activity('NameofInnerActivity')[0]` nejnovější iterace. Číslo v závorkách lze použijte pro přístup k určité iteraci pole. Chcete-li získat přístup k určité vlastnosti konkrétní iteraci, použijte: `@activity('NameofInnerActivity')[0].output` nebo `@activity('NameofInnerActivity')[0].pipelineName`.
+## <a name="aggregating-outputs"></a>Agregování výstupy
 
-**Podrobnosti výstupu pole všech iterací:**
-```json
-[    
-    {      
-        "pipelineName": "db1f7d2b-dbbd-4ea8-964e-0d9b2d3fe676",      
-        "jobId": "a43766cb-ba13-4c68-923a-8349af9a76a3",      
-        "activityRunId": "217526fa-0218-42f1-b85c-e0b4f7b170ce",      
-        "linkedServiceName": "ADFService",      
-        "status": "Succeeded",      
-        "statusCode": null,      
-        "output": 
-            {        
-                "progress": 100,        
-                "loguri": null,        
-                "dataRead": "6.00 Bytes",        
-                "dataWritten": "6.00 Bytes",        
-                "regionOrGateway": "West US",        
-                "details": "Data Read: 6.00 Bytes, Written: 6.00 Bytes",        
-                "copyDuration": "00:00:05",        
-                "dataVolume": "6.00 Bytes",        
-                "throughput": "1.16 Bytes/s",       
-                 "totalDuration": "00:00:10"      
-            },      
-        "resumptionToken": 
-            {       
-                "ExecutionId": "217526fa-0218-42f1-b85c-e0b4f7b170ce",        
-                "ResumptionToken": 
-                    {          
-                        "in progress": "217526fa-0218-42f1-b85c-e0b4f7b170ce/wu/cloud/"       
-                    },        
-                "ExtendedProperties": 
-                    {          
-                        "dataRead": "6.00 Bytes",          
-                        "dataWritten": "6.00 Bytes",          
-                        "regionOrGateway": "West US",          
-                        "details": "Data Read: 6.00 Bytes, Written: 6.00 Bytes",          
-                        "copyDuration": "00:00:05",          
-                        "dataVolume": "6.00 Bytes",          
-                        "throughput": "1.16 Bytes/s",          
-                        "totalDuration": "00:00:10"        
-                    }      
-            },      
-        "error": null,      
-        "executionStartTime": "2017-08-01T04:17:27.5747275Z",      
-        "executionEndTime": "2017-08-01T04:17:46.4224091Z",     
-        "duration": "00:00:18.8476816"    
-    },
-    {      
-        "pipelineName": "db1f7d2b-dbbd-4ea8-964e-0d9b2d3fe676",      
-        "jobId": "54232-ba13-4c68-923a-8349af9a76a3",      
-        "activityRunId": "217526fa-0218-42f1-b85c-e0b4f7b170ce",      
-        "linkedServiceName": "ADFService",      
-        "status": "Succeeded",      
-        "statusCode": null,      
-        "output": 
-            {        
-                "progress": 100,        
-                "loguri": null,        
-                "dataRead": "6.00 Bytes",        
-                "dataWritten": "6.00 Bytes",        
-                "regionOrGateway": "West US",        
-                "details": "Data Read: 6.00 Bytes, Written: 6.00 Bytes",        
-                "copyDuration": "00:00:05",        
-                "dataVolume": "6.00 Bytes",        
-                "throughput": "1.16 Bytes/s",       
-                 "totalDuration": "00:00:10"      
-            },      
-        "resumptionToken": 
-            {       
-                "ExecutionId": "217526fa-0218-42f1-b85c-e0b4f7b170ce",        
-                "ResumptionToken": 
-                    {          
-                        "in progress": "217526fa-0218-42f1-b85c-e0b4f7b170ce/wu/cloud/"       
-                    },        
-                "ExtendedProperties": 
-                    {          
-                        "dataRead": "6.00 Bytes",          
-                        "dataWritten": "6.00 Bytes",          
-                        "regionOrGateway": "West US",          
-                        "details": "Data Read: 6.00 Bytes, Written: 6.00 Bytes",          
-                        "copyDuration": "00:00:05",          
-                        "dataVolume": "6.00 Bytes",          
-                        "throughput": "1.16 Bytes/s",          
-                        "totalDuration": "00:00:10"        
-                    }      
-            },      
-        "error": null,      
-        "executionStartTime": "2017-08-01T04:18:27.5747275Z",      
-        "executionEndTime": "2017-08-01T04:18:46.4224091Z",     
-        "duration": "00:00:18.8476816"    
-    }
-]
+Do agregační výstupů __foreach__ aktivity, _Variable_s, využijte prosím a _připojit proměnné_ aktivity.
 
-```
+Nejprve deklarujte `array` _proměnné_ v kanálu. Potom vyvolat _připojit proměnné_ aktivity v rámci jednotlivých __foreach__ smyčky. Následně můžete načíst agregaci z vašeho pole.
 
 ## <a name="limitations-and-workarounds"></a>Omezení a řešení
 

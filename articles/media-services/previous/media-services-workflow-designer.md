@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/30/2018
 ms.author: juliako;johndeu;anilmur
-ms.openlocfilehash: fa858ffbae5c1a37851ea114efd0fbc9cf010e68
-ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
+ms.openlocfilehash: 3f01d5342fbeeb5cb5e19af63a0dd91128778859
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54200798"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54823228"
 ---
 # <a name="create-advanced-encoding-workflows-with-workflow-designer"></a>Vytváření pokročilých pracovních postupů kódování pomocí Návrháře postupu provádění
 ## <a name="overview"></a>Přehled
@@ -30,7 +30,7 @@ Pracovní postupy mohou zahrnovat logiku pro rozhodování o zákazníka a větv
 
 Příklady pracovních postupů, které můžete vytvořit patří:
 
-* Rozhodování na základě pracovních postupů, které kontrola zdrojový obsah pro řešení a kódování pouze sleduje požadovaný výstup.  To je užitečné odstraněním nevyužité, které by být generovány upscaling neúmyslně obsahu zdroje stop.
+* Rozhodování na základě pracovních postupů, které kontrola zdrojový obsah pro řešení a kódování pouze sleduje požadovaný výstup.  To je užitečné odstraněním nevyužité sleduje, které by být generovány neúmyslně upscaling zdrojový obsah.
 * Více vstupních souborů lze použít pro podporu popisků, překrytí a více společně obsah. 
 
 Tento nástroj lze také změnit libovolné z našich [publikování pracovních postupů](media-services-workflow-designer.md#existing_workflows). 

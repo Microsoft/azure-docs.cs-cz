@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 10/16/2018
 ms.author: apurvajo;cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 78b7668dee892841ced1a06626ff09a534a88b69
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: 784cb5248dab2b9554c67347e1b9b848e1a9e985
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53714296"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54820780"
 ---
 # <a name="buy-and-configure-an-ssl-certificate-for-azure-app-service"></a>Zakoupení a konfigurace certifikátu SSL pro službu Azure App Service
 
@@ -50,7 +50,7 @@ Pomocí následující tabulky můžete nakonfigurovat certifikát. Jakmile bude
 | Nastavení | Popis |
 |-|-|
 | Název | Popisný název služby App Service certificate. |
-| Název hostitele základní domény | Tento krok je jednou z nejdůležitějších částí procesu nákupu. Použijte název kořenové domény, který je namapovaný na vaši aplikaci. Proveďte _není_ předřaďte názvu domény pomocí `www`. |
+| Název hostitele základní domény | Pokud zadáte kořenovou doménu, můžete získat certifikát, který zabezpečuje *obě* kořenové domény a `www` subdomény. Pro zabezpečené jakákoli subdoména, zadat pouze plně kvalifikovaný název domény zde poddomény (například `mysubdomain.contoso.com`). |
 | Předplatné | Datacentrum, které je hostitelem webové aplikace. |
 | Skupina prostředků | Skupina prostředků, který obsahuje certifikát. Můžete použít novou skupinu prostředků nebo vyberte stejnou skupinu prostředků jako aplikace služby App Service, třeba. |
 | SKU certifikátu | Určuje typ certifikátů k vytvoření, jestli certifikát standardní nebo [certifikát se zástupným znakem](https://wikipedia.org/wiki/Wildcard_certificate). |
@@ -125,7 +125,7 @@ Navštivte vaši aplikaci s použitím `HTTPS://<domain_name>` místo `HTTP://<d
 
 Pokud byste někdy potřebovali obnovit klíč certifikátu, vyberte certifikát v [služby App Service Certificate](https://portal.azure.com/#blade/HubsExtension/Resources/resourceType/Microsoft.CertificateRegistration%2FcertificateOrders) stránce a pak vyberte **obnovení klíče a synchronizace** z levé navigace.
 
-Klikněte na tlačítko **opětovné vytvoření** tlačítko k zahájení procesu. Tento proces může trvat 1 až 10 minut na dokončení.
+Klikněte na tlačítko **opětovné vytvoření** tlačítko pro spuštění procesu. Tento proces může trvat 1 až 10 minut na dokončení.
 
 ![Vložit obrázek opětovné vytvoření protokolu SSL](./media/app-service-web-purchase-ssl-web-site/Rekey.png)
 
@@ -133,7 +133,7 @@ Obnovení klíče vrátí certifikát pomocí nového certifikátu vydaného cer
 
 ## <a name="renew-certificate"></a>Prodloužit platnost certifikátu
 
-Kdykoli zapnout automatické prodloužení platnosti vašeho certifikátu, vyberte certifikát v [služby App Service Certificate](https://portal.azure.com/#blade/HubsExtension/Resources/resourceType/Microsoft.CertificateRegistration%2FcertificateOrders) stránce a potom klikněte na **nastavení automatického obnovení** v levém navigačním panelu. 
+Zapnutí automatického obnovení certifikátu v okamžiku, vyberte certifikát v [služby App Service Certificate](https://portal.azure.com/#blade/HubsExtension/Resources/resourceType/Microsoft.CertificateRegistration%2FcertificateOrders) stránce a potom klikněte na **nastavení automatického obnovení** v levém navigačním panelu. 
 
 Vyberte **na** a klikněte na tlačítko **Uložit**. Certifikáty můžete spustit automaticky obnovení 60 dní před vypršením platnosti, pokud máte zapnuté automatické obnovení.
 

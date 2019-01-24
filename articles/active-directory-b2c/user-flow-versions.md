@@ -3,19 +3,19 @@ title: Verze toku uživatele v Azure Active Directory B2C | Dokumentace Microsof
 description: Další informace o verzích nástroje toky uživatelů, které jsou k dispozici v Azure Active Directory B2C.
 services: active-directory-b2c
 author: davidmu1
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 11/09/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 34099292855606ac5c2653c8d790f59db37251f6
-ms.sourcegitcommit: beb4fa5b36e1529408829603f3844e433bea46fe
+ms.openlocfilehash: eed5b27a2bdcc30aaf6befc19c5974936cabf849
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/22/2018
-ms.locfileid: "52292237"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54854154"
 ---
 # <a name="user-flow-versions-in-azure-active-directory-b2c"></a>Verze toku uživatele v Azure Active Directory B2C
 
@@ -41,7 +41,7 @@ Nové toky uživatelů se přidají jako nové verze. Toky uživatelů jsou stab
 
 | Tok uživatele. | Doporučené | Popis |
 | --------- | ----------- | ----------- |
-| Resetování hesla v2 | Ne | Umožňuje uživateli zvolit nové heslo po ověření e-mailu. Pomocí tohoto toku uživatele, můžete nakonfigurovat: <ul><li>[Multi-Factor Authentication](active-directory-b2c-reference-mfa.md)</li><li>Nastavení kompatibility tokenu</li><li>[Věku](basic-age-gating.md)</li><li>[požadavky na složitost hesla](active-directory-b2c-reference-password-complexity.md)</li></ul> |
+| Resetování hesla v2 | Ne | Umožňuje uživateli zvolit nové heslo po ověření e-mailu. Pomocí tohoto toku uživatele, můžete nakonfigurovat: <ul><li>[Multi-Factor Authentication](active-directory-b2c-reference-mfa.md)</li><li>Nastavení kompatibility tokenu</li><li>[Věku](basic-age-gating.md)</li><li>[Požadavky na složitost hesla](active-directory-b2c-reference-password-complexity.md)</li></ul> |
 | Přihlášení v2 | Ne | Umožňuje uživateli přihlásit ke svému účtu. Pomocí tohoto toku uživatele, můžete nakonfigurovat: <ul><li>[Multi-Factor Authentication](active-directory-b2c-reference-mfa.md)</li><li>[Životnost tokenu](active-directory-b2c-reference-tokens.md)</li><li>Nastavení kompatibility tokenu</li><li>Chování relace</li><li>[Věku](basic-age-gating.md)</li><li>Přizpůsobení přihlašovací stránky</li></ul> |
 | Registrace v2 | Ne | Umožňuje uživateli vytvoření účtu služby. Pomocí tohoto toku uživatele, můžete nakonfigurovat: <ul><li>[Multi-Factor Authentication](active-directory-b2c-reference-mfa.md)</li><li>[Životnost tokenu](active-directory-b2c-reference-tokens.md)</li><li>Nastavení kompatibility tokenu</li><li>Chování relace</li><li>[Věku](basic-age-gating.md)</li><li>[Požadavky na složitost hesla](active-directory-b2c-reference-password-complexity.md)</li></ul> |
 | Registrace a přihlášení v2 | Ne | Umožňuje uživateli vytvoření účtu služby nebo se přihlaste svým účtem. Pomocí tohoto toku uživatele, můžete nakonfigurovat: <ul><li>[Multi-Factor Authentication](active-directory-b2c-reference-mfa.md)</li><li>[Věku](basic-age-gating.md)</li><li>[Požadavky na složitost hesla](active-directory-b2c-reference-password-complexity.md)</li></ul> |

@@ -4,35 +4,36 @@ description: Použití Azure Powershellu k vytvoření přiřazení Azure Policy
 services: azure-policy
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 12/06/2018
+ms.date: 01/23/2019
 ms.topic: quickstart
 ms.service: azure-policy
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: b8ed0f74dfaa9be94a370e2fa97542543ca4868b
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: b5f4306fc1627e679f8f59a92bae4124a48cbd42
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54430649"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54856464"
 ---
 # <a name="create-a-policy-assignment-to-identify-non-compliant-resources-using-azure-powershell"></a>Vytvoření přiřazení zásady pro identifikaci neodpovídajících prostředků pomocí Azure Powershellu
 
 Prvním krokem k porozumění dodržování předpisů v Azure je zjištění stavu vašich prostředků. V tomto rychlém startu vytvoříte přiřazení zásady pro identifikaci virtuálních počítačů, které nepoužívají spravované disky. Po dokončení budete identifikovat virtuální počítače, které *nedodržují předpisy* přiřazení zásady.
 
-Modul AzureRM PowerShellu slouží k vytváření a správě prostředků Azure z příkazového řádku nebo ve skriptech. Tato příručka vysvětluje, jak pomocí AzureRM vytvořit přiřazení zásady. Tato zásada identifikuje v prostředí Azure prostředky, které nedodržují předpisy.
+Modul Azure PowerShell slouží k vytváření a správě prostředků Azure z příkazového řádku nebo ve skriptech. Tato příručka vysvětluje, jak použít Az k vytvoření přiřazení zásady. Tato zásada identifikuje v prostředí Azure prostředky, které nedodržují předpisy.
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
+
+[!INCLUDE [az-powershell-update](../../../includes/updated-for-az.md)]
 
 ## <a name="prerequisites"></a>Požadavky
 
 - Pokud jste to ještě neudělali, nainstalujte si nástroj [ARMClient](https://github.com/projectkudu/ARMClient). Jedná se o nástroj, který posílá žádosti HTTPS do rozhraní API založených na Azure Resource Manageru.
-- Než začnete, ujistěte se, že je nainstalovaná nejnovější verze PowerShellu. Podrobné informace najdete v tématu [Instalace a konfigurace Azure PowerShellu](/powershell/azureps-cmdlets-docs).
-- Aktualizujte modul AzureRM PowerShellu na nejnovější verzi. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace modulu Azure PowerShell](/powershell/azure/azurerm/install-azurerm-ps).
+- Než začnete, ujistěte se, že je nainstalovaná nejnovější verze prostředí Azure PowerShell. Zobrazit [instalace modulu Azure PowerShell](/powershell/azure/install-az-ps) podrobné informace.
 - Pomocí Azure PowerShellu zaregistrujte poskytovatele prostředků Policy Insights. Registrace poskytovatele prostředků zajistí, že s ním vaše předplatné bude fungovat. Zaregistrovat poskytovatele prostředků, musíte mít oprávnění pro operace registrace poskytovatele prostředků. Tato operace je součástí rolí Přispěvatel a Vlastník. Spuštěním následujícího příkazu zaregistrujte poskytovatele prostředků:
 
   ```azurepowershell-interactive
-  Register-AzureRmResourceProvider -ProviderNamespace 'Microsoft.PolicyInsights'
+  Register-AzResourceProvider -ProviderNamespace 'Microsoft.PolicyInsights'
   ```
 
   Další informace o registraci a zobrazení poskytovatelů prostředků najdete v tématu [Poskytovatelé a typy prostředků](../../azure-resource-manager/resource-manager-supported-services.md).
@@ -44,9 +45,9 @@ V tomto rychlém startu vytvoříte přiřazení zásady a přiřadíte *Audit v
 Spuštěním následujících příkazů vytvořte nové přiřazení zásady:
 
 ```azurepowershell-interactive
-$rg = Get-AzureRmResourceGroup -Name '<resourceGroupName>'
-$definition = Get-AzureRmPolicyDefinition | Where-Object { $_.Properties.DisplayName -eq 'Audit VMs that do not use managed disks' }
-New-AzureRmPolicyAssignment -Name 'audit-vm-manageddisks' -DisplayName 'Audit VMs without managed disks Assignment' -Scope $rg.ResourceId -PolicyDefinition $definition
+$rg = Get-AzResourceGroup -Name '<resourceGroupName>'
+$definition = Get-AzPolicyDefinition | Where-Object { $_.Properties.DisplayName -eq 'Audit VMs that do not use managed disks' }
+New-AzPolicyAssignment -Name 'audit-vm-manageddisks' -DisplayName 'Audit VMs without managed disks Assignment' -Scope $rg.ResourceId -PolicyDefinition $definition
 ```
 
 Předchozí příkazy používají následující informace:
@@ -63,11 +64,11 @@ Nyní jste připraveni identifikovat prostředky, které nedodržují předpisy,
 Pomocí následujících informací identifikujte prostředky, které nedodržují předpisy přiřazení zásady, kterou jste vytvořili. Spusťte následující příkazy:
 
 ```azurepowershell-interactive
-$policyAssignment = Get-AzureRmPolicyAssignment | Where-Object { $_.Properties.DisplayName -eq 'Audit VMs without managed disks Assignment' }
+$policyAssignment = Get-AzPolicyAssignment | Where-Object { $_.Properties.DisplayName -eq 'Audit VMs without managed disks Assignment' }
 $policyAssignment.PolicyAssignmentId
 ```
 
-Další informace o ID přiřazení zásad najdete v tématu věnovaném rutině [Get-AzureRmPolicyAssignment](/powershell/module/azurerm.resources/get-azurermpolicyassignment).
+Další informace o ID přiřazení zásad najdete v tématu [Get-AzPolicyAssignment](/powershell/module/az.resources/get-azpolicyassignment).
 
 Pak spuštěním následujícího příkazu získejte a zapište do souboru JSON ID prostředků, které nedodržují předpisy:
 
@@ -108,7 +109,7 @@ Tyto výsledky jsou srovnatelné s tím, co se obvykle zobrazuje v části **Nek
 Odebrat přiřazení vytvořené, použijte následující příkaz:
 
 ```azurepowershell-interactive
-Remove-AzureRmPolicyAssignment -Name 'audit-vm-manageddisks' -Scope '/subscriptions/<subscriptionID>/resourceGroups/<resourceGroupName>'
+Remove-AzPolicyAssignment -Name 'audit-vm-manageddisks' -Scope '/subscriptions/<subscriptionID>/resourceGroups/<resourceGroupName>'
 ```
 
 ## <a name="next-steps"></a>Další postup

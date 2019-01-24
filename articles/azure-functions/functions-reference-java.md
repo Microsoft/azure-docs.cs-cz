@@ -11,12 +11,12 @@ ms.devlang: java
 ms.topic: conceptual
 ms.date: 09/14/2018
 ms.author: routlaw
-ms.openlocfilehash: c9a66036902f346a7a9fd337416cbe85acca7856
-ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
+ms.openlocfilehash: 429c7c266357b4808ab3ebbb7f346cf22d9f479c
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54200931"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54855386"
 ---
 # <a name="azure-functions-java-developer-guide"></a>Příručka pro vývojáře Azure Functions Java
 
@@ -272,7 +272,7 @@ Výše uvedené funkce, které se vyvolá u HttpRequest a zapíše více hodnot 
 
 ## <a name="metadata"></a>Metadata
 
-Několik triggerů odeslat [aktivovat metadat](/azure/azure-functions/functions-triggers-bindings#trigger-metadata-properties) spolu se vstupní data. Můžete použít poznámku `@BindingName` vytvořit vazbu k aktivaci metadat
+Několik triggerů odeslat [aktivovat metadat](/azure/azure-functions/functions-triggers-bindings) spolu se vstupní data. Můžete použít poznámku `@BindingName` vytvořit vazbu k aktivaci metadat
 
 
 ```Java

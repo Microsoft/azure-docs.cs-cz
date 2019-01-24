@@ -3,19 +3,19 @@ title: TechnicalProfiles | Dokumentace Microsoftu
 description: Zadejte element TechnicalProfiles vlastní zásady v Azure Active Directory B2C.
 services: active-directory-b2c
 author: davidmu1
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 09/10/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 45ea2a28b4b2fb3d55d7ae949152e6f51b5d3162
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.openlocfilehash: c17159e1fa901e8219d1727769d234719c4321c6
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51566529"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54856549"
 ---
 # <a name="technicalprofiles"></a>TechnicalProfiles
 
@@ -74,7 +74,7 @@ A **TechnicalProfiles** prvek obsahuje sadu technické profily, které podporuje
 
 **Technický profil** prvek obsahuje následující atribut:
 
-| Atribut | Požaduje se | Popis |
+| Atribut | Požadováno | Popis |
 |---------|---------|---------|
 | ID | Ano | Jedinečný identifikátor technický profil. Technický profil může být odkazováno pomocí tohoto identifikátoru z dalších prvků v souboru zásad. Například **OrchestrationSteps** a **ValidationTechnicalProfile**. |
 
@@ -106,7 +106,7 @@ A **TechnicalProfiles** prvek obsahuje sadu technické profily, které podporuje
 
 **Protokol** prvek obsahuje následující atributy:
 
-| Atribut | Požaduje se | Popis |
+| Atribut | Požadováno | Popis |
 | --------- | -------- | ----------- |
 | Název | Ano | Název platný protokol podporovaný službou Azure AD B2C, který se používá jako součást technický profil. Možné hodnoty: `OAuth1`, `OAuth2`, `SAML2`, `OpenIdConnect`, `WsFed`, `WsTrust`, `Proprietary`, `session management`, `self-asserted`, nebo `None`. |
 | Obslužná rutina | Ne | Pokud název protokolu nastavená na `Proprietary`, zadejte plně kvalifikovaný název sestavení, které se službou Azure AD B2C používá k určení obslužná rutina protokolu. |
@@ -123,7 +123,7 @@ A **metadat** prvek obsahuje následující prvky:
 
 **Položky** elementu **metadat** prvek obsahuje následující atributy:
 
-| Atribut | Požaduje se | Popis |
+| Atribut | Požadováno | Popis |
 | --------- | -------- | ----------- |
 | Klíč | Ano | Klíč metadat. Zobrazit jednotlivé typy profilů technické, seznam položky metadat. |
 
@@ -139,7 +139,7 @@ A **metadat** prvek obsahuje následující prvky:
 
 **Klíč** prvek obsahuje následující atribut:
 
-| Atribut | Požaduje se | Popis |
+| Atribut | Požadováno | Popis |
 | --------- | -------- | ----------- |
 | ID | Ne | Jedinečný identifikátor konkrétní pár klíčů na něj odkazovat z jiných prvků v souboru zásad. |
 | StorageReferenceId | Ano | Identifikátor kontejneru klíčů úložiště na něj odkazovat z jiných prvků v souboru zásad. |
@@ -156,9 +156,9 @@ A **metadat** prvek obsahuje následující prvky:
 
 **InputClaimsTransformation** prvek obsahuje následující atribut:
 
-| Atribut | Požaduje se | Popis |
+| Atribut | Požadováno | Popis |
 | --------- | -------- | ----------- |
-| referenceId | Ano | Identifikátor už definovaných v souboru zásad nebo nadřazený soubor zásad transformace deklarací identity. |
+| ReferenceId | Ano | Identifikátor už definovaných v souboru zásad nebo nadřazený soubor zásad transformace deklarací identity. |
 
 ### <a name="inputclaims"></a>InputClaims
 
@@ -172,7 +172,7 @@ A **metadat** prvek obsahuje následující prvky:
 
 **InputClaim** prvek obsahuje následující atributy:
 
-| Atribut | Požaduje se | Popis |
+| Atribut | Požadováno | Popis |
 | --------- | -------- | ----------- |
 | ClaimTypeReferenceId | Ano | Identifikátor typu deklarace identity, který je již definován v oddíle ClaimsSchema v souboru zásad nebo nadřazený soubor zásad. |
 | Výchozí hodnota | Ne | Výchozí hodnotu použít k vytvoření deklarace identity, pokud se deklarace indikován ClaimTypeReferenceId buď neexistuje, takže výsledné deklarace identity může sloužit jako InputClaim technický profil. |
@@ -190,7 +190,7 @@ A **metadat** prvek obsahuje následující prvky:
 
 **PersistedClaim** prvek obsahuje následující atributy:
 
-| Atribut | Požaduje se | Popis |
+| Atribut | Požadováno | Popis |
 | --------- | -------- | ----------- |
 | ClaimTypeReferenceId | Ano | Identifikátor typu deklarace identity, který je již definován v oddíle ClaimsSchema v souboru zásad nebo nadřazený soubor zásad. |
 | Výchozí hodnota | Ne | Výchozí hodnotu použít k vytvoření deklarace identity, pokud se deklarace indikován ClaimTypeReferenceId buď neexistuje, takže výsledné deklarace identity může sloužit jako InputClaim technický profil. |
@@ -208,7 +208,7 @@ A **metadat** prvek obsahuje následující prvky:
 
 **OutputClaim** prvek obsahuje následující atributy:
 
-| Atribut | Požaduje se | Popis |
+| Atribut | Požadováno | Popis |
 | --------- | -------- | ----------- |
 | ClaimTypeReferenceId | Ano | Identifikátor typu deklarace identity, který je již definován v oddíle ClaimsSchema v souboru zásad nebo nadřazený soubor zásad. |
 | Výchozí hodnota | Ne | Výchozí hodnotu použít k vytvoření deklarace identity, pokud se deklarace indikován ClaimTypeReferenceId buď neexistuje, takže výsledné deklarace identity může sloužit jako InputClaim technický profil. |
@@ -227,9 +227,9 @@ A **metadat** prvek obsahuje následující prvky:
 
 **OutputClaimsTransformation** prvek obsahuje následující atribut:
 
-| Atribut | Požaduje se | Popis |
+| Atribut | Požadováno | Popis |
 | --------- | -------- | ----------- |
-| referenceId | Ano | Identifikátor už definovaných v souboru zásad nebo nadřazený soubor zásad transformace deklarací identity. |
+| ReferenceId | Ano | Identifikátor už definovaných v souboru zásad nebo nadřazený soubor zásad transformace deklarací identity. |
 
 ### <a name="validationtechnicalprofiles"></a>ValidationTechnicalProfiles
 
@@ -243,33 +243,33 @@ A **metadat** prvek obsahuje následující prvky:
 
 **ValidationTechnicalProfile** prvek obsahuje následující atribut:
 
-| Atribut | Požaduje se | Popis |
+| Atribut | Požadováno | Popis |
 | --------- | -------- | ----------- |
-| referenceId | Ano | Identifikátor technického profilu už definovaných v souboru zásad nebo nadřazený soubor zásad. |
+| ReferenceId | Ano | Identifikátor technického profilu už definovaných v souboru zásad nebo nadřazený soubor zásad. |
 
 ###  <a name="subjectnaminginfo"></a>SubjectNamingInfo
 
 **SubjectNamingInfo** obsahuje následující atribut:
 
-| Atribut | Požaduje se | Popis |
+| Atribut | Požadováno | Popis |
 | --------- | -------- | ----------- |
-| Typ ClaimType | Ano | Identifikátor typu deklarace identity, který je již definován v oddíle ClaimsSchema v souboru zásad. |
+| ClaimType | Ano | Identifikátor typu deklarace identity, který je již definován v oddíle ClaimsSchema v souboru zásad. |
 
 ### <a name="includetechnicalprofile"></a>IncludeTechnicalProfile
 
 **IncludeTechnicalProfile** prvek obsahuje následující atribut:
 
-| Atribut | Požaduje se | Popis |
+| Atribut | Požadováno | Popis |
 | --------- | -------- | ----------- |
-| referenceId | Ano | Identifikátor technického profilu už definovaných v souboru zásad nebo nadřazený soubor zásad. |
+| ReferenceId | Ano | Identifikátor technického profilu už definovaných v souboru zásad nebo nadřazený soubor zásad. |
 
 ### <a name="usetechnicalprofileforsessionmanagement"></a>UseTechnicalProfileForSessionManagement
 
 **UseTechnicalProfileForSessionManagement** prvek obsahuje následující atribut:
 
-| Atribut | Požaduje se | Popis |
+| Atribut | Požadováno | Popis |
 | --------- | -------- | ----------- |
-| referenceId | Ano | Identifikátor technického profilu už definovaných v souboru zásad nebo nadřazený soubor zásad. |
+| ReferenceId | Ano | Identifikátor technického profilu už definovaných v souboru zásad nebo nadřazený soubor zásad. |
 
 ### <a name="enabledforuserjourneys"></a>EnabledForUserJourneys
 **ClaimsProviderSelections** uživatele cesty definuje seznam možnosti výběru zprostředkovatele deklarací identity a jejich pořadí. S **EnabledForUserJourneys** element můžete filtrovat, které zprostředkovatel deklarací identity je k dispozici pro uživatele. **EnabledForUserJourneys** element obsahuje jeden z následujících hodnot:

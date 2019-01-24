@@ -8,14 +8,14 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 04/01/2018
 ms.author: kgremban
-ms.openlocfilehash: 830052341c4f0e3488c8e63da59cbef1f72e158a
-ms.sourcegitcommit: a2ae233e20e670e2f9e6b75e83253bd301f5067c
+ms.openlocfilehash: 20bb0cb6982bcbea6b18989099322cfd3389b0b0
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/13/2018
-ms.locfileid: "42058329"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54819633"
 ---
-# <a name="connecting-iot-devices-to-azure-iot-hub-and-event-hubs"></a>Připojení k Azure IoT zařízení: služby IoT Hub a Event Hubs
+# <a name="connecting-iot-devices-to-azure-iot-hub-and-event-hubs"></a>Připojení zařízení IoT k Azure: IoT Hub a Event Hubs
 
 Azure poskytuje služby, vyvinutá speciálně pro různých typů připojení a komunikace připojení dat k elektrické energie cloudu vám usnadní. Azure IoT Hub a Azure Event Hubs jsou cloudové služby, které můžete ingestovat velké objemy dat a zpracování nebo uložení dat k obchodním přehledům. Tyto dvě služby jsou podobné v tom, že obě podporují ingestování dat s nízkou latencí a vysokou spolehlivostí, ale jsou určené pro různé účely. Konkrétně k vyřešení jedinečné požadavky na připojení zařízení IoT ve velkém měřítku, do cloudu Azure, zatímco služba Event Hubs je navržená pro streamování velkých objemů dat byla vyvinuta služby IoT Hub. To je důvod, proč společnost Microsoft doporučuje používat Azure IoT Hub připojit zařízení IoT pro Azure
 
@@ -27,16 +27,17 @@ Souhrnně řečeno, zatímco obě řešení jsou určeny pro příjem dat ve vel
 
 Následující tabulka obsahuje podrobnosti o dvě úrovně služby IoT Hub porovnání do služby Event Hubs při hodnocení je pro funkce IoT. Další informace o úrovních standard a basic služby IoT Hub najdete v tématu [návodu k výběru správné úrovně služby IoT Hub](iot-hub-scaling.md).
 
-| Funkce IoT | Úroveň standard služby IoT Hub | Úroveň basic služby IoT Hub | Event Hubs |
+| Funkce IoT | Úroveň standard služby IoT Hub | IoT Hub basic tier | Event Hubs |
 | --- | --- | --- | --- |
 | Zasílání zpráv typu zařízení cloud | ![Zaškrtnout][checkmark] | ![Zaškrtnout][checkmark] | ![Zaškrtnout][checkmark] |
 | Protokoly: AMQP HTTPS, AMQP, přes webSockets | ![Zaškrtnout][checkmark] | ![Zaškrtnout][checkmark] | ![Zaškrtnout][checkmark] |
-| Protokoly: MQTT, MQTT přes webSockets | ![Zaškrtnout][checkmark] | ![Zaškrtnout][checkmark] |  |
+| Protokoly: Protokol MQTT, MQTT přes webSockets | ![Zaškrtnout][checkmark] | ![Zaškrtnout][checkmark] |  |
 | Identita na jedno zařízení | ![Zaškrtnout][checkmark] | ![Zaškrtnout][checkmark] |  |
 | Načtení souborů ze zařízení | ![Zaškrtnout][checkmark] | ![Zaškrtnout][checkmark] |  |
 | Device Provisioning Service | ![Zaškrtnout][checkmark] | ![Zaškrtnout][checkmark] |  |
 | Zasílání zpráv z cloudu na zařízení | ![Zaškrtnout][checkmark] |  |  |
 | Dvojče zařízení a správy zařízení | ![Zaškrtnout][checkmark] |  |  |
+| Datové proudy zařízení (preview) | ![Zaškrtnout][checkmark] |  |  |
 | IoT Edge | ![Zaškrtnout][checkmark] |  |  |
 
 I v případě, že jediným případem použití je příjem dat typu zařízení cloud, důrazně doporučujeme pomocí služby IoT Hub, protože poskytuje službu, která je navržená pro připojení zařízení IoT. 

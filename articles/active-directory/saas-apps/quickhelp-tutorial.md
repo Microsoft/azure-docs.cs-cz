@@ -1,10 +1,10 @@
 ---
-title: 'Kurz: Integrace Azure Active Directory se službou QuickHelp | Dokumentace Microsoftu'
+title: 'Kurz: Integrace Azure Active Directory s QuickHelp | Dokumentace Microsoftu'
 description: Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a QuickHelp.
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.assetid: 655c9ad3-2076-4e2c-8e47-9ed3bf04be56
 ms.service: active-directory
 ms.component: saas-app-tutorial
@@ -14,14 +14,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/27/2017
 ms.author: jeedes
-ms.openlocfilehash: c99be60301085dddfd5c658ee1eed81b88238e54
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: cbc25218079f8e8529777dd8e169a2e689eabc6b
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39421583"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54824214"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-quickhelp"></a>Kurz: Integrace Azure Active Directory se službou QuickHelp
+# <a name="tutorial-azure-active-directory-integration-with-quickhelp"></a>Kurz: Integrace Azure Active Directory s QuickHelp
 
 V tomto kurzu se dozvíte, jak integrovat QuickHelp s Azure Active Directory (Azure AD).
 
@@ -37,7 +37,7 @@ Pokud chcete zjistit další podrobnosti o integraci aplikací SaaS v Azure AD, 
 
 Konfigurace integrace Azure AD s QuickHelp, potřebujete následující položky:
 
-- S předplatným služby Azure AD
+- Předplatné Azure AD
 - QuickHelp jednotného přihlašování povolená předplatného
 
 > [!NOTE]
@@ -59,7 +59,7 @@ Konfigurace integrace QuickHelp do služby Azure AD, budete muset přidat QuickH
 
 **Chcete-li přidat QuickHelp z galerie, postupujte následovně:**
 
-1. V  **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu. 
+1. V **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu. 
 
     ![Active Directory][1]
 
@@ -232,7 +232,7 @@ Cílem této části je test vaší konfigurace Azure AD jednotné přihlašová
 Po kliknutí na dlaždici QuickHelp na přístupovém panelu, vám by měl získat automaticky přihlášení k aplikaci QuickHelp.
 
 
-## <a name="additional-resources"></a>Další zdroje informací:
+## <a name="additional-resources"></a>Další materiály
 
 * [Seznam kurzů o integraci aplikací SaaS pomocí Azure Active Directory](tutorial-list.md)
 * [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](../manage-apps/what-is-single-sign-on.md)

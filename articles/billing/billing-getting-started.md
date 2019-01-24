@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/24/2018
 ms.author: cwatson
-ms.openlocfilehash: 9d755d1a3d9ae54d33331eff9b547de70a5fd77f
-ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
+ms.openlocfilehash: 5aca80a4ebeadc9e54cf99fb4a220c6ee7c37cae
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54452885"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54857008"
 ---
 # <a name="prevent-unexpected-charges-with-azure-billing-and-cost-management"></a>Vám nenaúčtovaly neočekávané poplatky se správou nákladů a fakturací Azure
 
@@ -63,6 +63,24 @@ Pokud chcete zobrazit, pokud jste jste získali limit útraty ve, přejděte na 
 ![Snímek obrazovky s upozorněním útraty, že omezení v centru účtů](./media/billing-getting-started/spending-limit-banner.PNG)
 
 Kliknutím na banner a postupujte podle pokynů k odebrání limitu útraty. Pokud jste nezadali informace o platební kartě při registraci, musíte zadat jeho odebrání limitu útraty. Další informace najdete v tématu [limit útraty Azure – jak funguje a jak ho aktivovat nebo odebrat](https://azure.microsoft.com/pricing/spending-limits/).
+
+Můžete použít [Cloudyn](https://www.cloudyn.com/) služby k vytvoření výstrahy, které budou automaticky upozorňovat účastníky útraty anomálie a rizika nadměrných výdajů. Můžete vytvořit výstrah pomocí sestavy, že podporují výstrahy na základě rozpočtu a prahových hodnot nákladů. Další informace o používání Cloudyn najdete v tématu [kurzu: Kontrola využití a nákladů](../cost-management/tutorial-review-usage.md).
+
+V tomto příkladu **Actual Cost Over Time** sestavy k odesílání oznámení, pokud vaší útraty na Virtuálním počítači Azure přiblíží celkový rozpočet. V tomto scénáři máte celkový rozpočet 20 000 a chcete dostávat oznámení, když náklady se začali přibližovat polovinu vašemu rozpočtu, 9 000 $ a další výstrahy po náklady na 10 000 USD.
+
+1. V nabídce v horní části portálu Cloudyn, zvolte **náklady** > **Cost Analysis** > **Actual Cost Over Time**. 
+2. U položky **Groups** (Skupiny) nastavte hodnotu **Service** (Služba) a u položky **Filter on the service** (Filtrovat podle služby) hodnotu **Azure/VM** (Azure / virtuální počítač). 
+3. V horní části přímo ze sestavy, vyberte **akce** a pak vyberte **Naplánování sestavy**.
+4. Pošlete sami sobě e-mail sestavy v naplánovaných intervalech, vyberte **plánování** kartu **uložit nebo naplánovat tuto** dialogové okno sestavy. Nezapomeňte vybrat možnost **Send via email** (Odeslat e-mailem). Všechny značky, seskupení a filtry, které jste použití jsou zahrnuty v e-mailem sestavu. 
+5. Vyberte **prahová hodnota** kartu a potom vyberte **Actual Cost vs. Threshold** (Skutečné náklady vs. prahová hodnota). 
+   1. V **červenou výstrahu** prahovou hodnotu zadejte 10000. 
+   2. V **žlutá výstraha** zadejte 9000 prahovou hodnotu. 
+   3. V **počet po sobě jdoucích výstrah** zadejte počet po sobě jdoucích výstrah pro příjem. Až dostanete celkový počet výstrah, které jste zadali, žádné další výstrahy chodit nebudou. 
+6. Vyberte **Uložit**.
+
+    ![Příklad zobrazující červené a žluté výstrahy podle útraty prahové hodnoty](./media/billing-getting-started/schedule-alert01.png)
+
+Můžete také **metriku Cost Percentage vs. Rozpočet** prahová hodnota metriky vytvářet upozornění. To umožňuje zadejte prahové hodnoty jako procenta z rozpočtu místo částek.
 
 ## <a name="ways-to-monitor-your-costs-when-using-azure-services"></a>Způsoby, jak sledovat svoje náklady při používání služeb Azure
 

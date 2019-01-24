@@ -4,7 +4,7 @@ description: Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.reviewer: barbkess
 ms.assetid: 8e06ee33-18f9-4c05-9168-e6b162079d88
 ms.service: Azure-Active-Directory
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 12/27/2018
 ms.author: jeedes
-ms.openlocfilehash: 5ac8cbc463ca6412f73a31b010e41cba05723955
-ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
+ms.openlocfilehash: fa66651351278d9df2a98fb5a10b6cb0cb0beb47
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/07/2019
-ms.locfileid: "54062838"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54821970"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-topdesk---secure"></a>Kurz: Integrace Azure Active Directory s TOPdesk – zabezpečení
 
@@ -251,7 +251,7 @@ V případě TOPdesk – zabezpečené, zřizování je ruční úloha.
 
 2. V nabídce v horní části klikněte na tlačítko **TOPdesk \> nový \> podpůrné soubory \> operátor**.
 
-    ![Operátor](./media/topdesk-secure-tutorial/ic790610.png "– operátor")
+    ![Operator](./media/topdesk-secure-tutorial/ic790610.png "Operator")
 
 3. Na **operátor New** dialogového okna, proveďte následující kroky:
 

@@ -3,9 +3,9 @@ title: Použití Powershellu ke správě prostředků Azure Service Bus | Dokume
 description: Modul prostředí PowerShell slouží k vytváření a správě prostředků služby Service Bus
 services: service-bus-messaging
 documentationcenter: .NET
-author: spelluru
+author: axisc
 manager: timlt
-editor: ''
+editor: spelluru
 ms.assetid: ''
 ms.service: service-bus-messaging
 ms.devlang: na
@@ -13,13 +13,13 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/21/2018
-ms.author: spelluru
-ms.openlocfilehash: 61869787304d8acaff00e13b52e557b878a795a4
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.author: aschhab
+ms.openlocfilehash: 7095a10d38912a21707f52e170c2465d1f8713bc
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51250369"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54857034"
 ---
 # <a name="use-powershell-to-manage-service-bus-resources"></a>Použití Powershellu ke správě prostředků služby Service Bus
 

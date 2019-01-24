@@ -4,7 +4,7 @@ description: Konfigurace zabezpečení protokolu LDAP (LDAPS) pro spravované do
 services: active-directory-ds
 documentationcenter: ''
 author: eringreenlee
-manager: mtillman
+manager: daveba
 editor: curtand
 ms.assetid: c6da94b6-4328-4230-801a-4b646055d4d7
 ms.service: active-directory
@@ -15,19 +15,19 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 11/02/2018
 ms.author: ergreenl
-ms.openlocfilehash: 850b721cfa78dde23ebc11944bf023de8798cec9
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: c5bc40d5be5b41000ababa35386bcdda6bf3f83f
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51236949"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54854255"
 ---
 # <a name="configure-secure-ldap-ldaps-for-an-azure-ad-domain-services-managed-domain"></a>Konfigurace zabezpečeného protokolu LDAP (LDAPS) pro spravované domény služby Azure AD Domain Services
 Tento článek popisuje, jak můžete zajistit zabezpečení Lightweight Directory Access protokolu (LDAPS) pro spravované domény služby Azure AD Domain Services. Protokol Secure LDAP se také označuje jako "Directory přístup protokolu LDAP (Lightweight) přes vrstvy SSL (Secure Sockets) / zabezpečení TLS (Transport Layer)".
 
 [!INCLUDE [active-directory-ds-prerequisites.md](../../includes/active-directory-ds-prerequisites.md)]
 
-## <a name="before-you-begin"></a>Než začnete
+## <a name="before-you-begin"></a>Před zahájením
 K provádění úkolů uvedených v tomto článku, budete potřebovat:
 
 1. Platný **předplatného Azure**.
@@ -90,7 +90,7 @@ V předchozím příkladu nahraďte názvem domény DNS vaší spravované domé
 
 ![Vyberte adresář služby Azure AD](./media/active-directory-domain-services-admin-guide/secure-ldap-powershell-create-self-signed-cert.png)
 
-Nově vytvořený certifikát podepsaný svým držitelem je umístěn v úložišti certifikátů místního počítače.
+Nově vytvořený certifikát podepsaný svým držitelem se umístí do úložiště certifikátů místního počítače.
 
 
 ## <a name="next-step"></a>Další krok

@@ -1,10 +1,10 @@
 ---
-title: 'Kurz: Integrace Azure Active Directory se službou Optimizely | Dokumentace Microsoftu'
+title: 'Kurz: Integrace Azure Active Directory s Optimizely | Dokumentace Microsoftu'
 description: Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a Optimizely.
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.assetid: 28ef03e1-9aad-4301-af97-d94e853edc74
 ms.service: active-directory
 ms.component: saas-app-tutorial
@@ -14,14 +14,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/07/2018
 ms.author: jeedes
-ms.openlocfilehash: be56218e174e5d8b0e6bde394f2dfd40fc91e87d
-ms.sourcegitcommit: 1af4bceb45a0b4edcdb1079fc279f9f2f448140b
+ms.openlocfilehash: 72e0f19a665b1e8cc91939ae24cc71341b5f1674
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/09/2018
-ms.locfileid: "42059062"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54819012"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-optimizely"></a>Kurz: Integrace Azure Active Directory se službou Optimizely
+# <a name="tutorial-azure-active-directory-integration-with-optimizely"></a>Kurz: Integrace Azure Active Directory s Optimizely
 
 V tomto kurzu se dozvíte, jak integrovat Optimizely s Azure Active Directory (Azure AD).
 
@@ -131,7 +131,7 @@ V této části Povolení služby Azure AD jednotného přihlašování na port�
 
     | Název atributu | Hodnota atributu |
     | ---------------| --------------- |
-    | e-mail | User.Mail |
+    | e-mail | user.mail |
 
     a. Klikněte na tlačítko **přidat atribut** otevřít **přidat atribut** dialogového okna.
 
@@ -261,7 +261,7 @@ V této části Testování služby Azure AD jednotné přihlašování – konf
 
 Po kliknutí na dlaždici Optimizely na přístupovém panelu, vám by měl získat automaticky přihlášení k aplikaci Optimizely.
 
-## <a name="additional-resources"></a>Další zdroje informací:
+## <a name="additional-resources"></a>Další materiály
 
 * [Seznam kurzů o integraci aplikací SaaS pomocí Azure Active Directory](tutorial-list.md)
 * [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](../manage-apps/what-is-single-sign-on.md)

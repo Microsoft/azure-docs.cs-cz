@@ -4,7 +4,7 @@ description: Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.reviewer: barbkess
 ms.assetid: dfc634fd-1b55-4ba8-94a8-b8288429b6a9
 ms.service: Azure-Active-Directory
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 12/31/2018
 ms.author: jeedes
-ms.openlocfilehash: e92aadd2550e19b97eb94d42a11b76fa0f0cc748
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: 12585974cf8e6fcaeee18293038f81989e55dfd6
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53974535"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54824419"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-bluejeans"></a>Kurz: Integrace Azure Active Directory s BlueJeans
 
@@ -214,7 +214,7 @@ V této části je povolit Britta Simon k udělení přístupu k BlueJeans použ
 
 7. V **přidat přiřazení** dialogové okno kliknutím **přiřadit** tlačítko.
 
-### <a name="create-bluejeans-test-user"></a>Vytvoření BlueJeans testovacího uživatele
+### <a name="create-bluejeans-test-user"></a>Create BlueJeans test user
 
 Cílem této části je vytvořte uživatele Britta Simon v BlueJeans. BlueJeans podporuje automatické zřizování uživatelů, což je ve výchozím nastavení povolená. Další podrobnosti můžete najít [tady](bluejeans-provisioning-tutorial.md) o tom, jak nakonfigurovat automatické zřizování uživatelů.
 

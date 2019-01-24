@@ -3,19 +3,19 @@ title: Kurz – Poskytnutí přístupu k webovému rozhraní API Node.js z deskt
 description: Kurz popisující použití Active Directory B2C k ochraně webového rozhraní API Node.js a jeho volání z desktopové aplikace .NET.
 services: active-directory-b2c
 author: davidmu1
-manager: mtillman
+manager: daveba
 ms.author: davidmu
 ms.date: 3/01/2018
 ms.custom: mvc
 ms.topic: tutorial
 ms.service: active-directory
 ms.component: B2C
-ms.openlocfilehash: 1ce74afd8ee2266439a591730686b4f5277e1b03
-ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
+ms.openlocfilehash: 8e99e8501a19bac977d5d9488077b809b2c6dde7
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53322001"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54856974"
 ---
 # <a name="tutorial-grant-access-to-a-nodejs-web-api-from-a-desktop-app-using-azure-active-directory-b2c"></a>Kurz: Poskytnutí přístupu k webovému rozhraní API Node.js z desktopové aplikace pomocí Azure Active Directory B2C
 

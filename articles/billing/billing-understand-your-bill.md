@@ -13,19 +13,21 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/02/2018
+ms.date: 01/23/2019
 ms.author: cwatson
-ms.openlocfilehash: b9b1496c71e61fce815d225310c8beb57e8f9b19
-ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
+ms.openlocfilehash: e1d9c348f83600b48f4b202c8660d9387dfc5484
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52584566"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54856365"
 ---
 # <a name="understand-your-bill-for-microsoft-azure"></a>Vysvětlení vašeho vyúčtování služeb Microsoft Azure
 Chcete-li vysvětlení vašeho vyúčtování služeb Azure, porovnejte faktuře se podrobný soubor denní využití a sestav služby cost management na webu Azure Portal.
 
 Tento článek se nevztahuje na zákazníky Azure se smlouvou Enterprise (EA zákazníci). Pokud jste zákazník EA, přečtěte si téma [vysvětlení vašeho vyúčtování služeb Azure zákazníky se smlouvou Enterprise](billing-understand-your-bill-ea.md).  
+
+Vysvětlení toho, jak funguje fakturace v programu Azure Cloud Solution Provider (CSP pro Azure), včetně fakturační cyklus, ceny a využití, viz [fakturační základní informace o Azure CSP](/azure/cloud-solution-provider/billing/azure-csp-billing-overview/).
 
 ## <a name="charges"></a>Zkontrolujte své poplatky za
 
@@ -33,7 +35,7 @@ Tento článek se nevztahuje na zákazníky Azure se smlouvou Enterprise (EA zá
 
 Pokud je na vaší faktuře, který chcete získat další informace o poplatek, můžete porovnat využití a nákladů souborem využití nebo na webu Azure portal.
 
-### <a name="option-1-compare-usage-and-costs-with-usage-file"></a>Možnost 1: Porovnání nákladů a využití se souborem využití
+### <a name="option-1-compare-usage-and-costs-with-usage-file"></a>Option 1: Porovnání využití a náklady na využití souboru
 
 Soubor CSV podrobné informace o využití zobrazuje poplatky podle fakturačního období a denní využívání. Pokud chcete získat soubor, naleznete v tématu [získat Azure billing invoice a denní data o využití](billing-download-azure-invoice-daily-usage-date.md).
 
@@ -69,7 +71,7 @@ Další informace naleznete v tématu:
 - [Principy Azure faktury](billing-understand-your-invoice.md)
 - [Vysvětlení podrobných využívání služeb Azure](billing-understand-your-invoice.md)
 
-### <a name="option-2-compare-the-usage-and-costs-with-the-azure-portal"></a>Možnost 2: Porovnání využití a náklady na webu Azure portal
+### <a name="option-2-compare-the-usage-and-costs-with-the-azure-portal"></a>Option 2: Porovnání využití a náklady na webu Azure portal
 
 Na webu Azure portal také můžete ověřit poplatky. Získat rychlý přehled fakturovaných využití a poplatků, zobrazte grafy náklady na správu.
 
@@ -140,6 +142,6 @@ Chcete-li zkontrolovat stav vaší platby [vytvořit lístek podpory](https://po
 - [Správa nákladů na Azure portal](https://docs.microsoft.com/azure/billing/billing-getting-started)
 - [Jak zabránit neočekávaným nákladům se správou nákladů a fakturací Azure](billing-getting-started.md#costs)
 
-## <a name="need-help-contact-us"></a>Potřebujete pomoct? Kontaktujte nás.
+## <a name="need-help-contact-us"></a>Potřebujete pomoc? Kontaktujte nás.
 
 Pokud máte otázky nebo potřebujete pomoc, [vytvořit žádost o podporu](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest).

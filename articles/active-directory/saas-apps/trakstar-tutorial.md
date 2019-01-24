@@ -1,10 +1,10 @@
 ---
-title: 'Kurz: Integrace Azure Active Directory se službou Trakstar | Dokumentace Microsoftu'
+title: 'Kurz: Integrace Azure Active Directory s Trakstar | Dokumentace Microsoftu'
 description: Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a Trakstar.
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.assetid: 411cb8c3-95c6-4138-acf2-ffc7f663e89a
 ms.service: active-directory
 ms.component: saas-app-tutorial
@@ -14,14 +14,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/09/2017
 ms.author: jeedes
-ms.openlocfilehash: 24f67ffab016420ca2603c1ae313fc22421be9e4
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 5380c909602053b1fd20e85c81099d1bb2c6614b
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39420782"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54823789"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-trakstar"></a>Kurz: Integrace Azure Active Directory se službou Trakstar
+# <a name="tutorial-azure-active-directory-integration-with-trakstar"></a>Kurz: Integrace Azure Active Directory s Trakstar
 
 V tomto kurzu se dozvíte, jak integrovat Trakstar s Azure Active Directory (Azure AD).
 
@@ -37,7 +37,7 @@ Pokud chcete zjistit další podrobnosti o integraci aplikací SaaS v Azure AD, 
 
 Konfigurace integrace Azure AD s Trakstar, potřebujete následující položky:
 
-- S předplatným služby Azure AD
+- Předplatné Azure AD
 - Trakstar jednotného přihlašování povolená předplatného
     - Jednotné přihlašování je placené funkce Trakstar. Povolit pro vaši organizaci, kontaktujte [tým podpory Trakstar klienta](mailto:support@trakstar.com).
 
@@ -60,7 +60,7 @@ Konfigurace integrace Trakstar do služby Azure AD, budete muset přidat Traksta
 
 **Chcete-li přidat Trakstar z galerie, postupujte následovně:**
 
-1. V  **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu. 
+1. V **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu. 
 
     ![Active Directory][1]
 
@@ -136,7 +136,7 @@ V této části Povolení služby Azure AD jednotného přihlašování na port�
 1. Ke konfiguraci jednotného přihlašování na **Trakstar** straně, musíte se přihlásit jako správce a zadejte **certifikát (Base64)**, **URL odhlašování SAML Entity ID a SAML jednotné přihlašování služby Adresa URL**. 
 
 > [!TIP]
-> Teď si můžete přečíst stručné verzi těchto pokynů uvnitř [webu Azure portal](https://portal.azure.com), zatímco jsou nastavení aplikace!  Po přidání této aplikace z **služby Active Directory > podnikové aplikace** části, stačí kliknout **Single Sign-On** kartu a přístup k vložené dokumentaci prostřednictvím  **Konfigurace** oblast v dolní části. Další informace o funkci vložená dokumentace: [dokumentace ke službě Azure AD embedded]( https://go.microsoft.com/fwlink/?linkid=845985)
+> Teď si můžete přečíst stručné verzi těchto pokynů uvnitř [webu Azure portal](https://portal.azure.com), zatímco jsou nastavení aplikace!  Po přidání této aplikace z **služby Active Directory > podnikové aplikace** části, stačí kliknout **Single Sign-On** kartu a přístup k vložené dokumentaci prostřednictvím  **Konfigurace** oblast v dolní části. Další informace o funkci vložená dokumentace: [Dokumentace ke službě Azure AD, embedded]( https://go.microsoft.com/fwlink/?linkid=845985)
 > 
 
 ### <a name="creating-an-azure-ad-test-user"></a>Vytváří se testovací uživatele služby Azure AD
@@ -210,7 +210,7 @@ V této části je povolit Britta Simon k udělení přístupu k Trakstar použi
 Cílem této části je test vaší konfigurace Azure AD jednotné přihlašování pomocí přístupového panelu.  
 Po kliknutí na dlaždici Trakstar na přístupovém panelu, vám by měl získat automaticky přihlášení k aplikaci Trakstar. 
 
-## <a name="additional-resources"></a>Další zdroje informací:
+## <a name="additional-resources"></a>Další materiály
 
 * [Seznam kurzů o integraci aplikací SaaS pomocí Azure Active Directory](tutorial-list.md)
 * [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](../manage-apps/what-is-single-sign-on.md)

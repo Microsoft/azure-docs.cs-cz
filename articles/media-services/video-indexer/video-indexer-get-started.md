@@ -9,14 +9,14 @@ ms.service: media-services
 ms.topic: tutorial
 ms.date: 11/19/2018
 ms.author: juliako
-ms.openlocfilehash: 41f3e3fffba0dde5277a39f62ef13d4dfc21c67e
-ms.sourcegitcommit: beb4fa5b36e1529408829603f3844e433bea46fe
+ms.openlocfilehash: 72412956d231ea2696c05ba250302faf5f90c91d
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/22/2018
-ms.locfileid: "52292157"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54823279"
 ---
-# <a name="tutorial-how-to-sign-up-and-upload-your-first-video"></a>Kurz: Jak se zaregistrovat a nahrát na server svoje první video
+# <a name="tutorial-how-to-sign-up-and-upload-your-first-video"></a>Kurz: Jak se zaregistrovat a nahrání prvního videa
 
 Tento úvodní kurz ukazuje, jak se přihlásit k webu Video Indexer a jak nahrát na server svoje první video.
 
@@ -41,7 +41,7 @@ Pokud chcete začít s vývojem pomocí Video Indexeru, přejděte na web [Video
 
 ## <a name="next-steps"></a>Další postup
 
-Teď můžete pomocí webu [Video Indexer](video-indexer-view-edit.md) nebo portálu [Video Indexer Developer Portal](video-indexer-use-apis.md) zobrazit přehled videa. 
+Teď můžete použít [Video Indexer](video-indexer-view-edit.md) webu nebo [portál pro vývojáře Video Indexer](video-indexer-use-apis.md) zobrazíte poznatky o videu. 
 
 ## <a name="see-also"></a>Další informace najdete v tématech
 

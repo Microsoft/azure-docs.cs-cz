@@ -9,12 +9,12 @@ ms.topic: hero-article
 ms.date: 11/22/2017
 ms.author: renash
 ms.component: files
-ms.openlocfilehash: 380a7be6a42109f90da5dbd39ea557c06be4be6a
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 2d6926b9d6a9b5bc4f3744fbd6fe8864a925ff17
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51253699"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54819743"
 ---
 # <a name="develop-for-azure-files-with-net"></a>Vývoj pro Soubory Azure pomocí .NET
 
@@ -35,7 +35,7 @@ Další informace o službě Soubory Azure najdete v tématu [Seznámení se Sou
 
 ## <a name="understanding-the-net-apis"></a>Vysvětlení rozhraní API .NET
 
-Soubory Azure poskytuje dva přístupy ke klientským aplikacím: protokol SMB (Server Message Block) a REST. V rámci .NET se tyto přístupy abstrahují prostřednictvím rozhraní `System.IO` a `WindowsAzure.Storage` API.
+Služba soubory Azure poskytuje dva přístupy ke klientským aplikacím: Server Message Block (SMB) a REST. V rámci .NET se tyto přístupy abstrahují prostřednictvím rozhraní `System.IO` a `WindowsAzure.Storage` API.
 
 Rozhraní API | Kdy je použít | Poznámky
 ----|-------------|------
@@ -58,8 +58,8 @@ Můžete použít knihovnu klienta služby Azure Storage z libovolného typu apl
 ## <a name="use-nuget-to-install-the-required-packages"></a>Použití balíčku NuGet k instalaci požadovaných balíčků
 Abyste mohli tento kurz dokončit, potřebujete ze svého projektu odkazovat na dva balíčky:
 
-* [Microsoft Azure Storage Client Library for .NET](https://www.nuget.org/packages/WindowsAzure.Storage/): Tento balíček zajišťuje programový přístup k datovým prostředkům na účtu úložiště.
-* [Microsoft Azure Configuration Manager library for .NET:](https://www.nuget.org/packages/Microsoft.WindowsAzure.ConfigurationManager/) Tento balíček poskytuje třídu pro potřeby analýzy připojovacího řetězce v konfiguračním souboru bez ohledu na to, kde je aplikace spuštěná.
+* [Klientská knihovna pro úložiště Microsoft Azure pro .NET](https://www.nuget.org/packages/WindowsAzure.Storage/): Tento balíček poskytuje programový přístup k datovým prostředkům ve vašem účtu úložiště.
+* [Microsoft Azure Configuration Manager library for .NET](https://www.nuget.org/packages/Microsoft.WindowsAzure.ConfigurationManager/): Tento balíček poskytuje třídu pro potřeby analýzy připojovacího řetězce v konfiguračním souboru bez ohledu na to, kde je aplikace spuštěná.
 
 K získání obou balíčků můžete použít balíček NuGet. Postupujte následovně:
 
@@ -324,8 +324,8 @@ Console.WriteLine("Destination blob contents: {0}", destBlob.DownloadText());
 
 Stejným způsobem můžete kopírovat objekt blob do souboru. Pokud je zdrojovým objektem objekt blob, vytvořte SAS k autorizaci přístupu k tomuto objektu blob během operace kopírování.
 
-## <a name="share-snapshots-preview"></a>Snímky sdílené složky (Preview)
-Klientská knihovna Azure Storage od verze 8.5 umožňuje vytvořit snímek sdílené složky (Preview). Umožňuje také vypsat nebo procházet snímky sdílené složky a odstranit je. Snímky sdílené složky jsou jen pro čtení, proto u snímků sdílené složky nejsou povoleny žádné operace zápisu.
+## <a name="share-snapshots"></a>Snímky sdílené složky
+Od verze 8.5 klientskou knihovnu pro úložiště Azure, můžete vytvořit snímek sdílené složky. Umožňuje také vypsat nebo procházet snímky sdílené složky a odstranit je. Snímky sdílené složky jsou jen pro čtení, proto u snímků sdílené složky nejsou povoleny žádné operace zápisu.
 
 **Vytvoření snímků sdílené složky**
 
@@ -457,7 +457,7 @@ Console.WriteLine(serviceProperties.MinuteMetrics.Version);
 
 Podrobné pokyny, jak postupovat při řešení problémů, najdete v článku [Azure Files Troubleshooting Article](storage-troubleshoot-windows-file-connection-problems.md) (Soubory Azure – řešení problémů).
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 Další informace o službě Soubory Azure najdete na těchto odkazech.
 
 ### <a name="conceptual-articles-and-videos"></a>Koncepční články a videa

@@ -3,9 +3,9 @@ title: Spravované identity pro prostředky Azure s verzí preview služby Azure
 description: Použití spravované identity pro prostředky Azure pomocí Azure Service Bus
 services: service-bus-messaging
 documentationcenter: na
-author: spelluru
+author: axisc
 manager: timlt
-editor: ''
+editor: spelluru
 ms.assetid: ''
 ms.service: service-bus-messaging
 ms.devlang: na
@@ -13,13 +13,13 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/01/2018
-ms.author: spelluru
-ms.openlocfilehash: 25d2db5dcf3979341fc104643f7178047c29483b
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.author: aschhab
+ms.openlocfilehash: 5edeebd9698384785082e5a441c24e136ed22481
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52842828"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54856875"
 ---
 # <a name="managed-identities-for-azure-resources-with-service-bus"></a>Spravované identity pro prostředky Azure pomocí služby Service Bus 
 
@@ -51,7 +51,7 @@ Po povolení funkce, je novou identitu služby vytvořené ve službě Azure Act
 
 ### <a name="create-a-new-service-bus-messaging-namespace"></a>Vytvořit nový obor názvů zasílání zpráv Service Bus
 
-Dále [vytvoření oboru názvů služby Service Bus Messaging](service-bus-create-namespace-portal.md) v jedné oblasti Azure, které mají podporu náhledu pro RBAC: **oblasti USA – východ**, **USA – východ 2**, nebo **západní Evropa** . 
+Dále [vytvoření oboru názvů služby Service Bus Messaging](service-bus-create-namespace-portal.md) v jedné oblasti Azure, které mají podporu náhledu pro RBAC: **USA – východ**, **USA – východ 2**, nebo **západní Evropa**. 
 
 Přejděte do oboru názvů **řízení přístupu (IAM)** stránky na portálu a potom klikněte na tlačítko **přidat přiřazení role** přidáte spravovanou identitu do **vlastníka** role. Uděláte to tak, vyhledejte název webové aplikace v **přidat oprávnění** panel **vyberte** pole a potom klikněte na příslušnou položku. Potom klikněte na **Uložit**.
 

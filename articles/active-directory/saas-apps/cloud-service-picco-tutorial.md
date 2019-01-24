@@ -4,7 +4,7 @@ description: Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.reviewer: barbkess
 ms.assetid: 4808d390-a74e-4c98-8538-391a4a58aa62
 ms.service: Azure-Active-Directory
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 12/21/2018
 ms.author: jeedes
-ms.openlocfilehash: ad6b0fd822d9b57e935a69f889e777d3292837f0
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: 27d7d31317d710daa1d2622c7a82a45c0bccbff3
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53978069"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54819627"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-cloud-service-picco"></a>Kurz: Integrace Azure Active Directory s PICCO cloudové služby
 

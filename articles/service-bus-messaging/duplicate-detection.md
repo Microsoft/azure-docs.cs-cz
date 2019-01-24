@@ -3,22 +3,22 @@ title: Detekce duplicitních zpráv ve službě Azure Service Bus | Dokumentace 
 description: Zjišťování duplicitních zpráv služby Service Bus
 services: service-bus-messaging
 documentationcenter: ''
-author: clemensv
+author: axisc
 manager: timlt
-editor: ''
+editor: spelluru
 ms.service: service-bus-messaging
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/25/2018
-ms.author: spelluru
-ms.openlocfilehash: 5241020b1db3797891ae13da54cc9225bbd4619b
-ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
+ms.date: 01/23/2019
+ms.author: aschhab
+ms.openlocfilehash: c419ee1eec9e451cad835d8b4a56818101dc853a
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/01/2018
-ms.locfileid: "50741263"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54856209"
 ---
 # <a name="duplicate-detection"></a>Vyhledávání duplicit
 

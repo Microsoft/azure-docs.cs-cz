@@ -4,7 +4,7 @@ description: Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.assetid: c2379a8d-a659-45f1-87db-9ba156d83183
 ms.service: active-directory
 ms.component: saas-app-tutorial
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/20/2017
 ms.author: jeedes
-ms.openlocfilehash: 60beecc0895fbfb5d3af7817e8b76e0819c89a99
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: fb01aec04af10d3e413213dc9821a27b42a0a9d2
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52835382"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54822973"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-scalex-enterprise"></a>Kurz: Integrace Azure Active Directory ScaleX Enterprise
 
@@ -168,22 +168,22 @@ V této části Povolení služby Azure AD jednotného přihlašování na port�
     
     a. Vyberte **"Vytvořit libovolný uživatel, který může ověřit s jednotným Přihlašováním."**
 
-    b. **Poskytovatel služeb saml**: vložte hodnotu ***urn: oasis: názvy: tc: SAML:2.0:nameid – formát: trvalé***
+    b. **Poskytovatel služeb saml**: Vložte hodnotu ***urn: oasis: názvy: tc: SAML:2.0:nameid – formát: trvalé***
 
-    c. **Název pole zprostředkovatele Identity e-mailu v odpovědi ACS**: vložte tuto hodnotu `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress`
+    c. **Název pole zprostředkovatele Identity e-mailu v odpovědi ACS**: Vložte hodnotu `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress`
 
-    d. **ID EntityDescriptor Entity zprostředkovatele identity:** vložit **SAML Entity ID** hodnota zkopírována z portálu Azure portal.
+    d. **ID EntityDescriptor Entity zprostředkovatele identity:** Vložit **SAML Entity ID** hodnota zkopírována z portálu Azure portal.
 
-    e. **Adresa URL SingleSignOnService zprostředkovatele identity:** vložit **SAML jednotné přihlašování – adresa URL služby** z portálu Azure portal.
+    e. **Adresa URL SingleSignOnService zprostředkovatele identity:** Vložit **SAML jednotné přihlašování – adresa URL služby** z portálu Azure portal.
 
-    f. **Poskytovatel veřejného X509 certifikát identity:** otevřít X509 certifikátu si stáhli z Azure v programu Poznámkový blok a vložte obsah do tohoto pole. Zajistěte, že žádná zalomení řádků uprostřed obsahu certifikátu.
+    f. **Poskytovatel veřejného X509 certifikát identity:** Otevřete X509 certifikátu si stáhli z Azure v programu Poznámkový blok a vložte obsah do tohoto pole. Zajistěte, že žádná zalomení řádků uprostřed obsahu certifikátu.
     
-    g. Zaškrtněte následující políčka: **povoleno, šifrovat NameID a AuthnRequests přihlašování.**
+    g. Zaškrtněte následující políčka: **Povolení šifrování NameID a podepsat AuthnRequests.**
 
     h. Klikněte na tlačítko **aktualizace nastavení jednotného přihlašování** uložte nastavení.
 
 > [!TIP]
-> Teď si můžete přečíst stručné verzi těchto pokynů uvnitř [webu Azure portal](https://portal.azure.com), zatímco jsou nastavení aplikace!  Po přidání této aplikace z **služby Active Directory > podnikové aplikace** části, stačí kliknout **Single Sign-On** kartu a přístup k vložené dokumentaci prostřednictvím  **Konfigurace** oblast v dolní části. Další informace o funkci vložená dokumentace: [dokumentace ke službě Azure AD embedded]( https://go.microsoft.com/fwlink/?linkid=845985)
+> Teď si můžete přečíst stručné verzi těchto pokynů uvnitř [webu Azure portal](https://portal.azure.com), zatímco jsou nastavení aplikace!  Po přidání této aplikace z **služby Active Directory > podnikové aplikace** části, stačí kliknout **Single Sign-On** kartu a přístup k vložené dokumentaci prostřednictvím  **Konfigurace** oblast v dolní části. Další informace o funkci vložená dokumentace: [Dokumentace ke službě Azure AD, embedded]( https://go.microsoft.com/fwlink/?linkid=845985)
 > 
 
 ### <a name="creating-an-azure-ad-test-user"></a>Vytváří se testovací uživatele služby Azure AD
@@ -258,7 +258,7 @@ V této části Testování služby Azure AD jednotné přihlašování – konf
 Kliknutím na dlaždici ScaleX Enterprise na přístupovém panelu, můžete se získat automaticky přihlášení k aplikaci ScaleX Enterprise. Další informace o přístupovém panelu, naleznete v tématu [Úvod k přístupovému panelu](../user-help/active-directory-saas-access-panel-introduction.md).
 
 
-## <a name="additional-resources"></a>Další zdroje informací:
+## <a name="additional-resources"></a>Další materiály
 
 * [Seznam kurzů o integraci aplikací SaaS pomocí Azure Active Directory](tutorial-list.md)
 * [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](../manage-apps/what-is-single-sign-on.md)

@@ -4,7 +4,7 @@ description: Nabízí řešení pro chybějící data v protokolech aktivit Azur
 services: active-directory
 documentationcenter: ''
 author: priyamohanram
-manager: mtillman
+manager: daveba
 editor: ''
 ms.assetid: 7cbe4337-bb77-4ee0-b254-3e368be06db7
 ms.service: active-directory
@@ -16,12 +16,12 @@ ms.component: report-monitor
 ms.date: 01/15/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 871dd3fda0ee5dc350a468f16e8f389ac3c71d34
-ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
-ms.translationtype: HT
+ms.openlocfilehash: 0193b2cc04f93efb24138ee2822ef9e945cd7aa4
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "41919779"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54819369"
 ---
 # <a name="troubleshoot-missing-data-in-the-azure-active-directory-activity-logs"></a>Řešení potíží: Chybějící data v protokolech aktivit Azure Active Directory 
 
@@ -90,7 +90,7 @@ Další informace najdete v tématu [Zásady uchovávání sestav Azure Active D
 
 Pokud chcete data uchovávat déle než 30 dnů, máte dvě možnosti. Pomocí [rozhraní API pro generování sestav v Azure AD](concept-reporting-api.md) můžete data načíst prostřednictvím kódu programu a uložit je do databáze. Případně můžete protokoly auditu integrovat do systému SIEM třetí strany, jako je Splunk nebo Sumo Logic.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 * [Uchovávání sestav v Azure AD](reference-reports-data-retention.md)
 * [Latence generování sestav v Azure Active Directory](reference-reports-latencies.md)

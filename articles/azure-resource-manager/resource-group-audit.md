@@ -4,36 +4,34 @@ description: Použití protokolů aktivit do akce kontroly uživatelů a chyby. 
 services: azure-resource-manager
 documentationcenter: ''
 author: tfitzmac
-manager: timlt
-editor: tysonn
 ms.assetid: fcdb3125-13ce-4c3b-9087-f514c5e41e73
 ms.service: azure-resource-manager
 ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 11/08/2018
+ms.date: 01/23/2019
 ms.author: tomfitz
-ms.openlocfilehash: 636e4d5216f87440463fbaecd7f6c7a5a25c7502
-ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
+ms.openlocfilehash: b702b6de5c9f33058e9b486547530d071969bd97
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54359387"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54855380"
 ---
 # <a name="view-activity-logs-to-audit-actions-on-resources"></a>Zobrazení protokolů aktivit pro auditování akcí u prostředků
 
 Na základě protokolů aktivit můžete zjistit:
 
 * jaké operace provedené na prostředky v rámci vašeho předplatného
-* kdo operaci zahájil (i když operací iniciovaných back-end službu nevrátí uživatele jako volající)
+* kdo spustit operaci
 * Při operaci došlo k chybě
 * Stav operace
 * Hodnoty dalších vlastností, které vám mohou pomoci při zkoumání operace
 
 Protokol aktivit obsahuje všechny operace zápisu (PUT, POST, DELETE) prováděné s vašimi prostředky. Neobsahuje operace čtení (GET). Seznam prostředků akcí najdete v tématu [operace poskytovatele prostředků Azure Resource Manageru](../role-based-access-control/resource-provider-operations.md). Protokoly auditu můžete použít k vyhledání chyby při odstraňování potíží nebo k monitorování, jak uživatel ve vaší organizaci změnil prostředek.
 
-Protokoly aktivit se uchovávají 90 dnů. Můžete se dotazovat na libovolný rozsah kalendářních dat, pokud počáteční datum neleží více než 90 dnů v minulosti.
+Protokoly aktivit se uchovávají po dobu 90 dnů. Můžete se dotazovat na libovolný rozsah kalendářních dat, jako počáteční datum není více než 90 dnů v minulosti.
 
 Můžete načíst informace z protokolů aktivit na portálu, Powershellu, rozhraní příkazového řádku Azure Insights REST API, nebo [knihovna .NET Insights](https://www.nuget.org/packages/Microsoft.Azure.Insights/).
 
@@ -41,36 +39,39 @@ Můžete načíst informace z protokolů aktivit na portálu, Powershellu, rozhr
 
 1. Pokud chcete zobrazit protokoly aktivit na portálu, vyberte **monitorování**.
 
-    ![Vyberte protokoly aktivit](./media/resource-group-audit/select-monitor.png)
+    ![Vyberte monitorování](./media/resource-group-audit/select-monitor.png)
 
-   Nebo, pokud chcete automaticky filtrovat protokol aktivity pro určitý prostředek nebo skupinu prostředků, vyberte **protokolu aktivit**. Všimněte si, že v protokolu aktivit se automaticky filtruje podle vybraného prostředku.
+1. Vyberte **protokolu aktivit**.
 
-    ![Filtrovat podle prostředků](./media/resource-group-audit/filtered-by-resource.png)
-2. V **protokolu aktivit**, prohlédnout souhrnné informace o poslední operace.
+    ![Vyberte protokol aktivit](./media/resource-group-audit/select-activity-log.png)
 
-    ![Zobrazit akce](./media/resource-group-audit/audit-summary.png)
-3. Pokud chcete omezit počet operací zobrazí, vyberte různé podmínky. Například na následujícím obrázku **Timespan** a **zahájit událost** změnit pole, chcete-li zobrazit akce prováděné konkrétního uživatele nebo aplikace pro poslední měsíc. Vyberte **použít** Chcete-li zobrazit výsledky dotazu.
+1. Zobrazí souhrn posledních operací. Výchozí sada filtry platí pro operace.
+
+    ![Zobrazit souhrn, poslední operací](./media/resource-group-audit/audit-summary.png)
+
+1. K rychlému spouštění předem definovanou sadu filtrů, vyberte **rychlých přehledů** a vyberte jednu z možností.
+
+    ![Výběr dotazu](./media/resource-group-audit/quick-insights.png)
+
+1. Zaměřte se na určité operace, změňte filtry nebo použít nové značky. Například následující obrázek ukazuje novou hodnotu **Timespan** a **typ prostředku** je nastavena na účty úložiště. 
 
     ![nastavení filtru](./media/resource-group-audit/set-filter.png)
 
-4. Pokud je potřeba znovu spustit dotaz, vyberte **připnout aktuální filtry** a pojmenujte ho.
+1. Pokud je potřeba znovu spustit dotaz, vyberte **připnout aktuální filtry**.
 
-    ![Uložit dotaz](./media/resource-group-audit/save-query.png)
-5. K rychlému spouštění dotazu, můžete vybrat jednu z předdefinovaných dotazů, jako je například selhání nasazení.
+    ![Filtry PIN kódu](./media/resource-group-audit/pin-filters.png)
 
-    ![Výběr dotazu](./media/resource-group-audit/select-quick-query.png)
+1. Zadejte název filtru.
 
-   Vybraný dotaz automaticky nastaví hodnoty požadovaný filtr.
+    ![Filtry názvů](./media/resource-group-audit/name-filters.png)
 
-    ![Zobrazit chyby nasazení](./media/resource-group-audit/view-failed-deployment.png)
+1. Filtr je dostupný na řídicím panelu.
 
-6. Vyberte jednu z operací, které chcete zobrazit souhrn události.
-
-    ![Operace zobrazení](./media/resource-group-audit/view-operation.png)  
+    ![Zobrazit na řídicím panelu filtru](./media/resource-group-audit/show-dashboard.png)
 
 ## <a name="powershell"></a>PowerShell
 
-1. Pokud chcete načíst položky protokolu, spusťte **Get-AzureRmLog** příkazu. Další parametry pro filtrování seznamu položek, které zadáte. Pokud nezadáte čas zahájení a ukončení, budou vráceny položky za poslední hodinu. Například pokud chcete načíst operace pro skupinu prostředků za poslední hodinu spusťte:
+* Pokud chcete načíst položky protokolu, spusťte **Get-AzureRmLog** příkazu. Další parametry pro filtrování seznamu položek, které zadáte. Pokud nechcete zadat počáteční a koncový čas, jsou vráceny položky za posledních sedm dní.
 
   ```azurepowershell-interactive
   Get-AzureRmLog -ResourceGroup ExampleGroup
@@ -79,7 +80,7 @@ Můžete načíst informace z protokolů aktivit na portálu, Powershellu, rozhr
     Následující příklad ukazuje způsob použití protokolu aktivit do výzkumu operací provedených v určitou dobu. Počáteční a koncové datum jsou zadány ve formátu data.
 
   ```azurepowershell-interactive
-  Get-AzureRmLog -ResourceGroup ExampleGroup -StartTime 2015-08-28T06:00 -EndTime 2015-09-10T06:00
+  Get-AzureRmLog -ResourceGroup ExampleGroup -StartTime 2019-01-09T06:00 -EndTime 2019-01-15T06:00
   ```
 
     Nebo datové funkce můžete zadat rozsah dat, jako je například posledních 14 dní.
@@ -88,62 +89,78 @@ Můžete načíst informace z protokolů aktivit na portálu, Powershellu, rozhr
   Get-AzureRmLog -ResourceGroup ExampleGroup -StartTime (Get-Date).AddDays(-14)
   ```
 
-2. V závislosti na čas spuštění, který zadáte může vrátit předchozí příkazy dlouhý seznam operací pro skupinu prostředků. Můžete filtrovat výsledky pro co jste hledali zadáním kritérií hledání. Například pokud se pokoušíte Chcete-li zjistit, jak byla webová aplikace zastavena, můžete spustit následující příkaz:
-
-  ```azurepowershell-interactive
-  Get-AzureRmLog -ResourceGroup ExampleGroup -StartTime (Get-Date).AddDays(-14) | Where-Object OperationName -eq Microsoft.Web/sites/stop/action
-  ```
-
-    V tomto příkladu zobrazí, že se provádí akce zastavení someone@contoso.com.
-
-  ```powershell
-  Authorization     :
-  Scope     : /subscriptions/xxxxx/resourcegroups/ExampleGroup/providers/Microsoft.Web/sites/ExampleSite
-  Action    : Microsoft.Web/sites/stop/action
-  Role      : Subscription Admin
-  Condition :
-  Caller            : someone@contoso.com
-  CorrelationId     : 84beae59-92aa-4662-a6fc-b6fecc0ff8da
-  EventSource       : Administrative
-  EventTimestamp    : 8/28/2015 4:08:18 PM
-  OperationName     : Microsoft.Web/sites/stop/action
-  ResourceGroupName : ExampleGroup
-  ResourceId        : /subscriptions/xxxxx/resourcegroups/ExampleGroup/providers/Microsoft.Web/sites/ExampleSite
-  Status            : Succeeded
-  SubscriptionId    : xxxxx
-  SubStatus         : OK
-  ```
-
-3. Můžete vyhledat akce prováděné konkrétní uživatel, dokonce i pro skupinu prostředků, která již existuje.
+* Můžete vyhledat akce prováděné konkrétní uživatel, dokonce i pro skupinu prostředků, která již existuje.
 
   ```azurepowershell-interactive
   Get-AzureRmLog -ResourceGroup deletedgroup -StartTime (Get-Date).AddDays(-14) -Caller someone@contoso.com
   ```
 
-4. Můžete filtrovat pro neúspěšné operace.
+* Můžete filtrovat pro neúspěšné operace.
 
   ```azurepowershell-interactive
   Get-AzureRmLog -ResourceGroup ExampleGroup -Status Failed
   ```
 
-5. Pohledem na stavové zprávy pro tuto položku se můžete soustředit na jednu chybu.
+* Pohledem na stavové zprávy pro tuto položku se můžete soustředit na jednu chybu.
 
   ```azurepowershell-interactive
-  ((Get-AzureRmLog -Status Failed -ResourceGroup ExampleGroup -DetailedOutput).Properties[1].Content["statusMessage"] | ConvertFrom-Json).error
+  ((Get-AzureRmLog -ResourceGroup ExampleGroup -Status Failed).Properties[0].Content.statusMessage | ConvertFrom-Json).error
   ```
 
-    Který vrátí:
+* Můžete vybrat konkrétní hodnoty omezit data, která je vrácena.
 
-        code           message
-        ----           -------
-        DnsRecordInUse DNS record dns.westus.cloudapp.azure.com is already used by another public IP.
+  ```azurepowershell-interactive
+  Get-AzureRmLog -ResourceGroupName ExampleGroup | Format-table EventTimeStamp, Caller, @{n='Operation'; e={$_.OperationName.value}}, @{n='Status'; e={$_.Status.value}}, @{n='SubStatus'; e={$_.SubStatus.LocalizedValue}}
+  ```
+
+* V závislosti na čas spuštění, který zadáte může vrátit předchozí příkazy dlouhý seznam operací pro skupinu prostředků. Můžete filtrovat výsledky pro co jste hledali zadáním kritérií hledání. Například můžete filtrovat podle typu operace.
+
+  ```azurepowershell-interactive
+  Get-AzureRmLog -ResourceGroup ExampleGroup | Where-Object {$_.OperationName.value -eq "Microsoft.Resources/deployments/write"}
+  ```
 
 ## <a name="azure-cli"></a>Azure CLI
 
-Pokud chcete načíst položky protokolu, spusťte [az monitor protokolu aktivit seznamu](/cli/azure/monitor/activity-log#az-monitor-activity-log-list) příkazu.
+* Pokud chcete načíst položky protokolu, spusťte [az monitor protokolu aktivit seznamu](/cli/azure/monitor/activity-log#az-monitor-activity-log-list) příkaz posun k označení časové období.
 
-  ```azurecli
-  az monitor activity-log list --resource-group <group name>
+  ```azurecli-interactive
+  az monitor activity-log list --resource-group ExampleGroup --offset 7d
+  ```
+
+  Následující příklad ukazuje způsob použití protokolu aktivit do výzkumu operací provedených v určitou dobu. Počáteční a koncové datum jsou zadány ve formátu data.
+
+  ```azurecli-interactive
+  az monitor activity-log list -g ExampleGroup --start-time 2019-01-01 --end-time 2019-01-15
+  ```
+
+* Můžete vyhledat akce prováděné konkrétní uživatel, dokonce i pro skupinu prostředků, která již existuje.
+
+  ```azurecli-interactive
+  az monitor activity-log list -g ExampleGroup --caller someone@contoso.com --offset 5d
+  ```
+
+* Můžete filtrovat pro neúspěšné operace.
+
+  ```azurecli-interactive
+  az monitor activity-log list -g demoRG --status Failed --offset 1d
+  ```
+
+* Pohledem na stavové zprávy pro tuto položku se můžete soustředit na jednu chybu.
+
+  ```azurecli-interactive
+  az monitor activity-log list -g ExampleGroup --status Failed --offset 1d --query [].properties.statusMessage
+  ```
+
+* Můžete vybrat konkrétní hodnoty omezit data, která je vrácena.
+
+  ```azurecli-interactive
+  az monitor activity-log list -g ExampleGroup --offset 1d --query '[].{Operation: operationName.value, Status: status.value, SubStatus: subStatus.localizedValue}'
+  ```
+
+* V závislosti na čas spuštění, který zadáte může vrátit předchozí příkazy dlouhý seznam operací pro skupinu prostředků. Můžete filtrovat výsledky pro co jste hledali zadáním kritérií hledání. Například můžete filtrovat podle typu operace.
+
+  ```azurecli-interactive
+  az monitor activity-log list -g ExampleGroup --offset 1d --query "[?operationName.value=='Microsoft.Storage/storageAccounts/write']"
   ```
 
 ## <a name="rest-api"></a>REST API

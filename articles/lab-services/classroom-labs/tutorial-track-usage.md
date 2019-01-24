@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 01/17/2019
 ms.author: spelluru
-ms.openlocfilehash: 9408ae20246d7a48340434c201c4568bc02719cd
-ms.sourcegitcommit: 9f07ad84b0ff397746c63a085b757394928f6fc0
+ms.openlocfilehash: 93d7a6e884cf02fa41838d4a07644c122a43823b
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54390491"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54823823"
 ---
 # <a name="tutorial-track-usage-of-a-lab-in-azure-lab-service"></a>Kurz: Sledování využití tohoto prostředí ve službě Azure Lab
 V tomto kurzu se dozvíte, jak může autor nebo vlastník testovacího prostředí sledovat jeho využití.
@@ -44,7 +44,7 @@ V tomto kurzu provedete následující akce:
 ## <a name="view-the-usage-of-vms-in-the-lab"></a>Zobrazení využití virtuálních počítačů v testovacím prostředí 
 
 1. V nabídce vlevo vyberte **Virtual machines** (Virtuální počítače). 
-2. Ověřte, že se zobrazí stav virtuálních počítačů a počet hodin, po které jsou virtuální počítače spuštěné. Čas strávený student, který virtuální počítač nebude započítávat čas využití v posledním sloupci. 
+2. Ověřte, že se zobrazí stav virtuálních počítačů a počet hodin, po které jsou virtuální počítače spuštěné. Čas, který stráví vlastník testovacího prostředí na student virtuálního počítače není započítávat čas využití v posledním sloupci. 
 
     ![Využití virtuálních počítačů](../media/tutorial-track-usage/vm-usage.png)
 

@@ -1,10 +1,10 @@
 ---
-title: 'Kurz: Azure Active Directory integrace s & frankly | Microsoft Docs'
-description: Naučte se konfigurovat jednotné přihlašování mezi Azure Active Directory a & frankly.
+title: 'Kurz: Integrace Azure Active Directory s & Upřímně | Dokumentace Microsoftu'
+description: Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a & Upřímně.
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.assetid: 1d702060-1b89-4e9d-9f01-ede4f1171c73
 ms.service: active-directory
 ms.component: saas-app-tutorial
@@ -14,204 +14,204 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/09/2017
 ms.author: jeedes
-ms.openlocfilehash: 388203903f33d969a7796cf466078159e9b73ad0
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 73acaeff6cbffc16aac1b30b9d63974c930c1537
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36218094"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54818060"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-frankly"></a>Kurz: Azure Active Directory integrace s & frankly
+# <a name="tutorial-azure-active-directory-integration-with-frankly"></a>Kurz: Integrace Azure Active Directory s & Upřímně
 
-V tomto kurzu zjistíte, jak integrovat & frankly s Azure Active Directory (Azure AD).
+V tomto kurzu se dozvíte, jak integrovat & Upřímně se službou Azure Active Directory (Azure AD).
 
-Integrace & frankly s Azure AD poskytuje následující výhody:
+Integrace & Upřímně s Azure AD poskytuje následující výhody:
 
-- Můžete řídit ve službě Azure AD, který má přístup k & frankly
-- Můžete povolit uživatelům automaticky získat přihlášeného k & frankly (jednotné přihlášení) s jejich účty Azure AD
-- Můžete spravovat vaše účty v jednom centrálním místě - portálu Azure
+- Můžete řídit ve službě Azure AD, který má přístup na & Upřímně
+- Můžete povolit uživatelům, automaticky získá přihlášeného & Upřímně (Single Sign-On) s jejich účty Azure AD
+- Můžete spravovat své účty na jediném místě – na webu Azure portal
 
-Pokud chcete vědět, další informace o integraci aplikací SaaS v Azure AD, najdete v části [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
+Pokud chcete zjistit další podrobnosti o integraci aplikací SaaS v Azure AD, přečtěte si téma [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Požadavky
 
-Ke konfiguraci Azure AD integrace s & frankly, budete potřebovat následující položky:
+Ke konfiguraci Azure AD integrace s & Upřímně, budete potřebovat tyto položky:
 
-- Předplatné služby Azure AD
-- A & frankly jednotného přihlašování povolené předplatné
+- Předplatné Azure AD
+- A & Upřímně jednotného přihlašování povolená předplatného
 
 > [!NOTE]
-> K testování kroky v tomto kurzu, nedoporučujeme používání provozním prostředí.
+> Pokud chcete vyzkoušet kroky v tomto kurzu, nedoporučujeme použití produkční prostředí.
 
-Chcete-li otestovat kroky v tomto kurzu, postupujte podle těchto doporučení:
+Pokud chcete vyzkoušet kroky v tomto kurzu, postupujte podle těchto doporučení:
 
-- Nepoužívejte provozním prostředí, pokud to není nutné.
-- Pokud nemáte prostředí zkušební verze Azure AD, můžete získat zkušební verze jeden měsíc [zde](https://azure.microsoft.com/pricing/free-trial/).
+- Nepoužívejte produkčním prostředí, pokud to není nutné.
+- Pokud nemáte prostředí zkušební verzi Azure AD, můžete získat měsíční zkušební [tady](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="scenario-description"></a>Popis scénáře
-V tomto kurzu můžete otestovat Azure AD jednotné přihlašování v testovacím prostředí. Scénáři uvedeném v tomto kurzu se skládá ze dvou hlavních stavebních bloků:
+V tomto kurzu je otestovat Azure AD jednotné přihlašování v testovacím prostředí. Scénář popsaný v tomto kurzu se skládá ze dvou hlavních stavebních bloků:
 
-1. Přidání & frankly z Galerie
+1. Přidat & Upřímně z Galerie
 2. Konfigurace a testování Azure AD jednotného přihlašování
 
-## <a name="adding-frankly-from-the-gallery"></a>Přidání & frankly z Galerie
-Při konfiguraci integrace služby & frankly do služby Azure AD, je nutné přidat & frankly z Galerie si na seznam spravovaných aplikací SaaS.
+## <a name="adding-frankly-from-the-gallery"></a>Přidat & Upřímně z Galerie
+Pokud chcete nakonfigurovat integraci & Upřímně do služby Azure AD, budete muset přidat & Upřímně z Galerie tak, aby váš seznam spravovaných aplikací SaaS.
 
-**Chcete-li přidat & frankly z galerie, proveďte následující kroky:**
+**Přidat & Upřímně z galerie, proveďte následující kroky:**
 
-1. V  **[portál Azure](https://portal.azure.com)**, v levém navigačním panelu klikněte na tlačítko **Azure Active Directory** ikonu. 
+1. V **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu. 
 
     ![Active Directory][1]
 
-2. Přejděte na **podnikové aplikace, které**. Pak přejděte na **všechny aplikace**.
+2. Přejděte do **podnikové aplikace**. Pak přejděte na **všechny aplikace**.
 
     ![Aplikace][2]
     
-3. Chcete-li přidat novou aplikaci, klikněte na tlačítko **novou aplikaci** tlačítko horní dialogové okno.
+3. Chcete-li přidat novou aplikaci, klikněte na tlačítko **novou aplikaci** tlačítko v horní části dialogového okna.
 
     ![Aplikace][3]
 
-4. Do vyhledávacího pole zadejte **& frankly**.
+4. Do vyhledávacího pole zadejte **& Upřímně**.
 
-    ![Vytváření testovacího uživatele Azure AD](./media/andfrankly-tutorial/tutorial_andfrankly_search.png)
+    ![Vytváří se testovací uživatele služby Azure AD](./media/andfrankly-tutorial/tutorial_andfrankly_search.png)
 
-5. Na panelu výsledků vyberte **& frankly**a potom klikněte na **přidat** tlačítko Přidat aplikaci.
+5. Na panelu výsledků vyberte **& Upřímně**a potom klikněte na tlačítko **přidat** tlačítko pro přidání aplikace.
 
-    ![Vytváření testovacího uživatele Azure AD](./media/andfrankly-tutorial/tutorial_andfrankly_addfromgallery.png)
+    ![Vytváří se testovací uživatele služby Azure AD](./media/andfrankly-tutorial/tutorial_andfrankly_addfromgallery.png)
 
 ##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a>Konfigurace a testování Azure AD jednotného přihlašování
-V této části nakonfigurovat a otestovat Azure AD jednotné přihlašování s & frankly podle testovacího uživatele názvem "Britta Simon."
+V této části nakonfigurovat a otestovat Azure AD jednotné přihlašování s & Upřímně založený na uživateli test "Britta Simon."
 
-Azure AD pro jednotné přihlašování pro práci, je potřeba vědět, jaké příslušného uživatele v & frankly je pro uživatele ve službě Azure AD. Jinými slovy odkaz vztah mezi uživatele Azure AD a související uživatelské v & frankly musí být vytvořeno.
+Azure AD pro jednotné přihlašování pro práci, potřebuje vědět, co protějšek uživatel v & Upřímně je pro uživatele ve službě Azure AD. Jinými slovy vztah odkazu mezi uživatele služby Azure AD a související uživatelské v & Upřímně musí být vytvořeno.
 
-V & frankly, přiřadit hodnotu **uživatelské jméno** ve službě Azure AD jako hodnotu **uživatelské jméno** k navázání vztahu odkazu.
+V & Upřímně, přiřaďte hodnotu **uživatelské jméno** ve službě Azure AD jako hodnotu **uživatelské jméno** a tím vytvoří vztah odkazu.
 
-Nakonfigurovat a otestovat Azure AD jednotné přihlašování s & frankly, které potřebujete k dokončení následující stavební bloky:
+Nakonfigurovat a otestovat Azure AD jednotné přihlašování s & Upřímně, které potřebujete k dokončení následujících stavebních bloků:
 
-1. **[Konfigurace Azure AD jednotné přihlašování](#configuring-azure-ad-single-sign-on)**  – Pokud chcete povolit uživatelům tuto funkci používat.
-2. **[Vytváření testovacího uživatele Azure AD](#creating-an-azure-ad-test-user)**  – Pokud chcete otestovat Azure AD jednotné přihlašování s Britta Simon.
-3. **[Vytváření & frankly testovacího uživatele](#creating-a-frankly-test-user)**  – Pokud chcete mít protějšek Britta Simon v & frankly který je spojen s Azure AD reprezentace daného uživatele.
-4. **[Přiřazení testovacího uživatele Azure AD](#assigning-the-azure-ad-test-user)**  – Pokud chcete povolit Britta Simon používat Azure AD jednotné přihlašování.
-5. **[Testování jednotné přihlašování](#testing-single-sign-on)**  – Pokud chcete ověřit, zda je funkční konfigurace.
+1. **[Konfigurace Azure AD Single Sign-On](#configuring-azure-ad-single-sign-on)**  – Pokud chcete, aby uživatelé mohli tuto funkci používat.
+2. **[Vytváří se testovací uživatele služby Azure AD](#creating-an-azure-ad-test-user)**  – Pokud chcete otestovat Azure AD jednotné přihlašování s Britta Simon.
+3. **[Vytváření & Upřímně testovacího uživatele](#creating-a-frankly-test-user)**  – Pokud chcete mít protějšek Britta Simon v & Upřímně, který je spojen s Azure AD reprezentace uživatele.
+4. **[Přiřazení testovacího uživatele Azure AD](#assigning-the-azure-ad-test-user)**  – Pokud chcete povolit Britta Simon používat Azure AD jednotného přihlašování.
+5. **[Testování Single Sign-On](#testing-single-sign-on)**  – Pokud chcete ověřit, jestli funguje v konfiguraci.
 
-### <a name="configuring-azure-ad-single-sign-on"></a>Konfigurace Azure AD jednotné přihlašování
+### <a name="configuring-azure-ad-single-sign-on"></a>Konfigurace služby Azure AD jednotného přihlašování
 
-V této části můžete povolit Azure AD jednotného přihlašování na portálu Azure a nakonfigurovat jednotné přihlašování v vaší & frankly aplikací.
+V této části můžete povolit Azure AD jednotného přihlašování na portálu Azure portal a nakonfigurovat jednotné přihlašování v vaše & Upřímně aplikace.
 
-**Ke konfiguraci Azure AD jedním přihlašování pomocí & frankly, proveďte následující kroky:**
+**Ke konfiguraci Azure AD jednoho přihlašování s & Upřímně, proveďte následující kroky:**
 
-1. Na portálu Azure na **& frankly** stránky integrace aplikací, klikněte na tlačítko **jednotného přihlašování**.
+1. Na webu Azure Portal na **& Upřímně** integrace stránka aplikace, klikněte na tlačítko **jednotného přihlašování**.
 
-    ![Konfigurovat jednotné přihlašování][4]
+    ![Konfigurace jednotného přihlašování][4]
 
-2. Na **jednotného přihlašování** dialogovém okně, vyberte **režimu** jako **na základě SAML přihlašování** umožňující jednotného přihlašování.
+2. Na **jednotného přihlašování** dialogového okna, vyberte **režimu** jako **přihlašování na základě SAML** povolit jednotné přihlašování.
  
-    ![Konfigurovat jednotné přihlašování](./media/andfrankly-tutorial/tutorial_andfrankly_samlbase.png)
+    ![Konfigurace jednotného přihlašování](./media/andfrankly-tutorial/tutorial_andfrankly_samlbase.png)
 
-3. Na **& frankly domény a adresy URL** část, pokud chcete nakonfigurovat aplikace **IDP** iniciované režimu:
+3. Na **& Upřímně domény a adresy URL** části, pokud chcete nakonfigurovat aplikace v **IDP** iniciované režimu:
 
-    ![Konfigurovat jednotné přihlašování](./media/andfrankly-tutorial/tutorial_andfrankly_url.png)
+    ![Konfigurace jednotného přihlašování](./media/andfrankly-tutorial/tutorial_andfrankly_url.png)
 
-    a. V **identifikátor** textovému poli, zadejte adresu URL pomocí následujícího vzorce: `https://andfrankly.com/saml/simplesaml/www/module.php/saml/sp/metadata.php/<tenant id>`
+    a. V **identifikátor** textového pole zadejte adresu URL pomocí následujícímu vzoru: `https://andfrankly.com/saml/simplesaml/www/module.php/saml/sp/metadata.php/<tenant id>`
 
-    b. V **adresa URL odpovědi** textovému poli, zadejte adresu URL pomocí následujícího vzorce: `https://andfrankly.com/saml/simplesaml/www/module.php/saml/sp/saml2-acs.php/<tenant id>`
+    b. V **adresy URL odpovědi** textového pole zadejte adresu URL pomocí následujícímu vzoru: `https://andfrankly.com/saml/simplesaml/www/module.php/saml/sp/saml2-acs.php/<tenant id>`
 
-4. Zkontrolujte **zobrazit upřesňující nastavení adresy URL**. Pokud chcete nakonfigurovat aplikace **SP** iniciované režimu:
+4. Zkontrolujte **zobrazit pokročilé nastavení URL**. Pokud chcete nakonfigurovat aplikace v **SP** iniciované režimu:
 
-    ![Konfigurovat jednotné přihlašování](./media/andfrankly-tutorial/tutorial_andfrankly_url1.png)
+    ![Konfigurace jednotného přihlašování](./media/andfrankly-tutorial/tutorial_andfrankly_url1.png)
 
-    V **přihlašovací adresa URL** textovému poli, zadejte adresu URL pomocí následujícího vzorce: `https://andfrankly.com/saml/okta/?saml_sso=<tenant id>`
+    V **přihlašovací adresa URL** textového pole zadejte adresu URL pomocí následujícímu vzoru: `https://andfrankly.com/saml/okta/?saml_sso=<tenant id>`
     > [!NOTE] 
-    > Tyto hodnoty nejsou skutečné. Tyto hodnoty aktualizovat skutečným identifikátorem přihlášení a adresa URL odpovědi. Obraťte se na [tým podpory andfrankly](mailto:help@andfrankly.com) k získání těchto hodnot.
+    > Tyto hodnoty nejsou skutečný. Tyto hodnoty aktualizovat s identifikátorem skutečné přihlašování a adresa URL odpovědi. Kontakt [tým podpory andfrankly](mailto:help@andfrankly.com) k získání těchto hodnot.
 
-5. Na **SAML podpisový certifikát** klikněte na tlačítko **soubor XML s metadaty** a potom uložte soubor metadat ve vašem počítači.
+5. Na **podpisový certifikát SAML** klikněte na tlačítko **soubor XML s metadaty** a uložte soubor metadat ve vašem počítači.
 
-    ![Konfigurovat jednotné přihlašování](./media/andfrankly-tutorial/tutorial_andfrankly_certificate.png) 
+    ![Konfigurace jednotného přihlašování](./media/andfrankly-tutorial/tutorial_andfrankly_certificate.png) 
 
 6. Klikněte na tlačítko **Uložit** tlačítko.
 
-    ![Konfigurovat jednotné přihlašování](./media/andfrankly-tutorial/tutorial_general_400.png)
+    ![Konfigurace jednotného přihlašování](./media/andfrankly-tutorial/tutorial_general_400.png)
 
-7. Konfigurace jednotného přihlašování na **& frankly** straně, budete muset odeslat stažené **soubor XML s metadaty** k [tým podpory andfrankly](mailto:help@andfrankly.com). 
+7. Ke konfiguraci jednotného přihlašování na **& Upřímně** straně, je nutné odeslat na stažený **soubor XML s metadaty** k [tým podpory andfrankly](mailto:help@andfrankly.com). 
 
 > [!TIP]
-> Teď si můžete přečíst stručným verzi tyto pokyny uvnitř [portál Azure](https://portal.azure.com), zatímco nastavujete aplikace!  Po přidání této aplikace z **služby Active Directory > podnikové aplikace, které** jednoduše klikněte na položku **jednotné přihlašování** kartě a přístup v embedded dokumentaci prostřednictvím **konfigurace** v dolní části. Můžete přečíst další informace o funkci embedded dokumentace: [vložených dokumentace k Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)
+> Teď si můžete přečíst stručné verzi těchto pokynů uvnitř [webu Azure portal](https://portal.azure.com), zatímco jsou nastavení aplikace!  Po přidání této aplikace z **služby Active Directory > podnikové aplikace** části, stačí kliknout **Single Sign-On** kartu a přístup k vložené dokumentaci prostřednictvím  **Konfigurace** oblast v dolní části. Další informace o funkci vložená dokumentace: [Dokumentace ke službě Azure AD, embedded]( https://go.microsoft.com/fwlink/?linkid=845985)
 
-### <a name="creating-an-azure-ad-test-user"></a>Vytváření testovacího uživatele Azure AD
-Cílem této části je vytvoření zkušebního uživatele na portálu Azure, názvem Britta Simon.
+### <a name="creating-an-azure-ad-test-user"></a>Vytváří se testovací uživatele služby Azure AD
+Cílem této části je vytvoření zkušebního uživatele na webu Azure Portal volá Britta Simon.
 
-![Vytvořit uživatele Azure AD][100]
+![Vytvoření uživatele Azure AD][100]
 
-**Vytvoření zkušebního uživatele ve službě Azure AD, proveďte následující kroky:**
+**Chcete-li vytvořit testovacího uživatele ve službě Azure AD, postupujte následovně:**
 
-1. V **portál Azure**, v levém navigačním podokně klikněte na tlačítko **Azure Active Directory** ikonu.
+1. V **webu Azure portal**, v levém navigačním podokně klikněte na tlačítko **Azure Active Directory** ikonu.
 
-    ![Vytváření testovacího uživatele Azure AD](./media/andfrankly-tutorial/create_aaduser_01.png) 
+    ![Vytváří se testovací uživatele služby Azure AD](./media/andfrankly-tutorial/create_aaduser_01.png) 
 
 2. Chcete-li zobrazit seznam uživatelů, přejděte na **uživatelů a skupin** a klikněte na tlačítko **všichni uživatelé**.
     
-    ![Vytváření testovacího uživatele Azure AD](./media/andfrankly-tutorial/create_aaduser_02.png) 
+    ![Vytváří se testovací uživatele služby Azure AD](./media/andfrankly-tutorial/create_aaduser_02.png) 
 
-3. Chcete-li otevřít **uživatele** dialogové okno, klikněte na tlačítko **přidat** horní dialogové okno.
+3. Chcete-li otevřít **uživatele** dialogového okna, klikněte na tlačítko **přidat** horní části dialogového okna.
  
-    ![Vytváření testovacího uživatele Azure AD](./media/andfrankly-tutorial/create_aaduser_03.png) 
+    ![Vytváří se testovací uživatele služby Azure AD](./media/andfrankly-tutorial/create_aaduser_03.png) 
 
-4. Na **uživatele** dialogové okno stránky, proveďte následující kroky:
+4. Na **uživatele** dialogového okna stránky, proveďte následující kroky:
  
-    ![Vytváření testovacího uživatele Azure AD](./media/andfrankly-tutorial/create_aaduser_04.png) 
+    ![Vytváří se testovací uživatele služby Azure AD](./media/andfrankly-tutorial/create_aaduser_04.png) 
 
-    a. V **název** textovému poli, typ **BrittaSimon**.
+    a. V **název** textové pole, typ **BrittaSimon**.
 
-    b. V **uživatelské jméno** textovému poli, typ **e-mailová adresa** z BrittaSimon.
+    b. V **uživatelské jméno** textové pole, typ **e-mailová adresa** z BrittaSimon.
 
-    c. Vyberte **zobrazit hesla** a poznamenejte si hodnotu **heslo**.
+    c. Vyberte **zobrazit heslo** a zapište si hodnotu **heslo**.
 
     d. Klikněte na možnost **Vytvořit**.
  
-### <a name="creating-a-frankly-test-user"></a>Vytváření & frankly testovacího uživatele
+### <a name="creating-a-frankly-test-user"></a>Vytváření & Upřímně testovacího uživatele
 
-V této části vytvoříte názvem Britta Simon v & frankly uživatele. Práce s [tým podpory andfrankly](mailto:help@andfrankly.com) přidat uživatele v vý & frankly platformy.
+V této části vytvořte uživatele Britta Simon v & Upřímně. Práce s [tým podpory andfrankly](mailto:help@andfrankly.com) přidávání uživatelů v & Upřímně platformy.
 
 ### <a name="assigning-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
-V této části povolíte Britta Simon chcete udělit přístup k & frankly použít Azure jednotné přihlašování.
+V této části je povolit Britta Simon používat jednotné přihlašování Azure díky udělení přístupu na & Upřímně.
 
 ![Přiřadit uživatele][200] 
 
-**Přiřadit Britta Simon do & frankly, proveďte následující kroky:**
+**Pokud chcete přiřadit Britta Simon & Upřímně, postupujte následovně:**
 
-1. Na portálu Azure otevřete zobrazení aplikací a pak přejděte do zobrazení adresáře a přejděte na **podnikové aplikace, které** klikněte **všechny aplikace**.
+1. Na webu Azure Portal, otevřete zobrazení aplikací a pak přejděte do zobrazení adresáře a přejděte na **podnikové aplikace** klikněte **všechny aplikace**.
 
     ![Přiřadit uživatele][201] 
 
-2. V seznamu aplikací vyberte **& frankly**.
+2. V seznamu aplikací vyberte **& Upřímně**.
 
-    ![Konfigurovat jednotné přihlašování](./media/andfrankly-tutorial/tutorial_andfrankly_app.png) 
+    ![Konfigurace jednotného přihlašování](./media/andfrankly-tutorial/tutorial_andfrankly_app.png) 
 
 3. V nabídce na levé straně klikněte na tlačítko **uživatelů a skupin**.
 
     ![Přiřadit uživatele][202] 
 
-4. Klikněte na tlačítko **přidat** tlačítko. Potom vyberte **uživatelů a skupin** na **přidat přiřazení** dialogové okno.
+4. Klikněte na tlačítko **přidat** tlačítko. Potom vyberte **uživatelů a skupin** na **přidat přiřazení** dialogového okna.
 
     ![Přiřadit uživatele][203]
 
-5. Na **uživatelů a skupin** dialogovém okně, vyberte **Britta Simon** v seznamu uživatelů.
+5. Na **uživatelů a skupin** dialogového okna, vyberte **Britta Simon** v seznamu uživatelů.
 
-6. Klikněte na tlačítko **vyberte** tlačítko **uživatelů a skupin** dialogové okno.
+6. Klikněte na tlačítko **vyberte** tlačítko **uživatelů a skupin** dialogového okna.
 
-7. Klikněte na tlačítko **přiřadit** tlačítko **přidat přiřazení** dialogové okno.
+7. Klikněte na tlačítko **přiřadit** tlačítko **přidat přiřazení** dialogového okna.
     
-### <a name="testing-single-sign-on"></a>Testování jednotné přihlašování
+### <a name="testing-single-sign-on"></a>Testování jednotného přihlašování
 
-Cílem této části je testování konfigurace Azure AD jednotného přihlašování k použití na přístupovém panelu.
+Cílem této části je testování konfigurace jednotného přihlašování k Azure AD pomocí přístupového panelu.
 
-Po kliknutí & frankly dlaždici na přístupovém panelu, měli byste obdržet automaticky přihlášení k vaší & frankly aplikací
+Po kliknutí na & Upřímně dlaždici na přístupovém panelu, by vám měl automaticky přihlášení k vaší & Upřímně aplikace
 
-## <a name="additional-resources"></a>Další zdroje informací:
+## <a name="additional-resources"></a>Další materiály
 
-* [Seznam kurzů k integraci aplikací SaaS službou Azure Active Directory](tutorial-list.md)
-* [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
+* [Seznam kurzů o integraci aplikací SaaS pomocí Azure Active Directory](tutorial-list.md)
+* [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](../manage-apps/what-is-single-sign-on.md)
 
 
 

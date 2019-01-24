@@ -4,7 +4,7 @@ description: Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.reviewer: barbkess
 ms.assetid: 1b9e59e3-e7ae-4e74-b16c-8c1a7ccfdef3
 ms.service: Azure-Active-Directory
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 01/07/2019
 ms.author: jeedes
-ms.openlocfilehash: 6bbe34cca1d5f3630f95c2748c852be24e5781d6
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.openlocfilehash: 2a5817c428fb9ff87c2125427978c9c7ac3ff6bf
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54266158"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54822327"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sap-netweaver"></a>Kurz: Integrace Azure Active Directory se SAP Netweaverem
 
@@ -278,7 +278,7 @@ Ke konfiguraci Azure AD jednotného přihlašování se SAP Netweaverem, proveď
 
     ![Konfigurace jednotného přihlašování](./media/sapnetweaver-tutorial/tutorial_sapnetweaver_nameiddetails1.png)
 
-    b. snímek obrazovky, že zmíníte požadované deklarace identit z Azure AD.
+    b. Snímek obrazovky, že zmíníte požadované deklarace identit z Azure AD.
 
     ![Konfigurace jednotného přihlašování](./media/sapnetweaver-tutorial/claimsaad2.png)
 

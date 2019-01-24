@@ -3,21 +3,21 @@ title: Nejčastější dotazy k Azure Active Directory B2C | Dokumentace Microso
 description: Nejčastější dotazy (FAQ) o Azure Active Directory B2C.
 services: active-directory-b2c
 author: davidmu1
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 11/30/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 6957a18440dfc225c63a1b1843e2b47af8b841bf
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 8e5e688fe741fdc4a83ae1a3cf13a6c722064407
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52842947"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54856294"
 ---
-# <a name="azure-ad-b2c-frequently-asked-questions-faq"></a>Azure AD B2C: Nejčastější dotazy (FAQ) 
+# <a name="azure-ad-b2c-frequently-asked-questions-faq"></a>Azure AD B2C: Nejčastější dotazy 
 Tato stránka odpovědi na nejčastější dotazy týkající se Azure Active Directory (Azure AD) B2C. Kontrolovat novinky.
 
 ### <a name="why-cant-i-access-the-azure-ad-b2c-extension-in-the-azure-portal"></a>Proč nemám přístup k rozšíření Azure AD B2C na webu Azure Portal?
@@ -49,7 +49,7 @@ Ne. Výchozí obory pro naše Sada podporovaných zprostředkovatelů sociální
 * Facebook: e-mailu
 * Google +: e-mailu
 * Účet Microsoft: openid e-mailový profil
-* Amazon: profil
+* Amazon: profile
 * LinkedIn: r_emailaddress, r_basicprofile
 
 ### <a name="does-my-application-have-to-be-run-on-azure-for-it-work-with-azure-ad-b2c"></a>Má ke spuštění v Azure pro práci s Azure AD B2C mé aplikace?
@@ -61,8 +61,8 @@ Před otevřením "Azure AD B2C' v nabídce vlevo na webu Azure portal, je nutn�
 ### <a name="how-do-i-customize-verification-emails-the-content-and-the-from-field-sent-by-azure-ad-b2c"></a>Jak mohu přizpůsobit ověření e-mailů (obsah a "z:" pole) odeslaných službou Azure AD B2C?
 Můžete použít [firemní branding funkce](../active-directory/fundamentals/customize-branding.md) přizpůsobit obsah ověřovací e-mailů. Konkrétně je možné přizpůsobit tyto dva prvky e-mailu:
 
-* **Logo banneru**: zobrazí vpravo dole.
-* **Barva pozadí**: zobrazí v horní části.
+* **Logo banneru**: Zobrazí se vpravo dole.
+* **Barva pozadí**: Zobrazuje se v horní části.
 
     ![Snímek obrazovky přizpůsobené ověřovací e-mail](./media/active-directory-b2c-faqs/company-branded-verification-email.png)
 
