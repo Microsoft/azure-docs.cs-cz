@@ -9,12 +9,12 @@ ms.service: media-services
 ms.topic: article
 ms.date: 11/19/2018
 ms.author: juliako
-ms.openlocfilehash: 666be9c2ebba9dc9607e4188b2390fff49fd59b9
-ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
+ms.openlocfilehash: e83b634c11d0349f4917c063cde54e03fa1cac40
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53554652"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54810699"
 ---
 # <a name="examine-the-video-indexer-output-produced-by-v2-api"></a>Prozkoumání výstupu funkce Video Indexer vytvořené metodou rozhraní API v2
 
@@ -37,7 +37,7 @@ Tento článek zkoumá vrácený obsah JSON **získat Index Video** rozhraní AP
 
 |Název|Popis|
 |---|---|
-|ID účtu|ID účtu VI seznamu stop|
+|accountId|ID účtu VI seznamu stop|
 |id|ID seznamu stop.|
 |jméno|Název seznamu stop.|
 |description|Popis seznamu stop.|
@@ -97,15 +97,15 @@ Tato část uvádí přehled informací.
 
 |Název|Popis|
 |---|---|
-|ID účtu|ID účtu VI videa|
+|accountId|ID účtu VI videa|
 |id|ID videa.|
 |jméno|Název videa.
 |state|Stav videa (nahrané, zpracování, zpracování, selhalo, umístěné do karantény).|
 |processingProgress|Průběh zpracování během zpracování (například 20 %).|
-|Kód chyby|Kód chyby, pokud se proces (například "UnsupportedFileType").|
+|failureCode|Kód chyby, pokud se proces (například "UnsupportedFileType").|
 |failureMessage|Zpráva selhání, pokud se nepodařilo zpracovat.|
 |externalId|Videa externí ID (Pokud je zadaný uživatelem).|
-|adresy externalUrl|Videa externí adresa url (Pokud je zadaný uživatelem).|
+|externalUrl|Videa externí adresa url (Pokud je zadaný uživatelem).|
 |zprostředkovatele identity|Externí metadat videa (Pokud je zadaný uživatelem).|
 |isAdult|Určuje, jestli se video ručně zkontrolovat a identifikována jako dospělého videa.|
 |přehledy|Objekt, který insights. Další informace najdete v tématu [insights](#insights).|
@@ -166,7 +166,7 @@ Přehledy jsou sadu dimenzí (například přepisu řádky, tváří, značky, a
 |audioEffects|[AudioEffects](#audioEffects) dimenze.|
 |zabarvení|[Zabarvení](#sentiments) dimenze.|
 |visualContentModeration|[VisualContentModeration](#visualcontentmoderation) dimenze.|
-|textualConentModeration|[TextualConentModeration](#textualconentmoderation) dimenze.|
+|textualContentModeration|[TextualContentModeration](#textualcontentmoderation) dimenze.|
 |emocí| [Emoce](#emotions) dimenze.|
 |témata|[Témata](#topics) dimenze.|
 
@@ -187,7 +187,7 @@ Příklad:
   "audioEffects": ...,
   "sentiments": ...,
   "visualContentModeration": ...,
-  "textualConentModeration": ...
+  "textualContentModeration": ...
 }
 ```
 
@@ -334,10 +334,10 @@ Příklad:
 |jméno|Název typ písma. Může být "Neznámý #0, identifikovaný celebrit nebo trénovaného osoby zákazníka.|
 |spolehlivosti|Identifikace spolehlivosti pro rozpoznávání tváře.|
 |description|Popis celebrity. |
-|thumbnalId|ID miniatury této pro rozpoznávání tváře.|
+|thumbnailId|ID miniatury této pro rozpoznávání tváře.|
 |knownPersonId|Pokud se jedná o známé osoba, jeho interní ID.|
 |referenceId|Pokud je celebrit Bing, jeho ID Bingu.|
-|Hodnota referenceType|V současné době pouze Bingu.|
+|referenceType|V současné době pouze Bingu.|
 |název|Pokud se jedná celebrit, jeho název (například "CEO společnosti Microsoft").|
 |imageUrl|Pokud se jedná celebrit jeho adresa url obrázku.|
 |instance|Toto jsou instance z kde zobrazovaly plochu v daném časovém rozsahu. Každá instance má také thumbnailsId. |
@@ -435,7 +435,7 @@ Příklad:
 |Název|Popis|
 |---|---|
 |id|Snímek ID.|
-|klíčové snímky|Seznam klíčových snímků v rámci snímku (každý má ID a seznam instancí časových rozsahů). Instance klíčové snímky mají thumbnailId pole s Miniatura na klíčový snímek ID.|
+|keyFrames|Seznam klíčových snímků v rámci snímku (každý má ID a seznam instancí časových rozsahů). Instance klíčové snímky mají thumbnailId pole s Miniatura na klíčový snímek ID.|
 |instance|Seznam časových rozsahů tento snímek (snímky mají jenom 1 instance).|
 
 ```json
@@ -592,7 +592,7 @@ Zabarvení se agregují podle jejich sentimentType pole (neutrální/kladné neb
 |Název|Popis|
 |---|---|
 |id|ID mínění.|
-|Průměr |Průměr všech skóre všech instancí tohoto typu mínění – pozitivní nebo neutrální nebo negativní|
+|averageScore |Průměr všech skóre všech instancí tohoto typu mínění – pozitivní nebo neutrální nebo negativní|
 |instance|Seznam časových rozsahů, ve kterém se objevil tento mínění.|
 |sentimentType |Typ může být "Pozitivní", 'Neutrální' nebo "Záporné".|
 
@@ -662,7 +662,7 @@ Videa, které se nacházejí na obsah pro dospělé nebo pikantního mohou být 
 ] 
 ```
 
-#### <a name="textualconentmoderation"></a>textualConentModeration 
+#### <a name="textualcontentmoderation"></a>textualContentModeration 
 
 |Název|Popis|
 |---|---|

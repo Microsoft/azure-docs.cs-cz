@@ -3,7 +3,7 @@ title: Řešení potíží s dvoustupňovým ověřováním – Azure Active Dir
 description: Poskytuje pokyny pro uživatele o tom, co dělat v případě, že narazíte na problém s Azure Multi-Factor Authentication a dvoustupňové ověřování.
 services: active-directory
 author: eross-msft
-manager: mtillman
+manager: daveba
 ms.assetid: 8f3aef42-7f66-4656-a7cd-d25a971cb9eb
 ms.workload: identity
 ms.service: active-directory
@@ -12,16 +12,16 @@ ms.topic: conceptual
 ms.date: 07/16/2018
 ms.author: lizross
 ms.reviewer: kexia
-ms.openlocfilehash: fd722da236f3e1fff18e2561756635cd95f098e0
-ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
+ms.openlocfilehash: 6cf794d36db865f553c0a4db16506305dab2f4fc
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/30/2018
-ms.locfileid: "39346519"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54810172"
 ---
-# <a name="get-help-with-two-step-verification"></a>Získejte pomoc s dvoustupňovým ověřováním
+# <a name="get-help-with-two-step-verification"></a>Získat pomoc s dvoustupňovým ověřováním
 
-Dvoustupňové ověření je funkce zabezpečení, které vaše organizace používá k ochraně vašich účtů. Dvoustupňové ověření je bezpečnější než jen s heslem, protože závisí na dva typy ověřování: něco víte a něco, co máte s vámi. Něco, které už znáte je vaše heslo, když něco, co máte s vámi telefonu nebo zařízení. Pomocí dvoustupňového ověření může pomoct hackerům škodlivý přihlašování jako vy, i když získávají své heslo.
+Dvoustupňové ověření je funkce zabezpečení, které vaše organizace používá k ochraně vašich účtů. Dvoustupňové ověřování je bezpečnější než pouhé heslo, protože se spoléhá na dva způsoby ověření: něco, co znáte, a něco, co máte u sebe. Něco, které už znáte je vaše heslo, když něco, co máte s vámi telefonu nebo zařízení. Pomocí dvoustupňového ověření může pomoct hackerům škodlivý přihlašování jako vy, i když získávají své heslo.
 
 Společnost Microsoft nabízí dvoustupňové ověření, je vaší organizaci, který určuje, zda používáte funkci. Nelze odhlásit Pokud vaše organizace vyžaduje, stejně jako jste nemohou výslovně nesouhlasit pomocí hesla, abyste ochránili svůj účet.
 

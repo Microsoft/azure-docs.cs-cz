@@ -1,10 +1,10 @@
 ---
-title: 'Kurz: Azure Active Directory integrace s Alcumus údaje Exchange | Microsoft Docs'
-description: Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a Alcumus údaje Exchange.
+title: 'Kurz: Integrace s Exchangem Alcumus informace o Azure Active Directory | Dokumentace Microsoftu'
+description: Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a Alcumus informace o Exchange.
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.assetid: d26034b8-f0d5-4f65-aa56-0fc168ceec8c
 ms.service: active-directory
 ms.component: saas-app-tutorial
@@ -14,201 +14,201 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/05/2017
 ms.author: jeedes
-ms.openlocfilehash: 66ce8bb16e6e291742841766069b076c46a01c69
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: d55aa873d0ad410b91dc678d1fe4784e00ed5487
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36224594"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54812467"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-alcumus-info-exchange"></a>Kurz: Azure Active Directory integrace s Alcumus údaje Exchange
+# <a name="tutorial-azure-active-directory-integration-with-alcumus-info-exchange"></a>Kurz: Integrace s Exchangem Alcumus informace o Azure Active Directory
 
-V tomto kurzu zjistěte, jak integrovat Exchange Alcumus informace o službě Azure Active Directory (Azure AD).
+V tomto kurzu se dozvíte, jak integrovat Alcumus informace o Exchange se službou Azure Active Directory (Azure AD).
 
-Integrace Alcumus údaje Exchange s Azure AD poskytuje následující výhody:
+Informace o Exchange Alcumus integrace s Azure AD poskytuje následující výhody:
 
-- Můžete řídit ve službě Azure AD, který má přístup k systému Exchange Alcumus informace
-- Můžete povolit uživatelům, aby automaticky získat přihlášení k Alcumus údaje Exchange (jednotné přihlášení) s jejich účty Azure AD
-- Můžete spravovat vaše účty v jednom centrálním místě - portálu Azure
+- Můžete řídit ve službě Azure AD, který má přístup k Exchangi Alcumus informace
+- Uživatele, aby automaticky získat přihlášení k Alcumus informace o Exchange (Single Sign-On) můžete povolit pomocí jejich účtů služby Azure AD
+- Můžete spravovat své účty na jediném místě – na webu Azure portal
 
-Pokud chcete vědět, další informace o integraci aplikací SaaS v Azure AD, najdete v části [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
+Pokud chcete zjistit další podrobnosti o integraci aplikací SaaS v Azure AD, přečtěte si téma [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Požadavky
 
-Konfigurace integrace Azure AD s Alcumus údaje Exchange, potřebujete následující položky:
+Konfigurace integrace Azure AD s Alcumus informace o Exchange, potřebujete následující položky:
 
-- Předplatné služby Azure AD
-- Alcumus údaje Exchange jednotného přihlašování povolené předplatné
+- Předplatné Azure AD
+- Alcumus informace o Exchange jednotného přihlašování povolená předplatného
 
 > [!NOTE]
-> K testování kroky v tomto kurzu, nedoporučujeme používání provozním prostředí.
+> Pokud chcete vyzkoušet kroky v tomto kurzu, nedoporučujeme použití produkční prostředí.
 
-Chcete-li otestovat kroky v tomto kurzu, postupujte podle těchto doporučení:
+Pokud chcete vyzkoušet kroky v tomto kurzu, postupujte podle těchto doporučení:
 
-- Nepoužívejte provozním prostředí, pokud to není nutné.
-- Pokud nemáte prostředí zkušební verze Azure AD, můžete získat zkušební verze jeden měsíc [zde](https://azure.microsoft.com/pricing/free-trial/).
+- Nepoužívejte produkčním prostředí, pokud to není nutné.
+- Pokud nemáte prostředí zkušební verzi Azure AD, můžete získat měsíční zkušební [tady](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="scenario-description"></a>Popis scénáře
-V tomto kurzu můžete otestovat Azure AD jednotné přihlašování v testovacím prostředí. Scénáři uvedeném v tomto kurzu se skládá ze dvou hlavních stavebních bloků:
+V tomto kurzu je otestovat Azure AD jednotné přihlašování v testovacím prostředí. Scénář popsaný v tomto kurzu se skládá ze dvou hlavních stavebních bloků:
 
-1. Přidání Alcumus údaje Exchange z Galerie
+1. Přidání Alcumus informace o Exchange z Galerie
 2. Konfigurace a testování Azure AD jednotného přihlašování
 
-## <a name="adding-alcumus-info-exchange-from-the-gallery"></a>Přidání Alcumus údaje Exchange z Galerie
-Při konfiguraci integrace systému Exchange Alcumus informace do služby Azure AD, potřebujete přidat Exchange Alcumus informace z Galerie si na seznam spravovaných aplikací SaaS.
+## <a name="adding-alcumus-info-exchange-from-the-gallery"></a>Přidání Alcumus informace o Exchange z Galerie
+Ke konfiguraci integrace Alcumus informace o Exchange do služby Azure AD, budete muset přidat informace o Exchange Alcumus z Galerie na váš seznam spravovaných aplikací SaaS.
 
-**Pokud chcete přidat Exchange Alcumus informace z galerie, postupujte takto:**
+**Chcete-li přidat informace o Exchange Alcumus z galerie, postupujte následovně:**
 
-1. V  **[portál Azure](https://portal.azure.com)**, v levém navigačním panelu klikněte na tlačítko **Azure Active Directory** ikonu. 
+1. V **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu. 
 
     ![Active Directory][1]
 
-2. Přejděte na **podnikové aplikace, které**. Pak přejděte na **všechny aplikace**.
+2. Přejděte do **podnikové aplikace**. Pak přejděte na **všechny aplikace**.
 
     ![Aplikace][2]
     
-3. Chcete-li přidat novou aplikaci, klikněte na tlačítko **novou aplikaci** tlačítko horní dialogové okno.
+3. Chcete-li přidat novou aplikaci, klikněte na tlačítko **novou aplikaci** tlačítko v horní části dialogového okna.
 
     ![Aplikace][3]
 
-4. Do vyhledávacího pole zadejte **Alcumus údaje Exchange**.
+4. Do vyhledávacího pole zadejte **Alcumus informace o Exchange**.
 
-    ![Vytváření testovacího uživatele Azure AD](./media/alcumus-info-tutorial/tutorial_alcumusinfoexchange_search.png)
+    ![Vytváří se testovací uživatele služby Azure AD](./media/alcumus-info-tutorial/tutorial_alcumusinfoexchange_search.png)
 
-5. Na panelu výsledků vyberte **Alcumus údaje Exchange**a potom klikněte na **přidat** tlačítko Přidat aplikaci.
+5. Na panelu výsledků vyberte **Alcumus informace o Exchange**a potom klikněte na tlačítko **přidat** tlačítko pro přidání aplikace.
 
-    ![Vytváření testovacího uživatele Azure AD](./media/alcumus-info-tutorial/tutorial_alcumusinfoexchange_addfromgallery.png)
+    ![Vytváří se testovací uživatele služby Azure AD](./media/alcumus-info-tutorial/tutorial_alcumusinfoexchange_addfromgallery.png)
 
 ##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a>Konfigurace a testování Azure AD jednotného přihlašování
-V této části můžete nakonfigurovat a otestovat Azure AD jednotné přihlašování se serverem Exchange Alcumus informace podle testovacího uživatele názvem "Britta Simon."
+V této části Konfigurace a testování Azure AD jednotné přihlašování s Alcumus informace o Exchange na základě testovací uživatele nazývá "Britta Simon."
 
-Azure AD pro jednotné přihlašování pro práci, musí vědět, co příslušného uživatele v Alcumus údaje Exchange je pro uživatele ve službě Azure AD. Jinými slovy odkaz vztah mezi uživatele Azure AD a související uživatelské v Alcumus údaje Exchange musí navázat.
+Pro jednotné přihlašování pro práci služba Azure AD potřebuje vědět, co uživatel protějšek při výměně informací o Alcumus je pro uživatele ve službě Azure AD. Jinými slovy vztah odkazu mezi uživatele služby Azure AD a související uživatelské při výměně informací o Alcumus potřeba navázat.
 
-V systému Exchange Alcumus informace, přiřadit hodnotu **uživatelské jméno** ve službě Azure AD jako hodnotu **uživatelské jméno** k navázání vztahu odkazu.
+Při výměně informací o Alcumus, přiřaďte hodnotu **uživatelské jméno** ve službě Azure AD jako hodnotu **uživatelské jméno** a tím vytvoří vztah odkazu.
 
-Nakonfigurovat a otestovat Azure AD jednotné přihlašování s Alcumus údaje Exchange, musíte dokončit následující stavební bloky:
+Nakonfigurovat a otestovat Azure AD jednotné přihlašování s Exchangem Alcumus informace, které potřebujete k dokončení následujících stavebních bloků:
 
-1. **[Konfigurace Azure AD jednotné přihlašování](#configuring-azure-ad-single-sign-on)**  – Pokud chcete povolit uživatelům tuto funkci používat.
-2. **[Vytváření testovacího uživatele Azure AD](#creating-an-azure-ad-test-user)**  – Pokud chcete otestovat Azure AD jednotné přihlašování s Britta Simon.
-3. **[Vytváření testovacího uživatele Exchange informace Alcumus](#creating-an-alcumus-info-exchange-test-user)**  – Pokud chcete mít protějšek Britta Simon v systému Exchange Alcumus informace, propojené služby Azure AD reprezentace daného uživatele.
-4. **[Přiřazení testovacího uživatele Azure AD](#assigning-the-azure-ad-test-user)**  – Pokud chcete povolit Britta Simon používat Azure AD jednotné přihlašování.
-5. **[Testování jednotné přihlašování](#testing-single-sign-on)**  – Pokud chcete ověřit, zda je funkční konfigurace.
+1. **[Konfigurace Azure AD Single Sign-On](#configuring-azure-ad-single-sign-on)**  – Pokud chcete, aby uživatelé mohli tuto funkci používat.
+2. **[Vytváří se testovací uživatele služby Azure AD](#creating-an-azure-ad-test-user)**  – Pokud chcete otestovat Azure AD jednotné přihlašování s Britta Simon.
+3. **[Vytváří se testovací uživatelské jméno Alcumus informace o Exchange](#creating-an-alcumus-info-exchange-test-user)**  – Pokud chcete mít protějšek Britta Simon při výměně informací o Alcumus, který je propojený s Azure AD reprezentace uživatele.
+4. **[Přiřazení testovacího uživatele Azure AD](#assigning-the-azure-ad-test-user)**  – Pokud chcete povolit Britta Simon používat Azure AD jednotného přihlašování.
+5. **[Testování Single Sign-On](#testing-single-sign-on)**  – Pokud chcete ověřit, jestli funguje v konfiguraci.
 
-### <a name="configuring-azure-ad-single-sign-on"></a>Konfigurace Azure AD jednotné přihlašování
+### <a name="configuring-azure-ad-single-sign-on"></a>Konfigurace služby Azure AD jednotného přihlašování
 
-V této části můžete povolit Azure AD jednotného přihlašování na portálu Azure a nakonfigurovat jednotné přihlašování v aplikaci Alcumus údaje Exchange.
+V této části Povolení služby Azure AD jednotného přihlašování na portálu Azure portal a konfigurace jednotného přihlašování v aplikaci Alcumus informace o Exchange.
 
-**O konfiguraci Azure AD jednotné přihlašování s Alcumus informace, proveďte následující kroky:**
+**Můžete nakonfigurovat služby Azure AD jednotné přihlašování s Alcumus informace, proveďte následující kroky:**
 
-1. Na portálu Azure na **Alcumus údaje Exchange** stránky integrace aplikací, klikněte na tlačítko **jednotného přihlašování**.
+1. Na webu Azure Portal na **Alcumus informace o Exchange** integrace stránka aplikace, klikněte na tlačítko **jednotného přihlašování**.
 
-    ![Konfigurovat jednotné přihlašování][4]
+    ![Konfigurace jednotného přihlašování][4]
 
-2. Na **jednotného přihlašování** dialogovém okně, vyberte **režimu** jako **na základě SAML přihlašování** umožňující jednotného přihlašování.
+2. Na **jednotného přihlašování** dialogového okna, vyberte **režimu** jako **přihlašování na základě SAML** povolit jednotné přihlašování.
  
-    ![Konfigurovat jednotné přihlašování](./media/alcumus-info-tutorial/tutorial_alcumusinfoexchange_samlbase.png)
+    ![Konfigurace jednotného přihlašování](./media/alcumus-info-tutorial/tutorial_alcumusinfoexchange_samlbase.png)
 
-3. Na **Alcumus údaje Exchange domény a adresy URL** část, proveďte následující kroky:
+3. Na **Alcumus informace o Exchange domény a adresy URL** části, proveďte následující kroky:
 
-    ![Konfigurovat jednotné přihlašování](./media/alcumus-info-tutorial/tutorial_alcumusinfoexchange_url.png)
+    ![Konfigurace jednotného přihlašování](./media/alcumus-info-tutorial/tutorial_alcumusinfoexchange_url.png)
 
-    a. V **identifikátor** textovému poli, zadejte adresu URL pomocí následujícího vzorce: `https://<subdomain>.info-exchange.com`
+    a. V **identifikátor** textového pole zadejte adresu URL pomocí následujícímu vzoru: `https://<subdomain>.info-exchange.com`
 
-    b. V **adresa URL odpovědi** textovému poli, zadejte adresu URL pomocí následujícího vzorce: `https://<subdomain>.info-exchange.com/Auth/`
+    b. V **adresy URL odpovědi** textového pole zadejte adresu URL pomocí následujícímu vzoru: `https://<subdomain>.info-exchange.com/Auth/`
 
     > [!NOTE] 
-    > Tyto hodnoty nejsou skutečné. Tyto hodnoty aktualizujte se skutečným identifikátorem a adresa URL odpovědi. Obraťte se na [tým podpory Alcumus údaje Exchange](mailto:helpdesk@alcumusgroup.com) k získání těchto hodnot.
+    > Tyto hodnoty nejsou skutečný. Aktualizujte tyto hodnoty se skutečné identifikátorem a adresa URL odpovědi. Kontakt [tým podpory Alcumus informace o Exchange](mailto:helpdesk@alcumusgroup.com) k získání těchto hodnot.
  
-4. Na **SAML podpisový certifikát** klikněte na tlačítko **soubor XML s metadaty** a potom uložte soubor metadat ve vašem počítači.
+4. Na **podpisový certifikát SAML** klikněte na tlačítko **soubor XML s metadaty** a uložte soubor metadat ve vašem počítači.
 
-    ![Konfigurovat jednotné přihlašování](./media/alcumus-info-tutorial/tutorial_alcumusinfoexchange_certificate.png) 
+    ![Konfigurace jednotného přihlašování](./media/alcumus-info-tutorial/tutorial_alcumusinfoexchange_certificate.png) 
 
 5. Klikněte na tlačítko **Uložit** tlačítko.
 
-    ![Konfigurovat jednotné přihlašování](./media/alcumus-info-tutorial/tutorial_general_400.png)
+    ![Konfigurace jednotného přihlašování](./media/alcumus-info-tutorial/tutorial_general_400.png)
 
-6. Konfigurace jednotného přihlašování na **Alcumus údaje Exchange** straně, budete muset odeslat stažené **soubor XML s metadaty** k [tým podpory Alcumus údaje Exchange](mailto:helpdesk@alcumusgroup.com).
+6. Ke konfiguraci jednotného přihlašování na **Alcumus informace o Exchange** straně, je nutné odeslat na stažený **soubor XML s metadaty** k [tým podpory Alcumus informace o Exchange](mailto:helpdesk@alcumusgroup.com).
 
 > [!TIP]
-> Teď si můžete přečíst stručným verzi tyto pokyny uvnitř [portál Azure](https://portal.azure.com), zatímco nastavujete aplikace!  Po přidání této aplikace z **služby Active Directory > podnikové aplikace, které** jednoduše klikněte na položku **jednotné přihlašování** kartě a přístup v embedded dokumentaci prostřednictvím **konfigurace** v dolní části. Můžete přečíst další informace o funkci embedded dokumentace: [vložených dokumentace k Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)
+> Teď si můžete přečíst stručné verzi těchto pokynů uvnitř [webu Azure portal](https://portal.azure.com), zatímco jsou nastavení aplikace!  Po přidání této aplikace z **služby Active Directory > podnikové aplikace** části, stačí kliknout **Single Sign-On** kartu a přístup k vložené dokumentaci prostřednictvím  **Konfigurace** oblast v dolní části. Další informace o funkci vložená dokumentace: [Dokumentace ke službě Azure AD, embedded]( https://go.microsoft.com/fwlink/?linkid=845985)
 > 
 
-### <a name="creating-an-azure-ad-test-user"></a>Vytváření testovacího uživatele Azure AD
-Cílem této části je vytvoření zkušebního uživatele na portálu Azure, názvem Britta Simon.
+### <a name="creating-an-azure-ad-test-user"></a>Vytváří se testovací uživatele služby Azure AD
+Cílem této části je vytvoření zkušebního uživatele na webu Azure Portal volá Britta Simon.
 
-![Vytvořit uživatele Azure AD][100]
+![Vytvoření uživatele Azure AD][100]
 
-**Vytvoření zkušebního uživatele ve službě Azure AD, proveďte následující kroky:**
+**Chcete-li vytvořit testovacího uživatele ve službě Azure AD, postupujte následovně:**
 
-1. V **portál Azure**, v levém navigačním podokně klikněte na tlačítko **Azure Active Directory** ikonu.
+1. V **webu Azure portal**, v levém navigačním podokně klikněte na tlačítko **Azure Active Directory** ikonu.
 
-    ![Vytváření testovacího uživatele Azure AD](./media/alcumus-info-tutorial/create_aaduser_01.png) 
+    ![Vytváří se testovací uživatele služby Azure AD](./media/alcumus-info-tutorial/create_aaduser_01.png) 
 
 2. Chcete-li zobrazit seznam uživatelů, přejděte na **uživatelů a skupin** a klikněte na tlačítko **všichni uživatelé**.
     
-    ![Vytváření testovacího uživatele Azure AD](./media/alcumus-info-tutorial/create_aaduser_02.png) 
+    ![Vytváří se testovací uživatele služby Azure AD](./media/alcumus-info-tutorial/create_aaduser_02.png) 
 
-3. Chcete-li otevřít **uživatele** dialogové okno, klikněte na tlačítko **přidat** horní dialogové okno.
+3. Chcete-li otevřít **uživatele** dialogového okna, klikněte na tlačítko **přidat** horní části dialogového okna.
  
-    ![Vytváření testovacího uživatele Azure AD](./media/alcumus-info-tutorial/create_aaduser_03.png) 
+    ![Vytváří se testovací uživatele služby Azure AD](./media/alcumus-info-tutorial/create_aaduser_03.png) 
 
-4. Na **uživatele** dialogové okno stránky, proveďte následující kroky:
+4. Na **uživatele** dialogového okna stránky, proveďte následující kroky:
  
-    ![Vytváření testovacího uživatele Azure AD](./media/alcumus-info-tutorial/create_aaduser_04.png) 
+    ![Vytváří se testovací uživatele služby Azure AD](./media/alcumus-info-tutorial/create_aaduser_04.png) 
 
-    a. V **název** textovému poli, typ **BrittaSimon**.
+    a. V **název** textové pole, typ **BrittaSimon**.
 
-    b. V **uživatelské jméno** textovému poli, typ **e-mailová adresa** z BrittaSimon.
+    b. V **uživatelské jméno** textové pole, typ **e-mailová adresa** z BrittaSimon.
 
-    c. Vyberte **zobrazit hesla** a poznamenejte si hodnotu **heslo**.
+    c. Vyberte **zobrazit heslo** a zapište si hodnotu **heslo**.
 
     d. Klikněte na možnost **Vytvořit**.
  
-### <a name="creating-an-alcumus-info-exchange-test-user"></a>Vytvoření Exchange Alcumus údaje testovacího uživatele
+### <a name="creating-an-alcumus-info-exchange-test-user"></a>Vytváří se testovací uživatelské jméno Alcumus informace o Exchange
 
-Cílem této části je vytvoření uživatele volal Britta Simon v Alcumus údaje Exchange.
+Cílem této části je vytvořte uživatele Britta Simon v Exchangi Alcumus informace.
 
-Chcete-li vytvořit uživatele volal Britta Simon v Alcumus údaje Exchange, obraťte se [tým podpory Alcumus údaje Exchange](mailto:helpdesk@alcumusgroup.com).
+Vytvořte uživatele Britta Simon v Exchangi Alcumus informace, obraťte se [tým podpory Alcumus informace o Exchange](mailto:helpdesk@alcumusgroup.com).
 
 ### <a name="assigning-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
-V této části povolíte Britta Simon používat Azure jednotné přihlašování pomocí udělení přístupu k systému Exchange Alcumus informace.
+V této části je povolit Britta Simon udělení přístupu k Exchangi Alcumus informace o použití Azure jednotného přihlašování.
 
 ![Přiřadit uživatele][200] 
 
-**Pokud chcete přiřadit Britta Simon Alcumus údaje Exchange, proveďte následující kroky:**
+**Britta Simon přiřadit Alcumus informace o Exchange, proveďte následující kroky:**
 
-1. Na portálu Azure otevřete zobrazení aplikací a pak přejděte do zobrazení adresáře a přejděte na **podnikové aplikace, které** klikněte **všechny aplikace**.
+1. Na webu Azure Portal, otevřete zobrazení aplikací a pak přejděte do zobrazení adresáře a přejděte na **podnikové aplikace** klikněte **všechny aplikace**.
 
     ![Přiřadit uživatele][201] 
 
-2. V seznamu aplikací vyberte **Alcumus údaje Exchange**.
+2. V seznamu aplikací vyberte **Alcumus informace o Exchange**.
 
-    ![Konfigurovat jednotné přihlašování](./media/alcumus-info-tutorial/tutorial_alcumusinfoexchange_app.png) 
+    ![Konfigurace jednotného přihlašování](./media/alcumus-info-tutorial/tutorial_alcumusinfoexchange_app.png) 
 
 3. V nabídce na levé straně klikněte na tlačítko **uživatelů a skupin**.
 
     ![Přiřadit uživatele][202] 
 
-4. Klikněte na tlačítko **přidat** tlačítko. Potom vyberte **uživatelů a skupin** na **přidat přiřazení** dialogové okno.
+4. Klikněte na tlačítko **přidat** tlačítko. Potom vyberte **uživatelů a skupin** na **přidat přiřazení** dialogového okna.
 
     ![Přiřadit uživatele][203]
 
-5. Na **uživatelů a skupin** dialogovém okně, vyberte **Britta Simon** v seznamu uživatelů.
+5. Na **uživatelů a skupin** dialogového okna, vyberte **Britta Simon** v seznamu uživatelů.
 
-6. Klikněte na tlačítko **vyberte** tlačítko **uživatelů a skupin** dialogové okno.
+6. Klikněte na tlačítko **vyberte** tlačítko **uživatelů a skupin** dialogového okna.
 
-7. Klikněte na tlačítko **přiřadit** tlačítko **přidat přiřazení** dialogové okno.
+7. Klikněte na tlačítko **přiřadit** tlačítko **přidat přiřazení** dialogového okna.
     
-### <a name="testing-single-sign-on"></a>Testování jednotné přihlašování
+### <a name="testing-single-sign-on"></a>Testování jednotného přihlašování
 
-Cílem této části je Azure AD jeden přihlašování konfigurace pomocí přístupového panelu.  
-Když kliknete na dlaždici Alcumus údaje Exchange na přístupovém panelu, můžete by měl získat automaticky přihlášení k aplikaci Alcumus údaje Exchange.
+Cílem této části je test vaší konfigurace Azure AD jednotné přihlašování pomocí přístupového panelu.  
+Po kliknutí na dlaždici Alcumus informace o Exchange na přístupovém panelu, vám by měl získat automaticky přihlášení k aplikaci Alcumus informace o Exchange.
 
-## <a name="additional-resources"></a>Další zdroje informací:
+## <a name="additional-resources"></a>Další materiály
 
-* [Seznam kurzů k integraci aplikací SaaS službou Azure Active Directory](tutorial-list.md)
-* [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
+* [Seznam kurzů o integraci aplikací SaaS pomocí Azure Active Directory](tutorial-list.md)
+* [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](../manage-apps/what-is-single-sign-on.md)
 
 <!--Image references-->
 

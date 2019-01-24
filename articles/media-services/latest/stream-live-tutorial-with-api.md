@@ -12,14 +12,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
 ms.custom: mvc
-ms.date: 01/16/2019
+ms.date: 01/22/2019
 ms.author: juliako
-ms.openlocfilehash: 6bd874e6918528d340bca69ebdd91aa060158073
-ms.sourcegitcommit: ba9f95cf821c5af8e24425fd8ce6985b998c2982
+ms.openlocfilehash: c51a36f4380199de1ac62ef3f0c32bd0a8f06c01
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54383060"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54811209"
 ---
 # <a name="tutorial-stream-live-with-media-services-v3-using-apis"></a>Kurz: Stream živé pomocí Media Services v3 pomocí rozhraní API
 
@@ -89,7 +89,7 @@ Pokud chcete začít používat rozhraní Media Services API se sadou .NET SDK, 
 
 ### <a name="create-a-live-event"></a>Vytvoření živé události
 
-V této části vidíte, jak vytvořit **průchozí** typ události LiveEvent (pro LiveEventEncodingType je nastavená hodnota Žádné). Pokud chcete vytvořit Livestream, který je povolený pro kódování v reálném čase LiveEventEncodingType nastaven na úroveň Standard. 
+V této části vidíte, jak vytvořit **průchozí** typ události LiveEvent (pro LiveEventEncodingType je nastavená hodnota Žádné). Pokud chcete vytvořit Livestream, který je povolený pro kódování v reálném čase LiveEventEncodingType nastaven na hodnotu **standardní**. 
 
 Některá další nastavení, která můžete chtít zadat při vytváření události v reálném čase:
 
@@ -103,7 +103,9 @@ Některá další nastavení, která můžete chtít zadat při vytváření ud�
     
     IP adresy musí být v jednom z následujících formátů: Adresu IpV4 s 4 číslice, rozsah adres CIDR.
 
-Při vytváření události můžete nastavit automatické spouštění. 
+* Při vytváření události můžete nastavit automatické spouštění. 
+
+    Když automatické spuštění je nastavena na hodnotu true, živá událost se spustí po jeho vytvoření. To znamená, fakturace spustí poté, co běží živá událost. Musíte explicitně volat Stop prostředku Livestream, která zastaví další fakturace. Další informace najdete v tématu [Livestream stavy a fakturační](live-event-states-billing.md).
 
 [!code-csharp[Main](../../../media-services-v3-dotnet-core-tutorials/NETCore/Live/MediaV3LiveApp/Program.cs#CreateLiveEvent)]
 

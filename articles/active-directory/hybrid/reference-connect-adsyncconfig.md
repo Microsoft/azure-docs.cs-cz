@@ -8,12 +8,12 @@ ms.workload: identity
 ms.date: 10/19/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 015823ee9674c2c704cdea13e44ced06e5b9644c
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: 1d2d921e02b56e951b4239c15471995eaf3cd0d1
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 01/23/2019
-ms.locfileid: "54463520"
+ms.locfileid: "54813573"
 ---
 # <a name="azure-ad-connect--adsyncconfig-powershell-reference"></a>Azure AD Connect:  Referenční informace prostředí PowerShell ADSyncConfig
 Následující dokumentace obsahuje referenční informace pro modul Powershellu ADSyncConfig.psm1, která je součástí služby Azure AD Connect.
@@ -1367,7 +1367,7 @@ Show-ADSyncADObjectPermissions [-ADobjectDN] <String> [<CommonParameters>]
 ```
 
 ### <a name="description"></a>POPIS
-Tato funkce retuns všechna oprávnění AD aktuálně nastavená pro daný objekt AD zadaný v parametru - ADobjectDN.
+Tato funkce vrátí všechna oprávnění AD aktuálně nastavená pro daný objekt AD zadaný v parametru - ADobjectDN.
 ADobjectDN třeba zadat ve formátu DistinguishedName.
 
 ### <a name="examples"></a>PŘÍKLADY

@@ -1,5 +1,5 @@
 ---
-title: Návrh systému ochranu obsahu s více variantami DRM s řízením přístupu – Azure Media Services | Dokumentace Microsoftu
+title: Návrh systému s více variantami DRM ochrany obsahu pomocí řízení přístupu – Azure Media Services | Dokumentace Microsoftu
 description: Informace o možnostech licencování Microsoft Smooth Streaming klienta portování Kit.
 services: media-services
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 12/21/2018
 ms.author: willzhan
 ms.custom: seodec18
-ms.openlocfilehash: 3e9909de5ec05710214279357134112804ab4ceb
-ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
+ms.openlocfilehash: 40e7f257df41fa4836b9df692be48a4b6c57fc80
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54191237"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54812991"
 ---
 # <a name="design-of-a-multi-drm-content-protection-system-with-access-control"></a>Návrh systému s více variantami DRM ochrany obsahu pomocí řízení přístupu 
 
@@ -145,7 +145,7 @@ V následující tabulce jsou uvedeny mapování.
 | **Správa klíčů** |Nevyžaduje se pro referenční implementace |
 | **Správa obsahu** |Konzolová aplikace jazyka C# |
 
-Jinými slovy zprostředkovatele identity a služba tokenů zabezpečení jsou k dispozici ve službě Azure AD. [Rozhraní API služby Azure Media Player](http://amp.azure.net/libs/amp/latest/docs/) se používá pro přehrávač. Azure Media Services a Azure Media Player podporu CENC přes DASH, přes HLS FairPlay, PlayReady přes technologie smooth streaming a AES-128 kódování DASH, HLS nebo smooth.
+Jinými slovy zprostředkovatele identity a služba tokenů zabezpečení jsou k dispozici ve službě Azure AD. [Rozhraní API služby Azure Media Player](http://amp.azure.net/libs/amp/latest/docs/) se používá pro přehrávač. Azure Media Services a Azure Media Player podporu prostřednictvím technologie smooth streaming nebo šifrování AES-128 pro DASH, HLS nebo smooth CENC přes DASH, přes HLS FairPlay, PlayReady.
 
 Následující diagram ukazuje celkovou strukturu a tok s předchozím mapování technologie:
 

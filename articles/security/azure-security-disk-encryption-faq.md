@@ -8,12 +8,12 @@ ms.topic: article
 ms.author: mstewart
 ms.date: 12/21/2018
 ms.custom: seodec18
-ms.openlocfilehash: 3afe60e7a00cb4fc4aca5046da8e26aaf3c77a29
-ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
+ms.openlocfilehash: 1db379a48d4dafdaa2494d081658296a7145bcd9
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54198809"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54815224"
 ---
 # <a name="azure-disk-encryption-for-iaas-vms-faq"></a>Azure Disk Encryption pro virtuální počítače IaaS – nejčastější dotazy
 
@@ -63,7 +63,7 @@ Azure Disk Encryption je podporováno v následujících Linuxových distribucí
 | SLES | 12 SP1 | Datový disk |
 | SLES | Priorita: 12-SP1 | Datový disk |
 | SLES | PROSTŘEDÍ HPC 12 | Datový disk |
-| SLES | Priorita: 11 SP4 | Datový disk |
+| SLES | Priorita: 11-SP4 | Datový disk |
 | SLES | 11 SP4 | Datový disk |
 
 
@@ -137,7 +137,7 @@ Pokud tento pracovní postup není možné, spoléhat na [šifrování služby S
 
 ## <a name="what-encryption-method-does-azure-disk-encryption-use"></a>Jakou metodu šifrování Azure Disk Encryption používá?
 
-Na Windows, ADE používá metodu šifrování nástrojem Bitlocker AES256 (AES256WithDiffuser ve verzích starších než Windows Server 2012). V Linuxu ADE používá výchozí dmcrypt xts-aes-plain64 pomocí hlavního klíče svazku 256 bitů.
+Na Windows, ADE používá metodu šifrování nástrojem BitLocker AES256 (AES256WithDiffuser ve verzích starších než Windows Server 2012). V Linuxu ADE používá výchozí dmcrypt xts-aes-plain64 pomocí hlavního klíče svazku 256 bitů.
 
 ## <a name="if-i-use-encryptformatall-and-specify-all-volume-types-will-it-erase-the-data-on-the-data-drives-that-we-already-encrypted"></a>Je-li použít encryptformatall šifrovaně a určete všechny typy svazku vymaže jeho data na datové jednotky, které jsme už zašifrovali?
 Ne, smazání dat z datové jednotky, které už jsou šifrované pomocí Azure Disk Encryption. Podobně jako u jak encryptformatall šifrovaně nebyl znovu zašifrovat jednotky operačního systému, ho nebude znovu zašifrovat jednotka už zašifrovaná data. Další informace najdete v tématu [encryptformatall šifrovaně kritéria](azure-security-disk-encryption-linux.md#bkmk_EFACriteria).        

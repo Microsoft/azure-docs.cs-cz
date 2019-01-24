@@ -1,10 +1,10 @@
 ---
-title: 'Kurz: Integrace Azure Active Directory se službou LogicMonitor | Dokumentace Microsoftu'
+title: 'Kurz: Integrace Azure Active Directory s LogicMonitor | Dokumentace Microsoftu'
 description: Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a LogicMonitor.
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.assetid: 496156c3-0e22-4492-b36f-2c29c055e087
 ms.service: active-directory
 ms.component: saas-app-tutorial
@@ -14,14 +14,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/02/2018
 ms.author: jeedes
-ms.openlocfilehash: a6bc220d15e720662eaa9605421e21ccb99892ab
-ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
+ms.openlocfilehash: 5aa11c15e038c0af8447debba0cd385c944c0bce
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39502341"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54812416"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-logicmonitor"></a>Kurz: Integrace Azure Active Directory se službou LogicMonitor
+# <a name="tutorial-azure-active-directory-integration-with-logicmonitor"></a>Kurz: Integrace Azure Active Directory s LogicMonitor
 
 V tomto kurzu se dozvíte, jak integrovat LogicMonitor s Azure Active Directory (Azure AD).
 
@@ -37,7 +37,7 @@ Pokud chcete zjistit další podrobnosti o integraci aplikací SaaS v Azure AD, 
 
 Konfigurace integrace Azure AD s LogicMonitor, potřebujete následující položky:
 
-- S předplatným služby Azure AD
+- Předplatné Azure AD
 - LogicMonitor jednotného přihlašování povolená předplatného
 
 > [!NOTE]
@@ -59,7 +59,7 @@ Konfigurace integrace LogicMonitor do služby Azure AD, budete muset přidat Log
 
 **Chcete-li přidat LogicMonitor z galerie, postupujte následovně:**
 
-1. V  **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu. 
+1. V **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu. 
 
     ![Active Directory][1]
 
@@ -204,7 +204,7 @@ Pro uživatele Azure AD bude moct přihlásit musí být zřízená LogicMonitor
    
     b. Vyberte **role**, **zobrazit oprávnění**a **stav**.
    
-    c. Klikněte na tlačítko **odeslat**.
+    c. Klikněte na **Submit** (Odeslat).
 
 >[!NOTE]
 >Můžete použít jakékoli jiné LogicMonitor uživatelského účtu nástrojů pro vytváření nebo rozhraní API poskytovaných LogicMonitor ke zřízení služby Azure Active Directory uživatelské účty. 
@@ -242,11 +242,11 @@ V této části je povolit Britta Simon k udělení přístupu k LogicMonitor po
 ### <a name="testing-single-sign-on"></a>Testování jednotného přihlašování
 
 V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
- 
+ 
 Po kliknutí na dlaždici LogicMonitor na přístupovém panelu, vám by měl získat automaticky přihlášení k aplikaci LogicMonitor.
 Další informace o přístupovém panelu, naleznete v tématu [Úvod k přístupovému panelu](../active-directory-saas-access-panel-introduction.md). 
 
-## <a name="additional-resources"></a>Další zdroje informací:
+## <a name="additional-resources"></a>Další materiály
 
 * [Seznam kurzů o integraci aplikací SaaS pomocí Azure Active Directory](tutorial-list.md)
 * [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](../manage-apps/what-is-single-sign-on.md)

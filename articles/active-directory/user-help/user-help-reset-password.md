@@ -3,7 +3,7 @@ title: Resetovat heslo pomocí bezpečnostních údajů – Azure Active Directo
 description: Postup resetování vlastního hesla, kdybyste zapomněli, pomocí zabezpečení informací a dvoustupňové ověření.
 services: active-directory
 author: eross-msft
-manager: mtillman
+manager: daveba
 ms.reviewer: sahenry
 ms.service: active-directory
 ms.workload: identity
@@ -11,16 +11,16 @@ ms.component: user-help
 ms.topic: conceptual
 ms.date: 07/30/2018
 ms.author: lizross
-ms.openlocfilehash: a95d5adb4ee0eb8aa71f7759e3f2b5520bda5ff4
-ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
+ms.openlocfilehash: 6bf8c548d81b3cade487f3188cdafae82b5776d9
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/30/2018
-ms.locfileid: "39348257"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54815935"
 ---
 # <a name="reset-your-work-or-school-password"></a>Resetovat heslo pracovního nebo školního
 
-Pokud zapomněli jste heslo nikdy jej obdržela od firemní podpory nebo byla uzamčena mimo svůj účet, můžete použít své bezpečnostní údaje a vašeho mobilního zařízení k resetování hesla.
+Pokud jste zapomněli své heslo, nikdy jste ho od podpory vaší společnosti nedostali nebo vám byl zablokován účet, můžete své heslo resetovat pomocí svých bezpečnostních údajů a mobilního zařízení.
 
 >[!NOTE]
 >Pokud víte, své heslo a chcete ho změnit, můžete přejít na [změňte si heslo](#how-to-change-your-password) kroky v tomto článku.<br><br>
@@ -159,7 +159,7 @@ Tady jsou některé běžné případy chyb a jejich řešení:
 |Při pokusu o změnu hesla obdržím chybu. |Vaše heslo obsahuje slovo, frázi nebo vzor, který umožňuje snadno uhodnutelných heslo.| Zkuste znovu použít silnější heslo.|
 |Po zadání ID uživatele, přejít na stránku, která říká, "Obraťte se prosím na svého správce."|Microsoft bylo zjištěno, že vaše heslo k uživatelskému účtu se stará váš správce v místním prostředí. V důsledku toho nelze resetovat heslo na odkaz "Nedaří se vašeho účtu". |Další pomoc, obraťte se na správce.|
 |Po zadání ID uživatele, se zobrazí chyba, že "váš účet není povolen pro resetování hesla."|Správce nenastavila váš účet, můžete resetovat vlastní heslo.|Správce nebyla zapnuta resetování hesla pro vaši organizaci na odkaz "Nedaří se váš účet", nebo nebyla licenci, abyste použili funkci.<br><br> K resetování hesla, musíte vybrat "kontaktujte správce propojení" Odeslat e-mail na správce vaší společnosti a dát jim vědět, kterou chcete resetování hesla.|
-|Po zadání ID uživatele, se zobrazí chyba, že "Nemohli jsme ověřit váš účet."|Proces přihlašování nebyl schopen ověřit informace o účtu.|Existují dva důvody, že se že může zobrazit tato zpráva.<br><br>1. Správce zapnuté pro vaši organizaci resetování hesla, ale jste se ještě nezaregistrovali pro používání služby. K registraci pro resetování hesla, přečtěte si následující články podle způsobu ověření: [nastavení bezpečnostní údaje pro použití aplikace authenticator (preview)](security-info-setup-auth-app.md), [upravit informace o zabezpečení tak, aby pomocí telefonního hovoru(veverzipreview)](security-info-setup-phone-number.md), [Nastavení bezpečnostní údaje pro použití zasílání textových zpráv (preview)](security-info-setup-text-msg.md), [nastavení bezpečnostní údaje pro použití e-mailu (preview)](security-info-setup-email.md), nebo [nastavení bezpečnostní údaje pro použití bezpečnostních otázek (preview) ](security-info-setup-questions.md).<br><br>2. Správce není nastavená na on pro vaši organizaci resetování hesla. V takovém případě musíte vybrat "kontaktujte správce propojení" Odeslat e-mail s výzvou k resetování hesla správce systému.|
+|Po zadání ID uživatele, se zobrazí chyba, že "Nemohli jsme ověřit váš účet."|Proces přihlašování nebyl schopen ověřit informace o účtu.|Existují dva důvody, že se že může zobrazit tato zpráva.<br><br>1. Správce zapnuté pro vaši organizaci resetování hesla, ale jste se ještě nezaregistrovali pro používání služby. K registraci pro resetování hesla, najdete v jedné z následujících článků založené na vaší metodě ověřování: [Upravit informace o zabezpečení tak, aby pomocí ověřovací aplikace (preview)](security-info-setup-auth-app.md), [upravit informace o zabezpečení tak, aby pomocí telefonního hovoru (preview)](security-info-setup-phone-number.md), [nastavení bezpečnostní údaje pro použití zasílání textových zpráv (preview)](security-info-setup-text-msg.md), [ Nastavení informací o zabezpečení pro použití e-mailu (preview)](security-info-setup-email.md), nebo [nastavení bezpečnostní údaje pro použití bezpečnostních otázek (preview)](security-info-setup-questions.md).<br><br>2. Správce není nastavená na on pro vaši organizaci resetování hesla. V takovém případě musíte vybrat "kontaktujte správce propojení" Odeslat e-mail s výzvou k resetování hesla správce systému.|
 
 ## <a name="next-steps"></a>Další postup
 

@@ -4,7 +4,7 @@ description: Naučte se analyzovat protokoly aktivit Azure Active Directory pomo
 services: active-directory
 documentationcenter: ''
 author: priyamohanram
-manager: mtillman
+manager: daveba
 editor: ''
 ms.assetid: 4535ae65-8591-41ba-9a7d-b7f00c574426
 ms.service: active-directory
@@ -16,16 +16,16 @@ ms.component: report-monitor
 ms.date: 11/13/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 2f0f5341ba6818f375d463638979c68689519227
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: 759a0da93544e2a17b71d762924981f05c3ea322
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51624195"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54810770"
 ---
 # <a name="analyze-azure-ad-activity-logs-with-log-analytics-preview"></a>Analýza služby Azure AD protokoly aktivit s využitím Log Analytics (Náhled)
 
-Poté co [integrovat Azure AD protokoly aktivit s využitím Log Analytics](howto-integrate-activity-logs-with-log-analytics.md), výkon služby Log Analytics můžete použít k získání přehledu o vašich prostředí. Můžete také nainstalovat [zobrazení Log Analytics pro Azure AD aktivitu protokoly](howto-install-use-log-analytics-views.md) získat přístup k předdefinované sestavy na základě auditu a události přihlášení ve vašem prostředí.
+Poté co [integrovat Azure AD protokoly aktivit s využitím Log Analytics](howto-integrate-activity-logs-with-log-analytics.md), výkon služby Log Analytics můžete použít k získání přehledu o vašem prostředí. Můžete také nainstalovat [zobrazení Log Analytics pro Azure AD aktivitu protokoly](howto-install-use-log-analytics-views.md) získat přístup k předdefinované sestavy na základě auditu a události přihlášení ve vašem prostředí.
 
 V tomto článku se dozvíte, jak Azure analyzovat protokoly AD aktivit ve vašem pracovním prostoru Log Analytics. 
 
@@ -93,9 +93,9 @@ Můžete také nastavit výstrahy na váš dotaz. Například pokud chcete nakon
 
 Můžete si také stáhnout předem připravené zobrazení Log Analytics pro Azure AD aktivitu protokoly. Zobrazení poskytují několik sestav související s běžné scénáře zahrnující auditu a události přihlášení. Vám může také upozornit na žádném z dat v sestavách, pomocí kroků popsaných v předchozí části.
 
-* **Azure AD účet zřizování události**: Toto zobrazení uvádí sestavy k auditování aktivity zajišťování na aktivitu, jako je počet nových uživatelů, které jsou zřízené a selhání zřizování, počet uživatelů, aktualizovat a aktualizovat při selhání a počet uživatelů zruší a odpovídající selhání.    
+* **Účet Azure AD zřizování události**: Toto zobrazení uvádí sestavy k auditování aktivity zajišťování na aktivitu, jako je počet nových uživatelů, které jsou zřízené a selhání zřizování, počet uživatelů, aktualizovat a aktualizovat chyby a počet uživatelů, zrušení zřízení a odpovídající selhání.    
 * **Události přihlášení**: Toto zobrazení uvádí relevantní zprávy související s monitorování aktivit přihlašování, jako je například přihlášení aplikace, uživatelů, zařízení, stejně jako přehled sledování počet přihlášení v čase.
-* **Provádění souhlas uživatele**: Toto zobrazení uvádí sestavy související se souhlas uživatele, jako například uděluje souhlas uživatele, přihlášení podle uživatele, kteří udělili souhlas, jakož i přihlášení aplikace pro všechny aplikace na základě vyjádření souhlasu. 
+* **Uživatelů, kteří provádějí souhlasu**: Toto zobrazení uvádí sestavy související se souhlas uživatele, jako například uděluje souhlas uživatele, přihlášení podle uživatele, kteří udělili souhlas, jakož i přihlášení aplikace pro všechny aplikace na základě vyjádření souhlasu. 
 
 Informace o [instalaci a používání zobrazení Log Analytics pro protokoly aktivit služby Azure AD](howto-install-use-log-analytics-views.md). 
 

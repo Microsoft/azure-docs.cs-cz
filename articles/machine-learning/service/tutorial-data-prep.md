@@ -11,12 +11,12 @@ ms.author: cforbe
 ms.reviewer: trbye
 ms.date: 12/04/2018
 ms.custom: seodec18
-ms.openlocfilehash: 81afda4227484c19b49ffc4c399e52576629da34
-ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
+ms.openlocfilehash: eb4d94d93a72844cfa869bd74aef6eeb34b0f8e9
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2019
-ms.locfileid: "54321870"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54817499"
 ---
 # <a name="tutorial-prepare-data-for-regression-modeling"></a>Kurz: Příprava dat pro regresní modelování
 
@@ -37,7 +37,7 @@ Můžete připravit vaše data v jazyce Python pomocí [sady SDK služby Azure M
 
 ## <a name="get-the-notebook"></a>Získání poznámkového bloku
 
-V zájmu usnadnění práce je tento kurz dostupný jako [poznámkový blok Jupyter](https://github.com/Azure/MachineLearningNotebooks/blob/master/tutorials/regression-part1-data-prep.ipynb). Spustit **regrese – část 1 data-prep.ipynb** poznámkového bloku v poznámkových bloků Azure nebo v serveru Poznámkový blok Jupyter.
+V zájmu usnadnění práce je tento kurz dostupný jako [poznámkový blok Jupyter](https://github.com/Azure/MachineLearningNotebooks/blob/master/tutorials/regression-part1-data-prep.ipynb). Spustit **regrese – část 1 data-prep.ipynb** poznámkového bloku v [poznámkových bloků Azure](https://notebooks.azure.com/) nebo vlastní server poznámkového bloku Jupyter.
 
 [!INCLUDE [aml-clone-in-azure-notebook](../../../includes/aml-clone-in-azure-notebook.md)]
 
@@ -1066,7 +1066,7 @@ package.save(file_path)
 
 V druhé části kurzu pokračovat, je nutné **dflows.dprep** soubor v aktuálním adresáři.
 
-Pokud nemáte v úmyslu pokračovat v druhé části, odstraňte **dflows.dprep** soubor v aktuálním adresáři. Odstraňte tento soubor, ať používáte provádění místně nebo v poznámkových bloků Azure.
+Pokud nemáte v úmyslu pokračovat v druhé části, odstraňte **dflows.dprep** soubor v aktuálním adresáři. Odstranit tento soubor, jestli používáte provádění místně nebo v [poznámkových bloků Azure](https://notebooks.azure.com/).
 
 ## <a name="next-steps"></a>Další postup
 

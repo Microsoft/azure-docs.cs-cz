@@ -1,10 +1,10 @@
 ---
-title: 'Kurz: Integrace Azure Active Directory se službou Menlo zabezpečení | Dokumentace Microsoftu'
+title: 'Kurz: Integrace Azure Active Directory s Menlo zabezpečení | Dokumentace Microsoftu'
 description: Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a Menlo zabezpečení.
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.assetid: 9e63fe6b-0ad0-405d-9e41-6a1a40a41df8
 ms.service: active-directory
 ms.component: saas-app-tutorial
@@ -14,14 +14,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/08/2017
 ms.author: jeedes
-ms.openlocfilehash: a1f7458d52ffdee4cb48e4be0f553e3d57413249
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 70b6693afe1a57e8acd62500d74f860dffc7c692
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39428841"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54808693"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-menlo-security"></a>Kurz: Integrace Azure Active Directory se službou Menlo zabezpečení
+# <a name="tutorial-azure-active-directory-integration-with-menlo-security"></a>Kurz: Integrace Azure Active Directory s Menlo zabezpečení
 
 V tomto kurzu se dozvíte, jak integrovat Menlo zabezpečení Azure Active Directory (Azure AD).
 
@@ -37,7 +37,7 @@ Pokud chcete zjistit další podrobnosti o integraci aplikací SaaS v Azure AD, 
 
 Konfigurace integrace Azure AD s Menlo zabezpečení, potřebujete následující položky:
 
-- S předplatným služby Azure AD
+- Předplatné Azure AD
 - Zabezpečení Menlo jednotného přihlašování povolená předplatného
 
 > [!NOTE]
@@ -59,7 +59,7 @@ Konfigurace integrace Menlo zabezpečení do služby Azure AD, musíte zvýšit 
 
 **Pro přidání zabezpečení Menlo z galerie, postupujte následovně:**
 
-1. V  **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu. 
+1. V **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu. 
 
     ![Active Directory][1]
 
@@ -143,16 +143,16 @@ V této části Povolení služby Azure AD jednotného přihlašování na port�
 
     c. V části **SAML zprostředkovatele**vyberte **Azure Active Directory**.
 
-    d. **Koncový bod SAML 2.0** : Vložit **SAML jednotné přihlašování – adresa URL služby** zkopírovanou z webu Azure portal.
+    d. **Protokol SAML 2.0 koncový bod** : Vložit **SAML jednotné přihlašování – adresa URL služby** zkopírovanou z webu Azure portal.
 
-    e. **Identifikátor služby (Issuer)** : Vložit **SAML Entity ID** zkopírovanou z webu Azure portal.
+    e. **Služba identifikátor (Issuer)** : Vložit **SAML Entity ID** zkopírovanou z webu Azure portal.
 
     f. **Certifikát X.509** : Otevřít **certifikát (Base64)** stáhli z portálu Azure v programu Poznámkový blok a vložte ho do tohoto pole.
 
     g. Kliknutím na **Uložit** nastavení uložte.
 
 > [!TIP]
-> Teď si můžete přečíst stručné verzi těchto pokynů uvnitř [webu Azure portal](https://portal.azure.com), zatímco jsou nastavení aplikace!  Po přidání této aplikace z **služby Active Directory > podnikové aplikace** části, stačí kliknout **Single Sign-On** kartu a přístup k vložené dokumentaci prostřednictvím  **Konfigurace** oblast v dolní části. Další informace o funkci vložená dokumentace: [dokumentace ke službě Azure AD embedded]( https://go.microsoft.com/fwlink/?linkid=845985)
+> Teď si můžete přečíst stručné verzi těchto pokynů uvnitř [webu Azure portal](https://portal.azure.com), zatímco jsou nastavení aplikace!  Po přidání této aplikace z **služby Active Directory > podnikové aplikace** části, stačí kliknout **Single Sign-On** kartu a přístup k vložené dokumentaci prostřednictvím  **Konfigurace** oblast v dolní části. Další informace o funkci vložená dokumentace: [Dokumentace ke službě Azure AD, embedded]( https://go.microsoft.com/fwlink/?linkid=845985)
  
 
 ### <a name="creating-an-azure-ad-test-user"></a>Vytváří se testovací uživatele služby Azure AD
@@ -188,7 +188,7 @@ Cílem této části je vytvoření zkušebního uživatele na webu Azure Portal
  
 ### <a name="creating-a-menlo-security-test-user"></a>Vytvoření zkušebního uživatele Menlo zabezpečení
  
-V této části vytvořte uživatele Britta Simon Menlo zabezpečení. Práce s [tým podpory klienta zabezpečení Menlo](https://www.menlosecurity.com/menlo-contact) přidat uživatele na platformě Menlo zabezpečení. Uživatelé musí vytvořit a aktivovat, než použití jednotného přihlašování. 
+V této části vytvořte uživatele Britta Simon Menlo zabezpečení. Práce s [tým podpory klienta zabezpečení Menlo](https://www.menlosecurity.com/menlo-contact) přidat uživatele na platformě Menlo zabezpečení. Uživatelé musí vytvořit a aktivovat, než použití jednotného přihlašování. 
 
 ### <a name="assigning-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
@@ -226,7 +226,7 @@ V této části Testování služby Azure AD jednotné přihlašování – konf
 
 Otevřete okno prohlížeče v režimu "InPrivate" nebo "Incognito" k aktivaci nové ověřování.  V aplikaci Internet Explorer použijte kombinaci kláves Ctrl + Shift + P.  V prohlížeči Chrome použijte kombinaci kláves Ctrl + Shift + N.  V okně privátní procházení přejděte k chráněnému prostředku a provést přihlášení Azure AD.  Po úspěšném přihlášení budete přesměrováni na požadovaný server v rámci relace izolace.
 
-## <a name="additional-resources"></a>Další zdroje informací:
+## <a name="additional-resources"></a>Další materiály
 
 * [Seznam kurzů o integraci aplikací SaaS pomocí Azure Active Directory](tutorial-list.md)
 * [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](../manage-apps/what-is-single-sign-on.md)

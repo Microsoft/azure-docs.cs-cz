@@ -1,10 +1,10 @@
 ---
-title: 'Azure Active Directory Domain Services: Zásady hesel | Dokumentace Microsoftu'
+title: 'Azure Active Directory Domain Services: Zásady pro hesla | Dokumentace Microsoftu'
 description: Vysvětlení zásad hesel na spravované domény
 services: active-directory-ds
 documentationcenter: ''
 author: eringreenlee
-manager: mtillman
+manager: daveba
 editor: curtand
 ms.assetid: 1a14637e-b3d0-4fd9-ba7a-576b8df62ff2
 ms.service: active-directory
@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/17/2018
 ms.author: ergreenl
-ms.openlocfilehash: dcc1de5fa0ac1f394d0fe12fd24a1d6e745df83e
-ms.sourcegitcommit: 022cf0f3f6a227e09ea1120b09a7f4638c78b3e2
+ms.openlocfilehash: 0bb3ccb3841b60f6c94ac1d6126bd2b0d44af092
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/21/2018
-ms.locfileid: "52284601"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54852689"
 ---
 # <a name="password-and-account-lockout-policies-on-managed-domains"></a>Zásady uzamčení hesla a účtu na spravované domény
 Tento článek vysvětluje výchozí zásady hesel ve spravované doméně. Věnuje se také, jak můžete nakonfigurovat tyto zásady.
@@ -58,7 +58,7 @@ Ve spravované doméně jsou ve výchozím nastavení nakonfigurované následuj
 
 ### <a name="account-lockout-settings"></a>Nastavení uzamčení účtu
 Ve spravované doméně jsou ve výchozím nastavení nakonfigurované následující zásady uzamčení účtu:
-* Doba uzamčení účtu: 30
+* Doba trvání uzamčení účtu: 30
 * Počet neúspěšných pokusů o přihlášení povolený: 5
 * Resetování neúspěšných pokusů o přihlášení počet po: 30 minut
 
@@ -113,7 +113,7 @@ Pokud chcete vytvořit vlastní podrobných zásad pro HESLA ve vaší spravovan
   ![Podrobné zásady pro HESLA použít](./media/how-to/fgpp-applied.png)
 
 > [!TIP]
-> **K uplatnění zásad vlastního hesla pro uživatelské účty ve vlastní organizační jednotce:** zásady pro hesla jemné jemněji lze použít pouze u skupin. Konfigurace zásad vlastní heslo jenom pro uživatele z vlastní organizační jednotky, vytvořte skupinu, která obsahuje uživatele v dané organizační jednotce.
+> **K uplatnění zásad vlastního hesla pro uživatelské účty ve vlastní organizační jednotce:** Zásady pro hesla jemné jemněji lze použít pouze do skupin. Konfigurace zásad vlastní heslo jenom pro uživatele z vlastní organizační jednotky, vytvořte skupinu, která obsahuje uživatele v dané organizační jednotce.
 >
 >
 

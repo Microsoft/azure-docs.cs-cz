@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 07/19/2018
 ms.reviewer: mbullwin
 ms.author: harelbr
-ms.openlocfilehash: b1f4d278079b81b4a224dc4712426d1f078de110
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: edfd908166e4334bdfda0f043cba727cb0370405
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54020400"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54853591"
 ---
 # <a name="manage-application-insights-smart-detection-rules-using-azure-resource-manager-templates"></a>Spravovat pravidla inteligentního zjišťování služby Application Insights pomocí šablon Azure Resource Manageru
 
@@ -154,6 +154,17 @@ Níže je tabulka názvů pravidla inteligentního zjišťování, jak se objev�
 | Zjištěna potenciální nevrácená paměť (preview) | extension_memoryleakextension |
 | Zjistil potenciální problém zabezpečení (preview) | extension_securityextensionspackage |
 | Zjistil se problém využití prostředků (preview) | extension_resourceutilizationextensionspackage |
+
+## <a name="who-receives-the-classic-alert-notifications"></a>Kdo přijímá oznámení výstrah (klasické)?
+
+Tato část pouze platí pro klasických upozornění inteligentního zjišťování a pomůže vám optimalizovat vaše oznámení o výstrahách Ujistěte se, že pouze požadované příjemci dostávat oznámení. Bližší informace o rozdílech mezi [klasických upozornění] (.. /Platform/Alerts-Classic.Overview.MD a nové prostředí upozornění odkazovat [výstrahy přehledovém článku](../platform/alerts-overview.md). Inteligentní zjišťování aktuálně upozorní potřebné klasických upozornění prostředí podpory. Jedinou výjimkou je [inteligentního zjišťování výstrah v Azure cloud services](./proactive-cloud-services.md). K řízení oznámení oznámení pro výstrahy funkce Inteligentní zjišťování v cloudu Azure services pomocí [skupiny akcí](../platform/action-groups.md).
+
+* Doporučujeme vám používat konkrétní příjemců oznámení výstrah inteligentní zjišťování/classic.
+
+* Upozornění inteligentního zjišťování **hromadné/skupiny** zaškrtávací políčko, pokud je povoleno, odešle uživatelům s rolí vlastník, Přispěvatel nebo Čtenář v rámci předplatného. V důsledku toho _všechny_ uživatelé s přístupem k předplatnému prostředku Application Insights jsou v rozsahu a budou dostávat oznámení. 
+
+> [!NOTE]
+> Pokud aktuálně používáte službu **hromadné/skupiny** zaškrtávací políčko a zakázat, nebude možné vrátit zpět změny.
 
 ## <a name="next-steps"></a>Další kroky
 

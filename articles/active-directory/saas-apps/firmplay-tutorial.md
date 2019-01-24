@@ -1,10 +1,10 @@
 ---
-title: 'Kurz: Integrace Azure Active Directory se službou FirmPlay - Advocacy zaměstnance pro nábor | Dokumentace Microsoftu'
+title: 'Kurz: Integrace Azure Active Directory s FirmPlay - Advocacy zaměstnance pro nábor | Dokumentace Microsoftu'
 description: Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a FirmPlay - Advocacy zaměstnance pro nábor.
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.assetid: a6799629-7546-43f8-a966-956db32864b1
 ms.service: active-directory
 ms.component: saas-app-tutorial
@@ -14,14 +14,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/15/2017
 ms.author: jeedes
-ms.openlocfilehash: abc29480e5f5531857cbf973d5386727c3d7f2ac
-ms.sourcegitcommit: 4eddd89f8f2406f9605d1a46796caf188c458f64
+ms.openlocfilehash: 929494d5d802dbc545c750386a286029c4bf962d
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49114524"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54809798"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-firmplay---employee-advocacy-for-recruiting"></a>Kurz: Integrace Azure Active Directory se službou FirmPlay - Advocacy zaměstnance pro nábor
+# <a name="tutorial-azure-active-directory-integration-with-firmplay---employee-advocacy-for-recruiting"></a>Kurz: Integrace Azure Active Directory s FirmPlay - Advocacy zaměstnance pro nábor
 
 V tomto kurzu se dozvíte, jak integrovat FirmPlay - Advocacy zaměstnance pro nábor se službou Azure Active Directory (Azure AD).
 
@@ -95,7 +95,7 @@ Nakonfigurovat a otestovat Azure AD jednotné přihlašování s FirmPlay - Advo
 
 1. **[Konfigurace Azure AD Single Sign-On](#configuring-azure-ad-single-sign-on)**  – Pokud chcete, aby uživatelé mohli tuto funkci používat.
 1. **[Vytváří se testovací uživatele služby Azure AD](#creating-an-azure-ad-test-user)**  – Pokud chcete otestovat Azure AD jednotné přihlašování s Britta Simon.
-1. **[Vytváření FirmPlay - Advocacy zaměstnance pro testovacího uživatele nábor](#creating-a-firmplay---employee-advocacy-for-recruiting-test-user)**  – Pokud chcete mít protějšek Britta Simon FirmPlay: Advocacy zaměstnance pro přijetí, který je propojený s Azure AD reprezentace jí.
+1. **[Vytváření FirmPlay - Advocacy zaměstnance pro testovacího uživatele nábor](#creating-a-firmplay---employee-advocacy-for-recruiting-test-user)**  – Pokud chcete mít protějšek Britta Simon FirmPlay: Zaměstnanec Advocacy pro přijetí, který je propojený s Azure AD reprezentace jí.
 1. **[Přiřazení testovacího uživatele Azure AD](#assigning-the-azure-ad-test-user)**  – Pokud chcete povolit Britta Simon používat Azure AD jednotného přihlašování.
 1. **[Testování Single Sign-On](#testing-single-sign-on)**  – Pokud chcete ověřit, jestli funguje v konfiguraci.
 
@@ -234,7 +234,7 @@ V této části Testování služby Azure AD jednotné přihlašování – konf
 Po kliknutí na FirmPlay - Advocacy zaměstnance pro nábor dlaždici na přístupovém panelu, vám by měl získat automaticky přihlášení k vaší FirmPlay - zaměstnance Advocacy nábor aplikace.
 
 
-## <a name="additional-resources"></a>Další zdroje informací:
+## <a name="additional-resources"></a>Další materiály
 
 * [Seznam kurzů o integraci aplikací SaaS pomocí Azure Active Directory](tutorial-list.md)
 * [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](../manage-apps/what-is-single-sign-on.md)

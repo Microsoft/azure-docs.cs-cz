@@ -3,29 +3,29 @@ title: Fronty Azure Storage a fronty služby Service Bus porovnání a rozdíly 
 description: Analyzuje rozdíly a podobnosti mezi dvěma typy front, které nabízí Azure.
 services: service-bus-messaging
 documentationcenter: na
-author: spelluru
+author: axisc
 manager: timlt
-editor: ''
+editor: spelluru
 ms.assetid: f07301dc-ca9b-465c-bd5b-a0f99bab606b
 ms.service: service-bus-messaging
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
-ms.date: 09/05/2018
-ms.author: spelluru
-ms.openlocfilehash: 0254762de49f37c591a7847fe9b40b3ecbabe1bd
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.date: 01/23/2019
+ms.author: aschhab
+ms.openlocfilehash: c59d79a7c6ac0590861c99daa01438b184cd71ff
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51261056"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54852792"
 ---
 # <a name="storage-queues-and-service-bus-queues---compared-and-contrasted"></a>Fronty služby Storage a fronty služby Service Bus – porovnání a rozdíly
-Tento článek analyzuje rozdíly a podobnosti mezi dvěma typy front, které nabízí Microsoft Azure ještě dnes: fronty služby Storage a fronty služby Service Bus. Tyto informace můžete použít ke srovnání příslušných technologií a pomůžou vám kvalifikovaněji se rozhodnout, které řešení nejlíp vyhovuje vašim potřebám.
+Tento článek analyzuje rozdíly a podobnosti mezi dvěma typy front, které nabízí Microsoft Azure ještě dnes: Fronty služby Storage a fronty služby Service Bus. Tyto informace můžete použít ke srovnání příslušných technologií a pomůžou vám kvalifikovaněji se rozhodnout, které řešení nejlíp vyhovuje vašim potřebám.
 
 ## <a name="introduction"></a>Úvod
-Azure podporuje dva typy mechanismů fronty: **front služby Storage** a **fronty služby Service Bus**.
+Azure podporuje dva typy mechanismů fronty: **Fronty úložiště** a **fronty služby Service Bus**.
 
 **Fronty úložiště**, které jsou součástí [služby Azure storage](https://azure.microsoft.com/services/storage/) infrastruktury, funkce jednoduché rozhraní založené na protokolu REST GET/PUT/PEEK poskytují spolehlivé, trvalé zasílání zpráv v rámci a mezi službami.
 
@@ -154,7 +154,7 @@ Tato část obsahuje porovnání funkcí správy, poskytuje fronty úložiště 
 | .NET API |**Ano**<br/><br/>(.NET API klienta úložiště) |**Ano**<br/><br/>(.NET služby Service Bus rozhraní API) |
 | Nativní kód C++ |**Ano** |**Ano** |
 | Java API |**Ano** |**Ano** |
-| ROZHRANÍ API PRO PHP |**Ano** |**Ano** |
+| PHP API |**Ano** |**Ano** |
 | Rozhraní API Node.js |**Ano** |**Ano** |
 | Podpora libovolného metadat |**Ano** |**Ne** |
 | Fronty – pravidla pojmenování |**Až 63 znaků**<br/><br/>(Písmena v názvu fronty musí být malými písmeny.) |**Dlouhé až 260 znaků.**<br/><br/>(Fronta cesty a názvy jsou malá a velká písmena.) |

@@ -11,12 +11,12 @@ author: hning86
 ms.author: haining
 ms.date: 01/18/2019
 ms.custom: seodec18
-ms.openlocfilehash: 0dab14e9c8f99a10b1dc26c2adb1e88d3b18ee90
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: e3569f560224ab8c9a64ababb2fcea7e96e87367
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 01/23/2019
-ms.locfileid: "54468147"
+ms.locfileid: "54812450"
 ---
 # <a name="quickstart-use-the-azure-portal-to-get-started-with-azure-machine-learning"></a>Rychlý start: Začínáme s Azure Machine Learning pomocí webu Azure portal
 
@@ -61,7 +61,7 @@ Tento příklad ukazuje, jak vám pracovní prostor může pomoct udržovat si p
 
 ### <a name="open-a-notebook"></a>Otevření poznámkového bloku 
 
-Poznámkových bloků Azure poskytuje bezplatná Cloudová platforma pro poznámkové bloky Jupyter, které je předem nakonfigurován s všechno, co potřebujete ke spuštění Machine Learning. Z pracovního prostoru můžete spustit tuto platformu, abyste mohli začít používat váš pracovní prostor služby Azure Machine Learning.
+[Azure Notebooks](https://notebooks.azure.com) poskytuje bezplatná Cloudová platforma pro poznámkové bloky Jupyter, které je předem nakonfigurován s všechno, co potřebujete ke spuštění Machine Learning. Z pracovního prostoru můžete spustit tuto platformu, abyste mohli začít používat váš pracovní prostor služby Azure Machine Learning.
 
 1. Na stránce pracovního prostoru vyberte **prozkoumání služby Azure Machine Learning Workspace**.
 

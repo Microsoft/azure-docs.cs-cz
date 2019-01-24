@@ -3,24 +3,24 @@ title: Jak propojit předplatné Azure s Azure Active Directory B2C | Dokumentac
 description: Podrobný průvodce pro povolení fakturace pro tenanta Azure AD B2C do předplatného Azure.
 services: active-directory-b2c
 author: davidmu1
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.topic: conceptual
 ms.workload: identity
 ms.date: 12/07/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 1486e303e4e94ee6140bcd6ed4f52bc433b9aae6
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: e39b7472904e7635340327d311eb7d4b9123f51e
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53100051"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54853183"
 ---
 # <a name="linking-an-azure-subscription-to-an-azure-ad-b2c-tenant"></a>Propojení s předplatným Azure s tenantem Azure AD B2C
 
 > [!IMPORTANT]
-> Nejnovější informace o využití, fakturaci a cenách pro Azure AD B2C se na následující stránce: [ceny Azure AD B2C](https://azure.microsoft.com/pricing/details/active-directory-b2c/)
+> Nejnovější informace o využití, fakturaci a cenách pro Azure AD B2C se na následující stránce: [Azure AD B2C Pricing](https://azure.microsoft.com/pricing/details/active-directory-b2c/)
 
 Účtují se poplatky za používání pro Azure AD B2C s předplatným Azure. Při vytvoření tenanta Azure AD B2C, musí správce klienta pro explicitní propojení tenanta Azure AD B2C s předplatným Azure. V tomto článku se dozvíte, jak.
 

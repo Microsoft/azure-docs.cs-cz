@@ -3,23 +3,23 @@ title: Azure Service Bus s .NET a AMQP 1.0 | Dokumentace Microsoftu
 description: Pomocí služby Azure Service Bus z .NET pomocí AMQP
 services: service-bus-messaging
 documentationcenter: na
-author: spelluru
+author: axisc
 manager: timlt
-editor: ''
+editor: spelluru
 ms.assetid: 332bcb13-e287-4715-99ee-3d7d97396487
 ms.service: service-bus-messaging
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/16/2018
-ms.author: spelluru
-ms.openlocfilehash: ad789b7a65fd12abb2a6e92c7c8896677de80cec
-ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
+ms.date: 01/23/2019
+ms.author: aschhab
+ms.openlocfilehash: f5713fe3333f291d8d28a6ef3df48572507661be
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43702234"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54853200"
 ---
 # <a name="use-service-bus-from-net-with-amqp-10"></a>Použití služby Service Bus z .NET pomocí protokolu AMQP 1.0
 
@@ -71,22 +71,22 @@ Pro usnadnění vzájemná funkční spolupráce s klienty než .NET, používaj
 | SByte |byte |Hodnota AMQP |
 | krátké |krátké |Hodnota AMQP |
 | int |int |Hodnota AMQP |
-| zem. šířka |zem. šířka |Hodnota AMQP |
+| Long |Long |Hodnota AMQP |
 | float |float |Hodnota AMQP |
 | double |double |Hodnota AMQP |
-| Decimal |decimal128 |Hodnota AMQP |
+| decimal |decimal128 |Hodnota AMQP |
 | Char |Char |Hodnota AMQP |
 | DateTime |časové razítko |Hodnota AMQP |
-| Guid |identifikátor UUID |Hodnota AMQP |
+| Guid |Uuid |Hodnota AMQP |
 | Byte |Binární |Hodnota AMQP |
 | řetězec |řetězec |Hodnota AMQP |
-| Rozhraní System.Collections.IList |Seznam |Hodnota AMQP: položky obsažené v kolekci lze pouze ty, které jsou definovány v této tabulce. |
-| Objekt System.Array |pole |Hodnota AMQP: položky obsažené v kolekci lze pouze ty, které jsou definovány v této tabulce. |
-| Rozhraní System.Collections.IDictionary |Mapa |Hodnota AMQP: položky obsažené v kolekci lze pouze ty, které jsou definovány v této tabulce. Poznámka: jsou podporovány pouze řetězec klíče. |
+| System.Collections.IList |list |Hodnota AMQP: položky obsažené v kolekci lze pouze ty, které jsou definovány v této tabulce. |
+| System.Array |pole |Hodnota AMQP: položky obsažené v kolekci lze pouze ty, které jsou definovány v této tabulce. |
+| System.Collections.IDictionary |map |Hodnota AMQP: položky obsažené v kolekci lze pouze ty, které jsou definovány v této tabulce. Poznámka: jsou podporovány pouze řetězec klíče. |
 | URI |Popisuje řetězec (viz následující tabulka) |Hodnota AMQP |
 | DateTimeOffset |Popisuje dlouho (viz následující tabulka) |Hodnota AMQP |
 | Časový interval |Popisuje dlouho (viz následující) |Hodnota AMQP |
-| Stream |Binární |Data protokolu AMQP (může být více). Části Data obsahují nezpracované bajty přečtené z objektu Stream. |
+| Datový proud |Binární |Data protokolu AMQP (může být více). Části Data obsahují nezpracované bajty přečtené z objektu Stream. |
 | Druhý objekt |Binární |Data protokolu AMQP (může být více). Obsahuje serializovaná binární soubor objektu, který používá objektu DataContractSerializer nebo serializátor poskytnuté aplikací. |
 
 | Typ formátu .NET | Mapovaná AMQP popsané typu | Poznámky |
@@ -108,7 +108,7 @@ Při použití AMQP v porovnání s výchozím protokolem existují určité mal
 [Rozhraní .NET API](/dotnet/api/) vystavit několik nastavení, které řídí chování protokolu AMQP:
 
 * **[MessageReceiver.PrefetchCount](/dotnet/api/microsoft.servicebus.messaging.messagereceiver.prefetchcount?view=azureservicebus-4.0.0#Microsoft_ServiceBus_Messaging_MessageReceiver_PrefetchCount)**: Určuje počáteční kredit použitý pro odkaz. Výchozí hodnota je 0.
-* **[MessagingFactorySettings.AmqpTransportSettings.MaxFrameSize](/dotnet/api/microsoft.servicebus.messaging.amqp.amqptransportsettings.maxframesize?view=azureservicebus-4.0.0#Microsoft_ServiceBus_Messaging_Amqp_AmqpTransportSettings_MaxFrameSize)**: ovládací prvky maximální velikost rámce AMQP nabízelo pro vyjednávání při připojení otevřete čas. Výchozí hodnota je 65 536 bajty.
+* **[MessagingFactorySettings.AmqpTransportSettings.MaxFrameSize](/dotnet/api/microsoft.servicebus.messaging.amqp.amqptransportsettings.maxframesize?view=azureservicebus-4.0.0#Microsoft_ServiceBus_Messaging_Amqp_AmqpTransportSettings_MaxFrameSize)**: Ovládací prvky maximální velikost rámce AMQP nabízelo pro vyjednávání při připojení otevřete čas. Výchozí hodnota je 65 536 bajty.
 * **[MessagingFactorySettings.AmqpTransportSettings.BatchFlushInterval](/dotnet/api/microsoft.servicebus.messaging.amqp.amqptransportsettings.batchflushinterval?view=azureservicebus-4.0.0#Microsoft_ServiceBus_Messaging_Amqp_AmqpTransportSettings_BatchFlushInterval)**: Pokud přenosy batchable, tato hodnota určuje maximální zpoždění pro odesílání potížemi. Ve výchozím nastavení dědí odesílatele a příjemce. Jednotlivé odesílatele a příjemce může přepsat výchozí, což je 20 MS.
 * **[MessagingFactorySettings.AmqpTransportSettings.UseSslStreamSecurity](/dotnet/api/microsoft.servicebus.messaging.amqp.amqptransportsettings.usesslstreamsecurity?view=azureservicebus-4.0.0#Microsoft_ServiceBus_Messaging_Amqp_AmqpTransportSettings_UseSslStreamSecurity)**: Určuje, zda připojení AMQP jsou navázat připojení přes protokol SSL. Výchozí hodnota je **true**.
 

@@ -13,14 +13,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 07/18/2018
+ms.date: 1/23/2019
 ms.author: cwatson
-ms.openlocfilehash: de5fd6e52ab93132920b1c98188cbea92b9900b5
-ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
+ms.openlocfilehash: 88ea3a5daa1a740ab545201bc48b612ea6a56a44
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52584345"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54810325"
 ---
 # <a name="cancel-your-subscription-for-azure"></a>Zrušení předplatného pro Azure
 
@@ -37,10 +37,11 @@ Pokud zrušíte placený plán podpory Azure, se stále účtují pro zbývajíc
 ## <a name="cancel-subscription-using-the-azure-portal"></a>Zrušit předplatné na webu Azure portal
 
 1. Vyberte své předplatné z [stránce předplatná na webu Azure portal](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade).
-1. Vyberte předplatné, které chcete zrušit a klikněte na tlačítko **zrušit předplatné**.
+2. Vyberte předplatné, které chcete zrušit.
+3. Vyberte **přehled**a pak vyberte **zrušit předplatné**.
 
     ![Snímek obrazovky zobrazující tlačítko Storno](./media/billing-how-to-cancel-azure-subscription/cancel_ibiza.png)
-1. Postupujte podle výzev a dokončení zrušení.
+3. Postupujte podle výzev a dokončení zrušení.
 
 ## <a name="what-happens-after-i-cancel-my-subscription"></a>Co se stane po můžu zrušit svoje předplatné?
 
@@ -58,6 +59,6 @@ Pokud zrušíte předplatné s průběžnými platbami omylem, můžete si [akti
 
 Pokud vaše předplatné s průběžnými platbami, obraťte se na podporu do 90 dnů od zrušení a znovu aktivujte vaše předplatné.
 
-## <a name="need-help-contact-us"></a>Potřebujete pomoct? Kontaktujte nás.
+## <a name="need-help-contact-us"></a>Potřebujete pomoc? Kontaktujte nás.
 
 Pokud máte otázky nebo potřebujete pomoc, [vytvořit žádost o podporu](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest).

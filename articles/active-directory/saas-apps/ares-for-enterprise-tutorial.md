@@ -4,7 +4,7 @@ description: Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.reviewer: barbkess
 ms.assetid: 002b941e-0345-43f8-a102-baab9bb1e1dd
 ms.service: Azure-Active-Directory
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 01/16/2019
 ms.author: jeedes
-ms.openlocfilehash: 67f49aab20c396670f217ac7dbfc9d72fcbf9f04
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: 0c87e331bc1e92bff9f18bf8169766b7815c9ce0
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54440145"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54813861"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-ares-for-enterprise"></a>Kurz: Integrace Azure Active Directory s ARECH pro podniky
 

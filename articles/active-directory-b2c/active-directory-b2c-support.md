@@ -3,21 +3,21 @@ title: Podpora pro Azure Active Directory B2C | Dokumentace Microsoftu
 description: Jak soubor žádosti o podporu pro Azure Active Directory B2C.
 services: active-directory-b2c
 author: davidmu1
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 12/06/2016
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 04eae00d40470d5f6c992d9a0c8c9b0b49d7495f
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 003a65e0c9cc70639850ab9bacef5df3762dedc3
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51007633"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54852434"
 ---
-# <a name="azure-active-directory-b2c-file-support-requests"></a>Azure Active Directory B2C: Žádosti o podporu soubor
+# <a name="azure-active-directory-b2c-file-support-requests"></a>Azure Active Directory B2C: Soubor žádosti o podporu
 Podávejte požadavky na podporu pro Azure Active Directory (Azure AD) B2C na webu Azure portal pomocí následujících kroků:
 
 1. Přepnout do jiného tenanta, který má předplatné Azure spojené s ním z vašeho tenanta B2C. Obvykle je váš tenant zaměstnance nebo výchozímu tenantu vytvoří za vás při registraci předplatného Azure. Další informace najdete v tématu [jak předplatné služby Azure souvisí s Azure AD](../active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md).
@@ -54,7 +54,7 @@ Podávejte požadavky na podporu pro Azure Active Directory (Azure AD) B2C na we
     ![Podpora – kontaktu](./media/active-directory-b2c-support/support-contact.png)
 8. Po odeslání žádosti o podporu, ji můžete sledovat kliknutím **Nápověda a podpora** na úvodním panelu a potom **spravovat žádosti o podporu**.
 
-## <a name="known-issue-filing-a-support-request-in-the-context-of-a-b2c-tenant"></a>Známý problém: podání žádosti o podporu v rámci tenanta B2C
+## <a name="known-issue-filing-a-support-request-in-the-context-of-a-b2c-tenant"></a>Známý problém: Podání žádosti o podporu v rámci tenanta B2C
 Pokud krok 2 výše uvedených dodržená a pokuste se vytvořit žádost o podporu v rámci vašeho tenanta B2C, zobrazí se následující chyba.
 
 > [!IMPORTANT]

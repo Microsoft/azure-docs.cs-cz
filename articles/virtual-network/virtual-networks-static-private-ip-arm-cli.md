@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 02/16/2017
 ms.author: jdial
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 0ffcf483b2852ec87c263573a97b4508d5b5d39c
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: a6e217194508feae3b227b5ef65b02d0305a22a7
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46997467"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54852894"
 ---
 # <a name="configure-private-ip-addresses-for-a-virtual-machine-using-the-azure-cli"></a>Konfigurace privátních IP adres pro virtuální počítač pomocí Azure CLI
 
@@ -44,7 +44,7 @@ Vytvoření virtuálního počítače s názvem *DNS01* v *front-endu* podsíti 
 
 1. Pokud nebyly dosud, nainstalovat a nakonfigurovat na nejnovější verzi [rozhraní příkazového řádku Azure](/cli/azure/install-azure-cli) a přihlaste se k Azure pomocí účtu [az login](/cli/azure/reference-index#az_login).
 
-2. Vytvoření veřejné IP adresy pro virtuální počítač s [az network public-ip vytvořit](/cli/azure/network/public-ip#az_network_public_ip_create) příkazu. Seznam uvedený za výstupem vysvětluje použité parametry.
+2. Vytvoření veřejné IP adresy pro virtuální počítač s [az network public-ip vytvořit](/cli/azure/network/public-ip) příkazu. Seznam uvedený za výstupem vysvětluje použité parametry.
 
     > [!NOTE]
     > Možná chcete nebo muset použít jiné hodnoty pro vaše argumenty v tomto a dalších krocích, v závislosti na vašem prostředí.
@@ -73,7 +73,7 @@ Vytvoření virtuálního počítače s názvem *DNS01* v *front-endu* podsíti 
 
    * `--resource-group`: Název skupiny prostředků, ve kterém chcete vytvořit veřejnou IP adresu.
    * `--name`: Název veřejné IP adresy.
-   * `--location`: Oblast azure, ve kterém chcete vytvořit veřejnou IP adresu.
+   * `--location`: Oblast Azure, ve kterém chcete vytvořit veřejnou IP adresu.
 
 3. Spustit [az network nic vytvořit](/cli/azure/network/nic#az_network_nic_create) příkazu vytvořte síťové rozhraní se statickou privátní IP adresou. Seznam uvedený za výstupem vysvětluje použité parametry. 
    
@@ -123,7 +123,7 @@ Vytvoření virtuálního počítače s názvem *DNS01* v *front-endu* podsíti 
     
     Parametry:
 
-    * `--private-ip-address`: Statická privátní IP adresu pro síťové rozhraní
+    * `--private-ip-address`: Statické privátní IP adresu pro síťové rozhraní
     * `--vnet-name`: Název sítě VNet, ve kterém chcete vytvořit síťové rozhraní
     * `--subnet`: Název podsítě, ve kterém chcete vytvořit síťové rozhraní
 
@@ -157,7 +157,7 @@ Vytvoření virtuálního počítače s názvem *DNS01* v *front-endu* podsíti 
    
    Parametry, než na úrovni basic [az vm vytvořit](/cli/azure/vm#az_vm_create) parametry.
 
-   * `--nics`: Název síťové karty, ke kterému je připojený virtuální počítač.
+   * `--nics`: Název síťového adaptéru, ke kterému je připojený virtuální počítač.
    
 Doporučuje se, že nepřiřadíte staticky privátní IP adresa přiřazená virtuální počítač Azure v rámci operačního systému virtuálního počítače, není-li nezbytné, například kdy [přidělení více IP adres k virtuálnímu počítači s Windows](virtual-network-multiple-ip-addresses-cli.md). Pokud jste ručně nastavili privátní IP adresu v rámci operačního systému, ujistěte se, že se jedná o stejné adrese jako privátní IP adresy přiřazené k Azure [síťové rozhraní](virtual-network-network-interface-addresses.md#change-ip-address-settings), nebo může ztratit připojení k virtuálnímu počítači. Další informace o [privátní IP adresu](virtual-network-network-interface-addresses.md#private) nastavení.
 

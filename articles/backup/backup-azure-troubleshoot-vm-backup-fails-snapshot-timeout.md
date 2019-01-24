@@ -9,12 +9,12 @@ ms.service: backup
 ms.topic: troubleshooting
 ms.date: 12/03/2018
 ms.author: genli
-ms.openlocfilehash: c779344f4cb0544009952423b6771b75482c3061
-ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
+ms.openlocfilehash: 1ee45699040f58a1317009ab44bb5ac863323869
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54353954"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54816751"
 ---
 # <a name="troubleshoot-azure-backup-failure-issues-with-the-agent-or-extension"></a>Řešení potíží s Azure Backup selhání: Potíže s agentů nebo rozšíření
 
@@ -113,6 +113,26 @@ Vaše operace zálohování může selhat při zálohování virtuálního poč�
 **Chybová zpráva**: Azure Backup momentálně nepodporuje disky SSD na úrovni Standard <br>
 
 Azure Backup teď podporuje disky SSD na úrovni Standard pouze pro trezory služby, které jsou upgradovány na [rychlé obnovení](backup-instant-restore-capability.md).
+
+## <a name="usererrorbackupoperationinprogress---unable-to-initiate-backup-as-another-backup-operation-is-currently-in-progress"></a>UserErrorBackupOperationInProgress – nepovedlo se inicializovat zálohování, protože právě probíhá jiná operace zálohování.
+
+**Kód chyby:**: UserErrorBackupOperationInProgress <br>
+**Chybová zpráva**: Nepovedlo se inicializovat zálohování, protože právě probíhá jiná operace zálohování<br>
+
+Poslední úlohy zálohování se nezdařila, protože je v průběhu existující úlohy zálohování. Nelze spustit novou úlohu zálohování, dokud se nedokončí aktuální úlohu. Ujistěte se, že je aktuálně probíhá operace zálohování dokončeny před aktivací nebo plánování jiné operace zálohování. Pokud chcete zkontrolovat stav úloh zálohování, proveďte následujících kroků:
+
+1. Přihlaste se k webu Azure portal, klikněte na tlačítko **všechny služby**. Typ služby Recovery Services a klikněte na tlačítko **trezory služby Recovery Services**. Objeví se seznam trezorů Recovery Services.
+2. Ze seznamu trezorů recovery services vyberte trezor, ve které je nakonfigurované zálohování.
+3. V nabídce řídicího panelu trezoru klikněte na **úlohy zálohování** zobrazí všechny úlohy zálohování.
+
+    * Pokud probíhá úloha zálohování, počkejte na dokončení nebo zrušení úlohy zálohování.
+        * Zrušit úlohu zálohování klikněte pravým tlačítkem na dokončení úlohy zálohování a klikněte na tlačítko **zrušit** nebo použijte [Powershellu](https://docs.microsoft.com/powershell/module/azurerm.backup/stop-azurermbackupjob?view=azurermps-6.13.0&viewFallbackFrom=azurermps-6.12.0).
+    * Pokud jste změnili konfiguraci zálohování v jiném trezoru, zajistěte, neexistují žádné zálohování úloh spuštěných v starý trezor. Pokud existuje pak zrušíte úlohu zálohování.
+        * Zrušit úlohu zálohování klikněte pravým tlačítkem na dokončení úlohy zálohování a klikněte na tlačítko **zrušit** nebo použijte [prostředí PowerShell](https://docs.microsoft.com/powershell/module/azurerm.backup/stop-azurermbackupjob?view=azurermps-6.13.0&viewFallbackFrom=azurermps-6.12.0)
+4. Zkuste operaci zálohování zopakujte.
+
+Pokud naplánované zálohování trvá delší dobu konfliktní s další konfigurací zálohování zkontrolujte [osvědčené postupy](backup-azure-vms-introduction.md#best-practices), [výkon zálohování](backup-azure-vms-introduction.md#backup-performance) a [obnovení posouzení ](backup-azure-vms-introduction.md#restore-considerations).
+
 
 
 ## <a name="causes-and-solutions"></a>Příčiny a řešení

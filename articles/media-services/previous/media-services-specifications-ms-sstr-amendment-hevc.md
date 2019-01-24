@@ -1,6 +1,6 @@
 ---
 title: Azure Media Services – Smooth Streaming změny protokolu (MS-SSTR) pro HEVC | Dokumentace Microsoftu
-description: Tato specifikace popisuje protokol a formáty fragmentovaného MP4 živé streamování s HEVC ve službě Azure Media Services. Jedná se o změnu (MS-SSTR) zahrnující podporu pro ingestování HEVC technologie Smooth Streaming documentaiton protokolu a datových proudů. V tomto článku jsou uvedeny pouze změny, které jsou nutné k poskytování HEVC s výjimkou byly "(žádná změna)" označuje text bude zkopírován pro objasnění pouze.
+description: Tato specifikace popisuje protokol a formáty fragmentovaného MP4 živé streamování s HEVC ve službě Azure Media Services. Jedná se o změnu do dokumentace technologie Smooth Streaming protokolu (MS-SSTR) zahrnující podporu pro ingestování HEVC a streamování. V tomto článku jsou uvedeny pouze změny, které jsou nutné k poskytování HEVC s výjimkou byly "(žádná změna)" označuje text bude zkopírován pro objasnění pouze.
 services: media-services
 documentationcenter: ''
 author: cenkdin
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/07/2018
 ms.author: johndeu;
-ms.openlocfilehash: 038eee18adf94f34a2e10d9ff7be76409c8c4322
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: c87795c1203a8639ba224a646f8f0c5f5515b840
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53317410"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54812756"
 ---
 # <a name="smooth-streaming-protocol-ms-sstr-amendment-for-hevc"></a>Technologie Smooth Streaming protokolu (MS-SSTR) změně pro HEVC
 
@@ -42,7 +42,7 @@ Následující termíny jsou specifické pro tento dokument:
 
 >  **čas sestavení:** Čas ukázku je uvedena na klientovi, jak jsou definovány v [[ISO/IEC-14496-12].](https://go.microsoft.com/fwlink/?LinkId=183695)
 
->   **ŠIFROVÁNÍ CENC**: Běžné šifrování jako definovaný v [ISO/IEC 23001-7] druhé vydání.
+>   **CENC**: Běžné šifrování jako definovaný v [ISO/IEC 23001-7] druhé vydání.
 
 >   **Čas dekódování:** Čas ukázku je potřeba se dekódovat na klientovi, jak jsou definovány v [[ISO/IEC http://go.microsoft.com/fwlink/?LinkId=18369514496-12].](https://go.microsoft.com/fwlink/?LinkId=183695)
 
@@ -88,7 +88,7 @@ Následující termíny jsou specifické pro tento dokument:
 
 >   [RFC3548] Josefsson S., vydání "Base16 Base32 a kódování Base64 Data", RFC 3548, červenec 2003 [http://www.ietf.org/rfc/rfc3548.txt   ](https://go.microsoft.com/fwlink/?LinkId=90432)
 
->   [RFC5234] Crocker, d, vydání a Overell P., "Rozšířená BNF specifikace syntaxe: ABNF", STD 68 RFC 5234, od 2008   [http://www.rfc-editor.org/rfc/rfc5234.txt   ](https://go.microsoft.com/fwlink/?LinkId=123096)
+>   [RFC5234] Crocker, d, vydání a Overell P., "Rozšířená BNF specifikace syntaxe: ABNF", STD 68, RFC 5234, January 2008,   [http://www.rfc-editor.org/rfc/rfc5234.txt   ](https://go.microsoft.com/fwlink/?LinkId=123096)
 
 
 ## <a name="13-overview"></a>1.3 přehled 
@@ -173,7 +173,7 @@ ProtectionElement musí být k dispozici při použití Common Encryption (CENC)
 
 ### <a name="223-fragment-request"></a>2.2.3 fragment žádosti 
 
->   **Poznámka:**: Výchozí formát média požadovaným pro **MinorVersion** 2 a "hev1" je značka "iso8" ISO Base média zadaný formát souboru v [ISO/IEC 14496 12] ISO Base média souboru formátu čtvrtým vydáním a běžné šifrování druhého [ISO/IEC 23001-7] Edice.
+>   **Poznámka:** Výchozí formát média požadovaným pro **MinorVersion** 2 a "hev1" je značka "iso8" ISO Base média zadaný formát souboru v [ISO/IEC 14496 12] ISO Base média souboru formátu čtvrtým vydáním a běžné šifrování druhého [ISO/IEC 23001-7] Edice.
 
 ### <a name="224-fragment-response"></a>2.2.4 fragment odpovědi 
 
@@ -187,7 +187,7 @@ ProtectionElement musí být k dispozici při použití Common Encryption (CENC)
 
 >   **TfxdBox** je zastaralá a jeho funkci nahrazuje sledování Fragment dekódování poli (tfdt) zadané v části [ISO/IEC 14496 12] 8.8.12.
 
->   **Poznámka:**: Klient může vypočítat trvání fragment jako součet dob trvání vzorku, uvedenou v poli Spustit sledování (trun) nebo součinu počet vzorků, které vyprší výchozí doba trvání vzorku. BaseMediaDecodeTime "tfdt" plus fragment doby rovná čas parametr adresy URL pro další fragment.
+>   **Poznámka:** Klient může vypočítat trvání fragment jako součet dob trvání vzorku, uvedenou v poli Spustit sledování (trun) nebo součinu počet vzorků, které vyprší výchozí doba trvání vzorku. BaseMediaDecodeTime "tfdt" plus fragment doby rovná čas parametr adresy URL pro další fragment.
 
 >   Výrobce odkaz čas pole (prft) být vložena před (moof) film Fragment zadejte podle potřeby, označuje čas UTC odpovídající čas dekódování sledování Fragment první vzorku odkazuje Fragment zadejte film, jako zadané v [ISO/IEC 14496 -12] části 8.16.5.
 
@@ -195,7 +195,7 @@ ProtectionElement musí být k dispozici při použití Common Encryption (CENC)
 
 >   **TfrfBox** je zastaralá a jeho funkci nahrazuje sledování Fragment dekódování poli (tfdt) zadané v části [ISO/IEC 14496 12] 8.8.12.
 
->   **Poznámka:**: Klient může vypočítat trvání fragment jako součet dob trvání vzorku, uvedenou v poli Spustit sledování (trun) nebo součinu počet vzorků, které vyprší výchozí doba trvání vzorku. BaseMediaDecodeTime "tfdt" plus fragment doby rovná čas parametr adresy URL pro další fragment. Dívejte se, že adresy jsou zastaralé, protože jejich zpoždění živého streamování.
+>   **Poznámka:** Klient může vypočítat trvání fragment jako součet dob trvání vzorku, uvedenou v poli Spustit sledování (trun) nebo součinu počet vzorků, které vyprší výchozí doba trvání vzorku. BaseMediaDecodeTime "tfdt" plus fragment doby rovná čas parametr adresy URL pro další fragment. Dívejte se, že adresy jsou zastaralé, protože jejich zpoždění živého streamování.
 
 #### <a name="2246-tfhdbox"></a>2.2.4.6 TfhdBox 
 
@@ -245,7 +245,7 @@ ProtectionElement musí být k dispozici při použití Common Encryption (CENC)
     MinorVersion = STRING_UINT32
     CompatibleBrands = "ccff" "iso8" 0\*(STRING_UINT32)
 
-**Poznámka:**: Kompatibility značek "ccff" a "iso8" označují, že fragmenty odpovídají "Běžný formát souborů kontejneru" a používat standard Common Encryption [ISO/IEC 23001-7] a ISO Base média souboru formátu vydání 4 [ISO/IEC 14496 12].
+**Poznámka:** Kompatibility značek "ccff" a "iso8" označují, že fragmenty odpovídají "Běžný formát souborů kontejneru" a používat standard Common Encryption [ISO/IEC 23001-7] a ISO Base média souboru formátu vydání 4 [ISO/IEC 14496 12].
 
 #### <a name="2272-streammanifestbox"></a>2.2.7.2 StreamManifestBox 
 
@@ -276,9 +276,9 @@ ProtectionElement musí být k dispozici při použití Common Encryption (CENC)
 
 >   Prezentace metadat: Sada metadata, která jsou společná pro všechny datové proudy v prezentaci. Prezentace metadat obsahuje následující pole jsou uvedeny v části *2.2.2.1*:
 
->   * **Hlavní verze**
->   * **Podverze**
->   * **Časová osa**
+>   * **MajorVersion**
+>   * **MinorVersion**
+>   * **TimeScale**
 >   * **Doba trvání**
 >   * **IsLive**
 >   * **LookaheadCount**
@@ -352,7 +352,7 @@ ProtectionElement musí být k dispozici při použití Common Encryption (CENC)
 
 >   Pokud má vysoký obchodní hodnoty obsah přenosu pomocí tohoto protokolu, abyste zabránili neoprávněnému používání obsahu by měla sloužit systém ochrany obsahu. **ProtectionElement** je možné provádět metadata vztahující se k využívání obsahu ochrany systému. Chráněné zvuk a video obsahu jsou šifrované podle MPEG Common Encryption druhé vydání: 2015 [ISO/IEC 23001-7].
 
->   **Poznámka:**: Pouze datový řez v VCL NALs HEVC videa, se šifrují. Záhlaví řezu a ostatní NALs jsou přístupné prezentace aplikací před jejich dešifrování. zabezpečené video cesty není k dispozici pro aplikace pro prezentaci šifrované informace.
+>   **Poznámka:** Pouze datový řez v VCL NALs HEVC videa, se šifrují. Záhlaví řezu a ostatní NALs jsou přístupné prezentace aplikací před jejich dešifrování. zabezpečené video cesty není k dispozici pro aplikace pro prezentaci šifrované informace.
 
 ## <a name="52-index-of-security-parameters"></a>5.2 Index parametrů zabezpečení 
 

@@ -4,7 +4,7 @@ description: Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.reviewer: barbkess
 ms.assetid: 0ebdab6c-83a8-4737-a86a-974f37269c31
 ms.service: Azure-Active-Directory
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 12/24/2018
 ms.author: jeedes
-ms.openlocfilehash: a9c0cf9dbe14478d805ff84aa480db0f9fac5d2c
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: ace02a0cb93cf3e56e4b895524b9e2d35440aecb
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53971882"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54812977"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-zoom"></a>Kurz: Integrace Azure Active Directory s přiblížení
 
@@ -119,11 +119,11 @@ Ke konfiguraci Azure AD jednotné přihlašování s přiblížení, proveďte n
     
     | Název | Obor názvů  |  Zdrojový atribut|
     | ---------------| --------------- | --------- |
-    | E-mailová adresa  | User.Mail  | http://schemas.xmlsoap.org/ws/2005/05/identity/claims/mail |
+    | E-mailová adresa  | user.mail  | http://schemas.xmlsoap.org/ws/2005/05/identity/claims/mail |
     | Jméno  | user.givenname  | http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname |
     | Příjmení  | user.surname  | http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname |
-    | Telefonní číslo  | User.telephoneNumber  | http://schemas.xmlsoap.org/ws/2005/05/identity/claims/phone |
-    | Oddělení  | User.Department  | http://schemas.xmlsoap.org/ws/2005/05/identity/claims/department |
+    | Telefonní číslo  | user.telephonenumber  | http://schemas.xmlsoap.org/ws/2005/05/identity/claims/phone |
+    | Oddělení  | user.department  | http://schemas.xmlsoap.org/ws/2005/05/identity/claims/department |
 
     a. Klikněte na tlačítko **přidat novou deklaraci** otevřít **spravovat deklarace identity uživatelů** dialogového okna.
 

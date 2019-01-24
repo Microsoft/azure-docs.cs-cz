@@ -1,6 +1,6 @@
 ---
 title: Stream živé pomocí místních kodérů, které vytvářejí datové proudy s více přenosovými rychlostmi – Azure | Dokumentace Microsoftu
-description: 'Toto téma popisuje, jak vytvořit kanál, který přijímá živý datový proud s více přenosovými rychlostmi z místní kodér. Datový proud se pak dá doručit do klientské aplikace přehrávání prostřednictvím jednoho nebo více koncových bodů streamování, používat jednu z následujících protokolů pro adaptivní streamování: HLS, technologie Smooth Streaming, DASH.'
+description: 'Toto téma popisuje, jak vytvořit kanál, který přijímá živý datový proud s více přenosovými rychlostmi z místní kodér. Datový proud se pak dá doručit do klientské aplikace přehrávání prostřednictvím jednoho nebo více koncových bodů streamování, používat jednu z následujících protokolů pro adaptivní streamování: HLS, Smooth Streaming, DASH.'
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -14,12 +14,12 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 04/12/2017
 ms.author: cenkd;juliako
-ms.openlocfilehash: e2d65c107d57d50bc15d5a1cd1698491bb607e25
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: b0a047c4bf2c0c95896699e50e943277a138ecca
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51262229"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54809021"
 ---
 # <a name="live-streaming-with-on-premises-encoders-that-create-multi-bitrate-streams"></a>Živé streamování pomocí místních kodérů, které vytvářejí datové proudy s více přenosovými rychlostmi
 
@@ -39,8 +39,8 @@ Ve službě Azure Media Services *kanál* představuje kanál pro zpracování o
 
 Od verze Media Services 2.10, když vytvoříte kanál, můžete určit, jak chcete, aby váš kanál pro příjem vstupního datového proudu. Můžete také určit, zda chcete kanál provádět živé kódování datového proudu. Máte dvě možnosti:
 
-* **Předávat**: tuto hodnotu zadejte, pokud budete chtít použít místní kodér služby live Encoding, která má datový proud s více přenosovými rychlostmi (průchozí datový proud) jako výstup. V takovém případě příchozího datového proudu se předá prostřednictvím výstup bez jakékoli kódování. Toto je chování kanál před 2.10 vydáním. Tento článek obsahuje podrobné informace o práci s kanály tohoto typu.
-* **Live Encoding**: tuto hodnotu zvolte, pokud máte v plánu používat Media Services ke kódování živého datového proudu s jednou přenosovou rychlostí na datový proud s více přenosovými rychlostmi. Opuštění živého kódování kanálu v **systémem** stavu s sebou nese náklady účtování poplatků. Doporučujeme, abyste po dokončení se vyhnout poplatkům za velmi hodinové události živého streamování okamžitě zastavit spuštěné kanálů. Služba Media Services doručí datový proud zákazníkům, kteří si ji vyžádat.
+* **Předávání**: Tuto hodnotu zadejte, pokud budete chtít použít místní kodér služby live Encoding, která má datový proud s více přenosovými rychlostmi (průchozí datový proud) jako výstup. V takovém případě příchozího datového proudu se předá prostřednictvím výstup bez jakékoli kódování. Toto je chování kanál před 2.10 vydáním. Tento článek obsahuje podrobné informace o práci s kanály tohoto typu.
+* **Živé kódování**: Tuto hodnotu zvolte, pokud máte v plánu používat Media Services ke kódování živého datového proudu s jednou přenosovou rychlostí na datový proud s více přenosovými rychlostmi. Opuštění živého kódování kanálu v **systémem** stavu s sebou nese náklady účtování poplatků. Doporučujeme, abyste po dokončení se vyhnout poplatkům za velmi hodinové události živého streamování okamžitě zastavit spuštěné kanálů. Služba Media Services doručí datový proud zákazníkům, kteří si ji vyžádat.
 
 > [!NOTE]
 > Tento článek popisuje atributy kanály, které nejsou povolené provádět živé kódování. Informace o práci s kanály, které mají povolené kódování v reálném najdete v tématu [živého streamování využívajícího službu Azure Media Services k vytvoření datových proudů s více přenosovými rychlostmi](media-services-manage-live-encoder-enabled-channels.md).
@@ -115,7 +115,7 @@ Adresy URL ingestování můžete získat, když vytvoříte kanál. Abyste mohl
 Máte možnost ingestovat fragmentovaného MP4 živý stream (technologie Smooth Streaming) připojení přes protokol SSL. K ingestování přes protokol SSL, nezapomeňte aktualizovat adresu URL ingestování na protokol HTTPS. V současné době nelze ingestování RTMP přes protokol SSL.
 
 #### <a id="keyframe_interval"></a>Interval klíčových snímků
-Při použití místní kodér služby live Encoding ke generování datový proud s více přenosovými rychlostmi, interval klíčových snímků určuje dobu, po skupiny obrázky (GOP), protože používá tuto externí kodér. Až kanál obdrží tento příchozí datový proud, můžete doručovat živého datového proudu do klientské aplikace pro přehrávání v některém z následujících formátů: technologie Smooth Streaming, dynamické adaptivní streamování přes HTTP (DASH) a HTTP Live Streaming (HLS). Když provádíte živého streamování, HLS je vždy zabalený dynamicky. Ve výchozím nastavení Media Services automaticky vypočítá segmentu balení poměr HLS (fragmentů podle segmentu), který je na základě intervalu klíčový snímek, který se poslal kodér služby live Encoding.
+Při použití místní kodér služby live Encoding ke generování datový proud s více přenosovými rychlostmi, interval klíčových snímků určuje dobu, po skupiny obrázky (GOP), protože používá tuto externí kodér. Až kanál obdrží tento příchozí datový proud, můžete doručovat živého datového proudu do klientské aplikace pro přehrávání v některém z následujících formátů: Technologie Smooth Streaming, dynamické adaptivní streamování přes HTTP (DASH) a HTTP Live Streaming (HLS). Když provádíte živého streamování, HLS je vždy zabalený dynamicky. Ve výchozím nastavení Media Services automaticky vypočítá segmentu balení poměr HLS (fragmentů podle segmentu), který je na základě intervalu klíčový snímek, který se poslal kodér služby live Encoding.
 
 Následující tabulka ukazuje, jak se počítá segmentu doba trvání:
 
@@ -127,7 +127,7 @@ Následující tabulka ukazuje, jak se počítá segmentu doba trvání:
 
 Poměr fragmenty na segment můžete změnit konfiguraci výstupu v kanálu a nastavení FragmentsPerSegment ChannelOutputHls.
 
-Hodnota intervalu klíčových snímků můžete také změnit tak, že nastavíte vlastnost KeyFrameInterval na ChanneInput. Pokud nastavíte explicitně KeyFrameInterval, segmentovat HLS poměr balení, vypočítané FragmentsPerSegment prostřednictvím pravidel popsaných dříve.  
+Hodnota intervalu klíčových snímků můžete také změnit tak, že nastavíte vlastnost KeyFrameInterval na ChannelInput. Pokud nastavíte explicitně KeyFrameInterval, segmentovat HLS poměr balení, vypočítané FragmentsPerSegment prostřednictvím pravidel popsaných dříve.  
 
 Pokud nastavíte explicitně KeyFrameInterval a FragmentsPerSegment, Media Services využívá hodnoty, které jste nastavili.
 
@@ -177,10 +177,10 @@ I po zastavení a odstranění programu můžou uživatelé Streamovat archivova
 Možné hodnoty pro aktuální stav kanálu:
 
 * **Zastavit**: Toto je počáteční stav kanálu po jeho vytvoření. V tomto stavu je možné aktualizovat vlastnosti kanálu, ale streamování není povolené.
-* **Spouští se**: kanál se spouští. V tomto stavu nejsou povolené žádné aktualizace ani streamování. Pokud dojde k chybě, kanál se vrátí **Zastaveno** stavu.
-* **Spuštění**: kanál dokáže zpracovávat živé streamy.
-* **Zastavuje se**: kanál se zastavuje. V tomto stavu nejsou povolené žádné aktualizace ani streamování.
-* **Odstraňuje se**: kanál se odstraňuje. V tomto stavu nejsou povolené žádné aktualizace ani streamování.
+* **Spouští se**: Kanál se spouští. V tomto stavu nejsou povolené žádné aktualizace ani streamování. Pokud dojde k chybě, kanál se vrátí **Zastaveno** stavu.
+* **Spuštění**: Kanál může zpracovávat živé streamy.
+* **Zastavuje se**: Kanál se zastavuje. V tomto stavu nejsou povolené žádné aktualizace ani streamování.
+* **Odstraňuje se**: Kanál se odstraňuje. V tomto stavu nejsou povolené žádné aktualizace ani streamování.
 
 Následující tabulka uvádí přiřazení stavů kanálu k režimu fakturace.
 

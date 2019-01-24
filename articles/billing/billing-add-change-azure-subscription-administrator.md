@@ -13,14 +13,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 10/19/2018
+ms.date: 1/23/2019
 ms.author: cwatson
-ms.openlocfilehash: 94d574d16b1b9951ab91a09023f9193723f850a7
-ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
+ms.openlocfilehash: 4490db0c479abdda19957be98335edeefc08bb59
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53583353"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54808744"
 ---
 # <a name="add-or-change-azure-subscription-administrators"></a>Přidat nebo změnit správce předplatného Azure
 
@@ -67,14 +67,14 @@ Jako spolusprávce je možné přidat pouze [vlastníka](../role-based-access-co
 
 ### <a name="adding-a-guest-user-as-a-co-administrator"></a>Přidání uživatele typu Host jako spolusprávce
 
-Uživatelé typu Host, které byla přiřazena role spolusprávce může se zobrazit některé rozdíly ve srovnání s různými členské uživatele k roli spolusprávce. Vezměte v úvahu následující scénář:
+[Uživatelé typu Host](../active-directory/b2b/b2b-quickstart-add-guest-users-portal.md) , který byl přiřazen spolupracující správce role může se zobrazit některé rozdíly ve srovnání s různými členské uživatele k roli spolusprávce. Vezměte v úvahu následující scénář:
 
 - Uživatel A pomocí Azure AD pracovního nebo školního účtu je Správce služeb pro předplatné Azure.
 - Uživatel B se účtem Microsoft.
 - Uživatel A přiřadí roli spolusprávce uživateli služby serveru B.
 - Uživatel B téměř vše, co můžete dělat, ale nemůže k registraci aplikací nebo vyhledání uživatele v adresáři Azure AD.
 
-Očekáváte, že tento uživatel B může spravovat všechno. Důvod pro tento rozdíl je, že účet Microsoft je přidán do předplatného jako uživatele typu Host místo uživatel členem. Uživatelé typu Host mají různá výchozí oprávnění ve službě Azure AD porovnání s členské uživatele. Například člen uživatelé mohou číst jiných uživatelů ve službě Azure AD a uživatele typu Host nemůže. Člen uživatelé můžou registrovat nový instanční objekty ve službě Azure AD a uživatele typu Host nemůže. Pokud uživatel typu Host musí mít možnost provádět tyto úkoly, je možné řešení přiřadit konkrétní role správce Azure AD potřebuje uživatel typu Host. Například v předchozím scénáři, můžete přiřadit [uživatelé Čtoucí z adresáře](../active-directory/users-groups-roles/directory-assign-admin-roles.md#directory-readers) role ke čtení jiných uživatelů a přiřazení [vývojář aplikace](../active-directory/users-groups-roles/directory-assign-admin-roles.md#application-developer) role, která bude moct vytvořit instanční objekty. Další informace o členských uživatelů typu Host a jejich oprávnění najdete v tématu [co jsou výchozí oprávnění uživatelů ve službě Azure Active Directory?](../active-directory/fundamentals/users-default-permissions.md).
+Očekáváte, že tento uživatel B může spravovat všechno. Důvod pro tento rozdíl je, že účet Microsoft je přidán do předplatného jako uživatele typu Host místo uživatel členem. Uživatelé typu Host mají různá výchozí oprávnění ve službě Azure AD porovnání s členské uživatele. Například člen uživatelé mohou číst jiných uživatelů ve službě Azure AD a uživatele typu Host nemůže. Člen uživatelé můžou registrovat nový instanční objekty ve službě Azure AD a uživatele typu Host nemůže. Pokud uživatel typu Host musí mít možnost provádět tyto úkoly, je možné řešení přiřadit konkrétní role správce Azure AD potřebuje uživatel typu Host. Například v předchozím scénáři, můžete přiřadit [uživatelé Čtoucí z adresáře](../active-directory/users-groups-roles/directory-assign-admin-roles.md#directory-readers) role ke čtení jiných uživatelů a přiřazení [vývojář aplikace](../active-directory/users-groups-roles/directory-assign-admin-roles.md#application-developer) role, která bude moct vytvořit instanční objekty. Další informace o členských uživatelů typu Host a jejich oprávnění najdete v tématu [co jsou výchozí oprávnění uživatelů ve službě Azure Active Directory?](../active-directory/fundamentals/users-default-permissions.md). 
 
 Všimněte si, že [předdefinované role pro prostředky Azure](../role-based-access-control/built-in-roles.md) se liší od [role správce Azure AD](../active-directory/users-groups-roles/directory-assign-admin-roles.md). Předdefinované role není udělit přístup ke službě Azure AD. Další informace najdete v tématu [pochopit různé role](../role-based-access-control/rbac-and-directory-admin-roles.md).
 

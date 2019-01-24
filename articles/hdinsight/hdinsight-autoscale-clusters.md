@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 01/21/2019
 ms.author: hrasheed
-ms.openlocfilehash: 9a2fd8441de099a5423e9681a9dfe3ee12f08cec
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: 043c83e2039d87b1650ba17f770ce16a2ad2c13d
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 01/23/2019
-ms.locfileid: "54479465"
+ms.locfileid: "54811158"
 ---
 # <a name="automatically-scale-azure-hdinsight-clusters"></a>Automatické škálování clusterů Azure HDInsight
 
@@ -27,9 +27,9 @@ Cluster Azure HDInsight automatického škálování, které funkce se automatic
 > [!Note]
 > Automatické škálování je momentálně podporována pouze pro verze clusterů Azure HDInsight Hive, MapReduce a Spark 3.6.
 
-Postupujte podle kroků v [ ](hdinsight-hadoop-create-linux-clusters-portal.md) a v kroku 5, **velikost clusteru**vyberte **pracovní uzel automatického škálování (preview)** jak je znázorněno níže. 
+Postupujte podle kroků v [vytvoření linuxových clusterech v HDInsight pomocí webu Azure portal](hdinsight-hadoop-create-linux-clusters-portal.md) a v kroku 5, **velikost clusteru**vyberte **pracovní uzel automatického škálování (preview)** jak vidíte níže. 
 
-    ![Enable worker node autoscale option](./media/hdinsight-autoscale-clusters/worker-node-autoscale-option.png)
+![Možnost automatického škálování uzlů pracovního procesu](./media/hdinsight-autoscale-clusters/worker-node-autoscale-option.png)
 
 Zaškrtnutím této možnosti můžete zadat:
 

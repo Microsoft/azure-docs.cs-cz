@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/30/2018
 ms.author: xpouyat;anilmur;juliako
-ms.openlocfilehash: 31bd3d54b085922de0ec822731eae79fe9a9943b
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: e2a856dbc3bdf72ad03601618a9d48bb54665f7b
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51262093"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54812059"
 ---
 # <a name="using-multiple-input-files-and-component-properties-with-premium-encoder"></a>Použití několika vstupních souborů a vlastnosti komponent s kodér úrovně Premium
 ## <a name="overview"></a>Přehled
@@ -268,7 +268,7 @@ S další snímek přesné oříznutí:
   </transcodeRequest>
 ```
 
-## <a name="example-1--overlay-an-image-on-top-of-the-video"></a>Příklad 1: Překryv image na video
+## <a name="example-1--overlay-an-image-on-top-of-the-video"></a>Příklad 1: Překryvný obrázek na video
 
 ### <a name="presentation"></a>Prezentace
 Vezměte v úvahu příklad, ve kterém chcete překrýt obrázek loga na vstupním videu, zatímco je kódování videa. V tomto příkladu vstupní video má název "Microsoft_HoloLens_Possibilities_816p24.mp4" a logo je pojmenován "logo.png". Měli byste provést následující kroky:
@@ -428,9 +428,9 @@ Po dokončení úlohy se zobrazí soubor MP4 v prostředku výstupu překrytí!
 
 Můžete si stáhnout ukázkový pracovní postup z [Githubu](https://github.com/Azure/azure-media-services-samples/tree/master/Encoding%20Presets/VoD/MediaEncoderPremiumWorkfows/).
 
-## <a name="example-2--multiple-audio-language-encoding"></a>Příklad 2: Více zvukových kódování
+## <a name="example-2--multiple-audio-language-encoding"></a>Příklad 2: Více zvuku kódování
 
-Příklad zvuku vícejazyčné kódování workfkow je k dispozici v [Githubu](https://github.com/Azure/azure-media-services-samples/tree/master/Encoding%20Presets/VoD/MediaEncoderPremiumWorkfows/MultilanguageAudioEncoding).
+Příklad více jazyk postup kódování je k dispozici v [Githubu](https://github.com/Azure/azure-media-services-samples/tree/master/Encoding%20Presets/VoD/MediaEncoderPremiumWorkfows/MultilanguageAudioEncoding).
 
 Tato složka obsahuje ukázkový pracovní postup, který můžete použít ke kódování souboru MXF majetku s více soubory MP4 s více zvukové stopy.
 

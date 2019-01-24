@@ -1,10 +1,10 @@
 ---
-title: 'Kurz: Integrace Azure Active Directory se službou Learningpool Act | Dokumentace Microsoftu'
+title: 'Kurz: Integrace Azure Active Directory s Learningpool Act | Dokumentace Microsoftu'
 description: Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a Learningpool Act.
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.assetid: 51e8695f-31e1-4d09-8eb3-13241999d99f
 ms.service: active-directory
 ms.component: saas-app-tutorial
@@ -14,14 +14,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/30/2017
 ms.author: jeedes
-ms.openlocfilehash: 6f3fab8398c8f32d4fa89f11c60fec57db516fcb
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 81fb00dea08f71b359cbb74d4cd1dcb428bc5237
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39439432"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54814065"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-learningpool-act"></a>Kurz: Integrace Azure Active Directory se službou Learningpool Act
+# <a name="tutorial-azure-active-directory-integration-with-learningpool-act"></a>Kurz: Integrace Azure Active Directory s Learningpool Act
 
 V tomto kurzu se dozvíte, jak integrovat Learningpool Act s Azure Active Directory (Azure AD).
 
@@ -37,7 +37,7 @@ Pokud chcete zjistit další podrobnosti o integraci aplikací SaaS v Azure AD, 
 
 Konfigurace integrace Azure AD s Learningpool Act, potřebujete následující položky:
 
-- S předplatným služby Azure AD
+- Předplatné Azure AD
 - Learningpool Act jednotného přihlašování povolená předplatného
 
 > [!NOTE]
@@ -59,7 +59,7 @@ Pokud chcete nakonfigurovat integraci sady Application Compatibility Toolkit Lea
 
 **Přidání Learningpool Act z galerie, postupujte následovně:**
 
-1. V  **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu. 
+1. V **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu. 
 
     ![Active Directory][1]
 
@@ -135,10 +135,10 @@ V této části Povolení služby Azure AD jednotného přihlašování na port�
     
     | Název atributu | Hodnota atributu |
     | ------------------- | -------------------- |
-    | název urn: oid:1.2.840.113556.1.4.221 | user.userprincipalname |
-    | název urn: oid:2.5.4.42 | user.givenname |
-    | urn:oid:0.9.2342.19200300.100.1.3 | User.Mail |    
-    | název urn: oid:2.5.4.4 | user.surname |
+    | urn:oid:1.2.840.113556.1.4.221 | user.userprincipalname |
+    | urn:oid:2.5.4.42 | user.givenname |
+    | urn:oid:0.9.2342.19200300.100.1.3 | user.mail |    
+    | urn:oid:2.5.4.4 | user.surname |
     
     a. Klikněte na tlačítko **přidat atribut** otevřít **přidat atribut** dialogového okna.
 
@@ -161,7 +161,7 @@ V této části Povolení služby Azure AD jednotného přihlašování na port�
 1. Ke konfiguraci jednotného přihlašování na **Learningpool Act** straně, je nutné odeslat na stažený **soubor XML s metadaty** k [tým podpory Learningpool Act](https://www.Learningpool.com/support). Nastavují tohoto nastavení můžete mít správně nastavené na obou stranách připojení SAML SSO.
 
 > [!TIP]
-> Teď si můžete přečíst stručné verzi těchto pokynů uvnitř [webu Azure portal](https://portal.azure.com), zatímco jsou nastavení aplikace!  Po přidání této aplikace z **služby Active Directory > podnikové aplikace** části, stačí kliknout **Single Sign-On** kartu a přístup k vložené dokumentaci prostřednictvím  **Konfigurace** oblast v dolní části. Další informace o funkci vložená dokumentace: [dokumentace ke službě Azure AD embedded]( https://go.microsoft.com/fwlink/?linkid=845985)
+> Teď si můžete přečíst stručné verzi těchto pokynů uvnitř [webu Azure portal](https://portal.azure.com), zatímco jsou nastavení aplikace!  Po přidání této aplikace z **služby Active Directory > podnikové aplikace** části, stačí kliknout **Single Sign-On** kartu a přístup k vložené dokumentaci prostřednictvím  **Konfigurace** oblast v dolní části. Další informace o funkci vložená dokumentace: [Dokumentace ke službě Azure AD, embedded]( https://go.microsoft.com/fwlink/?linkid=845985)
 > 
 
 ### <a name="creating-an-azure-ad-test-user"></a>Vytváří se testovací uživatele služby Azure AD
@@ -241,7 +241,7 @@ Cílem této části je test vaší konfigurace Azure AD jednotné přihlašová
 
 Po kliknutí na dlaždici Learningpool Act na přístupovém panelu, vám by měl získat automaticky přihlášení k aplikaci Learningpool Act.
 
-## <a name="additional-resources"></a>Další zdroje informací:
+## <a name="additional-resources"></a>Další materiály
 
 * [Seznam kurzů o integraci aplikací SaaS pomocí Azure Active Directory](tutorial-list.md)
 * [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](../manage-apps/what-is-single-sign-on.md)

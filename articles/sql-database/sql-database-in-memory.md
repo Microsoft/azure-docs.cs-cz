@@ -12,12 +12,12 @@ ms.author: jodebrui
 ms.reviewer: ''
 manager: craigg
 ms.date: 12/18/2018
-ms.openlocfilehash: d2602b79db0950043cc84bbd1626f7c8ec6f402a
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: 399a0e6dd2b5c83a599aa50973417ba5a9be708d
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53714385"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54813351"
 ---
 # <a name="optimize-performance-by-using-in-memory-technologies-in-sql-database"></a>Optimalizace výkonu pomocí v začleňování paměťových technologií ve službě SQL Database
 
@@ -70,7 +70,7 @@ Další informace naleznete v tématu:
 
 ## <a name="in-memory-oltp"></a>OLTP v paměti
 
-Technologie OLTP v paměti poskytuje operacemi přístupu k datům extrémně rychlé udržováním všechna data v paměti. Využívá také specializované indexy, nativní kompilace dotazů a blokátory data přistupovat ke zlepšení výkonu úlohy OLTP. Existují dva způsoby, jak uspořádat data OLTP v paměti:
+Technologie OLTP v paměti poskytuje operacemi přístupu k datům extrémně rychlé udržováním všechna data v paměti. Využívá také specializované indexy, nativní kompilace dotazů a blokátory přístup k datům pro zlepšení výkonu úlohy OLTP. Existují dva způsoby, jak uspořádat data OLTP v paměti:
 - **Paměťově optimalizované rowstore** formát, kde každý řádek je samostatná paměťová objektu. Toto je classic formát OLTP v paměti optimalizované pro úlohy OLTP s vysokým výkonem. Existují dva typy paměťově optimalizované tabulky, které lze použít v paměťově optimalizovaných rowstore formátu:
   - *Trvalý tabulky* (SCHEMA_AND_DATA) kde řádků umístěný v paměti jsou zachovány po restartování serveru. Tento typ tabulky se chová jako tradiční rowstore tabulku s další výhody optimalizace v paměti.
   - *Tabulky non-durable* (SCEMA_ONLY) Pokud jsou řádky není zachována po restartování. Tento typ tabulky je určen pro dočasná data (například nahrazení dočasné tabulky), nebo tabulky, které je potřeba rychle načíst data, teprve potom přejděte na některé trvalou tabulku (tzv. pracovních tabulek).

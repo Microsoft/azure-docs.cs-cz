@@ -4,7 +4,7 @@ description: Tento kurz vysvětluje, jak používat API generování sestav Azur
 services: active-directory
 documentationcenter: ''
 author: priyamohanram
-manager: mtillman
+manager: daveba
 ms.assetid: ''
 ms.service: active-directory
 ms.workload: identity
@@ -15,12 +15,12 @@ ms.component: report-monitor
 ms.date: 11/13/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 5714ed552c81d28a253aa57ad6e2ba1d67e543a1
-ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
+ms.openlocfilehash: 1db59b6f5b89eb619a6a2ae638c141b2b0ed71ce
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54214262"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54817397"
 ---
 # <a name="tutorial-get-data-using-the-azure-active-directory-reporting-api-with-certificates"></a>Kurz: Získání dat pomocí rozhraní API pro generování sestav Azure Active Directory s certifikáty
 
@@ -43,7 +43,7 @@ V tomto kurzu se dozvíte, jak používat testovací certifikát pro přístup k
     - Přístupové tokeny od uživatele, klíče aplikace a certifikáty pomocí ADAL
     - Rozhraní Graph API zpracovávající stránkové výsledky
 
-6. Pokud je vaše první přihlášení pomocí modulu spustit **instalace MSCloudIdUtilsModule**, jinak jej importujte **Import-Module** příkaz prostředí Powershell. Vaše relace by měl vypadat podobně jako tato obrazovka: ![Prostředí Windows Powershell](./media/tutorial-access-api-with-certificates/module-install.png)
+6. Pokud je vaše první přihlášení pomocí modulu spustit **instalace MSCloudIdUtilsModule**, jinak jej importujte **Import-Module** příkaz prostředí Powershell. Vaše relace by měl vypadat podobně jako tato obrazovka: ![Windows Powershell](./media/tutorial-access-api-with-certificates/module-install.png)
   
 7. Použití **New-SelfSignedCertificate** rutinu Powershellu k vytvoření testovacího certifikátu.
 

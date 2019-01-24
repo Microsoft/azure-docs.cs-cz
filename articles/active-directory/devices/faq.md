@@ -12,60 +12,61 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/15/2018
+ms.date: 01/23/2010
 ms.author: markvi
 ms.reviewer: jairoc
-ms.openlocfilehash: 9869f1e32cf20e658fb193c01da225249a5b1a29
-ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
+ms.openlocfilehash: 916de2de6cdc19bfa1e3967661d40693d4be1e99
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54451659"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54852384"
 ---
 # <a name="azure-active-directory-device-management-faq"></a>Azure Active Directory nejčastější dotazy ke správě zařízení
 
-**Otázka: Nedávno jsem registraci zařízení. Proč nelze zobrazit zařízení v části Moje informace o uživateli na webu Azure Portal? Nebo proč je vlastník zařízení označeno jako není k dispozici pro hybridních zařízení připojených k Azure AD? ** 
- **A:** Zařízení s Windows 10, která jsou připojená k hybridní Azure AD nezobrazí v zařízení uživatele.
-Budete muset použít zobrazení všech zařízení na webu Azure portal. Můžete také použít PowerShell [Get-MsolDevice](/powershell/module/msonline/get-msoldevice?view=azureadps-1.0) rutiny.
+**Otázka: Nedávno jsem registraci zařízení. Proč nelze zobrazit zařízení v části Moje informace o uživateli na webu Azure Portal? Nebo proč je vlastník zařízení označeno jako zařízení připojená k není k dispozici pro hybridní služby Azure Active Directory (Azure AD)?**
 
-Následující zařízení jsou uvedeny v zařízení uživatele:
+**ODPOVĚĎ:** Zařízení s Windows 10, která jsou připojená k hybridní Azure AD se nezobrazují v části **zařízení uživatelů**.
+Použití **všechna zařízení** zobrazení na webu Azure Portal. Můžete také použít Powershellu [Get-MsolDevice](https://docs.microsoft.com/en-us/powershell/module/msonline/get-msoldevice?view=azureadps-1.0) rutiny.
+
+Následující zařízení jsou uvedeny v části **zařízení uživatelů**:
 
 - Připojené k všechna osobní zařízení, které nejsou hybridní službě Azure AD. 
-- Všechny bez Windows 10 a zařízení Windows serveru 2016.
-- Všechna zařízení bez Windows 
+- Windows 10 nebo Windows Server 2016 zařízení.
+- Všechna zařízení bez Windows. 
 
 --- 
 
 **Otázka: Jak zjistím, co je stav registrace zařízení klienta?**
 
-**ODPOVĚĎ:** Můžete pomocí webu Azure portal, přejděte na všech zařízeních a vyhledat zařízení pomocí ID zařízení. Zkontrolujte hodnotu ve sloupci Typ spojení. V některých případech zařízení by byly resetovat nebo obnoví z Image. Proto je nutné také zkontrolovat stav registrace zařízení na zařízení příliš:
+**ODPOVĚĎ:** Na webu Azure Portal, přejděte na **všechna zařízení**. Hledat zařízení s použitím ID zařízení. Zkontrolujte hodnotu ve sloupci Typ spojení. V některých případech zařízení může resetovat nebo obnoví z Image. Proto je nutné také zkontrolovat stav registrace zařízení na zařízení:
 
-- Pro Windows 10 a Windows Server 2016 nebo novějším spusťte dsregcmd.exe/status.
-- Verze operačního systému nižší úrovně spusťte "%programFiles%\Microsoft pracoviště Join\autoworkplace.exe"
-
----
-
-**Otázka: Můžu zobrazit záznam zařízení v části informace o uživateli na webu Azure Portal a můžete prohlédnout stav, jak na zařízení zaregistrovaná. Teď můžu nastavit správně pro používání podmíněného přístupu?**
-
-**ODPOVĚĎ:** Stav připojení k zařízení, projeví podle ID zařízení, musí dodržovat, které v Azure AD a splnění libovolného kritéria hodnocení pro podmíněný přístup. Další informace najdete v tématu [vyžadují spravovaná zařízení pro přístup k aplikaci cloud s podmíněným přístupem](../conditional-access/require-managed-devices.md).
+- Pro Windows 10 a Windows Server 2016 nebo novějším, spusťte `dsregcmd.exe /status`.
+- Verze operačního systému nižší úrovně, spusťte `%programFiles%\Microsoft Workplace Join\autoworkplace.exe`.
 
 ---
 
-**Otázka: Odstraněný na webu Azure Portal nebo pomocí Windows Powershellu, ale místní stavu v zařízení říká, že je stále zaregistrovaná?**
+**Otázka: Zobrazí záznam zařízení v části informace o uživateli na webu Azure Portal. A protože zaregistrované na zařízení se zobrazuje stav. Teď můžu nastavit správně použití podmíněného přístupu?**
 
-**ODPOVĚĎ:** Toto chování je úmyslné. Zařízení nebude mít přístup k prostředkům v cloudu. 
+**ODPOVĚĎ:** Stav připojení k zařízení, se zobrazí podle **deviceID**, musí odpovídat stavu na Azure AD a splnění libovolného kritéria hodnocení pro podmíněný přístup. Další informace najdete v tématu [vyžadují spravovaná zařízení pro přístup k aplikaci cloud s podmíněným přístupem](../conditional-access/require-managed-devices.md).
 
-Pokud chcete znovu zaregistrovat znovu, manuální akce musí být přejdete na zařízení. 
+---
 
-Vymazat stav spojení z Windows 10 a Windows Server 2016, které jsou v místním AD připojených k doméně:
+**Otázka: Mohu odstranit zařízení na portálu Azure portal nebo pomocí prostředí Windows PowerShell. Ale místní stavu v zařízení říká, že je pořád zaregistrovaný.**
+
+**ODPOVĚĎ:** Tato operace je záměrné. Zařízení nemá přístup k prostředkům v cloudu. 
+
+Pokud chcete znovu zaregistrovat, je nutné provést ruční akcí na zařízení. 
+
+Vymazat stav spojení z Windows 10 a Windows Server 2016, která jsou připojená k doméně služby Active Directory v místním, proveďte následující kroky:
 
 1.  Otevřete příkazový řádek jako správce.
 
-2.  Typ `dsregcmd.exe /debug /leave`
+2.  Zadejte `dsregcmd.exe /debug /leave`.
 
-3.  Odhlaste se a přihlaste se k aktivaci naplánované úlohy, který zaregistruje zařízení s Azure AD znovu. 
+3.  Odhlaste se a přihlaste se k aktivaci naplánované úlohy, který zaregistruje zařízení s Azure AD. 
 
-Pro verze operačního systému Windows nižší úrovně, které jsou v místním AD připojených k doméně:
+Verze operačního systému Windows nižší úrovně, které jsou přidaní do domény služby Active Directory v místním proveďte následující kroky:
 
 1.  Otevřete příkazový řádek jako správce.
 2.  Zadejte `"%programFiles%\Microsoft Workplace Join\autoworkplace.exe /l"`.
@@ -73,136 +74,158 @@ Pro verze operačního systému Windows nižší úrovně, které jsou v místn�
 
 ---
 
-**Otázka: Proč se zobrazují položky duplicitní zařízení na webu Azure portal?**
+**Otázka: Proč se zobrazují položky duplicitní zařízení na portálu Azure portal?**
 
 **ODPOVĚĎ:**
 
--   Pro Windows 10 a Windows Server 2016 Pokud jsou opakované pokusy o zrušení služby a znovu vstoupit stejného zařízení, může být duplicitní položky. 
+-   Pro Windows 10 a Windows Server 2016 opakované pokusy na zrušení služby a znovu se připojit stejném zařízení může způsobit duplicitní položky. 
 
--   Pokud jste použili přidat pracovní nebo školní účet, každý uživatel systému windows, který používá přidat pracovní nebo školní účet vytvoří nový záznam zařízení s tímto názvem zařízení.
+-   Každý uživatel Windows, který používá **přidat pracovní nebo školní účet** vytváří záznam o novém zařízení se stejným názvem zařízení.
 
--   Pro verze operačního systému Windows nižší úrovně, které jsou v místním AD připojených k doméně pomocí automatické registrace vytvoří nový záznam zařízení se stejným názvem zařízení pro každého uživatele domény, který se přihlásí k zařízení. 
+-   Automatické registrace pro verzí operačního systému Windows nižší úrovně, které jsou přidaní do domény v místním adresáři Azure vytvoří nový záznam zařízení se stejným názvem zařízení pro každého uživatele domény, který se přihlásí k zařízení. 
 
--   Připojené k počítači s Azure AD, který má vymazáno, přeinstalovat a znovu vstoupit se stejným názvem, se zobrazí jako jiný záznam se stejným názvem zařízení.
-
----
-
-**Otázka: Proč může uživatel dál přístup k prostředkům ze zařízení, které můžu zakázali na webu Azure Portal?**
-
-**ODPOVĚĎ:** Může trvat až hodinu revoke uplatňovat.
-
->[!Note] 
->Pro zaregistrovaná zařízení doporučujeme, abyste vymazání obsahu zařízení k zajištění, že uživatelé nemají přístup k prostředkům. Další informace najdete v tématu [registrovat zařízení pro správu v Intune](https://docs.microsoft.com/intune/deploy-use/enroll-devices-in-microsoft-intune). 
+-   Počítače připojeného k Azure AD, který vymaže, přeinstalovat a znovu vstoupit se stejným názvem, zobrazí se jako jiný záznam se stejným názvem zařízení.
 
 ---
 
-## <a name="azure-ad-join-faq"></a>Nejčastější dotazy k Azure AD Join
+**Otázka: Proč může uživatel dál přístup k prostředkům ze zařízení zakázáno, na webu Azure Portal?**
 
-**Otázka: Jak můžu zrušení služby zařízení připojeno k Azure AD s místně na zařízení?**
+**ODPOVĚĎ:** Trvá za hodinu revoke uplatňovat.
+
+>[!NOTE] 
+>Pro zaregistrovaná zařízení doporučujeme vám, vymazat zařízení, abyste měli jistotu, že uživatelé nemají přístup k prostředkům. Další informace najdete v tématu [co je registrace zařízení?](https://docs.microsoft.com/intune/deploy-use/enroll-devices-in-microsoft-intune). 
+
+---
+
+## <a name="azure-ad-join-faq"></a>Připojení ke službě Azure AD – nejčastější dotazy
+
+**Otázka: Jak můžu zrušení služby zařízení připojené k doméně Azure AD místně na zařízení?**
 
 **ODPOVĚĎ:** 
-- Hybridní zařízení připojeno k Azure AD Ujistěte se, že chcete vypnout automatické registrace, aby se naplánovaná úloha nezaregistroval zařízení znovu. Dále otevřete příkazový řádek jako správce a zadejte `dsregcmd.exe /debug /leave`. Alternativně můžete tento příkaz Spustit jako skript v různých zařízeních na zrušení služby hromadně.
+- K hybridní službě Azure AD. zařízení připojené k doméně, ujistěte se, že chcete vypnout automatické registrace. Pak bude úloha nebude zařízení znovu zaregistrovat. Dále otevřete příkazový řádek jako správce a zadejte `dsregcmd.exe /debug /leave`. Nebo spusťte tento příkaz jako skript napříč několika zařízeními na zrušení služby hromadně.
 
-- Pro čistě připojeno k Azure AD zařízení, ujistěte se, že jste správcem offline místní účet nebo vytvořit novou, nebudou moct přihlásit pomocí libovolné přihlašovací údaje uživatele Azure AD. Dále přejděte na **nastavení** > **účty** > **přístup do práce nebo do školy**. Vyberte svůj účet a klikněte na **odpojit**. Postupujte podle zobrazených výzev a zadejte přihlašovací údaje místního správce, po zobrazení výzvy. Restartujte zařízení provést odpojení.
-
----
-
-**Otázka: Můžete svým uživatelům přihlásit k zařízení připojená k Azure AD, která byla odstraněna, nebo zakázaný ve službě Azure AD? ** 
- **A:** Ano. Windows uložil do mezipaměti přihlašovací možnost povolit, dříve přihlášení uživatelé pro přístup k ploše rychle i bez připojení k síti. Pokud zařízení se odstraní nebo je zakázaný ve službě Azure AD, není znám do zařízení Windows. Takže dříve přihlášení uživatelé můžou dál přístup k ploše s přihlášení uložené v mezipaměti. Ale jak zařízení se odstraní nebo zakázán, uživatelé nemají přístup k prostředkům nechrání podmíněným přístupem na základě zařízení. 
-
-Uživatelé, kteří se ještě nepřihlásili nelze přístupu k zařízení, protože není k dispozici žádné uložené v mezipaměti přihlášení povolený pro ně. 
+- Pro službu Azure AD čistě zařízení připojené k doméně, ujistěte se, že máte účet místního správce v režimu offline nebo ho vytvořit. Nemůžete se přihlásit pomocí libovolné přihlašovací údaje uživatele Azure AD. Dále přejděte na **nastavení** > **účty** > **přístup do práce nebo do školy**. Vyberte svůj účet a vyberte **odpojit**. Postupujte podle zobrazených výzev a zadejte přihlašovací údaje místního správce, po zobrazení výzvy. Restartujte zařízení pro dokončení procesu odpojení.
 
 ---
 
-**Otázka: Můžete zakázané nebo odstraněných uživatelů přihlásit k zařízení připojených k Azure AD? ** 
- **A:** Ano, ale pouze po omezenou dobu. Když uživatel se odstranil nebo zakázaný ve službě Azure AD, není okamžitě známé zařízení Windows. Takže dříve přihlášení uživatelé mají přístup k ploše s přihlášení uložené v mezipaměti. Jakmile je zařízení přehled o stavu uživatele (obvykle v méně než 4 hodinami), Windows zablokuje uživatelům přístup k ploše. Jako uživatel se odstraní nebo je zakázaný ve službě Azure AD, se jejich tokeny odvolá, nemají přístup k žádným prostředkům. 
+**Otázka: Můžete svým uživatelům přihlásit k zařízení připojená k Azure AD, které jsou odstraněny nebo zakázaný ve službě Azure AD?**
 
-Odstraněné nebo zakázaných uživatelů, kteří dříve nepřihlásili nelze přístup k zařízení, protože není k dispozici žádné uložené v mezipaměti přihlášení povolený pro ně. 
+**ODPOVĚĎ:** Ano. Windows je uložené v mezipaměti uživatelské jméno a heslo schopností, který umožňuje uživatelům, kteří už přihlásili pro přístup k ploše rychle i bez připojení k síti. 
 
----
+Pokud zařízení se odstraní nebo je zakázaný ve službě Azure AD, není znám do zařízení Windows. Tak uživatelům, kteří dříve přihlásili i nadále přístup k ploše v mezipaměti uživatelské jméno a heslo. Ale jak zařízení se odstraní nebo zakázaná, uživatelé nemají přístup k prostředkům nechrání podmíněným přístupem na základě zařízení. 
 
-**Otázka: Moji uživatelé nemůže vyhledat tiskárny ze zařízení připojeno k Azure AD. Jak můžu povolit tisk ze zařízení připojeno k Azure AD?**
-
-**ODPOVĚĎ:** Nasazení tiskáren pro zařízení připojeno k Azure AD, najdete v části [hybridní cloud print](https://docs.microsoft.com/windows-server/administration/hybrid-cloud-print/hybrid-cloud-print-deploy). Budete potřebovat Windows serveru v místním nasazení hybridního cloudu tisk. V současné době není k dispozici tiskové služby založené na cloudu. 
+Uživatelé, kteří se nepovedlo přihlásit dříve nelze přistupovat k zařízení. Neexistuje žádné uložené v mezipaměti uživatelského jména a hesla je povoleno. 
 
 ---
 
-**Otázka: Jak se připojit k vzdálené službě Azure AD na zařízení? ** 
- **A:** Najdete v článku https://docs.microsoft.com/windows/client-management/connect-to-remote-aadj-pc podrobnosti.
+**Otázka: Můžete zakázané nebo odstraněných uživatelů přihlásit k zařízení připojených k Azure AD?**
+
+**ODPOVĚĎ:** Ano, ale pouze po omezenou dobu. Když uživatel se odstranil nebo zakázaný ve službě Azure AD, je známo, nikoliv okamžitě do zařízení Windows. Uživatelům, kteří dříve přihlásili tak můžete přístup k ploše v mezipaměti uživatelské jméno a heslo. 
+
+Zařízení je obvykle přehled o stavu uživatele v méně než čtyři hodiny. Potom Windows zablokuje tito uživatelé přístup k ploše. Jako uživatel se odstraní nebo je zakázaný ve službě Azure AD, byly odvolány, jejich tokenů. Proto nemají přístup k žádným prostředkům. 
+
+Odstraněné nebo zakázané uživatelé, kteří nepovedlo přihlásit dříve nemají přístup k zařízení. Neexistuje žádné uložené v mezipaměti uživatelského jména a hesla je povoleno. 
 
 ---
 
-**Otázka: Proč Moji uživatelé vidí "Se tam nelze dostat z tohoto"?**
+**Otázka: Moji uživatelé nemůže vyhledat tiskárny ze zařízení připojených k Azure AD. Jak můžu povolit tisk z těchto zařízení?**
 
-**ODPOVĚĎ:** Pokud jste nakonfigurovali určitá pravidla podmíněného přístupu tak, aby vyžadovala stavu konkrétní zařízení a zařízení nesplňuje kritéria, jsou blokovány, uživatele a zobrazí tato zpráva. Vyhodnocení pravidla zásad podmíněného přístupu a ujistěte se, že zařízení je možné ke splnění kritérií, aby se tato zpráva.
-
----
-
-**Otázka: Proč některá Moje uživatelů není MFA výzev v Azure AD získáte připojené zařízení?**
-
-**ODPOVĚĎ:** Pokud se uživatel připojí nebo zaregistruje zařízení s Azure AD pomocí služby Multi-Factor Authentication, bude samotné zařízení důvěryhodné druhý faktor pro konkrétního uživatele. Následně pokaždé, když se stejný uživatel přihlásí k zařízení a přistupuje k aplikaci, bude považovat za zařízení, jako druhý faktor Azure AD a umožňuje daného uživatele a bezproblémově přistupovat k jejich aplikacím bez dalších výzev vícefaktorové ověřování. Toto chování neplatí pro žádný jiný uživatel, přihlášení k zařízení, aby všichni uživatelé přístup k tomuto zařízení by stále výzva s výzvu MFA před přístupem k aplikacím, které vyžadují vícefaktorové ověřování.
+**ODPOVĚĎ:** Nasaďte tiskárny pro službu Azure AD zařízení připojená k naleznete v tématu [nasazení systému Windows Server hybridního cloudu tisk pomocí předběžné ověření](https://docs.microsoft.com/windows-server/administration/hybrid-cloud-print/hybrid-cloud-print-deploy). Budete potřebovat Windows serveru v místním nasazení hybridního cloudu tisk. V současné době není k dispozici tiskové služby založené na cloudu. 
 
 ---
 
-**Otázka: Proč zobrazí se zpráva "uživatelské jméno nebo heslo je chybné." pro zařízení, které jsem právě připojená k Azure AD?**
+**Otázka: Jak se připojit k vzdálené službě Azure AD na zařízení?**
 
-**ODPOVĚĎ:** Běžné důvody pro tento scénář jsou:
+**ODPOVĚĎ:** Zobrazit [připojit ke vzdálenému počítači připojeném k Azure Active Directory](https://docs.microsoft.com/windows/client-management/connect-to-remote-aadj-pc).
+
+---
+
+**Otázka: Proč Moji uživatelé vidí *se tam nelze dostat z tohoto*?**
+
+**ODPOVĚĎ:** Konfigurace určitá pravidla podmíněného přístupu tak, aby vyžadovala stavu konkrétní zařízení? Pokud zařízení nesplňuje kritéria, jsou zablokované uživatele a zobrazí tuto zprávu. Vyhodnocení pravidla zásad podmíněného přístupu. Ujistěte se, že zařízení splňuje kritéria, aby zprávy.
+
+---
+
+**Otázka: Proč nejsou některé Moji uživatelé získat výzvy ověřování Azure Multi-Factor Authentication na zařízení připojených k Azure AD?**
+
+**ODPOVĚĎ:** Uživatel může připojit k nebo zaregistrovat zařízení v Azure AD pomocí služby Multi-Factor Authentication. Samotné zařízení se pak stane důvěryhodným druhý faktor pro tohoto uživatele. Pokaždé, když se stejný uživatel přihlásí k zařízení a přistupuje k aplikaci, službě Azure AD jako druhý faktor považuje za zařízení. Umožňuje daného uživatele a bezproblémově přistupovat k aplikacím bez dalších výzev k ověření službou Multi-Factor Authentication. 
+
+Toto chování nelze použít s žádným uživatelem, který se přihlásí na toto zařízení. Proto všechny ostatní, kteří přistupují k zařízení získat výzvu ověřování službou Multi-Factor Authentication. Pak bude moct aplikace, které vyžadují ověřování službou Multi-Factor Authentication.
+
+---
+
+**Otázka: Proč se zobrazí zpráva *uživatelské jméno nebo heslo není správné* zprávu pro zařízení jsem právě připojená k Azure AD?**
+
+**ODPOVĚĎ:** Běžné důvody pro tento scénář jsou následující:
 
 - Vaše přihlašovací údaje uživatele už nejsou platné.
 
-- Počítač je schopen komunikovat se službou Azure Active Directory. Vyhledejte všechny problémy se síťovým připojením.
+- Počítač nemůže komunikovat se službou Azure Active Directory. Vyhledejte všechny problémy se síťovým připojením.
 
-- Federované přihlášení už budou vyžadovat federačním serveru pro podporu koncových bodů WS-Trust povolené a přístupné. 
+- Federované přihlášení vyžadovat federačním serveru pro podporu WS-Trust koncové body, které jsou povolené a přístupné. 
 
-- Povolíte předávací ověřování a uživatel má dočasné heslo, které je potřeba změnit přihlášení.
-
----
-
-**Otázka: Proč se zobrazuje "zobrazí... došlo k chybě!" dialogové okno, když se snažím se Azure AD join počítač?**
-
-**ODPOVĚĎ:** To je výsledkem nastavení registrace Azure Active Directory s Intune. Ujistěte se, že uživatel pokouší provést připojení k Azure AD má správné přiřazenou licenci Intune. Další informace najdete v tématu [nastavení správy pro zařízení Windows](https://docs.microsoft.com/intune/deploy-use/set-up-windows-device-management-with-microsoft-intune#azure-active-directory-enrollment).  
+- Můžete povolit předávací ověřování. Proto musí dočasné heslo změnit při přihlášení.
 
 ---
 
-**Otázka: Proč mého pokusu o do služby Azure AD join selhání PC i když mi nepřišel. jakékoli informace o chybách?**
+**Otázka: Proč se zobrazuje *zobrazí... došlo k chybě!* dialogové okno při pokusu o službě Azure AD join počítač?**
 
-**ODPOVĚĎ:** Pravděpodobnou příčinou je, že je uživatel přihlášen k zařízení pomocí místní předdefinovaný účet správce. Než začnete používat Azure Active Directory Join k dokončení instalace vytvořte jiného místního účtu. 
+**ODPOVĚĎ:** K této chybě dochází při nastavování registrace Azure Active Directory s Intune. Ujistěte se, že uživatel, který se pokusí o připojení ke službě Azure AD má správné přiřazenou licenci Intune. Další informace najdete v tématu [nastavení registrace pro zařízení s Windows](https://docs.microsoft.com/intune/deploy-use/set-up-windows-device-management-with-microsoft-intune#azure-active-directory-enrollment).  
 
 ---
 
-## <a name="hybrid-azure-ad-join-faq"></a>Nejčastější dotazy týkající se hybridní připojení k Azure AD
+**Otázka: Proč mého pokusu o do služby Azure AD připojte se k počítači nezdaří, i když mi nepřišel. jakékoli informace o chybách?**
 
-**Otázka: Kde můžu najít Poradce při potížích s informace pro diagnostikování selhání připojení k hybridní službě Azure AD?**
+**ODPOVĚĎ:** Pravděpodobnou příčinou je, že jste přihlášení k zařízení pomocí účtu místního správce. Před použitím služby Azure Active Directory join k dokončení instalace, vytvořte jiný místní účet. 
 
-**ODPOVĚĎ:** Informace o odstraňování potíží naleznete v tématu:
+---
 
-- [Řešení potíží s Automatická registrace domény připojené počítače do služby Azure AD – Windows 10 a Windows serveru 2016](troubleshoot-hybrid-join-windows-current.md)
+## <a name="hybrid-azure-ad-join-faq"></a>Připojení k hybridní službě Azure AD – nejčastější dotazy
 
-- [Řešení potíží s Automatická registrace domény počítačů připojená k Azure AD pro klienty Windows nižší úrovně](troubleshoot-hybrid-join-windows-legacy.md)
+**Otázka: Kde můžu najít Poradce při potížích s informací k diagnostice chyb připojení k hybridní službě Azure AD?**
+
+**ODPOVĚĎ:** Informace o odstraňování potíží, najdete v těchto článcích:
+
+- [Zařízení s Windows 10 a Windows serveru 2016 připojená k řešení potíží s hybridní služby Azure Active Directory](troubleshoot-hybrid-join-windows-current.md)
+
+- [Zařízení s nižší úrovně připojená k řešení potíží s hybridní služby Azure Active Directory](troubleshoot-hybrid-join-windows-legacy.md)
  
 **Otázka: Proč vidím duplicitní Azure AD registrované záznam pro moje Windows 10 hybridní službě Azure AD připojené zařízení v seznamu zařízení služby Azure AD?**
 
-**ODPOVĚĎ:** Když uživatelé přidat svůj účet do aplikace na zařízení připojené k doméně, může být vyzve k "Přidat účet do Windows?". Kliknutím na "Ano" na příkazovém řádku by mohlo dojít k zařízení zaregistrovat u služby Azure AD a typ důvěryhodnosti označen jako registrováno v Azure AD. Jakmile povolíte připojení k hybridní službě Azure AD ve vaší organizaci, získají zařízení připojená k hybridní Azure AD. V důsledku toho budou existovat dva stavy zařízení zobrazovat pro stejné zařízení. Připojení k hybridní službě Azure AD, ale má přednost před stavu registrováno v Azure AD. Takže zařízení se budou považovat za hybridní připojení k Azure AD pro všechny ověřovací a vyhodnocení podmíněného přístupu. Ano můžete bezpečně odstranit záznam zařízení registrováno v Azure AD z portálu Azure AD. Přečtěte si prosím [v této části](https://docs.microsoft.com/azure/active-directory/devices/hybrid-azuread-join-plan#review-things-you-should-know) v hybridním Azure AD připojit článek pochopit, jak se vyhnout nebo čištění tohoto duální stavu na počítači s Windows 10. 
+**ODPOVĚĎ:** Pokud vaši uživatelé přidat své účty k aplikacím na zařízení připojeném k doméně, se může zobrazit výzva s **přidat účet do Windows?** Po zadání **Ano** na příkazovém řádku, zaregistruje zařízení s Azure AD. Typ vztahu důvěryhodnosti je označen jako registrováno v Azure AD. Po povolení připojení k hybridní službě Azure AD ve vaší organizaci zařízení také získá hybridní připojená k Azure AD. Pak dvou stavů – stav zařízení zobrazí pro stejné zařízení. 
+
+Připojení k hybridní službě Azure AD má přednost před stavu registrováno v Azure AD. Takže zařízení se považuje za hybridní připojená k Azure AD pro všechny ověřovací a vyhodnocení podmíněného přístupu. Můžete bezpečně odstranit záznam zařízení registrováno v Azure AD z portálu Azure AD. Zjistěte, jak [vyhnout nebo je odstraňte tento duální stav na počítači s Windows 10](https://docs.microsoft.com/azure/active-directory/devices/hybrid-azuread-join-plan#review-things-you-should-know). 
 
 ---
 
-## <a name="azure-ad-register-faq"></a>Nejčastější dotazy týkající se registrace Azure AD
+## <a name="azure-ad-register-faq"></a>Nejčastější dotazy k registrace Azure AD
 
 **Otázka: Můžete zaregistrovat zařízení s Androidem nebo iOS BYOD?**
 
-**ODPOVĚĎ:** Ano, ale pouze službě Azure device registration service a pro zákazníky využívající hybridní řešení. Nepodporuje se místní službu device registration service ve službě AD FS.
+**ODPOVĚĎ:** Ano, ale pouze službě Azure device registration service a pro zákazníky využívající hybridní řešení. Nepodporuje se se službou registrace zařízení v místním v Active Directory Federation Services (AD FS).
 
 **Otázka: Jak se můžete zaregistrovat zařízení s macOS?**
 
-**ODPOVĚĎ:** Postup pro registraci zařízení s macOS:
+**ODPOVĚĎ:** Proveďte následující kroky:
 
 1.  [Vytvoření zásad dodržování předpisů](https://docs.microsoft.com/intune/compliance-policy-create-mac-os)
 2.  [Definovat zásady podmíněného přístupu pro zařízení s macOS](../active-directory-conditional-access-azure-portal.md) 
 
 **Poznámky:**
 
-- Uživatelé, které jsou součástí své zásady podmíněného přístupu, musí [podporovanou verzi sady Office pro macOS](../conditional-access/technical-reference.md#client-apps-condition) pro přístup k prostředkům. 
+- Uživatelé zahrnutých ve své zásady podmíněného přístupu, musí [podporovanou verzi sady Office pro macOS](../conditional-access/technical-reference.md#client-apps-condition) pro přístup k prostředkům. 
 
-- Při prvním pokusu o přístup vaši uživatelé vyzváni k registraci zařízení pomocí portálu společnosti.
+- Během prvního pokusu přístup uživatelům výzva k registraci zařízení pomocí portálu společnosti.
 
 ---
+
+
+**Q: co jsou certifikáty MS organizace P2P přístupu k dispozici na naše zařízení s Windows 10?**
+
+**ODPOVĚĎ:** Vystavení certifikátů MS organizace P2P přístupu Azure AD na obě, připojená k Azure AD a zařízení připojená k hybridní službě Azure AD. Tyto certifikáty slouží k povolení vztahu důvěryhodnosti mezi zařízeními ve stejném tenantovi pro scénáře vzdálené plochy. Jeden certifikát je vydaný pro zařízení a jiné se vydá uživateli. Certifikát zařízení nachází v `Local Computer\Personal\Certificates` a je platný jeden den. Tento certifikát se obnovuje (ve vydání nového certifikátu) Pokud je zařízení stále aktivní ve službě Azure AD. Uživatelský certifikát je k dispozici v `Current User\Personal\Certificates` a tento certifikát je platný také za jeden den, ale je vystaven na vyžádání, když se uživatel pokusí relace vzdálené plochy na jiné zařízení připojené k doméně Azure AD. Se platnost neprodlouží na vypršení platnosti. Oba tyto certifikáty jsou vystavené v MS organizace P2P přístupu certifikát `Local Computer\AAD Token Issuer\Certificates`. Tento certifikát je vydaný službou Azure AD při registraci zařízení. 
+
+---
+
+**Q:Why zobrazit více Prošlé certifikáty vydané MS organizace P2P přístupu na naše zařízení s Windows 10? Jak je možné je odstranit?**
+
+**ODPOVĚĎ:** Došlo k nějakému problému lze na Windows 10 verze 1709 a nižší, kde certifikáty s vypršenou platností MS organizaci P2P přístup i nadále existovat v úložišti počítače z důvodu problémů s kryptografických. Uživatelé můžou mít potíže s s připojením k síti, pokud používáte žádné klienty VPN (například Cisco AnyConnect), které nelze zpracovat velký počet certifikáty s vypršenou platností. Tento problém byl vyřešen ve verzi Windows 10 1803 automaticky odstranit všechny takové MS organizace P2P přístupu certifikáty s vypršenou platností. Tento problém lze vyřešit aktualizací zařízení na Windows 10 1803. Pokud se nemůžete aktualizovat, můžete odstranit tyto certifikáty žádný nepříznivý vliv.  

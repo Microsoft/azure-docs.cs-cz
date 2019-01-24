@@ -4,7 +4,7 @@ description: Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.reviewer: joflore
 ms.assetid: ee54c39e-ce20-42a4-8531-da7b5f40f57c
 ms.service: active-directory
@@ -15,19 +15,19 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/10/2018
 ms.author: jeedes
-ms.openlocfilehash: 48dcb4a3b1e06ab62905092055ba1b48bd0dddb7
-ms.sourcegitcommit: 4eddd89f8f2406f9605d1a46796caf188c458f64
+ms.openlocfilehash: 33d39e617bd55b88d8f04785d937faf176463ee5
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49114492"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54808812"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-salesforce-sandbox"></a>Kurz: Integrace Azure Active Directory s Salesforce Sandbox
+# <a name="tutorial-azure-active-directory-integration-with-salesforce-sandbox"></a>Kurz: Integrace Azure Active Directory s Sandboxu služby Salesforce
 
 V tomto kurzu se dozvíte, jak integrovat Sandboxu služby Salesforce se službou Azure Active Directory (Azure AD).
 
 Sandboxy získáte možnost vytvářet více kopií vaší organizace v samostatných prostředích pro různé účely, jako je vývoj, testování a školení, bez negativního vlivu data a aplikace v produkčním prostředí Salesforce organizace.
-Další podrobnosti najdete v tématu [izolovaného prostoru Přehled](https://help.salesforce.com/articleView?id=create_test_instance.htm&language=en_us&type=5).
+Další podrobnosti najdete v tématu [izolovaného prostoru Přehled](https://help.salesforce.com/articleView?id=create_test_instance.htm&language=en_us&type=5).
 
 Integrace s Azure AD Sandboxu služby Salesforce vám poskytuje následující výhody:
 
@@ -219,7 +219,7 @@ V této části Povolení služby Azure AD jednotného přihlašování na port�
 
     ![Konfigurace jednotného přihlašování](./media/salesforce-sandbox-tutorial/xmlchoose.png)
 
-25. Na **SAML jednotné přihlašování – nastavení** stránky, automaticky vyplnit pole, zadejte název konfigurace (například: *SPSSOWAAD_Test*) v **název** textového pole a Klikněte na Uložit.
+25. Na **SAML jednotné přihlašování – nastavení** stránky, automaticky vyplnit pole, zadejte název konfigurace (například: *SPSSOWAAD_Test*) v **název** textového pole a klikněte na Uložit.
 
     ![Konfigurace jednotného přihlašování](./media/salesforce-sandbox-tutorial/sf-saml-config.png)
 
@@ -306,7 +306,7 @@ V této části Testování služby Azure AD jednotné přihlašování – konf
 Po kliknutí na dlaždici služby Salesforce izolovaného prostoru na přístupovém panelu, vám by měl získat automaticky přihlášení k aplikaci Salesforce izolovaného prostoru.
 Další informace o přístupovém panelu, naleznete v tématu [Úvod k přístupovému panelu](../user-help/active-directory-saas-access-panel-introduction.md).
 
-## <a name="additional-resources"></a>Další zdroje informací:
+## <a name="additional-resources"></a>Další materiály
 
 * [Seznam kurzů o integraci aplikací SaaS pomocí Azure Active Directory](tutorial-list.md)
 * [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](../manage-apps/what-is-single-sign-on.md)

@@ -2,20 +2,20 @@
 title: Integrace datových center Azure Stack – Identity
 description: Informace o integraci služby AD FS pro Azure Stack s vaším datovým centrem služby AD FS
 services: azure-stack
-author: jeffgilb
+author: PatAltimore
 manager: femila
 ms.service: azure-stack
 ms.topic: article
-ms.date: 01/08/19
-ms.author: jeffgilb
-ms.reviewer: wfayed
+ms.date: 01/23/19
+ms.author: patricka
+ms.reviewer: thoroet
 keywords: ''
-ms.openlocfilehash: 63ac30728cceae76f869f5529905cd6d3dde9ae2
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.openlocfilehash: 4f599379de07a9628ee81425ddac2374411bdf97
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54263782"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54852758"
 ---
 # <a name="azure-stack-datacenter-integration---identity"></a>Integrace datových center Azure Stack – Identity
 Azure Stack pomocí Azure Active Directory (Azure AD) nebo Active Directory Federation Services (AD FS) můžete nasadit jako zprostředkovatele identity. Volba je třeba provést před nasazením služby Azure Stack. Nasazení pomocí služby AD FS se také označuje jako při nasazování služby Azure Stack v odpojeném režimu.
@@ -193,16 +193,21 @@ Následující postup musíte použít počítač, který má síťové připoje
 
 Tento postup použijte počítač, který může komunikovat s privileged koncového bodu ve službě Azure Stack a má přístup k souboru metadat, který jste vytvořili v předchozím kroku.
 
-1. Otevřete relaci Windows Powershellu se zvýšenými oprávněními.
+1. Otevřete relaci Windows Powershellu se zvýšenými oprávněními a připojte se k privilegovaným koncový bod.
 
    ```PowerShell  
    $federationMetadataFileContent = get-content c:\metadata.xml
    $creds=Get-Credential
    Enter-PSSession -ComputerName <IP Address of ERCS> -ConfigurationName PrivilegedEndpoint -Credential $creds
-   Register-CustomAdfs -CustomAdfsName Contoso -CustomADFSFederationMetadataFileContent $using:federationMetadataFileContent
    ```
 
-2. Spusťte následující příkaz k aktualizaci vlastníkem předplatného poskytovatele výchozí, pomocí parametrů, které jsou vhodné pro vaše prostředí:
+2. Teď, když jste připojeni k privilegovaným koncový bod, spusťte následující příkaz pomocí parametrů, které jsou vhodné pro vaše prostředí:
+
+    ```PowerShell
+    Register-CustomAdfs -CustomAdfsName Contoso -CustomADFSFederationMetadataFileContent $using:federationMetadataFileContent
+    ```
+
+3. Spusťte následující příkaz k aktualizaci vlastníkem předplatného poskytovatele výchozí, pomocí parametrů, které jsou vhodné pro vaše prostředí:
 
    ```PowerShell  
    Set-ServiceAdminOwner -ServiceAdminOwnerUpn "administrator@contoso.com"

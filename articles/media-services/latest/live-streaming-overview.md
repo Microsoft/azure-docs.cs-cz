@@ -11,14 +11,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: ne
 ms.topic: article
-ms.date: 01/15/2019
+ms.date: 01/22/2019
 ms.author: juliako
-ms.openlocfilehash: 6f7c6c2265fe13eb50aa900e9a51e11edfd90201
-ms.sourcegitcommit: ba9f95cf821c5af8e24425fd8ce6985b998c2982
+ms.openlocfilehash: 3be7ad84cf0d45276c136465d7247ec43621aceb
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54382084"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54810954"
 ---
 # <a name="live-streaming-with-azure-media-services-v3"></a>Živé streamování pomocí služby Azure Media Services v3
 
@@ -34,17 +34,25 @@ Tento článek poskytuje podrobný přehled najdete pokyny a zahrnuje diagramy h
 
 Tady jsou kroky pro pracovní postup živého streamování:
 
-1. Vytvoření **živá událost**.
-2. Vytvořte nový **Asset** objektu.
-3. Vytvoření **Live výstup** a používat název assetu, kterou jste vytvořili.
-4. Vytvoření **streamování zásad** a **klíč obsahu** Pokud máte v úmyslu šifrování obsahu pomocí DRM.
-5. Pokud nepoužíváte DRM, vytvořte **Lokátor streamování** pomocí integrované **streamování zásad** typy.
-6. Seznam cest na **streamování zásad** získat zpět adresy URL používat (Toto jsou deterministické).
-7. Získání názvu hostitele pro **koncový bod streamování** chcete z datový proud stream (ujistěte se, že je spuštěný koncový bod streamování). 
-8. Adresu URL v kroku 6 v kombinaci s názvem hostitele v kroku 7 zobrazíte úplnou adresu URL.
-9. Pokud budete chtít zastavit, aby vaše **živá událost** viditelná, musíte zastavit streamování události tak, že odstraníte **Lokátor streamování**.
+1. Ujistěte se, **StreamingEndpoint** běží. 
+2. Vytvoření **Livestream**. 
+  
+    Při vytváření události, můžete je zadat na automatické spuštění. Alternativně můžete spustit událost, když budete chtít spustit streamování.<br/> Když automatické spuštění je nastavena na hodnotu true, živá událost se spustí správné po jeho vytvoření. To znamená, fakturace spustí poté, co běží živá událost. Musíte explicitně volat Stop prostředku Livestream, která zastaví další fakturace. Další informace najdete v tématu [Livestream stavy a fakturační](live-event-states-billing.md).
+3. Získání adresy URL ingestování a konfiguraci vaší místní kodér použití adresy URL k odeslání příspěvku informačního kanálu.<br/>Zobrazit [doporučuje kodéry](recommended-on-premises-live-encoders.md).
+4. Získat adresu URL ve verzi preview a použít ho k ověření, že je ve skutečnosti přijímají vstup z kodéru.
+5. Vytvořte nový **Asset** objektu.
+6. Vytvoření **LiveOutput** a používat název assetu, kterou jste vytvořili.
 
-Další informace najdete v tématu [živého streamování kurzu](stream-live-tutorial-with-api.md) , který je založen na [Live .NET Core](https://github.com/Azure-Samples/media-services-v3-dotnet-core-tutorials/tree/master/NETCore/Live) vzorku.
+     **LiveOutput** bude archivovat do datového proudu **Asset**.
+7. Vytvoření **StreamingLocator** pomocí integrované **StreamingPolicy** typy.
+
+    Pokud máte v úmyslu šifrování obsahu, přečtěte si [Content protection přehled](content-protection-overview.md).
+8. Seznam cest na **Lokátor streamování** získat zpět adresy URL používat (Toto jsou deterministické).
+9. Získání názvu hostitele pro **koncový bod streamování** chcete z datového proudu.
+10. Adresu URL v kroku 8 v kombinaci s názvem hostitele v kroku 9 získat úplnou adresu URL.
+11. Pokud budete chtít zastavit, aby vaše **Livestream** viditelná, musíte zastavit streamování událostí a delete **StreamingLocator**.
+
+Další informace najdete v tématu [živého streamování kurzu](stream-live-tutorial-with-api.md).
 
 ## <a name="overview-of-main-components"></a>Přehled hlavních komponent
 
@@ -63,14 +71,7 @@ Služba Media Services umožňuje doručovat obsah zašifrovaný dynamicky (**dy
 
 V případě potřeby můžete také použít dynamické filtrování, který slouží k řízení počet stop, formáty, přenosových rychlostí a prezentace časových oken, které se pošlou hráči. Další informace najdete v tématu [filtrů a dynamických manifestů](filters-dynamic-manifest-overview.md).
 
-### <a name="new-capabilities-for-live-streaming-in-v3"></a>Nové možnosti pro živé streamování ve verzi 3
-
-S v3 rozhraní API z Media Services můžete využívat následující nové funkce:
-
-- Nový režim s nízkou latencí. Další informace najdete v tématu [latence](live-event-latency.md).
-- (Zvýšení stability a další podporu zdrojového kodér) Vylepšená podpora RTMP ve službě.
-- Ingestování RTMPS zabezpečené.<br/>Při vytváření Livestream získáte 4 ingestované adresy URL. Ingestování 4 adresy URL jsou téměř identické, mít stejný token streamování (AppId), jenom část čísla portu se liší. Dva z adres URL jsou primární a záložní pro RTMPS.   
-- Můžete Streamovat živé události, které jsou dlouhé až 24 hodin, pokud informační kanál pomocí služby Media Services pro překódování příspěvek s jednou přenosovou rychlostí do výstupního datového proudu, který má více přenosových rychlostí. 
+Informace o nových funkcích pro živé streamování ve verzi 3, naleznete v tématu [pokyny k migraci pro přechod ze služby Media Services v2 na v3](migrate-from-v2-to-v3.md).
 
 ## <a name="liveevent-types"></a>Typy Livestream
 
@@ -109,7 +110,7 @@ A [LiveOutput](https://docs.microsoft.com/rest/api/media/liveoutputs) vám umož
 > [!NOTE]
 > **LiveOutput**s spuštění při vytvoření a zastavení při odstranění. Když odstraníte **LiveOutput**, nejsou odstranění podkladové **Asset** a obsahu v prostředku. 
 >
-> Pokud jste publikovali **Lokátor streamování**s prostředků pro **LiveOutput**, událost (až do délky okna DVR) bude dál zobrazit až koncový čas **Lokátor streamování**  nebo do při odstranění Lokátor, podle toho, co nastane dřív.   
+> Pokud jste publikovali **LiveOutput** pomocí asset **StreamingLocator**, **Livestream** (až do délky okna DVR) bude dál zobrazit až **StreamingLocator**na vypršení platnosti nebo odstranění, co nastane dříve.
 
 Další informace najdete v tématu [použití cloudového DVR](live-event-cloud-dvr.md).
 

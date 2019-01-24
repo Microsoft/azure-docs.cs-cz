@@ -4,7 +4,7 @@ description: Popis přihlášení Azure AD schéma protokolu pro použití ve sl
 services: active-directory
 documentationcenter: ''
 author: priyamohanram
-manager: mtillman
+manager: daveba
 editor: ''
 ms.assetid: 4b18127b-d1d0-4bdc-8f9c-6a4c991c5f75
 ms.service: active-directory
@@ -16,12 +16,12 @@ ms.component: report-monitor
 ms.date: 11/13/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 0c44501a483b9a988c3ef048d12455eb3e5ae337
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: 2957cd12fb6ef37b3e120b90b1500c6a43bb3e04
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53546395"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54813419"
 ---
 # <a name="interpret-the-azure-ad-sign-in-logs-schema-in-azure-monitor-preview"></a>Interpretace schéma protokolů přihlášení Azure AD ve službě Azure Monitor (preview)
 
@@ -153,7 +153,7 @@ Tento článek popisuje schéma protokolu přihlašování Azure Active Director
 | Název pole | Popis |
 |------------|-------------|
 | Čas | Datum a čas ve standardu UTC. |
-| ID prostředku | Tato hodnota není mapován a toto pole můžete klidně ignorovat.  |
+| ResourceId | Tato hodnota není mapován a toto pole můžete klidně ignorovat.  |
 | OperationName | Pro přihlášení, tato hodnota je vždy *aktivit přihlašování*. |
 | OperationVersion | Verze rozhraní REST API, které jsou požadovány klientem. |
 | Kategorie | Pro přihlášení, tato hodnota je vždy *SignIn*. | 
@@ -161,8 +161,8 @@ Tento článek popisuje schéma protokolu přihlašování Azure Active Director
 | Hodnota resultType | Výsledek operace přihlášení může být *úspěch* nebo *selhání*. | 
 | resultSignature | Obsahuje kód chyby, pokud existuje, pro přihlašovací operaci. |
 | resultDescription | Obsahuje popis chyby pro operace přihlášení. |
-| doby trvání v MS |  Tato hodnota není mapován a toto pole můžete klidně ignorovat.|
-| callerIpAddress | IP adresa klienta, který vytvořil požadavek. | 
+| DurationMs |  Tato hodnota není mapován a toto pole můžete klidně ignorovat.|
+| CallerIpAddress | IP adresa klienta, který vytvořil požadavek. | 
 | CorrelationId | Volitelný GUID, který je předaný klientem. Tato hodnota může pomoct korelovat operací na straně klienta s operací na straně serveru, a to je užitečné, když sledujete protokoly, které jsou rozmístěny služby. |
 | Identita | Identita z tokenu, který byl předložený při provedení žádosti. To může být uživatelský účet, účet system nebo instanční objekt služby. |
 | Úroveň | Poskytuje typ zprávy. Pro audit, je vždy *informativní*. |

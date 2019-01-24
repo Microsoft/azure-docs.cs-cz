@@ -3,7 +3,7 @@ title: Přehled dvoustupňového ověřování – Azure Active Directory | Micr
 description: Zjistěte, jak nastavit a používat dvoustupňové ověřování.
 services: active-directory
 author: eross-msft
-manager: mtillman
+manager: daveba
 ms.reviewer: sahenry
 ms.service: active-directory
 ms.workload: identity
@@ -11,12 +11,12 @@ ms.component: user-help
 ms.topic: overview
 ms.date: 07/30/2018
 ms.author: lizross
-ms.openlocfilehash: de5c9810b234a93643321d1ba299a66a3ae965a3
-ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
-ms.translationtype: HT
+ms.openlocfilehash: 047c2af2626c9efca05dc3d3e554d57b4d559add
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2018
-ms.locfileid: "42023579"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54809101"
 ---
 # <a name="two-step-verification-overview"></a>Přehled dvoustupňového ověřování
 

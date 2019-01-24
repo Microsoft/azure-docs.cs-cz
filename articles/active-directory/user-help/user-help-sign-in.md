@@ -3,7 +3,7 @@ title: Jak se přihlásit pomocí dvoustupňového ověření nebo zabezpečení
 description: Další informace o tom, jak se přihlásit pomocí různých metod ověření identity bezpečnostních údajů.
 services: active-directory
 author: eross-msft
-manager: mtillman
+manager: daveba
 ms.reviewer: sahenry
 ms.service: active-directory
 ms.workload: identity
@@ -11,19 +11,19 @@ ms.component: user-help
 ms.topic: conceptual
 ms.date: 07/30/2018
 ms.author: lizross
-ms.openlocfilehash: 9f7f06df2ab54e7ccb947362b6824097158166ce
-ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
+ms.openlocfilehash: 4bd1ceb03ddce572e0571afb87ec2f0c36a49443
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/30/2018
-ms.locfileid: "39348254"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54810410"
 ---
 # <a name="sign-in-using-two-step-verification-or-security-info"></a>Přihlaste se pomocí dvoustupňového ověření nebo bezpečnostních údajů
 
 Jakmile nastavíte dvoustupňové ověřování nebo bezpečnostní údaje, budete mít, přihlaste se k vaší pracovní nebo školní účet pomocí zadaný ověřovací metodu.
 
 >[!Note]
->Pokud stále používáte prostředí dvoustupňové ověření, budete muset nastavit metody ověřování pomocí následujících pokynů [nastavit účtu pro dvoustupňové ověřování](multi-factor-authentication-end-user-first-time.md) článku. Pokud správce zapnul prostředí informace o zabezpečení, musíte nastavit tyto podrobné návody pomocí metody ověřování:<ul><li>[Nastavení informací o zabezpečení pro použití ověřování aplikace](security-info-setup-auth-app.md)</li><li>[Nastavení informací o zabezpečení pro použití zasílání textových zpráv](security-info-setup-text-msg.md)</li><li>[Upravit informace o zabezpečení tak, aby pomocí telefonního hovoru](security-info-setup-phone-number.md)</li></ul>
+>Pokud stále používáte prostředí dvoustupňové ověření, budete muset nastavit metody ověřování pomocí následujících pokynů [nastavit účtu pro dvoustupňové ověřování](multi-factor-authentication-end-user-first-time.md) článku. Pokud správce zapnul prostředí informace o zabezpečení, musíte nastavit tyto podrobné návody pomocí metody ověřování:<ul><li>[Nastavení informací o zabezpečení pro použití ověřování aplikace](security-info-setup-auth-app.md)</li><li>[Nastavení bezpečnostních údajů pro používání zasílání textových zpráv](security-info-setup-text-msg.md)</li><li>[Upravit informace o zabezpečení tak, aby pomocí telefonního hovoru](security-info-setup-phone-number.md)</li></ul>
 
 ## <a name="sign-in-using-an-authenticator-app-notification-on-your-mobile-device"></a>Přihlaste se pomocí oznámení aplikaci authenticator na vašem mobilním zařízení
 

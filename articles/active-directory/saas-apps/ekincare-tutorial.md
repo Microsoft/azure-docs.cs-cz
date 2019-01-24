@@ -1,10 +1,10 @@
 ---
-title: 'Kurz: Integrace Azure Active Directory se službou eKincare | Dokumentace Microsoftu'
+title: 'Kurz: Integrace Azure Active Directory s eKincare | Dokumentace Microsoftu'
 description: Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a eKincare.
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.assetid: 57f56d14-83cf-4cbb-b342-fac4fc60078f
 ms.service: active-directory
 ms.component: saas-app-tutorial
@@ -14,14 +14,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/22/2017
 ms.author: jeedes
-ms.openlocfilehash: e6cf860f161015fa0698effcd4ecaead263b29f1
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: b7c7b5ca59fcabb11b1dd41a0e142a2f5071e038
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39449338"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54814949"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-ekincare"></a>Kurz: Integrace Azure Active Directory se službou eKincare
+# <a name="tutorial-azure-active-directory-integration-with-ekincare"></a>Kurz: Integrace Azure Active Directory s eKincare
 
 V tomto kurzu se dozvíte, jak integrovat eKincare s Azure Active Directory (Azure AD).
 
@@ -37,7 +37,7 @@ Pokud chcete zjistit další podrobnosti o integraci aplikací SaaS v Azure AD, 
 
 Konfigurace integrace Azure AD s eKincare, potřebujete následující položky:
 
-- S předplatným služby Azure AD
+- Předplatné Azure AD
 - EKincare jednotného přihlašování povolená předplatného
 
 > [!NOTE]
@@ -59,7 +59,7 @@ Konfigurace integrace eKincare do služby Azure AD, budete muset přidat eKincar
 
 **Chcete-li přidat eKincare z galerie, postupujte následovně:**
 
-1. V  **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu. 
+1. V **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu. 
 
     ![Active Directory][1]
 
@@ -129,9 +129,9 @@ V této části Povolení služby Azure AD jednotného přihlašování na port�
     
     | Název atributu | Hodnota atributu |
     | ---------------| --------------- |    
-    | EmployeeID | *User.extensionattribute1* |
+    | EmployeeID | *user.extensionattribute1* |
     | kódu organizace | *"uniquevalue"* |
-    | název organizace | *User.CompanyName* |
+    | název organizace | *user.companyname* |
 
     a. Klikněte na tlačítko **přidat atribut** otevřít **přidat atribut** dialogového okna.
 
@@ -156,7 +156,7 @@ V této části Povolení služby Azure AD jednotného přihlašování na port�
 1. Ke konfiguraci jednotného přihlašování na **eKincare** straně, je nutné odeslat na stažený **soubor XML s metadaty** k [tým podpory eKincare](mailto:tech@ekincare.com). Nastavují tohoto nastavení můžete mít správně nastavené na obou stranách připojení SAML SSO.
 
 > [!TIP]
-> Teď si můžete přečíst stručné verzi těchto pokynů uvnitř [webu Azure portal](https://portal.azure.com), zatímco jsou nastavení aplikace!  Po přidání této aplikace z **služby Active Directory > podnikové aplikace** části, stačí kliknout **Single Sign-On** kartu a přístup k vložené dokumentaci prostřednictvím  **Konfigurace** oblast v dolní části. Další informace o funkci vložená dokumentace: [dokumentace ke službě Azure AD embedded]( https://go.microsoft.com/fwlink/?linkid=845985)
+> Teď si můžete přečíst stručné verzi těchto pokynů uvnitř [webu Azure portal](https://portal.azure.com), zatímco jsou nastavení aplikace!  Po přidání této aplikace z **služby Active Directory > podnikové aplikace** části, stačí kliknout **Single Sign-On** kartu a přístup k vložené dokumentaci prostřednictvím  **Konfigurace** oblast v dolní části. Další informace o funkci vložená dokumentace: [Dokumentace ke službě Azure AD, embedded]( https://go.microsoft.com/fwlink/?linkid=845985)
 > 
 
 ### <a name="creating-an-azure-ad-test-user"></a>Vytváří se testovací uživatele služby Azure AD
@@ -231,7 +231,7 @@ V této části Testování služby Azure AD jednotné přihlašování – konf
 Po kliknutí na dlaždici eKincare na přístupovém panelu, vám by měl získat automaticky přihlášení k aplikaci eKincare.
 Další informace o přístupovém panelu, naleznete v tématu [Úvod do přístupového panelu](../user-help/active-directory-saas-access-panel-introduction.md)
 
-## <a name="additional-resources"></a>Další zdroje informací:
+## <a name="additional-resources"></a>Další materiály
 
 * [Seznam kurzů o integraci aplikací SaaS pomocí Azure Active Directory](tutorial-list.md)
 * [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](../manage-apps/what-is-single-sign-on.md)

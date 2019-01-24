@@ -3,7 +3,7 @@ title: Sestava zabezpečení Uživatelé označení příznakem rizika na portá
 description: Přečtěte si o sestavě zabezpečení Uživatelé označení příznakem rizika na portálu Azure Active Directory
 services: active-directory
 author: priyamohanram
-manager: mtillman
+manager: daveba
 ms.assetid: addd60fe-d5ac-4b8b-983c-0736c80ace02
 ms.service: active-directory
 ms.devlang: na
@@ -14,12 +14,12 @@ ms.component: report-monitor
 ms.date: 01/17/2019
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 7b27dbbf34f1c19efa0fc21af71339ce6cacd9d8
-ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
+ms.openlocfilehash: de9cf73ba7ad68d84e43a7774617959f9c3789ee
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/19/2019
-ms.locfileid: "54410814"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54810750"
 ---
 # <a name="users-flagged-for-risk-report-in-the-azure-portal"></a>Uživatelé označení příznakem rizika sestavy na webu Azure Portal
 

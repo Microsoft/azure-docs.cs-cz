@@ -4,7 +4,7 @@ description: Další informace o dobu, za jakou události vytváření sestav se
 services: active-directory
 documentationcenter: ''
 author: priyamohanram
-manager: mtillman
+manager: daveba
 editor: ''
 ms.assetid: 9b88958d-94a2-4f4b-a18c-616f0617a24e
 ms.service: active-directory
@@ -16,12 +16,12 @@ ms.component: report-monitor
 ms.date: 11/13/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: c6d36f3e1cef4fffbe38b0a70d42069577590627
-ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
+ms.openlocfilehash: 2d2312d42a67f1596f976885a2f55054dda2aff7
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54212256"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54816734"
 ---
 # <a name="azure-active-directory-reporting-latencies"></a>Latence generování sestav Azure Active Directory.
 

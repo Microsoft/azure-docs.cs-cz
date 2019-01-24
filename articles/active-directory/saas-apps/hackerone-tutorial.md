@@ -1,10 +1,10 @@
 ---
-title: 'Kurz: Integrace Azure Active Directory se službou Hackerone | Dokumentace Microsoftu'
+title: 'Kurz: Integrace Azure Active Directory s Hackerone | Dokumentace Microsoftu'
 description: Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a Hackerone.
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.assetid: 229d1efb-b6a5-4df8-9839-5d551487db4e
 ms.service: active-directory
 ms.component: saas-app-tutorial
@@ -14,14 +14,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/28/2017
 ms.author: jeedes
-ms.openlocfilehash: 4e33ad66fe0ced9a426a608f4193ff52dec4f7ee
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: fe070505970516efcd4e2ae46dedff2792f95b08
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39441829"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54817193"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-hackerone"></a>Kurz: Integrace Azure Active Directory se službou HackerOne
+# <a name="tutorial-azure-active-directory-integration-with-hackerone"></a>Kurz: Integrace Azure Active Directory s HackerOne
 
 V tomto kurzu se dozvíte, jak integrovat HackerOne s Azure Active Directory (Azure AD).
 
@@ -37,7 +37,7 @@ Pokud chcete zjistit další podrobnosti o integraci aplikací SaaS v Azure AD, 
 
 Konfigurace integrace Azure AD s HackerOne, potřebujete následující položky:
 
-- S předplatným služby Azure AD
+- Předplatné Azure AD
 - HackerOne jednotného přihlašování povolená předplatného
 
 > [!NOTE]
@@ -59,7 +59,7 @@ Konfigurace integrace HackerOne do služby Azure AD, budete muset přidat Hacker
 
 **Chcete-li přidat HackerOne z galerie, postupujte následovně:**
 
-1. V  **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu. 
+1. V **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu. 
 
     ![Active Directory][1]
 
@@ -148,9 +148,9 @@ V této části Povolení služby Azure AD jednotného přihlašování na port�
 
     a. V **e-mailové doméně** textového pole zadejte registrované domény.
 
-    b. V **adresy jednotného přihlašování** textových polí, vložte hodnotu **SAML jednotné přihlašování – adresa URL služby** zkopírovanou z webu Azure portal.
+    b. V  **adresy jednotného přihlašování** textových polí, vložte hodnotu **SAML jednotné přihlašování – adresa URL služby** zkopírovanou z webu Azure portal.
 
-    c. Otevřete váš **soubor certifikátu** v poznámkovém bloku stáhnout z webu Azure portal, zkopírujte obsah ho do schránky a vložte ho do **X509 certifikátu** textového pole.
+    c. Otevřete váš **soubor certifikátu** v poznámkovém bloku stáhnout z webu Azure portal, zkopírujte obsah ho do schránky a vložte ho do **X509 certifikátu**  textového pole.
     
     d. Klikněte na **Uložit**.
 
@@ -163,7 +163,7 @@ V této části Povolení služby Azure AD jednotného přihlašování na port�
     b. Pokud hodnotu **stav** pole se rovná **poslední stav testu: vytvořili**, požádejte vašeho [tým podpory HackerOne](mailto:support@hackerone.com) požádat o kontrolu konfigurace.
 
 > [!TIP]
-> Teď si můžete přečíst stručné verzi těchto pokynů uvnitř [webu Azure portal](https://portal.azure.com), zatímco jsou nastavení aplikace!  Po přidání této aplikace z **služby Active Directory > podnikové aplikace** části, stačí kliknout **Single Sign-On** kartu a přístup k vložené dokumentaci prostřednictvím  **Konfigurace** oblast v dolní části. Další informace o funkci vložená dokumentace: [dokumentace ke službě Azure AD embedded]( https://go.microsoft.com/fwlink/?linkid=845985)
+> Teď si můžete přečíst stručné verzi těchto pokynů uvnitř [webu Azure portal](https://portal.azure.com), zatímco jsou nastavení aplikace!  Po přidání této aplikace z **služby Active Directory > podnikové aplikace** části, stačí kliknout **Single Sign-On** kartu a přístup k vložené dokumentaci prostřednictvím  **Konfigurace** oblast v dolní části. Další informace o funkci vložená dokumentace: [Dokumentace ke službě Azure AD, embedded]( https://go.microsoft.com/fwlink/?linkid=845985)
 > 
 
 ### <a name="creating-an-azure-ad-test-user"></a>Vytváří se testovací uživatele služby Azure AD
@@ -243,7 +243,7 @@ Nakonec test vaší konfigurace Azure AD jednotné přihlašování pomocí př�
 
 Po kliknutí na dlaždici HackerOne na přístupovém panelu, vám by měl získat automaticky přihlášení k aplikaci HackerOne.
 
-## <a name="additional-resources"></a>Další zdroje informací:
+## <a name="additional-resources"></a>Další materiály
 
 * [Seznam kurzů o integraci aplikací SaaS pomocí Azure Active Directory](tutorial-list.md)
 * [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](../manage-apps/what-is-single-sign-on.md)

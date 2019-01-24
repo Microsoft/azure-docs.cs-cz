@@ -3,9 +3,9 @@ title: Jak pomocí protokolu AMQP 1.0 rozhraní Java API služby Service Bus | D
 description: Jak používat službu zpráva Java (JMS) pomocí služby Azure Service Bus a rozšířené řízení front zpráv protokolu (AMQP) 1.0.
 services: service-bus-messaging
 documentationcenter: java
-author: spelluru
+author: axisc
 manager: timlt
-editor: ''
+editor: spelluru
 ms.assetid: be766f42-6fd1-410c-b275-8c400c811519
 ms.service: service-bus-messaging
 ms.workload: na
@@ -13,13 +13,13 @@ ms.tgt_pltfrm: na
 ms.devlang: Java
 ms.topic: article
 ms.date: 08/10/2018
-ms.author: spelluru
-ms.openlocfilehash: fbd74b227afd2191616100d74c7864eacf015add
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.author: aschhab
+ms.openlocfilehash: f0c3aac95b1d19dc3f217cc146532254d8740ca0
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52308066"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54853285"
 ---
 # <a name="how-to-use-the-java-message-service-jms-api-with-service-bus-and-amqp-10"></a>Jak Java Message Service (JMS) rozhraní API pomocí služby Service Bus a protokolu AMQP 1.0
 Rozšířené řízení front zpráv protokolu (AMQP) 1.0 je efektivní a spolehlivý přenosový protokol zasílání zpráv, který vám pomůže vytvářet aplikace napříč platformami, robustní zasílání zpráv.
@@ -41,8 +41,8 @@ Informace o tom, kde chcete stáhnout nejnovější verzi klientské knihovny Ap
 
 Následující čtyři soubory JAR z archivní úrovně distribuce Apache Qpid JMS protokolu AMQP 1.0 je nutné přidat do cesta třídy Java při vytváření a spouštění aplikací JMS službou Service Bus:
 
-* geronimo jms\_1.1\_1.0.jar specifikace
-* qpid-jms - client-[verze] .jar
+* geronimo-jms\_1.1\_spec-1.0.jar
+* qpid-jms-client-[version].jar
 
 > ! [POZNÁMKA] JMS JAR názvy a verze se možná změnily Podrobnosti najdete v tématu [Qpid JMS - protokolu AMQP 1.0](https://qpid.apache.org/maven.html#qpid-jms-amqp-10).
 

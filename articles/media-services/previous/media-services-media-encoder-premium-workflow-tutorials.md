@@ -1,5 +1,5 @@
 ---
-title: Kurzy Avanced Media Encoderu Premium Workflow
+title: Pokročilé kurzy pracovní postup kodéru Media Encoder Premium
 description: Tento dokument obsahuje návody, které ukazují, jak provádět pokročilé úlohy s pracovním postupům kodéru Media Encoder Premium a také jak vytvářet komplexní pracovní postupy pomocí návrháře postupu provádění.
 services: media-services
 documentationcenter: ''
@@ -14,18 +14,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/30/2018
 ms.author: christoc;xpouyat;juliako
-ms.openlocfilehash: 0a20f7629fbc102ae05c51c7388bbfd6915d6204
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 15393f8e10fcda99820d0279d46edf88c7781ff8
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51257358"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54811960"
 ---
 # <a name="advanced-media-encoder-premium-workflow-tutorials"></a>Pokročilé kurzy pracovní postup kodéru Media Encoder Premium
 ## <a name="overview"></a>Přehled
 Tento dokument obsahuje návody, které ukazují, jak přizpůsobit pracovní postupy s **návrháře postupu provádění**. Můžete najít soubory samotný pracovní postup [tady](https://github.com/Azure/azure-media-services-samples/tree/master/Encoding%20Presets/VoD/MediaEncoderPremiumWorkfows/PremiumEncoderWorkflowSamples).  
 
-## <a name="toc"></a>ABY SE OBSAH
+## <a name="toc"></a>TOC
 Jsou pokryta následující témata:
 
 * [Kódování MXF do s jednou přenosovou rychlostí MP4](media-services-media-encoder-premium-workflow-tutorials.md#MXF_to_MP4)
@@ -293,7 +293,7 @@ Vytvořte třetí součást výstupního souboru, výstupní výstupní datový 
 *Zvukový multiplexor vytvoření výstupního souboru*
 
 ### <a id="MXF_to_MP4_with_dyn_packaging_ism_file"></a>Přidává. Správci služeb sítě Internet SMIL souboru
-Pro dynamické balení pro práci v kombinaci s MP4 soubory (a pouze se zvukem MP4) v našich asset Media Services, musíme také soubor manifestu (také označovaný jako "SMIL" soubor: synchronizované multimédia integrace jazyka). Tento soubor Určuje pro Azure Media Services jsou dostupné pro dynamické balení a které z těch, které je potřeba zvážit zvukový datový proud soubory MP4. Typické souboru manifestu sady MP4 s jeden zvukový datový proud vypadá takto:
+Pro dynamické balení pro práci v kombinaci s souborů MP4 (a pouze se zvukem MP4) v našich asset Media Services, musíme také soubor manifestu (nazývaný také soubor "SMIL": Synchronizovat multimediální integrace jazyka). Tento soubor Určuje pro Azure Media Services jsou dostupné pro dynamické balení a které z těch, které je potřeba zvážit zvukový datový proud soubory MP4. Typické souboru manifestu sady MP4 s jeden zvukový datový proud vypadá takto:
 
 ```xml
     <?xml version="1.0" encoding="utf-8" standalone="yes"?>
@@ -419,7 +419,7 @@ Spouští se z pracovního postupu, který generuje [souboru MP4 výstup z MXF v
 ### <a id="thumbnails_to__multibitrate_MP4__with_jpg"></a>Přidání kódování JPG
 Srdce naše generování miniatur, bude komponenta kodéru JPG, moct výstupní soubory JPG.
 
-![Kodér JPG](./media/media-services-media-encoder-premium-workflow-tutorials/media-services-jpg-encoder.png)
+![JPG Encoder](./media/media-services-media-encoder-premium-workflow-tutorials/media-services-jpg-encoder.png)
 
 *Kodér JPG*
 
@@ -692,8 +692,8 @@ Předtím, než jsme můžete přepsat cliplist xml, který je generován během
 
 Nejdřív potřebujeme způsob, jak určit v tom okamžiku až do bodu, které chceme, aby k oříznutí videa. Chcete-li to vhodné pro uživatele bez technické pracovního postupu, publikujte dvě vlastnosti do kořenového adresáře grafu. Chcete-li to provést, klikněte pravým tlačítkem na plochu návrháře a vyberte "Přidat vlastnost":
 
-* První vlastnost: "ClippingTimeStart" typu: "časový kód"
-* Druhá vlastnost: "ClippingTimeEnd" typu: "časový kód"
+* První vlastnost: "ClippingTimeStart" typu: ČASOVÝ "KÓD"
+* Druhá vlastnost: "ClippingTimeEnd" typu: ČASOVÝ "KÓD"
 
 ![Přidat dialogové okno vlastností pro oříznutí počáteční čas](./media/media-services-media-encoder-premium-workflow-tutorials/media-services-clip-start-time.png)
 

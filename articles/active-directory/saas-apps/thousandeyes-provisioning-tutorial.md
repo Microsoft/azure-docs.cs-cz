@@ -5,7 +5,7 @@ services: active-directory
 documentationcenter: ''
 author: asmalser-msft
 writer: asmalser-msft
-manager: mtillman
+manager: daveba
 ms.assetid: d4ca2365-6729-48f7-bb7f-c0f5ffe740a3
 ms.service: active-directory
 ms.component: saas-app-tutorial
@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/26/2018
 ms.author: asmalser-msft
-ms.openlocfilehash: d2912c687d4968a239d5af747df4115ffd71bbeb
-ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
+ms.openlocfilehash: 2df899e6cb0078cdf949c3f8257719b00554e85b
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44345756"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54815714"
 ---
 # <a name="tutorial-configure-thousandeyes-for-automatic-user-provisioning"></a>Kurz: Konfigurace ThousandEyes pro automatické zřizování uživatelů
 
@@ -74,7 +74,7 @@ Tato část vás provede připojením služby Azure AD vaší ThousandEyes uživ
 
     ![ThousandEyes zřizování](./media/thousandeyes-provisioning-tutorial/ThousandEyes1.png)
 
-5. V části **přihlašovacích údajů správce** části, zadejte **tajný klíč tokenu** generovaných ThousandEyes váš účet (token, který můžete najít v rámci vašeho účtu ThousandEyes: **zabezpečení & Ověřování**). 
+5. V části **přihlašovacích údajů správce** části, zadejte **tokenu nosiče OAuth** generovaných ThousandEyes váš účet (můžete vyhledat a nebo vygenerování tokenu v rámci vašeho účtu ThousandEyes  **Profil** části).
 
     ![ThousandEyes zřizování](./media/thousandeyes-provisioning-tutorial/ThousandEyes2.png)
 
@@ -97,7 +97,7 @@ Tato operace spustí počáteční synchronizaci všech uživatelů a skupiny p�
 Další informace o tom, jak číst zřizování protokoly Azure AD najdete v tématu [hlášení o zřizování automatické uživatelských účtů](../manage-apps/check-status-user-account-provisioning.md).
 
 
-## <a name="additional-resources"></a>Další zdroje informací:
+## <a name="additional-resources"></a>Další materiály
 
 * [Správa zřizování uživatelských účtů pro podnikové aplikace](../manage-apps/configure-automatic-user-provisioning-portal.md)
 * [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](../manage-apps/what-is-single-sign-on.md)

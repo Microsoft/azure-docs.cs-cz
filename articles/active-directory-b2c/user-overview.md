@@ -3,19 +3,19 @@ title: Přehled uživatelských účtů v Azure Active Directory B2C | Dokumenta
 description: Další informace o uživatelských účtech v Azure Active Directory B2C.
 services: active-directory-b2c
 author: davidmu1
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 11/30/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: f517754a8076fc18ed29f7db49f6ff9bfc6c7b3d
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.openlocfilehash: 4bd3eba54d70ae065ce16845dd4fb9351c069f2d
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52725756"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54853302"
 ---
 # <a name="overview-of-user-accounts-in-azure-active-directory-b2c"></a>Přehled uživatelských účtů v Azure Active Directory B2C
 
@@ -29,7 +29,7 @@ K dispozici jsou následující typy účtů:
 
 ## <a name="work-account"></a>Pracovní účet
 
-Pracovní účet se vytvoří stejným způsobem jako pro všechny klienty založené na službě Azure AD. Chcete-li vytvořit pracovní účet, můžete použít informace v [rychlý start: přidání nových uživatelů do služby Azure Active Directory](../active-directory/fundamentals/add-users-azure-active-directory.md). Pracovní účet je vytvořený pomocí **nového uživatele** choice na webu Azure Portal.
+Pracovní účet se vytvoří stejným způsobem jako pro všechny klienty založené na službě Azure AD. Chcete-li vytvořit pracovní účet, můžete použít informace v [rychlý start: Přidání nových uživatelů do služby Azure Active Directory](../active-directory/fundamentals/add-users-azure-active-directory.md). Pracovní účet je vytvořený pomocí **nového uživatele** choice na webu Azure Portal.
 
 Když přidáte nový pracovní účet, je potřeba zvážit následující nastavení konfigurace:
 

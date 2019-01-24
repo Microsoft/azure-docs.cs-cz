@@ -14,12 +14,12 @@ ms.date: 11/08/2018
 ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
-ms.openlocfilehash: bd63e8379051864a19c473779625a925446185f2
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.openlocfilehash: 1e679a1d26ce219f7c0248e27d7f9cfffc5fdb4e
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52445017"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54813844"
 ---
 # <a name="administrator-roles-by-identity-task-in-azure-active-directory"></a>Role správce úlohou identity v Azure Active Directory
 
@@ -75,7 +75,7 @@ Konfigurace vlastností společnosti | Globální správce |
 ---- | --------------------- | ----------------
 Předávacího ověřování | Globální správce | 
 Číst všechny konfigurace | Globální správce | 
-Bezproblémové jednotné přihlašování | Globální správce | 
+Transparentní jednotné přihlašování | Globální správce | 
 
 ## <a name="connect-health"></a>Stav připojení
 
@@ -106,7 +106,7 @@ Spravovat domény | Globální správce |
 
 Úkol | Nejméně privilegovaných rolí | Další role
 ---- | --------------------- | ----------------
-Vytvoření instance služby Azure AD Domain Services | Globální správce | 
+Create Azure AD Domain Services instance | Globální správce | 
 Provádět všechny úlohy služby Azure AD Domain Services | Skupiny Azure AD DC Administrators ([naleznete v dokumentaci](https://docs.microsoft.com/azure/active-directory-domain-services/active-directory-ds-admin-guide-administer-domain#administrative-tasks-you-can-perform-on-a-managed-domain)) | 
 Číst všechny konfigurace | Čtenář předplatného Azure, který obsahuje službu AD DS | 
 
@@ -242,7 +242,7 @@ Konfigurace vlastností resetování hesla | Globální správce |
 Konfigurace registrace | Globální správce | 
 Číst všechny konfigurace | Správce uživatelů Správce zabezpečení | 
 
-## <a name="privileged-identity-management"></a>Privileged identity management.
+## <a name="privileged-identity-management"></a>Privileged Identity Management
 
 Úkol | Nejméně privilegovaných rolí | Další role
 ---- | --------------------- | ----------------

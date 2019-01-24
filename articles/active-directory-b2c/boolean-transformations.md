@@ -3,19 +3,19 @@ title: Datový typ Boolean deklaraci příklady transformaci identita prostřed�
 description: Datový typ Boolean deklaraci příklady transformaci identita prostředí Framework schéma z Azure Active Directory B2C.
 services: active-directory-b2c
 author: davidmu1
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 09/10/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: c6e9337fb5e336c506fc43e13eeb7fdbfaf636a7
-ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
+ms.openlocfilehash: 1afbf8e8473e12992b7f031ac9835a58e1089b0d
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47432558"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54853268"
 ---
 # <a name="boolean-claims-transformations"></a>Logická hodnota deklarace identity transformace
 
@@ -23,7 +23,7 @@ ms.locfileid: "47432558"
 
 Tento článek obsahuje příklady použití transformace logická deklarací schématu architekturu rozhraní identit v Azure Active Directory (Azure AD) B2C. Další informace najdete v tématu [ClaimsTransformations](claimstransformations.md).
 
-## <a name="andclaims"></a>Na všechny
+## <a name="andclaims"></a>AndClaims
 
 Provede operaci a dvě logické inputClaims a nastaví outputClaim s výsledek operace.
 
@@ -67,7 +67,7 @@ Kontroluje, zda jsou si rovny logické hodnoty dvou deklarací a vyvolá výjimk
 
 **AssertBooleanClaimIsEqualToValue** transformaci deklarací identity je vždy spuštěn z [technický profil ověření](validation-technical-profile.md) , který je volán [držitelem s prohlašovanou technický profil](self-asserted-technical-profile.md). **UserMessageIfClaimsTransformationBooleanValueIsNotEqual** technického profilu s vlastním potvrzením určuje chybovou zprávu, která se uživateli zobrazí technický profil.
 
-![Spuštění AssertStringClaimsAreEqual](./media/boolean-transformations/assert-execution.png)
+![AssertStringClaimsAreEqual execution](./media/boolean-transformations/assert-execution.png)
 
 Následující transformace deklarací identity ukazuje, jak zkontrolovat hodnoty s logickou typu deklarace identity `true` hodnotu. Pokud hodnota `accountEnabled` typu deklarace identity má hodnotu false, je vyvolána chybovou zprávu.
 

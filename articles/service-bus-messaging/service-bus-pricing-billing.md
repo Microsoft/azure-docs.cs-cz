@@ -3,9 +3,9 @@ title: Služby Service Bus, ceny a fakturace | Dokumentace Microsoftu
 description: Přehled služby Service Bus Cenová struktura.
 services: service-bus-messaging
 documentationcenter: na
-author: spelluru
+author: axisc
 manager: timlt
-editor: ''
+editor: spelluru
 ms.assetid: 7c45b112-e911-45ab-9203-a2e5abccd6e0
 ms.service: service-bus-messaging
 ms.devlang: na
@@ -13,13 +13,13 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/21/2018
-ms.author: spelluru
-ms.openlocfilehash: db5f4bc7cc62c61f13258b919226efbf63165371
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.author: aschhab
+ms.openlocfilehash: 5b9aae979a25a1f175b3d5a5e24960d6f392b9b4
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47406835"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54852928"
 ---
 # <a name="service-bus-pricing-and-billing"></a>Služby Service Bus, ceny a fakturace
 
@@ -32,8 +32,8 @@ Azure Service Bus nabízíme v Standard a [Premium](service-bus-premium-messagin
 
 Service Bus pomocí následujících měřičů 2 pro fronty a témata nebo předplatná:
 
-1. **Operace zasílání zpráv**: definovaných jako volání rozhraní API proti fronty nebo tématu/odběru koncových bodů služby. Měří nahradí zprávy odesílané nebo přijímané jako primární jednotkou fakturovatelné využití pro fronty a témata nebo předplatná.
-2. **Zprostředkovaná připojení**: definovaný jako nejvyšší počet trvalých připojení otevřete front, témat nebo předplatných v dané vzorkování hodinová období. Tato měření se používá pouze na úrovni Standard, ve kterém můžete otevřít další připojení (dříve připojení byly omezené na 100 za fronty/tématu nebo odběru) za nominální připojení.
+1. **Operace zasílání zpráv**: Definovaných jako volání rozhraní API proti fronty nebo tématu/odběru koncových bodů služby. Měří nahradí zprávy odesílané nebo přijímané jako primární jednotkou fakturovatelné využití pro fronty a témata nebo předplatná.
+2. **Zprostředkovaná připojení**: Definovaný jako nejvyšší počet trvalých připojení otevřete front, témat nebo předplatných v dané vzorkování hodinová období. Tato měření se používá pouze na úrovni Standard, ve kterém můžete otevřít další připojení (dříve připojení byly omezené na 100 za fronty/tématu nebo odběru) za nominální připojení.
 
 **Standardní** úroveň zavádí jsou odstupňované ceny za operace prováděné s frontami a tématy nebo předplatnými, což vede k slevy na základě objemového až 80 % na nejvyšší úrovni využití. Je také základní poplatek úrovně Standard z 10 USD za měsíc, které umožňuje provádět 12,5 milionů operací za měsíc bez dalších poplatků.
 

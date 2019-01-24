@@ -4,7 +4,7 @@ description: Poskytuje obecný přehled monitorování Azure Active Directory.
 services: active-directory
 documentationcenter: ''
 author: priyamohanram
-manager: mtillman
+manager: daveba
 editor: ''
 ms.assetid: e2b3d8ce-708a-46e4-b474-123792f35526
 ms.service: active-directory
@@ -16,14 +16,14 @@ ms.component: report-monitor
 ms.date: 11/13/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 92e200f358098d5516246d057d1cef406750e326
-ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
+ms.openlocfilehash: 77cfddf8b7283487cc2417573379df53e8d26cdc
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52264678"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54812518"
 ---
-# <a name="what-is-azure-active-directory-monitoring-preview"></a>Co je monitorování Azure Active Directory? (preview)
+# <a name="what-is-azure-active-directory-monitoring-preview"></a>Co je monitorování Azure Active Directory? (Preview)
 
 S využitím monitorování Azure Active Directory (Azure AD) teď můžete směrovat protokoly aktivit služby Azure AD do různých koncových bodů. Následně je můžete ukládat pro účely dlouhodobého používání nebo integrovat s nástroji pro správu akcí a informací o zabezpečení (SIEM) třetích stran a získat tak přehled o vašem prostředí.
 
@@ -45,7 +45,7 @@ Pokud chcete spravovat nastavení monitorování pro protokoly aktivit služby A
     
 * Vyberte **Protokoly auditu** nebo **Protokoly přihlášení** a pak vyberte **Exportovat nastavení**. 
 
-    ![Exportovat nastavení](./media/overview-monitoring/export-settings.png)
+    ![Export nastavení](./media/overview-monitoring/export-settings.png)
 
 
 ## <a name="route-logs-to-storage-account"></a>Směrování protokolů do účtu úložiště

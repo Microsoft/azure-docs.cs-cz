@@ -1,10 +1,10 @@
 ---
-title: 'Kurz: Integrace Azure Active Directory se službou Hightail | Dokumentace Microsoftu'
+title: 'Kurz: Integrace Azure Active Directory s Hightail | Dokumentace Microsoftu'
 description: Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a Hightail.
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.assetid: e15206ac-74b0-46e4-9329-892c7d242ec0
 ms.service: active-directory
 ms.workload: identity
@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/15/2018
 ms.author: jeedes
-ms.openlocfilehash: 1151044d5c1002c808ae1214086aff5fad84a55e
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 59342aa95e50b29e58035892967be6d0407aae91
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39431330"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54812960"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-hightail"></a>Kurz: Integrace Azure Active Directory se službou Hightail
+# <a name="tutorial-azure-active-directory-integration-with-hightail"></a>Kurz: Integrace Azure Active Directory s Hightail
 
 V tomto kurzu se dozvíte, jak integrovat Hightail s Azure Active Directory (Azure AD).
 
@@ -36,7 +36,7 @@ Pokud chcete zjistit další podrobnosti o integraci aplikací SaaS v Azure AD, 
 
 Konfigurace integrace Azure AD s Hightail, potřebujete následující položky:
 
-- S předplatným služby Azure AD
+- Předplatné Azure AD
 - Hightail jednotného přihlašování povolená předplatného
 
 > [!NOTE]
@@ -58,7 +58,7 @@ Konfigurace integrace Hightail do služby Azure AD, budete muset přidat Hightai
 
 **Chcete-li přidat Hightail z galerie, postupujte následovně:**
 
-1. V  **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu. 
+1. V **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu. 
 
     ![Active Directory][1]
 
@@ -136,8 +136,8 @@ V této části Povolení služby Azure AD jednotného přihlašování na port�
     | ------------------- | -------------------- |
     | FirstName | user.givenname |
     | LastName | user.surname |
-    | Email | User.Mail |    
-    | Identity uživatele | User.Mail |
+    | Email | user.mail |    
+    | UserIdentity | user.mail |
     
     a. Klikněte na tlačítko **přidat atribut** otevřít **přidat atribut** dialogového okna.
 
@@ -263,7 +263,7 @@ Cílem této části je test vaší konfigurace Azure AD jednotné přihlašová
 Po kliknutí na dlaždici Hightail na přístupovém panelu, vám by měl získat automaticky přihlášení k aplikaci Hightail.
 
 
-## <a name="additional-resources"></a>Další zdroje informací:
+## <a name="additional-resources"></a>Další materiály
 
 * [Seznam kurzů o integraci aplikací SaaS pomocí Azure Active Directory](tutorial-list.md)
 * [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](../manage-apps/what-is-single-sign-on.md)

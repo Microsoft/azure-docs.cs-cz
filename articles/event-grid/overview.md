@@ -9,12 +9,12 @@ ms.topic: overview
 ms.date: 01/06/2019
 ms.author: babanisa
 ms.custom: seodec18
-ms.openlocfilehash: 73916fca980b9806fea0229cdd25f6f367609c84
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: 01c88b9bc64bc1541e97aff26e41c360acfaf6bd
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 01/23/2019
-ms.locfileid: "54462636"
+ms.locfileid: "54809968"
 ---
 # <a name="what-is-azure-event-grid"></a>Co je Azure Event Grid?
 
@@ -65,7 +65,7 @@ Azure Event Grid obsahuje pět konceptů, které vám pomůžou rychle začít s
 * **Události** – to, co se stalo.
 * **Zdroje událostí** – kde k události došlo.
 * **Témata** – koncový bod, kam vydavatelé odesílají události.
-* **Odběry událostí** – koncový bod nebo integrovaný mechanismus pro směrování událostí, někdy k více než v obslužné rutině. Pomocí odběrů taky obslužné rutiny inteligentně filtrují příchozí události.
+* **Odběry událostí** – koncový bod nebo integrovaný mechanismus pro směrování událostí, někdy k více než jednu obslužnou rutinu. Pomocí odběrů taky obslužné rutiny inteligentně filtrují příchozí události.
 * **Obslužné rutiny událostí** – aplikace nebo služba reagující na danou událost.
 
 Další informace o těchto konceptech najdete v článku [Koncepty ve službě Azure Event Grid](concepts.md).

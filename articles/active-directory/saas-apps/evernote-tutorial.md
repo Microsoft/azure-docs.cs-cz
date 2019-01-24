@@ -1,10 +1,10 @@
 ---
-title: 'Kurz: Integrace Azure Active Directory se službou Evernote | Dokumentace Microsoftu'
+title: 'Kurz: Integrace Azure Active Directory s Evernote | Dokumentace Microsoftu'
 description: Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a Evernote.
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.reviewer: joflore
 ms.assetid: 28acce3e-22a0-4a37-8b66-6e518d777350
 ms.service: active-directory
@@ -15,14 +15,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/20/2017
 ms.author: jeedes
-ms.openlocfilehash: 7a9282f5418737b583e29d99893df3fc81f52955
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 8ba80e113de8ea6754d8d2d6446fb26498904e12
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39442628"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54816802"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-evernote"></a>Kurz: Integrace Azure Active Directory se službou Evernote
+# <a name="tutorial-azure-active-directory-integration-with-evernote"></a>Kurz: Integrace Azure Active Directory s Evernote
 
 V tomto kurzu se dozvíte, jak integrovat Evernote s Azure Active Directory (Azure AD).
 
@@ -38,7 +38,7 @@ Pokud chcete zjistit další podrobnosti o integraci aplikací SaaS v Azure AD, 
 
 Konfigurace integrace Azure AD s Evernote, potřebujete následující položky:
 
-- S předplatným služby Azure AD
+- Předplatné Azure AD
 - Evernote jednotného přihlašování povolená předplatného
 
 > [!NOTE]
@@ -60,7 +60,7 @@ Konfigurace integrace Evernote do služby Azure AD, budete muset přidat Evernot
 
 **Chcete-li přidat Evernote z galerie, postupujte následovně:**
 
-1. V  **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu. 
+1. V **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu. 
 
     ![Tlačítko Azure Active Directory][1]
 
@@ -144,7 +144,7 @@ V této části Povolení služby Azure AD jednotného přihlašování na port�
 
     ![Nastavení certifikátu.](./media/evernote-tutorial/tutorial_evernote_certx.png)
     
-    a.  **Povolit jednotné přihlašování:** je ve výchozím nastavení povolené jednotné přihlašování (klikněte na tlačítko **zakázat Single Sign-on** odstraníte požadavek jednotné přihlašování)
+    a.  **Povolení jednotného přihlašování:** Ve výchozím nastavení je povoleno jednotné přihlašování (klikněte na tlačítko **zakázat Single Sign-on** odstraníte požadavek jednotné přihlašování)
 
     b. Vložit **SAML jednotného přihlašování adresa URL služby** hodnotu, kterou jste zkopírovali z portálu Azure portal do **URL žádosti HTTP SAML** textového pole.
 
@@ -153,7 +153,7 @@ V této části Povolení služby Azure AD jednotného přihlašování na port�
     d.Click **uložit změny**
 
 > [!TIP]
-> Teď si můžete přečíst stručné verzi těchto pokynů uvnitř [webu Azure portal](https://portal.azure.com), zatímco jsou nastavení aplikace!  Po přidání této aplikace z **služby Active Directory > podnikové aplikace** části, stačí kliknout **Single Sign-On** kartu a přístup k vložené dokumentaci prostřednictvím  **Konfigurace** oblast v dolní části. Další informace o funkci vložená dokumentace: [dokumentace ke službě Azure AD embedded]( https://go.microsoft.com/fwlink/?linkid=845985)
+> Teď si můžete přečíst stručné verzi těchto pokynů uvnitř [webu Azure portal](https://portal.azure.com), zatímco jsou nastavení aplikace!  Po přidání této aplikace z **služby Active Directory > podnikové aplikace** části, stačí kliknout **Single Sign-On** kartu a přístup k vložené dokumentaci prostřednictvím  **Konfigurace** oblast v dolní části. Další informace o funkci vložená dokumentace: [Dokumentace ke službě Azure AD, embedded]( https://go.microsoft.com/fwlink/?linkid=845985)
 > 
 
 ### <a name="create-an-azure-ad-test-user"></a>Vytvořit testovacího uživatele Azure AD
@@ -203,11 +203,11 @@ V případě Evernote zřizování se ruční úlohy.
 
 1. Z **'Konzoly pro správu'**, přejděte na stránku **'Přidat uživatele'**.
 
-    ![Přidat testUser](./media/evernote-tutorial/create_aaduser_0001.png)
+    ![Add-testUser](./media/evernote-tutorial/create_aaduser_0001.png)
 
 1. **Přidat členy týmu** v **e-mailu** textového pole zadejte e-mailovou adresu uživatelského účtu a klikněte na tlačítko **pozvat.**
 
-    ![Přidat testUser](./media/evernote-tutorial/create_aaduser_0002.png)
+    ![Add-testUser](./media/evernote-tutorial/create_aaduser_0002.png)
     
 1. Po odeslání pozvánky držitel účtu Azure Active Directory obdrží e-mailu k přijetí pozvánky.
 
@@ -241,13 +241,13 @@ V této části je povolit Britta Simon k udělení přístupu k Evernote použi
 
 1. Klikněte na tlačítko **přiřadit** tlačítko **přidat přiřazení** dialogového okna.
     
-### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování
+### <a name="test-single-sign-on"></a>Test jednotného přihlašování
 
 V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 
 Po kliknutí na dlaždici Evernote na přístupovém panelu, vám by měl získat přihlášení k aplikaci Evernote. Budete být přihlášení jako účet, ale pak nutné se přihlásit pomocí osobního účtu organizace. 
 
-## <a name="additional-resources"></a>Další zdroje informací:
+## <a name="additional-resources"></a>Další materiály
 
 * [Seznam kurzů o integraci aplikací SaaS pomocí Azure Active Directory](tutorial-list.md)
 * [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](../manage-apps/what-is-single-sign-on.md)

@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 10/11/2018
 ms.author: raynew
-ms.openlocfilehash: 6f894310157432a6e03e6ec4753f5efc2d8ac66d
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.openlocfilehash: 149a15353a7fd1d698af306971ecb0949db4c165
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54267415"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54817227"
 ---
 # <a name="contoso-migration-rearchitect-an-on-premises-app-to-an-azure-container-and-azure-sql-database"></a>Migrace Contoso: Úprava architektury místní aplikace do kontejneru Azure a Azure SQL Database
 
@@ -199,7 +199,7 @@ Azure container se vytvoří pomocí exportované soubory z virtuálního počí
 
 ## <a name="step-3-provision-azure-service-fabric"></a>Krok 3: Zřízení Azure Service Fabric
 
-Kontejner SmartHotel360 poběží v Azure Service Fabric Sluster. Správce společnosti Contoso vytvořit Service Fabric Cluster následujícím způsobem:
+Kontejner SmartHotel360 poběží v clusteru Azure Service Fabric. Správce společnosti Contoso vytvořit Service Fabric Cluster následujícím způsobem:
 
 1. Vytvoření prostředku Service Fabric v Azure Marketplace
 
@@ -282,7 +282,7 @@ Contoso potřebuje certifikáty clusteru umožňuje přístup ke službě Azure 
 
 8. Pro nasazení služby Azure DevOps, které potřebují k určení hodnoty ve formátu Base64 z certifikátu. Je to na místní vývojářskou pracovní stanici, pomocí Powershellu. Výstup, vložte do textového souboru pro pozdější použití.
 
-    ```
+    ```powershell
         [System.Convert]::ToBase64String([System.IO.File]::ReadAllBytes("C:\path\to\certificate.pfx")) 
     ```
 
@@ -386,7 +386,7 @@ Místní aplikace je tradiční aplikace tři vrstvy:
 - Používá Entity Framework pro integraci s daty ve službě SQL database bude vystavená prostřednictvím služby WCF.
 - Aplikace webových formulářů komunikuje se službou WCF.
 
-Správce společnosti Contoso se převést aplikaci do kontejneru pomocí Visual Studio a SDK Tools následujícím způsobem:
+Správce společnosti Contoso se převést aplikaci do kontejneru pomocí sady Visual Studio a SDK Tools následujícím způsobem:
 
 
 1. Pomocí sady Visual Studio, v kontrole otevřený soubor řešení (SmartHotel.Registration.sln) **SmartHotel360 – interní rezervace apps\src\Registration** adresáře z místního úložiště.  Jsou uvedeny dvě aplikace. Webový front-end SmartHotel.Registration.Web a aplikace služby WCF SmartHotel.Registration.WCF.
@@ -530,7 +530,7 @@ Správce společnosti Contoso jako první krok, zřídit databáze Azure Cosmos.
 5. Na portálu, otevřou se nová databáze > **kolekce** > **dokumenty** a klikněte na tlačítko **nový dokument**.
 6. Následující kód JSON, vložte do okna dokumentu. Toto je ukázková data ve formě jednoho tweet.
 
-    ```
+    ```json
     {
             "id": "2ed5e734-8034-bf3a-ac85-705b7713d911",
             "tweetId": 927750234331580911,
@@ -565,11 +565,11 @@ Pomocí služby Cosmos DB zřízené Contoso správci mohou nakonfigurovat aplik
 
 2. Vyplňte následující dva parametry:
 
-   ```
+   ```xml
    <Parameter Name="SentimentIntegration.CosmosDBEndpoint" Value="[URI]" />
    ```
    
-   ```
+   ```xml
    <Parameter Name="SentimentIntegration.CosmosDBAuthKey" Value="[Key]" />
    ```
 

@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 10/11/2018
 ms.author: raynew
-ms.openlocfilehash: 6dd063f8d6520e3ee18dcb3899c1cca16d732707
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.openlocfilehash: 60bd3aef20e39a9f451f54164ef3fb8ef682bc3e
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53608711"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54809683"
 ---
 # <a name="contoso-migration-refactor-a-contoso-linux-service-desk-app-to-multiple-regions-with-azure-app-service-traffic-manager-and-azure-mysql"></a>Migrace Contoso: Refaktorujte Contoso Linuxovou aplikaci helpdesku service do několika oblastí pomocí služby Azure App Service, Traffic Manageru a Azure MySQL
 
@@ -131,7 +131,7 @@ Zde je, jak bude Contoso dokončení migrace:
 > [!div class="checklist"]
 > * **Krok 1: Zřízení služby Azure App Services**: Správce společnosti Contoso zřídí Web Apps v primárních a sekundárních oblastech.
 > * **Krok 2: Nastavte Traffic Manager**: Nastavují se Traffic Manager před Web Apps pro směrování a vyrovnávání zatížení provozu.
-> * **Krok 3: Zřízení MySQL**: V Azure zřizování instance databáze Azure MySQL.
+> * **Krok 3: Provision MySQL**: V Azure zřizování instance databáze Azure MySQL.
 > * **Krok 4: Migrace databáze**: Migraci databáze pomocí aplikace MySQL Workbench. 
 > * **Krok 5: Nastavte GitHub**: Nastavení místního úložiště GitHub pro weby nebo kódu aplikace.
 > * **Krok 6: Nasazování webových aplikací**: Nasadí webové aplikace z Githubu.
@@ -146,19 +146,19 @@ Správce společnosti Contoso zřízení dvě webové aplikace (jeden v každé 
 1. Vytvoří prostředek webové aplikace v primární oblasti USA – východ 2 (**osticket eus2**) z Azure Marketplace.
 2. Převedou prostředek ve skupině prostředků produkční **ContosoRG**.
 
-    ![Aplikace Azure](./media/contoso-migration-refactor-linux-app-service-mysql/azure-app1.png) 
+    ![Azure App](./media/contoso-migration-refactor-linux-app-service-mysql/azure-app1.png) 
 
 3. Uživatel vytvořit nový plán služby App Service v primární oblasti (**aplikace. SVP EUS2**), pomocí standardní velikosti.
 
-     ![Aplikace Azure](./media/contoso-migration-refactor-linux-app-service-mysql/azure-app2.png) 
+     ![Azure App](./media/contoso-migration-refactor-linux-app-service-mysql/azure-app2.png) 
     
 4. Výběrem operačního systému Linux s zásobník modulu runtime PHP 7.0, což je kontejner Dockeru.
 
-    ![Aplikace Azure](./media/contoso-migration-refactor-linux-app-service-mysql/azure-app3.png) 
+    ![Azure App](./media/contoso-migration-refactor-linux-app-service-mysql/azure-app3.png) 
 
 5. Vytvoří druhou webovou aplikaci (**osticket cus**) a plán služby App service pro oblast USA (střed).
 
-    ![Aplikace Azure](./media/contoso-migration-refactor-linux-app-service-mysql/azure-app4.png) 
+    ![Azure App](./media/contoso-migration-refactor-linux-app-service-mysql/azure-app4.png) 
 
 
 **Potřebujete další pomoc?**
@@ -254,7 +254,7 @@ Správce společnosti Contoso migrace databáze pomocí zálohování a obnoven�
 
      ![MySQL Workbench](./media/contoso-migration-refactor-linux-app-service-mysql/workbench9.png)
 
-11. Tney můžete ověřit název serveru a přihlašovací jméno z **přehled** v instanci MySQL na webu Azure Portal.
+11. Můžete ověřit název serveru a přihlašovací jméno z **přehled** v instanci MySQL na webu Azure Portal.
 
     ![MySQL Workbench](./media/contoso-migration-refactor-linux-app-service-mysql/workbench10.png)
 

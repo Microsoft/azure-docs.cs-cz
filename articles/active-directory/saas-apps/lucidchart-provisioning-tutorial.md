@@ -5,7 +5,7 @@ services: active-directory
 documentationcenter: ''
 author: asmalser-msft
 writer: asmalser-msft
-manager: mtillman
+manager: daveba
 ms.assetid: d4ca2365-6729-48f7-bb7f-c0f5ffe740a3
 ms.service: active-directory
 ms.component: saas-app-tutorial
@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/26/2018
 ms.author: asmalser-msft
-ms.openlocfilehash: 011fa2dcce390597337ec583c1d5704177fda251
-ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
+ms.openlocfilehash: d914f14d2b7a50e700e53b55cd43e699cf560a76
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44347182"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54810359"
 ---
 # <a name="tutorial-configure-lucidchart-for-automatic-user-provisioning"></a>Kurz: Konfigurace LucidChart pro automatické zřizování uživatelů
 
@@ -71,7 +71,7 @@ Tato část vás provede připojením služby Azure AD vaší LucidChart uživat
 
     ![LucidChart zřizování](./media/lucidchart-provisioning-tutorial/LucidChart1.png)
 
-5. V části **přihlašovacích údajů správce** části, zadejte **tajný klíč tokenu** generovaných LucidChart váš účet (token, který můžete najít v rámci vašeho účtu: **týmu**  >  **Integraci aplikací** > **SCIM**). 
+5. V části **přihlašovacích údajů správce** části, zadejte **tajný klíč tokenu** generovaných LucidChart váš účet (token, který můžete najít v rámci vašeho účtu: **Tým** > **integraci aplikací** > **SCIM**). 
 
     ![LucidChart zřizování](./media/lucidchart-provisioning-tutorial/LucidChart2.png)
 
@@ -94,7 +94,7 @@ Tato operace spustí počáteční synchronizaci všech uživatelů a skupiny p�
 Další informace o tom, jak číst zřizování protokoly Azure AD najdete v tématu [hlášení o zřizování automatické uživatelských účtů](../manage-apps/check-status-user-account-provisioning.md).
 
 
-## <a name="additional-resources"></a>Další zdroje informací:
+## <a name="additional-resources"></a>Další materiály
 
 * [Správa zřizování uživatelských účtů pro podnikové aplikace](../manage-apps/configure-automatic-user-provisioning-portal.md)
 * [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](../manage-apps/what-is-single-sign-on.md)

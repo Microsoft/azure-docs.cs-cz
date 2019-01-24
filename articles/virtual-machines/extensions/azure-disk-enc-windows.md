@@ -14,18 +14,18 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 06/12/2018
 ms.author: ejarvi
-ms.openlocfilehash: 11ec26729b2239279dddc8cd62f6b658a4f7ed20
-ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
+ms.openlocfilehash: 355fa90113e931fa3e21df1ccca5736622475bb3
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39413786"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54810376"
 ---
 # <a name="azure-disk-encryption-for-windows-microsoftazuresecurityazurediskencryption"></a>Azure Disk Encryption pro Windows (Microsoft.Azure.Security.AzureDiskEncryption)
 
 ## <a name="overview"></a>Přehled
 
-Azure Disk Encryption využívá nástroj Bitlocker k šifrování celého disku poskytují na virtuálních počítačích Azure s Windows.  Toto řešení je integrovaná s Azure Key Vault a Správa disku šifrovací klíče a tajné kódy ve vašem předplatném služby key vault. 
+Azure Disk Encryption využívá nástroj BitLocker k šifrování celého disku poskytují na virtuálních počítačích Azure s Windows.  Toto řešení je integrovaná s Azure Key Vault a Správa disku šifrovací klíče a tajné kódy ve vašem předplatném služby key vault. 
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -73,7 +73,7 @@ Azure Disk Encryption vyžaduje připojení k Internetu pro přístup k Active D
 
 | Název | Hodnota / příklad | Typ dat |
 | ---- | ---- | ---- |
-| apiVersion | 2015-06-15 | datum |
+| apiVersion | 2015-06-15 | date |
 | vydavatele | Microsoft.Azure.Security | řetězec |
 | type | AzureDiskEncryptionForWindows| řetězec |
 | typeHandlerVersion | 1.0, 2.2 (VMSS) | int |
@@ -81,7 +81,7 @@ Azure Disk Encryption vyžaduje připojení k Internetu pro přístup k Active D
 | (volitelné) AADClientSecret | heslo | řetězec |
 | (volitelné) AADClientCertificate | Kryptografický otisk | řetězec |
 | EncryptionOperation | EnableEncryption | řetězec | 
-| KeyEncryptionAlgorithm | RSA OAEP | řetězec |
+| KeyEncryptionAlgorithm | RSA-OAEP | řetězec |
 | KeyEncryptionKeyURL | url | řetězec |
 | KeyVaultURL | url | řetězec |
 | SequenceVersion | UniqueIdentifier | řetězec |

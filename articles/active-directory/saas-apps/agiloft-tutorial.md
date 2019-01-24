@@ -1,10 +1,10 @@
 ---
-title: 'Kurz: Integrace Azure Active Directory se službou Agiloft | Dokumentace Microsoftu'
+title: 'Kurz: Integrace Azure Active Directory s Agiloft | Dokumentace Microsoftu'
 description: Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a Agiloft.
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.reviewer: joflore
 ms.assetid: aca13814-cdbd-46b8-93dc-1578099c5ee4
 ms.service: active-directory
@@ -15,14 +15,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/09/2017
 ms.author: jeedes
-ms.openlocfilehash: f11d705cceb05c9e9cd0b340a680684eecf4f5d9
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: f851bd260c18509a3233bb3401383e0e04ba6259
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39054195"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54813657"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-agiloft"></a>Kurz: Integrace Azure Active Directory se službou Agiloft
+# <a name="tutorial-azure-active-directory-integration-with-agiloft"></a>Kurz: Integrace Azure Active Directory s Agiloft
 
 V tomto kurzu se dozvíte, jak integrovat Agiloft s Azure Active Directory (Azure AD).
 
@@ -38,7 +38,7 @@ Pokud chcete zjistit další podrobnosti o integraci aplikací SaaS v Azure AD, 
 
 Konfigurace integrace Azure AD s Agiloft, potřebujete následující položky:
 
-- S předplatným služby Azure AD
+- Předplatné Azure AD
 - Agiloft jednotného přihlašování povolená předplatného
 
 > [!NOTE]
@@ -60,7 +60,7 @@ Konfigurace integrace Agiloft do služby Azure AD, budete muset přidat Agiloft 
 
 **Chcete-li přidat Agiloft z galerie, postupujte následovně:**
 
-1. V  **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu. 
+1. V **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu. 
 
     ![Tlačítko Azure Active Directory][1]
 
@@ -145,35 +145,35 @@ V této části Povolení služby Azure AD jednotného přihlašování na port�
     
 7. Na **Agiloft konfigurace** klikněte na tlačítko **nakonfigurovat Agiloft** otevřete **nakonfigurovat přihlašování** okna. Kopírovat **URL odhlašování SAML Entity ID a SAML jednotné přihlašování – adresa URL služby** z **Stručná referenční příručka oddílu.**
 
-    ![Konfigurace Agiloft](./media/agiloft-tutorial/tutorial_agiloft_configure.png) 
+    ![Agiloft Configuration](./media/agiloft-tutorial/tutorial_agiloft_configure.png) 
 
 8. V okně jiné webové prohlížeče Přihlaste se k webu společnosti Agiloft jako správce.
 
 9. Klikněte na **nastavení** (v levém podokně) a potom **přístup**.
 
-    ![Konfigurace Agiloft](./media/agiloft-tutorial/setup1.png) 
+    ![Agiloft Configuration](./media/agiloft-tutorial/setup1.png) 
 
 10. Klikněte na tlačítko **"Konfigurace SAML 2.0 Single Sign-On"**. 
     
-    ![Konfigurace Agiloft](./media/agiloft-tutorial/setup2.png) 
+    ![Agiloft Configuration](./media/agiloft-tutorial/setup2.png) 
 
 11. Zobrazí se dialogové okno průvodce. V dialogovém okně klikněte na kartu **"Podrobnostech zprostředkovatele Identity"** a vyplňte následující pole:  
     
-    ![Konfigurace Agiloft](./media/agiloft-tutorial/setup4.png) 
+    ![Agiloft Configuration](./media/agiloft-tutorial/setup4.png) 
 
-    a. V **Id Entity zprostředkovatele identity / vystavitele** textového pole vložte hodnotu **SAML Entity ID**, který jste zkopírovali z portálu Azure portal.
+    a. V **Id Entity zprostředkovatele identity / vystavitele** textového pole vložte hodnotu **SAML Entity ID**, který jste zkopírovali z portálu Azure portal.
 
-    b. V **přihlašovací adresa URL zprostředkovatele identity** textového pole vložte hodnotu **jednotné přihlašování – adresa URL služby**, který jste zkopírovali z portálu Azure portal.
+    b. V **přihlašovací adresa URL zprostředkovatele identity** textového pole vložte hodnotu **jednotné přihlašování – adresa URL služby**, který jste zkopírovali z portálu Azure portal.
 
-    c. V **odhlašovací adresa URL zprostředkovatele identity** textového pole vložte hodnotu **odhlašování URL**, který jste zkopírovali z portálu Azure portal.
+    c. V **odhlašovací adresa URL zprostředkovatele identity** textového pole vložte hodnotu **odhlašování URL**, který jste zkopírovali z portálu Azure portal.
 
-    d. Otevřete váš **certifikáty s kódováním base-64** v poznámkovém bloku stáhnout z webu Azure portal, zkopírujte obsah ho do schránky a vložte ho do **obsah certifikátu X.509 zprostředkovatel identity k dispozici** textového pole.
+    d. Otevřete váš **certifikáty s kódováním base-64** v poznámkovém bloku stáhnout z webu Azure portal, zkopírujte obsah ho do schránky a vložte ho do **obsah certifikátu X.509 zprostředkovatel identity k dispozici**  textového pole.
 
     e. Klikněte na **Dokončit**.
 
 
 > [!TIP]
-> Teď si můžete přečíst stručné verzi těchto pokynů uvnitř [webu Azure portal](https://portal.azure.com), zatímco jsou nastavení aplikace!  Po přidání této aplikace z **služby Active Directory > podnikové aplikace** části, stačí kliknout **Single Sign-On** kartu a přístup k vložené dokumentaci prostřednictvím  **Konfigurace** oblast v dolní části. Další informace o funkci vložená dokumentace: [dokumentace ke službě Azure AD embedded]( https://go.microsoft.com/fwlink/?linkid=845985)
+> Teď si můžete přečíst stručné verzi těchto pokynů uvnitř [webu Azure portal](https://portal.azure.com), zatímco jsou nastavení aplikace!  Po přidání této aplikace z **služby Active Directory > podnikové aplikace** části, stačí kliknout **Single Sign-On** kartu a přístup k vložené dokumentaci prostřednictvím  **Konfigurace** oblast v dolní části. Další informace o funkci vložená dokumentace: [Dokumentace ke službě Azure AD, embedded]( https://go.microsoft.com/fwlink/?linkid=845985)
 
 ### <a name="create-an-azure-ad-test-user"></a>Vytvořit testovacího uživatele Azure AD
 
@@ -241,7 +241,7 @@ V této části je povolit Britta Simon k udělení přístupu k Agiloft použit
 
 7. Klikněte na tlačítko **přiřadit** tlačítko **přidat přiřazení** dialogového okna.
     
-### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování
+### <a name="test-single-sign-on"></a>Test jednotného přihlašování
 
 V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 
@@ -251,7 +251,7 @@ Další informace o přístupovém panelu, naleznete v tématu [Úvod k přístu
 ## <a name="additional-resources"></a>Další zdroje informací:
 
 * [Seznam kurzů o integraci aplikací SaaS pomocí Azure Active Directory](tutorial-list.md)
-* [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
+* [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](../manage-apps/what-is-single-sign-on.md)
 
 
 

@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/17/2018
 ms.author: juliako
-ms.openlocfilehash: 618316b6b5979c65bc8906ea7d07c4f4fdf0930d
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.openlocfilehash: 1477242e10918a9836ceea15d418fb462e193b1b
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46124606"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54811736"
 ---
 # <a name="implement-failover-streaming-with-azure-media-services"></a>Provádění převzetí služeb při selhání streamování pomocí služby Azure Media Services
 
@@ -62,7 +62,7 @@ V této části vytvoříte a nastavte projekt konzolové aplikace jazyka C#.
 1. Vytvořit nové řešení, které obsahuje projekt konzolové aplikace jazyka C# pomocí sady Visual Studio. Zadejte **HandleRedundancyForOnDemandStreaming** pro název a pak klikněte na tlačítko **OK**.
 2. Vytvořte **SupportFiles** složky na stejné úrovni jako **HandleRedundancyForOnDemandStreaming.csproj** souboru projektu. V části **SupportFiles** složku, vytvořte **OutputFiles** a **MP4Files** složek. Zkopírujte si soubor .mp4 do **MP4Files** složky. (V tomto příkladu **BigBuckBunny.mp4** soubor je používán.) 
 3. Použití **Nuget** přidání souvisejících s odkazy na knihovny DLL ke službě Media Services. V **Visual Studio hlavní nabídky**vyberte **nástroje** > **Správce balíčků knihoven** > **Konzola správce balíčků**. V okně konzoly zadejte **Install-Package windowsazure.mediaservices**, a stiskněte klávesu Enter.
-4. Přidat další odkazy, které jsou požadovány pro tento projekt: System.Configuration System.Runtime.Serialization a System.Web.
+4. Přidejte další odkazy, které jsou požadovány pro tento projekt: System.Configuration System.Runtime.Serialization a System.Web.
 5. Nahraďte **pomocí** příkazy, které jste přidali **Programs.cs** ve výchozím nastavení se následující dotazy:
    
         using System;
@@ -178,7 +178,7 @@ V této části vytvoříte zpracovávat redundance.
                 CreateFileInfosForAssetWithRest(_contextTarget, targetAsset, MediaServicesAccountNameTarget, MediaServicesAccountKeyTarget);
         
                 // Check if the AssetFiles are now  associated with the asset.
-                Console.WriteLine("Asset files assocated with the {0} asset:", targetAsset.Name);
+                Console.WriteLine("Asset files associated with the {0} asset:", targetAsset.Name);
                 foreach (var af in targetAsset.AssetFiles)
                 {
                     Console.WriteLine(af.Name);
