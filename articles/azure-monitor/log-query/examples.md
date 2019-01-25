@@ -28,7 +28,7 @@ Najdete v článku [referenční informace k jazyku Kusto](https://docs.microsof
 ## <a name="events"></a>Události
 
 ### <a name="search-application-level-events-described-as-cryptographic"></a>Vyhledávání událostí na úrovni aplikace popsat jako "Kryptografický"
-Tento příklad vyhledá **události** tabulky pro záznamy, ve kterém **EventLog** je _Application_ a **RenderedDescription** obsahuje _cryptographic_. Obsahuje záznamy z posledních 24 hodin.
+Tento příklad prohledá tabulku **události** a bude hledat záznamy, ve kterých **EventLog** je _Application_ a **RenderedDescription** obsahuje _cryptographic_. Obsahuje záznamy z posledních 24 hodin.
 
 ```Kusto
 Event
@@ -208,7 +208,7 @@ Perf
 ## <a name="protection-status"></a>Stav ochrany
 
 ### <a name="computers-with-non-reporting-protection-status-duration"></a>Počítače s doba trvání stavu nehlásících ochrany
-Tento příklad zobrazí seznam počítačů, které obsahovaly stavu ochrany _Not Reporting_ a doby trvání, byly v tomto stavu.
+Tento příklad zobrazí seznam počítačů, které měly stav ochrany _Not Reporting_ a doby, po které byly v tomto stavu.
 
 ```Kusto
 ProtectionStatus
@@ -249,7 +249,7 @@ SecurityEvent
 ```
 
 ### <a name="count-security-events-related-to-permissions"></a>Počet událostí zabezpečení souvisejících s oprávněními
-Tento příklad ukazuje počet **securityEvent** záznamy, ve kterém **aktivity** sloupec obsahuje celé období _Permissions_. Dotaz se týká záznamy vytvořené za posledních 30 minut.
+Tento příklad ukazuje počet záznamů **securityEvent**, ve kterých sloupec **Activity** sloupec obsahuje celé období _Permissions_. Dotaz se vztahuje na záznamy vytvořené za posledních 30 minut.
 
 ```Kusto
 SecurityEvent
