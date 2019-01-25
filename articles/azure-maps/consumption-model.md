@@ -18,7 +18,7 @@ ms.locfileid: "34600625"
 # <a name="consumption-model"></a>Model spotřeby
 
 Online směrování poskytuje podrobný popis Model spotřeby vehicle konkrétní sadu parametrů.
-V závislosti na hodnotě **vehicleEngineType**, jsou podporovány dva hlavní spotřeba modely: _spalovací_ a _Electric_. Zadání parametrů, které patří do různých modelů ve stejném požadavku se stala chyba.
+V závislosti na hodnotě **vehicleEngineType** jsou podporovány dva hlavní modely spotřeby: _Combustion_ a _Electric_. Zadání parametrů, které patří do různých modelů ve stejném požadavku, je chyba.
 Model spotřeby nelze použít s **travelMode** hodnoty _jízdních kol_ a _chodců_.
 
 ## <a name="parameter-constraints-for-consumption-model"></a>Parametr omezení pro model spotřeby
@@ -38,7 +38,7 @@ V obou modelech spotřeba explicitně určit některé parametry vyžaduje zadá
 
 ## <a name="combustion-consumption-model"></a>Model spotřeby spalovací
 
-Se používá Model spotřeby spalovací při **vehicleEngineType** je nastaven na _spalovací_.
+Model spotřeby combustion se používá, když je **vehicleEngineType** nastaveno na _combustion_.
 Seznam parametrů, které patří k tomuto modelu jsou níže. Informace naleznete v sekci parametrů pro podrobný popis.
 
 * constantSpeedConsumptionInLitersPerHundredkm
