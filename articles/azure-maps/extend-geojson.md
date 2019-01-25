@@ -47,7 +47,7 @@ A `Circle` vyjadřuje geometrie `GeoJSON Feature` objekt __musí__ obsahovat ná
    >Na kruh `radius` se vyjadřuje `GeoJSON Feature`jeho vlastnosti. Hodnota radius _měřiče_ a musí být typu `double`.
 
 3. Podtyp
-   >Geometrie kruh musí obsahovat také `subType` vlastnost. Tato vlastnost musí být součástí `GeoJSON Feature`jeho vlastnosti a jeho hodnota by měla být _Circle_
+   >Geometrie kruh také musí obsahovat vlastnost `subType`. Tato vlastnost musí být součástí vlastnosti `GeoJSON Feature`a její hodnota by měla být _Circle_
 
 
 #### <a name="example"></a>Příklad:
