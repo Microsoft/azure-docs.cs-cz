@@ -459,8 +459,6 @@ items:
   items:
   - name: Správa účtu databáze
     href: how-to-manage-database-account.md
-  - name: Konfigurace hodnoty TTL (Time to Live)
-    href: how-to-time-to-live.md
   - name: Globální distribuce
     items:
     - name: Správa konzistence
@@ -479,10 +477,12 @@ items:
       href: how-to-create-container.md
     - name: Dotazování na kontejner
       href: how-to-query-container.md
-  - name: Indexování
-    items:
-    - name: Konfigurace indexování
-      href: how-to-manage-indexing-policy.md
+    - name: Konfigurace hodnoty TTL (Time to Live)
+      href: how-to-time-to-live.md
+    - name: Indexování
+      items:
+      - name: Konfigurace indexování
+        href: how-to-manage-indexing-policy.md
   - name: Zabezpečení
     items:
     - name: Konfigurace brány firewall protokolu P
@@ -617,9 +617,9 @@ items:
       href: use-cases.md
     - name: Aplikace sociálních médií
       href: social-media-apps.md
-ms.openlocfilehash: 55b388b24d5526160423fa61c46620fc09796b24
-ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
+ms.openlocfilehash: 75984b49a5af0538c7534fb326808dcb3c35b46c
+ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54189622"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54359795"

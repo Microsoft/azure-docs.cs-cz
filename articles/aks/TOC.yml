@@ -165,20 +165,16 @@ items:
     - name: Omezení přístupu ke konfiguračnímu souboru clusteru
       href: control-kubeconfig-access.md
     - name: Ověřování pomocí ACR
-      href: ../container-registry/container-registry-auth-aks.md
-      maintainContext: true
+      href: ../container-registry/container-registry-auth-aks.md?toc=%2fazure%2faks%2ftoc.json
   - name: Monitorování a protokolování
     items:
     - name: Azure Monitor pro kontejnery
-      href: ../azure-monitor/insights/container-insights-overview.md
+      href: ../monitoring/monitoring-container-health.md
       maintainContext: true
     - name: Zobrazení protokolů hlavních komponent
       href: view-master-logs.md
     - name: Zobrazení protokolů Kubelet
       href: kubelet-logs.md
-    - name: Zobrazení protokolů kontejneru v reálném čase (preview)
-      href: ../azure-monitor/insights/container-insights-live-logs.md
-      maintainContext: true
   - name: Vývoj a spouštění aplikací
     items:
     - name: Vývoj s využitím Dev Spaces
@@ -296,9 +292,9 @@ items:
     href: https://azure.microsoft.com/resources/videos/index/?services=container-service&sort=newest
   - name: Nejčastější dotazy
     href: faq.md
-ms.openlocfilehash: f59d5f982885c21449949ab79b51db32585ea80f
-ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
+ms.openlocfilehash: d0d419ff2b832c48cb7d1a35fa398da34f5bf382
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54159855"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54037954"

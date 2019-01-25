@@ -63,9 +63,9 @@
 ### [Nasazení DBMS v počítačích Azure Virtual Machines se SAP ASE pro úlohy SAP](dbms_guide_sapase.md)
 ### [Nasazení SAP MaxDB, liveCache a Content Serveru v Azure](dbms_guide_maxdb.md)
 ### Dostupnost SAP HANA ve službě Azure Virtual Machines
-#### [Přehled dostupnosti SAP HANA v Azure](sap-hana-availability-overview.md)
-#### [Dostupnost SAP HANA v Azure v rámci jedné oblasti Azure](sap-hana-availability-one-region.md)
-#### [Dostupnost SAP HANA v Azure napříč oblastmi Azure](sap-hana-availability-across-regions.md)
+### [Přehled dostupnosti SAP HANA v Azure](sap-hana-availability-overview.md)
+### [Dostupnost SAP HANA v Azure v rámci jedné oblasti Azure](sap-hana-availability-one-region.md)
+### [Dostupnost SAP HANA v Azure napříč oblastmi Azure](sap-hana-availability-across-regions.md)
 ## [SAP Business One ve službě Azure Virtual Machines](business-one-azure.md)
 ## [Průvodce nasazením SAP IDES na Windows/SQL Server SAP CAL](cal-ides-erp6-erp7-sp3-sql.md)
 ## [Konektor SAP LaMa pro Azure](lama-installation.md)

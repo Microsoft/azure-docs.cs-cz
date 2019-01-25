@@ -56,7 +56,7 @@ items:
   - name: 5. Odesílání oznámení na základě polohy
     items:
     - name: Windows
-      href: notification-hubs-push-bing-spatial-data-geofencing-notification.md
+      href: notification-hubs-push-bing-spartial-data-geofencing-notification.md
 - name: Ukázky
   items:
   - name: Ukázky kódů
@@ -74,8 +74,6 @@ items:
       href: notification-hubs-tags-segment-push-message.md
     - name: Registrace šablon
       href: notification-hubs-templates-cross-platform-push-messages.md
-  - name: Model zabezpečení
-    href: notification-hubs-push-notification-security.md
 - name: Návody
   items:
   - name: Odesílání oznámení mezi platformami
@@ -84,10 +82,6 @@ items:
     href: notification-hubs-aspnet-backend-ios-apple-push-notification-service-apns-rich.md
   - name: Odesílání plánovaných oznámení
     href: notification-hubs-send-push-notifications-scheduled.md
-  - name: Nasazení a správa center oznámení s využitím Azure PowerShellu
-    href: notification-hubs-deploy-and-manage-powershell.md
-  - name: Zabezpečené posílání oznámení uživatelům
-    href: notification-hubs-aspnet-backend-windows-dotnet-wns-secure-push-notification.md
   - name: Vytvoření centra oznámení pomocí SDK
     items:
     - name: Vytvoření centra oznámení – .NET
@@ -134,9 +128,9 @@ items:
     href: https://azure.microsoft.com/regions/services/
   - name: Možnosti podpory
     href: https://azure.microsoft.com/support/options/
-ms.openlocfilehash: f8a26954be5154e9d37970a3659fd28a22b615a5
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: dcfb667f92f044ae37b0c0c42af337a9c5af49f4
+ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54461446"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54197704"

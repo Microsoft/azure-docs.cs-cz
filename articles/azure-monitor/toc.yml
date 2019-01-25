@@ -634,14 +634,18 @@ items:
         href: platform/view-designer-parts.md
       - name: Filtry
         href: platform/view-designer-filters.md
+    - name: Řídicí panely
+      items:
+      - name: Logs
+        href: platform/dashboards.md
+      - name: Aplikace
+        href: app/app-insights-dashboards.md
     - name: Power BI
       items:
       - name: Export dat protokolů
         href: platform/powerbi.md
       - name: Export dat aplikací
         href: app/export-power-bi.md
-    - name: Řídicí panely
-      href: app/app-insights-dashboards.md
     - name: Odeslání dat do Grafany
       href: platform/grafana-plugin.md
   - name: Analýza dat
@@ -965,7 +969,7 @@ items:
   - name: Schémata
     items:
     - name: Služby, kategorie a schémata pro diagnostické protokoly
-      href: platform/diagnostic-logs-schema.md
+      href: platform/tutorial-dashboards.md
     - name: Schéma událostí protokolu aktivit
       href: platform/activity-log-schema.md
     - name: Schéma rozšíření Azure Diagnostics
@@ -1017,9 +1021,9 @@ items:
     href: https://stackoverflow.com/search?q=monitoring
   - name: Ukázky kódů
     href: https://azure.microsoft.com/resources/samples/?service=monitor
-ms.openlocfilehash: 3a3770418ff8463ec2afa39105a1722addc7c3d2
-ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
+ms.openlocfilehash: adf92fafe1c1c0fa855d3658c41dd3563d4b26b2
+ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54888018"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54448682"

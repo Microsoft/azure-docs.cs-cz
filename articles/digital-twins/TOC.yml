@@ -47,12 +47,14 @@ items:
       href: security-authenticating-apis.md
 - name: Návody
   items:
-  - name: Povolení víceklientských aplikací
+  - name: Povolení víceklientské aplikace
     href: how-to-multitenant-applications.md
   - name: Vytváření uživatelsky definovaných funkcí
     href: how-to-user-defined-functions.md
   - name: Směrování událostí a zpráv přes koncové body
     href: how-to-egress-endpoints.md
+  - name: Konfigurace nástroje Postman
+    href: how-to-configure-postman.md
   - name: Přidání objektů blob do objektů
     href: how-to-add-blobs.md
   - name: Použití Swaggeru služby Digital Twins
@@ -61,14 +63,6 @@ items:
     href: how-to-diagnose-user-defined-functions.md
   - name: Konfigurace sledování
     href: how-to-configure-monitoring.md
-  - name: Dotazování rozhraní API služby Digital Twins
-    items:
-    - name: Nastavení nástroje Postman
-      href: how-to-configure-postman.md
-    - name: Použití rozhraní API služby Digital Twins
-      href: how-to-navigate-apis.md
-    - name: Běžné vzory dotazů
-      href: how-to-query-common-apis.md
 - name: Referenční informace
   items:
   - name: Klientská knihovna uživatelem definovaných funkcí
@@ -119,9 +113,9 @@ items:
     href: https://azure.microsoft.com/roadmap/?category=iot
   - name: Videa
     href: https://channel9.msdn.com/Search?term=%22Azure%20Digital%20Twins%22&lang-en=true
-ms.openlocfilehash: 92d60cbe1de8d8f2b36d67e1a7ff2999a45e1a8e
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ms.openlocfilehash: 04716146653b833461b8230c2895fd1a8b6dcd42
+ms.sourcegitcommit: fd488a828465e7acec50e7a134e1c2cab117bee8
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54102219"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "53993463"
