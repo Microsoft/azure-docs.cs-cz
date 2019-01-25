@@ -6,13 +6,6 @@ items:
   - name: Informace o aplikaci Azure Blockchain Workbench
     href: overview.md
   expanded: true
-- name: Kurzy
-  items:
-  - name: Vytvoření blockchainové aplikace
-    href: create-app.md
-  - name: Použití blockchainové aplikace
-    href: use.md
-  expanded: true
 - name: Koncepty
   items:
   - name: Architektura
@@ -23,8 +16,12 @@ items:
   items:
   - name: Nasazení Workbenche
     href: deploy.md
+  - name: Vytvoření blockchainové aplikace
+    href: create-app.md
   - name: Správa uživatelů Workbenche
     href: manage-users.md
+  - name: Použití blockchainové aplikace
+    href: use.md
   - name: Aplikace pro správu verzí
     href: version-app.md
   - name: Použití rozhraní API Workbenche
@@ -70,13 +67,13 @@ items:
   items:
   - name: Konsorcium PoA Ethereum
     href: ../templates/ethereum-poa-deployment.md
-  - name: Konsorcium PoW Ethereum
+  - name: Konsorcium POW Ethereum
     href: ../templates/ethereum-deployment.md
   - name: Konsorcium Hyperledger Fabric
-    href: ../templates/hyperledger-fabric-consortium-blockchain.md
-ms.openlocfilehash: 9195465017217b50d67265feff88281c461e43aa
-ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
+    href: ../templates/hyperledger-fabric-single-member-blockchain.md
+ms.openlocfilehash: fe5d3879dea89824207e213c31992d5f130d9967
+ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54884074"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54107136"

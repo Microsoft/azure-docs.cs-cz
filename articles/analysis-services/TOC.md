@@ -78,7 +78,6 @@
 
 ## [PowerShell](analysis-services-powershell.md)
 ## [REST](/rest/api/analysisservices)
-## [Šablona Resource Manageru](/azure/templates/microsoft.analysisservices/servers)
 ## [DAX](https://msdn.microsoft.com/library/gg413422.aspx)
 ## [Power Query M](https://msdn.microsoft.com/library/mt211003.aspx)
 ## [Jazyk TMSL (Tabular Model Scripting Language)](https://docs.microsoft.com/sql/analysis-services/tabular-model-scripting-language-tmsl-reference)
