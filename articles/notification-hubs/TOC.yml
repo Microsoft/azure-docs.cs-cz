@@ -1,135 +1,142 @@
+items:
 - name: Dokumentace ke službě Notification Hubs
   href: index.yml
 - name: Přehled
   items:
-    - name: Informace o Notification Hubs
-      href: notification-hubs-push-notification-overview.md
+  - name: Informace o Notification Hubs
+    href: notification-hubs-push-notification-overview.md
 - name: Kurzy
   items:
-    - name: 1. Nabízená oznámení pro všechna registrovaná zařízení
-      items:
-        - name: Android (služba Firebase Cloud Messaging)
-          href: notification-hubs-android-push-notification-google-fcm-get-started.md
-        - name: Android (služba Google Cloud Messaging)
-          href: notification-hubs-android-push-notification-google-gcm-get-started.md
-        - name: Baidu
-          href: notification-hubs-baidu-china-android-notifications-get-started.md
-        - name: Chrome
-          href: notification-hubs-chrome-push-notifications-get-started.md
-        - name: iOS
-          href: notification-hubs-ios-apple-push-notification-apns-get-started.md
-        - name: Kindle
-          href: notification-hubs-kindle-amazon-adm-push-notification.md
-        - name: Windows
-          href: notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md
-        - name: telefon se systémem Windows
-          href: notification-hubs-windows-mobile-push-notifications-mpns.md
-        - name: Xamarin.Android
-          href: xamarin-notification-hubs-push-notifications-android-gcm.md
-        - name: Xamarin.iOS
-          href: xamarin-notification-hubs-ios-push-notification-apns-get-started.md
-    - name: 2. Nabízená oznámení odesílaná konkrétním zařízením
-      items:
-        - name: Android
-          href: notification-hubs-aspnet-backend-android-xplat-segmented-gcm-push-notification.md
-        - name: iOS
-          href: notification-hubs-ios-xplat-segmented-apns-push-notification.md
-        - name: Windows
-          href: notification-hubs-windows-notification-dotnet-push-xplat-segmented-wns.md
-        - name: telefon se systémem Windows
-          href: notification-hubs-windows-phone-push-xplat-segmented-mpns-notification.md
-    - name: 3. Odesílání lokalizovaných oznámení
-      items:
-        - name: iOS
-          href: notification-hubs-ios-xplat-localized-apns-push-notification.md
-        - name: Windows
-          href: notification-hubs-windows-store-dotnet-xplat-localized-wns-push-notification.md
-    - name: 4. Nabízená oznámení odesílaná konkrétním uživatelům
-      items:
-        - name: Android
-          href: notification-hubs-aspnet-backend-gcm-android-push-to-user-google-notification.md
-        - name: iOS
-          href: notification-hubs-aspnet-backend-ios-apple-apns-notification.md
-        - name: Windows
-          href: notification-hubs-aspnet-backend-windows-dotnet-wns-notification.md
-    - name: 5. Odesílání oznámení na základě polohy
-      items:
-        - name: Windows
-          href: notification-hubs-push-bing-spatial-data-geofencing-notification.md
+  - name: 1. Nabízená oznámení pro všechna registrovaná zařízení
+    items:
+    - name: Android (služba Firebase Cloud Messaging)
+      href: notification-hubs-android-push-notification-google-fcm-get-started.md
+    - name: Android (služba Google Cloud Messaging)
+      href: notification-hubs-android-push-notification-google-gcm-get-started.md
+    - name: Baidu
+      href: notification-hubs-baidu-china-android-notifications-get-started.md
+    - name: Chrome
+      href: notification-hubs-chrome-push-notifications-get-started.md
+    - name: iOS
+      href: notification-hubs-ios-apple-push-notification-apns-get-started.md
+    - name: Kindle
+      href: notification-hubs-kindle-amazon-adm-push-notification.md
+    - name: Windows
+      href: notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md
+    - name: telefon se systémem Windows
+      href: notification-hubs-windows-mobile-push-notifications-mpns.md
+    - name: Xamarin.Android
+      href: xamarin-notification-hubs-push-notifications-android-gcm.md
+    - name: Xamarin.iOS
+      href: xamarin-notification-hubs-ios-push-notification-apns-get-started.md
+  - name: 2. Nabízená oznámení odesílaná konkrétním zařízením
+    items:
+    - name: Android
+      href: notification-hubs-aspnet-backend-android-xplat-segmented-gcm-push-notification.md
+    - name: iOS
+      href: notification-hubs-ios-xplat-segmented-apns-push-notification.md
+    - name: Windows
+      href: notification-hubs-windows-notification-dotnet-push-xplat-segmented-wns.md
+    - name: telefon se systémem Windows
+      href: notification-hubs-windows-phone-push-xplat-segmented-mpns-notification.md
+  - name: 3. Odesílání lokalizovaných oznámení
+    items:
+    - name: iOS
+      href: notification-hubs-ios-xplat-localized-apns-push-notification.md
+    - name: Windows
+      href: notification-hubs-windows-store-dotnet-xplat-localized-wns-push-notification.md
+  - name: 4. Nabízená oznámení odesílaná konkrétním uživatelům
+    items:
+    - name: Android
+      href: notification-hubs-aspnet-backend-gcm-android-push-to-user-google-notification.md
+    - name: iOS
+      href: notification-hubs-aspnet-backend-ios-apple-apns-notification.md
+    - name: Windows
+      href: notification-hubs-aspnet-backend-windows-dotnet-wns-notification.md
+  - name: 5. Odesílání oznámení na základě polohy
+    items:
+    - name: Windows
+      href: notification-hubs-push-bing-spatial-data-geofencing-notification.md
 - name: Ukázky
   items:
-    - name: Ukázky kódů
-      href: 'https://azure.microsoft.com/resources/samples/?service=notification-hubs'
-    - name: PowerShell
-      href: samples-powershell.md
+  - name: Ukázky kódů
+    href: https://azure.microsoft.com/resources/samples/?service=notification-hubs
+  - name: PowerShell
+    href: samples-powershell.md
 - name: Koncepty
   items:
-    - name: Doprovodné materiály k architektuře nabízení pro podniky
-      href: notification-hubs-enterprise-push-notification-architecture.md
-    - name: Registrace zařízení
-      href: notification-hubs-push-notification-registration-management.md
-      items:
-        - name: Značky pro registrace
-          href: notification-hubs-tags-segment-push-message.md
-        - name: Registrace šablon
-          href: notification-hubs-templates-cross-platform-push-messages.md
-    - name: Model zabezpečení
-      href: notification-hubs-push-notification-security.md
+  - name: Doprovodné materiály k architektuře nabízení pro podniky
+    href: notification-hubs-enterprise-push-notification-architecture.md
+  - name: Registrace zařízení
+    href: notification-hubs-push-notification-registration-management.md
+    items:
+    - name: Značky pro registrace
+      href: notification-hubs-tags-segment-push-message.md
+    - name: Registrace šablon
+      href: notification-hubs-templates-cross-platform-push-messages.md
+  - name: Model zabezpečení
+    href: notification-hubs-push-notification-security.md
 - name: Návody
   items:
-    - name: Odesílání oznámení mezi platformami
-      href: notification-hubs-aspnet-cross-platform-notification.md
-    - name: Odesílání formátovaného obsahu do zařízení
-      href: notification-hubs-aspnet-backend-ios-apple-push-notification-service-apns-rich.md
-    - name: Odesílání plánovaných oznámení
-      href: notification-hubs-send-push-notifications-scheduled.md
-    - name: Nasazení a správa center oznámení s využitím Azure PowerShellu
-      href: notification-hubs-deploy-and-manage-powershell.md
-    - name: Zabezpečené posílání oznámení uživatelům
-      href: notification-hubs-aspnet-backend-windows-dotnet-wns-secure-push-notification.md
-    - name: Vytvoření centra oznámení pomocí SDK
-      items:
-        - name: Vytvoření centra oznámení – .NET
-          href: /dotnet/api/overview/azure/notification-hubs?view=azure-dotnet
-        - name: Vytvoření centra oznámení – Node.js
-          href: notification-hubs-nodejs-push-notification-tutorial.md
-        - name: Vytvoření centra oznámení – Java
-          href: notification-hubs-java-push-notification-tutorial.md
-        - name: Vytvoření centra oznámení – PHP
-          href: notification-hubs-php-push-notification-tutorial.md
-        - name: Vytvoření centra oznámení – Python
-          href: notification-hubs-python-push-notification-tutorial.md
-    - name: Registrace s využitím back-endu aplikací
-      href: notification-hubs-ios-aspnet-register-user-from-backend-to-push-notification.md
-    - name: Použití ověřování na základě token pro zařízení Apple
-      href: notification-hubs-push-notification-http2-token-authentification.md
-    - name: Řešení potíží s vynechanými oznámeními
-      href: notification-hubs-push-notification-fixer.md
+  - name: Odesílání oznámení mezi platformami
+    href: notification-hubs-aspnet-cross-platform-notification.md
+  - name: Odesílání formátovaného obsahu do zařízení
+    href: notification-hubs-aspnet-backend-ios-apple-push-notification-service-apns-rich.md
+  - name: Odesílání plánovaných oznámení
+    href: notification-hubs-send-push-notifications-scheduled.md
+  - name: Nasazení a správa center oznámení s využitím Azure PowerShellu
+    href: notification-hubs-deploy-and-manage-powershell.md
+  - name: Zabezpečené posílání oznámení uživatelům
+    href: notification-hubs-aspnet-backend-windows-dotnet-wns-secure-push-notification.md
+  - name: Vytvoření centra oznámení pomocí SDK
+    items:
+    - name: Vytvoření centra oznámení – .NET
+      href: /dotnet/api/overview/azure/notification-hubs?view=azure-dotnet
+    - name: Vytvoření centra oznámení – Node.js
+      href: notification-hubs-nodejs-push-notification-tutorial.md
+    - name: Vytvoření centra oznámení – Java
+      href: notification-hubs-java-push-notification-tutorial.md
+    - name: Vytvoření centra oznámení – PHP
+      href: notification-hubs-php-push-notification-tutorial.md
+    - name: Vytvoření centra oznámení – Python
+      href: notification-hubs-python-push-notification-tutorial.md
+  - name: Registrace s využitím back-endu aplikací
+    href: notification-hubs-ios-aspnet-register-user-from-backend-to-push-notification.md
+  - name: Použití ověřování na základě token pro zařízení Apple
+    href: notification-hubs-push-notification-http2-token-authentification.md
+  - name: Řešení potíží s vynechanými oznámeními
+    href: notification-hubs-push-notification-fixer.md
 - name: Referenční informace
   items:
-    - name: .NET
-      href: /dotnet/api/microsoft.azure.notificationhubs
-    - name: PowerShell
-      href: /powershell/module/azurerm.notificationhubs
-    - name: REST API
-      href: /rest/api/notificationhubs
-    - name: Šablona Resource Manageru
-      href: /azure/templates/microsoft.notificationhubs/allversions
+  - name: .NET
+    href: /dotnet/api/microsoft.azure.notificationhubs
+  - name: PowerShell
+    href: /powershell/module/azurerm.notificationhubs
+  - name: REST API
+    href: /rest/api/notificationhubs
+  - name: Šablona Resource Manageru
+    href: /azure/templates/microsoft.notificationhubs/allversions
 - name: Zdroje a prostředky
   items:
-    - name: Nejčastější dotazy
-      href: notification-hubs-push-notification-faq.md
-    - name: Plány Azure do budoucna
-      href: 'https://azure.microsoft.com/roadmap/'
-    - name: Ceny
-      href: 'https://azure.microsoft.com/pricing/details/notification-hubs/'
-    - name: Fórum MSDN
-      href: 'https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=notificationhubs'
-    - name: Stack Overflow
-      href: 'http://stackoverflow.com/questions/tagged/azure-notificationhub'
-    - name: Žádost o funkci
-      href: 'https://feedback.azure.com/forums/218849-notification-hubs'
-    - name: Dostupnost v oblastech
-      href: 'https://azure.microsoft.com/regions/services/'
-    - name: Možnosti podpory
-      href: 'https://azure.microsoft.com/support/options/'
+  - name: Nejčastější dotazy
+    href: notification-hubs-push-notification-faq.md
+  - name: Plány Azure do budoucna
+    href: https://azure.microsoft.com/roadmap/
+  - name: Ceny
+    href: https://azure.microsoft.com/pricing/details/notification-hubs/
+  - name: Fórum MSDN
+    href: https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=notificationhubs
+  - name: Stack Overflow
+    href: http://stackoverflow.com/questions/tagged/azure-notificationhub
+  - name: Žádost o funkci
+    href: https://feedback.azure.com/forums/218849-notification-hubs
+  - name: Dostupnost v oblastech
+    href: https://azure.microsoft.com/regions/services/
+  - name: Možnosti podpory
+    href: https://azure.microsoft.com/support/options/
+ms.openlocfilehash: f8a26954be5154e9d37970a3659fd28a22b615a5
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.translationtype: HT
+ms.contentlocale: cs-CZ
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54461446"

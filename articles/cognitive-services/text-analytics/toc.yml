@@ -1,98 +1,105 @@
+items:
 - name: Dokumentace k rozhraní Text Analytics API
   href: index.yml
 - name: Přehled
-  expanded: true
   items:
-    - name: Co je rozhraní API pro analýzu textu?
-      href: overview.md
+  - name: Co je rozhraní API pro analýzu textu?
+    href: overview.md
+  expanded: true
 - name: Šablony Rychlý start
   items:
-    - name: 'C#'
-      href: quickstarts/csharp.md
-    - name: Přejít
-      href: quickstarts/go.md
-    - name: Java
-      href: quickstarts/java.md
-    - name: Node.js
-      href: quickstarts/nodejs.md
-    - name: PHP
-      href: quickstarts/php.md
-    - name: Python
-      href: quickstarts/python.md
-    - name: Ruby
-      href: quickstarts/ruby.md
+  - name: C#
+    href: quickstarts/csharp.md
+  - name: Přejít
+    href: quickstarts/go.md
+  - name: Java
+    href: quickstarts/java.md
+  - name: Node.js
+    href: quickstarts/nodejs.md
+  - name: PHP
+    href: quickstarts/php.md
+  - name: Python
+    href: quickstarts/python.md
+  - name: Ruby
+    href: quickstarts/ruby.md
 - name: Kurzy
   items:
-    - name: Analýza mínění na streamovaných datech s využitím Azure Databricks
-      href: ../../azure-databricks/databricks-sentiment-analysis-cognitive-services.md
-      maintainContext: true
-    - name: Analýza textu s využitím Power BI
-      href: Tutorials/tutorial-power-bi-key-phrases.md
-    - name: Analýza textu v Power Apps
-      href: 'https://powerapps.microsoft.com/tutorials/cognitive-services-api/'
+  - name: Analýza mínění na streamovaných datech s využitím Azure Databricks
+    href: ../../azure-databricks/databricks-sentiment-analysis-cognitive-services.md
+    maintainContext: true
+  - name: Analýza textu s využitím Power BI
+    href: Tutorials/tutorial-power-bi-key-phrases.md
+  - name: Analýza textu v Power Apps
+    href: https://powerapps.microsoft.com/tutorials/cognitive-services-api/
 - name: Návody
   items:
-    - name: Registrace
-      href: How-tos/text-analytics-how-to-signup.md
-    - name: Získání přístupového klíče
-      href: How-tos/text-analytics-how-to-access-key.md
-    - name: Volání rozhraní Text Analytics API
-      href: How-tos/text-analytics-how-to-call-api.md
-    - name: Zjištění jazyka
-      href: How-tos/text-analytics-how-to-language-detection.md
-    - name: Analýza mínění
-      href: How-tos/text-analytics-how-to-sentiment-analysis.md
-    - name: Extrakce klíčových frází
-      href: How-tos/text-analytics-how-to-keyword-extraction.md
-    - name: Volání rozpoznávání pojmenovaných entit
-      href: How-tos/text-analytics-how-to-entity-linking.md
-    - name: Použití kontejnerů
-      items:
-        - name: Instalace a spuštění kontejnerů
-          href: how-tos/text-analytics-how-to-install-containers.md
-        - name: Konfigurace kontejnerů
-          href: text-analytics-resource-container-config.md
-        - name: Spouštění ve službě Azure Kubernetes Service
-          href: How-tos/text-analytics-how-to-use-container-instance.md
-    - name: Použití připojené služby analýzy textu
-      href: vs-text-connected-service.md
+  - name: Registrace
+    href: How-tos/text-analytics-how-to-signup.md
+  - name: Získání přístupového klíče
+    href: How-tos/text-analytics-how-to-access-key.md
+  - name: Volání rozhraní Text Analytics API
+    href: How-tos/text-analytics-how-to-call-api.md
+  - name: Zjištění jazyka
+    href: How-tos/text-analytics-how-to-language-detection.md
+  - name: Analýza mínění
+    href: How-tos/text-analytics-how-to-sentiment-analysis.md
+  - name: Extrakce klíčových frází
+    href: How-tos/text-analytics-how-to-keyword-extraction.md
+  - name: Volání rozpoznávání pojmenovaných entit
+    href: How-tos/text-analytics-how-to-entity-linking.md
+  - name: Použití kontejnerů
+    items:
+    - name: Instalace a spuštění kontejnerů
+      href: how-tos/text-analytics-how-to-install-containers.md
+    - name: Konfigurace kontejnerů
+      href: text-analytics-resource-container-config.md
+    - name: Spouštění ve službě Azure Kubernetes Service
+      href: How-tos/text-analytics-how-to-use-container-instance.md
+  - name: Použití připojené služby analýzy textu
+    href: vs-text-connected-service.md
 - name: Referenční informace
   items:
-    - name: Referenční informace k rozhraní příkazového řádku
-      href: 'https://docs.microsoft.com/cli/azure/cognitiveservices?view=azure-cli-latest#az_cognitiveservices_list'
-    - name: PowerShell – reference
-      href: 'https://aka.ms/azure-powershell-cognitiveservices'
-    - name: Rozhraní Text Analytics API
-      href: 'https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c7'
-    - name: Sady SDK
-      items:
-        - name: .NET
-          href: 'https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/textanalytics?view=azure-dotnet'
-        - name: Java
-          href: 'https://docs.microsoft.com/java/api/overview/azure/cognitiveservices/client/textanalytics?view=azure-java-stable'
-        - name: Python
-          href: 'https://docs.microsoft.com/python/api/overview/azure/cognitiveservices/textanalytics?view=azure-python'
-        - name: Node.js
-          href: 'https://docs.microsoft.com/javascript/api/overview/azure/cognitiveservices/textanalytics?view=azure-node-latest'
-        - name: Přejít
-          href: 'https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v2.0/textanalytics'
+  - name: Referenční informace k rozhraní příkazového řádku
+    href: https://docs.microsoft.com/cli/azure/cognitiveservices?view=azure-cli-latest#az_cognitiveservices_list
+  - name: PowerShell – reference
+    href: https://aka.ms/azure-powershell-cognitiveservices
+  - name: Rozhraní Text Analytics API
+    href: https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c7
+  - name: Sady SDK
+    items:
+    - name: .NET
+      href: https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/textanalytics?view=azure-dotnet
+    - name: Java
+      href: https://docs.microsoft.com/java/api/overview/azure/cognitiveservices/client/textanalytics?view=azure-java-stable
+    - name: Python
+      href: https://docs.microsoft.com/python/api/overview/azure/cognitiveservices/textanalytics?view=azure-python
+    - name: Node.js
+      href: https://docs.microsoft.com/javascript/api/overview/azure/cognitiveservices/textanalytics?view=azure-node-latest
+    - name: Přejít
+      href: https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v2.0/textanalytics
 - name: Zdroje a prostředky
   items:
-    - name: Externí obsah a obsah komunity
-      href: text-analytics-resource-external-community.md
-    - name: Nejčastější dotazy
-      href: text-analytics-resource-faq.md
-    - name: Podpora jazyků a oblastí
-      href: language-support.md
-    - name: Ceny
-      href: 'https://azure.microsoft.com/pricing/details/cognitive-services/text-analytics/'
-    - name: Regionální dostupnost
-      href: 'https://azure.microsoft.com/global-infrastructure/services/'
-    - name: Stack Overflow
-      href: 'https://stackoverflow.com/questions/tagged/text-analytics-api'
-    - name: Klíč předplatného
-      href: 'https://azure.microsoft.com/try/cognitive-services/?api=text-analytics'
-    - name: Vyzkoušejte si to!
-      href: 'https://azure.microsoft.com/services/cognitive-services/text-analytics/'
-    - name: UserVoice
-      href: 'https://cognitive.uservoice.com/forums/555922-text-analytics'
+  - name: Externí obsah a obsah komunity
+    href: text-analytics-resource-external-community.md
+  - name: Nejčastější dotazy
+    href: text-analytics-resource-faq.md
+  - name: Podpora jazyků a oblastí
+    href: language-support.md
+  - name: Ceny
+    href: https://azure.microsoft.com/pricing/details/cognitive-services/text-analytics/
+  - name: Regionální dostupnost
+    href: https://azure.microsoft.com/global-infrastructure/services/
+  - name: Stack Overflow
+    href: https://stackoverflow.com/questions/tagged/text-analytics-api
+  - name: Klíč předplatného
+    href: https://azure.microsoft.com/try/cognitive-services/?api=text-analytics
+  - name: Vyzkoušejte si to!
+    href: https://azure.microsoft.com/services/cognitive-services/text-analytics/
+  - name: UserVoice
+    href: https://cognitive.uservoice.com/forums/555922-text-analytics
+ms.openlocfilehash: 1759bee73caeb18ac96a228bb3a81e697aa62089
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.translationtype: HT
+ms.contentlocale: cs-CZ
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54475624"

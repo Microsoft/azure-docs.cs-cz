@@ -18,13 +18,13 @@ items:
 - name: Koncepty
   items:
   - name: Azure AD Connect a Connect Health
+    href: how-to-connect-syncservice-duplicate-attribute-resiliency.md
     items:
     - name: Co je Azure AD Connect a Connect Health?
       href: whatis-azure-ad-connect.md
     - name: Volba vhodného ověřování
       href: https://docs.microsoft.com/azure/security/azure-ad-choose-authn
     - name: Synchronizace identit a odolnost duplicitních atributů
-      href: how-to-connect-syncservice-duplicate-attribute-resiliency.md
   - name: Synchronizace hodnot hash hesel
     items:
     - name: Co je synchronizace hodnot hash hesel?
@@ -325,9 +325,9 @@ items:
     href: reference-connect-adsynctools.md
   - name: Referenční informace k ADConnectivityTools
     href: reference-connect-adconnectivitytools.md
-ms.openlocfilehash: 4e34d1cda9e905656a6eddd1f3e5ed3e21592d49
-ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
+ms.openlocfilehash: 45247405dd35835d95237bbb8773fa3bcf384812
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54888579"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54437194"

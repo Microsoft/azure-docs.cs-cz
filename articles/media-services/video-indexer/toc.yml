@@ -79,11 +79,9 @@ items:
     href: https://azure.microsoft.com/regions/services/
   - name: Oblasti
     href: regions.md
-  - name: Nejčastější dotazy
-    href: faq.md
-ms.openlocfilehash: 6b3510a967a24232997e6394142348048769c507
-ms.sourcegitcommit: 70471c4febc7835e643207420e515b6436235d29
+ms.openlocfilehash: 9b87d0495951823808cf64b125af35759b5881c6
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2019
-ms.locfileid: "54306178"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54015980"

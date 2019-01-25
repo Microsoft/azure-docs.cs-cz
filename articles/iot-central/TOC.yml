@@ -1,142 +1,147 @@
+items:
 - name: Základy Azure IoT
   href: /azure/iot-fundamentals
 - name: Dokumentace k řešení Azure IoT Central
   href: index.yml
 - name: Přehled
   items:
-    - name: Co je Azure IoT Central
-      href: overview-iot-central.md
-    - name: Možnosti řešení IoT
-      href: overview-iot-options.md
-    - name: Prohlídka uživatelského rozhraní
-      href: overview-iot-central-tour.md
+  - name: Co je Azure IoT Central
+    href: overview-iot-central.md
+  - name: Možnosti řešení IoT
+    href: overview-iot-options.md
+  - name: Prohlídka uživatelského rozhraní
+    href: overview-iot-central-tour.md
 - name: Šablony Rychlý start
-  expanded: true
   items:
-    - name: Vytvoření nové aplikace
-      href: quick-deploy-iot-central.md
+  - name: Vytvoření nové aplikace
+    href: quick-deploy-iot-central.md
+  expanded: true
 - name: Kurzy
   items:
-    - name: 1. Definování nového typu zařízení
-      href: tutorial-define-device-type.md
-    - name: 2. Konfigurace pravidel
-      href: tutorial-configure-rules.md
-    - name: 3. Přizpůsobení zobrazení operátora
-      href: tutorial-customize-operator.md
-    - name: 4. Monitorování vašich zařízení
-      href: tutorial-monitor-devices.md
-    - name: 5. Přidání zařízení
-      href: tutorial-add-device.md
+  - name: 1. Definování nového typu zařízení
+    href: tutorial-define-device-type.md
+  - name: 2. Konfigurace pravidel
+    href: tutorial-configure-rules.md
+  - name: 3. Přizpůsobení zobrazení operátora
+    href: tutorial-customize-operator.md
+  - name: 4. Monitorování vašich zařízení
+    href: tutorial-monitor-devices.md
+  - name: 5. Přidání zařízení
+    href: tutorial-add-device.md
 - name: Koncepty
   items:
-    - name: Architektura
-      href: concepts-architecture.md
-    - name: Připojení
-      href: concepts-connectivity.md
+  - name: Architektura
+    href: concepts-architecture.md
+  - name: Připojení
+    href: concepts-connectivity.md
 - name: Návody
   items:
-    - name: Připojení zařízení
+  - name: Připojení zařízení
+    items:
+    - name: Příprava a připojení aplikace v Node.js (generické)
+      href: howto-connect-nodejs.md
+    - name: Příprava a připojení sady MXChip IoT DevKit
+      href: howto-connect-devkit.md
+    - name: Příprava a připojení Raspberry Pi (Python)
+      href: howto-connect-raspberry-pi-python.md
+    - name: Příprava a připojení Raspberry Pi (C#)
+      href: howto-connect-raspberry-pi-csharp.md
+    - name: Příprava a připojení zařízení Windows IoT Core
+      href: howto-connect-windowsiotcore.md
+    - name: Monitorování připojení zařízení pomocí příkazového řádku
+      href: howto-use-iotc-explorer.md
+  - name: Správa zařízení
+    items:
+    - name: Nastavení šablony zařízení
+      href: howto-set-up-template.md
+    - name: správu zařízení
+      href: howto-manage-devices.md
+    - name: Spuštění úlohy
+      href: howto-run-a-job.md
+    - name: Použití sad zařízení
+      href: howto-use-device-sets.md
+    - name: Vytváření verzí šablon zařízení
+      href: howto-version-devicetemplate.md
+  - name: Sledování a analýza
+    items:
+    - name: Vytvoření pravidla telemetrie
+      href: howto-create-telemetry-rules.md
+    - name: Vytvoření pravidla událostí
+      href: howto-create-event-rules.md
+    - name: Analýza dat zařízení
+      href: howto-create-analytics.md
+  - name: Akce a rozšiřitelnost
+    items:
+    - name: Vytváření akcí webhooků na základě pravidel
+      href: howto-create-webhooks.md
+    - name: Sestavení pracovních postupů v Microsoft Flow
+      href: howto-add-microsoft-flow.md
+    - name: Aktivace Azure Functions
+      href: howto-trigger-azure-functions.md
+    - name: Export dat
+      href: howto-export-data.md
       items:
-        - name: Příprava a připojení aplikace v Node.js (generické)
-          href: howto-connect-nodejs.md
-        - name: Příprava a připojení sady MXChip IoT DevKit
-          href: howto-connect-devkit.md
-        - name: Příprava a připojení Raspberry Pi (Python)
-          href: howto-connect-raspberry-pi-python.md
-        - name: 'Příprava a připojení Raspberry Pi (C#)'
-          href: howto-connect-raspberry-pi-csharp.md
-        - name: Příprava a připojení zařízení Windows IoT Core
-          href: howto-connect-windowsiotcore.md
-        - name: Monitorování připojení zařízení pomocí příkazového řádku
-          href: howto-use-iotc-explorer.md
-    - name: Správa zařízení
-      items:
-        - name: Nastavení šablony zařízení
-          href: howto-set-up-template.md
-        - name: správu zařízení
-          href: howto-manage-devices.md
-        - name: Spuštění úlohy
-          href: howto-run-a-job.md
-        - name: Použití sad zařízení
-          href: howto-use-device-sets.md
-        - name: Vytváření verzí šablon zařízení
-          href: howto-version-devicetemplate.md
-    - name: Sledování a analýza
-      items:
-        - name: Vytvoření pravidla telemetrie
-          href: howto-create-telemetry-rules.md
-        - name: Vytvoření pravidla událostí
-          href: howto-create-event-rules.md
-        - name: Analýza dat zařízení
-          href: howto-create-analytics.md
-    - name: Akce a rozšiřitelnost
-      items:
-        - name: Vytváření akcí webhooků na základě pravidel
-          href: howto-create-webhooks.md
-        - name: Sestavení pracovních postupů v Microsoft Flow
-          href: howto-add-microsoft-flow.md
-        - name: Sestavení pracovních postupů ve službě Azure Logic Apps
-          href: howto-build-azure-logic-apps.md
-        - name: Aktivace Azure Functions
-          href: howto-trigger-azure-functions.md
-        - name: Export dat
-          href: howto-export-data.md
-          items:
-            - name: Export do služeb Event Hubs a Service Bus
-              href: howto-export-data-event-hubs-service-bus.md
-            - name: Export do Blob Storage
-              href: howto-export-data-blob-storage.md
-        - name: Vizualizace dat v Power BI
-          href: howto-connect-powerbi.md
-        - name: Připojení dalších cloudů IoT
-          href: howto-build-iotc-device-bridge.md
-    - name: Správa
-      items:
-        - name: Správa vaší aplikace
-          href: howto-administer.md
-        - name: Příprava a nahrávání image
-          href: howto-prepare-images.md
-        - name: Správa řešení IoT Central z Portálu pro správu Azure
-          href: howto-manage-iot-central-from-portal.md
-        - name: Správa řešení IoT Central z Azure PowerShellu
-          href: howto-manage-iot-central-from-powershell.md
-        - name: Vytvoření a správa aplikace jako odběratel CSP
-          href: howto-create-and-manage-applications-as-CSP.md
-        - name: Konfigurace domovské stránky
-          href: howto-configure-homepage.md
-    - name: Personalizace
-      items:
-        - name: Správa vašich předvoleb
-          href: howto-manage-preferences.md
+      - name: Export do služeb Event Hubs a Service Bus
+        href: howto-export-data-event-hubs-service-bus.md
+      - name: Export do Blob Storage
+        href: howto-export-data-blob-storage.md
+    - name: Vizualizace dat v Power BI
+      href: howto-connect-powerbi.md
+    - name: Připojení dalších cloudů IoT
+      href: howto-build-iotc-device-bridge.md
+  - name: Správa
+    items:
+    - name: Správa vaší aplikace
+      href: howto-administer.md
+    - name: Příprava a nahrávání image
+      href: howto-prepare-images.md
+    - name: Správa řešení IoT Central z Portálu pro správu Azure
+      href: howto-manage-iot-central-from-portal.md
+    - name: Správa řešení IoT Central z Azure PowerShellu
+      href: howto-manage-iot-central-from-powershell.md
+    - name: Vytvoření a správa aplikace jako odběratel CSP
+      href: howto-create-and-manage-applications-as-CSP.md
+    - name: Konfigurace domovské stránky
+      href: howto-configure-homepage.md
+  - name: Personalizace
+    items:
+    - name: Správa vašich předvoleb
+      href: howto-manage-preferences.md
 - name: Související
   items:
-    - name: Řešení
-      items:
-        - name: Akcelerátory řešení IoT
-          href: /azure/iot-suite
-        - name: IoT Central
-          href: /microsoft-iot-central
-    - name: Služby platformy
-      items:
-        - name: IoT Hub
-          href: /azure/iot-hub
-        - name: Služba IoT Hub Device Provisioning
-          href: /azure/iot-dps
-        - name: Location Based Services
-          href: /azure/location-based-services
-        - name: Sady SDK pro služby
-          href: '/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-service-sdks'
-        - name: Time Series Insights
-          href: /azure/time-series-insights
-    - name: Edge
-      items:
-        - name: IoT Edge
-          href: /azure/iot-edge
-        - name: Sady SDK pro zařízení IoT
-          href: '/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-device-sdks'
+  - name: Řešení
+    items:
+    - name: Akcelerátory řešení IoT
+      href: /azure/iot-suite
+    - name: IoT Central
+      href: /microsoft-iot-central
+  - name: Služby platformy
+    items:
+    - name: IoT Hub
+      href: /azure/iot-hub
+    - name: Služba IoT Hub Device Provisioning
+      href: /azure/iot-dps
+    - name: Location Based Services
+      href: /azure/location-based-services
+    - name: Sady SDK pro služby
+      href: /azure/iot-hub/iot-hub-devguide-sdks#azure-iot-service-sdks
+    - name: Time Series Insights
+      href: /azure/time-series-insights
+  - name: Edge
+    items:
+    - name: IoT Edge
+      href: /azure/iot-edge
+    - name: Sady SDK pro zařízení IoT
+      href: /azure/iot-hub/iot-hub-devguide-sdks#azure-iot-device-sdks
 - name: Zdroje a prostředky
   items:
-    - name: Požadavky na zákaznická data
-      href: iot-central-customer-data-requests.md
-    - name: Podporované prohlížeče
-      href: iot-central-supported-browsers.md
+  - name: Požadavky na zákaznická data
+    href: iot-central-customer-data-requests.md
+  - name: Podporované prohlížeče
+    href: iot-central-supported-browsers.md
+ms.openlocfilehash: f25b255f441901d873e246bc7e31460b614b7c88
+ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
+ms.translationtype: HT
+ms.contentlocale: cs-CZ
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54354429"

@@ -412,8 +412,6 @@ items:
       href: monitor-integration-runtime.md#azure-ssis-integration-runtime
     - name: Změna konfigurace prostředí Azure-SSIS Integration Runtime
       href: manage-azure-ssis-integration-runtime.md
-    - name: Kopírování nebo klonování datové továrny
-      href: copy-clone-data-factory.md
   - name: Vytvoření prostředí Integration Runtime
     items:
     - name: Prostředí Azure Integration Runtime
@@ -486,9 +484,9 @@ items:
     href: https://azure.microsoft.com/global-infrastructure/services/
   - name: Možnosti podpory
     href: https://azure.microsoft.com/support/options/
-ms.openlocfilehash: 7cb01a6b94eec79f007172d851b0bf3e9c3b8b5b
-ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
+ms.openlocfilehash: 5c667c1e29870b2a8d120e63b27607dbb65496f3
+ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54191483"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54120355"

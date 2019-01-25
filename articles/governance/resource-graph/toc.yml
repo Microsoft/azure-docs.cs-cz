@@ -1,50 +1,55 @@
+items:
 - name: Dokumentace ke službě Azure Resource Graph
   href: index.yml
 - name: Přehled
   items:
-    - name: Přehled služby Azure Resource Graph
-      displayName: 'resource manager, query language, rbac, permissions'
-      href: overview.md
+  - name: Přehled služby Azure Resource Graph
+    displayName: resource manager, query language, rbac, permissions
+    href: overview.md
 - name: Šablony Rychlý start
-  expanded: true
   items:
-    - name: Spusťte svůj první dotaz – Azure CLI
-      displayName: 'extension, docker'
-      href: first-query-azurecli.md
-    - name: Spusťte svůj první dotaz – PowerShell
-      displayName: 'module, docker, Az.ResourceGraph'
-      href: first-query-powershell.md
+  - name: Spusťte svůj první dotaz – Azure CLI
+    displayName: extension, docker
+    href: first-query-azurecli.md
+  - name: Spusťte svůj první dotaz – PowerShell
+    displayName: module, docker, Az.ResourceGraph
+    href: first-query-powershell.md
+  expanded: true
 - name: Ukázky
-  expanded: true
   items:
-    - name: Dotazy pro začátečníky
-      displayName: 'query language, data explorer, count, list, show'
-      href: ./samples/starter.md
-    - name: Dotazy pro pokročilé uživatele
-      displayName: 'query language, data explorer, list, regex'
-      href: ./samples/advanced.md
+  - name: Dotazy pro začátečníky
+    displayName: query language, data explorer, count, list, show
+    href: ./samples/starter.md
+  - name: Dotazy pro pokročilé uživatele
+    displayName: query language, data explorer, list, regex
+    href: ./samples/advanced.md
+  expanded: true
 - name: Koncepty
-  expanded: true
   items:
-    - name: Principy dotazovacího jazyka
-      displayName: 'query language, data explorer, tabular, operators, functions'
-      href: ./concepts/query-language.md
-    - name: Zkoumání prostředků Azure pomocí služby Resource Graph
-      displayName: 'vms, public ip'
-      href: ./concepts/explore-resources.md
+  - name: Principy dotazovacího jazyka
+    displayName: query language, data explorer, tabular, operators, functions
+    href: ./concepts/query-language.md
+  - name: Zkoumání prostředků Azure pomocí služby Resource Graph
+    displayName: vms, public ip
+    href: ./concepts/explore-resources.md
+  expanded: true
 - name: Referenční informace
   items:
-    - name: Azure PowerShell
-      href: /powershell/module/az.resourcegraph/
-    - name: REST API
-      href: /rest/api/azureresourcegraph/resources/resources
+  - name: REST API
+    href: /rest/api/azureresourcegraph/resources/resources
 - name: Zdroje a prostředky
   items:
-    - name: Plány Azure do budoucna
-      href: 'https://azure.microsoft.com/roadmap/'
-    - name: Cenová kalkulačka
-      href: 'https://azure.microsoft.com/pricing/calculator/'
-    - name: UserVoice
-      href: 'https://feedback.azure.com/forums/915958-azure-governance'
-    - name: Kanál YouTube pro zásady správného řízení
-      href: 'https://www.youtube.com/channel/UCZZ3-oMrVI5ssheMzaWC4uQ'
+  - name: Plány Azure do budoucna
+    href: https://azure.microsoft.com/roadmap/
+  - name: Cenová kalkulačka
+    href: https://azure.microsoft.com/pricing/calculator/
+  - name: UserVoice
+    href: https://feedback.azure.com/forums/915958-azure-governance
+  - name: Kanál YouTube pro zásady správného řízení
+    href: https://www.youtube.com/channel/UCZZ3-oMrVI5ssheMzaWC4uQ
+ms.openlocfilehash: d49d7dbd8dc91099f794635ae08cb24bab385d27
+ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
+ms.translationtype: HT
+ms.contentlocale: cs-CZ
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54320000"
