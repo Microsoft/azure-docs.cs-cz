@@ -5,6 +5,8 @@ items:
   items:
   - name: Vytváření a sdílení řídicích panelů Azure
     href: azure-portal-dashboards.md
+  - name: Použití vlastní dlaždice Markdown
+    href: azure-portal-markdown-tile.md
   - name: Sdílení řídicích panelů prostřednictvím řízení přístupu na základě role
     href: azure-portal-dashboard-share-access.md
   - name: Struktura řídicích panelů Azure
@@ -36,9 +38,9 @@ items:
     href: https://stackoverflow.com/questions/tagged/azure-management-portal
   - name: Videa
     href: https://azure.microsoft.com/documentation/videos/index/?services=azure-portal&sort=newest
-ms.openlocfilehash: 3ce637e9d2eba4bd166bb971cacef46b266d4332
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ms.openlocfilehash: 7fee5a433470309384931e6ea43817288aecf7a8
+ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54104162"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54902767"

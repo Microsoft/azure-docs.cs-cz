@@ -9,30 +9,50 @@ items:
     href: about-iot-hub.md
 - name: Šablony Rychlý start
   items:
-  - name: Odesílání telemetrie (C)
-    href: quickstart-send-telemetry-c.md
-  - name: Odesílání telemetrie (Node.js)
-    href: quickstart-send-telemetry-node.md
-  - name: Odesílání telemetrie (.NET)
-    href: quickstart-send-telemetry-dotnet.md
-  - name: Odesílání telemetrie (Java)
-    href: quickstart-send-telemetry-java.md
-  - name: Odesílání telemetrie (Python)
-    href: quickstart-send-telemetry-python.md
-  - name: Odesílání telemetrie (Android)
-    href: quickstart-send-telemetry-android.md
-  - name: Odesílání telemetrie (iOS)
-    href: quickstart-send-telemetry-ios.md
-  - name: Řízení zařízení (Node.js)
-    href: quickstart-control-device-node.md
-  - name: Řízení zařízení (.NET)
-    href: quickstart-control-device-dotnet.md
-  - name: Řízení zařízení (Java)
-    href: quickstart-control-device-java.md
-  - name: Řízení zařízení (Python)
-    href: quickstart-control-device-python.md
-  - name: Řízení zařízení (Android)
-    href: quickstart-control-device-android.md
+  - name: Odeslání telemetrie
+    items:
+    - name: C
+      href: quickstart-send-telemetry-c.md
+    - name: Node.js
+      href: quickstart-send-telemetry-node.md
+    - name: .NET
+      href: quickstart-send-telemetry-dotnet.md
+    - name: Java
+      href: quickstart-send-telemetry-java.md
+    - name: Python
+      href: quickstart-send-telemetry-python.md
+    - name: Android
+      href: quickstart-send-telemetry-android.md
+    - name: iOS
+      href: quickstart-send-telemetry-ios.md
+  - name: Řízení zařízení
+    items:
+    - name: Node.js
+      href: quickstart-control-device-node.md
+    - name: .NET
+      href: quickstart-control-device-dotnet.md
+    - name: Java
+      href: quickstart-control-device-java.md
+    - name: Python
+      href: quickstart-control-device-python.md
+    - name: Android
+      href: quickstart-control-device-android.md
+  - name: Komunikace s využitím datových proudů zařízení (Preview)
+    items:
+    - name: C#
+      href: quickstart-device-streams-echo-csharp.md
+    - name: Node.js
+      href: quickstart-device-streams-echo-nodejs.md
+    - name: C
+      href: quickstart-device-streams-echo-c.md
+  - name: SSH/RDP s využitím datových proudů zařízení (Preview)
+    items:
+    - name: C#
+      href: quickstart-device-streams-proxy-csharp.md
+    - name: Node.js
+      href: quickstart-device-streams-proxy-nodejs.md
+    - name: C
+      href: quickstart-device-streams-proxy-c.md
 - name: Kurzy
   items:
   - name: Směrování zpráv
@@ -65,6 +85,8 @@ items:
     href: iot-hub-configuration-best-practices.md
   - name: Podpora platformy Azure IoT SDK
     href: iot-hub-device-sdk-platform-support.md
+  - name: Přehled datových proudů zařízení služby IoT Hub (Preview)
+    href: iot-hub-device-streams-overview.md
   - name: Příručka pro vývojáře
     href: iot-hub-devguide.md
     items:
@@ -420,9 +442,9 @@ items:
     href: https://microsoft.github.io/techcasestudies/#technology=IoT&sortBy=featured
   - name: Videa
     href: https://azure.microsoft.com/documentation/videos/index/?services=iot-hub
-ms.openlocfilehash: 7ac517a2d2963993d40899183c020570b2934f80
-ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
+ms.openlocfilehash: 84eae62600f5cb62bfd8941d90140c6150a983f0
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/12/2019
-ms.locfileid: "54247329"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54809118"

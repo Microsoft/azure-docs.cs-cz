@@ -13,14 +13,14 @@ ms.workload: mobile
 ms.tgt_pltfrm: mobile-multiple
 ms.devlang: multiple
 ms.topic: article
-ms.date: 01/22/2019
+ms.date: 01/24/2019
 ms.author: jowargo
-ms.openlocfilehash: afc3b0022056d529c69eeaabd229b809623e66ea
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: 7e31f4f229e722d51f5de6b133e70dfb1c013533
+ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54478582"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54888154"
 ---
 # <a name="push-notifications-with-azure-notification-hubs-frequently-asked-questions"></a>Nabízená oznámení pomocí Azure Notification Hubs: Nejčastější dotazy
 
@@ -194,7 +194,7 @@ Pokud nemáte k dispozici back-endu, při spuštění aplikace na cílových po�
 
 ### <a name="is-there-audit-log-capability"></a>Je k dispozici funkce protokolů auditu?
 
-Všechny operace správy Notification Hubs, přejděte na protokoly operací, které jsou přístupné [Azure Portal].
+Ano. Všechny Notification Hubs správy operací aktualizace protokolu aktivit Azure, ke kterému je zpřístupněná [Azure Portal]. Protokol aktivit Azure nabízí přehledy o operace prováděné s prostředky v rámci vašich předplatných. Použití protokolu aktivit, můžete určit, co, kdo, kdy pro všechny operace (PUT, POST, DELETE) provedených pro prostředky ve vašem předplatném zápisu a. Můžete také zjištění stavu operace a další relevantní vlastnosti. Ale. Protokol aktivit nezahrnují operace čtení (GET).
 
 ## <a name="monitoring-and-troubleshooting"></a>Monitorování a řešení potíží
 

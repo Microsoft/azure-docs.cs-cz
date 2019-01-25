@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
-ms.date: 1/7/2019
+ms.date: 1/24/2019
 ms.author: raiye
-ms.openlocfilehash: e621d526aed3c4d98d964dfdcd7ba01e8c1fb830
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ms.openlocfilehash: 59afdd3bbb00dce6085ea76685768db3e8eec5cc
+ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54104858"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54900846"
 ---
 # <a name="azure-guest-os-releases-and-sdk-compatibility-matrix"></a>Azure verzí hostovaného operačního systému a matice kompatibility sady SDK
 Poskytuje že vám aktuální informace o nejnovější verzi operačního systému hosta Azure uvolní pro cloudové služby. Tyto informace pomohou při plánování způsob upgradu, než je zakázáno hostovaného operačního systému. Je-li konfigurovat vaše role používat *automatické* aktualizace hostovaného operačního systému, jak je popsáno v [nastavení aktualizace operačního systému hosta Azure][Azure Guest OS Update Settings], není důležité, abyste si přečetli tuto stránku.
@@ -43,6 +43,9 @@ Informace o tom, jak aktualizovat vaše hostovaného operačního systému nejst
 
 ## <a name="news-updates"></a>Aktualizace zprávy
 
+###### <a name="january-24-2019"></a>**24. ledna 2019**
+Řada 6 hostovaného operačního systému (Windows Server 2019) vydala.
+
 ###### <a name="january-7-2019"></a>**7. ledna 2019**
 Hostovaný operační systém prosince vydala.
 
@@ -65,6 +68,21 @@ Hostovaný operační systém z července vydala.
 Hostovaný operační systém dne vydala.
 
 ## <a name="releases"></a>Vydání
+
+## <a name="family-6-releases"></a>Uvolní řady 6
+**Windows Server 2019**
+
+Nainstalováno rozhraní .NET framework: 3.5, 4.7.2
+
+> [!NOTE]
+> Sada Windows Azure SDK pro .NET 3.0 si můžete stáhnout [tady][Windows Azure SDK].
+>
+
+| Konfigurační řetězec | Datum vydání | Zakázat datum |
+| --- | --- | --- |
+| WA-GUEST-OS-6.2_201812-01 |24. ledna 2019 |Příspěvek 6.4 |
+| WA-GUEST-OS-6.1_201811-01 |24. ledna 2019 |Příspěvek 6.3 |
+
 ## <a name="family-5-releases"></a>Uvolní řady 5
 **Windows Server 2016**
 
@@ -205,3 +223,4 @@ Vysvětlení zásad podpoře a vyřazení hostovaného operačního systému [ta
 [retirepolicy]: cloud-services-guestos-retirement-policy.md
 [fam1retire]: cloud-services-guestos-family1-retirement.md
 [fix]: https://technet.microsoft.com/library/security/ms17-010.aspx
+[Windows Azure SDK]: https://www.microsoft.com/en-us/download/details.aspx?id=54917

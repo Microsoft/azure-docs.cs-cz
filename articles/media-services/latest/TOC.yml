@@ -1,204 +1,211 @@
+items:
 - name: Dokumentace ke službě Media Services
   href: ./index.yml
 - name: Přehled
   items:
-    - name: Informace o Media Services
-      href: media-services-overview.md
+  - name: Informace o Media Services
+    href: media-services-overview.md
 - name: Šablony Rychlý start
-  expanded: true
   items:
-    - name: Streamování videosouborů s využitím .NET
-      href: stream-files-dotnet-quickstart.md
+  - name: Streamování videosouborů s využitím .NET
+    href: stream-files-dotnet-quickstart.md
+  expanded: true
 - name: Kurzy
-  expanded: true
   items:
-    - name: Kódování vzdáleného souboru a streamování videa – REST
-      href: stream-files-tutorial-with-rest.md
-    - name: Kódování načteného souboru a streamování videa – .NET
-      href: stream-files-tutorial-with-api.md
-    - name: Živé streamování – .NET
-      href: stream-live-tutorial-with-api.md
-    - name: Analýza videa – .NET
-      href: analyze-videos-tutorial-with-api.md
+  - name: Kódování vzdáleného souboru a streamování videa – REST
+    href: stream-files-tutorial-with-rest.md
+  - name: Kódování načteného souboru a streamování videa – .NET
+    href: stream-files-tutorial-with-api.md
+  - name: Živé streamování – .NET
+    href: stream-live-tutorial-with-api.md
+  - name: Analýza videa – .NET
+    href: analyze-videos-tutorial-with-api.md
+  expanded: true
 - name: Ukázky
   items:
-    - name: Ukázky kódu Azure
-      href: 'https://azure.microsoft.com/resources/samples/?sort=0&service=media-services&term=v3'
-    - name: Azure CLI
-      href: cli-samples.md
+  - name: Ukázky kódu Azure
+    href: https://azure.microsoft.com/resources/samples/?sort=0&service=media-services&term=v3
+  - name: Azure CLI
+    href: cli-samples.md
 - name: Koncepty
   items:
-    - name: Migrace z v2 v3
-      href: migrate-from-v2-to-v3.md
-    - name: Účty
-      items:
-        - name: Kvóty a omezení
-          href: limits-quotas-constraints.md
-        - name: Účty úložiště
-          href: storage-account-concept.md
-    - name: Entity
-      href: entities-overview.md
-      items:
-        - name: Filtry účtů a prostředků
-          href: filters-dynamic-manifest-overview.md
-        - name: Prostředky
-          href: assets-concept.md
-        - name: Zásady symetrických klíčů
-          href: content-key-policy-concept.md
-        - name: Události LiveEvent a výstupy LiveOutput
-          href: live-events-outputs-concept.md
-        - name: Koncové body streamování
-          href: streaming-endpoint-concept.md
-        - name: Lokátory streamování
-          href: streaming-locators-concept.md
-        - name: Zásady streamování
-          href: streaming-policy-concept.md
-        - name: Transformace a úlohy
-          href: transforms-jobs-concept.md
-    - name: Kódování obsahu
-      href: encoding-concept.md
-      items:
-        - name: Standardní formáty Media Encoderu
-          href: media-encoder-standard-formats.md
-        - name: Adaptivní žebříček přenosových rychlostí Autogen
-          href: autogen-bitrate-ladder.md
-    - name: Zpracování událostí služby Event Grid
-      href: reacting-to-media-services-events.md
-    - name: Ochrana obsahu
-      href: content-protection-overview.md
-      items:
-        - name: Systém s více variantami DRM s řízením přístupu
-          href: design-multi-drm-system-with-access-control.md
-    - name: Analýza obsahu
-      href: analyzing-video-audio-files-concept.md
-    - name: Streamování živých událostí
-      href: live-streaming-overview.md
-      items:
-        - name: Doporučené kodéry pro kódování v reálném čase
-          href: recommended-on-premises-live-encoders.md
-        - name: Použití cloudového DVR
-          href: live-event-cloud-dvr.md
-        - name: Porovnání funkcí
-          href: live-event-types-comparison.md
-        - name: Stavy a fakturace
-          href: live-event-states-billing.md
-        - name: Latence
-          href: live-event-latency.md
-    - name: Přehrávač médií Azure
-      href: use-azure-media-player.md
+  - name: Migrace z v2 v3
+    href: migrate-from-v2-to-v3.md
+  - name: Účty
+    items:
+    - name: Kvóty a omezení
+      href: limits-quotas-constraints.md
+    - name: Účty úložiště
+      href: storage-account-concept.md
+  - name: Entity
+    href: entities-overview.md
+    items:
+    - name: Filtry účtů a prostředků
+      href: filters-dynamic-manifest-overview.md
+    - name: Prostředky
+      href: assets-concept.md
+    - name: Zásady symetrických klíčů
+      href: content-key-policy-concept.md
+    - name: Živé události a výstupy
+      href: live-events-outputs-concept.md
+    - name: Koncové body streamování
+      href: streaming-endpoint-concept.md
+    - name: Lokátory streamování
+      href: streaming-locators-concept.md
+    - name: Zásady streamování
+      href: streaming-policy-concept.md
+    - name: Transformace a úlohy
+      href: transforms-jobs-concept.md
+  - name: Kódování obsahu
+    href: encoding-concept.md
+    items:
+    - name: Standardní formáty Media Encoderu
+      href: media-encoder-standard-formats.md
+    - name: Adaptivní žebříček přenosových rychlostí Autogen
+      href: autogen-bitrate-ladder.md
+  - name: Zpracování událostí služby Event Grid
+    href: reacting-to-media-services-events.md
+  - name: Ochrana obsahu
+    href: content-protection-overview.md
+    items:
+    - name: Systém s více variantami DRM s řízením přístupu
+      href: design-multi-drm-system-with-access-control.md
+  - name: Analýza obsahu
+    href: analyzing-video-audio-files-concept.md
+  - name: Streamování živých událostí
+    href: live-streaming-overview.md
+    items:
+    - name: Doporučené kodéry pro kódování v reálném čase
+      href: recommended-on-premises-live-encoders.md
+    - name: Použití cloudového DVR
+      href: live-event-cloud-dvr.md
+    - name: Porovnání funkcí
+      href: live-event-types-comparison.md
+    - name: Stavy a fakturace
+      href: live-event-states-billing.md
+    - name: Latence
+      href: live-event-latency.md
+  - name: Přehrávač médií Azure
+    href: use-azure-media-player.md
 - name: Návody
   items:
-    - name: Začínáme
-      items:
-        - name: Vytvoření účtu – rozhraní příkazového řádku
-          href: create-account-cli-how-to.md
-        - name: Přístup k rozhraním API – rozhraní příkazového řádku
-          href: access-api-cli-how-to.md
-        - name: Škálování rezervovaných jednotek médií – CLI
-          href: media-reserved-units-cli-how-to.md
-    - name: Konfigurace nástroje Postman
-      href: media-rest-apis-with-postman.md
-    - name: Nahrání obsahu
-      items:
-        - name: Z HTTP(s) – .NET
-          href: job-input-from-http-how-to.md
-        - name: Z místního souboru – .NET
-          href: job-input-from-local-file-how-to.md
-        - name: Z místního souboru – REST
-          href: upload-files-rest-how-to.md
-    - name: Kódování obsahu
-      items:
-        - name: Přizpůsobení přednastavení transformace – .NET
-          href: customize-encoder-presets-how-to.md
-    - name: Použití služby Event Grid
-      items:
-        - name: Monitorování událostí – portál
-          href: monitor-events-portal-how-to.md
-        - name: Monitorování událostí – rozhraní příkazového řádku
-          href: job-state-events-cli-how-to.md
-    - name: Ochrana obsahu
-      items:
-        - name: Dynamické šifrování AES-128 – .NET
-          href: protect-with-aes128.md
-        - name: Dynamické šifrování DRM – .NET
-          href: protect-with-drm.md
-        - name: Získání zásad symetrických klíčů – .NET
-          href: get-content-key-policy-dotnet-howto.md
-        - name: FairPlay pro iOS v offline režimu
-          href: offline-fairplay-for-ios.md
-        - name: Widevine pro Android v offline režimu
-          href: offline-widevine-for-android.md
-        - name: PlayReady pro Windows 10 v offline režimu
-          href: offline-plaready-streaming-for-windows-10.md
-    - name: Vytváření filtrů
-      items:
-        - name: S využitím .NET
-          href: filters-dynamic-manifest-dotnet-howto.md
-        - name: S využitím REST
-          href: filters-dynamic-manifest-rest-howto.md
-        - name: S využitím rozhraní příkazového řádku
-          href: filters-dynamic-manifest-cli-howto.md
+  - name: Začínáme
+    items:
+    - name: Vytvoření účtu – rozhraní příkazového řádku
+      href: create-account-cli-how-to.md
+    - name: Přístup k rozhraním API – rozhraní příkazového řádku
+      href: access-api-cli-how-to.md
+    - name: Škálování rezervovaných jednotek médií – CLI
+      href: media-reserved-units-cli-how-to.md
+  - name: Konfigurace nástroje Postman
+    href: media-rest-apis-with-postman.md
+  - name: Nahrání obsahu
+    items:
+    - name: Z HTTP(s) – .NET
+      href: job-input-from-http-how-to.md
+    - name: Z místního souboru – .NET
+      href: job-input-from-local-file-how-to.md
+    - name: Z místního souboru – REST
+      href: upload-files-rest-how-to.md
+  - name: Kódování obsahu
+    items:
+    - name: Přizpůsobení přednastavení transformace – .NET
+      href: customize-encoder-presets-how-to.md
+  - name: Použití služby Event Grid
+    items:
+    - name: Monitorování událostí – portál
+      href: monitor-events-portal-how-to.md
+    - name: Monitorování událostí – rozhraní příkazového řádku
+      href: job-state-events-cli-how-to.md
+  - name: Ochrana obsahu
+    items:
+    - name: Dynamické šifrování AES-128 – .NET
+      href: protect-with-aes128.md
+    - name: Dynamické šifrování DRM – .NET
+      href: protect-with-drm.md
+    - name: Získání zásad symetrických klíčů – .NET
+      href: get-content-key-policy-dotnet-howto.md
+    - name: FairPlay pro iOS v offline režimu
+      href: offline-fairplay-for-ios.md
+    - name: Widevine pro Android v offline režimu
+      href: offline-widevine-for-android.md
+    - name: PlayReady pro Windows 10 v offline režimu
+      href: offline-plaready-streaming-for-windows-10.md
+  - name: Vytváření filtrů
+    items:
+    - name: S využitím .NET
+      href: filters-dynamic-manifest-dotnet-howto.md
+    - name: S využitím REST
+      href: filters-dynamic-manifest-rest-howto.md
+    - name: S využitím rozhraní příkazového řádku
+      href: filters-dynamic-manifest-cli-howto.md
 - name: Referenční informace
   items:
-    - name: Specifikace OpenAPI (Swagger)
-      href: 'https://aka.ms/ams-v3-rest-sdk'
-    - name: REST
-      href: 'https://aka.ms/ams-v3-rest-ref'
-    - name: Azure CLI
-      href: 'https://aka.ms/ams-v3-cli-ref'
-    - name: Sady SDK
-      items:
-        - name: .NET
-          href: 'https://aka.ms/ams-v3-dotnet-ref'
-        - name: Java
-          href: 'https://aka.ms/ams-v3-java-ref'
-        - name: Python
-          href: 'https://aka.ms/ams-v3-python-ref'
-        - name: Node.js
-          href: 'https://aka.ms/ams-v3-nodejs-ref'
-        - name: Přejít
-          href: 'https://aka.ms/ams-v3-go-ref'
-    - name: Šablona Resource Manageru
-      href: /azure/templates/microsoft.media/allversions
-    - name: Schémata Event Gridu
-      href: media-services-event-schemas.md
-    - name: Licence DRM
-      items:
-        - name: Šablona licencování PlayReady
-          href: playready-license-template-overview.md
-        - name: Šablona licencování Widevine
-          href: widevine-license-template-overview.md
-        - name: Licenční požadavky FairPlay
-          href: fairplay-license-overview.md
+  - name: Specifikace OpenAPI (Swagger)
+    href: https://aka.ms/ams-v3-rest-sdk
+  - name: REST
+    href: https://aka.ms/ams-v3-rest-ref
+  - name: Azure CLI
+    href: https://aka.ms/ams-v3-cli-ref
+  - name: Sady SDK
+    items:
+    - name: .NET
+      href: https://aka.ms/ams-v3-dotnet-ref
+    - name: Java
+      href: https://aka.ms/ams-v3-java-ref
+    - name: Python
+      href: https://aka.ms/ams-v3-python-ref
+    - name: Node.js
+      href: https://aka.ms/ams-v3-nodejs-ref
+    - name: Přejít
+      href: https://aka.ms/ams-v3-go-ref
+  - name: Šablona Resource Manageru
+    href: /azure/templates/microsoft.media/allversions
+  - name: Schémata Event Gridu
+    href: media-services-event-schemas.md
+  - name: Licence DRM
+    items:
+    - name: Šablona licencování PlayReady
+      href: playready-license-template-overview.md
+    - name: Šablona licencování Widevine
+      href: widevine-license-template-overview.md
+    - name: Licenční požadavky FairPlay
+      href: fairplay-license-overview.md
 - name: Zdroje a prostředky
   items:
-    - name: Plány Azure do budoucna
-      href: 'https://azure.microsoft.com/roadmap/?category=web-mobile'
-    - name: Ceny
-      href: 'https://azure.microsoft.com/pricing/details/media-services/'
-    - name: Regionální dostupnost
-      href: 'https://azure.microsoft.com/regions/services/'
-    - name: Videa
-      href: 'https://azure.microsoft.com/resources/videos/index/?services=media-services'
-    - name: Specifikace OpenAPI (Swagger)
-      href: 'https://aka.ms/ams-v3-rest-sdk'
-    - name: Sady SDK nebo nástroje
-      items:
-        - name: Azure CLI
-          href: 'https://aka.ms/ams-v3-cli'
-        - name: .NET
-          href: 'https://aka.ms/ams-v3-dotnet-sdk'
-        - name: Java
-          href: 'https://aka.ms/ams-v3-java-sdk'
-        - name: Python
-          href: 'https://aka.ms/ams-v3-python-sdk'
-        - name: Node.js
-          href: 'https://aka.ms/ams-v3-nodejs-sdk'
-        - name: Ruby
-          href: 'https://aka.ms/ams-v3-ruby-sdk'
-    - name: "Poznámky k\_verzi"
-      href: release-notes.md
-    - name: Nejčastější dotazy
-      href: frequently-asked-questions.md
-    - name: Oblasti a cloudy Azure
-      href: azure-clouds-regions.md
+  - name: Plány Azure do budoucna
+    href: https://azure.microsoft.com/roadmap/?category=web-mobile
+  - name: Ceny
+    href: https://azure.microsoft.com/pricing/details/media-services/
+  - name: Regionální dostupnost
+    href: https://azure.microsoft.com/regions/services/
+  - name: Videa
+    href: https://azure.microsoft.com/resources/videos/index/?services=media-services
+  - name: Specifikace OpenAPI (Swagger)
+    href: https://aka.ms/ams-v3-rest-sdk
+  - name: Sady SDK nebo nástroje
+    items:
+    - name: Azure CLI
+      href: https://aka.ms/ams-v3-cli
+    - name: .NET
+      href: https://aka.ms/ams-v3-dotnet-sdk
+    - name: Java
+      href: https://aka.ms/ams-v3-java-sdk
+    - name: Python
+      href: https://aka.ms/ams-v3-python-sdk
+    - name: Node.js
+      href: https://aka.ms/ams-v3-nodejs-sdk
+    - name: Ruby
+      href: https://aka.ms/ams-v3-ruby-sdk
+  - name: Poznámky k verzi
+    href: release-notes.md
+  - name: Nejčastější dotazy
+    href: frequently-asked-questions.md
+  - name: Oblasti a cloudy Azure
+    href: azure-clouds-regions.md
+ms.openlocfilehash: c30302fa289ade85870db3e89fa70f5e79f61a99
+ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
+ms.translationtype: HT
+ms.contentlocale: cs-CZ
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54881371"

@@ -1,7 +1,7 @@
 ---
 layout: LandingPage
-title: 'Uživatelská nápověda pro ověřování, aplikace a správu zařízení – Azure Active Directory | Microsoft Docs'
-description: 'Uživatelská nápověda je určená uživatelům, kteří potřebují pomoc s nastavením a použitím bezpečnostních údajů, dvoustupňového ověření, samoobslužného resetování hesla, správou zařízení, aplikací Microsoft Authenticator a portálem Moje aplikace.'
+title: Uživatelská nápověda pro ověřování, aplikace a správu zařízení – Azure Active Directory | Microsoft Docs
+description: Uživatelská nápověda je určená uživatelům, kteří potřebují pomoc s nastavením a použitím bezpečnostních údajů, dvoustupňového ověření, samoobslužného resetování hesla, správou zařízení, aplikací Microsoft Authenticator a portálem Moje aplikace.
 services: active-directory
 author: eross-msft
 manager: daveba
@@ -10,8 +10,13 @@ ms.component: user-help
 ms.topic: landing-page
 ms.date: 07/30/2018
 ms.author: lizross
+ms.openlocfilehash: c6fe14c9f67d6ce2f432b57b2cbbd0d026cebe85
+ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
+ms.translationtype: HT
+ms.contentlocale: cs-CZ
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54901628"
 ---
-
 # <a name="user-help-for-authentication-apps-and-device-management"></a>Uživatelská nápověda pro ověřování, aplikace a správu zařízení
 
 Tento obsah jsme vytvořili, abychom vám pomohli s nastavením a použitím bezpečnostních údajů, dvoustupňovým ověřením, získáním informací o postupu při resetování hesla, nastavením a připojením zařízení Azure Active Directory a nastavením a použitím aplikace Microsoft Authenticator a portálu Moje aplikace.
@@ -81,7 +86,10 @@ Tento obsah jsme vytvořili, abychom vám pomohli s nastavením a použitím bez
                     <div class="cardText">
                         <h3>Nápověda k aplikaci Microsoft Authenticator</h3>
                         <p>
-                        <a href="/azure/active-directory/user-help/microsoft-authenticator-app-how-to">Začínáme</a><br/>
+                        <a href="/azure/active-directory/user-help/user-help-auth-app-overview">Přehled</a><br/>
+                        <a href="/azure/active-directory/user-help/microsoft-authenticator-app-how-to">Stažení a instalace aplikace</a><br/>
+                        <a href="/azure/active-directory/user-help/microsoft-authenticator-app-add-accounts-overview">Přidání vašich účtů</a><br/>
+                        <a href="/azure/active-directory/user-help/microsoft-authenticator-app-phone-signin-faq">Přihlášení pomocí aplikace</a><br/>
                         <a href="/azure/active-directory/user-help/microsoft-authenticator-app-backup-and-recovery">Zálohování a obnovení přihlašovacích údajů k účtu</a>
                         </p>
                     </div>

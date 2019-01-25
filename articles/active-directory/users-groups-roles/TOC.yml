@@ -128,6 +128,8 @@ items:
       href: directory-manage-roles-portal.md
     - name: Role s nejnižšími oprávněními podle úkolu
       href: roles-delegate-by-task.md
+    - name: Role Microsoft 365
+      href: roles-m365-workload-docs.md
     - name: Zabezpečení role správce
       items:
       - name: Plánování zabezpečení rolí
@@ -161,9 +163,9 @@ items:
     href: https://docs.microsoft.com/powershell/azure/active-directory/install-adv2?view=azureadps-2.0
   - name: Omezení služby Azure AD
     href: directory-service-limits-restrictions.md
-ms.openlocfilehash: 5556185bfad0cebf409b5f95fa5c26f6779d5903
-ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
+ms.openlocfilehash: a8bac821a7ec443043ed2fda7ea39547385c602b
+ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54329935"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54888902"

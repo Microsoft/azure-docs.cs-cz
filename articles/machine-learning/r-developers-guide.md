@@ -14,12 +14,12 @@ ms.devlang: R
 ms.topic: article
 ms.date: 09/12/2018
 ms.author: jepeach
-ms.openlocfilehash: bc00bd3b61398355c663d133c0c9a66c2a52aa8d
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: 102191b885d2a4a9234b7783b0a51b09903d3abd
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47047344"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54807452"
 ---
 # <a name="r-developers-guide-to-azure"></a>Příručka pro vývojáře jazyka R do Azure
 <img src="media/r-developers-guide/logo_r.svg" alt="R logo" align="right" width="200" />
@@ -39,8 +39,8 @@ Tento článek se týká následujících služeb Azure, které podporují jazyk
 |[Služby ML v HDInsight](#ml-services-on-hdinsight)            |systém založený na clusteru pro spouštění analýz R na velkých datových sad napříč mnoha uzly   |
 |[Azure Databricks](#azure-databricks)                            |prostředí pro spolupráci Spark, který podporuje R a další jazyky               |
 |[Azure Machine Learning Studio](#azure-machine-learning-studio)  |spuštění vlastních skriptů R v Azure se strojovým učením                      |
-|[Služba Azure Batch](#azure-batch)                                      |nabízí různé možnosti ekonomicky mezi velký počet uzlů v clusteru spuštění kódu jazyka R|
-|[Poznámkových bloků Azure](#azure-notebooks)                              |bezplatného (ale omezené) založené na cloudu verzi poznámkové bloky Jupyter                  |
+|[Azure Batch](#azure-batch)                                      |nabízí různé možnosti ekonomicky mezi velký počet uzlů v clusteru spuštění kódu jazyka R|
+|[Azure Notebooks](#azure-notebooks)                              |verze založené na cloudu bezplatného poznámkových bloků Jupyter                  |
 |[Azure SQL Database](#azure-sql-database)                        |spouštění skriptů jazyka R v databázovém stroji SQL serveru                            |
 
 ## <a name="data-science-virtual-machine"></a>Virtuální počítač pro datové vědy
@@ -48,7 +48,7 @@ Tento článek se týká následujících služeb Azure, které podporují jazyk
 * [Microsoft R Open](https://mran.microsoft.com/open/)
 * [Microsoft Machine Learning Server](https://docs.microsoft.com/machine-learning-server/what-is-machine-learning-server)
 * [RStudio Desktop](https://www.rstudio.com/products/rstudio/#Desktop)
-* [Přihlašovací stránce RStudio serveru](https://www.rstudio.com/products/rstudio/#Server)
+* [RStudio Server](https://www.rstudio.com/products/rstudio/#Server)
 
 Datové VĚDY s Windows nebo Linuxem dá zřídit jako operační systém.  Datové VĚDY můžete použít dvěma způsoby: jako interaktivní pracovní stanice nebo jako výpočetní platforma pro vlastní cluster.
 
@@ -73,7 +73,7 @@ Díky schopnosti škálování je služby ML na HDInsight skvělou možností pr
 Návod, jak na vytvoření clusteru služby ML, najdete v článku ["Začínáme se službou ML v Azure HDInsight"](https://docs.microsoft.com/azure/hdinsight/r-server/r-server-get-started) článku.
 
 ## <a name="azure-databricks"></a>Azure Databricks
-[Azure Databricks](https://azure.microsoft.com/services/databricks/) je založená na Apache Sparku analytická platforma optimalizovaná pro platformu cloudových služeb Microsoft Azure.  Platforma Databricks je navržená ve spolupráci se zakladateli Apache Spark a díky integraci s Azure poskytuje nastavení jedním kliknutím, zjednodušené pracovní postupy a interaktivní pracovní prostor, který umožňuje spolupráci mezi datovými vědci, odborníky přes data a obchodními analytiky.
+[Azure Databricks](https://azure.microsoft.com/services/databricks/) je analytická platforma založená na Apache Spark a optimalizovaná pro platformu cloudových služeb Microsoft Azure.  Platforma Databricks je navržená ve spolupráci se zakladateli Apache Spark a díky integraci s Azure poskytuje nastavení jedním kliknutím, zjednodušené pracovní postupy a interaktivní pracovní prostor, který umožňuje spolupráci mezi datovými vědci, odborníky přes data a obchodními analytiky.
 
 Spolupráce v Databricks je povoleno systémem platformy poznámkového bloku.  Uživatelé můžou vytvářet, sdílet a upravovat poznámkové bloky s ostatními uživateli v systémech.  Tyto poznámkové bloky umožňují napsat kód, který se spustí s clustery Spark v Databricks prostředí spravován.  Tyto poznámkové bloky plně podporují R a uživatelům umožňují přístup k Sparku prostřednictvím i `SparkR` a `sparklyr` balíčky.
 
@@ -111,9 +111,10 @@ Další možností pro spuštění skriptu jazyka R ve službě Azure Batch je z
 Třetí možností je použít [Azure distribuovaných dat Engineering Toolkit](https://github.com/Azure/aztk) (AZTK), která umožňuje zřízení clusterů Spark na vyžádání pomocí kontejnerů Dockeru ve službě Azure Batch.  To poskytuje ekonomické ke spuštění úlohy Spark v Azure.  S použitím [SparklyR s AZTK](https://github.com/Azure/aztk/wiki/SparklyR-on-Azure-with-AZTK), svoje skripty jazyka R můžete škálovat v cloudu snadno a ekonomicky.
 
 ## <a name="azure-notebooks"></a>Azure Notebooks
+
 [Azure Notebooks](https://notebooks.azure.com) je s nízkými náklady a bezproblémové metodu pro R vývojáři, kteří dávají přednost práci s poznámkových bloků a použít vlastní kód do Azure.  Jedná se o bezplatnou službu pro vývoj a spouštění kódu v jejich používání prohlížeče [Jupyter](https://jupyter.org/), což je open source projekt umožňující kombinace prose markdownu, spustitelného kódu a grafiky na jedné plátno.
 
-Vhodným řešením pro rozsáhlé projektů při poznámkových bloků Azure má některá omezení, která ji činilo nevhodnou pro projekty rozsáhlých datových věd.  V současné době služba omezuje na 4 GB paměti procesu každý Poznámkový blok a datových sad může být pouze 1 GB.  Pro publikování menší analýz, je to ale možné snadno, bez nákladů.
+Úroveň free služby poznámkových bloků Azure je vhodným řešením pro rozsáhlé projekty, protože se limity každý Poznámkový blok procesu až 4GB paměti a 1GB datových sad. Pokud potřebujete power výpočetní prostředky a data nad rámec těchto omezení, ale můžete spustit poznámkových bloků v instanci virtuálního počítače pro datové vědy. Další informace najdete v tématu [spravovat a nakonfigurovat projekty poznámkových bloků Azure – výpočetní vrstva](/azure/notebooks/configure-manage-azure-notebooks-projects.md#compute-tier).
 
 ## <a name="azure-sql-database"></a>Azure SQL Database
 [Azure SQL Database](https://azure.microsoft.com/services/sql-database/) je inteligentní plně spravovaná relační Cloudová databázová služba od Microsoftu.  Umožňuje plně využijte potenciál systému SQL Server bez jakékoli nepříjemnostem nastavení infrastruktury.  Jedná se o [Machine Learning Services](https://docs.microsoft.com/sql/advanced-analytics/what-is-sql-server-machine-learning?view=sql-server-2017), což je jedna z více nedávno přidanými funkcemi do služby SQL Service.
