@@ -1,6 +1,6 @@
 ---
-title: Řešení potíží s nasazení tak, aby Kubernetes pro Azure Stack | Dokumentace Microsoftu
-description: Informace o řešení potíží s nasazení tak, aby Kubernetes pro Azure Stack.
+title: Řešení potíží s nasazení Kubernetes tak, aby Azure Stackk | Dokumentace Microsoftu
+description: Informace o řešení potíží s Kubernetes nasazení do služby Azure Stack.
 services: azure-stack
 documentationcenter: ''
 author: mattbriggs
@@ -11,17 +11,17 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/16/2019
+ms.date: 01/24/2019
 ms.author: mabrigg
 ms.reviewer: waltero
-ms.openlocfilehash: 844feb7999f88f63c9406c9f430d1d076cd032df
-ms.sourcegitcommit: 9f07ad84b0ff397746c63a085b757394928f6fc0
+ms.openlocfilehash: 8a67ae74f753fdbe3c5301c543e5a57544695922
+ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54390677"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54904212"
 ---
-# <a name="troubleshoot-your-deployment-to-kubernetes-to-azure-stack"></a>Řešení potíží s nasazení tak, aby Kubernetes pro Azure Stack
+# <a name="troubleshoot-your-kubernetes-deployment-to-azure-stack"></a>Řešení potíží s Kubernetes nasazení do služby Azure Stack
 
 *Platí pro: Azure Stack integrované systémy a Azure Stack Development Kit*
 

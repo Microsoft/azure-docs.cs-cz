@@ -13,13 +13,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/28/2018
-ms.author: cwatson
-ms.openlocfilehash: 81ee681fac4496ad2d5360f01926634373c23075
-ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
+ms.author: banders
+ms.openlocfilehash: d3da7e73569d7860c7e4328b11ecc3f20cf648fc
+ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52584481"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54903617"
 ---
 # <a name="understand-azure-reservation-usage-for-your-pay-as-you-go-subscription"></a>Vysvětlení využití Azure rezervace pro vaše předplatné s průběžnými platbami
 
@@ -70,7 +70,7 @@ Předpokládejme, že používáte SQL Database Gen 4 oblasti USA – východ a 
 
 | Pole | Hodnota |
 |---| --- |
-|ReservationId |446ec809-423D-467c-8c5c-bbd5d22906b1|
+|ReservationId |446ec809-423d-467c-8c5c-bbd5d22906b1|
 |Množství |2|
 |Produkt| SQL Database Gen 4 (2 jádra)|
 |Oblast | eastus |
@@ -105,7 +105,7 @@ Další informace o rezervacích Azure, najdete v následujících článcích:
 - [Vysvětlení využití rezervaci u prováděcí smlouvy Enterprise](billing-understand-reserved-instance-usage-ea.md)
 - [Náklady na software Windows, které nejsou součástí rezervace](billing-reserved-instance-windows-software-costs.md)
 
-## <a name="need-help-contact-us"></a>Potřebujete pomoct? Kontaktujte nás.
+## <a name="need-help-contact-us"></a>Potřebujete pomoc? Kontaktujte nás.
 
 Pokud máte otázky nebo potřebujete pomoc, [vytvořit žádost o podporu](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest).
 

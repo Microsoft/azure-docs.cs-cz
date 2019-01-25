@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 01/14/2016
 ms.author: aelnably
 ms.custom: seodec18
-ms.openlocfilehash: 9d4b664c9b1fc0deb10794a5f0b29c2b600d19e2
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: 17ea8545855cd926a393e9e40d3eccaabd6dba53
+ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53712659"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54886522"
 ---
 # <a name="azure-app-service-app-cloning-using-powershell"></a>Aplikace Azure App Service klonování pomocí Powershellu
 Verze prostředí Azure PowerShell verze 1.1.0 se přidala nová možnost pro `New-AzureRMWebApp` , který umožňuje klonování existující aplikace služby App Service do nově vytvořené aplikace v jiné oblasti nebo ve stejné oblasti. Tato možnost umožňuje zákazníkům rychle a snadno nasadit počet aplikací, které v různých oblastech.
@@ -116,7 +116,7 @@ $destapp = New-AzureRmWebApp -ResourceGroupName <Resource group name> -Name dest
 ```
 
 ## <a name="current-restrictions"></a>Aktuální omezení
-Tato funkce je aktuálně ve verzi preview a jsou přidány nové funkce v čase. Tady je známé omezení v aktuální verzi klonování aplikací:
+Tady je známé omezení klonování aplikací:
 
 * Nastavení automatického škálování se neklonuje
 * Nastavení plánu zálohování se neklonuje

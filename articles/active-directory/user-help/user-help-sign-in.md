@@ -11,44 +11,44 @@ ms.component: user-help
 ms.topic: conceptual
 ms.date: 07/30/2018
 ms.author: lizross
-ms.openlocfilehash: 4bd1ceb03ddce572e0571afb87ec2f0c36a49443
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: 7d4f3586aee5fdf77cb4cc1fa02596481fd58311
+ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54810410"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54902237"
 ---
 # <a name="sign-in-using-two-step-verification-or-security-info"></a>Přihlaste se pomocí dvoustupňového ověření nebo bezpečnostních údajů
 
-Jakmile nastavíte dvoustupňové ověřování nebo bezpečnostní údaje, budete mít, přihlaste se k vaší pracovní nebo školní účet pomocí zadaný ověřovací metodu.
+Po nastavení dvoustupňového ověřování nebo bezpečnostní údaje budete moct přihlásit k vašemu účtu pomocí zadaný ověřovací metodu.
 
 >[!Note]
 >Pokud stále používáte prostředí dvoustupňové ověření, budete muset nastavit metody ověřování pomocí následujících pokynů [nastavit účtu pro dvoustupňové ověřování](multi-factor-authentication-end-user-first-time.md) článku. Pokud správce zapnul prostředí informace o zabezpečení, musíte nastavit tyto podrobné návody pomocí metody ověřování:<ul><li>[Nastavení informací o zabezpečení pro použití ověřování aplikace](security-info-setup-auth-app.md)</li><li>[Nastavení bezpečnostních údajů pro používání zasílání textových zpráv](security-info-setup-text-msg.md)</li><li>[Upravit informace o zabezpečení tak, aby pomocí telefonního hovoru](security-info-setup-phone-number.md)</li></ul>
 
 ## <a name="sign-in-using-an-authenticator-app-notification-on-your-mobile-device"></a>Přihlaste se pomocí oznámení aplikaci authenticator na vašem mobilním zařízení
 
-1. Přihlaste se ke svému pracovnímu nebo školnímu účtu pomocí svého uživatelského jména a hesla.
+1. Přihlaste se ke svému účtu pomocí svého uživatelského jména a hesla.
 
 2. Vyberte **schválit** z oznámení o schválení odeslané na vaše mobilní zařízení.
 
 
 ## <a name="sign-in-using-an-authenticator-app-code-on-your-mobile-device"></a>Přihlaste se pomocí kódu aplikace authenticator na vašem mobilním zařízení
 
-1. Přihlaste se ke svému pracovnímu nebo školnímu účtu pomocí svého uživatelského jména a hesla.
+1. Přihlaste se ke svému účtu pomocí svého uživatelského jména a hesla.
 
 2. Otevřete aplikaci authenticator a zadejte náhodně generovaný kód pro váš účet do **zadejte kód** pole.
 
 
 ## <a name="sign-in-using-your-phone-number"></a>Přihlaste se pomocí svého telefonního čísla
 
-1. Přihlaste se ke svému pracovnímu nebo školnímu účtu pomocí svého uživatelského jména a hesla.
+1. Přihlaste se ke svému účtu pomocí svého uživatelského jména a hesla.
 
 2. Odpovědět na telefonu a postupujte podle pokynů.
 
 
 ## <a name="sign-in-using-a-text-message"></a>Přihlaste se pomocí textové zprávy
 
-1. Přihlaste se ke svému pracovnímu nebo školnímu účtu pomocí svého uživatelského jména a hesla.
+1. Přihlaste se ke svému účtu pomocí svého uživatelského jména a hesla.
 
 2. Otevřete na textovou zprávu a zadejte kód textovou zprávu do **zadejte kód** pole.
 

@@ -3,7 +3,7 @@ title: Nastavení MySQL na virtuální počítač s Linuxem v Azure | Dokumentac
 description: Zjistěte, jak nainstalovat MySQL stack na virtuální počítač s Linuxem (Ubuntu a Red Hat řada operačního systému) v Azure
 services: virtual-machines-linux
 documentationcenter: ''
-author: zr-msft
+author: cynthn
 manager: jeconnoc
 editor: ''
 tags: azure-resource-manager,azure-service-management
@@ -14,13 +14,13 @@ ms.tgt_pltfrm: vm-linux
 ms.devlang: na
 ms.topic: article
 ms.date: 02/01/2016
-ms.author: zarhoads
-ms.openlocfilehash: f7120decd4a5d43f88b55e7d7e20992af34cadc4
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.author: cynthn
+ms.openlocfilehash: c8043064ac1df40eaa31ae56e9ec31c0152e0130
+ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49469564"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54888426"
 ---
 # <a name="how-to-install-mysql-on-azure"></a>Jak nainstalovat MySQL v Azure
 V tomto článku se dozvíte, jak nainstalovat a nakonfigurovat MySQL na virtuálním počítači Azure s Linuxem.
@@ -42,7 +42,7 @@ K instalaci MySQL5.6 jako příklad v tomto článku budeme používat úložiš
 ### <a name="how-to-install-mysql56-on-ubuntu"></a>Postup instalace MySQL5.6 na Ubuntu
 Virtuální počítač s Linuxem s Ubuntu v Azure použijeme tady.
 
-* Krok 1: Instalace MySQL serveru 5.6 přepnout na `root` uživatele:
+* Krok 1: Nainstalovat MySQL Server 5.6 přepínač tak, aby `root` uživatele:
   
             #[azureuser@mysqlnode:~]sudo su -
   
@@ -59,7 +59,7 @@ Virtuální počítač s Linuxem s Ubuntu v Azure použijeme tady.
 
     ![image](./media/mysql-install/virtual-machines-linux-install-mysql-p2.png)
 
-* Krok 2: Přihlášení na Server MySQL
+* Krok 2: Login MySQL Server
   
     Po dokončení instalace serveru MySQL se spustí automaticky službu MySQL. MySQL Server se můžete přihlásit `root` uživatele.
     Používá následující příkaz k přihlášení a zadání hesla.
@@ -71,7 +71,7 @@ Virtuální počítač s Linuxem s Ubuntu v Azure použijeme tady.
   
              #[root@mysqlnode ~]# service mysql status
   
-    (b) spustit službu MySQL
+    (b) Start MySQL Service
   
              #[root@mysqlnode ~]# service mysql start
   

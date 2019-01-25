@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 05/30/2018
 ms.author: johnkem
 ms.subservice: logs
-ms.openlocfilehash: f5d09600829a3efa2682721bf4aedbed7e5cf969
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: 3a1ffb3b7a0f154b1d74ca7a8789e5fdadadec31
+ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54439064"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54883768"
 ---
 # <a name="monitor-subscription-activity-with-the-azure-activity-log"></a>Monitorování aktivit předplatného s protokolem aktivit Azure
 
@@ -45,7 +45,7 @@ Protokol aktivit obsahuje několik kategorií data. Úplné podrobnosti o schém
 * **Automatické škálování** – Tato kategorie obsahuje záznam žádné události vztahující se k operaci modul automatického škálování na základě jakékoli nastavení automatického škálování jste definovali v rámci vašeho předplatného. Je například typ události, kterou byste viděli v této kategorii "Automatického vertikálního navýšení kapacity akce se nezdařila." Použití automatického škálování, můžete automaticky škálovat na více systémů nebo škálování počtu instancí v podporovaných prostředků typu na základě času dne a/nebo zatížení (metriky) dat s využitím nastavení automatického škálování. Pokud jsou splněny podmínky škálování směrem nahoru nebo dolů, spuštění a úspěšné nebo neúspěšné událostí se zaznamenávají v této kategorii.
 * **Doporučení** – Tato kategorie obsahuje události doporučení Azure advisoru.
 * **Zabezpečení** – Tato kategorie obsahuje záznam všech výstrah generovaných v Azure Security Center. Je například typ události, kterou byste viděli v této kategorii "podezřelou dvojitou příponou souboru provést."
-* **Zásady** – Tato kategorie neobsahuje žádné události; je vyhrazená pro budoucí použití. 
+* **Zásady** – Tato kategorie obsahuje záznamy všechny operace vliv akce prováděné zásadami Azure. Příklady typů událostí, které se zobrazí v této kategorii: auditování a odepřít. Každou akci provedenou na základě zásad je modelovaná jako operace pro prostředek.
 
 ## <a name="event-schema-per-category"></a>Schéma událostí podle jednotlivých kategorií
 [Najdete v článku o schéma událostí protokolu aktivit podle jednotlivých kategorií.](../../azure-monitor/platform/activity-log-schema.md)

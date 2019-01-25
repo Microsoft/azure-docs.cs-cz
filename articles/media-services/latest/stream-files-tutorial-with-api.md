@@ -10,14 +10,14 @@ ms.service: media-services
 ms.workload: ''
 ms.topic: tutorial
 ms.custom: mvc
-ms.date: 11/11/2018
+ms.date: 01/23/2019
 ms.author: juliako
-ms.openlocfilehash: a8d2cf577a6b637e910c283ba8c70d9ea4eedfbb
-ms.sourcegitcommit: 922f7a8b75e9e15a17e904cc941bdfb0f32dc153
+ms.openlocfilehash: 051de9b68b6cf830592a7cf8bdad7808e044fbcc
+ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52334121"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54888707"
 ---
 # <a name="tutorial-upload-encode-and-stream-videos-using-apis"></a>Kurz: Nahrávání, kódování a streamování videí pomocí rozhraní API
 
@@ -66,12 +66,12 @@ Tato část popisuje funkce definované v souboru [Program.cs](https://github.co
 
 Tato ukázka provede následující akce:
 
-1. Vytvoří novou transformaci (nejprve zkontroluje, jestli zadaná transformace existuje). 
-2. Vytvoří výstupní prostředek, který se použije jako výstup úlohy kódování.
-3. Vytvoří vstupní prostředek a nahraje do něj zadaný místní soubor videa. Prostředek se použije jako vstup úlohy. 
-4. Pomocí vytvořeného vstupu a výstupu úlohu kódování odešle.
+1. Vytvoří novou **transformace** (nejprve, zkontroluje, jestli existuje Zadaná transformace). 
+2. Vytvoří výstup **Asset** , který se používá jako kódování **úlohy**výstup.
+3. Vytvoření vstupní **Asset** a nahraje zadaného místního souboru videa do něj. Prostředek se použije jako vstup úlohy. 
+4. Odešle úlohy kódování pomocí vstup a výstup, který byl vytvořen.
 5. Zkontroluje stav úlohy.
-6. Vytvoří streamovací lokátor (StreamingLocator).
+6. Vytvoří **Lokátor streamování**.
 7. Vytvoří adresy URL pro streamování.
 
 ### <a name="a-idstartusingdotnet-start-using-media-services-apis-with-net-sdk"></a><a id="start_using_dotnet" />Začněte používat rozhraní API služby Media Services pomocí sady .NET SDK
@@ -82,14 +82,14 @@ Pokud chcete začít používat rozhraní Media Services API se sadou .NET SDK, 
 
 ### <a name="create-an-input-asset-and-upload-a-local-file-into-it"></a>Vytvoření vstupního prostředku a nahrání místního souboru do tohoto prostředku 
 
-Funkce **CreateInputAsset** vytvoří nový vstupní [prostředek](https://docs.microsoft.com/rest/api/media/assets) a nahraje do něj zadaný místní videosoubor. Tento prostředek se použije jako vstup ve vaší úloze kódování. Ve službě Media Services v3 můžete jako vstup úlohy použít buď prostředek, nebo obsah, který jste přes adresu URL protokolu HTTPS zpřístupnili ve svém účtu služby Media Services. Postup zakódování obsahu přes adresu URL protokolu HTTPS najdete v [tomto](job-input-from-http-how-to.md) článku.  
+Funkce **CreateInputAsset** vytvoří nový vstupní [prostředek](https://docs.microsoft.com/rest/api/media/assets) a nahraje do něj zadaný místní videosoubor. To **Asset** se používá jako vstup pro úlohu kódování. V Media Services v3, vstup **úlohy** může být buď **Asset**, nebo to může být obsah, který je k dispozici pro váš účet Media Services prostřednictvím adresy URL HTTPS. Postup zakódování obsahu přes adresu URL protokolu HTTPS najdete v [tomto](job-input-from-http-how-to.md) článku.  
 
 Ve službě Media Services v3 slouží k nahrání souborů rozhraní API služby Azure Storage. Následující fragment kódu .NET vám ukáže, jak na to.
 
 Uvedená funkce provede následující akce:
 
-* Vytvoří prostředek. 
-* Získá [adresu SAS](https://docs.microsoft.com/azure/storage/common/storage-dotnet-shared-access-signature-part-1) [kontejneru v úložišti](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-dotnet?tabs=windows#upload-blobs-to-the-container) prostředku s možností zápisu.
+* Vytvoří **Asset** 
+* Získá zapisovatelný [adresy URL SAS](https://docs.microsoft.com/azure/storage/common/storage-dotnet-shared-access-signature-part-1) do assetu [kontejneru ve službě storage](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-dotnet?tabs=windows#upload-blobs-to-the-container)
 * Přes adresu SAS odešle soubor do kontejneru v úložišti.
 
 [!code-csharp[Main](../../../media-services-v3-dotnet-tutorials/AMSV3Tutorials/UploadEncodeAndStreamFiles/Program.cs#CreateInputAsset)]
@@ -101,7 +101,8 @@ Výstupní [prostředek](https://docs.microsoft.com/rest/api/media/assets) ulož
 [!code-csharp[Main](../../../media-services-v3-dotnet-tutorials/AMSV3Tutorials/UploadEncodeAndStreamFiles/Program.cs#CreateOutputAsset)]
 
 ### <a name="create-a-transform-and-a-job-that-encodes-the-uploaded-file"></a>Vytvoření transformace a úlohy, která nahraný soubor zakóduje
-Když kódujete nebo zpracováváte obsah v Media Services, kódování se obvykle nastaví jako předpis. Potom stačí odeslat **Úlohu**, která tento předpis použije pro video. Když odešlete novou Úlohu pro každé nové video, použije se tento předpis pro všechna videa ve vaší knihovně. V Media Services se pro předpis používá označení **transformace**. Další informace najdete v tématu [Transformace a úlohy](transform-concept.md). Ukázka popsaná v tomto kurzu definuje předpis, který zakóduje video tak, aby se dalo streamovat na nejrůznějších zařízeních s iOSem a Androidem. 
+
+Když kódujete nebo zpracováváte obsah v Media Services, kódování se obvykle nastaví jako předpis. Potom stačí odeslat **Úlohu**, která tento předpis použije pro video. Odešlete nové úlohy pro každé nové video, můžete se má použít tento předpisu pro všechna videa v knihovně. V Media Services se pro předpis používá označení **transformace**. Další informace najdete v tématu [transformuje a úlohy](transform-concept.md). Ukázka popsaná v tomto kurzu definuje předpis, který zakóduje video tak, aby se dalo streamovat na nejrůznějších zařízeních s iOSem a Androidem. 
 
 #### <a name="transform"></a>Transformace
 
@@ -127,33 +128,33 @@ V tomto příkladu je vstupní video nahrané z místního počítače. Postup z
 
 Služba Event Grid je navržená pro vysokou dostupnost, konzistentní výkon a dynamické škálování. Díky službě Event Grid můžou vaše aplikace naslouchat událostem a reagovat na ně, ať už pocházejí z kterékoli služby Azure. Události můžou pocházet i z vlastních zdrojů. Jednoduché, reaktivní zpracování událostí založené na protokolu HTTP pomáhá sestavovat efektivní řešení prostřednictvím inteligentního filtrování a směrování událostí.  Další informace najdete v článku [Směrování událostí na vlastní webový koncový bod](job-state-events-cli-how-to.md).
 
-**Úloha** obvykle prochází následujícími stavy: **Naplánováno**, **Ve frontě**, **Zpracovávání** a **Dokončeno** (konečný stav). Pokud během provádění úlohy dojde k chybě, přejde úloha do stavu **Chyba**. Když úlohu zrušíte, změní se její stav na **Rušení** a potom na **Zrušeno**.
+**Úlohy** obvykle prochází následujících stavů: **Naplánované**, **ve frontě**, **zpracování**, **dokončeno** (konečný stav). Pokud během provádění úlohy dojde k chybě, přejde úloha do stavu **Chyba**. Když úlohu zrušíte, změní se její stav na **Rušení** a potom na **Zrušeno**.
 
 [!code-csharp[Main](../../../media-services-v3-dotnet-tutorials/AMSV3Tutorials/UploadEncodeAndStreamFiles/Program.cs#WaitForJobToFinish)]
 
-### <a name="get-a-streaminglocator"></a>Vytvoření streamovacího lokátoru
+### <a name="get-a-streaming-locator"></a>Získat Lokátor streamování
 
-Po dokončení kódování následuje zpřístupnění videa ve výstupním prostředku, kde je k dispozici klientům pro přehrávání. Video můžete zpřístupnit ve dvou krocích: nejdřív vytvořte streamovací lokátor ([StreamingLocator](https://docs.microsoft.com/rest/api/media/streaminglocators)) a pak adresy URL pro streamování, které budou klienti používat. 
+Po dokončení kódování následuje zpřístupnění videa ve výstupním prostředku, kde je k dispozici klientům pro přehrávání. Můžete to provést ve dvou krocích: nejdřív vytvořte [Lokátor streamování](https://docs.microsoft.com/rest/api/media/streaminglocators)a druhý, sestavení adresy URL pro streamování, které můžou klienti používat. 
 
-Proces vytváření **streamovacího lokátoru** označujeme jako publikování. Pokud nenakonfigurujete volitelný počáteční a koncový čas, je **streamovací lokátor** ve výchozím nastavení platný hned po zavolání rozhraní API a jeho platnost zrušíte až jeho odstraněním. 
+Proces vytváření **Lokátor streamování** nazývá publikování. Ve výchozím nastavení **Lokátor streamování** platnost okamžitě po provedení volání rozhraní API a trvá, dokud je odstraníme, pokud nenakonfigurujete volitelné počáteční a koncový čas. 
 
 Když vytváříte [streamovací lokátor](https://docs.microsoft.com/rest/api/media/streaminglocators), je potřeba zadat požadovaný název zásad streamování (**StreamingPolicyName**). V tomto příkladu budete streamovat čistý nebo také nešifrovaný obsah, takže použijete předdefinovanou zásadu čistého streamování **PredefinedStreamingPolicy.ClearStreamingOnly**.
 
 > [!IMPORTANT]
-> Pokud chcete definovat vlastní [zásady streamování](https://docs.microsoft.com/rest/api/media/streamingpolicies), doporučujeme navrhnout pro účet služby Media Service omezený počet takovýchto zásad a používat je opakovaně pro streamovací lokátory, kdykoli potřebujete stejné protokoly a možnosti šifrování. Počet záznamů StreamingPolicy je pro účty služby Media Service omezený kvótou. Neměli byste vytvářet samostatnou zásadu streamování pro každý streamovací lokátor.
+> Při použití vlastního [streamování zásad](https://docs.microsoft.com/rest/api/media/streamingpolicies), by měly omezenou sadu zásad návrhu pro svůj účet Media Service a znovu je použít pro vaše StreamingLocators pokaždé, když jsou potřeba stejné možnosti šifrování a protokoly. Kvóta pro počet položek streamování zásady, které má váš účet Media Service. By neměl být vytváření nových zásad streamování pro každý Lokátor streamování.
 
 Následující kód předpokládá, že funkci voláte s jedinečným názvem lokátoru.
 
 [!code-csharp[Main](../../../media-services-v3-dotnet-tutorials/AMSV3Tutorials/UploadEncodeAndStreamFiles/Program.cs#CreateStreamingLocator)]
 
-I když se ukázka v tomto tématu vztahuje na streamování, stejné volání můžete použít i k vytvoření streamovacího lokátoru pro doručování videoobsahu formou progresivního stahování.
+Během ukázky v tomto tématu popisuje streamování, můžete použít stejné volání Pokud chcete vytvořit lokátor streamování pro doručování videa přes progresivní stahování.
 
 ### <a name="get-streaming-urls"></a>Vytvoření adres URL pro streamování
 
-Teď, když máte vytvořený [streamovací lokátor](https://docs.microsoft.com/rest/api/media/streaminglocators), můžete vytvořit adresy URL pro streamování, jak to znázorňuje metoda **GetStreamingURLs** v níže uvedeném příkladu. Pokud chcete vytvořit adresu URL, musíte zřetězit název hostitele [koncového bodu hostování](https://docs.microsoft.com/rest/api/media/streamingendpoints) a cestu **streamovacího lokátoru**. V této ukázce je použit *výchozí* **koncový bod streamování**. Když poprvé vytvoříte účet Media Service, tento *výchozí* **koncový bod streamování** bude v zastaveném stavu, proto je potřeba zavolat **spuštění**.
+Teď, když [Lokátor streamování](https://docs.microsoft.com/rest/api/media/streaminglocators) byl vytvořen, můžete získat adresy URL pro streamování, jak je znázorněno v **GetStreamingURLs**. Sestavit adresu URL, je nutné zřetězit [koncový bod streamování](https://docs.microsoft.com/rest/api/media/streamingendpoints) název hostitele a **Lokátor streamování** cestu. V této ukázce *výchozí* **koncový bod streamování** se používá. Při prvním vytvoření účtů Media Service, to *výchozí* **koncový bod streamování** budou v zastaveném stavu, takže je potřeba volat **Start**.
 
 > [!NOTE]
-> V této metodě budete potřebovat název lokátoru, který jste použili při vytváření **streamovacího lokátoru** pro výstupní prostředek.
+> V této metodě, je třeba locatorName, který jste použili při vytváření **Lokátor streamování** pro výstup Asset.
 
 [!code-csharp[Main](../../../media-services-v3-dotnet-tutorials/AMSV3Tutorials/UploadEncodeAndStreamFiles/Program.cs#GetStreamingURLs)]
 

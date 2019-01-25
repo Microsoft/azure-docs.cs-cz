@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 10/23/2018
 ms.author: magoedte
-ms.openlocfilehash: 3a20884dedf2d0f197cd73f0e67f412633736686
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: 3a7c823493369735df23360645004b0bec85dbd7
+ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54421571"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54885503"
 ---
 # <a name="configure-collection-of-azure-paas-resource-metrics-with-log-analytics"></a>Konfigurace shromažďování metrik prostředků Azure PaaS s využitím Log Analytics
 
@@ -67,7 +67,7 @@ Proveďte následující kroky a stáhněte a spusťte skript.
 
 Skript spustit proti každého prostředku odpovídající vybraným kritériím a Povolit shromažďování metrik pro ně. Až se dokončí, zobrazí se zpráva oznamující, že konfigurace je hotová.  
 
-Krátce po dokončení se začnou zobrazovat data z Azure PaaS prostředku v úložišti Log Analytics.  Záznam s typem `AzureMetrics` se vytvoří a analýza tyto záznamy jsou podporovány [Azure SQL Analytics](../../azure-monitor/insights/azure-sql.md) a [Azure Web Apps Analytics](../../azure-monitor/insights/azure-web-apps-analytics.md) řešení pro správu.   
+Krátce po dokončení se začnou zobrazovat data z Azure PaaS prostředku v úložišti Log Analytics.  Záznam s typem `AzureMetrics` se vytvoří a analýza tyto záznamy jsou podporovány [Azure SQL Analytics](../insights/azure-sql.md) a [Azure Web Apps Analytics](../insights/azure-web-apps-analytics.md) řešení pro správu.   
 
 ## <a name="update-a-resource-to-send-data-to-another-workspace"></a>Provést upgrade prostředku pro odesílání dat do jiného pracovního prostoru
 Pokud máte prostředek, který je už odesílání dat do pracovního prostoru Log Analytics a později se rozhodnete překonfigurování odkazovat na jiný pracovní prostor, můžete spustit skript `-Update` parametru.  
@@ -79,8 +79,8 @@ Zobrazí výzva k zodpovězení stejné informace, jako když jste spustili skri
 
 ## <a name="next-steps"></a>Další postup
 
-* Další informace o [prohledávání protokolů](../../azure-monitor/log-query/log-query-overview.md) analyzovat data shromážděná ze zdrojů dat a jejich řešení. 
+* Další informace o [prohledávání protokolů](../log-query/log-query-overview.md) analyzovat data shromážděná ze zdrojů dat a jejich řešení. 
 
-* Použití [vlastní pole](../../azure-monitor/platform/custom-fields.md)(k analýze záznamů událostí do jednotlivých polí.
+* Použití [vlastní pole](custom-fields.md)(k analýze záznamů událostí do jednotlivých polí.
 
-* Kontrola [vytvořit vlastní řídicí panel pro použití v Log Analytics](../../azure-monitor/platform/dashboards.md) pochopit, jak vizualizovat váš protokol vyhledá smysluplnějšími způsoby pro organizaci.
+* Kontrola [vytváření a sdílení řídicích panelů s daty Log Analytics](../learn/tutorial-logs-dashboards.md) pochopit, jak vizualizovat váš protokol vyhledá smysluplnějšími způsoby pro organizaci.

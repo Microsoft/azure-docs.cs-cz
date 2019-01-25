@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 01/22/2019
-ms.openlocfilehash: 197281a4666179037cd689e7e8d488e73039174b
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.date: 01/24/2019
+ms.openlocfilehash: 2966a2733904200f404d67c4e825d6b9deffdea2
+ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54810291"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54903022"
 ---
 # <a name="configure-ssl-connectivity-in-your-application-to-securely-connect-to-azure-database-for-mariadb"></a>Konfigurace připojení SSL v aplikaci pro zabezpečené připojení k Azure Database pro MariaDB
 Azure Database pro MariaDB podporuje připojení Azure Database pro MariaDB server ke klientským aplikacím pomocí vrstvy SSL (Secure Sockets). Díky vynucování připojení SSL mezi databázovým serverem a klientskými aplikacemi se šifruje datový proud mezi serverem a vaší aplikací, což pomáhá chránit před napadením útočníky, kteří se vydávají za prostředníky.
@@ -26,12 +26,14 @@ Konfigurace aplikace MySQL Workbench se navázat zabezpečené připojení přes
 ![Uložit vlastní dlaždice](./media/howto-configure-ssl/mysql-workbench-ssl.png) pro existující připojení, můžete vytvořit vazbu SSL kliknutím pravým tlačítkem myši na ikonu připojení a klikněte na položku upravit. Potom přejděte **SSL** kartu a vytvořit vazbu na soubor certifikátu.
 
 ### <a name="connecting-to-server-using-the-mysql-cli-over-ssl"></a>Připojování k serveru pomocí rozhraní příkazového řádku MySQL přes SSL
-Dalším způsobem, jak vytvořit vazbu certifikátu SSL je použití rozhraní příkazového řádku MySQL spuštěním následujícího příkazu:
+Dalším způsobem, jak vytvořit vazbu certifikátu SSL je použití rozhraní příkazového řádku MySQL spuštěním následujících příkazů. 
+
 ```bash
-mysql.exe -h mydemoserver.mariadb.database.azure.com -u Username@mydemoserver -p --ssl-ca=c:\ssl\BaltimoreCyberTrustRoot.crt.pem
+mysql.exe -h mydemoserver.mariadb.database.azure.com -u Username@mydemoserver -p --ssl-mode=REQUIRED --ssl-ca=c:\ssl\BaltimoreCyberTrustRoot.crt.pem
 ```
+
 > [!NOTE]
-> Při použití novější verze rozhraní příkazového řádku MySQL na Windows, může se zobrazit chyba `SSL connection error: Certificate signature check failed`. Pokud k tomu dojde, nahraďte `--ssl-ca={filepath}` parametr s `--ssl`.
+> Při použití rozhraní příkazového řádku MySQL na Windows, může se zobrazit chyba `SSL connection error: Certificate signature check failed`. Pokud k tomu dojde, nahraďte `--ssl-mode=REQUIRED --ssl-ca={filepath}` parametry s `--ssl`.
 
 ## <a name="enforcing-ssl-connections-in-azure"></a>Vynucení připojení SSL v Azure 
 ### <a name="using-the-azure-portal"></a>Použití webu Azure Portal

@@ -13,13 +13,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/28/2018
-ms.author: cwatson
-ms.openlocfilehash: 87f6437f836d46fc24ae016823a1b091bcd81943
-ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
+ms.author: banders
+ms.openlocfilehash: 0f29544890fe10f4914de393a4b153cfe393a2ec
+ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52582039"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54904297"
 ---
 # <a name="understand-azure-reservation-usage-for-your-enterprise-enrollment"></a>Vysvětlení využití rezervace Azure u prováděcí smlouvy Enterprise
 
@@ -76,7 +76,7 @@ Filtrovat podle **Další informace o** a zadejte vaše **ID rezervace**a zvolte
 
 ## <a name="usage-summary-page-in-enterprise-portal"></a>Stránka souhrnu využití webu Enterprise Portal
 
-Využití Azure rezervace se také zobrazí v části Souhrn využití webu Enterprise portal: ![souhrn využití Enterprise Agreement (EA)](./media/billing-understand-reserved-instance-usage-ea/billing-ea-reserved-instance-usagesummary.png)
+Využití Azure rezervace se také zobrazí v části Souhrn využití webu Enterprise portal: ![Souhrn využití Enterprise Agreement (EA)](./media/billing-understand-reserved-instance-usage-ea/billing-ea-reserved-instance-usagesummary.png)
 
 1. Se vám neúčtují poplatky za součást hardwaru virtuálního počítače jako se bude vztahovat rezervace. Pro rezervaci SQL Database, se zobrazí čáry s **název služby** jako Azure SQL Database vyhrazené využití kapacity.
 2. V tomto příkladu nemáte zvýhodněné hybridní využití Azure, takže vám budeme účtovat softwaru Windows používá s virtuálním Počítačem.
@@ -93,7 +93,7 @@ Další informace o rezervacích Azure, najdete v následujících článcích:
 - [Vysvětlení využití rezervace pro vaše předplatné s průběžnými platbami](billing-understand-reserved-instance-usage.md)
 - [Náklady na software Windows, které nejsou součástí rezervace](billing-reserved-instance-windows-software-costs.md)
 
-## <a name="need-help-contact-us"></a>Potřebujete pomoct? Kontaktujte nás.
+## <a name="need-help-contact-us"></a>Potřebujete pomoc? Kontaktujte nás.
 
 Pokud máte otázky nebo potřebujete pomoc, [vytvořit žádost o podporu](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest).
 

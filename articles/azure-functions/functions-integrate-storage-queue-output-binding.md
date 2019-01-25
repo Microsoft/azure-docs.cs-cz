@@ -12,12 +12,12 @@ ms.topic: quickstart
 ms.date: 09/19/2017
 ms.author: glenga
 ms.custom: mvc
-ms.openlocfilehash: 0cd3d3044623e2265a4ef5f817ed41258e63ae1c
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: 15ef1905562d04c2732016dfd1340910b3a8f699
+ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52995523"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54900353"
 ---
 # <a name="add-messages-to-an-azure-storage-queue-using-functions"></a>Přidání zpráv do fronty Azure Storage pomocí funkcí
 
@@ -67,7 +67,7 @@ Teď máte definovanou výstupní vazbu a je potřeba aktualizovat kód tak, aby
 
 ## <a name="add-code-that-uses-the-output-binding"></a>Přidání kódu, který používá výstupní vazbu
 
-V této části přidáte kód, který zapíše zprávu do výstupní fronty. Zpráva obsahuje hodnotu, která se předala triggeru HTTP v řetězci dotazu. Pokud například řetězec dotazu obsahuje `name=Azure`, zpráva fronty bude *Name passed to the function: Azure*.
+V této části přidáte kód, který zapíše zprávu do výstupní fronty. Zpráva obsahuje hodnotu, která se předala triggeru HTTP v řetězci dotazu. Například, pokud řetězec dotazu obsahuje `name=Azure`, zpráva fronty bude *jméno předané funkci: Azure*.
 
 1. Vybráním určité funkce zobrazíte kód této funkce v editoru.
 
@@ -150,7 +150,7 @@ Pokud jste si už nainstalovali Průzkumníka služby Storage a propojili jste h
 
 1. Rozbalte uzel **Fronty** a potom vyberte frontu s názvem **outqueue**. 
 
-   Tato fronta obsahuje zprávu, kterou vytvořila výstupní vazba fronty při spuštění funkce aktivované protokolem HTTP. Pokud jste tuto funkci volali s výchozí hodnotou `name` (*Azure*), zpráva fronty je *Name passed to the function: Azure*.
+   Tato fronta obsahuje zprávu, kterou vytvořila výstupní vazba fronty při spuštění funkce aktivované protokolem HTTP. Pokud jste tuto funkci volali s výchozí `name` hodnotu *Azure*, zpráva fronty je *jméno předané funkci: Azure*.
 
     ![Zpráva fronty zobrazená v Průzkumníku služby Storage](./media/functions-integrate-storage-queue-output-binding/function-queue-storage-output-view-queue.png)
 
@@ -162,6 +162,6 @@ Pokud jste si už nainstalovali Průzkumníka služby Storage a propojili jste h
 
 ## <a name="next-steps"></a>Další postup
 
-V tomto rychlém startu jste přidali k existující funkci výstupní vazbu. Další informace o vazbách do úložiště front najdete v tématu [Vazby front úložiště služby Azure Functions](functions-bindings-storage-queue.md). 
+V tomto rychlém startu jste přidali k existující funkci výstupní vazbu. Další informace o vazbách do úložiště front najdete v tématu [Vazby front úložiště služby Azure Functions](functions-bindings-storage-queue.md).
 
-[!INCLUDE [Next steps note](../../includes/functions-quickstart-next-steps.md)]
+[!INCLUDE [Next steps note](../../includes/functions-quickstart-next-steps-2.md)]

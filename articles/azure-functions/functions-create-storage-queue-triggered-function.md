@@ -12,12 +12,12 @@ ms.topic: quickstart
 ms.date: 10/01/2018
 ms.author: glenga
 ms.custom: mvc, cc996988-fb4f-47
-ms.openlocfilehash: 33f7367d9cdc510cf04f349f44b6e85215d46038
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: 44d6311246ab303966b7cfd8bee854b1c017f85d
+ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52995595"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54902682"
 ---
 # <a name="create-a-function-triggered-by-azure-queue-storage"></a>Vytvoření funkce aktivované službou Azure Queue Storage
 
@@ -113,8 +113,9 @@ Teď máte frontu úložiště a můžete funkci otestovat přidáním zprávy d
 
 ## <a name="next-steps"></a>Další postup
 
-Vytvořili jste funkci, která se spustí při přidání zprávy do fronty úložiště.
+Vytvořili jste funkci, která se spustí při přidání zprávy do fronty úložiště. Další informace o aktivačních událostech fronty úložiště najdete v tématu [Vazby front úložiště služby Azure Functions](functions-bindings-storage-queue.md).
 
-[!INCLUDE [Next steps note](../../includes/functions-quickstart-next-steps.md)]
+Teď, když jste vytvořili první funkce, Pojďme přidání výstupní vazby na funkci, která zapíše zprávu do jiné fronty.
 
-Další informace o aktivačních událostech fronty úložiště najdete v tématu [Vazby front úložiště služby Azure Functions](functions-bindings-storage-queue.md).
+> [!div class="nextstepaction"]
+> [Přidání zpráv do fronty Azure Storage pomocí funkcí](functions-integrate-storage-queue-output-binding.md)

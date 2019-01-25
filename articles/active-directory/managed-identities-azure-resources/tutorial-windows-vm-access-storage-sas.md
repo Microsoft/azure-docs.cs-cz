@@ -3,7 +3,7 @@ title: Použití spravované identity systém přiřadil virtuálního počíta�
 description: Kurz, který ukazuje, jak používat systém přiřadil virtuálního počítače s Windows spravované identity pro přístup k Azure Storage, pomocí pověření SAS místo přístupový klíč účtu úložiště.
 services: active-directory
 documentationcenter: ''
-author: daveba
+author: priyamohanram
 manager: daveba
 editor: daveba
 ms.service: active-directory
@@ -13,13 +13,13 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 11/20/2017
-ms.author: daveba
-ms.openlocfilehash: 6997812565e5e797e65d8e833a7f0f83db593923
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.author: priyamo
+ms.openlocfilehash: 44f89e00333db8170f25392051e18f895f31e139
+ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54423880"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54887738"
 ---
 # <a name="tutorial-use-a-windows-vm-system-assigned-managed-identity-to-access-azure-storage-via-a-sas-credential"></a>Kurz: Použití spravované identity systém přiřadil virtuálního počítače Windows pro přístup k úložišti Azure pomocí pověření SAS
 

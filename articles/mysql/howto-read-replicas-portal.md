@@ -5,15 +5,19 @@ author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 09/24/2018
-ms.openlocfilehash: 8e622a11c489618cf66e9cdddf369309e7188645
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.date: 01/23/2019
+ms.openlocfilehash: c7622252cd5b375e8c580bfcf7a45806d219d828
+ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53548013"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54900557"
 ---
 # <a name="how-to-create-and-manage-read-replicas-in-azure-database-for-mysql-using-the-azure-portal"></a>Jak vytvořit a spravovat čtení replik ve službě Azure Database for MySQL pomocí webu Azure portal
+
+
+> [!IMPORTANT]
+> Funkce repliky pro čtení je ve verzi Public Preview.
 
 V tomto článku se dozvíte, jak vytvořit a spravovat čtení replik v rámci stejné oblasti Azure jako hlavní v služba Azure Database for MySQL pomocí webu Azure portal. Tato funkce je aktuálně ve verzi public preview.
 

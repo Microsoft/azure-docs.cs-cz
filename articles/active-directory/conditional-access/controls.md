@@ -14,15 +14,15 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 12/22/2018
+ms.date: 01/24/2019
 ms.author: markvi
 ms.reviewer: calebb
-ms.openlocfilehash: 39d49a223fb02d00af2309922ccd98a764264b4d
-ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
+ms.openlocfilehash: 57290384b31b868deb9e285fb05fec8ebe10a53f
+ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54452509"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54902733"
 ---
 # <a name="what-are-access-controls-in-azure-active-directory-conditional-access"></a>Co jsou řízení přístupu v Azure Active Directory podmíněného přístupu?
 
@@ -71,9 +71,15 @@ Pomocí služby Multi-Factor authentication pomáhá chránit prostředky přís
 
 ### <a name="compliant-device"></a>Odpovídající zařízení
 
-Můžete nakonfigurovat zásady podmíněného přístupu, které jsou založené na zařízení. Cílem zásad podmíněného přístupu podle zařízení je udělit přístup k nakonfigurované prostředky jenom z [spravovaných zařízeních](require-managed-devices.md). Vyžadování vyhovující zařízení je jedna možnost, budete muset definovat se spravované zařízení. Pokud je vybraná tato možnost, své zásady podmíněného přístupu uděluje pokusů o přístup k zařízení, které jsou [zaregistrovaný](../devices/overview.md) k Azure Active Directory a jsou označené jako vyhovující, pomocí Intune (pro libovolné zařízení, operačního systému) nebo vaší systém MDM třetí strany pro zařízení s Windows 10. Systémy MDM třetí strany pro typy zařízení, operačního systému než Windows 10 nejsou podporovány.
+Můžete nakonfigurovat zásady podmíněného přístupu, které jsou založené na zařízení. Cílem zásad podmíněného přístupu podle zařízení je jenom udělit přístup k aplikacím, vybraný cloud z [spravovaných zařízeních](require-managed-devices.md). Vyžadování aby zařízení bylo označené jako vyhovující je jednou z možností máte k omezení přístupu ke spravovaným zařízením. Zařízení může být označený jako kompatibilní s Intune (pro libovolné zařízení, operačního systému) nebo systém MDM třetí strany pro zařízení s Windows 10. Systémy MDM třetí strany pro typy zařízení, operačního systému než Windows 10 nejsou podporovány. 
 
-Další informace najdete v tématu [nastavit zásady podmíněného přístupu podle zařízení Azure Active Directory](require-managed-devices.md).
+Vaše zařízení potřebuje k registraci do služby Azure AD, než může být označený jako kompatibilní. Pokud chcete zaregistrovat zařízení, máte tři možnosti: 
+
+- [Podpora k zařízením Azure AD zaregistrované](../devices/overview.md#azure-ad-registered-devices)
+- [Zařízení připojená k Azure AD](../devices/overview.md#azure-ad-joined-devices)  
+- [Zařízení připojená k hybridní službě Azure AD](../devices/overview.md#hybrid-azure-ad-joined-devices)
+
+Další informace najdete v tématu [vyžadování spravovaných zařízení pro přístup k aplikaci cloud s podmíněným přístupem](require-managed-devices.md).
 
 ### <a name="hybrid-azure-ad-joined-device"></a>Zařízení připojené k hybridní službě Azure AD
 

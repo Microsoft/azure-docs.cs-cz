@@ -13,13 +13,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/15/2018
-ms.author: cwatson
-ms.openlocfilehash: b4f38d80bfddc342d83a3552efe5d4a60cf6350f
-ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
+ms.author: banders
+ms.openlocfilehash: bfc6bf8cab1358c47e66660303f3303f4e9c763a
+ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52680119"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54900999"
 ---
 # <a name="understand-azure-spending-limit-and-how-to-remove-it"></a>Vysvětlení limitu útraty Azure a jeho odstranění
 
@@ -46,7 +46,7 @@ Limit útraty můžete odebrat kdykoli za předpokladu, že je k vašemu předpl
 Pokud chcete odebrat limit útraty, postupujte takto:
 
 1. Přihlaste se k [centra pro účty](https://account.windowsazure.com/Subscriptions).
-1. Vyberte předplatné. Pokud předplatné je zakázané z důvodu dosažení limitu útraty, klikněte na toto oznámení: "Předplatné dosáhlo limitu útraty a byla zakázána, aby vám nezačaly nabíhat poplatky." V opačném případě klikněte na tlačítko **odebrat limit útraty** v **stav PŘEDPLATNÉHO** oblasti.
+1. Vyberte předplatné. Pokud předplatné je zakázané z důvodu dosažení limitu útraty, klikněte na toto oznámení: „Subscription reached the Spending Limit and has been disabled to prevent charges“ (Dosáhli jste limitu útraty a předplatné se vypnulo, aby nedošlo k účtování poplatků). V opačném případě klikněte na tlačítko **odebrat limit útraty** v **stav PŘEDPLATNÉHO** oblasti.
 1. Vyberte vhodnou možnost.
 
 ![Vyberete možnost pro odebrání limitu útraty](./media/billing-spending-limit/remove-spending-limit.PNG)
@@ -84,6 +84,6 @@ Vlastní limity útraty nejsou k dispozici.
 
 ![Marketplace zakoupit upozornění](./media/billing-understand-your-azure-marketplace-charges/marketplace-warning.PNG)
 
-## <a name="need-help-contact-us"></a>Potřebujete pomoct? Kontaktujte nás.
+## <a name="need-help-contact-us"></a>Potřebujete pomoc? Kontaktujte nás.
 
 Pokud máte otázky nebo potřebujete pomoc, [vytvořit žádost o podporu](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest).

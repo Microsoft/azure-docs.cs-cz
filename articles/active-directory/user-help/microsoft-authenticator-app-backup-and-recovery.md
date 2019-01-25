@@ -8,15 +8,15 @@ ms.component: user-help
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 03/28/2018
+ms.date: 01/24/2019
 ms.author: lizross
 ms.reviewer: olhaun
-ms.openlocfilehash: 49cc5114106336f41d119b00db1bfa472f09d2d5
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: bd15189a9aa70ab99971be9da1bcd1ff243c60d0
+ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54821698"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54904348"
 ---
 # <a name="backup-and-recover-account-credentials-with-the-microsoft-authenticator-app"></a>Zálohování a obnovení přihlašovacích údajů účtu v aplikaci Microsoft Authenticator
 
@@ -39,11 +39,11 @@ Než budete zálohovat přihlašovací údaje, musíte mít:
 Které vyžadují, abyste pro přihlášení k oba účty společně zajišťuje silnější zabezpečení pro vaše informace o zálohování.
 
 **Chcete-li využívají Cloud zálohování**
--   Na zařízení s Iosem vyberte **nastavení**vyberte **zálohování**a pak zapněte **automatické zálohování**.
+-   Na zařízení s Iosem vyberte **nastavení**vyberte **zálohování**a pak zapněte **zálohy na Icloudu**.
 
     Přihlašovací údaje účtu se zálohují na váš účet iCloud.
 
-    ![nastavení pro IOS, zobrazuje umístění automatické nastavení zálohování](./media/microsoft-authenticator-app-backup-and-recovery/backup-and-recovery-turn-on.png)
+    ![nastavení pro IOS, zobrazuje umístění na serveru služby iCloud nastavení zálohování](./media/microsoft-authenticator-app-backup-and-recovery/backup-and-recovery-turn-on.png)
 
 ## <a name="recover-your-account-credentials-on-your-new-device"></a>Obnovení přihlašovacích údajů k účtu svoje nové zařízení
 Obnovení přihlašovacích údajů k účtu z vašeho účtu iCloud pomocí stejného účtu obnovení Microsoftu, které jste nastavili při zálohování vašich informací.
@@ -101,7 +101,6 @@ Teď, když máte zálohovat a obnovit svoje přihlašovací údaje k novým za�
 
 ## <a name="related-topics"></a>Související témata
 - [Začínáme s aplikací Microsoft Authenticator](microsoft-authenticator-app-how-to.md)  
-
 - [Nejčastější dotazy k aplikaci Microsoft Authenticator](microsoft-authenticator-app-faq.md)
 
 - [Multi-Factor Authentication](https://docs.microsoft.com/azure/multi-factor-authentication/)

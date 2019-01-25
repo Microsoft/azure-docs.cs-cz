@@ -14,15 +14,15 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 12/11/2018
+ms.date: 01/21/2019
 ms.author: markvi
 ms.reviewer: calebb
-ms.openlocfilehash: 998a2dac8332ea88f7cee308299ce5a1f90765a4
-ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
+ms.openlocfilehash: 6f522f7ff216a407e4ba901672f6b5e172952bcb
+ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54449738"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54883428"
 ---
 # <a name="what-is-the-location-condition-in-azure-active-directory-conditional-access"></a>Co je podmínka umístění podmíněného přístupu Azure Active Directory? 
 
@@ -58,7 +58,7 @@ Pojmenované umístění má následující komponenty:
 
 - **Název** – zobrazovaný název pojmenované umístění.
 
-- **Rozsahy IP adres** – jeden nebo více rozsahů adres IPv4 ve formátu CIDR. Zadání prahová adresa Ipv6 není podporováno.
+- **Rozsahy IP adres** – jeden nebo více rozsahů adres IPv4 ve formátu CIDR. Zadání rozsahu adres Ipv6 není podporováno.
 
 - **Označit jako důvěryhodné umístění** -příznak, který můžete nastavit pro pojmenované umístění pro důvěryhodného umístění. Důvěryhodná umístění jsou obvykle oblastem sítě, které jsou řízené vaším IT oddělením. Kromě podmíněného přístupu, důvěryhodné pojmenovaná umístění jsou také používány zprávy o zabezpečení Azure Identity Protection a Azure AD ke snížení [počet falešně pozitivních výsledků](../reports-monitoring/concept-risk-events.md#impossible-travel-to-atypical-locations-1).
 

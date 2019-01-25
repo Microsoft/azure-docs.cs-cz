@@ -3,7 +3,7 @@ title: Přehled automatického škálování se škálovacími sadami virtuáln�
 description: Další informace o různých způsobech, jakými může automaticky škálovat škálovací sady založené na výkon nebo podle pevného plánu Azure virtuálních počítačů
 services: virtual-machine-scale-sets
 documentationcenter: ''
-author: zr-msft
+author: cynthn
 manager: jeconnoc
 editor: ''
 tags: azure-resource-manager
@@ -14,14 +14,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 05/29/2018
-ms.author: zarhoads
+ms.author: cynthn
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: a5386e56bffd9a9789fe431aae8ed13df8ffae13
-ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
+ms.openlocfilehash: 610f3073594f73f04a68865593be6bfb4188d4f1
+ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54117431"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54883292"
 ---
 # <a name="overview-of-autoscale-with-azure-virtual-machine-scale-sets"></a>Nastaví přehled automatického škálování díky škálování virtuálních počítačů Azure
 Škálovací sady virtuálních počítačů Azure můžete automaticky zvýšit nebo snížit počet instancí virtuálních počítačů, na kterých běží vaše aplikace. Toto chování automatizované a elastické snižuje režie na správu pro monitorování a optimalizace výkonu vaší aplikace. Můžete vytvořit pravidla, která definují přijatelný výkon pro pozitivní zkušenosti. Pokud jsou splněny tyto definované prahové hodnoty, pravidla automatického škálování provést akci Upravit kapacitu škálovací sady. Můžete také naplánovat události pro automatické zvýšení nebo snížení kapacity škálovací sady na pevnou časy. Tento článek obsahuje základní informace o výkonu, které metriky jsou k dispozici a jaké akce automatického škálování můžete provádět.

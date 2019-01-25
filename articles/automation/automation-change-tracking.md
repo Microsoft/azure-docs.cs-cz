@@ -10,12 +10,12 @@ ms.date: 01/04/2019
 ms.topic: conceptual
 manager: carmonm
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: d29a2020d7e7a16e0bac0802a887a28e12630f03
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: a3c2ea1e28ebbc6859db135b743d579d3c632133
+ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54433012"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54901135"
 ---
 # <a name="track-changes-in-your-environment-with-the-change-tracking-solution"></a>Sledování změn ve vašem prostředí pomocí řešení Change Tracking
 
@@ -155,7 +155,6 @@ Další omezení:
 Řešení Change Tracking chvíli dochází k následujícím problémům:
 
 * Aktualizace hotfix se neshromažďují pro počítače s Windows 10 Creators Update a Windows Server 2016 Core RS3.
-* Pro soubory Windows Change Tracking nezjistí aktuálně při přidání nového souboru do sledované složky cesty
 
 ## <a name="change-tracking-data-collection-details"></a>Změnit podrobnosti sledování dat kolekce
 

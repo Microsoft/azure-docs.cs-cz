@@ -3,7 +3,7 @@ title: Kurz – Vytvoření vývojového kanálu v Azure pomocí Jenkinsu | Micr
 description: Kurz – V tomto kurzu se naučíte vytvořit v Azure virtuální počítač Jenkinsu, který při každém potvrzení kódu z GitHubu převezme data a sestaví nový kontejner Dockeru pro spuštění vaší aplikace.
 services: virtual-machines-linux
 documentationcenter: virtual-machines
-author: zr-msft
+author: cynthn
 manager: jeconnoc
 editor: tysonn
 tags: azure-resource-manager
@@ -14,16 +14,16 @@ ms.topic: tutorial
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 03/27/2017
-ms.author: zarhoads
+ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 1a29d58ca96793c44878a6755cc74edeab6a7c4b
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
-ms.translationtype: HT
+ms.openlocfilehash: c51206a7aac2cc6baaf4072c2dbd4ae7c97724e5
+ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49470842"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54884023"
 ---
-# <a name="tutorial-create-a-development-infrastructure-on-a-linux-vm-in-azure-with-jenkins-github-and-docker"></a>Kurz: Vytvoření vývojové infrastruktury ve virtuálním počítači s Linuxem v Azure pomocí Jenkinsu, GitHubu a Dockeru
+# <a name="tutorial-create-a-development-infrastructure-on-a-linux-vm-in-azure-with-jenkins-github-and-docker"></a>Kurz: Vytváření vývojové infrastruktury na virtuální počítač s Linuxem v Azure pomocí Jenkinse, Githubu a Dockeru
 
 K automatizaci fázi sestavení a testování v rámci vývoje aplikace můžete použít kanál průběžné integrace a nasazení (CI/CD). V tomto kurzu vytvoříte kanál CI/CD na virtuálním počítači Azure a také se naučíte:
 
@@ -230,7 +230,7 @@ Teď v GitHubu proveďte další úpravu souboru *index.js* a potvrďte změnu. 
 ![Spuštěná aplikace Node.js po dalším potvrzení GitHubu](media/tutorial-jenkins-github-docker-cicd/another_running_nodejs_app.png)
 
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 V tomto kurzu jste nakonfigurovali GitHub tak, aby se po každém potvrzení uzlu spustila úloha sestavení Jenkinse, a pak jste nasadili kontejner Dockeru, aby se aplikace otestovala. Naučili jste se tyto postupy:
 
 > [!div class="checklist"]

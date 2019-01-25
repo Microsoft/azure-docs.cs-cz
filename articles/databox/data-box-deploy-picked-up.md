@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: tutorial
-ms.date: 01/16/2019
+ms.date: 01/24/2019
 ms.author: alkohli
-ms.openlocfilehash: b948616aa21d390cedc877b0a09e272815abc82a
-ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
+ms.openlocfilehash: 158c2a8919bccea03f5c7b67aef23cd07022c259
+ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54358554"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54900506"
 ---
 # <a name="tutorial-return-azure-data-box-and-verify-data-upload-to-azure"></a>Kurz: Vrátí zařízení Azure Data Box a ověřte nahrání dat do Azure
 
@@ -22,28 +22,37 @@ Tento kurz popisuje, jak vrátit Azure Data Box a ověřit nahrání dat do Azur
 V tomto kurzu se seznámíte například s následujícími tématy:
 
 > [!div class="checklist"]
+> * Požadavky
+> * Příprava k odeslání
 > * Odeslání Data Boxu do Microsoftu
 > * Ověření nahrání dat do Azure
 > * Vymazání dat z Data Boxu
 
 ## <a name="prerequisites"></a>Požadavky
 
-Než začnete, ujistěte se, že jste dokončili [kurzu: Kopírování dat do služby Azure Data Box a ověřte](data-box-deploy-copy-data.md).
+Než začnete, ujistěte se, že:
+
+- Když jste dokončili [kurzu: Kopírování dat do služby Azure Data Box a ověřte](data-box-deploy-copy-data.md). 
+- Kopírování úloh se dokončí. Příprava k odeslání nelze spustit, pokud probíhají úlohy kopírování.
+
+## <a name="prepare-to-ship"></a>Příprava k odeslání
+
+[!INCLUDE [data-box-prepare-to-ship](../../includes/data-box-prepare-to-ship.md)]
 
 ## <a name="ship-data-box-back"></a>Vrácení Data Boxu
 
 1. Ujistěte se, že je zařízení vypnuté a nejsou k němu zapojené žádné kabely. Smotejte napájecí kabel, který jste dostali se zařízením, a bezpečně ho umístěte do zadní části zařízení.
-2. Pokud zařízení posíláte v rámci USA, ujistěte se, že se na displeji s elektronickým inkoustem zobrazuje expediční štítek, a naplánujte vyzvednutí přepravcem. Pokud se tento štítek ztratil, je poškozený nebo se nezobrazuje na displeji s elektronickým inkoustem, stáhněte si expediční štítek z webu Azure Portal a připevněte ho k zařízení. Přejděte na **Přehled > Stáhnout expediční štítek**. 
+2. Pokud zařízení posíláte v rámci USA, ujistěte se, že se na displeji s elektronickým inkoustem zobrazuje expediční štítek, a naplánujte vyzvednutí přepravcem. Pokud popisek poškození nebo ztráty nebo se nezobrazuje na displeji E-ink, přejděte na **přehled > stáhnout Expediční štítek** na webu Azure Portal. Stáhnout Expediční štítek a opatří na zařízení.
 
     Pokud zařízení posíláte v Evropě, displej s elektronickým inkoustem nezobrazuje expediční štítek. Místo toho najdete zpětný expediční štítek v průhledném pouzdře pod příchozím expedičním štítkem. Vyjměte starý expediční štítek a ujistěte se, že je expediční štítek dobře vidět.
     
-3. S UPS vyzvednutí naplánujte, pokud vrácení zařízení. Pokud chcete vyzvednutí naplánovat volání místní UPS (země konkrétní bezplatné číslo) nebo zanechání pole údaj na nejbližší umístění pro odložení.
+3. S UPS vyzvednutí naplánujte, pokud vrácení zařízení. Pokud chcete vyzvednutí naplánovat volání místní UPS (specifické pro zemi bezplatné číslo) nebo zanechání pole údaj na nejbližší umístění pro odložení.
 
 4. Jakmile přepravce vyzvedne a naskenuje Data Box, stav objednávky na portálu se změní na **Vyzvednuto**. Zobrazí se také ID sledování.
 
 ## <a name="verify-data-upload-to-azure"></a>Ověření nahrání dat do Azure
 
-Jakmile Microsoft přijme a naskenuje zařízení, stav objednávky se změní na **Přijato**. Zařízení pak projde fyzickým ověřením poškození nebo známek manipulace. 
+Jakmile Microsoft přijme a naskenuje zařízení, stav objednávky se změní na **Přijato**. Zařízení pak projde fyzickým ověřením poškození nebo známek manipulace.
 
 Po dokončení ověřování se Data Box připojí k síti v datacentru Azure. Automaticky se spustí kopírování dat. V závislosti na velikosti dat může operace kopírování trvat několik hodin až dní. Průběh kopírování můžete sledovat na portálu.
 
@@ -65,6 +74,8 @@ Po dokončení nahrávání do Azure se data z disků Data Boxu vymažou v soula
 V tomto kurzu jste se dozvěděli o tématech spojených se službou Azure Data Box Disk, jako jsou:
 
 > [!div class="checklist"]
+> * Požadavky
+> * Příprava k odeslání
 > * Odeslání Data Boxu do Microsoftu
 > * Ověření nahrání dat do Azure
 > * Vymazání dat z Data Boxu

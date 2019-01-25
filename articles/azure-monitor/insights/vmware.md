@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 05/04/2018
 ms.author: magoedte
-ms.openlocfilehash: 3313d7490ed9a2f51831c76148a54b7ecf19d3b3
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: c14267f6fc7f8c6be9199b9f25b6430b5f1aa5dd
+ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53338800"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54887406"
 ---
 # <a name="vmware-monitoring-preview-solution-in-log-analytics"></a>Řešení VMware Monitoring (Preview) ve službě Log Analytics
 
@@ -34,13 +34,13 @@ Toto řešení využívá nativní syslog funkce hostitele ESXi za účelem záp
 ## <a name="install-and-configure-the-solution"></a>Instalace a konfigurace řešení
 K instalaci a konfiguraci řešení můžete použít následující informace.
 
-* Přidejte ke svému předplatnému pomocí postupu popsaného v řešení VMware Monitoring [nainstalovat řešení pro správu](../../azure-monitor/insights/solutions.md#install-a-management-solution).
+* Přidejte ke svému předplatnému pomocí postupu popsaného v řešení VMware Monitoring [nainstalovat řešení pro správu](../insights/solutions.md#install-a-management-solution).
 
 #### <a name="supported-vmware-esxi-hosts"></a>Podporované hostitelé VMware ESXi
 vSphere hostitele ESXi 5.5, 6.0 a 6.5
 
 #### <a name="prepare-a-linux-server"></a>Příprava serveru s Linuxem
-Vytvořte operační systém Linux virtuálního počítače pro příjem všechna data syslogu z hostitele ESXi. [Agenta Log Analytics Linux](../../azure-monitor/learn/quick-collect-linux-computer.md) je bod kolekce pro všechna data syslogu hostitele ESXi. Více hostitelích ESXi můžete použít k předávání protokolů na jednom serveru systému Linux, jako v následujícím příkladu.
+Vytvořte operační systém Linux virtuálního počítače pro příjem všechna data syslogu z hostitele ESXi. [Agenta Log Analytics Linux](../learn/quick-collect-linux-computer.md) je bod kolekce pro všechna data syslogu hostitele ESXi. Více hostitelích ESXi můžete použít k předávání protokolů na jednom serveru systému Linux, jako v následujícím příkladu.
 
 [!INCLUDE [log-analytics-agent-note](../../../includes/log-analytics-agent-note.md)]  
 
@@ -129,7 +129,7 @@ V **VMware** zobrazení řídicího panelu okna jsou uspořádané podle:
 
 Klikněte na libovolné okno otevřete podokno hledání Log Analytics, který zobrazuje detailní informace specifické pro okno.
 
-Tady můžete upravit vyhledávací dotaz upravit pro určitý objekt. Podrobné informace o vytváření prohledávání protokolů, najdete v článku [našla data pomocí prohledávání protokolů v Log Analytics](../../azure-monitor/log-query/log-query-overview.md).
+Tady můžete upravit vyhledávací dotaz upravit pro určitý objekt. Podrobné informace o vytváření prohledávání protokolů, najdete v článku [našla data pomocí prohledávání protokolů v Log Analytics](../log-query/log-query-overview.md).
 
 #### <a name="find-esxi-host-events"></a>Najít akce hostitele ESXi
 Jednoho hostitele ESXi generuje více protokolů na základě jejich procesů. Řešení VMware Monitoring centralizuje je a obsahuje souhrn počtu událostí. Toto zobrazení centralizované vám pomůže pochopit hostitele ESXi, který má k velkému počtu událostí a které události se nejčastěji vyskytují ve vašem prostředí.
@@ -158,12 +158,12 @@ Toto řešení zahrnuje další užitečné dotazy, které vám může pomoci sp
 
 
 #### <a name="save-queries"></a>Ukládání dotazů
-Ukládání vyhledávacích dotazů je standardní funkce v Log Analytics a můžete zachovat všechny dotazy, které připadají užitečné. Jakmile vytvoříte dotaz, který je pro vás užitečné, uložte kliknutím **Oblíbené**. Uložený dotaz umožňuje snadno opakovaně použít později [Můj řídicí panel](../../azure-monitor/platform/dashboards.md) stránku, kde můžete vytvořit vlastní řídicích panelů.
+Ukládání vyhledávacích dotazů je standardní funkce v Log Analytics a můžete zachovat všechny dotazy, které připadají užitečné. Jakmile vytvoříte dotaz, který je pro vás užitečné, uložte kliknutím **Oblíbené**. Uložený dotaz umožňuje snadno opakovaně použít později [Můj řídicí panel](../learn/tutorial-logs-dashboards.md) stránku, kde můžete vytvořit vlastní řídicích panelů.
 
 ![DockerDashboardView](./media/vmware/dockerdashboardview.png)
 
 #### <a name="create-alerts-from-queries"></a>Vytvářet upozornění z dotazů
-Po vytvoření dotazů, můžete využívat dotazy a zobrazí vám upozornění, když dojde k určité události. Zobrazit [upozornění v Log Analytics](../../azure-monitor/platform/alerts-overview.md) informace o tom, jak vytvářet výstrahy. Příklady výstrah dotazy a další příklady dotazů, najdete v článku [VMware monitorování pomocí Log Analytics](https://blogs.technet.microsoft.com/msoms/2016/06/15/monitor-vmware-using-oms-log-analytics) blogový příspěvek.
+Po vytvoření dotazů, můžete využívat dotazy a zobrazí vám upozornění, když dojde k určité události. Zobrazit [upozornění v Log Analytics](../platform/alerts-overview.md) informace o tom, jak vytvářet výstrahy. Příklady výstrah dotazy a další příklady dotazů, najdete v článku [VMware monitorování pomocí Log Analytics](https://blogs.technet.microsoft.com/msoms/2016/06/15/monitor-vmware-using-oms-log-analytics) blogový příspěvek.
 
 ## <a name="frequently-asked-questions"></a>Nejčastější dotazy
 ### <a name="what-do-i-need-to-do-on-the-esxi-host-setting-what-impact-will-it-have-on-my-current-environment"></a>Co je potřeba na ESXi hostovat nastavení? Jaký vliv bude mít na mé aktuální prostředí?
@@ -204,6 +204,6 @@ Může existovat několik důvodů:
     d. Pokud soubor neexistuje nebo uživatel a skupina nastavení se nepovedlo, provést nápravné opatření [Příprava serveru s Linuxem](#prepare-a-linux-server).
 
 ## <a name="next-steps"></a>Další postup
-* Použití [prohledávání protokolů](../../azure-monitor/log-query/log-query-overview.md) v Log Analytics, chcete-li zobrazit podrobné VMware hostovat data.
-* [Vytvářejte vlastní řídicí panely](../../azure-monitor/platform/dashboards.md) zobrazující data hostitele VMware.
-* [Vytvořit upozornění](../../azure-monitor/platform/alerts-overview.md) Pokud dojde k určité událostem hostitele VMware.
+* Použití [protokolu dotazy](../log-query/log-query-overview.md) v Log Analytics, chcete-li zobrazit podrobné VMware hostovat data.
+* [Vytvářejte vlastní řídicí panely](../learn/tutorial-logs-dashboards.md) zobrazující data hostitele VMware.
+* [Vytvořit upozornění](../platform/alerts-overview.md) Pokud dojde k určité událostem hostitele VMware.

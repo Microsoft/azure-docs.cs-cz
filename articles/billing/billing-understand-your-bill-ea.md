@@ -13,13 +13,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/02/2018
-ms.author: cwatson
-ms.openlocfilehash: b724fc7a887550b4115a988149b4b7a6c95de830
-ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
+ms.author: banders
+ms.openlocfilehash: 36ce4d96e02bac1eae1791acf811da468726b4a6
+ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52584464"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54902699"
 ---
 # <a name="understand-your-bill-for-azure-customers-with-an-enterprise-agreement"></a>Vysvětlení vašeho vyúčtování služeb Azure zákazníky se smlouvou Enterprise
 
@@ -31,8 +31,8 @@ Kredit vaší organizace zahrnuje svůj peněžní závazek. Peněžní závazek
 
 Jeden nebo více faktur získáte, když dojde k následujícímu:
 
-- **Nadlimitní využití služby**: váš zůstatek kreditu překročit poplatky za využívání vaší organizace.
-- **Poplatky se účtují samostatně**: vaše organizace používá nejsou pokryty všemi kredit služby. Pro tyto služby se fakturují bez ohledu na to, váš zůstatek kreditu:
+- **Nadlimitní využití služby**: Poplatky za využívání vaší organizace být vyšší než zůstatek vašeho kreditu.
+- **Poplatky se účtují samostatně**: Služby, vaše organizace používá nejsou pokryty všemi uvedeného kreditu. Pro tyto služby se fakturují bez ohledu na to, váš zůstatek kreditu:
     - Canonical
     - Základy Citrix XenApp
     - Citrix XenDesktop 
@@ -43,8 +43,8 @@ Jeden nebo více faktur získáte, když dojde k následujícímu:
     - Visual Studio Enterprise (měsíčně)
     - Visual Studio Enterprise (roční)
     - Visual Studio Professional (měsíčně)
-    - Visual Studio Professional (roční)
-- **Poplatky za Marketplace**: nákupy na Azure Marketplace a využití nejsou pokryty ve vaší organizaci Dal a služby se účtují zvlášť. Správce rozlehlé sítě má možnost můžete povolit nebo zakázat nákupy na Marketplace pro svoji organizaci na portálu Enterprise. 
+    - Visual Studio Professional (Annual)
+- **Poplatky za Marketplace**: Nákupy na Marketplace a využití Azure nejsou pokryty ve vaší organizaci Dal a služby se účtují zvlášť. Správce rozlehlé sítě má možnost můžete povolit nebo zakázat nákupy na Marketplace pro svoji organizaci na portálu Enterprise. 
 
 Pokud máte poplatky kvůli Nadlimitní využití služby a poplatky se fakturují samostatně během fakturačního období získáte jednu fakturu, obsahující oba typy poplatky. Poplatky Tržiště za se vždy fakturují samostatně.
 
@@ -90,6 +90,6 @@ Porovnejte celkový počet na Azure Marketplace **sestavy** > **využití: Souhr
 
      ![Stáhnout snímek obrazovky zobrazující možnost poplatků za Marketplace.](./media/billing-understand-your-bill-ea/ea-portal-download-usage-marketplace.png)
 
-## <a name="need-help-contact-us"></a>Potřebujete pomoct? Kontaktujte nás.
+## <a name="need-help-contact-us"></a>Potřebujete pomoc? Kontaktujte nás.
 
 Pokud máte otázky nebo potřebujete pomoc, [vytvořit žádost o podporu](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest).

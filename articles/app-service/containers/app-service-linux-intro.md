@@ -16,16 +16,16 @@ ms.topic: overview
 ms.date: 1/11/2019
 ms.author: msangapu;yili
 ms.custom: seodec18
-ms.openlocfilehash: 898d663f3ef9a71944d96b0978947d10a3e26b06
-ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
+ms.openlocfilehash: 2e75ff08acdda03c0080f49c6616274a4b031075
+ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54232783"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54903719"
 ---
 # <a name="introduction-to-azure-app-service-on-linux"></a>Seznámení se službou Azure App Service v Linuxu
 
-[Web App](../overview.md) je plně spravovaná výpočetní platforma, která je optimalizována pro hostování webů a webových aplikací. V případě podporovaných zásobníků aplikací můžou zákazníci službu App Service v Linuxu použít k nativnímu hostování webových aplikací v Linuxu. Následující části obsahují seznam aktuálně podporovaných zásobníků aplikací.
+[Azure App Service](../overview.md) je plně spravovaná výpočetní platforma, která je optimalizována pro hostování webů a webových aplikací. V případě podporovaných zásobníků aplikací můžou zákazníci službu App Service v Linuxu použít k nativnímu hostování webových aplikací v Linuxu. [Jazyky](#languages) části je uveden seznam aktuálně podporovaných zásobníků aplikací.
 
 ## <a name="languages"></a>Jazyky
 
@@ -33,14 +33,12 @@ App Service v Linuxu podporuje řadu integrovaných imagí za účelem zvýšen�
 
 | Jazyk | Podporované verze |
 |---|---|
-| Node.js | 4.4, 4.5, 4.8, 6.2, 6.6, 6.9, 6.10, 6.11, 8.0, 8.1, 8.2, 8.8, 8,9, 8.11, 9.4, 10.1,10.10 |
+| Node.js | 4.4, 4.5, 4.8, 6.2, 6.6, 6.9, 6.10, 6.11, 8.0, 8.1, 8.2, 8.8, 8.9, 8.11, 9.4, 10.1,10.10 |
 | Java* | Tomcat 8.5, 9.0, Java SE WildFly 14 (všechny spuštěné prostředí JRE 8) |
 | PHP | 5.6, 7.0, 7.2 |
 | Python (Preview) | 2.7, 3.6, 3.7 |
 | .NET Core | 1.0, 1.1, 2.0, 2.1 |
 | Ruby | 2.3 |
-
-Další podrobnosti najdete v tématu [Vytvoření webové aplikace v Javě ve službě App Service v Linuxu](https://docs.microsoft.com/azure/app-service/containers/quickstart-java).
 
 ## <a name="deployments"></a>Nasazení
 
@@ -75,7 +73,9 @@ Na webu Azure Portal se zobrazují pouze funkce, které jsou aktuálně funkčn�
 
 Některé funkce, například integrace virtuálních sítí, ověřování pomocí Azure Active Directory nebo prostřednictvím třetí strany nebo rozšíření webu Kudu, ještě nejsou dostupné. Jakmile budou tyto funkce dostupné, aktualizujeme naši dokumentaci a blog, abychom vás informovali o změnách.
 
-Služba App Service v Linuxu se podporuje pouze s plány služby úrovně [Basic, Standard a Premium](https://azure.microsoft.com/pricing/details/app-service/plans/) a neobsahuje úroveň [Free ani Shared](https://azure.microsoft.com/pricing/details/app-service/plans/). Službu Web App for Containers nemůžete vytvořit v plánu služby App Service, který už je hostitelem služby Web Apps mimo Linux. V současné době také platí omezení, že v jedné skupině prostředků není možné kombinovat aplikace pro Windows a aplikace pro Linux.
+Služba App Service v Linuxu se podporuje pouze s plány služby úrovně [Basic, Standard a Premium](https://azure.microsoft.com/pricing/details/app-service/plans/) a neobsahuje úroveň [Free ani Shared](https://azure.microsoft.com/pricing/details/app-service/plans/). Službu Web App for Containers nemůžete vytvořit v plánu služby App Service, který už je hostitelem služby Web Apps mimo Linux. 
+
+Také založené na aktuálním omezením, Nekombinujte aplikace Windows a Linuxu ve stejné skupině prostředků.
 
 ## <a name="troubleshooting"></a>Řešení potíží
 
@@ -84,9 +84,11 @@ Pokud chcete protokolovat výstupy `stdout` a `stderr` z vašeho kontejneru, mus
 
 ![Povolení protokolování][2]
 
-![Zobrazení protokolů Dockeru pomocí Kudu][1]
+Nastavení se projeví okamžitě. App Service zjistí změnu nastavení a kontejneru automaticky restartuje za vás.
 
 Na web SCM můžete přejít přes možnost **Rozšířené nástroje** v nabídce **Vývojové nástroje**.
+
+![Zobrazení protokolů Dockeru pomocí Kudu][1]
 
 ## <a name="next-steps"></a>Další postup
 
@@ -101,7 +103,7 @@ Tyto články vám pomůžou začít používat službu App Service v Linuxu pom
 * [Go](quickstart-docker-go.md)
 * [Vícekontejnerové aplikace](quickstart-multi-container.md)
 
-Další podrobnosti o službě App Service v Linuxu najdete v následujících článcích:
+Další informace o službě App Service v Linuxu najdete v tématu:
 
 * [Nejčastější dotazy k App Service pro Linux](app-service-linux-faq.md)
 * [Podpora SSH pro službu App Service v Linuxu](app-service-linux-ssh-support.md)

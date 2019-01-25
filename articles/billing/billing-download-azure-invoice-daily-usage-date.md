@@ -14,13 +14,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 11/16/2018
-ms.author: cwatson
-ms.openlocfilehash: fe3cb2d15602407b54ff47763d409c2e77614f0a
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.author: banders
+ms.openlocfilehash: 669d4be52cb74296bb034c773b820e14d7eede96
+ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53311129"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54902189"
 ---
 # <a name="download-or-view-your-azure-billing-invoice-and-daily-usage-data"></a>Stažení nebo zobrazení Azure fakturační faktury a dat o denním využití
 
@@ -78,11 +78,11 @@ Další informace o vaší faktuře najdete v tématu [vysvětlení vašeho vyú
 
 Faktura se nemusí zobrazovat z několika důvodů:
 
-- U svého předplatného máte měsíční kredit, jehož výši jste nepřekročili, nebo máte bezplatnou zkušební verzi. Faktura se generuje pouze v případě, že dlužíte peníze.
+- U svého předplatného máte měsíční kredit, jehož výši jste nepřekročili, nebo máte bezplatnou zkušební verzi. Faktura se generuje pouze v případě, že dlužíte nějakou částku.
 
 - Od vytvoření vašeho předplatného Azure uplynulo méně než 30 dnů.
 
-- Faktur se zatím nevygenerovala. Počkejte na konec fakturačního období.
+- Faktura se zatím nevygenerovala. Počkejte na konec fakturačního období.
 
 - Pokud nejste správce účtu, možná nemáte přístup ke starším fakturám.
 
@@ -130,6 +130,6 @@ Zobrazovat a stahovat data o využití jako zákazník EA, musíte být správce
 1. Vyberte **a poplatky za využití**.
 1. Za měsíc, kterou chcete stáhnout, vyberte **Stáhnout**.
 
-## <a name="need-help-contact-us"></a>Potřebujete pomoct? Kontaktujte nás.
+## <a name="need-help-contact-us"></a>Potřebujete pomoc? Kontaktujte nás.
 
 Pokud máte otázky nebo potřebujete pomoc, [vytvořit žádost o podporu](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest).

@@ -13,13 +13,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: na
 ms.date: 09/06/2016
-ms.author: cwatson
-ms.openlocfilehash: 6062e54f0fb584dec4c2db540565c5860ae92a2d
-ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
+ms.author: kfollis
+ms.openlocfilehash: 4a2dee4ad90fb269268ec7d3e86def58f2444e3a
+ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47394950"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54884724"
 ---
 # <a name="create-and-share-dashboards-in-the-azure-portal"></a>Vytvářejte a sdílejte řídicí panely na webu Azure Portal
 Můžete vytvořit více řídicích panelů a sdílet je s ostatními uživateli, kteří mají přístup k předplatným Azure.  Tento článek probírá základní informace o vytváření, úpravy, publikování a správa přístupu k řídicím panelům.

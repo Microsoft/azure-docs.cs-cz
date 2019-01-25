@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/30/2018
 ms.author: victorh
-ms.openlocfilehash: 5afb607f0410b428d8e67fdff043a4e376dd60a5
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 37dd51a60d9ec6e018f58e2cfd593490d126670b
+ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46956349"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54888647"
 ---
 # <a name="import-and-export-a-dns-zone-file-using-the-azure-cli"></a>Import a export souboru zóny DNS pomocí Azure CLI 
 
@@ -68,7 +68,7 @@ Následující poznámky k poskytují další technické podrobnosti o zóně im
 * `$TTL` – Direktiva je volitelný a je podporované. Pokud ne `$TTL` – direktiva je zadaný, záznamy bez explicitní hodnota TTL jsou importované nastavenou na výchozí hodnota TTL 3 600 sekund. Dva záznamy v sadě záznamů stejnou specifikování různých hodnot TTL, je použít nižší hodnotu.
 * `$ORIGIN` – Direktiva je volitelný a je podporované. Pokud ne `$ORIGIN` je nastavena výchozí hodnota používaná je název zóny, jak je uvedeno v příkazovém řádku (plus ukončení ".").
 * `$INCLUDE` a `$GENERATE` direktivy nejsou podporovány.
-* Podporovány jsou tyto typy záznamů: A, AAAA, CNAME, MX, NS, SOA, SRV a TXT.
+* Podporovány jsou tyto typy záznamu: A, AAAA, CAA, CNAME, MX, NS, SOA, SRV, and TXT.
 * Záznam SOA se automaticky vytvoří Azure DNS, při vytvoření zóny. Při importu souboru zóny všechny parametry SOA pocházejí ze souboru zóny *s výjimkou* `host` parametru. Tento parametr používá hodnotu poskytovanou infrastrukturou Azure DNS. Je to proto, že tento parametr musí odkazovat na primární název serveru poskytuje Azure DNS.
 * Záznam názvového serveru, nastavte ve vrcholu zóny se také automaticky vytvoří Azure DNS při vytváření zóny. Je importován pouze TTL tuto sadu záznamů. Tyto záznamy obsahují názvy názvových serverů poskytuje Azure DNS. Záznam dat není přepsán podle hodnoty obsažené v souboru importované zóny.
 * Ve verzi Public Preview Azure DNS podporuje pouze jeden řetězec záznamů TXT. Nahrazován záznamy TXT jsou zřetězeny a zkrácen na 255 znaků.

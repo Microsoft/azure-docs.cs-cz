@@ -13,13 +13,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/25/2017
-ms.author: cwatson
-ms.openlocfilehash: 89abf64e6b47700bb16aaf6d4d4c0efbbbd9f520
-ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
+ms.author: banders
+ms.openlocfilehash: 8a6993f19f32e1bdb0bd10013f8f7e3dde844edd
+ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52581575"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54903923"
 ---
 # <a name="understand-free-service-to-meter-mapping"></a>Principy mapování měřičů bezplatná služba
 
@@ -38,14 +38,14 @@ Každé služby Azure vydává využití podle měřičů, které Azure faktura�
 | File Storage | Standardní V/V – jednotky operací čtení souborů (v desetitisících) | Standardní v/v – jednotky operací čtení souborů (v 10,000s) – Free | 6207404d-3389-4d20-9087-cc078ddc3fd9
 | File Storage | Standardní V/V – jednotky operací zápisu souborů (v desetitisících) | Standardní v/v – soubor jednotky operací zápisu (v 10,000s) – Free | 223d8004-d29a-46cf-b4f4-d2d34b12548b
 | File Storage | Standardní V/V – jednotky operací protokolu souborů (v desetitisících) | Standardní v/v – jednotky protokolu souborů operace (v 10,000s) – Free | a347d8cc-51d1-4a0e-b9eb-76f67566c3f5
-| File Storage | Standardní V/V – jednotky operací seznamu souborů (v desetitisících) | Standardní v/v – soubor jednotky operací seznamu (v 10,000s) – Free | e8ae79ad-c2ab-4D82-b226-dd3c33dfd40c
-| Úložiště objektů Blob bloku | Standardní v/v – operace čtení horkých objektů Blob bloku (v 10,000s) | Standardní v/v – horký objekt Blob bloku přečíst operace (v 10,000s) – Free |fd7cfa1e-026e-4BE1-871b-1c2386e8902e
+| File Storage | Standardní V/V – jednotky operací seznamu souborů (v desetitisících) | Standardní v/v – soubor jednotky operací seznamu (v 10,000s) – Free | e8ae79ad-c2ab-4d82-b226-dd3c33dfd40c
+| Úložiště objektů Blob bloku | Standardní v/v – operace čtení horkých objektů Blob bloku (v 10,000s) | Standardní v/v – horký objekt Blob bloku přečíst operace (v 10,000s) – Free |fd7cfa1e-026e-4be1-871b-1c2386e8902e
 | Úložiště objektů Blob bloku | Standardní v/v – horký objekt Blob bloku (GB) – místně redundantní | Standardní v/v – horký objekt Blob bloku (GB) – Free | 67a3a3fd-826f-42c1-8843-bffa14f0da13
 | Úložiště objektů Blob bloku | Standardní v/v – operace zápisu objektů Blob bloku (v 10,000s) | Standardní v/v – objekt Blob operace zápisu horkých bloku (v 10,000s) – Free | b34bbb76-edce-4c2d-a288-81a2db1fea53
 | Úložiště objektů Blob bloku  | Standardní v/v – operace zápisu/výpisu objektů Blob bloku (v 10,000s) | Standardní v/v – horké operace objektů Blob bloku zápisu/výpisu (v 10,000s) – Free | 7e68cf36-1198-4d3b-baa7-86a74c5b3079
 | Spravovaný Disk *  | Standardní spravovaný Disk/snímky (GB) – místně redundantní | Standardní spravovaný Disk/snímky (GB) – Free | ad94c237-52a5-4804-ae65-38c5bf85ef42
 | Spravovaný Disk *  | Operace spravovaných disků úrovně Standard (v 10,000s) | Operace spravovaných disků úrovně Standard (v 10,000s) – Free | 82cc6ea4-0abd-43ac-acc0-ec34edf0f14c
-| Spravovaný Disk *  | Storage úrovně Premium – objekt Blob stránky/P6 (jednotky) – místně redundantní | Storage úrovně Premium – objekt Blob stránky/P6 (jednotky) – Free | 2b98c168-27CA-4cc1-B509-e887dec87657
+| Spravovaný Disk *  | Storage úrovně Premium – objekt Blob stránky/P6 (jednotky) – místně redundantní | Storage úrovně Premium – objekt Blob stránky/P6 (jednotky) – Free | 2b98c168-27ca-4cc1-b509-e887dec87657
 | SQL Database | Dny databáze Standard S0 – SQL Database | Počet dnů používání databáze Standard S0 – Free | dd6b69d3-9be0-4a91-abff-2c58bbcafd1d
 | Na úrovni Shared – šířky pásma ** | Odchozí přenosy dat (GB) | Přenos dat si (GB) – Free | 0fc067a1-65d2-46da-b24b-7a9cbe2c69bd
 
@@ -53,6 +53,6 @@ Každé služby Azure vydává využití podle měřičů, které Azure faktura�
 
 \** Přes několik služeb, které mohou být spotřebovány sdílené měřiče. Například virtuálních počítačů a úložiště generování využití proti Out(GB) přenosu dat měřidla.
 
-## <a name="need-help-contact-us"></a>Potřebujete pomoct? Kontaktujte nás.
+## <a name="need-help-contact-us"></a>Potřebujete pomoc? Kontaktujte nás.
 
 Pokud máte otázky nebo potřebujete pomoc, [vytvořit žádost o podporu](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest).

@@ -14,14 +14,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 05/11/2018
-ms.author: cwatson
+ms.author: banders
 ms.custom: seodec18
-ms.openlocfilehash: cef34d4e22732c2d718daf7ce10c23b25ff4649d
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: c6a2f14900d3a0d6f9e16e9b0c6d0bdfff97d6b5
+ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53081298"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54903832"
 ---
 # <a name="no-subscriptions-found-sign-in-error-for-azure-portal-or-azure-account-center"></a>Žádné předplatné Nenalezeno přihlašování chybu u webu Azure portal nebo centra účtů Azure
 
@@ -37,7 +37,7 @@ K tomuto problému dochází, pokud jste vybrali na špatný adresář, nebo pok
 
 ## <a name="solution"></a>Řešení
 
-### <a name="scenario-1-error-message-is-received-in-the-azure-portalhttpsportalazurecom"></a>Scénář 1: Chyba doručení zprávy [webu Azure portal](https://portal.azure.com)
+### <a name="scenario-1-error-message-is-received-in-the-azure-portalhttpsportalazurecom"></a>Scénář 1: Chybová zpráva se dostali [webu Azure portal](https://portal.azure.com)
 
 Chcete-li tento problém vyřešit:
 
@@ -46,7 +46,7 @@ Chcete-li tento problém vyřešit:
   ![Vyberte adresář, v horním pravém rohu webu Azure portal](./media/billing-no-subscriptions-found/directory-switch.png)
 * Pokud je vybrána přímo Azure directory, ale i nadále zobrazí chybová zpráva [přiřazením role vlastníka k vašemu účtu](../role-based-access-control/role-assignments-portal.md).
 
-### <a name="scenario-2-error-message-is-received-in-the-azure-account-centerhttpsaccountwindowsazurecomsubscriptions"></a>Scénář 2: Chyba doručení zprávy [centra účtů Azure](https://account.windowsazure.com/Subscriptions)
+### <a name="scenario-2-error-message-is-received-in-the-azure-account-centerhttpsaccountwindowsazurecomsubscriptions"></a>Scénář 2: Chybová zpráva se dostali [centra účtů Azure](https://account.windowsazure.com/Subscriptions)
 
 Zkontrolujte, zda je účet, který jste použili účet správce. Pokud chcete ověřit, kdo je správcem účtu, postupujte podle těchto kroků:
 

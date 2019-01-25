@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: 0fcb30132a83502b8ca5f58364d78129109b8a9d
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: c84af250a9e8dbff578f58abc7e3558d95ecbe93
+ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53310840"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54904535"
 ---
 # <a name="understand-policy-effects"></a>Vysvětlení efektu služby Policy
 
@@ -257,6 +257,11 @@ Během cyklu vyhodnocení definice zásad s účinností DeployIfNotExists, kter
   - Může například použít k ověření, který nadřazený prostředek (v **Pokud** podmínky) je ve stejném umístění jako odpovídající prostředek související prostředek.
 - **roleDefinitionIds** [povinné]
   - Tato vlastnost musí obsahovat pole řetězců, které odpovídají ID role řízení přístupu na základě role přístupné předplatné. Další informace najdete v tématu [nápravy - nakonfigurovat definici zásady](../how-to/remediate-resources.md#configure-policy-definition).
+- **DeploymentScope** (volitelné)
+  - Povolené hodnoty jsou _předplatné_ a _ResourceGroup_.
+  - Nastaví typ nasazení, která má být provedena. _Předplatné_ označuje [nasazení na úrovni předplatného]((../../../azure-resource-manager/deploy-to-subscription)), _ResourceGroup_ indikuje, že nasazení pro skupinu prostředků.
+  - A _umístění_ v musí být zadaná vlastnost _nasazení_ při použití úrovně nasazení předplatných.
+  - Výchozí hodnota je _ResourceGroup_.
 - **Nasazení** [povinné]
   - Tato vlastnost by měla obsahovat úplnou šablonu nasazení, jako by byly předány `Microsoft.Resources/deployments` UMÍSTIT rozhraní API. Další informace najdete v tématu [rozhraní REST API pro nasazení](/rest/api/resources/deployments).
 

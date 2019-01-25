@@ -14,15 +14,15 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 12/06/2018
+ms.date: 01/24/2019
 ms.author: markvi
 ms.reviewer: calebb
-ms.openlocfilehash: 466e12877a63a32f461267a489573183b9da9734
-ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
+ms.openlocfilehash: ac5dbb0aed9ff8aec632ffa285ad0f26a859b9f4
+ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54451302"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54901645"
 ---
 # <a name="how-to-block-legacy-authentication-to-azure-ad-with-conditional-access"></a>Postup: Blok starší verze ověřování do služby Azure AD s podmíněným přístupem   
 
@@ -120,6 +120,15 @@ Může trvat až 24 hodin pro zásady tak, aby projeví.
 Můžete vybrat všechny dostupné udělení ovládacích prvků pro ostatní klienty podmínka. ale činnost koncového uživatele je vždy stejný - blokovaný přístup.
 
 Můžete nakonfigurovat další podmínky u jiných klientů podmínek.
+Například pokud chcete blokovat starší verze ověřování pro mobilní zařízení, nastavit **platformy zařízení** podmínku tak, že vyberete:
+
+- Android
+
+- iOS
+
+- telefon se systémem Windows
+
+![Konfigurace zásad není podporována](./media/block-legacy-authentication/06.png)
 
 
 

@@ -15,12 +15,12 @@ ms.date: 06/26/2018
 ms.author: barbkess
 ms.reviewer: harshja
 ms.custom: H1Hack27Feb2017; it-pro
-ms.openlocfilehash: b440965fa3acb6c08c4827dce941247b8921b98b
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: 11508c1f65ddfc7e43ef2301f32d67da3f0a4584
+ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54473465"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54904263"
 ---
 # <a name="troubleshoot-application-proxy-problems-and-error-messages"></a>Poradce při potížích s Proxy aplikací problémy a chybové zprávy
 Pokud dojde k chybám při přístupu k publikované aplikaci nebo publikování aplikace, zkontrolujte následující možnosti a zda správně funguje Proxy aplikací služby Microsoft Azure AD:
@@ -54,7 +54,7 @@ Po nalezení konektor chyby z protokolu událostí použijte tuto tabulku běžn
 | Registrace konektoru se nezdařilo: Ujistěte se, že jste povolili službu Proxy aplikací na portálu pro správu Azure a správně zadané služby Active Directory uživatelské jméno a heslo. Chyba: 'AADSTS50059: Žádné informace o identifikaci tenanta najít v jednom požadavku nebo implikována v žádném zadané přihlašovací údaje a vyhledávání podle služby se nezdařilo instančního objektu URI. | Pokoušíte se přihlásit pomocí Account Microsoft a nikoli domény, který je součástí organizace ID adresáře, který se pokoušíte získat přístup. Ujistěte se, že správce součástí se stejným názvem domény jako doména tenanta, například pokud Azure AD doména je contoso.com, Správce by měl být admin@contoso.com. |
 | Nepovedlo se načíst aktuální zásady spouštění pro spuštěné skripty prostředí PowerShell. | Pokud instalace konektoru selže, zkontrolujte, že nejsou zakázané zásady spouštění prostředí PowerShell. <br><br>1. Otevřete Editor zásad skupiny.<br>2. Přejděte na **konfigurace počítače** > **šablony pro správu** > **součásti Windows**  >   **Prostředí Windows PowerShell** a dvakrát klikněte na panel **zapnutí provádění skriptů**.<br>3. Zásady spouštění může být nastaven na hodnotu **Nenakonfigurováno** nebo **povoleno**. Pokud hodnotu **povoleno**, ujistěte se, že v možnostech, zásady spouštění je nastaven na hodnotu **Povolit místní a vzdálené podepsaných skriptů** nebo **povolit všechny skripty**. |
 | Konektor se nepovedlo stáhnout konfiguraci. | Tento konektor klientský certifikát, který se používá pro ověřování, vypršela platnost. To může také dojít, pokud máte nainstalovaný za proxy serverem konektor. V tomto případě konektor nemá přístup k Internetu a nebudete moct aplikacím vzdáleným uživatelům poskytnout. Obnovit ručně pomocí vztahu důvěryhodnosti `Register-AppProxyConnector` rutiny v prostředí Windows PowerShell. Pokud váš konektor je za proxy serverem, je potřeba udělit přístup k Internetu k účtům konektor "síťové služby" a "místní systém." Můžete to provést tak, že udělíte přístup k proxy serveru nebo tak, že nastavíte, aby obcházení proxy serveru. |
-| Registrace konektoru se nezdařilo: Ujistěte se, že jste globální správce služby Active Directory k registraci konektoru. Chyba: "Žádost o registraci byl odepřen." | Alias, který se snažíte přihlásit se se správcem v této doméně. Váš konektor je vždy nainstalován pro adresář, který vlastní domény uživatele. Ujistěte se, zda má účet správce, který se pokoušíte přihlásit pomocí globální oprávnění k tenantovi Azure AD. |
+| Registrace konektoru se nezdařilo: Ujistěte se, že máte aplikaci Správce služby Active Directory k registraci konektoru. Chyba: "Žádost o registraci byl odepřen." | Alias, který se snažíte přihlásit se se správcem v této doméně. Váš konektor je vždy nainstalován pro adresář, který vlastní domény uživatele. Ujistěte se, že účet správce, kterou se pokoušíte se přihlásit pomocí má alespoň oprávnění správce aplikace do tenanta služby Azure AD. |
 
 ## <a name="kerberos-errors"></a>Chyby protokolu Kerberos
 

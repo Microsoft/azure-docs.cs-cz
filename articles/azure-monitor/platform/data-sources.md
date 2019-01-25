@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/13/2018
 ms.author: bwren
-ms.openlocfilehash: 39229bbd120ca52f31a0bd54446e49990d952c9d
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: b9029676df6a878a6d3d5796928cbad9c20cd685
+ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54020128"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54889055"
 ---
 # <a name="sources-of-data-in-azure-monitor"></a>Zdroje dat ve službě Azure Monitor
 Tento článek popisuje zdroje dat shromážděných službou Azure Monitor k monitorování stavu a výkonu svých prostředků a aplikace běžící na ně. Tyto prostředky může být v Azure, v jiném cloudu nebo lokálně.  Zobrazit [Data shromážděná službou Azure Monitor](data-collection.md) podrobnosti o tom, jak tato data uložená a jak ji zobrazit.
@@ -61,7 +61,7 @@ Většina služeb Azure vygeneruje [platformy metriky](data-collection.md#metric
 
 
 ### <a name="resource-diagnostic-logs"></a>Protokolů diagnostiky prostředků
-Poskytuje informace o operace prováděné s prostředky Azure zdrojem pro úroveň protokolu aktivit [diagnostické protokoly](../../azure-monitor/platform/diagnostic-logs-overview.md) poskytují přehled o provozu vlastní prostředek.   Požadavky na konfiguraci a obsah těchto protokolů [se liší podle typu prostředku](../../azure-monitor/platform/tutorial-dashboards.md).
+Poskytuje informace o operace prováděné s prostředky Azure zdrojem pro úroveň protokolu aktivit [diagnostické protokoly](../../azure-monitor/platform/diagnostic-logs-overview.md) poskytují přehled o provozu vlastní prostředek.   Požadavky na konfiguraci a obsah těchto protokolů [se liší podle typu prostředku](../../azure-monitor/platform/diagnostic-logs-schema.md).
 
 Nelze přímo zobrazit diagnostické protokoly na webu Azure Portal, ale můžete [odeslání do úložiště Azure pro archivaci](../../azure-monitor/platform/archive-diagnostic-logs.md) a exportovat je do [centra událostí](../../event-hubs/event-hubs-about.md) pro přesměrování do dalších služeb nebo [do protokolu Analytics](../../azure-monitor/platform/diagnostic-logs-stream-log-store.md) pro analýzu. Některé prostředky dokáže zapisovat přímo do Log Analytics, zatímco ostatní teprve pak ji bude zapisovat do účtu úložiště [importovat do Log Analytics](../../azure-monitor/platform/azure-storage-iis-table.md#use-the-azure-portal-to-collect-logs-from-azure-storage).
 

@@ -3,7 +3,7 @@ title: Použití spravované identity pro prostředky Azure na Virtuálním poč
 description: Podrobné pokyny a příklady použití virtuálního počítače Azure spravované identity pro prostředky Azure instanční objekt pro klienta přihlašovacího skriptu a přístup k prostředkům.
 services: active-directory
 documentationcenter: ''
-author: daveba
+author: priyamohanram
 manager: daveba
 editor: ''
 ms.service: active-directory
@@ -13,24 +13,26 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 12/01/2017
-ms.author: daveba
-ms.openlocfilehash: ce25c05d2b3de3fcf6b7318b90590b84f3ee9c52
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.author: priyamo
+ms.openlocfilehash: fd62bd74f0200ffca2926879e76744be0dfe68d0
+ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54423183"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54900217"
 ---
 # <a name="how-to-use-managed-identities-for-azure-resources-on-an-azure-vm-for-sign-in"></a>Použití spravované identity pro prostředky Azure na Virtuálním počítači Azure pro přihlášení 
 
 [!INCLUDE [preview-notice](../../../includes/active-directory-msi-preview-notice.md)]  
 Tento článek obsahuje příklady skriptů Powershellu a rozhraní příkazového řádku pro přihlašování pomocí spravované identity pro instanční objekt služby prostředků Azure a doprovodné materiály k důležitá témata, jako je zpracování chyb.
 
+[!INCLUDE [az-powershell-update](../../../includes/updated-for-az.md)]
+
 ## <a name="prerequisites"></a>Požadavky
 
 [!INCLUDE [msi-qs-configure-prereqs](../../../includes/active-directory-msi-qs-configure-prereqs.md)]
 
-Pokud máte v plánu pomocí prostředí Azure PowerShell nebo rozhraní příkazového řádku Azure příklady v tomto článku, nezapomeňte nainstalovat nejnovější verzi [prostředí Azure PowerShell](https://www.powershellgallery.com/packages/AzureRM) nebo [rozhraní příkazového řádku Azure](https://docs.microsoft.com/cli/azure/install-azure-cli). 
+Pokud máte v plánu pomocí prostředí Azure PowerShell nebo rozhraní příkazového řádku Azure příklady v tomto článku, nezapomeňte nainstalovat nejnovější verzi [prostředí Azure PowerShell](/powershell/azure/install-az-ps) nebo [rozhraní příkazového řádku Azure](https://docs.microsoft.com/cli/azure/install-azure-cli). 
 
 > [!IMPORTANT]
 > - Všechny ukázkový skript v tomto článku předpokládá, že klient příkazového řádku běží na virtuálním počítači pomocí spravované identity pro prostředky Azure, které jsou povolené. Pomocí funkce "Připojení" virtuálního počítače na webu Azure Portal, se vzdáleně připojit k virtuálnímu počítači. Podrobnosti o povolení spravovaných identit pro prostředky Azure na virtuálním počítači, naleznete v tématu [konfigurace spravovaných identit pro prostředky Azure na virtuálním počítači pomocí webu Azure portal](qs-configure-portal-windows-vm.md), nebo jeden z variant článků (pomocí Powershellu, rozhraní příkazového řádku, šablonu nebo Azure SADA SDK). 
@@ -67,10 +69,10 @@ Tento skript ukazuje, jak:
 2. Volání Azure Resource Manageru rutiny pro získání informací o virtuálním počítači. Prostředí PowerShell se stará o správu využití tokenu pro vás automaticky.  
 
    ```azurepowershell
-   Add-AzureRmAccount -identity
+   Add-AzAccount -identity
 
    # Call Azure Resource Manager to get the service principal ID for the VM's managed identity for Azure resources. 
-   $vmInfoPs = Get-AzureRMVM -ResourceGroupName <RESOURCE-GROUP> -Name <VM-NAME>
+   $vmInfoPs = Get-AzVM -ResourceGroupName <RESOURCE-GROUP> -Name <VM-NAME>
    $spID = $vmInfoPs.Identity.PrincipalId
    echo "The managed identity for Azure resources service principal ID is $spID"
    ```

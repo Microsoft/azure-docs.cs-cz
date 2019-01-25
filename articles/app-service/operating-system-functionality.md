@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 10/30/2018
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: ad27a7eaf88ae57f730609e2b0f43a2f5ea182a1
-ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
+ms.openlocfilehash: e5ab6651503766844b2aeef1849bffff9cf4d7bb
+ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/20/2018
-ms.locfileid: "53653505"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54901781"
 ---
 # <a name="operating-system-functionality-on-azure-app-service"></a>Funkce operačního systému ve službě Azure App Service
 Tento článek popisuje běžné funkce operačního systému směrný plán, který je k dispozici pro všechny aplikace Windows běží na [služby Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714). Tato funkce zahrnuje soubor, sítě a přístup k registru a diagnostické protokoly a události. 
@@ -128,6 +128,10 @@ Oblasti diagnostické protokolování a trasování, které nejsou k dispozici p
 Aplikace mají přístup jen pro čtení k většině (ale ne všechny) z registru virtuálního počítače, na kterém běží. V praxi to znamená, že klíče registru, které umožňují přístup jen pro čtení do místní skupiny uživatelů jsou přístupné pro aplikace. Jedna oblast registru, který není aktuálně podporován pro čtení nebo zápis je nastavení HKEY\_aktuální\_podregistru uživatele.
 
 Oprávnění k zápisu do registru je blokovaný, včetně přístupu ke klíčům registru všechny jednotlivé uživatele. Z pohledu aplikace, oprávnění k zápisu do registru by nikdy spoléhat v prostředí Azure od aplikací můžete (a dělat) migrují na různých virtuálních počítačů. Pouze trvalého zapisovatelné úložiště, který může být závisejí aplikace je struktura aplikaci adresář s obsahem ze sdílené složky App Service UNC. 
+
+## <a name="remote-desktop-access"></a>Přístup přes vzdálenou plochu
+
+App Service neposkytuje přístup ke vzdálené ploše na instance virtuálních počítačů.
 
 ## <a name="more-information"></a>Další informace
 

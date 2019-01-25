@@ -13,15 +13,15 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 01/18/2019
+ms.date: 01/24/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: e78599a350aff4d0aba5603e8ad7959c945f1aca
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: 67083a8214724659765922047c1f0ccd6da87b9d
+ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54439149"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54884924"
 ---
 # <a name="sap-workload-on-azure-planning-and-deployment-checklist"></a>Úloh SAP v Azure kontrolní seznam plánování a nasazení 
 
@@ -47,7 +47,7 @@ V této fázi je naplánovaná migrace úloh SAP do veřejného cloudu Azure. Mi
     3.  Architektura provozní kontinuitu a zotavení po havárii
     4.  Podrobné operačního systému, databáze, jádra a SAP podporují balíčku verze. Nejedná se vzhledem k tomu, že všechny vydané verze operačního systému, který podporuje SAP NetWeaver a S/4HANA je podporována ve virtuálních počítačích Azure. Totéž platí pro verze DBMS. Je povinné, získáte následující zdroje zaškrtnuto, abyste mohli zarovnání a v případě potřeby upgradujte verze SAP DBMS verzí a verzí operačního systému dalo v SAP a Azure nepodporuje okno. Je povinné, že jsou v rámci SAP a podporované kombinace verze a získejte plnou podporu od SAPU a Microsoftu v Azure. V případě potřeby, musíte naplánovat pro upgrade některé ze součástí softwaru. Další informace o podporovaných SAP, operačního systému a systém DBMS softwaru najdete v těchto umístěních:
         1.  Poznámka: podpora SAP [#1928533](https://launchpad.support.sap.com/#/notes/1928533). Tato poznámka definuje minimální verze operačního systému podporována ve virtuálních počítačích Azure. Také definuje minimální databázové vydané verze, vyžaduje se pro většinu bez HANA database. Poznámka také prezentuje velikosti SAP různých typů virtuálních počítačů Azure nepodporuje SAP.
-        2.  Poznámka: podpora SAP [#2039619](https://launchpad.support.sap.com/#/notes/2039619). Poznámka definuje matice podpory Oracle v Azure. Uvědomte si, že Oracle podporuje pouze Windows a Oracle Linux jako hostovaný operační systém v Azure pro úlohy SAP. Toto prohlášení o odborné pomoci se vztahuje na aplikační vrstvě SAP spuštěné instance SAP také. Oracle, ale nepodporuje vysokou dostupnost pro centrální služby SAP v Oracle Linuxu. Pro Windows SAP pro centrální služby SAP se podporuje ve spojení se společností Oracle jako vrstva DBMS nepodporuje řešení Windows převzetí služeb při selhání clusteru převzetí služeb při selhání. 
+        2.  Poznámka: podpora SAP [#2039619](https://launchpad.support.sap.com/#/notes/2039619). Poznámka definuje matice podpory Oracle v Azure. Uvědomte si, že Oracle podporuje pouze Windows a Oracle Linux jako hostovaný operační systém v Azure pro úlohy SAP. Toto prohlášení o odborné pomoci se vztahuje na aplikační vrstvě SAP spuštěné instance SAP také. Oracle, ale nepodporuje vysokou dostupnost pro centrální služby SAP v Oracle Linuxu prostřednictvím Pacemaker. Pokud požadujete vysoké dostupnosti ASCS v Oracle Linuxu, budete muset využít SIOS ochranná sada pro Linux. Podrobná data certifikace SAP, zkontrolujte poznámky SAP support [#1662610 – podrobnosti o podpoře pro SIOS ochranná sada pro Linux](https://launchpad.support.sap.com/#/notes/1662610). Pro Windows SAP pro centrální služby SAP se podporuje ve spojení se společností Oracle jako vrstva DBMS nepodporuje řešení Windows převzetí služeb při selhání clusteru převzetí služeb při selhání. 
         3.  Poznámka: podpora SAP [#2235581](https://launchpad.support.sap.com/#/notes/2235581) získat podporu pro SAP HANA na různých operačních systémech verze
         4.  SAP HANA nepodporuje virtuální počítače Azure a [velkých instancích HANA](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture) patří [zde](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure)
         5.  [Přehled dostupnosti SAP produktu](https://support.sap.com/en/)
@@ -196,7 +196,7 @@ V této fázi budete chtít shromáždit všechna prostředí a poznatky o nepro
     2.  Pomocí zálohování a obnovení pro menší databáze
     3.  Použití SAP monitorování migrace implementována do nástroje SAP SWPM provádět heterogenní migrace
     4.  Použití [SAP DMO](https://blogs.sap.com/2013/11/29/database-migration-option-dmo-of-sum-introduction/) zpracování, pokud je potřeba v kombinaci s upgrade verze SAP. Uvědomte si, že ne všechny kombinace mezi zdrojem a cílem DBMS jsou podporovány. Další informace najdete v konkrétních podporuje poznámky SAP pro dvě různé verze DMO. Například [možnost migrace databáze (DMO) ze SOUČTU 2.0 SP04](https://launchpad.support.sap.com/#/notes/2644872)
-    5.  Otestujte, zda přenos dat přes internet nebo prostřednictvím ExpressRoute je lepší propustnost pro případ, budete potřebovat přesunout zálohy nebo SAP exportovat soubory. Mějte na paměti, že pro případ přesouvá data prostřednictvím Internetu, můžete potřebovat změnit některá pravidla NSG a ASG zabezpečení, které je potřeba mít na místě pro budoucí produkční systémy.
+    5.  Otestujte, zda přenos dat přes internet nebo prostřednictvím ExpressRoute je lepší propustnost pro případ, budete potřebovat přesunout zálohy nebo SAP exportovat soubory. Pro případ přesouvá data prostřednictvím Internetu může být nutné změnit některá pravidla NSG a ASG zabezpečení, které je potřeba mít na místě pro budoucí produkční systémy.
 3.  Před přesunutím shromažďovat data o spotřebě prostředků, jako je využití procesoru, propustnost úložiště a vstupně-výstupních operací datové systémy od starého platformy do Azure. Zejména z DBMS jednotky, vrstvy, ale také z jednotky vrstvy aplikace. Také měření latence sítě a úložiště.
 4.  Ověření prostředky na podporu poznámky SAP, SAP HANA hardwaru adresáře a znovu PAM SAP chcete mít jistotu, že nebyly provedeny žádné změny v podporovaných virtuálních počítačích Azure, uvolní podporovaný operační systém v těchto virtuálních počítačů a podporovaných SAP a DBMS vydané verze 
 4.  Upravit skripty nasazení pro nejnovější změny, které jste se rozhodli pro typy virtuálních počítačů a funkce Azure
@@ -224,7 +224,7 @@ V této fázi budete chtít shromáždit všechna prostředí a poznatky o nepro
     
 
 ## <a name="go-live-phase"></a>Přejděte živé fáze
-Fáze uvedení do provozu budete muset Nezapomeňte postupovat podle vaší playbooky, které jste vytvořili v předchozích fází. Proveďte kroky, které jste otestovali a školení. Nepřijímají poslední minutu změn konfigurace a proces. Kromě, která se vztahují následující:
+Fáze uvedení do provozu budete muset Nezapomeňte postupovat podle vaší playbooky, které jste vytvořili v předchozích fází. Proveďte kroky, které jste otestovali a školení. Nepřijímají poslední minutu změn konfigurace a proces. Kromě, která se vztahují následující míry:
 
 1. Ověřte, zda jsou funkční monitorování Azure portal a další monitorovací nástroje.  Jsou doporučené nástroje Perfmon (Windows) nebo – zvláštní administrativní oblast (Linux): 
     1.  Čítače CPU 

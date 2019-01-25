@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 02/28/2018
-ms.openlocfilehash: 075f20027153eb9adf5c0daedea7cf5c0b515ee4
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.date: 01/24/2019
+ms.openlocfilehash: d938b4485dccc3b5be3d1af612b407a67e04f397
+ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53537031"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54902206"
 ---
 # <a name="configure-ssl-connectivity-in-your-application-to-securely-connect-to-azure-database-for-mysql"></a>Konfigurace připojení SSL v aplikaci pro zabezpečené připojení k Azure Database for MySQL
 Azure Database for MySQL podporuje připojení vašeho serveru Azure Database for MySQL pro klientské aplikace pomocí vrstvy SSL (Secure Sockets). Díky vynucování připojení SSL mezi databázovým serverem a klientskými aplikacemi se šifruje datový proud mezi serverem a vaší aplikací, což pomáhá chránit před napadením útočníky, kteří se vydávají za prostředníky.
@@ -20,16 +20,20 @@ Azure Database for MySQL podporuje připojení vašeho serveru Azure Database fo
 Stáhněte si certifikát nutný pro komunikaci pomocí protokolu SSL na váš server Azure Database for MySQL z [ https://www.digicert.com/CACerts/BaltimoreCyberTrustRoot.crt.pem ](https://www.digicert.com/CACerts/BaltimoreCyberTrustRoot.crt.pem) a uložte soubor certifikátu na místním disku (v tomto kurzu používá c:\ssl třeba).
 **Microsoft Internet Explorer nebo Microsoft Edge:** Po dokončení stahování certifikát přejmenujte BaltimoreCyberTrustRoot.crt.pem.
 
-## <a name="step-2-bind-ssl"></a>Krok 2: Vytvoření vazby SSL
+## <a name="step-2-bind-ssl"></a>Krok 2: Bind SSL
 ### <a name="connecting-to-server-using-the-mysql-workbench-over-ssl"></a>Připojení k serveru pomocí aplikace MySQL Workbench přes protokol SSL
 Konfigurace aplikace MySQL Workbench se navázat zabezpečené připojení přes protokol SSL. V dialogu nastavení nového připojení, přejděte na **SSL** kartu. V **soubor SSL certifikační Autority:** zadejte umístění souboru **BaltimoreCyberTrustRoot.crt.pem**. 
 ![Uložit vlastní dlaždice](./media/howto-configure-ssl/mysql-workbench-ssl.png) pro existující připojení, můžete vytvořit vazbu SSL kliknutím pravým tlačítkem myši na ikonu připojení a klikněte na položku upravit. Potom přejděte **SSL** kartu a vytvořit vazbu na soubor certifikátu.
 
 ### <a name="connecting-to-server-using-the-mysql-cli-over-ssl"></a>Připojování k serveru pomocí rozhraní příkazového řádku MySQL přes SSL
-Dalším způsobem, jak vytvořit vazbu certifikátu SSL je použití rozhraní příkazového řádku MySQL spuštěním následujícího příkazu:
-```dos
-mysql.exe -h mydemoserver.mysql.database.azure.com -u Username@mydemoserver -p --ssl-ca=c:\ssl\BaltimoreCyberTrustRoot.crt.pem
+Dalším způsobem, jak vytvořit vazbu certifikátu SSL je použití rozhraní příkazového řádku MySQL spuštěním následujících příkazů. 
+
+```bash
+mysql.exe -h mydemoserver.mysql.database.azure.com -u Username@mydemoserver -p --ssl-mode=REQUIRED --ssl-ca=c:\ssl\BaltimoreCyberTrustRoot.crt.pem
 ```
+
+> [!NOTE]
+> Při použití rozhraní příkazového řádku MySQL na Windows, může se zobrazit chyba `SSL connection error: Certificate signature check failed`. Pokud k tomu dojde, nahraďte `--ssl-mode=REQUIRED --ssl-ca={filepath}` parametry s `--ssl`.
 
 ## <a name="step-3--enforcing-ssl-connections-in-azure"></a>Krok 3:  Vynucení připojení SSL v Azure 
 ### <a name="using-the-azure-portal"></a>Použití webu Azure Portal
@@ -47,7 +51,7 @@ Spustit mysql **stav** příkazu ověřte, zda jste se připojili k MySQL server
 ```dos
 mysql> status
 ```
-Potvrďte, že připojení je zašifrován kontrolou výstupu by se zobrazit:  **PROTOKOL SSL: Šifrování používá je AES256 SHA** 
+Potvrďte, že připojení je zašifrován kontrolou výstupu by se zobrazit:  **SSL: Šifrování používá je AES256 SHA** 
 
 ## <a name="sample-code"></a>Ukázka kódu
 Pokud chcete navázat zabezpečené připojení ke službě Azure Database for MySQL přes SSL z vaší aplikace, podívejte se na následující ukázky kódu:
@@ -129,7 +133,7 @@ properties.setProperty("user", 'myadmin@mydemoserver');
 properties.setProperty("password", 'yourpassword');
 conn = DriverManager.getConnection(url, properties);
 ```
-### <a name="javamariadb"></a>Java(MariaDB)
+### <a name="javamariadb"></a>JAVA(MariaDB)
 ```java
 # generate truststore and keystore in code
 String importCert = " -import "+

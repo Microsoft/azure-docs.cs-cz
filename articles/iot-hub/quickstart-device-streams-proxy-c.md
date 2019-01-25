@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 01/15/2019
 ms.author: rezas
-ms.openlocfilehash: f1c2cd037539b3cf33f6c58c4ac8a3a1e8c304ce
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: d0fc8d68b3412c2c43a88e3a9484dab3a150b811
+ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54830156"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54886267"
 ---
 # <a name="quickstart-sshrdp-over-iot-hub-device-streams-using-c-proxy-application-preview"></a>Rychlý start: SSH nebo RDP over datové proudy zařízení služby IoT Hub pomocí jazyka C proxy aplikace (preview)
 
@@ -37,7 +37,7 @@ Na následujícím obrázku vidíte nastavení jak proxy aplikací místních za
 
 3. Místní zařízení proxy serveru se připojí k démon procesu SSH (SSHD) naslouchá na portu 22 na zařízení (jde konfigurovat, jak je popsáno [níže](#run-the device-local-proxy-application)).
 
-4. Místní služba proxy čeká pro nová připojení SSH od uživatele prostřednictvím naslouchání na určeném portu, který v tomto případě je port 2222 (Toto se taky dají konfigurovat, jak je popsáno [níže](#run-the-device-local-proxy-application)). Když se uživatel připojí pomocí klienta SSH, tunelové propojení umožní provoz SSH aplikace tak, aby trasferred mezi klientem a serverem programy SSH.
+4. Místní služba proxy čeká pro nová připojení SSH od uživatele prostřednictvím naslouchání na určeném portu, který v tomto případě je port 2222 (Toto se taky dají konfigurovat, jak je popsáno [níže](#run-the-device-local-proxy-application)). Když se uživatel připojí pomocí klienta SSH, tunelové propojení umožňuje provoz SSH aplikace přenos mezi aplikacemi klientem a serverem SSH.
 
 > [!NOTE]
 > Provoz SSH odesílaných v rámci datového proudu zařízení bude tunelovým propojením přes koncový bod streamování služby IoT Hub spíše než odesílaných přímo mezi službou a zařízení. To poskytuje [tyto výhody](./iot-hub-device-streams-overview.md#benefits). Kromě toho na obrázku vidíte démon procesu SSH běží na stejném zařízení (nebo počítače) jako proxy pro místní zařízení. V tomto rychlém startu poskytnou IP adresu démon procesu SSH umožňuje zařízení místní proxy server a démon běžet na různých počítačích i.
@@ -95,7 +95,7 @@ Pro účely tohoto rychlého startu budete používat [sadu SDK pro zařízení 
 
 ```
     # In Linux
-    cmake -Denable_streaming=ON ..
+    cmake ..
     make -j
 ```
 
@@ -104,10 +104,10 @@ Ve Windows spusťte následující příkazy v Developer Command Prompt pro Visu
 ```
     # In Windows
     # For VS2015
-    $ cmake -Denable_streaming=ON .. -G "Visual Studio 15 2015"
+    $ cmake .. -G "Visual Studio 15 2015"
     
     # Or for VS2017
-    $ cmake -Denable_streaming=ON .. -G "Visual Studio 15 2017
+    $ cmake .. -G "Visual Studio 15 2017
 
     # Then build the project
     cmake --build . -- /m /p:Configuration=Release
@@ -179,7 +179,6 @@ Zařízení musí být zaregistrované ve vašem centru IoT, aby se mohlo připo
     # Go to sample's folder cmake/iothub_client/samples/iothub_client_c2d_streaming_proxy_sample
     $ ./iothub_client_c2d_streaming_proxy_sample
 
-
     # In Windows
     # Go to sample's release folder cmake\iothub_client\samples\iothub_client_c2d_streaming_proxy_sample\Release
     iothub_client_c2d_streaming_proxy_sample.exe
@@ -194,14 +193,14 @@ Jak je popsáno [nad](#how-it-works) navázání začátku do konce datového pr
 
 Za předpokladu, že proxy serverů s místním zařízení a služby běží, teď pomocí programu klienta SSH a připojení k proxy serveru místní služby na port 2222 (namísto démon procesu SSH přímo). 
 
-```azurecli-interactive
+```
 ssh <username>@localhost -p 2222
 ```
 
 V tomto okamžiku zobrazí se výzva k přihlášení SSH k zadání přihlašovacích údajů.
 
 
-Výstup na místní zařízení proxy serveru, který se připojuje k proces démon programu SSH v konzole <code>IP_address:22</code>: ![Alternativní text](./media/quickstart-device-streams-proxy-c/device-console-output.PNG "výstupní zařízení místní proxy server")
+Výstup na místní zařízení proxy serveru, který se připojuje k proces démon programu SSH v konzole `IP_address:22`: ![Alternativní text](./media/quickstart-device-streams-proxy-c/device-console-output.PNG "výstupní zařízení místní proxy server")
 
 Výstup programu klienta SSH konzole (klient SSH komunikuje se proces démon programu SSH na port 22, kde služba místní proxy server naslouchá připojením): ![Alternativní text](./media/quickstart-device-streams-proxy-csharp/ssh-console-output.png "výstup klienta SSH")
 

@@ -3,7 +3,7 @@ title: Použití rozšíření Azure Docker VM | Dokumentace Microsoftu
 description: Další informace o použití rozšíření Docker VM pro rychle a bezpečně nasazení prostředí Docker v Azure pomocí šablon Resource Manageru a Azure CLI
 services: virtual-machines-linux
 documentationcenter: ''
-author: zr-msft
+author: cynthn
 manager: jeconnoc
 editor: ''
 ms.assetid: 936d67d7-6921-4275-bf11-1e0115e66b7f
@@ -13,13 +13,13 @@ ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 12/18/2017
-ms.author: zarhoads
-ms.openlocfilehash: 75959225d6fcc5487466ed26a21ba2d26c55cde9
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.author: cynthn
+ms.openlocfilehash: 59dbbb8374455088d759a5e837b8d3bc22145d3e
+ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49465929"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54882759"
 ---
 # <a name="create-a-docker-environment-in-azure-using-the-docker-vm-extension"></a>Vytvoření prostředí pro Docker v Azure pomocí rozšíření Docker VM
 
@@ -39,7 +39,7 @@ Další informace o různých metodách nasazení, včetně použití Docker Mac
 
 
 ## <a name="deploy-a-template-with-the-azure-docker-vm-extension"></a>Nasazení šablony pomocí rozšíření Azure Docker VM
-Použijeme existující šablony rychlý start k vytvoření virtuálního počítače s Ubuntu, který používá rozšíření Azure Docker VM pro instalaci a konfiguraci hostitele Dockeru. Můžete zobrazit šablonu tady: [jednoduchému nasazení virtuálního počítače s Ubuntu s Dockerem](https://github.com/Azure/azure-quickstart-templates/tree/master/docker-simple-on-ubuntu). Budete potřebovat nejnovější [rozhraní příkazového řádku Azure](/cli/azure/install-az-cli2) nainstalovaný a přihlášení k účtu Azure pomocí [az login](/cli/azure/reference-index#az_login).
+Použijeme existující šablony rychlý start k vytvoření virtuálního počítače s Ubuntu, který používá rozšíření Azure Docker VM pro instalaci a konfiguraci hostitele Dockeru. Můžete zobrazit tady šablonu: [Jednoduché nasazení virtuálního počítače s Ubuntu s Dockerem](https://github.com/Azure/azure-quickstart-templates/tree/master/docker-simple-on-ubuntu). Budete potřebovat nejnovější [rozhraní příkazového řádku Azure](/cli/azure/install-az-cli2) nainstalovaný a přihlášení k účtu Azure pomocí [az login](/cli/azure/reference-index#az_login).
 
 Nejdřív vytvořte skupinu prostředků pomocí příkazu [az group create](/cli/azure/group#az_group_create). Následující příklad vytvoří skupinu prostředků *myResourceGroup* v umístění *eastus*:
 

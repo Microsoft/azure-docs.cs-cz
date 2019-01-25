@@ -11,19 +11,19 @@ ms.component: user-help
 ms.topic: overview
 ms.date: 07/30/2018
 ms.author: lizross
-ms.openlocfilehash: fdfb917a925352d0be58f8fc66c379291dad3195
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: 6c5801f3abbb81ccf1547d3ed886b48014dce1c8
+ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54815119"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54904178"
 ---
 # <a name="my-apps-portal-overview"></a>Přehled portálu Moje aplikace
 
+Pokud máte pracovní nebo školní účet a váš správce vám udělil přístup, můžete pomocí portálu Moje aplikace zobrazit a spouštět cloudové aplikace.
+
 >[!Important]
 >Tento obsah je určený pro uživatele. Pokud jste správce, najdete další informace o nastavení a správě vašeho prostředí Azure Active Directory (Azure AD) v [dokumentaci k Azure Active Directory](https://docs.microsoft.com/azure/active-directory).
-
-Pokud máte pracovní nebo školní účet a váš správce vám udělil přístup, můžete pomocí portálu Moje aplikace zobrazit a spouštět cloudové aplikace.
 
 |Článek |Popis |
 |------|------------|

@@ -5,15 +5,15 @@ author: billmath
 manager: daveba
 ms.service: active-directory
 ms.workload: identity
-ms.date: 10/19/2018
+ms.date: 01/24/2019
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 1d2d921e02b56e951b4239c15471995eaf3cd0d1
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: 723a02c529718ea17750fa72fe568aec6e963118
+ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54813573"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54901288"
 ---
 # <a name="azure-ad-connect--adsyncconfig-powershell-reference"></a>Azure AD Connect:  Referenční informace prostředí PowerShell ADSyncConfig
 Následující dokumentace obsahuje referenční informace pro modul Powershellu ADSyncConfig.psm1, která je součástí služby Azure AD Connect.
@@ -1215,7 +1215,7 @@ Set-ADSyncUnifiedGroupWritebackPermissions -ADConnectorAccountDN <String> [-ADob
 ### <a name="description"></a>POPIS
 Funkci Set-ADSyncUnifiedGroupWritebackPermissions vám poskytne potřebná oprávnění k účtu synchronizace AD, které zahrnují následující:
 1.
-Obecný r/w, odstranit, odstranění stromu a podřízené Create\Delete pro všechny typy objektu a podobjektů
+Obecný r/w, odstranit, odstranění stromu a podřízené Create\Delete pro všechny typy objektů a podobjektů skupiny
 
 Tato oprávnění se použijí pro všechny domény v doménové struktuře.
 Volitelně můžete zadat DistinguishedName v parametru ADobjectDN nastavení těchto oprávnění k tomuto objektu AD (včetně dědičnosti na dílčí objekty).

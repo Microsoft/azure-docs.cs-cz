@@ -8,15 +8,15 @@ manager: cgronlun
 ms.custom: seodec18
 ms.component: language-understanding
 ms.topic: article
-ms.date: 10/24/2018
+ms.date: 01/23/2019
 ms.author: diberry
 ms.service: cognitive-services
-ms.openlocfilehash: c8bcbe011dc4ff9841a06b914a90ae7f9a14ee74
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.openlocfilehash: d353f37b89f9932827a07fc8079aa606d425ed38
+ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53598495"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54882867"
 ---
 # <a name="add-intents-to-determine-user-intention-of-utterances"></a>Přidání záměrů k určení uživatelů záměr projevů
 
@@ -24,19 +24,7 @@ Přidat [záměry](luis-concept-intent.md) do vaší aplikace LUIS k identifikac
 
 V horním navigačním panelu se spravují záměry **sestavení** části, klikněte na levém panelu **záměry**. 
 
-## <a name="create-an-app"></a>Vytvoření nové aplikace
-
-1. Přihlaste se k [LUIS](https://www.luis.ai) portálu.
-
-1. Vyberte **Create new app** (Vytvořit novou aplikaci). 
-
-1. Pojmenujte novou aplikaci `MyHumanResourcesApp`. Vyberte **Angličtina** jazykovou verzi. Popis je volitelný. 
-
-1. Vyberte **Done** (Hotovo). 
-
 ## <a name="add-intent"></a>Přidat záměr
-
-1. Aplikace se otevře **záměry** seznamu.
 
 1. Na stránce **Intents** (Záměry) vyberte **Create new intent** (Vytvořit nový záměr).
 

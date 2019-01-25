@@ -10,17 +10,17 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 11/08/2018
+ms.date: 01/23/2019
 ms.author: jingwang
-ms.openlocfilehash: fcf5b5d0064292c11abeb361b0c046b5a3388457
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 24fdfcb53e8f3cbf0e1bf4f7e567d9f768383ac1
+ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54025687"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54884227"
 ---
 # <a name="copy-data-to-or-from-azure-sql-database-by-using-azure-data-factory"></a>Kopírování dat do nebo ze služby Azure SQL Database s použitím služby Azure Data Factory
-> [!div class="op_single_selector" title1="Vyberte verzi služby Data Factory, kterou používáte:"]
+> [!div class="op_single_selector" title1="Select the version of Data Factory service you use:"]
 > * [Verze 1](v1/data-factory-azure-sql-connector.md)
 > * [Aktuální verze](connector-azure-sql-database.md)
 
@@ -35,6 +35,8 @@ Konkrétně tento konektor Azure SQL Database podporuje tyto funkce:
 - Kopírování dat pomocí ověřování SQL a ověřování pomocí tokenu aplikace Azure Active Directory (Azure AD) pomocí identity objektu zabezpečení nebo spravované služby pro prostředky Azure.
 - Jako zdroj načtení dat pomocí jazyka SQL nebo uloženou proceduru.
 - Jako jímka připojit data do cílové tabulky nebo vyvolat uloženou proceduru s vlastní logikou během kopírování.
+
+Azure SQL Database [s funkcí Always Encrypted](https://docs.microsoft.com/sql/relational-databases/security/encryption/always-encrypted-database-engine?view=sql-server-2017) není nyní podporován. 
 
 > [!IMPORTANT]
 > Pokud zkopírujete data pomocí Azure Data Factory Integration Runtime, nakonfigurujte [brány firewall serveru Azure SQL](https://msdn.microsoft.com/library/azure/ee621782.aspx#ConnectingFromAzure) tak, aby přístup k serveru služby Azure.
@@ -599,7 +601,7 @@ Při kopírování dat z nebo do služby Azure SQL Database, se používají ná
 | smalldatetime |DateTime |
 | smallint |Int16 |
 | Smallmoney |Decimal |
-| SQL_VARIANT |Objekt * |
+| SQL_VARIANT |Objekt |
 | text |Řetězec, Char] |
 | time |Časový interval |
 | časové razítko |Byte] |
@@ -608,6 +610,9 @@ Při kopírování dat z nebo do služby Azure SQL Database, se používají ná
 | varbinary |Byte] |
 | varchar |Řetězec, Char] |
 | xml |XML |
+
+>[!NOTE]
+> Pro mapování typů dat na typ desetinné dočasné aktuálně ADF podporují přesnost až 28. Pokud máte data s přesností větší než 28, zvažte možnost převést na řetězec v dotazu SQL.
 
 ## <a name="next-steps"></a>Další postup
 Seznam úložišť dat podporovaných jako zdroje a jímky, aktivita kopírování ve službě Azure Data Factory najdete v tématu [podporovaných úložišť dat a formáty](copy-activity-overview.md##supported-data-stores-and-formats).

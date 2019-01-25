@@ -7,15 +7,15 @@ ms.reviewer: veyalla
 ms.service: iot-edge
 services: iot-edge
 ms.topic: conceptual
-ms.date: 12/17/2018
+ms.date: 01/25/2019
 ms.author: kgremban
 ms.custom: seodec18
-ms.openlocfilehash: c280410816bfb48f21c68fe5d57b6ae18af0e855
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: 27478de68cde9a097dcc160a4553839aef9a018c
+ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53970657"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54902801"
 ---
 # <a name="install-the-azure-iot-edge-runtime-on-windows"></a>Nainstalovat modul runtime Azure IoT Edge ve Windows
 
@@ -26,7 +26,7 @@ Další informace o modulu runtime IoT Edge najdete v tématu [pochopení runtim
 V tomto článku jsou uvedené kroky k instalaci modulu runtime Azure IoT Edge na vaše Windows x64 (AMD nebo Intel) systému. Podpora Windows je aktuálně ve verzi Preview.
 
 >[!NOTE]
-Pomocí kontejnerů Linuxu na systémy Windows není produkční doporučené nebo podporované konfigurace pro Azure IoT Edge. To však lze použít pro účely vývoje a testování.
+Použití kontejnerů Linuxu v systémech Windows není produkční doporučené nebo podporované konfigurace pro Azure IoT Edge. To však lze použít pro účely vývoje a testování.
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -77,7 +77,7 @@ Při instalaci modulu runtime IoT Edge na zařízení poprvé, budete muset zři
 
 V následujících částech se běžné případy použití a parametry instalačního skriptu IoT Edge na nová zařízení. 
 
-### <a name="option-1-install-and-manually-provision"></a>Možnost 1: Instalace a ruční zřizování
+### <a name="option-1-install-and-manually-provision"></a>Option 1: Instalace a ruční zřizování
 
 V první možnost můžete zadat připojovací řetězec zařízení vygenerované službou IoT Hub, zřídit zařízení. 
 
@@ -98,7 +98,7 @@ Při instalaci a zřízení zařízení ručně, můžete upravit, včetně inst
 
 Další informace o těchto možnostech instalace, pokračujte ve čtení tohoto článku nebo přejděte k další informace o [všechny parametry instalace](#all-installation-parameters).
 
-### <a name="option-2-install-and-automatically-provision"></a>Možnost 2: Instalace a automaticky zřizovat
+### <a name="option-2-install-and-automatically-provision"></a>Option 2: Instalace a automaticky zřizovat
 
 V této druhé možnosti zřizování zařízení pomocí IoT Hub Device Provisioning Service. Zadejte **ID oboru** z instance služby Device Provisioning a **ID registrace** z vašeho zařízení.
 
@@ -178,7 +178,7 @@ K instalaci IoT Edge pomocí existující konfigurace, instalační příkaz mů
 | **Objekt ScopeId** | ID oboru z instance služby Device Provisioning související s centrem IoT. | **Vyžaduje** pro instalaci distribučních bodů. Pokud nezadáte ID oboru v parametry skriptu, zobrazí se výzva k zadání jednoho během instalace. |
 | **RegistrationId** | ID registrace generovaná vaším zařízením | **Vyžaduje** pro instalaci distribučních bodů. Pokud nezadáte ID registrace v parametry skriptu, zobrazí se výzva k zadání jednoho během instalace. |
 | **ContainerOs** | **Windows** nebo **Linux** | Pokud se kontejner zadaný operační systém, Linux je výchozí hodnota. Pro kontejnery Windows modul container součástí instalace. Pro kontejnery Linuxu musíte nainstalovat modul container před zahájením instalace. Kontejnery Linuxu a systémem Windows je užitečné vývojové scénáře, ale není podporován v produkčním prostředí. |
-| **Proxy server** | Adresa URL proxy serveru | Zahrňte tento parametr, pokud vaše zařízení je potřeba přejít přes proxy server pro přístup k Internetu. Další informace najdete v tématu [nakonfigurovat nastavení zařízení IoT Edge pro komunikaci přes proxy server](how-to-configure-proxy-support.md). |
+| **Proxy** | Adresa URL proxy serveru | Zahrňte tento parametr, pokud vaše zařízení je potřeba přejít přes proxy server pro přístup k Internetu. Další informace najdete v tématu [nakonfigurovat nastavení zařízení IoT Edge pro komunikaci přes proxy server](how-to-configure-proxy-support.md). |
 | **InvokeWebRequestParameters** | Zatřiďovací tabulka parametrů a hodnot | Při instalaci několika webových požadavků probíhají. Použijte toto pole můžete nastavit parametry pro tyto webové žádosti. Tento parametr je vhodné nakonfigurovat přihlašovací údaje pro proxy servery. Další informace najdete v tématu [nakonfigurovat nastavení zařízení IoT Edge pro komunikaci přes proxy server](how-to-configure-proxy-support.md). |
 | **OfflineInstallationPath** | Cesta k adresáři | Pokud tento parametr je součástí, instalační program zkontroluje adresář pro iotedged zip, Moby modulu zip, rozhraní příkazového řádku Moby zip a MSI modulu Runtime VC soubory potřebné k instalaci. Pokud jsou všechny čtyři soubory v adresáři, můžete nainstalovat IoT Edge při offline. Tento parametr můžete použít také k přepsání online verzi konkrétní součást. |
 | **AgentImage** | Identifikátor URI image agenta IoT Edge | Ve výchozím nastavení používá nové instalace IoT Edge na nejnovější kumulativní značku pro bitovou kopii agenta IoT Edge. Tento parametr použijte k nastavení s konkrétní značkou pro verze image nebo poskytnout vlastní image agenta. Další informace najdete v tématu [značky pochopit IoT Edge](how-to-update-iot-edge.md#understand-iot-edge-tags). |

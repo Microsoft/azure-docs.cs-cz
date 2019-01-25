@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 07/19/2018
 ms.reviewer: mbullwin
 ms.author: harelbr
-ms.openlocfilehash: edfd908166e4334bdfda0f043cba727cb0370405
-ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
+ms.openlocfilehash: 7e4756fb241500a2f153b452c6dc5a4e332bdd6b
+ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 01/24/2019
-ms.locfileid: "54853591"
+ms.locfileid: "54881592"
 ---
 # <a name="manage-application-insights-smart-detection-rules-using-azure-resource-manager-templates"></a>Spravovat pravidla inteligentního zjišťování služby Application Insights pomocí šablon Azure Resource Manageru
 
@@ -157,7 +157,7 @@ Níže je tabulka názvů pravidla inteligentního zjišťování, jak se objev�
 
 ## <a name="who-receives-the-classic-alert-notifications"></a>Kdo přijímá oznámení výstrah (klasické)?
 
-Tato část pouze platí pro klasických upozornění inteligentního zjišťování a pomůže vám optimalizovat vaše oznámení o výstrahách Ujistěte se, že pouze požadované příjemci dostávat oznámení. Bližší informace o rozdílech mezi [klasických upozornění] (.. /Platform/Alerts-Classic.Overview.MD a nové prostředí upozornění odkazovat [výstrahy přehledovém článku](../platform/alerts-overview.md). Inteligentní zjišťování aktuálně upozorní potřebné klasických upozornění prostředí podpory. Jedinou výjimkou je [inteligentního zjišťování výstrah v Azure cloud services](./proactive-cloud-services.md). K řízení oznámení oznámení pro výstrahy funkce Inteligentní zjišťování v cloudu Azure services pomocí [skupiny akcí](../platform/action-groups.md).
+Tato část pouze platí pro klasických upozornění inteligentního zjišťování a pomůže vám optimalizovat vaše oznámení o výstrahách Ujistěte se, že pouze požadované příjemci dostávat oznámení. Bližší informace o rozdílech mezi [klasických upozornění](../platform/alerts-classic.overview.md) a předložit nové prostředí upozornění [výstrahy přehledovém článku](../platform/alerts-overview.md). Inteligentní zjišťování aktuálně upozorní potřebné klasických upozornění prostředí podpory. Jedinou výjimkou je [inteligentního zjišťování výstrah v Azure cloud services](./proactive-cloud-services.md). K řízení oznámení oznámení pro výstrahy funkce Inteligentní zjišťování v cloudu Azure services pomocí [skupiny akcí](../platform/action-groups.md).
 
 * Doporučujeme vám používat konkrétní příjemců oznámení výstrah inteligentní zjišťování/classic.
 

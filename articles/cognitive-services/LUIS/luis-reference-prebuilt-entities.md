@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
-ms.date: 09/24/2018
+ms.date: 01/23/2019
 ms.author: diberry
-ms.openlocfilehash: 858d094dfa949a46fbffcdfd4b386c40b124bbd8
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: 66e7fab0a82abc801fe8b00100742edf7f7d4bb8
+ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53135643"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54886301"
 ---
 # <a name="entities-per-culture-in-your-luis-model"></a>Počet entit na jazykové verzi v modelu LUIS
 

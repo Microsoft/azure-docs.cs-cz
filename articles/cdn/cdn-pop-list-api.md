@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 06/22/2018
 ms.author: kumud
 ms.custom: ''
-ms.openlocfilehash: f703a934b0eaf4bff5be3811adeed8f0287bc658
-ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
+ms.openlocfilehash: 2b34f6bcbf37a48fb49a2a64d727fc9330b0d735
+ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50237821"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54882244"
 ---
 # <a name="retrieve-the-current-verizon-pop-list-for-azure-cdn"></a>Načíst aktuální seznam Verizon POP pro Azure CDN
 
@@ -30,7 +30,7 @@ Syntaxe operaci rozhraní REST API pro načítání seznamu bodů POP, naleznete
 
 ## <a name="typical-use-case"></a>Typický případ použití
 
-Z bezpečnostních důvodů můžete použít tento seznam IP k vynucení, požadavky na server původu se provedou jenom z místní nabídky platné Verizon. Například někdo zjistit název hostitele nebo IP adresu pro koncový bod CDN zdrojový server, jeden může-li požadavků přímo na původním serveru, proto obcházení škálování a zabezpečení poskytované systémem Azure CDN. Nastavením IP adres ve vráceném seznamu jako pouze povolené IP adresy na původním serveru, můžete zabránit v tomto scénáři. K zajištění, že máte nejnovější seznam POP, načíst, alespoň jednou za den. 
+Z bezpečnostních důvodů můžete použít tento seznam IP k vynucení, požadavky na server původu se provedou jenom z místní nabídky platné Verizon. Například někdo zjistit název hostitele nebo IP adresu pro koncový bod CDN zdrojový server, jeden může-li požadavků přímo na původním serveru, proto obcházení škálování a zabezpečení poskytované systémem Azure CDN. Nastavením IP adres ve vráceném seznamu jako pouze povolené IP adresy na původním serveru, můžete zabránit v tomto scénáři. Aby bylo zajištěno, že máte nejnovější seznam POP, načtení alespoň jednou za den. 
 
 ## <a name="next-steps"></a>Další postup
 

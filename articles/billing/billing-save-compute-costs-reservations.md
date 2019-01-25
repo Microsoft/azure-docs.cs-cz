@@ -12,13 +12,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/08/2018
-ms.author: cwatson
-ms.openlocfilehash: 27b31b6dec480fee417bf9ccb241199204f28f96
-ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
+ms.author: banders
+ms.openlocfilehash: 4133d78ccff1fa4eb712d8928cefa604ca2f52ca
+ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52582645"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54902053"
 ---
 # <a name="what-are-azure-reservations"></a>Co jsou rezervace Azure?
 
@@ -36,9 +36,9 @@ Pokud máte virtuální počítače, služby Azure Cosmos DB nebo databází SQL
 
 ## <a name="what-charges-does-a-reservation-cover"></a>Co poplatky se titulní rezervace?
 
-- Rezervovaná Instance virtuálního počítače: Rezervaci pokrývá jenom náklady na výpočetní výkon virtuálního počítače. Nezahrnuje další poplatky za software, sítě nebo úložiště.
-- Databáze SQL vyhrazený vCore: pouze náklady na výpočetní výkon jsou součástí rezervaci. Licence se fakturuje samostatně.
-- Azure Cosmos DB rezervované kapacity: rezervaci pokrývá zajištěné propustnosti pro vaše prostředky, nezahrnuje poplatky za úložiště a sítě. 
+- Rezervovaná Instance virtuálního počítače: Rezervace pokrývá jenom náklady na výpočetní výkon virtuálního počítače. Nezahrnuje další poplatky za software, sítě nebo úložiště.
+- Databáze SQL vyhrazený vCore: Výpočetní náklady jsou součástí rezervaci. Licence se fakturuje samostatně.
+- Azure Cosmos DB rezervované kapacity: Rezervace pokrývá zajištěné propustnosti pro vaše prostředky, nezahrnuje poplatky za úložiště a sítě. 
 
 Pro virtuální počítače Windows a SQL Database, může zahrnovat náklady na licencování s [zvýhodněné hybridní využití Azure](https://azure.microsoft.com/pricing/hybrid-benefit/).
 
@@ -77,10 +77,10 @@ Na konci období rezervace fakturace slevy vyprší a virtuální počítač, SQ
 
 Při nákupu rezervace sleva provést u ostatních instancí s atributy, které jsou ve stejné skupině velikostí. Flexibilita pokrytí slevy závisí na typu rezervace a atributy, které můžete vybrat při nákupu rezervace.
 
-- Rezervované instance virtuálních počítačů: Při nákupu rezervace, pokud vyberete **optimalizovaná pro**: **instance velikost flexibilitu**, pokrytí slevy závisí na velikosti virtuálního počítače, vyberete. Rezervaci můžete použít velikosti virtuálních počítačů (VM) ve stejné skupině velikost series. Další informace najdete v tématu [flexibilitu velikost virtuálního počítače s rezervovanými instancemi virtuálních počítačů](../virtual-machines/windows/reserved-vm-instance-size-flexibility.md).
-- Plán softwaru SUSE Linux Enterprise: pokrytí slevy závisí na virtuální procesory virtuálních počítačů, ve kterém běží SUSE software. Další informace najdete v tématu [pochopit, jak se použije slevu plán softwaru SUSE Linux Enterprise](billing-understand-suse-reservation-charges.md).
-- SQL Database rezervované kapacity: pokrytí slevy závisí na úroveň výkonu můžete vybrat. Další informace najdete v tématu [pochopit, jak se použije sleva za rezervaci Azure](billing-understand-reservation-charges.md).
-- Azure Cosmos DB rezervované kapacity: pokrytí slevy závisí na zřízenou propustnost. Další informace najdete v tématu [vysvětlení, používání Azure Cosmos DB sleva za rezervaci](billing-understand-cosmosdb-reservation-charges.md).
+- Rezervované instance virtuálních počítačů: Když koupit rezervaci, pokud vyberete **optimalizovaná pro**: **instance velikost flexibilitu**, pokrytí slevy závisí na velikosti virtuálního počítače, vyberete. Rezervaci můžete použít velikosti virtuálních počítačů (VM) ve stejné skupině velikost series. Další informace najdete v tématu [flexibilitu velikost virtuálního počítače s rezervovanými instancemi virtuálních počítačů](../virtual-machines/windows/reserved-vm-instance-size-flexibility.md).
+- Plán softwaru SUSE Linux Enterprise: Pokrytí slevy závisí na virtuální procesory virtuálních počítačů, ve kterém běží SUSE software. Další informace najdete v tématu [pochopit, jak se použije slevu plán softwaru SUSE Linux Enterprise](billing-understand-suse-reservation-charges.md).
+- SQL Database rezervované kapacity: Pokrytí slevy závisí na úrovni výkonu, kterou vyberete. Další informace najdete v tématu [pochopit, jak se použije sleva za rezervaci Azure](billing-understand-reservation-charges.md).
+- Azure Cosmos DB rezervované kapacity: Pokrytí slevy závisí na zřízenou propustnost. Další informace najdete v tématu [vysvětlení, používání Azure Cosmos DB sleva za rezervaci](billing-understand-cosmosdb-reservation-charges.md).
 
 ## <a name="next-steps"></a>Další postup
 
@@ -94,6 +94,6 @@ Další informace o rezervacích Azure, najdete v následujících článcích:
 - [Náklady na software Windows, které nejsou součástí rezervace](billing-reserved-instance-windows-software-costs.md)
 - [Rezervace Azure v programu Partnerské centrum Cloud Solution Provider (CSP)](https://docs.microsoft.com/partner-center/azure-reservations)
 
-## <a name="need-help-contact-us"></a>Potřebujete pomoct? Kontaktujte nás.
+## <a name="need-help-contact-us"></a>Potřebujete pomoc? Kontaktujte nás.
 
 Pokud máte otázky nebo potřebujete pomoc, [vytvořit žádost o podporu](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest).

@@ -3,7 +3,7 @@ title: Ukázkový skript Azure PowerShellu – WordPress | Microsoft Docs
 description: Ukázkový skript Azure PowerShellu – WordPress
 services: virtual-machines-linux
 documentationcenter: virtual-machines
-author: zr-msft
+author: cynthn
 manager: jeconnoc
 editor: tysonn
 tags: azure-service-management
@@ -14,14 +14,14 @@ ms.topic: sample
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 03/01/2017
-ms.author: zarhoads
+ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: f338bb4c846ba6cdbf8aaecfe126cf512fc89109
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
-ms.translationtype: HT
+ms.openlocfilehash: 7fab13e5b668725563510935c572a08f3329552c
+ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49469516"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54887321"
 ---
 # <a name="create-a-wordpress-vm-with-powershell"></a>Vytvoření virtuálního počítače WordPress pomocí PowerShellu
 
@@ -62,7 +62,7 @@ Tento skript pomocí následujících příkazů vytvoří nasazení. Každá po
 | [Set-AzureRmVMExtension](/powershell/module/azurerm.compute/set-azurermvmextension) | Přidá do virtuálního počítače rozšíření vlastních skriptů, které vyvolá skript pro instalaci WordPressu. |
 |[Remove-AzureRmResourceGroup](/powershell/module/azurerm.resources/remove-azurermresourcegroup) | Odebere skupinu prostředků a všechny prostředky, které obsahuje. |
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Další informace o modulu Azure PowerShellu najdete v [dokumentaci k Azure PowerShellu](/powershell/azure/overview).
 

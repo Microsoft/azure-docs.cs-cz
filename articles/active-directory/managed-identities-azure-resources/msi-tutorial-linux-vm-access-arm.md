@@ -3,7 +3,7 @@ title: Použití spravované identity přiřazené uživatelem na virtuálním p
 description: Tento kurz vás provede procesem použití spravované identity přiřazené uživatelem na virtuálním počítači s Linuxem pro přístup k Azure Resource Manageru.
 services: active-directory
 documentationcenter: ''
-author: daveba
+author: priyamohanram
 manager: daveba
 editor: daveba
 ms.service: active-directory
@@ -13,14 +13,14 @@ ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 12/22/2017
-ms.author: daveba
+ms.author: priyamo
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: d9683c95c050826143e3e30931c808a5b464d7e5
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: 7a10337a37ae5e8ce69326a124ac593334b295ea
+ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54431992"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54884687"
 ---
 # <a name="tutorial-use-a-user-assigned-managed-identity-on-a-linux-vm-to-access-azure-resource-manager"></a>Kurz: Použití spravované identity přiřazené uživateli na virtuální počítač s Linuxem pro přístup k Azure Resource Manageru
 

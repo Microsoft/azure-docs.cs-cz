@@ -8,12 +8,12 @@ ms.devlang: dotnet
 ms.topic: tutorial
 ms.date: 12/01/2018
 ms.author: dech
-ms.openlocfilehash: 27686adb7ae20e50ce822f83002135844f9f93bb
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: 8c5e56baacc6f17fcd88bbc9b95e3634839e2ad8
+ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54037017"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54884840"
 ---
 # <a name="build-a-net-console-app-to-manage-data-in-azure-cosmos-db-sql-api-account-sdk-version-3-preview"></a>Vytvoření konzolové aplikace .NET pro správu dat v účtu rozhraní SQL API služby Azure Cosmos DB (sada SDK verze 3 ve verzi Preview)
 
@@ -318,7 +318,7 @@ Kontejner můžete vytvořit buď pomocí [ **CreateContainerIfNotExistsAsync** 
         //ADD THIS PART TO YOUR CODE
         await this.CreateContainer();
     }
-
+    ´´´
 Select **F5** to run your application.
 
 Congratulations! You have successfully created an Azure Cosmos DB container.  
@@ -596,7 +596,7 @@ Teď aktualizujeme položky ve službě Azure Cosmos DB.
         //ADD THIS PART TO YOUR CODE
         await this.ReplaceFamilyItem();
     }
-
+    ´´´
 Select **F5** to run your application.
 
 Congratulations! You have successfully replaced an Azure Cosmos DB item.

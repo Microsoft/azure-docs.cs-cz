@@ -11,16 +11,16 @@ ms.service: media-services
 ms.workload: media
 ms.topic: quickstart
 ms.custom: mvc
-ms.date: 11/11/2018
+ms.date: 01/23/2019
 ms.author: juliako
-ms.openlocfilehash: fc8fc1af51332df032e864c84791791a38bc8601
-ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
+ms.openlocfilehash: 4bea0dd38e1bfb05ba13a298c5ea3a1a62e35cd2
+ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51612216"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54887377"
 ---
-# <a name="quickstart-stream-video-files---net"></a>Rychlý start: Streamování videosouborů – .NET
+# <a name="quickstart-stream-video-files---net"></a>Rychlý start: Stream video soubory – .NET
 
 Toto rychlé zprovoznění předvádí, jak je jednoduché kódovat a začít se streamováním videí pomocí služby Azure Media Services v široké škále prohlížečů a zařízení. Vstupní obsah se dá specifikovat jako HTTPS, URL, SAS nebo cesta k souboru v úložišti objektů Blob Azure.
 Ukázka v tomto tématu kóduje obsah, který zpřístupníte prostřednictvím adresy URL protokolu HTTPS. Upozorňujeme, že AMS v3 v současné době nepodporuje blokového kódování přenosu prostřednictvím adresy URL HTTPS.
@@ -52,12 +52,12 @@ Ukázka se nachází ve složce [EncodeAndStreamFiles](https://github.com/Azure-
 
 Tato ukázka provede následující akce:
 
-1. Vytvoří transformaci (nejprve zkontroluje, jestli zadaná transformace existuje). 
-2. Vytvoří výstupní prostředek, který se použije jako výstup úlohy kódování.
-3. Na základě adresy URL protokolu HTTPS vytvoří vstup úlohy.
-4. Pomocí dříve vytvořeného vstupu a výstupu úlohu kódování odešle.
+1. Vytvoří **transformace** (nejprve, zkontroluje, jestli existuje Zadaná transformace). 
+2. Vytvoří výstup **Asset** , který se používá jako kódování **úlohy**výstup.
+3. Vytvoří **úlohy**vstup, který je založen na adresu URL HTTPS.
+4. Odešle kódování **úlohy** pomocí vstup a výstup, který jste vytvořili dříve.
 5. Zkontroluje stav úlohy.
-6. Vytvoří streamovací lokátor (StreamingLocator).
+6. Vytvoří **Lokátor streamování**.
 7. Vytvoří adresy URL pro streamování.
 
 Popisy týkající jednotlivých funkcí v ukázce najdete v kódu. Můžete se také podívat na komentáře v [tomto zdrojovém souboru](https://github.com/Azure-Samples/media-services-v3-dotnet-quickstarts/blob/master/AMSV3Quickstarts/EncodeAndStreamFiles/Program.cs).

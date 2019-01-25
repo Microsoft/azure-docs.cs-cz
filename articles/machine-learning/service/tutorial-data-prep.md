@@ -11,16 +11,16 @@ ms.author: cforbe
 ms.reviewer: trbye
 ms.date: 12/04/2018
 ms.custom: seodec18
-ms.openlocfilehash: eb4d94d93a72844cfa869bd74aef6eeb34b0f8e9
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: fcb5905bba35ea9182842d050de71a6e25aab61e
+ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54817499"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54901917"
 ---
 # <a name="tutorial-prepare-data-for-regression-modeling"></a>Kurz: Příprava dat pro regresní modelování
 
-V tomto kurzu se dozvíte, jak připravit data pro modelování s použitím sady SDK pro Azure Machine Learning Data Prep regrese. Spuštění různých transformací pro filtrování a kombinovat dvěma různým sadám dat taxislužby NYC.  
+V tomto kurzu se dozvíte, jak připravit data pro modelování s použitím sady SDK pro Azure Machine Learning Data Prep regrese. Spuštění různých transformací pro filtrování a kombinovat dvěma různým sadám dat taxislužby NYC.
 
 Tento kurz je **první částí z dvoudílné série kurzů**. Po dokončení série kurzů, lze odhadnout náklady na cesty taxíkem díky trénování modelu na datových funkcích. Tyto funkce patří vyzvednutí den a čas, počet cestujících a výstupní umístění.
 
@@ -45,9 +45,14 @@ V zájmu usnadnění práce je tento kurz dostupný jako [poznámkový blok Jupy
 
 Začnete importováním sady SDK.
 
-
 ```python
 import azureml.dataprep as dprep
+```
+
+Pokud jste se v tomto kurzu ve prostředí Pythonu, použijte následující nainstalují potřebné balíčky.
+
+```shell
+pip install azureml-dataprep
 ```
 
 ## <a name="load-data"></a>Načtení dat
@@ -61,13 +66,15 @@ dataset_root = "https://dprepdata.blob.core.windows.net/demo"
 green_path = "/".join([dataset_root, "green-small/*"])
 yellow_path = "/".join([dataset_root, "yellow-small/*"])
 
-green_df = dprep.read_csv(path=green_path, header=dprep.PromoteHeadersMode.GROUPED)
+green_df_raw = dprep.read_csv(path=green_path, header=dprep.PromoteHeadersMode.GROUPED)
 # auto_read_file automatically identifies and parses the file type, which is useful when you don't know the file type.
-yellow_df = dprep.auto_read_file(path=yellow_path)
+yellow_df_raw = dprep.auto_read_file(path=yellow_path)
 
-display(green_df.head(5))
-display(yellow_df.head(5))
+display(green_df_raw.head(5))
+display(yellow_df_raw.head(5))
 ```
+
+A `Dataflow` objektu je podobný datový rámec a reprezentuje řadu laxně vyhodnotit, neměnné operací s daty. Operace přidat vyvoláním různé transformace a filtrování dostupné metody. Výsledek operace přidání `Dataflow` je vždy nová `Dataflow` objektu.
 
 ## <a name="cleanse-data"></a>Vyčistit data
 
@@ -82,11 +89,11 @@ useful_columns = [
 ]
 ```
 
-Nejprve práci s daty zelené taxislužby můžete načíst platný tvar, který je možné kombinovat s dat taxislužby žlutou. Vytvořit dočasný toku dat s názvem `tmp_df`. Volání `replace_na()`, `drop_nulls()`, a `keep_columns()` funkce pomocí zástupce transformace proměnné, které jste vytvořili. Kromě toho přejmenovat všechny sloupce datového rámce tak, aby odpovídaly názvům v `useful_columns` proměnné.
+Nejprve práci s daty zelené taxislužby můžete načíst platný tvar, který je možné kombinovat s dat taxislužby žlutou. Volání `replace_na()`, `drop_nulls()`, a `keep_columns()` funkce pomocí zástupce transformace proměnné, které jste vytvořili. Kromě toho přejmenovat všechny sloupce datového rámce tak, aby odpovídaly názvům v `useful_columns` proměnné.
 
 
 ```python
-tmp_df = (green_df
+green_df = (green_df_raw
     .replace_na(columns=all_columns)
     .drop_nulls(*drop_if_all_null)
     .rename_columns(column_pairs={
@@ -105,7 +112,7 @@ tmp_df = (green_df
         "Trip_distance": "distance"
      })
     .keep_columns(columns=useful_columns))
-tmp_df.head(5)
+green_df.head(5)
 ```
 
 <div>
@@ -211,17 +218,10 @@ tmp_df.head(5)
 </table>
 </div>
 
-Přepsat `green_df` proměnné s transformací spouštět `tmp_df` toku dat v předchozím kroku.
+Spusťte stejné kroky transformace dat žlutý taxislužby. Tyto funkce Ujistěte se, že null data se odeberou z datové sady, které vám pomůžou zvýšit machine learning model přesnost.
 
 ```python
-green_df = tmp_df
-```
-
-Spusťte stejné kroky transformace dat žlutý taxislužby.
-
-
-```python
-tmp_df = (yellow_df
+yellow_df = (yellow_df_raw
     .replace_na(columns=all_columns)
     .drop_nulls(*drop_if_all_null)
     .rename_columns(column_pairs={
@@ -246,20 +246,18 @@ tmp_df = (yellow_df
         "trip_distance": "distance"
     })
     .keep_columns(columns=useful_columns))
-tmp_df.head(5)
+yellow_df.head(5)
 ```
 
-Znovu, přepsat `yellow_df` toku dat s `tmp_df` datového toku. Zavolejte `append_rows()` funkci pro data taxislužby zelená pro připojení dat taxislužby žlutou. Vytvoří se nové kombinované datového rámce.
-
+Volání `append_rows()` funkci pro data taxislužby zelená pro připojení dat taxislužby žlutou. Vytvoří se nové kombinované datového rámce.
 
 ```python
-yellow_df = tmp_df
 combined_df = green_df.append_rows([yellow_df])
 ```
 
-### <a name="convert-types-and-filter"></a>Převod typů a filtr 
+### <a name="convert-types-and-filter"></a>Převod typů a filtr
 
-Prozkoumejte sbírat míčky a odkládací souřadnice souhrnné statistiky chcete zobrazit, jak se data distribuovat. Nejprve definujte `TypeConverter` objektu a měnit tak pole zeměpisné šířky a délky na typ decimal. Pak zavolejte `keep_columns()` funkce omezit výstup pouze zeměpisné šířky a délky pole a následně zavolat `get_profile()` funkce.
+Prozkoumejte sbírat míčky a odkládací souřadnice souhrnné statistiky chcete zobrazit, jak se data distribuovat. Nejprve definujte `TypeConverter` objektu a měnit tak pole zeměpisné šířky a délky na typ decimal. Pak zavolejte `keep_columns()` funkce omezit výstup pouze zeměpisné šířky a délky pole a následně zavolat `get_profile()` funkce. Tato volání funkce vytvořit zhuštěnému zobrazení toku dat jenom pro ukázku lat/dlouho polí, která usnadňuje vyhodnotit chybějící nebo souřadnice mimo rozsah.
 
 
 ```python
@@ -271,7 +269,7 @@ combined_df = combined_df.set_column_types(type_conversions={
     "dropoff_latitude": decimal_type
 })
 combined_df.keep_columns(columns=[
-    "pickup_longitude", "pickup_latitude", 
+    "pickup_longitude", "pickup_latitude",
     "dropoff_longitude", "dropoff_latitude"
 ]).get_profile()
 ```
@@ -403,15 +401,15 @@ combined_df.keep_columns(columns=[
 
 
 
-Z výstupu souhrnné statistiky, uvidíte, jsou chybějící souřadnice a souřadnic, které nejsou v New Yorku. Vyfiltrování souřadnic pro umístění, které jsou mimo hranice město. Řetězec sloupcový filtr příkazy v rámci `filter()` fungovat a definovat minimální a maximální mezí pro každé pole. Zavolejte `get_profile()` funkce znovu k ověření transformace.
+Z výstupu souhrnné statistiky, uvidíte, jsou chybějící souřadnice a souřadnic, které nejsou v New Yorku (to je určen z subjektivní analýzy). Vyfiltrování souřadnic pro umístění, které jsou mimo hranice město. Řetězec sloupcový filtr příkazy v rámci `filter()` fungovat a definovat minimální a maximální mezí pro každé pole. Zavolejte `get_profile()` funkce znovu k ověření transformace.
 
 
 ```python
-tmp_df = (combined_df
+latlong_filtered_df = (combined_df
     .drop_nulls(
         columns=["pickup_longitude", "pickup_latitude", "dropoff_longitude", "dropoff_latitude"],
         column_relationship=dprep.ColumnRelationship(dprep.ColumnRelationship.ANY)
-    ) 
+    )
     .filter(dprep.f_and(
         dprep.col("pickup_longitude") <= -73.72,
         dprep.col("pickup_longitude") >= -74.09,
@@ -422,8 +420,8 @@ tmp_df = (combined_df
         dprep.col("dropoff_latitude") <= 40.88,
         dprep.col("dropoff_latitude") >= 40.53
     )))
-tmp_df.keep_columns(columns=[
-    "pickup_longitude", "pickup_latitude", 
+latlong_filtered_df.keep_columns(columns=[
+    "pickup_longitude", "pickup_latitude",
     "dropoff_longitude", "dropoff_latitude"
 ]).get_profile()
 ```
@@ -553,22 +551,13 @@ tmp_df.keep_columns(columns=[
   </tbody>
 </table>
 
-
-
-Přepsat `combined_df` toku dat pomocí transformace, které jste provedli `tmp_df` datového toku.
-
-
-```python
-combined_df = tmp_df
-```
-
 ### <a name="split-and-rename-columns"></a>Rozdělení a přejmenování sloupců
 
-Podívejte se na data profilu `store_forward` sloupce.
+Podívejte se na data profilu `store_forward` sloupce. Toto pole je logický příznak, který je `Y` při taxislužby nemá připojení k serveru po cesty a proto bylo nutné ukládat data o jízdách v paměti a předá je později na server při připojení.
 
 
 ```python
-combined_df.keep_columns(columns='store_forward').get_profile()
+latlong_filtered_df.keep_columns(columns='store_forward').get_profile()
 ```
 
 
@@ -633,25 +622,25 @@ Všimněte si, že profil dat výstup v `store_forward` sloupci se zobrazuje, ž
 
 
 ```python
-combined_df = combined_df.replace(columns="store_forward", find="0", replace_with="N").fill_nulls("store_forward", "N")
+replaced_stfor_vals_df = latlong_filtered_df.replace(columns="store_forward", find="0", replace_with="N").fill_nulls("store_forward", "N")
 ```
 
-Spustit `replace` na fungovat `distance` pole. Funkce přeformátuje vzdálenost hodnoty, které jsou nesprávně označený jako `.00`a vyplní všechny hodnoty Null nulami. Převést `distance` pole na číselný formát.
+Spustit `replace` na fungovat `distance` pole. Funkce přeformátuje vzdálenost hodnoty, které jsou nesprávně označený jako `.00`a vyplní všechny hodnoty Null nulami. Převést `distance` pole na číselný formát. Tyto body nesprávná data jsou pravděpodobně anomolies v systému kolekce dat u souborů CAB taxislužby.
 
 
 ```python
-combined_df = combined_df.replace(columns="distance", find=".00", replace_with=0).fill_nulls("distance", 0)
-combined_df = combined_df.to_number(["distance"])
+replaced_distance_vals_df = replaced_stfor_vals_df.replace(columns="distance", find=".00", replace_with=0).fill_nulls("distance", 0)
+replaced_distance_vals_df = replaced_distance_vals_df.to_number(["distance"])
 ```
 
 Hodnoty data a času sbírat míčky a dropoff rozdělte příslušného sloupce data a času. Použití `split_column_by_example()` funkci rozdělení. V tomto případě nepovinný `example` parametr `split_column_by_example()` funkce je vynechán. Proto se funkce automaticky určí, kde rozdělit podle data.
 
 
 ```python
-tmp_df = (combined_df
+time_split_df = (replaced_distance_vals_df
     .split_column_by_example(source_column="pickup_datetime")
     .split_column_by_example(source_column="dropoff_datetime"))
-tmp_df.head(5)
+time_split_df.head(5)
 ```
 
 <div>
@@ -781,27 +770,23 @@ tmp_df.head(5)
 </table>
 </div>
 
-
 Přejmenování sloupců generovaných `split_column_by_example()` funkce použijte smysluplné názvy.
 
-
 ```python
-tmp_df_renamed = (tmp_df
+renamed_col_df = (time_split_df
     .rename_columns(column_pairs={
         "pickup_datetime_1": "pickup_date",
         "pickup_datetime_2": "pickup_time",
         "dropoff_datetime_1": "dropoff_date",
         "dropoff_datetime_2": "dropoff_time"
     }))
-tmp_df_renamed.head(5)
+renamed_col_df.head(5)
 ```
 
-Přepsat `combined_df` toku dat s provedených transformací. Zavolejte `get_profile()` funkce, která se zobrazí úplné souhrnnou statistiku po všechny transformace.
-
+Volání `get_profile()` funkci zobrazíte úplné souhrnné statistiky koneckonců čištění.
 
 ```python
-combined_df = tmp_df_renamed
-combined_df.get_profile()
+renamed_col_df.get_profile()
 ```
 
 ## <a name="transform-data"></a>Transformace dat
@@ -810,12 +795,14 @@ Rozdělte sbírat míčky a dropoff pozdější datum na den, týden, den v měs
 
 Po vytvoření nové funkce, použijte `drop_columns()` funkce odstranit původní pole jsou upřednostňované nově vygenerovaný funkce. Přejmenujte zbývající pole na smysluplný popis.
 
+Transformace dat v tento způsob, jak vytvořit nové funkce založené na čase zlepší machine learning model přesnost. Například vygenerovat novou funkci pro den v týdnu vám pomůže vytvořit vztah mezi den v týdnu a cena taxislužby tarif, který je často drahé v určité dny v týdnu kvůli vysokému zatížení.
+
 
 ```python
-tmp_df = (combined_df
+transformed_features_df = (renamed_col_df
     .derive_column_by_example(
-        source_columns="pickup_date", 
-        new_column_name="pickup_weekday", 
+        source_columns="pickup_date",
+        new_column_name="pickup_weekday",
         example_data=[("2009-01-04", "Sunday"), ("2013-08-22", "Thursday")]
     )
     .derive_column_by_example(
@@ -823,17 +810,17 @@ tmp_df = (combined_df
         new_column_name="dropoff_weekday",
         example_data=[("2013-08-22", "Thursday"), ("2013-11-03", "Sunday")]
     )
-          
+
     .split_column_by_example(source_column="pickup_time")
     .split_column_by_example(source_column="dropoff_time")
     # The following two calls to split_column_by_example reference the column names generated from the previous two calls.
     .split_column_by_example(source_column="pickup_time_1")
     .split_column_by_example(source_column="dropoff_time_1")
     .drop_columns(columns=[
-        "pickup_date", "pickup_time", "dropoff_date", "dropoff_time", 
+        "pickup_date", "pickup_time", "dropoff_date", "dropoff_time",
         "pickup_date_1", "dropoff_date_1", "pickup_time_1", "dropoff_time_1"
     ])
-          
+
     .rename_columns(column_pairs={
         "pickup_date_2": "pickup_month",
         "pickup_date_3": "pickup_monthday",
@@ -847,7 +834,7 @@ tmp_df = (combined_df
         "dropoff_time_2": "dropoff_second"
     }))
 
-tmp_df.head(5)
+transformed_features_df.head(5)
 ```
 
 <div>
@@ -1001,21 +988,23 @@ tmp_df.head(5)
 </table>
 </div>
 
-Všimněte si, že data odhalí sbírat míčky a dropoff součásti datum a čas vytvořenými odvozené transformace správné. Přetáhněte `pickup_datetime` a `dropoff_datetime` sloupců, protože jsou už potřeba.
+Všimněte si, že data odhalí sbírat míčky a dropoff součásti datum a čas vytvořenými odvozené transformace správné. Přetáhněte `pickup_datetime` a `dropoff_datetime` sloupce, protože jsou již potřeby (detailní čas funkcí, jako jsou hodinu, minutu a sekundu se další užitečné k tréninku modelu).
 
 
 ```python
-tmp_df = tmp_df.drop_columns(columns=["pickup_datetime", "dropoff_datetime"])
+processed_df = transformed_features_df.drop_columns(columns=["pickup_datetime", "dropoff_datetime"])
 ```
 
 Pomocí funkce odvození typu automaticky zkontrolujte datový typ jednotlivých polí a zobrazit výsledky odvození.
 
 
 ```python
-type_infer = tmp_df.builders.set_column_types()
+type_infer = processed_df.builders.set_column_types()
 type_infer.learn()
 type_infer
 ```
+
+Výsledný výstup `type_infer` vypadá takto.
 
     Column types conversion candidates:
     'pickup_weekday': [FieldType.STRING],
@@ -1040,25 +1029,24 @@ Odvození výsledky nevypadají správně založené na datech. Převody typu na
 
 
 ```python
-tmp_df = type_infer.to_dataflow()
-tmp_df.get_profile()
+type_converted_df = type_infer.to_dataflow()
+type_converted_df.get_profile()
 ```
 
-Předtím, než budete balíček toku dat, spusťte dvě poslední filtry na datové sadě. Chcete-li odstranit nesprávné datové body, filtrovat toku dat na záznamy kde i `cost` a `distance` hodnoty proměnných jsou větší než nula.
+Předtím, než budete balíček toku dat, spusťte dvě poslední filtry na datové sadě. Chcete-li odstranit nesprávně zachycené datových bodů, filtrovat toku dat na záznamy kde i `cost` a `distance` hodnoty proměnných jsou větší než nula. Tento krok výrazně zlepší strojového učení přesnost modelu, protože náklady datových bodů s nulou nebo vzdálenost představují hlavní odlehlé hodnoty, které vyvolat vypnout přesnost předpovědi.
 
 ```python
-tmp_df = tmp_df.filter(dprep.col("distance") > 0)
-tmp_df = tmp_df.filter(dprep.col("cost") > 0)
+final_df = type_converted_df.filter(dprep.col("distance") > 0)
+final_df = final_df.filter(dprep.col("cost") > 0)
 ```
 
-Teď máte objekt toku dat plně transformovaná a připravené k použití v modelu strojového učení. Sada SDK zahrnuje funkce serializace objektu, který se používá, jak je znázorněno v následujícím fragmentu kódu.
+Teď máte objekt toku dat plně transformovaná a připravené k použití v modelu strojového učení. Sada SDK zahrnuje funkce serializace objektu, který se používá, jak je znázorněno v následujícím kódu.
 
 ```python
 import os
 file_path = os.path.join(os.getcwd(), "dflows.dprep")
 
-dflow_prepared = tmp_df
-package = dprep.Package([dflow_prepared])
+package = dprep.Package([final_df])
 package.save(file_path)
 ```
 

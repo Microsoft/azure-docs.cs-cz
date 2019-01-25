@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 12/17/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 4836ffc8c6ab013ef5ad7a661db0df3254b6d4e1
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: 85b05766e99c68fa7054b04cc7d174e5ad24a15d
+ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54468727"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54882409"
 ---
 # <a name="azure-ad-connect-sync-enable-ad-recycle-bin"></a>Synchronizace Azure AD Connect: Povolení odpadkového koše AD
 Doporučuje se, že povolíte funkci Koš služby Active Directory pro vaše místní Active Directory, jichž, které jsou synchronizovány do Azure AD. 
@@ -39,9 +39,6 @@ Tato funkce pomáhá s obnovováním objekty uživatelů Azure AD následující
 
 > [!NOTE]
 > Ve výchozím nastavení Azure AD udržuje odstraněné objekty uživatele služby Azure AD v obnovitelně odstraněný stavu po dobu 30 dnů, než se trvale odstraní. Správci můžou urychlit však odstranění těchto objektů. Jakmile objekty se trvale odstraní, se už nebude možné obnovit, i když místní, že je povolená funkce Koš služby Active Directory.
-
->[!NOTE]
->Dříve po uživatele byl odebrán z oboru synchronizace s místními a odstranění v cloudu, DirSyncEnabled účtu byl chybně nastaven stav "False". Pokud později, tento uživatel byl ručně obnovit z odpadkového koše Azure AD, jsme si ukázali nesprávný stav účtu "Jenom cloudu". To teď pevně a hodnotu stavu DirSyncEnabled vždy zůstane "True" když je uživatel odebrán z oboru synchronizace, pak obnovitelně odstraněný a ručně obnovit z odpadkového koše Azure AD.
 
 ## <a name="next-steps"></a>Další postup
 **Témata s přehledem**

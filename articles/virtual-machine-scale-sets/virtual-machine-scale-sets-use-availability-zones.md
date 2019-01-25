@@ -3,7 +3,7 @@ title: Vytvoření sady škálování Azure, který používá zón dostupnosti 
 description: Zjistěte, jak vytvořit škálovací sady virtuálních počítačů Azure, které používají pro zvýšení zajištění redundance proti výpadkům zóny dostupnosti
 services: virtual-machine-scale-sets
 documentationcenter: ''
-author: zr-msft
+author: cynthn
 manager: jeconnoc
 editor: ''
 tags: azure-resource-manager
@@ -14,13 +14,13 @@ ms.tgt_pltfrm: vm
 ms.devlang: na
 ms.topic: article
 ms.date: 08/08/2018
-ms.author: zarhoads
-ms.openlocfilehash: 062725ab5e486ff795ffa0f4a72dd3fdb0e6b948
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.author: cynthn
+ms.openlocfilehash: 771aba1d18dc0cf691c338e06278a356caebda96
+ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49468870"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54886233"
 ---
 # <a name="create-a-virtual-machine-scale-set-that-uses-availability-zones"></a>Vytvoření škálovací sady virtuálního počítače, který používá zóny dostupnosti
 

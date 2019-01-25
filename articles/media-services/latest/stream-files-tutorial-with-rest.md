@@ -10,14 +10,14 @@ ms.service: media-services
 ms.workload: ''
 ms.topic: tutorial
 ms.custom: mvc
-ms.date: 12/19/2018
+ms.date: 01/23/2019
 ms.author: juliako
-ms.openlocfilehash: fcce16ed3cf7009c596f30ebc33f58de02f018a0
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: 0bd882ffd5048d0b33afc9ecf00c0ed6356b6e98
+ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54811634"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54883513"
 ---
 # <a name="tutorial-encode-a-remote-file-based-on-url-and-stream-the-video---rest"></a>Kurz: Vzdálený soubor na základě adresy URL kódování a streamování videa – REST
 
@@ -101,10 +101,10 @@ V této části odešleme požadavky relevantní pro kódování a vytvoření a
 
 1. Získání tokenu služby Azure AD pro ověření instančního objektu
 2. Vytvoření výstupního prostředku
-3. Vytvoření transformace
-4. Vytvoření úlohy 
-5. Vytvoření lokátoru streamování
-6. Seznam cest lokátoru streamování
+3. Vytvoření **transformace**
+4. Vytvoření **úlohy**
+5. Vytvoření **Lokátor streamování**
+6. Seznam cest **Lokátor streamování**
 
 > [!Note]
 >  V tomto kurzu předpokládáme, že všechny prostředky vytváříte s jedinečnými názvy.  
@@ -151,7 +151,7 @@ Výstupní [prostředek](https://docs.microsoft.com/rest/api/media/assets) ulož
 
 ### <a name="create-a-transform"></a>Vytvoření transformace
 
-Když kódujete nebo zpracováváte obsah v Media Services, kódování se obvykle nastaví jako předpis. Potom stačí odeslat **Úlohu**, která tento předpis použije pro video. Když odešlete novou Úlohu pro každé nové video, použije se tento předpis pro všechna videa ve vaší knihovně. V Media Services se pro předpis používá označení **transformace**. Další informace najdete v tématu [Transformace a úlohy](transform-concept.md). Ukázka popsaná v tomto kurzu definuje předpis, který zakóduje video tak, aby se dalo streamovat na nejrůznějších zařízeních s iOSem a Androidem. 
+Když kódujete nebo zpracováváte obsah v Media Services, kódování se obvykle nastaví jako předpis. Potom stačí odeslat **Úlohu**, která tento předpis použije pro video. Odešlete nové úlohy pro každé nové video, můžete se má použít tento předpisu pro všechna videa v knihovně. V Media Services se pro předpis používá označení **transformace**. Další informace najdete v tématu [transformuje a úlohy](transform-concept.md). Ukázka popsaná v tomto kurzu definuje předpis, který zakóduje video tak, aby se dalo streamovat na nejrůznějších zařízeních s iOSem a Androidem. 
 
 Když vytváříte novou instanci [Transformace](https://docs.microsoft.com/rest/api/media/transforms), musíte určit, co má být jejím výstupem. Objekt **TransformOutput** je povinný parametr. Každý objekt **TransformOutput** obsahuje **Předvolbu**. **Předvolba** popisuje podrobné pokyny operací zpracování videa nebo zvuku, které se používají ke generování požadovaného objektu **TransformOutput**. Ukázka popsaná v tomto článku používá předdefinovanou předvolbu s názvem **AdaptiveStreaming**. Tato předvolba zakóduje vstupní video na základě vstupního rozlišení a přenosové rychlosti do automaticky generované dvojice přenosová rychlost / rozlišení (tzv. bitrate ladder) a vytvoří soubory ISO MP4 s videem H.264 a zvukem AAC odpovídající jednotlivým dvojicím přenosová rychlost / rozlišení. Informace o této předvolbě najdete v tématu o [automatickém generování dvojic bitrate ladder](autogen-bitrate-ladder.md).
 
@@ -232,16 +232,16 @@ V tomto příkladu se vstup úlohy vytvoří na základě adresy URL protokolu H
 
 ### <a name="create-a-streaming-locator"></a>Vytvoření lokátoru streamování
 
-Po dokončení úlohy kódování následuje zpřístupnění videa ve výstupním prostředku, kde bude k dispozici klientům pro přehrávání. Video můžete zpřístupnit ve dvou krocích: nejdřív vytvořte streamovací lokátor ([StreamingLocator](https://docs.microsoft.com/rest/api/media/streaminglocators)) a pak adresy URL pro streamování, které budou klienti používat. 
+Po dokončení úlohy kódování, dalším krokem je, aby video ve výstupu **Asset** k dispozici pro klienty pro přehrávání. Můžete to provést ve dvou krocích: nejdřív vytvořte [Lokátor streamování](https://docs.microsoft.com/rest/api/media/streaminglocators)a druhý, sestavení adresy URL pro streamování, které můžou klienti používat. 
 
-Proces vytváření **streamovacího lokátoru** označujeme jako publikování. Pokud nenakonfigurujete volitelný počáteční a koncový čas, je **streamovací lokátor** ve výchozím nastavení platný hned po zavolání rozhraní API a jeho platnost zrušíte až jeho odstraněním. 
+Proces vytváření **Lokátor streamování** nazývá publikování. Ve výchozím nastavení **Lokátor streamování** platnost okamžitě po provedení volání rozhraní API a trvá, dokud je odstraníme, pokud nenakonfigurujete volitelné počáteční a koncový čas. 
 
-Když vytváříte [streamovací lokátor](https://docs.microsoft.com/rest/api/media/streaminglocators), je potřeba zadat požadovaný název zásad streamování (**StreamingPolicyName**). V tomto příkladu budete streamovat čistý nebo také nešifrovaný obsah, takže použijete předdefinovanou zásadu čistého streamování **PredefinedStreamingPolicy.ClearStreamingOnly**.
+Při vytváření [Lokátor streamování](https://docs.microsoft.com/rest/api/media/streaminglocators), budete muset zadat požadovaný **StreamingPolicyName**. V tomto příkladu budete streamovat čistý nebo také nešifrovaný obsah, takže použijete předdefinovanou zásadu čistého streamování **PredefinedStreamingPolicy.ClearStreamingOnly**.
 
 > [!IMPORTANT]
 > Pokud chcete definovat vlastní [zásady streamování](https://docs.microsoft.com/rest/api/media/streamingpolicies), doporučujeme navrhnout pro účet služby Media Service omezený počet takovýchto zásad a používat je opakovaně pro streamovací lokátory, kdykoli potřebujete stejné protokoly a možnosti šifrování. 
 
-Počet záznamů StreamingPolicy je pro účty služby Media Service omezený kvótou. Neměli byste vytvářet samostatnou zásadu streamování pro každý streamovací lokátor.
+Svůj účet Media Service má kvótu pro počet **streamování zásad** položky. By neměla vytváříte nový **streamování zásad** pro každou **Lokátor streamování**.
 
 1. V levém okně nástroje Postman vyberte „Streaming Policies“ (Zásady streamování).
 2. Potom vyberte možnost „Create a Streaming Locator“ (Vytvořit lokátor streamování).
@@ -267,7 +267,7 @@ Počet záznamů StreamingPolicy je pro účty služby Media Service omezený kv
 
 #### <a name="list-paths"></a>Seznam cest
 
-Teď, když máte vytvořený [streamovací lokátor](https://docs.microsoft.com/rest/api/media/streaminglocators), můžete vytvořit adresy URL pro streamování.
+Teď, když [Lokátor streamování](https://docs.microsoft.com/rest/api/media/streaminglocators) byl vytvořen, můžete získat adresy URL pro streamování
 
 1. V levém okně nástroje Postman vyberte „Streaming Policies“ (Zásady streamování).
 2. Potom vyberte „List Paths“ (Seznam cest).
@@ -338,7 +338,7 @@ https://amsaccount-usw22.streaming.media.azure.net/cdb80234-1d94-42a9-b056-0eefa
 
 
 > [!NOTE]
-> Zkontrolujte, že je spuštěný koncový bod streamování, ze kterého chcete streamovat.
+> Ujistěte se, **koncový bod streamování** ze kterého je spuštěn datového proudu.
 
 Tento článek používá k otestování streamu přehrávač Azure Media Player. 
 
@@ -350,7 +350,7 @@ Azure Media Player můžete použít pro účely testování, nesmí se ale pou�
 
 ## <a name="clean-up-resources-in-your-media-services-account"></a>Vyčištění prostředků v účtu služby Media Services
 
-Obecně platí, že byste měli vyčistit všechno kromě objektů, které máte v plánu použít znovu, (obvykle jsou to transformace, streamovací lokátory apod.). Pokud chcete účet po experimentování vyčistit, měli byste odstranit prostředky, které nemáte v plánu znovu použít.  
+Obecně platí, by měl odstraníte všechno, co s výjimkou objektů, které máte v úmyslu znovu použít (obvykle můžete znovu použít **transformuje**, a se zachová **lokátory streamování**atd.). Pokud chcete účet po experimentování vyčistit, měli byste odstranit prostředky, které nemáte v plánu znovu použít.  
 
 Provedete to tak, že u prostředku, který chcete odstranit, vyberete operaci „Odstranit…“.
 

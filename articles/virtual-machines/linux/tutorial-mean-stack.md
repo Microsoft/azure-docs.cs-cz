@@ -3,7 +3,7 @@ title: Kurz vytvoření stacku MEAN na virtuálním počítači s Linuxem v Azur
 description: V tomto kurzu se dozvíte, jak vytvořit stack MongoDB, Express, AngularJS a Node.js (MEAN) na virtuálním počítači s Linuxem v Azure.
 services: virtual-machines-linux
 documentationcenter: virtual-machines
-author: zr-msft
+author: cynthn
 manager: jeconnoc
 editor: ''
 tags: azure-resource-manager
@@ -14,16 +14,16 @@ ms.topic: tutorial
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 08/08/2017
-ms.author: zarhoads
+ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: a223cb9be7c381c2f64648b32ef9bca69ebeddb5
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
-ms.translationtype: HT
+ms.openlocfilehash: 223b32d3947ca0f663565a90b15e9c24e5ddeb96
+ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49465677"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54883207"
 ---
-# <a name="tutorial-create-a-mongodb-express-angularjs-and-nodejs-mean-stack-on-a-linux-virtual-machine-in-azure"></a>Kurz: Vytvoření stacku MongoDB, Express, AngularJS a Node.js (MEAN) na virtuálním počítači s Linuxem v Azure
+# <a name="tutorial-create-a-mongodb-express-angularjs-and-nodejs-mean-stack-on-a-linux-virtual-machine-in-azure"></a>Kurz: Vytvoření stacku MongoDB, Express, AngularJS a Node.js (MEAN) na virtuální počítač s Linuxem v Azure
 
 V tomto kurzu se dozvíte, jak implementovat stack MongoDB, Express, AngularJS a Node.js (MEAN) na virtuálním počítači s Linuxem v Azure. Stack MEAN, který vytvoříte, umožňuje přidávání, odstraňování a výpis knih v databázi. Získáte informace o těchto tématech:
 
@@ -338,7 +338,7 @@ sudo apt-get install -y nodejs
 
 5. Můžete kliknout na **Delete** (Odstranit) a odstranit záznam o knize z databáze.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 V tomto kurzu jste pomocí stacku MEAN na virtuálním počítači s Linuxem vytvořili webovou aplikaci, která uchovává záznamy o knihách. Naučili jste se tyto postupy:
 

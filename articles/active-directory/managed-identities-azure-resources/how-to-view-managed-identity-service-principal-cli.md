@@ -3,7 +3,7 @@ title: Postup zobrazení instanční objekt spravovanou identitu pomocí Azure C
 description: Podrobné pokyny pro zobrazení instanční objekt spravovanou identitu pomocí Azure CLI.
 services: active-directory
 documentationcenter: ''
-author: daveba
+author: priyamohanram
 manager: daveba
 editor: ''
 ms.service: active-directory
@@ -13,13 +13,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 11/29/2018
-ms.author: daveba
-ms.openlocfilehash: 0dce4413ac40319b65abc393d18c8f5c249cde07
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.author: priyamo
+ms.openlocfilehash: 8b30ad2acbad05a4f3095ab948dd987a295d5166
+ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54422112"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54887375"
 ---
 # <a name="view-the-service-principal-of-a-managed-identity-using-azure-cli"></a>Zobrazení instanční objekt spravovanou identitu pomocí Azure CLI
 

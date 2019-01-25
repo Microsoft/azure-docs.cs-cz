@@ -5,15 +5,19 @@ author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 01/22/2019
-ms.openlocfilehash: cb02f0b786ff6f1c7dbef5471fb95ce6516f824c
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.date: 01/23/2019
+ms.openlocfilehash: 9270c3290bd7be0bbb79d30aff8becc04dcfc603
+ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54466070"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54903991"
 ---
 # <a name="read-replicas-in-azure-database-for-postgresql"></a>Repliky pro čtení ve službě Azure Database for PostgreSQL
+
+> [!IMPORTANT]
+> Funkce repliky pro čtení je ve verzi Public Preview.
+
 Funkce repliky pro čtení umožňuje replikaci dat ze serveru Azure Database for PostgreSQL server (správce) až k pěti jen pro čtení serverům (replik pro čtení) v rámci stejné oblasti Azure. Repliky pro čtení se aktualizují asynchronně pomocí technologie nativní replikace stroje PostgreSQL.
 
 Repliky jsou nové servery, které je možné spravovat podobným způsobem jako normální samostatné databáze Azure pro servery PostgreSQL. Pro každou další repliku bude vám Účtovaná zřízených výpočetních jádrech a zřízeného úložiště v GB/měsíc.

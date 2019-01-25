@@ -3,7 +3,7 @@ title: Postup konfigurace systému a uživatelsky přiřazené identity spravova
 description: Podrobné pokyny ke konfiguraci systému a uživatelsky přiřazené identity spravované na Virtuálním počítači Azure pomocí příkazu CURL k zajištění REST API volá.
 services: active-directory
 documentationcenter: ''
-author: daveba
+author: priyamohanram
 manager: daveba
 editor: ''
 ms.service: active-directory
@@ -13,13 +13,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 06/25/2018
-ms.author: daveba
-ms.openlocfilehash: 5240d46c1d754ec09f9d83a86424fdbd3cfaadb7
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.author: priyamo
+ms.openlocfilehash: 0f24d153f47920cad15f7c26161a694d318c24d0
+ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54433301"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54884502"
 ---
 # <a name="configure-managed-identities-for-azure-resources-on-an-azure-vm-using-rest-api-calls"></a>Konfigurace spravovaných identit pro prostředky Azure na Virtuálním počítači Azure pomocí volání rozhraní REST API
 

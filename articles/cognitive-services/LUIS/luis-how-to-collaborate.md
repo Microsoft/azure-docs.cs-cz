@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
-ms.date: 09/10/2018
+ms.date: 01/23/2019
 ms.author: diberry
-ms.openlocfilehash: d1db8974ce134b50340db500c9ea1b00126fe10a
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 6b9dd4beccbe8bc872c46976f490400daa200c3a
+ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53086415"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54888834"
 ---
 # <a name="how-to-manage-authors-and-collaborators"></a>Jak spravovat autorů a spolupracovníci 
 
@@ -67,7 +67,12 @@ Pokud správce klienta nebude Přihlaste se k LUIS, můžete přístup správce 
 
 ![Oprávnění Azure active directory web aplikace](./media/luis-how-to-collaborate/tenant-permissions.png)
 
-Pokud správce klienta chce pouze určitým uživatelům používat LUIS, podívejte se na to [identity blog](https://blogs.technet.microsoft.com/tfg/2017/10/15/english-tips-to-manage-azure-ad-users-consent-to-applications-using-azure-ad-graph-api/).
+Pokud správce tenanta požaduje pouze určití uživatelé mohli používat službu LUIS, existuje několik možných řešení:
+* Udělení souhlasu"admin" (souhlas pro všechny uživatele služby Azure AD), ale pak nastavte na "Ano" "přiřazení uživatelů povinné" v části Vlastnosti podnikové aplikace a nakonec přiřadit nebo přidat jenom požadovaného uživatele k aplikaci. Pomocí této metody správce je stále poskytuje "souhlas správce" do aplikace, je však možné spravovat uživatele, kteří k němu máte přístup.
+* Druhým řešením je použití [Azure AD Graph API](https://docs.microsoft.com/graph/azuread-identity-access-management-concept-overview) poskytnout souhlas s konkrétním uživatelům. 
+
+Další informace o uživatelů Azure active directory a vyjádření souhlasu: 
+* [Omezit aplikace](../../active-directory/develop/howto-restrict-your-app-to-a-set-of-users.md) pro skupinu uživatelů
 
 ### <a name="user-accounts-with-multiple-emails-for-collaborators"></a>Uživatelské účty s více e-mailů pro spolupracovníky.
 

@@ -12,15 +12,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/23/2010
+ms.date: 01/24/2010
 ms.author: markvi
 ms.reviewer: jairoc
-ms.openlocfilehash: 916de2de6cdc19bfa1e3967661d40693d4be1e99
-ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
+ms.openlocfilehash: edb4e2b25e5fd7d6c59f07a02cc5d2f0630eac8e
+ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54852384"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54904399"
 ---
 # <a name="azure-active-directory-device-management-faq"></a>Azure Active Directory nejčastější dotazy ke správě zařízení
 
@@ -180,6 +180,19 @@ Toto chování nelze použít s žádným uživatelem, který se přihlásí na 
 
 ---
 
+**Q: co jsou certifikáty MS organizace P2P přístupu k dispozici na naše zařízení s Windows 10?**
+
+**ODPOVĚĎ:** Vystavení certifikátů MS organizace P2P přístupu Azure AD na obě, připojená k Azure AD a zařízení připojená k hybridní službě Azure AD. Tyto certifikáty slouží k povolení vztahu důvěryhodnosti mezi zařízeními ve stejném tenantovi pro scénáře vzdálené plochy. Jeden certifikát je vydaný pro zařízení a jiné se vydá uživateli. Certifikát zařízení nachází v `Local Computer\Personal\Certificates` a je platný jeden den. Tento certifikát se obnovuje (ve vydání nového certifikátu) Pokud je zařízení stále aktivní ve službě Azure AD. Uživatelský certifikát je k dispozici v `Current User\Personal\Certificates` a tento certifikát je platný také za jeden den, ale je vystaven na vyžádání, když se uživatel pokusí relace vzdálené plochy na jiné zařízení připojené k doméně Azure AD. Se platnost neprodlouží na vypršení platnosti. Oba tyto certifikáty jsou vystavené v MS organizace P2P přístupu certifikát `Local Computer\AAD Token Issuer\Certificates`. Tento certifikát je vydaný službou Azure AD při registraci zařízení. 
+
+---
+
+**Q:Why zobrazit více Prošlé certifikáty vydané MS organizace P2P přístupu na naše zařízení s Windows 10? Jak je možné je odstranit?**
+
+**ODPOVĚĎ:** Došlo k nějakému problému lze na Windows 10 verze 1709 a nižší, kde certifikáty s vypršenou platností MS organizaci P2P přístup i nadále existovat v úložišti počítače z důvodu problémů s kryptografických. Uživatelé můžou mít potíže s s připojením k síti, pokud používáte žádné klienty VPN (například Cisco AnyConnect), které nelze zpracovat velký počet certifikáty s vypršenou platností. Tento problém byl vyřešen ve verzi Windows 10 1803 automaticky odstranit všechny takové MS organizace P2P přístupu certifikáty s vypršenou platností. Tento problém lze vyřešit aktualizací zařízení na Windows 10 1803. Pokud se nemůžete aktualizovat, můžete odstranit tyto certifikáty žádný nepříznivý vliv.  
+
+---
+
+
 ## <a name="hybrid-azure-ad-join-faq"></a>Připojení k hybridní službě Azure AD – nejčastější dotazy
 
 **Otázka: Kde můžu najít Poradce při potížích s informací k diagnostice chyb připojení k hybridní službě Azure AD?**
@@ -217,15 +230,3 @@ Připojení k hybridní službě Azure AD má přednost před stavu registrován
 
 - Během prvního pokusu přístup uživatelům výzva k registraci zařízení pomocí portálu společnosti.
 
----
-
-
-**Q: co jsou certifikáty MS organizace P2P přístupu k dispozici na naše zařízení s Windows 10?**
-
-**ODPOVĚĎ:** Vystavení certifikátů MS organizace P2P přístupu Azure AD na obě, připojená k Azure AD a zařízení připojená k hybridní službě Azure AD. Tyto certifikáty slouží k povolení vztahu důvěryhodnosti mezi zařízeními ve stejném tenantovi pro scénáře vzdálené plochy. Jeden certifikát je vydaný pro zařízení a jiné se vydá uživateli. Certifikát zařízení nachází v `Local Computer\Personal\Certificates` a je platný jeden den. Tento certifikát se obnovuje (ve vydání nového certifikátu) Pokud je zařízení stále aktivní ve službě Azure AD. Uživatelský certifikát je k dispozici v `Current User\Personal\Certificates` a tento certifikát je platný také za jeden den, ale je vystaven na vyžádání, když se uživatel pokusí relace vzdálené plochy na jiné zařízení připojené k doméně Azure AD. Se platnost neprodlouží na vypršení platnosti. Oba tyto certifikáty jsou vystavené v MS organizace P2P přístupu certifikát `Local Computer\AAD Token Issuer\Certificates`. Tento certifikát je vydaný službou Azure AD při registraci zařízení. 
-
----
-
-**Q:Why zobrazit více Prošlé certifikáty vydané MS organizace P2P přístupu na naše zařízení s Windows 10? Jak je možné je odstranit?**
-
-**ODPOVĚĎ:** Došlo k nějakému problému lze na Windows 10 verze 1709 a nižší, kde certifikáty s vypršenou platností MS organizaci P2P přístup i nadále existovat v úložišti počítače z důvodu problémů s kryptografických. Uživatelé můžou mít potíže s s připojením k síti, pokud používáte žádné klienty VPN (například Cisco AnyConnect), které nelze zpracovat velký počet certifikáty s vypršenou platností. Tento problém byl vyřešen ve verzi Windows 10 1803 automaticky odstranit všechny takové MS organizace P2P přístupu certifikáty s vypršenou platností. Tento problém lze vyřešit aktualizací zařízení na Windows 10 1803. Pokud se nemůžete aktualizovat, můžete odstranit tyto certifikáty žádný nepříznivý vliv.  

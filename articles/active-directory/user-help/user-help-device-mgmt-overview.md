@@ -11,19 +11,19 @@ ms.workload: identity
 ms.topic: overview
 ms.date: 07/30/2018
 ms.author: lizross
-ms.openlocfilehash: f321e027b29aa719dd0620aadd2a8e1558d069e9
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: 2107b6a4cd0d94edfe469a1643e18aed46bff1d0
+ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54825795"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54902750"
 ---
 # <a name="manage-my-devices-overview"></a>Přehled správy zařízení
 
+Ujistěte se, že máte přístup ke všem potenciálně omezeným prostředků vaší organizace z pracovních i osobních zařízení.
+
 >[!Important]
 >Tento obsah je určený pro uživatele. Pokud jste správce, najdete další informace o nastavení a správě vašeho prostředí Azure Active Directory (Azure AD) v [dokumentaci k Azure Active Directory](https://docs.microsoft.com/azure/active-directory).
-
-Ujistěte se, že máte přístup ke všem potenciálně omezeným prostředků vaší organizace z pracovních i osobních zařízení.
 
 |Článek |Popis |
 |------|------------|

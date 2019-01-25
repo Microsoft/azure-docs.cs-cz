@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.date: 01/22/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: c0bb15dceed7bc4d0c335e129f810c88622ebadd
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: a056e83a95c711126ee2357d93ba07f154200309
+ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54043698"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54884176"
 ---
 # <a name="tutorial-build-your-first-azure-data-factory-using-azure-resource-manager-template"></a>Kurz: Sestavit svou první datovou továrnu Azure pomocí šablony Azure Resource Manageru
 > [!div class="op_single_selector"]
@@ -407,7 +407,7 @@ V tomto oddílu zadáte název a klíč svého účtu služby Azure Storage. Pod
     }
 }
 ```
-Vlastnost **connectionString** používá parametry storageAccountName a storageAccountKey. Hodnoty těchto parametrů se předávají pomocí konfiguračního souboru. Definice také používá proměnné azureStorageLinkedService a dataFactoryName definované v šabloně. 
+Vlastnost **connectionString** používá parametry storageAccountName a storageAccountKey. Hodnoty těchto parametrů se předávají pomocí konfiguračního souboru. Definice také používá proměnné: azureStorageLinkedService a dataFactoryName definované v šabloně. 
 
 #### <a name="hdinsight-on-demand-linked-service"></a>Propojená služba HDInsightu na vyžádání
 Podrobnosti o vlastnostech JSON používaných k definici propojené služby HDInsightu najdete v článku [Propojené služby Compute](data-factory-compute-linked-services.md#azure-hdinsight-on-demand-linked-service).  

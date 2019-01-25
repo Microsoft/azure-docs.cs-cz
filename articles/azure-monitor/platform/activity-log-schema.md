@@ -8,15 +8,15 @@ ms.topic: reference
 ms.date: 1/16/2019
 ms.author: dukek
 ms.subservice: logs
-ms.openlocfilehash: 9ad3ca2233237c9cb4aea0a7bd0c476f48613a9c
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: 2f7d671dd70571ce167d9c5abd632cdebff329da
+ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54438231"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54888137"
 ---
 # <a name="azure-activity-log-event-schema"></a>Azure schéma událostí protokolu aktivit
-**Protokolu aktivit Azure** je protokol, který nabízí pohled na všechny události na úrovni předplatného, ke kterým došlo v Azure. Tento článek popisuje schéma událostí podle jednotlivých kategorií data. Schéma dat se liší v závislosti na tom, při čtení dat na portálu, Powershellu, rozhraní příkazového řádku, nebo přímo přes rozhraní REST API a [streamovaná data do úložiště nebo Event Hubs pomocí profilu protokolu](./../../azure-monitor/platform/activity-logs-overview.md#export-the-activity-log-with-a-log-profile). Následující příklady ukazují schématu jako k dispozici prostřednictvím portálu, Powershellu, rozhraní příkazového řádku a rozhraní REST API. Mapování těchto vlastností [Azure diagnostické protokoly schématu](./tutorial-dashboards.md) je k dispozici na konci tohoto článku.
+**Protokolu aktivit Azure** je protokol, který nabízí pohled na všechny události na úrovni předplatného, ke kterým došlo v Azure. Tento článek popisuje schéma událostí podle jednotlivých kategorií data. Schéma dat se liší v závislosti na tom, při čtení dat na portálu, Powershellu, rozhraní příkazového řádku, nebo přímo přes rozhraní REST API a [streamovaná data do úložiště nebo Event Hubs pomocí profilu protokolu](./../../azure-monitor/platform/activity-logs-overview.md#export-the-activity-log-with-a-log-profile). Následující příklady ukazují schématu jako k dispozici prostřednictvím portálu, Powershellu, rozhraní příkazového řádku a rozhraní REST API. Mapování těchto vlastností [Azure diagnostické protokoly schématu](./diagnostic-logs-schema.md) je k dispozici na konci tohoto článku.
 
 ## <a name="administrative"></a>Správa
 Tato kategorie obsahuje záznam všech vytvoření, aktualizace, odstranění a akce operace provést prostřednictvím Resource Manageru. Typy událostí, zobrazí se v této kategorii příklady "vytvořit virtuální počítač" a "odstranit skupinu zabezpečení sítě" každé akce, které uživatele nebo aplikace pomocí Resource Manageru je modelovaná jako operace na konkrétní typ prostředku. Pokud je typ operace zápisu, Delete nebo akce, záznamy o zahájení a úspěchu nebo selhání této operace se zaznamenávají do administrativní kategorie. Administrativní kategorie také zahrnuje všechny změny na řízení přístupu na základě rolí v rámci předplatného.
@@ -356,9 +356,9 @@ Tato kategorie obsahuje záznam všech aktivací upozornění v Azure. Je např�
 | description |Popis statický text oznámení události. |
 | eventDataId |Jedinečný identifikátor události upozornění. |
 | úroveň |Úroveň události. Jeden z následujících hodnot: "Kritický", "Chyba", "Upozornění" a "Informační" |
-| resourceGroupName |Název skupiny prostředků pro ovlivněný prostředek, pokud se jedná upozornění na metriku. Pro ostatní typy výstrah jde o název skupiny prostředků, které obsahuje výstrahu samotnou. |
-| resourceProviderName |Název poskytovatele prostředků pro ovlivněný prostředek, pokud se jedná upozornění na metriku. Pro ostatní typy výstrah Toto je název poskytovatele prostředků pro výstrahu samotnou. |
-| resourceId | Název ID prostředku pro ovlivněný prostředek, pokud se jedná upozornění na metriku. Pro ostatní typy výstrah to je ID prostředku upozornění vlastního prostředku. |
+| resourceGroupName |Název skupiny prostředků pro ovlivněný prostředek, pokud se jedná upozornění na metriku. Pro ostatní typy výstrah je název skupiny prostředků, které obsahuje výstrahu samotnou. |
+| resourceProviderName |Název poskytovatele prostředků pro ovlivněný prostředek, pokud se jedná upozornění na metriku. Pro ostatní typy výstrah je název poskytovatele prostředků pro výstrahu samotnou. |
+| resourceId | Název ID prostředku pro ovlivněný prostředek, pokud se jedná upozornění na metriku. Pro ostatní typy výstrah je ID prostředku upozornění vlastního prostředku. |
 | operationId |Identifikátor GUID sdílen události, které odpovídají jedné operace. |
 | operationName |Název operace |
 | properties |Sada `<Key, Value>` páry (tj. slovník) popisující podrobnosti o události. |
@@ -570,7 +570,7 @@ Tato kategorie obsahuje záznam všech výstrah generovaných v Azure Security C
 | subscriptionId |ID předplatného Azure. |
 
 ## <a name="recommendation"></a>Doporučení
-Tato kategorie obsahuje záznam žádná nová doporučení, které jsou generovány pro vaše služby. Příkladem doporučení může být "používání skupin dostupnosti pro lepší odolnost proti chybám." Existují 4 typy událostí doporučení, které lze vygenerovat: Vysoká dostupnost, výkon, zabezpečení a optimalizaci nákladů. 
+Tato kategorie obsahuje záznam žádná nová doporučení, které jsou generovány pro vaše služby. Příkladem doporučení může být "používání skupin dostupnosti pro lepší odolnost proti chybám." Existují čtyři druhy doporučení události, které mohou být vygenerovány: Vysoká dostupnost, výkon, zabezpečení a optimalizaci nákladů. 
 
 ### <a name="sample-event"></a>Událost vzorku
 ```json
@@ -757,7 +757,7 @@ Tato kategorie obsahuje záznamy všech operací efekt akce prováděné [Azure 
 | Typ prostředku | U nových prostředků je typ právě vyhodnocována. U existujících prostředků vrátí "Microsoft.Resources/checkPolicyCompliance". |
 | resourceId | ID prostředku vyhodnoceném prostředku. |
 | status | Řetězec popisující stav výsledek vyhodnocení zásad. Většina hodnocení zásad vrátit "ÚSPĚCH", ale efektu zamítnutí vrátí "NEÚSPĚCH". Chyby v auditIfNotExists nebo deployIfNotExists rovněž vracejí "NEÚSPĚCH". |
-| Podřízený stav | Je toto pole prázdné pro události zásad. |
+| Podřízený stav | Je pole prázdné pro události zásad. |
 | submissionTimestamp | Časové razítko, kdy je k dispozici pro dotazování na události. |
 | subscriptionId | ID předplatného Azure. |
 | properties.isComplianceCheck | Při nasazení nových prostředků nebo jsou aktualizovány vlastnosti existujících prostředků Resource Manageru, vrátí hodnotu "False". Všechny ostatní [vyhodnocení triggery](../../governance/policy/how-to/get-compliance-data.md#evaluation-triggers) za následek "True". |
@@ -768,7 +768,7 @@ Tato kategorie obsahuje záznamy všech operací efekt akce prováděné [Azure 
 
 ## <a name="mapping-to-diagnostic-logs-schema"></a>Mapování schématu diagnostické protokoly
 
-Při streamování protokolu aktivit Azure do účtu úložiště nebo oboru názvů Event Hubs, následuje data [Azure diagnostické protokoly schématu](./tutorial-dashboards.md). Tady je mapování vlastností ve schématu nad schématu diagnostických protokolů:
+Při streamování protokolu aktivit Azure do účtu úložiště nebo oboru názvů Event Hubs, následuje data [Azure diagnostické protokoly schématu](./diagnostic-logs-schema.md). Tady je mapování vlastností ve schématu nad schématu diagnostických protokolů:
 
 | Vlastnost schématu diagnostické protokoly | Vlastnost schématu rozhraní REST API pro protokol aktivit | Poznámky |
 | --- | --- | --- |

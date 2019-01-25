@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
-ms.date: 10/18/2018
+ms.date: 01/23/2019
 ms.author: diberry
-ms.openlocfilehash: ba450258a03fc21a06476a6bdd81dc5a886056de
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: d73b4e4db02c7cbed9c5693b4e8a0a44525f59f7
+ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53137620"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54881099"
 ---
 # <a name="train-your-active-version-of-the-luis-app"></a>Trénování vaše aktivní verzi aplikace LUIS 
 

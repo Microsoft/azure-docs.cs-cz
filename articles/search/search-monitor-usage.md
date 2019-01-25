@@ -1,6 +1,6 @@
 ---
-title: Monitorování využití a statistiky pro službu search – Azure Search
-description: Sledování využití a index velikost prostředku pro službu Azure Search, hostované cloudové vyhledávací službě v Microsoft Azure.
+title: Monitorování využití a dotaz statistiky prostředků pro službu search – Azure Search
+description: Získáte metriky aktivity dotaz, spotřeby prostředků a další data systému ze služby Azure Search.
 author: HeidiSteen
 manager: cgronlun
 tags: azure-portal
@@ -8,97 +8,106 @@ services: search
 ms.service: search
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 11/09/2017
+ms.date: 01/22/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: aaeb24b836b47f72d0be299738e6c90f599f8d1f
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.openlocfilehash: 5f8a4e7dcaa1bc2df71246f67d06fc63ae4fcd06
+ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53631888"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54883496"
 ---
 # <a name="monitor-an-azure-search-service-in-azure-portal"></a>Monitorování služby Azure Search na webu Azure portal
 
-Azure Search nabízí různé prostředky pro sledování využití a výkonu služby search. Poskytuje přístup k metriky, protokoly, indexové statistiky a rozšířené možnosti monitorování v Power BI. Tento článek popisuje, jak povolit různé strategie monitorování a jak interpretovat Výsledná data.
+Na stránce Přehled služby Azure Search můžete zobrazit systémová data o využití prostředků a navíc dotaz metriky, jako jsou dotazy na druhý (QPS), latence dotazu a procento žádostí, které byly omezené. Kromě toho můžete na portálu využít škálu možnosti na platformě Azure pro hlubší shromažďování dat monitorování. 
 
-## <a name="azure-search-metrics"></a>Metriky Azure Search
-Metriky vám poskytují téměř v reálném čase přehled o vaší vyhledávací služby a jsou k dispozici pro každou službu s nic dalšího nastavovat. Umožňují sledovat výkon služby po dobu až 30 dnů.
+Tento článek identifikuje a porovnává dostupné možnosti protokolování operace Azure Search. Obsahuje pokyny pro povolení protokolování a protokolů a způsob, jak rozbalit na informacích, které se shromažďují.
 
-Služba Azure Search shromažďuje data pro tři různé požadované metriky:
+Pokud jsou vyplníte lístek podpory, neexistují žádné konkrétní úlohy nebo informace, které je potřeba zadat. Techniky podpory mají potřebné informace k prošetření specifické problémy.  
 
-* Latence vyhledávání: Čas službu search potřebné ke zpracování vyhledávacích dotazů, agregují za minutu.
-* Vyhledávací dotazy za sekundu (QPS): Počet vyhledávací dotazy přijaté za sekundu, agregují za minutu.
-* Procento omezených vyhledávacích dotazů: Procento vyhledávacích dotazů, které byly omezené agregovat za minutu.
+## <a name="metrics-at-a-glance"></a>Metriky na první pohled
 
-![Snímek obrazovky QPS aktivity][1]
+**Využití** a **monitorování** oddíly, které jsou součástí přehled spotřebu úložiště vizualizaci a dotazování metrik spouštění. Tyto informace k dispozici, jakmile začnete používat službu, bez nezbytné konfigurace. Na této stránce se aktualizují každých několik minut. Pokud jste na dokončení rozhodnutí o [jaké úroveň určený pro produkční úlohy](search-sku-tier.md), nebo jestli se má [upravit počet aktivní repliky a oddíly, které](search-capacity-planning.md), tyto metriky vám můžou pomoct se těchto rozhodnutí Zobrazí, jak rychle se spotřebovávají prostředky a jak dobře aktuální konfigurace zpracuje existující zatížení.
 
-### <a name="set-up-alerts"></a>Nastavení výstrah
-Na stránce podrobností metriky můžete nakonfigurovat výstrahy pro aktivaci e-mailové oznámení nebo automatizované akce, pokud metrika překročí mezní hodnotu, která jste definovali.
+**Využití** kartě se zobrazí dostupnost prostředků relativně vzhledem k aktuální [omezení](search-limits-quotas-capacity.md). Na následujícím obrázku je bezplatná služba, která je omezené na 3 objekty každého typu a přes 50 MB úložiště. Service Basic nebo Standard má vyšší limity, a pokud zvýšíte počet oddílů, maximální velikost úložiště přejde proporcionálně.
 
-Další informace o metrikách zkontrolujte úplnou dokumentaci k Azure Monitor.  
+![Stav využití vzhledem k omezení účinný](./media/search-monitor-usage/usage-tab.png
+ "stav využití vzhledem k omezení účinný")
 
-## <a name="how-to-track-resource-usage"></a>Jak sledovat využití prostředků
-Sledování růst indexy a velikosti dokumentu vám může pomoct proaktivně upravit kapacitu před dosažení horní mez, kterou jste vytvořili pro vaši službu. Můžete to provést na portálu nebo programově pomocí rozhraní REST API.
+## <a name="queries-per-second-qps-and-other-metrics"></a>Dotazů za sekundu (QPS) a jiné metriky
 
-### <a name="using-the-portal"></a>Použití portálu
+**Monitorování** kartě ukazuje klouzavé průměry pro metriky, jako je hledání *dotazy za sekundu* agregovat (QPS), za minutu. 
+*Latence hledání* je množství času potřebného vyhledávací službu ke zpracování vyhledávacích dotazů, agregují za minutu. *Omezených vyhledávacích dotazů procento* (není vidět) je procento vyhledávacích dotazů, které byly omezené také agregovaná za minutu.
 
-Pokud chcete monitorovat využití prostředků, zobrazit počty a statistiky pro vaši službu v [portál](https://portal.azure.com).
+![Dotazy na druhou aktivitu](./media/search-monitor-usage/monitoring-tab.png "dotazů za druhou aktivitu")
 
-1. Přihlaste se k [portálu](https://portal.azure.com).
-2. Otevřete řídící panel služby Azure Search. Dlaždice pro službu najdete na domovské stránce nebo můžete přejít na službu z procházení na panelu vlevo.
+## <a name="activity-logs"></a>Protokoly aktivit
 
-Využití část obsahuje měření, dozvíte, jaká část dostupných prostředků se právě používají. Informace o omezení za služeb pro úložiště, indexy a dokumenty, naleznete v tématu [omezení služby](search-limits-quotas-capacity.md).
+**Protokolu aktivit** shromažďuje informace z Azure Resource Manageru. Příklady informace nacházející se v protokolu aktivit: vytvoření nebo odstranění služby, aktualizuje skupinu prostředků, kontrola dostupnosti názvu nebo získat přístupový klíč služby pro zpracování požadavku. 
 
-  ![Dlaždice využití][2]
+Můžete přistupovat **protokolu aktivit** z levého navigačního podokna, nebo z oznámení v hlavní okno příkazového řádku nebo z **diagnostikovat a řešit problémy** stránky.
 
-> [!NOTE]
-> Na snímku obrazovky výše je bezplatná služba, která může mít nejvýše jednu repliku a každý oddíl a mohou pouze hostitele 3 indexy, 10 000 dokumentů nebo 50 MB dat, podle toho, co nastane dřív. Mnohem větší limity služby jsou služby vytvořené na úrovni Basic nebo Standard. Další informace o volbě vrstvu, naleznete v tématu [zvolte úrovně nebo SKU](search-sku-tier.md).
->
->
+Pro provozní úlohy, jako je vytvoření indexu nebo odstranění zdroje dat zobrazí se vám obecné oznámení jako "Získat klíč správce" pro každý požadavek, ale ne konkrétní vlastní akci. Tato úroveň informací je nutné povolit monitorování řešení doplňku.
 
-### <a name="using-the-rest-api"></a>S využitím REST API
-REST API služby Azure Search a sady .NET SDK poskytují programový přístup k metrikám služby.  Pokud používáte [indexery](https://msdn.microsoft.com/library/azure/dn946891.aspx) načtení indexu z Azure SQL Database nebo Azure Cosmos DB, je možné získat čísla, budete potřebovat další rozhraní API.
+## <a name="add-on-monitoring-solutions"></a>Monitorování řešení doplňků
 
-* [Získání statistik indexu](/rest/api/searchservice/get-index-statistics)
-* [Počet dokumentů](/rest/api/searchservice/count-documents)
-* [Získat stav indexeru](/rest/api/searchservice/get-indexer-status)
+Služba Azure Search neukládá data nad rámec objekty, které spravuje, což znamená, že protokol, který musí být uložená externě. Pokud chcete zachovat data protokolu nakonfigurujete prostředcích níže. 
 
-## <a name="how-to-export-logs-and-metrics"></a>Jak exportovat protokoly a metriky
+Následující tabulka porovnává možnosti pro ukládání protokolů a přidání podrobné monitorování operací služby a úlohy dotazů pomocí Application Insights.
 
-Můžete exportovat protokoly operací pro vaši službu a nezpracovaných dat pro metriky je popsáno v předchozí části. Protokoly operací umožňují víte, jak službu používá a můžou je využívat z Power BI po zkopírování dat do účtu úložiště. Azure search poskytuje monitorování balíček obsahu Power BI pro tento účel.
+| Prostředek | Používá pro |
+|----------|----------|
+| [Application Insights](https://docs.microsoft.com/azure/azure-monitor/app/app-insights-overview) | [Analýza provozu vyhledávání](search-traffic-analytics.md). Toto je jediné řešení, která zachycuje další informace týkající se požadavků, využití nad rámec hodnoty uvedené v následující schémata metriky a protokolování. S tímto přístupem budete kopírování a vkládání kód instrumentace do zdrojových souborů pro směrování informace o žádosti odeslané do služby Application Insights pro analýzu na vstupech termín dotazu, dotazy s nulovou shody a tak dále. Doporučujeme, abyste Power BI jako front-endu analytics k datům uloženým ve službě Application Insights.  |
+| [Blob Storage](https://docs.microsoft.com/azure/storage/blobs/storage-blobs-overview) | Požadavky a metriky, podle schémat níže. Události jsou protokolovány do kontejneru objektů Blob. Doporučujeme aplikace Excel nebo Power BI jako front-endu analýzy uložených dat v úložišti objektů Blob v Azure.|
+| [Centrum událostí](https://docs.microsoft.com/azure/event-hubs/) | Požadavky a metriky, podle schémat uvedeno v tomto článku. Tuto možnost zvolte jako služba alternativní data kolekce pro velmi objemné protokoly. |
 
+Azure search poskytuje monitorování [balíček obsahu Power BI](https://app.powerbi.com/getdata/services/azure-search) tak, aby můžete analyzovat data protokolů. Balíček obsahu se skládá ze sestav nakonfigurovat tak, aby automaticky se připojovat k vašim datům a nabízejí vizuální přehled o vaší vyhledávací služby. Další informace najdete v tématu [stránce nápovědy balíčku obsahu](https://powerbi.microsoft.com/documentation/powerbi-content-pack-azure-search/).
 
-### <a name="enabling-monitoring"></a>Povolení sledování
-Otevřete svou službu Azure Search v [webu Azure portal](https://portal.azure.com) pod možnost povolit monitorování.
+Možnost úložiště objektů Blob je k dispozici jako bezplatná sdílených služeb tak, aby vám ho můžou vyzkoušet zdarma po dobu životnosti vašeho předplatného Azure. Následující části vás provede kroky pro povolení a používání úložiště objektů Blob v Azure ke shromáždění a přístup k datům protokolů vytvořené operací Azure Search.
 
-Vyberte data, která chcete exportovat: Protokoly, metriky nebo obojí. Můžete zkopírovat do účtu úložiště, odesílat do centra událostí nebo exportovat je do Log Analytics.
+## <a name="enable-logging"></a>Povolit protokolování
 
-![Povolení monitorování na portálu][3]
+Protokolování pro úlohy indexování a dotazování je vypnuto ve výchozím nastavení a závisí na doplněk řešení pro protokolování infrastruktury a externí úložiště. Samostatně je jen trvalá data ve službě Azure Search indexy, takže protokoly musí být uloženy jinde.
 
-Pokud chcete povolit pomocí Powershellu nebo rozhraní příkazového řádku Azure, najdete v dokumentaci [tady](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs#how-to-enable-collection-of-diagnostic-logs).
+V této části se dozvíte, jak používat úložiště objektů Blob tak, aby obsahovala data protokolu událostí a metrik.
 
-### <a name="logs-and-metrics-schemas"></a>Metriky a protokoly a schématy
-Když jsou data zkopírována do účtu úložiště, jeho data formátovaná jako JSON a jeho pořadí ve dvou kontejnerů:
+1. [Vytvoření účtu úložiště](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account) pokud ho ještě nemáte. Je možné je umístit ve stejné skupině prostředků jako Azure Search pro zjednodušení vyčistit později, pokud chcete odstranit všechny prostředky používané v tomto cvičení.
+
+2. Otevřete stránku přehled vaší vyhledávací služby. V levém navigačním podokně přejděte dolů k položce **monitorování** a klikněte na tlačítko **povolit monitorování**.
+
+   ![Povolit monitorování](./media/search-monitor-usage/enable-monitoring.png "povolit monitorování")
+
+3. Vyberte data, která chcete exportovat: Protokoly, metriky nebo obojí. Můžete zkopírovat do účtu úložiště, odesílat do centra událostí nebo exportovat je do Log Analytics.
+
+   Pro archivaci do úložiště objektů Blob, musí existovat jenom účet úložiště. Kontejnery a objekty BLOB se vytvoří při exportu dat protokolu.
+
+   ![Archivní úložiště objektů blob konfigurace](./media/search-monitor-usage/configure-blob-storage-archive.png "konfigurace objektu blob úložiště archivu")
+
+4. Uložte profil.
+
+5. Test protokolování vytváření nebo odstraňování objektů (generuje operační protokol) a odesíláním dotazů (generuje metriky). 
+
+Po uložení profilu je povoleno protokolování, kontejnery jsou vytvořeny pouze po události do protokolu nebo měr. Může trvat několik minut, než kontejnery se zobrazí. Je možné [vizualizace dat v Power BI](#analyze-with-power-bi) až bude k dispozici.
+
+Když jsou data zkopírována do účtu úložiště, se data naformátovaná jako JSON a umístí do dvou kontejnerů:
 
 * insights – protokoly operationlogs: pro protokoly přenosů služby search
 * insights-metrics-pt1m: pro metriky
 
 Existuje jeden objekt blob, za hodinu a kontejner.
 
-Příklad cesty: `resourceId=/subscriptions/<subscriptionID>/resourcegroups/<resourceGroupName>/providers/microsoft.search/searchservices/<searchServiceName>/y=2015/m=12/d=25/h=01/m=00/name=PT1H.json`
+Příklad cesty: `resourceId=/subscriptions/<subscriptionID>/resourcegroups/<resourceGroupName>/providers/microsoft.search/searchservices/<searchServiceName>/y=2018/m=12/d=25/h=01/m=00/name=PT1H.json`
 
-#### <a name="log-schema"></a>Schéma protokolu
-Objekty BLOB protokolů obsahují protokoly přenosů služby search.
-Každý objekt blob má jeden kořenový objekt volána **záznamy** , která obsahuje pole objektů protokolu.
-Každý objekt blob má záznamy na všechny operace, ke kterým došlo během jedné hodiny.
+## <a name="log-schema"></a>Schéma protokolu
+Objekty BLOB obsahující protokoly přenosů služby vyhledávání jsou strukturované, jak je popsáno v této části. Každý objekt blob má jeden kořenový objekt volána **záznamy** obsahující pole objektů protokolu. Každý objekt blob obsahuje záznamy pro všechny operace, které došlo během jedné hodiny.
 
 | Název | Typ | Příklad: | Poznámky |
 | --- | --- | --- | --- |
-| time |datetime |"2015-12-07T00:00:43.6872559Z" |Časové razítko operace |
+| time |datetime |"2018-12-07T00:00:43.6872559Z" |Časové razítko operace |
 | resourceId |řetězec |"/ SUBSCRIPTIONS/11111111-1111-1111-1111-111111111111 /<br/>VÝCHOZÍ/RESOURCEGROUPS/POSKYTOVATELE /<br/> SPOLEČNOSTI MICROSOFT. HLEDÁNÍ/SEARCHSERVICES/SEARCHSERVICE" |Vaše ID prostředku |
 | operationName |řetězec |"Query.Search" |Název operace |
-| operationVersion |řetězec |"2015-02-28" |Používá rozhraní api-version |
+| operationVersion |řetězec |"2017-11-11" |Používá rozhraní api-version |
 | category |řetězec |"OperationLogs" |Konstanty |
 | resultType |řetězec |"Success" |Možné hodnoty: Úspěch nebo neúspěch |
 | resultSignature |int |200 |Kód výsledku protokolu HTTP |
@@ -110,17 +119,19 @@ Každý objekt blob má záznamy na všechny operace, ke kterým došlo během j
 | Název | Typ | Příklad: | Poznámky |
 | --- | --- | --- | --- |
 | Popis |řetězec |"GET /indexes('content')/docs" |Operace koncového bodu |
-| Dotaz |řetězec |"? hledání = AzureSearch & $count = true & verzi api-version = 2015-02-28" |Parametry dotazu |
+| Dotaz |řetězec |"?search=AzureSearch&$count=true&api-version=2017-11-11" |Parametry dotazu |
 | Dokumenty |int |42 |Počet zpracovaných dokumentů |
 | indexName |řetězec |"testindex" |Název přidružený k operaci indexu |
 
-#### <a name="metrics-schema"></a>Schématu metrik
+## <a name="metrics-schema"></a>Schématu metrik
+
+Metriky se vám budou zaznamenávat požadavků na dotazy.
 
 | Název | Typ | Příklad: | Poznámky |
 | --- | --- | --- | --- |
 | resourceId |řetězec |"/ SUBSCRIPTIONS/11111111-1111-1111-1111-111111111111 /<br/>VÝCHOZÍ/RESOURCEGROUPS/POSKYTOVATELE /<br/>SPOLEČNOSTI MICROSOFT. HLEDÁNÍ/SEARCHSERVICES/SEARCHSERVICE" |vaše id prostředku |
 | metricName |řetězec |"Latence" |Název metriky |
-| time |datetime |"2015-12-07T00:00:43.6872559Z" |časové razítko operace |
+| time |datetime |"2018-12-07T00:00:43.6872559Z" |časové razítko operace |
 | průměr |int |64 |Průměrná hodnota nezpracovanou ukázky metriky časový interval |
 | minimum |int |37 |Minimální hodnota nezpracovanou ukázky metriky časový interval |
 | maximum |int |78 |Maximální hodnota nezpracovanou ukázky metriky časový interval |
@@ -135,23 +146,39 @@ Představte si, že o tomto scénáři během jedné minuty: jedné sekundy vyso
 
 Pro ThrottledSearchQueriesPercentage, minimální, maximální, průměrné a celkový počet, všechny mají stejnou hodnotu: procento vyhledávacích dotazů, které byly omezené z celkového počtu vyhledávací dotazy za jednu minutu.
 
-## <a name="analyzing-your-data-with-power-bi"></a>Analýza dat pomocí Power BI
+## <a name="analyze-with-power-bi"></a>Analyzovat pomocí Power BI
 
-Doporučujeme používat [Power BI](https://powerbi.microsoft.com) k prozkoumání a vizualizace dat služby. Můžete snadno připojit k účtu úložiště Azure a rychle začít analýza vašich dat.
+Doporučujeme používat [Power BI](https://powerbi.microsoft.com) pro zkoumání a vizualizace dat, zejména v případě, že jste povolili [Analýza provozu vyhledávání](search-traffic-analytics.md). Další informace najdete v tématu [stránce nápovědy balíčku obsahu](https://powerbi.microsoft.com/documentation/powerbi-content-pack-azure-search/).
 
-Azure Search poskytuje [balíček obsahu Power BI](https://app.powerbi.com/getdata/services/azure-search) , který vám umožní monitorovat a porozumět provozu vyhledávání pomocí předdefinovaných grafů a tabulek. Obsahuje sadu sestav Power BI, které automaticky připojují k vašim datům a nabízejí vizuální přehled o vaší vyhledávací služby. Další informace najdete v tématu [stránce nápovědy balíčku obsahu](https://powerbi.microsoft.com/documentation/powerbi-content-pack-azure-search/).
+Připojení vyžadují klíč účtu úložiště název a přístup, který můžete získat z Azure stránek portálu na **přístupové klíče** stránky řídicího panelu vašeho účtu úložiště.
 
-![Řídicí panel Power BI pro službu Azure Search][4]
+1. Nainstalujte [Power BI Content Pack](https://app.powerbi.com/getdata/services/azure-search). Balíček obsahu přidá předdefinované grafů a tabulek, které jsou užitečné pro analýzu další data zachycená pro prohledání analýzy provozu. 
+
+   Pokud používáte účet Blob storage nebo jiný mechanismus úložiště a instrumentace nebyl přidán do vašeho kódu, můžete přeskočit tento balíček obsahu a použít integrované vizualizace Power BI.
+
+2. Otevřít **Power BI**, klikněte na tlačítko **získat Data** > **služby** > **Azure Search**.
+
+3. Zadejte název účtu úložiště vyberte **klíč** pro ověřování a pak vložte přístupový klíč.
+
+4. Import dat a pak klikněte na tlačítko **zobrazení dat**.
+
+Následující snímek obrazovky ukazuje předdefinovaných sestav a grafů pro analýzu hledání analýzu provozu.
+
+![Řídicí panel Power BI pro službu Azure Search](./media/search-monitor-usage/AzureSearch-PowerBI-Dashboard.png "řídicí panel Power BI pro službu Azure Search")
+
+## <a name="get-sys-info-apis"></a>Získat sys informace o rozhraní API
+Rozhraní REST API Azure Search a sady .NET SDK poskytují programový přístup k informace o službě metriky, indexu a indexeru a počty dokumentů.
+
+* [Získání statistiky služby](/rest/api/searchservice/get-service-statistics)
+* [Získání statistik indexu](/rest/api/searchservice/get-index-statistics)
+* [Počet dokumentů](/rest/api/searchservice/count-documents)
+* [Získat stav indexeru](/rest/api/searchservice/get-indexer-status)
+
+Pokud chcete povolit pomocí Powershellu nebo rozhraní příkazového řádku Azure, najdete v dokumentaci [tady](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs#how-to-enable-collection-of-diagnostic-logs).
 
 ## <a name="next-steps"></a>Další postup
-Kontrola [horizontální oddíly a replikami](search-limits-quotas-capacity.md) pokyny, jak vyrovnávat rozdělení oddílů a replik pro existující služby.
 
-Navštivte [Správa služby Search v Microsoft Azure](search-manage.md) Další informace o správu služby, nebo [výkon a optimalizace](search-performance-optimization.md) pro Průvodce laděním.
+[Správa služby Search v Microsoft Azure](search-manage.md) pro další informace o správě služby a [výkon a optimalizace](search-performance-optimization.md) pro Průvodce laděním.
 
-Další informace o vytváření úžasných sestav. Zobrazit [Začínáme s Power BI Desktopu](https://powerbi.microsoft.com/documentation/powerbi-desktop-getting-started/) podrobnosti
+Další informace o vytváření úžasných sestav. Zobrazit [Začínáme s Power BI Desktopu](https://powerbi.microsoft.com/documentation/powerbi-desktop-getting-started/) podrobnosti.
 
-<!--Image references-->
-[1]: ./media/search-monitor-usage/AzSearch-Monitor-BarChart.PNG
-[2]: ./media/search-monitor-usage/AzureSearch-Monitor1.PNG
-[3]: ./media/search-monitor-usage/AzureSearch-Enable-Monitoring.PNG
-[4]: ./media/search-monitor-usage/AzureSearch-PowerBI-Dashboard.png

@@ -3,7 +3,7 @@ title: Správa uživatelsky přiřazené spravované identity Azure pomocí rozh
 description: Krok za krokem pokyny o tom, jak vytvořit, vypsat a odstranit uživatel přiřazenou spravované identity pro volání rozhraní REST API.
 services: active-directory
 documentationcenter: ''
-author: daveba
+author: priyamohanram
 manager: daveba
 editor: ''
 ms.service: active-directory
@@ -13,13 +13,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 06/26/2018
-ms.author: daveba
-ms.openlocfilehash: 9ac036b11734e40d0f601f2416ef4892646e6390
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.author: priyamo
+ms.openlocfilehash: 3eee0c42fc5dd6970d6cae8e6be0dbdb800a09c5
+ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54425465"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54882426"
 ---
 # <a name="create-list-or-delete-a-user-assigned-managed-identity-using-rest-api-calls"></a>Vytvoření seznamu nebo odstranit uživatelem přidělenou spravovanou identitu volání rozhraní REST API
 

@@ -13,13 +13,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/11/2018
-ms.author: cwatson
-ms.openlocfilehash: 61eade9aa4edd3f0d6d32dc5a71d6cb97b1e4651
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.author: banders
+ms.openlocfilehash: a9f299f8987b5a2023d668d41c98b473f1a626d4
+ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54261872"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54902258"
 ---
 # <a name="view-all-your-billing-accounts-in-azure-portal"></a>Zobrazit všechny vaše účty fakturace na webu Azure portal  
 

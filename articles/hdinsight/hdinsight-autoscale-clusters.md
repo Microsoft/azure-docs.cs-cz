@@ -1,5 +1,5 @@
 ---
-title: Automatické škálování clusterů Azure HDInsight
+title: Automatické škálování clusterů Azure HDInsight (Preview)
 description: Pomocí funkce automatického škálování HDInsight pro automatické škálování clusterů
 services: hdinsight
 author: hrasheed-msft
@@ -9,14 +9,14 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 01/21/2019
 ms.author: hrasheed
-ms.openlocfilehash: 043c83e2039d87b1650ba17f770ce16a2ad2c13d
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: 977466d77bee2d6fe49c0438aa1d9d4489f8eb5f
+ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54811158"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54888222"
 ---
-# <a name="automatically-scale-azure-hdinsight-clusters"></a>Automatické škálování clusterů Azure HDInsight
+# <a name="automatically-scale-azure-hdinsight-clusters-preview"></a>Automatické škálování clusterů Azure HDInsight (Preview)
 
 Cluster Azure HDInsight automatického škálování, které funkce se automaticky škáluje podle počtu pracovních uzlů v clusteru směrem nahoru a dolů na základě zatížení v rámci předdefinovaného rozsahu. Při vytváření nového clusteru HDInsight můžete nastavit minimální a maximální počet pracovních uzlů. Automatické škálování a monitorování požadavků na prostředky analýzy načíst a upraví počet pracovních uzlů nahoru nebo dolů, odpovídajícím způsobem. Neexistuje žádné další poplatky za tuto funkci.
 
@@ -27,15 +27,17 @@ Cluster Azure HDInsight automatického škálování, které funkce se automatic
 > [!Note]
 > Automatické škálování je momentálně podporována pouze pro verze clusterů Azure HDInsight Hive, MapReduce a Spark 3.6.
 
-Postupujte podle kroků v [vytvoření linuxových clusterech v HDInsight pomocí webu Azure portal](hdinsight-hadoop-create-linux-clusters-portal.md) a v kroku 5, **velikost clusteru**vyberte **pracovní uzel automatického škálování (preview)** jak vidíte níže. 
+Kompletní HDInsight clusteru vytváření postup pomocí webu Azure Portal najdete v [vytvoření linuxových clusterech v HDInsight pomocí webu Azure portal](hdinsight-hadoop-create-linux-clusters-portal.md).  Povolení automatického škálování během procesu vytváření vyžaduje několik odchylky od obvykle instalační kroky.  
 
-![Možnost automatického škálování uzlů pracovního procesu](./media/hdinsight-autoscale-clusters/worker-node-autoscale-option.png)
+1. Vyberte **vlastní (velikost, nastavení, aplikace)** spíše než **rychlé vytvoření**.
+2. Na vlastní krok 5 **velikost clusteru**, zkontrolujte **automatického škálování uzlů pracovního procesu** zaškrtávací políčko.
+3. Zadejte požadované hodnoty pro:  
+  &#8226;Počáteční **počet pracovních uzlů**.  
+  &#8226;**Minimální** počet uzlů pracovního procesu.  
+  &#8226;**Maximální** počet uzlů pracovního procesu.  
 
-Zaškrtnutím této možnosti můžete zadat:
+![Možnost automatického škálování uzlů pracovního procesu](./media/hdinsight-autoscale-clusters/usingAutoscale.png)
 
-* Počáteční počet uzlů pracovního procesu
-* Minimální počet uzlů pracovního procesu
-* Maximální počet uzlů pracovního procesu
 
 Počáteční počet uzlů pracovního procesu se musí nacházet mezi minimální a maximální (včetně). Tato hodnota určuje počáteční velikost clusteru při jeho vytvoření. Minimální počet uzlů pracovního procesu musí být větší než nula.
 
@@ -43,12 +45,12 @@ Až zvolíte typ virtuálního počítače pro každý typ uzlu, bude moci zobra
 
 Vaše předplatné má kvótu kapacity pro každou oblast. Celkový počet jader z vašich hlavních uzlů v kombinaci s maximální počet pracovních uzlů nesmí překročit kapacitu kvóty. Nicméně tato kvóta je doporučené omezení; vždy můžete vytvořit lístek podpory a její navýšení snadno.
 
-> [!Note]
+> [!Note]  
 > Pokud překročíte limit kvóty celkový počet jader, zobrazí se chybová zpráva s oznámením "překročil maximální počet uzel dostupných jader v této oblasti, zvolte prosím jiné oblasti nebo požádejte podporu o navýšení kvóty."
 
 ### <a name="create-cluster-with-an-resource-manager-template"></a>Vytvoření clusteru pomocí šablony Resource Manageru
 
-Při vytváření clusteru služby HDInsight pomocí šablony Resource Manageru, je potřeba přidat následující nastavení v části "pracovní uzel" "computeProfile":
+Kompletní HDInsight clusteru vytváření postup pomocí šablon Resource Manageru najdete v [vytvořit Apache Hadoop clusterů v HDInsight pomocí šablon Resource Manageru](hdinsight-hadoop-create-linux-clusters-arm-templates.md).  Při vytváření clusteru služby HDInsight pomocí šablony Azure Resource Manageru, budete muset přidat následující nastavení v části "workernode" "computeProfile" a odpovídajícím způsobem upravit:
 
 ```json
 {                            

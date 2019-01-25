@@ -12,22 +12,19 @@ ms.devlang: na
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/14/2018
+ms.date: 01/24/2019
 ms.author: tomfitz
-ms.openlocfilehash: 32a0263c4c8c1e85145f5d11fd44823216efdcbc
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ms.openlocfilehash: f5824dd575514329f2363535d35f5197f81ec2a0
+ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54107051"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54901050"
 ---
 # <a name="resource-functions-for-azure-resource-manager-templates"></a>Prostředek funkce pro šablony Azure Resource Manageru
 
 Resource Manager poskytuje následující funkce pro načtení prostředků hodnot:
 
-* [listAccountSas](#list)
-* [klíče Listkey](#listkeys)
-* [listSecrets](#list)
 * [seznam *](#list)
 * [Zprostředkovatelé](#providers)
 * [Referenční dokumentace](#reference)
@@ -40,16 +37,11 @@ Chcete-li získat hodnoty z parametrů, proměnných nebo aktuální nasazení, 
 <a id="listkeys" />
 <a id="list" />
 
-## <a name="listaccountsas-listkeys-listsecrets-and-list"></a>listAccountSas klíče Listkey, listSecrets a seznam *
-`listAccountSas(resourceName or resourceIdentifier, apiVersion, functionValues)`
+## <a name="list"></a>seznam *
 
-`listKeys(resourceName or resourceIdentifier, apiVersion)`
+`list{Value}(resourceName or resourceIdentifier, apiVersion, functionValues)`
 
-`listSecrets(resourceName or resourceIdentifier, apiVersion)`
-
-`list{Value}(resourceName or resourceIdentifier, apiVersion)`
-
-Vrátí hodnoty pro libovolný typ prostředku, který podporuje operaci výpisu. Nejběžnější použití jsou `listKeys` a `listSecrets`. 
+Syntaxe pro tuto funkci se liší podle názvu operace výpisu. Každá implementace vrátí hodnoty pro typ prostředku, který podporuje operaci seznamu. Název operace musí začínat znakem `list`. Jsou některé běžné použití `listKeys` a `listSecrets`. 
 
 ### <a name="parameters"></a>Parametry
 
@@ -59,9 +51,139 @@ Vrátí hodnoty pro libovolný typ prostředku, který podporuje operaci výpisu
 | apiVersion |Ano |řetězec |Verze rozhraní API prostředku běhový stav. Obvykle ve formátu **rrrr mm-dd**. |
 | functionValues |Ne |objekt | Objekt, který obsahuje hodnoty pro funkci. Tento objekt poskytují pouze pro funkce, které podporují přijímá objekt s hodnotami parametrů, jako například **listAccountSas** v účtu úložiště. | 
 
+### <a name="implementations"></a>Implementace
+
+V následující tabulce jsou uvedeny možné použití seznamu *.
+
+| Typ prostředku | Název funkce |
+| ------------- | ------------- |
+| Microsoft.Addons/supportProviders | listsupportplaninfo |
+| Microsoft.AnalysisServices/servers | listGatewayStatus |
+| Microsoft.Automation/automationAccounts | klíče Listkey |
+| Microsoft.AzureStack/registrations/products | listDetails |
+| Microsoft.Batch/batchAccounts | klíče listkey |
+| Microsoft.BatchAI/workspaces/experiments/jobs | listoutputfiles |
+| Microsoft.BingMaps/mapApis | listSecrets |
+| Microsoft.BingMaps/mapApis | listSingleSignOnToken |
+| Microsoft.Cache/redis | klíče Listkey |
+| Microsoft.Cache/redis | listUpgradeNotifications |
+| Microsoft.CognitiveServices/accounts | klíče Listkey |
+| Microsoft.ContainerRegistry/registries/buildTasks | listSourceRepositoryProperties |
+| Microsoft.ContainerRegistry/registries/buildTasks/steps | listBuildArguments |
+| Microsoft.ContainerRegistry/registries | listBuildSourceUploadUrl |
+| Microsoft.ContainerRegistry/registries | listCredentials |
+| Microsoft.ContainerRegistry/registries | Funkce listPolicies |
+| Microsoft.ContainerRegistry/registries | listUsages |
+| Microsoft.ContainerRegistry/registries/runs | listLogSasUrl |
+| Microsoft.ContainerRegistry/registries/tasks | listDetails |
+| Microsoft.ContainerRegistry/registries/webhooks | listEvents |
+| Microsoft.ContainerService/managedClusters/accessProfiles | listCredential |
+| Microsoft.ContainerService/managedClusters | listClusterAdminCredential |
+| Microsoft.ContainerService/managedClusters | listClusterUserCredential |
+| Microsoft.ContentModerator/applications | listSecrets |
+| Microsoft.ContentModerator/applications | listSingleSignOnToken |
+| Microsoft.ContentModerator | listCommunicationPreference |
+| Microsoft.DataBox/jobs | listCredentials |
+| Microsoft.DataFactory/datafactories/gateways | listauthkeys |
+| Microsoft.DataFactory/factories/integrationruntimes | listauthkeys |
+| Microsoft.DataLakeAnalytics/accounts/storageAccounts/Containers | listSasTokens |
+| Microsoft.Devices/elasticPools/iotHubTenants/iotHubKeys | klíče listkey |
+| Microsoft.Devices/elasticPools/iotHubTenants | klíče Listkey |
+| Microsoft.Devices/iotHubs/iotHubKeys | klíče listkey |
+| Microsoft.Devices/iotHubs | klíče listkey |
+| Microsoft.Devices/provisioningServices/keys | klíče listkey |
+| Microsoft.Devices/provisioningServices | klíče listkey |
+| Microsoft.DevSpaces/controllers | listConnectionDetails |
+| Microsoft.DevTestLab/labs | ListVhds |
+| Microsoft.DevTestLab/labs/schedules | ListApplicable |
+| Microsoft.DevTestLab/labs/users/serviceFabrics | ListApplicableSchedules |
+| Microsoft.DevTestLab/labs/virtualMachines | ListApplicableSchedules |
+| Microsoft.DocumentDB/databaseAccounts | listConnectionStrings |
+| Microsoft.DocumentDB/databaseAccounts | klíče Listkey |
+| Microsoft.DomainRegistration | listDomainRecommendations |
+| Microsoft.DomainRegistration/topLevelDomains | listAgreements |
+| Microsoft.EventGrid/topics | klíče Listkey |
+| Microsoft.EventHub/namespaces/authorizationRules | klíče listkey |
+| Microsoft.EventHub/namespaces/disasterRecoveryConfigs/authorizationRules | klíče listkey |
+| Microsoft.EventHub/namespaces/eventhubs/authorizationRules | klíče listkey |
+| Microsoft.ImportExport/jobs | listBitLockerKeys |
+| Microsoft.Insights | ListMigrationDate |
+| Microsoft.LabServices/users | ListEnvironments |
+| Microsoft.LabServices/users | ListLabs |
+| Microsoft.LocationBasedServices/accounts | klíče Listkey |
+| Microsoft.LocationServices/accounts | klíče Listkey |
+| Microsoft.Logic/integrationAccounts/agreements | listContentCallbackUrl |
+| Microsoft.Logic/integrationAccounts/assemblies | listContentCallbackUrl |
+| Microsoft.Logic/integrationAccounts | listCallbackUrl |
+| Microsoft.Logic/integrationAccounts | listKeyVaultKeys |
+| Microsoft.Logic/integrationAccounts/maps | listContentCallbackUrl |
+| Microsoft.Logic/integrationAccounts/partners | listContentCallbackUrl |
+| Microsoft.Logic/integrationAccounts/schemas | listContentCallbackUrl |
+| Microsoft.Logic/workflows/accessKeys | list |
+| Microsoft.Logic/workflows | listCallbackUrl |
+| Microsoft.Logic/workflows | listSwagger |
+| Microsoft.Logic/workflows/runs/actions | listExpressionTraces |
+| Microsoft.Logic/workflows/runs/actions/repetitions | listExpressionTraces |
+| Microsoft.Logic/workflows/triggers | listCallbackUrl |
+| Microsoft.Logic/workflows/versions/triggers | listCallbackUrl |
+| Microsoft.MachineLearning/webServices | klíče listkey |
+| Microsoft.MachineLearning/Workspaces | listworkspacekeys |
+| Microsoft.MachineLearningCompute/operationalizationClusters | klíče Listkey |
+| Microsoft.MachineLearningServices/workspaces/computes | klíče Listkey |
+| Microsoft.MachineLearningServices/workspaces | klíče Listkey |
+| Microsoft.Maps/accounts | klíče Listkey |
+| Microsoft.MarketplaceApps/ClassicDevServices | listSecrets |
+| Microsoft.MarketplaceApps/ClassicDevServices | listSingleSignOnToken |
+| Microsoft.Media/mediaservices/assets | listContainerSas |
+| Microsoft.Media/mediaservices/assets | listStreamingLocators |
+| Microsoft.Media/mediaservices/streamingLocators | listContentKeys |
+| Microsoft.Media/mediaservices/streamingLocators | listPaths |
+| Microsoft.Network/applicationSecurityGroups | listIpConfigurations |
+| microsoft.network/vpngateways | listvpnconnectionshealth |
+| Microsoft.NotificationHubs/Namespaces/authorizationRules | klíče listkey |
+| Microsoft.NotificationHubs/Namespaces/NotificationHubs/authorizationRules | klíče listkey |
+| Microsoft.OperationalInsights/workspaces | klíče Listkey |
+| Microsoft.OperationalInsights/workspaces | klíče Listkey |
+| Microsoft.PolicyInsights/remediations | listDeployments |
+| Microsoft.Relay/namespaces/authorizationRules | klíče listkey |
+| Microsoft.Relay/namespaces/disasterRecoveryConfigs/authorizationRules | klíče listkey |
+| Microsoft.Relay/namespaces/HybridConnections/authorizationRules | klíče listkey |
+| Microsoft.Relay/namespaces/WcfRelays/authorizationRules | klíče listkey |
+| Microsoft.SaaS/saasresources | listaccesstoken |
+| Microsoft.Search/searchServices | listAdminKeys |
+| Microsoft.Search/searchServices | listQueryKeys |
+| Microsoft.ServiceBus/namespaces/authorizationRules | klíče listkey |
+| Microsoft.ServiceBus/namespaces/disasterRecoveryConfigs/authorizationRules | klíče listkey |
+| Microsoft.ServiceBus/namespaces/queues/authorizationRules | klíče listkey |
+| Microsoft.ServiceBus/namespaces/topics/authorizationRules | klíče listkey |
+| Microsoft.SignalRService/SignalR | listFeatures |
+| Microsoft.SignalRService/SignalR | klíče listkey |
+| Microsoft.Storage/storageAccounts | listAccountSas |
+| Microsoft.Storage/storageAccounts | klíče listkey |
+| Microsoft.Storage/storageAccounts | listServiceSas |
+| Microsoft.StorSimple/managers/devices | listFailoverSets |
+| Microsoft.StorSimple/managers/devices | listFailoverTargets |
+| Microsoft.StorSimple/managers | listActivationKey |
+| Microsoft.StorSimple/managers | listPublicEncryptionKey |
+| microsoft.web/apimanagementaccounts/apis/connections | listconnectionkeys |
+| microsoft.web/apimanagementaccounts/apis/connections | listsecrets |
+| Microsoft.Web/connectionGateways | ListStatus |
+| microsoft.web/connections | listconsentlinks |
+| Microsoft.Web/customApis | listWsdlInterfaces |
+| microsoft.web/locations | listwsdlinterfaces |
+| microsoft.web/sites/backups | list |
+| Microsoft.Web/sites/config | list |
+| microsoft.web/sites/functions | listsecrets |
+| microsoft.web/sites/hybridconnectionnamespaces/relays | klíče listkey |
+| microsoft.web/sites | listsyncfunctiontriggerstatus |
+| microsoft.web/sites/slots/backups | list |
+| Microsoft.Web/sites/slots/config | list |
+| microsoft.web/sites/slots/functions | listsecrets |
+
+
 ### <a name="return-value"></a>Návratová hodnota
 
-Vrácený objekt z klíče Listkey má následující formát:
+Seznam funkcí, které používáte, se liší vráceného objektu. Například klíče Listkey pro účet služby storage vrátí v následujícím formátu:
 
 ```json
 {
@@ -84,7 +206,7 @@ Další seznam funkce mají různé formáty návratový. Pokud chcete zobrazit 
 
 ### <a name="remarks"></a>Poznámky
 
-Všechny operace, která začíná textem **seznamu** může sloužit jako funkci ve vaší šabloně. Dostupné operace patří nejen klíče Listkey, ale také operace jako `list`, `listAdminKeys`, a `listStatus`. [SAS účtu seznamu](/rest/api/storagerp/storageaccounts#StorageAccounts_ListAccountSAS) operace vyžaduje parametrů těla zprávy požadavku, jako jsou *signedExpiry*. Chcete-li použít tuto funkci v šabloně, poskytnout objekt spolu s textem hodnoty parametrů.
+[SAS účtu seznamu](/rest/api/storagerp/storageaccounts#StorageAccounts_ListAccountSAS) operace vyžaduje parametrů těla zprávy požadavku, jako jsou *signedExpiry*. Chcete-li použít tuto funkci v šabloně, poskytnout objekt spolu s textem hodnoty parametrů.
 
 Pokud chcete zjistit, které typy prostředků máte seznam operace, máte následující možnosti:
 

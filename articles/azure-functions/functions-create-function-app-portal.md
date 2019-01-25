@@ -12,12 +12,12 @@ ms.topic: quickstart
 ms.date: 04/11/2017
 ms.author: glenga
 ms.custom: mvc
-ms.openlocfilehash: 1e27fb26b00502b63d6023b41b6a26b179b453be
-ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
-ms.translationtype: HT
+ms.openlocfilehash: a1d4af695807a6e2c5ef4ee74527083002bc6015
+ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44094038"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54900762"
 ---
 # <a name="create-a-function-app-from-the-azure-portal"></a>Vytvoření aplikace funkcí na webu Azure Portal
 
@@ -35,7 +35,7 @@ Po vytvoření aplikace funkcí můžete jednotlivé funkce vytvářet v jednom 
 
 ## <a name="service-plans"></a>Plány služby
 
-Azure Functions má dva různé plány služby: plán Consumption a plán služby App Service. Plán Consumption automaticky přiděluje výpočetní výkon za běhu kódu, podle potřeby se škáluje na více instancí s ohledem na zatížení a pak se škáluje na méně instancí, když kód není spuštěný. Plán služby App Service poskytuje aplikaci funkcí přístup ke všem zařízením služby App Service. Plán služby musíte zvolit při vytváření aplikace funkcí a v současné době nejde změnit. Další informace najdete v tématu [Výběr plánu hostování služby Azure Functions](functions-scale.md).
+Azure Functions nabízí dva různé plány služby: Plán consumption a plán služby App Service. Plán Consumption automaticky přiděluje výpočetní výkon za běhu kódu, podle potřeby se škáluje na více instancí s ohledem na zatížení a pak se škáluje na méně instancí, když kód není spuštěný. Plán služby App Service poskytuje aplikaci funkcí přístup ke všem zařízením služby App Service. Plán služby musíte zvolit při vytváření aplikace funkcí a v současné době nejde změnit. Další informace najdete v tématu [Výběr plánu hostování služby Azure Functions](functions-scale.md).
 
 Pokud v plánu služby App Service plánujete spouštět funkce JavaScriptu, měli byste zvolit plán s méně jádry. Další informace najdete v tématu [Referenční informace k JavaScriptu pro službu Functions](functions-reference-node.md#choose-single-vcpu-app-service-plans).
 
@@ -50,9 +50,6 @@ Při vytváření aplikace funkcí ve službě App Service musíte vytvořit neb
 
 Další informace o typech účtů úložiště najdete v tématu [Seznámení se službami Azure Storage](../storage/common/storage-introduction.md#azure-storage-services). 
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 [!INCLUDE [Functions quickstart next steps](../../includes/functions-quickstart-next-steps.md)]
-
-
-

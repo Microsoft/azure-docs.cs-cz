@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: sample
 ms.date: 11/15/2018
 ms.author: mjbrown
-ms.openlocfilehash: d101931fb2a4184ff9ffffc0aed4fc90fee2cbd5
-ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
+ms.openlocfilehash: c3a25f69424d56e77022a89580ace59259af0e47
+ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54452951"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54888613"
 ---
 # <a name="sql-query-examples-to-query-data-from-azure-cosmos-db"></a>Příklady dotazů SQL k dotazování dat ze služby Azure Cosmos DB
 

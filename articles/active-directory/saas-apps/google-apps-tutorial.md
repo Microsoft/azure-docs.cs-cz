@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 01/02/2019
 ms.author: jeedes
-ms.openlocfilehash: f37873fdbc26e1c82b6c1d9e6be8132641d94773
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: 4705bb8c93381a2487ba94f9dfe3a7e8820f2fd9
+ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54809169"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54902461"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-g-suite"></a>Kurz: Integrace Azure Active Directory s G Suite
 
@@ -75,11 +75,11 @@ Pokud chcete vyzkoušet kroky v tomto kurzu, postupujte podle těchto doporučen
 
     Odpověď: Pro toto nastavení je atribut e-mailové uživatelé moct přihlásit. Tento atribut nelze nastavit ručně.
 
-    Atribut e-mailu se vyplní automaticky pro každý uživatel s platnou licenci systému Exchange. Pokud uživatel není povolený e-mail, bude tato chyba přijmout, protože aplikace je potřeba získat tento atribut přístup.
+    Atribut e-mailu se vyplní automaticky pro každý uživatel s platnou licenci systému Exchange. Pokud uživatel není povoleným e-mailem, bude tato chyba přijmout, protože aplikace je potřeba získat tento atribut přístup.
 
-    Můžete přejít na portal.office.com pomocí účtu správce, pak klikněte na tlačítko v Centru pro správu, fakturace, předplatnými, vyberte předplatné Office 365 a potom kliknutím na přiřadit uživatele, vyberte uživatele, které chcete zkontrolovat svoje předplatné a v pravém podokně klikněte na Úprava licence.
+    Pokud budete chtít přiřaďte licenci pro Exchange, prosím přejít na portal.office.com pomocí účtu správce a pak klikněte na tlačítko v Centru pro správu, fakturace, předplatná, vyberte předplatné Office 365 a potom kliknout na přiřadit uživatelům, vyberte uživatele, kterého chcete zkontrolovat svoje předplatné a v pravém podokně klikněte na Upravit licence.
 
-    Po přiřazení licence O365, může trvat několik minut, který má být použita. Poté atribut user.mail se vyplní automaticky a problém by měly být opraveny.
+    Po přiřazení licence Exchange, může trvat několik minut, který má být použita. Poté atribut user.mail se vyplní automaticky a problém by měly být opraveny.
 
 ## <a name="scenario-description"></a>Popis scénáře
 

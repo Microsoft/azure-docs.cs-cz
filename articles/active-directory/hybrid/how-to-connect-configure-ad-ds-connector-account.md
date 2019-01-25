@@ -10,12 +10,12 @@ ms.topic: article
 ms.date: 01/14/2019
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: a23561e082736b7dfae6205e75fd1e9ccfab5f6c
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: bae80a63db480d6399c7d192561435494e183844
+ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54463384"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54900642"
 ---
 # <a name="azure-ad-connectconfigure-ad-ds-connector-account-permissions"></a>Azure AD Connect: Konfigurace oprávnění účtu AD DS konektoru 
 
@@ -205,21 +205,21 @@ Tato rutina se nastavit následující oprávnění:
 Pokud chcete nastavit oprávnění pro účet konektoru služby AD DS při použití zpětný zápis skupin, spusťte: 
 
 ``` powershell
-Set-ADSyncExchangeHybridPermissions -ADConnectorAccountName <String> -ADConnectorAccountDomain <String> [-SkipAdminSdHolders] [<CommonParameters>] 
+Set-ADSyncUnifiedGroupWritebackPermissions -ADConnectorAccountName <String> -ADConnectorAccountDomain <String> [-SkipAdminSdHolders] [<CommonParameters>] 
 ```
 Nebo; 
 
 ``` powershell
-Set-ADSyncExchangeHybridPermissions -ADConnectorAccountDN <String> [-ADobjectDN <String>] [<CommonParameters>]
+Set-ADSyncUnifiedGroupWritebackPermissions -ADConnectorAccountDN <String> [-ADobjectDN <String>] [<CommonParameters>]
 ```
  
 Tato rutina se nastavit následující oprávnění: 
 
 |Typ |Název |Access |Platí pro|
 |-----|-----|-----|-----| 
-|Povolit |Účet konektoru služby AD DS |Obecný čtení/zápisu |Objekty potomkem skupiny| 
-|Povolit |Účet konektoru služby AD DS |Vytvoření nebo odstranění podřízený objekt |Tento objekt a všechny podřízené objekty| 
-|Povolit |Účet konektoru služby AD DS |Vytvořit/odstranit objekt a všechny jeho podřízené položky |Tento objekt a všechny podřízené objekty|
+|Povolit |Účet konektoru služby AD DS |Obecný čtení/zápisu |Všechny atributy skupiny typ objektu a podobjektů| 
+|Povolit |Účet konektoru služby AD DS |Vytvoření nebo odstranění podřízený objekt |Všechny atributy skupiny typ objektu a podobjektů| 
+|Povolit |Účet konektoru služby AD DS |Odstranit, odstranění stromu objektů|Všechny atributy skupiny typ objektu a podobjektů|
 
 ### <a name="permissions-for-exchange-hybrid-deployment"></a>Oprávnění pro hybridní nasazení systému Exchange 
 Pokud chcete nastavit oprávnění pro účet konektoru služby AD DS při použití hybridní nasazení systému Exchange, spusťte: 

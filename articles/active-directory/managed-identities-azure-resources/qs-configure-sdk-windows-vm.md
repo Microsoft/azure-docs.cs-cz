@@ -3,7 +3,7 @@ title: Konfigurace virtuálního počítače pomocí spravované identity pro pr
 description: Podrobné pokyny pro konfiguraci a použití spravované identity pro prostředky Azure na virtuálním počítači Azure pomocí sady Azure SDK.
 services: active-directory
 documentationcenter: ''
-author: daveba
+author: priyamohanram
 manager: daveba
 editor: ''
 ms.service: active-directory
@@ -13,13 +13,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 09/28/2017
-ms.author: daveba
-ms.openlocfilehash: 9e34254a55e0642d0a2628c17d7f8fa48ec6c916
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.author: priyamo
+ms.openlocfilehash: 7d95600323e862513c1856a5015f400e2ae814eb
+ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54421415"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54887236"
 ---
 # <a name="configure-a-vm-with-managed-identities-for-azure-resources-using-an-azure-sdk"></a>Konfigurace virtuálního počítače pomocí spravované identity pro prostředky Azure pomocí sady Azure SDK
 

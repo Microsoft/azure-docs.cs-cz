@@ -1,7 +1,7 @@
 ---
 title: Příručka pro vývojáře Java pro službu App Service v Linuxu – Azure | Dokumentace Microsoftu
 description: Zjistěte, jak nakonfigurovat aplikace v Javě spuštěné v Azure App Service v Linuxu.
-keywords: služby Azure app service, web Apps, linux, oss, java
+keywords: azure app service, web app, linux, oss, java
 services: app-service
 author: rloutlaw
 manager: angerobe
@@ -13,12 +13,12 @@ ms.topic: article
 ms.date: 12/10/2018
 ms.author: routlaw
 ms.custom: seodec18
-ms.openlocfilehash: 6f6dac37d1114e8a9faa16c07fd5c14a90a5b0fb
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: 653d88aafc683b8a67e93945c62a99bbcf8c92fc
+ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53976728"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54900670"
 ---
 # <a name="java-developers-guide-for-app-service-on-linux"></a>Příručka pro vývojáře Java pro službu App Service v Linuxu
 
@@ -139,7 +139,7 @@ Nastavení ověřování aplikace na webu Azure Portal s **ověřování a autor
 
 Pokud je potřeba povolit více poskytovatelů přihlásit, postupujte podle pokynů [přizpůsobit ověřování pomocí služby App Service](https://docs.microsoft.com/azure/app-service/app-service-authentication-how-to) článku.
 
- Aplikace Spring Boot vývojáři mohou použít [Azure Active Directory Spring Boot starter](/java/azure/spring-framework/configure-spring-boot-starter-java-app-with-azure-active-directory?view=azure-java-stable) k zabezpečení aplikace pomocí známých poznámky k zabezpečení Spring a rozhraní API.
+Aplikace Spring Boot vývojáři mohou použít [Azure Active Directory Spring Boot starter](/java/azure/spring-framework/configure-spring-boot-starter-java-app-with-azure-active-directory?view=azure-java-stable) k zabezpečení aplikace pomocí známých poznámky k zabezpečení Spring a rozhraní API. Je potřeba ke zvětšení maximální záhlaví ve vaší `application.properties` souboru. Doporučujeme, aby hodnota `16384`. 
 
 ### <a name="configure-tlsssl"></a>Konfigurace TLS/SSL
 

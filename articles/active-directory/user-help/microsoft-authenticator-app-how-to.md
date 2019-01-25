@@ -1,6 +1,6 @@
 ---
-title: Začínáme s aplikací Microsoft Authenticator – Azure Active Directory | Dokumentace Microsoftu
-description: Zjistěte, jak upgradovat na nejnovější verzi aplikace Microsoft Authenticator.
+title: Stáhněte a nainstalujte aplikaci Microsoft Authenticator – Azure Active Directory | Dokumentace Microsoftu
+description: Jak stáhnout, nainstalovat a používat k dvojúrovňovému ověřování aplikace Microsoft Authenticator.
 services: active-directory
 author: eross-msft
 manager: daveba
@@ -9,108 +9,40 @@ ms.service: active-directory
 ms.workload: identity
 ms.component: user-help
 ms.topic: conceptual
-ms.date: 07/30/2018
+ms.date: 01/24/2019
 ms.author: lizross
-ms.reviewer: librown
-ms.openlocfilehash: 43c09bc01e0ed5bd9093242db9183883e402a6f1
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.reviewer: olhaun
+ms.openlocfilehash: 6a55be6a7443017250a00a473fd57cd7d49226aa
+ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54825574"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54902716"
 ---
-# <a name="get-started-with-the-microsoft-authenticator-app"></a>Začínáme s aplikací Microsoft Authenticator
+# <a name="download-and-install-the-microsoft-authenticator-app"></a>Stáhněte a nainstalujte aplikaci Microsoft Authenticator
+Aplikace Microsoft Authenticator přispívá k přihlášení k účtům používáte dvojúrovňového ověřování. Dvoufaktorové ověření vám umožní přístup k účtům bezpečněji, zejména při zobrazování citlivé informace. Protože hesla mohou být vymazány, někdo je ukradne nebo ohrožení zabezpečení, dvojúrovňového ověřování je krok dodatečné zabezpečení, která pomáhá chránit váš účet kvůli tomu je těžší jinými lidmi, kteří možnost proniknout.
 
-Aplikace Microsoft Authenticator pomůže zabránit neoprávněnému přístupu k účtům a zastavit podvodné transakce poskytuje další úroveň zabezpečení pro váš pracovní nebo školní účet (třeba alain@contoso.com) nebo osobního účtu Microsoft (pro například alain@outlook.com).
+Můžete použít aplikaci Microsoft Authenticator několika různými způsoby, včetně:
 
-Při použití aplikace pro dvoustupňové ověřování, můžete pracovat v jednom ze dvou způsobů:
+- **Dvoufaktorové ověřování.** Standardní metodu ověření, kde jedním z faktorů je vaše heslo. Po přihlášení pomocí uživatelského jména a hesla, můžete schválit oznámení nebo zadejte poskytnutý ověřovací kód.
 
-- **Oznámení.** Aplikace odešle oznámení do zařízení. Ujistěte se, že oznámení je vpravo a pak vyberte **ověřte**. Pokud není povědomý oznámení, vyberte **Odepřít**. Po kliknutí na **Odepřít**, můžete také označit žádosti jako podvodné.
+- **Přihlašování telefonem.** Verze dvojúrovňové ověřování, která vám umožní přihlášení bez hesla, vaše uživatelské jméno a vašeho mobilního zařízení pomocí otisků prstů, rozpoznávání tváře nebo PIN kód.
 
-- **Ověřovací kód.** Po zadání uživatelského jména a hesla, můžete otevřít aplikaci a zkopírujte ověřovací kód, který je k dispozici na **účty** obrazovky k obrazovce přihlášení. Ověřovací kód, který funguje jako druhou podobu ověřování.
+>[!NOTE]
+>Pokud máte potíže s přihlášením k účtu, najdete v článku [když nemůžete se přihlásit ke svému účtu Microsoft](https://support.microsoft.com/help/12429) nápovědu.  Získat další informace o tom, jak postupovat, když se zobrazí ["Tento účet Microsoft neexistuje"](https://support.microsoft.com/help/13811) zpráva při pokusu o přihlášení k účtu Microsoft.
 
-## <a name="opt-in-for-two-step-verification"></a>Vyjádřit výslovný souhlas pro dvoustupňové ověřování.
+## <a name="download-and-install-the-app"></a>Stažení a instalace aplikace
+Nainstalujte nejnovější verzi aplikace Microsoft Authenticator, podle vašeho operačního systému:
 
-Vaše organizace rozhodne, zda použít dvoustupňové ověření pomocí svého pracovního nebo školního účtu. Správce vám dá vědět, jaké metody ověřování je potřeba nastavit a použít. Další informace najdete v tématu [Azure Multi-Factor Authentication význam pro mě](multi-factor-authentication-end-user.md).
+- **Google Android.** Na zařízení s Androidem, přejděte na web Google Play a [stáhnout a nainstalovat aplikaci Microsoft Authenticator](https://app.adjust.com/e3rxkc_7lfdtm?fallback=https%3A%2F%2Fplay.google.com%2Fstore%2Fapps%2Fdetails%3Fid%3Dcom.azure.authenticator).
 
-Pro svůj osobní účet Microsoft můžete nastavit dvoustupňové ověřování pro sebe. Podrobnější informace a pokyny najdete v článku [o dvoustupňovém ověřování](https://support.microsoft.com/help/12408/microsoft-account-about-two-step-verification).
+- **Apple iOS.** Na zařízení s Iosem Apple přejděte na App Store na [stáhnout a nainstalovat aplikaci Microsoft Authenticator](https://app.adjust.com/e3rxkc_7lfdtm?fallback=https%3A%2F%2Fitunes.apple.com%2Fus%2Fapp%2Fmicrosoft-authenticator%2Fid983156458).
 
-Můžete také použít aplikaci Microsoft Authenticator s účty jiných společností než Microsoft. Tyto účty mohou volat funkci něco jiného než dvoustupňové ověřování, ale by měl být schopen najít v rámci zabezpečení nebo nastavení přihlášení. Další informace o tom, jak nastavit tyto účty jiných společností než Microsoft naleznete v tématu [Zákaznická podpora Microsoftu vás videa](https://www.youtube.com/playlist?list=PLyhj1WZ29G65QdD9NxTOAm8HwOS-OBUrX).
-
-## <a name="install-the-app"></a>Nainstalujte si aplikaci
-
-Aplikace Microsoft Authenticator je k dispozici pro [Android](https://go.microsoft.com/fwlink/?linkid=866594), [iOS](https://go.microsoft.com/fwlink/?linkid=866594) a [Windows Phone](https://go.microsoft.com/fwlink/?Linkid=825071). Pokud chcete získat co nejlepších výsledků, byste pak měli nechat aplikací, dostávat oznámení, když budete vyzváni. 
-
-## <a name="add-accounts-to-the-app"></a>Přidat účty do aplikace
-
-Pracovní nebo školní účty nebo osobní účty můžete přidat do aplikace Microsoft Authenticator. 
-
-### <a name="add-a-personal-microsoft-account"></a>Přidat osobního účtu Microsoft
-
-Pro osobní účet Microsoft (ten, který používáte pro přihlášení k Outlook.com, Xbox, Skype, atd.) vše, co musíte udělat, je přihlásit ke svému účtu v aplikaci Microsoft Authenticator.
-
-### <a name="add-a-work-or-school-account"></a>Přidat pracovní nebo školní účet
-
-1. Pokud je to možné, přejděte [dalšího ověření zabezpečení](https://aka.ms/mfasetup) obrazovky na jiný počítač nebo zařízení. Informace o tom, jak na této obrazovce najdete v tématu [změnou nastavení zabezpečení](multi-factor-authentication-end-user-manage-settings.md#where-to-find-the-settings-page) nebo se obraťte na svého správce.
+- **Windows Phone.** Na váš Windows Phone přejděte na Microsoft Store pro [stáhnout a nainstalovat aplikaci Microsoft Authenticator](https://app.adjust.com/e3rxkc_7lfdtm?fallback=https%3A%2F%2Fwww.microsoft.com%2Fen-us%2Fp%2Fmicrosoft-authenticator%2F9nblgggzmcj6).
 
     >[!Note]
-    >Pokud správce zapnul prostředí zabezpečení informací ve verzi preview, můžete postupujte podle pokynů [nastavení bezpečnostní údaje pro použití ověřovací aplikaci](security-info-setup-auth-app.md) oddílu.
-
-2. Zaškrtněte políčko vedle položky **aplikace Authenticator**a pak vyberte **konfigurovat**.
-
-    ![Tlačítko Konfigurovat v dialogovém okně Nastavení ověření zabezpečení](./media/microsoft-authenticator-app-how-to/auth-app-configure.png)
-
-    **Konfigurace mobilní aplikace** obrazovky pomocí kódu QR můžete zkontrolovat pomocí ověřovací aplikace.
-
-    ![Obrazovka, která obsahuje kód QR](./media/microsoft-authenticator-app-how-to/auth-app-barcode.png)
-
-3. Otevřete aplikaci Microsoft Authenticator. Na **účty** obrazovky, vyberte **přidat účet**a pak vyberte **pracovní nebo školní účet**.
-
-4. Použít fotoaparát v zařízení kód QR naskenovat a potom vyberte **provádí** zavřete obrazovky kód QR.
-
-    >[!Note]
-    >Pokud vaše kamera nepracuje správně, můžete si [QR kód a adresu URL zadat ručně](#add-an-account-to-the-app-manually).
-
-    **Účty** obrazovka aplikace ukazuje název účtu a ověřovací šestimístný kód. Za účelem zvýšení zabezpečení ověřovací kód, který změní každých 30 sekund vám zakázala používat stejný kód dvakrát.  
-
-    ![obrazovka s účty](./media/microsoft-authenticator-app-how-to/auth-app-accounts.png)
-
-### <a name="add-an-account-to-the-app-manually"></a>Ručně přidat účet do aplikace
-
-1. Přejděte **dalšího ověření zabezpečení** obrazovky. Informace o tom, jak získat na této obrazovce najdete v tématu [změnou nastavení zabezpečení](multi-factor-authentication-end-user-manage-settings.md#where-to-find-the-settings-page).
-
-2. Zaškrtněte políčko vedle položky **aplikace Authenticator**a pak vyberte **konfigurovat**.
-
-    **Konfigurace mobilní aplikace** obrazovky.
-
-3. Zkopírujte kód a adresa URL informací z **konfigurace mobilní aplikace** obrazovky, takže můžete ručně zadat do skener QR.
-
-4. Otevřete aplikaci Microsoft Authenticator. Na **účty** obrazovky, vyberte **přidat účet**a pak vyberte **pracovní nebo školní účet**.
-
-5. Na obrazovce skener kódů QR, vyberte **zadat kód ručně**.
-
-    ![Obrazovka pro skenování kódu QR](./media/microsoft-authenticator-app-how-to/auth-app-manual-code.png)
-   
-6. Zadejte kód a adresu URL z obrazovky pomocí kódu QR do **přidat účet** obrazovky a pak vyberte **Dokončit**.
-
-    ![Obrazovka pro zadání kód a adresu URL](./media/microsoft-authenticator-app-how-to/auth-app-code-url.png)
-
-    **Účty** obrazovka aplikace ukazuje název účtu a ověřovací šestimístný kód. Za účelem zvýšení zabezpečení ověřovací kód, který změní každých 30 sekund vám zakázala používat stejný kód dvakrát.
-
-### <a name="using-your-devices-fingerprint-or-facial-recognition-capabilities"></a>Použití funkce rozpoznávání obličeje nebo otisků prstů vašeho zařízení
-
-Vaše organizace může vyžadovat kód PIN k dokončení ověření vaší identity. Použití funkce rozpoznávání obličeje nebo otisků prstů vašeho zařízení místo kódu PIN můžete nastavit aplikaci Microsoft Authenticator. Tento parametr můžete nastavit až při prvním použití aplikace authenticator se ověřit svůj účet tak, že vyberete možnost použít vaše možnosti biometrických zařízení jako identifikace místo PIN kódu.
-
-## <a name="use-the-app-when-you-sign-in"></a>Použití aplikace při přihlášení
-
-Poté, co vaše účty přidáte do aplikace, můžete použít aplikaci pro přihlášení k účtům.
-
-Pokud jste se rozhodli použít ověřovací kódy v aplikaci, budete k jejich zobrazení na spuštění **účty** stránky. Kódy změnit každých 30 sekund, takže máte vždycky nový kód, v případě potřeby. Ale není nutné provádět s nimi až po přihlášení a výzva k zadání ověřovacího kódu.
+    >Proces přihlašování telefonu nelze použít na telefonech Windows Phone. Je nutné použít standardní ověřovací proces, jak je popsáno v [nastavit dvoustupňové ověřování](multi-factor-authentication-end-user-first-time.md) článku.
 
 ## <a name="next-steps"></a>Další postup
 
-- Pokud máte další obecné dotazy o aplikaci, přečtěte si téma [nejčastější dotazy k aplikaci Microsoft Authenticator](microsoft-authenticator-app-faq.md)
-
-- Pokud chcete získat další informace o dvoustupňovém ověřování, přečtěte si téma [nastavit účtu pro dvoustupňové ověřování.](multi-factor-authentication-end-user-first-time.md)
-
-- Pokud chcete získat další informace o bezpečnostních údajů, přečtěte si téma [spravovat svoje bezpečnostní údaje](security-info-manage-settings.md)
+- Po stažení a instalaci aplikace, je nutné přidat různé účty. Další informace najdete v tématu [přidat své účty](microsoft-authenticator-app-add-accounts-overview.md).

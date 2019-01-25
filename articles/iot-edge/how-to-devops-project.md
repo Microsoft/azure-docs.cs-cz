@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: 114b6b0cc0fd4e8e51a9dbf2cdc8d9e2a2261754
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: 57279a4e92b1f42505003f12d41c8203aa5603d4
+ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54823483"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54881865"
 ---
 # <a name="create-a-cicd-pipeline-for-iot-edge-with-azure-devops-projects-preview"></a>Vytvoření kanálu CI/CD pro IoT Edge s projekty Azure DevOps (Preview)
 
@@ -38,7 +38,7 @@ Projekty DevOps vytvoří kanál CI/CD v Azure DevOps. Můžete vytvořit novou 
 
    ![Vyberte jazyk, který chcete vytvořit novou aplikaci](./media/how-to-devops-project/select-language.png)
 
-2. Vyberte **jednoduché IoT (Preview)** jako Framework aplikace a pak vyberte **Další**.
+2. Vyberte **jednoduché IoT (Preview)** jako aplikační platformu a pak vyberte **Další**.
 
    ![Vyberte architekturu jednoduché IoT](media/how-to-devops-project/select-iot.png)
 
@@ -73,7 +73,7 @@ Projekty DevOps vytvoří úložiště Git pro svůj projekt v úložišti Azure
 
 1. Chcete-li přejít k úložišti pro váš projekt vytvoří, vyberte **úložišť** v nabídce řídicího panelu Projekt.  
 
-   ![Zobrazení úložiště v generované v úložišti Azure](./media/how-to-devops-project/view-repositories.png)
+   ![Zobrazení úložiště vygenerované v úložišti Azure](./media/how-to-devops-project/view-repositories.png)
 
 2. Následující kroky se provedou pomocí webového prohlížeče provádět změny kódu. Pokud chcete místo toho klonování úložiště místně, vyberte **klonování** shora napravo od okna. Pomocí adresy URL klonování úložiště Git ve Visual Studio Code nebo svůj upřednostňovaný vývojový nástroj. 
 
@@ -93,7 +93,7 @@ Projekty DevOps vytvoří úložiště Git pro svůj projekt v úložišti Azure
 
 ## <a name="examine-the-cicd-pipeline"></a>Prozkoumejte kanálu CI/CD
 
-Projekty Azure DevOps v předchozích částech, automaticky nakonfiguruje úplný kanál CI/CD pro vaši aplikaci IoT Edge. Pak můžete otestovat, vytvoření kanálu pomocí potvrzování změn do jednoho ze souborů. Nyní prozkoumejte a podle potřeby upravte kanál. Proveďte následující kroky a seznamte se s Azure DevOps sestavení a vydávání kanálů.
+Projekty Azure DevOps v předchozích částech, automaticky nakonfiguruje úplný kanál CI/CD pro vaši aplikaci IoT Edge. Potom můžete testované sestavení kanálu potvrzení změn na jeden ze souborů. Nyní prozkoumejte a podle potřeby upravte kanál. Proveďte následující kroky a seznamte se s Azure DevOps sestavení a vydávání kanálů.
 
 1. Chcete-li zobrazit kanály pro sestavování ve vašem projektu DevOps, vyberte **vytvářet kanály** v nabídce řídicího panelu Projekt. Tento odkaz otevře na kartě prohlížeče a vytvoření kanálu pro nový projekt Azure DevOps.
 

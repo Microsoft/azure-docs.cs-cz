@@ -9,15 +9,15 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: tutorial
-ms.date: 12/08/2018
+ms.date: 01/23/2019
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: 42ffecec896265f99a8f1f0b43b47c1988a493d6
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: c3205163cf8796441e676e1775e4300d44a4012e
+ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53133889"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54884907"
 ---
 # <a name="tutorial-analyze-videos-with-media-services-v3-using-apis"></a>Kurz: Analýza videa pomocí Media Services v3 pomocí rozhraní API
 
@@ -65,8 +65,8 @@ Tato část prozkoumává funkce definované v souboru [Program.cs](https://gith
 
 Tato ukázka provede následující akce:
 
-1. Vytvoří transformaci a úlohu analyzující vaše video.
-2. Vytvoří vstupní prostředek a nahraje do něj video. Prostředek se použije jako vstup úlohy.
+1. Vytvoří **transformace** a **úlohy** , která analyzuje vaše video.
+2. Vytvoří vstup **Asset** a nahraje video do něj. Prostředek se použije jako vstup úlohy.
 3. Vytvoří výstupní prostředek, který ukládá výstup úlohy. 
 4. Odešle úlohu.
 5. Zkontroluje stav úlohy.

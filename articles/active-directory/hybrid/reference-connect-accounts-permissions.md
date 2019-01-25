@@ -13,15 +13,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/26/2018
+ms.date: 01/24/2019
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 403fd0679e0850d758dd0e2f65cec3fe2ff79965
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: 784599d682ab05b599f32b3fb502ed840f031ce8
+ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54478599"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54902003"
 ---
 # <a name="azure-ad-connect-accounts-and-permissions"></a>Azure AD Connect: Účty a oprávnění
 
@@ -136,7 +136,7 @@ Oprávnění, která budete potřebovat, závisí na volitelné funkce povolíte
 | Veřejné složky pošty Exchange |Oprávnění ke čtení pro atributy uvedené v [veřejné složky pošty Exchange](reference-connect-sync-attributes-synchronized.md#exchange-mail-public-folder) u veřejných složek. | 
 | Zpětný zápis hesla |Oprávnění k zápisu do atributy uvedené v [Začínáme se správou hesel](../authentication/howto-sspr-writeback.md) pro uživatele. |
 | Zpětný zápis zařízení |Oprávnění udělená pomocí skriptu prostředí PowerShell, jak je popsáno v [zpětný zápis zařízení](how-to-connect-device-writeback.md). |
-| Zpětný zápis skupin |Přečtěte si, vytvoření, aktualizace a odstranění skupiny objektů, pro synchronizována **skupiny Office 365**.  Další informace najdete v části [zpětný zápis skupin](how-to-connect-preview.md#group-writeback).|
+| Zpětný zápis skupin |Umožňuje zpětný zápis **skupiny Office 365** do doménové struktury se serverem Exchange nainstalovaný.  Další informace najdete v části [zpětný zápis skupin](how-to-connect-preview.md#group-writeback).|
 
 ## <a name="upgrade"></a>Upgrade
 Když upgradujete z jedné verze nástroje Azure AD Connect na novou verzi, potřebujete následující oprávnění:

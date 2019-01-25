@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 11/15/2018
+ms.date: 01/23/2019
 ms.author: jingwang
-ms.openlocfilehash: df8d337e7950400a86dcab14de4484f4811f43e2
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: b8ce3cdb55d164cefc8b85314a2fa79b4f901a08
+ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54025075"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54887338"
 ---
 # <a name="copy-data-to-and-from-azure-sql-database-managed-instance-using-azure-data-factory"></a>Kopírování dat do a z Azure SQL Database Managed Instance pomocí služby Azure Data Factory
 
@@ -33,9 +33,13 @@ Konkrétně tento konektor Azure SQL Database Managed Instance podporuje:
 - Jako zdroj načítání dat pomocí jazyka SQL nebo uloženou proceduru.
 - Jako jímku přidávání dat do cílové tabulky nebo volání uložené procedury s vlastní logikou během kopírování.
 
+SQL Server [s funkcí Always Encrypted](https://docs.microsoft.com/sql/relational-databases/security/encryption/always-encrypted-database-engine?view=sql-server-2017) není nyní podporován. 
+
 ## <a name="prerequisites"></a>Požadavky
 
-Pokud chcete použít kopírování dat z Azure SQL Database Managed Instance, který se nachází ve virtuální síti, musíte nastavit modul Integration Runtime ve stejné virtuální síti s přístupem k databázi. Zobrazit [modul Integration Runtime](create-self-hosted-integration-runtime.md) , kde najdete podrobnosti.
+Pokud chcete použít kopírování dat z Azure SQL Database Managed Instance, který se nachází ve virtuální síti, musíte nastavit modul Integration Runtime, které máte přístup k databázi. Zobrazit [modul Integration Runtime](create-self-hosted-integration-runtime.md) , kde najdete podrobnosti.
+
+Pokud zřizujete vaše místní prostředí IR ve stejné virtuální síti jako Managed Instance, ujistěte se, že váš počítač reakcí na Incidenty je v jiné podsíti, než Managed Instance. Pokud zřizujete vaše místní prostředí IR v jiné virtuální sítě než Managed Instance, můžete použít buď partnerský vztah virtuální sítě nebo virtuální sítě pro připojení k virtuální síti. Zobrazit [vaši aplikaci do Azure SQL Database Managed Instance připojit](../sql-database/sql-database-managed-instance-connect-app.md).
 
 ## <a name="getting-started"></a>Začínáme
 
@@ -49,7 +53,7 @@ Pro Azure SQL Database Managed Instance propojené služby jsou podporovány ná
 
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
-| type | Vlastnost type musí být nastavená na: **Systému SQL Server** | Ano |
+| type | Vlastnost type musí být nastavená na: **SqlServer** | Ano |
 | připojovací řetězec |Zadejte připojovací řetězec informace potřebné pro připojení k Managed Instance pomocí ověřování SQL nebo ověřování Windows. Přečtěte si v následujícím příkladu. Označte toto pole jako SecureString bezpečně uložit ve službě Data Factory nebo [odkazovat tajného klíče do služby Azure Key Vault](store-credentials-in-key-vault.md). |Ano |
 | uživatelské jméno |Pokud používáte ověřování Windows, zadejte uživatelské jméno. Příklad: **domainname\\uživatelské jméno**. |Ne |
 | heslo |Zadejte heslo pro uživatelský účet, který jste zadali pro uživatelské jméno. Označte toto pole jako SecureString bezpečně uložit ve službě Data Factory nebo [odkazovat tajného klíče do služby Azure Key Vault](store-credentials-in-key-vault.md). |Ne |
@@ -502,7 +506,7 @@ Při kopírování dat z/do Azure SQL Database Managed Instance, se používají
 | smalldatetime |DateTime |
 | smallint |Int16 |
 | Smallmoney |Decimal |
-| SQL_VARIANT |Objekt * |
+| SQL_VARIANT |Objekt |
 | text |Řetězec, Char] |
 | time |Časový interval |
 | časové razítko |Byte] |
@@ -511,6 +515,9 @@ Při kopírování dat z/do Azure SQL Database Managed Instance, se používají
 | varbinary |Byte] |
 | varchar |Řetězec, Char] |
 | xml |XML |
+
+>[!NOTE]
+> Pro mapování typů dat na typ desetinné dočasné aktuálně ADF podporují přesnost až 28. Pokud máte data s přesností větší než 28, zvažte možnost převést na řetězec v dotazu SQL.
 
 ## <a name="next-steps"></a>Další postup
 Seznam úložišť dat podporovaných jako zdroje a jímky v aktivitě kopírování ve službě Azure Data Factory najdete v tématu [podporovanými úložišti dat](copy-activity-overview.md##supported-data-stores-and-formats).

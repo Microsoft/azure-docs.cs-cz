@@ -1,5 +1,5 @@
 ---
-title: 'Prostředí PowerShell a rozhraní příkazového řádku: povolit transparentní šifrování dat SQL - key - Azure SQL Database | Dokumentace Microsoftu'
+title: 'Prostředí PowerShell a rozhraní příkazového řádku: Povolit transparentní šifrování dat SQL - key - Azure SQL Database | Dokumentace Microsoftu'
 description: Další informace o konfiguraci Azure SQL Database a Data Warehouse, pokud chcete začít používat transparentní šifrování dat (TDE) pro šifrování v klidovém stavu pomocí Powershellu nebo rozhraní příkazového řádku.
 services: sql-database
 ms.service: sql-database
@@ -12,14 +12,14 @@ ms.author: aliceku
 ms.reviewer: vanto
 manager: craigg
 ms.date: 09/20/2018
-ms.openlocfilehash: 0fad0cd32e8df38c5a9c06ecf01a14340f1bc9ef
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.openlocfilehash: 87ffc4619f2ad864113db3b3aed42aa23535cb83
+ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47165071"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54900320"
 ---
-# <a name="powershell-and-cli-enable-transparent-data-encryption-using-your-own-key-from-azure-key-vault"></a>Prostředí PowerShell a rozhraní příkazového řádku: povolit transparentní šifrování dat pomocí vlastní klíče ze služby Azure Key Vault
+# <a name="powershell-and-cli-enable-transparent-data-encryption-using-your-own-key-from-azure-key-vault"></a>Prostředí PowerShell a rozhraní příkazového řádku: Povolit transparentní šifrování dat pomocí vlastní klíče ze služby Azure Key Vault
 
 Tento článek vás provede postupem použití klíče ze služby Azure Key Vault pro transparentní šifrování dat (TDE) pro SQL Database nebo datového skladu. Další informace o transparentní šifrování dat s podporou přineste si vlastní klíč (BYOK), najdete v tématu [TDE vlastního klíče do Azure SQL](transparent-data-encryption-byok-azure-sql.md). 
 
@@ -32,7 +32,7 @@ Tento článek vás provede postupem použití klíče ze služby Azure Key Vaul
    - [Pokyny pro PowerShell ze služby Key Vault](../key-vault/key-vault-get-started.md)
    - [Pokyny pro používání modulu hardwarového zabezpečení (HSM) a služby Key Vault](../key-vault/key-vault-get-started.md#HSM)
  - Key vault musí mít následující vlastnost, která má být použit pro transparentní šifrování dat:
-   - [obnovitelné odstranění](../key-vault/key-vault-ovw-soft-delete.md)
+   - [soft-delete](../key-vault/key-vault-ovw-soft-delete.md)
    - [Jak používat obnovitelné odstranění Key Vaultu s využitím PowerShellu](../key-vault/key-vault-soft-delete-powershell.md) 
 - Klíč musí mít následující atributy, které se použije pro transparentní šifrování dat:
    - Žádné datum vypršení platnosti
@@ -186,8 +186,8 @@ Pokud dojde k problému zkontrolujte následující:
 
 ## <a name="next-steps"></a>Další postup
 
-- Zjistěte, jak otočit ochrana TDE serveru k zajištění souladu s požadavky na zabezpečení: [otočení pomocí Powershellu ochrany transparentního šifrování dat](transparent-data-encryption-byok-azure-sql-key-rotation.md).
-- V případě ohrožení zabezpečení, přečtěte si, jak odebrat potenciálně ohroženými ochrana TDE: [odebrání potenciálně ohrožený klíč](transparent-data-encryption-byok-azure-sql-remove-tde-protector.md). 
+- Zjistěte, jak otočit ochrana TDE serveru k zajištění souladu s požadavky na zabezpečení: [Otočit pomocí Powershellu ochrany transparentního šifrování dat](transparent-data-encryption-byok-azure-sql-key-rotation.md).
+- V případě ohrožení zabezpečení zjistěte, jak odebrat potenciálně ohroženými ochrana TDE: [Odebrání potenciálně ohrožený klíč](transparent-data-encryption-byok-azure-sql-remove-tde-protector.md). 
 
 ## <a name="prerequisites-for-cli"></a>Požadavky pro rozhraní příkazového řádku
 
@@ -198,7 +198,7 @@ Pokud dojde k problému zkontrolujte následující:
    - [Správa služby Key Vault pomocí CLI 2.0](../key-vault/key-vault-manage-with-cli2.md)
    - [Pokyny pro používání modulu hardwarového zabezpečení (HSM) a služby Key Vault](../key-vault/key-vault-get-started.md#HSM)
  - Key vault musí mít následující vlastnost, která má být použit pro transparentní šifrování dat:
-   - [obnovitelné odstranění](../key-vault/key-vault-ovw-soft-delete.md)
+   - [soft-delete](../key-vault/key-vault-ovw-soft-delete.md)
    - [Jak používat obnovitelné odstranění Key Vaultu s využitím CLI](../key-vault/key-vault-soft-delete-cli.md) 
 - Klíč musí mít následující atributy, které se použije pro transparentní šifrování dat:
    - Žádné datum vypršení platnosti
@@ -208,7 +208,7 @@ Pokud dojde k problému zkontrolujte následující:
 ## <a name="step-1-create-a-server-and-assign-an-azure-ad-identity-to-your-server"></a>Krok 1. Vytvoření serveru a přiřazení k vašemu serveru Azure AD identity
       cli
       # create server (with identity) and database
-      az sql server create -n "ServerName" -g "ResourceGroupName" -l "westus" -u "cloudsa" -p "YourFavoritePassWord99@34" -I 
+      az sql server create -n "ServerName" -g "ResourceGroupName" -l "westus" -u "cloudsa" -p "YourFavoritePassWord99@34" -i 
       az sql db create -n "DatabaseName" -g "ResourceGroupName" -s "ServerName" 
       
 

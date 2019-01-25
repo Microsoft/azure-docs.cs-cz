@@ -3,7 +3,7 @@ title: Spravované identity pro prostředky Azure
 description: Přehled informací o spravovaných identitách prostředků Azure
 services: active-directory
 documentationcenter: ''
-author: daveba
+author: priyamohanram
 manager: daveba
 editor: ''
 ms.assetid: 0232041d-b8f5-4bd2-8d11-27999ad69370
@@ -13,13 +13,13 @@ ms.devlang: ''
 ms.topic: overview
 ms.custom: mvc
 ms.date: 10/23/2018
-ms.author: daveba
-ms.openlocfilehash: b3a86748d9b7a420b9a7f9ab60c6841cbf403f09
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.author: priyamo
+ms.openlocfilehash: 432c38192f06965c543fbbeb48bdd888f781adcf
+ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54439081"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54883802"
 ---
 # <a name="what-is-managed-identities-for-azure-resources"></a>Co jsou spravované identity prostředků Azure?
 

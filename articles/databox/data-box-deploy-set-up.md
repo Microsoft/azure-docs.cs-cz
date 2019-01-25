@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: tutorial
-ms.date: 01/17/2019
+ms.date: 01/24/2019
 ms.author: alkohli
-ms.openlocfilehash: 460a05ac25ca4af56b81fb2025e0886c7bda3070
-ms.sourcegitcommit: 9f07ad84b0ff397746c63a085b757394928f6fc0
+ms.openlocfilehash: 79e2d33d1452eda35141b6ae80b46ab4eecd0909
+ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54391164"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54902156"
 ---
 # <a name="tutorial-cable-and-connect-to-your-azure-data-box"></a>Kurz: Zapojení a připojte se k zařízení Azure Data Box
 
@@ -50,7 +50,7 @@ Při zapojování kabeláže zařízení postupujte následovně.
 
 1. Zkontrolujte zařízení, zda nenese stopy porušení nebo není zjevně poškozeno. Pokud je zařízení porušené nebo vážně poškozené, nepokračujte. Okamžitě se obraťte na podporu Microsoftu, aby vám pomohla určit, jestli je zařízení v dobrém funkčním stavu nebo zda je potřeba poslat náhradní.
 2. Přeneste zařízení do umístění, ve kterém ho chcete zapnout. Položte zařízení na rovnou plochu. Zařízení můžete umístit také na standardní polici v racku.
-3. Zapojte napájecí a síťový kabel. Propojovací rozhraní připojeného zařízení pro běžnou konfiguraci je znázorněné níže. 
+3. Zapojte napájecí a síťový kabel. Propojovací rozhraní připojeného zařízení pro běžnou konfiguraci je znázorněné níže. V závislosti na vašem prostředí, můžete se rozhodnout z jiných [Možnosti kabeláže](data-box-cable-options.md).
     
     ![Zapojená kabeláž propojovacího rozhraní zařízení Data Box](media/data-box-deploy-set-up/data-box-cabled-dhcp.png)
 

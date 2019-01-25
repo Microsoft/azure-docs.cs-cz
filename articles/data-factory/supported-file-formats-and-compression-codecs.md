@@ -7,14 +7,14 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 12/07/2018
+ms.date: 01/23/2019
 ms.author: jingwang
-ms.openlocfilehash: 4c8fcc403b274d161893194109dee4bc8d0cb369
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: 433718c19e0df5fac87273f2b46f8ae090ed7510
+ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53974350"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54888562"
 ---
 # <a name="supported-file-formats-and-compression-codecs-in-azure-data-factory"></a>Podporované formáty souborů a komprese kodeky ve službě Azure Data Factory
 
@@ -78,7 +78,7 @@ Pokud chcete místo `quoteChar` použít `escapeChar`, nahraďte řádek s `quot
 
 ### <a name="scenarios-for-using-firstrowasheader-and-skiplinecount"></a>Scénáře použití firstRowAsHeader a skipLineCount
 
-* Kopírujete z nesouborového zdroje do textového souboru a chcete přidat řádek záhlaví obsahující metadata schématu (například: Schéma SQL). V tomto scénáři zadejte ve vstupní sadě `firstRowAsHeader` jako true.
+* Kopírujete z nesouborového zdroje do textového souboru a chcete přidat řádek záhlaví obsahující metadata schématu (například: SQL schema). V tomto scénáři zadejte ve vstupní sadě `firstRowAsHeader` jako true.
 * Kopírujete text z textového souboru obsahujícího řádek záhlaví do nesouborové jímky a chcete tento řádek vynechat. Zadejte ve vstupní sadě `firstRowAsHeader` jako true.
 * Kopírujete text z textového souboru a chcete vynechat několik prvních řádků, které neobsahují data ani informace záhlaví. Zadáním `skipLineCount` určete, kolik řádků se má přeskočit. Pokud zbytek souboru obsahuje řádek záhlaví, můžete také zadat `firstRowAsHeader`. Pokud je zadaný parametr `skipLineCount` i `firstRowAsHeader`, nejdřív se přeskočí příslušný počet řádků a potom se ze vstupního souboru načtou informace záhlaví.
 
@@ -414,15 +414,19 @@ Pokud chcete analyzovat soubory Parquet nebo zapisovat data ve formátu Parquet,
 }
 ```
 
-> [!IMPORTANT]
-> Pro kopírování pověřený modul Integration Runtime například mezi místním prostředím a cloudem úložiště dat, pokud soubory Parquet nekopírujete **jako-je**, je nutné nainstalovat prostředí JRE 8 (Java Runtime Environment) na svém počítači reakcí na Incidenty. Prostředí IR 64-bit vyžaduje 64bitovou platformu JRE. Obě verze najdete [tady](https://go.microsoft.com/fwlink/?LinkId=808605).
->
-
 Je třeba počítat s následujícím:
 
 * Komplexní datové typy se nepodporují (MAP, LIST).
 * Prázdné znaky v názvu sloupce se nepodporuje.
 * Soubory parquet mají následující možnosti komprese: NONE, SNAPPY, GZIP a LZO. Data Factory podporuje čtení dat ze souboru Parquet v některé z těchto komprimovaných formátech s výjimkou LZO – k načtení dat využívá kompresní kodek v metadatech. Při zápisu do souboru Parquet ale Data Factory využívá možnost SNAPPY, která je pro formát Parquet výchozí. V současnosti toto chování nejde potlačit.
+
+> [!IMPORTANT]
+> Pro kopírování pověřený modul Integration Runtime například mezi místním prostředím a cloudem úložiště dat, pokud soubory Parquet nekopírujete **jako-je**, je potřeba nainstalovat **64bitové prostředí JRE 8 (Java Runtime Environment) nebo OpenJDK** na svém počítači reakcí na Incidenty. Viz odstavec s dalšími podrobnostmi.
+
+Pro kopírování běží na místní prostředí IR prostřednictvím souboru Parquet serializace/deserializace, ADF vyhledá modul runtime Java za prvé kontrolou registru *`(SOFTWARE\JavaSoft\Java Runtime Environment\{Current Version}\JavaHome)`* pro prostředí JRE, pokud není nalezen, potom na základě kontroly systémová proměnná *`JAVA_HOME`* pro OpenJDK. 
+
+- **Použití prostředí JRE**: Prostředí IR 64-bit vyžaduje 64bitovou platformu JRE. Najdete ho z [tady](https://go.microsoft.com/fwlink/?LinkId=808605).
+- **Chcete-li použít OpenJDK**: ta se podporuje od verze 3.13 IR. Balíček jvm.dll se všechny ostatní požadované sestavení OpenJDK do místní prostředí IR počítačů a nastavte systém proměnnou prostředí JAVA_HOME odpovídajícím způsobem.
 
 ### <a name="data-type-mapping-for-parquet-files"></a>Mapování pro soubory Parquet typu dat.
 
@@ -460,15 +464,19 @@ Pokud chcete analyzovat soubory ORC nebo zapisovat data ve formátu ORC, nastavt
 }
 ```
 
-> [!IMPORTANT]
-> Pro kopírování pověřený modul Integration Runtime například mezi místním prostředím a cloudem úložiště dat, pokud soubory ORC nekopírujete **jako-je**, je nutné nainstalovat prostředí JRE 8 (Java Runtime Environment) na svém počítači reakcí na Incidenty. Prostředí IR 64-bit vyžaduje 64bitovou platformu JRE. Obě verze najdete [tady](https://go.microsoft.com/fwlink/?LinkId=808605).
->
-
 Je třeba počítat s následujícím:
 
 * Komplexní datové typy se nepodporují (STRUCT, MAP, seznam, SJEDNOCENÍ).
 * Prázdné znaky v názvu sloupce se nepodporuje.
 * Orc mají tři [možnosti komprese](http://hortonworks.com/blog/orcfile-in-hdp-2-better-compression-better-performance/): NONE, ZLIB A SNAPPY. Data Factory podporuje čtení dat ze souborů ORC v libovolném z těchto komprimovaných formátů. K načtení dat využívá kompresní kodek v metadatech. Při zápisu do souboru ORC ale Data Factory využívá možnost ZLIB, která je pro formát ORC výchozí. V současnosti toto chování nejde potlačit.
+
+> [!IMPORTANT]
+> Pro kopírování pověřený modul Integration Runtime například mezi místním prostředím a cloudem úložiště dat, pokud soubory ORC nekopírujete **jako-je**, je potřeba nainstalovat **64bitové prostředí JRE 8 (Java Runtime Environment) nebo OpenJDK**  na svém počítači reakcí na Incidenty. Viz odstavec s dalšími podrobnostmi.
+
+Pro kopírování běží na místní prostředí IR prostřednictvím souboru ORC serializace/deserializace, ADF vyhledá modul runtime Java za prvé kontrolou registru *`(SOFTWARE\JavaSoft\Java Runtime Environment\{Current Version}\JavaHome)`* pro prostředí JRE, pokud není nalezen, potom na základě kontroly systémová proměnná *`JAVA_HOME`* pro OpenJDK. 
+
+- **Použití prostředí JRE**: Prostředí IR 64-bit vyžaduje 64bitovou platformu JRE. Najdete ho z [tady](https://go.microsoft.com/fwlink/?LinkId=808605).
+- **Chcete-li použít OpenJDK**: ta se podporuje od verze 3.13 IR. Balíček jvm.dll se všechny ostatní požadované sestavení OpenJDK do místní prostředí IR počítačů a nastavte systém proměnnou prostředí JAVA_HOME odpovídajícím způsobem.
 
 ### <a name="data-type-mapping-for-orc-files"></a>Datový typ mapování pro soubory ORC
 

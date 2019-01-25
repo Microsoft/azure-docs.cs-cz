@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 06/07/2018
 ms.author: johnkem
 ms.subservice: logs
-ms.openlocfilehash: 44950a467e99fb7968d838345d80c8e28aee62b9
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: 55c1bc18422bc2be5172aebcd46b76ac6051a8a4
+ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54467464"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54885843"
 ---
 # <a name="collect-and-consume-log-data-from-your-azure-resources"></a>Shromažďování a zpracování dat protokolu z vašich prostředků Azure
 
@@ -31,7 +31,7 @@ Tyto protokoly se liší od [protokolu aktivit](activity-logs-overview.md). Prot
 
 Tyto protokoly se také liší od hostovaného operačního systému – úroveň diagnostických protokolů. Diagnostické protokoly hostovaného operačního systému jsou tyto shromážděné agentem běžících v rámci virtuálního počítače nebo jiné podporovaný typ prostředku. Diagnostické protokoly na úrovni prostředku vyžadují specifické podle prostředků data z platformy Azure, bez agenta a zachycení, zatímco diagnostické protokoly úrovni operačního systému hosta zachytávat data z operační systém a aplikace běžící na virtuálním počítači.
 
-Ne všechny služby podpory diagnostické protokoly, které jsou zde popsány. [Tento článek obsahuje části najdou služby, které podporují diagnostické protokoly](./../../azure-monitor/platform/tutorial-dashboards.md).
+Ne všechny služby podpory diagnostické protokoly, které jsou zde popsány. [Tento článek obsahuje části najdou služby, které podporují diagnostické protokoly](./../../azure-monitor/platform/diagnostic-logs-schema.md).
 
 ## <a name="what-you-can-do-with-diagnostic-logs"></a>Co můžete dělat s využitím diagnostických protokolů
 Tady jsou některé věci, které vám pomůžou s využitím diagnostických protokolů:
@@ -229,7 +229,7 @@ Přidání nastavení diagnostiky zobrazí zobrazení nastavení diagnostiky, kd
 
 ## <a name="supported-services-categories-and-schemas-for-diagnostic-logs"></a>Podporované služby, kategorie a schémata pro diagnostické protokoly
 
-[Najdete v článku](../../azure-monitor/platform/tutorial-dashboards.md) úplný seznam podporovaných služeb a kategorie protokolu a schémat, které používají tyto služby.
+[Najdete v článku](../../azure-monitor/platform/diagnostic-logs-schema.md) úplný seznam podporovaných služeb a kategorie protokolu a schémat, které používají tyto služby.
 
 ## <a name="next-steps"></a>Další postup
 

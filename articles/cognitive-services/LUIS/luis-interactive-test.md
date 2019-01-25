@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
-ms.date: 09/06/2018
+ms.date: 01/23/2019
 ms.author: diberry
-ms.openlocfilehash: d355e14d15dc6a393a6fabb90418cb3949fe0cf5
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.openlocfilehash: 76db86f8ddaee43654689e78437d3cdbd1c211f6
+ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53601963"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54883020"
 ---
 # <a name="test-your-luis-app-in-the-luis-portal"></a>Otestujte aplikaci LUIS na portálu služby LUIS
 <a name="train-your-app"></a>
@@ -26,6 +26,7 @@ ms.locfileid: "53601963"
 <a name="test-your-app"></a>
 <a name="access-the-test-page"></a>
 <a name="luis-interactive-testing"></a>
+
 ## <a name="test-an-utterance"></a>Testování utterance
 
 1. Přístup k aplikaci tak, že vyberete jeho název na **Moje aplikace** stránky. 
@@ -40,13 +41,8 @@ ms.locfileid: "53601963"
 
     ![Interaktivní testování identifikuje nesprávné záměr](./media/luis-how-to-interactive-test/test-weather-1.png)
 
-## <a name="clear-test-panel"></a>Vymazat test panelu
-Chcete-li vymazat všechny projevy zadané testu a jejich výsledky z testovací konzole, vyberte **začít od začátku** v levém horním rohu **panelu testu**. 
-
-## <a name="close-test-panel"></a>Test Zavřít panel
-Zavřete **testovací** panelu, vyberte **Test** tlačítko znovu.
-
 ## <a name="inspect-score"></a>Kontrola skóre
+
 Prozkoumejte podrobnosti o výsledku testu v **zkontrolujte, jestli se** panelu. 
  
 1. S **testovací** snímku na více instancí panel otevřený, vyberte **zkontrolujte, jestli se** pro utterance chcete porovnat. 
@@ -72,9 +68,11 @@ Pokud **analýzu subjektivního hodnocení** je nakonfigurovaná na **[publikova
 ![Obrázek testovací podokno s analýzou mínění](./media/luis-how-to-interactive-test/sentiment.png)
 
 ## <a name="correct-matched-patterns-intent"></a>Opravte odpovídající vzor záměr
+
 Pokud používáte [vzory](luis-concept-patterns.md) a utterance odpovídá vzoru, ale byl nesprávný záměr předpovědět, vyberte **upravit** propojit vzorec a potom vyberte správné záměr.
 
 ## <a name="compare-with-published-version"></a>Porovnat s publikovanou verzi
+
 Aktivní verzi aplikace s využitím publikovanému můžete otestovat [koncový bod](luis-glossary.md#endpoint) verze. V **zkontrolujte, jestli se** panelu, vyberte **porovnat s publikované**. Testování publikované modelu se odečte od kvóty zůstatek vašeho předplatného Azure. 
 
 ![Porovnat s publikování](./media/luis-how-to-interactive-test/inspect-panel-compare.png)
@@ -88,12 +86,14 @@ Můžete zobrazit koncový bod vrátil JSON pro porovnání tak, že vyberete **
 ## <a name="additional-settings-in-test-panel"></a>Další nastavení panelu testu
 
 ### <a name="luis-endpoint"></a>Koncový bod služby LUIS
+
 Pokud máte několik koncových bodů služby LUIS, použijte **další nastavení** publikování odkazu na testovací podokno, chcete-li změnit koncový bod použitý pro testování. Pokud si nejste jisti, který koncový bod používat, vyberte výchozí **Starter_Key**. 
 
 ![Test panelu se zvýrazněným odkazem další nastavení](./media/luis-how-to-interactive-test/interactive-with-spell-check-service-key.png)
 
 
 ### <a name="view-bing-spell-check-corrections-in-test-panel"></a>Zobrazení pro kontrolu pravopisu Bingu oprav v panelu testu
+
 Požadavky na zobrazení opravy pravopisu: 
 
 * Publikované aplikace
@@ -124,6 +124,7 @@ Pomocí následujícího postupu Pokud chcete zahrnout [kontrolu pravopisu Bingu
 <a name="view single-point utterance data"></a>
 <a name="relabel-utterances-and-retrain"></a>
 <a name="false-test-results"></a>
+
 ## <a name="batch-testing"></a>Dávkové testování
 V části Testování služby batch [koncepty](luis-concept-batch-test.md) a zjistěte, [jak](luis-how-to-batch-test.md) testování dávku projevy.
 

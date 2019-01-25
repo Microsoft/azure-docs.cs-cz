@@ -11,12 +11,12 @@ ms.author: danil
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 12/17/2018
-ms.openlocfilehash: f12aed12138b1b16fcce90401ea0d65bd083675f
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: 02832ee84e02251239ab4364aac9ad0894c681b9
+ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53546709"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54884777"
 ---
 # <a name="monitor-azure-sql-database-using-azure-sql-analytics-preview"></a>Monitorování Azure SQL Database pomocí Azure SQL Analytics (Preview)
 
@@ -37,10 +37,10 @@ Azure SQL Analytics je cloud určený jen pro monitorování řešení podpůrn�
 
 | Připojený zdroj | Podporováno | Popis |
 | --- | --- | --- |
-| [Diagnostika Azure](../../azure-monitor/platform/collect-azure-metrics-logs.md) | **Ano** | Azure data metrik a protokolů se odesílají do Log Analytics přímo v Azure. |
-| [Účet služby Azure Storage](../../azure-monitor/platform/collect-azure-metrics-logs.md) | Ne | Log Analytics nemá číst data z účtu úložiště. |
-| [Agenti systému Windows](../../azure-monitor/platform/agent-windows.md) | Ne | Přímí agenti Windows nejsou používány nástrojem řešení. |
-| [Agenti systému Linux](../../azure-monitor/learn/quick-collect-linux-computer.md) | Ne | Přímí agenti systému Linux nejsou používány nástrojem řešení. |
+| [Diagnostika Azure](../platform/collect-azure-metrics-logs.md) | **Ano** | Azure data metrik a protokolů se odesílají do Log Analytics přímo v Azure. |
+| [Účet služby Azure Storage](../platform/collect-azure-metrics-logs.md) | Ne | Log Analytics nemá číst data z účtu úložiště. |
+| [Agenti systému Windows](../platform/agent-windows.md) | Ne | Přímí agenti Windows nejsou používány nástrojem řešení. |
+| [Agenti systému Linux](../learn/quick-collect-linux-computer.md) | Ne | Přímí agenti systému Linux nejsou používány nástrojem řešení. |
 | [Skupina pro správu System Center Operations Manager](../platform/om-agents.md) | Ne | Přímé připojení z agenta Operations Manageru k Log Analytics se nepoužívá tímto řešením. |
 
 ## <a name="configuration"></a>Konfigurace
@@ -185,7 +185,7 @@ Automatické výstrahy v řešení je založena na psaní dotazu Log Analytics, 
 
 ### <a name="creating-alerts-for-azure-sql-database"></a>Vytvoření výstrah pro službu Azure SQL Database
 
-Můžete snadno [vytvářet upozornění](../../azure-monitor/platform/alerts-metric.md) s daty pocházející z prostředků Azure SQL Database. Tady jsou některé užitečné [protokolu dotazy](../../azure-monitor/log-query/log-query-overview.md) , který vám pomůže s upozornění protokolu:
+Můžete snadno [vytvářet upozornění](../platform/alerts-metric.md) s daty pocházející z prostředků Azure SQL Database. Tady jsou některé užitečné [protokolu dotazy](../log-query/log-query-overview.md) , který vám pomůže s upozornění protokolu:
 
 #### <a name="high-cpu-on-azure-sql-database"></a>Vysoké využití procesoru pro službu Azure SQL Database
 
@@ -297,6 +297,6 @@ Při řešení používat, platí spotřeby telemetrická data diagnostiky nad v
 
 ## <a name="next-steps"></a>Další postup
 
-- Použití [prohledávání protokolů](../../azure-monitor/log-query/log-query-overview.md) v Log Analytics k zobrazení podrobných dat Azure SQL.
-- [Vytvářejte vlastní řídicí panely](../../azure-monitor/platform/dashboards.md) zobrazení dat Azure SQL.
-- [Vytvořit upozornění](../../azure-monitor/platform/alerts-overview.md) Pokud dojde k určité událostem Azure SQL.
+- Použití [prohledávání protokolů](../log-query/log-query-overview.md) v Log Analytics k zobrazení podrobných dat Azure SQL.
+- [Vytvářejte vlastní řídicí panely](../learn/tutorial-logs-dashboards.md) zobrazení dat Azure SQL.
+- [Vytvořit upozornění](../platform/alerts-overview.md) Pokud dojde k určité událostem Azure SQL.

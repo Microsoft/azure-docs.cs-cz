@@ -10,12 +10,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: azfuncdf
-ms.openlocfilehash: 977123459bcf9bb10c6b7ecf5d7a364f60564c48
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.openlocfilehash: 7e4b52f0a3ca5e924d9d41e38e51f0cba8b75690
+ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53437064"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54885809"
 ---
 # <a name="handling-external-events-in-durable-functions-azure-functions"></a>Zpracování externího událostí v Durable Functions (Azure Functions)
 
@@ -191,10 +191,10 @@ module.exports = async function(context, instanceId) {
 };
 ```
 
-Interně `RaiseEventAsync` (.NET) nebo `raiseEvent` zařadí zprávu, která získá vyzvednou funkce orchestrátoru čekání (JavaScript).
+Interně `RaiseEventAsync` (.NET) nebo `raiseEvent` zařadí zprávu, která získá vyzvednou funkce orchestrátoru čekání (JavaScript). Pokud instance nečeká na určeném *název události,* zpráva o události se přidá do fronty v paměti. Pokud instance Orchestrace začne později, které naslouchají *název události,* zjistí, frontu pro zprávy o událostech.
 
-> [!WARNING]
-> Pokud neexistuje žádná instance orchestration se zadaným *instance ID* nebo pokud není instance čeká na zadaný *název události*, zpráva o události se zahodí. Další informace o tomto chování najdete v tématu [problém Githubu](https://github.com/Azure/azure-functions-durable-extension/issues/29).
+> [!NOTE]
+> Pokud neexistuje žádná instance orchestration se zadaným *instance ID*, zpráva o události se zahodí. Další informace o tomto chování najdete v tématu [problém Githubu](https://github.com/Azure/azure-functions-durable-extension/issues/29). 
 
 > [!WARNING]
 > Při vývoji místně v jazyce JavaScript, budete muset nastavit proměnnou prostředí `WEBSITE_HOSTNAME` k `localhost:<port>`, např. `localhost:7071` použití metod na `DurableOrchestrationClient`. Další informace o tomto požadavku najdete v tématu [problém Githubu](https://github.com/Azure/azure-functions-durable-js/issues/28).

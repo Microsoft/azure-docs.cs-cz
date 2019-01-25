@@ -10,14 +10,14 @@ ms.service: log-analytics
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 01/08/2019
+ms.date: 01/24/2019
 ms.author: bwren
-ms.openlocfilehash: 5db963b1ffea656455c06092c82ac95e85d87826
-ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
+ms.openlocfilehash: 329472f3edee66db6b12e369ee8f944546ad4734
+ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54213123"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54900438"
 ---
 # <a name="data-ingestion-time-in-log-analytics"></a>Doba příjem dat v Log Analytics
 Azure Log Analytics je vysoce škálované datové služby ve službě Azure Monitor, která slouží tisíce zákazníků odesílání terabajty dat měsíčně rostoucí tempem. Jsou často dotazy týkající se čas potřebný pro data k dispozici ve službě Log Analytics po shromáždění zpracovat. Tento článek vysvětluje různé faktory ovlivňující tuto latenci.
@@ -45,8 +45,15 @@ Agenti a řešení pro správu používají různé strategie ke shromažďován
 ### <a name="agent-upload-frequency"></a>Frekvence odesílání agenta
 K zajištění, že agenta Log Analytics je jednoduché, agent ukládá do vyrovnávací paměti protokoly a pravidelně je odesílá do služby Log Analytics. Nahrát frekvence se pohybuje mezi 30 sekund a 2 minuty. záleží na typu dat. Většina dat je nahraný v části 1 minuta. Stavy sítě může mít nepříznivý vliv latence těchto dat k dosažení bodem ingestování Log Analytics.
 
-### <a name="azure-logs-and-metrics"></a>Metriky a protokoly Azure 
-Data protokolu aktivit, bude trvat přibližně 5 minut do režimu k dispozici ve službě Log Analytics. Data z diagnostické protokoly a metriky může trvat 1 – 15 minutách k dispozici pro zpracování, v závislosti na službu Azure. Až bude k dispozici, pak bude trvat dalších 30 – 60 sekund pro protokoly a metriky pro data 3 minuty, k odeslání do Log Analytics ingestování datových bodů.
+### <a name="azure-activity-logs-diagnostic-logs-and-metrics"></a>Protokoly aktivit Azure, diagnostické protokoly a metriky
+Azure data přidá další čas k dispozici v Log Analytics ingestování okamžiku ke zpracování:
+
+- Data z diagnostické protokoly trvat 2 až 15 minut, v závislosti na službu Azure. Najdete v článku [dotazu níže](#checking-ingestion-time) ke kontrole latence ve vašem prostředí
+- Platforma Azure metriky trvat 3 minuty k odeslání do Log Analytics ingestování datových bodů.
+- Data protokolu aktivit, bude trvat přibližně 10 – 15 minutách k odeslání do Log Analytics ingestování datových bodů.
+
+Jakmile je k dispozici v okamžiku ingestování dat trvá dalších 2 až 5 minut k dispozici pro dotazování.
+
 
 ### <a name="management-solutions-collection"></a>Kolekce řešení správy
 Některá řešení neshromažďují svá data z agenta a mohou používat metodu kolekce, která zavádí další latenci. Některá řešení bez pokusu o kolekci téměř v reálném čase shromažďovat data v pravidelných intervalech. Konkrétní příklady patří:

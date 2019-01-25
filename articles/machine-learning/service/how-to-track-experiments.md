@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: article
 ms.date: 12/04/2018
 ms.custom: seodec18
-ms.openlocfilehash: 99b3a65feb232526cffecac4fec68d56fcd16ccb
-ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
+ms.openlocfilehash: 9737d30a8cf16c145da45aa63554d5fcf0a7fa0d
+ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 01/24/2019
-ms.locfileid: "54846281"
+ms.locfileid: "54889004"
 ---
 # <a name="track-experiments-and-training-metrics-in-azure-machine-learning"></a>Sledujte experimenty a vzdělávání metriky ve službě Azure Machine Learning
 
@@ -236,8 +236,8 @@ r = get_run(experiment=exp, run_id="my_run_id", rehydrate=True)
 # check the returned run type and status
 print(type(r), r.get_status())
 
-# you can only cancel a run if the status is Running
-if r.get_status() == 'Running':
+# you can cancel a run if it hasn't completed or failed
+if r.get_status() not in ['Complete', 'Failed']:
     r.cancel()
 ```
 Všimněte si, že momentálně se podporuje jenom ScriptRun a PipelineRun typů podporuje operace zrušení.

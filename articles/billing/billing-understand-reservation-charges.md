@@ -12,13 +12,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/08/2018
-ms.author: cwatson
-ms.openlocfilehash: 176e282a53c19e303fd06629a0045a79fd200dea
-ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
+ms.author: banders
+ms.openlocfilehash: b39c56e8dcae6cdac45160240a6b0f12a1ac0f2e
+ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52580367"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54902546"
 ---
 # <a name="understand-how-an-azure-reservation-discount-is-applied-to-sql-databases"></a>Vysvětlení, používání sleva za rezervaci Azure do databáze SQL
 
@@ -32,13 +32,13 @@ Rezervované instance virtuálních počítačů najdete v části [slevy pochop
 
 Následující příklady ukazují, jak platí sleva záložní kapacitu databáze SQL v závislosti na počtu jader jste koupili, a pokud máte spuštěnou.
 
-- Scénář 1: Zakoupit kapacitu databáze SQL vyhrazený pro 8 jader SQL Database. Spuštění 16 jader SQL Database, která odpovídají rest atributy rezervace. Platíte průběžnými platbami cena za 8jádrový využití služby compute SQL Database. Získáte slevy na rezervaci za jednu hodinu využití služby compute databáze SQL 8 jader.
+- Scénář 1: Můžete si koupit kapacitu databáze SQL vyhrazený pro 8 jader SQL Database. Spuštění 16 jader SQL Database, která odpovídají rest atributy rezervace. Platíte průběžnými platbami cena za 8jádrový využití služby compute SQL Database. Získáte slevy na rezervaci za jednu hodinu využití služby compute databáze SQL 8 jader.
 
 Zbytek těchto příkladech se předpokládá, že je databáze SQL vyhrazený kapacitu, kterou si koupit za 16 jader SQL Database a zbytek atributy rezervace shodovat s provozní databází SQL.
 
-- Scénář 2: Spuštění dvou databází SQL s 8 jádry je jedna hodina. Sleva za rezervaci 16 jader se použije k výpočtu využití pro obě 8 jader databází SQL.
-- Scénář 3: Spuštění 16jádrový procesor, SQL Database od 13: 00 do 1:30 odp. Při spouštění další 16 jader SQL Database z 1:30 do 2 hodin. Obě jsou zahrnuté do sleva za rezervaci.
-- Scénář 4: Spuštění 16jádrový procesor, SQL Database od 13: 00 do 1:45 pm. Při spouštění další 16 jader SQL Database z 1:30 do 2 hodin. Vám budou účtovány průběžných platbách za překryv 15 minut. Sleva za rezervaci se vztahuje na výpočetní využití pro zbytek času.
+- Scénář 2: Spustíte dvě databáze SQL s 8 jádry je jedna hodina. Sleva za rezervaci 16 jader se použije k výpočtu využití pro obě 8 jader databází SQL.
+- Scénář 3: Spusťte jeden 16jádrový procesor, SQL Database od 13: 00 do 1:30 odp. Při spouštění další 16 jader SQL Database z 1:30 do 2 hodin. Obě jsou zahrnuté do sleva za rezervaci.
+- Scénář 4: Spusťte jeden 16jádrový procesor, SQL Database od 13: 00 do 1:45 pm. Při spouštění další 16 jader SQL Database z 1:30 do 2 hodin. Vám budou účtovány průběžných platbách za překryv 15 minut. Sleva za rezervaci se vztahuje na výpočetní využití pro zbytek času.
 
 K pochopení a zobrazení aplikace vaše rezervace Azure na fakturaci využití sestav, naleznete v tématu [pochopit Azure rezervace využití](https://go.microsoft.com/fwlink/?linkid=862757).
 
@@ -54,6 +54,6 @@ Další informace o rezervacích Azure, najdete v následujících článcích:
 - [Vysvětlení využití rezervaci u prováděcí smlouvy Enterprise](billing-understand-reserved-instance-usage-ea.md)
 - [Vysvětlení využití rezervace pro předplatná CSP](https://docs.microsoft.com/partner-center/azure-reservations)
 
-## <a name="need-help-contact-us"></a>Potřebujete pomoct? Kontaktujte nás.
+## <a name="need-help-contact-us"></a>Potřebujete pomoc? Kontaktujte nás.
 
 Pokud máte otázky nebo potřebujete pomoc, [vytvořit žádost o podporu](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest).

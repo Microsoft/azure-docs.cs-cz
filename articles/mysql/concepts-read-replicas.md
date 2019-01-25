@@ -5,17 +5,20 @@ author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 1/22/2019
-ms.openlocfilehash: 6ebbaece66d9055fd2bff68eee873b012b4a6d50
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.date: 1/23/2019
+ms.openlocfilehash: eca67cb70756dd1184bd3a66c2582743c8baa8fd
+ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54462416"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54903753"
 ---
 # <a name="read-replicas-in-azure-database-for-mysql"></a>Repliky pro čtení ve službě Azure Database for MySQL
 
-Funkce repliky pro čtení (public preview) umožňuje replikaci dat ze serveru Azure Database for MySQL server (správce) až k pěti jen pro čtení serverům (repliky) v rámci stejné oblasti Azure. Repliky jen pro čtení se aktualizují asynchronně pomocí technologie replikace na základě pozice souboru nativní binární protokol (binlog) stroje MySQL. Další informace o binlog replikace, najdete v článku [Přehled replikace binlog MySQL](https://dev.mysql.com/doc/refman/5.7/en/binlog-replication-configuration-overview.html).
+> [!IMPORTANT]
+> Funkce repliky pro čtení je ve verzi Public Preview.
+
+Funkce repliky pro čtení umožňuje replikaci dat ze serveru Azure Database for MySQL server (správce) až k pěti jen pro čtení serverům (repliky) v rámci stejné oblasti Azure. Repliky jen pro čtení se aktualizují asynchronně pomocí technologie replikace na základě pozice souboru nativní binární protokol (binlog) stroje MySQL. Další informace o binlog replikace, najdete v článku [Přehled replikace binlog MySQL](https://dev.mysql.com/doc/refman/5.7/en/binlog-replication-configuration-overview.html).
 
 Repliky vytvořené v Azure Database for MySQL služby jsou nové servery, které je možné spravovat stejným způsobem jako normální nebo samostatné servery MySQL. Pro každou další repliku bude vám Účtovaná zřízených výpočetních jádrech a zřízeného úložiště v GB/měsíc. 
 

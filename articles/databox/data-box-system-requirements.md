@@ -6,18 +6,18 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: article
-ms.date: 12/27/2018
+ms.date: 01/23/2019
 ms.author: alkohli
-ms.openlocfilehash: af7bcf2a83259b9d883a824b05312316f9f1f4f8
-ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
+ms.openlocfilehash: 469d553d60eb7c5cdfac3bc16f1fb479bd84cb70
+ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/27/2018
-ms.locfileid: "53794001"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54886202"
 ---
 # <a name="azure-data-box-system-requirements"></a>Požadavky na systém Azure Data Box
 
-Tento článek popisuje důležité systémové požadavky pro vaše zařízení Microsoft Azure Data Box a klienti připojení k zařízení Data Box. Doporučujeme, abyste si informace o pečlivě před nasazení vašeho zařízení Data Box a pak zpátky na ni odkazovat podle potřeby během nasazení a následná operace.
+Tento článek popisuje důležité systémové požadavky pro vaše zařízení Microsoft Azure Data Box a klienti připojení k zařízení Data Box. Doporučujeme, abyste že si pečlivě přečetli informace předtím, než nasadíte Data Box a pak zpátky na ni odkazovat podle potřeby během nasazení a následná operace.
 
 Systémové požadavky:
 
@@ -48,13 +48,18 @@ Tady je seznam podporovaných operačních systémech pro kopírování dat pros
 
 ### <a name="supported-storage-accounts"></a>Účty úložiště podporuje
 
-Tady je seznam typů úložiště podporuje pro zařízení Data Box.
+Tady je seznam účtů úložiště podporuje a typy úložiště pro zařízení Data Box. Úplný seznam všech různých typů účtů úložiště a jejich úplné možnosti najdete v tématu [typy účtů úložiště](/azure/storage/common/storage-account-overview.md#types-of-storage-accounts).
 
-| **Účet úložiště** | **Poznámky** |
-| --- | --- |
-| Classic | Standard |
-| Obecné účely  |Standardní; verze V1 i V2 podporují. |
-| Objekt blob |Horká a studená jsou podporovány. |
+| **Účet úložiště / podporované typy úložiště** | **Objekt blob bloku** |**Objekt blob stránky*** |**Služba soubory Azure** |**Poznámky**|
+| --- | --- | -- | -- | -- |
+| Klasické Standard | Ano | Ano | Ano |
+| Standard pro obecné účely v1  | Ano | Ano | Ano | Horká a studená jsou podporovány.|
+| Premium pro obecné účely v1  |  | Ano| | |
+| Standard pro obecné účely v2  | Ano | Ano | Ano | Horká a studená jsou podporovány.|
+| Premium pro obecné účely v2  |  |Ano | | |
+| Úložiště objektů BLOB Standard |Ano | | |Horká a studená jsou podporovány. |
+
+\* *-Daty nahranými do objektů BLOB stránky musí být zarovnán jako je například virtuální pevné disky 512 bajtů.*
 
 >[!NOTE]
 > Účty Azure Data Lake Storage generace 2 nejsou podporovány.
@@ -85,7 +90,7 @@ Tady je seznam webových prohlížečů podporovaných pro místního webového 
 
 ## <a name="networking-requirements"></a>Požadavky na síť
 
-Vaše datacentrum má přístup k vysokorychlostní síti. Důrazně doporučujeme, abyste měli připojení alespoň 10 GbE. Pokud 10 GbE připojení není k dispozici, 1 GbE datové propojení lze použít ke zkopírování dat, ale rychlost kopírování se to týká.
+Vaše datacentrum má přístup k vysokorychlostní síti. Důrazně doporučujeme, abyste měli připojení minimálně 10 GbE. Pokud 10 GbE připojení není k dispozici, 1 GbE dat propojení lze použít ke zkopírování dat, ale kopie, které se to týká rychlosti.
 
 ## <a name="next-step"></a>Další krok
 

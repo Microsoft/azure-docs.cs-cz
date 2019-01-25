@@ -12,12 +12,12 @@ ms.topic: quickstart
 ms.date: 03/28/2018
 ms.author: glenga
 ms.custom: mvc, cc996988-fb4f-47
-ms.openlocfilehash: d82e80530d375a9d0f0a6d3f491d3070942ca02f
-ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
+ms.openlocfilehash: a6b1e4e1571e6ce3cee1658907efd35e9c73ca1a
+ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54331907"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54903388"
 ---
 # <a name="create-a-function-in-azure-that-is-triggered-by-a-timer"></a>Vytvoření funkce v Azure aktivované časovačem
 
@@ -84,8 +84,6 @@ Teď máte funkci, která se spouští jednou za hodinu.
 
 ## <a name="next-steps"></a>Další postup
 
-Vytvořili jste funkci, která se spouští na základě plánu.
+Vytvořili jste funkci, která se spouští na základě plánu. Další informace o aktivačních časovačích najdete v tématu [plánování spouštění kódu s využitím Azure Functions](functions-bindings-timer.md).
 
 [!INCLUDE [Next steps note](../../includes/functions-quickstart-next-steps.md)]
-
-Další informace o aktivačních časovačích najdete v tématu [Plánování spouštění kódu v Azure Functions](functions-bindings-timer.md).

@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/22/2019
 ms.author: kraigb
-ms.openlocfilehash: 31cbe2e62582ae810d165ddef5db6a20c52ff050
-ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
+ms.openlocfilehash: 54b211584b170d6e2ee0bcaa6c80bcaed376814f
+ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54847539"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54904365"
 ---
 # <a name="manage-and-configure-projects"></a>Správa a konfigurace projektů
 
@@ -41,9 +41,9 @@ Poznámkových bloků Azure spustí základní virtuální počítač se při ka
 
 ![COMPUTE úrovně rozevíracího seznamu na řídicím panelu Projekt](media/project-compute-tier-list.png)
 
-Tato omezení můžete obejít a použít jiný virtuální počítač, který zřídíte v předplatném Azure. Jupyter je také nutné nainstalovat na tomto virtuálním počítači. Image virtuálního počítače pro datové vědy jsou vhodná rozhodnutí, protože patří mezi ně Jupyter ve výchozím nastavení.
+Tato omezení můžete obejít a použít jiný virtuální počítač, který zřídíte v předplatném Azure. Musíte nainstalovat a spustit JupyterHub na tomto virtuálním počítači. Image virtuálního počítače pro datové vědy (libovolný operační systém) jsou vhodná rozhodnutí, protože patří mezi ně JupyterHub ve výchozím nastavení.
 
-Můžete připojit k jakékoli vhodně nakonfigurovaných virtuálních počítačů Azure pomocí **přímé Compute** možnost v rozevíracím seznamu. Výběrem této možnosti vás vyzve k zadání názvu (Chcete-li zobrazit v seznamu), IP adresu Virtuálního počítače a port (obvykle 8000, výchozí port, na které naslouchá JupyterHub) a přihlašovací údaje virtuálního počítače:
+Až budete mít vhodně nakonfigurovaného virtuálního počítače Azure, vyberte **přímé Compute** možnost v rozevíracím seznamu, který vás vyzve k zadání jména (Chcete-li zobrazit v seznamu), IP adresa a port (obvykle 8000, výchozí port, ke kterému Virtuálního počítače JupyterHub naslouchá) a přihlašovací údaje virtuálního počítače:
 
 ![Výzva ke shromažďování informací serveru pro možnost přímého Compute](media/project-compute-tier-direct.png)
 
@@ -51,13 +51,13 @@ Pokud jsou splněny následující podmínky, rozevírací seznam také zobrazuj
 
 - Jste se přihlásili do poznámkových bloků Azure pomocí účtu, který používá Azure Active Directory (AAD), jako je například účet společnosti.
 - Váš účet připojený k předplatnému Azure.
-- Máte jeden nebo více virtuálních počítačů v tomto předplatném s alespoň čtečky přístup, použijte virtuální počítač pro datové vědy pro Linux (Ubuntu) image.
+- Máte jeden nebo více virtuálních počítačů v tomto předplatném s alespoň čtečky přístup, použijte virtuální počítač pro datové vědy pro Linux (Ubuntu) bitovou kopii.)
 
 ![Instance data Science virtuálních počítačů v rozevíracím seznamu v řídicím panelu Projekt](media/project-compute-tier-dsvm.png)
 
 Při výběru DSVM instance poznámkových bloků Azure může výzvu pro konkrétní počítač pověření použitá při vytváření virtuálního počítače.
 
-Pokud chcete vytvořit novou instanci DSVM, postupujte podle pokynů [vytvoření virtuálního počítače s Ubuntu Data Science](/azure/machine-learning/data-science-virtual-machine/dsvm-ubuntu-intro). Můžete *musí* použít **virtuální počítač pro datové vědy pro Linux (Ubuntu)** image, protože poznámkových bloků Azure nezobrazí datové, které používají Image Windows nebo CentOS.
+Pokud chcete vytvořit novou instanci DSVM, postupujte podle pokynů [vytvoření virtuálního počítače s Ubuntu Data Science](/azure/machine-learning/data-science-virtual-machine/dsvm-ubuntu-intro). Použití **virtuální počítač pro datové vědy pro Linux (Ubuntu)** obrázku, pokud chcete zobrazit v rozevíracím seznamu v poznámkových bloků Azure datové VĚDY.  Pokud z jiných důvodů budete muset použít obraz Windows nebo CentOS, můžete použít **přímé Compute** možnost ručně připojit k datové VĚDY.
 
 ## <a name="edit-project-metadata"></a>Úprava metadat projektu
 

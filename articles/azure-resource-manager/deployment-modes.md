@@ -9,14 +9,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/08/2018
+ms.date: 01/24/2019
 ms.author: tomfitz
-ms.openlocfilehash: 105a836f609859825c273ed9fba9dd46237bcaa9
-ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
+ms.openlocfilehash: 9120e5f283f8d8da8da2c80959a335965a643409
+ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54447934"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54903889"
 ---
 # <a name="azure-resource-manager-deployment-modes"></a>Režimy nasazení Azure Resource Manageru
 
@@ -24,14 +24,11 @@ Při nasazování prostředků, určíte, že je nasazení přírůstkové aktua
 
 ## <a name="incremental-and-complete-deployments"></a>Přírůstkové a úplné nasazení
 
-Při nasazování prostředků:
+Pro oba režimy se pokusí vytvořit všechny prostředky zadané v šabloně Resource Manageru. Není-li prostředek již existuje ve skupině prostředků a její nastavení jsou beze změny, žádná operace provedena pro daný prostředek. Při změně hodnoty vlastnosti pro určitý prostředek, prostředek se aktualizuje s těmito novými hodnotami. Pokud se pokusíte aktualizovat umístění nebo zadejte existující prostředek, nasazení se nezdaří s chybou. Místo toho nasadit nový prostředek s umístěním nebo zadejte, že potřebujete.
 
-* V dokončení režimu Resource Manageru **odstraní** prostředky, které existují ve skupině prostředků, ale nejsou v šabloně zadané. Tyto prostředky, které jsou stále zadána, ale nenasadí kvůli podmínka vyhodnocena jako NEPRAVDA, nebudou však odstraněny.
-* V přírůstkovém režimu Resource Manageru **ponechá beze změny** prostředky, které existují ve skupině prostředků, ale nejsou v šabloně zadané.
+V dokončení režimu Resource Manageru **odstraní** prostředky, které existují ve skupině prostředků, ale nejsou v šabloně zadané. Prostředky, které jsou v této šabloně specifikovaný, ale není nasazena, protože [podmínku](resource-manager-templates-resources.md#condition) vyhodnotí na hodnotu false, nebudou odstraněny.
 
-Pro oba režimy se pokusí vytvořit všechny prostředky zadané v šabloně Resource Manageru. Pokud prostředek ve skupině prostředků už existuje a jsou beze změny jeho nastavení, výsledkem operace je beze změny. Při změně hodnoty vlastnosti pro určitý prostředek, prostředek se aktualizuje s těmito novými hodnotami. Pokud se pokusíte aktualizovat umístění nebo zadejte existující prostředek, nasazení se nezdaří s chybou. Místo toho nasadit nový prostředek s umístěním nebo zadejte, že potřebujete.
-
-Pokud opětovného nasazení prostředků v přírůstkovém režimu, zadejte všechny hodnoty vlastností pro prostředek, nejen ty, které chcete aktualizovat. Pokud nezadáte určité vlastnosti, interpretuje Resource Manageru aktualizace jako přepsání těchto hodnot.
+V přírůstkovém režimu Resource Manageru **ponechá beze změny** prostředky, které existují ve skupině prostředků, ale nejsou v šabloně zadané. Pokud opětovného nasazení prostředků v přírůstkovém režimu, zadejte všechny hodnoty vlastností pro prostředek, nejen ty, které chcete aktualizovat. Pokud nezadáte určité vlastnosti, interpretuje Resource Manageru aktualizace jako přepsání těchto hodnot.
 
 ## <a name="example-result"></a>Příklad výsledku
 

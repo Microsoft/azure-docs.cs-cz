@@ -3,7 +3,7 @@ title: Připojení ke službě Azure Stack pomocí prostředí PowerShell jako u
 description: Kroky pro připojení k instanci služby Azure Stack uživatele.
 services: azure-stack
 documentationcenter: ''
-author: sethmanheim
+author: mattbriggs
 manager: femila
 editor: ''
 ms.service: azure-stack
@@ -11,15 +11,15 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/07/2018
-ms.author: sethm
+ms.date: 01/24/2019
+ms.author: mabrigg
 ms.reviewer: bganapa
-ms.openlocfilehash: bc6d48e0b805d8efa2efe88242aff53f797a6a12
-ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
+ms.openlocfilehash: 1f920c20e00022c9497eae72975ade285a5748ac
+ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/12/2019
-ms.locfileid: "54243895"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54903478"
 ---
 # <a name="connect-to-azure-stack-with-powershell-as-a-user"></a>Připojení ke službě Azure Stack pomocí prostředí PowerShell jako uživatel
 
@@ -67,16 +67,12 @@ Nezapomeňte že nahradit proměnné následujícího skriptu s hodnotami z konf
   # Register an Azure Resource Manager environment that targets your Azure Stack instance
   Add-AzureRMEnvironment -Name "AzureStackUser" -ArmEndpoint "https://management.local.azurestack.external"
 
-  $AuthEndpoint = (Get-AzureRmEnvironment -Name "AzureStackUser").ActiveDirectoryAuthority.TrimEnd('/')
-  $tenantId = (invoke-restmethod "$($AuthEndpoint)/.well-known/openid-configuration").issuer.TrimEnd('/').Split('/')[-1]
-
   # Sign in to your environment
 
   $cred = get-credential
 
   Login-AzureRmAccount `
     -EnvironmentName "AzureStackUser" `
-    -TenantId $tenantId `
     -Credential $cred
   ```
 

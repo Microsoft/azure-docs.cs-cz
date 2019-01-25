@@ -12,14 +12,14 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 02/02/2018
+ms.date: 01/24/2019
 ms.author: mikhegn
-ms.openlocfilehash: 459dd86fd614cb185801b074cea70c36dc7f6ccb
-ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
+ms.openlocfilehash: dc979e4aa9882960b86d902266793910ce6fe8b3
+ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38972328"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54902954"
 ---
 # <a name="visualize-your-cluster-with-service-fabric-explorer"></a>Vizualizujte cluster pomocí Service Fabric Exploreru
 
@@ -49,6 +49,11 @@ Chcete-li stáhnout Service Fabric Explorer, jako desktopová aplikace pomocí n
 Service Fabric Explorer je také hostovaná v clusteru Service Fabric koncový bod správy HTTP. SFX spustit ve webovém prohlížeči, přejděte na koncový bod správy HTTP clusteru z libovolného prohlížeče – například https://clusterFQDN:19080.
 
 Pro nastavení pracovní stanici vývojáře, můžete spustit Service Fabric Explorer v místním clusteru tak, že přejdete do https://localhost:19080/Explorer. Podívejte se na tomto článku [Příprava vývojového prostředí](service-fabric-get-started.md).
+
+> [!NOTE]
+> Pokud je váš cluster zabezpečený pomocí certifikátu podepsaného svým držitelem, že zobrazí se chybová zpráva z webového prohlížeče "Tento web není zabezpečený". Většina moderních webových prohlížečů můžete jednoduše pokračujte tak, že přepíšete upozornění. V produkčním prostředí by měl být váš cluster zabezpečený pomocí běžné jméno a certifikátu autority vydaný certifikát. 
+>
+>
 
 ## <a name="connect-to-a-service-fabric-cluster"></a>Připojte se ke clusteru Service Fabric
 K připojení ke clusteru Service Fabric, potřebujete koncový bod správy clusterů (plně kvalifikovaný název domény nebo IP) a protokolu HTTP port koncového bodu správy (clusteru 19080 ve výchozím nastavení). Například https://mysfcluster.westus.cloudapp.azure.com:19080. Zaškrtávací políčko "Připojit k místnímu hostiteli" slouží k připojení k místnímu clusteru na pracovní stanici.
@@ -118,6 +123,18 @@ Service Fabric Exploreru můžete také použít k vytvoření instance aplikace
 >
 >
 
+## <a name="event-store"></a>Událost Store
+Eventstoru je funkce nabízených platformou, která poskytuje události platformy Service Fabric jsou k dispozici v Service Fabric Exploreru a prostřednictvím rozhraní REST API. Zobrazí se zobrazení snímku, co se děje ve vašem clusteru pro každou entitu například uzel, služby, aplikace a pro dotazy podle času události. Můžete také další informace o Eventstoru na [přehled Eventstoru](service-fabric-diagnostics-eventstore.md).   
+
+![Eventstoru][sfx-eventstore]
+
+>[!NOTE]
+>Od verze 6.4 Service Fabric. Eventstoru není ve výchozím nastavení povolené a musí být povolená v šabloně resource Manageru
+
+>[!NOTE]
+>Od verze 6.4 Service Fabric. rozhraní API Eventstoru jsou dostupné jenom pro clustery Windows pouze běžící v Azure. Pracujeme na přenos tuto funkci pro Linux, stejně jako naše samostatné clustery.
+
+
 ## <a name="next-steps"></a>Další postup
 * [Správa aplikací Service Fabric v sadě Visual Studio](service-fabric-manage-application-in-visual-studio.md)
 * [Nasazení aplikace Service Fabric pomocí Powershellu](service-fabric-deploy-remove-applications.md)
@@ -129,3 +146,4 @@ Service Fabric Exploreru můžete také použít k vytvoření instance aplikace
 [sfx-service-essentials]: ./media/service-fabric-visualizing-your-cluster/SfxServiceEssentials.png
 [sfx-delete-application]: ./media/service-fabric-visualizing-your-cluster/SfxDeleteApplication.png
 [sfx-create-app-instance]: ./media/service-fabric-visualizing-your-cluster/SfxCreateAppInstance.png
+[sfx-eventstore]: ./media/service-fabric-diagnostics-eventstore/eventstore.png

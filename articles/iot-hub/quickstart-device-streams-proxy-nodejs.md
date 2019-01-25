@@ -10,22 +10,21 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 01/15/2019
 ms.author: rezas
-ms.openlocfilehash: 012fdfa4faf10cacaf85819517f358c1af1ab39d
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: 0231b67ee56de5e1729c02ed3d87b2461f025b84
+ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54830212"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54887423"
 ---
 # <a name="quickstart-sshrdp-over-iot-hub-device-streams-using-nodejs-proxy-application-preview"></a>Rychlý start: SSH nebo RDP over datové proudy zařízení služby IoT Hub pomocí Node.js proxy aplikace (preview)
 
 [!INCLUDE [iot-hub-quickstarts-4-selector](../../includes/iot-hub-quickstarts-4-selector.md)]
 
-[Datové proudy zařízení služby IoT Hub](./iot-hub-device-streams-overview.md) povolit zařízení a služeb aplikacím komunikovat způsobem, firewallem procházející a zabezpečené. Tento rychlý start popisuje provádění aplikace Node.js proxy server běžící na straně služby umožňují provoz SSH a RDP k odeslání do zařízení v rámci datového proudu zařízení. Zobrazit [na této stránce](./iot-hub-device-streams-overview.md#local-proxy-sample-for-ssh-or-rdp) přehledné informace o nastavení. Ve verzi public preview je v sady Node.js SDK podporuje pouze datové proudy zařízení na straně služby. Tento rychlý start v důsledku toho pokrývá jenom pokyny ke spuštění straně služby proxy serveru. Měli byste spustit doprovodné straně zařízení proxy serveru, který je k dispozici v [rychlý start C](./quickstart-device-streams-proxy-c.md) nebo [ C# rychlý Start](./quickstart-device-streams-proxy-csharp.md) vodítka.
+[Datové proudy zařízení služby IoT Hub](./iot-hub-device-streams-overview.md) povolit zařízení a služeb aplikacím komunikovat způsobem, firewallem procházející a zabezpečené. Tato příručka rychlý start popisuje provádění aplikace Node.js proxy server běžící na straně služby umožňují provoz SSH a RDP k odeslání do zařízení v rámci datového proudu zařízení. Zobrazit [tady](./iot-hub-device-streams-overview.md#local-proxy-sample-for-ssh-or-rdp) přehledné informace o nastavení. Ve verzi public preview je v sady Node.js SDK podporuje pouze datové proudy zařízení na straně služby. V důsledku toho této úvodní příručky pokrývá jenom pokyny ke spuštění místní služby proxy serveru. Měli byste spustit doprovodných zařízení místní proxy server, který je k dispozici v [rychlý start C](./quickstart-device-streams-proxy-c.md) nebo [ C# rychlý Start](./quickstart-device-streams-proxy-csharp.md) vodítka.
 
-Nejprve popisujeme nastavení pro SSH (pomocí portu `22`). Pak zjistíte, jak upravit nastavení pro protokol RDP, (ta používá port 3389). Protože zařízení datové proudy jsou aplikace a bez ohledu na protokol, lze upravit stejného vzorku (obvykle změnou portů pro komunikaci) tak, aby vyhovovaly jiné typy provozu aplikací.
+Nejprve popisujeme nastavení pro SSH (s použitím port 22). Pak zjistíte, jak upravit nastavení pro protokol RDP, (ta používá port 3389). Protože zařízení datové proudy jsou aplikace a bez ohledu na protokol, se stejným vzorkem lze upravit tak, aby vyhovovaly jiné typy provozu aplikace klient/server (obvykle úpravou komunikační port).
 
-Kód vám ukáže, inicializace a použití datového proudu zařízení a je možné použít opakovaně pro provoz aplikací také (jiné než RDP a SSH).
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
@@ -34,7 +33,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 
 ## <a name="prerequisites"></a>Požadavky
 
-Ke spuštění aplikace straně služby v rámci tohoto rychlého startu budete potřebovat Node.js verze 4.x.x nebo novější na vývojovém počítači.
+Ke spuštění aplikace místní služby v rámci tohoto rychlého startu budete potřebovat Node.js verze 4.x.x nebo novější na vývojovém počítači.
 
 Node.js pro různé platformy si můžete stáhnout z webu [nodejs.org](https://nodejs.org).
 
@@ -86,14 +85,14 @@ Zařízení musí být zaregistrované ve vašem centru IoT, aby se mohlo připo
 
 ## <a name="ssh-to-a-device-via-device-streams"></a>Přístup k zařízení prostřednictvím datových proudů zařízení přes SSH
 
-### <a name="run-the-device-side-proxy"></a>Spustit straně zařízení proxy serveru
+### <a name="run-the-device-local-proxy"></a>Spusťte místní zařízení proxy serveru
 
-Jak už bylo zmíněno dříve, SDK IoT Hub pro Node.js na straně služby podporuje pouze datové proudy zařízení. Aplikace na straně zařízení, pomocí doprovodných zařízení proxy serveru sady k dispozici v [rychlý start C](./quickstart-device-streams-proxy-c.md) nebo [ C# rychlý Start](./quickstart-device-streams-proxy-csharp.md) vodítka. Ujistěte se, že je spuštěný proxy server straně zařízení než budete pokračovat k dalšímu kroku.
+Jak už bylo zmíněno dříve, SDK IoT Hub pro Node.js na straně služby podporuje pouze datové proudy zařízení. Pro místní zařízení aplikaci pomocí doprovodných zařízení proxy serveru sady k dispozici v [rychlý start C](./quickstart-device-streams-proxy-c.md) nebo [ C# rychlý Start](./quickstart-device-streams-proxy-csharp.md) vodítka. Ujistěte se, že je spuštěný proxy server místní zařízení než budete pokračovat k dalšímu kroku.
 
 
-### <a name="run-the-service-side-proxy"></a>Spusťte službu na straně serveru proxy
+### <a name="run-the-service-local-proxy"></a>Spuštění místní služby proxy
 
-Za předpokladu, že je spuštěný proxy server straně zařízení, postupujte podle pokynů pro spuštění straně služby proxy napsané v Node.js:
+Za předpokladu, že [zařízení místní proxy](#run-the-device-local-proxy) je spuštěný, postupujte podle kroků níže spusťte místní službu proxy napsané v Node.js.
 
 - Zadejte svoje přihlašovací údaje služby, ID cílové zařízení, ve kterém se spustí proces démon programu SSH a číslo portu proxy serveru spuštěného v příslušném zařízení jako proměnné prostředí.
 ```
@@ -107,7 +106,7 @@ Za předpokladu, že je spuštěný proxy server straně zařízení, postupujte
   SET STREAMING_TARGET_DEVICE=MyDevice
   SET PROXY_PORT=2222
 ```
-Změna `MyDevice` ID zařízení jste zvolili pro vaše zařízení.
+Změňte tak, aby odpovídaly zařízení ID a připojovací řetězec výše uvedených hodnot.
 
 - Přejděte do `Quickstarts/device-streams-service` rozzipovaný projekt složky a spuštění místní služby proxy serveru.
 ```
@@ -124,10 +123,10 @@ Změna `MyDevice` ID zařízení jste zvolili pro vaše zařízení.
 ### <a name="ssh-to-your-device-via-device-streams"></a>SSH do vašeho zařízení prostřednictvím datových proudů zařízení
 V systému Linux, spusťte pomocí SSH `ssh $USER@localhost -p 2222` na terminálu. Ve Windows, pomocí svého oblíbeného klienta SSH (například PuTTY).
 
-Výstup konzoly na straně služby po navázání relace SSH (služba místní proxy server naslouchá na portu 2222): ![Alternativní text](./media/quickstart-device-streams-proxy-nodejs/service-console-output.PNG "terminálu výstup SSH")
+Výstup konzoly na místní službu po navázání relace SSH (služba místní proxy server naslouchá na portu 2222): ![Alternativní text](./media/quickstart-device-streams-proxy-nodejs/service-console-output.PNG "terminálu výstup SSH")
 
 
-Výstup programu klienta SSH konzole (klient SSH komunikuje se proces démon programu SSH pomocí připojení k portu <code>22</code> kde service místní proxy server naslouchá na): ![Alternativní text](./media/quickstart-device-streams-proxy-nodejs/ssh-console-output.PNG "výstup klienta SSH")
+Výstup programu klienta SSH konzole (klient SSH komunikuje se proces démon programu SSH na port 22, kde služba místní proxy server naslouchá připojením): ![Alternativní text](./media/quickstart-device-streams-proxy-nodejs/ssh-console-output.PNG "výstup klienta SSH")
 
 
 ### <a name="rdp-to-your-device-via-device-streams"></a>Připojení RDP k zařízení prostřednictvím datových proudů zařízení

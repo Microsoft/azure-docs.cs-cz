@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: conceptual
-ms.date: 09/06/2018
+ms.date: 01/23/2019
 ms.author: diberry
-ms.openlocfilehash: ae0fdb17680f415a1dacce1738fa53fcda943788
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: cff9a17b488363ce6acd80cd90f15c58c6fe6cb5
+ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53134994"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54885757"
 ---
 # <a name="how-to-add-patterns-to-improve-prediction-accuracy"></a>Jak přidat vzorce, a zvyšte přesnost předpovědi
 Po aplikaci LUIS obdrží koncový bod projevy, použijte [koncept](luis-concept-patterns.md) vzorů zvyšte přesnost předpovědi pro projevy, které se zjistí vzor v pořadí slov a požadované aplikace word. Vzory používání [entity](luis-concept-entity-types.md) a jejich rolí k extrakci dat pomocí specifického vzoru syntaxe. 

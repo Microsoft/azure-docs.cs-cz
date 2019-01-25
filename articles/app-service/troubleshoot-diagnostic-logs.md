@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 06/06/2016
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: d5a94258e8c17d13e15f22f9fa96ef0647105abe
-ms.sourcegitcommit: 9f87a992c77bf8e3927486f8d7d1ca46aa13e849
+ms.openlocfilehash: b73656e2bb7c413d2c29fafb682f39154499854a
+ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/28/2018
-ms.locfileid: "53807869"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54904450"
 ---
 # <a name="enable-diagnostics-logging-for-apps-in-azure-app-service"></a>Povolit protokolování diagnostiky aplikací ve službě Azure App Service
 ## <a name="overview"></a>Přehled
@@ -29,13 +29,13 @@ Azure nabízí předdefinovanou diagnostiku, která vám pomůže s laděním [a
 Tento článek používá [webu Azure portal](https://portal.azure.com) a Azure CLI pro práci s diagnostické protokoly. Informace o práci se diagnostické protokoly pomocí sady Visual Studio najdete v tématu [řešení potíží s Azure v sadě Visual Studio](troubleshoot-dotnet-visual-studio.md).
 
 ## <a name="whatisdiag"></a>Diagnostika webového serveru a application diagnostics
-App Service poskytují diagnostické funkce pro protokolování informací z webového serveru a webové aplikace. Tyto jsou logicky rozdělena do **webového serveru diagnostiky** a **konzole application diagnostics**.
+App Service poskytuje diagnostické funkce pro protokolování informací z webového serveru a webové aplikace. Tyto jsou logicky rozdělena do **webového serveru diagnostiky** a **konzole application diagnostics**.
 
 ### <a name="web-server-diagnostics"></a>Diagnostika webového serveru
 Můžete povolit nebo zakázat následující typy protokolů:
 
 * **Podrobné protokolování chyb** – podrobné informace o chybě pro stavové kódy HTTP, které indikují chybu (stavový kód 400 nebo vyšší). Může obsahovat informace, které vám pomůže určit, proč server vrátil kód chyby.
-* **Se nezdařilo, trasování požadavku** – podrobné informace o neúspěšných požadavcích, včetně trasování součásti služby IIS používá ke zpracování požadavku a doba trvání v jednotlivých komponentách. To je užitečné, pokud se pokoušíte zvýšit výkon webu a izolovat co způsobuje konkrétní chyba protokolu HTTP, který se má vrátit.
+* **Se nezdařilo, trasování požadavku** – podrobné informace o neúspěšných požadavcích, včetně trasování součásti služby IIS používá ke zpracování požadavku a doba trvání v jednotlivých komponentách. To je užitečné, pokud chcete zlepšit výkon webu a izolovat konkrétní chyba protokolu HTTP.
 * **Web, protokolování na Server** – informace o transakce HTTP pomocí [rozšířený formát protokolu W3C souboru](https://msdn.microsoft.com/library/windows/desktop/aa814385.aspx). Je užitečné při určování celkové lokality metriky, jako je počet požadavků zpracovaných nebo kolik žádostí se z konkrétní IP adresu.
 
 ### <a name="application-diagnostics"></a>Diagnostika aplikace
@@ -45,7 +45,7 @@ Konzole Application diagnostics můžete zachytit informace vytvořené webové 
 
 Za běhu můžete načíst tyto protokoly, které pomůžou při řešení potíží. Další informace najdete v tématu [řešení potíží s Azure App Service v sadě Visual Studio](troubleshoot-dotnet-visual-studio.md).
 
-App Service zaznamenávat informace o nasazení při publikování obsahu do aplikace. Probíhá automaticky a nejsou žádná nastavení konfigurace pro nasazení protokolování. Nasazení protokolování umožňuje určit, proč se nepovedlo nasazení. Například pokud používáte skript vlastního nasazení, můžete použít nasazení protokolování k určení, proč se skript selhává.
+App Service také zaznamenává informace o nasazení při publikování obsahu do aplikace. Probíhá automaticky a nejsou žádná nastavení konfigurace pro nasazení protokolování. Nasazení protokolování umožňuje určit, proč se nepovedlo nasazení. Například pokud používáte skript vlastního nasazení, můžete použít nasazení protokolování k určení, proč se skript selhává.
 
 ## <a name="enablediag"></a>Postup povolení diagnostiky
 Povolení diagnostiky v [webu Azure portal](https://portal.azure.com), přejděte na stránku pro vaši aplikaci a klikněte na tlačítko **Nastavení > diagnostické protokoly**.
@@ -53,12 +53,16 @@ Povolení diagnostiky v [webu Azure portal](https://portal.azure.com), přejdět
 <!-- todo:cleanup dogfood addresses in screenshot -->
 ![Část protokoly](./media/web-sites-enable-diagnostic-log/logspart.png)
 
-Když povolíte **konzole application diagnostics**, také zvolte **úroveň**. Toto nastavení vám umožní filtrovat informace zachycen **informační**, **upozornění**, nebo **chyba** informace. Nastavení na **podrobné** zaznamená všechny informace o vytvářené aplikace.
+Když povolíte **konzole application diagnostics**, také zvolte **úroveň**. Následující tabulka zobrazuje kategorie protokolů, které obsahuje každou úroveň:
 
-> [!NOTE]
-> Na rozdíl od změny v souboru web.config, neprobíhá povolení rozhraní Application diagnostics nebo změna úrovně diagnostický protokol, na kterém aplikace běží v rámci domény aplikace.
->
->
+| Úroveň| Kategorie součástí protokolu |
+|-|-|
+|**Disabled** (Zakázáno) | Žádný |
+|**Chyba** | Chyby, kritické |
+|**Upozornění** | Upozornění, chyby, kritické|
+|**Informace o** | Informace, upozornění, chyby, kritické|
+|**Verbose** | Trasování, ladění, informace, upozornění, chyby, kritické (všechny kategorie) |
+|-|-|
 
 Pro **protokolování aplikací**, můžete zapnout možnost souboru systému dočasně pro účely ladění. Tato volba vypne automaticky za 12 hodin. Můžete také zapnout možnost úložiště objektů blob kontejner objektů blob, do kterého se zapisují protokoly.
 
@@ -165,7 +169,7 @@ Chcete-li filtrovat konkrétní typy, jako je například HTTP, použijte **– 
 ### <a name="application-diagnostics-logs"></a>Protokoly diagnostiky aplikací
 Konzole Application diagnostics ukládá informace v určitém formátu pro aplikace .NET, v závislosti na tom, jestli ukládání protokolů do služby file storage systému nebo objekt blob. 
 
-Základní sadu – uložená data jsou stejné oba typy úložiště – datum a čas, ke které došlo k události, ID procesu, který vytvořil události, typu události (informace, upozornění a chyby) a zpráva o události. Pomocí systému souborů pro ukládání protokolů je užitečné, když potřebujete okamžitý přístup k řešení problémů, protože soubory protokolu jsou aktualizovány téměř okamžitě. Úložiště objektů blob je použít pro archivační účely, protože soubory ukládají do mezipaměti a pak se vyprázdní na kontejner úložiště podle plánu.
+Základní sadu – uložená data jsou stejné oba typy úložiště – datum a čas, ke které došlo k události, ID procesu, který vytvořil události, typu události (informace, upozornění a chyby) a zpráva o události. Pomocí systému souborů pro ukládání protokolů je užitečné, když potřebujete okamžitý přístup k řešení problémů, protože soubory protokolu jsou aktualizovány téměř okamžitě. BLOB storage se využívá pro archivační účely, protože soubory ukládají do mezipaměti a pak se vyprázdní na kontejner úložiště podle plánu.
 
 **Systém souborů**
 

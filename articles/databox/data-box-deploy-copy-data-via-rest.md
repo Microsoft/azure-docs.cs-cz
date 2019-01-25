@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: tutorial
-ms.date: 12/07/2018
+ms.date: 01/24/2019
 ms.author: alkohli
-ms.openlocfilehash: fa0883c18e0d586e6e9b35fb19dbe304388045b5
-ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
+ms.openlocfilehash: 85c9eeb60027ba44fd5e65d056864aa76a6e720a
+ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54215282"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54900880"
 ---
 # <a name="tutorial-copy-data-to-azure-data-box-blob-storage-via-rest-apis"></a>Kurz: Kopírování dat do úložiště objektů Blob v Azure Data Box přes rozhraní REST API  
 
@@ -22,9 +22,9 @@ Tento kurz popisuje postupy pro připojení k úložišti objektů Blob v Azure 
 V tomto kurzu se naučíte:
 
 > [!div class="checklist"]
+> * Požadavky
 > * Připojení k úložišti pole datový objekt Blob přes *http* nebo *https*
 > * Kopírování dat do Data Boxu
-> * Příprava k odeslání
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -201,18 +201,17 @@ Pokud chcete zkopírovat pouze zdrojové prostředky, které neexistují v cíli
     AzCopy /Source:C:\myfolder /Dest:https://data-box-storage-account-name.blob.device-serial-no.microsoftdatabox.com/container-name/files/ /DestKey:<key> /S /XO
 
 
-## <a name="prepare-to-ship"></a>Příprava k odeslání
-
-[!INCLUDE [data-box-prepare-to-ship](../../includes/data-box-prepare-to-ship.md)]
+Dalším krokem je k přípravě na odeslání vašeho zařízení.
 
 ## <a name="next-steps"></a>Další postup
 
 V tomto kurzu jste se dozvěděli o tématech spojených se službou Azure Data Box Disk, jako jsou:
 
 > [!div class="checklist"]
+> * Požadavky
 > * Připojení k úložišti pole datový objekt Blob přes *http* nebo *https*
 > * Kopírování dat do Data Boxu
-> * Příprava k odeslání
+
 
 Přejděte k dalšímu kurzu se naučíte k odeslání vašeho zařízení Data Box zpět společnosti Microsoft.
 

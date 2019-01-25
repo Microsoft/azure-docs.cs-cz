@@ -13,14 +13,14 @@ ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: na
 ms.date: 08/24/2017
-ms.author: cwatson
+ms.author: kfollis
 ms.custom: accessibility
-ms.openlocfilehash: de79e1ea91b7d30eb550cb078bbb257e2f924dfb
-ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
+ms.openlocfilehash: d9c9c18fb2c20f1b0740a490316826e488049faf
+ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47393821"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54881167"
 ---
 # <a name="keyboard-shortcuts-in-the-azure-portal"></a>Klávesové zkratky na webu Azure Portal
 Tento článek popisuje klávesové zkratky, které fungují v rámci webu Azure portal. Jednotlivé služby může mít své vlastní klávesové zkratky.
@@ -28,7 +28,7 @@ Tento článek popisuje klávesové zkratky, které fungují v rámci webu Azure
 ## <a name="actions"></a>Akce
 |Provedete to tak |Stisknutím klávesy |
 | --- | --- |
-|Vytvořit nový prostředek|G + N|
+|Vytvoření nového prostředku|G + N|
 |Otevření podokna "všechny služby.|G+B|
 |Prohledávat prostředky|G+/| 
 |Hledání položek nabídky prostředků|CTRL +/ |

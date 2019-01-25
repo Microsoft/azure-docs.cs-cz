@@ -5,15 +5,20 @@ author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 01/17/2019
-ms.openlocfilehash: 6c1a0a4a13a70daec157ede98f850f87150f8d93
-ms.sourcegitcommit: ba9f95cf821c5af8e24425fd8ce6985b998c2982
+ms.date: 01/23/2019
+ms.openlocfilehash: bf6e9947c21e5b07b2adc99de585c77444447c04
+ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54383525"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54902651"
 ---
 # <a name="how-to-create-and-manage-read-replicas-in-the-azure-portal"></a>Jak vytvořit a spravovat čtení replik na webu Azure Portal
+
+> [!IMPORTANT]
+> Funkce repliky pro čtení je ve verzi Public Preview.
+
+
 V tomto článku se dozvíte, jak vytvořit a spravovat repliky pro čtení v služba Azure Database for PostgreSQL pomocí webu Azure portal. Další informace o replik pro čtení [, přečtěte si dokumentaci koncepty](concepts-read-replicas.md).
 
 ## <a name="prerequisites"></a>Požadavky
@@ -41,6 +46,7 @@ Tento krok hlavní přípravy se týká pouze servery pro obecné účely a opti
    ![Azure Database for PostgreSQL – uložení oznámení](./media/howto-read-replicas-portal/parameter-save-notification.png)
 
 6. Restartujte server na použití změny po uložení. Zobrazit [v dokumentaci k restartování](howto-restart-server-portal.md) informace o restartování serveru.
+
 
 ## <a name="create-a-read-replica"></a>Vytvoření repliky pro čtení
 Repliky pro čtení můžete vytvořit pomocí následujících kroků:

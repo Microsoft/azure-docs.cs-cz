@@ -12,15 +12,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/05/2018
+ms.date: 01/24/2019
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 30ed7ff2026c64c7e40d43597a2747f1144ae125
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: 13ff2c817e13337da51bb9ad40ce16838af601d9
+ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54468600"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54901373"
 ---
 # <a name="azure-ad-connect-sync-attributes-synchronized-to-azure-active-directory"></a>Synchronizace Azure AD Connect: Atributy synchronizované se službou Azure Active Directory
 Toto téma obsahuje seznam atributy, které jsou synchronizovány pomocí synchronizace Azure AD Connect.  
@@ -45,6 +45,7 @@ V tomto případě začněte seznamem atributů v tomto tématu a identifikujte 
 | displayName |X | |
 | atributy objectSID |X |mechanickým vlastnost. Identifikátor uživatele AD používá k udržení synchronizace mezi Azure AD a AD. |
 | pwdLastSet |X |mechanickým vlastnost. Umožňuje vědět, kdy platnost již vydané tokeny. Používá se synchronizace hodnot hash hesel, předávacího ověřování a federace. |
+|samAccountName|X| |
 | sourceAnchor |X |mechanickým vlastnost. Neměnné identifikátor Udržovat vztah mezi službami AD DS a Azure AD. |
 | usageLocation |X |mechanickým vlastnost. Země daného uživatele. Používá se pro přiřazení licence. |
 | userPrincipalName (Hlavní název uživatele) |X |UPN je přihlašovací ID uživatele. Nejčastěji používané jako [e-mailu] stejnou hodnotu. |

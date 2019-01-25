@@ -3,7 +3,7 @@ title: Kurz vysoké dostupnosti pro virtuální počítače s Windows v Azure | 
 description: V tomto kurzu zjistíte, jak používat Azure PowerShell k nasazení vysoce dostupných virtuálních počítačů ve skupinách dostupnosti
 documentationcenter: ''
 services: virtual-machines-windows
-author: zr-msft
+author: cynthn
 manager: jeconnoc
 editor: ''
 tags: azure-resource-manager
@@ -14,14 +14,14 @@ ms.tgt_pltfrm: vm-windows
 ms.devlang: na
 ms.topic: tutorial
 ms.date: 02/09/2018
-ms.author: zarhoads
+ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 71ae05abef1cf70b64c0390d81cb7e50bab22c5a
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: dddb2e36a17ad8748ec13c24fecb23fa03887577
+ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54429476"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54884040"
 ---
 # <a name="tutorial-create-and-deploy-highly-available-virtual-machines-with-azure-powershell"></a>Kurz: Vytváření a nasazování vysoce dostupných virtuálních počítačů pomocí Azure Powershellu
 

@@ -3,7 +3,7 @@ title: Ukázkový skript Azure PowerShellu – Log Analytics | Microsoft Docs
 description: Ukázkový skript Azure PowerShellu – Log Analytics
 services: virtual-machines-linux
 documentationcenter: virtual-machines
-author: zr-msft
+author: cynthn
 manager: jeconnoc
 editor: tysonn
 tags: azure-service-management
@@ -14,14 +14,14 @@ ms.topic: sample
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 03/01/2017
-ms.author: zarhoads
+ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 2ce61feec3670674253ac697f2e373cbf40808e4
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
-ms.translationtype: HT
+ms.openlocfilehash: d2b9b2a4940d749fcad8c885cc2e02ab8cf1870f
+ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49471250"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54886208"
 ---
 # <a name="create-a-log-analytics-monitored-vm-with-powershell"></a>Vytvoření virtuálního počítače monitorovaného v Log Analytics pomocí PowerShellu
 
@@ -62,7 +62,7 @@ Tento skript pomocí následujících příkazů vytvoří nasazení. Každá po
 | [Set-AzureRmVMExtension](/powershell/module/azurerm.compute/set-azurermvmextension) | Přidá do virtuálního počítače rozšíření virtuálního počítače. V tomto případě se k instalaci agenta Log Analytics a registraci virtuálního počítače v pracovním prostoru Log Analytics používá rozšíření agenta Log Analytics. |
 |[Remove-AzureRmResourceGroup](/powershell/module/azurerm.resources/remove-azurermresourcegroup) | Odebere skupinu prostředků a všechny prostředky, které obsahuje. |
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Další informace o modulu Azure PowerShellu najdete v [dokumentaci k Azure PowerShellu](/powershell/azure/overview).
 

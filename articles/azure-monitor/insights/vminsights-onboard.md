@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/23/2019
 ms.author: magoedte
-ms.openlocfilehash: e97ac849fa0e590dd2462d8e64b761da23576833
-ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
+ms.openlocfilehash: 1f6be45e7f53aff7f9b8957ca88efe7605e4a984
+ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 01/24/2019
-ms.locfileid: "54845950"
+ms.locfileid: "54889038"
 ---
 # <a name="deploy-azure-monitor-for-vms-preview"></a>Nasazení Azure Monitor pro virtuální počítače (preview)
 Tento článek popisuje, jak nastavit monitorování Azure pro virtuální počítače. Služba monitoruje stav operačního systému Azure virtuální počítače (VM) a škálovací sady virtuálních počítačů a virtuálních počítačů ve vašem prostředí. Toto monitorování zahrnuje zjišťování a mapování závislostí aplikace, které mohou být hostovány na nich. 
@@ -325,8 +325,9 @@ Pokud se rozhodnete používat rozhraní příkazového řádku Azure, musíte n
         az login
         az account set --subscription "Subscription Name"
         az group deployment create --name DeploySolutions --resource-group <ResourceGroupName> --template-file InstallSolutionsForVMInsights.json --parameters WorkspaceName=<workspaceName> WorkspaceLocation=<WorkspaceLocation - example: eastus>
+        ```
 
-        The configuration change can take a few minutes to complete. When it's completed, a message is displayed that's similar to the following and includes the result:
+        Změna konfigurace může trvat několik minut. Když se dokončí, zobrazí se zpráva, která je podobný následujícímu a zahrnuje výsledek:
 
         ```azurecli
         provisioningState       : Succeeded

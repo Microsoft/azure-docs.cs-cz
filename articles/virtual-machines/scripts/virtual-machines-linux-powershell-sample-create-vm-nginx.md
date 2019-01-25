@@ -3,7 +3,7 @@ title: Ukázkový skript Azure PowerShellu – NGINX | Microsoft Docs
 description: Ukázkový skript Azure PowerShellu – NGINX
 services: virtual-machines-linux
 documentationcenter: virtual-machines
-author: zr-msft
+author: cynthn
 manager: jeconnoc
 editor: tysonn
 tags: azure-service-management
@@ -14,14 +14,14 @@ ms.topic: sample
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 03/01/2017
-ms.author: zarhoads
+ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: ba64d5d72bd03e0f4556dfc79ed95a96d22d6ce6
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
-ms.translationtype: HT
+ms.openlocfilehash: d957b366a2926750e593e497f953fc57b0c160e0
+ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49467204"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54888350"
 ---
 # <a name="create-an-nginx-vm-with-powershell"></a>Vytvoření virtuálního počítače NGINX pomocí PowerShellu
 
@@ -62,7 +62,7 @@ Tento skript pomocí následujících příkazů vytvoří nasazení. Každá po
 | [Set-AzureRmVMExtension](/powershell/module/azurerm.compute/set-azurermvmextension) | Přidá do virtuálního počítače rozšíření virtuálního počítače. V této ukázce se rozšíření vlastních skriptů používá k instalaci serveru NGINX. |
 |[Remove-AzureRmResourceGroup](/powershell/module/azurerm.resources/remove-azurermresourcegroup) | Odebere skupinu prostředků a všechny prostředky, které obsahuje. |
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Další informace o modulu Azure PowerShellu najdete v [dokumentaci k Azure PowerShellu](/powershell/azure/overview).
 

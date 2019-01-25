@@ -12,13 +12,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 11/28/2018
-ms.author: cwatson
-ms.openlocfilehash: 2ce4bf8e5c3356a5fae6d213e6e48c1313a12463
-ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
+ms.author: banders
+ms.openlocfilehash: 870ceaf1ded3dd8eb08128514dcc7020fe74e7ae
+ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52580334"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54903906"
 ---
 # <a name="create-an-additional-subscription-in-the-azure-portal"></a>Vytvořte další předplatné na webu Azure Portal
 
@@ -48,6 +48,6 @@ Můžete také vytvořit další předplatná prostřednictvím kódu programu. 
 - [Vytvoření skupin pro správu pro organizaci poskytující prostředky a správu](../governance/management-groups/create.md?toc=/azure/billing/TOC.json)
 - [Zrušení předplatného pro Azure](billing-how-to-cancel-azure-subscription.md)
 
-## <a name="need-help-contact-us"></a>Potřebujete pomoct? Kontaktujte nás.
+## <a name="need-help-contact-us"></a>Potřebujete pomoc? Kontaktujte nás.
 
 Pokud máte otázky nebo potřebujete pomoc, [vytvořit žádost o podporu](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest).

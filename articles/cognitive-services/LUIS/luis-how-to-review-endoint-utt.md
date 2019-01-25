@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
-ms.date: 09/06/2018
+ms.date: 01/23/2019
 ms.author: diberry
-ms.openlocfilehash: 7175463001eac118d2939d3479e61a01b80ba86b
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 06551be663fb6abf7efff3fb5d889abc910fd093
+ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53106545"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54887032"
 ---
 # <a name="how-to-review-endpoint-utterances-in-luis-portal"></a>Kontrola projevy koncový bod portálu služby LUIS
 

@@ -10,20 +10,21 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 01/15/2019
 ms.author: rezas
-ms.openlocfilehash: 7a6a9a96bbde24fa8340714a8078e015a83d8cfb
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: e7cb8b2d699418b4d70d60f19a3a60ce0c7b8d38
+ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54830236"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54888664"
 ---
 # <a name="quickstart-sshrdp-over-iot-hub-device-streams-using-c-proxy-applications-preview"></a>Rychlý start: SSH nebo RDP over zařízení služby IoT Hub toků pomocí C# proxy aplikací (preview)
 
 [!INCLUDE [iot-hub-quickstarts-4-selector](../../includes/iot-hub-quickstarts-4-selector.md)]
 
-[Datové proudy zařízení služby IoT Hub](./iot-hub-device-streams-overview.md) povolit zařízení a služeb aplikacím komunikovat způsobem, firewallem procházející a zabezpečené. Tento rychlý start zahrnuje dvě C# programům, které umožňují provoz SSH a RDP k odeslání v rámci datového proudu zařízení, který je navázané prostřednictvím služby IoT Hub. Zobrazit [na této stránce](./iot-hub-device-streams-overview.md#local-proxy-sample-for-ssh-or-rdp) přehledné informace o nastavení.
+[Datové proudy zařízení služby IoT Hub](./iot-hub-device-streams-overview.md) povolit zařízení a služeb aplikacím komunikovat způsobem, firewallem procházející a zabezpečené. Tato příručka rychlý start zahrnuje dvě C# programům, které umožňují provoz aplikace klient/server (třeba RDP nebo SSH) k odeslání v rámci datového proudu zařízení, který je navázané prostřednictvím služby IoT Hub. Zobrazit [tady](./iot-hub-device-streams-overview.md#local-proxy-sample-for-ssh-or-rdp) přehledné informace o nastavení.
 
-Nejprve popisujeme nastavení pro SSH (s použitím port 22). Pak zjistíte, jak změnit port nakonfigurovaný nastavení pro protokol RDP. Protože zařízení datové proudy jsou aplikace a bez ohledu na protokol, lze upravit stejného vzorku (obvykle změnou portů pro komunikaci) tak, aby vyhovovaly jiné typy provozu aplikací.
+Nejprve popisujeme nastavení pro SSH (s použitím port 22). Pak zjistíte, jak změnit nastavení portů pro protokol RDP. Protože zařízení datové proudy jsou aplikace a bez ohledu na protokol, se stejným vzorkem lze upravit tak, aby vyhovovaly jiné typy provozu aplikace. Tento postup obvykle pouze zahrnuje Změna portu, který používají příslušnou aplikaci.
+
 
 ## <a name="how-it-works"></a>Jak to funguje?
 
@@ -31,13 +32,13 @@ Na následujícím obrázku vidíte nastavení proxy sady místních zařízení
 
 ![Alternativní text](./media/quickstart-device-streams-proxy-csharp/device-stream-proxy-diagram.svg "nastavení místní proxy server")
 
-1. Místní služba proxy připojí k centru IoT a zahájí datovém proudu zařízení na cílové zařízení.
+1. Místní služba proxy připojí k centru IoT a zahájí datovém proudu zařízení na cílové zařízení pomocí jeho ID zařízení.
 
 2. Místní zařízení proxy dokončení inicializace handshake datového proudu a vytvoří tunel začátku do konce datového proudu přes koncový bod streamování služby IoT Hub na straně služby.
 
-3. Místní zařízení proxy serveru se připojí k démon procesu SSH (SSHD) naslouchá na portu 22 na zařízení (jde konfigurovat, jak je popsáno [níže](#run-the-device-side-application)).
+3. Místní zařízení proxy serveru se připojí k démon procesu SSH (SSHD) naslouchá na portu 22 na zařízení (Tento port jde nakonfigurovat, jak je popsáno [níže](#run-the-device-side-application)).
 
-4. Místní služba proxy čeká pro nová připojení SSH od uživatele prostřednictvím naslouchání na určeném portu, který je v tomto případě portem `2222` (Toto se taky dají konfigurovat, jak je popsáno [níže](#run-the-service-side-application)). Když uživatel připojí pomocí klienta SSH, tunelové propojení umožňuje aplikační provoz se vyměňují mezi programy klientem a serverem SSH.
+4. Místní služba proxy čeká pro nová připojení SSH od uživatele prostřednictvím naslouchání na určeném portu, který v tomto případě je port 2222 (Toto se taky dají konfigurovat, jak je popsáno [níže](#run-the-service-side-application)). Když uživatel připojí pomocí klienta SSH, tunelové propojení umožňuje aplikační provoz se vyměňují mezi programy klientem a serverem SSH.
 
 > [!NOTE]
 > Provoz SSH odesílání datového proudu se tunelové propojení prostřednictvím služby IoT Hub koncový bod streamování spíše než odesílaných přímo mezi službou a zařízení. To poskytuje [tyto výhody](./iot-hub-device-streams-overview.md#benefits).
@@ -115,9 +116,9 @@ Přejděte na `device-streams-proxy/service` ve složce rozzipovaný projekt. Bu
 
 | Název parametru | Hodnota parametru |
 |----------------|-----------------|
-| `IotHubConnectionString` | Připojovací řetězec služby IoT hub. |
-| `DeviceId` | Identifikátor zařízení, které jste vytvořili dříve. |
-| `Port` | Místní port, kde se váš klient SSH připojit ke. Můžeme použít port `2222` v tomto vzorku, ale může změnit na jiné libovolného čísla. |
+| `iotHubConnectionString` | Připojovací řetězec služby IoT hub. |
+| `deviceId` | Identifikátor zařízení, které jste vytvořili dříve. |
+| `localPortNumber` | Místní port, kde se váš klient SSH připojit ke. Port 2222 v této ukázce používáme, ale můžete to změnit na jiné libovolného čísla. |
 
 Kompilace a spuštění kódu následujícím způsobem:
 
@@ -139,11 +140,11 @@ dotnet run %serviceConnectionString% MyDevice 2222
 
 Přejděte na `device-streams-proxy/device` ve složce rozzipovaný projekt. Budete potřebovat následující informace užitečné:
 
-| Název parametru | Hodnota parametru |
+| Název argumentu | Hodnota argumentu |
 |----------------|-----------------|
-| `DeviceConnectionString` | Připojovací řetězec zařízení, které jste vytvořili dříve. |
-| `RemoteHostName` | IP adresa, kde je SSH server (to může být `localhost` Pokud stejnou IP Adresou, ve kterém je spuštěný proxy server místní zařízení). |
-| `RemotePort` | Port je používán aplikační protokol (ve výchozím nastavení, jde port 22 pro SSH).  |
+| `deviceConnectionString` | Připojovací řetězec zařízení, které jste vytvořili dříve. |
+| `targetServiceHostName` | IP adresa, ve kterém naslouchá SSH server (to může být `localhost` Pokud stejnou IP Adresou, ve kterém je spuštěný proxy server místní zařízení). |
+| `targetServicePort` | Port je používán aplikační protokol (ve výchozím nastavení, jde port 22 pro SSH).  |
 
 Kompilace a spuštění kódu následujícím způsobem:
 
@@ -155,13 +156,13 @@ dotnet build
 
 # Run the application
 # In Linux/MacOS
-dotnet run $DeviceConnectionString localhost 22
+dotnet run $deviceConnectionString localhost 22
 
 # In Windows
-dotnet run %DeviceConnectionString% localhost 22
+dotnet run %deviceConnectionString% localhost 22
 ```
 
-Teď pomocí programu klienta SSH a připojte se k proxy serveru místní služby na portu `2222` (namísto démon procesu SSH přímo). 
+Teď pomocí programu klienta SSH a připojte se k proxy serveru místní služby na port 2222 (namísto démon procesu SSH přímo). 
 
 ```
 ssh <username>@localhost -p 2222
@@ -169,11 +170,17 @@ ssh <username>@localhost -p 2222
 
 V tomto okamžiku zobrazí se výzva k přihlášení SSH k zadání přihlašovacích údajů.
 
-Výstup na straně služby (service místní proxy server naslouchá na portu 2222) konzoly: ![Alternativní text](./media/quickstart-device-streams-proxy-csharp/service-console-output.png "výstup místní službu proxy serveru")
+Výstup na straně služby (service místní proxy server naslouchá na portu 2222) konzoly:
 
-Výstup na místní zařízení proxy serveru, který se připojuje k proces démon programu SSH v konzole <code>IP_address:22</code>: ![Alternativní text](./media/quickstart-device-streams-proxy-csharp/device-console-output.png "výstupní zařízení místní proxy server")
+![Alternativní text](./media/quickstart-device-streams-proxy-csharp/service-console-output.png "výstup místní službu proxy serveru")
 
-Výstup programu klienta SSH konzole (klient SSH komunikuje se proces démon programu SSH na port 22, kde služba místní proxy server naslouchá připojením): ![Alternativní text](./media/quickstart-device-streams-proxy-csharp/ssh-console-output.png "výstup programu klienta SSH")
+Výstup na místní zařízení proxy serveru, který se připojuje k proces démon programu SSH v konzole `IP_address:22`:
+
+![Alternativní text](./media/quickstart-device-streams-proxy-csharp/device-console-output.png "výstupní zařízení místní proxy server")
+
+Výstup programu klienta SSH konzole (klient SSH komunikuje se proces démon programu SSH na port 22, kde služba místní proxy server naslouchá připojením):
+
+![Alternativní text](./media/quickstart-device-streams-proxy-csharp/ssh-console-output.png "výstup programu klienta SSH")
 
 ## <a name="rdp-to-a-device-via-device-streams"></a>Připojení RDP k zařízení prostřednictvím datových proudů zařízení
 
@@ -185,9 +192,9 @@ Přejděte na `device-streams-proxy/service` ve složce rozzipovaný projekt. Bu
 
 | Název parametru | Hodnota parametru |
 |----------------|-----------------|
-| `IotHubConnectionString` | Připojovací řetězec služby IoT hub. |
-| `DeviceId` | Identifikátor zařízení, které jste vytvořili dříve. |
-| `Port` | Místní port, kde se váš klient SSH připojit ke. Můžeme použít port `2222` v tomto vzorku, ale může změnit na jiné libovolného čísla. |
+| `iotHubConnectionString` | Připojovací řetězec služby IoT hub. |
+| `deviceId` | Identifikátor zařízení, které jste vytvořili dříve. |
+| `localPortNumber` | Místní port, kde se váš klient SSH připojit ke. Port 2222 v této ukázce používáme, ale můžete to změnit na jiné libovolného čísla. |
 
 Kompilace a spuštění kódu následujícím způsobem:
 
@@ -209,11 +216,11 @@ dotnet run %serviceConnectionString% MyDevice 2222
 
 Přejděte na `device-streams-proxy/device` ve složce rozzipovaný projekt. Budete potřebovat následující informace užitečné:
 
-| Název parametru | Hodnota parametru |
+| Název argumentu | Hodnota argumentu |
 |----------------|-----------------|
 | `DeviceConnectionString` | Připojovací řetězec zařízení, které jste vytvořili dříve. |
-| `RemoteHostName` | Kde adresa IP serveru protokolu RDP (to může být `localhost` Pokud stejnou IP Adresou, ve kterém je spuštěný proxy server místní zařízení). |
-| `RemotePort` | Port je používán aplikační protokol (ve výchozím nastavení, jde portu 3389 pro RDP).  |
+| `targetServiceHostName` | Název hostitele nebo IP adresu, kde běží server protokolu RDP (to může být `localhost` Pokud stejnou IP Adresou, ve kterém je spuštěný proxy server místní zařízení). |
+| `targetServicePort` | Port je používán aplikační protokol (ve výchozím nastavení, jde portu 3389 pro RDP).  |
 
 Kompilace a spuštění kódu následujícím způsobem:
 
@@ -228,7 +235,7 @@ dotnet run $DeviceConnectionString localhost 3389
 dotnet run %DeviceConnectionString% localhost 3389
 ```
 
-Teď pomocí programu klienta protokolu RDP a připojení k proxy serveru místní služby na portu `2222` (to byla z libovolného dostupných portů zvolili starší).
+Teď pomocí programu klienta protokolu RDP a připojení k proxy serveru místní služby na port 2222 (bylo k dispozici libovolného portu, který jste zvolili dříve).
 
 ![Alternativní text](./media/quickstart-device-streams-proxy-csharp/rdp-screen-capture.PNG "protokolu RDP se připojí k místní službě proxy")
 

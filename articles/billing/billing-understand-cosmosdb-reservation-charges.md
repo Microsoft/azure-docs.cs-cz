@@ -7,14 +7,14 @@ manager: kfile
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.author: cwatson
+ms.author: banders
 ms.reviewer: sngun
-ms.openlocfilehash: de7b0a2746c79242cb6538595ca3205455a2cc5c
-ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
+ms.openlocfilehash: f83499e52b6405ec5475795a80c5a4325043a441
+ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52582735"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54904484"
 ---
 # <a name="understand-how-the-reservation-discount-is-applied-to-azure-cosmos-db"></a>Vysvětlení, jak sleva za rezervaci se použije ke službě Azure Cosmos DB
 
@@ -51,16 +51,16 @@ Sleva za rezervaci se použije na náklady na propustnost služby Azure Cosmos D
 |Azure Cosmos DB – 100 RU/s/hodina – USA – Středozápad|   USA – středozápad      |       1  |
 |Azure Cosmos DB – 100 RU/s/hodina – USA – východ|   USA – východ      |  1       |
 |Azure Cosmos DB – 100 RU/s/hodina - Jižní Afrika – sever|     Jižní Afrika – sever    |   1      |
-|Azure Cosmos DB – 100 RU/s/hodina - Jižní Afrika – západ |    Jižní Afrika – západ      |    1     |
+|Azure Cosmos DB – 100 RU/s/hodina - Jižní Afrika – západ |    SA West      |    1     |
 |Azure Cosmos DB – 100 RU/s/hodina – Indie – jih|    Indie – jih     |    1.0375    |
 |Azure Cosmos DB – 100 RU/s/hodina - CA – východ|   Kanada – východ      |    1.1      |
-|Azure Cosmos DB – 100 RU/s/hodina – Japonsko – východ|   Japonsko – východ      |    1,125     |
-|Azure Cosmos DB – 100 RU/s/hodina – Japonsko – západ|     Japonsko – západ    |   1,125       |
+|Azure Cosmos DB – 100 RU/s/hodina – Japonsko – východ|   Japonsko – východ      |    1.125     |
+|Azure Cosmos DB – 100 RU/s/hodina – Japonsko – západ|     Japonsko – západ    |   1.125       |
 |Azure Cosmos DB – 100 RU/s/hodina – Indie – západ|     Indie – západ    |    1.1375     |
 |Azure Cosmos DB – 100 RU/s/hodina – Indie – střed|    Indie – střed     |  1.1375       |
-|Azure Cosmos DB – 100 RU/s/hodina – Austrálie – východ|     Austrálie – východ    |   1,15       |
+|Azure Cosmos DB – 100 RU/s/hodina – Austrálie – východ|     Austrálie – východ    |   1.15       |
 |Azure Cosmos DB CA 100 RU/s/hodina – střed|  Kanada – střed       |   1.2       |
-|Azure Cosmos DB – 100 RU/s/hodina – Francie – střed|   Francie – střed      |    1,25      |
+|Azure Cosmos DB – 100 RU/s/hodina – Francie – střed|   Francie – střed      |    1.25      |
 |Azure Cosmos DB – 100 RU/s/hodina – Brazílie – jih|  Brazílie – jih       |   1,5      |
 |Azure Cosmos DB – 100 RU/s/hodina – Austrálie – střed|   Austrálie – střed      |   1,5      |
 |Azure Cosmos DB – 100 RU/s/hodina – Austrálie – střed 2| Austrálie – střed 2        |    1,5     |
@@ -71,7 +71,7 @@ Sleva za rezervaci se použije na náklady na propustnost služby Azure Cosmos D
 Vezměte v úvahu následující požadavky na rezervaci:
 
 * Požadované propustnosti: 50 000 RU/s  
-* Použít oblastí: 2 
+* Oblasti použít: 2 
 
 V tomto případě jsou vaše celkové náklady na vyžádání pro 500 množství měřiče 100 RU/s v těchto dvou oblastech. Celková spotřeba RU/s je 100 000 za hodinu. 
 
@@ -115,7 +115,7 @@ Další informace o Azure rezervace, naleznete v následujících článcích:
 * [Vysvětlení využití rezervaci u prováděcí smlouvy Enterprise](../billing/billing-understand-reserved-instance-usage-ea.md)  
 * [Vysvětlení využití rezervace pro předplatná CSP](https://docs.microsoft.com/partner-center/azure-reservations)
 
-## <a name="need-help-contact-us"></a>Potřebujete pomoct? Kontaktujte nás.
+## <a name="need-help-contact-us"></a>Potřebujete pomoc? Kontaktujte nás.
 
 Pokud máte otázky nebo potřebujete pomoc, [vytvořit žádost o podporu](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest).
 

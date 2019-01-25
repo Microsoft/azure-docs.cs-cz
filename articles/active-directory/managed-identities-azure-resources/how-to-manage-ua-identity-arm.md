@@ -3,7 +3,7 @@ title: Jak vytvářet a odstraňovat uživatelsky přiřazené spravovanou ident
 description: Podrobné pokyny o tom, jak vytvářet a odstraňovat uživatelsky přiřazené spravované identit pomocí Azure Resource Manageru.
 services: active-directory
 documentationcenter: ''
-author: daveba
+author: priyamohanram
 manager: daveba
 editor: ''
 ms.service: active-directory
@@ -13,13 +13,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 04/16/2018
-ms.author: daveba
-ms.openlocfilehash: 5270bcff74f8738bb8449a158e1da16c25157e61
-ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
+ms.author: priyamo
+ms.openlocfilehash: 198bf1e971ee7594668bbd79a1f6fc92acaa6a03
+ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54452849"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54885247"
 ---
 # <a name="create-list-and-delete-a-user-assigned-managed-identity-using-azure-resource-manager"></a>Vytváření, výpisu a odstranění uživatelsky přiřazené spravovanou identitu pomocí Azure Resource Manageru
 

@@ -3,7 +3,7 @@ title: Vytvoření a Správa virtuálního počítače Azure pomocí Javy | Doku
 description: Pomocí Javy a Azure Resource Manageru k nasazení virtuálního počítače a všechny její Podpůrné prostředky.
 services: virtual-machines-windows
 documentationcenter: ''
-author: zr-msft
+author: cynthn
 manager: jeconnoc
 editor: tysonn
 tags: azure-resource-manager
@@ -14,13 +14,13 @@ ms.tgt_pltfrm: vm-windows
 ms.devlang: na
 ms.topic: article
 ms.date: 07/17/2017
-ms.author: zarhoads
-ms.openlocfilehash: 2e8cc14c2879c9ef98357f19580e59dacc11b930
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.author: cynthn
+ms.openlocfilehash: 3ec6b6f22e32a628edc3146ac17a9e5d8e605b05
+ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50420060"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54884210"
 ---
 # <a name="create-and-manage-windows-vms-in-azure-using-java"></a>Vytvoření a správa virtuálních počítačů s Windows v Azure pomocí Javy
 

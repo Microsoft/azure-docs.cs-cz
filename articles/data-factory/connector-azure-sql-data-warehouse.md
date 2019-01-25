@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 12/07/2018
+ms.date: 01/23/2019
 ms.author: jingwang
-ms.openlocfilehash: 48f33dcf66c282ee75fe665531e1c9a4eb0d5382
-ms.sourcegitcommit: 70471c4febc7835e643207420e515b6436235d29
+ms.openlocfilehash: c429945d4832710125a419b4e9a9b9165869ca97
+ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2019
-ms.locfileid: "54305940"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54888681"
 ---
 # <a name="copy-data-to-or-from-azure-sql-data-warehouse-by-using-azure-data-factory"></a>Kopírování dat do nebo z Azure SQL Data Warehouse pomocí Azure Data Factory 
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you're using:"]
@@ -573,7 +573,7 @@ Při kopírování dat z nebo do služby Azure SQL Data Warehouse, se používaj
 | smalldatetime | DateTime |
 | smallint | Int16 |
 | Smallmoney | Decimal |
-| SQL_VARIANT | Objekt * |
+| SQL_VARIANT | Objekt |
 | text | Řetězec, Char] |
 | time | Časový interval |
 | časové razítko | Byte] |

@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: ca638f1374c2e15c3978cfe711295f0ebe249d68
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: 196d08f47ddfdbb86b8e96ae0e5ca3d3e3e5917e
+ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54818162"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54886760"
 ---
 # <a name="continuous-integration-and-continuous-deployment-to-azure-iot-edge"></a>Průběžná integrace a průběžné nasazování do Azure IoT Edge
 
@@ -67,7 +67,7 @@ V této části vytvoříte nový kanál sestavení. Nakonfigurujte kanál na au
 
       ![Začněte s prázdným procesem.](./media/how-to-ci-cd/start-with-empty.png)
 
-4. Po vytvoření kanálu, potom se přesunete na editor kanálu. V popisu kanálu zvolte fond správnými založené na cílové platformě: 
+4. Po vytvoření kanálu, budete přesměrováni na editor kanálu. V popisu kanálu zvolte fond správnými založené na cílové platformě: 
     
     * Pokud chcete vytvářet moduly v amd64 platformu pro kontejnery Linuxu, zvolte **hostované 1604 Ubuntu**
 

@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
-ms.date: 09/24/2018
+ms.date: 01/23/2019
 ms.author: diberry
-ms.openlocfilehash: 46065a742afd08585707f4f4fdf6ad2e32cd89b2
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: 9f0a7e9af4364ed7d34acdb106481cc39ce32a6a
+ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53719451"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54885069"
 ---
 # <a name="add-luis-results-to-application-insights-with-a-bot-in-c"></a>Přidání LUIS výsledky do Application Insights s využitím Botu vC#
 

@@ -3,7 +3,7 @@ title: Ukázkový skript Azure PowerShellu – Služba IIS s DSC | Microsoft Doc
 description: Ukázkový skript Azure PowerShellu – Služba IIS s DSC
 services: virtual-machines-windows
 documentationcenter: virtual-machines
-author: zr-msft
+author: cynthn
 manager: jeconnoc
 editor: tysonn
 tags: azure-service-management
@@ -14,13 +14,13 @@ ms.topic: sample
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 12/12/2017
-ms.author: zarhoads
-ms.openlocfilehash: 0916ebee4295acf0b8cb4b04767fde958479ba83
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
-ms.translationtype: HT
+ms.author: cynthn
+ms.openlocfilehash: e23a1d7d1a90065aa2f6fe954bb2b7406e2db498
+ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49468785"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54883955"
 ---
 # <a name="create-an-iis-vm-with-powershell"></a>Vytvoření virtuálního počítače se službou IIS pomocí PowerShellu
 
@@ -53,7 +53,7 @@ Tento skript pomocí následujících příkazů vytvoří nasazení. Každá po
 | [Set-AzureRmVMExtension](/powershell/module/azurerm.compute/set-azurermvmextension) | Přidá do virtuálního počítače rozšíření virtuálního počítače. V této ukázce se rozšíření DSC používá k instalaci služby IIS. |
 |[Remove-AzureRmResourceGroup](/powershell/module/azurerm.resources/remove-azurermresourcegroup) | Odebere skupinu prostředků a všechny prostředky, které obsahuje. |
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Další informace o modulu Azure PowerShellu najdete v [dokumentaci k Azure PowerShellu](/powershell/azure/overview).
 

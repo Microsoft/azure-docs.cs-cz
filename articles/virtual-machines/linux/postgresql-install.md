@@ -3,7 +3,7 @@ title: Nastavit PostgreSQL na virtuální počítač s Linuxem | Dokumentace Mic
 description: Zjistěte, jak nainstalovat a nakonfigurovat PostgreSQL na virtuální počítač s Linuxem v Azure
 services: virtual-machines-linux
 documentationcenter: ''
-author: zr-msft
+author: cynthn
 manager: jeconnoc
 editor: ''
 tags: azure-resource-manager,azure-service-management
@@ -14,13 +14,13 @@ ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 02/01/2016
-ms.author: zarhoads
-ms.openlocfilehash: e794c191737f14fb06351e345f70edb9f7cddb7c
-ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
+ms.author: cynthn
+ms.openlocfilehash: e851f6f5433a832aa30a0d87a917b64d1bc721f2
+ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53322052"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54888273"
 ---
 # <a name="install-and-configure-postgresql-on-azure"></a>Instalace a konfigurace PostgreSQL v Azure
 PostgreSQL je podobný Oracle a DB2 pokročilé open source databáze. Obsahuje připravené pro podnikové funkce, jako je řízení souběžnosti více verzí, plně odpovídající zásadám ACID dodržování předpisů a spolehlivé zpracování transakcí. Podporuje také standardy, jako je ANSI SQL a SQL/MED (včetně obálky cizí dat Oracle, MySQL, MongoDB a mnoha dalších). Je velmi dobře rozšiřitelná s podporou více než 12 postupu jazycích, GIN a GiST indexů, podporu prostorových dat a více funkcí až pravděpodobnosti NoSQL pro JSON nebo aplikace pro systém hodnotou klíče.
@@ -149,7 +149,7 @@ Změna souboru k němu spustitelný:
 
     # chmod +x /etc/init.d/postgresql
 
-Spusťte PostgreSQL:
+Start PostgreSQL:
 
     # /etc/init.d/postgresql start
 

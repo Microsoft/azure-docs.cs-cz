@@ -3,7 +3,7 @@ title: Kurz vysoké dostupnosti pro virtuální počítače s Linuxem v Azure | 
 description: V tomto kurzu zjistíte, jak pomocí Azure CLI nasazovat vysoce dostupné virtuální počítače ve skupinách dostupnosti.
 documentationcenter: ''
 services: virtual-machines-linux
-author: zr-msft
+author: cynthn
 manager: jeconnoc
 editor: ''
 tags: azure-resource-manager
@@ -14,14 +14,14 @@ ms.tgt_pltfrm: vm-linux
 ms.devlang: na
 ms.topic: tutorial
 ms.date: 08/24/2018
-ms.author: zarhoads
+ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 9391db9bf270511f734a31a621985f5b6ad31ec0
-ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
+ms.openlocfilehash: bace15a89f0dd820c69d51bee0a6b669cdf5ff73
+ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 01/24/2019
-ms.locfileid: "54848729"
+ms.locfileid: "54885583"
 ---
 # <a name="tutorial-create-and-deploy-highly-available-virtual-machines-with-the-azure-cli"></a>Kurz: Vytváření a nasazování vysoce dostupných virtuálních počítačů pomocí Azure CLI
 

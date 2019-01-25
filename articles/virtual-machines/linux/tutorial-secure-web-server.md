@@ -3,7 +3,7 @@ title: Kurz – Zabezpečení webového serveru s Linuxem pomocí certifikátů 
 description: V tomto kurzu zjistíte, jak pomocí Azure CLI zabezpečit virtuální počítač s Linuxem, na kterém běží webový server NGINX, pomocí certifikátů SSL uložených ve službě Azure Key Vault.
 services: virtual-machines-linux
 documentationcenter: virtual-machines
-author: zr-msft
+author: cynthn
 manager: jeconnoc
 editor: tysonn
 tags: azure-resource-manager
@@ -14,16 +14,16 @@ ms.topic: tutorial
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 04/30/2018
-ms.author: zarhoads
+ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 1e072e81d2c7450ca087e9570994c6e0ce350108
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
-ms.translationtype: HT
+ms.openlocfilehash: 85dbdc42dd55cdb262351511918d2b813212edb0
+ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49466762"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54882204"
 ---
-# <a name="tutorial-secure-a-web-server-on-a-linux-virtual-machine-in-azure-with-ssl-certificates-stored-in-key-vault"></a>Kurz: Zabezpečení webového serveru na virtuálním počítači s Linuxem v Azure pomocí certifikátů SSL uložených v Key Vaultu
+# <a name="tutorial-secure-a-web-server-on-a-linux-virtual-machine-in-azure-with-ssl-certificates-stored-in-key-vault"></a>Kurz: Zabezpečení webového serveru na virtuální počítač s Linuxem v Azure s využitím certifikátů SSL, které jsou uložené ve službě Key Vault
 K zabezpečení webových serverů můžete použít certifikáty SSL (Secure Sockets Layer), které šifrují webový provoz. Tyto certifikáty SSL můžete ukládat do služby Azure Key Vault a umožnit zabezpečené nasazování certifikátů do virtuálních počítačů s Linuxem v Azure. V tomto kurzu se naučíte:
 
 > [!div class="checklist"]
@@ -146,7 +146,7 @@ Následně se zobrazí váš zabezpečený web NGINX, jak je znázorněno v nás
 ![Zobrazení spuštěného zabezpečeného webu NGINX](./media/tutorial-secure-web-server/secured-nginx.png)
 
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 V tomto kurzu jste zabezpečili webový server NGINX pomocí certifikátu SSL uloženého ve službě Azure Key Vault. Naučili jste se tyto postupy:
 

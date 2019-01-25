@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 06/12/2018
 ms.author: johnkem
 ms.subservice: ''
-ms.openlocfilehash: 4c8d14e01805ea66ff3a954c153d858bf4ecaba6
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: ec61b179627702af7f2c4bc0fc0989230f5eca84
+ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54467498"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54885792"
 ---
 # <a name="consume-monitoring-data-from-azure"></a>Používat data monitorování z Azure
 
@@ -29,7 +29,7 @@ Celou platformu Azure Dáváme dohromady data monitorování na jednom místě d
 | Metriky úložiště | Metriky | Azure Storage | <ul><li>**Tabulka úložiště:** [Storage Analytics](https://docs.microsoft.com/rest/api/storageservices/storage-analytics)</li></ul> |
 | Fakturační údaje | Metriky | Všechny služby Azure | <ul><li>**ROZHRANÍ REST API:** [Využití prostředků Azure a RateCard API](../../billing/billing-usage-rate-card-overview.md)</li></ul> |
 | Protokol aktivit | Události | Všechny služby Azure | <ul><li>**ROZHRANÍ REST API:** [Azure Monitor události rozhraní API](https://docs.microsoft.com/rest/api/monitor/eventcategories)</li><li>**Úložiště objektů blob nebo event hub:** [Profilu protokolu](activity-logs-overview.md#export-the-activity-log-with-a-log-profile)</li></ul> |
-| Diagnostické protokoly Azure monitoru | Události | [Podívejte se sem seznam](tutorial-dashboards.md) | <ul><li>**Úložiště objektů blob nebo event hub:** [Nastavení diagnostiky](diagnostic-logs-overview.md#diagnostic-settings)</li></ul> |
+| Diagnostické protokoly Azure monitoru | Události | [Podívejte se sem seznam](diagnostic-logs-schema.md) | <ul><li>**Úložiště objektů blob nebo event hub:** [Nastavení diagnostiky](diagnostic-logs-overview.md#diagnostic-settings)</li></ul> |
 | COMPUTE (např protokoly operačního systému hosta. Služba IIS, trasování událostí pro Windows, systémových protokolů) | Události | [Windows](/azure/vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines) a virtuální počítače s Linuxem (v2), [cloudových služeb](../../cloud-services/cloud-services-dotnet-diagnostics-trace-flow.md), [Service Fabric](../../service-fabric/service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally.md) | <ul><li>**Storage table nebo blob:** [Windows nebo Linux Azure diagnostics](diagnostics-extension-to-storage.md)</li><li>**Centrum událostí:** [Windows Azure diagnostics](diagnostics-extension-stream-event-hubs.md)</li></ul> |
 | Protokoly služby App Service | Události | Aplikační služby | <ul><li>**Soubor, tabulka nebo úložiště objektů blob:** [Diagnostika webové aplikace](../../app-service/troubleshoot-diagnostic-logs.md)</li></ul> |
 | Protokoly úložiště | Události | Azure Storage | <ul><li>**Tabulka úložiště:** [Storage Analytics](https://docs.microsoft.com/rest/api/storageservices/storage-analytics)</li></ul> |

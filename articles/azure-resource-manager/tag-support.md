@@ -4,14 +4,14 @@ description: Ukazuje, jaké typy prostředků Azure podporují značky. Poskytuj
 author: tfitzmac
 ms.service: azure-resource-manager
 ms.topic: reference
-ms.date: 1/11/2019
+ms.date: 1/24/2019
 ms.author: tomfitz
-ms.openlocfilehash: 4899409b225298c521935f2eeaf5e8e59a6833b3
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.openlocfilehash: fc085a94e2412ff21b09755102f79636a0b0d3b5
+ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54267449"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54884941"
 ---
 # <a name="tag-support-for-azure-resources"></a>Podpora značek pro prostředky Azure
 Tento článek popisuje, zda typ prostředku podporuje [značky](resource-group-using-tags.md).
@@ -673,7 +673,7 @@ Tento článek popisuje, zda typ prostředku podporuje [značky](resource-group-
 | scheduledqueryrules | Ano | 
 | vmInsightsOnboardingStatuses | Ne | 
 | webové testy | Ano | 
-| Sešity | Ano | 
+| sešity | Ano | 
 
 ## <a name="microsoftintune"></a>Microsoft.Intune
 | Typ prostředku | Podporuje značky |
@@ -1107,6 +1107,16 @@ Tento článek popisuje, zda typ prostředku podporuje [značky](resource-group-
 ## <a name="microsoftsql"></a>Microsoft.SQL
 | Typ prostředku | Podporuje značky |
 | ------------- | ----------- |
+| managedInstances | Ano |
+| managedInstances/databáze | Ano |
+| managedInstances/databases/backupShortTermRetentionPolicies | Ne |
+| managedInstances/databases/schemas/tables/columns/sensitivityLabels | Ne |
+| managedInstances/databases/vulnerabilityAssessments | Ne |
+| managedInstances/databases/vulnerabilityAssessments/rules/baselines | Ne |
+| managedInstances/encryptionProtector | Ne |
+| managedInstances/klíče | Ne |
+| managedInstances/restorableDroppedDatabases/backupShortTermRetentionPolicies | Ne |
+| managedInstances/vulnerabilityAssessments | Ne |
 | serverů | Ano | 
 | servery pro/správci | Ne | 
 | servery pro/communicationLinks | Ne | 

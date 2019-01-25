@@ -3,7 +3,7 @@ title: Pochopení vašeho využití Azure podrobné | Dokumentace Microsoftu
 description: Zjistěte, jak si a porozuměli jim části Podrobné využití sdíleného svazku clusteru u předplatného Azure
 services: ''
 documentationcenter: ''
-author: tonguyen10
+author: bandersmsft
 manager: alherz
 editor: ''
 tags: billing
@@ -13,13 +13,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/31/2017
-ms.author: cwatson
-ms.openlocfilehash: c5b41d86133bbcafcc61423b4d60e59846edc2f2
-ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
+ms.author: banders
+ms.openlocfilehash: 88518bee879d01966813fc89e8095d2237476a15
+ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52580911"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54901305"
 ---
 # <a name="understand-terms-on-your-microsoft-azure-detailed-usage-charges"></a>Vysvětlení podmínek vašeho Microsoft Azure podrobných poplatků za využití 
 
@@ -88,6 +88,6 @@ Pokud v souboru podrobné informace o využití, která chcete podrobnosti na po
 ## <a name="external"></a>A co poplatků za externí služby?
 Externí služby (označované také jako Marketplace objednávky) jsou k dispozici služba nezávislá dodavatelé a služby se účtují zvlášť. Poplatky se nezobrazují na faktuře Azure. Další informace najdete v tématu [vysvětlení Azure poplatků za externí služby](billing-understand-your-azure-marketplace-charges.md).
 
-## <a name="need-help-contact-us"></a>Potřebujete pomoct? Kontaktujte nás.
+## <a name="need-help-contact-us"></a>Potřebujete pomoc? Kontaktujte nás.
 
 Pokud máte otázky nebo potřebujete pomoc, [vytvořit žádost o podporu](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest).

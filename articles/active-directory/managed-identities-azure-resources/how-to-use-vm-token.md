@@ -3,7 +3,7 @@ title: Použití spravované identity pro prostředky Azure na virtuálním poč
 description: Podrobné pokyny a příklady použití spravované identity pro prostředky Azure na virtuálních počítačích k získání přístupového tokenu OAuth.
 services: active-directory
 documentationcenter: ''
-author: daveba
+author: priyamohanram
 manager: daveba
 editor: ''
 ms.service: active-directory
@@ -13,13 +13,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 12/01/2017
-ms.author: daveba
-ms.openlocfilehash: d737f1b17322d4b2ea0ab00a8e0bd386e8cb1747
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.author: priyamo
+ms.openlocfilehash: 8c554ad96b0f73d1e7bbc61f03c547a3191d5303
+ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54422402"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54904246"
 ---
 # <a name="how-to-use-managed-identities-for-azure-resources-on-an-azure-vm-to-acquire-an-access-token"></a>Jak získat přístupový token pomocí spravované identity pro prostředky Azure na Virtuálním počítači Azure 
 
@@ -33,7 +33,7 @@ Tento článek obsahuje příklady různých kódu a skriptů pro získání tok
 
 [!INCLUDE [msi-qs-configure-prereqs](../../../includes/active-directory-msi-qs-configure-prereqs.md)]
 
-Pokud máte v plánu pomocí prostředí Azure PowerShell příklady v tomto článku, nezapomeňte nainstalovat nejnovější verzi [prostředí Azure PowerShell](https://www.powershellgallery.com/packages/AzureRM).
+Pokud máte v plánu pomocí prostředí Azure PowerShell příklady v tomto článku, nezapomeňte nainstalovat nejnovější verzi [prostředí Azure PowerShell](/powershell/azure/install-az-ps).
 
 
 > [!IMPORTANT]

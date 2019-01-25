@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 06/12/2018
 ms.author: robreed
-ms.openlocfilehash: 70280676453bd146102ca331daae038b947aab58
-ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
+ms.openlocfilehash: ade066c08829181bc7d1ad5623934b98909e0310
+ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/15/2018
-ms.locfileid: "45632853"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54888987"
 ---
 # <a name="dsc-extension-for-linux-microsoftostcextensionsdscforlinux"></a>Rozšíření DSC pro Linux (Microsoft.OSTCExtensions.DSCForLinux)
 
@@ -54,7 +54,7 @@ Rozšíření DSC Linuxu podporuje všechny [rozšíření nepodporuje OS](https
  
 ### <a name="internet-connectivity"></a>Připojení k internetu
 
-Rozšíření DSCForLinux vyžaduje, aby cílový virtuální počítač je připojený k Internetu. Například registrace rozšíření vyžaduje připojení ke službě Automation. Instalace pro další akce, třeba o přijetí změn, o přijetí změn, vyžaduje připojení k azure úložiště nebo github. To závisí na nastavení od zákazníků.
+Rozšíření DSCForLinux vyžaduje, aby cílový virtuální počítač je připojený k Internetu. Například registrace rozšíření vyžaduje připojení ke službě Automation. Instalace pro další akce, třeba o přijetí změn, o přijetí změn, vyžaduje připojení k azure storage nebo github. To závisí na nastavení od zákazníků.
 
 ## <a name="extension-schema"></a>Schéma rozšíření
 
@@ -64,11 +64,11 @@ Tady jsou všechny parametry podporované veřejné konfigurace:
 
 * `FileUri`: (volitelné, string) uri KOMPRIMOVANÉHO souboru MOF souboru/Meta MOF souboru/vlastní prostředek.
 * `ResourceName`: (volitelné, string) název modulu vlastních prostředků
-* `ExtensionAction`: (volitelné, string) určuje, co dělá rozšíření. Platné hodnoty: zaregistrovat, Push, Pull, nainstalovat, odebrat. Pokud není zadán, považují se za nabízená akce ve výchozím nastavení.
+* `ExtensionAction`: (volitelné, string) určuje, co dělá rozšíření. Platné hodnoty: Zaregistrovat, Push, o přijetí změn, instalaci, odeberte. Pokud není zadán, považují se za nabízená akce ve výchozím nastavení.
 * `NodeConfigurationName`: (volitelné, string) název konfigurace uzlu, který chcete použít.
 * `RefreshFrequencyMins`: (volitelné, int) určuje, jak často (v minutách) DSC se pokusí získat konfiguraci ze serveru vyžádané replikace. 
        Pokud je konfigurace na serveru vyžádané replikace se liší od aktuálního na cílový uzel, je zkopírován do čeká na úložiště a použít.
-* `ConfigurationMode`: (volitelné, string) určuje, jak by měl DSC použít danou konfiguraci. Platné hodnoty jsou: ApplyOnly ApplyAndMonitor, ApplyAndAutoCorrect.
+* `ConfigurationMode`: (volitelné, string) určuje, jak by měl DSC použít danou konfiguraci. Platné hodnoty jsou: ApplyOnly, ApplyAndMonitor, ApplyAndAutoCorrect.
 * `ConfigurationModeFrequencyMins`: (volitelné, int) určuje, jak často (v minutách) DSC se zajistí, že konfigurace je v požadovaném stavu.
 
 > [!NOTE]
@@ -88,14 +88,14 @@ Tady jsou všechny podporované chráněné konfigurační parametry:
 ## <a name="scenarios"></a>Scénáře
 
 ### <a name="register-to-azure-automation-account"></a>Zaregistrujte se a účet Azure Automation
-Protected.JSON
+protected.json
 ```json
 {
   "RegistrationUrl": "<azure-automation-account-url>",
   "RegistrationKey": "<azure-automation-account-key>"
 }
 ```
-Public.JSON
+public.json
 ```json
 {
   "ExtensionAction" : "Register",
@@ -124,7 +124,7 @@ $publicConfig = '{
 
 ### <a name="apply-a-mof-configuration-file-in-azure-storage-account-to-the-vm"></a>Použití konfiguračního souboru MOF (v účtu úložiště Azure) k virtuálnímu počítači
 
-Protected.JSON
+protected.json
 ```json
 {
   "StorageAccountName": "<storage-account-name>",
@@ -132,7 +132,7 @@ Protected.JSON
 }
 ```
 
-Public.JSON
+public.json
 ```json
 {
   "FileUri": "<mof-file-uri>",
@@ -156,7 +156,7 @@ $publicConfig = '{
 
 ### <a name="apply-a-mof-configuration-file-in-public-storage-to-the-vm"></a>Použití konfiguračního souboru MOF (ve veřejné úložiště) k virtuálnímu počítači
 
-Public.JSON
+public.json
 ```json
 {
   "FileUri": "<mof-file-uri>"
@@ -172,7 +172,7 @@ $publicConfig = '{
 
 ### <a name="apply-a-meta-mof-configuration-file-in-azure-storage-account-to-the-vm"></a>Použití konfiguračního souboru MOF meta (v účtu úložiště Azure) k virtuálnímu počítači
 
-Protected.JSON
+protected.json
 ```json
 {
   "StorageAccountName": "<storage-account-name>",
@@ -180,7 +180,7 @@ Protected.JSON
 }
 ```
 
-Public.JSON
+public.json
 ```json
 {
   "ExtensionAction": "Pull",
@@ -202,7 +202,7 @@ $publicConfig = '{
 ```
 
 ### <a name="apply-a-meta-mof-configuration-file-in-public-storage-to-the-vm"></a>Použití konfiguračního souboru MOF meta (ve veřejné úložiště) k virtuálnímu počítači
-Public.JSON
+public.json
 ```json
 {
   "FileUri": "<meta-mof-file-uri>",
@@ -218,14 +218,14 @@ $publicConfig = '{
 ```
 
 ### <a name="install-a-custom-resource-module-zip-file-in-azure-storage-account-to-the-vm"></a>Instalace modulu vlastní prostředek (soubor ZIP v účtu úložiště Azure) k virtuálnímu počítači
-Protected.JSON
+protected.json
 ```json
 {
   "StorageAccountName": "<storage-account-name>",
   "StorageAccountKey": "<storage-account-key>"
 }
 ```
-Public.JSON
+public.json
 ```json
 {
   "ExtensionAction": "Install",
@@ -247,7 +247,7 @@ $publicConfig = '{
 ```
 
 ### <a name="install-a-custom-resource-module-zip-file-in-public-storage-to-the-vm"></a>Instalace modulu vlastní prostředek (soubor ZIP do veřejného úložiště) k virtuálnímu počítači
-Public.JSON
+public.json
 ```json
 {
   "ExtensionAction": "Install",
@@ -263,7 +263,7 @@ $publicConfig = '{
 ```
 
 ### <a name="remove-a-custom-resource-module-from-the-vm"></a>Odebrání modulu vlastní prostředek z virtuálního počítače
-Public.JSON
+public.json
 ```json
 {
   "ResourceName": "<resource-name>",
@@ -425,7 +425,7 @@ Rozšíření provádění výstup je zaznamenán do následujícího souboru:
 ```
 
 Kód chyby: 51 představuje nepodporované distribuce nebo nepodporované rozšíření akce.
-V některých případech DSC Linux rozšíření se nedaří nainstalovat OMI vyšší verze infrastruktury OMI je již existuje v počítači. [odpovědi na chybu: (000003) Downgrade nepovoluje]
+V některých případech DSC Linux rozšíření se nedaří nainstalovat OMI vyšší verze infrastruktury OMI je již existuje v počítači. [Chyba odpovědi: (000003) Přechod na starší verzi není povoleno]
 
 
 

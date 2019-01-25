@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 10/18/2018
 ms.author: bwren
-ms.openlocfilehash: 6b76249c85f9b8c64435043a75e39601d445ab0c
-ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
+ms.openlocfilehash: c4fab22513e42013a9dacf0b24b2d4b322ae09b6
+ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53384713"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54883394"
 ---
 # <a name="common-questions-for-transition-from-oms-portal-to-azure-portal-for-log-analytics-users"></a>Běžné otázky týkající se přechodu z portálu OMS na webu Azure portal pro uživatele Log Analytics
 Vlastní portál, volá se na portálu OMS log Analytics původně použitý ke správě své konfiguraci a analýzy shromážděných dat.  Všechny funkce z tohoto portálu byl přesunut na webu Azure portal ve kterém bude pokračovat na vývoj.
@@ -111,7 +111,7 @@ Na portálu OMS z Galerie řešení nainstalovat řešení pro správu a odebrá
 Pravidla upozornění na základě dotazů Log Analytics se teď spravují v [sjednocené prostředí pro upozorňování](../../azure-monitor/platform/alerts-metric.md). Zobrazit [jak rozšíření upozornění z Log Analytics do upozornění Azure](../../azure-monitor/platform/alerts-extend-tool.md) podrobné informace o konfiguraci a použití upozornění na webu Azure Portal.
 
 ## <a name="how-do-i-access-my-dashboards"></a>Jak získám přístup do své řídicí panely?
-[Můj řídicí panel](dashboards.md) funkce v Log Analytics je zastaralá. Tato funkce umožňují mít privátní kolekci částí Návrhář zobrazení a nahrazována integrované funkce řídicího panelu systému Azure. Můžete pokračovat k vizualizaci dat v Log Analytics pomocí [Návrhář zobrazení](view-designer.md) pro sdílená zobrazení. Můžete také připnout vizualizace z těchto zobrazení nebo [jednotlivé dotazy](../learn/tutorial-logs-dashboards.md) do řídicích panelů Azure.
+**Můj řídicí panel** funkce v Log Analytics je zastaralá. Tato funkce umožňují mít privátní kolekci částí Návrhář zobrazení a nahrazována integrované funkce řídicího panelu systému Azure. Můžete pokračovat k vizualizaci dat v Log Analytics pomocí [Návrhář zobrazení](view-designer.md) pro sdílená zobrazení. Můžete také připnout vizualizace z těchto zobrazení nebo [jednotlivé dotazy](../learn/tutorial-logs-dashboards.md) do řídicích panelů Azure.
 
 ## <a name="how-do-i-check-my-usage"></a>Jak můžu zkontrolovat využití?
 Teď můžete snadno zobrazit a spravovat vaše využití a náklady na služby Log Analytics tak, že vyberete **využití a odhadované náklady** ve vašem pracovním prostoru.

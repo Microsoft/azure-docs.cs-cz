@@ -3,20 +3,20 @@ title: Povolení vnořené virtualizace ve službě Azure Virtual Machines | Dok
 description: Povolení vnořené virtualizace ve službě Azure Virtual Machines
 services: virtual-machines-windows
 documentationcenter: virtual-machines
-author: zr-msft
+author: cynthn
 manager: jeconnoc
-ms.author: zarhoads
+ms.author: cynthn
 ms.date: 10/09/2017
 ms.topic: howto
 ms.service: virtual-machines-windows
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
-ms.openlocfilehash: 1caf8455816bd86411a75821ee33516e8aad5de3
-ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
+ms.openlocfilehash: 6a116c2f3d92b19f266be4d3b467a93fdeaced2c
+ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "54002259"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54888968"
 ---
 # <a name="how-to-enable-nested-virtualization-in-an-azure-vm"></a>Povolení vnořené virtualizace ve Virtuálním počítači Azure
 
@@ -51,10 +51,10 @@ Vytvořte připojení ke vzdálené ploše virtuálního počítače.
 ## <a name="enable-the-hyper-v-feature-on-the-azure-vm"></a>Povolit funkci Hyper-V na virtuálním počítači Azure
 Tato nastavení můžete nakonfigurovat ručně nebo uvádíme skript prostředí PowerShell k automatizaci konfigurace.
 
-### <a name="option-1-use-a-powershell-script-to-configure-nested-virtualization"></a>Možnost 1: Použít skript prostředí PowerShell ke konfiguraci vnořené virtualizace
+### <a name="option-1-use-a-powershell-script-to-configure-nested-virtualization"></a>Option 1: Použít skript prostředí PowerShell ke konfiguraci vnořené virtualizace
 Skript prostředí PowerShell pro povolení vnořené virtualizace na hostitelském Windows serveru 2016 je k dispozici na [Githubu](https://github.com/charlieding/Virtualization-Documentation/tree/live/hyperv-tools/Nested). Skript zkontroluje požadavky a pak nakonfiguruje vnořená virtualizace ve virtuálním počítači Azure. Restartování virtuálního počítače Azure jsou nezbytné pro dokončení konfigurace. Tento skript může fungovat v jiných prostředích, ale není zaručena. Přečtěte si příspěvek blogu Azure se živé video ukázku na vnořenou virtualizaci běžící v Azure! https://aka.ms/AzureNVblog.
 
-### <a name="option-2-configure-nested-virtualization-manually"></a>Možnost 2: Ruční konfigurace vnořené virtualizace
+### <a name="option-2-configure-nested-virtualization-manually"></a>Option 2: Ruční konfigurace vnořené virtualizace
 
 1. Na virtuálním počítači Azure otevřete PowerShell jako správce. 
 
@@ -134,7 +134,7 @@ New-NetNat -Name "InternalNat" -InternalIPInterfaceAddressPrefix 192.168.0.0/24
 
 Na virtuálním počítači hosta ručně nastavení statické IP adresy na virtuálním počítači hosta nebo konfigurace DHCP na virtuálním počítači Azure dynamicky přiřadit IP adresu můžete přiřadit IP adresu.
 
-###  <a name="option-1-configure-dhcp-to-dynamically-assign-an-ip-address-to-the-guest-virtual-machine"></a>Možnost 1: Konfigurace protokolu DHCP v dynamicky přiřadit IP adresu do hostovaného virtuálního počítače.
+###  <a name="option-1-configure-dhcp-to-dynamically-assign-an-ip-address-to-the-guest-virtual-machine"></a>Option 1: Konfigurace protokolu DHCP v dynamicky přiřadit IP adresu do hostovaného virtuálního počítače.
 Postupujte podle následujících kroků, abyste konfigurace DHCP na hostiteli virtuálního počítače pro dynamické přiřazení adres.
 
 #### <a name="install-dchp-server-on-the-azure-vm"></a>Instalace serveru DHCP na virtuálním počítači Azure
@@ -161,7 +161,7 @@ Postupujte podle následujících kroků, abyste konfigurace DHCP na hostiteli v
   
 6. Klikněte na tlačítko **Další** až po dokončení průvodce, byste museli opustit všechny výchozí hodnoty, klikněte na **Dokončit**.
     
-### <a name="option-2-manually-set-a-static-ip-address-on-the-guest-virtual-machine"></a>Možnost 2: Ručně nastavte statickou IP adresu ve virtuálním počítači hosta
+### <a name="option-2-manually-set-a-static-ip-address-on-the-guest-virtual-machine"></a>Option 2: Ručně nastavte statickou IP adresu ve virtuálním počítači hosta
 Pokud jste nenakonfigurovali DHCP v dynamicky přiřadit IP adresu na hostovaném virtuálním počítači, postupujte podle těchto pokynů nastavte statickou IP adresu.
 
 1. Na virtuálním počítači Azure otevřete PowerShell jako správce.

@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 10/12/2018
 ms.author: rezas
-ms.openlocfilehash: a50fca059331b28c46adb65903be4e7ba018a36c
-ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
+ms.openlocfilehash: b26a1fa3f61c7836bbe3466e4d95f406d16eb31e
+ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54052032"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54902512"
 ---
 # <a name="communicate-with-your-iot-hub-using-the-mqtt-protocol"></a>Komunikovat se službou IoT hub pomocí protokolu MQTT
 
@@ -198,20 +198,18 @@ Nejprve, zařízení se přihlásí k odběru `$iothub/twin/res/#`, pro příjem
 
 ID požadavku může být libovolná platná hodnota pro hodnoty vlastnosti zprávy, jak je uvedeno [– Příručka vývojáře pro zasílání zpráv služby IoT Hub][lnk-messaging], a ověřuje stav jako celé číslo.
 
-Text odpovědi obsahuje části vlastností v dvojčeti zařízení. Následující fragment kódu ukazuje text položky registru identit omezené "properties" členu, například:
+Text odpovědi obsahuje části vlastností v dvojčeti zařízení, jak je znázorněno v následujícím příkladu odpovědi:
 
 ```json
 {
-    "properties": {
-        "desired": {
-            "telemetrySendFrequency": "5m",
-            "$version": 12
-        },
-        "reported": {
-            "telemetrySendFrequency": "5m",
-            "batteryLevel": 55,
-            "$version": 123
-        }
+    "desired": {
+        "telemetrySendFrequency": "5m",
+        "$version": 12
+    },
+    "reported": {
+        "telemetrySendFrequency": "5m",
+        "batteryLevel": 55,
+        "$version": 123
     }
 }
 ```
@@ -228,7 +226,7 @@ Další informace najdete v tématu [– Příručka vývojáře dvojčata zař�
 
 ### <a name="update-device-twins-reported-properties"></a>Aktualizovat ohlášené vlastnosti dvojčete zařízení
 
-K aktualizaci ohlášených vlastností zařízení vydá požadavek na do služby IoT Hub přes publikace přes určené téma MQTT. Po zpracování požadavku, IoT Hub odpovídá stavu úspěch nebo neúspěch operace aktualizace prostřednictvím publikování na jiné téma. V tomto tématu můžete nejdřív přihlásit k odběru zařízení k upozornění o výsledek své žádosti aktualizace dvojčete. Implment tohoto typu požadavek/odpověď interakce v protokol MQTT, můžeme využít pojem id požadavku (`$rid`) zpočátku poskytovanému zařízením v žádosti o jeho aktualizaci. Id této žádosti je také součástí odpověď ze služby IoT Hub, aby mohlo zařízení ke korelaci odpovědi na své konkrétní předchozí žádosti.
+K aktualizaci ohlášených vlastností zařízení vydá požadavek na do služby IoT Hub přes publikace přes určené téma MQTT. Po zpracování požadavku, IoT Hub odpovídá stavu úspěch nebo neúspěch operace aktualizace prostřednictvím publikování na jiné téma. V tomto tématu můžete nejdřív přihlásit k odběru zařízení k upozornění o výsledek své žádosti aktualizace dvojčete. K implementaci tohoto typu požadavek/odpověď interakce v protokol MQTT, můžeme využít pojem id požadavku (`$rid`) zpočátku poskytovanému zařízením v žádosti o jeho aktualizaci. Id této žádosti je také součástí odpověď ze služby IoT Hub, aby mohlo zařízení ke korelaci odpovědi na své konkrétní předchozí žádosti.
 
 Následující text popisuje, jak zařízení aktualizuje ohlášené vlastnosti v dvojčeti zařízení ve službě IoT Hub:
 

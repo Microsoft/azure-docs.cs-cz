@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/17/2019
 ms.author: douglasl
-ms.openlocfilehash: 80b594eb8d926465f37771e2e6911f9ab3e63f1f
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: 0d7c8640cb2a3f6d4d1a32a555c03dc2eca48b9a
+ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54423812"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54901220"
 ---
 # <a name="continuous-integration-and-delivery-cicd-in-azure-data-factory"></a>Průběžná integrace a doručování (CI/CD) v Azure Data Factory
 
@@ -853,7 +853,7 @@ Můžete definovat vlastní parametry pro šablonu Resource Manageru. Chcete-li 
 
 Zde jsou uvedeny pokyny pro použití při vytváření souboru vlastních parametrů. Podívejte se na příklady syntaxe, naleznete v následující části [ukázkový soubor vlastní parametry](#sample).
 
-1. Když zadáte pole v definičním souboru, určujete, že odpovídající vlastnost v šabloně je pole. Data Factory Iteruje přes všechny objekty v poli pomocí definice zadané v objektu Runtimest fIntegration pole. Druhý objekt, řetězec, se stane názvem vlastnosti, která se používá jako název parametru pro každou iteraci.
+1. Když zadáte pole v definičním souboru, určujete, že odpovídající vlastnost v šabloně je pole. Data Factory Iteruje přes všechny objekty v poli pomocí definice zadaná v prostředí Integration Runtime objektu array. Druhý objekt, řetězec, se stane názvem vlastnosti, která se používá jako název parametru pro každou iteraci.
 
     ```json
     ...

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/15/2018
 ms.author: aljo
-ms.openlocfilehash: 75ba2ee378e9eddfeaeb2346b4d5bb584844afe2
-ms.sourcegitcommit: 542964c196a08b83dd18efe2e0cbfb21a34558aa
+ms.openlocfilehash: 691995d0aa426766caed2f5e2458399b32332c9d
+ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51636659"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54903498"
 ---
 # <a name="set-up-azure-active-directory-for-client-authentication"></a>Nastavení Azure Active Directory pro ověřování klientů
 
@@ -33,7 +33,7 @@ Pro zjednodušení některé kroky při konfiguraci Azure AD s clusterem Service
 > [!NOTE]
 > Před vytvořením clusteru, musíte dokončit následující kroky. Vzhledem k tomu, že skripty očekávají názvů clusterů a koncových bodů, hodnoty plánování byste měli využít a ne hodnoty, že jste již vytvořili.
 
-1. [Stáhněte si skripty] [ sf-aad-ps-script-download] k vašemu počítači.
+1. [Stáhněte si skripty](https://github.com/robotechredmond/Azure-PowerShell-Snippets/tree/master/MicrosoftAzureServiceFabric-AADHelpers/AADTool) k vašemu počítači.
 2. Klikněte pravým tlačítkem na soubor zip, vyberte **vlastnosti**, vyberte **Odblokovat** zaškrtněte políčko a potom klikněte na tlačítko **použít**.
 3. Rozbalte soubor zip.
 4. Spustit `SetupApplications.ps1`a zadejte ID Tenanta, název clusteru a WebApplicationReplyUrl jako parametry. Příklad:
@@ -108,16 +108,16 @@ Uživatel není přiřazena role v clusteru aplikaci Azure AD. Ověřování Azu
 #### <a name="solution"></a>Řešení
 Postupujte podle pokynů pro nastavení služby Azure AD a přiřadit role uživatele. Taky doporučujeme zapnout "Přiřazení uživatelů povinné pro přístup k aplikaci," jako `SetupApplications.ps1` nepodporuje.
 
-### <a name="connection-with-powershell-fails-with-an-error-the-specified-credentials-are-invalid"></a>Připojení pomocí prostředí PowerShell se nezdaří s chybou: "zadané přihlašovací údaje jsou neplatné."
+### <a name="connection-with-powershell-fails-with-an-error-the-specified-credentials-are-invalid"></a>Připojení pomocí prostředí PowerShell se nezdaří s chybou: "Zadané přihlašovací údaje jsou neplatné."
 #### <a name="problem"></a>Problém
-Při použití prostředí PowerShell pro připojení ke clusteru pomocí "AzureActiveDirectory" režim zabezpečení, po přihlášení úspěšně do služby Azure AD, připojení se nezdaří s chybou: "zadané přihlašovací údaje jsou neplatné."
+Při použití prostředí PowerShell pro připojení ke clusteru pomocí "AzureActiveDirectory" režim zabezpečení, po přihlášení úspěšně do služby Azure AD, připojení se nezdaří s chybou: "Zadané přihlašovací údaje jsou neplatné."
 
 #### <a name="solution"></a>Řešení
 Toto řešení je stejná jako ta předchozí.
 
 ### <a name="service-fabric-explorer-returns-a-failure-when-you-sign-in-aadsts50011"></a>Service Fabric Explorer vrátí chybu při přihlášení: "AADSTS50011"
 #### <a name="problem"></a>Problém
-Při pokusu o přihlášení k Azure AD v Service Fabric Exploreru na stránce vrátí chybu: "AADSTS50011: adresa pro odpovědi &lt;url&gt; neodpovídá adresám pro odpovědi nakonfigurovaným pro aplikaci: &lt;guid&gt;."
+Při pokusu o přihlášení k Azure AD v Service Fabric Exploreru na stránce vrátí chybu: "AADSTS50011: Adresa pro odpovědi &lt;url&gt; neodpovídá adresám pro odpovědi nakonfigurovaným pro aplikaci: &lt;guid&gt;. "
 
 ![Adresa pro odpovědi SFX neodpovídá.][sfx-reply-address-not-match]
 

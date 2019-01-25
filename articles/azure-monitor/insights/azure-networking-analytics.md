@@ -13,24 +13,24 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 06/21/2018
 ms.author: richrund
-ms.openlocfilehash: 4363d7a319eb31dbf020121bf2fa5c5630296c5a
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: 66bac977d05276833a357521a3a040c59b2f28fa
+ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53191700"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54900285"
 ---
 # <a name="azure-networking-monitoring-solutions-in-log-analytics"></a>Sítě Azure monitoring řešení v Log Analytics
 
 Log Analytics nabízí následující řešení pro monitorování vaší sítě:
 * Network Performance Monitor (NPM) pro
- * Monitorování stavu sítě
+    * Monitorování stavu sítě
 * Azure Application Gateway analytics ke kontrole
- * Protokoly služby Azure Application Gateway
- * Metriky Azure Application Gateway
+    * Protokoly služby Azure Application Gateway
+    * Metriky Azure Application Gateway
 * Řešení pro monitorování a auditu síťové aktivity v síti cloudu
-* [Analýza provozu](https://docs.microsoft.com/azure/networking/network-monitoring-overview#traffic-analytics) 
-* Analýzy skupin zabezpečení sítě Azure
+    * [Analýza provozu](https://docs.microsoft.com/azure/networking/network-monitoring-overview#traffic-analytics) 
+    * Analýzy skupin zabezpečení sítě Azure
 
 ## <a name="network-performance-monitor-npm"></a>Network Performance Monitor (NPM)
 
@@ -219,8 +219,8 @@ Používat aktualizované řešení:
 
     | Namísto: | Použití: |
     | --- | --- |
-    | NetworkApplicationgateways &#124; kde OperationName == "ApplicationGatewayAccess" | AzureDiagnostics &#124; kde element ResourceType = "APPLICATIONGATEWAYS" a OperationName == "ApplicationGatewayAccess" |
-    | NetworkApplicationgateways &#124; kde OperationName == "ApplicationGatewayPerformance" | AzureDiagnostics &#124; kde element ResourceType == "APPLICATIONGATEWAYS" a OperationName = ApplicationGatewayPerformance |
+    | NetworkApplicationgateways &#124; where OperationName=="ApplicationGatewayAccess" | AzureDiagnostics &#124; kde element ResourceType = "APPLICATIONGATEWAYS" a OperationName == "ApplicationGatewayAccess" |
+    | NetworkApplicationgateways &#124; where OperationName=="ApplicationGatewayPerformance" | AzureDiagnostics &#124; kde element ResourceType == "APPLICATIONGATEWAYS" a OperationName = ApplicationGatewayPerformance |
     | NetworkSecuritygroups | AzureDiagnostics &#124; kde element ResourceType == "NETWORKSECURITYGROUPS" |
 
    + Pro všechna pole, který má příponu \_s, \_d, nebo \_g v názvu, změňte první znak na malá písmena

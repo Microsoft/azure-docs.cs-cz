@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: quickstart
 ms.date: 11/28/2018
 ms.author: douglasl
-ms.openlocfilehash: 90f9ffeba2871aaa96a4da4cdbdf949a8e7db1bf
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: 279588e63000883d60b159f56e8c0b4686dee5b4
+ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54436429"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54888766"
 ---
 # <a name="tutorial-create-an-azure-data-factory-using-azure-resource-manager-template"></a>Kurz: Vytvoření datové továrny Azure pomocí šablony Azure Resource Manageru
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -285,7 +285,7 @@ Vytvořte soubor JSON s názvem **ADFTutorialARM-Parameters.json**, který obsah
       "value": "East US"
     },
     "storageAccountName": {
-      "value": "<yourstroageaccountname>"
+      "value": "<yourstorageaccountname>"
     },
     "storageAccountKey": {
       "value": "<yourstorageaccountkey>"
@@ -492,7 +492,7 @@ Služba AzureStorageLinkedService propojí váš účet služby Azure Storage s�
 }
 ```
 
-Vlastnost connectionString používá parametry storageAccountName a storageAccountKey. Hodnoty těchto parametrů se předávají pomocí konfiguračního souboru. Definice také používá proměnné azureStorageLinkedService a dataFactoryName definované v šabloně.
+Vlastnost connectionString používá parametry storageAccountName a storageAccountKey. Hodnoty těchto parametrů se předávají pomocí konfiguračního souboru. Definice také používá proměnné: azureStorageLinkedService a dataFactoryName definované v šabloně.
 
 #### <a name="azure-blob-input-dataset"></a>Vstupní datová sada Azure Blob
 Propojená služba úložiště Azure určuje připojovací řetězec, který služba Data Factory používá za běhu, aby se připojila k vašemu účtu úložiště Azure. V definici datové sady Azure Blob zadáte názvy kontejneru objektů blob, složky a souboru, který obsahuje vstupní data. Podrobnosti o vlastnostech JSON sloužících k definování datové sady Azure Blob najdete v oddílu [Vlastnosti datové sady Azure Blob](connector-azure-blob-storage.md#dataset-properties).

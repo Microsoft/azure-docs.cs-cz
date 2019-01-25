@@ -10,17 +10,17 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 11/08/2018
+ms.date: 01/23/2019
 ms.author: jingwang
-ms.openlocfilehash: 54db7cc65e05b383b251c21aa95569c6c2d58194
-ms.sourcegitcommit: 70471c4febc7835e643207420e515b6436235d29
+ms.openlocfilehash: 6da3a9bceaee67d0101abb0837580f4e35e160b3
+ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2019
-ms.locfileid: "54306161"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54885128"
 ---
 # <a name="copy-data-to-and-from-sql-server-using-azure-data-factory"></a>Kopírování dat do a z SQL serveru pomocí služby Azure Data Factory
-> [!div class="op_single_selector" title1="Vyberte verzi služby Data Factory, kterou používáte:"]
+> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
 > * [Verze 1](v1/data-factory-sqlserver-connector.md)
 > * [Aktuální verze](connector-sql-server.md)
 
@@ -36,6 +36,8 @@ Konkrétně tento konektor SQL serveru podporuje:
 - Kopírování dat pomocí **SQL** nebo **Windows** ověřování.
 - Jako zdroj načítání dat pomocí jazyka SQL nebo uloženou proceduru.
 - Jako jímku přidávání dat do cílové tabulky nebo volání uložené procedury s vlastní logikou během kopírování.
+
+SQL Server [s funkcí Always Encrypted](https://docs.microsoft.com/sql/relational-databases/security/encryption/always-encrypted-database-engine?view=sql-server-2017) není nyní podporován.
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -506,7 +508,7 @@ Při kopírování dat z/do systému SQL Server, se používají následující 
 | smalldatetime |DateTime |
 | smallint |Int16 |
 | Smallmoney |Decimal |
-| SQL_VARIANT |Objekt * |
+| SQL_VARIANT |Objekt |
 | text |Řetězec, Char] |
 | time |Časový interval |
 | časové razítko |Byte] |
@@ -515,6 +517,9 @@ Při kopírování dat z/do systému SQL Server, se používají následující 
 | varbinary |Byte] |
 | varchar |Řetězec, Char] |
 | xml |XML |
+
+>[!NOTE]
+> Pro mapování typů dat na typ desetinné dočasné aktuálně ADF podporují přesnost až 28. Pokud máte data s přesností větší než 28, zvažte možnost převést na řetězec v dotazu SQL.
 
 ## <a name="troubleshooting-connection-issues"></a>Řešení potíží s připojením
 

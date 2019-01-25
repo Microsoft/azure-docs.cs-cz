@@ -8,12 +8,12 @@ ms.author: jamesbak
 ms.topic: tutorial
 ms.date: 01/14/2019
 ms.component: data-lake-storage-gen2
-ms.openlocfilehash: 0bb2e9a91890f88466b27439b55d516848fd2270
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: c80cd5893c5d1f7c9941c979f87924d2943ba8d4
+ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54438824"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54904433"
 ---
 # <a name="tutorial-extract-transform-and-load-data-by-using-azure-databricks"></a>Kurz: Extrakce, transformace a načítání dat pomocí Azure Databricks
 
@@ -42,6 +42,7 @@ Pro absolvování tohoto kurzu potřebujete:
 > * Vytvoření služby Azure SQL data warehouse, vytvořte pravidlo brány firewall na úrovni serveru a připojení k serveru jako správce serveru. Zobrazit [rychlý start: Vytvoření služby Azure SQL data warehouse](../../sql-data-warehouse/create-data-warehouse-portal.md).
 > * Vytvořte hlavní klíč databáze pro službu Azure SQL data warehouse. Zobrazit [vytvořte hlavní klíč databáze](https://docs.microsoft.com/sql/relational-databases/security/encryption/create-a-database-master-key).
 > * Vytvoření účtu Azure Data Lake Storage Gen2. Zobrazit [vytvoření účtu Azure Data Lake Storage Gen2](data-lake-storage-quickstart-create-account.md).
+> * Vytvořili jste účet Azure Blob Storage a v něm kontejner. Zobrazit [rychlý start: Vytvoření účtu služby Azure Blob storage](storage-quickstart-blobs-portal.md).
 > * Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
 
 ## <a name="create-an-azure-databricks-workspace"></a>Vytvoření pracovního prostoru Azure Databricks
@@ -145,17 +146,17 @@ V této části vytvořte v pracovním prostoru Azure Databricks Poznámkový bl
 
    ```scala
    spark.conf.set("fs.azure.account.auth.type.<storage-account-name>.dfs.core.windows.net", "OAuth")
-   spark.conf.set("fs.azure.account.oauth.provider.type.<storage-account-name>.dfs.core.windows.net", org.apache.hadoop.fs.azurebfs.oauth2.ClientCredsTokenProvider")
+   spark.conf.set("fs.azure.account.oauth.provider.type.<storage-account-name>.dfs.core.windows.net", "org.apache.hadoop.fs.azurebfs.oauth2.ClientCredsTokenProvider")
    spark.conf.set("fs.azure.account.oauth2.client.id.<storage-account-name>.dfs.core.windows.net", "<application-id>")
    spark.conf.set("fs.azure.account.oauth2.client.secret.<storage-account-name>.dfs.core.windows.net", "<authentication-key>")
-   spark.conf.set("fs.azure.account.oauth2.client.endpoint.<account-name>.dfs.core.windows.net", "https://login.microsoftonline.com/<tenant-id>/oauth2/token")
+   spark.conf.set("fs.azure.account.oauth2.client.endpoint.<storage-account-name>.dfs.core.windows.net", "https://login.microsoftonline.com/<tenant-id>/oauth2/token")
    ```
 
-5. V tomto bloku kódu, nahraďte `application-id`, `authentication-id`, a `tenant-id` hodnoty zástupných symbolů v tomto bloku kódu nahraďte hodnotami, které jste shromáždili, když jste dokončili kroky v [odložit konfigurací účtu úložiště](#config). Nahradit `storage-account-name` zástupnou hodnotu s názvem účtu úložiště.
+6. V tomto bloku kódu, nahraďte `application-id`, `authentication-id`, a `tenant-id` hodnoty zástupných symbolů v tomto bloku kódu nahraďte hodnotami, které jste shromáždili, když jste dokončili kroky v [odložit konfigurací účtu úložiště](#config). Nahradit `storage-account-name` zástupnou hodnotu s názvem účtu úložiště.
 
-6. Stisknutím klávesy **SHIFT + ENTER** klíče pro spuštění kódu v tomto bloku.
+7. Stisknutím klávesy **SHIFT + ENTER** klíče pro spuštění kódu v tomto bloku.
 
-7. Nyní můžete načíst ukázkový soubor json jako datový rámec v Azure Databricks. Vložte následující kód do nové buňky. Nahraďte zástupné symboly v závorce s vašimi hodnotami.
+8. Nyní můžete načíst ukázkový soubor json jako datový rámec v Azure Databricks. Vložte následující kód do nové buňky. Nahraďte zástupné symboly v závorce s vašimi hodnotami.
 
    ```scala
    val df = spark.read.json("abfss://<file-system-name>@<storage-account-name>.dfs.core.windows.net/small_radio_json.json")
@@ -165,9 +166,9 @@ V této části vytvořte v pracovním prostoru Azure Databricks Poznámkový bl
 
    * Nahradit `storage-account-name` zástupný symbol s názvem účtu úložiště.
 
-8. Stisknutím klávesy **SHIFT + ENTER** klíče pro spuštění kódu v tomto bloku.
+9. Stisknutím klávesy **SHIFT + ENTER** klíče pro spuštění kódu v tomto bloku.
 
-9. Spuštěním následujícího kódu zobrazíte obsah datového rámce:
+10. Spuštěním následujícího kódu zobrazíte obsah datového rámce:
 
     ```scala
     df.show()
@@ -267,37 +268,37 @@ Nezpracovaná ukázková data **small_radio_json.json** souboru zaznamená cílo
 
 V této části načtete transformovaná data do služby Azure SQL Data Warehouse. Konektor Azure SQL Data Warehouse pro Azure Databricks můžete datový rámec nahrát přímo jako tabulku do SQL data warehouse.
 
-Konektor SQL Data Warehouse využívá úložiště objektů Blob v Azure jako dočasné úložiště pro nahrávání dat mezi službami Azure Databricks a Azure SQL Data Warehouse. Proto musíte napřed zadat konfiguraci pro připojení k účtu tohoto úložiště. Je potřeba už měli vytvořený účet jako součást požadavků pro účely tohoto článku.
+Jak už bylo zmíněno dříve, konektor SQL Data Warehouse používá Azure Blob storage jako dočasné úložiště k odesílání dat mezi službami Azure Databricks a Azure SQL Data Warehouse. Proto musíte napřed zadat konfiguraci pro připojení k účtu tohoto úložiště. Je potřeba už měli vytvořený účet jako součást požadavků pro účely tohoto článku.
 
 1. Zadejte konfiguraci pro přístup k účtu Azure Storage z Azure Databricks.
 
    ```scala
-   val storageURI = "<STORAGE_ACCOUNT_NAME>.dfs.core.windows.net"
-   val fileSystemName = "<FILE_SYSTEM_NAME>"
-   val accessKey =  "<ACCESS_KEY>"
+   val blobStorage = "<blob-storage-account-name>.blob.core.windows.net"
+   val blobContainer = "<blob-container-name>"
+   val authenticationKey =  "<authentication-key>"
    ```
 
 2. Zadejte dočasnou složku pro použití při přesouvání dat mezi službami Azure Databricks a Azure SQL Data Warehouse.
 
    ```scala
-   val tempDir = "abfss://" + fileSystemName + "@" + storageURI +"/tempDirs"
+   val tempDir = "wasbs://" + blob-container-name + "@" + blobStorage +"/tempDirs"
    ```
 
 3. Spusťte následující fragment kódu, který v konfiguraci uloží přístupové klíče služby Azure Blob Storage. Tím zajistíte, že není nutné udržovat přístupový klíč do poznámkového bloku ve formátu prostého textu.
 
    ```scala
-   val acntInfo = "fs.azure.account.key."+ storageURI
-   sc.hadoopConfiguration.set(acntInfo, accessKey)
+   val acntInfo = "fs.azure.account.key."+ blobStorage
+   sc.hadoopConfiguration.set(acntInfo, authenticationKey)
    ```
 
 4. Zadejte hodnoty pro připojení k instanci Azure SQL Data Warehouse. Musíte mít vytvořený SQL data warehouse jako předpoklad.
 
    ```scala
    //SQL Data Warehouse related settings
-   val dwDatabase = "<DATABASE NAME>"
-   val dwServer = "<DATABASE SERVER NAME>" 
-   val dwUser = "<USER NAME>"
-   val dwPass = "<PASSWORD>"
+   val dwDatabase = "<database-name>"
+   val dwServer = "<database-server-name>"
+   val dwUser = "<user-name>"
+   val dwPass = "<password>"
    val dwJdbcPort =  "1433"
    val dwJdbcExtraOptions = "encrypt=true;trustServerCertificate=true;hostNameInCertificate=*.database.windows.net;loginTimeout=30;"
    val sqlDwUrl = "jdbc:sqlserver://" + dwServer + ".database.windows.net:" + dwJdbcPort + ";database=" + dwDatabase + ";user=" + dwUser+";password=" + dwPass + ";$dwJdbcExtraOptions"
