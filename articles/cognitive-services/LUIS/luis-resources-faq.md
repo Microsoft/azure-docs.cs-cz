@@ -9,14 +9,14 @@ services: cognitive-services
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
-ms.date: 01/11/2018
+ms.date: 01/23/2019
 ms.author: diberry
-ms.openlocfilehash: 3c0d7d3aed08c6dbbcac5f25e91edd8e27e64440
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: 95af7a5e051a756d3067469aa42ecf4d71d56950
+ms.sourcegitcommit: 97d0dfb25ac23d07179b804719a454f25d1f0d46
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54429357"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54912165"
 ---
 # <a name="language-understanding-frequently-asked-questions-faq"></a>Language Understanding – nejčastější dotazy (FAQ)
 

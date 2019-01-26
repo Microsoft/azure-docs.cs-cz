@@ -10,15 +10,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 12/14/2018
+ms.date: 01/24/2019
 ms.author: mabrigg
 ms.reviewer: xiaofmao
-ms.openlocfilehash: 6ab2d92e2a3c62719af1c8ab6d6eda935fc49505
-ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
+ms.openlocfilehash: d6d1373a97b62d54d5bfc2595ee773a242af877a
+ms.sourcegitcommit: 97d0dfb25ac23d07179b804719a454f25d1f0d46
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53386770"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54913442"
 ---
 # <a name="connect-storage-explorer-to-an-azure-stack-subscription-or-a-storage-account"></a>Připojení Průzkumníka služby storage k předplatnému Azure Stack nebo účet úložiště
 
@@ -37,7 +37,10 @@ Po připojení k předplatnému Azure Stack nebo účet úložiště, můžete p
 
 Potřebujete přímý přístup ke službě Azure Stack nebo připojení k síti VPN pro Průzkumníka služby storage pro přístup k předplatnému Azure Stack. Další informace o tom, jak nastavit připojení VPN ke službě Azure Stack, najdete v tématu [Připojení ke službě Azure Stack pomocí sítě VPN](azure-stack-connect-azure-stack.md#connect-to-azure-stack-with-vpn).
 
-Pro Azure Stack Development Kit je potřeba vyexportovat kořenový certifikát autority Azure stacku.
+Pro Azure Stack Development Kit (ASDK), je potřeba vyexportovat kořenový certifikát autority Azure stacku.
+
+> [!Note]  
+> Pro ASDK Pokud se připojujete k vaší ASDK přes síť VPN, nepoužívejte kořenový certifikát (CA.cer), která byla vytvořena během procesu instalace VPN.  To je certifikát, kódování DER a neumožní Průzkumníka služby Storage načíst vaše předplatná Azure Stack. Podle následujících pokynů pro export kódování Base-64 certifikát pro použití s Průzkumníkem služby Storage.
 
 ### <a name="export-and-then-import-the-azure-stack-certificate"></a>Exportovat a importovat certifikát služby Azure Stack
 

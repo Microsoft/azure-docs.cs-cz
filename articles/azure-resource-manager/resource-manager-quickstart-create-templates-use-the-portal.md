@@ -13,12 +13,12 @@ ms.devlang: na
 ms.date: 01/11/2019
 ms.topic: quickstart
 ms.author: jgao
-ms.openlocfilehash: f989a006251313a8439432861477dc133374af35
-ms.sourcegitcommit: 70471c4febc7835e643207420e515b6436235d29
+ms.openlocfilehash: c7759b9f0787b7926b3642b8b912ec5391347adf
+ms.sourcegitcommit: 97d0dfb25ac23d07179b804719a454f25d1f0d46
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2019
-ms.locfileid: "54304665"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54911485"
 ---
 # <a name="quickstart-create-and-deploy-azure-resource-manager-templates-by-using-the-azure-portal"></a>Rychlý start: Vytvoření a nasazení šablon Azure Resource Manageru pomocí webu Azure portal
 
@@ -55,7 +55,7 @@ Mnoho vývojářů zkušení šablony pomocí této metody můžete generovat pr
 
     ![Vygenerování šablony na portálu](./media/resource-manager-quickstart-create-templates-use-the-portal/azure-resource-manager-template-tutorial-create-storage-account-template.png)
 
-    Šablona se zobrazí v hlavním podokně. Představuje soubor JSON se čtyřmi nejvyšší úrovně prvky - `schema`, `contentVersion`, `parameters`, `variables`, `resources`, a `output`. Další informace najdete v článku, který se zabývá [strukturou a syntaxí šablon Azure Resource Manageru](./resource-group-authoring-templates.md).
+    Šablona se zobrazí v hlavním podokně. Představuje soubor JSON s šest nejvyšší úrovně prvky - `schema`, `contentVersion`, `parameters`, `variables`, `resources`, a `output`. Další informace najdete v článku, který se zabývá [strukturou a syntaxí šablon Azure Resource Manageru](./resource-group-authoring-templates.md).
 
     Existuje šest definovaných parametrů. Jeden z nich má název **storageAccountName**. Druhá část zvýrazněný na předchozím snímku obrazovky ukazuje, jak odkazovat na tento parametr v šabloně. V další části upravíte šablonu tak, aby používala vygenerovaný název účtu úložiště.
 

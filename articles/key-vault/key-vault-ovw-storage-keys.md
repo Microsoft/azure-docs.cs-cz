@@ -9,23 +9,31 @@ author: prashanthyv
 ms.author: pryerram
 manager: mbaldwin
 ms.date: 10/03/2018
-ms.openlocfilehash: 3ee0d19c174490d558a8ff06d3f5e038ffff211f
-ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
+ms.openlocfilehash: e9b9620c3c631a9984bc6d1d02dc792c592b6e69
+ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/07/2019
-ms.locfileid: "54064436"
+ms.lasthandoff: 01/26/2019
+ms.locfileid: "55078385"
 ---
 # <a name="azure-key-vault-managed-storage-account---cli"></a>Služba Azure Key Vault spravovat účet úložiště – rozhraní příkazového řádku
 
 > [!NOTE]
-> [Azure storage teď podporuje ověřování AAD](https://docs.microsoft.com/azure/storage/common/storage-auth-aad). Doporučujeme použít Azure Active Directory pro ověřování a autorizace pro úložiště, jak uživatelé nemusí dělat starosti o otáčení své klíče účtu úložiště.
+> [Integrace služby Azure storage s Azure Active Directory (Azure AD) je teď ve verzi preview](https://docs.microsoft.com/azure/storage/common/storage-auth-aad). Doporučujeme použít Azure AD pro ověřování a autorizaci, které poskytuje přístup na základě tokenu OAuth2 do úložiště Azure, stejně jako Azure Key Vault. To vám umožní:
+> - Ověření klientské aplikace pomocí identitou aplikace nebo uživatele místo přihlašovacích údajů účtu úložiště. 
+> - Použití [identita spravované služby Azure AD](/azure/active-directory/managed-identities-azure-resources/) při spouštění v Azure. Spravovat identity odebrat potřebné pro ověřování klientů všechno dohromady a ukládání přihlašovacích údajů v nebo s vaší aplikací.
+> - Používejte na základě řízení přístupu Role (RBAC) pro správu autorizace, která je také podporována službou Key Vault.
 
 - Azure Key Vault se spravuje klíče z Azure Storage účtu (ASA).
     - Azure Key Vault interně, můžete zobrazit seznam klíčů (sync) pomocí účtu služby Azure Storage.    
     - Služba Azure Key Vault obnoví (obmění) klíče pravidelně.
     - Hodnoty klíče se nikdy vrátí odpověď na volajícího.
     - Služba Azure Key Vault slouží ke správě klíčů účtů úložiště a klasické účty úložiště.
+    
+> [!IMPORTANT]
+> Tenanta služby Azure AD poskytuje každý registrované aplikaci  **[instanční objekt služby](/azure/active-directory/develop/developer-glossary#service-principal-object)**, který slouží jako identitu aplikace. ID aplikace instančního objektu se používá při zadání autorizaci pro přístup k další prostředky Azure prostřednictvím řízení přístupu na základě role (RBAC). Protože Key Vault je aplikace Microsoft, je předem registrovánu ve všech tenantů Azure AD v rámci stejné ID aplikace v rámci každé cloudu Azure:
+> - ID aplikace používat klienty Azure AD v cloudu Azure government `7e7c393b-45d0-48b1-a35e-2905ddf8183c`.
+> - ID aplikace používat klienty Azure AD ve veřejném cloudu Azure a všechny ostatní `cfa8b339-82a2-471a-a3c9-0fc0be7a4093`.
 
 <a name="prerequisites"></a>Požadavky
 --------------

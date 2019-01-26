@@ -11,12 +11,12 @@ ms.author: aashishb
 author: aashishb
 ms.date: 10/02/2018
 ms.custom: seodec18
-ms.openlocfilehash: 14350a04326ba22dcc5c8608b6ac6b9180666832
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: adac36bd0d1798bf0bc9c2e2671c2482c6fcb84c
+ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53101172"
+ms.lasthandoff: 01/26/2019
+ms.locfileid: "55076481"
 ---
 # <a name="use-ssl-to-secure-web-services-with-azure-machine-learning-service"></a>Použití protokolu SSL pro zabezpečení webové služby pomocí služby Azure Machine Learning
 
@@ -37,7 +37,7 @@ Nasazení webové služby povolena s protokolem SSL, nebo povolíte protokol SSL
 
 4. Aktualizujte svoji službu DNS tak, aby odkazoval na webovou službu.
 
-Existují mírné rozdíly při zabezpečování webových služeb napříč [cíle nasazení](how-to-deploy-and-where.md). 
+Existují mírné rozdíly při zabezpečování webových služeb napříč [cíle nasazení](how-to-deploy-and-where.md).
 
 ## <a name="get-a-domain-name"></a>Získání názvu domény
 
@@ -50,7 +50,7 @@ Existuje mnoho způsobů, jak získat certifikát SSL. Nejběžnější je to k 
 * A __certifikát__. Certifikát musí obsahovat řetězce úplný certifikát a musí být kódovaný PEM.
 * A __klíč__. Klíč musí být kódovaný PEM.
 
-Při žádosti o certifikát, musíte plně kvalifikovaný název domény (FQDN) adresy, které chcete použít pro webovou službu. Příklad: www.contoso.com. Porovnání adres razítkem do certifikát a adresu použitou klienty při ověřování identity webové služby. Pokud adresy se neshodují, klienti obdrží chybu. 
+Při žádosti o certifikát, musíte plně kvalifikovaný název domény (FQDN) adresy, které chcete použít pro webovou službu. Příklad: www.contoso.com. Porovnání adres razítkem do certifikát a adresu použitou klienty při ověřování identity webové služby. Pokud adresy se neshodují, klienti obdrží chybu.
 
 > [!TIP]
 > Pokud certifikační autorita nemůže poskytnout certifikát a klíč jako kódovaný PEM soubory, můžete použít nástroj, jako [OpenSSL](https://www.openssl.org/) změny formátu.
@@ -60,25 +60,25 @@ Při žádosti o certifikát, musíte plně kvalifikovaný název domény (FQDN)
 
 ## <a name="enable-ssl-and-deploy"></a>Povolení protokolu SSL a nasazení
 
-Chcete-li nasadit (nebo znovu nasadit) na službu s protokol SSL povolený, nastavte `ssl_enabled` parametr `True`, bez ohledu na to použít. Nastavte `ssl_certificate` parametr na hodnotu __certifikát__ souboru a `ssl_key` na hodnotu __klíč__ souboru. 
+Chcete-li nasadit (nebo znovu nasadit) na službu s protokol SSL povolený, nastavte `ssl_enabled` parametr `True`, bez ohledu na to použít. Nastavte `ssl_certificate` parametr na hodnotu __certifikát__ souboru a `ssl_key` na hodnotu __klíč__ souboru.
 
 + **Nasazení ve službě Azure Kubernetes Service (AKS)**
-  
+
   Při zřizování clusteru AKS, zadejte hodnoty pro parametry související s protokolem SSL, jak znázorňuje fragment kódu:
 
     ```python
     from azureml.core.compute import AksCompute
-    
+
     provisioning_config = AksCompute.provisioning_configuration(ssl_cert_pem_file="cert.pem", ssl_key_pem_file="key.pem", ssl_cname="www.contoso.com")
     ```
 
 + **Nasazení do Azure Container Instances (ACI)**
- 
+
   Při nasazování do služby ACI, zadejte hodnoty pro parametry související s protokolem SSL, jak znázorňuje fragment kódu:
 
     ```python
     from azureml.core.webservice import AciWebservice
-    
+
     aci_config = AciWebservice.deploy_configuration(ssl_enabled=True, ssl_cert_pem_file="cert.pem", ssl_key_pem_file="key.pem", ssl_cname="www.contoso.com")
     ```
 
@@ -88,17 +88,17 @@ Chcete-li nasadit (nebo znovu nasadit) na službu s protokol SSL povolený, nast
 
     ```python
     from amlrealtimeai import DeploymentClient
-    
+
     subscription_id = "<Your Azure Subscription ID>"
     resource_group = "<Your Azure Resource Group Name>"
-    model_management_account = "<Your AzureML Model Management Account Name>"
+    model_management_account = "<Your Azure Machine Learning service Model Management Account Name>"
     location = "eastus2"
-    
+
     model_name = "resnet50-model"
     service_name = "quickstart-service"
-    
+
     deployment_client = DeploymentClient(subscription_id, resource_group, model_management_account, location)
-    
+
     with open('cert.pem','r') as cert_file:
         with open('key.pem','r') as key_file:
             cert = cert_file.read()
@@ -110,17 +110,17 @@ Chcete-li nasadit (nebo znovu nasadit) na službu s protokol SSL povolený, nast
 
 V dalším kroku je nutné aktualizovat DNS tak, aby odkazoval na webovou službu.
 
-+ **ACI a FPGA**:  
++ **ACI a FPGA**:
 
-  Použijte nástroje poskytované systémem registrátora názvu domény aktualizovat záznam DNS pro název domény. Záznam musí odkazovat na IP adresu služby.  
+  Použijte nástroje poskytované systémem registrátora názvu domény aktualizovat záznam DNS pro název domény. Záznam musí odkazovat na IP adresu služby.
 
   V závislosti na doménový Registrátor a čas live (TTL) nakonfigurovaný pro název domény, může trvat několik minut až několik hodin, než klienti mohli přeložit název domény.
 
-+ **Pro AKS**: 
++ **Pro AKS**:
 
   Aktualizace DNS na kartě "Konfigurace" z "Veřejné IP adresy" clusteru AKS, jak je znázorněno na obrázku. Veřejnou IP adresu najdete jako jeden z typů prostředků vytvořené v rámci skupiny prostředků, která obsahuje agentské uzly AKS a jiných síťových prostředků.
 
-  ![Služba Azure Machine Learning: zabezpečení webové služby s protokolem SSL](./media/how-to-secure-web-service/aks-public-ip-address.png)
+  ![Služba Azure Machine Learning: Zabezpečení webové služby s protokolem SSL](./media/how-to-secure-web-service/aks-public-ip-address.png)
 
 ## <a name="next-steps"></a>Další postup
 

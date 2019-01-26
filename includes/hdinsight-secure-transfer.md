@@ -4,12 +4,12 @@ ms.service: hdinsight
 ms.topic: include
 ms.date: 10/25/2018
 ms.author: jasonh
-ms.openlocfilehash: f20b7f22fd9e74b2b7140aaa6f949f2064c4a2bd
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.openlocfilehash: 15983607342842a625d8feb528cf9838eb6d6447
+ms.sourcegitcommit: 97d0dfb25ac23d07179b804719a454f25d1f0d46
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50165091"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54913661"
 ---
 > [!NOTE]
-> Funkce [Vyžadovat zabezpečený přenos](../articles/storage/common/storage-require-secure-transfer.md) vynucuje přenos všech požadavků na váš účet přes zabezpečené připojení. Tuto funkci podporují pouze clustery HDInsight verze 3.6 nebo novější. Další informace najdete v tématu [Vytvoření clusteru Hadoop s účty úložiště s bezpečným přenosem ve službě Azure HDInsight](../articles/hdinsight/hdinsight-hadoop-create-linux-clusters-with-secure-transfer-storage.md).
+> [Funkce, která vyžaduje zabezpečený přenos](../articles/storage/common/storage-require-secure-transfer.md) vynucuje všechny požadavky na účet přes zabezpečené připojení. Jenom HDInsight verze 3.6 nebo novější podporuje clusteru tuto funkci. Další informace najdete v tématu [vytvořit Apache Hadoop cluster s bezpečným přenosem účty úložiště v Azure HDInsight](../articles/hdinsight/hdinsight-hadoop-create-linux-clusters-with-secure-transfer-storage.md).

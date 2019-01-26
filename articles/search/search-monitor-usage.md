@@ -11,20 +11,20 @@ ms.topic: conceptual
 ms.date: 01/22/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 5f8a4e7dcaa1bc2df71246f67d06fc63ae4fcd06
-ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
+ms.openlocfilehash: af2a9cd7f834f5c6f70a78d94e8826de2584127d
+ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54883496"
+ms.lasthandoff: 01/26/2019
+ms.locfileid: "55076366"
 ---
 # <a name="monitor-an-azure-search-service-in-azure-portal"></a>Monitorování služby Azure Search na webu Azure portal
 
 Na stránce Přehled služby Azure Search můžete zobrazit systémová data o využití prostředků a navíc dotaz metriky, jako jsou dotazy na druhý (QPS), latence dotazu a procento žádostí, které byly omezené. Kromě toho můžete na portálu využít škálu možnosti na platformě Azure pro hlubší shromažďování dat monitorování. 
 
-Tento článek identifikuje a porovnává dostupné možnosti protokolování operace Azure Search. Obsahuje pokyny pro povolení protokolování a protokolů a způsob, jak rozbalit na informacích, které se shromažďují.
+Tento článek identifikuje a porovnává dostupné možnosti protokolování operace Azure Search. Obsahuje pokyny pro povolení protokolování a protokolů a jak přistupovat k informacím na služby a činnosti uživatelů.
 
-Pokud jsou vyplníte lístek podpory, neexistují žádné konkrétní úlohy nebo informace, které je potřeba zadat. Techniky podpory mají potřebné informace k prošetření specifické problémy.  
+Nastavení protokolů je užitečné pro samoobslužné diagnostiky a zachování historie operací služby. Interně jsou protokoly existuje na krátkou dobu čas dostatečná pro zkoumání a analýzy, pokud založte lístek podpory. Pokud chcete řídit úložiště informace o protokolu pro vaši službu, byste měli nastavit jedno řešení popisovaných v tomto článku.
 
 ## <a name="metrics-at-a-glance"></a>Metriky na první pohled
 
@@ -39,6 +39,8 @@ Pokud jsou vyplníte lístek podpory, neexistují žádné konkrétní úlohy ne
 
 **Monitorování** kartě ukazuje klouzavé průměry pro metriky, jako je hledání *dotazy za sekundu* agregovat (QPS), za minutu. 
 *Latence hledání* je množství času potřebného vyhledávací službu ke zpracování vyhledávacích dotazů, agregují za minutu. *Omezených vyhledávacích dotazů procento* (není vidět) je procento vyhledávacích dotazů, které byly omezené také agregovaná za minutu.
+
+Tato čísla jsou jen přibližné a jsou určené k poskytují obecnou představu o tom, jak dobře váš systém obsluhuje požadavky. Skutečné QPS může být vyšší nebo nižší než čísla oznámeného na portálu.
 
 ![Dotazy na druhou aktivitu](./media/search-monitor-usage/monitoring-tab.png "dotazů za druhou aktivitu")
 
@@ -58,19 +60,20 @@ Následující tabulka porovnává možnosti pro ukládání protokolů a přid�
 
 | Prostředek | Používá pro |
 |----------|----------|
-| [Application Insights](https://docs.microsoft.com/azure/azure-monitor/app/app-insights-overview) | [Analýza provozu vyhledávání](search-traffic-analytics.md). Toto je jediné řešení, která zachycuje další informace týkající se požadavků, využití nad rámec hodnoty uvedené v následující schémata metriky a protokolování. S tímto přístupem budete kopírování a vkládání kód instrumentace do zdrojových souborů pro směrování informace o žádosti odeslané do služby Application Insights pro analýzu na vstupech termín dotazu, dotazy s nulovou shody a tak dále. Doporučujeme, abyste Power BI jako front-endu analytics k datům uloženým ve službě Application Insights.  |
-| [Blob Storage](https://docs.microsoft.com/azure/storage/blobs/storage-blobs-overview) | Požadavky a metriky, podle schémat níže. Události jsou protokolovány do kontejneru objektů Blob. Doporučujeme aplikace Excel nebo Power BI jako front-endu analýzy uložených dat v úložišti objektů Blob v Azure.|
-| [Centrum událostí](https://docs.microsoft.com/azure/event-hubs/) | Požadavky a metriky, podle schémat uvedeno v tomto článku. Tuto možnost zvolte jako služba alternativní data kolekce pro velmi objemné protokoly. |
+| [Application Insights](https://docs.microsoft.com/azure/azure-monitor/app/app-insights-overview) | Protokolované události a metriky dotazu, podle schémat níže, korelují s událostí uživatele ve vaší aplikaci. Toto je jediné řešení, která zohledňuje signály nebo akce uživatelů, událostí mapování z uživatelem iniciované hledání, na rozdíl od filtrovat žádosti odeslané kódem aplikace. Pokud chcete použít tento přístup, kopírování a vkládání kód instrumentace do zdrojových souborů pro informace o postupu žádosti do služby Application Insights. Další informace najdete v tématu [Analýza provozu vyhledávání](search-traffic-analytics.md). |
+| [Log Analytics](https://docs.microsoft.com/azure/azure-monitor/log-query/log-query-overview) | Protokolované události a metriky dotazu, podle schémat níže. Události jsou protokolovány do pracovního prostoru v Log Analytics. Spusťte dotazy na pracovní prostor ke vrací podrobné informace z protokolu. Další informace najdete v tématu [Začínáme se službou Log Analytics](https://docs.microsoft.com/azure/azure-monitor/learn/tutorial-viewdata) |
+| [Blob Storage](https://docs.microsoft.com/azure/storage/blobs/storage-blobs-overview) | Protokolované události a metriky dotazu, podle schémat níže. Události jsou protokolovány do kontejneru objektů Blob a uloženy v souborech JSON. Chcete-li zobrazit obsah souboru pomocí editoru JSON.|
+| [Centrum událostí](https://docs.microsoft.com/azure/event-hubs/) | Protokolované události a metriky dotazu, podle schémat uvedeno v tomto článku. Tuto možnost zvolte jako služba alternativní data kolekce pro velmi objemné protokoly. |
 
-Azure search poskytuje monitorování [balíček obsahu Power BI](https://app.powerbi.com/getdata/services/azure-search) tak, aby můžete analyzovat data protokolů. Balíček obsahu se skládá ze sestav nakonfigurovat tak, aby automaticky se připojovat k vašim datům a nabízejí vizuální přehled o vaší vyhledávací služby. Další informace najdete v tématu [stránce nápovědy balíčku obsahu](https://powerbi.microsoft.com/documentation/powerbi-content-pack-azure-search/).
 
-Možnost úložiště objektů Blob je k dispozici jako bezplatná sdílených služeb tak, aby vám ho můžou vyzkoušet zdarma po dobu životnosti vašeho předplatného Azure. Následující části vás provede kroky pro povolení a používání úložiště objektů Blob v Azure ke shromáždění a přístup k datům protokolů vytvořené operací Azure Search.
+
+Log Analytics a úložištěm objektů Blob jsou dostupné jako bezplatná sdílených služeb tak, aby vám ho můžou vyzkoušet zdarma po dobu životnosti vašeho předplatného Azure. Následující části vás provede kroky pro povolení a používání úložiště objektů Blob v Azure ke shromáždění a přístup k datům protokolů vytvořené operací Azure Search.
 
 ## <a name="enable-logging"></a>Povolit protokolování
 
-Protokolování pro úlohy indexování a dotazování je vypnuto ve výchozím nastavení a závisí na doplněk řešení pro protokolování infrastruktury a externí úložiště. Samostatně je jen trvalá data ve službě Azure Search indexy, takže protokoly musí být uloženy jinde.
+Protokolování pro úlohy indexování a dotazování je vypnuto ve výchozím nastavení a závisí na doplněk řešení pro protokolování infrastruktury a dlouhodobé externího úložiště. Samostatně je jen trvalá data ve službě Azure Search indexy, takže protokoly musí být uloženy jinde.
 
-V této části se dozvíte, jak používat úložiště objektů Blob tak, aby obsahovala data protokolu událostí a metrik.
+V této části se dozvíte, jak používat úložiště objektů Blob k ukládání dat protokolu událostí a metrik.
 
 1. [Vytvoření účtu úložiště](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account) pokud ho ještě nemáte. Je možné je umístit ve stejné skupině prostředků jako Azure Search pro zjednodušení vyčistit později, pokud chcete odstranit všechny prostředky používané v tomto cvičení.
 
@@ -86,18 +89,20 @@ V této části se dozvíte, jak používat úložiště objektů Blob tak, aby 
 
 4. Uložte profil.
 
-5. Test protokolování vytváření nebo odstraňování objektů (generuje operační protokol) a odesíláním dotazů (generuje metriky). 
+5. Test protokolování vytváření nebo odstraňování objektů (vytvoří protokol událostí) a odesíláním dotazů (generuje metriky). 
 
-Po uložení profilu je povoleno protokolování, kontejnery jsou vytvořeny pouze po události do protokolu nebo měr. Může trvat několik minut, než kontejnery se zobrazí. Je možné [vizualizace dat v Power BI](#analyze-with-power-bi) až bude k dispozici.
-
-Když jsou data zkopírována do účtu úložiště, se data naformátovaná jako JSON a umístí do dvou kontejnerů:
+Po uložení profilu je povoleno protokolování, kontejnery jsou vytvořeny pouze po události do protokolu nebo měr. Může trvat několik minut, než kontejnery se zobrazí. Když jsou data zkopírována do účtu úložiště, se data naformátovaná jako JSON a umístí do dvou kontejnerů:
 
 * insights – protokoly operationlogs: pro protokoly přenosů služby search
 * insights-metrics-pt1m: pro metriky
 
-Existuje jeden objekt blob, za hodinu a kontejner.
+Můžete použít [Visual Studio Code](#Download-and-open-in-Visual-Studio-Code) nebo jiný editor JSON, chcete-li zobrazit soubory. Existuje jeden objekt blob, za hodinu a kontejner.
 
-Příklad cesty: `resourceId=/subscriptions/<subscriptionID>/resourcegroups/<resourceGroupName>/providers/microsoft.search/searchservices/<searchServiceName>/y=2018/m=12/d=25/h=01/m=00/name=PT1H.json`
+### <a name="example-path"></a>Příklad cesty
+
+```
+resourceId=/subscriptions/<subscriptionID>/resourcegroups/<resourceGroupName>/providers/microsoft.search/searchservices/<searchServiceName>/y=2018/m=12/d=25/h=01/m=00/name=PT1H.json
+```
 
 ## <a name="log-schema"></a>Schéma protokolu
 Objekty BLOB obsahující protokoly přenosů služby vyhledávání jsou strukturované, jak je popsáno v této části. Každý objekt blob má jeden kořenový objekt volána **záznamy** obsahující pole objektů protokolu. Každý objekt blob obsahuje záznamy pro všechny operace, které došlo během jedné hodiny.
@@ -146,25 +151,17 @@ Představte si, že o tomto scénáři během jedné minuty: jedné sekundy vyso
 
 Pro ThrottledSearchQueriesPercentage, minimální, maximální, průměrné a celkový počet, všechny mají stejnou hodnotu: procento vyhledávacích dotazů, které byly omezené z celkového počtu vyhledávací dotazy za jednu minutu.
 
-## <a name="analyze-with-power-bi"></a>Analyzovat pomocí Power BI
+## <a name="download-and-open-in-visual-studio-code"></a>Stáhnout a otevřít v aplikaci Visual Studio Code
 
-Doporučujeme používat [Power BI](https://powerbi.microsoft.com) pro zkoumání a vizualizace dat, zejména v případě, že jste povolili [Analýza provozu vyhledávání](search-traffic-analytics.md). Další informace najdete v tématu [stránce nápovědy balíčku obsahu](https://powerbi.microsoft.com/documentation/powerbi-content-pack-azure-search/).
+Chcete-li zobrazit soubor protokolu můžete použít libovolný editor JSON. Pokud nemáte, doporučujeme [Visual Studio Code](https://code.visualstudio.com/download).
 
-Připojení vyžadují klíč účtu úložiště název a přístup, který můžete získat z Azure stránek portálu na **přístupové klíče** stránky řídicího panelu vašeho účtu úložiště.
+1. Na webu Azure portal otevřete svůj účet úložiště. 
 
-1. Nainstalujte [Power BI Content Pack](https://app.powerbi.com/getdata/services/azure-search). Balíček obsahu přidá předdefinované grafů a tabulek, které jsou užitečné pro analýzu další data zachycená pro prohledání analýzy provozu. 
+2. V levém navigačním podokně klikněte na tlačítko **objekty BLOB**. Měli byste vidět **přehledy. protokoly operationlogs** a **insights-metrics-pt1m**. Tyto kontejnery vytvořené službou Azure Search při exportu dat protokolu do úložiště objektů Blob.
 
-   Pokud používáte účet Blob storage nebo jiný mechanismus úložiště a instrumentace nebyl přidán do vašeho kódu, můžete přeskočit tento balíček obsahu a použít integrované vizualizace Power BI.
+3. Dokud se nedostanete soubor .json, klikněte na tlačítko dolů hierarchii složek.  Použijte v místní nabídce ke stažení souboru.
 
-2. Otevřít **Power BI**, klikněte na tlačítko **získat Data** > **služby** > **Azure Search**.
-
-3. Zadejte název účtu úložiště vyberte **klíč** pro ověřování a pak vložte přístupový klíč.
-
-4. Import dat a pak klikněte na tlačítko **zobrazení dat**.
-
-Následující snímek obrazovky ukazuje předdefinovaných sestav a grafů pro analýzu hledání analýzu provozu.
-
-![Řídicí panel Power BI pro službu Azure Search](./media/search-monitor-usage/AzureSearch-PowerBI-Dashboard.png "řídicí panel Power BI pro službu Azure Search")
+Když se soubor stáhne, otevře se v editoru JSON k zobrazení obsahu.
 
 ## <a name="get-sys-info-apis"></a>Získat sys informace o rozhraní API
 Rozhraní REST API Azure Search a sady .NET SDK poskytují programový přístup k informace o službě metriky, indexu a indexeru a počty dokumentů.
@@ -179,6 +176,3 @@ Pokud chcete povolit pomocí Powershellu nebo rozhraní příkazového řádku A
 ## <a name="next-steps"></a>Další postup
 
 [Správa služby Search v Microsoft Azure](search-manage.md) pro další informace o správě služby a [výkon a optimalizace](search-performance-optimization.md) pro Průvodce laděním.
-
-Další informace o vytváření úžasných sestav. Zobrazit [Začínáme s Power BI Desktopu](https://powerbi.microsoft.com/documentation/powerbi-desktop-getting-started/) podrobnosti.
-

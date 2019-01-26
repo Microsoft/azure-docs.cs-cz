@@ -15,12 +15,12 @@ ms.date: 06/26/2018
 ms.author: barbkess
 ms.reviewer: harshja
 ms.custom: H1Hack27Feb2017; it-pro
-ms.openlocfilehash: 11508c1f65ddfc7e43ef2301f32d67da3f0a4584
-ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
+ms.openlocfilehash: 2eb59d9b07587fe2cfddb088e0cf82bb6762caa4
+ms.sourcegitcommit: 97d0dfb25ac23d07179b804719a454f25d1f0d46
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 01/25/2019
-ms.locfileid: "54904263"
+ms.locfileid: "54912676"
 ---
 # <a name="troubleshoot-application-proxy-problems-and-error-messages"></a>Poradce při potížích s Proxy aplikací problémy a chybové zprávy
 Pokud dojde k chybám při přístupu k publikované aplikaci nebo publikování aplikace, zkontrolujte následující možnosti a zda správně funguje Proxy aplikací služby Microsoft Azure AD:

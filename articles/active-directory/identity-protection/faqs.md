@@ -14,13 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/03/2017
 ms.author: markvi
-ms.reviewer: nigu
-ms.openlocfilehash: 70bab69fecbe3f8aab1858aaddfa9004278c0f03
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.reviewer: raluthra
+ms.openlocfilehash: a4d088af2aa64b5cd69cc60ec05109a8f414bfad
+ms.sourcegitcommit: 97d0dfb25ac23d07179b804719a454f25d1f0d46
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54470677"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54913491"
 ---
 # <a name="azure-active-directory-identity-protection-faq"></a>Azure Active Directory Identity Protection – nejčastější dotazy
 

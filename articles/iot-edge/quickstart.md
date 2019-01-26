@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc, seodec18
-ms.openlocfilehash: e0ad51bd2370cd8b7569d76e5d91b606928eea6d
-ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
+ms.openlocfilehash: a48a2ebc64d156d2755a2bef32672bc58b57ad00
+ms.sourcegitcommit: 97d0dfb25ac23d07179b804719a454f25d1f0d46
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54189350"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54911249"
 ---
 # <a name="quickstart-deploy-your-first-iot-edge-module-from-the-azure-portal-to-a-windows-device---preview"></a>Rychlý start: Nasazení prvního modulu IoT Edge z portálu Azure portal pro zařízení s Windows – preview
 
@@ -104,7 +104,7 @@ Protože zařízení IoT Edge se chovají a lze je spravovat jinak než typické
    az iot hub device-identity show-connection-string --device-id myEdgeDevice --hub-name {hub_name}
    ```
 
-3. Zkopírujte připojovací řetězec z výstupu JSON a uložte ho. Tuto hodnotu použijete ke konfiguraci modulu runtime IoT Edge v další části.
+3. Zkopírujte hodnotu `cs` klíče z výstupu JSON a uložte ho. Tato hodnota je připojovací řetězec zařízení. Tento připojovací řetězec budete používat ke konfiguraci modulu runtime IoT Edge v další části.
 
    ![Načtení připojovacího řetězce z výstupu rozhraní příkazového řádku](./media/quickstart/retrieve-connection-string.png)
 
@@ -170,6 +170,8 @@ Ověřte, že se modul runtime úspěšně nainstaloval a nakonfiguroval.
    ```
 
    ![Zobrazení jednoho modulu na zařízení](./media/quickstart/iotedge-list-1.png)
+
+Může trvat několik minut na dokončení instalace a modul IoT Edge agenta ke spuštění, zejména v případě, že používáte zařízení s omezeným přístupem kapacity nebo Internetu. 
 
 Vaše zařízení IoT Edge je teď nakonfigurované. Je připravené na spouštění modulů nasazených v cloudu.
 

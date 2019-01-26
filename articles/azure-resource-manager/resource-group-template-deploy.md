@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/24/2018
 ms.author: tomfitz
-ms.openlocfilehash: 083a318f008799713f4d8d9aeacfe2e27f6ad195
-ms.sourcegitcommit: 5de9de61a6ba33236caabb7d61bee69d57799142
+ms.openlocfilehash: 6e6cd7f1677d8ae11f05c2a2bca4233603a29408
+ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50085922"
+ms.lasthandoff: 01/26/2019
+ms.locfileid: "55075665"
 ---
 # <a name="deploy-resources-with-resource-manager-templates-and-azure-powershell"></a>Nasazení prostředků pomocí šablon Resource Manageru a Azure PowerShellu
 
@@ -25,7 +25,7 @@ Tento článek vysvětluje, jak nasadit prostředky do Azure pomocí šablon Res
 
 Šablony Resource Manageru, které nasadíte, může být místní soubor na svůj počítač nebo externí soubor, který se nachází v úložišti, jako je GitHub. Šablona nasazení v tomto článku je k dispozici jako [Šablona účtu úložiště v Githubu](https://github.com/Azure/azure-quickstart-templates/blob/master/101-storage-account-create/azuredeploy.json).
 
-V případě potřeby nainstalujte modul Azure PowerShell podle pokynů, které najdete v [průvodci pro Azure PowerShell](/powershell/azure/overview), a pak se připojte k Azure spuštěním příkazu `Connect-AzureRmAccount`.
+V případě potřeby nainstalujte modul Azure PowerShell podle pokynů, které najdete v [průvodci pro Azure PowerShell](/powershell/azure/overview), a pak se připojte k Azure spuštěním příkazu `Connect-AzAccount`.
 
 <a id="deploy-local-template" />
 
@@ -42,12 +42,12 @@ Při nasazování prostředků do Azure, můžete:
 Následující příklad vytvoří skupinu prostředků a nasadí šablony z místního počítače:
 
 ```powershell
-Connect-AzureRmAccount
+Connect-AzAccount
 
-Select-AzureRmSubscription -SubscriptionName <yourSubscriptionName>
+Select-AzSubscription -SubscriptionName <yourSubscriptionName>
  
-New-AzureRmResourceGroup -Name ExampleResourceGroup -Location "South Central US"
-New-AzureRmResourceGroupDeployment -Name ExampleDeployment -ResourceGroupName ExampleResourceGroup `
+New-AzResourceGroup -Name ExampleResourceGroup -Location "South Central US"
+New-AzResourceGroupDeployment -Name ExampleDeployment -ResourceGroupName ExampleResourceGroup `
   -TemplateFile c:\MyTemplates\storage.json -storageAccountType Standard_GRS
 ```
 
@@ -64,7 +64,7 @@ Místo uložení šablony Resource Manageru na místním počítači, můžete c
 Chcete-li nasadit externí šablony, použijte **TemplateUri** parametru. Použijte identifikátor URI v příkladu nasazení ukázkové šablony z Githubu.
 
 ```powershell
-New-AzureRmResourceGroupDeployment -Name ExampleDeployment -ResourceGroupName ExampleResourceGroup `
+New-AzResourceGroupDeployment -Name ExampleDeployment -ResourceGroupName ExampleResourceGroup `
   -TemplateUri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-storage-account-create/azuredeploy.json `
   -storageAccountType Standard_GRS
 ```
@@ -76,8 +76,8 @@ V předchozím příkladu vyžaduje veřejně přístupné identifikátor URI pr
 Ve službě Cloud Shell použijte následující příkazy:
 
 ```powershell
-New-AzureRmResourceGroup -Name ExampleResourceGroup -Location "South Central US"
-New-AzureRmResourceGroupDeployment -ResourceGroupName ExampleResourceGroup `
+New-AzResourceGroup -Name ExampleResourceGroup -Location "South Central US"
+New-AzResourceGroupDeployment -ResourceGroupName ExampleResourceGroup `
   -TemplateUri <copied URL> `
   -storageAccountType Standard_GRS
 ```
@@ -94,11 +94,11 @@ Zpravidla nasazujete, všechny prostředky ve vaší šabloně do jedné skupiny
 
 ### <a name="inline-parameters"></a>Vložené parametry
 
-Pro předání parametrů vložený, zadejte názvy parametrů s `New-AzureRmResourceGroupDeployment` příkazu. Například předávání řetězce a pole do šablony, použijte:
+Pro předání parametrů vložený, zadejte názvy parametrů s `New-AzResourceGroupDeployment` příkazu. Například předávání řetězce a pole do šablony, použijte:
 
 ```powershell
 $arrayParam = "value1", "value2"
-New-AzureRmResourceGroupDeployment -ResourceGroupName testgroup `
+New-AzResourceGroupDeployment -ResourceGroupName testgroup `
   -TemplateFile c:\MyTemplates\demotemplate.json `
   -exampleString "inline string" `
   -exampleArray $arrayParam
@@ -108,7 +108,7 @@ Můžete také získat obsah souboru a poskytují tento obsah jako parametr vlo�
 
 ```powershell
 $arrayParam = "value1", "value2"
-New-AzureRmResourceGroupDeployment -ResourceGroupName testgroup `
+New-AzResourceGroupDeployment -ResourceGroupName testgroup `
   -TemplateFile c:\MyTemplates\demotemplate.json `
   -exampleString $(Get-Content -Path c:\MyTemplates\stringcontent.txt -Raw) `
   -exampleArray $arrayParam
@@ -141,7 +141,7 @@ Předchozí příklad zkopírujte a uložte ho jako soubor s názvem `storage.pa
 Chcete-li předat parametr místní soubor, použijte **TemplateParameterFile** parametr:
 
 ```powershell
-New-AzureRmResourceGroupDeployment -Name ExampleDeployment -ResourceGroupName ExampleResourceGroup `
+New-AzResourceGroupDeployment -Name ExampleDeployment -ResourceGroupName ExampleResourceGroup `
   -TemplateFile c:\MyTemplates\storage.json `
   -TemplateParameterFile c:\MyTemplates\storage.parameters.json
 ```
@@ -149,7 +149,7 @@ New-AzureRmResourceGroupDeployment -Name ExampleDeployment -ResourceGroupName Ex
 Chcete-li předat soubor externí parametrů, použijte **TemplateParameterUri** parametr:
 
 ```powershell
-New-AzureRmResourceGroupDeployment -Name ExampleDeployment -ResourceGroupName ExampleResourceGroup `
+New-AzResourceGroupDeployment -Name ExampleDeployment -ResourceGroupName ExampleResourceGroup `
   -TemplateUri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-storage-account-create/azuredeploy.json `
   -TemplateParameterUri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-storage-account-create/azuredeploy.parameters.json
 ```
@@ -162,21 +162,21 @@ Ale při použití souboru externí parametr nemůžete předat další hodnoty 
 
 ### <a name="parameter-name-conflicts"></a>Parametr název je v konfliktu
 
-Pokud šablona obsahuje parametr se stejným názvem jako jeden z parametrů v příkazu Powershellu, prostředí PowerShell nabídne parametr z šablony Příponové **FromTemplate**. Například parametr s názvem **ResourceGroupName** ve vaší šabloně je v konfliktu s **ResourceGroupName** parametr [New-AzureRmResourceGroupDeployment](/powershell/module/azurerm.resources/new-azurermresourcegroupdeployment) rutiny. Zobrazí výzva k zadání hodnoty pro **ResourceGroupNameFromTemplate**. Obecně byste se měli vyhnout této záměně není pojmenováním parametry se stejným názvem jako parametrů použitých pro operace nasazení.
+Pokud šablona obsahuje parametr se stejným názvem jako jeden z parametrů v příkazu Powershellu, prostředí PowerShell nabídne parametr z šablony Příponové **FromTemplate**. Například parametr s názvem **ResourceGroupName** ve vaší šabloně je v konfliktu s **ResourceGroupName** parametr [New-AzResourceGroupDeployment](/powershell/module/az.resources/new-azresourcegroupdeployment) rutiny. Zobrazí výzva k zadání hodnoty pro **ResourceGroupNameFromTemplate**. Obecně byste se měli vyhnout této záměně není pojmenováním parametry se stejným názvem jako parametrů použitých pro operace nasazení.
 
 ## <a name="test-a-template-deployment"></a>Test šablony nasazení
 
-Chcete-li otestovat šablonu a parametry hodnoty bez skutečného nasazení všechny prostředky, použijte [Test-AzureRmResourceGroupDeployment](/powershell/module/azurerm.resources/test-azurermresourcegroupdeployment). 
+Chcete-li otestovat šablonu a parametry hodnoty bez skutečného nasazení všechny prostředky, použijte [Test-AzureRmResourceGroupDeployment](/powershell/module/az.resources/test-azresourcegroupdeployment). 
 
 ```powershell
-Test-AzureRmResourceGroupDeployment -ResourceGroupName ExampleResourceGroup `
+Test-AzResourceGroupDeployment -ResourceGroupName ExampleResourceGroup `
   -TemplateFile c:\MyTemplates\storage.json -storageAccountType Standard_GRS
 ```
 
 Pokud nejsou zjištěny žádné chyby, dokončení příkazu bez odezvy. Pokud dojde k chybě, příkaz vrátí chybovou zprávu. Nesprávná hodnota pro účet úložiště SKU, například vrátí následující chybu:
 
 ```powershell
-Test-AzureRmResourceGroupDeployment -ResourceGroupName testgroup `
+Test-AzResourceGroupDeployment -ResourceGroupName testgroup `
   -TemplateFile c:\MyTemplates\storage.json -storageAccountType badSku
 
 Code    : InvalidTemplate
@@ -189,7 +189,7 @@ Details :
 Pokud vaše šablona obsahuje chybu syntaxe, příkaz vrátí chybu s informacemi, že ho nebylo možné rozložit šablony. Zpráva číslo řádku a pozice chybu analýzy.
 
 ```powershell
-Test-AzureRmResourceGroupDeployment : After parsing a value an unexpected character was encountered: 
+Test-AzResourceGroupDeployment : After parsing a value an unexpected character was encountered: 
   ". Path 'variables', line 31, position 3.
 ```
 

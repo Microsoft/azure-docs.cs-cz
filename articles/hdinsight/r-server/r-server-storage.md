@@ -9,18 +9,18 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/27/2018
-ms.openlocfilehash: 4aae44745981951fa61836fe52d8d6b799c6cadf
-ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
+ms.openlocfilehash: 7b937158be39f9a1f7f9374611a150fd11837f02
+ms.sourcegitcommit: 97d0dfb25ac23d07179b804719a454f25d1f0d46
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "54001511"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54910262"
 ---
 # <a name="azure-storage-solutions-for-ml-services-on-azure-hdinsight"></a>Řešení Azure Storage pro ML služeb v Azure HDInsight
 
 Služby ML na HDInsight využívat širokou škálu řešení úložišť se zachovat data, kód nebo objekty, které obsahují výsledky analýzy. Mezi ně patří následující možnosti:
 
-- [Objektů Blob v Azure](https://azure.microsoft.com/services/storage/blobs/)
+- [Azure Blob](https://azure.microsoft.com/services/storage/blobs/)
 - [Azure Data Lake Storage](https://azure.microsoft.com/services/storage/data-lake-storage/)
 - [Azure File storage](https://azure.microsoft.com/services/storage/files/)
 
@@ -172,4 +172,4 @@ Hlavní výhodou souborů Azure je, že sdílené složky můžete připojit a p
 * [Přehled služby ML clusteru v HDInsight](r-server-overview.md)
 * [Začínáme s clusterem služby ML na Apache Hadoopu](r-server-get-started.md)
 * [Možnosti výpočetního kontextu pro cluster služby ML Services v HDInsight](r-server-compute-contexts.md)
-
+* [Použití Azure Data Lake Storage Gen2 s clustery Azure HDInsight](../hdinsight-hadoop-use-data-lake-storage-gen2.md)

@@ -8,14 +8,14 @@ manager: cgronlun
 ms.service: cognitive-services
 ms.component: qna-maker
 ms.topic: overview
-ms.date: 10/09/2018
+ms.date: 01/24/2019
 ms.author: tulasim
-ms.openlocfilehash: bd859183a13e0f8a21cdd2eabb464b718e949464
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
-ms.translationtype: HT
+ms.openlocfilehash: 255aac8ed5c4268a049393cdc27b06f7a987e891
+ms.sourcegitcommit: 97d0dfb25ac23d07179b804719a454f25d1f0d46
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50212212"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54911435"
 ---
 # <a name="what-is-qna-maker"></a>Co je QnA Maker?
 
@@ -31,9 +31,9 @@ Snadno použitelný [webový portál](https://qnamaker.ai) vám umožní vytvoř
 
 QnA Maker pro vaše data zajišťuje dvě klíčové služby:
 
-* **Extrakce:** Strukturovaná data otázek a odpovědí se extrahují ze [zdrojů strukturovaných a částečně strukturovaných dat](../Concepts/data-sources-supported.md), jako jsou nejčastější dotazy a příručky k produktům. Extrakci je možné provést během [vytváření](https://aka.ms/qnamaker-docs-createkb) znalostní báze nebo později v rámci úprav.
+* **Extrakce**: Otázka – odpověď strukturovaná data extrahují z částečně strukturovaných a strukturovaných [zdroje dat](../Concepts/data-sources-supported.md) , jako jsou nejčastější dotazy a produktových příruček. Extrakci je možné provést během [vytváření](https://aka.ms/qnamaker-docs-createkb) znalostní báze nebo později v rámci úprav.
 
-* **Hledání shody:** Po [natrénování a otestování](https://aka.ms/qnamaker-docs-trainkb) znalostní báze ji můžete [publikovat](https://aka.ms/qnamaker-docs-publishkb). Tím se povolí koncový bod pro znalostní bázi služby QnA Maker, který pak můžete použít ve svém chatbotu nebo klientské aplikaci. Tento koncový bod přijímá otázky uživatelů a jako odpověď nabízí nejlepší odpověď ve znalostní bázi společně se skóre spolehlivosti shody.
+* **Odpovídající**: Jakmile znalostní báze [trénují a testovat](https://aka.ms/qnamaker-docs-trainkb), můžete [publikovat](https://aka.ms/qnamaker-docs-publishkb) ho. Tím se povolí koncový bod pro znalostní bázi služby QnA Maker, který pak můžete použít ve svém chatbotu nebo klientské aplikaci. Tento koncový bod přijímá otázky uživatelů a jako odpověď nabízí nejlepší odpověď ve znalostní bázi společně se skóre spolehlivosti shody.
 
 ```JSON
 {
@@ -57,9 +57,9 @@ QnA Maker pro vaše data zajišťuje dvě klíčové služby:
 
 Architektura služby QnA Maker se skládá z následujících dvou komponent:
 
-1. **Služby pro správu služby QnA Maker:** Prostředí pro správu znalostní báze služby QnA Maker od počátečního vytvoření, aktualizací, trénování až po publikování. Tyto aktivity je možné provádět přes [portál](https://qnamaker.ai) nebo [rozhraní API pro správu](https://aka.ms/qnamaker-v4-apis). 
+1. **Služby pro správu nástroje QnA Maker**: Rozhraní pro správu prostředí pro nástroje QnA Maker znalostní báze, který obsahuje úvodní vytvoření, aktualizace, trénování a publikování. Tyto aktivity je možné provádět přes [portál](https://qnamaker.ai) nebo [rozhraní API pro správu](https://aka.ms/qnamaker-v4-apis). 
 
-2. **Data a modul runtime služby QnA Maker:** Toto se nasadí do vašeho předplatného Azure v zadané oblasti. Obsah vaší znalostní báze se ukládá ve službě [Azure Search](https://azure.microsoft.com/services/search/) a koncový bod se nasazuje jako [App Service](https://azure.microsoft.com/services/app-service/). Můžete nasadit také prostředek [Application Insights](https://azure.microsoft.com/services/application-insights/) pro účely analýz.
+2. **Nástroj QnA Maker dat a modulu runtime**: Nasadí se v rámci vašeho předplatného Azure v zadané oblasti. Obsah vaší znalostní báze se ukládá ve službě [Azure Search](https://azure.microsoft.com/services/search/) a koncový bod se nasazuje jako [App Service](https://azure.microsoft.com/services/app-service/). Můžete nasadit také prostředek [Application Insights](https://azure.microsoft.com/services/application-insights/) pro účely analýz.
 
 ![Architektura](../media/qnamaker-overview-learnabout/architecture.png)
 
@@ -72,7 +72,7 @@ Architektura služby QnA Maker se skládá z následujících dvou komponent:
 - **Úplné dodržování předpisů pro data**. Komponenty služby předpovědí se nasazují do vašeho předplatného Azure a splňují vaše požadavky na dodržování předpisů.
 
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 > [!div class="nextstepaction"]
 > [Vytvoření služby QnA Maker](../how-to/set-up-qnamaker-service-azure.md)

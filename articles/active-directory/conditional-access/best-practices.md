@@ -14,15 +14,15 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 08/23/2018
+ms.date: 01/24/2019
 ms.author: markvi
 ms.reviewer: calebb
-ms.openlocfilehash: 62bb9b6b4b0edd9e45b317c3c4e18872bae2eec4
-ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
-ms.translationtype: MT
+ms.openlocfilehash: 3ed4d3874056eca93e5c94e225ba25d94e7826e3
+ms.sourcegitcommit: 97d0dfb25ac23d07179b804719a454f25d1f0d46
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54452832"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54911927"
 ---
 # <a name="best-practices-for-conditional-access-in-azure-active-directory"></a>Osvědčené postupy pro podmíněný přístup v Azure Active Directory
 
@@ -55,6 +55,24 @@ Aby vaše zásady fungují, je nutné nakonfigurovat:
 
 
 ## <a name="what-you-should-know"></a>Co byste měli vědět
+
+
+
+### <a name="how-are-conditional-access-policies-applied"></a>Jak se používají zásady podmíněného přístupu?
+
+Více než jedny zásady podmíněného přístupu uplatnit, když uživatel získá přístup k aplikaci. V tomto případě musí být splněny všechny zásady, které se vztahují. Například pokud jedna zásady vyžaduje pro uživatele vícefaktorové ověřování a druhá vyžaduje vyhovující zařízení uživatel musí MFA a vyhovující zařízení. 
+
+Všechny zásady vynucují ve dvou fázích:
+
+- V **první** fázi, jsou vyhodnoceny všechny zásady a jsou shromážděné všechny ovládací prvky přístupu, které nejsou splněné. 
+
+- V **druhý** fáze, zobrazí se výzva k splňují požadavky nebyly splněny. Pokud některou ze zásad blokování přístupu, se zablokuje a nechcete zobrazit výzvu k splňovat další ovládací prvky zásad. Pokud žádná z zásad zablokuje vás, zobrazí se výzva splňovat další ovládací prvky zásad v následujícím pořadí:
+
+    ![Objednání](./media/best-practices/06.png)
+    
+    Externí zprostředkovatelé vícefaktorového ověřování a podmínky použití pocházejí Další.
+
+
 
 ### <a name="how-are-assignments-evaluated"></a>Jak se vyhodnocují přiřazení?
 
@@ -154,4 +172,7 @@ Další informace najdete v tématu [migrace klasických zásad na webu Azure Po
 
 ## <a name="next-steps"></a>Další postup
 
-Pokud chcete vědět, jak nakonfigurovat zásady podmíněného přístupu najdete v tématu [vyžadovat vícefaktorové ověřování pro konkrétní aplikace s podmíněným přístupem Azure Active Directory](app-based-mfa.md).
+Pokud budete chtít vědět:
+
+- Jak nakonfigurovat zásady podmíněného přístupu, [vyžadovat vícefaktorové ověřování pro konkrétní aplikace s podmíněným přístupem Azure Active Directory](app-based-mfa.md).
+- Plánování zásad podmíněného přístupu, naleznete v tématu [postup plánování vašeho nasazení podmíněného přístupu v Azure Active Directory](plan-conditional-access.md).

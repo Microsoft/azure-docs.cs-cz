@@ -5,13 +5,13 @@ author: bolzmj
 ms.author: mbolz
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 09/20/2018
-ms.openlocfilehash: 12497f6a5173e2e4ea9c919fb6500c34f85749fa
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.date: 01/24/2019
+ms.openlocfilehash: 76f6c15fc1e186e254c4edbb53a2a0ccf7050b3e
+ms.sourcegitcommit: 97d0dfb25ac23d07179b804719a454f25d1f0d46
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53534736"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54912744"
 ---
 # <a name="advanced-threat-protection-for-azure-database-for-mysql"></a>Advanced Threat Protection pro Azure Database for MySQL
 
@@ -22,6 +22,9 @@ Rozšířená ochrana před internetovými útoky je součástí nabídky Rozš�
 > [!NOTE]
 > Funkce Advanced Threat Protection je **není** dostupná v oblastech suverénních cloudů a Azure government pro následující: (Gov) – Iowa, USA, Arizona, USA (gov) US Gov Texas, USA (gov) – Virginia, US DoD – východ, US DoD – střed, Německo – střed, Německo – sever, Čína – východ, Čína – východ 2. Navštivte prosím [dostupné produkty v jednotlivých oblastech](https://azure.microsoft.com/global-infrastructure/services/) pro obecnou dostupnost.
 >
+
+> [!NOTE]
+> Tato funkce je dostupná ve všech oblastech Azure, ve kterém je nasazená – Azure Database for MySQL pro servery pro obecné účely a optimalizovaný pro paměť.
 
 ## <a name="set-up-threat-detection"></a>Nastavení detekce hrozeb
 1. Spuštění webu Azure portal na [ https://portal.azure.com ](https://portal.azure.com).

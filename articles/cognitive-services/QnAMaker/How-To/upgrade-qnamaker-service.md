@@ -8,14 +8,14 @@ manager: cgronlun
 ms.service: cognitive-services
 ms.component: qna-maker
 ms.topic: article
-ms.date: 09/12/2018
+ms.date: 01/24/2019
 ms.author: tulasim
-ms.openlocfilehash: 5e5392f04b7894f0fe39a940865035d967c2d19a
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.openlocfilehash: 22320564204b619d4510b3b005dc8ffe7ef5c45e
+ms.sourcegitcommit: 97d0dfb25ac23d07179b804719a454f25d1f0d46
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53629934"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54911400"
 ---
 # <a name="upgrade-your-qna-maker-service"></a>Upgrade služby QnA Maker
 Můžete upgradovat po vytvoření počátečního jednotlivých komponent nástroje QnA Maker. Prohlédněte si podrobnosti o výběr SKU a závislé komponenty [tady](https://aka.ms/qnamaker-docs-capacity).

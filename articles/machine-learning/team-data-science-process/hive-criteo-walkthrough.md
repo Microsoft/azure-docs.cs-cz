@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 11/29/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 777d976133f5b9bb1c97ea678e058f2dc398922d
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: 2c2c06a222f3ac949f8e8e6b4aed1b00c0593b6d
+ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53135810"
+ms.lasthandoff: 01/26/2019
+ms.locfileid: "55080221"
 ---
 # <a name="the-team-data-science-process-in-action---using-an-azure-hdinsight-hadoop-cluster-on-a-1-tb-dataset"></a>Vědecké zpracování týmových dat v akci – pomocí clusteru Azure HDInsight Hadoop na 1 TB datové sady
 
@@ -33,14 +33,14 @@ Každý záznam v této datové sadě obsahuje 40 sloupců:
 * dále 13 sloupce obsahují číselné hodnoty a a
 * posledních 26 jsou zařazené do kategorií sloupce
 
-Sloupce, které jsou anonymní a použijte řadu Výčtový názvy: "Sloupec1" (pro popisek sloupce) do "Col40" (pro poslední sloupec zařazené do kategorií).            
+Sloupce, které jsou anonymní a použijte řadu Výčtový názvy: "Sloupec1" (pro popisek sloupce) do "Col40" (pro poslední sloupec zařazené do kategorií).
 
 Tady je výpisem prvních 20 sloupce vyjádření dva (řádky) z této sestavy:
 
     Col1    Col2    Col3    Col4    Col5    Col6    Col7    Col8    Col9    Col10    Col11    Col12    Col13    Col14    Col15            Col16            Col17            Col18            Col19        Col20
 
-    0       40      42      2       54      3       0       0       2       16      0       1       4448    4       1acfe1ee        1b2ff61f        2e8b2631        6faef306        c6fc10d3    6fcd6dcb           
-    0               24              27      5               0       2       1               3       10064           9a8cb066        7a06385f        417e6103        2170fc56        acf676aa    6fcd6dcb                      
+    0       40      42      2       54      3       0       0       2       16      0       1       4448    4       1acfe1ee        1b2ff61f        2e8b2631        6faef306        c6fc10d3    6fcd6dcb
+    0               24              27      5               0       2       1               3       10064           9a8cb066        7a06385f        417e6103        2170fc56        acf676aa    6fcd6dcb
 
 Jsou chybějící hodnoty zařazené do kategorií a číselné sloupce v této datové sadě. Je popsána jednoduchý způsob zpracování chybějících hodnot. Další podrobnosti dat jsou probírány při ukládání do tabulek Hive.
 
@@ -49,23 +49,23 @@ Jsou chybějící hodnoty zařazené do kategorií a číselné sloupce v této 
 ## <a name="mltasks"></a>Příklady úloh predikcí
 V tomto názorném postupu se tak vyřeší dva ukázkové předpovědi problémy:
 
-1. **Binární klasifikace**: předpovídá, jestli uživatel kliknutí na add:
-   
+1. **Binární klasifikace**: Předpovídá, jestli uživatel kliknutí na add:
+
    * Třída 0: Žádné kliknutím
-   * Třídy 1: klikněte na
-2. **Regrese**: předpovídá pravděpodobnost ad kliknutím uživatelské funkce.
+   * Třídy 1: Klikněte na
+2. **Regrese**: Předpovídá pravděpodobnost ad kliknutím uživatelské funkce.
 
 ## <a name="setup"></a>Nastavte si HDInsight Hadoop cluster pro datové vědy
-**Poznámka:** obvykle se jedná **správce** úloh.
+**Poznámka:** Obvykle se jedná **správce** úloh.
 
 Nastavení prostředí Azure pro datové vědy pro vytváření řešení prediktivní analýzy s využitím clusterů HDInsight ve třech krocích:
 
 1. [Vytvoření účtu úložiště](../../storage/common/storage-quickstart-create-account.md): Tento účet úložiště se používá k ukládání dat ve službě Azure Blob Storage. Data používaná v clusterech HDInsight je zde uloženy.
-2. [Přizpůsobení clusterů Azure HDInsight Hadoop pro vědecké zkoumání dat](customize-hadoop-cluster.md): Tento krok vytvoří cluster Azure HDInsight Hadoop s 64bitovým kompilátorem Anaconda Python 2.7 nainstalované na všech uzlech. Existují dva důležité kroky (popsané v tomto tématu) k dokončení při vlastním nastavení clusteru HDInsight.
-   
+2. [Přizpůsobení clusterů Azure HDInsight Hadoop pro vědecké zkoumání dat](customize-hadoop-cluster.md): Tento krok vytvoří cluster s 64bitovým kompilátorem Anaconda Python 2.7 nainstalované na všech uzlech Azure HDInsight Hadoop. Existují dva důležité kroky (popsané v tomto tématu) k dokončení při vlastním nastavení clusteru HDInsight.
+
    * Je třeba propojit účet úložiště vytvořený v kroku 1 s vaším clusterem HDInsight při jeho vytvoření. Tento účet úložiště se používá pro přístup k datům, které mohou být zpracovány v rámci clusteru.
    * Po vytvoření je nutné povolit vzdálený přístup k hlavnímu uzlu clusteru. Pamatovat přihlašovací údaje vzdáleného přístupu, které zadáte tady (liší od zadaného clusteru při jeho vytváření): budete potřebovat následující postup.
-3. [Vytvořit pracovní prostor služby Azure ML](../studio/create-workspace.md): pracovní prostor tento Azure Machine Learning je určená k vytváření modelů strojového učení po počáteční zkoumání a dolů vzorkování v clusteru HDInsight.
+3. [Vytvoření pracovního prostoru Azure Machine Learning studio](../studio/create-workspace.md): Tento pracovní prostor Azure Machine Learning je určená k vytváření modelů strojového učení po počáteční zkoumání a dolů vzorkování v clusteru HDInsight.
 
 ## <a name="getdata"></a>Získání a využívat data z veřejné zdroje
 [Criteo](http://labs.criteo.com/downloads/download-terabyte-click-logs/) datová sada je přístupná, klikněte na odkaz, přijetí podmínek použití a poskytnutí názvu. Jak to vypadá snímku je znázorněna zde:
@@ -74,10 +74,10 @@ Nastavení prostředí Azure pro datové vědy pro vytváření řešení predik
 
 Klikněte na tlačítko **pokračovat ke stažení** Další informace o datové sady a jeho dostupnosti.
 
-Data se nachází ve veřejném [úložiště objektů blob v Azure](../../storage/blobs/storage-dotnet-how-to-use-blobs.md) umístění: wasb://criteo@azuremlsampleexperiments.blob.core.windows.net/raw/. "wasb" odkazuje na umístění úložiště objektů Blob v Azure. 
+Data se nachází ve veřejném [úložiště objektů blob v Azure](../../storage/blobs/storage-dotnet-how-to-use-blobs.md) umístění: wasb://criteo@azuremlsampleexperiments.blob.core.windows.net/raw/. "wasb" odkazuje na umístění úložiště objektů Blob v Azure.
 
 1. Data v této veřejné blob storage se skládá z tři podsložky rozzipovaný data.
-   
+
    1. Podsložky *raw nebo count/* obsahuje první 21 dnů dat – denně\_00 den\_20
    2. Podsložky *nezpracované/trénování/* se skládá z jednoho dne dat, den\_21
    3. Podsložky *nezpracované/testovací/* se skládá ze dvou dnů dat, den\_22 a den\_23
@@ -103,11 +103,11 @@ K vytvoření tabulky Hive pro datovou sadu Criteo, otevřete ***příkazového 
 
 > [!NOTE]
 > Spustit všechny příkazy Hive v tomto názorném postupu z koše Hive / directory řádku. To se postará o případné problémy cestu automaticky. Můžete využít podmínky "Hive directory řádku", "Hive bin / directory řádku" a "příkazového řádku Hadoopu" Zaměnitelně.
-> 
+>
 > [!NOTE]
 > Ke spuštění libovolného dotazu Hive, jeden vždy použijte následující příkazy:
-> 
-> 
+>
+>
 
         cd %hive_home%\bin
         hive
@@ -157,14 +157,14 @@ Tyto tabulky jsou externí, takže můžete jednoduše přejděte na jejich umí
 
 **Ke spuštění dotazu Hive v ANY dvěma způsoby:**
 
-1. **Použití Hivu REPL příkazového řádku**: první je vydat příkaz "hive" a zkopírujte a vložte dotaz na podregistr REPL příkazového řádku. Provedete to udělat:
-   
+1. **Použití Hive REPL příkazového řádku**: První je vydat příkaz "hive" a zkopírujte a vložte dotaz na podregistr REPL příkazového řádku. Provedete to udělat:
+
         cd %hive_home%\bin
         hive
-   
+
      Teď v REPL příkazového řádku, vyjmutí a vložení dotazu jej provede.
-2. **Ukládání dotazů do souboru a provádění příkazu**: druhým je uložit do souboru .hql dotazy ([ukázka&#95;hive&#95;vytvořit&#95;criteo&#95;databáze&#95;a&#95;tables.hql](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/DataScienceProcess/DataScienceScripts/sample_hive_create_criteo_database_and_tables.hql)) a potom vydat příkaz k provedení dotazu:
-   
+2. **Ukládání dotazů do souboru a provádění příkazu**: Druhým je uložit do souboru .hql dotazy ([ukázka&#95;hive&#95;vytvořit&#95;criteo&#95;databáze&#95;a&#95;tables.hql](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/DataScienceProcess/DataScienceScripts/sample_hive_create_criteo_database_and_tables.hql)) a potom vydat příkaz k provedení dotazu:
+
         hive -f C:\temp\sample_hive_create_criteo_database_and_tables.hql
 
 ### <a name="confirm-database-and-table-creation"></a>Ověřte vytvoření databáze a tabulky
@@ -294,7 +294,7 @@ To poskytuje:
         1.0     2.1418600917169246      2.1418600917169246    6.21887086390288 27.53454893115633       65535.0
         Time taken: 564.953 seconds, Fetched: 1 row(s)
 
-Distribuce percentily úzce souvisí s histogram distribuce jakékoli číselné proměnné obvykle.         
+Distribuce percentily úzce souvisí s histogram distribuce jakékoli číselné proměnné obvykle.
 
 ### <a name="find-number-of-unique-values-for-some-categorical-columns-in-the-train-dataset"></a>Zjistit počet jedinečných hodnot pro některé zařazené do kategorií sloupců v datové sadě trénování
 Pokračování zkoumání dat, najdete, pro některé sloupce zařazené do kategorií počtem jedinečných hodnot, které přebírají. Chcete-li to provést, zobrazit obsah [ukázka&#95;hive&#95;criteo&#95;jedinečný&#95;hodnoty&#95;categoricals.hql](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/DataScienceProcess/DataScienceScripts/sample_hive_criteo_unique_values_categoricals.hql):
@@ -435,12 +435,12 @@ Pro **Import dat** modulu, hodnoty parametrů, které jsou k dispozici na obráz
 
 1. Zvolte možnost "Dotaz Hive" pro **zdroj dat**
 2. V **databázový dotaz Hive** pole jednoduchý příkaz SELECT * FROM < váš\_databáze\_name.your\_tabulky\_název >-je dostatečná.
-3. **Identifikátor URI serveru Hcatalog**: Pokud je váš cluster "abc", pak toto je jednoduše: https://abc.azurehdinsight.net
-4. **Název uživatelského účtu systému Hadoop**: uživatelské jméno zvolené při uvedení do provozu clusteru. (Nikoli vzdáleného přístupu uživatele název!)
-5. **Heslo uživatelského účtu systému Hadoop**: heslo pro uživatelské jméno zvolené při uvedení do provozu clusteru. (Ne heslo vzdáleného přístupu.)
+3. **Identifikátor URI serveru Hcatalog**: Pokud je váš cluster "abc", je to jednoduše: https://abc.azurehdinsight.net
+4. **Název uživatelského účtu systému Hadoop**: Uživatelské jméno zvolené při uvedení do provozu clusteru. (Nikoli vzdáleného přístupu uživatele název!)
+5. **Heslo uživatelského účtu systému Hadoop**: Heslo pro uživatelské jméno zvolené při uvedení do provozu clusteru. (Ne heslo vzdáleného přístupu.)
 6. **Umístění výstupních dat**: Zvolte možnost "Azure"
-7. **Název účtu služby Azure storage**: účet úložiště, které jsou přidružené ke clusteru
-8. **Klíč účtu úložiště Azure**: klíč účtu úložiště přidruženého clusteru.
+7. **Název účtu služby Azure storage**: Účet úložiště, které jsou přidružené ke clusteru
+8. **Klíč účtu úložiště Azure**: Klíč účtu úložiště přidruženého clusteru.
 9. **Název kontejneru Azure**: Pokud je název clusteru "abc", pak toto je jednoduše "abc", obvykle.
 
 Jednou **Import dat** dokončení získání dat (vidíte zelené značky na modul), uložit tato data jako datovou sadu (s názvem podle vašeho výběru). Jak to vypadá:
@@ -455,11 +455,11 @@ Vyberte uloženou datovou sadu pro použití v experimentu machine learning, vyh
 
 > [!NOTE]
 > To lze proveďte trénování a datových sad testů. Nezapomeňte použít název databáze a názvy tabulek, které jste zadali pro tento účel. Hodnoty použité na obrázku jsou pouze pro ilustraci purposes.* *
-> 
-> 
+>
+>
 
 ### <a name="step2"></a> Krok 2: Vytvoření jednoduchého experimentu v Azure Machine Learning k predikci kliknutí / žádné kliknutí
-Náš Azure ML experiment vypadá takto:
+Náš Azure Machine Learning studio experiment vypadá takto:
 
 ![Experimentu služby Machine Learning](./media/hive-criteo-walkthrough/xRpVfrY.png)
 
@@ -481,9 +481,9 @@ Chcete-li vytvářet funkce count, použijte **sestavení počítání transform
 ![Vlastnosti modulu počítání transformace sestavení](./media/hive-criteo-walkthrough/e0eqKtZ.png)
 ![modul sestavení počítání transformace](./media/hive-criteo-walkthrough/OdDN0vw.png)
 
-> [!IMPORTANT] 
+> [!IMPORTANT]
 > V **počet sloupců** zadejte sloupce, které chcete provádět počty. Ty jsou obvykle (jak je uvedeno) vysokým počtem rozměrů zařazené do kategorií sloupce. Mějte na paměti, že datová sada Criteo má 26 zařazené do kategorií sloupce: z Col15 k Col40. Tady, Spolehněte se na všechny z nich a umožňují jejich indexy (z 15 na 40 oddělených čárkami, jak je znázorněno).
-> 
+>
 
 Pokud chcete použít modul v režimu MapReduce (vhodné pro velké datové sady), potřebujete přístup ke clusteru HDInsight Hadoop (jaký se používá pro zkoumání funkcí lze opětovně použít pro tento účel také) a přihlašovací údaje. Předchozí obrázky znázorňují jaké vyplněné hodnoty vypadat (Nahraďte hodnoty ilustrativní s těmi, které jsou relevantní pro vlastní případy použití).
 
@@ -535,7 +535,7 @@ Tento výpis ukazuje, že u sloupců na můžete získat počtů a protokolovat 
 
 Teď jste připravení sestavit model ve službě Azure Machine Learning pomocí těchto transformovaných datových sad. V další části ukazuje, jak to lze provést.
 
-### <a name="step3"></a> Krok 3: Vytvoření, trénování a modul score model
+### <a name="step3"></a> Krok 3: Vytváření, trénování a modul score model
 
 #### <a name="choice-of-learner"></a>Volba learner
 Nejprve musíte zvolit learner. Použijte jako naše learner dvěma třídami posíleného rozhodovacího stromu. Tady jsou výchozí možnosti pro tento learner:
@@ -588,8 +588,8 @@ Jako ID nultého krok protože je velký počet tabulka, trvat pár řádků tes
 
 > [!NOTE]
 > Pro vstupní data formátu, použijte výstup **počet Featurizer** modulu. Jakmile to dokončí spouštění experimentovat, uložte si výstup z **počet Featurizer** modul jako datovou sadu. Tato datová sada se používá pro vstupní data v webové služby.
-> 
-> 
+>
+>
 
 #### <a name="scoring-experiment-for-publishing-webservice"></a>Vyhodnocování experimentu pro publikování webové služby
 Nejprve se zobrazí, jak to vypadá. Základní struktura je **Score Model** modul, který přijímá naše trénovaného modelu objektu a vstupních dat, které byly generovány v předchozích krocích pomocí pár řádků **počet Featurizer** modulu. Do projektu si Scored popisky a skóre pravděpodobnosti pomocí "Výběr sloupců v datové sadě".

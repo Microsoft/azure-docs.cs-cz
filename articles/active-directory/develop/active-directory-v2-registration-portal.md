@@ -8,7 +8,7 @@ manager: mtillman
 editor: ''
 ms.assetid: f0507c28-9464-4d3e-bd53-de9053fd5278
 ms.service: active-directory
-ms.component: develop
+ms.subservice: develop
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -17,12 +17,12 @@ ms.date: 08/28/2018
 ms.author: celested
 ms.reviewer: lenalepa
 ms.custom: aaddev
-ms.openlocfilehash: 0a9ec2e84197729f98fbf90bac53b505a8c99a19
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.openlocfilehash: 5484f939cfc3e1187f282251fdc181a13af275b4
+ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52427324"
+ms.lasthandoff: 01/26/2019
+ms.locfileid: "55080646"
 ---
 # <a name="app-registration-reference"></a>Reference k registraci aplikací
 Tento dokument poskytuje kontext a popisy různých funkcí najdete v [portál pro registraci aplikací](https://apps.dev.microsoft.com/?referrer=https://azure.microsoft.com/).

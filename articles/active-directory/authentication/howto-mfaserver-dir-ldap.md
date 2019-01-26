@@ -3,19 +3,19 @@ title: Ověřování pomocí protokolu LDAP a Azure MFA Server | Dokumentace Mic
 description: Nasazení ověřování pomocí protokolu LDAP a Azure Multi-Factor Authentication Server.
 services: multi-factor-authentication
 ms.service: active-directory
-ms.component: authentication
+ms.subservice: authentication
 ms.topic: conceptual
 ms.date: 07/11/2018
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
-ms.openlocfilehash: 2b8843ef365873c153ca1e4ec2f4f5d3fe06e992
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: 7eac79f52df780c7e3e4ea4505cb119a79661da8
+ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54430309"
+ms.lasthandoff: 01/26/2019
+ms.locfileid: "55075088"
 ---
 # <a name="ldap-authentication-and-azure-multi-factor-authentication-server"></a>Ověřování pomocí protokolu LDAP a ověřování Azure Multi-Factor Authentication Server
 

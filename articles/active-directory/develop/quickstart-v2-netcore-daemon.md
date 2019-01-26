@@ -13,15 +13,15 @@ ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 11/28/2018
+ms.date: 1/11/2019
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 3e5e364e9c3327e9d666a9a3096573267d0e1983
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: 22486bf507d5b40521fceabd7569728c45beae3d
+ms.sourcegitcommit: 97d0dfb25ac23d07179b804719a454f25d1f0d46
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53727604"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54911757"
 ---
 # <a name="quickstart-acquire-a-token-and-call-microsoft-graph-api-from-a-console-app-using-apps-identity"></a>Rychlý start: Získání tokenu a volat Microsoft Graph API z konzoly aplikace pomocí identity aplikace
 
@@ -44,13 +44,13 @@ Tento rychlý start vyžaduje [.NET Core 2.1](https://www.microsoft.com/net/down
 > * [Express] [Možnost 1: Registrace a automaticky konfigurovat svoji aplikaci a pak si stáhnout ukázku kódu](#option-1-register-and-auto-configure-your-app-and-then-download-your-code-sample)
 > * [Ruční] [Možnost 2: Registraci a ručně konfiguraci vaší aplikace a ukázku kódu](#option-2-register-and-manually-configure-your-application-and-code-sample)
 >
-> ### <a name="option-1-register-and-auto-configure-your-app-and-then-download-your-code-sample"></a>Možnost 1: Registrace a automaticky konfigurovat svoji aplikaci a pak si stáhnout ukázku kódu
+> ### <a name="option-1-register-and-auto-configure-your-app-and-then-download-your-code-sample"></a>Option 1: Registrace a automaticky konfigurovat svoji aplikaci a pak si stáhnout ukázku kódu
 >
 > 1. Přejděte na [Azure Portal – Registrace aplikace (Preview)](https://portal.azure.com/?Microsoft_AAD_RegisteredApps=true#blade/Microsoft_AAD_RegisteredApps/applicationsListBlade/quickStartType/DotNetCoreDaemonQuickstartPage/sourceType/docs).
 > 1. Zadejte název vaší aplikace a Vyberte **Zaregistrovat**.
 > 1. Postupujte podle pokynů ke stažení a automatické konfiguraci nové aplikace jedním kliknutím.
 >
-> ### <a name="option-2-register-and-manually-configure-your-application-and-code-sample"></a>Možnost 2: Registraci a ručně konfiguraci vaší aplikace a ukázku kódu
+> ### <a name="option-2-register-and-manually-configure-your-application-and-code-sample"></a>Option 2: Registraci a ručně konfiguraci vaší aplikace a ukázku kódu
 
 > [!div renderon="docs"]
 > #### <a name="step-1-register-your-application"></a>Krok 1: Registrace vaší aplikace
@@ -107,7 +107,7 @@ Tento rychlý start vyžaduje [.NET Core 2.1](https://www.microsoft.com/net/down
     
 #### <a name="step-4-admin-consent"></a>Krok 4: Souhlas správce
 
-Žádné *oprávnění jen pro aplikace* vyžaduje souhlas správce – to znamená, že potřebuje globální správce adresáře, čímž udělíte souhlas pro vaši aplikaci. Vyberte jednu z možností níže podle vaší roli:
+Pokud se pokusíte spustit aplikaci v tomto okamžiku, zobrazí se *HTTP 403 – Zakázáno* Chyba: `Insufficient privileges to complete the operation`. K tomu dojde, protože všechny *oprávnění jen pro aplikace* vyžaduje souhlas správce, což znamená, že globální správce adresáře musí udělit souhlas pro vaši aplikaci. Vyberte jednu z možností níže podle vaší roli:
 
 ##### <a name="global-tenant-administrator"></a>Správcem globálního tenanta
 
@@ -149,6 +149,9 @@ dotnet run
 
 Zobrazí se seznam uživatelů v adresáři služby Azure AD jako výsledek.
 
+> [!IMPORTANT]
+> Tato aplikace rychlý start používá tajný kód klienta identifikuje jako důvěrnému klientovi. Protože tajný kód klienta se přidá jako prostého textu do souborů projektu, z bezpečnostních důvodů se doporučuje použití certifikátu místo tajného klíče klienta předtím, než aplikace jako produkční aplikace. Další informace o tom, jak používat certifikát, najdete v části [tyto pokyny](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-v2/#variation-daemon-application-using-client-credentials-with-certificates) v úložišti GitHub pro tuto ukázku.
+
 ## <a name="more-information"></a>Další informace
 
 ### <a name="msalnet"></a>MSAL.NET
@@ -158,7 +161,13 @@ MSAL ([Microsoft.Identity.Client](https://www.nuget.org/packages/Microsoft.Ident
  Spuštěním následujícího příkazu v sadě Visual Studio můžete nainstalovat MSAL.NET **Konzola správce balíčků**:
 
 ```powershell
-Install-Package Microsoft.Identity.Client -Pre
+Install-Package Microsoft.Identity.Client
+```
+
+Případně pokud nepoužíváte Visual Studio, spustíte následující příkaz pro přidání MSAL do projektu:
+
+```console
+dotnet add package Microsoft.Identity.Client
 ```
 
 ### <a name="msal-initialization"></a>Inicializace knihovny MSAL

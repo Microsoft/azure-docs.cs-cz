@@ -8,14 +8,14 @@ manager: cgronlun
 ms.service: cognitive-services
 ms.component: qna-maker
 ms.topic: quickstart
-ms.date: 11/06/2018
+ms.date: 01/24/2019
 ms.author: diberry
-ms.openlocfilehash: 423413d07b0c84b5d9461cef37c95f41c112764c
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: 79af48636bd8bb0a94a39efb49de8cdc07aa6bf6
+ms.sourcegitcommit: 97d0dfb25ac23d07179b804719a454f25d1f0d46
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53249684"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54912962"
 ---
 # <a name="quickstart-create-a-knowledge-base-in-qna-maker-using-python"></a>Rychlý start: Vytvoření znalostní báze v nástroje QnA Maker pomocí Pythonu
 

@@ -4,13 +4,13 @@ Services: machine learningu ms.service: ms.component strojového učení: studio
 
 Autor: ericlicoding ms.author: amlstudiodocs ms.custom: seodec18 ms.date: 11/29/2017
 ---
-# <a name="import-data-into-azure-machine-learning-studio-from-online-data-sources"></a>Import dat do Azure Machine Learning Studio z online zdrojů dat 
+# <a name="import-data-into-azure-machine-learning-studio-from-online-data-sources"></a>Import dat do Azure Machine Learning Studio z online zdrojů dat
 Tento článek popisuje podporu pro import online data z různých zdrojů a informace potřebné k přesunu dat z těchto zdrojů do Azure Machine Learning Studio experimentovat.
 
 > [!NOTE]
 > Tento článek obsahuje obecné informace o [Import dat] [ import-data] modulu. Podrobné informace o typech dat můžete přistupovat, formátů, parametry a odpovědi na běžné dotazy, naleznete v tématu referenční modulu pro [Import dat] [ import-data] modulu.
-> 
-> 
+>
+>
 
 ## <a name="introduction"></a>Úvod
 S použitím [Import dat] [ import-data] modul, můžete přístup k datům z jednoho z několika zdrojů dat online spuštěného experimentu [Azure Machine Learning Studio](https://studio.azureml.net/Home):
@@ -29,14 +29,14 @@ Chcete-li získat přístup k online zdroje dat v experimentu Studio, přidejte 
 Mějte na paměti, protože tento trénovacích dat se přistupuje během spuštění experimentu, je dostupná jenom v testu. Naproti tomu data, která jsou uložená v modulu datové sady jsou k dispozici žádné experimentu do pracovního prostoru.
 
 > [!IMPORTANT]
-> V současné době [Import dat] [ import-data] a [exportovat Data] [ export-data] může číst a zapisovat data pouze z úložiště Azure, které jsou vytvořeny pomocí klasického moduly model nasazení. Jinými slovy nový typ účtu úložiště objektů Blob v Azure, která nabízí úroveň přístupu horkého úložiště nebo studené úrovni přístupu úložiště zatím nepodporuje. 
-> 
-> Obecně platí, žádné účty úložiště Azure může mít vytvořené předtím, než tuto možnost služby jsou dostupné by neměly být ovlivněny. 
-> Pokud je potřeba vytvořit nový účet, vyberte **Classic** pro nasazení modelu, nebo použijte Resource manager a vyberte **Obecné** spíše než **úložiště objektů Blob** pro  **Druh účtu**. 
-> 
+> V současné době [Import dat] [ import-data] a [exportovat Data] [ export-data] může číst a zapisovat data pouze z úložiště Azure, které jsou vytvořeny pomocí klasického moduly model nasazení. Jinými slovy nový typ účtu úložiště objektů Blob v Azure, která nabízí úroveň přístupu horkého úložiště nebo studené úrovni přístupu úložiště zatím nepodporuje.
+>
+> Obecně platí, žádné účty úložiště Azure může mít vytvořené předtím, než tuto možnost služby jsou dostupné by neměly být ovlivněny.
+> Pokud je potřeba vytvořit nový účet, vyberte **Classic** pro nasazení modelu, nebo použijte Resource manager a vyberte **Obecné** spíše než **úložiště objektů Blob** pro  **Druh účtu**.
+>
 > Další informace najdete v tématu [Azure Blob Storage: Horká a studená úroveň úložiště](../../storage/blobs/storage-blob-storage-tiers.md).
-> 
-> 
+>
+>
 
 ## <a name="supported-online-data-sources"></a>Podporované zdroje dat online
 Azure Machine Learning **Import dat** modul podporuje následující zdroje dat:
@@ -53,7 +53,7 @@ Azure Machine Learning **Import dat** modul podporuje následující zdroje dat:
 
 ## <a name="next-steps"></a>Další postup
 
-[Nasazení webové služby Azure ML, používajících moduly Import dat a Export dat](web-services-that-use-import-export-modules.md)
+[Nasazení webové služby Azure Machine Learning studio, používající importu a exportu dat modulů](web-services-that-use-import-export-modules.md)
 
 
 <!-- Module References -->

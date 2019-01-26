@@ -17,12 +17,12 @@ ms.workload: infrastructure
 ms.date: 04/20/2018
 ms.author: jdial
 ms.custom: ''
-ms.openlocfilehash: 89ace5901012c5bc66a560dafd3a403183d6ce8c
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: 81bbf2b69e0e492ea75e8cbbe980d7e83a86eae7
+ms.sourcegitcommit: 97d0dfb25ac23d07179b804719a454f25d1f0d46
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54422826"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54912846"
 ---
 # <a name="diagnose-a-virtual-machine-network-routing-problem---azure-powershell"></a>Diagnostika potíží se virtuální počítač sítě směrováním – Azure PowerShell
 
@@ -127,7 +127,7 @@ Name State  Source  AddressPrefix           NextHopType NextHopIpAddress
      Active Default {172.16.0.0/12}         None        {}              
 ```
 
-Jak je vidět ve výstupu předchozí, trasa **AaddressPrefix** z **0.0.0.0/0** směruje veškerý provoz není určený pro adresy v rozsahu předpon adres jiné trasy s dalším segmentem směrování **Internet**. Jak je vidět také ve výstupu, i když je výchozí trasu k předponě 172.16.0.0/12, která zahrnuje 172.31.0.100 adresu, **nextHopType** je **žádný**. Azure vytváří výchozí trasu do 172.16.0.0/12, ale neurčuje typ dalšího směrování, dokud k tomu není důvod. Pokud například přidáte 172.16.0.0/12 rozsah adres do adresního prostoru virtuální sítě, Azure změní **nextHopType** k **virtuální síť** trasy. Pak by zobrazil kontrolu **virtuální síť** jako **nextHopType**.
+Jak je vidět ve výstupu předchozí, trasa **AddressPrefix** z **0.0.0.0/0** směruje veškerý provoz není určený pro adresy v rozsahu předpon adres jiné trasy s dalším segmentem směrování **Internet**. Jak je vidět také ve výstupu, i když je výchozí trasu k předponě 172.16.0.0/12, která zahrnuje 172.31.0.100 adresu, **nextHopType** je **žádný**. Azure vytváří výchozí trasu do 172.16.0.0/12, ale neurčuje typ dalšího směrování, dokud k tomu není důvod. Pokud například přidáte 172.16.0.0/12 rozsah adres do adresního prostoru virtuální sítě, Azure změní **nextHopType** k **virtuální síť** trasy. Pak by zobrazil kontrolu **virtuální síť** jako **nextHopType**.
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 

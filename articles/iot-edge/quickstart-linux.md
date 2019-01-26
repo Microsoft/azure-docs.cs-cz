@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc, seodec18
-ms.openlocfilehash: dcfbc014eaa191c7992a2da195f9bcd10b44194f
-ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
+ms.openlocfilehash: ccaf87828036721c7416e3a85b23053043cc24ed
+ms.sourcegitcommit: 97d0dfb25ac23d07179b804719a454f25d1f0d46
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54191475"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54913215"
 ---
 # <a name="quickstart-deploy-your-first-iot-edge-module-to-a-linux-x64-device"></a>Rychlý start: Nasazení prvního modulu IoT Edge k Linuxovému x64 zařízení
 
@@ -104,7 +104,7 @@ Protože zařízení IoT Edge se chovají a lze je spravovat jinak než typické
    az iot hub device-identity show-connection-string --device-id myEdgeDevice --hub-name {hub_name}
    ```
 
-3. Zkopírujte připojovací řetězec z výstupu JSON a uložte ho. Tuto hodnotu použijete ke konfiguraci modulu runtime IoT Edge v další části.
+3. Zkopírujte hodnotu `cs` klíče z výstupu JSON a uložte ho. Tato hodnota je připojovací řetězec zařízení. Tento připojovací řetězec budete používat ke konfiguraci modulu runtime IoT Edge v další části.
 
    ![Načtení připojovacího řetězce z výstupu rozhraní příkazového řádku](./media/quickstart/retrieve-connection-string.png)
 

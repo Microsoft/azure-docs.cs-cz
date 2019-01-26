@@ -8,14 +8,14 @@ manager: cgronlun
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
-ms.date: 02/21/2018
+ms.date: 01/23/2019
 ms.author: diberry
-ms.openlocfilehash: 4cac20cb44c2400e44ff2ca0939b1537f0b20734
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: dd5b35a4a1a5baccf367d1d6d521bac05d40e6df
+ms.sourcegitcommit: 97d0dfb25ac23d07179b804719a454f25d1f0d46
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53727178"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54913321"
 ---
 # <a name="use-a-list-entity-to-increase-entity-detection"></a>Zvyšte zjišťování entit pomocí seznamu entit 
 Tento kurz ukazuje použití [seznam entit](luis-concept-entity-types.md) zvýšit zjišťování entit. Seznam entit není nutné popisek, protože jde o přesnou shodu podmínek.  

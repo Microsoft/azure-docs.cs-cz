@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 manager: timlt
-ms.openlocfilehash: 6a6782c5e1cd7b5f42b619cd52470b640813a905
-ms.sourcegitcommit: f057c10ae4f26a768e97f2cb3f3faca9ed23ff1b
+ms.openlocfilehash: afa4b3861e9fb7f91fd9f5d540353c5fad23efe0
+ms.sourcegitcommit: 97d0dfb25ac23d07179b804719a454f25d1f0d46
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/17/2018
-ms.locfileid: "42061303"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54913610"
 ---
 # <a name="how-to-do-proof-of-possession-for-x509-ca-certificates-with-your-device-provisioning-service"></a>Postup ověření vlastnictví pro certifikáty webu X.509 s vaší služby Device Provisioning Service
 
@@ -54,7 +54,7 @@ Teď, budete muset přihlásit *ověřovací kód* s privátním klíčem přidr
 Společnost Microsoft poskytuje nástroje a ukázky, které vám pomůžou vytvořit certifikát podepsaný držitelem ověření: 
 
 - **Azure IoT Hub C SDK** poskytuje Powershellu (Windows) a skripty Bash (Linux), vám pomůže vytvořit certifikační Autority a listové certifikáty pro vývoj a provádět testování vlastnictví pomocí ověřovacího kódu. Si můžete stáhnout [soubory](https://github.com/Azure/azure-iot-sdk-c/tree/master/tools/CACertificates) relevantní pro váš systém pracovní složky a postupujte podle pokynů [readme certifikáty certifikační Autority Správa](https://github.com/Azure/azure-iot-sdk-c/blob/master/tools/CACertificates/CACertificateOverview.md) k provedení ověření vlastnictví certifikátu certifikační Autority. 
-- **SDK Azure IoT Hub C#** obsahuje [Ukázka ověření certifikátu skupiny](https://github.com/Azure/azure-iot-sdk-csharp/tree/master/provisioning/service/samples/GroupCertificateVerificationSample), které můžete provést ověření vlastnictví.
+- **SDK Azure IoT Hub C#** obsahuje [Ukázka ověření certifikátu skupiny](https://github.com/Azure-Samples/azure-iot-samples-csharp/tree/master/provisioning/Samples/service/GroupCertificateVerificationSample), které můžete provést ověření vlastnictví.
  
 > [!IMPORTANT]
 > Kromě provádění důkaz vlastnictví, skripty prostředí PowerShell a Bash uvedeném dříve také umožňují vytvářet kořenových certifikátů zprostředkující certifikáty a listové certifikáty, které slouží k ověřování a zřizování zařízení. Tyto certifikáty by měla sloužit pouze pro vývoj. Jejich byste nikdy neměli používat v produkčním prostředí. 

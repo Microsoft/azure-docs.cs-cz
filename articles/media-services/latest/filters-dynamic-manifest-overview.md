@@ -11,14 +11,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: ne
 ms.topic: article
-ms.date: 12/20/2018
+ms.date: 01/24/2019
 ms.author: juliako
-ms.openlocfilehash: 7dc2136fe6ee28da0583ebdb2b2749ddf1c37049
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: 5b666551ed47852fe8653fff174589acc4bff348
+ms.sourcegitcommit: 97d0dfb25ac23d07179b804719a454f25d1f0d46
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53728036"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54912029"
 ---
 # <a name="filters-and-dynamic-manifests"></a>Filtrů a dynamických manifestů
 
@@ -47,7 +47,7 @@ V následující tabulce jsou uvedeny příklady adresy URL s filtry:
 |Protocol (Protokol)|Příklad:|
 |---|---|
 |HLS V4|`http://testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest(format=m3u8-aapl,filter=myAccountFilter)`|
-|HLS VERZE 3|`http://testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest(format=m3u8-aapl-v3,filter=myAccountFilter)`|
+|HLS V3|`http://testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest(format=m3u8-aapl-v3,filter=myAccountFilter)`|
 |MPEG DASH|`http://testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest(format=mpd-time-csf,filter=myAssetFilter)`|
 |Technologie Smooth Streaming|`http://testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest(filter=myAssetFilter)`|
 
@@ -113,7 +113,7 @@ Následující vlastnosti použít k popisu filtry.
 |Název|Popis|
 |---|---|
 |firstQuality|První přenosové rychlosti kvality filtru.|
-|PresentationTimeRange|Prezentace časový rozsah. Tato vlastnost se používá k filtrování manifestu počáteční nebo koncové body, délka okna prezentace a živé počáteční pozice. <br/>Další informace najdete v tématu [PresentationTimeRange](#PresentationTimeRange).|
+|presentationTimeRange|Prezentace časový rozsah. Tato vlastnost se používá k filtrování manifestu počáteční nebo koncové body, délka okna prezentace a živé počáteční pozice. <br/>Další informace najdete v tématu [PresentationTimeRange](#PresentationTimeRange).|
 |stop|Podmínky výběr stopy. Další informace najdete v tématu [stopy](#tracks)|
 
 ### <a name="presentationtimerange"></a>PresentationTimeRange
@@ -124,10 +124,10 @@ Pomocí této vlastnosti se **Asset filtry**. Nedoporučuje se nastavit vlastnos
 |---|---|
 |**endTimestamp**|Hranice absolutní koncový čas. Vztahuje se na Video na vyžádání (VoD). Pro živou prezentaci je tiše ignorováno a použít jakmile skončí prezentace a datový proud změní videa na vyžádání.<br/><br/>Hodnota představuje absolutní koncového bodu datového proudu. Získá zaokrouhlí na nejbližší další GOP Start.<br/><br/>Použití StartTimestamp a EndTimestamp k oříznutí seznamu testů (manifest). Například StartTimestamp = 40000000 a EndTimestamp = 100000000 vygeneruje seznam testů, který obsahuje média mezi StartTimestamp a EndTimestamp. Pokud fragment přechází na hranici, bude celý fragment součástí manifestu.<br/><br/>Další informace naleznete **forceEndTimestamp** definice, který následuje.|
 |**forceEndTimestamp**|Platí pro živá filtry.<br/><br/>**forceEndTimestamp** je logická hodnota, která určuje, zda je či není **endTimestamp** byl nastaven na platnou hodnotu. <br/><br/>Pokud je hodnota **true**, **endTimestamp** je třeba zadat hodnotu. Pokud není zadán, je vrácena chybnou žádost.<br/><br/>Pokud například chcete definovat filtr, který začíná na 5 minut na vstupním videu a má platnost až do konce datového proudu, nastavíte **forceEndTimestamp** na hodnotu false a vynechat, nechte nastavení **endTimestamp**.|
-|**liveBackoffDuration**|Platí pouze pro živé. Vlastnost se používá k definování přehrávání živé pozice. Pomocí tohoto pravidla, můžete zpoždění přehrávání živé pozice a vytvořit vyrovnávací paměti na straně serveru pro hráče. LiveBackoffDuration je relativní vzhledem k živé pozice. Maximální omezení rychlosti za provozu doba trvání je 60 sekund.|
-|**presentationWindowDuration**|Platí pro živá. Použití **presentationWindowDuration** použít posuvné okno k zobrazení seznamu stop. Například nastavte presentationWindowDuration = 1200000000 použít dvouminutového posuvného okna. Média během 2 minut za provozu edge se zahrne seznam stop. Pokud fragment přechází na hranici, bude celý fragment součástí seznamu stop. Doba trvání okna minimální prezentace je 120 sekund.|
+|**liveBackoffDuration**|Platí pouze pro živé. Vlastnost se používá k definování přehrávání živé pozice. Pomocí tohoto pravidla, můžete zpoždění přehrávání živé pozice a vytvořit vyrovnávací paměti na straně serveru pro hráče. LiveBackoffDuration je relativní vzhledem k živé pozice. Maximální omezení rychlosti za provozu doba trvání je 300 sekund.|
+|**presentationWindowDuration**|Platí pro živá. Použití **presentationWindowDuration** použít posuvné okno k zobrazení seznamu stop. Například nastavte presentationWindowDuration = 1200000000 použít dvouminutového posuvného okna. Média během 2 minut za provozu edge se zahrne seznam stop. Pokud fragment přechází na hranici, bude celý fragment součástí seznamu stop. Doba trvání okna minimální prezentace je 60 sekund.|
 |**startTimestamp**|Vztahuje se na videa na vyžádání a živé streamy. Hodnota reprezentuje absolutní počáteční bod datového proudu. Získá hodnotu zaokrouhlí na nejbližší další GOP Start.<br/><br/>Použití **startTimestamp** a **endTimestamp** k oříznutí seznamu testů (manifest). Například startTimestamp = 40000000 a endTimestamp = 100000000 vygeneruje seznam testů, který obsahuje média mezi StartTimestamp a EndTimestamp. Pokud fragment přechází na hranici, bude celý fragment součástí manifestu.|
-|**Časová osa**|Vztahuje se na videa na vyžádání a živé streamy. Časové měřítko používat časová razítka a doby trvání výše uvedené. Výchozí časové osy je 10000000. Dá se alternativní časový rámec. Výchozí hodnota je 10000000 HNS (stovek nanosekund).|
+|**timescale**|Vztahuje se na videa na vyžádání a živé streamy. Časové měřítko používat časová razítka a doby trvání výše uvedené. Výchozí časové osy je 10000000. Dá se alternativní časový rámec. Výchozí hodnota je 10000000 HNS (stovek nanosekund).|
 
 ### <a name="tracks"></a>stop
 
@@ -137,7 +137,7 @@ Podmínky pro vlastnost sledování filtru popisují typy stop, hodnoty (popsan�
 
 |Název|Popis|
 |---|---|
-|**S přenosovou rychlostí**|Použijte přenosové rychlosti jeden směr určený pro filtrování.<br/><br/>Doporučená hodnota je rozsah přenosových rychlostí v bitech za sekundu. Například "0-2427000".<br/><br/>Poznámka: když konkrétní s přenosovou rychlostí s hodnotou, jako třeba částku 250 000 jedné (bity za sekundu), můžete použít tento přístup se nedoporučuje, protože přesné přenosových rychlostí může kolísat z jednoho prostředku do jiného.|
+|**Bitrate**|Použijte přenosové rychlosti jeden směr určený pro filtrování.<br/><br/>Doporučená hodnota je rozsah přenosových rychlostí v bitech za sekundu. Například "0-2427000".<br/><br/>Poznámka: když konkrétní s přenosovou rychlostí s hodnotou, jako třeba částku 250 000 jedné (bity za sekundu), můžete použít tento přístup se nedoporučuje, protože přesné přenosových rychlostí může kolísat z jednoho prostředku do jiného.|
 |**FourCC**|Použijte hodnotu FourCC jeden směr určený pro filtrování.<br/><br/>Hodnota je první prvek kodeky formát, jak je uvedeno v [RFC 6381](https://tools.ietf.org/html/rfc6381). V současné době jsou podporovány následující kodeky: <br/>Video: "Avc1", "hev1", "hvc1"<br/>Pro zvuk: "Mp4a", "ES-3"<br/><br/>Chcete-li zjistit hodnoty FourCC sleduje v prostředku, [získat a zkontrolujte soubor manifestu](#get-and-examine-manifest-files).|
 |**Jazyk**|Použijte jazyk jeden směr určený pro filtrování.<br/><br/>Hodnota je značka jazyka, které chcete zahrnout jako uvedené v RFC 5646. Například "en".|
 |**Název**|Použijte název jeden směr určený pro filtrování.|

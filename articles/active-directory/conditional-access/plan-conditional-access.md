@@ -6,18 +6,18 @@ author: MarkusVi
 manager: daveba
 tags: azuread
 ms.service: active-directory
-ms.component: conditional-access
+ms.subservice: conditional-access
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 12/13/2018
+ms.date: 01/25/2019
 ms.author: markvi
 ms.reviewer: martincoetzer
-ms.openlocfilehash: 1911dd189e21a6d29b2bf1ba3d179b41e948f469
-ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
+ms.openlocfilehash: ca0dfcd9b776b6aea052e2569f9a5aec3ae50eca
+ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54450503"
+ms.lasthandoff: 01/26/2019
+ms.locfileid: "55081020"
 ---
 # <a name="how-to-plan-your-conditional-access-deployment-in-azure-active-directory"></a>Jak: Plánování nasazení podmíněného přístupu v Azure Active Directory
 
@@ -32,7 +32,7 @@ Pokud potřebujete další funkce, může být také potřeba získat souvisejí
 
 Existují dva typy zásad podmíněného přístupu: standardní hodnoty a standard. A [základní zásady](baseline-protection.md) je zásada předdefinované podmíněného přístupu. Cílem těchto zásad je Ujistěte se, že máte alespoň o úroveň standardních hodnot zabezpečení povoleno. Zásady na směrný plán. Zásady na směrný plán jsou k dispozici ve všech edicích služby Azure AD a poskytují jenom omezené přizpůsobení možností. Pokud scénář vyžaduje větší flexibilitu, zakažte základní zásady a implementace ve vlastních zásadách pro standardní vašim požadavkům.
 
-V zásady standardní podmíněného přístupu můžete k přizpůsobení všech nastavení můžete změnit zásady tak, aby vaše obchodní požadavky. Standardní zásady vyžaduje licenci Azure AD Premium P1.
+V zásadách standardní podmíněného přístupu můžete upravit všechna nastavení, chcete-li upravit zásady tak, aby vaše obchodní požadavky. Standardní zásady vyžaduje licenci Azure AD Premium P1.
 
 
 
@@ -54,9 +54,9 @@ Následující příklad šablony můžete vytvářet zásady podmíněného př
 
 |Když *to* se stane:|Proveďte *to*:|
 |-|-|
-|Je proveden pokus o přístup:<br>– Pokud chcete cloudovou aplikaci*<br>– uživatelé a skupiny*<br>Použití:<br>-Podmínka 1 (například mimo podnikovou sítí)<br>-Podmínka 2 (například riziko přihlášení)|Blokovat přístup k aplikaci|
-|Je proveden pokus o přístup:<br>– Pokud chcete cloudovou aplikaci*<br>– uživatelé a skupiny*<br>Použití:<br>-Podmínka 1 (například mimo podnikovou sítí)<br>-Podmínka 2 (například riziko přihlášení)|Udělení přístupu s (a):<br>-Požadavek 1 (například vícefaktorové ověřování)<br>-Požadavek 2 (například dodržování předpisů zařízením)|
-|Je proveden pokus o přístup:<br>– Pokud chcete cloudovou aplikaci*<br>– uživatelé a skupiny*<br>Použití:<br>-Podmínka 1 (například mimo podnikovou sítí)<br>-Podmínka 2 (například riziko přihlášení)|Udělení přístupu s (nebo):<br>-Požadavek 1 (například vícefaktorové ověřování)<br>-Požadavek 2 (například dodržování předpisů zařízením)|
+|Je proveden pokus o přístup:<br>– Pokud chcete cloudovou aplikaci*<br>– uživatelé a skupiny*<br>Použití:<br>-Podmínka 1 (například mimo podnikovou sítí)<br>-Podmínka 2 (například zařízení platformy)|Blokovat přístup k aplikaci|
+|Je proveden pokus o přístup:<br>– Pokud chcete cloudovou aplikaci*<br>– uživatelé a skupiny*<br>Použití:<br>-Podmínka 1 (například mimo podnikovou sítí)<br>-Podmínka 2 (například zařízení platformy)|Udělení přístupu s (a):<br>-Požadavek 1 (například vícefaktorové ověřování)<br>-Požadavek 2 (například dodržování předpisů zařízením)|
+|Je proveden pokus o přístup:<br>– Pokud chcete cloudovou aplikaci*<br>– uživatelé a skupiny*<br>Použití:<br>-Podmínka 1 (například mimo podnikovou sítí)<br>-Podmínka 2 (například zařízení platformy)|Udělení přístupu s (nebo):<br>-Požadavek 1 (například vícefaktorové ověřování)<br>-Požadavek 2 (například dodržování předpisů zařízením)|
 
 Minimálně **v takovém případě** definuje objekt zabezpečení (**kdo**), který se pokouší získat přístup k Cloudová aplikace (**co**). Pokud třeba, můžete použít také **jak** Probíhá pokus o přístup. Podmíněného přístupu, elementy, které definují kdo, co a jak jsou označovány jako podmínky. Další informace najdete v tématu [jaké jsou podmínky podmíněného přístupu Azure Active Directory?](conditions.md) 
 
@@ -70,28 +70,42 @@ Kombinace podmínek a řízení přístupu představuje zásadu podmíněného p
 
 Další informace najdete v tématu [co potřebná k tomu, aby zásada pracovní](best-practices.md#whats-required-to-make-a-policy-work).
 
-V tomto okamžiku má je vhodná doba při rozhodování o standardní pojmenování pro vaše zásady. Standardní pojmenování vám pomůže najít zásady a pochopit jejich účel, aniž byste museli otevírat v portálu pro správu Azure. Byste měli pojmenovat zásadu zobrazit:
+V tomto okamžiku je vhodná doba při rozhodování o standardní pojmenování pro vaše zásady. Standardní pojmenování vám pomůže najít zásady a pochopit jejich účel, aniž byste museli otevírat v portálu pro správu Azure. Byste měli pojmenovat zásadu zobrazit:
 
 - Pořadové číslo
 - Cloudové aplikace, které platí pro
 - Odpověď
 - Kdo se vztahuje na
-- Když se vztahuje 
+- Když se vztahuje (Pokud je k dispozici)
  
 ![Standardní pojmenování](./media/plan-conditional-access/11.png)
 
-
+Zatímco popisný název pomáhá udržovat přehled o vaší implementace podmíněného přístupu, pořadové číslo je užitečné, pokud potřebujete odkazovat na zásadu v konverzaci. Například pokud komunikaci ostatními správce po telefonu, můžete požádat ho, aby spustit nástroj Zásady EM063 vyřešit nějaký problém.
 
 
 
 Například následující název uvádí, že zásady vyžadují vícefaktorové ověřování pro uživatele na externí sítě pomocí aplikace Dynamics CRP marketingu:
 
-`CA01-Dynamics CRP: Require MFA For marketing When on external networks`
+`CA01 - Dynamics CRP: Require MFA For marketing When on external networks`
 
 
-Kromě aktivních zásad, měli byste také implementovat zakázané zásady, které fungují jako sekundární [řízení přístupu na odolná ve scénářích výpadek/nouzovou](../authentication/concept-resilient-controls.md). Vaše standardní pojmenování by měl také obsahovat tento účel, aby bylo snazší povolit během výpadku. Příklad:
+Kromě aktivní zásady, doporučuje se také implementovat zakázané zásady, které se chovají jako sekundární [řízení přístupu na odolná ve scénářích výpadek/nouzovou](../authentication/concept-resilient-controls.md). Vaše standardní pojmenování pro pohotovostní zásad by měl obsahovat několik více položek: 
 
-`EM01-Finance app: Require MFA For Sales When on untrusted network`
+- `ENABLE IN EMERGENCY` na začátku vytvořit název odlišit se jiné zásady.
+
+- Název přerušení, který se má použít.
+
+- Pořadí číslo sekvence k asistenci správci vědět, v jakém pořadí by měly být povolené zásady. 
+
+
+Například následující název označuje, že tato zásada je první zásady mimo čtyři, které byste měli povolit v případě přerušení vícefaktorové ověřování:
+
+`EM01 - ENABLE IN EMERGENCY, MFA Disruption[1/4] - Exchange SharePoint: Require hybrid Azure AD join For VIP users`
+
+
+
+
+
 
 
 ## <a name="plan-policies"></a>Zásady plánu
@@ -123,7 +137,7 @@ Běžné případy použití vyžádáte vícefaktorové ověřování, jsou př
 
 ### <a name="respond-to-potentially-compromised-accounts"></a>Reakce na potenciálně ohrožených účtů
 
-Pomocí podmíněného přístupu zásady, můžete implementovat automatické odpovědi k přihlášení z potenciálně napadeného identit. Pravděpodobnost, že je účet ohrožené je vyjádřena v podobě úrovně rizika. Existují dvě úrovně rizika počítá služba identity protection: rizika přihlášení a uživatelského rizika. K implementaci odpověď na rizika přihlášení, máte dvě možnosti:
+Díky zásadám podmíněného přístupu můžete implementovat automatické odpovědi k přihlášení z potenciálně napadeného identit. Pravděpodobnost, že je účet ohrožené je vyjádřena v podobě úrovně rizika. Existují dvě úrovně rizika počítá služba identity protection: rizika přihlášení a uživatelského rizika. K implementaci odpověď na rizika přihlášení, máte dvě možnosti:
 
 - [Podmínka rizika přihlašování](conditions.md#sign-in-risk) v zásadách podmíněného přístupu
 - [Zásady rizik přihlašování](../identity-protection/howto-sign-in-risk-policy.md) ve službě identity protection 
@@ -214,7 +228,7 @@ Teď, když jste nakonfigurovali zásady podmíněného přístupu, pravděpodob
 
 Spouštění testovacích případů podle plánu testování. V tomto kroku budete procházet začátku do konce testu každé zásady pro vaše testovací uživatele, abyste měli jistotu, že každá zásada pracuje správně. Použijte scénáře k provedení každého testu vytvořili výše.
 
-Je důležité zajistit, aby že testovací kritéria vyloučení zásady. Například může vyloučit uživatele nebo skupinu na základě zásady, které vyžadují vícefaktorové ověřování. Proto byste otestovat Pokud vyloučení uživatelé se výzva pro vícefaktorové ověřování, protože spojení jiných zásad může vyžadovat vícefaktorové ověřování pro tyto uživatele.
+Je důležité zajistit, aby že testovací kritéria vyloučení zásady. Například může vyloučit uživatele nebo skupiny z zásady, které vyžadují vícefaktorové ověřování. Proto byste otestovat Pokud vyloučení uživatelé se výzva pro vícefaktorové ověřování, protože spojení jiných zásad může vyžadovat vícefaktorové ověřování pro tyto uživatele.
 
 
 ### <a name="cleanup"></a>Vyčištění
@@ -232,7 +246,7 @@ Postup vyčištění se skládá z následujících kroků:
 
 ## <a name="move-to-production"></a>Přejít do produkčního prostředí
 
-Jakmile budete připraveni k nasazení nových zásad do vašeho prostředí, byste měli udělat ve fázích:
+Jakmile jsou připravené pro vaše prostředí nové zásady, nasaďte je do fáze::
 
 - Koncovým uživatelům poskytovat změnit interní komunikace.
 

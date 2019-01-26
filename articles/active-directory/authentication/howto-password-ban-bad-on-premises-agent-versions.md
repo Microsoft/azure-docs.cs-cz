@@ -3,19 +3,19 @@ title: Místní historie vydaných verzí agenta ochrany pro hesla Azure AD
 description: Historii změn pro vydání verze dokumentů a chování
 services: active-directory
 ms.service: active-directory
-ms.component: authentication
+ms.subservice: authentication
 ms.topic: article
 ms.date: 11/01/2018
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jsimmons
-ms.openlocfilehash: 1d27aa46148e0169909a7aaf05baaac18b050a34
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: ccfe62e0002e3420303130840f1a0d393efb3420
+ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54423659"
+ms.lasthandoff: 01/26/2019
+ms.locfileid: "55078759"
 ---
 # <a name="preview--azure-ad-password-protection-agent-version-history"></a>Verze Preview:  Azure AD hesla protection agent verze historie
 

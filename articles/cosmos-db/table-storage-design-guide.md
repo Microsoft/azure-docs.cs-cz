@@ -8,12 +8,12 @@ ms.date: 12/07/2018
 author: wmengmsft
 ms.author: wmeng
 ms.custom: seodec18
-ms.openlocfilehash: 5b418f28cb8cb48d8c9ee369289c899c7f6525bc
-ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
+ms.openlocfilehash: bb759c0b21287f8198f2f4e0dac10020a3b31d62
+ms.sourcegitcommit: 97d0dfb25ac23d07179b804719a454f25d1f0d46
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54331958"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54913593"
 ---
 # <a name="azure-storage-table-design-guide-designing-scalable-and-performant-tables"></a>Průvodce návrhem tabulky Azure Storage: Návrh škálovatelných a výkonných tabulek
 
@@ -252,7 +252,7 @@ Služba Table service automaticky indexuje entit pomocí **PartitionKey** a **Ro
 
 ### <a name="sorting-data-in-the-table-service"></a>Řazení dat ve službě Table service
 
-Výsledky dotazu jsou seřazené ve vzestupném pořadí podle **PartitionKey** a potom podle **RowKey**.
+Vrácené služby Table service výsledky dotazu jsou seřazené ve vzestupném pořadí podle **PartitionKey** a potom podle **RowKey**.
 
 > [!NOTE]
 > Výsledky dotazu vrácená rozhraním API tabulky Azure v Azure Cosmso DB nejsou seřazené podle klíče oddílu a klíče řádku. Podrobný seznam rozdílů funkcí najdete v tématu [rozdíly mezi rozhraní Table API ve službě Azure Cosmos DB a Azure Table storage](faq.md#where-is-table-api-not-identical-with-azure-table-storage-behavior).

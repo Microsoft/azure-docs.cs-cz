@@ -11,12 +11,12 @@ ms.component: core
 ms.topic: conceptual
 ms.date: 01/08/2019
 ms.custom: seodec18
-ms.openlocfilehash: 865d00d4a6608e422fdfca1297962913ee205827
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: 5bb9bfdc90c18ff044e73a61aaff9e95bdf28d25
+ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54823432"
+ms.lasthandoff: 01/26/2019
+ms.locfileid: "55081615"
 ---
 # <a name="configure-automated-machine-learning-experiments"></a>Konfigurace automatizovaného se strojovým učením
 
@@ -35,7 +35,7 @@ Možnosti konfigurace je k dispozici ve službě automatizované machine learnin
 * Registrace a nasazení modelu
 
 ## <a name="select-your-experiment-type"></a>Vyberte typ testu
-Než začnete experimentu, byste měli určit druh machine learning problému jsou řešení. Automatizované machine learning podporuje typy úloh klasifikace, regrese a Prognózování. 
+Než začnete experimentu, byste měli určit druh machine learning problému jsou řešení. Automatizované machine learning podporuje typy úloh klasifikace, regrese a Prognózování.
 
 Technologie automatizovaného strojového učení, které jsou obecně dostupné, **Prognózování je stále ve verzi public preview.**
 
@@ -59,7 +59,7 @@ Klasifikace | Regrese | Prognózování
 ## <a name="data-source-and-format"></a>Zdroj dat a formát
 Automatizované machine learning podporuje data, která se nachází v místním počítači nebo v cloudu, jako je Azure Blob Storage. Data lze načíst do scikit-informace podporovaných datových formátů. Můžete číst data do:
 * Pole Numpy X (funkce) a y (Cílová proměnná nebo také popis)
-* Pandas dataframe 
+* Pandas dataframe
 
 Příklady:
 
@@ -67,7 +67,7 @@ Příklady:
 
     ```python
     digits = datasets.load_digits()
-    X_digits = digits.data 
+    X_digits = digits.data
     y_digits = digits.target
     ```
 
@@ -75,9 +75,9 @@ Příklady:
 
     ```python
     import pandas as pd
-    df = pd.read_csv("https://automldemods.blob.core.windows.net/datasets/PlayaEvents2016,_1.6MB,_3.4k-rows.cleaned.2.tsv", delimiter="\t", quotechar='"') 
-    # get integer labels 
-    df = df.drop(["Label"], axis=1) 
+    df = pd.read_csv("https://automldemods.blob.core.windows.net/datasets/PlayaEvents2016,_1.6MB,_3.4k-rows.cleaned.2.tsv", delimiter="\t", quotechar='"')
+    # get integer labels
+    df = df.drop(["Label"], axis=1)
     df_train, _, y_train, _ = train_test_split(df, y, test_size=0.1, random_state=42)
     ```
 
@@ -88,18 +88,18 @@ Pokud používáte vzdálený výpočetní ke spuštění experimentu, načítá
 Tady je příklad `get_data`:
 
 ```python
-%%writefile $project_folder/get_data.py 
-import pandas as pd 
-from sklearn.model_selection import train_test_split 
-from sklearn.preprocessing import LabelEncoder 
-def get_data(): # Burning man 2016 data 
-    df = pd.read_csv("https://automldemods.blob.core.windows.net/datasets/PlayaEvents2016,_1.6MB,_3.4k-rows.cleaned.2.tsv", delimiter="\t", quotechar='"') 
-    # get integer labels 
-    le = LabelEncoder() 
-    le.fit(df["Label"].values) 
-    y = le.transform(df["Label"].values) 
-    df = df.drop(["Label"], axis=1) 
-    df_train, _, y_train, _ = train_test_split(df, y, test_size=0.1, random_state=42) 
+%%writefile $project_folder/get_data.py
+import pandas as pd
+from sklearn.model_selection import train_test_split
+from sklearn.preprocessing import LabelEncoder
+def get_data(): # Burning man 2016 data
+    df = pd.read_csv("https://automldemods.blob.core.windows.net/datasets/PlayaEvents2016,_1.6MB,_3.4k-rows.cleaned.2.tsv", delimiter="\t", quotechar='"')
+    # get integer labels
+    le = LabelEncoder()
+    le.fit(df["Label"].values)
+    y = le.transform(df["Label"].values)
+    df = df.drop(["Label"], axis=1)
+    df_train, _, y_train, _ = train_test_split(df, y, test_size=0.1, random_state=42)
     return { "X" : df, "y" : y }
 ```
 
@@ -117,7 +117,7 @@ X | Pandas Dataframe nebo Numpy pole | data_train, popisek, sloupce |  Všechny 
 Y | Pandas Dataframe nebo Numpy pole |   label   | Popisek dat pro trénování s. Pro klasifikaci by měl být pole celých čísel.
 X_valid | Pandas Dataframe nebo Numpy pole   | data_train, popisek | _Volitelné_ všechny funkce má provést ověření. Pokud není zadán, X je rozdělená mezi trénování a ověření
 y_valid |   Pandas Dataframe nebo Numpy pole | data_train, popisek | _Volitelné_ popisku dat má provést ověření. Pokud není zadán, y je rozdělená mezi trénování a ověření
-sample_weight | Pandas Dataframe nebo Numpy pole |   data_train, popisek, sloupce| _Volitelné_ váženou hodnotu pro každý vzorek. Používá se, když chcete přiřadit různé váhy na základě datových bodů 
+sample_weight | Pandas Dataframe nebo Numpy pole |   data_train, popisek, sloupce| _Volitelné_ váženou hodnotu pro každý vzorek. Používá se, když chcete přiřadit různé váhy na základě datových bodů
 sample_weight_valid | Pandas Dataframe nebo Numpy pole | data_train, popisek, sloupce |    _Volitelné_ váženou hodnotu pro každý vzorek ověření. Pokud není zadán, sample_weight je rozdělená mezi trénování a ověření
 data_train |    Pandas Dataframe |  X, y, X_valid, y_valid |    Všechna data (funkce a popisek), tak moct trénovat s
 label | řetězec  | X, y, X_valid, y_valid |  Představuje sloupec v data_train popisek
@@ -136,7 +136,8 @@ Automatizované se strojovým učením podporuje načítání dat a transformace
 >* Filtrování
 >* Vlastních transformací Pythonu
 
-Další informace o datech přípravu sdk naleznete [postup přípravy dat pro modelování článku](how-to-load-data.md). Tady je příklad, načítání dat pomocí sady sdk pro data přípravu. 
+Další informace o datech přípravu sdk naleznete [postup přípravy dat pro modelování článku](how-to-load-data.md).
+Tady je příklad, načítání dat pomocí sady sdk pro data přípravu.
 ```python
 # The data referenced here was pulled from `sklearn.datasets.load_digits()`.
 simple_example_data_root = 'https://dprepdata.blob.core.windows.net/automl-notebook-data/'
@@ -189,7 +190,7 @@ Možné příklady:
         primary_metric='AUC_weighted',
         max_time_sec=12000,
         iterations=50,
-        X=X, 
+        X=X,
         y=y,
         n_cross_validations=2)
     ```
@@ -201,7 +202,7 @@ Možné příklady:
         max_time_sec=600,
         iterations=100,
         primary_metric='r2_score',
-        X=X, 
+        X=X,
         y=y,
         n_cross_validations=5)
     ````
@@ -223,7 +224,7 @@ Vlastnost |  Popis | Výchozí hodnota
 `enable_cache`  | True nebo False <br/>Nastavení tuto hodnotu na True umožňuje předzpracování provádí jednou a opakované použití stejné předzpracovaná data pro všechny iterace. | True |
 `blacklist_models`  | Automatizované experimentu strojového učení a má mnoho různých algoritmů, které se pokusí. Konfigurace vyloučení určitých algoritmů z experimentu. Je užitečné, pokud jste si vědomi, že algoritmy nefungují dobře u datové sady. S výjimkou algoritmů můžete ušetřit vám výpočetní prostředky a školení čas.<br/>Povolené hodnoty pro klasifikaci<br/><li>LogisticRegression</li><li>SGD</li><li>MultinomialNaiveBayes</li><li>BernoulliNaiveBayes</li><li>SVM</li><li>LinearSVM</li><li>KNN</li><li>DecisionTree</li><li>RandomForest</li><li>ExtremeRandomTrees</li><li>LightGBM</li><li>GradientBoosting</li><li>TensorFlowDNN</li><li>TensorFlowLinearClassifier</li><br/>Povolené hodnoty pro regresní<br/><li>ElasticNet</li><li>GradientBoosting</li><li>DecisionTree</li><li>KNN</li><li>LassoLars</li><li>SGD </li><li>RandomForest</li><li>ExtremeRandomTree</li><li>LightGBM</li><li>TensorFlowLinearRegressor</li><li>TensorFlowDNN</li></li><br/>Povolené hodnoty pro prognózování<br/><li>ElasticNet</li><li>GradientBoosting</li><li>DecisionTree</li><li>KNN</li><li>LassoLars</li><li>SGD </li><li>RandomForest</li><li>ExtremeRandomTree</li><li>LightGBM</li><li>TensorFlowLinearRegressor</li><li>TensorFlowDNN</li></li>|   Žádný
 `whitelist_models`  | Automatizované experimentu strojového učení a má mnoho různých algoritmů, které se pokusí. Konfigurace zahrnují určitých algoritmů pro experiment. Je užitečné, pokud jste si vědomi, že algoritmy fungují dobře u datové sady. <br/>Povolené hodnoty pro klasifikaci<br/><li>LogisticRegression</li><li>SGD</li><li>MultinomialNaiveBayes</li><li>BernoulliNaiveBayes</li><li>SVM</li><li>LinearSVM</li><li>KNN</li><li>DecisionTree</li><li>RandomForest</li><li>ExtremeRandomTrees</li><li>LightGBM</li><li>GradientBoosting</li><li>TensorFlowDNN</li><li>TensorFlowLinearClassifier</li><br/>Povolené hodnoty pro regresní<br/><li>ElasticNet</li><li>GradientBoosting</li><li>DecisionTree</li><li>KNN</li><li>LassoLars</li><li>SGD </li><li>RandomForest</li><li>ExtremeRandomTree</li><li>LightGBM</li><li>TensorFlowLinearRegressor</li><li>TensorFlowDNN</li></li><br/>Povolené hodnoty pro prognózování<br/><li>ElasticNet</li><li>GradientBoosting</li><li>DecisionTree</li><li>KNN</li><li>LassoLars</li><li>SGD </li><li>RandomForest</li><li>ExtremeRandomTree</li><li>LightGBM</li><li>TensorFlowLinearRegressor</li><li>TensorFlowDNN</li></li>|  Žádný
-`verbosity` |Určuje úroveň protokolování s informacemi, které se nejvíce podrobné a kritické přičemž nejmenší. Úroveň podrobností má stejné hodnoty, jak jsou definovány v protokolování balíček pythonu. Povolené hodnoty jsou:<br/><li>logging.INFO</li><li>protokolování. UPOZORNĚNÍ</li><li>protokolování. CHYBA</li><li>protokolování. KRITICKÁ</li>  | logging.INFO</li> 
+`verbosity` |Určuje úroveň protokolování s informacemi, které se nejvíce podrobné a kritické přičemž nejmenší. Úroveň podrobností má stejné hodnoty, jak jsou definovány v protokolování balíček pythonu. Povolené hodnoty jsou:<br/><li>logging.INFO</li><li>protokolování. UPOZORNĚNÍ</li><li>protokolování. CHYBA</li><li>protokolování. KRITICKÁ</li>  | logging.INFO</li>
 `X` | Všechny funkce k trénování s |  Žádný
 `y` |   Popisek dat pro trénování s. Pro klasifikaci by měl být pole celých čísel.|  Žádný
 `X_valid`|_Volitelné_ všechny funkce má provést ověření. Pokud není zadán, X je rozdělená mezi trénování a ověření |   Žádný
@@ -233,7 +234,7 @@ Vlastnost |  Popis | Výchozí hodnota
 `run_configuration` |   RunConfiguration objektu.  Používá pro vzdálené spuštění. |Žádný
 `data_script`  |    Cesta k souboru, který obsahuje metodu get_data.  Vyžaduje se pro vzdálené spuštění.   |Žádný
 `model_explainability` | _Volitelné_ True nebo False <br/>  Hodnota TRUE povolí experimentovat provádět funkce důležitosti pro každou iteraci. Metoda explain_model() konkrétní iteraci slouží také povolit funkci důležitost na vyžádání pro danou iteraci po dokončení testu. | False
-`enable_ensembling`|Příznak pro povolení iterace ensembling po dokončení všech iterací.| True 
+`enable_ensembling`|Příznak pro povolení iterace ensembling po dokončení všech iterací.| True
 `ensemble_iterations`|Počet iterací, během kterých jsme zvolili vybavené kanálu jako součást konečné skupiny stromů.| 15
 `experiment_timeout_minutes`| Omezuje množství času (v minutách), který může mít celý běh experimentu | Žádný
 
@@ -324,20 +325,20 @@ Existují dva způsoby, jak generovat funkci význam.
 
     ```python
     from azureml.train.automl.automlexplainer import explain_model
-    
+
     shap_values, expected_values, overall_summary, overall_imp, per_class_summary, per_class_imp = \
         explain_model(fitted_model, X_train, X_test)
-    
+
     #Overall feature importance
     print(overall_imp)
-    print(overall_summary) 
-    
+    print(overall_summary)
+
     #Class-level feature importance
     print(per_class_imp)
-    print(per_class_summary) 
+    print(per_class_summary)
     ```
 
-*   Chcete-li zobrazit funkci význam pro všechny iterace, nastavte `model_explainability` příznak `True` v AutoMLConfig.  
+*   Chcete-li zobrazit funkci význam pro všechny iterace, nastavte `model_explainability` příznak `True` v AutoMLConfig.
 
     ```python
     automl_config = AutoMLConfig(task = 'classification',
@@ -346,7 +347,7 @@ Existují dva způsoby, jak generovat funkci význam.
                                  max_time_sec = 12000,
                                  iterations = 10,
                                  verbosity = logging.INFO,
-                                 X = X_train, 
+                                 X = X_train,
                                  y = y_train,
                                  X_valid = X_test,
                                  y_valid = y_test,
@@ -358,20 +359,20 @@ Existují dva způsoby, jak generovat funkci význam.
 
     ```python
     from azureml.train.automl.automlexplainer import retrieve_model_explanation
-    
+
     shap_values, expected_values, overall_summary, overall_imp, per_class_summary, per_class_imp = \
         retrieve_model_explanation(best_run)
-    
+
     #Overall feature importance
     print(overall_imp)
-    print(overall_summary) 
-    
+    print(overall_summary)
+
     #Class-level feature importance
     print(per_class_imp)
-    print(per_class_summary) 
+    print(per_class_summary)
     ```
 
-Můžete vizualizovat graf význam funkce ve vašem pracovním prostoru na webu Azure Portal. Grafu se zobrazí také při použití poznámkového bloku Jupyter widgetu. Další informace o grafech najdete [Azure ML ukázkové poznámkové bloky článku.](samples-notebooks.md)
+Můžete vizualizovat graf význam funkce ve vašem pracovním prostoru na webu Azure Portal. Grafu se zobrazí také při použití poznámkového bloku Jupyter widgetu. Další informace o grafech najdete [článku poznámkových bloků ukázka Azure Machine Learning service.](samples-notebooks.md)
 
 ```python
 from azureml.widgets import RunDetails
@@ -383,4 +384,4 @@ RunDetails(local_run).show()
 
 Další informace o [jak a kde nasadit model](how-to-deploy-and-where.md).
 
-Další informace o [trénování modelu klasifikaci pomocí služby machine learning automatizovaná](tutorial-auto-train-models.md) nebo [trénování pomocí automatizované strojového učení na vzdálený prostředek](how-to-auto-train-remote.md). 
+Další informace o [trénování modelu klasifikaci pomocí služby machine learning automatizovaná](tutorial-auto-train-models.md) nebo [trénování pomocí automatizované strojového učení na vzdálený prostředek](how-to-auto-train-remote.md).

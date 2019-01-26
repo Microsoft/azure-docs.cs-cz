@@ -1,21 +1,21 @@
 ---
-title: 'Rychlý start: Spuštění úlohy Spark job v Azure Databricks pomocí webu Azure portal | Dokumentace Microsoftu'
-description: Rychlý start ukazuje, jak pomocí portálu Azure vytvořit pracovní prostor služby Azure Databricks a cluster Apache Spark a spustit úlohu Spark.
+title: 'Rychlý start: Analýza dat v Azure Data Lake Storage Gen2 pomocí Azure Databricks | Dokumentace Microsoftu'
+description: Zjistěte, jak spustit úlohu Spark v Azure Databricks pomocí portálu Azure a účet úložiště Azure Data Lake Storage Gen2.
 services: storage
-author: jamesbak
-ms.author: jamesbak
+author: normesta
+ms.author: normesta
 ms.component: data-lake-storage-gen2
 ms.service: storage
 ms.topic: quickstart
-ms.date: 01/14/2019
-ms.openlocfilehash: 49039e742ebd4354f9a52572ffdc69e95bf7f85e
-ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
+ms.date: 01/24/2019
+ms.openlocfilehash: 268da7b7cc75866b9cdee24467e8370a85adc40d
+ms.sourcegitcommit: 97d0dfb25ac23d07179b804719a454f25d1f0d46
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2019
-ms.locfileid: "54321207"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54912522"
 ---
-# <a name="quickstart-run-a-spark-job-on-azure-databricks-using-the-azure-portal"></a>Rychlý start: Spuštění úlohy Spark job v Azure Databricks pomocí webu Azure portal
+# <a name="quickstart-analyze-data-in-azure-data-lake-storage-gen2-by-using-azure-databricks"></a>Rychlý start: Analýza dat v Azure Data Lake Storage Gen2 pomocí Azure Databricks
 
 V tomto rychlém startu se dozvíte, jak se spouští úloha Apache Spark pomocí Azure Databricks provádět analýzu na datech uložených v účtu úložiště, který má povolenou verzí preview služby Azure Data Lake Storage Gen2.
 
@@ -123,10 +123,10 @@ V této části nejprve vytvoříte v pracovním prostoru Azure Databricks pozn�
 
    ```scala
    spark.conf.set("fs.azure.account.auth.type.<storage-account-name>.dfs.core.windows.net", "OAuth")
-   spark.conf.set("fs.azure.account.oauth.provider.type.<storage-account-name>.dfs.core.windows.net", org.apache.hadoop.fs.azurebfs.oauth2.ClientCredsTokenProvider")
+   spark.conf.set("fs.azure.account.oauth.provider.type.<storage-account-name>.dfs.core.windows.net", "org.apache.hadoop.fs.azurebfs.oauth2.ClientCredsTokenProvider")
    spark.conf.set("fs.azure.account.oauth2.client.id.<storage-account-name>.dfs.core.windows.net", "<application-id>")
    spark.conf.set("fs.azure.account.oauth2.client.secret.<storage-account-name>.dfs.core.windows.net", "<authentication-key>")
-   spark.conf.set("fs.azure.account.oauth2.client.endpoint.<account-name>.dfs.core.windows.net", "https://login.microsoftonline.com/<tenant-id>/oauth2/token")
+   spark.conf.set("fs.azure.account.oauth2.client.endpoint.<storage-account-name>.dfs.core.windows.net", "https://login.microsoftonline.com/<tenant-id>/oauth2/token")
    spark.conf.set("fs.azure.createRemoteFileSystemDuringInitialization", "true")
    dbutils.fs.ls("abfss://<file-system-name>@<storage-account-name>.dfs.core.windows.net/")
    spark.conf.set("fs.azure.createRemoteFileSystemDuringInitialization", "false")

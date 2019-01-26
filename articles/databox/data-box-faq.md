@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: overview
-ms.date: 01/24/2019
+ms.date: 01/25/2019
 ms.author: alkohli
-ms.openlocfilehash: 0f5d51a0e806f132cea94e00e04255bb325cc560
-ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
+ms.openlocfilehash: 6c7dd6ebaf7eebefcdcfa50bbd77ad80f4cda907
+ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/25/2019
-ms.locfileid: "54904518"
+ms.lasthandoff: 01/26/2019
+ms.locfileid: "55077450"
 ---
 # <a name="azure-data-box-frequently-asked-questions"></a>Azure Data Box: Nejčastější dotazy
 
@@ -58,6 +58,9 @@ A. Data Box je podporovaný ve všech oblastech USA, dále v západní Evropě, 
 ### <a name="q-whom-should-i-contact-if-i-encounter-any-issues-with-data-box"></a>Otázka: Na koho se mám obrátit v případě potíží s Data Boxem?
 A. V případě potíží s Data Boxem se prosím [obraťte na podporu Microsoftu](data-box-disk-contact-microsoft-support.md).
 
+### <a name="q-i-have-lost-my-data-box-is-there-a-lost-device-charge"></a>Otázka: Došlo ke ztrátě Moje zařízení Data Box. Platí se za ztracené zařízení?
+A. Ano. Se účtuje poplatek ztracené nebo poškozené zařízení. Tento poplatek se věnuje [stránce s cenami](https://azure.microsoft.com/pricing/details/storage/databox/) a v [produktu podmínkami služby](https://www.microsoft.com/licensing/product-licensing/products).
+
 
 ## <a name="order-device"></a>Objednání zařízení
 
@@ -97,8 +100,8 @@ A.  Objednávka se dá zrušit po objednání zařízení Data Box, dokud není 
 ### <a name="q-can-i-connect-a-data-box-at-the-same-to-multiple-host-computers-to-transfer-data"></a>Otázka: Můžu Data Box současně připojit k více hostitelským počítačům, ze kterých chci přenášet data?
 A. Ano. K zařízení Data Box může být připojených více hostitelských počítačů, ze kterých budete přenášet data, a několik úloh kopírování může běžet současně. Další informace najdete v části [kurzu: Kopírování dat do služby Azure Data Box](data-box-deploy-copy-data.md).
 
-### <a name="q-can-i-connect-to-both-the-10-gbe-interfaces-on-the-data-box-to-transfer-data"></a>Otázka: Můžu se připojit k jak 10 GbE rozhraní na zařízení Data Box pro přenos dat?
-A. Ano. Jak 10 GbE rozhraní se dá propojit na zařízení Data Box pro kopírování dat ve stejnou dobu. Další informace o tom, jak kopírovat data, přejděte na [kurzu: Kopírování dat do služby Azure Data Box](data-box-deploy-copy-data.md).
+### <a name="q-can-i-connect-to-both-the-10-gbe-interfaces-on-the-data-box-to-transfer-data"></a>Otázka: Můžu se připojit k rozhraní 10 GbE na zařízení Data Box pro přenos dat?
+A. Ano. Rozhraní 10 GbE se dá propojit na zařízení Data Box pro kopírování dat ve stejnou dobu. Další informace o tom, jak kopírovat data, přejděte na [kurzu: Kopírování dat do služby Azure Data Box](data-box-deploy-copy-data.md).
 
 <!--### Q. The network interface on my Data Box is not working. What should I do? 
 A. 

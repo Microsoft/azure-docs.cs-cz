@@ -15,12 +15,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: media
 ms.date: 12/18/2018
 ms.author: juliako
-ms.openlocfilehash: 017de43074d4b68c69526ddcc96f98ae826dcd65
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: c9d35841620afa454ffddb5e3022f6160021998e
+ms.sourcegitcommit: 97d0dfb25ac23d07179b804719a454f25d1f0d46
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54808727"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54912380"
 ---
 # <a name="migration-guidance-for-moving-from-media-services-v2-to-v3"></a>Pokyny k migraci pro přechod ze služby Media Services v2 na v3
 
@@ -35,7 +35,7 @@ Pokud máte službu poskytování videí dnes vyvinuté v horní části [starš
 
 ### <a name="api-is-more-approachable"></a>Rozhraní API je více přístupné
 
-*  V3 používá prostor Unified API, který zpřístupňuje funkce pro správu i provoz založené na Azure Resource Manageru. Šablony Azure Resource Manageru je možné vytvořit a nasadit transformací, koncové body streamování, LiveEvents a další.
+*  V3 používá prostor Unified API, který zpřístupňuje funkce pro správu i provoz založené na Azure Resource Manageru. Šablony Azure Resource Manageru je možné vytvořit a nasadit transformací, koncové body streamování, živé události a další.
 * [Otevřete rozhraní API (označuje se také jako Swagger) specifikace](https://aka.ms/ams-v3-rest-sdk) dokumentu.
     Udává schéma pro všechny součásti služby, včetně souborů kódování.
 * Sady SDK jsou dostupné pro [.NET](https://aka.ms/ams-v3-dotnet-ref), .NET Core, [Node.js](https://aka.ms/ams-v3-nodejs-ref), [Python](https://aka.ms/ams-v3-python-ref), [Java](https://aka.ms/ams-v3-java-ref), [Přejít](https://aka.ms/ams-v3-go-ref)a Ruby.
@@ -45,14 +45,14 @@ Pokud máte službu poskytování videí dnes vyvinuté v horní části [starš
 
 * Pro souborové úlohy zpracování můžete adresu URL protokolu HTTP (S) jako vstup.<br/>Není potřeba mít obsah už uložená v Azure, ani je potřeba pro vytvoření prostředků.
 * Zavádí koncepci [transformuje](transforms-jobs-concept.md) pro zpracování úlohy založené na souborech. Transformace je možné vytvářet opakovaně použitelné konfigurace k vytváření šablon Azure Resource Manageru a izolovat zpracování nastavení mezi více odběratelům nebo tenantů.
-* Prostředek může mít [více StreamingLocators](streaming-locators-concept.md) nichž každá má jiné nastavení dynamické balení a dynamického šifrování.
+* Prostředek může mít více [lokátory streamování](streaming-locators-concept.md) nichž každá má jiné nastavení dynamické balení a dynamického šifrování.
 * [Ochrana obsahu](content-key-policy-concept.md) podporuje více klíčových funkcí.
 * Můžete Streamovat živé události, které jsou dlouhé až 24 hodin, pokud informační kanál pomocí služby Media Services pro překódování příspěvek s jednou přenosovou rychlostí do výstupního datového proudu, který má více přenosových rychlostí.
-* Nová s nízkou latencí živé streamování podpory na LiveEvents. Další informace najdete v tématu [latence](live-event-latency.md).
-* Livestream ve verzi Preview podporuje dynamické balení a dynamického šifrování. To umožňuje ochranu obsahu pro balení ve verzi Preview a DASH nebo HLS.
-* LiveOutput je snazší než Program entit v rozhraní API v2. 
+* Nová s nízkou latencí živé streamování podpory na živé události. Další informace najdete v tématu [latence](live-event-latency.md).
+* Živé události ve verzi Preview podporuje dynamické balení a dynamického šifrování. To umožňuje ochranu obsahu pro balení ve verzi Preview a DASH nebo HLS.
+* Živé výstup je snazší než Program entit v rozhraní API v2. 
 * (Zvýšení stability a další podporu zdrojového kodér) Vylepšená podpora RTMP ve službě.
-* Ingestování RTMPS zabezpečené.<br/>Při vytváření Livestream získáte 4 ingestované adresy URL. Ingestování 4 adresy URL jsou téměř identické, mít stejný token streamování (AppId), jenom část čísla portu se liší. Dva z adres URL jsou primární a záložní pro RTMPS.   
+* Ingestování RTMPS zabezpečené.<br/>Při vytváření živá událost se zobrazí 4 ingestované adresy URL. Ingestování 4 adresy URL jsou téměř identické, mít stejný token streamování (AppId), jenom část čísla portu se liší. Dva z adres URL jsou primární a záložní pro RTMPS.   
 * Máte řízení přístupu na základě rolí (RBAC), vaše entity. 
 
 ## <a name="changes-from-v2"></a>Změny z v2
@@ -67,11 +67,11 @@ Pokud máte službu poskytování videí dnes vyvinuté v horní části [starš
 * Klíčů ContentKeys už není entita, je teď součástí StreamingLocator.
 * Event Grid podporu nahradí NotificationEndpoints.
 * Následující entity byly přejmenovány.
-    * JobOutput nahradí úkolů a je teď součástí projektu.
-    * StreamingLocator nahradí Lokátor.
-    * Livestream nahradí kanálu.<br/>LiveEvents fakturace vychází měřiče živý kanál. Další informace najdete v tématu [živého streamování přehled](live-streaming-overview.md#billing) a [ceny](https://azure.microsoft.com/pricing/details/media-services/).
-    * LiveOutput nahradí programu.
-* LiveOutputs není nutné explicitně spustit, spusťte na vytváření a zastavit při odstranění. Programy pracoval odlišně v rozhraních API v2, měly spustit po jeho vytvoření.
+    * Výstup úlohy nahrazuje úkolů a je teď součástí projektu.
+    * Lokátor streamování nahradí Lokátor.
+    * Živé události nahradí kanálu.<br/>Živé události se účtuje podle měřiče živý kanál. Další informace najdete v tématu [živého streamování přehled](live-streaming-overview.md#billing) a [ceny](https://azure.microsoft.com/pricing/details/media-services/).
+    * Živé nahradí výstup programu.
+* Výstupy za provozu není nutné explicitně spustit, spusťte na vytváření a zastavit při odstranění. Programy pracoval odlišně v rozhraních API v2, měly spustit po jeho vytvoření.
 
 ## <a name="feature-gaps-with-respect-to-v2-apis"></a>Funkce mezer s ohledem na rozhraní API v2
 
@@ -84,7 +84,7 @@ Rozhraní API v3 má následující funkce mezer s ohledem na rozhraní API v2. 
     * Překrytí
     * Oříznutí
     * Prvky, které budou miniatur
-* LiveEvents s překódování aktuálně nepodporují břidlicová kurzor umístíte dovnitř datového proudu a ad vkládáním značek pro reklamy prostřednictvím volání rozhraní API. 
+* Živé události s překódování aktuálně nepodporují břidlicová kurzor umístíte dovnitř datového proudu a ad vkládáním značek pro reklamy prostřednictvím volání rozhraní API. 
 
 > [!NOTE]
 > Tento článek (záložky) a zachovat, vyhledávají se aktualizace.
@@ -102,11 +102,11 @@ V následující tabulce jsou uvedeny rozdíly v kódu mezi v2 a v3 pro běžné
 ## <a name="known-issues"></a>Známé problémy
 
 * V současné době nelze použít na webu Azure portal ke správě prostředků v3. Použití [rozhraní REST API](https://aka.ms/ams-v3-rest-sdk), rozhraní příkazového řádku, nebo jeden z podporovaných sad SDK.
-* Potřebujete zřizovat rezervované jednotky médií (použité položky) ve svém účtu k řízení souběžnosti a výkonu vašich úloh, zejména těch, které jsou zahrnující Video nebo zvuk analýzy. Další informace najdete v článku o [škálování zpracování médií](../previous/media-services-scale-media-processing-overview.md). Můžete spravovat pomocí často používané cesty [CLI 2.0 pro Media Services v3](media-reserved-units-cli-how-to.md), použije [webu Azure portal](../previous/media-services-portal-scale-media-processing.md), nebo pomocí[ rozhraní API v2](../previous/media-services-dotnet-encoding-units.md). Potřebujete zřizovat použité položky, ať už jsou pomocí Media Services v2 nebo v3 rozhraní API.
+* Potřebujete zřizovat rezervované jednotky médií (použité položky) ve svém účtu k řízení souběžnosti a výkonu vašich úloh, zejména těch, které jsou zahrnující Video nebo zvuk analýzy. Další informace najdete v článku o [škálování zpracování médií](../previous/media-services-scale-media-processing-overview.md). Můžete spravovat pomocí často používané cesty [CLI 2.0 pro Media Services v3](media-reserved-units-cli-how-to.md), použije [webu Azure portal](../previous/media-services-portal-scale-media-processing.md), nebo pomocí [rozhraní API v2](../previous/media-services-dotnet-encoding-units.md). Potřebujete zřizovat použité položky, ať už jsou pomocí Media Services v2 nebo v3 rozhraní API.
 * Služba Media Services entity vytvořené pomocí v3, které rozhraní API nejde spravovat pomocí rozhraní API v2.  
 * Není doporučeno spravovat entity, které byly vytvořeny s rozhraními API v2 přes rozhraní API v3. Následuje několik příkladů, které usnadňují entity, které ve dvou verzích nekompatibilní rozdíly:   
     * Úlohy a úkoly vytvořené ve verzi v2 není uveden ve verzi 3 nejsou spojeny s transformace. Doporučuje se přepnout na v3 transformace a úlohy. Bude existovat poměrně krátké časové období museli monitorování v2 probíhající úlohy při přepnutí.
-    * Kanály a programy vytvořené pomocí v2 (které jsou mapovány na LiveEvents a LiveOutputs ve verzi 3) nemůže pokračovat, spravován pomocí v3. Doporučuje se přepnout na v3 LiveEvents a LiveOutputs na vhodné zastavit kanál.<br/>V současné době nemůžete migrovat průběžně běžícím kanálům se půjde.  
+    * Kanály a programy vytvořené pomocí v2 (které jsou mapovány na živé události a Live výstupy ve verzi 3) nemůže pokračovat, spravován pomocí v3. Doporučuje se přepnout na v3 živé události a Live výstupů na vhodné zastavit kanál.<br/>V současné době nemůžete migrovat průběžně běžícím kanálům se půjde.  
 
 > [!NOTE]
 > Tato stránka se zachová, a tým Media Services umožňuje další vylepšení rozhraní API v3 se zaměřuje na mezery mezi verzemi.

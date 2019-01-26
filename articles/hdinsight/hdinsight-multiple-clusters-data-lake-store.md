@@ -10,12 +10,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/21/2018
 ms.author: hrasheed
-ms.openlocfilehash: 982e92d02e17aaefe0b197562013704636e3065f
-ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
+ms.openlocfilehash: 0760d850bdc6dab84722f00f1061d53f9b95cfcf
+ms.sourcegitcommit: 97d0dfb25ac23d07179b804719a454f25d1f0d46
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53743694"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54912414"
 ---
 # <a name="use-multiple-hdinsight-clusters-with-an-azure-data-lake-storage-account"></a>Použití více clusterů HDInsight s účtem úložiště Azure Data Lake
 
@@ -37,9 +37,9 @@ Pokud chcete povolit tuto strukturu složek, které bude efektivně využívat c
 
 |Složka  |Oprávnění  |Vlastnící uživatel  |Vlastnící skupina  | Jmenovaný uživatel | Oprávnění pro pojmenovaného uživatele | Pojmenované skupiny | Oprávnění s názvem skupiny |
 |---------|---------|---------|---------|---------|---------|---------|---------|
-|/ | rwxr-x--x  |Správce |Správce  |Instanční objekt |--x  |FINGRP   |r-x         |
-|/Clusters | rwxr-x--x |Správce |Správce |Instanční objekt |--x  |FINGRP |r-x         |
-|/ clustery/finance | rwxr-x--t |Správce |FINGRP  |Instanční objekt |rwx  |-  |-     |
+|/ | rwxr-x--x  |admin |admin  |Instanční objekt |--x  |FINGRP   |r-x         |
+|/Clusters | rwxr-x--x |admin |admin |Instanční objekt |--x  |FINGRP |r-x         |
+|/ clustery/finance | rwxr-x--t |admin |FINGRP  |Instanční objekt |rwx  |-  |-     |
 
 V tabulce
 
@@ -93,5 +93,5 @@ Sada čtení spouštěcích oprávnění k **ostatní** prostřednictvím hierar
 
 ## <a name="see-also"></a>Další informace najdete v tématech
 
-* [Rychlý start: Nastavení clusterů v HDInsight](../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md)
-
+* [Rychlé zprovoznění: Nastavení clusterů v HDInsight](../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md)
+* [Použití Azure Data Lake Storage Gen2 s clustery Azure HDInsight](hdinsight-hadoop-use-data-lake-storage-gen2.md)

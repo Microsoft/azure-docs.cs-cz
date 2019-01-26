@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 06/05/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=alokkirpal, previous-ms.author=alok
-ms.openlocfilehash: de625e7cc394d1b292f9876a1b4cdd3fb0daeaa8
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: 5f43dba09544d870d9cecc8de34abc4f60554104
+ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53134790"
+ms.lasthandoff: 01/26/2019
+ms.locfileid: "55079116"
 ---
 # <a name="machine-learning-anomaly-detection-api"></a>Ve službě Machine Learning rozhraní API pro detekci anomálií
 ## <a name="overview"></a>Přehled
@@ -24,9 +24,9 @@ ms.locfileid: "53134790"
 
 Toto rozhraní API můžete detekovat následující typy anomálních vzorů v datech časové řady:
 
-* **Pozitivní a negativní trendy**: například při monitorování využití paměti ve výpočetním prostředí stoupající trend může být zajímavé může být indikátorem nevracení paměti
-* **Změny dynamických rozsahů hodnot**: například při monitorování výjimky vyvolané v cloudové službě, všechny změny dynamických rozsahů hodnot může znamenat nestabilitu ve službě health service, a
-* **Špičky a poklesy**: například při monitorování počtu chyb přihlášení ve službě nebo počtu rezervací na webu elektronického obchodování, špičky nebo poklesy může znamenat neobvyklé chování.
+* **Pozitivní a negativní trendy**: Například při monitorování využití paměti v computingu stoupající trend může být zajímavé může být indikátorem nevracení paměti
+* **Změny dynamických rozsahů hodnot**: Například při monitorování výjimky vyvolané v cloudové službě, všechny změny dynamických rozsahů hodnot může znamenat nestabilitu ve službě health service, a
+* **Špičky a poklesy**: Například při monitorování počtu chyb přihlášení ve službě nebo počtu rezervací na webu elektronického obchodování, špičky nebo poklesy může znamenat neobvyklé chování.
 
 Tyto detektory machine learning sledovat tyto změny hodnot v průběhu času a zprávy probíhající změny v jejich hodnoty jako anomálií skóre. Nevyžadují ladění ad hoc prahové hodnoty a jejich skóre, které lze použít k řízení míru falešně pozitivních výsledků. Detekce anomálií, rozhraní API je užitečné v několika situacích, jako je sledování služeb díky sledování klíčových ukazatelů výkonu v čase, monitorování využití prostřednictvím metriky, jako je počet hledání, počet kliknutí, monitorování výkonu prostřednictvím počítadla například paměť, procesor, načte soubor, atd. v čase.
 
@@ -36,25 +36,25 @@ Detekce anomálií nabídka obsahuje užitečných nástrojů, které vám pomů
 
 > [!NOTE]
 > Zkuste **řešení přehledů anomálií IT** technologii [toto rozhraní API](https://gallery.cortanaintelligence.com/MachineLearningAPI/Anomaly-Detection-2)
-> 
+>
 <!-- This Solution is no longer available
 > To get this end to end solution deployed to your Azure subscription <a href="https://gallery.cortanaintelligence.com/Solution/Anomaly-Detection-Pre-Configured-Solution-1" target="_blank">**Start here >**</a>
---> 
+-->
 
 ## <a name="api-deployment"></a>Nasazení rozhraní API
-Pokud chcete používat rozhraní API, musíte nasadit na vaše předplatné Azure, kde bude hostovaný jako webové služby Azure Machine Learning.  Udělat z [galerii Azure AI](https://gallery.cortanaintelligence.com/MachineLearningAPI/Anomaly-Detection-2).  To nasadí dvě webové služby Azure ml (a jejich související prostředky) se svým předplatným Azure – jeden pro detekce anomálií pomocí detekce sezónnosti a jednu s vypnutým sezónnosti detekce.  Až se nasazení dokončí, budete moct spravovat vaše rozhraní API z [webové služby Azure ml](https://services.azureml.net/webservices/) stránky.  Z této stránky budete moct najít vaše umístění koncových bodů, klíče rozhraní API, stejně jako ukázkový kód pro volání rozhraní API.  Podrobné pokyny jsou k dispozici [tady](https://docs.microsoft.com/azure/machine-learning/machine-learning-manage-new-webservice).
+Pokud chcete používat rozhraní API, musíte nasadit na vaše předplatné Azure, kde bude hostovaný jako webové služby Azure Machine Learning.  Udělat z [galerii Azure AI](https://gallery.cortanaintelligence.com/MachineLearningAPI/Anomaly-Detection-2).  To nasadí dvě webové služby Azure Machine Learning studio (a jejich související prostředky) se svým předplatným Azure – jeden pro detekce anomálií pomocí detekce sezónnosti a jednu s vypnutým sezónnosti detekce.  Až se nasazení dokončí, budete moct spravovat vaše rozhraní API z [webové služby Azure Machine Learning studio](https://services.azureml.net/webservices/) stránky.  Z této stránky budete moct najít vaše umístění koncových bodů, klíče rozhraní API, stejně jako ukázkový kód pro volání rozhraní API.  Podrobné pokyny jsou k dispozici [tady](https://docs.microsoft.com/azure/machine-learning/machine-learning-manage-new-webservice).
 
 ## <a name="scaling-the-api"></a>Škálování rozhraní API
 Ve výchozím nastavení bude mít nasazení free pro vývoj/testování fakturační plán, který zahrnuje 1 000 transakcí za měsíc a 2 výpočetních hodin za měsíc.  Můžete upgradovat na jiný plán, podle vašich potřeb.  Podrobnosti o cenách za různé plány jsou k dispozici [tady](https://azure.microsoft.com/pricing/details/machine-learning/) v části "Ceny za produkční webové rozhraní API".
 
-## <a name="managing-aml-plans"></a>Správa AML plány 
+## <a name="managing-aml-plans"></a>Správa AML plány
 Můžete spravovat plán [tady](https://services.azureml.net/plans/).  Název plánu bude zakládat na název skupiny prostředků, kterou jste zvolili při nasazování rozhraní API a řetězec, který je jedinečný pro vaše předplatné.  Pokyny o tom, jak upgradovat plán jsou k dispozici [tady](https://docs.microsoft.com/azure/machine-learning/machine-learning-manage-new-webservice) v části "Správa fakturační plány".
 
 ## <a name="api-definition"></a>Definice rozhraní API
 Webová služba poskytuje rozhraní založené na protokolu REST API přes protokol HTTPS, který můžou je využívat různé způsoby, včetně webových nebo mobilních aplikací, R, Python, Excel, atd.  Odeslat data časových řad pro tuto službu prostřednictvím volání rozhraní REST API a spustí kombinaci typů tři anomálií uvedených níže.
 
 ## <a name="calling-the-api"></a>Volání rozhraní API
-Aby bylo možné volat rozhraní API, musíte znát umístění koncového bodu a klíče rozhraní API.  Obě tyto spolu s ukázkový kód pro volání rozhraní API, jsou k dispozici [webové služby Azure ml](https://services.azureml.net/webservices/) stránky.  Přejděte do požadovaného rozhraní API a potom klikněte na kartu "Využívání" je vyhledat.  Všimněte si, že můžete volat rozhraní API jako Swagger rozhraní API (tj. s parametr adresy URL `format=swagger`) nebo jako jiných – rozhraní API Swaggeru (to znamená bez `format` parametr adresy URL).  Vzorový kód používá formátu Swagger.  Níže je příklad žádosti a odpovědi ve formátu bez Swagger.  Tyto příklady jsou ke koncovému bodu sezónnosti.  Koncový bod není sezónnosti je podobné.
+Aby bylo možné volat rozhraní API, musíte znát umístění koncového bodu a klíče rozhraní API.  Obě tyto spolu s ukázkový kód pro volání rozhraní API, jsou k dispozici [webové služby Azure Machine Learning studio](https://services.azureml.net/webservices/) stránky.  Přejděte do požadovaného rozhraní API a potom klikněte na kartu "Využívání" je vyhledat.  Všimněte si, že můžete volat rozhraní API jako Swagger rozhraní API (tj. s parametr adresy URL `format=swagger`) nebo jako jiných – rozhraní API Swaggeru (to znamená bez `format` parametr adresy URL).  Vzorový kód používá formátu Swagger.  Níže je příklad žádosti a odpovědi ve formátu bez Swagger.  Tyto příklady jsou ke koncovému bodu sezónnosti.  Koncový bod není sezónnosti je podobné.
 
 ### <a name="sample-request-body"></a>Ukázkový text žádosti
 Požadavek obsahuje dva objekty: `Inputs` a `GlobalParameters`.  V příkladu níže uvedenou žádost, některé parametry jsou odesílány explicitně některé nikoli (posuňte se dolů zobrazit úplný seznam parametrů pro každý koncový bod).  Parametry, které nejsou explicitně odeslány v žádosti budou používat výchozí hodnoty uvedena níže.
@@ -100,7 +100,8 @@ Všimněte si, že se podíváme `ColumnNames` pole, je nutné zahrnout `details
 
 
 ## <a name="score-api"></a>Rozhraní API skóre
-Rozhraní API skóre se používá pro spuštění detekce anomálií v datech-sezónní časových řad. Rozhraní API spouští řadu detektory anomálií na data a vrátí jejich skóre anomálií. Následující obrázek znázorňuje příklad anomálie, které dokáží detekovat rozhraní API skóre. Toto časové řady má 2 různé úrovně změny a 3 špičky. Červené tečky zobrazit čas, kdy je zjištěna změna úrovně, zatímco černé tečky zobrazit zjištěné provozní špičky.
+Rozhraní API skóre se používá pro spuštění detekce anomálií v datech-sezónní časových řad. Rozhraní API spouští řadu detektory anomálií na data a vrátí jejich skóre anomálií.
+Následující obrázek znázorňuje příklad anomálie, které dokáží detekovat rozhraní API skóre. Toto časové řady má 2 různé úrovně změny a 3 špičky. Červené tečky zobrazit čas, kdy je zjištěna změna úrovně, zatímco černé tečky zobrazit zjištěné provozní špičky.
 ![Rozhraní API skóre][1]
 
 ### <a name="detectors"></a>Detektory
@@ -127,7 +128,7 @@ Podrobnější informace o těchto vstupní parametry jsou uvedeny v následují
 | postprocess.tailRows |Počet nejnovější datové body uchovávat ve výsledcích výstupu |0 |integer |0 (zachovat všechny datové body), nebo zadejte počet bodů, aby se ve výsledcích |neuvedeno |
 
 ### <a name="output"></a>Výstup
-Rozhraní API pro všechny detektory běží na vašich datech časových řad a vrátí skóre anomálií a indikátory binární zásobníku pro každý bod v čase. Následující tabulka uvádí výstupů z rozhraní API. 
+Rozhraní API pro všechny detektory běží na vašich datech časových řad a vrátí skóre anomálií a indikátory binární zásobníku pro každý bod v čase. Následující tabulka uvádí výstupů z rozhraní API.
 
 | Výstupy | Popis |
 | --- | --- |
@@ -141,7 +142,7 @@ Rozhraní API pro všechny detektory běží na vašich datech časových řad a
 | talert |Hodnota 1/0 označující, že je pozitivní trend anomálií na základě citlivosti vstupní |
 
 ## <a name="scorewithseasonality-api"></a>ScoreWithSeasonality rozhraní API
-Rozhraní API ScoreWithSeasonality se používá pro spuštění detekce anomálií v časové řadě, které mají sezónní vzory. Toto rozhraní API je užitečný ke zjišťování odchylek sezónní vzory.  
+Rozhraní API ScoreWithSeasonality se používá pro spuštění detekce anomálií v časové řadě, které mají sezónní vzory. Toto rozhraní API je užitečný ke zjišťování odchylek sezónní vzory.
 Následující obrázek znázorňuje příklad zjištěných v sezónní časové řady. Časové řady má (špičky) jeden (1 černé tečky) dva vyhrazené IP adresy (2. černá tečka a jeden na konci) a jednu úroveň změnu (červená tečka). Mějte na paměti, že dip uprostřed časových řad a změna úrovně budou viditelné až po sezónní komponenty jsou odstraněny z řady.
 ![Sezónnost rozhraní API][2]
 
@@ -170,7 +171,7 @@ Podrobnější informace o těchto vstupní parametry jsou uvedeny v následují
 | postprocess.tailRows |Počet nejnovější datové body uchovávat ve výsledcích výstupu |0 |integer |0 (zachovat všechny datové body), nebo zadejte počet bodů, aby se ve výsledcích |neuvedeno |
 
 ### <a name="output"></a>Výstup
-Rozhraní API pro všechny detektory běží na vašich datech časových řad a vrátí skóre anomálií a indikátory binární zásobníku pro každý bod v čase. Následující tabulka uvádí výstupů z rozhraní API. 
+Rozhraní API pro všechny detektory běží na vašich datech časových řad a vrátí skóre anomálií a indikátory binární zásobníku pro každý bod v čase. Následující tabulka uvádí výstupů z rozhraní API.
 
 | Výstupy | Popis |
 | --- | --- |

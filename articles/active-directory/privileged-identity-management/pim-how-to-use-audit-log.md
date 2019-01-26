@@ -13,12 +13,12 @@ ms.component: pim
 ms.date: 02/14/2017
 ms.author: rolyon
 ms.custom: pim
-ms.openlocfilehash: ab5a072d845bfdbaafabe1e0e7bdce2dfce6184d
-ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
+ms.openlocfilehash: 191d384d51fe3aecbd967586516cfb198256af81
+ms.sourcegitcommit: 97d0dfb25ac23d07179b804719a454f25d1f0d46
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2018
-ms.locfileid: "43188175"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54911723"
 ---
 # <a name="view-audit-history-for-azure-ad-directory-roles-in-pim"></a>Zobrazení historie auditů pro role adresáře Azure AD v PIM
 Pokud chcete zobrazit všechna přiřazení uživatelů a aktivace v daném časovém období pro všechny privilegované role můžete použít historie auditu Privileged Identity Management (PIM). Pokud chcete zobrazit úplnou historii auditu aktivity ve vašem tenantovi, včetně správce, koncový uživatel a aktivitu synchronizace můžete použít [sestavy o přístupech a použití služby Azure Active Directory.](../reports-monitoring/overview-reports.md)
@@ -64,4 +64,4 @@ Zaškrtněte nebo zrušte zaškrtnutí políčka **Role** zaškrtávací políč
 <!--Every topic should have next steps and links to the next logical set of content to keep the customer engaged-->
 ## <a name="next-steps"></a>Další postup
 
-- [Zobrazení historie auditů pro role prostředků Azure v PIM](pim-resource-roles-use-the-audit-log.md)
+- [Zobrazit historii aktivit a auditu pro role prostředků Azure v PIM](azure-pim-resource-rbac.md)

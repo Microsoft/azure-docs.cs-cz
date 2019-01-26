@@ -8,15 +8,15 @@ manager: cgronlun
 ms.service: cognitive-services
 ms.component: qna-maker
 ms.topic: article
-ms.date: 10/19/2018
+ms.date: 01/24/2019
 ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: 6777765e4ae57aefc5944d0dde597d2becfe0430
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: cf639874d6d6818cc605df5e45f1005edcb13019
+ms.sourcegitcommit: 97d0dfb25ac23d07179b804719a454f25d1f0d46
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53091437"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54912693"
 ---
 # <a name="how-to-use-the-qna-maker-rest-api-with-go"></a>Jak používat rozhraní REST API nástroje QnA Maker s využitím Go 
 <a name="HOLTop"></a>

@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/16/2019
 ms.author: spelluru
-ms.openlocfilehash: 5c1207b1b21e2d2ee229f5bea068b99f3b3218b1
-ms.sourcegitcommit: 9f07ad84b0ff397746c63a085b757394928f6fc0
+ms.openlocfilehash: 9576854fbad88724f3d229d239b9d3e263fb7492
+ms.sourcegitcommit: 97d0dfb25ac23d07179b804719a454f25d1f0d46
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54389124"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54912397"
 ---
 # <a name="manage-classroom-labs-in-azure-lab-services"></a>Správa testovacích prostředí v učebnách ve službě Azure Lab Services 
 Tento článek popisuje, jak vytvářet a odstraňovat prostředí v učebně. Je také ukazuje, jak zobrazit všechny testovací prostředí v učebnách účtu testovacího prostředí. 
@@ -32,7 +32,7 @@ Pokud chcete nastavit testovací prostředí v učebně v účtu testovacího pr
 2. Vyberte **přihlášení**. Vyberte nebo zadejte **ID uživatele** , který je členem skupiny **Autor testovacího prostředí** roli v testovacím prostředí účet a zadat heslo. Azure Lab Services podporuje účty organizací a účty Microsoft. 
 3. V okně **New Lab** (Nové testovací prostředí) proveďte následující akce: 
     1. Zadejte **název** testovacího prostředí. 
-    2. Zadejte **počet uživatelů, kteří** na testovacím prostředí povolená. 
+    2. Zadejte maximální **počet virtuálních počítačů** v testovacím prostředí. Můžete zvýšit nebo snížit počet virtuálních počítačů v testovacím prostředí později. 
     6. Vyberte **Uložit**.
 
         ![Vytvoření testovacího prostředí v učebně](../media/tutorial-setup-classroom-lab/new-lab-window.png)

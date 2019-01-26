@@ -6,15 +6,15 @@ ms.service: automation
 ms.subservice: process-automation
 author: georgewallace
 ms.author: gwallace
-ms.date: 10/04/2018
+ms.date: 1/24/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: d9dfc70c7158c5f808367b8b2041725b03b9060d
-ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
+ms.openlocfilehash: cc0ffc0a209dab0e8610966cb24596d95b7927c3
+ms.sourcegitcommit: 97d0dfb25ac23d07179b804719a454f25d1f0d46
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54846179"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54913423"
 ---
 # <a name="startstop-vms-during-off-hours-solution-in-azure-automation"></a>Spuštění/zastavení virtuálních počítačů v době mimo špičku řešení ve službě Azure Automation
 
@@ -34,7 +34,7 @@ Toto jsou omezení do aktuálního řešení:
 > [!NOTE]
 > Pokud používáte řešení pro klasické virtuální počítače, pak všechny virtuální počítače se budou zpracovávat postupně na jednu cloudovou službu. Virtuální počítače jsou stále zpracovávána paralelně napříč různými cloudovými službami.
 >
-> Předplatná Azure Cloud Solution Provider (CSP pro Azure) podporují pouze model Azure Resource Manageru, services – Azure Resource Manageru nejsou k dispozici v programu. Při spuštění/zastavení řešení běží se může zobrazit chyby jako obsahuje rutiny pro správu klasických prostředků. Další informace o CSP najdete v tématu [dostupných služeb v předplatných CSP](https://docs.microsoft.com/azure/cloud-solution-provider/overview/azure-csp-available-services#comments).
+> Předplatná Azure Cloud Solution Provider (CSP pro Azure) podporují pouze model Azure Resource Manageru, services – Azure Resource Manageru nejsou k dispozici v programu. Při spuštění/zastavení řešení běží se může zobrazit chyby jako obsahuje rutiny pro správu klasických prostředků. Další informace o CSP najdete v tématu [dostupných služeb v předplatných CSP](https://docs.microsoft.com/azure/cloud-solution-provider/overview/azure-csp-available-services#comments). Pokud používáte předplatné poskytovatele CSP, byste měli upravit [ **External_EnableClassicVMs** ](#variables) proměnnou **False** po nasazení.
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -90,6 +90,9 @@ Proveďte následující kroky pro přidání spouštění/zastavování virtuá
 
 8. Po dokončení konfigurace počátečních nastavení vyžadovaných pro příslušné řešení, klikněte na tlačítko **OK** zavřete **parametry** stránku a vybrat **vytvořit**. Po všechna nastavení se ověří, toto řešení nasadí do vašeho předplatného. Tento proces může trvat několik sekund na dokončení, a můžete sledovat jeho průběh **oznámení** z nabídky.
 
+> [!NOTE]
+> Pokud máte předplatné Azure Cloud Solution Provider (CSP pro Azure), po nasazení, ve vašem účtu Automation, přejděte na **proměnné** pod **sdílené prostředky** a nastavit [ **External_EnableClassicVMs** ](#variables) proměnnou **False**. Tím se zastaví řešení od hledáte prostředky klasický virtuální počítač.
+
 ## <a name="scenarios"></a>Scénáře
 
 Řešení obsahuje tři různé scénáře. Tyto scénáře jsou:
@@ -108,8 +111,8 @@ Můžete povolit cílení na reagovat na předplatné a skupinu prostředků neb
 #### <a name="target-the-start-and-stop-actions-against-a-subscription-and-resource-group"></a>Cíl akce spouštění a zastavování proti předplatném a skupině prostředků
 
 1. Konfigurace **External_Stop_ResourceGroupNames** a **External_ExcludeVMNames** proměnné k určení cílových virtuálních počítačů.
-1. Povolit a aktualizovat **plánovaný-StartVM** a **naplánované StopVM** plány.
-1. Spustit **ScheduledStartStop_Parent** runbooku pomocí akce parametrem nastaveným na **start** a WHATIF parametrem nastaveným na **True** náhled změn.
+2. Povolit a aktualizovat **plánovaný-StartVM** a **naplánované StopVM** plány.
+3. Spustit **ScheduledStartStop_Parent** runbooku pomocí akce parametrem nastaveným na **start** a WHATIF parametrem nastaveným na **True** náhled změn.
 
 #### <a name="target-the-start-and-stop-action-by-vm-list"></a>Akce spouštění a zastavování cílit, seznam virtuálních počítačů
 
@@ -205,6 +208,7 @@ V následující tabulce jsou uvedeny proměnných vytvořené v účtu Automati
 |External_AutoStop_Threshold | Prahová hodnota pro pravidlo výstrahy Azure zadané v proměnné _External_AutoStop_MetricName_. Procentuální hodnoty musí být v rozsahu 1 až 100.|
 |External_AutoStop_TimeAggregationOperator | Operátor agregace času, který se použije pro vybrané okno velikost vyhodnocení podmínky. Přípustné hodnoty jsou **průměrné**, **minimální**, **maximální**, **celkový**, a **poslední**.|
 |External_AutoStop_TimeWindow | Velikost okna, během kterého Azure analyzuje vybrané metriky pro aktivaci výstrahy. Tento parametr přijímá vstup ve formátu timespan. Možné hodnoty jsou od 5 minut až 6 hodin.|
+|External_EnableClassicVMs| Určuje, zda klasické virtuální počítače jsou cílem řešení. Výchozí hodnota je True. Měla by být nastavena na hodnotu False pro předplatná CSP.|
 |External_ExcludeVMNames | Zadejte názvy virtuálních počítačů, které se mají vyloučit, oddělení názvy oddělte čárkou bez mezer.|
 |External_Start_ResourceGroupNames | Určuje jeden nebo více skupin prostředků oddělení hodnoty oddělte čárkou, je určená pro zahájení akce.|
 |External_Stop_ResourceGroupNames | Určuje jeden nebo více skupin prostředků oddělení hodnoty oddělte čárkou, je určená pro zastavení akce.|

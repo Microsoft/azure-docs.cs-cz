@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 05/15/2018
 ms.author: barbkess
 ms.reviewer: richagi
-ms.openlocfilehash: 97cabf7821f223b900f86115c3bd85b12de450d4
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: 90cfb766e98bfa9706cd88342f8374269bc69d76
+ms.sourcegitcommit: 97d0dfb25ac23d07179b804719a454f25d1f0d46
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54478140"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54911621"
 ---
 # <a name="use-tenant-restrictions-to-manage-access-to-saas-cloud-applications"></a>Omezení Tenanta můžete spravovat přístup k SaaS cloudové aplikace
 
@@ -89,7 +89,7 @@ Tato část popisuje prostředí pro koncové uživatele a správce.
 
 ### <a name="end-user-experience"></a>Činnost koncového uživatele
 
-Příklad uživatel je v síti Contoso, ale se pokouší získat přístup k instanci Fabrikam sdílené SaaS aplikace jako je Outlook online. Contoso je v tenantovi není povolený pro tuto instanci, uživateli se zobrazí následující stránka:
+Příklad uživatel je v síti Contoso, ale se pokouší získat přístup k instanci Fabrikam sdílené SaaS aplikace jako je Outlook online. Je-li Fabricam tenanta není povolené pro instanci Contoso, uživateli se zobrazí následující stránka:
 
 ![Přístup byl odepřen stránku pro uživatele v tenantech povoleno](./media/tenant-restrictions/end-user-denied.png)
 

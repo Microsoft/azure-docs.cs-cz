@@ -1,15 +1,15 @@
 ---
 author: manish-shukla01
-ms.author: cwatson
+ms.author: banders
 ms.service: virtual-machines-windows
 ms.topic: include
 ms.date: 11-20-2018
-ms.openlocfilehash: 044f735560eb7d57a90a16c1e3ce1255a9fe0d54
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.openlocfilehash: 83b29aa1f0c12661eb1724eb505ad46987ed1019
+ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52742371"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54906302"
 ---
 # <a name="virtual-machine-size-flexibility-with-reserved-vm-instances"></a>Flexibilita velikost virtuálního počítače s rezervovanými instancemi virtuálních počítačů
 
@@ -20,7 +20,7 @@ Instance rezervovaný virtuální počítač, který je optimalizovaný pro inst
 - Standard_DS3_v2
 - Standard_DS4_v2
 
-Ale tento sleva za rezervaci neplatí pro velikosti virtuálních počítačů, které jsou uvedeny v různých tabulek, jako jsou novinky v tabulce vysoký poměr paměti DSv2-series: Standard_DS11_v2, Standard_DS12_v2, a tak dále.
+Ale tento sleva za rezervaci neplatí pro velikosti virtuálních počítačů, které jsou uvedeny v různých tabulek, jako jsou novinky v tabulce vysoký poměr paměti DSv2-series: Standard_DS11_v2 Standard_DS12_v2 a tak dále.
 
 Ve skupině velikostí řady počet virtuálních počítačů, platí sleva za rezervaci pro závisí na velikosti virtuálního počítače, který vyberete při nákupu rezervace. Také závisí na velikosti virtuálních počítačů, které máte systémem. Poměr sloupec, který je uveden v následujících tabulkách porovnává relativní nároky pro jednotlivé velikosti virtuálních počítačů v této skupině. Hodnota poměr vypočítat, jak sleva za rezervaci se vztahuje k virtuálním počítačům můžete mít systémem.
 
@@ -30,7 +30,7 @@ Následující příklady používají velikost a poměry v tabulce DSv2-series.
 
  Můžete si koupit rezervované instance virtuálního počítače s velikostí Standard_DS4_v2, kde je poměr nebo relativní nároky na místo v porovnání s dalších velikostí v této sérii 8.
 
-- Scénář 1: Spuštění osm Standard_DS1_v2 velikostí virtuálních počítačů s poměrem 1. Vaše sleva za rezervaci se vztahuje na všechny osm těchto virtuálních počítačů.
+- Scénář 1: Spustit osm Standard_DS1_v2 velikostí virtuálních počítačů s poměrem 1. Vaše sleva za rezervaci se vztahuje na všechny osm těchto virtuálních počítačů.
 - Scénář 2: Spusťte dvě Standard_DS2_v2 velikostí virtuálních počítačů s poměrem 2. Spustit také Standard_DS3_v2 velikosti virtuálního počítače s poměrem 4. Celkové nároky je 2 + 2 + 4 = 8. Proto váš sleva za rezervaci se vztahuje na všechny tři těchto virtuálních počítačů.
 - Scénář 3: Spuštění jedné Standard_DS5_v2 s poměrem 16. Vaše sleva za rezervaci se vztahuje na náklady na výpočetní výkon poloviční tohoto Virtuálního počítače.
 
@@ -187,19 +187,19 @@ Další informace najdete v tématu [velikostí virtuálních počítačů pro o
 |---|---|
 |Standard_E2s_v3|1|
 |Standard_E4s_v3|2|
-|Standard_E4 2s_v3|2|
+|Standard_E4-2s_v3|2|
 |Standard_E8s_v3|4|
-|Standard_E8 2s_v3|4|
-|Standard_E8 4s_v3|4|
+|Standard_E8-2s_v3|4|
+|Standard_E8-4s_v3|4|
 |Standard_E16s_v3|8|
-|Standard_E16 4s_v3|8|
-|Standard_E16 8s_v3|8|
+|Standard_E16-4s_v3|8|
+|Standard_E16-8s_v3|8|
 |Standard_E32s_v3|16|
-|Standard_E32 8s_v3|16|
-|Standard_E32 16s_v3|16|
+|Standard_E32-8s_v3|16|
+|Standard_E32-16s_v3|16|
 |Standard_E64s_v3|32|
-|Standard_E64 16s_v3|32|
-|Standard_E64 32s_v3|32|
+|Standard_E64-16s_v3|32|
+|Standard_E64-32s_v3|32|
 
 Další informace najdete v tématu [paměťově optimalizované velikosti virtuálních počítačů](../articles/virtual-machines/windows/sizes-memory.md#esv3-series).
 
@@ -296,8 +296,8 @@ Další informace najdete v tématu [paměťově optimalizované velikosti virtu
 
 | Velikost | Poměr|
 |---|---|
-| Typu Standard_M16s|1|
-|Typu Standard_M32s|2|
+| Standard_M16s|1|
+|Standard_M32s|2|
 
 Další informace najdete v tématu [paměťově optimalizované velikosti virtuálních počítačů](../articles/virtual-machines/windows/sizes-memory.md#m-series).
 
@@ -305,15 +305,15 @@ Další informace najdete v tématu [paměťově optimalizované velikosti virtu
 
 | Velikost | Poměr|
 |---|---|
-|Typu Standard_M8ms|1|
-|Standard_M8 až 2 MS|1|
-|Standard_M8 4ms|1|
-|Typu Standard_M16ms|2|
-|Standard_M16 4ms|2|
-|Standard_M16 8ms|2|
-|Typu Standard_M32ms|4|
-|Standard_M32 8ms|4|
-|Standard_M32 16ms|4|
+|Standard_M8ms|1|
+|Standard_M8-2ms|1|
+|Standard_M8-4ms|1|
+|Standard_M16ms|2|
+|Standard_M16-4ms|2|
+|Standard_M16-8ms|2|
+|Standard_M32ms|4|
+|Standard_M32-8ms|4|
+|Standard_M32-16ms|4|
 
 Další informace najdete v tématu [paměťově optimalizované velikosti virtuálních počítačů](../articles/virtual-machines/windows/sizes-memory.md#m-series).
 
@@ -321,8 +321,8 @@ Další informace najdete v tématu [paměťově optimalizované velikosti virtu
 
 | Velikost | Poměr|
 |---|---|
-| Typu Standard_M32ls|1|
-|Typu Standard_M64ls|2|
+| Standard_M32ls|1|
+|Standard_M64ls|2|
 
 Další informace najdete v tématu [paměťově optimalizované velikosti virtuálních počítačů](../articles/virtual-machines/windows/sizes-memory.md#m-series).
 
@@ -331,11 +331,11 @@ Další informace najdete v tématu [paměťově optimalizované velikosti virtu
 | Velikost | Poměr|
 |---|---|
 | Standard_M64ms|1|
-|Standard_M64 16ms|1|
-|Standard_M64 32ms|1|
+|Standard_M64-16ms|1|
+|Standard_M64-32ms|1|
 |Standard_M128ms|2|
-|Standard_M128 32ms|2|
-|Standard_M128 64ms|2|
+|Standard_M128-32ms|2|
+|Standard_M128-64ms|2|
 
 Další informace najdete v tématu [paměťově optimalizované velikosti virtuálních počítačů](../articles/virtual-machines/windows/sizes-memory.md#m-series).
 

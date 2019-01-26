@@ -9,12 +9,12 @@ ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: article
 ms.date: 11/16/2018
-ms.openlocfilehash: c33952f893d5ef2cfb9020acbf813d30b6c105e7
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: d59bc20ea745412f8f2549e0359483d1dd3e608d
+ms.sourcegitcommit: 97d0dfb25ac23d07179b804719a454f25d1f0d46
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54469734"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54912778"
 ---
 # <a name="limits-and-configuration-information-for-azure-logic-apps"></a>Omezení a konfigurační informace pro Azure Logic Apps
 
@@ -119,9 +119,9 @@ Ambice tato omezení v normálním zpracování nebo spustit zátěžové testov
 
 | Název | Omezení | Poznámky |
 |------|-------|-------|
-| FTP | 50 MB | Tento limit překročí, naleznete v tématu [zpracování velkých zpráv s dělením dat do bloků](../logic-apps/logic-apps-handle-large-messages.md). Ale některé konektory a rozhraní API nemusí podporovat bloků nebo dokonce výchozí omezení. | 
-| SFTP | 50 MB | Chcete-li překročí tento limit, použijte [konektoru SFTP-SSH](../connectors/connectors-sftp-ssh.md) nebo naleznete v tématu [zpracování velkých zpráv s dělením dat do bloků](../logic-apps/logic-apps-handle-large-messages.md). Ale některé konektory a rozhraní API nemusí podporovat bloků nebo dokonce výchozí omezení. | 
-| SFTP-SSH | 1 GB | Tento konektor zpracuje až 1 GB, ale přenáší data po částech 50 MB, ne 1 GB kusy. | 
+| FTP | 50 MB | Překročí tento limit pouze pro akce, najdete v článku [zpracování velkých zpráv s dělením dat do bloků](../logic-apps/logic-apps-handle-large-messages.md). <p>**Poznámka:** Dělením dat do bloků neplatí pro aktivační události. Navíc některé konektory a rozhraní API nemusí podporovat bloků nebo dokonce výchozí omezení. | 
+| SFTP | 50 MB | Překročí tento limit pouze pro akce, použijte [konektoru SFTP-SSH](../connectors/connectors-sftp-ssh.md) nebo naleznete v tématu [zpracování velkých zpráv s dělením dat do bloků](../logic-apps/logic-apps-handle-large-messages.md). <p>**Poznámka:** Dělením dat do bloků neplatí pro aktivační události. Navíc některé konektory a rozhraní API nemusí podporovat bloků nebo dokonce výchozí omezení. | 
+| SFTP-SSH | 1 GB | Tento konektor zpracuje až 1 GB, ale přenáší data po částech 50 MB, ne 1 GB kusy. Překročí tento limit pouze pro akce, najdete v článku [zpracování velkých zpráv s dělením dat do bloků](../logic-apps/logic-apps-handle-large-messages.md). <p>**Poznámka:** Dělením dat do bloků neplatí pro aktivační události. | 
 |||| 
 
 <a name="request-limits"></a>

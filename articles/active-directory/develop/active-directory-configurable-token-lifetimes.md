@@ -16,12 +16,12 @@ ms.date: 10/05/2018
 ms.author: celested
 ms.custom: aaddev
 ms.reviewer: hirsin
-ms.openlocfilehash: 1fa5a2f9d63dfd9af006285beec256395d7ac668
-ms.sourcegitcommit: 7b0778a1488e8fd70ee57e55bde783a69521c912
+ms.openlocfilehash: 5dd5920eae97399bae03c6917bb610103bd556c2
+ms.sourcegitcommit: 97d0dfb25ac23d07179b804719a454f25d1f0d46
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49069501"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54912710"
 ---
 # <a name="configurable-token-lifetimes-in-azure-active-directory-preview"></a>Konfigurovatelné životností tokenů ve službě Azure Active Directory (Preview)
 
@@ -79,21 +79,19 @@ Zásady životnosti tokenu je typ objektu zásad, která obsahuje dobu životnos
 | --- | --- | --- | --- | --- | --- |
 | Životnost tokenu přístupu |AccessTokenLifetime |Přístupové tokeny, tokeny typu ID, SAML2 tokeny |1 hodina |10 minut |1 den |
 | Neaktivní Token maximální čas aktualizace |MaxInactiveTime |Obnovovacích tokenů |90 dnů |10 minut |90 dnů |
-| Jednofaktorovému obnovovací Token maximální stáří |MaxAgeSingleFactor |Obnovovacích tokenů (pro všechny uživatele) |Dokud odvolána |10 minut |Dokud odvolat<sup>1</sup> |
-| Maximální stáří Token obnovení služby Multi-Factor Authentication |MaxAgeMultiFactor |Obnovovacích tokenů (pro všechny uživatele) |Dokud odvolána |10 minut |Dokud odvolat<sup>1</sup> |
-| Maximální stáří Token Jednofaktorovému relace |MaxAgeSessionSingleFactor<sup>2</sup> |Relace tokeny (trvalá nebo nonpersistent) |Dokud odvolána |10 minut |Dokud odvolat<sup>1</sup> |
-| Maximální stáří tokenu relace služby Multi-Factor Authentication |MaxAgeSessionMultiFactor<sup>3</sup> |Relace tokeny (trvalá nebo nonpersistent) |Dokud odvolána |10 minut |Dokud odvolat<sup>1</sup> |
+| Jednofaktorovému obnovovací Token maximální stáří |MaxAgeSingleFactor |Obnovovacích tokenů (pro všechny uživatele) |Until-revoked |10 minut |Until-revoked<sup>1</sup> |
+| Maximální stáří Token obnovení služby Multi-Factor Authentication |MaxAgeMultiFactor |Obnovovacích tokenů (pro všechny uživatele) |Until-revoked |10 minut |Until-revoked<sup>1</sup> |
+| Maximální stáří Token Jednofaktorovému relace |MaxAgeSessionSingleFactor<sup>2</sup> |Relace tokeny (trvalá nebo nonpersistent) |Until-revoked |10 minut |Until-revoked<sup>1</sup> |
+| Maximální stáří tokenu relace služby Multi-Factor Authentication |MaxAgeSessionMultiFactor<sup>3</sup> |Relace tokeny (trvalá nebo nonpersistent) |Until-revoked |10 minut |Until-revoked<sup>1</sup> |
 
 * <sup>1</sup>365 dnů je delší explicitní lze nastavit pro tyto atributy.
-* <sup>2</sup>Pokud **MaxAgeSessionSingleFactor** není nastaven, používá tuto hodnotu **MaxAgeSingleFactor** hodnotu. Pokud ani parametr je nastaven, vlastnost má výchozí hodnotu (až do odvolaný).
-* <sup>3</sup>Pokud **MaxAgeSessionMultiFactor** není nastaven, používá tuto hodnotu **MaxAgeMultiFactor** hodnotu. Pokud ani parametr je nastaven, vlastnost má výchozí hodnotu (až do odvolaný).
 
 ### <a name="exceptions"></a>Výjimky
 | Vlastnost | Ovlivňuje | Výchozí |
 | --- | --- | --- |
 | Aktualizovat Token maximální stáří (vydané pro federované uživatele, kteří mají informace o odvolání nedostatečná<sup>1</sup>) |Obnovovacích tokenů (vydané pro federované uživatele, kteří mají informace o odvolání nedostatečná<sup>1</sup>) |12 hodin |
 | Aktualizovat Token maximální aktivní čas (vydané pro důvěrní klienti) |Obnovovacích tokenů (vydané pro důvěrní klienti) |90 dnů |
-| Aktualizovat Token maximální stáří (vydané pro důvěrní klienti) |Obnovovacích tokenů (vydané pro důvěrní klienti) |Dokud odvolána |
+| Aktualizovat Token maximální stáří (vydané pro důvěrní klienti) |Obnovovacích tokenů (vydané pro důvěrní klienti) |Until-revoked |
 
 * <sup>1</sup>federativní, kteří mají dostatečná odvolání informace zahrnují všechny uživatele, kteří nemají "LastPasswordChangeTimestamp" atribut synchronizovaný. Tito uživatelé jsou uvedeny Tento krátký maximální stáří, protože nelze ověřit, kdy se mají odvolat tokeny, které jsou vázané na staré přihlašovací údaje (třeba hesla, které se změnily) a musí vrátit se změnami zpět více často zajistit stále existují uživateli a přidružené tokenů AAD v pořádku  po ruce. Správci tenanta na zdokonalování tohoto prostředí, musíte zajistit, že se synchronizují atribut "LastPasswordChangeTimestamp" (to je možné nastavit v objektu user pomocí Powershellu nebo prostřednictvím AADSync).
 
@@ -114,7 +112,7 @@ Všechny časových rozpětí tady použít se formátují podle jazyka C# [Time
 > [!NOTE]
 > Tady je příklad scénáře.
 >
-> Uživatel chce, aby pro přístup k dvě webové aplikace: webové aplikace A a B. webové aplikace
+> Uživatel požaduje přístup dvě webové aplikace: Webová aplikace A a B. webové aplikace
 > 
 > Faktory:
 > * Pro obě webové aplikace jsou ve stejné organizaci nadřazené.
@@ -136,16 +134,16 @@ Všechny časových rozpětí tady použít se formátují podle jazyka C# [Time
 ### <a name="access-token-lifetime"></a>Životnost tokenu přístupu
 **Řetězec:** AccessTokenLifetime
 
-**Ovlivňuje:** přístupové tokeny, tokeny typu ID
+**Má vliv na:** Přístupové tokeny, tokeny typu ID
 
-**Shrnutí:** tato zásada určuje, jak dlouho přístup a tokeny typu ID pro tento prostředek jsou považovány za platné. Snížení vlastnost životnost tokenu přístupu snižuje riziko přístupového tokenu nebo tokenu ID používá škodlivý objekt actor delší dobu. (Tyto tokeny se nedá odvolat,.) Nutný kompromis je nepříznivě ovlivňuje výkon, protože tokeny mají vyměnit častěji.
+**Shrnutí:** Tato zásada určuje, jak dlouho přístup a tokeny typu ID pro tento prostředek jsou považovány za platné. Snížení vlastnost životnost tokenu přístupu snižuje riziko přístupového tokenu nebo tokenu ID používá škodlivý objekt actor delší dobu. (Tyto tokeny se nedá odvolat,.) Nutný kompromis je nepříznivě ovlivňuje výkon, protože tokeny mají vyměnit častěji.
 
 ### <a name="refresh-token-max-inactive-time"></a>Neaktivní Token maximální čas aktualizace
 **Řetězec:** MaxInactiveTime
 
-**Ovlivňuje:** obnovovacích tokenů
+**Má vliv na:** Obnovovacích tokenů
 
-**Shrnutí:** tato zásada určuje, kolik obnovovací token může být předtím, než klient může již nebudete používat k načtení nový pár tokenů přístupu nebo obnovení při pokusu o přístup k tomuto prostředku. Protože nového tokenu obnovení se obvykle vrátí, když se obnovovací token používá, zabraňuje tato zásada přístupu, pokud se klient pokusí získat přístup k jakémukoli prostředku pomocí aktuální obnovovací token během zadaného časového období.
+**Shrnutí:** Tato zásada určuje, kolik obnovovací token může být předtím, než klient může již nebudete používat k načtení nový pár tokenů přístupu nebo obnovení při pokusu o přístup k tomuto prostředku. Protože nového tokenu obnovení se obvykle vrátí, když se obnovovací token používá, zabraňuje tato zásada přístupu, pokud se klient pokusí získat přístup k jakémukoli prostředku pomocí aktuální obnovovací token během zadaného časového období.
 
 Tato zásada vynutí, aby uživatelé, kteří se na svého klienta donutit k načtení nového tokenu obnovení k aktivní.
 
@@ -154,36 +152,36 @@ Na hodnotu nižší než maximální stáří Token Jednofaktorovému a vlastnos
 ### <a name="single-factor-refresh-token-max-age"></a>Jednofaktorovému obnovovací Token maximální stáří
 **Řetězec:** MaxAgeSingleFactor
 
-**Ovlivňuje:** obnovovacích tokenů
+**Má vliv na:** Obnovovacích tokenů
 
-**Shrnutí:** této zásady ovládací prvky, jak dlouho může uživatel používat obnovovací token získat nový token pár přístupu nebo obnovení po jejich poslední úspěšně ověřen pomocí pouze jednomu faktoru. Poté, co uživatel ověří a přijme nový token obnovení, uživatel může použít tok tokenu obnovení pro zadané časové období. (To je PRAVDA aktuální obnovovací token nebyl odvolán, a pokud není ponecháno nevyužité po dobu delší než neaktivní doba.) V tu chvíli se uživatel musí přijímat nového tokenu obnovení donutit k.
+**Shrnutí:** Tato zásady ovládací prvky, jak dlouho může uživatel používat obnovovací token získat nový token pár přístupu nebo obnovení po jejich poslední úspěšně ověřen pomocí pouze jednomu faktoru. Poté, co uživatel ověří a přijme nový token obnovení, uživatel může použít tok tokenu obnovení pro zadané časové období. (To je PRAVDA aktuální obnovovací token nebyl odvolán, a pokud není ponecháno nevyužité po dobu delší než neaktivní doba.) V tu chvíli se uživatel musí přijímat nového tokenu obnovení donutit k.
 
 Omezení maximálního stáří donutí uživatele bude možné ověřit častěji. Vzhledem k tomu, že jednofaktorovému ověřování je považován za méně bezpečné než ověřování službou Multi-Factor Authentication, doporučujeme nastavit tuto vlastnost na hodnotu, která je rovna nebo nižší než vlastnost službou Multi-Factor Authentication aktualizovat Token maximální stáří.
 
 ### <a name="multi-factor-refresh-token-max-age"></a>Maximální stáří Token obnovení služby Multi-Factor Authentication
 **Řetězec:** MaxAgeMultiFactor
 
-**Ovlivňuje:** obnovovacích tokenů
+**Má vliv na:** Obnovovacích tokenů
 
-**Shrnutí:** této zásady ovládací prvky, jak dlouho může uživatel používat k získání nový pár tokenů přístupu nebo obnovení po jejich poslední úspěšně ověřen pomocí několika faktory obnovovací token. Poté, co uživatel ověří a přijme nový token obnovení, uživatel může použít tok tokenu obnovení pro zadané časové období. (To je PRAVDA aktuální obnovovací token nebyl odvolán, a pokud není po dobu delší než neaktivní doba.) Uživatelé jsou od tohoto okamžiku musí donutit přijímat nového tokenu obnovení.
+**Shrnutí:** Tato zásady ovládací prvky, jak dlouho může uživatel používat k získání nový pár tokenů přístupu nebo obnovení po jejich poslední úspěšně ověřen pomocí několika faktory obnovovací token. Poté, co uživatel ověří a přijme nový token obnovení, uživatel může použít tok tokenu obnovení pro zadané časové období. (To je PRAVDA aktuální obnovovací token nebyl odvolán, a pokud není po dobu delší než neaktivní doba.) Uživatelé jsou od tohoto okamžiku musí donutit přijímat nového tokenu obnovení.
 
 Omezení maximálního stáří donutí uživatele bude možné ověřit častěji. Vzhledem k tomu, že jednofaktorovému ověřování je považován za méně bezpečné než ověřování službou Multi-Factor Authentication, doporučujeme nastavit tuto vlastnost na hodnotu, která je rovna nebo větší než vlastnost Jednofaktorovému aktualizovat Token maximální stáří.
 
 ### <a name="single-factor-session-token-max-age"></a>Maximální stáří Token Jednofaktorovému relace
 **Řetězec:** MaxAgeSessionSingleFactor
 
-**Ovlivňuje:** relace tokeny (trvalá nebo nonpersistent)
+**Má vliv na:** Relace tokeny (trvalá nebo nonpersistent)
 
-**Shrnutí:** této zásady ovládací prvky, jak dlouho může uživatel používat k získání nové ID a tokenu relace po jejich poslední úspěšně ověřen pomocí pouze jednomu faktoru tokenu relace. Poté, co uživatel ověří a obdrží token novou relaci, uživatel může použít tok tokenu relace pro zadané časové období. (To platí za předpokladu, tokenu aktuální relace není odvolaný a nevypršela platnost.) Po zadaném časovém období uživatel bude muset donutit k získání tokenu novou relaci.
+**Shrnutí:** Tato zásady ovládací prvky, jak dlouho může uživatel používat k získání nové ID a tokenu relace po jejich poslední úspěšně ověřen pomocí pouze jednomu faktoru tokenu relace. Poté, co uživatel ověří a obdrží token novou relaci, uživatel může použít tok tokenu relace pro zadané časové období. (To platí za předpokladu, tokenu aktuální relace není odvolaný a nevypršela platnost.) Po zadaném časovém období uživatel bude muset donutit k získání tokenu novou relaci.
 
 Omezení maximálního stáří donutí uživatele bude možné ověřit častěji. Vzhledem k tomu, že jednofaktorovému ověřování je považován za méně bezpečné než ověřování službou Multi-Factor Authentication, doporučujeme nastavit tuto vlastnost na hodnotu, která je rovna nebo nižší než vlastnost Token maximální stáří relace služby Multi-Factor Authentication.
 
 ### <a name="multi-factor-session-token-max-age"></a>Maximální stáří tokenu relace služby Multi-Factor Authentication
 **Řetězec:** MaxAgeSessionMultiFactor
 
-**Ovlivňuje:** relace tokeny (trvalá nebo nonpersistent)
+**Má vliv na:** Relace tokeny (trvalá nebo nonpersistent)
 
-**Shrnutí:** tento ovládací prvky zásad jak dlouho může uživatel používat k získání nové ID a relace token od poslední úspěšně musí ověřit pomocí několika faktory tokenu relace. Poté, co uživatel ověří a obdrží token novou relaci, uživatel může použít tok tokenu relace pro zadané časové období. (To platí za předpokladu, tokenu aktuální relace není odvolaný a nevypršela platnost.) Po zadaném časovém období uživatel bude muset donutit k získání tokenu novou relaci.
+**Shrnutí:** Jak dlouho může uživatel používat tokenu relace se získat nové ID a relace token od poslední tento ovládací prvky zásad se úspěšně ověřen pomocí několika faktory. Poté, co uživatel ověří a obdrží token novou relaci, uživatel může použít tok tokenu relace pro zadané časové období. (To platí za předpokladu, tokenu aktuální relace není odvolaný a nevypršela platnost.) Po zadaném časovém období uživatel bude muset donutit k získání tokenu novou relaci.
 
 Omezení maximálního stáří donutí uživatele bude možné ověřit častěji. Vzhledem k tomu, že jednofaktorovému ověřování je považován za méně bezpečné než ověřování službou Multi-Factor Authentication, doporučujeme nastavit tuto vlastnost na hodnotu, která je rovna nebo větší než vlastnost Jednofaktorovému relace Token maximální stáří.
 
@@ -219,7 +217,7 @@ Abyste mohli začít, proveďte následující kroky:
     Get-AzureADPolicy
     ```
 
-### <a name="example-manage-an-organizations-default-policy"></a>Příklad: Správa organizace výchozí zásady
+### <a name="example-manage-an-organizations-default-policy"></a>Příklad: Spravovat zásady vaší organizace
 V tomto příkladu vytvoříte zásadu, která umožňuje uživatelům přihlásit se méně často napříč celou organizací. K tomuto účelu vytvořte zásadu životnost tokenu Jednofaktorovému aktualizovat tokeny, které používá ve vaší organizaci. Zásady platí pro každou aplikaci ve vaší organizaci a každý instanční objekt, který ještě nemá zásady nastavené.
 
 1. Vytvoření zásady životnosti tokenu.
@@ -256,7 +254,7 @@ V tomto příkladu vytvoříte zásadu, která umožňuje uživatelům přihlás
     Set-AzureADPolicy -Id <ObjectId FROM GET COMMAND> -DisplayName "OrganizationDefaultPolicyUpdatedScenario" -Definition @('{"TokenLifetimePolicy":{"Version":1,"MaxAgeSingleFactor":"2.00:00:00"}}')
     ```
 
-### <a name="example-create-a-policy-for-web-sign-in"></a>Příklad: Vytvoření zásady pro webové přihlášení
+### <a name="example-create-a-policy-for-web-sign-in"></a>Příklad: Vytvořit zásadu pro webové přihlášení
 
 V tomto příkladu vytvoříte zásadu, která vyžaduje, aby uživatelé ověření častěji ve webové aplikaci. Tyto zásady nastaví Životnost tokenů přístupu nebo ID a maximální stáří tokenu relace služby Multi-Factor Authentication instančnímu objektu služby vaší webové aplikace.
 
@@ -287,7 +285,7 @@ V tomto příkladu vytvoříte zásadu, která vyžaduje, aby uživatelé ověř
         ```
 
 
-### <a name="example-create-a-policy-for-a-native-app-that-calls-a-web-api"></a>Příklad: Vytvoření zásady pro nativní aplikaci, která volá webové rozhraní API
+### <a name="example-create-a-policy-for-a-native-app-that-calls-a-web-api"></a>Příklad: Vytvořit zásadu pro nativní aplikaci, která volá webové rozhraní API
 V tomto příkladu vytvoříte zásadu, která vyžaduje, aby uživatelé ověření méně často. Zásada také prodlouží dobu, kterou uživatel může být neaktivní, než uživatel musí donutit. Zásady se použijí pro webové rozhraní API. Když nativní aplikace požádá o webové rozhraní API jako prostředek, je tato zásada použitá.
 
 1. Vytvoření zásady životnosti tokenu.
@@ -440,7 +438,7 @@ Odstraní zadanou zásadu.
 ### <a name="application-policies"></a>Zásady aplikací
 Následující rutiny můžete použít pro zásady aplikací.</br></br>
 
-#### <a name="add-azureadapplicationpolicy"></a>Přidat AzureADApplicationPolicy
+#### <a name="add-azureadapplicationpolicy"></a>Add-AzureADApplicationPolicy
 Propojí určené zásady na aplikaci.
 
 ```PowerShell

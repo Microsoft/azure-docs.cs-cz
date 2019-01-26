@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: mareat
-ms.openlocfilehash: 1f8807094c6e93cf55467e76e0fa2b617ec3d5fb
-ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
+ms.openlocfilehash: 6b3f3217f90c2c5a72ba9576b5e0cc89e6133cd8
+ms.sourcegitcommit: 97d0dfb25ac23d07179b804719a454f25d1f0d46
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/16/2018
-ms.locfileid: "51822870"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54913296"
 ---
 # <a name="visualizing-network-security-group-flow-logs-with-power-bi"></a>Skupina zabezpečení sítě visualizing protokolů toku s využitím Power BI
 
@@ -46,7 +46,7 @@ Pomocí zadané v šabloně, kterou můžete prozkoumat vizuály:
 
 ## <a name="setup"></a>Nastavení
 
-Než začnete, musíte mít síťové zabezpečení skupiny tok protokolování povoleno na jeden nebo více skupin zabezpečení sítě ve vašem účtu. Pokyny pro povolení zabezpečení sítě protokoly toků, přečtěte si následující článek: [Úvod k protokolování toků pro skupiny zabezpečení sítě](network-watcher-nsg-flow-logging-overview.md).
+Než začnete, musíte mít síťové zabezpečení skupiny tok protokolování povoleno na jeden nebo více skupin zabezpečení sítě ve vašem účtu. Pokyny k povolení protokolů toku zabezpečení sítě najdete v následujícím článku: [Úvod k protokolování toků pro skupiny zabezpečení sítě](network-watcher-nsg-flow-logging-overview.md).
 
 Také musíte mít nainstalovaného na vašem počítači a dostatek volného místa na vašem počítači ke stažení a načíst data protokolu, který existuje ve vašem účtu úložiště klienta Power BI Desktopu.
 
@@ -73,7 +73,7 @@ Také musíte mít nainstalovaného na vašem počítači a dostatek volného m�
 
 Součástí šablony jsou sadu vizuálů, které pomáhají smysl protokolů toku NSG. Následující obrázky znázorňují vzorek vypadá řídicí panel, když naplněný daty. Níže najdete Zkoumáme, každý vizuál podrobněji 
 
-![Power BI][5]
+![powerbi][5]
  
 Ukazuje visual horní vyjádření zadané IP adresy, které inicializovali většina připojení za období. Velikost pole odpovídá relativní počet připojení. 
 
@@ -123,7 +123,7 @@ Nebojte se, že jste tuto šablonu pro vaše potřeby přizpůsobit. Existuje mn
 
 ## <a name="next-steps"></a>Další kroky
 
-Zjistěte, jak vizualizovat vaše protokoly toků NSG se zásobníkem Elastick návštěvou [vizualizovat Azure Network Watcher NSG protokolů toku s využitím opensourcových nástrojů](network-watcher-visualize-nsg-flow-logs-open-source-tools.md)
+Zjistěte, jak vizualizovat vaše protokoly toků NSG pomocí řešení Elastic Stack návštěvou [vizualizovat Azure Network Watcher NSG protokolů toku s využitím opensourcových nástrojů](network-watcher-visualize-nsg-flow-logs-open-source-tools.md)
 
 [1]: ./media/network-watcher-visualize-nsg-flow-logs-power-bi/figure1.png
 [2]: ./media/network-watcher-visualize-nsg-flow-logs-power-bi/figure2.png

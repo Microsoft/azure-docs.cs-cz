@@ -16,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
 ms.date: 03/28/2018
-ms.openlocfilehash: 04c9803909fb5dfd1072840a0c1d7e33814ad1a3
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.openlocfilehash: 606234096314eb73cb32f8fbcc2d5e6e79c25573
+ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54264356"
+ms.lasthandoff: 01/26/2019
+ms.locfileid: "55077093"
 ---
 # <a name="what-is-azure-machine-learning-studio"></a>Co je Azure Machine Learning Studio?
 Microsoft Azure Machine Learning Studio je nástroj pro spolupráci, ve kterém je možné přetahováním vytvářet, testovat a nasazovat řešení prediktivní analýzy dat. Machine Learning Studio publikuje modely jako webové služby, které je možné snadno využívat ve vlastních aplikacích nebo nástrojích BI, například v Excelu.
@@ -39,10 +39,10 @@ Nevyžaduje se žádné programování – model prediktivní analýzy se konstr
 
 > [!TIP]
 > Pokud si chcete stáhnout a vytisknout diagram s přehledem funkcí nástroje Machine Learning Studio, nahlédněte do tématu [Diagram s přehledem možností nástroje Machine Learning Studio](studio-overview-diagram.md).
-> 
-> 
+>
+>
 
-![Azure ML Studio diagram: Vytváření experimentů, čtení dat pro mnoho zdrojů, zápis dat se stanoveným skóre, zápis modelů.][ml-studio-overview]
+![Azure Machine Learning studio diagram: Vytváření experimentů, čtení dat pro mnoho zdrojů, zápis dat se stanoveným skóre, zápis modelů.][ml-studio-overview]
 
 ## <a name="get-started-with-machine-learning-studio"></a>Začínáme s nástrojem Machine Learning Studio
 Když poprvé vstoupíte do nástroje [Machine Learning Studio](https://studio.azureml.net), zobrazí se stránka **Domů**. Zde si můžete zobrazit dokumentaci, videa a webináře a najdete tu i další přínosné materiály.
@@ -104,7 +104,7 @@ Modul je algoritmus, který je možné provést na datech. Machine Learning Stud
 * [Lineární regrese][linear-regression] – Vytvoří online model lineární regrese na základě klesání gradientu.
 * [Určení skóre modelu][score-model] – Stanoví skóre pro trénovaný klasifikační nebo regresní model.
 
-Během vytváření experimentu je možné si vybírat ze seznamu modulů, které jsou k dispozici v nabídce nalevo od plátna.  
+Během vytváření experimentu je možné si vybírat ze seznamu modulů, které jsou k dispozici v nabídce nalevo od plátna.
 
 Modul může obsahovat sadu parametrů, pomocí kterých je možné konfigurovat jeho vnitřní algoritmy. Když na plátnu vyberete modul, parametry modulu se zobrazí v podokně **Vlastnosti** napravo od plátna. Úpravou parametrů v tomto podokně můžete model optimalizovat.
 
@@ -162,7 +162,7 @@ Jakmile model natrénujete, vyhodnotíte ho na zbývajících testovacích datec
 * **Ukázka**: Část datové sady, by měla představovat celek. Vzorky lze vybírat náhodně nebo podle konkrétních příznaků či atributů datové sady.
 
 ## <a name="next-steps"></a>Další postup
-Se základy prediktivní analýzy a strojového učení se můžete seznámit v [podrobném kurzu](create-experiment.md) a [na základě ukázek](sample-experiments.md).  
+Se základy prediktivní analýzy a strojového učení se můžete seznámit v [podrobném kurzu](create-experiment.md) a [na základě ukázek](sample-experiments.md).
 
 
 <!-- Module References -->

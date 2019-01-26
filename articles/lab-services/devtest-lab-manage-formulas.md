@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/17/2018
 ms.author: spelluru
-ms.openlocfilehash: 47699925f057aab25fe6f7c1c7d0b0620e7e4dbe
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 60790f0f31915a50829df09d039a4f74860a47d7
+ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51227990"
+ms.lasthandoff: 01/26/2019
+ms.locfileid: "55076430"
 ---
 # <a name="manage-azure-devtest-labs-formulas"></a>Správa vzorců Azure DevTest Labs
 
@@ -44,39 +44,35 @@ Následující kroky vás provedou procesem vytvoření vzorce z vlastní image,
 
 3. V seznamu testovacích prostředí vyberte požadované prostředí.  
 
-4. V okně testovacího prostředí, vyberte **vzorce (opakovaně použitelné báze)**.
+4. Na stránce testovacího prostředí, vyberte možnost **vzorce (opakovaně použitelné báze)**.
    
     ![Vzorec nabídky](./media/devtest-lab-create-formulas/lab-settings-formulas.png)
 
-5. Na **vzorce** okně vyberte **+ přidat**.
+5. Na **vzorce** stránce **+ přidat**.
    
     ![Přidat vzorec](./media/devtest-lab-create-formulas/add-formula.png)
 
-6. Na **vyberte bázi** okně vyberte base (vlastní image, image z Marketplace nebo vzorec), ze kterého chcete vytvořit vzorec.
+6. Na **vyberte bázi** vyberte base (vlastní image, image z Marketplace nebo vzorec), ze kterého chcete vytvořit vzorec.
    
     ![Základní přehled](./media/devtest-lab-create-formulas/base-list.png)
 
-7. Na **vytvořit vzorec** okně zadejte následující hodnoty:
+7. Na **základní nastavení** karty **vytvořit vzorec** stránky, zadejte následující hodnoty:
    
     * **Název vzorce** – zadejte název pro váš vzorec. Tato hodnota se zobrazí v seznamu základních imagí při vytváření virtuálního počítače. Název je ověřit, protože jeho typ, a pokud není platný, zobrazí se zpráva požadavky na platný název.
-    * **Popis** – Zadejte výstižný popis vzorec. Tato hodnota je dostupná v kontextové nabídce na vzorec, při vytváření virtuálního počítače.
     * **Uživatelské jméno** – zadejte uživatelské jméno, které je udělen oprávnění správce.
     * **Heslo** – zadejte - nebo vyberte z rozevíracího seznamu - hodnotu, která souvisí s tajným klíčem (heslo), který chcete použít pro zadaného uživatele. Další informace o ukládání tajných klíčů v trezoru klíčů a jejich používání při vytváření prostředků testovacího prostředí, najdete v článku [Store tajné kódy ve službě Azure Key Vault](devtest-lab-store-secrets-in-key-vault.md).
-    * **Typ disku virtuálního počítače** – zadejte buď pevný disk (jednotku pevného disku) nebo SSD (jednotky SSD) k označení jaký typ disku úložiště je povolený pro virtuální počítače zřízené s využitím této základní image.
-    * ** Virtuální počítač velikost ** – vyberte jednu z předdefinovaných položek, které určují jader procesoru, velikosti paměti RAM a velikost pevného disku virtuálního počítače k vytvoření. 
-    * **Artefakty** – tuto možnost vyberte, chcete-li otevřít **přidat artefakty** okno, ve kterém můžete vybrat a nakonfigurovat artefakty, které chcete přidat do základní image. Další informace o artefakty, naleznete v tématu [při vytváření vlastních artefaktů pro virtuální počítač Azure DevTest Labs](devtest-lab-artifact-author.md).
-    * **Upřesňující nastavení** – tuto možnost vyberte, chcete-li otevřít **Upřesnit** okno, kde můžete nakonfigurovat následující nastavení:
-        * **Virtuální síť** – zadejte požadovanou virtuální síť.
-        * **Podsíť** -zadat požadované podsítě.    
-        * **Konfiguraci IP adresy** – určete, zda má veřejný, privátní nebo sdílených IP adres. Další informace o sdílených IP adres najdete v tématu [Principy sdílených IP adres ve službě Azure DevTest Labs](./devtest-lab-shared-ip.md).
-        * **Nastavit tento počítač nárokovatelných** – provádění na počítači "nárokovatelných" znamená, že ho nepřiřadí vlastnictví v době vytvoření. Místo toho uživatelé testovacího prostředí budou moci převzít vlastnictví ("deklarace") počítače v okně testovacího prostředí.     
-    * **Obrázek** – toto pole zobrazí název základní image, které jste vybrali v předchozím okně. 
-     
-       ![Vytvoření vzorce](./media/devtest-lab-create-formulas/create-formula.png)
+    * **Velikost virtuálního počítače** – vyberte **změnit velikost** ke změně velikosti virtuálního počítače. 
+    * **Artefakty** – vyberte **přidat nebo odebrat artefakty** stránky, ve kterém můžete vybrat a nakonfigurovat artefakty, které chcete přidat do základní image. Další informace o artefakty, naleznete v tématu [při vytváření vlastních artefaktů pro virtuální počítač Azure DevTest Labs](devtest-lab-artifact-author.md).
+8. Přepněte **upřesňující nastavení** kartu a zadejte následující hodnoty:
+    - **Virtuální síť** – Chcete-li změnit virtuální síť, vyberte **změnit virtuální síť**. 
+    - **Podsíť** – Chcete-li změnit podsíť, vyberte **změnit podsíť**. 
+    - **Konfiguraci IP adresy** – určete, zda má veřejný, privátní nebo sdílených IP adres. Další informace o sdílených IP adres najdete v tématu [Principy sdílených IP adres ve službě Azure DevTest Labs](./devtest-lab-shared-ip.md).
+    - **Datum a čas vypršení** – zadejte datum vypršení platnosti a čas pro virtuální počítač tak, aby virtuální počítač se automaticky odstraní. 
+    - **Nastavit tento počítač nárokovatelných** – provádění na počítači "nárokovatelných" znamená, že ho nepřiřadí vlastnictví v době vytvoření. Místo toho uživatelé testovacího prostředí budou moci převzít vlastnictví ("deklarace") počítače na stránce testovacího prostředí.     
+    - **Počet instancí nárokovatelných** – určete, kolik nárokovatelných instacnes, kterou chcete vytvořit. 
+8. Vyberte **odeslat** vytvořit vzorec.
 
-8. Vyberte **vytvořit** vytvořit vzorec.
-
-9. Po vytvoření vzorce, se zobrazí v seznamu na **vzorce** okno.
+9. Po vytvoření vzorce, se zobrazí v seznamu na **vzorce** stránky.
 
 ### <a name="create-a-formula-from-a-vm"></a>Vytvoření vzorce z virtuálního počítače
 Následující kroky vás provedou procesem vytvoření vzorce na základě existujícího virtuálního počítače. 
@@ -89,15 +85,15 @@ Následující kroky vás provedou procesem vytvoření vzorce na základě exis
 1. Přihlaste se k webu [Azure Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040).
 2. Vyberte **všechny služby**a pak vyberte **DevTest Labs** ze seznamu.
 3. V seznamu testovacích prostředí vyberte požadované prostředí.  
-4. Cvičení **přehled** okno, vyberte virtuální počítač, ze kterého chcete vytvořit vzorec.
+4. Cvičení **přehled** stránky, vyberte virtuální počítač, ze kterého chcete vytvořit vzorec.
    
     ![Testovací prostředí virtuálních počítačů](./media/devtest-lab-create-formulas/my-vms.png)
-5. V okně Virtuálního počítače, vyberte **vytvořit vzorec (opakovaně použitelná báze)**.
+5. Na stránce Virtuálního počítače, vyberte možnost **vytvořit vzorec (opakovaně použitelná báze)**.
    
     ![Vytvoření vzorce](./media/devtest-lab-create-formulas/create-formula-menu.png)
-6. Na **vytvořit vzorec** okno, zadejte **název** a **popis** pro nový vzorec.
+6. Na **vytvořit vzorec** stránky, zadejte **název** a **popis** pro nový vzorec.
    
-    ![Vytvořit okno vzorce](./media/devtest-lab-create-formulas/create-formula-blade.png)
+    ![Vytvoření vzorce stránky](./media/devtest-lab-create-formulas/create-formula-blade.png)
 7. Vyberte **OK** vytvořit vzorec.
 
 ## <a name="modify-a-formula"></a>Upravit vzorec
@@ -106,11 +102,11 @@ Pokud chcete upravit vzorec, postupujte takto:
 1. Přihlaste se k webu [Azure Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040).
 2. Vyberte **všechny služby**a pak vyberte **DevTest Labs** ze seznamu.
 3. V seznamu testovacích prostředí vyberte požadované prostředí.  
-4. V okně testovacího prostředí, vyberte **vzorce (opakovaně použitelné báze)**.
+4. Na stránce testovacího prostředí, vyberte možnost **vzorce (opakovaně použitelné báze)**.
    
     ![Vzorec nabídky](./media/devtest-lab-manage-formulas/lab-settings-formulas.png)
-5. Na **Lab vzorce** okně vyberte vzorec, který chcete upravit.
-6. Na **aktualizovat vzorec** okno, proveďte požadované úpravy a vyberte **aktualizace**.
+5. Na **Lab vzorce** vyberte vzorec, který chcete upravit.
+6. Na **aktualizovat vzorec** stránce, proveďte požadované úpravy a vyberte **aktualizace**.
 
 ## <a name="delete-a-formula"></a>Odstranit vzorce
 Pokud chcete odstranit vzorec, postupujte takto:
@@ -118,10 +114,10 @@ Pokud chcete odstranit vzorec, postupujte takto:
 1. Přihlaste se k webu [Azure Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040).
 2. Vyberte **všechny služby**a pak vyberte **DevTest Labs** ze seznamu.
 3. V seznamu testovacích prostředí vyberte požadované prostředí.  
-4. V testovacím prostředí **nastavení** okně vyberte **vzorce**.
+4. V testovacím prostředí **nastavení** stránce **vzorce**.
    
     ![Vzorec nabídky](./media/devtest-lab-manage-formulas/lab-settings-formulas.png)
-5. Na **Lab vzorce** okno, vyberte tři tečky vpravo od vzorec, který chcete odstranit.
+5. Na **Lab vzorce** stránky, vyberte tři tečky vpravo od vzorec, který chcete odstranit.
    
     ![Vzorec nabídky](./media/devtest-lab-manage-formulas/lab-formulas-blade.png)
 6. V místní nabídce na vzorec, vyberte **odstranit**.

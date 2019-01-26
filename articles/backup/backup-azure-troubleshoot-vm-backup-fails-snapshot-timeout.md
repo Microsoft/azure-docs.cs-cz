@@ -9,12 +9,12 @@ ms.service: backup
 ms.topic: troubleshooting
 ms.date: 12/03/2018
 ms.author: genli
-ms.openlocfilehash: 1ee45699040f58a1317009ab44bb5ac863323869
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: 7446c680ffdba28fef7eb68441d04a4c18398847
+ms.sourcegitcommit: 97d0dfb25ac23d07179b804719a454f25d1f0d46
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54816751"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54912545"
 ---
 # <a name="troubleshoot-azure-backup-failure-issues-with-the-agent-or-extension"></a>Řešení potíží s Azure Backup selhání: Potíže s agentů nebo rozšíření
 
@@ -59,7 +59,7 @@ Pokud chcete tento problém vyřešit, odeberte zámek na skupinu prostředků v
 **Krok 1: [Odebrat zámek ze skupiny prostředků bodů obnovení](#remove_lock_from_the_recovery_point_resource_group)** <br>
 **Krok 2: [Odstranit kolekci bodů obnovení](#clean_up_restore_point_collection)**<br>
 
-## <a name="usererrorkeyvaultpermissionsnotconfigured---backup-doesnt-have-sufficient-permissions-to-the-key-vault-for-backup-of-encrypted-vms"></a>UserErrorKeyvaultPermissionsNotConfigured – Backup nemá dostatečná oprávnění k trezoru klíčů pro zálohování šifrovaných virtuálních počítačů.
+## <a name="usererrorkeyvaultpermissionsnotconfigured---backup-doesnt-have-sufficient-permissions-to-the-key-vault-for-backup-of-encrypted-vms"></a>UserErrorKeyvaultPermissionsNotConfigured – Backup nemá dostatečná oprávnění k trezoru klíčů pro zálohování šifrovaných virtuálních počítačů
 
 **Kód chyby:**: UserErrorKeyvaultPermissionsNotConfigured <br>
 **Chybová zpráva**: Zálohování nemá dostatečná oprávnění k trezoru klíčů pro zálohování šifrovaných virtuálních počítačů. <br>
@@ -105,7 +105,7 @@ Po registraci a naplánovat virtuálního počítače pro služby Azure Backup z
 **Kód chyby:**: UserErrorUnsupportedDiskSize <br>
 **Chybová zpráva**: Azure Backup momentálně nepodporuje disky větší než 1023 GB <br>
 
-Vaše operace zálohování může selhat při zálohování virtuálního počítače s velikostí disku větší než 1023GB, protože trezoru není upgradována rychlé obnovení. Upgrade na rychlé obnovení bude poskytovat podporu až na 4TB, najdete v tomto [článku](backup-instant-restore-capability.md).  
+Vaše operace zálohování může selhat při zálohování virtuálního počítače s velikostí disku větší než 1023GB, protože trezoru není upgradována rychlé obnovení. Upgrade na rychlé obnovení bude poskytovat podporu až na 4TB, najdete v tomto [článku](backup-instant-restore-capability.md#upgrading-to-instant-restore).  
 
 ## <a name="usererrorstandardssdnotsupported---currently-azure-backup-does-not-support-standard-ssd-disks"></a>UserErrorStandardSSDNotSupported – aktuálně Azure Backup nepodporuje disky SSD na úrovni Standard
 
@@ -114,7 +114,7 @@ Vaše operace zálohování může selhat při zálohování virtuálního poč�
 
 Azure Backup teď podporuje disky SSD na úrovni Standard pouze pro trezory služby, které jsou upgradovány na [rychlé obnovení](backup-instant-restore-capability.md).
 
-## <a name="usererrorbackupoperationinprogress---unable-to-initiate-backup-as-another-backup-operation-is-currently-in-progress"></a>UserErrorBackupOperationInProgress – nepovedlo se inicializovat zálohování, protože právě probíhá jiná operace zálohování.
+## <a name="usererrorbackupoperationinprogress---unable-to-initiate-backup-as-another-backup-operation-is-currently-in-progress"></a>UserErrorBackupOperationInProgress – nepovedlo se inicializovat zálohování, protože právě probíhá jiná operace zálohování
 
 **Kód chyby:**: UserErrorBackupOperationInProgress <br>
 **Chybová zpráva**: Nepovedlo se inicializovat zálohování, protože právě probíhá jiná operace zálohování<br>
@@ -132,7 +132,6 @@ Poslední úlohy zálohování se nezdařila, protože je v průběhu existujíc
 4. Zkuste operaci zálohování zopakujte.
 
 Pokud naplánované zálohování trvá delší dobu konfliktní s další konfigurací zálohování zkontrolujte [osvědčené postupy](backup-azure-vms-introduction.md#best-practices), [výkon zálohování](backup-azure-vms-introduction.md#backup-performance) a [obnovení posouzení ](backup-azure-vms-introduction.md#restore-considerations).
-
 
 
 ## <a name="causes-and-solutions"></a>Příčiny a řešení

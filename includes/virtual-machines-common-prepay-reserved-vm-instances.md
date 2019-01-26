@@ -1,15 +1,15 @@
 ---
 author: yashesvi
-ms.author: cwatson
+ms.author: banders
 ms.service: virtual-machines-windows
 ms.topic: include
 ms.date: 11/30/2018
-ms.openlocfilehash: a35c3a9a6d914cf7e6620819b24e34d954f55c2d
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.openlocfilehash: 1da2278eee6fcea5c013e9c2f5f4ad3e3013b590
+ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52742235"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54906301"
 ---
 # <a name="prepay-for-virtual-machines-with-azure-reserved-vm-instances"></a>Předplatit si virtuální počítače se službou Azure Reserved VM Instances
 
@@ -32,11 +32,11 @@ Rezervované instance virtuálních počítačů jsou dostupné pro většinu ve
 
 - Sleva za rezervaci neplatí pro následující virtuální počítače:
   - Klasické virtuální počítače a cloudové služby
-  - Řadu virtuálních počítačů: Řady A-series Av2-series a G-series
-  - Virtuální počítače ve verzi Preview: všechny řady virtuálních počítačů nebo velikost, která je ve verzi preview
-- Cloudy: Rezervace nejsou dostupné ke koupi v oblastí Německo a Čína.
-- Nedostatečná kvóta: rezervace, který je v oboru pro jedno předplatné musí mít kvóty virtuálních procesorů dostupných v předplatném pro nové rezervovaných Instancí. Například pokud cílové předplatné má kvótu virtuálních procesorů 10 pro řady D-Series, pak nelze koupíte rezervace pro 11 Standard_D1 instancí. Kontrola kvóty pro rezervace zahrnují virtuální počítače už nasazená v předplatném. Například pokud předplatné má kvótu virtuálních procesorů 10 pro řady D-Series a má dvě instance standard_D1 nasazený, pak můžete koupit rezervaci pro 10 standard_D1 instancí v tomto předplatném. 
-- Omezení kapacity: ve výjimečných případech, omezeních nákup rezervace nový dílčí velikostí virtuálních počítačů z důvodu nízká kapacita v oblasti Azure.
+  - Řady virtuálních počítačů: Řady A-series, Av2-series a G-series
+  - Virtuální počítače ve verzi Preview: Všechny řady virtuálních počítačů nebo velikost, která je ve verzi preview
+- Cloudů: Rezervace nejsou dostupné ke koupi v oblastí Německo a Čína.
+- Nedostatečná kvóta: Rezervace, který je v oboru pro jedno předplatné musí mít kvóty virtuálních procesorů dostupných v předplatném pro nové rezervovaných Instancí. Například pokud cílové předplatné má kvótu virtuálních procesorů 10 pro řady D-Series, pak nelze koupíte rezervace pro 11 Standard_D1 instancí. Kontrola kvóty pro rezervace zahrnují virtuální počítače už nasazená v předplatném. Například pokud předplatné má kvótu virtuálních procesorů 10 pro řady D-Series a má dvě instance standard_D1 nasazený, pak můžete koupit rezervaci pro 10 standard_D1 instancí v tomto předplatném. 
+- Kapacitní omezení: Ve výjimečných případech omezeních nákup rezervace nový dílčí velikostí virtuálních počítačů z důvodu nízká kapacita v oblasti Azure.
 
 ## <a name="buy-a-reserved-vm-instance"></a>Nákup instancí rezervovaných virtuálních počítačů
 
@@ -48,7 +48,7 @@ Rezervované instance virtuálních počítačů jsou dostupné pro většinu ve
     | Pole      | Popis|
     |:------------|:--------------|
     |Název        |Název této rezervace.| 
-    |Předplatné|Předplatné použité k úhradě rezervace. Způsob platby v rámci předplatného účtuje pořizovací náklady pro rezervaci. Musí se jednat o předplatné se smlouvou Enterprise (číslo nabídky: MS-AZR-0017P) nebo předplatné s průběžnými platbami (číslo nabídky: MS-AZR-0003P). V případě předplatného se smlouvou Enterprise se poplatky strhávají z peněžního zůstatku v rámci dané registrace nebo se účtují jako nadlimitní využití. V případě předplatného s průběžnými platbami se poplatky účtují na platební kartu nebo pomocí způsobu platby faktur určeného v předplatném.|    
+    |Předplatné|Předplatné použité k úhradě rezervace. Způsob platby v rámci předplatného účtuje pořizovací náklady pro rezervaci. Tento typ předplatného musí být smlouvu enterprise agreement (číslo nabídky: MS-AZR-0017P) i pro průběžné platby (číslo nabídky: MS-AZR-0003P). V případě předplatného se smlouvou Enterprise se poplatky strhávají z peněžního zůstatku v rámci dané registrace nebo se účtují jako nadlimitní využití. V případě předplatného s průběžnými platbami se poplatky účtují na platební kartu nebo pomocí způsobu platby faktur určeného v předplatném.|    
     |Rozsah       |Obor pro rezervaci může vztahovat na jedno předplatné jeden nebo více odběrů (sdíleném oboru). Pokud vyberete: <ul><li>Jedno předplatné – sleva za rezervaci se používá pro virtuální počítače v tomto předplatném. </li><li>Na úrovni Shared – sleva za rezervaci se použijí pro virtuální počítače spuštěné v rámci všech předplatných v rámci kontextu vaší fakturace. Pro podnikové zákazníky sdílený obor je registraci a zahrnuje všechna předplatná (s výjimkou předplatná pro vývoj/testování) během registrace. Pro zákazníky s průběžnými platbami sdílený obor je Všechna předplatná s průběžnými platbami, vytváří správce účtu.</li></ul>|
     |Oblast    |Oblast Azure, která je předmětem rezervace.|    
     |Velikost virtuálního počítače     |Velikost instancí virtuálních počítačů.|
@@ -86,6 +86,6 @@ Další informace o rezervacích Azure, najdete v následujících článcích:
 - [Náklady na software Windows, které nejsou součástí rezervace](../articles/billing/billing-reserved-instance-windows-software-costs.md)
 - [Rezervace Azure v programu Partnerské centrum Cloud Solution Provider (CSP)](https://docs.microsoft.com/partner-center/azure-reservations)
 
-## <a name="need-help-contact-us"></a>Potřebujete pomoct? Kontaktujte nás.
+## <a name="need-help-contact-us"></a>Potřebujete pomoc? Kontaktujte nás.
 
 Pokud máte otázky nebo potřebujete pomoc, [vytvořit žádost o podporu](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest).

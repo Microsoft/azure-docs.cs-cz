@@ -10,20 +10,20 @@ ms.service: active-directory
 ms.workload: identity
 ms.component: users-groups-roles
 ms.topic: article
-ms.date: 01/23/2019
+ms.date: 01/24/2019
 ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
-ms.openlocfilehash: f44f7167cff316b15124448678c4cae90b384ed9
-ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
+ms.openlocfilehash: 8408d620ba78fed07c44feae74c607a555d5563b
+ms.sourcegitcommit: 97d0dfb25ac23d07179b804719a454f25d1f0d46
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54890081"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54910581"
 ---
 # <a name="administrator-roles-for-microsoft-365-workloads"></a>Role správce pro úlohy Microsoft 365
 
-Tento článek obsahuje seznam úloh Microsoft 365 společně odkazy na obsah role a funkce oblasti rozhraní API. Obecné diskuse o problémů s delegováním lze nalézt v [delegování Role v Azure Active Directory plánování](roles-concept-delegation.md).
+Všechny produkty v Microsoftu 365 je možné spravovat pomocí Správce rolí ve službě Azure AD. Některé produkty také poskytují další role, které jsou specifické pro tento produkt. Informace o rolích nepodporuje každého produktu najdete v následující tabulce. Obecné diskuse o problémů s delegováním lze nalézt v [delegování Role v Azure Active Directory plánování](roles-concept-delegation.md).
 
 ## <a name="where-to-find-content"></a>Kde se mají hledat obsah
 

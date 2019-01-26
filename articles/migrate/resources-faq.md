@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 01/11/2019
 ms.author: snehaa
-ms.openlocfilehash: cc71aba3e884214b054e0ac4e888a52e38b1c390
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: 619369972991bab0b23e7e9ae4e0a146f875e59a
+ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54812535"
+ms.lasthandoff: 01/26/2019
+ms.locfileid: "55079252"
 ---
 # <a name="azure-migrate---frequently-asked-questions-faq"></a>Azure Migrate – nejčastější dotazy (FAQ)
 
@@ -33,7 +33,7 @@ Azure Migrate je služba posouzení, která vám pomůže zjistit vaše místní
 
 ### <a name="whats-the-difference-between-using-azure-migrate-for-assessments-and-the-map-toolkit"></a>Jaký je rozdíl mezi použitím nástrojů pro posouzení a Map Toolkit Azure Migrate?
 
-[Azure Migrate](migrate-overview.md) poskytuje posouzení migrace speciálně pro účely pomoci s přípravu migrace a vyhodnocení místních úloh do Azure. [Microsoft Assessment and Planning (MAP) Toolkit](https://www.microsoft.com/en-us/download/details.aspx?id=7826) má další funkce. Plánování pro novější verze Windows klientských a serverových operačních systémů, například migrace software využití sledování atd. U scénářů dál používat MAP Toolkit.
+[Azure Migrate](migrate-overview.md) poskytuje posouzení migrace speciálně pro účely pomoci s přípravu migrace a vyhodnocení místních úloh do Azure. [Microsoft Assessment and Planning (MAP) Toolkit](https://www.microsoft.com/en-us/download/details.aspx?id=7826) má jiné funkce, jako jsou migrace plánování novějších verzích Windows klientských a serverových operačních systémů a sledování využití softwaru. U scénářů dál používat MAP Toolkit.
 
 
 ### <a name="how-is-azure-migrate-different-from-azure-site-recovery-deployment-planner"></a>Jak se Azure Migrate liší od Azure Site Recovery Deployment Planner?
@@ -198,7 +198,7 @@ Ne, vizualizace závislostí se nedá exportovat. Ale protože Azure Migrate vyu
 
 ### <a name="how-can-i-automate-the-installation-of-microsoft-monitoring-agent-mma-and-dependency-agent"></a>Jak automatizovat instalaci Microsoft Monitoring Agent (MMA) a agenta závislostí
 
-[Tady](https://docs.microsoft.com/azure/monitoring/monitoring-service-map-configure#installation-script-examples) je skript, který můžete použít pro instalaci agenta závislostí. Pro agenta MMA [tady](https://gallery.technet.microsoft.com/scriptcenter/Install-OMS-Agent-with-2c9c99ab) je k dispozici na webu TechNet, který můžete využít skript.
+[Tady](https://docs.microsoft.com/azure/monitoring/monitoring-service-map-configure#installation-script-examples) je skript, který můžete použít pro instalaci agenta závislostí. [Tady](https://docs.microsoft.com/azure/azure-monitor/platform/log-analytics-agent#install-and-configure-agent) jsou pokyny, jak můžete nainstalovat pomocí příkazového řádku nebo automatizované metody agenta MMA. Pro agenta MMA, můžete také využít k dispozici skript [tady](https://gallery.technet.microsoft.com/scriptcenter/Install-OMS-Agent-with-2c9c99ab) na webu Technet.
 
 Kromě skriptů, mohou také využívat nástroje nasazení, jako je System Center Configuration Manageru (SCCM) [Intigua](https://www.intigua.com/getting-started-intigua-for-azure-migration) atd. a nasadit agenty.
 
@@ -213,10 +213,10 @@ Seznam operačních systémů Windows nepodporuje agenta závislostí je [tady](
 Seznam operačních systémů Linux podporuje agenta závislostí je [tady](https://docs.microsoft.com/azure/monitoring/monitoring-service-map-configure#supported-linux-operating-systems).
 
 ### <a name="can-i-visualize-dependencies-in-azure-migrate-for-more-than-one-hour-duration"></a>Je možné vizualizovat závislosti ve službě Azure Migrate déle než hodinu?
-Ne, Azure Migrate vám umožňuje vizualizovat závislosti pro dobu trvání až jednu hodinu. Azure Migrate vám umožní přejít zpět na konkrétní datum v historii pro až za poslední měsíc, ale až 1 hodinu, než je maximální doba trvání, pro kterou můžete vizualizovat závislosti. Například můžete použít funkci doba trvání na mapě závislostí, chcete-li zobrazit závislosti včerejška ale jenom ji mohou zobrazit okna jednu hodinu.
+Ne, Azure Migrate vám umožňuje vizualizovat závislosti pro dobu trvání až jednu hodinu. Azure Migrate vám umožní přejít zpět na konkrétní datum v historii pro až za poslední měsíc, ale až 1 hodinu, než je maximální doba trvání, pro kterou můžete vizualizovat závislosti. Například můžete použít funkci doba trvání na mapě závislostí, chcete-li zobrazit závislosti včerejška ale jenom ji mohou zobrazit okna jednu hodinu. Můžete však použít Log Analytics pro [zadávat dotazy na data závislostí](https://docs.microsoft.com/azure/migrate/how-to-create-group-machine-dependencies#query-dependency-data-from-log-analytics) za delší dobu.
 
 ### <a name="is-dependency-visualization-supported-for-groups-with-more-than-10-vms"></a>Platí pro skupiny s více než 10 virtuálních počítačů vizualizace závislostí?
-Je možné [vizualizace závislostí u skupin](https://docs.microsoft.com/azure/migrate/how-to-create-group-dependencies) , že mají až na 10 virtuálních počítačů, pokud máte skupinu s více než 10 virtuálních počítačů, doporučujeme rozdělit skupiny v menším skupinám a vizualizace závislostí.
+Je možné [vizualizace závislostí u skupin](https://docs.microsoft.com/azure/migrate/how-to-create-group-dependencies) , které mají až 10 virtuálních počítačů. Pokud máte skupinu pomocí více než 10 virtuálních počítačů, doporučujeme rozdělit skupiny v menším skupinám a vizualizace závislostí.
 
 
 ## <a name="next-steps"></a>Další postup

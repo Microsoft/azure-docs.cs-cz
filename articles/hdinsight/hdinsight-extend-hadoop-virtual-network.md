@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/06/2018
-ms.openlocfilehash: 0119e05ce5cb8d1c2e27936dc44896b7acef9312
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: a2731397ece833adcedc4ebab640fa1b3ab2fc05
+ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53725962"
+ms.lasthandoff: 01/26/2019
+ms.locfileid: "55076822"
 ---
 # <a name="extend-azure-hdinsight-using-an-azure-virtual-network"></a>Rozšíření Azure HDInsight pomocí Azure Virtual Network
 
@@ -308,7 +308,7 @@ Další informace najdete v tématu [řízení síťového provozu](#networktraf
 
 ## <a id="hdinsight-ports"></a> Požadované porty
 
-Pokud máte v úmyslu používat síť **virtuální zařízení brány firewall** pro zabezpečení virtuální sítě, musíte povolit odchozí přenosy na následující porty:
+Pokud máte v úmyslu používat **brány firewall** k zabezpečení virtuální sítě a přístup ke clusteru na konkrétních portech, by měly umožňovat provoz na portech potřebných pro váš scénář. Ve výchozím nastavení nemusíte na seznam povolených těchto portů:
 
 * 53
 * 443

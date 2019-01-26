@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: conceptual
-ms.date: 10/18/2018
+ms.date: 01/24/2019
 ms.author: diberry
-ms.openlocfilehash: ae75f60316e39f08825448439b525f00ccec6253
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 75644fd94e6e00e92547cd9e1d42b26c6a55807f
+ms.sourcegitcommit: 97d0dfb25ac23d07179b804719a454f25d1f0d46
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53098181"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54910624"
 ---
 # <a name="prebuilt-domain-intent-and-entity-models"></a>Předem připravené modely entity, domény a záměr
 

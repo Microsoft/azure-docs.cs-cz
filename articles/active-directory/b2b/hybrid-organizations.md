@@ -3,19 +3,19 @@ title: Spolupráce B2B pro hybridní organizace – Azure Active Directory | Dok
 description: Partnerům poskytnout přístup k místním a cloudovým prostředkům se spoluprací Azure AD B2B.
 services: active-directory
 ms.service: active-directory
-ms.component: B2B
+ms.subservice: B2B
 ms.topic: conceptual
 ms.date: 04/26/2018
 ms.author: mimart
 author: msmimart
 manager: daveba
 ms.reviewer: sasubram
-ms.openlocfilehash: b22917d27498787984d27d4bcba443b08d99ba9b
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: e519e20d9e0eb100a05b32b0e902bb56782f3ef9
+ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54424502"
+ms.lasthandoff: 01/26/2019
+ms.locfileid: "55075053"
 ---
 # <a name="azure-active-directory-b2b-collaboration-for-hybrid-organizations"></a>Spolupráce Azure Active Directory s B2B pro hybridní organizace
 

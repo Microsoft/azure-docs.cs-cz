@@ -3,19 +3,19 @@ title: Místní integrace zpětný zápis hesla se samoobslužné resetování H
 description: Získat místní zpětný zápis hesel cloudové AD infratstructure
 services: active-directory
 ms.service: active-directory
-ms.component: authentication
+ms.subservice: authentication
 ms.topic: conceptual
 ms.date: 01/16/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry
-ms.openlocfilehash: 68823ffb7b274b8afc31de9d85bded3da853fcac
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: f1e90e0499372f78b91f3e21284f37178aff70ff
+ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54438061"
+ms.lasthandoff: 01/26/2019
+ms.locfileid: "55075631"
 ---
 # <a name="what-is-password-writeback"></a>Co je zpětný zápis hesla?
 

@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 11/17/2018
 ms.author: yijenj
-ms.openlocfilehash: da8fd886afa6028959247caa0c6e007df20fdd1b
-ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
+ms.openlocfilehash: 66f850225faba8d45eaa07493a0817c9ed0ed52b
+ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54077738"
+ms.lasthandoff: 01/26/2019
+ms.locfileid: "55075580"
 ---
 # <a name="azure-partner-customer-usage-attribution"></a>Attribution využití zákazníka partnerů Azure
 
@@ -32,11 +32,17 @@ Jako partner Microsoftu můžete přidružit využití Azure s jakýmikoli prost
 - Šablony Azure Resource Manageru: Šablony Resource Manageru nebo šablony řešení k nasazení služeb Azure ke spuštění softwaru partnera. Partneři můžete vytvořit šablonu Resource Manageru pro definování infrastrukturu a konfiguraci jejich řešení Azure. Šablony Resource Manageru umožňuje vám a vašim zákazníkům k nasazení svého řešení v průběhu životního cyklu. Máte jistotu, že se prostředky nasadí konzistentně. 
 - Rozhraní API Azure Resource Manageru: Partneři mohou volat rozhraní API Resource Manageru přímo k nasazení šablony Resource Manageru nebo ke generování volání rozhraní API přímo zřídit služby Azure. 
 
-Využití attribution zákazníka se vyžaduje u všech [šablony řešení](./cloud-partner-portal-orig/cloud-partner-portal-solution-template-offer-publish.md) publikovaných na webu Azure Marketplace. 
+Attribution využití zákazníky je vyžadován na [nabídky aplikace Azure](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/azure-applications/cpp-azure-app-offer) publikovaných na webu Azure Marketplace.
 
 ## <a name="use-resource-manager-templates"></a>Použití šablon Resource Manageru
 
-Mnoho partnerská řešení jsou nasazené na předplatné zákazníka pomocí šablon Resource Manageru. Pokud máte šablony Resource Manageru, který je dostupný v Tržišti Azure Marketplace, na Githubu nebo jako rychlém startu procesu úpravy šablony pro povolení nový způsob sledování by měl být přímočaré. Další informace najdete v tématu [vytvoření a nasazení první šablony Resource Manageru](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-create-first-template).
+Mnoho partnerská řešení jsou nasazené na předplatné zákazníka pomocí šablon Resource Manageru. Pokud máte šablony Resource Manageru, který je dostupný v Tržišti Azure Marketplace, na Githubu nebo jako rychlém startu procesu úpravy šablony pro povolení nový způsob sledování by měl být přímočaré.
+
+Další informace o vytváření a publikování šablon řešení najdete v tématu
+
+* [Vytvoření a nasazení první šablony Resource Manageru](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-quickstart-create-templates-use-the-portal).
+* [Nabídka Azure aplikace](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/azure-applications/cpp-azure-app-offer).
+* Video: [Vytváření řešení šablony a spravované aplikace pro Azure Marketplace](https://channel9.msdn.com/Events/Build/2018/BRK3603).
 
 
 ## <a name="add-a-guid-to-your-template"></a>Přidat identifikátor GUID do šablony

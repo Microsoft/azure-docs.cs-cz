@@ -7,7 +7,7 @@ author: CelesteDG
 manager: mtillman
 ms.assetid: 5471ad74-20b3-44df-a2b5-43cde2c0a045
 ms.service: active-directory
-ms.component: develop
+ms.subservice: develop
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
@@ -16,12 +16,12 @@ ms.date: 09/24/2018
 ms.author: celested
 ms.reviewer: dkershaw, sureshja
 ms.custom: aaddev
-ms.openlocfilehash: 249d5068c38466bf8ac3820449bcf613a15c168a
-ms.sourcegitcommit: 02ce0fc22a71796f08a9aa20c76e2fa40eb2f10a
+ms.openlocfilehash: ce1940d0b83e0713ce41d84e8d4bfeff6cb75954
+ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51288811"
+ms.lasthandoff: 01/26/2019
+ms.locfileid: "55075852"
 ---
 # <a name="azure-active-directory-graph-api"></a>Azure Active Directory Graph API
 
@@ -47,9 +47,9 @@ Chcete-li začít používat službu Azure Active Directory Graph API, přečtě
 Azure AD Graph API poskytuje následující funkce:
 
 * **Koncové body rozhraní API REST**: Azure AD Graph API je služba RESTful sestává z koncových bodů, které jsou přístupné pomocí standardní požadavky HTTP. Azure AD Graph API podporuje typy obsahu XML nebo Javascript Object Notation (JSON) pro požadavky a odpovědi. Další informace najdete v tématu [odkaz na rozhraní REST API služby Azure AD Graph](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/api-catalog).
-* **Ověřování pomocí Azure AD**: každý požadavek do Azure AD Graph API se musí ověřit připojením JSON Web Token (JWT) v autorizační hlavičce požadavku. Tento token se získávají pomocí požadavku na koncový bod tokenu Azure AD a použijte platné přihlašovací údaje. Můžete použít tok přihlašovacích údajů klienta OAuth 2.0 nebo tok k získání tokenu pro volání Graphu poskytování autorizačních kódů. Další informace najdete [OAuth 2.0 ve službě Azure AD](https://msdn.microsoft.com/library/azure/dn645545.aspx).
-* **Na základě rolí autorizace (RBAC)**: skupiny zabezpečení jsou používány k provádění RBAC v Azure AD Graph API. Například, pokud chcete zjistit, zda má uživatel přístup ke konkrétnímu prostředku, může zavolat [zkontrolovat členství ve skupině (přenosné)](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/functions-and-actions#checkMemberGroups) operaci, která vrátí hodnotu true nebo false.
-* **Rozdílový dotaz**: rozdílový dotaz umožňuje sledovat změny v adresáři mezi dvěma časová období bez nutnosti provádět časté dotazy k Azure AD Graph API. Tento typ požadavku vrátí pouze změny provedené mezi předchozí požadavek rozdílový dotaz a aktuální požadavek. Další informace najdete v tématu [rozdílový dotaz Azure AD Graph API](https://msdn.microsoft.com/Library/Azure/Ad/Graph/howto/azure-ad-graph-api-differential-query).
+* **Ověřování pomocí Azure AD**: Každý požadavek na Azure AD Graph API musí být ověřené připojením JSON Web Token (JWT) v autorizační hlavičce požadavku. Tento token se získávají pomocí požadavku na koncový bod tokenu Azure AD a použijte platné přihlašovací údaje. Můžete použít tok přihlašovacích údajů klienta OAuth 2.0 nebo tok k získání tokenu pro volání Graphu poskytování autorizačních kódů. Další informace najdete [OAuth 2.0 ve službě Azure AD](https://msdn.microsoft.com/library/azure/dn645545.aspx).
+* **Autorizace na základě role (RBAC)**: Skupiny zabezpečení jsou používány k provádění RBAC v Azure AD Graph API. Například, pokud chcete zjistit, zda má uživatel přístup ke konkrétnímu prostředku, může zavolat [zkontrolovat členství ve skupině (přenosné)](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/functions-and-actions#checkMemberGroups) operaci, která vrátí hodnotu true nebo false.
+* **Rozdílový dotaz**: Rozdílový dotaz umožňuje sledovat změny v adresáři mezi dvěma časová období bez nutnosti provádět časté dotazy k Azure AD Graph API. Tento typ požadavku vrátí pouze změny provedené mezi předchozí požadavek rozdílový dotaz a aktuální požadavek. Další informace najdete v tématu [rozdílový dotaz Azure AD Graph API](https://msdn.microsoft.com/Library/Azure/Ad/Graph/howto/azure-ad-graph-api-differential-query).
 * **Rozšíření adresáře**: Přidání vlastních vlastností do objektů adresáře bez nutnosti externím úložišti. Například pokud vaše aplikace vyžaduje vlastnost Skypové pro každého uživatele, můžete zaregistrovat nové vlastnosti v adresáři a bude k dispozici pro použití u každého uživatelského objektu. Další informace najdete v tématu [rozšíření schématu adresáře Azure AD Graph API](https://msdn.microsoft.com/Library/Azure/Ad/Graph/howto/azure-ad-graph-api-directory-schema-extensions).
 * **Zabezpečuje obory oprávnění**: Azure AD Graph API zveřejňuje obory oprávnění, které umožňují zabezpečený přístup k datům Azure AD pomocí OAuth 2.0. Podporuje širokou škálu typů aplikací klienta, včetně:
   
@@ -62,7 +62,7 @@ Azure AD Graph API poskytuje následující funkce:
 
 Azure AD Graph API umožňuje mnoho scénářů aplikace. Nejčastěji používané jsou následující scénáře:
 
-* **Obchodní (jeden Tenant) aplikace**: V tomto scénáři funguje podnikový vývojář v organizaci, která má předplatné Office 365. Vývojář je vytváření webové aplikace, která komunikuje se službou Azure AD k provádění úloh, jako je například přiřazení licence k uživateli. Tato úloha vyžaduje přístup k Azure AD Graph API, takže vývojář zaregistruje ve službě Azure AD jednoho tenanta aplikaci a nakonfiguruje oprávnění čtení a zápisu pro Azure AD Graph API. Potom aplikace je nakonfigurována používat svoje vlastní přihlašovací údaje nebo jsou právě přihlášení uživatele k získání tokenu pro volání rozhraní Azure AD Graph API.
+* **Obchodní aplikace (jeden Tenant)**: V tomto scénáři funguje podnikový vývojář v organizaci, která má předplatné Office 365. Vývojář je vytváření webové aplikace, která komunikuje se službou Azure AD k provádění úloh, jako je například přiřazení licence k uživateli. Tato úloha vyžaduje přístup k Azure AD Graph API, takže vývojář zaregistruje ve službě Azure AD jednoho tenanta aplikaci a nakonfiguruje oprávnění čtení a zápisu pro Azure AD Graph API. Potom aplikace je nakonfigurována používat svoje vlastní přihlašovací údaje nebo jsou právě přihlášení uživatele k získání tokenu pro volání rozhraní Azure AD Graph API.
 * **Software jako služba aplikace (s více Tenanty)**: V tomto scénáři je nezávislý výrobce softwaru (ISV) vývoj prostředí více tenantů webovou aplikaci, která poskytuje funkce pro správu uživatelů pro jiných organizací používajících službu Azure AD. Tyto funkce vyžadují přístup k adresářových objektů, takže aplikace musí volat rozhraní Azure AD Graph API. Vývojář aplikace registruje ve službě Azure AD, nakonfiguruje ho, aby se vyžadují pro čtení a zápis pro Azure AD Graph API a pak povolí externího přístupu tak, aby další organizace můžou udělit souhlas k používání aplikace v jejich adresáře. Při ověření uživatele v jiné organizaci k aplikaci poprvé, zobrazí se dialogové okno souhlasu s oprávnění, která požaduje aplikace. Udělení souhlasu bude dejte aplikaci jsou požadovaná oprávnění k Azure AD Graph API v adresáři uživatele. Další informace o rozhraní pro udělování souhlasu najdete v tématu [přehled rozhraní pro udělování souhlasu](consent-framework.md).
 
 ## <a name="next-steps"></a>Další postup

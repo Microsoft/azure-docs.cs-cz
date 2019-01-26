@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/21/2018
-ms.openlocfilehash: 51d3c1c63c07c3e2a36d5e963ec00c9f23831579
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.openlocfilehash: 29fef9177e40bd89dd0f179b028d2f044af8addb
+ms.sourcegitcommit: 97d0dfb25ac23d07179b804719a454f25d1f0d46
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53634214"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54913085"
 ---
 # <a name="use-hdinsight-spark-cluster-to-analyze-data-in-data-lake-storage"></a>Použití clusteru Spark v HDInsight k analýze dat v Data Lake Storage
 
@@ -131,3 +131,4 @@ Pokud jste vytvořili cluster služby HDInsight s Data Lake Storage jako další
 * [Vytvoření samostatného Scala aplikaci pro spuštění v clusteru Apache Spark](apache-spark-create-standalone-application.md)
 * [Vytváření aplikací Apache Spark pro cluster HDInsight Spark Linux pomocí nástrojů HDInsight v sadě Azure Toolkit pro IntelliJ](apache-spark-intellij-tool-plugin.md)
 * [Vytváření aplikací Apache Spark pro cluster HDInsight Spark Linux pomocí nástrojů HDInsight v sadě Azure Toolkit pro Eclipse](apache-spark-eclipse-tool-plugin.md)
+* [Použití Azure Data Lake Storage Gen2 s clustery Azure HDInsight](../hdinsight-hadoop-use-data-lake-storage-gen2.md)

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/14/2018
 ms.author: subsarma
-ms.openlocfilehash: 4a4a4c6a37e3c52054d7bc773ef04bf057709fdd
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 487bf54d80c9249e5ce69c4b5aeff942a21d5b48
+ms.sourcegitcommit: 97d0dfb25ac23d07179b804719a454f25d1f0d46
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54025092"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54913146"
 ---
 # <a name="name-resolution-for-resources-in-azure-virtual-networks"></a>Překlad názvů pro prostředky ve virtuálních sítích Azure
 
@@ -196,6 +196,11 @@ Pokud používáte vlastní servery DNS, Azure poskytuje možnost zadat víc ser
 
 Pokud používáte model nasazení Azure Resource Manageru, můžete určit servery DNS pro virtuální síť a síťové rozhraní. Podrobnosti najdete v tématu [Správa virtuální sítě](manage-virtual-network.md) a [Správa síťového rozhraní](virtual-network-network-interface.md).
 
+> [!NOTE]
+> Pokud se rozhodnete pro vlastního serveru DNS pro vaši virtuální síť, musíte zadat alespoň jednu IP adresu serveru DNS; virtuální sítě v opačném případě bude ignorovat konfiguraci a místo toho použijte DNS poskytnutých platformou Azure.
+> 
+> 
+
 Pokud používáte model nasazení classic, můžete zadat servery DNS pro virtuální síť na webu Azure Portal nebo [soubor s konfigurací sítě](https://msdn.microsoft.com/library/azure/jj157100). Pro cloudové služby, můžete určit servery DNS prostřednictvím [konfigurační soubor služby](https://msdn.microsoft.com/library/azure/ee758710) nebo pomocí prostředí PowerShell, [New-AzureVM](/powershell/module/servicemanagement/azure/new-azurevm).
 
 > [!NOTE]
@@ -213,5 +218,5 @@ Model nasazení Azure Resource Manageru:
 Model nasazení Classic:
 
 * [Schéma konfigurace služby Azure](https://msdn.microsoft.com/library/azure/ee758710)
-* [Schéma konfigurace virtuální sítě](https://msdn.microsoft.com/library/azure/jj157100)
+* [Virtual Network Configuration Schema](https://msdn.microsoft.com/library/azure/jj157100)
 * [Konfigurace virtuální sítě pomocí souboru konfigurace sítě](virtual-networks-using-network-configuration-file.md)

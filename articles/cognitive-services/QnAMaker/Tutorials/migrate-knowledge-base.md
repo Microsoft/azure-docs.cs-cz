@@ -8,15 +8,15 @@ manager: cgronlun
 ms.service: cognitive-services
 ms.component: qna-maker
 ms.topic: article
-ms.date: 09/12/2018
+ms.date: 01/24/2019
 ms.author: tulasim
 ms.custom: seodec18
-ms.openlocfilehash: 261d42a6c21681ee8015edfe73ad78b4458eb0ee
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: a156466e0da6d53af130f331a82adaae146afbfc
+ms.sourcegitcommit: 97d0dfb25ac23d07179b804719a454f25d1f0d46
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53078803"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54913338"
 ---
 # <a name="migrate-a-knowledge-base-using-export-import"></a>Migrace znalostní báze pomocí exportu importu
 Nástroj QnA Maker oznámila všeobecné zpřístupnění 7. května 2018 v \\\build\ místa konání konference. Nástroj QnA Maker GA má nové architektury založené na Azure. Znalostních bází, které jsou vytvořené pomocí nástroje QnA Maker bezplatná verze Preview se musí migrovat na všeobecně dostupnou QnA Maker Nástroj QnA Maker ve verzi Preview se přestanou používat v lednu 2019. Další informace o změnách ve verzi GA QnA Maker, najdete v oznámení všeobecné dostupnosti nástroje QnA Maker [blogový příspěvek](https://aka.ms/qnamakerga-blog).

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/02/2018
 ms.author: tomfitz
-ms.openlocfilehash: 48d23f9d6d79e89e24c808a59b73854952c93240
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: 6ff49b3a08977b28ae6fa0971e5c7d72af158a46
+ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54425437"
+ms.lasthandoff: 01/26/2019
+ms.locfileid: "55081207"
 ---
 # <a name="creating-and-deploying-azure-resource-groups-through-visual-studio"></a>Vytvoření a nasazení skupiny prostředků Azure pomocí sady Visual Studio
 Pomocí sady Visual Studio můžete vytvořit projekt, který nasadí vaši infrastrukturu a kód do Azure. Můžete například definovat webového hostitele, webový server a databázi pro vaši aplikaci a nasadit tuto infrastrukturu spolu s kódem. Visual Studio poskytuje řadu různých předem připravených šablon pro běžné scénáře nasazení. V tomto článku nasadíte webovou aplikaci a SQL Database.  
@@ -144,7 +144,7 @@ Teď můžete svůj projekt nasadit. Když nasadíte projekt skupiny prostředk�
 5. Stisknutím tlačítka **Nasadit** nasadíte projekt do Azure. Otevře se powershellová konzola mimo instanci sady Visual Studio. Po zobrazení výzvy zadejte v powershellové konzole heslo správce SQL Serveru. **Konzola PowerShellu může být skrytá za jinými položkami nebo minimalizovaná na hlavním panelu.** Najděte ji, vyberte ji a zadejte heslo.
    
    > [!NOTE]
-   > Sada Visual Studio vás může požádat o instalaci rutin Azure PowerShell. Rutiny Azure PowerShell jsou zapotřebí k úspěšnému nasazení skupin prostředků. Pokud k tomu budete vyzváni, nainstalujte je. Další informace najdete v článku [Instalace a konfigurace Azure PowerShellu](/powershell/azure/azurerm/install-azurerm-ps).
+   > Sada Visual Studio vás může požádat o instalaci rutin Azure PowerShell. Rutiny Azure PowerShell jsou zapotřebí k úspěšnému nasazení skupin prostředků. Pokud k tomu budete vyzváni, nainstalujte je. Další informace najdete v článku [Instalace a konfigurace Azure PowerShellu](/powershell/azure/install-az-ps).
    > 
    > 
 6. Nasazení může zabrat několik minut. V oknech **Výstup** se zobrazí stav nasazení. Po dokončení nasazení vám poslední zpráva oznámí úspěšné nasazení. Bude vypadat zhruba následovně:

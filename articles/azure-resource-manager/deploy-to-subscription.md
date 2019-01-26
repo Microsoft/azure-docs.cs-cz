@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/15/2018
 ms.author: tomfitz
-ms.openlocfilehash: 542993d803282bbf62e2e401cab1968a656a8971
-ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
+ms.openlocfilehash: 3fcfd0f3e4f9ca6e94a7213bc60e54560938799b
+ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54352270"
+ms.lasthandoff: 01/26/2019
+ms.locfileid: "55077552"
 ---
 # <a name="create-resource-groups-and-resources-for-an-azure-subscription"></a>Vytvoření skupiny prostředků a prostředků pro předplatné Azure
 
@@ -36,7 +36,7 @@ Pro schéma, použijte `https://schema.management.azure.com/schemas/2018-05-01/s
 
 Pro nasazení příkazu Azure CLI, použijte [az nasazení vytvořit](/cli/azure/deployment?view=azure-cli-latest#az-deployment-create).
 
-Nasazení příkazového prostředí PowerShell, použijte [New-AzureRmDeployment](/powershell/module/azurerm.resources/new-azurermdeployment).
+Nasazení příkazového prostředí PowerShell, použijte [New-AzDeployment](/powershell/module/az.resources/new-azdeployment).
 
 ## <a name="name-and-location"></a>Název a umístění
 
@@ -95,7 +95,7 @@ az deployment create \
 Pokud chcete nasadit tuto šablonu pomocí Powershellu, použijte:
 
 ```azurepowershell-interactive
-New-AzureRmDeployment `
+New-AzDeployment `
   -Name demoEmptyRG `
   -Location southcentralus `
   -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/emptyRG.json `
@@ -153,7 +153,7 @@ az deployment create \
 Pokud chcete nasadit tuto šablonu pomocí Powershellu, použijte:
 
 ```azurepowershell-interactive
-New-AzureRmDeployment `
+New-AzDeployment `
   -Name demoCopyRG `
   -Location southcentralus `
   -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/copyRG.json `
@@ -244,7 +244,7 @@ az deployment create \
 Pokud chcete nasadit tuto šablonu pomocí Powershellu, použijte:
 
 ```azurepowershell-interactive
-New-AzureRmDeployment `
+New-AzDeployment `
   -Name demoRGStorage `
   -Location southcentralus `
   -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/newRGWithStorage.json `
@@ -305,9 +305,9 @@ az deployment create \
 Pokud chcete nasadit tuto šablonu pomocí Powershellu, použijte:
 
 ```azurepowershell-interactive
-$definition = Get-AzureRmPolicyDefinition | Where-Object { $_.Properties.DisplayName -eq 'Audit resource location matches resource group location' }
+$definition = Get-AzPolicyDefinition | Where-Object { $_.Properties.DisplayName -eq 'Audit resource location matches resource group location' }
 
-New-AzureRmDeployment `
+New-AzDeployment `
   -Name policyassign `
   -Location southcentralus `
   -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/policyassign.json `
@@ -331,12 +331,12 @@ az deployment create \
 Pokud chcete nasadit tuto šablonu pomocí Powershellu, použijte:
 
 ```azurepowershell-interactive
-$definition = Get-AzureRmPolicyDefinition | Where-Object { $_.Properties.DisplayName -eq 'Allowed locations' }
+$definition = Get-AzPolicyDefinition | Where-Object { $_.Properties.DisplayName -eq 'Allowed locations' }
 
 $locations = @("westus", "westus2")
 $policyParams =@{listOfAllowedLocations = @{ value = $locations}}
 
-New-AzureRmDeployment `
+New-AzDeployment `
   -Name policyassign `
   -Location southcentralus `
   -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/policyassign.json `
@@ -402,7 +402,7 @@ az deployment create \
 Pokud chcete nasadit tuto šablonu pomocí Powershellu, použijte:
 
 ```azurepowershell-interactive
-New-AzureRmDeployment `
+New-AzDeployment `
   -Name definePolicy `
   -Location southcentralus `
   -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/policydefineandassign.json
@@ -458,11 +458,11 @@ az deployment create \
 Pokud chcete nasadit tuto šablonu pomocí Powershellu, použijte:
 
 ```azurepowershell-interactive
-$role = Get-AzureRmRoleDefinition -Name Contributor
+$role = Get-AzRoleDefinition -Name Contributor
 
-$adgroup = Get-AzureRmADGroup -DisplayName demogroup
+$adgroup = Get-AzADGroup -DisplayName demogroup
 
-New-AzureRmDeployment `
+New-AzDeployment `
   -Name demoRole `
   -Location southcentralus `
   -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/roleassign.json `
@@ -545,11 +545,11 @@ az deployment create \
 Pokud chcete nasadit tuto šablonu pomocí Powershellu, použijte:
 
 ```azurepowershell-interactive
-$role = Get-AzureRmRoleDefinition -Name Contributor
+$role = Get-AzRoleDefinition -Name Contributor
 
-$adgroup = Get-AzureRmADGroup -DisplayName demogroup
+$adgroup = Get-AzADGroup -DisplayName demogroup
 
-New-AzureRmDeployment `
+New-AzDeployment `
   -Name demoRole `
   -Location southcentralus `
   -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/scopedRoleAssign.json `

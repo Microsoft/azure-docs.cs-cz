@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 11/20/2017
+ms.date: 01/24/2019
 ms.author: priyamo
-ms.openlocfilehash: 868b541f7260218b4a488526ccea24014a9d095b
-ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
+ms.openlocfilehash: 0d5fad857163a9cb821a500356a7e39221286a75
+ms.sourcegitcommit: 97d0dfb25ac23d07179b804719a454f25d1f0d46
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54886675"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54913372"
 ---
 # <a name="tutorial-use-a-windows-vm-system-assigned-managed-identity-to-access-azure-storage-via-access-key"></a>Kurz: Použití spravované identity systém přiřadil virtuálního počítače Windows pro přístup k úložišti Azure přes přístupový klíč
 
@@ -36,6 +36,8 @@ V tomto kurzu se dozvíte, jak pomocí spravované identity přiřazené systém
 ## <a name="prerequisites"></a>Požadavky
 
 [!INCLUDE [msi-tut-prereqs](../../../includes/active-directory-msi-tut-prereqs.md)]
+
+[!INCLUDE [updated-for-az.md](../../../includes/updated-for-az.md)]
 
 ## <a name="create-a-storage-account"></a>vytvořit účet úložiště 
 
@@ -119,17 +121,17 @@ $keysContent = $keysResponse.Content | ConvertFrom-Json
 $key = $keysContent.keys[0].value
 ```
 
-Dále vytvoříme soubor s názvem test.txt. Potom použijeme přístupový klíč k úložišti k ověření pomocí rutiny `New-AzureStorageContent`, nahrajeme soubor do kontejneru objektů blob a potom soubor stáhneme.
+Dále vytvoříme soubor s názvem test.txt. Potom použijeme přístupový klíč k úložišti k ověření pomocí rutiny `New-AzStorageContent`, nahrajeme soubor do kontejneru objektů blob a potom soubor stáhneme.
 
 ```bash
 echo "This is a test text file." > test.txt
 ```
 
-Nejprve je potřeba nainstalovat rutiny Azure Storage pomocí `Install-Module Azure.Storage`. Potom nahrajte právě vytvořený objekt blob pomocí rutiny PowerShellu `Set-AzureStorageBlobContent`:
+Nejprve je potřeba nainstalovat rutiny Azure Storage pomocí `Install-Module Az.Storage`. Potom nahrajte právě vytvořený objekt blob pomocí rutiny PowerShellu `Set-AzStorageBlobContent`:
 
 ```powershell
-$ctx = New-AzureStorageContext -StorageAccountName <STORAGE-ACCOUNT> -StorageAccountKey $key
-Set-AzureStorageBlobContent -File test.txt -Container <CONTAINER-NAME> -Blob testblob -Context $ctx
+$ctx = New-AzStorageContext -StorageAccountName <STORAGE-ACCOUNT> -StorageAccountKey $key
+Set-AzStorageBlobContent -File test.txt -Container <CONTAINER-NAME> -Blob testblob -Context $ctx
 ```
 
 Odpověď:
@@ -146,10 +148,10 @@ Context           : Microsoft.WindowsAzure.Commands.Storage.AzureStorageContext
 Name              : testblob
 ```
 
-Právě nahraný objekt blob si také můžete stáhnout pomocí rutiny PowerShellu `Get-AzureStorageBlobContent`:
+Právě nahraný objekt blob si také můžete stáhnout pomocí rutiny PowerShellu `Get-AzStorageBlobContent`:
 
 ```powershell
-Get-AzureStorageBlobContent -Blob testblob -Container <CONTAINER-NAME> -Destination test2.txt -Context $ctx
+Get-AzStorageBlobContent -Blob testblob -Container <CONTAINER-NAME> -Destination test2.txt -Context $ctx
 ```
 
 Odpověď:

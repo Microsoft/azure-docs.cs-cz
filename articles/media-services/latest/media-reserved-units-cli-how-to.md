@@ -11,15 +11,15 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/08/2018
+ms.date: 01/24/2019
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: 2b10de83e00b3668f70461f76634c560bcbea1a4
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: 9f95be8a9d75065deedd3bd7c92907145e966494
+ms.sourcegitcommit: 97d0dfb25ac23d07179b804719a454f25d1f0d46
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53133787"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54913049"
 ---
 # <a name="scaling-media-processing"></a>Škálování zpracování médií
 
@@ -32,19 +32,27 @@ Tento článek popisuje, jak používat [Media Services v3 CLI](https://aka.ms/a
 
 ## <a name="prerequisites"></a>Požadavky 
 
-- Nainstalovat a používat rozhraní příkazového řádku místně, musíte mít Azure CLI verze 2.0 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI](/cli/azure/install-azure-cli). 
++ Nainstalujte [rozhraní příkazového řádku Azure CLI]( /cli/azure/install-azure-cli). Tento článek vyžaduje použití Azure CLI verze 2.0 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. 
 
-    V současné době všechny [Media Services v3 CLI](https://aka.ms/ams-v3-cli-ref) příkazy fungují ve službě Azure Cloud Shell. Doporučujeme používat rozhraní příkazového řádku místně.
-
-- [Vytvoření účtu Media Services](create-account-cli-how-to.md).
+    Můžete také použít [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview?view=azure-cli-latest).
++ [Vytvoření účtu Media Services](create-account-cli-how-to.md).
 
 ## <a name="scale-media-reserved-units-with-cli"></a>Škálování médií rezervované jednotky pomocí rozhraní příkazového řádku
 
-Následující [az ams account naposledy použité položky](https://docs.microsoft.com/cli/azure/ams/account/mru?view=azure-cli-latest) sets rezervované jednotky médií na "amsaccount" účtu pomocí příkazu **počet** a **typ** parametry.
+1. Spusťte příkaz `login`. Ať už používáte Azure cloud shell nebo místní prostředí příkazového řádku, spusťte tento příkaz.
 
-```azurecli
-az account set mru -n amsaccount -g amsResourceGroup --count 10 --type S3
-```
+    ```azurecli
+    az login
+    ```
+    
+    Pokud rozhraní příkazového řádku může spustit výchozí prohlížeč, udělá to a načte přihlašovací stránku. V opačném případě budete muset otevřít stránku prohlížeče a postupujte podle pokynů v příkazovém řádku zadejte autorizační kód po přejití do [ https://aka.ms/devicelogin ](https://aka.ms/devicelogin) v prohlížeči.
+2. Spusťte příkaz `mru`.
+
+    Následující [az ams account naposledy použité položky](https://docs.microsoft.com/cli/azure/ams/account/mru?view=azure-cli-latest) sets rezervované jednotky médií na "amsaccount" účtu pomocí příkazu **počet** a **typ** parametry.
+
+    ```azurecli
+    az account set mru -n amsaccount -g amsResourceGroup --count 10 --type S3
+    ```
 
 ## <a name="billing"></a>Fakturace
 

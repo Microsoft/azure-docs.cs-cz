@@ -3,19 +3,19 @@ title: Operace ochrany ve verzi preview Azure AD hesel a vytváření sestav
 description: Operace aktualizace ochrany ve verzi preview po nasazení pro Azure AD hesel a vytváření sestav
 services: active-directory
 ms.service: active-directory
-ms.component: authentication
+ms.subservice: authentication
 ms.topic: article
 ms.date: 11/02/2018
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jsimmons
-ms.openlocfilehash: c19275f096191a2d55c939cbc9b76e7ffc6e1b8b
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: 8d7002a014fc6cfab1888a6bc97c0f864de1d99d
+ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54424434"
+ms.lasthandoff: 01/26/2019
+ms.locfileid: "55080867"
 ---
 # <a name="preview-azure-ad-password-protection-operational-procedures"></a>Verze Preview: Azure AD hesla ochranu provozní postupy
 

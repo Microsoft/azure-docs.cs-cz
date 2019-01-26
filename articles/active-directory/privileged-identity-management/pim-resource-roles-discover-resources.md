@@ -11,14 +11,14 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.component: pim
-ms.date: 08/30/2018
+ms.date: 01/23/2019
 ms.author: rolyon
-ms.openlocfilehash: d9a6ab49d619e487eee6fb13abe128cfc167b560
-ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
+ms.openlocfilehash: e81aab8268266c99c9f08e165a98df31f2106123
+ms.sourcegitcommit: 97d0dfb25ac23d07179b804719a454f25d1f0d46
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43306685"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54912267"
 ---
 # <a name="discover-azure-resources-to-manage-in-pim"></a>Vyhledejte prostředky Azure ke správě v PIM
 
@@ -52,12 +52,16 @@ Když poprvé nastavujete PIM pro prostředky Azure, budete muset zjistit a vybe
 
 1. Přidáte značku zaškrtnutí vedle všech nespravovaných prostředků, které chcete spravovat.
 
+1. Klikněte na tlačítko **prostředky spravovat** k zahájení správy vybrané prostředky.
+
     > [!NOTE]
     > Po nastavení skupiny pro správu nebo předplatného je spravovat, nemůže nespravované. Odebírá se nastavení PIM tomu jiný správce prostředků.
 
     ![Zjišťování – Správa prostředků](./media/pim-resource-roles-discover-resources/discovery-manage-resource.png)
 
-1. Klikněte na tlačítko **prostředky spravovat** k zahájení správy vybrané prostředky.
+1. Pokud se zobrazí zpráva k potvrzení onboarding vybraného prostředku ke správě, klikněte na tlačítko **Ano**.
+
+    ![Zjišťování – Správa prostředků zprávy](./media/pim-resource-roles-discover-resources/discovery-manage-resource-message.png)
 
 ## <a name="next-steps"></a>Další postup
 

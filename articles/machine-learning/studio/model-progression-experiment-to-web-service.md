@@ -1,8 +1,21 @@
 ---
-Název: Jak model Machine Learning Studio se stane titleSuffix služby web: Azure Machine Learning Studio Popis: Přehled o mechanismu jak experimentovat vaše postupuje model Azure Machine Learning z vývojového zprovozněné webové službě.
-Services: machine learningu ms.service: ms.component strojového učení: studio ms.topic: článku
-
-Autor: ericlicoding ms.author: amlstudiodocs ms.custom: předchozí ms.author=yahajiza, předchozí Autor = YasinMSFT ms.date: 03/20/2017
+title: Jak model strojového učení stane webové služby
+titleSuffix: Azure Machine Learning Studio
+description: Přehled o mechanismu jak experimentovat vaše postupuje model Azure Machine Learning z vývojového zprovozněné webové službě.
+services: machine-learning
+ms.service: machine-learning
+ms.component: studio
+ms.topic: article
+author: ericlicoding
+ms.author: amlstudiodocs
+ms.custom: previous-ms.author=yahajiza, previous-author=YasinMSFT
+ms.date: 03/20/2017
+ms.openlocfilehash: d084917f247aa20f59aea5179efa045838d7a2af
+ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
+ms.translationtype: MT
+ms.contentlocale: cs-CZ
+ms.lasthandoff: 01/26/2019
+ms.locfileid: "55076889"
 ---
 # <a name="how-a-machine-learning-studio-model-progresses-from-an-experiment-to-an-operationalized-web-service"></a>Jak model Machine Learning Studio postupuje od experimentu ke zprovozněné službě webové
 Azure Machine Learning Studio poskytuje interaktivní plátno, která umožňuje vyvíjet, spouštět, testovat a iterovat ***experimentovat*** představující model prediktivní analýzy. Existují nejrůznější moduly, které můžete:
@@ -19,9 +32,9 @@ Jakmile budete spokojeni s experimentu, ji můžete nasadit jako ***Classic Azur
 V tomto článku jsme poskytují přehled o mechanismu jak experimentovat vaše postupuje model Machine Learning z vývojového zprovozněné webové službě.
 
 > [!NOTE]
-> Existují jiné způsoby, jak vyvíjet a nasazovat modely strojového učení, ale tento článek se zaměřuje na tom, jak používat Machine Learning Studio. Například popis toho, jak vytvořit prediktivní webové služby classic s jazykem R najdete v blogovém příspěvku [sestavení a nasazení prediktivní webové aplikace pomocí nástroje RStudio a Azure ML](http://blogs.technet.com/b/machinelearning/archive/2015/09/25/build-and-deploy-a-predictive-web-app-using-rstudio-and-azure-ml.aspx).
-> 
-> 
+> Existují jiné způsoby, jak vyvíjet a nasazovat modely strojového učení, ale tento článek se zaměřuje na tom, jak používat Machine Learning Studio. Například popis toho, jak vytvořit prediktivní webové služby classic s jazykem R najdete v blogovém příspěvku [sestavení a nasazení prediktivní webové aplikace pomocí nástroje RStudio a Azure Machine Learning studio](http://blogs.technet.com/b/machinelearning/archive/2015/09/25/build-and-deploy-a-predictive-web-app-using-rstudio-and-azure-ml.aspx).
+>
+>
 
 Zatímco Azure Machine Learning Studio je usnadňuje vývoj a nasazení *model prediktivní analýzy*, je možné pomocí vyvinout experiment, který neobsahuje model prediktivní analýzy. Experiment může například pouze vstupní data, pracovat s ní a pak vypíše výsledky. Stejně jako experiment prediktivní analýzy můžete nasadit tento – prediktivní experiment jako webové služby, ale je jednodušší proces, protože experiment není školení nebo vyhodnocení modelu strojového učení. I když není typické použití nástroje Studio tímto způsobem, jsme budete jej zahrnout do diskuse tak, že můžeme poskytnout úplné vysvětlení fungování Studio.
 
@@ -50,8 +63,8 @@ V tomto procesu převodu se zahodí výukového experimentu. Po dokončení proc
 
 > [!NOTE]
 > Po kliknutí na **prediktivní webová služba** spuštění automatického procesu pro převod výukového experimentu na prediktivní experiment, a to funguje dobře ve většině případů. Pokud je komplexní výukového experimentu (například máte více cest k trénování, která se do programu dohromady), budete pravděpodobně chtít provést tento převod ručně. Další informace najdete v tématu [přípravu modelu pro nasazení v Azure Machine Learning Studio](convert-training-experiment-to-scoring-experiment.md).
-> 
-> 
+>
+>
 
 ### <a name="the-web-service"></a>Webová služba
 Jakmile budete spokojeni, prediktivní experiment je připraven, můžete nasadit službu jako buď klasickou webovou službou nebo nové webové služby založené na Azure Resource Manageru. Pro zprovoznění modelu a nasadit ho jako *klasická Machine Learning webová služba*, klikněte na tlačítko **nasadit webovou službu** a vyberte **nasazení webové služby [Classic]**. Nasadit jako *nové Machine Learning webová služba*, klikněte na tlačítko **nasadit webovou službu** a vyberte **nasazení [nové] webová služba**. Uživatelé teď můžete odesílat data do modelu pomocí rozhraní REST API služby Web a získat zpět výsledky. Další informace najdete v tématu o [využívání webové služby Azure Machine Learning](consume-web-services.md).
@@ -84,7 +97,7 @@ Pokud chcete zachovat váš model strojového učení, ale chcete přeučování
 
 1. **Přeučování modelu je spuštěna webová služba** – Pokud chcete přeučování váš model prediktivní webová služba je spuštěna, můžete to provést tak, že několik úprav výukového experimentu, aby byl ***přetrénování Experimentujte***, pak můžete nasadit jako  ***retraining webové* služby**. Pokyny, jak to udělat, najdete v části [modelů Machine Learning Přeučování](retrain-models-programmatically.md).
 2. **Přejděte zpět do původní výukového experimentu a použití různých trénovacích dat k vývoji modelu** – prediktivní experiment je propojena k webové službě, ale výukového experimentu není propojena přímo tímto způsobem. Pokud upravíte původní výukového experimentu a klikněte na tlačítko **nastavení webové služby**, se vytvoří *nové* prediktivní experiment, který se vytvoří při nasazení, *nové* Web Služba. Právě neaktualizuje původní webové služby.
-   
+
    Pokud je potřeba upravit výukového experimentu, otevřete ho a klikněte na tlačítko **uložit jako** k vytvoření kopie. To nechte beze změny původní výukový experiment prediktivní experiment a webové služby. Nyní můžete vytvořit novou webovou službu se změnami. Po nasazení nové webové služby, potom se můžete rozhodnout, jestli se má zastavit předchozí webovou službu nebo je Uchovávejte společně s novým systémem.
 
 **Chcete pro trénování modelu různé**

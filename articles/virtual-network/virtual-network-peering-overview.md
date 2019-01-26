@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/16/2018
 ms.author: jdial
-ms.openlocfilehash: 1085be57583762e8f1d419e2aacc699032340d90
-ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
+ms.openlocfilehash: 348a37c4b2d23d7c58e0599b4717b97e83b683ea
+ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54054550"
+ms.lasthandoff: 01/26/2019
+ms.locfileid: "55081530"
 ---
 # <a name="virtual-network-peering"></a>Partnerské vztahy virtuálních sítí
 
@@ -72,6 +72,8 @@ Po nastavení partnerského vztahu mezi virtuálními sítěmi sdílejícími je
 Pokud chcete partnerský vztah virtuální sítě potvrdit, musíte [zkontrolovat platné trasy](diagnose-network-routing-problem.md) síťového rozhraní v každé podsíti virtuální sítě. Pokud partnerský vztah virtuální sítě existuje, mají všechny podsítě virtuální sítě trasy s typem dalšího přechodu *VNet peering*, a to u každého adresního prostoru v každé partnerské virtuální síti.
 
 K řešení problémů s připojením k virtuálnímu počítači v partnerské virtuální síti také můžete použít [kontrolu připojení](../network-watcher/network-watcher-connectivity-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json) ve službě Network Watcher. Kontrola připojení zobrazí směrování provozu od síťového rozhraní zdrojového virtuálního počítače k síťovému rozhraní cílového virtuálního počítače.
+
+[Můžete také zkusit naše troucleshooter pro VNet Peering problémy](https://support.microsoft.com/help/4486956/troubleshooter-for-virtual-network-peering-issues)
 
 ## <a name="requirements-and-constraints"></a>Požadavky a omezení
 

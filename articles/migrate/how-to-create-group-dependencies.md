@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: article
 ms.date: 12/05/2018
 ms.author: raynew
-ms.openlocfilehash: 9f01e94eb23083ab25dd2cbd41e8bad1297abb54
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: 1f7921093bc97aa6dc776213be4dbdf9537b7fe2
+ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53255257"
+ms.lasthandoff: 01/26/2019
+ms.locfileid: "55075699"
 ---
 # <a name="refine-a-group-using-group-dependency-mapping"></a>Upřesnění skupiny s využitím mapování závislostí skupin
 
@@ -52,14 +52,19 @@ Chcete-li zobrazit závislosti skupiny, budete muset stáhnout a nainstalovat ag
 
 ### <a name="install-the-mma"></a>Instalace agenta MMA
 
+#### <a name="install-the-agent-on-a-windows-machine"></a>Nainstalujte agenta na počítači s Windows
+
 Instalace agenta na počítači s Windows:
 
 1. Dvakrát klikněte na staženého agenta.
 2. Na **úvodní** stránce klikněte na **Další**. Na stránce **Licenční podmínky** kliknutím na **Souhlasím** přijměte licenci.
 3. V **cílovou složku**, udržovat nebo změnit výchozí instalační složku > **Další**.
 4. V **možnosti instalace agenta**vyberte **Azure Log Analytics** > **Další**.
-5. Klikněte na tlačítko **přidat** přidáte nový pracovní prostor Log Analytics. Vložte ID pracovního prostoru a klíč, který jste zkopírovali z portálu. Klikněte na tlačítko **Další**.
+5. Klikněte na tlačítko **přidat** přidáte nový pracovní prostor Log Analytics. Vložte ID pracovního prostoru a klíč, který jste zkopírovali z portálu. Klikněte na **Další**.
 
+Agenta můžete nainstalovat z příkazového řádku nebo pomocí automatizovaného metody, jako je Azure Automation DSC, System Center Configuration Manager, nebo pomocí šablony Azure Resource Manageru, pokud jste nasadili Microsoft Azure Stack ve vašem datovém centru. [Další informace](https://docs.microsoft.com/azure/azure-monitor/platform/log-analytics-agent#install-and-configure-agent) o použití těchto metod k instalaci agenta MMA.
+
+#### <a name="install-the-agent-on-a-linux-machine"></a>Nainstalujte agenta na počítači s Linuxem
 
 Instalace agenta na počítači s Linuxem:
 
@@ -76,6 +81,8 @@ Instalace agenta na počítači s Linuxem:
 
 Další informace o podpoře agenta závislostí [Windows](../azure-monitor/insights/service-map-configure.md#supported-windows-operating-systems) a [Linux](../azure-monitor/insights/service-map-configure.md#supported-linux-operating-systems) operačních systémů.
 
+[Další informace](https://docs.microsoft.com/azure/monitoring/monitoring-service-map-configure#installation-script-examples) o použití skriptů k instalaci agenta závislostí.
+
 ## <a name="refine-the-group-based-on-dependency-visualization"></a>Upřesnění skupiny založené na vizualizace závislostí
 Po instalaci agentů na všech počítačích skupiny můžete vizualizace závislostí skupiny a zpřesnit jej pomocí následujícího níže uvedených pokynů.
 
@@ -91,6 +98,10 @@ Po instalaci agentů na všech počítačích skupiny můžete vizualizace závi
      ![Zobrazení skupinových závislostí](./media/how-to-create-group-dependencies/view-group-dependencies.png)
 
 3. Chcete-li zobrazit podrobnější závislosti, klikněte na tlačítko časový rozsah jej upravit. Ve výchozím nastavení rozsah je jedna hodina. Můžete upravit časový rozsah, nebo zadat počáteční a koncové datum a dobu trvání.
+
+    > [!NOTE]
+      Vizualizace závislostí uživatelského rozhraní v současné době nepodporuje výběr časový rozsah, který je delší než hodinu. Použití Log Analytics k [zadávat dotazy na data závislostí](https://docs.microsoft.com/azure/migrate/how-to-create-a-group#query-dependency-data-from-log-analytics) za delší dobu.
+
 4. Ověření závislých počítačů, proces spuštěný v každém počítači a identifikaci počítačů, které mají přidat nebo odebrat ze skupiny.
 5. Vyberte počítače, na mapě, které chcete přidat nebo odebrat ze skupiny pomocí kombinace kláves Ctrl + kliknutí.
     - Mohli byste přidávat pouze počítače, které byly zjištěny.
@@ -101,6 +112,20 @@ Po instalaci agentů na všech počítačích skupiny můžete vizualizace závi
     ![Přidání nebo odebrání počítačů](./media/how-to-create-group-dependencies/add-remove.png)
 
 Pokud chcete zkontrolovat závislosti pro konkrétní počítač, který se zobrazí na mapě závislostí skupiny [nastavit mapování závislosti počítačů](how-to-create-group-machine-dependencies.md).
+
+## <a name="query-dependency-data-from-log-analytics"></a>Dotazování na závislost data ze služby Log Analytics
+
+Závislost data zachycená pomocí mapy služeb je k dispozici pro dotazování ve službě Log Analytics. [Další informace](https://docs.microsoft.com/azure/azure-monitor/insights/service-map#log-analytics-records) Service Map tabulky dat k dotazování v Log Analytics. 
+
+Pokud chcete spustit dotazy Log Analytics:
+
+1. Po instalaci agentů, přejděte na portál a klikněte na tlačítko **přehled**.
+2. V **přehled**, přejděte na stránku **Essentials** části projektu a klikněte na název pracovního prostoru k dispozici vedle **pracovní prostor OMS**.
+3. Na stránce pracovního prostoru Log Analytics, klikněte na tlačítko **Obecné** > **protokoly**.
+4. Napsat dotaz pro shromažďování dat závislosti pomocí Log Analytics. Ukázkové dotazy pro shromažďování dat závislosti jsou k dispozici [tady](https://docs.microsoft.com/azure/azure-monitor/insights/service-map#sample-log-searches).
+5. Spusťte dotaz kliknutím na spustit. 
+
+[Další informace](https://docs.microsoft.com/azure/azure-monitor/log-query/get-started-portal) o tom, jak psát dotazy Log Analytics. 
 
 
 ## <a name="next-steps"></a>Další postup

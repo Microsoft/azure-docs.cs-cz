@@ -10,12 +10,12 @@ ms.reviewer: divswa, LADocs
 ms.topic: article
 tags: connectors
 ms.date: 01/15/2019
-ms.openlocfilehash: e0f0230241bdffa97b94c88eb4b2d76fd44bcdea
-ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
+ms.openlocfilehash: 807a99a8cac7326648ff4aa91b9fcdeb35de196a
+ms.sourcegitcommit: 97d0dfb25ac23d07179b804719a454f25d1f0d46
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2019
-ms.locfileid: "54320782"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54910179"
 ---
 # <a name="monitor-create-and-manage-sftp-files-by-using-ssh-and-azure-logic-apps"></a>Monitorování, vytvářet a spravovat soubory protokolu SFTP pomocí SSH a Azure Logic Apps
 
@@ -27,7 +27,7 @@ Automatizace úloh, které monitorování, vytvářet, odesílat a přijímat so
 * Získáte obsah souboru a metadata.
 * Extrahujte archivy do složek.
 
-Ve srovnání s [konektor SFTP](../connectors/connectors-create-api-sftp.md), konektor SFTP-SSH může číst nebo zapisovat soubory až *1 GB* velikosti. Další rozdíly najdete v tématu [porovnání SFTP SSH a SFTP](#comparison) dále v tomto článku.
+Ve srovnání s [konektor SFTP](../connectors/connectors-create-api-sftp.md), konektor SFTP-SSH může číst nebo zapisovat soubory až *1 GB* dílky velikostí správy dat v 50 MB. Pro soubory větší než 1 GB, můžete použít akce [bloků zpráv](../logic-apps/logic-apps-handle-large-messages.md). Další rozdíly najdete v tématu [porovnání SFTP SSH a SFTP](#comparison) dále v tomto článku.
 
 Můžete použít aktivační události, které sledovat události na vašem serveru SFTP a zpřístupnit výstup dalších akcí. Můžete použít akce, které provádění různých úloh na vašem serveru SFTP. Také můžete mít další akce ve vaší aplikaci logiky použít výstup z akcí SFTP. Například pokud pravidelně Načtení souborů ze serveru SFTP, můžete odeslat e-mailová upozornění o těchto souborech a jejich obsah s použitím konektoru Office 365 Outlook nebo konektor Outlook.com.
 Pokud se službou logic Apps teprve začínáte, přečtěte si [co je Azure Logic Apps?](../logic-apps/logic-apps-overview.md)
@@ -48,7 +48,7 @@ Tady jsou další hlavní rozdíly mezi konektoru SFTP-SSH a SFTP konektor, kde 
   > * **Algoritmy šifrování**: DES-EDE3-CBC, DES-EDE3-CFB DES-CBC, AES-128-CBC, AES-192-CBC a AES-256-CBC
   > * **Otisk prstu**: MD5
 
-* Čtení nebo zápis do souborů *1 GB* velikosti ve srovnání s konektoru SFTP, ale zpracovává data v části 50 MB, ne 1 GB kusy.
+* Čtení nebo zápis do souborů *1 GB* velikosti ve srovnání s konektoru SFTP, ale zpracovává data v části 50 MB, ne 1 GB kusy. Pro soubory větší než 1 GB, můžete také použít akce [bloků zpráv](../logic-apps/logic-apps-handle-large-messages.md). V současné době aktivační události nepodporují dělením dat do bloků.
 
 * Poskytuje **vytvořit složku** akce, která vytvoří složku v zadané složce na serveru SFTP.
 
@@ -130,12 +130,15 @@ Triggery SFTP-SSH fungovat dotazování systém souborů protokolu SFTP a vyhled
 
 Když aktivační události vyhledá nový soubor, trigger zkontroluje, zda nový soubor úplné a částečně napsané. Soubor může například mít změny v průběhu při trigger bude kontrolovat souborového serveru. Aktivační událost se pokud chcete vyhnout, vrací částečně napsané souborů, poznámky časové razítko pro soubor, který obsahuje poslední změny, ale nevrací okamžitě tento soubor. Aktivační událost vrátí soubor pouze v případě, že dotazování serveru znovu. Toto chování může způsobit zpoždění, které je až dvakrát triggeru interval dotazování. 
 
-Pokud se požaduje obsah souboru, aktivační událost nenačítá soubory větší než 50 MB. Pokud chcete získat soubory větší než 50 MB, postupujte podle tohoto vzoru:
+Pokud se požaduje obsah souboru, aktivační události Nezískávat soubory větší než 50 MB. Pokud chcete získat soubory větší než 50 MB, postupujte podle tohoto vzoru: 
 
-* Pomocí aktivační události, která vrací vlastnosti souboru, například **kdy soubor se přidá nebo upraví (jen vlastnosti)**. 
-* Postupujte podle aktivační událost s akci, která načte celý soubor, jako například **získat obsah souboru pomocí cesty**.
+* Pomocí aktivační události, která vrací vlastnosti souboru, například **kdy soubor se přidá nebo upraví (jen vlastnosti)**.
+
+* Postupujte podle aktivační událost s akci, která načte celý soubor, jako například **získat obsah souboru pomocí cesty**, a mít akci použít [bloků zpráv](../logic-apps/logic-apps-handle-large-messages.md).
 
 ## <a name="examples"></a>Příklady
+
+<a name="file-added-modified"></a>
 
 ### <a name="sftp---ssh-trigger-when-a-file-is-added-or-modified"></a>SFTP - aktivovat SSH: Když je přidán nebo upraven soubor
 
@@ -143,9 +146,23 @@ Tato aktivační událost se spustí pracovní postup aplikace logiky souboru p�
 
 **Příklad organizace**: Tato aktivační událost můžete použít k monitorování složky aplikace SFTP pro nové soubory, které představují objednávek zákazníků. Můžete pak použít akci SFTP jako **získat obsah souboru** tak získat obsah pořadí pro další zpracování a uložení do databáze objednávek tohoto pořadí.
 
-### <a name="sftp---ssh-action-get-content"></a>SFTP - SSH akce: Získat obsah
+Pokud se požaduje obsah souboru, aktivační události Nezískávat soubory větší než 50 MB. Pokud chcete získat soubory větší než 50 MB, postupujte podle tohoto vzoru: 
+
+* Pomocí aktivační události, která vrací vlastnosti souboru, například **kdy soubor se přidá nebo upraví (jen vlastnosti)**.
+
+* Postupujte podle aktivační událost s akci, která načte celý soubor, jako například **získat obsah souboru pomocí cesty**, a mít akci použít [bloků zpráv](../logic-apps/logic-apps-handle-large-messages.md).
+
+<a name="get-content"></a>
+
+### <a name="sftp---ssh-action-get-content-using-path"></a>SFTP - SSH akce: Získání obsahu pomocí cesty
 
 Tato akce načte obsah ze souboru na SFTP server. Takže například můžete přidat aktivační událost z předchozího příkladu a podmínku, která musí splňovat obsahu souboru. Pokud je podmínka pravdivá, můžete spustit akci, která získá obsah. 
+
+Pokud se požaduje obsah souboru, aktivační události Nezískávat soubory větší než 50 MB. Pokud chcete získat soubory větší než 50 MB, postupujte podle tohoto vzoru: 
+
+* Pomocí aktivační události, která vrací vlastnosti souboru, například **kdy soubor se přidá nebo upraví (jen vlastnosti)**.
+
+* Postupujte podle aktivační událost s akci, která načte celý soubor, jako například **získat obsah souboru pomocí cesty**, a mít akci použít [bloků zpráv](../logic-apps/logic-apps-handle-large-messages.md).
 
 ## <a name="connector-reference"></a>Referenční informace ke konektorům
 

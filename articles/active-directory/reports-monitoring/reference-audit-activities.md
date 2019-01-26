@@ -13,15 +13,15 @@ ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.component: report-monitor
-ms.date: 11/13/2018
+ms.date: 01/24/2019
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: a851d9cd4322f2460bfa7f74854c44e77a52e0a6
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: 6b5679a8d3f8cf449b9539e8595e14a87e882ac7
+ms.sourcegitcommit: 97d0dfb25ac23d07179b804719a454f25d1f0d46
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54818179"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54912880"
 ---
 # <a name="azure-ad-audit-activity-reference"></a>Referenční informace k aktivitám auditování Azure AD
 
@@ -43,34 +43,36 @@ Tento článek obsahuje seznam aktivit auditování, které můžete protokolova
 
 |Kategorie auditu|Aktivita|
 |---|---|
-|Správa adresářů|Přidání jednotky pro správu|
-|Správa adresářů|Přidání člena do jednotky pro správu|
-|Správa adresářů|Odstranění jednotky pro správu|
-|Správa adresářů|Odebrání člena z jednotky pro správu|
-|Správa adresářů|Aktualizace jednotky pro správu|
-|Správa adresářů|Správa|
-|Správa uživatelů|Operace adresáře|
-|Správa uživatelů|Export|
-|Správa uživatelů|Import|
-|Správa uživatelů|Ostatní|
-|Správa uživatelů|Podmíněné zpracování|
-|Správa uživatelů|Akce synchronizačního pravidla|
-|Správa uživatelů|Přidání aplikace|
-|Správa uživatelů|Odstranění aplikace|
-|Správa uživatelů|Aktualizace aplikace|
-|Správa uživatelů|Aktualizace režimu jednotného přihlašování k aplikacím|
-|Správa uživatelů|Automatická změna hesel|
-|Správa uživatelů|Přidání oprávnění aplikací V2|
-|Správa uživatelů|Vytvoření aplikace V1|
-|Správa uživatelů|Vytvoření aplikace V2|
-|Správa uživatelů|Odstranění aplikace V1|
-|Správa uživatelů|Odstranění aplikace V2|
-|Správa uživatelů|Odstranění udělení oprávnění aplikací V2|
-|Správa uživatelů|Získání aplikací V1 a V2|
-|Správa uživatelů|Získání aplikace V1|
-|Správa uživatelů|Získání aplikací V1|
-|Správa uživatelů|Získání aplikace V2|
-|Správa uživatelů|Získání aplikací V2|
+|Kontroly přístupu|Ukončení kontroly přístupu|
+|Kontroly přístupu|Přidání schvalovatele k žádosti o schválení|
+|Kontroly přístupu|Přidání revidujícího ke kontrole přístupu|
+|Kontroly přístupu|Použití kontroly přístupu|
+|Kontroly přístupu|Vytvoření kontroly přístupu|
+|Kontroly přístupu|Vytvoření programu|
+|Kontroly přístupu|Vytvoření žádosti o schválení|
+|Kontroly přístupu|Odstranění kontroly přístupu|
+|Kontroly přístupu|Odstranění programu|
+|Kontroly přístupu|Připojení k řízení aplikací|
+|Kontroly přístupu|Registrace ke kontrolám přístupu Azure AD|
+|Kontroly přístupu|Odebrání revidujícího z kontroly přístupu|
+|Kontroly přístupu|Žádost a zastavení kontroly|
+|Kontroly přístupu|Žádost o použití výsledku kontroly|
+|Kontroly přístupu|Kontrola členství v rolích RBAC|
+|Kontroly přístupu|Kontrola přiřazení aplikace|
+|Kontroly přístupu|Kontrola členství ve skupinách|
+|Kontroly přístupu|Kontrola žádosti o schválení žádosti|
+|Kontroly přístupu|Zrušení připojení k řízení aplikací|
+|Kontroly přístupu|Aktualizace kontroly přístupu|
+|Kontroly přístupu|Aktualizovat stav registrace kontrol přístupu Azure AD|
+|Kontroly přístupu|Aktualizace nastavení e-mailového oznámení o kontrole přístupu|
+|Kontroly přístupu|Aktualizace nastavení počtu opakování kontroly přístupu|
+|Kontroly přístupu|Aktualizace nastavení doby trvání opakování kontroly přístupu ve dnech|
+|Kontroly přístupu|Aktualizace nastavení koncového typu opakování kontroly přístupu|
+|Kontroly přístupu|Aktualizace nastavení typu opakování kontroly přístupu|
+|Kontroly přístupu|Aktualizace nastavení připomenutí kontroly přístupu|
+|Kontroly přístupu|Aktualizace programu|
+|Kontroly přístupu|Aktualizace žádosti o schválení|
+|Kontroly přístupu|Uživatel zakázán|
 
 ## <a name="account-provisioning"></a>Zřizování účtů
 
@@ -526,23 +528,27 @@ Tento článek obsahuje seznam aktivit auditování, které můžete protokolova
 
 |Kategorie auditu|Aktivita|
 |---|---|
-|Správa rolí|Aktualizace nastavení připomenutí kontroly přístupu|
-|Správa rolí|Aktualizace žádosti o schválení|
-|Správa rolí|Přidání přiřazení role aplikace k uživateli|
-|Správa rolí|Přidání uživatele|
-|Správa rolí|Přidání podrobností o mobilní aplikaci silného ověřování uživatele|
-|Správa rolí|Změna uživatelské licence|
-|Správa rolí|Změna hesla uživatele|
-|Správa rolí|Převod federovaného uživatele na spravovaného|
-|Správa rolí|Vytvoření hesla aplikace pro uživatele|
-|Správa rolí|Odstranění hesla aplikace pro uživatele|
-|Správa rolí|Odstranění uživatele|
-|Správa rolí|Zákaz účtu|
-|Správa rolí|Povolení silného ověřování|
-|Správa rolí|Trvalé odstranění uživatele|
-|Správa rolí|Odebrání uživateli přiřazení role aplikace|
-|Správa rolí|Odebrání podrobností o mobilní aplikaci silného ověřování uživatele|
-
+|PIM|ActivationAborted|
+|PIM|ActivationApproved|
+|PIM|ActivationCanceled|
+|PIM|ActivationDenied|
+|PIM|ActivationRequested|
+|PIM|Přidáno|
+|PIM|AddedOutsidePIM|
+|PIM|Přiřazení|
+|PIM|DismissAlert|
+|PIM|Zvýšení oprávnění|
+|PIM|ReactivateAlert|
+|PIM|Odebráno|
+|PIM|RemovedOutsidePIM|
+|PIM|Žádost a zastavení kontroly|
+|PIM|Změny nastavení role|
+|PIM|ScanAlertsNow|
+|PIM|Registrace|
+|PIM|Zrušit přiřazení|
+|PIM|Pozastavení|
+|PIM|UpdateAlertSettings|
+|PIM|UpdateCurrentState|
 
 
 ## <a name="self-service-group-management"></a>Samoobslužná správa skupin
@@ -580,13 +586,16 @@ Tento článek obsahuje seznam aktivit auditování, které můžete protokolova
 
 |Kategorie auditu|Aktivita|
 |---|---|
-|Správa zásad|Změna hesla (samoobslužná)|
-|Správa zásad|Resetování hesla (správcem)|
-|Správa zásad|Resetování hesla (samoobslužné)|
-|Správa zásad|Průběh aktivity toku samoobslužného resetování hesla|
-|Správa zásad|Průběh aktivity toku samoobslužného resetování hesla|
-|Správa zásad|Odemknutí uživatelského účtu (samoobslužné)|
-|Správa zásad|Registrace uživatele pro samoobslužné resetování hesla|
+|Podmínky použití|Přijetí podmínek použití|
+|Podmínky použití|Vytvoření podmínek použití|
+|Podmínky použití|Odmítnutí podmínek použití|
+|Podmínky použití|Odstranit souhlas|
+|Podmínky použití|Odstranění podmínek použití|
+|Podmínky použití|Úprava podmínky použití|
+|Podmínky použití|Vypršení platnosti podmínky použití|
+|Podmínky použití|Pevné odstranění podmínek použití|
+|Podmínky použití|Publikování podmínek použití|
+|Podmínky použití|Zrušení publikování podmínek použití|
 
 
 ## <a name="next-steps"></a>Další postup

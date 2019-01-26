@@ -8,15 +8,15 @@ manager: cgronlun
 ms.service: cognitive-services
 ms.component: qna-maker
 ms.topic: article
-ms.date: 10/19/2018
+ms.date: 01/24/2019
 ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: 6eb8e265dc415e39f9c8728d32f3deecc2d4e646
-ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
+ms.openlocfilehash: 91286f77847b9ce6cb3f17cc8f9177051c96e1b6
+ms.sourcegitcommit: 97d0dfb25ac23d07179b804719a454f25d1f0d46
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53163799"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54912346"
 ---
 # <a name="how-to-use-the-qna-maker-rest-api-with-python"></a>Jak používat rozhraní REST API nástroje QnA Maker pomocí Pythonu
 <a name="HOLTop"></a>
