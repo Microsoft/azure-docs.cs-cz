@@ -170,16 +170,29 @@ items:
       - name: Podrobné kroky
         href: create-ssh-keys-detailed.md
   - name: Ochrana virtuálních počítačů
-    href: ../../backup/backup-introduction-to-azure-backup.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
     items:
-    - name: Zálohování jednoho virtuálního počítače
-      href: ../../backup/quick-backup-vm-cli.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
-    - name: Zálohování několika virtuálních počítačů
-      href: ../../backup/tutorial-backup-vm-at-scale.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
-    - name: Obnovení disku
-      href: ../../backup/tutorial-restore-disk.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
-    - name: Obnovení jednotlivých souborů
-      href: ../../backup/tutorial-restore-files.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
+    - name: Zálohování virtuálních počítačů
+      href: ../../backup/backup-introduction-to-azure-backup.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
+      items:
+      - name: Zálohování jednoho virtuálního počítače
+        href: ../../backup/quick-backup-vm-cli.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
+      - name: Zálohování několika virtuálních počítačů
+        href: ../../backup/tutorial-backup-vm-at-scale.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
+      - name: Obnovení disku
+        href: ../../backup/tutorial-restore-disk.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
+      - name: Obnovení jednotlivých souborů
+        href: ../../backup/tutorial-restore-files.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
+    - name: Nastavení zotavení po havárii pro virtuální počítače
+      href: ../../site-recovery/site-recovery-overview.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
+      items:
+      - name: Povolení zotavení po havárii pro virtuální počítač
+        href: ../../site-recovery/azure-to-azure-tutorial-enable-replication.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
+      - name: Spuštění postupu zotavení po havárii pro virtuální počítač
+        href: ../../site-recovery/azure-to-azure-tutorial-dr-drill.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
+      - name: Převzetí služeb při selhání virtuálního počítače do jiné oblasti
+        href: ../../site-recovery/azure-to-azure-tutorial-failover-failback.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
+    - name: Přesun virtuálních počítačů do jiné oblasti
+      href: ../../site-recovery/azure-to-azure-tutorial-migrate.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
   - name: Správa virtuálních počítačů
     items:
     - name: Využití virtuálních počítačů
@@ -547,9 +560,9 @@ items:
     href: faq.md
 - name: Řešení potíží
   href: ../troubleshooting/index.md
-ms.openlocfilehash: c230e40c62b3f7f1c485eb4051bed3a0314aa08d
-ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
+ms.openlocfilehash: be99b17042aa8f36b8fb9a1ad7dedf3a945dcf75
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54360135"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54822667"
