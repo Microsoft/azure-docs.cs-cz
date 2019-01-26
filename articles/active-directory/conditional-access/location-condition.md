@@ -9,7 +9,7 @@ manager: daveba
 editor: ''
 ms.assetid: 8c1d978f-e80b-420e-853a-8bbddc4bcdad
 ms.service: active-directory
-ms.component: conditional-access
+ms.subservice: conditional-access
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
@@ -17,12 +17,12 @@ ms.workload: identity
 ms.date: 01/21/2019
 ms.author: markvi
 ms.reviewer: calebb
-ms.openlocfilehash: 6f522f7ff216a407e4ba901672f6b5e172952bcb
-ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
+ms.openlocfilehash: 26721aa0eac69875f6a3704025e6ab71a54a1e31
+ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54883428"
+ms.lasthandoff: 01/26/2019
+ms.locfileid: "55078096"
 ---
 # <a name="what-is-the-location-condition-in-azure-active-directory-conditional-access"></a>Co je podmínka umístění podmíněného přístupu Azure Active Directory? 
 

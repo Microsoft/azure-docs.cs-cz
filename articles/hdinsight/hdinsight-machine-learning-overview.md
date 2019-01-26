@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 01/19/2018
 ms.author: hrasheed
-ms.openlocfilehash: 7e5f56251e00b59a6e6d3be40612f4c8e381dff1
-ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
+ms.openlocfilehash: 84ce13f78a9c597c780cb0dfa0fa5d16e6175b1c
+ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53742996"
+ms.lasthandoff: 01/26/2019
+ms.locfileid: "55077722"
 ---
 # <a name="machine-learning-on-hdinsight"></a>Strojové učení v HDInsight
 
@@ -42,13 +42,13 @@ Azure Machine Learning poskytuje nástroje, které model prediktivní analýzy, 
 
 ![Provádění pokročilé analýzy, které jsou dostupné k systému Hadoop pomocí Microsoft Azure Machine Learning](./media/hdinsight-machine-learning-overview/hadoop-azure-ml.png)
 
-Vytvoření funkcí pro data v Hadoop HDInsight clusteru s použitím [dotazů Hive](../machine-learning/team-data-science-process/create-features-hive.md). *Konstrukce funkcí* pokusí sofistikované prediktivní učení se supervizí vytvořením funkce z nezpracovaných dat, která usnadňují proces učení. Můžete spouštět dotazy HiveQL z Azure ML a přístup k datům zpracovány v Hive a uložená v blob storage s použitím [modulu Import dat](../machine-learning/studio/import-data.md).
+Vytvoření funkcí pro data v Hadoop HDInsight clusteru s použitím [dotazů Hive](../machine-learning/team-data-science-process/create-features-hive.md). *Konstrukce funkcí* pokusí sofistikované prediktivní učení se supervizí vytvořením funkce z nezpracovaných dat, která usnadňují proces učení. Můžete spustit dotazy HiveQL ze sady Azure Machine Learning studio a přístup k datům zpracovány v Hive a uložená v blob storage s použitím [modulu Import dat](../machine-learning/studio/import-data.md).
 
 ## <a name="microsoft-cognitive-toolkit"></a>Microsoft Cognitive Toolkit
 
 [Obsáhlý learning](https://www.microsoft.com/en-us/research/group/dltc/) je větev služby machine learning, která používá neuronových sítí INSPIROVANÉ biologické procesy lidský mozek. Mnoho výzkumní pracovníci naleznete v tématu obsáhlý learning jako slibně přístup pro zlepšení umělé inteligence. Příkladem obsáhlý learning jsou mluvený jazyk překladatele, systémy rozpoznávání obrazu a posuzování počítače.
 
-Abyste předem své vlastní práci v obsáhlého learningu, společnost Microsoft vyvinula open-source zdarma, snadno použitelný, [Microsoft Cognitive Toolkit](https://www.microsoft.com/en-us/cognitive-toolkit/). Tato sada nástrojů používá celou řadu produktů společnosti Microsoft, společností po celém světě s museli nasazovat hloubkového učení ve velkém měřítku a studenty zájem o nejnovější algoritmy a postupy. 
+Abyste předem své vlastní práci v obsáhlého learningu, společnost Microsoft vyvinula open-source zdarma, snadno použitelný, [Microsoft Cognitive Toolkit](https://www.microsoft.com/en-us/cognitive-toolkit/). Tato sada nástrojů používá celou řadu produktů společnosti Microsoft, společností po celém světě s museli nasazovat hloubkového učení ve velkém měřítku a studenty zájem o nejnovější algoritmy a postupy.
 
 ## <a name="see-also"></a>Další informace najdete v tématech
 

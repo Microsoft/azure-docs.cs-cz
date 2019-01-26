@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 12/07/2018
-ms.openlocfilehash: 6f8565fcecab2c17794f94f5a051cc2f269a9d1c
-ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
+ms.openlocfilehash: 8d5e3060d31a260ddba2e7b23d468568ea9569c0
+ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54451031"
+ms.lasthandoff: 01/26/2019
+ms.locfileid: "55078028"
 ---
 # <a name="machine-learning-integration-in-stream-analytics"></a>Machine Learning integrace ve službě Stream Analytics
 Stream Analytics podporuje uživatelem definované funkce, které vyžadují ke koncovým bodům Azure Machine Learning. Podpora rozhraní REST API pro tuto funkci je podrobně popsaná v [knihovny rozhraní REST API pro Stream Analytics](https://msdn.microsoft.com/library/azure/dn835031.aspx). Tento článek obsahuje doplňující informace potřebné pro úspěšné implementaci této funkce ve Stream Analytics. Kurz také se zveřejní a je k dispozici [tady](stream-analytics-machine-learning-integration-tutorial.md).
@@ -26,7 +26,7 @@ Microsoft Azure Machine Learning poskytuje nástroj pro spolupráci, přetáhně
 * **Koncový bod**: *Koncové body* se používá jako vstup přijímat funkce, používá model zadaný strojového učení a vrací Vyhodnocená výstup objektu Azure Machine Learning.
 * **Webová služba vyhodnocování**: A *vyhodnocování služby typu webservice* je kolekce koncových bodů, jak je uvedeno výše.
 
-Každý koncový bod má rozhraní API pro dávkové spouštění a synchronní zpracování. Stream Analytics používá synchronní zpracování. Název konkrétní služby [požadavku nebo odpovědi služby](../machine-learning/studio/consume-web-services.md) v Azure ml studio.
+Každý koncový bod má rozhraní API pro dávkové spouštění a synchronní zpracování. Stream Analytics používá synchronní zpracování. Název konkrétní služby [požadavku nebo odpovědi služby](../machine-learning/studio/consume-web-services.md) v aplikaci Azure Machine Learning studio.
 
 ## <a name="machine-learning-resources-needed-for-stream-analytics-jobs"></a>Machine Learning prostředky potřebné pro úlohy Stream Analytics
 Pro účely služby Stream Analytics úlohy zpracování, koncový bod požadavku nebo odpovědi [apikey](../machine-learning/machine-learning-connect-to-azure-machine-learning-web-service.md), a definice swaggeru jsou všechny potřebné pro úspěšné provedení. Stream Analytics je další koncový bod, který vytvoří adresu url pro koncový bod swaggeru, vyhledá rozhraní a vrátí výchozí definice UDF uživateli.
@@ -45,10 +45,10 @@ Rozhraní REST API můžete nakonfigurovat úlohy pro volání funkce Azure stro
 Například následující ukázkový kód vytvoří skalární UDF s názvem *newudf* , která vytvoří vazbu na koncový bod Azure Machine Learning. Všimněte si, že *koncový bod* (identifikátor URI služby) najdete na stránce nápovědy rozhraní API pro zvolený služby a *apiKey* můžete najít na hlavní stránce služeb.
 
 ````
-    PUT : /subscriptions/<subscriptionId>/resourceGroups/<resourceGroup>/providers/Microsoft.StreamAnalytics/streamingjobs/<streamingjobName>/functions/<udfName>?api-version=<apiVersion>  
+    PUT : /subscriptions/<subscriptionId>/resourceGroups/<resourceGroup>/providers/Microsoft.StreamAnalytics/streamingjobs/<streamingjobName>/functions/<udfName>?api-version=<apiVersion>
 ````
 
-Text požadavku příkladu:  
+Text požadavku příkladu:
 
 ```json
     {
@@ -75,7 +75,7 @@ Jakmile se vytvoří kostru UDF je potřeba dokončení definice UDF. Koncový b
 POST : /subscriptions/<subscriptionId>/resourceGroups/<resourceGroup>/providers/Microsoft.StreamAnalytics/streamingjobs/<streamingjobName>/functions/<udfName>/RetrieveDefaultDefinition?api-version=<apiVersion>
 ````
 
-Text požadavku příkladu:  
+Text požadavku příkladu:
 
 ```json
     {
@@ -87,7 +87,7 @@ Text požadavku příkladu:
     }
 ```
 
-Ukázku výstup tohoto by hledejte něco jako níže.  
+Ukázku výstup tohoto by hledejte něco jako níže.
 
 ```json
     {
@@ -175,7 +175,7 @@ Text požadavku (výstup z RetrieveDefaultDefinition):
 ```
 
 ## <a name="implement-stream-analytics-transformation-to-call-the-udf"></a>Implementace transformace Stream Analytics k volání UDF
-Nyní dotazování UDF (tady s názvem scoreTweet) pro každý vstupní události a zápisu odpovědi pro tuto událost do výstupu.  
+Nyní dotazování UDF (tady s názvem scoreTweet) pro každý vstupní události a zápisu odpovědi pro tuto událost do výstupu.
 
 ```json
     {

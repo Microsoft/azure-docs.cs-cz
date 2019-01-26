@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 05/08/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 82ccbe8e57ff35904b7e763e838a81660ab13f88
-ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
+ms.openlocfilehash: 8be4274f2f971202172b09bbab2e6529fd5a8070
+ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/19/2019
-ms.locfileid: "54412814"
+ms.lasthandoff: 01/26/2019
+ms.locfileid: "55075682"
 ---
 # <a name="azure-ad-connect-enabling-device-writeback"></a>Azure AD Connect: Povolení zpětného zápisu zařízení
 > [!NOTE]
@@ -89,7 +89,7 @@ Pokud zaškrtávací políčko pro zpětný zápis zařízení není povolené, 
 
 Nejdřív to nejdůležitější první:
 
-* Ujistěte se, že má alespoň jednu doménovou strukturu Windows Server 2012 R2. Typ objektu zařízení musí být k dispozici.
+* Doménová struktura, kde jsou k dispozici zařízení musí mít schéma doménové struktury upgradovat na úroveň Windows 2012 R2 tak, že objekt zařízení a přidružených atributů jsou k dispozici.
 * Pokud Průvodce instalací je již spuštěna, nebudou zjištěna žádné změny. V tomto případě dokončit Průvodce instalací a potom ho spusťte znovu.
 * Ujistěte se, že účet, který jste zadali v inicializačního skriptu je ve skutečnosti správné uživatelské používají konektor služby Active Directory. Chcete-li to ověřit, postupujte takto:
   * Z nabídky start otevřít **synchronizační služba**.

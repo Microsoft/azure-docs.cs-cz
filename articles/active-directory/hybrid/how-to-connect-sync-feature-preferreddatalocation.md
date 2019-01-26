@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 07/30/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 2fde653c6520b743990ae837f1553004793fefa2
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: 7b54d1b746467695b2c5e6a4ba634c74a3801d4f
+ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54470694"
+ms.lasthandoff: 01/26/2019
+ms.locfileid: "55078725"
 ---
 # <a name="azure-active-directory-connect-sync-configure-preferred-data-location-for-office-365-resources"></a>Synchronizace Azure Active Directory Connect: Nakonfigurovat upřednostňované umístění dat pro prostředky služeb Office 365
 Účelem tohoto tématu je pro vás provedou postupem konfigurace atribut upřednostňované umístění dat ve službě Azure Active Directory (Azure AD) Connect sync. Při použití možnosti geografickým oblastem v Office 365, můžete použít tento atribut k určení geografické umístění dat uživatele v Office 365. (Podmínky *oblasti* a *geograficky* zaměňují.)
@@ -31,7 +31,7 @@ Ve výchozím nastavení Office 365 prostředky pro vaše uživatele jsou umíst
 Nastavením atributu **preferredDataLocation**, můžete definovat geograficky uživatele. Můžete mít uživatele Office 365 prostředky, jako jsou poštovní schránka a Onedrivu, v rámci stejné Geografie jako uživatel a stále máte jednoho tenanta pro celou organizaci.
 
 > [!IMPORTANT]
-> Geografickým oblastem je momentálně dostupný pro zákazníky s minimálně 5000 předplatné služeb Office 365. Obraťte se prosím na zástupce společnosti Microsoft pro podrobnosti.
+> Geografickým oblastem je momentálně dostupný pro zákazníky s minimálně 2 500 předplatné služeb Office 365. Obraťte se prosím na zástupce společnosti Microsoft pro podrobnosti.
 >
 >
 
@@ -53,7 +53,7 @@ Se používají Geografie v Office 365, které jsou k dispozici pro geografický
 | Spojené státy | NAM |
 
 * Pokud zeměpisné oblasti není uveden v této tabulce (například Jižní Amerika), pak jej nelze použít pro geografickým oblastem.
-* Zeměpisné oblasti Indie je pouze dostupné zákazníkům s fakturační adresu a v této geografické zakoupených licencí k agentům.
+
 * Ne všechny úlohy Office 365 nepodporují nastavení geografické uživatele.
 
 ### <a name="azure-ad-connect-support-for-synchronization"></a>Podpora Azure AD Connect pro synchronizaci

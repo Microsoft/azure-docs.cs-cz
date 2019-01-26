@@ -8,7 +8,7 @@ Autor: ericlicoding ms.author: amlstudiodocs ms.custom: seodec18 ms.date: 03/20/
 
 Můžete vyvíjet prediktivní model a nasadit ho jako webová služba Azure s použitím:
 - Azure Machine Learning Studio.
-- Nástrojů, jako je R nebo Python. 
+- Nástrojů, jako je R nebo Python.
 
 Poté můžete přistupovat zprovozněné modelu s použitím rozhraní REST API.
 
@@ -23,10 +23,10 @@ Webové aplikace šablony dostupné na webu Azure Marketplace můžete vytváře
 
 K dispozici jsou dvě šablony:
 
-* [Šablona aplikace webové služby Azure ML žádost odpověď](https://azure.microsoft.com/marketplace/partners/microsoft/azuremlaspnettemplateforrrs/)
-* [Šablony Azure ML Batch spuštění služby webové aplikace](https://azure.microsoft.com/marketplace/partners/microsoft/azuremlbeswebapptemplate/)
+* [Azure Machine Learning studio šablony typu žádost-odpověď služby webové aplikace](https://azure.microsoft.com/marketplace/partners/microsoft/azuremlaspnettemplateforrrs/)
+* [Azure Machine Learning studio šablony Batch spuštění služby webové aplikace](https://azure.microsoft.com/marketplace/partners/microsoft/azuremlbeswebapptemplate/)
 
-Každá šablona vytvoří ukázkovou aplikaci ASP.NET pomocí rozhraní API identifikátoru URI a klíče pro webovou službu. Šablonu pak nasadí aplikaci jako web do Azure. 
+Každá šablona vytvoří ukázkovou aplikaci ASP.NET pomocí rozhraní API identifikátoru URI a klíče pro webovou službu. Šablonu pak nasadí aplikaci jako web do Azure.
 
 Šablony Service Request-Response (RRS) vytvoří webovou aplikaci, můžete použít k odesílání jednoho řádku dat do webové služby se získá jedna hodnota. Služba Batch Execution (BES) šablony vytvoří webovou aplikaci, která vám umožní odeslat mnoho řádků dat. Chcete-li získat více výsledků.
 
@@ -51,33 +51,33 @@ Použijte následující postup použití šablony webové aplikace RRS, jak je 
 <!--    ![API Key][image3] -->
 
 <!-- This value will look like this:
-   
+
         https://ussouthcentral.services.azureml.net/workspaces/<workspace-id>/services/<service-id>/execute?api-version=2.0&details=true
-   
+
     ![Request URI][image4] -->
 
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
-2. Vyberte **nový**, vyhledejte a vyberte **webová aplikace Azure ML Request Response Service**a pak vyberte **vytvořit**. 
+2. Vyberte **nový**, vyhledejte a vyberte **webová aplikace Azure ML Request Response Service**a pak vyberte **vytvořit**.
 3. V **vytvořit** podokna:
-   
+
    * Zadejte jedinečný název webové aplikace. Adresa URL webové aplikace, bude tento název následovaný **. azurewebsites.net**. Příkladem je **http://carprediction.azurewebsites.net**.
    * Vyberte předplatné Azure a služby, za kterých je spuštěna webová služba.
    * Vyberte **Vytvořit**.
-     
+
    ![Vytvoření webové aplikace][image5]
 
 4. Jakmile Azure dokončí nasazení webové aplikace, vyberte **URL** na nastavení aplikace webové stránky v Azure nebo ve webovém prohlížeči zadejte adresu URL. Zadejte například **http://carprediction.azurewebsites.net**.
 5. Při prvním spuštění webové aplikace, se zobrazí výzva pro **adresy URL rozhraní API příspěvku** a **klíč rozhraní API**. Zadejte hodnoty, které jste předtím uložili (požádat o identifikátor URI a klíč rozhraní API, v uvedeném pořadí). Vyberte **odeslat**.
-     
+
    ![Zadejte identifikátor URI a klíč rozhraní API po][image6]
 
 6. Webové aplikace zobrazí jeho **konfigurace webové aplikace** stránka s aktuální nastavení webové služby. Tady můžete změníte nastavení, které používá webovou aplikaci.
-   
+
    > [!NOTE]
    > Změna nastavení tady změní pouze je pro tuto webovou aplikaci. Nezmění výchozí nastavení webové služby. Například, pokud se změní celý text v **popis** tady, nezmění Popis zobrazený na řídicím panelu webové služby v nástroji Machine Learning Studio.
-   > 
-   > 
-   
+   >
+   >
+
     Jakmile budete hotovi, vyberte **uložit změny**a pak vyberte **přejděte na domovskou stránku**.
 
 7. Na domovské stránce můžete zadat hodnoty odeslat webové službě. Vyberte **odeslat** když to uděláte a vrátí se výsledek.
@@ -93,11 +93,11 @@ Vstupní hodnoty pro spuštění webové služby batch můžou pocházet z Azure
 
 ![Postup použití šablony webové BES][image2]
 
-1. Postupujte podle stejného postupu vytvořte BES webové aplikace jako šablony RRS. Ale v takovém případě přejděte na [Azure ML Batch spuštění služby webové aplikace šablona](https://azure.microsoft.com/marketplace/partners/microsoft/azuremlbeswebapptemplate/) otevřete šablonu BES v Tržišti Azure Marketplace. Vyberte **vytvoření webové aplikace**.
+1. Postupujte podle stejného postupu vytvořte BES webové aplikace jako šablony RRS. Ale v takovém případě přejděte na [šablony Batch spuštění služby webové aplikace Azure Machine Learning studio](https://azure.microsoft.com/marketplace/partners/microsoft/azuremlbeswebapptemplate/) otevřete šablonu BES v Tržišti Azure Marketplace. Vyberte **vytvoření webové aplikace**.
 
 2. K určení, kde chcete výsledky uložené, zadejte informace o cílové kontejneru na domovské stránce webové aplikace. Také určit, kde webové aplikace můžete získat vstupních hodnot: v místním souboru nebo v kontejneru služby Azure storage.
    Vyberte **odeslat**.
-   
+
    ![Informace o úložiště][image7]
 
 Webové aplikace zobrazí stránka s stav úlohy. Když je úloha dokončena, získáte umístění výsledků ve službě Azure Blob storage. Máte také možnost stažení výsledky do místního souboru.

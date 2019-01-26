@@ -3,19 +3,19 @@ title: Získejte Začínáme s Azure MFA v cloudu
 description: Microsoft Azure Multi-Factor Authentication Začínáme s podmíněným přístupem
 services: multi-factor-authentication
 ms.service: active-directory
-ms.component: authentication
+ms.subservice: authentication
 ms.topic: conceptual
 ms.date: 09/01/2018
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
-ms.openlocfilehash: 1a5a5dc04f9ac663fe2e29fd81df5201435c1bc1
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: 8f4991c00f133d97680bb76d6de627709847d275
+ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54430158"
+ms.lasthandoff: 01/26/2019
+ms.locfileid: "55081088"
 ---
 # <a name="deploy-cloud-based-azure-multi-factor-authentication"></a>Nasadit cloudovou službu Azure Multi-Factor Authentication
 

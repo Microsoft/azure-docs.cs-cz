@@ -7,7 +7,7 @@ author: MarkusVi
 manager: daveba
 ms.assetid: 56a5bade-7dcc-4dcf-8092-a7d4bf5df3c1
 ms.service: active-directory
-ms.component: conditional-access
+ms.subservice: conditional-access
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 01/24/2019
 ms.author: markvi
 ms.reviewer: spunukol
-ms.openlocfilehash: 7b518309b529f75294f20907cd523ee546b2e93d
-ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
+ms.openlocfilehash: dbb8417975d051b4a13d6f94fca76fd3bf321a35
+ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/25/2019
-ms.locfileid: "54901611"
+ms.lasthandoff: 01/26/2019
+ms.locfileid: "55074239"
 ---
 # <a name="azure-active-directory-conditional-access-settings-reference"></a>Odkaz nastavení podmíněného přístupu Azure Active Directory
 

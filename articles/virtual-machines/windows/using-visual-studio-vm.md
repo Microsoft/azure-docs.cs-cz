@@ -17,12 +17,12 @@ ms.prod: vs-devops-alm
 ms.date: 09/12/2018
 ms.author: phillee
 keywords: visualstudio
-ms.openlocfilehash: 49ed750a25c732b7f11ef5de2e545be2a5412fa8
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.openlocfilehash: 1582cc7e48adcf895dc7c07e7ab485790650ac14
+ms.sourcegitcommit: 97d0dfb25ac23d07179b804719a454f25d1f0d46
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53437567"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54911907"
 ---
 # <a name="visual-studio-images-on-azure"></a>Visual Studio Image v Azure
 Pomocí sady Visual Studio v předkonfigurovaném Azure virtuální počítač (VM) je rychlý a snadný způsob, jak přejít od ničeho nahoru a spuštění vývojové prostředí. Bitové kopie systému s různými konfiguracemi sady Visual Studio jsou k dispozici v [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps?search=%22visual%20studio%202017%22&page=1).
@@ -34,11 +34,11 @@ Image pro aktuální hlavní verze, Visual Studio 2017 a Visual Studio 2015, naj
 
 | Prodejní verze                                              | Edice                     |     Verze produktu      |
 |:------------------------------------------------------------:|:----------------------------:|:------------------------:|
-|    Visual Studio 2019: Ve verzi Preview (ve verzi Preview 1)                   |           Enterprise         | Verze 16.0.0 Preview 1 |
+|    Visual Studio 2019: Ve verzi Preview (ve verzi Preview 2)                   |           Enterprise         | Verze 16.0.0 Preview 2 |
 | Visual Studio 2017: Nejnovější (verzi 15.9)                    |    Organizace, Community     |      Verze 15.9.4      |
-|         Visual Studio 2017: VE VERZI RTW                              |    Organizace, Community     |      Verze 15.0.20     |
+|         Visual Studio 2017: RTW                              |    Organizace, Community     |      Verze 15.0.20     |
 |   Visual Studio 2015: Nejnovější (aktualizace 3)                      |    Organizace, Community     |  Verze 14.0.25431.01   |
-|         Visual Studio 2015: VE VERZI RTW                              |             Žádný             | (Platnost pro obsluhu)  |
+|         Visual Studio 2015: RTW                              |             Žádný             | (Platnost pro obsluhu)  |
 
 > [!NOTE]
 > V souladu s Microsoft zásady obsluhy původně vydaná verze (RTW) sady Visual Studio 2015 vypršela pro obsluhu. Visual Studio 2015 Update 3 je jediný zbývající verze nabízí pro produktovou řadu Visual Studio 2015.

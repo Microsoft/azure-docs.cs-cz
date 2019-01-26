@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 09/12/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 34c8a7d547acf023af442599708f9c183e5b9ae9
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: e5949016281b5f8ba5d8770403a146e52d279c73
+ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54431193"
+ms.lasthandoff: 01/26/2019
+ms.locfileid: "55079983"
 ---
 # <a name="manage-azure-automation-run-as-accounts"></a>Správa účtů služby Automation spustit jako pro Azure
 
@@ -40,17 +40,16 @@ Existují dva typy účtů spustit jako:
 
 Vytvořit nebo aktualizovat účet Spustit jako, musí mít specifické oprávnění a oprávnění. Globální správce nebo Spolusprávce může dokončení všech úloh. V situaci, kdy máte oddělení povinností následující tabulka uvádí seznam úkolů, ekvivalentní rutinu a potřebná oprávnění:
 
-|Úkol|Rutina  |Minimální oprávnění  |
-|---|---------|---------|
-|Vytvoření aplikace Azure AD|[New-AzureRmADApplication](/powershell/module/azurerm.resources/new-azurermadapplication)     | Role pro vývojáře aplikací        |
-|Přidání přihlašovacích údajů k aplikaci.|[New-AzureRmADAppCredential](/powershell/module/AzureRM.Resources/New-AzureRmADAppCredential)     | Správce aplikace nebo globální správce         |
-|Vytvořte a získejte instanční objekt Azure AD|[New-AzureRMADServicePrincipal](/powershell/module/AzureRM.Resources/New-AzureRmADServicePrincipal)</br>[Get-AzureRmADServicePrincipal](/powershell/module/AzureRM.Resources/Get-AzureRmADServicePrincipal)     | Správce aplikace nebo globální správce        |
-|Přiřazení nebo získat roli RBAC pro zadaný objekt zabezpečení|[New-AzureRMRoleAssignment](/powershell/module/AzureRM.Resources/New-AzureRmRoleAssignment)</br>[Get-AzureRMRoleAssignment](/powershell/module/AzureRM.Resources/Get-AzureRmRoleAssignment)      | Správce uživatelských přístupů nebo vlastníka        |
-|Vytvořit nebo odebrat na server certifikát služby Automation|[New-AzureRmAutomationCertificate](/powershell/module/AzureRM.Automation/New-AzureRmAutomationCertificate)</br>[Remove-AzureRmAutomationCertificate](/powershell/module/AzureRM.Automation/Remove-AzureRmAutomationCertificate)     | Přispěvatelem skupiny prostředků         |
-|Vytvoření nebo odebrání připojení služby Automation|[New-AzureRmAutomationConnection](/powershell/module/AzureRM.Automation/New-AzureRmAutomationConnection)</br>[Remove-AzureRmAutomationConnection](/powershell/module/AzureRM.Automation/Remove-AzureRmAutomationConnection)|Přispěvatelem skupiny prostředků |
+|Úkol|Rutina  |Minimální oprávnění  |Pokud nastavíte oprávnění|
+|---|---------|---------|---|
+|Vytvoření aplikace Azure AD|[New-AzureRmADApplication](/powershell/module/azurerm.resources/new-azurermadapplication)     | Role pro vývojáře aplikací<sup>1</sup>        |[Azure Active Directory](../active-directory/develop/howto-create-service-principal-portal.md#required-permissions)</br>Domů > Azure Active Directory > Registrace aplikací |
+|Přidání přihlašovacích údajů k aplikaci.|[New-AzureRmADAppCredential](/powershell/module/AzureRM.Resources/New-AzureRmADAppCredential)     | Správce aplikace nebo globální správce<sup>1</sup>         |[Azure Active Directory](../active-directory/develop/howto-create-service-principal-portal.md#required-permissions)</br>Domů > Azure Active Directory > Registrace aplikací|
+|Vytvořte a získejte instanční objekt Azure AD|[New-AzureRMADServicePrincipal](/powershell/module/AzureRM.Resources/New-AzureRmADServicePrincipal)</br>[Get-AzureRmADServicePrincipal](/powershell/module/AzureRM.Resources/Get-AzureRmADServicePrincipal)     | Správce aplikace nebo globální správce        |[Azure Active Directory](../active-directory/develop/howto-create-service-principal-portal.md#required-permissions)</br>Domů > Azure Active Directory > Registrace aplikací|
+|Přiřazení nebo získat roli RBAC pro zadaný objekt zabezpečení|[New-AzureRMRoleAssignment](/powershell/module/AzureRM.Resources/New-AzureRmRoleAssignment)</br>[Get-AzureRMRoleAssignment](/powershell/module/AzureRM.Resources/Get-AzureRmRoleAssignment)      | Správce uživatelských přístupů nebo vlastníka        | [Předplatné](../role-based-access-control/role-assignments-portal.md)</br>Domů > předplatná > \<název předplatného\> – řízení přístupu (IAM)|
+|Vytvořit nebo odebrat na server certifikát služby Automation|[New-AzureRmAutomationCertificate](/powershell/module/AzureRM.Automation/New-AzureRmAutomationCertificate)</br>[Remove-AzureRmAutomationCertificate](/powershell/module/AzureRM.Automation/Remove-AzureRmAutomationCertificate)     | Přispěvatelem skupiny prostředků         |Skupina prostředků účtu služby Automation|
+|Vytvoření nebo odebrání připojení služby Automation|[New-AzureRmAutomationConnection](/powershell/module/AzureRM.Automation/New-AzureRmAutomationConnection)</br>[Remove-AzureRmAutomationConnection](/powershell/module/AzureRM.Automation/Remove-AzureRmAutomationConnection)|Přispěvatelem skupiny prostředků |Skupina prostředků účtu služby Automation|
 
-* Uživatelský účet AD s oprávněními role přispěvatele pro prostředky Microsoft.Automation, jak je uvedeno v článku [řízení přístupu na základě rolí ve službě Azure Automation](automation-role-based-access-control.md#contributor).  
-* Uživatelé ve vašem tenantovi Azure AD, kteří nejsou správci, můžou [registrovat aplikace AD](../active-directory/develop/howto-create-service-principal-portal.md#check-azure-subscription-permissions), pokud je možnost **Uživatelé můžou registrovat aplikace** na stránce **Uživatelská nastavení** pro vašeho tenanta Azure AD nastavená na **Ano**. Pokud je nastavení Registrace aplikací nastaveno na **Ne**, uživatel provádějící tuto akci musí být globálním správcem služby Azure AD.
+<sup>1</sup> můžou uživatelé bez oprávnění správce ve vašem tenantovi Azure AD [registrovat aplikace AD](../active-directory/develop/howto-create-service-principal-portal.md#required-permissions) Pokud vašeho tenanta Azure AD **uživatelé můžou registrovat aplikace** možnost **uživatelská nastavení**stránky je nastavené na **Ano**. Pokud je nastavení Registrace aplikací nastaveno na **Ne**, uživatel provádějící tuto akci musí být globálním správcem služby Azure AD.
 
 Pokud nejste členem instance Active Directory předplatného před přidané do globální správce nebo spolusprávce role pro předplatné, se přidá jako Host. V takovém případě se zobrazí `You do not have permissions to create…` upozornění na **přidat účet Automation** stránky. Uživatele, kteří byli nejdřív přidaní do role globálního správce nebo spolusprávce, je možné z instance Active Directory předplatného odebrat a potom je znovu přidat – tak se z nich ve službě Active Directory stanou úplní uživatelé. Takovou situaci můžete ověřit v podokně **Azure Active Directory** na webu Azure Portal. Vyberte **Uživatelé a skupiny**, potom **Všichni uživatelé** a po výběru konkrétního uživatele vyberte **Profil**. Hodnota atributu **Typ uživatele** v profilu uživatele by neměla být **Host**.
 

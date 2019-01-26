@@ -8,7 +8,7 @@ manager: mtillman
 editor: ''
 ms.assetid: 5fb4fa1b-8fc4-438e-b3b0-258d8c145f22
 ms.service: active-directory
-ms.component: develop
+ms.subservice: develop
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -17,12 +17,12 @@ ms.date: 12/01/2018
 ms.author: celested
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 2d0530e2d7b97c4b3fda84f796de1a0e2857e2ac
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: 4c9e3c689a7b61e10d63272dd80815b11cacc71e
+ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52871995"
+ms.lasthandoff: 01/26/2019
+ms.locfileid: "55075412"
 ---
 # <a name="v20-protocols---oauth-20-and-openid-connect"></a>verze 2.0 protokolů: OAuth 2.0 a OpenID Connect
 

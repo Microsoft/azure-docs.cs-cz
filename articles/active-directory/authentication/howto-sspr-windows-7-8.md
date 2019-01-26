@@ -3,19 +3,19 @@ title: Azure AD samoobslužné resetování hesla Windows 7 a 8.1
 description: Povolení samoobslužného resetování hesla pomocí zapomněli jste heslo na Windows 7 nebo 8.1 přihlašovací obrazovka
 services: active-directory
 ms.service: active-directory
-ms.component: authentication
+ms.subservice: authentication
 ms.topic: conceptual
 ms.date: 09/11/2018
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry
-ms.openlocfilehash: 1b488e938cf314eef18117ffd33f582319260162
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: 33bacb5d399e41e04a6c00225e7411cef0c20308
+ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54438775"
+ms.lasthandoff: 01/26/2019
+ms.locfileid: "55075294"
 ---
 # <a name="how-to-enable-password-reset-from-windows-7-8-and-81"></a>Postup: Povolit heslo resetovat z Windows 7, 8 a 8.1
 

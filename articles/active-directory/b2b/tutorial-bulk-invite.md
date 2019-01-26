@@ -3,20 +3,20 @@ title: Kurz hromadného pozvání uživatelů spolupráce B2B – Azure Active D
 description: V tomto kurzu se dozvíte, jak použít PowerShell a soubor CSV k hromadnému rozeslání pozvánek externím uživatelům spolupráce B2B služby Azure AD.
 services: active-directory
 ms.service: active-directory
-ms.component: B2B
+ms.subservice: B2B
 ms.topic: tutorial
 ms.date: 08/14/2018
 ms.author: mimart
 author: msmimart
 ms.reviewer: mal
-ms.openlocfilehash: c24a82d5765fef01eab9ae24f637c215c62e822d
-ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
-ms.translationtype: HT
+ms.openlocfilehash: 43fb06bcabe2a2c941eb2b4112d4960394ec2c66
+ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "45986898"
+ms.lasthandoff: 01/26/2019
+ms.locfileid: "55077212"
 ---
-# <a name="tutorial-bulk-invite-azure-ad-b2b-collaboration-users"></a>Kurz: Hromadné pozvání uživatelů spolupráce B2B služby Azure AD
+# <a name="tutorial-bulk-invite-azure-ad-b2b-collaboration-users"></a>Kurz: Hromadné pozvat uživatele spolupráce B2B ve službě Azure AD
 
 Pokud k práci se svými externími partnery používáte spolupráci B2B služby Azure Active Directory (Azure AD), můžete do organizace pozvat více uživatelů typu host najednou. V tomto kurzu se dozvíte, jak použít PowerShell k hromadnému rozeslání pozvánek externím uživatelům. Konkrétně provedete následující:
 
@@ -130,7 +130,7 @@ Pokud už testovací uživatelské účty v adresáři nepotřebujete, můžete 
 Příklad: `Remove-AzureADUser -ObjectId "lstokes_fabrikam.com#EXT#@contoso.onmicrosoft.com"`
 
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 V tomto kurzu jste hromadně odeslali pozvánky uživatelům typu host, kteří nepatří do vaší organizace. V dalším článku se dozvíte, jak funguje uplatnění pozvánky.
 
 > [!div class="nextstepaction"]

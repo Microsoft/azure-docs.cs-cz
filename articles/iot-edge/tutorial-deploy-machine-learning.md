@@ -9,16 +9,16 @@ ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc, seodec18
-ms.openlocfilehash: db8318e94b646d57c00bc2e6958ba9e7f46ec7af
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: 464d16d4bbcbdbefd36ce1132630ad702d7a0c90
+ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53344010"
+ms.lasthandoff: 01/26/2019
+ms.locfileid: "55076961"
 ---
 # <a name="tutorial-deploy-azure-machine-learning-as-an-iot-edge-module-preview"></a>Kurz: Nasazení služby Azure Machine Learning jako modulu IoT Edge (preview)
 
-Moduly IoT Edge můžete použít k nasazení kódu, který implementuje obchodní logiku přímo do zařízení IoT Edge. Tento kurz vás provede nasazením modulu Azure Machine Learning, který předpovídá, kdy zařízení selže, na základě simulovaných dat teploty počítače. Další informace o Azure ML na IoT Edge najdete na stránce [Dokumentace ke službě Azure Machine Learning](../machine-learning/service/how-to-deploy-to-iot.md).
+Moduly IoT Edge můžete použít k nasazení kódu, který implementuje obchodní logiku přímo do zařízení IoT Edge. Tento kurz vás provede nasazením modulu Azure Machine Learning, který předpovídá, kdy zařízení selže, na základě simulovaných dat teploty počítače. Další informace o službě Azure Machine Learning na hraničních zařízeních IoT najdete v tématu [dokumentace ke službě Azure Machine Learning](../machine-learning/service/how-to-deploy-to-iot.md).
 
 Modul Azure Machine Learning, který vytvoříte v tomto kurzu, přečte data o prostředí vygenerovaná zařízením a označí zprávy jako standardní nebo neobvyklé.
 
@@ -31,7 +31,7 @@ V tomto kurzu se naučíte:
 > * Zobrazení vygenerovaných dat
 
 >[!NOTE]
->Moduly Azure Machine Learning na Azure IoT Edge jsou ve verzi Public Preview. 
+>Moduly Azure Machine Learning na Azure IoT Edge jsou ve verzi Public Preview.
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
@@ -45,7 +45,7 @@ Zařízení Azure IoT Edge:
 
 Cloudové prostředky:
 
-* [IoT Hub](../iot-hub/iot-hub-create-through-portal.md) úrovně Free nebo Standard v Azure. 
+* [IoT Hub](../iot-hub/iot-hub-create-through-portal.md) úrovně Free nebo Standard v Azure.
 * Pracovní prostor služby Azure Machine Learning. Můžete ho vytvořit podle pokynů v tématu [Příprava na nasazení modelů v IoT Edge](../machine-learning/service/how-to-deploy-to-iot.md).
 
 
@@ -53,7 +53,7 @@ Cloudové prostředky:
 
 >[!NOTE]
 >
-> Azure Machine Learning ve verzi Preview nepodporuje zabezpečovací funkci identifikace procesů, která je ve výchozím nastavení IoT Edge povolená. 
+> Azure Machine Learning ve verzi Preview nepodporuje zabezpečovací funkci identifikace procesů, která je ve výchozím nastavení IoT Edge povolená.
 > Níže jsou uvedené kroky k jejímu zakázání. Pro použití v produkčním prostředí to ale není vhodné. Tyto kroky jsou nezbytné pouze v Linuxu, jinak je dokončíte během instalace modulu runtime Windows Edge.
 
 K zakázání identifikace procesů na vašem zařízení IoT Edge budete muset v části **connect** konfigurace procesu démon IoT Edge zadat IP adresu a port pro **workload_uri** a **management_uri**.
@@ -88,8 +88,8 @@ export IOTEDGE_HOST="http://172.17.0.1:15580"
 ```
 
 
-## <a name="create-the-azure-ml-container"></a>Vytvoření kontejneru Azure ML
-V této části si stáhnete soubory trénovaného modelu a převedete je na kontejner Azure ML.
+## <a name="create-the-azure-machine-learning-service-container"></a>Vytvoření kontejneru služby Azure Machine Learning
+V této části Stáhněte soubory trénovaného modelu a převést je do kontejneru služby Azure Machine Learning.
 
 Podle pokynů v dokumentaci [Příprava na nasazení modelů v IoT Edge](../machine-learning/service/how-to-deploy-to-iot.md) vytvořte kontejner Dockeru s vaším modelem strojového učení.  Veškeré komponenty potřebné pro image Dockeru najdete v [úložišti Git AI Toolkit pro Azure IoT Edge](https://github.com/Azure/ai-toolkit-iot-edge/tree/master/IoT%20Edge%20anomaly%20detection%20tutorial).
 
@@ -113,7 +113,7 @@ Zkontrolujte, že se image kontejneru úspěšně vytvořila a uložila v regist
 
 1. Vyberte **Nastavit moduly**.
 
-1. V části **Registry Settings** (Nastavení registru) přidejte přihlašovací údaje, které jste zkopírovali z registru kontejneru Azure. 
+1. V části **Registry Settings** (Nastavení registru) přidejte přihlašovací údaje, které jste zkopírovali z registru kontejneru Azure.
 
    ![Přidání přihlašovacích údajů registru do manifestu](./media/tutorial-deploy-machine-learning/registry-settings.png)
 
@@ -156,7 +156,7 @@ Můžete zobrazit zprávy generované každým modulem IoT Edge a také zprávy,
 
 ### <a name="view-data-on-your-iot-edge-device"></a>Zobrazení dat na zařízení IoT Edge
 
-Na zařízení IoT Edge můžete zobrazit zprávy odesílané z každého jednotlivého modulu. 
+Na zařízení IoT Edge můžete zobrazit zprávy odesílané z každého jednotlivého modulu.
 
 Pokud tyto příkazy provádíte na zařízení s Linuxem, možná budete muset použít `sudo` pro zvýšená oprávnění.
 
@@ -176,7 +176,7 @@ Pokud tyto příkazy provádíte na zařízení s Linuxem, možná budete muset 
 
 Můžete zobrazit zprávy typu zařízení cloud, které služba IoT hub přijímá pomocí [rozšíření Azure IoT Hub Toolkit pro Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-toolkit) (dříve rozšíření Azure IoT Toolkit).
 
-Následující kroky ukazují, jak nastavit Visual Studio Code k monitorování zpráv zařízení-cloud, které přicházejí do vašeho IoT Hubu. 
+Následující kroky ukazují, jak nastavit Visual Studio Code k monitorování zpráv zařízení-cloud, které přicházejí do vašeho IoT Hubu.
 
 1. V editoru Visual Studio Code vyberte **IoT Hub Devices** (zařízení IoT Hubu).
 
@@ -190,13 +190,13 @@ Následující kroky ukazují, jak nastavit Visual Studio Code k monitorování 
 
 5. Sledujte zprávy, které přicházejí každých pět sekund ze senzoru tempSenzor. Text zprávy obsahuje vlastnost **anomaly**, která v modulu machinelearningmodule nabývá hodnoty true nebo false. Pokud bylo spuštění modelu úspěšné, obsahuje vlastnost **AzureMLResponse** hodnotu „OK“.
 
-   ![Text zprávy s odpovědí Azure ML](./media/tutorial-deploy-machine-learning/ml-output.png)
+   ![Odpověď služby Azure Machine Learning v textu zprávy](./media/tutorial-deploy-machine-learning/ml-output.png)
 
-## <a name="clean-up-resources"></a>Vyčištění prostředků 
+## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Pokud máte v plánu pokračovat k dalšímu doporučenému článku, můžete si vytvořené prostředky a konfigurace uschovat a znovu je použít. Také můžete dál používat stejné zařízení IoT Edge jako testovací zařízení. 
+Pokud máte v plánu pokračovat k dalšímu doporučenému článku, můžete si vytvořené prostředky a konfigurace uschovat a znovu je použít. Také můžete dál používat stejné zařízení IoT Edge jako testovací zařízení.
 
-Jinak můžete místní konfigurace a prostředky Azure vytvořené v tomto článku odstranit, abyste se vyhnuli poplatkům. 
+Jinak můžete místní konfigurace a prostředky Azure vytvořené v tomto článku odstranit, abyste se vyhnuli poplatkům.
 
 [!INCLUDE [iot-edge-clean-up-cloud-resources](../../includes/iot-edge-clean-up-cloud-resources.md)]
 

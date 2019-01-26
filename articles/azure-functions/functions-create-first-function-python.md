@@ -11,12 +11,12 @@ ms.service: functions
 ms.custom: mvc
 ms.devlang: python
 manager: jeconnoc
-ms.openlocfilehash: 140fc870500054d0652b48bc602706398371fa8e
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: 631fc4e613311df9386084408ead625f6d018151
+ms.sourcegitcommit: 97d0dfb25ac23d07179b804719a454f25d1f0d46
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54039046"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54911886"
 ---
 # <a name="create-your-first-python-function-in-azure-preview"></a>Vytvoření první funkce Pythonu v Azure (preview)
 
@@ -30,9 +30,9 @@ Následující kroky se podporují na počítačích se systémem Mac, Windows a
 
 Pro vytváření a testování místně, budete muset:
 
-+ Nainstalujte [Python 3.6](https://www.python.org/downloads/)
++ Nainstalujte [Python 3.6](https://www.python.org/downloads/).
 
-+ Nainstalujte [nástrojů Azure Functions Core](functions-run-local.md#v2) verze 2.2.70 nebo novější
++ Nainstalujte [nástrojů Azure Functions Core](functions-run-local.md#v2) verze 2.2.70 nebo novější (vyžaduje .NET Core 2.x SDK).
 
 Publikovat a spustit v Azure:
 

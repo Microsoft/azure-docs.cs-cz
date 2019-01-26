@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/19/2018
 ms.author: tomfitz
-ms.openlocfilehash: bd54ae2c82d3baf716784c39951c5cad7ec364b3
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: 0736ed32fa6f17cc840d6b144503409365c33d84
+ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53731030"
+ms.lasthandoff: 01/26/2019
+ms.locfileid: "55077931"
 ---
 # <a name="azure-resource-manager-template-best-practices"></a>Azure Resource Manageru šablony osvědčené postupy
 
@@ -82,7 +82,7 @@ Informace v této části mohou být užitečné při práci s [parametry](resou
 
 * Použití `allowedValues` opatrně. Používejte pouze v případě, že jste zkontrolujte, zda že některé hodnoty nejsou zahrnuté v možnosti povolené. Pokud používáte `allowedValues` příliš široce může blokovat platný nasazení podle není udržování aktuálnosti seznamu.
 
-* Pokud název parametru v šabloně odpovídá parametru v příkazu pro nasazení prostředí PowerShell, správce prostředků řeší tento konflikt názvů tak, že přidáte Příponové **FromTemplate** parametru šablony. Například pokud zahrnete parametr s názvem **ResourceGroupName** v šabloně, je v konfliktu s **ResourceGroupName** parametr [New-AzureRmResourceGroupDeployment ](/powershell/module/azurerm.resources/new-azurermresourcegroupdeployment) rutiny. Během nasazení, zobrazí výzva k zadání hodnoty pro **ResourceGroupNameFromTemplate**.
+* Pokud název parametru v šabloně odpovídá parametru v příkazu pro nasazení prostředí PowerShell, správce prostředků řeší tento konflikt názvů tak, že přidáte Příponové **FromTemplate** parametru šablony. Například pokud zahrnete parametr s názvem **ResourceGroupName** v šabloně, je v konfliktu s **ResourceGroupName** parametr [New-AzResourceGroupDeployment](/powershell/module/az.resources/new-azresourcegroupdeployment) rutiny. Během nasazení, zobrazí výzva k zadání hodnoty pro **ResourceGroupNameFromTemplate**.
 
 ### <a name="security-recommendations-for-parameters"></a>Doporučení zabezpečení pro parametry
 

@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/24/2019
 ms.author: tomfitz
-ms.openlocfilehash: 9465be92d2289bb174834cc856d6f20b6b64c81b
-ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
+ms.openlocfilehash: 8a5fd44f1122b682ee4e3b4c6fcf56408098cae1
+ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54888120"
+ms.lasthandoff: 01/26/2019
+ms.locfileid: "55080700"
 ---
 # <a name="move-resources-to-new-resource-group-or-subscription"></a>Přesunutí prostředků do nové skupiny prostředků nebo předplatného
 
@@ -176,7 +176,7 @@ Pokud chcete přesunout virtuální počítače nakonfigurované s Azure Backup,
 * Nalezení vašeho virtuálního počítače.
 * Najít skupinu prostředků pomocí následující vzor pro pojmenování: `AzureBackupRG_<location of your VM>_1` například AzureBackupRG_westus2_1
 * Pokud na webu Azure portal, pak zaškrtněte "Zobrazit skryté typy"
-* Pokud v prostředí PowerShell, použijte `Get-AzureRmResource -ResourceGroupName AzureBackupRG_<location of your VM>_1` rutiny
+* Pokud v prostředí PowerShell, použijte `Get-AzResource -ResourceGroupName AzureBackupRG_<location of your VM>_1` rutiny
 * Pokud v rozhraní příkazového řádku, použijte `az resource list -g AzureBackupRG_<location of your VM>_1`
 * Najít prostředek s typem `Microsoft.Compute/restorePointCollections` , který má vzor pro pojmenování `AzureBackup_<name of your VM that you're trying to move>_###########`
 * Odstraníte tento prostředek. Tato operace odstraní pouze body obnovení rychlé, ne zálohovaná data v trezoru.
@@ -343,8 +343,8 @@ Existuje několik důležitých kroků provedete před přesunutím prostředku 
   Pro prostředí Azure PowerShell použijte:
 
   ```azurepowershell-interactive
-  (Get-AzureRmSubscription -SubscriptionName <your-source-subscription>).TenantId
-  (Get-AzureRmSubscription -SubscriptionName <your-destination-subscription>).TenantId
+  (Get-AzSubscription -SubscriptionName <your-source-subscription>).TenantId
+  (Get-AzSubscription -SubscriptionName <your-destination-subscription>).TenantId
   ```
 
   Pokud používáte Azure CLI, použijte:
@@ -364,14 +364,14 @@ Existuje několik důležitých kroků provedete před přesunutím prostředku 
   Pokud používáte PowerShell, použijte následující příkazy získat stav registrace:
 
   ```azurepowershell-interactive
-  Set-AzureRmContext -Subscription <destination-subscription-name-or-id>
-  Get-AzureRmResourceProvider -ListAvailable | Select-Object ProviderNamespace, RegistrationState
+  Set-AzContext -Subscription <destination-subscription-name-or-id>
+  Get-AzResourceProvider -ListAvailable | Select-Object ProviderNamespace, RegistrationState
   ```
 
   Zaregistrovat poskytovatele prostředků, použijte:
 
   ```azurepowershell-interactive
-  Register-AzureRmResourceProvider -ProviderNamespace Microsoft.Batch
+  Register-AzResourceProvider -ProviderNamespace Microsoft.Batch
   ```
 
   Azure CLI použijte následující příkazy se získat stav registrace:
@@ -475,12 +475,12 @@ Po jeho dokončení budete informováni o výsledek.
 
 ### <a name="by-using-azure-powershell"></a>Pomocí Azure Powershellu
 
-Chcete-li stávající prostředky přesunout do jiné skupiny prostředků nebo předplatného, použijte [Move-AzureRmResource](/powershell/module/azurerm.resources/move-azurermresource) příkazu. Následující příklad ukazuje, jak několika prostředky přesunout do nové skupiny prostředků.
+K přesunutí stávajících prostředků do jiné skupiny prostředků nebo předplatného, použijte [přesunout AzResource](/powershell/module/az.resources/move-azresource) příkazu. Následující příklad ukazuje, jak několika prostředky přesunout do nové skupiny prostředků.
 
 ```azurepowershell-interactive
-$webapp = Get-AzureRmResource -ResourceGroupName OldRG -ResourceName ExampleSite
-$plan = Get-AzureRmResource -ResourceGroupName OldRG -ResourceName ExamplePlan
-Move-AzureRmResource -DestinationResourceGroupName NewRG -ResourceId $webapp.ResourceId, $plan.ResourceId
+$webapp = Get-AzResource -ResourceGroupName OldRG -ResourceName ExampleSite
+$plan = Get-AzResource -ResourceGroupName OldRG -ResourceName ExamplePlan
+Move-AzResource -DestinationResourceGroupName NewRG -ResourceId $webapp.ResourceId, $plan.ResourceId
 ```
 
 Chcete-li přesunout do nového předplatného, zahrnout hodnotu pro `DestinationSubscriptionId` parametru.

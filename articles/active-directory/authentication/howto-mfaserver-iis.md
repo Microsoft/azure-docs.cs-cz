@@ -3,19 +3,19 @@ title: Ověřování služby IIS a server Azure MFA | Dokumentace Microsoftu
 description: Nasazení ověření služby IIS a serveru Azure Multi-Factor Authentication.
 services: multi-factor-authentication
 ms.service: active-directory
-ms.component: authentication
+ms.subservice: authentication
 ms.topic: conceptual
 ms.date: 07/11/2018
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
-ms.openlocfilehash: b3cf329562b10ea73f02a5bfe933a1caf8fe4607
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: 749c0de4a268c005fe73fe594ded9ad1d1700670
+ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54434321"
+ms.lasthandoff: 01/26/2019
+ms.locfileid: "55079847"
 ---
 # <a name="configure-azure-multi-factor-authentication-server-for-iis-web-apps"></a>Konfigurace serveru Azure Multi-Factor Authentication pro webové aplikace IIS
 

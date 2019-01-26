@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/28/2017
-ms.openlocfilehash: 0f438f59da079633fea54758261ce1bd93a8477b
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: d17e4970636818eca14d2e750ec24135e64ddbb6
+ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53251381"
+ms.lasthandoff: 01/26/2019
+ms.locfileid: "55078660"
 ---
 # <a name="deploy-azure-machine-learning-studio-web-services-that-use-data-import-and-data-export-modules"></a>Nasazení webové služby Azure Machine Learning Studio, které používají moduly Import dat a Export dat
 
@@ -44,9 +44,9 @@ K načtení dat z tabulky Azure SQL:
 5. V podokně vlastností, vyberte **Azure SQL Database** v **zdroj dat** rozevíracího seznamu.
 6. V **název databázového serveru**, **název_databáze**, **uživatelské jméno**, a **heslo** polí zadejte příslušné informace pro váš databáze.
 7. Do pole databáze dotazu zadejte následující dotaz.
-   
+
      Vyberte [stáří]
-   
+
         [workclass],
         [fnlwgt],
         [education],
@@ -68,17 +68,17 @@ K načtení dat z tabulky Azure SQL:
 Další nastavíte prediktivní experiment, ze kterého nasazujete webovou službu.
 
 1. V dolní části na plátno experimentu klikněte na tlačítko **nastavení webové služby** a vyberte **prediktivní webové služby (doporučeno)**.
-2. Odeberte *vstup webové služby* a *webové služby výstupní moduly* z prediktivního experimentu. 
+2. Odeberte *vstup webové služby* a *webové služby výstupní moduly* z prediktivního experimentu.
 3. Do pole Hledat součásti zadejte exportu.
 4. Ze seznamu výsledků přidat *exportovat Data* modulů na plátno experimentu.
-5. Propojte výstup z *Score Model* modulu vstupu z *exportovat Data* modulu. 
+5. Propojte výstup z *Score Model* modulu vstupu z *exportovat Data* modulu.
 6. V podokně vlastností, vyberte **Azure SQL Database** v rozevírací nabídce Cíl data.
 7. V **název databázového serveru**, **název_databáze**, **název uživatelského účtu serveru**, a **heslo uživatelského účtu serveru** pole, zadejte příslušné informace pro vaši databázi.
 8. V **čárkami oddělený seznam sloupců, které se má uložit** zadejte popisky vyhodnocení.
 9. V **pole název tabulky dat**, zadejte dbo. ScoredLabels. Pokud tabulka neexistuje, vytvoří se při spuštění experimentu nebo webová služba je volána.
 10. V **čárkami oddělený seznam sloupců do tabulky datatable** pole, zadejte ScoredLabels.
 
-Při psaní aplikace, která volá poslední webovou službu, můžete zadat jiný dotaz vstupní nebo cílové tabulky v době běhu. Při konfiguraci těchto vstupy a výstupy, funkce parametrů webové služby používá k nastavení *Import dat* modulu *zdroj dat* vlastnost a *exportovat Data* data režimu cílové vlastnosti.  Další informace o parametry webové služby, najdete v článku [vstupní parametry webové služby Azure ml](https://blogs.technet.microsoft.com/machinelearning/2014/11/25/azureml-web-service-parameters/) v Cortana Intelligence a Machine Learning Blog.
+Při psaní aplikace, která volá poslední webovou službu, můžete zadat jiný dotaz vstupní nebo cílové tabulky v době běhu. Při konfiguraci těchto vstupy a výstupy, funkce parametrů webové služby používá k nastavení *Import dat* modulu *zdroj dat* vlastnost a *exportovat Data* data režimu cílové vlastnosti.  Další informace o parametry webové služby, najdete v článku [vstupní parametry webové služby Azure Machine Learning studio](https://blogs.technet.microsoft.com/machinelearning/2014/11/25/azureml-web-service-parameters/) v Cortana Intelligence a Machine Learning Blog.
 
 Konfigurace parametrů webové služby pro import dotazu a cílová tabulka:
 
@@ -108,22 +108,22 @@ Nasadit jako webovou službu Classic a vytvořte aplikaci pro použít:
 7. Zkopírujte a vložte C# ukázkový kód do souboru Program.cs a odeberte všechny odkazy na úložiště objektů blob.
 8. Aktualizujte hodnotu *apiKey* proměnné s klíčem rozhraní API předtím uložili.
 9. Vyhledejte prohlášení požadavku a aktualizujte hodnoty parametrů webové služby, které jsou předány *Import dat* a *exportovat Data* moduly. V takovém případě použijte původní dotaz ale definovat nový název tabulky.
-   
-        var request = new BatchExecutionRequest() 
-        {           
+
+        var request = new BatchExecutionRequest()
+        {
             GlobalParameters = new Dictionary<string, string>() {
                 { "Query", @"select [age], [workclass], [fnlwgt], [education], [education-num], [marital-status], [occupation], [relationship], [race], [sex], [capital-gain], [capital-loss], [hours-per-week], [native-country], [income] from dbo.censusdata" },
                 { "Table", "dbo.ScoredTable2" },
             }
         };
-10. Spusťte aplikaci. 
+10. Spusťte aplikaci.
 
 Po dokončení spuštění se přidá novou tabulku k databázi obsahující výsledky hodnocení.
 
 ### <a name="deploy-a-new-web-service"></a>Nasazení nové webové služby
 
-> [!NOTE] 
-> K nasazení nové webové služby musí mít dostatečná oprávnění v rámci předplatného, ke kterému, můžete nasazení webové služby. Další informace najdete v tématu [Správa webové služby pomocí portálu Azure Machine Learning Web Services](manage-new-webservice.md). 
+> [!NOTE]
+> K nasazení nové webové služby musí mít dostatečná oprávnění v rámci předplatného, ke kterému, můžete nasazení webové služby. Další informace najdete v tématu [Správa webové služby pomocí portálu Azure Machine Learning Web Services](manage-new-webservice.md).
 
 Nasadit jako novou webovou službu a vytvořte aplikaci pro použít:
 
@@ -136,9 +136,9 @@ Nasadit jako novou webovou službu a vytvořte aplikaci pro použít:
 7. Zkopírujte a vložte C# ukázkový kód do souboru Program.cs.
 8. Aktualizujte hodnotu *apiKey* proměnné s **primární klíč** umístěné v **informace o základní spotřeby** oddílu.
 9. Vyhledejte *scoreRequest* prohlášení a aktualizujte hodnoty parametrů webové služby, které jsou předány *Import dat* a *exportovat Data* moduly. V takovém případě použijte původní dotaz ale definovat nový název tabulky.
-   
+
         var scoreRequest = new
-        {       
+        {
             Inputs = new Dictionary<string, StringTable>()
             {
             },
@@ -147,5 +147,5 @@ Nasadit jako novou webovou službu a vytvořte aplikaci pro použít:
                 { "Table", "dbo.ScoredTable3" },
             }
         };
-10. Spusťte aplikaci. 
+10. Spusťte aplikaci.
 

@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 10/05/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: e96a7d88a2e30bbedd6c57f9a72dd92f63586dd1
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: 0d058dc1875c69fe3c582c4d68da81c09ab92fcb
+ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54476899"
+ms.lasthandoff: 01/26/2019
+ms.locfileid: "55079697"
 ---
 # <a name="azure-ad-connect-sync-directory-extensions"></a>Synchronizace Azure AD Connect: Rozšíření adresáře
 Rozšíření adresáře můžete použít k rozšíření schématu do služby Azure Active Directory (Azure AD) pomocí vlastních atributů z místní služby Active Directory. Tato funkce umožňuje vytváření obchodních aplikací prostřednictvím atributy, které budete nadále spravovat místní. Tyto atributy mohou být spotřebovány prostřednictvím [rozšíření adresáře Azure AD Graph API](https://msdn.microsoft.com/Library/Azure/Ad/Graph/howto/azure-ad-graph-api-directory-schema-extensions) nebo [Microsoft Graphu](https://developer.microsoft.com/graph/). Dostupné atributy lze zobrazit pomocí [Azure AD Graph Explorer](https://graphexplorer.azurewebsites.net/) a [Microsoft Graph Exploreru](https://developer.microsoft.com/graph/graph-explorer)v uvedeném pořadí.
@@ -42,7 +42,7 @@ Instalace zobrazuje následující atributy, které jsou platné kandidáty:
 
 
 >[!NOTE]
-> Azure AD Connect podporuje synchronizaci více Vážíme si toho atributy služby Active Directory k Azure AD jako rozšíření adresáře více Vážíme si toho. Ale žádné funkce v Azure AD momentálně nepodporují více Vážíme si toho adresář rozšíření.
+> Přestože podporuje Azure AD Connect synchronizaci více Vážíme si toho služby Active Directory atributy do služby Azure AD jako rozšíření více Vážíme si toho adresáře, neexistuje momentálně žádný způsob, jak načíst a využívat data nahraná do atributů rozšíření adresáře více Vážíme si toho.
 
 Seznam atributů, které načítají z mezipaměti schémat, která je vytvořena během instalace služby Azure AD Connect. Pokud jste rozšířili schéma služby Active Directory s další atributy, je nutné [aktualizovat schéma](how-to-connect-installation-wizard.md#refresh-directory-schema) předtím, než tyto nové atributy jsou viditelné.
 

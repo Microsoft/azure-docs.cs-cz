@@ -3,20 +3,20 @@ title: Rychlý start k přidání uživatele typu host pomocí PowerShellu pro s
 description: V tomto rychlém startu se dozvíte, jak použít PowerShell k odeslání pozvánky externímu uživateli spolupráce B2B služby Azure AD.
 services: active-directory
 ms.service: active-directory
-ms.component: B2B
+ms.subservice: B2B
 ms.topic: quickstart
 ms.date: 08/28/2018
 ms.author: mimart
 author: msmimart
 ms.reviewer: mal
-ms.openlocfilehash: f0dc63d84ec7583e721b116b450c890d46524622
-ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
-ms.translationtype: HT
+ms.openlocfilehash: 9b615498f2e3d6df3b285d2e50215f15372dcad6
+ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "45986558"
+ms.lasthandoff: 01/26/2019
+ms.locfileid: "55076043"
 ---
-# <a name="quickstart-add-a-guest-user-with-powershell"></a>Rychlý Start: Přidání uživatele typu host pomocí PowerShellu
+# <a name="quickstart-add-a-guest-user-with-powershell"></a>Rychlý start: Přidání uživatele typu host s využitím PowerShellu
 
 Existuje mnoho způsobů, jak pomocí spolupráce B2B služby Azure Active Directory pozvat externí partnery k vašim aplikacím a službám. V předchozím rychlém startu jste zjistili, jak na portálu pro správu Azure Active Directory přidat uživatele typu host přímo. Uživatele typu host můžete přidat taky pomocí PowerShellu, a to buď po jednom nebo hromadně. V tomto rychlém startu přidáte do tenanta Azure pomocí příkazu New-AzureADMSInvitation jednoho uživatele typu host.
 
@@ -102,8 +102,8 @@ Pokud už testovací uživatelský účet v adresáři nepotřebujete, můžete 
 Příklad: `Remove-AzureADUser -ObjectId "sanda_fabrikam.com#EXT#@contoso.onmicrosoft.com"`
 
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 V tomto rychlém startu jste pomocí PowerShellu pozvali a přidali jednoho uživatele typu host do adresáře. Dále se pomocí PowerShellu naučíte pozvat uživatele typu host hromadně.
 
 > [!div class="nextstepaction"]
-> [Kurz: Hromadné pozvání uživatelů spolupráce B2B služby Azure AD](tutorial-bulk-invite.md)
+> [Kurz: Hromadné pozvat uživatele spolupráce B2B ve službě Azure AD](tutorial-bulk-invite.md)

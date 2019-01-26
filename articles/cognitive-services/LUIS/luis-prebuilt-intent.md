@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
-ms.date: 10/18/2018
+ms.date: 01/24/2019
 ms.author: diberry
-ms.openlocfilehash: 8fddbcf82bdbb052468b97754554da01bac7d82b
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: fc80c0456a0d973db63590f18939ca428247f6d0
+ms.sourcegitcommit: 97d0dfb25ac23d07179b804719a454f25d1f0d46
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53103723"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54911044"
 ---
 # <a name="add-prebuilt-intents-for-common-intents"></a>Přidání záměrů předem připravených pro běžné příkazy 
 

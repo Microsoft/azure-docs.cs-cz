@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 01/24/2010
 ms.author: markvi
 ms.reviewer: jairoc
-ms.openlocfilehash: edb4e2b25e5fd7d6c59f07a02cc5d2f0630eac8e
-ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
+ms.openlocfilehash: 26133dbfe6b8e11128393957c377c1827e0d2a6e
+ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/25/2019
-ms.locfileid: "54904399"
+ms.lasthandoff: 01/26/2019
+ms.locfileid: "55076498"
 ---
 # <a name="azure-active-directory-device-management-faq"></a>Azure Active Directory nejčastější dotazy ke správě zařízení
 
@@ -128,6 +128,12 @@ Odstraněné nebo zakázané uživatelé, kteří nepovedlo přihlásit dříve 
 
 ---
 
+**Otázka: Proč uživatelé mají problémy na zařízeních připojených k Azure AD po změně jejich hlavní název uživatele?**
+
+**ODPOVĚĎ:** Změny (UPN) v současné době nejsou plně podporovány na zařízeních připojených k Azure AD. Tak jejich ověřování pomocí Azure AD nepodaří po jejich změně hlavní název uživatele. V důsledku toho uživatelé mají jednotného přihlašování a podmíněný přístup problémy na svých zařízeních. V tuto chvíli uživatelé potřebují k přihlášení k Windows pomocí dlaždice "Jiný uživatel" pomocí jejich nový název UPN k vyřešení tohoto problému. Na vyřešení tohoto problému pracujeme. Uživatelé přihlášení pomocí Windows Hello pro firmy se však není potýkají tento problém. 
+
+---
+
 **Otázka: Moji uživatelé nemůže vyhledat tiskárny ze zařízení připojených k Azure AD. Jak můžu povolit tisk z těchto zařízení?**
 
 **ODPOVĚĎ:** Nasaďte tiskárny pro službu Azure AD zařízení připojená k naleznete v tématu [nasazení systému Windows Server hybridního cloudu tisk pomocí předběžné ověření](https://docs.microsoft.com/windows-server/administration/hybrid-cloud-print/hybrid-cloud-print-deploy). Budete potřebovat Windows serveru v místním nasazení hybridního cloudu tisk. V současné době není k dispozici tiskové služby založené na cloudu. 
@@ -209,7 +215,15 @@ Toto chování nelze použít s žádným uživatelem, který se přihlásí na 
 
 Připojení k hybridní službě Azure AD má přednost před stavu registrováno v Azure AD. Takže zařízení se považuje za hybridní připojená k Azure AD pro všechny ověřovací a vyhodnocení podmíněného přístupu. Můžete bezpečně odstranit záznam zařízení registrováno v Azure AD z portálu Azure AD. Zjistěte, jak [vyhnout nebo je odstraňte tento duální stav na počítači s Windows 10](https://docs.microsoft.com/azure/active-directory/devices/hybrid-azuread-join-plan#review-things-you-should-know). 
 
+
 ---
+
+**Otázka: Proč uživatelé mají problémy na zařízeních připojených k Azure AD s Windows 10 hybridní po změně jejich hlavní název uživatele?**
+
+**ODPOVĚĎ:** Změny hlavního názvu uživatele nyní nejsou plně podporovány s hybridních zařízení připojených k Azure AD. Zatímco uživatelé přihlásit k zařízení a přístupu k místním aplikacím, ověřování pomocí Azure AD nepodaří po změně UPN. V důsledku toho uživatelé mají jednotného přihlašování a podmíněný přístup problémy na svých zařízeních. V tuto chvíli je potřeba odebrat zařízení ze služby Azure AD (spusťte s vyššími oprávněními "dsregcmd /leave") a znovu připojí k (automaticky se stane) k vyřešení daného problému. Na vyřešení tohoto problému pracujeme. Uživatelé přihlášení pomocí Windows Hello pro firmy se však není potýkají tento problém. 
+
+---
+
 
 ## <a name="azure-ad-register-faq"></a>Nejčastější dotazy k registrace Azure AD
 

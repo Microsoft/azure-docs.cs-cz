@@ -7,19 +7,19 @@ author: danieldobalian
 manager: mtillman
 ms.author: celested
 ms.service: active-directory
-ms.component: develop
+ms.subservice: develop
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 02/27/2017
 ms.custom: ''
-ms.openlocfilehash: d6e70048f5c86ad18962237d7ffcc442c82bf035
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ms.openlocfilehash: e39c2716cd31e97ad71764f25befc1fc6e47e2a0
+ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54107646"
+ms.lasthandoff: 01/26/2019
+ms.locfileid: "55079031"
 ---
 # <a name="error-handling-best-practices-for-azure-active-directory-authentication-library-adal-clients"></a>Osvědčené postupy pro klienty Azure Active Directory Authentication Library (ADAL) pro zpracování chyb
 
@@ -210,10 +210,10 @@ Zpracování chyb v nativních aplikací lze definovat ve dvou případech:
 
 Následující pokyny jsou uvedeny příklady pro zpracování ve spojení s všechny AcquireToken(...) tichý režim chyb ADAL metody *s výjimkou*: 
 
-- AcquireTokenAsync (..., IClientAssertionCertification,...)
-- AcquireTokenAsync (..., clientcredential systému,...)
-- AcquireTokenAsync (..., ClientAssertion,...)
-- AcquireTokenAsync(...,UserAssertion,...)   
+- AcquireTokenAsync(…, IClientAssertionCertification, …)
+- AcquireTokenAsync(…,ClientCredential, …)
+- AcquireTokenAsync(…,ClientAssertion, …)
+- AcquireTokenAsync(…,UserAssertion,…)   
 
 Váš kód by implementován takto:
 
@@ -346,7 +346,7 @@ Využijete při vytváření webové aplikace .NET, která volá získá token p
 
 Následující pokyny jsou uvedeny příklady pro zpracování chyb v společně s metodami ADAL: 
 
-- AcquireTokenByAuthorizationCodeAsync(...)
+- AcquireTokenByAuthorizationCodeAsync(…)
 
 Váš kód by implementován takto:
 
@@ -415,9 +415,9 @@ Pro *všechny* service to service aplikačních scénářů, včetně on-behalf-
 
 Následující pokyny jsou uvedeny příklady pro zpracování chyb v společně s metodami ADAL: 
 
-- AcquireTokenAsync (..., IClientAssertionCertification,...)
-- AcquireTokenAsync (..., clientcredential systému,...)
-- AcquireTokenAsync (..., ClientAssertion,...)
+- AcquireTokenAsync(…, IClientAssertionCertification, …)
+- AcquireTokenAsync(…,ClientCredential, …)
+- AcquireTokenAsync(…,ClientAssertion, …)
 - AcquireTokenAsync(…,UserAssertion, …)
 
 Váš kód by implementován takto:

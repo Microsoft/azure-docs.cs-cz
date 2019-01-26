@@ -3,19 +3,19 @@ title: Prevence útoků hrubou silou pomocí inteligentního uzamčení Azure AD
 description: Azure Active Directory inteligentním uzamčením pomáhá chránit vaši organizaci před útoky hrubou silou uhádnutí hesla
 services: active-directory
 ms.service: active-directory
-ms.component: authentication
+ms.subservice: authentication
 ms.topic: conceptual
 ms.date: 12/14/2018
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: rogoya
-ms.openlocfilehash: 6d2ed7632223b5ded5c0306533d807e9b57f9d76
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: 101070dab80c69ea1d24dd11fe5e067947505d19
+ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54426178"
+ms.lasthandoff: 01/26/2019
+ms.locfileid: "55077960"
 ---
 # <a name="azure-active-directory-smart-lockout"></a>Azure Active Directory inteligentní uzamčení
 

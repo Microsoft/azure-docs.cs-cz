@@ -8,7 +8,7 @@ manager: mtillman
 editor: ''
 ms.assetid: 820acdb7-d316-4c3b-8de9-79df48ba3b06
 ms.service: active-directory
-ms.component: develop
+ms.subservice: develop
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
@@ -16,12 +16,12 @@ ms.workload: identity
 ms.date: 10/03/2018
 ms.author: celested
 ms.reviewer: jlu, annaba, hirsin
-ms.openlocfilehash: a06eb35850c12c2813a395ee8c64e16c2a8a5bce
-ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
+ms.openlocfilehash: f472503d43d82209c765a331ba3922a2f25ca327
+ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54156710"
+ms.lasthandoff: 01/26/2019
+ms.locfileid: "55077059"
 ---
 # <a name="how-to-migrate-from-the-azure-access-control-service"></a>Postup: Migrace ze služby Azure Access Control Service
 
@@ -133,7 +133,7 @@ Každé cloudové službě Microsoftu, které přijímá tokeny, které jsou vyd
 | Azure Service Bus | [Migrace na sdílených přístupových podpisů](https://docs.microsoft.com/azure/service-bus-messaging/service-bus-migrate-acs-sas) |
 | Azure Service Bus Relay | [Migrace na sdílených přístupových podpisů](https://docs.microsoft.com/azure/service-bus-relay/relay-migrate-acs-sas) |
 | Azure Managed Cache | [Migrace na Azure Cache pro Redis](https://docs.microsoft.com/azure/azure-cache-for-redis/cache-faq#which-azure-cache-offering-is-right-for-me) |
-| Služby Azure DataMarket | [Migrace na rozhraní API služeb Cognitive Services](https://docs.microsoft.com/azure/machine-learning/studio/datamarket-deprecation) |
+| Azure DataMarket | [Migrace na rozhraní API služeb Cognitive Services](https://docs.microsoft.com/azure/machine-learning/studio/datamarket-deprecation) |
 | BizTalk Services | [Migrace do funkce Logic Apps služby Azure App Service](https://docs.microsoft.com/azure/machine-learning/studio/datamarket-deprecation) |
 | Azure Media Services | [Migrace na ověřování Azure AD](https://azure.microsoft.com/blog/azure-media-service-aad-auth-and-acs-deprecation/) |
 | Azure Backup | [Upgrade agenta Azure Backup](https://docs.microsoft.com/azure/backup/backup-azure-file-folder-backup-faq) |
@@ -197,7 +197,7 @@ Na vysoké úrovni *Azure Active Directory je pravděpodobně nejlepší volbou 
 | Účty Microsoft pro osobní použití | Podporováno | Podporované prostřednictvím Azure AD v2.0 protokolu OAuth, ale nikoli prostřednictvím dalších protokolů | 
 | Účty služby Facebook, Google, Yahoo | Podporováno | Nepodporuje se jednání |
 | **Protokoly a kompatibility sady SDK** | | |
-| TECHNOLOGIE WIF | Podporováno | Podporované, ale omezené pokyny jsou k dispozici |
+| WIF | Podporováno | Podporované, ale omezené pokyny jsou k dispozici |
 | WS-Federation | Podporováno | Podporováno |
 | OAuth 2.0 | Podpora pro návrh 13 | Podpora pro RFC 6749, většina moderních specifikace |
 | WS-Trust | Podporováno | Nepodporuje se |
@@ -324,7 +324,7 @@ Můžete také použít Azure AD pro ověřování na serveru pomocí služby Az
 | Postup při registraci klienta | Vytvoření identity služby v portálu pro správu řízení přístupu | Vytvořte jinou webovou aplikaci Azure AD na webu Azure Portal |
 | Protokol použitý |– Protokol OAuth OBTÉKÁNÍ<br />-Udělení přihlašovacích údajů klienta 13 koncept OAuth 2.0 | Udělení přihlašovacích údajů klienta OAuth 2.0 |
 | Metody ověřování klientů |-Jednoduché heslo<br />-Podepsaný SWT<br />-Token SAML od poskytovatele federované identity |-Jednoduché heslo<br />-Podepsaný token JWT |
-| Token formáty |- JWT<br />-SAML 1.1<br />-SAML 2.0<br />-SWT<br /> | Pouze tokenů JWT |
+| Token formáty |- JWT<br />-SAML 1.1<br />- SAML 2.0<br />- SWT<br /> | JWT only |
 | Token transformace |-Přidat vlastní deklarace identity<br />– Logiky vystavení deklarace identity jednoduché if-then | Přidat vlastní deklarace identity | 
 | Automatizace konfigurace a Správa úloh | Podporováno prostřednictvím služby pro správu řízení přístupu | Podporováno prostřednictvím Microsoft Graph a Azure AD Graph API |
 

@@ -10,17 +10,17 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 04/27/2018
+ms.date: 01/25/2019
 ms.author: jingwang
-ms.openlocfilehash: 28802b018711b3cd95946b60a8505684089dca18
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 290cf986c20af70131f081a423cf3644588d8ef0
+ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54019210"
+ms.lasthandoff: 01/26/2019
+ms.locfileid: "55079916"
 ---
 # <a name="copy-data-from-sftp-server-using-azure-data-factory"></a>Kopírování dat ze serveru SFTP pomocí služby Azure Data Factory
-> [!div class="op_single_selector" title1="Vyberte verzi služby Data Factory, kterou používáte:"]
+> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
 > * [Verze 1](v1/data-factory-sftp-connector.md)
 > * [Aktuální verze](connector-sftp.md)
 
@@ -51,7 +51,7 @@ SFTP propojené služby jsou podporovány následující vlastnosti:
 | hostitel | Název nebo IP adresa serveru SFTP. |Ano |
 | port | Port, na kterém naslouchá SFTP server.<br/>Povolené hodnoty jsou: výchozí hodnota je celé číslo, **22**. |Ne |
 | skipHostKeyValidation | Určete, jestli chcete přeskočit ověřování klíče hostitele.<br/>Povolené hodnoty jsou: **true**, **false** (výchozí).  | Ne |
-| Mělo | Zadejte hlas klíče hostitele. | Ano, pokud má "skipHostKeyValidation" je nastavena na hodnotu false.  |
+| hostKeyFingerprint | Zadejte hlas klíče hostitele. | Ano, pokud má "skipHostKeyValidation" je nastavena na hodnotu false.  |
 | authenticationType. | Zadejte typ ověřování.<br/>Povolené hodnoty jsou: **Základní**, **SshPublicKey**. Odkazovat na [použití základního ověřování](#using-basic-authentication) a [pomocí SSH ověření veřejného klíče](#using-ssh-public-key-authentication) oddíly na více vlastností a ukázky JSON v uvedeném pořadí. |Ano |
 | connectVia | [Prostředí Integration Runtime](concepts-integration-runtime.md) se použije k připojení k úložišti. (Pokud je vaše úložiště dat se nachází v privátní síti), můžete použít prostředí Azure Integration Runtime nebo modul Integration Runtime. Pokud není zadán, použije výchozí prostředí Azure Integration Runtime. |Ne |
 
@@ -102,7 +102,7 @@ Chcete-li použít ověřování pomocí veřejného klíče SSH, nastavte vlast
 | uživatelské jméno | Uživatel, který má přístup k serveru SFTP |Ano |
 | privateKeyPath | Zadejte absolutní cestu k souboru privátního klíče, s přístupem k modulu Integration Runtime. Platí pouze v případě, že v místním prostředí typu prostředí Integration Runtime je zadán v "connectVia". | Zadejte, jestli `privateKeyPath` nebo `privateKeyContent`.  |
 | privateKeyContent | Obsah privátního klíče SSH s kódováním base64. Privátní klíč SSH by měl být ve formátu OpenSSH. Označte toto pole jako SecureString bezpečně uložit ve službě Data Factory nebo [odkazovat tajného klíče do služby Azure Key Vault](store-credentials-in-key-vault.md). | Zadejte, jestli `privateKeyPath` nebo `privateKeyContent`. |
-| přístupové heslo | Zadejte pass frázi/heslo k dešifrování privátního klíče, pokud soubor klíče je chráněn heslo. Označte toto pole jako SecureString bezpečně uložit ve službě Data Factory nebo [odkazovat tajného klíče do služby Azure Key Vault](store-credentials-in-key-vault.md). | Ano, pokud se soubor privátního klíče je chráněn heslo. |
+| passPhrase | Zadejte pass frázi/heslo k dešifrování privátního klíče, pokud soubor klíče je chráněn heslo. Označte toto pole jako SecureString bezpečně uložit ve službě Data Factory nebo [odkazovat tajného klíče do služby Azure Key Vault](store-credentials-in-key-vault.md). | Ano, pokud se soubor privátního klíče je chráněn heslo. |
 
 > [!NOTE]
 > Konektor SFTP podporuje RSA/DSA OpenSSH key. Ujistěte se, že obsah souboru klíče začíná řetězcem "---začátek [RSA/DSA] PRIVÁTNÍ klíč---". Pokud soubor privátního klíče je ppk formátový soubor, použijte prosím Putty nástroj pro převod z .ppk s formátem OpenSSH. 
@@ -176,8 +176,8 @@ Ke zkopírování dat z protokolu SFTP, nastavte vlastnost typ datové sady na *
 
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
-| type | Vlastnost type datové sady, musí být nastavená na: **Sdílenou složku.** |Ano |
-| folderPath | Cesta ke složce. Filtr zástupných znaků není podporován. Příklad: / podsložce složky / |Ano |
+| type | Vlastnost type datové sady, musí být nastavená na: **FileShare** |Ano |
+| folderPath | Cesta ke složce. Filtr zástupných znaků je podporován, povolené zástupné znaky jsou: `*` (odpovídá nula nebo více znaků) a `?` (porovnává nulu nebo jeden znak); použijte `^` dostala mimo vašeho skutečného názvu souboru má zástupných znaků nebo tento znak escape uvnitř. <br/><br/>Příklady: rootfolder/podsložka/Další příklady naleznete v [složky a souboru filtrů příklady](#folder-and-file-filter-examples). |Ano |
 | fileName |  **Název nebo zástupný filtr** pro soubory v zadané "folderPath". Pokud nezadáte hodnotu pro tuto vlastnost, datová sada odkazuje na všechny soubory ve složce. <br/><br/>Pro filtr, povoleny zástupné znaky jsou: `*` (odpovídá žádnému nebo více znaků) a `?` (odpovídá nula nebo jeden znak).<br/>– Příklad 1: `"fileName": "*.csv"`<br/>– Příklad 2: `"fileName": "???20180427.txt"`<br/>Použití `^` dostala mimo vašeho skutečného názvu souboru má zástupných znaků nebo tento znak escape uvnitř. |Ne |
 | formát | Pokud chcete **kopírovat soubory jako-je** mezi souborové úložištěm (binární kopie) a přeskočit část o formátu v definicích oba vstupní a výstupní datové sady.<br/><br/>Pokud chcete analyzovat soubory s konkrétním formátu, jsou podporovány následující typy formátů souboru: **TextFormat**, **JsonFormat**, **AvroFormat**, **OrcFormat**, **ParquetFormat**. Nastavte **typ** vlastnosti v části formát na jednu z těchto hodnot. Další informace najdete v tématu [textový formát](supported-file-formats-and-compression-codecs.md#text-format), [formátu Json](supported-file-formats-and-compression-codecs.md#json-format), [Avro formát](supported-file-formats-and-compression-codecs.md#avro-format), [Orc formát](supported-file-formats-and-compression-codecs.md#orc-format), a [formát Parquet](supported-file-formats-and-compression-codecs.md#parquet-format) oddíly. |Ne (pouze pro binární kopie scénář) |
 | Komprese | Zadejte typ a úroveň komprese pro data. Další informace najdete v tématu [podporované formáty souborů a komprese kodeky](supported-file-formats-and-compression-codecs.md#compression-support).<br/>Podporované typy jsou: **GZip**, **Deflate**, **BZip2**, a **ZipDeflate**.<br/>Jsou podporované úrovně: **Optimální** a **nejrychlejší**. |Ne |
@@ -263,6 +263,16 @@ Ke zkopírování dat z protokolu SFTP, nastavte typ zdroje v aktivitě kopírov
 ]
 ```
 
+### <a name="folder-and-file-filter-examples"></a>Složky a příklady filtr souborů
+
+Tato část popisuje výsledné chování název složky a cesta k souboru s filtry zástupný znak.
+
+| folderPath | fileName | rekurzivní | Zdrojové složky struktury a filtrování výsledků (soubory v **tučné** načtením)|
+|:--- |:--- |:--- |:--- |
+| `Folder*` | (prázdný, použijte výchozí) | false (nepravda) | FolderA<br/>&nbsp;&nbsp;&nbsp;&nbsp;**File1.csv**<br/>&nbsp;&nbsp;&nbsp;&nbsp;**File2.json**<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File3.csv<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4.json<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5.csv<br/>AnotherFolderB<br/>&nbsp;&nbsp;&nbsp;&nbsp;File6.csv |
+| `Folder*` | (prázdný, použijte výchozí) | true (pravda) | FolderA<br/>&nbsp;&nbsp;&nbsp;&nbsp;**File1.csv**<br/>&nbsp;&nbsp;&nbsp;&nbsp;**File2.json**<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**File3.csv**<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**File4.json**<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**File5.csv**<br/>AnotherFolderB<br/>&nbsp;&nbsp;&nbsp;&nbsp;File6.csv |
+| `Folder*` | `*.csv` | false (nepravda) | FolderA<br/>&nbsp;&nbsp;&nbsp;&nbsp;**File1.csv**<br/>&nbsp;&nbsp;&nbsp;&nbsp;File2.json<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File3.csv<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4.json<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5.csv<br/>AnotherFolderB<br/>&nbsp;&nbsp;&nbsp;&nbsp;File6.csv |
+| `Folder*` | `*.csv` | true (pravda) | FolderA<br/>&nbsp;&nbsp;&nbsp;&nbsp;**File1.csv**<br/>&nbsp;&nbsp;&nbsp;&nbsp;File2.json<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**File3.csv**<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4.json<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**File5.csv**<br/>AnotherFolderB<br/>&nbsp;&nbsp;&nbsp;&nbsp;File6.csv |
 
 ## <a name="next-steps"></a>Další postup
 Seznam úložišť dat podporovaných jako zdroje a jímky v aktivitě kopírování ve službě Azure Data Factory najdete v tématu [podporovanými úložišti dat](copy-activity-overview.md##supported-data-stores-and-formats).

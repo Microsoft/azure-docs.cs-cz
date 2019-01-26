@@ -12,12 +12,12 @@ ms.workload: na
 ms.date: 12/09/2018
 ms.author: tomfitz
 ms.custom: seodec18
-ms.openlocfilehash: b8c4fdc942af291e912a4c1e74d1292279cf9f8c
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: b16c67990099291381b6f11d9bd804bf4bef84e8
+ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53132325"
+ms.lasthandoff: 01/26/2019
+ms.locfileid: "55078487"
 ---
 # <a name="azure-resource-manager-resource-group-deletion"></a>Odstranění skupiny prostředků služby Azure Resource Manageru
 
@@ -69,4 +69,4 @@ Pro další kódy chyb nezdaří správce prostředků odstranění prostředku.
 ## <a name="next-steps"></a>Další postup
 
 * Koncepce Resource Manageru, najdete v článku [přehled Azure Resource Manageru](resource-group-overview.md).
-* Odstranění příkazy naleznete v tématu [PowerShell](/powershell/module/azurerm.resources/Remove-AzureRmResourceGroup), [rozhraní příkazového řádku Azure](/cli/azure/group?view=azure-cli-latest#az-group-delete), a [rozhraní REST API](/rest/api/resources/resourcegroups/delete).
+* Odstranění příkazy naleznete v tématu [PowerShell](/powershell/module/az.resources/Remove-AzResourceGroup), [rozhraní příkazového řádku Azure](/cli/azure/group?view=azure-cli-latest#az-group-delete), a [rozhraní REST API](/rest/api/resources/resourcegroups/delete).

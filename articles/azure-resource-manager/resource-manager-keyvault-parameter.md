@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/10/2018
 ms.author: tomfitz
-ms.openlocfilehash: e04ee6b74be0bb7ec81166f43295a8a9377f8cf8
-ms.sourcegitcommit: ba9f95cf821c5af8e24425fd8ce6985b998c2982
+ms.openlocfilehash: 31be6b99d6c2ccc2c3f13484c409285ff85e12a0
+ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54381526"
+ms.lasthandoff: 01/26/2019
+ms.locfileid: "55078661"
 ---
 # <a name="use-azure-key-vault-to-pass-secure-parameter-value-during-deployment"></a>Použití Azure Key Vault k předání zabezpečený parametr. hodnoty během nasazení
 
@@ -84,7 +84,7 @@ Add-Type -AssemblyName System.Web
 [System.Web.Security.Membership]::GeneratePassword(16,3)
 ```
 
-Použití šablony Resource Manageru: Zobrazit [kurzu: Integrace Azure Key Vault v nasazení šablony Resource Manageru](./resource-manager-tutorial-use-key-vault.md#prepare-the-key-vault).
+Použití šablony Resource Manageru: Zobrazit [kurzu: Integrace Azure Key Vault v nasazení šablony Resource Manageru](./resource-manager-tutorial-use-key-vault.md#prepare-a-key-vault).
 
 > [!NOTE]
 > Každá služba Azure má specifické požadavky na hesla. Například požadavky na Azure virtuální počítače najdete tady [jaké jsou požadavky na heslo při vytváření virtuálního počítače?](../virtual-machines/windows/faq.md#what-are-the-password-requirements-when-creating-a-vm).

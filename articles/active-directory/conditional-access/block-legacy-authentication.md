@@ -7,7 +7,7 @@ documentationcenter: ''
 author: MarkusVi
 manager: daveba
 editor: ''
-ms.component: conditional-access
+ms.subservice: conditional-access
 ms.assetid: 8c1d978f-e80b-420e-853a-8bbddc4bcdad
 ms.service: active-directory
 ms.devlang: na
@@ -17,12 +17,12 @@ ms.workload: identity
 ms.date: 01/24/2019
 ms.author: markvi
 ms.reviewer: calebb
-ms.openlocfilehash: ac5dbb0aed9ff8aec632ffa285ad0f26a859b9f4
-ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
+ms.openlocfilehash: 164ff12eeec057855476d3808d3d1d44ef3179fe
+ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/25/2019
-ms.locfileid: "54901645"
+ms.lasthandoff: 01/26/2019
+ms.locfileid: "55076839"
 ---
 # <a name="how-to-block-legacy-authentication-to-azure-ad-with-conditional-access"></a>Postup: Blok starší verze ověřování do služby Azure AD s podmíněným přístupem   
 

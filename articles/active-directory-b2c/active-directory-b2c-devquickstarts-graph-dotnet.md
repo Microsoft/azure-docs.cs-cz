@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 08/07/2017
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 28a865ac5a24905a14b8936e4fbb1de576f2ac76
-ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
+ms.openlocfilehash: a9a85b02fe3dceb5edf0e09299c772154042f229
+ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54846536"
+ms.lasthandoff: 01/26/2019
+ms.locfileid: "55079643"
 ---
 # <a name="azure-ad-b2c-use-the-azure-ad-graph-api"></a>Azure AD B2C: Použití Graph API v Azure AD
 
@@ -271,7 +271,7 @@ Content-Type: application/json
 Content-Length: 37
 
 {
-    "displayName": "Joe Consumer",                // this request updates only the user's displayName
+    "displayName": "Joe Consumer"                // this request updates only the user's displayName
 }
 ```
 

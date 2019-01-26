@@ -3,19 +3,19 @@ title: Vícefaktorové ověřování na základě rizikové události a samoobsl
 description: V tomto kurzu povolíte integrace vícefaktorového ověřování (MFA – Multi-Factor Authentication) a samoobslužného resetování hesla služby Azure Identity Protection, abyste snížili rizikové chování.
 services: multi-factor-authentication
 ms.service: active-directory
-ms.component: authentication
+ms.subservice: authentication
 ms.topic: tutorial
 ms.date: 07/11/2018
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry
-ms.openlocfilehash: fea87a711bf43ea73d3e09efeb42f5133d8f4e9f
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: 504e314151409732cba23af97224683eb35a7c81
+ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54434916"
+ms.lasthandoff: 01/26/2019
+ms.locfileid: "55075478"
 ---
 # <a name="tutorial-use-risk-events-to-trigger-multi-factor-authentication-and-password-changes"></a>Kurz: Pomocí aktivační události služby Multi-Factor Authentication a změn hesel rizikových událostí
 

@@ -13,17 +13,18 @@ ms.devlang: azurecli
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 09/28/2018
+ms.date: 01/25/2019
 ms.author: danlep
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 2ff08b0f155be54ee57d2d9999c47aa56a366d09
-ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
+ms.openlocfilehash: 6f3b9815b8e2836b3ee87f969efdc52aca5f5db6
+ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54852197"
+ms.lasthandoff: 01/26/2019
+ms.locfileid: "55077234"
 ---
-# <a name="how-to-find-linux-vm-images-in-the-azure-marketplace-with-the-azure-cli"></a>Postup vyhledání imagí virtuálních počítačů s Linuxem na webu Azure Marketplace pomocí Azure CLI
+# <a name="find-linux-vm-images-in-the-azure-marketplace-with-the-azure-cli"></a>Vyhledání imagí virtuálních počítačů s Linuxem na webu Azure Marketplace pomocí Azure CLI
+
 Toto téma popisuje, jak používat rozhraní příkazového řádku Azure k vyhledání imagí virtuálních počítačů na webu Azure Marketplace. Tyto informace slouží k určení Marketplace image, pokud vytvoříte virtuální počítač programově pomocí rozhraní příkazového řádku, šablon Resource Manageru nebo jiných nástrojů.
 
 Také procházet dostupné Image a pomocí nabídky [Azure Marketplace](https://azuremarketplace.microsoft.com/) výkladní skříň, [webu Azure portal](https://portal.azure.com), nebo [prostředí Azure PowerShell](../windows/cli-ps-findimage.md). 
@@ -46,11 +47,11 @@ Výstup obsahuje image URN (hodnota v *Urn* sloupec). Při vytváření virtuál
 You are viewing an offline list of images, use --all to retrieve an up-to-date list
 Offer          Publisher               Sku                 Urn                                                             UrnAlias             Version
 -------------  ----------------------  ------------------  --------------------------------------------------------------  -------------------  ---------
-CentOS         OpenLogic               7.3                 OpenLogic:CentOS:7.3:latest                                     CentOS               latest
+CentOS         OpenLogic               7.5                 OpenLogic:CentOS:7.5:latest                                     CentOS               latest
 CoreOS         CoreOS                  Stable              CoreOS:CoreOS:Stable:latest                                     CoreOS               latest
 Debian         credativ                8                   credativ:Debian:8:latest                                        Debian               latest
 openSUSE-Leap  SUSE                    42.3                SUSE:openSUSE-Leap:42.3:latest                                  openSUSE-Leap        latest
-RHEL           RedHat                  7.3                 RedHat:RHEL:7.3:latest                                          RHEL                 latest
+RHEL           RedHat                  7-RAW               RedHat:RHEL:7-RAW:latest                                        RHEL                 latest
 SLES           SUSE                    12-SP2              SUSE:SLES:12-SP2:latest                                         SLES                 latest
 UbuntuServer   Canonical               16.04-LTS           Canonical:UbuntuServer:16.04-LTS:latest                         UbuntuLTS            latest
 ...
@@ -68,31 +69,42 @@ az vm image list --offer Debian --all --output table
 ```
 
 Částečný výstup: 
+
 ```
-Offer    Publisher    Sku                Urn                                              Version
--------  -----------  -----------------  -----------------------------------------------  --------------
-...
-Debian   credativ     7                  credativ:Debian:7:7.0.201602010                  7.0.201602010
-Debian   credativ     7                  credativ:Debian:7:7.0.201603020                  7.0.201603020
-Debian   credativ     7                  credativ:Debian:7:7.0.201604050                  7.0.201604050
-Debian   credativ     7                  credativ:Debian:7:7.0.201604200                  7.0.201604200
-Debian   credativ     7                  credativ:Debian:7:7.0.201606280                  7.0.201606280
-Debian   credativ     7                  credativ:Debian:7:7.0.201609120                  7.0.201609120
-Debian   credativ     7                  credativ:Debian:7:7.0.201611020                  7.0.201611020
-Debian   credativ     8                  credativ:Debian:8:8.0.201602010                  8.0.201602010
-Debian   credativ     8                  credativ:Debian:8:8.0.201603020                  8.0.201603020
-Debian   credativ     8                  credativ:Debian:8:8.0.201604050                  8.0.201604050
-Debian   credativ     8                  credativ:Debian:8:8.0.201604200                  8.0.201604200
-Debian   credativ     8                  credativ:Debian:8:8.0.201606280                  8.0.201606280
-Debian   credativ     8                  credativ:Debian:8:8.0.201609120                  8.0.201609120
-Debian   credativ     8                  credativ:Debian:8:8.0.201611020                  8.0.201611020
-Debian   credativ     8                  credativ:Debian:8:8.0.201701180                  8.0.201701180
-Debian   credativ     8                  credativ:Debian:8:8.0.201703150                  8.0.201703150
-Debian   credativ     8                  credativ:Debian:8:8.0.201704110                  8.0.201704110
-Debian   credativ     8                  credativ:Debian:8:8.0.201704180                  8.0.201704180
-Debian   credativ     8                  credativ:Debian:8:8.0.201706190                  8.0.201706190
-Debian   credativ     8                  credativ:Debian:8:8.0.201706210                  8.0.201706210
-Debian   credativ     8                  credativ:Debian:8:8.0.201708040                  8.0.201708040
+Offer              Publisher    Sku                  Urn                                                    Version
+-----------------  -----------  -------------------  -----------------------------------------------------  --------------
+Debian             credativ     7                    credativ:Debian:7:7.0.201602010                        7.0.201602010
+Debian             credativ     7                    credativ:Debian:7:7.0.201603020                        7.0.201603020
+Debian             credativ     7                    credativ:Debian:7:7.0.201604050                        7.0.201604050
+Debian             credativ     7                    credativ:Debian:7:7.0.201604200                        7.0.201604200
+Debian             credativ     7                    credativ:Debian:7:7.0.201606280                        7.0.201606280
+Debian             credativ     7                    credativ:Debian:7:7.0.201609120                        7.0.201609120
+Debian             credativ     7                    credativ:Debian:7:7.0.201611020                        7.0.201611020
+Debian             credativ     7                    credativ:Debian:7:7.0.201701180                        7.0.201701180
+Debian             credativ     8                    credativ:Debian:8:8.0.201602010                        8.0.201602010
+Debian             credativ     8                    credativ:Debian:8:8.0.201603020                        8.0.201603020
+Debian             credativ     8                    credativ:Debian:8:8.0.201604050                        8.0.201604050
+Debian             credativ     8                    credativ:Debian:8:8.0.201604200                        8.0.201604200
+Debian             credativ     8                    credativ:Debian:8:8.0.201606280                        8.0.201606280
+Debian             credativ     8                    credativ:Debian:8:8.0.201609120                        8.0.201609120
+Debian             credativ     8                    credativ:Debian:8:8.0.201611020                        8.0.201611020
+Debian             credativ     8                    credativ:Debian:8:8.0.201701180                        8.0.201701180
+Debian             credativ     8                    credativ:Debian:8:8.0.201703150                        8.0.201703150
+Debian             credativ     8                    credativ:Debian:8:8.0.201704110                        8.0.201704110
+Debian             credativ     8                    credativ:Debian:8:8.0.201704180                        8.0.201704180
+Debian             credativ     8                    credativ:Debian:8:8.0.201706190                        8.0.201706190
+Debian             credativ     8                    credativ:Debian:8:8.0.201706210                        8.0.201706210
+Debian             credativ     8                    credativ:Debian:8:8.0.201708040                        8.0.201708040
+Debian             credativ     8                    credativ:Debian:8:8.0.201710090                        8.0.201710090
+Debian             credativ     8                    credativ:Debian:8:8.0.201712040                        8.0.201712040
+Debian             credativ     8                    credativ:Debian:8:8.0.201801170                        8.0.201801170
+Debian             credativ     8                    credativ:Debian:8:8.0.201803130                        8.0.201803130
+Debian             credativ     8                    credativ:Debian:8:8.0.201803260                        8.0.201803260
+Debian             credativ     8                    credativ:Debian:8:8.0.201804020                        8.0.201804020
+Debian             credativ     8                    credativ:Debian:8:8.0.201804150                        8.0.201804150
+Debian             credativ     8                    credativ:Debian:8:8.0.201805160                        8.0.201805160
+Debian             credativ     8                    credativ:Debian:8:8.0.201807160                        8.0.201807160
+Debian             credativ     8                    credativ:Debian:8:8.0.201901221                        8.0.201901221
 ...
 ```
 
@@ -124,10 +136,22 @@ Debian   credativ     8                  credativ:Debian:8:8.0.201704110        
 Debian   credativ     8                  credativ:Debian:8:8.0.201704180                  8.0.201704180
 Debian   credativ     8                  credativ:Debian:8:8.0.201706190                  8.0.201706190
 Debian   credativ     8                  credativ:Debian:8:8.0.201706210                  8.0.201706210
+Debian   credativ     8                  credativ:Debian:8:8.0.201708040                  8.0.201708040
+Debian   credativ     8                  credativ:Debian:8:8.0.201710090                  8.0.201710090
+Debian   credativ     8                  credativ:Debian:8:8.0.201712040                  8.0.201712040
+Debian   credativ     8                  credativ:Debian:8:8.0.201801170                  8.0.201801170
+Debian   credativ     8                  credativ:Debian:8:8.0.201803130                  8.0.201803130
+Debian   credativ     8                  credativ:Debian:8:8.0.201803260                  8.0.201803260
+Debian   credativ     8                  credativ:Debian:8:8.0.201804020                  8.0.201804020
+Debian   credativ     8                  credativ:Debian:8:8.0.201804150                  8.0.201804150
+Debian   credativ     8                  credativ:Debian:8:8.0.201805160                  8.0.201805160
+Debian   credativ     8                  credativ:Debian:8:8.0.201807160                  8.0.201807160
+Debian   credativ     8                  credativ:Debian:8:8.0.201901221                  8.0.201901221
 ...
 ```
 
-## <a name="navigate-the-images"></a>Procházením imagí 
+## <a name="navigate-the-images"></a>Procházením imagí
+ 
 Dalším způsobem, jak najít image v umístění je spustit [az virtuálního počítače image list-publishers](/cli/azure/vm/image#az_vm_image_list_publishers), [az virtuální počítač image list-offers](/cli/azure/vm/image), a [az image list-skladové položky virtuálních počítačů](/cli/azure/vm/image#az_vm_image_list_skus) příkazy v pořadí. Tyto hodnoty můžete určit pomocí následujících příkazů:
 
 1. Vypsat vydavatele imagí.
@@ -171,6 +195,7 @@ westus      akamai-technologies
 westus      akumina
 ...
 ```
+
 Tyto informace slouží k hledání nabídek od konkrétního vydavatele. Třeba *Canonical* najít vydavatele v umístění USA – západ nabízí spuštěním `azure vm image list-offers`. Předejte umístění a vydavatele jako v následujícím příkladu:
 
 ```azurecli
@@ -212,17 +237,17 @@ westus      14.04.5-LTS
 westus      16.04-DAILY-LTS
 westus      16.04-LTS
 westus      16.04.0-LTS
-westus      17.10
-westus      17.10-DAILY
 westus      18.04-DAILY-LTS
 westus      18.04-LTS
+westus      18.10
 westus      18.10-DAILY
+westus      19.04-DAILY
 ```
 
-Nakonec použijte `az vm image list` příkaz k vyhledání konkrétní verze SKU, například *16.04 LTS*:
+Nakonec použijte `az vm image list` příkaz k vyhledání konkrétní verze SKU, například *18.04 LTS*:
 
 ```azurecli
-az vm image list --location westus --publisher Canonical --offer UbuntuServer --sku 16.04-LTS --all --output table
+az vm image list --location westus --publisher Canonical --offer UbuntuServer --sku 18.04-LTS --all --output table
 ```
 
 Částečný výstup:
@@ -230,20 +255,26 @@ az vm image list --location westus --publisher Canonical --offer UbuntuServer --
 ```
 Offer         Publisher    Sku        Urn                                               Version
 ------------  -----------  ---------  ------------------------------------------------  ---------------
-UbuntuServer  Canonical    16.04-LTS  Canonical:UbuntuServer:16.04-LTS:16.04.201611220  16.04.201611220
-UbuntuServer  Canonical    16.04-LTS  Canonical:UbuntuServer:16.04-LTS:16.04.201611300  16.04.201611300
-UbuntuServer  Canonical    16.04-LTS  Canonical:UbuntuServer:16.04-LTS:16.04.201612050  16.04.201612050
-UbuntuServer  Canonical    16.04-LTS  Canonical:UbuntuServer:16.04-LTS:16.04.201612140  16.04.201612140
-UbuntuServer  Canonical    16.04-LTS  Canonical:UbuntuServer:16.04-LTS:16.04.201612210  16.04.201612210
-UbuntuServer  Canonical    16.04-LTS  Canonical:UbuntuServer:16.04-LTS:16.04.201701130  16.04.201701130
-UbuntuServer  Canonical    16.04-LTS  Canonical:UbuntuServer:16.04-LTS:16.04.201702020  16.04.201702020
-UbuntuServer  Canonical    16.04-LTS  Canonical:UbuntuServer:16.04-LTS:16.04.201702200  16.04.201702200
-UbuntuServer  Canonical    16.04-LTS  Canonical:UbuntuServer:16.04-LTS:16.04.201702210  16.04.201702210
-UbuntuServer  Canonical    16.04-LTS  Canonical:UbuntuServer:16.04-LTS:16.04.201702240  16.04.201702240
-UbuntuServer  Canonical    16.04-LTS  Canonical:UbuntuServer:16.04-LTS:16.04.201703020  16.04.201703020
-UbuntuServer  Canonical    16.04-LTS  Canonical:UbuntuServer:16.04-LTS:16.04.201703030  16.04.201703030
-UbuntuServer  Canonical    16.04-LTS  Canonical:UbuntuServer:16.04-LTS:16.04.201703070  16.04.201703070
-UbuntuServer  Canonical    16.04-LTS  Canonical:UbuntuServer:16.04-LTS:16.04.201703270  16.04.201703270
+UbuntuServer  Canonical    18.04-LTS  Canonical:UbuntuServer:18.04-LTS:18.04.201804262  18.04.201804262
+UbuntuServer  Canonical    18.04-LTS  Canonical:UbuntuServer:18.04-LTS:18.04.201805170  18.04.201805170
+UbuntuServer  Canonical    18.04-LTS  Canonical:UbuntuServer:18.04-LTS:18.04.201805220  18.04.201805220
+UbuntuServer  Canonical    18.04-LTS  Canonical:UbuntuServer:18.04-LTS:18.04.201806130  18.04.201806130
+UbuntuServer  Canonical    18.04-LTS  Canonical:UbuntuServer:18.04-LTS:18.04.201806170  18.04.201806170
+UbuntuServer  Canonical    18.04-LTS  Canonical:UbuntuServer:18.04-LTS:18.04.201807240  18.04.201807240
+UbuntuServer  Canonical    18.04-LTS  Canonical:UbuntuServer:18.04-LTS:18.04.201808060  18.04.201808060
+UbuntuServer  Canonical    18.04-LTS  Canonical:UbuntuServer:18.04-LTS:18.04.201808080  18.04.201808080
+UbuntuServer  Canonical    18.04-LTS  Canonical:UbuntuServer:18.04-LTS:18.04.201808140  18.04.201808140
+UbuntuServer  Canonical    18.04-LTS  Canonical:UbuntuServer:18.04-LTS:18.04.201808310  18.04.201808310
+UbuntuServer  Canonical    18.04-LTS  Canonical:UbuntuServer:18.04-LTS:18.04.201809110  18.04.201809110
+UbuntuServer  Canonical    18.04-LTS  Canonical:UbuntuServer:18.04-LTS:18.04.201810030  18.04.201810030
+UbuntuServer  Canonical    18.04-LTS  Canonical:UbuntuServer:18.04-LTS:18.04.201810240  18.04.201810240
+UbuntuServer  Canonical    18.04-LTS  Canonical:UbuntuServer:18.04-LTS:18.04.201810290  18.04.201810290
+UbuntuServer  Canonical    18.04-LTS  Canonical:UbuntuServer:18.04-LTS:18.04.201811010  18.04.201811010
+UbuntuServer  Canonical    18.04-LTS  Canonical:UbuntuServer:18.04-LTS:18.04.201812031  18.04.201812031
+UbuntuServer  Canonical    18.04-LTS  Canonical:UbuntuServer:18.04-LTS:18.04.201812040  18.04.201812040
+UbuntuServer  Canonical    18.04-LTS  Canonical:UbuntuServer:18.04-LTS:18.04.201812060  18.04.201812060
+UbuntuServer  Canonical    18.04-LTS  Canonical:UbuntuServer:18.04-LTS:18.04.201901140  18.04.201901140
+UbuntuServer  Canonical    18.04-LTS  Canonical:UbuntuServer:18.04-LTS:18.04.201901220  18.04.201901220
 ...
 ```
 
@@ -257,10 +288,10 @@ Pokud provádíte nasazení virtuálního počítače pomocí šablony Resource 
 
 Chcete-li zobrazit informace o plánu nákupní obrazu, spusťte [az vm image show](/cli/azure/image#az_image_show) příkazu. Pokud `plan` vlastnost ve výstupu není `null`, bitová kopie je podmínky musíte přijmout před programové nasazení.
 
-Image Canonical Ubuntu Server 16.04 LTS například nemá další podmínky, protože `plan` informace `null`:
+Image Canonical Ubuntu serveru 18.04 LTS například nemá další podmínky, protože `plan` informace `null`:
 
 ```azurecli
-az vm image show --location westus --urn Canonical:UbuntuServer:16.04-LTS:latest
+az vm image show --location westus --urn Canonical:UbuntuServer:18.04-LTS:latest
 ```
 
 Výstup:
@@ -268,9 +299,9 @@ Výstup:
 ```
 {
   "dataDiskImages": [],
-  "id": "/Subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/Providers/Microsoft.Compute/Locations/westus/Publishers/Canonical/ArtifactTypes/VMImage/Offers/UbuntuServer/Skus/16.04-LTS/Versions/16.04.201801260",
+  "id": "/Subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/Providers/Microsoft.Compute/Locations/westus/Publishers/Canonical/ArtifactTypes/VMImage/Offers/UbuntuServer/Skus/18.04-LTS/Versions/18.04.201901220",
   "location": "westus",
-  "name": "16.04.201809120",
+  "name": "18.04.201901220",
   "osDiskImage": {
     "operatingSystem": "Linux"
   },
@@ -289,9 +320,9 @@ Výstup:
 ```
 {
   "dataDiskImages": [],
-  "id": "/Subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/Providers/Microsoft.Compute/Locations/westus/Publishers/bitnami/ArtifactTypes/VMImage/Offers/rabbitmq/Skus/rabbitmq/Versions/3.7.1807171506",
+  "id": "/Subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/Providers/Microsoft.Compute/Locations/westus/Publishers/bitnami/ArtifactTypes/VMImage/Offers/rabbitmq/Skus/rabbitmq/Versions/3.7.1901151016",
   "location": "westus",
-  "name": "3.7.1809211005",
+  "name": "3.7.1901151016",
   "osDiskImage": {
     "operatingSystem": "Linux"
   },
@@ -325,7 +356,7 @@ Výstup obsahuje `licenseTextLink` na licenční podmínky a znamená, že hodno
   "privacyPolicyLink": "https://bitnami.com/privacy",
   "product": "rabbitmq",
   "publisher": "bitnami",
-  "retrieveDatetime": "2018-02-22T04:06:28.7641907Z",
+  "retrieveDatetime": "2019-01-25T20:37:49.937096Z",
   "signature": "XXXXXXLAZIK7ZL2YRV5JYQXONPV76NQJW3FKMKDZYCRGXZYVDGX6BVY45JO3BXVMNA2COBOEYG2NO76ONORU7ITTRHGZDYNJNXXXXXX",
   "type": "Microsoft.MarketplaceOrdering/offertypes"
 }
@@ -339,7 +370,6 @@ Po přijetí podmínek pro bitovou kopii, můžete nasadit virtuální počíta�
 az group create --name myResourceGroupVM --location westus
 
 az vm create --resource-group myResourceGroupVM --name myVM --image bitnami:rabbitmq:rabbitmq:latest --plan-name rabbitmq --plan-product rabbitmq --plan-publisher bitnami
-
 ```
 
 ## <a name="next-steps"></a>Další postup

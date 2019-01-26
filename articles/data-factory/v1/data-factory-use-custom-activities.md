@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: douglasl
 robots: noindex
-ms.openlocfilehash: 4ed919b76ddebde8337337c18c04093bc6072e82
-ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
+ms.openlocfilehash: 25592f80abc8aea338679f199f03114c2d0785f6
+ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54121256"
+ms.lasthandoff: 01/26/2019
+ms.locfileid: "55077484"
 ---
 # <a name="use-custom-activities-in-an-azure-data-factory-pipeline"></a>Použití vlastních aktivit v kanálu Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -168,7 +168,7 @@ Metoda vrací slovník, který je možné zřetězit vlastních aktivit v budouc
     /// Execute method is the only method of IDotNetActivity interface you must implement.
     /// In this sample, the method invokes the Calculate method to perform the core logic.
     /// </summary>
-    
+
     public IDictionary<string, string> Execute(
         IEnumerable<LinkedService> linkedServices,
         IEnumerable<Dataset> datasets,
@@ -201,7 +201,7 @@ Metoda vrací slovník, který je možné zřetězit vlastních aktivit v budouc
 
         // get type properties from the dataset object
         inputTypeProperties = inputDataset.Properties.TypeProperties as AzureBlobDataset;
-    
+
         // log linked services passed in linkedServices parameter
         // you will see two linked services of type: AzureStorage
         // one for input dataset and the other for output dataset
@@ -239,7 +239,7 @@ Metoda vrací slovník, který je možné zřetězit vlastních aktivit v budouc
                                      continuationToken,
                                      null,
                                      null);
-    
+
             // Calculate method returns the number of occurrences of
             // the search term (“Microsoft”) in each blob associated
             // with the data slice. definition of the method is shown in the next step.
@@ -257,7 +257,7 @@ Metoda vrací slovník, který je možné zřetězit vlastních aktivit v budouc
         // get the folder path from the output dataset definition
         folderPath = GetFolderPath(outputDataset);
 
-        // log the output folder path   
+        // log the output folder path
         logger.Write("Writing blob to the folder: {0}", folderPath);
 
         // create a storage object for the output blob.
@@ -293,7 +293,7 @@ Metoda vrací slovník, který je možné zřetězit vlastních aktivit v budouc
             return null;
         }
 
-        // get type properties of the dataset   
+        // get type properties of the dataset
         AzureBlobDataset blobDataset = dataArtifact.Properties.TypeProperties as AzureBlobDataset;
         if (blobDataset == null)
         {
@@ -307,30 +307,30 @@ Metoda vrací slovník, který je možné zřetězit vlastních aktivit v budouc
     /// <summary>
     /// Gets the fileName value from the input/output dataset.
     /// </summary>
-    
+
     private static string GetFileName(Dataset dataArtifact)
     {
         if (dataArtifact == null || dataArtifact.Properties == null)
         {
             return null;
         }
-    
+
         // get type properties of the dataset
         AzureBlobDataset blobDataset = dataArtifact.Properties.TypeProperties as AzureBlobDataset;
         if (blobDataset == null)
         {
             return null;
         }
-    
+
         // return the blob/file name in the type properties
         return blobDataset.FileName;
     }
-    
+
     /// <summary>
     /// Iterates through each blob (file) in the folder, counts the number of instances of search term in the file,
     /// and prepares the output text that is written to the output blob.
     /// </summary>
-    
+
     public static string Calculate(BlobResultSegment Bresult, IActivityLogger logger, string folderPath, ref BlobContinuationToken token, string searchTerm)
     {
         string output = string.Empty;
@@ -379,7 +379,7 @@ Metoda vrací slovník, který je možné zřetězit vlastních aktivit v budouc
     > Všechny soubory v souboru .zip pro vlastní aktivitu musí být na **nejvyšší úrovni**, bez podsložek.
 
     ![Binární výstupní soubory](./media/data-factory-use-custom-activities/Binaries.png)
-14. Vytvořte kontejner objektů blob s názvem **customactivitycontainer** Pokud ještě neexistuje. 
+14. Vytvořte kontejner objektů blob s názvem **customactivitycontainer** Pokud ještě neexistuje.
 15. Nahrát jako objekt blob do customactivitycontainer v MyDotNetActivity.zip **pro obecné účely** úložiště objektů blob v Azure (ne vrstvami hot a cool Blob storage), který se odkazuje AzureStorageLinkedService.
 
 > [!IMPORTANT]
@@ -420,7 +420,7 @@ Tady jsou kroky, které provedete v této části:
    1. Klikněte na tlačítko **vytvořit prostředek** v nabídce vlevo.
    2. Klikněte na tlačítko **Data a analýzy** v **nový** okno.
    3. V okně **Analýza dat** klikněte na **Objekt pro vytváření dat**.
-   
+
     ![Nová nabídka služby Azure Data Factory](media/data-factory-use-custom-activities/new-azure-data-factory-menu.png)
 2. V **nová datová továrna** okně zadejte **CustomActivityFactory** pro název. Název objektu pro vytváření dat Azure musí být globálně jedinečný. Pokud se zobrazí chybová zpráva: **Název objektu pro vytváření dat "CustomActivityFactory" není k dispozici**, změňte název datové továrny (například **yournameCustomActivityFactory**) a zkuste to znovu.
 
@@ -430,7 +430,7 @@ Tady jsou kroky, které provedete v této části:
 5. V okně **Nový objekt pro vytváření dat** klikněte na **Vytvořit**.
 6. Zobrazit objektu pro vytváření dat vytváří **řídicí panel** na webu Azure Portal.
 7. Po úspěšném vytvoření objektu pro vytváření dat, se zobrazí okno objekt pro vytváření dat, které zobrazuje obsah služby data factory.
-    
+
     ![Okno Objekt pro vytváření dat](media/data-factory-use-custom-activities/data-factory-blade.png)
 
 ### <a name="step-2-create-linked-services"></a>Krok 2: Vytvoření propojených služeb
@@ -439,7 +439,7 @@ Propojené služby propojují úložiště dat nebo výpočetní služby s objek
 #### <a name="create-azure-storage-linked-service"></a>Vytvoření propojené služby Azure Storage
 1. Klikněte na tlačítko **Autor a nasadit** na dlaždici **služby DATA FACTORY** okno **CustomActivityFactory**. Zobrazí se editor služby Data Factory.
 2. Klikněte na tlačítko **nové datové úložiště** na příkaz pruhové a zvolte **služby Azure storage**. V editoru by se měl zobrazit skript JSON pro vytvoření propojené služby Azure Storage.
-    
+
     ![Úložiště dat – Azure Storage](media/data-factory-use-custom-activities/new-data-store-menu.png)
 3. Nahraďte `<accountname>` s názvem účtu služby Azure storage a `<accountkey>` přístupovým klíčem účtu úložiště Azure. Informace o tom, jak získat přístupový klíč k úložišti, najdete v článku o [zobrazení, kopírování a opětovném vytváření přístupových klíčů úložiště](../../storage/common/storage-account-manage.md#access-keys).
 
@@ -680,7 +680,7 @@ Následující diagram znázorňuje vztah mezi úlohami Azure Data Factory a Bat
     ```
     Error in Activity: Job encountered scheduling error. Code: BlobDownloadMiscError Category: ServerError Message: Miscellaneous error encountered while downloading one of the specified Azure Blob(s).
     ```
-2. Pokud se zobrazí následující chyba, zkontrolujte, že název třídy v souboru CS odpovídá názvu zadanému pro **EntryPoint** vlastností v kódu JSON kanálu. V tomto návodu je název třídy: Je MyDotNetActivity a vstupní bod v kódu JSON: MyDotNetActivityNS. **MyDotNetActivity**.
+2. Pokud se zobrazí následující chyba, zkontrolujte, že název třídy v souboru CS odpovídá názvu zadanému pro **EntryPoint** vlastností v kódu JSON kanálu. V tomto návodu je název třídy: Je MyDotNetActivity a vstupní bod v kódu JSON: MyDotNetActivityNS.**MyDotNetActivity**.
 
     ```
     MyDotNetActivity assembly does not exist or doesn't implement the type Microsoft.DataFactories.Runtime.IDotNetActivity properly
@@ -722,7 +722,7 @@ Následující diagram znázorňuje vztah mezi úlohami Azure Data Factory a Bat
 Pokud aktualizujete kód pro vlastní aktivitu, sestavit a nahrajte soubor zip, který obsahuje nové binární soubory do úložiště objektů blob.
 
 ## <a name="appdomain-isolation"></a>Izolace domény aplikace
-V tématu [různé ukázky AppDomain](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/CrossAppDomainDotNetActivitySample) , který ukazuje, jak vytvořit vlastní aktivitu, která není omezen na verze sestavení používají Spouštěč služby Data Factory (Příklad: Ve verzi 4.3.0 WindowsAzure.Storage Newtonsoft.Json v6.0.x, atd.).
+V tématu [různé ukázky AppDomain](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/CrossAppDomainDotNetActivitySample) , který ukazuje, jak vytvořit vlastní aktivitu, která není omezen na verze sestavení používají Spouštěč služby Data Factory (Příklad: WindowsAzure.Storage v4.3.0, Newtonsoft.Json v6.0.x, etc.).
 
 ## <a name="access-extended-properties"></a>Přístup k rozšířené vlastnosti
 Je možné deklarovat rozšířené vlastnosti v aktivitě JSON, jak je znázorněno v následujícím příkladu:
@@ -1025,7 +1025,7 @@ namespace DataFactoryAPITestApp
 | Ukázka | Jaké vlastní aktivita naloží |
 | --- | --- |
 | [Pro stahování dat protokolu HTTP](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/HttpDataDownloaderSample). |Stáhne data z koncového bodu HTTP do Azure Blob Storage pomocí vlastního jazyka C# aktivity ve službě Data Factory. |
-| [Ukázka analýzy subjektivního hodnocení na twitteru](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/TwitterAnalysisSample-CustomC%23Activity) |Vyvolá model Azure ML a proveďte analýzu subjektivního hodnocení, vyhodnocování, předpovědi atd. |
+| [Ukázka analýzy subjektivního hodnocení na twitteru](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/TwitterAnalysisSample-CustomC%23Activity) |Vyvolá model Azure Machine Learning studio a proveďte analýzu subjektivního hodnocení, vyhodnocování, předpovědi atd. |
 | [Spustit skript jazyka R](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/RunRScriptUsingADFSample). |Vyvolá skript jazyka R spuštěním RScript.exe v clusteru HDInsight, který už má nainstalovaný jazyk R na něj. |
 | [Různé domény AppDomain aktivita technologie .NET](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/CrossAppDomainDotNetActivitySample) |Používá jiné sestavení verze z těch, které jsou používané Spouštěč služby Data Factory |
 | [Znovuzpracování modelů ve službě Azure Analysis Services](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/AzureAnalysisServicesProcessSample) |  Znovu zpracuje modelu ve službě Azure Analysis Services. |

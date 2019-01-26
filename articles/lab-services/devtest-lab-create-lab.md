@@ -12,14 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/17/2018
+ms.date: 01/25/2019
 ms.author: spelluru
-ms.openlocfilehash: 868417a9ca1dbcac9b2f77627944fc620fbe78cd
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: c54b97bdf69908f32015631a9e527c6e289d1d2a
+ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51253903"
+ms.lasthandoff: 01/26/2019
+ms.locfileid: "55080493"
 ---
 # <a name="create-a-lab-in-azure-devtest-labs"></a>Vytvoření testovacího prostředí v Azure DevTest Labs
 Testovací prostředí ve službě Azure DevTest Labs je infrastruktura, která zahrnuje skupinu prostředků, třeba službu Virtual Machines, která vám umožní lépe spravovat tyto prostředky zadáním omezení a kvót. Tento článek vás provede procesem vytvoření testovacího prostředí pomocí webu Azure Portal.
@@ -33,27 +33,26 @@ K vytvoření testovacího prostředí potřebujete:
 Následující kroky ukazují postup vytvoření testovacího prostředí ve službě Azure DevTest Labs pomocí webu Azure Portal. 
 
 1. Přihlaste se k webu [Azure Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040).
-1. V hlavní nabídce na levé straně vyberte **Všechny služby** (v horní části seznamu).
+1. V hlavní nabídce na levé straně vyberte **Všechny služby** (v horní části seznamu). Vyberte * (hvězdičkami) vedle položky **DevTest Labs** v **DEVOPS** oddílu. Tato akce přidá **DevTest Labs** do levé navigační nabídce tak, aby k němu máte přístup snadno dalším. 
 
-    ![Možnost nabídky Všechny služby](./media/devtest-lab-create-lab/more-services-menu-option.png)
-
-1. V seznamu dostupných služeb vyberte **DevTest Labs**.
-1. V oblasti **DevTest Labs** vyberte **Přidat**.
+    ![Vyberte všechny služby – DevTest Labs](./media/devtest-lab-create-lab/all-services-select.png)
+2. Teď vyberte **DevTest Labs** v navigační nabídce vlevo. Vyberte **přidat** na panelu nástrojů. 
    
     ![Přidání testovacího prostředí](./media/devtest-lab-create-lab/add-lab-button.png)
-
-1. V části **Vytvořit DevTest Lab**:
-   
-    1. Zadejte **Název testovacího prostředí** pro nové prostředí.
+1. Na **vytvořit DevTest Lab** stránce, proveďte následující akce: 
+    1. Zadejte **název** pro testovací prostředí.
     2. Vyberte **Předplatné**, které bude přidruženo k testovacímu prostředí.
-    3. Vyberte **Umístění**, do kterého se testovací prostředí uloží.
+    3. Zadejte **název skupiny prostředků** pro testovací prostředí. 
+    4. Vyberte **umístění** ve kterém se testovací prostředí uloží.
     4. Chcete-li povolit a nastavit parametry pro automatické vypínání virtuálních počítačů v testovacím prostředí, vyberte **Automatické vypnutí**. Funkce automatického vypnutí je především funkce na úsporu nákladů, pomocí které můžete určit, kdy se má virtuální počítač automaticky vypnout. Po vytvoření testovacího prostředí můžete nastavení automatického vypnutí změnit podle kroků uvedených v článku [Správa všech zásad pro testovací prostředí v Azure DevTest Labs](./devtest-lab-set-lab-policy.md#set-auto-shutdown).
     1. Pokud chcete vytvořit vlastní označování, které se přidá ke každému prostředku vytvořenému v testovacím prostředí, zadejte informace **NÁZEV** a **HODNOTA** pro **Značky**. Značky jsou užitečné a pomáhají při správě a organizaci prostředků testovacího prostředí podle kategorií. Další informace o značkách, včetně postupu pro přidání značek po vytvoření testovacího prostředí, najdete v tématu [Přidání značek do testovacího prostředí](devtest-lab-add-tag.md).
-    5. Pokud chcete na řídicím panelu portálu vytvořit zástupce testovacího prostředí, vyberte možnost **Připnout na řídicí panel**.
     6. Pokud chcete získat šablony Azure Resource Manageru pro automatizaci konfigurace, vyberte **Možnosti automatizace**. 
-    7. Vyberte **Vytvořit**. Stav procesu vytvoření testovacího prostředí můžete monitorovat v oblasti **Oznámení**. Po dokončení aktualizujte stránku, abyste zobrazili nově vytvořené testovací prostředí v seznamu testovacích prostředí.  
+    7. Vyberte **Vytvořit**. Stav procesu vytvoření testovacího prostředí můžete monitorovat v oblasti **Oznámení**. 
     
-    ![Vytvoření části testovacího prostředí služby DevTest Labs](./media/devtest-lab-create-lab/create-devtestlab-blade.png)
+        ![Vytvoření části testovacího prostředí služby DevTest Labs](./media/devtest-lab-create-lab/create-devtestlab-blade.png)
+    8. Po dokončení vyberte **přejít k prostředku** v oznámení. Můžete také aktualizovat **DevTest Labs** stránku, abyste zobrazili nově vytvořené testovací prostředí v seznamu testovacích prostředí.  V seznamu vyberte testovací prostředí. Zobrazí domovská stránka pro testovací prostředí. 
+
+        ![Domovská stránka pro testovací prostředí](./media/devtest-lab-create-lab/lab-home-page.png)
 
 [!INCLUDE [devtest-lab-try-it-out](../../includes/devtest-lab-try-it-out.md)]
 

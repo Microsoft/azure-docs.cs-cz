@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 01/11/2019
 ms.author: byvinyal
 ms.custom: seodec18
-ms.openlocfilehash: 3a49b30caa087295bbdcffe8762796fdc92f154b
-ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
+ms.openlocfilehash: a5d4d13d8e60cd7f273363a9bc385098e15cbb71
+ms.sourcegitcommit: 97d0dfb25ac23d07179b804719a454f25d1f0d46
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/12/2019
-ms.locfileid: "54247237"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54913152"
 ---
 # <a name="monitor-apps-in-azure-app-service"></a>Monitorování aplikací ve službě Azure App Service
 [Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714) poskytuje integrované funkce monitorování pro webové aplikace, back-endů mobilních a API apps v [webu Azure portal](https://portal.azure.com).
@@ -44,8 +44,8 @@ Kvóty pro Free nebo Shared aplikace jsou:
 | **Využití procesoru (zkráceně)** | Procento využití procesoru pro tuto aplikaci povolené v intervalu 5 minut. Tato kvóta resetuje každých pět minut. |
 | **Využití procesoru (den)** | Celkové procento využití procesoru pro tuto aplikaci za jeden den povolené. Tato kvóta resetuje o půlnoci UTC každých 24 hodin. |
 | **Paměť** | Celková velikost paměti pro tuto aplikaci povolené. |
-| **Šířka pásma** | Celkový objem odchozí šířky pásma pro tuto aplikaci za jeden den povolené. Tato kvóta resetuje o půlnoci UTC každých 24 hodin. |
-| **systém souborů** | Celková velikost úložiště povolené. |
+| **Bandwidth** | Celkový objem odchozí šířky pásma pro tuto aplikaci za jeden den povolené. Tato kvóta resetuje o půlnoci UTC každých 24 hodin. |
+| **Filesystem** | Celková velikost úložiště povolené. |
 
 Pouze pro aplikace, které jsou hostovány v kvóty *základní*, *standardní*, a *Premium* plány je systém souborů.
 
@@ -73,19 +73,37 @@ Pro aplikace jsou k dispozici metriky:
 | --- | --- |
 | **Průměrná doba odezvy** | Průměrná doba pro aplikaci pro požadavků, v milisekundách. |
 | **Průměrná pracovní sada paměti** | Průměrné množství paměti používané aplikace, v megabajtech (MiB). |
+| **Připojení** | Počet vázaných soketů v izolovaném prostoru (w3wp.exe a jeho podřízených procesů).  Vázané soketu je vytvořen zavoláním bind()/connect() rozhraní API a zůstane, dokud CloseHandle()/closesocket() je uzavřen uvedené soketu. |
 | **Čas procesoru** | Procento využití procesoru používané aplikace v řádu sekund. Další informace o tuto metriku, naleznete v tématu [vs procesoru procentuální hodnota času procesoru](#cpu-time-vs-cpu-percentage). |
+| **Aktuální sestavení** | Aktuální počet sestavení zavedených ve všech objektů třídy AppDomains v této aplikaci. |
 | **Data v** | Množství příchozích šířky pásma používané aplikace v MiB. |
 | **Výstupní data** | Množství využité aplikací v MiB odchozí šířky pásma. |
+| **0. generace uvolňování pamětí** | Počet pokusů, které jsou objekty 0. generace uvolňování paměti shromážděných od spuštění procesu aplikace. Vyšší generace GC obsahují všechny nižší generace GC.|
+| **1. generace uvolňování pamětí** | Počet pokusů, které jsou objekty 1. generace uvolňování paměti shromážděných od spuštění procesu aplikace. Vyšší generace GC obsahují všechny nižší generace GC.|
+| **Uvolnění paměti generace 2** | Počet pokusů, které jsou objekty 2. generace uvolňování paměti shromážděných od spuštění procesu aplikace.|
+| **Počet popisovačů** | Celkový počet popisovačů procesem aplikaci aktuálně otevřené.|
 | **Http 2xx** | Počet požadavků, což vede k ≥ stavový kód HTTP 200, ale < 300. |
 | **Http 3xx** | Počet požadavků, výsledkem je stavový kód HTTP ≥ 300, ale < 400. |
 | **Http 401** | Počet požadavků, výsledkem je stavový kód HTTP 401. |
 | **Http 403** | Počet požadavků, výsledkem je stavový kód HTTP 403. |
 | **Http 404** | Počet požadavků, výsledkem je stavový kód HTTP 404. |
-| **HTTP 406** | Počet požadavků, výsledkem je stavový kód HTTP 406. |
+| **Http 406** | Počet požadavků, výsledkem je stavový kód HTTP 406. |
 | **Http 4xx** | Počet požadavků, což vede k ≥ stavový kód HTTP 400, ale < 500. |
 | **Chyby serveru http** | Počet požadavků, výsledkem je stavový kód HTTP ≥ 500, ale < 600. |
+| **Vstupně-výstupních operací ostatní bajty za sekundu** | Míra vystavování bajtů na vstupně-výstupních operací, které neobsahují data, jako jsou operace řízení procesu aplikace.|
+| **Vstupně-výstupních operací ostatní operace za sekundu** | Rychlost procesu aplikace žádání vstupně-výstupních operací, které jsou čtení a zápisu operace.|
+| **Přečtené bajty vstupně-výstupních operací za sekundu** | Rychlost čtení bajtů z vstupně-výstupních operací procesu aplikace.|
+| **Operace čtení vstupně-výstupních operací za sekundu** | Rychlost žádání procesu aplikace čtení vstupně-výstupních operací.|
+| **Vstupně-výstupních operací zapsané bajty za sekundu** | Rychlost zápisu bajtů na vstupně-výstupních operací procesu aplikace.|
+| **Vstupně-výstupní operace zápisu za sekundu** | Rychlost procesu aplikace žádání vstupně-výstupních operací zápisu.|
 | **Pracovní sada paměti** | Aktuální velikost paměti, používat aplikace v MiB. |
+| **Nesdílené bajty** | Nesdílené bajty je stávající velikost v bajtech, paměti, která byla přidělena procesu aplikace, které nemohou být sdíleny s jinými procesy.|
 | **Požadavky** | Celkový počet požadavků bez ohledu na jejich výsledné stavového kódu protokolu HTTP. |
+| **Požadavky ve frontě aplikace** | Počet požadavků ve frontě požadavků aplikace.|
+| **Počet vláken** | Počet vláken v procesu aplikace aktuálně aktivní.|
+| **Celkový počet domén aplikace** | Aktuální počet objektů třídy AppDomains načíst v této aplikaci.|
+| **Celkový počet domén aplikace byla uvolněna** | Celkový počet objektů třídy AppDomains uvolněných od spuštění aplikace.|
+
 
 Pro plán služby App Service jsou k dispozici metriky:
 

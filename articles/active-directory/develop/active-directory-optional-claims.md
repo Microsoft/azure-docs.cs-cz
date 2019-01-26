@@ -7,7 +7,7 @@ services: active-directory
 manager: mtillman
 editor: ''
 ms.service: active-directory
-ms.component: develop
+ms.subservice: develop
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
@@ -16,14 +16,14 @@ ms.date: 11/08/2018
 ms.author: celested
 ms.reviewer: paulgarn, hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 0983c2235fba0cacbda53208e5dcad5b2878619c
-ms.sourcegitcommit: 96527c150e33a1d630836e72561a5f7d529521b7
+ms.openlocfilehash: 7efac4138f21a3f8e9dae087991f97dabad61822
+ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/09/2018
-ms.locfileid: "51345483"
+ms.lasthandoff: 01/26/2019
+ms.locfileid: "55077235"
 ---
-# <a name="how-to-provide-optional-claims-to-your-azure-ad-app-public-preview"></a>Postupy: Zadejte nepovinných deklarací identity do aplikace Azure AD (Public Preview)
+# <a name="how-to-provide-optional-claims-to-your-azure-ad-app-public-preview"></a>Postup: Zadejte nepovinných deklarací identity do aplikace Azure AD (Public Preview)
 
 Tato funkce slouží vývojáři aplikace k určení, které deklarace identity, která je v tokenech odesílaných do své aplikace. Můžete použít nepovinných deklarací identity do:
 - Vyberte další deklarace identity mají být zahrnuty tokeny pro vaši aplikaci.
@@ -37,7 +37,7 @@ Seznam standardních deklarace identity a jejich použití v tokenech, najdete v
 
 Jedním z cílů systému [koncového bodu Azure AD v2.0](active-directory-appmodel-v2-overview.md) je menší velikost tokenu zajistit optimální výkon klienty. V důsledku toho několik deklarace identity dříve součástí přístup a tokeny typu ID už nejsou k dispozici v tokenech v2.0 a musíte požádat konkrétně na základě jednotlivých aplikací.
 
-**Tabulka 1: použitelnosti**
+**Tabulka 1: Použitelnost.**
 
 | Typ účtu | Koncový bod verze 1.0 | Koncový bod verze 2.0  |
 |--------------|---------------|----------------|
@@ -54,7 +54,7 @@ Sada nepovinných deklarací identity ve výchozím nastavení dostupné pro pou
 > [!NOTE]
 > Většina těchto deklarací mohou být součástí tokeny Jwt pro v1.0 a v2.0 tokeny, ale ne tokeny SAML, s výjimkou uvedeno ve sloupci Typ tokenu. Kromě toho při nepovinných deklarací identity se podporují jenom pro uživatele AAD aktuálně, podpory pro MSA přidáte. Když MSA má nepovinných deklarací identity podporovat na koncový bod v2.0, bude uživatelský typ sloupce označení Pokud deklarace identity je k dispozici pro uživatele služby AAD nebo MSA. 
 
-**Tabulka 2: Standardní volitelnou deklaraci set**
+**Tabulka 2: Sada standardních volitelnou deklaraci**
 
 | Název                        | Popis   | Typ tokenu | Typ uživatele | Poznámky  |
 |-----------------------------|----------------|------------|-----------|--------|
@@ -84,13 +84,13 @@ Tyto deklarace jsou vždy součástí v1.0 tokeny, ale není součástí tokeny 
 
 **Tabulka 3: Pouze pro verze 2.0 nepovinných deklarací identity**
 
-| Deklarace identity tokenů JWT     | Název                            | Popis                                | Poznámky |
+| JWT Claim     | Název                            | Popis                                | Poznámky |
 |---------------|---------------------------------|--------------------------------------------------------------------------------------------------------------------------------|-------|
 | `ipaddr`      | IP adresa                      | IP adresa přihlášení z klienta.   |       |
 | `onprem_sid`  | Místní identifikátor zabezpečení |                                             |       |
 | `pwd_exp`     | Čas vypršení platnosti hesla        | Datetime, kdy vyprší platnost hesla. |       |
 | `pwd_url`     | Adresy URL pro změnu hesla             | Adresa URL, které uživatel může navštěvovat ke změně hesla.   |       |
-| `in_corp`     | Uvnitř podnikové sítě        | Signály, pokud je klient přihlašování z podnikové sítě. Pokud nejsou, není součástí deklarace identity.   |       |
+| `in_corp`     | Inside Corporate Network        | Signály, pokud je klient přihlašování z podnikové sítě. Pokud nejsou, není součástí deklarace identity.   |       |
 | `nickname`    | Přezdívka                        | Další jméno pro uživatele, nezávisle na první nebo poslední název. |       |                                                                                                                |       |
 | `family_name` | Příjmení                       | Jak je definováno v objektu uživatele Azure AD poskytuje poslední jméno, příjmení nebo příjmení uživatele. <br>"family_name": "Lukeš" |       |
 | `given_name`  | Jméno                      | Nabízí první nebo "zadány" jméno uživatele, jako je nastaven na objekt uživatele Azure AD.<br>"given_name": "Frank"                   |       |
@@ -179,7 +179,7 @@ Deklaruje nepovinných deklarací identity požadovaný aplikací. Aplikace mů�
 Obsahuje volitelnou deklaraci přidružené k aplikaci nebo instančního objektu. Vlastnosti idToken accessToken a saml2Token [OptionalClaims](https://msdn.microsoft.com/library/azure/ad/graph/api/entity-and-complex-type-reference#optionalclaims-type) typem je kolekce OptionalClaim.
 Pokud podporovaná konkrétní deklarace identity, můžete také upravit chování OptionalClaim pomocí AdditionalProperties pole.
 
-**Tabulka 6: OptionalClaim typ vlastnosti**
+**Tabulka 6: Vlastnosti typu OptionalClaim**
 
 | Název                 | Typ                    | Popis                                                                                                                                                                                                                                                                                                   |
 |----------------------|-------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -209,7 +209,7 @@ Nejsou k dispozici pro aktualizaci vlastností konfigurace identity aplikace pov
 -   Můžete upravit manifest aplikace. Následující příklad použije tuto metodu provést konfiguraci. Přečtěte si [Principy dokumentu manifestu aplikace Azure AD](https://docs.microsoft.com/azure/active-directory/develop/active-directory-application-manifest) první s úvodem do manifestu.
 -   Je také možné psát aplikace, která se používá [rozhraní Graph API](https://docs.microsoft.com/azure/active-directory/develop/active-directory-graph-api) k aktualizaci aplikace. [Entity a komplexní typ odkazu](https://msdn.microsoft.com/library/azure/ad/graph/api/entity-and-complex-type-reference#optionalclaims-type) v Reference k rozhraní Graph API příručka vám pomůže s konfigurací nepovinných deklarací identity.
 
-**Příklad:** v následujícím příkladu se upravte manifest aplikace k přidávání deklarací identit SAML, přístup a ID tokeny, které jsou určeny pro aplikaci.
+**Příklad:** V následujícím příkladu se upravte manifest aplikace k přidávání deklarací identit SAML, přístup a ID tokeny, které jsou určeny pro aplikaci.
 
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 1. Po ověření, vyberete v pravém horním rohu stránky zvolte tenanta Azure AD.

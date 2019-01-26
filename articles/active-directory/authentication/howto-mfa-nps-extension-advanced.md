@@ -3,19 +3,19 @@ title: Konfigurovat rozšíření Azure MFA NPS | Dokumentace Microsoftu
 description: Po instalaci rozšíření NPS tyto kroky použijte pro pokročilé konfigurace, jako jsou přidávání na seznam povolených IP a nahrazení (UPN).
 services: multi-factor-authentication
 ms.service: active-directory
-ms.component: authentication
+ms.subservice: authentication
 ms.topic: conceptual
 ms.date: 07/11/2018
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
-ms.openlocfilehash: 81f6d6607f2fcc86e2499a537f3ddeff470d35f9
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: 5d7b14825b8b34c2ab742febe463ea518209a82f
+ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54429102"
+ms.lasthandoff: 01/26/2019
+ms.locfileid: "55075614"
 ---
 # <a name="advanced-configuration-options-for-the-nps-extension-for-multi-factor-authentication"></a>Rozšířené možnosti konfigurace pro rozšíření NPS pro ověřování službou Multi-Factor Authentication
 

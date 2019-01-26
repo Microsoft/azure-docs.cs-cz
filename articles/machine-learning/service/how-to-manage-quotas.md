@@ -11,18 +11,18 @@ author: nishankgu
 ms.author: nigup
 ms.date: 12/04/2018
 ms.custom: seodec18
-ms.openlocfilehash: 6a08a5a79a8a072bd4621a7e200e84c2c71c9cd4
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: 2f7eeab8f9d2265cf0f6cfa28499a078ba9cb108
+ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54475063"
+ms.lasthandoff: 01/26/2019
+ms.locfileid: "55077357"
 ---
 # <a name="manage-and-request-quotas-for-azure-resources"></a>Správa a požádat o kvóty pro prostředky Azure
 
 Jako s ostatními službami Azure, se vztahují omezení určitých prostředků ve službě Azure Machine Learning. Tato omezení v rozsahu od limit počtu pracovních prostorů můžete vytvořit pro omezení na skutečné spotřebované výpočetní prostředky, který získá používá vašich modelů pro trénování a odvozování. Tento článek obsahuje další podrobnosti o předem nakonfigurované limity pro různé prostředky, které jsou pro vaše předplatné Azure a také obsahuje vylepšení žádost o kvótu pro každý typ prostředku a nápomocných odkazů. Tato omezení jsou umístěny v místě, aby se zabránilo rozpočtu překračující z důvodu možných podvodů a případném dalším sdílení dodržovat omezení kapacity Azure.
 
-Mějte tyto kvóty při navrhování a škálování vašich prostředků Azure ML pro produkční úlohy. Například pokud váš cluster nemá přístup do cílového počtu uzlů, které jste zadali, pak může dosáhli jste maximální počet jader Azure Machine Learning Compute pro vaše předplatné. Pokud chcete zvýšit limit nebo kvóty nad výchozí omezení, otevřete žádost o podporu online zákazníků bez poplatků. Omezení nelze zvýšit nad maximální mezní hodnoty uvedené v následujících tabulkách z důvodu omezení kapacity Azure. Pokud neexistuje žádný sloupec maximálního limitu, prostředek nemá nastavitelná omezení. 
+Mějte tyto kvóty při navrhování a škálování nahoru prostředkům služby Azure Machine Learning pro produkční úlohy. Například pokud váš cluster nemá přístup do cílového počtu uzlů, které jste zadali, pak může dosáhli jste maximální počet jader Azure Machine Learning Compute pro vaše předplatné. Pokud chcete zvýšit limit nebo kvóty nad výchozí omezení, otevřete žádost o podporu online zákazníků bez poplatků. Omezení nelze zvýšit nad maximální mezní hodnoty uvedené v následujících tabulkách z důvodu omezení kapacity Azure. Pokud neexistuje žádný sloupec maximálního limitu, prostředek nemá nastavitelná omezení.
 
 ## <a name="special-considerations"></a>Zvláštní upozornění
 
@@ -34,12 +34,12 @@ Mějte tyto kvóty při navrhování a škálování vašich prostředků Azure 
 
 ## <a name="default-resource-quotas"></a>Výchozí kvóty prostředků
 
-Tady je rozpis kvóty podle různých typů prostředků v rámci vašeho předplatného Azure. 
+Tady je rozpis kvóty podle různých typů prostředků v rámci vašeho předplatného Azure.
 
 > [!Important]
 > Omezení se můžou změnit. Nejnovější informace vždy najdete dosáhlo kvóty úrovni služby [dokumentu](https://docs.microsoft.com/azure/azure-subscription-service-limits/) pro všechno, co Azure.
 
-### <a name="virtual-machines"></a>Virtuální počítače 
+### <a name="virtual-machines"></a>Virtuální počítače
 Platí omezení na počet virtuálních počítačů, které můžete zřídit v předplatném Azure do služby nebo v samostatné způsobem. Toto omezení je na úrovni oblasti, jak na celkový počet jader a také na základě za řady.
 
 Je důležité zdůraznit, že počet jader virtuálního počítače mají regionální celkový limit a podle omezení velikosti řady (Dv2, F atd.), se vynucují samostatně. Představte si například předplatné s omezením celkového počtu 30 jader virtuálního počítače na oblast USA – východ, omezením počtu 30 jader na řadu A a 30 jader na řadu D. V tomto předplatném by bylo možné nasadit 30 virtuálních počítačů řady A1, 30 virtuálních počítačů řady D1 nebo jejich kombinaci, která nepřekročí celkový počet 30 jader (například 10 virtuálních počítačů řady A1 a 20 virtuálních počítačů řady D1).
@@ -91,8 +91,8 @@ Zobrazení vaší kvóty pro různé prostředky, jako jsou virtuální počíta
 
 1. Seznam předplatných vyberte předplatné, jehož kvóty, které hledáte.
 
-   **Je výstrahou**, konkrétně pro Azure Machine Learning Compute kvóta pro zobrazení. Jak je uvedeno výše, tato kvóta je oddělené od kvóta výpočetních prostředků v rámci předplatného. 
-   
+   **Je výstrahou**, konkrétně pro Azure Machine Learning Compute kvóta pro zobrazení. Jak je uvedeno výše, tato kvóta je oddělené od kvóta výpočetních prostředků v rámci předplatného.
+
 1. V levém podokně vyberte **služby Machine Learning** a pak v zobrazeném seznamu vyberte libovolného pracovního prostoru
 
 1. V dalším okně v části **podpora a řešení potíží části** vyberte **využití a kvóty** zobrazíte aktuální kvóty a využití.

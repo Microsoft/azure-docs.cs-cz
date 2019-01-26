@@ -8,12 +8,12 @@ ms.service: event-grid
 ms.topic: conceptual
 ms.date: 11/07/2018
 ms.author: babanisa
-ms.openlocfilehash: ff40ac0e5ab6176bcf192289c0506f57ebf04a11
-ms.sourcegitcommit: 7862449050a220133e5316f0030a259b1c6e3004
+ms.openlocfilehash: 81f9db7e90e2cef85d41561cc677db3d6422ef45
+ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/22/2018
-ms.locfileid: "53755083"
+ms.lasthandoff: 01/26/2019
+ms.locfileid: "55079864"
 ---
 # <a name="use-cloudevents-schema-with-event-grid"></a>Použití schématu CloudEvents pomocí služby Event Grid
 
@@ -21,7 +21,7 @@ Kromě jeho [výchozí událost schéma](event-schema.md), nativně podporuje ud
 
 CloudEvents zjednodušuje vzájemná funkční spolupráce poskytnutím společné schéma události pro publikování a využívání cloudu na základě událostí. Toto schéma umožňuje jednotnou nástroje, standardních způsobů směrování a zpracování událostí a univerzální způsoby deserializaci schématu vnější události. Se společným schématem lze snadněji práci integrovat napříč platformami.
 
-Sestavuje CloudEvents řadou [spolupracovníci](https://github.com/cloudevents/spec/blob/master/community/contributors.md), včetně Microsoftu, prostřednictvím [Cloud nativní výpočetní Foundation](https://www.cncf.io/). Je aktuálně k dispozici jako verze 0,1.
+Sestavuje CloudEvents řadou [spolupracovníci](https://github.com/cloudevents/spec/blob/master/community/contributors.md), včetně Microsoftu, prostřednictvím [základní nativní Cloud computingu Foundation](https://www.cncf.io/). Je aktuálně k dispozici jako verze 0,1.
 
 Tento článek popisuje postup použití schématu CloudEvents pomocí služby Event Grid.
 
@@ -62,7 +62,7 @@ CloudEvents v0.1 má k dispozici následující vlastnosti:
 
 | CloudEvents        | Typ     | Příklad hodnoty JSON             | Popis                                                        | Event Grid mapování
 |--------------------|----------|--------------------------------|--------------------------------------------------------------------|-------------------------
-| Typ události          | Řetězec   | "com.example.someevent"          | Typ došlo k výskytu                                   | Typ události
+| eventType          | Řetězec   | "com.example.someevent"          | Typ došlo k výskytu                                   | eventType
 | eventTypeVersion   | Řetězec   | "1.0"                            | Verze typ eventType (volitelné)                            | dataVersion
 | cloudEventsVersion | Řetězec   | "0.1"                            | Verzi CloudEvents specifikace, které používá událost        | *předat prostřednictvím*
 | source             | Identifikátor URI      | "/ mycontext"                     | Popisuje Tvůrce událostí                                       | téma #subject

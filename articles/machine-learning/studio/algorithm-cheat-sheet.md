@@ -10,12 +10,12 @@ author: ericlicoding
 ms.author: amlstudiodocs
 ms.custom: previous-ms.author=pakalra, previous-author=pakalra
 ms.date: 12/18/2017
-ms.openlocfilehash: 69b085faf10b9e22618fa248460d269bd2efdb73
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.openlocfilehash: d8ca316b9d2f87e2d5540c81b0865381109f889d
+ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54264304"
+ms.lasthandoff: 01/26/2019
+ms.locfileid: "55080068"
 ---
 # <a name="machine-learning-algorithm-cheat-sheet-for-azure-machine-learning-studio"></a>Machine learning tahák pro Azure Machine Learning Studio
 
@@ -48,7 +48,7 @@ Stáhnout a vytisknout Machine Learning Studio algoritmus Ošidit listu ve velik
 
   * V **supervize**, datové body mají se k nim má přiřazené žádné popisky. Místo toho je cílem algoritmus učení bez dohledu uspořádání dat nějakým způsobem nebo k popisu struktury. To může znamenat seskupení do clusterů, stejně jako K-means nebo vyhledání různé způsoby prohlížení komplexních datových, aby se zobrazovala jednodušší.
 
-  * V **zpětnovazebnému učení**, získá algoritmu a vybrat akci v reakci na každý datový bod. Je běžným přístupem v robotika, kde je sada údajů snímačů přes v jednom bodě v čase na datový bod a algoritmus musíte zvolit robot další akci. Je také přirozený pro Internet of Things aplikací. Algoritmus učení také obdrží signál reward krátkou dobu později, určující, jak kvalitní byl rozhodnutí. Na základě toho algoritmus změní svoji strategii, abyste dosáhli nejvyšší potřebu. Aktuálně nejsou žádné zpětnovazební učení algoritmu moduly ve službě Azure ML.
+  * V **zpětnovazebnému učení**, získá algoritmu a vybrat akci v reakci na každý datový bod. Je běžným přístupem v robotika, kde je sada údajů snímačů přes v jednom bodě v čase na datový bod a algoritmus musíte zvolit robot další akci. Je také přirozený pro Internet of Things aplikací. Algoritmus učení také obdrží signál reward krátkou dobu později, určující, jak kvalitní byl rozhodnutí. Na základě toho algoritmus změní svoji strategii, abyste dosáhli nejvyšší potřebu. Aktuálně nejsou žádné zpětnovazební učení algoritmu moduly ve službě Azure Machine Learning studio.
 
 * **Metody Bayesova** předpokládá statisticky nezávislé datové body. To znamená, že je s ostatními bez korelace nejsou nemodelované variabilita jeden datový bod, to znamená, ho nemůže být předpovězen. Například pokud jsou data zaznamenává počet minut, než dorazí další subway trénování, dvěma měřeními rozebrali za den se statisticky nezávislé. Ale dvěma měřeními rozebrali jednu minutu nejsou statisticky nezávislé – jednu hodnotu vysoce prediktivní druhé hodnoty.
 

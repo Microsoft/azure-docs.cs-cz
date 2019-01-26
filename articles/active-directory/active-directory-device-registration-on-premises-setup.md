@@ -6,7 +6,7 @@ documentationcenter: ''
 author: MarkusVi
 manager: mtillman
 editor: ''
-ms.component: devices
+ms.subservice: devices
 ms.assetid: 6ae9df8b-31fe-4d72-9181-cf50cfebbf05
 ms.service: active-directory
 ms.workload: identity
@@ -17,12 +17,12 @@ ms.date: 07/23/2018
 ms.author: markvi
 ms.reviewer: jairoc
 ms.custom: seohack1
-ms.openlocfilehash: b1711b86042c74eba47fe1cfa41bbbd36ceaf127
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: abdeeacc22d2709a3107c9e9e05bd982705d7dea
+ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51248754"
+ms.lasthandoff: 01/26/2019
+ms.locfileid: "55079065"
 ---
 # <a name="setting-up-on-premises-conditional-access-by-using-azure-active-directory-device-registration"></a>Nastavení místního podmíněného přístupu pomocí registrace zařízení služby Azure Active Directory
 
@@ -64,7 +64,7 @@ Tyto možnosti jsou dostupné pro zákazníky, kteří si koupí licenci Azure A
 
 Tento scénář předpokládá, že máte hybridní prostředí, který se skládá z tenanta služby Azure AD a místní Active Directory. Tyto klienti musí být připojené službou Azure AD Connect s ověřenou doménou a službou AD FS pro SSO. Pomocí následujícího kontrolního seznamu vám pomohou nakonfigurovat podle požadavků vašeho prostředí.
 
-## <a name="checklist-prerequisites-for-conditional-access-scenario"></a>Kontrolní seznam: Požadavky pro scénář podmíněného přístupu
+## <a name="checklist-prerequisites-for-conditional-access-scenario"></a>Kontrolní seznam: Předpoklady pro scénář podmíněného přístupu
 
 Připojení vašeho tenanta Azure AD s vaší místní instancí Active Directory.
 
@@ -76,7 +76,7 @@ Tento průvodce to předpokládá, že jste nakonfigurovali Windows Server Activ
 
 Pokud chcete nasadit službu registrace zařízení služby Azure Active Directory v tenantu Azure Active Directory, úkoly v následujícím kontrolním seznamu udělejte v pořadí. Po kliknutí na odkaz přejdete na principiální téma, vraťte se na tento kontrolní seznam později, tak, abyste mohli pokračovat ve zbývajících úkolech. Některé úlohy zahrnout krok ověření scénář, který může pomoci potvrdit, zda byl úspěšně dokončen v kroku.
 
-## <a name="part-1-enable-azure-active-directory-device-registration"></a>Část 1: Registrace zařízení povolit Azure Active Directory
+## <a name="part-1-enable-azure-active-directory-device-registration"></a>Část 1: Povolení registrace zařízení služby Azure Active Directory
 
 Postupujte podle kroků v seznamu úkolů povolit a nakonfigurovat služba Azure Active Directory device registration.
 
@@ -93,7 +93,7 @@ Postupujte podle kroků v seznamu úkolů povolit a nakonfigurovat služba Azure
 | Nasazení služby Active Directory Domain Services s rozšířeními schématu systému Windows Server 2012 R2. Nemusíte upgradovat všechny řadiče domény na Windows Server 2012 R2. Upgrade schématu je jediným požadavkem. |[Upgradu vašeho schématu Active Directory Domain Services](#upgrade-your-active-directory-domain-services-schema) |
 | Zařízení zjistit služby registrace zařízení služby Azure Active Directory pomocí známých záznamů DNS. Nakonfigurujte záznamy DNS vaší společnosti tak, aby mohla zařízení zjistit služby registrace zařízení služby Azure Active Directory. |[Příprava zařízení podporu Active Directory](#prepare-your-active-directory-to-support-devices) |
 
-## <a name="part-3-enable-device-writeback-in-azure-ad"></a>3. část: Zpětný zápis zařízení povolit ve službě Azure AD
+## <a name="part-3-enable-device-writeback-in-azure-ad"></a>3. část: Povolení zpětného zápisu zařízení ve službě Azure AD
 
 | Úkol | Referenční informace |
 | --- | --- |
@@ -103,7 +103,7 @@ Postupujte podle kroků v seznamu úkolů povolit a nakonfigurovat služba Azure
 
 Důrazně doporučujeme konfigurovat jednu z několika možností pro ověřování službou Multi-Factor Authentication. Pokud chcete vyžadovat Vícefaktorové ověřování, přečtěte si téma [vyberte řešení zabezpečení Multi-Factor Authentication vám](authentication/concept-mfa-whichversion.md). Obsahuje popis jednotlivých řešení a odkazy, které vám pomohou nakonfigurovat řešení podle vašeho výběru.
 
-## <a name="part-5-verification"></a>Část 5: ověření
+## <a name="part-5-verification"></a>5. část: Ověření
 
 Nasazení je nyní dokončen a můžete vyzkoušet některé scénáře. Pomocí následujících odkazů můžete experimentovat se službou a seznámit se s jeho funkcí.
 
@@ -158,7 +158,7 @@ Na federačním serveru, otevřete příkazové okno prostředí Windows PowerSh
 
 ### <a name="prepare-azure-ad-connect-for-device-writeback"></a>Příprava služby Azure AD Connect pro zpětný zápis zařízení
 
-Doplňte část 1: Příprava Azure AD Connect.
+Dokončení 1. část: Příprava služby Azure AD Connect.
 
 ## <a name="join-devices-to-your-workplace-by-using-azure-active-directory-device-registration-service"></a>Připojte se k zařízení k pracovní ploše pomocí služby registrace zařízení služby Azure Active Directory
 
@@ -197,7 +197,7 @@ Ve výchozím nastavení jsou umístěny objekty zařízení, které jsou zapsá
 
 ## <a name="create-an-application-access-policy-and-custom-access-denied-message"></a>Vytvoření zásad přístupu aplikací a vlastní zprávy o odepřeném přístupu
 
-Vezměte v úvahu následující scénář: vytvoření aplikace vztah důvěryhodnosti předávající strany ve službě AD FS a nakonfigurovat autorizační pravidlo vystavování, která umožňuje pouze k registrovaným zařízením. Teď jsou povolené jenom zařízení, které jsou registrovány pro přístup k aplikaci. 
+Vezměte v úvahu následující scénář: Vytvořte aplikaci vztah důvěryhodnosti předávající strany ve službě AD FS a nakonfigurovat autorizační pravidlo vystavování, která umožňuje pouze k registrovaným zařízením. Teď jsou povolené jenom zařízení, které jsou registrovány pro přístup k aplikaci. 
 
 Chcete-li můžou vaši uživatelé pro získání přístupu k aplikaci, nakonfigurovat vlastní zprávu odepření přístupu, který obsahuje pokyny pro připojení zařízení. Teď budou mít uživatelé bezproblémové způsob, jak zaregistrovat zařízení, aby mohli získat přístup aplikaci.
 

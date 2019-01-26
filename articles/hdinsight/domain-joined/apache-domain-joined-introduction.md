@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: b120d50b6b0f72b5977d238866cfdf26fd9be5ff
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.openlocfilehash: d1d515786fde06f4622402f2c1d0c3add7cd8843
+ms.sourcegitcommit: 97d0dfb25ac23d07179b804719a454f25d1f0d46
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53436887"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54913139"
 ---
 # <a name="an-introduction-to-apache-hadoop-security-with-enterprise-security-package"></a>Úvod do Apache Hadoop zabezpečení s balíčkem Enterprise Security Package
 
@@ -56,7 +56,7 @@ Cluster HDInsight s ESP používá k prohledávání protokolů auditu známé u
 ## <a name="encryption"></a>Šifrování
 Ochrana dat je důležitá pro organizační požadavky zabezpečení a dodržování předpisů na schůzku. Kromě omezení přístupu k datům neautorizovanými, by ho zašifrovat. 
 
-Obě úložiště dat pro clustery HDInsight – Azure Blob storage a Azure Data Lake Storage Gen1 – podpora transparentní serverové [šifrování dat](../../storage/common/storage-service-encryption.md) v klidovém stavu. Zabezpečené clustery HDInsight budou bez problému fungovat díky této funkci šifrování na straně serveru dat v klidovém stavu.
+Obě úložiště dat pro clustery HDInsight – Azure Blob storage a Azure Data Lake úložiště Gen1 a Gen2 – odborné pomoci průhlednou serverové [šifrování dat](../../storage/common/storage-service-encryption.md) v klidovém stavu. Zabezpečené clustery HDInsight budou bez problému fungovat díky této funkci šifrování na straně serveru dat v klidovém stavu.
 
 ## <a name="next-steps"></a>Další postup
 

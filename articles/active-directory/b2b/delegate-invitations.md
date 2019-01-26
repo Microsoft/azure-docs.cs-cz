@@ -3,19 +3,19 @@ title: Delegování pozvánek pro spolupráci Azure Active Directory s B2B | Dok
 description: Je možné konfigurovat Azure Active Directory s B2B spolupráce uživatelské vlastnosti
 services: active-directory
 ms.service: active-directory
-ms.component: B2B
+ms.subservice: B2B
 ms.topic: conceptual
 ms.date: 12/14/2018
 ms.author: mimart
 author: msmimart
 manager: daveba
 ms.reviewer: sasubram
-ms.openlocfilehash: 45bb53e5ebd72631c81e6ee516413fcc10771470
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: c50bcc8ebcb87ec39a02b4a71956fab54d3b80de
+ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54431905"
+ms.lasthandoff: 01/26/2019
+ms.locfileid: "55081394"
 ---
 # <a name="delegate-invitations-for-azure-active-directory-b2b-collaboration"></a>Delegování pozvánek pro spolupráci Azure Active Directory s B2B
 

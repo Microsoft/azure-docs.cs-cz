@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/05/2018
 ms.author: adpick
-ms.openlocfilehash: 90823eded03f298dd912735fb0170fd8002328f3
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: 6a4dedc2478b2f8c5fa754e3736dbfb983cfb7a2
+ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44715886"
+ms.lasthandoff: 01/26/2019
+ms.locfileid: "55079813"
 ---
 # <a name="programmatically-create-azure-enterprise-subscriptions-preview"></a>Programové vytváření předplatných Azure Enterprise (preview)
 
@@ -75,10 +75,10 @@ Azure jako odpověď vrátí seznam všech registračních účtů, ke kterým m
 
 # <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
 
-Použití [příkazu Get-AzureRmEnrollmentAccount](/powershell/module/azurerm.billing/get-azurermenrollmentaccount) vypsat všechny účty registrace máte přístup k.
+Použití [Get-AzEnrollmentAccount](/powershell/module/az.billing/get-azenrollmentaccount) rutiny pro zobrazení seznamu všechny registračních účtů, kterým máte přístup.
 
 ```azurepowershell-interactive
-Get-AzureRmEnrollmentAccount
+Get-AzEnrollmentAccount
 ```
 
 Azure jako odpověď vrátí seznam ID objektů a e-mailové adresy účtů.
@@ -161,24 +161,24 @@ V odpovědi, které získáte zpět `subscriptionOperation` objekt monitorován�
 
 # <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
 
-Pokud chcete použít tento modul ve verzi preview, nainstalujte ho spuštěním `Install-Module AzureRM.Subscription -AllowPrerelease` první. Aby se zajistilo `-AllowPrerelease` funguje, nainstalujte nejnovější verzi modulu PowerShellGet z [získat modul PowerShellGet](/powershell/gallery/installing-psget).
+Pokud chcete použít tento modul ve verzi preview, nainstalujte ho spuštěním `Install-Module Az.Subscription -AllowPrerelease` první. Aby se zajistilo `-AllowPrerelease` funguje, nainstalujte nejnovější verzi modulu PowerShellGet z [získat modul PowerShellGet](/powershell/gallery/installing-psget).
 
-Použití [New-AzureRmSubscription](/powershell/module/azurerm.subscription) spolu s `enrollmentAccount` jako ID objektu `EnrollmentAccountObjectId` parametr k vytvoření nového předplatného. 
+Použití [New-AzSubscription](/powershell/module/az.subscription) spolu s `enrollmentAccount` jako ID objektu `EnrollmentAccountObjectId` parametr k vytvoření nového předplatného. 
 
 ```azurepowershell-interactive
-New-AzureRmSubscription -OfferType MS-AZR-0017P -Name "Dev Team Subscription" -EnrollmentAccountObjectId 747ddfe5-xxxx-xxxx-xxxx-xxxxxxxxxxxx -OwnerObjectId <userObjectId>,<servicePrincipalObjectId>
+New-AzSubscription -OfferType MS-AZR-0017P -Name "Dev Team Subscription" -EnrollmentAccountObjectId 747ddfe5-xxxx-xxxx-xxxx-xxxxxxxxxxxx -OwnerObjectId <userObjectId>,<servicePrincipalObjectId>
 ```
 
 | Název elementu  | Požaduje se | Typ   | Popis                                                                                               |
 |---------------|----------|--------|-----------------------------------------------------------------------------------------------------------|
 | `Name` | Ne      | Řetězec | Zobrazovaný název předplatného. Pokud není zadán, je nastavena na název nabídky, jako je "Microsoft Azure Enterprise."                                 |
 | `OfferType`   | Ano      | Řetězec | Nabídka předplatného. Jsou dvě možnosti pro EA [MS-AZR - 0017P](https://azure.microsoft.com/pricing/enterprise-agreement/) (použití v produkčním prostředí) a [MS-AZR - 0148P](https://azure.microsoft.com/offers/ms-azr-0148p/) (pro vývoj/testování, musí být [zapnuté na portálu EA](https://ea.azure.com/helpdocs/DevOrTestOffer)).                |
-| `EnrollmentAccountObjectId`      | Ano       | Řetězec | Účet pro zápis, že je předplatné vytvořené v rámci a účtuje na ID objektu. Tato hodnota je identifikátor GUID, který obdržíte od `Get-AzureRmEnrollmentAccount`. |
+| `EnrollmentAccountObjectId`      | Ano       | Řetězec | Účet pro zápis, že je předplatné vytvořené v rámci a účtuje na ID objektu. Tato hodnota je identifikátor GUID, který obdržíte od `Get-AzEnrollmentAccount`. |
 | `OwnerObjectId`      | Ne       | Řetězec | ID objektu každý uživatel, který chcete přidat jako vlastníka předplatného RBAC při jeho vytvoření.  |
 | `OwnerSignInName`    | Ne       | Řetězec | E-mailová adresa každý uživatel, který chcete přidat jako vlastníka předplatného RBAC při jeho vytvoření. Můžete použít tento parametr místo `OwnerObjectId`.|
 | `OwnerApplicationId` | Ne       | Řetězec | ID aplikace všechny instanční objekt, který chcete přidat jako vlastníka předplatného RBAC při jeho vytvoření. Můžete použít tento parametr místo `OwnerObjectId`. Při použití tohoto parametru, musí mít instanční objekt služby [přístup pro čtení k adresáři](/powershell/azure/active-directory/signing-in-service-principal?view=azureadps-2.0#give-the-service-principal-reader-access-to-the-current-tenant-get-azureaddirectoryrole).| 
 
-Úplný seznam všech parametrů najdete v tématu [New-AzureRmSubscription](/powershell/module/azurerm.subscription.preview).
+Úplný seznam všech parametrů najdete v tématu [New-AzSubscription](/powershell/module/az.subscription.preview).
 
 # <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
 

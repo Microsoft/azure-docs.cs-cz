@@ -3,19 +3,19 @@ title: RDG a Azure MFA Server pomocí protokolu RADIUS| Dokumentace Microsoftu
 description: Toto je stránka ověřování Azure Multi-Factor Authentication, která vám pomůže při nasazení brány vzdálené plochy (RD) a serveru Azure Multi-Factor Authentication využívajícím protokol RADIUS.
 services: multi-factor-authentication
 ms.service: active-directory
-ms.component: authentication
+ms.subservice: authentication
 ms.topic: conceptual
 ms.date: 07/11/2018
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
-ms.openlocfilehash: db1b73dc683a1f109cddfe929ba4682b7c6674e8
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: e80b2fe9bfde7a2034877498897aff899234b58e
+ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54438622"
+ms.lasthandoff: 01/26/2019
+ms.locfileid: "55079439"
 ---
 # <a name="remote-desktop-gateway-and-azure-multi-factor-authentication-server-using-radius"></a>Vzdálená plocha brány a server Azure Multi-Factor Authentication využívající protokol RADIUS
 

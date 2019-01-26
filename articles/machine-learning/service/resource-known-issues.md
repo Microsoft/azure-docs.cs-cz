@@ -11,33 +11,33 @@ ms.component: core
 ms.topic: article
 ms.date: 12/04/2018
 ms.custom: seodec18
-ms.openlocfilehash: 5634a1aae32b3e9895bf5c5b72837f29223bca27
-ms.sourcegitcommit: ba9f95cf821c5af8e24425fd8ce6985b998c2982
+ms.openlocfilehash: cb79465bd5af0b3172b12b692a90c6b5d133f89a
+ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54381827"
+ms.lasthandoff: 01/26/2019
+ms.locfileid: "55078708"
 ---
 # <a name="known-issues-and-troubleshooting-azure-machine-learning-service"></a>Známé problémy a řešení problémů služby Azure Machine Learning
- 
-Tento článek vám pomůže najít a opravit chyby nebo při použití služby Azure Machine Learning došlo k selhání. 
+
+Tento článek vám pomůže najít a opravit chyby nebo při použití služby Azure Machine Learning došlo k selhání.
 
 ## <a name="sdk-installation-issues"></a>Problémy při instalaci sady SDK
 
-**Chybová zpráva: Nelze odinstalovat 'PyYAML.** 
+**Chybová zpráva: Nelze odinstalovat 'PyYAML.**
 
 Azure Machine Learning pro Python SDK: PyYAML je projektem organizace nainstalovaná distutils. Proto jsme nelze určit přesné soubory, které patří k němu v případě částečné odinstalovat. Pokud chcete pokračovat v instalaci sady SDK při tato chyba se ignoruje, použijte:
-```Python 
+```Python
 pip install --upgrade azureml-sdk[notebooks,automl] --ignore-installed PyYAML
 ```
 
 ## <a name="trouble-creating-azure-machine-learning-compute"></a>Problémy s vytvářením, Azure Machine Learning Compute
 
-Je vzácné pravděpodobné, že někteří uživatelé, kteří si vytvořili jejich pracovního prostoru Azure Machine Learning z portálu Azure portal před verze GA nemusí být možné vytvořit Azure Machine Learning Compute v daném pracovním prostoru. Můžete zvýšit žádost o podporu na službu nebo vytvořit nový pracovní prostor prostřednictvím portálu nebo pomocí sady SDK pro odblokování sami okamžitě. 
+Je vzácné pravděpodobné, že někteří uživatelé, kteří si vytvořili jejich pracovního prostoru Azure Machine Learning z portálu Azure portal před verze GA nemusí být možné vytvořit Azure Machine Learning Compute v daném pracovním prostoru. Můžete zvýšit žádost o podporu na službu nebo vytvořit nový pracovní prostor prostřednictvím portálu nebo pomocí sady SDK pro odblokování sami okamžitě.
 
 ## <a name="image-building-failure"></a>Chyba vytváření bitové kopie
 
-Obrázek po nasazení webové služby vytvářet selhání. Alternativním řešením je přidat "pynacl == 1.2.1" jako pip závislosti systému Conda v souboru konfigurace image.  
+Obrázek po nasazení webové služby vytvářet selhání. Alternativním řešením je přidat "pynacl == 1.2.1" jako pip závislosti systému Conda v souboru konfigurace image.
 
 ## <a name="deployment-failure"></a>Nasazení se nezdařilo.
 
@@ -49,10 +49,10 @@ Nebude moct nasazovat modely na FPGA, dokud si vyžádáte a byla schválena pro
 ## <a name="databricks"></a>Databricks
 
 Problémy s Databricks a Azure Machine Learning.
- 
+
 1. Při instalaci dalších balíčků AML SDK nainstalovat selhání v Databricks.
 
-   Některé balíčky, jako například `psutil`, může způsobit konflikty. Aby nedocházelo k chybám instalace, instalace balíčků zmrazení lib verzí. Tento problém je související s Databricks a Azure ML SDK nesouvisí – které mohou nastat ho pomocí jiných knihoven příliš. Příklad:
+   Některé balíčky, jako například `psutil`, může způsobit konflikty. Aby nedocházelo k chybám instalace, instalace balíčků zmrazení lib verzí. Tento problém souvisí s Databricks a není službou Azure Machine Learning SDK – které mohou nastat ho pomocí jiných knihoven příliš. Příklad:
    ```python
    pstuil cryptography==1.5 pyopenssl==16.0.0 ipython==2.2.0
    ```
@@ -67,7 +67,8 @@ Problémy s Databricks a Azure Machine Learning.
 Pokud přejdete přímo na váš pracovní prostor z sdílet odkaz ze sady SDK nebo na portálu zobrazit, nebudete moct zobrazit stránka s přehledem normální s informace o předplatném v rozšíření. Nebudete také moci přepnout do jiného pracovního prostoru. Pokud je potřeba jiný pracovní prostor zobrazit, alternativním řešením je přejít přímo na [webu Azure portal](https://portal.azure.com) a vyhledejte název pracovního prostoru.
 
 ## <a name="diagnostic-logs"></a>Diagnostické protokoly
-V některých případech může být užitečné, pokud může poskytnout diagnostické informace, pokud s žádostí o pomoc. Zde je, kde live soubory protokolu:
+V některých případech může být užitečné, pokud může poskytnout diagnostické informace, pokud s žádostí o pomoc.
+Zde je, kde live soubory protokolu:
 
 ## <a name="resource-quotas"></a>Kvóty prostředků
 

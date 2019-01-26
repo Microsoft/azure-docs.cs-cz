@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/16/2018
 ms.author: tomfitz
-ms.openlocfilehash: 3363b0bbd98b125f0108ca842d5c0b6b9941bf9e
-ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
+ms.openlocfilehash: 300ed77322f66150111ecda70dbf95ac373aad2c
+ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54330377"
+ms.lasthandoff: 01/26/2019
+ms.locfileid: "55079167"
 ---
 # <a name="troubleshoot-common-azure-deployment-errors-with-azure-resource-manager"></a>Řešení potíží s běžnými chybami nasazení v Azure pomocí Azure Resource Manageru
 
@@ -39,7 +39,7 @@ Tento článek popisuje některé běžné chyby nasazení v Azure a poskytuje i
 | Konflikt | Kterou žádáte o operaci, která není povolena v aktuálním stavu prostředku. Například změna velikosti disku je povolená jenom při vytváření virtuálního počítače nebo při zrušení přidělení virtuálního počítače. | |
 | DeploymentActive | Počkejte, souběžné nasazení do této skupiny prostředků k dokončení. | |
 | DeploymentFailed | Chyba DeploymentFailed je obecná chyba, která neposkytuje informace potřebné k vyřešení chyby. Hledejte v podrobnostech o chybě kód chyby, která poskytuje další informace. | [Vyhledejte kód chyby:](#find-error-code) |
-| DeploymentQuotaExceeded | Pokud překročíte limit 800 nasazení na skupinu prostředků, odstraňte nasazení z historie, ke které jsou už je nepotřebujete. Můžete odstranit položky z historie s [odstranit nasazení skupiny pro az](/cli/azure/group/deployment#az-group-deployment-delete) pro rozhraní příkazového řádku Azure, nebo [Remove-AzureRmResourceGroupDeployment](/powershell/module/azurerm.resources/remove-azurermresourcegroupdeployment) v prostředí PowerShell. Odstranění záznamu z historie nasazení nebude mít vliv na prostředky nasazení. | |
+| DeploymentQuotaExceeded | Pokud překročíte limit 800 nasazení na skupinu prostředků, odstraňte nasazení z historie, ke které jsou už je nepotřebujete. Můžete odstranit položky z historie s [odstranit nasazení skupiny pro az](/cli/azure/group/deployment#az-group-deployment-delete) pro rozhraní příkazového řádku Azure, nebo [odebrat AzResourceGroupDeployment](/powershell/module/az.resources/remove-azresourcegroupdeployment) v prostředí PowerShell. Odstranění záznamu z historie nasazení nebude mít vliv na prostředky nasazení. | |
 | DnsRecordInUse | Název záznamu DNS musí být jedinečný. Buď zadejte jiný název nebo upravit existující záznam. | |
 | ImageNotFound | Zkontrolujte nastavení bitové kopie virtuálního počítače. |  |
 | InUseSubnetCannotBeDeleted | Při pokusu o aktualizaci prostředku mohou zobrazit tuto chybu, ale žádost zpracovává odstranit a vytvořit prostředek. Ujistěte se, že můžete zadat všechny hodnoty beze změny. | [Aktualizace prostředku](/azure/architecture/building-blocks/extending-templates/update-resource) |
@@ -71,7 +71,7 @@ Tento článek popisuje některé běžné chyby nasazení v Azure a poskytuje i
 | RequestDisallowedByPolicy | Vaše předplatné zahrnuje zásady prostředků, která brání akci, kterou se pokoušíte provést během nasazení. Vyhledejte zásadu, která blokuje akce. Pokud je to možné upravení vašeho nasazení plnit omezení ze zásad. | [Vyřešit zásady](resource-manager-policy-requestdisallowedbypolicy-error.md) |
 | ReservedResourceName | Zadejte název prostředku, který neobsahuje vyhrazený název. | [Názvy vyhrazené prostředků](resource-manager-reserved-resource-name.md) |
 | ResourceGroupBeingDeleted | Počkejte na dokončení odstranění. | |
-| ResourceGroupNotFound | Zkontrolujte název cílové skupiny prostředků pro nasazení. Už musí existovat ve vašem předplatném. Zkontrolujte kontext vašeho předplatného. | [Azure CLI](/cli/azure/account?#az-account-set) [PowerShell](/powershell/module/azurerm.profile/set-azurermcontext) |
+| ResourceGroupNotFound | Zkontrolujte název cílové skupiny prostředků pro nasazení. Už musí existovat ve vašem předplatném. Zkontrolujte kontext vašeho předplatného. | [Azure CLI](/cli/azure/account?#az-account-set) [PowerShell](/powershell/module/az.profile/set-azcontext) |
 | ResourceNotFound | Nasazení odkazuje na prostředek, který nelze přeložit. Ověřte, že vaše užívání **odkaz** parametrů požadovaných pro váš scénář zahrnuje funkce. | [Přeložení odkazů.](resource-manager-not-found-errors.md) |
 | ResourceQuotaExceeded | Nasazení se pokouší vytvořit prostředky, které překročí kvótu pro předplatné, skupinu prostředků nebo oblasti. Pokud je to možné upravte infrastrukturu zůstat v rámci kvóty. V opačném případě zvažte žádosti o změnu do vaší kvóty. | [Vyřešit kvóty](resource-manager-quota-errors.md) |
 | SkuNotAvailable | Vyberte skladovou Položku (například velikost virtuálního počítače), který je k dispozici pro umístění, které jste vybrali. | [Vyřešit SKU](resource-manager-sku-not-available-errors.md) |
@@ -110,7 +110,7 @@ Při operaci projde ověřovacími, ale je během nasazení se nezdaří, získ�
 Pokud chcete zobrazit kódy chyb nasazení a zpráv pomocí Powershellu, použijte:
 
 ```azurepowershell-interactive
-(Get-AzureRmResourceGroupDeploymentOperation -DeploymentName exampledeployment -ResourceGroupName examplegroup).Properties.statusMessage
+(Get-AzResourceGroupDeploymentOperation -DeploymentName exampledeployment -ResourceGroupName examplegroup).Properties.statusMessage
 ```
 
 Pokud chcete zobrazit kódy chyb nasazení a zprávy pomocí Azure CLI, použijte:
@@ -140,7 +140,7 @@ Někdy potřebujete další informace o požadavku a odpovědi, které se dozví
 V prostředí PowerShell, nastavte **DeploymentDebugLogLevel** parametr ke všem, obsah ResponseContent nebo RequestContent.
 
 ```powershell
-New-AzureRmResourceGroupDeployment `
+New-AzResourceGroupDeployment `
   -Name exampledeployment `
   -ResourceGroupName examplegroup `
   -TemplateFile c:\Azure\Templates\storage.json `
@@ -150,7 +150,7 @@ New-AzureRmResourceGroupDeployment `
 Prozkoumejte požadavek obsahu pomocí následující rutiny:
 
 ```powershell
-(Get-AzureRmResourceGroupDeploymentOperation `
+(Get-AzResourceGroupDeploymentOperation `
 -DeploymentName exampledeployment `
 -ResourceGroupName examplegroup).Properties.request `
 | ConvertTo-Json
@@ -159,7 +159,7 @@ Prozkoumejte požadavek obsahu pomocí následující rutiny:
 Nebo obsahu s odpovědí:
 
 ```powershell
-(Get-AzureRmResourceGroupDeploymentOperation `
+(Get-AzResourceGroupDeploymentOperation `
 -DeploymentName exampledeployment `
 -ResourceGroupName examplegroup).Properties.response `
 | ConvertTo-Json

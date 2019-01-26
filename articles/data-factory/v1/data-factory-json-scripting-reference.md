@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: 32e0be682d5d216df6741fa38bb0a16e4b323ef6
-ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
+ms.openlocfilehash: 9f8ffe71743f4832d8ce633f050206d21f411276
+ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54354191"
+ms.lasthandoff: 01/26/2019
+ms.locfileid: "55082193"
 ---
 # <a name="azure-data-factory---json-scripting-reference"></a>Azure Data Factory - JSON Scripting Reference
 > [!NOTE]
@@ -5387,7 +5387,7 @@ Je třeba počítat s následujícím:
 - **Typ** je nastavena na **HDInsightSpark**.
 - **RootPath** je nastavena na **adfspark\\pyFiles** kde adfspark je kontejner objektů Blob v Azure a pyFiles je jemné složky v tomto kontejneru. V tomto příkladu Azure Blob Storage je ten, který je spojen s clusterem Spark. Nahrajte soubor do jiné služby Azure Storage. Pokud tak učiníte, vytvořte propojenou službu Azure Storage k propojení účtu úložiště do služby data factory. Zadejte název propojené služby, jako hodnotu **sparkJobLinkedService** vlastnost. Zobrazit [vlastnosti aktivity Spark](#spark-activity-properties) podrobnosti o této vlastnosti a dalších vlastností podporovaných aktivitou Sparku.
 - **EntryFilePath** je nastavena na **test.py**, což je soubor pythonu.
-- **GetDebugInfo** je nastavena na **vždy**, což znamená, že soubory protokolu budou vždy generována (úspěch nebo neúspěch).  
+- **GetDebugInfo** je nastavena na **vždy**, což znamená, že soubory protokolu budou vždy generována (úspěch nebo neúspěch).
 
     > [!IMPORTANT]
     > Doporučujeme vám, že nenastavíte tato vlastnost vždy v produkčním prostředí Pokud řešíte problém.
@@ -5396,13 +5396,13 @@ Je třeba počítat s následujícím:
 Další informace o aktivitě najdete v tématu [aktivitu Spark](data-factory-spark.md) článku.
 
 ## <a name="machine-learning-batch-execution-activity"></a>Aktivita Provedení dávky služby Machine Learning
-Zadejte následující vlastnosti v Azure ML Batch spuštění aktivity JSON definice. Vlastnost typu aktivity musí být: **AzureMLBatchExecution**. Musíte vytvořit Azure Machine Learning nejprve propojené služby a zadejte název ji jako hodnotu **linkedServiceName** vlastnost. Následující vlastnosti jsou podporovány v **typeProperties** oddílu typu aktivity nastavená na AzureMLBatchExecution:
+Zadejte následující vlastnosti v Azure Machine Learning studio zápis JSON aktivity spuštění dávky definition. Vlastnost typu aktivity musí být: **AzureMLBatchExecution**. Musíte vytvořit Azure Machine Learning nejprve propojené služby a zadejte název ji jako hodnotu **linkedServiceName** vlastnost. Následující vlastnosti jsou podporovány v **typeProperties** oddílu typu aktivity nastavená na AzureMLBatchExecution:
 
 Vlastnost | Popis | Požaduje se
 -------- | ----------- | --------
-webServiceInput | Datové sady mají být předány jako vstup pro webovou službu Azure ML. Tato datová sada musí být součástí vstupy pro aktivitu. |Použijte webServiceInput nebo webServiceInputs. |
-webServiceInputs | Zadejte datové sady mají být předány jako vstupy pro webovou službu Azure ML. Pokud webová služba přijímá více vstupů, použijte vlastnost webServiceInputs namísto použití vlastnost webServiceInput. Datové sady, které odkazují **webServiceInputs** musí také obsahovat aktivity **vstupy**. | Použijte webServiceInput nebo webServiceInputs. |
-webServiceOutputs | Datové sady, které jsou přiřazené jako výstup pro webovou službu Azure ML. Webová služba vrátí výstupní data v této datové sadě. | Ano |
+webServiceInput | Datové sady mají být předány jako vstup pro webovou službu Azure Machine Learning studio. Tato datová sada musí být součástí vstupy pro aktivitu. |Použijte webServiceInput nebo webServiceInputs. |
+webServiceInputs | Zadejte datové sady mají být předány jako vstupy pro webovou službu Azure Machine Learning studio. Pokud webová služba přijímá více vstupů, použijte vlastnost webServiceInputs namísto použití vlastnost webServiceInput. Datové sady, které odkazují **webServiceInputs** musí také obsahovat aktivity **vstupy**. | Použijte webServiceInput nebo webServiceInputs. |
+webServiceOutputs | Datové sady, které jsou přiřazené jako výstup pro webovou službu Azure Machine Learning studio. Webová služba vrátí výstupní data v této datové sadě. | Ano |
 globalParameters | Zadejte hodnoty parametrů webové služby v této části. | Ne |
 
 ### <a name="json-example"></a>Příklad JSON
@@ -5452,7 +5452,7 @@ V tomto příkladu JSON v nasazované službě Azure Machine Learning Web použ�
 > Pouze vstupů a výstupů aktivity AzureMLBatchExecution lze předat jako parametry webové služby. Například ve výše uvedeném fragmentu JSON MLSqlInput je vstupní hodnota pro AzureMLBatchExecution aktivity, které je předáno jako vstup do webové služby prostřednictvím parametru webServiceInput.
 
 ## <a name="machine-learning-update-resource-activity"></a>Aktivita aktualizace prostředku služby Machine Learning
-V definici Azure ML aktualizace prostředků zápis JSON aktivity můžete zadat následující vlastnosti. Vlastnost typu aktivity musí být: **AzureMLUpdateResource**. Musíte vytvořit Azure Machine Learning nejprve propojené služby a zadejte název ji jako hodnotu **linkedServiceName** vlastnost. Následující vlastnosti jsou podporovány v **typeProperties** části Pokud nastavíte typ aktivity AzureMLUpdateResource:
+Zadejte následující vlastnosti v Azure Machine Learning studio definici JSON aktivity aktualizace prostředku. Vlastnost typu aktivity musí být: **AzureMLUpdateResource**. Musíte vytvořit Azure Machine Learning nejprve propojené služby a zadejte název ji jako hodnotu **linkedServiceName** vlastnost. Následující vlastnosti jsou podporovány v **typeProperties** části Pokud nastavíte typ aktivity AzureMLUpdateResource:
 
 Vlastnost | Popis | Požaduje se
 -------- | ----------- | --------
@@ -5460,7 +5460,7 @@ Hodnota trainedModelName | Název retrained modelu. | Ano |
 trainedModelDatasetName | Datová sada odkazuje na soubor iLearner, který vrátil retraining operací. | Ano |
 
 ### <a name="json-example"></a>Příklad JSON
-Kanál má dvě aktivity: **AzureMLBatchExecution** a **AzureMLUpdateResource**. Aktivita provedení dávky služby Azure ML trvá trénovací data jako vstup a vytvoří soubor iLearner jako výstup. Aktivita vyvolá školení webové služby (výukového experimentu vystavena jako webové služby) se vstupní trénovacích dat a soubor ilearner, který obdrží z webové služby. PlaceholderBlob je jenom fiktivní výstupní datovou sadu, která požaduje služba Azure Data Factory ke spuštění kanálu.
+Kanál má dvě aktivity: **AzureMLBatchExecution** a **AzureMLUpdateResource**. Azure Machine Learning studio aktivita provedení dávky služby trvá trénovací data jako vstup a vytvoří soubor iLearner jako výstup. Aktivita vyvolá školení webové služby (výukového experimentu vystavena jako webové služby) se vstupní trénovacích dat a soubor ilearner, který obdrží z webové služby. PlaceholderBlob je jenom fiktivní výstupní datovou sadu, která požaduje služba Azure Data Factory ke spuštění kanálu.
 
 
 ```json

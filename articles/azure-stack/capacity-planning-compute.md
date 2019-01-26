@@ -16,12 +16,12 @@ ms.date: 09/18/2018
 ms.author: jeffgilb
 ms.reviewer: prchint
 ms.custom: mvc
-ms.openlocfilehash: 8dcc64350e25be0c8131dc75d96f2a8938944eaf
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 314d40ba365f6dc9a279744ac3af874057fd2321
+ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52962177"
+ms.lasthandoff: 01/26/2019
+ms.locfileid: "55076787"
 ---
 # <a name="azure-stack-compute-capacity-planning"></a>Plánování kapacity výpočetních s Azure Stack
 [Velikosti virtuálních počítačů, které jsou podporované ve službě Azure Stack](./user/azure-stack-vm-sizes.md) jsou podmnožinou, které jsou podporovány v Azure. Azure má omezení prostředků podél mnoho vektorů, aby overconsumption prostředků (server místní a úrovni služeb). Bez uložení některá omezení na prostředky spotřebované klienty, sníží tenanta prostředí při jiných tenantů overconsume prostředky. Pro sítě odchozího přenosu dat z virtuálního počítače existují omezení šířky pásma na místě ve službě Azure Stack, odpovídající omezení Azure. Pro prostředky úložiště limity vstupně-výstupních operací úložiště je implementovaná v Azure stacku, aby se zabránilo základní overconsumption prostředků tenantů pro přístup k úložišti.  
@@ -29,10 +29,7 @@ ms.locfileid: "52962177"
 ## <a name="vm-placement-and-virtual-to-physical-core-overprovisioning"></a>Umístění virtuálního počítače a předimenzování virtuálních a fyzických jader
 Ve službě Azure Stack se nedají použít pro umístění virtuálního počítače pro klienta zadat konkrétní server. Jediný faktor při umísťování virtuálních počítačů je, zda je na hostiteli pro tento typ virtuálního počítače dostatek paměti. Azure Stack není přetížit paměti. overcommit počet jader je však povoleno. Protože algoritmy umístění se na pohled na stávajících virtuálních a fyzických jader předimenzování poměr jako faktor, každý hostitel může mít různý poměr. 
 
-V Azure abyste dosáhli vysoké dostupnosti produkční systém více virtuálních počítačů, virtuální počítače jsou umístěné ve skupině dostupnosti bývalo rozprostřené mezi více domén selhání. To by znamenalo, že virtuální počítače umístěné ve skupině dostupnosti jsou fyzicky izolované od sebe navzájem v racku povolit pro odolnost proti chybám selhání, jak je znázorněno v následujícím diagramu:
-
-![Selhání a aktualizačními doménami.](media/azure-stack-capacity-planning/domains.png)
-
+V Azure abyste dosáhli vysoké dostupnosti produkční systém více virtuálních počítačů, virtuální počítače jsou umístěné ve skupině dostupnosti bývalo rozprostřené mezi více domén selhání. Ve službě Azure Stack doménu selhání ve skupině dostupnosti je definován jako jeden uzel v jednotce škálování.
 
 Infrastruktury služby Azure Stack je odolné vůči selhání, základní technologie (clustering převzetí služeb při selhání) stále s sebou nese náklady výpadkům pro virtuální počítače na ovlivněné fyzickém serveru v případě selhání hardwaru. V současné době podporuje Azure Stack s dostupnosti s délkou maximálně tři domény selhání pro zajištění konzistence s Azure. Virtuální počítače umístěné ve skupině dostupnosti budou fyzicky izolované od sebe navzájem tím, že rozprostírá co nejrovnoměrněji rozložené přes víc domén selhání (uzly Azure Stack). Pokud dojde k selhání hardwaru, virtuálních počítačů z neúspěšných doména bude být restartování v jiných uzlech, ale pokud je to možné udržovat v samostatných doménách selhání z jiných virtuálních počítačů ve stejné sadě dostupnosti. Když hardware vrátí do režimu online, virtuálních počítačů bude možné znovu vyrovnána udržet vysokou dostupnost.
 

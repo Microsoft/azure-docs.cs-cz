@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 12/19/2018
 ms.author: mabrigg
 ms.reviewer: kivenkat
-ms.openlocfilehash: 8a9fc299f620c7df87544b467cf52535addfe313
-ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
+ms.openlocfilehash: bfe53ac99ae1719deeacc156b250fe5a7f87a99a
+ms.sourcegitcommit: 97d0dfb25ac23d07179b804719a454f25d1f0d46
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/20/2018
-ms.locfileid: "53651499"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54913449"
 ---
 # <a name="considerations-for-using-virtual-machines-in-azure-stack"></a>Důležité informace týkající se používání virtuálních počítačů ve službě Azure Stack
 
@@ -39,7 +39,7 @@ Virtuální počítače Azure Stack poskytují na vyžádání, škálovatelnýc
 | Úložiště virtuálního počítače | Podporuje [spravované disky.](../../virtual-machines/windows/managed-disks-overview.md) | Spravované disky jsou podporovány ve službě Azure Stack s verzí 1808 a novější. |
 | Výkon disků virtuálních počítačů | Závisí na typ a velikost disku. | Závisí na velikosti virtuálního počítače z virtuálního počítače, které disky jsou připojené k odkazování [velikostí virtuálních počítačů, které jsou podporované ve službě Azure Stack](azure-stack-vm-sizes.md) článku.
 | Verze rozhraní API | Azure má vždy nejnovější verze rozhraní API pro všechny součásti virtuálního počítače. | Azure Stack podporuje konkrétních služeb Azure a konkrétní verze rozhraní API pro tyto služby. Chcete-li zobrazit seznam podporovaných verzí rozhraní API, přečtěte si [verze rozhraní API](#api-versions) části tohoto článku. |
-| Služby Azure Instance Metadata | Služba Azure Instance Metadata poskytuje informace o spuštěných instancí virtuálních počítačů, které lze použít ke správě nebo konfiguraci virtuálních počítačů.  | Služba Instance metadata se nepodporuje v Azure stacku. |
+| Azure Instance Metadata service | Služba Azure Instance Metadata poskytuje informace o spuštěných instancí virtuálních počítačů, které lze použít ke správě nebo konfiguraci virtuálních počítačů.  | Služba Instance metadata se nepodporuje v Azure stacku. |
 |Skupinách dostupnosti virtuálních počítačů|Více domén selhání (2 nebo 3 oblasti)<br>Víc aktualizačních domén<br>Spravované podporu pro disky|Více domén selhání (2 nebo 3 oblasti)<br>Víc aktualizačních domén (až na 20)<br>Žádná podpora spravovaného disku|
 |Škálovací sady virtuálních počítačů|Nepodporuje automatické škálování|Automatické škálování není podporován.<br>Přidáte další instance škálovací sady s použitím webu portal, šablon Resource Manageru nebo prostředí PowerShell.
 
@@ -59,9 +59,9 @@ V následující tabulce jsou uvedeny virtuálních počítačů, které jsou po
 |Obecné účely |Standardní A     |[A0 – A7](azure-stack-vm-sizes.md#standard-a)              |
 |Obecné účely |D-series       |[D1 - D4](azure-stack-vm-sizes.md#d-series)              |
 |Obecné účely |Dv2-series     |[D1_v2 - D5_v2](azure-stack-vm-sizes.md#ds-series)        |
-|Obecné účely |DS-series      |[ZDROJ DAT DS1 - DS4](azure-stack-vm-sizes.md#dv2-series)            |
+|Obecné účely |DS-series      |[DS1 - DS4](azure-stack-vm-sizes.md#dv2-series)            |
 |Obecné účely |DSv2-series    |[DS1_v2 - DS5_v2](azure-stack-vm-sizes.md#dsv2-series)      |
-|Optimalizované z hlediska paměti|D-series       |[D11 – D14](azure-stack-vm-sizes.md#mo-d)            |
+|Optimalizované z hlediska paměti|D-series       |[D11 - D14](azure-stack-vm-sizes.md#mo-d)            |
 |Optimalizované z hlediska paměti|DS-series      |[DS11 - DS14](azure-stack-vm-sizes.md#mo-ds)|
 |Optimalizované z hlediska paměti|Dv2-series     |[D11_v2 - DS14_v2](azure-stack-vm-sizes.md#mo-dv2)     |
 |Optimalizované z hlediska paměti|DSv2-series –  |[DS11_v2 - DS14_v2](azure-stack-vm-sizes.md#mo-dsv2)    |
@@ -104,8 +104,8 @@ Seznam podporovaných typů prostředků a verze rozhraní API se mohou lišit, 
 
 Produkty Windows musí využívat v souladu s užívacích právech k produktu a licenční podmínky společnosti Microsoft. Azure Stack používá [automatická aktivace virtuálního počítače](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/dn303421(v%3dws.11)) (AVMA) Chcete-li aktivovat systém Windows Server virtuálních počítačů (VM).
 
-- Azure Stack hostitele aktivuje Windows s klíče AVMA pro Windows Server 2016. Všechny virtuální počítače, které Windows serverem 2012 nebo novější se automaticky aktivována.
-- Virtuální počítače, které spuštění systému Windows Server 2008 R2 nejsou aktivovat automaticky a musí být aktivován pomocí [klíče k Vícenásobné aktivaci](https://technet.microsoft.com/library/ff793438.aspx). Pokud chcete používat klíče k Vícenásobné aktivaci, je nutné zadat kód product key.
+- Azure Stack hostitele aktivuje Windows s klíče AVMA pro Windows Server 2016. Všechny virtuální počítače běžet Windows Server 2012 R2 nebo novější se automaticky aktivována.
+- Virtuální počítače, které běží Windows Server 2012 nebo starší neaktivují automaticky a musí být aktivován pomocí [klíče k Vícenásobné aktivaci](https://technet.microsoft.com/library/ff793438.aspx). Pokud chcete používat klíče k Vícenásobné aktivaci, je nutné zadat kód product key.
 
 Microsoft Azure používá aktivace prostřednictvím služby správy KLÍČŮ aktivovat virtuální počítače s Windows. Pokud přesunete virtuální počítač ze služby Azure Stack pro Azure a dojde k aktivaci problémy, přečtěte si téma [problémy s aktivací virtuálního počítače Windows Azure Poradce při potížích s](https://docs.microsoft.com/azure/virtual-machines/windows/troubleshoot-activation-problems). Další informace najdete v [selhání aktivace řešení potíží s Windows na virtuálních počítačích Azure](https://blogs.msdn.microsoft.com/mast/2017/06/14/troubleshooting-windows-activation-failures-on-azure-vms/) příspěvek na blogu týmu podpory Azure.
 

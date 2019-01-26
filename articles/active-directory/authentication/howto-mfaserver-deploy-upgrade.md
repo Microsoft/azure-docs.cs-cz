@@ -3,19 +3,19 @@ title: Upgrade Azure MFA serveru
 description: Postupy a pokyny, jak upgradovat na novější verzi serveru Azure Multi-Factor Authentication.
 services: multi-factor-authentication
 ms.service: active-directory
-ms.component: authentication
+ms.subservice: authentication
 ms.topic: conceptual
 ms.date: 11/12/2018
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
-ms.openlocfilehash: df0fd6258836bcd5053e5c526310e629b59b7880
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: 2e7aa6dd71cfe191300c1739690f9e5a72543995
+ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54426756"
+ms.lasthandoff: 01/26/2019
+ms.locfileid: "55076345"
 ---
 # <a name="upgrade-to-the-latest-azure-multi-factor-authentication-server"></a>Upgrade na Azure Multi-Factor Authentication Server nejnovější verzi
 

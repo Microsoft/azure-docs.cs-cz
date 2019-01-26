@@ -13,15 +13,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/24/2018
+ms.date: 01/15/2018
 ms.author: markvi
 ms.reviewer: nigu
-ms.openlocfilehash: a0c351df535a1f2463c14a4719eac0e4c4896c2b
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: 5b330a8e0eebc2a6f3701534fbc25848296694b1
+ms.sourcegitcommit: 97d0dfb25ac23d07179b804719a454f25d1f0d46
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54464200"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54912625"
 ---
 # <a name="sign-in-experiences-with-azure-ad-identity-protection"></a>Možnosti přihlašování s Azure AD Identity Protection
 S Azure Active Directory Identity Protection můžete:
@@ -57,18 +57,13 @@ Správci můžou nastavit zásadu, která vyžaduje, aby uživatelé nastavit je
 
 1. V prvním kroku uživatel obdrží oznámení o požadavku na nastavení účtu službu Multi-Factor authentication. 
    
-    ![Náprava](./media/flows/301.png "nápravy")
-
+    ![Náprava](./media/flows/140.png "nápravy")
 2. Chcete-li nastavení služby Multi-Factor authentication, nechejte systém vědět, jak chcete kontaktovat.
    
-    ![Náprava](./media/flows/302.png "nápravy")
-
-3. Poskytuje systému číslo telefonní číslo a způsob, jak mají být kontaktován.
-
-    ![Náprava](./media/flows/303.png "nápravy")
-
-K dokončení registrace, musíte buď odpovědět na telefonní hovor nebo zadejte kód. 
-
+    ![Náprava](./media/flows/141.png "nápravy")
+3. Systém odešle složité vám a vy potřebujete reagovat.
+   
+    ![Náprava](./media/flows/142.png "nápravy")
 
 ## <a name="risky-sign-in-recovery"></a>Obnovení riziková přihlášení
 Jestliže správce nakonfiguroval zásady rizik přihlašování, ovlivněných uživatelů: upozorněni při pokusu o přihlášení. 

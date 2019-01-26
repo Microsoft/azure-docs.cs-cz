@@ -17,12 +17,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 07/16/2018
 ms.author: gokuma
-ms.openlocfilehash: d6e4cc585c1239d6a1b81b371f39fc19e3ff37ea
-ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
+ms.openlocfilehash: 7d567d01cef59a2402fa8cb9aecd35c68ae6c2bd
+ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54157169"
+ms.lasthandoff: 01/26/2019
+ms.locfileid: "55077195"
 ---
 # <a name="data-science-with-a-linux-data-science-virtual-machine-on-azure"></a>Pro datovou vědu Data Science virtuálním počítačem s Linuxem v Azure
 Tento návod ukazuje, jak provádět několik běžných úloh vědeckého zpracování virtuálního počítače s Linuxem datové vědy. Systému Linux dat virtuálního počítače VĚDY je image virtuálního počítače k dispozici v Azure, který může být předinstalovaný s kolekcí nástrojů používaných pro analýzu dat a strojové učení. Klíčové softwarové komponenty je uvedeno v [zřídit virtuální počítač Linux datové vědy](linux-dsvm-intro.md) tématu. Image virtuálního počítače umožňuje snadno a rychle začít, datových věd v řádech minut, aniž byste museli instalovat a konfigurovat každý z nástrojů jednotlivě. Můžete snadno vertikálně navýšit kapacitu virtuálních počítačů, v případě potřeby a zastavte ji není při použití. Proto tento prostředek je elastická a nákladově efektivní.
@@ -180,10 +180,10 @@ Také si vyzkoušíme model náhodného doménové struktury. Náhodné doménov
     accuracy
 
 
-## <a name="deploy-a-model-to-azure-ml"></a>Nasazení modelu Azure ML
-[Azure Machine Learning Studio](https://studio.azureml.net/) (AzureML) je Cloudová služba, která umožňuje snadno vytvářet a nasazovat modely prediktivní analýzy. Mezi skvělé funkce Azure ml je jeho schopnost publikovat všechny funkce R jako webovou službu. Balíček AzureML R usnadňuje nasazení provést přímo z našich relace jazyka R na datové VĚDY.
+## <a name="deploy-a-model-to-azure-machine-learning-studio"></a>Nasazení modelu Azure Machine Learning studio
+[Azure Machine Learning Studio](https://studio.azureml.net/) je Cloudová služba, která umožňuje snadno vytvářet a nasazovat modely prediktivní analýzy. Mezi skvělé funkce Azure Machine Learning studio je jeho schopnost publikovat všechny funkce R jako webovou službu. Balíček Azure Machine Learning studio R usnadňuje nasazení provést přímo z našich relace jazyka R na datové VĚDY.
 
-Nasazení kódu stromu rozhodnutí z předchozí části, budete muset přihlásit k Azure Machine Learning studiu. Potřebujete ID vašeho pracovního prostoru a autorizační token pro přihlášení. Tyto hodnoty vyhledat a inicializaci proměnných Azure ml s nimi:
+Nasazení kódu stromu rozhodnutí z předchozí části, budete muset přihlásit k Azure Machine Learning studiu. Potřebujete ID vašeho pracovního prostoru a autorizační token pro přihlášení. Tyto hodnoty vyhledat a inicializaci proměnných Azure Machine Learning s nimi:
 
 Vyberte **nastavení** v nabídce vlevo. Poznámka: vaše **ID pracovního prostoru**. ![2](./media/linux-dsvm-walkthrough/workspace-id.png)
 
@@ -270,7 +270,7 @@ Pro vývoj pomocí Pythonu distribuce Anaconda Python 2.7 a 3.5 nainstalovaných
 Umožňuje číst v některých spambase datové sady a klasifikovat e-maily s počítači vektorové podpory v scikit-informace:
 
     import pandas
-    from sklearn import svm    
+    from sklearn import svm
     data = pandas.read_csv("spambaseHeaders.data", sep = ',\s*')
     X = data.ix[:, 0:57]
     y = data.ix[:, 57]

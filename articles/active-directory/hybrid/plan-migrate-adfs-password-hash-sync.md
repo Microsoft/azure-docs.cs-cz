@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 12/13/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: c6c13d0e27edd5563f10df59ce7af585a345bfab
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: fe28eda7571bf95d1e86419f5caf3cf65e4020b3
+ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54463333"
+ms.lasthandoff: 01/26/2019
+ms.locfileid: "55078640"
 ---
 # <a name="migrate-from-federation-to-password-hash-synchronization-for-azure-active-directory"></a>Migrace z federace na synchronizaci hodnot hash hesel pro Azure Active Directory
 
@@ -30,7 +30,8 @@ Následující závislosti jsou požadovány k migraci pomocí služby AD FS pro
 
 ### <a name="update-azure-ad-connect"></a>Aktualizace služby Azure AD Connect
 
-Chcete-li úspěšně provést kroky je potřeba k migraci pomocí synchronizace hodnot hash hesel, musíte mít [Azure Active Directory Connect](https://www.microsoft.com/download/details.aspx?id=47594) (Azure AD Connect) 1.1.819.0 nebo novější. Ve službě Azure AD Connect 1.1.819.0 způsob, jakým přihlášení převod je výrazně provést změny. Celkový čas migrace ze služby AD FS do cloudového ověřování v této verzi je omezený ze potenciálně hodin, minut.
+Minimálně chcete úspěšně provést kroky k migraci na synchronizaci hodnot hash hesel, měli byste mít [služby Azure AD connect](https://www.microsoft.com/download/details.aspx?id=47594) 1.1.819.0. Tato verze obsahuje významné změny způsobu, jakým se provádí převod přihlášení a snižuje celkový čas na migraci z federace na cloudové ověřování z potenciálně hodin, minut.
+
 
 > [!IMPORTANT]
 > Může číst v dokumentaci k zastaralé, nástroje a blogy, že je uživatel převod vyžadována při převádění domén federovaných identit pro spravovanou identitu. *Převod uživatelů* se už nevyžaduje. Microsoft pracuje na aktualizaci dokumentace a nástroje tak, aby odrážela tuto změnu.
