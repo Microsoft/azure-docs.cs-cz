@@ -443,11 +443,6 @@ items:
         href: service-fabric-tutorial-deploy-api-management.md
       - name: Správa tajných klíčů aplikací
         href: service-fabric-application-secret-management.md
-        items:
-        - name: Nastavení šifrovacího certifikátu a šifrování tajných kódů ve Windows
-          href: service-fabric-application-secret-management-windows.md
-        - name: Nastavení šifrovacího certifikátu a šifrování tajných kódů v Linuxu
-          href: service-fabric-application-secret-management-linux.md
       - name: Konfigurace reverzního proxy serveru pro zabezpečenou komunikaci
         href: service-fabric-reverseproxy-configure-secure-communication.md
       - name: Spuštění skriptu spuštění služby jako místní uživatel nebo systémový účet
@@ -782,8 +777,6 @@ items:
     href: /dotnet/api/overview/azure/service-fabric?view=azure-dotnet
   - name: REST
     href: /rest/api/servicefabric
-  - name: Šablona Resource Manageru
-    href: /azure/templates/microsoft.servicefabric/clusters
   - name: Události služby Service Fabric
     href: service-fabric-diagnostics-event-generation-operational.md
   - name: Konfigurace nastavení clusteru a zásad upgradu prostředků infrastruktury
@@ -827,9 +820,9 @@ items:
     href: https://azure.microsoft.com/updates/?product=service-fabric
   - name: Videa
     href: https://azure.microsoft.com/documentation/videos/index/?services=service-fabric
-ms.openlocfilehash: abf77c080d6093e9028f82ccac7b20d24389bdbb
-ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
+ms.openlocfilehash: 9058ac3b7d21b7cd490a14333d2362635809e39b
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54352474"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53976360"

@@ -98,16 +98,6 @@ items:
         href: azure-stack-network-overview.md
       - name: Aspekty sítí
         href: azure-stack-network-differences.md
-      - name: VPN Gateway
-        items:
-        - name: Připojení pomocí VPN
-          href: azure-stack-connect-vpn.md
-        - name: Informace o službě VPN gateway
-          href: azure-stack-vpn-gateway-about-vpn-gateways.md
-        - name: Konfigurace zásad IPSec/IKE připojení
-          href: azure-stack-vpn-s2s.md
-        - name: Nastavení služby VPN gateway
-          href: azure-stack-vpn-gateway-settings.md
       - name: iDNS pro Azure Stack
         href: azure-stack-understanding-dns.md
       - name: DNS v Azure Stacku
@@ -179,7 +169,7 @@ items:
           href: azure-stack-version-profiles-powershell.md
         - name: Azure CLI
           href: azure-stack-version-profiles-azurecli2.md
-        - name: Přejít
+        - name: PŘEJÍT
           href: azure-stack-version-profiles-go.md
         - name: Ruby
           href: azure-stack-version-profiles-ruby.md
@@ -233,9 +223,9 @@ items:
     href: http://stackoverflow.com/questions/tagged/azure-stack
   - name: Školení a certifikace
     href: https://docs.microsoft.com/azure/azure-stack/azure-stack-train-and-cert
-ms.openlocfilehash: c9c4e0109df5880100956e167d17c61dfd001743
-ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
-ms.translationtype: MT
+ms.openlocfilehash: 256560806e1065ec1ca9cfa9ba1d9f4521755ee8
+ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54450673"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54351756"

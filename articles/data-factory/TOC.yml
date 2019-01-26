@@ -462,8 +462,6 @@ items:
     href: /powershell/module/azurerm.datafactoryv2/
   - name: REST API
     href: /rest/api/datafactory
-  - name: Šablona Resource Manageru
-    href: /azure/templates/microsoft.datafactory/allversions
   - name: Python
     href: /python/api/overview/azure/datafactory?view=azure-python
 - name: Zdroje a prostředky
@@ -484,9 +482,9 @@ items:
     href: https://azure.microsoft.com/global-infrastructure/services/
   - name: Možnosti podpory
     href: https://azure.microsoft.com/support/options/
-ms.openlocfilehash: 5c667c1e29870b2a8d120e63b27607dbb65496f3
-ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
+ms.openlocfilehash: 7946681a122c24ec279b89918dcb133da25f0cb4
+ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54120355"
+ms.lasthandoff: 01/07/2019
+ms.locfileid: "54064538"

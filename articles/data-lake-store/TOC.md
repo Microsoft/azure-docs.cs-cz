@@ -28,7 +28,7 @@
 ### [Řízení přístupu](data-lake-store-access-control.md)
 ### [Zabezpečení uložených dat](data-lake-store-secure-data.md)
 ### [Šifrování](data-lake-store-encryption.md)
-### [Integrace virtuální sítě](data-lake-store-network-security.md)
+### [Integrace virtuální sítě (Preview)](data-lake-store-network-security.md)
 
 ## Ověřování s využitím služby Data Lake Storage Gen1
 ### [Možnosti ověřování](data-lakes-store-authentication-using-azure-active-directory.md)
