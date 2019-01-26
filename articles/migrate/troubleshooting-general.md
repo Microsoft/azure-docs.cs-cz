@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 01/25/2019
 ms.author: raynew
-ms.openlocfilehash: 8ec580c31901cdbb28fc3a66877f5b0f320f1f7f
-ms.sourcegitcommit: 97d0dfb25ac23d07179b804719a454f25d1f0d46
-ms.translationtype: HT
+ms.openlocfilehash: 5a5fbcb4cd2e073192ec7032bdbed15ab49798ad
+ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/25/2019
-ms.locfileid: "54912590"
+ms.lasthandoff: 01/26/2019
+ms.locfileid: "55075411"
 ---
 # <a name="troubleshoot-azure-migrate"></a>Řešení problémů s Azure Migrate
 
@@ -214,7 +214,7 @@ Seznam operačních systémů Windows nepodporuje agenta závislostí je [tady](
 Seznam operačních systémů Linux podporuje agenta závislostí je [tady](https://docs.microsoft.com/azure/monitoring/monitoring-service-map-configure#supported-linux-operating-systems).
 
 ### <a name="i-am-unable-to-visualize-dependencies-in-azure-migrate-for-more-than-one-hour-duration"></a>Nejde mi vizualizace závislostí ve službě Azure Migrate déle než hodinu?
-Azure Migrate vám umožňuje vizualizovat závislosti pro dobu trvání až jednu hodinu. I když Azure Migrate můžete přejít zpět na konkrétní datum v historii pro až za poslední měsíc, je maximální doba trvání, pro kterou můžete vizualizovat závislosti až 1 hodinu. Například můžete použít funkci doba trvání na mapě závislostí, chcete-li zobrazit závislosti včerejška ale jenom ji mohou zobrazit okna jednu hodinu.
+Azure Migrate vám umožňuje vizualizovat závislosti pro dobu trvání až jednu hodinu. I když Azure Migrate můžete přejít zpět na konkrétní datum v historii pro až za poslední měsíc, je maximální doba trvání, pro kterou můžete vizualizovat závislosti až 1 hodinu. Například můžete použít funkci doba trvání na mapě závislostí, chcete-li zobrazit závislosti včerejška ale jenom ji mohou zobrazit okna jednu hodinu. Můžete však použít Log Analytics pro [zadávat dotazy na data závislostí](https://docs.microsoft.com/azure/migrate/how-to-create-group-machine-dependencies#query-dependency-data-from-log-analytics) za delší dobu. 
 
 ### <a name="i-am-unable-to-visualize-dependencies-for-groups-with-more-than-10-vms"></a>Nejde mi vizualizace závislostí u skupin s více než 10 virtuálních počítačů?
 Je možné [vizualizace závislostí u skupin](https://docs.microsoft.com/azure/migrate/how-to-create-group-dependencies) , že mají až na 10 virtuálních počítačů, pokud máte skupinu s více než 10 virtuálních počítačů, doporučujeme rozdělit skupiny v menším skupinám a vizualizace závislostí.

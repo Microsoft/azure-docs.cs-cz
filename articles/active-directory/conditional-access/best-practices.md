@@ -9,20 +9,20 @@ manager: daveba
 editor: ''
 ms.assetid: 8c1d978f-e80b-420e-853a-8bbddc4bcdad
 ms.service: active-directory
-ms.component: conditional-access
+ms.subservice: conditional-access
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 01/24/2019
+ms.date: 01/25/2019
 ms.author: markvi
 ms.reviewer: calebb
-ms.openlocfilehash: 3ed4d3874056eca93e5c94e225ba25d94e7826e3
-ms.sourcegitcommit: 97d0dfb25ac23d07179b804719a454f25d1f0d46
-ms.translationtype: HT
+ms.openlocfilehash: 8324b7bf97325c295fdf95819cc2b22fb0f3c14e
+ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/25/2019
-ms.locfileid: "54911927"
+ms.lasthandoff: 01/26/2019
+ms.locfileid: "55078946"
 ---
 # <a name="best-practices-for-conditional-access-in-azure-active-directory"></a>Osvědčené postupy pro podmíněný přístup v Azure Active Directory
 
@@ -47,9 +47,9 @@ Aby vaše zásady fungují, je nutné nakonfigurovat:
 
 |Co           | Jak                                  | Proč|
 |:--            | :--                                  | :-- |
-|**Cloudové aplikace** |Musíte vybrat jednu nebo víc aplikací.  | Cílem zásad podmíněného přístupu je vám umožňují řídit jak Autorizovaní uživatelé můžou používat cloudové aplikace.|
-| **Uživatelé a skupiny** | Musíte vybrat alespoň jeden uživatel nebo skupina, která má oprávnění pro přístup k vybrané cloudové aplikace. | Zásady podmíněného přístupu, který nemá žádné uživatelé a skupiny přiřazení, je neaktivní. |
-| **Řízení přístupu** | Musíte vybrat aspoň jedno přístupu ovládací prvek. | Jestli vaše podmínky splněny, procesor zásad je potřeba vědět, co dělat.|
+|**Cloudové aplikace** |Vyberte jednu nebo víc aplikací.  | Cílem zásad podmíněného přístupu je vám umožňují řídit jak Autorizovaní uživatelé můžou používat cloudové aplikace.|
+| **Uživatelé a skupiny** | Vyberte alespoň jeden uživatel nebo skupina, která má oprávnění pro přístup k vybrané cloudové aplikace. | Zásady podmíněného přístupu, který nemá žádné uživatelé a skupiny přiřazení, je neaktivní. |
+| **Řízení přístupu** | Vyberte aspoň jedno přístupu ovládací prvek. | Jestli vaše podmínky splněny, procesor zásad je potřeba vědět, co dělat.|
 
 
 
@@ -60,7 +60,7 @@ Aby vaše zásady fungují, je nutné nakonfigurovat:
 
 ### <a name="how-are-conditional-access-policies-applied"></a>Jak se používají zásady podmíněného přístupu?
 
-Více než jedny zásady podmíněného přístupu uplatnit, když uživatel získá přístup k aplikaci. V tomto případě musí být splněny všechny zásady, které se vztahují. Například pokud jedna zásady vyžaduje pro uživatele vícefaktorové ověřování a druhá vyžaduje vyhovující zařízení uživatel musí MFA a vyhovující zařízení. 
+Více než jedny zásady podmíněného přístupu uplatnit při přístupu k cloudovou aplikaci. V takovém případě musí být splněny všechny zásady, které se vztahují. Například pokud jedna zásada vyžaduje vícefaktorové ověřování a druhá vyhovující zařízení, musíte projít MFA a použijte vyhovující zařízení. 
 
 Všechny zásady vynucují ve dvou fázích:
 
@@ -88,7 +88,7 @@ Pokud je potřeba nakonfigurovat umístění podmínky, která platí pro všech
 
 Pokud jsou zablokována na portálu Azure AD kvůli nesprávnému nastavení zásad podmíněného přístupu:
 
-- Ověřte, zda jsou ostatními správci ve vaší organizaci, které ještě nejsou blokované. Správce s přístupem k webu Azure portal můžete zakázat zásadu, která je dopadu na vaše přihlášení. 
+- Zkontrolujte je, že nejsou ostatními správci ve vaší organizaci, které ještě nejsou blokované. Správce s přístupem k webu Azure portal můžete zakázat zásadu, která je dopadu na vaše přihlášení. 
 
 - Pokud žádná z správci ve vaší organizaci můžete aktualizovat zásady, musíte odeslat žádost o podporu. Podpora společnosti Microsoft můžete zkontrolovat a aktualizovat zásady podmíněného přístupu, které brání přístupu.
 
@@ -140,13 +140,13 @@ Ve vašem prostředí měli byste se vyhnout následující konfigurace:
 
 Jako první krok, by se měl vyhodnotit zásadu pomocí [co když nástroj](what-if-tool.md).
 
-Jakmile budete připraveni k nasazení nových zásad do vašeho prostředí, byste měli udělat ve fázích:
+Jakmile jsou připravené pro vaše prostředí nové zásady, můžete je nasadíte ve fázích:
 
 1. Použít zásady pro malou skupinu uživatelů a ověřte, že se chová podle očekávání. 
 
-2.  Když rozšiřujete zásadu, která zahrnují další uživatele, i nadále vyloučit ze zásad všechny správce. Tím se zajistí, že správci stále máte přístup a zásady můžete aktualizovat, pokud je požadována změna.
+2.  Po rozbalení zásadu, která zahrnují více uživatelů. Vyloučit všechny správce z této zásady zajistíte, že jsou stále máte přístup a zásady můžete aktualizovat, pokud je požadována změna i nadále.
 
-3. Zásady platí pro všechny uživatele, pouze v případě, že je to opravdu nutné. 
+3. Zásady platí pro všechny uživatele, pouze v případě potřeby. 
 
 Jako osvědčený postup vytvoření uživatelského účtu, který je:
 
