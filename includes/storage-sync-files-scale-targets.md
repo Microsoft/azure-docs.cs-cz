@@ -8,16 +8,16 @@ ms.topic: include
 ms.date: 07/18/2018
 ms.author: wgries
 ms.custom: include file
-ms.openlocfilehash: 00124562d3bc21f9139ae54f022d7893a4eaf11c
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.openlocfilehash: 6d9370ce6a031377e37c4e830400337f3e57a62e
+ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53638785"
+ms.lasthandoff: 01/26/2019
+ms.locfileid: "55084816"
 ---
 | Prostředek | Cíl | Pevný limit |
 |----------|--------------|------------|
-| Služby synchronizace úložiště na předplatné | 15 služby synchronizace úložiště na oblast | Ne |
+| Služby synchronizace úložiště na oblast | 15 služby synchronizace úložiště | Ano |
 | Skupiny synchronizace služby synchronizace úložiště | 100 skupiny synchronizace. | Ano |
 | Registrované servery služby synchronizace úložiště | 99 servery | Ano |
 | Koncové body cloudu na skupinu synchronizace | koncový bod cloudu. 1 | Ano |

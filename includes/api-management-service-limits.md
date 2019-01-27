@@ -9,12 +9,12 @@ ms.topic: include
 ms.date: 03/22/2018
 ms.author: vlvinogr
 ms.custom: include file
-ms.openlocfilehash: e01eebe41010135d0dc0a2cb4170e6b6687ff546
-ms.sourcegitcommit: beb4fa5b36e1529408829603f3844e433bea46fe
+ms.openlocfilehash: 646ebc79e3615b289b60e47c0a38595e7892d8cc
+ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/22/2018
-ms.locfileid: "52292673"
+ms.lasthandoff: 01/26/2019
+ms.locfileid: "55084859"
 ---
 | Prostředek | Omezení |
 | --- | --- |
@@ -24,7 +24,7 @@ ms.locfileid: "52292673"
 | Velikost maximální odpověď uložená v mezipaměti | 2MB |
 | Zásady maximální velikosti dokumentu | 256KB<sup>5</sup> | 
 | Maximální vlastní bránu domén na instanci služby<sup>6</sup> | 20 | 
-| Maximální počet instancí služby za předplatné<sup>7</sup> | 5 | 
+| Maximální počet instancí služby za předplatné<sup>7</sup> | 20 | 
 | Maximální počet odběrů za instanci služby<sup>7</sup> | 500 |
 | Maximální počet klientské certifikáty pro jednotlivé instance služby<sup>7</sup> | 50 | 
 | Maximální počet rozhraní API na instanci služby<sup>7</sup> | 50 | 
