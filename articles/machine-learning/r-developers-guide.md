@@ -14,12 +14,12 @@ ms.devlang: R
 ms.topic: article
 ms.date: 09/12/2018
 ms.author: jepeach
-ms.openlocfilehash: 102191b885d2a4a9234b7783b0a51b09903d3abd
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: c5120cdb743e031c081f727c947752419db3a9d7
+ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54807452"
+ms.lasthandoff: 01/26/2019
+ms.locfileid: "55081105"
 ---
 # <a name="r-developers-guide-to-azure"></a>Příručka pro vývojáře jazyka R do Azure
 <img src="media/r-developers-guide/logo_r.svg" alt="R logo" align="right" width="200" />
@@ -83,23 +83,23 @@ Tento článek ["Co je Azure Databricks?"](https://docs.microsoft.com/azure/azur
 můžete zadat další podrobnosti o platformě a pomůžou vám začít.
 
 ## <a name="azure-machine-learning-studio"></a>Azure Machine Learning Studio
-[Azure Machine Learning Studio](https://azure.microsoft.com/services/machine-learning-studio/) je nástroj pro spolupráci, přetáhněte myší, můžete vytvářet, testovat a nasazovat řešení prediktivní analýzy v cloudu.  Umožňuje nově vznikající odborníci přes data k vytvoření a nasazení modelů strojového učení, aniž byste museli psát většinu kódu.
+[Azure Machine Learning studio](https://azure.microsoft.com/services/machine-learning-studio/) je nástroj pro spolupráci, přetáhněte myší, můžete vytvářet, testovat a nasazovat řešení prediktivní analýzy v cloudu.  Umožňuje nově vznikající odborníci přes data k vytvoření a nasazení modelů strojového učení, aniž byste museli psát většinu kódu.
 
-ML Studio podporuje R a Python.  R pomocí sady ML Studio můžete použít dvěma způsoby.
+Azure Machine Learning studio podporuje R a Python.  Použití R s Azure Machine Learning studio dvěma způsoby.
 
 ### <a name="custom-r-scripts-in-your-experiments"></a>Vlastní R skripty ve své experimenty
 Nejprve můžete rozšířit manipulace s daty a machine learningu možnosti sady ML Studio napsáním vlastní skripty jazyka R.
 I když ML Studio obsahuje celou řadu modulů pro přípravu a analýzy dat, nemůže odpovídat funkce až po zralé jazyky jako R.  Proto je služba navržená aby bylo možné zavést svých vlastních skriptů R v případech, kdy zadané moduly nebudou vyhovovat vašim potřebám.
 
-Chcete-li tuto funkci využívat, přetáhněte a umístěte modul "Spustit skript jazyka R" do svého experimentu.  Pak pomocí editoru kódu v podokně "Properties" napsat nový skript R nebo vložte existující skript.  Ve skriptu můžete odkazovat na externí balíčky R.  Skript můžete použít k manipulaci s daty nebo tak moct trénovat složité modely ML, které nejsou součástí standardní knihovny modelu ML Studio.
+Chcete-li tuto funkci využívat, přetáhněte a umístěte modul "Spustit skript jazyka R" do svého experimentu.  Pak pomocí editoru kódu v podokně "Properties" napsat nový skript R nebo vložte existující skript.  Ve skriptu můžete odkazovat na externí balíčky R.  Skript můžete použít k manipulaci s daty nebo tak moct trénovat složité modely ML, které nejsou součástí standardní knihovny modelu Azure Machine Learning studio.
 
-Důkladné Úvod k používání R v nástroji ML Studio experimenty, podívejte se ["Rychlý úvodní kurz pro jazyk R pro službu Azure Machine Learning."](https://docs.microsoft.com/azure/machine-learning/studio/r-quickstart)
+Důkladné Úvod k používání R v nástroji ML Studio experimenty, podívejte se ["Rychlý úvodní kurz pro R programovací jazyk pro Azure Machine Learning studio."](https://docs.microsoft.com/azure/machine-learning/studio/r-quickstart)
 
 ### <a name="create-manage-and-deploy-experiments-from-your-local-r-environment"></a>Vytvořit, spravovat a nasazovat experimenty z vašeho místního prostředí R
-Jiným způsobem, že můžou používat R pomocí sady ML Studio se má používat
-<code>[AzureML](https://cran.r-project.org/web/packages/AzureML/vignettes/getting_started.html)</code> balíček ke sledování a řízení procesu experimentování s programovacího prostředí jazyka r.  Tento balíček, který je spravován společností Microsoft, umožňuje nahrávání a stahování datových sad do a z Azure ML k dotazování experimentů k publikování funkce R jako webové služby Azure ML a ke spuštění dat R přes existující webové služby a načtení výstupu.
+Jiným způsobem, že můžou používat R s Azure Machine Learning studio je použít
+<code>[AzureML](https://cran.r-project.org/web/packages/AzureML/vignettes/getting_started.html)</code> balíček ke sledování a řízení procesu experimentování s programovacího prostředí jazyka r.  Tento balíček, který je spravován společností Microsoft, umožňuje nahrávání a stahování datových sad do a ze služby Azure Machine Learning studio, k dotazování experimenty, chcete-li publikovat R funguje jako webové služby a spustit R data prostřednictvím existující webové služby a načíst výstup.
 
-Tento balíček je mnohem jednodušší pomocí služby Azure ML jako platforma pro škálovatelná nasazení pro váš kód R.  Místo kliknutím a přetažením v uživatelském rozhraní, můžete automatizovat celý proces nasazení pomocí nástroje, které už znáte.
+Tento balíček je mnohem snazší používat Azure Machine Learning studio jako platforma pro škálovatelná nasazení pro váš kód R.  Místo kliknutím a přetažením v uživatelském rozhraní, můžete automatizovat celý proces nasazení pomocí nástroje, které už znáte.
 
 ## <a name="azure-batch"></a>Azure Batch
 Pro rozsáhlé úlohy R, můžete použít [Azure Batch](https://azure.microsoft.com/services/batch/).  Tato služba poskytuje cloudových úlohy plánování a správa výpočetních úloh R je možné škálovat napříč desítky, stovky nebo tisíce virtuálních počítačů.  Protože je generalizovaný výpočetní platforma, existuje několik možností pro spouštění úloh R v Azure Batch.

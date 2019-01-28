@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 11/24/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: ed3731db88d7f829634a03c55e5ec033c03e4b0f
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: 00ad0bcb6c3c2542e5f23e915879c9cd951d552b
+ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53139116"
+ms.lasthandoff: 01/26/2019
+ms.locfileid: "55081122"
 ---
 # <a name="the-team-data-science-process-in-action-using-sql-data-warehouse"></a>Vědecké zpracování týmových dat v akci: použití služby SQL Data Warehouse
 V tomto kurzu jsme vás provede procesem vytvoření a nasazení modelu strojového učení pomocí SQL Data Warehouse (SQL data Warehouse) veřejně dostupné datové sady – [cesty taxíkem NYC](http://www.andresmh.com/nyctaxitrips/) datové sady. Binární klasifikační model vytvořený předpovídá, zda tip platí pro cesty a které předpovědět distribuce pro tip částky zaplacené jsou popsány také pro víc tříd klasifikačních a regresních modelů.
@@ -27,7 +27,7 @@ Následující postup [vědecké zpracování týmových dat (TDSP)](https://doc
 Data o jízdách taxislužby NYC se skládá z přibližně 20GB komprimované soubory CSV (nekomprimovaný ~ 48GB), záznam 173 milionů jednotlivé trips a tarify placené pro každou cestu. Každý záznam o jízdách zahrnuje sbírat míčky a dropoff umístění a čas, anonymizované hack (ovladač) číslo licence a číslo Medailon (jedinečné id taxislužby.). Data v roce 2013 zahrnuje všechny cesty a je dostupné pro každý měsíc následující dvě datové sady:
 
 1. **Trip_data.csv** soubor obsahuje podrobnosti o jízdách, jako je třeba počet cestujících, sbírat míčky a dropoff body, doba trvání cesty a délka cesty. Tady je několik ukázkových záznamů:
-   
+
         medallion,hack_license,vendor_id,rate_code,store_and_fwd_flag,pickup_datetime,dropoff_datetime,passenger_count,trip_time_in_secs,trip_distance,pickup_longitude,pickup_latitude,dropoff_longitude,dropoff_latitude
         89D227B655E5C82AECF13C3F540D4CF4,BA96DE419E711691B9445D6A6307C170,CMT,1,N,2013-01-01 15:11:48,2013-01-01 15:18:10,4,382,1.00,-73.978165,40.757977,-73.989838,40.751171
         0BD7C8F5BA12B88E0B67BED28BEA73D8,9FD8F69F0804BDB5549F40E9DA1BE472,CMT,1,N,2013-01-06 00:18:35,2013-01-06 00:22:54,1,259,1.50,-74.006683,40.731781,-73.994499,40.75066
@@ -35,7 +35,7 @@ Data o jízdách taxislužby NYC se skládá z přibližně 20GB komprimované s
         DFD2202EE08F7A8DC9A57B02ACB81FE2,51EE87E3205C985EF8431D850C786310,CMT,1,N,2013-01-07 23:54:15,2013-01-07 23:58:20,2,244,.70,-73.974602,40.759945,-73.984734,40.759388
         DFD2202EE08F7A8DC9A57B02ACB81FE2,51EE87E3205C985EF8431D850C786310,CMT,1,N,2013-01-07 23:25:03,2013-01-07 23:34:24,1,560,2.10,-73.97625,40.748528,-74.002586,40.747868
 2. **Trip_fare.csv** soubor obsahuje podrobné informace o tarif placené pro každou cestu, například typ platby, velikost tarif, příplatek za a daní, tipy a mýtné a celkové částky zaplacené. Tady je několik ukázkových záznamů:
-   
+
         medallion, hack_license, vendor_id, pickup_datetime, payment_type, fare_amount, surcharge, mta_tax, tip_amount, tolls_amount, total_amount
         89D227B655E5C82AECF13C3F540D4CF4,BA96DE419E711691B9445D6A6307C170,CMT,2013-01-01 15:11:48,CSH,6.5,0,0.5,0,0,7
         0BD7C8F5BA12B88E0B67BED28BEA73D8,9FD8F69F0804BDB5549F40E9DA1BE472,CMT,2013-01-06 00:18:35,CSH,6,0.5,0.5,0,0,7
@@ -52,15 +52,15 @@ Data o jízdách taxislužby NYC se skládá z přibližně 20GB komprimované s
 ## <a name="mltasks"></a>Adresa tři druhy úkonů predikcí
 Jsme formulovali tři problémy předpovědi na základě *tip\_částka* pro ilustraci tři druhy modelování úlohy:
 
-1. **Binární klasifikace**: předpovědět, zda je či není tip byla zaplacena cesty, to znamená *tip\_částka* , který je větší než 0 USD je kladné příklad, zatímco *tip\_částka* $ 0 je záporná příklad.
+1. **Binární klasifikace**: Předpovědět, zda je či není tip byla zaplacena cesty, to znamená *tip\_velikost* , který je větší než 0 USD je kladné příklad, zatímco *tip\_velikost* $ 0 je záporná příklad.
 2. **Klasifikace víc tříd**: K předpovědi rozsahu tip placené pro cestu. Doporučujeme rozdělit *tip\_částka* do pěti přihrádky nebo třídy:
-   
+
         Class 0 : tip_amount = $0
         Class 1 : tip_amount > $0 and tip_amount <= $5
         Class 2 : tip_amount > $5 and tip_amount <= $10
         Class 3 : tip_amount > $10 and tip_amount <= $20
         Class 4 : tip_amount > $20
-3. **Úloha regrese**: odhadnout množství tip placené cesty.  
+3. **Úloha regrese**: Odhadnout množství tip placené cesty.
 
 ## <a name="setup"></a>Nastavení prostředí Azure data science pro pokročilou analýzu
 Nastavení prostředí Azure pro datové vědy, postupujte podle těchto kroků.
@@ -69,7 +69,7 @@ Nastavení prostředí Azure pro datové vědy, postupujte podle těchto kroků.
 
 * Když si zřídíte Azure blob storage, zvolte geografické polohy pro Azure blob storage v nebo co nejblíže k **střed USA – jih**, data taxislužby NYC uložené. Data se zkopírují pomocí AzCopy z veřejného kontejneru objektů blob storage do kontejneru v účtu úložiště. Čím blíž je službě Azure blob storage na střed USA – Jih, tím rychleji dokončení tohoto úkolu (krok 4).
 * K vytvoření účtu úložiště Azure, postupujte podle kroků uvedených v [účty Azure storage](../../storage/common/storage-create-storage-account.md). Nezapomeňte si dělat poznámky na hodnoty pro následující přihlašovací údaje účtu úložiště, jako je budou potřebovat později v tomto názorném postupu.
-  
+
   * **Název účtu úložiště**
   * **Klíč účtu úložiště**
   * **Název kontejneru** (které chcete data, která mají být uloženy ve službě Azure blob storage)
@@ -88,8 +88,8 @@ Postupujte podle dokumentace na [vytvořit SQL Data Warehouse](../../sql-data-wa
 
 > [!NOTE]
 > Spusťte následující dotaz SQL na databázi vytvořené ve službě SQL Data Warehouse (místo dotazu zadaného v kroku 3 tématu připojit) do **vytvořte hlavní klíč**.
-> 
-> 
+>
+>
 
     BEGIN TRY
            --Try to create the master key
@@ -106,8 +106,8 @@ Otevřete konzolu příkazového prostředí Windows PowerShell. Spusťte násle
 
 > [!NOTE]
 > Možná budete muset **spustit jako správce** při spuštění následujícího skriptu prostředí PowerShell, pokud vaše *DestDir* directory potřebuje správce oprávnění k vytvoření nebo do ní zapisovat.
-> 
-> 
+>
+>
 
     $source = "https://raw.githubusercontent.com/Azure/Azure-MachineLearning-DataScience/master/Misc/SQLDW/Download_Scripts_SQLDW_Walkthrough.ps1"
     $ps1_dest = "$pwd\Download_Scripts_SQLDW_Walkthrough.ps1"
@@ -127,13 +127,13 @@ Při prvním spuštění skriptu prostředí PowerShell, zobrazí výzva k zadá
 
 > [!NOTE]
 > Pokud se chcete vyhnout schématu název je v konfliktu s těmi, které již existují v Azure SQL DW, při čtení parametry přímo ze souboru SQLDW.conf náhodné číslo 3 číslice se přidá k názvu schématu ze souboru SQLDW.conf jako výchozí název schématu pro každé spuštění. Skript prostředí PowerShell může vyzve k zadání názvu schématu: může být zadán název na uvážení uživatelů.
-> 
-> 
+>
+>
 
 To **skript prostředí PowerShell** soubor dokončí následující úkoly:
 
 * **Stáhne a nainstaluje AzCopy**, pokud ještě nemáte nainstalovaný nástroj AzCopy
-  
+
         $AzCopy_path = SearchAzCopy
         if ($AzCopy_path -eq $null){
                Write-Host "AzCopy.exe is not found in C:\Program Files*. Now, start installing AzCopy..." -ForegroundColor "Yellow"
@@ -154,7 +154,7 @@ To **skript prostředí PowerShell** soubor dokončí následující úkoly:
                     $env_path = $env:Path
                 }
 * **Zkopíruje data do účtu úložiště objektů blob v privátní** z veřejných objektů blob pomocí nástroje AzCopy
-  
+
         Write-Host "AzCopy is copying data from public blob to yo storage account. It may take a while..." -ForegroundColor "Yellow"
         $start_time = Get-Date
         AzCopy.exe /Source:$Source /Dest:$DestURL /DestKey:$StorageAccountKey /S
@@ -164,17 +164,17 @@ To **skript prostředí PowerShell** soubor dokončí následující úkoly:
         Write-Host "AzCopy finished copying data. Please check your storage account to verify." -ForegroundColor "Yellow"
         Write-Host "This step (copying data from public blob to your storage account) takes $total_seconds seconds." -ForegroundColor "Green"
 * **Načtení dat pomocí Polybase (spuštěním LoadDataToSQLDW.sql) do Azure SQL DW** z vašeho účtu úložiště objektů blob v privátní pomocí následujících příkazů.
-  
+
   * Vytvořte schéma
-    
+
           EXEC (''CREATE SCHEMA {schemaname};'');
   * Vytvoření přihlašovacích údajů s rozsahem databáze
-    
+
           CREATE DATABASE SCOPED CREDENTIAL {KeyAlias}
           WITH IDENTITY = ''asbkey'' ,
           Secret = ''{StorageAccountKey}''
   * Vytvoření externího zdroje dat pro objektu blob služby Azure storage
-    
+
           CREATE EXTERNAL DATA SOURCE {nyctaxi_trip_storage}
           WITH
           (
@@ -183,7 +183,7 @@ To **skript prostředí PowerShell** soubor dokončí následující úkoly:
               CREDENTIAL = {KeyAlias}
           )
           ;
-    
+
           CREATE EXTERNAL DATA SOURCE {nyctaxi_fare_storage}
           WITH
           (
@@ -193,12 +193,12 @@ To **skript prostředí PowerShell** soubor dokončí následující úkoly:
           )
           ;
   * Vytvořte externí soubor formát souboru .csv. Nekomprimovaných dat a pole jsou oddělené znakem svislé čáry.
-    
+
           CREATE EXTERNAL FILE FORMAT {csv_file_format}
           WITH
-          (   
+          (
               FORMAT_TYPE = DELIMITEDTEXT,
-              FORMAT_OPTIONS  
+              FORMAT_OPTIONS
               (
                   FIELD_TERMINATOR ='','',
                   USE_TYPE_DEFAULT = TRUE
@@ -206,7 +206,7 @@ To **skript prostředí PowerShell** soubor dokončí následující úkoly:
           )
           ;
   * Vytvoření externí tarif a o jízdách tabulek pro sadu dat taxislužby NYC ve službě Azure blob storage.
-    
+
           CREATE EXTERNAL TABLE {external_nyctaxi_fare}
           (
               medallion varchar(50) not null,
@@ -226,8 +226,8 @@ To **skript prostředí PowerShell** soubor dokončí následující úkoly:
               DATA_SOURCE = {nyctaxi_fare_storage},
               FILE_FORMAT = {csv_file_format},
               REJECT_TYPE = VALUE,
-              REJECT_VALUE = 12     
-          )  
+              REJECT_VALUE = 12
+          )
 
             CREATE EXTERNAL TABLE {external_nyctaxi_trip}
             (
@@ -251,14 +251,14 @@ To **skript prostředí PowerShell** soubor dokončí následující úkoly:
                 DATA_SOURCE = {nyctaxi_trip_storage},
                 FILE_FORMAT = {csv_file_format},
                 REJECT_TYPE = VALUE,
-                REJECT_VALUE = 12         
+                REJECT_VALUE = 12
             )
 
     - Načtení dat z externích tabulek ve službě Azure blob storage do SQL Data Warehouse
 
             CREATE TABLE {schemaname}.{nyctaxi_fare}
             WITH
-            (   
+            (
                 CLUSTERED COLUMNSTORE INDEX,
                 DISTRIBUTION = HASH(medallion)
             )
@@ -269,7 +269,7 @@ To **skript prostředí PowerShell** soubor dokončí následující úkoly:
 
             CREATE TABLE {schemaname}.{nyctaxi_trip}
             WITH
-            (   
+            (
                 CLUSTERED COLUMNSTORE INDEX,
                 DISTRIBUTION = HASH(medallion)
             )
@@ -282,7 +282,7 @@ To **skript prostředí PowerShell** soubor dokončí následující úkoly:
 
             CREATE TABLE {schemaname}.{nyctaxi_sample}
             WITH
-            (   
+            (
                 CLUSTERED COLUMNSTORE INDEX,
                 DISTRIBUTION = HASH(medallion)
             )
@@ -310,16 +310,16 @@ To **skript prostředí PowerShell** soubor dokončí následující úkoly:
 Zeměpisné umístění účtu úložiště má vliv na dobu načítání.
 
 > [!NOTE]
-> V závislosti na zeměpisné umístění účtu úložiště objektů blob v privátním, proces kopírování dat z veřejných objektů blob do účtu privátního úložiště může trvat přibližně 15 minut nebo i delší dobu a proces načítání dat z vašeho účtu úložiště do Azure SQL data Warehouse může trvat 20 minut nebo i delší dobu.  
-> 
-> 
+> V závislosti na zeměpisné umístění účtu úložiště objektů blob v privátním, proces kopírování dat z veřejných objektů blob do účtu privátního úložiště může trvat přibližně 15 minut nebo i delší dobu a proces načítání dat z vašeho účtu úložiště do Azure SQL data Warehouse může trvat 20 minut nebo i delší dobu.
+>
+>
 
 Budete muset rozhodnout, které máte duplicitní zdrojové a cílové soubory.
 
 > [!NOTE]
 > Pokud CSV soubory zkopírovány z veřejné blob storage do účtu úložiště objektů blob v privátní již existují ve vašem účtu úložiště objektů blob v privátním, AzCopy zeptá, jestli chcete je přepsat. Pokud nechcete přepsat, vstup **n** po zobrazení výzvy. Pokud chcete přepsat **všechny** z nich, vstup po zobrazení výzvy. Můžete také zadat **y** přepsat soubory .csv jednotlivě.
-> 
-> 
+>
+>
 
 ![Výstup nástroje AzCopy][21]
 
@@ -327,8 +327,8 @@ Můžete použít vlastní data. Pokud jsou vaše data ve vašem místním poč�
 
 > [!TIP]
 > Pokud už vaše data v reálném životě aplikaci ve svém úložišti objektů blob v Azure privátní, můžete přeskočit krok AzCopy ve skriptu prostředí PowerShell a přímo odeslat data do Azure SQL data Warehouse. To bude vyžadovat další úpravy skript, který chcete přizpůsobit formát data.
-> 
-> 
+>
+>
 
 Tento skript prostředí Powershell také zpřístupní v informacích o Azure SQL data Warehouse datové soubory příklad zkoumání SQLDW_Explorations.sql SQLDW_Explorations.ipynb a SQLDW_Explorations_Scripts.py tak, že tyto tři soubory jsou připraveni vyzkoušeli okamžitě po dokončení skriptu prostředí PowerShell.
 
@@ -343,8 +343,8 @@ Připojte se k vaší Azure SQL data Warehouse pomocí sady Visual Studio s SQL 
 
 > [!NOTE]
 > Chcete-li otevřít editor dotazů Parallel Data Warehouse (PDW), použijte **nový dotaz** příkaz zapnutým vaše PDW **Průzkumník objektů systému SQL**. Standardní editor dotazů SQL PDW nepodporuje.
-> 
-> 
+>
+>
 
 Tady je typu dat dělat úlohy generování zkoumání a funkce v této části:
 
@@ -363,7 +363,7 @@ Tyto dotazy poskytují rychlé ověření počtu řádků a sloupců v tabulkác
     -- Report number of columns in table <nyctaxi_trip>
     SELECT COUNT(*) FROM information_schema.columns WHERE table_name = '<nyctaxi_trip>' AND table_schema = '<schemaname>'
 
-**Výstup:** by vám měl 173,179,759 řádků a 14 sloupců.
+**Výstup:** Měli byste obdržet 173,179,759 řádků a 14 sloupců.
 
 ### <a name="exploration-trip-distribution-by-medallion"></a>Zkoumání: Distribuce latence podle Medailon
 Tento příklad dotaz identifikuje medallions (taxislužby čísla), která dokončila více než 100 zkracuje dobu odezvy v rámci určeného časového období. Dotaz je výhodná dělenou tabulku přístupu od náležitého schéma oddílů **vyzvednutí\_data a času**. Dotazování úplnou datovou sadu se také provést pomocí dělené tabulky nebo indexu kontroly.
@@ -374,7 +374,7 @@ Tento příklad dotaz identifikuje medallions (taxislužby čísla), která doko
     GROUP BY medallion
     HAVING COUNT(*) > 100
 
-**Výstup:** dotaz by měl vrátit tabulku s řádky zadání 13,369 medallions (taxi) a číslem o jízdách dokončit v 2013. Poslední sloupec obsahuje počet cest dokončit.
+**Výstup:** Dotaz by měl vrátit tabulku s řádky zadání 13,369 medallions (taxi) a číslem o jízdách dokončit v 2013. Poslední sloupec obsahuje počet cest dokončit.
 
 ### <a name="exploration-trip-distribution-by-medallion-and-hacklicense"></a>Zkoumání: Distribuce latence podle Medailon a hack_license
 V tomto příkladu identifikuje medallions (taxislužby čísla) a hack_license čísla (ovladače), která dokončena více než 100 zkracuje dobu odezvy v rámci určeného časového období.
@@ -385,9 +385,9 @@ V tomto příkladu identifikuje medallions (taxislužby čísla) a hack_license 
     GROUP BY medallion, hack_license
     HAVING COUNT(*) > 100
 
-**Výstup:** dotaz by měl vrátit tabulku s 13,369 řádky zadání 13,369 car/driver ID, které dokončily více, 100 cest v 2013. Poslední sloupec obsahuje počet cest dokončit.
+**Výstup:** Dotaz by měl vrátit tabulku s 13,369 řádky zadání 13,369 car/driver ID, které dokončily další této 100 zkracuje dobu odezvy v 2013. Poslední sloupec obsahuje počet cest dokončit.
 
-### <a name="data-quality-assessment-verify-records-with-incorrect-longitude-andor-latitude"></a>Hodnocení kvality dat: Ověřte záznamy s nesprávné délky a šířky
+### <a name="data-quality-assessment-verify-records-with-incorrect-longitude-andor-latitude"></a>Hodnocení kvality dat: Zkontrolujte záznamy s nesprávné délky a šířky
 V tomto příkladu prověří, pokud jakýkoli z polí zeměpisná délka a/nebo zeměpisnou šířku buď obsahuje neplatnou hodnotu (stupně radián by měl být od -90 do 90), nebo máte (0, 0) souřadnic.
 
     SELECT COUNT(*) FROM <schemaname>.<nyctaxi_trip>
@@ -399,7 +399,7 @@ V tomto příkladu prověří, pokud jakýkoli z polí zeměpisná délka a/nebo
     OR    (pickup_longitude = '0' AND pickup_latitude = '0')
     OR    (dropoff_longitude = '0' AND dropoff_latitude = '0'))
 
-**Výstup:** dotaz vrátí 837,467 služebních cest, které mají neplatnou zeměpisnou délku a/nebo zeměpisnou šířku pole.
+**Výstup:** Dotaz vrátí 837,467 služebních cest, které mají neplatnou zeměpisnou délku a/nebo zeměpisnou šířku pole.
 
 ### <a name="exploration-tipped-vs-not-tipped-trips-distribution"></a>Zkoumání: Šikmý vs. není šikmý zkracuje dobu odezvy distribuce
 Tento příklad zjistí počet cest, které byly šikmý vs. číslo, které nebyly šikmý v zadaném časovém období (nebo v celé datové sadě, pokud pokrývající celý rok, jak je zde nastavený). Toto rozdělení odráží distribuce binární označení později použitého pro binární klasifikaci modelování.
@@ -410,9 +410,9 @@ Tento příklad zjistí počet cest, které byly šikmý vs. číslo, které neb
       WHERE pickup_datetime BETWEEN '20130101' AND '20131231') tc
     GROUP BY tipped
 
-**Výstup:** dotaz by měl vrátit následující frekvencí tip pro rok 2013: 90,447,622 šikmý a 82,264,709 šikmý not.
+**Výstup:** Dotaz by měl vrátit následující frekvencí tip pro rok 2013: 90,447,622 šikmý a 82,264,709 not šikmý.
 
-### <a name="exploration-tip-classrange-distribution"></a>Průzkumu: Rozdělení třídy a rozsahu Tip
+### <a name="exploration-tip-classrange-distribution"></a>Zkoumání: Tip třídy a rozsahu distribuce
 Tento příklad vypočítá distribuci tip rozsahů v daném časovém období (nebo v celé datové sadě, pokud pokrývající celý rok). To je distribuce popisek tříd, které se později použijí pro modelování klasifikace víc tříd.
 
     SELECT tip_class, COUNT(*) AS tip_freq FROM (
@@ -437,7 +437,7 @@ Tento příklad vypočítá distribuci tip rozsahů v daném časovém období (
 | 0 |82264625 |
 | 4 |85765 |
 
-### <a name="exploration-compute-and-compare-trip-distance"></a>Zkoumání: Výpočty a porovnat vzdálenost o jízdách
+### <a name="exploration-compute-and-compare-trip-distance"></a>Zkoumání: COMPUTE a porovnat vzdálenost o jízdách
 Tento příklad převede sbírat míčky a dropoff délky a šířky do SQL zeměpisné oblasti odkazuje, vypočítá vzdálenost o jízdách pomocí SQL zeměpisné oblasti bodů rozdíl a vrací náhodného vzorku výsledky pro porovnání. V příkladu omezuje výsledky na platné souřadnice pouze pomocí dotazu hodnocení kvality dat věnovali výše.
 
     /****** Object:  UserDefinedFunction [dbo].[fnCalculateDistance] ******/
@@ -531,7 +531,7 @@ Tady je příklad pro volání této funkce pro generování funkcí v dotazu SQ
     AND CAST(dropoff_latitude AS float) BETWEEN -90 AND 90
     AND pickup_longitude != '0' AND dropoff_longitude != '0'
 
-**Výstup:** tento dotaz vytvoří tabulku (s 2,803,538 řádky) s sbírat míčky a dropoff zeměpisná šířka a délka a odpovídající přímo v určité vzdálenosti. Tady jsou výsledky pro první 3 řádky:
+**Výstup:** Tento dotaz vytvoří tabulku (s 2,803,538 řádky) s sbírat míčky a dropoff zeměpisná šířka a délka a odpovídající přímé vzdálenosti v mil. Tady jsou výsledky pro první 3 řádky:
 
 |  | pickup_latitude | pickup_longitude | dropoff_latitude | dropoff_longitude | DirectDistance |
 | --- | --- | --- | --- | --- | --- |
@@ -557,7 +557,7 @@ Následující dotaz spojení **nyctaxi\_o jízdách** a **nyctaxi\_tarif** tabu
     AND   t.pickup_datetime = f.pickup_datetime
     AND   pickup_longitude != '0' AND dropoff_longitude != '0'
 
-Až budete připravení přejít k Azure Machine Learning, můžete se buď:  
+Až budete připravení přejít k Azure Machine Learning, můžete se buď:
 
 1. Poslední dotaz SQL extrahovat ukázková data a kopírování a vkládání dotaz přímo do uložit [Import dat] [ import-data] modulu ve službě Azure Machine Learning, nebo
 2. Zachování vzorky a analýzou dat máte v úmyslu použít pro model vytváření nové tabulky SQL data Warehouse a použít nové tabulky v [Import dat] [ import-data] modulu ve službě Azure Machine Learning. Skript Powershellu v předchozích kroků má to provede za vás. Může číst přímo z této tabulky v modulu, importovat Data.
@@ -570,16 +570,16 @@ Azure SQL data Warehouse potřebné informace v ukázce IPython Notebook a soubo
 Pokud již jste vytvořili pracovní prostor služby Azure ml, můžete přímo nahrát ukázku IPython Notebook ve službě Azure ml IPython Notebook a spustíte ho. Tady jsou kroky odesílat do služby Azure ml IPython Notebook:
 
 1. Přihlaste se k vašemu pracovnímu prostoru Azure ml, klikněte na tlačítko "Studio" v horní části a klikněte na "Notebooky" na levé straně webové stránky.
-   
+
     ![Klikněte na tlačítko Studio pak poznámkové BLOKY][22]
 2. V levém dolním rohu webové stránky klikněte na tlačítko "NEW" a vyberte "Python 2". Potom zadejte název do poznámkového bloku a klikněte na značku zaškrtnutí k vytvoření nové prázdné IPython Notebook.
-   
+
     ![Klikněte na nový, pak vyberte Python 2][23]
 3. Kliknutím na symbol "Jupyter" v levém horním rohu nový IPython Notebook.
-   
+
     ![Klikněte na Jupyter symbol][24]
 4. Přetáhnout myší ukázka IPython Notebook pro **stromu** stránku služby Azure ml IPython Notebook, a klikněte na **nahrát**. Potom ukázka IPython Notebook nahraje do služby Azure ml IPython Notebook.
-   
+
     ![Klikněte na tlačítko Odeslat][25]
 
 Chcete-li spustit ukázku soubor Pythonu následující balíčky jsou nutné skriptu IPython Notebook nebo Python. Pokud používáte službu Azure ml IPython Notebook, tyto balíčky se předem nainstalované.
@@ -630,7 +630,7 @@ Tady je připojovací řetězec, který se vytvoří připojení k databázi.
 
     print 'Total number of columns = %d' % ncols.iloc[0,0]
 
-* Celkový počet řádků = 173179759  
+* Celkový počet řádků = 173179759
 * Celkový počet sloupců = 14
 
 ### <a name="report-number-of-rows-and-columns-in-table-nyctaxifare"></a>Sestava počet řádků a sloupců v tabulce < nyctaxi_fare >
@@ -648,7 +648,7 @@ Tady je připojovací řetězec, který se vytvoří připojení k databázi.
 
     print 'Total number of columns = %d' % ncols.iloc[0,0]
 
-* Celkový počet řádků = 173179759  
+* Celkový počet řádků = 173179759
 * Celkový počet sloupců = 11
 
 ### <a name="read-in-a-small-data-sample-from-the-sql-data-warehouse-database"></a>Čtení ve vzorku malá data z databáze datového skladu SQL
@@ -671,7 +671,7 @@ Tady je připojovací řetězec, který se vytvoří připojení k databázi.
 
     print 'Number of rows and columns retrieved = (%d, %d)' % (df1.shape[0], df1.shape[1])
 
-Doba čtení že ukázkové tabulky je 14.096495 sekund.  
+Doba čtení že ukázkové tabulky je 14.096495 sekund.
 Počet řádků a sloupců načtení = (1 000, 21).
 
 ### <a name="descriptive-statistics"></a>Popisný statistiky
@@ -686,7 +686,7 @@ Dále podíváme na diagramu pole pro cestu vzdálenost k vizualizaci quantiles.
 
 ![Pole vykreslení výstupu][1]
 
-### <a name="visualization-distribution-plot-example"></a>Vizualizace: Příklad diagram distribuce
+### <a name="visualization-distribution-plot-example"></a>Vizualizace: Příklad diagramu distribuce
 Vykreslení, které vizualizují distribuce a histogram vzdálenosti vzorky o jízdách.
 
     fig = plt.figure()
@@ -740,7 +740,7 @@ V této části se podíváme na distribuce dat pomocí vzorky data, která se u
     ncols = pd.read_sql('''SELECT count(*) FROM information_schema.columns WHERE table_name = ('<nyctaxi_sample>') AND table_schema = '<schemaname>'''', conn)
     print 'Number of columns in sample = %d' % ncols.iloc[0,0]
 
-#### <a name="exploration-tippednot-tripped-distribution"></a>Zkoumání: Šikmý nebo není přepne distribuce
+#### <a name="exploration-tippednot-tripped-distribution"></a>Zkoumání: Přepnutí šikmý nebo není distribuce
     query = '''
         SELECT tipped, count(*) AS tip_freq
         FROM <schemaname>.<nyctaxi_sample>
@@ -749,7 +749,7 @@ V této části se podíváme na distribuce dat pomocí vzorky data, která se u
 
     pd.read_sql(query, conn)
 
-#### <a name="exploration-tip-class-distribution"></a>Průzkumu: Rozdělení třídy Tip
+#### <a name="exploration-tip-class-distribution"></a>Zkoumání: Tip třídy distribuce
     query = '''
         SELECT tip_class, count(*) AS tip_freq
         FROM <schemaname>.<nyctaxi_sample>
@@ -763,7 +763,7 @@ V této části se podíváme na distribuce dat pomocí vzorky data, která se u
 
 ![Vykreslení #26][26]
 
-#### <a name="exploration-daily-distribution-of-trips"></a>Zkoumání: Denní distribuci zkracuje dobu odezvy
+#### <a name="exploration-daily-distribution-of-trips"></a>Zkoumání: Denní distribuční cesty
     query = '''
         SELECT CONVERT(date, dropoff_datetime) AS date, COUNT(*) AS c
         FROM <schemaname>.<nyctaxi_sample>
@@ -772,7 +772,7 @@ V této části se podíváme na distribuce dat pomocí vzorky data, která se u
 
     pd.read_sql(query,conn)
 
-#### <a name="exploration-trip-distribution-per-medallion"></a>Zkoumání: Distribuční výlet za Medailon
+#### <a name="exploration-trip-distribution-per-medallion"></a>Zkoumání: Distribuce výlet za Medailon
     query = '''
         SELECT medallion,count(*) AS c
         FROM <schemaname>.<nyctaxi_sample>
@@ -781,20 +781,20 @@ V této části se podíváme na distribuce dat pomocí vzorky data, která se u
 
     pd.read_sql(query,conn)
 
-#### <a name="exploration-trip-distribution-by-medallion-and-hack-license"></a>Průzkumu: Distribuce latence podle Medailon a hack licence
+#### <a name="exploration-trip-distribution-by-medallion-and-hack-license"></a>Zkoumání: Distribuce latence podle Medailon a hack licence
     query = '''select medallion, hack_license,count(*) from <schemaname>.<nyctaxi_sample> group by medallion, hack_license'''
     pd.read_sql(query,conn)
 
 
-#### <a name="exploration-trip-time-distribution"></a>Průzkumu: Distribuce doby jízdy
+#### <a name="exploration-trip-time-distribution"></a>Zkoumání: Distribuce doby odezvy
     query = '''select trip_time_in_secs, count(*) from <schemaname>.<nyctaxi_sample> group by trip_time_in_secs order by count(*) desc'''
     pd.read_sql(query,conn)
 
-#### <a name="exploration-trip-distance-distribution"></a>Průzkumu: Distribuce vzdálenost o jízdách
+#### <a name="exploration-trip-distance-distribution"></a>Zkoumání: Vzdálenost distribuce latence
     query = '''select floor(trip_distance/5)*5 as tripbin, count(*) from <schemaname>.<nyctaxi_sample> group by floor(trip_distance/5)*5 order by count(*) desc'''
     pd.read_sql(query,conn)
 
-#### <a name="exploration-payment-type-distribution"></a>Průzkumu: Distribuce typu platby
+#### <a name="exploration-payment-type-distribution"></a>Zkoumání: Distribuce typu platby
     query = '''select payment_type,count(*) from <schemaname>.<nyctaxi_sample> group by payment_type'''
     pd.read_sql(query,conn)
 
@@ -805,11 +805,11 @@ V této části se podíváme na distribuce dat pomocí vzorky data, která se u
 ## <a name="mlmodel"></a>Vytváření modelů Azure Machine Learning.
 Jsme připraveni přejít k vytváření modelů a nasazení modelů v [Azure Machine Learning](https://studio.azureml.net). Data jsou připravená k použití v některém z předpovědi problémy identifikovat dříve, a to:
 
-1. **Binární klasifikace**: předpovědět, zda je či není tip byla zaplacena cesty.
+1. **Binární klasifikace**: Pro předpověď Určuje, jestli tip byla zaplacena cesty.
 2. **Klasifikace víc tříd**: K předpovědi rozsahu tip placené podle dříve definovaných tříd.
-3. **Úloha regrese**: odhadnout množství tip placené cesty.  
+3. **Úloha regrese**: Odhadnout množství tip placené cesty.
 
-Začněte cvičení modelování, přihlaste se k vaší **Azure Machine Learning** pracovního prostoru. Pokud jste ještě nevytvořili pracovního prostoru machine learning, přečtěte si téma [vytvořit pracovní prostor služby Azure ML](../studio/create-workspace.md).
+Začněte cvičení modelování, přihlaste se k vaší **Azure Machine Learning** pracovního prostoru. Pokud jste ještě nevytvořili pracovního prostoru machine learning, přečtěte si téma [vytvoření pracovního prostoru Azure Machine Learning studio](../studio/create-workspace.md).
 
 1. Začínáme s Azure Machine Learning, najdete v článku [co je Azure Machine Learning Studio?](../studio/what-is-ml-studio.md)
 2. Přihlaste se k [Azure Machine Learning Studio](https://studio.azureml.net).
@@ -818,7 +818,7 @@ Začněte cvičení modelování, přihlaste se k vaší **Azure Machine Learnin
 Typické výukového experimentu se skládá z následujících kroků:
 
 1. Vytvoření **+ nová** experimentovat.
-2. Načíst data do Azure ML.
+2. Načíst data do Azure Machine Learning studio.
 3. Předběžné zpracování, transformovat a zpracovávat data podle potřeby.
 4. Funkce vygenerujte, podle potřeby.
 5. Rozdělení dat do datové sady školení/ověření/testování (nebo máte rozdělování datových sad pro každou).
@@ -828,10 +828,10 @@ Typické výukového experimentu se skládá z následujících kroků:
 9. Vyhodnoťte modely pro výpočet důležité metriky pro výuky.
 10. Bez problémů můžete vyladit modely a vybrat nejlepší model nasadit.
 
-V tomto cvičení jsme mít již prozkoumali a analýzou dat ve službě SQL Data Warehouse a rozhodli na velikost vzorku ingestovat v Azure ML. Tady je postup pro sestavení jeden nebo více prediktivní modely:
+V tomto cvičení jsme mít již prozkoumali a analýzou dat ve službě SQL Data Warehouse a rozhodli na velikost vzorku ingestovat v Azure Machine Learning studio. Tady je postup pro sestavení jeden nebo více prediktivní modely:
 
-1. Získat data do aplikace pomocí Azure ML [Import dat] [ import-data] modulu, k dispozici v **datový vstup a výstup** oddílu. Další informace najdete v tématu [Import dat] [ import-data] stránce odkaz na modul.
-   
+1. Získat data do aplikace pomocí Azure Machine Learning studio [Import dat] [ import-data] modulu, k dispozici v **datový vstup a výstup** oddílu. Další informace najdete v tématu [Import dat] [ import-data] stránce odkaz na modul.
+
     ![Azure ML umožňuje importovat Data][17]
 2. Vyberte **Azure SQL Database** jako **zdroj dat** v **vlastnosti** panelu.
 3. Zadejte název DNS databáze **název databázového serveru** pole. Formát: `tcp:<your_virtual_machine_DNS_name>,1433`
@@ -845,10 +845,10 @@ Na následujícím obrázku je například binární klasifikace: experiment čt
 
 > [!IMPORTANT]
 > Modelování dat extrakce a vzorkování Příklady dotazů uvedené v předchozích částech, **všechny popisky pro tři cvičení modelování jsou obsažena v dotazu**. Důležitým krokem (povinné) v každém modelování cvičení je **vyloučit** zbytečné popisky pro dva problémy a jakékoli jiné **cílit nevracení**. Například pokud používáte binární klasifikace, použít popisek **šikmý** a vyloučit pole **tip\_třídy**, **tip\_částka**a **celkový\_částka**. Druhá možnost se cílového únikům protože implikují tip placené.
-> 
+>
 > Vyloučit všechny nepotřebných sloupců nebo cílové nevracení, můžete použít [výběr sloupců v datové sadě] [ select-columns] modulu nebo [upravit Metadata][edit-metadata]. Další informace najdete v tématu [výběr sloupců v datové sadě] [ select-columns] a [upravit Metadata] [ edit-metadata] odkazují na stránky.
-> 
-> 
+>
+>
 
 ## <a name="mldeploy"></a>Nasazení modelů ve službě Azure Machine Learning
 Když je model hotový, můžete snadno nasadit ho jako webovou službu přímo z experimentu. Další informace o nasazení webové služby Azure ML najdete v tématu [nasazení webové služby Azure Machine Learning](../studio/publish-a-machine-learning-web-service.md).
@@ -881,9 +881,7 @@ Na rekapitulace, co jsme udělali v tomto kurzu návodu, vytvoříte Azure prost
 Tento ukázkový názorný postup a jeho doprovodném skripty a IPython notebook(s) sdílí Microsoft v rámci licence MIT. Zkontrolujte prosím soubor LICENSE.txt v adresáři ukázkového kódu na Githubu pro další podrobnosti.
 
 ## <a name="references"></a>Odkazy
-• [Cesty taxíkem NYC Andrés Monroy stránce pro stažení](http://www.andresmh.com/nyctaxitrips/)  
-• [FOILing NYC Taxi Data o jízdách podle Chris Whong](http://chriswhong.com/open-data/foil_nyc_taxi/)   
-• [NYC taxislužby a Limousine Komise výzkumu a statistiky](http://www.nyc.gov/html/tlc/html/technology/aggregated_data.shtml)
+• [Stránce pro stažení cesty taxíkem NYC Andrés Monroy](http://www.andresmh.com/nyctaxitrips/) • [FOILing NYC Taxi Data o jízdách podle Chris Whong](http://chriswhong.com/open-data/foil_nyc_taxi/) • [NYC taxislužby a Limousine Komise výzkumu a statistiky](http://www.nyc.gov/html/tlc/html/technology/aggregated_data.shtml)
 
 [1]: ./media/sqldw-walkthrough/sql-walkthrough_26_1.png
 [2]: ./media/sqldw-walkthrough/sql-walkthrough_28_1.png

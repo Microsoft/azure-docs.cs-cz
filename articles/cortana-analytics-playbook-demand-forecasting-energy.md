@@ -10,29 +10,29 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/24/2016
 ms.author: garye
-ms.openlocfilehash: d327c649fcf0f42fd8618161c184fa4f572e2b90
-ms.sourcegitcommit: 70471c4febc7835e643207420e515b6436235d29
+ms.openlocfilehash: 40bff35c1136d55e968a287d259f2304252f5248
+ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2019
-ms.locfileid: "54306484"
+ms.lasthandoff: 01/26/2019
+ms.locfileid: "55078776"
 ---
 # <a name="cortana-intelligence-solution-template-playbook-for-demand-forecasting-of-energy"></a>Cortana Intelligence řešení šablony Playbook pro prognózování poptávky po energii
 ## <a name="executive-summary"></a>Shrnutí
-V posledních několika let Internet of Things (IoT), alternativních zdrojů energie a velké objemy dat mají sloučeny pro tvorbu obrovské příležitosti v doméně nástroj a energie. Ve stejnou dobu nástroj a celý energetickém sektoru viděli spotřeby sloučení navýšení kapacity s vysokými nároky na lepší způsoby, jak řídit využití energie příjemci. Proto nástroj a inteligentní mřížky společností jsou v skvělé potřeba inovovat a obnovení sami. Navíc mnoho napájení a nástroj mřížky se stávají zastaralé a udržovat a spravovat velmi nákladné. Během posledního roku tým pracuje na celé řadě engagements v rámci domény energie. Během těchto výstav a došlo k mnoha případech, ve kterých byly hledání nezávislí výrobci softwaru (nezávislým výrobcům softwaru) nebo nástroje do Prognózování pro budoucí energii. Tyto předpovědi hraje důležitou roli v jejich současným i budoucím obchodním a staly základ pro různé případy použití. Patří mezi ně předpověď zatížení krátkodobé a dlouhodobé napájení, obchodování, Vyrovnávání zatížení, mřížky optimalizace atd. Velké objemy dat a pokročilé analýzy (AA) metody, jako je Machine Learning (ML) jsou klíčových předpokladů pro vytvoření spolehlivé a přesné prognózy.  
+V posledních několika let Internet of Things (IoT), alternativních zdrojů energie a velké objemy dat mají sloučeny pro tvorbu obrovské příležitosti v doméně nástroj a energie. Ve stejnou dobu nástroj a celý energetickém sektoru viděli spotřeby sloučení navýšení kapacity s vysokými nároky na lepší způsoby, jak řídit využití energie příjemci. Proto nástroj a inteligentní mřížky společností jsou v skvělé potřeba inovovat a obnovení sami. Navíc mnoho napájení a nástroj mřížky se stávají zastaralé a udržovat a spravovat velmi nákladné. Během posledního roku tým pracuje na celé řadě engagements v rámci domény energie. Během těchto výstav a došlo k mnoha případech, ve kterých byly hledání nezávislí výrobci softwaru (nezávislým výrobcům softwaru) nebo nástroje do Prognózování pro budoucí energii. Tyto předpovědi hraje důležitou roli v jejich současným i budoucím obchodním a staly základ pro různé případy použití. Patří mezi ně předpověď zatížení krátkodobé a dlouhodobé napájení, obchodování, Vyrovnávání zatížení, mřížky optimalizace atd. Velké objemy dat a pokročilé analýzy (AA) metody, jako je Machine Learning (ML) jsou klíčových předpokladů pro vytvoření spolehlivé a přesné prognózy.
 
 V tomto playbook jsme připravili firmy a analytické pokyny potřebné pro úspěšný vývoj a nasazení poptávku po energii prognózy řešení. Tyto navržené pokyny vám mohou pomoci nástroje, odborníci přes data a datovými architekty při vytváření řešení plně zprovozněné založené na cloudu, Prognózování poptávky. Pro společnosti, kteří zrovna začínáte jejich velké objemy dat a pokročilé analýzy cesty toto řešení může představovat počátečních v jejich dlouhodobou strategii inteligentní mřížky.
 
 > [!TIP]
-> Stáhněte si diagram, který obsahuje základní informace o architektuře této šablony, najdete v článku [architekturu šablony řešení Cortana Intelligence pro prognózování poptávky po energii](cortana-analytics-architecture-demand-forecasting-energy.md).  
-> 
-> 
+> Stáhněte si diagram, který obsahuje základní informace o architektuře této šablony, najdete v článku [architekturu šablony řešení Cortana Intelligence pro prognózování poptávky po energii](cortana-analytics-architecture-demand-forecasting-energy.md).
+>
+>
 
 ## <a name="overview"></a>Přehled
-Tento dokument popisuje firmy, data a technické aspekty využívající Cortana Intelligence a v konkrétní Azure Machine Learning (AML) pro implementaci a nasazení řešení Prognózování energie. Dokument se skládá ze tří hlavních částí:  
+Tento dokument popisuje firmy, data a technické aspekty využívající Cortana Intelligence a v konkrétní Azure Machine Learning (AML) pro implementaci a nasazení řešení Prognózování energie. Dokument se skládá ze tří hlavních částí:
 
-1. Principy podniku  
-2. Pochopení dat  
+1. Principy podniku
+2. Pochopení dat
 3. Technická implementace
 
 **Obchodní vysvětlení** popisuje část aspekty business jeden je potřeba pochopit a vzít v úvahu před rozhodování o investici. Vysvětluje, jak zařadit obchodní problém aktuální a ověřte, machine learning a prediktivní analýzy jsou skutečně efektivní a použitelný. Další dokument vysvětluje základy strojového učení a jak se používá k řešení problémů Prognózování energie. Poskytuje přehled o požadavcích a kritéria kvalifikace případu použití. Některé ukázky použít případy a obchodní případ scénáře jsou také k dispozici.
@@ -43,7 +43,7 @@ Třetí části dokumentu se vztahuje **technickou implementaci** aspekt řešen
 
 Dokument navíc obsahuje referenční materiál, který vám umožní získat další znalosti domény a technologie.
 
-Je důležité si uvědomit, že neplánujeme zahrnují v tomto dokumentu hlubší vědecké zpracování dat, jejich matematické a technické aspekty. Tyto podrobnosti můžete najít v [dokumentace ke službě Azure ML](https://azure.microsoft.com/services/machine-learning/) a [blogy](https://blogs.microsoft.com/blog/tag/azure-machine-learning/).
+Je důležité si uvědomit, že neplánujeme zahrnují v tomto dokumentu hlubší vědecké zpracování dat, jejich matematické a technické aspekty. Tyto podrobnosti můžete najít v [dokumentace ke službě Azure Machine Learning](https://azure.microsoft.com/services/machine-learning/) a [blogy](https://blogs.microsoft.com/blog/tag/azure-machine-learning/).
 
 ### <a name="target-audience"></a>Cílová skupina
 Cílová skupina pro tento dokument se obchodní a technické pracovníky, kteří by chtěli získat znalosti, a porozumění strojového učení na základě řešeními a jak jsou použity konkrétně v rámci domény Prognózování energie.
@@ -87,7 +87,7 @@ V rámci kontextu poptávku po energii krátká období načíst Prognózování
 * Vyrovnávání zatížení a přetížení ochrany před únikem informací
 * Dlouhodobé Prognózování zatížení
 * Selhání a detekce anomálií
-* Ve špičce curtailment/vyrovnání 
+* Ve špičce curtailment/vyrovnání
 
 STLF model jsou většinou založený na téměř minulosti (posledního dne nebo týdne) data o spotřebě a použití naplánované teploty jako důležité údaje. Získání přesných teploty prognózy příští hodinu a až 24 hodin se mění na méně náročné nyní dnů. Tyto modely jsou méně citlivé na sezónní vzorů nebo dlouhodobé trendy spotřeby energie.
 
@@ -189,9 +189,9 @@ Následující odstavce popisuje tento proces krok 4:
 
 1. **Shromažďování dat** – všechny pokročilé řešení pro analýzu na základě závisí na datech (naleznete v tématu **pochopení dat**). Konkrétně pokud jde o prediktivní analýzy a prognózy, spoléháme na probíhající, dynamické tok dat. V případě energie Prognózování poptávky, tato data můžete použít jako zdroj přímo z inteligentních měřičů, nebo již agregovat v databázi v místním prostředí. Spoléháme se také na dalších externích zdrojů dat, třeba o počasí a teploty. Tento probíhající tok dat nutné orchestrované, naplánovat a uložit. [Azure Data Factory](https://azure.microsoft.com/services/data-factory/) (ADF) je náš hlavní centrem k provedení této úlohy.
 2. **Modelování** – pro prognózy přesným a spolehlivým energie, jeden musí vývoj (regrese) a skvělé modelu, který umožňuje použít historických dat a extrahuje smysluplné a prediktivní vzory v datech udržovat. V oblasti nástroje Machine Learning (ML) se rychle rozrůstá pokročilé algoritmy pravidelně vyvíjených. Azure ML Studio poskytuje skvělé uživatelské prostředí, které pomáhá využívat nejpokročilejší algoritmů ML v úplný pracovní postup. Tento pracovní postup je znázorněn v intuitivním vývojový diagram a zahrnuje přípravy dat, funkce extrakce, modelování a vyhodnocení modelu. Uživatel pracovat stovky různých modelů, které jsou zahrnuty v tomto prostředí. Na konci této fáze mezi odborníky přes data budou mít funkční modelu, který plně Vyhodnocená a připravený k nasazení.
-   
+
    Následující diagram není moc ilustraci obvyklý pracovní postup:
-   
+
    ![Modelování pracovního postupu](media/cortana-analytics-playbook-demand-forecasting-energy/modeling-workflow.png)
 3. **Nasazení** – podpoříte modelem funkční spolupráce, dalším krokem je nasazení. Tady modelu je převést na webovou službu, která zveřejňuje rozhraní RESTful API, který lze vyvolat souběžně přes Internet z různých klientů spotřeby. Služba Azure ML poskytuje jednoduchý způsob nasazení modelu přímo z Azure ML Studio jediným kliknutím na tlačítko. Celý proces nasazení se stane pod pokličkou. Toto řešení může automaticky škálovat podle požadované využití.
 4. **Spotřeba** – v této fázi se ve skutečnosti Usnadňujeme modelu prognózy lze použít k vytvoření predikcí. Využití můžete řídit z aplikace v jazyce uživatele (*třeba*, řídicího panelu) nebo přímo z operačního systému, jako/poptávky vyrovnávání systému nebo řešení pro optimalizaci mřížky. Mohou být řízeny více případů použití, z jednoho modelu.
@@ -321,8 +321,8 @@ V posledních letech pokročilých algoritmů byly vyvinuty tak, aby vyhovovaly 
 
 > [!NOTE]
 > Tento oddíl není určena pro použití jako strojové učení a Prognózování přehled, ale spíše jako krátký dotazník modelování techniky, které se obvykle používají pro prognózování poptávky. Další informace a vzdělávací materiály o prognózy časových řad, důrazně doporučujeme online knihy [Prognózování: zásady a přístup k](https://www.otexts.org/).
-> 
-> 
+>
+>
 
 #### <a name="ma-moving-average"></a>**MA (klouzavý průměr)**
 Klouzavý průměr je jedním z první analytické techniky, které již byly použity pro prognózy časových řad a je to stále jedním z nejčastěji používaných technik k dnešnímu dni. Je také základem pro pokročilejší Prognózování techniky. S klouzavý průměr jsme se Prognózování další datový bod zprůměrováním přes K nejnovější body, ve kterém K označuje pořadí klouzavý průměr.

@@ -11,12 +11,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 10/29/2018
 ms.author: glenga
-ms.openlocfilehash: c99d5e9d64e9e9715589ecf2c0de57ce660917aa
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ms.openlocfilehash: 854485863786a4892ea04d4d5400732742436210
+ms.sourcegitcommit: 97d0dfb25ac23d07179b804719a454f25d1f0d46
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54103685"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54913066"
 ---
 # <a name="work-with-azure-functions-core-tools"></a>Práce s Azure Functions Core Tools
 
@@ -40,13 +40,13 @@ Pokud není uvedeno jinak, příklady v tomto článku platí pro verze 2.x.
 
 ### <a name="v2"></a>Verze 2.x
 
-Verze 2.x nástrojů používá modul runtime služby Azure Functions 2.x, která je založená na prostředí .NET Core. Tato verze se podporuje na všech platformách .NET Core 2.x podporuje, včetně [Windows](#windows-npm), [macOS](#brew), a [Linux](#linux).
+Verze 2.x nástrojů používá modul runtime služby Azure Functions 2.x, která je založená na prostředí .NET Core. Tato verze se podporuje na všech platformách .NET Core 2.x podporuje, včetně [Windows](#windows-npm), [macOS](#brew), a [Linux](#linux). Je třeba nejprve nainstalovat rozhraní .NET Core 2.x SDK.
 
 #### <a name="windows-npm"></a>Windows
 
 Následující kroky pomocí npm nainstalujte základní nástroje na Windows. Můžete také použít [Chocolatey](https://chocolatey.org/). Další informace najdete v tématu [Core Tools readme](https://github.com/Azure/azure-functions-core-tools/blob/master/README.md#windows).
 
-1. Nainstalujte [.NET Core 2.1 pro Windows](https://www.microsoft.com/net/download/windows).
+1. Nainstalujte [.NET Core 2.x SDK pro Windows](https://www.microsoft.com/net/download/windows).
 
 2. Nainstalujte [Node.js], což zahrnuje npm. Pro verzi 2.x nástroje pouze Node.js 8.5 a novější verze podporují.
 
@@ -60,7 +60,7 @@ Následující kroky pomocí npm nainstalujte základní nástroje na Windows. M
 
 Následující kroky pomocí Homebrew v systému macOS nainstalujte základní nástroje.
 
-1. Nainstalujte [.NET Core 2.1 pro macOS](https://www.microsoft.com/net/download/macos).
+1. Nainstalujte [.NET Core 2.x sady SDK pro macOS](https://www.microsoft.com/net/download/macos).
 
 2. Nainstalujte [Homebrew](https://brew.sh/), pokud ještě není nainstalovaná.
 
@@ -75,7 +75,7 @@ Následující kroky pomocí Homebrew v systému macOS nainstalujte základní n
 
 Následující kroky použijte [APT](https://wiki.debian.org/Apt) instalace nástrojů pro jádra na vaší distribuci Linuxu Ubuntu nebo Debian. Pro jiné distribuce Linuxu najdete v článku [Core Tools readme](https://github.com/Azure/azure-functions-core-tools/blob/master/README.md#linux).
 
-1. Nainstalujte [.NET Core 2.1 pro Linux](https://www.microsoft.com/net/download/linux).
+1. Nainstalujte [.NET Core 2.x SDK pro Linux](https://www.microsoft.com/net/download/linux).
 
 2. Zaregistrujte jako důvěryhodný kód product key společnosti Microsoft:
 
@@ -95,7 +95,7 @@ Následující kroky použijte [APT](https://wiki.debian.org/Apt) instalace nás
     | --------------- | ----------- |
     | Ubuntu 18.04    | `bionic`    |
     | Ubuntu 17.10    | `artful`    |
-    | Č. 17.04 Ubuntu    | `zesty`     |
+    | Ubuntu 17.04    | `zesty`     |
     | Ubuntu 16.04/Linux Mátová 18    | `xenial`  |
 
 4. Instalace balíčku Core Tools:
