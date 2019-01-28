@@ -25,7 +25,7 @@ Abyste mohli začít používat Azure Custom Speech Service, musíte nejprve pro
 ## <a name="get-a-subscription-key"></a>Získat klíč předplatného
 1. Klíč předplatného můžete získat z webu Azure portal v jednom ze dvou způsobů:
 
-    * Přejděte [webu Azure portal](https://ms.portal.azure.com), a přidání nového rozhraní API kognitivních služeb tak, že _služeb Cognitive Services_ a následným výběrem **rozhraní API služeb Cognitive Services**.
+    * Přejděte na [portál Azure](https://ms.portal.azure.com) a přidejte nové rozhraní Cognitive Services API tak, že vyhledáte _Cognitive Services_ a poté vyberete **Cognitive Services APIs**.
 
       ![Hledání služeb cognitive Services](../../../media/cognitive-services/custom-speech-service/custom-speech-azure-subscription.png)
 
