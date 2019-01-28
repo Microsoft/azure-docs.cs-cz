@@ -74,9 +74,9 @@ Můžete vytvořit proměnnou a deklarovat jeho datový typ a počáteční hodn
 
    | Vlastnost | Požaduje se | Hodnota |  Popis |
    |----------|----------|-------|--------------|
-   | Název | Ano | <*Název proměnné*> | Název proměnné se zvýší | 
-   | Typ | Ano | <*Typ proměnné*> | Datový typ pro proměnnou | 
-   | Hodnota | Ne | <*Počáteční hodnota*> | Počáteční hodnota proměnné <p><p>**Tip**: I když je volitelné, nastavte tuto hodnotu jako osvědčený postup, abyste vždycky věděli, počáteční hodnotu proměnné. | 
+   | Name | Ano | <*Název proměnné*> | Název proměnné se zvýší | 
+   | Type | Ano | <*Typ proměnné*> | Datový typ pro proměnnou | 
+   | Value | Ne | <*Počáteční hodnota*> | Počáteční hodnota proměnné <p><p>**Tip**: I když je volitelné, nastavte tuto hodnotu jako osvědčený postup, abyste vždycky věděli, počáteční hodnotu proměnné. | 
    ||||| 
 
    ![Inicializovat proměnnou](./media/logic-apps-create-variables-store-values/initialize-variable.png)
@@ -210,8 +210,8 @@ Pro zvýšení nebo *přírůstek* proměnnou podle konstantní hodnoty, přidej
 
    | Vlastnost | Požaduje se | Hodnota |  Popis |
    |----------|----------|-------|--------------|
-   | Název | Ano | <*Název proměnné*> | Název proměnné se zvýší | 
-   | Hodnota | Ne | <*přírůstková hodnota*> | Hodnota určená pro zvyšování hodnoty proměnné. Výchozí hodnota je 1. <p><p>**Tip**: I když je volitelné, nastavte tuto hodnotu jako osvědčený postup, abyste vždycky věděli, konkrétní hodnota se zvyšuje vaše proměnná. | 
+   | Name | Ano | <*Název proměnné*> | Název proměnné se zvýší | 
+   | Value | Ne | <*přírůstková hodnota*> | Hodnota určená pro zvyšování hodnoty proměnné. Výchozí hodnota je 1. <p><p>**Tip**: I když je volitelné, nastavte tuto hodnotu jako osvědčený postup, abyste vždycky věděli, konkrétní hodnota se zvyšuje vaše proměnná. | 
    |||| 
 
    Příklad: 
@@ -330,8 +330,8 @@ Tady jsou vlastnosti **Dekrementuje proměnnou** akce:
 
 | Vlastnost | Požaduje se | Hodnota |  Popis |
 |----------|----------|-------|--------------|
-| Název | Ano | <*Název proměnné*> | Název proměnné se sníží | 
-| Hodnota | Ne | <*přírůstková hodnota*> | Hodnota dekrementace proměnné. Výchozí hodnota je 1. <p><p>**Tip**: I když je volitelné, nastavte tuto hodnotu jako osvědčený postup, budete vždycky vědět, konkrétní hodnota dekrementace proměnné. | 
+| Name | Ano | <*Název proměnné*> | Název proměnné se sníží | 
+| Value | Ne | <*přírůstková hodnota*> | Hodnota dekrementace proměnné. Výchozí hodnota je 1. <p><p>**Tip**: I když je volitelné, nastavte tuto hodnotu jako osvědčený postup, budete vždycky vědět, konkrétní hodnota dekrementace proměnné. | 
 ||||| 
 
 Pokud přejdete z návrháře zobrazení editoru kódu, tady je způsob, jakým **Dekrementuje proměnnou** akce se zobrazí uvnitř definici aplikace logiky, která je ve formátu JSON.
@@ -365,8 +365,8 @@ Tady jsou vlastnosti **nastavená proměnná** akce:
 
 | Vlastnost | Požaduje se | Hodnota |  Popis | 
 |----------|----------|-------|--------------| 
-| Název | Ano | <*Název proměnné*> | Název proměnné, chcete-li změnit | 
-| Hodnota | Ano | <*Nová hodnota*> | Hodnota, kterou chcete přiřadit proměnné. Musí mít stejný datový typ. | 
+| Name | Ano | <*Název proměnné*> | Název proměnné, chcete-li změnit | 
+| Value | Ano | <*Nová hodnota*> | Hodnota, kterou chcete přiřadit proměnné. Musí mít stejný datový typ. | 
 ||||| 
 
 > [!NOTE]
@@ -423,8 +423,8 @@ Tady jsou vlastnosti **připojit k...**  akce:
 
 | Vlastnost | Požaduje se | Hodnota |  Popis | 
 |----------|----------|-------|--------------| 
-| Název | Ano | <*Název proměnné*> | Název proměnné, chcete-li změnit | 
-| Hodnota | Ano | <*Přidat hodnotu*> | Hodnota, kterou chcete připojit, který může mít libovolný typ | 
+| Name | Ano | <*Název proměnné*> | Název proměnné, chcete-li změnit | 
+| Value | Ano | <*Přidat hodnotu*> | Hodnota, kterou chcete připojit, který může mít libovolný typ | 
 |||||  
 
 Pokud přejdete z návrháře zobrazení editoru kódu, tady je způsob, jakým **připojení k proměnné pole** akce se zobrazí uvnitř definici aplikace logiky, která je ve formátu JSON.
