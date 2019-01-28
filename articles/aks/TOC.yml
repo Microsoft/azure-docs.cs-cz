@@ -76,7 +76,7 @@ items:
         href: operator-best-practices-container-image-management.md
       - name: Sítě
         href: operator-best-practices-network.md
-      - name: Storage
+      - name: Úložiště
         href: operator-best-practices-storage.md
       - name: Provozní kontinuita a zotavení po havárii
         href: operator-best-practices-multi-region.md
@@ -165,16 +165,20 @@ items:
     - name: Omezení přístupu ke konfiguračnímu souboru clusteru
       href: control-kubeconfig-access.md
     - name: Ověřování pomocí ACR
-      href: ../container-registry/container-registry-auth-aks.md?toc=%2fazure%2faks%2ftoc.json
+      href: ../container-registry/container-registry-auth-aks.md
+      maintainContext: true
   - name: Monitorování a protokolování
     items:
     - name: Azure Monitor pro kontejnery
-      href: ../monitoring/monitoring-container-health.md
+      href: ../azure-monitor/insights/container-insights-overview.md
       maintainContext: true
     - name: Zobrazení protokolů hlavních komponent
       href: view-master-logs.md
     - name: Zobrazení protokolů Kubelet
       href: kubelet-logs.md
+    - name: Zobrazení protokolů kontejneru v reálném čase (preview)
+      href: ../azure-monitor/insights/container-insights-live-logs.md
+      maintainContext: true
   - name: Vývoj a spouštění aplikací
     items:
     - name: Vývoj s využitím Dev Spaces
@@ -219,6 +223,8 @@ items:
       href: kubernetes-draft.md
     - name: Použití technologie Open Service Broker for Azure
       href: integrate-azure.md
+    - name: Použití rozhraní API Cosmos DB pro MongoDB s využitím OSBA
+      href: use-cosmosdb-osba-mongo-app.md
     - name: Použití OpenFaaS
       href: openfaas.md
     - name: Spouštění sparkových úloh
@@ -292,9 +298,9 @@ items:
     href: https://azure.microsoft.com/resources/videos/index/?services=container-service&sort=newest
   - name: Nejčastější dotazy
     href: faq.md
-ms.openlocfilehash: d0d419ff2b832c48cb7d1a35fa398da34f5bf382
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: 81cb346a00d9916b769c43cd53aee04fe0e35883
+ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54037954"
+ms.lasthandoff: 01/26/2019
+ms.locfileid: "55080511"

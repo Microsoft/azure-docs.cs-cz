@@ -9,6 +9,8 @@ items:
     href: sql-database-paas-vs-sql-server-iaas.md
 - name: Šablony Rychlý start
   items:
+  - name: Spravovaná instance – průvodce rychlým zprovozněním
+    href: sql-database-managed-instance-quickstart-guide.md
   - name: Vytvořit
     items:
     - name: Izolovaná databáze
@@ -688,9 +690,9 @@ items:
       href: sql-database-elastic-jobs-getting-started.md
     - name: Odinstalace elastické úlohy (zastaralé)
       href: sql-database-elastic-jobs-uninstall.md
-ms.openlocfilehash: 95ea4f676202fe06a1761c98ddb7e3e1a6f12708
-ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
+ms.openlocfilehash: a991b2f6a7ac90d38c653b4daf12948b1b800638
+ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54447985"
+ms.lasthandoff: 01/26/2019
+ms.locfileid: "55078198"

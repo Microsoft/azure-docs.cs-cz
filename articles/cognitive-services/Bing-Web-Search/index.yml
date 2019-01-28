@@ -1,16 +1,16 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 69fa31efe9044ca6dbbc2c6229fdaa328437a046
-ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
+ms.openlocfilehash: 0dbbf1e5b3f80f1dce188e38f3e0ff2d12cce07b
+ms.sourcegitcommit: 97d0dfb25ac23d07179b804719a454f25d1f0d46
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/27/2018
-ms.locfileid: "53792109"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54912250"
 documentType: LandingData
 title: Dokumentace k rozhraní API Bingu pro vyhledávání na webu
 metadata:
   document_id: 6111ada8-aec2-11e7-abc4-cec278b6b50a
   title: Dokumentace k rozhraní API Bingu pro vyhledávání na webu – kurzy, šablony Rychlý start, reference k rozhraní API | Microsoft Docs
-  description: Naučte se používat rozhraní API Bingu pro vyhledávání na webu k získání výsledků z webu, které jsou relevantní pro dotazy uživatelů. Kurzy vám ukážou, jak vytvářet aplikace, které tuto službu používají.
+  description: Naučte se využívat rozhraní API Bingu pro vyhledávání na webu k vyhledávání webových stránek, obrázků, videí, zpráv a dalších informací.
   services: cognitive-services
   author: nitinme
   manager: cgronlun
@@ -22,7 +22,7 @@ metadata:
   ms.date: 9/24/2018
   ms.author: nitinme
 abstract:
-  description: Rozhraní API Bingu pro vyhledávání na webu poskytuje prostředí podobné Bingu. Vrací výsledky hledání, u kterých Bing rozhodne, že jsou relevantní por dotaz uživatele. Výsledky zahrnují webové stránky a mohou také zahrnovat obrázky, videa a další prvky.
+  description: Rozhraní API Bingu pro vyhledávání na webu umožňuje využívat kognitivní možnosti vyhledávání Bingu ve vaší aplikaci. Odesíláním vyhledávacích dotazů s využitím těchto rozhraní API můžete získávat relevantní webové stránky, obrázky, videa, zprávy a další informace.
 sections:
 - items:
   - type: list
@@ -48,13 +48,13 @@ sections:
 - title: Zprovoznění během 5 minut
   items:
   - type: paragraph
-    text: 'Začněte využívat rozhraní API Bingu pro vyhledávání na webu. Zadejte dotaz a prohlédněte si příslušnou odpověď JSON:'
+    text: 'Hledání na webu s využitím nástroje:'
   - type: list
     style: icon48
     items:
     - image:
         src: media/index/logo_csharp.svg
-      href: quickstarts/csharp
+      href: web-search-sdk-quickstart
       text: C&#35;
     - image:
         src: https://docs.microsoft.com/media/logos/logo_gopher.svg
@@ -62,11 +62,11 @@ sections:
       text: Přejít
     - image:
         src: media/index/logo_java.svg
-      href: quickstarts/java
+      href: web-sdk-java-quickstart
       text: Java
     - image:
         src: media/index/logo_nodejs.svg
-      href: quickstarts/nodejs
+      href: web-search-sdk-node-quickstart
       text: Node.js
     - image:
         src: media/index/logo_php.svg
@@ -74,7 +74,7 @@ sections:
       text: PHP
     - image:
         src: media/index/logo_python.svg
-      href: quickstarts/python
+      href: web-sdk-python-quickstart
       text: Python
     - image:
         src: media/index/logo_ruby.svg

@@ -1,16 +1,16 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: ef0bfc744e43491e6ac8c238904f4c1704cdeaba
-ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
+ms.openlocfilehash: 516bd4c5edaaec2545be35032c4c87cb394ec0b3
+ms.sourcegitcommit: 97d0dfb25ac23d07179b804719a454f25d1f0d46
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/27/2018
-ms.locfileid: "53793338"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54912009"
 documentType: LandingData
 title: Dokumentace k rozhraní API Bingu pro vyhledávání obrázků
 metadata:
   document_id: ce69fd12-adf8-11e7-abc4-cec278b6b50a
   title: Dokumentace k rozhraní API Bingu pro vyhledávání obrázků – kurzy, šablony Rychlý start, reference k rozhraní API | Microsoft Docs
-  description: Naučte se používat rozhraní API Bingu pro vyhledávání obrázků k získání obrázků z webu, které jsou relevantní pro dotazy uživatelů. Kurzy vám ukážou, jak vytvářet aplikace, které tuto službu používají.
+  description: Zjistěte, jak vyhledávat obrázky na webu pomocí rozhraní API Bingu pro vyhledávání obrázků.
   services: cognitive-services
   author: nitinme
   manager: cgronlun
@@ -19,10 +19,10 @@ metadata:
   ms.tgt_pltfrm: na
   ms.devlang: na
   ms.topic: landing-page
-  ms.date: 9/24/2018
+  ms.date: 1/16/2019
   ms.author: nitinme
 abstract:
-  description: Rozhraní API Bingu pro vyhledávání obrázků poskytuje prostředí podobné jako Bing.com/images. Vrací obrázky, u kterých Bing rozhodne, že jsou pro dotaz uživatele relevantní.
+  description: Rozhraní API Bingu pro vyhledávání obrázků umožňuje využívat kognitivní možnosti vyhledávání obrázků Bingu ve vaší aplikaci. Odesíláním vyhledávacích dotazů uživatelů s využitím těchto rozhraní API můžete získávat a zobrazovat relevantní a vysoce kvalitní obrázky podobně jako na bing.com/images.
 sections:
 - items:
   - type: list
@@ -34,35 +34,35 @@ sections:
       html: <p>Přečtěte si o rozhraní API Bingu pro vyhledávání obrázků.</p>
       image:
         src: ../media/index/i_overview.svg
-      title: Co je Vyhledávání obrázků Bingu?
+      title: Co je rozhraní API Bingu pro vyhledávání obrázků?
     - href: /azure/cognitive-services/bing-image-search/concepts/bing-image-search-sending-queries
-      html: <p>Zjistěte, jak odesílat dotazy pro vyhledávání obrázků do Bingu.</p>
+      html: <p>Zjistěte, jak odesílat dotazy pro vyhledávání obrázků do rozhraní API Bingu pro vyhledávání obrázků.</p>
       image:
         src: ../media/index/i_guidelines.svg
       title: Dotazy pro vyhledávání obrázků
     - href: /azure/cognitive-services/bing-image-search/concepts/bing-image-search-get-images
-      html: <p>Vysvětlení odpovědi Vyhledávání obrázků</p>
+      html: <p>Vysvětlení odpovědi rozhraní API Bingu pro vyhledávání obrázků</p>
       image:
         src: ../media/index/i_guidelines.svg
       title: Odpověď Vyhledávání obrázků
 - title: Zprovoznění během 5 minut
   items:
   - type: paragraph
-    text: 'Začněte využívat rozhraní API Bingu pro vyhledávání obrázků. Zadejte dotaz a prohlédněte si příslušnou odpověď JSON:'
+    text: 'Hledání obrázků na webu s využitím nástroje:'
   - type: list
     style: icon48
     items:
     - image:
         src: media/index/logo_csharp.svg
-      href: quickstarts/csharp
+      href: image-search-sdk-quickstart
       text: C&#35;
     - image:
         src: media/index/logo_java.svg
-      href: quickstarts/java
+      href: image-sdk-java-quickstart
       text: Java
     - image:
         src: media/index/logo_nodejs.svg
-      href: quickstarts/nodejs
+      href: image-search-sdk-node-quickstart
       text: Node.js
     - image:
         src: media/index/logo_php.svg
@@ -70,7 +70,7 @@ sections:
       text: PHP
     - image:
         src: media/index/logo_python.svg
-      href: quickstarts/python
+      href: image-sdk-python-quickstart
       text: Python
     - image:
         src: media/index/logo_ruby.svg

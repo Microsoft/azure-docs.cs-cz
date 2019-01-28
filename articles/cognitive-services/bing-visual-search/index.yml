@@ -1,16 +1,16 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 62bb4c70c2a5068c90196acc2a1898ceeaa6945c
-ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
+ms.openlocfilehash: 337c48d96a2ee679eda24500d9cb1a8d2581b2c7
+ms.sourcegitcommit: 97d0dfb25ac23d07179b804719a454f25d1f0d46
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/27/2018
-ms.locfileid: "53787666"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54912897"
 documentType: LandingData
-title: Dokumentace k vizuálnímu vyhledávání Bingu
+title: Dokumentace k rozhraní API pro vizuální vyhledávání Bingu
 metadata:
   document_id: 230494A6-34F9-416D-A6C0-57E69E1C2590
-  title: Dokumentace k Vizuálnímu vyhledávání Bingu – kurzy, reference k rozhraní API
-  description: Naučte se používat rozhraní API pro vizuální vyhledávání Bingu k získání podrobných informací o obrázku. Kurzy vám ukážou, jak vytvářet aplikace, které tuto službu používají.
+  title: Dokumentace k rozhraní API pro vizuální vyhledávání Bingu – kurzy, rychlá zprovoznění, reference k rozhraní API | Microsoft Docs
+  description: Naučte se používat rozhraní API pro vizuální vyhledávání Bingu k získání podrobných informací o obrázku.
   services: cognitive-services
   author: swhite-msft
   manager: rosh
@@ -19,15 +19,36 @@ metadata:
   ms.tgt_pltfrm: na
   ms.devlang: na
   ms.topic: landing-page
-  ms.date: 04/24/2018
+  ms.date: 01/16/2019
   ms.author: scottwhi
 abstract:
-  description: Rozhraní API pro vizuální vyhledávání Bingu poskytuje prostředí podobné jako Bing.com/images. Vrací podrobné informace o obrázku, jako jsou vizuálně podobné obrázky, možnosti nákupu produktů nalezených v obrázku a související hledání.
+  description: Rozhraní API pro vizuální vyhledávání Bingu poskytuje podobné informace o obrázcích zobrazeným jako Bing.com/images. Pokud odešlete obrázek nebo zadáte jeho URL, toto rozhraní API o něm dokáže zjistit celou řadu informací, včetně vizuálně podobných obrázků, možností nákupu, webových stránek, které ho obsahují, a dalších údajů.
 sections:
+- items:
+  - type: list
+    style: cards
+    className: cardsM
+    columns: 3
+    items:
+    - href: /azure/cognitive-services/bing-visual-search/overview
+      html: <p>Přečtěte si o rozhraní API pro vizuální vyhledávání Bingu.</p>
+      image:
+        src: ../media/index/i_overview.svg
+      title: Co je rozhraní API pro vizuální vyhledávání Bingu?
+    - href: /azure/cognitive-services/bing-visual-search/concepts/sending-queries
+      html: <p>Naučte se odesílat žádosti o vyhledávání do rozhraní API pro vizuální vyhledávání Bingu.</p>
+      image:
+        src: ../media/index/i_guidelines.svg
+      title: Odesílání dotazů pro vyhledávání
+    - href: /azure/cognitive-services/bing-visual-search/tutorial-visual-search-insights-token
+      html: <p>Využijte token přehledů z rozhraní API Bingu pro vyhledávání obrázků a nahrajte do tohoto rozhraní obrázek.</p>
+      image:
+        src: ../media/index/i_guidelines.svg
+      title: Vyhledávání zpráv
 - title: Zprovoznění během 5 minut
   items:
   - type: paragraph
-    text: 'Začněte využívat rozhraní API pro vizuální vyhledávání Bingu. Odešlete obrázek do Bingu a získejte o něm podrobné informace:'
+    text: 'Využití rozhraní API pro vizuální vyhledávání Bingu k získání podrobných informací o obrázku:'
   - type: table
     style: dataMatrix
     columns:
@@ -40,12 +61,12 @@ sections:
     - image:
         src: media/index/logo_python.svg
     rows:
-    - title: Váš první dotaz
+    - title: ''
       values:
-      - href: quickstarts/csharp
-      - href: quickstarts/java
-      - href: quickstarts/nodejs
-      - href: quickstarts/python
+      - href: visual-search-sdk-c-sharp
+      - href: java
+      - href: visual-search-sdk-node
+      - href: visual-search-sdk-python
 - title: Podrobné kurzy
   items:
   - type: paragraph
@@ -53,7 +74,7 @@ sections:
   - type: list
     style: unordered
     items:
-    - html: <a href="tutorial-bing-visual-search-single-page-app">Jednostránková webová aplikace</a> | <a href="tutorial-bing-visual-search-single-page-app-source">zdrojový kód</a>
+    - html: <a href="tutorial-bing-visual-search-single-page-app">Jednostránková webová aplikace</a>
 - title: Referenční informace
   items:
   - type: list

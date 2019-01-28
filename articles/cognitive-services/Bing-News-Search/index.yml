@@ -1,16 +1,16 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 0b934e7ac5b297b5c7349a9a9985f6c50d62d19f
-ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
+ms.openlocfilehash: 17fac6455ca225363726b347c428d176e78a1ff9
+ms.sourcegitcommit: 97d0dfb25ac23d07179b804719a454f25d1f0d46
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/27/2018
-ms.locfileid: "53791944"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54912795"
 documentType: LandingData
 title: Dokumentace k rozhraní API Bingu pro vyhledávání zpráv
 titleSuffix: Azure Cognitive Services
 metadata:
   title: Dokumentace k rozhraní API Bingu pro vyhledávání zpráv – kurzy, rychlá zprovoznění, reference k rozhraní API | Microsoft Docs
-  description: Naučte se používat rozhraní API Bingu pro vyhledávání zpráv k získání zpráv z webu, které jsou relevantní pro dotazy uživatelů. Kurzy vám ukážou, jak vytvářet aplikace, které tuto službu používají.
+  description: Projděte si, jak použít rozhraní API pro vyhledávání zpráv Bingu k vyhledávání zpráv na webu.
   services: cognitive-services
   author: mikedodaro
   manager: rosh
@@ -19,29 +19,50 @@ metadata:
   ms.tgt_pltfrm: na
   ms.devlang: na
   ms.topic: landing-page
-  ms.date: 11/02/2017
+  ms.date: 01/16/2019
   ms.author: v-gedod
 abstract:
-  description: Rozhraní API Bingu pro vyhledávání zpráv poskytuje prostředí podobné jako Zprávy Bingu. Vrací výsledky hledání, u kterých Bing rozhodne, že jsou pro dotaz uživatele relevantní.
+  description: Rozhraní API Bingu pro vyhledávání zpráv umožňuje využívat kognitivní možnosti vyhledávání zpráv Bingu ve vaší aplikaci. Odesíláním vyhledávacích dotazů uživatelů s využitím těchto rozhraní API můžete získávat relevantní novinové články z více kategorií a zdrojů jako na bing.com/news.
 sections:
+- items:
+  - type: list
+    style: cards
+    className: cardsM
+    columns: 3
+    items:
+    - href: /azure/cognitive-services/bing-news-search/search-the-web
+      html: <p>Přečtěte si o rozhraní API Bingu pro vyhledávání zpráv.</p>
+      image:
+        src: ../media/index/i_overview.svg
+      title: Co je rozhraní API Bingu pro vyhledávání zpráv?
+    - href: /azure/cognitive-services/bing-news-search/concepts/send-search-queries
+      html: <p>Naučte se odesílat žádosti o vyhledávání do rozhraní API Bingu pro vyhledávání zpráv.</p>
+      image:
+        src: ../media/index/i_guidelines.svg
+      title: Odesílání dotazů pro vyhledávání
+    - href: /azure/cognitive-services/bing-news-search/concepts/search-for-news
+      html: <p>Přečtěte si víc o vyhledávání více typů a kategorií zpráv.</p>
+      image:
+        src: ../media/index/i_guidelines.svg
+      title: Vyhledávání zpráv
 - title: Zprovoznění během 5 minut
   items:
   - type: paragraph
-    text: 'Začněte využívat rozhraní API Bingu pro vyhledávání zpráv. Zadejte dotaz a prohlédněte si příslušnou odpověď JSON:'
+    text: 'Hledání zpráv na webu s využitím nástroje:'
   - type: list
     style: icon48
     items:
     - image:
         src: media/index/logo_csharp.svg
-      href: csharp
+      href: news-search-sdk-quickstart
       text: C&#35;
     - image:
         src: media/index/logo_java.svg
-      href: java
+      href: news-sdk-java-quickstart
       text: Java
     - image:
         src: media/index/logo_nodejs.svg
-      href: nodejs
+      href: news-search-sdk-node-quickstart
       text: Node.js
     - image:
         src: media/index/logo_php.svg
@@ -49,7 +70,7 @@ sections:
       text: PHP
     - image:
         src: media/index/logo_python.svg
-      href: python
+      href: news-sdk-python-quickstart
       text: Python
     - image:
         src: media/index/logo_ruby.svg
@@ -60,7 +81,7 @@ sections:
   - type: paragraph
     text: 'Naučte se vyvíjet aplikace s využitím rozhraní API Bingu pro vyhledávání zpráv:'
   - type: paragraph
-    text: <a href="tutorial-bing-news-search-single-page-app">Jednostránková webová aplikace</a> &#124; <a href="tutorial-bing-news-search-single-page-app-source">zdrojový kód</a>
+    text: <a href="tutorial-bing-news-search-single-page-app">Jednostránková webová aplikace</a>
 - title: Ukázky
   items:
   - type: paragraph

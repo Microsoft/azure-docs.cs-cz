@@ -67,10 +67,8 @@ items:
       href: pim-resource-roles-configure-role-settings.md
     - name: Konfigurace upozornění
       href: pim-resource-roles-configure-alerts.md
-    - name: Zobrazení toho, kdo má přístup
+    - name: Zobrazení historie auditu a aktivit
       href: azure-pim-resource-rbac.md
-    - name: Zobrazení historie auditů
-      href: pim-resource-roles-use-the-audit-log.md
     - name: Použití vlastních rolí
       href: pim-resource-roles-custom-role-policy.md
   - name: Kontrola přístupu
@@ -92,9 +90,9 @@ items:
       - name: Dokončení kontroly přístupu
         href: pim-resource-roles-complete-access-review.md
   expanded: true
-ms.openlocfilehash: 2f68fbbf3ad2a8e2aa39d74a69c2bda12c5ec97a
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: 84c50c4d3fe6472f53d64ba42f462a6fdf2783fe
+ms.sourcegitcommit: 97d0dfb25ac23d07179b804719a454f25d1f0d46
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54433199"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54913117"

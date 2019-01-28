@@ -86,6 +86,22 @@ items:
       href: service-fabric-tutorial-standalone-install-an-application.md
     - name: 4. Vyčištění clusteru a odstranění infrastruktury
       href: service-fabric-tutorial-standalone-clean-up.md
+- name: Osvědčené postupy
+  items:
+  - name: Přehled osvědčených postupů pro Service Fabric
+    href: service-fabric-best-practices-overview.md
+  - name: Zabezpečení
+    href: service-fabric-best-practices-security.md
+  - name: Sítě
+    href: service-fabric-best-practices-networking.md
+  - name: Škálování a plánování výpočetních prostředků
+    href: service-fabric-best-practices-capacity-scaling.md
+  - name: Infrastruktura jako kód
+    href: service-fabric-best-practices-infrastructure-as-code.md
+  - name: Monitorování a diagnostika
+    href: service-fabric-best-practices-monitoring.md
+  - name: Kontrolní seznam připravenosti k produkci
+    href: service-fabric-production-readiness-checklist.md
 - name: Ukázky
   items:
   - name: Ukázky kódů
@@ -443,6 +459,11 @@ items:
         href: service-fabric-tutorial-deploy-api-management.md
       - name: Správa tajných klíčů aplikací
         href: service-fabric-application-secret-management.md
+        items:
+        - name: Nastavení šifrovacího certifikátu a šifrování tajných kódů ve Windows
+          href: service-fabric-application-secret-management-windows.md
+        - name: Nastavení šifrovacího certifikátu a šifrování tajných kódů v Linuxu
+          href: service-fabric-application-secret-management-linux.md
       - name: Konfigurace reverzního proxy serveru pro zabezpečenou komunikaci
         href: service-fabric-reverseproxy-configure-secure-communication.md
       - name: Spuštění skriptu spuštění služby jako místní uživatel nebo systémový účet
@@ -697,10 +718,6 @@ items:
       href: service-fabric-reverse-proxy-diagnostics.md
     - name: Řešení potíží s místním clusterem
       href: service-fabric-troubleshoot-local-cluster-setup.md
-  - name: Osvědčené postupy
-    items:
-    - name: Kontrolní seznam připravenosti k produkci
-      href: service-fabric-production-readiness-checklist.md
 - name: Referenční informace
   items:
   - name: Azure PowerShell
@@ -777,6 +794,8 @@ items:
     href: /dotnet/api/overview/azure/service-fabric?view=azure-dotnet
   - name: REST
     href: /rest/api/servicefabric
+  - name: Šablona Resource Manageru
+    href: /azure/templates/microsoft.servicefabric/clusters
   - name: Události služby Service Fabric
     href: service-fabric-diagnostics-event-generation-operational.md
   - name: Konfigurace nastavení clusteru a zásad upgradu prostředků infrastruktury
@@ -820,9 +839,9 @@ items:
     href: https://azure.microsoft.com/updates/?product=service-fabric
   - name: Videa
     href: https://azure.microsoft.com/documentation/videos/index/?services=service-fabric
-ms.openlocfilehash: 9058ac3b7d21b7cd490a14333d2362635809e39b
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: 5b487a8212cabb6809a9152e10dde7a1c9c7158f
+ms.sourcegitcommit: 97d0dfb25ac23d07179b804719a454f25d1f0d46
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53976360"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54913525"
