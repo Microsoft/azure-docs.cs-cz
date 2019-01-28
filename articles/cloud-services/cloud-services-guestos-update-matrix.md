@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
-ms.date: 1/24/2019
+ms.date: 1/25/2019
 ms.author: raiye
-ms.openlocfilehash: 59afdd3bbb00dce6085ea76685768db3e8eec5cc
-ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
+ms.openlocfilehash: 9d2fa8497ac773ba086f3a4550e20ac5f5f0d882
+ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/25/2019
-ms.locfileid: "54900846"
+ms.lasthandoff: 01/26/2019
+ms.locfileid: "55075461"
 ---
 # <a name="azure-guest-os-releases-and-sdk-compatibility-matrix"></a>Azure verzí hostovaného operačního systému a matice kompatibility sady SDK
 Poskytuje že vám aktuální informace o nejnovější verzi operačního systému hosta Azure uvolní pro cloudové služby. Tyto informace pomohou při plánování způsob upgradu, než je zakázáno hostovaného operačního systému. Je-li konfigurovat vaše role používat *automatické* aktualizace hostovaného operačního systému, jak je popsáno v [nastavení aktualizace operačního systému hosta Azure][Azure Guest OS Update Settings], není důležité, abyste si přečetli tuto stránku.
@@ -75,7 +75,7 @@ Hostovaný operační systém dne vydala.
 Nainstalováno rozhraní .NET framework: 3.5, 4.7.2
 
 > [!NOTE]
-> Sada Windows Azure SDK pro .NET 3.0 si můžete stáhnout [tady][Windows Azure SDK].
+> Windows Azure SDK pro .NET – si můžete stáhnout 3.0 [tady][Windows Azure SDK].
 >
 
 | Konfigurační řetězec | Datum vydání | Zakázat datum |
@@ -155,6 +155,7 @@ I v případě, [zásady vyřazení z provozu pro sadu Azure SDK] [ retire polic
 
 | Řada operačního systému hosta | Kompatibilní verze sady SDK |
 | --- | --- |
+| 6 |Verze 2.9.6+ |
 | 5 |Verze 2.9.5.1+ |
 | 4 |Verze 2.1 + |
 | 3 |Verze 1.8 a |
