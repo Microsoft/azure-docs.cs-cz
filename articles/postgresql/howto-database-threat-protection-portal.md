@@ -6,12 +6,12 @@ ms.author: mbolz
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 01/24/2019
-ms.openlocfilehash: bbc0eadebec849dde47cecaf6e3718eb6673a22f
-ms.sourcegitcommit: 97d0dfb25ac23d07179b804719a454f25d1f0d46
+ms.openlocfilehash: bbb48708d0e5a7cd07a3971a6966f40696107562
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/25/2019
-ms.locfileid: "54912812"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55095091"
 ---
 # <a name="advanced-threat-protection-for-azure-database-for-postgresql"></a>Advanced Threat Protection pro Azure Database for PostgreSQL
 
@@ -58,7 +58,7 @@ Rozšířená ochrana před internetovými útoky integruje jeho výstrahy se sl
 
 Klikněte na tlačítko **výstrahy zabezpečení** pod **ochrana před internetovými útoky** spustit Azure Security Center oznámení stránce a získejte přehled o aktivní hrozby SQL v databázi nalezen.
 
-  ![Asc protectoin před internetovými útoky](./media/howto-database-threat-protection-portal/threat-detection-alert-asc.png)
+  ![Asc ochrany před internetovými útoky](./media/howto-database-threat-protection-portal/threat-detection-alert-asc.png)
 
 ## <a name="next-steps"></a>Další postup
 

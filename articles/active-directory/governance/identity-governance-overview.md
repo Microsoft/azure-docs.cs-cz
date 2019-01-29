@@ -11,16 +11,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.component: compliance
+ms.subservice: compliance
 ms.date: 09/25/2018
 ms.author: rolyon
 ms.reviewer: markwahl-msft
-ms.openlocfilehash: 20b1c8673bfdb3b2207ed63749f79539c396642c
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.openlocfilehash: 887c0bd4246c7c4215cb4d97dfd96db5d2aba6cb
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47167878"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55170014"
 ---
 # <a name="what-is-azure-ad-identity-governance"></a>Co je zásady správného řízení identit Azure AD?
 
@@ -73,15 +73,15 @@ Neplatí žádné z nabízených řešení nebo doporučení pro každý zákazn
 
 ### <a name="access-reviews"></a>Kontroly přístupu
 
-- [Co je kontroly přístupu?](access-reviews-overview.md)
+- [Co je kontrola přístupu?](access-reviews-overview.md)
 - [Správa přístupu uživatelů pomocí kontrol přístupu](manage-user-access-with-access-reviews.md)
-- [Spravovat přístup hosta pomocí kontrol přístupu](manage-guest-access-with-access-reviews.md)
+- [Správa přístupu hostů pomocí kontrol přístupu](manage-guest-access-with-access-reviews.md)
 - [Zahájení kontroly přístupu role adresáře](../privileged-identity-management/pim-how-to-start-security-review.md)
 
 ### <a name="terms-of-use"></a>Podmínky použití
 
 - [Co můžu dělat s podmínkami použití?](active-directory-tou.md)
 
-### <a name="privileged-identity-management"></a>Privileged identity management.
+### <a name="privileged-identity-management"></a>Privileged Identity Management
 
 - [Co je Azure AD PIM](../privileged-identity-management/pim-configure.md)

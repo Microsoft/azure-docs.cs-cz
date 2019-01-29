@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: required
 ms.date: 10/12/2018
 ms.author: vturecek
-ms.openlocfilehash: eb020dfd52140375778cf22c6b70e715a7422761
-ms.sourcegitcommit: 3a02e0e8759ab3835d7c58479a05d7907a719d9c
+ms.openlocfilehash: 71d5b0e8156710e2f82ac76d3187ba1ddba46936
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/13/2018
-ms.locfileid: "49310239"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55151086"
 ---
 # <a name="aspnet-core-in-service-fabric-reliable-services"></a>ASP.NET Core v Service Fabric Reliable Services
 
@@ -58,19 +58,19 @@ Instance spolehlivé služby představuje vaše služby třídu odvozenou z `Sta
 
 ![Hostování technologie ASP.NET Core v Reliable Service][1]
 
-## <a name="aspnet-core-icommunicationlisteners"></a>ICommunicationListeners ASP.NET Core
+## <a name="aspnet-core-icommunicationlisteners"></a>ASP.NET Core ICommunicationListeners
 `ICommunicationListener` Implementace pro Kestrel a HttpSys v `Microsoft.ServiceFabric.AspNetCore.*` balíčky NuGet podobné vzorce používání, ale provádět mírně odlišné akce specifické pro každý webový server. 
 
 Obě naslouchací procesy komunikace poskytovat konstruktor, který používá následující argumenty:
  - **`ServiceContext serviceContext`**: `ServiceContext` Objekt, který obsahuje informace o spuštěné služby.
- - **`string endpointName`**: název `Endpoint` konfigurace v souboru ServiceManifest.xml. To je především pokud naslouchacích procesů dvou komunikačních liší: HttpSys **vyžaduje** `Endpoint` konfigurace, ale nikoli Kestrel.
+ - **`string endpointName`**: název `Endpoint` konfigurace v souboru ServiceManifest.xml. To je primárně určen kde naslouchacích procesů dvou komunikačních liší: HttpSys **vyžaduje** `Endpoint` konfigurace, ale nikoli Kestrel.
  - **`Func<string, AspNetCoreCommunicationListener, IWebHost> build`**: výraz lambda, kterou implementujete, ve kterém se vytváří a vrácení `IWebHost`. To umožňuje nakonfigurovat `IWebHost` tak, jak byste normálně v aplikaci ASP.NET Core. Výraz lambda obsahuje adresu URL, který je generován pro vás v závislosti na integraci Service Fabric možnosti použít a `Endpoint` konfigurace, které zadáte. Že adresa URL můžete potom změnit nebo použít jako-je spustit webový server.
 
 ## <a name="service-fabric-integration-middleware"></a>Middleware pro integraci Service Fabric
 `Microsoft.ServiceFabric.AspNetCore` Obsahuje balíček NuGet `UseServiceFabricIntegration` rozšiřující metody na `IWebHostBuilder` , který přidá Service Fabric s ohledem na middleware. Tento middleware konfiguruje Kestrel nebo HttpSys `ICommunicationListener` k registraci ve službě pojmenování Service Fabric Service adresu URL jedinečné služby a poté ověří požadavky klientů, aby se klienti připojují k požadovanou službu. To je nezbytné v prostředí sdílené hostitele, jako je Service Fabric, ve kterém můžete spustit na stejný fyzický nebo virtuální počítač více webových aplikací, ale nepoužívejte názvy hostitele, čímž zabráníte klientům omylem připojování ke službě nesprávné. Tento scénář je popsaný v následující části podrobněji.
 
 ### <a name="a-case-of-mistaken-identity"></a>Případ chybné identity
-Repliky služby, bez ohledu na protokol, naslouchat na kombinaci IP: jedinečný port. Jakmile repliku služby zahájil naslouchání na koncový bod IP: port, sestavy služba pojmenování Service Fabric ve kterém je možné zjistit pomocí klienty nebo jiné služby pro tuto adresu koncového bodu. Pokud služby používat porty dynamicky přiřazené aplikace, repliku služby shodou použít stejný koncový bod IP: port jiné službě, která byla předtím na stejný fyzický nebo virtuální počítač. To může způsobit klientovi mistakely připojit ke službě nesprávné. Můžete k tomu dojít, pokud dojde k následujícímu pořadí událostí:
+Repliky služby, bez ohledu na protokol, naslouchat na kombinaci IP: jedinečný port. Jakmile repliku služby zahájil naslouchání na koncový bod IP: port, sestavy služba pojmenování Service Fabric ve kterém je možné zjistit pomocí klienty nebo jiné služby pro tuto adresu koncového bodu. Pokud služby používat porty dynamicky přiřazené aplikace, repliku služby shodou použít stejný koncový bod IP: port jiné službě, která byla předtím na stejný fyzický nebo virtuální počítač. To může způsobit klient omylem připojit ke službě nesprávné. Můžete k tomu dojít, pokud dojde k následujícímu pořadí událostí:
 
  1. Služby A naslouchá na 10.0.0.1:30000 přes protokol HTTP. 
  2. Klient řeší A služby a získá 10.0.0.1:30000 adresa

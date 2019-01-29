@@ -6,16 +6,16 @@ services: cognitive-services
 author: alch-msft
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: academic-knowledge
+ms.subservice: academic-knowledge
 ms.topic: conceptual
 ms.date: 03/27/2017
 ms.author: alch
-ms.openlocfilehash: 915e2e5a67d068c418ce50eee9d84dc66e61ee00
-ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
+ms.openlocfilehash: cb47b3933ecb6e38aa7945ac7f81f7602a0c8034
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/15/2018
-ms.locfileid: "49321287"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55192532"
 ---
 # <a name="calchistogram-method"></a>CalcHistogram – metoda
 
@@ -33,11 +33,11 @@ https:// westus.api.cognitive.microsoft.com/academic/v1.0/calchistogram?
 Název  |Hodnota | Povinné?  |Popis
 -----------|----------|--------|----------
 **výraz**    |Textový řetězec | Ano  |Výraz dotazu, který určuje entity, přes která chcete vypočítat histogramy.
-**Model** |Textový řetězec | Ne |Vyberte název modelu, který chcete dotazovat.  V současné době má výchozí hodnotu *nejnovější*.
+**model** |Textový řetězec | Ne |Vyberte název modelu, který chcete dotazovat.  V současné době má výchozí hodnotu *nejnovější*.
 **Atributy** | Textový řetězec | Ne<br>Výchozí hodnota: | Čárkami oddělený seznam, který určuje hodnoty atributů, které jsou zahrnuty v odpovědi. Názvy atributů rozlišují malá a velká písmena.
 **count** |Číslo | Ne<br>Výchozí: 10 |Číslo s vrácenými výsledky.
 **Posun**  |Číslo | Ne<br>Výchozí: 0 |Index první výsledek vrátit.
-**časový limit**  |Číslo | Ne<br>Výchozí: 1000 |Časový limit v milisekundách. Jsou vráceny pouze interpretace nalezen předtím, než vypršel časový limit.
+**timeout**  |Číslo | Ne<br>Výchozí: 1000 |Časový limit v milisekundách. Jsou vráceny pouze interpretace nalezen předtím, než vypršel časový limit.
 
 ## <a name="response-json"></a>Odpověď (JSON)
 
@@ -45,15 +45,15 @@ Název | Popis
 --------|---------
 **výraz**  |Výraz parametru z požadavku.
 **num_entities** | Celkový počet odpovídajících entit.
-**histogramy** |  Pole histogramy, jeden pro každý atribut v požadavku.
-**.attribute histogramy [x]** | Název atributu, nad niž se spočítala histogram.
-**.distinct_values histogramy [x]** | Počet jedinečných hodnot mezi odpovídající entity pro tento atribut.
-**.total_count histogramy [x]** | Celkový počet instancí hodnotu mezi odpovídající entity pro tento atribut.
-**.histogram histogramy [x]** | Histogram data pro tento atribut.
-**histogramy. hodnotu .histogram [y] [x]** |  Hodnota pro atribut.
-**histogramy [.logprob .histogram [y] x]**  |Celkový počet přirozený logaritmus pravděpodobnost odpovídající entity s touto hodnotou atributu.
-**histogramy [.count .histogram [y] x]**  |Počet odpovídajících entit s touto hodnotou atributu.
-**Přerušeno** | True, pokud vypršel časový limit žádosti.
+**histograms** |  Pole histogramy, jeden pro každý atribut v požadavku.
+**histograms[x].attribute** | Název atributu, nad niž se spočítala histogram.
+**histograms[x].distinct_values** | Počet jedinečných hodnot mezi odpovídající entity pro tento atribut.
+**histograms[x].total_count** | Celkový počet instancí hodnotu mezi odpovídající entity pro tento atribut.
+**histograms[x].histogram** | Histogram data pro tento atribut.
+**histograms[x].histogram[y].value** |  Hodnota pro atribut.
+**histograms[x].histogram[y].logprob**  |Celkový počet přirozený logaritmus pravděpodobnost odpovídající entity s touto hodnotou atributu.
+**histograms[x].histogram[y].count**  |Počet odpovídajících entit s touto hodnotou atributu.
+**aborted** | True, pokud vypršel časový limit žádosti.
 
 
 #### <a name="example"></a>Příklad:

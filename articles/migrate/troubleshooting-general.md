@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 01/25/2019
 ms.author: raynew
-ms.openlocfilehash: 5a5fbcb4cd2e073192ec7032bdbed15ab49798ad
-ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
+ms.openlocfilehash: ebd374cc8792545d1db57f624a5831dc9ded272f
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/26/2019
-ms.locfileid: "55075411"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55102117"
 ---
 # <a name="troubleshoot-azure-migrate"></a>Řešení problémů s Azure Migrate
 
@@ -153,9 +153,17 @@ Azure Migrate collector PowerCLI stáhne a nainstaluje na zařízení. Chyba př
 Tomuto problému může dojít kvůli problému s instalací VMware PowerCLI. Postupujte podle níže uvedený postup k vyřešení daného problému:
 
 1. Pokud nejste na nejnovější verzi zařízení kolektoru [na nejnovější verzi, upgradujte Collector](https://aka.ms/migrate/col/checkforupdates) a zkontrolujte, jestli se problém vyřeší.
-2. Pokud už máte nejnovější verzi kolektoru, postupujte podle níže uvedených pokynů proveďte čistou instalaci nástroje PowerCLI:. Zavřete webový prohlížeč v zařízení.
-   b. Zastavte službu Azure Migrate Collector tak, že přejdete na Windows Service Manager (otevřít "Spustit" a zadejte příkaz services.msc otevřete Správce služby Windows). Klikněte pravým tlačítkem ve službě Azure Migrate Collector Service a klikněte na zastavit, c. Odstraňte všechny složky, počínaje "VMware" v následujících umístěních: C:\Program Files\WindowsPowerShell\Modules  
-        C:\Program Files (x86)\WindowsPowerShell\Modules d. Restartujte službu Azure Migrate Collector na Windows portálu Service Manager (otevřít "Spustit" a zadejte příkaz services.msc otevřete Správce služby Windows). Klikněte pravým tlačítkem ve službě Azure Migrate Collector Service a klikněte na příkaz spustit.
+2. Pokud už máte nejnovější verzi kolektoru, postupujte podle níže uvedených pokynů proveďte čistou instalaci nástroje PowerCLI:
+
+   a. Zavřete webový prohlížeč v zařízení.
+
+   b. Zastavte službu Azure Migrate Collector tak, že přejdete na Windows Service Manager (otevřít "Spustit" a zadejte příkaz services.msc otevřete Správce služby Windows). Klikněte pravým tlačítkem ve službě Azure Migrate Collector Service a klikněte na Zastavit.
+
+   c. Odstraňte všechny složky, počínaje "VMware" v následujících umístěních: C:\Program Files\WindowsPowerShell\Modules  
+        C:\Program Files (x86)\WindowsPowerShell\Modules
+
+   d. Restartujte službu Azure Migrate Collector na Windows portálu Service Manager (otevřít "Spustit" a zadejte příkaz services.msc otevřete Správce služby Windows). Klikněte pravým tlačítkem ve službě Azure Migrate Collector Service a klikněte na příkaz spustit.
+   
    e. Dvakrát klikněte na zástupce na ploše "Spustit kolektor" spustíte aplikaci kolektoru. Aplikaci kolektoru by měl automaticky stáhnout a nainstalovat požadované verze fo PowerCLI.
 
 3. Pokud výše problém nevyřeší, ručně nainstalujte [VMware PowerCLI 6.5.2](https://www.powershellgallery.com/packages/VMware.PowerCLI/6.5.2.6268016) a zkontrolujte, jestli se problém vyřeší.
@@ -214,7 +222,7 @@ Seznam operačních systémů Windows nepodporuje agenta závislostí je [tady](
 Seznam operačních systémů Linux podporuje agenta závislostí je [tady](https://docs.microsoft.com/azure/monitoring/monitoring-service-map-configure#supported-linux-operating-systems).
 
 ### <a name="i-am-unable-to-visualize-dependencies-in-azure-migrate-for-more-than-one-hour-duration"></a>Nejde mi vizualizace závislostí ve službě Azure Migrate déle než hodinu?
-Azure Migrate vám umožňuje vizualizovat závislosti pro dobu trvání až jednu hodinu. I když Azure Migrate můžete přejít zpět na konkrétní datum v historii pro až za poslední měsíc, je maximální doba trvání, pro kterou můžete vizualizovat závislosti až 1 hodinu. Například můžete použít funkci doba trvání na mapě závislostí, chcete-li zobrazit závislosti včerejška ale jenom ji mohou zobrazit okna jednu hodinu. Můžete však použít Log Analytics pro [zadávat dotazy na data závislostí](https://docs.microsoft.com/azure/migrate/how-to-create-group-machine-dependencies#query-dependency-data-from-log-analytics) za delší dobu. 
+Azure Migrate vám umožňuje vizualizovat závislosti pro dobu trvání až jednu hodinu. I když Azure Migrate můžete přejít zpět na konkrétní datum v historii pro až za poslední měsíc, je maximální doba trvání, pro kterou můžete vizualizovat závislosti až 1 hodinu. Například můžete použít funkci doba trvání na mapě závislostí, chcete-li zobrazit závislosti včerejška ale jenom ji mohou zobrazit okna jednu hodinu. Můžete však použít Log Analytics pro [zadávat dotazy na data závislostí](https://docs.microsoft.com/azure/migrate/how-to-create-group-machine-dependencies#query-dependency-data-from-log-analytics) za delší dobu.
 
 ### <a name="i-am-unable-to-visualize-dependencies-for-groups-with-more-than-10-vms"></a>Nejde mi vizualizace závislostí u skupin s více než 10 virtuálních počítačů?
 Je možné [vizualizace závislostí u skupin](https://docs.microsoft.com/azure/migrate/how-to-create-group-dependencies) , že mají až na 10 virtuálních počítačů, pokud máte skupinu s více než 10 virtuálních počítačů, doporučujeme rozdělit skupiny v menším skupinám a vizualizace závislostí.

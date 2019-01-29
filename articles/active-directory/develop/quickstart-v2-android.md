@@ -8,7 +8,7 @@ manager: mtillman
 editor: ''
 ms.assetid: 820acdb7-d316-4c3b-8de9-79df48ba3b06
 ms.service: active-directory
-ms.component: develop
+ms.subservice: develop
 ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
@@ -16,14 +16,14 @@ ms.workload: identity
 ms.date: 09/23/2018
 ms.author: andret
 ms.custom: aaddev
-ms.openlocfilehash: 3e9c46e1315257d619f1624c06441adc08daddb2
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.openlocfilehash: 808ee8bb34aa4bb81ce1bcdd50193efa05f5692d
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52427008"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55103760"
 ---
-# <a name="quickstart-sign-in-users-and-call-the-microsoft-graph-api-from-an-android-app"></a>Rychlý start: Přihlášení uživatelů a volání rozhraní Microsoft Graph API z aplikace pro Android
+# <a name="quickstart-sign-in-users-and-call-the-microsoft-graph-api-from-an-android-app"></a>Rychlý start: Přihlašování uživatelů a volání rozhraní Microsoft Graph API z aplikace pro Android
 
 [!INCLUDE [active-directory-develop-applies-v2-msal](../../../includes/active-directory-develop-applies-v2-msal.md)]
 
@@ -38,8 +38,8 @@ Tento rychlý start obsahuje vzorek kódu, který demonstruje, jak může aplika
 
 > [!div renderon="docs"]
 > ## <a name="register-and-download"></a>Registrace a stažení
-> ### <a name="register-and-configure-your-application-and-code-sample"></a>Registrace a konfigurace aplikace a vzorový kód
-> #### <a name="step-1-register-your-application"></a>Krok 1: Registrace aplikace
+> ### <a name="register-and-configure-your-application-and-code-sample"></a>Zaregistrujte si a nakonfigurujte svoji aplikaci a vzorový kód
+> #### <a name="step-1-register-your-application"></a>Krok 1: Registrace vaší aplikace
 > Postup při registraci aplikace a přidání informací o registraci aplikace k řešení:
 > 1. Abyste mohli zaregistrovat aplikaci, přejděte na [portál pro registraci aplikací Microsoft](https://apps.dev.microsoft.com/portal/register-app).
 > 1. Do pole **Application Name** (Název aplikace) zadejte název vaší aplikace.
@@ -55,7 +55,7 @@ Tento rychlý start obsahuje vzorek kódu, který demonstruje, jak může aplika
 > > [!div id="appconfigured" class="alert alert-info"]
 > > ![Už nakonfigurované](media/quickstart-v2-android/green-check.png) Vaše aplikace je nakonfigurovaná s těmito atributy.
 
-#### <a name="step-2-download-the-project"></a>Krok 2: Stažení projektu
+#### <a name="step-2-download-the-project"></a>Krok 2: Stáhněte si projekt
 
 * [Stáhnout projekt pro Android Studio](https://github.com/Azure-Samples/active-directory-android-native-v2/archive/master.zip)
 

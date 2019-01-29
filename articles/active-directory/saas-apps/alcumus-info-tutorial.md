@@ -7,19 +7,19 @@ author: jeevansd
 manager: daveba
 ms.assetid: d26034b8-f0d5-4f65-aa56-0fc168ceec8c
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 06/05/2017
 ms.author: jeedes
-ms.openlocfilehash: d55aa873d0ad410b91dc678d1fe4784e00ed5487
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: 366d1948f7ff7f935168da6300733995f09130b4
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54812467"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55192277"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-alcumus-info-exchange"></a>Kurz: Integrace s Exchangem Alcumus informace o Azure Active Directory
 

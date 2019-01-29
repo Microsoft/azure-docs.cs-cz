@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 06/30/2017
 ms.author: msfussell
-ms.openlocfilehash: 70305468ca20c48bdc26e7e000a0e5edb63508cd
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.openlocfilehash: 0012304412b343918ab69abf6eababc033cddc6f
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54261566"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55198210"
 ---
 # <a name="partition-service-fabric-reliable-services"></a>Dělení Service Fabric reliable services
 Tento článek obsahuje úvod do základních konceptech služby dělení reliable services v Azure Service Fabric. Je také k dispozici na zdrojového kódu v článku [Githubu](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started/tree/classic/Services/AlphabetPartitions).
@@ -129,11 +129,7 @@ Jelikož chceme doslova mít jeden oddíl na písmeno, můžeme použít 0 jako 
 1. Open **Visual Studio** > **File** > **New** > **Project**.
 2. V **nový projekt** dialogového okna zvolte aplikace Service Fabric.
 3. Volání projektu "AlphabetPartitions".
-4. V **vytvořit službu** dialogového okna zvolte **stavová** služby a nazvat ho "Alphabet.Processing", jak je znázorněno na následujícím obrázku.
-       ![Nové dialogové okno službu v sadě Visual Studio][1]
-
-  <!--  ![Stateful service screenshot](./media/service-fabric-concepts-partitioning/createstateful.png)-->
-
+4. V **vytvořit službu** dialogového okna zvolte **stavová** služby a nazvat ho "Alphabet.Processing".
 5. Nastavte počet oddílů. Otevřete soubor Applicationmanifest.xml ve složce ApplicationPackageRoot AlphabetPartitions projektu a aktualizovat parametr Processing_PartitionCount až 26, jak je znázorněno níže.
    
     ```xml
@@ -167,7 +163,7 @@ Jelikož chceme doslova mít jeden oddíl na písmeno, můžeme použít 0 jako 
    
     Víc replik této služby mohly být hostovány na stejném počítači, tak tato adresa musí být jedinečný v replice. To je důvod, proč ID oddílu + ID repliky jsou v adrese URL. HttpListener může naslouchat na více adres na stejný port jako předponu adresy URL je jedinečný.
    
-    Nadbytečné GUID je pro s pokročilé případem, kde sekundární repliky také naslouchání požadavkům na jen pro čtení. Pokud je to tento případ, budete chtít Ujistěte se, že novou jedinečnou adresu se používá při přesunu z primárního do sekundárního vynuťte u klientů pro překlad adres znovu. '+' se používá jako adresa zde tak, aby replika naslouchá na všech dostupných hostitelů (IP, FQDM localhost, atd.) Následující kód ukazuje příklad.
+    Nadbytečné GUID je pro s pokročilé případem, kde sekundární repliky také naslouchání požadavkům na jen pro čtení. Pokud je to tento případ, budete chtít Ujistěte se, že novou jedinečnou adresu se používá při přesunu z primárního do sekundárního vynuťte u klientů pro překlad adres znovu. '+' se používá jako adresa zde tak, aby replika naslouchá na všech dostupných hostitelů (IP, plně kvalifikovaný název domény, localhost, atd.) Následující kód ukazuje příklad.
    
     ```CSharp
     protected override IEnumerable<ServiceReplicaListener> CreateServiceReplicaListeners()
@@ -365,7 +361,7 @@ Jelikož chceme doslova mít jeden oddíl na písmeno, můžeme použít 0 jako 
 Celý zdrojový kód ukázku je k dispozici na [Githubu](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started/tree/classic/Services/AlphabetPartitions).
 
 ## <a name="reliable-services-and-actor-forking-subprocesses"></a>Spolehlivé služby a větvení podprocesů, které se objekt Actor
-Service Fabric se modelu reliable services a následně reliable actors větvení podprocesů, které se nepodporuje. Je například proč není podporována [CodePackageActivationContext](https://docs.microsoft.com/dotnet/api/system.fabric.codepackageactivationcontext?view=azure-dotnet) nelze použít k registraci nepodporované podproces a tokeny zrušení se odesílají jenom registrovaných procesy, výsledkem jsou nejrůznější problémy, jako například selhání upgradu, při podprocesů, které nezavírejte, jakmile obdrží token zrušení nadřazeného procesu. 
+Service Fabric se modelu reliable services a následně reliable actors větvení podprocesů, které se nepodporuje. Je například proč není podporována [CodePackageActivationContext](https://docs.microsoft.com/dotnet/api/system.fabric.codepackageactivationcontext?view=azure-dotnet) nelze použít k registraci nepodporované podproces a zpracovává zrušení tokenů se odešlou, jenom na registrovaná; výsledkem jsou nejrůznější problémy, jako například selhání upgradu, při podprocesů, které nezavírejte, jakmile obdrží token zrušení nadřazeného procesu. 
 
 ## <a name="next-steps"></a>Další postup
 Informace o konceptech Service Fabric naleznete v následujících tématech:

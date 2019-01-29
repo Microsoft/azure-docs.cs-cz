@@ -1,6 +1,6 @@
 ---
-title: Úvod k řešení potíží s v sledovací proces sítě Azure prostředku | Microsoft Docs
-description: Tato stránka obsahuje přehled možnosti pro odstraňování potíží prostředků sledovací proces sítě
+title: Úvod do prostředků, řešení potíží ve službě Azure Network Watcher | Dokumentace Microsoftu
+description: Tato stránka poskytuje přehled o funkce pro odstraňování potíží prostředek Network Watcher
 services: network-watcher
 documentationcenter: na
 author: jimdial
@@ -14,109 +14,109 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/19/2017
 ms.author: jdial
-ms.openlocfilehash: 2f8a41834c1451d80c53cfed4bae3b7e36281702
-ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.openlocfilehash: 8048dde6158d9eaa9bf38a8c3020420b81bdd55b
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/03/2018
-ms.locfileid: "32779256"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55099770"
 ---
-# <a name="introduction-to-resource-troubleshooting-in-azure-network-watcher"></a>Úvod k řešení potíží s v sledovací proces sítě Azure prostředku
+# <a name="introduction-to-resource-troubleshooting-in-azure-network-watcher"></a>Úvod k řešení potíží ve službě Azure Network Watcher prostředku
 
-Brány virtuální sítě zajistěte připojení mezi místními prostředky a dalším virtuálním sítím v rámci Azure. Monitorování brány a jejich připojení jsou důležité k zajištění komunikace není přerušeno. Sledovací proces sítě poskytuje možnost Poradce při potížích s připojení a bran. Funkce je možné volat prostřednictvím portálu, prostředí PowerShell, rozhraní příkazového řádku Azure nebo REST API. Při volání, sledovací proces sítě diagnostikuje stav brány, nebo připojení a vrátí odpovídající výsledky. Žádost je dlouhotrvající transakci. Po dokončení diagnostiky, budou vráceny výsledky.
+Brány virtuální sítě zajistěte připojení mezi místními prostředky a dalším virtuálním sítím v Azure. Pro zajištění, aby nedošlo k přerušení komunikace, je důležité monitorovat brány a jejich připojení. Network Watcher dává možnost Poradce při potížích s připojení a bran. Funkci lze volat na portálu, Powershellu, rozhraní příkazového řádku Azure nebo rozhraní REST API. Při volání, Network Watcher diagnostikuje stav brány nebo připojení a vrátí odpovídající výsledky. Požadavek je dlouhodobá transakce. Výsledky se vrátí po dokončení diagnostiky.
 
 ![portál][2]
 
 ## <a name="results"></a>Výsledky
 
-Předběžné výsledky vrácené poskytují celkový přehled o stavu prostředku. Podrobnější informace lze zadat pro prostředky, jak je znázorněno v následující části:
+Předběžné výsledky vrácené poskytnout celkový přehled o stavu prostředku. Podrobnější informace lze zadat pro prostředky, jak je znázorněno v následující části:
 
-V následujícím seznamu je hodnot vrácených s Poradce při potížích rozhraní API:
+V následujícím seznamu jsou hodnoty vrátil Poradce při potížích rozhraní API:
 
-* **startTime** – tato hodnota je spuštění volání rozhraní API Poradce při potížích.
-* **čas ukončení** – tato hodnota je čas ukončení poradce při potížích.
+* **startTime** – tato hodnota je čas spuštění Poradce při potížích API volání.
+* **Koncový čas** – tato hodnota je čas ukončení poradce při potížích.
 * **kód** – tato hodnota není v pořádku, pokud dojde k selhání jedné diagnostiku.
 * **výsledky** -výsledků je kolekce výsledků vrácených na připojení nebo brány virtuální sítě.
-    * **ID** – tato hodnota je typem chyby.
-    * **Souhrn** – tato hodnota je souhrn poruchy.
+    * **ID** – tato hodnota je typu selhání.
+    * **Souhrn** – tato hodnota je uveden seznam chyby.
     * **Podrobné** -tuto hodnotu poskytuje podrobný popis chyby.
-    * **recommendedActions** -tato vlastnost je kolekce doporučených akcí.
-      * **actionText** – tato hodnota obsahuje text popisující, jakou akci chcete provést.
-      * **actionUri** -tuto hodnotu poskytuje identifikátor URI pro dokumentaci o tom, jak fungují.
-      * **actionUriText** – tato hodnota je krátký popis text akce.
+    * **recommendedActions** – tato vlastnost je kolekce doporučené akce.
+      * **actionText** – tato hodnota obsahuje text popisující, jaké akce se má provést.
+      * **actionUri** – tato hodnota obsahuje identifikátor URI pro dokumentaci o tom, jak fungují.
+      * **actionUriText** – tato hodnota je krátký popis textu akce.
 
-Následující tabulky popisují různé chyby typy (id pod výsledky v předchozím seznamu), které jsou k dispozici, a pokud selhání vytvoří protokoly.
+Následující tabulky popisují typy různých chybových (id v části s výsledky z předchozího seznamu), které jsou k dispozici, a pokud chyba vytvoří protokoly.
 
 ### <a name="gateway"></a>brána
 
 | Typ chyby | Důvod | Protokol|
 |---|---|---|
-| NoFault | Když je zjištěna žádná chyba |Ano|
-| GatewayNotFound | Nelze najít bránu nebo brány není zřízený. |Ne|
-| PlannedMaintenance |  Instance brány je v rámci údržby  |Ne|
-| UserDrivenUpdate | Toto selhání nastane, když probíhá aktualizace uživatele. Aktualizace může být operace změny velikosti. | Ne |
-| VipUnResponsive | Toto selhání nastane, když primární instance brány není dosažitelná z důvodu selhání kontroly stavu. | Ne |
-| PlatformInActive | Nastane problém s platformou. | Ne|
-| ServiceNotRunning | Základní služba není spuštěna. | Ne|
-| NoConnectionsFoundForGateway | Na bráně existovat žádné připojení. Toto selhání je pouze upozornění.| Ne|
-| ConnectionsNotConnected | Připojení nejsou připojené. Toto selhání je pouze upozornění.| Ano|
-| GatewayCPUUsageExceeded | Aktuální využití procesoru brány je > 95 %. | Ano |
+| NoFault | Pokud není zjištěna žádná chyba |Ano|
+| GatewayNotFound | Nejde najít brána nebo brána není zřízená. |Ne|
+| PlannedMaintenance |  Instance brány probíhá údržba  |Ne|
+| UserDrivenUpdate | Toto selhání nastane, pokud probíhá aktualizace uživatele. Aktualizace může být operace změny velikosti. | Ne |
+| VipUnResponsive | Toto selhání nastane, pokud primární instance brány nelze dosáhnout z důvodu selhání sondy stavu. | Ne |
+| PlatformInActive | Se vyskytl problém s platformou. | Ne|
+| ServiceNotRunning | Základní služba není spuštěná. | Ne|
+| NoConnectionsFoundForGateway | Neexistuje žádné připojení k bráně. Tato porucha je pouze upozornění.| Ne|
+| ConnectionsNotConnected | Připojení nejsou připojené. Tato porucha je pouze upozornění.| Ano|
+| GatewayCPUUsageExceeded | Brána aktuální využití procesoru je > 95 %. | Ano |
 
 ### <a name="connection"></a>Připojení
 
 | Typ chyby | Důvod | Protokol|
 |---|---|---|
-| NoFault | Když je zjištěna žádná chyba |Ano|
-| GatewayNotFound | Nelze najít bránu nebo brány není zřízený. |Ne|
-| PlannedMaintenance | Instance brány je v rámci údržby  |Ne|
-| UserDrivenUpdate | Toto selhání nastane, když probíhá aktualizace uživatele. Aktualizace může být operace změny velikosti.  | Ne |
-| VipUnResponsive | Toto selhání nastane, když primární instance brány není dosažitelná z důvodu selhání kontroly stavu. | Ne |
+| NoFault | Pokud není zjištěna žádná chyba |Ano|
+| GatewayNotFound | Nejde najít brána nebo brána není zřízená. |Ne|
+| PlannedMaintenance | Instance brány probíhá údržba  |Ne|
+| UserDrivenUpdate | Toto selhání nastane, pokud probíhá aktualizace uživatele. Aktualizace může být operace změny velikosti.  | Ne |
+| VipUnResponsive | Toto selhání nastane, pokud primární instance brány nelze dosáhnout z důvodu selhání sondy stavu. | Ne |
 | ConnectionEntityNotFound | Chybí konfigurace připojení | Ne |
-| ConnectionIsMarkedDisconnected | Připojení je označena "odpojené" |Ne|
-| ConnectionNotConfiguredOnGateway | Základní služby není k dispozici připojení nakonfigurovaná. | Ano |
-| ConnectionMarkedStandy | Základní služby je označena jako pohotovostní režim.| Ano|
-| Authentication | Neshoda předsdílených klíčů | Ano|
-| PeerReachability | Sdílené brána není dostupný. | Ano|
-| IkePolicyMismatch | Bránu sdílené má IKE zásady, které nejsou podporované službou Azure. | Ano|
-| Chyba WfpParse | Došlo k chybě při analýze protokolů Ochrana souborů systému Windows. |Ano|
+| ConnectionIsMarkedDisconnected | Připojení je označen "odpojené" |Ne|
+| ConnectionNotConfiguredOnGateway | Základní služba nemá nakonfigurované připojení. | Ano |
+| ConnectionMarkedStandby | Základní služba je označena jako pohotovostní režim.| Ano|
+| Authentication | Předsdílené klíče se neshodují. | Ano|
+| PeerReachability | Brána partnera není dostupná. | Ano|
+| IkePolicyMismatch | Partner brány má IKE zásady, které nejsou podporovány službou Azure. | Ano|
+| Chyba WfpParse | Došlo k chybě při analýze protokolu Ochrana souborů systému Windows. |Ano|
 
-## <a name="supported-gateway-types"></a>Podporované typy brány
+## <a name="supported-gateway-types"></a>Podporované typy bran
 
-Následující tabulka uvádí připojení a bran, které jsou podporovány při řešení problémů sledovací proces sítě:
+Následující tabulka uvádí, jaké brány a připojení jsou podporovány při odstraňování potíží Network Watcher:
 
 |  |  |
 |---------|---------|
-|**Typy brány**   |         |
+|**Typy bran**   |         |
 |Síť VPN      | Podporováno        |
 |ExpressRoute | Nepodporuje se |
 |**Typy sítě VPN** | |
-|Na základě trasy | Podporováno|
+|Směrování na základě | Podporováno|
 |Na základě zásad | Nepodporuje se|
 |**Typy připojení**||
-|Protokol IPSec| Podporováno|
+|IPSec| Podporováno|
 |VNet2Vnet| Podporováno|
 |ExpressRoute| Nepodporuje se|
 |VPNClient| Nepodporuje se|
 
 ## <a name="log-files"></a>Soubory protokolu
 
-Soubory protokolů Poradce prostředků jsou uložené v účtu úložiště po dokončení řešení potíží s prostředků. Následující obrázek znázorňuje příklad obsah volání, jehož výsledkem chyba.
+Soubory protokolů Poradce při potížích prostředků jsou uloženy v účtu úložiště po dokončení odstraňování prostředků. Následující obrázek ukazuje příklad obsah volání, která způsobila chybu.
 
 ![soubor ZIP][1]
 
 > [!NOTE]
-> V některých případech pouze podmnožinu soubory protokolů se zapíše do úložiště.
+> V některých případech pouze podmnožinu souborů protokolů se zapisuje do úložiště.
 
-Pokyny ke stahování souborů z účty azure storage, najdete v části [Začínáme s Azure Blob storage pomocí rozhraní .NET](../storage/blobs/storage-dotnet-how-to-use-blobs.md). Jiný nástroj, který je možné je Storage Explorer. Další informace o Storage Explorer naleznete zde na následující odkaz: [Storage Explorer](http://storageexplorer.com/)
+Pokyny ke stahování souborů z účtů úložiště azure, najdete v tématu [Začínáme s Azure Blob storage pomocí .NET](../storage/blobs/storage-dotnet-how-to-use-blobs.md). Dalším nástrojem, který je možné je Průzkumníka služby Storage. Další informace o Průzkumníku služby Storage najdete tady na následující odkaz: [Storage Explorer](http://storageexplorer.com/)
 
 ### <a name="connectionstatstxt"></a>ConnectionStats.txt
 
-**ConnectionStats.txt** soubor obsahuje celkové statistiky připojení, včetně příchozí a Odchozí bajty, stav připojení a času, které bylo vytvořeno připojení.
+**ConnectionStats.txt** soubor obsahuje celkové statistiky připojení, včetně příchozí a Odchozí bajty, stav připojení a čas bylo vytvořeno připojení.
 
 > [!NOTE]
-> Pokud vrátí volání rozhraní API pro odstraňování potíží v pořádku, je jediné, co, vrátí se v souboru zip **ConnectionStats.txt** souboru.
+> Pokud volání rozhraní API pro řešení problémů s vrátí v pořádku, jediné, co vrátí v souboru zip je **ConnectionStats.txt** souboru.
 
-Obsah tohoto souboru se podobně jako v následujícím příkladu:
+Obsah tohoto souboru jsou podobné následujícímu příkladu:
 
 ```
 Connectivity State : Connected
@@ -128,7 +128,7 @@ Connected Since : 2/1/2017 8:22:06 PM
 
 ### <a name="cpustatstxt"></a>CPUStats.txt
 
-**CPUStats.txt** soubor obsahuje využití procesoru a paměti, které jsou k dispozici při testování.  Obsah tohoto souboru je stejný jako v následujícím příkladu:
+**CPUStats.txt** soubor obsahuje využití procesoru a paměti, které jsou k dispozici v době testování.  Obsah tohoto souboru se podobá následujícímu příkladu:
 
 ```
 Current CPU Usage : 0 % Current Memory Available : 641 MBs
@@ -136,9 +136,9 @@ Current CPU Usage : 0 % Current Memory Available : 641 MBs
 
 ### <a name="ikeerrorstxt"></a>IKEErrors.txt
 
-**IKEErrors.txt** soubor obsahuje chyby IKE, ke kterým během monitorování nebyly nalezeny.
+**IKEErrors.txt** soubor obsahuje všechny chyby IKE, které byly nalezeny během monitorování.
 
-Následující příklad ukazuje obsah souboru IKEErrors.txt. Chyby se může lišit v závislosti na problém.
+Následující příklad ukazuje obsah souboru IKEErrors.txt kopie. Chyby se může lišit v závislosti na problému.
 
 ```
 Error: Authentication failed. Check shared key. Check crypto. Check lifetimes. 
@@ -147,11 +147,11 @@ Error: On-prem device sent invalid payload.
      based on log : IkeFindPayloadInPacket failed with Windows error 13843(ERROR_IPSEC_IKE_INVALID_PAYLOAD)
 ```
 
-### <a name="scrubbed-wfpdiagtxt"></a>Očistí wfpdiag.txt
+### <a name="scrubbed-wfpdiagtxt"></a>Scrubbed-wfpdiag.txt
 
-**Scrubbed wfpdiag.txt** protokolový soubor obsahuje protokol Ochrana souborů systému Windows. Tento protokol obsahuje protokolování paketu vyřaďte a IKE/AuthIP selhání.
+**Scrubbed wfpdiag.txt** protokolový soubor obsahuje wfp protokolu. Tento protokol obsahuje protokolování zahození paketu a IKE/AuthIP selhání.
 
-Následující příklad ukazuje obsah souboru Scrubbed wfpdiag.txt. V tomto příkladu nebyla sdílený klíč připojení správné, jak je vidět z ve třetím řádku dole. V následujícím příkladu je právě fragment celý protokolu, jako protokol může být náročná v závislosti na problém.
+Následující příklad ukazuje obsah souboru Scrubbed wfpdiag.txt. V tomto příkladu nebyl sdílený klíč připojení správné, jak je vidět z ve třetím řádku v dolní části. Následující příklad je pouze fragmentem celý protokol, protože protokol může být zdlouhavé v závislosti na problému.
 
 ```
 ...
@@ -182,9 +182,9 @@ Následující příklad ukazuje obsah souboru Scrubbed wfpdiag.txt. V tomto př
 
 ### <a name="wfpdiagtxtsum"></a>wfpdiag.txt.sum
 
-**Wfpdiag.txt.sum** je soubor protokolu vyrovnávací paměti a zpracovaných událostí.
+**Wfpdiag.txt.sum** je soubor protokolu vyrovnávací paměti a události byly zpracovány.
 
-V následujícím příkladu je obsah souboru wfpdiag.txt.sum.
+Následující příklad je obsah souboru wfpdiag.txt.sum.
 ```
 Files Processed:
     C:\Resources\directory\924336c47dd045d5a246c349b8ae57f2.GatewayTenantWorker.DiagnosticsStorage\2017-02-02T17-34-23\wfpdiag.etl
@@ -212,7 +212,7 @@ Elapsed Time            330 sec
 
 ## <a name="next-steps"></a>Další postup
 
-Zjistěte, jak diagnostikovat potíže s brány nebo připojení k bráně, najdete v tématu [diagnostikovat problémy komunikace mezi sítěmi](diagnose-communication-problem-between-networks.md).
+Zjistěte, jak diagnostikovat potíže s brány nebo připojení k bráně, najdete v článku [diagnostikovat problémy s komunikací mezi sítěmi](diagnose-communication-problem-between-networks.md).
 <!--Image references-->
 
 [1]: ./media/network-watcher-troubleshoot-overview/GatewayTenantWorkerLogs.png

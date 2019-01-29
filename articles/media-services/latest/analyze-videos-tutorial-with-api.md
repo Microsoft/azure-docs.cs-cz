@@ -1,5 +1,5 @@
 ---
-title: Analýza videa pomocí Media Services – Azure | Dokumentace Microsoftu
+title: Analýza videa pomocí Media Services pomocí rozhraní .NET – Azure | Dokumentace Microsoftu
 description: Pokud chcete analyzovat video pomocí služby Azure Media Services, postupujte podle kroků v tomto kurzu.
 services: media-services
 documentationcenter: ''
@@ -9,26 +9,24 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: tutorial
-ms.date: 01/23/2019
+ms.date: 01/28/2019
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: c3205163cf8796441e676e1775e4300d44a4012e
-ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
+ms.openlocfilehash: 191a6c9dc1cc5a24c1a46af21c5b63e3ff27a290
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54884907"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55150389"
 ---
-# <a name="tutorial-analyze-videos-with-media-services-v3-using-apis"></a>Kurz: Analýza videa pomocí Media Services v3 pomocí rozhraní API
+# <a name="tutorial-analyze-videos-with-media-services-v3-using-net"></a>Kurz: Analýza videa pomocí Media Services v3 pomocí .NET
 
 Tento kurz vám ukáže, jak analyzovat video pomocí služby Azure Media Services. Existuje mnoho případů, ve kterých můžete potřebovat získat podrobnější přehled o zaznamenaném video nebo audio obsahu. Pokud chtějí organizace například dosáhnout vyšší spokojenosti zákazníků, mohou převést záznamy řeči zákaznické podpory na text a vytvořit prohledávatelný katalog s rejstříky a řídicími panely. Pak může získat přehled o jejich firmy, jako je například seznam častých stížností, zdrojům stížnosti a další užitečné informace.
 
 V tomto kurzu získáte informace o následujících postupech:    
 
 > [!div class="checklist"]
-> * Vytvoření účtu Media Services
-> * Přístup k rozhraní API služby Media Services
-> * Konfigurace ukázkové aplikace
+> * Stažení ukázkové aplikace popsané v tématu
 > * Kontrola kódu, který analyzuje dané video
 > * Spuštění aplikace
 > * Prozkoumání výstupu
@@ -39,15 +37,10 @@ V tomto kurzu získáte informace o následujících postupech:
 ## <a name="prerequisites"></a>Požadavky
 
 - Pokud nemáte nainstalovanou sadu Visual Studio, můžete získat sadu [Visual Studio Community 2017](https://www.visualstudio.com/thank-you-downloading-visual-studio/?sku=Community&rel=15).
-- Nainstalovat a používat rozhraní příkazového řádku místně, musíte mít Azure CLI verze 2.0 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI](/cli/azure/install-azure-cli). 
+- [Vytvoření účtu Media Services](create-account-cli-how-to.md).<br/>Ujistěte se, že hodnoty, které jste použili pro název skupiny prostředků a název účtu Media Services mějte na paměti.
+- Postupujte podle kroků v [rozhraní API k přístupu k Azure Media Services pomocí Azure CLI](access-api-cli-how-to.md) a uložte přihlašovací údaje. Je potřeba použít pro přístup k rozhraní API.
 
-    V současné době všechny [Media Services v3 CLI](https://aka.ms/ams-v3-cli-ref) příkazy fungují ve službě Azure Cloud Shell. Doporučujeme používat rozhraní příkazového řádku místně.
-
-- [Vytvoření účtu Media Services](create-account-cli-how-to.md).
-
-    Ujistěte se, že hodnoty, které jste použili pro název skupiny prostředků a název účtu Media Services mějte na paměti.
-
-## <a name="download-the-sample"></a>Stažení ukázky
+## <a name="download-and-configure-the-sample"></a>Stažení a konfigurace ukázky aplikace
 
 Do svého počítače naklonujte pomocí následujícího příkazu úložiště GitHub obsahující ukázku .NET:  
 
@@ -57,7 +50,7 @@ Do svého počítače naklonujte pomocí následujícího příkazu úložiště
 
 Tato ukázka se nachází ve složce [AnalyzeVideos](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/tree/master/AMSV3Tutorials/AnalyzeVideos).
 
-[!INCLUDE [media-services-v3-cli-access-api-include](../../../includes/media-services-v3-cli-access-api-include.md)]
+Otevřít [appsettings.json](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/AnalyzeVideos/appsettings.json) stažený projekt. Nahraďte hodnoty s přihlašovacími údaji, které jste získali z [přístup k rozhraní API](access-api-cli-how-to.md).
 
 ## <a name="examine-the-code-that-analyzes-the-specified-video"></a>Kontrola kódu, který analyzuje dané video
 

@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.workload: identity
 ms.topic: article
 ms.date: 12/13/2018
-ms.component: hybrid
+ms.subservice: hybrid
 ms.author: billmath
-ms.openlocfilehash: fe28eda7571bf95d1e86419f5caf3cf65e4020b3
-ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
+ms.openlocfilehash: a24281f2b01b53ddb165d15bca4d8d43c26c5c05
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/26/2019
-ms.locfileid: "55078640"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55159842"
 ---
 # <a name="migrate-from-federation-to-password-hash-synchronization-for-azure-active-directory"></a>Migrace z federace na synchronizaci hodnot hash hesel pro Azure Active Directory
 

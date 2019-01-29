@@ -11,16 +11,19 @@ ms.workload: ''
 ms.topic: article
 ms.date: 01/16/2019
 ms.author: juliako
-ms.openlocfilehash: e286617897ecc9201c3880affd0a974f7330305a
-ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
+ms.openlocfilehash: 18c5e48b5f7dbf664b607b8b83473a914256590b
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54359629"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55104546"
 ---
 # <a name="streaming-endpoints"></a>Koncové body streamování
 
-V Microsoft Azure Media Services (AMS) [koncové body streamování](https://docs.microsoft.com/rest/api/media/streamingendpoints) entity reprezentuje službu streamování, která může doručovat obsah přímo do klientské aplikace přehrávače nebo do Content Delivery Network (CDN) pro další distribuce. Výstupní datový proud z koncového bodu streamování služby může být živý stream nebo Asset videa na vyžádání ve vašem účtu Media Services. Při vytváření účtu Azure Media Services, **výchozí** koncový bod streamování je vytvořen v zastaveném stavu. Nelze odstranit **výchozí** koncový bod streamování. Další koncové body streamování se dají vytvořit v rámci účtu. Pokud chcete spustit streamování videa, musíte spustit koncový bod streamování ze kterého chcete Streamovat videa. 
+V Microsoft Azure Media Services (AMS) [koncové body streamování](https://docs.microsoft.com/rest/api/media/streamingendpoints) entity reprezentuje službu streamování, která může doručovat obsah přímo do klientské aplikace přehrávače nebo do Content Delivery Network (CDN) pro další distribuce. Výstupní datový proud z **koncový bod streamování** služba může být v živém datovém proudu nebo Asset videa na vyžádání ve vašem účtu Media Services. Při vytváření účtu Azure Media Services, **výchozí** koncový bod streamování je vytvořen v zastaveném stavu. Nelze odstranit **výchozí** koncový bod streamování. Další koncové body streamování se dají vytvořit v rámci účtu. 
+
+> [!NOTE]
+> Pokud chcete spustit streamování videa, musíte spustit **koncový bod streamování** ze kterého chcete Streamovat videa. 
 
 ## <a name="naming-convention"></a>Zásady vytváření názvů
 

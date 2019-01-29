@@ -7,19 +7,19 @@ author: curtand
 manager: mtillman
 editor: ''
 ms.service: active-directory
-ms.component: users-groups-roles
+ms.subservice: users-groups-roles
 ms.topic: article
 ms.workload: identity
-ms.date: 01/14/2019
+ms.date: 01/28/2019
 ms.author: curtand
 ms.reviewer: elkuzmen
-ms.custom: it-pro
-ms.openlocfilehash: 44fe3b54e2dfedb71b50a75befce96121ecebe05
-ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
+ms.custom: it-pro;seo-update-jan
+ms.openlocfilehash: ec1f36bee1a764f98473d7a6d1a6d7359dde9ea7
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2019
-ms.locfileid: "54320238"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55156152"
 ---
 # <a name="take-over-an-unmanaged-directory-as-administrator-in-azure-active-directory"></a>Převzít kontrolu nad nespravovaného adresáře jako správce v Azure Active Directory
 Tento článek popisuje dva způsoby, jak převzít kontrolu nad název domény DNS nespravovaného adresáře v Azure Active Directory (Azure AD). Když se samoobslužný uživatel zaregistruje ke cloudové službě, která využívá Azure AD, přidá se do nespravovaného adresáře Azure AD na základě svojí e-mailové domény. Další informace o samoobslužné nebo "virálního" registrace pro službu, najdete v článku [co je Samoobslužná registrace do služby Azure Active Directory?](directory-self-service-signup.md)
@@ -131,42 +131,42 @@ cmdlet | Využití
 ### <a name="powershell-example"></a>Příklad PowerShellu
 
 1. Připojení k Azure AD pomocí přihlašovacích údajů, které byly použity na nabídku samoobslužné služby:
-  ````
+  ```
     Install-Module -Name MSOnline
     $msolcred = get-credential
     
     connect-msolservice -credential $msolcred
-  ````
+  ```
 2. Získáte seznam domén:
   
-  ````
+  ```
     Get-MsolDomain
-  ````
+  ```
 3. Spuštěním rutiny Get-MsolDomainVerificationDns způsobit:
-  ````
+  ```
     Get-MsolDomainVerificationDns –DomainName *your_domain_name* –Mode DnsTxtRecord
   
     For example:
   
     Get-MsolDomainVerificationDns –DomainName contoso.com –Mode DnsTxtRecord
-  ````
+  ```
 
 4. Zkopírujte hodnotu (výzva), která je vrácena z tohoto příkazu. Příklad:
-  ````
+  ```
     MS=32DD01B82C05D27151EA9AE93C5890787F0E65D9
-  ````
+  ```
 5. Ve vašem oboru názvů veřejné DNS vytvořte záznam DNS txt, který obsahuje hodnotu, kterou jste zkopírovali v předchozím kroku. Název tohoto záznamu je název nadřazené domény, takže pokud vytvoříte tento záznam o prostředku DNS role ze systému Windows Server, ponechte název prázdné a stačí vložit záznam hodnotu do textového pole.
 6. Spusťte rutinu Confirm-MsolDomain ověření před obrovskou výzvou –:
   
-  ````
+  ```
     Confirm-MsolEmailVerifiedDomain -DomainName *your_domain_name*
-  ````
+  ```
   
   Příklad:
   
-  ````
+  ```
     Confirm-MsolEmailVerifiedDomain -DomainName contoso.com
-  ````
+  ```
 
 Úspěšné výzvy se vrátíte na příkazový řádek bez chyby.
 

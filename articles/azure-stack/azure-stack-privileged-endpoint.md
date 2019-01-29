@@ -11,15 +11,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/22/2018
+ms.date: 01/25/2019
 ms.author: mabrigg
 ms.reviewer: fiseraci
-ms.openlocfilehash: df1f8d805c950bdfbe2c18f365a450a6d630891b
-ms.sourcegitcommit: d372d75558fc7be78b1a4b42b4245f40f213018c
+ms.openlocfilehash: a9ca61d7845c427429282885c658f4a4cb9b7b7a
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/09/2018
-ms.locfileid: "51300434"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55097655"
 ---
 # <a name="using-the-privileged-endpoint-in-azure-stack"></a>Pomocí privilegovaných koncového bodu ve službě Azure Stack
 
@@ -52,29 +52,29 @@ Před zahájením tohoto postupu pro integrovaný systém, ujistěte se, že obd
 
     - Na integrovaný systém spusťte následující příkaz z relace prostředí Windows PowerShell se zvýšenými oprávněními pro přidání období jako důvěryhodného hostitele, na posílené virtuálního počítače spuštěného na hostiteli životního cyklu hardwaru nebo Privileged Access pracovní stanice.
 
-      ````PowerShell
+      ```PowerShell
         winrm s winrm/config/client '@{TrustedHosts="<IP Address of Privileged Endpoint>"}'
-      ````
+      ```
     - Pokud spouštíte ASDK, přihlaste se k hostiteli development kit.
 
 2. Na posílené virtuálního počítače spuštěného na hostiteli životního cyklu hardwaru nebo Privileged Access pracovní stanice otevřete relaci Windows Powershellu. Spusťte následující příkazy k vytvoření vzdálené relace na virtuálním počítači, který je hostitelem období:
  
     - Na integrovaný systém:
-      ````PowerShell
+      ```PowerShell
         $cred = Get-Credential
 
         Enter-PSSession -ComputerName <IP_address_of_ERCS> `
           -ConfigurationName PrivilegedEndpoint -Credential $cred
-      ````
+      ```
       `ComputerName` Parametr může být IP adresa nebo název DNS některého z virtuálních počítačů, jejichž hostitelem období. 
     - Pokud spouštíte ASDK:
      
-      ````PowerShell
+      ```PowerShell
         $cred = Get-Credential
 
         Enter-PSSession -ComputerName azs-ercs01 `
           -ConfigurationName PrivilegedEndpoint -Credential $cred
-      ```` 
+      ``` 
    Po zobrazení výzvy použijte následující pověření:
 
       - **Uživatelské jméno**: Zadejte účet CloudAdmin ve formátu  **&lt; *doméně služby Azure Stack*&gt;\cloudadmin**. (ASDK, uživatelské jméno je **azurestack\cloudadmin**.)
@@ -97,9 +97,9 @@ Před zahájením tohoto postupu pro integrovaný systém, ujistěte se, že obd
     - Get-Help
     - Get-ThirdPartyNotices
     - Objekt míry
-    - Nové CloudAdminUser
+    - New-CloudAdminUser
     - Výchozí out-Buffer:
-    - Odebrat CloudAdminUser
+    - Remove-CloudAdminUser
     - Select-Object
     - Set-CloudAdminUserPassword
     - Test-AzureStack
@@ -124,38 +124,38 @@ Chcete-li importovat období relaci na místním počítači, proveďte následu
 
     -Na integrovaný systém spusťte následující příkaz z relace prostředí Windows PowerShell se zvýšenými oprávněními pro přidání období jako důvěryhodného hostitele, na posílené virtuálního počítače spuštěného na hostiteli životního cyklu hardwaru nebo Privileged Access pracovní stanice.
 
-      ````PowerShell
+      ```PowerShell
         winrm s winrm/config/client '@{TrustedHosts="<IP Address of Privileged Endpoint>"}'
-      ````
+      ```
     - Pokud spouštíte ASDK, přihlaste se k hostiteli development kit.
 
 2. Na posílené virtuálního počítače spuštěného na hostiteli životního cyklu hardwaru nebo Privileged Access pracovní stanice otevřete relaci Windows Powershellu. Spusťte následující příkazy k vytvoření vzdálené relace na virtuálním počítači, který je hostitelem období:
  
     - Na integrovaný systém:
-      ````PowerShell
+      ```PowerShell
         $cred = Get-Credential
 
         $session = New-PSSession -ComputerName <IP_address_of_ERCS> `
           -ConfigurationName PrivilegedEndpoint -Credential $cred
-      ````
+      ```
       `ComputerName` Parametr může být IP adresa nebo název DNS některého z virtuálních počítačů, jejichž hostitelem období. 
     - Pokud spouštíte ASDK:
      
-      ````PowerShell
+      ```PowerShell
        $cred = Get-Credential
 
        $session = New-PSSession -ComputerName azs-ercs01 `
           -ConfigurationName PrivilegedEndpoint -Credential $cred
-      ```` 
+      ``` 
    Po zobrazení výzvy použijte následující pověření:
 
       - **Uživatelské jméno**: Zadejte účet CloudAdmin ve formátu  **&lt; *doméně služby Azure Stack*&gt;\cloudadmin**. (ASDK, uživatelské jméno je **azurestack\cloudadmin**.)
       - **Heslo**: Zadejte stejné heslo, které jste zadali během instalace pro účet správce domény AzureStackAdmin.
 
 3. Importovat relace období do místního počítače
-    ````PowerShell 
+    ```PowerShell 
         Import-PSSession $session
-    ````
+    ```
 4. Nyní jste – používají dokončování pomocí tabulátoru a provádět obvyklým skriptování v místní relaci Powershellu s funkcemi a rutiny období, bez snižuje stav zabezpečení služby Azure Stack. Užijte si ji!
 
 
@@ -178,4 +178,5 @@ Po přepisu protokolové soubory jsou úspěšně převedena do sdílené složk
 
 
 ## <a name="next-steps"></a>Další postup
+
 [Azure Stack diagnostické nástroje](azure-stack-diagnostics.md)

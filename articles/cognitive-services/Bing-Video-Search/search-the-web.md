@@ -6,16 +6,16 @@ services: cognitive-services
 author: swhite-msft
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: bing-video-search
+ms.subservice: bing-video-search
 ms.topic: overview
 ms.date: 04/15/2017
 ms.author: scottwhi
-ms.openlocfilehash: e48a0a056628e0c863330de792f8edfaa48aae34
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: f7f97f68db317bb526b9a8542b76633ef16fb766
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51261855"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55194657"
 ---
 # <a name="what-is-bing-video-search"></a>Co je Vyhledávání videí Bingu?
 
@@ -150,7 +150,7 @@ Host: api.cognitive.microsoft.com
 
 ## <a name="expanding-the-query"></a>Rozšíření dotazu
 
-Pokud Bing dokáže rozšířením dotazu zúžit původní hledání, bude objekt [Videos](https://docs.microsoft.com/rest/api/cognitiveservices/bing-video-api-v7-reference#videos) obsahovat pole `queryExpansions`. Například, pokud byl původní dotaz *čištění okapů*, rozšířené dotazy můžou být: **nástroje na** čištění okapů, čištění okapů **ze země**, **Stroj na** čištění okapů a **snadné** čištění okapů.
+Pokud Bing dokáže rozšířením dotazu zúžit původní hledání, bude objekt [Videos](https://docs.microsoft.com/rest/api/cognitiveservices/bing-video-api-v7-reference#videos) obsahovat pole `queryExpansions`. Například, pokud se dotaz *čištění mezery*, rozšířené dotazy nesmusí být: Ovládací prvek čištění **nástroje**, čištění mezery **od základů**, čištění vazbu **počítače**, a **snadno** čištění ovládací prvek.
 
 Následující příklad ukazuje rozšířené dotazy pro dotaz *čištění okapů*.
 
@@ -236,7 +236,7 @@ Pomocí polí `text` a `thumbnail` můžete uživateli zobrazit rozšířené ř
 
 [!INCLUDE [cognitive-services-bing-throttling-requests](../../../includes/cognitive-services-bing-throttling-requests.md)]
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Pokud chcete rychle začít s vaším prvním požadavkem, projděte si popis [vytvoření prvního požadavku](./quick-start.md).
 

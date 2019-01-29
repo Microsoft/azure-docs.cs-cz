@@ -7,12 +7,12 @@ ms.service: postgresql
 ms.devlang: azurecli
 ms.topic: conceptual
 ms.date: 05/4/2018
-ms.openlocfilehash: 214c6c4dc3b2dd83e6bf3dfa3355ad6f6aa2eb18
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: d450b8d154e920bfc9a82314d34f20a52af71dab
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53539139"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55181992"
 ---
 # <a name="create-and-manage-azure-database-for-postgresql-firewall-rules-using-azure-cli"></a>Vytvoření a správě Azure Database for postgresql – pravidla brány firewall pomocí Azure CLI
 Pravidla brány firewall na úrovni serveru umožňují správcům spravovat přístup ke službě Azure Database for PostgreSQL Server z konkrétní IP adresu nebo rozsah IP adres. Použití vhodné příkazy rozhraní příkazového řádku Azure, můžete vytvořit, aktualizovat, odstranit, seznam a zobrazit pravidla brány firewall pro správu serveru. Přehled služby Azure Database pro PostgreSQL pravidla brány firewall, naleznete v tématu [– Azure Database for PostgreSQL Server pravidla brány firewall](concepts-firewall-rules.md)
@@ -70,7 +70,7 @@ az postgres server firewall-rule show --resource-group myresourcegroup --server-
 Po úspěšném nasazení výstup tohoto příkazu jsou uvedeny podrobnosti pravidla brány firewall, které jste zadali, ve výchozím nastavení ve formátu JSON. Pokud dojde k selhání, zobrazí výstup chybovou zprávu.
 
 ## <a name="delete-firewall-rule"></a>Odstranit pravidlo brány firewall
-Odvolání přístupu pro rozsah IP adres serveru odstranit stávající pravidlo brány firewall pomocí provádí [az postgres server firewall-rule delete](/cli/azure/postgres/server/firewall-rule#az_postgres_server_firewall_rule_delete) příkazu. Zadejte název stávající pravidlo brány firewall.
+Odvolání přístupu pro rozsah IP adres serveru odstranit stávající pravidlo brány firewall pomocí provádí [az postgres server firewall-rule delete](/cli/azure/postgres/server/firewall-rule) příkazu. Zadejte název stávající pravidlo brány firewall.
 ```azurecli-interactive
 az postgres server firewall-rule delete --resource-group myresourcegroup --server-name mydemoserver --name AllowIpRange
 ```

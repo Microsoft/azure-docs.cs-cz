@@ -7,19 +7,19 @@ author: jeevansd
 manager: daveba
 ms.assetid: fbb76765-92d7-4801-9833-573b11b4d910
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 07/08/2017
 ms.author: jeedes
-ms.openlocfilehash: 53a16977c74ebbf9e955ddd8e9d43315d71f84f6
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: e48c32d93da6cc84e35f2b2952827a5d06a5b319
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54808965"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55149730"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sumologic"></a>Kurz: Integrace Azure Active Directory s SumoLogic
 

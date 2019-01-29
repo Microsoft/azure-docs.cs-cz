@@ -8,7 +8,7 @@ manager: daveba
 editor: ''
 ms.assetid: 54e1b01b-03ee-4c46-bcf0-e01affc0419d
 ms.service: active-directory
-ms.component: devices
+ms.subservice: devices
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -16,12 +16,12 @@ ms.topic: overview
 ms.date: 10/03/2018
 ms.author: markvi
 ms.reviewer: spunukol
-ms.openlocfilehash: 53474d2d364b26f4d54e1917e4aa50bc6f0e5280
-ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
+ms.openlocfilehash: 20bfa4cf02c86922836a70f8885f910814eafb22
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54449584"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55092150"
 ---
 # <a name="how-to-manage-the-stale-devices-in-azure-ad"></a>Jak: Správa zastaralých zařízení ve službě Azure AD
 

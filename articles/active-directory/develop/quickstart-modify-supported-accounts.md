@@ -7,7 +7,7 @@ author: CelesteDG
 manager: mtillman
 editor: ''
 ms.service: active-directory
-ms.component: develop
+ms.subservice: develop
 ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
@@ -16,14 +16,14 @@ ms.date: 10/25/2018
 ms.author: celested
 ms.custom: aaddev
 ms.reviewer: lenalepa, sureshja
-ms.openlocfilehash: 71c8b9cc05d15a4c4eadb6321de580ed9768a438
-ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
-ms.translationtype: HT
+ms.openlocfilehash: 2d10dcde0a0e35a3e717cde34048437b6119fbf6
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49988671"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55101224"
 ---
-# <a name="quickstart-modify-the-accounts-supported-by-an-application-preview"></a>Rychlý start: Úprava účtů podporovaných aplikací (Preview)
+# <a name="quickstart-modify-the-accounts-supported-by-an-application-preview"></a>Rychlý start: Úpravy účtů, které podporuje aplikace (Preview)
 
 Při registraci aplikace na platformě Microsoft Identity Platform možná budete chtít svou aplikaci zpřístupnit pouze uživatelům ve vaší organizaci. Alternativně můžete chtít aplikaci zpřístupnit také uživatelům v externích organizacích nebo uživatelům v externích organizacích i uživatelům, kteří nutně nejsou součástí žádné organizace (osobní účty).
 
@@ -79,7 +79,7 @@ Ve výchozím nastavení je implicitní udělení OAuth 2.0 u aplikací zakázan
 1. Vyberte **Tokeny ID**, **Přístupové tokeny** nebo obojí.
 1. Vyberte **Uložit**.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Další informace najdete v těchto rychlých startech souvisejících se správou aplikací:
 

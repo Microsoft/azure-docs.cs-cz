@@ -7,19 +7,19 @@ author: curtand
 manager: mtillman
 editor: ''
 ms.service: active-directory
-ms.component: users-groups-roles
+ms.subservice: users-groups-roles
 ms.topic: article
 ms.workload: identity
 ms.date: 10/16/2018
 ms.author: curtand
 ms.reviewer: elkuzmen
 ms.custom: it-pro
-ms.openlocfilehash: 30b86d7938279133c303ad4eae840f520a4900e6
-ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
+ms.openlocfilehash: 63ddff08b93ffa072add0e8f093e1d4e0f1aa01e
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49394676"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55195813"
 ---
 # <a name="what-is-self-service-signup-for-azure-active-directory"></a>Co je Samoobslužná registrace do služby Azure Active Directory?
 Tento článek vysvětluje Samoobslužná registrace do služby a jak ho podporují v Azure Active Directory (Azure AD). Pokud chcete převzít kontrolu nad název domény z nespravovaného Azure AD tenanta, naleznete v tématu [převzít kontrolu nad nespravovaného adresáře jako správce](domains-admin-takeover.md).
@@ -63,9 +63,9 @@ Flow a PowerApps zkušební přihlašování neřídí **AllowAdHocSubscriptions
 ### <a name="how-do-the-controls-work-together"></a>Jak ovládacích prvků spolupracují?
 Tyto dva parametry můžete použít ve spojení k definování přesnější kontrolu nad Samoobslužná registrace do služby. Například následující příkaz umožní uživatelům provádět samoobslužné registrace, ale pouze v případě, že tito uživatelé už máte účet ve službě Azure AD (jinými slovy, uživatelé, kteří bude nutné vytvořit účet ověřený e-mailem nejprve nelze provádět samoobslužné registrace):
 
-````powershell
+```powershell
     Set-MsolCompanySettings -AllowEmailVerifiedUsers $false -AllowAdHocSubscriptions $true
-````
+```
 
 Následující vývojový diagram vysvětluje různé kombinace těchto parametrů a výsledné podmínky k adresáři a Samoobslužná registrace do služby.
 

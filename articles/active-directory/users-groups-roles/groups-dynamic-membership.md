@@ -8,18 +8,18 @@ manager: mtillman
 editor: ''
 ms.service: active-directory
 ms.workload: identity
-ms.component: users-groups-roles
+ms.subservice: users-groups-roles
 ms.topic: article
 ms.date: 11/07/2018
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
-ms.openlocfilehash: 148a657b1a5db5b1b33c94e27d695e7c24dfb265
-ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
+ms.openlocfilehash: 98638c2fbd3f60ec0db009b52507eadcadd87ab4
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54214637"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55172319"
 ---
 # <a name="dynamic-membership-rules-for-groups-in-azure-active-directory"></a>Pravidla dynamického členství pro skupiny ve službě Azure Active Directory
 
@@ -79,7 +79,7 @@ Toto jsou vlastnosti uživatele, které vám umožní vytvořit jeden výraz.
 | --- | --- | --- |
 | city |Některé řetězcová hodnota nebo *null* |(user.city - eq "value") |
 | Země |Některé řetězcová hodnota nebo *null* |(user.country - eq "value") |
-| Firma | Některé řetězcová hodnota nebo *null* | (user.companyName - eq "value") |
+| companyName | Některé řetězcová hodnota nebo *null* | (user.companyName - eq "value") |
 | Oddělení |Některé řetězcová hodnota nebo *null* |(user.department - eq "value") |
 | displayName |Libovolnou hodnotou řetězce |(user.displayName - eq "value") |
 | employeeId |Libovolnou hodnotou řetězce |(user.employeeId - eq "value")<br>(user.employeeId - ne *null*) |
@@ -90,8 +90,8 @@ Toto jsou vlastnosti uživatele, které vám umožní vytvořit jeden výraz.
 | mailNickName |Libovolnou hodnotou řetězce (poštovní alias uživatele) |(user.mailNickName - eq "value") |
 | Mobilní zařízení |Některé řetězcová hodnota nebo *null* |(user.mobile - eq "value") |
 | ID objektu |Identifikátor GUID objektu uživatele |(user.objectId - eq "11111111-1111-1111-1111-111111111111") |
-| onPremisesSecurityIdentifier | On-premises identifikátor zabezpečení (SID) pro uživatele, kteří byly synchronizované z místní do cloudu. |(user.onPremisesSecurityIdentifier - eq "S-1-1-11-1111111111-1111111111-1111111111-1111111") |
-| passwordPolicies |Žádný DisableStrongPassword DisablePasswordExpiration DisablePasswordExpiration, DisableStrongPassword |(user.passwordPolicies - eq "DisableStrongPassword") |
+| onPremisesSecurityIdentifier | On-premises identifikátor zabezpečení (SID) pro uživatele, kteří byly synchronizované z místní do cloudu. |(user.onPremisesSecurityIdentifier -eq "S-1-1-11-1111111111-1111111111-1111111111-1111111") |
+| passwordPolicies |None DisableStrongPassword DisablePasswordExpiration DisablePasswordExpiration, DisableStrongPassword |(user.passwordPolicies - eq "DisableStrongPassword") |
 | physicalDeliveryOfficeName |Některé řetězcová hodnota nebo *null* |(user.physicalDeliveryOfficeName - eq "value") |
 | PSČ |Některé řetězcová hodnota nebo *null* |(user.postalCode - eq "value") |
 | preferredLanguage |Kód ISO 639-1 |(user.preferredLanguage - eq "en US") |
@@ -100,9 +100,9 @@ Toto jsou vlastnosti uživatele, které vám umožní vytvořit jeden výraz.
 | streetAddress |Některé řetězcová hodnota nebo *null* |(user.streetAddress - eq "value") |
 | Příjmení |Některé řetězcová hodnota nebo *null* |(user.surname - eq "value") |
 | telephoneNumber |Některé řetězcová hodnota nebo *null* |(user.telephoneNumber - eq "value") |
-| Místo využívání |Dvě lettered směrové číslo země |(user.usageLocation - eq "USA") |
+| usageLocation |Dvě lettered směrové číslo země |(user.usageLocation - eq "USA") |
 | userPrincipalName (Hlavní název uživatele) |Libovolnou hodnotou řetězce |(user.userPrincipalName -eq "alias@domain") |
-| UserType |člen hosta *null* |(user.userType - eq "Člen") |
+| userType |člen hosta *null* |(user.userType - eq "Člen") |
 
 ### <a name="properties-of-type-string-collection"></a>Vlastnosti kolekce typu řetězec
 
@@ -122,11 +122,11 @@ V následující tabulce jsou uvedeny všechny podporované operátory a jejich 
 | Nerovná se |-ne |
 | Rovná se |-eq |
 | Nemá na začátku |-notStartsWith |
-| Začíná |startsWith – |
+| Začíná |-startsWith |
 | Neobsahuje |-notContains |
 | Contains |-obsahuje |
 | Neodpovídá |-notMatch |
-| Shoda |-odpovídat |
+| Shoda |-match |
 | V | -v |
 | Ne v | -notIn |
 
@@ -357,7 +357,7 @@ Můžete použít následující atributy zařízení.
  enrollmentProfileName | Název profilu profil registrace zařízení Apple nebo Windows Autopilot | (device.enrollmentProfileName - eq "DEP Iphony")
  isRooted | Hodnota TRUE, false | (device.isRooted - eq true)
  managementType | MDM (pro mobilní zařízení)<br>PC (pro počítače spravované pomocí agenta Intune pro počítače) | (device.managementType - eq "MDM")
- deviceId | platné ID zařízení Azure AD | (device.deviceId - eq "d4fe7726-5966-431c-b3b8-cddc8fdb717d")
+ deviceId | platné ID zařízení Azure AD | (device.deviceId -eq "d4fe7726-5966-431c-b3b8-cddc8fdb717d")
  ID objektu | ID objektu platný Azure AD |  (device.objectId -eq 76ad43c9-32c5-45e8-a272-7b58b58f596d")
  systemLabels | jakýkoli řetězec odpovídající vlastnosti zařízení Intune pro označování moderního pracoviště zařízení | (device.systemLabels – obsahuje "M365Managed")
 

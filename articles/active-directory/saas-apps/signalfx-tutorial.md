@@ -1,5 +1,5 @@
 ---
-title: 'Kurz: Integrace Azure Active Directory se službou SignalFx | Dokumentace Microsoftu'
+title: 'Kurz: Integrace Azure Active Directory s SignalFx | Dokumentace Microsoftu'
 description: Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a SignalFx.
 services: active-directory
 documentationCenter: na
@@ -8,21 +8,21 @@ manager: femila
 ms.reviewer: joflore
 ms.assetid: 6d5ab4b0-29bc-4b20-8536-d64db7530f32
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 04/16/2018
 ms.author: jeedes
-ms.openlocfilehash: 0d21a409669cc7d7fceeec9787efbe31d880597c
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 6f2d869f345aeb8f50d42de6b1533b849ffb2182
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39437844"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55197564"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-signalfx"></a>Kurz: Integrace Azure Active Directory se službou SignalFx
+# <a name="tutorial-azure-active-directory-integration-with-signalfx"></a>Kurz: Integrace Azure Active Directory s SignalFx
 
 V tomto kurzu se dozvíte, jak integrovat SignalFx s Azure Active Directory (Azure AD).
 
@@ -38,7 +38,7 @@ Pokud chcete zjistit další podrobnosti o integraci aplikací SaaS v Azure AD, 
 
 Konfigurace integrace Azure AD s SignalFx, potřebujete následující položky:
 
-- S předplatným služby Azure AD
+- Předplatné Azure AD
 - SignalFx jednotného přihlašování povolená předplatného
 
 > [!NOTE]
@@ -60,7 +60,7 @@ Konfigurace integrace SignalFx do služby Azure AD, budete muset přidat SignalF
 
 **Chcete-li přidat SignalFx z galerie, postupujte následovně:**
 
-1. V  **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu. 
+1. V **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu. 
 
     ![Tlačítko Azure Active Directory][1]
 
@@ -124,7 +124,7 @@ V této části Povolení služby Azure AD jednotného přihlašování na port�
     | Název atributu | Hodnota atributu |
     | ------------------- | -------------------- |    
     | User.FirstName          | user.givenname |
-    | User.email          | User.Mail |
+    | User.email          | user.mail |
     | PersonImmutableID       | user.userprincipalname    |
     | User.LastName       | user.surname    |
 
@@ -223,7 +223,7 @@ Cílem této části je vytvořte uživatele Britta Simon v SignalFx. SignalFx p
 Když se uživatel přihlásí SignalFx ze SAML SSO poprvé, [tým podpory SignalFx](mailto:kmazzola@signalfx.com) je odešle e-mail s odkazem, jenž se musí proklikejte se k ověření. K tomu dochází pouze při prvním přihlášení uživatele; pokusy o přihlášení. následné nebude vyžadovat ověření e-mailem.
 
 >[!Note]
->Pokud je potřeba ručně vytvořit uživatele, obraťte se na [SignalFx tým podpory](mailto:kmazzola@signalfx.com)
+>Pokud je potřeba ručně vytvořit uživatele, obraťte se na [SignalFx tým podpory](mailto:kmazzola@signalfx.com)
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřadit uživatele Azure AD
 
@@ -255,7 +255,7 @@ V této části je povolit Britta Simon k udělení přístupu k SignalFx použi
 
 1. Klikněte na tlačítko **přiřadit** tlačítko **přidat přiřazení** dialogového okna.
     
-### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování
+### <a name="test-single-sign-on"></a>Test jednotného přihlašování
 
 V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 

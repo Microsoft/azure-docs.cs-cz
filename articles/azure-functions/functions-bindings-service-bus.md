@@ -12,12 +12,12 @@ ms.devlang: multiple
 ms.topic: reference
 ms.date: 04/01/2017
 ms.author: cshoe
-ms.openlocfilehash: 21f8d8ad63e8ea7c134477a6171155c40a2b4dc8
-ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
+ms.openlocfilehash: 2a0a4aeded3667b7c8f4a31821adb2fc40339137
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/27/2018
-ms.locfileid: "53792012"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55104095"
 ---
 # <a name="azure-service-bus-bindings-for-azure-functions"></a>Azure Service Bus vazby pro službu Azure Functions
 
@@ -629,7 +629,7 @@ Tato část popisuje globální konfiguraci nastavení k dispozici pro tuto vazb
 |Vlastnost  |Výchozí | Popis |
 |---------|---------|---------| 
 |maxAutoRenewDuration|00:05:00|Maximální doba, ve kterém se automatické obnovení zámku zprávy.| 
-|Automatické dokončování|false (nepravda)|Určuje, zda by měl aktivační událost okamžitě označit jako kompletní (automatické dokončování) nebo počkejte, zpracování volání dokončení.| 
+|Automatické dokončování|true (pravda)|Určuje, zda by měl aktivační událost okamžitě označit jako kompletní (automatické dokončování) nebo počkejte, zpracování volání dokončení.| 
 |maxConcurrentCalls|16|Maximální počet souběžných volání zpětného volání, které by mělo zahájit pumpu zpráv. Ve výchozím nastavení modul runtime služby Functions zpracovávat více zpráv souběžně. Chcete-li řídit modul runtime najednou zpracovat pouze jedné frontě nebo tématu zprávy, nastavte `maxConcurrentCalls` na hodnotu 1. | 
 |prefetchCount|neuvedeno|Výchozí PrefetchCount, který se použije základní MessageReceiver.| 
 

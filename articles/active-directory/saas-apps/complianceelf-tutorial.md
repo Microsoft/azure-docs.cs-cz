@@ -1,5 +1,5 @@
 ---
-title: 'Kurz: Integrace Azure Active Directory se službou ELF dodržování předpisů | Dokumentace Microsoftu'
+title: 'Kurz: Integrace Azure Active Directory s ELF dodržování předpisů | Dokumentace Microsoftu'
 description: Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a ELF dodržování předpisů.
 services: active-directory
 documentationCenter: na
@@ -8,21 +8,21 @@ manager: femila
 ms.reviewer: joflore
 ms.assetid: 69c6efc3-54c7-49ec-b827-33177c09aa13
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 04/16/2018
 ms.author: jeedes
-ms.openlocfilehash: e5a7bfc51bcd1931def202d701127de701afb595
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: 509bec49840537dbb5bb7f0ec69cc4dfb750244a
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39042856"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55189421"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-compliance-elf"></a>Kurz: Integrace Azure Active Directory se službou ELF dodržování předpisů
+# <a name="tutorial-azure-active-directory-integration-with-compliance-elf"></a>Kurz: Integrace Azure Active Directory s ELF dodržování předpisů
 
 V tomto kurzu se dozvíte, jak integrovat ELF dodržování předpisů se službou Azure Active Directory (Azure AD).
 
@@ -38,7 +38,7 @@ Pokud chcete zjistit další podrobnosti o integraci aplikací SaaS v Azure AD, 
 
 Konfigurace integrace Azure AD s ELF dodržování předpisů, potřebujete následující položky:
 
-- S předplatným služby Azure AD
+- Předplatné Azure AD
 - Dodržování předpisů ELF jednotného přihlašování povolená předplatného
 
 > [!NOTE]
@@ -60,7 +60,7 @@ Konfigurace integrace ELF dodržování předpisů do služby Azure AD, budete m
 
 **Chcete-li přidat ELF dodržování předpisů z galerie, postupujte následovně:**
 
-1. V  **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu. 
+1. V **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu. 
 
     ![Tlačítko Azure Active Directory][1]
 
@@ -106,22 +106,22 @@ V této části Povolení služby Azure AD jednotného přihlašování na port�
 
     ![Jednotné přihlašování – dialogové okno](./media/complianceelf-tutorial/tutorial_complianceelf_samlbase.png)
 
-3. Na **dodržování předpisů ELF domény a adresy URL** části, proveďte následující kroky, pokud chcete nakonfigurovat aplikace v **IDP** iniciované režimu:
+3. Na **dodržování předpisů ELF domény a adresy URL** části, proveďte následující kroky, pokud chcete nakonfigurovat aplikace v **IDP** iniciované režimu:
 
     ![Dodržování předpisů ELF domény a adresy URL jednotného přihlašování – informace](./media/complianceelf-tutorial/tutorial_complianceelf_url.png)
 
     V **identifikátor** textového pole zadejte adresu URL jako: `https://sso.cordium.com`
 
-4. Zkontrolujte **zobrazit pokročilé nastavení URL** a provést následující krok, pokud chcete nakonfigurovat aplikace v **SP** iniciované režimu:
+4. Zkontrolujte **zobrazit pokročilé nastavení URL** a provést následující krok, pokud chcete nakonfigurovat aplikace v **SP** iniciované režimu:
 
     ![Dodržování předpisů ELF domény a adresy URL jednotného přihlašování](./media/complianceelf-tutorial/tutorial_complianceelf_url1.png)
 
-    V **přihlašovací adresa URL** textového pole zadejte adresu URL pomocí následujícímu vzoru: `https://<subdomain>.complianceelf.com`
+    V **přihlašovací adresa URL** textového pole zadejte adresu URL pomocí následujícímu vzoru: `https://<subdomain>.complianceelf.com`
     
     > [!NOTE] 
     > Tato hodnota není skutečný. Aktualizujte této hodnoty skutečné přihlašovací adresa URL. Kontakt [tým podpory dodržování předpisů ELF](mailto:support@complianceelf.com) tuto výhodu získáte.
 
-5. Na **podpisový certifikát SAML** klikněte na tlačítko Kopírovat zkopírujte **adresa Url federačních metadat aplikace** a vložte ho do poznámkového bloku.
+5. Na **podpisový certifikát SAML** klikněte na tlačítko Kopírovat zkopírujte **adresa Url federačních metadat aplikace** a vložte ho do poznámkového bloku.
     
     ![Konfigurace jednotného přihlašování](./media/complianceelf-tutorial/tutorial_metadataurl.png)
      
@@ -197,7 +197,7 @@ V této části je povolit Britta Simon používat jednotné přihlašování Az
 
 7. Klikněte na tlačítko **přiřadit** tlačítko **přidat přiřazení** dialogového okna.
     
-### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování
+### <a name="test-single-sign-on"></a>Test jednotného přihlašování
 
 V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 
@@ -207,7 +207,7 @@ Další informace o přístupovém panelu, naleznete v tématu [Úvod k přístu
 ## <a name="additional-resources"></a>Další zdroje informací:
 
 * [Seznam kurzů o integraci aplikací SaaS pomocí Azure Active Directory](tutorial-list.md)
-* [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
+* [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](../manage-apps/what-is-single-sign-on.md)
 
 
 

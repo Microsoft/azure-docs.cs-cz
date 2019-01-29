@@ -5,15 +5,15 @@ author: rboucher
 services: monitoring
 ms.service: azure-monitor
 ms.topic: conceptual
-ms.date: 10/30/2018
+ms.date: 01/28/2018
 ms.author: robb
 ms.subservice: alerts
-ms.openlocfilehash: 18a63497cb0df2ade495dfb721aaa881aa4e6ff7
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: 156c977e197084d18d8fd32f55e58c512a66ef9d
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54464107"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55156407"
 ---
 # <a name="overview-of-alerts-in-microsoft-azure"></a>Přehled výstrah v Microsoft Azure 
 
@@ -23,7 +23,7 @@ Tento článek popisuje, jaké výstrahy jsou jejich výhody a jak je začít po
 ## <a name="what-are-alerts-in-microsoft-azure"></a>Co jsou upozornění v Microsoft Azure?
 Proaktivně upozornění se zobrazí důležitých podmínky se nacházejí ve vašich dat z monitorování. Umožňují vám identifikovat a vyřešit problémy dříve, než uživatelé vašeho systému Všimněte si, že je. 
 
-Tento článek popisuje jednotné prostředí výstrah ve službě Azure Monitor, který nyní obsahuje Log Analytics a Application Insights. [Předchozí zkušenosti upozornění](alerts-overview.md) a typy výstrah, se nazývají **klasických upozornění**. Tento starší prostředí a starší typu výstrahy můžete zobrazit kliknutím na **zobrazit upozornění classic** v horní části stránky upozornění. 
+Tento článek popisuje jednotné prostředí výstrah ve službě Azure Monitor, který nyní obsahuje Log Analytics a Application Insights. [Předchozí zkušenosti upozornění](alerts-classic.overview.md) a typy výstrah, se nazývají **klasických upozornění**. Tento starší prostředí a starší typu výstrahy můžete zobrazit kliknutím na **zobrazit upozornění classic** v horní části stránky upozornění. 
 
 ## <a name="overview"></a>Přehled
 
@@ -62,6 +62,13 @@ Můžete upozornění na metriky a protokoly, jak je popsáno v [monitorování 
 - Události protokolu aktivit
 - Stav základní platformy Azure
 - Testy dostupnosti webu
+
+Dříve musely metrik Azure monitoru, Application Insights, Log Analytics a stavy služeb samostatné možnosti výstrah. V průběhu času Azure vylepšené a kombinaci uživatelského rozhraní a výstrahy různými způsoby. Tato konsolidace stále probíhá proces. V důsledku toho existují stále výstrah funkce není dosud v novém systému výstrah.  
+
+| **Zdroj monitorování** | **Typ signálu**  | **Popis** | 
+|-------------|----------------|-------------|
+| Stav služby | Protokol aktivit  | Nepodporuje se. Zobrazit [vytvoření upozornění protokolu aktivit pro oznámení služby](../../azure-monitor/platform/alerts-activity-log-service-notifications.md).  |
+| Application Insights | Testy dostupnosti webu | Nepodporuje se. Zobrazit [upozornění webových testů](../../azure-monitor/app/monitor-web-app-availability.md). K dispozici pro všechny weby, které je instrumentováno pro odesílání dat do Application Insights. Když dostupnosti nebo rychlost odezvy webu je nižší než očekávání, dostanete oznámení. |
 
 ## <a name="manage-alerts"></a>Správa upozornění
 Stav výstrahy k určení, kde je v procesu překladu, který můžete nastavit. Když se splní kritéria zadaná v pravidle výstrahy, vytvoření nebo aktivuje výstrahu, je ve stavu *nový*. Po potvrzení oznámení a při zavření, můžete změnit stav. Všechny změny stavu jsou uloženy v historii upozornění.
@@ -124,14 +131,7 @@ Tato zjednodušený proces vytváření už vyžaduje, abyste znali monitorován
 
 Další informace o tom, jak vytvořit pravidla výstrah ve službě [vytvoření, zobrazení a Správa výstrah pomocí Azure monitoru](../../azure-monitor/platform/alerts-metric.md).
 
-Výstrahy jsou dostupné v rámci několika služeb monitorování v Azure. Informace, jak a kdy se má používat každý z těchto služeb najdete v tématu [aplikací a prostředků Monitoring Azure](../../azure-monitor/overview.md). Následující tabulka obsahuje seznam typů pravidel upozornění, které jsou dostupné v rámci Azure. Také uvádí, co je aktuálně podporován ve které výstrahy prostředí.
-
-Azure Monitor, Application Insights, Log Analytics a stavy služeb dříve musely samostatné možnosti výstrah. Azure přesčas, vylepšené a kombinaci uživatelského rozhraní a výstrahy různými způsoby. Tato konsolidace stále probíhá proces. V důsledku toho existují stále výstrah funkce není dosud v novém systému výstrah.  
-
-| **Zdroj monitorování** | **Typ signálu**  | **Popis** | 
-|-------------|----------------|-------------|
-| Stav služby | Protokol aktivit  | Nepodporuje se. Zobrazit [vytvoření upozornění protokolu aktivit pro oznámení služby](../../azure-monitor/platform/alerts-activity-log-service-notifications.md).  |
-| Application Insights | Testy dostupnosti webu | Nepodporuje se. Zobrazit [upozornění webových testů](../../azure-monitor/app/monitor-web-app-availability.md). K dispozici pro všechny weby, které je instrumentováno pro odesílání dat do Application Insights. Když dostupnosti nebo rychlost odezvy webu je nižší než očekávání, dostanete oznámení. |
+Výstrahy jsou dostupné v rámci několika služeb monitorování v Azure. Informace, jak a kdy se má používat každý z těchto služeb najdete v tématu [aplikací a prostředků Monitoring Azure](../../azure-monitor/overview.md). 
 
 
 ## <a name="all-alerts-page"></a>Všechny stránky s upozorněními 

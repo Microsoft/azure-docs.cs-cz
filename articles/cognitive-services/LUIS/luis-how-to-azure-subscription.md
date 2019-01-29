@@ -11,12 +11,12 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 01/18/2019
 ms.author: diberry
-ms.openlocfilehash: 7662d58c1686dfa4e545246eb897af134a67144c
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: 89eb16c51cd5326846cf8a7b44599ff6fc5a3753
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54473380"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55100287"
 ---
 # <a name="using-subscription-keys-with-your-luis-app"></a>Použití klíčů předplatného s aplikací LUIS
 

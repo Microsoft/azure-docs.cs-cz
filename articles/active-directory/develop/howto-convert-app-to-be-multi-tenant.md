@@ -8,7 +8,7 @@ manager: mtillman
 editor: ''
 ms.assetid: 35af95cb-ced3-46ad-b01d-5d2f6fd064a3
 ms.service: active-directory
-ms.component: develop
+ms.subservice: develop
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
@@ -17,14 +17,14 @@ ms.date: 09/24/2018
 ms.author: celested
 ms.reviewer: justhu, elisol
 ms.custom: aaddev
-ms.openlocfilehash: 5c904feacef4f5c15784c5f30c5f8bedf3940329
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.openlocfilehash: ae9412ed7c02d88e7d0c35c6ea0f95da755b84d4
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52425339"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55097040"
 ---
-# <a name="how-to-sign-in-any-azure-active-directory-user-using-the-multi-tenant-application-pattern"></a>Postupy: přihlášení jakéhokoli uživatele Azure Active Directory pomocí vzoru aplikace s více tenanty
+# <a name="how-to-sign-in-any-azure-active-directory-user-using-the-multi-tenant-application-pattern"></a>Postup: Přihlášení jakéhokoli uživatele Azure Active Directory pomocí vzoru aplikace s více tenanty
 
 Pokud nabízíte Software jako služba (SaaS) aplikací pro mnoho organizací, můžete nakonfigurovat aplikaci tak, aby přijímal přihlášení z žádného tenanta služby Azure Active Directory (Azure AD). Tato konfigurace se nazývá *provádění aplikace víceklientské*. Uživatelé v žádného tenanta Azure AD budou moct přihlásit do aplikace po vyjádření souhlasu s použít svůj účet s vaší aplikací. 
 
@@ -59,7 +59,7 @@ Aplikace pro jednoho tenanta žádostí o přihlášení se odešlou do tenanta 
 
 Pomocí aplikace s více tenanty aplikace nebude vědět, ještě před zahájením jaké tenanta je uživatel, aby nemohli odesílat žádosti do koncových bodů klienta. Místo toho jsou odesílány požadavky na koncový bod, který spojuje napříč všechny klienty Azure AD: `https://login.microsoftonline.com/common`
 
-Když Azure AD obdrží požadavek na / Common koncového bodu, se uživatel přihlásí a, v důsledku toho zjišťuje kterého tenanta uživatel je z. / Společný koncový bod funguje se všemi ověřování protokolů podporovaných službou Azure AD: OpenID Connect, OAuth 2.0, SAML 2.0 a WS-Federation.
+Když Azure AD obdrží požadavek na / Common koncového bodu, se uživatel přihlásí a, v důsledku toho zjišťuje kterého tenanta uživatel je z. / Společný koncový bod funguje se všemi ověřování protokolů podporovaných službou Azure AD:  OpenID Connect, OAuth 2.0, SAML 2.0 a WS-Federation.
 
 Odpověď přihlášení k aplikaci pak obsahuje token představující uživatele. Hodnotu issuer v tokenu říká jaké tenanta je uživatel z aplikace. Když se vrátí odpověď z / Common koncový bod, hodnota vystavitele v tokenu odpovídá tenanta uživatele. 
 

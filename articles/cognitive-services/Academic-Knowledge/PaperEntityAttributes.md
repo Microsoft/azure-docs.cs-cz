@@ -6,16 +6,16 @@ services: cognitive-services
 author: alch-msft
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: academic-knowledge
+ms.subservice: academic-knowledge
 ms.topic: conceptual
 ms.date: 03/31/2017
 ms.author: alch
-ms.openlocfilehash: ae238a3c3af091b764147fcde8aa2a98986da92e
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.openlocfilehash: d36a39f10f9e0129af3b730a65387d7108209004
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50158886"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55168375"
 ---
 # <a name="paper-entity"></a>Entity dokumentu
 
@@ -25,24 +25,24 @@ ms.locfileid: "50158886"
 Název    |Popis                                        |Typ       | Operace
 ------- | ------------------------------------------------- | --------- | ----------------------------
 ID      |ID entity                                          |Int64      |Rovná se
-Čas      |Název dokumentu                                        |Řetězec     |Je rovno<br/>StartsWith
+Ti      |Název dokumentu                                        |Řetězec     |Je rovno<br/>StartsWith
 L       |Kód jazyka papíru oddělené "\@@@"            |Řetězec     |Rovná se
 Ano       |Rok papíru                                         |Datový typ Int32      |Je rovno<br/>IsBetween
 D       |Datum papíru                                         |Datum       |Je rovno<br/>IsBetween
 Kopie      |Počet citace                                     |Datový typ Int32      |žádný  
 ECC     |Citaci odhadovaný počet                           |Datový typ Int32      |žádný
-AA. AuN  |Jméno autora                                        |Řetězec     |Je rovno<br/>StartsWith
-AA. AuId |ID autora                                          |Int64      |Rovná se
-AA. AfN  |Jméno autora přidružení                            |Řetězec     |Je rovno<br/>StartsWith
-AA. AfId |ID umístění autora                              |Int64      |Rovná se
-AA. S    |Autor pořadí papíru                         |Datový typ Int32      |Rovná se
+AA.AuN  |Jméno autora                                        |Řetězec     |Je rovno<br/>StartsWith
+AA.AuId |ID autora                                          |Int64      |Rovná se
+AA.AfN  |Jméno autora přidružení                            |Řetězec     |Je rovno<br/>StartsWith
+AA.AfId |ID umístění autora                              |Int64      |Rovná se
+AA.S    |Autor pořadí papíru                         |Datový typ Int32      |Rovná se
 F.FN    |Pole Název studie                                |Řetězec     |Je rovno<br/>StartsWith
 F.FId   |Pole ID studie                                  |Int64      |Rovná se
 J.JN    |Název deníku                                       |Řetězec     |Je rovno<br/>StartsWith
 J.JId   |ID deníku                                         |Int64      |Rovná se
 C.CN    |Název řady konference                             |Řetězec     |Je rovno<br/>StartsWith
 C.CId   |ID číselné řady konference                               |Int64      |Rovná se
-Identifikátorů rId     |Odkazované Paper ID                              |[] Int64    |Rovná se
+Identifikátorů rId     |Odkazované Paper ID                              |Int64[]    |Rovná se
 W       |Slova z názvu dokumentu a Abstract současně                |Řetězec]   |Rovná se
 E       |Rozšířená metadata (viz tabulka níže)                |Řetězec     |žádný  
         
@@ -54,7 +54,7 @@ Název    | Popis
 --------|---------------------------    
 DN      | Zobrazovaný název papíru 
 S       | Zdroje – seznam webové zdroje papíru, seřazené podle hodnocení statické
-S.Ty    | Zdrojový typ (1:HTML, 2:Text, 3:PDF, 4:DOC, 5:PPT, 6:XLS, 7:PS)
+S.Ty    | Source Type (1:HTML, 2:Text, 3:PDF, 4:DOC, 5:PPT, 6:XLS, 7:PS)
 S.U     | Zdrojová adresa URL
 VFN     | Jméno a příjmení příslušností – celý název deníku nebo místa konání konference
 VSN     | Krátký název příslušností - krátký název deníku nebo místa konání konference
@@ -68,5 +68,5 @@ LP      | LastPage – poslední stránky z dokumentu
 DOI     | Identifikátor digitální objektu
 Kopie      | Kontexty citace – seznam odkazovaných papíru ID a odpovídající kontext v dokumentu (například [{123: ["Hnědý lišek jsou známé pro přechod, který jste použili v dokumentu 123", "opožděné psi jsou historických misnomer, jak je uvedeno v dokumentu 123"]})
 IA      | Obráceným abstraktní
-I A. IndexLength| Počet položek v indexu (počet slov na abstraktní)
-I A. InvertedIndex| Seznam abstraktní slova a jejich odpovídající pozici v původní abstraktní (například [{"the": [0, 15, 30]}, {"Hnědý": [1]}, {"fox":[2]}])
+IA.IndexLength| Počet položek v indexu (počet slov na abstraktní)
+IA.InvertedIndex| Seznam abstraktní slova a jejich odpovídající pozici v původní abstraktní (například [{"the": [0, 15, 30]}, {"Hnědý": [1]}, {"fox":[2]}])

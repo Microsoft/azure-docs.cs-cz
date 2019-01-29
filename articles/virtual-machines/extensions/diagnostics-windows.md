@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/15/2015
 ms.author: saurabh
-ms.openlocfilehash: 2a4f55ea15c933094befb8855185c4b7e353dee3
-ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
+ms.openlocfilehash: 26e902cb31a77ffb1516f084bb71b5a99a89fba9
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/10/2018
-ms.locfileid: "42054619"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55188639"
 ---
 # <a name="use-powershell-to-enable-azure-diagnostics-in-a-virtual-machine-running-windows"></a>Použití PowerShellu k povolení Diagnostiky Azure na virtuálním počítači s Windows
 
@@ -84,13 +84,13 @@ Konfigurace se musí aktualizovat tak, aby zahrnují následující:
   * ID prostředku lze sestavit pomocí následujícímu vzoru: "/ subscriptions / {*ID odběru pro odběr s virtuálním Počítačem*} /resourceGroups/ {*název skupiny prostředků pro virtuální počítač*} / providers/Microsoft.Compute/virtualMachines/ {*název virtuálního počítače*} ".
   * Například pokud ID předplatného pro předplatné, ve kterém je spuštěný virtuální počítač je **11111111-1111-1111-1111-111111111111**, název skupiny prostředků pro skupinu prostředků je **MyResourceGroup**a Název virtuálního počítače je **MyWindowsVM**, pak hodnota *resourceID* by být:
     
-      ```
+      ```xml
       <Metrics resourceId="/subscriptions/11111111-1111-1111-1111-111111111111/resourceGroups/MyResourceGroup/providers/Microsoft.Compute/virtualMachines/MyWindowsVM" >
       ```
   * Další informace o tom, metriky jsou generovány na základě konfigurace metriky a čítače výkonu, přečtěte si téma [tabulky Azure Diagnostics metriky ve službě storage](diagnostics-template.md#wadmetrics-tables-in-storage).
 * **StorageAccount** element je potřeba aktualizovat s názvem účet úložiště diagnostiky.
   
-    ```
+    ```xml
     <?xml version="1.0" encoding="utf-8"?>
     <PublicConfig xmlns="http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration">
         <WadCfg>

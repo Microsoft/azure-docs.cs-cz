@@ -8,18 +8,18 @@ manager: daveba
 editor: ''
 ms.service: active-directory
 ms.topic: conceptual
-ms.component: fundamentals
+ms.subservice: fundamentals
 ms.workload: identity
 ms.date: 08/28/2017
 ms.author: lizross
 ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18
-ms.openlocfilehash: feecc0b5b8c6bd7cb39a9aa8f40e84b07b242f39
-ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
+ms.openlocfilehash: 2063f9fcd3e001f4f8f175bd6031c9d31313f9e6
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54447765"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55092158"
 ---
 # <a name="find-help-and-open-a-support-ticket-for-azure-active-directory"></a>Vyhledání nápovědy a vytvořit lístek podpory pro Azure Active Directory
 Společnost Microsoft poskytuje globální technickou, před prodejem, fakturaci a předplatné podpory pro Azure Active Directory (Azure AD). Podpora je k dispozici online a po telefonu pro placené Microsoft Azure a zkušebních verzí předplatného. Telefonické podpory a online podporu fakturace jsou dostupné v dalších jazycích. 

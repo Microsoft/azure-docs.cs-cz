@@ -8,18 +8,18 @@ manager: mtillman
 editor: ''
 ms.service: active-directory
 ms.workload: identity
-ms.component: users-groups-roles
+ms.subservice: users-groups-roles
 ms.topic: article
 ms.date: 09/11/2018
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
-ms.openlocfilehash: e189fb8b2bc5079d1560d3b7a54fea2db7366fe7
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: ab5a3b00d063dfdd42e67247bb2cdc37866d0164
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46293963"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55164125"
 ---
 # <a name="troubleshooting-dynamic-memberships-for-groups"></a>Řešení potíží s dynamickým členstvím ve skupinách
 
@@ -42,6 +42,6 @@ ms.locfileid: "46293963"
 Následující články poskytují další informace o službě Azure Active Directory.
 
 * [Správa přístupu k prostředkům pomocí skupin služby Azure Active Directory](../fundamentals/active-directory-manage-groups.md)
-* [Správa aplikací v Azure Active Directory](../manage-apps/what-is-application-management.md)
+* [Správa aplikací ve službě Azure Active Directory](../manage-apps/what-is-application-management.md)
 * [Představení služby Azure Active Directory](../fundamentals/active-directory-whatis.md)
 * [Integrování místních identit do služby Azure Active Directory](../hybrid/whatis-hybrid-identity.md)

@@ -1,5 +1,5 @@
 ---
-title: 'Kurz: Integrace Azure Active Directory se službou Grovo | Dokumentace Microsoftu'
+title: 'Kurz: Integrace Azure Active Directory s Grovo | Dokumentace Microsoftu'
 description: Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a Grovo.
 services: active-directory
 documentationCenter: na
@@ -8,21 +8,21 @@ manager: femila
 ms.reviewer: joflore
 ms.assetid: 399cecc3-aa62-4914-8b6c-5a35289820c1
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 01/12/2018
 ms.author: jeedes
-ms.openlocfilehash: be49cbba53441124bd538a5d82e8c0e1d20d9e45
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 057775f7818d1a6dc521fe81b01748fa40085cc8
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39433058"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55174240"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-grovo"></a>Kurz: Integrace Azure Active Directory se službou Grovo
+# <a name="tutorial-azure-active-directory-integration-with-grovo"></a>Kurz: Integrace Azure Active Directory s Grovo
 
 V tomto kurzu se dozvíte, jak integrovat Grovo s Azure Active Directory (Azure AD).
 
@@ -38,7 +38,7 @@ Pokud chcete zjistit další podrobnosti o integraci aplikací SaaS v Azure AD, 
 
 Konfigurace integrace Azure AD s Grovo, potřebujete následující položky:
 
-- S předplatným služby Azure AD
+- Předplatné Azure AD
 - Grovo jednotného přihlašování povolená předplatného
 
 > [!NOTE]
@@ -60,7 +60,7 @@ Konfigurace integrace Grovo do služby Azure AD, budete muset přidat Grovo z Ga
 
 **Chcete-li přidat Grovo z galerie, postupujte následovně:**
 
-1. V  **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu. 
+1. V **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu. 
 
     ![Tlačítko Azure Active Directory][1]
 
@@ -139,8 +139,8 @@ V této části Povolení služby Azure AD jednotného přihlašování na port�
     | ------------------- | -------------------- |    
     | Jméno          | user.givenname |
     | Příjmení           | user.surname |
-    | E-mailová adresa       | User.Mail    |
-    | EmployeeID          | User.EmployeeID |
+    | E-mailová adresa       | user.mail    |
+    | employeeID          | user.employeeid |
 
     a. Klikněte na tlačítko **přidat atribut** otevřít **přidat atribut** dialogového okna.
 
@@ -194,7 +194,7 @@ V této části Povolení služby Azure AD jednotného přihlašování na port�
     e. Klikněte na **Další**.
 
 > [!TIP]
-> Teď si můžete přečíst stručné verzi těchto pokynů uvnitř [webu Azure portal](https://portal.azure.com), zatímco jsou nastavení aplikace!  Po přidání této aplikace z **služby Active Directory > podnikové aplikace** části, stačí kliknout **Single Sign-On** kartu a přístup k vložené dokumentaci prostřednictvím  **Konfigurace** oblast v dolní části. Další informace o funkci vložená dokumentace: [dokumentace ke službě Azure AD embedded]( https://go.microsoft.com/fwlink/?linkid=845985)
+> Teď si můžete přečíst stručné verzi těchto pokynů uvnitř [webu Azure portal](https://portal.azure.com), zatímco jsou nastavení aplikace!  Po přidání této aplikace z **služby Active Directory > podnikové aplikace** části, stačí kliknout **Single Sign-On** kartu a přístup k vložené dokumentaci prostřednictvím  **Konfigurace** oblast v dolní části. Další informace o funkci vložená dokumentace: [Dokumentace ke službě Azure AD, embedded]( https://go.microsoft.com/fwlink/?linkid=845985)
 
 ### <a name="create-an-azure-ad-test-user"></a>Vytvořit testovacího uživatele Azure AD
 
@@ -232,7 +232,7 @@ Cílem této části je vytvoření zkušebního uživatele na webu Azure Portal
 
 Cílem této části je vytvořte uživatele Britta Simon v Grovo. Grovo podporuje just-in-time zřizování, který je ve výchozím nastavení povolená. Neexistuje žádná položka akce pro vás v této části. Nový uživatel se vytvoří během pokusu o přístup k Grovo, pokud ještě neexistuje.
 >[!Note]
->Pokud je potřeba ručně vytvořit uživatele, obraťte se na [tým podpory Grovo](https://www.grovo.com/contact-us).
+>Pokud je potřeba ručně vytvořit uživatele, obraťte se na [tým podpory Grovo](https://www.grovo.com/contact-us).
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřadit uživatele Azure AD
 
@@ -264,7 +264,7 @@ V této části je povolit Britta Simon k udělení přístupu k Grovo použití
 
 1. Klikněte na tlačítko **přiřadit** tlačítko **přidat přiřazení** dialogového okna.
     
-### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování
+### <a name="test-single-sign-on"></a>Test jednotného přihlašování
 
 V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 

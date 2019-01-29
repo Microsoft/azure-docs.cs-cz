@@ -10,16 +10,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.component: compliance
+ms.subservice: compliance
 ms.date: 11/15/2018
 ms.author: rolyon
 ms.reviewer: mwahl
-ms.openlocfilehash: 5a68657a0aaedb389ccaaacebb890583ab6292ee
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: 1c71333a49643647bae3730e4f14f26939388c4f
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52307844"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55153739"
 ---
 # <a name="create-an-access-review-of-group-members-or-application-access-with-azure-ad"></a>Vytvoření kontroly přístupu členů skupiny nebo přístupu k aplikacím v Azure AD
 

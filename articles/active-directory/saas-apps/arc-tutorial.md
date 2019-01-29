@@ -1,5 +1,5 @@
 ---
-title: 'Kurz: Integrace Azure Active Directory s oblouk publikování – jednotné přihlašování | Dokumentace Microsoftu'
+title: 'Kurz: Integrace s oblouk publikování - jednotného přihlašování Azure Active Directory | Dokumentace Microsoftu'
 description: Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a publikování oblouku – jednotné přihlašování.
 services: active-directory
 documentationCenter: na
@@ -8,19 +8,19 @@ manager: femila
 ms.reviewer: joflore
 ms.assetid: ae609583-f875-4cb8-b68e-1b0b7938e9a7
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 05/07/2018
 ms.author: jeedes
-ms.openlocfilehash: eafd7998e5bc21a539b6709794fe3cd70d9e3179
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: 8c4922c817d9667b1a25846df53f9366e2018342
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39054314"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55187109"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-arc-publishing---sso"></a>Kurz: Integrace Azure Active Directory s oblouk publikování – jednotné přihlašování
 
@@ -38,7 +38,7 @@ Pokud chcete zjistit další podrobnosti o integraci aplikací SaaS v Azure AD, 
 
 Konfigurace integrace Azure AD s oblouk publikování – jednotné přihlašování, budete potřebovat následující položky:
 
-- S předplatným služby Azure AD
+- Předplatné Azure AD
 - Publikování oblouku – jednotné přihlašování jednotného přihlašování povolená předplatného
 
 > [!NOTE]
@@ -60,7 +60,7 @@ Konfigurace integrace oblouk publikování – jednotné přihlašování do slu
 
 **Chcete-li přidat oblouk publikování – jednotné přihlašování z galerie, postupujte následovně:**
 
-1. V  **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu. 
+1. V **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu. 
 
     ![Tlačítko Azure Active Directory][1]
 
@@ -131,7 +131,7 @@ V této části Povolení služby Azure AD jednotného přihlašování na port�
     | ---------------| --------------- |    
     | Jméno | user.givenname |
     | Příjmení | user.surname |
-    | e-mail | User.Mail |
+    | e-mail | user.mail |
     | skupiny | user.assignedroles |
 
     1. Klikněte na tlačítko **přidat atribut** otevřít **přidat atribut** dialogového okna.
@@ -202,7 +202,7 @@ Cílem této části je vytvoření zkušebního uživatele na webu Azure Portal
 Cílem této části je vytvořte uživatele Britta Simon oblouk Publishing - jednotného přihlašování. Publikování oblouku – jednotného přihlašování podporuje just-in-time zřizování, který je ve výchozím nastavení povolená. Neexistuje žádná položka akce pro vás v této části. Nový uživatel se vytvoří během pokusu o přístup k publikování oblouku – jednotné přihlašování, pokud ještě neexistuje.
 
 >[!Note]
->Pokud je potřeba ručně vytvořit uživatele, obraťte se na [oblouk publikování - tým podpory jednotného přihlašování](mailto:inf@washpost.com).
+>Pokud je potřeba ručně vytvořit uživatele, obraťte se na [oblouk publikování - tým podpory jednotného přihlašování](mailto:inf@washpost.com).
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřadit uživatele Azure AD
 
@@ -234,7 +234,7 @@ V této části je povolit Britta Simon používat jednotné přihlašování Az
 
 1. Klikněte na tlačítko **přiřadit** tlačítko **přidat přiřazení** dialogového okna.
     
-### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování
+### <a name="test-single-sign-on"></a>Test jednotného přihlašování
 
 V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 
@@ -244,7 +244,7 @@ Další informace o přístupovém panelu, naleznete v tématu [Úvod k přístu
 ## <a name="additional-resources"></a>Další zdroje informací:
 
 * [Seznam kurzů o integraci aplikací SaaS pomocí Azure Active Directory](tutorial-list.md)
-* [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
+* [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](../manage-apps/what-is-single-sign-on.md)
 
 
 

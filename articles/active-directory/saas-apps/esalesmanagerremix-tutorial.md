@@ -1,5 +1,5 @@
 ---
-title: 'Kurz: Integrace Azure Active Directory se službou E Sales Manager Remix | Dokumentace Microsoftu'
+title: 'Kurz: Integrace Azure Active Directory s E Sales Manager Remix | Dokumentace Microsoftu'
 description: Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a E Sales Manager Remix.
 services: active-directory
 documentationCenter: na
@@ -8,19 +8,19 @@ manager: femila
 ms.reviewer: joflore
 ms.assetid: 89b5022c-0d5b-4103-9877-ddd32b6e1c02
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 06/12/2018
 ms.author: jeedes
-ms.openlocfilehash: d96fd1eacc98e88dc8578b259781cc661cf85933
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 2e2bc0c7e590796a533d9f593eb61e57def91fc8
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39442825"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55187994"
 ---
 # <a name="integrate-azure-active-directory-with-e-sales-manager-remix"></a>Integrace Azure Active Directory s prodejní manažer Remix E
 
@@ -38,7 +38,7 @@ Další informace o integraci aplikací SaaS v Azure AD, najdete v článku [co 
 
 Konfigurace integrace Azure AD s E Sales Manager Remix, potřebujete následující položky:
 
-- S předplatným služby Azure AD
+- Předplatné Azure AD
 - Předplatné podporující E Sales Manager Remix SSO
 
 > [!NOTE]
@@ -261,7 +261,7 @@ V této části povolit uživatele Britta Simon k udělení přístupu k E Sales
 
 1. V **přidat přiřazení** okně **přiřadit**.
     
-### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování
+### <a name="test-single-sign-on"></a>Test jednotného přihlašování
 
 V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 
@@ -269,7 +269,7 @@ Když vyberete dlaždici E Sales Manager Remix na přístupovém panelu, by měl
 
 Další informace o přístupovém panelu, naleznete v tématu [Úvod k přístupovému panelu](../user-help/active-directory-saas-access-panel-introduction.md). 
 
-## <a name="additional-resources"></a>Další zdroje informací:
+## <a name="additional-resources"></a>Další materiály
 
 * [Seznam kurzů o integraci aplikací SaaS se službou Azure Active Directory](tutorial-list.md)
 * [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](../manage-apps/what-is-single-sign-on.md)

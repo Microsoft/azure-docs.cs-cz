@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: required
 ms.date: 11/03/2017
 ms.author: bharatn
-ms.openlocfilehash: cdda1a06f32e712df71ec815f190f6346bebc135
-ms.sourcegitcommit: a4e4e0236197544569a0a7e34c1c20d071774dd6
+ms.openlocfilehash: 4b6ef4823fc78c15dda31e96d8bd6c4f798c0e99
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51711459"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55097742"
 ---
 # <a name="reverse-proxy-in-azure-service-fabric"></a>Reverzní proxy server v Azure Service Fabric
 Reverzní proxy server, které jsou integrované do Azure Service Fabric pomáhá mikroslužeb spouštěných v clusteru Service Fabric, zjistit a komunikovat s ostatními službami, které mají koncových bodů http.
@@ -45,7 +45,7 @@ Reverzní proxy server vystavuje jeden nebo více koncových bodů na místním 
 >
 > Reverzní proxy server v Service Fabric v současné době podporuje tyto platformy
 > * *Windows Cluster*: Windows 8 a novějším nebo Windows Server 2012 a novější
-> * *Cluster s Linuxem*: reverzního proxy serveru není aktuálně k dispozici pro clustery s Linuxem
+> * *Linux Cluster*: Reverzní proxy server není aktuálně k dispozici pro clustery s Linuxem
 >
 
 ## <a name="reaching-microservices-from-outside-the-cluster"></a>Dosažení mikroslužeb z mimo cluster
@@ -57,7 +57,7 @@ Namísto konfigurace portu jednotlivé služby v nástroji pro vyrovnávání za
 ![Externí komunikace][0]
 
 > [!WARNING]
-> Když nakonfigurujete v nástroji pro vyrovnávání zatížení port reverzního proxy, všechny mikroslužby v clusteru, která zpřístupňují koncový bod HTTP adresovatelných z mimo cluster. To znamená, že mikroslužeb má být interní může být zjistitelné pomocí určené uživatel se zlými úmysly. Tato potenially uvede závažné ohrožení zabezpečení, které je někdo zneužije; Příklad:
+> Když nakonfigurujete v nástroji pro vyrovnávání zatížení port reverzního proxy, všechny mikroslužby v clusteru, která zpřístupňují koncový bod HTTP adresovatelných z mimo cluster. To znamená, že mikroslužeb má být interní může být zjistitelné pomocí určené uživatel se zlými úmysly. To představuje potenciálně závažné ohrožení zabezpečení, které je někdo zneužije; Příklad:
 >
 > * Uživatel se zlými úmysly může spustit útoku DoS opakovaně voláním interní služba, která nemá dostatečně odolné útoky.
 > * Uživatel se zlými úmysly může poskytovat chybně formovaným paketům interní služba následek nežádoucí chování.
@@ -74,20 +74,20 @@ Reverzní proxy server používá k identifikaci oddíl služby, ke které se ma
 http(s)://<Cluster FQDN | internal IP>:Port/<ServiceInstanceName>/<Suffix path>?PartitionKey=<key>&PartitionKind=<partitionkind>&ListenerName=<listenerName>&TargetReplicaSelector=<targetReplicaSelector>&Timeout=<timeout_in_seconds>
 ```
 
-* **http (s):** reverzního proxy serveru můžete nakonfigurovat tak, aby přijímal provoz protokolu HTTP nebo HTTPS. Předávání protokolu HTTPS, najdete v tématu [připojení k službě zabezpečené pomocí reverzního proxy serveru](service-fabric-reverseproxy-configure-secure-communication.md) až budete mít nastavení reverzní proxy server tak, aby naslouchala na HTTPS.
-* **Cluster plně kvalifikovaný název domény (FQDN) | interní IP adresa:** pro externí klienty můžete nakonfigurovat reverzní proxy server tak, aby byl dostupný prostřednictvím doména clusteru, jako je například mycluster.eastus.cloudapp.azure.com. Ve výchozím nastavení reverzní proxy server spouští na všech uzlech. Pro vnitřní provoz reverzní proxy server dostupný v místním hostiteli nebo na jakékoli IP adresy interní uzlu, například 10.0.0.1.
-* **Port:** to je port, jako je například 19081, který byl zadán pro reverzní proxy server.
-* **ServiceInstanceName:** jde o plně kvalifikovaný název, který se pokoušíte získat přístup bez instance nasazená služba "fabric: /" schéma. Například chcete-li dosáhnout *fabric: / myapp/Moje_služba/* služby, můžete využít *myapp/Moje_služba*.
+* **http(s):** Reverzní proxy server můžete nakonfigurovat tak, aby přijímal provoz protokolu HTTP nebo HTTPS. Předávání protokolu HTTPS, najdete v tématu [připojení k službě zabezpečené pomocí reverzního proxy serveru](service-fabric-reverseproxy-configure-secure-communication.md) až budete mít nastavení reverzní proxy server tak, aby naslouchala na HTTPS.
+* **Cluster plně kvalifikovaný název domény (FQDN) | interní IP adresa:** Pro externí klienty můžete nakonfigurovat reverzní proxy server tak, aby byl dostupný prostřednictvím doména clusteru, jako je například mycluster.eastus.cloudapp.azure.com. Ve výchozím nastavení reverzní proxy server spouští na všech uzlech. Pro vnitřní provoz reverzní proxy server dostupný v místním hostiteli nebo na jakékoli IP adresy interní uzlu, například 10.0.0.1.
+* **Port:** Toto je port, např. 19081, který byl zadán pro reverzní proxy server.
+* **ServiceInstanceName:** Toto je plně kvalifikovaný název, který se pokoušíte získat přístup bez instance nasazená služba "fabric: /" schéma. Například chcete-li dosáhnout *fabric: / myapp/Moje_služba/* služby, můžete využít *myapp/Moje_služba*.
 
     Název instance služby rozlišuje velká a malá písmena. Použití různých malých a velkých písmen pro název instance služby v adrese URL způsobí, že žádostí se nezdaří s 404 (Nenalezeno).
-* **Přípona cesty:** to skutečné cesty adresy URL, jako je *myapi/hodnoty/přidání/3*, služby, který chcete připojit.
-* **PartitionKey:** oddílů služby, jedná se o počítaný oddíl klíč oddílu, který chcete dosáhnout. Všimněte si, že toto je *není* ID identifikátoru GUID oddílu. Tento parametr není vyžadováno pro služby, které používají schéma oddílu typu singleton.
-* **PartitionKind:** jde schéma oddílu služby. To může být "Int64Range" nebo "S názvem". Tento parametr není vyžadováno pro služby, které používají schéma oddílu typu singleton.
+* **Přípona cesty:** Toto je skutečná cesta URL, jako *myapi/hodnoty/přidání/3*, služby, který chcete připojit.
+* **PartitionKey:** U oddílů služby jedná se o počítaný oddíl klíč oddílu, který chcete dosáhnout. Všimněte si, že toto je *není* ID identifikátoru GUID oddílu. Tento parametr není vyžadováno pro služby, které používají schéma oddílu typu singleton.
+* **PartitionKind:** Toto je schéma oddílu služby. To může být "Int64Range" nebo "S názvem". Tento parametr není vyžadováno pro služby, které používají schéma oddílu typu singleton.
 * **ListenerName** koncové body služby jsou ve tvaru {"Koncové body": {"Listener1": "Koncovém bodě 1", "Listener2": "Endpoint2"...}}. Když služba zveřejňuje několik koncových bodů, Určuje koncový bod, který požadavek klienta by měl být předán. To lze vynechat, pokud má služba pouze jeden naslouchací proces.
 * **TargetReplicaSelector** to určuje, jak by měl vybrat cíl replik nebo instancí.
-  * Po stavové cílovou službu TargetReplicaSelector může být jeden z následujících: "PrimaryReplica", 'RandomSecondaryReplica' nebo "RandomReplica". Pokud není tento parametr zadán, výchozí hodnota je "PrimaryReplica".
+  * Když Cílová služba je stavový, může být TargetReplicaSelector jednu z následujících:  "PrimaryReplica", 'RandomSecondaryReplica' nebo "RandomReplica". Pokud není tento parametr zadán, výchozí hodnota je "PrimaryReplica".
   * Po bezstavové cílovou službu reverzního proxy serveru vybere instanci náhodné oddílu služby k předání požadavku.
-* **Časový limit:** Určuje časový limit požadavku HTTP vytvořené reverzní proxy ke službě jménem žádost klienta. Výchozí hodnota je 60 sekund. Toto je volitelný parametr.
+* **Časový limit:**  Určuje časový limit požadavku HTTP vytvořené reverzní proxy ke službě jménem žádost klienta. Výchozí hodnota je 60 sekund. Toto je volitelný parametr.
 
 ### <a name="example-usage"></a>Příklad použití
 Jako příklad, Pojďme se *fabric: / MyApp/Moje_služba* služba, která se otevře při naslouchání protokolu HTTP na následující adrese URL:

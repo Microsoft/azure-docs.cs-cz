@@ -6,16 +6,16 @@ author: swhite-msft
 manager: ehansen
 ms.assetid: BE2B2F8C-20B5-4E0B-AEC8-EAD505BA4C85
 ms.service: cognitive-services
-ms.component: bing-image-search
+ms.subservice: bing-image-search
 ms.topic: article
 ms.date: 04/15/2017
 ms.author: scottwhi
-ms.openlocfilehash: 5742efb2dca02565735cf308d9ede9316ce6d12e
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: 76df0b44392a01fb83dfa6cf8075858c5aa560b8
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52314860"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55193076"
 ---
 # <a name="your-first-images-search-query"></a>Vaše první Image vyhledávací dotaz
 

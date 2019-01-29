@@ -6,16 +6,16 @@ services: cognitive-services
 author: alch-msft
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: academic-knowledge
+ms.subservice: academic-knowledge
 ms.topic: conceptual
 ms.date: 03/23/2017
 ms.author: alch
-ms.openlocfilehash: 83f29106d72f564f894c968102b703ab6bb5d8c2
-ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
+ms.openlocfilehash: e8472323d99de9d0d81130eac5fbe3ec9e11c590
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "48902376"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55197632"
 ---
 # <a name="graph-search-method"></a>Metoda prohledávání grafů
 
@@ -49,7 +49,7 @@ Pro *lambda* hledání textu POST je řetězec ve formátu prostého textu. Těl
 Název | Popis
 -------|-----   
 **výsledky** | Pole 0 nebo více entit, které odpovídají výrazu dotazu. Každá entita obsahuje hodnoty požadovaných atributů. Toto pole je k dispozici v případě, že byla žádost úspěšně zpracována.
-**Chyba** | Stavové kódy HTTP. Toto pole je k dispozici, pokud požadavek selže.
+**error** | Stavové kódy HTTP. Toto pole je k dispozici, pokud požadavek selže.
 **Zpráva** | Chybová zpráva. Toto pole je k dispozici, pokud požadavek selže.
 
 Pokud dotaz nelze zpracovat v rámci _800 ms_, _vypršení časového limitu_ se vrátí chyba. 

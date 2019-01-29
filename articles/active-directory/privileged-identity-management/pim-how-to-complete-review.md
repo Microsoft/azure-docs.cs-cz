@@ -9,16 +9,16 @@ editor: ''
 ms.service: active-directory
 ms.topic: conceptual
 ms.workload: identity
-ms.component: pim
+ms.subservice: pim
 ms.date: 06/06/2017
 ms.author: rolyon
 ms.custom: pim
-ms.openlocfilehash: 3955f4bf9b579ae40424c2650f9d3b4c2ac4f030
-ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
+ms.openlocfilehash: fc4dcc22cf22f70fcf441c3c8a54aeda2ffd7588
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2018
-ms.locfileid: "43188582"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55189653"
 ---
 # <a name="complete-an-access-review-for-azure-ad-directory-roles-in-pim"></a>Dokončení kontroly přístupu pro role adresáře Azure AD v PIM
 Správci privilegovaných rolí jednou zkontrolovat privilegovaný přístup [se spustila kontrola přístupu](pim-how-to-start-security-review.md). Azure AD Privileged Identity Management (PIM) se automaticky pošle e-mail vyzývá uživatele, aby zkontrolujte svůj přístup. Pokud uživatel nezískaly v e-mailu, můžete jim poslat pokyny [jak k provádění kontroly přístupu](pim-how-to-perform-security-review.md).
@@ -55,4 +55,4 @@ Pokud si nejste zájem o další revizi, odstraňte ho. **Odstranit** tlačítko
 ## <a name="next-steps"></a>Další postup
 
 - [Zahájení kontroly přístupu pro role adresáře Azure AD v PIM](pim-how-to-start-security-review.md)
-- [Provádění kontroly přístupu sady Moje role adresáře Azure AD v PIM](pim-how-to-perform-security-review.md)
+- [Provedení kontroly přístupu rolí adresáře Azure AD v nástroji PIM](pim-how-to-perform-security-review.md)

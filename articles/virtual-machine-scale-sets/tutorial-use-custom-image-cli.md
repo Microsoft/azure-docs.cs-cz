@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 03/27/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 5eee55846bd6f5821be1e40b969a35f5e50bd205
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
-ms.translationtype: HT
+ms.openlocfilehash: 119a53949b6184389c0e36e56732f0486c24ca5c
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46967366"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55193484"
 ---
 # <a name="tutorial-create-and-use-a-custom-image-for-virtual-machine-scale-sets-with-the-azure-cli"></a>Kurz: Vytvoření a použití vlastní image pro škálovací sady virtuálních počítačů pomocí Azure CLI
 Při vytváření škálovací sady zadáte image, která se použije při nasazení instancí virtuálních počítačů. Pokud chcete snížit počet úloh po nasazení instancí virtuálních počítačů, můžete použít vlastní image virtuálního počítače. Tato vlastní image virtuálního počítače obsahuje instalace a konfigurace všech požadovaných aplikací. Všechny instance virtuálních počítačů vytvořené ve škálovací sadě používají vlastní image virtuálního počítače a jsou připravené k obsluze provozu aplikace. V tomto kurzu se naučíte:
@@ -44,7 +44,7 @@ Pokud se rozhodnete nainstalovat a používat rozhraní příkazového řádku 
 >[!NOTE]
 > Tento kurz vás provede procesem vytvoření a použití image generalizovaného virtuálního počítače. Vytvoření škálovací sady z image specializovaného virtuálního počítače se nepodporuje.
 
-Nejprve vytvořte skupinu prostředků pomocí příkazu [az group create](/cli/azure/group#az_group_create) a pak vytvořte virtuální počítač pomocí příkazu [az vm create](/cli/azure/vm#az_vm_create). Tento virtuální počítač se použije jako zdroj pro vlastní image virtuálního počítače. Následující příklad vytvoří virtuální počítač *myVM* ve skupině prostředků *myResourceGroup*:
+Nejprve vytvořte skupinu prostředků pomocí příkazu [az group create](/cli/azure/group#az_group_create) a pak vytvořte virtuální počítač pomocí příkazu [az vm create](/cli/azure/vm). Tento virtuální počítač se použije jako zdroj pro vlastní image virtuálního počítače. Následující příklad vytvoří virtuální počítač *myVM* ve skupině prostředků *myResourceGroup*:
 
 ```azurecli-interactive
 az group create --name myResourceGroup --location eastus
@@ -57,7 +57,7 @@ az vm create \
   --generate-ssh-keys
 ```
 
-Veřejná IP adresa virtuálního počítače se zobrazí ve výstupu příkazu [az vm create](/cli/azure/vm#az_vm_create). Následujícím způsobem se připojte přes SSH k veřejné IP adrese virtuálního počítače:
+Veřejná IP adresa virtuálního počítače se zobrazí ve výstupu příkazu [az vm create](/cli/azure/vm). Následujícím způsobem se připojte přes SSH k veřejné IP adrese virtuálního počítače:
 
 ```azurecli-interactive
 ssh azureuser@<publicIpAddress>
@@ -96,7 +96,7 @@ az vm generalize --resource-group myResourceGroup --name myVM
 
 Uvolnění a generalizace virtuálního počítače může několik minut trvat.
 
-Teď vytvořte image virtuálního počítače pomocí příkazu [az image create](/cli//azure/image#az_image_create). Následující příklad z vašeho virtuálního počítače vytvoří image *myImage*:
+Teď vytvořte image virtuálního počítače pomocí příkazu [az image create](/cli//azure/image). Následující příklad z vašeho virtuálního počítače vytvoří image *myImage*:
 
 ```azurecli-interactive
 az image create \
@@ -159,7 +159,7 @@ az group delete --name myResourceGroup --no-wait --yes
 ```
 
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 V tomto kurzu jste zjistili, jak vytvořit a použít vlastní image virtuálního počítače pro škálovací sady pomocí Azure CLI:
 
 > [!div class="checklist"]

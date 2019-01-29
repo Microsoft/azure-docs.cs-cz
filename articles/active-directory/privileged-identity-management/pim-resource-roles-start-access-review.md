@@ -10,16 +10,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.component: pim
+ms.subservice: pim
 ms.date: 04/02/2018
 ms.author: rolyon
 ms.custom: pim
-ms.openlocfilehash: 9a35d32d89931a03b33f232ba4f79226fc3f57e5
-ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
+ms.openlocfilehash: 607104c5a8021107be9e343d71ade049712454f6
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2018
-ms.locfileid: "43189170"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55160045"
 ---
 # <a name="start-an-access-review-for-azure-resource-roles-in-pim"></a>Zahájení kontroly přístupu pro role prostředků Azure v PIM
 Přiřazení rolí stát "zastaralých", když uživatelé privilegovaný přístup, které už nepotřebují. Aby se snížilo riziko, který je spojen s přiřazení těchto zastaralých rolí, správci privilegovaných rolí by měl pravidelně zkontrolovat role. Tento dokument popisuje kroky pro zahájení kontroly přístupu v Privileged Identity Management (PIM) pro prostředky Azure.
@@ -32,7 +32,7 @@ Na hlavní stránce aplikace PIM přejdete na:
 
 Když vyberete **přidat** tlačítko, **vytvoření kontroly přístupu** otevře se okno. V tomto okně Konfigurace revizi pomocí názvu a časového limitu, vyberte roli zkontrolovat a rozhodněte, kdo provádí revizi.
 
-![Vytvořit kontrolu přístupu](media/azure-pim-resource-rbac/rbac-create-access-review.png)
+![Vytvoření kontroly přístupu](media/azure-pim-resource-rbac/rbac-create-access-review.png)
 
 ### <a name="configure-the-review"></a>Konfigurace kontroly
 Vytvoření kontroly přístupu, nejprve pojmenujte ji a pak nastavte počáteční a koncové datum.
@@ -54,8 +54,8 @@ Existují tři možnosti pro provádění kontrolu. Revize můžete přiřadit n
 
 1. Vyberte jednu z možností:
    
-   * **Vybraní uživatelé**: tuto možnost použijte, pokud si nejste jisti, který potřebuje přístup. Pomocí této možnosti můžete přiřadit revize vlastník prostředku nebo správce skupiny pro dokončení.
-   * **Přiřazené (vlastní)**: pomocí této možnosti můžete mít uživatele, projděte si svoje vlastní přiřazení rolí.
+   * **Vybraní uživatelé**: Tuto možnost použijte, pokud si nejste jisti, který potřebuje přístup. Pomocí této možnosti můžete přiřadit revize vlastník prostředku nebo správce skupiny pro dokončení.
+   * **Přiřazené (vlastní)**: Tuto možnost použijte, pokud uživatelé zkontrolovat přiřazení role.
    
 2. Přejděte na **vybrat revidující**.
    
@@ -74,5 +74,5 @@ Až skončí období kontroly, můžete jim Připomeňte dokončení jejich kont
 ## <a name="next-steps"></a>Další postup
 
 - [Dokončení kontroly přístupu pro role prostředků Azure v PIM](pim-resource-roles-complete-access-review.md)
-- [Provádění kontroly přístupu sady Moje role prostředků Azure v PIM](pim-resource-roles-perform-access-review.md)
+- [Provedení kontroly přístupu rolí prostředků Azure v nástroji PIM](pim-resource-roles-perform-access-review.md)
 - [Zahájení kontroly přístupu pro role adresáře Azure AD v PIM](pim-how-to-start-security-review.md)

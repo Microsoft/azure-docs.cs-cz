@@ -10,16 +10,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.component: pim
+ms.subservice: pim
 ms.date: 08/31/2018
 ms.author: rolyon
 ms.custom: pim
-ms.openlocfilehash: c661f2662f48c5aaece142cb4a2223ab8a6d0853
-ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
+ms.openlocfilehash: b7b362cf711cc6424d1eb3daa19701ee22249741
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/04/2018
-ms.locfileid: "43666587"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55151511"
 ---
 # <a name="approve-or-deny-requests-for-azure-resource-roles-in-pim"></a>Schválit nebo zamítnout žádosti pro role prostředků Azure v PIM
 

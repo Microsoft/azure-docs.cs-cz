@@ -6,17 +6,17 @@ author: eross-msft
 manager: daveba
 ms.service: active-directory
 ms.workload: identity
-ms.component: fundamentals
+ms.subservice: fundamentals
 ms.topic: conceptual
 ms.date: 09/11/2018
 ms.author: lizross
 ms.custom: it-pro, seodec18
-ms.openlocfilehash: f765e99a4186e0790bfcad22dd2d1a17a98050c9
-ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
+ms.openlocfilehash: 887f376eafadfb556ce69611195301b25b24bbd5
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54450945"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55104248"
 ---
 # <a name="add-or-remove-group-owners-in-azure-active-directory"></a>Přidání nebo odebrání vlastníků skupin v Azure Active Directory
 Skupiny Azure Active Directory (Azure AD) je vlastněna a řízena vlastníky skupiny. Vlastníci skupiny jsou přiřazeny ke správě skupiny a její členy podle vlastníka prostředku (správce). Vlastníci skupiny nemusejí být členy skupiny. Po přiřazení vlastníka skupiny jenom vlastník prostředku můžete přidat nebo odebrat vlastníky.

@@ -10,14 +10,14 @@ ms.service: azure-monitor
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 12/09/2018
+ms.date: 01/26/2019
 ms.author: bwren
-ms.openlocfilehash: 1c53dfb1447b0abd5b96d109a657eae5f5947118
-ms.sourcegitcommit: c31a2dd686ea1b0824e7e695157adbc219d9074f
+ms.openlocfilehash: 804044dbfc5428c3a80aab13227730ed13c43ce2
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/18/2019
-ms.locfileid: "54401431"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55098026"
 ---
 # <a name="azure-monitor-overview"></a>Přehled služby Azure Monitor
 
@@ -66,7 +66,7 @@ Azure Monitor může shromažďovat data protokolu z jakéhokoli klienta REST po
 
 
 ## <a name="insights"></a>Insights
-Sledování dat je pouze užitečné, pokud zvýšíte svůj vhled do provozu vaše výpočetní prostředí. Azure Monitor obsahuje několik funkcí a nástrojů, které poskytují cenné přehledy o vašich aplikací a další prostředky, které jsou závislé. [Řešení monitorování](insights/solutions.md) a funkce, jako [Application Insights](app/app-insights-overview.md) a přehledy o kontejnerech poskytnout podrobný přehled o různých aspektech vaší aplikace a konkrétních služeb Azure. 
+Sledování dat je pouze užitečné, pokud zvýšíte svůj vhled do provozu vaše výpočetní prostředí. Azure Monitor obsahuje několik funkcí a nástrojů, které poskytují cenné přehledy o vašich aplikací a další prostředky, které jsou závislé. [Řešení monitorování](insights/solutions.md) a funkce, jako [Application Insights](app/app-insights-overview.md) a [monitorování Azure pro kontejnery](insights/container-insights-overview.md) poskytnout podrobný přehled o různých aspektech vaší aplikace a konkrétní Azure služby. 
 
 ### <a name="application-insights"></a>Application Insights
 [Application Insights](app/app-insights-overview.md) Monitoruje dostupnost, výkon a využití webových aplikací, ať už jsou hostované v cloudu nebo místně. Využívá výkonnou datovou platformu pro analýzy ve službě Azure Monitor vám poskytnout podrobný přehled o operacích vaší aplikace a diagnostikovat chyby bez čekání na jejich nahlášení uživatelem. Application Insights obsahuje spojovací body s celou řadu nástrojů pro vývoj a integruje se sadou Visual Studio pro podporu vašich procesů DevOps.
@@ -74,12 +74,12 @@ Sledování dat je pouze užitečné, pokud zvýšíte svůj vhled do provozu va
 ![App Insights](media/overview/app-insights.png)
 
 ### <a name="azure-monitor-for-containers"></a>Azure Monitor pro kontejnery
-Azure Monitor pro kontejnery je funkce určené k monitorování výkonu kontejner úloh nasazených do spravované clustery Kubernetes hostované ve službě Azure Kubernetes Service (AKS). Poskytuje přehled o výkonu shromažďováním paměti a procesoru metriky z řadiče, uzly a kontejnerů, které jsou k dispozici v Kubernetes prostřednictvím rozhraní API metrik. Shromažďují se také protokoly kontejnerů.  Když povolíte monitorování z clusterů Kubernetes, tyto metriky a protokoly se automaticky shromažďují, můžete prostřednictvím kontejnerizovaných verzi agenta Log Analytics pro Linux.
+[Azure Monitor pro kontejnery](insights/container-insights-overview.md) je funkce určené k monitorování výkonu kontejner úloh nasazených do spravované clustery Kubernetes hostované ve službě Azure Kubernetes Service (AKS). Poskytuje přehled o výkonu shromažďováním paměti a procesoru metriky z řadiče, uzly a kontejnerů, které jsou k dispozici v Kubernetes prostřednictvím rozhraní API metrik. Shromažďují se také protokoly kontejnerů.  Když povolíte monitorování z clusterů Kubernetes, tyto metriky a protokoly se automaticky shromažďují, můžete prostřednictvím kontejnerizovaných verzi agenta Log Analytics pro Linux.
 
 ![Stav kontejneru](media/overview/container-insights.png)
 
 ### <a name="azure-monitor-for-vms"></a>Azure Monitor pro virtuální počítače
-Azure insights monitorování virtuálního počítače monitoruje virtuální počítače Azure (VM) ve velkém měřítku prostřednictvím analýzy výkonu a stavu Windows a virtuální počítače s Linuxem, včetně jejich různé procesy a propojených záviset na jiných prostředcích a externí proces. Toto řešení zahrnuje podporu monitorování výkonu a závislostí aplikací pro virtuální počítače hostované v místním nebo jiného zprostředkovatele cloudu.  
+[Azure Monitor pro virtuální počítače](insights/vminsights-overview.md) monitoruje analýzou výkonu a stavu systému Windows a virtuální počítače s Linuxem, včetně jejich různé procesy a propojených záviset na jiných prostředcích a externí virtuální počítače Azure (VM) ve velkém měřítku procesy. Toto řešení zahrnuje podporu monitorování výkonu a závislostí aplikací pro virtuální počítače hostované v místním nebo jiného zprostředkovatele cloudu.  
 
 
 ![VM Insights](media/overview/vm-insights.png)

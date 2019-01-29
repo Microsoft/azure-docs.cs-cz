@@ -13,15 +13,15 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 05/30/2018
-ms.component: hybrid
+ms.subservice: hybrid
 ms.author: billmath
 ms.custom: seohack1
-ms.openlocfilehash: 34c284f3fdd78d8b2f56ec7c36e139f9ac9d78bf
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: c31f104b3a7ae37d768a2a483a70385852dc47ca
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54473499"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55156815"
 ---
 # <a name="plan-for-enhancing-data-security-through-a-strong-identity-solution"></a>Plán pro zlepšení zabezpečení dat prostřednictvím řešení využívá silné identity
 Prvním krokem při ochraně dat je identifikovat, kdo má přístup k těmto datům. Navíc musíte mít řešení identit, které můžete integrovat do vašeho systému pro poskytování možností ověřování a autorizace. Ověřování a autorizace se často zaměňuje za číslo mezi sebou a nesprávně pochopeny, jejich role. Ve skutečnosti jsou různé, jak je znázorněno na následujícím obrázku:

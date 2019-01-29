@@ -7,19 +7,19 @@ author: jeevansd
 manager: daveba
 ms.assetid: 3360d7aa-6518-4f99-88bd-b7f7258183e8
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 06/09/2017
 ms.author: jeedes
-ms.openlocfilehash: 119647c4aeabc8f4a6dd3a1933fcfafe6b6cf5c2
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: 2efe0cd50e894ad76ab3b40b17970091870f9711
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54813317"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55178048"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-appblade"></a>Kurz: Integrace Azure Active Directory s AppBlade
 

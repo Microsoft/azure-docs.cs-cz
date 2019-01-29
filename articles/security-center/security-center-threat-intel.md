@@ -1,6 +1,6 @@
 ---
 title: Hrozeb inteligenci a mapování výstrah zabezpečení ve službě Azure Security Center | Dokumentace Microsoftu
-description: Zjistěte, jak použít funkci vydána upozornění hrozeb a mapa intelligence ve službě Azure Security Center k identifikaci potenciálních hrozeb na virtuálních počítačích a počítačích.
+description: Další informace o použití funkce výstrah zabezpečení hrozeb a mapa intelligence ve službě Azure Security Center k identifikaci potenciálních hrozeb na virtuálních počítačích a počítačích.
 services: security-center
 documentationcenter: na
 author: rkarlin
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/3/2018
 ms.author: rkarlin
-ms.openlocfilehash: c41cb48e61b4c2bd1dc81e508c8218fad688bbaf
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 85930ef8d0753c28cf4bfa2eb2eb487e419ed5f3
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51241715"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55092090"
 ---
 # <a name="security-alerts-map-and-threat-intelligence"></a>Analýza hrozeb a mapa výstrah zabezpečení
 Tento článek vám umožní použít mapu výstrahy zabezpečení Azure Security Center a mapa analýzy hrozeb založený na událostech zabezpečení pro řešení potíží s související se zabezpečením.

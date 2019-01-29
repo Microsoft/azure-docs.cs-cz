@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 12/18/2017
 ms.author: cynthn
-ms.openlocfilehash: 59dbbb8374455088d759a5e837b8d3bc22145d3e
-ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
+ms.openlocfilehash: f30305374b1fcaabfb36533195a098073d33b6c3
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54882759"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55197598"
 ---
 # <a name="create-a-docker-environment-in-azure-using-the-docker-vm-extension"></a>Vytvoření prostředí pro Docker v Azure pomocí rozšíření Docker VM
 
@@ -58,7 +58,7 @@ Trvá několik minut na dokončení nasazení.
 
 
 ## <a name="deploy-your-first-nginx-container"></a>Nasadíte svůj první kontejner NGINX
-Chcete-li zobrazit podrobnosti o vašich virtuálních počítačů, včetně názvu DNS, použijte [az vm show](/cli/azure/vm#az_vm_show):
+Chcete-li zobrazit podrobnosti o vašich virtuálních počítačů, včetně názvu DNS, použijte [az vm show](/cli/azure/vm):
 
 ```azurecli
 az vm show \

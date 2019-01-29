@@ -6,20 +6,20 @@ author: alkohli
 ms.service: databox
 ms.subservice: gateway
 ms.topic: tutorial
-ms.date: 10/01/2018
+ms.date: 01/28/2019
 ms.author: alkohli
-ms.openlocfilehash: ea4203c45f482b990122a966fc2ec13b3fb41c84
-ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
-ms.translationtype: HT
+ms.openlocfilehash: 00415cab4d5c36c74cf78a10cb71682d97236517
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/12/2018
-ms.locfileid: "49167150"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55099154"
 ---
-# <a name="tutorial-provision-azure-data-box-gateway-in-vmware-preview"></a>Kurz: Zřízení služby Azure Data Box Gateway ve VMware (Preview)
+# <a name="tutorial-provision-azure-data-box-gateway-in-vmware-preview"></a>Kurz: Zřízení Azure Data Box brány ve službě VMware (Náhled)
 
 ## <a name="overview"></a>Přehled
 
-Tento kurz popisuje, jak zřídit službu Data Box Gateway v hostitelském systému s VMware ESXi 6.0 nebo 6.5. 
+Tento kurz popisuje, jak zřídit bránu Data Gateway pole v hostitelském systému, s VMware ESXi 6.0 a 6.5, 6.7. 
 
 Ke zřízení virtuálního zařízení a připojení k němu potřebujete oprávnění správce. Dokončení zřizování a počátečního nastavení může trvat přibližně 10 minut.
 
@@ -37,7 +37,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 
 ## <a name="prerequisites"></a>Požadavky
 
-Požadavky na zřízení virtuálního zařízení v hostitelském systému s VMware ESXi 6.0 nebo 6.5 jsou následující.
+Požadavky na zřízení virtuálního zařízení v systému hostitele VMware ESXi 6.0 a 6.5, 6.7, jsou následující.
 
 ### <a name="for-the-data-box-gateway-resource"></a>Prostředek Data Box Gateway
 
@@ -53,7 +53,7 @@ Než začnete, ujistěte se, že:
 
 Před nasazením virtuálního zařízení se ujistěte, že:
 
-* Máte přístup k hostitelskému systému s VMware (ESXi 6.0 nebo 6.5), který můžete použít ke zřízení zařízení.
+* Máte přístup k hostiteli systému VMware (ESXi 6.0 a 6.5, 6.7), kterou lze použít na základě zařízení.
 * Hostitelský systém může pro zřízení virtuálního zařízení vyhradit následující prostředky:
 
   * Minimálně 4 jádra
@@ -73,7 +73,7 @@ Než začnete:
 
 K vytvoření virtuálního zařízení potřebujete:
 
-* Přístup k hostitelskému systému se serverem VMware ESXi 6.0 nebo 6.5. Hostitelský systém může pro virtuální zařízení vyhradit následující prostředky:
+* Přístup k hostitelskému systému serverem VMware ESXi 6.7, 6.0 nebo 6.5. Hostitelský systém může pro virtuální zařízení vyhradit následující prostředky:
  
   * Minimálně 4 jádra
   * Minimálně 8 GB paměti RAM 
@@ -89,7 +89,7 @@ Pomocí následujících kroků ve svém hypervisoru zřiďte virtuální zaří
 
 1. Zkopírujte do svého systému image virtuálního zařízení. Tuto virtuální image (dva soubory) jste si stáhli přes Azure Portal. Poznamenejte si umístění, do kterého jste image zkopírovali, protože tuto image použijete v pozdější části tohoto postupu.
 
-2. Pomocí webového klienta vSphere se přihlaste k serveru ESXi. K vytvoření virtuálního počítače potřebujete mít oprávnění správce.
+2. Přihlaste se k serveru ESXi pomocí webovém klientovi vSphere. K vytvoření virtuálního počítače potřebujete mít oprávnění správce.
 
    ![](./media/data-box-gateway-deploy-provision-vmware/image1.png)
   
@@ -192,7 +192,7 @@ Pomocí následujících kroků spusťte své virtuální zařízení a připojt
 
    ![](./media/data-box-gateway-deploy-provision-vmware/image23.png)
 
-6. Kroky 5 až 7 proveďte pouze v případě, že zařízení spouštíte v jiném prostředí než DHCP. Pokud jste v prostředí DHCP, přeskočte tyto kroky a přejděte ke kroku 8. Pokud jste zařízení spustili v jiném prostředí než DHCP, zobrazí se o tom zpráva: **Pomocí rutiny Set-HcsIPAddress nakonfigurujte síť**. 
+6. Kroky 5 až 7 proveďte pouze v případě, že zařízení spouštíte v jiném prostředí než DHCP. Pokud jste v prostředí DHCP, přeskočte tyto kroky a přejděte ke kroku 8. Pokud je spuštěn vaše zařízení v prostředí bez služby DHCP, zobrazí se zpráva o tom: **Konfigurace sítě pomocí rutiny Set-HcsIPAddress**. 
    
 7. Pokud chcete nakonfigurovat síť, na příkazovém řádku použijte příkaz `Get-HcsIpAddress`, který vypíše povolená síťová rozhraní na vašem virtuálním zařízení. Pokud má vaše zařízené povolené jediné síťové rozhraní, výchozí název přiřazený tomuto rozhraní je `Ethernet`.
 
@@ -211,7 +211,7 @@ Pokud vaše zařízení nesplňuje minimální požadavky na konfiguraci, zobraz
 * Run diagnostic tests to [troubleshoot web UI setup](storsimple-ova-web-ui-admin.md#troubleshoot-web-ui-setup-errors).
 * [Generate log package and view log files](storsimple-ova-web-ui-admin.md#generate-a-log-package).-->
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 V tomto kurzu jste se dozvěděli o tématech spojených se službou Data Box Gateway, jako jsou:
 

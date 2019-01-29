@@ -1,5 +1,5 @@
 ---
-title: 'Rychlý start: Project URL Preview, Node.js'
+title: 'Rychlý start: Náhled adresy URL projektu, Node.js'
 titlesuffix: Azure Cognitive Services
 description: Začněte používat funkci náhledu adresy URL ve službě Microsoft Cognitive Services v Azure.
 services: cognitive-services
@@ -10,14 +10,14 @@ ms.component: url-preview
 ms.topic: quickstart
 ms.date: 03/16/2018
 ms.author: rosh
-ms.openlocfilehash: 3367b39333c9d7334bc56b3acdf00453cc9705c0
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
-ms.translationtype: HT
+ms.openlocfilehash: 38cfb0957acf5fb986e16a64d2c9730dc10fcf7c
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49465045"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55104294"
 ---
-# <a name="quickstart-url-preview-with-nodejs"></a>Rychlý start: URL Preview s využitím Node.js 
+# <a name="quickstart-url-preview-with-nodejs"></a>Rychlý start: Náhled adresy URL s využitím Node.js 
 
 Následující příklady v jazyce Node vytvoří náhled adresy URL pro web SwiftKey: https://swiftkey.com/en.
 
@@ -37,7 +37,7 @@ Implementuje se v následujících krocích:
 
 Následuje celý kód pro tuto ukázku:
 
-````
+```
 'use strict';
 
 let https = require('https');
@@ -83,9 +83,9 @@ let Search = function () {
 
 Search();
 
-````
+```
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 - [Ukázkový kód v jazyce C#](csharp.md)
 - [Rychlý start pro Javu](java-quickstart.md)
 - [Rychlý start pro JavaScript](javascript.md)

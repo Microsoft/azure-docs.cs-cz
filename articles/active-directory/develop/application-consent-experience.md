@@ -7,7 +7,7 @@ author: CelesteDG
 manager: mtillman
 ms.assetid: ''
 ms.service: active-directory
-ms.component: app-mgmt
+ms.subservice: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 09/11/2018
 ms.author: celested
 ms.reviewer: zawad
-ms.openlocfilehash: 3193e9ac6ac5e90584bbf548142b7573d61c310a
-ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
+ms.openlocfilehash: f5ec31cf0f88b9bfdff2e4fa877d56a2689054ae
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/19/2019
-ms.locfileid: "54413069"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55097936"
 ---
 # <a name="understanding-azure-ad-application-consent-experiences"></a>Principy souhlasu s aplikací Azure AD narazí
 
@@ -46,7 +46,7 @@ Následující diagram a tabulka poskytují informace o stavebních bloků výzv
 | # | Komponenta | Účel |
 | ----- | ----- | ----- |
 | 1 | Identifikátor uživatele | Tento identifikátor představuje uživatele, který žádá o přístup k chráněným prostředkům jménem klienta aplikace. |
-| 2 | Titul | Změny názvů založené na tom, jestli uživatelé projít tok vyjádření souhlasu uživatele nebo správce. V toku souhlasu uživatele název bude "Požadováno oprávnění" při v toku souhlasu správce názvu bude mít další řádek "Accept pro vaši organizaci". |
+| 2 | Název | Změny názvů založené na tom, jestli uživatelé projít tok vyjádření souhlasu uživatele nebo správce. V toku souhlasu uživatele název bude "Požadováno oprávnění" při v toku souhlasu správce názvu bude mít další řádek "Accept pro vaši organizaci". |
 | 3 | Logo aplikace | Tato image by měly pomoci uživatelům mají vizuální upozornění, jestli tato aplikace je aplikace určené pro přístup k. Tento obrázek pochází od vývojáře aplikací a vlastnictví tohoto obrázku není ověřený. |
 | 4 | App name (Název aplikace) | Tato hodnota by měla informovat uživatele, který aplikace žádá o přístup ke svým datům. Poznámka: Tento název je k dispozici vývojáři a vlastnictví tento název aplikace není ověřený. |
 | 5 | Publisher domain | Tato hodnota by měla poskytnout uživatelům s doménou, které mohou být možné vyhodnotit důvěryhodnost. Tato doména je poskytována vývojáři a ověřit vlastnictví domény vydavatele. |

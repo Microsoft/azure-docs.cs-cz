@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 01/25/2019
 ms.author: danlep
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 6f3b9815b8e2836b3ee87f969efdc52aca5f5db6
-ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
+ms.openlocfilehash: 5076c662390c9a28682930e8c5f06cfc79f7134b
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/26/2019
-ms.locfileid: "55077234"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55169684"
 ---
 # <a name="find-linux-vm-images-in-the-azure-marketplace-with-the-azure-cli"></a>Vyhledání imagí virtuálních počítačů s Linuxem na webu Azure Marketplace pomocí Azure CLI
 
@@ -286,7 +286,7 @@ Pokud provádíte nasazení virtuálního počítače pomocí šablony Resource 
 
 ### <a name="view-plan-properties"></a>Zobrazit vlastnosti plánu
 
-Chcete-li zobrazit informace o plánu nákupní obrazu, spusťte [az vm image show](/cli/azure/image#az_image_show) příkazu. Pokud `plan` vlastnost ve výstupu není `null`, bitová kopie je podmínky musíte přijmout před programové nasazení.
+Chcete-li zobrazit informace o plánu nákupní obrazu, spusťte [az vm image show](/cli/azure/image) příkazu. Pokud `plan` vlastnost ve výstupu není `null`, bitová kopie je podmínky musíte přijmout před programové nasazení.
 
 Image Canonical Ubuntu serveru 18.04 LTS například nemá další podmínky, protože `plan` informace `null`:
 

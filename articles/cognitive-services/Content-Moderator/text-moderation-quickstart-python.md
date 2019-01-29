@@ -10,12 +10,12 @@ ms.component: content-moderator
 ms.topic: quickstart
 ms.date: 01/10/2019
 ms.author: pafarley
-ms.openlocfilehash: 6aace9301050877d452b69bd7d1c741f50dae558
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.openlocfilehash: fd7f6897b20f64a195f7e1f1155ba61eaf5941f2
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54264084"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55154333"
 ---
 # <a name="quickstart-analyze-text-content-for-objectionable-material-in-python"></a>Rychlý start: Analýza textový obsah pro nežádoucím v Pythonu
 
@@ -61,7 +61,7 @@ Z důvodu zjednodušení se analyzovat text přímo ze skriptu. Definujte nový 
 
 ## <a name="query-the-moderator-service"></a>Dotazování na službu moderátora
 
-Vytvoření **ContentModeratorClient** instance pomocí vaše předplatné key a koncového bodu adresy URL. Potom použijte její člen **TextModerationOperations** instance volejte rozhraní API pro moderování. Zobrazit **[screen_text](https://docs.microsoft.com/python/api/azure-cognitiveservices-vision-contentmoderator/azure.cognitiveservices.vision.contentmoderator.operations.textmoderationoperations?view=azure-python#screen-text)** referenční dokumentaci pro další informace o tom, jak ji volat.
+Vytvoření **ContentModeratorClient** instance pomocí vaše předplatné key a koncového bodu adresy URL. Potom použijte její člen **TextModerationOperations** instance volejte rozhraní API pro moderování. Zobrazit **[screen_text](https://docs.microsoft.com/python/api/azure-cognitiveservices-vision-contentmoderator/azure.cognitiveservices.vision.contentmoderator.operations.textmoderationoperations?view=azure-python)** referenční dokumentaci pro další informace o tom, jak ji volat.
 
 [!code-python[](~/cognitive-services-content-moderator-samples/documentation-samples/python/text-moderation-quickstart-python.py?range=23-36)]
 

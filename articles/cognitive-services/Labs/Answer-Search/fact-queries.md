@@ -1,5 +1,5 @@
 ---
-title: 'Rychlý start: Dotazy na fakta v Project Answer Search'
+title: 'Rychlý start: Projekt hledání odpovědí fakt dotazu'
 titlesuffix: Azure Cognitive Services
 description: Dotazy na fakta pomocí Project Answer Search
 services: cognitive-services
@@ -10,14 +10,14 @@ ms.component: answer-search
 ms.topic: quickstart
 ms.date: 04/16/2018
 ms.author: rosh
-ms.openlocfilehash: 7e8a793362e51a05a73c0b42346e2e8fafb3f44d
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
-ms.translationtype: HT
+ms.openlocfilehash: e3cc795644af07550db253cf6fca3fc1c9997519
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49469397"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55094577"
 ---
-# <a name="quickstart-query-for-facts"></a>Rychlý start: Dotaz na fakta
+# <a name="quickstart-query-for-facts"></a>Rychlý start: Dotaz pro fakty
 
 Pokud se dotaz týká faktu, jako je například datum nebo identifikovatelná znalost, může odpověď obsahovat odpovědi typu `facts`. Odpovědi faktů obsahují relevantní výsledky extrahované z odstavců ve webových dokumentech.  Tyto dotazy vždycky vrací webové stránky. [Fakta](fact-queries.md) nebo [entity](entity-queries.md) jsou závislé na dotazu.
 
@@ -26,14 +26,14 @@ Dotazy, jako je například valentines+2016 nebo when+is+easter jsou považován
 V následujícím příkladu je odpověď typu `facts` související s datem. 
 
 **Dotaz:**
-````
+```
 https://labsportalppe.azure-api.net/answerSearch/v7.0/search?q=valentines+2016
 
-````
+```
 
-**Odpověď:** Pole `subjectName` obsahuje zobrazenou verzi dotazu uživatele, kterou můžete použít jako popisek při zobrazení faktu. Pokud je řetězec dotazu valentines+2016, Bing jej může změnit na Valentine's Day 2016. Pole description obsahuje fakt.
+**Odpověď:** `subjectName` Pole obsahuje zobrazení verzi uživatele dotaz, který můžete použít jako popisek při zobrazení na skutečnost. Pokud je řetězec dotazu valentines+2016, Bing jej může změnit na Valentine's Day 2016. Pole description obsahuje fakt.
 
-````
+```
 {   
     "_type" : "SearchResponse",   
     "queryContext" : {   
@@ -57,20 +57,20 @@ https://labsportalppe.azure-api.net/answerSearch/v7.0/search?q=valentines+2016
     }   
 }   
 
-````
+```
 
 Dotaz "Why is the sky blue?" vrátí příklad odpovědi na znalostní otázku.
 
 **Dotaz:**
 
-````
+```
 https://api.labs.cognitive.microsoft.com/answerSearch/v7.0/search?q=why+is+the+sky+blue
 
-````
+```
 
-**Odpověď:** Pole `value/description` obsahuje znalosti nebo informace vyžádané dotazem.
+**Odpověď:** `value/description` Pole obsahuje znalostní báze nebo dotazem požadované informace.
 
-````
+```
   "facts": {
     "id": "https://www.bingapis.com/api/v7/#Facts",
     "contractualRules": [
@@ -112,17 +112,17 @@ https://api.labs.cognitive.microsoft.com/answerSearch/v7.0/search?q=why+is+the+s
     ]
   },
 
-````
+```
 
 ## <a name="tabular-data"></a>Tabulková data
 V některých případech můžou být data vrácena jako typ `_type: StructuredValue/TabularData`. Následující dotaz načte tabulková data s informacemi o rozdílech mezi kávou a čajem.
 
-````
+```
 https://labsportalppe.azure-api.net/answerSearch/v7.0/search?q=coffee+vs+tea&mkt=en-us 
 
-````
+```
 Výsledky `facts` obsahují následující řádky a buňky:
-````
+```
     "value": [
       {
         "subjectName": "Coffee vs. Tea",
@@ -196,9 +196,9 @@ Výsledky `facts` obsahují následující řádky a buňky:
     ]
   },
 
-````
+```
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 - [Rychlý start pro jazyk C#](c-sharp-quickstart.md)
 - [Rychlý start pro Javu](java-quickstart.md)
 - [Rychlý start pro Node](node-quickstart.md)

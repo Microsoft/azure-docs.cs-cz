@@ -6,17 +6,17 @@ services: cognitive-services
 author: aahill
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: bing-news-search
+ms.subservice: bing-news-search
 ms.topic: quickstart
 ms.date: 1/10/2019
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: f8a98133d68cb73958664dd04bb2d959c97195cf
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.openlocfilehash: 71f0ece2ff06ef000092485b8e7e11c5eedb38dd
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54263845"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55174495"
 ---
 # <a name="quickstart-perform-a-news-search-using-java-and-the-bing-news-search-rest-api"></a>Rychlý start: Hledání zpráv pomocí Javy a rozhraní API REST vyhledávání zpráv Bingu
 
@@ -64,7 +64,7 @@ Viz také [služeb Cognitive Services ceny – rozhraní API Bingu pro vyhledáv
     }
     ```
 
-## <a name="construct-the-search-request-and-recieve-a-json-response"></a>Vytvořit žádost o vyhledávání a přijetí odpovědi JSON
+## <a name="construct-the-search-request-and-receive-a-json-response"></a>Vytvořit žádost o vyhledávání a přijetí odpovědi JSON
 
 1. Pomocí proměnných z posledního kroku naformátujte vyhledávací adresu URL pro žádost rozhraní API. Hledaný termín musí být zakódovaný do adresy URL předtím, než se připojí k této žádosti.
 

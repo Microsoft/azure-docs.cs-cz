@@ -13,14 +13,14 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 07/12/2017
-ms.component: hybrid
+ms.subservice: hybrid
 ms.author: billmath
-ms.openlocfilehash: 25bc3d0c0517278f20cba4fd4beb2fc4d82b66f1
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: 0b3fed190c9483c458df6144d639c6f19e01cdf0
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54464149"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55178405"
 ---
 # <a name="azure-ad-connect-sync-prevent-accidental-deletes"></a>Synchronizace Azure AD Connect: Prevence náhodného odstranění
 Toto téma popisuje funkci zabránit náhodnému odstranění (prevence náhodného odstranění) ve službě Azure AD Connect.

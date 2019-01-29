@@ -10,16 +10,16 @@ editor: piotrci
 ms.service: active-directory
 ms.topic: article
 ms.workload: identity
-ms.component: users-groups-roles
+ms.subservice: users-groups-roles
 ms.date: 10/29/2018
 ms.author: curtand
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 9b94bf4c499a5d6323e774df90304f0134bc5894
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.openlocfilehash: b2e52b1e9aad05af173bf86e769e0c6ff7d28d9d
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50215408"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55195152"
 ---
 # <a name="scenarios-limitations-and-known-issues-using-groups-to-manage-licensing-in-azure-active-directory"></a>Scénáře, omezeních a známých problémech použití skupin pro správu licencování v Azure Active Directory
 
@@ -69,7 +69,7 @@ V tomto příkladu úpravě jednoho uživatele a nastavení jejich extensionAttr
 
 Uživatel může být členem více skupin licencí. Tady je pár věcí k uvážení:
 
-- Může dojít k překrytí pro stejný produkt, více licencí a jejich výsledkem všechny povolené služby se použijí na uživatele. Následující příklad ukazuje dva skupiny licencí: *základní služby E3* obsahuje služby foundation k nasazení, nejprve pro všechny uživatele. A *E3 rozšířené služby* obsahuje další služby (Swayi a plánovač) nasadit jenom pro některé uživatele. V tomto příkladu byl uživatel přidán do skupiny:
+- Může dojít k překrytí pro stejný produkt, více licencí a jejich výsledkem všechny povolené služby se použijí na uživatele. Následující příklad ukazuje dva skupiny licencí: *Základní služby E3* obsahuje služby foundation k nasazení, nejprve pro všechny uživatele. A *E3 rozšířené služby* obsahuje další služby (Swayi a plánovač) nasadit jenom pro některé uživatele. V tomto příkladu byl uživatel přidán do skupiny:
 
   ![Snímek obrazovky povolené služby](./media/licensing-group-advanced/view-enabled-services.png)
 
@@ -201,7 +201,7 @@ Tento ukázkový výstup ukazuje začátek zpracování, všechny výsledné zm�
 
 Není možné odstranit skupinu s přiřazenou licenci aktivní. Správce může odstranit skupinu není si uvědomili, že by licence k odebrání z uživatelů – z tohoto důvodu, že požadujeme, aby všechny licence odebrat ze skupiny nejprve dříve, než je možné ji odstranit.
 
-Při pokusu o odstranění skupiny na webu Azure Portal, může se zobrazit oznámení o chybě takto: ![odstranění skupiny – snímek obrazovky se nezdařilo](./media/licensing-group-advanced/groupdeletionfailed.png)
+Při pokusu o odstranění skupiny na webu Azure Portal se může zobrazit oznámení o chybě takto: ![Nepovedlo se odstranit skupinu snímek obrazovky](./media/licensing-group-advanced/groupdeletionfailed.png)
 
 Přejděte **licence** kartě ve skupině a jestli jsou všechny přiřazené licence. Pokud ano, odeberte tyto licence a zkuste to znovu odstranit skupinu.
 
