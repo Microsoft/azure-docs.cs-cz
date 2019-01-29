@@ -9,13 +9,13 @@ ms.workload: identity
 ms.topic: reference
 ms.date: 09/10/2018
 ms.author: davidmu
-ms.component: B2C
-ms.openlocfilehash: 72ed1f7f6d9fe9958bbd78b001d727feb5f8861c
-ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
+ms.subservice: B2C
+ms.openlocfilehash: 3f72480aaa05c0f50179d4d330525b12525282bc
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54848406"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55161864"
 ---
 # <a name="localization-string-ids"></a>ID lokalizace řetězce
 

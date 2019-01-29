@@ -11,12 +11,12 @@ ms.author: andrela
 ms.reviewer: v-masebo
 manager: craigg
 ms.date: 11/20/2018
-ms.openlocfilehash: 5c12bd54c0ea96ac915fedab94f03cf044330dcf
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.openlocfilehash: 6b748ebdbdc443c5fa44c82323774cd12c82ba38
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52723291"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55197496"
 ---
 # <a name="quickstart-use-java-to-query-an-azure-sql-database"></a>Rychlý start: Použití Javy k dotazování databáze SQL Azure
 
@@ -27,8 +27,6 @@ Tento článek ukazuje, jak používat [Java](/sql/connect/jdbc/microsoft-jdbc-d
 K dokončení této ukázce, ujistěte se, že jsou splněné následující požadavky:
 
 [!INCLUDE [prerequisites-create-db](../../includes/sql-database-connect-query-prerequisites-create-db-includes.md)]
-
-- A [pravidlo brány firewall na úrovni serveru](sql-database-get-started-portal-firewall.md) pro veřejnou IP adresu počítače, které používáte
 
 - S jazykem Java nainstalovaný software pro váš operační systém:
 
@@ -75,7 +73,7 @@ K dokončení této ukázce, ujistěte se, že jsou splněné následující po�
 
 1. Měli byste už soubor s názvem *App.java* projektu v Mavenu umístění:
 
-   *. \sqltest\src\main\java\com\sqldbsamples\App.Java*
+   *.\sqltest\src\main\java\com\sqldbsamples\App.java*
 
 1. Soubor otevřete a nahraďte jeho obsah následujícím kódem. Přidejte příslušné hodnoty pro server, databázi, uživatele a heslo.
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 1/15/2019
 ms.author: rkarlin
-ms.openlocfilehash: 1bf0ae8b0e9e0665f9b51935763d9f724b4bca4f
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.openlocfilehash: 925bf325d128f1757d24d29013f4e27eb788d7e2
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54261889"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55180666"
 ---
 # <a name="azure-security-policies-monitored-by-azure-security-center"></a>Zásady zabezpečení Azure monitorovaný pomocí Azure Security Center
 Tento článek obsahuje seznam definic zásad Azure, které můžete sledovat v Security Center. Další informace o zásadách zabezpečení najdete v tématu [práce se zásadami zabezpečení](tutorial-security-policy.md).
@@ -34,7 +34,7 @@ Informace o tom předdefinovaných zásadách, které jsou monitorovány pomocí
 |Auditovat pravidla ověřování v oborech názvů centra událostí|Event Hub klientů neměli používat zásady přístupu na úrovni oboru názvů, který poskytuje přístup ke všem fronty a témata v oboru názvů. Aby bylo v souladu s nejnižšími oprávněními model zabezpečení, měli byste vytvořit zásady přístupu na úrovni entity pro fronty a témata, které poskytují přístup k jenom na konkrétní entitu.|
 |Auditovat existenci pravidel ověřování v entitách centra událostí|Auditovat existenci autorizační pravidla centra událostí entity udělit přístup s nejnižšími.|
 |Auditovat neomezený síťový přístup k účtům úložiště|Audit neomezený přístup k síti v nastavení brány firewall na účtu úložiště. Místo toho nakonfigurujte pravidla sítě, abyste účtu úložiště můžou přistupovat jenom aplikace z povolených sítí. Povolit připojení z konkrétní Internetu nebo místní klienty, můžete udělit přístup k provoz z konkrétní služby Azure virtual networks a rozsahy adres veřejné internetové IP.|
-|Auditovat používání vlastních pravidel RBAC|Auditovat předdefinované role, jako je například vlastníka, přispěvatele, čtečky místo vlastní role RBAC, které jsou náchylné k chybám. Pomocí vlastních rolí je považován za výjimku a vyžaduje důkladné přezkoumání a modelování hrozeb.|
+|Auditovat používání vlastních pravidel RBAC|Auditovat předdefinované role, jako je například vlastník, Přispěvatel, čtenář místo vlastní role RBAC, které jsou náchylné k chybám. Pomocí vlastních rolí je považován za výjimku a vyžaduje důkladné přezkoumání a modelování hrozeb.|
 |Auditovat povolení diagnostických protokolů v Azure Stream Analytics|Povolení protokolů auditu a uchovávat až po roce. To umožňuje znovu vytvořit záznamy aktivit za účelem šetření, když dojde k incidentu zabezpečení nebo dojde k ohrožení vaší sítě.|
 |Auditovat zabezpečený přenos na účty úložiště|Audit požadavek zabezpečený přenos ve vašem účtu úložiště. Zabezpečený přenos je možnost, která vynutí účtu úložiště tak, aby přijímal požadavky jenom ze zabezpečeného připojení (HTTPS). Použití protokolu HTTPS zajišťuje ověřování mezi serverem a služby a chrání přenášená data ze sítě vrstvy útoky man-in-the-middle, odposlouchávání a napadení relace.|
 |Auditovat zřizování správce Azure Active Directory pro server SQL|Auditovat zřízení správce Azure Active Directory pro SQL server povolit ověřování Azure AD. Ověřování Azure AD umožňuje správu oprávnění zjednodušené a centralizované identity management uživatelů databáze a dalším službám společnosti Microsoft.|

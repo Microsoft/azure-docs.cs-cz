@@ -16,28 +16,28 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/16/2018
-ms.openlocfilehash: e3f17dd3717a57d184be7c9b8c73855c3fd2a768
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 33326aa0f033800268d0eb439f9c8c81b4d2e675
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53106766"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55094389"
 ---
 # <a name="provision-the-data-science-virtual-machine-for-linux-ubuntu"></a>Zřízení virtuálního počítače pro datové vědy pro Linux (Ubuntu)
 
 Virtuální počítač pro datové vědy pro Linux je image virtuálního počítače založeného na Ubuntu, který umožňuje snadno a rychle začít s machine learningem, včetně obsáhlého learningu v Azure. Nástroje pro hloubkové učení patří:
 
-  * [Caffe](http://caffe.berkeleyvision.org/): architektura obsáhlý learning zajišťující rychlost, expressivity a modularitu
-  * [Caffe2](https://github.com/caffe2/caffe2): multiplatformní verzi Caffe
-  * [Microsoft Cognitive Toolkit](https://github.com/Microsoft/CNTK): pro hloubkové učení softwarových nástrojů Microsoft Research
-  * [H2O](https://www.h2o.ai/): velké objemy dat open source platforma a služby grafické uživatelské rozhraní
-  * [Keras](https://keras.io/): vysoké úrovně neuronové sítě rozhraní API v jazyce Python pro Theano a TensorFlow
+  * [Caffe](http://caffe.berkeleyvision.org/): Architektura obsáhlý learning zajišťující rychlost, expressivity a modularitu
+  * [Caffe2](https://github.com/caffe2/caffe2): Multiplatformní verzi Caffe
+  * [Microsoft Cognitive Toolkit](https://github.com/Microsoft/CNTK): Hloubkové učení softwarových nástrojů Microsoft Research
+  * [H2O](https://www.h2o.ai/): Platformy pro velká data open source a grafické uživatelské rozhraní
+  * [Keras](https://keras.io/): Základní neuronové sítě rozhraní API v jazyce Python pro Theano a TensorFlow
   * [MXNet](http://mxnet.io/): Knihovna flexibilní a efektivní obsáhlý learning s mnoha jazykové vazby
-  * [NVIDIA ČÍSLIC](https://developer.nvidia.com/digits): grafické systému, který zjednodušuje běžných úloh hloubkového učení
+  * [NVIDIA ČÍSLIC](https://developer.nvidia.com/digits): Grafické systému, který zjednodušuje běžných úloh hloubkového učení
   * [PyTorch](http://pytorch.org/): Základní knihovna Python s podporou pro dynamické sítě
-  * [TensorFlow](https://www.tensorflow.org/): knihovny open source pro inteligencí z Googlu
-  * [Theano](http://deeplearning.net/software/theano/): Knihovna A Python definují, optimalizovat a efektivně vaše rozhodnutí vyzkoušet matematické výrazy zahrnující vícerozměrná pole
-  * [Svítilnou](http://torch.ch/): vědecké výpočetní architektura díky široké podpoře algoritmů strojového učení
+  * [TensorFlow](https://www.tensorflow.org/): Knihovny open source pro inteligencí z Googlu
+  * [Theano](http://deeplearning.net/software/theano/): Knihovna Python pro definování, optimalizovat a efektivně hodnocení matematické výrazy zahrnující vícerozměrná pole
+  * [Svítilnou](http://torch.ch/): Vědecké výpočetní architektura díky široké podpoře algoritmů strojového učení
   * CUDA, cuDNN a ovladač NVIDIA
   * Mnoho ukázkové poznámkové bloky Jupyter
 
@@ -53,10 +53,10 @@ Virtuální počítač pro datové vědy pro Linux také obsahuje oblíbené ná
 * Azure Storage Explorer
 * Rozhraní příkazového řádku Azure (CLI) pro správu prostředků Azure
 * Nástroje Machine learning
-  * [Vowpal Wabbit](https://github.com/JohnLangford/vowpal_wabbit): rychlé strojového učení systému, který podporuje techniky, jako je online, hash, allreduce, snížení, learning2search, aktivní a interaktivního vzdělávacího
-  * [XGBoost](https://xgboost.readthedocs.org/en/latest/): nástroj poskytuje rychlý a přesné Posílený stromu implementace
-  * [Rattle](https://togaware.com/rattle/): grafický nástroj, který umožňuje Začínáme se službou analýzy dat a strojové učení v jazyce R snadno
-  * [LightGBM](https://github.com/Microsoft/LightGBM): rychlé, distribuovaná, vysoce výkonné přechodem zvýšení skóre framework
+  * [Vowpal Wabbit](https://github.com/JohnLangford/vowpal_wabbit): Rychlé strojového učení systému podporuje techniky, jako jsou online, algoritmus hash, allreduce, snížení, learning2search, aktivní a interaktivní učení
+  * [XGBoost](https://xgboost.readthedocs.org/en/latest/): Nástroj poskytuje rychlý a přesné Posílený stromu implementace
+  * [Rattle](https://togaware.com/rattle/): Grafický nástroj, který umožňuje Začínáme se službou analýzy dat a strojové učení v jazyce R snadno
+  * [LightGBM](https://github.com/Microsoft/LightGBM): Rychlé, distribuovaná, vysoce výkonné přechodem zvýšení skóre framework
 * Azure SDK v jazyce Java, Python, node.js, Ruby, PHP
 * Knihovny v R a Python pro použití v Azure Machine Learning a dalšími službami Azure
 * Nástroje pro vývoj a editory (RStudio, PyCharm, IntelliJ, (emacs), vim)
@@ -89,12 +89,12 @@ Tady jsou kroky pro vytvoření instance z virtuální počítač pro datové v�
    
    a. **Základy**:
    
-   * **Název**: název serveru datové vědy vytváříte.
+   * **Název**: Název serveru datové vědy, kterou vytváříte.
    * **Typ disku virtuálního počítače**: Zvolte **Premium SSD** Pokud dáváte přednost jednotky SSD (Solid-State Drive). Jinak klikněte na tlačítko **standardní HDD**. 
-   * **Uživatelské jméno**: první účet přihlásit ID.
-   * **Heslo**: první heslo účtu (veřejný klíč SSH můžete použít namísto hesla).
+   * **Uživatelské jméno**: ID první účet přihlásit.
+   * **Heslo**: První heslo účtu (veřejný klíč SSH můžete použít namísto hesla).
    * **Předplatné**: Pokud máte více předplatných, vyberte ten, ve které je vytvořené a fakturuje počítač. Toto předplatné musí mít oprávnění vytvářet prostředky.
-   * **Skupina prostředků**: vytvořit nové nebo použijte existující skupinu.
+   * **Skupina prostředků**: Vytvořit nové nebo použijte existující skupinu.
    * **Umístění**: Vyberte datové centrum, které je nejvhodnější. Obvykle je většina vašich dat, nebo je nejblíže vašemu fyzickému umístění pro nejrychlejší přístup k síti datového centra.
    
    b. **Velikost**:
@@ -133,11 +133,11 @@ Virtuální počítač s Linuxem už zřízeny X2Go serveru a připravené tak, 
 1. Stažení a instalace klienta X2Go pro vaše klientská platforma z [X2Go](http://wiki.x2go.org/doku.php/doc:installation:x2goclient).    
 1. Spusťte klienta X2Go a vyberte **novou relaci**. Otevře se okno Konfigurace s více karet. Zadejte následující parametry konfigurace:
    * **Karta relace**:
-     * **Hostitel**: název hostitele nebo IP adresu virtuálního počítače s Linuxem datové vědy.
-     * **Přihlášení**: uživatelské jméno na Linuxovém virtuálním počítači.
-     * **SSH Port**: ponechte výchozí hodnota 22.
+     * **Host**: Název hostitele nebo IP adresu virtuálního počítače s Linuxem datové vědy.
+     * **Přihlášení**: Uživatelské jméno na Linuxovém virtuálním počítači.
+     * **SSH Port**: Ponechte výchozí hodnota 22.
      * **Typ relace**: Změňte hodnotu na XFCE. Virtuální počítač s Linuxem v současné době podporuje pouze Desktop xfce.
-   * **Karta média**: můžete vypnout podpory zvuku a klient tisku, pokud není nutné k jejich použití.
+   * **Karta média**: Můžete vypnout podpory zvuku a klient tisku, pokud není nutné k jejich použití.
    * **Sdílené složky**: Pokud chcete adresářů z klientských počítačů připojené na Linuxovém virtuálním počítači, přidejte adresáře klientské počítače, které chcete sdílet s virtuálním Počítačem na této kartě.
 
 Po přihlášení k virtuálnímu počítači pomocí klienta SSH nebo grafické Desktop xfce prostřednictvím klienta X2Go, jste připraveni začít používat nástroje, které jsou nainstalované a nakonfigurované na virtuálním počítači. Na XFCE uvidíte aplikacích zástupci v nabídce a ikony na ploše pro celou řadu nástrojů.
@@ -220,7 +220,7 @@ Znovu aktivovat py35 prostředí:
 
 Abyste mohli vyvolat interaktivní relace Pythonu, stačí zadat **python** v prostředí. 
 
-Nainstalovat dodatečné knihovny jazyka Python pomocí ```conda``` nebo ````pip```` . Pro pip aktivujte první správné prostředí, pokud nechcete, aby výchozí hodnota:
+Nainstalovat dodatečné knihovny jazyka Python pomocí ```conda``` nebo ```pip``` . Pro pip aktivujte první správné prostředí, pokud nechcete, aby výchozí hodnota:
 
     source activate root
     pip install <package>
@@ -271,7 +271,7 @@ Před spuštěním v kontextu Sparku Microsoft R serveru, je potřeba jeden čas
     chown hadoop:hadoop ~hadoop/.ssh/authorized_keys
     systemctl start hadoop-namenode hadoop-datanode hadoop-yarn
 
-Hadoop můžete zastavit služby související s, když je nepotřebujete spuštěním ````systemctl stop hadoop-namenode hadoop-datanode hadoop-yarn```` ukázka ukazuje, jak vyvíjet a testovat paní ve vzdálené kontextu Spark (což je samostatné instanci Spark na datové VĚDY), je poskytovaná a k dispozici v `/dsvm/samples/MRS` adresář. 
+Hadoop můžete zastavit služby související s, když je nepotřebujete spuštěním ```systemctl stop hadoop-namenode hadoop-datanode hadoop-yarn``` ukázka ukazuje, jak vyvíjet a testovat paní ve vzdálené kontextu Spark (což je samostatné instanci Spark na datové VĚDY), je poskytovaná a k dispozici v `/dsvm/samples/MRS` adresář. 
 
 ### <a name="ides-and-editors"></a>Editory a integrovanými vývojovými prostředími
 Máte možnost výběru z několika editory kódu. To zahrnuje vi/VIM, (emacs), PyCharm, RStudio a IntelliJ. IntelliJ, RStudio PyCharm jsou grafické editory a musíte být přihlášeni grafické desktopu k jejich použití. Tyto editory obsahují desktopových a aplikačních zástupci v nabídce je spustit.
@@ -296,11 +296,11 @@ Další informace najdete v tématu [SQuirrel SQL](http://squirrel-sql.sourcefor
 #### <a name="command-line-tools-for-accessing-microsoft-sql-server"></a>Nástroje příkazového řádku pro přístup k systému Microsoft SQL Server
 Balíček ovladače ODBC pro SQL Server také obsahuje dva nástroje příkazového řádku:
 
-**BCP**: hromadné nástroj bcp kopíruje data mezi instance systému Microsoft SQL Server a datový soubor ve formátu zadané uživatelem. Nástroje bcp lze použít k importu velkého počtu nových řádků do tabulky serveru SQL Server nebo exportovat data z tabulek do datových souborů. Import dat do tabulky, musíte použít soubor formátu vytvořený pro tabulku nebo pochopit strukturu tabulky a typy dat, které jsou platné pro její sloupce.
+**bcp**: Hromadné nástroj bcp kopíruje data mezi instance systému Microsoft SQL Server a datový soubor ve formátu zadané uživatelem. Nástroje bcp lze použít k importu velkého počtu nových řádků do tabulky serveru SQL Server nebo exportovat data z tabulek do datových souborů. Import dat do tabulky, musíte použít soubor formátu vytvořený pro tabulku nebo pochopit strukturu tabulky a typy dat, které jsou platné pro její sloupce.
 
 Další informace najdete v tématu [připojení pomocí bcp](https://msdn.microsoft.com/library/hh568446.aspx).
 
-**SqlCmd**: můžete zadat příkazů jazyka Transact-SQL s Nástroj sqlcmd, jakož i postupy systému a soubory na příkazovém řádku skriptů. Tento nástroj používá rozhraní ODBC pro spuštění dávky Transact-SQL.
+**sqlcmd**: Můžete zadat příkazů jazyka Transact-SQL s Nástroj sqlcmd, stejně jako postupy systému a soubory skriptů příkazového řádku. Tento nástroj používá rozhraní ODBC pro spuštění dávky Transact-SQL.
 
 Další informace najdete v tématu [připojení pomocí sqlcmd](https://msdn.microsoft.com/library/hh568447.aspx).
 
@@ -318,12 +318,12 @@ Nejsou k dispozici v R a Python pro přístup k databázím knihovny.
 ### <a name="azure-tools"></a>Nástroje Azure
 Na virtuálním počítači jsou nainstalované nástroje Azure následující:
 
-* **Rozhraní příkazového řádku Azure**: příkazového řádku Azure umožňuje vytvářet a spravovat prostředky Azure prostřednictvím příkazů prostředí. Abyste mohli vyvolat nástrojů Azure, stačí zadat **azure pomáhají**. Další informace najdete v tématu [stránku dokumentace k Azure CLI](https://docs.microsoft.com/cli/azure/get-started-with-az-cli2).
-* **Microsoft Azure Storage Explorer**: Microsoft Azure Storage Explorer je grafické nástroj, který slouží k procházení objektů, které jsou uložené v účtu služby Azure storage a k nahrávání a stahování dat do a z objektů BLOB Azure. Průzkumník služby Storage se dá dostat z ikonu zástupce na ploše. Můžete ho vyvolat na příkazovém řádku prostředí tak, že zadáte **StorageExplorer**. Musíte být přihlášeni z klienta X2Go nebo mít X11 předávání set up.
-* **Knihovny Azure**: Toto jsou některé z předem nainstalovaných knihoven.
+* **Rozhraní příkazového řádku Azure**: Rozhraní příkazového řádku Azure umožňuje vytvářet a spravovat prostředky Azure prostřednictvím příkazů prostředí. Abyste mohli vyvolat nástrojů Azure, stačí zadat **azure pomáhají**. Další informace najdete v tématu [stránku dokumentace k Azure CLI](https://docs.microsoft.com/cli/azure/get-started-with-az-cli2).
+* **Microsoft Azure Storage Exploreru**: Microsoft Azure Storage Explorer je grafické nástroj, který slouží k procházení objektů, které jsou uložené v účtu služby Azure storage a k nahrávání a stahování dat do a z objektů BLOB Azure. Průzkumník služby Storage se dá dostat z ikonu zástupce na ploše. Můžete ho vyvolat na příkazovém řádku prostředí tak, že zadáte **StorageExplorer**. Musíte být přihlášeni z klienta X2Go nebo mít X11 předávání set up.
+* **Knihovny Azure**: Následují některé z předem nainstalovaných knihoven.
   
-  * **Python**: jsou knihovny související s Azure v Pythonu, které jsou nainstalovány **azure**, **azureml**, **pydocumentdb**, a **pyodbc**. První tři knihovny můžete přístup služby Azure storage, Azure Machine Learning a Azure Cosmos DB (databáze NoSQL v Azure). Čtvrtý knihovny pyodbc (spolu s ovladač Microsoft ODBC pro SQL Server), umožňuje přístup k systému SQL Server, Azure SQL Database a Azure SQL Data Warehouse z Pythonu pomocí rozhraní ODBC. Zadejte **pip seznamu** zobrazíte všechny uvedené knihovny. Ujistěte se, že tento příkaz spustit v případě Pythonu 2.7 i 3.5 prostředí.
-  * **R**: jsou související s Azure knihovny v jazyce R, které jsou nainstalovány **AzureML** a **RODBC**.
+  * **Python**: Jsou knihovny souvisejících s Azure v Pythonu, které jsou nainstalovány **azure**, **azureml**, **pydocumentdb**, a **pyodbc**. První tři knihovny můžete přístup služby Azure storage, Azure Machine Learning a Azure Cosmos DB (databáze NoSQL v Azure). Čtvrtý knihovny pyodbc (spolu s ovladač Microsoft ODBC pro SQL Server), umožňuje přístup k systému SQL Server, Azure SQL Database a Azure SQL Data Warehouse z Pythonu pomocí rozhraní ODBC. Zadejte **pip seznamu** zobrazíte všechny uvedené knihovny. Ujistěte se, že tento příkaz spustit v případě Pythonu 2.7 i 3.5 prostředí.
+  * **R**: Jsou souvisejících s Azure knihovny v jazyce R, které jsou nainstalovány **AzureML** a **RODBC**.
   * **Java**: Seznam knihovny Java v Azure najdete v adresáři **/dsvm/sdk/AzureSDKJava** na virtuálním počítači. Jsou klíčové knihovny Azure ovladače úložiště a správu rozhraní API služby Azure Cosmos DB a JDBC pro SQL Server.  
 
 Můžete přistupovat [webu Azure portal](https://portal.azure.com) předinstalované prohlížeče Firefox. Na portálu Azure portal můžete vytvářet, spravovat a monitorovat prostředky Azure.
@@ -345,12 +345,12 @@ Informace o tom, jak nasadit modely R a Pythonu do Azure Machine Learning najdet
 ### <a name="machine-learning-tools"></a>Nástroje Machine learning
 Virtuální počítač obsahuje několik strojového učení, nástroje a algoritmy, které byly předem zkompilovat a předem nainstalovaný místně. Mezi ně patří:
 
-* **Vowpal Wabbit**: algoritmus rychlého online výukové kurzy.
-* **xgboost**: nástroj, který poskytuje optimalizované, zvýšená stromu algoritmy.
-* **Rattle**: na základě prostředí R grafický nástroj pro zkoumání a modelování dat snadno.
+* **Vowpal Wabbit**: Algoritmus rychlého online výukové kurzy.
+* **xgboost**: Nástroj, který poskytuje optimalizované algoritmy Posílený stromu.
+* **Rattle**: Je založené na jazyce R grafický nástroj pro zkoumání a modelování dat snadno.
 * **Python**: Anaconda Python se dodává jako součást balíčku s algoritmy strojového učení s knihovnami, jako je Scikit poučení. Můžete nainstalovat další knihovny pomocí `pip install` příkazu.
-* **LightGBM**: rychlé, distribuovaná, vysoce výkonné přechodem zvýšení skóre framework podle algoritmů rozhodovacího stromu.
-* **R**: bohatá knihovna funkcí machine learning je dostupná pro jazyk R. Některé z knihoven, které jsou předem nainstalované jsou lm, glm, randomForest, rpart. Další knihovny se dá nainstalovat spuštěním:
+* **LightGBM**: Rychlé, distribuovaná, vysoce výkonné přechodem zvýšení skóre framework podle algoritmů rozhodovacího stromu.
+* **R**: Bohatá knihovna funkcí machine learning je dostupná pro jazyk R. Některé z knihoven, které jsou předem nainstalované jsou lm, glm, randomForest, rpart. Další knihovny se dá nainstalovat spuštěním:
   
         install.packages(<lib name>)
 

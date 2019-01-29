@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: multiple
 ms.date: 12/06/2018
 ms.author: bikang
-ms.openlocfilehash: cf283803dfa45c362330ccf73fc5eea198d3a5e2
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: 0d9ee24e9ab104fb554033802507f78fcbf38fc3
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53278640"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55170925"
 ---
 # <a name="sfctl-cluster"></a>sfctl cluster
 Vyberte, spravovat a provozovat clustery Service Fabric.
@@ -36,15 +36,15 @@ Vyberte, spravovat a provozovat clustery Service Fabric.
 | seznam operací | Získá seznam operací chybu způsobenou uživatele filtrované podle zadaného vstupu. |
 | Zřizování | Zřízení balíčky kódu nebo konfigurace clusteru Service Fabric. |
 | obnovení systému | Do clusteru Service Fabric označuje, že by měl pokusí o zotavení systému služby, které jsou aktuálně zablokované ve ztrátě kvora. |
-| Stav sestavy | Odešle zprávu o stavu v clusteru Service Fabric. |
+| report-health | Odešle zprávu o stavu v clusteru Service Fabric. |
 | vybrat | Se připojí ke koncovému bodu clusteru Service Fabric. |
 | show-connection | Zobrazit clusteru Service Fabric, které tato instance sfctl je připojen k. |
 | zrušení zajišťování | Zrušení zřízení balíčky kódu nebo konfigurace clusteru Service Fabric. |
 | upgradovat | Spuštění upgradu verze kódu nebo konfigurace clusteru Service Fabric. |
-| Upgrade resume | Ujistěte se, přejít k další upgradovací doméně upgradu clusteru. |
-| vrácení upgradu zpět | Upgrade clusteru Service Fabric se vrátit zpět. |
-| Stav upgradu | Získá průběh aktuální upgradu clusteru. |
-| upgrade aktualizace | Aktualizujte parametry upgradu upgrade clusteru Service Fabric. |
+| upgrade-resume | Ujistěte se, přejít k další upgradovací doméně upgradu clusteru. |
+| upgrade-rollback | Upgrade clusteru Service Fabric se vrátit zpět. |
+| upgrade-status | Získá průběh aktuální upgradu clusteru. |
+| upgrade-update | Aktualizujte parametry upgradu upgrade clusteru Service Fabric. |
 
 ## <a name="sfctl-cluster-code-versions"></a>sfctl cluster code-versions
 Získá seznam prostředků infrastruktury verze kódu, které jsou zřízené v clusteru Service Fabric.
@@ -55,7 +55,7 @@ Získá seznam informací o prostředcích infrastruktury, které verze kódu, k
 
 |Argument|Popis|
 | --- | --- |
-| – Kód verze | Verze produktu Service Fabric. |
+| --code-version | Verze produktu Service Fabric. |
 | --timeout -t | Server časový limit v sekundách.  Výchozí\: 60. |
 
 ### <a name="global-arguments"></a>Globální argumenty
@@ -99,11 +99,11 @@ EventsHealthStateFilter použijte k filtrování kolekce událostí stavu hláš
 
 |Argument|Popis|
 | --- | --- |
-| – aplikace stavu stavu filtru | Umožňuje filtrování objekty stavu stavu aplikací vrácené ve výsledku dotazu stav clusteru na základě jejich stavu. Možné hodnoty pro tento parametr obsahovat celočíselnou hodnotu od členů nebo bitové operace u členů výčtu HealthStateFilter. Jsou vráceny pouze aplikace, které odpovídají filtru. Všechny aplikace se používají k vyhodnocení agregovaný stav v pořádku. Pokud není zadán, budou vráceny všechny položky. Hodnoty stavu jsou výčet založený na příznak, takže hodnota může být kombinací těchto hodnot pomocí bitový operátor "OR". Například pokud zadaná hodnota je 6 stav aplikací s hodnotou elementu HealthState OK (2) a upozorněním (4), jsou vráceny.  <br> – Výchozí – výchozí hodnota. Odpovídá jakékoli stav HealthState. Hodnota je nula.  <br> -Žádný - filtr, který se pravděpodobně neshoduje s žádnou hodnotu stavu HealthState. Použít, aby nevracela žádné výsledky na dané kolekce stavů. Hodnota je 1.  <br> -Ok – umožňuje filtrovat, že odpovídá vstup s hodnotou elementu HealthState Ok. Hodnota je 2.  <br> -Warning - filtr, že hodnota vstupu odpovídá k elementu HealthState upozornění. Hodnota je 4.  <br> -Chyba – filtr, který se shoduje s hodnotou elementu HealthState Chyba vstupu. Hodnota je 8.  <br> -All - filtr, který odpovídá s libovolnou hodnotou elementu HealthState. Hodnota je 65535. |
-| --události stavu stavu filtru | Umožňuje filtrování vrácených objektů HealthEvent kolekce na základě stavu. Možné hodnoty pro tento parametr obsahovat celočíselnou hodnotu některého z následujících stavů. Vrátí se jenom události, které odpovídají filtru. Všechny události se používají k vyhodnocení agregovaný stav v pořádku. Pokud není zadán, budou vráceny všechny položky. Hodnoty stavu jsou výčet založený na příznak, takže hodnota může být kombinací těchto hodnot, pomocí bitový operátor "OR". Například pokud zadaná hodnota je 6 všechny události s hodnotou elementu HealthState OK (2) a upozorněním (4), jsou vráceny.  <br> – Výchozí – výchozí hodnota. Odpovídá jakékoli stav HealthState. Hodnota je nula.  <br> -Žádný - filtr, který se pravděpodobně neshoduje s žádnou hodnotu stavu HealthState. Použít, aby nevracela žádné výsledky na dané kolekce stavů. Hodnota je 1.  <br> -Ok – umožňuje filtrovat, že odpovídá vstup s hodnotou elementu HealthState Ok. Hodnota je 2.  <br> -Warning - filtr, že hodnota vstupu odpovídá k elementu HealthState upozornění. Hodnota je 4.  <br> -Chyba – filtr, který se shoduje s hodnotou elementu HealthState Chyba vstupu. Hodnota je 8.  <br> -All - filtr, který odpovídá s libovolnou hodnotou elementu HealthState. Hodnota je 65535. |
+| --applications-health-state-filter | Umožňuje filtrování objekty stavu stavu aplikací vrácené ve výsledku dotazu stav clusteru na základě jejich stavu. Možné hodnoty pro tento parametr obsahovat celočíselnou hodnotu od členů nebo bitové operace u členů výčtu HealthStateFilter. Jsou vráceny pouze aplikace, které odpovídají filtru. Všechny aplikace se používají k vyhodnocení agregovaný stav v pořádku. Pokud není zadán, budou vráceny všechny položky. Hodnoty stavu jsou výčet založený na příznak, takže hodnota může být kombinací těchto hodnot pomocí bitový operátor "OR". Například pokud zadaná hodnota je 6 stav aplikací s hodnotou elementu HealthState OK (2) a upozorněním (4), jsou vráceny.  <br> – Výchozí – výchozí hodnota. Odpovídá jakékoli stav HealthState. Hodnota je nula.  <br> -Žádný - filtr, který se pravděpodobně neshoduje s žádnou hodnotu stavu HealthState. Použít, aby nevracela žádné výsledky na dané kolekce stavů. Hodnota je 1.  <br> -Ok – umožňuje filtrovat, že odpovídá vstup s hodnotou elementu HealthState Ok. Hodnota je 2.  <br> -Warning - filtr, že hodnota vstupu odpovídá k elementu HealthState upozornění. Hodnota je 4.  <br> -Chyba – filtr, který se shoduje s hodnotou elementu HealthState Chyba vstupu. Hodnota je 8.  <br> -All - filtr, který odpovídá s libovolnou hodnotou elementu HealthState. Hodnota je 65535. |
+| --events-health-state-filter | Umožňuje filtrování vrácených objektů HealthEvent kolekce na základě stavu. Možné hodnoty pro tento parametr obsahovat celočíselnou hodnotu některého z následujících stavů. Vrátí se jenom události, které odpovídají filtru. Všechny události se používají k vyhodnocení agregovaný stav v pořádku. Pokud není zadán, budou vráceny všechny položky. Hodnoty stavu jsou výčet založený na příznak, takže hodnota může být kombinací těchto hodnot, pomocí bitový operátor "OR". Například pokud zadaná hodnota je 6 všechny události s hodnotou elementu HealthState OK (2) a upozorněním (4), jsou vráceny.  <br> – Výchozí – výchozí hodnota. Odpovídá jakékoli stav HealthState. Hodnota je nula.  <br> -Žádný - filtr, který se pravděpodobně neshoduje s žádnou hodnotu stavu HealthState. Použít, aby nevracela žádné výsledky na dané kolekce stavů. Hodnota je 1.  <br> -Ok – umožňuje filtrovat, že odpovídá vstup s hodnotou elementu HealthState Ok. Hodnota je 2.  <br> -Warning - filtr, že hodnota vstupu odpovídá k elementu HealthState upozornění. Hodnota je 4.  <br> -Chyba – filtr, který se shoduje s hodnotou elementu HealthState Chyba vstupu. Hodnota je 8.  <br> -All - filtr, který odpovídá s libovolnou hodnotou elementu HealthState. Hodnota je 65535. |
 | --exclude statistiky stavu | Určuje, zda má být vrácen statistik stavu jako součást výsledků dotazu. Ve výchozím nastavení False. Statistiky ukazují počet podřízených entit ve stavu Ok, upozornění a chyby. |
-| --zahrnují system-– stav – statistik aplikace | Určuje, zda by měl obsahovat statistik stavu prostředků infrastruktury \: /System statistik stavu aplikace. Ve výchozím nastavení False. Pokud IncludeSystemApplicationHealthStatistics je nastavena na hodnotu true, stav statistické údaje obsahují entity, které patří do prostředků infrastruktury \: /System aplikace. V opačném případě výsledek dotazu obsahuje statistik stavu pouze pro uživatele aplikace. Statistika stavu musí být součástí výsledku dotazu pro tento parametr má být použita. |
-| --uzly stavu stavu filtru | Umožňuje filtrování uzlu stavu stavu objektů vrácené ve výsledku dotazu stav clusteru na základě jejich stavu. Možné hodnoty pro tento parametr obsahovat celočíselnou hodnotu některého z následujících stavů. Jsou vráceny pouze uzly, které odpovídají filtru. Všechny uzly se používají k vyhodnocení agregovaný stav v pořádku. Pokud není zadán, budou vráceny všechny položky. Hodnoty stavu jsou výčet založený na příznak, takže hodnota může být kombinací těchto hodnot pomocí bitový operátor "OR". Například pokud zadaná hodnota je 6 stav uzlů s hodnotou elementu HealthState OK (2) a upozorněním (4), jsou vráceny.  <br> – Výchozí – výchozí hodnota. Odpovídá jakékoli stav HealthState. Hodnota je nula.  <br> -Žádný - filtr, který se pravděpodobně neshoduje s žádnou hodnotu stavu HealthState. Použít, aby nevracela žádné výsledky na dané kolekce stavů. Hodnota je 1.  <br> -Ok – umožňuje filtrovat, že odpovídá vstup s hodnotou elementu HealthState Ok. Hodnota je 2.  <br> -Warning - filtr, že hodnota vstupu odpovídá k elementu HealthState upozornění. Hodnota je 4.  <br> -Chyba – filtr, který se shoduje s hodnotou elementu HealthState Chyba vstupu. Hodnota je 8.  <br> -All - filtr, který odpovídá s libovolnou hodnotou elementu HealthState. Hodnota je 65535. |
+| --include-system-application-health-statistics | Určuje, zda by měl obsahovat statistik stavu prostředků infrastruktury \: /System statistik stavu aplikace. Ve výchozím nastavení False. Pokud IncludeSystemApplicationHealthStatistics je nastavena na hodnotu true, stav statistické údaje obsahují entity, které patří do prostředků infrastruktury \: /System aplikace. V opačném případě výsledek dotazu obsahuje statistik stavu pouze pro uživatele aplikace. Statistika stavu musí být součástí výsledku dotazu pro tento parametr má být použita. |
+| --nodes-health-state-filter | Umožňuje filtrování uzlu stavu stavu objektů vrácené ve výsledku dotazu stav clusteru na základě jejich stavu. Možné hodnoty pro tento parametr obsahovat celočíselnou hodnotu některého z následujících stavů. Jsou vráceny pouze uzly, které odpovídají filtru. Všechny uzly se používají k vyhodnocení agregovaný stav v pořádku. Pokud není zadán, budou vráceny všechny položky. Hodnoty stavu jsou výčet založený na příznak, takže hodnota může být kombinací těchto hodnot pomocí bitový operátor "OR". Například pokud zadaná hodnota je 6 stav uzlů s hodnotou elementu HealthState OK (2) a upozorněním (4), jsou vráceny.  <br> – Výchozí – výchozí hodnota. Odpovídá jakékoli stav HealthState. Hodnota je nula.  <br> -Žádný - filtr, který se pravděpodobně neshoduje s žádnou hodnotu stavu HealthState. Použít, aby nevracela žádné výsledky na dané kolekce stavů. Hodnota je 1.  <br> -Ok – umožňuje filtrovat, že odpovídá vstup s hodnotou elementu HealthState Ok. Hodnota je 2.  <br> -Warning - filtr, že hodnota vstupu odpovídá k elementu HealthState upozornění. Hodnota je 4.  <br> -Chyba – filtr, který se shoduje s hodnotou elementu HealthState Chyba vstupu. Hodnota je 8.  <br> -All - filtr, který odpovídá s libovolnou hodnotou elementu HealthState. Hodnota je 65535. |
 | --timeout -t | Server časový limit v sekundách.  Výchozí\: 60. |
 
 ### <a name="global-arguments"></a>Globální argumenty
@@ -198,7 +198,7 @@ Ověření a zřiďte balíčky kódu nebo konfigurace clusteru Service Fabric.
 |Argument|Popis|
 | --- | --- |
 | --cluster-manifest-file-path | Cesta k souboru manifestu clusteru. |
-| – Cesta souboru kódu | Cluster kód cesta k souboru balíčku. |
+| --code-file-path | Cluster kód cesta k souboru balíčku. |
 | --timeout -t | Server časový limit v sekundách.  Výchozí\: 60. |
 
 ### <a name="global-arguments"></a>Globální argumenty
@@ -249,7 +249,7 @@ Sestava může obsahovat informace o zdroji sestava stavu a na kterém je uveden
 | – vypršela platnost odebrat v případě | Hodnota, která označuje, zda sestava se odebere z health store, když jeho platnost vyprší. <br><br> Je-li nastavena hodnota true, sestava se odebere z health store po vypršení její platnosti. Pokud je nastaven na hodnotu false, sestava je považováno za chybu, pokud vypršela platnost. Hodnota této vlastnosti je ve výchozím nastavení hodnotu false. Když klienti pravidelně hlásit, nastavují by měl RemoveWhenExpired false (výchozí). Tímto způsobem je osoby podávající hlášení dochází k problémům (například zablokování) a nemůže oznamovat entity je vyhodnocena v chybě, když vyprší platnost sestava stavu. Označí entitu jako patřící do chybového stavu. |
 | --pořadové číslo | Pořadové číslo pro tuto sestavu stavu jako číselný řetězec. <br><br> Pořadové číslo sestav se používá v úložišti stavů ke zjišťování zastaralých sestavy. Pokud není zadán, je číslo sekvence automaticky generované klientem stavu při přidání sestavy. |
 | --timeout -t | Server časový limit v sekundách.  Výchozí\: 60. |
-| – Hodnota ttl | Doba trvání, pro kterou je tato sestava stavu platná. Toto pole používá formát ISO8601 pro zadání dobu trvání. <br><br> Když klienti pravidelně hlásit, odesílají by zprávy s frekvencí vyšší než hodnota time to live. Pokud klienti nenahlásí na přechod, nastavují time to live nekonečno. Když vyprší čas TTL, událost stavu, který obsahuje informace o stavu je odebrán z health store, pokud je RemoveWhenExpired hodnotu true, nebo vyhodnocovány v chybě, pokud RemoveWhenExpired false. Pokud není zadaný, čas TTL výchozí hodnoty na nekonečnou hodnotu. |
+| --ttl | Doba trvání, pro kterou je tato sestava stavu platná. Toto pole používá formát ISO8601 pro zadání dobu trvání. <br><br> Když klienti pravidelně hlásit, odesílají by zprávy s frekvencí vyšší než hodnota time to live. Pokud klienti nenahlásí na přechod, nastavují time to live nekonečno. Když vyprší čas TTL, událost stavu, který obsahuje informace o stavu je odebrán z health store, pokud je RemoveWhenExpired hodnotu true, nebo vyhodnocovány v chybě, pokud RemoveWhenExpired false. Pokud není zadaný, čas TTL výchozí hodnoty na nekonečnou hodnotu. |
 
 ### <a name="global-arguments"></a>Globální argumenty
 
@@ -264,7 +264,7 @@ Sestava může obsahovat informace o zdroji sestava stavu a na kterém je uveden
 ## <a name="sfctl-cluster-select"></a>Vyberte cluster sfctl
 Se připojí ke koncovému bodu clusteru Service Fabric.
 
-Pokud připojení k zabezpečenému clusteru, zadejte absolutní cestu k certifikátu (CRT) a soubor klíče (.key) nebo jeden soubor s oběma (.pem). Nezadávejte oba. Volitelně Pokud připojení k zabezpečenému clusteru se také zadejte absolutní cestu k souboru sady certifikační Autority nebo adresář certifikátů důvěryhodné certifikační Autority. Pokud používáte adresář certifikáty CA certs `c_rehash <directory>` poskytované OpenSSL musí nejprve spustit pro výpočet hodnoty hash certifikátu a vytvořit odpovídající symbolics propojení.
+Pokud připojení k zabezpečenému clusteru, zadejte absolutní cestu k certifikátu (CRT) a soubor klíče (.key) nebo jeden soubor s oběma (.pem). Nezadávejte oba. Volitelně Pokud připojení k zabezpečenému clusteru se také zadejte absolutní cestu k souboru sady certifikační Autority nebo adresář certifikátů důvěryhodné certifikační Autority. Pokud používáte adresář certifikáty CA certs `c_rehash <directory>` poskytované OpenSSL musí být nejprve spustit k výpočtu hodnoty hash certifikátu a vytvořit odpovídající symbolické odkazy.
 
 ### <a name="arguments"></a>Argumenty
 
@@ -310,7 +310,7 @@ Podporuje se zrušit zřízení kódu a konfigurace samostatně.
 
 |Argument|Popis|
 | --- | --- |
-| – Kód verze | Balíček verze kódu clusteru. |
+| --code-version | Balíček verze kódu clusteru. |
 | --config-version | Verze manifestu clusteru. |
 | --timeout -t | Server časový limit v sekundách.  Výchozí\: 60. |
 
@@ -335,24 +335,24 @@ Ověření upgradu zadaných parametrů a spusťte upgradu verze kódu nebo konf
 | --- | --- |
 | --app-health-map | JSON kódovaný slovník párů název aplikace a maximální procento před vyvoláním chyby není v pořádku. |
 | --app-type-health-map | JSON kódovaný slovník párů název typu aplikace a maximální procento před vyvoláním chyby není v pořádku. |
-| – Kód verze | Verze kódu clusteru. |
+| --code-version | Verze kódu clusteru. |
 | --config-version | Verze konfigurace clusteru. |
-| --delta vyhodnocování stavu | Umožňuje vyhodnocování stavu rozdílové namísto vyhodnocování absolutní stavu po dokončení každého upgradovací doméně. |
+| --delta-health-evaluation | Umožňuje vyhodnocování stavu rozdílové namísto vyhodnocování absolutní stavu po dokončení každého upgradovací doméně. |
 | --delta poškozené uzly | Maximální povolené procento uzlů snížení stav povoleno během upgradu clusteru.  Výchozí\: 10. <br><br> Delta měří stav uzlů na začátku upgradu a stav uzlů v době vyhodnocení stavu. Kontrola se provádí po dokončení upgradu každý upgradovací doména k Ujistěte se, že globální stav clusteru je v mezích limitů přípustný. |
 | --selhání akce | Možné hodnoty zahrnují\: "Neplatný", "Vrácení zpět", "Ruční". |
 | --force restartování | Procesy se během upgradu vynuceně restartují, i v případě, že nedošlo ke změně verze kódu. <br><br> Upgrade pouze změny konfigurace nebo data. |
-| --stavu. Zkontrolujte opakování | Dlouhá doba mezi pokusy o provádění kontroly stavu, pokud aplikace nebo clusteru není v pořádku. |
+| --health-check-retry | Dlouhá doba mezi pokusy o provádění kontroly stavu, pokud aplikace nebo clusteru není v pořádku. |
 | --stabilní verze stavu zaškrtnutí | Množství času, aplikace nebo clusteru musí zůstane v dobrém stavu před provedením upgradu k další upgradovací doméně. <br><br> Nejprve je interpretován jako řetězec představující dobu trvání ISO 8601. Pokud se to nepodaří, je interpretován jako číslo představující počet milisekund. |
 | --health-check-wait | Doba čekání po dokončení upgradu domény před zahájením stavu kontroluje procesu. |
-| --repliky sady kontrola-časový limit | Maximální množství času blokování zpracování logických sítí a zabránit ztrátě dostupnosti, když dochází k neočekávaným problémům. <br><br> Když tento časový limit vyprší platnost, zpracování upgradovací doména bude pokračovat bez ohledu na problémy s dostupností ztráty. Časový limit se resetuje na začátku každé upgradovací doméně. Platné hodnoty jsou 0 až 42949672925 (včetně). |
-| --se zajištěním provozu režim upgradu | Možné hodnoty zahrnují\: "Neplatný", "UnmonitoredAuto", "UnmonitoredManual", "Sledované".  Výchozí\: UnmonitoredAuto. |
+| --replica-set-check-timeout | Maximální množství času blokování zpracování logických sítí a zabránit ztrátě dostupnosti, když dochází k neočekávaným problémům. <br><br> Když tento časový limit vyprší platnost, zpracování upgradovací doména bude pokračovat bez ohledu na problémy s dostupností ztráty. Časový limit se resetuje na začátku každé upgradovací doméně. Platné hodnoty jsou 0 až 42949672925 (včetně). |
+| --rolling-upgrade-mode | Možné hodnoty zahrnují\: "Neplatný", "UnmonitoredAuto", "UnmonitoredManual", "Sledované".  Výchozí\: UnmonitoredAuto. |
 | --timeout -t | Server časový limit v sekundách.  Výchozí\: 60. |
-| --poškozené aplikace | Maximální povolené procento žádostí, není v pořádku, před ohlášení chyby. <br><br> Například pokud chcete povolit 10 % aplikací v dobrém stavu, tato hodnota by 10. Procento představuje přípustný maximální procento aplikací, které může být není v pořádku, než clusteru se považuje za chybu. Pokud procento respektován, ale existuje alespoň jedna aplikace není v pořádku, stav se vyhodnotí jako upozornění. To se vypočítá jako podíl počtu poškozené aplikace přes celkový počet instancí aplikace v clusteru, s výjimkou aplikací typy aplikací, které jsou součástí ApplicationTypeHealthPolicyMap. Výpočet zaokrouhlí tento údaj tolerovat selhání jednoho na malý počet aplikací. |
+| --unhealthy-applications | Maximální povolené procento žádostí, není v pořádku, před ohlášení chyby. <br><br> Například pokud chcete povolit 10 % aplikací v dobrém stavu, tato hodnota by 10. Procento představuje přípustný maximální procento aplikací, které může být není v pořádku, než clusteru se považuje za chybu. Pokud procento respektován, ale existuje alespoň jedna aplikace není v pořádku, stav se vyhodnotí jako upozornění. To se vypočítá jako podíl počtu poškozené aplikace přes celkový počet instancí aplikace v clusteru, s výjimkou aplikací typy aplikací, které jsou součástí ApplicationTypeHealthPolicyMap. Výpočet zaokrouhlí tento údaj tolerovat selhání jednoho na malý počet aplikací. |
 | --poškozené uzly | Maximální povolené procento poškozené uzly před ohlášení chyby. <br><br> Například pokud chcete povolit 10 % uzly v dobrém stavu, tato hodnota by 10. Procento představuje přípustný maximální procento uzlů, které může být není v pořádku, než clusteru se považuje za chybu. Pokud procento respektován, ale existuje nejméně jeden uzel není v pořádku, stav se vyhodnotí jako upozornění. Procentuální se vypočítá jako podíl počtu uzlů v pořádku za celkový počet uzlů v clusteru. Výpočet zaokrouhlí tento údaj tolerovat selhání jednoho na malý počet uzlů. Ve velkých clusterech některé uzly bude vždy dolů nebo navýšení kapacity pro opravy, tak tolerovat, který by měl být nakonfigurovaný toto procento. |
 | --upgrade-domain-delta-unhealthy-nodes | Maximální povolené procento uzlů upgradovací domény snížení stav povoleno během upgradu clusteru.  Výchozí\: 15. <br><br> Delta měří stav uzlů upgradovací domény na začátku upgradu a stav uzlů upgradovací doména v době vyhodnocení stavu. Kontrola se provádí po dokončení upgradu všech upgradovací doména pro všechny dokončení upgradovacích domén, abyste měli jistotu, že je stav upgradovacích domén v rámci přípustný omezení. |
 | --upgrade-domain-timeout | Množství času každé domény upgradu musí dokončit před provedením FailureAction. <br><br> Nejprve je interpretován jako řetězec představující dobu trvání ISO 8601. Pokud se to nepodaří, je interpretován jako číslo představující počet milisekund. |
-| --upgrade vypršení časového limitu | Množství času celkové upgrade musí dokončit před provedením FailureAction. <br><br> Nejprve je interpretován jako řetězec představující dobu trvání ISO 8601. Pokud se to nepodaří, je interpretován jako číslo představující počet milisekund. |
-| --upozornění jako chyby | Určuje, zda jsou upozornění zpracována stejným závažností jako chyby. |
+| --upgrade-timeout | Množství času celkové upgrade musí dokončit před provedením FailureAction. <br><br> Nejprve je interpretován jako řetězec představující dobu trvání ISO 8601. Pokud se to nepodaří, je interpretován jako číslo představující počet milisekund. |
+| --warning-as-error | Určuje, zda jsou upozornění zpracována stejným závažností jako chyby. |
 
 ### <a name="global-arguments"></a>Globální argumenty
 
@@ -437,23 +437,23 @@ Aktualizujte parametry upgradu upgrade clusteru Service Fabric.
 | --- | --- |
 | --app-health-map | JSON kódovaný slovník párů název aplikace a maximální procento před vyvoláním chyby není v pořádku. |
 | --app-type-health-map | JSON kódovaný slovník párů název typu aplikace a maximální procento před vyvoláním chyby není v pořádku. |
-| --delta vyhodnocování stavu | Umožňuje vyhodnocování stavu rozdílové namísto vyhodnocování absolutní stavu po dokončení každého upgradovací doméně. |
+| --delta-health-evaluation | Umožňuje vyhodnocování stavu rozdílové namísto vyhodnocování absolutní stavu po dokončení každého upgradovací doméně. |
 | --delta poškozené uzly | Maximální povolené procento uzlů snížení stav povoleno během upgradu clusteru.  Výchozí\: 10. <br><br> Delta měří stav uzlů na začátku upgradu a stav uzlů v době vyhodnocení stavu. Kontrola se provádí po dokončení upgradu každý upgradovací doména k Ujistěte se, že globální stav clusteru je v mezích limitů přípustný. |
 | --selhání akce | Možné hodnoty zahrnují\: "Neplatný", "Vrácení zpět", "Ruční". |
 | --force restartování | Procesy se během upgradu vynuceně restartují, i v případě, že nedošlo ke změně verze kódu. <br><br> Upgrade pouze změny konfigurace nebo data. |
-| --stavu. Zkontrolujte opakování | Dlouhá doba mezi pokusy o provádění kontroly stavu, pokud aplikace nebo clusteru není v pořádku. |
+| --health-check-retry | Dlouhá doba mezi pokusy o provádění kontroly stavu, pokud aplikace nebo clusteru není v pořádku. |
 | --stabilní verze stavu zaškrtnutí | Množství času, aplikace nebo clusteru musí zůstane v dobrém stavu před provedením upgradu k další upgradovací doméně. <br><br> Nejprve je interpretován jako řetězec představující dobu trvání ISO 8601. Pokud se to nepodaří, je interpretován jako číslo představující počet milisekund. |
 | --health-check-wait | Doba čekání po dokončení upgradu domény před zahájením stavu kontroluje procesu. |
-| --repliky sady kontrola-časový limit | Maximální množství času blokování zpracování logických sítí a zabránit ztrátě dostupnosti, když dochází k neočekávaným problémům. <br><br> Když tento časový limit vyprší platnost, zpracování upgradovací doména bude pokračovat bez ohledu na problémy s dostupností ztráty. Časový limit se resetuje na začátku každé upgradovací doméně. Platné hodnoty jsou 0 až 42949672925 (včetně). |
-| --se zajištěním provozu režim upgradu | Možné hodnoty zahrnují\: "Neplatný", "UnmonitoredAuto", "UnmonitoredManual", "Sledované".  Výchozí\: UnmonitoredAuto. |
+| --replica-set-check-timeout | Maximální množství času blokování zpracování logických sítí a zabránit ztrátě dostupnosti, když dochází k neočekávaným problémům. <br><br> Když tento časový limit vyprší platnost, zpracování upgradovací doména bude pokračovat bez ohledu na problémy s dostupností ztráty. Časový limit se resetuje na začátku každé upgradovací doméně. Platné hodnoty jsou 0 až 42949672925 (včetně). |
+| --rolling-upgrade-mode | Možné hodnoty zahrnují\: "Neplatný", "UnmonitoredAuto", "UnmonitoredManual", "Sledované".  Výchozí\: UnmonitoredAuto. |
 | --timeout -t | Server časový limit v sekundách.  Výchozí\: 60. |
-| --poškozené aplikace | Maximální povolené procento žádostí, není v pořádku, před ohlášení chyby. <br><br> Například pokud chcete povolit 10 % aplikací v dobrém stavu, tato hodnota by 10. Procento představuje přípustný maximální procento aplikací, které může být není v pořádku, než clusteru se považuje za chybu. Pokud procento respektován, ale existuje alespoň jedna aplikace není v pořádku, stav se vyhodnotí jako upozornění. To se vypočítá jako podíl počtu poškozené aplikace přes celkový počet instancí aplikace v clusteru, s výjimkou aplikací typy aplikací, které jsou součástí ApplicationTypeHealthPolicyMap. Výpočet zaokrouhlí tento údaj tolerovat selhání jednoho na malý počet aplikací. |
+| --unhealthy-applications | Maximální povolené procento žádostí, není v pořádku, před ohlášení chyby. <br><br> Například pokud chcete povolit 10 % aplikací v dobrém stavu, tato hodnota by 10. Procento představuje přípustný maximální procento aplikací, které může být není v pořádku, než clusteru se považuje za chybu. Pokud procento respektován, ale existuje alespoň jedna aplikace není v pořádku, stav se vyhodnotí jako upozornění. To se vypočítá jako podíl počtu poškozené aplikace přes celkový počet instancí aplikace v clusteru, s výjimkou aplikací typy aplikací, které jsou součástí ApplicationTypeHealthPolicyMap. Výpočet zaokrouhlí tento údaj tolerovat selhání jednoho na malý počet aplikací. |
 | --poškozené uzly | Maximální povolené procento poškozené uzly před ohlášení chyby. <br><br> Například pokud chcete povolit 10 % uzly v dobrém stavu, tato hodnota by 10. Procento představuje přípustný maximální procento uzlů, které může být není v pořádku, než clusteru se považuje za chybu. Pokud procento respektován, ale existuje nejméně jeden uzel není v pořádku, stav se vyhodnotí jako upozornění. Procentuální se vypočítá jako podíl počtu uzlů v pořádku za celkový počet uzlů v clusteru. Výpočet zaokrouhlí tento údaj tolerovat selhání jednoho na malý počet uzlů. Ve velkých clusterech některé uzly bude vždy dolů nebo navýšení kapacity pro opravy, tak tolerovat, který by měl být nakonfigurovaný toto procento. |
 | --upgrade-domain-delta-unhealthy-nodes | Maximální povolené procento uzlů upgradovací domény snížení stav povoleno během upgradu clusteru.  Výchozí\: 15. <br><br> Delta měří stav uzlů upgradovací domény na začátku upgradu a stav uzlů upgradovací doména v době vyhodnocení stavu. Kontrola se provádí po dokončení upgradu všech upgradovací doména pro všechny dokončení upgradovacích domén, abyste měli jistotu, že je stav upgradovacích domén v rámci přípustný omezení. |
 | --upgrade-domain-timeout | Množství času každé domény upgradu musí dokončit před provedením FailureAction. <br><br> Nejprve je interpretován jako řetězec představující dobu trvání ISO 8601. Pokud se to nepodaří, je interpretován jako číslo představující počet milisekund. |
 | --upgrade – typ | Možné hodnoty zahrnují\: "Neplatný", "Se zajištěním provozu", "Rolling_ForceRestart".  Výchozí\: se zajištěním provozu. |
-| --upgrade vypršení časového limitu | Množství času celkové upgrade musí dokončit před provedením FailureAction. <br><br> Nejprve je interpretován jako řetězec představující dobu trvání ISO 8601. Pokud se to nepodaří, je interpretován jako číslo představující počet milisekund. |
-| --upozornění jako chyby | Určuje, zda jsou upozornění zpracována stejným závažností jako chyby. |
+| --upgrade-timeout | Množství času celkové upgrade musí dokončit před provedením FailureAction. <br><br> Nejprve je interpretován jako řetězec představující dobu trvání ISO 8601. Pokud se to nepodaří, je interpretován jako číslo představující počet milisekund. |
+| --warning-as-error | Určuje, zda jsou upozornění zpracována stejným závažností jako chyby. |
 
 ### <a name="global-arguments"></a>Globální argumenty
 
