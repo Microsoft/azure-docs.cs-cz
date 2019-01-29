@@ -13,14 +13,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 08/02/2017
-ms.component: hybrid
+ms.subservice: hybrid
 ms.author: billmath
-ms.openlocfilehash: 38a344fb6e67beae6310480646d84a1fe7730f84
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: b5c7a1c56d9df28b8132f240dc3872314f029f78
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54461030"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55155319"
 ---
 # <a name="hybrid-identity-required-ports-and-protocols"></a>Porty a protokoly, které vyžaduje hybridní identita
 Následující dokument je technické referenční informace k požadované porty a protokoly pro implementaci řešení s hybridní identitou. Použijte následující obrázek a najdete v příslušné tabulce.
@@ -36,7 +36,7 @@ Tato tabulka popisuje porty a protokoly, které jsou nutné pro komunikaci mezi 
 | Kerberos |88 (TCP/UDP) |Ověřování pomocí protokolu Kerberos k doménové struktuře AD. |
 | MS-RPC |135 (TCP/UDP) |Použít během počáteční konfiguraci průvodce Azure AD Connect, když se váže k doménové struktuře AD a také během synchronizace hesel. |
 | LDAP |389 (TCP/UDP) |Používá se pro import dat ze služby AD. Data se šifrují pomocí protokolu Kerberos podepsat a zapečetění. |
-| RPC | 445 (TCP/UDP) |Bezproblémové jednotné přihlašování se používá k vytvoření účtu počítače v doménové struktuře AD. |
+| SMB | 445 (TCP/UDP) |Bezproblémové jednotné přihlašování se používá k vytvoření účtu počítače v doménové struktuře AD. |
 | LDAP/SSL |636 (TCP/UDP) |Používá se pro import dat ze služby AD. Přenos dat je podepsaný a zašifrovaný. Použít pouze pokud používáte protokol SSL. |
 | RPC |49152 - 65535 (Random vysokou RPC Port)(TCP/UDP) |Použít během počáteční konfigurace služby Azure AD Connect, když se váže k doménových struktur AD a během synchronizace hesel. Zobrazit [KB929851](https://support.microsoft.com/kb/929851), [KB832017](https://support.microsoft.com/kb/832017), a [KB224196](https://support.microsoft.com/kb/224196) Další informace. |
 

@@ -6,16 +6,16 @@ services: cognitive-services
 author: swhite-msft
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: bing-spell-check
+ms.subservice: bing-spell-check
 ms.topic: article
 ms.date: 04/05/2018
 ms.author: scottwhi
-ms.openlocfilehash: 25b34adc413b24539fca14b70eb58e577a5cfc50
-ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
+ms.openlocfilehash: 49de53b32b2b39c396d032b3bc3bde981573a918
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2018
-ms.locfileid: "48883203"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55162663"
 ---
 # <a name="how-to-get-analytics-for-bing-spell-check-api"></a>Jak získat analýzu pro API kontrola pravopisu Bingu
 

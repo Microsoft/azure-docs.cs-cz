@@ -7,7 +7,7 @@ author: CelesteDG
 manager: mtillman
 editor: ''
 ms.service: active-directory
-ms.component: develop
+ms.subservice: develop
 ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
@@ -16,12 +16,12 @@ ms.date: 09/24/2018
 ms.author: celested
 ms.custom: aaddev
 ms.reviewer: lenalepa, sureshja
-ms.openlocfilehash: ddc04d32f76515cb93d2cde3fe4eccaab7e4c291
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 805a917cbb4d867ee866ec99c8e90ea883527856
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51245354"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55100950"
 ---
 # <a name="quickstart-remove-an-application-from-azure-active-directory"></a>Rychlý start: Odebrání aplikace z Azure Active Directory
 
@@ -71,7 +71,7 @@ Z technického hlediska jsou tyto aplikace s více tenanty z jiného tenanta a d
 
 Pokud chcete odebrat přístup aplikace s více tenanty k vašemu adresáři (po udělení souhlasu), musí správce společnosti odebrat instanční objekt aplikace. Tento správce musí mít přístup globálního správce a instanční objekt může odebrat pouze prostřednictvím webu Azure Portal nebo použitím [rutin Azure AD PowerShellu](https://go.microsoft.com/fwlink/?LinkId=294151).
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Získejte další informace o těchto rychlých startech souvisejících se správou aplikací používajících koncový bod Azure AD v1.0:
 

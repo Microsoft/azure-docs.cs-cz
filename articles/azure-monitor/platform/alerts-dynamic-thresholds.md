@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 11/29/2018
 ms.author: yalavi
 ms.reviewer: mbullwin
-ms.openlocfilehash: 4024ecddde4b0d020e2c657214a4a258ea0b2ea5
-ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
+ms.openlocfilehash: 92a6d0f0cd9ef9a7d246624f89315a87a7fb26f9
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54449006"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55097805"
 ---
 # <a name="metric-alerts-with-dynamic-thresholds-in-azure-monitor-public-preview"></a>Upozornění na metriku s dynamickými prahovými hodnotami ve službě Azure Monitor (Public Preview)
 
@@ -21,7 +21,7 @@ Upozornění na metriku s dynamickými prahovými hodnotami zjišťování využ
 
 Jakmile se vytvoří pravidlo upozornění, aktivuje se pouze pokud monitorované metriky nechová podle očekávání, na základě jeho míru prahových hodnot.
 
-Rádi bychom znali váš názor, uchovávejte přicházející na azurealertsfeedback@microsoft.com.
+Rádi bychom znali váš názor, uchovávejte přicházející na <azurealertsfeedback@microsoft.com>.
 
 ## <a name="why-and-when-is-using-dynamic-condition-type-recommended"></a>Proč a kdy používá typ dynamická podmínka doporučeno?
 
@@ -37,7 +37,7 @@ Upozornění s dynamickými prahovými hodnotami, je možné nakonfigurovat pomo
 
 ## <a name="how-are-the-thresholds-calculated"></a>Jak se počítají prahové hodnoty?
 
-Dynamická prahová hodnota průběžně učí data řady metrik a pokusí model pomocí sady algoritmů a metody. a pokusí se model pomocí sady algoritmů a metody. Zjistí vzory v datech, jako je například sezónnost (každou hodinu nebo každý den / týdně) a je schopný zvládnout hlučného metriky (například počítač CPU, paměť) a také metrik s nízkou rozptylu (například dostupnost a chyba rychlost).
+Dynamickými prahovými hodnotami průběžně učí data řady metrik a pokusí se model pomocí sady algoritmů a metody. Zjistí vzory v datech, jako je například sezónnost (každou hodinu nebo každý den / týdně) a je schopný zvládnout hlučného metriky (například počítač CPU, paměť) a také metrik s nízkou rozptylu (například dostupnost a chyba rychlost).
 
 Prahové hodnoty jsou vybrány tak, že odchylky od těchto prahových hodnot označuje anomálie v chování metrik.
 
@@ -80,3 +80,80 @@ Pravděpodobně není. Jsou vhodné pro zjištění významné odchylky, spíše
 ## <a name="how-much-data-is-used-to-preview-and-then-calculate-thresholds"></a>Kolik dat se používá k zobrazení náhledu a pak vypočítat prahové hodnoty?
 
 Prahové hodnoty uvedené v grafu, předtím, než se vytvoří pravidlo upozornění na metriku, se počítají na posledních 10 dnů historických dat, po vytvoření pravidla upozornění dynamickými prahovými hodnotami se získání dalších historických dat, která je k dispozici a bude Další informace neustále na základě nových dat do zpřesnit prahové hodnoty.
+
+## <a name="dynamic-thresholds-best-practices"></a>Osvědčené postupy pro dynamické prahové hodnoty
+
+Dynamické prahové hodnoty můžete použít pro jakoukoli platformu nebo vlastní metriky ve službě Azure Monitor a byl také optimalizovaná pro běžné metriky aplikace a infrastruktury.
+Následující položky jsou osvědčené postupy pro konfiguraci oznámení na některé z těchto měřítek pomocí dynamickými prahovými hodnotami.
+
+### <a name="dynamic-thresholds-on-virtual-machine-cpu-percentage-metrics"></a>Dynamické prahové hodnoty metrik procento využití procesoru virtuálního počítače
+
+1. V [webu Azure portal](https://portal.azure.com), klikněte na **monitorování**. Zobrazení monitorování konsoliduje všechny vaše monitorování nastavení a data v jednom zobrazení.
+
+2. Klikněte na tlačítko **výstrahy** klikněte **+ nové pravidlo upozornění**.
+
+    > [!TIP]
+    > Většina oken prostředků také mít **výstrahy** ve své nabídce prostředků v rámci **monitorování**, upozornění můžete například vytvořit i z něj.
+
+3. Klikněte na tlačítko **Výběr cíle**, v podokně kontext, který načítá, vyberte cílový prostředek, který chcete upozornit na. Použití **předplatné** a **typ prostředku "Virtual Machines"** rozevírací seznamy se najít prostředek, kterou chcete monitorovat. Na panelu hledání můžete také najít váš prostředek.
+
+4. Jakmile vyberete cílový prostředek, klikněte na **přidat podmínku**.
+
+5. Vyberte **: procento využití procesoru"**.
+
+6. Volitelně můžete upřesnit metriku úpravou **období** a **agregace**. Nedoporučuje se používat "Maximální" typ agregace pro tento typ metriky je to méně zástupce chování. Pro "Maximální" agregace typu statické mezní hodnotu možná více vhodné.
+
+7. Zobrazí se graf metriky za posledních 6 hodin. Definujte parametry výstrah:
+    1. **Podmínka vyhodnocena jako typ** – možnost 'Dynamic'.
+    1. **Citlivost** – zvolte střední nebo Nízká citlivost na omezily rušivé výstrahy.
+    1. **Operátor** – zvolte větší než pokud chování představuje využití aplikací.
+    1. **Frekvence** – zvažte snížení podle dopad na chod firmy výstrahy.
+    1. **Období selhání** (Upřesnit možnosti) - back okno pohled by měl být alespoň 15 minut. Například pokud období je nastavena na 5 minut, pak selhání období by měl být alespoň tři nebo více.
+
+8. Metriky grafu se zobrazí vypočítané prahové hodnoty podle poslední data.
+
+9. Klikněte na **Done** (Hotovo).
+
+10. Vyplňte **podrobnosti výstrahy** jako **název pravidla upozornění**, **popis**, a **závažnost**.
+
+11. Přidání skupiny akcí k výstraze tak, že vyberete existující skupinu akcí nebo vytvořit novou skupinu akcí.
+
+12. Klikněte na tlačítko **provádí** se uložit pravidlo upozornění metriky.
+
+> [!NOTE]
+> Upozornění na metriku pravidel vytvořených prostřednictvím portálu se vytvoří ve stejné skupině prostředků jako cílový prostředek.
+
+### <a name="dynamic-thresholds-on-application-insights-http-request-execution-time"></a>Dynamické prahové hodnoty na čas provádění požadavku HTTP pro Application Insights
+
+1. V [webu Azure portal](https://portal.azure.com), klikněte na **monitorování**. Zobrazení monitorování konsoliduje všechny vaše monitorování nastavení a data v jednom zobrazení.
+
+2. Klikněte na tlačítko **výstrahy** klikněte **+ nové pravidlo upozornění**.
+
+    > [!TIP]
+    > Většina oken prostředků také mít **výstrahy** ve své nabídce prostředků v rámci **monitorování**, upozornění můžete například vytvořit i z něj.
+
+3. Klikněte na tlačítko **Výběr cíle**, v podokně kontext, který načítá, vyberte cílový prostředek, který chcete upozornit na. Použití **předplatné** a **prostředek služby Application Insights typu** rozevírací seznamy se najít prostředek, kterou chcete monitorovat. Na panelu hledání můžete také najít váš prostředek.
+
+4. Jakmile vyberete cílový prostředek, klikněte na **přidat podmínku**.
+
+5. Vyberte **"Doba provádění požadavku HTTP"**.
+
+6. Volitelně můžete upřesnit metriku úpravou **období** a **agregace**. Nedoporučuje se používat "Maximální" typ agregace pro tento typ metriky je to méně zástupce chování. Pro "Maximální" agregace typu statické mezní hodnotu možná více vhodné.
+
+7. Zobrazí se graf metriky za posledních 6 hodin. Definujte parametry výstrah:
+    1. **Podmínka vyhodnocena jako typ** – možnost 'Dynamic'.
+    1. **Operátor** – zvolte "větší než' Chcete-li omezit množství výstrah aktivovaných na zlepšení doby trvání.
+    1. **Frekvence** – zvažte snížení podle dopad na chod firmy výstrahy.
+
+8. Metriky grafu se zobrazí vypočítané prahové hodnoty podle poslední data.
+
+9. Klikněte na **Done** (Hotovo).
+
+10. Vyplňte **podrobnosti výstrahy** jako **název pravidla upozornění**, **popis**, a **závažnost**.
+
+11. Přidání skupiny akcí k výstraze tak, že vyberete existující skupinu akcí nebo vytvořit novou skupinu akcí.
+
+12. Klikněte na tlačítko **provádí** se uložit pravidlo upozornění metriky.
+
+> [!NOTE]
+> Upozornění na metriku pravidel vytvořených prostřednictvím portálu se vytvoří ve stejné skupině prostředků jako cílový prostředek.

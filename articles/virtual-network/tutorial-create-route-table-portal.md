@@ -18,12 +18,12 @@ ms.workload: infrastructure
 ms.date: 12/12/2018
 ms.author: jdial
 ms.custom: mvc
-ms.openlocfilehash: 3422219e33c04d7cb130e064790896f5da28649a
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 855adccf036f731de12810fe0f5287186048ddb0
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54025041"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55095953"
 ---
 # <a name="tutorial-route-network-traffic-with-a-route-table-using-the-azure-portal"></a>Kurz: Směrování síťového provozu s využitím směrovací tabulky pomocí webu Azure portal
 
@@ -52,9 +52,9 @@ Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 
 1. V **vytvořit směrovací tabulku**, zadejte nebo vyberte tyto informace:
 
-    | Nastavení | Hodnota |
+    | Nastavení | Value |
     | ------- | ----- |
-    | Název | Zadejte *myRouteTablePublic*. |
+    | Name | Zadejte *myRouteTablePublic*. |
     | Předplatné | Vyberte své předplatné. |
     | Skupina prostředků | Vyberte **vytvořit nový**, zadejte *myResourceGroup*a vyberte *OK*. |
     | Umístění | Ponechte výchozí nastavení **USA – východ**.
@@ -74,7 +74,7 @@ Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 
 1. V **trasy přidat**, zadejte nebo vyberte tyto informace:
 
-    | Nastavení | Hodnota |
+    | Nastavení | Value |
     | ------- | ----- |
     | Název trasy | Zadejte *ToPrivateSubnet*. |
     | Předpona adresy | Zadejte *10.0.1.0/24*. |
@@ -93,9 +93,9 @@ Než budete moct přidružit směrovací tabulky k podsíti, budete muset vytvo�
 
 1. V **vytvořit virtuální síť**, zadejte nebo vyberte tyto informace:
 
-    | Nastavení | Hodnota |
+    | Nastavení | Value |
     | ------- | ----- |
-    | Název | Zadejte *myVirtualNetwork*. |
+    | Name | Enter *myVirtualNetwork*. |
     | Adresní prostor | Zadejte *10.0.0.0/16*. |
     | Předplatné | Vyberte své předplatné. |
     | Skupina prostředků | Vyberte ***vybrat existující*** > **myResourceGroup**. |
@@ -117,18 +117,18 @@ Než budete moct přidružit směrovací tabulky k podsíti, budete muset vytvo�
 
 1. V **přidat podsíť**, zadejte tyto informace:
 
-    | Nastavení | Hodnota |
+    | Nastavení | Value |
     | ------- | ----- |
-    | Název | Zadejte *privátní*. |
+    | Name | Zadejte *privátní*. |
     | Adresní prostor | Zadejte *10.0.1.0/24*. |
 
 1. Pro ostatní nastavení nechte zvolené výchozí hodnoty a vyberte **OK**.
 
 1. Vyberte **+ podsíť** znovu. Tentokrát, zadejte tyto informace:
 
-    | Nastavení | Hodnota |
+    | Nastavení | Value |
     | ------- | ----- |
-    | Název | Zadejte *DMZ*. |
+    | Name | Enter *DMZ*. |
     | Adresní prostor | Zadejte *10.0.2.0/24*. |
 
 1. Čas poslední, jako jsou, ponechejte zbývající výchozí hodnoty a vyberte **OK**.
@@ -151,13 +151,13 @@ Síťová virtuální zařízení se softwarem Oracle, které pomáhají s síť
 
 1. V **vytvořit virtuální počítač – základní informace o**, zadejte nebo vyberte tyto informace:
 
-    | Nastavení | Hodnota |
+    | Nastavení | Value |
     | ------- | ----- |
     | **PODROBNOSTI O PROJEKTU** | |
     | Předplatné | Vyberte své předplatné. |
     | Skupina prostředků | Vyberte **myResourceGroup**. |
     | **PODROBNOSTI O INSTANCI** |  |
-    | Název virtuálního počítače | Zadejte *myVmNva*. |
+    | Název virtuálního počítače | Enter *myVmNva*. |
     | Oblast | Vyberte **USA – východ**. |
     | Možnosti dostupnosti | Ponechte výchozí nastavení **žádné redundance infrastruktury požadované**. |
     | Image | Ponechte výchozí nastavení **systému Windows Server 2016 Datacenter**. |
@@ -179,7 +179,7 @@ Síťová virtuální zařízení se softwarem Oracle, které pomáhají s síť
 
 1. V **vytvoření virtuálního počítače – sítě**, vyberte tyto informace:
 
-    | Nastavení | Hodnota |
+    | Nastavení | Value |
     | ------- | ----- |
     | Virtuální síť | Ponechte výchozí nastavení **myVirtualNetwork**. |
     | Podsíť | Vyberte **DMZ (10.0.2.0/24)**. |
@@ -191,9 +191,9 @@ Síťová virtuální zařízení se softwarem Oracle, které pomáhají s síť
 
 1. V **vytvořit účet úložiště**, zadejte nebo vyberte tyto informace:
 
-    | Nastavení | Hodnota |
+    | Nastavení | Value |
     | ------- | ----- |
-    | Název | Zadejte *mynvastorageaccount*. |
+    | Name | Zadejte *mynvastorageaccount*. |
     | Account kind (Druh účtu) | Ponechte výchozí nastavení **úložiště (verze 1 pro obecné účely)**. |
     | Výkon | Ponechte výchozí nastavení **standardní**. |
     | Replikace | Ponechte výchozí nastavení **místně redundantní úložiště (LRS)**.
@@ -230,7 +230,7 @@ Vytvoření veřejné virtuální počítač a privátní virtuální počítač
 
 Proveďte kroky 1 až 12 z [vytvoření síťového virtuálního zařízení](#create-an-nva). Používat většinu stejné nastavení. Tyto hodnoty jsou ty, které musí být jiné:
 
-| Nastavení | Hodnota |
+| Nastavení | Value |
 | ------- | ----- |
 | **VEŘEJNÉ VIRTUÁLNÍ POČÍTAČ** | |
 | ZÁKLADY |  |
@@ -281,7 +281,7 @@ Zatímco Azure vytváří virtuální počítač *myVmPublic*, můžete vytvoři
 
 1. Vyberte **Ano** pro připojení k virtuálnímu počítači.
 
-### <a name="enable-icpm-through-the-windows-firewall"></a>Povolit ICPM přes bránu Windows firewall
+### <a name="enable-icmp-through-the-windows-firewall"></a>Povolte průchod protokolu ICMP bránou Windows firewall
 
 V pozdějším kroku použijete nástroj pro trasování tras k otestování směrování. Trasování tras využívá ovládací prvek zpráva ICMP (Internet Protocol), čímž se odmítne brána Windows Firewall ve výchozím nastavení. Povolte průchod protokolu ICMP bránou Windows firewall.
 

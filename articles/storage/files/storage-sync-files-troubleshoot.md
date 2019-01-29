@@ -5,15 +5,15 @@ services: storage
 author: jeffpatt24
 ms.service: storage
 ms.topic: article
-ms.date: 09/06/2018
+ms.date: 01/25/2019
 ms.author: jeffpatt
 ms.component: files
-ms.openlocfilehash: 852ffdafefeef7f4b8fd6bf3a9c5d175d872e077
-ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
+ms.openlocfilehash: cf86d2a644c2732f27442a807dec1ad960b94af5
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54157628"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55095153"
 ---
 # <a name="troubleshoot-azure-file-sync"></a>Řešení problémů se Synchronizací souborů Azure
 Azure File Sync umožňuje centralizovat sdílené složky organizace ve službě soubory Azure, při zachování flexibility, výkonu a kompatibility s místními souborového serveru. Azure File Sync transformuje serveru systému Windows na rychlou mezipaměť sdílené složky Azure. Můžete použít jakýkoli protokol dostupný ve Windows serveru pro přístup k datům místně, včetně SMB, NFS a FTPS. Můžete mít libovolný počet mezipamětí po celém světě potřebujete.
@@ -246,15 +246,15 @@ Pokud chcete zobrazit tyto chyby, spusťte **FileSyncErrorsReport.ps1** skript p
 **Protokol ItemResults – chyby za položek synchronizace**  
 | HODNOTA HRESULT | HRESULT (decimální) | Text chyby | Problém | Náprava |
 |---------|-------------------|--------------|-------|-------------|
-| 0x80c80207 | -2134375929 | ECS_E_SYNC_CONSTRAINT_CONFLICT | Změnu souboru nebo adresáře nejde zatím synchronizovat, protože ještě není synchronizovaná závislá složka. Tato položka se synchronizuje po závislých změn. | Není vyžadována žádná akce. |
-| 0x7B | 123 | ERROR_INVALID_NAME | Název souboru nebo adresáře je neplatný. | Přejmenujte soubor nebo adresář nejistá. Zobrazit [zpracování nepodporované znaky](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cazure-portal#handling-unsupported-characters) Další informace. |
+| 0x80c80207 | -2134375929 | ECS_E_SYNC_CONSTRAINT_CONFLICT | Změnu souboru nebo adresáře nejde zatím synchronizovat, protože ještě není synchronizovaná závislá složka. Tato položka se synchronizuje po závislých změn. | Nevyžaduje se žádná akce. |
+| 0x7b | 123 | ERROR_INVALID_NAME | Název souboru nebo adresáře je neplatný. | Přejmenujte soubor nebo adresář nejistá. Zobrazit [zpracování nepodporované znaky](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cazure-portal#handling-unsupported-characters) Další informace. |
 | 0x8007007b | -2147024773 | STIERR_INVALID_DEVICE_NAME | Název souboru nebo adresáře je neplatný. | Přejmenujte soubor nebo adresář nejistá. Zobrazit [zpracování nepodporované znaky](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cazure-portal#handling-unsupported-characters) Další informace. |
-| 0x80c80018 | -2134376424 | ECS_E_SYNC_FILE_IN_USE | Soubor nelze synchronizovat, protože je používán. Soubor bude synchronizován, až se už používá. | Není vyžadována žádná akce. Azure File Sync vytvoří dočasné snímek služby VSS jednou za den na serveru, aby synchronizovat soubory, které mají otevřených popisovačů. |
-| 0x80c8031d | -2134375651 | ECS_E_CONCURRENCY_CHECK_FAILED | Soubor byl změněn, ale změny ještě nezjistil synchronizace. Synchronizace se obnoví po této změně se detekuje. | Není vyžadována žádná akce. |
+| 0x80c80018 | -2134376424 | ECS_E_SYNC_FILE_IN_USE | Soubor nelze synchronizovat, protože je používán. Soubor bude synchronizován, až se už používá. | Nevyžaduje se žádná akce. Azure File Sync vytvoří dočasné snímek služby VSS jednou za den na serveru, aby synchronizovat soubory, které mají otevřených popisovačů. |
+| 0x80c8031d | -2134375651 | ECS_E_CONCURRENCY_CHECK_FAILED | Soubor byl změněn, ale změny ještě nezjistil synchronizace. Synchronizace se obnoví po této změně se detekuje. | Nevyžaduje se žádná akce. |
 | 0x80c8603e | -2134351810 | ECS_E_AZURE_STORAGE_SHARE_SIZE_LIMIT_REACHED | Soubor nelze synchronizovat, protože je dosažen limit sdílené složky Azure file. | Chcete-li vyřešit tento problém, naleznete v tématu [jste dosáhli limitu úložiště sdílené složky Azure file](https://docs.microsoft.com/en-us/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cazure-portal#-2134351810) části v Průvodci odstraňováním potíží. |
 | 0x80070005 | -2147024891 | E_ACCESSDENIED | Této chybě může dojít, pokud je soubor šifrovaný pomocí nepodporované řešení (například systém souborů EFS systému souborů NTFS) nebo soubor má odstranění stavu čekání. | Pokud je soubor šifrovaný pomocí nepodporované řešení, dešifrování souboru a používejte šifrování podporovaných řešení. Seznam řešení podpory najdete v tématu [řešení šifrování](https://docs.microsoft.com/en-us/azure/storage/files/storage-sync-files-planning#encryption-solutions) části v Průvodci plánem. Pokud se soubor nachází v odstranění stav Čekání na vyřízení, soubor odstraní, jakmile se zavřou všechny otevřené popisovače souborů. |
-| 0x20 | 32 | ERROR_SHARING_VIOLATION | Soubor nelze synchronizovat, protože je používán. Soubor bude synchronizován, až se už používá. | Není vyžadována žádná akce. |
-| 0x80c80017 | -2134376425 | ECS_E_SYNC_OPLOCK_BROKEN | Nějaký soubor se během synchronizace změnil, takže je nutné ho synchronizovat znovu. | Není vyžadována žádná akce. |
+| 0x20 | 32 | ERROR_SHARING_VIOLATION | Soubor nelze synchronizovat, protože je používán. Soubor bude synchronizován, až se už používá. | Nevyžaduje se žádná akce. |
+| 0x80c80017 | -2134376425 | ECS_E_SYNC_OPLOCK_BROKEN | Nějaký soubor se během synchronizace změnil, takže je nutné ho synchronizovat znovu. | Nevyžaduje se žádná akce. |
 
 #### <a name="handling-unsupported-characters"></a>Zpracování nepodporované znaky.
 Pokud **FileSyncErrorsReport.ps1** skript prostředí PowerShell ukazuje selhání kvůli nepodporované znaky (kódy chyb 0x7b a 0x8007007b), by měl neodeberete nebo nepřejmenujete znaky na selhání z názvů příslušných souborů. Prostředí PowerShell pravděpodobně vytiskne tyto znaky jako otazník nebo prázdný obdélníky, protože většina z těchto znaků mít žádné standardní vizuálního kódování. [Nástroj pro vyhodnocení](storage-sync-files-planning.md#evaluation-tool) slouží k identifikaci znaky, které nejsou podporovány.
@@ -283,7 +283,7 @@ Relace synchronizace mohou selhat z různých důvodů, včetně server se resta
 <a id="-2147012889"></a>**Nelze navázat připojení ke službě.**    
 | | |
 |-|-|
-| **HODNOTA HRESULT** | 0x80072EE7 |
+| **HODNOTA HRESULT** | 0x80072ee7 |
 | **HRESULT (decimální)** | -2147012889 | 
 | **Text chyby** | WININET_E_NAME_NOT_RESOLVED |
 | **Požadována náprava** | Ano |
@@ -458,7 +458,7 @@ Když nastavíte tuto hodnotu registru, agent funkce Synchronizace souborů Azur
 <a id="-2147012894"></a>**Nelze navázat připojení ke službě.**  
 | | |
 |-|-|
-| **HODNOTA HRESULT** | 0x80072EE2 |
+| **HODNOTA HRESULT** | 0x80072ee2 |
 | **HRESULT (decimální)** | -2147012894 |
 | **Text chyby** | WININET_E_TIMEOUT |
 | **Požadována náprava** | Ano |
@@ -804,24 +804,19 @@ Existují dva hlavní třídy chyb, které můžou probíhat přes buď cesta se
 Následující části uvádějí, jak potíží vrstvení cloudu a určení, zda je problém problém úložiště cloudu nebo chybu serveru.
 
 <a id="monitor-tiering-activity"></a>**Jak monitorovat vrstvení aktivity na serveru**  
-K monitorování vrstvení aktivity na serveru, použijte 9002 ID události, 9003, události 9016 a 9029 v protokolu událostí Telemetrie (nachází se v umístění Applications and Services\Microsoft\FileSync\Agent v prohlížeči událostí).
-
-- ID události 9002 poskytuje zástupných položek statistiky pro koncový bod serveru. Například TotalGhostedFileCount, SpaceReclaimedMB, atd.
+K monitorování vrstvení aktivity na serveru, použijte 9003 ID události, události 9016 a 9029 v protokolu událostí Telemetrie (nachází se v umístění Applications and Services\Microsoft\FileSync\Agent v prohlížeči událostí).
 
 - ID události 9003 poskytuje distribucí chyb pro koncový bod serveru. Celkový počet chyb, kód chyby, apod. Všimněte si, že se jedna událost je protokolována za kód chyby.
-
 - ID události 9016 poskytuje zástupných položek výsledky pro svazek. Například volného místa, které zbývá, počet souborů, které vytvořena zástupná položka v relaci, počet souborů se nezdařilo. Chcete-li ghost, atd.
-
-- ID události 9029 poskytuje informace o relaci zástupných položek. Třeba počet souborů v této relaci, počet souborů, které se pokusil vrstvami v této relaci, počet souborů, které již vrstvené atd.
+- ID události 9029 poskytuje informace o relaci zástupných položek pro koncový bod serveru. Třeba počet souborů v této relaci, počet souborů, které se pokusil vrstvami v této relaci, počet souborů, které již vrstvené atd.
 
 <a id="monitor-recall-activity"></a>**Jak monitorovat aktivity spojené s vracením na serveru**  
-Monitorování aktivity spojené s vracením na serveru, použijte událost ID 9005 9006, 9007 v protokolu událostí Telemetrie (nachází se v umístění Applications and Services\Microsoft\FileSync\Agent v prohlížeči událostí). Všimněte si, že se tyto události jsou protokolovány po hodinách.
+Pokud chcete monitorovat aktivity spojené s vracením na serveru, použijte 9005 ID události, 9006, 9009 a 9059 v protokolu událostí Telemetrie (nachází se v umístění Applications and Services\Microsoft\FileSync\Agent v prohlížeči událostí).
 
 - ID události 9005 poskytuje spojené s vracením spolehlivost pro koncový bod serveru. Například celkový počet jedinečných souborů přístup, celkový počet jedinečných souborů s neúspěšných přístupů atd.
-
 - ID události 9006 poskytuje distribuci chyby spojené s vracením pro koncový bod serveru. Celkový počet neúspěšných požadavků, kód chyby, apod. Všimněte si, že se jedna událost je protokolována za kód chyby.
-
-- ID události 9007 poskytuje spojené s vracením výkon pro koncový bod serveru. Například TotalRecallIOSize, TotalRecallTimeTaken, atd.
+- ID události 9009 poskytuje informace o relaci odvolání pro koncový bod serveru. Například DurationSeconds, CountFilesRecallSucceeded, CountFilesRecallFailed, atd.
+- ID události 9059 poskytuje aplikace spojené s vracením distribuce pro koncový bod serveru. Například ShareId, název aplikace a TotalEgressNetworkBytes.
 
 <a id="files-fail-tiering"></a>**Řešení problémů se soubory, které se nepodařilo vrstvy**  
 Pokud soubory vrstvy do služby soubory Azure:

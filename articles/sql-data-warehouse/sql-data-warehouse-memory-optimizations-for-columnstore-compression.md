@@ -10,12 +10,12 @@ ms.component: implement
 ms.date: 04/17/2018
 ms.author: cakarst
 ms.reviewer: igorstan
-ms.openlocfilehash: e30320631a7fd9b4ee27096556af01f2ad77a746
-ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
+ms.openlocfilehash: de7cc0e67960edf95ace67808ffc677b57a46dab
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43306828"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55096989"
 ---
 # <a name="maximizing-rowgroup-quality-for-columnstore"></a>Maximalizace rowgroup kvality columnstore
 
@@ -68,7 +68,7 @@ from cte;
 
 Trim_reason_desc Určuje, zda byla oříznuta skupiny řádků (trim_reason_desc = NO_TRIM znamená došlo bez ořezávání a skupina řádků je optimální kvality). Důvody: uvolnění dočasné paměti znamenat předčasné oříznutí skupiny řádků:
 - BULKLOAD: Uvolnění dočasné paměti z tohoto důvodu se používá, kdy příchozí dávku řádků pro zatížení menší než 1 milion řádků. Modul se vytvoří komprimovaná skupina řádků, pokud jsou větší než 100 000 řádků vloženého (na rozdíl od vkládání do obchodu rozdílovou), ale nastaví uvolnění dočasné paměti z důvodu BULKLOAD. V tomto scénáři zvažte zvýšení okno zatížení služby batch, aby akumulují další řádky. Navíc přehodnotit vaše schéma vytváření oddílů a ujistěte se, že není příliš podrobné jako skupiny řádků nemůžou zahrnovat hranice oddílů.
-- MEMORY_LIMITATION: Vytvoření skupiny řádků s 1 milion řádků, určitá část paměti pracovní vyžaduje modul. Je-li dostupná paměť relace načítání menší než požadované pracovní paměti, získat předčasně oříznut skupiny řádků. Následující části popisují, jak odhadnout paměť požadovanou a přidělení více paměti.
+- MEMORY_LIMITATION: Chcete-li vytvořit skupiny řádků s 1 milion řádků, určitá část paměti pracovní vyžaduje modul. Je-li dostupná paměť relace načítání menší než požadované pracovní paměti, získat předčasně oříznut skupiny řádků. Následující části popisují, jak odhadnout paměť požadovanou a přidělení více paměti.
 - DICTIONARY_SIZE: Uvolnění dočasné paměti z tohoto důvodu označuje, že došlo k oříznutí rowgroup protože nastal minimálně jeden sloupec řetězce s širokým nebo vysokou kardinalitou řetězce. Velikost slovník je omezena na 16 MB v paměti a je komprimován po dosažení tohoto limitu skupinu řádků. Pokud narazíte na situace, zvažte možnost odizolování problematický sloupec do samostatné tabulky.
 
 ## <a name="how-to-estimate-memory-requirements"></a>Tom, jak odhadnout požadavky na paměť
@@ -88,7 +88,7 @@ kde krátký řetězec sloupce použijte řetězcovými datovými typy z < = 32 
 
 Dlouhé řetězce jsou komprimované s metodou komprese určený pro kompresi text. Tato metoda komprese používá *slovníku* pro ukládání textových vzorů. Maximální velikost slovník je 16 MB. Existuje pouze jeden slovník pro každý sloupec dlouhý řetězec v skupiny řádků.
 
-Podrobné informace o požadavky na paměť columnstore, podívejte se na video [škálování Azure SQL Data Warehouse: Konfigurace a pokyny k](https://myignite.microsoft.com/videos/14822).
+Podrobné informace o požadavky na paměť columnstore, podívejte se na video [škálování Azure SQL Data Warehouse: Konfigurace a pokyny k](https://channel9.msdn.com/Events/Ignite/2016/BRK3291).
 
 ## <a name="ways-to-reduce-memory-requirements"></a>Způsoby, jak snížit požadavky na paměť
 
@@ -118,7 +118,7 @@ Databáze sdílí přidělení paměti pro dotaz mezi všechny operátory v dota
 
 Návrh dotazu zatížení soustředit jenom na načítání dotazu. Pokud je potřeba spouštět transformace dat, je spusťte odděleně od načíst dotazu. Například připraví data v tabulce haldy, spouštět transformace a pak načíst pracovní tabulky do indexu columnstore. Můžete také nejdřív načtěte data a pak systém MPP transformovat data.
 
-### <a name="adjust-maxdop"></a>Nastavení MAXDOP
+### <a name="adjust-maxdop"></a>Adjust MAXDOP
 
 Každé distribuci komprimuje rowgroups do indexu columnstore paralelně při každou distribuce je k dispozici je více než jedno Procesorové jádro. Paralelismus vyžaduje další paměťové prostředky, což může vést k přetížení paměti a oříznutí skupiny řádků.
 

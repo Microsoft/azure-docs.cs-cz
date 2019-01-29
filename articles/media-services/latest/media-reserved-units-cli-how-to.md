@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 01/24/2019
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: 9f95be8a9d75065deedd3bd7c92907145e966494
-ms.sourcegitcommit: 97d0dfb25ac23d07179b804719a454f25d1f0d46
+ms.openlocfilehash: b40ab6bcc2f718eda85ff64d69a6689e12d60ab8
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/25/2019
-ms.locfileid: "54913049"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55094831"
 ---
 # <a name="scaling-media-processing"></a>Škálování zpracování médií
 
@@ -32,27 +32,19 @@ Tento článek popisuje, jak používat [Media Services v3 CLI](https://aka.ms/a
 
 ## <a name="prerequisites"></a>Požadavky 
 
-+ Nainstalujte [rozhraní příkazového řádku Azure CLI]( /cli/azure/install-azure-cli). Tento článek vyžaduje použití Azure CLI verze 2.0 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. 
+[Vytvoření účtu Media Services](create-account-cli-how-to.md).
 
-    Můžete také použít [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview?view=azure-cli-latest).
-+ [Vytvoření účtu Media Services](create-account-cli-how-to.md).
+[!INCLUDE [media-services-cli-instructions](../../../includes/media-services-cli-instructions.md)]
 
 ## <a name="scale-media-reserved-units-with-cli"></a>Škálování médií rezervované jednotky pomocí rozhraní příkazového řádku
 
-1. Spusťte příkaz `login`. Ať už používáte Azure cloud shell nebo místní prostředí příkazového řádku, spusťte tento příkaz.
+Spusťte příkaz `mru`.
 
-    ```azurecli
-    az login
-    ```
-    
-    Pokud rozhraní příkazového řádku může spustit výchozí prohlížeč, udělá to a načte přihlašovací stránku. V opačném případě budete muset otevřít stránku prohlížeče a postupujte podle pokynů v příkazovém řádku zadejte autorizační kód po přejití do [ https://aka.ms/devicelogin ](https://aka.ms/devicelogin) v prohlížeči.
-2. Spusťte příkaz `mru`.
+Následující [az ams account naposledy použité položky](https://docs.microsoft.com/cli/azure/ams/account/mru?view=azure-cli-latest) sets rezervované jednotky médií na "amsaccount" účtu pomocí příkazu **počet** a **typ** parametry.
 
-    Následující [az ams account naposledy použité položky](https://docs.microsoft.com/cli/azure/ams/account/mru?view=azure-cli-latest) sets rezervované jednotky médií na "amsaccount" účtu pomocí příkazu **počet** a **typ** parametry.
-
-    ```azurecli
-    az account set mru -n amsaccount -g amsResourceGroup --count 10 --type S3
-    ```
+```azurecli
+az account set mru -n amsaccount -g amsResourceGroup --count 10 --type S3
+```
 
 ## <a name="billing"></a>Fakturace
 

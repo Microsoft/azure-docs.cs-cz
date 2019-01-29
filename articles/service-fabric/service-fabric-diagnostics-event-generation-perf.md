@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/21/2018
 ms.author: srrengar
-ms.openlocfilehash: 843feb83b8202d3ef8e2c6c8c60cb9b509048530
-ms.sourcegitcommit: beb4fa5b36e1529408829603f3844e433bea46fe
+ms.openlocfilehash: 114d71227e3cf3d0f235fc63135534b1030d4adc
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/22/2018
-ms.locfileid: "52290769"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55188335"
 ---
 # <a name="performance-metrics"></a>Metriky výkonu
 
@@ -80,7 +80,7 @@ Shromážděte následující čítače, pokud provádíte nasazení služeb .NE
 
 Service Fabric generuje vyžadovat značné množství vlastní čítače výkonu. Pokud máte nainstalovánu sadu SDK, zobrazí se úplný seznam na svém počítači s Windows v aplikaci sledování výkonu (Spustit > monitorování výkonu). 
 
-V aplikacích provádíte nasazení do clusteru, pokud používáte Reliable Actors, přidejte countes z `Service Fabric Actor` a `Service Fabric Actor Method` kategorie (viz [Service Fabric Reliable Diagnostika objektů actor](service-fabric-reliable-actors-diagnostics.md)).
+Do aplikace nasazujete do clusteru, pokud používáte Reliable Actors, přidejte čítače z `Service Fabric Actor` a `Service Fabric Actor Method` kategorie (viz [Service Fabric Reliable Diagnostika objektů actor](service-fabric-reliable-actors-diagnostics.md)).
 
 Pokud používáte Reliable Services nebo vzdálené komunikace služeb, podobně jako máme `Service Fabric Service` a `Service Fabric Service Method` čítač kategorií by měl shromáždit čítače z viz [monitorování pomocí služby vzdálené komunikace](service-fabric-reliable-serviceremoting-diagnostics.md) a [spolehlivé čítače výkonu služby](service-fabric-reliable-services-diagnostics.md#performance-counters). 
 

@@ -1,5 +1,5 @@
 ---
-title: 'Vzájemná funkční spolupráce v Azure připojení k back-end funkce: analýzu RP roviny dat | Dokumentace Microsoftu'
+title: 'Vzájemná funkční spolupráce v Azure připojení k back-end funkce: Analýza RP roviny dat | Dokumentace Microsoftu'
 description: Tento článek obsahuje analýza roviny dat z nastavení testu, které lze použít k analýze vzájemná funkční spolupráce mezi ExpressRoute, site-to-site VPN a virtuální síť vytvoření partnerského vztahu v Azure.
 documentationcenter: na
 services: networking
@@ -10,14 +10,14 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 10/18/2018
 ms.author: rambala
-ms.openlocfilehash: 8b9e5b2b073309f177fa0ce4bb2a2d08009a06ff
-ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
+ms.openlocfilehash: 5e648c1f1b051d7b65d9b007a69aece2d99d9df4
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51614409"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55176178"
 ---
-# <a name="interoperability-in-azure-back-end-connectivity-features-data-plane-analysis"></a>Vzájemná funkční spolupráce v Azure připojení k back-end funkce: analýzu RP roviny dat
+# <a name="interoperability-in-azure-back-end-connectivity-features-data-plane-analysis"></a>Vzájemná funkční spolupráce v Azure připojení k back-end funkce: Analýza roviny dat
 
 Tento článek popisuje analýzu roviny dat [nastavení testu][Setup]. Můžete také zkontrolovat [konfiguraci nastavení testu] [ Configuration] a [analýzy rovina řízení] [ Control-Analysis] nastavení testu.
 
@@ -496,7 +496,7 @@ V partnerského vztahu v rámci oblasti virtuální sítě můžete použít s v
 
 ### <a name="branch-vnet-connectivity-by-using-site-to-site-vpn"></a>Větev připojení k virtuální síti pomocí sítě site-to-site VPN
 
-Může být vhodné větve virtuální sítě, které jsou v různých oblastech a místními sítěmi mezi sebou komunikovat přes virtuální síti centra. Nativní řešení Azure pro tato konfigurace je připojení VPN typu site-to-site pomocí sítě VPN. Alternativou je použití síťové virtuální zařízení (NVA) pro směrování v centru.
+Může být vhodné větve virtuální sítě, které jsou v různých oblastech a místními sítěmi mezi sebou komunikovat přes virtuální síti centra. Nativní řešení Azure pro tuto konfiguraci je připojení VPN typu site-to-site pomocí sítě VPN. Alternativou je použití síťové virtuální zařízení (NVA) pro směrování v centru.
 
 Další informace najdete v tématu [co je VPN Gateway?] [ VPN] a [nasazení vysoce dostupné síťové virtuální zařízení][Deploy-NVA].
 

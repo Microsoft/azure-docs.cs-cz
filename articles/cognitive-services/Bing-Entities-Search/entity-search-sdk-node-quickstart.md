@@ -1,23 +1,23 @@
 ---
-title: 'Rychlý start: Sada SDK Bingu pro vyhledávání entit, Node'
+title: 'Rychlý start: Vyhledávání entit Bingu sady SDK, uzlu'
 titleSuffix: Azure Cognitive Services
 description: Nastavení pro konzolovou aplikaci sady SDK pro vyhledávání entit za použití jazyka Node.
 services: cognitive-services
 author: mikedodaro
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: bing-entity-search
+ms.subservice: bing-entity-search
 ms.topic: quickstart
 ms.date: 02/12/2018
 ms.author: v-gedod
-ms.openlocfilehash: f94e3b5a6070da5ef9510216abd3f52a958030c5
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: 0a61a6b1ada68307af7e7e574cba9910841f5939
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52311377"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55153007"
 ---
-# <a name="quickstart-bing-entity-search-sdk-with-node"></a>Rychlý start: Sada SDK Bingu pro vyhledávání entit pomocí Node
+# <a name="quickstart-bing-entity-search-sdk-with-node"></a>Rychlý start: Vyhledávání entit Bingu SDK s uzlem
 
 Sada SDK Bingu pro vyhledávání entit obsahuje funkce rozhraní REST API pro dotazy na entity a analýzu výsledků. 
 
@@ -51,8 +51,8 @@ entitySearchApiClient.entitiesOperations.search('seahawks').then((result) => {
 
 ```
 Kód vytiskne položky `result.value` do konzoly bez analýzy textu.  Případné výsledky podle kategorií budou zahrnovat tyto položky:
-- _type: 'Thing'
-- _type: 'ImageObject'
+- _type: "Věc"
+- _type: "ImageObject.
 
 <!-- Removing until we can replace with a sanitized version.
 ![Entity results](media/entity-search-sdk-node-quickstart-results.png)

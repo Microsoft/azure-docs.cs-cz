@@ -13,14 +13,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 07/12/2017
-ms.component: hybrid
+ms.subservice: hybrid
 ms.author: billmath
-ms.openlocfilehash: 6082d583432e246ba3d45f3e97f4b104710e8727
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: d04cf1665d32590620c9b968e3344513db2b5f7b
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54473686"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55152115"
 ---
 # <a name="select-which-installation-type-to-use-for-azure-ad-connect"></a>Výběr typu instalace pro Azure AD Connect
 Azure AD Connect zahrnuje dva typy instalace pro novou instalaci: Expresní a přizpůsobenou. Toto téma pomáhá při rozhodování, kterou možnost použít během instalace.

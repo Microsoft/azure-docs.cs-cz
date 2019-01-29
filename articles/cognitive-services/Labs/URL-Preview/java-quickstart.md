@@ -1,5 +1,5 @@
 ---
-title: 'Rychlý start: Project URL Preview, Java'
+title: 'Rychlý start: Náhled adresy URL projektu, Java'
 titlesuffix: Azure Cognitive Services
 description: Ukázkový skript, který vám pomůže rychle začít používat funkci Project URL Preview za použití Javy.
 services: cognitive-services
@@ -10,14 +10,14 @@ ms.component: url-preview
 ms.topic: quickstart
 ms.date: 04/24/2018
 ms.author: rosh, v-gedod
-ms.openlocfilehash: cdbed473af04b7a0ba0fd2bba56219d43bf72537
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
-ms.translationtype: HT
+ms.openlocfilehash: 23f9f0cb8205a29733e90522f5eb524142677137
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49465708"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55094270"
 ---
-# <a name="quickstart-url-preview-with-java"></a>Rychlý start: URL Preview s využitím Javy
+# <a name="quickstart-url-preview-with-java"></a>Rychlý start: Náhled adresy URL s Javou
 
 Následující příklady v jazyce Java vytvoří náhled adresy URL pro web SwiftKey: https://swiftkey.com/en.
 
@@ -29,7 +29,7 @@ Získání přístupového klíče k bezplatné zkušební verzi služby [Cognit
 
 Následující kód vytvoří požadavek `WebRequest`, nastaví hlavičku přístupového klíče a přidá řetězec dotazu „https://swiftkey.com/en“.  Potom požadavek odešle a přiřadí odpověď k řetězci obsahujícímu text JSON.
 
-````
+```
     // construct URL of search request (endpoint + query string)
 
     static String host = "https://api.labs.cognitive.microsoft.com";
@@ -47,7 +47,7 @@ Následující kód vytvoří požadavek `WebRequest`, nastaví hlavičku přís
 
     // construct result object for return
     SearchResults results = new SearchResults(new HashMap<String, String>(), response);
-````
+```
 
 ## <a name="complete-code"></a>Celý kód
 
@@ -58,7 +58,7 @@ Rozhraní API Bingu pro vyhledávání odpovědí vrací výsledky z vyhledáva�
 4. Hodnotu subscriptionKey nahraďte přístupovým klíčem platným pro vaše předplatné.
 5. Spusťte program.
 
-````
+```
 package UrlPreviewpkg;
 
 import java.net.*;
@@ -165,9 +165,9 @@ class SearchResults{
  }
 }
 
-````
+```
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 - [Rychlý start pro jazyk C#](csharp.md)
 - [Rychlý start pro JavaScript](javascript.md)
 - [Rychlý start pro Node](node-quickstart.md)

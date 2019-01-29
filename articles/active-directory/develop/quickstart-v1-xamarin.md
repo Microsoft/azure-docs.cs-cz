@@ -8,7 +8,7 @@ manager: mtillman
 editor: ''
 ms.assetid: 198cd2c3-f7c8-4ec2-b59d-dfdea9fe7d95
 ms.service: active-directory
-ms.component: develop
+ms.subservice: develop
 ms.workload: identity
 ms.tgt_pltfrm: mobile-xamarin
 ms.devlang: dotnet
@@ -17,14 +17,14 @@ ms.date: 09/24/2018
 ms.author: celested
 ms.reviewer: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 8af6846da78d12460b7866297c9802c5dab20a69
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 5b721dfd7a229220836f273be58c5ca74c4284d1
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46967519"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55097924"
 ---
-# <a name="quickstart-build-a-xamarin-app-that-integrates-microsoft-sign-in"></a>Rychlý start: Vytvoření aplikace Xamarin, která se integruje přihlašování společnosti Microsoft
+# <a name="quickstart-build-a-xamarin-app-that-integrates-microsoft-sign-in"></a>Rychlý start: Vytvořte aplikaci typu Xamarin, která se integruje přihlašování společnosti Microsoft
 
 [!INCLUDE [active-directory-develop-applies-v1-adal](../../../includes/active-directory-develop-applies-v1-adal.md)]
 
@@ -39,7 +39,7 @@ Azure AD poskytuje pro aplikace Xamarin, které potřebují přístup k chráně
 ## <a name="prerequisites"></a>Požadavky
 
 * Stáhněte si [kostru projektu v](https://github.com/AzureADQuickStarts/NativeClient-MultiTarget-DotNet/archive/skeleton.zip), nebo si stáhněte [úplnou vzorovou](https://github.com/AzureADQuickStarts/NativeClient-MultiTarget-DotNet/archive/complete.zip). Každý soubor ke stažení je řešení sady Visual Studio 2013.
-* Budete také potřebovat tenanta služby Azure AD, ve kterém chcete vytvořit uživatele a registraci aplikace. Pokud ještě nemáte tenanta, [zjistěte, jak získat](quickstart-create-new-tenant.md).
+* Budete také potřebovat tenanta služby Azure AD, ve kterém chcete vytvořit uživatele a registraci aplikace. Pokud ho ještě nemáte, [zjistěte, jak ho získat](quickstart-create-new-tenant.md).
 
 Až budete připravení, postupujte podle pokynů v další čtyři části.
 
@@ -55,11 +55,11 @@ K tomu, aby aplikace k získání tokenů, musíte nejprve zaregistrovat ve vaš
 
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 2. Na horním panelu klikněte na svůj účet. Potom v části **Directory** vyberte tenanta Active Directory, ve které chcete zaregistrovat aplikaci.
-3. Klikněte na tlačítko **všechny služby** v levém podokně a pak vyberte **Azure Active Directory**.
-4. Klikněte na tlačítko **registrace aplikací**a pak vyberte **přidat**.
+3. V levém podokně klikněte na **Všechny služby** a pak vyberte **Azure Active Directory**.
+4. Klikněte na **Registrace aplikací** a pak vyberte **Přidat**.
 5. Chcete-li vytvořit nový **nativní klientská aplikace**, postupujte podle zobrazených výzev.
   * **Název** popis aplikace pro uživatele.
-  * **Identifikátor URI pro přesměrování** je kombinace schématu a řetězec, který používá Azure AD k vracení odpovědí na tokeny. Zadejte hodnotu (například http://DirectorySearcher).
+  * **Identifikátor URI pro přesměrování** je schéma a kombinace řetězců, které Azure AD používá k vrácení odpovědí týkajících se tokenů. Zadejte hodnotu (například http://DirectorySearcher).
 6. Po dokončení registrace Azure AD přiřadí aplikace jedinečné ID. Zkopírujte hodnotu z **aplikace** kartu, protože ho budete potřebovat později.
 7. Na **nastavení** stránce **požadovaná oprávnění**a pak vyberte **přidat**.
 8. Vyberte **Microsoft Graphu** jako rozhraní API. V části **delegovaná oprávnění**, přidejte **čtení dat adresáře** oprávnění. Tato akce umožní aplikaci k dotazování rozhraní Graph API pro uživatele.
@@ -98,7 +98,7 @@ Teď, když máte aplikaci ve službě Azure AD, můžete nainstalovat knihovnu 
   * *ClientId* je ID klienta aplikace, které jste zkopírovali z portálu.
   * *ReturnUri* je identifikátor URI, který jste zadali v portálu pro přesměrování (například http://DirectorySearcher).
 
-## <a name="step-4-use-adal-to-get-tokens-from-azure-ad"></a>Krok 4: Použití ADAL k získání tokenů z Azure AD
+## <a name="step-4-use-adal-to-get-tokens-from-azure-ad"></a>Krok 4: Použití knihovny ADAL k získání tokenů z Azure AD
 
 Téměř všechny aplikace logiky ověřování spočívá v `DirectorySearcher.SearchByAlias(...)`. Vše, co je potřeba v projektech specifické pro platformu je předat kontextový parametr `DirectorySearcher` PCL.
 
@@ -192,7 +192,7 @@ Nyní máte funkční aplikaci Xamarin, která můžete ověřovat uživatele a 
 Pokud ještě již předvyplněny tenanta s uživateli, teď je čas Uděláte to tak.
 
 1. Spusťte aplikaci DirectorySearcher a pak se přihlaste pomocí jednoho z uživatelů.
-2. Hledání jiných uživatelů podle jejich hlavní název uživatele.
+2. Na základě hlavního názvu uživatele (UPN) vyhledejte další uživatele.
 
 ## <a name="next-steps"></a>Další postup
 
