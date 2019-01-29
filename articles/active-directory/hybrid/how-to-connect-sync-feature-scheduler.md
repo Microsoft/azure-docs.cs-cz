@@ -13,14 +13,14 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 07/12/2017
-ms.component: hybrid
+ms.subservice: hybrid
 ms.author: billmath
-ms.openlocfilehash: 8099194feed3761e32686ab15e8738b10ffd4e8b
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: 6fe23d0f7597f4739c8588fbb9ee3eb008e1dce5
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54462313"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55173696"
 ---
 # <a name="azure-ad-connect-sync-scheduler"></a>Synchronizace Azure AD Connect: Scheduler
 Toto téma popisuje (označovaný také jako integrované plánovače ve službě Azure AD Connect sync synchronizační stroj).

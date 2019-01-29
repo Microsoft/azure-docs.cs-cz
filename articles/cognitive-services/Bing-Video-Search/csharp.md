@@ -1,23 +1,23 @@
 ---
-title: 'Rychlý start: Rozhraní API pro vyhledávání videí Bingu, C#'
+title: 'Rychlý start: Video API Bingu pro vyhledávání,C#'
 titlesuffix: Azure Cognitive Services
 description: Umožňuje získat informace a ukázky kódu, které vám pomůžou rychle začít používat rozhraní API Bingu pro vyhledávání videí.
 services: cognitive-services
 author: aahill
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: bing-video-search
+ms.subservice: bing-video-search
 ms.topic: quickstart
 ms.date: 9/21/2017
 ms.author: aahi
-ms.openlocfilehash: aae2658f26c0e47d0030c67c4bc691d53e07dbbb
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: 59bb0f49b58c20b6a1b9d38eb596492397b16ed9
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52306977"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55157037"
 ---
-# <a name="quickstart-bing-video-search-api-with-c"></a>Rychlý start: Rozhraní API pro vyhledávání videí Bingu s C#
+# <a name="quickstart-bing-video-search-api-with-c"></a>Rychlý start: Video API Bingu pro vyhledávání sC#
 
 Tento článek vám ukazuje, jak používat rozhraní API Bingu pro vyhledávání videí, což je součást Azure Cognitive Services. V tomto článku se sice používá C#, ale rozhraní API je webová služba RESTful kompatibilní s každým programovacím jazykem, který dokáže provádět požadavky HTTP a parsovat JSON. 
 

@@ -11,13 +11,13 @@ author: CarlRabeler
 ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
-ms.date: 12/10/2018
-ms.openlocfilehash: b9c33da4f002504a55802e4253d648ff87847d92
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.date: 01/28/2019
+ms.openlocfilehash: b611eb02203c872e3497b5b7c12acddd9eab14c0
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53271823"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55188384"
 ---
 # <a name="quickstart-use-python-to-query-an-azure-sql-database"></a>Rychlý start: Použití Pythonu k dotazování databáze SQL Azure
 
@@ -29,11 +29,9 @@ Abyste mohli absolvovat tento rychlý start, ujistěte se, že máte následují
 
 [!INCLUDE [prerequisites-create-db](../../includes/sql-database-connect-query-prerequisites-create-db-includes.md)]
   
-- [Pravidlo brány firewall na úrovni serveru](sql-database-get-started-portal-firewall.md) pro veřejnou IP adresu počítače, který používáte pro tento rychlý start.
-  
 - Python a související software pro váš operační systém:
   
-  - **macOS**: Nainstalujte Homebrew a Python, nainstalujte ovladač ODBC a Nástroj SQLCMD a potom nainstalujte ovladač Python pro SQL Server. Najdete v krocích 1.2, 1.3 a 2.1 v [aplikace v Pythonu vytvořit pomocí SQL serveru v systému macOS](https://www.microsoft.com/sql-server/developer-get-started/python/mac/). Další informace najdete v tématu [nainstalujte ovladač Microsoft ODBC Driver v systému Linux a macOS](https://docs.microsoft.com/sql/connect/odbc/linux-mac/installing-the-microsoft-odbc-driver-for-sql-server).
+  - **MacOS**: Nainstalujte Homebrew a Python, nainstalujte ovladač ODBC a Nástroj SQLCMD a potom nainstalujte ovladač Python pro SQL Server. Najdete v krocích 1.2, 1.3 a 2.1 v [aplikace v Pythonu vytvořit pomocí SQL serveru v systému macOS](https://www.microsoft.com/sql-server/developer-get-started/python/mac/). Další informace najdete v tématu [nainstalujte ovladač Microsoft ODBC Driver v systému Linux a macOS](https://docs.microsoft.com/sql/connect/odbc/linux-mac/installing-the-microsoft-odbc-driver-for-sql-server).
     
   - **Ubuntu**: Nainstalujte Python a další požadované balíčky s `sudo apt-get install python python-pip gcc g++ build-essential`. Stáhněte si a nainstalujte ovladač ODBC, Nástroj SQLCMD a ovladač Python pro SQL Server. Pokyny najdete v tématu [nakonfigurujte vývojové prostředí pro vývoj v jazyce Python pyodbc](/sql/connect/python/pyodbc/step-1-configure-development-environment-for-pyodbc-python-development#linux).
     

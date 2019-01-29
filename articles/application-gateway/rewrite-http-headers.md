@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 12/20/2018
 ms.author: absha
-ms.openlocfilehash: 3e40dbb96b27df4b228c52e7a8f70d047a556c31
-ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
+ms.openlocfilehash: 2babb6ff7b93ad9cf7c93565cadce9453a3b96ca
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54198521"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55103424"
 ---
 # <a name="rewrite-http-headers-with-application-gateway-public-preview"></a>Přepsání hlavičky protokolu HTTP pomocí služby Application Gateway (public preview)
 
@@ -94,22 +94,20 @@ Tato funkce podporuje přepis adres hlavičky pro následující proměnné na s
 | -------------------------- | :----------------------------------------------------------- |
 | ciphers_supported          | Vrátí seznam šifer podporovaných klientem          |
 | ciphers_used               | Vrátí řetězec šifry použitý pro navázané připojení SSL |
-| client_latitude            | Chcete-li zjistit země, oblasti a města v závislosti na IP adresu klienta |
-| client_longitude           | Chcete-li zjistit země, oblasti a města v závislosti na IP adresu klienta |
 | client_port                | port klienta                                                  |
 | client_tcp_rtt             | informace o klientovi připojení TCP. k dispozici v systémech, které podporují možnost soketu TCP_INFO |
 | client_user                | Pokud používáte ověřování pomocí protokolu HTTP, uživatelské jméno zadané pro ověřování |
 | hostitel                       | v tomto pořadí priorit: název hostitele z řádku požadavku nebo název hostitele z pole hlavičky požadavku "Hostitel", nebo odpovídající žádost o název serveru |
 | http_method                | Metoda použitá k odeslání požadavku adresa URL. Třeba získáte POST atd. |
-| HTTP_STATUS                | Stav relace, třeba: 200, 400, 403 atd.                       |
+| http_status                | Stav relace, třeba: 200, 400, 403 atd.                       |
 | http_version               | žádost o protokol, obvykle "HTTP verze 1.0", "HTTP/1.1" nebo "HTTP/2.0" |
-| QUERY_STRING               | seznam hodnota proměnné páry čísel, které následují "?" v požadované adrese URL. |
+| query_string               | seznam hodnota proměnné páry čísel, které následují "?" v požadované adrese URL. |
 | received_bytes             | délka požadavku (včetně řádek požadavku, záhlaví a text žádosti) |
 | request_query              | argumenty v řádku požadavku                                |
 | request_scheme             | schéma požadavku, "http" nebo "https"                            |
 | request_uri                | původní identifikátor URI požadavku (s argumenty)                   |
 | sent_bytes                 | počet bajtů odeslaných do klienta                             |
-| SERVER_PORT                | port serveru, který žádost o přijetí                 |
+| server_port                | port serveru, který žádost o přijetí                 |
 | ssl_connection_protocol    | Vrátí protokol navázané připojení SSL        |
 | ssl_enabled                | "na" if připojení funguje v režimu SSL, nebo v opačném případě prázdný řetězec |
 

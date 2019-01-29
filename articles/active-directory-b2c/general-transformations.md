@@ -9,13 +9,13 @@ ms.workload: identity
 ms.topic: reference
 ms.date: 09/10/2018
 ms.author: davidmu
-ms.component: B2C
-ms.openlocfilehash: 8cae6ec9693c0fadba059e641fb75e68bbbaec92
-ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
+ms.subservice: B2C
+ms.openlocfilehash: 4e28dff6235e869c9275a8b0ba8d80252a9ea792
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54853085"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55167372"
 ---
 # <a name="general-claims-transformations"></a>Obecná deklarace identity transformace
 

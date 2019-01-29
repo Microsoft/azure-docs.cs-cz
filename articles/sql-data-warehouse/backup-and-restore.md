@@ -10,12 +10,12 @@ ms.component: manage
 ms.date: 09/06/2018
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: ca18aa5af89ec0a80d1aa8139671bf017a86e36c
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: 12764574c92c494e27290f98f274d2b76c7a4dc6
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54465169"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55183220"
 ---
 # <a name="backup-and-restore-in-azure-sql-data-warehouse"></a>Zálohování a obnovení ve službě Azure SQL Data Warehouse
 Zjistěte, jak funguje zálohování a obnovení Azure SQL Data Warehouse. Použití datového skladu snímky k obnovení nebo zkopírujte váš datový sklad k určitému bodu obnovení v primární oblasti. Použití datového skladu geograficky redundantní zálohy k obnovení do jiné geografické oblasti. 
@@ -73,7 +73,7 @@ Geografické zálohy jsou standardně povoleny. Pokud váš datový sklad je Gen
 
 
 ## <a name="backup-and-restore-costs"></a>Poplatky za zálohování a obnovení
-Můžete si všimnout, že vyúčtování služeb Azure má položku řádku pro úložiště a položky řádku pro úložiště pro zotavení po havárii. Poplatek za úložiště se celkové náklady na ukládání dat v primární oblasti spolu s přírůstkové změny zachycených snímků. Podrobnější vysvětlení na jak aktuálně pocházejí snímků, najdete to [dokumentaci](https://docs.microsoft.com/rest/api/storageservices/Understanding-How-Snapshots-Accrue-Charges?redirectedfrom=MSDN#snapshot-billing-scenarios). Geograficky redundantní poplatek zahrnují náklady na ukládání geografické zálohování.  
+Můžete si všimnout, že vyúčtování služeb Azure má položku řádku pro úložiště a položky řádku pro úložiště pro zotavení po havárii. Poplatek za úložiště se celkové náklady na ukládání dat v primární oblasti spolu s přírůstkové změny zachycených snímků. Podrobnější vysvětlení jak se účtují snímků, najdete v tématu [pochopení, jak snímky kumulovat poplatky](https://docs.microsoft.com/rest/api/storageservices/Understanding-How-Snapshots-Accrue-Charges?redirectedfrom=MSDN#snapshot-billing-scenarios). Geograficky redundantní poplatek zahrnují náklady na ukládání geografické zálohování.  
 
 Celkové náklady na primární datového skladu a sedm dní změny snímku se zaokrouhlí na nejbližší TB. Například pokud váš datový sklad velikost 1,5 TB a zachytí 100 GB snímků, vám účtovat 2 TB dat sazby Azure Storage úrovně Premium. 
 

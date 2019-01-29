@@ -13,12 +13,12 @@ ms.workload: identity
 ms.date: 01/25/2019
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 08108863d7b6348e3ab26d7040c70f29ed641ebe
-ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
+ms.openlocfilehash: fa17b2bb440f574f63349c5bb51573725aa45876
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/26/2019
-ms.locfileid: "55081649"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55191529"
 ---
 # <a name="azure-resource-manager-resource-provider-operations"></a>Operace poskytovatele prostředků Azure Resource Manageru
 
@@ -998,8 +998,8 @@ Operace poskytovatele prostředků se vždy vyvíjejí. Chcete-li získat nejnov
 > | Akce | Microsoft.ClassicNetwork/virtualNetworks/gateways/operationStatuses/read | Přečte stav operace pro brány virtuálních sítí. |
 > | Akce | Microsoft.ClassicNetwork/virtualNetworks/gateways/packages/read | Umožňuje načíst balíček bran virtuální sítě. |
 > | Akce | Microsoft.ClassicNetwork/virtualNetworks/gateways/read | Umožňuje načíst brány virtuální sítě. |
-> | Akce | Microsoft.ClassicNetwork/virtualNetworks/gateways/startDiagnostics/action | Umožňuje spustit diagnostiku pro bránu virtuální sítě. |
-> | Akce | Microsoft.ClassicNetwork/virtualNetworks/gateways/stopDiagnostics/action | Umožňuje zastavit diagnostiku pro bránu virtuální sítě. |
+> | Akce | Microsoft.ClassicNetwork/virtualNetworks/gateways/startDiagnostics/action | Spuštění diagnostiky pro bránu virtuální sítě. |
+> | Akce | Microsoft.ClassicNetwork/virtualNetworks/gateways/stopDiagnostics/action | Zastaví diagnostiku pro bránu virtuální sítě. |
 > | Akce | Microsoft.ClassicNetwork/virtualNetworks/gateways/write | Umožňuje přidat bránu virtuální sítě. |
 > | Akce | Microsoft.ClassicNetwork/virtualNetworks/join/action | Připojí se k virtuální síti. |
 > | Akce | Microsoft.ClassicNetwork/virtualNetworks/operationStatuses/read | Přečte stav operace pro virtuální sítě. |
@@ -1255,7 +1255,7 @@ Operace poskytovatele prostředků se vždy vyvíjejí. Chcete-li získat nejnov
 > | Akce | Microsoft.ContainerInstance/containerGroups/providers/Microsoft.Insights/diagnosticSettings/read | Získá nastavení diagnostiky skupiny kontejnerů. |
 > | Akce | Microsoft.ContainerInstance/containerGroups/providers/Microsoft.Insights/diagnosticSettings/write | Vytvoří nebo aktualizuje nastavení diagnostiky skupiny kontejnerů. |
 > | Akce | Microsoft.ContainerInstance/containerGroups/providers/Microsoft.Insights/metricDefinitions/read | Získá dostupné metriky pro skupinu kontejnerů. |
-> | Akce | Microsoft.ContainerInstance/containerGroups/read | Získá všechny skupiny kontejnerů. |
+> | Akce | Microsoft.ContainerInstance/containerGroups/read | Získáte všechny skupiny kontejnerů. |
 > | Akce | Microsoft.ContainerInstance/containerGroups/restart/action | Restartuje konkrétní skupinu kontejnerů. |
 > | Akce | Microsoft.ContainerInstance/containerGroups/start/action | Spustí konkrétní skupinu kontejnerů. |
 > | Akce | Microsoft.ContainerInstance/containerGroups/stop/action | Zastaví konkrétní skupinu kontejnerů. Výpočty se uvolní prostředky a fakturace se zastaví. |
@@ -1836,7 +1836,7 @@ Operace poskytovatele prostředků se vždy vyvíjejí. Chcete-li získat nejnov
 > | --- | --- | --- |
 > | Akce | Microsoft.DBforPostgreSQL/locations/performanceTiers/read | Vrátí seznam úrovní výkonu, které jsou k dispozici. |
 > | Akce | Microsoft.DBforPostgreSQL/performanceTiers/read | Vrátí seznam úrovní výkonu, které jsou k dispozici. |
-> | Akce | Microsoft.DBforPostgreSQL/servers/advisors/read | Vrátí seznam advisros |
+> | Akce | Microsoft.DBforPostgreSQL/servers/advisors/read | Vrátí seznam poradci |
 > | Akce | Microsoft.DBforPostgreSQL/servers/advisors/recommendedActions/read | Vrátí seznam doporučené akce |
 > | Akce | Microsoft.DBforPostgreSQL/servers/advisors/recommendedActionSessions/action | Doporučení |
 > | Akce | Microsoft.DBforPostgreSQL/servers/configurations/read | Vrátí seznam konfigurací pro server nebo získá vlastnosti pro zadanou konfiguraci. |
@@ -2061,7 +2061,7 @@ Operace poskytovatele prostředků se vždy vyvíjejí. Chcete-li získat nejnov
 > | Akce | Microsoft.DevTestLab/labs/vmPools/write | Přidat nebo upravit fondy virtuálních počítačů. |
 > | Akce | Microsoft.DevTestLab/labs/write | Přidání a úpravy testovacích prostředí. |
 > | Akce | Microsoft.DevTestLab/locations/operations/read | Operace čtení. |
-> | Akce | Microsoft.DevTestLab/register/action | Zaregistruje předplatné. |
+> | Akce | Microsoft.DevTestLab/register/action | Zaregistruje předplatné |
 > | Akce | Microsoft.DevTestLab/schedules/delete | Odstraňte plány. |
 > | Akce | Microsoft.DevTestLab/schedules/Execute/action | Spuštění plánu. |
 > | Akce | Microsoft.DevTestLab/schedules/read | Přečtěte si plány. |
@@ -2198,12 +2198,12 @@ Operace poskytovatele prostředků se vždy vyvíjejí. Chcete-li získat nejnov
 > | Typ akce | Operace | Popis |
 > | --- | --- | --- |
 > | Akce | Microsoft.EventHub/checkNameAvailability/action | Zkontroluje dostupnost oboru názvů v daném předplatném. |
-> | Akce | Microsoft.EventHub/checkNamespaceAvailability/action | Zkontroluje dostupnost oboru názvů v daném předplatném. Toto rozhraní API je zastaralé. použijte místo něj Checknameavailability. |
+> | Akce | Microsoft.EventHub/checkNamespaceAvailability/action | Zkontroluje dostupnost oboru názvů v daném předplatném. Toto rozhraní API je zastaralé. použijte místo něj CheckNameAvailability. |
 > | Akce | Microsoft.EventHub/clusters/providers/Microsoft.Insights/metricDefinitions/read | Získání seznamu metriky clusteru popisů prostředků |
 > | Akce | Microsoft.EventHub/clusters/read | Získá popis prostředku clusteru. |
 > | Akce | Microsoft.EventHub/clusters/write | Získá popis prostředku clusteru. |
 > | Akce | Microsoft.EventHub/locations/deleteVirtualNetworkOrSubnets/action | Odstraní pravidla zadané virtuální sítě v poskytovateli prostředků EventHub. |
-> | Akce | Microsoft.EventHub/namespaces/authorizationRules/action | Aktualizace Namespace autorizační pravidlo. Toto rozhraní API je PUT. Použijte prosím volání PUT se místo toho aktualizovat autorizační pravidlo Namespace... Tato operace není podporována v rozhraní API verze 2017-04-01. |
+> | Akce | Microsoft.EventHub/namespaces/authorizationRules/action | Aktualizace Namespace autorizační pravidlo. Toto rozhraní API je zastaralé. Použijte prosím volání PUT se místo toho aktualizovat autorizační pravidlo Namespace... Tato operace není podporována v rozhraní API verze 2017-04-01. |
 > | Akce | Microsoft.EventHub/namespaces/authorizationRules/delete | Odstraňte autorizační pravidlo Namespace. Výchozí Namespace autorizační pravidlo nelze odstranit.  |
 > | Akce | Microsoft.EventHub/namespaces/authorizationRules/listkeys/action | Získat připojovací řetězec k oboru názvů |
 > | Akce | Microsoft.EventHub/namespaces/authorizationRules/read | Získá seznam popisů autorizačních pravidel oboru názvů. |
@@ -2609,7 +2609,7 @@ Operace poskytovatele prostředků se vždy vyvíjejí. Chcete-li získat nejnov
 > | Akce | Microsoft.IoTSpaces/Graph/delete | Odstraní prostředek Microsoft.IoTSpaces grafu |
 > | Akce | Microsoft.IoTSpaces/Graph/read | Získá prostředky Microsoft.IoTSpaces grafu |
 > | Akce | Microsoft.IoTSpaces/Graph/write | Vytvořit prostředek Microsoft.IoTSpaces grafu |
-> | Akce | Microsoft.IoTSpaces/register/action | Zaregistrovat předplatné u poskytovatele prostředků grafu Microsoft.IoTSpaces umožňující creationg prostředků |
+> | Akce | Microsoft.IoTSpaces/register/action | Zaregistrovat předplatné u poskytovatele prostředků grafu Microsoft.IoTSpaces povolit vytváření prostředků |
 
 ## <a name="microsoftkeyvault"></a>Microsoft.KeyVault
 
@@ -3326,7 +3326,7 @@ Operace poskytovatele prostředků se vždy vyvíjejí. Chcete-li získat nejnov
 > | Akce | Microsoft.Network/checkTrafficManagerNameAvailability/action | Zkontroluje dostupnost názvu DNS Traffic Manageru relativní. |
 > | Akce | Microsoft.Network/connections/delete | Deletes VirtualNetworkGatewayConnection |
 > | Akce | Microsoft.Network/connections/read | Gets VirtualNetworkGatewayConnection |
-> | Akce | Microsoft.Network/connections/revoke/action | Označí jako odvolané stavem připojení Exprress trasy |
+> | Akce | Microsoft.Network/connections/revoke/action | Označí jako odvolané stav propojení Express Route |
 > | Akce | Microsoft.Network/connections/sharedkey/action | Získat VirtualNetworkGatewayConnection SharedKey |
 > | Akce | Microsoft.Network/connections/sharedKey/read | Získá VirtualNetworkGatewayConnection SharedKey |
 > | Akce | Microsoft.Network/connections/sharedKey/write | Vytvoří nebo aktualizuje existující VirtualNetworkGatewayConnection SharedKey |
@@ -3543,7 +3543,7 @@ Operace poskytovatele prostředků se vždy vyvíjejí. Chcete-li získat nejnov
 > | Akce | Microsoft.Network/operations/read | Získat dostupné operace |
 > | Akce | Microsoft.Network/p2sVpnGateways/delete | Odstraní P2SVpnGateway. |
 > | Akce | Microsoft.Network/p2sVpnGateways/generatevpnprofile/action | Vytvořit profil sítě Vpn pro P2SVpnGateway |
-> | Akce | Microsoft.Network/p2sVpnGateways/getp2svpnconnectionhealth/action | Získá připojení P2S Vpn povoluje pro P2SVpnGateway |
+> | Akce | Microsoft.Network/p2sVpnGateways/getp2svpnconnectionhealth/action | Získá stav připojení P2S Vpn pro P2SVpnGateway |
 > | Akce | Microsoft.Network/p2sVpnGateways/read | Získá P2SVpnGateway. |
 > | Akce | Microsoft.Network/p2sVpnGateways/write | Vloží P2SVpnGateway. |
 > | Akce | Microsoft.Network/privateLinkServices/delete | Odstraní prostředek služby soukromého odkazu. |
@@ -3567,14 +3567,14 @@ Operace poskytovatele prostředků se vždy vyvíjejí. Chcete-li získat nejnov
 > | Akce | Microsoft.Network/routeFilters/routeFilterRules/delete | Odstraní definici pravidla filtru trasy |
 > | Akce | Microsoft.Network/routeFilters/routeFilterRules/read | Získá definici pravidla filtru trasy |
 > | Akce | Microsoft.Network/routeFilters/routeFilterRules/write | Pravidlo filtru tras vytvoří nebo aktualizuje existující pravidlo filtru tras |
-> | Akce | Microsoft.Network/routeFilters/write | Filtr tras vytvoří nebo aktualizuje existující rotue filtr |
+> | Akce | Microsoft.Network/routeFilters/write | Filtr tras vytvoří nebo aktualizuje existující filtr tras |
 > | Akce | Microsoft.Network/routeTables/delete | Odstraní definici tabulky směrování |
 > | Akce | Microsoft.Network/routeTables/join/action | Připojí směrovací tabulky |
 > | Akce | Microsoft.Network/routeTables/read | Získá definice tabulky směrování |
 > | Akce | Microsoft.Network/routeTables/routes/delete | Odstraní definici trasy |
 > | Akce | Microsoft.Network/routeTables/routes/read | Získá definice trasy |
 > | Akce | Microsoft.Network/routeTables/routes/write | Vytvoří trasu nebo aktualizuje existující trasy |
-> | Akce | Microsoft.Network/routeTables/write | Vytvoří směrovací tabulku nebo aktualizuje existující rotue tabulky |
+> | Akce | Microsoft.Network/routeTables/write | Vytvoří směrovací tabulku nebo aktualizuje existující tabulku směrování |
 > | Akce | Microsoft.Network/securegateways/delete | Odstranit zabezpečené brány |
 > | Akce | Microsoft.Network/securegateways/read | Získat zabezpečené brány |
 > | Akce | Microsoft.Network/securegateways/write | Vytvoří nebo aktualizuje zabezpečená brána |
@@ -3583,7 +3583,7 @@ Operace poskytovatele prostředků se vždy vyvíjejí. Chcete-li získat nejnov
 > | Akce | Microsoft.Network/serviceEndpointPolicies/joinSubnet/action | Připojí podsítě na zásady koncových bodů služeb |
 > | Akce | Microsoft.Network/serviceEndpointPolicies/read | Získá popis zásad koncového bodu služby |
 > | Akce | Microsoft.Network/serviceEndpointPolicies/serviceEndpointPolicyDefinitions/delete | Odstraní definice zásad koncového bodu služby |
-> | Akce | Microsoft.Network/serviceEndpointPolicies/serviceEndpointPolicyDefinitions/read | Získá %{decription/ definice zásad koncového bodu služby |
+> | Akce | Microsoft.Network/serviceEndpointPolicies/serviceEndpointPolicyDefinitions/read | Získá popis definice zásad koncového bodu služby |
 > | Akce | Microsoft.Network/serviceEndpointPolicies/serviceEndpointPolicyDefinitions/write | Definice zásad koncového bodu služby vytvoří nebo aktualizuje existující definice zásad koncového bodu služby |
 > | Akce | Microsoft.Network/serviceEndpointPolicies/write | Zásady koncového bodu služby vytvoří nebo aktualizuje existující zásady koncového bodu služby |
 > | Akce | Microsoft.Network/trafficManagerGeographicHierarchies/read | Získá hierarchii Geographic Traffic Manageru obsahující oblasti, ve kterých je možné s geografickou metodu směrování provozu |
@@ -3626,7 +3626,7 @@ Operace poskytovatele prostředků se vždy vyvíjejí. Chcete-li získat nejnov
 > | Akce | microsoft.network/virtualnetworkgateways/setvpnclientipsecparameters/action | Nastavte parametry pro klienta VirtualNetworkGateway P2S Vpnclient Ipsec. |
 > | Akce | Microsoft.Network/virtualnetworkgateways/supportedvpndevices/action | Seznam podporovaných zařízení Vpn |
 > | Akce | Microsoft.Network/virtualNetworkGateways/write | Vytvoří nebo aktualizuje VirtualNetworkGateway |
-> | Akce | Microsoft.Network/virtualNetworks/BastionHosts/action | Získá refrences Bastion Host ve virtuální síti. |
+> | Akce | Microsoft.Network/virtualNetworks/BastionHosts/action | Získá odkazy Bastion Host ve virtuální síti. |
 > | Akce | Microsoft.Network/virtualNetworks/checkIpAddressAvailability/read | Zkontrolujte, jestli je Ip adresa k dispozici v zadané virtuální sítě |
 > | Akce | Microsoft.Network/virtualNetworks/delete | Odstraní virtuální síť |
 > | Akce | Microsoft.Network/virtualNetworks/peer/action | Partnerský vztah virtuální sítě s jinou virtuální sítí |
@@ -3700,8 +3700,8 @@ Operace poskytovatele prostředků se vždy vyvíjejí. Chcete-li získat nejnov
 > | Akce | Microsoft.NotificationHubs/Namespaces/write | Vytvoření prostředku Namespace a aktualizovat jeho vlastnosti. Značky a kapacita Namespace jsou vlastnosti, které je možné aktualizovat. |
 > | Akce | Microsoft.NotificationHubs/operationResults/read | Vrátí výsledky operace pro poskytovatele služby Notification Hubs. |
 > | Akce | Microsoft.NotificationHubs/operations/read | Vrátí seznam podporovaných operací pro poskytovatele služby Notification Hubs. |
-> | Akce | Microsoft.NotificationHubs/register/action | Zaregistruje předplatné u poskytovatele prostředků NotificationHubs a povolí vytváření oborů názvů a NotificationHubs. |
-> | Akce | Microsoft.NotificationHubs/unregister/action | Zruší registraci předplatného u poskytovatele prostředků NotificationHubs a povolí vytváření oborů názvů a služby NotificationHubs. |
+> | Akce | Microsoft.NotificationHubs/register/action | Zaregistruje předplatné u poskytovatele prostředků NotificationHubs a povolí vytváření oborů názvů a NotificationHubs |
+> | Akce | Microsoft.NotificationHubs/unregister/action | Zruší registraci předplatného u poskytovatele prostředků NotificationHubs a povolí vytváření oborů názvů a NotificationHubs |
 
 ## <a name="microsoftoffazure"></a>Microsoft.OffAzure
 
@@ -4233,8 +4233,8 @@ Operace poskytovatele prostředků se vždy vyvíjejí. Chcete-li získat nejnov
 > | Typ akce | Operace | Popis |
 > | --- | --- | --- |
 > | Akce | Microsoft.Relay/checkNameAvailability/action | Zkontroluje dostupnost oboru názvů v daném předplatném. |
-> | Akce | Microsoft.Relay/checkNamespaceAvailability/action | Zkontroluje dostupnost oboru názvů v daném předplatném. Toto rozhraní API je zastaralé. použijte místo něj Checknameavailability. |
-> | Akce | Microsoft.Relay/namespaces/authorizationRules/action | Aktualizace Namespace autorizační pravidlo. Toto rozhraní API je PUT. Použijte prosím volání PUT se místo toho aktualizovat autorizační pravidlo Namespace... Tato operace není podporována v rozhraní API verze 2017-04-01. |
+> | Akce | Microsoft.Relay/checkNamespaceAvailability/action | Zkontroluje dostupnost oboru názvů v daném předplatném. Toto rozhraní API je zastaralé. použijte místo něj CheckNameAvailability. |
+> | Akce | Microsoft.Relay/namespaces/authorizationRules/action | Aktualizace Namespace autorizační pravidlo. Toto rozhraní API je zastaralé. Použijte prosím volání PUT se místo toho aktualizovat autorizační pravidlo Namespace... Tato operace není podporována v rozhraní API verze 2017-04-01. |
 > | Akce | Microsoft.Relay/namespaces/authorizationRules/delete | Odstraňte autorizační pravidlo Namespace. Výchozí Namespace autorizační pravidlo nelze odstranit.  |
 > | Akce | Microsoft.Relay/namespaces/authorizationRules/listkeys/action | Získat připojovací řetězec k oboru názvů |
 > | Akce | Microsoft.Relay/namespaces/authorizationRules/read | Získá seznam popisů autorizačních pravidel oboru názvů. |
@@ -4444,9 +4444,9 @@ Operace poskytovatele prostředků se vždy vyvíjejí. Chcete-li získat nejnov
 > | Typ akce | Operace | Popis |
 > | --- | --- | --- |
 > | Akce | Microsoft.ServiceBus/checkNameAvailability/action | Zkontroluje dostupnost oboru názvů v daném předplatném. |
-> | Akce | Microsoft.ServiceBus/checkNamespaceAvailability/action | Zkontroluje dostupnost oboru názvů v daném předplatném. Toto rozhraní API je zastaralé. použijte místo něj Checknameavailability. |
+> | Akce | Microsoft.ServiceBus/checkNamespaceAvailability/action | Zkontroluje dostupnost oboru názvů v daném předplatném. Toto rozhraní API je zastaralé. použijte místo něj CheckNameAvailability. |
 > | Akce | Microsoft.ServiceBus/locations/deleteVirtualNetworkOrSubnets/action | Odstraní pravidla zadané virtuální sítě v poskytovateli prostředků ServiceBus. |
-> | Akce | Microsoft.ServiceBus/namespaces/authorizationRules/action | Aktualizace Namespace autorizační pravidlo. Toto rozhraní API je PUT. Použijte prosím volání PUT se místo toho aktualizovat autorizační pravidlo Namespace... Tato operace není podporována v rozhraní API verze 2017-04-01. |
+> | Akce | Microsoft.ServiceBus/namespaces/authorizationRules/action | Aktualizace Namespace autorizační pravidlo. Toto rozhraní API je zastaralé. Použijte prosím volání PUT se místo toho aktualizovat autorizační pravidlo Namespace... Tato operace není podporována v rozhraní API verze 2017-04-01. |
 > | Akce | Microsoft.ServiceBus/namespaces/authorizationRules/delete | Odstraňte autorizační pravidlo Namespace. Výchozí Namespace autorizační pravidlo nelze odstranit.  |
 > | Akce | Microsoft.ServiceBus/namespaces/authorizationRules/listkeys/action | Získat připojovací řetězec k oboru názvů |
 > | Akce | Microsoft.ServiceBus/namespaces/authorizationRules/read | Získá seznam popisů autorizačních pravidel oboru názvů. |
@@ -4883,7 +4883,7 @@ Operace poskytovatele prostředků se vždy vyvíjejí. Chcete-li získat nejnov
 > | Akce | Microsoft.Sql/servers/providers/Microsoft.Insights/metricDefinitions/read | Návratové typy metriky, které jsou k dispozici pro servery |
 > | Akce | Microsoft.Sql/servers/read | Vrátí seznam serverů nebo získá vlastnosti pro zadaný server. |
 > | Akce | Microsoft.Sql/servers/recommendedElasticPools/databases/read | Načíst metriky pro doporučené elastických databázových fondů pro daný server |
-> | Akce | Microsoft.Sql/servers/recommendedElasticPools/read | Načíst doporučení pro fondy elastických databází a snížení nákladů na zlepšení výkonu na základě využití prostředků historica |
+> | Akce | Microsoft.Sql/servers/recommendedElasticPools/read | Načíst doporučení pro fondy elastických databází a snížení nákladů na zlepšení výkonu na základě historických prostředků využití |
 > | Akce | Microsoft.Sql/servers/recoverableDatabases/read | Tato operace slouží k obnovení databáze k poslední známé dobré bodu zálohy pro zotavení po havárii živé databáze. Vrátí informace o poslední dobré zálohy, ale doesn\u0027t skutečně obnovení databáze. |
 > | Akce | Microsoft.Sql/servers/replicationLinks/read | Vrátí seznam replikace odkazy nebo načte vlastnosti zadaného replikačních připojení. |
 > | Akce | Microsoft.Sql/servers/restorableDroppedDatabases/read | Získáte seznam databází, které byly zahozeny na daném serveru, které jsou stále v rámci zásady uchovávání informací. |
@@ -4892,7 +4892,7 @@ Operace poskytovatele prostředků se vždy vyvíjejí. Chcete-li získat nejnov
 > | Akce | Microsoft.Sql/servers/securityAlertPolicies/write | Změna serveru zásadu detekce hrozeb pro daný server |
 > | Akce | Microsoft.Sql/servers/serviceObjectives/read | Načíst seznam cílů na úrovni služby (označované také jako úrovní výkonu) k dispozici na daném serveru |
 > | Akce | Microsoft.Sql/servers/syncAgents/delete | Odstraní existující agenta synchronizace. |
-> | Akce | Microsoft.Sql/servers/syncAgents/generateKey/action | Generovat klíč registrace agenta synchronizace |
+> | Akce | Microsoft.Sql/servers/syncAgents/generateKey/action | Vygenerujte registrační klíč agenta synchronizace |
 > | Akce | Microsoft.Sql/servers/syncAgents/linkedDatabases/read | Vrátí seznam agenta připojeného databáze synchronizace |
 > | Akce | Microsoft.Sql/servers/syncAgents/read | Vrátí seznam agenti synchronizace nebo získá vlastnosti pro agenta zadaného synchronizace. |
 > | Akce | Microsoft.Sql/servers/syncAgents/write | Vytvoří agenta synchronizace se zadanými parametry nebo aktualizace pro agenta synchronizace zadané vlastnosti. |

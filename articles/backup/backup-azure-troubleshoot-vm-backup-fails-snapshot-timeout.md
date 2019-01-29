@@ -9,12 +9,12 @@ ms.service: backup
 ms.topic: troubleshooting
 ms.date: 12/03/2018
 ms.author: genli
-ms.openlocfilehash: 7446c680ffdba28fef7eb68441d04a4c18398847
-ms.sourcegitcommit: 97d0dfb25ac23d07179b804719a454f25d1f0d46
+ms.openlocfilehash: e96c637e3c01ccfc27afa967d830c7d0254d11e7
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/25/2019
-ms.locfileid: "54912545"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55104231"
 ---
 # <a name="troubleshoot-azure-backup-failure-issues-with-the-agent-or-extension"></a>Řešení potíží s Azure Backup selhání: Potíže s agentů nebo rozšíření
 
@@ -105,7 +105,7 @@ Po registraci a naplánovat virtuálního počítače pro služby Azure Backup z
 **Kód chyby:**: UserErrorUnsupportedDiskSize <br>
 **Chybová zpráva**: Azure Backup momentálně nepodporuje disky větší než 1023 GB <br>
 
-Vaše operace zálohování může selhat při zálohování virtuálního počítače s velikostí disku větší než 1023GB, protože trezoru není upgradována rychlé obnovení. Upgrade na rychlé obnovení bude poskytovat podporu až na 4TB, najdete v tomto [článku](backup-instant-restore-capability.md#upgrading-to-instant-restore).  
+Vaše operace zálohování může selhat při zálohování virtuálního počítače s velikostí disku větší než 1023GB, protože trezoru není upgradována rychlé obnovení. Upgrade na rychlé obnovení bude poskytovat podporu až na 4TB, najdete v tomto [článku](backup-instant-restore-capability.md#upgrading-to-instant-restore). Po upgradu, bude trvat až dvě hodiny pro předplatné, které chcete použít tuto funkci. Poskytují dostatek vyrovnávací paměti, než zkusíte operaci zopakovat.  
 
 ## <a name="usererrorstandardssdnotsupported---currently-azure-backup-does-not-support-standard-ssd-disks"></a>UserErrorStandardSSDNotSupported – aktuálně Azure Backup nepodporuje disky SSD na úrovni Standard
 

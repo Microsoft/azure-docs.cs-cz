@@ -1,5 +1,5 @@
 ---
-title: 'Rychlý start: Dotaz na entitu v Project Answer Search'
+title: 'Rychlý start: Projekt dotazu Entity hledání odpovědí'
 titlesuffix: Azure Cognitive Services
 description: Dotazy na entity pomocí Project Answer Search
 services: cognitive-services
@@ -10,12 +10,12 @@ ms.component: answer-search
 ms.topic: quickstart
 ms.date: 04/16/2018
 ms.author: rosh
-ms.openlocfilehash: 09af064a1c072996171e6afa4f043e84f18612b4
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
-ms.translationtype: HT
+ms.openlocfilehash: 2a386e0455d511ba25208904c30429dd050eb94f
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49467408"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55094542"
 ---
 # <a name="quickstart-query-for-entities"></a>Rychlý start: Dotazy na entity
 
@@ -33,7 +33,7 @@ K určení scénáře dotazu použijte pole `queryScenario` objektu `entities`. 
 -   Attraction 
  
 Pokud chcete určit typ entity, kterou odpověď obsahuje, použijte pole `entityTypeHints`, jak je znázorněno v dotazu na Bill Gates.
-````
+```
         },
         "description": "Bill Gates is an American business man and philanthropist, co-founder of Microsoft",
         "entityPresentationInfo": {
@@ -44,13 +44,13 @@ Pokud chcete určit typ entity, kterou odpověď obsahuje, použijte pole `entit
         },
         "bingId": "6d7d66a7-2cb8-0ae9-637c-f81fd749dc9a"
       }
-````
+```
 Dotaz na Space Needle je následující:
-````
+```
 https://api.labs.cognitive.microsoft.com/answerSearch/v7.0/search?q=space+needle&mkt=en-us
-````
+```
 Odezva obsahuje odpověď `entities`. Všimněte si polí `entityScenario` a `entityTypeHints`. 
-````
+```
   "entities": {
     "value": [
       {
@@ -108,19 +108,19 @@ Odezva obsahuje odpověď `entities`. Všimněte si polí `entityScenario` a `en
       }
     ]
   },
-````
+```
 
 Dotaz může vrátit seznam, pokud je to relevantní.
 
-**Dotaz:** Následující dotaz vyhledá seznam ohrožených druhů:
+**Dotaz:** Následující dotaz vyhledá seznam ohrožených druhy:
 
-````
+```
 https://api.labs.cognitive.microsoft.com/answerSearch/v7.0/search?q=list+of+endangered+species
 
-````
+```
 
-**Odpověď:** Odpověď obsahuje seznam formátovaný k zobrazení jako tabulkové hodnoty:
-````
+**Odpověď:** Odpověď obsahuje seznam formátovat k zobrazení jako tabulkových hodnot:
+```
   "facts": {
     "id": "https://www.bingapis.com/api/v7/#Facts",
     "contractualRules": [
@@ -217,10 +217,10 @@ https://api.labs.cognitive.microsoft.com/answerSearch/v7.0/search?q=list+of+enda
     ]
   },
 
-````
+```
 
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 - [Rychlý start pro jazyk C#](c-sharp-quickstart.md)
 - [Rychlý start pro Javu](java-quickstart.md)
 - [Rychlý start pro Node](node-quickstart.md)

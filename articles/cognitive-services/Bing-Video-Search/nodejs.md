@@ -1,23 +1,23 @@
 ---
-title: 'Rychlý start: Rozhraní API Bingu pro vyhledávání videí, Node.js'
+title: 'Rychlý start: Vyhledávání videí Bingu rozhraní API Node.js'
 titlesuffix: Azure Cognitive Services
-description: Zde najdete informace a ukázky kódu, které vám pomůžou rychle začít používat rozhraní API Bingu pro vyhledávání videí.
+description: Umožňuje získat informace a ukázky kódu, které vám pomůžou rychle začít používat rozhraní API Bingu pro vyhledávání videí.
 services: cognitive-services
 author: aahill
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: bing-video-search
+ms.subservice: bing-video-search
 ms.topic: quickstart
 ms.date: 9/21/2017
 ms.author: aahi
-ms.openlocfilehash: 7433ef82fbc7b7d0041195d329ec92260c50f1e2
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: e801d8a347d1ba946b8b75093dd149582cefcb7f
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52314827"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55184015"
 ---
-# <a name="quickstart-bing-video-search-api-with-nodejs"></a>Rychlý start: Rozhraní API Bingu pro vyhledávání videí s Node.js
+# <a name="quickstart-bing-video-search-api-with-nodejs"></a>Rychlý start: Vyhledávání videí Bingu API s využitím Node.js
 
 Tento článek vám ukazuje, jak používat rozhraní API Bingu pro vyhledávání videí, což je součást Microsoft Cognitive Services v Azure. V tomto článku se sice používá Node.js, ale rozhraní API je webová služba RESTful kompatibilní s každým programovacím jazykem, který dokáže provádět požadavky HTTP a parsovat JSON. 
 

@@ -7,19 +7,19 @@ author: jeevansd
 manager: daveba
 ms.assetid: f7f54202-1581-4e55-a97e-02633ff9382d
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 04/21/2017
 ms.author: jeedes
-ms.openlocfilehash: 5737bd76e7809035f21103f45a20fa8306061f30
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: 6b8634e633cb643463c8c1768df2961bb646d343
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54823296"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55179051"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-asc-contracts"></a>Kurz: Integrace Azure Active Directory s kontrakty ASC
 

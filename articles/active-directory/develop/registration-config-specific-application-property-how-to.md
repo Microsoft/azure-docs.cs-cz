@@ -7,19 +7,19 @@ author: CelesteDG
 manager: mtillman
 ms.assetid: ''
 ms.service: active-directory
-ms.component: app-mgmt
+ms.subservice: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/11/2018
 ms.author: celested
-ms.openlocfilehash: 83694f121fb17f90aa89fb9ba99e8514cadd5b09
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: 90b7638acf6df721a16bdcca6ceebb6f9d65ca2c
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44723964"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55096819"
 ---
 # <a name="how-to-fill-out-specific-fields-for-a-custom-developed-application"></a>Jak vyplnit konkrétní pole pro vlastní vyvinuté aplikaci
 
@@ -41,8 +41,8 @@ Tento článek obsahuje stručný popis všechna dostupná pole ve formuláři p
 | Pole            | Popis                                                                              |
 |------------------|------------------------------------------------------------------------------------------|
 | Název             | Název aplikace. Musí mít minimálně 4 znaky.                |
-| Typ aplikace | **Webovou aplikaci/webové rozhraní API**: aplikace, která představuje webovou aplikaci, webové rozhraní API nebo obojí 
-| |**Nativní**: aplikace, která se dá nainstalovat na počítač nebo zařízení uživatele           |
+| Typ aplikace | **Webovou aplikaci/webové rozhraní API**: Aplikace, která představuje webovou aplikaci, webové rozhraní API nebo obojí 
+| |**Nativní**: Aplikace, která se dá nainstalovat na počítač nebo zařízení uživatele           |
 | Přihlašovací adresa URL      | Adresa URL, kde se uživatel může přihlásit k používání aplikace                                  |
 
 Po vyplnění polí výše, aplikace je zaregistrovaný na webu Azure Portal a budete přesměrováni na stránku aplikace. **Nastavení** stisknutí tlačítka na panelu aplikace otevře se stránka nastavení, která má více polí můžete přizpůsobit aplikaci. Následující tabulka popisuje všechna pole na stránce nastavení. Všimněte si, že zobrazí pouze podmnožinu těchto polí, v závislosti na tom, jestli jste vytvořili webovou aplikaci nebo nativní aplikaci.

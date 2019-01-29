@@ -7,7 +7,7 @@ author: CelesteDG
 manager: mtillman
 editor: ''
 ms.service: active-directory
-ms.component: develop
+ms.subservice: develop
 ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
@@ -16,14 +16,14 @@ ms.date: 10/25/2018
 ms.author: celested
 ms.custom: aaddev
 ms.reviewer: lenalepa, sureshja
-ms.openlocfilehash: 589ad189a3a157d0116e3991f8df3d6b43afc167
-ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
-ms.translationtype: HT
+ms.openlocfilehash: 3f38162fd4d95127ddf7797638bc9af21e6aaf20
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49988672"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55095690"
 ---
-# <a name="quickstart-configure-an-application-to-expose-web-apis-preview"></a>Rychlý start: Konfigurace aplikace pro zveřejnění webových rozhraní API (Preview)
+# <a name="quickstart-configure-an-application-to-expose-web-apis-preview"></a>Rychlý start: Konfigurace aplikace k vystavení webové rozhraní API (Preview)
 
 Můžete vyvinout webové rozhraní API a zpřístupnit ho klientským aplikacím zveřejněním [oprávnění nebo oborů](developer-glossary.md#scopes) a [rolí](developer-glossary.md#roles). Správně nakonfigurované webové rozhraní API bude k dispozici stejně jako ostatní webová rozhraní API Microsoftu, včetně rozhraní Graph API a rozhraní API pro Office 365.
 
@@ -128,7 +128,7 @@ Manifest aplikace slouží jako mechanismus pro aktualizaci aplikační entity, 
 
 Další informace o obecných konceptech manifestu aplikace najdete v tématu [Vysvětlení manifestu aplikace Azure Active Directory](reference-app-manifest.md).
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Další informace najdete v těchto rychlých startech souvisejících se správou aplikací:
 

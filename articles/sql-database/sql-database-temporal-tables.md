@@ -12,12 +12,12 @@ ms.author: bonova
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 03/21/2018
-ms.openlocfilehash: d18630f9b4cea28bd19b2ac24e7b8c3d1822e17c
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.openlocfilehash: ce489bae3a59da47ad6f3677ef493618d01fd6b6
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47166414"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55196646"
 ---
 # <a name="getting-started-with-temporal-tables-in-azure-sql-database"></a>Začínáme s dočasnými tabulkami ve službě Azure SQL Database
 Dočasné tabulky jsou novou funkcí programovatelnosti služby Azure SQL Database, která umožňuje sledovat a analyzovat kompletní historii změn ve vašich datech, bez nutnosti psaní vlastního kódu. Dočasných tabulek se zachovat data úzce souvisí s místní čas tak, aby uložené údaje se dá interpretovat jako platný pouze v rámci konkrétní období. Tato vlastnost dočasných tabulek se umožňuje efektivní analýzy založené na čase a získávání informací z dat vývoj.
@@ -31,7 +31,7 @@ Model databáze pro tento scénář je velmi jednoduché – s polem celá čís
 
 Naštěstí není potřeba umístit žádné úsilí ve vaší aplikaci k Udržovat informace o této aktivitě. S dočasnými tabulkami je tento proces automatizovat - poskytuje úplnou flexibilitu při návrhu webu a získejte víc času a zaměřte se na analýzu dat, samotného. Jediné, co musíte udělat, je zajistit, aby **WebSiteInfo** tabulka je nakonfigurována jako [dočasné-systémovou](https://msdn.microsoft.com/library/dn935015.aspx#Anchor_0). Přesný postup využívat dočasných tabulek se v tomto scénáři jsou popsané níže.
 
-## <a name="step-1-configure-tables-as-temporal"></a>Krok 1: Konfigurace jako dočasné tabulky
+## <a name="step-1-configure-tables-as-temporal"></a>Krok 1: Nakonfigurovat jako dočasné tabulky
 V závislosti na tom, jestli jsou počáteční vývoj nových projektů nebo upgrade stávající aplikace bude vytvoření dočasné tabulky nebo upravte stávající tak, že přidáte dočasný atributy. Obecně případu, váš scénář mohou být kombinaci těchto dvou možností. Provést tyto akce pomocí [SQL Server Management Studio](https://msdn.microsoft.com/library/mt238290.aspx) (SSMS), [SQL Server Data Tools](https://msdn.microsoft.com/library/mt204009.aspx) (SSDT) nebo jakýkoli jiný nástroj pro vývoj příkazů jazyka Transact-SQL.
 
 > [!IMPORTANT]
@@ -50,7 +50,7 @@ V sadě SSDT zvolte šablonu "Dočasnou tabulku (systém správy verzí)" při p
 
 Můžete také vytvořit dočasnou tabulku zadáním příkazů jazyka Transact-SQL přímo, jak je znázorněno v následujícím příkladu. Mějte na paměti, že jsou povinné prvky každý dočasné tabulky definice období a tabulku v klauzuli SYSTEM_VERSIONING s odkazem na jiného uživatele, který uloží verze historických řádků:
 
-````
+```
 CREATE TABLE WebsiteUserInfo 
 (  
     [UserID] int NOT NULL PRIMARY KEY CLUSTERED 
@@ -61,7 +61,7 @@ CREATE TABLE WebsiteUserInfo
   , PERIOD FOR SYSTEM_TIME (ValidFrom, ValidTo)
  )  
  WITH (SYSTEM_VERSIONING = ON (HISTORY_TABLE = dbo.WebsiteUserInfoHistory));
-````
+```
 
 Při vytváření dočasné tabulce se systémovou správou související tabulky historie s výchozí konfigurací je automaticky vytvořen. Tabulky historie výchozí obsahuje clusterovaného indexu B-stromu na sloupce období (konec, start) se stránka komprese zapnuta. Tato konfigurace je ideální pro většinu scénářů, ve kterých se používají dočasných tabulek, zejména u [auditování dat](https://msdn.microsoft.com/library/mt631669.aspx#Anchor_0). 
 
@@ -73,11 +73,11 @@ V tomto konkrétním případě usilujeme o k analýze trendů na základě čas
 
 Tento skript je ukázkou, jak lze změnit výchozí index pro tabulku historie je clusterovaný index columnstore:
 
-````
+```
 CREATE CLUSTERED COLUMNSTORE INDEX IX_WebsiteUserInfoHistory
 ON dbo.WebsiteUserInfoHistory
 WITH (DROP_EXISTING = ON); 
-````
+```
 
 Dočasné tabulky jsou reprezentovány v Průzkumníku objektů s konkrétní ikony pro snazší identifikaci během své historie tabulky se zobrazí jako podřízený uzel.
 
@@ -86,7 +86,7 @@ Dočasné tabulky jsou reprezentovány v Průzkumníku objektů s konkrétní ik
 ### <a name="alter-existing-table-to-temporal"></a>Změnit existující tabulku na dočasnou
 Pojďme zahrnují alternativní scénář, ve kterém WebsiteUserInfo tabulce již existuje, ale nebyl navržen, aby uchovávala historie změn. V takovém případě můžete jednoduše rozšířit existující tabulky k dočasné, jak je znázorněno v následujícím příkladu:
 
-````
+```
 ALTER TABLE WebsiteUserInfo 
 ADD 
     ValidFrom datetime2 (0) GENERATED ALWAYS AS ROW START HIDDEN  
@@ -102,17 +102,17 @@ GO
 CREATE CLUSTERED COLUMNSTORE INDEX IX_WebsiteUserInfoHistory
 ON dbo.WebsiteUserInfoHistory
 WITH (DROP_EXISTING = ON); 
-````
+```
 
-## <a name="step-2-run-your-workload-regularly"></a>Krok 2: Spuštění úlohy pravidelně
+## <a name="step-2-run-your-workload-regularly"></a>Krok 2: Pravidelně spouštět vaše úlohy
 Hlavní výhodou dočasných tabulek je, že není nutné změnit nebo upravit svůj web v žádný způsob, jak provádět sledování změn. Po vytvoření dočasných tabulek se transparentně zachovat předchozí verze řádků pokaždé, když provedete změny na vašich datech. 
 
 Aby bylo možné plně využívat automatické sledování změn pro tento konkrétní scénář, teď právě aktualizovat sloupec **PagesVisited** pokaždé, když se po ukončení jeho/její relace na webu pro uživatele:
 
-````
+```
 UPDATE WebsiteUserInfo  SET [PagesVisited] = 5 
 WHERE [UserID] = 1;
-````
+```
 
 Je důležité si všimněte, že dotaz pro aktualizaci nepotřebuje vědět přesný čas, kdy aktuální operace došlo k chybě, ani způsob, jakým se zachovají historická data pro pozdější analýzu. Oba tyto aspekty jsou automaticky zpracovány služba Azure SQL Database. Následující diagram znázorňuje, jak data historie je generována při každé aktualizaci.
 
@@ -123,17 +123,17 @@ Teď když je povolené dočasné systému – Správa verzí, analýza historic
 
 Pokud chcete zobrazit 10 nejčastějších uživatelů seřazených podle čísla navštívených webových stránek v době hodinou, spusťte tento dotaz:
 
-````
+```
 DECLARE @hourAgo datetime2 = DATEADD(HOUR, -1, SYSUTCDATETIME());
 SELECT TOP 10 * FROM dbo.WebsiteUserInfo FOR SYSTEM_TIME AS OF @hourAgo
 ORDER BY PagesVisited DESC
-````
+```
 
 Můžete snadno upravit tento dotaz k analýze návštěvy webu od předchozí, den před měsícem, nebo v libovolném okamžiku v minulosti si přejete.
 
 K provádění statistických analýz základní za předchozí den, použijte následující příklad:
 
-````
+```
 DECLARE @twoDaysAgo datetime2 = DATEADD(DAY, -2, SYSUTCDATETIME());
 DECLARE @aDayAgo datetime2 = DATEADD(DAY, -1, SYSUTCDATETIME());
 
@@ -143,17 +143,17 @@ STDEV (PagesVisited) as StDevViistedPages
 FROM dbo.WebsiteUserInfo 
 FOR SYSTEM_TIME BETWEEN @twoDaysAgo AND @aDayAgo
 GROUP BY UserId
-````
+```
 
 K vyhledání konkrétního uživatele, aktivity v určitou dobu, použijte klauzuli obsažené:
 
-````
+```
 DECLARE @hourAgo datetime2 = DATEADD(HOUR, -1, SYSUTCDATETIME());
 DECLARE @twoHoursAgo datetime2 = DATEADD(HOUR, -2, SYSUTCDATETIME());
 SELECT * FROM dbo.WebsiteUserInfo 
 FOR SYSTEM_TIME CONTAINED IN (@twoHoursAgo, @hourAgo)
 WHERE [UserID] = 1;
-````
+```
 
 Grafická vizualizace je zvlášť vhodné pro dočasných dotazů, jak můžete zobrazit trendy a vzorce používání v intuitivního způsobem velmi snadno:
 
@@ -162,27 +162,27 @@ Grafická vizualizace je zvlášť vhodné pro dočasných dotazů, jak můžete
 ## <a name="evolving-table-schema"></a>Vyvíjejí schématu tabulky
 Obvykle je potřeba změnit dočasná tabulka schématu, zatímco provádíte vývoj aplikací. K tomu stačí spustit regulární příkaz ALTER TABLE příkazy a Azure SQL Database bude odpovídajícím způsobem šířící změny do tabulky historie. Tento skript je ukázkou, jak můžete přidat další atribut pro sledování:
 
-````
+```
 /*Add new column for tracking source IP address*/
 ALTER TABLE dbo.WebsiteUserInfo 
 ADD  [IPAddress] varchar(128) NOT NULL CONSTRAINT DF_Address DEFAULT 'N/A';
-````
+```
 
 Podobně můžete změnit definici sloupce je aktivní úlohy:
 
-````
+```
 /*Increase the length of name column*/
 ALTER TABLE dbo.WebsiteUserInfo 
     ALTER COLUMN  UserName nvarchar(256) NOT NULL;
-````
+```
 
 Nakonec můžete odebrat sloupec, který už nepotřebujete.
 
-````
+```
 /*Drop unnecessary column */
 ALTER TABLE dbo.WebsiteUserInfo 
     DROP COLUMN TemporaryColumn; 
-````
+```
 
 Můžete také použít nejnovější [SSDT](https://msdn.microsoft.com/library/mt204009.aspx) změnit dočasná tabulka schématu jsou připojeny k databázi (online režim) nebo jako součást projektu databáze (offline režim).
 

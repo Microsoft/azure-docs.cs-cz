@@ -6,25 +6,25 @@ author: PatAltimore
 manager: femila
 ms.service: azure-stack
 ms.topic: article
-ms.date: 10/23/2018
+ms.date: 01/28/2019
 ms.author: patricka
 ms.reviewer: fiseraci
 keywords: ''
-ms.openlocfilehash: d81478e6bdaf4a1844d01278b961350c81b2edd6
-ms.sourcegitcommit: 5de9de61a6ba33236caabb7d61bee69d57799142
+ms.openlocfilehash: 5826ab8ac50a5d27f5a74cff4bebba4b2809d5f0
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50087725"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55096615"
 ---
 # <a name="azure-stack-datacenter-integration---syslog-forwarding"></a>Integrace datových center Azure Stack – předávání syslog
 
-Tento článek ukazuje, jak infrastruktura Azure stacku integrovat řešení externí zabezpečení už nasazená ve vašem datovém centru pomocí syslog. Například systém správu informace událostí zabezpečení (SIEM). Kanál syslog zpřístupňuje audity, výstrahy a protokolů zabezpečení ze všech komponent infrastruktury Azure stacku. Použití syslog předávání k integraci s řešeními monitorování zabezpečení a/nebo k načtení všech audity, výstrahy a zabezpečení zaznamená do úložiště pro uchovávání informací. 
+Tento článek ukazuje, jak infrastruktura Azure stacku integrovat řešení externí zabezpečení už nasazená ve vašem datovém centru pomocí syslog. Například systém správu informace událostí zabezpečení (SIEM). Kanál syslog zpřístupňuje audity, výstrahy a protokolů zabezpečení ze všech komponent infrastruktury Azure stacku. Použití syslog předávání k integraci s řešeními monitorování zabezpečení a/nebo k načtení všech audity, výstrahy a zabezpečení zaznamená do úložiště pro uchovávání informací.
 
 Počínaje aktualizací 1809, má Azure Stack integrované syslog klienta, který po nakonfigurování se generuje zprávy syslog s datovou částí v události formát cef (Common Format).
 
-Následující diagram popisuje integrace služby Azure Stack s externí SIEM. Existují dva způsoby integrace, které je potřeba považovat za: první jednou (jeden modře) je infrastruktura Azure stacku, která zahrnuje virtuální počítače infrastruktury a uzly Hyper-V. Všechny audity, protokolů zabezpečení a výstrahy z těchto komponent jsou centrálně shromažďovat a vystavené prostřednictvím syslogu s datovou částí CEF. Tento model integrace je popsaný na této stránce dokumentu.
-Druhý vzor integrace je použité v ukázkách oranžově a zahrnuje řadiče pro správu základní desky (BMC), životního cyklu hostitelů hardwaru (HLH), virtuální počítače a/nebo virtuálních zařízení, na kterých běží hardwarových partnerů, monitorování a správu software a horní části přepínače (TOR rack). Protože tyto součásti jsou hardwarových partnerů konkrétní, kontaktujte prosím svého partnera hardwaru pro dokumentaci o tom, jak integrovat se službou externí SIEM.
+Následující diagram popisuje integrace služby Azure Stack s externí SIEM. Existují dva způsoby integrace, které je potřeba považovat za: první jednou (jeden modře) je infrastruktura Azure stacku, která zahrnuje virtuální počítače infrastruktury a uzly Hyper-V. Audity, protokolů zabezpečení a výstrahy z těchto komponent jsou centrálně shromažďovat a vystavené prostřednictvím syslogu s datovou částí CEF. Tento model integrace je popsaný na této stránce dokumentu.
+Druhý vzor integrace je použité v ukázkách oranžově a zahrnuje řadiče pro správu základní desky (BMC), životního cyklu hostitelů hardwaru (HLH), virtuální počítače a/nebo virtuálních zařízení, na kterých běží hardwarových partnerů, monitorování a správu software a horní části přepínače (TOR rack). Protože tyto součásti jsou konkrétní, kontaktujte hardwarových partnerů hardwaru partnera pro dokumentaci o tom, jak integrovat se službou externí SIEM.
 
 ![Diagram předávání Syslog](media/azure-stack-integrate-security/syslog-forwarding.png)
 
@@ -32,13 +32,13 @@ Druhý vzor integrace je použité v ukázkách oranžově a zahrnuje řadiče p
 
 Klient protokolu syslog v Azure stacku podporuje následující konfigurace:
 
-1. **Syslog přes protokol TCP, vzájemné ověřování (klient a server) a šifrování TLS 1.2:** v této konfiguraci syslog server a klient syslog ověření identity mezi sebou prostřednictvím certifikátů. Zprávy se odesílají přes zašifrovaný kanál TLS 1.2.
+1. **Syslog přes protokol TCP, vzájemné ověřování (klient a server) a TLS 1.2 šifrování:** V této konfiguraci syslog server a klient syslog ověření identity mezi sebou prostřednictvím certifikátů. Zprávy se odesílají přes zašifrovaný kanál TLS 1.2.
 
-2. **Syslog přes protokol TCP. server ověřování a šifrování TLS 1.2:** v této konfiguraci syslog klient lze ověřit identitu serveru syslog prostřednictvím certifikátu. Zprávy se odesílají přes zašifrovaný kanál TLS 1.2.
+2. **Syslog přes protokol TCP. server ověřování a šifrování TLS 1.2:** V této konfiguraci syslog klient lze ověřit identitu serveru syslog prostřednictvím certifikátu. Zprávy se odesílají přes zašifrovaný kanál TLS 1.2.
 
-3. **Syslog přes protokol TCP, žádné šifrování:** v této konfiguraci syslog klient ani syslog server ověřuje identitu mezi sebou. Zprávy jsou odesílány ve formátu prostého textu prostřednictvím protokolu TCP.
+3. **Syslog přes protokol TCP, žádné šifrování:** V této konfiguraci nejsou ověřeny syslog klienta a identit server syslog. Zprávy jsou odesílány ve formátu prostého textu prostřednictvím protokolu TCP.
 
-4. **Syslog přes protokol UDP se žádné šifrování:** v této konfiguraci syslog klient ani syslog server ověřuje identitu mezi sebou. Zprávy jsou odesílány ve formátu prostého textu prostřednictvím protokolu UDP.
+4. **Syslog přes protokol UDP se žádné šifrování:** V této konfiguraci nejsou ověřeny syslog klienta a identit server syslog. Zprávy jsou odesílány ve formátu prostého textu prostřednictvím protokolu UDP.
 
 > [!IMPORTANT]
 > Společnost Microsoft důrazně doporučuje použití ověřování a šifrování pomocí protokolu TCP (konfigurace #1 nebo na velmi minimální #2) pro produkční prostředí pro ochranu před útoky man-in-the-middle a odposlouchávání zpráv.
@@ -129,7 +129,7 @@ Invoke-Command @params -ScriptBlock {
 
 ### <a name="configuring-syslog-forwarding-with-tcp-server-authentication-and-tls-12-encryption"></a>Konfigurace předávání protokolu syslog s TCP, Server ověřování a šifrování TLS 1.2
 
-V této konfiguraci syslog klienta ve službě Azure Stack přeposílá zprávy na server syslog přes protokol TCP, pomocí šifrování TLS 1.2. Během počáteční handshake klient také ověří, že server poskytuje platný důvěryhodný certifikát. To zabraňuje klienta pro odesílání zpráv do nedůvěryhodných cílů.
+V této konfiguraci syslog klienta ve službě Azure Stack přeposílá zprávy na server syslog přes protokol TCP, pomocí šifrování TLS 1.2. Během počáteční handshake klient také ověří, že server poskytuje platný důvěryhodný certifikát. Tato konfigurace zabraňuje klienta pro odesílání zpráv do nedůvěryhodných cílů.
 Ověřování a šifrování pomocí protokolu TCP je výchozí konfigurace a představuje minimální úroveň zabezpečení, které společnost Microsoft doporučuje pro produkční prostředí. 
 
 ```powershell
@@ -321,7 +321,7 @@ Tabulka vlastní rozšíření pro události Windows ve službě Azure Stack:
 |MasComputer | test.azurestack.contoso.com|
 |MasCorrelationActivityID| C8F40D7C-3764-423B-A4FA-C994442238AF|
 |MasCorrelationRelatedActivityID| C8F40D7C-3764-423B-A4FA-C994442238AF|
-|MasEventData| Svchost!! 4132, G, 0. EseDiskFlushConsistency!! ESENT!! 0x800000|
+|MasEventData| svchost!!4132,G,0!!!!EseDiskFlushConsistency!!ESENT!!0x800000|
 |MasEventDescription| Nastavení zásad skupiny pro uživatele byla úspěšně zpracována. Nebyly od poslední úspěšné zpracování zásad skupiny se nezjistily žádné změny.|
 |MasEventID|1501|
 |MasEventRecordID|26637|
@@ -334,11 +334,11 @@ Tabulka vlastní rozšíření pro události Windows ve službě Azure Stack:
 |MasOpcodeName |informace|
 |MasProviderEventSourceName ||
 |MasProviderGuid |AEA1B4FA-97D1-45F2-A64C-4D69FFFD92C9|
-|MasProviderName |Microsoft-Windows-zásad skupiny|
+|MasProviderName |Microsoft-Windows-GroupPolicy|
 |MasSecurityUserId |\<Windows SID\> |
 |MasTask |0|
 |MasTaskCategory| Vytvoření procesu|
-|MasUserData|KB4093112!! 5112!! Nainstalované!! 0x0!! Výraz WindowsUpdateAgent Xpath: /Event/UserData / *|
+|MasUserData|KB4093112!!5112!!Installed!!0x0!!WindowsUpdateAgent Xpath: /Event/UserData/*|
 |MasVersion|0|
 
 ### <a name="cef-mapping-for-alerts-created"></a>CEF mapování pro vytvoření výstrahy
@@ -360,7 +360,7 @@ Tabulka závažnost výstrahy:
 Vlastní rozšíření tabulky pro upozornění vytvořená ve službě Azure Stack:
 | Název vlastní rozšíření | Příklad: | 
 |-----------------------|---------|
-|MasEventDescription|Popis: Uživatelský účet \<TestUser\> bylo vytvořeno za \<TestDomain\>. Je možné bezpečnostní riziko. --NÁPRAVU: Obraťte se na podporu. K vyřešení tohoto problému je nutné pomoc zákazníkům. Nepokoušejte se vyřešit tento problém bez jejich pomoci. Než otevřete žádost o podporu, spusťte proces shromažďování souborů protokolů pomocí pokynů z https://aka.ms/azurestacklogfiles |
+|MasEventDescription|POPIS: Uživatelský účet \<TestUser\> bylo vytvořeno za \<TestDomain\>. Je možné bezpečnostní riziko. --OPRAVY: Kontaktujte podporu. K vyřešení tohoto problému je nutné pomoc zákazníkům. Nepokoušejte se vyřešit tento problém bez jejich pomoci. Než otevřete žádost o podporu, spusťte proces shromažďování souborů protokolů pomocí pokynů z https://aka.ms/azurestacklogfiles |
 
 ### <a name="cef-mapping-for-alerts-closed"></a>CEF mapování pro zavření výstrahy
 

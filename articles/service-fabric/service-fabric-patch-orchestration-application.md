@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 5/22/2018
 ms.author: nachandr
-ms.openlocfilehash: 7b19aa42c669fec5872e210351ecec22360ef24e
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: 43133a1666dc3551e0f935ceb2af4cf1297d44a7
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54427929"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55155302"
 ---
 # <a name="patch-the-windows-operating-system-in-your-service-fabric-cluster"></a>Opravy operačního systému Windows ve vašem clusteru Service Fabric
 
@@ -143,9 +143,6 @@ Aplikace spolu s instalační skripty si můžete stáhnout z [archivu odkaz](ht
 
 Aplikace ve formátu sfpkg si můžete stáhnout z [sfpkg odkaz](https://aka.ms/POA/POA.sfpkg). To je užitečné, [nasazení aplikace založené na Azure Resource Manageru](service-fabric-application-arm-resource.md).
 
-> [!IMPORTANT]
-> V1.3.0 (nejnovější) aplikace orchestraci oprav je známý problém, který běží na Windows Server 2012. Pokud používáte systém Windows Server 2012, stáhněte si prosím v1.2.2 aplikace [tady](http://download.microsoft.com/download/C/9/1/C91780A5-F4B8-46AE-ADD9-E76B9B0104F6/PatchOrchestrationApplication_v1.2.2.zip). Odkaz SFPkg [tady](http://download.microsoft.com/download/C/9/1/C91780A5-F4B8-46AE-ADD9-E76B9B0104F6/PatchOrchestrationApplication_v1.2.2.sfpkg).
-
 ## <a name="configure-the-app"></a>Konfigurace aplikace
 
 Chování aplikace orchestraci oprav je možné nakonfigurovat podle svých potřeb. Přepište výchozí hodnoty předáním parametru aplikace během vytváření aplikace nebo aktualizace. Lze zadat parametry aplikace tak, že zadáte `ApplicationParameter` k `Start-ServiceFabricApplicationUpgrade` nebo `New-ServiceFabricApplication` rutiny.
@@ -156,7 +153,7 @@ Chování aplikace orchestraci oprav je možné nakonfigurovat podle svých pot�
 |TaskApprovalPolicy   |Výčet <br> { NodeWise, UpgradeDomainWise }                          |TaskApprovalPolicy označuje zásadu, která má být použit službou koordinátora k instalaci aktualizací Windows napříč uzly clusteru Service Fabric.<br>                         Povolené hodnoty jsou: <br>                                                           <b>NodeWise</b>. Aktualizace Windows je nainstalované jednoho uzlu současně. <br>                                                           <b>UpgradeDomainWise</b>. Aktualizace Windows je nainstalované jednu upgradovací doménu najednou. (Na maximum, můžete přejít všechny uzly, které patří do logických sítí pro aktualizace Windows.)<br> Odkazovat na [nejčastější dotazy k](#frequently-asked-questions) část o tom, jak rozhodnout, který je nejlépe hodí zásady pro váš cluster.
 |LogsDiskQuotaInMB   |Dlouhé  <br> (Výchozí: 1024)               |Maximální velikost oprava Orchestrace aplikace přihlásí MB, který mohl být trvalý místně na uzlech.
 | WUQuery               | řetězec<br>(Výchozí: "IsInstalled = 0")                | Použijte dotaz pro získání aktualizace Windows. Další informace najdete v tématu [WuQuery.](https://msdn.microsoft.com/library/windows/desktop/aa386526(v=vs.85).aspx)
-| InstallWindowsOSOnlyUpdates | Logická hodnota <br> (výchozí: true)                 | Pomocí tohoto příznaku do správy, které aktualizace by měla být stažen a nainstalován. Jsou povoleny následující hodnoty <br>true – nainstaluje jenom aktualizace operačního systému Windows.<br>false – nainstaluje všechny dostupné aktualizace v počítači.          |
+| InstallWindowsOSOnlyUpdates | Logická hodnota <br> (výchozí: false)                 | Pomocí tohoto příznaku do správy, které aktualizace by měla být stažen a nainstalován. Jsou povoleny následující hodnoty <br>true – nainstaluje jenom aktualizace operačního systému Windows.<br>false – nainstaluje všechny dostupné aktualizace v počítači.          |
 | WUOperationTimeOutInMinutes | Int <br>(Výchozí: 90)                   | Určuje časový limit pro všechny operace aktualizace Windows (hledání nebo stáhnout nebo nainstalovat). Pokud se operace nedokončí v rámci zadaného časového limitu, je přerušeno.       |
 | WURescheduleCount     | Int <br> (Výchozí: 5)                  | Maximální počet pokusů, které služba přeplánuje Windows update v případě, že docházet k chybě operace.          |
 | WURescheduleTimeInMinutes | Int <br>(Výchozí: 30) | Interval, ve kterém přeplánuje služby Windows update v případě, že chyba přetrvává. |
@@ -295,7 +292,7 @@ Na základě zásad pro aplikace, buď jeden uzel může ujmout během operace o
 
 Na konci instalace aktualizace Windows se opětovně uzly povolena příspěvku restartování.
 
-V následujícím příkladu clusteru přešel do stavu chyba dočasně vzhledem k tomu, že dva uzly se dolů a porušení zásady MaxPercentageUnhealthNodes. Chyba je dočasný, dokud probíhá operace opravy.
+V následujícím příkladu clusteru přešel do stavu chyba dočasně vzhledem k tomu, že dva uzly se dolů a porušení zásady MaxPercentageUnhealthyNodes. Chyba je dočasný, dokud probíhá operace opravy.
 
 ![Obrázek clusteru není v pořádku](media/service-fabric-patch-orchestration-application/MaxPercentage_causing_unhealthy_cluster.png)
 
@@ -330,7 +327,7 @@ Otázka: **Jak dlouho trvá oprava celý cluster?**
 A. Čas potřebný k opravě celý cluster, závisí na následujících faktorech:
 
 - Čas potřebný k opravě uzlu.
-- Zásady služby Koordinátor. – Výchozí zásady `NodeWise`, výsledkem opravy jenom jeden uzel v době, kterou by pomalejší než `UpgradeDomainWise`. Příklad: Pokud uzel trvá přibližně za 1 hodinu, který se má opravit, mohla o opravu 20 uzel (uzly stejného typu) clusteru s 5 upgradovacích domén, každá obsahuje 4 uzly.
+- Zásady služby Koordinátor. – Výchozí zásady `NodeWise`, výsledkem opravy jenom jeden uzel v době, kterou by pomalejší než `UpgradeDomainWise`. Příklad: Pokud uzel trvá přibližně za 1 hodinu, který se má opravit, aby bylo možné opravovat je 20 uzel (uzly stejného typu) clusteru s 5 upgradovacích domén, každá obsahuje 4 uzly.
     - Mělo by to trvat přibližně 20 hodin na opravu celý cluster, pokud je zásada `NodeWise`
     - Pokud je zásada mělo stačit přibližně 5 hodin `UpgradeDomainWise`
 - Zatížení clusteru – každé použití dílčích oprav operace vyžaduje přemístění do jiných uzlů clusteru k dispozici úloha zákazníka. Probíhá oprava uzlu by měly být v [zakázání](https://docs.microsoft.com/dotnet/api/system.fabric.query.nodestatus?view=azure-dotnet#System_Fabric_Query_NodeStatus_Disabling) stavu během této doby. Pokud cluster běží téměř zátěž ve špičce, zakázání by trvat delší dobu. Proto může pomalý za těchto podmínek přízvukový zobrazí celkový proces opravy.
@@ -411,3 +408,8 @@ Správce musíte zasáhnout a zjistit, proč k problému, kvůli aktualizaci Win
 - Nastavení InstallWindowsOSOnlyUpdates na hodnotu false nyní nainstaluje všechny dostupné aktualizace.
 - Změnit logiku zakázáním automatických aktualizací. To řeší chyby, kde nebylo získávání zakázáno automatické aktualizace na serveru 2016 a vyšší.
 - Omezení umístění pro mikroslužby POA pro pokročilé usecases s parametry.
+
+### <a name="version-131"></a>Verze 1.3.1
+- Oprava regrese, kde POA 1.3.0 nebude fungovat v systému Windows Server 2012 R2 nebo nižší kvůli chybě při zakázání automatické aktualizace. 
+- Oprava chyby, kde InstallWindowsOSOnlyUpdates konfigurace je vždy vybrán jako True.
+- Výchozí hodnota InstallWindowsOSOnlyUpdates se mění na hodnotu False.

@@ -6,16 +6,16 @@ services: cognitive-services
 author: kylestorck
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: acoustics
+ms.subservice: acoustics
 ms.topic: conceptual
 ms.date: 08/17/2018
 ms.author: kylestorck
-ms.openlocfilehash: 6d3605b579a44dccb259bef281392cbfe2b9f916
-ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
+ms.openlocfilehash: 02f56306110e904f41c1b94346c58b33ce0b575c
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "48902144"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55156178"
 ---
 # <a name="known-issues"></a>Známé problémy
 Při použití návrháře ve verzi Preview pro projekt Akustika se můžete setkat s následující známé problémy.

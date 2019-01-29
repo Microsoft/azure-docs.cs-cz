@@ -1,5 +1,5 @@
 ---
-title: Jak analyzovat aktivity služby Azure Active Directory protokolů pomocí Log Analytics (preview) | Dokumentace Microsoftu
+title: Analýza protokolů aktivit Azure Active Directory pomocí služby Log Analytics (preview) | Dokumentace Microsoftu
 description: Naučte se analyzovat protokoly aktivit Azure Active Directory pomocí Log Analytics (Náhled)
 services: active-directory
 documentationcenter: ''
@@ -12,16 +12,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.component: report-monitor
+ms.subservice: report-monitor
 ms.date: 11/13/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 759a0da93544e2a17b71d762924981f05c3ea322
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: a508c8a2bb4a28372f5dd8f833f6e55adc3c39ed
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54810770"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55158736"
 ---
 # <a name="analyze-azure-ad-activity-logs-with-log-analytics-preview"></a>Analýza služby Azure AD protokoly aktivit s využitím Log Analytics (Náhled)
 

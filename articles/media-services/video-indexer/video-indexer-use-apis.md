@@ -1,5 +1,5 @@
 ---
-title: Použití rozhraní API Video Indexeru
+title: Použití rozhraní Video Indexer API – Azure
 titlesuffix: Azure Media Services
 description: Tento článek ukazuje, jak začít používat rozhraní API Video Indexeru.
 services: media-services
@@ -7,16 +7,16 @@ author: Juliako
 manager: femila
 ms.service: media-services
 ms.topic: article
-ms.date: 11/19/2018
+ms.date: 01/28/2019
 ms.author: juliako
-ms.openlocfilehash: d7af0d8961d5fa4d3f76b76a48ec613d954298ad
-ms.sourcegitcommit: beb4fa5b36e1529408829603f3844e433bea46fe
+ms.openlocfilehash: d162f8caef0a14d86547539681f1da9b1b07ea1d
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/22/2018
-ms.locfileid: "52292229"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55190492"
 ---
-# <a name="use-the-video-indexer-api"></a>Použití rozhraní API Video Indexeru
+# <a name="tutorial-use-the-video-indexer-api"></a>Kurz: Použití rozhraní API Video Indexeru
 
 > [!Note]
 > API Video Indexeru ve verzi 1 se přestalo používat 1. srpna 2018. Teď byste měli používat rozhraní API Video Indexeru ve verzi 2. <br/>Pokyny k vývoji pomocí rozhraní API Video Indexeru ve verzi 2 najdete [tady](https://api-portal.videoindexer.ai/). 

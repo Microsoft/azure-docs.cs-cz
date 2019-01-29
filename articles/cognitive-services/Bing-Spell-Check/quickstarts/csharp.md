@@ -1,21 +1,21 @@
 ---
-title: 'Rychlý start: Rozhraní API pro kontrolu pravopisu Bingu, C#'
+title: 'Rychlý start: Rozhraní API pro kontrolu pravopisu BinguC#'
 titlesuffix: Azure Cognitive Services
 description: Získejte informace a vzorové kódy, které vám pomůžou rychle začít používat rozhraní API pro kontrolu pravopisu Bingu.
 services: cognitive-services
 author: aahill
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: bing-spell-check
+ms.subservice: bing-spell-check
 ms.topic: quickstart
 ms.date: 09/14/2017
 ms.author: aahi
-ms.openlocfilehash: fbad56b59664a6c75e6bec911e891145a18b1161
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: 77ad43b63d5548cf57024bc0c2b707e51f1c8496
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52315167"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55189812"
 ---
 # <a name="quickstart-for-bing-spell-check-api-with-c"></a>Rychlý start pro rozhraní API pro kontrolu pravopisu Bingu s využitím jazyka C#
 

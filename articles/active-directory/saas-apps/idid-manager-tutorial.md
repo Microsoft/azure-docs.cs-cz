@@ -12,14 +12,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 1/11/2019
+ms.date: 1/25/2019
 ms.author: jeedes
-ms.openlocfilehash: baf78fc0bc0941c9466f77a77ef922f3fe3d62b3
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: a12a0b383db63cc80aea045ca5afe6c75b0b83a9
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54823020"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55100015"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-idid-manager"></a>Kurz: Integrace Azure Active Directory s iDiD správce
 
@@ -70,10 +70,10 @@ Konfigurace integrace iDiD správce do služby Azure AD, budete muset přidat iD
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurace a otestování služby Azure AD jednotného přihlašování
 
-V této části, konfiguraci a testování Azure AD jednotné přihlašování s [název aplikace] podle testovacího uživatele volá **Britta Simon**.
-Pro jednotné přihlašování pro práci je potřeba navázat vztah odkazu mezi uživatele služby Azure AD a související uživatelské v [název aplikace].
+V této části, konfiguraci a testování Azure AD jednotné přihlašování s iDiD správce podle testovacího uživatele volá **Britta Simon**.
+Pro jednotné přihlašování pro práci je potřeba navázat vztah odkazu mezi uživatele služby Azure AD a související uživatelské v iDiD správce.
 
-Nakonfigurovat a otestovat Azure AD jednotné přihlašování s [název aplikace], které potřebujete k dokončení následujících stavebních bloků:
+Nakonfigurovat a otestovat Azure AD jednotné přihlašování s iDiD správce, které potřebujete k dokončení následujících stavebních bloků:
 
 1. **[Konfigurovat Azure AD Single Sign-On](#configure-azure-ad-single-sign-on)**  – Pokud chcete, aby uživatelé mohli tuto funkci používat.
 2. **[Konfigurace iDiD správce Single Sign-On](#configure-idid-manager-single-sign-on)**  – ke konfiguraci nastavení jednotného přihlašování na straně aplikace.
@@ -86,7 +86,7 @@ Nakonfigurovat a otestovat Azure AD jednotné přihlašování s [název aplikac
 
 V této části můžete povolit Azure AD jednotného přihlašování na portálu Azure portal.
 
-Ke konfiguraci Azure AD jednotné přihlašování s [název aplikace], proveďte následující kroky:
+Ke konfiguraci Azure AD jednotné přihlašování s iDiD správce, postupujte následovně:
 
 1. V [webu Azure portal](https://portal.azure.com/)na **iDiD správce** integrace stránce aplikace vyberte **jednotného přihlašování**.
 
@@ -100,18 +100,20 @@ Ke konfiguraci Azure AD jednotné přihlašování s [název aplikace], proveďt
 
     ![Upravit konfiguraci základní SAML](common/edit-urls.png)
 
-4. Na **základní konfiguraci SAML** části, proveďte následující kroky, pokud chcete nakonfigurovat aplikace v **SP** iniciované režimu:
+4. Na **základní konfiguraci SAML** oddílu, uživatel nebude muset provést libovolný krok, protože aplikace je už předem integrováno s Azure.
 
-    ![informace o iDiD správce domény a adresy URL jednotného přihlašování](common/both-preintegrated-signon.png)
+    ![informace o iDiD správce domény a adresy URL jednotného přihlašování](common/preintegrated.png)
 
-    a. Klikněte na tlačítko **nastavit další adresy URL**.
+5. Klikněte na tlačítko **nastavit další adresy URL** a provést následující krok, pokud chcete nakonfigurovat aplikace v **SP** iniciované režimu:
 
-    b. V **přihlašovací adresa URL** textové pole, zadejte adresu URL, pomocí následujícího vzorce: `https://idid2.fi/saml/login/<domain>`
+    ![informace o iDiD správce domény a adresy URL jednotného přihlašování](common/metadata-upload-additional-signon.png)
+
+    V **přihlašovací adresa URL** textové pole, zadejte adresu URL, pomocí následujícího vzorce:  `https://idid2.fi/saml/login/<domain>`
 
     > [!NOTE]
     > Hodnota není skutečný. Aktualizujte příslušnou hodnotu skutečné přihlašovací adresa URL. Kontakt [tým podpory iDiD správce klienta](mailto:support@idid.fi) má být získána hodnota. Můžete také odkazovat na tyto vzory se dají ukazuje **základní konfiguraci SAML** části webu Azure Portal.
 
-5. Na **nastavte si jednotné přihlašování pomocí SAML** stránku, **podpisový certifikát SAML** klikněte na tlačítko Kopírovat zkopírujte **adresa Url federačních metadat aplikace** a uložte ji na vaše počítač.
+6. Na **nastavte si jednotné přihlašování pomocí SAML** stránku, **podpisový certifikát SAML** klikněte na tlačítko Kopírovat zkopírujte **adresa Url federačních metadat aplikace** a uložte ji na vaše počítač.
 
     ![Odkaz ke stažení certifikátu](common/copy-metadataurl.png)
 
@@ -187,3 +189,4 @@ Po kliknutí na dlaždici správce iDiD na přístupovém panelu, můžete by m�
 - [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory? ](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Co je podmíněný přístup v Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+

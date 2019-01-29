@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2018
 ms.author: rkarlin
-ms.openlocfilehash: 3bb8d4796d23b84f815d28efa45af619efe19af3
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: c44e000a60e4391faf38cb275f35ec512e19aea3
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53338229"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55101681"
 ---
 # <a name="protect-your-network-resources-in-azure-security-center"></a>Chraňte své prostředky sítě v Azure Security Center
 Azure Security Center průběžně analyzuje stav zabezpečení vašich prostředků Azure pro osvědčené postupy zabezpečení sítě. Když Security Center identifikuje potenciální ohrožení zabezpečení, vytvoří se doporučení, která vás provede procesem konfigurace potřebných kontrol k posílení zabezpečení a ochraně vašich prostředků.
@@ -133,7 +133,7 @@ Na třetí úrovni zobrazí virtuální počítače, který je podobný už uvá
 |Počítač|40|Povolit skupiny NSG na virtuálních počítačích|Povolte skupiny zabezpečení sítě řídit přístup k síti virtuálních počítačů.|
 |Podsíť|35|Povolit skupiny zabezpečení sítě u podsítí |Povolte skupiny zabezpečení sítě řídit přístup k síti prostředků nasazené ve vaší podsítě.|
 |Počítač|30|Použití řízení přístupu k síti podle potřeby|Platí jenom v řízení přístupu na čas virtuálního počítače trvale zamezit přístup k portům vybrané a povolte autorizovaným uživatelům otevírat prostřednictvím stejný mechanismus a po omezenou dobu.|
-|Počítač|20|Omezit přístup přes internetový koncový bod|Posílení zabezpečení goups sítě z vašeho internetového virtuální počítače tak, že omezíte přístup k vaší existující povolit pravidla.|
+|Počítač|20|Omezit přístup přes internetový koncový bod|Posílení zabezpečení, které umožňují skupiny zabezpečení sítě se vaše internetové virtuální počítače tak, že omezíte přístup k vaší existující pravidla.|
 |Počítač|10|Přidání brány firewall příští generace|Přidáte řešení Brána Firewall další generace (NGFW) kvůli lepší ochraně vašich virtuálních počítačů směřujících do Internetu.|
 |Počítač|5|Směrování provozu přes síťové brány jenom přes firewall|Aby bylo možné dokončit nasazení další generace řešení brány firewall, se mají směrovat provoz do vašich chráněných virtuálních počítačů směřujících do Internetu jenom přes další generace řešení brány firewall.|
 |VNet|5|Povolit před útoky DDoS standard protection|Aplikace s veřejnými IP adresami v těchto virtuálních sítích nejsou chráněny službou ochrany před útoky DDOS standard. Doporučujeme, aby je chcete povolit omezení rizik odměrné sítě a útoky protokolu.|

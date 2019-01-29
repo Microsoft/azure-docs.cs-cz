@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: multiple
 ms.date: 06/11/2018
 ms.author: ryanwi
-ms.openlocfilehash: c90715608b5d35520605c504b5cebb5e7a3ec021
-ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
+ms.openlocfilehash: 9cb41bfde38d9b47f5db994c0ca39c64b453ef1d
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47096629"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55171452"
 ---
 # <a name="reliable-services-application-and-service-manifest-examples"></a>Příklady manifestu služeb a aplikace Reliable Services
 Následují příklady manifestů aplikace a služby pro aplikaci Service Fabric s front-endového webového rozhraní ASP.NET Core a stavovým back endem. Účelem těchto příkladech je zobrazit nastavení, které jsou k dispozici a jak je používat. Tyto aplikace a služby manifestů jsou založeny na [rychlý úvod k Service Fabric .NET](https://github.com/Azure-Samples/service-fabric-dotnet-quickstart/) manifesty.
@@ -198,7 +198,7 @@ Naleznete v tématu [elementy manifestu aplikace](#application-manifest-elements
         the root of the code package regardless of where the EXE is defined in the code package directory. This is where the processes can write the data. Writing data 
         in the code package or code base is not recommended as those folders could be shared between different application instances and may get deleted.-->
         <WorkingFolder>CodePackage</WorkingFolder>
-        <!-- Warning! Do not use console rediriction in a production application, only use it for local development and debugging. Redirects console output from the startup
+        <!-- Warning! Do not use console redirection in a production application, only use it for local development and debugging. Redirects console output from the startup
         script to an output file in the application folder called "log" on the cluster node where the application is deployed and run. Also set the number of output files
         to retain and the maximum file size (in KB). -->
         <ConsoleRedirection FileRetentionCount="10" FileMaxSizeInKb="20480"/>
@@ -215,7 +215,7 @@ Naleznete v tématu [elementy manifestu aplikace](#application-manifest-elements
     </EntryPoint>
   </CodePackage>
 
-  <!-- Config package is the contents of the Config directoy under PackageRoot that contains an 
+  <!-- Config package is the contents of the Config directory under PackageRoot that contains an 
        independently-updateable and versioned set of custom configuration settings for your service. -->
   <ConfigPackage Name="Config" Version="1.0.0" />
 
@@ -231,7 +231,7 @@ Naleznete v tématu [elementy manifestu aplikace](#application-manifest-elements
 
 ```
 
-## <a name="votingdata-service-manifest"></a>Manifest služby VotingData
+## <a name="votingdata-service-manifest"></a>VotingData service manifest
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -292,7 +292,7 @@ Parametr aplikace pro použití v tomto manifestu. Hodnota tohoto parametru mů�
 ### <a name="servicemanifestimport-element"></a>ServiceManifestImport – Element
 Importuje service manifest vytvořený vývojářem služeb. Manifest služby musí být importovány pro každou základní službu v aplikaci. Přepsání konfigurace a zásad mohou být deklarovány pro manifest služby. Další informace najdete v tématu [ServiceManifestImport – Element](service-fabric-service-model-schema-elements.md#ServiceManifestImportElementanonymouscomplexTypeComplexTypeDefinedInApplicationManifestTypecomplexType)
 
-### <a name="servicemanifestref-element"></a>ServiceManifestRef – Element
+### <a name="servicemanifestref-element"></a>ServiceManifestRef Element
 Naimportuje manifest služby podle odkazu. Soubor manifestu služby (ServiceManifest.xml) musí být aktuálně k dispozici v balíčku buildu. Další informace najdete v tématu [ServiceManifestRef – Element](service-fabric-service-model-schema-elements.md#ServiceManifestRefElementServiceManifestRefTypeComplexTypeDefinedInServiceManifestImportelement)
 
 ### <a name="resourceoverrides-element"></a>ResourceOverrides – Element
@@ -307,19 +307,19 @@ Koncový bod, deklarované v manifestu služby, chcete-li přepsat. Další info
 ### <a name="policies-element"></a>Zásady – Element
 Popisuje zásady (koncový bod vazby balíčku sdílení, spustit jako a zabezpečení přístupu) má být použita na importovaný manifest služby. Další informace najdete v tématu [zásady – Element](service-fabric-service-model-schema-elements.md#PoliciesElementServiceManifestImportPoliciesTypeComplexTypeDefinedInServiceManifestImportelement)
 
-### <a name="servicepackageresourcegovernancepolicy-element"></a>ServicePackageResourceGovernancePolicy – Element
+### <a name="servicepackageresourcegovernancepolicy-element"></a>ServicePackageResourceGovernancePolicy Element
 Definuje zásady zásad správného řízení prostředků, která se má použít na úrovni balíčku celé služby. Další informace najdete v tématu [ServicePackageResourceGovernancePolicy – Element](service-fabric-service-model-schema-elements.md#ServicePackageResourceGovernancePolicyElementServicePackageResourceGovernancePolicyTypeComplexTypeDefinedInServiceManifestImportPoliciesTypecomplexTypeDefinedInServicePackageTypecomplexType)
 
 ### <a name="resourcegovernancepolicy-element"></a>ResourceGovernancePolicy – Element
 Určuje omezení prostředků pro codepackage. Další informace najdete v tématu [ResourceGovernancePolicy – Element](service-fabric-service-model-schema-elements.md#ResourceGovernancePolicyElementResourceGovernancePolicyTypeComplexTypeDefinedInServiceManifestImportPoliciesTypecomplexTypeDefinedInDigestedCodePackageelementDefinedInDigestedEndpointelement)
 
-### <a name="packagesharingpolicy-element"></a>PackageSharingPolicy – Element
+### <a name="packagesharingpolicy-element"></a>PackageSharingPolicy Element
 Označuje, pokud balíčku code, config nebo data by měla být sdílena napříč instancemi služby stejného typu služby. Další informace najdete v tématu [PackageSharingPolicy – Element](service-fabric-service-model-schema-elements.md#PackageSharingPolicyElementPackageSharingPolicyTypeComplexTypeDefinedInServiceManifestImportPoliciesTypecomplexType)
 
 ### <a name="securityaccesspolicy-element"></a>SecurityAccessPolicy – Element
 Uděluje přístup k oprávnění objektu zabezpečení pro prostředek (například koncový bod) definované v manifestu služby. Obvykle je velmi užitečné pro řízení a omezení služeb přístup k různým prostředkům za účelem minimalizace rizika zabezpečení. To je obzvláště důležité, když je aplikace sestavená z kolekce služby na webu Marketplace, které jsou vyvíjeny s různými vývojáři. Další informace najdete v tématu [SecurityAccessPolicy – Element](service-fabric-service-model-schema-elements.md#SecurityAccessPolicyElementSecurityAccessPolicyTypeComplexTypeDefinedInServiceManifestImportPoliciesTypecomplexTypeDefinedInSecurityAccessPolicieselementDefinedInDigestedEndpointelement)
 
-### <a name="runaspolicy-element"></a>Zásady RunAsPolicy – Element
+### <a name="runaspolicy-element"></a>RunAsPolicy Element
 Určuje místního uživatele nebo místní systémový účet, který balíček kódu služby se spustí jako. Účty domény jsou podporovány v nasazení systému Windows Server, kde je k dispozici služby Azure Active Directory. Ve výchozím nastavení aplikace běží pod účtem, který spouští proces Fabric.exe pod. Aplikace můžete také spustit jako další účty, které musí být deklarován v části objekty zabezpečení. Pokud použijete zásady RunAs na službu a manifest služby deklaruje koncový bod prostředků pomocí protokolu HTTP, musíte zadat také SecurityAccessPolicy zajistit, že porty přidělené tyto koncové body jsou správně řízení přístupu u RunAs uživatelský účet, který je služba spuštěna pod. Pro koncový bod HTTPS musíte také definovat EndpointBindingPolicy k zadání názvu certifikát, který má být vrácena klientovi. Další informace najdete v tématu [RunAsPolicy – Element](service-fabric-service-model-schema-elements.md#RunAsPolicyElementRunAsPolicyTypeComplexTypeDefinedInServiceManifestImportPoliciesTypecomplexTypeDefinedInDigestedCodePackageelement)
 
 ### <a name="defaultservices-element"></a>DefaultServices – Element
@@ -399,10 +399,12 @@ Název spustitelného souboru.  Například "MySetup.bat" nebo "MyServiceHost.ex
  Další informace najdete v tématu [argumenty – Element](service-fabric-service-model-schema-elements.md#ArgumentsElementxs:stringComplexTypeDefinedInExeHostEntryPointTypecomplexType)
 
 ### <a name="workingfolder-element"></a>WorkingFolder – Element
-Pracovní adresář pro daný proces v balíčku kódu na uzlu clusteru, ve kterém je aplikace nasazená. Můžete určit tři hodnoty: pracovní (výchozí), CodePackage nebo základu kódu. Základu kódu určuje, zda pracovní adresář nastaven na adresář, ve kterém je definována souboru EXE v balíčku kódu. CodePackage nastaví pracovní adresář, který se použije kořen balíček kódu bez ohledu na to, kde je definován souboru EXE v adresáři balíčku kódu. Pracovní nastaví pracovní adresář unikátní složku vytvořit na uzlu.  Tato složka je stejný pro instanci celé aplikace. Ve výchozím nastavení je nastavit pracovní adresář všech procesů v aplikaci pracovní složky aplikace. Je to, kde procesy, které může zapisovat data. Zápis dat v balíčku kódu nebo základu kódu se nedoporučuje, protože tyto složky může být sdílena mezi různé instance aplikace a může se odstraní. Další informace najdete v tématu [WorkingFolder – Element](service-fabric-service-model-schema-elements.md#WorkingFolderElementanonymouscomplexTypeComplexTypeDefinedInExeHostEntryPointTypecomplexType)
+Pracovní adresář pro daný proces v balíčku kódu na uzlu clusteru, ve kterém je aplikace nasazená. Můžete zadat tři hodnoty: Pracovní (výchozí), CodePackage nebo základu kódu. Základu kódu určuje, zda pracovní adresář nastaven na adresář, ve kterém je definována souboru EXE v balíčku kódu. CodePackage nastaví pracovní adresář, který se použije kořen balíček kódu bez ohledu na to, kde je definován souboru EXE v adresáři balíčku kódu. Pracovní nastaví pracovní adresář unikátní složku vytvořit na uzlu.  Tato složka je stejný pro instanci celé aplikace. Ve výchozím nastavení je nastavit pracovní adresář všech procesů v aplikaci pracovní složky aplikace. Je to, kde procesy, které může zapisovat data. Zápis dat v balíčku kódu nebo základu kódu se nedoporučuje, protože tyto složky může být sdílena mezi různé instance aplikace a může se odstraní. Další informace najdete v tématu [WorkingFolder – Element](service-fabric-service-model-schema-elements.md#WorkingFolderElementanonymouscomplexTypeComplexTypeDefinedInExeHostEntryPointTypecomplexType)
 
 ### <a name="consoleredirection-element"></a>ConsoleRedirection – Element
-Upozornění Není v produkční aplikace používat rediriction konzoly, použít klíč jen pro místní vývoj a ladění. Přesměruje výstup konzoly z spouštěcí skript do výstupního souboru ve složce aplikace nazvané "protokol" na uzlu clusteru, kde nasazení a spuštění aplikace. Další informace najdete v tématu [ConsoleRedirection – Element](service-fabric-service-model-schema-elements.md#ConsoleRedirectionElementanonymouscomplexTypeComplexTypeDefinedInExeHostEntryPointTypecomplexType)
+
+> [!WARNING]
+> Není v produkční aplikace používat přesměrování konzoly, použít klíč jen pro místní vývoj a ladění. Přesměruje výstup konzoly z spouštěcí skript do výstupního souboru ve složce aplikace nazvané "protokol" na uzlu clusteru, kde nasazení a spuštění aplikace. Další informace najdete v tématu [ConsoleRedirection – Element](service-fabric-service-model-schema-elements.md#ConsoleRedirectionElementanonymouscomplexTypeComplexTypeDefinedInExeHostEntryPointTypecomplexType)
 
 ### <a name="entrypoint-element"></a>EntryPoint – Element
 Spustitelný soubor určený vstupní bod se obvykle dlouhotrvající hostitele služby. Přítomnost vstupní bod samostatného instalačního díky tomu není nutné ke spuštění hostitele služby s vysokou úrovní oprávnění pro dlouhou dobu. Spustitelný soubor určený vstupní bod se spustí po ukončení SetupEntryPoint úspěšně. Výsledný proces je monitorována a restartuje (začíná znovu SetupEntryPoint), pokud někdy ukončí nebo dojde k chybě. Další informace najdete v tématu [EntryPoint – Element](service-fabric-service-model-schema-elements.md#EntryPointElementEntryPointDescriptionTypeComplexTypeDefinedInCodePackageTypecomplexType)
@@ -447,7 +449,7 @@ Spustitelný soubor určený vstupní bod se obvykle dlouhotrvající hostitele 
 Název spustitelného souboru.  Například "MySetup.bat" nebo "MyServiceHost.exe". Další informace najdete v tématu [elementu programu](service-fabric-service-model-schema-elements.md#ProgramElementxs:stringComplexTypeDefinedInExeHostEntryPointTypecomplexType)
 
 ### <a name="workingfolder-element"></a>WorkingFolder – Element
-Pracovní adresář pro daný proces v balíčku kódu na uzlu clusteru, ve kterém je aplikace nasazená. Můžete určit tři hodnoty: pracovní (výchozí), CodePackage nebo základu kódu. Základu kódu určuje, zda pracovní adresář nastaven na adresář, ve kterém je definována souboru EXE v balíčku kódu. CodePackage nastaví pracovní adresář, který se použije kořen balíček kódu bez ohledu na to, kde je definován souboru EXE v adresáři balíčku kódu. Pracovní nastaví pracovní adresář unikátní složku vytvořit na uzlu.  Tato složka je stejný pro instanci celé aplikace. Ve výchozím nastavení je nastavit pracovní adresář všech procesů v aplikaci pracovní složky aplikace. Je to, kde procesy, které může zapisovat data. Zápis dat v balíčku kódu nebo základu kódu se nedoporučuje, protože tyto složky může být sdílena mezi různé instance aplikace a může se odstraní. Další informace najdete v tématu [WorkingFolder – Element](service-fabric-service-model-schema-elements.md#WorkingFolderElementanonymouscomplexTypeComplexTypeDefinedInExeHostEntryPointTypecomplexType)
+Pracovní adresář pro daný proces v balíčku kódu na uzlu clusteru, ve kterém je aplikace nasazená. Můžete zadat tři hodnoty: Pracovní (výchozí), CodePackage nebo základu kódu. Základu kódu určuje, zda pracovní adresář nastaven na adresář, ve kterém je definována souboru EXE v balíčku kódu. CodePackage nastaví pracovní adresář, který se použije kořen balíček kódu bez ohledu na to, kde je definován souboru EXE v adresáři balíčku kódu. Pracovní nastaví pracovní adresář unikátní složku vytvořit na uzlu.  Tato složka je stejný pro instanci celé aplikace. Ve výchozím nastavení je nastavit pracovní adresář všech procesů v aplikaci pracovní složky aplikace. Je to, kde procesy, které může zapisovat data. Zápis dat v balíčku kódu nebo základu kódu se nedoporučuje, protože tyto složky může být sdílena mezi různé instance aplikace a může se odstraní. Další informace najdete v tématu [WorkingFolder – Element](service-fabric-service-model-schema-elements.md#WorkingFolderElementanonymouscomplexTypeComplexTypeDefinedInExeHostEntryPointTypecomplexType)
 
 ### <a name="configpackage-element"></a>Složce ConfigPackage – Element
 Deklaruje složku, v názvu atributu packageroot, který obsahuje souboru Settings.xml. Tento soubor obsahuje oddíly pár definovaný uživatelem, klíč hodnota nastavení, které proces může číst zpět v době běhu. Během upgradu pokud pouze složce ConfigPackage verze se změnila, pak spuštěný proces se nerestartuje. Místo toho zpětné volání upozornění procesu tak, že je možné znovu zavést dynamicky se nezměnila konfigurační nastavení. Další informace najdete v tématu [složce ConfigPackage – Element](service-fabric-service-model-schema-elements.md#ConfigPackageElementConfigPackageTypeComplexTypeDefinedInServiceManifestTypecomplexTypeDefinedInDigestedConfigPackageelement)

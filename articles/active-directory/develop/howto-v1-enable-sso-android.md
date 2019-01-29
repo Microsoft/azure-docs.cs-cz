@@ -8,7 +8,7 @@ manager: mtillman
 editor: ''
 ms.assetid: 40710225-05ab-40a3-9aec-8b4e96b6b5e7
 ms.service: active-directory
-ms.component: develop
+ms.subservice: develop
 ms.workload: identity
 ms.tgt_pltfrm: android
 ms.devlang: java
@@ -17,14 +17,14 @@ ms.date: 09/24/2018
 ms.author: celested
 ms.reviewer: dadobali
 ms.custom: aaddev
-ms.openlocfilehash: 2c7ccd8d2022631e32c240007a782d2382aac518
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.openlocfilehash: 9f0cc19ae220d27de620e5bd347fe78d9bfab2d5
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52422843"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55093287"
 ---
-# <a name="how-to-enable-cross-app-sso-on-android-using-adal"></a>Postupy: povolení jednotného přihlašování napříč aplikacemi v systému Android pomocí ADAL
+# <a name="how-to-enable-cross-app-sso-on-android-using-adal"></a>Postup: Povolení jednotného přihlašování napříč aplikacemi v systému Android pomocí ADAL
 
 [!INCLUDE [active-directory-develop-applies-v1-adal](../../../includes/active-directory-develop-applies-v1-adal.md)]
 
@@ -108,7 +108,7 @@ Jak postupovat, jsou:
 2. Vytvořit nový identifikátor URI přesměrování a stanoví, že aplikace a registrace vaší aplikace
 3. Nastavení správná oprávnění v manifestu Androidu
 
-#### <a name="step-1-enable-broker-mode-in-your-application"></a>Krok 1: Povolení režimu zprostředkovatele v aplikaci
+#### <a name="step-1-enable-broker-mode-in-your-application"></a>Krok 1: Povolit režim zprostředkovatele v aplikaci
 
 Možnost pro aplikace pomocí zprostředkovatele zapnutý, při vytváření "nastavení" nebo počáteční nastavení vaše instance ověřování. K tomu ve vaší aplikaci:
 
@@ -116,7 +116,7 @@ Možnost pro aplikace pomocí zprostředkovatele zapnutý, při vytváření "na
 AuthenticationSettings.Instance.setUseBroker(true);
 ```
 
-#### <a name="step-2-establish-a-new-redirect-uri-with-your-url-scheme"></a>Krok 2: Vytvoření nové přesměrování identifikátor URI se schématem vaší adresy URL
+#### <a name="step-2-establish-a-new-redirect-uri-with-your-url-scheme"></a>Krok 2: Vytvořit nový identifikátor URI se schématem vaše adresa URL přesměrování
 
 Aby bylo možné zajistit správné aplikace recevies vrácený přihlašovací údaje, které tokeny, že je třeba Ujistěte se, že volání zpět do aplikace tak, aby operační systém Android můžete ověřit. Operační systém Android používá hodnotu hash certifikátu v obchodě Google Play. Tato hodnota hash certifikátu nemůže být falešné neautorizovaný aplikací. Spolu se identifikátor URI aplikace zprostředkovatele Microsoft zajišťuje, že tokeny jsou vráceny do správné aplikace. Přesměrování jedinečný identifikátor URI je potřeba možné zaregistrovat v aplikaci.
 
@@ -124,11 +124,11 @@ Váš identifikátor URI pro přesměrování musí být ve správné formu:
 
 `msauth://packagename/Base64UrlencodedSignature`
 
-Příklad: *msauth://com.example.userapp/IcB5PxIyvbLkbFVtBI%2FitkW%2Fejk%3D*
+ex: *msauth://com.example.userapp/IcB5PxIyvbLkbFVtBI%2FitkW%2Fejk%3D*
 
 Tento identifikátor URI pro přesměrování můžete zaregistrovat pomocí registrace aplikace [webu Azure portal](https://portal.azure.com/). Další informace o registraci aplikace Azure AD najdete v tématu [integraci se službou Azure Active Directory](active-directory-how-to-integrate.md).
 
-#### <a name="step-3-set-up-the-correct-permissions-in-your-application"></a>Krok 3: Nastavení správná oprávnění ve vaší aplikaci
+#### <a name="step-3-set-up-the-correct-permissions-in-your-application"></a>Krok 3: Nastavení správné oprávnění v aplikaci
 
 Aplikace zprostředkovatele v Androidu používá funkci Správce účtů operačního systému Android ke správě přihlašovacích údajů napříč aplikacemi. Chcete-li použít zprostředkovatele v Androidu manifest aplikace musí mít oprávnění k používání účtů ke Správci účtů. Tato oprávnění jsou podrobně popsány v [Google dokumentaci pro správce účtu](https://developer.android.com/reference/android/accounts/AccountManager.html)
 

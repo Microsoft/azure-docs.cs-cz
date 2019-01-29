@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 04/03/2018
 ms.author: srrengar
-ms.openlocfilehash: baa86fe70c394aaea31a6fa775073bb26d062c49
-ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
+ms.openlocfilehash: 89cd8e85c9902bb1caeedd80240811f59ebec409
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "54002395"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55187432"
 ---
 # <a name="event-aggregation-and-collection-using-windows-azure-diagnostics"></a>Agregace událostí a kolekce pomocí Windows Azure Diagnostics
 > [!div class="op_single_selector"]
@@ -187,7 +187,7 @@ Když upravíte soubor template.json, jak je popsáno, znovu publikujte šablony
 
 ### <a name="update-storage-quota"></a>Aktualizace kvóty úložiště
 
-Od tabulky vyplněn rozšíření roste až do dosažení této kvóty, můžete chtít zvážit snížení velikosti kvóty. Výchozí hodnota je 50 GB a je možné konfigurovat v šabloně v části `overallQuotainMB` pole `DiagnosticMonitorConfiguration`
+Od tabulky vyplněn rozšíření roste až do dosažení této kvóty, můžete chtít zvážit snížení velikosti kvóty. Výchozí hodnota je 50 GB a je možné konfigurovat v šabloně v části `overallQuotaInMB` pole `DiagnosticMonitorConfiguration`
 
 ```json
 "overallQuotaInMB": "50000",

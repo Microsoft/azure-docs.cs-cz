@@ -7,16 +7,16 @@ manager: daveba
 ms.reviewer: sahenry
 ms.service: active-directory
 ms.workload: identity
-ms.component: user-help
+ms.subservice: user-help
 ms.topic: overview
 ms.date: 07/30/2018
 ms.author: lizross
-ms.openlocfilehash: 6c5801f3abbb81ccf1547d3ed886b48014dce1c8
-ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
+ms.openlocfilehash: 9c6a8df29fd360773880594962fb8048602746e5
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/25/2019
-ms.locfileid: "54904178"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55177232"
 ---
 # <a name="my-apps-portal-overview"></a>Přehled portálu Moje aplikace
 

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: 7037c0b4c1021ac7b91134fa429a774f600a774f
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: 3430ff2b292a3e5fe675c3a5f332a12a88d4bfbf
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53194160"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55096785"
 ---
 # <a name="azure-performance-diagnostics-vm-extension-for-windows"></a>Rozšíření virtuálního počítače výkonu Azure Diagnostics pro Windows
 
@@ -81,7 +81,7 @@ Následující kód JSON ukazuje schématu pro rozšíření virtuálního poč�
 |storPortTrace|s|Možnost povolit StorPort trasování. Platné hodnoty jsou **s** nebo prázdnou hodnotu. Pokud nechcete k zaznamenání trasování, ponechte hodnotu jako prázdný.
 |srNumber|123452016365929|Číslo lístku podpory, pokud je k dispozici. Nechte zadanou hodnotu jako prázdný, pokud není nutné.
 |requestTimeUtc|2017-09-28T22:08:53.736Z|Aktuálním datem a časem ve formátu Utc. Pokud používáte portál pro toto rozšíření nainstalovat, není potřeba zadat tuto hodnotu.
-|resourceId|/poskytovatelé/ /Subscriptions/ {subscriptionId} /resourceGroups/ {resourceGroupName} {resourceProviderNamespace} / {resourceType} / {resourceName}|Jedinečný identifikátor virtuálního počítače.
+|resourceId|/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}|Jedinečný identifikátor virtuálního počítače.
 |storageAccountName|mystorageaccount|Název účtu úložiště pro uložení diagnostických protokolů a výsledků.
 |storageAccountKey|lDuVvxuZB28NNP…hAiRF3voADxLBTcc==|Klíč pro účet úložiště.
 
@@ -123,7 +123,7 @@ Odebrat rozšíření z virtuálního počítače, postupujte podle těchto krok
 ## <a name="template-deployment"></a>Nasazení šablon
 Rozšíření virtuálního počítače Azure je možné nasadit s využitím šablon Azure Resource Manageru. Schéma JSON, které jsou podrobně popsané v předchozí části lze použít v šabloně Azure Resource Manageru. To spustí rozšíření Azure VM Diagnostika výkonu při nasazení šablony Azure Resource Manageru. Tady je ukázka šablony:
 
-````
+```
 {
   "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
   "contentVersion": "1.0.0.0",
@@ -207,14 +207,14 @@ Rozšíření virtuálního počítače Azure je možné nasadit s využitím š
     }
   ]
 }
-````
+```
 
 ## <a name="powershell-deployment"></a>Nasazení pomocí Powershellu
 `Set-AzureRmVMExtension` Příkaz lze použít k nasazení rozšíření virtuálního počítače výkon diagnostiky Azure do existujícího virtuálního počítače.
 
 PowerShell
 
-````
+```
 $PublicSettings = @{ "storageAccountName"="mystorageaccount";"performanceScenario"="basic";"traceDurationInSeconds"=300;"perfCounterTrace"="p";"networkTrace"="";"xperfTrace"="";"storPortTrace"="";"srNumber"="";"requestTimeUtc"="2017-09-28T22:08:53.736Z";"resourceId"="VMResourceId" }
 $ProtectedSettings = @{"storageAccountKey"="mystoragekey" }
 
@@ -227,7 +227,7 @@ Set-AzureRmVMExtension -ExtensionName "AzurePerformanceDiagnostics" `
     -Settings $PublicSettings `
     -ProtectedSettings $ProtectedSettings `
     -Location WestUS
-````
+```
 
 ## <a name="information-on-the-data-captured"></a>Informace o data zaznamenaná
 Nástroj PerfInsights shromáždí různé protokoly, konfigurace a diagnostických dat, v závislosti na vybraném scénáři. Další informace najdete v tématu [PerfInsights dokumentaci](https://aka.ms/perfinsights).

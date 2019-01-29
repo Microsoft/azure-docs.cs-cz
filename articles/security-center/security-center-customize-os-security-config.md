@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/26/2018
 ms.author: rkarlin
-ms.openlocfilehash: 91ee57ccd676d1d5e806e3f22eed3389d0fe5e73
-ms.sourcegitcommit: 922f7a8b75e9e15a17e904cc941bdfb0f32dc153
+ms.openlocfilehash: 16c7ad523bcd4a1f7b7b1f80d99e4d36dade72df
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52334189"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55102426"
 ---
 # <a name="customize-os-security-configurations-in-azure-security-center-preview"></a>Přizpůsobení konfiguracemi zabezpečení operačního systému ve službě Azure Security Center (Preview)
 
@@ -90,29 +90,29 @@ V souboru vlastního nastavení všechny podporované verze operačního systém
 >
 >
 
-Pokud upravujete soubor vlastního nastavení, můžete upravit jedno pravidlo nebo všechny z nich. Každá sada pravidel obsahuje *pravidla* část, která je rozdělena do tří kategorií: registr, zásady auditu a zásady zabezpečení, jak je znázorněno zde:
+Pokud upravujete soubor vlastního nastavení, můžete upravit jedno pravidlo nebo všechny z nich. Každá sada pravidel obsahuje *pravidla* část, která je rozdělena do tří kategorií: Registr, zásady auditu a zásady zabezpečení, jak je znázorněno zde:
 
 ![Tři kategorie sady pravidel](media/security-center-customize-os-security-config/rules-section.png)
 
 Každá kategorie má svou vlastní sadu atributů. Můžete změnit následující atributy:
 
-- **expectedValue**: datový typ pole tohoto atributu musí odpovídat podporované hodnoty za *typ pravidla*, například:
+- **expectedValue**: Datový typ pole tohoto atributu musí odpovídat podporované hodnoty za *typ pravidla*, například:
 
-  - **baselineRegistryRules**: hodnota by měla odpovídat [regValueType](https://msdn.microsoft.com/library/windows/desktop/ms724884) , který je definován v tomto pravidle.
+  - **baselineRegistryRules**: Hodnota by měla odpovídat [regValueType](https://msdn.microsoft.com/library/windows/desktop/ms724884) , který je definován v tomto pravidle.
 
-  - **baselineAuditPolicyRules**: použijte jednu z následujících hodnot řetězce:
+  - **baselineAuditPolicyRules**: Použijte jednu z následujících hodnot řetězce:
 
     - *Úspěchy a chyby*
 
     - *Úspěch*
 
-  - **baselineSecurityPolicyRules**: použijte jednu z následujících hodnot řetězce:
+  - **baselineSecurityPolicyRules**: Použijte jednu z následujících hodnot řetězce:
 
     - *Nikdo*
 
-    - Seznam povolených skupin uživatelů, například: *správci*, *Backup Operators*
+    - Seznam povolených skupin uživatelů, například: *Správci*, *Backup Operators*
 
--   **Stav**: řetězec může obsahovat možnosti *zakázané* nebo *povoleno*. Pro toto vydání ve verzi private preview řetězec je velká a malá písmena.
+-   **Stav**: Řetězec může obsahovat možnosti *zakázané* nebo *povoleno*. Pro toto vydání ve verzi private preview řetězec je velká a malá písmena.
 
 Jedná se pouze pole, které lze nastavit. Pokud jste porušují formát nebo velikost, nebudete moci uložit změny. Zobrazí se chybová zpráva oznamující, že je třeba nahrát platný konfigurační soubor JSON.
 
@@ -121,7 +121,7 @@ Seznam dalších potenciálních chyb, naleznete v tématu [kódy chyb](#error-c
 V následujících třech částech obsahují příklady z předchozích pravidel. *ExpectedValue* a *stavu* atributy lze změnit.
 
 **baselineRegistryRules**
-```
+```json
     {
     "hive": "LocalMachine",
     "regValueType": "Int",
@@ -144,7 +144,7 @@ V následujících třech částech obsahují příklady z předchozích pravide
 ```
 
 **baselineAuditPolicyRules**
-```
+```json
     {
     "auditPolicyId": "0cce923a-69ae-11d9-bed3-505054503030",
     "ruleId": "37745508-95fb-44ec-ab0f-644ec0b16995",
@@ -161,7 +161,7 @@ V následujících třech částech obsahují příklady z předchozích pravide
 ```
 
 **baselineSecurityPolicyRules**
-```
+```json
     {
     "sectionName": "Privilege Rights",
     "settingName": "SeIncreaseWorkingSetPrivilege",
@@ -194,17 +194,17 @@ Můžete také vytvořit nová pravidla. Než vytvoříte nové pravidlo, mějte
 
 Nová vlastní pravidla jsou označené nový vlastní zdroj (! = "Microsoft"). *RuleId* pole může být null nebo prázdný. Pokud je hodnota prázdná, Microsoft jej vygeneruje. Pokud není prázdná, musí mít platný identifikátor GUID, který je jedinečný ve všech pravidel (výchozí a vlastní). Projděte si následující omezení pro základní pole:
 
--   **originalId**: může být null nebo prázdný. Pokud *originalId* není prázdný, by mělo být platný identifikátor GUID.
+-   **originalId**: Může být null nebo prázdný. Pokud *originalId* není prázdný, by mělo být platný identifikátor GUID.
 
--   **cceId**: může být null nebo prázdný. Pokud *cceId* není prázdná, musí být jedinečný.
+-   **cceId**: Může být null nebo prázdný. Pokud *cceId* není prázdná, musí být jedinečný.
 
 -   **Typ pravidla**: (vyberte jeden) registru, AuditPolicy nebo SecurityPolicy.
 
 -   **Závažnost**: (vyberte jeden) neznámý, kritické, upozornění nebo informační.
 
--   **analyzeOperation**: musí být *rovná*.
+-   **analyzeOperation**: Musí být *rovná*.
 
--   **auditPolicyId**: musí být platný identifikátor GUID.
+-   **auditPolicyId**: Musí být platný identifikátor GUID.
 
 -   **regValueType**: (vyberte jeden) Int, Long, String nebo MultipleString.
 
@@ -216,7 +216,7 @@ Nová vlastní pravidla jsou označené nový vlastní zdroj (! = "Microsoft"). 
 Příkladem nového vlastního pravidla:
 
 **Registru**:
-```
+```json
     {
     "hive": "LocalMachine",
     "regValueType": "Int",
@@ -225,7 +225,7 @@ Příkladem nového vlastního pravidla:
     "valueName": "MyValueName",
     "originalId": "",
     "cceId": "",
-    "ruleName": "My new registry rule”, "baselineRuleType": "Registry",
+    "ruleName": "My new registry rule", "baselineRuleType": "Registry",
     "expectedValue": "123", "severity": "Critical",
     "analyzeOperation": "Equals",
     "source": "MyCustomSource",
@@ -233,7 +233,7 @@ Příkladem nového vlastního pravidla:
     }
 ```
 **Zásady zabezpečení**:
-```
+```json
    {
    "sectionName": "Privilege Rights",
    "settingName": "SeDenyBatchLogonRight",
@@ -248,7 +248,7 @@ Příkladem nového vlastního pravidla:
    }
 ```
 **Zásady auditu**:
-```
+```json
    {
    "auditPolicyId": "0cce923a-69ae-11d9-bed3-505054503030",
    "originalId": "",
@@ -275,7 +275,7 @@ Všechny možné chyby jsou uvedené v následující tabulce:
 
 | **Chyba**                                | **Popis**                                                                                                                              |
 |------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------|
-| BaselineConfiguratiohSchemaVersionError  | Vlastnost *schemaVersion* byl nalezen neplatný nebo prázdný. Hodnota musí být nastavena na *{0}*.                                                         |
+| BaselineConfigurationSchemaVersionError  | Vlastnost *schemaVersion* byl nalezen neplatný nebo prázdný. Hodnota musí být nastavena na *{0}*.                                                         |
 | BaselineInvalidStringError               | Vlastnost *{0}* nemůže obsahovat  *\\n*.                                                                                                         |
 | BaselineNullRuleError                    | Seznam standardních hodnot konfigurace pravidel obsahuje pravidla s hodnotou *null*.                                                                         |
 | BaselineRuleCceIdNotUniqueError          | Identifikátor CCE *{0}* není jedinečný.                                                                                                                  |
@@ -298,7 +298,7 @@ Všechny možné chyby jsou uvedené v následující tabulce:
 | BaselineRuleTypeDoesntMatchError         | Skutečný typ pravidla je *{0}*, ale *ruleType* vlastnost *{1}*.                                                                          |
 | BaselineRuleUnpermittedChangesError      | Pouze *expectedValue* a *stavu* vlastnosti se nesmí měnit.                                                                       |
 | BaselineTooManyRules                     | Maximální počet povolených přizpůsobených pravidel je {0} pravidla. Obsahuje danou konfiguraci {1} pravidla, {2} výchozí pravidla, a {3} přizpůsobit pravidla. |
-| ErrorNoConfigurationStatus               | Nenašel se žádný stav konfigurace. Stav konfigurace požadovaného stavu: *výchozí* nebo *vlastní*.                                    |
+| ErrorNoConfigurationStatus               | Nenašel se žádný stav konfigurace. Stav konfigurace požadovaného stavu: *Výchozí* nebo *vlastní*.                                    |
 | ErrorNonEmptyRulesetOnDefault            | Stav konfigurace je nastavený na výchozí hodnotu. *BaselineRulesets* seznamu musí být null ani prázdný.                                                          |
 | ErrorNullRulesetsPropertyOnCustom        | Stav danou konfiguraci *vlastní* ale *baselineRulesets* vlastnost je null nebo prázdný.                                             |
 | ErrorParsingBaselineConfig               | Danou konfiguraci je neplatný. Jeden nebo více definovaných hodnot mají hodnotu null nebo neplatného typu.                                  |

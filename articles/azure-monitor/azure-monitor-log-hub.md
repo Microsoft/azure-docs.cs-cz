@@ -11,14 +11,14 @@ ms.service: azure-monitor
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: hub-page
-ms.date: 01/15/2019
+ms.date: 01/25/2019
 ms.author: magoedte
-ms.openlocfilehash: 5c3a61eb4509742f8f5a8732f5d4e81cab59ff78
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: afdc71e5bbc70d3553adeb161e0bfc48a129b3c6
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54830267"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55094083"
 ---
 <div id="main" class="v2">
     <div class="container">
@@ -53,8 +53,8 @@ ms.locfileid: "54830267"
                                                                     <p> 
                                                                         <a href="/azure/azure-monitor/overview">Co je Azure Monitor?</a><br/>
                                                                         <a href="/azure/azure-monitor/azure-monitor-rebrand">Změny brandingu</a><br/>
-                                                                        <a href="/azure/azure-monitor/platform/monitoring-data-sources">Monitorování zdroje dat</a><br/>
-                                                                        <a href="/azure/azure-monitor/platform/log-analytics-service-providers">Aspekty návrhu pro poskytovatele služeb</a><br/>
+                                                                        <a href="/azure/azure-monitor/platform/data-sources">Monitorování zdroje dat</a><br/>
+                                                                        <a href="/azure/azure-monitor/platform/service-providers">Aspekty návrhu pro poskytovatele služeb</a><br/>
                                                                     </p>
                                                                 </div>
                                                             </div>
@@ -103,7 +103,7 @@ ms.locfileid: "54830267"
                                                     <h3>Monitorování</h3>
                                                         <p>
                                                             <a href="/azure/azure-monitor/platform/data-collection">Metriky a protokoly</a><br/>
-                                                            <a href="/azure/azure-monitor/platform/log-analytics-data-ingestion-time">Čas příjem dat protokolu</a><br/>
+                                                            <a href="/azure/azure-monitor/platform/data-ingestion-time">Čas příjem dat protokolu</a><br/>
                                                         </p>
                                                         <br>
                                                         <h3>Zdroje dat</h3>
@@ -147,7 +147,7 @@ ms.locfileid: "54830267"
                                                         <br>
                                                         <h3>Reakce na incidenty</h3>
                                                         <p>
-                                                            <a href="/azure/azure-monitor/platform/alerts-unified">Přehled výstrah</a><br/>
+                                                            <a href="/azure/azure-monitor/platform/alerts-overview">Přehled výstrah</a><br/>
                                                             <a href="/azure/azure-monitor/platform/autoscale-overview">Automatické škálování</a><br/>
                                                             <a href="/azure/azure-monitor/platform/alerts-unified-log">Upozornění protokolů</a><br/>
                                                             <a href="/azure/azure-monitor/platform/alerts-activity-log">Upozornění protokolu aktivit</a><br/>

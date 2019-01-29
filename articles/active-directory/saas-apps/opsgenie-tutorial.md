@@ -7,19 +7,19 @@ author: jeevansd
 manager: femila
 ms.assetid: 41b59b22-a61d-4fe6-ab0d-6c3991d1375f
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 04/16/2018
 ms.author: jeedes
-ms.openlocfilehash: 715035072ddc2ceb087d003dd5da5bc47572e9b9
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 52d976761ad5962f09f40565cfa04ae78386d1ca
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39444347"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55192380"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-opsgenie"></a>Kurz: Integrace Azure Active Directory s použitím OpsGenie
 
@@ -37,7 +37,7 @@ Pokud chcete zjistit další podrobnosti o integraci aplikací SaaS v Azure AD, 
 
 Konfigurace integrace Azure AD s použitím OpsGenie, potřebujete následující položky:
 
-- S předplatným služby Azure AD
+- Předplatné Azure AD
 - Použitím OpsGenie jednotného přihlašování povolená předplatného
 
 > [!NOTE]
@@ -59,7 +59,7 @@ Konfigurace integrace použitím OpsGenie do služby Azure AD, budete muset při
 
 **Chcete-li přidat použitím OpsGenie z galerie, postupujte následovně:**
 
-1. V  **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu. 
+1. V **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu. 
 
     ![Active Directory][1]
 
@@ -130,19 +130,19 @@ V této části Povolení služby Azure AD jednotného přihlašování na port�
 
 1. Klikněte na tlačítko **nastavení**a potom klikněte na tlačítko **Single Sign On** kartu.
    
-    ![Přihlašování jedním použitím OpsGenie](./media/opsgenie-tutorial/tutorial_opsgenie_06.png)
+    ![OpsGenie Single Sign-On](./media/opsgenie-tutorial/tutorial_opsgenie_06.png)
 
 1. Pokud chcete povolit jednotné přihlašování, vyberte **povoleno**.
    
-    ![Nastavení použitím OpsGenie](./media/opsgenie-tutorial/tutorial_opsgenie_07.png) 
+    ![OpsGenie Settings](./media/opsgenie-tutorial/tutorial_opsgenie_07.png) 
 
 1. V **poskytovatele** klikněte na tlačítko **Azure Active Directory** kartu.
    
-    ![Nastavení použitím OpsGenie](./media/opsgenie-tutorial/tutorial_opsgenie_08.png) 
+    ![OpsGenie Settings](./media/opsgenie-tutorial/tutorial_opsgenie_08.png) 
 
 1. Na stránce dialogové okno Azure Active Directory proveďte následující kroky:
    
-    ![Nastavení použitím OpsGenie](./media/opsgenie-tutorial/tutorial_opsgenie_09.png)
+    ![OpsGenie Settings](./media/opsgenie-tutorial/tutorial_opsgenie_09.png)
     
     a. V **koncový bod SAML 2.0** vložit do textového pole **jednotné přihlašování na adresu URL služby**hodnotu, která jste zkopírovali z portálu Azure portal.
     
@@ -189,13 +189,13 @@ Cílem této části je vytvořte uživatele Britta Simon v použitím OpsGenie.
 
 1. Přejděte do seznamu uživatelů kliknutím **uživatele** v levém panelu.
    
-   ![Nastavení použitím OpsGenie](./media/opsgenie-tutorial/tutorial_opsgenie_10.png) 
+   ![OpsGenie Settings](./media/opsgenie-tutorial/tutorial_opsgenie_10.png) 
 
 1. Klikněte na tlačítko **přidat uživatele**.
 
 1. Na **přidat uživatele** dialogového okna, proveďte následující kroky:
    
-   ![Nastavení použitím OpsGenie](./media/opsgenie-tutorial/tutorial_opsgenie_11.png)
+   ![OpsGenie Settings](./media/opsgenie-tutorial/tutorial_opsgenie_11.png)
    
    a. V **e-mailu** textového pole zadejte e-mailovou adresu BrittaSimon zákazníky a vyřešené v Azure Active Directory.
    
@@ -242,7 +242,7 @@ Cílem této části je testování konfigurace jednotného přihlašování k A
 
 Když kliknete na dlaždici použitím OpsGenie na přístupovém panelu, vám by měl získat automaticky přihlášení k aplikaci použitím OpsGenie.
 
-## <a name="additional-resources"></a>Další zdroje informací:
+## <a name="additional-resources"></a>Další materiály
 
 * [Seznam kurzů o integraci aplikací SaaS pomocí Azure Active Directory](tutorial-list.md)
 * [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](../manage-apps/what-is-single-sign-on.md)

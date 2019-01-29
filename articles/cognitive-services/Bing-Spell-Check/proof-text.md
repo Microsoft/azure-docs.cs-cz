@@ -6,16 +6,16 @@ services: cognitive-services
 author: noellelacharite
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: bing-spell-check
+ms.subservice: bing-spell-check
 ms.topic: overview
 ms.date: 05/03/2018
 ms.author: nolachar
-ms.openlocfilehash: 3a277b10561b2756fab0af6455d17557a8d93a53
-ms.sourcegitcommit: 96527c150e33a1d630836e72561a5f7d529521b7
+ms.openlocfilehash: c15af0dcebdfcbe984d47b5c06f213e516ae3914
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/09/2018
-ms.locfileid: "51345704"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55149767"
 ---
 # <a name="what-is-bing-spell-check-api"></a>Co je rozhraní API Bingu pro kontrolu pravopisu?
 
@@ -39,7 +39,7 @@ Tato kontrola pravopisu zvládne jakýkoli scénář zpracování textu:
 Rozhraní API podporuje dva režimy kontroly, `Proof` a `Spell`.  Příklady najdete [tady](https://azure.microsoft.com/services/cognitive-services/spell-check/).
 ### <a name="proof---for-documents-scenario"></a>Proof – pro scénář s dokumenty
 Výchozí režim je `Proof`. Režim kontroly pravopisu `Proof` poskytuje během vytváření dokumentu nejkomplexnější kontroly, opravuje velká písmena, přidává základní interpunkci a další. Je ale k dispozici jenom pro trhy en-US (americká angličtina), es-ES (španělština) a pt-BR (portugalština). (Poznámka: Pro španělštinu a portugalštinu pouze v beta verzi.) Pro všechny ostatní trhy nastavte parametr režimu na Spell. 
-<br /><br/>**Poznámka:** Pokud délka textu dotazu přesáhne 4096 znaků, bude před zpracováním zkrácena na 4096 znaků. 
+<br /><br/>**POZNÁMKA:**   Pokud délka textu dotazu je větší než 4096, bude zkrácen na 4 096 znaků, pak zpracovat. 
 ### <a name="spell----for-web-searchesqueries-scenario"></a>Spell –  pro scénář webových hledání a dotazů
 Režim `Spell` je agresivnější a vrací lepší výsledky hledání. Režim `Spell` najde nejvíc pravopisných chyb, ale nedokáže najít některé gramatické chyby, které režim `Proof` zachytí, například použití malých a velkých písmen nebo opakovaná slova.
 

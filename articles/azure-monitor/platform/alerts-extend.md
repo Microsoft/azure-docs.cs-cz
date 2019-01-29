@@ -1,5 +1,5 @@
 ---
-title: Rozšíření upozornění (kopie) Log Analytics do upozornění Azure – přehled
+title: Rozšíření upozornění (kopie) Log Analytics do cloudu Azure Government
 description: Přehled procesu zkopírování upozornění z Log Analytics na portálu OMS do upozornění Azure s podrobně popisuje adresování běžné problémy zákazníků.
 author: msvijayn
 services: azure-monitor
@@ -8,19 +8,21 @@ ms.topic: conceptual
 ms.date: 10/01/2018
 ms.author: vinagara
 ms.subservice: alerts
-ms.openlocfilehash: e2f2a739f78072a0479e77e68e84c8f4b395468f
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: efd2fc9d164564126b7b641ef35bbb10c4834f49
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54422222"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55099324"
 ---
 # <a name="extend-log-analytics-alerts-to-azure-alerts"></a>Rozšíření upozornění Log Analytics do Azure Alerts
 
 > [!NOTE]
 > Microsoft už dokončili proces popsaný v tomto článku pro veřejné verze Azure. Nicméně stále platí pro verze pro státní správu USA.  
 
-Dokud se nedávno, Azure Log Analytics zahrnuté vlastní výstrahy funkce, které by vás proaktivně upozorní podmínek založených na datech Log Analytics. Můžete spravovat pravidla výstrah ve službě portál Microsoft Operations Management Suite. Nové prostředí upozornění teď obsahuje integrované výstrahy napříč různými službami v Microsoft Azure. Tato možnost je dostupná jako **výstrahy** v části Azure Monitor na webu Azure Portal a podporuje upozornění z aktivity protokolů, metrik a protokolů v Log Analytics a Azure Application Insights. 
+Dokud se nedávno, Azure Log Analytics zahrnuté vlastní výstrahy funkce, které by vás proaktivně upozorní podmínek založených na datech Log Analytics. Můžete spravovat pravidla výstrah ve službě portál Microsoft Operations Management Suite. Nové prostředí upozornění teď obsahuje integrované výstrahy napříč různými službami v Microsoft Azure. Tato možnost je dostupná jako **výstrahy** v části Azure Monitor na webu Azure Portal a podporuje upozornění z aktivity protokolů, metrik a protokolů v Log Analytics a Azure Application Insights.
+
+Zákazníci cloudu Azure Government, které jsou na portálu OMS, můžete [dobrovolně rozšířit do Azure, pravidla výstrah](alerts-extend-tool.md) z **1. února 2019**. Spouští se **1. března 2019** – Microsoft auto rozšíří systematicky všechny existující pravidla výstrah ve službě Azure Government – portál OMS do Azure, bez jakýchkoli výpadků nebo konec výpadku. Nový pracovní prostor vytvořili nebo později **1. března 2019** v cloudu Azure Government OMS portal bude automaticky rozšíří do Azure.
 
 ## <a name="benefits-of-extending-your-alerts"></a>Výhody rozšiřovat vaše upozornění
 Existuje několik výhod, vytváření a Správa výstrah na webu Azure Portal, jako například:

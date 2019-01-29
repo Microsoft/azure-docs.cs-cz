@@ -1,6 +1,6 @@
 ---
-title: Nahrávání, kódování a streamování pomocí služby Azure Media Services | Microsoft Docs
-description: Tento kurz popisuje, jak nahrát soubor, zakódovat video a streamovat obsah v Azure Media Services.
+title: Nahrávání, kódování a streamování pomocí služby Azure Media Services v3 pomocí .NET | Dokumentace Microsoftu
+description: Postupujte podle kroků v tomto kurzu k nahrání souboru a kódování videa a Streamovat obsah pomocí Media Services v3 pomocí rozhraní .NET.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -10,16 +10,16 @@ ms.service: media-services
 ms.workload: ''
 ms.topic: tutorial
 ms.custom: mvc
-ms.date: 01/23/2019
+ms.date: 01/28/2019
 ms.author: juliako
-ms.openlocfilehash: 051de9b68b6cf830592a7cf8bdad7808e044fbcc
-ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
+ms.openlocfilehash: c3671df61eea5c826227706106cbb48dc70ad55f
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54888707"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55157751"
 ---
-# <a name="tutorial-upload-encode-and-stream-videos-using-apis"></a>Kurz: Nahrávání, kódování a streamování videí pomocí rozhraní API
+# <a name="tutorial-upload-encode-and-stream-videos-using-net"></a>Kurz: Nahrávání, kódování a streamování videí pomocí .NET
 
 Azure Media Services umožňuje kódování souborů médií do formátů, které můžete přehrát na širokou škálu prohlížečů a zařízení. Například můžete chtít svůj obsah streamovat ve formátu Apple HLS nebo MPEG DASH. Před streamováním je vhodné soubor digitálního média ve vysoké kvalitě zakódovat. Pokyny ke kódování najdete v tématu [Principy kódování](encoding-concept.md). V tomto kurzu se nahraje místní soubor videa a nahraný soubor se zakóduje. Můžete také zakódovat obsah, který zpřístupníte prostřednictvím adresy URL protokolu HTTPS. Další informace najdete v článku o [vytvoření vstupu úlohy z adresy URL protokolu HTTP(S)](job-input-from-http-how-to.md).
 
@@ -28,8 +28,7 @@ Azure Media Services umožňuje kódování souborů médií do formátů, kter�
 V tomto kurzu získáte informace o následujících postupech:    
 
 > [!div class="checklist"]
-> * Přístup k rozhraní API služby Media Services
-> * Konfigurace ukázkové aplikace
+> * Stažení ukázkové aplikace popsané v tématu
 > * Kontrola kódu, který provádí nahrávání, kódování a streamování
 > * Spuštění aplikace
 > * Testování adresy URL pro streamování
@@ -40,15 +39,10 @@ V tomto kurzu získáte informace o následujících postupech:
 ## <a name="prerequisites"></a>Požadavky
 
 - Pokud nemáte nainstalovanou sadu Visual Studio, můžete získat sadu [Visual Studio Community 2017](https://www.visualstudio.com/thank-you-downloading-visual-studio/?sku=Community&rel=15).
-- Nainstalovat a používat rozhraní příkazového řádku místně, musíte mít Azure CLI verze 2.0 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI](/cli/azure/install-azure-cli). 
+- [Vytvoření účtu Media Services](create-account-cli-how-to.md).<br/>Ujistěte se, že hodnoty, které jste použili pro název skupiny prostředků a název účtu Media Services mějte na paměti.
+- Postupujte podle kroků v [rozhraní API k přístupu k Azure Media Services pomocí Azure CLI](access-api-cli-how-to.md) a uložte přihlašovací údaje. Je potřeba použít pro přístup k rozhraní API.
 
-    V současné době všechny [Media Services v3 CLI](https://aka.ms/ams-v3-cli-ref) příkazy fungují ve službě Azure Cloud Shell. Doporučujeme používat rozhraní příkazového řádku místně.
-
-- [Vytvoření účtu Media Services](create-account-cli-how-to.md).
-
-    Ujistěte se, že hodnoty, které jste použili pro název skupiny prostředků a název účtu Media Services mějte na paměti
-
-## <a name="download-the-sample"></a>Stažení ukázky
+## <a name="download-and-configure-the-sample"></a>Stažení a konfigurace ukázky aplikace
 
 Pomocí následujícího příkazu naklonujte do svého počítače úložiště GitHub s ukázkou streamování .NET:  
 
@@ -58,7 +52,7 @@ Pomocí následujícího příkazu naklonujte do svého počítače úložiště
 
 Ukázka se nachází ve složce [UploadEncodeAndStreamFiles](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/tree/master/AMSV3Tutorials/UploadEncodeAndStreamFiles).
 
-[!INCLUDE [media-services-v3-cli-access-api-include](../../../includes/media-services-v3-cli-access-api-include.md)]
+Otevřít [appsettings.json](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/UploadEncodeAndStreamFiles/appsettings.json) stažený projekt. Nahraďte hodnoty s přihlašovacími údaji, které jste získali z [přístup k rozhraní API](access-api-cli-how-to.md).
 
 ## <a name="examine-the-code-that-uploads-encodes-and-streams"></a>Kontrola kódu, který provádí nahrávání, kódování a streamování
 

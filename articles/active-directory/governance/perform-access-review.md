@@ -10,16 +10,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.component: compliance
+ms.subservice: compliance
 ms.date: 07/16/2018
 ms.author: rolyon
 ms.reviewer: mwahl
-ms.openlocfilehash: 455a4922dfd0832c49729bed007dd696562be07a
-ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
+ms.openlocfilehash: bac5ddc1ee6f002781dc73845773379804a2ac1c
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52263414"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55179391"
 ---
 # <a name="start-an-access-review-with-azure-ad-access-reviews"></a>Zahájení kontroly přístupu pomocí kontrol přístupu Azure AD
 

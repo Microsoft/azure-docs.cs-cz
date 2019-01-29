@@ -6,16 +6,16 @@ services: cognitive-services
 author: aahill
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: bing-custom-search
+ms.subservice: bing-custom-search
 ms.topic: quickstart
 ms.date: 05/07/2018
 ms.author: maheshb
-ms.openlocfilehash: 764a6a060a3ce2c7af9e4051b02ad45d14d27900
-ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
+ms.openlocfilehash: ae50d8ea1556d7956f96b13a6ccbb84c28e8aae9
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53557814"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55149799"
 ---
 # <a name="quickstart-call-your-bing-custom-search-endpoint-using-c"></a>Rychlý start: Volání pomocí koncových bodů vlastního vyhledávání BinguC# 
 
@@ -25,7 +25,7 @@ V tomto rychlém startu můžete začít si vyžádat výsledky hledání od va�
 
 - Instanci vlastního vyhledávání Bingu. Zobrazit [rychlý start: Vytvoření první instanci vlastního vyhledávání Bingu](quick-start.md) Další informace.
 - Microsoft [.Net Core](https://www.microsoft.com/net/download/core)
-- Libovolná edice [Visual Studio 2017](https://www.visualstudio.com/downloads/)
+- Any edition of [Visual Studio 2017](https://www.visualstudio.com/downloads/)
 - Pokud používáte Linux nebo MacOS, je možné tuto aplikaci spustit pomocí [Mono](http://www.mono-project.com/).
 - Nainstalovaný balíček [NuGet pro vlastní vyhledávání](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Search.CustomSearch/1.2.0). 
     - V Průzkumníku řešení v sadě Visual Studio klikněte pravým tlačítkem na projekt a v nabídce vyberte `Manage NuGet Packages`. Nainstalujte balíček `Microsoft.Azure.CognitiveServices.Search.CustomSearch`. Při instalaci balíčku NuGet pro vlastní vyhledávání se nainstalují také následující sestavení:

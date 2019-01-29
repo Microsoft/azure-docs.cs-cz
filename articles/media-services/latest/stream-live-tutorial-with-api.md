@@ -1,5 +1,5 @@
 ---
-title: Stream za provozu pomocí Azure Media Services v3 | Dokumentace Microsoftu
+title: Stream za provozu pomocí Azure Media Services v3 pomocí .NET | Dokumentace Microsoftu
 description: Tento kurz vás provede postupem živého streamování s Media Services v3 s použitím .NET Core.
 services: media-services
 documentationcenter: ''
@@ -12,18 +12,18 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
 ms.custom: mvc
-ms.date: 01/22/2019
+ms.date: 01/28/2019
 ms.author: juliako
-ms.openlocfilehash: c59ebc0672970c6ee8d00daae373036e2768e318
-ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
+ms.openlocfilehash: 49598eb8579e20dd20ca63d11529ba106a510102
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54888188"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55170517"
 ---
-# <a name="tutorial-stream-live-with-media-services-v3-using-apis"></a>Kurz: Stream živé pomocí Media Services v3 pomocí rozhraní API
+# <a name="tutorial-stream-live-with-media-services-v3-using-net"></a>Kurz: Stream živé pomocí Media Services v3 pomocí .NET
 
-Ve službě Azure Media Services [živé události](https://docs.microsoft.com/rest/api/media/liveevents) zodpovídají za zpracování obsahu živého streamování. Živá událost obsahuje vstupní koncový bod (adresa URL ingestu), pak poskytnete kodér služby live Encoding. Živá událost přijímat živé vstupní datové proudy z live encoder a zpřístupňuje je prostřednictvím jednoho nebo více datových proudů [koncové body streamování](https://docs.microsoft.com/rest/api/media/streamingendpoints). Události LiveEvent poskytují také koncový bod náhledu (adresu URL náhledu), který se používá k zobrazení náhledu a ověření datového proudu před dalším zpracováním a doručením. Tento kurz ukazuje, jak použít .NET Core k vytvoření **průchozího** typu události v reálném čase. 
+Ve službě Azure Media Services [živé události](https://docs.microsoft.com/rest/api/media/liveevents) zodpovídají za zpracování obsahu živého streamování. Živá událost obsahuje vstupní koncový bod (adresa URL ingestu), pak poskytnete kodér služby live Encoding. Živá událost přijímat živé vstupní datové proudy z live encoder a zpřístupňuje je prostřednictvím jednoho nebo více datových proudů [koncové body streamování](https://docs.microsoft.com/rest/api/media/streamingendpoints). Události v reálném čase také poskytuje koncový bod ve verzi preview (adresa URL náhledu), který používáte k zobrazení náhledu a ověření datového proudu před dalším zpracováním a doručením. Tento kurz ukazuje, jak použít .NET Core k vytvoření **průchozího** typu události v reálném čase. 
 
 > [!NOTE]
 > Než budete pokračovat, přečtěte si téma [Živé streamování s Media Services v3](live-streaming-overview.md). 
@@ -31,8 +31,7 @@ Ve službě Azure Media Services [živé události](https://docs.microsoft.com/r
 V tomto kurzu získáte informace o následujících postupech:    
 
 > [!div class="checklist"]
-> * Přístup k rozhraní API služby Media Services
-> * Konfigurace ukázkové aplikace
+> * Stažení ukázkové aplikace popsané v tématu
 > * Kontrola kódu, který provádí živé streamování
 > * Sledování události s [Azure Media Player](http://amp.azure.net/libs/amp/latest/docs/index.html) na webu http://ampdemo.azureedge.net
 > * Vyčištění prostředků
@@ -44,18 +43,12 @@ V tomto kurzu získáte informace o následujících postupech:
 K dokončení kurzu potřebujete následující:
 
 - Instalace sady Visual Studio Code nebo Visual Studio.
-- Nainstalovat a používat rozhraní příkazového řádku místně, musíte mít Azure CLI verze 2.0 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI](/cli/azure/install-azure-cli). 
-
-    V současné době všechny [Media Services v3 CLI](https://aka.ms/ams-v3-cli-ref) příkazy fungují ve službě Azure Cloud Shell. Doporučujeme používat rozhraní příkazového řádku místně.
-
-- [Vytvoření účtu Media Services](create-account-cli-how-to.md).
-
-    Ujistěte se, že hodnoty, které jste použili pro název skupiny prostředků a název účtu Media Services mějte na paměti
-
+- [Vytvoření účtu Media Services](create-account-cli-how-to.md).<br/>Ujistěte se, že hodnoty, které jste použili pro název skupiny prostředků a název účtu Media Services mějte na paměti.
+- Postupujte podle kroků v [rozhraní API k přístupu k Azure Media Services pomocí Azure CLI](access-api-cli-how-to.md) a uložte přihlašovací údaje. Je potřeba použít pro přístup k rozhraní API.
 - Fotoaparát nebo zařízení (jako je přenosný počítač), které se používá k vysílání události
 - Místní kodér pro kódování v reálném čase, který převádí signály z kamery na datové proudy, které se odesílají do služby živého streamování Media Services. Datový proud musí být ve formátu **RTMP** nebo **Smooth Streaming**.
 
-## <a name="download-the-sample"></a>Stažení ukázky
+## <a name="download-and-configure-the-sample"></a>Stažení a konfigurace ukázky aplikace
 
 Pomocí následujícího příkazu naklonujte do svého počítače úložiště GitHub s ukázkou streamování .NET:  
 
@@ -65,11 +58,10 @@ Pomocí následujícího příkazu naklonujte do svého počítače úložiště
 
 Ukázku živého streamování najdete ve složce [Live](https://github.com/Azure-Samples/media-services-v3-dotnet-core-tutorials/tree/master/NETCore/Live/MediaV3LiveApp) (Živé).
 
-> [!IMPORTANT]
-> Tato ukázka používá pro každý zdroj jedinečnou příponu. Pokud zrušíte ladění nebo ukončíte aplikaci, aniž by proběhla, budete mít v účtu několik událostí LiveEvent. <br/>
-> Ujistěte se, že k zastavení spuštěného živé události. V opačném případě se vám za ně budou **účtovat poplatky**.
+Otevřít [appsettings.json](https://github.com/Azure-Samples/media-services-v3-dotnet-core-tutorials/blob/master/NETCore/Live/MediaV3LiveApp/appsettings.json) stažený projekt. Nahraďte hodnoty s přihlašovacími údaji, které jste získali z [přístup k rozhraní API](access-api-cli-how-to.md).
 
-[!INCLUDE [media-services-v3-cli-access-api-include](../../../includes/media-services-v3-cli-access-api-include.md)]
+> [!IMPORTANT]
+> Tato ukázka používá pro každý zdroj jedinečnou příponu. Pokud zrušíte ladění nebo ukončit aplikaci bez nutnosti jeho spuštění, skončíte s více živé události ve vašem účtu. <br/>Ujistěte se, že k zastavení spuštěného živé události. V opačném případě se vám za ně budou **účtovat poplatky**.
 
 ## <a name="examine-the-code-that-performs-live-streaming"></a>Kontrola kódu, který provádí živé streamování
 
@@ -121,11 +113,13 @@ Jakmile se datový proud plyne do živá událost, je můžete událost streamov
 
 #### <a name="create-an-asset"></a>Vytvoření prostředku
 
-[!code-csharp[Main](../../../media-services-v3-dotnet-core-tutorials/NETCore/Live/MediaV3LiveApp/Program.cs#CreateAsset)]
-
 Vytvoření Assetu pro výstup živého používat.
 
+[!code-csharp[Main](../../../media-services-v3-dotnet-core-tutorials/NETCore/Live/MediaV3LiveApp/Program.cs#CreateAsset)]
+
 #### <a name="create-a-live-output"></a>Vytvoření živé výstupu
+
+Live výstupů spuštění při vytvoření a přestanou při odstranění. Při odstranění výstupní Live nejsou odstraněním podkladových prostředků a obsahu v prostředku.
 
 [!code-csharp[Main](../../../media-services-v3-dotnet-core-tutorials/NETCore/Live/MediaV3LiveApp/Program.cs#CreateLiveOutput)]
 
@@ -133,6 +127,8 @@ Vytvoření Assetu pro výstup živého používat.
 
 > [!NOTE]
 > Po vytvoření účtu Media Services se do vašeho účtu přidá **výchozí** koncový bod streamování ve stavu **Zastaveno**. Pokud chcete spustit streamování vašeho obsahu a využít výhod dynamického balení a dynamického šifrování, musí koncový bod streamování, ze kterého chcete streamovat obsah, být ve stavu **Spuštěno**. 
+
+Když publikujete Live výstupního prostředku pomocí Lokátor streamování, živá událost (až do délky okna DVR) bude dál zobrazit až do vypršení platnosti lokátoru streamování nebo odstranění, podle toho, co nastane dřív.
 
 [!code-csharp[Main](../../../media-services-v3-dotnet-core-tutorials/NETCore/Live/MediaV3LiveApp/Program.cs#CreateStreamingLocator)]
 
@@ -164,13 +160,15 @@ Pokud jste dokončili streamování událostí a chcete dříve zřízené prost
 
 [!code-csharp[Main](../../../media-services-v3-dotnet-core-tutorials/NETCore/Live/MediaV3LiveApp/Program.cs#CleanupLocatorAssetAndStreamingEndpoint)]
 
+Následující kód ukazuje, jak vyčistit účtu všechny živé události:
+
 [!code-csharp[Main](../../../media-services-v3-dotnet-core-tutorials/NETCore/Live/MediaV3LiveApp/Program.cs#CleanupAccount)]   
 
 ## <a name="watch-the-event"></a>Sledování události
 
 Pokud chcete sledovat událost, zkopírujte adresu URL streamování, které jste získali při spuštění kódu v [vytvořit lokátor streamování](#create-a-streaminglocator) a použijte přehrávač dle vašeho výběru. K testování streamování na webu http://ampdemo.azureedge.net můžete použít [Azure Media Player](http://amp.azure.net/libs/amp/latest/docs/index.html). 
 
-Při zastavení se živá událost automaticky převede na obsah na vyžádání. I po zastavení a odstranění události můžou uživatelé streamovat archivovaný obsah jako video na vyžádání, a to tak dlouho, dokud asset neodstraníte. Asset nemůžete odstranit, pokud ho událost používá. Nejdřív odstraňte událost. 
+Živá událost automaticky převede na obsah na vyžádání při zastavení. I po zastavení a odstranění události můžou uživatelé streamovat archivovaný obsah jako video na vyžádání, a to tak dlouho, dokud asset neodstraníte. Asset nemůžete odstranit, pokud ho událost používá. Nejdřív odstraňte událost. 
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 

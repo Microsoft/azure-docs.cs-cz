@@ -6,16 +6,16 @@ services: cognitive-services
 author: alch-msft
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: academic-knowledge
+ms.subservice: academic-knowledge
 ms.topic: conceptual
 ms.date: 03/27/2017
 ms.author: alch
-ms.openlocfilehash: 262beeefbbafefc95da51e9f4afcbc1bc143f952
-ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
+ms.openlocfilehash: c3449d3b61c9b8950c0530590e7f1950c06afbc3
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "48902327"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55187288"
 ---
 # <a name="evaluate-method"></a>vyhodnocení metody
 
@@ -31,9 +31,9 @@ https://westus.api.cognitive.microsoft.com/academic/v1.0/evaluate?
 Název     | Hodnota | Povinné?  | Popis
 -----------|-----------|---------|--------
 **výraz**       | Textový řetězec | Ano | Výraz dotazu, který určuje entit, které má být vrácen.
-**Model**      | Textový řetězec | Ne  | Název modelu, který chcete dotazovat.  V současné době má výchozí hodnotu *nejnovější*.        
-**Atributy** | Textový řetězec | Ne<br>Výchozí: Id | Čárkami oddělený seznam, který určuje hodnoty atributů, které jsou zahrnuty v odpovědi. Názvy atributů rozlišují malá a velká písmena.
-**Počet**        | Číslo | Ne<br>Výchozí: 10 | Číslo s vrácenými výsledky.
+**model**      | Textový řetězec | Ne  | Název modelu, který chcete dotazovat.  V současné době má výchozí hodnotu *nejnovější*.        
+**Atributy** | Textový řetězec | Ne<br>Výchozí hodnota: ID | Čárkami oddělený seznam, který určuje hodnoty atributů, které jsou zahrnuty v odpovědi. Názvy atributů rozlišují malá a velká písmena.
+**count**        | Číslo | Ne<br>Výchozí: 10 | Číslo s vrácenými výsledky.
 **Posun**     | Číslo |   Ne<br>Výchozí: 0    | Index první výsledek vrátit.
 **Řadit podle** |   Textový řetězec | Ne<br>Výchozí hodnota: snížením prob | Název atributu, který se používá pro řazení entity. Volitelně můžete Vzestupně/sestupně lze zadat. Formát je: *název: asc* nebo *název: desc*.
   
@@ -43,7 +43,7 @@ Název | Popis
 -------|-----   
 **výraz** |  *Expr* parametr z požadavku.
 **Entity** |  Pole 0 nebo více entit, které odpovídají výrazu dotazu. Každá entita obsahuje přirozený logaritmus hodnota pravděpodobnosti a hodnot jiných požadovaných atributů.
-**Přerušeno** | True, pokud vypršel časový limit žádosti.
+**aborted** | True, pokud vypršel časový limit žádosti.
 
 <br>
 #### <a name="example"></a>Příklad:

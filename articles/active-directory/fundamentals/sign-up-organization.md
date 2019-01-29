@@ -6,18 +6,18 @@ author: eross-msft
 manager: daveba
 ms.service: active-directory
 ms.workload: identity
-ms.component: fundamentals
+ms.subservice: fundamentals
 ms.topic: conceptual
 ms.date: 09/14/2018
 ms.author: lizross
 ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18
-ms.openlocfilehash: 8ba1fa7ae697dabe6748189ed272d2f0eeb9da85
-ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
+ms.openlocfilehash: 13de53a89100cb4cbb8fb5e9bfec024b76839b0d
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54452067"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55100203"
 ---
 # <a name="sign-up-your-organization-to-use-azure-active-directory"></a>Zaregistrujte vaší organizaci a používat službu Azure Active Directory
 Zaregistrovat do služby Azure Active Directory (Azure AD) nebo nové předplatné Microsoft Azure, buď pomocí:

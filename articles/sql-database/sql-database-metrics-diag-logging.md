@@ -12,12 +12,12 @@ ms.author: danil
 ms.reviewer: jrasnik, carlrab
 manager: craigg
 ms.date: 01/03/2019
-ms.openlocfilehash: 49c411487a29a7faa5a6cec5087a85d472309a4b
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: e44ac8dca3b27a21e1a7564bbee31c156f80e929
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54044565"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55102185"
 ---
 # <a name="azure-sql-database-metrics-and-diagnostics-logging"></a>Azure SQL Database metrik a protokolování diagnostiky
 
@@ -68,7 +68,7 @@ Můžete nastavit Azure SQL Database a databází ve spravované instanci shroma
 | [Všechny metriky](sql-database-metrics-diag-logging.md#all-metrics): Obsahuje procento využití DTU/procesoru, omezení jednotek DTU a procesoru, fyzických čtení dat procento, protokolu zapisovat procento, úspěšné/neúspěšné/blokovaná bránou připojení brány firewall, relace procento, procento pracovních procesů, úložiště, procento úložiště a XTP úložiště. | Ano | Ne |
 | [QueryStoreRuntimeStatistics](sql-database-metrics-diag-logging.md#query-store-runtime-statistics): Obsahuje informace o dotazu běhové statistiky, jako je například využití procesoru a statistiky doba trvání dotazu. | Ano | Ano |
 | [QueryStoreWaitStatistics](sql-database-metrics-diag-logging.md#query-store-wait-statistics): Obsahuje informace o statistiky čekání dotazu (co vaše dotazy čekat) jako jsou procesor, protokol a UZAMČENÍ. | Ano | Ano |
-| [Chyby](sql-database-metrics-diag-logging.md#errors-dataset): Obsahuje informace o chybách SQL v databázi. | Ano | Ne |
+| [Chyby](sql-database-metrics-diag-logging.md#errors-dataset): Obsahuje informace o chybách SQL v databázi. | Ano | Ano |
 | [DatabaseWaitStatistics](sql-database-metrics-diag-logging.md#database-wait-statistics-dataset): Obsahuje informace o tom, kolik času stráví databáze čeká čekání různých typů. | Ano | Ne |
 | [Vypršení časových limitů](sql-database-metrics-diag-logging.md#time-outs-dataset): Obsahuje informace o vypršení časového limitu pro v databázi. | Ano | Ne |
 | [Bloky](sql-database-metrics-diag-logging.md#blockings-dataset): Obsahuje informace o blokování události v databázi. | Ano | Ne |
@@ -415,14 +415,14 @@ Najdete v následující tabulce najdete podrobnosti o protokolech pro Managed I
 |SourceSystem|Vždy: Azure|
 |TimeGenerated [UTC]|Časové razítko, kdy se přihlášení v protokolu |
 |Typ|Vždy: AzureDiagnostics |
-|ResourceProvider|Název poskytovatele prostředků. Vždy: SPOLEČNOSTI MICROSOFT. SQL |
+|ResourceProvider|Název poskytovatele prostředků. Vždy: MICROSOFT.SQL |
 |Kategorie|Název kategorie. Vždy: ResourceUsageStats |
 |Prostředek|Název zdroje |
 |ResourceType|Název typu prostředku. Vždy: MANAGEDINSTANCES |
 |SubscriptionId|GUID předplatného pro databázi |
 |ResourceGroup|Název skupiny prostředků pro databázi |
 |LogicalServerName_s|Název spravované Instance |
-|ID prostředku|Identifikátor URI prostředku |
+|ResourceId|Identifikátor URI prostředku |
 |SKU_s|SKU produktu spravované Instance |
 |virtual_core_count_s|Počet virtuálních jader, které jsou k dispozici |
 |avg_cpu_percent_s|Průměrné procento CPU |
@@ -444,7 +444,7 @@ Najdete v následujících tabulkách podrobnosti o protokolech pro databáze Az
 |SourceSystem|Vždy: Azure |
 |TimeGenerated [UTC]|Časové razítko, kdy se přihlášení v protokolu |
 |Typ|Vždy: AzureDiagnostics |
-|ResourceProvider|Název poskytovatele prostředků. Vždy: SPOLEČNOSTI MICROSOFT. SQL |
+|ResourceProvider|Název poskytovatele prostředků. Vždy: MICROSOFT.SQL |
 |Kategorie|Název kategorie. Vždy: QueryStoreRuntimeStatistics |
 |OperationName|Název operace Vždy: QueryStoreRuntimeStatisticsEvent |
 |Prostředek|Název zdroje |
@@ -454,7 +454,7 @@ Najdete v následujících tabulkách podrobnosti o protokolech pro databáze Az
 |LogicalServerName_s|Název serveru pro databázi |
 |ElasticPoolName_s|Název elastického fondu pro databázi, pokud existuje |
 |DatabaseName_s|Název databáze |
-|ID prostředku|Identifikátor URI prostředku |
+|ResourceId|Identifikátor URI prostředku |
 |query_hash_s|Hodnota hash dotazu |
 |query_plan_hash_s|Hodnota hash dotazu plán |
 |statement_sql_handle_s|Popisovač sql příkazu |
@@ -495,7 +495,7 @@ Další informace o [Query Store runtime statistická data](https://docs.microso
 |SourceSystem|Vždy: Azure |
 |TimeGenerated [UTC]|Časové razítko, kdy se přihlášení v protokolu |
 |Typ|Vždy: AzureDiagnostics |
-|ResourceProvider|Název poskytovatele prostředků. Vždy: SPOLEČNOSTI MICROSOFT. SQL |
+|ResourceProvider|Název poskytovatele prostředků. Vždy: MICROSOFT.SQL |
 |Kategorie|Název kategorie. Vždy: QueryStoreWaitStatistics |
 |OperationName|Název operace Vždy: QueryStoreWaitStatisticsEvent |
 |Prostředek|Název zdroje |
@@ -505,7 +505,7 @@ Další informace o [Query Store runtime statistická data](https://docs.microso
 |LogicalServerName_s|Název serveru pro databázi |
 |ElasticPoolName_s|Název elastického fondu pro databázi, pokud existuje |
 |DatabaseName_s|Název databáze |
-|ID prostředku|Identifikátor URI prostředku |
+|ResourceId|Identifikátor URI prostředku |
 |wait_category_s|Kategorie čekání |
 |is_parameterizable_s|Dotaz je parametrizovat |
 |statement_type_s|Typ příkazu |
@@ -543,7 +543,7 @@ Další informace o [Query Store počkejte statistická data](https://docs.micro
 |LogicalServerName_s|Název serveru pro databázi |
 |ElasticPoolName_s|Název elastického fondu pro databázi, pokud existuje |
 |DatabaseName_s|Název databáze |
-|ID prostředku|Identifikátor URI prostředku |
+|ResourceId|Identifikátor URI prostředku |
 |Zpráva|Chybovou zprávu ve formátu prostého textu |
 |user_defined_b|Je ta pasáž, uživatelem definované chyba |
 |error_number_d|Kód chyby |
@@ -562,7 +562,7 @@ Další informace o [chybových zpráv systému SQL Server](https://msdn.microso
 |SourceSystem|Vždy: Azure |
 |TimeGenerated [UTC]|Časové razítko, kdy se přihlášení v protokolu |
 |Typ|Vždy: AzureDiagnostics |
-|ResourceProvider|Název poskytovatele prostředků. Vždy: SPOLEČNOSTI MICROSOFT. SQL |
+|ResourceProvider|Název poskytovatele prostředků. Vždy: MICROSOFT.SQL |
 |Kategorie|Název kategorie. Vždy: DatabaseWaitStatistics |
 |OperationName|Název operace Vždy: DatabaseWaitStatisticsEvent |
 |Prostředek|Název zdroje |
@@ -572,7 +572,7 @@ Další informace o [chybových zpráv systému SQL Server](https://msdn.microso
 |LogicalServerName_s|Název serveru pro databázi |
 |ElasticPoolName_s|Název elastického fondu pro databázi, pokud existuje |
 |DatabaseName_s|Název databáze |
-|ID prostředku|Identifikátor URI prostředku |
+|ResourceId|Identifikátor URI prostředku |
 |wait_type_s|Název typu čekání |
 |start_utc_date_t [UTC]|Měří počáteční čas období |
 |end_utc_date_t [UTC]|Měří období koncový čas |
@@ -591,7 +591,7 @@ Další informace o [databáze statistiky čekání](https://docs.microsoft.com/
 |SourceSystem|Vždy: Azure |
 |TimeGenerated [UTC]|Časové razítko, kdy se přihlášení v protokolu |
 |Typ|Vždy: AzureDiagnostics |
-|ResourceProvider|Název poskytovatele prostředků. Vždy: SPOLEČNOSTI MICROSOFT. SQL |
+|ResourceProvider|Název poskytovatele prostředků. Vždy: MICROSOFT.SQL |
 |Kategorie|Název kategorie. Vždy: Časové limity |
 |OperationName|Název operace Vždy: TimeoutEvent |
 |Prostředek|Název zdroje |
@@ -601,7 +601,7 @@ Další informace o [databáze statistiky čekání](https://docs.microsoft.com/
 |LogicalServerName_s|Název serveru pro databázi |
 |ElasticPoolName_s|Název elastického fondu pro databázi, pokud existuje |
 |DatabaseName_s|Název databáze |
-|ID prostředku|Identifikátor URI prostředku |
+|ResourceId|Identifikátor URI prostředku |
 |error_state_d|Kód chyby stavu: |
 |query_hash_s|Dotazování hash, pokud je k dispozici |
 |query_plan_hash_s|Dotazování hash plánu, pokud je k dispozici |
@@ -614,7 +614,7 @@ Další informace o [databáze statistiky čekání](https://docs.microsoft.com/
 |SourceSystem|Vždy: Azure |
 |TimeGenerated [UTC]|Časové razítko, kdy se přihlášení v protokolu |
 |Typ|Vždy: AzureDiagnostics |
-|ResourceProvider|Název poskytovatele prostředků. Vždy: SPOLEČNOSTI MICROSOFT. SQL |
+|ResourceProvider|Název poskytovatele prostředků. Vždy: MICROSOFT.SQL |
 |Kategorie|Název kategorie. Vždy: bloky |
 |OperationName|Název operace Vždy: BlockEvent |
 |Prostředek|Název zdroje |
@@ -624,7 +624,7 @@ Další informace o [databáze statistiky čekání](https://docs.microsoft.com/
 |LogicalServerName_s|Název serveru pro databázi |
 |ElasticPoolName_s|Název elastického fondu pro databázi, pokud existuje |
 |DatabaseName_s|Název databáze |
-|ID prostředku|Identifikátor URI prostředku |
+|ResourceId|Identifikátor URI prostředku |
 |lock_mode_s|Režim zámku používán dotazem |
 |resource_owner_type_s|Vlastník zámku |
 |blocked_process_filtered_s|Zablokuje sestava procesu XML |
@@ -638,7 +638,7 @@ Další informace o [databáze statistiky čekání](https://docs.microsoft.com/
 |SourceSystem|Vždy: Azure |
 |TimeGenerated [UTC] |Časové razítko, kdy se přihlášení v protokolu |
 |Typ|Vždy: AzureDiagnostics |
-|ResourceProvider|Název poskytovatele prostředků. Vždy: SPOLEČNOSTI MICROSOFT. SQL |
+|ResourceProvider|Název poskytovatele prostředků. Vždy: MICROSOFT.SQL |
 |Kategorie|Název kategorie. Vždy: Zablokování |
 |OperationName|Název operace Vždy: DeadlockEvent |
 |Prostředek|Název zdroje |
@@ -648,7 +648,7 @@ Další informace o [databáze statistiky čekání](https://docs.microsoft.com/
 |LogicalServerName_s|Název serveru pro databázi |
 |ElasticPoolName_s|Název elastického fondu pro databázi, pokud existuje |
 |DatabaseName_s|Název databáze |
-|ID prostředku|Identifikátor URI prostředku |
+|ResourceId|Identifikátor URI prostředku |
 |deadlock_xml_s|Vzájemné zablokování sestavu XML |
 
 ### <a name="automatic-tuning-dataset"></a>Automatické vyladění datové sady
@@ -659,7 +659,7 @@ Další informace o [databáze statistiky čekání](https://docs.microsoft.com/
 |SourceSystem|Vždy: Azure |
 |TimeGenerated [UTC]|Časové razítko, kdy se přihlášení v protokolu |
 |Typ|Vždy: AzureDiagnostics |
-|ResourceProvider|Název poskytovatele prostředků. Vždy: SPOLEČNOSTI MICROSOFT. SQL |
+|ResourceProvider|Název poskytovatele prostředků. Vždy: MICROSOFT.SQL |
 |Kategorie|Název kategorie. Vždy: AutomaticTuning |
 |Prostředek|Název zdroje |
 |ResourceType|Název typu prostředku. Vždy: SERVERY PRO/DATABÁZE |
@@ -669,7 +669,7 @@ Další informace o [databáze statistiky čekání](https://docs.microsoft.com/
 |LogicalDatabaseName_s|Název databáze |
 |ElasticPoolName_s|Název elastického fondu pro databázi, pokud existuje |
 |DatabaseName_s|Název databáze |
-|ID prostředku|Identifikátor URI prostředku |
+|ResourceId|Identifikátor URI prostředku |
 |RecommendationHash_s|Jedinečnou hodnotu hash doporučení automatického ladění |
 |OptionName_s|Operace automatického ladění |
 |Schema_s|Schéma databáze |

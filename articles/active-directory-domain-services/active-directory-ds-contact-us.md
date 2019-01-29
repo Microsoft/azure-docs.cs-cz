@@ -8,19 +8,19 @@ manager: daveba
 editor: curtand
 ms.assetid: 662362c3-1a5e-4e94-ae09-8e4254443697
 ms.service: active-directory
-ms.component: domain-services
+ms.subservice: domain-services
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 08/23/2017
 ms.author: ergreenl
-ms.openlocfilehash: feb3f17268443feddcbecd751c9da4bf16051ee5
-ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
+ms.openlocfilehash: f45ecfb438d23539787780093e726064cda7a480
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54849154"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55157988"
 ---
 # <a name="azure-ad-domain-services---contact-us"></a>Azure Active Directory Domain Services – kontaktujte nás
 ## <a name="contact-the-product-team"></a>Kontaktováním produktového týmu

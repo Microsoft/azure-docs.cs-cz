@@ -1,6 +1,6 @@
 ---
-title: Ukázka skriptu Azure CLI - sdílené dvě virtuální sítě | Microsoft Docs
-description: Ukázka skriptu Azure CLI - sdílené dvě virtuální sítě
+title: Ukázkový skript Azure CLI – Peer dvě virtuální sítě | Dokumentace Microsoftu
+description: Ukázkový skript Azure CLI – Peer dvě virtuální sítě
 services: virtual-network
 documentationcenter: virtual-network
 author: KumudD
@@ -15,16 +15,16 @@ ms.tgt_pltfrm: ''
 ms.workload: infrastructure
 ms.date: 07/07/2017
 ms.author: kumud
-ms.openlocfilehash: 8ad1e7de85f851b5db6764175bc1136dd19d418d
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: 8d11ad9d2722bb8fc23154509feeca2a293bfa41
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/09/2018
-ms.locfileid: "29852366"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55097992"
 ---
-# <a name="peer-two-virtual-networks"></a>Peer dvě virtuální sítě
+# <a name="peer-two-virtual-networks"></a>Navázání partnerského vztahu mezi dvěma virtuálními sítěmi
 
-Tento skript vytvoří a připojí dvou virtuálních sítí ve stejné oblasti trhough síť Azure. Po spuštění skriptu, vytvoříte partnerský vztah mezi dvěma virtuálními sítěmi.
+Tento skript vytvoří a propojí dvě virtuální sítě ve stejné oblasti prostřednictvím sítě Azure. Po spuštění skriptu vytvoříte partnerský vztah mezi dvěma virtuálními sítěmi.
 
 [!INCLUDE [sample-cli-install](../../../includes/sample-cli-install.md)]
 
@@ -45,17 +45,17 @@ az group delete --name myResourceGroup --yes
 
 ## <a name="script-explanation"></a>Vysvětlení skriptu
 
-Tento skript používá následující příkazy k vytvoření skupiny prostředků, virtuální počítač a všechny související prostředky. Každý příkaz v tabulce odkazuje na příslušnou část dokumentace.
+Tento skript k vytvoření skupiny prostředků, virtuálního počítače a všech souvisejících prostředků používá následující příkazy. Každý příkaz v tabulce odkazuje na příslušnou část dokumentace.
 
 | Příkaz | Poznámky |
 |---|---|
 | [az group create](https://docs.microsoft.com/cli/azure/group#az_group_create) | Vytvoří skupinu prostředků, ve které se ukládají všechny prostředky. |
-| [Vytvoření sítě vnet az](https://docs.microsoft.com/cli/azure/network/vnet#az_network_vnet_create) | Vytvoří virtuální síť Azure a podsíť. |
-| [virtuální síť az sítě partnerský vztah vytvořit.](https://docs.microsoft.com/cli/azure/network/vnet/peering#az_network_vnet_peering_create) | Vytvoří partnerský vztah mezi dvěma virtuálními sítěmi.  |
+| [az network vnet create](https://docs.microsoft.com/cli/azure/network/vnet#az_network_vnet_create) | Vytvoří virtuální síť Azure a podsíť. |
+| [az network vnet peering create](https://docs.microsoft.com/cli/azure/network/vnet/peering#az_network_vnet_peering_create) | Vytvoří partnerský vztah mezi dvěma virtuálními sítěmi.  |
 | [az group delete](https://docs.microsoft.com/cli/azure/vm/extension#az_vm_extension_set) | Odstraní skupinu prostředků včetně všech vnořených prostředků. |
 
 ## <a name="next-steps"></a>Další postup
 
 Další informace o Azure CLI najdete v [dokumentaci k Azure CLI](https://docs.microsoft.com/cli/azure).
 
-Další síťové ukázky skriptu rozhraní příkazového řádku najdete v [přehled sítě Azure dokumentaci](../cli-samples.md).
+Další ukázkové skripty CLI pro sítě najdete v [dokumentaci se základními informacemi k sítím Azure](../cli-samples.md).

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 10/23/2018
 ms.author: srrengar
-ms.openlocfilehash: ec2b623650818877930ac6b95a17ee264f07efdf
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 32e67343c5d799157d67408b34753da5a38b6f8e
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52959526"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55197241"
 ---
 # <a name="service-fabric-linux-cluster-events-in-syslog"></a>Události clusteru Service Fabric s Linuxem v procesu Syslog
 
@@ -35,7 +35,7 @@ Každá událost procesu Syslog má 4 komponenty
 * Zpráva
 * Severity
 
-SyslogConsumer zapisuje všechny události platformy pomocí zařízení `Local0`. Jakékoli platné zařízení můžete aktualizovat změnou konfigurace config. Je identita používaná `ServicFabric`. Pole zprávy obsahuje celou událost serializovanou ve formátu JSON tak, aby se jde dotazovat a používané celou řadu nástrojů. 
+SyslogConsumer zapisuje všechny události platformy pomocí zařízení `Local0`. Jakékoli platné zařízení můžete aktualizovat změnou konfigurace config. Je identita používaná `ServiceFabric`. Pole zprávy obsahuje celou událost serializovanou ve formátu JSON tak, aby se jde dotazovat a používané celou řadu nástrojů. 
 
 ## <a name="enable-syslogconsumer"></a>Povolit SyslogConsumer
 
