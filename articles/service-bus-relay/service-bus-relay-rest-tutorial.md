@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/06/2018
 ms.author: spelluru
-ms.openlocfilehash: 40562c77cf38ad316d64f68b54dd4174dae6da1a
-ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
+ms.openlocfilehash: e0f85e11b2be8a615f949e0d37325dbd748f728a
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51614468"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55103271"
 ---
 # <a name="azure-wcf-relay-rest-tutorial"></a>Kurz pro Azure WCF Relay REST
 Tento kurz popisuje, jak vytvořit jednoduchou hostitelskou aplikaci Azure Relay, která vystavuje rozhraní založené na protokolu REST. REST webovému klientovi, jako je třeba webový prohlížeč, umožňuje přístup k API pro Service Bus přes požadavky HTTP.
@@ -51,7 +51,7 @@ Pokud chcete začít používat přenosové funkce v Azure, musíte nejdříve v
 
 Když vytvoříte službu WCF stylu REST, je nutné definovat kontrakt. Kontrakt určuje, které operace hostitel podporuje. Operaci služby se můžeme představit jako metodu webové služby. Kontrakty se vytvoří definováním základního rozhraní C++, C# nebo Visual Basic. Každá metoda v rozhraní odpovídá konkrétní operaci služby. Atribut [ServiceContractAttribute](/dotnet/api/system.servicemodel.servicecontractattribute) se musí použít na každé rozhraní a atribut [OperationContractAttribute](/dotnet/api/system.servicemodel.operationcontractattribute) se musí použít na každou operaci. Pokud metoda v rozhraní, které má atribut [ServiceContractAttribute](/dotnet/api/system.servicemodel.servicecontractattribute), nemá atribut [OperationContractAttribute](/dotnet/api/system.servicemodel.operationcontractattribute), taková metoda se nevystaví. Kód použitý pro tyto úlohy je v následujícím příkladu za postupem.
 
-Hlavní rozdíl mezi kontraktu WCF a kontraktem ve stylu REST je další vlastnost, která má [OperationContractAttribute](/dotnet/api/system.servicemodel.operationcontractattribute): [WebGetAttribute](/dotnet/api/system.servicemodel.web.webgetattribute). Tato vlastnost vám umožní mapovat metodu ve svém rozhraní k metodě na druhé straně rozhraní. V tomto příkladu [WebGetAttribute](/dotnet/api/system.servicemodel.web.webgetattribute) atribut k propojení metody na HTTP GET. To umožňuje služba Service Bus přesně získat a interpretovat příkazy odeslané na rozhraní.
+Hlavní rozdíl mezi kontraktu WCF a kontraktem ve stylu REST je další vlastnost, která má [OperationContractAttribute](/dotnet/api/system.servicemodel.operationcontractattribute): [Funkce WebGetAttribute](/dotnet/api/system.servicemodel.web.webgetattribute). Tato vlastnost vám umožní mapovat metodu ve svém rozhraní k metodě na druhé straně rozhraní. V tomto příkladu [WebGetAttribute](/dotnet/api/system.servicemodel.web.webgetattribute) atribut k propojení metody na HTTP GET. To umožňuje služba Service Bus přesně získat a interpretovat příkazy odeslané na rozhraní.
 
 ### <a name="to-create-a-contract-with-an-interface"></a>Vytvoření smlouvy s rozhraní
 
@@ -439,9 +439,9 @@ Následující příklad ukazuje soubor App.config přidružený ke službě.
       </behaviors>
     </system.serviceModel>
     <appSettings>
-        <!-- Service Bus specific app setings for messaging connections -->
+        <!-- Service Bus specific app settings for messaging connections -->
         <add key="Microsoft.ServiceBus.ConnectionString"
-            value="Endpoint=sb://yourNamespace.servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey="YOUR_SAS_KEY"/>
+            value="Endpoint=sb://yourNamespace.servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=YOUR_SAS_KEY>"/>
     </appSettings>
 </configuration>
 ```

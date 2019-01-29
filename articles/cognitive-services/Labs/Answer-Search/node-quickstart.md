@@ -1,5 +1,5 @@
 ---
-title: 'Rychlý start: Project Answer Search, Node'
+title: 'Rychlý start: Hledání odpovědí projektu, uzlu'
 description: Začněte používat Project Answer Search s jazykem Node.
 services: cognitive-services
 author: mikedodaro
@@ -9,14 +9,14 @@ ms.component: answer-search
 ms.topic: quickstart
 ms.date: 04/13/2018
 ms.author: rosh
-ms.openlocfilehash: 1afd029803fc7d2709a9a9abe840db6d7f52498d
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
-ms.translationtype: HT
+ms.openlocfilehash: 3fd10bd08aa86458173dd1d88e2767f6f9ca4191
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49465742"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55104330"
 ---
-# <a name="quickstart-project-answer-search-with-node"></a>Rychlý start: Project Answer Search s jazykem Node
+# <a name="quickstart-project-answer-search-with-node"></a>Rychlý start: Hledání odpovědí projektu s uzlem
 
 Následující příklad kódu Node vytvoří dotaz na informace o Yosemitském národním parku.
 
@@ -38,7 +38,7 @@ Implementuje se v následujících krocích:
 
 Následuje celý kód pro tuto ukázku:
 
-````
+```
 'use strict';
 
 let https = require('https');
@@ -85,9 +85,9 @@ let Search = function () {
 
 Search();
 
-````
+```
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 - [Ukázkový kód v jazyce C#](c-sharp-quickstart.md)
 - [Rychlý start Java](java-quickstart.md)
 - [Rychlý start Python](python-quickstart.md)

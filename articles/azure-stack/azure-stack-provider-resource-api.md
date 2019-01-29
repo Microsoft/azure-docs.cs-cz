@@ -11,15 +11,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/22/2018
+ms.date: 01/25/2019
 ms.author: mabrigg
 ms.reviewer: alfredop
-ms.openlocfilehash: c6f17fd4cc225b7d4ce60d38bf2abcabf12a40c5
-ms.sourcegitcommit: 9e179a577533ab3b2c0c7a4899ae13a7a0d5252b
+ms.openlocfilehash: 1963708fb05feb7797bc8b4df024d16175687b17
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49945582"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55177895"
 ---
 # <a name="provider-resource-usage-api"></a>Rozhraní API využití prostředků poskytovatele
 Termín *poskytovatele* platí pro správce služeb a žádné delegované poskytovatele. Operátoři Azure stacku a delegované poskytovatele. můžete použít rozhraní API využití zprostředkovatele zobrazíte využití svým klientům s přímým přístupem. Například jak je znázorněno v diagramu, P0 může volat zprostředkovatele rozhraní API využití informace o společnosti P1 a P2 pro použití s přímým přístupem a P1 může volat pro informace o využití na P3 a P4.
@@ -80,13 +80,13 @@ meterID1",
 ### <a name="response-details"></a>Podrobnosti o odpovědi
 | **Argument** | **Popis** |
 | --- | --- |
-| *ID* |Jedinečný Identifikátor využití agregace. |
+| *id* |Jedinečný Identifikátor využití agregace. |
 | *Jméno* |Název agregace využití. |
 | *type* |Definice prostředků. |
-| *ID předplatného* |Identifikátor předplatného uživatele Azure stacku. |
+| *subscriptionId* |Identifikátor předplatného uživatele Azure stacku. |
 | *usageStartTime* |Čas UTC počáteční čas využití kontejneru, do které patří tato agregace využití.|
 | *usageEndTime* |Čas ukončení UTC využití kontejneru, do které patří tato agregace využití. |
-| *instanceData* |Páry klíč hodnota Podrobnosti instance (v novém formátu):<br> *resourceUri*: plně kvalifikované ID prostředku, který obsahuje skupiny prostředků a název instance. <br> *umístění*: oblast, ve kterém byla tato služba spuštěna. <br> *značky*: značky prostředku, která jsou určena podle uživatele. <br> *additionalInfo*: více podrobností o prostředku, který spotřebovával, například typ obrázku nebo verze operačního systému. |
+| *instanceData* |Páry klíč hodnota Podrobnosti instance (v novém formátu):<br> *resourceUri*: Plně kvalifikované ID prostředku, který obsahuje skupiny prostředků a název instance. <br> *Umístění*: Oblast, ve kterém byla tato služba spuštěna. <br> *Značky*: Značky prostředků, která jsou určena podle uživatele. <br> *additionalInfo*: Zadejte další podrobnosti o prostředku, který spotřebovával, například verzi operačního systému nebo image. |
 | *Množství* |Množství spotřeby prostředků, ke které došlo v tomto časovém rámci. |
 | *MeterId* |Jedinečné ID prostředku, který spotřebovával (také nazývané *ResourceID*). |
 

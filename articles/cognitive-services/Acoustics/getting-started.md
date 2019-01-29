@@ -6,16 +6,16 @@ services: cognitive-services
 author: kegodin
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: acoustics
+ms.subservice: acoustics
 ms.topic: conceptual
 ms.date: 08/17/2018
 ms.author: kegodin
-ms.openlocfilehash: 62b6b40e6289ccca92c0a92d8bb7d0489dd44246
-ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
+ms.openlocfilehash: 0aad231b4a57c2d9927a553a43394681282b5494
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "48902939"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55155948"
 ---
 # <a name="getting-started-with-project-acoustics"></a>Začínáme s Akustika projektu
 Této úvodní příručky obsahuje pokyny k integraci modulu plug-in ve vašem Unity projektu, zanést scéně a použít Akustika zdrojů zvuku. Pro účely tohoto rychlého startu je potřeba nejprve vytvořit [účet Azure batch](create-azure-account.md). Tento průvodce to předpokládá některé znalost Unity.
@@ -43,7 +43,7 @@ Která má označení vytvoření část toolkit Akustika vyžaduje verzi skript
 
 ![Nastavení přehrávače](media/PlayerSettings.png)
 
-![ROZHRANÍ .NET 4.5](media/Net45.png)
+![.NET 4.5](media/Net45.png)
 
 ## <a name="create-a-navigation-mesh"></a>Vytvoření sítě navigace
 Použít standardní [pracovního postupu Unity](https://docs.unity3d.com/Manual/nav-BuildingNavMesh.html) vytvořit navigační sítě pro váš projekt. Informace o tom, jak použít vlastní mřížek navigace, najdete v článku [která má označení vytvoření uživatelského rozhraní provede](bake-ui-walkthrough.md).
@@ -77,7 +77,7 @@ Vložení zvuku runtime DSP pro Akustika v Unity a spatializer framework jsme ji
 
 Otevřít zvukový Mixer (**okna > zvuku Mixer**). Ujistěte se, že máte alespoň jeden Mixer, se v jedné skupině. Pokud ne, klikněte na tlačítko "+" napravo od **míchání**. Klikněte pravým tlačítkem na konec kanálu pruhu v části efekty a přidejte **Microsoft Akustika Mixer** vliv. Všimněte si, že je podporován pouze jeden projekt Akustika Mixer najednou.
 
-![Zvukový Mixer](media/AudioMixer.png)
+![Audio Mixer](media/AudioMixer.png)
 
 ## <a name="set-up-the-acoustics-lookup-table"></a>Nastavit Akustika vyhledávací tabulky
 Přetáhnout myší **Microsoft Acoustics** prefab z panelu Projekt do vaše Scéna:
@@ -86,7 +86,7 @@ Přetáhnout myší **Microsoft Acoustics** prefab z panelu Projekt do vaše Sc�
 
 Klikněte na **ProjectAcoustics** hru objektu a přejděte do jeho inspector panelů. Zadejte umístění, která má označení vytvoření výsledků (). ACE souboru, v **prostředky/AcousticsData**) pádem a přetáhněte ji do skriptu Akustika správce, nebo kliknutím na tlačítko kroužek vedle textového pole.
 
-![Správce Akustika](media/AcousticsManager.png)  
+![Acoustics Manager](media/AcousticsManager.png)  
 
 ## <a name="apply-acoustics-to-sound-sources"></a>Použít Akustika zdrojů zvuku
 Vytvoření zdroje zvuku. Klikněte na zaškrtávací políčko v dolní části AudioSource inspector panelů, s upozorněním **Spatialize**. Ujistěte se, že **prostorových Blendu** je nastavena na úplnou 3D.  

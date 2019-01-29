@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 12/07/2018
-ms.openlocfilehash: 8d5e3060d31a260ddba2e7b23d468568ea9569c0
-ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
+ms.openlocfilehash: c3b30085e1036e49706d73fd68b80221e5177d03
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/26/2019
-ms.locfileid: "55078028"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55095732"
 ---
 # <a name="machine-learning-integration-in-stream-analytics"></a>Machine Learning integrace ve službě Stream Analytics
 Stream Analytics podporuje uživatelem definované funkce, které vyžadují ke koncovým bodům Azure Machine Learning. Podpora rozhraní REST API pro tuto funkci je podrobně popsaná v [knihovny rozhraní REST API pro Stream Analytics](https://msdn.microsoft.com/library/azure/dn835031.aspx). Tento článek obsahuje doplňující informace potřebné pro úspěšné implementaci této funkce ve Stream Analytics. Kurz také se zveřejní a je k dispozici [tady](stream-analytics-machine-learning-integration-tutorial.md).
@@ -44,9 +44,9 @@ Rozhraní REST API můžete nakonfigurovat úlohy pro volání funkce Azure stro
 ## <a name="creating-a-udf-with-basic-properties"></a>Vytváření uživatelem definovanou FUNKCI s základní vlastnosti
 Například následující ukázkový kód vytvoří skalární UDF s názvem *newudf* , která vytvoří vazbu na koncový bod Azure Machine Learning. Všimněte si, že *koncový bod* (identifikátor URI služby) najdete na stránce nápovědy rozhraní API pro zvolený služby a *apiKey* můžete najít na hlavní stránce služeb.
 
-````
+```
     PUT : /subscriptions/<subscriptionId>/resourceGroups/<resourceGroup>/providers/Microsoft.StreamAnalytics/streamingjobs/<streamingjobName>/functions/<udfName>?api-version=<apiVersion>
-````
+```
 
 Text požadavku příkladu:
 
@@ -71,9 +71,9 @@ Text požadavku příkladu:
 ## <a name="call-retrievedefaultdefinition-endpoint-for-default-udf"></a>Volání koncového bodu RetrieveDefaultDefinition pro výchozí hodnotu UDF
 Jakmile se vytvoří kostru UDF je potřeba dokončení definice UDF. Koncový bod RetrieveDefaultDefinition vám pomůže využít vaše výchozí definici pro skalární funkci, která je vázána na koncový bod Azure Machine Learning. Datová část níže vyžaduje, abyste k získání výchozí definice UDF pro skalární funkci, která je vázána na koncový bod Azure Machine Learning. Ji neurčuje skutečný koncový bod, protože již byl poskytnut během požadavek PUT. Stream Analytics volá zadaný v požadavku, pokud ji explicitně poskytuje koncový bod. V opačném případě použije předplatné původně odkazuje. Tady UDF přebírá jediný řetězec, parametr (věta) a vrátí výstup jednoho typu řetězec, což znamená "mínění" popisku pro tuto větu:.
 
-````
+```
 POST : /subscriptions/<subscriptionId>/resourceGroups/<resourceGroup>/providers/Microsoft.StreamAnalytics/streamingjobs/<streamingjobName>/functions/<udfName>/RetrieveDefaultDefinition?api-version=<apiVersion>
-````
+```
 
 Text požadavku příkladu:
 
@@ -130,9 +130,9 @@ Ukázku výstup tohoto by hledejte něco jako níže.
 ## <a name="patch-udf-with-the-response"></a>Oprava UDF s odpovědí
 Nyní UDF musí opravit s předchozí odpověď, jak je znázorněno níže.
 
-````
+```
 PATCH : /subscriptions/<subscriptionId>/resourceGroups/<resourceGroup>/providers/Microsoft.StreamAnalytics/streamingjobs/<streamingjobName>/functions/<udfName>?api-version=<apiVersion>
-````
+```
 
 Text požadavku (výstup z RetrieveDefaultDefinition):
 

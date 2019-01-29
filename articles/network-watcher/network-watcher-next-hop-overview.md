@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: jdial
-ms.openlocfilehash: 28eacdce922e26d391cf34f78cb03ead9c6887a1
-ms.sourcegitcommit: 794bfae2ae34263772d1f214a5a62ac29dcec3d2
+ms.openlocfilehash: 40f1790806aac6756979f28ad29442b7abf96019
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44391262"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55096887"
 ---
 # <a name="use-next-hop-to-diagnose-virtual-machine-routing-problems"></a>Diagnostika potíží se směrováním virtuálních počítačů pomocí dalšího segmentu směrování
 
@@ -42,4 +42,4 @@ Další informace o jednotlivých typ dalšího segmentu směrování najdete v 
 
 ## <a name="next-steps"></a>Další postup
 
-Další informace o použití dalšího segmentu směrování k diagnostice potíží se směrováním sítě virtuálních počítačů, najdete v článku [Diagnostika virtuálního počítače network problémy se směrováním](diagnose-vm-network-routing-problem.md).
+Další informace o použití dalšího segmentu směrování k diagnostice potíží se směrováním sítě virtuálních počítačů, najdete v článku Diagnostika virtuálního počítače network problémy se směrováním pomocí [webu Azure portal](diagnose-vm-network-routing-problem.md), [PowerShell](diagnose-vm-network-routing-problem-powershell.md), nebo [rozhraní příkazového řádku Azure](diagnose-vm-network-routing-problem-cli.md).

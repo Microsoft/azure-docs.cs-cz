@@ -10,15 +10,15 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/23/2018
+ms.date: 01/25/2019
 ms.author: mabrigg
 ms.reviewer: efemmano
-ms.openlocfilehash: 4ec9affa78d1f244208a24bcf8a6603e867d4c08
-ms.sourcegitcommit: 5de9de61a6ba33236caabb7d61bee69d57799142
+ms.openlocfilehash: 0bf725a20a7c030b0a835439c0f97f23b3cbef71
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50086501"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55097860"
 ---
 # <a name="use-the-azure-stack-portal"></a>Použití portálu Azure Stack
 
@@ -60,7 +60,7 @@ Pokud potřebujete pokyny, jak používat dostupné služby, můžou existovat r
 
     Zejména doporučujeme, abyste si následující články, abyste mohli začít:
 
-    - [Klíč aspekty: použití služeb nebo vytváření aplikací pro Azure Stack](azure-stack-considerations.md)
+    - [Klíčové aspekty: Pomocí služby nebo vytvářet aplikace pro Azure Stack](azure-stack-considerations.md)
     - V **používat služby** části dokumentace ke službě, je článek důležité informace pro každou službu. Důležité informace o stránce popisuje rozdíly mezi service nabízí v Azure a ve stejné službě Azure Stack nabízí. Příklad najdete v tématu [aspekty virtuálních počítačů](azure-stack-vm-considerations.md). Může obsahovat další informace **používat služby** oddíl, který je jedinečný pro Azure Stack.
 
       Dokumentace k Azure můžete použít jako obecné referenční informace pro služby, ale je nutné znát tyto rozdíly. Vysvětlení, že dokumentace odkazuje na **kurzy rychlý Start** dlaždici, přejděte na dokumentaci k Azure.
@@ -73,4 +73,4 @@ Pokud používáte Azure Stack Development Kit, můžete [fórum pro Azure Stack
 
 ## <a name="next-steps"></a>Další postup
 
-[Klíč aspekty: použití služeb nebo vytváření aplikací pro Azure Stack](azure-stack-considerations.md)
+[Klíčové aspekty: Pomocí služby nebo vytvářet aplikace pro Azure Stack](azure-stack-considerations.md)

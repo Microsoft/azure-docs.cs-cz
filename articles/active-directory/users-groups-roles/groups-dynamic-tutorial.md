@@ -8,18 +8,18 @@ manager: mtillman
 editor: ''
 ms.service: active-directory
 ms.workload: identity
-ms.component: users-groups-roles
+ms.subservice: users-groups-roles
 ms.topic: tutorial
-ms.date: 08/07/2018
+ms.date: 01/28/2019
 ms.author: curtand
 ms.reviewer: krbain
-ms.custom: it-pro
-ms.openlocfilehash: 6efb649142f43a98ea08c99ae853de0fc0c8ea3c
-ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
+ms.custom: it-pro;seo-update-jan
+ms.openlocfilehash: 3a4f2c651342f1250755b0ae6edb5c752b2946f5
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2019
-ms.locfileid: "54321258"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55175617"
 ---
 # <a name="tutorial-add-or-remove-group-members-automatically"></a>Kurz: Přidání nebo odebrání členů skupiny automaticky
 

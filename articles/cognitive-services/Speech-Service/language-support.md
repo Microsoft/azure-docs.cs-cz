@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 12/13/2018
 ms.author: erhopf
 ms.custom: seodec18
-ms.openlocfilehash: 688194c8d5ec0c2594d8c7178d8cae3925b8e482
-ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
+ms.openlocfilehash: 93f086ed6ff7b8cc9ccc03290d3e901427783887
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/19/2019
-ms.locfileid: "54413363"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55103942"
 ---
 # <a name="language-and-region-support-for-speech-service-api"></a>Podpora jazyka a oblasti pro rozhraní API pro rozpoznávání řeči služeb
 
@@ -79,6 +79,10 @@ Neurální hlasy slouží k interakce s chatovacích a virtuálních asistentů 
 |--------|----------|---------|--------------------|
 | en-US | English (US) | Muž | "Microsoft serveru řeči Text na řeč hlas (en US, GuyNeural)" |
 | en-US | English (US) | Žena | "Microsoft serveru řeči Text na řeč hlas (en US, JessaNeural)" |
+| zh-CN | Čínština | Žena | "Microsoft serveru řeči Text na řeč hlas (zh-CN, XiaoxiaoNeural)" |
+
+> [!IMPORTANT]
+> Microsoft Server řeči Text na řeč hlas (zh-CN, XiaoxiaoNeural) je k dispozici prostřednictvím koncového bodu jihovýchodní Asie pouze: https://southeastasia.tts.speech.microsoft.com/cognitiveservices/v1.
 
 ### <a name="standard-voices"></a>Standardní hlasů
 

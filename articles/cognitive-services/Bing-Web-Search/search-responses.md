@@ -6,17 +6,17 @@ services: cognitive-services
 author: aahill
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: bing-web-search
+ms.subservice: bing-web-search
 ms.topic: conceptual
 ms.date: 8/13/2018
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: 1d47d8e35a1be28b5610961c1b1c7b5d1492e871
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: f76c9bfa5dc6a3542ace7025e0889ee64cd2e783
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53250487"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55188622"
 ---
 # <a name="bing-web-search-api-response-structure-and-answer-types"></a>Typy struktury a odpověď odezvy API vyhledávání na webu Bingu  
 
@@ -304,7 +304,7 @@ Matematický výraz může obsahovat následující konstanty:
 
 |Symbol|Popis|
 |------------|-----------------|
-|Pi|3,14159...|
+|Pi|3.14159...|
 |Míry|Míry|
 |Můžu|IMAGINARY číslo|
 |e|e, 2.71828...|
@@ -315,12 +315,12 @@ Matematický výraz může obsahovat následující funkce:
 |Symbol|Popis|
 |------------|-----------------|
 |Sqrt|Druhá odmocnina|
-|Sin [x], Cos [x], Tan [x]<br />CSC [x], [x] sekundu Cot [x]|Trigonometrické funkce (s argumenty v radiánech)|
-|ArcSin [x], [x] ArcCos ArcTan [x]<br />ArcCsc [x], [x] ArcSec ArcCot [x]|Inverzní trigonometrické funkce (poskytující výsledky v radiánech)|
-|Exp [x] E ^ x|Exponenciální funkce|
-|Protokol [x]|Přirozený logaritmus|
-|SINH [x] Cosh [x], Tanh [x]<br />Csch [x], [x] Sech Coth [x]|Hyperbolické funkce|
-|ArcSinh [x], [x] ArcCosh ArcTanh [x]<br />ArcCsch [x], [x] ArcSech ArcCoth [x]|Inverzní hyperbolické funkce|
+|Sin[x], Cos[x], Tan[x]<br />Csc[x], Sec[x], Cot[x]|Trigonometrické funkce (s argumenty v radiánech)|
+|ArcSin[x], ArcCos[x], ArcTan[x]<br />ArcCsc[x], ArcSec[x], ArcCot[x]|Inverzní trigonometrické funkce (poskytující výsledky v radiánech)|
+|Exp[x], E^x|Exponenciální funkce|
+|Log[x]|Přirozený logaritmus|
+|Sinh[x], Cosh[x], Tanh[x]<br />Csch[x], Sech[x], Coth[x]|Hyperbolické funkce|
+|ArcSinh[x], ArcCosh[x], ArcTanh[x]<br />ArcCsch[x], ArcSech[x], ArcCoth[x]|Inverzní hyperbolické funkce|
 
 Matematické výrazy, které obsahují proměnné (pro příklad, 4 x + 6 = 18, kde x je proměnná) nejsou podporovány.
 

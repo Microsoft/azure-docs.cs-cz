@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 01/21/2019
 ms.author: hrasheed
-ms.openlocfilehash: 977466d77bee2d6fe49c0438aa1d9d4489f8eb5f
-ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
+ms.openlocfilehash: fd2d9bd325d79a1fd8aa0da74da64f6ba98decda
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54888222"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55101052"
 ---
 # <a name="automatically-scale-azure-hdinsight-clusters-preview"></a>Automatické škálování clusterů Azure HDInsight (Preview)
 
@@ -22,7 +22,7 @@ Cluster Azure HDInsight automatického škálování, které funkce se automatic
 
 ## <a name="getting-started"></a>Začínáme
 
-### <a name="create-cluster-with-azure-portal"></a>Vytvoření clusteru pomocí webu Azure portal
+### <a name="create-a-cluster-with-the-azure-portal"></a>Vytvoření clusteru pomocí webu Azure portal
 
 > [!Note]
 > Automatické škálování je momentálně podporována pouze pro verze clusterů Azure HDInsight Hive, MapReduce a Spark 3.6.
@@ -48,7 +48,7 @@ Vaše předplatné má kvótu kapacity pro každou oblast. Celkový počet jader
 > [!Note]  
 > Pokud překročíte limit kvóty celkový počet jader, zobrazí se chybová zpráva s oznámením "překročil maximální počet uzel dostupných jader v této oblasti, zvolte prosím jiné oblasti nebo požádejte podporu o navýšení kvóty."
 
-### <a name="create-cluster-with-an-resource-manager-template"></a>Vytvoření clusteru pomocí šablony Resource Manageru
+### <a name="create-a-cluster-with-a-resource-manager-template"></a>Vytvoření clusteru pomocí šablony Resource Manageru
 
 Kompletní HDInsight clusteru vytváření postup pomocí šablon Resource Manageru najdete v [vytvořit Apache Hadoop clusterů v HDInsight pomocí šablon Resource Manageru](hdinsight-hadoop-create-linux-clusters-arm-templates.md).  Při vytváření clusteru služby HDInsight pomocí šablony Azure Resource Manageru, budete muset přidat následující nastavení v části "workernode" "computeProfile" a odpovídajícím způsobem upravit:
 
@@ -74,7 +74,7 @@ Kompletní HDInsight clusteru vytváření postup pomocí šablon Resource Manag
 }
 ```
 
-### <a name="enable-and-disabling-autoscale-for-a-running-cluster"></a>Povolení a zakázání automatického škálování pro spuštěný cluster
+### <a name="enable-and-disable-autoscale-for-a-running-cluster"></a>Povolení a zákaz automatického škálování pro spuštěný cluster
 
 Povolení automatického škálování pro spuštěný cluster nepodporuje během ve verzi private preview. Musí být povoleno při vytváření clusteru.
 
@@ -82,7 +82,7 @@ Zakázání automatického škálování nebo změna nastavení automatického �
 
 ## <a name="monitoring"></a>Monitorování
 
-Škálování clusteru nahoru a dolů historie jako součást clusteru metrik můžete zobrazit. Můžete zobrazit seznam všech akcí škálování za poslední den, týden nebo delší časové období.
+Škálování clusteru nahoru a vertikální snížení kapacity historie jako součást clusteru metrik můžete zobrazit. Můžete také zařadit všechny akce škálování za poslední den, týden nebo delší časové období.
 
 ## <a name="how-it-works"></a>Jak to funguje
 

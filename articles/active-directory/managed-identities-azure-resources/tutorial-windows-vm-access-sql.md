@@ -7,19 +7,19 @@ author: priyamohanram
 manager: daveba
 editor: bryanla
 ms.service: active-directory
-ms.component: msi
+ms.subservice: msi
 ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 11/07/2018
 ms.author: priyamo
-ms.openlocfilehash: 7175a394e033d28061b9526c0d4793d0e119d570
-ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
+ms.openlocfilehash: a4e860d4207eebb993b26bb45e531a6be734c5fc
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54883343"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55167185"
 ---
 # <a name="tutorial-use-a-windows-vm-system-assigned-managed-identity-to-access-azure-sql"></a>Kurz: Použití spravované identity systém přiřadil virtuálního počítače Windows pro přístup k Azure SQL
 

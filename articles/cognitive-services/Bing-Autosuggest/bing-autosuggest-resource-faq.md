@@ -6,16 +6,16 @@ services: cognitive-services
 author: HeidiSteen
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: bing-autosuggest
+ms.subservice: bing-autosuggest
 ms.topic: conceptual
 ms.date: 07/26/2017
 ms.author: heidist
-ms.openlocfilehash: 84f1b0555922119e9de4addc3d51ac233e7bae65
-ms.sourcegitcommit: 26cc9a1feb03a00d92da6f022d34940192ef2c42
+ms.openlocfilehash: b0ec10bbf03e8a8d005eece4b6496b74b2943233
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2018
-ms.locfileid: "48831350"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55173254"
 ---
 # <a name="frequently-asked-questions-faq-about-bing-autosuggest-api"></a>Časté dotazy (FAQ) o Bing API pro automatické návrhy
  
@@ -25,15 +25,15 @@ ms.locfileid: "48831350"
 
 Následující hlavičky jsou volitelné, ale doporučujeme vám, že jste s nimi zacházet podle potřeby. Tyto hlavičky pomoct vrátit přesnější výsledky API pro automatické návrhy Bingu.
 
-- X-Search umístění
-- X-MSEdge ClientID
-- X-MSEdge ClientIP
+- X-Search-Location
+- X-MSEdge-ClientID
+- X-MSEdge-ClientIP
 
 Ale při volání rozhraní API pro automatické návrhy Bingu z jazyka JavaScript v prohlížeči integrovaných funkcí zabezpečení by mohly bránit můžete přístup k hodnoty z těchto záhlaví.
 
 Chcete-li tento problém vyřešit, můžete provést požadavek na rozhraní API pro automatické návrhy Bingu prostřednictvím proxy serveru CORS. Odpověď od takový proxy server má `Access-Control-Expose-Headers` záhlaví této hlavičky odpovědi seznamů povolených a zpřístupňuje je pro jazyk JavaScript.
 
-Je snadné k instalaci proxy CORS a povolit naše [ukázková aplikace](tutorials/autosuggest.md) záhlaví volitelný klientský přístup. První, pokud ještě nemáte, [nainstalujte Node.js](https://nodejs.org/en/download/). Potom zadejte následující příkaz z příkazového řádku.
+Je snadné k instalaci proxy CORS a povolit naše [ukázková aplikace](tutorials/autosuggest.md) záhlaví volitelný klientský přístup. Nejdřív [nainstalujte Node.js](https://nodejs.org/en/download/), pokud jste to ještě neudělali. Potom zadejte následující příkaz z příkazového řádku.
 
     npm install -g cors-proxy-server
 
@@ -41,11 +41,11 @@ V dalším kroku změňte v souboru HTML, aby koncový bod rozhraní API pro aut
 
     http://localhost:9090/https://api.cognitive.microsoft.com/bing/v7.0/Suggestions
 
-Nakonec spusťte CORS proxy pomocí následujícího příkazu:
+Nakonec spusťte proxy server CORS pomocí tohoto příkazu:
 
     cors-proxy-server
 
-Nechte otevřené příkazové okno, zatímco používají ukázková aplikace; zavření okna zastaví proxy serveru. V rozšíření hlavičky protokolu HTTP níže v části výsledků hledání, nyní je vidět `X-MSEdge-ClientID` záhlaví (mimo jiné) a ověřte, že je stejný pro každý požadavek.
+Při používání ukázkové aplikace nechte příkazové okno otevřené. Zavřením okna se zastaví proxy server. V rozbalitelné sekci hlaviček HTTP pod výsledky hledání teď uvidíte hlavičku `X-MSEdge-ClientID` (mimo jiné) a můžete zkontrolovat, jestli je stejná pro každý požadavek.
 
 ## <a name="next-steps"></a>Další postup
 

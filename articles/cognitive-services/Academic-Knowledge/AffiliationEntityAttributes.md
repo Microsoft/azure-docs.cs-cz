@@ -6,22 +6,22 @@ services: cognitive-services
 author: alch-msft
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: academic-knowledge
+ms.subservice: academic-knowledge
 ms.topic: conceptual
 ms.date: 03/23/2017
 ms.author: alch
-ms.openlocfilehash: 177fe9da8bbe821a69eae02d89a225e5d4009331
-ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
+ms.openlocfilehash: 344b26b16f74cd44982e3c93fa69295792daa9a0
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "48900474"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55190621"
 ---
 # <a name="affiliation-entity"></a>Entita přidružení
 
 <sub> * Následující atributy jsou specifická pro entity členství. (Ty = "5") </sub>
 
-Název    |Popis                            |Typ       | Operace
+Name    |Popis                            |Type       | Operace
 ------- | ------------------------------------- | --------- | ----------------------------
 ID      |ID entity                              |Int64      |Rovná se
 AfN     |Normalizovaný název přidružení        |Řetězec     |Rovná se
@@ -31,6 +31,6 @@ ECC     |Citaci celkový odhadovaný počet přidružení |Datový typ Int32    
 
 ## <a name="extended-metadata-attributes"></a>Rozšířené atributy metadat ##
 
-Název    | Popis               
+Name    | Popis               
 --------|---------------------------    
 PC      |Počet umístění na papír

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/29/2018
 ms.author: mcoskun
-ms.openlocfilehash: 42aaafd346c6db9d4a8780628319720aa3f28134
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.openlocfilehash: 986a7be49f8ae0f683b89596204845bb08eeaf2d
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52727711"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55095766"
 ---
 # <a name="backup-and-restore-reliable-services-and-reliable-actors"></a>Zálohování a obnovení modelu Reliable Services a Reliable Actors
 Azure Service Fabric je platforma vysoké dostupnosti, která replikuje stav napříč několika uzly tento vysokou dostupnost.  Proto i když selže jeden uzel v clusteru služby nadále k dispozici. Tuto redundanci integrované poskytovaný platformou může být dostačující pro některé, v některých případech je vhodné pro službu pro zálohování dat (pro externí úložiště).
@@ -44,7 +44,7 @@ Služba může být například vhodné zálohovat data z důvodu ochrany z nás
 Zálohování a obnovení funkce umožňuje služeb postavených na rozhraní API Reliable Services pro vytvoření a obnovení zálohy. Zálohování rozhraní API poskytovaný platformou povolit počet záloh: oddíl služby stavu, bez blokování pro čtení nebo zápisu. Obnovení rozhraní API umožňují oddíl služby stavu pro obnovení ze zálohy zvolená.
 
 ## <a name="types-of-backup"></a>Typy zálohování
-Existují dvě možnosti zálohování: úplné a přírůstkové.
+Existují dvě možnosti zálohování: Úplné a přírůstkové.
 Úplné zálohování je záloha, která obsahuje všechna data potřebná k rekonstrukci stavu repliky: kontrolní body a všechny záznamy protokolu.
 Protože obsahuje kontrolní body a v protokolu, je možné úplné zálohy obnovit samostatně.
 
@@ -227,7 +227,7 @@ Po povolení přírůstkové zálohy, přírůstkové zálohování může selha
   - Replika má nikdy neobsadila úplné zálohy. protože se převedly na primární.
   - Některé záznamy protokolu došlo ke zkrácení od poslední zálohy.
 
-Pokud je povoleno přírůstkové zálohování, `KvsActorStateProvider` nepoužívá ke správě své záznamy protokolu cyklické vyrovnávací paměti a pravidelně ho zkrátí. Pokud žádná záloha uživatelem po dobu 45 minut, systém automaticky zkrátí záznamy protokolu. Tento interval můžete nakonfigurovat tak, že zadáte `logTrunctationIntervalInMinutes` v `KvsActorStateProvider` konstruktoru (podobně jako při povolování přírůstkové zálohování). Záznamy protokolu může získat i zkrácen, pokud primární repliky se vyžaduje k sestavení jiná replika odesláním všechna jeho data.
+Pokud je povoleno přírůstkové zálohování, `KvsActorStateProvider` nepoužívá ke správě své záznamy protokolu cyklické vyrovnávací paměti a pravidelně ho zkrátí. Pokud žádná záloha uživatelem po dobu 45 minut, systém automaticky zkrátí záznamy protokolu. Tento interval můžete nakonfigurovat tak, že zadáte `logTruncationIntervalInMinutes` v `KvsActorStateProvider` konstruktoru (podobně jako při povolování přírůstkové zálohování). Záznamy protokolu může získat i zkrácen, pokud primární repliky se vyžaduje k sestavení jiná replika odesláním všechna jeho data.
 
 Při obnovení ze zálohy řetěz, podobně jako spolehlivé služby BackupFolderPath by měl obsahovat podadresářů pomocí jednoho podadresáře obsahující úplné zálohy a další podadresáře obsahující přírůstkové zálohy. Rozhraní API pro obnovení vyvolá výjimku FabricException s příslušnou chybovou zprávu, pokud selže ověření řetězu zálohování. 
 

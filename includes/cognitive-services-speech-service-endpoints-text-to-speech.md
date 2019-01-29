@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 12/11/2018
 ms.author: wolfma
-ms.openlocfilehash: e0a00ffac1921adab3ce120d65fcccaa8b2d231f
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: 933ee0ce6885960d5b35f67a0a4ee50602fe55c8
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53381413"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55147993"
 ---
 ### <a name="neural-voices"></a>Neurální hlasů
 
@@ -20,6 +20,9 @@ Neurální hlasy jsou k dispozici v těchto oblastech:
 | USA – východ | https://eastus.tts.speech.microsoft.com/cognitiveservices/v1 |
 | Jihovýchodní Asie | https://southeastasia.tts.speech.microsoft.com/cognitiveservices/v1 |
 | Západní Evropa | https://westeurope.tts.speech.microsoft.com/cognitiveservices/v1 |
+
+> [!IMPORTANT]
+> Microsoft Server řeči Text na řeč hlas (zh-CN, XiaoxiaoNeural) je k dispozici prostřednictvím koncového bodu jihovýchodní Asie pouze: https://southeastasia.tts.speech.microsoft.com/cognitiveservices/v1. Úplný seznam neuronových sítí hlasů, naleznete v tématu [jazykovou podporu](../articles/cognitive-services/speech-service/language-support.md).
 
 ### <a name="standard-voices"></a>Standardní hlasů
 

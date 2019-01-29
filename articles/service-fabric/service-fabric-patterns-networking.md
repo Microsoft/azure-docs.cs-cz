@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 01/19/2018
 ms.author: ryanwi
-ms.openlocfilehash: 2fce90f971d13b94c73012d4089cca05739c5440
-ms.sourcegitcommit: 7804131dbe9599f7f7afa59cacc2babd19e1e4b9
+ms.openlocfilehash: 7f6e95b28482ed6d75bb76773da05aebd1855a66
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/17/2018
-ms.locfileid: "51853706"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55093381"
 ---
 # <a name="service-fabric-networking-patterns"></a>Service Fabric sítě vzory
 Cluster Azure Service Fabric můžete integrovat další funkce Azure sítě. V tomto článku ukážeme, jak vytvářet clustery, které používají následující funkce:
@@ -81,7 +81,7 @@ V příkladech v tomto článku používáme template.json Service Fabric. Stáh
 
 1. Změňte parametr podsítě na název existující podsíť a pak přidejte dva nové parametry tak, aby odkazovaly existující virtuální síť:
 
-    ```
+    ```json
         "subnet0Name": {
                 "type": "string",
                 "defaultValue": "default"
@@ -108,26 +108,26 @@ V příkladech v tomto článku používáme template.json Service Fabric. Stáh
 
 2. Okomentujte `nicPrefixOverride` atribut `Microsoft.Compute/virtualMachineScaleSets`, protože používáte existující podsítě a jste zakázali této proměnné v kroku 1.
 
-    ```
+    ```json
             /*"nicPrefixOverride": "[parameters('subnet0Prefix')]",*/
     ```
 
 3. Změnit `vnetID` proměnné tak, aby odkazovala na existující virtuální síť:
 
-    ```
+    ```json
             /*old "vnetID": "[resourceId('Microsoft.Network/virtualNetworks',parameters('virtualNetworkName'))]",*/
             "vnetID": "[concat('/subscriptions/', subscription().subscriptionId, '/resourceGroups/', parameters('existingVNetRGName'), '/providers/Microsoft.Network/virtualNetworks/', parameters('existingVNetName'))]",
     ```
 
 4. Odebrat `Microsoft.Network/virtualNetworks` z vašich prostředků, takže Azure nevytvoří novou virtuální síť:
 
-    ```
+    ```json
     /*{
     "apiVersion": "[variables('vNetApiVersion')]",
     "type": "Microsoft.Network/virtualNetworks",
     "name": "[parameters('virtualNetworkName')]",
     "location": "[parameters('computeLocation')]",
-    "properities": {
+    "properties": {
         "addressSpace": {
             "addressPrefixes": [
                 "[parameters('addressPrefix')]"
@@ -151,7 +151,7 @@ V příkladech v tomto článku používáme template.json Service Fabric. Stáh
 
 5. Odkomentujte virtuálními sítěmi `dependsOn` atribut `Microsoft.Compute/virtualMachineScaleSets`, takže nejsou závislé na vytvoření nové virtuální sítě:
 
-    ```
+    ```json
     "apiVersion": "[variables('vmssApiVersion')]",
     "type": "Microsoft.Computer/virtualMachineScaleSets",
     "name": "[parameters('vmNodeType0Name')]",
@@ -185,7 +185,7 @@ Další příklad naleznete v tématu [, který není specifický pro Service Fa
 
 1. Přidáte parametry pro název existující skupiny prostředků, statické IP, název a plně kvalifikovaný název domény (FQDN):
 
-    ```
+    ```json
     "existingStaticIPResourceGroup": {
                 "type": "string"
             },
@@ -199,7 +199,7 @@ Další příklad naleznete v tématu [, který není specifický pro Service Fa
 
 2. Odeberte `dnsName` parametru. (Statická IP adresa už má jeden.)
 
-    ```
+    ```json
     /*
     "dnsName": {
         "type": "string"
@@ -209,13 +209,13 @@ Další příklad naleznete v tématu [, který není specifický pro Service Fa
 
 3. Přidejte proměnnou, která odkazují na existující statická IP adresa:
 
-    ```
+    ```json
     "existingStaticIP": "[concat('/subscriptions/', subscription().subscriptionId, '/resourceGroups/', parameters('existingStaticIPResourceGroup'), '/providers/Microsoft.Network/publicIPAddresses/', parameters('existingStaticIPName'))]",
     ```
 
 4. Odebrat `Microsoft.Network/publicIPAddresses` z vašich prostředků, takže Azure nevytvoří novou IP adresu:
 
-    ```
+    ```json
     /*
     {
         "apiVersion": "[variables('publicIPApiVersion')]",
@@ -237,7 +237,7 @@ Další příklad naleznete v tématu [, který není specifický pro Service Fa
 
 5. Komentář na IP adresu z `dependsOn` atribut `Microsoft.Network/loadBalancers`, takže nejsou závislé na vytváření novou IP adresu:
 
-    ```
+    ```json
     "apiVersion": "[variables('lbIPApiVersion')]",
     "type": "Microsoft.Network/loadBalancers",
     "name": "[concat('LB', '-', parameters('clusterName'), '-', parameters('vmNodeType0Name'))]",
@@ -251,7 +251,7 @@ Další příklad naleznete v tématu [, který není specifický pro Service Fa
 
 6. V `Microsoft.Network/loadBalancers` prostředek, změny `publicIPAddress` prvek `frontendIPConfigurations` odkazovat existující statickou IP adresu místo si nově vytvořený odběr:
 
-    ```
+    ```json
                 "frontendIPConfigurations": [
                         {
                             "name": "LoadBalancerIPConfig",
@@ -267,7 +267,7 @@ Další příklad naleznete v tématu [, který není specifický pro Service Fa
 
 7. V `Microsoft.ServiceFabric/clusters` prostředků, změna `managementEndpoint` na plně kvalifikovaný název domény DNS statické IP adresy. Pokud používáte zabezpečeného clusteru, ujistěte se, že změníte *http://* k *https://*. (Všimněte si, že tento krok platí jenom pro clustery Service Fabric. Pokud použijete škálovací sady virtuálních počítačů, přeskočte tento krok.)
 
-    ```
+    ```json
                     "fabricSettings": [],
                     /*"managementEndpoint": "[concat('http://',reference(concat(parameters('lbIPName'),'-','0')).dnsSettings.fqdn,':',parameters('nt0fabricHttpGatewayPort'))]",*/
                     "managementEndpoint": "[concat('http://',parameters('existingStaticIPDnsFQDN'),':',parameters('nt0fabricHttpGatewayPort'))]",
@@ -294,7 +294,7 @@ Tento scénář nahradí externím vyrovnáváním zatížení v šabloně Servi
 
 1. Odeberte `dnsName` parametru. (Není potřeba.)
 
-    ```
+    ```json
     /*
     "dnsName": {
         "type": "string"
@@ -304,7 +304,7 @@ Tento scénář nahradí externím vyrovnáváním zatížení v šabloně Servi
 
 2. Volitelně můžete použít metodu statického přidělování, můžete přidat parametr statické IP adresy. Pokud používáte metody dynamického přidělení, není potřeba tento krok.
 
-    ```
+    ```json
             "internalLBAddress": {
                 "type": "string",
                 "defaultValue": "10.0.0.250"
@@ -313,7 +313,7 @@ Tento scénář nahradí externím vyrovnáváním zatížení v šabloně Servi
 
 3. Odebrat `Microsoft.Network/publicIPAddresses` z vašich prostředků, takže Azure nevytvoří novou IP adresu:
 
-    ```
+    ```json
     /*
     {
         "apiVersion": "[variables('publicIPApiVersion')]",
@@ -335,7 +335,7 @@ Tento scénář nahradí externím vyrovnáváním zatížení v šabloně Servi
 
 4. Odeberte IP adresu `dependsOn` atribut `Microsoft.Network/loadBalancers`, takže nejsou závislé na vytváření novou IP adresu. Přidat virtuální síť `dependsOn` atribut, protože nástroj pro vyrovnávání zatížení teď závisí na podsíť z virtuální sítě:
 
-    ```
+    ```json
                 "apiVersion": "[variables('lbApiVersion')]",
                 "type": "Microsoft.Network/loadBalancers",
                 "name": "[concat('LB','-', parameters('clusterName'),'-',parameters('vmNodeType0Name'))]",
@@ -348,7 +348,7 @@ Tento scénář nahradí externím vyrovnáváním zatížení v šabloně Servi
 
 5. Změna nástroje pro vyrovnávání zatížení `frontendIPConfigurations` ze pomocí nastavení `publicIPAddress`, na použití podsítě a `privateIPAddress`. `privateIPAddress` používá předdefinované statické interní IP adresu. Chcete-li použít dynamickou IP adresu, odeberte `privateIPAddress` element a pak změňte `privateIPAllocationMethod` k **dynamické**.
 
-    ```
+    ```json
                 "frontendIPConfigurations": [
                         {
                             "name": "LoadBalancerIPConfig",
@@ -369,7 +369,7 @@ Tento scénář nahradí externím vyrovnáváním zatížení v šabloně Servi
 
 6. V `Microsoft.ServiceFabric/clusters` prostředků, změna `managementEndpoint` tak, aby odkazoval na adresu interního nástroje pro vyrovnávání. Pokud používáte zabezpečeného clusteru, ujistěte se, že změníte *http://* k *https://*. (Všimněte si, že tento krok platí jenom pro clustery Service Fabric. Pokud použijete škálovací sady virtuálních počítačů, přeskočte tento krok.)
 
-    ```
+    ```json
                     "fabricSettings": [],
                     /*"managementEndpoint": "[concat('http://',reference(concat(parameters('lbIPName'),'-','0')).dnsSettings.fqdn,':',parameters('nt0fabricHttpGatewayPort'))]",*/
                     "managementEndpoint": "[concat('http://',reference(variables('lbID0')).frontEndIPConfigurations[0].properties.privateIPAddress,':',parameters('nt0fabricHttpGatewayPort'))]",
@@ -394,7 +394,7 @@ V clusteru dvě typ uzlu jeden typ uzlu je v externím vyrovnáváním zatížen
 
 1. Přidáte parametr statické interního nástroje pro vyrovnávání IP adresa. (Poznámky související s používáním dynamickou IP adresu, najdete v dřívějších částech tohoto článku.)
 
-    ```
+    ```json
             "internalLBAddress": {
                 "type": "string",
                 "defaultValue": "10.0.0.250"
@@ -405,7 +405,7 @@ V clusteru dvě typ uzlu jeden typ uzlu je v externím vyrovnáváním zatížen
 
 3. Přidejte sítě proměnné, kopírovat a vkládat je interní verze stávajícího a přidejte "-Int" k názvu:
 
-    ```
+    ```json
     /* Add internal load balancer networking variables */
             "lbID0-Int": "[resourceId('Microsoft.Network/loadBalancers', concat('LB','-', parameters('clusterName'),'-',parameters('vmNodeType0Name'), '-Internal'))]",
             "lbIPConfig0-Int": "[concat(variables('lbID0-Int'),'/frontendIPConfigurations/LoadBalancerIPConfig')]",
@@ -418,7 +418,7 @@ V clusteru dvě typ uzlu jeden typ uzlu je v externím vyrovnáváním zatížen
 
 4. Pokud začnete se šablonou generovaný na portálu, který používá aplikace port 80, přidá výchozí šablony portálu AppPort1 (port 80) na externím vyrovnáváním zatížení. V takovém případě odeberte z nástroje pro vyrovnávání zatížení externí AppPort1 `loadBalancingRules` a testy, můžete ho přidat do interní služby load balancer:
 
-    ```
+    ```json
     "loadBalancingRules": [
         {
             "name": "LBHttpRule",
@@ -495,7 +495,7 @@ V clusteru dvě typ uzlu jeden typ uzlu je v externím vyrovnáváním zatížen
 
 5. Přidejte druhý `Microsoft.Network/loadBalancers` prostředků. Vypadá podobně jako interního nástroje load balancer vytvořené v [nástroje pro vyrovnávání zatížení jenom pro interní](#internallb) oddílu, ale používá "-Int" proměnné nástroje pro vyrovnávání zatížení a implementuje pouze aplikace port 80. Tím se taky odeberou `inboundNatPools`, aby vaše koncové body protokolu RDP na nástroj pro vyrovnávání zatížení veřejnou. Pokud chcete protokol RDP na interní služby load balancer, přesuňte `inboundNatPools` z externí nástroj pro vyrovnávání pro tento interní nástroj pro vyrovnávání zatížení:
 
-    ```
+    ```json
             /* Add a second load balancer, configured with a static privateIPAddress and the "-Int" load balancer variables. */
             {
                 "apiVersion": "[variables('lbApiVersion')]",
@@ -580,7 +580,7 @@ V clusteru dvě typ uzlu jeden typ uzlu je v externím vyrovnáváním zatížen
 
 6. V `networkProfile` pro `Microsoft.Compute/virtualMachineScaleSets` prostředků, přidat interní back endovém fondu adres:
 
-    ```
+    ```json
     "loadBalancerBackendAddressPools": [
                                                         {
                                                             "id": "[variables('lbPoolID0')]"

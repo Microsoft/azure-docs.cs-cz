@@ -6,16 +6,16 @@ services: cognitive-services
 author: mikedodaro
 manager: rosh
 ms.service: cognitive-services
-ms.component: bing-local-business
+ms.subservice: bing-local-business
 ms.topic: article
 ms.date: 11/01/2018
 ms.author: rosh, v-gedod
-ms.openlocfilehash: aec45e94e2cbec9093cdb72c896dabc633f118b2
-ms.sourcegitcommit: 6678e16c4b273acd3eaf45af310de77090137fa1
+ms.openlocfilehash: 9ee6d0f8b609b87fe7ed4083bc5886ceaf158cb2
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/01/2018
-ms.locfileid: "50748638"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55188707"
 ---
 # <a name="search-categories-for-the-bing-local-business-search-api"></a>Vyhledat v kategoriích pro místní obchodní hledání rozhraní API Bingu
 
@@ -52,7 +52,7 @@ Podkategorie jsou předány stejným způsobem jako `localCategories`. Podkatego
 | HungarianRestaurants | IceCreamAndFrozenDesserts | IndianRestaurants | 
 | ItalianRestaurants | JapaneseRestaurants | Šťáv | 
 | KoreanRestaurants | LiquorStores | MexicanRestaurants |
-| MiddleEasternRestaurants | pizza | PolishRestaurants | 
+| MiddleEasternRestaurants | Pizza | PolishRestaurants | 
 | PortugueseRestaurants | Pretzels | Restaurace | 
 | RussianAndUkrainianRestaurants | Sendviče | SeafoodRestaurants | 
 | SpanishRestaurants | SteakHouseRestaurants | SushiRestaurants | 
@@ -65,7 +65,7 @@ Podkategorie jsou předány stejným způsobem jako `localCategories`. Podkatego
 | AmusementParks | Atrakce | Carnivals |
 | Kasin | LandmarksAndHistoricalSites | MiniatureGolfCourses |
 | MovieTheaters | Muzeí | Parků |
-| SightseeingTours | TouristInformation | Zoologické zahrady |
+| SightseeingTours | TouristInformation | Zoos |
  
 ### <a name="shop"></a>Obchod 
 |  |  |  |
@@ -99,7 +99,7 @@ Následující dotaz omezí počet výsledků 'nemocnici' první tři vrácená 
 
 Následující příklad odpověď JSON obsahuje tři nemocnice větší Seattlu:
 
-````json
+```json
 BingAPIs-TraceId: 68AFB51807C6485CAB8AAF20E232EFFF
 BingAPIs-SessionId: F89E7B8539B34BF58AAF811485E83B20
 X-MSEdge-ClientID: 1C44E64DBFAA6BCA1270EADDBE7D6A22
@@ -214,7 +214,7 @@ X-MSEdge-Ref: Ref A: 68AFB51807C6485CAB8AAF20E232EFFF Ref B: CO1EDGE0108 Ref C: 
       }
    }
 }
-````
+```
 
 ## <a name="next-steps"></a>Další postup
 - [Hranice geografické vyhledávání](specify-geographic-search.md)

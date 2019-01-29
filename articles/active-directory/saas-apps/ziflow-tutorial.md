@@ -1,5 +1,5 @@
 ---
-title: 'Kurz: Integrace Azure Active Directory se službou Ziflow | Dokumentace Microsoftu'
+title: 'Kurz: Integrace Azure Active Directory s Ziflow | Dokumentace Microsoftu'
 description: Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a Ziflow.
 services: active-directory
 documentationCenter: na
@@ -8,21 +8,21 @@ manager: femila
 ms.reviewer: joflore
 ms.assetid: 84e60fa4-36fb-49c4-a642-95538c78f926
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 08/07/2018
 ms.author: jeedes
-ms.openlocfilehash: 460a52f240f6b3723f93e81a11a8cd1ccc6c30c9
-ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
+ms.openlocfilehash: ca687f15187d4dd485d2c59e3c46fa3158802ff4
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39626689"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55179998"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-ziflow"></a>Kurz: Integrace Azure Active Directory se službou Ziflow
+# <a name="tutorial-azure-active-directory-integration-with-ziflow"></a>Kurz: Integrace Azure Active Directory s Ziflow
 
 V tomto kurzu se dozvíte, jak integrovat Ziflow s Azure Active Directory (Azure AD).
 
@@ -60,7 +60,7 @@ Konfigurace integrace Ziflow do služby Azure AD, budete muset přidat Ziflow z 
 
 **Chcete-li přidat Ziflow z galerie, postupujte následovně:**
 
-1. V  **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu. 
+1. V **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu. 
 
     ![Tlačítko Azure Active Directory][1]
 
@@ -246,7 +246,7 @@ V této části je povolit Britta Simon k udělení přístupu k Ziflow použit�
 
 7. Klikněte na tlačítko **přiřadit** tlačítko **přidat přiřazení** dialogového okna.
     
-### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování
+### <a name="test-single-sign-on"></a>Test jednotného přihlašování
 
 V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 

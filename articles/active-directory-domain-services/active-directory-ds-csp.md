@@ -8,19 +8,19 @@ manager: mahesh-unnikrishnan
 editor: curtand
 ms.assetid: 56ccb219-11b2-4e43-9f07-5a76e3cd8da8
 ms.service: active-directory
-ms.component: domain-services
+ms.subservice: domain-services
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 12/08/2017
 ms.author: ergreenl
-ms.openlocfilehash: cf205249c4d07cee1ff17c9c726283cfddca1fce
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.openlocfilehash: 7210610f8a082c34f8e87ef715b8252c2821bc83
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50155215"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55187092"
 ---
 # <a name="azure-active-directory-ad-domain-services-for-azure-cloud-solution-providers-csp"></a>Domény služby Azure Active Directory (AD) pro Azure Cloud Solution Provider (CSP)
 Tento článek vysvětluje, jak můžete pomocí služby Azure AD Domain Services v rámci předplatného Azure CSP.
@@ -72,18 +72,18 @@ Tento model nasazení může být vhodné k scénáře, kdy poskytuje hostovaný
 ## <a name="administering-azure-ad-domain-services-managed-domains-in-csp-subscriptions"></a>Správa služby Azure AD Domain Services spravované domény v předplatných CSP
 Při správě spravované domény v předplatném Azure CSP, platí následující důležité aspekty:
 
-* **Zprostředkovatel kryptografických služeb správce agentů můžete zřídit spravované domény pomocí svých přihlašovacích údajů:** předplatných Azure CSP podporuje Azure AD Domain Services. Uživatelé, kteří patří do skupiny agentů správce CSP partner, proto můžete zřídit nové spravované doméně Azure AD Domain Services.
+* **Zprostředkovatel kryptografických služeb správce agentů můžete zřídit spravované domény pomocí svých přihlašovacích údajů:** Azure AD Domain Services podporuje předplatných Azure CSP. Uživatelé, kteří patří do skupiny agentů správce CSP partner, proto můžete zřídit nové spravované doméně Azure AD Domain Services.
 
-* **Zprostředkovatele kryptografických služeb můžete používat skripty pro vytváření nových spravovaných domén pro své zákazníky pomocí prostředí PowerShell:** naleznete v tématu [jak povolit Azure AD Domain Services pomocí prostředí PowerShell](active-directory-ds-enable-using-powershell.md) podrobnosti.
+* **Vytváření nových spravovaných domén pro své zákazníky pomocí prostředí PowerShell můžete používat skripty pro CSP:** Zobrazit [jak povolit Azure AD Domain Services pomocí prostředí PowerShell](active-directory-ds-enable-using-powershell.md) podrobnosti.
 
-* **CSP správce agentů nelze provádět úlohy průběžné správy ve spravované doméně pomocí svých přihlašovacích údajů:** CSP správcům nelze provádět úlohy běžné správy ve spravované doméně pomocí svých přihlašovacích údajů. Tito uživatelé jsou externí vzhledem k adresáři služby Azure AD zákazníka a jejich pověření nejsou k dispozici v rámci adresáře služby Azure AD zákazníka. Azure AD Domain Services, proto nemá přístup k protokolu Kerberos a NTLM hodnot hash hesel pro tyto uživatele. V důsledku toho tato uživatelé nemohou být ověřeni v Azure AD Domain Services spravované domény.
+* **CSP správce agentů nelze provádět úlohy průběžné správy ve spravované doméně pomocí svých přihlašovacích údajů:** Uživatelé CSP správce nelze provádět úkoly správy rutiny ve spravované doméně pomocí svých přihlašovacích údajů. Tito uživatelé jsou externí vzhledem k adresáři služby Azure AD zákazníka a jejich pověření nejsou k dispozici v rámci adresáře služby Azure AD zákazníka. Azure AD Domain Services, proto nemá přístup k protokolu Kerberos a NTLM hodnot hash hesel pro tyto uživatele. V důsledku toho tato uživatelé nemohou být ověřeni v Azure AD Domain Services spravované domény.
 
   > [!WARNING]
   > **Musíte vytvořit uživatelský účet v adresáři zákazníka k provedení úlohy průběžné správy ve spravované doméně.**
   > Nemůžete se přihlásit ke spravované doméně pomocí přihlašovacích údajů uživatele CSP správce. K tomu použijte přihlašovací údaje uživatelského účtu, který patří do adresáře Azure AD zákazníka. Budete potřebovat tyto přihlašovací údaje pro úlohy, jako je připojení virtuálních počítačů do spravované domény, Správa DNS, Správa skupiny zásad atd.
   >
 
-* **Uživatelský účet vytvořený pro průběžné správy musí být přidána do skupiny 'Správci AAD DC':** "Správci AAD DC" skupina má oprávnění k provádění určitých úloh delegovanou správu. ve spravované doméně. Tyto úlohy zahrnují nastavení DNS, vytvoření organizační jednotky, Správa zásad skupiny atd. Pro CSP partnera k provádění takových úloh ve spravované doméně uživatelský účet musí být vytvořeny v rámci adresáře služby Azure AD zákazníka. Přihlašovací údaje pro tento účet musí být sdíleny s agenty správce CSP partner. Tento uživatelský účet musí také, přidají do skupiny "Správci AAD DC" Povolit konfiguračních úloh ve spravované doméně, která se má provést pomocí tohoto uživatelského účtu.
+* **Uživatelský účet vytvořený pro průběžnou správu musí být přidána do skupiny "Správci AAD DC":** "Správci AAD DC" skupina nemá oprávnění k provádění určitých úloh delegovanou správu. ve spravované doméně. Tyto úlohy zahrnují nastavení DNS, vytvoření organizační jednotky, Správa zásad skupiny atd. Pro CSP partnera k provádění takových úloh ve spravované doméně uživatelský účet musí být vytvořeny v rámci adresáře služby Azure AD zákazníka. Přihlašovací údaje pro tento účet musí být sdíleny s agenty správce CSP partner. Tento uživatelský účet musí také, přidají do skupiny "Správci AAD DC" Povolit konfiguračních úloh ve spravované doméně, která se má provést pomocí tohoto uživatelského účtu.
 
 
 ## <a name="next-steps"></a>Další postup

@@ -7,16 +7,16 @@ author: swhite-msft
 manager: cgronlun
 ms.assetid: E8827BEB-4379-47CE-B67B-6C81AD7DAEB1
 ms.service: cognitive-services
-ms.component: bing-web-search
+ms.subservice: bing-web-search
 ms.topic: reference
 ms.date: 01/15/2017
 ms.author: scottwhi
-ms.openlocfilehash: eb84c961d13c5abac7a0c9f426f099d21f034f20
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.openlocfilehash: 7c3e19fd809e442d58f7cb0e6922d4e565673fe2
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46129739"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55188928"
 ---
 # <a name="upgrade-from-bing-web-search-api-v5-to-v7"></a>Upgrade ze služby Bing webové rozhraní API pro vyhledávání v5 na v7
 
@@ -75,7 +75,7 @@ Blokováno|InvalidRequest.Blocked
 
 ### <a name="headers"></a>Hlavičky
 
-- Přidat nepovinný [– direktiva Pragma](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference#pragma) hlavičky žádosti. Ve výchozím nastavení Bing vrátí obsah uložený v mezipaměti, pokud je k dispozici. Abyste zabránili Bing vrátí obsah uložený v mezipaměti, hlavičku – direktiva Pragma nastavit na hodnotu no-cache (například – direktiva Pragma: no-cache).
+- Přidat nepovinný [– direktiva Pragma](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference#pragma) hlavičky žádosti. Ve výchozím nastavení Bing vrátí obsah uložený v mezipaměti, pokud je k dispozici. Abyste Bingu zabránili ve vrácení obsahu uloženého v mezipaměti, hlavičku Pragma nastavte na hodnotu no-cache (například Pragma: no-cache).
 
 ### <a name="query-parameters"></a>Parametry dotazu
 

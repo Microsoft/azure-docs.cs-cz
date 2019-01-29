@@ -1,5 +1,5 @@
 ---
-title: 'Azure Active Directory Domain Services: Konfigurace řešení potíží s skupina zabezpečení sítě | Dokumentace Microsoftu'
+title: 'Azure Active Directory Domain Services: Konfigurace řešení potíží s skupiny zabezpečení sítě | Dokumentace Microsoftu'
 description: Řešení potíží s konfigurací NSG pro službu Azure AD Domain Services
 services: active-directory-ds
 documentationcenter: ''
@@ -8,25 +8,25 @@ manager: ''
 editor: ''
 ms.assetid: 95f970a7-5867-4108-a87e-471fa0910b8c
 ms.service: active-directory
-ms.component: domain-services
+ms.subservice: domain-services
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 10/17/2018
 ms.author: ergreenl
-ms.openlocfilehash: 6e7d025e9e83f5511fce25d0c24e4da3b04d7e54
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 2f66c6956c803979ee6717f7327379c7bc9e97bb
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52957534"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55181890"
 ---
 # <a name="troubleshoot-invalid-networking-configuration-for-your-managed-domain"></a>Řešení potíží s neplatnou konfiguraci sítě pro vaši spravovanou doménu
 Tento článek pomáhá odstraňovat potíže a řešit chyby související se sítí konfigurace, které za následek následující upozornění:
 
 ## <a name="alert-aadds104-network-error"></a>Upozornění AADDS104: Chyba sítě
-**Zpráva s výstrahou:** *společnost Microsoft se nám kontaktovat řadiče této spravované doméně. To může stát v případě skupinu zabezpečení sítě (NSG) nakonfigurovaná ve vaší virtuální síti blokuje přístup ke spravované doméně. Dalším důvodem je, pokud trasy definované uživatelem, která blokuje příchozí provoz z Internetu.*
+**Zpráva s výstrahou:** *Společnost Microsoft se nám kontaktovat řadiče této spravované doméně. To může stát v případě skupinu zabezpečení sítě (NSG) nakonfigurovaná ve vaší virtuální síti blokuje přístup ke spravované doméně. Dalším důvodem je, pokud trasy definované uživatelem, která blokuje příchozí provoz z Internetu.*
 
 Neplatná konfigurace skupiny zabezpečení sítě jsou nejčastější příčina chyby sítě pro službu Azure AD Domain Services. Skupiny zabezpečení sítě (NSG) nakonfigurovaná pro virtuální síť musí umožňovat přístup k [určité porty](active-directory-ds-networking.md#ports-required-for-azure-ad-domain-services). Pokud tyto porty jsou blokované, Microsoft nemůže monitorovat nebo aktualizovat vaší spravované domény. Kromě toho má vliv synchronizace adresáře služby Azure AD a vaší spravované domény. Při vytváření vaší skupiny zabezpečení sítě, nechte tyto porty otevřené zabránili přerušení služby.
 
@@ -56,5 +56,5 @@ Pokud nechcete, jak pomocí prostředí PowerShell, můžete ručně přidat jed
 5. Ověřte, že vaše pravidlo bylo vytvořené ve vyhledávání v tabulce pravidel.
 
 
-## <a name="need-help"></a>Potřebujete pomoct?
+## <a name="need-help"></a>Potřebujete pomoc?
 Obraťte se na Azure Active Directory Domain Services produktovému týmu a [podělit se o názory, nebo pro podporu](active-directory-ds-contact-us.md).

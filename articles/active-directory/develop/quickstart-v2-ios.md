@@ -8,7 +8,7 @@ manager: mtillman
 editor: ''
 ms.assetid: 820acdb7-d316-4c3b-8de9-79df48ba3b06
 ms.service: active-directory
-ms.component: develop
+ms.subservice: develop
 ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
@@ -16,14 +16,14 @@ ms.workload: identity
 ms.date: 09/23/2018
 ms.author: andret
 ms.custom: aaddev
-ms.openlocfilehash: 49ced3277a659ddacef239c7a1394cbe5ce06ac9
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
-ms.translationtype: HT
+ms.openlocfilehash: 2f91cfc6c391bb22ca5f75a7a72123b695380aff
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46973605"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55094304"
 ---
-# <a name="quickstart-sign-in-users-and-call-the-microsoft-graph-api-from-an-ios-native-app"></a>Rychlý start: Přihlašování uživatelů a volání rozhraní Microsoft Graph API z nativní aplikace pro iOS
+# <a name="quickstart-sign-in-users-and-call-the-microsoft-graph-api-from-an-ios-native-app"></a>Rychlý start: Přihlašování uživatelů a volání rozhraní Microsoft Graph API z nativních aplikací pro iOS
 
 [!INCLUDE [active-directory-develop-applies-v2-msal](../../../includes/active-directory-develop-applies-v2-msal.md)]
 
@@ -33,8 +33,8 @@ Tento rychlý start obsahuje vzorový kód, který předvádí, jak může nativ
 
 > [!div renderon="docs"]
 > ## <a name="register-and-download"></a>Registrace a stažení
-> ### <a name="register-and-configure-your-application-and-code-sample"></a>Registrace a konfigurace aplikace a vzorový kód
-> #### <a name="step-1-register-your-application"></a>Krok 1: Registrace aplikace
+> ### <a name="register-and-configure-your-application-and-code-sample"></a>Zaregistrujte si a nakonfigurujte svoji aplikaci a vzorový kód
+> #### <a name="step-1-register-your-application"></a>Krok 1: Registrace vaší aplikace
 > Postup při registraci aplikace a přidání informací o registraci aplikace k řešení:
 > 1. Abyste mohli zaregistrovat aplikaci, přejděte na [portál pro registraci aplikací Microsoft](https://apps.dev.microsoft.com/portal/register-app).
 > 1. Do pole **Application Name** (Název aplikace) zadejte název vaší aplikace.
@@ -48,7 +48,7 @@ Tento rychlý start obsahuje vzorový kód, který předvádí, jak může nativ
 > > [Udělat změnu za mě]()
 >
 > > [!div id="appconfigured" class="alert alert-info"]
-> > ![Už nakonfigurované](media/quickstart-v2-ios/green-check.png) Vaše aplikace je nakonfigurovaná s tímto atributem
+> > ![Už nakonfigurováno](media/quickstart-v2-ios/green-check.png) Vaše aplikace už má tento atribut nakonfigurovaný.
 
 #### <a name="step-2-download-your-web-server-or-project"></a>Krok 2: Stažení webového serveru nebo projektu
 
@@ -182,7 +182,7 @@ applicationContext.acquireTokenSilent(forScopes: self.kScopes, account: applicat
 > | `forScopes` | Obsahuje požadované obory (to znamená `[ "user.read" ]` pro Microsoft Graph nebo `[ "<Application ID URL>/scope" ]` pro vlastní webová rozhraní API (např. `api://<Application ID>/access_as_user`)). |
 > | `account` | Účet, který o token žádá (knihovna podporuje více účtů v jedné aplikaci). V případě tohoto rychlého startu tato hodnota odkazuje na první účet v mezipaměti (`applicationContext.allAccounts().first`). |
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Vyzkoušejte kurz pro iOS, kde najdete podrobný návod k vytváření aplikací a nových funkcí, včetně úplného popisu tohoto rychlého startu.
 

@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 7/10/2018
 ms.author: sogup
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 6793a83002029c009e3d4e124b4386feabecd5f8
-ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
+ms.openlocfilehash: 331e932a328fabeb6dc4418bec92f9bae3c92fcb
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54201070"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55098386"
 ---
 # <a name="back-up-and-restore-encrypted-virtual-machines-with-azure-backup"></a>Zálohování a obnovení šifrovaných virtuálních počítačů pomocí služby Azure Backup
 Tento článek se hovoří o tom, jak zálohovat a obnovovat virtuální počítače (VM) s využitím Azure Backup. Poskytuje také informace o podporované scénáře, požadavky a kroky při řešení potíží pro případy chyb.
@@ -138,7 +138,7 @@ Chcete-li obnovit šifrovaný virtuální počítač, nejdříve obnovit disky p
 ## <a name="troubleshooting-errors"></a>Řešení chyb
 | Operace | Podrobnosti o chybě | Řešení |
 | --- | --- | --- |
-|Backup | Zálohování nemá dostatečná oprávnění k trezoru klíčů pro zálohování šifrovaných virtuálních počítačů. | Zálohování by měl poskytovat tato oprávnění po [kroků v předchozí části](#provide-permissions-to-azure-backup). Nebo můžete pomocí prostředí PowerShell kroků v části "Povolení ochrany" v článku [použití Powershellu k zálohování a obnovení virtuálních počítačů](backup-azure-vms-automation.md#enable-protection). |  
-| Obnovení |Tento šifrovaný virtuální počítač nelze obnovit, protože trezor klíčů, které jsou přidružené k tomuto virtuálnímu počítači neexistuje. |Vytvoření trezoru klíčů pomocí [Začínáme s Azure Key Vault](../key-vault/key-vault-get-started.md). Zobrazit [obnovení služby key vault klíč a tajný klíč, a to pomocí služby Azure Backup](backup-azure-restore-key-secret.md) obnovit klíč a tajný klíč, pokud nejsou k dispozici. |
-| Obnovení |Tento šifrovaný virtuální počítač nelze obnovit, protože neexistuje klíč a tajný klíč přidružený k tomuto virtuálnímu počítači. |Zobrazit [obnovení služby key vault klíč a tajný klíč, a to pomocí služby Azure Backup](backup-azure-restore-key-secret.md) obnovit klíč a tajný klíč, pokud nejsou k dispozici. |
-| Obnovení |Zálohování nemá autorizaci pro přístup k prostředkům ve vašem předplatném. |Jak už bylo zmíněno dříve, obnovte disky nejprve podle postupu v části "Obnovte zálohovanou disky" v [zvolte virtuální počítač obnovit konfiguraci](backup-azure-arm-restore-vms.md#choose-a-vm-restore-configuration). Potom použijte PowerShell [vytvořit virtuální počítač z obnovených disků](backup-azure-vms-automation.md#create-a-vm-from-restored-disks). |
+|Backup | Kód chyby: UserErrorKeyVaultPermissionsNotConfigured<br><br>Chybová zpráva: Zálohování nemá dostatečná oprávnění k trezoru klíčů pro zálohování šifrovaných virtuálních počítačů. | Zálohování by měl poskytovat tato oprávnění po [kroků v předchozí části](#provide-permissions-to-azure-backup). Nebo můžete pomocí prostředí PowerShell kroků v části "Povolení ochrany" v článku [použití Powershellu k zálohování a obnovení virtuálních počítačů](backup-azure-vms-automation.md#enable-protection). |  
+| Obnovení | Tento šifrovaný virtuální počítač nelze obnovit, protože trezor klíčů, které jsou přidružené k tomuto virtuálnímu počítači neexistuje. |Vytvoření trezoru klíčů pomocí [Začínáme s Azure Key Vault](../key-vault/key-vault-get-started.md). Zobrazit [obnovení služby key vault klíč a tajný klíč, a to pomocí služby Azure Backup](backup-azure-restore-key-secret.md) obnovit klíč a tajný klíč, pokud nejsou k dispozici. |
+| Obnovení | Kód chyby: UserErrorKeyVaultKeyDoesNotExist<br><br> Chybová zpráva: Tento šifrovaný virtuální počítač nelze obnovit, protože neexistuje klíč a tajný klíč přidružený k tomuto virtuálnímu počítači. |Zobrazit [obnovení služby key vault klíč a tajný klíč, a to pomocí služby Azure Backup](backup-azure-restore-key-secret.md) obnovit klíč a tajný klíč, pokud nejsou k dispozici. |
+| Obnovení | Kód chyby: ProviderAuthorizationFailed/UserErrorProviderAuthorizationFailed<br><br>Chybová zpráva: Zálohování nemá autorizaci pro přístup k prostředkům ve vašem předplatném. |Jak už bylo zmíněno dříve, obnovte disky nejprve podle postupu v části "Obnovte zálohovanou disky" v [zvolte virtuální počítač obnovit konfiguraci](backup-azure-arm-restore-vms.md#choose-a-vm-restore-configuration). Potom použijte PowerShell [vytvořit virtuální počítač z obnovených disků](backup-azure-vms-automation.md#create-a-vm-from-restored-disks). |

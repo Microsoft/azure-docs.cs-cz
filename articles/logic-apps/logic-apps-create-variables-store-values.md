@@ -72,7 +72,7 @@ Můžete vytvořit proměnnou a deklarovat jeho datový typ a počáteční hodn
 
 4. Zadejte informace pro vaše proměnná:
 
-   | Vlastnost | Požaduje se | Hodnota |  Popis |
+   | Vlastnost | Požaduje se | Value |  Popis |
    |----------|----------|-------|--------------|
    | Name | Ano | <*Název proměnné*> | Název proměnné se zvýší | 
    | Type | Ano | <*Typ proměnné*> | Datový typ pro proměnnou | 
@@ -208,7 +208,7 @@ Pro zvýšení nebo *přírůstek* proměnnou podle konstantní hodnoty, přidej
 
 3. Zadejte informace pro zvýšení vaší proměnné:
 
-   | Vlastnost | Požaduje se | Hodnota |  Popis |
+   | Vlastnost | Požaduje se | Value |  Popis |
    |----------|----------|-------|--------------|
    | Name | Ano | <*Název proměnné*> | Název proměnné se zvýší | 
    | Value | Ne | <*přírůstková hodnota*> | Hodnota určená pro zvyšování hodnoty proměnné. Výchozí hodnota je 1. <p><p>**Tip**: I když je volitelné, nastavte tuto hodnotu jako osvědčený postup, abyste vždycky věděli, konkrétní hodnota se zvyšuje vaše proměnná. | 
@@ -328,7 +328,7 @@ Ke snížení nebo *snížení* proměnnou podle konstantní hodnoty, postupujte
 
 Tady jsou vlastnosti **Dekrementuje proměnnou** akce:
 
-| Vlastnost | Požaduje se | Hodnota |  Popis |
+| Vlastnost | Požaduje se | Value |  Popis |
 |----------|----------|-------|--------------|
 | Name | Ano | <*Název proměnné*> | Název proměnné se sníží | 
 | Value | Ne | <*přírůstková hodnota*> | Hodnota dekrementace proměnné. Výchozí hodnota je 1. <p><p>**Tip**: I když je volitelné, nastavte tuto hodnotu jako osvědčený postup, budete vždycky vědět, konkrétní hodnota dekrementace proměnné. | 
@@ -363,7 +363,7 @@ Je požadována hodnota, protože tato akce nemá výchozí hodnotu.
 
 Tady jsou vlastnosti **nastavená proměnná** akce:
 
-| Vlastnost | Požaduje se | Hodnota |  Popis | 
+| Vlastnost | Požaduje se | Value |  Popis | 
 |----------|----------|-------|--------------| 
 | Name | Ano | <*Název proměnné*> | Název proměnné, chcete-li změnit | 
 | Value | Ano | <*Nová hodnota*> | Hodnota, kterou chcete přiřadit proměnné. Musí mít stejný datový typ. | 
@@ -421,7 +421,7 @@ Pro proměnné, které obsahují řetězce nebo pole, můžete vložit nebo *př
 
 Tady jsou vlastnosti **připojit k...**  akce:
 
-| Vlastnost | Požaduje se | Hodnota |  Popis | 
+| Vlastnost | Požaduje se | Value |  Popis | 
 |----------|----------|-------|--------------| 
 | Name | Ano | <*Název proměnné*> | Název proměnné, chcete-li změnit | 
 | Value | Ano | <*Přidat hodnotu*> | Hodnota, kterou chcete připojit, který může mít libovolný typ | 

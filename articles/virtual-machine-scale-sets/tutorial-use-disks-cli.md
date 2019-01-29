@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 03/27/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 7aebfbf3222715b1e15269aa777b2a6091aee90d
-ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
+ms.openlocfilehash: da7848fe561d061470e8921f1f76ac30bed4c809
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54881821"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55163054"
 ---
 # <a name="tutorial-create-and-use-disks-with-virtual-machine-scale-set-with-the-azure-cli"></a>Kurz: Vytvoření a použití disků se škálovací sady virtuálních počítačů pomocí rozhraní příkazového řádku Azure
 Škálovací sady virtuálních počítačů využívají disky k ukládání operačních systémů, aplikací a dat instancí virtuálních počítačů. Při vytváření a správě škálovací sady je důležité, abyste zvolili vhodnou velikost disku a konfiguraci pro očekávané úlohy. Tento kurz se zabývá vytvořením a správou disků virtuálních počítačů. V tomto kurzu se naučíte:
@@ -48,7 +48,7 @@ Při vytváření nebo škálování škálovací sady se ke každé instanci vi
 **Dočasný disk** – Dočasné disky používají disk SSD, který je umístěný na stejném hostiteli Azure jako instance virtuálního počítače. Tyto disky mají vysoký výkon a můžou se používat pro operace, jako je zpracování dočasných dat. Pokud však dojde k přesunu instance virtuálního počítače na nového hostitele, všechna data uložená na dočasném disku se odeberou. Velikost dočasného disku se určuje podle velikosti instance virtuálního počítače. Dočasné disky mají popisek */dev/sdb* a mají přípojný bod */mnt*.
 
 ### <a name="temporary-disk-sizes"></a>Velikosti dočasného disku
-| Typ | Běžné velikosti | Maximální velikost dočasného disku (GiB) |
+| Type | Běžné velikosti | Maximální velikost dočasného disku (GiB) |
 |----|----|----|
 | [Obecné účely](../virtual-machines/linux/sizes-general.md) | Řady A, B a D | 1600 |
 | [Optimalizované z hlediska výpočetních služeb](../virtual-machines/linux/sizes-compute.md) | Řada F | 576 |
@@ -62,7 +62,7 @@ Při vytváření nebo škálování škálovací sady se ke každé instanci vi
 Pokud potřebujete instalovat aplikace a ukládat data, můžete přidat další datové disky. Datové disky by se měly používat v každé situaci, kdy se vyžaduje odolné a responzivní úložiště dat. Každý datový disk má maximální kapacitu 4 TB. Velikost instance virtuálního počítače určuje, kolik datových disků je možné připojit. Na každý virtuální procesor virtuálního počítače je možné připojit dva datové disky.
 
 ### <a name="max-data-disks-per-vm"></a>Maximum datových disků na virtuální počítač
-| Typ | Běžné velikosti | Maximum datových disků na virtuální počítač |
+| Type | Běžné velikosti | Maximum datových disků na virtuální počítač |
 |----|----|----|
 | [Obecné účely](../virtual-machines/linux/sizes-general.md) | Řady A, B a D | 64 |
 | [Optimalizované z hlediska výpočetních služeb](../virtual-machines/linux/sizes-compute.md) | Řada F | 64 |
@@ -132,7 +132,7 @@ Disky, které se vytvoří a připojí k instancím virtuálních počítačů v
 
 K automatizaci tohoto procesu napříč několika instancemi virtuálních počítačů ve škálovací sadě můžete použít rozšíření vlastních skriptů Azure. Toto rozšíření může na jednotlivých instancích virtuálních počítačů místně spouštět skripty, například pro přípravu připojených datových disků. Další informace najdete v tématu [Přehled rozšíření vlastních skriptů](../virtual-machines/linux/extensions-customscript.md).
 
-Následující příklad na každé instanci virtuálního počítače pomocí příkazu [az vmss extension set](/cli/azure/vmss/extension#az_vmss_extension_set) spustí skript z ukázkového úložiště GitHub, který připraví všechny připojené holé datové disky:
+Následující příklad na každé instanci virtuálního počítače pomocí příkazu [az vmss extension set](/cli/azure/vmss/extension) spustí skript z ukázkového úložiště GitHub, který připraví všechny připojené holé datové disky:
 
 ```azurecli-interactive
 az vmss extension set \
@@ -279,7 +279,7 @@ Zobrazí se informace o velikosti disku, úrovni úložiště a logické jednotc
 
 
 ## <a name="detach-a-disk"></a>Odpojení disku
-Pokud už daný disk nepotřebujete, můžete ho od škálovací sady odpojit. Disk se odebere ze všech instancí virtuálních počítačů ve škálovací sadě. K odpojení disku od škálovací sady použijte příkaz [az vmss disk detach](/cli/azure/vmss/disk#az_vmss_disk_detach) a zadejte logickou jednotku (LUN) disku. Logické jednotky (LUN) se zobrazí ve výstupu příkazu [az vmss show](/cli/azure/vmss#az_vmss_show) z předchozí části. Následující příklad odpojí od škálovací sady logickou jednotku (LUN) *2*:
+Pokud už daný disk nepotřebujete, můžete ho od škálovací sady odpojit. Disk se odebere ze všech instancí virtuálních počítačů ve škálovací sadě. K odpojení disku od škálovací sady použijte příkaz [az vmss disk detach](/cli/azure/vmss/disk) a zadejte logickou jednotku (LUN) disku. Logické jednotky (LUN) se zobrazí ve výstupu příkazu [az vmss show](/cli/azure/vmss#az_vmss_show) z předchozí části. Následující příklad odpojí od škálovací sady logickou jednotku (LUN) *2*:
 
 ```azurecli-interactive
 az vmss disk detach \

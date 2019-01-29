@@ -11,15 +11,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.component: compliance
+ms.subservice: compliance
 ms.date: 01/10/2019
 ms.author: rolyon
-ms.openlocfilehash: 341565bf621fa63ad578489cd04bcfff3510265b
-ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
+ms.openlocfilehash: be8a6ba83de81c5a82797ecf3d30c7a7fcaa65fa
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54229468"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55162765"
 ---
 # <a name="azure-active-directory-terms-of-use-feature"></a>Funkce Azure Active Directory Terms of Use
 Azure AD Terms of Use poskytuje organizacím jednoduchý způsob předkládání informací koncovým uživatelům. Toto předkládání zajistí, že se uživatelům zobrazí příslušná právní omezení pro zákonné požadavky nebo požadavky dodržování předpisů. Tento článek popisuje, jak začít pracovat s podmínkami použití.
@@ -377,5 +377,5 @@ Odpověď: Pokud jste nakonfigurovali obě Azure AD podmínky použití a [Intun
 
 ## <a name="next-steps"></a>Další postup
 
-- [Rychlý start: Vyžadovat podmínky použití přijmout před přístupem k cloudových aplikací](../conditional-access/require-tou.md)
+- [Rychlé zprovoznění: Vyžadovat podmínky použití přijmout před přístupem k cloudových aplikací](../conditional-access/require-tou.md)
 - [Osvědčené postupy pro podmíněný přístup v Azure Active Directory](../conditional-access/best-practices.md)

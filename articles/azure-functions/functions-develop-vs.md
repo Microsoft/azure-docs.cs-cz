@@ -10,12 +10,12 @@ ms.custom: vs-azure
 ms.topic: conceptual
 ms.date: 10/08/2018
 ms.author: glenga
-ms.openlocfilehash: f610a221dca296561fefab65a6c40b52a5dd292a
-ms.sourcegitcommit: 8d88a025090e5087b9d0ab390b1207977ef4ff7c
+ms.openlocfilehash: 43992d25590a58b24c48aad8bfbf6f91b17699ee
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/21/2018
-ms.locfileid: "52275832"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55098077"
 ---
 # <a name="develop-azure-functions-using-visual-studio"></a>Vývoj Azure Functions pomocí sady Visual Studio  
 
@@ -78,9 +78,9 @@ Vytvoření a nasazení služby functions, budete také muset:
 
 Šablona projektu vytvoří projektu v jazyce C#, nainstaluje `Microsoft.NET.Sdk.Functions` balíčku NuGet a nastaví cílovou architekturu. Funkce 1.x zaměřené na rozhraní .NET Framework a funkce 2.x cíle .NET Standard. Nový projekt má následující soubory:
 
-* **Host.JSON**: vám umožní nakonfigurovat hostitele funkce. Tato nastavení platí i při spuštění místně i v Azure. Další informace najdete v tématu [referenční materiály k host.json](functions-host-json.md).
+* **host.json**: Umožňuje konfigurovat funkce hostitele. Tato nastavení platí i při spuštění místně i v Azure. Další informace najdete v tématu [referenční materiály k host.json](functions-host-json.md).
 
-* **Local.Settings.JSON**: udržuje nastavení používaná při místním spuštění funkce. Tato nastavení nejsou používány nástrojem Azure, jsou používány [nástrojů Azure Functions Core](functions-run-local.md). Tento soubor můžete použijte k určení nastavení aplikace pro proměnné, které vyžadují vaše funkce. Přidat novou položku do **hodnoty** pole pro každé připojení vyžaduje vazby funkce ve vašem projektu. Další informace najdete v tématu [souboru místní nastavení](functions-run-local.md#local-settings-file) v článku o Azure Functions Core Tools.
+* **local.settings.json**: Udržuje nastavení používaná při místním spuštění funkce. Tato nastavení nejsou používány nástrojem Azure, jsou používány [nástrojů Azure Functions Core](functions-run-local.md). Tento soubor můžete použijte k určení nastavení aplikace pro proměnné, které vyžadují vaše funkce. Přidat novou položku do **hodnoty** pole pro každé připojení vyžaduje vazby funkce ve vašem projektu. Další informace najdete v tématu [souboru místní nastavení](functions-run-local.md#local-settings-file) v článku o Azure Functions Core Tools.
 
     >[!IMPORTANT]
     >Protože souboru local.settings.json může obsahovat tajné kódy, musíte ho vyloučit ze správy zdrojových kódů pro váš projekt. **Kopírovat do výstupního adresáře** nastavení pro tento soubor by měl vždy být **kopírovat, pokud je novější**. 
@@ -115,7 +115,7 @@ V předem zkompilované funkce jsou definovány vazby používá funkci použit�
 
     Například následující třídy C# představuje základní funkce úložiště aktivované frontou:
 
-    ````csharp
+    ```csharp
     using System;
     using Microsoft.Azure.WebJobs;
     using Microsoft.Azure.WebJobs.Host;
@@ -132,7 +132,7 @@ V předem zkompilované funkce jsou definovány vazby používá funkci použit�
             }
         }
     }
-    ````
+    ```
     Atribut specifické pro vazbu se použije pro každý parametr vazby zadaný pro metodu vstupního bodu. Atribut přijímá informace o vazbě jako parametry. V předchozím příkladu má první parametr **QueueTrigger** atribut, která funkce aktivované frontou. Název fronty a nastavení název připojovacího řetězce jsou předány jako parametry **QueueTrigger** atribut. Další informace najdete v tématu [vazby úložiště front Azure pro službu Azure Functions](functions-bindings-storage-queue.md#trigger---c-example).
     
 Výše uvedený postup slouží k přidání dalších funkcí pro váš projekt aplikace funkcí. Každá funkce v projektu může mít jinou aktivační událost, ale funkce musí mít přesně jeden trigger. Další informace najdete v tématu [aktivace Azure Functions a vazby koncepty](functions-triggers-bindings.md).

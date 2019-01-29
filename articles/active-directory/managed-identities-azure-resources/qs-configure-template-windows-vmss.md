@@ -7,19 +7,19 @@ author: priyamohanram
 manager: daveba
 editor: ''
 ms.service: active-directory
-ms.component: msi
+ms.subservice: msi
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 02/20/2018
 ms.author: priyamo
-ms.openlocfilehash: 9c31ea2046064f7f776e582f82bd6ebd90dd16b2
-ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
+ms.openlocfilehash: 6fff8890a32cd6c3f0aeb506425964edcc841c5e
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54883224"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55193467"
 ---
 # <a name="configure-managed-identities-for-azure-resources-on-a-azure-virtual-machine-scale-using-a-template"></a>Konfigurace spravovaných identit pro prostředky Azure v měřítku virtuálních počítačů Azure pomocí šablony
 
@@ -173,7 +173,7 @@ V této části přiřadíte uživateli přiřazena spravovanou identitu virtuá
 > [!Note]
 > Vytvoření uživatelsky přiřazené spravovanou identitu pomocí šablony Azure Resource Manageru najdete v tématu [vytvoření uživatelsky přiřazené identity spravované](how-to-manage-ua-identity-arm.md#create-a-user-assigned-managed-identity).
 
-### <a name="assign-a-user-assigned-managed-identity-to-a-virutal-machine-scale-set"></a>Přiřadit uživateli přiřazena spravovanou identitu do škálovací sady virtuálních počítačů
+### <a name="assign-a-user-assigned-managed-identity-to-a-virtual-machine-scale-set"></a>Spravované identity přiřazené uživateli přiřadit škálovací sadu virtuálních počítačů
 
 1. V části `resources` prvku, přidejte následující položku spravované identity přiřazené uživateli přiřadit škálovací sadu virtuálních počítačů.  Nezapomeňte nahradit `<USERASSIGNEDIDENTITY>` názvem uživatel přiřazenou spravované identity, které jste vytvořili.
    

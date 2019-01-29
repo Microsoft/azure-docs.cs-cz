@@ -10,16 +10,16 @@ ms.reviewer: estfan, LADocs
 ms.assetid: 63b0b843-f6b0-4d9a-98d0-17500be17385
 ms.topic: article
 ms.date: 07/29/2016
-ms.openlocfilehash: 0c6062fb9e9708b0fa6aef7a6d7390287cbf69d4
-ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
+ms.openlocfilehash: 58e59e4faa135e24124f494d90437b49caa30129
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43124031"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55098659"
 ---
 # <a name="scenario-exception-handling-and-error-logging-for-logic-apps"></a>Scénář: Zpracování výjimek a protokolování chyb pro logic apps
 
-Tento scénář popisuje, jak můžete rozšířit aplikace logiky pro zajištění lepší podpory zpracování výjimek. Jsme použili případu použití reálných zkušeností odpověď na otázku: "Azure Logic Apps podporuje výjimek a zpracování chyb?"
+Tento scénář popisuje, jak můžete rozšířit aplikace logiky pro zajištění lepší podpory zpracování výjimek. Případ použití reálných zkušeností jsme použili odpověď na otázku: "Azure Logic Apps podporuje výjimek a zpracování chyb?"
 
 > [!NOTE]
 > Aktuální schéma Azure Logic Apps poskytuje standardní šablonu pro akce odpovědi. Tato šablona obsahuje interní ověření a chybové odpovědi vrácená z aplikace API.
@@ -57,7 +57,7 @@ Vzhledem k tomu, že budeme protokolovat záznam vycházejících z Dynamics CRM
 
 Používáme **žádosti** aktivovat, jak je znázorněno v následujícím příkladu:
 
-```` json
+``` json
 "triggers": {
         "request": {
           "type": "request",
@@ -90,7 +90,7 @@ Používáme **žádosti** aktivovat, jak je znázorněno v následujícím př�
         }
       },
 
-````
+```
 
 
 ## <a name="steps"></a>Kroky
@@ -402,7 +402,7 @@ Naše řešení přidali možnosti s [služby Azure Cosmos DB](https://azure.mic
 Chcete-li zobrazit chyby, můžete vytvořit webovou aplikaci MVC zobrazení záznamů chyby ze služby Cosmos DB. **Seznamu**, **podrobnosti**, **upravit**, a **odstranit** operace jsou zahrnuté v aktuální verzi.
 
 > [!NOTE]
-> K operaci úpravy textové: Cosmos DB nahradí celý dokument. Záznamy, které je znázorněno **seznamu** a **podrobností** zobrazení jsou pouze ukázky. Nejsou záznamy skutečná událost o pacientech.
+> Došlo k operaci úpravy: Cosmos DB nahradí celý dokument. Záznamy, které je znázorněno **seznamu** a **podrobností** zobrazení jsou pouze ukázky. Nejsou záznamy skutečná událost o pacientech.
 
 Tady jsou příklady naše podrobnosti o aplikaci MVC vytvořené výše popsaným způsobem.
 

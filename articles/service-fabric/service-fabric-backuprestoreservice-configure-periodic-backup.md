@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/01/2018
 ms.author: hrushib
-ms.openlocfilehash: 91813e31c6237cf47a744a4290e3e2d7736195f0
-ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
+ms.openlocfilehash: 14d7ae7cc347b771dfdb1209bc8d55c484d00db0
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2019
-ms.locfileid: "54322091"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55193722"
 ---
 # <a name="understanding-periodic-backup-configuration-in-azure-service-fabric"></a>Principy pravidelné zálohování konfigurace v Azure Service Fabric
 
@@ -219,9 +219,9 @@ Po pozastavení se vaše potřeby zálohování periodických dat. můžete obno
 * Pokud bylo použito pro pozastavení _oddílu_, pak by měl obnovit, pomocí [Obnovit oddíl zálohování](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-resumepartitionbackup) rozhraní API.
 
 ### <a name="difference-between-suspend-and-disable-backups"></a>Rozdíl mezi pozastavit a zakázat zálohování
-Zakázat zálohování by měl při zálohování už nejsou vyžadované pro konkrétní aplikace, služby nebo oddíl. Jeden infact může vyvolat zakažte požadavek na zálohování společně s parametrem čisté zálohy na mít hodnotu true, což znamená, že všechny existující zálohy budou také odstraněny. Ale pozastavení se má použít ve scénářích, kde jeden chce vypnout záloh dočasně jako při zaplnění místního disku nebo nahrávání zálohování selhává kvůli problému známé síti atd. 
+Zakázat zálohování by měl při zálohování už nejsou vyžadované pro konkrétní aplikace, služby nebo oddíl. Jeden můžete vyvolat zakažte požadavek na zálohování společně s parametrem čisté zálohy na mít hodnotu true, což znamená, že všechny existující zálohy budou také odstraněny. Ale pozastavení se má použít ve scénářích, kde jeden chce vypnout záloh dočasně jako při zaplnění místního disku nebo nahrávání zálohování selhává kvůli problému známé síti atd. 
 
-Při zakázání lze vyvolat pouze na úrovni která byla starší povolené pro zálohování explicilty ale pozastavení můžete použít na libovolné úrovni, která je aktuálně povolena pro zálohování buď přímo nebo prostřednictvím dědičnosti nebo hierarchii. Například pokud je zálohování povolené na úrovni aplikace, jeden vyvolat zakázat pouze na úrovni aplikace ale pozastavit může být vyvolána v aplikaci, jakékoli služby nebo oddíl pro tuto aplikaci. 
+Při zakázání lze vyvolat pouze na úrovni, která byla starší pro zálohování explicitně povolená ale pozastavení můžete použít na libovolné úrovni, která je aktuálně povolena pro zálohování buď přímo nebo prostřednictvím dědičnosti nebo hierarchii. Například pokud je zálohování povolené na úrovni aplikace, jeden vyvolat zakázat pouze na úrovni aplikace ale pozastavit může být vyvolána v aplikaci, jakékoli služby nebo oddíl pro tuto aplikaci. 
 
 ## <a name="auto-restore-on-data-loss"></a>Automatické obnovení ztráty dat
 Oddíl služby může dojít ke ztrátě dat z důvodu neočekávané chyby. Například disku pro dvě ze tří replik pro oddíl (včetně primární replice) získá poškozený nebo dojde k vymazání.

@@ -11,12 +11,12 @@ ms.author: aashishb
 author: aashishb
 ms.date: 10/02/2018
 ms.custom: seodec18
-ms.openlocfilehash: adac36bd0d1798bf0bc9c2e2671c2482c6fcb84c
-ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
+ms.openlocfilehash: c2285b4d7764592d3e210177edd8f127ca4bfaee
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/26/2019
-ms.locfileid: "55076481"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55090659"
 ---
 # <a name="use-ssl-to-secure-web-services-with-azure-machine-learning-service"></a>Použití protokolu SSL pro zabezpečení webové služby pomocí služby Azure Machine Learning
 
@@ -82,6 +82,7 @@ Chcete-li nasadit (nebo znovu nasadit) na službu s protokol SSL povolený, nast
     aci_config = AciWebservice.deploy_configuration(ssl_enabled=True, ssl_cert_pem_file="cert.pem", ssl_key_pem_file="key.pem", ssl_cname="www.contoso.com")
     ```
 
+<a name="fpga"></a>
 + **Nasazení na pole Programmable Gate Array (FPGA)**
 
   Odpověď `create_service` operace obsahuje IP adresu služby. IP adresa se používá při mapování názvu DNS na IP adresu služby. Také obsahuje odpovědi __primární klíč__ a __sekundární klíč__ , která se používají k používání této služby. Zadejte hodnoty pro parametry související s protokolem SSL, jak znázorňuje fragment kódu:

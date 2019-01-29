@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: article
 ms.date: 10/16/2018
 ms.author: alkohli
-ms.openlocfilehash: 8d4a99ab9d8107f1b3fbe70f59299f427bc88bd5
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.openlocfilehash: 86eec87d0c466b9172834fa9dbe7dfcb3702ea55
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49465880"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55094100"
 ---
 # <a name="develop-a-c-iot-edge-module-to-move-files-on-data-box-edge-preview"></a>Vývoj modulu jazyka C# IoT Edge pro přesun souborů na okraji pole dat (Preview)
 
@@ -48,7 +48,7 @@ Jakmile je soubor ve sdílené složce cloudu, automaticky získá nahrát ho do
 
 ## <a name="prerequisites"></a>Požadavky
 
-Než začnete, ujistěte se, že máte:
+Než začnete, ujistěte se, že máte následující:
 
 - Data Box hraniční zařízení, na kterém běží.
 
@@ -97,8 +97,8 @@ Následujícím postupem se vytvoří projekt modul IoT Edge založené na sadě
 Vytvořte šablonu řešení v jazyce C#, kterou můžete přizpůsobit pomocí vlastního kódu.
 
 1. Ve Visual Studio Code, vyberte **zobrazení > paletu příkazů** otevřete paletu příkazů VS Code.
-2. Na paletě příkazů zadejte a spusťte příkaz **Azure: Sign in** (Azure: Přihlásit se) a postupujte podle pokynů pro přihlášení k účtu Azure. Pokud už přihlášení jste, můžete tento krok přeskočit.
-3. Na paletě příkazů zadejte a spusťte příkaz **Azure IoT Edge: New IoT Edge solution** (Azure IoT Edge: Nové řešení IoT Edge). Na paletě příkazů zadejte následující informace k vytvoření řešení:
+2. V paletu příkazů zadejte a spusťte příkaz **Azure: Přihlaste se** a postupujte podle pokynů k přihlášení účtu Azure. Pokud už přihlášení jste, můžete tento krok přeskočit.
+3. V paletu příkazů zadejte a spusťte příkaz **Azure IoT Edge: Nové řešení IoT Edge**. Na paletě příkazů zadejte následující informace k vytvoření řešení:
 
     1. Vyberte složku, ve které chcete vytvořit řešení.
     2. Zadejte název pro vaše řešení nebo přijměte výchozí název **EdgeSolution**.
@@ -143,7 +143,7 @@ Vytvořte šablonu řešení v jazyce C#, kterou můžete přizpůsobit pomocí 
             static int counter;
             private const string InputFolderPath = "/home/LocalShare";
             private const string OutputFolderPath = "/home/CloudShare";
-    ````
+    ```
 
     > [!IMPORTANT]
     > Poznamenejte si, `InputFolderPath` a `OutputFolderPath`. Je potřeba zadat tyto cesty při nasazení tohoto modulu.
@@ -269,7 +269,7 @@ V předchozí části jste vytvořili hraničních zařízeních IoT řešení a
 
     Mohou se zobrazit následující upozornění, které můžete ignorovat:
 
-    *Program.cs(77,44): upozornění CS1998: této asynchronní metodě chybí 'await' operátory a spustí se synchronně. Zvažte možnost použít operátor 'await' await pro čekání neblokující volání rozhraní API nebo 'operátor await Task.Run(...)' k provedení práce vázané na procesor ve vlákně na pozadí.*
+    *Program.cs(77,44): upozornění CS1998: Této asynchronní metodě chybí operátory 'operátor await' a spustí se synchronně. Zvažte možnost použít operátor 'await' await pro čekání neblokující volání rozhraní API nebo 'operátor await Task.Run(...)' k provedení práce vázané na procesor ve vlákně na pozadí.*
 
 4. Úplnou adresu image kontejneru se značkou můžete vidět v integrovaném terminálu VS Code. Adresu image je sestaven z informací, které jsou v souboru module.json s formátem `<repository>:<version>-<platform>`. Pro účely tohoto článku by mělo vypadat jako `mycontreg2.azurecr.io/filecopymodule:0.0.1-amd64`.
 

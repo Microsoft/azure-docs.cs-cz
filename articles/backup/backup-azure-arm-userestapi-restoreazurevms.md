@@ -1,5 +1,5 @@
 ---
-title: 'Azure Backup: Obnovení virtuálních počítačů Azure pomocí rozhraní REST API služby'
+title: 'Azure Backup: Obnovení virtuálních počítačů Azure pomocí rozhraní REST API'
 description: Spravovat operace obnovení zálohování virtuálních počítačů Azure pomocí rozhraní REST API
 services: backup
 author: pvrk
@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 09/12/2018
 ms.author: pullabhk
 ms.assetid: b8487516-7ac5-4435-9680-674d9ecf5642
-ms.openlocfilehash: 68c611b08524b5fc037598bafe46d75b3293886d
-ms.sourcegitcommit: 02ce0fc22a71796f08a9aa20c76e2fa40eb2f10a
+ms.openlocfilehash: 4a65e8a855b9be797c1ceeacf4b74fea74697d00
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51289726"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55100190"
 ---
 # <a name="restore-azure-virtual-machines-using-rest-api"></a>Obnovení pomocí rozhraní REST API služby Azure Virtual machines
 
@@ -35,9 +35,9 @@ GET https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{
 
 *Získat* identifikátor URI má všechny požadované parametry. Není nutné pro obsahu další žádosti
 
-### <a name="responses"></a>Odpovědi
+### <a name="responses"></a>Odezvy
 
-|Název  |Typ  |Popis  |
+|Name  |Typ  |Popis  |
 |---------|---------|---------|
 |200 OK     |   [RecoveryPointResourceList](https://docs.microsoft.com/rest/api/backup/recoverypoints/list#recoverypointresourcelist)      |       OK  |
 
@@ -127,9 +127,9 @@ Pokud je potřeba k přizpůsobení vytvoření virtuálního počítače z zál
 
 Aktivuje obnovení disků je *příspěvek* požadavku. Chcete-li získat další informace o obnovení disků zopakovat, přečtěte si ["aktivovat obnovení" rozhraní REST API](https://docs.microsoft.com/rest/api/backup/restores/trigger).
 
-````http
+```http
 POST https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupFabrics/{fabricName}/protectionContainers/{containerName}/protectedItems/{protectedItemName}/recoveryPoints/{recoveryPointId}/restore?api-version=2016-12-01
-````
+```
 
 `{containerName}` a `{protectedItemName}` jsou konstruovány [tady](backup-azure-arm-userestapi-backupazurevms.md#example-responses-1). `{fabricName}` "Azure" a `{recoveryPointId}` je `{name}` pole bodu obnovení uvedeného [nad](#example-response).
 
@@ -137,9 +137,9 @@ POST https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/
 
 Aktivovat disk obnovení ze zálohy virtuálního počítače Azure, jsou následující komponenty z textu požadavku.
 
-|Název  |Typ  |Popis  |
+|Name  |Typ  |Popis  |
 |---------|---------|---------|
-|vlastnosti     | [IaaSVMRestoreRequest](https://docs.microsoft.com/rest/api/backup/restores/trigger#iaasvmrestorerequest)        |    RestoreRequestResourceProperties     |
+|properties     | [IaaSVMRestoreRequest](https://docs.microsoft.com/rest/api/backup/restores/trigger#iaasvmrestorerequest)        |    RestoreRequestResourceProperties     |
 
 Úplný seznam definic z textu požadavku a další podrobnosti najdete v tématu [aktivovat obnovení rozhraní REST API dokumentu](https://docs.microsoft.com/rest/api/backup/restores/trigger#request-body).
 
@@ -147,7 +147,7 @@ Aktivovat disk obnovení ze zálohy virtuálního počítače Azure, jsou násle
 
 Následující text požadavku definuje vlastnosti požadované pro aktivaci obnovení disku.
 
-````json
+```json
 {
   "properties": {
     "objectType": "IaasVMRestoreRequest",
@@ -163,15 +163,15 @@ Následující text požadavku definuje vlastnosti požadované pro aktivaci obn
     }
   }
 }
-````
+```
 
 ### <a name="response"></a>Odpověď
 
 Aktivuje obnovení disků se [asynchronní operace](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-async-operations). Znamená to, že tato operace vytvoří jiná operace, která je třeba sledovat samostatně.
 
-Vrátí dva odpovědi: 202 (přijato), když se vytvoří jiná operace a potom 200 (OK) po dokončení této operace.
+Vrátí dva odpovědi: 202 (přijato), když se vytvoří jiná operace a pak 200 (OK) po dokončení této operace.
 
-|Název  |Typ  |Popis  |
+|Name  |Typ  |Popis  |
 |---------|---------|---------|
 |202 přijato     |         |     Přijato    |
 
@@ -243,7 +243,7 @@ Po dokončení dlouho běžící úlohy se disky a konfigurace zálohovaného vi
 
 Následující text požadavku definuje vlastnosti požadované pro aktivaci obnovení virtuálního počítače.
 
-````json
+```json
 {
   "parameters": {
         "subscriptionId": "00000000-0000-0000-0000-000000000000",
@@ -275,7 +275,7 @@ Následující text požadavku definuje vlastnosti požadované pro aktivaci obn
       }
     }
 }
-````
+```
 
 Odpověď by měla být zpracovány v stejným způsobem jako [bylo vysvětleno výše pro obnovení disků](#response).
 

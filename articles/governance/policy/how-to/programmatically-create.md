@@ -4,17 +4,17 @@ description: Tento článek vás provede programově vytváření a Správa zás
 services: azure-policy
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 01/23/2019
+ms.date: 01/26/2019
 ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: adeb963333ffc2b587d7468eb357fab8dc4d6bbe
-ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
+ms.openlocfilehash: 575e2974131a09bdbdbc96d3ad252365ac9da86e
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54847046"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55101783"
 ---
 # <a name="programmatically-create-policies-and-view-compliance-data"></a>Prostřednictvím kódu programu vytvořit zásady a zobrazit data o dodržování předpisů
 
@@ -201,17 +201,34 @@ Pokud chcete vytvořit definici zásady, použijte následující postup:
   }
   ```
 
+   Další informace o vytváření definice zásady, najdete v části [struktura definic Azure Policy](../concepts/definition-structure.md).
+
 1. Spusťte následující příkaz k vytvoření definice zásady:
 
    ```azurecli-interactive
    az policy definition create --name 'audit-storage-accounts-open-to-public-networks' --display-name 'Audit Storage Accounts Open to Public Networks' --description 'This policy ensures that storage accounts with exposures to public networks are audited.' --rules '<path to json file>' --mode All
    ```
 
+   Příkaz vytvoří definici zásady s názvem _auditu úložiště účtů otevřít k veřejným sítím_.
+   Další informace o dalších parametrů, které můžete použít, najdete v části [vytvoření definice zásady az](/cli/azure/policy/definition#az-policy-definition-create).
+
+   Při volání bez parametrů místo `az policy definition creation` výchozí hodnota je ukládání definice zásad ve vybraném předplatném kontextu relace. Pokud chcete uložit definici do jiného umístění, použijte následující parametry:
+
+   - **--předplatné** -uložit do jiného předplatného. Vyžaduje _GUID_ hodnotu pro ID předplatného nebo _řetězec_ hodnotu pro název předplatného.
+   - **--skupiny pro správu** -uložit ve skupině pro správu. Vyžaduje _řetězec_ hodnotu.
+
 1. Použijte následující příkaz k vytvoření přiřazení zásady. Nahraďte informace z příkladu v &lt; &gt; symboly s vlastními hodnotami.
 
    ```azurecli-interactive
    az policy assignment create --name '<name>' --scope '<scope>' --policy '<policy definition ID>'
    ```
+
+   **--Rozsah** parametru u `az policy assignment create` funguje s skupiny pro správu, předplatné, skupinu prostředků nebo jediný prostředek. Parametr používá prostředků úplné cesty. Vzor pro **--rozsah** pro každý kontejner je následujícím způsobem. Nahraďte `{rName}`, `{rgName}`, `{subId}`, a `{mgName}` se název prostředku, skupina prostředků název, ID předplatného a název skupiny pro správu, v uvedeném pořadí. `{rType}` by měl být nahrazen **typ prostředku** prostředku, jako například `Microsoft.Compute/virtualMachines` pro virtuální počítač.
+
+   - Prostředek – `/subscriptions/{subID}/resourceGroups/{rgName}/providers/{rType}/{rName}`
+   - Skupina prostředků- `/subscriptions/{subID}/resourceGroups/{rgName}`
+   - Předplatné – `/subscriptions/{subID}`
+   - Skupina pro správu- `/providers/Microsoft.Management/managementGroups/{mgName}`
 
 Můžete získat ID definice zásady pomocí Powershellu pomocí následujícího příkazu:
 

@@ -11,16 +11,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.component: pim
+ms.subservice: pim
 ms.date: 04/02/2018
 ms.author: rolyon
 ms.custom: pim
-ms.openlocfilehash: 3294bddea867e061d01e8dc72f4e47f3238b6c4d
-ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
+ms.openlocfilehash: 95fdb90fe69bc3b1db1f8d9b178a893ff82086a1
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/31/2018
-ms.locfileid: "43344081"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55186702"
 ---
 # <a name="extend-or-renew-azure-resource-role-assignments-in-pim"></a>Rozšíření nebo obnovení přiřazení role prostředků Azure v PIM
 
@@ -40,7 +40,7 @@ Správci dostanou oznámení, pokud u nichž vyprší platnost nebo vypršela je
 
 Následující kroky popisují proces vyžádání, řešení nebo Správa k rozšíření nebo obnovení přiřazení role. 
 
-### <a name="member-extend"></a>Člen rozšíření
+### <a name="member-extend"></a>Rozšíření člena
 
 Členy z přiřazení role můžete rozšíření u nichž vyprší platnost přiřazení rolí přímo z **oprávněné** nebo **aktivní** kartě **Moje role** stránky prostředku a z nejvyšší úrovně **Moje role** stránce portálu PIM. Členové můžou požádat o prodloužení oprávněných a aktivních rolí (přiřazené), které vyprší za 14 dní.
 

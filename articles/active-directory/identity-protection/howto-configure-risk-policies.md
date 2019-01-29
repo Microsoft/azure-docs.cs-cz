@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 01/25/2019
 ms.author: markvi
 ms.reviewer: raluthra
-ms.openlocfilehash: 1ff63dddfa21ba92bb3da44c6711b64e8ad3f1b6
-ms.sourcegitcommit: 97d0dfb25ac23d07179b804719a454f25d1f0d46
+ms.openlocfilehash: a5e6d63627764ff64ac5e0621e271140ab3ed828
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/25/2019
-ms.locfileid: "54913778"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55099811"
 ---
 # <a name="how-to-configure-risk-policies-in-azure-active-directory-identity-protection-refreshed"></a>Jak: Konfigurace zásady rizik ve službě Azure Active Directory identity protection (Aktualizovat)
 
@@ -83,7 +83,7 @@ Pokud chcete vyžadovat vícefaktorové ověřování pro rizikových přihláš
 
 1. Povolit [zásady registrace pro vícefaktorové ověřování](#multi-factor-authentication-registration-policy) pro ovlivnění uživatelé.
 
-2. Vyžadovat ovlivněných uživatelů pro přihlášení v relaci rizikové k provedení registrace MFA.
+2. V relaci rizikové k provedení registrace MFA vyžadují ovlivněných uživatelů na přihlášení.
 
 Dokončení těchto kroků se zajistí, že ověřování službou Multi-Factor Authentication je vyžadováno pro rizikové přihlášení.
 

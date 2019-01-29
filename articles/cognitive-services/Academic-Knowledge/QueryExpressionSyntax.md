@@ -6,16 +6,16 @@ services: cognitive-services
 author: alch-msft
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: academic-knowledge
+ms.subservice: academic-knowledge
 ms.topic: conceptual
 ms.date: 03/27/2017
 ms.author: alch
-ms.openlocfilehash: bf6dbde725670030046aad4fccf41554b8d917fe
-ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
+ms.openlocfilehash: c130c6cd5fcb5191195712f570db66408734200a
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "48901273"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55150863"
 ---
 # <a name="query-expression-syntax"></a>Syntaxe výrazu dotazu
 
@@ -25,14 +25,14 @@ Můžete také vytvořit vlastní výrazy dotazu a použít je v **vyhodnotit** 
 
 Každý atribut entity, které mohou být součástí výrazu dotazu má zvláštní datový typ a sadu operátorů dotazu je to možné. Sada atributů entity a podporované operátory pro každý atribut je zadán v [atributů Entity](EntityAttributes.md). Dotaz na hodnotu single vyžaduje atribut pro podporu *rovná* operace. Předpona dotaz vyžaduje atribut pro podporu *StartsWith* operace. Dotazy na číselný rozsah vyžaduje atribut pro podporu *IsBetween* operace.
 
-Některá entity data se ukládají jako složený atributy je určeno tečku "." v názvu atributu. Například informace o autorovi/přidružení je vyjádřena jako složený atribut. Obsahuje 4 komponenty: AuN AuId, AfN, AfId. Tyto součásti jsou samostatné části data, která tvoří hodnotu atributu jedné entity.
+Některá entity data se ukládají jako složený atributy je určeno tečku "." v názvu atributu. Například informace o autorovi/přidružení je vyjádřena jako složený atribut. Obsahuje 4 komponenty: AuN, AuId AfN, AfId. Tyto součásti jsou samostatné části data, která tvoří hodnotu atributu jedné entity.
 
 
 **Atribut řetězců: Jedna hodnota** (včetně shody proti synonym)  
 Čas = "indexování službou latentní sémantické analýzy.  
-Složené (AA. AuN = "procesní dumais")
+Composite(AA.AuN='sue dumais')
 
-**Atribut řetězců: Přesná jedna hodnota** (odpovídá pouze kanonických hodnot)  
+**Atribut řetězců: Přesná jednu hodnotu** (odpovídá pouze kanonických hodnot)  
 Ti == "indexování službou latentní sémantické analýzy.  
 Složené (AA. AuN == "dumais susan t")
      
@@ -40,21 +40,21 @@ Složené (AA. AuN == "dumais susan t")
 Čas = 'indexování službou latentní seman'...  
 Složené (AA. AuN =... "procesní rozlišované sjednocení typu")
 
-**Číselného atribut: Jednu hodnotu**  
-Y = 2010
+**Číselné atribut: Jedinou hodnotu**  
+Y=2010
  
-**Číselných atributů: Hodnota rozsahu**  
-Y &GT; 2005  
-Y &GT; = 2005  
-Y &LT; 2010  
-Y &LT; = 2010  
-Y =\[2010, 2012\) (obsahuje hodnotu hranice pouze vlevo: 2010, 2011)  
+**Číselné atribut: Hodnota rozsahu**  
+Y>2005  
+Y>=2005  
+Y<2010  
+Y<=2010  
+Y =\[2010, 2012\) (obsahuje hodnotu pouze levé hranice: 2010, 2011)  
 Y =\[2010, 2012\] (zahrnuje obě hodnoty hranic: 2010, 2011, 2012)
  
-**Číselných atributů: Hodnota předpony**  
+**Číselné atribut: Hodnota předpony**  
 Y = "19"... (libovolná číselná hodnota, která začíná textem 19) 
  
-**Atributu datum: Jednu hodnotu**  
+**Atribut Datum: Jedinou hodnotu**  
 D = "2010-02-04.
 
 **Atribut Datum: Hodnota rozsahu**  
@@ -85,7 +85,7 @@ And(Composite(AA.AuN='mike smith'),Composite(AA.AfN='harvard university'))
 ```
 <br>V této verzi protože Composite() se použije pro autora a přidružení jednotlivě před And(), získáme všech dokumentů, kde jedním z autorů je "Jan Macek" a jedním z autorů afilace je "Harvard". To zní podobně jako předchozí příklad dotazu, ale není totéž.
 
-Obecně platí, zvažte následující příklad: máme složené atribut C, který má dvě součásti A a B. Entita může mít více hodnot pro C. Toto jsou naše entity:
+Obecně platí zvažte následující příklad: Máme složené atribut C, který má dvě součásti A a B. Entita může mít více hodnot pro C. Toto jsou naše entity:
 ```
 E1: C={A=1, B=1}  C={A=1,B=2}  C={A=2,B=3}
 E2: C={A=1, B=3}  C={A=3,B=2}

@@ -9,13 +9,13 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 12/06/2016
 ms.author: davidmu
-ms.component: B2C
-ms.openlocfilehash: 003a65e0c9cc70639850ab9bacef5df3762dedc3
-ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
+ms.subservice: B2C
+ms.openlocfilehash: c40c1357b74b05f54bb2c2837554d9375e06f246
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54852434"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55163360"
 ---
 # <a name="azure-active-directory-b2c-file-support-requests"></a>Azure Active Directory B2C: Soubor žádosti o podporu
 Podávejte požadavky na podporu pro Azure Active Directory (Azure AD) B2C na webu Azure portal pomocí následujících kroků:

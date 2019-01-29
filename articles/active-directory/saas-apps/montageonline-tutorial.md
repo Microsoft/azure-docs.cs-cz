@@ -1,5 +1,5 @@
 ---
-title: 'Kurz: Integrace Azure Active Directory se službou Fotomontáž Online | Dokumentace Microsoftu'
+title: 'Kurz: Integrace Azure Active Directory s Fotomontáž Online | Dokumentace Microsoftu'
 description: Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a Fotomontáž Online.
 services: active-directory
 documentationCenter: na
@@ -8,21 +8,21 @@ manager: femila
 ms.reviewer: joflore
 ms.assetid: 5c5e8c6f-e4fb-43fe-8841-e371f568ebed
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 04/26/2018
 ms.author: jeedes
-ms.openlocfilehash: e11c97ecb33c1b1a37891a521c0375b39ad8a956
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 52b89fd830d18c595e29549432514fd60bbc6df9
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39439914"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55158702"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-montage-online"></a>Kurz: Integrace Azure Active Directory se službou Fotomontáž Online
+# <a name="tutorial-azure-active-directory-integration-with-montage-online"></a>Kurz: Integrace Azure Active Directory s Fotomontáž Online
 
 V tomto kurzu se dozvíte, jak integrovat Fotomontáž Online se službou Azure Active Directory (Azure AD).
 
@@ -38,7 +38,7 @@ Pokud chcete zjistit další podrobnosti o integraci aplikací SaaS v Azure AD, 
 
 Konfigurace integrace Azure AD s Fotomontáž Online, potřebujete následující položky:
 
-- S předplatným služby Azure AD
+- Předplatné Azure AD
 - Režimu Online Fotomontáž jednotného přihlašování povolená předplatného
 
 > [!NOTE]
@@ -60,7 +60,7 @@ Pokud chcete nakonfigurovat integraci Fotomontáž Online do služby Azure AD, b
 
 **Chcete-li přidat Fotomontáž Online z galerie, postupujte následovně:**
 
-1. V  **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu. 
+1. V **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu. 
 
     ![Tlačítko Azure Active Directory][1]
 
@@ -171,7 +171,7 @@ Cílem této části je vytvoření zkušebního uživatele na webu Azure Portal
  
 ### <a name="create-a-montage-online-test-user"></a>Vytvořte Online Fotomontáž testovacího uživatele
 
-V této části vytvořte uživatele Britta Simon Fotomontáž online. Práce s [Fotomontáž Online tým podpory](https://www.montage.co.nz/contact-us/) přidat uživatele na platformě Fotomontáž Online. Uživatelé musí vytvořit a aktivovat, než použití jednotného přihlašování
+V této části vytvořte uživatele Britta Simon Fotomontáž online. Práce s [Fotomontáž Online tým podpory](https://www.montage.co.nz/contact-us/) přidat uživatele na platformě Fotomontáž Online. Uživatelé musí vytvořit a aktivovat, než použití jednotného přihlašování
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřadit uživatele Azure AD
 
@@ -203,7 +203,7 @@ V této části je povolit Britta Simon používat jednotné přihlašování Az
 
 1. Klikněte na tlačítko **přiřadit** tlačítko **přidat přiřazení** dialogového okna.
     
-### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování
+### <a name="test-single-sign-on"></a>Test jednotného přihlašování
 
 V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 

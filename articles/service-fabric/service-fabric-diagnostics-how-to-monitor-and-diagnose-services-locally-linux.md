@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 2/23/2018
 ms.author: subramar
-ms.openlocfilehash: 9f0c4789e73659e5965440989c23a8cf673f7cd2
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: 33ada343738e113e8f14e1e5ac4a0e8aee481670
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53309157"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55185461"
 ---
 # <a name="monitor-and-diagnose-services-in-a-local-machine-development-setup"></a>Monitorování a Diagnostika služeb v nastavení vývojového místního počítače
 
@@ -51,7 +51,7 @@ java.util.logging.FileHandler.count = 10
 java.util.logging.FileHandler.pattern = /tmp/servicefabric/logs/mysfapp%u.%g.log
 ```
 
-Složka na které odkazují `app.properties` soubor musí existovat. Po `app.properties` se vytvoří soubor, budete muset také upravit váš skript vstupního bodu `entrypoint.sh` v `<applicationfolder>/<servicePkg>/Code/` složku, kterou chcete nastavit vlastnost `java.util.logging.config.file` k `app.propertes` souboru. Ji by měl vypadat jako následující fragment kódu:
+Složka na které odkazují `app.properties` soubor musí existovat. Po `app.properties` se vytvoří soubor, budete muset také upravit váš skript vstupního bodu `entrypoint.sh` v `<applicationfolder>/<servicePkg>/Code/` složku, kterou chcete nastavit vlastnost `java.util.logging.config.file` k `app.properties` souboru. Ji by měl vypadat jako následující fragment kódu:
 
 ```sh
 java -Djava.library.path=$LD_LIBRARY_PATH -Djava.util.logging.config.file=<path to app.properties> -jar <service name>.jar
@@ -74,7 +74,7 @@ Jsou k dispozici pro trasování CoreCLR aplikace v Linuxu více rozhraní. Dal�
 
 Prvním krokem je zahrnout System.Diagnostics.Tracing tak, aby vaše protokoly můžete zapisovat do paměti, výstupní datové proudy nebo soubory konzoly.  Pro protokolování událostí EventSource, přidejte do vašeho souboru project.json následující projekt:
 
-```
+```json
     "System.Diagnostics.StackTrace": "4.0.1"
 ```
 

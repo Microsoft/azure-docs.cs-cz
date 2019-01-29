@@ -8,7 +8,7 @@ manager: mtillman
 editor: ''
 ms.assetid: ed33574f-6fa3-402c-b030-fae76fba84e1
 ms.service: active-directory
-ms.component: develop
+ms.subservice: develop
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
@@ -17,14 +17,14 @@ ms.date: 09/24/2018
 ms.author: celested
 ms.reviewer: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: f9389a7c0e80f075c01f2236fa1bdf9dc9544ac6
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 968afcba8b0a6ab9d46c5582eecbb4901975257c
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46987437"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55101130"
 ---
-# <a name="quickstart-sign-in-users-and-call-the-microsoft-graph-api-from-a-net-desktop-wpf-app"></a>Rychlý start: Přihlášení uživatelů a volání rozhraní Microsoft Graph API z aplikace .NET klasické plochy (WPF)
+# <a name="quickstart-sign-in-users-and-call-the-microsoft-graph-api-from-a-net-desktop-wpf-app"></a>Rychlý start: Přihlašování uživatelů a volání rozhraní Microsoft Graph API z aplikace .NET klasické plochy (WPF)
 
 [!INCLUDE [active-directory-develop-applies-v1-adal](../../../includes/active-directory-develop-applies-v1-adal.md)]
 
@@ -36,18 +36,18 @@ V tomto rychlém startu se dozvíte jak vytvořit aplikaci seznamu úkolů WPF .
 * Vyhledá v adresáři uživatele pomocí daného aliasu.
 * Značky uživatele navýšení kapacity.
 
-Pokud chcete vytvořit kompletní, funkční aplikaci, bude nutné:
+Pokud chcete sestavit úplnou funkční aplikaci, budete muset:
 
-1. Registrace aplikace v Azure AD.
-2. Nainstalujte a nakonfigurujte ADAL.
-3. Používají knihovnu ADAL k získání tokenů z Azure AD.
+1. Zaregistrovat aplikaci v Azure AD
+2. Nainstalovat a nakonfigurovat knihovnu ADAL
+3. Použít knihovnu ADAL k získání tokenů z Azure AD
 
 ## <a name="prerequisites"></a>Požadavky
 
-Abyste mohli začít, zajistěte splnění těchto požadavků:
+Než začnete, musíte splnit následující požadavky:
 
 * [Stáhnout kostru aplikace](https://github.com/AzureADQuickStarts/NativeClient-DotNet/archive/skeleton.zip) nebo [stáhnout úplnou vzorovou](https://github.com/AzureADQuickStarts/NativeClient-DotNet/archive/complete.zip)
-* Mají tenanta služby Azure AD, kde můžete vytvářet uživatele a zaregistrovat aplikaci. Pokud ještě nemáte tenanta, [zjistěte, jak získat](quickstart-create-new-tenant.md).
+* Mají tenanta služby Azure AD, kde můžete vytvářet uživatele a zaregistrovat aplikaci. Pokud ho ještě nemáte, [zjistěte, jak ho získat](quickstart-create-new-tenant.md).
 
 ## <a name="step-1-register-the-directorysearcher-application"></a>Krok 1: Registrace aplikace DirectorySearcher
 
@@ -66,7 +66,7 @@ Umožňuje aplikaci získat tokeny svou aplikaci zaregistrovat ve vašem tenanto
 
 ## <a name="step-2-install-and-configure-adal"></a>Krok 2: Instalace a konfigurace ADAL
 
-Teď, když máte aplikaci ve službě Azure AD, můžete nainstalovat knihovnu ADAL a napsat kód souvisejícím s identitou. Pro ADAL ke komunikaci s Azure AD budete muset poskytnout určité informace o registraci vaší aplikace.
+Když už máte v Azure AD aplikaci, můžete nainstalovat knihovnu ADAL a zapsat svůj kód související s identitou. Aby knihovna ADAL komunikovala s Azure AD, musíte jí poskytnout určité informace o registraci aplikace.
 
 1. Začátek přidáním knihovnou ADAL `DirectorySearcher` projektu pomocí konzoly Správce balíčků.
 
@@ -75,12 +75,12 @@ Teď, když máte aplikaci ve službě Azure AD, můžete nainstalovat knihovnu 
     ```
 
 1. V `DirectorySearcher` projekt, otevřete `app.config`.
-1. Nahraďte hodnoty prvků v `<appSettings>` části tak, aby odrážely hodnoty vstup na webu Azure portal. Váš kód bude odkazovat na tyto hodnoty pokaždé, když se používá ADAL.
+1. Nahraďte hodnoty prvků v `<appSettings>` části tak, aby odrážely hodnoty vstup na webu Azure portal. Váš kód bude tyto hodnoty využívat vždy, když bude používat ADAL.
   * `ida:Tenant` Je doména tenanta Azure AD, například contoso.onmicrosoft.com
   * `ida:ClientId` Je ID klienta vaší aplikace, které jste zkopírovali z portálu.
   * `ida:RedirectUri` Je adresa URL pro přesměrování registrovaný na portálu.
 
-## <a name="step-3-use-adal-to-get-tokens-from-azure-ad"></a>Krok 3: Použití ADAL k získání tokenů z Azure AD
+## <a name="step-3-use-adal-to-get-tokens-from-azure-ad"></a>Krok 3: Použití knihovny ADAL k získání tokenů z Azure AD
 
 Základním principem za ADAL je, že pokaždé, když se vaše aplikace potřebuje přístupového tokenu, vaše aplikace jednoduše volá `authContext.AcquireTokenAsync(...)`, a udělá zbytek ADAL.
 
@@ -99,7 +99,7 @@ Základním principem za ADAL je, že pokaždé, když se vaše aplikace potřeb
     }
     ```
 
-1. Vyhledejte `Search(...)` metoda, která bude volána, když uživatel vybere **hledání** tlačítko v Uživatelském rozhraní aplikace. Tato metoda provádí požadavek GET na Azure AD Graph API k dotazování pro uživatele, jejichž hlavní název uživatele začíná daný hledaný termín.
+1. Vyhledejte `Search(...)` metoda, která bude volána, když uživatel vybere **hledání** tlačítko v Uživatelském rozhraní aplikace. Tato metoda vytvoří pro rozhraní Azure AD Graph API požadavek GET, aby se uživatelů dotázal, který hlavní název uživatele (UPN) začíná na daný hledaný termín.
 1. K dotazování rozhraní Graph API, zahrnují access_token v `Authorization` záhlaví požadavku, který přichází ADAL.
 
     ```csharp
@@ -181,9 +181,9 @@ Základním principem za ADAL je, že pokaždé, když se vaše aplikace potřeb
     }
     ```
 
-Blahopřejeme! Nyní máte funkční aplikaci .NET WPF, která můžete ověřovat uživatele, bezpečně volat webové rozhraní API pomocí OAuth 2.0 a získat základní informace o uživateli. Pokud jste tak dosud neučinili, teď je čas k naplnění vašeho tenanta s některými uživateli. Spusťte aplikaci DirectorySearcher a přihlaste se pomocí jedné z těchto uživatelů. Hledání jiných uživatelů podle jejich hlavní název uživatele. Zavřete aplikaci a znovu jej spusťte. Všimněte si, jak uživatelské relace zůstává beze změny. Odhlásit a zase přihlásit jako jiný uživatel.
+Blahopřejeme! Nyní máte funkční aplikaci .NET WPF, která můžete ověřovat uživatele, bezpečně volat webové rozhraní API pomocí OAuth 2.0 a získat základní informace o uživateli. Pokud jste to ještě neudělali, je teď čas naplnit tenanta několika uživateli. Spusťte aplikaci DirectorySearcher a přihlaste se pomocí jedné z těchto uživatelů. Na základě hlavního názvu uživatele (UPN) vyhledejte další uživatele. Zavřete aplikaci a znovu jej spusťte. Všimněte si, jak uživatelské relace zůstává beze změny. Odhlásit a zase přihlásit jako jiný uživatel.
 
-ADAL umožňuje snadno zahrnout tyto běžné funkce identity do vaší aplikace. Postará o čistý práci za vás, jako je Správa mezipaměti, podporu protokolu OAuth, nabízí ten samý uživatel s přihlášením uživatelského rozhraní, aktualizace vypršení platnosti tokenů a další. Všechno, co skutečně potřebujete znát jediného volání rozhraní API je `authContext.AcquireTokenAsync(...)`.
+ADAL umožňuje snadno zahrnout tyto běžné funkce identity do vaší aplikace. Postará o čistý práci za vás, jako je Správa mezipaměti, podporu protokolu OAuth, nabízí ten samý uživatel s přihlášením uživatelského rozhraní, aktualizace vypršení platnosti tokenů a další. Potřebujete znát jen jedno volání rozhraní API – `authContext.AcquireTokenAsync(...)`.
 
 Odkaz, naleznete v tématu je hotová ukázka (bez vašich hodnot nastavení) [na Githubu](https://github.com/AzureADQuickStarts/NativeClient-DotNet/archive/complete.zip).
 

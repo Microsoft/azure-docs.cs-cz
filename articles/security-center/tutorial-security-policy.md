@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 1/4/2019
 ms.author: rkarlin
-ms.openlocfilehash: 52af6051b4534ba65b4822205cb5395a59ef9d6a
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.openlocfilehash: c706dbd4536b9c75281500ace6f02db00ff2f95d
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54259960"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55095510"
 ---
 # <a name="working-with-security-policies"></a>Práce se zásadami zabezpečení
 
@@ -36,7 +36,7 @@ Zásady zabezpečení definují požadovanou konfiguraci úloh a pomáhají zaji
 
 Zásady zabezpečení vliv na doporučení zabezpečení, získáte v Azure Security Center. Můžete monitorovat dodržování zásad v nich můžete najít potenciální nedostatky zabezpečení a zmírnit hrozby. Další informace o tom, jak určit, která možnost je pro vás vhodná, najdete v seznamu [integrované bezpečnostní zásady](security-center-policy-definitions.md).
 
-Když povolíte Security Center, zásady zabezpečení, která je integrovaná do služby Security Center se projeví ve službě Azure Policy jako integrované iniciativy v rámci kategorie Security Center. Integrované podnětu se automaticky přiřadí na všechny odběry registrované Security Center (úrovně Free nebo Standard). Integrované iniciativy obsahuje pouze zásady auditu. 
+Když povolíte Security Center, zásady zabezpečení, která je integrovaná do služby Security Center se projeví ve službě Azure Policy jako integrované iniciativy v rámci kategorie Security Center. Integrované iniciativy se automaticky přiřadí na všechny odběry registrované Security Center (úrovně Free nebo Standard). Integrované iniciativy obsahuje pouze zásady auditu. 
 
 
 ### <a name="management-groups"></a>Skupiny pro správu
@@ -121,7 +121,7 @@ Integrované iniciativy má všechny zásady služby Security Center ve výchoz�
 V následujících příkladech nahraďte tyto proměnné:
 
 - **{oboru}**  zadejte název skupiny pro správu nebo předplatného jsou použití zásady tak, aby.
-- **{poicyAssignmentName}**  zadejte [název přiřazení zásady relevantní](#policy-names).
+- **{policyAssignmentName}**  zadejte [název přiřazení zásady relevantní](#policy-names).
 - **{name}**  zadejte své jméno nebo název správce, který schválení zásadu změnit.
 
 Tento příklad ukazuje, jak přiřadit předdefinované iniciativu Security Center podle předplatného nebo skupiny pro správu
@@ -212,7 +212,7 @@ Tento příklad ukazuje, jak odebrat přiřazení:
 |Konfigurace zabezpečení |Monitorování ohrožení zabezpečení operačního systému ve službě Azure Security Center |systemConfigurationsMonitoringEffect| 
 |Ochrana koncových bodů |Monitorování chybějící služby Endpoint Protection ve službě Azure Security Center |endpointProtectionMonitoringEffect |
 |Šifrování disku |Monitorovat nešifrované disky virtuálních počítačů ve službě Azure Security Center |diskEncryptionMonitoringEffect|
-|Posouzení ohrožení zabezpečení |Monitorování ohrožení zabezpečení virtuálních počítačů ve službě Azure Security Center |vulnerabilityAssesmentMonitoringEffect|
+|Posouzení ohrožení zabezpečení |Monitorování ohrožení zabezpečení virtuálních počítačů ve službě Azure Security Center |vulnerabilityAssessmentMonitoringEffect|
 |Brána firewall webových aplikací |Monitorovat nechráněné webové aplikace ve službě Azure Security Center |webApplicationFirewallMonitoringEffect |
 |Brána firewall příští generace |Monitorovat nechráněné koncové body sítě ve službě Azure Security Center| |
 

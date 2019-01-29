@@ -10,17 +10,17 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 12/07/2018
+ms.date: 01/28/2019
 ms.author: jingwang
-ms.openlocfilehash: 3096fa77913ef1dd4eb491b3c0e5d7fa236f6c65
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 0a8a229beab03dd8cb26d9cfb9c3b945059d6f70
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54020878"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55164941"
 ---
 # <a name="copy-activity-performance-and-tuning-guide"></a>Průvodce laděním a výkonem aktivity kopírování
-> [!div class="op_single_selector" title1="Vyberte verzi služby Data Factory, kterou používáte:"]
+> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
 > * [Verze 1](v1/data-factory-copy-activity-performance.md)
 > * [Aktuální verze](copy-activity-performance.md)
 
@@ -69,7 +69,7 @@ Odkazuje na mějte na paměti:
     </tr>
     <tr>
         <td>Síť</td>
-        <td>Internetové rozhraní: 10 GB/s; rozhraní sítě intranet: 40 GB/s</td>
+        <td>Internetové rozhraní: 10 GB/s; rozhraní sítě intranet: 40 Gbps</td>
     </tr>
     </table>
 
@@ -241,7 +241,13 @@ Doporučujeme vám, že je provést tyto kroky pro optimalizaci výkonu služby 
 
 1. **Stanovení základní úrovně**. Během fáze vývoje Otestujte svůj kanál pomocí aktivity kopírování proti ukázku reprezentativní data. Shromažďovat podrobnosti provádění a výkonové charakteristiky následující [zkopírujte monitorování aktivit](copy-activity-overview.md#monitoring).
 
-2. **Diagnostika a optimalizace výkonu**. Pokud, které můžete sledovat výkon nesplňuje vaše očekávání, budete muset identifikovat kritické body výkonu. Potom optimalizace výkonu můžete odebrat nebo snižují dopad kritické body. Úplný popis Diagnostika výkonu je nad rámec tohoto článku, ale tady jsou některé běžné aspekty:
+2. **Diagnostika a optimalizace výkonu**. Pokud, které můžete sledovat výkon nesplňuje vaše očekávání, budete muset identifikovat kritické body výkonu. Potom optimalizace výkonu můžete odebrat nebo snižují dopad kritické body. 
+
+    Pro některé scénáře, zobrazí se také "**tipy pro optimalizaci výkonu**" v horní části [monitorování stránku aktivita kopírování](copy-activity-overview.md#monitor-visually), které sděluje, identifikovat kritická místa a provede vás o tom, jak zvýšit kopírování propustnost pro takový případ kopírování.
+
+    **Příklad: zkopírujte do služby Azure SQL DB s tipy pro optimalizaci výkonu** ![zkopírujte monitorování s tipy pro optimalizaci výkonu](./media/copy-activity-overview/copy-monitoring-with-performance-tuning-tips.png)
+
+    Úplný popis Diagnostika výkonu je nad rámec tohoto článku, ale tady jsou některé běžné aspekty:
 
    * Funkce výkonu:
      * [Paralelní kopírování](#parallel-copy)

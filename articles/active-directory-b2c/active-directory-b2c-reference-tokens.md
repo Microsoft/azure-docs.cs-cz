@@ -9,13 +9,13 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 11/30/2018
 ms.author: davidmu
-ms.component: B2C
-ms.openlocfilehash: 47cfd5820c80a0f53772f5424f674603acdaf18d
-ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
+ms.subservice: B2C
+ms.openlocfilehash: 6a588764908f72607bbb99e9b1ea031182c95e64
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54848933"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55166913"
 ---
 # <a name="azure-ad-b2c-token-reference"></a>Azure AD B2C: Referenční informace o tokenech
 
@@ -70,7 +70,7 @@ Pokud používáte Azure AD B2C, budete mít přesnou kontrolu nad obsahem z va�
 
 Všimněte si, že deklarace identity v tokenech ID nebudou zobrazeny v libovolném pořadí. Kromě toho nových deklarací identity můžete zavedena v ID tokenů v každém okamžiku. Vaše aplikace by neměl přerušit zavedeném nových deklarací identity. Tady jsou deklarace identity, které očekáváte, že existují v ID a přístupové tokeny vydané službou Azure AD B2C. Nějaké další deklarace identity se určují podle zásady. Postup, zkuste to zkontrolujete deklarací identity v tokenu ID ukázka vložením do [jwt.ms](https://jwt.ms). Další podrobnosti najdete v [OpenID Connect specifikace](https://openid.net/specs/openid-connect-core-1_0.html).
 
-| Název | Deklarovat | Příklad hodnoty | Popis |
+| Name | Deklarovat | Příklad hodnoty | Popis |
 | --- | --- | --- | --- |
 | Cílová skupina |`aud` |`90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6` |Deklaraci identity cílové skupiny identifikuje zamýšlený příjemce tokenu. Pro Azure AD B2C cílová skupina je ID aplikace vaší aplikace, protože přiřazené vaší aplikaci v portálu pro registraci aplikace. Vaše aplikace by měl ověřit tuto hodnotu a odmítnout token, pokud neodpovídá. Cílové skupiny je synonymní s prostředkem. |
 | Vystavitel |`iss` |`https://{tenantname}.b2clogin.com/775527ff-9a37-4307-8b3d-cc311f58d925/v2.0/` |Tato deklarace identity označuje službu tokenů zabezpečení (STS), který vytvoří a vrátí token. Také určuje adresář Azure AD, ve kterém byl uživatel ověřený. Vaše aplikace by měla ověření vystavitele deklarace identity k zajištění, že token pochází z koncového bodu Azure Active Directory v2.0. |

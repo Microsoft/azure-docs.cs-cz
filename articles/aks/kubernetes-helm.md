@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 10/01/2018
 ms.author: iainfou
-ms.openlocfilehash: f9f4c1cccac7e40c7d2fd8f76221bc1870ade45f
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: a3f5bad20ddd0968f2e76008799494adbb55bc31
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52993243"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55092122"
 ---
 # <a name="install-applications-with-helm-in-azure-kubernetes-service-aks"></a>Instalace aplikací s nástrojem Helm ve službě Azure Kubernetes Service (AKS)
 
@@ -20,7 +20,7 @@ ms.locfileid: "52993243"
 
 Tento článek ukazuje, jak nakonfigurovat a používat Helm v clusteru Kubernetes v AKS.
 
-## <a name="before-you-begin"></a>Než začnete
+## <a name="before-you-begin"></a>Před zahájením
 
 Kroky popsané v tomto dokumentu předpokládají, že jste vytvořili AKS cluster a navázali `kubectl` připojení ke clusteru. Pokud budete potřebovat tyto položky zobrazit, [AKS quickstart][aks-quickstart].
 
@@ -99,7 +99,6 @@ Následující výstup zhuštěnému příkladu jsou uvedeny některé k dispozi
 $ helm search
 
 NAME                           CHART VERSION    APP VERSION  DESCRIPTION
-stable/aks-engine-autoscaler   2.2.0            2.1.1        Scales worker nodes within agent pools
 stable/aerospike               0.1.7            v3.14.1.2    A Helm chart for Aerospike in Kubernetes
 stable/anchore-engine          0.1.7            0.1.10       Anchore container analysis and policy evaluatio...
 stable/apm-server              0.1.0            6.2.4        The server receives data from the Elastic APM a...

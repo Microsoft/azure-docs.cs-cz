@@ -10,12 +10,12 @@ ms.component: url-preview
 ms.topic: overview
 ms.date: 03/16/2018
 ms.author: rosh
-ms.openlocfilehash: e3791c897722c9bbf50f58c126d7e4e573b2096f
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
-ms.translationtype: HT
+ms.openlocfilehash: eeb68ef869e3249ec86ecc8763aa1f136617e6d4
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49465810"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55101698"
 ---
 # <a name="what-is-project-url-preview"></a>Co je Project URL Preview?
 Koncový bod rozhraní URL Preview přebírá parametr dotazu v podobě adresy URL a vrací odpověď ve formátu JSON s názvem cílového prostředku, stručným popisem a odkazem na obrázek, který se zobrazí v náhledu. Odpověď obsahuje také příznak [isFamilyFriendly](url-preview-reference.md#query-parameters), který označuje, zda se na adrese URL nachází obsah pro dospělé, obsah porušující autorská práva nebo jiný nelegální obsah. 
@@ -26,7 +26,7 @@ https://api.labs.cognitive.microsoft.com/urlpreview/v7.0/search?q=https://swiftk
 
 ```
 Odpověď: 
-````
+```
 HTTP Headers:
 BingAPIs-TraceId: 3CC74C94769440C0851D9DF0869FCE7F
 BingAPIs-SessionId: 52219085A6364692958C9C83983A0DBA
@@ -44,7 +44,7 @@ X-MSEdge-Ref: Ref A: 3CC74C94769440C0851D9DF0869FCE7F Ref B: CO1EDGE0315 Ref C: 
   }
 }
 
-````
+```
 ## <a name="scenarios"></a>Scénáře 
 
 Rozhraní API URL Preview podporuje stručné popisy webových prostředků. Vývojářům to umožňuje vytvářet podrobné náhledy.  Uživatelé můžou sdílet nebo si ukládat do záložek webové stránky, zprávy, blogy, fóra atd. Toto rozhraní API také můžete použít k moderování obsahu.    
@@ -60,7 +60,7 @@ Vy ani třetí strana jednající vaším jménem nesmí používat, uchovávat,
 
 [!INCLUDE [cognitive-services-bing-throttling-requests](../../../../includes/cognitive-services-bing-throttling-requests.md)]
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 - [Rychlý start pro jazyk C#](csharp.md)
 - [Rychlý start pro Javu](java-quickstart.md)
 - [Rychlý start pro JavaScript](javascript.md)

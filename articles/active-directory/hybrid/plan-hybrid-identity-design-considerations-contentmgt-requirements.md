@@ -13,14 +13,14 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 05/30/2018
-ms.component: hybrid
+ms.subservice: hybrid
 ms.author: billmath
-ms.openlocfilehash: 74efc23cd5f0f840e5b2c1e597059295765f45ea
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: 6154262d7b412a0a4049c2d9456d7ae53ef01ca8
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54468654"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55183318"
 ---
 # <a name="determine-content-management-requirements-for-your-hybrid-identity-solution"></a>Určení požadavků na správu obsahu pro vaše řešení hybridní identity
 Pochopení požadavků správy obsahu pro vaši společnost může přímo ovlivnit vaše rozhodnutí, na které řešení hybridní identity používat. S čím více zařízení a umožňuje uživatelům přinést si vlastní zařízení ([BYOD](https://aka.ms/byodcg)), společnost musí chránit svoje vlastní data, ale také musí uchovávat ochrany osobních údajů uživatele ponechá beze změny. Většinou když uživatel má své vlastní zařízení, jsou také může mít více přihlašovacích údajů, které se Alternující závislosti na aplikaci, která používají. Je důležité rozlišení, jaký obsah byl vytvořen pomocí osobních údajů a modely vytvořené pomocí firemních přihlašovacích údajů. Řešení identity měli být schopni komunikovat s cloudovou službou službami a zajistit bezproblémové prostředí pro koncového uživatele při zajištění jejich ochrany osobních údajů a zvýšit ochranu před úniky dat chránit. 

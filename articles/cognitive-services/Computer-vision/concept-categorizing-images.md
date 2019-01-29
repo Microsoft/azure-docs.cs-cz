@@ -6,17 +6,17 @@ services: cognitive-services
 author: PatrickFarley
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: computer-vision
+ms.subservice: computer-vision
 ms.topic: conceptual
 ms.date: 08/29/2018
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 40873b13407066920caec5c04751b65c01d7e209
-ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
+ms.openlocfilehash: f182110d150583ee1c241c23a2e1924d9f3e3bd4
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53579494"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55158039"
 ---
 # <a name="image-categorization-with-computer-vision"></a>Kategorizace obrázků s pro počítačové zpracování obrazu
 

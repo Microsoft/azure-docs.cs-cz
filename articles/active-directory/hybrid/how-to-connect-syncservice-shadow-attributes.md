@@ -13,14 +13,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 07/13/2017
-ms.component: hybrid
+ms.subservice: hybrid
 ms.author: billmath
-ms.openlocfilehash: 12067b4413924717228547fccdc3ef07d07beaf8
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: 7be6570d61bc3697bec143478404d32123b4f8d2
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54470371"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55184219"
 ---
 # <a name="azure-ad-connect-sync-service-shadow-attributes"></a>Azure AD Connect sync služby stínové atributy
 Většina atributy jsou reprezentovány stejným způsobem jako ve službě Azure AD se nacházejí v místní Active Directory. Ale některé atributy mají některé zvláštní zpracování a hodnota atributu ve službě Azure AD může být jiný než Azure AD Connect synchronizuje.
@@ -37,7 +37,7 @@ Mají více přípon UPN ve svojí místní službě Active Directory, ale jeden
 ### <a name="userprincipalname"></a>userPrincipalName (Hlavní název uživatele)
 Uživatel má následující hodnoty atributu v neověřenou doménu:
 
-| Atribut | Hodnota |
+| Atribut | Value |
 | --- | --- |
 | místní atribut userPrincipalName | lee.sperry@fabrikam.com |
 | Azure AD shadowUserPrincipalName | lee.sperry@fabrikam.com |
@@ -52,7 +52,7 @@ Stejný postup pro pouze včetně ověřených domén také vyvolá proxyAddress
 
 Uživatel poštovní schránky, ať už místní nebo v Exchangi Online se zobrazí pouze hodnoty ověřených domén. Může vypadat například takto:
 
-| Atribut | Hodnota |
+| Atribut | Value |
 | --- | --- |
 | místní proxyAddresses | SMTP:abbie.spencer@fabrikamonline.com</br>smtp:abbie.spencer@fabrikam.com</br>smtp:abbie@fabrikamonline.com |
 | Exchange Online proxyAddresses | SMTP:abbie.spencer@fabrikamonline.com</br>smtp:abbie@fabrikamonline.com</br>SIP:abbie.spencer@fabrikamonline.com |

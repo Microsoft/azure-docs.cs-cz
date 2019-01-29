@@ -17,12 +17,12 @@ ms.workload: infrastructure
 ms.date: 03/13/2018
 ms.author: jdial
 ms.custom: ''
-ms.openlocfilehash: 89ac87436fb6807177acf3882dd6e923b1722bd5
-ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
+ms.openlocfilehash: 8bfa4178baae0d92f7efb5ea156cfd35a8b32b1b
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54849205"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55157461"
 ---
 # <a name="route-network-traffic-with-a-route-table-using-the-azure-cli"></a>Směrování provozu sítě s směrovací tabulky pomocí rozhraní příkazového řádku Azure
 
@@ -121,7 +121,7 @@ az network vnet subnet update \
 
 Síťové virtuální zařízení je virtuální počítač, který provádí síťovou funkci, jako je směrování, brána firewall nebo optimalizace sítě WAN.
 
-Vytvoření síťového virtuálního zařízení v *DMZ* podsíť s [az vm vytvořit](/cli/azure/vm#az_vm_create). Při vytváření virtuálního počítače Azure vytvoří a přiřadí veřejnou IP adresu virtuálního počítače, ve výchozím nastavení. `--public-ip-address ""` Parametr instruuje Azure vytvořit a přiřadit veřejnou IP adresu virtuálního počítače, protože virtuální počítač nemusí být připojen k z Internetu. Pokud ve výchozím umístění klíčů ještě neexistují klíče SSH, příkaz je vytvoří. Chcete-li použít konkrétní sadu klíčů, použijte možnost `--ssh-key-value`.
+Vytvoření síťového virtuálního zařízení v *DMZ* podsíť s [az vm vytvořit](/cli/azure/vm). Při vytváření virtuálního počítače Azure vytvoří a přiřadí veřejnou IP adresu virtuálního počítače, ve výchozím nastavení. `--public-ip-address ""` Parametr instruuje Azure vytvořit a přiřadit veřejnou IP adresu virtuálního počítače, protože virtuální počítač nemusí být připojen k z Internetu. Pokud ve výchozím umístění klíčů ještě neexistují klíče SSH, příkaz je vytvoří. Chcete-li použít konkrétní sadu klíčů, použijte možnost `--ssh-key-value`.
 
 ```azure-cli-interactive
 az vm create \
@@ -161,7 +161,7 @@ Příkaz může trvat až jednu minutu ke spuštění.
 
 Vytvoření dvou virtuálních počítačů ve virtuální síti, abyste mohli ověřit provozu z *veřejné* podsítě se směruje na *privátní* podsítě v pozdějším kroku. 
 
-Vytvářet virtuální počítače *veřejné* podsíť s [az vm vytvořit](/cli/azure/vm#az_vm_create). `--no-wait` Parametr umožňuje systému Azure, aby příkaz spustila na pozadí, takže můžete pokračovat k dalšímu příkazu. Pro zjednodušení tohoto článku, je použít heslo. Klíče se obvykle používají v produkčním prostředí. Pokud používáte klíče, musíte také nakonfigurovat přesměrování agenta SSH. Další informace naleznete v dokumentaci k vašemu klientovi SSH. Nahraďte `<replace-with-your-password>` v následujícím příkazu s heslem podle vašeho výběru.
+Vytvářet virtuální počítače *veřejné* podsíť s [az vm vytvořit](/cli/azure/vm). `--no-wait` Parametr umožňuje systému Azure, aby příkaz spustila na pozadí, takže můžete pokračovat k dalšímu příkazu. Pro zjednodušení tohoto článku, je použít heslo. Klíče se obvykle používají v produkčním prostředí. Pokud používáte klíče, musíte také nakonfigurovat přesměrování agenta SSH. Další informace naleznete v dokumentaci k vašemu klientovi SSH. Nahraďte `<replace-with-your-password>` v následujícím příkazu s heslem podle vašeho výběru.
 
 ```azurecli-interactive
 adminPassword="<replace-with-your-password>"

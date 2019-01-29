@@ -8,7 +8,7 @@ manager: mtillman
 editor: ''
 ms.assetid: 68517c83-1279-4cc7-a7c1-c7ccc3dbe146
 ms.service: active-directory
-ms.component: develop
+ms.subservice: develop
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -17,12 +17,12 @@ ms.date: 10/02/2018
 ms.author: celested
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 8e00674f331a56be9abe6f2356aa88d7dcf1d0b0
-ms.sourcegitcommit: 022cf0f3f6a227e09ea1120b09a7f4638c78b3e2
+ms.openlocfilehash: 3da99506d50ec12140c188cd86cde2556be4a308
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/21/2018
-ms.locfileid: "52282380"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55099137"
 ---
 # <a name="whats-new-for-authentication"></a>Co je nového v ověřování? 
 
@@ -48,9 +48,9 @@ Nenaplánováno v tuto chvíli.
 
 **Datum účinnosti**: 15. listopadu 2018
 
-**Koncové body, které jsou ovlivněné**: jak v1.0 a v2.0
+**Koncové body, které jsou ovlivněné**: V1.0 a v2.0
 
-**Protokol vliv**: [Code flow](v2-oauth2-auth-code-flow.md)
+**Protokol vliv**: [Tok kódu](v2-oauth2-auth-code-flow.md)
 
 Od 15. listopadu 2018, Azure AD, přestane přijímat předchozích ověřovací kódy pro aplikace. Tato změna zabezpečení pomáhá vám Azure AD podle specifikace OAuth a vynutí u koncových bodů v1 i v2.
 
@@ -64,9 +64,9 @@ Další informace o tokeny obnovení najdete v tématu [aktualizaci přístupov�
 
 **Datum**: 1. května 2018
 
-**Koncové body, které jsou ovlivněné**: jak v1.0 a v2.0
+**Koncové body, které jsou ovlivněné**: V1.0 a v2.0
 
-**Protokoly vliv**: implicitní tok a [OBO toku](v1-oauth2-on-behalf-of-flow.md)
+**Protokoly vliv**: Implicitní tok a [OBO toku](v1-oauth2-on-behalf-of-flow.md)
 
 Od 1. května 2018 id_tokens nelze jako kontrolní výraz ve OBO toku pro nové aplikace. Místo toho by měla sloužit přístupové tokeny, které zabezpečená rozhraní API, dokonce i mezi klientem a stejné aplikace střední vrstvy. Aplikace registrované před 1. květnem 2018 bude i nadále fungovat a mít k výměně pro přístupový token; id_tokens Tento model se nepovažuje za osvědčený postup.
 

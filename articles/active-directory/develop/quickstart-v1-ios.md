@@ -8,7 +8,7 @@ manager: mtillman
 editor: ''
 ms.assetid: 42303177-9566-48ed-8abb-279fcf1e6ddb
 ms.service: active-directory
-ms.component: develop
+ms.subservice: develop
 ms.workload: identity
 ms.tgt_pltfrm: mobile-ios
 ms.devlang: objective-c
@@ -17,14 +17,14 @@ ms.date: 09/24/2018
 ms.author: celested
 ms.custom: aaddev
 ms.reviewer: brandwe
-ms.openlocfilehash: 89f2a4058006687fbe64ec64d98659e38f93f618
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
-ms.translationtype: HT
+ms.openlocfilehash: 801da78de493b55655819ac16a9184d04a356786
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46980572"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55095970"
 ---
-# <a name="quickstart-sign-in-users-and-call-the-microsoft-graph-api-from-an-ios-app"></a>Rychlý start: Přihlášení uživatelů a zavolání rozhraní API pro Microsoft Graph z aplikace pro iOS
+# <a name="quickstart-sign-in-users-and-call-the-microsoft-graph-api-from-an-ios-app"></a>Rychlý start: Přihlašování uživatelů a volání rozhraní Microsoft Graph API z aplikace pro iOS
 
 [!INCLUDE [active-directory-develop-applies-v1-adal](../../../includes/active-directory-develop-applies-v1-adal.md)]
 
@@ -43,7 +43,7 @@ Pokud chcete sestavit úplnou funkční aplikaci, budete k tomu potřebovat:
 
 ## <a name="prerequisites"></a>Požadavky
 
-Abyste mohli začít, potřebujete:
+Než začnete, musíte splnit následující požadavky:
 
 * Stáhnout si [kostru aplikace](https://github.com/AzureADQuickStarts/NativeClient-iOS/archive/skeleton.zip) nebo [úplnou ukázku](https://github.com/AzureADQuickStarts/NativeClient-iOS/archive/complete.zip).
 * Tenanta služby Azure AD, ve kterém můžete vytvářet uživatele a zaregistrovat aplikaci. Pokud ještě tenanta nemáte, [zjistěte, jak ho získat](quickstart-create-new-tenant.md).
@@ -51,7 +51,7 @@ Abyste mohli začít, potřebujete:
 > [!TIP]
 > Vyzkoušejte [portál pro vývojáře](https://identity.microsoft.com/Docs/iOS) a zprovozněte Azure AD během pár minut. Portál pro vývojáře vás provede procesem registrace aplikace a integrace Azure AD do kódu. Jakmile skončíte, budete mít jednoduchou aplikaci, která může ověřovat uživatele v tenantovi, a back-end, který může přijímat tokeny a provádět ověření.
 
-## <a name="step-1-determine-what-your-redirect-uri-is-for-ios"></a>Krok 1: Určení identifikátoru URI pro přesměrování na iOS
+## <a name="step-1-determine-what-your-redirect-uri-is-for-ios"></a>Krok 1: Určit, jaké vaše přesměrování je identifikátor URI pro iOS
 
 Pokud chcete své aplikace v určitých scénářích jednotného přihlašování spouštět zabezpečeně, musíte *identifikátor URI pro přesměrování* vytvořit v konkrétním formátu. Identifikátor URI pro přesměrování slouží k zajištění, že se tokeny vrátí do správné aplikace, která o ně požádala.
 
@@ -82,7 +82,7 @@ Když chcete aplikaci nastavit tak, aby získávala tokeny, musíte ji zaregistr
 6. Po dokončení registrace přiřadí Azure AD aplikaci jedinečné ID aplikace. Tuto hodnotu budete potřebovat v následujících částech, proto si ji z karty aplikace zkopírujte.
 7. Na stránce **Nastavení** vyberte **Požadovaná oprávnění > Přidat > Microsoft Graph** a potom v části **Delegovaná oprávnění** přidejte oprávnění **Čtení dat z adresáře**. Toto oprávnění nastaví aplikaci, aby za uživatele dotazovala rozhraní Azure AD Graph API.
 
-## <a name="step-3-install-and-configure-adal"></a>Krok 3: Instalace a konfigurace knihovny ADAL
+## <a name="step-3-install-and-configure-adal"></a>Krok 3: Instalace a konfigurace ADAL
 
 Když už máte v Azure AD aplikaci, můžete nainstalovat knihovnu ADAL a zapsat svůj kód související s identitou. Aby knihovna ADAL komunikovala s Azure AD, musíte jí poskytnout určité informace o registraci aplikace.
 
@@ -254,7 +254,7 @@ ADAL zahrnutí všech těchto běžných funkcí identity do aplikace usnadňuje
 
 Pro srovnání je hotová ukázka (bez vašich hodnot nastavení) k dispozici na [GitHubu](https://github.com/AzureADQuickStarts/NativeClient-iOS/archive/complete.zip).
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Můžete teď přejít na další scénáře. Jako další doporučujeme vyzkoušet tyto:
 

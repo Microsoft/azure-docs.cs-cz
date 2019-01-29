@@ -7,17 +7,17 @@ documentationcenter: ''
 author: aahill
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: bing-image-search
+ms.subservice: bing-image-search
 ms.topic: quickstart
 ms.date: 8/20/2018
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: 227dcfd6c27c19e986807c66e317c22cdcf6593c
-ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
+ms.openlocfilehash: 13edea67a93ecf2d2b53dcc04a2c1d49b864952e
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54212528"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55203279"
 ---
 # <a name="quickstart-search-for-images-using-the-bing-image-search-rest-api-and-java"></a>Rychlý start: Hledání obrázků pomocí API REST pro vyhledávání obrázků Bingu a Java
 

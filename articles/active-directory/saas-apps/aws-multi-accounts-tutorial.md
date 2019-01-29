@@ -1,5 +1,5 @@
 ---
-title: 'Kurz: Integrace Azure Active Directory pomocí Amazon Web Services (AWS) připojit více účtů | Dokumentace Microsoftu'
+title: 'Kurz: Integrace s Azure Active Directory pomocí Amazon Web Services (AWS) připojit více účtů | Dokumentace Microsoftu'
 description: Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure AD a několika účty Amazon Web Services (AWS).
 services: active-directory
 documentationCenter: na
@@ -8,19 +8,19 @@ manager: femila
 ms.reviewer: joflore
 ms.assetid: 7561c20b-2325-4d97-887f-693aa383c7be
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 10/15/2018
 ms.author: jeedes
-ms.openlocfilehash: a9acb9539497c85f408ce7417fa5983072ea80b9
-ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
+ms.openlocfilehash: 48d8516a1923aaacc26db2eb9a9acfd0ddff737e
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49365658"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55197513"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-multiple-amazon-web-services-aws-accounts"></a>Kurz: Integrace Azure Active Directory s více účty Amazon Web Services (AWS)
 
@@ -136,7 +136,7 @@ V této části Povolení služby Azure AD jednotného přihlašování na port�
 
 6. V **deklarace identity uživatelů** části na **atributy uživatele a deklarace identity** dialogového okna, nakonfigurovat atribut tokenu SAML, jak je znázorněno na obrázku výše a proveďte následující kroky:
     
-    | Název  | Zdrojový atribut  | Obor názvů |
+    | Name  | Zdrojový atribut  | Obor názvů |
     | --------------- | --------------- | --------------- |
     | RoleSessionName | user.userprincipalname | https://aws.amazon.com/SAML/Attributes |
     | Role            | user.assignedroles |  https://aws.amazon.com/SAML/Attributes |
@@ -202,13 +202,13 @@ V této části Povolení služby Azure AD jednotného přihlašování na port�
 
     a. Vyberte **SAML 2.0 federace** pod **vyberte typ entity pro důvěryhodného**.
 
-    b. V části **zvolte oddíl SAML 2.0 poskytovatele**, vyberte **SAML zprostředkovatele** jste vytvořili dříve (Příklad: *WAAD*)
+    b. V části **zvolte oddíl SAML 2.0 poskytovatele**, vyberte **SAML zprostředkovatele** jste vytvořili dříve (například: *WAAD*)
 
     c. Vyberte **povolit programové a přístup ke konzole správy AWS**.
   
-    d. Klikněte na tlačítko **Další: oprávnění**.
+    d. Klikněte na tlačítko **Další: Oprávnění**.
 
-16. Na **připojit zásady oprávnění** dialogového okna, nemusíte připojit žádné zásady. Klikněte na tlačítko **Další: Revize**.  
+16. Na **připojit zásady oprávnění** dialogového okna, nemusíte připojit žádné zásady. Klikněte na tlačítko **Další: Kontrola**.  
 
     ![Nakonfigurujte zásady přihlašování][33]
 

@@ -7,19 +7,19 @@ author: jeevansd
 manager: daveba
 ms.assetid: 2e94916c-64ae-4e1a-a8b5-bc6ef7d28c29
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 06/30/2017
 ms.author: jeedes
-ms.openlocfilehash: 5e44cd26e24c19c38a575f64eee590587f9464ba
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: ed076c5f6d50136d4b5d639edb83caaae3409716
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54821103"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55197581"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-oneteam"></a>Kurz: Integrace Azure Active Directory s Oneteam
 

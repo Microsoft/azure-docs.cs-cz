@@ -13,15 +13,15 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 07/18/2017
-ms.component: hybrid
+ms.subservice: hybrid
 ms.author: billmath
 ms.custom: seohack1
-ms.openlocfilehash: a5fa005741d0ac320badc12c908fde3991291857
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: 46101ccf5eaf47a29bf01c7adcac989cfe2cc638
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46311399"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55167389"
 ---
 # <a name="determine-multi-factor-authentication-requirements-for-your-hybrid-identity-solution"></a>Určení požadavků na ověření službou Multi-Factor Authentication pro vaše řešení hybridní identity
 V tomto světě nastavení mobilních zařízení s uživateli přístup k datům a aplikacím v cloudu a z jakéhokoli zařízení a zabezpečení těchto informací se stal prvořadá.  Každý den se nový nadpis o porušení zabezpečení.  I když není zaručeno před takové porušením, ověřování službou Multi-Factor Authentication poskytuje další úroveň zabezpečení, které pomáhají zabránit těchto porušení.

@@ -1,5 +1,5 @@
 ---
-title: 'Kurz: Integrace Azure Active Directory se službou ThirdPartyTrust | Dokumentace Microsoftu'
+title: 'Kurz: Integrace Azure Active Directory s ThirdPartyTrust | Dokumentace Microsoftu'
 description: Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a ThirdPartyTrust.
 services: active-directory
 documentationCenter: na
@@ -8,21 +8,21 @@ manager: femila
 ms.reviewer: joflore
 ms.assetid: 3c496939-4201-4108-b0cc-d3e7c4244229
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 02/12/2018
 ms.author: jeedes
-ms.openlocfilehash: 4333f6094a0da22f73255836379e1163aac485d4
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: ace619e5eba8d5f1b4f1740f2c88fbce7bc83790
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39050513"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55150511"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-thirdpartytrust"></a>Kurz: Integrace Azure Active Directory se službou ThirdPartyTrust
+# <a name="tutorial-azure-active-directory-integration-with-thirdpartytrust"></a>Kurz: Integrace Azure Active Directory s ThirdPartyTrust
 
 V tomto kurzu se dozvíte, jak integrovat ThirdPartyTrust s Azure Active Directory (Azure AD).
 
@@ -38,7 +38,7 @@ Pokud chcete zjistit další podrobnosti o integraci aplikací SaaS v Azure AD, 
 
 Konfigurace integrace Azure AD s ThirdPartyTrust, potřebujete následující položky:
 
-- S předplatným služby Azure AD
+- Předplatné Azure AD
 - ThirdPartyTrust jednotného přihlašování povolená předplatného
 
 > [!NOTE]
@@ -60,7 +60,7 @@ Konfigurace integrace ThirdPartyTrust do služby Azure AD, budete muset přidat 
 
 **Chcete-li přidat ThirdPartyTrust z galerie, postupujte následovně:**
 
-1. V  **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu. 
+1. V **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu. 
 
     ![Tlačítko Azure Active Directory][1]
 
@@ -127,7 +127,7 @@ V této části Povolení služby Azure AD jednotného přihlašování na port�
 7. Ke konfiguraci jednotného přihlašování na **ThirdPartyTrust** straně, je nutné odeslat na stažený **soubor XML s metadaty** k [tým podpory ThirdPartyTrust](mailto:support@thirdpartytrust.com). Nastavují tohoto nastavení můžete mít správně nastavené na obou stranách připojení SAML SSO.
 
 > [!TIP]
-> Teď si můžete přečíst stručné verzi těchto pokynů uvnitř [webu Azure portal](https://portal.azure.com), zatímco jsou nastavení aplikace!  Po přidání této aplikace z **služby Active Directory > podnikové aplikace** části, stačí kliknout **Single Sign-On** kartu a přístup k vložené dokumentaci prostřednictvím  **Konfigurace** oblast v dolní části. Další informace o funkci vložená dokumentace: [dokumentace ke službě Azure AD embedded]( https://go.microsoft.com/fwlink/?linkid=845985)
+> Teď si můžete přečíst stručné verzi těchto pokynů uvnitř [webu Azure portal](https://portal.azure.com), zatímco jsou nastavení aplikace!  Po přidání této aplikace z **služby Active Directory > podnikové aplikace** části, stačí kliknout **Single Sign-On** kartu a přístup k vložené dokumentaci prostřednictvím  **Konfigurace** oblast v dolní části. Další informace o funkci vložená dokumentace: [Dokumentace ke službě Azure AD, embedded]( https://go.microsoft.com/fwlink/?linkid=845985)
 
 ### <a name="create-an-azure-ad-test-user"></a>Vytvořit testovacího uživatele Azure AD
 
@@ -163,7 +163,7 @@ Cílem této části je vytvoření zkušebního uživatele na webu Azure Portal
  
 ### <a name="create-a-thirdpartytrust-test-user"></a>Vytvoření zkušebního uživatele ThirdPartyTrust
 
-V této části vytvoříte uživatele v ThirdPartyTrust jako Britta Simon. Práce s [tým podpory ThirdPartyTrust](mailto:support@thirdpartytrust.com) přidat uživatele na platformě ThirdPartyTrust. Uživatelé musí vytvořit a aktivovat, než použití jednotného přihlašování. 
+V této části vytvoříte uživatele v ThirdPartyTrust jako Britta Simon. Práce s [tým podpory ThirdPartyTrust](mailto:support@thirdpartytrust.com) přidat uživatele na platformě ThirdPartyTrust. Uživatelé musí vytvořit a aktivovat, než použití jednotného přihlašování. 
 
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřadit uživatele Azure AD
@@ -196,7 +196,7 @@ V této části je povolit Britta Simon k udělení přístupu k ThirdPartyTrust
 
 7. Klikněte na tlačítko **přiřadit** tlačítko **přidat přiřazení** dialogového okna.
     
-### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování
+### <a name="test-single-sign-on"></a>Test jednotného přihlašování
 
 V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 
@@ -206,7 +206,7 @@ Další informace o přístupovém panelu, naleznete v tématu [Úvod k přístu
 ## <a name="additional-resources"></a>Další zdroje informací:
 
 * [Seznam kurzů o integraci aplikací SaaS pomocí Azure Active Directory](tutorial-list.md)
-* [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
+* [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](../manage-apps/what-is-single-sign-on.md)
 
 
 

@@ -6,17 +6,17 @@ services: cognitive-services
 author: KellyDF
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: computer-vision
+ms.subservice: computer-vision
 ms.topic: overview
 ms.date: 08/10/2017
 ms.author: kefre
 ms.custom: seodec18
-ms.openlocfilehash: acd6d41e8b6d1fb834697ec3d026419ee6b69ec9
-ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
+ms.openlocfilehash: 57388b4e2f74a1e9e8d9c322020077dfd67e89c1
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53582350"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55198142"
 ---
 # <a name="what-is-computer-vision-api-version-10"></a>Co je rozhraní API pro počítačové zpracování obrazu verze 1.0?
 
@@ -40,7 +40,7 @@ Cloudové rozhraní API pro počítačové zpracování obrazu poskytuje vývoj�
 
 ## <a name="requirements"></a>Požadavky
 * Podporované metody zadávání znaků: Nezpracovaná binární ve formě application/octet-stream adresa URL obrázku nebo image.
-* Podporované formáty bitové kopie: GIF JPEG, PNG, BMP.
+* Podporované formáty bitové kopie: JPEG, PNG, GIF, BMP.
 * Velikost souboru obrázku: Méně než 4 MB.
 * Dimenze bitové kopie: Větší než 50 × 50 pixelů.
 
@@ -113,7 +113,7 @@ Existují různé způsoby zařazování obrázku do kategorií. Rozhraní API p
 ### <a name="clip-art-type"></a>Typ klipart
 Zjistí, jestli je obrázek klipart.  
 
-Hodnota | Význam
+Value | Význam
 ----- | --------------
 0     | Není klipart
 1     | Nejednoznačné
@@ -138,9 +138,9 @@ Zjistí lidské tváře na obrázku a vygeneruje jejich souřadnice, obdélník 
 
 Image|Odpověď
 ----|----
-![Vizuální analýza ženy na střeše](./Images/woman_roof_face.png) | [{"age": 23, "pohlaví": "Ženský", "faceRectangle": {"left": 1379 "top": 320, "šířka": 310, "výška": 310}}]
-![Vizuální analýza tváří matky s dcerou](./Images/mom_daughter_face.png) | [{"age": 28, "pohlaví": "Ženský", "faceRectangle": {"left": 447 "top": 195, "šířka": 162, "výška": 162}}, {"age": 10, "pohlaví": "Mužského", "faceRectangle": {"left": 355, "top": 87 "šířka": v 143 "výška": 143}}]
-![Vizuální analýza tváří na fotce rodiny](./Images/family_photo_face.png) | [{"age": 11, "pohlaví": "Mužského", "faceRectangle": {"left": 113 "top": 314, "šířka": 222, "výška": 222}}, {"age": 11, "pohlaví": "Ženský", "faceRectangle": {"left": 1200: "top": 632, "šířka": 215, "výška": 215}}, {"age": 41, "pohlaví": "Mužského", "faceRectangle": {"left": 514 "top": 223, "šířka": 205, "výška": 205}}, {"age": 37, "pohlaví": "Ženský", "faceRectangle": {"left": 1008: "top": 277, "šířka": 201, "výška": 201}}]
+![Vizuální analýza ženy na střeše](./Images/woman_roof_face.png) | [{"age": 23, "pohlaví": "Ženský", "faceRectangle": {"left": 1379, "top": 320, "šířka": 310, "výška": 310 } } ]
+![Vizuální analýza tváří matky s dcerou](./Images/mom_daughter_face.png) | [{"age": 28, "pohlaví": "Ženský", "faceRectangle": {"left": 447, "top": 195, "šířka": 162, "výška": 162}}, {"age": 10, "pohlaví": "Mužského", "faceRectangle": {"left": 355, "top": 87 "šířka": v 143 "výška": 143 } } ]
+![Vizuální analýza tváří na fotce rodiny](./Images/family_photo_face.png) | [{"age": 11, "pohlaví": "Mužského", "faceRectangle": {"left": 113, "top": 314, "šířka": 222, "výška": 222}}, {"age": 11, "pohlaví": "Ženský", "faceRectangle": {"left": 1200, "top": 632, "šířka": 215, "výška": 215}}, {"age": 41, "pohlaví": "Mužského", "faceRectangle": {"left": 514, "top": 223, "šířka": 205, "výška": 205}}, {"age": 37, "pohlaví": "Ženský", "faceRectangle": {"left": 1008, "top": 277, "šířka": 201, "výška": 201 } } ]
 
 
 ## <a name="domain-specific-content"></a>Obsah určité domény

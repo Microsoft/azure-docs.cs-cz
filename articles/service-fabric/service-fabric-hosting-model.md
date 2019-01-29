@@ -12,12 +12,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 04/15/2017
 ms.author: harahma
-ms.openlocfilehash: 367f21c63eac3969fb19eada91eae9a8577921de
-ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
+ms.openlocfilehash: 80d9d447a86b58c8d6db5a62d3b0df997e42f673
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44348476"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55172370"
 ---
 # <a name="azure-service-fabric-hosting-model"></a>Model hostingu Azure Service Fabric
 Tento článek poskytuje přehled modelů poskytované Azure Service Fabric pro hostování aplikací a popisuje rozdíly mezi **sdílený proces** a **exkluzivní procesu** modely. Popisuje, jak vypadá aplikace nasazené na uzlu Service Fabricu a vztah mezi repliky (nebo instance), služby a služby hostitelský proces.
@@ -150,7 +150,7 @@ V některých případech, Service Fabric také umožňuje více než jeden *Ser
 
 Výhradní proces model hostingu není souvislé s modelem aplikace s více *ServiceType* za *ServicePackage*. Důvodem je, že více *ServiceType* za *ServicePackage* jsou navržené tak, abyste dosáhli vyšší prostředků sdílení mezi repliky a umožňuje vyšší hustota replika jeden proces. Model exkluzivní procesu slouží k dosažení různé výsledky.
 
-Podívejte se na několika *ServiceType* za *ServicePackage*, s jiným *CodePackage* registrace jednotlivých *ServiceType*. Řekněme, že máme *ServicePackage* "MultiTypeServicePackge", který má dva *CodePackages*:
+Podívejte se na několika *ServiceType* za *ServicePackage*, s jiným *CodePackage* registrace jednotlivých *ServiceType*. Řekněme, že máme *ServicePackage* "MultiTypeServicePackage", který má dva *CodePackages*:
 
 - "MyCodePackageA", které je zaregistruje *ServiceType* "MyServiceTypeA".
 - "MyCodePackageB", které je zaregistruje *ServiceType* "MyServiceTypeB".
@@ -160,15 +160,15 @@ Nyní Řekněme, že se nám vytvořit aplikaci, která **fabric: / SpecialApp**
 - Služba **fabric: / SpecialApp/ServiceA** typu "MyServiceTypeA", se dva oddíly (například **P1** a **P2**) a tři repliky na oddíl.
 - Služba **fabric: / SpecialApp/ServiceB** typu "MyServiceTypeB", se dva oddíly (**P3** a **P4**) a tři repliky na oddíl.
 
-V daném uzlu obě služby mají dvě repliky. Protože model exkluzivní procesu jsme použili k vytvoření služby, Service Fabric aktivuje novou kopii "MyServicePackage" pro každou repliku. Každá aktivace "MultiTypeServicePackge" spustí kopii "MyCodePackageA" a "MyCodePackageB". Je však pouze jeden 'MyCodePackageA' nebo "MyCodePackageB" hostitelem repliky, pro kterou byl aktivován "MultiTypeServicePackge". Následující diagram znázorňuje zobrazení uzlu:
+V daném uzlu obě služby mají dvě repliky. Protože model exkluzivní procesu jsme použili k vytvoření služby, Service Fabric aktivuje novou kopii "MyServicePackage" pro každou repliku. Každá aktivace "MultiTypeServicePackage" spustí kopii "MyCodePackageA" a "MyCodePackageB". Je však pouze jeden 'MyCodePackageA' nebo "MyCodePackageB" hostitelem repliky, pro kterou byl aktivován "MultiTypeServicePackage". Následující diagram znázorňuje zobrazení uzlu:
 
 
 ![Diagram zobrazení uzlů nasazenou aplikaci.][node-view-five]
 
 
-Při aktivaci "MultiTypeServicePackge" repliky oddílu **P1** služby **fabric: / SpecialApp/ServiceA**, "MyCodePackageA" je hostitelem repliky. 'MyCodePackageB' je spuštěná. Podobně při aktivaci "MultiTypeServicePackge" repliky oddílu **P3** služby **fabric: / SpecialApp/ServiceB**, "MyCodePackageB" je hostitelem repliky. 'MyCodePackageA' je spuštěná. Proto tím větší je počet *CodePackages* (registraci různých *ServiceType*) za *ServicePackage*, tím vyšší využití prostředků redundantní. 
+Při aktivaci "MultiTypeServicePackage" repliky oddílu **P1** služby **fabric: / SpecialApp/ServiceA**, "MyCodePackageA" je hostitelem repliky. 'MyCodePackageB' je spuštěná. Podobně při aktivaci "MultiTypeServicePackage" repliky oddílu **P3** služby **fabric: / SpecialApp/ServiceB**, "MyCodePackageB" je hostitelem repliky. 'MyCodePackageA' je spuštěná. Proto tím větší je počet *CodePackages* (registraci různých *ServiceType*) za *ServicePackage*, tím vyšší využití prostředků redundantní. 
  
- Ale když vytvoříme služby **fabric: / SpecialApp/ServiceA** a **fabric: / SpecialApp/ServiceB** s modelem sdílený proces Service Fabric aktivuje jenom jednu kopii " MultiTypeServicePackge "pro aplikaci **fabric: / SpecialApp**. Všechny repliky pro službu hostuje "MyCodePackageA" **fabric: / SpecialApp/ServiceA**. Všechny repliky pro službu hostuje "MyCodePackageB" **fabric: / SpecialApp/ServiceB**. Následující diagram znázorňuje zobrazení uzlů v tomto nastavení: 
+ Ale když vytvoříme služby **fabric: / SpecialApp/ServiceA** a **fabric: / SpecialApp/ServiceB** s modelem sdílený proces Service Fabric aktivuje jenom jednu kopii " MultiTypeServicePackage "pro aplikaci **fabric: / SpecialApp**. Všechny repliky pro službu hostuje "MyCodePackageA" **fabric: / SpecialApp/ServiceA**. Všechny repliky pro službu hostuje "MyCodePackageB" **fabric: / SpecialApp/ServiceB**. Následující diagram znázorňuje zobrazení uzlů v tomto nastavení: 
 
 
 ![Diagram zobrazení uzlů nasazenou aplikaci.][node-view-six]

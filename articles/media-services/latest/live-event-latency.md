@@ -11,18 +11,18 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: ne
 ms.topic: article
-ms.date: 12/19/2018
+ms.date: 01/28/2019
 ms.author: juliako
-ms.openlocfilehash: f4ded67ef964482a2acea0d731b1b154a95168d2
-ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
+ms.openlocfilehash: db6646c2066be940b2c058653fe8f2ceb9bff3a2
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53741347"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55169696"
 ---
-# <a name="liveevent-latency-in-media-services"></a>Latence Livestream ve službě Media Services
+# <a name="live-event-latency-in-media-services"></a>Živé události latence ve službě Media Services
 
-Tento článek popisuje, jak nastavit na nízkou latenci [Livestream](https://docs.microsoft.com/rest/api/media/liveevents). Také popisuje výsledky, které se zobrazí při použití nastavení s nízkou latencí v různé přehrávače. Výsledky lišit v závislosti na latenci sítě CDN.
+Tento článek popisuje, jak nastavit na nízkou latenci [živá událost](https://docs.microsoft.com/rest/api/media/liveevents). Také popisuje výsledky, které se zobrazí při použití nastavení s nízkou latencí v různé přehrávače. Výsledky lišit v závislosti na latenci sítě CDN.
 
 Použití nového **LowLatency** funkci, můžete nastavit **StreamOptionsFlag** k **LowLatency** na **Livestream**. Při vytváření [LiveOutput](https://docs.microsoft.com/rest/api/media/liveoutputs) přehrávání HLS, nastavte [LiveOutput.Hls.fragmentsPerTsSegment](https://docs.microsoft.com/rest/api/media/liveoutputs/create#hls) na hodnotu 1. Po vytvoření a spuštění je datový proud, můžete [Azure Media Player](http://ampdemo.azureedge.net/) (AMP ukázkové stránky) a nastavte možnosti přehrávání použít "S nízkou latencí heuristiky profil".
 
@@ -54,7 +54,7 @@ LiveEvent liveEvent = new LiveEvent(
 
 Podívejte se na úplný příklad: [MediaV3LiveApp](https://github.com/Azure-Samples/media-services-v3-dotnet-core-tutorials/blob/master/NETCore/Live/MediaV3LiveApp/Program.cs#L126).
 
-## <a name="liveevents-latency"></a>Latence LiveEvents
+## <a name="live-events-latency"></a>Latence živé události
 
 Následující tabulky popisují typický výsledky pro latenci (Pokud je zapnutý příznak LowLatency) ve službě Media Services, měřená od okamžiku informačního kanálu příspěvek dosáhne službě a když prohlížeč uvidí přehrávání na přehrávači. Použití optimálně s nízkou latencí, by měla optimalizovat nastavení kodéru na 1 sekundu délka "Skupiny z obrázků" (GOP). Při použití s vyšší délkou GOP minimalizaci využití šířky pásma a omezení přenosové rychlosti v rámci stejné Snímková frekvence. Je obzvláště užitečné ve videu s méně pohybu.
 

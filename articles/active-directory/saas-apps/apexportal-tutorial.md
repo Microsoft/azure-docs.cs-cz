@@ -8,19 +8,19 @@ manager: daveba
 ms.reviewer: joflore
 ms.assetid: db204a46-6460-4ace-bdbb-4353846723ad
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 11/07/2017
 ms.author: jeedes
-ms.openlocfilehash: 25fb68d3f29e0b3589e582551b88cc1cc7b5392f
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: 0f5eef2916cd4f0eff12ada4f885e06cfc9077b8
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54819845"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55176263"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-apex-portal"></a>Kurz: Integrace Azure Active Directory pomocí portálu vrcholu
 

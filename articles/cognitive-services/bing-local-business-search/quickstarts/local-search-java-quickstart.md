@@ -6,16 +6,16 @@ services: cognitive-services
 author: mikedodaro
 manager: rosh
 ms.service: cognitive-services
-ms.component: bing-local-business
+ms.subservice: bing-local-business
 ms.topic: article
 ms.date: 11/01/2018
 ms.author: rosh, v-gedod
-ms.openlocfilehash: 533e8b30bf59010f71df477b96b5441c83c34be7
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: ada75f9ebe38615d17276c9e5b731924a45c8e75
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52307104"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55148452"
 ---
 # <a name="quickstart-send-a-query-to-the-bing-local-business-search-api-using-java"></a>Rychlý start: Odešle dotaz do API Bingu pro místní obchodní vyhledávání pomocí Javy
 
@@ -35,7 +35,7 @@ Tato ukázková aplikace získá data místní odpovědi z dotazu pro *hotelu ve
 
 Následující kód vytvoří `WebRequest`, nastaví hlavičku klíčů přístup a přidá řetězec dotazu pro "hotel Bellevue".  Potom požadavek odešle a přiřadí odpověď k řetězci obsahujícímu text JSON.
 
-````
+```
     // construct URL of search request (endpoint + query string)
      URL url = new URL(host + path + "?q=" +  URLEncoder.encode(searchQuery, "UTF-8") + &mkt=en-us");
     HttpsURLConnection connection = (HttpsURLConnection)url.openConnection();
@@ -47,7 +47,7 @@ Následující kód vytvoří `WebRequest`, nastaví hlavičku klíčů přístu
 
     // construct result object for return
     SearchResults results = new SearchResults(new HashMap<String, String>(), response);
-````
+```
 
 ## <a name="run-the-complete-application"></a>Spusťte kompletní aplikace
 
@@ -58,7 +58,7 @@ Místní firmy API pro vyhledávání Bingu vrátí výsledky z vyhledávacího 
 4. Hodnotu subscriptionKey nahraďte přístupovým klíčem platným pro vaše předplatné.
 5. Spusťte program.
 
-````
+```
 package localSearch;
 import java.net.*;
 import java.util.*;
@@ -162,7 +162,7 @@ public class LocalSearchCls {
         }
     }
 
-````
+```
 
 ## <a name="next-steps"></a>Další postup
 - [Rychlý start místní firmy vyhledávání](local-quickstart.md)

@@ -7,18 +7,18 @@ manager: daveba
 ms.reviewer: sahenry
 ms.assetid: 7ba69b18-317a-4a62-afa3-924c4ea8fb49
 ms.service: active-directory
-ms.component: user-help
+ms.subservice: user-help
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 01/11/2018
 ms.author: lizross
 ms.custom: end-user
-ms.openlocfilehash: b4e784e7d249976b95c5f70986ba007351d2abb4
-ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
+ms.openlocfilehash: ccafd3c93130b137573a1b143d182c4861693577
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/26/2019
-ms.locfileid: "55076960"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55168902"
 ---
 # <a name="reset-your-work-or-school-password"></a>Resetovat heslo pracovního nebo školního
 

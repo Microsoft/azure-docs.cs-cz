@@ -3,19 +3,19 @@ title: Pomocí dekorace značky zvýrazněte text – vlastní vyhledávání Bi
 titlesuffix: Azure Cognitive Services
 description: Ukazuje, jak povolit dekorace textu v odpovědi na vyhledávání.
 services: cognitive-services
-author: brapel
+author: aahill
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: bing-custom-search
+ms.subservice: bing-custom-search
 ms.topic: conceptual
 ms.date: 09/28/2017
 ms.author: maheshb
-ms.openlocfilehash: 848255418e7cc0f80d10006aa4b13e89121c8834
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.openlocfilehash: a535a31678dcdb611acb1606e6091a1a40a6d42e
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49466252"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55184066"
 ---
 # <a name="using-decoration-markers-to-highlight-text"></a>Pomocí značek dekorace zvýraznění textu
 
@@ -33,28 +33,28 @@ Pokud `textDecorations` je **true**, Bingu může zahrnovat následující znač
 
 |Kódování Unicode|HTML|Popis
 |-|-|-
-|U + E000|\<b >|Označuje začátek výrazu dotazu (zvýrazňování shod)
-|U + E001|\</b >|Označuje konec termín dotazu
-|U + E002|\<Můžu >|Označuje začátek kurzívou obsahu 
-|U + E003|\</i >|Označuje konec obsahu kurzívou
-|U + E004|\<br / >|Označuje konec řádku
-|U + E005||Označuje začátek telefonní číslo
-|U + E006||Označuje konec telefonní číslo
-|U + E007||Označuje začátek adresy
-|U + E008||Označuje konec adresu
-|U + E009|\&nbsp;|Označí pevná mezera
-|U + E00C|\<strong >|Označuje začátek tučného písma obsahu
-|U + E00D|\</ strong >|Označuje konec tučného písma obsahu
+|U + E000|\<b>|Označuje začátek výrazu dotazu (zvýrazňování shod)
+|U+E001|\</b>|Označuje konec termín dotazu
+|U+E002|\<i>|Označuje začátek kurzívou obsahu 
+|U+E003|\</i>|Označuje konec obsahu kurzívou
+|U+E004|\<br/>|Označuje konec řádku
+|U+E005||Označuje začátek telefonní číslo
+|U+E006||Označuje konec telefonní číslo
+|U+E007||Označuje začátek adresy
+|U+E008||Označuje konec adresu
+|U+E009|\&nbsp;|Označí pevná mezera
+|U + E00C|\<strong>|Označuje začátek tučného písma obsahu
+|U+E00D|\</strong>|Označuje konec tučného písma obsahu
 |U + E00E||Označuje konec obsahu, jehož pozadí by měla být nižší než jeho okolního pozadí
-|U + E00F||Označuje konec obsahu, jehož pozadí by měla být nižší než jeho okolního pozadí
-|U + E010||Označuje konec obsahu, jehož pozadí by měl být o něco tmavší než jeho okolního pozadí
+|U+E00F||Označuje konec obsahu, jehož pozadí by měla být nižší než jeho okolního pozadí
+|U+E010||Označuje konec obsahu, jehož pozadí by měl být o něco tmavší než jeho okolního pozadí
 |U + E011||Označuje konec obsahu, jehož pozadí by měl být o něco tmavší než jeho okolního pozadí
-|U + E012|\<del >|Označuje konec obsahu, který by měl být přeškrtnutá.
-|U + E013|\</ del >|Označuje konec obsahu, který by měl být přeškrtnutá.
-|U + E016|\<Sub >|Označuje začátek dolního indexu obsah
-|U + E017|\</ sub >|Označuje konec obsahu dolního indexu
-|U + E018|\<sup >|Označuje začátek horní index obsahu
-|U + E019|\</ sup >|Označuje konec obsahu horní index
+|U + E012|\<del>|Označuje konec obsahu, který by měl být přeškrtnutá.
+|U+E013|\</del>|Označuje konec obsahu, který by měl být přeškrtnutá.
+|U+E016|\<sub>|Označuje začátek dolního indexu obsah
+|U+E017|\</sub>|Označuje konec obsahu dolního indexu
+|U+E018|\<sup>|Označuje začátek horní index obsahu
+|U+E019|\</sup>|Označuje konec obsahu horní index
 
 Následující příklad ukazuje `Computation` odpověď, která obsahuje dolního indexu značky pro termín log(2) dotazu. `expression` Značky pouze tehdy, pokud obsahuje pole "je textdecoration – **true**.
 

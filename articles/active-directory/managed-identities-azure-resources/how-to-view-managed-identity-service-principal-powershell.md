@@ -7,19 +7,19 @@ author: priyamohanram
 manager: daveba
 editor: ''
 ms.service: active-directory
-ms.component: msi
+ms.subservice: msi
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 11/29/2018
 ms.author: priyamo
-ms.openlocfilehash: bb0462820cc94c06054ada12f0c764d4cfb190f7
-ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
+ms.openlocfilehash: 8c406dda1d6ce0fe7b73f400444d7bcd8a9e8400
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/25/2019
-ms.locfileid: "54900149"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55185954"
 ---
 # <a name="view-the-service-principal-of-a-managed-identity-using-powershell"></a>Zobrazení instanční objekt spravovanou identitu pomocí Powershellu
 

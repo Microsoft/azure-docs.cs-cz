@@ -5,24 +5,24 @@ services: cognitive-services
 author: swhite-msft
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: bing-entity-search
+ms.subservice: bing-entity-search
 ms.topic: quickstart
 ms.date: 07/06/2017
 ms.author: scottwhi
-ms.openlocfilehash: ffc9ebb21c6646b1a39af4659053adf4157d204b
-ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
-ms.translationtype: HT
+ms.openlocfilehash: 1bb2c4b73b29d832a289c7a5c1c86b958302086a
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48813953"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55153449"
 ---
-# <a name="quickstart-making-your-first-bing-entity-search-request"></a>Rychlý start: Vytvoření prvního požadavku na vyhledání entit v Bingu
+# <a name="quickstart-making-your-first-bing-entity-search-request"></a>Rychlý start: Vytváření první žádosti o vyhledávání entit Bingu
 
 Rozhraní API Bingu pro vyhledávání entit odešle vyhledávací dotaz do Bingu a načte výsledky, které zahrnují entity a místa. Mezi místa patří například restaurace, hotely nebo jiné místní firmy. U míst může dotaz obsahovat název místní firmy nebo může žádat o seznam (například restaurants near me). Mezi výsledky entit patří osoby, místa nebo věci. Místa jsou v tomto kontextu turistické atrakce, státy, země atd. 
 
 ## <a name="first-steps"></a>První kroky
 
-Než budete moct provést první volání, je nutné nejprve získat klíč předplatného služeb Cognitive Services. Postup, jak získat klíč, naleznete v tématu [Zkuste služby Cognitive Services](https://azure.microsoft.com/try/cognitive-services/?api=bing-entities-search-api). (Pokud rozhraní API pro vyhledávání entit není v horní části vidět, klikněte na kartu **Hledat** a posouvejte dolů, dokud se nezobrazí.)
+Před prvním voláním je potřeba získat klíč předplatného služeb Cognitive Services. Postup, jak klíč získat, najdete v tématu [Zkuste služby Cognitive Services](https://azure.microsoft.com/try/cognitive-services/?api=bing-entities-search-api). (Pokud rozhraní API pro vyhledávání entit není v horní části vidět, klikněte na kartu **Hledat** a posouvejte dolů, dokud se nezobrazí.)
 
 ## <a name="the-endpoint"></a>Koncový bod
 
@@ -34,7 +34,7 @@ https://api.cognitive.microsoft.com/bing/v7.0/entities
 
 Požadavek musí používat protokol HTTPS.
 
-Doporučujeme, aby byly všechny požadavky odeslány ze serveru. Distribuce klíče v rámci klientské aplikace nabízí více příležitostí pro přístup škodlivých třetích stran. Voláním ze serveru také zajistíte, že bude stačit upgradovat pouze jediný bod na budoucí verze rozhraní API.
+Doporučujeme, aby všechny požadavky pocházely ze serveru. Distribuce klíče v rámci klientské aplikace nabízí více příležitostí pro přístup kyberzločinců. Voláním ze serveru také zajistíte, že u budoucích verzí rozhraní API bude stačit upgradovat pouze jediný bod.
 
 ## <a name="specifying-query-parameters-and-headers"></a>Zadání parametrů a hlaviček dotazu
 
@@ -51,7 +51,7 @@ IP a hlavičky klienta jsou důležité pro vrácení obsahu závislého na umí
 
 Seznam všech hlaviček žádostí a odpovědí najdete v tématu [Hlavičky](https://docs.microsoft.com/rest/api/cognitiveservices/bing-entities-api-v7-reference#headers).
 
-## <a name="the-request"></a>Požadavek
+## <a name="the-request"></a>Žádost
 
 Následuje ukázka požadavku na entity, která obsahuje všechny navrhované parametry a hlavičky dotazu. 
 
@@ -134,7 +134,7 @@ BingAPIs-Market: en-US
 
 
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Vyzkoušejte si rozhraní API. Přejděte na téma [Testovací konzola rozhraní API pro vyhledávání entit](https://dev.cognitive.microsoft.com/docs/services/7a3fb374be374859a823b79fd938cc65/). 
 

@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 10/05/2018
 ms.author: ellacroi
-ms.openlocfilehash: 393426678d9331837bdc3b73c4e491dbe7eae6fa
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: dacc2ca995bebd0ae65d9c8221fc1954687949ee
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52834821"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55179833"
 ---
 # <a name="register-in-dev-center"></a>Registrace ve službě Dev Center  
 K ověření, že nejste přihlášeni k účtu osobní prohlížeče, otevřete nový Internet Explorer InPrivate nebo Incognito Chrome relaci procházení.  
@@ -68,7 +68,7 @@ K ověření, že nejste přihlášeni k účtu osobní prohlížeče, otevřete
 
 9.  V `Registration - Review` části, projděte si informace o vašem účtu a potvrďte, že je všechno správně.  
 
-    Přečtěte si podmínky a ujednání smlouvy vydavatele Microsoft Azure Marketplace.  
+    Přečtěte si podmínky a ujednání Microsoft Azure Marketplace [smlouvě s vydavatelem](https://cloudpartner.azure.com/Content/Unversioned/PublisherAgreement2.pdf).  
 
     Klikněte na zaškrtávací políčko označující, že jste přečetli a přijali podmínky.  
     
@@ -103,7 +103,7 @@ Pokud máte problémy s registrací Dev Center, postupujte podle těchto kroků 
 3.  K odeslání-the-ticket, klikněte na tlačítko Odeslat. 
 
 
-## <a name="issue-add-bank-and-tax-information-for-publisher-payouts"></a>Problém: Přidejte informace o bank a daně pro vydavatele výplaty  
+## <a name="issue-add-bank-and-tax-information-for-publisher-payouts"></a>Problém: Informace o bank a daně pro vydavatele výplaty  
 Bankovní a daň informace jsou nezbytné pro všechny obchodní nabídky pomocí příkazů jazyka transact typ seznamu.  
 *   Pokud publikujete obchodní nabídky k nákupu, pak je nutné přidat informace výplata a daň a ověření žádosti Dev Center.  
     >[!IMPORTANT]
@@ -143,7 +143,7 @@ Bankovní a daň informace jsou nezbytné pro všechny obchodní nabídky pomoc�
 ## <a name="frequently-asked-questions"></a>Nejčastější dotazy: 
 
 *   **Které vydavatelé vyžaduje registraci účtu Dev Center?** 
-> Vydavatele, kteří publikují v typ seznamu příkazů jazyka Transact: virtuálního počítače, aplikace Azure: řešení šablony a spravované aplikace.  
+> Vydavatele, kteří publikují v Transact typ seznamu: Virtuální počítač, aplikace Azure: řešení šablony a spravované aplikace.  
 
 *   **Proč je potřeba účet vývojáře pro?**
 > Je vyžaduje aby Microsoft mohl fakturovat zákazníka jménem vydavatele pro typ seznamu příkazů jazyka Transact účtu dev Center. Účtu centra vývojářů pro registraci umožňuje společnosti Microsoft pro ověření právní, daňové a bankovní informace pro vaši společnost. Další informace klikněte [tady.](https://docs.microsoft.com/azure/marketplace/become-publisher#register-in-dev-center)
@@ -165,7 +165,7 @@ Bankovní a daň informace jsou nezbytné pro všechny obchodní nabídky pomoc�
 > Dokončení [Marketplace registrace](https://azuremarketplace.microsoft.com/en-us/sell/signup) formuláře příjem propagační kód Dev Center.
  
 *   **Co mám čekat po dokončení registrace?**
-> Vyhledání e-mailu z verify@microsoft.com s řádkem předmětu "vyžaduje se akce: ověření vaší e-mailový účet Microsoft". Klikněte na odkaz pro citlivé ověření času k dokončení registrace. *Pokud jste neobdrželi e-mailu za 24 hodin, zkontrolujte složky spamu.*
+> Vyhledání e-mailu z verify@microsoft.com s řádkem předmětu "vyžaduje se akce: Ověření vaší e-mailový účet Microsoft". Klikněte na odkaz pro citlivé ověření času k dokončení registrace. *Pokud jste neobdrželi e-mailu za 24 hodin, zkontrolujte složky spamu.*
 
 *   **Jaké jsou další kroky po ověření, Centrum pro vývojáře?**
 > Přejděte na "Aplikace" (https://developer.microsoft.com/dashboard/Account/Programs) a přihlaste se k účtu Dev Center. Pokud nevidíte Azure jako registrované programu, podívejte se do části "Programy doporučeno pro vás" a vyhledejte Azure a vyberte "Get Started."

@@ -9,12 +9,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 10/28/2017
-ms.openlocfilehash: bdf5b5188dd584c5eb20f72ff4a98ba6904bc53e
-ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
+ms.openlocfilehash: 6663e3fc48408de83e92f39e8c8070005818852d
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43702370"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55097967"
 ---
 # <a name="azure-stream-analytics-javascript-user-defined-aggregates-preview"></a>Azure Stream Analytics JavaScript uživatelsky definované agregace (Preview)
  
@@ -28,7 +28,7 @@ Uživatelem definovaná agregace se používá na časový rozsah okna pro agreg
 
 Agregace AccumulateOnly lze nashromáždit pouze nové události do stavu, algoritmus neumožňuje deaccumulation hodnot. Vyberte tento požadovaný typ agregace při deaccumulate událost informace z hodnoty stavu je možné implementovat. Toto je šablona jazyka JavaScript pro AccumulatOnly agregace:
 
-````JavaScript
+```JavaScript
 // Sample UDA which state can only be accumulated.
 function main() {
     this.init = function () {
@@ -43,13 +43,13 @@ function main() {
         return this.state;
     }
 }
-````
+```
 
 ### <a name="accumulatedeaccumulate-aggregates"></a>AccumulateDeaccumulate agregace
 
 Agregace AccumulateDeaccumulate povolí deaccumulation předchozí celkové hodnoty ze stavu, například, odebrat ze seznamu událostí hodnoty pár klíč hodnota nebo odečíst hodnotu ze stavu agregace Sum. Toto je šablona jazyka JavaScript pro AccumulateDeaccumulate agregace:
 
-````JavaScript
+```JavaScript
 // Sample UDA which state can be accumulated and deaccumulated.
 function main() {
     this.init = function () {
@@ -72,7 +72,7 @@ function main() {
         return this.state;
     }
 }
-````
+```
 
 ## <a name="uda---javascript-function-declaration"></a>UDA - deklarace funkce jazyka JavaScript
 
@@ -129,7 +129,7 @@ Teď vytvoříme UDA JavaScriptu v rámci existující úlohy Azure Stream Analy
 1. Na novou funkci zobrazení, vyberte **UDA JavaScriptu Implementovat** jako typ funkce, pak se zobrazí výchozí šablona UDA zobrazí v editoru.
 1. Zadejte "TWA" jako UDA alias a změňte implementaci funkce takto:
 
-    ````JavaScript
+    ```JavaScript
     // Sample UDA which calculate Time-Weighted Average of incoming values.
     function main() {
         this.init = function () {
@@ -167,7 +167,7 @@ Teď vytvoříme UDA JavaScriptu v rámci existující úlohy Azure Stream Analy
             return result;
         }
     }
-    ````
+    ```
 
 1. Po kliknutí na tlačítko "Save" vaší UDA se zobrazí v seznamu funkcí.
 
@@ -177,7 +177,7 @@ Teď vytvoříme UDA JavaScriptu v rámci existující úlohy Azure Stream Analy
 
 Na webu Azure portal a otevřete úlohu, upravte dotaz a volání funkce TWA() s předponou pověření "uda.". Příklad:
 
-````SQL
+```SQL
 WITH value AS
 (
     SELECT
@@ -191,13 +191,13 @@ SELECT
     uda.TWA(value) as NoseDoseTWA
 FROM value
 GROUP BY TumblingWindow(minute, 5)
-````
+```
 
 ## <a name="testing-query-with-uda"></a>Testování dotazu s UDA
 
 Vytvořte místní soubor JSON s níže obsah, nahrajte soubor do úlohy Stream Analytics a testovat dotaz výše.
 
-````JSON
+```JSON
 [
   {"EntryTime": "2017-06-10T05:01:00-07:00", "NoiseLevelDB": 80, "DurationSecond": 22.0},
   {"EntryTime": "2017-06-10T05:02:00-07:00", "NoiseLevelDB": 81, "DurationSecond": 37.8},
@@ -223,7 +223,7 @@ Vytvořte místní soubor JSON s níže obsah, nahrajte soubor do úlohy Stream 
   {"EntryTime": "2017-06-10T05:20:00-07:00", "NoiseLevelDB": 113, "DurationSecond": 25.1},
   {"EntryTime": "2017-06-10T05:22:00-07:00", "NoiseLevelDB": 110, "DurationSecond": 5.3}
 ]
-````
+```
 
 ## <a name="get-help"></a>Podpora
 

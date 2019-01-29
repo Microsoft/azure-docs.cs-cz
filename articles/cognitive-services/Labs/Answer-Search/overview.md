@@ -10,12 +10,12 @@ ms.component: answer-search
 ms.topic: overview
 ms.date: 04/13/2018
 ms.author: rosh
-ms.openlocfilehash: b211ede7ef90fb1aef3a6d6e9a82e0d52397afd3
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
-ms.translationtype: HT
+ms.openlocfilehash: 54438a99a710a24daac9e7482cb92a9781d06746
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49465905"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55099086"
 ---
 # <a name="what-is-project-answer-search"></a>Co je Project Answer Search?
 Rozhraní API služby Project Answer Search používá k získání odpovědi na zvídavé dotazy koncový bod Bingu v7. Například na otázku „Jaký je obvod Země?“ vrátí odpověď s faktickými informacemi.  Na dotaz týkající se osoby, místa nebo věci, vrátí informace o entitě identifikované dotazem. Tyto scénáře můžou být užitečné v aplikacích, jako jsou například konverzační roboti,aplikace zasílání zpráv, čtenáři, atd.  
@@ -25,13 +25,13 @@ Dotazy vrací odpovědi, které závisí na povaze dotazu: webové stránky vrá
 ## <a name="endpoint"></a>Koncový bod
 Pokud chcete získat odpovědi na dotaz či informace o osobě, místě nebo věci, odešlete požadavek na koncový bod rozhraní API Answer Search. Můžete použít záhlaví a parametry adresy URL pro různé specifikace.  Použijte hlavičku *Ocp-Apim-Subscription-Key* s platným tokenem.  Parametr market je povinný. V tuto chvíli je podporován jenom market `en-us`.
 
-Následující dotaz získá odpovědi na otázku: „What is the circumference of the earth?“ (Jaký obvod má Země?)
+Následující dotaz načte odpovědi na otázky: "Jak se obvod všech koutech světa?"
 
 GET:
-````
+```
 https://api.labs.cognitive.microsoft.com/answerSearch/v7.0/search?q=what+is+circumference+of+the=earth?&mkt=en-us
 
-````
+```
 
 K určení předmětu vyhledávání je nutné zadat parametr adresy URL `q=`.
 
@@ -39,7 +39,7 @@ K určení předmětu vyhledávání je nutné zadat parametr adresy URL `q=`.
 
 Odpověď obsahuje záhlaví HTTP, webové stránky, fakta nebo entity.
 
-````
+```
 BingAPIs-TraceId: AB2E75C998614ADB8EBF5110DF648298
 X-MSEdge-ClientID: 1E48FC4F7B8768C80B14F7997A106906
 BingAPIs-SessionId: 0504DDD6DAE84861A4842306F8DA7A58
@@ -236,7 +236,7 @@ JSON Response:
   }
 }
 
-````
+```
 
 ## <a name="terms-of-use"></a>Podmínky použití
 Na Project Answer Search a Project Video Trends se uplatňují [požadavky Vyhledávání Bingu pro zobrazení a použití ](use-display-requirements.md).
@@ -333,7 +333,7 @@ Tady je příklad, který obsahuje pole `provider` pro image a smluvní pravidla
   
 ![Atribuce médií](./media/mediaattribution.png)  
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 - [Rychlý start pro jazyk C#](c-sharp-quickstart.md)
 - [Rychlý start pro Javu](java-quickstart.md)
 - [Rychlý start pro Node](node-quickstart.md)

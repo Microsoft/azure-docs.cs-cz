@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: tutorial
 ms.date: 12/21/2018
 ms.author: raynew
-ms.openlocfilehash: 50085336c59f2284f357e32b875eae08ff90d30f
-ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
+ms.openlocfilehash: 959e58a58099b71a595f995e03cc70255fd6d059
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/27/2018
-ms.locfileid: "53790158"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55198023"
 ---
 # <a name="back-up-sql-server-databases-to-azure"></a>Zálohování databází systému SQL Server do Azure
 
@@ -129,7 +129,7 @@ Kompromisy mezi možnostmi jsou možnosti správy, podrobnou kontrolu a náklady
 
 ## <a name="set-permissions-for-non-marketplace-sql-vms"></a>Nastavení oprávnění pro jiné - Tržiště virtuálních počítačů SQL
 
-Zálohování virtuálního počítače, vyžaduje Azure Backup **AzureBackupWindowsWorkload** rozšíření k instalaci. Pokud používáte virtuální počítače Azure Marketplace, i nadále [databáze SQL serveru zjistit](backup-azure-sql-database.md#discover-sql-server-databases). Pokud virtuální počítač, který je hostitelem databáze SQL není vytvořen z Azure Marketplace, proveďte následující postup k instalaci rozšíření a nastavte příslušná oprávnění. Kromě **AzureBackupWindowsWorkload** rozšíření, Azure Backup vyžaduje oprávnění správce systému SQL pro ochranu databáze SQL. Chcete-li zjistit databáze na virtuálním počítači, Azure Backup vytvoří účet **NT SERVICE\AzureWLBackupPluginSvc**. Tento účet se používá pro zálohování a obnovení a musí mít oprávnění správce systému SQL. Kromě toho bude využívat Azure Backup **NT AUTHORITY\SYSTEM** účet pro zjišťování DB nebo dotaz, aby tento účet musí být veřejné přihlášení na SQL.
+Zálohování virtuálního počítače, vyžaduje Azure Backup **AzureBackupWindowsWorkload** rozšíření k instalaci. Pokud používáte virtuální počítače Azure Marketplace, i nadále [databáze SQL serveru zjistit](backup-azure-sql-database.md#discover-sql-server-databases). Pokud virtuální počítač, který je hostitelem databáze SQL není vytvořen z Azure Marketplace, proveďte následující postup k instalaci rozšíření a nastavte příslušná oprávnění. Kromě **AzureBackupWindowsWorkload** rozšíření, Azure Backup vyžaduje oprávnění správce systému SQL pro ochranu databáze SQL. Azure Backup se zjistit databáze na virtuálním počítači, vytvoří účet **NT SERVICE\AzureWLBackupPluginSvc**. Tento účet se používá pro zálohování a obnovení a musí mít oprávnění správce systému SQL. Kromě toho bude využívat Azure Backup **NT AUTHORITY\SYSTEM** účet pro zjišťování DB nebo dotaz, aby tento účet musí být veřejné přihlášení na SQL.
 
 Ke konfiguraci oprávnění:
 

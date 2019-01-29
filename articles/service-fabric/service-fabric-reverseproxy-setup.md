@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: required
 ms.date: 07/27/201
 ms.author: v-jamebr
-ms.openlocfilehash: 2f84550c83c646b44f4a59c3ae506df7c18d1555
-ms.sourcegitcommit: 7804131dbe9599f7f7afa59cacc2babd19e1e4b9
+ms.openlocfilehash: 522e9209da5d2df796700dea764270382b1170f5
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/17/2018
-ms.locfileid: "51852975"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55102761"
 ---
 # <a name="set-up-and-configure-reverse-proxy-in-azure-service-fabric"></a>Nastavení a konfigurace reverzního proxy serveru v Azure Service Fabric
 Reverzní proxy server je volitelnou službu Azure Service Fabric, která pomáhá mikroslužeb spouštěných v clusteru Service Fabric, zjistit a komunikovat s ostatními službami, které mají koncových bodů http. Další informace najdete v tématu [reverzní proxy server v Azure Service Fabric](service-fabric-reverseproxy.md). Tento článek ukazuje, jak nastavit a konfigurace reverzního proxy serveru v clusteru. 
@@ -33,7 +33,7 @@ Konfigurace reverzního proxy serveru při vám [vytvoření clusteru pomocí we
 1. V **krok 2: Konfigurace clusteru**v části **konfigurace typu uzlu**vyberte **povolit reverzní proxy server**.
 
    ![Povolit reverzní proxy server na portálu](./media/service-fabric-reverseproxy-setup/enable-rp-portal.png)
-2. (Volitelné) Konfigurace zabezpečeného reverzní proxy server, budete muset nakonfigurovat certifikát SSL. V **krok 3: zabezpečení**na **konfigurovat nastavení zabezpečení clusteru**v části **typ konfigurace**vyberte **vlastní**. Potom v části **certifikát reverzního proxy serveru SSL**vyberte **zahrnout certifikát SSL pro reverzní proxy server** a zadejte podrobnosti o certifikátu.
+2. (Volitelné) Konfigurace zabezpečeného reverzní proxy server, budete muset nakonfigurovat certifikát SSL. V **krok 3: Zabezpečení**na **konfigurovat nastavení zabezpečení clusteru**v části **typ konfigurace**vyberte **vlastní**. Potom v části **certifikát reverzního proxy serveru SSL**vyberte **zahrnout certifikát SSL pro reverzní proxy server** a zadejte podrobnosti o certifikátu.
 
    ![Konfigurace zabezpečeného reverzního proxy serveru na portálu](./media/service-fabric-reverseproxy-setup/configure-rp-certificate-portal.png)
 
@@ -239,7 +239,7 @@ Poté, co jste upravili soubor ClusterConfig.json povolit reverzní proxy server
 K vyřešení reverzního proxy serveru z mimo Azure cluster, nastavte pravidla nástroje pro vyrovnávání zatížení Azure a Azure sonda stavu služby pro port reverzního proxy serveru. Tyto kroky můžete provést kdykoli po vytvoření clusteru pomocí webu Azure portal nebo šablony Resource Manageru. 
 
 > [!WARNING]
-> Když nakonfigurujete v nástroji pro vyrovnávání zatížení port reverzního proxy, všechny mikroslužby v clusteru, která zpřístupňují koncový bod HTTP adresovatelných z mimo cluster. To znamená, že mikroslužeb má být interní může být zjistitelné pomocí určené uživatel se zlými úmysly. Tato potenially uvede závažné ohrožení zabezpečení, které je někdo zneužije; Příklad:
+> Když nakonfigurujete v nástroji pro vyrovnávání zatížení port reverzního proxy, všechny mikroslužby v clusteru, která zpřístupňují koncový bod HTTP adresovatelných z mimo cluster. To znamená, že mikroslužeb má být interní může být zjistitelné pomocí určené uživatel se zlými úmysly. To představuje potenciálně závažné ohrožení zabezpečení, které je někdo zneužije; Příklad:
 >
 > * Uživatel se zlými úmysly může spustit útoku DoS opakovaně voláním interní služba, která nemá dostatečně odolné útoky.
 > * Uživatel se zlými úmysly může poskytovat chybně formovaným paketům interní služba následek nežádoucí chování.

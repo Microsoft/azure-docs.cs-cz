@@ -7,16 +7,16 @@ manager: daveba
 ms.reviewer: sahenry
 ms.service: active-directory
 ms.workload: identity
-ms.component: user-help
+ms.subservice: user-help
 ms.topic: conceptual
 ms.date: 07/30/2018
 ms.author: lizross
-ms.openlocfilehash: 64b3ba5d6f3c257fdbd462c0297ff6b0944163db
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: 0f11b8b91f1dad208e8d14e21a20c316fe46074c
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54814091"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55191413"
 ---
 # <a name="set-up-security-info-to-use-text-messaging-preview"></a>Upravit informace o zabezpečení tak, aby pomocí textové zprávy (preview)
 

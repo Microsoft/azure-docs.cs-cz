@@ -13,14 +13,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 07/19/2018
-ms.component: hybrid
+ms.subservice: hybrid
 ms.author: billmath
-ms.openlocfilehash: 423edfecb7bfd69de9ef004686db4a05824d0857
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: f24930d31e8435a00fec6a449445ea4682deea8f
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54465424"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55169344"
 ---
 # <a name="azure-active-directory-pass-through-authentication-technical-deep-dive"></a>Předávací ověřování služby Azure Active Directory: Podrobné technické informace
 Tento článek je přehled toho, jak funguje předávací ověřování služby Azure Active directory (Azure AD). Podrobné technické a informace o zabezpečení najdete v tématu [podrobné informace o zabezpečení](how-to-connect-pta-security-deep-dive.md) článku.

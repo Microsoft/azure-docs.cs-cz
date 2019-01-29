@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 07/02/2017
 ms.author: msfussell
-ms.openlocfilehash: 48df598ab12c509952b7712bb8cc9fe21355325f
-ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
+ms.openlocfilehash: 39034d069c0c0feb2ac81437e34c7206d7fe6c4c
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51613677"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55102812"
 ---
 # <a name="why-a-microservices-approach-to-building-applications"></a>Proč se k vytváření aplikací, přístup založený na mikroslužbách?
 
@@ -33,11 +33,11 @@ Měnící se potřeby organizace jsou:
 
 Tyto obchodní potřeby. ovlivňují *jak* budeme vytvářet aplikace.
 
-Další informace o přístupu Azure na mikroslužby, najdete v článku [Mikroslužeb: revolution aplikace založené na cloudu](https://azure.microsoft.com/blog/microservices-an-application-revolution-powered-by-the-cloud/).
+Další informace o přístupu Azure na mikroslužby, najdete v článku [Mikroslužeb: Revoluci aplikací založené na cloudu](https://azure.microsoft.com/blog/microservices-an-application-revolution-powered-by-the-cloud/).
 
 ## <a name="monolithic-vs-microservice-design-approach"></a>Monolitické vs. přístup v rámci návrhu mikroslužeb
 
-Aplikace v průběhu času vyvíjejí. Tím, že je užitečné pro osoby, vyvíjí úspěšné aplikace. Neúspěšné aplikace není vyvíjí a nakonec jsou zastaralé. Otázka: kolik víte o vaše požadavky ještě dnes, a co se bude v budoucnu? Například Řekněme, že vytváříte aplikace pro vytváření sestav pro oddělení. Jste si jisti, že aplikace použije pouze v rámci oboru vaší společnosti a že jsou krátkodobé a jednorázové sestavy. Podle vašeho výběru přístup se liší od, Řekněme, že, vytvářet služby, který poskytuje obsahu videa na desítky milionů zákazníků.
+Aplikace v průběhu času vyvíjejí. Tím, že je užitečné pro osoby, vyvíjí úspěšné aplikace. Neúspěšné aplikace není vyvíjí a nakonec jsou zastaralé. Otázkou je: Kolik víte o vaše požadavky ještě dnes a co se bude v budoucnu? Například Řekněme, že vytváříte aplikace pro vytváření sestav pro oddělení. Jste si jisti, že aplikace použije pouze v rámci oboru vaší společnosti a že jsou krátkodobé a jednorázové sestavy. Podle vašeho výběru přístup se liší od, Řekněme, že, vytvářet služby, který poskytuje obsahu videa na desítky milionů zákazníků.
 
 V některých případech něco letos uvedli na trh jako testování konceptu je řízení faktoru, když víte, že aplikace může později přepracován. Je trochu bod v over-pass-the technické něco, který se nikdy používá. Je to obvyklé engineering kompromis. Na druhé straně společnosti mluvit o sestavování pro cloud, že budou při růstu a využití. Tento problém je, že nepředvídatelné růst a škálování. Rádi bychom mohli k rychlému vytvoření prototypu rychle zároveň také budete vědět, že jsme se na cestě se budoucímu úspěchu. Jedná se o postup úsporného startupu: sestavování, měření, další informace a iterovat.
 
@@ -181,7 +181,7 @@ Mnoho organizací ukončit. Už mají výhody kontejnerů a Service Fabric posky
 Přidání nových služeb společně s existující kontejnerizovaných kódu. Pokud chcete zadat nový kód, je nejlepší rozhodnout postupujte po menších krůčcích rozhodli mikroslužeb. To může přidání nového koncového bodu rozhraní REST API nebo nové obchodní logiku. Tímto způsobem, spusťte na cestě vytváření nových mikroslužeb a postupů vývoje a jejich nasazování.
 
 **Inovace**  
-Musí se měnící obchodní mikroslužeb přístup zahrnete. V této fázi je rozhodnutí, jestli je potřeba spustit rozdělení monolitické aplikace do služby nebo inovace. Je zde například když se databáze používá jako pracovní postup fronty stane kritickým bodem zpracování. Jako počet pracovního postupu žádostí o zvýšení, práci potřebuje pro škálování. Pro tento konkrétní aplikace, která není škálování nebo, který je potřeba aktualizovat častěji to zjistit rozdělit do mikroslužeb a inovace.
+Přístup založený na mikroslužbách obsáhne měnícím se potřebám organizace. V této fázi je rozhodnutí, jestli je potřeba spustit rozdělení monolitické aplikace do služby nebo inovace. Je zde například když se databáze používá jako pracovní postup fronty stane kritickým bodem zpracování. Jako počet pracovního postupu žádostí o zvýšení, práci potřebuje pro škálování. Pro tento konkrétní aplikace, která není škálování nebo, který je potřeba aktualizovat častěji to zjistit rozdělit do mikroslužeb a inovace.
 
 **Transformuje na mikroslužby**  
 To je, kde je vaše aplikace plně skládá z (nebo rozložená na) mikroslužeb. K dosažení tady, provedli cesty mikroslužeb. Začněte tady, ale k tomu bez založený na mikroslužbách platformy, abychom vám pomůže je významnou investici. 
@@ -197,7 +197,7 @@ Cílem Service Fabric je ke snížení složitosti vytváření vyladěných apl
 ## <a name="next-steps"></a>Další postup
 
 * [Přehled terminologie Service Fabric](service-fabric-technical-overview.md)
-* [Mikroslužeb: Aplikace revolution vytvořená v cloudu](https://azure.microsoft.com/blog/microservices-an-application-revolution-powered-by-the-cloud/)
+* [Mikroslužby: Revoluci aplikací založené na cloudu](https://azure.microsoft.com/blog/microservices-an-application-revolution-powered-by-the-cloud/)
 
 [Image1]: media/service-fabric-overview-microservices/monolithic-vs-micro.png
 [Image2]: media/service-fabric-overview-microservices/statemonolithic-vs-micro.png

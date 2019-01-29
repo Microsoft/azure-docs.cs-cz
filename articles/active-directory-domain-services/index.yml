@@ -1,10 +1,16 @@
 ### YamlMime:YamlDocument
+ms.openlocfilehash: eea379cbf2fae2f443fc077111ede517e3fa3647
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.translationtype: HT
+ms.contentlocale: cs-CZ
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55175957"
 documentType: LandingData
 title: Dokumentace ke službě Azure AD Domain Services
 metadata:
   title: Dokumentace ke službě Azure AD Domain Services
-  description: 'Naučte se, jak můžete používat Active Directory Domain Services k připojení virtuálních počítačů Azure k doméně bez použití řadiče domény. Kurzy a další dokumentace ukazují, jak můžete spravovat virtuální počítače pomocí zásad skupiny.'
-  keywords: 'Azure AD, Azure, domain join, group policy, LDAP, Kerberos, domain controller, DC, lift and shift'
+  description: Naučte se, jak můžete používat Active Directory Domain Services k připojení virtuálních počítačů Azure k doméně bez použití řadiče domény. Kurzy a další dokumentace ukazují, jak můžete spravovat virtuální počítače pomocí zásad skupiny.
+  keywords: Azure AD, Azure, domain join, group policy, LDAP, Kerberos, domain controller, DC, lift and shift
   author: mahesh-unnikrishnan
   ms.author: maheshu
   manager: daveba
@@ -12,85 +18,85 @@ metadata:
   ms.topic: landing-page
   ms.devlang: na
   ms.service: active-directory
-  ms.component: domain-services
+  ms.subservice: domain-services
 sections:
-  - items:
-      - type: markdown
-        text: 'Naučte se, jak můžete používat Active Directory Domain Services k připojení virtuálních počítačů Azure k doméně bez použití řadiče domény. Kurzy a další dokumentace ukazují, jak můžete spravovat virtuální počítače pomocí zásad skupiny.'
-  - items:
-      - type: list
-        style: cards
-        className: cardsM
-        columns: 2
-        items:
-          - href: active-directory-ds-overview.md
-            html: '<p>Přečtěte si, k čemu se dá služba Azure AD Domain Services využít.</p>'
-            image:
-              src: 'https://docs.microsoft.com/media/common/i_investigate.svg'
-            title: Co je služba Azure Active Directory Domain Services?
-          - href: active-directory-ds-getting-started.md
-            html: <p>Tento jednoduchý názorný postup vám umožní vytvořit si vlastní spravovanou doménu.</p>
-            image:
-              src: 'https://docs.microsoft.com/media/common/i_deploy.svg'
-            title: Začínáme
-          - href: active-directory-ds-contact-us.md
-            html: <p>Získejte pomoc ve správný čas.</p>
-            image:
-              src: 'https://docs.microsoft.com/media/common/i_support.svg'
-            title: Získat podporu
-          - href: 'https://azure.microsoft.com/updates/?product=active-directory-ds'
-            html: <p>Projděte si nové funkce služby Azure AD Domain Services.</p>
-            image:
-              src: 'https://docs.microsoft.com/media/common/i_whats-new.svg'
-            title: Co je nového
-  - title: Videa
+- items:
+  - type: markdown
+    text: Naučte se, jak můžete používat Active Directory Domain Services k připojení virtuálních počítačů Azure k doméně bez použití řadiče domény. Kurzy a další dokumentace ukazují, jak můžete spravovat virtuální počítače pomocí zásad skupiny.
+- items:
+  - type: list
+    style: cards
+    className: cardsM
+    columns: 2
     items:
-      - type: markdown
-        text: '>[!VIDEO https://www.youtube.com/embed/T1Nd9APNceQ]'
-  - title: Články věnované plánování
+    - href: active-directory-ds-overview.md
+      html: <p>Přečtěte si, k čemu se dá služba Azure AD Domain Services využít.</p>
+      image:
+        src: https://docs.microsoft.com/media/common/i_investigate.svg
+      title: Co je služba Azure Active Directory Domain Services?
+    - href: active-directory-ds-getting-started.md
+      html: <p>Tento jednoduchý názorný postup vám umožní vytvořit si vlastní spravovanou doménu.</p>
+      image:
+        src: https://docs.microsoft.com/media/common/i_deploy.svg
+      title: Začínáme
+    - href: active-directory-ds-contact-us.md
+      html: <p>Získejte pomoc ve správný čas.</p>
+      image:
+        src: https://docs.microsoft.com/media/common/i_support.svg
+      title: Získat podporu
+    - href: https://azure.microsoft.com/updates/?product=active-directory-ds
+      html: <p>Projděte si nové funkce služby Azure AD Domain Services.</p>
+      image:
+        src: https://docs.microsoft.com/media/common/i_whats-new.svg
+      title: Co je nového
+- title: Videa
+  items:
+  - type: markdown
+    text: '>[!VIDEO https://www.youtube.com/embed/T1Nd9APNceQ]'
+- title: Články věnované plánování
+  items:
+  - type: list
+    style: unordered
     items:
-      - type: list
-        style: unordered
-        items:
-          - html: '<a href="active-directory-ds-comparison.md">Rozhodnutí, jestli tato služba je pro vás vhodná</a>'
-          - html: <a href="active-directory-ds-features.md">Funkce služby Azure AD Domain Services</a>
-          - html: <a href="active-directory-ds-scenarios.md">Možné využití této služby</a>
-          - html: <a href="active-directory-ds-synchronization.md">Princip fungování synchronizace ve službě Azure AD Domain Services</a>
-          - html: '<a href="https://azure.microsoft.com/pricing/details/active-directory-ds/">Ceny služby Azure AD Domain Services</a>'
-  - title: Aplikace a Azure AD Domain Services
+    - html: <a href="active-directory-ds-comparison.md">Rozhodnutí, jestli tato služba je pro vás vhodná</a>
+    - html: <a href="active-directory-ds-features.md">Funkce služby Azure AD Domain Services</a>
+    - html: <a href="active-directory-ds-scenarios.md">Možné využití této služby</a>
+    - html: <a href="active-directory-ds-synchronization.md">Princip fungování synchronizace ve službě Azure AD Domain Services</a>
+    - html: <a href="https://azure.microsoft.com/pricing/details/active-directory-ds/">Ceny služby Azure AD Domain Services</a>
+- title: Aplikace a Azure AD Domain Services
+  items:
+  - type: list
+    style: unordered
     items:
-      - type: list
-        style: unordered
-        items:
-          - html: <a href="active-directory-ds-deploy-azure-app-proxy.md">Nasazení proxy aplikací Azure AD</a>
-          - html: <a href="active-directory-ds-enable-sharepoint-profile-sync.md">Synchronizace profilu pro SharePoint Server</a>
-          - html: <a href="active-directory-ds-enable-kcd.md">Konfigurace omezeného delegování Kerberos</a>
-  - title: Články s návody
+    - html: <a href="active-directory-ds-deploy-azure-app-proxy.md">Nasazení proxy aplikací Azure AD</a>
+    - html: <a href="active-directory-ds-enable-sharepoint-profile-sync.md">Synchronizace profilu pro SharePoint Server</a>
+    - html: <a href="active-directory-ds-enable-kcd.md">Konfigurace omezeného delegování Kerberos</a>
+- title: Články s návody
+  items:
+  - type: list
+    style: unordered
     items:
-      - type: list
-        style: unordered
-        items:
-          - html: <a href="active-directory-ds-check-health.md">Kontrola stavu spravované domény</a>
-          - html: <a href="active-directory-ds-csp.md">Předplatná Azure CSP a Azure AD Domain Services</a>
-          - html: <a href="active-directory-ds-admin-guide-administer-dns.md">Správa DNS</a>
-          - html: <a href="active-directory-ds-networking.md">Výběr virtuální sítě</a>
-          - html: <a href="active-directory-ds-admin-guide-configure-secure-ldap.md">Konfigurace protokolu Secure LDAP</a>
-          - html: <a href="active-directory-ds-admin-guide-create-ou.md">Vytvoření organizační jednotky</a>
-          - html: <a href="active-directory-ds-admin-guide-administer-group-policy.md">Správa zásad skupiny</a>
-  - title: Články věnované řešení potíží
+    - html: <a href="active-directory-ds-check-health.md">Kontrola stavu spravované domény</a>
+    - html: <a href="active-directory-ds-csp.md">Předplatná Azure CSP a Azure AD Domain Services</a>
+    - html: <a href="active-directory-ds-admin-guide-administer-dns.md">Správa DNS</a>
+    - html: <a href="active-directory-ds-networking.md">Výběr virtuální sítě</a>
+    - html: <a href="active-directory-ds-admin-guide-configure-secure-ldap.md">Konfigurace protokolu Secure LDAP</a>
+    - html: <a href="active-directory-ds-admin-guide-create-ou.md">Vytvoření organizační jednotky</a>
+    - html: <a href="active-directory-ds-admin-guide-administer-group-policy.md">Správa zásad skupiny</a>
+- title: Články věnované řešení potíží
+  items:
+  - type: list
+    style: unordered
     items:
-      - type: list
-        style: unordered
-        items:
-          - html: <a href="active-directory-ds-troubleshooting.md">Průvodce řešením problémů</a>
-          - html: <a href="active-directory-ds-troubleshoot-alerts.md">Řešení potíží s upozorněními ve spravované doméně</a>
-          - html: <a href="active-directory-ds-faqs.md">Nejčastější dotazy</a>
-          - html: '<a href="https://azure.microsoft.com/support/options/">Získat podporu</a>'
-  - title: Další prostředky
+    - html: <a href="active-directory-ds-troubleshooting.md">Průvodce řešením problémů</a>
+    - html: <a href="active-directory-ds-troubleshoot-alerts.md">Řešení potíží s upozorněními ve spravované doméně</a>
+    - html: <a href="active-directory-ds-faqs.md">Nejčastější dotazy</a>
+    - html: <a href="https://azure.microsoft.com/support/options/">Získat podporu</a>
+- title: Další prostředky
+  items:
+  - type: list
+    style: unordered
     items:
-      - type: list
-        style: unordered
-        items:
-          - html: '<a href="https://feedback.azure.com/forums/169401-azure-active-directory/">Váš názor na Azure AD Domain Services na UserVoice</a>'
-          - html: '<a href="https://azure.microsoft.com/roadmap/?category=security-identity">Plány Azure do budoucna</a>'
-          - html: '<a href="https://docs.microsoft.com/azure/active-directory-domain-services/active-directory-ds-contact-us">Kontaktujte nás</a>'
+    - html: <a href="https://feedback.azure.com/forums/169401-azure-active-directory/">Váš názor na Azure AD Domain Services na UserVoice</a>
+    - html: <a href="https://azure.microsoft.com/roadmap/?category=security-identity">Plány Azure do budoucna</a>
+    - html: <a href="https://docs.microsoft.com/azure/active-directory-domain-services/active-directory-ds-contact-us">Kontaktujte nás</a>

@@ -1,5 +1,5 @@
 ---
-title: 'Kurz: Integrace Azure Active Directory se službou Clever | Dokumentace Microsoftu'
+title: 'Kurz: Integrace Azure Active Directory s Clever | Dokumentace Microsoftu'
 description: Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a Clever.
 services: active-directory
 documentationCenter: na
@@ -8,21 +8,21 @@ manager: femila
 ms.reviewer: joflore
 ms.assetid: 069ff13a-310e-4366-a147-d6ec5cca12a5
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 04/27/2018
 ms.author: jeedes
-ms.openlocfilehash: 483d03fcc72e0a93111d10b0221164459de27d12
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: e65f0cb3ef30fb5b001acdb72481c1c3b55ca058
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39431857"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55197309"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-clever"></a>Kurz: Integrace Azure Active Directory se službou Clever
+# <a name="tutorial-azure-active-directory-integration-with-clever"></a>Kurz: Integrace Azure Active Directory s Clever
 
 V tomto kurzu se dozvíte, jak integrovat Clever s Azure Active Directory (Azure AD).
 
@@ -38,7 +38,7 @@ Pokud chcete zjistit další podrobnosti o integraci aplikací SaaS v Azure AD, 
 
 Konfigurace integrace Azure AD s Clever, potřebujete následující položky:
 
-- S předplatným služby Azure AD
+- Předplatné Azure AD
 - Dokonalá jednotného přihlašování povolená předplatného
 
 > [!NOTE]
@@ -60,7 +60,7 @@ Konfigurace integrace Clever do služby Azure AD, budete muset přidat Clever z 
 
 **Chcete-li přidat Clever z galerie, postupujte následovně:**
 
-1. V  **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu. 
+1. V **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu. 
 
     ![Tlačítko Azure Active Directory][1]
 
@@ -117,7 +117,7 @@ V této části Povolení služby Azure AD jednotného přihlašování na port�
     > [!NOTE]
     > Přihlašování byste použili hodnotu URL není skutečný. Aktualizujte tuto hodnotu skutečné přihlašovací adresa URL. Kontakt [tým podpory klienta na dokonalá](https://clever.com/about/contact/) tuto výhodu získáte.
 
-1. Na **podpisový certifikát SAML** klikněte na tlačítko Kopírovat zkopírujte **adresa Url federačních metadat aplikace** a vložte ho do poznámkového bloku.
+1. Na **podpisový certifikát SAML** klikněte na tlačítko Kopírovat zkopírujte **adresa Url federačních metadat aplikace** a vložte ho do poznámkového bloku.
     
     ![Konfigurace jednotného přihlašování](./media/clever-tutorial/tutorial_metadataurl.png)
 
@@ -131,7 +131,7 @@ V této části Povolení služby Azure AD jednotného přihlašování na port�
     
     | Název atributu  | Hodnota atributu |
     | --------------- | -------------------- |
-    | clever.Teacher.credentials.district_username|user.userprincipalname|
+    | clever.teacher.credentials.district_username|user.userprincipalname|
     | clever.student.credentials.district_username| user.userprincipalname |
     | jméno  | user.givenname |
     | Příjmení  | user.surname |
@@ -214,7 +214,7 @@ Cílem této části je vytvoření zkušebního uživatele na webu Azure Portal
 
 Přihlaste se k Clever Azure AD uživatelům umožnit, musí být poskytnuty do Clever.
 
-V případě Clever, pracovat s [tým podpory klienta na dokonalá](https://clever.com/about/contact/) přidat uživatele na dokonalá platformě. Uživatelé musí vytvořit a aktivovat, než použití jednotného přihlašování.
+V případě Clever, pracovat s [tým podpory klienta na dokonalá](https://clever.com/about/contact/) přidat uživatele na dokonalá platformě. Uživatelé musí vytvořit a aktivovat, než použití jednotného přihlašování.
 
 >[!NOTE]
 >Můžete použít všechny ostatní uživatele na dokonalá účet nástroje pro tvorbu nebo rozhraní API poskytovaných Clever zřízení uživatelských účtů služby Azure AD.
@@ -249,7 +249,7 @@ V této části je povolit Britta Simon k udělení přístupu k Clever použit�
 
 1. Klikněte na tlačítko **přiřadit** tlačítko **přidat přiřazení** dialogového okna.
 
-### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování
+### <a name="test-single-sign-on"></a>Test jednotného přihlašování
 
 V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 

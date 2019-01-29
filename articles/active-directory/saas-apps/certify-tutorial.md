@@ -7,19 +7,19 @@ author: jeevansd
 manager: daveba
 ms.assetid: 0b36e020-175a-4534-b341-85260739f889
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 06/23/2017
 ms.author: jeedes
-ms.openlocfilehash: 49f6f1044e3a29b2d81a70f0ed3b9c6468bd2e72
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: 4125ac19db13f4074498170bc8322b4531151443
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54812841"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55173475"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-certify"></a>Kurz: Integrace Azure Active Directory s Certify
 

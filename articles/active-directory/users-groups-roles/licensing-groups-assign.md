@@ -10,16 +10,16 @@ editor: ''
 ms.service: active-directory
 ms.topic: article
 ms.workload: identity
-ms.component: users-groups-roles
+ms.subservice: users-groups-roles
 ms.date: 10/29/2018
 ms.author: curtand
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: e08ca3453cc43fa0f35102ca5563b4b07ce45dea
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.openlocfilehash: 423842d3e2485334a916423e997c12669a126adb
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50215000"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55155064"
 ---
 # <a name="assign-licenses-to-users-by-group-membership-in-azure-active-directory"></a>Přiřazení licencí pro uživatele na základě členství ve skupinách v Azure Active Directory
 
@@ -32,7 +32,7 @@ V tomto příkladu tenant obsahuje skupinu zabezpečení s názvem **Personáln�
 
 > Přiřazení licencí skupiny zdědí všechny uživatele bez zadaného místa využití umístění adresáře. Pokud máte uživatele v několika umístěních, doporučujeme, abyste jako součást vytváření toku uživatele ve službě Azure AD (např. pomocí AAD Connect konfigurace) –, který zajišťuje výsledek přiřazení licence je vždy správný a uživatelé neobdrží vždy nastavena místo využívání služby v umístění, které nejsou povoleny.
 
-## <a name="step-1-assign-the-required-licenses"></a>Krok 1: Přiřazení požadované licence
+## <a name="step-1-assign-the-required-licenses"></a>Krok 1: Přiřadit požadované licence
 
 1. Přihlaste se k [ **webu Azure portal** ](https://portal.azure.com) s účtem správce. Pokud chcete spravovat licence, musí být účet jako správce pro účet role nebo uživatele globální správce.
 
@@ -59,7 +59,7 @@ V tomto příkladu tenant obsahuje skupinu zabezpečení s názvem **Personáln�
 Nyní jsme zadání šablonu licence pro skupinu oddělení lidských zdrojů. Zpracovat všechny stávající členy této skupiny se spustil proces na pozadí ve službě Azure AD. Tato počáteční operace může trvat nějakou dobu, v závislosti na aktuální velikost skupiny. Další krok popisuje, jak ověřit, že proces byl dokončen a určit, pokud další pozornost je potřeba vyřešit problémy.
 
 > [!NOTE]
-> Můžete spustit stejný přiřazení z alternativního umístění: **uživatelů a skupin** ve službě Azure AD. Přejděte na **Azure Active Directory** > **uživatelů a skupin** > **všechny skupiny**. Vyhledejte skupinu, vyberte ho a přejděte **licence** kartu. **Přiřadit** tlačítka na panelu se otevře podokno přiřazení licencí.
+> Můžete spustit stejný přiřazení z alternativního umístění: **Uživatelé a skupiny** ve službě Azure AD. Přejděte na **Azure Active Directory** > **uživatelů a skupin** > **všechny skupiny**. Vyhledejte skupinu, vyberte ho a přejděte **licence** kartu. **Přiřadit** tlačítka na panelu se otevře podokno přiřazení licencí.
 
 ## <a name="step-2-verify-that-the-initial-assignment-has-finished"></a>Krok 2: Ověřte, že byla dokončena počáteční přiřazení
 
@@ -77,13 +77,13 @@ Nyní jsme zadání šablonu licence pro skupinu oddělení lidských zdrojů. Z
 
 3. Si zobrazili podrobnější informace o licenci zpracování v rámci **Azure Active Directory** > **uživatelů a skupin** > *název skupiny*  >  **Protokoly auditu**. Mějte na paměti následující činnosti:
 
-   - Aktivita: **Start použití skupinové licence pro uživatele**. To se zaprotokoluje, když systém vybere změnu přiřazení licence skupině a spustí jeho použití na všechny členy. Obsahuje informace o změně, která byla vytvořena.
+   - Aktivita: **Spustit použití skupinové licence pro uživatele**. To se zaprotokoluje, když systém vybere změnu přiřazení licence skupině a spustí jeho použití na všechny členy. Obsahuje informace o změně, která byla vytvořena.
 
-   - Aktivita: **ukončení použití skupinové licence pro uživatele**. To se zaprotokoluje, když systém dokončí zpracování všichni uživatelé ve skupině. Obsahuje souhrn počtu uživatelů, kteří byly úspěšně zpracovány a kolik uživatelů nešlo přiřadit skupiny licencí.
+   - Aktivita: **Ukončení použití skupinové licence pro uživatele**. To se zaprotokoluje, když systém dokončí zpracování všichni uživatelé ve skupině. Obsahuje souhrn počtu uživatelů, kteří byly úspěšně zpracovány a kolik uživatelů nešlo přiřadit skupiny licencí.
 
    [V tomto tématu](licensing-group-advanced.md#use-audit-logs-to-monitor-group-based-licensing-activity) Další informace o použití protokoly auditu chcete analyzovat změny provedené na základě skupin licencí.
 
-## <a name="step-3-check-for-license-problems-and-resolve-them"></a>Krok 3: Kontrola problémů licence a jejich řešení
+## <a name="step-3-check-for-license-problems-and-resolve-them"></a>Krok 3: Zkontrolujte licenční problémy a jejich řešení
 
 1. Přejděte na **Azure Active Directory** > **uživatelů a skupin** > **všechny skupiny**a najít **Personální oddělení** Skupina, která licence byly přiřazeny.
 2. Na **Personální oddělení** skupiny podokně, vyberte **licence**. Oznámení o podokně ukazují, že jsou 10 uživatelů, které nelze přiřadit licence. Kliknutím se otevře seznam všech uživatelů v licencování chybový stav pro tuto skupinu.

@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 12/3/2018
 ms.author: pabouwer
-ms.openlocfilehash: 33a72b6e8fdd4a66425405ff15d7cc31461c0bf3
-ms.sourcegitcommit: 2bb46e5b3bcadc0a21f39072b981a3d357559191
+ms.openlocfilehash: ecabb139b79494e8a62687a5634d9865d578c5c6
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/05/2018
-ms.locfileid: "52892150"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55104366"
 ---
 # <a name="install-and-use-istio-in-azure-kubernetes-service-aks"></a>Nainstalovat a používat Istio ve službě Azure Kubernetes Service (AKS)
 
@@ -28,7 +28,7 @@ V tomto článku získáte informace o těchto tématech:
 > * Nainstalujte součásti Istio Kubernetes
 > * Ověření instalace
 
-## <a name="before-you-begin"></a>Než začnete
+## <a name="before-you-begin"></a>Před zahájením
 
 Kroky popsané v tomto článku se předpokládá jste vytvořili AKS cluster (Kubernetes 1.10 a vyšších povolena pomocí RBAC) a navázali `kubectl` připojení ke clusteru. Pokud potřebujete pomoc s libovolnou z těchto položek, přejděte na téma [AKS quickstart][aks-quickstart].
 
@@ -141,7 +141,7 @@ cd istio-$ISTIO_VERSION
 New-Item -ItemType Directory -Force -Path "C:/Program Files/Istio"
 mv ./bin/istioctl.exe "C:/Program Files/Istio/"
 $PATH = [environment]::GetEnvironmentVariable("PATH", "User")
-[environment]::SetEnvironmentVariable("PATH", $PATH + "; C:/Program Files/Istio/", "User")
+[environment]::SetEnvironmentVariable("PATH", $PATH + "; C:\Program Files\Istio\", "User")
 ```
 
 ## <a name="install-the-istio-kubernetes-components"></a>Nainstalujte součásti Istio Kubernetes

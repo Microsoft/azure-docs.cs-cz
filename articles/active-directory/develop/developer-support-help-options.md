@@ -8,7 +8,7 @@ manager: mtillman
 editor: ''
 ms.assetid: 820acdb7-d316-4c3b-8de9-79df48ba3b06
 ms.service: active-directory
-ms.component: develop
+ms.subservice: develop
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
@@ -17,12 +17,12 @@ ms.date: 10/27/2017
 ms.author: celested
 ms.reviewer: andret
 ms.custom: aaddev
-ms.openlocfilehash: 7374b3f71474cb4d4e59e9d81ab1de7bea265483
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: f8c5e5f598ab8566eacb594ff66b63ce3793f57f
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53337134"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55093186"
 ---
 # <a name="support-and-help-options-for-developers"></a>Možnosti podporu a nápovědu pro vývojáře
 
@@ -52,7 +52,7 @@ Kde *{Your hledané termíny}* je klíčová slova pro vyhledávání.
 
 |Nástroj  |Popis  |
 |---------|---------|
-|[jwt.MS](https://jwt.ms)| Vložte ID nebo přístup tokenů pro dekódování deklarace identity názvy a hodnoty |
+|[jwt.ms](https://jwt.ms)| Vložte ID nebo přístup tokenů pro dekódování deklarace identity názvy a hodnoty |
 |[Analyzátor kódu chyby](https://apps.dev.microsoft.com/portal/tools/errors)| Vložte kód chyby přijaté při přihlašování nebo souhlas stránky, které najdete v článku možné příčiny a nápravy |
 |[Microsoft Graph Exploreru](https://developer.microsoft.com/graph/graph-explorer)| Nástroj, který vám umožní vytvářet požadavky a odpovědi na rozhraní Microsoft Graph API najdete v článku|
 
@@ -70,7 +70,7 @@ Pokud nemůžete najít odpověď na váš problém prostřednictvím vyhledáv�
 |Knihovna ADAL |[[adal]](https://stackoverflow.com/questions/tagged/adal)|
 |Knihovna MSAL     |[[msal]](https://stackoverflow.com/questions/tagged/msal)|
 |OWIN middleware  |[[azure-active-directory]](https://stackoverflow.com/questions/tagged/azure-active-directory)|
-|[Azure B2B](https://docs.microsoft.com/azure/active-directory/active-directory-b2b-what-is-azure-ad-b2b)  |[[azure ad b2b]](https://stackoverflow.com/questions/tagged/azure-ad-b2b)|
+|[Azure B2B](https://docs.microsoft.com/azure/active-directory/active-directory-b2b-what-is-azure-ad-b2b)  |[[azure-ad-b2b]](https://stackoverflow.com/questions/tagged/azure-ad-b2b)|
 |[Azure B2C](https://azure.microsoft.com/services/active-directory-b2c/)  |[[azure-ad-b2c]](https://stackoverflow.com/questions/tagged/azure-ad-b2b)|
 |[Microsoft Graph API](https://developer.microsoft.com/graph/) |[[microsoft-graph]](https://stackoverflow.com/questions/tagged/microsoft-graph)
 |Další oblasti související s ověřením nebo autorizací témata |[[azure-active-directory]](https://stackoverflow.com/questions/tagged/azure-active-directory)

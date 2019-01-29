@@ -13,14 +13,14 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 05/30/2018
-ms.component: hybrid
+ms.subservice: hybrid
 ms.author: billmath
-ms.openlocfilehash: d0930de0ac3272d2858e961ec2038093dcc9ccc9
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: 450a974f6b1d7e95d98e603c0e899737224dc29d
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54463010"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55167423"
 ---
 # <a name="azure-active-directory-hybrid-identity-design-considerations"></a>Důležité informace k návrhu hybridní identity Azure Active Directory
 Zařízení se systémem příjemce se proliferating světě a se snadno přijmout cloudové aplikace software jako služba (SaaS). V důsledku toho je náročné mít pod kontrolou přístupu uživatelů aplikace mezi interní datacentry a cloudovými platformami.  

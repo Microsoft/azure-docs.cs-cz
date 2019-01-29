@@ -10,12 +10,12 @@ ms.component: url-preview
 ms.topic: reference
 ms.date: 03/29/2018
 ms.author: rosh, v-gedod
-ms.openlocfilehash: f75fc73bc1268db7b6f9f8a1f4fd602ee57281e8
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.openlocfilehash: 8ed28ef356a4e884fca61b950c59506762fb8bdc
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49464944"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55099658"
 ---
 # <a name="project-url-preview-endpoint"></a>Projekt ve verzi Preview se adresy URL koncového bodu
 
@@ -25,22 +25,22 @@ Rozhraní API ve verzi Preview adresa URL obsahuje jeden koncový bod.
 Pokud chcete získat adresu URL ve verzi Preview, odesílejte požadavek na následující koncový bod. Použijte pro jiné specifikace hlaviček a parametrů adresy URL.
 
 GET:
-````
+```
 https://api.labs.cognitive.microsoft.com/urlpreview/v7.0/search?q=https://swiftkey.com
 
-````
+```
 
 ### <a name="query-parameters"></a>Parametry dotazu
-|Název|Hodnota|Typ|Požaduje se|  
+|Name|Value|Type|Požaduje se|  
 |----------|-----------|----------|--------------|  
 |q|Adresa URL ve verzi preview|Řetězec |Ano|
-|bezpečné hledání|Neplatný obsah pro dospělé nebo nelegální obsah blokovaný s kódem chyby 400 a *isFamilyFriendly* příznak nevrátí. <p>Platný obsah pro dospělé níže je chování. Vrátí stavový kód 200 a *isFamilyFriendly* je příznak nastaven na hodnotu false.<ul><li>bezpečné hledání = strict: název, popis, adresu URL a image se nezobrazí.</li><li>bezpečné hledání = střední; Získejte název, adresu URL a popis, ale není popisný obraz.</li><li>bezpečné hledání = off; Získejte odpovědi objekty/všeho – název, URL, popis a obrázek.</li></ul> |Řetězec|Není nutné. </br> Výchozí hodnota je bezpečné hledání = strict.| 
+|safeSearch|Neplatný obsah pro dospělé nebo nelegální obsah blokovaný s kódem chyby 400 a *isFamilyFriendly* příznak nevrátí. <p>Platný obsah pro dospělé níže je chování. Vrátí stavový kód 200 a *isFamilyFriendly* je příznak nastaven na hodnotu false.<ul><li>safeSearch=strict: Název, popis, adresu URL a image se nezobrazí.</li><li>bezpečné hledání = střední; Získejte název, adresu URL a popis, ale není popisný obraz.</li><li>bezpečné hledání = off; Získejte odpovědi objekty/všeho – název, URL, popis a obrázek.</li></ul> |Řetězec|Není nutné. </br> Výchozí hodnota je bezpečné hledání = strict.| 
 
 ## <a name="response-object"></a>Objekt odpovědi
 
 Odpověď obsahuje hlavičky protokolu HTTP a objekt webovou stránku s atributy, jak je znázorněno v následujícím příkladu: `name`, `url`, `description`, `isFamilyFriendly`, a `primaryImageOfPage`.
 
-````
+```
 BingAPIs-TraceId: 15AFE52A97AA422F960433A94803F6CE
 BingAPIs-SessionId: 40587764F42142D3A8BA99F66B2B3BB6
 X-MSEdge-ClientID: 0389E3EDED106B5E1424E82FEC436A56
@@ -57,7 +57,7 @@ X-MSEdge-Ref: Ref A: 15AFE52A97AA422F960433A94803F6CE Ref B: PAOEDGE0418 Ref C: 
   }
 }
 
-````
+```
 
 ## <a name="next-steps"></a>Další postup
 - [Rychlý start pro jazyk C#](csharp.md)

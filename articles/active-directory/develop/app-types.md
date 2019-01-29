@@ -7,7 +7,7 @@ author: CelesteDG
 manager: mtillman
 editor: ''
 ms.service: active-directory
-ms.component: develop
+ms.subservice: develop
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -16,12 +16,12 @@ ms.date: 09/24/2018
 ms.author: celested
 ms.reviewer: saeeda, jmprieur, andret
 ms.custom: aaddev
-ms.openlocfilehash: 5a8e43934393c2e6a97b81809284781a5c207e41
-ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
+ms.openlocfilehash: b4b49cd679ee5d770696b4fa5cc29ebdd908cecf
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48816340"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55093117"
 ---
 # <a name="application-types-in-v10"></a>Typy aplikací v v1.0
 
@@ -33,11 +33,11 @@ Následující diagram znázorňuje scénáře a typy aplikací, a jak je možn�
 
 Toto jsou pěti primární aplikace scénáře podporované službou Azure AD:
 
-- **[Jednostránkové aplikace (SPA)](single-page-application.md)**: uživatel potřebuje pro přihlášení k jednostránková aplikace, která je zabezpečena pomocí služby Azure AD.
-- **[Webový prohlížeč na webovou aplikaci](web-app.md)**: uživatel potřebuje pro přihlášení k webové aplikaci, která je zabezpečena pomocí služby Azure AD.
-- **[Nativní aplikace pro webové rozhraní API](native-app.md)**: nativní aplikaci, která běží na telefonu, tabletu nebo počítači potřebuje ověřit uživatele k získání zdroje z webového rozhraní API, která je zabezpečena pomocí služby Azure AD.
-- **[Webové aplikace k webovému rozhraní API](web-api.md)**: webová aplikace je potřeba získat prostředky z webového rozhraní API zabezpečené pomocí Azure AD.
-- **[Proces démon nebo server aplikace webového rozhraní API](service-to-service.md)**: aplikace proces démon nebo serverovou aplikaci s žádné webové uživatelské rozhraní je potřeba získat prostředky z webového rozhraní API zabezpečené pomocí Azure AD.
+- **[Jednostránkové aplikace (SPA)](single-page-application.md)**: Uživatel musí přihlásit k jednostránkovou aplikaci, která je zabezpečena pomocí služby Azure AD.
+- **[Webový prohlížeč na webovou aplikaci](web-app.md)**: Uživatel musí přihlásit k webové aplikaci, která je zabezpečena pomocí služby Azure AD.
+- **[Nativní aplikace pro webové rozhraní API](native-app.md)**: Nativní aplikaci, která běží na telefonu, tabletu nebo počítači potřebuje ověřit uživatele k získání zdroje z webového rozhraní API, která je zabezpečena pomocí služby Azure AD.
+- **[Webové aplikace k webovému rozhraní API](web-api.md)**: Webová aplikace je potřeba získat prostředky z webového rozhraní API zabezpečené pomocí Azure AD.
+- **[Proces démon nebo server aplikace webového rozhraní API](service-to-service.md)**: Proces démon aplikace nebo serverovou aplikaci s žádné webové uživatelské rozhraní je potřeba získat prostředky z webového rozhraní API zabezpečené pomocí Azure AD.
 
 V odkazech na další informace o jednotlivých typech aplikací a pochopit scénáře vysoké úrovně, než se pustíte do práce s kódem. Můžete také informace o rozdíly, na které je potřeba vědět při zápisu konkrétní aplikace, která funguje s koncový bod verze 1.0 nebo koncový bod verze 2.0.
 

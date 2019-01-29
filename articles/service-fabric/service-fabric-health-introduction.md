@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 2/28/2018
 ms.author: oanapl
-ms.openlocfilehash: 6cba4e1fd9c9fe5fdaa7ff4513218a606a4eace9
-ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
+ms.openlocfilehash: 060ff6b94c171d27dae74ea76603222253f33bab
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2018
-ms.locfileid: "39215226"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55194283"
 ---
 # <a name="introduction-to-service-fabric-health-monitoring"></a>Úvod do monitorování stavu Service Fabric
 Azure Service Fabric představuje stav modelu, který poskytuje bohaté možnosti, flexibilní a rozšiřitelné stav vyhodnocení a vytváření sestav. Model umožňuje téměř v reálném čase, monitorování stavu clusteru a služeb spuštěných v ní. Můžete snadno získat informace o stavu a opravte potenciální problémy před jejich nepostupovala dále a způsobit, že masivní výpadků. V typické modelu služby Odeslat sestavy vycházející ze svých místních zobrazeních a, informace se shromažďují poskytnout celkový cluster úrovně zobrazení.
@@ -68,7 +68,7 @@ Stav hierarchie se skládá z vztahů nadřazenosti a podřízenosti. Cluster se
 Hierarchie stavu představuje nejnovější stav systém založený na nejnovější zprávy o stavu, což je téměř v reálném čase.
 Interní a externí watchdogs vykazovat stejné entity na základě specifické pro aplikaci logiky nebo vlastní monitorovaných podmínky. Sestavy uživatelů existovat současně s sestavy systému.
 
-Naplánujte investovat do sestavy a reakce na stav během návrhu velké cloudovou službu. Tato odpadají investiční usnadňuje služba ladění, monitorování a obsluha.
+Naplánujte investovat do sestavy a reakce na stav během návrhu velké cloudovou službu. Tento počáteční investici usnadňuje služba ladění, monitorování a obsluha.
 
 ## <a name="health-states"></a>Stavy
 Service Fabric pomocí tří stavů popisující, zda entita je nebo není v pořádku: OK, upozornění a chyb. Každé zprávy odeslané do storu stavu musíte zadat jednu z těchto stavů. Výsledek vyhodnocení stavu je jedním z těchto stavů.
@@ -233,7 +233,7 @@ Pole přechod stavu je možné chytřejší výstrahy nebo informace o událoste
 * Upozornění jen na podmínkách, které byly změněny za posledních X minut. Pokud už sestavy než určený čas na chyby, může být ignorována, protože byl již signalizována dříve.
 * Pokud vlastnost je při přepínání mezi upozornění a chyby, určete, jak dlouho to není v pořádku po (tedy ne OK). Například lze přeložit výstrahu, pokud vlastnost nebyla v pořádku po dobu více než pět minut do (stav HealthState! = Ok a nyní - LastOkTransitionTime > 5 minut).
 
-## <a name="example-report-and-evaluate-application-health"></a>Příklad: Hlášení a vyhodnocování stavu aplikace
+## <a name="example-report-and-evaluate-application-health"></a>Příklad: Sestavy a vyhodnocování stavu aplikace
 Následující příklad odešle zprávu o stavu prostředí PowerShell na aplikaci **fabric: / WordCount** ze zdroje **MyWatchdog**. Sestava stavu obsahuje informace o stavu vlastnosti "dostupnosti" v chybového stavu, s nekonečnou TimeToLive. Poté dotazuje stavu aplikace, která vrátí souhrn stavu chyby stavu a událostí ohlášené stavu v seznamu událostí stavu.
 
 ```powershell

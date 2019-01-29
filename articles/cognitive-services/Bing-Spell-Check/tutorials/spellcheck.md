@@ -1,23 +1,23 @@
 ---
-title: 'Kurz: Získání výsledků kontroly pravopisu pomocí rozhraní API Bingu pro kontrolu pravopisu'
+title: 'Kurz: Získávání pravopisu zkontrolujte výsledky pomocí API kontrola pravopisu Bingu'
 titlesuffix: Azure Cognitive Services
 description: Ukazuje postup používání rozhraní API pro kontrolu pravopisu Bingu.
 services: cognitive-services
-author: v-jaswel
+author: aahill
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: bing-spell-check
+ms.subservice: bing-spell-check
 ms.topic: tutorial
 ms.date: 09/28/2017
-ms.author: v-jaswel
-ms.openlocfilehash: d7afcd18e00e820ad63b8b12bbc352faaca24c84
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
-ms.translationtype: HT
+ms.author: aahi
+ms.openlocfilehash: 4bb558c05a2bade3a9e3dd01976d4cd9bf24cb98
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48803592"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55160759"
 ---
-# <a name="tutorial-build-a-web-page-spell-check-client"></a>Kurz: Sestavení klienta pro kontrolu pravopisu na webové stránce
+# <a name="tutorial-build-a-web-page-spell-check-client"></a>Kurz: Vytvoření klienta pro kontrolu pravopisu webové stránky
 
 V tomto kurzu vytvoříme webovou stránku, která uživatelům umožňuje zadávat dotazy do rozhraní API Bingu pro kontrolu pravopisu.
 
@@ -319,7 +319,7 @@ Otevřete webovou stránku ve svém prohlížeči. Až budete vyzváni, zadejte 
 }
 ```
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 > [!div class="nextstepaction"]
 > [Požadavky na použití a zobrazení](../UseAndDisplayRequirements.md)

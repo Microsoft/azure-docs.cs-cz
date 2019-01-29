@@ -6,16 +6,16 @@ services: cognitive-services
 author: aahill
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: bing-custom-search
+ms.subservice: bing-custom-search
 ms.topic: conceptual
 ms.date: 09/28/2017
 ms.author: aahi
-ms.openlocfilehash: e30c36cbde3bf112b012526e6268dfc4414f64a9
-ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
+ms.openlocfilehash: 0336cc922e8f86792814196719e659d33a943bb8
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53555468"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55193603"
 ---
 # <a name="configure-your-hosted-ui-experience"></a>Konfigurace prostředí uživatelského rozhraní
 
@@ -39,7 +39,7 @@ Ke konfiguraci prostředí uživatelského rozhraní pro vaše webové aplikace,
     |---------|---------|
     |Panel hledání a výsledky (výchozí)    | Zobrazí vyhledávací pole s výsledky hledání pod ní.         |
     |Pouze výsledky     | Zobrazí pouze výsledky hledání bez vyhledávací pole. Při použití toto rozložení, je nutné zadat vyhledávací dotaz (`&q=<query string>`). Přidáte parametr dotazu na adresu URL požadavku na fragment kódu jazyka JavaScript nebo koncový bod odkazu HTML.        |
-    |POP – selhání     | Poskytuje vyhledávací pole a zobrazí výsledky hledání v posuvné překrytí.        |
+    |Pop-over     | Poskytuje vyhledávací pole a zobrazí výsledky hledání v posuvné překrytí.        |
     
 5. Vyberte barevný motiv. Můžete také přizpůsobit barvy podle vaší aplikace kliknutím **vlastní motiv**. Chcete-li změnit barvu, zadejte hodnotu barvy RGB HEX (například `#366eb8`), nebo klikněte na barvu ve verzi preview.
 
@@ -82,7 +82,7 @@ Hostované uživatelského rozhraní, využívat buď:
   >
   > - q
   > - mkt
-  > - bezpečné hledání
+  > - safesearch
   > - setlang
 
   > [!IMPORTANT]
@@ -161,7 +161,7 @@ Následující konfigurace platí jenom v případě, že využívání rozhran�
 - Panel nástrojů motiv
 - Adresa URL odkazu na nadpis
 - Adresa URL loga
-- Adresa URL Faviicon  
+- Faviicon URL  
 
 ## <a name="next-steps"></a>Další postup
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 10/15/2017
 ms.author: dekapur
-ms.openlocfilehash: b4c3bc21591e8472dc8d51309f7431cb5d4421fd
-ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
+ms.openlocfilehash: 740864276b8d4d7a40a263a0d6d2e09c3534dbd6
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44054165"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55190900"
 ---
 # <a name="monitor-and-diagnose-services-in-a-local-machine-development-setup"></a>Monitorování a Diagnostika služeb v nastavení vývojového místního počítače
 > [!div class="op_single_selector"]
@@ -39,7 +39,7 @@ Monitorování, zjišťování, Diagnostika a řešení potíží s povolit pro 
 * **Je integrovaná podpora v Service Fabric Visual Studio tools zobrazovat události trasování událostí pro Windows.** Události trasování událostí pro Windows se zobrazí v okně diagnostické události aplikace Visual Studio po sady Visual Studio je správně nakonfigurovaný s využitím Service Fabric. 
 
 ## <a name="view-service-fabric-system-events-in-visual-studio"></a>Zobrazit události systému Service Fabric v sadě Visual Studio
-Service Fabric vysílá události trasování událostí pro Windows, což vývojářům aplikací umožňuje pochopit, co se děje na platformě. Pokud jste tak již neučinili, pokračujte a postupujte podle kroků v [vytvoření vaší první aplikace v sadě Visual Studio](service-fabric-create-your-first-application-in-visual-studio.md). Tyto informace vám pomohou aplikace pracovat s prohlížeč diagnostických událostí, zobrazení trasovacích zpráv.
+Service Fabric vysílá události trasování událostí pro Windows, což vývojářům aplikací umožňuje pochopit, co se děje na platformě. Pokud jste tak již neučinili, pokračujte a postupujte podle kroků v [vytvoření vaší první aplikace v sadě Visual Studio](service-fabric-tutorial-create-dotnet-app.md). Tyto informace vám pomohou aplikace pracovat s prohlížeč diagnostických událostí, zobrazení trasovacích zpráv.
 
 1. Pokud diagnostické události okno automaticky nezobrazuje, přejděte na **zobrazení** kartu v sadě Visual Studio, zvolte **ostatní Windows** a potom **prohlížeče diagnostických událostí**.
 2. Každou událost má standardní metadat informaci o uzlu, aplikace a služby, kterou událost pochází. Můžete také filtrovat seznam událostí s využitím **filtrovat události** pole v horní části okna událostí. Například můžete filtrovat podle **název uzlu** nebo **název služby.** A když se podíváte na podrobnosti o události, je také možné pozastavit pomocí **pozastavit** tlačítko v horní části okna událostí a později obnovit bez ztráty událostí.

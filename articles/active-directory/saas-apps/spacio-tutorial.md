@@ -1,5 +1,5 @@
 ---
-title: 'Kurz: Integrace Azure Active Directory se službou Spacio | Dokumentace Microsoftu'
+title: 'Kurz: Integrace Azure Active Directory s Spacio | Dokumentace Microsoftu'
 description: Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a Spacio.
 services: active-directory
 documentationCenter: na
@@ -8,21 +8,21 @@ manager: femila
 ms.reviewer: joflore
 ms.assetid: 9df8d199-b955-483c-aa4e-cabad1a0b9d6
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 04/16/2018
 ms.author: jeedes
-ms.openlocfilehash: aa5c91265a832ef8a66948086b407688fdcbbbc2
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 76507fab4050f3ff762713081d2e588dc04f3f1b
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39435470"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55157818"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-spacio"></a>Kurz: Integrace Azure Active Directory se službou Spacio
+# <a name="tutorial-azure-active-directory-integration-with-spacio"></a>Kurz: Integrace Azure Active Directory s Spacio
 
 V tomto kurzu se dozvíte, jak integrovat Spacio s Azure Active Directory (Azure AD).
 
@@ -38,7 +38,7 @@ Pokud chcete zjistit další podrobnosti o integraci aplikací SaaS v Azure AD, 
 
 Konfigurace integrace Azure AD s Spacio, potřebujete následující položky:
 
-- S předplatným služby Azure AD
+- Předplatné Azure AD
 - Spacio jednotného přihlašování povolená předplatného
 
 > [!NOTE]
@@ -60,7 +60,7 @@ Konfigurace integrace Spacio do služby Azure AD, budete muset přidat Spacio z 
 
 **Chcete-li přidat Spacio z galerie, postupujte následovně:**
 
-1. V  **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu. 
+1. V **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu. 
 
     ![Tlačítko Azure Active Directory][1]
 
@@ -159,7 +159,7 @@ Cílem této části je vytvoření zkušebního uživatele na webu Azure Portal
  
 ### <a name="create-a-spacio-test-user"></a>Vytvoření zkušebního uživatele Spacio
 
-V této části vytvoříte uživatele v Spacio jako Britta Simon. Práce s [tým podpory Spacio](mailto:support@spac.io) přidat uživatele na platformě Spacio. Uživatelé musí vytvořit a aktivovat, než použití jednotného přihlašování
+V této části vytvoříte uživatele v Spacio jako Britta Simon. Práce s [tým podpory Spacio](mailto:support@spac.io) přidat uživatele na platformě Spacio. Uživatelé musí vytvořit a aktivovat, než použití jednotného přihlašování
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřadit uživatele Azure AD
 
@@ -191,7 +191,7 @@ V této části je povolit Britta Simon k udělení přístupu k Spacio použit�
 
 1. Klikněte na tlačítko **přiřadit** tlačítko **přidat přiřazení** dialogového okna.
     
-### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování
+### <a name="test-single-sign-on"></a>Test jednotného přihlašování
 
 V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 

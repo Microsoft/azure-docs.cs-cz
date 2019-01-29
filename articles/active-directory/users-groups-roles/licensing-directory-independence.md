@@ -9,17 +9,17 @@ editor: ''
 ms.service: active-directory
 ms.topic: article
 ms.workload: identity
-ms.component: users-groups-roles
+ms.subservice: users-groups-roles
 ms.date: 10/10/2017
 ms.author: curtand
 ms.custom: H1Hack27Feb2017;it-pro
 ms.reviewer: piotrci
-ms.openlocfilehash: 85f7cddb7231bf9c5e45de87af3c922148f214be
-ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
+ms.openlocfilehash: a1022bcc3c81ef22d1ba9f6c4905e1bb4c515fa5
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37861755"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55150372"
 ---
 # <a name="understand-how-multiple-azure-active-directory-tenants-interact"></a>Vysvětlení, jak více tenantů Azure Active Directory komunikovat
 

@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 09/26/2018
 ms.author: iainfou
-ms.openlocfilehash: 175fa625a94626cde4d782abd1e9629530cab8b4
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.openlocfilehash: aeffe172fd422f18e2828c5274e9a2ed13cc546a
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47408500"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55103356"
 ---
 # <a name="use-a-static-public-ip-address-for-egress-traffic-in-azure-kubernetes-service-aks"></a>Používat statickou veřejnou IP adresu pro výchozí přenos ve službě Azure Kubernetes Service (AKS)
 
@@ -20,11 +20,11 @@ Ve výchozím nastavení se náhodně přiřadí IP adresu výchozí přenos dat
 
 V tomto článku se dozvíte, jak vytvořit a používat statickou veřejnou IP adresu pro použití s výchozí přenos v clusteru AKS.
 
-## <a name="before-you-begin"></a>Než začnete
+## <a name="before-you-begin"></a>Před zahájením
 
 Tento článek předpokládá, že máte existující cluster AKS. Pokud potřebujete AKS cluster, najdete v tomto rychlém startu AKS [pomocí Azure CLI] [ aks-quickstart-cli] nebo [pomocí webu Azure portal][aks-quickstart-portal].
 
-Také nutné mít Azure CLI verze 2.0.46 nebo později nainstalované a nakonfigurované. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI][install-azure-cli].
+Také musíte mít nainstalované a nakonfigurované rozhraní Azure CLI verze 2.0.46 nebo novější. Spustit `az --version` k vyhledání verze. Pokud potřebujete instalaci nebo upgrade, naleznete v tématu [instalace Azure CLI][install-azure-cli].
 
 ## <a name="egress-traffic-overview"></a>Přehled provozu odchozího přenosu dat
 
@@ -63,7 +63,7 @@ IP adresa se zobrazí, jak je znázorněno v následujícím výstupu zhuštěn�
     "ipAddress": "40.121.183.52",
     [..]
   }
-````
+```
 
 Později můžete získat na veřejných IP adres pomocí [az network public-ip list] [ az-network-public-ip-list] příkazu. Zadejte název skupiny prostředků uzel a potom dotázat *ipAddress* jak je znázorněno v následujícím příkladu:
 

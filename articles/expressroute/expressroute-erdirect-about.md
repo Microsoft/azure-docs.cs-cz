@@ -5,15 +5,15 @@ services: expressroute
 author: mialdrid
 ms.service: expressroute
 ms.topic: conceptual
-ms.date: 11/01/2018
+ms.date: 01/25/2019
 ms.author: mialdrid
 ms.custom: seodec18
-ms.openlocfilehash: 2f984eb8cb09e5d65c4a366b827f695c739003f3
-ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
+ms.openlocfilehash: 0415c329364f8df312667e725f3c5376ea13a6f4
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53163816"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55098094"
 ---
 # <a name="about-expressroute-direct-preview"></a>Informace o ExpressRoute Direct (Preview)
 
@@ -70,7 +70,7 @@ Přímé ExpressRoute podporuje QinQ a Dot1Q označování příznaky VLAN.
 
 ## <a name="workflow"></a>Pracovní postup
 
-![pracovní postup](./media/expressroute-erdirect-about/workflow1.png)
+[ ![workflow](./media/expressroute-erdirect-about/workflow1.png)](./media/expressroute-erdirect-about/workflow1.png#lightbox)
 
 ## <a name="sla"></a>SLA
 

@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 05/18/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 3160624f6daa28c30c0888229ba53b0e80b2bc7a
-ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
+ms.openlocfilehash: fdc1cb7c4b95a72aa55ccce57b2fa331f7c9615d
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54887984"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55170704"
 ---
 # <a name="tutorial-automatically-scale-a-virtual-machine-scale-set-with-the-azure-cli"></a>Kurz: Automatické škálování škálovací sady virtuálních počítačů pomocí Azure CLI
 
@@ -41,13 +41,13 @@ Pokud se rozhodnete nainstalovat a místně používat rozhraní příkazového 
 
 ## <a name="create-a-scale-set"></a>Vytvoření škálovací sady
 
-Následujícím způsobem vytvořte skupinu prostředků pomocí příkazu [az group create](/cli/azure/group#create):
+Následujícím způsobem vytvořte skupinu prostředků pomocí příkazu [az group create](/cli/azure/group):
 
 ```azurecli-interactive
 az group create --name myResourceGroup --location eastus
 ```
 
-Teď vytvořte škálovací sadu virtuálních počítačů pomocí příkazu [az vmss create](/cli/azure/vmss#create). Následující příklad vytvoří škálovací sadu se *2* instancemi a vygeneruje klíče SSH, pokud ještě neexistují:
+Teď vytvořte škálovací sadu virtuálních počítačů pomocí příkazu [az vmss create](/cli/azure/vmss). Následující příklad vytvoří škálovací sadu se *2* instancemi a vygeneruje klíče SSH, pokud ještě neexistují:
 
 ```azurecli-interactive
 az vmss create \

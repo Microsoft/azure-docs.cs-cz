@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 03/27/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: d5ad3b56bb2e24bc31d3a0801a91670c0e6157d5
-ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
+ms.openlocfilehash: 9abf1d1105c112051041688f1d4305c543b148ce
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54888409"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55179476"
 ---
 # <a name="tutorial-create-and-manage-a-virtual-machine-scale-set-with-the-azure-cli"></a>Kurz: Vytvoření a Správa virtuálního počítače škálovací sady pomocí Azure CLI
 Škálovací sada virtuálních počítačů umožňuje nasadit a spravovat sadu identických virtuálních počítačů s automatickým škálováním. V průběhu životního cyklu škálovací sady virtuálních počítačů možná budete potřebovat spustit jednu nebo více úloh správy. V tomto kurzu se naučíte:
@@ -51,7 +51,7 @@ Název skupiny prostředků zadáte při vytváření nebo úpravě škálovací
 
 
 ## <a name="create-a-scale-set"></a>Vytvoření škálovací sady
-Škálovací sadu virtuálních počítačů vytvoříte pomocí příkazu [az vmss create](/cli/azure/vmss#az_vmss_create). Následující příklad vytvoří škálovací sadu *myScaleSet* a vygeneruje klíče SSH, pokud ještě neexistují:
+Škálovací sadu virtuálních počítačů vytvoříte pomocí příkazu [az vmss create](/cli/azure/vmss). Následující příklad vytvoří škálovací sadu *myScaleSet* a vygeneruje klíče SSH, pokud ještě neexistují:
 
 ```azurecli-interactive
 az vmss create \
@@ -98,7 +98,7 @@ az vmss get-instance-view \
 ## <a name="list-connection-information"></a>Výpis informací o připojení
 K nástroji pro vyrovnávání zatížení, který směruje provoz do jednotlivých instancí virtuálních počítačů, se přiřadí veřejná IP adresa. Ve výchozím nastavení se k nástroji pro vyrovnávání zatížení Azure, který směruje provoz vzdáleného připojení do jednotlivých virtuálních počítačů na daném portu, přidají pravidla překladu adres (NAT). Pokud se chcete připojit k instancím virtuálních počítačů ve škálovací sadě, vytvořte vzdálené připojení k přiřazené veřejné IP adrese a číslu portu.
 
-Pokud chcete vypsat adresu a porty pro připojení k instancím virtuálních počítačů ve škálovací, použijte příkaz [az vmss list-instance-connection-info](/cli/azure/vmss#az_vmss_list_instance_connection_info):
+Pokud chcete vypsat adresu a porty pro připojení k instancím virtuálních počítačů ve škálovací, použijte příkaz [az vmss list-instance-connection-info](/cli/azure/vmss):
 
 ```azurecli-interactive
 az vmss list-instance-connection-info \
@@ -192,7 +192,7 @@ Velikost instance virtuálního počítače neboli *skladová položka* určuje 
 ### <a name="vm-instance-sizes"></a>Velikosti instancí virtuálních počítačů
 V následující tabulce jsou běžné velikosti virtuálních počítačů rozdělené podle způsobů použití.
 
-| Typ                     | Běžné velikosti           |    Popis       |
+| Type                     | Běžné velikosti           |    Popis       |
 |--------------------------|-------------------|------------------------------------------------------------------------------------------------------------------------------------|
 | [Obecné účely](../virtual-machines/linux/sizes-general.md)         |Dsv3, Dv3, DSv2, Dv2, DS, D, Av2, A0-7| Vyvážený poměr procesorů k paměti. Ideální pro vývoj nebo testování a pro malé až střední řešení aplikací a dat.  |
 | [Optimalizované z hlediska výpočetních služeb](../virtual-machines/linux/sizes-compute.md)   | Fs, F             | Vysoký poměr procesorů k paměti. Vhodné pro aplikace se středním provozem, síťová zařízení a dávkové procesy.        |
@@ -202,7 +202,7 @@ V následující tabulce jsou běžné velikosti virtuálních počítačů rozd
 | [Vysoký výkon](../virtual-machines/linux/sizes-hpc.md) | H, A8-11          | Naše procesorově nejvýkonnější virtuální počítače s volitelnými síťovými rozhraními s vysokou propustností (RDMA). 
 
 ### <a name="find-available-vm-instance-sizes"></a>Vyhledání dostupných velikostí instancí virtuálních počítačů
-Pokud chcete zobrazit seznam velikostí instancí virtuálních počítačů dostupných v konkrétní oblasti, použijte příkaz [az vm list-sizes](/cli/azure/vm#az_vm_list_sizes).
+Pokud chcete zobrazit seznam velikostí instancí virtuálních počítačů dostupných v konkrétní oblasti, použijte příkaz [az vm list-sizes](/cli/azure/vm).
 
 ```azurecli-interactive
 az vm list-sizes --location eastus --output table
@@ -227,7 +227,7 @@ Výstup se podobá následujícímu zhuštěnému příkladu, který ukazuje pro
 ```
 
 ### <a name="create-a-scale-set-with-a-specific-vm-instance-size"></a>Vytvoření škálovací sady s konkrétní velikostí instancí virtuálních počítačů
-Při vytváření škálovací sady na začátku kurzu jste pro instance virtuálních počítačů zadali výchozí skladovou položku virtuálního počítače *Standard_D1_v2*. Na základě výstupu příkazu [az vm list-sizes](/cli/azure/vm#az_vm_list_sizes) můžete zadat jinou velikost instancí virtuálních počítačů. Následující příklad vytvoří škálovací sadu s použitím parametru `--vm-sku`, který určí velikost instancí virtuálních počítačů *Standard_F1*. Vzhledem k tomu, že vytvoření a konfigurace všech prostředků škálovací sady a instancí virtuálních počítačů trvá několik minut, následující škálovací sadu nasazovat nemusíte:
+Při vytváření škálovací sady na začátku kurzu jste pro instance virtuálních počítačů zadali výchozí skladovou položku virtuálního počítače *Standard_D1_v2*. Na základě výstupu příkazu [az vm list-sizes](/cli/azure/vm) můžete zadat jinou velikost instancí virtuálních počítačů. Následující příklad vytvoří škálovací sadu s použitím parametru `--vm-sku`, který určí velikost instancí virtuálních počítačů *Standard_F1*. Vzhledem k tomu, že vytvoření a konfigurace všech prostředků škálovací sady a instancí virtuálních počítačů trvá několik minut, následující škálovací sadu nasazovat nemusíte:
 
 ```azurecli-interactive
 az vmss create \
@@ -241,7 +241,7 @@ az vmss create \
 
 
 ## <a name="change-the-capacity-of-a-scale-set"></a>Změna kapacity škálovací sady
-Při vytváření škálovací sady na začátku kurzu se ve výchozím nastavení nasadily dvě instance virtuálních počítačů. Počet instancí vytvořených se škálovací sadou můžete změnit zadáním parametru `--instance-count` u příkazu [az vmss create](/cli/azure/vmss#az_vmss_create). Pokud chcete zvýšit nebo snížit počet instancí virtuálních počítačů v existující škálovací sadě, můžete ručně změnit kapacitu. Škálovací sada vytvoří nebo odebere požadovaný počet instancí virtuálních počítačů a pak nakonfiguruje nástroj pro vyrovnávání zatížení pro distribuci provozu.
+Při vytváření škálovací sady na začátku kurzu se ve výchozím nastavení nasadily dvě instance virtuálních počítačů. Počet instancí vytvořených se škálovací sadou můžete změnit zadáním parametru `--instance-count` u příkazu [az vmss create](/cli/azure/vmss). Pokud chcete zvýšit nebo snížit počet instancí virtuálních počítačů v existující škálovací sadě, můžete ručně změnit kapacitu. Škálovací sada vytvoří nebo odebere požadovaný počet instancí virtuálních počítačů a pak nakonfiguruje nástroj pro vyrovnávání zatížení pro distribuci provozu.
 
 Pokud chcete ručně zvýšit nebo snížit počet instancí virtuálních počítačů ve škálovací sadě, použijte příkaz [az vmss scale](/cli/azure/vmss#az_vmss_scale). Následující příklad nastaví počet instancí virtuálních počítačů ve vaší škálovací sadě na *3*:
 

@@ -6,18 +6,18 @@ author: curtand
 manager: mtillman
 ms.service: active-directory
 ms.workload: identity
-ms.component: users-groups-roles
+ms.subservice: users-groups-roles
 ms.topic: article
-ms.date: 01/22/2019
+ms.date: 01/28/2019
 ms.author: curtand
 ms.reviewer: beengen
-ms.custom: it-pro
-ms.openlocfilehash: 776c793fb797e9388f0852773315f27cd42dde25
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.custom: it-pro;seo-update-jan
+ms.openlocfilehash: 9a4f46f992072eafc82794999b493862217608fe
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54471714"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55180564"
 ---
 # <a name="linkedin-integration-data-sharing-and-consent"></a>Sdílení dat integrace Linkedinu a vyjádření souhlasu
 

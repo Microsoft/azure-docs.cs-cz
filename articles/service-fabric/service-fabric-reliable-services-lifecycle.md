@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/18/2017
 ms.author: masnider
-ms.openlocfilehash: f301c0156265f055f0ebf7cdad8dba7f39f5ba2b
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: 391fc493d642c260a10b74aa42b805ad055dd8b1
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39044573"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55164550"
 ---
 # <a name="reliable-services-lifecycle-overview"></a>Přehled životní cyklus Reliable Services
 > [!div class="op_single_selector"]
@@ -99,7 +99,7 @@ Stejně jako bezstavové služby události životního cyklu během vypínání 
 3. Po `StatefulServiceBase.OnCloseAsync()` destrukci dokončí, objekt služby.
 
 ## <a name="stateful-service-primary-swaps"></a>Primární záměna stavové služby
-Zatímco stavové služby běží, jenom primární repliky této stavové služby mají jejich naslouchací procesy komunikace otevřít a jejich **RunAsync** metodu s názvem. Sekundární repliky jsou vytvořeny, ale zobrazit žádné další výzvy. Je spuštěn stavové služby, repliky, který je aktuálně primárním změnit. Co to znamená v podmínkách události životního cyklu, které se mohou zobrazit repliky? Chování, které se zobrazí stavová repliky závisí na, jestli je replika se snížena nebo přesunuty během prohození.
+Zatímco stavové služby běží, jenom primární repliky této stavové služby mají jejich naslouchací procesy komunikace otevřít a jejich **RunAsync** metodu s názvem. Sekundární repliky jsou vytvořeny, ale zobrazit žádné další výzvy. Je spuštěn stavové služby, repliku, která je aktuálně primárním může změnit v důsledku selhání nebo v clusteru vyrovnávání optimalizace. Co to znamená v podmínkách události životního cyklu, které se mohou zobrazit repliky? Chování, které se zobrazí stavová repliky závisí na, jestli je replika se snížena nebo přesunuty během prohození.
 
 ### <a name="for-the-primary-thats-demoted"></a>Pro primární, který je snížena
 Service Fabric pro primární repliku, která je snížena, musí tato replika zastavit zpracování zpráv a ukončete všechny práce na pozadí, které její probíhající činnosti. Tento krok v důsledku toho vypadá stejně, jako kdyby při vypnutí služby. Jedním rozdílem je, že služba není zničené nebo zavřít, protože zůstává jako sekundární. Při volání rozhraní API následující:

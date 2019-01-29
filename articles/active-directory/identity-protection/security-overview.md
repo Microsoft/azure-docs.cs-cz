@@ -16,14 +16,14 @@ ms.topic: article
 ms.date: 09/13/2018
 ms.author: markvi
 ms.reviewer: raluthra
-ms.openlocfilehash: a16c1cbc4549568cfdeb2312511fa4cb3564dceb
-ms.sourcegitcommit: 97d0dfb25ac23d07179b804719a454f25d1f0d46
+ms.openlocfilehash: 1825e5677891252a43cf3d372b495eba45bd7af2
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/25/2019
-ms.locfileid: "54913762"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55092046"
 ---
-# <a name="azure-active-directory-identity-protection-security-overview"></a>Přehled zabezpečení služby Azure Active Directory Identity Protection
+# <a name="azure-active-directory-identity-protection---security-overview"></a>Azure Active Directory Identity Protection – zabezpečení – přehled
 
 Přehled zabezpečení poskytuje přehled o stavu zabezpečení vaší organizace. Pomáhá identifikovat potenciální útoky a pochopit účinnost zásad.
 

@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 01/03/2018
 ms.author: cynthn
 ms.component: disks
-ms.openlocfilehash: 5e2a485630b7e3c9cc5977170d7e7e7eeb3e6ff5
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: b87e27ae914a01f03ce78eafe5792433d18e417f
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54474213"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55193705"
 ---
 # <a name="migrate-azure-vms-to-managed-disks-in-azure"></a>Migrace virtuálních počítačů Azure na Managed Disks v Azure
 
@@ -37,7 +37,7 @@ Můžete migrovat do Managed Disks v následujících scénářích:
 | Migrate...                                            | Odkaz na dokumentaci                                                                                                                                                                                                                                                                  |
 |----------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | Převést samostatné virtuální počítače a virtuální počítače ve skupině dostupnosti na spravované disky   | [Převod virtuálních počítačů použít spravované disky](convert-unmanaged-to-managed-disks.md) |
-| Jeden virtuální počítač z modelu nasazení classic do Resource Manageru na spravovaných discích     | [Migrace jednoho virtuálního počítače](migrate-single-classic-to-resource-manager.md)  | 
+| Jeden virtuální počítač z modelu nasazení classic do Resource Manageru na spravovaných discích     | [Vytvoření virtuálního počítače z klasického virtuálního pevného disku](create-vm-specialized-portal.md)  | 
 | Všechny virtuální počítače ve virtuální síti z modelu nasazení classic do Resource Manageru na spravovaných discích     | [Migrace prostředků IaaS z modelu classic na Resource Manager](migration-classic-resource-manager-ps.md) a potom [převod virtuálního počítače z nespravovaných disků na managed disks](convert-unmanaged-to-managed-disks.md) | 
 
 

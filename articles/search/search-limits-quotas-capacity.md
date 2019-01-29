@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 05/24/2018
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 98902c7a27d769b59b20d4560b2cda21bfcff6c6
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: 5187052316e229273aa49eb784bf200c0f16a0f7
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53310208"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55165383"
 ---
 # <a name="service-limits-in-azure-search"></a>Omezení služby Azure Search
 Maximální omezuje na úložiště, úlohy a množství indexů, dokumenty, a dalších objektů závisí na tom, zda jste [zřízení Azure Search](search-create-service-portal.md) na **Free**, **základní**, nebo **Standardní** cenové úrovně.
@@ -42,7 +42,7 @@ Maximální omezuje na úložiště, úlohy a množství indexů, dokumenty, a d
 
 ## <a name="index-limits"></a>Omezení indexu
 
-| Prostředek | Free | Základní&nbsp;<sup>1</sup>  | S1 | S2 | S3 | S3&nbsp;HD, HIGH DENSITY |
+| Prostředek | Free | Basic&nbsp;<sup>1</sup>  | S1 | S2 | S3 | S3&nbsp;HD |
 | -------- | ---- | ------------------- | --- | --- | --- | --- |
 | Maximální počet indexů |3 |5 nebo 15 |50 |200 |200 |1 000 na oddíl nebo 3 000 na službu |
 | Maximální počet polí na indexu |1000 |100 |1000 |1000 |1000 |1000 |
@@ -74,7 +74,7 @@ Portál bude informovat limit dokumentů, vaše služba byla vytvořena buď př
 
 Pro služby v souladu s limity pro dokumenty platí následující omezení maximální:
 
-|  Free | Basic | S1 | S2 | S3 | S3&nbsp;HD, HIGH DENSITY |
+|  Free | Basic | S1 | S2 | S3 | S3&nbsp;HD |
 |-------|-------|----|----|----|-------|
 |  10 000 |1 milion |15 milionů na oddíl nebo 180 milionů na službu |60 milionů na oddíl nebo 720 milionů na službu |120 milionů na oddíl nebo 1,4 miliard na službu |1 milion na index nebo 200 milionů na oddíl |
 
@@ -98,7 +98,7 @@ Základní služby vytvořené po pozdní 2017 mají vyšší limit 15 indexy, z
 
 Náročná operace, jako je například Analýza obrázků v indexování objektů blob v Azure nebo zpracování přirozeného jazyka v kognitivního vyhledávání mít kratší maximální dobu spuštění, aby ostatní úlohy indexování můžete shromáždit. Pokud úloha indexování nelze dokončit v povoleném čase maximální, ji zkuste spustit podle plánu. Plánovač uchovává informace o stavu indexování. Pokud z nějakého důvodu dojde k plánované úlohy indexování, indexeru můžete pokračovat tam, kde poslední skončila v příštím plánovaném spuštění.
 
-| Prostředek | Bezplatné&nbsp;<sup>1</sup> | Základní&nbsp;<sup>2</sup>| S1 | S2 | S3 | S3&nbsp;HD&nbsp;<sup>3</sup>|
+| Prostředek | Bezplatné&nbsp;<sup>1</sup> | Basic&nbsp;<sup>2</sup>| S1 | S2 | S3 | S3&nbsp;HD&nbsp;<sup>3</sup>|
 | -------- | ----------------- | ----------------- | --- | --- | --- | --- |
 | Maximální počet indexerů |3 |5 nebo 15|50 |200 |200 |neuvedeno |
 | Maximální počet zdrojů dat |3 |5 nebo 15 |50 |200 |200 |neuvedeno |
@@ -124,6 +124,10 @@ Náročná operace, jako je například Analýza obrázků v indexování objekt
 Každý zákazník musí být nezávisle na sobě vyvinuté QPS odhady. Velikost indexu a složitosti, dotaz velikost a složitost a objem provozu jsou primární faktory QPS. Neexistuje žádný způsob, jak nabídnout smysluplné odhady při tyto faktory neznámé.
 
 Jsou odhady více předvídatelný při výpočtu na službách, které běží na vyhrazených prostředcích (úrovně Basic a Standard). Chcete-li odhadnout QPS další úzce vzhledem k tomu, že budete mít kontrolu nad více parametrů. Pokyny k odhadu přístup, najdete v části [Azure Search výkon a optimalizace](search-performance-optimization.md).
+
+## <a name="data-limits-cognitive-search"></a>Omezení datové (kognitivního vyhledávání)
+
+A [kognitivního vyhledávání kanálu](cognitive-search-concept-intro.md) , která provádí volání na prostředek pro analýzu textu pro [rozpoznávání entit](cognitive-search-skill-entity-recognition.md), [klíče extrakce frází](cognitive-search-skill-keyphrases.md), [analýzu subjektivního hodnocení ](cognitive-search-skill-sentiment.md), a [rozpoznávání jazyka](cognitive-search-skill-language-detection.md) je v souladu s limity data. Maximální velikost záznamu by měla být 50 000 znaků pohledu `String.Length`. Pokud je potřeba rozdělit data před odesláním analýza mínění, použijte [dovedností rozdělit textové](cognitive-search-skill-textsplit.md).
 
 ## <a name="api-request-limits"></a>Omezení žádostí o rozhraní API
 * Maximálně 16 MB na požadavek <sup>1</sup>

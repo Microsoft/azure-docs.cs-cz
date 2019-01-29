@@ -2,25 +2,17 @@
 title: Informace o Azure Point-to-Site směrování | Dokumentace Microsoftu
 description: Tento článek vám pomůže porozumět chování směrování VPN typu Point-to-Site.
 services: vpn-gateway
-documentationcenter: na
 author: cherylmc
-manager: ''
-editor: ''
-tags: azure-resource-manager
-ms.assetid: ''
 ms.service: vpn-gateway
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 04/16/2018
+ms.date: 01/28/2019
 ms.author: anzaman
-ms.openlocfilehash: 620a2bf9221bdb7c46dc36a2b3ed23d853faff35
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: 486a910226db5dc7b36aaf873e7bb8115eb78805
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47031706"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55189642"
 ---
 # <a name="about-point-to-site-vpn-routing"></a>Směrování VPN typu Point-to-Site
 
@@ -44,7 +36,7 @@ Připojení brány VPN typu Point-to-Site v tomto příkladu je pro virtuální 
 
 ### <a name="address-space"></a>Adresní prostor
 
-* Ze sítě VNet1: 10.1.0.0/16
+* VNet1: 10.1.0.0/16
 
 ### <a name="routes-added"></a>Přidání trasy
 
@@ -68,13 +60,13 @@ Klienti, kteří používají Windows mají přístup k přímo partnerských vi
 
 ### <a name="address-space"></a>Adresní prostor:
 
-* Ze sítě VNet1: 10.1.0.0/16
+* VNet1: 10.1.0.0/16
 
-* Ze sítě VNet2: 10.2.0.0/16
+* VNet2: 10.2.0.0/16
 
-* Síti VNet3: 10.3.0.0/16
+* VNet3: 10.3.0.0/16
 
-* Virtuální síti Testvnet4: 10.4.0.0/16
+* VNet4: 10.4.0.0/16
 
 ### <a name="routes-added"></a>Přidání trasy
 
@@ -98,11 +90,11 @@ Klienti, kteří používají Windows, nebo jiný podporovaný operační systé
 
 ### <a name="address-space"></a>Adresní prostor
 
-* Ze sítě VNet1: 10.1.0.0/16
+* VNet1: 10.1.0.0/16
 
-* Ze sítě VNet2: 10.2.0.0/16
+* VNet2: 10.2.0.0/16
 
-* Síti VNet3: 10.3.0.0/16
+* VNet3: 10.3.0.0/16
 
 ### <a name="routes-added"></a>Přidání trasy
 
@@ -126,11 +118,11 @@ Klienti, kteří používají Windows, nebo jiný podporovaný operační systé
 
 ### <a name="address-space"></a>Adresní prostor
 
-* Ze sítě VNet1: 10.1.0.0/16
+* VNet1: 10.1.0.0/16
 
-* Ze sítě VNet2: 10.2.0.0/16
+* VNet2: 10.2.0.0/16
 
-* Síti VNet3: 10.3.0.0/16
+* VNet3: 10.3.0.0/16
 
 ### <a name="routes-added"></a>Přidání trasy
 
@@ -154,7 +146,7 @@ Klienty se systémy Windows a jiných Windows můžete přistupovat pouze ze sí
 
 ### <a name="address-space"></a>Adresní prostor
 
-* Ze sítě VNet1: 10.1.0.0/16
+* VNet1: 10.1.0.0/16
 
 * Web1: 10.101.0.0/16
 
@@ -180,7 +172,7 @@ Klienti Windows mají přístup k virtuální síti a pobočce (web1), ale trasy
 
 ### <a name="address-space"></a>Adresní prostor
 
-* Ze sítě VNet1: 10.1.0.0/16
+* VNet1: 10.1.0.0/16
 
 * Web1: 10.101.0.0/16
 
@@ -207,17 +199,17 @@ Všichni klienti můžete přistupovat pouze ze sítě VNet1.
 
 ### <a name="address-space"></a>Adresní prostor
 
-* Ze sítě VNet1: 10.1.0.0/16
+* VNet1: 10.1.0.0/16
 
-* Ze sítě VNet2: 10.2.0.0/16
+* VNet2: 10.2.0.0/16
 
-* Síti VNet3: 10.3.0.0/16
+* VNet3: 10.3.0.0/16
 
 * Web1: 10.101.0.0/16
 
 ### <a name="routes-added"></a>Přidání trasy
 
-* Přidá trasy klientů: 10.1.0.0/16, 192.168.0.0/24
+* Trasy přidali klientů: 10.1.0.0/16, 192.168.0.0/24
 
 * Trasy přidané klientům Non-Windows: 10.1.0.0/16, 10.2.0.0/16, 10.3.0.0/16, 10.101.0.0/16, 192.168.0.0/24
 
@@ -237,17 +229,17 @@ Klienti, kteří používají Windows mít přístup k virtuálním sítím a lo
 
 ### <a name="address-space"></a>Adresní prostor
 
-* Ze sítě VNet1: 10.1.0.0/16
+* VNet1: 10.1.0.0/16
 
-* Ze sítě VNet2: 10.2.0.0/16
+* VNet2: 10.2.0.0/16
 
-* Síti VNet3: 10.3.0.0/16
+* VNet3: 10.3.0.0/16
 
 * Web1: 10.101.0.0/16
 
 ### <a name="routes-added"></a>Přidání trasy
 
-* Přidá trasy klientů: 10.1.0.0/16, 192.168.0.0/24
+* Trasy přidali klientů: 10.1.0.0/16, 192.168.0.0/24
 
 * Trasy přidané klientům Non-Windows: 10.1.0.0/16, 10.2.0.0/16, 10.3.0.0/16, 10.101.0.0/16, 192.168.0.0/24
 

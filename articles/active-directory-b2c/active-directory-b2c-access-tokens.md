@@ -9,13 +9,13 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 08/09/2017
 ms.author: davidmu
-ms.component: B2C
-ms.openlocfilehash: f3db56c7ce61960fca0e5347b2385bcc65a88354
-ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
+ms.subservice: B2C
+ms.openlocfilehash: 86c62c021c6668783b3f843a908f4b17845f8c72
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54845142"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55172982"
 ---
 # <a name="azure-ad-b2c-requesting-access-tokens"></a>Azure AD B2C: Žádá se o přístupové tokeny.
 
@@ -114,7 +114,7 @@ Pokud `response_type` parametr `/authorize` požadavek zahrnuje `token`, `scope`
 
 V úspěšně minted **přístup\_token** (buď z `/authorize` nebo `/token` koncového bodu), bude k dispozici následující deklarace identity:
 
-| Název | Deklarovat | Popis |
+| Name | Deklarovat | Popis |
 | --- | --- | --- |
 |Cílová skupina |`aud` |**ID aplikace** jednoho prostředku, který token uděluje přístup pro. |
 |Rozsah |`scp` |Oprávnění udělená k prostředku. Více udělená oprávnění oddělené mezerou. |

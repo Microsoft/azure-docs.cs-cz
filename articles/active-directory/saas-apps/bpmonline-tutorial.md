@@ -1,5 +1,5 @@
 ---
-title: "Kurz: Integrace Azure Active Directory se službou Bpm'online | Dokumentace Microsoftu"
+title: "Kurz: Integrace Azure Active Directory s Bpm'online | Dokumentace Microsoftu"
 description: Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a Bpm'online.
 services: active-directory
 documentationCenter: na
@@ -8,21 +8,21 @@ manager: femila
 ms.reviewer: joflore
 ms.assetid: 052db91d-ccff-4098-8ae3-2f76eca90539
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 04/16/2018
 ms.author: jeedes
-ms.openlocfilehash: b6fe50b24a20f81500ac1ed5008fcb6c59c0243a
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 97b0530f3a260b4ad82c4287b4b37595ab1cf25d
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39449396"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55187330"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-bpmonline"></a>Kurz: Integrace Azure Active Directory se službou Bpm'online
+# <a name="tutorial-azure-active-directory-integration-with-bpmonline"></a>Kurz: Integrace Azure Active Directory s Bpm'online
 
 V tomto kurzu se dozvíte, jak integrovat Bpm'online s Azure Active Directory (Azure AD).
 
@@ -38,7 +38,7 @@ Pokud chcete zjistit další podrobnosti o integraci aplikací SaaS v Azure AD, 
 
 Konfigurace integrace Azure AD s Bpm'online, potřebujete následující položky:
 
-- S předplatným služby Azure AD
+- Předplatné Azure AD
 - Bpm'online jednotného přihlašování povolená předplatného
 
 > [!NOTE]
@@ -60,7 +60,7 @@ Konfigurace integrace Bpm'online do služby Azure AD, budete muset přidat Bpm'o
 
 **Chcete-li přidat Bpm'online z galerie, postupujte následovně:**
 
-1. V  **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu. 
+1. V **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu. 
 
     ![Tlačítko Azure Active Directory][1]
 
@@ -123,7 +123,7 @@ V této části Povolení služby Azure AD jednotného přihlašování na port�
     > [!NOTE]
     > Tyto hodnoty nejsou skutečný. Tyto hodnoty aktualizujte skutečné identifikátor, adresa URL odpovědi a přihlašovací adresa URL. Kontakt [tým podpory Bpm'online klienta](mailto:support@bpmonline.com) k získání těchto hodnot. 
 
-1. Na **podpisový certifikát SAML** klikněte na tlačítko Kopírovat zkopírujte **adresa Url federačních metadat aplikace** a vložte ho do poznámkového bloku.
+1. Na **podpisový certifikát SAML** klikněte na tlačítko Kopírovat zkopírujte **adresa Url federačních metadat aplikace** a vložte ho do poznámkového bloku.
     
     ![Konfigurace jednotného přihlašování](./media/bpmonline-tutorial/tutorial_metadataurl.png)
      
@@ -167,7 +167,7 @@ Cílem této části je vytvoření zkušebního uživatele na webu Azure Portal
  
 ### <a name="create-a-bpmonline-test-user"></a>Vytvoření zkušebního uživatele Bpm'online
 
-V této části vytvoříte uživatele v Bpm'online jako Britta Simon. Práce s [tým podpory Bpm'online](mailto:support@bpmonline.com) přidat uživatele na platformě Bpm'online. Uživatelé musí vytvořit a aktivovat, než použití jednotného přihlašování. 
+V této části vytvoříte uživatele v Bpm'online jako Britta Simon. Práce s [tým podpory Bpm'online](mailto:support@bpmonline.com) přidat uživatele na platformě Bpm'online. Uživatelé musí vytvořit a aktivovat, než použití jednotného přihlašování. 
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřadit uživatele Azure AD
 
@@ -199,7 +199,7 @@ V této části je povolit Britta Simon k udělení přístupu k Bpm'online pou�
 
 1. Klikněte na tlačítko **přiřadit** tlačítko **přidat přiřazení** dialogového okna.
     
-### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování
+### <a name="test-single-sign-on"></a>Test jednotného přihlašování
 
 V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 

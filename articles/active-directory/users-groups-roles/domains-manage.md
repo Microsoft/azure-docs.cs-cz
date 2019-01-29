@@ -8,17 +8,17 @@ manager: mtillman
 editor: ''
 ms.service: active-directory
 ms.workload: identity
-ms.component: users-groups-roles
+ms.subservice: users-groups-roles
 ms.topic: article
 ms.date: 10/05/2018
 ms.author: curtand
 ms.reviewer: elkuzmen
-ms.openlocfilehash: d5f926ac41bb90ba716e0c52b790a60fd74e0631
-ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
+ms.openlocfilehash: 85c990d6bfd90c93dea764383453d7f3cc53efde
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48854911"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55152327"
 ---
 # <a name="managing-custom-domain-names-in-your-azure-active-directory"></a>Správa vlastních názvů domén v Azure Active Directory
 
@@ -86,14 +86,14 @@ Chyba je vrácena, pokud:
 
 ### <a name="frequently-asked-questions"></a>Nejčastější dotazy
 
-**Otázka: Proč je odstranění domény selhání zobrazí se chyba s oznámením, že mám na tento název domény Exchange standardní skupiny?** <br>
-**Odpověď:** v současné době určitých skupin, jako jsou skupiny zabezpečení s povolenou poštou a distribuované seznamy byly povolené nástrojem Exchange a muset ručně vyčistit v [správce Exchange System Center (EAC)](https://outlook.office365.com/ecp/). Existuje může být přetrvávání odstraněných ProxyAddresses, které využívají vlastní název domény a bude nutné ručně aktualizovat tak, aby jiný název domény. 
+**Otázka: Proč selhává v odstraňování domény zobrazí se chyba s oznámením, že mám na tento název domény Exchange standardní skupiny?** <br>
+**ODPOVĚĎ:** V současné době určitých skupin, jako jsou skupiny zabezpečení s povolenou poštou a distribuované seznamy byly povolené nástrojem Exchange a muset ručně vyčistit v [správce Exchange System Center (EAC)](https://outlook.office365.com/ecp/). Existuje může být přetrvávání odstraněných ProxyAddresses, které využívají vlastní název domény a bude nutné ručně aktualizovat tak, aby jiný název domény. 
 
-**Otázka: jsem přihlášený jako admin@contoso.com , ale nemůžu odstranit název domény "contoso.com"?**<br>
-**Odpověď:** nemůže odkazovat vlastní název domény se pokoušíte odstranit v názvu uživatelského účtu. Ujistěte se, že účet globálního správce používá počáteční výchozí název domény (. onmicrosoft.com), jako admin@contoso.onmicrosoft.com. Přihlaste se pomocí jiného globálního správce účtu, který jako admin@contoso.onmicrosoft.com nebo jiný název vlastní domény, jako je "fabrikam.com", které je účet admin@fabrikam.com.
+**Otázka: Jsem přihlášený jako admin@contoso.com , ale nemůžu odstranit název domény "contoso.com"?**<br>
+**ODPOVĚĎ:** Nemůže odkazovat vlastní název domény, který se pokoušíte odstranit v názvu uživatelského účtu. Ujistěte se, že účet globálního správce používá počáteční výchozí název domény (. onmicrosoft.com), jako admin@contoso.onmicrosoft.com. Přihlaste se pomocí jiného globálního správce účtu, který jako admin@contoso.onmicrosoft.com nebo jiný název vlastní domény, jako je "fabrikam.com", které je účet admin@fabrikam.com.
 
-**Otázka: nemůžu kliknutí na tlačítko pro odstranění domény a viz `In Progress` stavu pro operace Delete. Jak dlouho trvá? Co se stane, když dojde k chybě?**<br>
-**Odpověď:** operace odstranění domény je pozadí asynchronní úloha, která přejmenuje všechny odkazy na název domény. By se měla dokončit během několika minut. Pokud odstranění domény selhání, ujistěte se, že není nutné:
+**Otázka: Po klepnutí na tlačítko pro odstranění domény a viz `In Progress` stavu pro operace Delete. Jak dlouho trvá? Co se stane, když dojde k chybě?**<br>
+**ODPOVĚĎ:** Operace odstranění domény je pozadí asynchronní úloha, která přejmenuje všechny odkazy na název domény. By se měla dokončit během několika minut. Pokud odstranění domény selhání, ujistěte se, že není nutné:
 
 * Aplikace nakonfigurované v názvu domény pomocí appIdentifierURI
 * Žádné skupina s povolenou poštou odkazovat na název vlastní domény

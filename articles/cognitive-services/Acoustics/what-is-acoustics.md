@@ -6,16 +6,16 @@ services: cognitive-services
 author: kegodin
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: acoustics
+ms.subservice: acoustics
 ms.topic: overview
 ms.date: 08/17/2018
 ms.author: kegodin
-ms.openlocfilehash: 6a3c97ead40cfb24604edac0624e38a9b0713fc0
-ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
-ms.translationtype: HT
+ms.openlocfilehash: 175203269f524f5c680345602e6382f5c26f1bd1
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "48901020"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55178898"
 ---
 # <a name="what-is-project-acoustics"></a>Co je Project Acoustics?
 Modul plug-in Project Acoustics pro Unity poskytuje okluzi, ozvěnu a prostorový zvuk pro projekty, které cílí na virtuální realitu i tradiční obrazovky. Poskytuje způsob návrhu herní akustiky, který vrství záměry návrháře nad fyzikální simulaci vln.
@@ -59,7 +59,7 @@ V rámci přístupu, který nabízí modul plug-in Project Acoustics pro Unity p
 ## <a name="download"></a>Ke stažení
 Pokud si chcete vyzkoušet akustický modul plug-in, [tady](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbRwMoAEhDCLJNqtVIPwQN6rpUOFRZREJRR0NIQllDOTQ1U0JMNVc4OFNFSy4u) se můžete zaregistrovat k verzi Designer Preview.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 * Další informace o [procesu návrhu](design-process.md)
 * Začínáme s [integrací akustiky do projektu Unity](getting-started.md)
 

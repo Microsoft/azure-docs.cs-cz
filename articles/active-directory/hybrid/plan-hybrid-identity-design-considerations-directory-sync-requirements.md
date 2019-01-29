@@ -13,15 +13,15 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 07/18/2017
-ms.component: hybrid
+ms.subservice: hybrid
 ms.author: billmath
 ms.custom: seohack1
-ms.openlocfilehash: ad14e443f7176a0acb2da3529348fba452f76dee
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: 44d33e687d64c7e226a20edf3fdcbbf7bcf859b3
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54477953"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55169259"
 ---
 # <a name="determine-directory-synchronization-requirements"></a>Určete požadavky na synchronizaci adresáře
 Synchronizace se točí kolem identity v cloudu na základě jejich identity v místním, že uživatel. Jestli použijí synchronizované účet pro ověřování nebo federovaného ověřování, uživatelé stále musíte nastavit identitu, která v cloudu.  Tato identita bude muset udržované a pravidelně aktualizuje.  Aktualizace mohou mít mnoho forem, od změn názvu pro změny hesla.  

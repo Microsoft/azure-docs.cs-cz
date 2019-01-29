@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: multiple
 ms.date: 06/08/2018
 ms.author: ryanwi
-ms.openlocfilehash: 010fd442419f57f8b53705be8d3f49fdb84e28fd
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: bdff930e00bfebe1d702e397a9dfc7de15aa3225
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53262448"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55156220"
 ---
 # <a name="multi-container-application-and-service-manifest-examples"></a>Příklady manifestu služeb a vícekontejnerové aplikace
 Následují příklady manifesty aplikace a služby pro vícekontejnerovou aplikaci Service Fabric. Účelem těchto příkladech je zobrazit nastavení, které jsou k dispozici a jak je používat. Tyto aplikace a služby manifestů jsou založeny na [Windows serveru 2016 kontejneru ukázka](https://github.com/Azure-Samples/service-fabric-containers/tree/master/Windows) manifesty.
@@ -195,7 +195,7 @@ Naleznete v tématu [elementy manifestu aplikace](#application-manifest-elements
     </EnvironmentVariables>
   </CodePackage>
 
-  <!-- Config package is the contents of the Config directoy under PackageRoot that contains an 
+  <!-- Config package is the contents of the Config directory under PackageRoot that contains an 
        independently-updateable and versioned set of custom configuration settings for your service. -->
   <ConfigPackage Name="Config" Version="1.0.0" />
   
@@ -246,7 +246,7 @@ Naleznete v tématu [elementy manifestu aplikace](#application-manifest-elements
     </EnvironmentVariables>
   </CodePackage>
 
-  <!-- Config package is the contents of the Config directoy under PackageRoot that contains an 
+  <!-- Config package is the contents of the Config directory under PackageRoot that contains an 
        independently-updateable and versioned set of custom configuration settings for your service. -->
   <ConfigPackage Name="Config" Version="1.0.0" />
 
@@ -276,19 +276,19 @@ Parametr aplikace pro použití v tomto manifestu. Hodnota tohoto parametru mů�
 ### <a name="servicemanifestimport-element"></a>ServiceManifestImport – Element
 Importuje service manifest vytvořený vývojářem služeb. Manifest služby musí být importovány pro každou základní službu v aplikaci. Přepsání konfigurace a zásad mohou být deklarovány pro manifest služby. Další informace najdete v tématu [ServiceManifestImport – Element](service-fabric-service-model-schema-elements.md#ServiceManifestImportElementanonymouscomplexTypeComplexTypeDefinedInApplicationManifestTypecomplexType)
 
-### <a name="servicemanifestref-element"></a>ServiceManifestRef – Element
+### <a name="servicemanifestref-element"></a>ServiceManifestRef Element
 Naimportuje manifest služby podle odkazu. Soubor manifestu služby (ServiceManifest.xml) musí být aktuálně k dispozici v balíčku buildu. Další informace najdete v tématu [ServiceManifestRef – Element](service-fabric-service-model-schema-elements.md#ServiceManifestRefElementServiceManifestRefTypeComplexTypeDefinedInServiceManifestImportelement)
 
 ### <a name="policies-element"></a>Zásady – Element
 Popisuje zásady (koncový bod vazby balíčku sdílení, spustit jako a zabezpečení přístupu) má být použita na importovaný manifest služby. Další informace najdete v tématu [zásady – Element](service-fabric-service-model-schema-elements.md#PoliciesElementServiceManifestImportPoliciesTypeComplexTypeDefinedInServiceManifestImportelement)
 
-### <a name="servicepackageresourcegovernancepolicy-element"></a>ServicePackageResourceGovernancePolicy – Element
+### <a name="servicepackageresourcegovernancepolicy-element"></a>ServicePackageResourceGovernancePolicy Element
 Definuje zásady zásad správného řízení prostředků, která se má použít na úrovni balíčku celé služby. Další informace najdete v tématu [ServicePackageResourceGovernancePolicy – Element](service-fabric-service-model-schema-elements.md#ServicePackageResourceGovernancePolicyElementServicePackageResourceGovernancePolicyTypeComplexTypeDefinedInServiceManifestImportPoliciesTypecomplexTypeDefinedInServicePackageTypecomplexType)
 
 ### <a name="resourcegovernancepolicy-element"></a>ResourceGovernancePolicy – Element
 Určuje omezení prostředků pro balíček kódu. Další informace najdete v tématu [ResourceGovernancePolicy – Element](service-fabric-service-model-schema-elements.md#ResourceGovernancePolicyElementResourceGovernancePolicyTypeComplexTypeDefinedInServiceManifestImportPoliciesTypecomplexTypeDefinedInDigestedCodePackageelementDefinedInDigestedEndpointelement)
 
-### <a name="containerhostpolicies-element"></a>ContainerHostPolicies – Element
+### <a name="containerhostpolicies-element"></a>ContainerHostPolicies Element
 Určuje zásady pro aktivaci hostitelích kontejnerů. Další informace najdete v tématu [ContainerHostPolicies – Element](service-fabric-service-model-schema-elements.md#ContainerHostPoliciesElementContainerHostPoliciesTypeComplexTypeDefinedInServiceManifestImportPoliciesTypecomplexTypeDefinedInDigestedCodePackageelement)
 
 ### <a name="repositorycredentials-element"></a>RepositoryCredentials – Element
@@ -349,7 +349,7 @@ Spustitelný soubor určený vstupní bod se obvykle dlouhotrvající hostitele 
 ### <a name="containerhost-element"></a>ContainerHost – Element
  Další informace najdete v tématu [ContainerHost – Element](service-fabric-service-model-schema-elements.md#ContainerHostElementContainerHostEntryPointTypeComplexTypeDefinedInEntryPointDescriptionTypecomplexType)
 
-### <a name="imagename-element"></a>ImageName – Element
+### <a name="imagename-element"></a>ImageName Element
 Úložiště a na image https://hub.docker.com nebo Azure Container Registry. Další informace najdete v tématu [ImageName – Element](service-fabric-service-model-schema-elements.md#ImageNameElementxs:stringComplexTypeDefinedInContainerHostEntryPointTypecomplexType)
 
 ### <a name="environmentvariables-element"></a>EnvironmentVariables – Element
@@ -393,7 +393,7 @@ Spustitelný soubor určený vstupní bod se obvykle dlouhotrvající hostitele 
 ### <a name="containerhost-element"></a>ContainerHost – Element
 Další informace najdete v tématu [ContainerHost – Element](service-fabric-service-model-schema-elements.md#ContainerHostElementContainerHostEntryPointTypeComplexTypeDefinedInEntryPointDescriptionTypecomplexType)
 
-### <a name="imagename-element"></a>ImageName – Element
+### <a name="imagename-element"></a>ImageName Element
 Úložiště a na image https://hub.docker.com nebo Azure Container Registry. Další informace najdete v tématu [ImageName – Element](service-fabric-service-model-schema-elements.md#ImageNameElementxs:stringComplexTypeDefinedInContainerHostEntryPointTypecomplexType)
 
 ### <a name="commands-element"></a>Commands – Element

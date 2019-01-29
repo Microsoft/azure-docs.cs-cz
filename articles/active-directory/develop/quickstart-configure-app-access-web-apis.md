@@ -7,7 +7,7 @@ author: CelesteDG
 manager: mtillman
 editor: ''
 ms.service: active-directory
-ms.component: develop
+ms.subservice: develop
 ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
@@ -16,14 +16,14 @@ ms.date: 10/25/2018
 ms.author: celested
 ms.custom: aaddev
 ms.reviewer: lenalepa, sureshja
-ms.openlocfilehash: a0082be25ec4ad326e4473cbe69f9ff029898f5b
-ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
-ms.translationtype: HT
+ms.openlocfilehash: a2f0d97d6b7040f874fc03ffe19f247cdc742c77
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49988680"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55103645"
 ---
-# <a name="quickstart-configure-a-client-application-to-access-web-apis-preview"></a>Rychlý start: Konfigurace klientské aplikace pro přístup k webovým rozhraním API (Preview)
+# <a name="quickstart-configure-a-client-application-to-access-web-apis-preview"></a>Rychlý start: Konfigurovat klientskou aplikaci pro přístup k webovým rozhraním API (Preview)
 
 Aby se webová nebo důvěrná klientská aplikace mohla účastnit toku udělení autorizace, který vyžaduje ověření (a získání přístupového tokenu), musí mít zabezpečené přihlašovací údaje. Výchozí metodou ověřování podporovanou webem Azure Portal je ID klienta a tajný klíč.
 
@@ -123,7 +123,7 @@ Přidání oprávnění pro přístup k rozhraní API prostředků z klienta:
 1. Jakmile vyberete rozhraní API, zobrazí se stránka **Požádat o oprávnění rozhraní API**. Pokud rozhraní API zveřejňuje delegovaná oprávnění i oprávnění aplikace, vyberte, který typ oprávnění vaše aplikace potřebuje.
 1. Až budete hotovi, vyberte **Přidat oprávnění**. Vrátíte se na stránku **Oprávnění rozhraní API**, kde se v tabulce zobrazí uložená a přidaná oprávnění.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Další informace najdete v těchto rychlých startech souvisejících se správou aplikací:
 

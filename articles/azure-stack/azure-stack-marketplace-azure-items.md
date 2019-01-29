@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/04/2019
+ms.date: 01/29/2019
 ms.author: sethm
 ms.reviewer: unknown
-ms.openlocfilehash: d006deb83ca16860eb669548ae8563304f7937fa
-ms.sourcegitcommit: 70471c4febc7835e643207420e515b6436235d29
+ms.openlocfilehash: 06252d2fc33fafc27371c45f41f792e8e5abd542
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2019
-ms.locfileid: "54306603"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55196204"
 ---
 # <a name="azure-marketplace-items-available-for-azure-stack"></a>Položky Azure Marketplace k dispozici pro službu Azure Stack
 
@@ -46,7 +46,7 @@ Pokaždé, když jsou dostupné aktualizace rozšíření virtuálních počíta
 | ![Kaspersky](media/azure-stack-marketplace-azure-items/kaspersky.png) | [Kaspersky hybridního cloudového zabezpečení agenta pro Windows](https://azuremarketplace.microsoft.com/marketplace/apps/KasperskyLab.ksws-windows-arm?tab=Overview) | S Kaspersky zabezpečení v hybridním cloudu můžete zřídit možnosti příkazu o kyberbezpečnosti přímo v cloudu úloh prostřednictvím rozšíření Azure. | Kaspersky testovacího prostředí | Windows |
 | ![Kaspersky](media/azure-stack-marketplace-azure-items/kaspersky.png) | [Kaspersky Hybrid Cloud Security Agent for Linux](https://azuremarketplace.microsoft.com/marketplace/apps/KasperskyLab.kesl-linux-arm?tab=Overview) | S Kaspersky zabezpečení v hybridním cloudu můžete zřídit možnosti příkazu o kyberbezpečnosti přímo v cloudu úloh prostřednictvím rozšíření Azure. | Kaspersky testovacího prostředí | Linux |
 
-## <a name="microsoft-virtual-machine-images-and-solution-templates"></a>Image virtuálních počítačů společnosti Microsoft a šablony řešení
+## <a name="microsoft-virtual-machine-images-and-solution-templates"></a>Image Microsoft virtuálních počítačů a šablony řešení
 
 Microsoft Azure Stack podporuje následující virtuální počítače Azure Marketplace a šablony řešení. Stáhněte samostatně, jak je uvedeno všechny závislosti. Aplikace, jako je SQL Server a Machine Learning Server vyžaduje řádnou licenci, s výjimkou případů, kde je označen jako bezplatná nebo zkušební verze.
 
@@ -97,10 +97,11 @@ Microsoft Azure Stack podporuje následující virtuální počítače Azure Mar
 | ![SLES 12 SP3 (BYOS)](media/azure-stack-marketplace-azure-items/suse.png) | [SLES 12 SP3 (BYOS)](https://azuremarketplace.microsoft.com/marketplace/apps/SUSE.SLES) | SUSE Linux Enterprise Server 12 SP3. | SUSE |
 | ![SLES 15 (BYOS)](media/azure-stack-marketplace-azure-items/suse.png) | [SLES 15 SP3 (BYOS)](https://azuremarketplace.microsoft.com/marketplace/apps/SUSE.SLES) | SUSE Linux Enterprise Server 15. | SUSE |
 
-## <a name="third-party-byol-free-and-trial-images-and-solution-templates"></a>Image BYOL třetích stran, bezplatné a zkušební verze a šablony řešení
+## <a name="third-party-byol-free-trial-images-and-solution-templates"></a>BYOL třetích stran, bezplatné a zkušební verze imagí a šablony řešení
 
 |  | Název položky | Popis | Vydavatel |
 | --- | --- | --- | --- |
+| ![A10 vThunder ADC](media/azure-stack-marketplace-azure-items/a10.png) | [A10 vThunder ADC](https://azuremarketplace.microsoft.com/marketplace/apps/a10networks.vthunder-414-gr1) | A10 sítě vThunder kontroler doručování aplikací pro Microsoft Azure je sestavené speciálně pro vysoký výkon, flexibilitu a a doručování aplikací snadno nasadit a server vyrovnávání zatížení a optimalizovaná pro nativní spuštění v rámci cloudu Azure. | A10 Networks |
 | ![Arista vEOS směrovače](media/azure-stack-marketplace-azure-items/arista.png) | [Arista vEOS směrovače](https://azuremarketplace.microsoft.com/marketplace/apps/arista-networks.veos-router) | VEOS Arista směrovač je plně funkční, více cloudu a vícehypervisorové virtuální směrovač, který umožňuje podnikům a poskytovatelů cloudu, k vytvoření konzistentní, vysoce zabezpečené a škálovatelné hybridní sítě. | Arista Networks |
 | ![Barracuda aplikace zabezpečení Control Center](media/azure-stack-marketplace-azure-items/barracuda.png) | [Barracuda Application Security Control Center](https://azuremarketplace.microsoft.com/marketplace/apps/barracudanetworks.barracuda-app-sec-control-center) | Centrálně spravujte webových více Barracuda brány firewall aplikací (WAF). | Barracuda Networks, Inc. |
 | ![Brány barracuda e-mailu zabezpečení](media/azure-stack-marketplace-azure-items/barracuda.png) | [Brány barracuda e-mailu zabezpečení](https://azuremarketplace.microsoft.com/marketplace/apps/barracudanetworks.barracuda-email-security-gateway) | E-mailová brána zabezpečení pro ochranu před hrozbami příchozích e-mailu nést. | Barracuda Networks, Inc. |

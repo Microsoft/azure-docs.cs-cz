@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 2/23/2018
 ms.author: twhitney, subramar
-ms.openlocfilehash: a42236af7e301a21a91a3c1294b20167824dfc84
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 62812dd8f92bcace8f764a21aba608157815cec3
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54024786"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55093141"
 ---
 # <a name="service-fabric-container-networking-modes"></a>Síťové režimy kontejneru Service Fabric
 
@@ -78,7 +78,7 @@ Pokud služby container service restartuje nebo přesune do jiného uzlu v clust
             ],
     ```
     
-2. Nastavení profilu sítě část prostředku Škálovací sady virtuálních počítačů. To umožňuje více IP adres musí nakonfigurovat na každém uzlu clusteru. Následující příklad nastaví až 5 IP adres na jeden uzel clusteru Service Fabric s Windows nebo Linuxem. Může mít pět instancí služby naslouchání na portu na každém uzlu. Jak je znázorněno níže, aby bylo možné mít pět IP adres, které jsou přístupné z nástroje pro vyrovnávání zatížení Azure, zaregistrujte pět IP adres ve fondu adres back-endu nástroje pro vyrovnávání zatížení Azure.  Budete také muset přidejte proměnné do horní části šablony v sekci proměnných.
+2. Nastavení profilu sítě část prostředku Škálovací sady virtuálních počítačů. To umožňuje více IP adres musí nakonfigurovat na každém uzlu clusteru. Následující příklad nastaví až 5 IP adres na jeden uzel clusteru Service Fabric s Windows nebo Linuxem. Může mít pět instancí služby naslouchání na portu na každém uzlu. Jak je znázorněno níže, aby bylo možné mít pět IP adres, které jsou přístupné z nástroje pro vyrovnávání zatížení Azure, zaregistrujte pět IP adres ve fondu adres back-endu nástroje pro vyrovnávání zatížení Azure.  Také je potřeba k hornímu okraji šablonu v sekci proměnných přidejte proměnné.
 
     Přidejte tuto část do proměnné:
 
@@ -209,10 +209,10 @@ Pokud služby container service restartuje nebo přesune do jiného uzlu v clust
  
 3. V případě clusterů Windows nastavte pravidlo skupiny zabezpečení sítě Azure (NSG), které se otevře port UDP/53 virtuální sítě s použitím následujících hodnot:
 
-   |Nastavení |Hodnota | |
+   |Nastavení |Value | |
    | --- | --- | --- |
    |Priorita |2000 | |
-   |Název |Custom_Dns  | |
+   |Name |Custom_Dns  | |
    |Zdroj |VirtualNetwork | |
    |Cíl | VirtualNetwork | |
    |Služba | DNS (UDP/53) | |

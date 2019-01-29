@@ -8,19 +8,19 @@ manager: daveba
 editor: curtand
 ms.assetid: 16100caa-f209-4cb0-86d3-9e218aeb51c6
 ms.service: active-directory
-ms.component: domain-services
+ms.subservice: domain-services
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/22/2018
 ms.author: ergreenl
-ms.openlocfilehash: 3a321246c948c38abc5840fd4e2113a648151a21
-ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
+ms.openlocfilehash: 9ea236718b7fd9b808a5092dddec9574f6b93b48
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54850395"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55167151"
 ---
 # <a name="join-a-centos-linux-virtual-machine-to-a-managed-domain"></a>Připojení virtuálního počítače CentOS Linux ke spravované doméně
 Tento článek ukazuje, jak připojení virtuálního počítače CentOS Linux v Azure k spravované doméně služby Azure AD Domain Services.

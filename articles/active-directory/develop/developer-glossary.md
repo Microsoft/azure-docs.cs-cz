@@ -8,7 +8,7 @@ manager: mtillman
 editor: ''
 ms.assetid: 551512df-46fb-4219-a14b-9c9fc23998ba
 ms.service: active-directory
-ms.component: develop
+ms.subservice: develop
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
@@ -17,12 +17,12 @@ ms.date: 11/16/2017
 ms.author: celested
 ms.custom: aaddev
 ms.reviewer: elisol
-ms.openlocfilehash: b74c3d355a720948c22e90b1792dcd6139c101ea
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: ce2f64c50818a17d199da896b42b2218e6637d07
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53338205"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55097827"
 ---
 # <a name="azure-active-directory-developer-glossary"></a>Glosář pro vývojáře Azure Active Directory
 

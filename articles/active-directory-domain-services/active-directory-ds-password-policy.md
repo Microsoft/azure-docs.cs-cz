@@ -8,19 +8,19 @@ manager: daveba
 editor: curtand
 ms.assetid: 1a14637e-b3d0-4fd9-ba7a-576b8df62ff2
 ms.service: active-directory
-ms.component: domain-services
+ms.subservice: domain-services
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 09/17/2018
 ms.author: ergreenl
-ms.openlocfilehash: 0bb3ccb3841b60f6c94ac1d6126bd2b0d44af092
-ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
+ms.openlocfilehash: 5fc50aeeb2764f90a111c2466ff5a9deefe1e65c
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54852689"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55167984"
 ---
 # <a name="password-and-account-lockout-policies-on-managed-domains"></a>Zásady uzamčení hesla a účtu na spravované domény
 Tento článek vysvětluje výchozí zásady hesel ve spravované doméně. Věnuje se také, jak můžete nakonfigurovat tyto zásady.

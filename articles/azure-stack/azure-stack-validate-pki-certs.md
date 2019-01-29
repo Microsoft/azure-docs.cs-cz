@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 1/08/2019
 ms.author: mabrigg
 ms.reviewer: ppacent
-ms.openlocfilehash: 1205bb636c01ff03e7e5d6f245c7469c186fca6f
-ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
+ms.openlocfilehash: 6b2b72403365dc0f6cc61232e0b70801b57a29e2
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54121169"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55095483"
 ---
 # <a name="validate-azure-stack-pki-certificates"></a>Ověření certifikátů infrastruktury veřejných KLÍČŮ Azure Stack
 
@@ -99,7 +99,7 @@ K přípravě a k ověřování certifikátů Azure Stack infrastruktury veřejn
 
 4. Zkontrolujte výstup a všechny jejich certifikáty projít všemi testy. Příklad:
 
-````PowerShell
+```PowerShell
 Invoke-AzsCertificateValidation v1.1809.1005.1 started.
 Testing: ARM Public\ssl.pfx
 Thumbprint: 7F6B27****************************E9C35A
@@ -141,7 +141,7 @@ Thumbprint: 4DBEB2****************************C5E7E6
 Log location (contains PII): C:\Users\username\AppData\Local\Temp\AzsReadinessChecker\AzsReadinessChecker.log
 Report location (contains PII): C:\Users\username\AppData\Local\Temp\AzsReadinessChecker\AzsReadinessCheckerReport.json
 Invoke-AzsCertificateValidation Completed
-````
+```
 
 ### <a name="known-issues"></a>Známé problémy
 
@@ -252,13 +252,13 @@ Pomocí těchto kroků můžete připravit a ověřit certifikáty infrastruktur
 | acsBlob | wildcard_blob_\< oblast >\< externalFQDN > |
 | ACSQueue  |  wildcard_queue\< oblast >\< externalFQDN > |
 | ACSTable  |  wildcard_table\< oblast >\< externalFQDN > |
-| Hostitel Správce rozšíření  |  wildcard_adminhosting\< oblast >\< externalFQDN > |
+| Admin Extension Host  |  wildcard_adminhosting\< oblast >\< externalFQDN > |
 | Portál pro správu  |  adminportal\< oblast >\< externalFQDN > |
 | ARM správce  |  adminmanagement\< oblast >\< externalFQDN > |
 | Veřejné ARM  |  Správa\< oblast >\< externalFQDN > |
 | KeyVault  |  wildcard_vault\< oblast >\< externalFQDN > |
 | KeyVaultInternal  |  wildcard_adminvault\< oblast >\< externalFQDN > |
-| Veřejná rozšiřující hostitele  |  wildcard_hosting\< oblast >\< externalFQDN > |
+| Public Extension Host  |  wildcard_hosting\< region>\< externalFQDN> |
 | Veřejný portál  |  portál\< oblast > _\< externalFQDN > |
 
 ## <a name="using-validated-certificates"></a>Použití ověřených certifikátů

@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 09/24/2018
 ms.author: danlep
 ms.custom: seodec18, mvc
-ms.openlocfilehash: b3d8c3aea4955d6f95ead69d5bed147cc486e7c8
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: 781e64c57c53412e999de98b937d568097b2825e
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53254033"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55204112"
 ---
 # <a name="tutorial-automate-container-image-builds-when-a-base-image-is-updated-in-an-azure-container-registry"></a>Kurz: Při aktualizaci základní image do služby Azure container registry. automatizace sestavování imagí kontejneru 
 
@@ -73,7 +73,7 @@ Když se základní image aktualizuje, budete muset znovu sestavit jakékoli ima
 
 Tento kurz vás provede scénářem aktualizace základní image. [Vzorový kód][code-sample] zahrnuje dva soubory Dockerfile: image aplikace a image, na které je založená. V následujících částech vytvoříte úlohu ACR, která automaticky aktivuje sestavení image aplikace v případě, že se do registru kontejneru odešle nová verze základní image.
 
-[Soubor Dockerfile aplikace][dockerfile-app]: Malé webové aplikace Node.js, který vykreslí statická webová stránka zobrazující Node.js verze, na které je založená. Řetězec verze je simulovaný: zobrazuje obsah proměnné prostředí `NODE_VERSION`, která je definovaná v základní imagi.
+[Dockerfile-app][dockerfile-app]: Malé webové aplikace Node.js, který vykreslí statická webová stránka zobrazující Node.js verze, na které je založená. Řetězec verze je simulovaný: zobrazuje obsah proměnné prostředí `NODE_VERSION`, která je definovaná v základní imagi.
 
 [Soubor Dockerfile base][dockerfile-base]: Na obrázku, který `Dockerfile-app` určuje jako její základ. Je založená na imagi [Node][base-node] a zahrnuje proměnnou prostředí `NODE_VERSION`.
 
@@ -256,10 +256,10 @@ V tomto kurzu jste zjistili, jak pomocí úlohy automaticky aktivovat sestavení
 <!-- LINKS - Internal -->
 [azure-cli]: /cli/azure/install-azure-cli
 [az-acr-build]: /cli/azure/acr#az-acr-build-run
-[az-acr-task-create]: /cli/azure/acr#az-acr-task-create
+[az-acr-task-create]: /cli/azure/acr
 [az-acr-task-run]: /cli/azure/acr#az-acr-task-run
 [az-acr-login]: /cli/azure/acr#az-acr-login
-[az-acr-task-list-runs]: /cli/azure/acr#az-acr-task-list-runs
+[az-acr-task-list-runs]: /cli/azure/acr
 [az-acr-task]: /cli/azure/acr#az-acr-task
 
 <!-- IMAGES -->

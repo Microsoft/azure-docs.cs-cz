@@ -6,17 +6,17 @@ author: eross-msft
 manager: daveba
 ms.reviewer: sahenry
 ms.service: active-directory
-ms.component: user-help
+ms.subservice: user-help
 ms.workload: identity
 ms.topic: overview
 ms.date: 07/30/2018
 ms.author: lizross
-ms.openlocfilehash: 2107b6a4cd0d94edfe469a1643e18aed46bff1d0
-ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
+ms.openlocfilehash: f01209909812cbf86fe5cf6dee7cedc52d85480c
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/25/2019
-ms.locfileid: "54902750"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55197394"
 ---
 # <a name="manage-my-devices-overview"></a>Přehled správy zařízení
 

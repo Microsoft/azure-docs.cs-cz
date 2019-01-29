@@ -1,5 +1,5 @@
 ---
-title: 'Kurz: Integrace Azure Active Directory se službou TextMagic | Dokumentace Microsoftu'
+title: 'Kurz: Integrace Azure Active Directory s TextMagic | Dokumentace Microsoftu'
 description: Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a TextMagic.
 services: active-directory
 documentationCenter: na
@@ -8,21 +8,21 @@ manager: femila
 ms.reviewer: joflore
 ms.assetid: 3e5b49d2-7096-46bc-a9ce-90e09177ba28
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 12/06/2018
 ms.author: jeedes
-ms.openlocfilehash: 5ab193d908063230946ebb2bb6320ab50bf14971
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: ed5107d581c880d130901bfb31d34afb9e986635
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53014884"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55190084"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-textmagic"></a>Kurz: Integrace Azure Active Directory se službou TextMagic
+# <a name="tutorial-azure-active-directory-integration-with-textmagic"></a>Kurz: Integrace Azure Active Directory s TextMagic
 
 V tomto kurzu se dozvíte, jak integrovat TextMagic s Azure Active Directory (Azure AD).
 
@@ -124,14 +124,14 @@ V této části Povolení služby Azure AD jednotného přihlašování na port�
 
     | Název  | Zdrojový atribut  | Obor názvů |
     | --------------- | --------------- | --------------- |
-    | Společnosti | User.CompanyName | http://schemas.xmlsoap.org/ws/2005/05/identity/claims |
+    | Společnosti | user.companyname | http://schemas.xmlsoap.org/ws/2005/05/identity/claims |
     | Jméno               | user.givenname |  http://schemas.xmlsoap.org/ws/2005/05/identity/claims |
     | Příjmení            | user.surname |  http://schemas.xmlsoap.org/ws/2005/05/identity/claims |
-    | telefon               | User.telephoneNumber |  http://schemas.xmlsoap.org/ws/2005/05/identity/claims |
+    | telefon               | user.telephonenumber |  http://schemas.xmlsoap.org/ws/2005/05/identity/claims |
     
     a. Klikněte na **ikonu pro úpravu** upravit **název hodnota identifikátoru** z **user.userprinicipalname** k **user.mail**.
 
-    ![Atribut TextMagic](./media/textmagic-tutorial/tutorial_textmagic_email.png)
+    ![TextMagic Attribute](./media/textmagic-tutorial/tutorial_textmagic_email.png)
 
     b. Klikněte na **přidat novou deklaraci** otevřít **spravovat deklarace identity uživatelů** dialogového okna.
 
@@ -163,17 +163,17 @@ V této části Povolení služby Azure AD jednotného přihlašování na port�
 
     c. Adresa URL – odhlášení
 
-    ![Konfigurace TextMagic](common/configuresection.png)
+    ![TextMagic Configuration](common/configuresection.png)
 
 9. V okně jiné webové prohlížeče Přihlaste se k webu společnosti TextMagic jako správce.
 
 10. Vyberte **nastavení účtu** podle uživatelského jména.
 
-    ![Konfigurace TextMagic](./media/textmagic-tutorial/config1.png)
+    ![TextMagic Configuration](./media/textmagic-tutorial/config1.png)
 
 11. Klikněte na kartu **jednotné přihlašování (SSO)** a vyplňte následující pole:  
     
-    ![Konfigurace TextMagic](./media/textmagic-tutorial/config2.png)
+    ![TextMagic Configuration](./media/textmagic-tutorial/config2.png)
 
     a. V **zprostředkovatele Identity Entity ID:** textového pole vložte hodnotu **Azure AD identifikátor**, který jste zkopírovali z portálu Azure portal.
 

@@ -5,17 +5,17 @@ services: azure-stack
 keywords: ''
 author: mattbriggs
 manager: femila
-ms.date: 10/22/2018
+ms.date: 01/25/2019
 ms.topic: article
 ms.service: azure-stack
 ms.author: mabrigg
 ms.reviewer: scottnap
-ms.openlocfilehash: 4aa62319ee37b2f82455d1a3c7ad2d224988d93e
-ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
+ms.openlocfilehash: a02166b6dedb91a1a82a0b5a77e693c1fe390957
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54160059"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55104580"
 ---
 # <a name="considerations-for-azure-stack-networking"></a>Důležité informace týkající se sítích Azure stacku
 
@@ -29,11 +29,11 @@ Tento článek poskytuje přehled o jedinečných důležité informace o sítí
 
 | Služba | Funkce | Azure (globální) | Azure Stack |
 |--------------------------|----------------------------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------|
-| DNS | DNS s více tenanty | Podporováno | Není dosud podporován. |
-|  | Záznamů AAAA služby DNS | Podporováno | Nepodporuje se |
+| DNS | Multi-tenant DNS | Podporováno | Není dosud podporován. |
+|  | DNS AAAA records | Podporováno | Nepodporuje se |
 |  | Zóny DNS na předplatné | 100 (výchozí)<br>Je možné zvýšit na vyžádání. | 100 |
-|  | Za zónu sad záznamů DNS | 5000 (výchozí)<br>Je možné zvýšit na vyžádání. | 5000 |
-|  | Názvové servery pro delegování zóny | Azure poskytuje čtyři názvové servery pro každou zónu uživatele (tenant), který je vytvořen. | Azure Stack nabízí dvě názvové servery pro každou zónu uživatele (tenant), který je vytvořen. |
+|  | DNS record sets per zone | 5000 (výchozí)<br>Je možné zvýšit na vyžádání. | 5000 |
+|  | Name servers for zone delegation | Azure poskytuje čtyři názvové servery pro každou zónu uživatele (tenant), který je vytvořen. | Azure Stack nabízí dvě názvové servery pro každou zónu uživatele (tenant), který je vytvořen. |
 | Virtual Network | Partnerské vztahy virtuálních sítí | Propojení dvou virtuálních sítí ve stejné oblasti prostřednictvím páteřní sítě Azure. | Není dosud podporován. |
 |  | Adresy protokolu IPv6 | Můžete přiřadit adresu protokolu IPv6 v rámci [konfiguraci síťového rozhraní](https://docs.microsoft.com/azure/virtual-network/virtual-network-network-interface-addresses#ip-address-versions). | Podporovaný je jenom protokol IPv4. |
 |  | Plán DDoS Protection | Podporováno | Ještě není podporované. |

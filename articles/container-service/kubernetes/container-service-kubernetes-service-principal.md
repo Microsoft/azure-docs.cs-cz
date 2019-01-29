@@ -9,12 +9,12 @@ ms.topic: get-started-article
 ms.date: 02/26/2018
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: da4fda3d0cfa6cb33d2dd8bb3bb844f18654c30a
-ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
+ms.openlocfilehash: b2a9c6c31771be1316038d794d1c15ff9fa45916
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54851891"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55166726"
 ---
 # <a name="deprecated-set-up-an-azure-ad-service-principal-for-a-kubernetes-cluster-in-container-service"></a>(NEPOUŽÍVANÉ) Nastavení instančního objektu služby Azure AD pro cluster Kubernetes ve službě Container Service
 
@@ -26,7 +26,7 @@ ms.locfileid: "54851891"
 Cluster Kubernetes vyžaduje v Azure Container Service [instanční objekt služby Azure Active Directory](../../active-directory/develop/app-objects-and-service-principals.md) pro interakci s rozhraními API Azure. Instanční objekt je potřeba k dynamické správě prostředků, jako jsou například [uživatelem definované trasy](../../virtual-network/virtual-networks-udr-overview.md) a [vrstva 4 služby Azure Load Balancer](../../load-balancer/load-balancer-overview.md).
 
 
-Tento článek ukazuje různé možnosti nastavení instančního objektu pro cluster Kubernetes. Pokud jste například nainstalovali a nastavili [Azure CLI](/cli/azure/install-az-cli2), můžete spustit příkaz [`az acs create`](/cli/azure/acs#az_acs_create) a vytvořit současně cluster Kubernetes i instanční objekt.
+Tento článek ukazuje různé možnosti nastavení instančního objektu pro cluster Kubernetes. Pokud jste například nainstalovali a nastavili [Azure CLI](/cli/azure/install-az-cli2), můžete spustit příkaz [`az acs create`](/cli/azure/acs) a vytvořit současně cluster Kubernetes i instanční objekt.
 
 
 ## <a name="requirements-for-the-service-principal"></a>Požadavky pro instanční objekt

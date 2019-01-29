@@ -7,15 +7,15 @@ manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 09/10/2018
+ms.date: 01/25/2019
 ms.author: davidmu
-ms.component: B2C
-ms.openlocfilehash: 8ec9e5a50f2350a17d5845f5c52954df10fa1d10
-ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
+ms.subservice: B2C
+ms.openlocfilehash: 5d42568a738d946d7df65601044b9797a35f6b1f
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54856821"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55176008"
 ---
 # <a name="relyingparty"></a>RelyingParty
 
@@ -44,7 +44,7 @@ Následující příklad ukazuje **RelyingParty** prvek *B2C_1A_signup_signin* s
   <RelyingParty>
     <DefaultUserJourney ReferenceId="SignUpOrSignIn" />
     <UserJourneyBehaviors>
-      <SingleSignOn Scope="TrustFramework" />
+      <SingleSignOn Scope="TrustFramework" KeepAliveInDays="7"/>
       <SessionExpiryType>Rolling</SessionExpiryType>
       <SessionExpiryInSeconds>300</SessionExpiryInSeconds>
       <JourneyInsights TelemetryEngine="ApplicationInsights" InstrumentationKey="your-application-insights-key" DeveloperMode="true" ClientEnabled="false" ServerEnabled="true" TelemetryVersion="1.0.0" />
@@ -125,6 +125,7 @@ Volitelný **RelyingParty** prvek obsahuje následující prvky:
 | Atribut | Požadováno | Popis |
 | --------- | -------- | ----------- |
 | Rozsah | Ano | Rozsah chování jednotné přihlašování. Možné hodnoty: `Suppressed`, `Tenant`, `Application`, nebo `Policy`. `Suppressed` Hodnota označuje, zda je potlačeno chování. Například v případě jedné relace přihlášení, žádná relace se zachová pro uživatele a uživatel vždy zobrazí výzva výběru zprostředkovatele identity. `TrustFramework` Hodnota značí, že je chování aplikováno pro všechny zásady v rámci vztahu důvěryhodnosti. Například uživatel procházet dvě cesty zásady pro vztah důvěryhodnosti framework vyzván výběru zprostředkovatele identity. `Tenant` Hodnota značí, že je chování aplikováno na všechny zásady v tenantovi. Například uživatel procházení dvě cesty zásad pro klienta není vyzván výběru zprostředkovatele identity. `Application` Hodnota značí, že je chování aplikováno na všechny zásady pro aplikace, který zadal žádost. Například uživatel procházení dvě cesty zásad pro aplikaci není vyzván výběru zprostředkovatele identity. `Policy` Hodnota značí, že chování platí jenom pro zásadu. Například je procházení dvě cesty zásady pro vztah důvěryhodnosti framework uživatel vyzván výběru zprostředkovatele identity při přepínání mezi zásadami. |
+| KeepAliveInDays | Ano | Určuje, jak dlouho zůstane přihlášený uživatel. Nastavením této hodnoty na 0 vypne funkce políčko zůstat Přihlášeni. Další informace najdete v tématu [neodhlašovat](active-directory-b2c-reference-kmsi-custom.md). |
 
 ## <a name="journeyinsights"></a>JourneyInsights
 
@@ -159,7 +160,7 @@ Následující příklad předá parametr s názvem `campaignId` s hodnotou `haw
 
 | Atribut | Požadováno | Popis |
 | --------- | -------- | ----------- |
-| Název | Ano | Název páru klíč-hodnota. |
+| Name | Ano | Název páru klíč-hodnota. |
 
 Další informace najdete v tématu [konfigurace uživatelského rozhraní s dynamickým obsahem pomocí vlastních zásad](active-directory-b2c-ui-customization-custom-dynamic.md)
 
@@ -186,7 +187,7 @@ Další informace najdete v tématu [konfigurace uživatelského rozhraní s dyn
 
 | Atribut | Požadováno | Popis |
 | --------- | -------- | ----------- |
-| Název | Ano | Název platný protokol podporovaný službou Azure AD B2C, který se používá jako součást technický profil. Možné hodnoty: `OpenIdConnect` nebo `SAML2`. `OpenIdConnect` Hodnota představuje standardní protokol OpenID Connect 1.0 podle specifikace foundation OpenID. `SAML2` Představuje standardní protokol SAML 2.0 podle specifikace OASIS. Nepoužívejte v produkčním prostředí tokenu SAML. |
+| Name | Ano | Název platný protokol podporovaný službou Azure AD B2C, který se používá jako součást technický profil. Možné hodnoty: `OpenIdConnect` nebo `SAML2`. `OpenIdConnect` Hodnota představuje standardní protokol OpenID Connect 1.0 podle specifikace foundation OpenID. `SAML2` Představuje standardní protokol SAML 2.0 podle specifikace OASIS. Nepoužívejte v produkčním prostředí tokenu SAML. |
 
 ## <a name="outputclaims"></a>OutputClaims
 

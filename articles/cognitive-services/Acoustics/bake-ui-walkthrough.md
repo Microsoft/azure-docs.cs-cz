@@ -6,16 +6,16 @@ services: cognitive-services
 author: kegodin
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: acoustics
+ms.subservice: acoustics
 ms.topic: conceptual
 ms.date: 08/17/2018
 ms.author: kegodin
-ms.openlocfilehash: c37e050cd762cb173d64f78b5267e4ad252d17a9
-ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
+ms.openlocfilehash: f376b6bcb0238f96b4f5bb35d898cc600e108c65
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "48902242"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55169752"
 ---
 # <a name="bake-acoustics"></a>Vytvoření Akustika
 
@@ -163,7 +163,7 @@ Pohyb scéně a ověřte, zda vše, co by měl být geometrie voxels. Fotoapará
 
 Pokud srovnáte voxels vytvořené pomocí řešení jemné hrubé řešení vs, zobrazí hrubý voxels jsou dvakrát velké.
 
-![Voxel ve verzi Preview](media/VoxelCubesPreview.png)
+![Voxel Preview](media/VoxelCubesPreview.png)
 
 ### <a name="probe-points"></a>Body pro zjišťování
 
@@ -255,8 +255,8 @@ Instalace a konfigurace Dockeru na počítači, který bude zpracovávat simulac
 
 Existují čtyři datové soubory, které vytvořil tento modul plug-in v různých fázích. Je potřeba jenom jeden z nich za běhu, proto ostatních tří jsou uvnitř složky s názvem "Editor", takže nesmí být zkompilovány do vašeho projektu.
 
-* **Prostředky a Editor / [SceneName]\_AcousticsParameters.asset**: Tento soubor uchovává data, zadejte do polí v Uživatelském rozhraní Akustika. Umístění a název tohoto souboru nelze změnit. Existují jiné hodnoty uložené v tomto souboru, které mají vliv která má označení vytvoření, ale jsou určené pro pokročilé uživatele a neměl měnit.
-* **Prostředky/AcousticsData/Akustika\_[SceneName].ace.bytes**: Tento soubor je, co se vytvoří během simulace která má označení vytvoření a obsahuje vyhledávací data použít k vykreslení Akustika vaše Scéna modulem runtime. Umístění a název tohoto souboru lze změnit pomocí pole na **sondy** kartu.
+* **Assets/Editor/[SceneName]\_AcousticsParameters.asset**: Tento soubor uchovává data, která zadáte do polí v Uživatelském rozhraní Akustika. Umístění a název tohoto souboru nelze změnit. Existují jiné hodnoty uložené v tomto souboru, které mají vliv která má označení vytvoření, ale jsou určené pro pokročilé uživatele a neměl měnit.
+* **Assets/AcousticsData/Acoustics\_[SceneName].ace.bytes**: Tento soubor je, co se vytvoří během simulace která má označení vytvoření a obsahuje vyhledávací data použít k vykreslení Akustika vaše Scéna modulem runtime. Umístění a název tohoto souboru lze změnit pomocí pole na **sondy** kartu.
 * **Assets/AcousticsData/Editor/Acoustics_[SceneName].vox**: Tento soubor uchovává geometrie Akustika voxelized a vlastností materiálu. Vypočítán s použitím **Calculate...**  tlačítko na kartě testy. Umístění a název tohoto souboru lze změnit pomocí pole na **sondy** kartu.
 * **Prostředky/AcousticsData/Editor/Akustika\_[SceneName]\_config.xml**: Tento soubor uchovává vypočítán s použitím parametrů **Calculate...**  tlačítko **sondy** kartu. Umístění a název tohoto souboru lze změnit pomocí pole na **sondy** kartu.
 

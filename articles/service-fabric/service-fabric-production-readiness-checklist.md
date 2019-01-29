@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 7/10/2018
 ms.author: aljo-microsoft
-ms.openlocfilehash: 4e6d5cb3191be7188c1a7c4753200cf049800f04
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.openlocfilehash: ac263ef842c780e09576303f2f49e782612294c2
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53436003"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55159110"
 ---
 # <a name="production-readiness-checklist"></a>Kontrolní seznam připravenosti k produkci
 
@@ -27,15 +27,15 @@ Je vaše aplikace a clusteru, jste připraveni udělat produkční provoz? Spuš
 
 
 ## <a name="pre-requisites-for-production"></a>Předpoklady pro produkční prostředí
-1. [Osvědčené postupy pro Azure Service Fabric](https://docs.microsoft.com/azure/security/azure-service-fabric-security-best-practices) jsou: 
+1. [Osvědčené postupy pro Azure Service Fabric zabezpečení](https://docs.microsoft.com/azure/security/azure-service-fabric-security-best-practices) jsou: 
 * Použití certifikátů X.509
 * Konfigurace zásad zabezpečení
 * Konfigurace SSL pro Azure Service Fabric
 * Izolace sítě a zabezpečení pomocí Azure Service Fabric
 * Nastavení služby Azure Key Vault pro zabezpečení
-* Přiřazení uživatelů k rolím
+* Microsoft.Network/loadBalancersAssign uživatelů k rolím
 * Pokud pomocí Actors programovací model implementovat zabezpečení konfigurace Reliable Actors
-2. Pro clustery s více než 20 jader nebo 10 uzlů vytvoření vyhrazených uzlů primárního typu pro systémové služby. Přidat [omezení umístění](service-fabric-cluster-resource-manager-advanced-placement-rules-placement-policies.md) rezervovat primární typ uzlu systémových služeb. 
+2. Pro clustery s více než 20 jader nebo 10 uzlů vytvoření vyhrazených uzlů primárního typu pro systémové služby. Přidat [omezení umístění](service-fabric-cluster-resource-manager-advanced-placement-rules-placement-policies.md) rezervovat primární typ uzlu systémových služeb.
 3. Použijte D2v2 nebo vyšší skladová položka pro primární typ uzlu. Doporučujeme vybrat skladovou Položku s kapacitou disku alespoň 50 GB.
 4. Produkčních clusterů musí být [zabezpečené](service-fabric-cluster-security.md). Příklad vytvoření zabezpečeného clusteru, najdete v tomto [šablony clusteru](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/7-VM-Windows-3-NodeTypes-Secure-NSG). Používat běžné názvy pro certifikáty a vyhněte se použití vlastní podepsané certifikáty.
 5. Přidat [omezení prostředků pro kontejnery a služby](service-fabric-resource-governance.md), takže není více než 75 % uzel prostředky spotřebují. 
@@ -61,8 +61,8 @@ Pokud používáte programovacího modelu Service Fabric Reliable Services a Rel
 22. Upgrade aplikací během vývoje. Zkontrolujte, že je váš kód služby dodržením token zrušení v místní `RunAsync` metoda a zavírání vlastní komunikační naslouchacích procesů.
 23. Vyhněte se [běžné nástrahy](service-fabric-work-with-reliable-collections.md) při použití Reliable Collections.
 24. Monitorování výkonu paměti .NET CLR čítačů při spuštění zátěžových testů a vyhledejte vysoký objem uvolňování paměti nebo vyčerpává dlouho běžící haldy růstu.
-25. Zálohování offline udržovat [Reliable Services a Reliable Actors](service-fabric-reliable-services-backup-restore.md) a testování procesu obnovení. 
-
+25. Zálohování offline udržovat [Reliable Services a Reliable Actors](service-fabric-reliable-services-backup-restore.md) a testování procesu obnovení.
+26. Počet instancí vaše primární NodeType virtuální počítač v ideálním případě by měla být rovna minimum pro vaši úroveň spolehlivosti clustery; podmínky v případě potřeby překročit minimální úroveň zahrnuje: dočasně při vertikální škálování jste už vaši primární NodeTypes virtuálního počítače Škálovací Nastavte skladovou jednotku.
 
 ## <a name="optional-best-practices"></a>Volitelné postupy
 

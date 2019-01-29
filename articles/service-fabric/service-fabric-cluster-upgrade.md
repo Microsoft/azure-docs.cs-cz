@@ -1,6 +1,6 @@
 ---
 title: Upgrade clusteru Azure Service Fabric | Dokumentace Microsoftu
-description: Další informace o upgradu na verzi nebo konfigurace clusteru služby Azure Svice Fabric.  Tento článek popisuje nastavení aktualizace režimu clusteru, upgrade certifikáty, přidání portů aplikací, zajišťuje opravy operačního systému a co můžete očekávat při probíhají upgrady
+description: Další informace o upgradu na verzi nebo konfigurace clusteru služby Azure Service Fabric.  Tento článek popisuje nastavení aktualizace režimu clusteru, upgrade certifikáty, přidání portů aplikací, zajišťuje opravy operačního systému a co můžete očekávat při probíhají upgrady
 services: service-fabric
 documentationcenter: .net
 author: aljo-microsoft
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/12/2018
 ms.author: aljo
-ms.openlocfilehash: a864d6423dc530857009e58a2fa90f0fa2cbc84f
-ms.sourcegitcommit: 7804131dbe9599f7f7afa59cacc2babd19e1e4b9
+ms.openlocfilehash: 2e5838046cdb60023495c7e9e111506c333cecc7
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/17/2018
-ms.locfileid: "51853281"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55102392"
 ---
 # <a name="upgrading-and-updating-an-azure-service-fabric-cluster"></a>Upgrade a aktualizuje se cluster Azure Service Fabric
 
@@ -36,7 +36,7 @@ Můžete nastavit pro příjem upgradů automatické prostředků infrastruktury
 ## <a name="fabric-upgrade-behavior-during-automatic-upgrades"></a>Chování při automatické upgrady upgradu prostředků infrastruktury
 Společnost Microsoft udržuje kód prostředků infrastruktury a konfigurace, která běží v clusteru Azure. Provádíme automatické monitorované upgrady softwaru podle potřeby. Tyto upgrady může být kód, konfigurace nebo obojí. Pokud chcete mít jistotu, že vaše aplikace odkážete žádný dopad nebo minimální dopad na tyto upgrady, jsme upgrady provádět v následujících fázích:
 
-### <a name="phase-1-an-upgrade-is-performed-by-using-all-cluster-health-policies"></a>Fáze 1: Upgrade se provádí pomocí všechny zásady stavu clusteru
+### <a name="phase-1-an-upgrade-is-performed-by-using-all-cluster-health-policies"></a>Fáze 1: Provádí se upgrade pomocí všechny zásady stavu clusteru
 V této fázi upgrady pokračovat jednu upgradovací doménu najednou a aplikace, které byly spuštěny v clusteru dál běžet bez jakýchkoli prostojů. Zásady stavu clusteru (kombinace uzlu stav a stav všechny aplikace spuštěné v clusteru) jsou zachovány během upgradu.
 
 Pokud zásady stavu clusteru nejsou splněny, upgrade se vrátí zpět. Potom se vlastník předplatného odešle e-mail. E-mailu obsahuje následující informace:
@@ -62,7 +62,7 @@ Snažíme se provést stejný upgrade několik víckrát v případě, že všec
 
 Pokud jsou splněny zásady stavu clusteru, upgrade považuje za úspěšnou a označí dokončené. To může nastat během počáteční upgrade nebo některý z upgradu opakování v této fázi. Neexistuje žádný e-mailové potvrzení úspěšného spuštění.
 
-### <a name="phase-3-an-upgrade-is-performed-by-using-aggressive-health-policies"></a>Fáze 3: Upgrade se provádí pomocí zásady agresivní stavu
+### <a name="phase-3-an-upgrade-is-performed-by-using-aggressive-health-policies"></a>Fáze 3: Provádí se upgrade pomocí zásady agresivní stavu
 Tyto zásady stavu v této fázi jsou zaměřené směrem k dokončení upgradu spíše než stavu aplikace. V této fázi skončit několik upgrady clusteru. Pokud váš cluster dostane do této fáze, je velmi pravděpodobné, že vaše aplikace nebude v pořádku a/nebo ke ztrátě dostupnosti.
 
 Podobně jako dvě fáze 3 fáze upgradu pokračovat jednu upgradovací doménu najednou.

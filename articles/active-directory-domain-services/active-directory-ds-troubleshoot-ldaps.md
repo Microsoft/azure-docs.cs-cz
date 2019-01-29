@@ -1,5 +1,5 @@
 ---
-title: 'Azure Active Directory Domain Services: Řešení potíží s konfigurací protokolu Secure LDAP | Dokumentace Microsoftu'
+title: 'Azure Active Directory Domain Services: Řešení problémů s konfigurací protokolu Secure LDAP | Dokumentace Microsoftu'
 description: Řešení potíží s protokol Secure LDAP pro službu Azure AD Domain Services
 services: active-directory-ds
 documentationcenter: ''
@@ -8,25 +8,25 @@ manager: ''
 editor: ''
 ms.assetid: 81208c0b-8d41-4f65-be15-42119b1b5957
 ms.service: active-directory
-ms.component: domain-services
+ms.subservice: domain-services
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/21/2018
 ms.author: ergreenl
-ms.openlocfilehash: e3a31749407f9ec0494e8452b602ed9966c5ab83
-ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
+ms.openlocfilehash: be07579d8273ab19101aa6c475ae5d23375517ca
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39504205"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55177181"
 ---
 # <a name="azure-ad-domain-services---troubleshooting-secure-ldap-configuration"></a>Azure AD Domain Services - konfigurace řešení potíží s Secure LDAP
 
 Tento článek poskytuje řešení pro běžné potíže při [konfiguruje protokol secure LDAP](active-directory-ds-admin-guide-configure-secure-ldap.md) pro službu Azure AD Domain Services.
 
-## <a name="aadds101-secure-ldap-network-security-group-configuration"></a>AADDS101: Konfigurace skupiny zabezpečení sítě zabezpečený LDAP
+## <a name="aadds101-secure-ldap-network-security-group-configuration"></a>AADDS101: Konfigurace skupiny zabezpečení sítě Secure LDAP
 
 **Zpráva s výstrahou:**
 

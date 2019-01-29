@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 10/15/2018
 ms.author: tamram
 ms.component: common
-ms.openlocfilehash: 29b44e4b281ded635359148e251527c44efaa6d4
-ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
+ms.openlocfilehash: 49c1c95cfd91c23547c07b6e9388ef366bde4ad3
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54214041"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55174682"
 ---
 # <a name="use-an-azure-ad-identity-to-access-azure-storage-with-cli-or-powershell-preview"></a>Pomocí identity Azure AD pro přístup k Azure Storage s využitím rozhraní příkazového řádku nebo Powershellu (Preview)
 
@@ -25,7 +25,7 @@ Po přihlášení k Azure CLI nebo Powershellu s Azure AD identity, je vrácena 
 
 ## <a name="supported-operations"></a>Podporované operace
 
-Rozšíření ve verzi preview se podporují pro operace s kontejnery a fronty. Operace, které může volat závisí na oprávněních udělených identity Azure AD, pomocí kterého přihlášení k Azure CLI nebo Powershellu. Oprávnění pro kontejnery služby Azure Storage nebo fronty jsou přiřazeny prostřednictvím řízení přístupu na základě role (RBAC). Například pokud čtecí modul dat role je přiřazená k identitě, poté můžete spouštět příkazy skriptu, které číst data z kontejneru nebo fronty. Pokud přispěvatele dat role je přiřazená k identitě, poté můžete spouštět příkazy skriptu, které číst, zapsat nebo odstranit kontejner nebo fronty nebo data, která obsahují. 
+Rozšíření ve verzi preview se podporují pro operace s kontejnery a fronty. Operace, které může volat závisí na oprávněních udělených identity Azure AD, pomocí kterého přihlášení k Azure CLI nebo Powershellu. Oprávnění pro kontejnery služby Azure Storage nebo fronty jsou přiřazeny prostřednictvím řízení přístupu na základě role (RBAC). Například pokud čtecí modul dat role je přiřazená k identitě, poté můžete spouštět příkazy skriptu, které číst data z kontejneru nebo fronty. Pokud role Přispěvatel Data je přiřazená k identitě, poté můžete spouštět příkazy skriptu, které číst, zapsat nebo odstranit kontejner nebo fronty nebo data, která obsahují. 
 
 Podrobnosti o oprávněních požadovaných pro každou operaci služby Azure Storage v kontejneru nebo fronty, naleznete v tématu [oprávnění pro volání operace REST](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-rest-operations).  
 

@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 12/04/2018
 ms.custom: seodec18
-ms.openlocfilehash: a6eb142cf607c286ccce1282bb5c67a30c040c62
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: 55d35237adc384ca8344e6ff69abc4a93d540ec6
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53716578"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55099896"
 ---
 # <a name="time-series-model"></a>Model služby Time Series
 
@@ -72,7 +72,7 @@ Ukázka:
         }
     }
 }
-``````
+```
 
 Další informace o typech modelu časové řady, najdete v článku [referenční dokumentaci](https://docs.microsoft.com/rest/api/time-series-insights/preview-model#types-api).
 
@@ -89,7 +89,7 @@ Následující matice funguje jako legendu pro definice proměnné:
 Jsou podporovány následující typy proměnných:
 
 * *Číselné*
-* *Agregace*
+* *Aggregate*
 
 ### <a name="variable-filter"></a>Proměnné filtru
 
@@ -140,10 +140,10 @@ V závislosti na tom *instance pole*, hierarchie atributy a hodnoty se zobrazí,
 
 | ID časové řady | Pole instance |
 | --- | --- |
-| ID 1 | "sestavení" = "1000", "floor" = "10", "místo" = "55"  |
-| S ID 2 | "sestavení" = "1000", "místo" = "55" |
+| ID1 | "sestavení" = "1000", "floor" = "10", "místo" = "55"  |
+| ID2 | "sestavení" = "1000", "místo" = "55" |
 | ID3 | "floor" = "10" |
-| U ID 4 | "sestavení" = "1000", "floor" = "10"  |
+| ID4 | "sestavení" = "1000", "floor" = "10"  |
 | ID5 | "Sestavení", "floor" nebo "místo" je Nenastaveno |
 
 V předchozím příkladu ID1 a u ID 4 zobrazuje jako součást hierarchie H1 v Průzkumníku služby Azure Time Series Insights a zbývající jsou zařazeny do *bez nadřazených položek instance* vzhledem k tomu, že jsou není v souladu s hierarchii zadaná data.

@@ -6,14 +6,14 @@ ms.service: security
 ms.subservice: Azure Disk Encryption
 ms.topic: article
 ms.author: mstewart
-ms.date: 01/08/2018
+ms.date: 01/25/2019
 ms.custom: seodec18
-ms.openlocfilehash: 36ecfe8942d263ed84e430b01727743ed2cad00c
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ms.openlocfilehash: 0b486831118ace7d2112acf1562f5df4a64d1e1b
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54103161"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55092083"
 ---
 # <a name="azure-disk-encryption-troubleshooting-guide"></a>Průvodce odstraňováním potíží Azure Disk Encryption
 
@@ -33,7 +33,23 @@ Této chybě může dojít, když zkusí se šifrování disku operačního syst
 - Datové jednotky jsou rekurzivně připojený v adresáři /mnt/ nebo mezi sebou (například /mnt/data1, /mnt/data2, /data3 + /data3/data4).
 - Další Azure Disk Encryption [požadavky](azure-security-disk-encryption-prerequisites.md) nejsou splněny pro Linux.
 
-## <a name="unable-to-encrypt"></a>Nelze zašifrovat
+## <a name="bkmk_Ubuntu14"></a> Aktualizovat výchozí jádra pro Ubuntu 14.04 LTS
+
+Ubuntu 14.04 LTS image se dodává s výchozí verze jádra 4.4. Tato verze jádra se o známý problém, ve kterém typu nedostatek paměti Killer nesprávně ukončuje příkaz dd během procesu šifrování operačního systému. Tato chyba byla opravena v nejnovější Azure vyladěný jádro Linuxu. Lze vyvarovat této chyby, před povolením šifrování v imagi, aktualizovat [Azure vyladěný jádra 4.15](https://packages.ubuntu.com/trusty/linux-azure) nebo později pomocí následujících příkazů:
+
+```
+sudo apt-get update
+sudo apt-get install linux-azure
+sudo reboot
+```
+
+Po restartování virtuálního počítače do nového jádra může být nová verze jádra potvrzena pomocí:
+
+```
+uname -a
+```
+
+## <a name="unable-to-encrypt-linux-disks"></a>Nelze zašifrovat disky platformy Linux
 
 V některých případech je zakázána Linux šifrování disku se zdá být zaseknuto v "Zahájeno šifrování disku operačního systému" a SSH. Proces šifrování může trvat přibližně 3 – 16 hodin na základní Galerie obrázků. Pokud přidáte více terabajt velikosti datových disků, tento proces může trvat dny.
 
@@ -73,7 +89,7 @@ Všechna nastavení skupiny zabezpečení sítě, které jsou použity musí umo
 ### <a name="azure-key-vault-behind-a-firewall"></a>Služba Azure Key Vault za bránou firewall
 Virtuální počítač musí být schopni přistupovat k trezoru klíčů. Přečtěte si pokyny k přístupu do služby key vault za bránou firewall, která [Azure Key Vault](../key-vault/key-vault-access-behind-firewall.md) tým bude. 
 
-### <a name="azure-instance-metadata-service"></a>Služba Azure Instance Metadata 
+### <a name="azure-instance-metadata-service"></a>Azure Instance Metadata Service 
 Virtuální počítač musí mít přístup k [služby Azure Instance Metadata](../virtual-machines/windows/instance-metadata-service.md) koncový bod, který používá známá nesměrovatelných adres IP (`169.254.169.254`), který je přístupný pouze z v rámci virtuálního počítače.
 
 ### <a name="linux-package-management-behind-a-firewall"></a>Správa balíčků Linux za bránou firewall

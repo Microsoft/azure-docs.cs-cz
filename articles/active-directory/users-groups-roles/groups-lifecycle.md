@@ -8,18 +8,18 @@ manager: mtillman
 editor: ''
 ms.service: active-directory
 ms.workload: identity
-ms.component: users-groups-roles
+ms.subservice: users-groups-roles
 ms.topic: article
 ms.date: 03/09/2018
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
-ms.openlocfilehash: 9e73a979950e856a7fc2bfa2193ea4ca0d59bac2
-ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
+ms.openlocfilehash: 070e86f2d5d37823f1596cf04735b199289f3d75
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50242224"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55166165"
 ---
 # <a name="configure-the-expiration-policy-for-office-365-groups"></a>Konfigurace zásad vypršení platnosti pro skupiny Office 365
 
@@ -91,45 +91,45 @@ Zabezpečení a dodržování předpisů Center jsou nakonfigurované zásady uc
 Tady jsou příklady použití rutin prostředí PowerShell a zadejte nastavení vypršení platnosti pro skupiny Office 365 ve vašem tenantovi:
 
 1. Nainstalujte modul prostředí PowerShell verze 2.0 ve verzi Preview (2.0.0.137) a přihlaste se na příkazovém řádku prostředí PowerShell:
-  ````
+  ```
   Install-Module -Name AzureADPreview
   connect-azuread 
-  ````
-2. Konfigurace nastavení vypršení platnosti New-AzureADMSGroupLifecyclePolicy: Tato rutina nastaví dobu života pro všechny skupiny Office 365 v tenantovi až 365 dnů. Oznámení o prodloužení platnosti pro Office 365 skupin bez vlastníků se odešlou do "emailaddress@contoso.com.
+  ```
+2. Konfigurace nastavení vypršení platnosti New-AzureADMSGroupLifecyclePolicy:  Tato rutina nastaví dobu života pro všechny skupiny Office 365 v tenantovi až 365 dnů. Oznámení o prodloužení platnosti pro Office 365 skupin bez vlastníků se odešlou do "emailaddress@contoso.com.
   
-  ````
+  ```
   New-AzureADMSGroupLifecyclePolicy -GroupLifetimeInDays 365 -ManagedGroupTypes All -AlternateNotificationEmails emailaddress@contoso.com
-  ````
-3. Načíst existující zásady Get-AzureADMSGroupLifecyclePolicy: Tato rutina načte aktuální nastavení Office 365 skupiny vypršení platnosti, které byly nakonfigurovány. V tomto příkladu je vidět:
+  ```
+3. Načtěte existující zásady Get-AzureADMSGroupLifecyclePolicy: Tato rutina načte aktuální nastavení Office 365 skupiny vypršení platnosti, které byly nakonfigurovány. V tomto příkladu je vidět:
   * ID zásad 
   * Doba života pro všechny skupiny Office 365 v tenantovi je nastavena na 365 dnů
   * Oznámení o prodloužení platnosti pro Office 365 skupin bez vlastníků se odešlou do "emailaddress@contoso.com."
   
-  ````
+  ```
   Get-AzureADMSGroupLifecyclePolicy
   
   ID                                    GroupLifetimeInDays ManagedGroupTypes AlternateNotificationEmails
   --                                    ------------------- ----------------- ---------------------------
   26fcc232-d1c3-4375-b68d-15c296f1f077  365                 All               emailaddress@contoso.com
-  ```` 
+  ``` 
    
-4. Aktualizace existujících zásad Set-AzureADMSGroupLifecyclePolicy: Tato rutina se používá k aktualizaci existující zásady. V následujícím příkladu životnost skupiny v existující zásady změnit za 365 dnů na 180 dnů. 
+4. Aktualizace Set-AzureADMSGroupLifecyclePolicy existující zásady: Tato rutina se používá k aktualizaci existující zásady. V následujícím příkladu životnost skupiny v existující zásady změnit za 365 dnů na 180 dnů. 
   
-  ````
+  ```
   Set-AzureADMSGroupLifecyclePolicy -Id "26fcc232-d1c3-4375-b68d-15c296f1f077" -GroupLifetimeInDays 180 -AlternateNotificationEmails "emailaddress@contoso.com"
-  ````
+  ```
   
-5. Přidání zadaných skupin do zásad Add-AzureADMSLifecyclePolicyGroup: Tato rutina slouží k přidání skupiny k zásadám životního cyklu. Jako příklad: 
+5. Přidání zadaných skupin do zásad Add-AzureADMSLifecyclePolicyGroup: Tato rutina přidá skupiny k zásadám životního cyklu. Jako příklad: 
   
-  ````
+  ```
   Add-AzureADMSLifecyclePolicyGroup -Id "26fcc232-d1c3-4375-b68d-15c296f1f077" -groupId "cffd97bd-6b91-4c4e-b553-6918a320211c"
-  ````
+  ```
   
 6. Odeberte existující zásady Remove-AzureADMSGroupLifecyclePolicy: Tato rutina odstraní nastavení vypršení platnosti skupin Office 365, ale vyžaduje ID zásad. Tato akce zakáže vypršení platnosti pro skupiny Office 365. 
   
-  ````
+  ```
   Remove-AzureADMSGroupLifecyclePolicy -Id "26fcc232-d1c3-4375-b68d-15c296f1f077"
-  ````
+  ```
   
 Následující rutiny slouží ke konfiguraci zásad podrobněji. Další informace najdete v části [dokumentaci k Powershellu](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0-preview&branch=master#groups).
 

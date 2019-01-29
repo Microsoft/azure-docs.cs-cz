@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: tutorial
-ms.date: 01/24/2019
+ms.date: 01/28/2019
 ms.author: alkohli
-ms.openlocfilehash: 0501ca031fbe6f1d1f16b4db55fde6a1662286f3
-ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
+ms.openlocfilehash: 2af94deaedbafdfa638f5deb3150f1e7f711a238
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/25/2019
-ms.locfileid: "54904110"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55093513"
 ---
 # <a name="tutorial-copy-data-to-azure-data-box-via-smb"></a>Kurz: Kopírování dat do služby Azure Data Box prostřednictvím protokolu SMB
 
@@ -96,7 +96,7 @@ Pokud používáte počítač s Windows serverem hostitele, postupujte podle tě
 
 Po připojení ke sdíleným složkám zařízení Data Box, dalším krokem je zkopírovat data. Než začnete kopírování dat, projděte si následující aspekty:
 
-- Ujistěte se, že zkopírovat data do sdílené složky, které odpovídají formátu příslušná data. Data objektů blob bloku je například potřeba zkopírovat do sdílené složky určené pro objekty blob bloku. Pokud formát dat neshoduje s typem příslušné sdílené složky, pak v pozdějším kroku, nahrát data do Azure se nezdaří.
+- Ujistěte se, že zkopírovat data do sdílené složky, které odpovídají formátu příslušná data. Data objektů blob bloku je například potřeba zkopírovat do sdílené složky určené pro objekty blob bloku. Zkopírujte virtuální pevné disky do objektů blob stránky. Pokud formát dat neshoduje s typem příslušné sdílené složky, pak v pozdějším kroku, nahrát data do Azure se nezdaří.
 -  Při kopírování dat, ujistěte se, že velikost dat odpovídá omezení velikosti podle [služby Azure storage a omezení zařízení Data Box](data-box-limits.md).
 - Pokud data nahrávaná Data Boxem zároveň nahrávají jiné aplikace mimo Data Box, může to způsobit selhání úlohy nahrávání a poškození dat.
 - Doporučujeme:

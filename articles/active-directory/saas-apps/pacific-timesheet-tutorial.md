@@ -7,19 +7,19 @@ author: jeevansd
 manager: daveba
 ms.assetid: e546e8ba-821a-4942-9545-c84b0670beab
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 06/28/2017
 ms.author: jeedes
-ms.openlocfilehash: ec300052b00af451003a86a72a7154b1114d5484
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: 8e2a5c0091c4dee5ee548b8572e02724c8ce0643
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54808184"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55203619"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-pacific-timesheet"></a>Kurz: Integrace Azure Active Directory s rozvrhu Tichomoří
 

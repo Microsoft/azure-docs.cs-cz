@@ -8,12 +8,12 @@ ms.service: security
 ms.topic: article
 ms.date: 02/08/2018
 ms.author: jomolesk
-ms.openlocfilehash: d5b759fcde66a2a9be86cc15cba1ead1765ba248
-ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
+ms.openlocfilehash: 04de32b2df630eea918c786a7f065f404f4d8dca
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/19/2019
-ms.locfileid: "54413392"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55164516"
 ---
 # <a name="azure-security-and-compliance-blueprint---three-tier-iaas-web-application-for-uk-official"></a>Zabezpečení Azure a dodržování předpisů – IaaS třívrstvé webové aplikace pro UK OFFICIAL
 
@@ -204,7 +204,7 @@ Zákazníci mohou také zvážit použití [zvýšené zabezpečení pro správu
 
 **Oddělení oblastí zájmu**: Tato referenční architektura oddělí virtuální sítě pro operace správy a obchodních operací. Samostatné virtuální sítě a podsítě povolit správu provozu, včetně omezení pro příchozí a odchozí provoz, s použitím skupin zabezpečení sítě mezi síťové segmenty následující [zabezpečení cloudové služby a sítě Microsoft](https://docs.microsoft.com/azure/best-practices-network-security) osvědčené postupy.
 
-**Správa prostředků**: Prostředky Azure, jako jsou virtuální počítače, virtuální sítě a nástroje pro vyrovnávání zatížení jsou spravovány seskupí společně do [skupin prostředků Azure](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview#resource-groupsresource). Řízení přístupu na základě role prostředků pak můžete přiřadit ke každé skupině prostředků k omezení přístupu jenom na autorizované uživatele.
+**Správa prostředků**: Prostředky Azure, jako jsou virtuální počítače, virtuální sítě a nástroje pro vyrovnávání zatížení jsou spravovány seskupí společně do [skupin prostředků Azure](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview). Řízení přístupu na základě role prostředků pak můžete přiřadit ke každé skupině prostředků k omezení přístupu jenom na autorizované uživatele.
 
 **Přístup k omezení ovládacích prvků**: Použití [řízení přístupu na základě Role](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal) (RBAC) ke správě prostředků v aplikaci pomocí [vlastní role](https://docs.microsoft.com/azure/role-based-access-control/custom-roles) RBAC slouží k omezení operací, které můžete provádět DevOps na jednotlivých úrovních. Při udělování oprávnění používat [principu nejnižších možných oprávnění](https://msdn.microsoft.com/library/hdb58b2f(v=vs.110).aspx#Anchor_1). Protokolujte všechny operace správy a provádějte pravidelné audity, abyste měli jistotu, že byly všechny změny konfigurace plánované.
 

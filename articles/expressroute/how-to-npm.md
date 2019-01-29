@@ -5,15 +5,15 @@ services: expressroute
 author: cherylmc
 ms.service: expressroute
 ms.topic: article
-ms.date: 06/28/2018
+ms.date: 01/25/2019
 ms.author: cherylmc
 ms.custom: seodec18
-ms.openlocfilehash: e72c2ceaedd23f4e3ee2006930302321498eb736
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 93fd42739e0ec8ca9230688274b31fac5edf216d
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53104726"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55098574"
 ---
 # <a name="configure-network-performance-monitor-for-expressroute"></a>Konfigurace Network Performance Monitoru pro ExpressRoute
 
@@ -38,15 +38,15 @@ Můžete:
 Instalace agentů monitorování na více serverech, místně i v Azure. Agenti komunikovat mezi sebou, ale neodesílat data, jejich odeslat pakety pro metodu handshake protokolu TCP. Umožňuje komunikaci mezi agenty Azure k mapování síťové topologie a cestu, může trvat provoz.
 
 1. Vytvoření pracovního prostoru NPM. To je stejný jako pracovní prostor Log Analytics.
-2. Instalace a konfigurace agentů softwaru: 
+2. Instalace a konfigurace agentů softwaru. (Pokud chcete monitorovat přes Microsoft Peering, nepotřebujete k instalaci a konfiguraci agentů softwaru.): 
     * Instalace agentů na místních serverech a virtuálních počítačů Azure (pro soukromý partnerský vztah) monitorování.
     * Konfigurace nastavení na monitorování agent servery, které chcete povolit monitorování agenty ke komunikaci. (Otevřete porty brány firewall atd.)
 3. Konfigurace sítě pravidla skupiny zabezpečení (NSG) aby monitorovací agent nainstalovaný na virtuálních počítačích Azure ke komunikaci s místní agentů monitorování.
-4. Nastavení monitorování: automaticky zjistit a spravovat, které sítě jsou viditelné v NPM.
+4. Nastavení monitorování: Automaticky zjišťovat a spravovat, které sítě jsou viditelné v NPM.
 
 Pokud už používáte Network Performance Monitor k monitorování jiných objektů nebo služeb a už máte pracovní prostor v jednom z podporovaných oblastí, můžete přeskočit krok 1 a 2 a začít s vaší konfigurací v kroku 3.
 
-## <a name="configure"></a>Krok 1: Vytvoření pracovního prostoru
+## <a name="configure"></a>Krok 1: Vytvořit pracovní prostor
 
 Vytvořte pracovní prostor v rámci předplatného, který má propojení virtuálních sítí pro okruhy ExpressRoute.
 
@@ -86,7 +86,7 @@ Vytvořte pracovní prostor v rámci předplatného, který má propojení virtu
 
   ![Skript PowerShellu](./media/how-to-npm/7.png)
 
-### <a name="installagent"></a>2.2: nainstalujte agenta monitorování na každou monitorovací server (v každé virtuální síti, která chcete monitorovat)
+### <a name="installagent"></a>2.2: Nainstalujte agenta monitorování na každou monitorovací server (v každé virtuální síti, která chcete monitorovat)
 
 Doporučujeme nainstalovat aspoň dva agenty na každé straně připojení ExpressRoute pro zajištění redundance (například v místním virtuálním sítím Azure). Musí být agent nainstalovaný v systému Windows Server (2008 SP1 nebo novější). Monitorování pomocí OS plochy Windows a Linux OS okruhy ExpressRoute není podporováno. Použijte následující postup k instalaci agentů:
    
@@ -111,7 +111,7 @@ Doporučujeme nainstalovat aspoň dva agenty na každé straně připojení Expr
     ![Účet](./media/how-to-npm/10.png)
 6. Na **připraveno k instalaci** stránky, zkontrolujte zvolené volby a pak klikněte na tlačítko **nainstalovat**.
 7. Na stránce **Konfigurace byla úspěšně dokončena** klikněte na **Dokončit**.
-8. Jakmile budete hotovi, zobrazí se v Ovládacích panelech agenta Microsoft Monitoring Agent. Můžete zkontrolovat svou konfiguraci existuje a ověřit připojení agenta k Azure Log Analytics. Když se připojí, agent zobrazí zprávu: **agenta Microsoft Monitoring Agent úspěšně připojilo ke službě Microsoft Operations Management Suite**.
+8. Jakmile budete hotovi, zobrazí se v Ovládacích panelech agenta Microsoft Monitoring Agent. Můžete zkontrolovat svou konfiguraci existuje a ověřit připojení agenta k Azure Log Analytics. Když se připojí, agent zobrazí zprávu: **Microsoft Monitoring Agent úspěšně připojilo ke službě Microsoft Operations Management Suite**.
 
 9. Tento postup opakujte pro každou virtuální síť, které potřebujete k monitorování.
 
@@ -128,7 +128,7 @@ Konfigurace nastavení proxy serveru pro Microsoft Monitoring Agent pomocí ovl�
 
   ![Proxy server](./media/how-to-npm/11.png)
 
-### <a name="verifyagent"></a>2.4: ověřit připojení agenta
+### <a name="verifyagent"></a>2.4: Ověřit připojení agenta
 
 Můžete snadno ověřit, zda jsou komunikaci agentů.
 
@@ -139,7 +139,7 @@ Můžete snadno ověřit, zda jsou komunikaci agentů.
 
   ![status](./media/how-to-npm/12.png)
 
-### <a name="firewall"></a>2.5: otevřít porty brány firewall na serverech monitorování agenta
+### <a name="firewall"></a>2.5: Otevřete porty brány firewall na serverech monitorování agenta
 
 Pokud chcete použít protokol TCP, je nutné otevřít porty brány firewall, aby mohl komunikovat agentů monitorování.
 
@@ -156,7 +156,7 @@ Na serverech agenta otevřete okno Powershellu s oprávněními správce. Spusti
 
 ![PowerShell_Script](./media/how-to-npm/script.png)
 
-## <a name="opennsg"></a>Krok 3: Konfigurace pravidel skupiny zabezpečení sítě
+## <a name="opennsg"></a>Krok 3: Konfigurace pravidla skupiny zabezpečení sítě
 
 Pokud chcete monitorovat servery agenta, které jsou v Azure, je nutné nakonfigurovat skupiny (NSG) pravidla zabezpečení sítě umožňující provoz TCP na portu, používaný NPM pro syntetické transakce. Výchozí port je 8084. To umožňuje monitorování agent nainstalovaný na Virtuálním počítači Azure ke komunikaci s místní agent monitorování.
 
@@ -166,7 +166,7 @@ Další informace o NSG najdete v tématu [skupiny zabezpečení sítě](../virt
 >Ujistěte se, že jste nainstalovali agenty (místního serveru agenta a agenta Azure server) a jste spustili skript prostředí PowerShell než budete pokračovat s tímto krokem.
 >
 
-## <a name="setupmonitor"></a>Krok 4: Vyhledání partnerské vztahy virtuálních sítí
+## <a name="setupmonitor"></a>Krok 4: Zjistit partnerské vztahy virtuálních sítí
 
 1. Přejděte na dlaždici s přehledem Network Performance Monitor tak, že přejdete **všechny prostředky** stránce a potom klikněte na seznam povolených adres NPM pracovního prostoru.
 

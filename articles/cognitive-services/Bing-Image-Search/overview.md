@@ -1,5 +1,5 @@
 ---
-title: Co je API pro vyhledávání obrázků Bingu?
+title: Co je rozhraní API Bingu pro vyhledávání obrázků?
 titleSuffix: Azure Cognitive Services
 description: Rozhraní API Bingu pro vyhledávání obrázků umožňuje využívat kognitivní možnosti vyhledávání obrázků Bingu ve vlastní aplikaci. Prostřednictvím odesílání vyhledávacích dotazů uživatelů pomocí rozhraní API můžete získat a zobrazit relevantní a vysoce kvalitní obrázky podobně jako v Obrázcích Bingu.
 services: cognitive-services
@@ -7,19 +7,19 @@ author: aahill
 manager: cgronlun
 ms.assetid: 1446AD8B-A685-4F5F-B4AA-74C8E9A40BE9
 ms.service: cognitive-services
-ms.component: bing-image-search
+ms.subservice: bing-image-search
 ms.topic: overview
 ms.date: 10/11/2017
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: 71e8e363a02e08a099d9051c7f851e11bbd9b80b
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: 8115ffd943750d88a1aa9f94ba53ff972a636373
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54467277"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55157308"
 ---
-# <a name="what-is-the-bing-image-search-api"></a>Co je API pro vyhledávání obrázků Bingu?
+# <a name="what-is-the-bing-image-search-api"></a>Co je rozhraní API Bingu pro vyhledávání obrázků?
 
 Rozhraní API Bingu pro vyhledávání obrázků umožňuje využívat kognitivní možnosti vyhledávání obrázků Bingu ve vlastní aplikaci. Prostřednictvím odesílání vyhledávacích dotazů uživatelů pomocí rozhraní API můžete získat a zobrazit relevantní a vysoce kvalitní obrázky podobně jako v [Obrázcích Bingu](https://www.bing.com/images).
 

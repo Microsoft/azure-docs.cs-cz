@@ -6,16 +6,16 @@ services: cognitive-services
 author: noellelacharite
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: bing-spell-check
+ms.subservice: bing-spell-check
 ms.topic: conceptual
 ms.date: 09/25/2018
 ms.author: nolachar
-ms.openlocfilehash: f4ead76f78b1457e48c03e2fd0b0f871f90b0cf5
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.openlocfilehash: 8eccfda4481fea4c305aeb59282fb5d24b845f9e
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48804000"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55181397"
 ---
 # <a name="language-and-region-support-for-bing-spell-check-api"></a>Podpora jazyka a oblasti pro API kontrola pravopisu Bingu
 
@@ -31,25 +31,25 @@ Pamatujte, že pro práci s jakéhokoli jiného jazyka než `en-US`, `mkt` by m�
 | Čínština (Tchaj-wan)     | `zh-TW`          |
 | dánština      | `da`          |
 | nizozemština (Belgie)       | `nl-BE`          |
-| Nizozemština (Nizozemsko)      | `nl-NL`          |
-| angličtina (Austrálie)    | `en-AU`          |
-| angličtina (Kanada)     | `en-CA`          |
+| nizozemština (Nizozemsko)      | `nl-NL`          |
+| Angličtina (Austrálie)    | `en-AU`          |
+| Angličtina (Kanada)     | `en-CA`          |
 | English (India)    | `en-IN`          |
 | Angličtina (Indonésie)     | `en-ID`          |
-| angličtina (Malajsie)     | `en-MY`          |
-| angličtina (Nový Zéland)    | `en-NZ`          |
+| Angličtina (Malajsie)     | `en-MY`          |
+| Angličtina (Nový Zéland)    | `en-NZ`          |
 | angličtina (Filipíny)     | `en-PH`          |
 | angličtina (Jihoafrická republika)    | `en-ZA`          |
 | Angličtina (Spojené království)    | `en-GB`          |
 | Angličtina (Spojené státy)    | `en-US`          |
 | Finština     | `fi`          |
-| francouzština (Belgie)     | `fr-BE`          |
+| Francouzština (Belgie)     | `fr-BE`          |
 | Francouzština (Kanada)     | `fr-CA`          |
 | Francouzština (Francie)     | `fr-FR`          |
-| francouzština (Švýcarsko)      | `fr-CH`          |
-| němčina (Rakousko)      | `de-AT`          |
+| Francouzština (Švýcarsko)      | `fr-CH`          |
+| Němčina (Rakousko)      | `de-AT`          |
 | Němčina (Německo)      | `de-DE`          |
-| němčina (Švýcarsko)      | `de-CH`          |
+| Němčina (Švýcarsko)      | `de-CH`          |
 | italština     | `it`          |
 | Japonština    | `ja`          |
 | Korejština      | `ko`          |
@@ -58,8 +58,8 @@ Pamatujte, že pro práci s jakéhokoli jiného jazyka než `en-US`, `mkt` by m�
 | Portugalština (Brazílie)   | `pt-BR`|
 | Portugalština (Portugalsko) | `pt-PT`|
 | ruština     | `ru`          |
-| španělština (Argentina)    | `es-AR`          |
-| španělština (Chile)     | `es-CL`          |
+| Španělština (Argentina)    | `es-AR`          |
+| Španělština (Chile)     | `es-CL`          |
 | Španělština (Mexiko)    | `es-MX`          |
 | Španělština (Španělsko)    | `es-ES`          |
 | španělština (Spojené státy)    | `es-US`          |

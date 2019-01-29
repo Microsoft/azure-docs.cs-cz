@@ -1,89 +1,95 @@
 ### YamlMime:YamlDocument
+ms.openlocfilehash: 5b35405aa2d26f82952187cf36862520e86a25cd
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.translationtype: HT
+ms.contentlocale: cs-CZ
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55158770"
 documentType: LandingData
 title: Dokumentace k Azure Active Directory B2C
 metadata:
   title: Dokumentace k Azure Active Directory B2C
-  meta.description: 'Learn how to use Azure Active Directory B2C to customize and control how customers sign up, sign in, and manage their profiles when using your applications.'
+  meta.description: Learn how to use Azure Active Directory B2C to customize and control how customers sign up, sign in, and manage their profiles when using your applications.
   services: active-directory-b2c
   author: davidmu1
   manager: daveba
   ms.service: active-directory
-  ms.component: B2C
+  ms.subservice: B2C
   ms.topic: landing-page
   ms.date: 03/29/2018
   ms.author: davidmu
 abstract:
-  description: 'Azure Active Directory (Azure AD) B2C je služba pro správu identit, která umožňuje přizpůsobení a řízení způsobu, jakým se zákazníci registrují, přihlašují a jakým při používání vašich aplikací spravují své profily. To zahrnuje mimo jiné aplikace vyvinuté pro iOS, Android a .NET. Azure AD B2C umožňuje tyto akce, zatímco zároveň chrání identity vašich zákazníků. Naučte se používat Azure AD B2C prostřednictvím našich rychlých startů, kurzů a ukázek.'
+  description: Azure Active Directory (Azure AD) B2C je služba pro správu identit, která umožňuje přizpůsobení a řízení způsobu, jakým se zákazníci registrují, přihlašují a jakým při používání vašich aplikací spravují své profily. To zahrnuje mimo jiné aplikace vyvinuté pro iOS, Android a .NET. Azure AD B2C umožňuje tyto akce, zatímco zároveň chrání identity vašich zákazníků. Naučte se používat Azure AD B2C prostřednictvím našich rychlých startů, kurzů a ukázek.
   aside:
     image:
-      alt: null
+      alt: 
       height: 110
       src: ./media/index/active-directory-b2c-video.PNG
       width: 250
-    title: 'Správa identit zákazníků pomocí Azure AD B2C (20:56)'
-    href: 'https://channel9.msdn.com/Shows/On-NET/Customer-Identity-Management-with-Azure-AD-B2C'
+    title: Správa identit zákazníků pomocí Azure AD B2C (20:56)
+    href: https://channel9.msdn.com/Shows/On-NET/Customer-Identity-Management-with-Azure-AD-B2C
     width: 250
 sections:
-  - items:
-      - type: list
-        style: cards
-        className: cardsM
-        columns: 3
-        items:
-          - href: /azure/active-directory-b2c/active-directory-b2c-overview
-            html: <p>Získejte další informace o službě Azure AD B2C a jejích funkcích a možnostech.</p>
-            image:
-              src: ./media/index/i_get-started.svg
-            title: Informace o Azure AD B2C
-          - href: /azure/active-directory-b2c/solution-articles
-            html: <p>Prozkoumejte možnosti řešení a školení pomocí služby Azure AD B2C.</p>
-            image:
-              src: ./media/index/i_advanced.svg
-            title: Řešení a školení
-          - href: /azure/active-directory-b2c/trustframeworkpolicy
-            html: <p>Vytvořte pokročilé scénáře registrace a přihlášení pomocí vlastních zásad v Azure AD B2C.</p>
-            image:
-              src: ./media/index/i_investigate.svg
-            title: Architektura prostředí identit
-  - title: Zprovoznění během 5 minut
+- items:
+  - type: list
+    style: cards
+    className: cardsM
+    columns: 3
     items:
-      - type: paragraph
-        text: 'Zjistěte, jak pro zákazníky používající vaši aplikaci nastavit správu identit:'
-      - type: list
-        style: icon48
-        items:
-          - image:
-              src: 'https://docs.microsoft.com/azure/active-directory-b2c/media/index/logo_NET.svg'
-            text: .NET
-            href: 'https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-quickstarts-web-app'
-          - image:
-              src: 'https://docs.microsoft.com/azure/active-directory-b2c/media/index/logo_windows.svg'
-            text: Plocha
-            href: 'https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-quickstarts-desktop-app'
-          - image:
-              src: 'https://docs.microsoft.com/azure/active-directory-b2c/media/index/logo_nodejs.svg'
-            text: Samostatná stránka
-            href: 'https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-quickstarts-spa'
-  - title: Podrobné kurzy
+    - href: /azure/active-directory-b2c/active-directory-b2c-overview
+      html: <p>Získejte další informace o službě Azure AD B2C a jejích funkcích a možnostech.</p>
+      image:
+        src: ./media/index/i_get-started.svg
+      title: Informace o Azure AD B2C
+    - href: /azure/active-directory-b2c/solution-articles
+      html: <p>Prozkoumejte možnosti řešení a školení pomocí služby Azure AD B2C.</p>
+      image:
+        src: ./media/index/i_advanced.svg
+      title: Řešení a školení
+    - href: /azure/active-directory-b2c/trustframeworkpolicy
+      html: <p>Vytvořte pokročilé scénáře registrace a přihlášení pomocí vlastních zásad v Azure AD B2C.</p>
+      image:
+        src: ./media/index/i_investigate.svg
+      title: Architektura prostředí identit
+- title: Zprovoznění během 5 minut
+  items:
+  - type: paragraph
+    text: 'Zjistěte, jak pro zákazníky používající vaši aplikaci nastavit správu identit:'
+  - type: list
+    style: icon48
     items:
-      - type: paragraph
-        text: 'Zjistěte, jak ve svých aplikacích ASP.NET, desktopových aplikacích a jednostránkových aplikacích Node.js spravovat registraci, přihlašování a profily zákazníků.'
-      - type: list
-        style: cards
-        className: cardsD
-        items:
-          - title: ASP.NET
-            html: <p>1. <a href="/azure/active-directory-b2c/tutorial-create-tenant">Vytvoření klienta</a></p><p>2. <a href="/azure/active-directory-b2c/active-directory-b2c-tutorials-web-app">Ověřování uživatelů</a></p><p>3. <a href="/azure/active-directory-b2c/active-directory-b2c-tutorials-web-api">Udělení přístupu k rozhraní API</a></p>
-          - title: Plocha
-            html: <p>1. <a href="/azure/active-directory-b2c/tutorial-create-tenant">Vytvoření klienta</a></p><p>2. <a href="/azure/active-directory-b2c/active-directory-b2c-tutorials-desktop-app">Ověřování uživatelů</a></p><p>3. <a href="/azure/active-directory-b2c/active-directory-b2c-tutorials-desktop-app-webapi">Udělení přístupu k rozhraní API</a></p>
-          - title: Samostatná stránka
-            html: <p>1. <a href="/azure/active-directory-b2c/tutorial-create-tenant">Vytvoření klienta</a></p><p>2. <a href="/azure/active-directory-b2c/active-directory-b2c-tutorials-spa">Ověřování uživatelů</a></p><p>3. <a href="/azure/active-directory-b2c/active-directory-b2c-tutorials-spa-webapi">Udělení přístupu k rozhraní API</a></p>
-  - title: Ukázky
+    - image:
+        src: https://docs.microsoft.com/azure/active-directory-b2c/media/index/logo_NET.svg
+      text: .NET
+      href: https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-quickstarts-web-app
+    - image:
+        src: https://docs.microsoft.com/azure/active-directory-b2c/media/index/logo_windows.svg
+      text: Plocha
+      href: https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-quickstarts-desktop-app
+    - image:
+        src: https://docs.microsoft.com/azure/active-directory-b2c/media/index/logo_nodejs.svg
+      text: Samostatná stránka
+      href: https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-quickstarts-spa
+- title: Podrobné kurzy
+  items:
+  - type: paragraph
+    text: Zjistěte, jak ve svých aplikacích ASP.NET, desktopových aplikacích a jednostránkových aplikacích Node.js spravovat registraci, přihlašování a profily zákazníků.
+  - type: list
+    style: cards
+    className: cardsD
     items:
-      - type: paragraph
-        text: 'V těchto ukázkách se dozvíte, jak ve své aplikaci spravovat identity zákazníků.'
-      - type: list
-        style: unordered
-        className: spaced noBullet
-        items:
-          - html: '<a href="/azure/active-directory-b2c/code-samples">Mobilní, desktopové, webové a jednostránkové aplikace</a>'
+    - title: ASP.NET
+      html: <p>1. <a href="/azure/active-directory-b2c/tutorial-create-tenant">Vytvoření klienta</a></p><p>2. <a href="/azure/active-directory-b2c/active-directory-b2c-tutorials-web-app">Ověřování uživatelů</a></p><p>3. <a href="/azure/active-directory-b2c/active-directory-b2c-tutorials-web-api">Udělení přístupu k rozhraní API</a></p>
+    - title: Plocha
+      html: <p>1. <a href="/azure/active-directory-b2c/tutorial-create-tenant">Vytvoření klienta</a></p><p>2. <a href="/azure/active-directory-b2c/active-directory-b2c-tutorials-desktop-app">Ověřování uživatelů</a></p><p>3. <a href="/azure/active-directory-b2c/active-directory-b2c-tutorials-desktop-app-webapi">Udělení přístupu k rozhraní API</a></p>
+    - title: Samostatná stránka
+      html: <p>1. <a href="/azure/active-directory-b2c/tutorial-create-tenant">Vytvoření klienta</a></p><p>2. <a href="/azure/active-directory-b2c/active-directory-b2c-tutorials-spa">Ověřování uživatelů</a></p><p>3. <a href="/azure/active-directory-b2c/active-directory-b2c-tutorials-spa-webapi">Udělení přístupu k rozhraní API</a></p>
+- title: Ukázky
+  items:
+  - type: paragraph
+    text: V těchto ukázkách se dozvíte, jak ve své aplikaci spravovat identity zákazníků.
+  - type: list
+    style: unordered
+    className: spaced noBullet
+    items:
+    - html: <a href="/azure/active-directory-b2c/code-samples">Mobilní, desktopové, webové a jednostránkové aplikace</a>

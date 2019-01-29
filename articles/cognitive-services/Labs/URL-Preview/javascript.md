@@ -1,5 +1,5 @@
 ---
-title: 'Rychlý start: Project URL Preview, JavaScript'
+title: 'Rychlý start: Náhled adresy URL projektu, JavaScript'
 titlesuffix: Azure Cognitive Services
 description: Ukázkový skript, který vám pomůže rychle začít používat rozhraní URL Preview API Bingu pomocí JavaScriptu.
 services: cognitive-services
@@ -10,14 +10,14 @@ ms.component: url-preview
 ms.topic: quickstart
 ms.date: 03/16/2018
 ms.author: rosh
-ms.openlocfilehash: f36609448819ed197cb92c0bc4d9cc0237fe6df8
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
-ms.translationtype: HT
+ms.openlocfilehash: 08405d253cbc62b9f83bed63e3c252673649f7f9
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49466932"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55101198"
 ---
-# <a name="quickstart-url-preview-in-javascript"></a>Rychlý start: URL Preview s JavaScriptem 
+# <a name="quickstart-url-preview-in-javascript"></a>Rychlý start: Náhled adresy URL v jazyce JavaScript 
 
 Následující jednostránková aplikace používá JavaScript k vytvoření služby URL Preview pro web SwiftKey: https://swiftkey.com/en. 
 
@@ -34,7 +34,7 @@ Pokud se úspěšně vrátí odpověď, obslužná rutina přiřadí text JSON o
 
 **Nezpracovaná odpověď JSON**
 
-````
+```
 {
   "_type": "WebPage",
   "name": "SwiftKey - Smart prediction technology for easier mobile typing",
@@ -46,7 +46,7 @@ Pokud se úspěšně vrátí odpověď, obslužná rutina přiřadí text JSON o
   }
 }
 
-````
+```
 
 **Zkuste ukázku spustit**.
 
@@ -128,7 +128,7 @@ Spusťte aplikaci:
 
 ```
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 - [Rychlý start pro jazyk C#](csharp.md)
 - [Rychlý start pro Javu](java-quickstart.md)
 - [Rychlý start pro Node](node-quickstart.md)

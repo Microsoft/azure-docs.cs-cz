@@ -9,13 +9,13 @@ ms.workload: identity
 ms.topic: reference
 ms.date: 09/10/2018
 ms.author: davidmu
-ms.component: B2C
-ms.openlocfilehash: a49553941b83e323f23f20b794a464f47ef31981
-ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
+ms.subservice: B2C
+ms.openlocfilehash: 635700529007cc90c7e9b79c224f55f34b326f0f
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54849086"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55167066"
 ---
 # <a name="claimsschema"></a>ClaimsSchema
 
@@ -71,7 +71,7 @@ PredicateValidationReference| 0:1 | Odkaz na **PredicateValidationsInput** eleme
 
 | Atribut | Požadováno | Popis |
 | --------- | -------- | ----------- |
-| Název | Ano | Název platný protokol podporovaný službou Azure AD B2C. Možné hodnoty:  OAuth1, OAuth2, typu SAML2, OpenIdConnect, WsFed nebo WsTrust. |
+| Name | Ano | Název platný protokol podporovaný službou Azure AD B2C. Možné hodnoty:  OAuth1, OAuth2, typu SAML2, OpenIdConnect, WsFed nebo WsTrust. |
 | PartnerClaimType | Ano | Název typu deklarace identity se použije. |
 
 V následujícím příkladu, při architekturu rozhraní identit interakci s zprostředkovatele identity typu SAML2 nebo aplikaci předávající strany **příjmení** deklarace identity se mapuje na `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname`, OpenIdConnect a OAuth2, je deklarace identity mapovat na `family_name`.
@@ -106,7 +106,7 @@ V důsledku toho tokenu JWT vydaného službou Azure AD B2C, generuje `family_na
 
 | Atribut | Požadováno | Popis |
 | --------- | -------- | ----------- |
-| Typ | Ano | Typ deklarace identity masky. Možné hodnoty: `Simple` nebo `Regex`. `Simple` Hodnota označuje, že maska jednoduchý text platí pro přední části deklarace řetězec. `Regex` Hodnota značí, že regulární výraz se použije k deklaraci řetězec jako celek.  Pokud `Regex` není zadána hodnota, volitelný atribut musí být také definován pomocí regulárních výrazů používat. |
+| Type | Ano | Typ deklarace identity masky. Možné hodnoty: `Simple` nebo `Regex`. `Simple` Hodnota označuje, že maska jednoduchý text platí pro přední části deklarace řetězec. `Regex` Hodnota značí, že regulární výraz se použije k deklaraci řetězec jako celek.  Pokud `Regex` není zadána hodnota, volitelný atribut musí být také definován pomocí regulárních výrazů používat. |
 | Regex | Ne | Pokud **typ** je nastavena na `Regex`, zadejte regulární výraz k použití.
 
 Následující příklad nastaví **PhoneNumber** deklarace identity s `Simple` masky:
@@ -162,7 +162,7 @@ Architekturu rozhraní identit vykreslí pouze první písmeno e-mailovou adresu
 | Atribut | Požadováno | Popis |
 | --------- | -------- | ----------- |
 | Text | Ano | Řetězec zobrazení, která se zobrazí uživateli uživatelské rozhraní pro tuto možnost. |
-|Hodnota | Ano | Hodnota deklarace identity, která souvisí s výběrem této možnosti. |
+|Value | Ano | Hodnota deklarace identity, která souvisí s výběrem této možnosti. |
 | SelectByDefault | Ne | Určuje, zda by měla být vybraná tato možnost ve výchozím nastavení v uživatelském rozhraní. Možné hodnoty: True nebo False. |
 
 Následující příklad nastaví **Město** rozevírací seznam deklarací identity s výchozí nastavenou na `New York`:

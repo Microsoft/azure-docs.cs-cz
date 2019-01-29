@@ -3,19 +3,19 @@ title: Podpora jazyků – rozhraní API webové vyhledávání Bingu
 titleSuffix: Azure Cognitive Services
 description: Seznam přirozeného jazyka, země a oblasti, které podporují rozhraní API pro vyhledávání zpráv Bingu.
 services: cognitive-services
-author: v-jerkin
+author: aahill
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: bing-web-search
+ms.subservice: bing-web-search
 ms.topic: article
 ms.date: 09/25/2018
-ms.author: erhopf
-ms.openlocfilehash: c15e1ddd35e625a713ff569f26e9312d9dcd0bc8
-ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
+ms.author: aahi
+ms.openlocfilehash: dbe9fe5b8e9cd31ca20d88b7db89a9d35e1fe8de
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47435467"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55161134"
 ---
 # <a name="language-and-region-support-for-the-bing-web-search-api"></a>Podpora jazyka a oblasti pro rozhraní API webové vyhledávání Bingu
 
@@ -32,8 +32,8 @@ Alternativně můžete zadat na trh `mkt` parametr dotazu a kód z **trhy** tabu
 |Argentina|AR|
 |Austrálie|AU|
 |Rakousko|AT|
-|Belgie|BÝT|
-|Brazílie|BRAZÍLIE|
+|Belgie|BE|
+|Brazílie|BR|
 |Kanada|CA|
 |Chile|CL|
 |Dánsko|DK|
@@ -41,27 +41,27 @@ Alternativně můžete zadat na trh `mkt` parametr dotazu a kód z **trhy** tabu
 |Francie|FR|
 |Německo|DE|
 |Hongkong|HK|
-|Indie|INDIE|
+|Indie|IN|
 |Indonésie|ID|
 |Itálie|IT|
 |Japonsko|JP|
-|Jižní Korea|KOREA|
-|Malajsie|MOJE|
+|Jižní Korea|KR|
+|Malajsie|MY|
 |Mexiko|MX|
 |Nizozemsko|NL|
 |Nový Zéland|NZ|
-|Norsko|NE|
+|Norsko|NO|
 |Čína|CN|
 |Polsko|PL|
 |Portugalsko|PT|
 |Filipíny|PH|
 |Rusko|RU|
 |Saúdská Arábie|SA|
-|Jihoafrická republika|ZA|
+|Jižní Afrika|ZA|
 |Španělsko|ES|
 |Švédsko|SE|
 |Švýcarsko|CH|
-|Tchaj-wan|TRADIČNÍ ČÍNŠTINA|
+|Tchaj-wan|TW|
 |Turecko|TR|
 |Spojené království|GB|
 |Spojené státy|USA|
@@ -70,15 +70,15 @@ Alternativně můžete zadat na trh `mkt` parametr dotazu a kód z **trhy** tabu
 
 |Země/oblast|Jazyk|Kód na trhu|
 |-------|--------|-----------|
-|Argentina|Španělština|ES AR|
+|Argentina|Španělština|es-AR|
 |Austrálie|Angličtina|cs AU|
 |Rakousko|Němčina|de-AT|
 |Belgie|Holandština|nl-BE|
-|Belgie|Francouzština|FR-být|
+|Belgie|Francouzština|fr-BE|
 |Brazílie|Portugalština|pt-BR|
 |Kanada|Angličtina|cs CA|
 |Kanada|Francouzština|fr-CA|
-|Chile|Španělština|ES-CL|
+|Chile|Španělština|es-CL|
 |Dánsko|dánština|da-DK|
 |Finsko|Finština|fi-FI|
 |Francie|Francouzština|fr-FR|
@@ -100,7 +100,7 @@ Alternativně můžete zadat na trh `mkt` parametr dotazu a kód z **trhy** tabu
 |Filipíny|Angličtina|cs PH|
 |Rusko|ruština|ru-RU|
 |Saúdská Arábie|arabština|ar-SA|
-|Jihoafrická republika|Angličtina|cs ZA|
+|Jižní Afrika|Angličtina|en-ZA|
 |Španělsko|Španělština|es-ES|
 |Švédsko|švédština|sv-SE|
 |Švýcarsko|Francouzština|FR-CH|
@@ -108,5 +108,5 @@ Alternativně můžete zadat na trh `mkt` parametr dotazu a kód z **trhy** tabu
 |Tchaj-wan|Tradiční čínština|zh-TW|
 |Turecko|turečtina|tr-TR|
 |Spojené království|Angličtina|en-GB|
-|Spojené státy|Angličtina|cs-CZ|
-|Spojené státy|Španělština|ES US|
+|Spojené státy|Angličtina|en-US|
+|Spojené státy|Španělština|es-US|

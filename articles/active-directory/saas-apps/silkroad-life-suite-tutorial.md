@@ -8,19 +8,19 @@ manager: femila
 ms.reviewer: joflore
 ms.assetid: 3cd92319-7964-41eb-8712-444f5c8b4d15
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 12/12/2017
 ms.author: jeedes
-ms.openlocfilehash: 4d8be22a6b700d5ea9d95ee19d6ad3fa7bf5910a
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: fd5b4da77c31bd5e0c095f24bea2d6ed8b0e93ab
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39440828"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55154121"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-silkroad-life-suite"></a>Kurz: Integrace Azure Active Directory sadou SilkRoad životnosti
 
@@ -38,7 +38,7 @@ Pokud chcete zjistit další podrobnosti o integraci aplikací SaaS v Azure AD, 
 
 Konfigurace integrace Azure AD sadou SilkRoad životnosti, potřebujete následující položky:
 
-- S předplatným služby Azure AD
+- Předplatné Azure AD
 - Suite SilkRoad života jednotného přihlašování povoleno předplatné
 
 > [!NOTE]
@@ -60,7 +60,7 @@ Pokud chcete nakonfigurovat integraci sady života SilkRoad do služby Azure AD,
 
 **Chcete-li přidat SilkRoad života Suite z galerie, postupujte následovně:**
 
-1. V  **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu. 
+1. V **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu. 
 
     ![Tlačítko Azure Active Directory][1]
 
@@ -137,7 +137,7 @@ V této části Povolení služby Azure AD jednotného přihlašování na port�
     
 1. Na **SilkRoad života Suite konfigurace** klikněte na **konfiguraci sady života SilkRoad** otevřete **nakonfigurovat přihlašování** okno. Kopírovat **URL odhlašování SAML Entity ID a SAML jednotné přihlašování – adresa URL služby** z **Stručná referenční příručka oddílu.**
 
-    ![Konfigurace sady SilkRoad životnosti](./media/silkroad-life-suite-tutorial/tutorial_silkroadlifesuite_configure.png) 
+    ![SilkRoad Life Suite Configuration](./media/silkroad-life-suite-tutorial/tutorial_silkroadlifesuite_configure.png) 
 
 1. Přihlašování k webu společnosti SilkRoad jako správce. 
  
@@ -180,7 +180,7 @@ V této části Povolení služby Azure AD jednotného přihlašování na port�
 
     b. V **EntityId** textového pole vložte hodnotu **SAML Entity ID** zkopírovanou z webu Azure portal.
    
-    c. V **Popis zprostředkovatele identity** textového pole zadejte popis pro vaši konfiguraci (například: *jednotného přihlašování k Azure AD*).
+    c. V **Popis zprostředkovatele identity** textového pole zadejte popis pro vaši konfiguraci (například: *Azure AD SSO*).
 
     d. V **soubor metadat** nahrávání do textového pole **metadat** soubor, který jste si stáhli z webu Azure portal.
   
@@ -197,7 +197,7 @@ V této části Povolení služby Azure AD jednotného přihlašování na port�
      ![Azure AD jednotné přihlašování][17]
 
 > [!TIP]
-> Teď si můžete přečíst stručné verzi těchto pokynů uvnitř [webu Azure portal](https://portal.azure.com), zatímco jsou nastavení aplikace!  Po přidání této aplikace z **služby Active Directory > podnikové aplikace** části, stačí kliknout **Single Sign-On** kartu a přístup k vložené dokumentaci prostřednictvím  **Konfigurace** oblast v dolní části. Další informace o funkci vložená dokumentace: [dokumentace ke službě Azure AD embedded]( https://go.microsoft.com/fwlink/?linkid=845985)
+> Teď si můžete přečíst stručné verzi těchto pokynů uvnitř [webu Azure portal](https://portal.azure.com), zatímco jsou nastavení aplikace!  Po přidání této aplikace z **služby Active Directory > podnikové aplikace** části, stačí kliknout **Single Sign-On** kartu a přístup k vložené dokumentaci prostřednictvím  **Konfigurace** oblast v dolní části. Další informace o funkci vložená dokumentace: [Dokumentace ke službě Azure AD, embedded]( https://go.microsoft.com/fwlink/?linkid=845985)
 
 ### <a name="create-an-azure-ad-test-user"></a>Vytvořit testovacího uživatele Azure AD
 
@@ -233,7 +233,7 @@ Cílem této části je vytvoření zkušebního uživatele na webu Azure Portal
  
 ### <a name="create-a-silkroad-life-suite-test-user"></a>Vytvoření zkušebního uživatele SilkRoad života Suite
 
-V této části vytvořte uživatele Britta Simon sady SilkRoad život. Práce s [tým podpory SilkRoad života Suite klienta](https://www.silkroad.com/locations/) přidat uživatele na platformě SilkRoad života Suite. Uživatelé musí vytvořit a aktivovat, než použití jednotného přihlašování. 
+V této části vytvořte uživatele Britta Simon sady SilkRoad život. Práce s [tým podpory SilkRoad života Suite klienta](https://www.silkroad.com/locations/) přidat uživatele na platformě SilkRoad života Suite. Uživatelé musí vytvořit a aktivovat, než použití jednotného přihlašování. 
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřadit uživatele Azure AD
 
@@ -265,7 +265,7 @@ V této části je povolit Britta Simon používat jednotné přihlašování Az
 
 1. Klikněte na tlačítko **přiřadit** tlačítko **přidat přiřazení** dialogového okna.
     
-### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování
+### <a name="test-single-sign-on"></a>Test jednotného přihlašování
 
 V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 

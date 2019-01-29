@@ -13,17 +13,17 @@ ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 06/06/2018
+ms.date: 01/26/2019
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: c271efceacab7f310b8e08a28d101f653c73a186
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: 7916995d2630e9b33e3695c5c505925851ba4934
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52868544"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55092762"
 ---
-# <a name="tutorial-monitor-and-update-a-linux-virtual-machine-in-azure"></a>Kurz: Monitorování a aktualizace virtuálních počítačů s Linuxem v Azure
+# <a name="tutorial-monitor-and-update-a-linux-virtual-machine-in-azure"></a>Kurz: Monitorovat a aktualizovat virtuální počítač s Linuxem v Azure
 
 K zajištění správného chodu virtuálních počítačů v Azure můžete zkontrolovat diagnostiku spouštění, metriky výkonu a spravovat aktualizace balíčků. V tomto kurzu se naučíte:
 
@@ -153,7 +153,7 @@ Následující příklad vytvoří výstrahu týkající se průměrného využi
 5. Volitelně můžete zaškrtnutím políčka *Vlastníci, přispěvatelé a čtenáři e-mailů* odesílat oznámení e-mailem. Výchozí akce je zobrazení oznámení na portálu.
 6. Vyberte tlačítko **OK**.
 
-## <a name="manage-package-updates"></a>Správa aktualizace balíčků
+## <a name="manage-software-updates"></a>Správa aktualizací softwaru
 
 Správa aktualizací umožňuje spravovat aktualizace a opravy pro virtuální počítače Azure s Linuxem.
 Přímo z virtuálního počítače můžete rychle vyhodnotit stav dostupných aktualizací, naplánovat instalaci požadovaných aktualizací a zkontrolovat výsledky nasazení za účelem ověření správného použití aktualizací ve virtuálních počítačích.
@@ -175,15 +175,14 @@ Pracovní prostor [Log Analytics](../../log-analytics/log-analytics-overview.md)
 Tento pracovní prostor poskytuje možnost kontroly a analýzy dat z několika zdrojů na jednom místě.
 Pokud na virtuálních počítačích, které vyžadují aktualizace, chcete provádět další akce, Azure Automation umožňuje spouštět proti virtuálním počítačům runbooky například pro stahování a aplikování aktualizací.
 
-Proces ověřování také zkontroluje, jestli je virtuální počítač zřízený s agentem Microsoft Monitoring Agent (MMA) a hybridním pracovním procesem runbooku Automation.
-Agent slouží ke komunikaci s virtuálním počítačem a získávání informací o nainstalovaném softwaru.
+Proces ověřování také zkontroluje, jestli je virtuální počítač zřízený s agenta Log Analytics a hybrid runbook worker služby Automation. Agent slouží ke komunikaci s virtuálním počítačem a získávání informací o nainstalovaném softwaru.
 
 Zvolte pracovní prostor Log Analytics a účet služby Automation a vybráním možnosti **Povolit** řešení povolte. Povolení řešení trvá přibližně 15 minut.
 
 Pokud během připojování chyběla některá z následujících požadovaných součástí, automaticky se přidá:
 
 * Pracovní prostor [Log Analytics](../../log-analytics/log-analytics-overview.md)
-* [Automation](../../automation/automation-offering-get-started.md)
+* [Účet Automation](../../automation/automation-offering-get-started.md)
 * Povolený [hybridní pracovní proces runbooku](../../automation/automation-hybrid-runbook-worker.md) na virtuálním počítači
 
 Otevře se obrazovka řešení **Update Management**. Nakonfigurujte umístění, pracovní prostor Log Analytics a účet Automation, které se mají použít, a vyberte **Povolit**. Pokud se pole zobrazují šedě, znamená to, že pro daný virtuální počítač je povolené jiné řešení automatizace a musí se použít stejný pracovní prostor a účet Automation.
@@ -249,7 +248,7 @@ Výběrem možnosti **Chyby** zobrazíte podrobné informace o případných chy
 
 ## <a name="monitor-changes-and-inventory"></a>Monitorování změn a inventáře
 
-Můžete shromažďovat a zobrazovat inventář softwaru, souborů, linuxových procesů démon, služeb systému Windows a klíčů registru Windows na vašich počítačích. Sledování konfigurací vašich počítačů vám může pomoci přesně identifikovat provozní problémy napříč prostředím a lépe porozumět stavu vašich počítačů.
+Můžete shromažďovat a zobrazovat inventář softwaru, souborů, Linuxových procesů démon, služeb Windows a klíčů registru Windows na vašich počítačích. Sledování konfigurací vašich počítačů vám může pomoci přesně identifikovat provozní problémy napříč prostředím a lépe porozumět stavu vašich počítačů.
 
 ### <a name="enable-change-and-inventory-management"></a>Povolení správy změn a inventáře
 
@@ -291,22 +290,9 @@ Tento graf ukazuje změny, ke kterým došlo v průběhu času. Po přidání p�
 
 ## <a name="advanced-monitoring"></a>Pokročilé sledování
 
-K pokročilejšímu monitorování virtuálního počítače můžete použít řešení, jako jsou Update Management, Change Tracking a Inventory, která poskytuje [Azure Automation](../../automation/automation-intro.md).
+Můžete provést rozšířené monitorování virtuálního počítače pomocí řešení, jako je [monitorování Azure pro virtuální počítače](../../azure-monitor/insights/vminsights-overview.md), který sleduje vaše virtuální počítače Azure (VM) ve velkém měřítku prostřednictvím analýzy výkonu a stavu Windows a virtuální počítače s Linuxem, včetně jejich různé procesy a propojených záviset na jiných prostředcích a externí proces. Správa konfigurace virtuální počítače Azure se dodává se [Azure Automation](../../automation/automation-intro.md) řešení Change Tracking a Inventory snadno identifikovat změny ve vašem prostředí. Správa dodržování předpisů pro aktualizace je součástí řešení Azure Automation Update Management.   
 
-Pokud máte přístup k pracovnímu prostoru Log Analytics, můžete výběrem možnosti **Upřesnit nastavení** v části **NASTAVENÍ** zjistit klíč a identifikátor pracovního prostoru. Nahraďte \<klíč_pracovního_prostoru\> a \<ID_pracovního_prostoru\> hodnotami z pracovního prostoru Log Analytics a pak můžete pomocí příkazu **az vm extension set** přidat rozšíření na virtuální počítač:
-
-```azurecli-interactive
-az vm extension set \
-  --resource-group myResourceGroupMonitor \
-  --vm-name myVM \
-  --name OmsAgentForLinux \
-  --publisher Microsoft.EnterpriseCloud.Monitoring \
-  --version 1.3 \
-  --protected-settings '{"workspaceKey": "<workspace-key>"}' \
-  --settings '{"workspaceId": "<workspace-id>"}'
-```
-
-Po několika minutách by se nový počítač měl zobrazit v pracovním prostoru Log Analytics.
+Z není virtuální počítač je připojený k pracovnímu prostoru Log Analytics, můžete také načíst, konsolidovat a analýzy shromážděných dat s [Bohatý dotazovací jazyk](../../azure-monitor/log-query/log-query-overview.md). 
 
 ![Log Analytics](./media/tutorial-monitoring/tutorial-monitor-oms.png)
 

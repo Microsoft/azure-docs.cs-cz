@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.component: pim
+ms.subservice: pim
 ms.date: 01/24/2019
 ms.author: rolyon
-ms.openlocfilehash: 21decb8260abfe98df913763a2338b34aacb1f91
-ms.sourcegitcommit: 97d0dfb25ac23d07179b804719a454f25d1f0d46
+ms.openlocfilehash: 3308c0d53d849e5f5c27a54ec08ecb811a36a1be
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/25/2019
-ms.locfileid: "54911452"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55174733"
 ---
 # <a name="view-activity-and-audit-history-for-azure-resource-roles-in-pim"></a>Zobrazit historii aktivit a auditu pro role prostředků Azure v PIM
 

@@ -1,5 +1,5 @@
 ---
-title: 'Kurz: Integrace Azure Active Directory se službou Riskware | Dokumentace Microsoftu'
+title: 'Kurz: Integrace Azure Active Directory s Riskware | Dokumentace Microsoftu'
 description: Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a Riskware.
 services: active-directory
 documentationCenter: na
@@ -8,21 +8,21 @@ manager: femila
 ms.reviewer: joflore
 ms.assetid: 81866167-b163-4695-8978-fd29a25dac7a
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 06/27/2018
 ms.author: jeedes
-ms.openlocfilehash: 4c664fac99e93e94b46f5d917a63aa6530b695bd
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 3b4c979bf03b23280c9389a043375f088624efe6
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39437769"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55163241"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-riskware"></a>Kurz: Integrace Azure Active Directory se službou Riskware
+# <a name="tutorial-azure-active-directory-integration-with-riskware"></a>Kurz: Integrace Azure Active Directory s Riskware
 
 V tomto kurzu se dozvíte, jak integrovat Riskware s Azure Active Directory (Azure AD).
 
@@ -38,7 +38,7 @@ Pokud chcete zjistit další podrobnosti o integraci aplikací SaaS v Azure AD, 
 
 Konfigurace integrace Azure AD s Riskware, potřebujete následující položky:
 
-- S předplatným služby Azure AD
+- Předplatné Azure AD
 - Riskware jednotného přihlašování povolená předplatného
 
 > [!NOTE]
@@ -60,7 +60,7 @@ Konfigurace integrace Riskware do služby Azure AD, budete muset přidat Riskwar
 
 **Chcete-li přidat Riskware z galerie, postupujte následovně:**
 
-1. V  **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu. 
+1. V **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu. 
 
     ![Tlačítko Azure Active Directory][1]
 
@@ -111,17 +111,17 @@ V této části Povolení služby Azure AD jednotného přihlašování na port�
     a. V **přihlašovací adresa URL** textového pole zadejte adresu URL pomocí následujícímu vzoru:
     | Prostředí| Vzor adresy URL|
     |--|--|
-    | UAT|  `https://riskcloud.net/uat?ccode=<COMPANYCODE>` |
-    | PRODUKČNÍ| `https://riskcloud.net/prod?ccode=<COMPANYCODE>` |
-    | UKÁZKA| `https://riskcloud.net/demo?ccode=<COMPANYCODE>` |
+    | UAT|  `https://riskcloud.net/uat?ccode=<COMPANYCODE>` |
+    | PRODUKČNÍ| `https://riskcloud.net/prod?ccode=<COMPANYCODE>` |
+    | DEMO| `https://riskcloud.net/demo?ccode=<COMPANYCODE>` |
     |||
 
     b. V **identifikátor (Entity ID)** textového pole zadejte adresu URL:
     | Prostředí| Vzor adresy URL|
     |--|--|
-    | UAT| `https://riskcloud.net/uat` |
-    | PRODUKČNÍ| `https://riskcloud.net/prod` |
-    | UKÁZKA| `https://riskcloud.net/demo` |
+    | UAT| `https://riskcloud.net/uat` |
+    | PRODUKČNÍ| `https://riskcloud.net/prod` |
+    | DEMO| `https://riskcloud.net/demo` |
     |||
 
     > [!NOTE]
@@ -167,7 +167,7 @@ V této části Povolení služby Azure AD jednotného přihlašování na port�
 
     g. V **názvu značky XML Identity** textové pole, typ atributu, který obsahuje jedinečný identifikátor v odpověď SAML NameID.
 
-    h. Otevřete na stažený **soubor Xml s metadaty** z webu Azure portal v programu Poznámkový blok, zkopírujte certifikát ze souboru metadat a vložte ho do **certifikát** textové pole
+    h. Otevřete na stažený **soubor Xml s metadaty** z webu Azure portal v programu Poznámkový blok, zkopírujte certifikát ze souboru metadat a vložte ho do **certifikát** textové pole
 
     i. V **příjemce URL** textového pole vložte hodnotu **adresy URL odpovědi**, které můžete získat na tým podpory.
 
@@ -292,7 +292,7 @@ V této části je povolit Britta Simon k udělení přístupu k Riskware použi
 
 1. Klikněte na tlačítko **přiřadit** tlačítko **přidat přiřazení** dialogového okna.
     
-### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování
+### <a name="test-single-sign-on"></a>Test jednotného přihlašování
 
 V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 

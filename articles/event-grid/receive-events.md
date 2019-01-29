@@ -8,12 +8,12 @@ ms.service: event-grid
 ms.topic: conceptual
 ms.date: 01/01/2019
 ms.author: babanisa
-ms.openlocfilehash: bb82ef542db09b3b7f864c4901107e1c5c0827f6
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: bb22a2545466c72f7dac68f80668b8b530832c21
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54464765"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55094714"
 ---
 # <a name="receive-events-to-an-http-endpoint"></a>Příjem událostí pro koncový bod HTTP
 
@@ -370,6 +370,6 @@ Můžete také otestovat za provozu pomocí této funkce [odesílání vlastníc
 
 ## <a name="next-steps"></a>Další postup
 
-* Prozkoumejte [Azure Event Grid Management a publikování sad SDK](./sdk-overview.md)
+* Prozkoumejte [správy Azure Event Grid a publikování sad SDK](./sdk-overview.md)
 * Zjistěte, jak [odeslat do vlastního tématu](./post-to-custom-topic.md)
 * Zkuste použít jeden z podrobné kurzy služby Event Grid a funkce, jako [změny velikosti obrázků nahrané do úložiště objektů Blob](resize-images-on-storage-blob-upload-event.md)

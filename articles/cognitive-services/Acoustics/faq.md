@@ -6,16 +6,16 @@ services: cognitive-services
 author: kegodin
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: acoustics
+ms.subservice: acoustics
 ms.topic: conceptual
 ms.date: 08/17/2018
 ms.author: kegodin
-ms.openlocfilehash: b8b5ea39c1cfb3a37a8e3009f59312728bcb0331
-ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
+ms.openlocfilehash: 07e65e6ff544d6372197010a2b9d7f3f647eeb0f
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "48900389"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55166556"
 ---
 # <a name="frequently-asked-questions"></a>Nejčastější dotazy
 
@@ -69,7 +69,7 @@ Projekt Akustika poskytuje přesným a spolehlivým akustický parametry i pro m
 
 ## <a name="what-exactly-happens-during-baking"></a>Co se stane přesně během "pečení"?
 
-Systém bere v úvahu potenciální umístění player generují sadu rovnoměrně rozmístěné "probe" Ukázkový pozic. Která má označení vytvoření pro úroveň se skládá z nezávislých úloh, které pro každý test: systém bere v úvahu cuboid "Simulace oblasti" na střed v testu a nemá podrobné wave simulace v dané oblasti až 25 cm rozlišením.
+Systém bere v úvahu potenciální umístění player generují sadu rovnoměrně rozmístěné "probe" Ukázkový pozic. Která má označení vytvoření pro úroveň se skládá z nezávislých úloh, které pro každý test: Systém bude považovat za cuboid "Simulace oblasti" na střed v testu a nemá podrobné wave simulace v dané oblasti až 25 cm rozlišením.
 
 ## <a name="next-steps"></a>Další kroky
 * Prozkoumejte [ukázková Scéna](sample-walkthrough.md)

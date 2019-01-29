@@ -7,19 +7,19 @@ author: jeevansd
 manager: daveba
 ms.assetid: 7ea58b54-ec5b-4576-8586-814b11d0f4fb
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 06/13/2017
 ms.author: jeedes
-ms.openlocfilehash: 9d5da9f1d49f666af4afc275e5ffa5f5afb6699e
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: 9bf1cbd093e5261da08ea2a09289036de8f54eb7
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54811260"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55189744"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-yardi-elearning"></a>Kurz: Integrace Azure Active Directory s Yardi hodnoceného
 

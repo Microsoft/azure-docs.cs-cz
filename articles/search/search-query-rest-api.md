@@ -1,6 +1,6 @@
 ---
 title: Dotazování indexu v kódu pomocí rozhraní REST API – Azure Search
-description: Příkazy HTTP a rozhraní REST API pro builidng vyhledávacího dotazu ve službě Azure Search. Přidání parametrů hledání k filtrování a řazení výsledků hledání.
+description: Příkazy HTTP a kódu rozhraní API REST pro vytváření vyhledávacího dotazu ve službě Azure Search. Přidání parametrů hledání k filtrování a řazení výsledků hledání.
 author: brjohnstmsft
 manager: jlembicz
 ms.author: brjohnst
@@ -9,12 +9,12 @@ ms.service: search
 ms.topic: quickstart
 ms.date: 04/20/2018
 ms.custom: seodec2018
-ms.openlocfilehash: ccdb872646dded34cb50cd64f56733445132c4b7
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: e453e05a692e862179dcd78298b215a2384cba2c
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53316916"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55092800"
 ---
 # <a name="query-your-azure-search-index-using-the-rest-api"></a>Dotazování indexu Azure Search pomocí REST API
 > [!div class="op_single_selector"]

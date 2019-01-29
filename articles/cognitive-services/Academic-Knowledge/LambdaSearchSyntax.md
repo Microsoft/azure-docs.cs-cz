@@ -6,16 +6,16 @@ services: cognitive-services
 author: alch-msft
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: academic-knowledge
+ms.subservice: academic-knowledge
 ms.topic: conceptual
 ms.date: 03/23/2017
 ms.author: alch
-ms.openlocfilehash: 284f1d90f043e2634e143508e2ab0e98cd309f46
-ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
+ms.openlocfilehash: a76be5203c7d62ba973993bf6338b7496e2fce80
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "48902684"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55203925"
 ---
 # <a name="lambda-search-syntax"></a>Syntaxe prohledávání lambda
 
@@ -45,7 +45,7 @@ Pro *VisitNode()*, jsme také můžete předat ve výrazu lambda typu *výraz\<F
 VisitNode(Expression<Func<INode, Action>> action, IEnumerable<string> select = null)
 ```
 
-## <a name="inode"></a>*Uzlů* 
+## <a name="inode"></a>*INode* 
 
 *Uzlů* poskytuje *jen pro čtení* rozhraní a několik integrovaných pomocných funkcí na uzlu přístupu k datům. 
 
@@ -93,7 +93,7 @@ Vrátí *Action.Continue* Pokud podmínka není *true*. Pokud je podmínka *fals
 
 Generuje náhodné číslo, které je větší než nebo rovna hodnotě 0,0 a menší než 1,0. Tato funkce vrací *true* pouze v případě, že číslo je menší než nebo rovna *p*.
 
-Ve srovnání s *json* vyhledávání, *lambda* je více výrazovými možnostmi vyhledávání: lambda výrazy jazyka C# můžete přímo použít k určení vzory dotazů. Tady jsou dva příklady.
+Ve srovnání s *json* vyhledávání, *lambda* vyhledávání je více výrazovými možnostmi: C#výrazy lambda přímo slouží k určení vzory dotazů. Tady jsou dva příklady.
 
 ```
 MAG.StartFrom(@"{

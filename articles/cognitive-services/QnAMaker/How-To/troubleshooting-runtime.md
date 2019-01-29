@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 01/14/2019
 ms.author: tulasim
 ms.custom: seodec18
-ms.openlocfilehash: 23216df139ba3bc4023d3a01c8e7b9914cccfba5
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.openlocfilehash: a31a9db62c220e0c1bd3709a37ee662693b07511
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54261521"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55096921"
 ---
 # <a name="troubleshooting-tips-to-support-the-qna-maker-service-and-runtime"></a>Tipy pro řešení potíží pro podporu služba QnA Maker a modulu runtime
 QnA maker se skládá z komponent, které jsou hostované v Azure účet uživatele. Ladění může vyžadovat, aby uživatelé pracovat s svoje prostředky Azure QnA maker nebo tým podpory QnA maker poskytnout další informace o jejich nastavení.
@@ -54,4 +54,4 @@ Název hostitele služby QnA maker je užitečné pro účely ladění, když po
 ## <a name="next-steps"></a>Další postup
 
 > [!div class="nextstepaction"]
-> [Použití rozhraní QnAMaker API](./upgrade-qnamaker-service.md)
+> [Zlepšení znalostní báze otázek pomocí aktivní učení](./improve-knowledge-base.md)

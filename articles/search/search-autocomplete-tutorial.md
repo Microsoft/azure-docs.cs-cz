@@ -10,12 +10,12 @@ ms.topic: tutorial
 ms.date: 07/11/2018
 ms.author: mcarter
 ms.custom: seodec2018
-ms.openlocfilehash: 10f86a482fbb35e7276f8f689a7eba184a7b624b
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: a0b4301177fa1307244a784031ec890b9a20f01a
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53316178"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55099104"
 ---
 # <a name="tutorial-add-auto-complete-to-your-search-box-using-azure-search"></a>Kurz: Přidání automatické dokončování vaší vyhledávací pole s použitím Azure Search
 
@@ -60,7 +60,7 @@ Postup v této části použijte v případě, že chcete importovat data pro uk
 
 ### <a name="running-the-sample"></a>Spuštění ukázky
 
-Teď jste připraveni spustit ukázkovou aplikaci.  V sadě Visual Studio otevřete soubor řešení AutocompleteTutorial.sln a spusťte kurz.  Řešení obsahuje projekt ASP.NET MVC.  Stisknutím klávesy F5 projekt spusťte a načtěte stránku v libovolném prohlížeči.  V horní části se zobrazí možnost výběru jazyka C# nebo JavaScriptu.  Možnost jazyka C# volá z prohlížeče kontroler HomeController a k načtení výsledků používá sadu .NET SDK služby Azure Search.  Možnost JavaScriptu volá přímo z prohlížeče rozhraní REST API služby Azure Search.  Tato možnost bude obvykle znatelně výkonnější, protože nevyužívá kontroler.  Můžete si vybrat možnost, která vyhovuje vašim potřebám a upřednostňovanému jazyku.  Stránka obsahuje několik příkladů automatického dokončování společně s pokyny.  U každého příkladu je uvedený doporučený ukázkový text, který můžete vyzkoušet.  Zkuste do každého vyhledávacího pole zadat několik písmen a sledujte, co se stane.
+Teď jste připraveni spustit ukázkovou aplikaci.  V sadě Visual Studio otevřete soubor řešení AutocompleteTutorial.sln a spusťte kurz.  Řešení obsahuje projekt ASP.NET MVC.  Stisknutím klávesy F5 projekt spusťte a načtěte stránku v libovolném prohlížeči.  V horní části se zobrazí možnost výběru jazyka C# nebo JavaScriptu.  Možnost jazyka C# volá z prohlížeče kontroler HomeController a k načtení výsledků používá sadu .NET SDK služby Azure Search.  Možnost JavaScriptu volá přímo z prohlížeče rozhraní REST API služby Azure Search.  Tato možnost se obvykle mít výrazně vyšší výkon, protože trvá kontroleru mimo tento tok.  Můžete si vybrat možnost, která vyhovuje vašim potřebám a upřednostňovanému jazyku.  Stránka obsahuje několik příkladů automatického dokončování společně s pokyny.  U každého příkladu je uvedený doporučený ukázkový text, který můžete vyzkoušet.  Zkuste do každého vyhledávacího pole zadat několik písmen a sledujte, co se stane.
 
 ## <a name="how-this-works-in-code"></a>Jak to funguje v kódu
 

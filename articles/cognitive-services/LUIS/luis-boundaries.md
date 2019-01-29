@@ -8,15 +8,15 @@ manager: cgronlun
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
-ms.date: 01/22/2019
+ms.date: 01/28/2019
 ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: 7f8f4848b7181ad3df7ad4fa009ff284de381b75
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: 592b8500f9b032a20bb991326201d45db586980d
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54820406"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55177509"
 ---
 # <a name="boundaries-for-your-luis-model-and-keys"></a>Hranice pro LUIS model a klíče
 Služba LUIS má několik oblasti hranic. První je [modelu hranice](#model-boundaries), který určuje záměrů, entit a funkcí v LUIS. Druhá oblast je [kvóty](#key-limits) podle typu klíče. Je třetí oblasti hranic [klávesové kombinace](#keyboard-controls) pro řízení webu LUIS. Je čtvrtý oblast [mapování oblasti world](luis-reference-regions.md) mezi LUIS vytváření webu a LUIS [koncový bod](luis-glossary.md#endpoint) rozhraní API. 
@@ -24,15 +24,14 @@ Služba LUIS má několik oblasti hranic. První je [modelu hranice](#model-boun
 
 ## <a name="model-boundaries"></a>Model hranice
 
-
 |Oblast|Omezení|
 |--|:--|--|
 | [Název aplikace][luis-get-started-create-app] | * Znak výchozí maximální |
 | [Testování služby batch][batch-testing]| 10 datové sady, 1000 projevy na datovou sadu|
 | Explicitní seznam | 50 na aplikaci.|
-| [Záměrů][intents]|500 na aplikaci.<br>[Na základě odeslání](https://aka.ms/dispatch-tool) aplikace nemá odpovídající 500 odeslání zdroje|
+| [Záměrů][intents]|500 na aplikaci: 499 vlastní záměry a požadované _žádný_ záměr.<br>[Na základě odeslání](https://aka.ms/dispatch-tool) aplikace nemá odpovídající 500 odeslání zdroje.|
 | [Seznam entit](./luis-concept-entity-types.md) | Nadřazený objekt: 50, podřízené: 20 000 položek. Název v kanonickém tvaru je * výchozí maximální počet znaků. Synonymum hodnoty mají žádné omezení délky. |
-| [Počítače zjištěné entity](./luis-concept-entity-types.md):<br> Složené,<br>  Hierarchické<br> Jednoduchý|100 <br>Celkový počet entit se naučili počítače (jednoduchý, hierarchických a složené entity) nemůže být delší než 100. Složené a hierarchické entity nemůže mít více než 10 podřízené objekty.  |
+| [Počítače zjištěné entity](./luis-concept-entity-types.md):<br> Složené,<br>  Hierarchické<br> Jednoduchý|Limit 100 nadřazené entity (včetně není hierarchický podřízených prvků) nebo 330 entity (včetně hierarchické podřízených prvků), podle toho, co omezit přístupů uživatel poprvé.<br><br>Příklad s hierarchií by 30 hierarchie každý s 10 podřízených objektů.  Podřízené objekty spotřebuje 300 celkový a prvky hierarchie spotřebuje zbývajících 30. |
 | [Vzory](luis-concept-patterns.md)|500 vzory na jednu žádost.<br>Maximální délka vzor je až 400 znaků.<br>3 entity Pattern.any za vzor<br>Maximálně 2 vnořené volitelné texty ve vzoru|
 | [Pattern.Any](./luis-concept-entity-types.md)|100 na aplikaci, 3 entity pattern.any za vzor |
 | [Seznam frází][phrase-list]|10 seznamy frázi, 5 000 položek na seznam|

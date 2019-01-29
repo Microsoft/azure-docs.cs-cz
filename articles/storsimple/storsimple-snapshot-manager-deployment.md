@@ -1,6 +1,6 @@
 ---
-title: Nasazení Snapshot Manager zařízení StorSimple | Microsoft Docs
-description: Zjistěte, jak stáhnout a nainstalovat Snapshot Manager zařízení StorSimple, modul snap-in konzoly MMC pro správu funkce pro ochranu a zálohování dat StorSimple.
+title: Nasazení Snapshot Manageru zařízení StorSimple | Dokumentace Microsoftu
+description: Zjistěte, jak stáhnout a nainstalovat StorSimple Snapshot Manageru, modul snap-in konzoly MMC pro správu funkcí ochrany a zálohování dat StorSimple.
 services: storsimple
 documentationcenter: NA
 author: SharS
@@ -14,205 +14,205 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 06/05/2017
 ms.author: v-sharos
-ms.openlocfilehash: cde355381b0d726a1ab340bc4230b2dc8f6e2c56
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: ee17e4b69d1e6c9de465e4241ee2237361e320b7
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "23876317"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55168001"
 ---
-# <a name="deploy-the-storsimple-snapshot-manager-mmc-snap-in"></a>Nasazení modulu snap-in konzoly MMC Snapshot Manager zařízení StorSimple
+# <a name="deploy-the-storsimple-snapshot-manager-mmc-snap-in"></a>Nasazení modulu snap-in konzoly MMC StorSimple Snapshot Manageru
 
 ## <a name="overview"></a>Přehled
-Snapshot Manager zařízení StorSimple je modul snap-in konzoly Microsoft Management Console (MMC), který zjednodušuje ochrany dat a správu záloh v prostředí Microsoft Azure StorSimple. S StorSimple Snapshot Manager můžete spravovat Microsoft Azure StorSimple místního a cloudového úložiště, jako by šlo plně integrované úložiště systému, proto kvůli zjednodušení procesů zálohování a obnovení a snižuje tak náklady. 
+StorSimple Snapshot Manageru je modul snap-in konzoly Microsoft Management Console (MMC), který zjednodušuje ochranu dat a správy zálohování v prostředí Microsoft Azure StorSimple. Pomocí StorSimple Snapshot Manager můžete spravovat Microsoft Azure StorSimple v místním a cloudovém úložišti, jako kdyby byly plně integrované úložný systém, tedy zjednodušení procesů zálohování a obnovení a snížit náklady na. 
 
-Tento kurz popisuje požadavky na konfiguraci, také s postupy pro instalaci, odebrání a upgrade StorSimple Snapshot Manager.
+Tento kurz popisuje požadavky na konfiguraci, také s postupy pro instalaci, odebrání a inovace StorSimple Snapshot Manageru.
 
 > [!NOTE]
-> * StorSimple Snapshot Manager nelze použít pro správu Microsoft Azure StorSimple virtuální pole (také označované jako StorSimple místní virtuální zařízení).
-> * Pokud plánujete nainstalovat StorSimple Update 2 na zařízení StorSimple, je nutné stáhnout nejnovější verzi služby StorSimple Snapshot Manager a nainstalujte ji **před instalací StorSimple Update 2**. Nejnovější verzi služby StorSimple Snapshot Manager je zpětně kompatibilní a spolupracuje s všechny vydané verze Microsoft Azure StorSimple. Pokud používáte předchozí verze služby StorSimple Snapshot Manager, musíte aktualizovat (není nutné odinstalovat předchozí verzi před instalací nové verze).
+> * StorSimple Snapshot Manageru nejde použít pro správu Microsoft Azure StorSimple virtuální pole (označované také jako StorSimple místní virtuální zařízení).
+> * Pokud budete chtít nainstalovat StorSimple Update 2 na zařízení StorSimple, je potřeba stáhnout nejnovější verzi StorSimple Snapshot Manageru a nainstalujte ho **před instalací StorSimple Update 2**. Nejnovější verzi StorSimple Snapshot Manageru je zpětně kompatibilní a funguje ve všech vydaných verzích Microsoft Azure StorSimple. Pokud používáte předchozí verzi StorSimple Snapshot Manageru, je potřeba aktualizovat (není potřeba odinstalovat předchozí verzi před instalací nové verze).
 
 
-## <a name="storsimple-snapshot-manager-installation"></a>Instalace Snapshot Manager zařízení StorSimple
-StorSimple Snapshot Manager lze nainstalovat do počítačů se systémem Windows Server 2008 R2 SP1, Windows Server 2012 nebo operačního systému Windows Server 2012 R2. Na serverech se systémem Windows 2008 R2 musíte také nainstalovat systém Windows Server 2008 SP1 a Windows Management Framework 3.0.
+## <a name="storsimple-snapshot-manager-installation"></a>Instalace StorSimple Snapshot Manageru
+StorSimple Snapshot Manageru můžete nainstalovat na počítačích, na kterých běží Windows Server 2008 R2 SP1, Windows Server 2012 nebo operační systém Windows Server 2012 R2. Na serverech se systémem Windows 2008 R2 musíte také nainstalovat systém Windows Server 2008 SP1 a Windows Management Framework 3.0.
 
-Před instalací nebo upgradem modulu snap-in Snapshot Manager zařízení StorSimple pro Microsoft Management Console (MMC), ujistěte se, zda jsou správně nakonfigurovány pro zařízení a hostitele server Microsoft Azure StorSimple.
+Před instalací nebo upgradovat modulu snap-in StorSimple Snapshot Manageru Microsoft Management Console (MMC), ujistěte se, zda jsou správně nakonfigurovány zařízení a hostitelů serveru Microsoft Azure StorSimple.
 
-## <a name="configure-prerequisites"></a>Konfigurace požadavků
-V následujících krocích najdete přehled úlohy konfigurace, které je třeba provést před instalací StorSimple Snapshot Manager. Kompletní konfigurace Microsoft Azure StorSimple a informace o instalaci, včetně požadavky na systém a podrobné pokyny najdete v tématu [nasazení místního zařízení StorSimple](storsimple-8000-deployment-walkthrough-u2.md).
+## <a name="configure-prerequisites"></a>Konfigurovat požadavky související s
+Následující kroky obsahují podrobný přehled úlohy konfigurace, které musíte provést před instalací StorSimple Snapshot Manageru. Kompletní konfigurace Microsoft Azure StorSimple a informace o nastavení, včetně požadavky na systém a podrobné pokyny najdete v tématu [nasazení zařízení StorSimple v místním](storsimple-8000-deployment-walkthrough-u2.md).
 
 > [!IMPORTANT]
-> Než začnete, zkontrolujte [kontrolní seznam konfigurace nasazení](storsimple-8000-deployment-walkthrough-u2.md#deployment-configuration-checklist) a a [požadavky nasazení](storsimple-8000-deployment-walkthrough-u2.md#deployment-prerequisites) v [nasazení místního zařízení StorSimple](storsimple-8000-deployment-walkthrough-u2.md).
+> Než začnete, projděte si [kontrolní seznam konfigurace nasazení](storsimple-8000-deployment-walkthrough-u2.md#deployment-configuration-checklist) a a [požadavky na nasazení](storsimple-8000-deployment-walkthrough-u2.md#deployment-prerequisites) v [nasazení zařízení StorSimple v místním](storsimple-8000-deployment-walkthrough-u2.md).
 > <br>
 > 
 > 
 
-### <a name="before-you-install-storsimple-snapshot-manager"></a>Před instalací Snapshot Manager zařízení StorSimple
-1. – Vybalení, připojení a připojení zařízení Microsoft Azure StorSimple, jak je popsáno v [instalace zařízení StorSimple 8100](storsimple-8100-hardware-installation.md) nebo [instalace zařízení StorSimple 8600](storsimple-8600-hardware-installation.md).
-2. Ověřte, že hostitelský počítač je spuštěný jeden z následujících operačních systémů:
+### <a name="before-you-install-storsimple-snapshot-manager"></a>Před instalací StorSimple Snapshot Manageru
+1. Rozbalit, připojit a připojení zařízení Microsoft Azure StorSimple, jak je popsáno v [instalaci zařízení StorSimple 8100](storsimple-8100-hardware-installation.md) nebo [instalaci zařízení StorSimple 8600](storsimple-8600-hardware-installation.md).
+2. Ujistěte se, že hostitelský počítač s některým z následujících operačních systémů:
    
    * Windows Server 2008 R2 (na servery se systémem Windows 2008 R2, musíte také nainstalovat systém Windows Server 2008 SP1 a Windows Management Framework 3.0)
    * Windows Server 2012
    * Windows Server 2012 R2
      
-     Hostitel pro virtuální zařízení StorSimple, musí být virtuální počítač Microsoft Azure.
-3. Ujistěte se, že jsou splněny všechny požadavky konfigurace Microsoft Azure StorSimple. Podrobnosti, přejděte na [požadavky nasazení](storsimple-8000-deployment-walkthrough-u2.md#deployment-prerequisites).
-4. Připojit zařízení k hostiteli a provedení počáteční konfigurace. Podrobnosti, přejděte na [kroky nasazení](storsimple-8000-deployment-walkthrough-u2.md#deployment-steps).
-5. Vytvářet svazky na zařízení, je přiřadit ke hostitele a ověřte, zda hostitel může připojit a používat. StorSimple Snapshot Manager podporuje následující typy svazků:
+     Hostitel pro virtuální zařízení StorSimple, musí být na virtuálním počítači Microsoft Azure.
+3. Ujistěte se, že se splnily všechny požadavky konfigurace Microsoft Azure StorSimple. Podrobnosti najdete v části [požadavky na nasazení](storsimple-8000-deployment-walkthrough-u2.md#deployment-prerequisites).
+4. Připojení zařízení k hostiteli a proveďte počáteční konfiguraci. Podrobnosti najdete v části [kroky nasazení](storsimple-8000-deployment-walkthrough-u2.md#deployment-steps).
+5. Vytvořte svazky na zařízení, je přiřadit k hostiteli a ověřte, že hostitel může připojit a jejich použití. StorSimple Snapshot Manager podporuje následující typy svazků:
    
    * Základní svazky
    * Jednoduché svazky
    * Dynamické svazky
    * Zrcadlené dynamické svazky (RAID 1)
-   * Sdílených svazků clusteru
+   * Sdílené svazky clusteru
      
-     Informace o vytváření svazků v zařízení StorSimple nebo virtuální zařízení StorSimple, přejděte na [krok 6: vytvoření svazku](storsimple-8000-deployment-walkthrough-u2.md#step-6-create-a-volume)v [nasazení místního zařízení StorSimple](storsimple-8000-deployment-walkthrough-u2.md).
+     Informace o vytváření svazků v zařízení StorSimple nebo virtuální zařízení StorSimple, přejděte na [krok 6: Vytvoření svazku](storsimple-8000-deployment-walkthrough-u2.md#step-6-create-a-volume)v [nasazení zařízení StorSimple v místním](storsimple-8000-deployment-walkthrough-u2.md).
 
-## <a name="install-a-new-storsimple-snapshot-manager"></a>Instalace nové Snapshot Manager zařízení StorSimple
-Před instalací Snapshot Manager zařízení StorSimple, ujistěte se, že jsou svazky, které jste vytvořili v zařízení StorSimple nebo virtuální zařízení StorSimple připojené, inicializovat a naformátován, jak je popsáno v [konfigurace požadavků](#configure-prerequisites).
+## <a name="install-a-new-storsimple-snapshot-manager"></a>Instalace nové StorSimple Snapshot Manageru
+Před instalací StorSimple Snapshot Manageru, ujistěte se, že do svazků vytvořených v zařízení StorSimple nebo virtuální zařízení StorSimple připojit, inicializovat a ve formátu, jak je popsáno v [konfigurovat požadavky související s](#configure-prerequisites).
 
 > [!IMPORTANT]
-> * Hostitel pro virtuální zařízení StorSimple, musí být virtuální počítač Microsoft Azure. 
-> * Hostitel musí používat Windows 2008 R2, Windows Server 2012 nebo Windows Server 2012 R2. Pokud váš server se systémem Windows Server 2008 R2, musíte také nainstalovat Windows Server 2008 SP1 a Windows Management Framework 3.0.
-> * Připojení k iSCSI na hostiteli a zařízení StorSimple je nutné nakonfigurovat, než se zařízení může připojit k systému StorSimple Snapshot Manager.
+> * Hostitel pro virtuální zařízení StorSimple, musí být na virtuálním počítači Microsoft Azure. 
+> * Hostitel musí běžet Windows 2008 R2, Windows Server 2012 nebo Windows Server 2012 R2. Pokud na serveru běží Windows Server 2008 R2, musíte také nainstalovat systém Windows Server 2008 SP1 a Windows Management Framework 3.0.
+> * Předtím, než zařízení lze připojit k Snapshot Manageru zařízení StorSimple je nutné nakonfigurovat připojení k iSCSI z hostitele do zařízení StorSimple.
 
-Postupujte podle následujících kroků dokončete novou instalací služby StorSimple Snapshot Manager. Pokud instalujete upgrade, přejděte na [upgradovat nebo přeinstalovat StorSimple Snapshot Manager](#upgrade-or-reinstall-storsimple-snapshot-manager).
+Postupujte podle následujících kroků dokončete instalaci StorSimple Snapshot Manageru. Pokud instalujete upgrade, přejděte na [upgradovat nebo přeinstalovat StorSimple Snapshot Manageru](#upgrade-or-reinstall-storsimple-snapshot-manager).
 
-* Krok 1: Instalace zařízení StorSimple Snapshot Manager 
-* Krok 2: Připojení k zařízení StorSimple Snapshot Manager 
+* Krok 1: Nainstalovat Snapshot Manageru zařízení StorSimple 
+* Krok 2: Připojení k zařízení StorSimple Snapshot Manageru 
 * Krok 3: Ověření připojení k zařízení 
 
-### <a name="step-1-install-storsimple-snapshot-manager"></a>Krok 1: Instalace zařízení StorSimple Snapshot Manager
-Pomocí následujících kroků k instalaci StorSimple Snapshot Manager.
+### <a name="step-1-install-storsimple-snapshot-manager"></a>Krok 1: Nainstalovat Snapshot Manageru zařízení StorSimple
+Následujícím postupem nainstalujte StorSimple Snapshot Manageru.
 
-#### <a name="to-install-storsimple-snapshot-manager"></a>Chcete-li nainstalovat Snapshot Manager zařízení StorSimple
-1. Stáhněte si software Snapshot Manager zařízení StorSimple (přejděte na [StorSimple Snapshot Manager](https://www.microsoft.com/download/details.aspx?id=44220) na webu Microsoft Download Center) a uložte místně na hostiteli.
-2. V Průzkumníku souborů klikněte pravým tlačítkem na komprimovanou složku a pak klikněte na tlačítko **extrahujte všechny**.
-3. V **extrahujte komprimované (Zipped) složky** okno v **vyberte cíl a extrahujte soubory** zadejte nebo vyhledejte cestu, kam chcete soubor k extrakci.
+#### <a name="to-install-storsimple-snapshot-manager"></a>Chcete-li nainstalovat StorSimple Snapshot Manageru
+1. Stáhnout software Snapshot Manageru zařízení StorSimple (přejděte na [StorSimple Snapshot Manageru](https://www.microsoft.com/download/details.aspx?id=44220) webu Microsoft Download Center) a uložte ho místně na hostiteli.
+2. V Průzkumníku souborů klikněte pravým tlačítkem na komprimovanou složku a potom klikněte na tlačítko **extrahovat všechny**.
+3. V **extrahujte komprimované (Zipped) složky** okno v **vyberte cíl a extrahování souborů** zadejte nebo přejděte na cestu, kam chcete soubor, který má být extrahován.
    
     > [!IMPORTANT]
-    > Snapshot Manager zařízení StorSimple je nutné nainstalovat na jednotce C:.
+    > StorSimple Snapshot Manageru je nutné nainstalovat na jednotce C:.
     
-4. Vyberte **zobrazit rozbalené soubory po dokončení** zaškrtněte políčko a potom klikněte na **extrahovat**.
+4. Vyberte **zobrazit rozbalené soubory po dokončení** zaškrtněte políčko a potom klikněte na tlačítko **extrahovat**.
    
-    ![Extrahujte soubory](./media/storsimple-snapshot-manager-deployment/HCS_SSM_extract_files.png) 
-5. Po dokončení extrahování otevře cílovou složku. Dvakrát klikněte na ikonu instalační program aplikace, která se zobrazí v cílové složce.
-6. Když **instalační program úspěšně** se zobrazí zpráva, klikněte na tlačítko **Zavřít**. Měli byste vidět StorSimple Snapshot Manager ikony na ploše.
+    ![Extrahujte soubory dialogové okno](./media/storsimple-snapshot-manager-deployment/HCS_SSM_extract_files.png) 
+5. Po dokončení extrakce otevře do cílové složky. Dvakrát klikněte na ikonu nastavení aplikace, která se zobrazí v cílové složce.
+6. Když **instalace úspěšná** se zobrazí zpráva, klikněte na tlačítko **Zavřít**. Na ploše by měl zobrazit ikonu StorSimple Snapshot Manageru.
    
     ![ikony na ploše](./media/storsimple-snapshot-manager-deployment/HCS_SSM_desktop_icon.png) 
 
-### <a name="step-2-connect-storsimple-snapshot-manager-to-a-device"></a>Krok 2: Připojení k zařízení StorSimple Snapshot Manager
-Pomocí následujících kroků pro připojení k zařízení StorSimple Snapshot Manager zařízení StorSimple.
+### <a name="step-2-connect-storsimple-snapshot-manager-to-a-device"></a>Krok 2: Připojení k zařízení StorSimple Snapshot Manageru
+Pomocí následujících kroků pro připojení k zařízení StorSimple Snapshot Manageru zařízení StorSimple.
 
-#### <a name="to-connect-storsimple-snapshot-manager-to-a-device"></a>Pro připojení k zařízení StorSimple Snapshot Manager
-1. Klikněte na ikonu Snapshot Manager zařízení StorSimple na ploše. Zobrazí se okno StorSimple Snapshot Manager. Okno obsahuje **oboru** podokně **výsledky** podokně a **akce** podokně. 
+#### <a name="to-connect-storsimple-snapshot-manager-to-a-device"></a>Pro připojení k zařízení StorSimple Snapshot Manageru
+1. Klikněte na ikonu StorSimple Snapshot Manageru na ploše. Zobrazí se okno StorSimple Snapshot Manageru. Okno obsahuje **oboru** podokně **výsledky** podokně a **akce** podokně. 
    
-    ![Uživatelské rozhraní Snapshot Manager zařízení StorSimple](./media/storsimple-snapshot-manager-deployment/HCS_SSM_gui_panes.png)
+    ![Uživatelské rozhraní StorSimple Snapshot Manageru](./media/storsimple-snapshot-manager-deployment/HCS_SSM_gui_panes.png)
    
-   * **Oboru** podokně (levé podokno) obsahuje seznam uzlů, které jsou uspořádány do stromové struktury. Můžete rozbalit uzly a vyberte zobrazení nebo konkrétní data související s Tento uzel. Kliknutím na ikonu šipky rozbalit nebo Sbalit uzel. Klikněte pravým tlačítkem na položku v **oboru** podokno zobrazíte seznam dostupných akcí pro tuto položku.
-   * **Výsledky** podokně (prostřední podokno) obsahuje podrobné informace o uzlu, zobrazení nebo data, která jste vybrali v stavu **oboru** podokně.
-   * **Akce** uvádí operace, které můžete provádět na uzlu, zobrazení nebo data, která jste vybrali v podokně **oboru** podokně.
+   * **Oboru** podokně (levé podokno) obsahuje seznam uzlů, které jsou uspořádány ve stromové struktuře. Některé uzly výběr zobrazení nebo konkrétní data týkající se takový uzel můžete rozbalit. Klikněte na ikonu šipky pro rozbalení a sbalení uzlu. Klikněte pravým tlačítkem na položku **oboru** podokno zobrazíte seznam dostupných akcí pro danou položku.
+   * **Výsledky** podokno (prostřední podokno) obsahuje podrobné informace o uzlu, zobrazení nebo data, která jste vybrali v stavu **oboru** podokně.
+   * **Akce** podokně je seznam operací, které můžete provést na uzlu, zobrazení nebo data, která jste vybrali v **oboru** podokně.
      
-     Úplný popis uživatelské rozhraní Snapshot Manager zařízení StorSimple, najdete v části [StorSimple Snapshot Manager uživatelské rozhraní](storsimple-use-snapshot-manager.md).
-2. V **oboru** podokně klikněte pravým tlačítkem myši **zařízení** uzel a pak klikněte na tlačítko **nakonfigurovat zařízení**. **Nakonfigurovat zařízení** zobrazí se dialogové okno.
+     Úplný popis uživatelské rozhraní StorSimple Snapshot Manageru najdete v tématu [uživatelské rozhraní StorSimple Snapshot Manageru](storsimple-use-snapshot-manager.md).
+2. V **oboru** podokně klikněte pravým tlačítkem na **zařízení** uzlu a pak klikněte na tlačítko **nakonfigurovat zařízení**. **Nakonfigurovat zařízení** zobrazí se dialogové okno.
    
     ![Konfigurace zařízení](./media/storsimple-snapshot-manager-deployment/HCS_SSM_config_device.png) 
-3. V **zařízení** vyberte IP adresu zařízení Microsoft Azure StorSimple nebo virtuální zařízení. V **heslo** textové pole, zadejte heslo Snapshot Manager zařízení StorSimple, kterou jste vytvořili pro zařízení na portálu Azure. Klikněte na **OK**.
-4. StorSimple Snapshot Manager hledá zařízení, které jste určili. Pokud zařízení není k dispozici, StorSimple Snapshot Manager přidá připojení. Můžete [ověřit připojení k zařízení](#to-verify-the-connection) potvrďte, že připojení byl úspěšně přidán.
+3. V **zařízení** seznamu, vyberte IP adresu virtuálního zařízení na zařízení Microsoft Azure StorSimple. V **heslo** textové pole, zadejte heslo Snapshot Manageru zařízení StorSimple, kterou jste vytvořili pro zařízení na portálu Azure portal. Klikněte na **OK**.
+4. StorSimple Snapshot Manageru vyhledá na zařízení, které jste určili. Pokud je zařízení k dispozici, přidá StorSimple Snapshot Manageru připojení. Je možné [ověřit připojení k zařízení](#to-verify-the-connection) potvrďte, že připojení byl úspěšně přidán.
    
-    Pokud zařízení není k dispozici z jakéhokoli důvodu, StorSimple Snapshot Manager vrátí chybovou zprávu. Klikněte na tlačítko **OK** zavřete chybovou zprávu, a pak klikněte na **zrušit** zavřete **nakonfigurovat zařízení** dialogové okno.
-5. Při připojení zařízení StorSimple Snapshot Manager importuje každý svazek skupiny nakonfigurované pro toto zařízení za předpokladu, že svazek skupiny přidruženy zálohy. Svazek skupin, které nemají přidružených záloh nebyly naimportovány. Kromě toho zásady zálohování, které byly vytvořeny pro skupinu svazku nebyly naimportovány. Zobrazení importované skupin, klikněte pravým tlačítkem na nejvyšší úrovni **svazku skupiny** uzlu v **oboru** panelu a klikněte na tlačítko **přepnutí importovaných skupin**.
+    Pokud zařízení není k dispozici z jakéhokoli důvodu, StorSimple Snapshot Manageru vrátí chybovou zprávu. Klikněte na tlačítko **OK** zavřete chybovou zprávu a pak klikněte na tlačítko **zrušit** zavřete **nakonfigurovat zařízení** dialogové okno.
+5. Při připojení k zařízení StorSimple Snapshot Manageru importuje každý svazek skupiny nakonfigurované pro dané zařízení za předpokladu, že skupiny svazků má přidružené zálohy. Nejsou naimportovány skupin svazků, které nemají přidružené zálohy. Kromě toho nejsou importovány zásady zálohování, které byly vytvořeny pro skupiny svazků. Pokud chcete zobrazit importované skupiny, klikněte pravým tlačítkem na nejvyšší **skupin svazků** uzlu v **oboru** podokně a klepněte na **přepnout importované skupiny**.
 
 ### <a name="step-3-verify-the-connection-to-the-device"></a>Krok 3: Ověření připojení k zařízení
-Pomocí následujících kroků ověřte, zda je připojen StorSimple Snapshot Manager zařízení StorSimple.
+Ověřit připojení k zařízení StorSimple Snapshot Manageru zařízení StorSimple pomocí následujících kroků.
 
 #### <a name="to-verify-the-connection"></a>Chcete-li ověřit připojení
-1. V **oboru** podokně klikněte **zařízení** uzlu.
+1. V **oboru** podokně klikněte na tlačítko **zařízení** uzlu.
    
-    ![Stav zařízení StorSimple Snapshot Manager](./media/storsimple-snapshot-manager-deployment/HCS_SSM_Device_status.png) 
-2. Zkontrolujte **výsledky** podokně: 
+    ![Stav zařízení StorSimple Snapshot Manageru](./media/storsimple-snapshot-manager-deployment/HCS_SSM_Device_status.png) 
+2. Zkontrolujte, **výsledky** podokna: 
    
-   * Pokud se zobrazí na zelenou ukazatel na ikonu zařízení a **dostupné** se zobrazí v **stav** sloupec a potom zařízení je připojen. 
-   * Pokud se zobrazí červený ukazatele na ikonu zařízení a není k dispozici v **stav** sloupec a potom zařízení není připojen. 
-   * Pokud **aktualizace** se zobrazí v **stav** sloupec a potom StorSimple Snapshot Manager načítá skupiny svazku a přidružených záloh pro připojené zařízení.
+   * Pokud na ikonu zařízení, zobrazí se zelená indikátor a **dostupné** se zobrazí v **stav** sloupec a pak zařízení je připojené. 
+   * Pokud na zařízení ikonu se zobrazí červený indikátor a není k dispozici v **stav** sloupec a pak zařízení není připojený. 
+   * Pokud **aktualizací** se zobrazí v **stav** sloupec a pak StorSimple Snapshot Manageru je načítání skupin svazků a přidružené zálohy pro připojené zařízení.
 
-## <a name="upgrade-or-reinstall-storsimple-snapshot-manager"></a>Upgradovat nebo přeinstalovat Snapshot Manager zařízení StorSimple
-StorSimple Snapshot Manager byste měli odinstalovat úplně upgradovat nebo přeinstalovat software. 
+## <a name="upgrade-or-reinstall-storsimple-snapshot-manager"></a>Upgradovat nebo přeinstalovat StorSimple Snapshot Manageru
+StorSimple Snapshot Manageru byste měli odinstalovat úplně upgradovat nebo přeinstalovat software. 
 
-Před opětovnou instalací Snapshot Manager zařízení StorSimple, zálohujte existující databázi Snapshot Manager zařízení StorSimple na hostitelském počítači. To umožňuje ušetřit informace o zálohování zásad a konfigurace tak, aby tato data můžete snadno obnovit ze zálohy.
+Před opětovnou instalací StorSimple Snapshot Manageru, proveďte zálohu existující databáze StorSimple Snapshot Manageru v hostitelském počítači. Toto uloží informace o zálohování zásady a konfigurace tak, aby tato data můžete snadno obnovit ze zálohy.
 
-Pokud se upgrade nebo opětovné instalaci Snapshot Manager zařízení StorSimple, postupujte takto:
+Pokud se upgrade nebo opětovné instalace StorSimple Snapshot Manageru, postupujte takto:
 
-* Krok 1: Odinstalujte Snapshot Manager zařízení StorSimple 
-* Krok 2: Vytvořte zálohu databáze Snapshot Manager zařízení StorSimple 
-* Krok 3: Přeinstalujte Snapshot Manager zařízení StorSimple a obnovení databáze 
+* Krok 1: Odinstalujte StorSimple Snapshot Manageru 
+* Krok 2: Proveďte zálohu databáze StorSimple Snapshot Manageru 
+* Krok 3: Přeinstalujte StorSimple Snapshot Manageru a obnovit databázi 
 
-### <a name="step-1-uninstall-storsimple-snapshot-manager"></a>Krok 1: Odinstalujte Snapshot Manager zařízení StorSimple
-K odinstalaci StorSimple Snapshot Manager použijte následující postup.
+### <a name="step-1-uninstall-storsimple-snapshot-manager"></a>Krok 1: Odinstalujte StorSimple Snapshot Manageru
+Použijte následující postup odinstalace StorSimple Snapshot Manageru.
 
-#### <a name="to-uninstall-storsimple-snapshot-manager"></a>Chcete-li odinstalovat Snapshot Manager zařízení StorSimple
-1. Otevřete na hostitelském počítači, **ovládací panely**, klikněte na tlačítko **programy**a potom klikněte na **programy a funkce**.
-2. V levém podokně klikněte na **odinstalovat nebo změnit program**.
-3. Klikněte pravým tlačítkem na **StorSimple Snapshot Manager**a potom klikněte na **odinstalovat**.
-4. Spustí se StorSimple Snapshot Manager instalační program. Klikněte na tlačítko **upravit nastavení**a potom klikněte na **odinstalovat**.
+#### <a name="to-uninstall-storsimple-snapshot-manager"></a>Chcete-li odinstalovat StorSimple Snapshot Manageru
+1. Na hostitelském počítači, otevřete **ovládací panely**, klikněte na tlačítko **programy**a potom klikněte na tlačítko **programy a funkce**.
+2. V levém podokně klikněte na tlačítko **odinstalovat nebo změnit program**.
+3. Klikněte pravým tlačítkem na **StorSimple Snapshot Manageru**a potom klikněte na tlačítko **odinstalovat**.
+4. Spustí se StorSimple Snapshot Manageru instalační program. Klikněte na tlačítko **upravit instalaci**a potom klikněte na tlačítko **odinstalovat**.
    
    > [!NOTE]
-   > Pokud neexistují žádné procesy konzoly MMC, spuštěná na pozadí, třeba Snapshot Manager zařízení StorSimple nebo Správa disků, odinstalace selže a zobrazí se zpráva, zavřete všechny instance konzoly MMC před dalším pokusem o odinstalovat program. Vyberte **automaticky ukončit aplikace a pokusit se je restartovat po dokončení instalace**a potom klikněte na **OK**.
+   > Pokud neexistují žádné procesy konzoly MMC běžet na pozadí, jako je Snapshot Manageru zařízení StorSimple nebo Správa disků, odinstalace selže a zobrazí se zpráva, zavřete všechny instance konzoly MMC, než se pokusíte odinstalovat program. Vyberte **automaticky ukončit aplikace a pokusit se je restartovat po dokončení instalace**a potom klikněte na tlačítko **OK**.
    > 
    > 
-5. Po dokončení procesu odinstalace **instalační program úspěšně** se zobrazí zpráva. Klikněte na **Zavřít**.
+5. Po dokončení odinstalace **instalace úspěšná** se zobrazí zpráva. Klikněte na **Zavřít**.
 
-### <a name="step-2-back-up-the-storsimple-snapshot-manager-database"></a>Krok 2: Vytvořte zálohu databáze Snapshot Manager zařízení StorSimple
-Pomocí následujících kroků vytvořte a uložte kopii databáze StorSimple Snapshot Manager.
+### <a name="step-2-back-up-the-storsimple-snapshot-manager-database"></a>Krok 2: Proveďte zálohu databáze StorSimple Snapshot Manageru
+Následujícím postupem vytvoříte a uložíte kopii databáze StorSimple Snapshot Manageru.
 
 #### <a name="to-back-up-the-database"></a>K zálohování databáze
-1. Zastavte službu Microsoft StorSimple správy:
+1. Zastavte službu Microsoft StorSimple pro správu:
    
    1. Spusťte správce serveru.
    2. Na řídicím panelu Správce serveru na **nástroje** nabídce vyberte možnost **služby**.
-   3. Na **služby** vyberte **služba správy zařízení StorSimple Microsoft**.
-   4. V pravém podokně v části **služba správy zařízení StorSimple Microsoft**, klikněte na tlačítko **zastavit službu**.
+   3. Na **služby** stránce **službě pro správu Microsoft StorSimple**.
+   4. V pravém podokně v části **službě pro správu Microsoft StorSimple**, klikněte na tlačítko **zastavit službu**.
       
-        ![Zastavte službu StorSimple Manager zařízení](./media/storsimple-snapshot-manager-deployment/HCS_SSM_stop_service.png)
-2. Přejděte do C:\ProgramData\Microsoft\StorSimple\BACatalog. 
+        ![Zastavte služby Správce zařízení StorSimple](./media/storsimple-snapshot-manager-deployment/HCS_SSM_stop_service.png)
+2. Přejděte na C:\ProgramData\Microsoft\StorSimple\BACatalog. 
    
    > [!NOTE]
    > ProgramData je skrytá složka.
   
-3. Najít soubor XML katalogu, zkopírujte soubor a uložení kopie do bezpečného umístění nebo v cloudu.
+3. Najít soubor XML katalogu, zkopírujte soubor a kopii uložit na bezpečném místě nebo v cloudu.
    
-    ![Soubor zálohy katalogu StorSimple](./media/storsimple-snapshot-manager-deployment/HCS_SSM_bacatalog.png)
-4. Restartujte službu Microsoft StorSimple Management: 
+    ![Soubor katalogu záloh StorSimple](./media/storsimple-snapshot-manager-deployment/HCS_SSM_bacatalog.png)
+4. Restartujte službu Microsoft StorSimple pro správu: 
    
    1. Na řídicím panelu Správce serveru na **nástroje** nabídce vyberte možnost **služby**.
-   2. Na **služby** vyberte **Microsoft StorSimple správu Statistika**e.
-   3. V pravém podokně v části **služba správy zařízení StorSimple Microsoft**, klikněte na tlačítko **restartujte službu**. 
+   2. Na **služby** stránky, vyberte **službě pro správu Microsoft StorSimple**.
+   3. V pravém podokně v části **službě pro správu Microsoft StorSimple**, klikněte na tlačítko **restartujte službu**. 
 
-### <a name="step-3-reinstall-storsimple-snapshot-manager-and-restore-the-database"></a>Krok 3: Přeinstalujte Snapshot Manager zařízení StorSimple a obnovení databáze
-Přeinstalujte Snapshot Manager zařízení StorSimple, postupujte podle kroků v [nainstalovat nový StorSimple Snapshot Manager](#install-a-new-storsimple-snapshot-manager). Pak použijte následující postup k obnovení databáze StorSimple Snapshot Manager.
+### <a name="step-3-reinstall-storsimple-snapshot-manager-and-restore-the-database"></a>Krok 3: Přeinstalujte StorSimple Snapshot Manageru a obnovit databázi
+StorSimple Snapshot Manager přeinstalovat, postupujte podle kroků v [nainstalovat nový StorSimple Snapshot Manageru](#install-a-new-storsimple-snapshot-manager). Pak následujícím postupem obnovit databázi StorSimple Snapshot Manageru.
 
-#### <a name="to-restore-the-database"></a>Obnovení databáze
-1. Zastavte službu Microsoft StorSimple správy:
+#### <a name="to-restore-the-database"></a>Chcete-li obnovit databázi
+1. Zastavte službu Microsoft StorSimple pro správu:
    
    1. Spusťte správce serveru.
    2. Na řídicím panelu Správce serveru na **nástroje** nabídce vyberte možnost **služby**.
-   3. Na **služby** vyberte **služba správy zařízení StorSimple Microsoft**.
-   4. V pravém podokně v části **služba správy zařízení StorSimple Microsoft**, klikněte na tlačítko **zastavit službu**.
-2. Přejděte do C:\ProgramData\Microsoft\StorSimple\BACatalog.
+   3. Na **služby** stránce **službě pro správu Microsoft StorSimple**.
+   4. V pravém podokně v části **službě pro správu Microsoft StorSimple**, klikněte na tlačítko **zastavit službu**.
+2. Přejděte na C:\ProgramData\Microsoft\StorSimple\BACatalog.
    
    > [!NOTE]
    > ProgramData je skrytá složka.
    > 
    > 
-3. Odstraňte soubor XML katalogu a nahraďte ji na verzi, který jste předtím uložili.
-4. Restartujte službu Microsoft StorSimple Management: 
+3. Odstranit soubor XML katalogu a nahradit verzí, kterou jste předtím uložili.
+4. Restartujte službu Microsoft StorSimple pro správu: 
    
    1. Na řídicím panelu Správce serveru na **nástroje** nabídce vyberte možnost **služby**.
-   2. Na **služby** vyberte **služba správy zařízení StorSimple Microsoft**.
-   3. V pravém podokně v části **služba správy zařízení StorSimple Microsoft**, klikněte na tlačítko **restartujte službu**.
+   2. Na **služby** stránce **službě pro správu Microsoft StorSimple**.
+   3. V pravém podokně v části **službě pro správu Microsoft StorSimple**, klikněte na tlačítko **restartujte službu**.
 
-## <a name="next-steps"></a>Další kroky
-* Další informace o Snapshot Manager zařízení StorSimple, přejděte na [co je StorSimple Snapshot Manager?](storsimple-what-is-snapshot-manager.md).
-* Další informace o uživatelském rozhraní Snapshot Manager zařízení StorSimple, přejděte na [StorSimple Snapshot Manager uživatelské rozhraní](storsimple-use-snapshot-manager.md).
-* Další informace o používání Snapshot Manager zařízení StorSimple, přejděte na [použití StorSimple Snapshot Manager ke správě vašeho řešení StorSimple](storsimple-snapshot-manager-admin.md).
+## <a name="next-steps"></a>Další postup
+* Další informace o StorSimple Snapshot Manageru, přejděte na [co je StorSimple Snapshot Manager?](storsimple-what-is-snapshot-manager.md).
+* Další informace o uživatelském rozhraní StorSimple Snapshot Manageru, přejděte na [uživatelské rozhraní StorSimple Snapshot Manageru](storsimple-use-snapshot-manager.md).
+* Další informace o použití StorSimple Snapshot Manageru, přejděte na [pomocí StorSimple Snapshot Manager ke správě vašeho řešení StorSimple](storsimple-snapshot-manager-admin.md).
 

@@ -8,18 +8,18 @@ manager: mtillman
 editor: ''
 ms.service: active-directory
 ms.workload: identity
-ms.component: users-groups-roles
+ms.subservice: users-groups-roles
 ms.topic: article
 ms.date: 10/30/2018
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
-ms.openlocfilehash: be880b937f254cbf8115d1a5129069069a0c7eea
-ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
+ms.openlocfilehash: dabee3f4eb6fb2bf4f58ff8654068e138858dbbd
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50249661"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55156917"
 ---
 # <a name="create-a-dynamic-group-and-check-status"></a>Vytvoření dynamické skupiny a zkontrolovat stav
 
@@ -54,17 +54,17 @@ Zobrazí členství na zpracování stavu a datum poslední aktualizace **přehl
 
 Tyto stavové zprávy lze zobrazit pro **členství zpracování** stavu:
 
-* **Vyhodnocení**: byla přijata změnu skupiny a aktualizace se právě vyhodnocována.
-* **Zpracování**: aktualizace se právě zpracovává.
-* **Dokončena aktualizace**: bylo dokončeno zpracování a provedli všechny použitelné aktualizace.
-* **Chyba zpracování**: došlo k chybě při vyhodnocování pravidel členství a nešlo ho dokončit zpracování.
-* **Pozastavená aktualizace**: aktualizace byla pozastavena správcem pravidlo dynamického členství. MembershipRuleProcessingState nastavená na "Pozastaveno".
+* **Vyhodnocení**:  Byla přijata změnu skupiny a aktualizace se právě vyhodnocována.
+* **Zpracování**: Aktualizace se právě zpracovává.
+* **Dokončena aktualizace**: Bylo dokončeno zpracování a provedli všechny použitelné aktualizace.
+* **Chyba zpracování**: Došlo k chybě při vyhodnocování pravidel členství a nešlo ho dokončit zpracování.
+* **Pozastavená aktualizace**: Aktualizace pravidla dynamického členství byla pozastavena správcem. MembershipRuleProcessingState nastavená na "Pozastaveno".
 
 Tyto stavové zprávy lze zobrazit pro **členství poslední aktualizace** stavu:
 
-* &lt;**Datum a čas**&gt;: poslední čas aktualizace členství.
-* **V průběhu**: momentálně probíhají aktualizace.
-* **Neznámý**: Nelze získat čas poslední aktualizace. Může být příčinou nově vytvářené skupiny.
+* &lt;**Datum a čas**&gt;: Čas posledního členství byl aktualizován.
+* **V průběhu**: Právě probíhají aktualizace.
+* **Neznámý**: Čas poslední aktualizace nelze načíst. Může být příčinou nově vytvářené skupiny.
 
 Pokud dojde k chybě při zpracování pravidla členství pro konkrétní skupinu, upozornění se zobrazí v horní **stránka s přehledem** pro skupinu. Pokud ne čekající členství v dynamické aktualizace lze zpracovat pro všechny skupiny v rámci tenanta pro další pak 24 hodin, upozornění se zobrazí v horní **všechny skupiny**.
 

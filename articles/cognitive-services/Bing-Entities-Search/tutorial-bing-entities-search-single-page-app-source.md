@@ -1,23 +1,23 @@
 ---
-title: 'Kurz: Vyhledávání entit Bingu pomocí jednostránkové webové aplikace (zdrojový kód)'
+title: 'Kurz: Vyhledávání entit Bingu jednostránkovou webovou aplikaci (zdrojového kódu)'
 titlesuffix: Azure Cognitive Services
 description: Zdrojový kód pro kurz, který ukazuje, jak používat rozhraní API Bingu pro vyhledávání entit v jednostránkové webové aplikaci.
 services: cognitive-services
-author: v-jerkin
+author: aahill
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: bing-entity-search
+ms.subservice: bing-entity-search
 ms.topic: tutorial
 ms.date: 10/04/2017
-ms.author: v-jerkin
-ms.openlocfilehash: 09cb10002be43d65ff10e3c238a880cf138aa064
-ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
-ms.translationtype: HT
+ms.author: aahi
+ms.openlocfilehash: 6165bca1eff248f15cfce4638a6f9817db550c04
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48815048"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55156254"
 ---
-# <a name="tutorial-single-page-web-app-source"></a>Kurz: Zdroj jednostránkové webové aplikace
+# <a name="tutorial-single-page-web-app-source"></a>Kurz: Zdroj jednostránkovou webovou aplikaci
 
 Toto je úplný zdrojový kód probíraný v [kurzu o jednostránkové aplikaci](tutorial-bing-entities-search-single-page-app.md) pro vyhledávání entit Bingu. Pokud chcete aplikaci spustit, zkopírujte zdrojový kód do Poznámkového bloku nebo jiného textového editoru a uložte ho jako `bing.html`. Potom otevřete uložený soubor v Microsoft Edgi nebo jiném oblíbeném prohlížeči.
 

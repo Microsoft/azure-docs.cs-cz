@@ -6,17 +6,17 @@ services: cognitive-services
 author: aahill
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: bing-web-search
+ms.subservice: bing-web-search
 ms.topic: quickstart
 ms.date: 9/26/2018
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: 3d8b323a316dcef10a0d7beb5d1d2dd122b0e2ba
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: e07b38c74e4ed815d5ec52be97c2b6a8e7b6ddb0
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53255580"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55166233"
 ---
 # <a name="search-the-web-using-the-bing-web-search-rest-api-and-nodejs"></a>Vyhledávání na webu pomocí rozhraní API REST webové vyhledávání Bingu a Node.js
 

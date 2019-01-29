@@ -10,12 +10,12 @@ ms.author: mimart
 author: msmimart
 manager: mtillman
 ms.reviewer: mal
-ms.openlocfilehash: 5259176328803d3b6c0715c741d7f43b6ecc2d8a
-ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
+ms.openlocfilehash: bc88b46182eadf431efcb5be89f05256a9e0eb1b
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/26/2019
-ms.locfileid: "55082508"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55095541"
 ---
 # <a name="email-one-time-passcode-authentication-preview"></a>Ověření e-mailu jednorázové heslo (preview)
 
@@ -81,29 +81,29 @@ Nejprve budete muset nainstalovat nejnovější verzi Azure AD PowerShell pro mo
 #### <a name="prerequisite-install-the-latest-azureadpreview-module"></a>Předpoklad: Instalace nejnovějšího modulu AzureADPreview
 Nejdřív zkontrolujte, které moduly jste nainstalovali. Otevřete Windows PowerShell se zvýšenými uživatelskými oprávněními (Spustit jako správce) a spusťte následující příkaz:
  
-````powershell  
+```powershell  
 Get-Module -ListAvailable AzureAD*
-````
+```
 
 Pokud se modul AzureADPreview zobrazí bez zprávy s oznámením, že existuje novější verze, je všechno připravené. V opačném případě proveďte na základě výstupu jednu z následujících akcí:
 
 - Pokud se nezobrazí žádné výsledky, spusťte k instalaci modulu AzureADPreview následující příkaz:
   
-   ````powershell  
+   ```powershell  
    Install-Module AzureADPreview
-   ````
+   ```
 - Pokud se ve výsledcích zobrazí pouze modul AzureAD, spusťte k instalaci modulu AzureADPreview tyto příkazy: 
 
-   ````powershell 
+   ```powershell 
    Uninstall-Module AzureAD 
    Install-Module AzureADPreview 
-   ````
+   ```
 - Pokud se ve výsledcích zobrazí pouze modul AzureADPreview, ale zobrazí se zpráva, že existuje novější verze, aktualizujte ho následujícími příkazy: 
 
-   ````powershell 
+   ```powershell 
    Uninstall-Module AzureADPreview 
    Install-Module AzureADPreview 
-  ````
+  ```
 
 Může se zobrazit výzva, že modul instalujete z nedůvěryhodného úložiště. K tomu dochází, pokud jste úložiště PSGallery dříve nenastavili jako důvěryhodné. Stisknutím klávesy **Y** modul nainstalujte.
 
@@ -111,25 +111,25 @@ Může se zobrazit výzva, že modul instalujete z nedůvěryhodného úložišt
 
 V dalším kroku zkontrolujte, jestli aktuálně existuje B2BManagementPolicy spuštěním následujícího:
 
-````powershell 
+```powershell 
 $currentpolicy =  Get-AzureADPolicy | ?{$_.Type -eq 'B2BManagementPolicy' -and $_.IsOrganizationDefault -eq $true} | select -First 1
 $currentpolicy -ne $null
-````
+```
 - Pokud výstupem je False, neexistuje aktuálně zásady. Vytvořte nový B2BManagementPolicy a přihlásit se k verzi preview spuštěním následujícího:
 
-   ````powershell 
+   ```powershell 
    $policyValue=@("{`"B2BManagementPolicy`":{`"PreviewPolicy`":{`"Features`":[`"OneTimePasscode`"]}}}")
    New-AzureADPolicy -Definition $policyValue -DisplayName B2BManagementPolicy -Type B2BManagementPolicy -IsOrganizationDefault $true
-   ````
+   ```
 
 - Pokud výstupem je hodnota True, zásady B2BManagementPolicy aktuálně existuje. Aktualizovat zásady a přihlásit se k verzi preview, spusťte následující příkaz:
   
-   ````powershell 
+   ```powershell 
    $policy = $currentpolicy.Definition | ConvertFrom-Json
    $features=[PSCustomObject]@{'Features'=@('OneTimePasscode')}; $policy.B2BManagementPolicy | Add-Member 'PreviewPolicy' $features -Force; $policy.B2BManagementPolicy
    $updatedPolicy = $policy | ConvertTo-Json -Depth 3
    Set-AzureADPolicy -Definition $updatedPolicy -Id $currentpolicy.Id
-   ````
+   ```
 
 ## <a name="opting-out-of-the-preview-after-opting-in"></a>Výslovné odhlášení z verze preview po aktivaci ochrany
 Může trvat několik minut, než akce výslovného nesouhlasu se projeví. Pokud vypnete verzi preview, všechny uživatele typu Host, kteří mají uplatnit jednorázové heslo nebudou moct přihlásit. Můžete odstranit uživatele typu Host a znovu pozvat uživatele, aby se mohly přihlásit znovu použít jinou metodu ověřování.
@@ -144,17 +144,17 @@ Může trvat několik minut, než akce výslovného nesouhlasu se projeví. Poku
 ### <a name="to-turn-off-the-preview-using-powershell"></a>Chcete-li vypnout náhled pomocí Powershellu
 Pokud ho ještě nemáte, nainstalujte nejnovější modulu AzureADPreview (viz [požadovaných součástí: Instalace nejnovější modulu AzureADPreview](#prerequisite-install-the-latest-azureadpreview-module) výše). Pak ověřte, že zásady jednorázové heslo ve verzi preview momentálně existuje spuštěním následujícího:
 
-````powershell 
+```powershell 
 $currentpolicy = Get-AzureADPolicy | ?{$_.Type -eq 'B2BManagementPolicy' -and $_.IsOrganizationDefault -eq $true} | select -First 1
 ($currentPolicy -ne $null) -and ($currentPolicy.Definition -like "*OneTimePasscode*")
-````
+```
 
 Pokud výstupem je hodnota True, vyjádřit výslovný nesouhlas náhledu spuštěním následujícího:
 
-````powershell 
+```powershell 
 $policy = $currentpolicy.Definition | ConvertFrom-Json
 $policy.B2BManagementPolicy.PreviewPolicy.Features = $policy.B2BManagementPolicy.PreviewPolicy.Features.Where({$_ -ne "OneTimePasscode"})
 $updatedPolicy = $policy | ConvertTo-Json -Depth 3
 Set-AzureADPolicy -Definition $updatedPolicy -Id $currentpolicy.Id
-````
+```
 

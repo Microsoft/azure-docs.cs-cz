@@ -7,16 +7,16 @@ manager: daveba
 ms.reviewer: sahenry
 ms.service: active-directory
 ms.workload: identity
-ms.component: user-help
+ms.subservice: user-help
 ms.topic: conceptual
 ms.date: 07/30/2018
 ms.author: lizross
-ms.openlocfilehash: 7d4f3586aee5fdf77cb4cc1fa02596481fd58311
-ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
+ms.openlocfilehash: 983bf77a157de539264a6437ffbebb291d310840
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/25/2019
-ms.locfileid: "54902237"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55181414"
 ---
 # <a name="sign-in-using-two-step-verification-or-security-info"></a>Přihlaste se pomocí dvoustupňového ověření nebo bezpečnostních údajů
 
