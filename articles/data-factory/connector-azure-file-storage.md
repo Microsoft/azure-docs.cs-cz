@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/25/2019
 ms.author: jingwang
-ms.openlocfilehash: 5f7770d9331df46c16ed7f5e565c781a864bc5e1
-ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
+ms.openlocfilehash: 86fccf71463a2f00b31f5f1e6082db4c404bbf9b
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/26/2019
-ms.locfileid: "55077929"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55152192"
 ---
 # <a name="copy-data-from-or-to-azure-file-storage-by-using-azure-data-factory"></a>Kopírování dat z nebo do služby Azure File Storage pomocí Azure Data Factory
 
@@ -42,8 +42,8 @@ Pro soubor propojenou službu Azure Storage jsou podporovány následující vla
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
 | type | Vlastnost type musí být nastavená na: **FileServer**. | Ano |
-| hostitel | Určuje koncový bod Azure File Storage jako `"host": "\\\\<storage name>.file.core.windows.net\\<file service name>"`. | Ano |
-| ID uživatele | Určete uživatele pro přístup k Azure File Storage jako `"userid": "AZURE\\<storage name>"`. | Ano |
+| hostitel | Určuje koncový bod Azure File Storage jako: <br/>– Pomocí uživatelského rozhraní: Zadejte `\\<storage name>.file.core.windows.net\<file service name>`<br/>-Pomocí formátu JSON: `"host": "\\\\<storage name>.file.core.windows.net\\<file service name>"`. | Ano |
+| ID uživatele | Určete uživatele pro přístup k Azure File Storage jako: <br/>– Pomocí uživatelského rozhraní: Zadejte `AZURE\<storage name>`<br/>-Pomocí formátu JSON: `"userid": "AZURE\\<storage name>"`. | Ano |
 | heslo | Zadejte přístupový klíč úložiště. Označte toto pole jako SecureString bezpečně uložit ve službě Data Factory nebo [odkazovat tajného klíče do služby Azure Key Vault](store-credentials-in-key-vault.md). | Ano |
 | connectVia | [Prostředí Integration Runtime](concepts-integration-runtime.md) se použije k připojení k úložišti. (Pokud je vaše úložiště dat se nachází v privátní síti), můžete použít prostředí Azure Integration Runtime nebo modul Integration Runtime. Pokud není zadán, použije výchozí prostředí Azure Integration Runtime. |Ne pro zdroj, Ano pro jímku |
 

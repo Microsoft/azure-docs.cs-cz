@@ -13,14 +13,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 08/23/2018
-ms.component: hybrid
+ms.subservice: hybrid
 ms.author: billmath
-ms.openlocfilehash: 56447f04e63c588e2192d350ce9188f8a15c604b
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: 2be942bff0fd79764ee13cf22c896ec211ad9bb8
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54464727"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55183675"
 ---
 # <a name="azure-ad-federation-compatibility-list"></a>Seznam kompatibilit pro federaci Azure AD
 Azure Active Directory poskytuje jednotné přihlašování na a zvýšené zabezpečení přístupu aplikací pro Office 365 a dalším službám Microsoft Online pro implementace čistě cloudové a hybridní bez nutnosti jakékoli řešení třetí strany. Office 365, oblíbili Online službách společnosti Microsoft, je integrovaná se službou Azure Active Directory pro adresářové služby, ověřování a autorizace. Azure Active Directory také poskytuje jednotné přihlašování do tisícovek aplikací SaaS a místních webových aplikací. Azure Active Directory najdete v článku [Galerie aplikací](https://azuremarketplace.microsoft.com/marketplace/apps/category/azure-active-directory-apps) pro aplikace SaaS podporované. 

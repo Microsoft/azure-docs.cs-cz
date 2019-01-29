@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 09/27/2018
 ms.author: ryanwi
 ms.custom: mvc
-ms.openlocfilehash: 33b95c1b0e3d654ce8bb6eda3e96b7b3e9c9bc13
-ms.sourcegitcommit: 26cc9a1feb03a00d92da6f022d34940192ef2c42
-ms.translationtype: HT
+ms.openlocfilehash: b494da1c87feafd1b9db8485d16a9dcf5b999e3d
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2018
-ms.locfileid: "48831479"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55101801"
 ---
 # <a name="tutorial-deploy-a-linux-service-fabric-cluster-into-an-azure-virtual-network"></a>Kurz: Nasazení clusteru Service Fabric s Linuxem do virtuální sítě Azure
 
@@ -89,20 +89,20 @@ V prostředku **Microsoft.ServiceFabric/clusters** se nasazuje cluster s Linuxem
 
 * jeden typ uzlu
 * pět uzlů primárního typu (možnost konfigurace v parametrech šablony)
-* operační systém: Ubuntu 16.04 LTS (možnost konfigurace v parametrech šablony)
+* Operační systém: Ubuntu 16.04 LTS (možnost konfigurace v parametrech šablony)
 * zabezpečení pomocí certifikátu (možnost konfigurace v parametrech šablony)
 * [služba DNS](service-fabric-dnsservice.md) je povolena
 * bronzová [úroveň odolnosti](service-fabric-cluster-capacity.md#the-durability-characteristics-of-the-cluster) (možnost konfigurace v parametrech šablony)
 * stříbrná [úroveň spolehlivosti](service-fabric-cluster-capacity.md#the-reliability-characteristics-of-the-cluster) (možnost konfigurace v parametrech šablony)
 * koncový bod připojení klienta: 19000 (možnost konfigurace v parametrech šablony)
-* koncový bod brány HTTP: 19080 (možnost konfigurace v parametrech šablony)
+* Koncový bod brány HTTP: 19080 (možnost konfigurace v parametrech šablony)
 
 ### <a name="azure-load-balancer"></a>Nástroj pro vyrovnávání zatížení Azure
 
 V prostředku **Microsoft.Network/loadBalancers** dochází ke konfiguraci nástroje pro vyrovnávání zatížení a k nastavení sond a pravidel pro následující porty:
 
 * koncový bod připojení klienta: 19000
-* koncový bod brány HTTP: 19080
+* Koncový bod brány HTTP: 19080
 * port aplikací: 80
 * port aplikací: 443
 
@@ -110,8 +110,8 @@ V prostředku **Microsoft.Network/loadBalancers** dochází ke konfiguraci nást
 
 Názvy virtuální sítě a podsítě jsou deklarované v parametrech šablony.  Adresní prostory virtuální sítě a podsítě se taky deklarují v parametrech šablony a konfigurují v prostředku **Microsoft.Network/virtualNetworks**:
 
-* adresní prostory virtuální sítě: 10.0.0.0/16
-* adresní prostor podsítě Service Fabric: 10.0.2.0/24
+* adresní prostor virtuální sítě: 10.0.0.0/16
+* Adresní prostor podsítě Service Fabric: 10.0.2.0/24
 
 Pokud jsou potřebné další porty aplikací, je třeba upravit prostředek Microsoft.Network/loadBalancers, aby povoloval příchozí provoz.
 
@@ -163,7 +163,7 @@ az sf cluster create --resource-group $ResourceGroupName --location $Location \
 
 ### <a name="create-a-cluster-using-a-new-self-signed-certificate"></a>Vytvoření clusteru s použitím nového certifikátu podepsaného svým držitelem
 
-Následující skript pomocí příkazu [az sf cluster create](/cli/azure/sf/cluster?view=azure-cli-latest#az_sf_cluster_create) a šablony nasadí do Azure nový cluster. Tento příkaz také vytvoří v Azure nový trezor klíčů, přidá do něj nový certifikát podepsaný svým držitelem a místně stáhne soubor certifikátu.
+Následující skript pomocí příkazu [az sf cluster create](/cli/azure/sf/cluster?view=azure-cli-latest#az_sf_cluster_create) a šablony nasadí do Azure nový cluster. Příkaz také vytvoří v Azure nový trezor klíčů, přidá nový certifikát podepsaný svým držitelem do služby key vault a stáhne soubor certifikátu místně.
 
 ```azurecli
 ResourceGroupName="sflinuxclustergroup"
@@ -196,7 +196,7 @@ sfctl cluster health
 
 V dalších článcích v této sérii kurzů se používá cluster, který jste právě vytvořili. Pokud nechcete ihned pokračovat dalším článkem, můžete [cluster odstranit](service-fabric-cluster-delete.md), aby se vám neúčtovaly poplatky.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 V tomto kurzu jste se naučili:
 

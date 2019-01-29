@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 03/16/2018
 ms.author: vturecek
-ms.openlocfilehash: 4ff896902c1a92c244c3bcd147c3daeeb9e49c77
-ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
+ms.openlocfilehash: f92fe2432051b148bf0b35fccc3fa33db9b66a14
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44054744"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55093140"
 ---
 # <a name="getting-started-with-reliable-actors"></a>Začínáme s Reliable Actors
 > [!div class="op_single_selector"]
@@ -54,7 +54,7 @@ Vytvořený projekt zobrazuje následující strukturu:
 
 * **Projekt rozhraní (HelloWorld.Interfaces)**. Tento projekt obsahuje definici rozhraní pro objekt actor. Rozhraní objektu actor lze definovat v každém projektu s názvem.  Rozhraní definuje kontrakt objektu actor sdílený mezi implementací objektu actor a klienty objekt actor volají.  Protože klientské projekty mohou na něm závisí, je obvykle vhodné jej definovat na sestavení, která je oddělená od implementace objektu actor.
 
-* **Projekt služby objektu actor (HelloWorld)**. Tento projekt definuje službu Service Fabric, který bude hostovat objekt actor. Obsahuje implementace objektu actor, *HellowWorld.cs*. Implementace objektu actor je třída, která se odvozuje od základního typu `Actor` a implementuje rozhraní definované v *MyActor.Interfaces* projektu. Třídu objektu actor musí také implementovat konstruktor, který přijímá `ActorService` instance a `ActorId` a předává je do základní `Actor` třídy.
+* **Projekt služby objektu actor (HelloWorld)**. Tento projekt definuje službu Service Fabric, který bude hostovat objekt actor. Obsahuje implementace objektu actor, *HelloWorld.cs*. Implementace objektu actor je třída, která se odvozuje od základního typu `Actor` a implementuje rozhraní definované v *MyActor.Interfaces* projektu. Třídu objektu actor musí také implementovat konstruktor, který přijímá `ActorService` instance a `ActorId` a předává je do základní `Actor` třídy.
     
     Tento projekt obsahuje také *Program.cs*, který zaregistruje třídy actor pomocí modulu runtime Service Fabric `ActorRuntime.RegisterActorAsync<T>()`. `HelloWorld` Třída je již registrována. Jakékoli další objekt actor implementace přidány do projektu musí být zaregistrovaný také ve `Main()` metody.
 

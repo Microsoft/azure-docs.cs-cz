@@ -1,5 +1,5 @@
 ---
-title: 'Kurz: Integrace Azure Active Directory se službou mindWireless | Dokumentace Microsoftu'
+title: 'Kurz: Integrace Azure Active Directory s mindWireless | Dokumentace Microsoftu'
 description: Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a mindWireless.
 services: active-directory
 documentationCenter: na
@@ -8,21 +8,21 @@ manager: femila
 ms.reviewer: joflore
 ms.assetid: bd00a339-27c9-4904-b66f-a95bf597ac3c
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 04/11/2018
 ms.author: jeedes
-ms.openlocfilehash: 6c6fe0a720795c67a7062f5a5971c699472fca07
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: deb7cf8368c5830bd575c617adf857448cfe2e48
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39434342"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55166489"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-mindwireless"></a>Kurz: Integrace Azure Active Directory se službou mindWireless
+# <a name="tutorial-azure-active-directory-integration-with-mindwireless"></a>Kurz: Integrace Azure Active Directory s mindWireless
 
 V tomto kurzu se dozvíte, jak integrovat mindWireless s Azure Active Directory (Azure AD).
 
@@ -38,7 +38,7 @@ Pokud chcete zjistit další podrobnosti o integraci aplikací SaaS v Azure AD, 
 
 Konfigurace integrace Azure AD s mindWireless, potřebujete následující položky:
 
-- S předplatným služby Azure AD
+- Předplatné Azure AD
 - MindWireless jednotného přihlašování povolená předplatného
 
 > [!NOTE]
@@ -60,7 +60,7 @@ Konfigurace integrace mindWireless do služby Azure AD, budete muset přidat min
 
 **Chcete-li přidat mindWireless z galerie, postupujte následovně:**
 
-1. V  **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu. 
+1. V **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu. 
 
     ![Tlačítko Azure Active Directory][1]
 
@@ -125,7 +125,7 @@ V této části Povolení služby Azure AD jednotného přihlašování na port�
     
     | Název atributu | Hodnota atributu | Hodnota Namespace |
     | -------------- | --------------- | ----------------|
-    | ID zaměstnance | User.EmployeeID | `http://schemas.xmlsoap.org/ws/2005/05/identity/claims`|
+    | ID zaměstnance | user.employeeid | `http://schemas.xmlsoap.org/ws/2005/05/identity/claims`|
     
     a. Klikněte na tlačítko **přidat atribut** otevřít **přidat atribut** dialogového okna.
 
@@ -189,7 +189,7 @@ Cílem této části je vytvoření zkušebního uživatele na webu Azure Portal
 
 ### <a name="create-a-mindwireless-test-user"></a>Vytvoření zkušebního uživatele mindWireless
 
-V této části vytvoříte uživatele v mindWireless jako Britta Simon. Práce s [tým podpory mindWireless](mailto:sdulloor@mindwireless.com) přidat uživatele na platformě mindWireless. Uživatelé musí vytvořit a aktivovat, než použití jednotného přihlašování. 
+V této části vytvoříte uživatele v mindWireless jako Britta Simon. Práce s [tým podpory mindWireless](mailto:sdulloor@mindwireless.com) přidat uživatele na platformě mindWireless. Uživatelé musí vytvořit a aktivovat, než použití jednotného přihlašování. 
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřadit uživatele Azure AD
 
@@ -221,7 +221,7 @@ V této části je povolit Britta Simon používat jednotné přihlašování Az
 
 1. Klikněte na tlačítko **přiřadit** tlačítko **přidat přiřazení** dialogového okna.
     
-### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování
+### <a name="test-single-sign-on"></a>Test jednotného přihlašování
 
 V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 

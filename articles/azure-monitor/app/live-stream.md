@@ -10,15 +10,15 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
-ms.date: 12/04/2018
+ms.date: 01/28/2019
 ms.reviewer: sdash
 ms.author: mbullwin
-ms.openlocfilehash: 403906a60d16a478dffd313b45aa1ce24e42196a
-ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
+ms.openlocfilehash: f369eb6241a8eb3d44a0a38e243c533da47103e1
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54119209"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55104605"
 ---
 # <a name="live-metrics-stream-monitor--diagnose-with-1-second-latency"></a>Live Metrics Stream: Monitorování a Diagnostika s latencí 1 sekundu
 
@@ -36,19 +36,19 @@ Live Metrics Stream můžete:
 
 [![Live Metrics Stream video](./media/live-stream/youtube.png)](https://www.youtube.com/watch?v=zqfHf1Oi5PY)
 
+Živé metriky jsou aktuálně podporovány pro aplikace ASP.NET, ASP.NET Core, Azure Functions a Java.
+
 ## <a name="get-started"></a>Začínáme
 
-1. Pokud jste tak ještě neučinili [nenainstalovali Application Insights](../../azure-monitor/app/asp-net.md) ve webové aplikaci ASP.NET nebo [aplikace Windows server](../../azure-monitor/app/windows-services.md), proveďte to nyní. 
-2. **Aktualizace na nejnovější verzi** balíčku Application Insights. V sadě Visual Studio, klikněte pravým tlačítkem na projekt a zvolte **Správa balíčků Nuget**. Otevřít **aktualizace** kartě **zahrnout předběžné verze**a vybrat všechny balíčky Microsoft.ApplicationInsights.*.
+1. Pokud jste tak ještě neučinili [nainstalujte službu Application Insights](../../azure-monitor/azure-monitor-app-hub.md) ve webové aplikaci, proveďte to nyní.
+2. Kromě standardních balíčků Application Insights [Microsoft.ApplicationInsights.PerfCounterCollector](https://www.nuget.org/packages/Microsoft.ApplicationInsights.PerfCounterCollector/) povolit Live Metrics stream.
+3. **Aktualizace na nejnovější verzi** balíčku Application Insights. V sadě Visual Studio, klikněte pravým tlačítkem na projekt a zvolte **Správa balíčků Nuget**. Otevřít **aktualizace** kartu a vybrat všechny balíčky Microsoft.ApplicationInsights.*.
 
     Znovu nasaďte aplikaci.
 
 3. V [webu Azure portal](https://portal.azure.com), otevřete prostředek Application Insights pro vaši aplikaci a pak otevřete Live Stream.
 
 4. [Zabezpečený kanál ovládací prvek](#secure-the-control-channel) používáte může být citlivá data, jako jsou jména zákazníků v svoje filtry.
-
-
-![V okně Přehled klikněte na Live Stream](./media/live-stream/live-stream-2.png)
 
 ### <a name="no-data-check-your-server-firewall"></a>Žádná data? Zkontrolujte bránu firewall serveru
 
@@ -69,7 +69,7 @@ Zkontrolujte [výchozí porty pro Live Metrics Stream](../../azure-monitor/app/i
 
 ## <a name="select-and-filter-your-metrics"></a>Výběr a filtrování metriky
 
-(K dispozici v klasických aplikací ASP.NET s nejnovější sadu SDK).
+(K dispozici s technologií ASP.NET, ASP.NET Core a Azure Functions (v2).)
 
 Vlastní klíčového ukazatele výkonu za provozu můžete monitorovat pomocí použití libovolného filtrů na žádnou telemetrii Application Insights z portálu. Klikněte na ovládací prvek filtru, který ukazuje, kdy jste myší nad žádné grafy. V následující tabulce je vykreslení vlastní počet požadavků klíčový ukazatel výkonu s filtry pro adresu URL a doba trvání atributy. Ověřte vaše filtry s oddílem Stream ve verzi Preview, která zobrazuje živého kanálu telemetrických dat, která by odpovídala kritériím, která jste zadali v libovolném bodě v čase. 
 
@@ -111,7 +111,7 @@ Vlastní Live Metrics Stream je k dispozici s verzí 2.4.0-beta2 nebo novější
 Vlastní kritéria filtry, které jste zadali odesílají zpět do komponenty Live Metrics v Application Insights SDK. Filtry můžou potenciálně obsahovat citlivé informace, jako je například customerIDs. Kanál můžete zabezpečit pomocí tajného klíče rozhraní API kromě Instrumentační klíč.
 ### <a name="create-an-api-key"></a>Vytvořte klíč rozhraní API
 
-![Vytvořit klíč rozhraní api](./media/live-stream/live-metrics-apikeycreate.png)
+![Vytvořit klíč rozhraní API](./media/live-stream/live-metrics-apikeycreate.png)
 
 ### <a name="add-api-key-to-configuration"></a>Klíč rozhraní API přidejte do konfigurace
 
@@ -161,6 +161,12 @@ using Microsoft.ApplicationInsights.Extensibility;
 
 ```
 
+### <a name="azure-function-apps"></a>Aplikace Azure Function App
+
+Pro zabezpečení kanálu pomocí rozhraní API aplikace Azure Function (v2) klíč můžete provést pomocí proměnné prostředí. 
+
+Vytvořte klíč rozhraní API z v rámci prostředku Application Insights a přejděte na **nastavení aplikace** pro vaši aplikaci Function App. Vyberte **přidat nové nastavení** a zadejte název `APPINSIGHTS_QUICKPULSEAUTHAPIKEY` a hodnotu, která odpovídá vašemu klíči rozhraní API.
+
 ### <a name="aspnet-core-requires-application-insights-aspnet-core-sdk-230-beta-or-greater"></a>ASP.NET Core (2.3.0-beta vyžaduje ASP.NET Core sadu SDK Application Insights nebo vyšší)
 
 Upravte soubor startup.cs následujícím způsobem:
@@ -176,7 +182,6 @@ Pak v rámci metody ConfigureServices přidejte:
 ``` C#
 services.ConfigureTelemetryModule<QuickPulseTelemetryModule> ((module, o) => module.AuthenticationApiKey = "YOUR-API-KEY-HERE");
 ```
-
 
 Pokud znáte a důvěřujete všechny propojené servery, můžete zkusit vlastní filtry bez ověření kanálu. Tato možnost je k dispozici po dobu šesti měsíců. Toto přepsání je požadovaná jednou každých novou relaci, nebo když nový server převede do režimu online.
 

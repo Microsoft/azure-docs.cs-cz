@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/30/2018
 ms.author: aagup
-ms.openlocfilehash: ad89acb63057ff260332384372bcb7719cc8e4f3
-ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
+ms.openlocfilehash: 1482497f3767e7533d1d56e6eb63e55cdb5c9ebb
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/07/2019
-ms.locfileid: "54064827"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55104639"
 ---
 # <a name="restoring-backup-in-azure-service-fabric"></a>Obnovení zálohy v Azure Service Fabric
 
@@ -229,7 +229,7 @@ Průběh žádosti o obnovení v následujícím pořadí:
     ```
     
 3. **Úspěch**, **selhání**, nebo **vypršení časového limitu**: V některém z následujících stavů je možné dokončit požadovanou obnovení. Každý stav má následující údaje význam a odpovědi:
-    - **Úspěch**: A _úspěch_ obnovit stav určuje stav znovu získali oddílu. Oddíl sestavy _RestoreEpoch_ a _RestordLSN_ stavy spolu s čas ve standardu UTC.
+    - **Úspěch**: A _úspěch_ obnovit stav určuje stav znovu získali oddílu. Oddíl sestavy _RestoredEpoch_ a _RestoredLSN_ stavy spolu s čas ve standardu UTC.
 
         ```
         RestoreState  : Success

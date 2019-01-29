@@ -1,5 +1,5 @@
 ---
-title: Stav Azure Analytics podrobného plánu
+title: Azure Health Analytics Blueprint
 description: Pokyny pro nasazení podrobný plán Analytics stavu HIPAA/HITRUST
 services: security
 documentationcenter: na
@@ -9,12 +9,12 @@ ms.service: security
 ms.topic: article
 ms.date: 07/23/2018
 ms.author: rarangap
-ms.openlocfilehash: b7232a72a2090465dfd75ef6a4277930e45bf9ed
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: 6787f347661db61806180edde5c091a865051748
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53315770"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55103068"
 ---
 # <a name="azure-security-and-compliance-blueprint---hipaahitrust-health-data-and-ai"></a>Zabezpečení Azure a dodržování předpisů – Data o stavu HIPAA/HITRUST a AI
 
@@ -48,7 +48,7 @@ Tento podrobný plán má sloužit jako základ pro zákazníky, chcete-li uprav
 
 -   **Diagram architektury.** Diagram znázorňuje referenční architektura používá pro podrobný plán a v příkladu scénáři použití.
 
--   [Rozšíření IaaS](https://github.com/Azure/Health-Data-and-AI-Blueprint/blob/master/README%20IaaS.md) toto řešení ukazuje, jak migrovat jako místní řešení založená na jazyce SQL do Azure a implementovat pracovní stanice Privieged přístup k bezpečné správě bsed cloudové služby a řešení. 
+-   [Rozšíření IaaS](https://github.com/Azure/Health-Data-and-AI-Blueprint/blob/master/README%20IaaS.md) toto řešení ukazuje, jak migrovat jako místní řešení založená na jazyce SQL do Azure a implementovat pracovní stanice privilegovaný přístup k bezpečné správě bsed cloudové služby a řešení. 
 
 ## <a name="solution-components"></a>Součásti řešení
 
@@ -111,7 +111,7 @@ CMIO přechází propast mezi informatikou/technologiemi a pracovníky v organiz
 
 -   Integrovaná přiřazení rolí: Žádný
 
-### <a name="care-line-manager"></a>Ředitel úseku péče
+### <a name="care-line-manager"></a>Care Line Manager
 
 
 Ředitel úseku péče se přímo zabývá péče o pacienty.
@@ -179,7 +179,7 @@ Jako jednotlivec přímo zodpovědného za správu přijetí pacienta a propouš
 
 **Auditor – Han**
 
-*E-mailu: Hanu\_Auditor*
+*E-mailu: Han\_Auditor*
 
 Hanu je certifikované auditora, který má prostředí auditování pro ISO, SOC a HiTrust. Hanu byl přijat ke kontrole Contosoclinc vaší sítě. Hanu můžete zkontrolovat matice zákazníka odpovědnost řešení opatřeného zajistit, že podrobného plánu a LOS řešení můžete použít k ukládají, zpracovávají a zobrazení důvěrných osobních údajů.
 
@@ -232,7 +232,7 @@ Tato část podrobně výchozí konfigurace a bezpečnostních opatření, kter�
     -   O pacientech klíč přístup k úložišti dat
     -   O pacientech připojovací řetězec
     -   Název tabulky dat o pacientech
-    -   Koncový bod služby Azure ML Web Service
+    -   Azure ML Web Service Endpoint
     -   Klíč rozhraní API služby Azure ML
 
 -   Pokročilé zásady přístupu jsou nakonfigurované na základě potřeby

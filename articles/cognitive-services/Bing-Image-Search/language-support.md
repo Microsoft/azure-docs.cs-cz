@@ -3,19 +3,19 @@ title: Podpora jazyků – rozhraní API pro vyhledávání obrázků Bingu
 titleSuffix: Azure Cognitive Services
 description: Zjistěte, které země/oblasti a jazyky podporují rozhraní API Bingu pro vyhledávání obrázků.
 services: cognitive-services
-author: v-jerkin
+author: aahill
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: bing-image-search
+ms.subservice: bing-image-search
 ms.topic: article
 ms.date: 10/06/2017
-ms.author: v-jerkin
-ms.openlocfilehash: db9e1acec881a182b111cb1c913da607e4f8311a
-ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
+ms.author: aahi
+ms.openlocfilehash: d214c227171066e0a401e22d20538014790a58d3
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47435446"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55157325"
 ---
 # <a name="language-and-region-support-for-the-bing-image-search-api"></a>Podpora jazyka a oblasti pro rozhraní API Bingu pro vyhledávání obrázků
 
@@ -39,8 +39,8 @@ Alternativně můžete zadat pomocí země/oblast `cc` parametr dotazu. Pokud ch
 |Argentina|AR|
 |Austrálie|AU|
 |Rakousko|AT|
-|Belgie|BÝT|
-|Brazílie|BRAZÍLIE|
+|Belgie|BE|
+|Brazílie|BR|
 |Kanada|CA|
 |Chile|CL|
 |Dánsko|DK|
@@ -48,27 +48,27 @@ Alternativně můžete zadat pomocí země/oblast `cc` parametr dotazu. Pokud ch
 |Francie|FR|
 |Německo|DE|
 |Hongkong|HK|
-|Indie|INDIE|
+|Indie|IN|
 |Indonésie|ID|
 |Itálie|IT|
 |Japonsko|JP|
-|Jižní Korea|KOREA|
-|Malajsie|MOJE|
+|Jižní Korea|KR|
+|Malajsie|MY|
 |Mexiko|MX|
 |Nizozemsko|NL|
 |Nový Zéland|NZ|
-|Norsko|NE|
+|Norsko|NO|
 |Čína|CN|
 |Polsko|PL|
 |Portugalsko|PT|
 |Filipíny|PH|
 |Rusko|RU|
 |Saúdská Arábie|SA|
-|Jihoafrická republika|ZA|
+|Jižní Afrika|ZA|
 |Španělsko|ES|
 |Švédsko|SE|
 |Švýcarsko|CH|
-|Tchaj-wan|TRADIČNÍ ČÍNŠTINA|
+|Tchaj-wan|TW|
 |Turecko|TR|
 |Spojené království|GB|
 |Spojené státy|USA|
@@ -78,15 +78,15 @@ Alternativně můžete zadat pomocí země/oblast `cc` parametr dotazu. Pokud ch
 
 |Země/oblast|Jazyk|Kód na trhu|
 |-------|--------|-----------|
-|Argentina|Španělština|ES AR|
+|Argentina|Španělština|es-AR|
 |Austrálie|Angličtina|cs AU|
 |Rakousko|Němčina|de-AT|
 |Belgie|Holandština|nl-BE|
-|Belgie|Francouzština|FR-být|
+|Belgie|Francouzština|fr-BE|
 |Brazílie|Portugalština|pt-BR|
 |Kanada|Angličtina|cs CA|
 |Kanada|Francouzština|fr-CA|
-|Chile|Španělština|ES-CL|
+|Chile|Španělština|es-CL|
 |Dánsko|dánština|da-DK|
 |Finsko|Finština|fi-FI|
 |Francie|Francouzština|fr-FR|
@@ -107,7 +107,7 @@ Alternativně můžete zadat pomocí země/oblast `cc` parametr dotazu. Pokud ch
 |Filipíny|Angličtina|cs PH|
 |Rusko|ruština|ru-RU|
 |Saúdská Arábie|arabština|ar-SA|
-|Jihoafrická republika|Angličtina|cs ZA|
+|Jižní Afrika|Angličtina|en-ZA|
 |Španělsko|Španělština|es-ES|
 |Švédsko|švédština|sv-SE|
 |Švýcarsko|Francouzština|FR-CH|
@@ -115,8 +115,8 @@ Alternativně můžete zadat pomocí země/oblast `cc` parametr dotazu. Pokud ch
 |Tchaj-wan|Tradiční čínština|zh-TW|
 |Turecko|turečtina|tr-TR|
 |Spojené království|Angličtina|en-GB|
-|Spojené státy|Angličtina|cs-CZ|
-|Spojené státy|Španělština|ES US|
+|Spojené státy|Angličtina|en-US|
+|Spojené státy|Španělština|es-US|
 
 ## <a name="next-steps"></a>Další postup
 Další informace o koncových bodech Bingu pro vyhledávání zpráv najdete v tématu [zpráv API pro vyhledávání obrázků v7 odkaz](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference).

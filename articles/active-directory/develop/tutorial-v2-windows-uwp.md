@@ -7,7 +7,7 @@ author: andretms
 manager: mtillman
 editor: ''
 ms.service: active-directory
-ms.component: develop
+ms.subservice: develop
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 10/24/2018
 ms.author: andret
 ms.custom: aaddev
-ms.openlocfilehash: 4ba4e844ed6bb01204b7a0adf5020aec255147dd
-ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
+ms.openlocfilehash: a0c2d13b2ac6715db047d56e998294688d9b65cf
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49986538"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55097057"
 ---
 # <a name="call-microsoft-graph-api-from-a-universal-windows-platform-application-xaml"></a>Volání rozhraní Microsoft Graph API z aplikace pro univerzální platformu Windows (XAML)
 
@@ -382,15 +382,15 @@ Zobrazí jednu z následujících chybových zpráv při přihlášení na svou 
  - Nenašly se žádné platné certifikáty v úložišti certifikátů uživatele.
  - Zkuste znovu vybrat různé ověřování.
 
-**Příčina:** organizace a certifikát funkce nejsou povolené.
+**Příčina:** Funkce Enterprise a certifikátů nejsou povolené.
 
-**Řešení:** postupujte podle kroků v [integrované ověřování u federovaných domén](#enable-integrated-authentication-on-federated-domains-optional).
+**Řešení:** Postupujte podle kroků v [integrované ověřování u federovaných domén](#enable-integrated-authentication-on-federated-domains-optional).
 
 ### <a name="issue-2"></a>Problém 2
 Povolíte [integrované ověřování u federovaných domén](#enable-integrated-authentication-on-federated-domains-optional) a pokuste se použít Windows Hello na počítači s Windows 10 pro přihlášení v prostředí s nakonfigurované vícefaktorové ověřování. Zobrazí seznam certifikátů. Ale pokud budete chtít použít váš PIN kód, v okně kódu PIN se nikdy zobrazí.
 
-**Příčina:** tento problém je známé omezení zprostředkovatele webového ověření v aplikacích UPW, které běží na Windows 10 desktop. Bez problémů funguje na Windows 10 Mobile.
+**Příčina:** Tento problém je známé omezení zprostředkovatele webového ověření v aplikacích UPW, které běží na Windows 10 desktop. Bez problémů funguje na Windows 10 Mobile.
 
-**Alternativní řešení:** vyberte **přihlásit pomocí jiné možnosti**. Potom vyberte **Přihlaste se pomocí uživatelského jména a hesla**. Vyberte **zadejte heslo**. Potom projděte procesem ověřování telefonu.
+**Alternativní řešení:** Vyberte **přihlásit pomocí jiné možnosti**. Potom vyberte **Přihlaste se pomocí uživatelského jména a hesla**. Vyberte **zadejte heslo**. Potom projděte procesem ověřování telefonu.
 
 [!INCLUDE [Help and support](../../../includes/active-directory-develop-help-support-include.md)]

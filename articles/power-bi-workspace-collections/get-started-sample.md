@@ -10,12 +10,12 @@ ms.topic: article
 ms.workload: powerbi
 ms.date: 09/25/2017
 ms.author: maghan
-ms.openlocfilehash: a2e1604a51b8343d926dda3b258d38b19266deeb
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 630413d15df04d27599389f647c57876fff9d295
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51246680"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55094423"
 ---
 # <a name="get-started-with-power-bi-workspace-collections-sample"></a>Začínáme s ukázkou kolekce pracovních prostorů Power BI
 
@@ -24,7 +24,7 @@ S **kolekce pracovních prostorů Power BI Microsoft**, můžete integrovat sest
 > [!IMPORTANT]
 > Kolekce Pracovních prostorů Power BI jsou zastaralé a dostupné do června 2018 nebo do data uvedeného ve vaší smlouvě. Doporučujeme naplánovat migraci do Power BI Embedded, předejdete tak výpadkům vaší aplikace. Informace o postupu migrace dat do Power BI Embedded najdete v tématu [Migrace obsahu kolekcí Pracovních prostorů Power BI do Power BI Embedded](https://powerbi.microsoft.com/documentation/powerbi-developer-migrate-from-powerbi-embedded/).
 
-Než půjdeme dál, kterého chcete uložit následující prostředky: pomáhají při příliš integrace sestav Power BI do ukázkové aplikace a vlastních aplikací.
+Než půjdeme dál, budete chtít uložit na následujících odkazech: Mohou vám pomoci při příliš integrace sestav Power BI do ukázkové aplikace a vlastních aplikací.
 
 * [Ukázkový pracovní prostor webové aplikace](https://go.microsoft.com/fwlink/?LinkId=761493)
 * [Referenční materiály k Power BI pracovního prostoru kolekce API](https://msdn.microsoft.com/library/azure/mt711507.aspx)
@@ -71,7 +71,7 @@ V tomto okamžiku máte sestavu Power BI PBIX importovat do vaší **pracovní p
 Ukázkové webové aplikace je ukázková aplikace, který vykreslí sestav se importovat do vaší **pracovní prostor**. Tady je postup konfigurace ukázkové webové aplikace.
 
 1. V **Power BI embedded** řešení sady Visual Studio, klikněte pravým tlačítkem na **EmbedSample** webovou aplikaci a zvolte **nastavit jako spouštěný projekt**.
-2. V **web.config**v **EmbedSample** webovou aplikaci, upravit **appSettings**: **AccessKey**,  **WorkspaceCollection** název, a **ID pracovního prostoru**.
+2. V **web.config**v **EmbedSample** webovou aplikaci, upravit **appSettings**: **AccessKey**, **WorkspaceCollection** název, a **ID pracovního prostoru**.
 
     ```
     <appSettings>
@@ -93,7 +93,7 @@ Po kliknutí na zprávu, **EmbedSample** webovou aplikaci by měl vypadat přibl
 
 ## <a name="explore-the-sample-code"></a>Prozkoumejte vzorový kód
 
-**Kolekce pracovních prostorů Power BI Microsoft** ukázka je ukázkové webové aplikace, který ukazuje, jak integrovat **Power BI** sestavy do vaší aplikace. Návrhový vzor Model-View-Controller (MVC) používá k ukazují osvědčené postupy. Tato část ukazuje části ukázek kódu, který si můžete projít v rámci **Power BI embedded** webové aplikace řešení. Vzor Model-View-Controller (MVC) odděluje modelování domény, prezentace a akce na základě uživatelského zadání na tři samostatné třídy: Model, zobrazení a ovládání. Další informace o MVC najdete v tématu [Další informace o ASP.NET](http://www.asp.net/mvc).
+**Kolekce pracovních prostorů Power BI Microsoft** ukázka je ukázkové webové aplikace, který ukazuje, jak integrovat **Power BI** sestavy do vaší aplikace. Návrhový vzor Model-View-Controller (MVC) používá k ukazují osvědčené postupy. Tato část ukazuje části ukázek kódu, který si můžete projít v rámci **Power BI embedded** webové aplikace řešení. Vzor Model-View-Controller (MVC) odděluje modelování domény, prezentace a akce na základě uživatelského zadání na tři samostatné třídy: Model, zobrazení a ovládací prvek. Další informace o MVC najdete v tématu [Další informace o ASP.NET](http://www.asp.net/mvc).
 
 **Kolekce pracovních prostorů Power BI Microsoft** ukázkový kód je oddělená následujícím způsobem. Každý oddíl obsahuje název souboru v řešení Power BI embedded.sln, takže můžete snadno vyhledat kód v ukázce.
 
@@ -104,14 +104,14 @@ Po kliknutí na zprávu, **EmbedSample** webovou aplikaci by měl vypadat přibl
 
 Ukázka obsahuje **ReportsViewModel** a **ReportViewModel**.
 
-**ReportsViewModel.cs**: představuje sestavy Power BI.
+**ReportsViewModel.cs**: Představuje sestavy Power BI.
 
     public class ReportsViewModel
     {
         public List<Report> Reports { get; set; }
     }
 
-**ReportViewModel.cs**: představuje sestavy Power BI.
+**ReportViewModel.cs**: Představuje sestavy Power BI.
 
     public classReportViewModel
     {
@@ -134,11 +134,11 @@ Pomocí společných server a databáze atributy selhání. Příklad: Server=tc
 
 **Zobrazení** spravuje zobrazení Power BI **sestavy** a Power BI **sestavy**.
 
-**Reports.cshtml**: iterovat **Model.Reports** k vytvoření **ActionLink**. **ActionLink** se skládá následujícím způsobem:
+**Reports.cshtml**: Iterovat přes **Model.Reports** k vytvoření **ActionLink**. **ActionLink** se skládá následujícím způsobem:
 
 | Část | Popis |
 | --- | --- |
-| Titul |Název sestavy. |
+| Název |Název sestavy. |
 | Řetězec dotazu |Odkaz na ID sestavy. |
 
     <div id="reports-nav" class="panel-collapse collapse">
@@ -166,9 +166,9 @@ Report.cshtml: Nastavte **Model.AccessToken**a výraz Lambda pro **PowerBIReport
         @Html.PowerBIReportFor(m => m.Report, new { style = "height:85vh" })
     </div>
 
-### <a name="controller"></a>Kontroler
+### <a name="controller"></a>Kontrolér
 
-**DashboardController.cs**: vytvoří PowerBIClient předávání **tokenu aplikace**. JSON Web Token (token JWT) se generuje z **podpisový klíč** zobrazíte **přihlašovací údaje**. **Pověření** slouží k vytvoření instance **PowerBIClient**. Jakmile budete mít instanci **PowerBIClient**, můžete volat GetReports() a GetReportsAsync().
+**DashboardController.cs**: Vytvoří PowerBIClient předávání **tokenu aplikace**. JSON Web Token (token JWT) se generuje z **podpisový klíč** zobrazíte **přihlašovací údaje**. **Pověření** slouží k vytvoření instance **PowerBIClient**. Jakmile budete mít instanci **PowerBIClient**, můžete volat GetReports() a GetReportsAsync().
 
 CreatePowerBIClient()
 
@@ -228,7 +228,7 @@ Jakmile budete mít **sestavy**, použijete **IFrame** pro vložení Power BI **
 ```
 init: function() {
     var embedUrl = this.getEmbedUrl();
-    var iframeHtml = '<igrame style="width:100%;height:100%;" src="' + embedUrl + 
+    var iframeHtml = '<iframe style="width:100%;height:100%;" src="' + embedUrl + 
         '" scrolling="no" allowfullscreen="true"></iframe>';
     this.element.innerHTML = iframeHtml;
     this.iframe = this.element.childNodes[0];

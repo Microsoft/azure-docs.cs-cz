@@ -1,5 +1,5 @@
 ---
-title: Sada přesměrovaly na b2clogin.com pro Azure Active Directory B2C | Dokumentace Microsoftu
+title: Sada přesměrovaly na b2clogin.com – Azure Active Directory B2C | Dokumentace Microsoftu
 description: Další informace o použití b2clogin.com do vaší přesměrovat adresy URL pro Azure Active Directory B2C.
 services: active-directory-b2c
 author: davidmu1
@@ -7,15 +7,15 @@ manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 11/30/2018
+ms.date: 01/28/2019
 ms.author: davidmu
-ms.component: B2C
-ms.openlocfilehash: 147d8e80c66bd47ed56400deca024532fc7e39c7
-ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
+ms.subservice: B2C
+ms.openlocfilehash: 61c4212233dd7ed9c34de779176c3402890e673f
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54844922"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55160900"
 ---
 # <a name="set-redirect-urls-to-b2clogincom-for-azure-active-directory-b2c"></a>Sada přesměrovaly na b2clogin.com pro Azure Active Directory B2C
 
@@ -23,8 +23,8 @@ Když nastavíte zprostředkovatele identity pro registraci a přihlašování v
 
 Použití b2clogin.com poskytuje další výhody, jako například:
 
-- Soubory cookie jsou již sdíleny s jinými službami Microsoftu.
-- Vaší adresy URL už nebude obsahovat odkaz na Microsoft. Například, `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com/oauth2/authresp`.
+- Nezabírá místo v záhlaví souboru cookie používané služby Microsoftu.
+- Vaší adresy URL už nebude obsahovat odkaz na Microsoft. Například, `https://your-tenant-name.b2clogin.com/tenant-id/oauth2/authresp`.
 
 Vezměte v úvahu tato nastavení, které může být nutné změnit při použití b2clogin.com:
 
@@ -60,7 +60,9 @@ Aplikace Azure AD B2C pravděpodobně odkazuje na `login.microsoftonline.com` na
 
 ## <a name="set-the-validateauthority-property"></a>Nastavte vlastnost ValidateAuthority
 
-Pokud používáte MSAL, nastavte **ValidateAuthority** k `false`. Následující příklad ukazuje, jak může nastavit vlastnost:
+Pokud používáte MSAL, nastavte **ValidateAuthority** vlastnost `false`. Když **ValidateAuthority** je nastavena na `false`, b2clogin.com je povoleno přesměrování. 
+
+Následující příklad ukazuje, jak může nastavit vlastnost:
 
 V [MSAL pro .net](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet):
 

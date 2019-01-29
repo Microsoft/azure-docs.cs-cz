@@ -15,15 +15,15 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: troubleshooting
 ms.date: 05/30/2017
 ms.author: genli
-ms.openlocfilehash: 45ddb31a20b830de29cf77231bb3acd6f8917601
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 1454eb5dbf8c80dcf7024c150dbff6a2082dbd02
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51230899"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55100270"
 ---
 # <a name="troubleshoot-ssh-connections-to-an-azure-linux-vm-that-fails-errors-out-or-is-refused"></a>Řešení potíží s připojením SSH k virtuálnímu počítači Azure Linux, který selže, chyby, nebo bylo odmítnuto
-Existují různé důvody, že narazíte na chyby Secure Shell (SSH), selhání připojení SSH, nebo SSH byla odmítnuta, při pokusu o připojení pro virtuální počítač s Linuxem (VM). Tento článek pomůže najít a opravit problémy. Webu Azure portal, rozhraní příkazového řádku Azure, nebo rozšíření přístupu virtuálních počítačů pro Linux můžete odstraňovat potíže a řešit problémy s připojením.
+Tento článek vám pomůže najít a opravit problémy, které jsou způsobeny chybami Secure Shell (SSH), selhání připojení SSH, nebo SSH byla odmítnuta, při pokusu o připojení pro virtuální počítač s Linuxem (VM). Webu Azure portal, rozhraní příkazového řádku Azure, nebo rozšíření přístupu virtuálních počítačů pro Linux můžete odstraňovat potíže a řešit problémy s připojením.
 
 [!INCLUDE [learn-about-deployment-models](../../../includes/learn-about-deployment-models-both-include.md)]
 
@@ -32,16 +32,16 @@ Pokud potřebujete další nápovědu v libovolném bodě v tomto článku, mů�
 ## <a name="quick-troubleshooting-steps"></a>Rychlé kroky pro řešení potíží
 Po provedení každého kroku Poradce při potížích opakujte pokus o připojení k virtuálnímu počítači.
 
-1. Resetujte konfiguraci SSH.
-2. Resetujte přihlašovací údaje pro uživatele.
+1. [Resetovat konfiguraci SSH](#reset-config).
+2. [Resetovat přihlašovací údaje](#reset-credentials) pro daného uživatele.
 3. Ověřte, [skupinu zabezpečení sítě](../../virtual-network/security-overview.md) pravidla povolit provoz SSH.
-   * Ujistěte se, že existuje pravidlo skupiny zabezpečení sítě tak, aby povolovala provoz SSH (ve výchozím nastavení TCP port 22).
+   * Ujistěte se, že [pravidlo skupiny zabezpečení sítě](#security-rules) tak, aby povolovala provoz SSH (ve výchozím nastavení TCP port 22) existuje.
    * Nelze použít přesměrování portu / mapování bez použití služby Azure load balancer.
 4. Zkontrolujte, [stavu prostředků virtuálních počítačů](../../resource-health/resource-health-overview.md). 
    * Ujistěte se, že virtuální počítač hlásí stav v pořádku.
-   * Pokud budete mít povolenou diagnostikou spuštění, ověřte, že virtuální počítač nehlásí spouštěcí chyby v protokolech.
-5. Restartujte virtuální počítač.
-6. Opětovné nasazení virtuálního počítače.
+   * Pokud máte [povolená Diagnostika spouštění](boot-diagnostics.md), ověřte virtuální počítač nehlásí spouštěcí chyby v protokolech.
+5. [Restartujte virtuální počítač](#restart-vm).
+6. [Opětovné nasazení virtuálního počítače](#redeploy-vm).
 
 Pokračujte ve čtení pro více podrobný postup řešení potíží a vysvětlení.
 
@@ -49,7 +49,7 @@ Pokračujte ve čtení pro více podrobný postup řešení potíží a vysvětl
 Můžete resetovat přihlašovací údaje nebo konfigurace SSH pomocí jedné z následujících metod:
 
 * [Azure portal](#use-the-azure-portal) – oceníte, pokud potřebujete rychle resetovat konfiguraci SSH nebo klíč SSH a nemáte nainstalované Azure nástroje.
-* [Azure CLI](#use-the-azure-cli) – Pokud jste už na příkazovém řádku, rychle resetovat konfiguraci SSH nebo přihlašovací údaje. Můžete také použít [rozhraní příkazového řádku Azure](#use-the-azure-classic-cli)
+* [Azure CLI](#use-the-azure-cli) – Pokud jste už na příkazovém řádku, rychle resetovat konfiguraci SSH nebo přihlašovací údaje. Pokud pracujete s klasický virtuální počítač, můžete použít [klasické rozhraní příkazového řádku Azure](#use-the-azure-classic-cli).
 * [Azure rozšíření VMAccessForLinux](#use-the-vmaccess-extension) – vytvoření a opakovaně používat soubory definice json se resetovat přihlašovací údaje pro konfiguraci nebo uživatele SSH.
 
 Po provedení každého kroku Poradce při potížích zkuste se znovu připojit k virtuálnímu počítači. Pokud se pořád nemůžete připojit, vyzkoušejte další krok.
@@ -57,19 +57,19 @@ Po provedení každého kroku Poradce při potížích zkuste se znovu připojit
 ## <a name="use-the-azure-portal"></a>Použití webu Azure Portal
 Na webu Azure portal poskytuje rychlý způsob, jak resetovat přihlašovací údaje pro konfiguraci nebo uživatele SSH bez instalace všech nástrojů v místním počítači.
 
-Vyberte svůj virtuální počítač na webu Azure Portal. Přejděte dolů k položce **podpora a řešení potíží** a vyberte **resetovat heslo** jako v následujícím příkladu:
+Pokud chcete začít, vyberte svůj virtuální počítač na webu Azure Portal. Přejděte dolů k položce **podpora a řešení potíží** a vyberte **resetovat heslo** jako v následujícím příkladu:
 
 ![Resetovat konfiguraci SSH nebo přihlašovacích údajů na webu Azure Portal](./media/troubleshoot-ssh-connection/reset-credentials-using-portal.png)
 
-### <a name="reset-the-ssh-configuration"></a>Resetovat konfiguraci SSH
-Jako první krok, vyberte `Reset configuration only` z **režimu** rozevírací nabídce jako v předchozím snímku obrazovky, klikněte **resetování** tlačítko. Po dokončení této akce se pokusí znovu přístup k vašemu virtuálnímu počítači.
+### <a name="a-idreset-config-reset-the-ssh-configuration"></a><a id="reset-config" />Resetovat konfiguraci SSH
+Chcete-li obnovit konfiguraci SSH, vyberte `Reset configuration only` v **režimu** stejně jako v předchozím snímku obrazovky a potom vyberte **aktualizace**. Po dokončení této akce se pokusí znovu přístup k vašemu virtuálnímu počítači.
 
-### <a name="reset-ssh-credentials-for-a-user"></a>Resetovat přihlašovací údaje SSH pro uživatele
-Resetovat přihlašovací údaje stávajícího uživatele, vyberte buď `Reset SSH public key` nebo `Reset password` z **režimu** rozevírací nabídky stejně jako v předchozím snímku obrazovky. Zadejte uživatelské jméno a klíč SSH nebo nové heslo a klikněte **resetování** tlačítko.
+### <a name="a-idreset-credentials-reset-ssh-credentials-for-a-user"></a><a id="reset-credentials" />Resetovat přihlašovací údaje SSH pro uživatele
+Resetovat přihlašovací údaje stávajícího uživatele, vyberte buď `Reset SSH public key` nebo `Reset password` v **režimu** části stejně jako v předchozím snímku obrazovky. Zadejte uživatelské jméno a klíč SSH nebo nové heslo a pak vyberte **aktualizace**.
 
-Můžete také vytvořit uživatele s oprávněními sudo na virtuálním počítači v této nabídce. Zadejte nové uživatelské jméno a přiřazené heslo nebo klíč SSH a pak klikněte na tlačítko **resetování** tlačítko.
+Můžete také vytvořit uživatele s oprávněními sudo na virtuálním počítači v této nabídce. Zadejte nové uživatelské jméno a přiřazené heslo nebo klíč SSH a pak vyberte **aktualizace**.
 
-### <a name="check-security-rules"></a>Check – pravidla zabezpečení
+### <a name="a-idsecurity-rules-check-security-rules"></a><a id="security-rules" />Check – pravidla zabezpečení
 
 Použití [ověření toku protokolu IP](../../network-watcher/network-watcher-check-ip-flow-verify-portal.md) pro potvrzení, pokud je pravidlo skupiny zabezpečení sítě blokuje provoz do nebo z virtuálního počítače. Můžete také zkontrolovat platná pravidla skupin zabezpečení a ověřte, že příchozí "skupina zabezpečení sítě existuje pravidlo a je nastaveno jako prioritní pro port SSH (ve výchozím nastavení 22). Další informace najdete v tématu [přenosy dat pomocí platná pravidla zabezpečení a řešení potíží s virtuálním počítači](../../virtual-network/diagnose-network-traffic-filter-problem.md).
 
@@ -78,12 +78,12 @@ Použití [ověření toku protokolu IP](../../network-watcher/network-watcher-c
 Network Watcher můžete využít [směrování](../../network-watcher/network-watcher-check-next-hop-portal.md) schopnost potvrďte trasu nebrání provoz z směrovány do nebo z virtuálního počítače. Můžete také zkontrolovat efektivní trasy, pokud chcete zobrazit všechny efektivní trasy pro síťové rozhraní. Další informace najdete v tématu [provoz řešení potíží s virtuálního počítače pomocí efektivních tras](../../virtual-network/diagnose-network-routing-problem.md).
 
 ## <a name="use-the-azure-cli"></a>Použití Azure CLI
-Pokud jste tak dosud neučinili, nainstalujte nejnovější [rozhraní příkazového řádku Azure](/cli/azure/install-az-cli2) a přihlaste se k Azure pomocí účtu [az login](/cli/azure/reference-index#az_login).
+Pokud jste tak dosud neučinili, nainstalujte nejnovější [rozhraní příkazového řádku Azure](/cli/azure/install-az-cli2) a účtu přihlášení do Azure pomocí [az login](/cli/azure/reference-index#az_login).
 
 Pokud jste vytvořili a nahrát vlastní image Linuxu disku, ujistěte se, že [Microsoft Azure Linux Agent](../extensions/agent-windows.md) verze 2.0.5 nebo novější nainstalován. Pro virtuální počítače vytvořené pomocí Image z Galerie tato rozšíření přístup k již nainstalován a nakonfigurován pro vás.
 
 ### <a name="reset-ssh-configuration"></a>Resetovat konfiguraci SSH
-Nejprve můžete zkusit resetuje se konfigurace SSH na výchozí hodnoty a restartování serveru SSH na virtuálním počítači. Všimněte si, že to nezmění název uživatelského účtu, hesla nebo klíčů SSH.
+Nejprve můžete zkusit resetuje se konfigurace SSH na výchozí hodnoty a restartování serveru SSH na virtuálním počítači. Nezmění se název uživatelského účtu, hesla nebo klíčů SSH.
 V následujícím příkladu [az vm uživatele reset-ssh](/cli/azure/vm/user#az_vm_user_reset_ssh) resetovat konfiguraci SSH na virtuálním počítači s názvem `myVM` v `myResourceGroup`. Použijte vlastní hodnoty následujícím způsobem:
 
 ```azurecli
@@ -182,21 +182,13 @@ azure vm reset-access --resource-group myResourceGroup --name myVM \
     --user-name myUsername --ssh-key-file ~/.ssh/id_rsa.pub
 ```
 
-
-## <a name="restart-a-vm"></a>Restartování virtuálního počítače
+## <a name="a-idrestart-vm-restart-a-vm"></a><a id="restart-vm" />Restartování virtuálního počítače
 Pokud máte resetovat přihlašovací údaje pro konfiguraci a uživatele SSH, nebo došlo k chybě při provádění, můžete zkusit restartování virtuálního počítače na základní výpočetní problémy adresu.
 
 ### <a name="azure-portal"></a>portál Azure
-Pokud chcete restartovat virtuální počítač pomocí webu Azure portal, vyberte svůj virtuální počítač a klikněte na tlačítko **restartovat** tlačítko jako v následujícím příkladu:
+Chcete-li restartovat virtuální počítač pomocí webu Azure portal, vyberte svůj virtuální počítač a pak vyberte **restartovat** jako v následujícím příkladu:
 
 ![Restartování virtuálního počítače na webu Azure Portal](./media/troubleshoot-ssh-connection/restart-vm-using-portal.png)
-
-### <a name="azure-classic-cli"></a>Azure Classic CLI
-Následující příklad restartuje virtuální počítač s názvem `myVM` ve skupině prostředků s názvem `myResourceGroup`. Použijte vlastní hodnoty následujícím způsobem:
-
-```azurecli
-azure vm restart --resource-group myResourceGroup --name myVM
-```
 
 ### <a name="azure-cli"></a>Azure CLI
 Následující příklad používá [az vm restart](/cli/azure/vm#az_vm_restart) restartovat virtuální počítač s názvem `myVM` ve skupině prostředků s názvem `myResourceGroup`. Použijte vlastní hodnoty následujícím způsobem:
@@ -205,26 +197,25 @@ Následující příklad používá [az vm restart](/cli/azure/vm#az_vm_restart)
 az vm restart --resource-group myResourceGroup --name myVM
 ```
 
+### <a name="azure-classic-cli"></a>Azure Classic CLI
+Následující příklad restartuje virtuální počítač s názvem `myVM` ve skupině prostředků s názvem `myResourceGroup`. Použijte vlastní hodnoty následujícím způsobem:
 
-## <a name="redeploy-a-vm"></a>Znovunasazení virtuálního počítače
+```azurecli
+azure vm restart --resource-group myResourceGroup --name myVM
+```
+
+## <a name="a-idredeploy-vm-redeploy-a-vm"></a><a id="redeploy-vm" />Opětovné nasazení virtuálního počítače
 Můžete znovu nasadit virtuální počítač do jiného uzlu v rámci Azure, které může opravit nějaké základní síťové potíže. Informace o opětovné nasazení virtuálního počítače najdete v tématu [opětovné nasazení virtuálního počítače do nového uzlu Azure](../windows/redeploy-to-new-node.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 
 > [!NOTE]
-> Po dokončení této operace dočasné disky data se ztratí a aktualizují dynamické IP adresy, které jsou spojené s virtuálním počítačem.
+> Po dokončení této operace, dojde ke ztrátě dat dočasné disky a dynamické IP adresy, které jsou spojené s virtuálním počítačem se aktualizují.
 > 
 > 
 
 ### <a name="azure-portal"></a>portál Azure
-Opětovné nasazení virtuálního počítače pomocí webu Azure portal, vyberte svůj virtuální počítač a přejděte dolů k položce **podpora a řešení potíží** oddílu. Klikněte na tlačítko **znovu nasadit** tlačítko jako v následujícím příkladu:
+Opětovné nasazení virtuálního počítače pomocí webu Azure portal, vyberte svůj virtuální počítač a přejděte dolů k položce **podpora a řešení potíží** oddílu. Vyberte **znovu nasadit** jako v následujícím příkladu:
 
 ![Opětovné nasazení virtuálního počítače na webu Azure Portal](./media/troubleshoot-ssh-connection/redeploy-vm-using-portal.png)
-
-### <a name="azure-classic-cli"></a>Azure Classic CLI
-Následující příklad znovu nasadí virtuální počítač s názvem `myVM` ve skupině prostředků s názvem `myResourceGroup`. Použijte vlastní hodnoty následujícím způsobem:
-
-```azurecli
-azure vm redeploy --resource-group myResourceGroup --name myVM
-```
 
 ### <a name="azure-cli"></a>Azure CLI
 Následující příklad použití [opětovné nasazení virtuálního počítače v rámci az](/cli/azure/vm#az_vm_redeploy) znovu nasadit virtuální počítač s názvem `myVM` ve skupině prostředků s názvem `myResourceGroup`. Použijte vlastní hodnoty následujícím způsobem:
@@ -233,16 +224,23 @@ Následující příklad použití [opětovné nasazení virtuálního počíta�
 az vm redeploy --resource-group myResourceGroup --name myVM
 ```
 
+### <a name="azure-classic-cli"></a>Azure Classic CLI
+Následující příklad znovu nasadí virtuální počítač s názvem `myVM` ve skupině prostředků s názvem `myResourceGroup`. Použijte vlastní hodnoty následujícím způsobem:
+
+```azurecli
+azure vm redeploy --resource-group myResourceGroup --name myVM
+```
+
 ## <a name="vms-created-by-using-the-classic-deployment-model"></a>Virtuální počítače vytvořené pomocí modelu nasazení Classic
 Zkuste tyto kroky k řešení nejběžnějších chyb připojení SSH pro virtuální počítače, které byly vytvořeny pomocí modelu nasazení classic. Po provedení každého kroku zkuste se znovu připojit k virtuálnímu počítači.
 
-* Resetování vzdáleného přístupu z [webu Azure portal](https://portal.azure.com). Na portálu Azure portal, vyberte svůj virtuální počítač a klikněte na tlačítko **resetovat vzdálený přístup...**  tlačítko.
-* Restartujte virtuální počítač. Na [webu Azure portal](https://portal.azure.com), vyberte svůj virtuální počítač a klikněte na tlačítko **restartovat** tlačítko.
+* Resetování vzdáleného přístupu z [webu Azure portal](https://portal.azure.com). Na portálu Azure portal, vyberte svůj virtuální počítač a potom vyberte **resetovat vzdálený přístup...** .
+* Restartujte virtuální počítač. Na [webu Azure portal](https://portal.azure.com), vyberte svůj virtuální počítač a vyberte **restartovat**.
     
 * Opětovné nasazení virtuálního počítače do nového uzlu Azure. Informace o tom, jak znovu nasadit virtuální počítač najdete v tématu [opětovné nasazení virtuálního počítače do nového uzlu Azure](../windows/redeploy-to-new-node.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
   
     Po dokončení této operace dočasné disky data se ztratí a aktualizují dynamické IP adresy, které jsou spojené s virtuálním počítačem.
-* Postupujte podle pokynů v [resetování hesla nebo klíče SSH pro virtuální počítače se systémem Linux](../linux/classic/reset-access-classic.md?) na:
+* Postupujte podle pokynů v [resetování hesla nebo klíče SSH pro virtuální počítače se systémem Linux](../linux/classic/reset-access-classic.md) na:
   
   * Resetujte heslo nebo klíč SSH.
   * Vytvoření *sudo* uživatelský účet.
@@ -250,9 +248,7 @@ Zkuste tyto kroky k řešení nejběžnějších chyb připojení SSH pro virtu�
 * Kontrola stavu prostředků Virtuálních počítačů v případě problémů platformy.<br>
      Vyberte svůj virtuální počítač a přejděte dolů **nastavení** > **zkontrolovat stav**.
 
-## <a name="additional-resources"></a>Další zdroje informací:
+## <a name="additional-resources"></a>Další materiály
 * Pokud jste stále nemáte přístup k SSH k virtuálnímu počítači po provedení kroků po, přečtěte si téma [podrobný postup řešení potíží](detailed-troubleshoot-ssh-connection.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) zkontrolovat další kroky k vyřešení vašeho problému.
 * Další informace o řešení potíží s přístupu k aplikacím, najdete v části [řešení potíží s přístupem k aplikaci spuštěné na virtuálním počítači Azure](../windows/troubleshoot-app-connection.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 * Další informace o řešení potíží s virtuálním počítačům, které byly vytvořeny pomocí modelu nasazení classic najdete v tématu [resetování hesla nebo klíče SSH pro virtuální počítače se systémem Linux](../linux/classic/reset-access-classic.md).
-
-

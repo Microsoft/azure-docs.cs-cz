@@ -1,43 +1,44 @@
 ---
-title: 'Kurz: Integrace Azure Active Directory se službou Egnyte | Dokumentace Microsoftu'
+title: 'Kurz: Integrace Azure Active Directory s Egnyte | Dokumentace Microsoftu'
 description: Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a Egnyte.
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: femila
+ms.reviewer: joflore
 ms.assetid: 8c2101d4-1779-4b36-8464-5c1ff780da18
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/18/2017
+ms.date: 11/15/2018
 ms.author: jeedes
-ms.openlocfilehash: 4f6f6ef12f5a8dd8a9f210e9b1f1ca978ec5a1ac
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: e33fc71e0e43864d7d70495fc5056a8acaf4ad56
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39440452"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55159006"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-egnyte"></a>Kurz: Integrace Azure Active Directory se službou Egnyte
+# <a name="tutorial-azure-active-directory-integration-with-egnyte"></a>Kurz: Integrace Azure Active Directory s Egnyte
 
 V tomto kurzu se dozvíte, jak integrovat Egnyte s Azure Active Directory (Azure AD).
 
 Egnyte integraci se službou Azure AD poskytuje následující výhody:
 
-- Můžete řídit ve službě Azure AD, který má přístup k Egnyte
-- Můžete povolit uživatelům, aby automaticky získat přihlášení k Egnyte (Single Sign-On) s jejich účty Azure AD
-- Můžete spravovat své účty na jediném místě – na webu Azure portal
+- Můžete řídit ve službě Azure AD, který má přístup k Egnyte.
+- Můžete povolit uživatelům, aby automaticky získat přihlášení k Egnyte (Single Sign-On) s jejich účty Azure AD.
+- Můžete spravovat své účty na jediném místě – na webu Azure portal.
 
-Pokud chcete zjistit další podrobnosti o integraci aplikací SaaS v Azure AD, přečtěte si téma [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
+Pokud chcete zjistit další podrobnosti o integraci aplikací SaaS v Azure AD, přečtěte si téma [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](../manage-apps/what-is-single-sign-on.md)
 
 ## <a name="prerequisites"></a>Požadavky
 
 Konfigurace integrace Azure AD s Egnyte, potřebujete následující položky:
 
-- S předplatným služby Azure AD
+- Předplatné Azure AD
 - Egnyte jednotného přihlašování povolená předplatného
 
 > [!NOTE]
@@ -46,53 +47,50 @@ Konfigurace integrace Azure AD s Egnyte, potřebujete následující položky:
 Pokud chcete vyzkoušet kroky v tomto kurzu, postupujte podle těchto doporučení:
 
 - Nepoužívejte produkčním prostředí, pokud to není nutné.
-- Pokud nemáte prostředí zkušební verzi Azure AD, můžete získat měsíční zkušební [tady](https://azure.microsoft.com/pricing/free-trial/).
+- Pokud nemáte prostředí zkušební verzi Azure AD, můžete si [získat měsíční zkušební verzi](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="scenario-description"></a>Popis scénáře
+
 V tomto kurzu je otestovat Azure AD jednotné přihlašování v testovacím prostředí. Scénář popsaný v tomto kurzu se skládá ze dvou hlavních stavebních bloků:
 
 1. Přidání Egnyte z Galerie
-1. Konfigurace a testování Azure AD jednotného přihlašování
+2. Konfigurace a testování Azure AD jednotného přihlašování
 
 ## <a name="adding-egnyte-from-the-gallery"></a>Přidání Egnyte z Galerie
+
 Konfigurace integrace Egnyte do služby Azure AD, budete muset přidat Egnyte z Galerie na váš seznam spravovaných aplikací SaaS.
 
 **Chcete-li přidat Egnyte z galerie, postupujte následovně:**
 
-1. V  **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu. 
+1. V **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu. 
 
-    ![Active Directory][1]
+    ![Tlačítko Azure Active Directory][1]
 
-1. Přejděte do **podnikové aplikace**. Pak přejděte na **všechny aplikace**.
+2. Přejděte do **podnikové aplikace**. Pak přejděte na **všechny aplikace**.
 
-    ![Aplikace][2]
-    
-1. Chcete-li přidat novou aplikaci, klikněte na tlačítko **novou aplikaci** tlačítko v horní části dialogového okna.
+    ![V okně podnikové aplikace][2]
 
-    ![Aplikace][3]
+3. Chcete-li přidat novou aplikaci, klikněte na tlačítko **novou aplikaci** tlačítko v horní části dialogového okna.
 
-1. Do vyhledávacího pole zadejte **Egnyte**.
+    ![Tlačítko nové aplikace][3]
 
-    ![Vytváří se testovací uživatele služby Azure AD](./media/egnyte-tutorial/tutorial_egnyte_search.png)
+4. Do vyhledávacího pole zadejte **Egnyte**vyberte **Egnyte** z panelu výsledků klikněte **přidat** tlačítko pro přidání aplikace.
 
-1. Na panelu výsledků vyberte **Egnyte**a potom klikněte na tlačítko **přidat** tlačítko pro přidání aplikace.
+    ![Egnyte v seznamu výsledků](./media/egnyte-tutorial/tutorial_egnyte_addfromgallery.png)
 
-    ![Vytváří se testovací uživatele služby Azure AD](./media/egnyte-tutorial/tutorial_egnyte_addfromgallery.png)
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurace a otestování služby Azure AD jednotného přihlašování
 
-##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a>Konfigurace a testování Azure AD jednotného přihlašování
-V této části Konfigurace a testování Azure AD jednotné přihlašování s Egnyte podle testovacího uživatele nazývá "Britta Simon."
+V této části Konfigurace a testování Azure AD jednotné přihlašování pomocí Egnyte podle testovacího uživatele nazývá "Britta Simon".
 
 Pro jednotné přihlašování pro práci služba Azure AD potřebuje vědět, co uživatel protějšky v Egnyte je pro uživatele ve službě Azure AD. Jinými slovy vztah odkazu mezi uživatele služby Azure AD a související uživatelské v Egnyte potřeba navázat.
-
-V Egnyte, přiřaďte hodnotu **uživatelské jméno** ve službě Azure AD jako hodnotu **uživatelské jméno** a tím vytvoří vztah odkazu.
 
 Nakonfigurovat a otestovat Azure AD jednotné přihlašování s Egnyte, které potřebujete k dokončení následujících stavebních bloků:
 
 1. **[Konfigurace Azure AD Single Sign-On](#configuring-azure-ad-single-sign-on)**  – Pokud chcete, aby uživatelé mohli tuto funkci používat.
-1. **[Vytváří se testovací uživatele služby Azure AD](#creating-an-azure-ad-test-user)**  – Pokud chcete otestovat Azure AD jednotné přihlašování s Britta Simon.
-1. **[Vytváří se testovací uživatelské jméno Egnyte](#creating-an-egnyte-test-user)**  – Pokud chcete mít protějšek Britta Simon Egnyte, který je propojený s Azure AD reprezentace uživatele.
-1. **[Přiřazení testovacího uživatele Azure AD](#assigning-the-azure-ad-test-user)**  – Pokud chcete povolit Britta Simon používat Azure AD jednotného přihlašování.
-1. **[Testování Single Sign-On](#testing-single-sign-on)**  – Pokud chcete ověřit, jestli funguje v konfiguraci.
+2. **[Vytváří se testovací uživatele služby Azure AD](#creating-an-azure-ad-test-user)**  – Pokud chcete otestovat Azure AD jednotné přihlašování s Britta Simon.
+3. **[Vytváří se testovací uživatelské jméno Egnyte](#creating-an-egnyte-test-user)**  – Pokud chcete mít protějšek Britta Simon Egnyte, který je propojený s Azure AD reprezentace uživatele.
+4. **[Přiřazení testovacího uživatele Azure AD](#assigning-the-azure-ad-test-user)**  – Pokud chcete povolit Britta Simon používat Azure AD jednotného přihlašování.
+5. **[Testování jednotného přihlašování](#testing-single-sign-on)**  – Pokud chcete ověřit, jestli funguje v konfiguraci.
 
 ### <a name="configuring-azure-ad-single-sign-on"></a>Konfigurace služby Azure AD jednotného přihlašování
 
@@ -102,48 +100,54 @@ V této části Povolení služby Azure AD jednotného přihlašování na port�
 
 1. Na webu Azure Portal na **Egnyte** integrace stránka aplikace, klikněte na tlačítko **jednotného přihlašování**.
 
-    ![Konfigurace jednotného přihlašování][4]
+    ![Nakonfigurovat jednotné přihlašování – odkaz][4]
 
-1. Na **jednotného přihlašování** dialogového okna, vyberte **režimu** jako **přihlašování na základě SAML** povolit jednotné přihlašování.
- 
-    ![Konfigurace jednotného přihlašování](./media/egnyte-tutorial/tutorial_egnyte_samlbase.png)
+2. Na **vybrat jedinou metodu přihlašování** dialogového okna, klikněte na tlačítko **vyberte** pro **SAML** chcete povolit jednotné přihlašování.
 
-1. Na **Egnyte domény a adresy URL** části, proveďte následující kroky:
+    ![Konfigurace jednotného přihlašování](common/tutorial_general_301.png)
 
-    ![Konfigurace jednotného přihlašování](./media/egnyte-tutorial/tutorial_egnyte_url.png)
+3. Na **nastavte si jednotné přihlašování pomocí SAML** klikněte na **upravit** ikony otevřete **základní konfiguraci SAML** dialogového okna.
+
+    ![Konfigurace jednotného přihlašování](common/editconfigure.png)
+
+4. Na **základní konfiguraci SAML** části, proveďte následující kroky:
+
+    ![Egnyte domény a adresy URL jednotného přihlašování – informace](./media/egnyte-tutorial/tutorial_egnyte_url.png)
 
     V **přihlašovací adresa URL** textového pole zadejte adresu URL pomocí následujícímu vzoru: `https://<companyname>.egnyte.com`
 
     > [!NOTE] 
     > Tato hodnota není skutečný. Aktualizujte tuto hodnotu skutečné přihlašovací adresa URL. Kontakt [tým podpory Egnyte klienta](https://www.egnyte.com/corp/contact_egnyte.html) tuto výhodu získáte. 
- 
-1. Na **podpisový certifikát SAML** klikněte na tlačítko **Certificate(Base64)** a uložte soubor certifikátu v počítači.
 
-    ![Konfigurace jednotného přihlašování](./media/egnyte-tutorial/tutorial_egnyte_certificate.png) 
+5. Na **podpisový certifikát SAML** stránku, **podpisový certifikát SAML** klikněte na tlačítko **Stáhnout** Stáhnout **certifikát (Base64)** a uložte soubor certifikátu v počítači.
 
-1. Klikněte na tlačítko **Uložit** tlačítko.
+    ![Odkaz ke stažení certifikátu](./media/egnyte-tutorial/tutorial_egnyte_certificate.png) 
 
-    ![Konfigurace jednotného přihlašování](./media/egnyte-tutorial/tutorial_general_400.png)
+6. Na **nastavení Egnyte** tématu, zkopírujte adresu URL odpovídající podle vašich požadavků.
 
-1. Na **Egnyte konfigurace** klikněte na tlačítko **nakonfigurovat Egnyte** otevřete **nakonfigurovat přihlašování** okna. Kopírovat **SAML Entity ID a SAML jednotné přihlašování – adresa URL služby** z **Stručná referenční příručka oddílu.**
+    a. Přihlašovací adresa URL
 
-    ![Konfigurace jednotného přihlašování](./media/egnyte-tutorial/tutorial_egnyte_configure.png) 
+    b. Identifikátor Azure AD
 
-1. V okně jiné webové prohlížeče Přihlaste se k webu společnosti Egnyte jako správce.
+    c. Adresa URL – odhlášení
 
-1. Klikněte na tlačítko **nastavení**.
+    ![Konfigurace Egnyte](common/configuresection.png)
+
+7. V okně jiné webové prohlížeče Přihlaste se k webu společnosti Egnyte jako správce.
+
+8. Klikněte na tlačítko **nastavení**.
    
-   ![Nastavení](./media/egnyte-tutorial/ic787819.png "nastavení")
+    ![Nastavení](./media/egnyte-tutorial/ic787819.png "nastavení")
 
-1. V nabídce klikněte na tlačítko **nastavení**.
+9. V nabídce klikněte na tlačítko **nastavení**.
 
-   ![Nastavení](./media/egnyte-tutorial/ic787820.png "nastavení")
+    ![Nastavení](./media/egnyte-tutorial/ic787820.png "nastavení")
 
-1. Klikněte na tlačítko **konfigurace** kartu a potom klikněte na tlačítko **zabezpečení**.
+10. Klikněte na tlačítko **konfigurace** kartu a potom klikněte na tlačítko **zabezpečení**.
 
     ![Zabezpečení](./media/egnyte-tutorial/ic787821.png "zabezpečení")
 
-1. V **ověření jednotného přihlašování** části, proveďte následující kroky:
+11. V **ověření jednotného přihlašování** části, proveďte následující kroky:
 
     ![Jednotné přihlašování na ověřování](./media/egnyte-tutorial/ic787822.png "jednotné přihlašování na ověřování")   
     
@@ -151,9 +155,9 @@ V této části Povolení služby Azure AD jednotného přihlašování na port�
    
     b. Jako **zprostředkovatele Identity**vyberte **AzureAD**.
    
-    c. Vložit **SAML jednotné přihlašování – adresa URL služby** zkopírovanými z webu Azure portal do **přihlašovací adresa URL zprostředkovatele Identity** textového pole.
+    c. Vložit **přihlašovací adresa URL** zkopírovanými z webu Azure portal do **přihlašovací adresa URL zprostředkovatele Identity** textového pole.
    
-    d. Vložit **SAML Entity ID** zkopírovanou z webu Azure portal do **ID entity zprostředkovatele Identity** textového pole.
+    d. Vložit **Azure AD identifikátor** zkopírovanou z webu Azure portal do **ID entity zprostředkovatele Identity** textového pole.
       
     e. Otevřete váš certifikát base-64 kódovaných v poznámkovém bloku stáhnout z webu Azure portal, zkopírujte obsah ho do schránky a a vložte ho do **certifikát poskytovatele Identity** textového pole.
    
@@ -163,41 +167,31 @@ V této části Povolení služby Azure AD jednotného přihlašování na port�
    
     h. Klikněte na **Uložit**.
 
-> [!TIP]
-> Teď si můžete přečíst stručné verzi těchto pokynů uvnitř [webu Azure portal](https://portal.azure.com), zatímco jsou nastavení aplikace!  Po přidání této aplikace z **služby Active Directory > podnikové aplikace** části, stačí kliknout **Single Sign-On** kartu a přístup k vložené dokumentaci prostřednictvím  **Konfigurace** oblast v dolní části. Další informace o funkci vložená dokumentace: [dokumentace ke službě Azure AD embedded]( https://go.microsoft.com/fwlink/?linkid=845985)
-> 
-
 ### <a name="creating-an-azure-ad-test-user"></a>Vytváří se testovací uživatele služby Azure AD
+
 Cílem této části je vytvoření zkušebního uživatele na webu Azure Portal volá Britta Simon.
 
-![Vytvoření uživatele Azure AD][100]
+1. Na webu Azure Portal, v levém podokně vyberte **Azure Active Directory**vyberte **uživatelé**a pak vyberte **všichni uživatelé**.
 
-**Chcete-li vytvořit testovacího uživatele ve službě Azure AD, postupujte následovně:**
+    ![Vytvoření uživatele Azure AD][100]
 
-1. V **webu Azure portal**, v levém navigačním podokně klikněte na tlačítko **Azure Active Directory** ikonu.
+2. Vyberte **nového uživatele** v horní části obrazovky.
 
-    ![Vytváří se testovací uživatele služby Azure AD](./media/egnyte-tutorial/create_aaduser_01.png) 
+    ![Vytváří se testovací uživatele služby Azure AD](common/create_aaduser_01.png) 
 
-1. Chcete-li zobrazit seznam uživatelů, přejděte na **uživatelů a skupin** a klikněte na tlačítko **všichni uživatelé**.
-    
-    ![Vytváří se testovací uživatele služby Azure AD](./media/egnyte-tutorial/create_aaduser_02.png) 
+3. Ve vlastnosti uživatele proveďte následující kroky.
 
-1. Chcete-li otevřít **uživatele** dialogového okna, klikněte na tlačítko **přidat** horní části dialogového okna.
- 
-    ![Vytváří se testovací uživatele služby Azure AD](./media/egnyte-tutorial/create_aaduser_03.png) 
+    ![Vytváří se testovací uživatele služby Azure AD](common/create_aaduser_02.png)
 
-1. Na **uživatele** dialogového okna stránky, proveďte následující kroky:
- 
-    ![Vytváří se testovací uživatele služby Azure AD](./media/egnyte-tutorial/create_aaduser_04.png) 
+    a. V **název** zadejte **BrittaSimon**.
+  
+    b. V **uživatelské jméno** zadejte **brittasimon@yourcompanydomain.extension**  
+    Například BrittaSimon@contoso.com.
 
-    a. V **název** textové pole, typ **BrittaSimon**.
+    c. Vyberte **vlastnosti**, vyberte **zobrazit heslo** zaškrtněte políčko a zapište si hodnotu, která se zobrazí v poli heslo.
 
-    b. V **uživatelské jméno** textové pole, typ **e-mailová adresa** z BrittaSimon.
+    d. Vyberte **Vytvořit**.
 
-    c. Vyberte **zobrazit heslo** a zapište si hodnotu **heslo**.
-
-    d. Klikněte na možnost **Vytvořit**.
- 
 ### <a name="creating-an-egnyte-test-user"></a>Vytvoření Egnyte testovacího uživatele
 
 Přihlaste se k Egnyte Azure AD uživatelům umožnit, musí být poskytnuty do Egnyte. V případě Egnyte zřizování se ruční úlohy.
@@ -206,19 +200,23 @@ Přihlaste se k Egnyte Azure AD uživatelům umožnit, musí být poskytnuty do 
 
 1. Přihlaste se k vaší **Egnyte** společnosti serveru jako správce.
 
-1. Přejděte na **nastavení \> uživatelů a skupin**.
+2. Přejděte na **nastavení \> uživatelů a skupin**.
 
-1. Klikněte na tlačítko **Add New User**a pak vyberte typ uživatele, které chcete přidat.
+3. Klikněte na tlačítko **Add New User**a pak vyberte typ uživatele, které chcete přidat.
    
-   ![Uživatelé](./media/egnyte-tutorial/ic787824.png "uživatelů")
+    ![Uživatelé](./media/egnyte-tutorial/ic787824.png "uživatelů")
 
-1. V **nového standardního uživatele** části, proveďte následující kroky:
-   
-   ![Nového standardního uživatele](./media/egnyte-tutorial/ic787825.png "nového standardního uživatele")   
+4. V **nové skupiny Power Users** části, proveďte následující kroky:
+    
+    ![Nového standardního uživatele](./media/egnyte-tutorial/ic787825.png "nového standardního uživatele")   
 
-   a. Typ **e-mailu**, **uživatelské jméno**a další podrobnosti platný účet služby Azure Active Directory, které chcete zřídit.
+    a. V **e-mailu** textové pole, zadejte e-mailu uživatele, jako je **Brittasimon@contoso.com**.
+
+    b. V **uživatelské jméno** textové pole, zadejte uživatelské jméno uživatele, jako je **Brittasimon**.
+
+    c. Vyberte **jednotného přihlašování** jako **typ ověřování**.
    
-   b. Klikněte na **Uložit**.
+    d. Klikněte na **Uložit**.
     
     >[!NOTE]
     >Držitel účtu Azure Active Directory obdrží e-mailové oznámení.
@@ -232,57 +230,47 @@ Přihlaste se k Egnyte Azure AD uživatelům umožnit, musí být poskytnuty do 
 
 V této části je povolit Britta Simon k udělení přístupu k Egnyte použití Azure jednotného přihlašování.
 
-![Přiřadit uživatele][200] 
+1. Na webu Azure Portal, vyberte **podnikové aplikace**vyberte **všechny aplikace**.
 
-**Přiřadit Egnyte Britta Simon, proveďte následující kroky:**
+    ![Přiřadit uživatele][201]
 
-1. Na webu Azure Portal, otevřete zobrazení aplikací a pak přejděte do zobrazení adresáře a přejděte na **podnikové aplikace** klikněte **všechny aplikace**.
+2. V seznamu aplikací vyberte **Egnyte**.
 
-    ![Přiřadit uživatele][201] 
+    ![Konfigurace jednotného přihlašování](./media/egnyte-tutorial/tutorial_egnyte_app.png)
 
-1. V seznamu aplikací vyberte **Egnyte**.
+3. V nabídce na levé straně klikněte na tlačítko **uživatelů a skupin**.
 
-    ![Konfigurace jednotného přihlašování](./media/egnyte-tutorial/tutorial_egnyte_app.png) 
+    ![Přiřadit uživatele][202]
 
-1. V nabídce na levé straně klikněte na tlačítko **uživatelů a skupin**.
-
-    ![Přiřadit uživatele][202] 
-
-1. Klikněte na tlačítko **přidat** tlačítko. Potom vyberte **uživatelů a skupin** na **přidat přiřazení** dialogového okna.
+4. Klikněte na tlačítko **přidat** tlačítko. Potom vyberte **uživatelů a skupin** na **přidat přiřazení** dialogového okna.
 
     ![Přiřadit uživatele][203]
 
-1. Na **uživatelů a skupin** dialogového okna, vyberte **Britta Simon** v seznamu uživatelů.
+5. V **uživatelů a skupin** dialogové okno Vybrat **Britta Simon** v seznamu uživatelů, klikněte **vyberte** tlačítko v dolní části obrazovky.
 
-1. Klikněte na tlačítko **vyberte** tlačítko **uživatelů a skupin** dialogového okna.
+6. V **přidat přiřazení** dialogové okno Vybrat **přiřadit** tlačítko.
 
-1. Klikněte na tlačítko **přiřadit** tlačítko **přidat přiřazení** dialogového okna.
-    
 ### <a name="testing-single-sign-on"></a>Testování jednotného přihlašování
 
 V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 
 Po kliknutí na dlaždici Egnyte na přístupovém panelu, vám by měl získat automaticky přihlášení k aplikaci Egnyte.
-Další informace o přístupovém panelu, naleznete v tématu [Úvod k přístupovému panelu](../user-help/active-directory-saas-access-panel-introduction.md). 
+Další informace o přístupovém panelu, naleznete v tématu [Úvod k přístupovému panelu](../user-help/active-directory-saas-access-panel-introduction.md).
 
 ## <a name="additional-resources"></a>Další zdroje informací:
 
 * [Seznam kurzů o integraci aplikací SaaS pomocí Azure Active Directory](tutorial-list.md)
 * [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](../manage-apps/what-is-single-sign-on.md)
 
-
-
 <!--Image references-->
 
-[1]: ./media/egnyte-tutorial/tutorial_general_01.png
-[2]: ./media/egnyte-tutorial/tutorial_general_02.png
-[3]: ./media/egnyte-tutorial/tutorial_general_03.png
-[4]: ./media/egnyte-tutorial/tutorial_general_04.png
+[1]: common/tutorial_general_01.png
+[2]: common/tutorial_general_02.png
+[3]: common/tutorial_general_03.png
+[4]: common/tutorial_general_04.png
 
-[100]: ./media/egnyte-tutorial/tutorial_general_100.png
+[100]: common/tutorial_general_100.png
 
-[200]: ./media/egnyte-tutorial/tutorial_general_200.png
-[201]: ./media/egnyte-tutorial/tutorial_general_201.png
-[202]: ./media/egnyte-tutorial/tutorial_general_202.png
-[203]: ./media/egnyte-tutorial/tutorial_general_203.png
-
+[201]: common/tutorial_general_201.png
+[202]: common/tutorial_general_202.png
+[203]: common/tutorial_general_203.png

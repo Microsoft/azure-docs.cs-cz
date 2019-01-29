@@ -8,7 +8,7 @@ manager: mtillman
 editor: ''
 ms.assetid: 9b7cfbd7-f89f-4e33-aff2-414edd584b07
 ms.service: active-directory
-ms.component: develop
+ms.subservice: develop
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -17,12 +17,12 @@ ms.date: 11/13/2018
 ms.author: celested
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: be10af7096a11fb27971af9dc28036df4a4b0968
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.openlocfilehash: 090f9771bf8d1010e4249d97d5768891f02c54b3
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52423554"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55096598"
 ---
 # <a name="azure-active-directory-v20-and-the-oauth-20-client-credentials-flow"></a>Azure Active Directory v2.0 a tok přihlašovacích údajů klienta OAuth 2.0
 
@@ -80,7 +80,7 @@ Oprávnění aplikace ve vaší aplikaci, postupujte podle kroků popsaných v n
 2. Vyhledejte **oprávnění Microsoft Graphu** a pak přidejte **oprávnění aplikace** , která vaše aplikace vyžaduje.
 3. **Uložit** registraci aplikace.
 
-#### <a name="recommended-sign-the-user-in-to-your-app"></a>Doporučeno: Přihlášení uživatele do vaší aplikace
+#### <a name="recommended-sign-the-user-in-to-your-app"></a>Doporučené: Přihlášení uživatele do vaší aplikace
 
 Obvykle když vytvoříte aplikaci, která používá oprávnění aplikace, aplikace vyžaduje stránku nebo zobrazení schválí její oprávnění správce. Na této stránce můžou být součástí aplikace přihlásit flow součástí nastavení aplikace, nebo může být vyhrazený tok "připojení". V mnoha případech je vhodné pro aplikace, aby to předvedli "připojení" Zobrazit pouze poté, co uživatel má přihlášení pomocí pracovního nebo školního účtu Microsoft.
 
@@ -149,7 +149,7 @@ Po přijetí úspěšné odpovědi z koncového bodu aplikace zřizování aplik
 
 Poté, co pro vaši aplikaci, které jste získali nezbytné autorizace, pokračujte získání přístupových tokenů pro rozhraní API. Chcete-li získat token pomocí klienta udělování přihlašovacích údajů, odešlete požadavek POST do `/token` koncový bod verze 2.0:
 
-### <a name="first-case-access-token-request-with-a-shared-secret"></a>První věc: žádost o přístupový token s sdílený tajný klíč
+### <a name="first-case-access-token-request-with-a-shared-secret"></a>Prvním případě: Žádost o přístupový token s sdílený tajný klíč
 
 ```
 POST /{tenant}/oauth2/v2.0/token HTTP/1.1           //Line breaks for clarity
@@ -174,7 +174,7 @@ curl -X POST -H "Content-Type: application/x-www-form-urlencoded" -d 'client_id=
 | `client_secret` | Požaduje se | Tajný klíč aplikace, kterou jste vygenerovali pro vaši aplikaci v portálu pro registraci aplikace. Tajný kód klienta musí být kódovaná adresou URL před odesláním. |
 | `grant_type` | Požaduje se | Musí být `client_credentials`. |
 
-### <a name="second-case-access-token-request-with-a-certificate"></a>Druhý případ: žádost o přístupový token s certifikátem
+### <a name="second-case-access-token-request-with-a-certificate"></a>Druhý případ: Žádost o přístupový token s certifikátem
 
 ```
 POST /{tenant}/oauth2/v2.0/token HTTP/1.1               // Line breaks for clarity

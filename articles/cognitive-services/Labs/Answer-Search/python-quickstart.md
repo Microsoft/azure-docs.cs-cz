@@ -1,5 +1,5 @@
 ---
-title: 'Rychlý start: Project Answer Search, Python'
+title: 'Rychlý start: Hledání odpovědí projektu, Python'
 titlesuffix: Azure Cognitive Services
 description: Začněte používat Project Answer Search s jazykem Python.
 services: cognitive-services
@@ -10,12 +10,12 @@ ms.component: answer-search
 ms.topic: quickstart
 ms.date: 04/13/2018
 ms.author: rosh
-ms.openlocfilehash: 69c5edfef65af2ed1b27f9a512ad13c21468df7a
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
-ms.translationtype: HT
+ms.openlocfilehash: 2c42935e100a55f767c3b1cbac6590850734b57e
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49465504"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55093321"
 ---
 # <a name="quickstart-project-answer-search-with-python"></a>Rychlý start: Project Answer Search s jazykem Python
 
@@ -41,7 +41,7 @@ Implementuje se v následujících krocích:
 
 Následuje celý kód pro tuto ukázku:
 
-````
+```
 import http.client, urllib.parse
 import json
 
@@ -65,8 +65,8 @@ def get_local():
 result = get_local()
 print (json.dumps(json.loads(result), indent=4))
 
-````
-## <a name="next-steps"></a>Další kroky
+```
+## <a name="next-steps"></a>Další postup
 - [Rychlý start pro jazyk C#](c-sharp-quickstart.md)
 - [Rychlý start pro Javu](java-quickstart.md)
 - [Rychlý start pro Node](node-quickstart.md)
