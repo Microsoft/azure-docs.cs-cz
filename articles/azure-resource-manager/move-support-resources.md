@@ -51,12 +51,12 @@ Po nalezení poskytovatele prostředků a typ prostředku, použijte k určení,
 ## <a name="microsoftanalysisservices"></a>Microsoft.AnalysisServices
 | Typ prostředku | Skupina prostředků | Předplatné |
 | ------------- | -------------- | ------------ |
-| serverů | Ano | Ano |
+| servers | Ano | Ano |
 
 ## <a name="microsoftapimanagement"></a>Microsoft.ApiManagement
 | Typ prostředku | Skupina prostředků | Předplatné |
 | ------------- | --------------- | ----------- |
-| služba | Ano | Ano |
+| service | Ano | Ano |
 
 ## <a name="microsoftauthorization"></a>Microsoft.Authorization
 | Typ prostředku | Skupina prostředků | Předplatné |
@@ -78,12 +78,12 @@ Po nalezení poskytovatele prostředků a typ prostředku, použijte k určení,
 ## <a name="microsoftazurestack"></a>Microsoft.AzureStack
 | Typ prostředku | Skupina prostředků | Předplatné |
 | ------------- | -------------- | ------------ |
-| registrace | Ano | Ano |
+| registrations | Ano | Ano |
 
 ## <a name="microsoftbackup"></a>Microsoft.Backup
 | Typ prostředku | Skupina prostředků | Předplatné |
 | ------------- | -------------- | ------------ |
-| backupvaultu | Ne | Ne |
+| backupvault | Ne | Ne |
 
 ## <a name="microsoftbatch"></a>Microsoft.Batch
 | Typ prostředku | Skupina prostředků | Předplatné |
@@ -118,13 +118,13 @@ Po nalezení poskytovatele prostředků a typ prostředku, použijte k určení,
 ## <a name="microsoftcdn"></a>Microsoft.Cdn
 | Typ prostředku | Skupina prostředků | Předplatné |
 | ------------- | -------------- | ------------ |
-| Profily | Ano | Ano |
-| profily a koncových bodů | Ano | Ano |
+| profiles | Ano | Ano |
+| profiles/endpoints | Ano | Ano |
 
 ## <a name="microsoftcertificateregistration"></a>Microsoft.CertificateRegistration
 | Typ prostředku | Skupina prostředků | Předplatné |
 | ------------- | -------------- | ------------ |
-| objednávky certifikátu | Ano | Ano |
+| certificateorders | Ano | Ano |
 
 ## <a name="microsoftclassiccompute"></a>Microsoft.ClassicCompute
 | Typ prostředku | Skupina prostředků | Předplatné |
@@ -153,15 +153,15 @@ Po nalezení poskytovatele prostředků a typ prostředku, použijte k určení,
 | Typ prostředku | Skupina prostředků | Předplatné |
 | ------------- | -------------- | ------------ |
 | availabilitysets | Ano | Ano |
-| Disky | Ano | Ano |
-| Galerie | Ne | Ne |
-| Galerie nebo imagí | Ne | Ne |
-| Galerie a Image/verze | Ne | Ne |
+| disks | Ano | Ano |
+| galleries | Ne | Ne |
+| galleries/images | Ne | Ne |
+| galleries/images/versions | Ne | Ne |
 | images | Ano | Ano |
 | restorepointcollections | Ne | Ne |
 | sharedvmimages | Ne | Ne |
 | sharedvmimages/verze | Ne | Ne |
-| snímky | Ano | Ano |
+| snapshots | Ano | Ano |
 | virtualmachines | Ano | Ano |
 | virtualmachines/extensions | Ano | Ano |
 | virtualmachinescalesets | Ano | Ano |
@@ -179,11 +179,11 @@ Po nalezení poskytovatele prostředků a typ prostředku, použijte k určení,
 ## <a name="microsoftcontainerregistry"></a>Microsoft.ContainerRegistry
 | Typ prostředku | Skupina prostředků | Předplatné |
 | ------------- | -------------- | ------------ |
-| Registry | Ano | Ano |
-| Registry/buildtasks | Ano | Ano |
-| Registry/replikace | Ne | Ne |
-| Registry nebo úloh | Ano | Ano |
-| Registry a webhooky | Ano | Ano |
+| registries | Ano | Ano |
+| registries/buildtasks | Ano | Ano |
+| registries/replications | Ne | Ne |
+| registries/tasks | Ano | Ano |
+| registries/webhooks | Ano | Ano |
 
 ## <a name="microsoftcontainerservice"></a>Microsoft.ContainerService
 | Typ prostředku | Skupina prostředků | Předplatné |
@@ -195,22 +195,22 @@ Po nalezení poskytovatele prostředků a typ prostředku, použijte k určení,
 ## <a name="microsoftcontentmoderator"></a>Microsoft.ContentModerator
 | Typ prostředku | Skupina prostředků | Předplatné |
 | ------------- | -------------- | ------------ |
-| aplikace | Ano | Ano |
+| applications | Ano | Ano |
 
 ## <a name="microsoftcostmanagement"></a>Microsoft.CostManagement
 | Typ prostředku | Skupina prostředků | Předplatné |
 | ------------- | -------------- | ------------ |
-| konektory | Ano | Ano |
+| connectors | Ano | Ano |
 
 ## <a name="microsoftcustomerinsights"></a>Microsoft.CustomerInsights
 | Typ prostředku | Skupina prostředků | Předplatné |
 | ------------- | -------------- | ------------ |
-| Rozbočovače | Ano | Ano |
+| hubs | Ano | Ano |
 
 ## <a name="microsoftdatabox"></a>Microsoft.DataBox
 | Typ prostředku | Skupina prostředků | Předplatné |
 | ------------- | -------------- | ------------ |
-| úlohy | Ne | Ne |
+| jobs | Ne | Ne |
 
 ## <a name="microsoftdataboxedge"></a>Microsoft.DataBoxEdge
 | Typ prostředku | Skupina prostředků | Předplatné |
@@ -220,18 +220,18 @@ Po nalezení poskytovatele prostředků a typ prostředku, použijte k určení,
 ## <a name="microsoftdatabricks"></a>Microsoft.Databricks
 | Typ prostředku | Skupina prostředků | Předplatné |
 | ------------- | -------------- | ------------ |
-| pracovní prostory | Ne | Ne |
+| workspaces | Ne | Ne |
 
 ## <a name="microsoftdatacatalog"></a>Microsoft.DataCatalog
 | Typ prostředku | Skupina prostředků | Předplatné |
 | ------------- | -------------- | ------------ |
-| katalogy | Ano | Ano |
+| catalogs | Ano | Ano |
 
 ## <a name="microsoftdatafactory"></a>Microsoft.DataFactory
 | Typ prostředku | Skupina prostředků | Předplatné |
 | ------------- | -------------- | ------------ |
 | datafactories | Ano | Ano |
-| objekty pro vytváření | Ano | Ano |
+| factories | Ano | Ano |
 
 ## <a name="microsoftdatalake"></a>Microsoft.DataLake
 | Typ prostředku | Skupina prostředků | Předplatné |
@@ -252,32 +252,32 @@ Po nalezení poskytovatele prostředků a typ prostředku, použijte k určení,
 | Typ prostředku | Skupina prostředků | Předplatné |
 | ------------- | -------------- | ------------ |
 | services | Ne | Ne |
-| služby a projekty | Ne | Ne |
-| sloty | Ne | Ne |
+| services/projects | Ne | Ne |
+| slots | Ne | Ne |
 
 ## <a name="microsoftdbformariadb"></a>Microsoft.DBforMariaDB
 | Typ prostředku | Skupina prostředků | Předplatné |
 | ------------- | -------------- | ------------ |
-| serverů | Ne | Ne |
+| servers | Ne | Ne |
 
 ## <a name="microsoftdbformysql"></a>Microsoft.DBforMySQL
 | Typ prostředku | Skupina prostředků | Předplatné |
 | ------------- | -------------- | ------------ |
-| serverů | Ano | Ano |
+| servers | Ano | Ano |
 
 ## <a name="microsoftdbforpostgresql"></a>Microsoft.DBforPostgreSQL
 | Typ prostředku | Skupina prostředků | Předplatné |
 | ------------- | -------------- | ------------ |
 | servergroups | Ne | Ne |
-| serverů | Ano | Ano |
+| servers | Ano | Ano |
 
 ## <a name="microsoftdeploymentmanager"></a>Microsoft.DeploymentManager
 | Typ prostředku | Skupina prostředků | Předplatné |
 | ------------- | -------------- | ------------ |
 | artifactsources | Ne | Ne |
-| Uvedení | Ne | Ne |
+| rollouts | Ne | Ne |
 | servicetopologies | Ne | Ne |
-| servicetopologies nebo služeb Team Foundation | Ne | Ne |
+| servicetopologies/services | Ne | Ne |
 | servicetopologies/services/serviceunits | Ne | Ne |
 
 ## <a name="microsoftdevices"></a>Microsoft.Devices
@@ -290,10 +290,10 @@ Po nalezení poskytovatele prostředků a typ prostředku, použijte k určení,
 | Typ prostředku | Skupina prostředků | Předplatné |
 | ------------- | -------------- | ------------ |
 | labcenters | Ne | Ne |
-| Praktická cvičení | Ano | Ne |
-| praktická cvičení/servicerunners | Ano | Ano |
-| testovací prostředí a virtuálních počítačů | Ano | Ne |
-| Plány | Ne | Ne |
+| labs | Ano | Ne |
+| labs/servicerunners | Ano | Ano |
+| labs/virtualmachines | Ano | Ne |
+| schedules | Ne | Ne |
 
 ## <a name="microsoftdns"></a>microsoft.dns
 | Typ prostředku | Skupina prostředků | Předplatné |
@@ -316,18 +316,18 @@ Po nalezení poskytovatele prostředků a typ prostředku, použijte k určení,
 ## <a name="microsoftdomainregistration"></a>Microsoft.DomainRegistration
 | Typ prostředku | Skupina prostředků | Předplatné |
 | ------------- | -------------- | ------------ |
-| domény | Ano | Ano |
+| domains | Ano | Ano |
 
 ## <a name="microsofteventgrid"></a>Microsoft.EventGrid
 | Typ prostředku | Skupina prostředků | Předplatné |
 | ------------- | -------------- | ------------ |
-| témata | Ano | Ano |
+| topics | Ano | Ano |
 
 ## <a name="microsofteventhub"></a>Microsoft.EventHub
 | Typ prostředku | Skupina prostředků | Předplatné |
 | ------------- | -------------- | ------------ |
-| Clustery | Ano | Ano |
-| Obory názvů | Ano | Ano |
+| clusters | Ano | Ano |
+| namespaces | Ano | Ano |
 
 ## <a name="microsofthanaonazure"></a>Microsoft.HanaOnAzure
 | Typ prostředku | Skupina prostředků | Předplatné |
@@ -342,25 +342,25 @@ Po nalezení poskytovatele prostředků a typ prostředku, použijte k určení,
 ## <a name="microsofthdinsight"></a>Microsoft.HDInsight
 | Typ prostředku | Skupina prostředků | Předplatné |
 | ------------- | -------------- | ------------ |
-| Clustery | Ano | Ano |
+| clusters | Ano | Ano |
 
 ## <a name="microsoftimportexport"></a>Microsoft.ImportExport
 | Typ prostředku | Skupina prostředků | Předplatné |
 | ------------- | -------------- | ------------ |
-| úlohy | Ano | Ano |
+| jobs | Ano | Ano |
 
 ## <a name="microsoftinsights"></a>microsoft.insights
 | Typ prostředku | Skupina prostředků | Předplatné |
 | ------------- | -------------- | ------------ |
 | actiongroups | Ano | Ano |
-| upozorněníprotokoluaktivit | Ne | Ne |
+| activitylogalerts | Ne | Ne |
 | alertrules | Ano | Ano |
 | autoscalesettings | Ano | Ano |
-| Součásti | Ano | Ano |
+| components | Ano | Ano |
 | metricalerts | Ne | Ne |
 | scheduledqueryrules | Ano | Ano |
-| webové testy | Ano | Ano |
-| sešity | Ano | Ano |
+| webtests | Ano | Ano |
+| workbooks | Ano | Ano |
 
 ## <a name="microsoftiotcentral"></a>Microsoft.IoTCentral
 | Typ prostředku | Skupina prostředků | Předplatné |
@@ -370,12 +370,12 @@ Po nalezení poskytovatele prostředků a typ prostředku, použijte k určení,
 ## <a name="microsoftkeyvault"></a>Microsoft.KeyVault
 | Typ prostředku | Skupina prostředků | Předplatné |
 | ------------- | -------------- | ------------ |
-| trezory služby | Ano | Ano |
+| vaults | Ano | Ano |
 
 ## <a name="microsoftkusto"></a>Microsoft.Kusto
 | Typ prostředku | Skupina prostředků | Předplatné |
 | ------------- | -------------- | ------------ |
-| Clustery | Ano | Ano |
+| clusters | Ano | Ano |
 
 ## <a name="microsoftlabservices"></a>Microsoft.LabServices
 | Typ prostředku | Skupina prostředků | Předplatné |
@@ -396,14 +396,14 @@ Po nalezení poskytovatele prostředků a typ prostředku, použijte k určení,
 | Typ prostředku | Skupina prostředků | Předplatné |
 | ------------- | -------------- | ------------ |
 | integrationaccounts | Ano | Ano |
-| Pracovní postupy | Ano | Ano |
+| workflows | Ano | Ano |
 
 ## <a name="microsoftmachinelearning"></a>Microsoft.MachineLearning
 | Typ prostředku | Skupina prostředků | Předplatné |
 | ------------- | -------------- | ------------ |
 | commitmentplans | Ano | Ano |
-| webové služby | Ano | Ne |
-| pracovní prostory | Ano | Ano |
+| webservices | Ano | Ne |
+| workspaces | Ano | Ano |
 
 ## <a name="microsoftmachinelearningcompute"></a>Microsoft.MachineLearningCompute
 | Typ prostředku | Skupina prostředků | Předplatné |
@@ -414,11 +414,11 @@ Po nalezení poskytovatele prostředků a typ prostředku, použijte k určení,
 | Typ prostředku | Skupina prostředků | Předplatné |
 | ------------- | -------------- | ------------ |
 | accounts | Ano | Ano |
-| účty a pracovní prostory | Ano | Ano |
-| účty/pracovních prostorů a projektů | Ano | Ano |
+| accounts/workspaces | Ano | Ano |
+| accounts/workspaces/projects | Ano | Ano |
 | teamaccounts | Ano | Ano |
-| teamaccounts/pracovní prostory | Ano | Ano |
-| teamaccounts/pracovních prostorů a projektů | Ano | Ano |
+| teamaccounts/workspaces | Ano | Ano |
+| teamaccounts/workspaces/projects | Ano | Ano |
 
 ## <a name="microsoftmachinelearningmodelmanagement"></a>Microsoft.MachineLearningModelManagement
 | Typ prostředku | Skupina prostředků | Předplatné |
@@ -428,7 +428,7 @@ Po nalezení poskytovatele prostředků a typ prostředku, použijte k určení,
 ## <a name="microsoftmachinelearningservices"></a>Microsoft.MachineLearningServices
 | Typ prostředku | Skupina prostředků | Předplatné |
 | ------------- | -------------- | ------------ |
-| pracovní prostory | Ano | Ano |
+| workspaces | Ano | Ano |
 
 ## <a name="microsoftmanagedidentity"></a>Microsoft.ManagedIdentity
 | Typ prostředku | Skupina prostředků | Předplatné |
@@ -450,12 +450,12 @@ Po nalezení poskytovatele prostředků a typ prostředku, použijte k určení,
 | ------------- | -------------- | ------------ |
 | mediaservices | Ano | Ano |
 | mediaservices/liveevents | Ano | Ano |
-| mediaservices/koncové body streamování | Ano | Ano |
+| mediaservices/streamingendpoints | Ano | Ano |
 
 ## <a name="microsoftmigrate"></a>Microsoft.Migrate
 | Typ prostředku | Skupina prostředků | Předplatné |
 | ------------- | -------------- | ------------ |
-| Projekty | Ne | Ne |
+| projects | Ne | Ne |
 
 ## <a name="microsoftnetwork"></a>Microsoft.Network
 | Typ prostředku | Skupina prostředků | Předplatné |
@@ -463,7 +463,7 @@ Po nalezení poskytovatele prostředků a typ prostředku, použijte k určení,
 | applicationgateways | Ne | Ne |
 | applicationsecuritygroups | Ano | Ano |
 | azurefirewalls | Ne | Ne |
-| připojení | Ano | Ano |
+| connections | Ano | Ano |
 | ddosprotectionplans | Ne | Ne |
 | dnszones | Ano | Ano |
 | expressroutecircuits | Ne | Ne |
@@ -473,7 +473,7 @@ Po nalezení poskytovatele prostředků a typ prostředku, použijte k určení,
 | frontdoors | Ano | Ano |
 | frontdoorwebapplicationfirewallpolicies | Ano | Ano |
 | interfaceendpoints | Ne | Ne |
-| Load balancerech | Ano | Ano |
+| loadbalancers | Ano | Ano |
 | localnetworkgateways | Ano | Ano |
 | networkintentpolicies | Ano | Ano |
 | networkinterfaces | Ano | Ano |
@@ -501,25 +501,25 @@ Po nalezení poskytovatele prostředků a typ prostředku, použijte k určení,
 ## <a name="microsoftnotificationhubs"></a>Microsoft.NotificationHubs
 | Typ prostředku | Skupina prostředků | Předplatné |
 | ------------- | -------------- | ------------ |
-| Obory názvů | Ano | Ano |
-| obory názvů a notificationhubs | Ano | Ano |
+| namespaces | Ano | Ano |
+| namespaces/notificationhubs | Ano | Ano |
 
 ## <a name="microsoftoperationalinsights"></a>Microsoft.OperationalInsights
 | Typ prostředku | Skupina prostředků | Předplatné |
 | ------------- | -------------- | ------------ |
-| pracovní prostory | Ano | Ano |
+| workspaces | Ano | Ano |
 
 ## <a name="microsoftoperationsmanagement"></a>Microsoft.OperationsManagement
 | Typ prostředku | Skupina prostředků | Předplatné |
 | ------------- | -------------- | ------------ |
 | managementconfigurations | Ano | Ano |
-| Řešení | Ano | Ano |
-| zobrazení | Ano | Ano |
+| solutions | Ano | Ano |
+| views | Ano | Ano |
 
 ## <a name="microsoftportal"></a>Microsoft.Portal
 | Typ prostředku | Skupina prostředků | Předplatné |
 | ------------- | -------------- | ------------ |
-| Řídicí panely | Ano | Ano |
+| dashboards | Ano | Ano |
 
 ## <a name="microsoftpowerbi"></a>Microsoft.PowerBI
 | Typ prostředku | Skupina prostředků | Předplatné |
@@ -529,27 +529,27 @@ Po nalezení poskytovatele prostředků a typ prostředku, použijte k určení,
 ## <a name="microsoftpowerbidedicated"></a>Microsoft.PowerBIDedicated
 | Typ prostředku | Skupina prostředků | Předplatné |
 | ------------- | -------------- | ------------ |
-| Kapacity | Ano | Ano |
+| capacities | Ano | Ano |
 
 ## <a name="microsoftrecoveryservices"></a>Microsoft.RecoveryServices
 | Typ prostředku | Skupina prostředků | Předplatné |
 | ------------- | -------------- | ------------ |
-| trezory služby | Ano | Ano |
+| vaults | Ano | Ano |
 
 ## <a name="microsoftrelay"></a>Microsoft.Relay
 | Typ prostředku | Skupina prostředků | Předplatné |
 | ------------- | -------------- | ------------ |
-| Obory názvů | Ano | Ano |
+| namespaces | Ano | Ano |
 
 ## <a name="microsoftsaas"></a>Microsoft.SaaS
 | Typ prostředku | Skupina prostředků | Předplatné |
 | ------------- | -------------- | ------------ |
-| aplikace | Ano | Ne |
+| applications | Ano | Ne |
 
 ## <a name="microsoftscheduler"></a>Microsoft.Scheduler
 | Typ prostředku | Skupina prostředků | Předplatné |
 | ------------- | -------------- | ------------ |
-| toky | Ano | Ano |
+| flows | Ano | Ano |
 | jobcollections | Ano | Ano |
 
 ## <a name="microsoftsearch"></a>Microsoft.Search
@@ -560,24 +560,24 @@ Po nalezení poskytovatele prostředků a typ prostředku, použijte k určení,
 ## <a name="microsoftservicebus"></a>Microsoft.ServiceBus
 | Typ prostředku | Skupina prostředků | Předplatné |
 | ------------- | -------------- | ------------ |
-| Obory názvů | Ano | Ano |
+| namespaces | Ano | Ano |
 
 ## <a name="microsoftservicefabric"></a>Microsoft.ServiceFabric
 | Typ prostředku | Skupina prostředků | Předplatné |
 | ------------- | -------------- | ------------ |
-| Clustery | Ano | Ano |
+| clusters | Ano | Ano |
 
 ## <a name="microsoftservicefabricmesh"></a>Microsoft.ServiceFabricMesh
 | Typ prostředku | Skupina prostředků | Předplatné |
 | ------------- | -------------- | ------------ |
-| aplikace | Ano | Ano |
-| Sítě | Ano | Ano |
+| applications | Ano | Ano |
+| networks | Ano | Ano |
 | volumes | Ano | Ano |
 
 ## <a name="microsoftsignalrservice"></a>Microsoft.SignalRService
 | Typ prostředku | Skupina prostředků | Předplatné |
 | ------------- | -------------- | ------------ |
-| Funkce signalr | Ano | Ano |
+| signalr | Ano | Ano |
 
 ## <a name="microsoftsiterecovery"></a>Microsoft.SiteRecovery
 | Typ prostředku | Skupina prostředků | Předplatné |
@@ -588,18 +588,18 @@ Po nalezení poskytovatele prostředků a typ prostředku, použijte k určení,
 | Typ prostředku | Skupina prostředků | Předplatné |
 | ------------- | -------------- | ------------ |
 | appliancedefinitions | Ne | Ne |
-| zařízení | Ne | Ne |
+| appliances | Ne | Ne |
 | applicationdefinitions | Ne | Ne |
-| aplikace | Ne | Ne |
+| applications | Ne | Ne |
 
 ## <a name="microsoftsql"></a>Microsoft.Sql
 | Typ prostředku | Skupina prostředků | Předplatné |
 | ------------- | -------------- | ------------ |
 | managedinstances | Ano | Ano |
 | managedinstances/databáze | Ano | Ano |
-| serverů | Ano | Ano |
-| servery pro/databáze | Ano | Ano |
-| servery pro/elasticpools | Ano | Ano |
+| servers | Ano | Ano |
+| servers/databases | Ano | Ano |
+| servers/elasticpools | Ano | Ano |
 | virtualclusters | Ano | Ano |
 
 ## <a name="microsoftstorage"></a>Microsoft.Storage
@@ -615,7 +615,7 @@ Po nalezení poskytovatele prostředků a typ prostředku, použijte k určení,
 ## <a name="microsoftstorsimple"></a>Microsoft.StorSimple
 | Typ prostředku | Skupina prostředků | Předplatné |
 | ------------- | -------------- | ------------ |
-| Správci | Ne | Ne |
+| managers | Ne | Ne |
 
 ## <a name="microsoftstreamanalytics"></a>Microsoft.StreamAnalytics
 | Typ prostředku | Skupina prostředků | Předplatné |
@@ -625,30 +625,30 @@ Po nalezení poskytovatele prostředků a typ prostředku, použijte k určení,
 ## <a name="microsofttimeseriesinsights"></a>Microsoft.TimeSeriesInsights
 | Typ prostředku | Skupina prostředků | Předplatné |
 | ------------- | -------------- | ------------ |
-| Prostředí | Ano | Ano |
-| prostředí/eventsources | Ano | Ano |
-| prostředí/referencedatasets | Ano | Ano |
+| environments | Ano | Ano |
+| environments/eventsources | Ano | Ano |
+| environments/referencedatasets | Ano | Ano |
 
 ## <a name="microsoftvisualstudio"></a>microsoft.visualstudio
 | Typ prostředku | Skupina prostředků | Předplatné |
 | ------------- | -------------- | ------------ |
 | account | Ano | Ano |
-| účet a rozšíření | Ano | Ano |
-| účet nebo projektu | Ano | Ano |
+| account/extension | Ano | Ano |
+| account/project | Ano | Ano |
 
 ## <a name="microsoftweb"></a>Microsoft.Web
 | Typ prostředku | Skupina prostředků | Předplatné |
 | ------------- | -------------- | ------------ |
-| certifikáty | Ne | Ano |
+| certificates | Ne | Ano |
 | classicmobileservices | Ne | Ne |
 | connectiongateways | Ano | Ano |
-| připojení | Ano | Ano |
+| connections | Ano | Ano |
 | customapis | Ano | Ano |
 | hostingenvironments | Ne | Ne |
 | serverfarms | Ano | Ano |
-| Weby | Ano | Ano |
+| sites | Ano | Ano |
 | sites/premieraddons | Ano | Ano |
-| servery a sloty | Ano | Ano |
+| sites/slots | Ano | Ano |
 
 ## <a name="microsoftwindowsiot"></a>Microsoft.WindowsIoT
 | Typ prostředku | Skupina prostředků | Předplatné |
