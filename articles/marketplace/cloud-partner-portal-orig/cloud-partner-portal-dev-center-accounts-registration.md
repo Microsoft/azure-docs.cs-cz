@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 09/13/2018
 ms.author: pbutlerm
-ms.openlocfilehash: 8bfd4ca6a9bdac999653fa9448bf7e754e9e6180
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 6482eea23707f451e59d21e70f7583a0cd6680cc
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51254464"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55168239"
 ---
 <a name="create-a-microsoft-developer-account"></a>Vytvoření účtu Microsoft Developer
 ====================================
@@ -106,7 +106,7 @@ Microsoft Developer Center, se použije k registraci informací o společnosti j
    ![Vyberte zemi nebo oblast](./media/cloud-partner-portal-create-dev-center-registration/imgRegisterCo_04.png)
 
     >[!WARNING]
-    >"Zákazník z" zemí: Pokud chcete prodávat vaše služby na Azure Marketplace, musí být z jednoho z uvedené v rozevíracím seznamu země schválené "prodej z" registrované entity. Toto omezení je platební a daňové z důvodů. Další informace najdete v zásadách pro účast na webu Marketplace.
+    >"Zákazník z" země: Pokud chcete prodávat vaše služby na Azure Marketplace, musí být z jednoho z uvedené v rozevíracím seznamu země schválené "prodej z" registrované entity. Toto omezení je platební a daňové z důvodů. Další informace najdete v zásadách pro účast na webu Marketplace.
 
 5. Vyberte **společnosti** jako "Účtu typu" a pak vyberte **Další**.
 
@@ -181,7 +181,8 @@ Pokud chcete publikovat obchodní nabídky k nákupu, budete muset přidat plate
     - Vyberte **Další**.
 4.  Zadejte své daňové údaje a pak vyberte **Další**.
 
->[UPOZORNĚNÍ] Nebudete moci nasdílet do vaší obchodní nabídky do produkčního prostředí bez zadání bankovním účtu a daňové údaje ve vašem účtu Microsoft Developer Center.
+>[!WARNING]
+>Nebudete moci nasdílet do vaší obchodní nabídky do produkčního prostředí bez zadání bankovním účtu a daňové údaje ve vašem účtu Microsoft Developer Center.
 
 ### <a name="developer-center-registration-issues"></a>Potíže s registrací středisko pro vývojáře
 

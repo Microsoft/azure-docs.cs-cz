@@ -12,12 +12,12 @@ ms.author: srbozovi
 ms.reviewer: bonova, carlrab
 manager: craigg
 ms.date: 12/10/2018
-ms.openlocfilehash: e69f6869911555730fe723b340e224c0d5a1e4bb
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: 2077978ac9353531d10359edf396e4426e9d6988
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53536045"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55104399"
 ---
 # <a name="azure-sql-database-managed-instance-connectivity-architecture"></a>Azure SQL Database Managed Instance architektura připojení
 
@@ -68,7 +68,7 @@ Pojďme se dozvědět více o v architektuře připojení k Managed Instance. N�
 
 ![připojení k architektuře diagram virtuální cluster](./media/managed-instance-connectivity-architecture/connectivityarch003.png)
 
-Klienti připojit k Managed Instance pomocí názvu hostitele, který má formulář `<mi_name>.<dns_zone>.database.windows.net`. Tento název hostitele se přeloží na privátní IP adresu, i když je zaregistrovaný ve veřejné zóny DNS a je veřejně přeložitelného. `zone-id` Se automaticky vygeneruje, když se cluster vytvoří. Pokud nově vytvořený cluster je hostitelem sekundární managed instance, sdílí jeho id zóny s primární clusteru. Další informace najdete v tématu [-automatické převzetí služeb při selhání skupiny](sql-database-auto-failover-group.md##enabling-geo-replication-between-managed-instances-and-their-vnets)
+Klienti připojit k Managed Instance pomocí názvu hostitele, který má formulář `<mi_name>.<dns_zone>.database.windows.net`. Tento název hostitele se přeloží na privátní IP adresu, i když je zaregistrovaný ve veřejné zóny DNS a je veřejně přeložitelného. `zone-id` Se automaticky vygeneruje, když se cluster vytvoří. Pokud nově vytvořený cluster je hostitelem sekundární managed instance, sdílí jeho ID zóny s primární clusteru. Další informace najdete v tématu [-automatické převzetí služeb při selhání skupiny](sql-database-auto-failover-group.md##enabling-geo-replication-between-managed-instances-and-their-vnets)
 
 Tato privátní IP adresa patří k na spravované instanci interní zatížení nástroje pro vyrovnávání (ILB), která směruje provoz do na spravované instanci brány (gs). Více spravovaných instancí může potenciálně spuštění ve stejném clusteru GW používá název hostitele Managed Instance pro přesměrování přenosu dat na správné služby stroj SQL.
 
@@ -78,7 +78,7 @@ Nasazení a správu služeb připojení k Managed Instance pomocí [koncový bod
 
 Virtuální cluster Azure SQL Database Managed Instance obsahuje koncový bod správy, který Microsoft používá ke správě Managed Instance. Koncový bod správy je chráněný pomocí předdefinovaných brány firewall sítě certifikát úrovně a proces vzájemného ověření na úrovni aplikace. Je možné [najít ip adresu koncového bodu správy](sql-database-managed-instance-find-management-endpoint-ip-address.md).
 
-Zdá se, že provoz pochází z veřejnou IP adresu koncového bodu správy po připojení se zahájilo Managed Instance (zálohování, protokolu auditu). Může omezit přístup k veřejné služby ze Managed Instance, tak, že nastavíte pravidla brány firewall pro povolení pouze spravované Instance IP adres. Najít mor einformation o metodě, která se dá [ověření integrované firewall Managed Instance](sql-database-managed-instance-management-endpoint-verify-built-in-firewall.md).
+Zdá se, že provoz pochází z veřejnou IP adresu koncového bodu správy po připojení se zahájilo Managed Instance (zálohování, protokolu auditu). Může omezit přístup k veřejné služby ze Managed Instance, tak, že nastavíte pravidla brány firewall pro povolení pouze spravované Instance IP adres. Další informace o metodě, která se dá [ověření integrované firewall Managed Instance](sql-database-managed-instance-management-endpoint-verify-built-in-firewall.md).
 
 > [!NOTE]
 > To neplatí pro nastavení pravidla brány firewall pro služby Azure, které jsou ve stejné oblasti jako Managed Instance, Platforma Azure má optimalizace pro provoz, který prochází mezi službami, které jsou společně umístěná.
@@ -98,18 +98,18 @@ Managed Instance můžete nasadit ve vyhrazené podsíti (podsíť Managed Insta
 
 ### <a name="mandatory-inbound-security-rules"></a>Pravidla povinné zabezpečení příchozích dat 
 
-| Název       |Port                        |Protocol (Protokol)|Zdroj           |Cíl|Akce|
+| Name       |Port                        |Protocol (Protokol)|Zdroj           |Cíl|Akce|
 |------------|----------------------------|--------|-----------------|-----------|------|
 |Správa  |9000, 9003, 1438, 1440, 1452|TCP     |Všechny              |Všechny        |Povolit |
-|mi_subnet   |Všechny                         |Všechny     |MI PODSÍTĚ        |Všechny        |Povolit |
+|mi_subnet   |Všechny                         |Všechny     |MI SUBNET        |Všechny        |Povolit |
 |health_probe|Všechny                         |Všechny     |AzureLoadBalancer|Všechny        |Povolit |
 
 ### <a name="mandatory-outbound-security-rules"></a>Povinné odchozí pravidla zabezpečení 
 
-| Název       |Port          |Protocol (Protokol)|Zdroj           |Cíl|Akce|
+| Name       |Port          |Protocol (Protokol)|Zdroj           |Cíl|Akce|
 |------------|--------------|--------|-----------------|-----------|------|
-|Správa  |80, 443, 12000|TCP     |Všechny              |Všechny        |Povolit |
-|mi_subnet   |Všechny           |Všechny     |Všechny              |MI PODSÍTĚ  |Povolit |
+|Správa  |80, 443, 12000|TCP     |Všechny              |Internet   |Povolit |
+|mi_subnet   |Všechny           |Všechny     |Všechny              |MI SUBNET  |Povolit |
 
   > [!Note]
   > I když povinné zabezpečení příchozích pravidel povolit provoz z _jakékoli_ zdroje na portech 9000 9003, 1438, 1440, 1452 tyto porty jsou chráněné bránou firewall integrované. To [článku](sql-database-managed-instance-find-management-endpoint-ip-address.md) ukazuje, jak lze zjistit IP adresu koncového bodu správy a ověřte pravidla brány firewall. 

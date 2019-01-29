@@ -10,12 +10,12 @@ ms.author: mimart
 author: msmimart
 manager: daveba
 ms.reviewer: sasubram
-ms.openlocfilehash: 60fbde1ea269dc43d35007287c38e852a5feedff
-ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
+ms.openlocfilehash: d5a39efd932225eb2f71acdba742c88095df8ec9
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/26/2019
-ms.locfileid: "55075325"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55098778"
 ---
 # <a name="allow-or-block-invitations-to-b2b-users-from-specific-organizations"></a>Povolení nebo blokování pozvánek uživatelů B2B z konkrétních organizací
 
@@ -86,71 +86,71 @@ Zkontrolujte verzi modulu (a zjistit, zda je nainstalována):
 1. Otevřete prostředí Windows PowerShell se zvýšenými oprávněními uživatele (Spustit jako správce). 
 2. Spuštěním následujícího příkazu zkontrolujte, jestli je verze Azure Active Directory modulu pro Windows PowerShell v počítači nainstalovaný:
 
-   ````powershell  
+   ```powershell  
    Get-Module -ListAvailable AzureAD*
-   ````
+   ```
 
 Pokud modul není nainstalován nebo nemáte požadovaná verze, proveďte jednu z následujících akcí:
 
 - Pokud se nezobrazí žádné výsledky, spusťte následující příkaz k instalaci nejnovější verze modulu AzureADPreview:
   
-   ````powershell  
+   ```powershell  
    Install-Module AzureADPreview
-   ````
+   ```
 - Pokud pouze v modulu Azure AD je zobrazena ve výsledcích, spusťte následující příkazy pro instalaci modulu AzureADPreview: 
 
-   ````powershell 
+   ```powershell 
    Uninstall-Module AzureAD 
    Install-Module AzureADPreview 
-   ````
+   ```
 - Pokud pouze v modulu AzureADPreview je zobrazena ve výsledcích, ale verze je menší než 2.0.0.98, spusťte následující příkazy ji aktualizovat: 
 
-   ````powershell 
+   ```powershell 
    Uninstall-Module AzureADPreview 
    Install-Module AzureADPreview 
-   ````
+   ```
 
 - Pokud Azure AD i AzureADPreview modulů se zobrazí ve výsledcích, ale verze modulu AzureADPreview je menší než 2.0.0.98, spusťte následující příkazy ji aktualizovat: 
 
-   ````powershell 
+   ```powershell 
    Uninstall-Module AzureAD 
    Uninstall-Module AzureADPreview 
    Install-Module AzureADPreview 
-    ````
+    ```
 
 ### <a name="use-the-azureadpolicy-cmdlets-to-configure-the-policy"></a>Nakonfigurujte zásady pomocí rutin AzureADPolicy
 
 Chcete-li vytvořit povolit nebo odepřít seznamu, použijte [New-AzureADPolicy](https://docs.microsoft.com/powershell/module/azuread/new-azureadpolicy?view=azureadps-2.0-preview) rutiny. Následující příklad ukazuje, jak nastavit seznam zakázaných blokující doménu "live.com".
 
-````powershell 
+```powershell 
 $policyValue = @("{`"B2BManagementPolicy`":{`"InvitationsAllowedAndBlockedDomainsPolicy`":{`"AllowedDomains`": [],`"BlockedDomains`": [`"live.com`"]}}}")
 
 New-AzureADPolicy -Definition $policyValue -DisplayName B2BManagementPolicy -Type B2BManagementPolicy -IsOrganizationDefault $true 
-````
+```
 
 Následující příklad zobrazuje stejný příklad, ale s vložené definice zásady.
 
-````powershell  
+```powershell  
 New-AzureADPolicy -Definition @("{`"B2BManagementPolicy`":{`"InvitationsAllowedAndBlockedDomainsPolicy`":{`"AllowedDomains`": [],`"BlockedDomains`": [`"live.com`"]}}}") -DisplayName B2BManagementPolicy -Type B2BManagementPolicy -IsOrganizationDefault $true 
-````
+```
 
 Chcete-li nastavit povolit nebo zamítnout seznam zásad, použijte [Set-AzureADPolicy](https://docs.microsoft.com/powershell/module/azuread/set-azureadpolicy?view=azureadps-2.0-preview) rutiny. Příklad:
 
-````powershell   
+```powershell   
 Set-AzureADPolicy -Definition $policyValue -Id $currentpolicy.Id 
-````
+```
 
 Chcete-li získat zásady, použijte [Get-AzureADPolicy](https://docs.microsoft.com/powershell/module/azuread/get-azureadpolicy?view=azureadps-2.0-preview) rutiny. Příklad:
 
-````powershell
+```powershell
 $currentpolicy = Get-AzureADPolicy | ?{$_.Type -eq 'B2BManagementPolicy'} | select -First 1 
-````
+```
 
 Chcete-li odebrat zásady, použijte [odebrat AzureADPolicy](https://docs.microsoft.com/powershell/module/azuread/remove-azureadpolicy?view=azureadps-2.0-preview) rutiny. Příklad:
 
-````powershell
+```powershell
 Remove-AzureADPolicy -Id $currentpolicy.Id 
-````
+```
 
 ## <a name="next-steps"></a>Další postup
 

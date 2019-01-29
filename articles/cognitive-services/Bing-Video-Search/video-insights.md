@@ -6,16 +6,16 @@ services: cognitive-services
 author: swhite-msft
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: bing-video-search
+ms.subservice: bing-video-search
 ms.topic: conceptual
 ms.date: 04/15/2017
 ms.author: scottwhi
-ms.openlocfilehash: af6056507cb70ab33bee5955ddf7bd0f77fd04eb
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: 9c36208a35d66fcd6df6ac2ccd4a28c55ed92937
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47219987"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55170773"
 ---
 # <a name="get-insights-about-a-video"></a>Získejte přehled o videa
 

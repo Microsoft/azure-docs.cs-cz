@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/18/2017
 ms.author: chackdan
-ms.openlocfilehash: 60fe7296d95a7746fd703c3a45349faf294e5bbd
-ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
+ms.openlocfilehash: ce88c8c4850e5226ddda12ce5ee0e1d18b51ea5c
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2019
-ms.locfileid: "54320595"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55104078"
 ---
 # <a name="commonly-asked-service-fabric-questions"></a>Nejčastější dotazy k Service Fabric
 
@@ -73,7 +73,7 @@ Požadujeme, aby cluster pro produkční prostředí má minimálně 5 uzlů z n
 
 Chceme, aby clusteru k dispozici i v případě selhání dvou uzlů. Pro cluster Service Fabric k dispozici musí být k dispozici systémových služeb. Stavový systém služby, jako jsou služba pojmenování a služby Správce převzetí služeb při selhání, sledování, které služby jsou nasazené do clusteru a kde se aktuálně hostuje, závisí na silnou konzistenci. Silná konzistence, pak závisí na možnost získat *kvora* pro jakékoli dané aktualizaci na stav těchto služeb, kde kvorum představuje striktní většinou repliky (N/2 + 1) pro danou službu. Proto pokud chcete být odolný proti ztrátě souběžných dvou uzlů (tedy souběžných ztráty dvě repliky služby system), jsme musí mít parametr ClusterSize - QuorumSize > = 2, která vynutí minimální velikosti na pět. Pokud chcete zobrazit, vzít v úvahu cluster má N uzly a jsou repliky N systému služby – jednu na každý uzel. Velikost kvora pro službu system je (N/2 + 1). Výše uvedené nerovnost vypadá jako N - (N/2 + 1) > = 2. Existují dva případy, které byste měli zvážit: i po N a N je liché. Pokud se N je sudé, Dejme tomu, že N = 2\*m kde m > = 1, nerovnost vypadá 2\*m - (2\*m/2 + 1) > = 2 nebo m > = 3. Minimum pro N 6 a dosáhnout při m = 3. Na druhé straně Pokud N je liché, Řekněme, že N = 2\*m + 1, pokud m > = 1, nerovnost vypadá 2\*m + 1 - ((2\*m + 1) / 2 + 1) > = 2, nebo 2\*m + 1 - (m + 1) > = 2 nebo m > = 2. Minimum pro N 5 a který je dosaženo při m = 2. Proto se mezi všechny hodnoty N, které splňují nerovnost parametr ClusterSize - QuorumSize > = 2, minimální hodnota je 5.
 
-Poznámka: výše uvedené argumentu, kterou budeme mít předpokládá, že každý uzel má replika systémová služba, proto velikost kvora je vypočítán na základě počtu uzlů v clusteru. Ale změnou *TargetReplicaSetSize* bychom mohli kvora velikost menší než (N / 2 + 1) která může přidělit dojem, že jsme může mít menší než 5 uzlů clusteru a ještě další 2 navíc uzlů překračuje velikost kvora. Například ve 4 uzly clusteru, pokud jsme nastavili TargetReplicaSetSize 3, kvora velikost podle TargetReplicaSetSize je (3/2 + 1) nebo 2, proto budeme mít CluserSize - QuorumSize = 4-2 > = 2. Však nelze zaručit, že systémová služba bude účtovat s nebo vyšší než kvora jsme ztrátě nějaká dvojice uzlů najednou, může to být, že dva uzly přijdeme byly hostování dvě repliky, tak služba system začnou ztráty kvora (pouze jednu repliku s vlevo) ND nebude k dispozici.
+Poznámka: výše uvedené argumentu, kterou budeme mít předpokládá, že každý uzel má replika systémová služba, proto velikost kvora je vypočítán na základě počtu uzlů v clusteru. Ale změnou *TargetReplicaSetSize* bychom mohli kvora velikost menší než (N / 2 + 1) která může přidělit dojem, že jsme může mít menší než 5 uzlů clusteru a ještě další 2 navíc uzlů překračuje velikost kvora. Například ve 4 uzly clusteru, pokud jsme nastavili TargetReplicaSetSize 3, kvora velikost podle TargetReplicaSetSize je (3/2 + 1) nebo 2, proto budeme mít parametr ClusterSize - QuorumSize = 4-2 > = 2. Však nelze zaručit, že systémová služba bude účtovat s nebo vyšší než kvora jsme ztrátě nějaká dvojice uzlů najednou, může to být, že dva uzly přijdeme byly hostování dvě repliky, tak služba system začnou ztráty kvora (pouze jednu repliku s vlevo) ND nebude k dispozici.
 
 Tedy Podívejme se na některé konfigurace možné clusteru:
 

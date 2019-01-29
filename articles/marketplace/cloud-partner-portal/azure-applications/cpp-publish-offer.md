@@ -12,14 +12,14 @@ ms.workload: ''
 ms.tgt_pltfrm: ''
 ms.devlang: ''
 ms.topic: conceptual
-ms.date: 01/10/2018
+ms.date: 01/25/2019
 ms.author: pbutlerm
-ms.openlocfilehash: ad62b306849b2291c81399cedc1634057e2eec9d
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: 2adf07cf2337611b9136af47ce6a35b617e2e9ff
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54828090"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55177028"
 ---
 # <a name="publish-azure-application-offer"></a>Publikovat nabídku aplikací Azure
 
@@ -28,6 +28,7 @@ Po vytvoření nabídky tím, že poskytuje informace o **nová nabídka** strá
 Následující diagram znázorňuje hlavní kroky v procesu publikování pro nabídku "publikování".
 
 ![Postup publikování nabídky](./media/offer-publishing-steps.png)
+
 
 ## <a name="detailed-description-of-publishing-steps"></a>Podrobný popis kroků publikování
 
@@ -44,12 +45,14 @@ Následující tabulka uvádí a popisuje jednotlivé kroky pro publikování a 
 | Microsoft review                | 7 – 14 dní | Microsoft holistické zkontroluje vaše aplikace Azure a odešle e-mail, pokud jsou zjištěny problémy.  Tento krok závisí na složitosti aplikace, problémů zjištěných a jak rychle reagovat na ně.  |
 | Živé                           | < 1 den | Nabídka je uvolněna, replikovaná do oblastí, zadaný a veřejně k dispozici. |
 |   |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|   |
+
  
 Můžete monitorovat v procesu publikování **stav** kartu pro vaši nabídku v portál partnerů cloudu.
 
 ![Stav karty pro nabídky aplikace Azure](./media/offer-status-tab.png)
 
 Po dokončení procesu publikování vaší nabídky nebude uvedené [kategorie aplikace Microsoft Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/).
+
 
 
 ## <a name="errors-and-review-feedback"></a>Chyby a zpětné vazby z revize

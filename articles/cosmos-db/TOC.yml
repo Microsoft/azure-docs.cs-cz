@@ -272,6 +272,16 @@ items:
           href: bulk-executor-dot-net.md
         - name: Bulk Executor – knihovna Java
           href: bulk-executor-java.md
+      - name: Vývoj v Javě
+        items:
+        - name: Použití aplikace Spring Boot Starter
+          href: /java/azure/spring-framework/configure-spring-boot-starter-java-app-with-cosmos-db
+        - name: Použití rozhraní API pro Apache Cassandra služby Spring Data
+          href: /java/azure/spring-framework/configure-spring-data-apache-cassandra-with-cosmos-db
+        - name: Použití úvodní sady Gremlin služby Spring Data
+          href: /java/azure/spring-framework/configure-spring-data-gremlin-java-app-with-cosmos-db
+        - name: Použití rozhraní API MongoDB služby Spring Data
+          href: /java/azure/spring-framework/configure-spring-data-mongodb-with-cosmos-db
     - name: Referenční informace
       items:
       - name: .NET
@@ -617,9 +627,9 @@ items:
       href: use-cases.md
     - name: Aplikace sociálních médií
       href: social-media-apps.md
-ms.openlocfilehash: 75984b49a5af0538c7534fb326808dcb3c35b46c
-ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
+ms.openlocfilehash: 72d6169090749f81025dabed2b919e6c0a1dc70f
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54359795"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55094474"

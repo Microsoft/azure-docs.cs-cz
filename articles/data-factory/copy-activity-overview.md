@@ -10,20 +10,20 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 12/07/2018
+ms.date: 01/28/2019
 ms.author: jingwang
-ms.openlocfilehash: 36c94a035c7585d655f4482239de70cd2e1a5cc6
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: ac50078dcc60e925f1e2e27a1296b2644939baef
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54014127"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55153721"
 ---
 # <a name="copy-activity-in-azure-data-factory"></a>Aktivita kopírování ve službě Azure Data Factory
 
 ## <a name="overview"></a>Přehled
 
-> [!div class="op_single_selector" title1="Vyberte verzi služby Data Factory, kterou používáte:"]
+> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
 > * [Verze 1](v1/data-factory-data-movement-activities.md)
 > * [Aktuální verze](copy-activity-overview.md)
 
@@ -155,7 +155,7 @@ Kliknutím zobrazíte seznam aktivit v tomto běhu kanálu. V **akce** sloupce, 
 
 ![Monitorování spuštění aktivit](./media/load-data-into-azure-data-lake-store/monitor-activity-runs.png)
 
-Klikněte "**podrobnosti**" propojit v rámci **akce** zobrazíte podrobnosti o spuštění aktivity kopírování a výkonové charakteristiky. To se dozvíte informace, včetně svazek/řádků/soubory dat zkopíruje ze zdroje do jímky, propustnost, kroky prochází s určitou dobu a použít konfigurace pro váš scénář kopírování.
+Klikněte "**podrobnosti**" propojit v rámci **akce** zobrazíte podrobnosti o spuštění aktivity kopírování a výkonové charakteristiky. To se dozvíte informace, včetně svazek/řádků/soubory dat zkopíruje ze zdroje do jímky, propustnost, kroky prochází s určitou dobu a použít konfigurace pro váš scénář kopírování. Pro některé scénáře, zobrazí se také "**tipy pro optimalizaci výkonu**" v horní části, které sděluje, identifikovat kritická místa a provede vás o tom, jak zvýšit propustnost kopírování pro takový případ kopie, naleznete v části Příklad části [tady](#performance-and-tuning).
 
 **Příklad: kopírování z Amazon S3 do Azure Data Lake Store**
 ![podrobnosti o spuštění aktivit monitorování](./media/copy-activity-overview/monitor-activity-run-details-adls.png)
@@ -232,6 +232,11 @@ Ve výchozím nastavení aktivita kopírování kopírování dat se zastaví a 
 ## <a name="performance-and-tuning"></a>Výkon a ladění
 
 Zobrazit [Průvodce laděním a výkonem aktivity kopírování](copy-activity-performance.md), která popisuje klíčové faktory, které ovlivňují výkon přesun dat (aktivita kopírování) ve službě Azure Data Factory. Také uvádí zjištěnou výkon při interní testování a tento článek popisuje různé způsoby, jak optimalizovat výkon aktivitu kopírování.
+
+Pro některé scénáře po spuštění aktivity kopírování ve službě ADF, zobrazí se také "**tipy pro optimalizaci výkonu**" v horní části [monitorování stránku aktivita kopírování](#monitor-visually), který říká identifikovat kritická místa a provede vás o tom, jak zvýšit propustnost kopírování pro takový případ kopírování.
+
+**Příklad: zkopírujte do služby Azure SQL DB s tipy pro optimalizaci výkonu**
+![zkopírujte monitorování s tipy pro optimalizaci výkonu](./media/copy-activity-overview/copy-monitoring-with-performance-tuning-tips.png)
 
 ## <a name="incremental-copy"></a>Přírůstkové kopírování 
 Data Factory podporuje scénáře pro přírůstkově kopíruje rozdílová data ze zdrojového úložiště dat do cílového úložiště dat. Zobrazit [kurz: přírůstkové kopírování dat](tutorial-incremental-copy-overview.md). 

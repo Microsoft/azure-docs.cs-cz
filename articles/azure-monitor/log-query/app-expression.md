@@ -11,14 +11,14 @@ ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 09/10/2018
+ms.date: 01/25/2019
 ms.author: bwren
-ms.openlocfilehash: e83ba321a98e40f07ff82e68c7961c2a6a49076d
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: 2d6f3517e988d6bd66ee9007e072ee87c71d1340
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53191831"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55104656"
 ---
 # <a name="app-expression-in-log-analytics-query"></a>výraz App() použijte v dotazu Log Analytics
 
@@ -37,10 +37,10 @@ ms.locfileid: "53191831"
 
 | Identifikátor | Popis | Příklad:
 |:---|:---|:---|
-| Název prostředku | Lidské čitelný název aplikace (NEBOLI "název komponenty") | App("fabrikamapp") |
+| Název prostředku | Lidské čitelný název aplikace (NEBOLI "název komponenty") | app("fabrikamapp") |
 | Kvalifikovaný název | Celý název aplikace ve formátu: "subscriptionName/skupina prostředků/název komponenty" | App('AI-prototype/Fabrikam/fabrikamapp') |
-| ID | Identifikátor GUID aplikace | App("988ba129-363e-4415-8fe7-8cbab5447518") |
-| ID prostředku Azure | Identifikátor prostředku Azure |App("/subscriptions/7293b69-db12-44fc-9a66-9c2005c3051d/resourcegroups/Fabrikam/providers/Microsoft.insights/Components/fabrikamapp") |
+| ID | Identifikátor GUID aplikace | app("988ba129-363e-4415-8fe7-8cbab5447518") |
+| ID prostředku Azure | Identifikátor prostředku Azure |app("/subscriptions/7293b69-db12-44fc-9a66-9c2005c3051d/resourcegroups/Fabrikam/providers/microsoft.insights/components/fabrikamapp") |
 
 
 ## <a name="notes"></a>Poznámky
@@ -48,6 +48,7 @@ ms.locfileid: "53191831"
 * Musíte mít přístup pro čtení k aplikaci.
 * Identifikace podle názvu aplikace předpokládá, že je jedinečný ve všech předplatných dostupné. Pokud máte více aplikací se zadaným názvem se dotaz nezdaří z důvodu nejednoznačnosti. V tomto případě musíte použít jeden z další identifikátory.
 * Použijte související výraz [pracovní prostor](workspace-expression.md) pro dotazování napříč pracovních prostorů Log Analytics.
+* App() použijte výraz se momentálně nepodporuje ve vyhledávací dotaz při použití na webu Azure portal k vytvoření [pravidlo upozornění vlastního protokolu hledání](../platform/alerts-log.md), pokud aplikace Application Insights se používá jako prostředek pro pravidlo upozornění.
 
 ## <a name="examples"></a>Příklady
 

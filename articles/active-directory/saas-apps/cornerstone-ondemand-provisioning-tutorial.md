@@ -8,19 +8,19 @@ writer: zhchia
 manager: beatrizd
 ms.assetid: d4ca2365-6729-48f7-bb7f-c0f5ffe740a3
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 01/31/2018
 ms.author: v-ant
-ms.openlocfilehash: 6a6cfb2cb1fd6b70be0437c8b6fa62f50e76e53b
-ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
+ms.openlocfilehash: 9f18fcb38e6e0855a00ffb454211273dfb2041a6
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44345409"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55168494"
 ---
 # <a name="tutorial-configure-cornerstone-ondemand-for-automatic-user-provisioning"></a>Kurz: Nakonfigurujte základní kámen OnDemand pro automatické zřizování uživatelů
 
@@ -112,7 +112,7 @@ Tato část vás provede kroky pro konfiguraci Azure AD služby zřizování a v
 
     *   V **heslo správce** pole, vyplnit odpovídající uživatelské jméno správce heslo.
 
-    *   V **domény** pole, vyplnit adresy URL webové služby základní kámen OnDemand tenanta. Příklad: Služba se nachází v `https://ws-[corpname].csod.com/feed30/clientdataservice.asmx`pro doménu Contoso je `https://ws-contoso.csod.com/feed30/clientdataservice.asmx`. Další informace o tom, jak načíst adresu URL webové služby najdete v tématu [tady](https://help.csod.com/help/csod_0/Content/Resources/Documents/WebServices/CSOD_Web_Services_-_User-OU_Technical_Specification_v20160222.pdf).
+    *   V **domény** pole, vyplnit adresy URL webové služby základní kámen OnDemand tenanta. Příklad: Služba se nachází na `https://ws-[corpname].csod.com/feed30/clientdataservice.asmx`pro doménu Contoso je `https://ws-contoso.csod.com/feed30/clientdataservice.asmx`. Další informace o tom, jak načíst adresu URL webové služby najdete v tématu [tady](https://help.csod.com/help/csod_0/Content/Resources/Documents/WebServices/CSOD_Web_Services_-_User-OU_Technical_Specification_v20160222.pdf).
 
 6. Po vyplnění polí zobrazených v kroku 5, klikněte na tlačítko **Test připojení** aby Azure AD můžete připojit k základní kámen OnDemand. Pokud se nepovede, ujistěte se, že váš základní kámen OnDemand účet má oprávnění správce a zkuste to znovu.
 
@@ -155,7 +155,7 @@ Další informace o tom, jak číst zřizování protokoly Azure AD najdete v t�
 * Základní kámen OnDemand **pozice** atribut očekává hodnotu, která odpovídá rolí na portálu pro základní kámen OnDemand. Seznam platných **pozice** hodnoty lze získat tak, že přejdete do **upravit záznam uživatele > Struktura organizace > pozici** portálu základní kámen OnDemand.
     ![Základní kámen OnDemand zřizování upravit uživatele](./media/cornerstone-ondemand-provisioning-tutorial/UserEdit.png) ![základní kámen OnDemand zřizování pozice](./media/cornerstone-ondemand-provisioning-tutorial/UserPosition.png) ![základní kámen OnDemand zřizování seznam pozic](./media/cornerstone-ondemand-provisioning-tutorial/PostionId.png)
     
-## <a name="additional-resources"></a>Další zdroje informací:
+## <a name="additional-resources"></a>Další materiály
 
 * [Správa zřizování uživatelských účtů pro podnikové aplikace](../manage-apps/configure-automatic-user-provisioning-portal.md)
 * [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](../manage-apps/what-is-single-sign-on.md)

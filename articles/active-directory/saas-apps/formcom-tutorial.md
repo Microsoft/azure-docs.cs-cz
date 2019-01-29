@@ -1,5 +1,5 @@
 ---
-title: 'Kurz: Integrace Azure Active Directory se službou Form.com | Dokumentace Microsoftu'
+title: 'Kurz: Integrace Azure Active Directory s Form.com | Dokumentace Microsoftu'
 description: Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a Form.com.
 services: active-directory
 documentationCenter: na
@@ -8,21 +8,21 @@ manager: femila
 ms.reviewer: joflore
 ms.assetid: f1bc0112-315c-4e6f-8c69-7c6873007bcf
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 04/17/2018
 ms.author: jeedes
-ms.openlocfilehash: faa89ffd572733c580235b1c6dec58893de20503
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: d5748cad11e8e0e4bdfd1000b312ab44fc304059
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39449617"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55161049"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-formcom"></a>Kurz: Integrace Azure Active Directory se službou Form.com
+# <a name="tutorial-azure-active-directory-integration-with-formcom"></a>Kurz: Integrace Azure Active Directory s Form.com
 
 V tomto kurzu se dozvíte, jak integrovat Form.com s Azure Active Directory (Azure AD).
 
@@ -38,7 +38,7 @@ Pokud chcete zjistit další podrobnosti o integraci aplikací SaaS v Azure AD, 
 
 Konfigurace integrace Azure AD s Form.com, potřebujete následující položky:
 
-- S předplatným služby Azure AD
+- Předplatné Azure AD
 - Form.com jednotného přihlašování povolená předplatného
 
 > [!NOTE]
@@ -60,7 +60,7 @@ Konfigurace integrace Form.com do služby Azure AD, budete muset přidat Form.co
 
 **Chcete-li přidat Form.com z galerie, postupujte následovně:**
 
-1. V  **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu. 
+1. V **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu. 
 
     ![Tlačítko Azure Active Directory][1]
 
@@ -123,11 +123,11 @@ V této části Povolení služby Azure AD jednotného přihlašování na port�
     > [!NOTE]
     > Tyto hodnoty nejsou skutečný. Tyto hodnoty aktualizujte skutečné přihlašovací adresa URL, adresa URL odpovědi a identifikátor. Kontakt [tým podpory Form.com klienta](https://form.com/about/company/contact-us/) k získání těchto hodnot.
 
-1. Na **podpisový certifikát SAML** části, proveďte následující kroky:
+1. Na **podpisový certifikát SAML** části, proveďte následující kroky:
     
     ![Konfigurace jednotného přihlašování](./media/formcom-tutorial/tutorial_metadataurl.png)
 
-    a. Klikněte na tlačítko Kopírovat zkopírujte **adresa Url federačních metadat aplikace** a vložte ho do poznámkového bloku.
+    a. Klikněte na tlačítko Kopírovat zkopírujte **adresa Url federačních metadat aplikace** a vložte ho do poznámkového bloku.
 
     b. Klikněte na tlačítko **certifikát (Base64)** a uložte soubor certifikátu v počítači.
      
@@ -207,7 +207,7 @@ V této části je povolit Britta Simon k udělení přístupu k Form.com použi
 
 1. Klikněte na tlačítko **přiřadit** tlačítko **přidat přiřazení** dialogového okna.
     
-### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování
+### <a name="test-single-sign-on"></a>Test jednotného přihlašování
 
 V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 

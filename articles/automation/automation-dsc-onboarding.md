@@ -9,12 +9,12 @@ ms.author: robreed
 ms.topic: conceptual
 ms.date: 08/08/2018
 manager: carmonm
-ms.openlocfilehash: 74587d05ec27e87d87aa3647c22f5c90a9cdcf58
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: 1a3cfb51cc75c89c5a4580b1b7721eb763078980
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54436385"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55096700"
 ---
 # <a name="onboarding-machines-for-management-by-azure-automation-state-configuration"></a>Připojování počítačů pro správu podle konfigurace stavu služby Azure Automation
 
@@ -168,7 +168,7 @@ Počítače s Linuxem v místním, počítače s Linuxem v Azure a počítačů 
 1. Ujistěte se, že nejnovější verze [PowerShell Desired State Configuration pro Linux](https://github.com/Microsoft/PowerShell-DSC-for-Linux) je nainstalován v počítačích, které chcete pro připojení k Azure Automation stav konfigurace.
 1. Pokud [výchozí hodnoty prostředí PowerShell DSC Local Configuration Manageru](/powershell/dsc/metaconfig4) odpovídat vašemu případu použití a vy chcete připojení těchto počítačů, kterou **obě** načítat a hlásí stav konfigurace Azure Automation:
 
-   - Na každém počítači s Linuxem pro připojení k Azure Automation stavu konfiguraci, použijte `Register.py` pro připojení pomocí výchozího nastavení prostředí PowerShell DSC Local Configuration Manageru:
+   - Na každém počítači s Linuxem pro připojení k Azure Automation stav konfigurace, použijte `Register.py` pro připojení pomocí výchozího nastavení prostředí PowerShell DSC Local Configuration Manageru:
 
      `/opt/microsoft/dsc/Scripts/Register.py <Automation account registration key> <Automation account registration URL>`
 

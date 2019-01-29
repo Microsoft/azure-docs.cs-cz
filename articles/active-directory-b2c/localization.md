@@ -9,13 +9,13 @@ ms.workload: identity
 ms.topic: reference
 ms.date: 09/10/2018
 ms.author: davidmu
-ms.component: B2C
-ms.openlocfilehash: a0abf2fd3502238af0e0f02cb8f9917cfb90b586
-ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
+ms.subservice: B2C
+ms.openlocfilehash: 8f252b536c80ad997f3c0eb10b10d5cb8c330fc6
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54854968"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55187551"
 ---
 # <a name="localization"></a>Lokalizace
 
@@ -111,7 +111,7 @@ ms.locfileid: "54854968"
 | Atribut | Požadováno | Popis |
 | --------- | -------- | ----------- |
 | Text | Ano | Popisný Zobrazovaný řetězec, který má být zobrazena uživateli v uživatelském rozhraní pro tuto možnost. |
-| Hodnota | Ano | Řetězec deklarace identity hodnotu přidruženou k výběru této možnosti. |
+| Value | Ano | Řetězec deklarace identity hodnotu přidruženou k výběru této možnosti. |
 
 Následující příklad ukazuje použití **LocalizedCollections** elementu. Obsahuje dva **LocalizedCollection** prvky, jeden pro angličtinu a jinou pro španělštinu. Obě nastaveny **omezení** kolekce deklarace `Gender` se seznamem položek pro angličtinu a slovenštinu.
 

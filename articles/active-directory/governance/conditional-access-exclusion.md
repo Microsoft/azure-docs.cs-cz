@@ -11,16 +11,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.component: compliance
+ms.subservice: compliance
 ms.date: 09/25/2018
 ms.author: rolyon
 ms.reviewer: mwahl
-ms.openlocfilehash: 0ae6c27091dd2938ec7410e78ae12dbe20509029
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.openlocfilehash: 12a9602ecd61da5dc497790ecca6d8d6f874252e
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47167874"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55184287"
 ---
 # <a name="use-azure-ad-access-reviews-to-manage-users-that-have-been-excluded-from-conditional-access-policies"></a>Kontroly přístupu pomocí služby Azure AD ke správě uživatelů, které jsou vyloučené ze zásad podmíněného přístupu
 
@@ -96,7 +96,7 @@ Nyní můžete vytvořit zásady podmíněného přístupu, který používá tu
 
 Pojďme zahrnují dva příklady, kde můžete použít kontroly přístupu ke správě vyloučení v rámci zásad podmíněného přístupu.
 
-## <a name="example-1-access-review-for-users-accessing-from-blocked-countries"></a>Příklad 1: Kontrola přístupu pro uživatele, kteří používají ze zemí blokované
+## <a name="example-1-access-review-for-users-accessing-from-blocked-countries"></a>Příklad 1: Kontroly přístupu pro uživatele, kteří používají ze zemí blokované
 
 Řekněme, že máte, která zablokuje přístup pro zásady podmíněného přístupu v určitých zemích. Obsahuje skupinu, která je vyloučena ze zásad. Tady je kontrola doporučené přístupu ve kterém jsou kontrolovány členy skupiny.
 
@@ -117,7 +117,7 @@ Pojďme zahrnují dva příklady, kde můžete použít kontroly přístupu ke s
 
     ![Vytvoření kontroly přístupu](./media/conditional-access-exclusion/create-access-review-1.png)
 
-## <a name="example-2-access-review-for-users-accessing-with-legacy-authentication"></a>Příklad 2: Kontrola přístupu pro uživatele, kteří používají starší verze ověřování
+## <a name="example-2-access-review-for-users-accessing-with-legacy-authentication"></a>Příklad 2: Kontroly přístupu pro uživatele, kteří používají starší verze ověřování
 
 Řekněme, že máte zásady podmíněného přístupu, která zablokuje přístup pro uživatele, kteří používají starší verze ověřování a starší verze klienta. Obsahuje skupinu, která je vyloučena ze zásad. Tady je kontrola doporučené přístupu ve kterém jsou kontrolovány členy skupiny.
 

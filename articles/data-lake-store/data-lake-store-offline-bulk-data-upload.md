@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: nitinme
-ms.openlocfilehash: fc70089517bbc1aa90f95f1e0231f2c67f930090
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 43b482324f0244baf52edbb8989a56dd12833331
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51242190"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55104371"
 ---
 # <a name="use-the-azure-importexport-service-for-offline-copy-of-data-to-azure-data-lake-storage-gen1"></a>Pomocí služby Azure Import/Export pro offline kopírování dat do Azure Data Lake Storage Gen1
 V tomto článku se dozvíte víc o kopírování obrovských sad dat (> 200 GB) do Azure Data Lake Storage Gen1 pomocí offline kopírování metod, jako je třeba [služba Azure Import/Export](../storage/common/storage-import-export-service.md). Soubor použitý jako příklad v tomto článku je konkrétně 339,420,860,416 bajtů nebo přibližně 319 GB na disku. Pojmenujme tuto 319GB.tsv souboru.
@@ -54,9 +54,9 @@ Postupujte podle pokynů v [pomocí služby Azure Import/Export](../storage/comm
 2. Identifikujte účet úložiště Azure, ve kterém data se zkopírují po dodává se do datacentra Azure.
 3. Použití [nástrojem Import/Export Azure](https://go.microsoft.com/fwlink/?LinkID=301900&clcid=0x409), nástroje příkazového řádku. Tady je ukázka fragment kódu, který ukazuje, jak používat nástroj.
 
-    ````
+    ```
     WAImportExport PrepImport /sk:<StorageAccountKey> /t: <TargetDriveLetter> /format /encrypt /logdir:e:\myexportimportjob\logdir /j:e:\myexportimportjob\journal1.jrn /id:myexportimportjob /srcdir:F:\demo\ExImContainer /dstdir:importcontainer/vf1/
-    ````
+    ```
     Zobrazit [pomocí služby Azure Import/Export](../storage/common/storage-import-export-service.md) pro víc fragmentů kódu ukázky.
 4. Předchozí příkaz vytvoří soubor deníku v zadaném umístění. Tento soubor deníku použít k vytvoření úlohy importu z [webu Azure portal](https://portal.azure.com).
 
@@ -72,7 +72,7 @@ Po jeho dokončení zobrazuje stav úlohy importu, můžete ověřit, zda je k d
 V této části vám poskytneme o definice JSON, které můžete použít k vytvoření kanálu Azure Data Factory pro kopírování dat. Můžete použít tyto definice JSON z [webu Azure portal](../data-factory/tutorial-copy-data-portal.md) nebo [sady Visual Studio](../data-factory/tutorial-copy-data-dot-net.md).
 
 ### <a name="source-linked-service-azure-storage-blob"></a>Zdroj propojené služby (objekt blob úložiště Azure)
-````
+```
 {
     "name": "AzureStorageLinkedService",
     "properties": {
@@ -83,10 +83,10 @@ V této části vám poskytneme o definice JSON, které můžete použít k vytv
         }
     }
 }
-````
+```
 
 ### <a name="target-linked-service-azure-data-lake-storage-gen1"></a>Cílit na propojenou službu (Azure Data Lake Storage Gen1)
-````
+```
 {
     "name": "AzureDataLakeStorageGen1LinkedService",
     "properties": {
@@ -99,9 +99,9 @@ V této části vám poskytneme o definice JSON, které můžete použít k vytv
         }
     }
 }
-````
+```
 ### <a name="input-data-set"></a>Vstupní datové sady
-````
+```
 {
     "name": "InputDataSet",
     "properties": {
@@ -119,9 +119,9 @@ V této části vám poskytneme o definice JSON, které můžete použít k vytv
         "policy": {}
     }
 }
-````
+```
 ### <a name="output-data-set"></a>Výstupní datové sady
-````
+```
 {
 "name": "OutputDataSet",
 "properties": {
@@ -137,9 +137,9 @@ V této části vám poskytneme o definice JSON, které můžete použít k vytv
     }
   }
 }
-````
+```
 ### <a name="pipeline-copy-activity"></a>Kanál (aktivita kopírování)
-````
+```
 {
     "name": "CopyImportedData",
     "properties": {
@@ -186,7 +186,7 @@ V této části vám poskytneme o definice JSON, které můžete použít k vytv
         "pipelineMode": "Scheduled"
     }
 }
-````
+```
 Další informace najdete v tématu [přesun dat z Azure Storage blob do služby Azure Data Lake Storage Gen1 pomocí Azure Data Factory](../data-factory/connector-azure-data-lake-store.md).
 
 ## <a name="reconstruct-the-data-files-in-azure-data-lake-storage-gen1"></a>Obnovit data souborů v Azure Data Lake Storage Gen1
@@ -205,7 +205,7 @@ Register-AzureRmResourceProvider -ProviderNamespace "Microsoft.DataLakeStore"
 
 # Join  the files
 Join-AzureRmDataLakeStoreItem -AccountName "<adlsg1_account_name" -Paths "/importeddatafeb8job/319GB.tsv-part-aa","/importeddatafeb8job/319GB.tsv-part-ab", "/importeddatafeb8job/319GB.tsv-part-ac", "/importeddatafeb8job/319GB.tsv-part-ad" -Destination "/importeddatafeb8job/MergedFile.csv"
-````
+```
 
 ## <a name="next-steps"></a>Další postup
 * [Zabezpečení dat ve službě Data Lake Storage Gen1](data-lake-store-secure-data.md)

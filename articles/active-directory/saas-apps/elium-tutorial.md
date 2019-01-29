@@ -1,5 +1,5 @@
 ---
-title: 'Kurz: Integrace Azure Active Directory se službou Elium | Dokumentace Microsoftu'
+title: 'Kurz: Integrace Azure Active Directory s Elium | Dokumentace Microsoftu'
 description: Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a Elium.
 services: active-directory
 documentationCenter: na
@@ -8,21 +8,21 @@ manager: femila
 ms.reviewer: joflore
 ms.assetid: fae344b3-5bd9-40e2-9a1d-448dcd58155f
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 04/05/2018
 ms.author: jeedes
-ms.openlocfilehash: dfa90474632b2cf18055e0ba95994f120cb293ef
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: ac88d3accad8aa9ec523ecce5eb11b6c10eb913c
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39447780"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55181482"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-elium"></a>Kurz: Integrace Azure Active Directory se službou Elium
+# <a name="tutorial-azure-active-directory-integration-with-elium"></a>Kurz: Integrace Azure Active Directory s Elium
 
 V tomto kurzu se dozvíte, jak integrovat Elium s Azure Active Directory (Azure AD).
 
@@ -38,7 +38,7 @@ Pokud chcete zjistit další podrobnosti o integraci aplikací SaaS v Azure AD, 
 
 Konfigurace integrace Azure AD s Elium, potřebujete následující položky:
 
-- S předplatným služby Azure AD
+- Předplatné Azure AD
 - Elium jednotného přihlašování povolená předplatného
 
 > [!NOTE]
@@ -60,7 +60,7 @@ Konfigurace integrace Elium do služby Azure AD, budete muset přidat Elium z Ga
 
 **Chcete-li přidat Elium z galerie, postupujte následovně:**
 
-1. V  **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu. 
+1. V **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu. 
 
     ![Tlačítko Azure Active Directory][1]
 
@@ -129,11 +129,11 @@ V této části Povolení služby Azure AD jednotného přihlašování na port�
            
     | Název atributu | Hodnota atributu |   
     | ---------------| ----------------|
-    | e-mail   |User.Mail |
+    | e-mail   |user.mail |
     | křestní_jméno| user.givenname |
     | Příjmení| user.surname|
-    | funkce| user.jobtitle|
-    | Společnosti| User.CompanyName|
+    | job_title| user.jobtitle|
+    | Společnosti| user.companyname|
     
     > [!NOTE]
     > Jedná se o výchozí deklarací identity. **Deklarace identity e-mailu je povinné jenom**. Pro JIT zřizování také e-mailu jenom deklarace identity je povinné. Další vlastní deklarace identity se může lišit od platformy jednoho zákazníka na jiné platformě zákazníka.
@@ -233,7 +233,7 @@ Cílem této části je vytvoření zkušebního uživatele na webu Azure Portal
 
 Cílem této části je vytvořte uživatele Britta Simon v Elium. Elium podporuje just-in-time zřizování, který je ve výchozím nastavení povolená. Neexistuje žádná položka akce pro vás v této části. Nový uživatel se vytvoří během pokusu o přístup k Elium, pokud ještě neexistuje.
 >[!Note]
->Pokud je potřeba ručně vytvořit uživatele, obraťte se na [tým podpory Elium](mailto:support@elium.com).
+>Pokud je potřeba ručně vytvořit uživatele, obraťte se na [tým podpory Elium](mailto:support@elium.com).
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřadit uživatele Azure AD
 
@@ -265,7 +265,7 @@ V této části je povolit Britta Simon k udělení přístupu k Elium použití
 
 1. Klikněte na tlačítko **přiřadit** tlačítko **přidat přiřazení** dialogového okna.
     
-### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování
+### <a name="test-single-sign-on"></a>Test jednotného přihlašování
 
 V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 

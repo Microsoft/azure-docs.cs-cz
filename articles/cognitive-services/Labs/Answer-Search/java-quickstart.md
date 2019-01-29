@@ -1,5 +1,5 @@
 ---
-title: 'Rychlý start: Project Answer Search, Java'
+title: 'Rychlý start: Hledání odpovědí projektu, Java'
 titlesuffix: Azure Cognitive Services
 description: Začněte používat Project Answer Search s využitím Javy.
 services: cognitive-services
@@ -10,14 +10,14 @@ ms.component: answer-search
 ms.topic: quickstart
 ms.date: 04/13/2018
 ms.author: rosh
-ms.openlocfilehash: 66d5488fa0e8f542327b4150d50e4351af6ade55
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
-ms.translationtype: HT
+ms.openlocfilehash: 00d302fdddf82eaec98b6d3d63153a260fe7fbc5
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49469091"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55099358"
 ---
-# <a name="quickstart-project-answer-search-query-in-java"></a>Rychlý start: Dotaz Project Answer Search v Javě
+# <a name="quickstart-project-answer-search-query-in-java"></a>Rychlý start: Hledání odpovědí dotazu projektu v Javě
 Tento článek představuje použití rozhraní API Bingu pro vyhledávání odpovědí, které je součástí služeb Microsoft Cognitive Services v Azure, pomocí Javy. Rozhraní API je webová služba REST kompatibilní s každým programovacím jazykem, který dokáže provádět požadavky HTTP a parsovat JSON.
  
 Příklad kódu používá Java s minimálními externími závislostmi.  Můžete ho spustit taky v Linuxu nebo Mac OS X pomocí platformy Mono.
@@ -30,7 +30,7 @@ Získání přístupového klíče k bezplatné zkušební verzi služby [Cognit
 
 Následující kód vytvoří požadavek `WebRequest`, nastaví hlavičku přístupového klíče a přidá řetězec dotazu „Gibraltar“.  Potom požadavek odešle a přiřadí odpověď k řetězci obsahujícímu text JSON.
 
-````
+```
     static String host = "https://api.labs.cognitive.microsoft.com";
     static String path = "/answerSearch/v7.0/search";
 
@@ -46,7 +46,7 @@ Následující kód vytvoří požadavek `WebRequest`, nastaví hlavičku přís
 
     // construct result object for return
     SearchResults results = new SearchResults(new HashMap<String, String>(), response);
-````
+```
 
 ## <a name="complete-code"></a>Celý kód
 
@@ -57,7 +57,7 @@ Rozhraní API Bingu pro vyhledávání odpovědí vrací výsledky z vyhledáva�
 4. Hodnotu subscriptionKey nahraďte přístupovým klíčem platným pro vaše předplatné.
 5. Spusťte program.
 
-````
+```
 package knowledgeAPI;
 import java.io.InputStream;
 import java.net.*;
@@ -148,9 +148,9 @@ public class KnowledgeSrch {
         }
 }
 
-````
+```
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 - [Rychlý start pro jazyk C#](c-sharp-quickstart.md)
 - [Rychlý start pro Javu](java-quickstart.md)
 - [Rychlý start pro Node](node-quickstart.md)

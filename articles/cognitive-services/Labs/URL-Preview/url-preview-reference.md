@@ -10,12 +10,12 @@ ms.component: url-preview
 ms.topic: reference
 ms.date: 03/29/2018
 ms.author: rosh
-ms.openlocfilehash: 12e91a07d09929ba59873d0d56f4e19b20077f53
-ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
+ms.openlocfilehash: 297547d52333bf84af69a780c98ce9d84938cf94
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "53999743"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55097740"
 ---
 # <a name="project-url-preview-v7-reference"></a>Odkaz na projekt ve verzi Preview se adresy URL v7
 
@@ -31,10 +31,10 @@ Jenom data z adresy URL ve verzi Preview musíte použít k zobrazení fragmenty
 Požádat o adresy URL náhledu výsledků, odesílejte požadavek na následující koncový bod. Použijte k definování další specifikace hlaviček a parametrů adresy URL.
 
 Koncový bod GET:
-````
+```
 https://api.labs.cognitive.microsoft.com/urlpreview/v7.0/search?q=queryURL
 
-````
+```
 
 Žádost musí používat protokol HTTPS a obsahovat následující parametr dotazu:
 
@@ -73,44 +73,44 @@ Níže jsou hlavičky, které mohou zahrnovat požadavek a odpověď.
 ## <a name="query-parameters"></a>Parametry dotazu
 Žádost mohou zahrnovat tyto parametry dotazu. Zobrazte požadovaný sloupec pro požadované parametry. Adresa URL musíte zakódovat parametry dotazu. Dotaz musí být absolutní adresa URL se schématem http nebo https; Nepodporujeme relativní adresy URL nebo jiná schémata, jako je ftp: / /
 
-|Název|Hodnota|Typ|Požaduje se|
+|Name|Value|Type|Požaduje se|
 |----------|-----------|----------|--------------|
 |<a name="mkt" />mkt|Trh, odkud pochází výsledky. <br /><br />Seznam možných hodnot na trhu, najdete v tématu [trhu kódy](#market-codes).<br /><br /> **POZNÁMKA:** Rozhraní API ve verzi Preview URL aktuálně podporuje jenom USA podle zeměpisného umístění a angličtině.<br /><br />|Řetězec|Ano|
 |<a name="query" />q|Adresa URL ve verzi preview|Řetězec|Ano|
-|<a name="responseformat" />Formát odpovědi|Typ média určený pro odpověď. Níže jsou uvedeny možné hodnoty velká a malá písmena.<br /><ul><li>JSON</li><li>JSONLD</li></ul><br /> Výchozí hodnota je JSON. Informace o JSON objektů, že odpověď obsahuje, naleznete v tématu [objekty odpovědi](#response-objects).<br /><br />Pokud chcete zadat JsonLd, tělo odpovědi obsahuje objekty JSON-LD, obsahující výsledky hledání. Informace o JSON-LD, naleznete v tématu [JSON-LD](http://json-ld.org/).|Řetězec|Ne|
-|<a name="safesearch"/>safeSearch|Neplatný obsah pro dospělé nebo nelegální obsah blokovaný s kódem chyby 400 a *isFamilyFriendly* příznak nevrátí. <p>Platný obsah pro dospělé níže je chování. Vrátí stavový kód 200 a *isFamilyFriendly* je příznak nastaven na hodnotu false.<ul><li>bezpečné hledání = strict: Název, popis, adresu URL a image se nezobrazí.</li><li>bezpečné hledání = střední; Získejte název, adresu URL a popis, ale není popisný obraz.</li><li>bezpečné hledání = off; Získejte odpovědi objekty/všeho – název, URL, popis a obrázek.</li></ul> |Řetězec|Není nutné. </br> Výchozí hodnota je bezpečné hledání = strict.|
+|<a name="responseformat" />responseFormat|Typ média určený pro odpověď. Níže jsou uvedeny možné hodnoty velká a malá písmena.<br /><ul><li>JSON</li><li>JSONLD</li></ul><br /> Výchozí hodnota je JSON. Informace o JSON objektů, že odpověď obsahuje, naleznete v tématu [objekty odpovědi](#response-objects).<br /><br />Pokud chcete zadat JsonLd, tělo odpovědi obsahuje objekty JSON-LD, obsahující výsledky hledání. Informace o JSON-LD, naleznete v tématu [JSON-LD](http://json-ld.org/).|Řetězec|Ne|
+|<a name="safesearch"/>safeSearch|Neplatný obsah pro dospělé nebo nelegální obsah blokovaný s kódem chyby 400 a *isFamilyFriendly* příznak nevrátí. <p>Platný obsah pro dospělé níže je chování. Vrátí stavový kód 200 a *isFamilyFriendly* je příznak nastaven na hodnotu false.<ul><li>safeSearch=strict: Název, popis, adresu URL a image se nezobrazí.</li><li>bezpečné hledání = střední; Získejte název, adresu URL a popis, ale není popisný obraz.</li><li>bezpečné hledání = off; Získejte odpovědi objekty/všeho – název, URL, popis a obrázek.</li></ul> |Řetězec|Není nutné. </br> Výchozí hodnota je bezpečné hledání = strict.|
 
 ## <a name="response-objects"></a>Objekty odpovědi
 Schéma odpovědi je buď [webové stránky] nebo ErrorResponse, stejně jako v hledání webového rozhraní API. Pokud požadavek selže, je objekt nejvyšší úrovně [ErrorResponse](#errorresponse) objektu.
 
 |Objekt|Popis|
 |------------|-----------------|
-|[Webová stránka](#webpage)|Nejvyšší úroveň objektu JSON, který obsahuje atributy ve verzi preview.|
+|[WebPage](#webpage)|Nejvyšší úroveň objektu JSON, který obsahuje atributy ve verzi preview.|
 
 ### <a name="error"></a>Chyba
 Definuje chyby, ke které došlo k chybě.
 
-|Element|Popis|Typ|
+|Element|Popis|Type|
 |-------------|-----------------|----------|
 |<a name="error-code" />kód|Kód chyby, který určuje kategorii chyby. Seznam možných kódů najdete v tématu [kódy chyb](#error-codes).|Řetězec|
 |<a name="error-message" />Zpráva|Popis chyby.|Řetězec|
 |<a name="error-moredetails" />moreDetails|Popis, který poskytuje další informace o této chybě.|Řetězec|
 |<a name="error-parameter" />Parametr|Parametr dotazu v žádosti, která způsobila chybu.|Řetězec|
-|<a name="error-subcode" />Podřízeného|Kód chyby: identifikující chybu. Například pokud `code` je InvalidRequest, `subCode` může být ParameterInvalid nebo ParameterInvalidValue. |Řetězec|
+|<a name="error-subcode" />subCode|Kód chyby: identifikující chybu. Například pokud `code` je InvalidRequest, `subCode` může být ParameterInvalid nebo ParameterInvalidValue. |Řetězec|
 |<a name="error-value" />Hodnota|Hodnota parametru dotazu, která nebyla platná.|Řetězec|
 
 ### <a name="errorresponse"></a>ErrorResponse
 Objekt nejvyšší úrovně, který obsahuje odpověď, pokud požadavek selže.
 
-|Název|Hodnota|Typ|
+|Name|Value|Type|
 |----------|-----------|----------|
-|_typ|Pomocný parametr typu.|Řetězec|
+|_type|Pomocný parametr typu.|Řetězec|
 |<a name="errors" />Chyby|Seznam chyb, které popisují důvody, proč žádost selhala.|[Chyba](#error)]|
 
 ### <a name="webpage"></a>Webová stránka
 Definuje informace o webové stránce ve verzi preview.
 
-|Název|Hodnota|Typ|
+|Name|Value|Type|
 |----------|-----------|----------|
 |jméno|Název stránky, ne tedy nutně Nadpis HTML|Řetězec|
 |url|Adresu URL, kterou byl ve skutečnosti procházen (žádosti může provedli přesměrování)|Řetězec|
@@ -119,7 +119,7 @@ Definuje informace o webové stránce ve verzi preview.
 |primaryImageOfPage/contentUrl|Adresa URL reprezentativní image zahrnout ve verzi preview|Řetězec|
 
 ### <a name="identifiable"></a>Údaje
-|Název|Hodnota|Typ|
+|Name|Value|Type|
 |-------------|-----------------|----------|
 |id|Identifikátor prostředku|Řetězec|
 

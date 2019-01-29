@@ -1,5 +1,5 @@
 ---
-title: 'Kurz: Integrace Azure Active Directory se službou dmarcian | Dokumentace Microsoftu'
+title: 'Kurz: Integrace Azure Active Directory s dmarcian | Dokumentace Microsoftu'
 description: Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a dmarcian.
 services: active-directory
 documentationCenter: na
@@ -14,14 +14,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/21/2018
 ms.author: jeedes
-ms.openlocfilehash: 0f8878505280371bf6046c1d1f0d7fc1275dd496
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: 197e0cceb7457ffdd96ada7d4561de56c7ed10fc
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47039883"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55095647"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-dmarcian"></a>Kurz: Integrace Azure Active Directory se službou dmarcian
+# <a name="tutorial-azure-active-directory-integration-with-dmarcian"></a>Kurz: Integrace Azure Active Directory s dmarcian
 
 V tomto kurzu se dozvíte, jak integrovat dmarcian s Azure Active Directory (Azure AD).
 
@@ -157,15 +157,15 @@ V této části Povolení služby Azure AD jednotného přihlašování na port�
 
     ![Ověřování ](./media/dmarcian-tutorial/tutorial_dmarcian_auth.png)
 
-    * V části **přidat dmarcian ke zprostředkovateli Identity** klikněte na tlačítko **kopírování** zkopírovat **adresa URL služby Assertion příjemce** pro vaši instanci a vložte ji  **Adresa URL pro odpověď** textového pole v **dmarcian části domény a adresy URL** na portálu Azure portal.
+    * V části **přidat dmarcian ke zprostředkovateli Identity** klikněte na tlačítko **kopírování** zkopírovat **adresa URL služby Assertion příjemce** pro vaši instanci a vložte ji  **Adresy URL odpovědi** textového pole v **dmarcian části domény a adresy URL** na portálu Azure portal.
 
-    * V části **přidat dmarcian ke zprostředkovateli Identity** klikněte na tlačítko **kopírování** zkopírovat **Entity ID** pro vaši instanci a vložte ji **identifikátor**textového pole v **dmarcian části domény a adresy URL** na portálu Azure portal.
+    * V části **přidat dmarcian ke zprostředkovateli Identity** klikněte na tlačítko **kopírování** zkopírovat **Entity ID** pro vaši instanci a vložte ji ** Identifikátor** textového pole v **dmarcian části domény a adresy URL** na portálu Azure portal.
 
     * V části **nastavení ověřování** sekci **metadat zprostředkovatele Identity** vložení textového pole **adresa Url federačních metadat aplikace**, který jste zkopírovali z portálu Azure portal.
 
     * V části **nastavení ověřování** sekci **příkazy atributů** textového pole vložte adresu url `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress`.
 
-    * V části **nastavit adresu URL pro přihlášení** tématu, zkopírujte **přihlašovací adresa URL** pro vaši instanci a vložte ji **přihlašovací adresa URL** textového pole v **dmarcian části domény a adresy URL** na portálu Azure portal.
+    * V části **nastavit adresu URL pro přihlášení** tématu, zkopírujte **přihlašovací adresa URL** pro vaši instanci a vložte ji **přihlašovací adresa URL** textového pole v **dmarcian části domény a adresy URL** na portálu Azure portal.
 
         > [!Note]
         > Můžete upravit **přihlašovací adresa URL** podle vaší organizace.

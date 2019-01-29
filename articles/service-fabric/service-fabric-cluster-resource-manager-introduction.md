@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/18/2017
 ms.author: masnider
-ms.openlocfilehash: 319bae3025741d6a3130c92d876ae38fcbcdf11e
-ms.sourcegitcommit: 922f7a8b75e9e15a17e904cc941bdfb0f32dc153
+ms.openlocfilehash: e3cf87ca49ae39966cffbb768dc1c191991d4036
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52333934"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55096904"
 ---
 # <a name="introducing-the-service-fabric-cluster-resource-manager"></a>Úvod do Service Fabric cluster resource Manageru
 Tradičně Správa informačních systémů nebo online služby určené vyhradíte konkrétní fyzické nebo virtuální počítače pro tyto konkrétní služby nebo systémy. Služby byla navržena jako úrovně. By být "web" a "data" nebo "úložiště" vrstvu. Aplikace by měla mít zasílání zpráv úrovně, kde požadavky byly převedeny dovnitř a ven a také sadu počítačů vyhrazený pro ukládání do mezipaměti. Každou vrstvu nebo typu úlohy konkrétního počítače, které jsou vyhrazené pro to měl: databáze je teď několik počítačů dedicated, webové servery v pár. Je-li konkrétní typ zatížení počítače, ve kterém se k spuštění příliš horké, pak jste přidali další počítače pomocí této stejnou konfiguraci na dané úrovni. Ale ne všechny úlohy může tak snadno škálovat – zejména s datovou vrstvou obvykle nahradíte počítače s větší počítače. Snadné. Pokud na počítači se nezdařilo, část celkové aplikace nižší kapacitu spuštěné, dokud se počítač může obnovit. Stále poměrně snadné (Pokud není nutně zábavné).
@@ -53,7 +53,7 @@ V tradičních aplikací vrstvy N, je vždy [nástroje pro vyrovnávání zatí�
 
 Nástroje pro vyrovnávání síťové nebo zprávy směrovače se pokusil Ujistěte se, že úroveň web/worker zůstala zhruba vyvážené. Strategie pro datovou vrstvu služby Vyrovnávání byly závislé na mechanismem úložiště dat a jiné. Vyrovnávání v datové vrstvě spoléhal na horizontální dělení dat, ukládání do mezipaměti, spravované zobrazení, uložené procedury a další mechanismy konkrétní úložiště.
 
-I když některé z těchto strategií zajímavé, Service Fabric Cluster Resource Manageru není nic jako nástroj pro vyrovnávání zatížení sítě nebo mezipaměť. Nástroj pro vyrovnávání zatížení sítě vyrovnává front-endů tím, že rozprostírá provoz mezi front-endů. Service Fabric Cluster Resource Manager má jinou strategii. V podstatě, Service Fabric přesune *služby* kde smysl nejvíce, očekává se provoz nebo načíst dodržovat. Například to může být přesunutí služeb do uzlů, které jsou aktuálně studenou, protože služby, které se nacházejí se tím množství práce. Uzlů může být úplné, protože byly odstraněny nebo přesunuty jinde služby, které byly k dispozici. Další příklad – Cluster Resource Manager by mohla také přesunout služby od počítače s. Možná je na počítači budou upgradovány, nebo je přetížena kvůli nárůst využití služeb běžících na něj. Alernatively, může mít vyšší požadavky na prostředky služby. V důsledku nejsou k dispozici dostatečné prostředky na tomto počítači bude moct být spuštěná ho. 
+I když některé z těchto strategií zajímavé, Service Fabric Cluster Resource Manageru není nic jako nástroj pro vyrovnávání zatížení sítě nebo mezipaměť. Nástroj pro vyrovnávání zatížení sítě vyrovnává front-endů tím, že rozprostírá provoz mezi front-endů. Service Fabric Cluster Resource Manager má jinou strategii. V podstatě, Service Fabric přesune *služby* kde smysl nejvíce, očekává se provoz nebo načíst dodržovat. Například to může být přesunutí služeb do uzlů, které jsou aktuálně studenou, protože služby, které se nacházejí se tím množství práce. Uzlů může být úplné, protože byly odstraněny nebo přesunuty jinde služby, které byly k dispozici. Další příklad – Cluster Resource Manager by mohla také přesunout služby od počítače s. Možná je na počítači budou upgradovány, nebo je přetížena kvůli nárůst využití služeb běžících na něj. Alternativně může zvýšily požadavky na prostředky služby. V důsledku nejsou k dispozici dostatečné prostředky na tomto počítači bude moct být spuštěná ho. 
 
 Vzhledem k tomu, že Cluster Resource Manager je zodpovědný za přesun služby kolem, obsahuje různé funkce set v porovnání s byste našli v nástroj pro vyrovnávání zatížení sítě. Je to proto, že nástroje pro vyrovnávání zatížení sítě doručovat síťový provoz ve kterém už jsou služby, i v případě, že umístění není ideální pro provoz samotné služby. Service Fabric Cluster Resource Manager používá fundamentálně odlišný způsob strategie pro zajištění, že jsou efektivní využívání prostředků v clusteru.
 

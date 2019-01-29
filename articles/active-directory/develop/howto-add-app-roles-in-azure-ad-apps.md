@@ -7,7 +7,7 @@ author: kkrishna
 manager: mtillman
 editor: ''
 ms.service: active-directory
-ms.component: develop
+ms.subservice: develop
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -16,14 +16,14 @@ ms.date: 09/24/2018
 ms.author: kkrishna
 ms.reviewer: ''
 ms.custom: aaddev
-ms.openlocfilehash: 6321823eed00cffc6565471ec1ba3b4d846cd027
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: b44aa35765cba33a85519fcd53f0df365c26be6b
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46948702"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55093409"
 ---
-# <a name="how-to-add-app-roles-in-your-application-and-receive-them-in-the-token"></a>Postupy: Přidání rolí aplikace ve vaší aplikaci a přijímat je v tokenu
+# <a name="how-to-add-app-roles-in-your-application-and-receive-them-in-the-token"></a>Postup: Přidání rolí aplikace ve vaší aplikaci a přijímat je v tokenu
 
 Řízení přístupu na základě role (RBAC) je mechanismus oblíbených vynutit autorizaci v aplikacích. Při použití RBAC, správce udělí oprávnění k rolím a nikoli na jednotlivé uživatele nebo skupiny. Správce pak můžete přiřadit role pro různé uživatele a skupiny, které se řídí, kdo má přístup k jaké obsah a funkce.
 

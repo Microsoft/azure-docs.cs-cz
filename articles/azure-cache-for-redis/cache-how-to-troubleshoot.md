@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/06/2017
 ms.author: wesmc
-ms.openlocfilehash: 154f5200872dbc06550f396717cb215f3db4f7dd
-ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
+ms.openlocfilehash: 58c1af860c5ccc87f4396c698b432f47f0ea7c65
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54199574"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55096955"
 ---
 # <a name="how-to-troubleshoot-azure-cache-for-redis"></a>Řešení potíží s Azure Cache pro Redis
 Tento článek obsahuje pokyny pro řešení potíží s následující kategorie mezipaměti Azure Redis problémů.
@@ -187,9 +187,9 @@ Tato chybová zpráva obsahuje metriky, který vám pomůže odkazovat na pří�
 | Chybová zpráva metrika | Podrobnosti |
 | --- | --- |
 | instrukce |V posledním časovém intervalu: byl vydán 0 příkazy |
-| Mgr |Správce soketu provádí `socket.select`, což znamená, že je s výzvou k označení soketu, který souvisí; operační systém v podstatě: čtecí modul není čtení aktivně ze sítě. vzhledem k tomu, že ji nebude myslíte, že se něco udělat |
+| mgr |Správce soketu provádí `socket.select`, což znamená, že je s výzvou k označení soketu, který souvisí; operační systém v podstatě: čtecí modul není čtení aktivně ze sítě. vzhledem k tomu, že ji nebude myslíte, že se něco udělat |
 | fronta |Existují 73 celkový počet probíhajících operací |
-| časový |6 v průběhu operace jsou ve frontě unsent a nebyly dosud napsány tak, aby odchozí síťové |
+| qu |6 v průběhu operace jsou ve frontě unsent a nebyly dosud napsány tak, aby odchozí síťové |
 | qs |67 operací v průběhu byly odeslány na server, ale odpověď ještě není k dispozici. Odpovědí může být `Not yet sent by the server` nebo `sent by the server but not yet processed by the client.` |
 | qc |0 nebo v průběhu operace viděli odpovědi, ale zatím ještě nebyly označeny jako dokončenou z důvodu čekání na dokončení smyčky |
 | WR |Je bajtů/activewriters aktivní zapisovače (to znamená, že 6 unsent požadavky nejsou ignorovány) |
@@ -212,7 +212,7 @@ Tato chybová zpráva obsahuje metriky, který vám pomůže odkazovat na pří�
             return lazyConnection.Value;
         }
     }
-    ````
+    ```
 
     Další informace najdete v tématu [připojení k mezipaměti pomocí StackExchange.Redis](cache-dotnet-how-to-use-azure-redis-cache.md#connect-to-the-cache).
 

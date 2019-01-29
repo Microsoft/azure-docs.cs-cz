@@ -12,12 +12,12 @@ ms.author: jovanpop
 ms.reviewer: carlr
 manager: craigg
 ms.date: 01/25/2019
-ms.openlocfilehash: ff006e7962f2aa79e7c71ab12be918770c6e6d39
-ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
+ms.openlocfilehash: b8eb6d483b9e7a92b50a269e5efbc8ca55946931
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/26/2019
-ms.locfileid: "55082488"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55104214"
 ---
 # <a name="getting-started-with-azure-sql-database-managed-instance"></a>Začínáme s Azure SQL Database Managed Instance
 
@@ -25,7 +25,7 @@ ms.locfileid: "55082488"
 
 ## <a name="quickstart-overview"></a>Rychlý start – přehled
 
-V této části zobrazí přehled dostupných články, které vám umožňují rychle začít s spravovaných instancí. Nejjednodušší způsob, jak vytvořit první Managed Instance je použití [na webu Azure portal](sql-database-managed-instance-get-started.md) ve kterém můžete nakonfigurovat potřebné parametry a automaticky vytvoří Azure síťovém prostředí bez nutnosti znát podrobnosti připojení sítě a požadavky na infrastrukturu. Ujistěte se, že máte [typ předplatného](sql-database-managed-instance-resource-limits.md#supported-subscription-types) , který může vytvořit instanci.
+V této části zobrazí přehled dostupných články, které vám umožňují rychle začít s spravovaných instancí. Nejjednodušší způsob, jak vytvořit první Managed Instance je použití [na webu Azure portal](sql-database-managed-instance-get-started.md) ve kterém můžete nakonfigurovat potřebné parametry (uživatelského jména a hesla, počet jader, maximální velikosti úložiště) a automaticky vytvoří Azure síťovém prostředí bez potřebujete vědět o sítě podrobnosti a požadavky na infrastrukturu. Ujistěte se, že máte [typ předplatného](sql-database-managed-instance-resource-limits.md#supported-subscription-types) , který může vytvořit instanci.
 
 Pokud máte vlastní sítě, kterou chcete použít, nebo chcete přizpůsobit sítě naleznete v tématu Jak [konfigurace prostředí sítě](#configure-network-environment) pro Managed Instance.
 
@@ -35,7 +35,7 @@ Když vytvoříte Managed Instance, je třeba se připojit k instanci pomocí je
 
 Jako alternativu můžete použít expressroute nebo připojení site-to-site z místní sítě, ale tyto přístupy jsou mimo rozsah v těchto rychlých startech.
 
-Když vytvoříte Managed Instance a konfigurovat přístup, můžete spustit migrace vaší databáze. Měli byste nainstalovat [Data Migration Assistant (DMA)](https://www.microsoft.com/download/details.aspx?id=53595) , která analyzuje vaše databáze na SQL serveru a najít všechny problémy, které by mohly blokovat migraci do spravované Instance, jako je například existence FileStream nebo víc souborů protokolů. Pokud tyto problémy vyřešit, vaše databáze jsou připraveni přejít k Managed Instance. [Databáze služby experimentování ve službě pomocníka](https://blogs.msdn.microsoft.com/datamigration/2018/08/06/release-database-experimentation-assistant-dea-v2-6/) je další užitečná nástroj, který může zaznamenávat vaše úlohy na serveru SQL Server a opětovného přehrání ho ve službě Managed Instance, aby mohl určit chystají možné problémy s výkonem, pokud provádíte migraci do spravované Instance.
+Když vytvoříte Managed Instance a konfigurovat přístup, můžete začít migrovat databáze umístěna na místní SQL Server nebo virtuální počítače Azure. Všimněte si, že migrace selže, pokud máte některé nepodporované funkce ve zdrojové databázi, kterou chcete migrovat. Pokud chcete zabránit selhání a zkontrolovat kompatibilitu, můžete nainstalovat [Data Migration Assistant (DMA)](https://www.microsoft.com/download/details.aspx?id=53595) , která analyzuje vaše databáze na SQL serveru a najít všechny problémy, které by mohly blokovat migraci do spravované Instance, jako je například existence Nebo více souborů protokolu FileStream. Pokud tyto problémy vyřešit, vaše databáze jsou připraveni přejít k Managed Instance. [Databáze služby experimentování ve službě pomocníka](https://blogs.msdn.microsoft.com/datamigration/2018/08/06/release-database-experimentation-assistant-dea-v2-6/) je další užitečná nástroj, který může zaznamenávat vaše úlohy na serveru SQL Server a opětovného přehrání ho ve službě Managed Instance, aby mohl určit chystají možné problémy s výkonem, pokud provádíte migraci do spravované Instance.
 
 Jakmile jste si jisti, že můžete migrovat databáze do Managed Instance, můžete použít [nativní obnovení](sql-database-managed-instance-get-started-restore.md) funkce, které vám umožní vytvořit zálohu vaší databáze pomocí příkazu jazyka Transact-SQL, nahrajte ho do služby Azure blob storage a OBNOVENÍ databáze z úložiště objektů blob pomocí příkazu jazyka Transact-SQL.
 

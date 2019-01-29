@@ -11,24 +11,24 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: ne
 ms.topic: article
-ms.date: 11/27/2018
+ms.date: 01/28/2019
 ms.author: juliako
-ms.openlocfilehash: 3ed38ce75e5ee7c9f05533d64b28171482bfec51
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: 9c8bff5a0a4f1599a3d23e0c7b07a1caca536a9b
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53725928"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55153959"
 ---
-# <a name="liveevent-types-comparison"></a>Porovnání typů Livestream
+# <a name="live-event-types-comparison"></a>Porovnání typů živé události
 
-Ve službě Azure Media Services [Livestream](https://docs.microsoft.com/rest/api/media/liveevents) může být jeden ze dvou typů: kódování v reálném čase a předávací. 
+Ve službě Azure Media Services [živá událost](https://docs.microsoft.com/rest/api/media/liveevents) může být jeden ze dvou typů: kódování v reálném čase a předávací. 
 
 ## <a name="types-comparison"></a>Porovnání typů 
 
-Následující tabulka obsahuje porovnání funkcí těchto dvou typů Livestream.
+Následující tabulka obsahuje porovnání funkcí těchto dvou typů živá událost.
 
-| Funkce | Předávací Livestream | Standardní Livestream |
+| Funkce | Předávací živou událost | Standardní živou událost |
 | --- | --- | --- |
 | Vstup s jednou přenosovou rychlostí je zakódován do více přenosových rychlostí v cloudu |Ne |Ano |
 | Maximální rozlišení příspěvek informačního kanálu |4K (4096 × 2160 na 60 snímků za sekundu) |1080p (1920 × 1088 na 30 snímků za sekundu)|
@@ -40,7 +40,7 @@ Následující tabulka obsahuje porovnání funkcí těchto dvou typů Livestrea
 | Podporované kodeky vstupního videa |H.264/AVC a H.265/HEVC|H.264/AVC|
 | Video kodeků podporované výstupu|Stejné jako vstup|H.264/AVC|
 | Podporované videa bitová hloubka, vstupu a výstupu|Až 10-bit včetně HDR 10/HLG|8 bitů|
-| Podporované kodeky vstupního zvuku|AAC-LC, HE-AAC v1, v2 HE-AAC|AAC-LC, HE-AAC v1, v2 HE-AAC|
+| Podporované kodeky vstupního zvuku|AAC-LC, HE-AAC v1, HE-AAC v2|AAC-LC, HE-AAC v1, HE-AAC v2|
 | Podporované výstup zvukových kodeků|Stejné jako vstup|AAC-LC|
 | Maximální rozlišení výstup videa|Stejné jako vstup|720p (na 30 snímků za sekundu)|
 | Vstupní protokoly|RTMP, fragmentovaný soubor MP4 (technologie Smooth Streaming)|RTMP, fragmentovaný soubor MP4 (technologie Smooth Streaming)|
@@ -50,10 +50,10 @@ Následující tabulka obsahuje porovnání funkcí těchto dvou typů Livestrea
 | Podpora vkládaní slaty|Ne|Ne|
 | Podpora ad signalizace přes rozhraní API| Ne|Ne|
 | Podpora ad signalizace prostřednictvím SCTE 35 integrovaných zprávy|Ano|Ano|
-| Schopnost zotavení z stručný přepínání v příspěvku informačního kanálu|Ano|Ne (Livestream se začne slating po sekundách 6 bez vstupních dat)|
+| Schopnost zotavení z stručný přepínání v příspěvku informačního kanálu|Ano|Ne (živá událost začne slating po sekundách 6 bez vstupních dat)|
 | Podpora pro vstupní GOPs nerovnoměrné|Ano|Ne – vstup musí opravily GOP doba trvání|
 | Podpora pro vstup míra proměnné rámce|Ano|Ne – vstup musí být stanovena snímkovou frekvenci. Malé změny jsou například tolerovat při vysoké pohybu scény. Ale příspěvek informačního kanálu nelze vyřadit, frekvence snímků (například do 15 snímků za sekundu).|
-| Dojde ke ztrátě Auto přístupnými z Livestream při zadání informačního kanálu|Ne|Po 12 hodinách, pokud neexistuje žádný LiveOutput spuštění|
+| Auto přístupnými živé události při zadání kanálu dojde ke ztrátě|Ne|Po 12 hodinách, pokud neexistuje žádný LiveOutput spuštění|
 
 ## <a name="next-steps"></a>Další postup
 

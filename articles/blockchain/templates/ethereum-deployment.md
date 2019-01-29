@@ -5,23 +5,23 @@ services: azure-blockchain
 keywords: ''
 author: PatAltimore
 ms.author: patricka
-ms.date: 10/29/2018
+ms.date: 01/28/2019
 ms.topic: article
 ms.service: azure-blockchain
 ms.reviewer: coborn
 manager: femila
-ms.openlocfilehash: 16bf68a5fdb1df2a4f60de9167893a42295cbc52
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.openlocfilehash: 266e2be2775a6f9b74c714bd9112e38837bb6a6c
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54260529"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55098334"
 ---
 # <a name="ethereum-proof-of-work-consortium-solution-template"></a>Šablona řešení ethereum během testování pracovní consortium
 
 Šablona řešení ethereum během testování pracovní Consortium je navržena pro snadnější a rychlejší nasazení a konfiguraci sítě konsorcia několika člen ethereum během s minimálními znalostmi Azure a Etherea.
 
-Pomocí několika vstupů uživatele a nasazení jedním kliknutím na webu Azure portal můžete každý člen zřídit své nároky na síť, pomocí Microsoft Azure Compute, sítě a služby úložiště po celém světě. Nároky na síť každého člena se skládá ze sady uzlů s vyrovnáváním zatížení transakce s které aplikace nebo uživatele mohou spolupracovat při odeslání transakce, sada uzlů dolování se záznamu transakcemi a bránu VPN. Krok následné připojení připojí brány k vytvoření plně nakonfigurovaného blockchain více členy sítě.
+Pomocí šablony Azure Resource Manageru, můžete každý člen zřídit své nároky na síť, pomocí Microsoft Azure Compute, sítě a služby úložiště. Nároky na síť každého člena se skládá ze sady uzlů s vyrovnáváním zatížení transakce s které aplikace nebo uživatel pracuje k odeslání transakce, sada uzlů dolování se záznamu transakcemi a bránu VPN. Po nasazení připojení brány k vytvoření plně nakonfigurovaného blockchain více členy sítě.
 
 ## <a name="about-blockchain"></a>Informace o blockchainech
 
@@ -35,7 +35,7 @@ Uzly, které dolovat transakce jsou odděleny od uzly, které přijímají trans
 
 Všechny uzly mají stabilní verzi klienta přejít Etherea (Geth) a jsou nakonfigurované jako uzly dolování. Pokud jste nezadali vlastní genesis blok, všechny uzly používat stejnou adresu Ethereem a pár klíč, který je chráněn heslem účtu Etherea. Etherea přístupové heslo, které jste zadali slouží ke generování výchozího účtu (coinbase) pro každý uzel dolování. Jako uzly dolování dolovat, shromažďují poplatky, které jsou přidány do tohoto účtu.
 
-Počet uzlů dolování na člen consortium závisí na celkovou velikost požadovaného sítě a hash výkonu vyhrazený pro každého člena. Čím větší sítě, další uzly, které je třeba u něho ohrožena bezpečnost, abyste získali nespravedlivou výhodu. Šablony podporují až 15 uzlů dolování v jedné oblasti zřízené s využitím škálovací sady virtuálních počítačů.
+Počet uzlů dolování na člen consortium závisí na celkovou velikost požadovaného sítě a hash výkonu, který je vyhrazen pro každého člena. Větší sítě vyžadovat další uzly, které u něho ohrožena bezpečnost, abyste získali nespravedlivou výhodu. Šablony podporují až 15 uzlů dolování v jedné oblasti zřízené s využitím škálovací sady virtuálních počítačů.
 
 ### <a name="transaction-node-details"></a>Podrobnosti o uzlu transakce
 
@@ -45,7 +45,7 @@ Transakce uzly jsou s vyrovnáváním zatížení ve skupině dostupnosti udrže
 
 ### <a name="log-analytics-details"></a>Podrobnosti o log analytics
 
-Každé nasazení také vytvoří novou instanci Log Analytics nebo se může připojit k existující instanci. To umožňuje monitorování různých metrik výkonu každého virtuálního počítače, který vytvoří síť nasazená.
+Každé nasazení také vytvoří novou instanci Log analytics nebo se může připojit k existující instanci. Log analytics umožňuje monitorování různých metrik výkonu každého virtuálního počítače, který vytvoří síť nasazená.
 
 ## <a name="deployment-architecture"></a>Architektura nasazení
 
@@ -88,11 +88,9 @@ Předplatné| Předplatné, pro které má být nasazení sítě konsorcia||Nen�
 Skupina prostředků| Skupina prostředků, do které chcete nasadit sítě konsorcia.||Není k dispozici
 Umístění| Oblast Azure pro skupinu prostředků. ||Není k dispozici
 
-
-
 ### <a name="operations-management-suite"></a>Operations Management Suite
 
-V okně Operations Management Suite (OMS) umožňuje nakonfigurovat prostředek OMS pro vaši síť. OMS bude shromažďovat a poskytuje schopnost rychle zkontrolovat stav sítě nebo ladění problémů surface užitečné metriky a protokoly z vaší sítě. Bezplatné nabídky OMS se po dosažení kapacity řádně selhat.
+Operations Management Suite (OMS) můžete nakonfigurovat prostředek OMS pro vaši síť. OMS bude shromažďovat a poskytuje schopnost rychle zkontrolovat stav sítě nebo ladění problémů surface užitečné metriky a protokoly z vaší sítě. Bezplatné nabídky OMS se po dosažení kapacity řádně selhat.
 
 ![Vytváří se nový OMS](./media/ethereum-deployment/new-oms.png)
 
@@ -143,8 +141,8 @@ Název parametru |Popis |Povolené hodnoty|Výchozí hodnoty
 ConsortiumMember ID|ID přidružené k kolizí, aby každý člen účastnících se sítě konsorcia slouží ke konfiguraci adresní prostory IP adres. <br /><br />ID člena musí být jedinečné v různých organizacích ve stejné síti. Unique – člen ID je potřeba i v případě, že stejné organizace nasadí do víc oblastí.<br /><br />Poznamenejte si hodnotu tohoto parametru vzhledem k tomu je potřeba sdílet s ostatními spojovacího členy.|0 - 255
 ID sítě ethereum během|ID sítě pro síť consortium ethereum během nasazení. Každá síť Etherea má svůj vlastní ID sítě, kdy 1 je ID pro veřejnou síť. I když dolování uzly omezen přístup k síti, přesto doporučujeme využívat velké množství, abyste zabránili kolizím.|5 - 999,999,999| 10101010
 Vlastní genesis bloku|Možnost automaticky vygenerovat genesis bloku nebo zadat vlastní.|Ano/Ne| Ne
-Heslo účtu Etherea (vlastní genesis bloku = No)|Heslo správce používá k zabezpečení účtu ethereum během importu do každého uzlu. Heslo musí obsahovat následující: 1 velké písmeno, 1 malé písmeno a 1 číslici.|12 znaků|Není k dispozici
-Heslo privátního klíče Etherea (vlastní genesis bloku = No)|Heslo použité ke generování privátního klíče ECC spojené s výchozím Etherea účet, který je generován. Není potřeba explicitně předávat v předem vygenerovaný soukromý klíč.<br /><br />Vezměte v úvahu přístupové heslo s dostatečnou náhodnost silným privátním klíčem a překrytí s ostatními členy consortium. Heslo musí obsahovat minimálně následující: 1 velké písmeno, 1 malé písmeno a 1 číslici.<br /><br />Mějte na paměti, pokud dva členy používat stejné heslo v účtech generovaných budou stejné. Stejné heslo je užitečné, pokud jedna organizace se pokouší o nasazení v oblastech a chce sdílet jeden účet (základní mince) napříč všemi uzly.|12 znaků|Není k dispozici
+Heslo účtu Etherea (vlastní genesis bloku = No)|Heslo správce používá k zabezpečení účtu ethereum během importu do každého uzlu. Heslo musí obsahovat: 1 velké písmeno, 1 malé písmeno a 1 číslici.|12 znaků|Není k dispozici
+Heslo privátního klíče Etherea (vlastní genesis bloku = No)|Heslo použité ke generování privátního klíče ECC spojené s výchozím Etherea účet, který je generován. Není potřeba explicitně předávat v předem vygenerovaný soukromý klíč.<br /><br />Vezměte v úvahu přístupové heslo s dostatečnou náhodnost silným privátním klíčem a překrytí s ostatními členy consortium. Heslo musí obsahovat minimálně: 1 velké písmeno, 1 malé písmeno a 1 číslici.<br /><br />Mějte na paměti, pokud dva členy používat stejné heslo v účtech generovaných budou stejné. Stejné heslo je užitečné, pokud jedna organizace se pokouší o nasazení v oblastech a chce sdílet jeden účet (základní mince) napříč všemi uzly.|12 znaků|Není k dispozici
 Blok Genesis (vlastní genesis bloku = Ano)|Řetězec JSON představující vlastní genesis bloku. Další podrobnosti o formátu bloku genesis tady, najdete v části vlastní sítě.<br /><br />Při zadávání blok vlastní genesis stále vytvoření účtu Etherea. Zvažte zadání prefunded Etherea účtu v bloku genesis není čekat dolování.|Platný kód JSON |Není k dispozici
 Sdílený klíč pro připojení|Sdílený klíč pro připojení bran virtuálních sítí.| 12 znaků|Není k dispozici
 Adresa URL Consortium dat|Adresa URL odkazující na konfigurační data relevantní consortium poskytované jiný člen nasazení. <br /><br />Tato informace jsou poskytovány již připojené člena, který má nasazení. Pokud jste nasadili zbytku sítě, adresa URL je výstup nasazení šablony, s názvem CONSORTIUM DATA.||Není k dispozici
@@ -154,7 +152,7 @@ Doménový Registrátor informace sdílené klíče|Sdílená informace o primá
 
 ### <a name="summary"></a>Souhrn
 
-Proklikejte se okno s přehledem si zadané vstupy a spustit základní ověření před nasazením.
+Proklikejte se souhrn zkontrolujte vstupy zadán a spustit základní ověření před nasazením.
 
 ![Souhrn](./media/ethereum-deployment/summary.png)
 

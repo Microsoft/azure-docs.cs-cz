@@ -28,6 +28,7 @@
 ### [Použití vlastního informačního kanálu NuGet](how-to/use-custom-nuget-feed.md)
 ### [Použití kubectl s Azure Dev Spaces](how-to/use-kubectl-with-azure-dev-spaces.md)
 ### [Upgrade nástrojů Azure Dev Spaces](how-to/upgrade-tools.md)
+### [Provozní kontinuita a zotavení po havárii pro Azure Dev Spaces](how-to/dev-spaces-business-continuity.md)
 
 ## [Řešení potíží](troubleshooting.md)
 

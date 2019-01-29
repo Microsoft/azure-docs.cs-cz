@@ -1,5 +1,5 @@
 ---
-title: 'Kurz: Integrace Azure Active Directory se službou TonicDM | Dokumentace Microsoftu'
+title: 'Kurz: Integrace Azure Active Directory s TonicDM | Dokumentace Microsoftu'
 description: Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a TonicDM.
 services: active-directory
 documentationCenter: na
@@ -8,21 +8,21 @@ manager: femila
 ms.reviewer: joflore
 ms.assetid: 19ea9a07-9ecf-43dc-91ba-593ce3c00b01
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 05/31/2018
 ms.author: jeedes
-ms.openlocfilehash: b582af22707b7bff187ed93fb48ba96d15634ab3
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 8e92e97a27f36d37d30335b6eb8492f41ede7510
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39433320"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55190424"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-tonicdm"></a>Kurz: Integrace Azure Active Directory se službou TonicDM
+# <a name="tutorial-azure-active-directory-integration-with-tonicdm"></a>Kurz: Integrace Azure Active Directory s TonicDM
 
 V tomto kurzu se dozvíte, jak integrovat TonicDM s Azure Active Directory (Azure AD).
 
@@ -38,7 +38,7 @@ Pokud chcete zjistit další podrobnosti o integraci aplikací SaaS v Azure AD, 
 
 Konfigurace integrace Azure AD s TonicDM, potřebujete následující položky:
 
-- S předplatným služby Azure AD
+- Předplatné Azure AD
 - TonicDM jednotného přihlašování povolená předplatného
 
 > [!NOTE]
@@ -60,7 +60,7 @@ Konfigurace integrace TonicDM do služby Azure AD, budete muset přidat TonicDM 
 
 **Chcete-li přidat TonicDM z galerie, postupujte následovně:**
 
-1. V  **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu. 
+1. V **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu. 
 
     ![Tlačítko Azure Active Directory][1]
 
@@ -160,7 +160,7 @@ Cílem této části je vytvoření zkušebního uživatele na webu Azure Portal
  
 ### <a name="create-a-tonicdm-test-user"></a>Vytvoření zkušebního uživatele TonicDM
 
-V této části vytvoříte uživatele v TonicDM jako Britta Simon. Práce s [tým podpory TonicDM](mailto:support@tonicdm.com) přidat uživatele na platformě TonicDM. Uživatelé musí vytvořit a aktivovat, než použití jednotného přihlašování
+V této části vytvoříte uživatele v TonicDM jako Britta Simon. Práce s [tým podpory TonicDM](mailto:support@tonicdm.com) přidat uživatele na platformě TonicDM. Uživatelé musí vytvořit a aktivovat, než použití jednotného přihlašování
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřadit uživatele Azure AD
 
@@ -192,7 +192,7 @@ V této části je povolit Britta Simon k udělení přístupu k TonicDM použit
 
 1. Klikněte na tlačítko **přiřadit** tlačítko **přidat přiřazení** dialogového okna.
     
-### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování
+### <a name="test-single-sign-on"></a>Test jednotného přihlašování
 
 V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 

@@ -14,18 +14,18 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 6/12/2017
 ms.author: lemai
-ms.openlocfilehash: 95c3726caeb19d6bbf7153533951bb18cd7d0e57
-ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
+ms.openlocfilehash: ff5d4267de172aa83fae6ce70a609ad9897d7374
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44055399"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55102681"
 ---
 # <a name="replacing-the-start-node-and-stop-node-apis-with-the-node-transition-api"></a>Nahraďte uzel spuštění a zastavení uzlu rozhraní API s rozhraním API pro přechod uzlů
 
 ## <a name="what-do-the-stop-node-and-start-node-apis-do"></a>Co rozhraní API uzlu spuštění a zastavení uzlu?
 
-Rozhraní API pro zastavení uzlu (spravované: [StopNodeAsync()][stopnode], prostředí PowerShell: [Stop-ServiceFabricNode][stopnodeps]) uzlu Service Fabricu se zastaví.  Uzel Service Fabric je proces, není virtuální počítač nebo počítač – virtuální počítač nebo počítač bude stále běžet.  Pro zbývající části dokumentu "uzel" znamená uzlu Service Fabric.  Zastavení uzlu umístí jej do *zastavena* stavu, ve kterém není členem clusteru a nemůže hostovat služby, proto budete jen simulovat *dolů* uzlu.  To je užitečné pro vkládání chyb do systému pro testování vaší aplikace.  Rozhraní API pro spuštění uzlu (spravované: [StartNodeAsync()][startnode], prostředí PowerShell: [Start-ServiceFabricNode][startnodeps]]) obrátí rozhraní API zastavení uzlu  který převede uzel zpátky do normálního stavu.
+Rozhraní API pro zastavení uzlu (spravovaná: [StopNodeAsync()][stopnode], PowerShell: [Stop-ServiceFabricNode][stopnodeps]) uzlu Service Fabricu se zastaví.  Uzel Service Fabric je proces, není virtuální počítač nebo počítač – virtuální počítač nebo počítač bude stále běžet.  Pro zbývající části dokumentu "uzel" znamená uzlu Service Fabric.  Zastavení uzlu umístí jej do *zastavena* stavu, ve kterém není členem clusteru a nemůže hostovat služby, proto budete jen simulovat *dolů* uzlu.  To je užitečné pro vkládání chyb do systému pro testování vaší aplikace.  Rozhraní API pro spuštění uzlu (spravovaná: [StartNodeAsync()][startnode], PowerShell: [Start-ServiceFabricNode][startnodeps]]) obrátí API zastavit uzel, který převede uzel zpátky do normálního stavu.
 
 ## <a name="why-are-we-replacing-these"></a>Proč tyto jsme nahradit?
 
@@ -38,14 +38,14 @@ Navíc je dobu, po kterou uzel je zastaveno z důvodu "nekonečno" dokud rozhran
 
 ## <a name="introducing-the-node-transition-apis"></a>Úvod do rozhraní API pro přechod uzlů
 
-Zaměřili jsme se na tyto problémy výše v nové sady rozhraní API.  Nové rozhraní API uzlu přechod (spravované: [StartNodeTransitionAsync()][snt]) slouží k uzlu Service Fabricu pro přechod *zastavena* stavu, nebo přechod z *zastavena* stavu do normálního stavu.  Mějte prosím na paměti, že "Start" název rozhraní API neodkazuje na počáteční uzel.  Odkazuje na od asynchronní operace, která se spustí v systému přechod uzel, který má buď *zastavena* nebo stavu spuštění.
+Zaměřili jsme se na tyto problémy výše v nové sady rozhraní API.  Nové rozhraní API přechod uzlu (spravovaná: [StartNodeTransitionAsync()][snt]) slouží k přechodu k uzlu Service Fabricu *zastavena* stavu, nebo přechod z *zastavena* do stavu normální stav.  Mějte prosím na paměti, že "Start" název rozhraní API neodkazuje na počáteční uzel.  Odkazuje na od asynchronní operace, která se spustí v systému přechod uzel, který má buď *zastavena* nebo stavu spuštění.
 
-**Využití**
+**Použití**
 
-Pokud rozhraní API pro přechod uzlů nevyvolá výjimku při vyvolání, pak systém přijal asynchronní operace a spustí ho.  Úspěšné volání neznamená, že ještě dokončení operace.  Chcete-li získat informace o stavu aktuální operace, volání rozhraní API průběh přechodu uzlu (spravované: [GetNodeTransitionProgressAsync()][gntp]) s identifikátorem guid při volání rozhraní API pro přechod k uzlu pro tuto operaci.  Rozhraní API průběh přechodu uzel vrátí objekt NodeTransitionProgress.  Tento objekt stavu vlastnost určuje aktuální stav operace.  Pokud státu je "systém", operace provádí.  Pokud se nedokončí operace dokončena bez chyb.  Pokud je k chybě, došlo k potížím, provádění operace.  Vlastnost Exception vlastnost výsledek označí, jak se tento problém.  Zobrazit https://docs.microsoft.com/dotnet/api/system.fabric.testcommandprogressstate Další informace o vlastnosti stavu a v části "Ukázkový používání" následující příklady kódu.
+Pokud rozhraní API pro přechod uzlů nevyvolá výjimku při vyvolání, pak systém přijal asynchronní operace a spustí ho.  Úspěšné volání neznamená, že ještě dokončení operace.  Chcete-li získat informace o stavu aktuální operace, volání rozhraní API průběh přechodu uzlu (spravovaná: [GetNodeTransitionProgressAsync()][gntp]) s identifikátorem guid při volání rozhraní API pro přechod k uzlu pro tuto operaci.  Rozhraní API průběh přechodu uzel vrátí objekt NodeTransitionProgress.  Tento objekt stavu vlastnost určuje aktuální stav operace.  Pokud státu je "systém", operace provádí.  Pokud se nedokončí operace dokončena bez chyb.  Pokud je k chybě, došlo k potížím, provádění operace.  Vlastnost Exception vlastnost výsledek označí, jak se tento problém.  Zobrazit https://docs.microsoft.com/dotnet/api/system.fabric.testcommandprogressstate Další informace o vlastnosti stavu a v části "Ukázkový používání" následující příklady kódu.
 
 
-**Rozdíl mezi zastavené uzlu a uzel dolů** Pokud uzel je *zastavena* pomocí rozhraní API uzlu přechodu, výstup tohoto uzlu dotazu (spravované: [GetNodeListAsync()] [ nodequery], Prostředí PowerShell: [Get-ServiceFabricNode][nodequeryps]) se zobrazí, že tento uzel má *IsStopped* vlastnost hodnotu true.  Všimněte si to se liší od hodnoty *NodeStatus* vlastnost, která bude sdělení *dolů*.  Pokud *NodeStatus* vlastnost má hodnotu *dolů*, ale *IsStopped* má hodnotu false, pak uzel nebyla zastavena, pomocí rozhraní API pro přechod uzlů a je *dolů*  kvůli nějakého jiného důvodu.  Pokud *IsStopped* vlastnost má hodnotu true a *NodeStatus* je vlastnost *dolů*, pak se zastavila, pomocí rozhraní API pro přechod uzlů.
+**Rozdíl mezi zastavené uzlu a uzel dolů** Pokud uzel je *zastavena* pomocí rozhraní API uzlu přechodu, výstup tohoto uzlu dotazu (spravovaná: [GetNodeListAsync()][nodequery], PowerShell: [Get-ServiceFabricNode][nodequeryps]) se zobrazí, že tento uzel má *IsStopped* vlastnost hodnotu true.  Všimněte si to se liší od hodnoty *NodeStatus* vlastnost, která bude sdělení *dolů*.  Pokud *NodeStatus* vlastnost má hodnotu *dolů*, ale *IsStopped* má hodnotu false, pak uzel nebyla zastavena, pomocí rozhraní API pro přechod uzlů a je *dolů*  kvůli nějakého jiného důvodu.  Pokud *IsStopped* vlastnost má hodnotu true a *NodeStatus* je vlastnost *dolů*, pak se zastavila, pomocí rozhraní API pro přechod uzlů.
 
 Spouští se *zastavena* uzlu pomocí rozhraní API pro přechod uzlů fungování jako normální členem clusteru znovu vrátí.  Výstup dotazu uzlu rozhraní API bude zobrazovat *IsStopped* hodnotu false, a *NodeStatus* jako něco, co není dolů (například zapnutý).
 
@@ -159,7 +159,7 @@ Spouští se *zastavena* uzlu pomocí rozhraní API pro přechod uzlů fungován
             }
             while (!wasSuccessful);
 
-            // Now call StartNodeTransitionProgressAsync() until hte desired state is reached.
+            // Now call StartNodeTransitionProgressAsync() until the desired state is reached.
             await WaitForStateAsync(fc, guid, TestCommandProgressState.Completed).ConfigureAwait(false);
         }
 ```
@@ -202,7 +202,7 @@ Spouští se *zastavena* uzlu pomocí rozhraní API pro přechod uzlů fungován
             }
             while (!wasSuccessful);
 
-            // Now call StartNodeTransitionProgressAsync() until hte desired state is reached.
+            // Now call StartNodeTransitionProgressAsync() until the desired state is reached.
             await WaitForStateAsync(fc, guid, TestCommandProgressState.Completed).ConfigureAwait(false);
         }
 ```

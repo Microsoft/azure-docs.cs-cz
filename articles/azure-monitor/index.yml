@@ -1,10 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 5b8d5e639711b91d380b5f14de48be6a80fb0263
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: d0fbabdae9b560a882bd4681eb9e681fd2a0398a
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54820763"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55101766"
 documentType: LandingData
 title: Dokumentace ke službě Azure Monitor
 metadata:
@@ -16,7 +16,7 @@ metadata:
   ms.service: azure-monitor
   ms.tgt_pltfrm: na
   ms.topic: landing-page
-  ms.date: 01/22/2019
+  ms.date: 01/25/2019
   ms.author: bwren
 abstract:
   description: Služba Azure Monitor, která teď obsahuje Log Analytics a Application Insights, poskytuje propracované nástroje pro shromažďování a analýzu telemetrie, které umožňují maximalizovat výkon a dostupnost vašich cloudových a místních prostředků a aplikací. Pomůže vám při zjišťování stavu vašich aplikací a proaktivně identifikuje problémy, které je ovlivňují, a prostředky, na kterých jsou závislé.
@@ -63,7 +63,7 @@ sections:
       text: Upozornění a audit předplatných
       href: /azure/monitoring-and-diagnostics/monitor-quick-audit-notify-action-in-subscription
   - type: paragraph
-    text: Naučíte se, jak spustit monitorování vaší aplikace s využitím Azure Application Insights.
+    text: Naučíte se, jak zahájit monitorování vaší aplikace s využitím Application Insights služby Azure Monitor.
   - type: list
     style: icon48
     items:

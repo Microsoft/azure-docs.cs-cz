@@ -14,12 +14,12 @@ ms.topic: get-started-article
 ms.date: 01/18/2019
 ms.author: mabrigg
 ms.reviewer: xiaofmao
-ms.openlocfilehash: 149da2c186ae1e0c3fa5af14a630a0edef7deb25
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: dda27c79a975ae0b22b51d0eb9b1dad3d9382acd
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54470269"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55103883"
 ---
 # <a name="manage-storage-accounts-in-azure-stack"></a>Správa účtů úložiště ve službě Azure Stack
 
@@ -137,7 +137,7 @@ Můžete také pomocí prostředí PowerShell explicitně přepsat doby uchován
 ```PowerShell  
     $farm_name = (Get-AzsStorageFarm)[0].name
     Start-AzsReclaimStorageCapacity -FarmName $farm_name
-````
+```
 
 Další informace najdete v tématu [dokumentace ke službě Azure Stack Powershellu](https://docs.microsoft.com/powershell/azure/azure-stack/overview).
  

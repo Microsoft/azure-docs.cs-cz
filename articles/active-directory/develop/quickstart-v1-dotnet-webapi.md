@@ -8,7 +8,7 @@ manager: mtillman
 editor: ''
 ms.assetid: 67e74774-1748-43ea-8130-55275a18320f
 ms.service: active-directory
-ms.component: develop
+ms.subservice: develop
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
@@ -17,14 +17,14 @@ ms.date: 09/24/2018
 ms.author: celested
 ms.reviewer: jmprieur, andret
 ms.custom: aaddev
-ms.openlocfilehash: 239c0d0adbe89dd3d1d7bc7244a52ab079a36ad4
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
-ms.translationtype: HT
+ms.openlocfilehash: f44955e13cb5774119dc083f4a3220b432d9cd9e
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46952541"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55098060"
 ---
-# <a name="quickstart-build-a-net-web-api-that-integrates-with-azure-ad-for-authentication-and-authorization"></a>Rychlý start: Vytvoření webového rozhraní API .NET MVC, které se integruje s Azure AD pro ověřování a autorizaci
+# <a name="quickstart-build-a-net-web-api-that-integrates-with-azure-ad-for-authentication-and-authorization"></a>Rychlý start: Vytvoření webového rozhraní .NET API, která se integruje s Azure AD pro ověřování a autorizace
 
 [!INCLUDE [active-directory-develop-applies-v1](../../../includes/active-directory-develop-applies-v1.md)]
 
@@ -43,12 +43,12 @@ V tomto rychlém startu vytvoříte rozhraní API To Do List a naučíte se:
 
 ## <a name="prerequisites"></a>Požadavky
 
-Abyste mohli začít, potřebujete:
+Než začnete, musíte splnit následující požadavky:
 
 * Stáhnout si [kostru aplikace](https://github.com/AzureADQuickStarts/WebAPI-Bearer-DotNet/archive/skeleton.zip) nebo [úplnou ukázku](https://github.com/AzureADQuickStarts/WebAPI-Bearer-DotNet/archive/complete.zip). Obě jsou řešeními sady Visual Studio 2013.
 * Mít tenanta Azure AD, ve kterém chcete aplikaci zaregistrovat. Pokud ho ještě nemáte, [zjistěte, jak ho získat](quickstart-create-new-tenant.md).
 
-## <a name="step-1-register-an-application-with-azure-ad"></a>Krok 1: Zaregistrování aplikace v Azure AD
+## <a name="step-1-register-an-application-with-azure-ad"></a>Krok 1: Registrace aplikace v Azure AD
 
 Abyste pomohli aplikaci zabezpečit, musíte nejdříve aplikaci vytvořit ve vašem tenantovi a službě Azure AD poskytnout pár klíčových informací.
 
@@ -65,7 +65,7 @@ Abyste pomohli aplikaci zabezpečit, musíte nejdříve aplikaci vytvořit ve va
 6. Ze stránky **Nastavení > Vlastnosti** pro vaši aplikaci aktualizujte identifikátor URI ID aplikace. Zadejte identifikátor specifický pro tenanta. Zadejte například `https://contoso.onmicrosoft.com/TodoListService`.
 7. Konfiguraci uložte. Nechte portál otevřený, protože brzy budete muset zaregistrovat klientskou aplikaci.
 
-## <a name="step-2-set-up-the-app-to-use-the-owin-authentication-pipeline"></a>Krok 2: Nastavení, aby aplikace používala ověřovací kanál OWIN
+## <a name="step-2-set-up-the-app-to-use-the-owin-authentication-pipeline"></a>Krok 2: Nastavení aplikace pro použití ověřovacího kanálu OWIN
 
 K ověření příchozích požadavků a tokenů musíte nastavit, aby aplikace komunikovala s Azure AD.
 
@@ -135,7 +135,7 @@ K ověření příchozích požadavků a tokenů musíte nastavit, aby aplikace 
     * `ida:Tenant` je název vašeho tenanta Azure AD – například contoso.onmicrosoft.com.
     * `ida:Audience` je identifikátor URI ID aplikace, který jste zadali na portálu Azure Portal.
 
-## <a name="step-3-configure-a-client-application-and-run-the-service"></a>Krok 3: Konfigurace klientské aplikace a spuštění služby
+## <a name="step-3-configure-a-client-application-and-run-the-service"></a>Krok 3: Konfigurovat klientskou aplikaci a spustit službu
 
 Než uvidíte To Do List Service v akci, musíte nakonfigurovat klienta To Do List, aby mohl získávat tokeny z Azure AD a provádět volání do služby.
 
@@ -156,6 +156,6 @@ Než uvidíte To Do List Service v akci, musíte nakonfigurovat klienta To Do Li
 1. Pokud jste to ještě neudělali, vytvořte ve vašem tenantovi nového uživatele s doménou *. onmicrosoft.com.
 1. Pomocí tohoto uživatele se přihlaste ke klientovi To Do List a přidejte nějaké úkoly do seznamu úkolů uživatele.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 * Pro srovnání si můžete stáhnout hotovou ukázku (bez vašich hodnot) z [GitHubu](https://github.com/AzureADQuickStarts/WebAPI-Bearer-DotNet/archive/complete.zip). Teď můžete přejít k dalším scénářům identity.

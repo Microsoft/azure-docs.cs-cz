@@ -11,12 +11,12 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 12/07/2018
 ms.author: diberry
-ms.openlocfilehash: 3cb85a48a881545e9b2a0df29c35218b999fdbf0
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: 94bae7ddfd0d7f885b8441ed3b9d5943d052dbaf
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53140961"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55101916"
 ---
 # <a name="prebuilt-domain-reference-for-your-luis-app"></a>Informace o předem připravených domény pro aplikace LUIS
 V tomto materiálu najdete informace o [předem připravených domén](luis-how-to-use-prebuilt-domains.md), které jsou předem sestavené kolekce záměry a entity, které nabízí služba LUIS.
@@ -402,7 +402,7 @@ Doména míst poskytuje příkazy pro zpracování dotazů souvisejících s jak
 |CheckAccident|Zadejte dotaz, zda je v zadané cesty havárie.|Je na 880 nehody?<br/>Zobrazit informace o havárii|
 |CheckAreaTraffic|Kontrola provozu pro obecné oblasti nebo highway, ne na zadanou trasu.|Provoz v Praze<br/>Co je provoz například v Praze?|
 |CheckIntoPlace|Vrácení se změnami do místo použití sociálních médií.|Vrátit se změnami mě na Foursquare<br/>Tady se změnami|
-|CheckRouteTraffic| Kontrola provozu konkrétní trasy specifikovaných uživatelem.|Jak se provoz do Mashiko?<br/>Zobrazit traffice k Kirkland<br/>Jak se provoz do Seattlu?| 
+|CheckRouteTraffic| Kontrola provozu konkrétní trasy specifikovaných uživatelem.|Jak se provoz do Mashiko?<br/>Zobrazit provoz do Kirkland<br/>Jak se provoz do Seattlu?| 
 |Potvrdit|Potvrďte akci vztahující se na místo.|Potvrďte restaurace rezervace.|
 |Konec|Akce pro ukončení úlohy týkající se na místo.|Ukončete prosím<br/>Ukončit, mi dává pokynů|
 |FindPlace|Hledat na místě (business, instituce, restaurace, prostor veřejných adres).|Kde je nejbližší knihovny?<br/>Najít dobré italské restaurace v zobrazení Horská oblast|

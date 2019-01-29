@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: gateway
 ms.topic: article
-ms.date: 10/17/2018
+ms.date: 01/28/2019
 ms.author: alkohli
-ms.openlocfilehash: da22c09a227069af0eeb42ab67a59189ae494185
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: 81df0a776cd22490342230567deacb23097cd12e
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53256668"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55094185"
 ---
 # <a name="azure-data-box-gateway-system-requirements-preview"></a>Azure Data Box brány požadavky na systém (Preview)
 
@@ -46,9 +46,9 @@ Tady je seznam podporovaných operačních systémů pro klienty nebo hostitele,
 
 | **Operačního systému a platformy** | **Verze** |
 | --- | --- |
-| Windows Server |2012 R2 <br> 2016 |
+| Windows Server |2012 R2 <br> 2016 <br> 2019 |
 | Windows |8, 10 |
-| SUSE Linux |Podnikový Server 12 (x86_64)|
+| SUSE Linux |Enterprise Server 12 (x86_64)|
 | Ubuntu |16.04.3 LTS|
 | CentOS | 7.0 |
 
@@ -56,7 +56,7 @@ Tady je seznam podporovaných operačních systémů pro klienty nebo hostitele,
 
 |**Protokol** |**Verze**   |**Poznámky**  |
 |---------|---------|---------|
-|SMB    | 2.X 3.X      | Nepodporuje se SMB 1.|
+|SMB    | 2.X, 3.X      | Nepodporuje se SMB 1.|
 |Systém souborů NFS     | V3 a V4        |         |
 
 ## <a name="supported-virtualization-platforms-for-device"></a>Podporovaný virtualizační platformy pro zařízení
@@ -64,7 +64,7 @@ Tady je seznam podporovaných operačních systémů pro klienty nebo hostitele,
 | **Operačního systému a platformy**  |**Verze**   |**Poznámky**  |
 |---------|---------|---------|
 |Hyper-V  |  2012 R2 <br> 2016  |         |
-|VMware ESXi     | 6.0 <br> 6.5        |Nástroje VMware nejsou podporovány.         |
+|VMware ESXi     | 6.0 <br> 6.5 <br> 6.7       |Nástroje VMware nejsou podporovány.         |
 
 
 ## <a name="supported-storage-accounts"></a>Účty úložiště podporuje
@@ -126,10 +126,10 @@ Doporučujeme nastavit pravidla brány firewall pro odchozí provoz, podle pole 
 |     Vzor adresy URL                                                                                                                                                                                                                                                                                                                                                                                                                                       |     Komponenta nebo funkce                                                                             |
 |-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------|
 |    https://*.databoxedge.azure.com/*<br>https://*.servicebus.windows.net/*<br>https://login.windows.net                                                                                                                                                                                                                                                                                                        |    Služba Azure Data Box brány<br>Azure Service Bus<br>Ověřovací služba    |
-|    http://*.Backup.windowsazure.com                                                                                                                                                                                                                                                                                                                                                                                                                   |    Aktivace zařízení                                                                                    |
+|    http://*.backup.windowsazure.com                                                                                                                                                                                                                                                                                                                                                                                                                   |    Aktivace zařízení                                                                                    |
 |    http://crl.microsoft.com/pki/*   http://www.microsoft.com/pki/*                                                                                                                                                                                                                                                                                                                                                                                    |    Odvolání certifikátu                                                                               |
-|    https://*.core.windows.net/* https://*. data.microsoft.com http://*. msftncsi.com                                                                                                                                                                                                                                                                                                                                                                |    Účty úložiště Azure a monitorování                                                                |
-|    http://windowsupdate.microsoft.com<br>http://*. windowsupdate.microsoft.com<br>https://*. windowsupdate.microsoft.com<br>http://*. update.microsoft.com<br>https://*. update.microsoft.com<br>http://*. windowsupdate.com<br>http://download.microsoft.com<br>http://*. download.windowsupdate.com<br>http://wustat.windows.com<br>http://ntservicepack.microsoft.com<br>http://*. ws.microsoft.com<br>https://*. ws.microsoft.com<br>http://*.MP.microsoft.com        |    Servery Microsoft Update                                                                             |
+|    https://*.core.windows.net/*   https://*.data.microsoft.com   http://*.msftncsi.com                                                                                                                                                                                                                                                                                                                                                                |    Účty úložiště Azure a monitorování                                                                |
+|    http://windowsupdate.microsoft.com<br>http://*.windowsupdate.microsoft.com<br>https://*.windowsupdate.microsoft.com<br>http://*.update.microsoft.com<br>https://*.update.microsoft.com<br>http://*.windowsupdate.com<br>http://download.microsoft.com<br>http://*.download.windowsupdate.com<br>http://wustat.windows.com<br>http://ntservicepack.microsoft.com<br>http://*.ws.microsoft.com<br>https://*.ws.microsoft.com<br>http://*.mp.microsoft.com        |    Servery Microsoft Update                                                                             |
 |    http://*.deploy.akamaitechnologies.com                                                                                                                                                                                                                                                                                                                                                                                                             |    Akamai CDN                                                                                           |
 |    https://*.partners.extranet.microsoft.com/*                                                                                                                                                                                                                                                                                                                                                                                                        |    Balíček pro podporu                                                                                      |
 |    http://*.data.microsoft.com                                                                                                                                                                                                                                                                                                                                                                                                                        |    Telemetrické službě ve Windows, najdete v článku aktualizace pro uživatelské prostředí a telemetrická data diagnostiky      |

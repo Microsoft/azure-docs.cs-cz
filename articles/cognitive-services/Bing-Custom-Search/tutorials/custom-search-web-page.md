@@ -6,16 +6,16 @@ services: cognitive-services
 author: aahill
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: bing-custom-search
+ms.subservice: bing-custom-search
 ms.topic: tutorial
 ms.date: 10/16/2017
 ms.author: aahi
-ms.openlocfilehash: 0c98f75417bbcba13e179502eb1c8b4488b17d78
-ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
+ms.openlocfilehash: ad4896d73af365910e1afe3bb3383fe5cb5f5546
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53558018"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55203976"
 ---
 # <a name="tutorial-build-a-custom-search-web-page"></a>Kurz: Vytvoření webové stránky pro vlastní vyhledávání
 
@@ -127,8 +127,8 @@ Vlastní vyhledávání poskytuje hostované uživatelské rozhraní pro vykresl
 
 Hostované uživatelské rozhraní můžete používat dvěma způsoby.  
 
-- Možnost 1: Integrace zadaný fragment kódu jazyka JavaScript do vaší aplikace.
-- Možnost 2: Použití koncového bodu ve formátu HTML za předpokladu.
+- Option 1: Integrace zadaný fragment kódu jazyka JavaScript do vaší aplikace.
+- Option 2: Použití koncového bodu ve formátu HTML za předpokladu.
 
 Zbývající část tohoto kurzu ukazuje **možnost 1: Fragment kódu jazyka JavaScript**.  
 

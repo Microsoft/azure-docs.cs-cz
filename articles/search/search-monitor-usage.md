@@ -1,6 +1,6 @@
 ---
-title: Monitorování využití a dotaz statistiky prostředků pro službu search – Azure Search
-description: Získáte metriky aktivity dotaz, spotřeby prostředků a další data systému ze služby Azure Search.
+title: Monitorování využití a dotaz metriky prostředků pro službu search – Azure Search
+description: Povolení protokolování, získat metriky aktivity dotaz, využití prostředků a další systémové data ze služby Azure Search.
 author: HeidiSteen
 manager: cgronlun
 tags: azure-portal
@@ -11,24 +11,24 @@ ms.topic: conceptual
 ms.date: 01/22/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: af2a9cd7f834f5c6f70a78d94e8826de2584127d
-ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
+ms.openlocfilehash: ed084520e092802ffa2a42e8a0c664ec09c4cbb7
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/26/2019
-ms.locfileid: "55076366"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55093236"
 ---
-# <a name="monitor-an-azure-search-service-in-azure-portal"></a>Monitorování služby Azure Search na webu Azure portal
+# <a name="monitor-resource-consumption-and-query-activity-in-azure-search"></a>Monitorování prostředků spotřeby a dotaz aktivity ve službě Azure Search
 
-Na stránce Přehled služby Azure Search můžete zobrazit systémová data o využití prostředků a navíc dotaz metriky, jako jsou dotazy na druhý (QPS), latence dotazu a procento žádostí, které byly omezené. Kromě toho můžete na portálu využít škálu možnosti na platformě Azure pro hlubší shromažďování dat monitorování. 
+Na stránce Přehled služby Azure Search můžete zobrazit systémová data o využití prostředků, dotaz metriky a kolik kvóty je možné vytvořit více indexů, indexerů a data zdrojů. Na portálu můžete také použít ke konfiguraci log analytics nebo jiný prostředek, který používá trvalá data kolekce. 
 
-Tento článek identifikuje a porovnává dostupné možnosti protokolování operace Azure Search. Obsahuje pokyny pro povolení protokolování a protokolů a jak přistupovat k informacím na služby a činnosti uživatelů.
+Nastavení protokolů je užitečné pro samoobslužné diagnostiky a zachování provozní historie. Interně existují protokoly na back-endu na krátkou dobu čas dostatečná pro zkoumání a analýzy Pokud založte lístek podpory. Pokud chcete kontrolu a přístup k protokolování informací, měli byste nastavit jedno řešení popisovaných v tomto článku.
 
-Nastavení protokolů je užitečné pro samoobslužné diagnostiky a zachování historie operací služby. Interně jsou protokoly existuje na krátkou dobu čas dostatečná pro zkoumání a analýzy, pokud založte lístek podpory. Pokud chcete řídit úložiště informace o protokolu pro vaši službu, byste měli nastavit jedno řešení popisovaných v tomto článku.
+V tomto článku najdete informace o monitorování možnosti, jak povolit protokolování a protokolování úložiště a jak zobrazit obsah protokolu.
 
 ## <a name="metrics-at-a-glance"></a>Metriky na první pohled
 
-**Využití** a **monitorování** oddíly, které jsou součástí přehled spotřebu úložiště vizualizaci a dotazování metrik spouštění. Tyto informace k dispozici, jakmile začnete používat službu, bez nezbytné konfigurace. Na této stránce se aktualizují každých několik minut. Pokud jste na dokončení rozhodnutí o [jaké úroveň určený pro produkční úlohy](search-sku-tier.md), nebo jestli se má [upravit počet aktivní repliky a oddíly, které](search-capacity-planning.md), tyto metriky vám můžou pomoct se těchto rozhodnutí Zobrazí, jak rychle se spotřebovávají prostředky a jak dobře aktuální konfigurace zpracuje existující zatížení.
+**Využití** a **monitorování** oddíly integrovaná v přehledu stránky sestavy na využití prostředků a dotazování metrik spouštění. Tyto informace k dispozici, jakmile začnete používat službu, bez nezbytné konfigurace. Na této stránce se aktualizují každých několik minut. Pokud jste na dokončení rozhodnutí o [jaké úroveň určený pro produkční úlohy](search-sku-tier.md), nebo jestli se má [upravit počet aktivní repliky a oddíly, které](search-capacity-planning.md), tyto metriky vám můžou pomoct se těchto rozhodnutí Zobrazí, jak rychle se spotřebovávají prostředky a jak dobře aktuální konfigurace zpracuje existující zatížení.
 
 **Využití** kartě se zobrazí dostupnost prostředků relativně vzhledem k aktuální [omezení](search-limits-quotas-capacity.md). Na následujícím obrázku je bezplatná služba, která je omezené na 3 objekty každého typu a přes 50 MB úložiště. Service Basic nebo Standard má vyšší limity, a pokud zvýšíte počet oddílů, maximální velikost úložiště přejde proporcionálně.
 
@@ -65,13 +65,13 @@ Následující tabulka porovnává možnosti pro ukládání protokolů a přid�
 | [Blob Storage](https://docs.microsoft.com/azure/storage/blobs/storage-blobs-overview) | Protokolované události a metriky dotazu, podle schémat níže. Události jsou protokolovány do kontejneru objektů Blob a uloženy v souborech JSON. Chcete-li zobrazit obsah souboru pomocí editoru JSON.|
 | [Centrum událostí](https://docs.microsoft.com/azure/event-hubs/) | Protokolované události a metriky dotazu, podle schémat uvedeno v tomto článku. Tuto možnost zvolte jako služba alternativní data kolekce pro velmi objemné protokoly. |
 
+Log Analytics a úložištěm objektů Blob jsou dostupné jako bezplatná služba sdílené tak, aby vám ho můžou vyzkoušet zdarma po dobu životnosti vašeho předplatného Azure. Application Insights je zdarma pro registraci a použít, pokud je velikost dat aplikace v rámci určitá omezení (viz [stránce s cenami](https://azure.microsoft.com/ricing/details/monitor/) podrobnosti).
 
-
-Log Analytics a úložištěm objektů Blob jsou dostupné jako bezplatná sdílených služeb tak, aby vám ho můžou vyzkoušet zdarma po dobu životnosti vašeho předplatného Azure. Následující části vás provede kroky pro povolení a používání úložiště objektů Blob v Azure ke shromáždění a přístup k datům protokolů vytvořené operací Azure Search.
+Následující části vás provede kroky pro povolení a používání úložiště objektů Blob v Azure ke shromáždění a přístup k datům protokolů vytvořené operací Azure Search.
 
 ## <a name="enable-logging"></a>Povolit protokolování
 
-Protokolování pro úlohy indexování a dotazování je vypnuto ve výchozím nastavení a závisí na doplněk řešení pro protokolování infrastruktury a dlouhodobé externího úložiště. Samostatně je jen trvalá data ve službě Azure Search indexy, takže protokoly musí být uloženy jinde.
+Protokolování pro úlohy indexování a dotazování je vypnuto ve výchozím nastavení a závisí na doplněk řešení pro protokolování infrastruktury a dlouhodobé externího úložiště. Samostatně jsou jen trvalá data ve službě Azure Search objekty vytváří a spravuje, takže protokoly musí být uloženy jinde.
 
 V této části se dozvíte, jak používat úložiště objektů Blob k ukládání dat protokolu událostí a metrik.
 
@@ -91,12 +91,14 @@ V této části se dozvíte, jak používat úložiště objektů Blob k uklád�
 
 5. Test protokolování vytváření nebo odstraňování objektů (vytvoří protokol událostí) a odesíláním dotazů (generuje metriky). 
 
-Po uložení profilu je povoleno protokolování, kontejnery jsou vytvořeny pouze po události do protokolu nebo měr. Může trvat několik minut, než kontejnery se zobrazí. Když jsou data zkopírována do účtu úložiště, se data naformátovaná jako JSON a umístí do dvou kontejnerů:
+Po uložení profilu je povoleno protokolování. Kontejnery jsou vytvořeny pouze po aktivitu protokolu nebo měr. Když jsou data zkopírována do účtu úložiště, se data naformátovaná jako JSON a umístí do dvou kontejnerů:
 
 * insights – protokoly operationlogs: pro protokoly přenosů služby search
 * insights-metrics-pt1m: pro metriky
 
-Můžete použít [Visual Studio Code](#Download-and-open-in-Visual-Studio-Code) nebo jiný editor JSON, chcete-li zobrazit soubory. Existuje jeden objekt blob, za hodinu a kontejner.
+Bude trvat hodinu, než se zobrazí kontejnery ve službě Blob storage. Existuje jeden objekt blob, za hodinu a kontejner. 
+
+Můžete použít [Visual Studio Code](#Download-and-open-in-Visual-Studio-Code) nebo jiný editor JSON, chcete-li zobrazit soubory. 
 
 ### <a name="example-path"></a>Příklad cesty
 
@@ -107,7 +109,7 @@ resourceId=/subscriptions/<subscriptionID>/resourcegroups/<resourceGroupName>/pr
 ## <a name="log-schema"></a>Schéma protokolu
 Objekty BLOB obsahující protokoly přenosů služby vyhledávání jsou strukturované, jak je popsáno v této části. Každý objekt blob má jeden kořenový objekt volána **záznamy** obsahující pole objektů protokolu. Každý objekt blob obsahuje záznamy pro všechny operace, které došlo během jedné hodiny.
 
-| Název | Typ | Příklad: | Poznámky |
+| Name | Typ | Příklad: | Poznámky |
 | --- | --- | --- | --- |
 | time |datetime |"2018-12-07T00:00:43.6872559Z" |Časové razítko operace |
 | resourceId |řetězec |"/ SUBSCRIPTIONS/11111111-1111-1111-1111-111111111111 /<br/>VÝCHOZÍ/RESOURCEGROUPS/POSKYTOVATELE /<br/> SPOLEČNOSTI MICROSOFT. HLEDÁNÍ/SEARCHSERVICES/SEARCHSERVICE" |Vaše ID prostředku |
@@ -132,7 +134,7 @@ Objekty BLOB obsahující protokoly přenosů služby vyhledávání jsou strukt
 
 Metriky se vám budou zaznamenávat požadavků na dotazy.
 
-| Název | Typ | Příklad: | Poznámky |
+| Name | Typ | Příklad: | Poznámky |
 | --- | --- | --- | --- |
 | resourceId |řetězec |"/ SUBSCRIPTIONS/11111111-1111-1111-1111-111111111111 /<br/>VÝCHOZÍ/RESOURCEGROUPS/POSKYTOVATELE /<br/>SPOLEČNOSTI MICROSOFT. HLEDÁNÍ/SEARCHSERVICES/SEARCHSERVICE" |vaše id prostředku |
 | metricName |řetězec |"Latence" |Název metriky |
@@ -163,7 +165,7 @@ Chcete-li zobrazit soubor protokolu můžete použít libovolný editor JSON. Po
 
 Když se soubor stáhne, otevře se v editoru JSON k zobrazení obsahu.
 
-## <a name="get-sys-info-apis"></a>Získat sys informace o rozhraní API
+## <a name="use-system-apis"></a>Použití rozhraní API systému
 Rozhraní REST API Azure Search a sady .NET SDK poskytují programový přístup k informace o službě metriky, indexu a indexeru a počty dokumentů.
 
 * [Získání statistiky služby](/rest/api/searchservice/get-service-statistics)

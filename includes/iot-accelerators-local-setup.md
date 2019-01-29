@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 01/17/2019
 ms.author: avneet723
 ms.custom: include file
-ms.openlocfilehash: d4da1597ebed6c27cf6c12bab4a4e59be742c577
-ms.sourcegitcommit: ba9f95cf821c5af8e24425fd8ce6985b998c2982
+ms.openlocfilehash: 1f31189a83b6659371fcd0b34423f2fb681526c2
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54383108"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55147987"
 ---
 ## <a name="download-the-source-code"></a>Stáhněte si zdrojový kód
 
@@ -29,17 +29,6 @@ git clone --recurse-submodules https://github.com/Azure/azure-iot-pcs-remote-mon
 # To retrieve the latest submodules, run the following command:
 
 cd azure-iot-pcs-remote-monitoring-dotnet
-git submodule foreach git pull origin master
-```
-
-Tento článek předpokládá, že používáte mikroslužby .NET. K dispozici také implementace jazyka Java. Pokud chcete stáhnout nejnovější verzi implementace mikroslužeb Java, spusťte:
-
-```cmd/sh
-git clone --recurse-submodules https://github.com/Azure/azure-iot-pcs-remote-monitoring-java.git
-
-# To retrieve the latest submodules, run the following command:
-
-cd azure-iot-pcs-remote-monitoring-java
 git submodule foreach git pull origin master
 ```
 

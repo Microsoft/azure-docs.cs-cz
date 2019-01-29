@@ -8,7 +8,7 @@ manager: mtillman
 editor: ''
 ms.assetid: 780eec4d-7ee1-48b7-b29f-cd0b8cb41ed3
 ms.service: active-directory
-ms.component: develop
+ms.subservice: develop
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -17,12 +17,12 @@ ms.date: 10/02/2018
 ms.author: celested
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 29cbb96cc6dec4bac601e8795599f77c955c418a
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+ms.openlocfilehash: df45ec1478314e0d60f2c66a42a48801f1ce0643
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50230825"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55093083"
 ---
 # <a name="azure-active-directory-v20-and-the-oauth-20-device-code-flow"></a>Azure Active Directory v2.0 a tok OAuth 2.0 zařízení kódu
 
@@ -74,8 +74,8 @@ scope=user.read%20openid%20profile
 | ---              | --- | --- |
 |`device_code`     |Řetězec| Dlouhý řetězec používaného k ověřování relací mezi klientem a serverem ověřování.  Používá se pomocí klienta k žádosti o přístupový token od autorizačního serveru. |
 |`user_code`       |Řetězec| Krátký řetězec, který se zobrazí uživateli, používá k identifikaci relaci na sekundární zařízení.|
-|`verification_uri`|URI| Identifikátor URI by měl uživatel přejde na s `user_code` abyste se mohli přihlásit. |
-|`verification_uri_complete`|URI| Kombinace identifikátoru URI `user_code` a `verification_uri`, která se používá pro jiné textové přenos na uživatele (například přes Bluetooth na zařízení nebo kódu QR).  |
+|`verification_uri`|Identifikátor URI| Identifikátor URI by měl uživatel přejde na s `user_code` abyste se mohli přihlásit. |
+|`verification_uri_complete`|Identifikátor URI| Kombinace identifikátoru URI `user_code` a `verification_uri`, která se používá pro jiné textové přenos na uživatele (například přes Bluetooth na zařízení nebo kódu QR).  |
 |`expires_in`      |int| Počet sekund před `device_code` a `user_code` vypršení platnosti. |
 |`interval`        |int| Počet sekund, po které klient by měl čekat mezi požadavků dotazování. |
 | `message`        |Řetězec| Čitelný řetězec s pokyny pro uživatele.  To může být lokalizována zahrnutím **parametr dotazu** v požadavku ve formátu `?mkt=xx-XX`, plnění v příslušné jazykové jazykovou verzi kódu. |

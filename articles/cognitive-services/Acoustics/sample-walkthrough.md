@@ -6,16 +6,16 @@ services: cognitive-services
 author: kegodin
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: acoustics
+ms.subservice: acoustics
 ms.topic: sample
 ms.date: 08/17/2018
 ms.author: kegodin
-ms.openlocfilehash: f5ea565e68579dfad601d1037daeb4113e3daa43
-ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
-ms.translationtype: HT
+ms.openlocfilehash: 7d8ba2f25bd53b407ab6860bc57163a79b7d228a
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "48901154"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55174257"
 ---
 # <a name="unity-sample-walkthrough"></a>Unity – ukázkový názorný postup
 Toto je názorný postup ukázkou z Project Acoustics. Další informace o tom co Project Acoustics je, najdete v části [Úvod do Project Acoustics](what-is-acoustics.md). Pokud potřebujete pomoc s přidáním balíčku Project Acoustics do již existujícího projektu Unity, nahlédněte do [příručky Začínáme](getting-started.md).
@@ -36,7 +36,7 @@ Ukázka zahrnuje ukázkovou scénu **Assets/AcousticsDemo/ProjectAcousticsDemo.u
 
 Scény již byla vypálena a má soubor ACE přidružený k přednastavené položce **MicrosoftAcoustics** v **Hierarchii**. 
 
-Poslechněte si, jak scéna zní. Stačí kliknout na tlačítko přehrávání v editoru Unity. Na počítači použijte k pohybu klávesy W, A, S a D a myš. Pokud chcete zvuk scény porovnat s akustikou a bez ní, stiskněte tlačítko **R**, dokud překryvný text nezčervená a neobjeví se „Akustika: Zakázána“. Pokud zobrazit klávesové zkratky dalších možností ovládání, stiskněte klávesu **F1**. Všechny ovládací prvky jsou také použitelné po kliknutí pravého tlačítka a výběru požadované akce. Poté stačí kliknout levým tlačítkem a akci provést.
+Poslechněte si, jak scéna zní. Stačí kliknout na tlačítko přehrávání v editoru Unity. Na počítači použijte k pohybu klávesy W, A, S a D a myš. Chcete-li porovnat, jak na scéně podle názvu dalo čekat a nemusíte Akustika, stiskněte **R** dokud překrytí text zčervená a uvádí, že tlačítko "Akustika: Zakázáno." Pokud zobrazit klávesové zkratky dalších možností ovládání, stiskněte klávesu **F1**. Všechny ovládací prvky jsou také použitelné po kliknutí pravého tlačítka a výběru požadované akce. Poté stačí kliknout levým tlačítkem a akci provést.
 
 ## <a name="targeting-other-platforms"></a>Cílení na jiné platformy
 Ukázka obsahuje nastavení pro spuštění na počítači s Windows, UPW, Windows Mixed Reality, Androidu a Oculus Go. Projekt je ve výchozím nastavení nakonfigurován pro počítač s Windows. Pokud chcete cílit na platformu VR, přejděte na nastavení přehrávače (**Upravit > Nastavení projektu > Přehrávač**), najděte **Nastavení XR**a zaškrtněte políčko **Virtuální realita podporována**.
@@ -48,7 +48,7 @@ Pokud chcete cílit na zařízení s Androidem a Oculus Go, zvolte v nabídce **
 
 ![Cílení na Android](media/TargetAndroid.png)  
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 * [Vytvoření účtu Azure](create-azure-account.md) pro vlastní vypalování
 * Prozkoumejte [proces návrhu](design-process.md)
 

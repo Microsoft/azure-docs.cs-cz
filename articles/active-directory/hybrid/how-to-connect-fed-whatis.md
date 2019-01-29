@@ -13,14 +13,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 10/09/2018
-ms.component: hybrid
+ms.subservice: hybrid
 ms.author: billmath
-ms.openlocfilehash: 3462c61bbd7c9972248eb1126763782f5fbc7e84
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: 2a2e835f074ac2f5d1eede9f68e77774938da6af
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54472284"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55181737"
 ---
 # <a name="azure-ad-connect-and-federation"></a>Azure AD Connect a federace
 Konfigurace federace se službou Azure Active Directory (Azure AD) Connect umožňuje místní služby Active Directory Federation Services (AD FS) a Azure AD. S federací přihlášení můžete povolit uživatelům umožní přihlásit k Azure AD službám pomocí jejich místních hesel – a v podnikové síti, aniž byste museli znovu zadávat hesla. Pomocí možnosti federační službou AD FS, můžete nasadit nové instalace služby AD FS, nebo můžete zadat existující instalace ve farmě systému Windows Server 2012 R2.
@@ -30,7 +30,7 @@ Toto téma je domovská stránka pro informace o funkcím souvisejícím s feder
 ## <a name="azure-ad-connect-federation-topics"></a>Služby Azure AD Connect: témata federace
 | Téma | Co obsahuje a kdy k jeho čtení |
 |:--- |:--- |
-| **Azure AD Connect uživatelské možnosti přihlášení** | |
+| **Možnosti přihlášení uživatele Azure AD Connect** | |
 | [Vysvětlení možností přihlášení uživatele](plan-connect-user-signin.md) |Další informace o různých uživatelské možnosti přihlášení a způsob, jakým ovlivňují činnost koncového uživatele Azure přihlášení. |
 | **Instalace služby AD FS pomocí služby Azure AD Connect** | |
 | [Požadavky](how-to-connect-install-custom.md#ad-fs-configuration-pre-requisites) |Viz předpoklady pro úspěšnou instalaci služby AD FS pomocí služby Azure AD Connect. |

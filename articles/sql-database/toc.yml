@@ -9,6 +9,8 @@ items:
     href: sql-database-paas-vs-sql-server-iaas.md
 - name: Šablony Rychlý start
   items:
+  - name: Izolovaná databáze – průvodce rychlým zprovozněním
+    href: sql-database-quickstart-guide.md
   - name: Spravovaná instance – průvodce rychlým zprovozněním
     href: sql-database-managed-instance-quickstart-guide.md
   - name: Vytvořit
@@ -121,7 +123,7 @@ items:
     items:
     - name: Přehled izolované databáze
       href: sql-database-single-index.yml
-    - name: Vytvoření a správa
+    - name: Referenční informace k rozhraní API pro správu
       href: sql-database-single-databases-manage.md
     - name: Logické servery
       items:
@@ -131,8 +133,6 @@ items:
         href: sql-database-resource-limits-logical-server.md
       - name: Architektura připojení
         href: sql-database-connectivity-architecture.md
-      - name: Rozdíly v jazyce T-SQL
-        href: sql-database-transact-sql-information.md
     - name: Elastické fondy
       items:
       - name: Elastické fondy
@@ -151,6 +151,8 @@ items:
       href: sql-database-dtu-resource-limits-single-databases.md
     - name: Škálování prostředků
       href: sql-database-single-database-scale.md
+    - name: Rozdíly v jazyce T-SQL
+      href: sql-database-transact-sql-information.md
   - name: Spravované instance
     items:
     - name: Přehled spravovaných instancí
@@ -690,9 +692,9 @@ items:
       href: sql-database-elastic-jobs-getting-started.md
     - name: Odinstalace elastické úlohy (zastaralé)
       href: sql-database-elastic-jobs-uninstall.md
-ms.openlocfilehash: a991b2f6a7ac90d38c653b4daf12948b1b800638
-ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
+ms.openlocfilehash: 7d7e85b3a7934b03395960d5dcbdc1141f0effd8
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/26/2019
-ms.locfileid: "55078198"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55101087"

@@ -1,5 +1,5 @@
 ---
-title: Zaregistrujte si Video Indexer a nahrání prvního videa
+title: Zaregistrujte si Video Indexer a nahrání prvního videa – Azure
 titlesuffix: Azure Media Services
 description: Zjistěte, jak se zaregistrovat a nahrát na server svoje první video pomocí portálu Video Indexer.
 services: media-services
@@ -7,16 +7,16 @@ author: Juliako
 manager: femila
 ms.service: media-services
 ms.topic: tutorial
-ms.date: 11/19/2018
+ms.date: 01/28/2019
 ms.author: juliako
-ms.openlocfilehash: 72412956d231ea2696c05ba250302faf5f90c91d
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: 1e3ba1e12a8b058429f75b1d2aab3942cd843778
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54823279"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55090503"
 ---
-# <a name="tutorial-how-to-sign-up-and-upload-your-first-video"></a>Kurz: Jak se zaregistrovat a nahrání prvního videa
+# <a name="quickstart-how-to-sign-up-and-upload-your-first-video"></a>Rychlý start: Jak se zaregistrovat a nahrání prvního videa
 
 Tento úvodní kurz ukazuje, jak se přihlásit k webu Video Indexer a jak nahrát na server svoje první video.
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 10/31/2018
 ms.author: harijay
-ms.openlocfilehash: fab422612bc3f83c8dc75d0dd99f42369dfa1d26
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: 6c0207a68cea70951143c87f83f6b17bb0c7b1f3
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54438078"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55098455"
 ---
 # <a name="virtual-machine-serial-console-for-linux"></a>Konzola sériového portu virtuálního počítače pro Linux
 
@@ -89,7 +89,7 @@ Pravidla brány firewall na nesprávný | Přístup ke konzole sériového portu
 Poškození systému souborů a vrácení | Přístup ke konzole sériového portu a proveďte obnovení ze systému souborů.
 Problémy s konfigurací SSH nebo RDP | Přístup ke konzole sériového portu a změnit nastavení.
 Uzamknutí sítě v systému| Na webu Azure Portal ke správě systému přístup ke konzole sériového portu.
-Interakce s zaváděcího programu pro spouštění | GRUB přístup z konzoly sériového portu. Další informace najdete v tématu [konzoly sériového portu používá pro přístup k GRUB a režimu jednoho uživatele](serial-console-grub-single-user-mode.md).
+Interakce s zaváděcího programu pro spouštění | Restartujte virtuální počítač z v rámci okna konzoly sériového portu pro přístup k GRUB na virtuální počítač s Linuxem. Další informace najdete v tématu [konzoly sériového portu používá pro přístup k GRUB a režimu jednoho uživatele](serial-console-grub-single-user-mode.md).
 
 ## <a name="disable-the-serial-console"></a>Zakázat konzole sériového portu
 Všechna předplatná mají ve výchozím přístupem ke konzole sériového portu pro všechny virtuální počítače. Můžete zakázat konzole sériového portu na úrovni předplatného nebo na úrovni virtuálního počítače.

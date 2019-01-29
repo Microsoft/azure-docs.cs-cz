@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 08/02/2018
 ms.author: rogirdh
-ms.openlocfilehash: 236809336975eec94d7decd9822fc9143ae19bfb
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 692f6b1f02c6c1e86170971886e83722d0160838
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46981012"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55203585"
 ---
 # <a name="set-up-oracle-asm-on-an-azure-linux-virtual-machine"></a>Nastavte Oracle ASM na linuxovém virtuálním počítači Azure  
 
@@ -50,7 +50,7 @@ az group create --name myResourceGroup --location eastus
 
 ### <a name="create-a-vm"></a>Vytvoření virtuálního počítače
 
-Chcete-li vytvořit virtuální počítač na základě image Oracle Database a nakonfigurujte ho na použití Oracle ASM, použijte [az vm vytvořit](/cli/azure/vm#az_vm_create) příkazu. 
+Chcete-li vytvořit virtuální počítač na základě image Oracle Database a nakonfigurujte ho na použití Oracle ASM, použijte [az vm vytvořit](/cli/azure/vm) příkazu. 
 
 Následující příklad vytvoří virtuální počítač s názvem můjvp přesměrovat, která má velikost Standard_DS2_v2 čtyři připojené datové disky o velikosti 50 GB. Pokud ještě neexistují ve výchozím umístění klíčů, také vytvoří klíče SSH.  Chcete-li použít konkrétní sadu klíčů, použijte možnost `--ssh-key-value`.  
 
@@ -513,7 +513,7 @@ Nastavení instalace Oracle ASM, proveďte následující kroky:
 
    Oracle ASM konfigurace pomocníka otevře.
 
-2. V **konfigurace ASM: skupiny disků** dialogové okno, klikněte na tlačítko `Create` tlačítko a pak klikněte na tlačítko `Show Advanced Options`.
+2. V **konfigurace ASM: Na disku skupiny** dialogové okno, klikněte na tlačítko `Create` tlačítko a pak klikněte na tlačítko `Show Advanced Options`.
 
 3. V **vytvořit skupinu disku** dialogové okno:
 
@@ -525,7 +525,7 @@ Nastavení instalace Oracle ASM, proveďte následující kroky:
 
    ![Snímek obrazovky dialogového okna vytvořit skupinu disku](./media/oracle-asm/asm02.png)
 
-4. V **konfigurace ASM: skupiny disků** dialogové okno, klikněte na tlačítko `Create` tlačítko a pak klikněte na tlačítko `Show Advanced Options`.
+4. V **konfigurace ASM: Na disku skupiny** dialogové okno, klikněte na tlačítko `Create` tlačítko a pak klikněte na tlačítko `Show Advanced Options`.
 
 5. V **vytvořit skupinu disku** dialogové okno:
 
@@ -540,7 +540,7 @@ Nastavení instalace Oracle ASM, proveďte následující kroky:
 
 6. Vyberte **ukončovací** zavřete průvodce nastavením konfigurace ASM.
 
-   ![Snímek obrazovky konfigurace ASM: dialogové okno skupiny disků s tlačítko Konec](./media/oracle-asm/asm05.png)
+   ![Snímek obrazovky konfigurace ASM: Dialogové okno skupiny disku s tlačítko Konec](./media/oracle-asm/asm05.png)
 
 ## <a name="create-the-database"></a>Vytvoření databáze
 

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/24/2018
 ms.author: banders
-ms.openlocfilehash: 6cc42477e167b7c1a72c1ef74af477073b9af16e
-ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
+ms.openlocfilehash: 732ac5e1e82c67d2f4a0a3443b85c67712f4f651
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/25/2019
-ms.locfileid: "54901900"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55101647"
 ---
 # <a name="prevent-unexpected-charges-with-azure-billing-and-cost-management"></a>Vám nenaúčtovaly neočekávané poplatky se správou nákladů a fakturací Azure
 
@@ -75,7 +75,7 @@ V tomto příkladu **Actual Cost Over Time** sestavy k odesílání oznámení, 
 5. Vyberte **prahová hodnota** kartu a potom vyberte **Actual Cost vs. Threshold** (Skutečné náklady vs. prahová hodnota). 
    1. V **červenou výstrahu** prahovou hodnotu zadejte 10000. 
    2. V **žlutá výstraha** zadejte 9000 prahovou hodnotu. 
-   3. V **počet po sobě jdoucích výstrah** zadejte počet po sobě jdoucích výstrah pro příjem. Až dostanete celkový počet výstrah, které jste zadali, žádné další výstrahy chodit nebudou. 
+   3. V **počet po sobě jdoucích výstrah** zadejte počet po sobě jdoucích výstrah pro příjem. Až dostanete celkový počet výstrah, který jste zadali, už vám žádné další výstrahy chodit nebudou. 
 6. Vyberte **Uložit**.
 
     ![Příklad zobrazující červené a žluté výstrahy podle útraty prahové hodnoty](./media/billing-getting-started/schedule-alert01.png)

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 01/01/2019
 ms.author: ryanwi
-ms.openlocfilehash: 6e596b0db1a03efbf6b029487ed956105b632edb
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: 0501ccbf2b5d9124a82cb1758e09236e8ad8455a
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53972800"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55197972"
 ---
 # <a name="change-cluster-from-certificate-thumbprint-to-common-name"></a>Změnit z kryptografický otisk certifikátu clusteru na běžný název
 Žádné dva certifikáty můžou mít se stejným kryptografickým otiskem, což znesnadňuje clusteru certifikáty vyměnit nebo správy. Více certifikátů, ale mají stejný běžný název nebo předmětu.  Přepínání nasazeném clusteru pomocí kryptografické otisky certifikátů k běžnému názvu certifikátu pomocí certifikátu značně zjednodušuje správu. Tento článek popisuje postup aktualizace spuštěný cluster Service Fabric běžný název certifikátu použít místo kryptografického otisku certifikátu.
@@ -94,6 +94,9 @@ $vmss = Add-AzureRmVmssSecret -VirtualMachineScaleSet $vmss -SourceVaultId $Sour
 Update-AzureRmVmss -ResourceGroupName $VmssResourceGroupName -Verbose `
     -Name $VmssName -VirtualMachineScaleSet $vmss 
 ```
+
+>[!NOTE]
+> Vypočítá tajemství nastavit škálování virtuálního počítače nepodporují stejné id prostředku pro dva samostatné tajné kódy, jako každý tajný kód je označené verzí prostředků jedinečné. 
 
 ## <a name="download-and-update-the-template-from-the-portal"></a>Stažení a aktualizace šablony z portálu
 Certifikát je nainstalovaný na základní škálovací sadu, ale je také potřeba aktualizovat cluster Service Fabric používat tento certifikát a jeho běžný název.  Stáhněte šablonu pro vaše nasazení clusteru.  Přihlaste se k [webu Azure portal](https://portal.azure.com) a přejděte do skupiny prostředků, který je hostitelem clusteru.  V **nastavení**vyberte **nasazení**.  Vyberte poslední nasazení a klikněte na tlačítko **zobrazit šablonu**.

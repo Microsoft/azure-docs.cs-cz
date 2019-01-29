@@ -10,12 +10,12 @@ ms.component: answer-search
 ms.topic: reference
 ms.date: 04/13/2018
 ms.author: rosh, v-gedod
-ms.openlocfilehash: 6548e0bb05b117cf79405b9516da815a7e81b6a3
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.openlocfilehash: 001ef83e23aeb21104d8efb8c4aad9c8a007cba6
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49471216"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55103908"
 ---
 # <a name="project-answer-search-v7-reference"></a>Odkaz na projekt hledání odpovědí v7
 
@@ -29,10 +29,10 @@ Odpověď JSON může být analyzován pro fakty a entit, které obsahují podro
 Požádat o výsledcích hledání odpovědí, odesílejte požadavek na následující koncový bod. Použijte k definování další specifikace hlaviček a parametrů adresy URL.
 
 Koncový bod GET: 
-````
+```
 https://api.labs.cognitive.microsoft.com/answerSearch/v7.0/search?q=<searchTerm>&subscription-key=0123456789ABCDEF&mkt=en-us
 
-````
+```
 
 Žádost musí používat protokol HTTPS a obsahovat následující parametr dotazu:
 -  q =<URL> -dotaz, který určuje objekt služby search
@@ -71,9 +71,9 @@ Níže jsou hlavičky, které mohou zahrnovat požadavek a odpověď.
 |<a name="subscriptionkey" />Ocp-Apim-Subscription-Key|Povinná hlavička požadavku.<br /><br /> Klíč předplatného, který jste dostali při registraci k této službě v [Cognitive Services](https://www.microsoft.com/cognitive-services/).|  
 |<a name="pragma" />Pragma|Nepovinná hlavička požadavku<br /><br /> Ve výchozím nastavení Bing vrátí obsah uložený v mezipaměti, pokud je k dispozici. Abyste Bingu zabránili ve vrácení obsahu uloženého v mezipaměti, hlavičku Pragma nastavte na hodnotu no-cache (například Pragma: no-cache).
 |<a name="useragent" />User-Agent|Nepovinná hlavička požadavku.<br /><br /> Uživatelský agent, ze kterého požadavek pochází. Bing používá uživatelského agenta k poskytnutí optimalizovaného prostředí pro mobilní uživatele. I když je tato hlavička nepovinná, doporučujeme ji vždy zadat.<br /><br /> Uživatelský agent by měl být stejný řetězec, který odesílá kterýkoli běžně používaný prohlížeč. Informace o uživatelských agentech najdete v [RFC 2616](http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html).<br /><br /> Následují příklady řetězců uživatelského agenta.<br /><ul><li>Windows Phone&mdash;Mozilla/5.0 (compatible; MSIE 10.0; Windows Phone 8.0; Trident/6.0; IEMobile/10.0; ARM; Touch; NOKIA; Lumia 822)<br /><br /></li><li>Android&mdash;Mozilla/5.0 (Linux; U; Android 2.3.5; en-us; SCH-I500 Build/GINGERBREAD) AppleWebKit/533.1 (KHTML; like Gecko) Version/4.0 Mobile Safari/533.1<br /><br /></li><li>iPhone&mdash;Mozilla/5.0 (iPhone; CPU iPhone OS 6_1 like Mac OS X) AppleWebKit/536.26 (KHTML; like Gecko) Mobile/10B142 iPhone4;1 BingWeb/3.03.1428.20120423<br /><br /></li><li>PC&mdash;Mozilla/5.0 (Windows NT 6.3; WOW64; Trident/7.0; Touch; rv:11.0) like Gecko<br /><br /></li><li>iPad&mdash;Mozilla/5.0 (iPad; CPU OS 7_0 like Mac OS X) AppleWebKit/537.51.1 (KHTML, like Gecko) Version/7.0 Mobile/11A465 Safari/9537.53</li></ul>|
-|<a name="clientid" />X-MSEdge-ClientID|Nepovinná hlavička požadavku a odpovědi<br /><br /> Bing tuto hlavičku používá k tomu, aby uživatelům poskytoval konzistentní chování napříč voláními rozhraní API Bingu. Bing často testuje nové funkce a vylepšení a ID klienta používá jako klíč pro přiřazení provozu v různých testovacích verzích. Pokud nepoužíváte stejné ID klienta pro uživatele napříč více požadavky, pak může Bing uživatele přiřadit k více konfliktním testovacím verzím. Přiřazení k více konfliktním testovacím verzím může vést k nekonzistentnímu prostředí pro uživatele. Pokud třeba druhý požadavek má jiné přiřazení k testovací verzi než prví, může být prostředí neočekávané. Bing také může ID klienta použít pro přizpůsobení webových výsledků historii hledání daného ID klienta. Uživatel tak získá bohatší prostředí.<br /><br /> Bing také tuto hlavičku používá ke zlepšování hodnocení výsledků díky analýze aktivity generované tímto ID klienta. Zlepšení relevance pomáhá zlepšit kvalitu výsledků poskytovaných rozhraním API Bingu a stejně tak umožňuje vyšší míru prokliků uživatele rozhraní API.<br /><br /> **DŮLEŽITÉ:** I když je tato hlavička nepovinná, měli byste ji považovat za povinnou. Zachování ID klienta mezi více požadavky pro stejnou kombinaci koncového uživatele a zařízení umožňuje 1) aby uživatel rozhraní API získával konzistentní uživatelské prostředí a 2) vyšší míry prokliků díky kvalitnějším výsledkům z rozhraní API Bingu.<br /><br /> Následují základní pravidla používání, která se na tuto hlavičku vztahují.<br /><ul><li>Každý uživatel, který používá vaši aplikaci na zařízení, musí mít jedinečné ID klienta vygenerované Bingem.<br /><br/>Pokud tuto hlavičku do požadavku nezahrnete, Bing vygeneruje ID a vrátí ho v hlavičce odpovědi X-MSEdge ClientID. Tuto hlavičku byste v požadavku zahrnout NEMĚLI jenom v případě, kdy uživatel aplikaci na zařízení používá poprvé.<br /><br/></li><li>Použijte ID klienta pro každý požadavek rozhraní API Bingu, který vaše aplikace provede pro tohoto uživatele na zařízení.<br /><br/></li><li>**Pozor:** musíte zajistit, že toto ID klienta není propojovací informací authenticatable uživatelského účtu.</li><br/><li>ID klienta zachovejte. Pokud chcete zachovat ID v aplikaci prohlížeče, použijte trvalý soubor cookie HTTP, aby se zaručilo, že se ID použije ve všech relacích. Nepoužívejte soubor cookie relace. Pro jiné aplikace, jako jsou mobilní aplikace, použijte k zachování ID trvalé úložiště zařízení.<br /><br/>Když uživatel aplikaci na zařízení příště použije, získejte ID klienta, které jste zachovali.</li></ul><br /> **POZNÁMKA:** Odpovědi Bingu tuto hlavičku mohou nebo nemusí obsahovat. Pokud odpověď tuto hlavičku obsahuje, ID klienta zachyťte a použijte pro všechny následné požadavky Bingu pro uživatele na tomto zařízení.<br /><br /> **POZNÁMKA:** Pokud zahrnete X-MSEdge-ClientID, nesmíte do požadavku zahrnout soubory cookie.|  
-|<a name="clientip" />X-MSEdge-ClientIP|Nepovinná hlavička požadavku.<br /><br /> Adresa IPv4 nebo IPv6 klientského zařízení. IP adresa se používá ke zjištění polohy uživatele. Bing informace o poloze používá k určení chování bezpečného hledání.<br /><br /> **POZNÁMKA:** I když je tato hlavička nepovinná, doporučujeme ji vždy zadat, stejně jako hlavičku X-Search-Location.<br /><br /> Neprovádějte obfuskaci adresy (například změnou posledního oktetu na 0). Obfuskace adresy vede k tomu, že poloha nebude blízko skutečné polohy zařízení. Bing pak může dodávat chybné výsledky.|  
-|<a name="location" />X-Search-Location|Nepovinná hlavička požadavku.<br /><br /> Středníky oddělený seznam párů klíč/hodnota, které popisují zeměpisnou polohu klienta. Bing informace o poloze používá k určení chování bezpečného hledání a vracení relevantního místního obsahu. Pár klíč/hodnota zadejte jako \<klíč\>:\<hodnota\>. Následují klíče, které se používají k určení polohy uživatele.<br /><br /><ul><li>LAT&mdash;zeměpisná šířka umístění klienta ve stupních. Zeměpisná šířka musí být větší nebo rovná -90,0 a menší nebo rovná +90,0. Záporné hodnoty značí jižní šířku a kladné hodnoty značí severní šířku.<br /><br /></li><li>dlouhé&mdash;zeměpisná délka umístění klienta ve stupních. Zeměpisná délka musí být větší nebo rovná -180,0 a menší nebo rovná +180,0. Záporné hodnoty značí západní délku a kladné hodnoty značí východní délku.<br /><br /></li><li>RE&mdash; radius, v metrech, který určuje vodorovný přesnost souřadnic. Předejte hodnotu vrácenou službou zjišťování polohy zařízení. Typické hodnoty můžou být 22 m pro GPS/Wi-Fi, 380 m pro triangulaci mobilních vysílačů a 18 000 m pro reverzní vyhledávání IP adresy.<br /><br /></li><li>TS&mdash; The UTC UNIXOVÉ časové razítko z když klient se v umístění. (Časové razítko UNIX je počet sekund od 1. ledna 1970.)<br /><br /></li><li>head &mdash; Nepovinné. Relativní směr pohybu klienta. Zadejte směr pohybu ve stupních od 0 do 360 ve směru hodinových ručiček vzhledem k severu. Tento klíč zadejte jenom tehdy, když je klíč `sp` nenulový.<br /><br /></li><li>SP&mdash; vodorovné rychlost (rychlost), v metrech za sekundu, cestování klientského zařízení.<br /><br /></li><li>ALT&mdash; výška klientské zařízení, v metrech.<br /><br /></li><li>are &mdash; Nepovinné. Poloměr v metrech, který určuje svislou přesnost souřadnic. Výchozí hodnota protokolu RADIUS je 50 kilometrů. Tento klíč zadejte jenom tehdy, když zadáte klíč `alt`.<br /><br /></li></ul> **Poznámka:** i když tyto klíče jsou volitelné, další informace, které zadáte, jsou přesnější výsledky umístění.<br /><br /> **Poznámka:** doporučujeme vždy zadat zeměpisné umístění uživatele. Poskytnutí polohy je zvlášť důležité, pokud IP adresa klienta přesně neodráží fyzickou polohu uživatele (třeba pokud klient používá síť VPN). Pro dosažení optimálních výsledků byste měli zahrnout tuto hlavičku i hlavičku X-MSEdge ClientIP, minimálně ale aspoň tuto hlavičku.|
+|<a name="clientid" />X-MSEdge-ClientID|Nepovinná hlavička požadavku a odpovědi<br /><br /> Bing tuto hlavičku používá k tomu, aby uživatelům poskytoval konzistentní chování napříč voláními rozhraní API Bingu. Bing často testuje nové funkce a vylepšení a ID klienta používá jako klíč pro přiřazení provozu v různých testovacích verzích. Pokud nepoužíváte stejné ID klienta pro uživatele napříč více požadavky, pak může Bing uživatele přiřadit k více konfliktním testovacím verzím. Přiřazení k více konfliktním testovacím verzím může vést k nekonzistentnímu prostředí pro uživatele. Pokud třeba druhý požadavek má jiné přiřazení k testovací verzi než prví, může být prostředí neočekávané. Bing také může ID klienta použít pro přizpůsobení webových výsledků historii hledání daného ID klienta. Uživatel tak získá bohatší prostředí.<br /><br /> Bing také tuto hlavičku používá ke zlepšování hodnocení výsledků díky analýze aktivity generované tímto ID klienta. Zlepšení relevance pomáhá zlepšit kvalitu výsledků poskytovaných rozhraním API Bingu a stejně tak umožňuje vyšší míru prokliků uživatele rozhraní API.<br /><br /> **DŮLEŽITÉ:** I když je volitelné, měli byste zvážit této hlavičky vyžaduje. Zachování ID klienta mezi více požadavky pro stejnou kombinaci koncového uživatele a zařízení umožňuje 1) aby uživatel rozhraní API získával konzistentní uživatelské prostředí a 2) vyšší míry prokliků díky kvalitnějším výsledkům z rozhraní API Bingu.<br /><br /> Následují základní pravidla používání, která se na tuto hlavičku vztahují.<br /><ul><li>Každý uživatel, který používá vaši aplikaci na zařízení, musí mít jedinečné ID klienta vygenerované Bingem.<br /><br/>Pokud tuto hlavičku do požadavku nezahrnete, Bing vygeneruje ID a vrátí ho v hlavičce odpovědi X-MSEdge ClientID. Tuto hlavičku byste v požadavku zahrnout NEMĚLI jenom v případě, kdy uživatel aplikaci na zařízení používá poprvé.<br /><br/></li><li>Použijte ID klienta pro každý požadavek rozhraní API Bingu, který vaše aplikace provede pro tohoto uživatele na zařízení.<br /><br/></li><li>**UPOZORNĚNÍ:** Ujistěte se, že toto ID klienta není propojovací informací authenticatable uživatelského účtu.</li><br/><li>ID klienta zachovejte. Pokud chcete zachovat ID v aplikaci prohlížeče, použijte trvalý soubor cookie HTTP, aby se zaručilo, že se ID použije ve všech relacích. Nepoužívejte soubor cookie relace. Pro jiné aplikace, jako jsou mobilní aplikace, použijte k zachování ID trvalé úložiště zařízení.<br /><br/>Když uživatel aplikaci na zařízení příště použije, získejte ID klienta, které jste zachovali.</li></ul><br /> **POZNÁMKA:** Odpovědi Bingu může nebo nemusí obsahovat tato záhlaví. Pokud odpověď tuto hlavičku obsahuje, ID klienta zachyťte a použijte pro všechny následné požadavky Bingu pro uživatele na tomto zařízení.<br /><br /> **POZNÁMKA:** Pokud zahrnete X MSEdge ClientID, nesmí obsahovat soubory cookie v požadavku.|  
+|<a name="clientip" />X-MSEdge-ClientIP|Nepovinná hlavička požadavku.<br /><br /> Adresa IPv4 nebo IPv6 klientského zařízení. IP adresa se používá ke zjištění polohy uživatele. Bing informace o poloze používá k určení chování bezpečného hledání.<br /><br /> **POZNÁMKA:** I když je volitelné, jsou ukončena. doporučujeme vždy zadejte toto záhlaví a záhlaví X-Search-umístění.<br /><br /> Neprovádějte obfuskaci adresy (například změnou posledního oktetu na 0). Obfuskace adresy vede k tomu, že poloha nebude blízko skutečné polohy zařízení. Bing pak může dodávat chybné výsledky.|  
+|<a name="location" />X-Search-Location|Nepovinná hlavička požadavku.<br /><br /> Středníky oddělený seznam párů klíč/hodnota, které popisují zeměpisnou polohu klienta. Bing informace o poloze používá k určení chování bezpečného hledání a vracení relevantního místního obsahu. Pár klíč/hodnota zadejte jako \<klíč\>:\<hodnota\>. Následují klíče, které se používají k určení polohy uživatele.<br /><br /><ul><li>LAT&mdash;zeměpisná šířka umístění klienta ve stupních. Zeměpisná šířka musí být větší nebo rovná -90,0 a menší nebo rovná +90,0. Záporné hodnoty značí jižní šířku a kladné hodnoty značí severní šířku.<br /><br /></li><li>dlouhé&mdash;zeměpisná délka umístění klienta ve stupních. Zeměpisná délka musí být větší nebo rovná -180,0 a menší nebo rovná +180,0. Záporné hodnoty značí západní délku a kladné hodnoty značí východní délku.<br /><br /></li><li>RE&mdash; radius, v metrech, který určuje vodorovný přesnost souřadnic. Předejte hodnotu vrácenou službou zjišťování polohy zařízení. Typické hodnoty můžou být 22 m pro GPS/Wi-Fi, 380 m pro triangulaci mobilních vysílačů a 18 000 m pro reverzní vyhledávání IP adresy.<br /><br /></li><li>TS&mdash; The UTC UNIXOVÉ časové razítko z když klient se v umístění. (Časové razítko UNIX je počet sekund od 1. ledna 1970.)<br /><br /></li><li>head &mdash; Nepovinné. Relativní směr pohybu klienta. Zadejte směr pohybu ve stupních od 0 do 360 ve směru hodinových ručiček vzhledem k severu. Tento klíč zadejte jenom tehdy, když je klíč `sp` nenulový.<br /><br /></li><li>SP&mdash; vodorovné rychlost (rychlost), v metrech za sekundu, cestování klientského zařízení.<br /><br /></li><li>ALT&mdash; výška klientské zařízení, v metrech.<br /><br /></li><li>are &mdash; Nepovinné. Poloměr v metrech, který určuje svislou přesnost souřadnic. Výchozí hodnota protokolu RADIUS je 50 kilometrů. Tento klíč zadejte jenom tehdy, když zadáte klíč `alt`.<br /><br /></li></ul> **POZNÁMKA:** I když tyto klíče jsou volitelné, další informace, které zadáte, jsou přesnější výsledky umístění.<br /><br /> **POZNÁMKA:** Jste ukončena. doporučujeme vždy zadat zeměpisné umístění uživatele. Poskytnutí polohy je zvlášť důležité, pokud IP adresa klienta přesně neodráží fyzickou polohu uživatele (třeba pokud klient používá síť VPN). Pro dosažení optimálních výsledků byste měli zahrnout tuto hlavičku i hlavičku X-MSEdge ClientIP, minimálně ale aspoň tuto hlavičku.|
 
 > [!NOTE] 
 > Nezapomínejte, že podmínky použití vyžadují dodržování příslušných zákonů, včetně těch týkajících se použití těchto hlaviček. Například v určitých jurisdikcích, třeba v Evropě, se před umístěním určitých sledovacích zařízení do zařízení uživatelů požaduje získání souhlasu uživatele.
@@ -83,12 +83,12 @@ Níže jsou hlavičky, které mohou zahrnovat požadavek a odpověď.
 Žádost mohou zahrnovat tyto parametry dotazu. Zobrazte požadovaný sloupec pro požadované parametry. Adresa URL musíte zakódovat parametry dotazu.  
   
   
-|Název|Hodnota|Typ|Požaduje se|  
+|Name|Value|Type|Požaduje se|  
 |----------|-----------|----------|--------------|  
-|<a name="mkt" />mkt|Trh, odkud pochází výsledky. <br /><br />Seznam možných hodnot na trhu, najdete v tématu [trhu kódy](#market-codes).<br /><br /> **Poznámka:** rozhraní API ve verzi Preview URL aktuálně podporuje pouze en-nám vstup na trh a jazyk.<br /><br />|Řetězec|Ano|  
+|<a name="mkt" />mkt|Trh, odkud pochází výsledky. <br /><br />Seznam možných hodnot na trhu, najdete v tématu [trhu kódy](#market-codes).<br /><br /> **POZNÁMKA:** Rozhraní API ve verzi Preview URL aktuálně podporuje pouze en-nám vstup na trh a jazyk.<br /><br />|Řetězec|Ano|  
 |<a name="query" />q|Adresa URL ve verzi preview|Řetězec|Ano|  
-|<a name="responseformat" />Formát odpovědi|Typ média určený pro odpověď. Níže jsou uvedeny možné hodnoty velká a malá písmena.<br /><ul><li>JSON</li><li>JSONLD</li></ul><br /> Výchozí hodnota je JSON. Informace o JSON objektů, že odpověď obsahuje, naleznete v tématu [objekty odpovědi](#response-objects).<br /><br />  Pokud chcete zadat JsonLd, tělo odpovědi obsahuje objekty JSON-LD, obsahující výsledky hledání. Informace o JSON-LD, naleznete v tématu [JSON-LD](http://json-ld.org/).|Řetězec|Ne|  
-|<a name="safesearch" />safeSearch|Filtr, který slouží k filtrování obsahu pro dospělé. Následují možné hodnoty filtru s rozlišováním velkých a malých písmen.<br /><ul><li>Vypnout&mdash;vrátit webových stránek s dospělé textu, obrázků nebo videa.<br /><br/></li><li>Střední&mdash;vrátit webových stránek s dospělé text, ale nezletilý imagí nebo videa.<br /><br/></li><li>Striktní&mdash;nevrátí webových stránek s dospělé textu, obrázků nebo videa.</li></ul><br /> Výchozí hodnota je Moderate.<br /><br /> **Poznámka:** Pokud žádost pochází z na trhu této Bing pro dospělé zásad vyžaduje, aby `safeSearch` je nastavena na Strict, ignoruje Bing `safeSearch` hodnotu a používá Strict.<br/><br/>**POZNÁMKA:** Pokud použijete operátor dotazu `site:`, je možné, že odpověď bude zahrnovat obsah pro dospělé bez ohledu na nastavení parametru dotazu `safeSearch`. `site:` použijte jenom v případě, že znáte obsah příslušného webu a váš scénář podporuje možnost zobrazení obsahu pro dospělé. |Řetězec|Ne|  
+|<a name="responseformat" />responseFormat|Typ média určený pro odpověď. Níže jsou uvedeny možné hodnoty velká a malá písmena.<br /><ul><li>JSON</li><li>JSONLD</li></ul><br /> Výchozí hodnota je JSON. Informace o JSON objektů, že odpověď obsahuje, naleznete v tématu [objekty odpovědi](#response-objects).<br /><br />  Pokud chcete zadat JsonLd, tělo odpovědi obsahuje objekty JSON-LD, obsahující výsledky hledání. Informace o JSON-LD, naleznete v tématu [JSON-LD](http://json-ld.org/).|Řetězec|Ne|  
+|<a name="safesearch" />safeSearch|Filtr, který slouží k filtrování obsahu pro dospělé. Následují možné hodnoty filtru s rozlišováním velkých a malých písmen.<br /><ul><li>Vypnout&mdash;vrátit webových stránek s dospělé textu, obrázků nebo videa.<br /><br/></li><li>Střední&mdash;vrátit webových stránek s dospělé text, ale nezletilý imagí nebo videa.<br /><br/></li><li>Striktní&mdash;nevrátí webových stránek s dospělé textu, obrázků nebo videa.</li></ul><br /> Výchozí hodnota je Moderate.<br /><br /> **POZNÁMKA:** Pokud požadavek pochází z na trhu této Bing pro dospělé zásad vyžaduje, aby `safeSearch` je nastavena na Strict, ignoruje Bing `safeSearch` hodnotu a používá Strict.<br/><br/>**POZNÁMKA:** Pokud používáte `site:` – operátor dotazu, je pravděpodobné, že odpovědi může obsahovat obsah pro dospělé bez ohledu na to, co `safeSearch` parametr dotazu je nastaven na. `site:` použijte jenom v případě, že znáte obsah příslušného webu a váš scénář podporuje možnost zobrazení obsahu pro dospělé. |Řetězec|Ne|  
 |<a name="setlang" />setLang|Jazyk, který se má použít pro řetězce uživatelského rozhraní. Jazyk zadejte pomocí dvoupísmenného kódu jazyka ISO 639-1. Například kód jazyka pro češtinu je CS. Výchozí hodnota je EN (angličtina).<br /><br /> I když je jazyk volitelný, měli byste ho vždy zadat. Obvykle se `setLang` nastavuje na stejný jazyk, jaký určuje parametr `mkt`, pokud uživatel nechce řetězce uživatelského rozhraní zobrazené v jiném jazyce.<br /><br /> Tento parametr a hlavička [Accept-Language](#acceptlanguage) se vzájemně vylučují &mdash; nezadávejte obojí.<br /><br /> Řetězec uživatelského rozhraní je řetězec, který se používá jako popisek v uživatelském rozhraní. V objektech odpovědí JSON je několik řetězců uživatelského rozhraní. Zadaný jazyk použijí také všechny odkazy na vlastnosti Bing.com v objektech odpovědi.|Řetězec|Ne| 
 
 
@@ -106,22 +106,22 @@ Schéma odpovědi je buď [webové stránky] nebo ErrorResponse, stejně jako v 
 ### <a name="error"></a>Chyba  
 Definuje chyby, ke které došlo k chybě.  
   
-|Element|Popis|Typ|  
+|Element|Popis|Type|  
 |-------------|-----------------|----------|  
 |<a name="error-code" />kód|Kód chyby, který určuje kategorii chyby. Seznam možných kódů najdete v tématu [kódy chyb](#error-codes).|Řetězec|  
 |<a name="error-message" />Zpráva|Popis chyby.|Řetězec|  
 |<a name="error-moredetails" />moreDetails|Popis, který poskytuje další informace o této chybě.|Řetězec|  
 |<a name="error-parameter" />Parametr|Parametr dotazu v žádosti, která způsobila chybu.|Řetězec|  
-|<a name="error-subcode" />Podřízeného|Kód chyby: identifikující chybu. Například pokud `code` je InvalidRequest, `subCode` může být ParameterInvalid nebo ParameterInvalidValue. |Řetězec|  
+|<a name="error-subcode" />subCode|Kód chyby: identifikující chybu. Například pokud `code` je InvalidRequest, `subCode` může být ParameterInvalid nebo ParameterInvalidValue. |Řetězec|  
 |<a name="error-value" />Hodnota|Hodnota parametru dotazu, která nebyla platná.|Řetězec|  
   
 
 ### <a name="errorresponse"></a>ErrorResponse  
 Objekt nejvyšší úrovně, který obsahuje odpověď, pokud požadavek selže.  
   
-|Název|Hodnota|Typ|  
+|Name|Value|Type|  
 |----------|-----------|----------|  
-|_typ|Pomocný parametr typu.|Řetězec|  
+|_type|Pomocný parametr typu.|Řetězec|  
 |<a name="errors" />Chyby|Seznam chyb, které popisují důvody, proč žádost selhala.|[Chyba](#error)|  
 
   
@@ -129,7 +129,7 @@ Objekt nejvyšší úrovně, který obsahuje odpověď, pokud požadavek selže.
 ### <a name="license"></a>Licence  
 Definuje licence, pod kterým mohou být použity text nebo fotografie.  
   
-|Název|Hodnota|Typ|  
+|Name|Value|Type|  
 |----------|-----------|----------|  
 |jméno|Název licence.|Řetězec|  
 |url|Adresa URL webu, kde uživatel získat další informace o licenci.<br /><br /> Vytvoření hypertextového odkazu, použijte název a adresu URL.|Řetězec|  
@@ -138,9 +138,9 @@ Definuje licence, pod kterým mohou být použity text nebo fotografie.
 ### <a name="licenseattribution"></a>LicenseAttribution  
 Definuje smluvní pravidlo pro přiřazení licence.  
   
-|Název|Hodnota|Typ|  
+|Name|Value|Type|  
 |----------|-----------|----------|  
-|_typ|Typ pomocného parametru, která je nastavena na LicenseAttribution.|Řetězec|  
+|_type|Typ pomocného parametru, která je nastavena na LicenseAttribution.|Řetězec|  
 |licence|Licence, pod kterým mohou být použity obsah.|[Licence](#license)|  
 |licenseNotice|Licence, který se zobrazí vedle cílové pole. Například "Text v rámci licence kopie SA".<br /><br /> Použijte název a adresu URL licenci `license` pole, které chcete vytvořit hypertextový odkaz na web, který popisuje podrobnosti o licenci. Potom nahraďte název licence v `licenseNotice` řetězec (například CC-podle-SA) s odkazem, který jste právě vytvořili.|Řetězec|  
 |mustBeCloseToContent|Logická hodnota, která určuje, zda obsah pravidlo musí být umístěn v blízkosti pole, které se pravidlo vztahuje. Pokud **true**, obsah musí být umístěn v těsné blízkosti. Pokud **false**, nebo tato pole neexistuje, můžete umístit obsah na základě vlastního uvážení volajícího.|Logická hodnota|  
@@ -150,9 +150,9 @@ Definuje smluvní pravidlo pro přiřazení licence.
 ### <a name="link"></a>Odkaz  
 Definuje komponenty hypertextový odkaz.  
   
-|Název|Hodnota|Typ|  
+|Name|Value|Type|  
 |----------|-----------|----------|  
-|_typ|Pomocný parametr typu.|Řetězec|  
+|_type|Pomocný parametr typu.|Řetězec|  
 |text|Zobrazení textu.|Řetězec|  
 |url|ADRESA URL. Použijte adresu URL a zobrazit text Vytvoření hypertextového odkazu.|Řetězec|  
   
@@ -160,9 +160,9 @@ Definuje komponenty hypertextový odkaz.
 ### <a name="linkattribution"></a>LinkAttribution  
 Definuje pravidlo smluvní pro přidělení odkazu.  
   
-|Název|Hodnota|Typ|  
+|Name|Value|Type|  
 |----------|-----------|----------|  
-|_typ|Typ pomocného parametru, která je nastavena na LinkAttribution.|Řetězec|  
+|_type|Typ pomocného parametru, která je nastavena na LinkAttribution.|Řetězec|  
 |mustBeCloseToContent|Logická hodnota, která určuje, zda obsah pravidlo musí být umístěn v blízkosti pole, které se pravidlo vztahuje. Pokud **true**, obsah musí být umístěn v těsné blízkosti. Pokud **false**, nebo tato pole neexistuje, můžete umístit obsah na základě vlastního uvážení volajícího.|Logická hodnota|  
 |targetPropertyName|Název pole, které se pravidlo vztahuje.<br /><br /> Pokud cíl není zadán, platí pro entity jako celek přidělení a měla by se zobrazit okamžitě po prezentace entity. Pokud existuje více text a odkaz attribution pravidla, která není zadejte cíl, by je zřetězit a jejich zobrazení pomocí "Data z:" popisek. Například "Data z < název1 poskytovatele\> &#124; < name2 poskytovatele\>".|Řetězec|  
 |text|Attribution text.|Řetězec|  
@@ -172,9 +172,9 @@ Definuje pravidlo smluvní pro přidělení odkazu.
 ### <a name="mediaattribution"></a>MediaAttribution  
 Definuje smluvní pravidlo pro attribution média.  
   
-|Název|Hodnota|Typ|  
+|Name|Value|Type|  
 |----------|-----------|----------|  
-|_typ|Typ pomocného parametru, která je nastavena na MediaAttribution.|Řetězec|  
+|_type|Typ pomocného parametru, která je nastavena na MediaAttribution.|Řetězec|  
 |mustBeCloseToContent|Logická hodnota, která určuje, zda obsah pravidlo musí být umístěn v blízkosti pole, které se pravidlo vztahuje. Pokud **true**, obsah musí být umístěn v těsné blízkosti. Pokud **false**, nebo tato pole neexistuje, můžete umístit obsah na základě vlastního uvážení volajícího.|Logická hodnota|  
 |targetPropertyName|Název pole, které se pravidlo vztahuje.|Řetězec|  
 |url|Adresa URL, který použijete k vytvoření hypertextového odkazu mediálního obsahu. Například pokud je cílem bitovou kopii, použijete adresu URL k pořízení snímku po kliknutí.|Řetězec|  
@@ -186,7 +186,7 @@ Definuje vydavatele.
   
 Všimněte si, že vydavatel může zadat jeho název nebo jejich webu nebo obojí.  
   
-|Název|Hodnota|Typ|  
+|Name|Value|Type|  
 |----------|-----------|----------|  
 |jméno|Název vydavatele.|Řetězec|  
 |url|Adresa URL webu vydavatele.<br /><br /> Všimněte si, že vydavatel nemusí poskytnout webu.|Řetězec|  
@@ -196,7 +196,7 @@ Všimněte si, že vydavatel může zadat jeho název nebo jejich webu nebo oboj
 ### <a name="webpage"></a>Webová stránka  
 Definuje informace o webové stránce ve verzi preview.  
   
-|Název|Hodnota|Typ|  
+|Name|Value|Type|  
 |----------|-----------|----------|
 |jméno|Název stránky, ne tedy nutně Nadpis HTML|Řetězec|
 |url|Adresu URL, kterou byl ve skutečnosti procházen (žádosti může provedli přesměrování)|Řetězec|  
@@ -208,7 +208,7 @@ Definuje informace o webové stránce ve verzi preview.
 ### <a name="querycontext"></a>QueryContext  
 Definuje kontext dotazu, který používá Bing pro daný požadavek.  
   
-|Element|Popis|Typ|  
+|Element|Popis|Type|  
 |-------------|-----------------|----------|  
 |adultIntent|Logická hodnota, která určuje, zda má zadaný dotaz dospělé. Hodnota je **true** Pokud dotaz obsahuje dospělé; v opačném případě **false**.|Logická hodnota|  
 |alterationOverrideQuery|Řetězec dotazu, který se má použít k vynucení Bingu použít původní řetězec. Například, pokud je řetězec dotazu *saling po směru větru*, bude přepsání řetězce dotazu *+ saling po směru větru*. Nezapomeňte zakódujte řetězec dotazu, což vede k *% 2Bsaling + po směru větru*.<br /><br /> Toto pole je zahrnuta pouze v případě, že původní řetězec dotazu obsahuje pravopisné chyby.|Řetězec|  
@@ -217,19 +217,19 @@ Definuje kontext dotazu, který používá Bing pro daný požadavek.
 |originalQuery|Řetězec dotazu jako zadaný v požadavku.|Řetězec|  
 
 ### <a name="identifiable"></a>Údaje
-|Název|Hodnota|Typ|  
+|Name|Value|Type|  
 |-------------|-----------------|----------|
 |id|Identifikátor prostředku|Řetězec|
  
 ### <a name="rankinggroup"></a>RankingGroup
 Definuje skupinu výsledky, jako například mainline.
-|Název|Hodnota|Typ|  
+|Name|Value|Type|  
 |-------------|-----------------|----------|
 |položek|Seznam výsledků hledání pro zobrazení ve skupině.|RankingItem|
 
 ### <a name="rankingitem"></a>RankingItem
 Definuje položku výsledek vyhledávání k zobrazení.
-|Název|Hodnota|Typ|  
+|Name|Value|Type|  
 |-------------|-----------------|----------|
 |resultIndex|Z nuly vycházející index položky v odpovědi na dotaz k zobrazení. Pokud položka neobsahuje toto pole, zobrazí všechny položky v odpovědi na dotaz. Například zobrazte všechny články o novinkách v zpráv odpovědí.|Integer|
 |answerType|Odpověď obsahující položku k zobrazení. Například příspěvky.<br /><br />Použijte typ odpovědi SearchResponse objektu. Typ je název SearchResponse pole.<br /><br /> Pouze v případě, že tento objekt obsahuje pole hodnoty; však použijte typ odpovědi v opačném případě ji ignorujte.|Řetězec|
@@ -239,7 +239,7 @@ Definuje položku výsledek vyhledávání k zobrazení.
 ### <a name="rankingresponse"></a>RankingResponse  
 Definuje, kde na hledání by měl být umístěn obsah stránky výsledků a v jakém pořadí.  
   
-|Název|Hodnota|  
+|Name|Value|  
 |----------|-----------|  
 |<a name="ranking-mainline" />mainline|Výsledky hledání pro zobrazení v hlavní linii.|  
 |<a name="ranking-pole" />pole|Výsledky hledání, které by měl být poskytnuta nejviditelnější zpracování (například zobrazený nad hlavní linie a boční panel).|  
@@ -251,18 +251,18 @@ Definuje objekt nejvyšší úrovně, který obsahuje odpověď po úspěšném 
   
 Všimněte si, že pokud služba má podezření útoku DOS, požadavek bude úspěšné (stavový kód protokolu HTTP je 200 OK); text odpovědi však bude prázdný.  
   
-|Název|Hodnota|Typ|  
+|Name|Value|Type|  
 |----------|-----------|----------|  
-|_typ|Pomocný parametr typu, který je nastaven na SearchResponse.|Řetězec|  
+|_type|Pomocný parametr typu, který je nastaven na SearchResponse.|Řetězec|  
 |Webová stránka|Objekt JSON, který definuje verzi preview|řetězec|  
   
   
 ### <a name="textattribution"></a>TextAttribution  
 Definuje pravidlo smluvní pro attribution prostý text.  
   
-|Název|Hodnota|Typ|  
+|Name|Value|Type|  
 |----------|-----------|----------|  
-|_typ|Typ pomocného parametru, která je nastavena na TextAttribution.|Řetězec|  
+|_type|Typ pomocného parametru, která je nastavena na TextAttribution.|Řetězec|  
 |text|Attribution text.<br /><br /> Text attribution platí pro entity jako celek a měla by se zobrazit okamžitě po prezentace entity. Pokud existuje více textu nebo odkazů attribution pravidla, která není zadejte cíl, by měl je zřetězit a jejich zobrazení pomocí "Data z:" popisek.|Řetězec| 
 
 

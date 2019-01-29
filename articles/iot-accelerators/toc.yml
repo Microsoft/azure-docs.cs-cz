@@ -47,9 +47,11 @@ items:
         href: iot-accelerators-remote-monitoring-deploy-local.md
       - name: Místní nasazení s použitím VS Code
         href: iot-accelerators-remote-monitoring-deploy-local-vscode.md
+      - name: Místní nasazení s použitím IntelliJ
+        href: iot-accelerators-remote-monitoring-deploy-local-java.md
       - name: Místní nasazení s použitím Dockeru
         href: iot-accelerators-remote-monitoring-deploy-local-docker.md
-    - name: Připojení fyzického zařízení
+    - name: Připojení skutečného zařízení
       items:
       - name: C ve Windows
         href: iot-accelerators-connecting-devices.md
@@ -257,9 +259,9 @@ items:
     href: https://stackoverflow.com/questions/tagged/azure-iot-suite
   - name: Vzdálené sledování V1
     href: https://docs.microsoft.com/previous-versions/azure/iot-suite/
-ms.openlocfilehash: 0b95b2efed51db0d43b618e76fbe24a13d35b6ed
-ms.sourcegitcommit: 9f07ad84b0ff397746c63a085b757394928f6fc0
+ms.openlocfilehash: 3e3b8a7319a622d4b340b4ac704c45c00030a23b
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54390858"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55099761"

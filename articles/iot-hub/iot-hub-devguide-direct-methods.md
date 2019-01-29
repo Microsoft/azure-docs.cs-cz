@@ -7,12 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 07/17/2018
 ms.author: nberdy
-ms.openlocfilehash: ab196645cc14acb3ed2e56ee785d4790a8df3c23
-ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
+ms.openlocfilehash: caccdcb0d90a817c82e8d7816f0770b09b4ea27a
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54052535"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55101018"
 ---
 # <a name="understand-and-invoke-direct-methods-from-iot-hub"></a>Pochopení a vyvolání přímých metod ze služby IoT Hub
 
@@ -36,7 +36,7 @@ Přímé metody jsou implementovány v zařízení a může vyžadovat nula nebo
 > Při vyvolání přímé metody v zařízení, názvy a hodnoty vlastností mohou obsahovat pouze US-ASCII tisknutelný alfanumerické znaky, s výjimkou těch následující: ``{'$', '(', ')', '<', '>', '@', ',', ';', ':', '\', '"', '/', '[', ']', '?', '=', '{', '}', SP, HT}``
 > 
 
-Přímé metody jsou synchronní a buď úspěšné nebo neúspěšné po uplynutí časového limitu (výchozí: 30 sekund, nastavit až na 3 600 sekund). Přímé metody jsou užitečné pro interaktivní scénáře, ve kterém chcete zařízení tak, aby fungoval pouze v případě zařízení je online a příjem příkazů. Například zapnutí světla z telefonu. V těchto scénářích platí budete chtít najdete v článku okamžité úspěch nebo neúspěch, cloudové služby můžou jednat výsledek co nejdříve. Zařízení může vrátit některé zprávy jako výsledek metody, ale není to nutné pro metodu Uděláte to tak. Neexistuje žádná záruka na řazení nebo jakékoli souběžnosti sémantiky pro volání metody.
+Přímé metody jsou synchronní a buď úspěšné nebo neúspěšné po uplynutí časového limitu (výchozí: 30 sekund, nastavit až na 300 sekund). Přímé metody jsou užitečné pro interaktivní scénáře, ve kterém chcete zařízení tak, aby fungoval pouze v případě zařízení je online a příjem příkazů. Například zapnutí světla z telefonu. V těchto scénářích platí budete chtít najdete v článku okamžité úspěch nebo neúspěch, cloudové služby můžou jednat výsledek co nejdříve. Zařízení může vrátit některé zprávy jako výsledek metody, ale není to nutné pro metodu Uděláte to tak. Neexistuje žádná záruka na řazení nebo jakékoli souběžnosti sémantiky pro volání metody.
 
 Přímé metody jsou jenom HTTPS z cloudu na straně a protokol MQTT nebo AMQP ze strany zařízení.
 

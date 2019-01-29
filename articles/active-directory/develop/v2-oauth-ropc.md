@@ -7,7 +7,7 @@ author: CelesteDG
 manager: mtillman
 editor: ''
 ms.service: active-directory
-ms.component: develop
+ms.subservice: develop
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -16,12 +16,12 @@ ms.date: 11/28/2018
 ms.author: celested
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 4eb6850e4b6e267e0b4ef83f7639e90308cee989
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 6df19f8d20853b569a2bc357e6c1115976a7de2c
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52841434"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55097961"
 ---
 # <a name="azure-active-directory-v20-and-the-oauth-20-resource-owner-password-credential"></a>Azure Active Directory v2.0 a přístupové heslo vlastníka prostředku OAuth 2.0
 
@@ -97,7 +97,7 @@ Pokud uživatel není k dispozici správné uživatelské jméno nebo heslo, neb
 | Chyba | Popis | Akce klienta |
 |------ | ----------- | -------------|
 | `invalid_grant` | Ověřování se nezdařilo. | Přihlašovací údaje byly nesprávná nebo klient nemá souhlas pro požadované obory. Pokud nejsou obory, `consent_required` suberror bude vrácen. Pokud k tomu dojde, klient by měl uživatele poslat na výzvu k interaktivní pomocí webview nebo prohlížeče. |
-| `invalid_request` | Požadavek byl nesprávně vytvořen. | Typ udělení oprávnění nepodporuje `/common` nebo `/consumers` kontextu ověřování.  Použití `/organizations` místo. |
+| `invalid_request` | Požadavek byl nesprávně vytvořen. | Typ udělení oprávnění nepodporuje `/common` nebo `/consumers` kontextu ověřování.  Místo nich se používá `/organizations`. |
 | `invalid_client` | Aplikace je nesprávně nastavený | K tomu může dojít, pokud `allowPublicClient` vlastnost není nastavena na hodnotu true v [manifest aplikace](reference-app-manifest.md). `allowPublicClient` Vlastnost je potřeba, proto ROPC udělení nemá identifikátor URI přesměrování. Azure AD nemůže určit, pokud je aplikace veřejným klientem aplikace nebo aplikace důvěrnému klientovi, pokud je nastavena. Všimněte si, že ROPC je podporována pouze pro veřejné klientské aplikace. |
 
 ## <a name="learn-more"></a>Další informace

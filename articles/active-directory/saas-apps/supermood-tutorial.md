@@ -1,5 +1,5 @@
 ---
-title: 'Kurz: Integrace Azure Active Directory se službou Supermood | Dokumentace Microsoftu'
+title: 'Kurz: Integrace Azure Active Directory s Supermood | Dokumentace Microsoftu'
 description: Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a Supermood.
 services: active-directory
 documentationCenter: na
@@ -8,21 +8,21 @@ manager: femila
 ms.reviewer: joflore
 ms.assetid: afc04efa-2eba-4e47-8ce4-b71eb293cd09
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 06/12/2018
 ms.author: jeedes
-ms.openlocfilehash: 98a39c52f206f19d3330695fd05f9a96c0bf4d36
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 54a1f4a8ef0ec4381374585df57dc62490337190
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39443346"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55173084"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-supermood"></a>Kurz: Integrace Azure Active Directory se službou Supermood
+# <a name="tutorial-azure-active-directory-integration-with-supermood"></a>Kurz: Integrace Azure Active Directory s Supermood
 
 V tomto kurzu se dozvíte, jak integrovat Supermood s Azure Active Directory (Azure AD).
 
@@ -38,7 +38,7 @@ Pokud chcete zjistit další podrobnosti o integraci aplikací SaaS v Azure AD, 
 
 Konfigurace integrace Azure AD s Supermood, potřebujete následující položky:
 
-- S předplatným služby Azure AD
+- Předplatné Azure AD
 - Supermood jednotného přihlašování povolená předplatného
 
 > [!NOTE]
@@ -60,7 +60,7 @@ Konfigurace integrace Supermood do služby Azure AD, budete muset přidat Superm
 
 **Chcete-li přidat Supermood z galerie, postupujte následovně:**
 
-1. V  **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu. 
+1. V **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu. 
 
     ![Tlačítko Azure Active Directory][1]
 
@@ -203,7 +203,7 @@ Cílem této části je vytvoření zkušebního uživatele na webu Azure Portal
 V této části vytvoříte uživatele v Supermood jako Britta Simon. Supermood podporuje just-in-time zřizování, který je ve výchozím nastavení povolená pro uživatele, jehož e-mailů patřit do domény, které se přidají při konfiguraci na konci Supermood. Neexistuje žádná položka akce pro vás v této části. Nový uživatel se vytvoří během pokusu o přístup k Supermood, pokud ještě neexistuje.
 
 >[!Note]
->Pokud je potřeba ručně vytvořit uživatele, obraťte se na [tým podpory Supermood](mailto:hello@supermood.fr).
+>Pokud je potřeba ručně vytvořit uživatele, obraťte se na [tým podpory Supermood](mailto:hello@supermood.fr).
 
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřadit uživatele Azure AD
@@ -236,7 +236,7 @@ V této části je povolit Britta Simon k udělení přístupu k Supermood použ
 
 1. Klikněte na tlačítko **přiřadit** tlačítko **přidat přiřazení** dialogového okna.
     
-### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování
+### <a name="test-single-sign-on"></a>Test jednotného přihlašování
 
 V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 

@@ -8,21 +8,21 @@ manager: mtillman
 editor: ''
 ms.assetid: 820acdb7-d316-4c3b-8de9-79df48ba3b06
 ms.service: active-directory
-ms.component: develop
+ms.subservice: develop
 ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 09/24/2018
 ms.author: andret
-ms.openlocfilehash: 10de179c6055feb46439792ea74a0a3131f39646
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: aeb9f1ba460a009daacf3090c75573dd5d69b813
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52970641"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55095851"
 ---
-# <a name="quickstart-add-sign-in-with-microsoft-to-an-aspnet-web-app"></a>Rychlý start: Přidání účtem Microsoft do webové aplikace ASP.NET
+# <a name="quickstart-add-sign-in-with-microsoft-to-an-aspnet-web-app"></a>Rychlý start: Přidání přihlašování s Microsoftem do webové aplikace ASP.NET
 
 [!INCLUDE [active-directory-develop-applies-v1](../../../includes/active-directory-develop-applies-v1.md)]
 
@@ -39,7 +39,7 @@ Abyste mohli začít, musíte splnit tyto předpoklady:
 
 * Musíte mít nainstalovanou sadu Visual Studio 2015 Update 3 nebo Visual Studio 2017. Nemáte ji? [Stáhnout Visual Studio 2017 zdarma](https://www.visualstudio.com/downloads/)
 
-## <a name="scenario-sign-in-users-from-work-and-school-accounts-in-your-aspnet-app"></a>Scénář: Přihlášení uživatelů z pracovních a školních účtů v aplikaci ASP.NET
+## <a name="scenario-sign-in-users-from-work-and-school-accounts-in-your-aspnet-app"></a>Scénář: Přihlášení uživatele z pracovním a školním účtům v aplikaci ASP.NET
 
 ![Jak funguje tento průvodce](./media/quickstart-v1-aspnet-webapp/aspnet-intro.png)
 
@@ -66,14 +66,14 @@ Pokud si místo toho chcete stáhnout projekt sady Visual Studio této ukázky, 
 1. [Stáhněte si projekt z GitHubu](https://github.com/AzureADQuickStarts/WebApp-OpenIdConnect-DotNet/archive/GuidedSetup.zip).
 1. Přejděte na [krok konfigurace](#configure-your-webconfig-and-register-an-application) a před spuštěním nakonfigurujte vzorek kódu.
 
-## <a name="step-2-create-your-aspnet-project"></a>Krok 2. Vytvoření projektu ASP.NET
+## <a name="step-2-create-your-aspnet-project"></a>Krok 2: Vytvoření projektu ASP.NET
 
 1. V sadě Visual Studio přejděte na **Soubor > Nový > Projekt**.
 2. V části **Visual C#\Web** vyberte **Webová aplikace ASP.NET (.NET Framework)**.
 3. Pojmenujte aplikaci a vyberte **OK**.
 4. Vyberte **Prázdné** a zaškrtnutím políčka přidejte reference **MVC**.
 
-## <a name="step-3-add-authentication-components"></a>Krok 3: Přidání komponent ověřování
+## <a name="step-3-add-authentication-components"></a>Krok 3: Přidání součástí ověřování
 
 1. V sadě Visual Studio přejděte na **Nástroje > Správce balíčků NuGet > Konzola Správce balíčků**.
 2. Přidejte **balíčky NuGet middlewaru OWIN** tak, že do okna konzoly Správce balíčků zadáte toto:
@@ -89,7 +89,7 @@ Pokud si místo toho chcete stáhnout projekt sady Visual Studio této ukázky, 
 >Knihovny uvedené výše umožňují jednotné přihlašování pomocí OpenID Connect přes ověřování na základě souborů cookie. Po dokončení ověřování a odeslání tokenu, který reprezentuje uživatele, do aplikace, vytvoří middleware OWIN soubor cookie relace. Prohlížeč potom použijte tento soubor cookie v následných žádostech, aby se uživatel nemusel opakovaně ověřovat. Žádné další ověření není potřeba.
 <!--end-collapse-->
 
-## <a name="step-4-configure-the-authentication-pipeline"></a>Krok 4: Konfigurace kanálu ověřování
+## <a name="step-4-configure-the-authentication-pipeline"></a>Krok 4: Konfigurace ověřovacího kanálu
 
 Podle následujícího postupu vytvořte *počáteční třídu* middlewaru OWIN a nakonfigurujte ověřování OpenID Connect. Tato třída se spouští automaticky.
 
@@ -119,7 +119,7 @@ Postup vytvoření *počáteční třídy* middlewaru OWIN:
 
 <!--start-use-->
 
-## <a name="step-5-add-a-controller-to-handle-sign-in-and-sign-out-requests"></a>Krok 5: Přidání kontroleru pro manipulaci se žádostmi o přihlášení a odhlášení
+## <a name="step-5-add-a-controller-to-handle-sign-in-and-sign-out-requests"></a>Krok 5: Přidání kontroleru pro zpracování požadavků na přihlášení a odhlášení
 
 Vytvořte nový kontroler, který zpřístupní metody přihlášení a odhlášení.
 
@@ -135,7 +135,7 @@ Vytvořte nový kontroler, který zpřístupní metody přihlášení a odhláš
 
     [!code-csharp[main](../../../WebApp-OpenIDConnect-DotNet/WebApp-OpenIDConnect-DotNet/Controllers/HomeController.cs?name=SigInAndSignOut "HomeController.cs")]
 
-## <a name="step-6-create-the-apps-home-page-to-sign-in-users-via-a-sign-in-button"></a>Krok 6: Vytvoření domovské stránky aplikace, na které se budou uživatelé přihlašovat pomocí tlačítka pro přihlášení
+## <a name="step-6-create-the-apps-home-page-to-sign-in-users-via-a-sign-in-button"></a>Krok 6: Vytvoření aplikace domovskou stránku pro přihlášení prostřednictvím tlačítka přihlašování uživatelů
 
 V sadě Visual Studio vytvořte nové zobrazení, do kterého přidáte tlačítko pro přihlášení a ve kterém se po ověření zobrazí informace o uživateli:
 
@@ -148,7 +148,7 @@ V sadě Visual Studio vytvořte nové zobrazení, do kterého přidáte tlačít
 <!--start-collapse--> Tato stránka přidá tlačítko pro přihlášení ve formátu SVG s černým pozadím:<br/>![Přihlásit se účtem Microsoft](./media/quickstart-v1-aspnet-webapp/aspnetsigninbuttonsample.png)<br/> Další informace o tlačítkách pro přihlášení najdete v článku [Pokyny pro branding aplikací](howto-add-branding-in-azure-ad-apps.md).
 <!--end-collapse-->
 
-## <a name="step-7-display-users-claims-by-adding-a-controller"></a>Krok 7: Zobrazení deklarací identity uživatele pomocí přidání kontroleru
+## <a name="step-7-display-users-claims-by-adding-a-controller"></a>Krok 7: Přidání kontroleru zobrazení deklarací identity uživatele
 
 Tento kontroler demonstruje použití atributu `[Authorize]` k ochraně kontroleru. Tento atribut omezuje přístup ke kontroleru tím, že povolí pouze ověřené uživatele. Následující kód využívá atribut k zobrazení deklarací identity uživatelů, které se načetly při přihlášení.
 
@@ -165,7 +165,7 @@ Tento kontroler demonstruje použití atributu `[Authorize]` k ochraně kontrole
 > Protože je použit atribut `[Authorize]`, všechny metody tohoto kontroleru lze spustit pouze v případě, že je uživatel ověřen. Pokud se uživatel neověří a pokusí se o přístup ke kontroleru, OWIN spustí výzvu ověřování a přinutí uživatele, aby se ověřil. Výše uvedený kód vyhledá v kolekci deklarací identity uživatele konkrétní atributy, které jsou součástí tokenu uživatele. Tyto atributy zahrnují celé jméno uživatele a jeho uživatelské jméno, ale také subjekt globálního identifikátoru uživatele. Obsahuje také *ID tenanta*, které představuje ID organizace uživatele.
 <!--end-collapse-->
 
-## <a name="step-8-create-a-view-to-display-the-users-claims"></a>Krok 8: Vytvoření zobrazení pro deklarace identity uživatele
+## <a name="step-8-create-a-view-to-display-the-users-claims"></a>Krok 8: Vytvoření zobrazení pro zobrazení deklarací identity uživatele
 
 V sadě Visual Studio vytvořte nové zobrazení, ve kterém se budou zobrazovat deklarace identity uživatele na webové stránce:
 
@@ -179,7 +179,7 @@ V sadě Visual Studio vytvořte nové zobrazení, ve kterém se budou zobrazovat
 
 <!--start-configure-->
 
-## <a name="step-9-configure-your-webconfig-and-register-an-application"></a>Krok 9: Konfigurace souboru *web.config* a registrace aplikace
+## <a name="step-9-configure-your-webconfig-and-register-an-application"></a>Krok 9: Konfigurace vašeho *web.config* a zaregistrovat aplikaci
 
 1. V sadě Visual Studio přidejte následující kód do souboru `web.config` (nachází se v kořenové složce) v části `configuration\appSettings`:
 
@@ -208,7 +208,7 @@ V sadě Visual Studio vytvořte nové zobrazení, ve kterém se budou zobrazovat
 > [!TIP]
 > Pokud máte účet nakonfigurovaný na přístup k více adresářům, nezapomeňte vybrat správný adresář pro organizaci, pro kterou chcete aplikaci zaregistrovat. Klikněte na název účtu v pravém horním rohu webu Azure Portal a potom zkontrolujte vybraný adresář, jak je uvedeno na obrázku:<br/>![Výběr správného adresáře](./media/quickstart-v1-aspnet-webapp/tenantselector.png)
 
-## <a name="step-10-configure-sign-in-options"></a>Krok 10: Konfigurace možností přihlášení
+## <a name="step-10-configure-sign-in-options"></a>Krok 10: Konfigurovat možnosti přihlášení
 
 Aplikaci můžete nakonfigurovat tak, aby povolovala přihlášení pouze uživatelů, kteří patří do instance Azure AD jedné organizace, nebo aby přijímala přihlášení od uživatelů z libovolné organizace. Postupujte podle pokynů pro některou z následujících možností:
 
@@ -286,9 +286,9 @@ Výběrem odkazu zobrazíte deklarace identity uživatele. Tato akce vás převe
 
  Měli byste vidět tabulku obsahující základní vlastnosti přihlášeného uživatele:
 
-| Vlastnost | Hodnota | Popis |
+| Vlastnost | Value | Popis |
 |---|---|---|
-| Název | {User Full Name} | Jméno a příjmení uživatele |
+| Name | {User Full Name} | Jméno a příjmení uživatele |
 | Uživatelské jméno | <span>user@domain.com</span> | Uživatelské jméno identifikující přihlášeného uživatele |
 | Subjekt| {Subject} |Řetězec pro jednoznačnou identifikaci přihlášení uživatele na webu |
 | ID tenanta | {Guid} | Identifikátor *guid*, který jedinečně identifikuje organizaci Azure AD uživatele |

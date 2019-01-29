@@ -6,12 +6,12 @@ ms.author: dianas
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 10/22/2018
-ms.openlocfilehash: 0f8db7dd3a90e06587a7e0e05f33cb6fba5c72e1
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: 21ac48ff473dcf494f96f87210bdfe09e4d82646
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53539785"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55103390"
 ---
 # <a name="optimizing-autovacuum-on-azure-database-for-postgresql-server"></a>Optimalizace autovacuum v databázi Azure PostgreSQL server 
 Tento článek popisuje, jak efektivně optimalizovat autovacuum na – Azure Database for PostgreSQL.
@@ -97,6 +97,6 @@ ALTER TABLE t SET (autovacuum_vacuum_cost_delay = 10);
 Je Autovacuum na synchronní zpracování tabulky. Větší procento dead řazených kolekcí členů tabulka má vyšší "cost" k autovacuum.  Rozdělení tabulky, které mají vysoký počet aktualizací/odstranění do několika tabulek pomůže autovacuum paralelní zpracování a snížení "cost" pro dokončení autovacuum v jedné tabulce. Můžete také zvýšit počet pracovních procesů paralelní autovacuum zajistit, že pracovní procesy jsou liberally naplánované.
 
 ## <a name="next-steps"></a>Další postup
-Projděte si následující documenatation PostgreSQL Další informace o používání a ladění autovacuum:
+Projděte si následující dokumentaci PostgreSQL Další informace o používání a ladění autovacuum:
  - Dokumentace k PostgreSQL - [kapitola 18, konfigurace serveru](https://www.postgresql.org/docs/9.5/static/runtime-config-autovacuum.html)
  - Dokumentace k PostgreSQL – [kapitoly 24, rutinní úlohy údržby databáze](https://www.postgresql.org/docs/9.6/static/routine-vacuuming.html)

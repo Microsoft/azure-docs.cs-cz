@@ -14,14 +14,14 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 10/10/2017
 ms.author: harijayms
-ms.openlocfilehash: eab9f13ad41d4109bb44ae196a7f8e2177886532
-ms.sourcegitcommit: fd488a828465e7acec50e7a134e1c2cab117bee8
+ms.openlocfilehash: 772070b73f1d2dcf83d15283f6be70ab4fef148b
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "53994194"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55155661"
 ---
-# <a name="azure-instance-metadata-service"></a>Služby Azure Instance Metadata
+# <a name="azure-instance-metadata-service"></a>Azure Instance Metadata service
 
 
 Služba Azure Instance Metadata poskytuje informace o spuštěných instancí virtuálních počítačů, které lze použít ke správě nebo konfiguraci virtuálních počítačů.
@@ -37,10 +37,10 @@ Služba je k dispozici v obecně dostupné oblasti Azure. Ne všechny verze rozh
 
 Oblasti                                        | Dostupnost?                                 | Podporované verze
 -----------------------------------------------|-----------------------------------------------|-----------------
-[Všechny obecně dostupné globálními oblastmi Azure](https://azure.microsoft.com/regions/)     | Obecná dostupnost   | 2017-04-02 2017-08-01, 2017-12-01, 2018-02-01, 2018-04-02
-[Azure Government](https://azure.microsoft.com/overview/clouds/government/)              | Obecná dostupnost | 2017-04-02 2017-08-01, 2017-12-01, 2018-02-01
-[Azure (Čína)](https://www.azure.cn/)                                                           | Obecná dostupnost | 2017-04-02 2017-08-01, 2017-12-01, 2018-02-01
-[Služba Azure Germany](https://azure.microsoft.com/overview/clouds/germany/)                    | Obecná dostupnost | 2017-04-02 2017-08-01, 2017-12-01, 2018-02-01
+[Všechny obecně dostupné globálními oblastmi Azure](https://azure.microsoft.com/regions/)     | Obecná dostupnost   | 2017-04-02, 2017-08-01, 2017-12-01, 2018-02-01, 2018-04-02
+[Azure Government](https://azure.microsoft.com/overview/clouds/government/)              | Obecná dostupnost | 2017-04-02, 2017-08-01, 2017-12-01, 2018-02-01
+[Azure China](https://www.azure.cn/)                                                           | Obecná dostupnost | 2017-04-02, 2017-08-01, 2017-12-01, 2018-02-01
+[Azure Germany](https://azure.microsoft.com/overview/clouds/germany/)                    | Obecná dostupnost | 2017-04-02, 2017-08-01, 2017-12-01, 2018-02-01
 
 V této tabulce aktualizuje, když jsou k dispozici aktualizace služby, a nebo nové podporované verze jsou k dispozici
 
@@ -303,9 +303,9 @@ plán | [Plánování](https://docs.microsoft.com/rest/api/compute/virtualmachin
 publicKeys | Kolekce veřejného klíče [https://docs.microsoft.com/rest/api/compute/virtualmachines/createorupdate#sshpublickey] přiřazená k virtuálnímu počítači a cesty | 2017-04-02
 vmScaleSetName | [Název škálovací sady virtuálního počítače](../../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md) sady škálování vašeho virtuálního počítače | 2017-12-01
 zóna | [Zóna dostupnosti](../../availability-zones/az-overview.md) vašeho virtuálního počítače | 2017-12-01 
-IPv4/privateIpAddress | Místní adresa IPv4 z virtuálního počítače | 2017-04-02
-IPv4/publicIpAddress | Veřejnou IPv4 adresu virtuálního počítače | 2017-04-02
-Adresa podsítě / | Adresa podsítě virtuálního počítače | 2017-04-02 
+ipv4/privateIpAddress | Místní adresa IPv4 z virtuálního počítače | 2017-04-02
+ipv4/publicIpAddress | Veřejnou IPv4 adresu virtuálního počítače | 2017-04-02
+subnet/address | Adresa podsítě virtuálního počítače | 2017-04-02 
 podsítě/předpona | Předpona podsítě, například 24 | 2017-04-02 
 ipv6/ipAddress | Místní adresa IPv6 z virtuálního počítače | 2017-04-02 
 macAddress | Adresa mac virtuálního počítače | 2017-04-02 
@@ -491,7 +491,7 @@ Puppet | https://github.com/keirans/azuremetadata
    * Jak získat podporu pro službu, vytvořte problém podpory na webu Azure portal pro virtuální počítač, pokud nejste schopni získat odpověď metadat za dlouhá opakování 
 9. Získat žádosti vypršel časový limit pro moje volání služby?
    * Volání metadata se musí provádět z primární IP adresy přiřazené síťové karty virtuálního počítače, kromě toho v případě, že jste změnili trasy existuje musí být trasu pro adresu 169.254.0.0/16 mimo síťovou kartou.
-10. Můžu aktualizovat Mé značky v sadě škálování virtuálních počítačů ale nejsou zobrazeny v instancích na rozdíl od virtuálních počítačů?
+10. Můžu aktualizovat Mé značky v sadě škálování virtuálního počítače, ale nejsou zobrazeny v instancích na rozdíl od virtuálních počítačů?
    * Aktuálně pro ScaleSets značky zobrazit pouze k virtuálnímu počítači na restartování nebo obnovení z Image/nebo změnit disk na instanci. 
 
    ![Podpora metadat instance](./media/instance-metadata-service/InstanceMetadata-support.png)

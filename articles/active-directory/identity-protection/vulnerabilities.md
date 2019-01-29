@@ -8,7 +8,7 @@ author: MarkusVi
 manager: daveba
 ms.assetid: 92233a5b-cb34-4d28-88cc-d5d29c0f3256
 ms.service: active-directory
-ms.component: conditional-access
+ms.subservice: conditional-access
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 06/27/2018
 ms.author: markvi
 ms.reviewer: nigu
-ms.openlocfilehash: 12440a8da63f19961322f06fd2459a28119e9d59
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: 41635ce1d03709874298731d2da3ef63dd3cd02c
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54463197"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55191819"
 ---
 # <a name="vulnerabilities-detected-by-azure-active-directory-identity-protection"></a>Chyb zabezpečení detekovaných službou Azure Active Directory Identity Protection
 Ohrožení zabezpečení jsou slabá místa ve vašem prostředí, která je někdo zneužije ze strany útočníka. Doporučujeme, abyste řešit tyto nedostatky zabezpečení a zlepšit stav zabezpečení vaší organizace a útočníkům zabránit v jejich využívání.

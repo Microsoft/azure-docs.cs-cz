@@ -7,12 +7,12 @@ ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 06/09/2018
 ms.author: shtabriz
-ms.openlocfilehash: b22ecb9d8948a77df43f47cd9fd218be4319d06e
-ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
+ms.openlocfilehash: 6b617ff99b9183c6b5008292dd3e5d11f2e69da9
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53583727"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55092208"
 ---
 # <a name="create-activity-log-alerts-on-service-notifications"></a>Vytvoření upozornění protokolu aktivit pro oznámení služby
 ## <a name="overview"></a>Přehled
@@ -37,7 +37,7 @@ Další informace o skupinách akcí najdete v tématu [Vytváření a správa s
 
 Informace o tom, jak nakonfigurovat službu stavu oznámení výstrah pomocí šablon Azure Resource Manageru najdete v tématu [šablon Resource Manageru](alerts-activity-log.md).
 
-## <a name="create-an-alert-on-a-service-health-notification-for-a-new-action-group-by-using-the-azure-portal"></a>Vytvořit upozornění na nová skupina akcí oznámení služby stavu s využitím webu Azure portal
+## <a name="alert-and-new-action-group-using-azure-portal"></a>Skupina akcí oznámení a nové pomocí webu Azure portal
 1. V [portál](https://portal.azure.com)vyberte **Service Health**.
 
     ![Služby "Služba stavu"](media/alerts-activity-log-service-notifications/home-servicehealth.png)
@@ -86,7 +86,7 @@ Zjistěte, jak [nakonfigurovat oznámení webhooku pro existující systémy pro
 >
 >
 
-## <a name="create-an-alert-on-a-service-health-notification-for-an-existing-action-group-by-using-the-azure-portal"></a>Vytvořit upozornění na oznámení o stavu služby pro existující skupiny akcí s využitím webu Azure portal
+## <a name="alert-with-existing-action-group-using-azure-portal"></a>Upozornění s existující skupina akcí pomocí webu Azure portal
 
 1. Postupujte podle kroků 1 až 7 v předchozí části, chcete-li vytvořit oznámení o stavu služby. 
 
@@ -96,7 +96,7 @@ Zjistěte, jak [nakonfigurovat oznámení webhooku pro existující systémy pro
 
 Během několika minut upozornění je aktivní a začne aktivovat na základě podmínek, které jste zadali při vytváření.
 
-## <a name="create-an-alert-on-a-service-health-notification-for-a-new-action-group-by-using-the-azure-resource-manager-templates"></a>Vytvořit upozornění na nová skupina akcí oznámení služby stavu s využitím šablon Azure Resource Manageru
+## <a name="alert-and-new-action-group-using-the-azure-resource-manager-templates"></a>Skupina akcí oznámení a nové pomocí šablon Azure Resource Manageru
 
 Následuje příklad, který vytvoří skupiny akcí s cíli e-mailu a povolí všechna oznámení o stavu služby pro cílové předplatné.
 

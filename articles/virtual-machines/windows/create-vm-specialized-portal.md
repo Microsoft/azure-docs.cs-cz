@@ -12,14 +12,14 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.devlang: na
 ms.topic: article
-ms.date: 09/20/2018
+ms.date: 01/18/2019
 ms.author: cynthn
-ms.openlocfilehash: 905f00842c5ce74f681a6c5c09ff8bf6c7a9e162
-ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
+ms.openlocfilehash: b24435501ed1312e91ebec9b9c434971dbc94b55
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49091245"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55163445"
 ---
 # <a name="create-a-vm-from-a-vhd-by-using-the-azure-portal"></a>Vytvoření virtuálního počítače z VHD pomocí webu Azure portal
 
@@ -28,6 +28,8 @@ Existuje několik způsobů, jak vytvořit virtuální počítač (VM) v Azure:
 - Pokud už máte virtuální pevný disk (VHD), který chcete použít, nebo chcete zkopírovat virtuální pevný disk z existujícího virtuálního počítače používat, můžete vytvořit nový virtuální počítač pomocí *připojení* virtuálního pevného disku k novému virtuálnímu počítači jako disku s operačním systémem. 
 
 - Můžete vytvořit nový virtuální počítač z virtuálního pevného disku virtuálního počítače, který je odstraněný. Například pokud máte virtuální počítač Azure, ale nefunguje správně, můžete odstranit virtuální počítač a použít jeho virtuální pevný disk k vytvoření nového virtuálního počítače. Můžete znovu použít stejný virtuální pevný disk nebo vytvoření kopie VHD vytvořením snímku a následným vytvořením nového spravovaného disku ze snímku. I když vytvoření snímku trvá několik kroků, zachová původní virtuální pevný disk a poskytne vám záložní.
+
+- Použijte klasický virtuální počítač a použijte virtuální pevný disk k vytvoření nového virtuálního počítače, který používá model nasazení Resource Manager a spravované disky. Pro nejlepší výsledky **Zastavit** klasický virtuální počítač na webu Azure Portal před vytvořením snímku.
  
 - Virtuální počítač Azure můžete vytvořit z virtuálního pevného disku místní nahrání místního virtuálního pevného disku a připojení k novému virtuálnímu počítači. Použijte PowerShell nebo jiný nástroj k nahrání virtuálního pevného disku do účtu úložiště a pak vytvoření spravovaného disku z virtuálního pevného disku. Další informace najdete v tématu [nahrání specializovaného virtuálního pevného disku](create-vm-specialized.md#option-2-upload-a-specialized-vhd). 
 

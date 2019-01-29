@@ -6,7 +6,7 @@ author: CelesteDG
 manager: mtillman
 ms.assetid: d042d6da-7503-4e20-bb55-06917de01fcd
 ms.service: active-directory
-ms.component: develop
+ms.subservice: develop
 ms.workload: identity
 ms.tgt_pltfrm: ios
 ms.devlang: objective-c
@@ -15,14 +15,14 @@ ms.date: 09/24/2018
 ms.author: celested
 ms.reviewer: brandwe
 ms.custom: aaddev
-ms.openlocfilehash: de0d8d5fb538619e94595ef322eeb80c4de743be
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.openlocfilehash: 6c68070a9b94cf867f8c1c930874a5f02a685294
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52426284"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55096734"
 ---
-# <a name="how-to-enable-cross-app-sso-on-ios-using-adal"></a>Postupy: povolení jednotného přihlašování napříč aplikacemi pro iOS pomocí knihovny ADAL
+# <a name="how-to-enable-cross-app-sso-on-ios-using-adal"></a>Postup: Povolení jednotného přihlašování napříč aplikacemi pro iOS pomocí knihovny ADAL
 
 [!INCLUDE [active-directory-develop-applies-v1-adal](../../../includes/active-directory-develop-applies-v1-adal.md)]
 
@@ -36,7 +36,7 @@ Tento postup platí pro:
 
 * Azure Active Directory (Azure Active Directory)
 * Azure Active Directory B2C
-* Azure Active Directory s B2B
+* Azure Active Directory B2B
 * Podmíněný přístup k Azure Active Directory
 
 ## <a name="prerequisites"></a>Požadavky
@@ -252,7 +252,7 @@ Jak postupovat, jsou:
 3. Registruje se schéma adresy URL.
 4. Přidejte oprávnění do souboru info.plist.
 
-#### <a name="step-1-enable-broker-mode-in-your-application"></a>Krok 1: Povolení režimu zprostředkovatele v aplikaci
+#### <a name="step-1-enable-broker-mode-in-your-application"></a>Krok 1: Povolit režim zprostředkovatele v aplikaci
 
 Možnost pro aplikace pomocí zprostředkovatele zapnutý, při vytváření "kontext" nebo počáteční nastavení ověřování objektu. To provedete tak, že nastavíte typ přihlašovacích údajů ve vašem kódu:
 
@@ -287,7 +287,7 @@ Níže je příklad toho, jak to se zobrazuje v konfiguraci projektu. Také to l
 </array>
 ```
 
-#### <a name="step-3-establish-a-new-redirect-uri-with-your-url-scheme"></a>Krok 3: Stanovení nový identifikátor URI se schématem vaše adresa URL přesměrování
+#### <a name="step-3-establish-a-new-redirect-uri-with-your-url-scheme"></a>Krok 3: Vytvořit nový identifikátor URI se schématem vaše adresa URL přesměrování
 
 Aby se zajistilo, že jsme vrátí do správné aplikace vždy tokeny přihlašovacích údajů, potřebujeme Ujistěte se, že jsme zpětné volání do vaší aplikace tak, aby operační systém iOS můžete ověřit. Operační systém iOS hlásí aplikacím zprostředkovatele Microsoft ID sady prostředků aplikace volání. To nelze falešné neautorizovaný aplikací. Proto jsme využít to spolu s identifikátorem URI naší aplikace zprostředkovatele k zajištění, že tokeny jsou vráceny do správné aplikace. Požadujeme, aby vám určit tento jedinečný identifikátor URI pro přesměrování i ve vaší aplikaci a nastavit jako identifikátor URI přesměrování naše portálu pro vývojáře.
 
@@ -295,7 +295,7 @@ Váš identifikátor URI pro přesměrování musí být ve správné formu:
 
 `<app-scheme>://<your.bundle.id>`
 
-Příklad: *x-msauth mytestiosapp://com.myapp.mytestapp*
+ex: *x-msauth-mytestiosapp://com.myapp.mytestapp*
 
 Toto přesměrování identifikátor URI musí být zadaná pomocí registrace aplikace [webu Azure portal](https://portal.azure.com/). Další informace o registraci aplikace Azure AD najdete v tématu [integraci se službou Azure Active Directory](active-directory-how-to-integrate.md).
 
@@ -305,9 +305,9 @@ Pro podporu certifikátu ověřování na základě druhý "msauth" musí být z
 
 `msauth://code/<broker-redirect-uri-in-url-encoded-form>`
 
-Příklad: *msauth://code/x-msauth-mytestiosapp%3A%2F%2Fcom.myapp.mytestapp*
+ex: *msauth://code/x-msauth-mytestiosapp%3A%2F%2Fcom.myapp.mytestapp*
 
-#### <a name="step-4-add-a-configuration-parameter-to-your-app"></a>Krok 4: Přidejte parametr konfigurace do vaší aplikace
+#### <a name="step-4-add-a-configuration-parameter-to-your-app"></a>Krok 4: Přidání konfiguračního parametru do vaší aplikace
 
 ADAL využívá – canOpenURL: Zkontrolujte, jestli je na zařízení nainstalovaný zprostředkovatel. V Iosu 9 na Apple uzamčené co schémata aplikaci dotázat. Budete muset přidat "msauth" LSApplicationQueriesSchemes část vašeho `info.plist file`.
 

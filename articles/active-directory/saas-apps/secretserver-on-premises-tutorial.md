@@ -8,19 +8,19 @@ manager: femila
 ms.reviewer: joflore
 ms.assetid: be4ba84a-275d-4f71-afce-cb064edc713f
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 04/19/2018
 ms.author: jeedes
-ms.openlocfilehash: 30a1498ab41f263c77656400c4200313048cc331
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 447307c0c27fda9e7719e74e529f21d767c9f58d
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39436161"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55152361"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-secret-server-on-premises"></a>Kurz: Integrace Azure Active Directory pomocí tajného klíče serveru (místní)
 
@@ -38,7 +38,7 @@ Pokud chcete zjistit další podrobnosti o integraci aplikací SaaS v Azure AD, 
 
 Konfigurace integrace Azure AD s tajný klíč serveru (místní), potřebujete následující položky:
 
-- S předplatným služby Azure AD
+- Předplatné Azure AD
 - Tajný kód serveru (místní) jediného přihlášení povolený předplatného
 
 > [!NOTE]
@@ -60,7 +60,7 @@ Konfigurace integrace tajný klíč serveru (místní) do služby Azure AD, bude
 
 **Přidání tajného klíče serveru (místní) z galerie, postupujte následovně:**
 
-1. V  **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu. 
+1. V **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu. 
 
     ![Tlačítko Azure Active Directory][1]
 
@@ -176,7 +176,7 @@ Cílem této části je vytvoření zkušebního uživatele na webu Azure Portal
  
 ### <a name="create-a-secret-server-on-premises-test-user"></a>Vytvoření zkušebního uživatele tajný klíč serveru (místní)
 
-V této části vytvořte uživatele Britta Simon tajný klíč serveru (místní). Práce s [tým podpory tajný klíč serveru (místní)](https://thycotic.force.com/support/s/) přidat uživatele na platformě tajný klíč serveru (místní). Uživatelé musí vytvořit a aktivovat, než použití jednotného přihlašování.
+V této části vytvořte uživatele Britta Simon tajný klíč serveru (místní). Práce s [tým podpory tajný klíč serveru (místní)](https://thycotic.force.com/support/s/) přidat uživatele na platformě tajný klíč serveru (místní). Uživatelé musí vytvořit a aktivovat, než použití jednotného přihlašování.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřadit uživatele Azure AD
 
@@ -208,7 +208,7 @@ V této části je povolit Britta Simon používat jednotné přihlašování Az
 
 1. Klikněte na tlačítko **přiřadit** tlačítko **přidat přiřazení** dialogového okna.
 
-### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování
+### <a name="test-single-sign-on"></a>Test jednotného přihlašování
 
 V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 

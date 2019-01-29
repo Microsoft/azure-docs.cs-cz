@@ -11,33 +11,34 @@ ms.component: core
 ms.topic: article
 ms.date: 01/07/2019
 ms.custom: seodec18
-ms.openlocfilehash: 75a1a8763125e1e93691e2a28bc90a6d02ed7c40
-ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
+ms.openlocfilehash: 1187460deff0ac1ec71ddc70e503169a728c8b5c
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/12/2019
-ms.locfileid: "54246326"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55099947"
 ---
 # <a name="set-up-compute-targets-for-model-training"></a>Nastavení cílových výpočetních prostředí pro trénování modelu
 
-Pomocí služby Azure Machine Learning můžete trénování modelu na širokou škálu prostředků nebo prostředí, které se souhrnně označují jako [ __cílových výpočetních prostředí__](concept-azure-machine-learning-architecture.md#compute-target). Cílové výpočetní prostředí může být místním počítači nebo prostředku cloudu, jako jsou Azure Machine Learning Compute, Azure HDInsight nebo vzdáleného virtuálního počítače.  
+Pomocí služby Azure Machine Learning můžete trénování modelu na širokou škálu prostředků nebo prostředí, které se souhrnně označují jako [ __cílových výpočetních prostředí__](concept-azure-machine-learning-architecture.md#compute-target). Cílové výpočetní prostředí může být místním počítači nebo prostředku cloudu, jako jsou Azure Machine Learning Compute, Azure HDInsight nebo vzdáleného virtuálního počítače.  Můžete také vytvořit cílových výpočetních prostředí pro model nasazení, jak je popsáno v ["kde a jak nasadit modely"](how-to-deploy-and-where.md).
 
 Můžete vytvořit a spravovat cílové výpočetní prostředí pomocí Azure Machine Learning SDK, webu Azure portal nebo rozhraní příkazového řádku Azure. Pokud máte cílových výpočetních prostředí, které byly vytvořené pomocí jiné služby (například cluster HDInsight), můžete jejich připojením do pracovního prostoru služby Azure Machine Learning.
  
-V tomto článku se dozvíte, jak používat různé cílových výpočetních prostředí.  Postup pro všechny cílových výpočetních prostředí postupujte podle stejného pracovního postupu:
+V tomto článku se dozvíte, jak používat různé cílových výpočetních prostředí pro cvičení modelu.  Postup pro všechny cílových výpočetních prostředí postupujte podle stejného pracovního postupu:
 1. __Vytvoření__ cílové výpočetní prostředí, pokud ho ještě nemáte.
 2. __Připojit__ cílové výpočetní prostředí do pracovního prostoru.
 3. __Konfigurace__ cílové výpočetní prostředky tak, aby obsahoval Python prostředí a balíček potřebné závislosti pro váš skript.
 
+
 >[!NOTE]
 > S využitím Azure Machine Learning SDK verze 1.0.6 testovaný kód v tomto článku.
 
-## <a name="supported-compute-targets"></a>Cílových podporovaných výpočetních prostředí
+## <a name="compute-targets-for-training"></a>Cílových výpočetních prostředí pro školení
 
 Služba Azure Machine Learning nabízí různé podporu napříč různými výpočetními cíli. Životní cyklus vývoje typické modelu začíná dev/experimentování na malé množství dat ve službě. V této fázi doporučujeme používat místní prostředí. Například místního počítače nebo virtuálního počítače založené na cloudu. Vertikálně navýšit kapacitu trénování na větších datových sad, nebo proveďte distribuované trénování, doporučujeme vytvořit jeden nebo více node cluster tohoto pravidla automatického škálování provedou pokaždé, když odešlete spuštění pomocí Azure Machine Learning Compute. Můžete také připojit své vlastní výpočetní prostředek, ačkoli podpory pro různé scénáře se může lišit jako podrobnosti jsou dole:
 
 
-|Cílové výpočetní prostředí| Akcelerace GPU | Automatizované<br/> hyperparametrů | Automatizované</br> Strojové učení | Friendly kanálu|
+|Cílové školení výpočetní prostředí| Akcelerace GPU | Automatizované<br/> hyperparametrů | Automatizované</br> Strojové učení | Friendly kanálu|
 |----|:----:|:----:|:----:|:----:|
 |[Místní počítač](#local)| Možná | &nbsp; | ✓ | &nbsp; |
 |[Azure Machine Learning Compute](#amlcompute)| ✓ | ✓ | ✓ | ✓ |
@@ -352,7 +353,7 @@ Nejprve vytvořte experiment ve vašem pracovním prostoru.
 
 Odeslání experimentu se `ScriptRunConfig` objektu.  Tento objekt obsahuje:
 
-* **zdrojovým_adresářem**: Zdrojový adresář, který obsahuje cvičný skript
+* **source_directory**: Zdrojový adresář, který obsahuje cvičný skript
 * **skript**: Identifikujte cvičný skript
 * **run_config**: Konfigurace spuštění, který zase definuje, ve kterém bude probíhat na školení.
 

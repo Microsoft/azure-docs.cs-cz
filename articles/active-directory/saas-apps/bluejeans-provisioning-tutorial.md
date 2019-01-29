@@ -8,19 +8,19 @@ writer: zhchia
 manager: beatrizd-msft
 ms.assetid: d4ca2365-6729-48f7-bb7f-c0f5ffe740a3
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 02/01/2018
 ms.author: v-ant
-ms.openlocfilehash: ce27a6f78dfdeb00e1e7b2c82c928d28f1504a1d
-ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
+ms.openlocfilehash: 91271888adf8e467e807c409f445fe85e9c3aa22
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44347513"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55169888"
 ---
 # <a name="tutorial-configure-bluejeans-for-automatic-user-provisioning"></a>Kurz: Konfigurace BlueJeans pro automatické zřizování uživatelů
 
@@ -59,13 +59,13 @@ Před konfigurací BlueJeans pro automatické zřizování uživatelů pomocí A
 
 4. Do vyhledávacího pole zadejte **BlueJeans**.
 
-    ![BlueJeans zřizování](./media/bluejeans-provisioning-tutorial/BluejeansAppSearch.png)
+    ![BlueJeans Provisioning](./media/bluejeans-provisioning-tutorial/BluejeansAppSearch.png)
 
 5. Na panelu výsledků vyberte **BlueJeans**a potom klikněte na tlačítko **přidat** tlačítko pro přidání BlueJeans do seznamu aplikací SaaS.
 
-    ![BlueJeans zřizování](./media/bluejeans-provisioning-tutorial/BluejeansAppSearchResults.png)
+    ![BlueJeans Provisioning](./media/bluejeans-provisioning-tutorial/BluejeansAppSearchResults.png)
 
-    ![BlueJeans zřizování](./media/bluejeans-provisioning-tutorial/BluejeansAppCreate.png)
+    ![BlueJeans Provisioning](./media/bluejeans-provisioning-tutorial/BluejeansAppCreate.png)
     
 ## <a name="assigning-users-to-bluejeans"></a>Přiřazování uživatelů k BlueJeans
 
@@ -94,15 +94,15 @@ Tato část vás provede kroky pro konfiguraci Azure AD služby zřizování a v
 
 2. Vyberte BlueJeans ze seznamu aplikací SaaS.
  
-    ![BlueJeans zřizování](./media/bluejeans-provisioning-tutorial/Bluejeans2.png)
+    ![BlueJeans Provisioning](./media/bluejeans-provisioning-tutorial/Bluejeans2.png)
 
 3. Vyberte **zřizování** kartu.
 
-    ![BlueJeans zřizování](./media/bluejeans-provisioning-tutorial/BluejeansProvisioningTab.png)
+    ![BlueJeans Provisioning](./media/bluejeans-provisioning-tutorial/BluejeansProvisioningTab.png)
 
 4. Nastavte **režim zřizování** k **automatické**.
 
-    ![BlueJeans zřizování](./media/bluejeans-provisioning-tutorial/Bluejeans1.png)
+    ![BlueJeans Provisioning](./media/bluejeans-provisioning-tutorial/Bluejeans1.png)
 
 5. V části **přihlašovacích údajů správce** části, zadejte **uživatelské jméno správce**, a **heslo správce** BlueJeans účtu. Mezi tyto hodnoty patří:
 
@@ -112,35 +112,35 @@ Tato část vás provede kroky pro konfiguraci Azure AD služby zřizování a v
 
 6. Po vyplnění polí zobrazených v kroku 5, klikněte na tlačítko **Test připojení** aby Azure AD můžete připojit k BlueJeans. Pokud se nepovede, ujistěte se, že váš účet BlueJeans má oprávnění správce a zkuste to znovu.
 
-    ![BlueJeans zřizování](./media/bluejeans-provisioning-tutorial/BluejeansTestConnection.png)
+    ![BlueJeans Provisioning](./media/bluejeans-provisioning-tutorial/BluejeansTestConnection.png)
 
 7. V **e-mailové oznámení** zadejte e-mailovou adresu osoby nebo skupiny, který by měla přijímat oznámení zřizování chyba a zaškrtnutím políčka - **odeslání e-mailové oznámení, když dojde k selhání**.
 
-    ![BlueJeans zřizování](./media/bluejeans-provisioning-tutorial/BluejeansNotificationEmail.png)
+    ![BlueJeans Provisioning](./media/bluejeans-provisioning-tutorial/BluejeansNotificationEmail.png)
 
 8. Klikněte na **Uložit**.
 
 9. V části **mapování** vyberte **synchronizace Azure Active Directory uživatelům BlueJeans**.
 
-    ![BlueJeans zřizování](./media/bluejeans-provisioning-tutorial/BluejeansMapping.png)
+    ![BlueJeans Provisioning](./media/bluejeans-provisioning-tutorial/BluejeansMapping.png)
 
 10. Zkontrolujte atributy uživatele, které se synchronizují ze služby Azure AD do BlueJeans v **mapování atributů** oddílu. Atributy vybrané jako **odpovídající** vlastnosti se používají tak, aby odpovídaly uživatelské účty v BlueJeans pro operace update. Vyberte **Uložit** tlačítko potvrďte všechny změny.
 
-    ![BlueJeans zřizování](./media/bluejeans-provisioning-tutorial/BluejeansUserMappingAtrributes.png)
+    ![BlueJeans Provisioning](./media/bluejeans-provisioning-tutorial/BluejeansUserMappingAtrributes.png)
 
 11. Konfigurace filtrů oborů, najdete v následující pokyny uvedené v [Scoping filtr kurzu](../manage-apps/define-conditional-rules-for-provisioning-user-accounts.md).
 
 12. Služba pro BlueJeans zřizování Azure AD povolit, změňte **stavu zřizování** k **na** v **nastavení** oddílu.
 
-    ![BlueJeans zřizování](./media/bluejeans-provisioning-tutorial/BluejeansProvisioningStatus.png)
+    ![BlueJeans Provisioning](./media/bluejeans-provisioning-tutorial/BluejeansProvisioningStatus.png)
 
 13. Definovat uživatele a/nebo skupiny, které chcete k poskytování BlueJeans výběrem požadované hodnoty do **oboru** v **nastavení** oddílu.
 
-    ![BlueJeans zřizování](./media/bluejeans-provisioning-tutorial/UserGroupSelection.png)
+    ![BlueJeans Provisioning](./media/bluejeans-provisioning-tutorial/UserGroupSelection.png)
 
 14. Až budete připravení ke zřízení, klikněte na tlačítko **Uložit**.
 
-    ![BlueJeans zřizování](./media/bluejeans-provisioning-tutorial/SaveProvisioning.png)
+    ![BlueJeans Provisioning](./media/bluejeans-provisioning-tutorial/SaveProvisioning.png)
 
 Tato operace spustí počáteční synchronizaci všech uživatelů a/nebo skupiny definované v **oboru** v **nastavení** oddílu. Počáteční synchronizace trvá déle než při následné synchronizace, ke kterým dochází přibližně každých 40 minut tak dlouho, dokud je spuštěna služba zřizování Azure AD. Můžete použít **podrobnosti synchronizace** části ke sledování průběhu a odkazech na zřizování sestava aktivity, která popisuje všechny akce, které provádí služba na BlueJeans zřizování Azure AD.
 
@@ -150,7 +150,7 @@ Další informace o tom, jak číst zřizování protokoly Azure AD najdete v t�
 
 * Bluejeans neumožňuje uživatelských jmen, která překročit 30 znaků.
 
-## <a name="additional-resources"></a>Další zdroje informací:
+## <a name="additional-resources"></a>Další materiály
 
 * [Správa zřizování uživatelských účtů pro podnikové aplikace](../manage-apps/configure-automatic-user-provisioning-portal.md)
 * [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](../manage-apps/what-is-single-sign-on.md)

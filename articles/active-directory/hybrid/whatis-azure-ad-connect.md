@@ -8,14 +8,14 @@ ms.service: active-directory
 ms.workload: identity
 ms.topic: get-started-article
 ms.date: 11/28/2018
-ms.component: hybrid
+ms.subservice: hybrid
 ms.author: billmath
-ms.openlocfilehash: 1c18200bb36b75a07d7b26e3ea0016ec35efdd87
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: 0648a0208ac02e846b74ef33fdc162dd89ecb887
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54460495"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55190679"
 ---
 # <a name="what-is-azure-ad-connect"></a>Co je Azure AD Connect?
 

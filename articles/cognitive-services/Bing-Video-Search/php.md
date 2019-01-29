@@ -1,23 +1,23 @@
 ---
 title: 'Rychlý start: Vyhledávání videí Bingu, PHP'
 titlesuffix: Azure Cognitive Services
-description: Zde najdete informace a ukázky kódu, které vám pomůžou rychle začít používat rozhraní API Bingu pro vyhledávání videí.
+description: Umožňuje získat informace a ukázky kódu, které vám pomůžou rychle začít používat rozhraní API Bingu pro vyhledávání videí.
 services: cognitive-services
 author: aahill
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: bing-video-search
+ms.subservice: bing-video-search
 ms.topic: quickstart
 ms.date: 9/21/2017
 ms.author: aahi
-ms.openlocfilehash: 92805d7f124be32712e9ffceac792f4a028e4901
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: 955146e72cebe72f7a2096303e10a29de5c85e2f
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52315490"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55170381"
 ---
-# <a name="quickstart-bing-video-search-api-with-php"></a>Rychlý start: Rozhraní API pro vyhledávání videí Bingu s PHP
+# <a name="quickstart-bing-video-search-api-with-php"></a>Rychlý start: Vyhledávání videí Bingu API s využitím PHP
 
 Tento článek vám ukazuje, jak používat rozhraní API Bingu pro vyhledávání videí, což je součást Microsoft Cognitive Services v Azure. V tomto článku se sice používá PHP, ale rozhraní API je webová služba RESTful kompatibilní s každým programovacím jazykem, který dokáže provádět požadavky HTTP a parsovat JSON. 
 

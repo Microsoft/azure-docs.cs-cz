@@ -7,7 +7,7 @@ author: CelesteDG
 manager: mtillman
 editor: ''
 ms.service: active-directory
-ms.component: develop
+ms.subservice: develop
 ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
@@ -16,12 +16,12 @@ ms.date: 09/24/2018
 ms.author: celested
 ms.custom: aaddev
 ms.reviewer: lenalepa, sureshja
-ms.openlocfilehash: 4608e9ec0cd67b6c0f7ac23e27761b0355a5d738
-ms.sourcegitcommit: 799a4da85cf0fec54403688e88a934e6ad149001
-ms.translationtype: HT
+ms.openlocfilehash: 1411d9b4a199685315587cb642842286da575c63
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50911860"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55098523"
 ---
 # <a name="quickstart-register-an-app-with-the-azure-active-directory-v10-endpoint"></a>Rychlý start: Registrace aplikace pomocí koncového bodu Azure Active Directory verze 1.0
 
@@ -51,12 +51,12 @@ Abyste mohli začít, ujistěte se, že máte tenanta Azure AD, kterého můžet
 
 1. Když se zobrazí stránky **Vytvořit**, zadejte registrační informace vaší aplikace: 
 
-    - **Název:** Zadejte smysluplný název aplikace
+    - **Jméno:** Zadejte název smysluplné aplikace
     - **Typ aplikace:**
       - Vyberte **Nativní** pro [klientské aplikace](developer-glossary.md#client-application), které jsou nainstalované místně na zařízení. Toto nastavení se používá pro veřejné [nativní klienty](developer-glossary.md#native-client) OAuth.
       - Vyberte **Webová aplikace / webové rozhraní API** pro [klientské aplikace](developer-glossary.md#client-application) a [aplikace prostředků / rozhraní API](developer-glossary.md#resource-server), které jsou nainstalované na zabezpečeném serveru. Toto nastavení se používá pro důvěrné [webové klienty](developer-glossary.md#web-client) OAuth a veřejné [klienty na základě uživatelského agenta](developer-glossary.md#user-agent-based-client). Stejná aplikace může také zpřístupnit klienta i prostředek / rozhraní API.
-    - **Přihlašovací adresa URL:** Pro aplikace typu „Webová aplikaci / webové rozhraní API“ zadejte základní adresu URL vaší aplikace. Například `http://localhost:31544` může být adresa URL pro webovou aplikaci spuštěnou na místním počítači. Uživatelé by se pomocí této adresy URL přihlašovali k webové klientské aplikaci. 
-    - **Identifikátor URI pro přesměrování:** Pro „Nativní“ aplikace zadejte identifikátor URI, který Azure AD použije k vrácení odpovědí týkajících se tokenu. Zadejte konkrétní hodnotu pro vaši aplikaci, například `http://MyFirstAADApp`.
+    - **Přihlašovací adresa URL:** Pro "webové aplikace a rozhraní API" aplikace, zadejte základní adresu URL vaší aplikace. Například `http://localhost:31544` může být adresa URL pro webovou aplikaci spuštěnou na místním počítači. Uživatelé by se pomocí této adresy URL přihlašovali k webové klientské aplikaci. 
+    - **Identifikátor URI pro přesměrování:** U aplikací "Nativní" Zadejte identifikátor URI, které používají Azure AD k vracení odpovědí na tokeny. Zadejte konkrétní hodnotu pro vaši aplikaci, například `http://MyFirstAADApp`.
 
       ![Registrace nové aplikace – Vytvořit](./media/quickstart-v1-integrate-apps-with-azure-ad/add-app-registration-create.png)
 
@@ -69,7 +69,7 @@ Abyste mohli začít, ujistěte se, že máte tenanta Azure AD, kterého můžet
       > [!NOTE]
       > Ve výchozím nastavení je nově zaregistrovaná webová aplikace nakonfigurovaná tak, aby přihlášení do vaší aplikace umožňovala **jenom** uživatelům ze stejného tenanta.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 - Podívejte se na [rámec pro udělení souhlasu Azure AD](consent-framework.md), kde najdete přehled o souhlasu.
 - Pokud chcete povolit další funkce konfigurace v registraci aplikace – například přihlašovací údaje, oprávnění, povolení přihlášení pro uživatele z jiných tenantů – přečtěte si článek o [aktualizaci aplikace v Azure AD](quickstart-v1-update-azure-ad-app.md).

@@ -14,12 +14,12 @@ ms.date: 11/26/2018
 ms.author: mabrigg
 ms.reviewer: johnhas
 ROBOTS: NOINDEX
-ms.openlocfilehash: f0ffb4a4c4ea12292639b5a94b7f2990db6e45bd
-ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
+ms.openlocfilehash: 53309eceaab566836cef5f73dff2b69db5d9c135
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/12/2019
-ms.locfileid: "54247805"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55102409"
 ---
 # <a name="deploy-the-local-agent"></a>Nasazení místního agenta
 
@@ -114,9 +114,9 @@ Testy spustit vzdálené akce. Počítač, který spouští testy musí mít př
 
 2. Spusťte následující příkaz:
 
-    ````PowerShell
+    ```PowerShell
     .\Microsoft.VaaSOnPrem.TaskEngineHost.exe -u <VaaSUserId> -t <VaaSTenantId>
-    ````
+    ```
 
       **Parametry**  
     | Parametr | Popis |
@@ -139,4 +139,4 @@ Agenta je jednoznačně identifikují pomocí jeho názvu. Ve výchozím nastave
 
 - [Řešení potíží s ověření jako služba](azure-stack-vaas-troubleshoot.md)
 - [Ověření jako klíčové koncepty služby](azure-stack-vaas-key-concepts.md)
-- [Rychlý start: Použít ověření jako portál služby k naplánování prvního testu](azure-stack-vaas-schedule-test-pass.md)
+- [Rychlé zprovoznění: Použít ověření jako portál služby k naplánování prvního testu](azure-stack-vaas-schedule-test-pass.md)

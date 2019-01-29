@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/22/2018
+ms.date: 01/28/2019
 ms.author: patricka
 ms.reviewer: jerskine
-ms.openlocfilehash: 87e3f03ce5d4c65d5c4b1754300f5d57feca2a49
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: 7e6c54add856a69e1750b0b6ca0a058c2d80bfd8
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50416507"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55101724"
 ---
 # <a name="validate-ad-fs-integration-for-azure-stack"></a>Ověření integrace služby AD FS pro Azure Stack
 
@@ -29,7 +29,7 @@ Nástroj Azure Stack připravenosti kontrola (AzsReadinessChecker) k ověření,
 Kontrola připravenosti ověří:
 
 * *Federačních metadat* obsahuje platné prvky XML pro federaci.
-* *Certifikát SSL služby AD FS* může načíst a řetězce důvěryhodnosti může být sestaven. Na razítku služby AD FS, musí důvěřovat řetězu certifikátů SSL. Certifikát musí být podepsané stejným *certifikační autorita* jako certifikáty nasazení Azure Stack nebo partner důvěryhodné kořenové autoritě. Úplný seznam partnerů důvěryhodné kořenové autoritě najdete v tématu [TechNet](https://gallery.technet.microsoft.com/Trusted-Root-Certificate-123665ca).
+* *Certifikát SSL služby AD FS* může načíst a řetězce důvěryhodnosti může být sestaven. Na razítku služby AD FS, musí důvěřovat řetězu certifikátů SSL. Certifikát musí být podepsané stejným *certifikační autorita* používané pro certifikáty nasazení Azure Stack nebo partnerský server pro důvěryhodného kořenového autoritu. Úplný seznam partnerů důvěryhodné kořenové autoritě najdete v tématu [TechNet](https://gallery.technet.microsoft.com/Trusted-Root-Certificate-123665ca).
 * *Podpisový certifikát služby AD FS* je důvěryhodný a ne blížícím se koncem platnosti.
 
 Další informace o integraci datového centra Azure Stack, najdete v části [integrace datových center Azure Stack – identita](azure-stack-integrate-identity.md).
@@ -101,8 +101,8 @@ Ve výchozím nastavení, oba soubory jsou zapsány do `C:\Users\<username>\AppD
 
 Použití:
 
-* **-OutputPath**: *cesta* parametr na konci příkazu run a zadejte umístění různých sestav.
-* **-CleanReport**: parametr na konci příkazu run zrušte AzsReadinessCheckerReport.json předchozí informací sestavy. Další informace najdete v tématu [sestavu ověření služby Azure Stack](azure-stack-validation-report.md).
+* **-OutputPath**: *Cesta* parametr na konci příkazu run a zadejte umístění různých sestav.
+* **-CleanReport**: Parametr na konci příkazu run zrušte AzsReadinessCheckerReport.json předchozí informací sestavy. Další informace najdete v tématu [sestavu ověření služby Azure Stack](azure-stack-validation-report.md).
 
 ## <a name="validation-failures"></a>Chyby ověřování
 
@@ -114,9 +114,9 @@ Následující příklady poskytují pokyny o běžných chyb při ověřování
 
 `Invoke-AzsADFSValidation : The term 'Invoke-AzsADFSValidation' is not recognized as the name of a cmdlet, function, script file, or operable program. Check the spelling of the name, or if a path was included, verify that the path is correct and try again.`
 
-**Příčina**: Autoload prostředí PowerShell se nezdařilo načtení modulu Kontrola připravenosti správně.
+**Příčina:** Načtení modulu Kontrola připravenosti správně Autoload prostředí PowerShell se nezdařilo.
 
-**Rozlišení**: Import modulu Kontrola připravenosti explicitně. Zkopírujte a vložte následující kód do prostředí PowerShell a aktualizace \<verze\> číslo pro aktuálně nainstalovanou verzi.
+**Řešení:** Importujte modulu Kontrola připravenosti explicitně. Zkopírujte a vložte následující kód do prostředí PowerShell a aktualizace \<verze\> číslo pro aktuálně nainstalovanou verzi.
 
 `Import-Module "c:\Program Files\WindowsPowerShell\Modules\Microsoft.AzureStack.ReadinessChecker\<version>\Microsoft.AzureStack.ReadinessChecker.psd1" -Force`
 

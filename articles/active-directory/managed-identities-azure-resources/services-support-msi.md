@@ -7,14 +7,14 @@ ms.author: priyamo
 ms.date: 11/28/2018
 ms.topic: conceptual
 ms.service: active-directory
-ms.component: msi
+ms.subservice: msi
 manager: daveba
-ms.openlocfilehash: e27d1cf6cbff01ff3268e250ef2816a0b74b1a33
-ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
+ms.openlocfilehash: 2ca70805a0806078613bb37ac1d2836dd8d626c8
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54889021"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55180734"
 ---
 # <a name="services-that-support-managed-identities-for-azure-resources"></a>Služby, které podporují spravované identity pro prostředky Azure
 

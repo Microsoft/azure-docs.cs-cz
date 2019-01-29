@@ -6,16 +6,16 @@ services: cognitive-services
 author: alch-msft
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: academic-knowledge
+ms.subservice: academic-knowledge
 ms.topic: conceptual
 ms.date: 03/27/2017
 ms.author: alch
-ms.openlocfilehash: e16a772caa5fba632f8544094e2d8b57ed4ca765
-ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
+ms.openlocfilehash: d79e14fa48631ec6ce3cde42a7dbe300034782cb
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "48902565"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55171648"
 ---
 # <a name="interpret-method"></a>interpretace – metoda
 
@@ -29,29 +29,29 @@ Pro zajištění interaktivní prostředí, můžete volat tuto metodu opakovan�
 
 ## <a name="request-parameters"></a>Parametry žádosti
 
-Název     | Hodnota | Povinné?  | Popis
+Name     | Value | Povinné?  | Popis
 ---------|---------|---------|---------
 **Dotaz**    | Textový řetězec | Ano | Dotazu zadaného uživatelem.  Pokud dokončení je nastavená na 1, dotaz bude interpretovat jako předponu pro generování návrhy automatického dokončování dotazů.        
-**Model**    | Textový řetězec | Ne  | Název modelu, který chcete dotazovat.  V současné době má výchozí hodnotu *nejnovější*.        
+**model**    | Textový řetězec | Ne  | Název modelu, který chcete dotazovat.  V současné době má výchozí hodnotu *nejnovější*.        
 **Dokončení** | 0 nebo 1 | Ne<br>Výchozí: 0  | 1 znamená, že návrhy automatického dokončování jsou generovány na základě dat gramatiky a graf.         
-**Počet**    | Číslo | Ne<br>Výchozí: 10 | Maximální počet interpretace vrátit.         
+**count**    | Číslo | Ne<br>Výchozí: 10 | Maximální počet interpretace vrátit.         
 **Posun**   | Číslo | Ne<br>Výchozí: 0  | Index prvního interpretace vrátit. Například *počet = 2 & UN přenosu = 0* vrátí interpretace 0 a 1. *Počet = 2 & UN přenosu = 2* vrátí interpretace 2 a 3.       
-**časový limit**  | Číslo | Ne<br>Výchozí: 1000 | Časový limit v milisekundách. Jsou vráceny pouze interpretace nalezen předtím, než vypršel časový limit.
+**timeout**  | Číslo | Ne<br>Výchozí: 1000 | Časový limit v milisekundách. Jsou vráceny pouze interpretace nalezen předtím, než vypršel časový limit.
 <br>
   
 ## <a name="response-json"></a>Odpověď (JSON)
-Název     | Popis
+Name     | Popis
 ---------|---------
 **Dotaz** |*Dotazu* parametr z požadavku.
 **interpretace** |Pole 0 nebo více různých způsobů, jak odpovídající vstup uživatele v porovnání se gramatika.
-**.logprob interpretace [x]**  |Pravděpodobnost relativní přirozený logaritmus výkladu. Vyšší hodnoty budou pravděpodobně.
-**.parse interpretace [x]**  |Řetězec XML, který ukazuje, jak byl interpretován každá část dotazu.
-**.rules interpretace [x]**  |Pole 1 nebo více pravidel definovaných v gramatice, které byly vyvolány během vyhodnocení. Pro rozhraní Academic Knowledge API bude vždy 1 pravidlo.
+**interpretations[x].logprob**  |Pravděpodobnost relativní přirozený logaritmus výkladu. Vyšší hodnoty budou pravděpodobně.
+**interpretations[x].parse**  |Řetězec XML, který ukazuje, jak byl interpretován každá část dotazu.
+**interpretations[x].rules**  |Pole 1 nebo více pravidel definovaných v gramatice, které byly vyvolány během vyhodnocení. Pro rozhraní Academic Knowledge API bude vždy 1 pravidlo.
 **interpretace [.name .rules [y] x]**  |Název pravidla.
-**interpretace [.output .rules [y] x]**  |Výstup pravidla.
-**interpretace [.output.type .rules [y] x]** |Datový typ výstupu pravidla.  Pro rozhraní Academic Knowledge API bude vždy "dotaz".
-**interpretace [.output.value .rules [y] x]**  |Výstup pravidla. Pro rozhraní Academic Knowledge API Toto je řetězec výraz dotazu, který může být předán vyhodnotit a calchistogram metody.
-**Přerušeno** | True, pokud vypršel časový limit žádosti.
+**interpretations[x].rules[y].output**  |Výstup pravidla.
+**interpretations[x].rules[y].output.type** |Datový typ výstupu pravidla.  Pro rozhraní Academic Knowledge API bude vždy "dotaz".
+**interpretations[x].rules[y].output.value**  |Výstup pravidla. Pro rozhraní Academic Knowledge API Toto je řetězec výraz dotazu, který může být předán vyhodnotit a calchistogram metody.
+**aborted** | True, pokud vypršel časový limit žádosti.
 
 <br>
 #### <a name="example"></a>Příklad:

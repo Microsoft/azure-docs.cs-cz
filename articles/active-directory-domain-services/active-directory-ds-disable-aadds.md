@@ -8,19 +8,19 @@ manager: daveba
 editor: curtand
 ms.assetid: 89e407e1-e1e0-49d1-8b89-de11484eee46
 ms.service: active-directory
-ms.component: domain-services
+ms.subservice: domain-services
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 10/27/2017
 ms.author: ergreenl
-ms.openlocfilehash: ac5c7023206050b668c7ad67e9bc8842dae9f0a4
-ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
+ms.openlocfilehash: d72fa2551eb4db3cb68a52cd8a76dd7b9d27b6f0
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54847777"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55179000"
 ---
 # <a name="disable-azure-active-directory-domain-services-using-the-azure-portal"></a>Zakažte Azure Active Directory Domain Services pomocí webu Azure portal
 Tento článek ukazuje, jak zakázat domény služby Azure Active Directory (AD) pro váš adresář Azure AD pomocí webu Azure portal.

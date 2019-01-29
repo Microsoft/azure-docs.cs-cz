@@ -2,14 +2,14 @@
 author: cynthn
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 10/26/2018
+ms.date: 01/27/2019
 ms.author: cynthn
-ms.openlocfilehash: b9fa5fff46fa330a55125053b831c780f21f6e8f
-ms.sourcegitcommit: c31a2dd686ea1b0824e7e695157adbc219d9074f
+ms.openlocfilehash: a13ce8d3dc71be83e05fae5bd07f30f413ce59f2
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/18/2019
-ms.locfileid: "54404690"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55148003"
 ---
 Můžete využít výhod množství příležitostí k monitorování virtuálních počítačů shromažďování, zobrazení a analýza diagnostických a protokolovat data. Provést jednoduché [monitorování](../articles/azure-monitor/overview.md) vašeho virtuálního počítače, můžete použít obrazovka s přehledem pro virtuální počítač na webu Azure Portal. Můžete použít [rozšíření](../articles/virtual-machines/windows/extensions-features.md) ke konfiguraci diagnostiky na virtuálních počítačích shromažďovat další data metriky. Můžete použít také pokročilejší možnosti monitorování, jako například [Application Insights](../articles/azure-monitor/app/app-insights-overview.md) a [Log Analytics](../articles/azure-monitor/log-query/log-query-overview.md).
 
@@ -41,7 +41,7 @@ Můžete vytvořit [výstrahy](../articles/azure-monitor/platform/alerts-overvie
 
 [Azure Resource health](../articles/service-health/resource-health-overview.md) pomáhá při diagnostice a získání podpory v případě, že problém Azure ovlivňuje vaše prostředky. Informuje o aktuálním a dřívějším stavu prostředků a pomáhá zmírnit problémy. Resource Health poskytuje technickou podporu, když potřebujete pomoc při potížích se službami Azure.
 
-## <a name="logs"></a>Logs
+## <a name="azure-activity-log"></a>Protokol aktivit Azure
 
 [Protokolu aktivit Azure](../articles/azure-monitor/platform/activity-logs-overview.md) je předplatné protokol, který poskytuje podrobné informace o události na úrovni předplatného, ke kterým došlo v Azure. V protokolu obsahuje celou řadu dat z Azure Resource Manageru provozních dat k aktualizacím na události služby Service Health. Protokol aktivit můžete kliknout na webu Azure Portal do zobrazení protokolu pro váš virtuální počítač.
 
@@ -64,11 +64,13 @@ Některé z akcí, které vám pomůžou s diagnostických protokolů patří:
 
 ## <a name="advanced-monitoring"></a>Pokročilé sledování
 
-- [Log Analytics](../articles/log-analytics/log-analytics-overview.md) je služba, která monitoruje cloudové a místní prostředí s cílem zachovat jejich dostupnost a výkon. Shromažďuje data generovaná prostředky ve vašem cloudovém a místním prostředí a také data z dalších nástrojů pro monitorování a poskytuje analýzy napříč zdroji. Rozšíření můžete nainstalovat [virtuálního počítače s Linuxem](../articles/virtual-machines/linux/extensions-oms.md) nebo [virtuálního počítače Windows](../articles/virtual-machines/windows/extensions-oms.md) , který nainstaluje agenta Log Analytics a zaregistruje virtuální počítač do existujícího pracovního prostoru Log Analytics.
+- [Azure Monitor](../articles/azure-monitor/overview.md) je služba, která monitoruje cloudové a místní prostředí s cílem zachovat jejich dostupnost a výkon. To poskytuje komplexní řešení pro shromažďování, analýzu a funguje na telemetrická data z vašeho cloudu a místních prostředích. Pomůže vám při zjišťování stavu vašich aplikací a proaktivně identifikuje problémy, které je ovlivňují, a prostředky, na kterých jsou závislé. Rozšíření můžete nainstalovat [virtuálního počítače s Linuxem](../articles/virtual-machines/linux/extensions-oms.md) nebo [virtuálního počítače Windows](../articles/virtual-machines/windows/extensions-oms.md) , který nainstaluje agenta Log Analytics můžete shromažďovat data protokolu a uložit do pracovního prostoru Log Analytics.
 
-    Pro Windows a virtuální počítače s Linuxem po instalaci agenta Log Analytics je doporučená metoda pro shromažďování protokolů a metrik. Nejjednodušší způsob, jak nainstalovat agenta Log Analytics na virtuálním počítači je prostřednictvím [rozšíření Log Analytics pro virtuální počítač](../articles/log-analytics/log-analytics-azure-vm-extension.md). Použití rozšíření zjednodušuje proces instalace a automaticky agenta nakonfiguruje pro odesílání dat do pracovního prostoru Log Analytics, který zadáte. Agent se také automaticky upgraduje a tím zajišťuje, abyste měli nejnovější funkce a opravy.
+    Pro Windows a virtuální počítače s Linuxem po instalaci agenta Log Analytics je doporučená metoda pro shromažďování protokolů. Nejjednodušší způsob, jak nainstalovat agenta Log Analytics na virtuálním počítači je prostřednictvím [rozšíření Log Analytics pro virtuální počítač](../articles/log-analytics/log-analytics-azure-vm-extension.md). Použití rozšíření zjednodušuje proces instalace a automaticky agenta nakonfiguruje pro odesílání dat do pracovního prostoru Log Analytics, který zadáte. Agent se také automaticky upgraduje a tím zajišťuje, abyste měli nejnovější funkce a opravy.
 
 - [Network Watcher](../articles/network-watcher/network-watcher-monitoring-overview.md) vám umožní monitorovat vašeho virtuálního počítače a její přidružené prostředky jejich vztah k síti, ke které jsou v. Rozšíření Network Watcher Agent můžete nainstalovat [virtuálního počítače s Linuxem](../articles/virtual-machines/linux/extensions-nwa.md) nebo [virtuálního počítače Windows](../articles/virtual-machines/windows/extensions-nwa.md).
+
+- [Azure Monitor pro virtuální počítače](../articles/azure-monitor/insights/vminsights-overview.md) monitoruje analýzou výkonu a stavu systému Windows a virtuální počítače s Linuxem, včetně jejich různé procesy a propojených záviset na jiných prostředcích a externí virtuální počítače Azure (VM) ve velkém měřítku procesy. 
 
 ## <a name="next-steps"></a>Další postup
 - Provede v [monitorování virtuálního počítače Windows pomocí Azure Powershellu](../articles/virtual-machines/windows/tutorial-monitoring.md) nebo [monitorování virtuálního počítače s Linuxem pomocí Azure CLI](../articles/virtual-machines/linux/tutorial-monitoring.md).

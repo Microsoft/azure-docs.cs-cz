@@ -13,14 +13,14 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 07/13/2017
-ms.component: hybrid
+ms.subservice: hybrid
 ms.author: billmath
-ms.openlocfilehash: c4dc5ae107cc8babbd425edd6c5de428e130fc3a
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: fb7e4fa929305075df038843e8c6ab324a648e07
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54467532"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55195337"
 ---
 # <a name="azure-ad-connect-sync-operational-tasks-and-consideration"></a>Synchronizace Azure AD Connect: Provozní úlohy a důležité informace
 Cílem tohoto tématu je k popisu provozní úlohy pro synchronizaci Azure AD Connect.

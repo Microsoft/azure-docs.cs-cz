@@ -1,5 +1,5 @@
 ---
-title: Správa aplikací Azure Statistika Fabric v sadě Visual Studio | Dokumentace Microsoftu
+title: Spravujte svoje aplikace Azure Service Fabric v sadě Visual Studio | Dokumentace Microsoftu
 description: Pomocí sady Visual Studio vytvořit, vývoj, zabalení, nasazení a ladění aplikace Service Fabric v Azure a služby.
 services: service-fabric
 documentationcenter: .net
@@ -15,12 +15,12 @@ ms.custom: vs-azure
 ms.workload: azure-vs
 ms.date: 03/26/2018
 ms.author: mikhegn
-ms.openlocfilehash: 01a9852157cbaefd966be974a3175c25e7ff69f8
-ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
+ms.openlocfilehash: b90c39416a522b42932dd82214316e586ba4293a
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "54001698"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55192549"
 ---
 # <a name="use-visual-studio-to-simplify-writing-and-managing-your-service-fabric-applications"></a>Jednodušší vytváření a Správa aplikací Service Fabric pomocí sady Visual Studio
 Můžete spravovat vaše aplikace Azure Service Fabric a služby pomocí sady Visual Studio. Jakmile [nastavení vývojového prostředí](service-fabric-get-started.md), Visual Studio můžete vytvářet aplikace Service Fabric, přidat služby nebo balíček, registrace a nasazení aplikací v místním vývojovém clusteru.
@@ -47,7 +47,7 @@ Visual Studio poskytuje vlastnost s názvem **režim ladění aplikace**, který
 
 #### <a name="application-debug-modes"></a>Režim ladění aplikace
 
-1. **Aktualizovat aplikaci** tento režim vám umožní rychle změnit a ladění vašeho kódu a podporuje úpravy statické webové soubory během ladění. Tento režim funguje jenom v případě místního vývojového clusteru je v [režimu 1 uzel](./service-fabric-get-started-with-a-local-cluster.md#one-node-and-five-node-cluster-mode). Toto je výchozí režim ladění aplikace.
+1. **Aktualizovat aplikaci** tento režim vám umožní rychle změnit a ladění vašeho kódu a podporuje úpravy statické webové soubory během ladění. Tento režim funguje jenom v případě místního vývojového clusteru je v režimu 1 uzel. Toto je výchozí režim ladění aplikace.
 2. **Odebrání aplikace** způsobí, že aplikace má být odebrán při ukončení relace ladění.
 3. **Automatický Upgrade** aplikace i nadále běžel při ukončení relace ladění. Příští relaci ladění bude považovat za nasazení upgradu. Proces upgradu zachová všechna data, která jste zadali v předchozí ladicí relaci.
 4. **Zachovat aplikaci** aplikace i nadále běží v clusteru při ukončení relace ladění. Na začátku příští relaci ladění, se odeberou aplikace.

@@ -1,5 +1,5 @@
 ---
-title: 'Rychlý start: Project URL Preview, JavaScript'
+title: 'Rychlý start: Náhled adresy URL projektu, Python'
 titlesuffix: Azure Cognitive Services
 description: Ukázkový skript, který vám pomůže rychle začít používat funkci Project URL Preview za použití Pythonu.
 services: cognitive-services
@@ -10,14 +10,14 @@ ms.component: url-preview
 ms.topic: quickstart
 ms.date: 03/29/2018
 ms.author: rosh
-ms.openlocfilehash: ecf98803e5313812a074442b70bb376ab67e7366
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
-ms.translationtype: HT
+ms.openlocfilehash: 650e11317dfa2eb3cc2fa6fd6146e55f8f8e87ef
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49469992"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55092784"
 ---
-# <a name="quickstart-url-preview-with-python"></a>Rychlý start: URL Preview s využitím Pythonu
+# <a name="quickstart-url-preview-with-python"></a>Rychlý start: Náhled adresy URL pomocí Pythonu
 
 Následující příklady Pythonu vytvoří náhled adresy URL pro web SwiftKey: https://swiftkey.com/en.
 
@@ -41,7 +41,7 @@ Implementuje se v následujících krocích:
 
 Následuje celý kód pro tuto ukázku:
 
-````
+```
 import http.client, urllib.parse
 import json
 
@@ -64,8 +64,8 @@ def get_preview ():
 
 result = get_preview ()
 print (json.dumps(json.loads(result), indent=4))
-````
-## <a name="next-steps"></a>Další kroky
+```
+## <a name="next-steps"></a>Další postup
 - [Rychlý start pro jazyk C#](csharp.md)
 - [Rychlý start pro Javu](java-quickstart.md)
 - [Rychlý start pro JavaScript](javascript.md)

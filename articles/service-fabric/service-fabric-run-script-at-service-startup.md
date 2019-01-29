@@ -1,6 +1,6 @@
 ---
-title: Spustit skript při spuštění služby Azure Service Fabric | Microsoft Docs
-description: Zjistěte, jak nakonfigurovat zásadu pro vstupní bod instalační program služby Service Fabric a spusťte skript v doba spuštění služby.
+title: Spuštění skriptu při spuštění služby Azure Service Fabric | Dokumentace Microsoftu
+description: Zjistěte, jak nakonfigurovat zásady pro Service Fabric vstupního bodu nastavení služby a spuštění skriptu na doba spuštění služby.
 services: service-fabric
 documentationcenter: .net
 author: msfussell
@@ -14,20 +14,20 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 03/21/2018
 ms.author: mfussell
-ms.openlocfilehash: 3fe22d8bb52fa5f45ce5f1cdc7b860d1ce295a71
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: caca931806aed7e1868c126d4629073bcea4b900
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34210490"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55098608"
 ---
 # <a name="run-a-service-startup-script-as-a-local-user-or-system-account"></a>Spuštění skriptu spuštění služby jako místní uživatel nebo systémový účet
-Před spuštění spustitelného souboru služby Service Fabric může být nutné spustit pracovní některé konfigurace nebo instalační program.  Například konfigurace proměnné prostředí. Můžete určit skript běžet před spustitelný soubor služby spuštění v service manifest pro službu. Tím, že nakonfigurujete zásadu RunAs pro instalační program Vstupní bod služby, že můžete změnit účet, který instalačního programu běží pod.  Vstupní bod samostatného instalačního umožňuje spustit vysokou privilged konfigurace na krátkou dobu, spustitelný soubor hostitele služby nemusí spustit s vysokou úrovní oprávnění pro dlouhou dobu.
+Před spuštění spustitelného souboru služby Service Fabric může být nutné spustit úkony konfigurace nebo nastavení.  Například konfigurace proměnných prostředí. Můžete určit skript běžet před spuštěním spustitelného souboru služby v manifestu služby pro službu. Tím, že nakonfigurujete zásadu RunAs vstupního bodu nastavení služby, že které účet můžete změnit instalačního programu běží pod.  Vstupní bod samostatný instalační program umožňuje spustit vysokými konfigurace na krátkou dobu, tak spustitelný soubor hostitele služby nemusí spouštět s vysokou úrovní oprávnění pro dlouhou dobu.
 
-Instalační program vstupního bodu (**SetupEntryPoint** v [service manifest](service-fabric-application-and-service-manifests.md)) je privilegované vstupního bodu, který ve výchozím nastavení běží se stejnými pověřeními, jako Service Fabric (obvykle  *NetworkService* účtu) před další vstupní bod. Spustitelný soubor, který je zadán **EntryPoint** je obvykle dlouho běžící hostitele služby. **EntryPoint** po je spustit spustitelný soubor **SetupEntryPoint** spustitelný soubor ukončí úspěšně. Výsledný proces monitorovat a restartuje a znovu začíná **SetupEntryPoint** Pokud někdy ukončí nebo dojde k chybě. 
+Vstupní bod nastavení (**SetupEntryPoint** v [manifestu služby](service-fabric-application-and-service-manifests.md)) je privilegovaných vstupní bod, který ve výchozím nastavení běží se stejnými přihlašovacími údaji jako Service Fabric (obvykle  *NetworkService* účtu) před všechny ostatní vstupní bod. Spustitelný soubor, který je určen **EntryPoint** je obvykle dlouhotrvající hostitele služby. **EntryPoint** spuštění spustitelného souboru **SetupEntryPoint** spustitelný soubor skončí úspěšně. Výsledný proces je monitorovat a restartuje a znovu začíná **SetupEntryPoint** Pokud někdy ukončí nebo dojde k chybě. 
 
 ## <a name="configure-the-service-setup-entry-point"></a>Konfigurace vstupního bodu nastavení služby
-Následující je příklad manifestu jednoduché služby pro bezstavové služby, který určuje skript instalace *MySetup.bat* ve službě **SetupEntryPoint**.  **Argumenty** slouží k předání argumentů do skriptu, když je spuštěna.
+Následující je příklad jednoduchou službu manifestu pro bezstavovou službu, která určuje instalační skript *MySetup.bat* ve službě **SetupEntryPoint**.  **Argumenty** slouží k předávání argumentů do skriptu při spuštění.
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -66,11 +66,11 @@ Následující je příklad manifestu jednoduché služby pro bezstavové služb
   </Resources>
 </ServiceManifest>
 ```
-## <a name="configure-the-policy-for-a-service-setup-entry-point"></a>Konfigurace zásad pro bod služby instalační položka
-Ve výchozím nastavení spouští spustitelný soubor služby instalace vstupní bod v rámci stejné přihlašovací údaje jako Service Fabric (obvykle *NetworkService* účtu).  V manifestu aplikace můžete změnit oprávnění zabezpečení pro spuštění skriptu spuštění pod účtem místního systému nebo účtem správce.
+## <a name="configure-the-policy-for-a-service-setup-entry-point"></a>Konfigurace zásad pro vstupního bodu nastavení služby
+Spustitelný soubor vstupního bodu služby Instalační program ve výchozím nastavení spouští pod stejnými přihlašovacími údaji jako Service Fabric (obvykle *NetworkService* účtu).  V manifestu aplikace můžete změnit oprávnění zabezpečení pro spuštění skriptu spuštění pod účtem místního systému nebo účtem správce.
 
-### <a name="configure-the-policy-by-using-a-local-system-account"></a>Nakonfigurujte zásady pomocí účtu místního systému
-Následující příklad manifestu aplikace ukazuje, jak nakonfigurovat službu instalace vstupní bod pro spuštění pod účtem uživatele správce (SetupAdminUser).
+### <a name="configure-the-policy-by-using-a-local-system-account"></a>Konfigurace zásad s použitím místní systémový účet
+V následujícím příkladu manifestu aplikace ukazuje, jak nakonfigurovat vstupního bodu nastavení služby pro spuštění uživatelského účtu správce (SetupAdminUser).
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -104,12 +104,12 @@ Následující příklad manifestu aplikace ukazuje, jak nakonfigurovat službu 
 </ApplicationManifest>
 ```
 
-Nejprve vytvořte **objekty** část s uživatelským jménem, jako je například SetupAdminUser. SetupAdminUser uživatelský účet je členem skupiny Administrators systému.
+Nejprve vytvořte **objekty zabezpečení** část s uživatelským jménem, například SetupAdminUser. Uživatelský účet SetupAdminUser je členem skupiny Administrators systému.
 
-Dále v části **ServiceManifestImport** nakonfigurujte zásadu použít tento objekt zabezpečení na **SetupEntryPoint**. Tato zásada informuje Service Fabric, který po **MySetup.bat** spuštění souboru má být spuštěn jako SetupAdminUser (s oprávněními správce). Vzhledem k tomu, že máte *není* použít zásadu na hlavní vstupní bod, kód v **MyServiceHost.exe** běží v rámci systému **NetworkService** účtu. Toto je výchozí účet, který všechny vstupní body služby jsou spustit jako.
+Části **ServiceManifestImport** nakonfigurujte zásadu, která platí tento instanční objekt k **SetupEntryPoint**. Tato zásada říká Service Fabric, že **MySetup.bat** se spustí soubor by měl spustit jako SetupAdminUser (s oprávněními správce). Protože máte *není* použít zásadu pro hlavní vstupní bod kódu v **MyServiceHost.exe** běží v rámci systému **NetworkService** účtu. Toto je výchozí účet, který všechny vstupní body služby se spustit jako.
 
-### <a name="configure-the-policy-by-using-local-system-accounts"></a>Nakonfigurujte zásady pomocí místní systémové účty
-Často je vhodnější pro spuštění skriptu spuštění pomocí účtu local system, nikoli účet správce. Spuštění zásad RunAs jako člen skupiny Administrators obvykle nefunguje správně, protože počítače mají přístup k řízení Uživatelských účtů ve výchozím nastavení povolené. V takových případech doporučuje se ke spuštění SetupEntryPoint pod účtem LocalSystem, ne jako místní uživatel přidán do skupiny Administrators. Následující příklad ukazuje nastavení SetupEntryPoint běží pod účtem LocalSystem:
+### <a name="configure-the-policy-by-using-local-system-accounts"></a>Konfigurace zásad s použitím místní systémové účty
+Často je vhodnější pro spuštění po spuštění skriptu s použitím místního systémového účtu než účtu správce. Spuštění zásad RunAs jako člen skupiny Administrators obvykle nebude fungovat, protože počítače mají přístup k řízení Uživatelských účtů ve výchozím nastavení povolená. V takovém případě doporučujeme spustit SetupEntryPoint pod účtem LocalSystem, nikoli jako místní uživatel přidán do skupiny Správci. Následující příklad ukazuje nastavení SetupEntryPoint, aby byl spuštěn:
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -140,18 +140,18 @@ Dále v části **ServiceManifestImport** nakonfigurujte zásadu použít tento 
 ```
 
 > [!NOTE]
-> Pro clustery Linux ke spuštění služby nebo nastavení vstupního bodu jako **kořenové**, můžete zadat **AccountType** jako **LocalSystem**.
+> U Linuxových clusterů pro spuštění služby nebo nastavení vstupní bod jako **kořenové**, můžete zadat **AccountType** jako **LocalSystem**.
 
-## <a name="run-a-script-from-the-setup-entry-point"></a>Spusťte skript ze vstupního bodu instalační program
-Nyní přidejte po spuštění skriptu do projektu běh oprávnění správce. 
+## <a name="run-a-script-from-the-setup-entry-point"></a>Spusťte skript ze vstupního bodu nastavení
+Teď přidejte do projektu spuštět s oprávněními správce po spuštění skriptu. 
 
 V sadě Visual Studio, klikněte pravým tlačítkem na projekt služby a přidejte nový soubor s názvem *MySetup.bat*.
 
-Dále zkontrolujte, zda *MySetup.bat* souboru je zahrnutý v balíčku služby. Ve výchozím nastavení není. Vyberte soubor, klikněte pravým tlačítkem na získat v místní nabídce a zvolte **vlastnosti**. V dialogovém okně Vlastnosti ověřte, že **kopírovat do výstupního adresáře** je nastaven na **kopírovat, pokud je novější**. Viz následující snímek obrazovky.
+Dále, ujistěte se, že *MySetup.bat* souboru je zahrnuta v balíčku služby. Ve výchozím nastavení není. Vyberte soubor, klikněte pravým tlačítkem na získání kontextovou nabídku a zvolte **vlastnosti**. V dialogovém okně Vlastnosti, ujistěte se, že **kopírovat do výstupního adresáře** je nastavena na **kopírovat, pokud je novější**. Viz následující snímek obrazovky.
 
 ![Visual Studio CopyToOutput pro SetupEntryPoint dávkového souboru][image1]
 
-Nyní upravit *MySetup.bat* souboru a přidejte následující příkazy nastavit proměnnou prostředí systému a výstup do textového souboru:
+Nyní upravit *MySetup.bat* a přidejte následující příkazy nastavit proměnné prostředí systému a výstup do textového souboru:
 
 ```
 REM Set a system environment variable. This requires administrator privilege
@@ -163,21 +163,21 @@ REM To delete this system variable us
 REM REG delete "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Session Manager\Environment" /v TestVariable /f
 ```
 
-V dalším kroku sestavení a nasadit řešení místního vývojového clusteru. Po spuštění služby, jak je znázorněno v [Service Fabric Explorer](service-fabric-visualizing-your-cluster.md), uvidíte, že MySetup.bat souboru bylo úspěšné dvěma způsoby. Otevřete příkazový řádek prostředí PowerShell a zadejte:
+V dalším kroku sestavení a nasazení řešení do místního vývojového clusteru. Po spuštění služby, jak je znázorněno v [Service Fabric Explorer](service-fabric-visualizing-your-cluster.md), uvidíte, že soubor MySetup.bat úspěšné dvěma způsoby. Otevřete příkazový řádek Powershellu a zadejte:
 
 ```
 PS C:\ [Environment]::GetEnvironmentVariable("TestVariable","Machine")
 MyValue
 ```
 
-Poznamenejte si název uzlu, kde byla službu nasadit a spustit [Service Fabric Explorer](service-fabric-visualizing-your-cluster.md). Například uzlu 2. Dále přejděte do složky pracovní instance aplikace out.txt soubor, který se zobrazuje hodnota **TestVariable**. Například pokud tato služba byla nasazena na uzlu 2, potom můžete přejít na tuto cestu pro **MyApplicationType**:
+Poznamenejte si název uzlu, kde se služba nasazení a spuštění v [Service Fabric Explorer](service-fabric-visualizing-your-cluster.md). Například uzel 2. Dále přejděte do složky aplikace instanci pracovní out.txt soubor, který zobrazuje hodnota **TestVariable**. Například pokud je tato služba byla nasazena na uzlu 2, pak můžete přejít na této cestě **MyApplicationType**:
 
 ```
 C:\SfDevCluster\Data\_App\Node.2\MyApplicationType_App\work\out.txt
 ```
 
-## <a name="run-powershell-commands-from-a-setup-entry-point"></a>Spouštění příkazů prostředí PowerShell ze vstupního bodu instalační program
-Spustit prostředí PowerShell z **SetupEntryPoint** bodu, můžete spustit **PowerShell.exe** v dávkovém souboru, který odkazuje na soubor prostředí PowerShell. Nejprve přidejte soubor prostředí PowerShell služby projektu – například **MySetup.ps1**. Nezapomeňte nastavit *kopírovat, pokud je novější* vlastnost tak, aby soubor jsou také obsaženy v balíčku služby. Následující příklad ukazuje dávkový soubor začínající soubor prostředí PowerShell s názvem MySetup.ps1, která nastavuje proměnnou prostředí systému s názvem **TestVariable**.
+## <a name="run-powershell-commands-from-a-setup-entry-point"></a>Spusťte příkazy Powershellu ze vstupního bodu nastavení
+Chcete spustit PowerShell z **SetupEntryPoint** bodu, můžete spustit **PowerShell.exe** v dávkovém souboru, který odkazuje na soubor Powershellu. Nejprve přidejte soubor Powershellu projekt služby – například **MySetup.ps1**. Nezapomeňte nastavit *kopírovat, pokud je novější* vlastnost tak, že soubor je také součástí balíčku služby. Následující příklad ukazuje dávkový soubor, který se spustí soubor prostředí PowerShell s názvem MySetup.ps1, který nastaví proměnnou prostředí systému s názvem **TestVariable**.
 
 MySetup.bat spustit soubor prostředí PowerShell:
 
@@ -185,7 +185,7 @@ MySetup.bat spustit soubor prostředí PowerShell:
 powershell.exe -ExecutionPolicy Bypass -Command ".\MySetup.ps1"
 ```
 
-V prostředí PowerShell souboru přidejte následující nastavení proměnné prostředí systému:
+V prostředí PowerShell souboru přidejte následující k nastavení proměnné prostředí systému:
 
 ```
 [Environment]::SetEnvironmentVariable("TestVariable", "MyValue", "Machine")
@@ -193,7 +193,7 @@ V prostředí PowerShell souboru přidejte následující nastavení proměnné 
 ```
 
 > [!NOTE]
-> Ve výchozím nastavení, když dávkový soubor spouští, vypadá to, v aplikaci složku s názvem **pracovní** pro soubory. V takovém případě při spuštění MySetup.bat chceme najít soubor MySetup.ps1 ve stejné složce, která je aplikace **balíček kódu** složky. Chcete-li změnit tato složka, nastavte pracovní složku:
+> Ve výchozím nastavení, když dávkový soubor se spustí, dohlíží na aplikace složku s názvem **fungovat** pro soubory. V takovém případě při spuštění MySetup.bat chceme, aby pro vyhledání souboru MySetup.ps1 ve stejné složce, což je aplikace **balíček kódu** složky. Chcete-li změnit tato složka, nastavte pracovní složky:
 > 
 > 
 
@@ -206,15 +206,15 @@ V prostředí PowerShell souboru přidejte následující nastavení proměnné 
 </SetupEntryPoint>
 ```
 
-## <a name="debug-a-startup-script-locally-using-console-redirection"></a>Ladění skriptu spuštění místně pomocí přesměrování konzoly
-V některých případech je užitečná pro účely, chcete-li zobrazit výstup konzoly z spuštění skriptu instalace ladění. Můžete nastavit zásadu konzoly přesměrování na instalační program Vstupní bod v manifestu služby, který zapíše výstup do souboru. Soubor výstup zapsán do aplikace složku s názvem **protokolu** na uzlu clusteru, kde je aplikace nasazena a spustit. 
+## <a name="debug-a-startup-script-locally-using-console-redirection"></a>Ladění spouštěcí skript místně pomocí přesměrování konzoly
+V některých případech je užitečné pro ladění účely zobrazíte výstup konzoly z spouští se instalační skript. Zásady přesměrování konzoly můžete nastavit v nastavení vstupní bod v manifestu služby, který zapíše výstup do souboru. Výstupní soubor je zapsána do aplikace složku s názvem **protokolu** na uzlu clusteru, kde nasazení a spuštění aplikace. 
 
 > [!WARNING]
-> Nikdy nepoužívejte konzolu Zásady přesměrování v aplikaci, která je nasazena v produkčním prostředí, protože to může mít vliv převzetí služeb při selhání aplikaci. *Pouze* používejte pro místní vývoj a účely ladění.  
+> Nikdy nepoužívejte zásady přesměrování konzoly v aplikaci, která je nasazená v produkčním prostředí, protože to může mít vliv převzetí služeb při selhání aplikace. *Pouze* používá se pro místní vývoj a ladění.  
 > 
 > 
 
-V následujícím příkladu manifestu služby ukazuje nastavení přesměrování konzoly s hodnotou FileRetentionCount:
+Následující příklad manifestu služby ukazuje nastavení přesměrování konzoly s hodnotou FileRetentionCount:
 
 ```xml
 <SetupEntryPoint>
@@ -226,22 +226,22 @@ V následujícím příkladu manifestu služby ukazuje nastavení přesměrován
 </SetupEntryPoint>
 ```
 
-Pokud změníte teď MySetup.ps1 souboru pro zápis **Echo** příkaz, to bude zapisovat do výstupního souboru pro účely ladění:
+Pokud změníte nyní MySetup.ps1 soubor pro zápis **Echo** příkazu, to bude zapisovat do výstupního souboru pro účely ladění:
 
 ```
 Echo "Test console redirection which writes to the application log folder on the node that the application is deployed to"
 ```
 
 > [!WARNING]
-> Po ladění skriptu, okamžitě odeberte tuto zásadu přesměrování konzoly.
+> Po ladění skriptu, okamžitě odeberou tyto zásady přesměrování konzoly.
 
 
 
 <!--Every topic should have next steps and links to the next logical set of content to keep the customer engaged-->
 ## <a name="next-steps"></a>Další postup
-* [Další informace o zabezpečení služby a aplikace](service-fabric-application-and-service-security.md)
+* [Další informace o aplikaci a služby zabezpečení](service-fabric-application-and-service-security.md)
 * [Pochopení aplikačního modelu](service-fabric-application-model.md)
-* [Zadejte prostředky v service manifest](service-fabric-service-manifest-resources.md)
+* [Zadání prostředků v manifestu služby](service-fabric-service-manifest-resources.md)
 * [Nasazení aplikace](service-fabric-deploy-remove-applications.md)
 
 [image1]: ./media/service-fabric-application-runas-security/copy-to-output.png

@@ -6,30 +6,30 @@ services: cognitive-services
 author: alch-msft
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: academic-knowledge
+ms.subservice: academic-knowledge
 ms.topic: conceptual
 ms.date: 03/31/2017
 ms.author: alch
-ms.openlocfilehash: 862fd6d506d5f1ca6f7f532f80f53a29200f33db
-ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
+ms.openlocfilehash: 793b35d9c6412c40a87f3f91fcd772476d57584f
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "48900423"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55154563"
 ---
 # <a name="field-of-study-entity"></a>Pole entity studie
 
 <sub> * Následující atributy jsou specifické pro pole entity studie. (Ty = "6") </sub>
 
-Název    |Popis                            |Typ       | Operace
+Name    |Popis                            |Type       | Operace
 ------- | ------------------------------------- | --------- | ----------------------------
 ID      |ID entity                              |Int64      |Rovná se
 FN      |Pole Normalizovaný název studie         |Řetězec     |Rovná se
 DFN     |Pole studie zobrazovaný název            |Řetězec     |žádný
 Kopie      |Pole počtu studie celkového citace    |Datový typ Int32      |žádný  
 ECC     |Pole o celkové odhadované citace počet|Datový typ Int32      |žádný
-USA      |Úroveň v polích studie hierarchie     |Datový typ Int32      |Je rovno <br/>IsBetween
-FP. FN   |Nadřazené pole Název studie             |Řetězec     |Rovná se
-FP. FId  |Nadřazené pole ID studie               |Int64      |Rovná se
-FC. FN   |Podřízené pole Název studie              |Řetězec     |Rovná se
-FC. FId  |Podřízené pole ID studie                |Int64      |Rovná se
+FL      |Úroveň v polích studie hierarchie     |Datový typ Int32      |Je rovno <br/>IsBetween
+FP.FN   |Nadřazené pole Název studie             |Řetězec     |Rovná se
+FP.FId  |Nadřazené pole ID studie               |Int64      |Rovná se
+FC.FN   |Podřízené pole Název studie              |Řetězec     |Rovná se
+FC.FId  |Podřízené pole ID studie                |Int64      |Rovná se

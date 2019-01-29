@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 10/10/2018
 ms.author: mbullwin
-ms.openlocfilehash: 812478c13ef39b369471a731c52dc38ba6a4368c
-ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
+ms.openlocfilehash: 511937fde859f47af2b7bc273daaab88bb8809c3
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54119743"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55094525"
 ---
 # <a name="data-collection-retention-and-storage-in-application-insights"></a>Shromažďování, uchování a ukládání dat v nástroji Application Insights
 
@@ -148,7 +148,7 @@ Ve výchozím nastavení `ServerTelemetryChannel` používá složky dat lokáln
 
 
 Prostřednictvím konfiguračního souboru:
-```
+```xml
 <TelemetryChannel Type="Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel.ServerTelemetryChannel,   Microsoft.AI.ServerTelemetryChannel">
     <StorageFolder>D:\NewTestFolder</StorageFolder>
 </TelemetryChannel>
@@ -158,7 +158,7 @@ Prostřednictvím kódu:
 
 - Odebrat ServerTelemetryChannel z konfiguračního souboru
 - Přidejte tento fragment kódu do vaší konfigurace:
-```
+```csharp
 ServerTelemetryChannel channel = new ServerTelemetryChannel();
 channel.StorageFolder = @"D:\NewTestFolder";
 channel.Initialize(TelemetryConfiguration.Active);
@@ -171,7 +171,7 @@ Ve výchozím nastavení `ServerTelemetryChannel` používá složky dat lokáln
 
 Následující fragment kódu ukazuje, jak nastavit `ServerTelemetryChannel.StorageFolder` v `ConfigureServices()`  metodu vaše `Startup.cs` třídy:
 
-```
+```csharp
 services.AddSingleton(typeof(ITelemetryChannel), new ServerTelemetryChannel () {StorageFolder = "/tmp/myfolder"});
 ```
 
@@ -244,7 +244,7 @@ Sady SDK se liší mezi platformami a je několik komponent, které můžete nai
 | [Přidejte Application Insights SDK do webového projektu .NET][greenbrown] |ServerContext<br/>Odvodit<br/>Čítače výkonu<br/>Požadavky<br/>**Výjimky**<br/>Relace<br/>uživatelé |
 | [Nainstalujte monitorování stavu ve službě IIS][redfield] |Závislosti<br/>ServerContext<br/>Odvodit<br/>Čítače výkonu |
 | [Přidat sadu Application Insights SDK do webové aplikace v Javě][java] |ServerContext<br/>Odvodit<br/>Žádost<br/>Relace<br/>uživatelé |
-| [Přidání sady SDK JavaScript do webové stránky][client] |Instance třídy ClientContext <br/>Odvodit<br/>Stránka<br/>ClientPerf<br/>AJAX |
+| [Přidání sady SDK JavaScript do webové stránky][client] |ClientContext <br/>Odvodit<br/>Stránka<br/>ClientPerf<br/>Ajax |
 | [Definovat výchozí vlastnosti][apiproperties] |**Vlastnosti** na všechny standardní a vlastní události |
 | [Volání TrackMetric][api] |Číselné hodnoty<br/>**Vlastnosti** |
 | [Sledování volání *][api] |Název události<br/>**Vlastnosti** |
@@ -258,7 +258,7 @@ Pro [sady SDK pro jiné platformy][platforms], najdete v článku své dokumenty
 | --- | --- |
 | **Vlastnosti** |**Všechna data – určeno kódu** |
 | DeviceContext |ID, IP, národní prostředí, model zařízení, sítě, typ sítě, název výrobce OEM, rozlišení obrazovky nebo instanci Role, název Role, typ zařízení |
-| Instance třídy ClientContext |Operační systém, národní prostředí, jazyka, sítě, okno řešení |
+| ClientContext |Operační systém, národní prostředí, jazyka, sítě, okno řešení |
 | Relace |Id relace |
 | ServerContext |Název počítače, národní prostředí operačního systému, zařízení, uživatelské relace, uživatelský kontext, operace |
 | Odvodit |geografické umístění z IP adresy, časové razítko, operačního systému, prohlížeč |
@@ -266,7 +266,7 @@ Pro [sady SDK pro jiné platformy][platforms], najdete v článku své dokumenty
 | Události |Název události a hodnota |
 | Zobrazení stránky |Adresa URL a stránky název nebo název obrazovky |
 | Výkonu klienta |Název adresy URL/stránky, doba načítání prohlížečem |
-| AJAX |HTTP volání z webové stránky serveru |
+| Ajax |HTTP volání z webové stránky serveru |
 | Požadavky |Adresa URL, doba trvání, kód odpovědi |
 | Závislosti |Typ (SQL, protokolu HTTP,...), připojovací řetězec nebo identifikátor URI, sync/async, doba trvání, úspěch, příkaz SQL (pomocí monitorování stavu) |
 | **Výjimky** |Typ, **zpráva**, zásobníky volání, zdrojového souboru a řádku číslo id vlákna |

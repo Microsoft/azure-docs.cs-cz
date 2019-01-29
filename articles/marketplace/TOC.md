@@ -35,7 +35,10 @@
 #### [Propagace vašeho podnikání s Microsoftem](./gtm-promote-your-business.md)
 #### [Upřednostňovaná řešení](./preferred-solutions.md) 
 
-### [Podpora pro Azure Marketplace a AppSource](./support-azure-marketplace.md)  
+### [Podpora pro Azure Marketplace a AppSource](./support-azure-marketplace.md)
+#### [Nejčastější dotazy k Marketplace](./marketplace-faq-publisher-guide.md)
+#### [Podmínky pro Marketplace](./marketplace-terms.md)
+#### [Zásady pro zapojení na Marketplace](./marketplace-participation-policy.md)
 
 
 <!-- Following section is for Cloud Partner Portal (CPP). -->
@@ -151,7 +154,6 @@
 #### [Publikování nabídky](./cloud-partner-portal/saas-app/cpp-publish-offer.md)
 #### [Aktualizace stávající nabídky](./cloud-partner-portal/saas-app/cpp-update-existing-offer.md)
 #### [Rozhraní API SaaS](./cloud-partner-portal-orig/cloud-partner-portal-saas-subscription-apis.md)
-#### [Klient samočinného testování SaaS](./cloud-partner-portal/saas-app/cpp-selftest-client.md)
 
 ### [Nabídka virtuálních počítačů](./cloud-partner-portal/virtual-machine/cpp-virtual-machine-offer.md)
 #### [Požadavky](./cloud-partner-portal/virtual-machine/cpp-prerequisites.md)
@@ -176,6 +178,7 @@
 ###### [Šablona nasazení VHD](./cloud-partner-portal/virtual-machine/cpp-deploy-json-template.md)
 ###### [Nasazení virtuálního počítače z marketplace](./cloud-partner-portal/virtual-machine/cpp-deploy-vm-marketplace.md)
 ##### [Certifikace image virtuálního počítače](./cloud-partner-portal/virtual-machine/cpp-certify-vm.md)
+##### [Klient samočinného testování virtuálního počítače](./cloud-partner-portal/virtual-machine/cpp-selftest-client.md)
 ##### [Získání identifikátoru URI sdíleného přístupového podpisu](./cloud-partner-portal/virtual-machine/cpp-get-sas-uri.md)
 ##### [Běžné problémy s adresou URL sdíleného přístupového podpisu](./cloud-partner-portal/virtual-machine/cpp-common-sas-url-issues.md)
 #### [Publikování nabídky virtuálních počítačů](./cloud-partner-portal/virtual-machine/cpp-publish-offer.md)

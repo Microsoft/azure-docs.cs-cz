@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: gateway
 ms.topic: tutorial
-ms.date: 09/24/2018
+ms.date: 01/28/2019
 ms.author: alkohli
-ms.openlocfilehash: 6db713984b62ce3db48b2e72a4b117696bdd6add
-ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
+ms.openlocfilehash: 6f47606e91ec55bae624527bace81d947c5ea4f9
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54452968"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55091542"
 ---
 # <a name="tutorial-prepare-to-deploy-azure-data-box-gateway-preview"></a>Kurz: Příprava na nasazení Azure Data Box Gateway (Preview)
 
@@ -42,7 +42,7 @@ Pokud chcete nasadit službu Data Box Gateway, postupujte podle následujících
 | **#** | **V tomto kroku** | **Použijte tyto dokumenty** |
 | --- | --- | --- | 
 | 1. |**[Příprava webu Azure Portal pro službu Data Box Gateway](data-box-gateway-deploy-prep.md)** |Před zřízením virtuálního zařízení Data Box Gateway vytvořte a nakonfigurujte prostředek Data Box Gateway. |
-| 2. |**[Zřízení služby Data Box Gateway v Hyper-V](data-box-gateway-deploy-provision-hyperv.md)** <br><br><br>**[Zřízení služby Data Box Gateway ve VMware](data-box-gateway-deploy-provision-vmware.md)**|V případě Hyper-V zřiďte virtuální zařízení Data Box Gateway a připojte se k němu v hostitelském systému s Hyper-V ve Windows Serveru 2016 nebo Windows Serveru 2012 R2. <br><br><br> V případě VMware zřiďte virtuální zařízení Data Box Gateway a připojte se k němu v hostitelském systému s VMware ESXi 6.0 nebo 6.5.<br></br> |
+| 2. |**[Zřízení služby Data Box Gateway v Hyper-V](data-box-gateway-deploy-provision-hyperv.md)** <br><br><br>**[Zřízení služby Data Box Gateway ve VMware](data-box-gateway-deploy-provision-vmware.md)**|V případě Hyper-V zřiďte virtuální zařízení Data Box Gateway a připojte se k němu v hostitelském systému s Hyper-V ve Windows Serveru 2016 nebo Windows Serveru 2012 R2. <br><br><br> Pro replikaci z VMware zřídit a připojte se k virtuální zařízení Data Box brány v hostitelském systému, s VMware ESXi 6.0 a 6.5, 6.7.<br></br> |
 | 3. |**[Připojení, nastavení a aktivace služby Data Box Gateway](data-box-gateway-deploy-connect-setup-activate.md)** |Připojte se k místnímu webovému uživatelskému rozhraní, dokončete nastavení zařízení a aktivujte zařízení. Potom můžete zřídit sdílené složky SMB.  |
 | 4. |**[Přenos dat pomocí služby Data Box Gateway](data-box-gateway-deploy-add-shares.md)** |Přidejte sdílené složky a připojte se k nim pomocí protokolu SMB nebo přes systém souborů NFS. |
 
@@ -63,7 +63,7 @@ Než začnete, ujistěte se, že:
 
 Před nasazením virtuálního zařízení se ujistěte, že:
 
-* Máte přístup k hostitelskému systému s Hyper-V ve Windows Serveru 2012 R2 nebo novějším nebo VMware (ESXi 6.0 nebo 6.5), který můžete použít ke zřízení zařízení.
+* Máte přístup k systému hostitele s technologií Hyper-V v systému Windows Server 2012 R2 nebo novější nebo VMware (ESXi 6.0 a 6.5, 6.7), kterou lze použít na základě zařízení.
 * Hostitelský systém může pro zřízení virtuálního zařízení Data Box vyhradit následující prostředky:
   
   * Minimálně 4 jádra
@@ -95,7 +95,7 @@ Provedením následujících kroků na webu Azure Portal vytvořte prostředek D
 
 3. Zadejte nebo vyberte pro nový prostředek následující informace.
     
-    |Nastavení  |Hodnota  |
+    |Nastavení  |Value  |
     |---------|---------|
     |Název prostředku   | Popisný název pro identifikaci prostředku.<br>Název musí obsahovat 2 až 50 znaků a může obsahovat písmena, číslice a spojovníky.<br> Název musí začínat a končit na písmeno nebo číslici.        |
     |Předplatné    |Předplatné je propojené s vaším fakturačním účtem. |
@@ -126,7 +126,7 @@ Na webu [Azure Portal](https://portal.azure.com/) proveďte následující kroky
 4. V pravém podokně rychlého startu klikněte na odkaz odpovídající imagi, kterou chcete stáhnout. Soubory imagí mají velikost přibližně 4,8 GB.
    
    * [VHDX pro Hyper-V ve Windows Serveru 2012 R2 nebo novějším](https://aka.ms/dbe-vhdx-2012)
-   * [VMDK pro VMWare ESXi 6.0 nebo 6.5](https://aka.ms/dbe-vmdk)
+   * [VMDK pro VMWare ESXi 6.0 a 6.5, 6.7](https://aka.ms/dbe-vmdk).
 
 5. Stáhněte soubor na místní disk, rozbalte ho a poznamenejte si umístění rozbaleného souboru.
 

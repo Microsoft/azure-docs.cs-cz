@@ -1,21 +1,21 @@
 ---
-title: 'Rychlý start: Rozhraní API Bingu pro vyhledávání entit, Node.js'
+title: 'Rychlý start: Vyhledávání entit Bingu rozhraní API Node.js'
 titlesuffix: Azure Cognitive Services
 description: Umožňuje získat informace a ukázky kódu, které vám pomůžou rychle začít používat rozhraní API Bingu pro vyhledávání entit.
 services: cognitive-services
 author: aahill
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: bing-entity-search
+ms.subservice: bing-entity-search
 ms.topic: quickstart
 ms.date: 11/28/2017
 ms.author: aahi
-ms.openlocfilehash: 80af035d3d3f4c530e417669c2fa9acad39eb355
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: 18476b8fa272ea235526693a9e2bab577298244d
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52315983"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55174461"
 ---
 # <a name="quickstart-for-bing-entity-search-api-with-nodejs"></a>Rychlý start pro rozhraní API Bingu pro vyhledávání entit v Node.js
 

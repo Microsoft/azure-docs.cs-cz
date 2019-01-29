@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 04/06/2018
 ms.author: rapatchi
-ms.openlocfilehash: a9888a23088949b5373aa0eef7d4df3b3064466f
-ms.sourcegitcommit: 99a6a439886568c7ff65b9f73245d96a80a26d68
+ms.openlocfilehash: 250931c9b53692dff4006a0114b6da20948b3f59
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2018
-ms.locfileid: "39358581"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55096666"
 ---
 # <a name="service-fabric-plug-in-for-eclipse-java-application-development"></a>Modul plug-in Service Fabric pro vývoj aplikací v Eclipse Javě
 Eclipse je jedním z nejčastěji používaných integrovaných vývojových prostředí (IDE) pro vývojáře v jazyce Java. V tomto článku probereme možnosti nastavení vývojového prostředí Eclipse pro práci s Azure Service Fabric. Zjistíte, jak v Eclipse nainstalovat modul plug-in Service Fabric, vytvořit aplikaci Service Fabric a nasadit ji do místního nebo vzdáleného clusteru Service Fabric. 
@@ -37,7 +37,7 @@ Modul plug-in Service Fabric můžete nainstalovat do Eclipse. Tento modul plug-
 
 Nainstalujte Eclipse Neon nebo novější verzi z [webu Eclipse](https://www.eclipse.org).  Nainstalujte také Buildship verze 2.2.1 nebo novější (modul plug-in Service Fabric není kompatibilní se staršími verzemi Buildshipu):
 -   Verze nainstalovaných komponent můžete v Eclipse zkontrolovat v části **Help** > **About Eclipse** > **Installation Details** (Nápověda > O Eclipse > Podrobnosti o instalaci).
--   Pokud chcete aktualizovat Buildship, přečtěte si téma [Eclipse Buildship: Moduly plug-in Eclipse pro Gradle][buildship-update].
+-   Chcete-li aktualizovat Buildship, přečtěte si téma [Eclipse Buildship: Moduly plug-in Eclipse pro Gradle][buildship-update].
 -   Pokud chcete zkontrolovat a nainstalovat aktualizace pro Eclipse, přejděte do části **Help** > **Check for Updates** (Nápověda > Vyhledat aktualizace).
 
 Pokud chcete nainstalovat modul plug-in Service Fabric v Eclipse, přejděte do části **Help** > **Install New Software** (Nápověda > Instalace nového softwaru).
@@ -112,7 +112,7 @@ Po vytvoření aplikace Service Fabric, postupujte podle těchto kroků a nasaď
 
 Zjistěte, jak ladit aplikaci v prostředí Eclipse pomocí místního clusteru, najdete v článku [ladění služby v Javě v prostředí Eclipse](./service-fabric-debugging-your-application-java.md).
 
-Můžete také nasadit aplikaci do místního clusteru wuth **publikovat aplikaci** příkaz:
+Můžete také nasadit aplikaci do místního clusteru pomocí **publikovat aplikaci** příkaz:
 
 1. Klikněte pravým tlačítkem na aplikaci Service Fabric a potom vyberte **Service Fabric**.
 2. V místní nabídce klikněte na tlačítko **publikovat aplikaci...** .
@@ -165,7 +165,7 @@ Můžete publikovat svoji aplikaci do cloudu, postupujte podle těchto kroků:
 
 Na zabezpečené clusterech s Linuxem Pokud vaše aplikace obsahuje služby Reliable Services je také potřeba nakonfigurovat certifikát, který vaše služby můžete použít k volání rozhraní API modulu runtime Service Fabric. Další informace najdete v tématu [konfigurace aplikace Reliable Services ke spuštění na clusterech s Linuxem](./service-fabric-configure-certificates-linux.md#configure-a-reliable-services-app-to-run-on-linux-clusters).
 
-Rychlé procházení pomocí toho, jak nasadit aplikaci Service Fabric Reliable Services napsané v jazyce Java do zabezpečeného clusteru s Linuxem, naleznete v tématu [Quckstart: nasazení aplikace Reliable Services v Javě](./service-fabric-quickstart-java-reliable-services.md).
+Rychlé procházení pomocí toho, jak nasadit aplikaci Service Fabric Reliable Services napsané v jazyce Java do zabezpečeného clusteru s Linuxem, naleznete v tématu [rychlý start: Nasazení aplikace Reliable Services v Javě](./service-fabric-quickstart-java-reliable-services.md).
 
 ## <a name="deploy-a-service-fabric-application-by-using-eclipse-run-configurations"></a>Nasazení aplikace Service Fabric pomocí konfigurací spuštění Eclipse
 
@@ -211,7 +211,7 @@ Pokud zaškrtnete políčko **Automaticky aktualizovat verze aplikací a služeb
 
 ## <a name="upgrade-your-service-fabric-java-application"></a>Upgrade aplikace Service Fabric v Javě
 
-Pro scénář upgradu předpokládejme, že jste pomocí modulu plug-in Service Fabric v Eclipse vytvořili projekt **App1**. Pomocí modulu plug-in jste ho nasadili a vytvořili aplikaci s názvem **fabric: / App1Application**. Tato aplikace je typu **App1AppicationType** a verze této aplikace je 1.0. Nyní chcete provést upgrade této aplikace bez přerušení dostupnosti.
+Pro scénář upgradu předpokládejme, že jste pomocí modulu plug-in Service Fabric v Eclipse vytvořili projekt **App1**. Pomocí modulu plug-in jste ho nasadili a vytvořili aplikaci s názvem **fabric: / App1Application**. Tato aplikace je typu **App1ApplicationType**, a verze této aplikace je 1.0. Nyní chcete provést upgrade této aplikace bez přerušení dostupnosti.
 
 Nejdřív proveďte úpravy aplikace a znovu sestavte upravenou službu. Aktualizujte soubor manifestu upravené služby (ServiceManifest.xml) s použitím aktualizovaných verzí pro službu (a podle potřeby i verzí kódu, konfigurace nebo dat). Dál upravte manifest aplikace (ApplicationManifest.xml) s použitím čísla aktualizované verze pro aplikaci a upravenou službu.  
 
@@ -230,7 +230,7 @@ Nedávno jsme přesunuli knihovny Service Fabric Java ze sady Service Fabric Jav
 
 ## <a name="next-steps"></a>Další postup
 
-- Rychlé kroky na vytváření spolehlivých Java aplikace služby a jeho nasazení místně a do Azure, najdete v článku [Quckstart: nasazení aplikace Reliable Services v Javě](./service-fabric-quickstart-java-reliable-services.md).
+- Rychlé kroky na vytváření spolehlivých Java aplikace služby a jeho nasazení místně a do Azure, najdete v článku [rychlý start: Nasazení aplikace Reliable Services v Javě](./service-fabric-quickstart-java-reliable-services.md).
 - Informace o ladění aplikace v Javě v místním clusteru najdete v tématu [ladění služby v Javě v prostředí Eclipse](./service-fabric-debugging-your-application-java.md).
 - Informace o monitorování a Diagnostika aplikace Service Fabric najdete v tématu [monitorování a Diagnostika služeb v instalačním programu místním počítači vývoje](./service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally-linux.md).
 

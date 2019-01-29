@@ -6,20 +6,20 @@ services: cognitive-services
 author: swhite-msft
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: bing-visual-search
+ms.subservice: bing-visual-search
 ms.topic: overview
 ms.date: 04/10/2018
 ms.author: scottwhi
-ms.openlocfilehash: aab17f8a0213c213920ebdfc2b2fe31248657a91
-ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
+ms.openlocfilehash: 61a851b0efbcc4fdb55308e47447d218014ef9e0
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53742843"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55154350"
 ---
-# <a name="what-is-the-bing-visual-search-api"></a>Co je API aplikace pro vizuální vyhledávání Bingu?
+# <a name="what-is-the-bing-visual-search-api"></a>Co je rozhraní API pro vizuální vyhledávání Bingu?
 
-API aplikace pro vizuální vyhledávání Bingu poskytuje podobné podrobnosti jsou uvedeny na Bing.com/images image. Nahrávání obrázku nebo poskytnutím adresy URL do jednoho, toto rozhraní API identifikovat celou řadu podrobnosti, včetně vizuálně podobné obrázky, nákupní zdrojů, webové stránky, které zahrnují image a další. Pokud používáte [API pro vyhledávání obrázků Bingu](../bing-image-search/overview.md), můžete používat tokeny insight připojený k rozhraní API výsledky hledání namísto odesílání bitovou kopii.
+Rozhraní API pro vizuální vyhledávání Bingu poskytuje podobné informace o obrázcích zobrazeným jako Bing.com/images. Nahrávání obrázku nebo poskytnutím adresy URL do jednoho, toto rozhraní API identifikovat celou řadu podrobnosti, včetně vizuálně podobné obrázky, nákupní zdrojů, webové stránky, které zahrnují image a další. Pokud používáte [API pro vyhledávání obrázků Bingu](../bing-image-search/overview.md), můžete používat tokeny insight připojený k rozhraní API výsledky hledání namísto odesílání bitovou kopii.
 
 ## <a name="insights"></a>Insights
 

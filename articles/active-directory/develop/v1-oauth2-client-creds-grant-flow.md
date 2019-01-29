@@ -8,7 +8,7 @@ manager: mtillman
 editor: ''
 ms.assetid: a7f939d9-532d-4b6d-b6d3-95520207965d
 ms.service: active-directory
-ms.component: develop
+ms.subservice: develop
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -17,12 +17,12 @@ ms.date: 02/08/2017
 ms.author: celested
 ms.reviewer: nacanuma
 ms.custom: aaddev
-ms.openlocfilehash: 8f32d8f05d5ba5a7a813157adbf07ff7590153bb
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.openlocfilehash: 0afcb022cf6a62479253efcf07843d06b17117cd
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52425374"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55092863"
 ---
 # <a name="service-to-service-calls-using-client-credentials-shared-secret-or-certificate"></a>Služby volání mezi službami pomocí přihlašovacích údajů klienta (sdílený tajný klíč nebo certifikát)
 
@@ -53,14 +53,14 @@ https://login.microsoftonline.com/<tenant id>/oauth2/token
 ## <a name="service-to-service-access-token-request"></a>Žádost o Service to service přístupový token
 Existují dva možné případy v závislosti na tom, jestli klientská aplikace rozhodne bylo zabezpečené protokolem sdílený tajný klíč, nebo certifikát.
 
-### <a name="first-case-access-token-request-with-a-shared-secret"></a>První věc: žádost o přístupový token s sdílený tajný klíč
+### <a name="first-case-access-token-request-with-a-shared-secret"></a>Prvním případě: Žádost o přístupový token s sdílený tajný klíč
 Pokud používáte sdílený tajný klíč, žádosti o token přístupu service to service obsahuje následující parametry:
 
 | Parametr |  | Popis |
 | --- | --- | --- |
-| Parametr grant_type |povinné |Určuje typ udělení požadovaná oprávnění. V toku udělení přihlašovacích údajů klienta, musí být hodnota **client_credentials**. |
+| grant_type |povinné |Určuje typ udělení požadovaná oprávnění. V toku udělení přihlašovacích údajů klienta, musí být hodnota **client_credentials**. |
 | client_id |povinné |Určuje id klienta Azure AD volání webové služby. K vyhledání ID klienta volající aplikace, v [webu Azure portal](https://portal.azure.com), klikněte na tlačítko **Azure Active Directory**, klikněte na tlačítko **registrace aplikací**, klikněte na aplikaci. Je client_id *ID aplikace* |
-| Hodnota client_secret |povinné |Zadejte klíč zaregistrovaný pro volání webové služby nebo démona aplikace ve službě Azure AD. Chcete-li vytvořit klíč, na webu Azure Portal, klikněte na tlačítko **Azure Active Directory**, klikněte na tlačítko **registrace aplikací**, klikněte na aplikaci, klikněte na tlačítko **nastavení**, klikněte na tlačítko **klíče** , a přidejte klíč.  Adresa URL – kódování tomto tajných kódů při jeho zadávání. |
+| client_secret |povinné |Zadejte klíč zaregistrovaný pro volání webové služby nebo démona aplikace ve službě Azure AD. Chcete-li vytvořit klíč, na webu Azure Portal, klikněte na tlačítko **Azure Active Directory**, klikněte na tlačítko **registrace aplikací**, klikněte na aplikaci, klikněte na tlačítko **nastavení**, klikněte na tlačítko **klíče** , a přidejte klíč.  Adresa URL – kódování tomto tajných kódů při jeho zadávání. |
 | prostředek |povinné |Zadejte identifikátor URI ID aplikace přijímající webové služby. Chcete-li najít identifikátor ID URI aplikace na webu Azure Portal, klikněte na tlačítko **Azure Active Directory**, klikněte na tlačítko **registrace aplikací**, klikněte na aplikaci služby a potom klikněte na tlačítko **nastavení** a  **Vlastnosti**. |
 
 #### <a name="example"></a>Příklad:
@@ -74,12 +74,12 @@ Content-Type: application/x-www-form-urlencoded
 grant_type=client_credentials&client_id=625bc9f6-3bf6-4b6d-94ba-e97cf07a22de&client_secret=qkDwDJlDfig2IpeuUZYKH1Wb8q1V0ju6sILxQQqhJ+s=&resource=https%3A%2F%2Fservice.contoso.com%2F
 ```
 
-### <a name="second-case-access-token-request-with-a-certificate"></a>Druhý případ: žádost o přístupový token s certifikátem
+### <a name="second-case-access-token-request-with-a-certificate"></a>Druhý případ: Žádost o přístupový token s certifikátem
 Žádosti o token service to service přístup pomocí certifikátu obsahuje následující parametry:
 
 | Parametr |  | Popis |
 | --- | --- | --- |
-| Parametr grant_type |povinné |Určuje požadovaný typ odpovědi. V toku udělení přihlašovacích údajů klienta, musí být hodnota **client_credentials**. |
+| grant_type |povinné |Určuje požadovaný typ odpovědi. V toku udělení přihlašovacích údajů klienta, musí být hodnota **client_credentials**. |
 | client_id |povinné |Určuje id klienta Azure AD volání webové služby. K vyhledání ID klienta volající aplikace, v [webu Azure portal](https://portal.azure.com), klikněte na tlačítko **Azure Active Directory**, klikněte na tlačítko **registrace aplikací**, klikněte na aplikaci. Je client_id *ID aplikace* |
 | client_assertion_type |povinné |Hodnota musí být `urn:ietf:params:oauth:client-assertion-type:jwt-bearer` |
 | client_assertion |povinné | (JSON Web Token) kontrolního výrazu, které potřebujete k vytvoření a podepsání certifikátem zaregistrujete jako přihlašovací údaje pro vaši aplikaci. Přečtěte si informace o [certifikát přihlašovacích údajů](active-directory-certificate-credentials.md) informace o registraci vašeho certifikátu a formát kontrolního výrazu.|
@@ -105,7 +105,7 @@ resource=https%3A%2F%contoso.onmicrosoft.com%2Ffc7664b4-cdd6-43e1-9365-c2e1c4e1b
 | Parametr | Popis |
 | --- | --- |
 | access_token |Požadovaný přístupový token. Volání webové služby můžete použít tento token k ověření přijímající webové služby. |
-| token_type |Určuje hodnotu pro typ tokenu. Jediný typ, který podporuje Azure AD je **nosiče**. Další informace o nosné tokeny, najdete v článku [Framework autorizace OAuth 2.0: použití nosného tokenu (RFC 6750)](https://www.rfc-editor.org/rfc/rfc6750.txt). |
+| token_type |Určuje hodnotu pro typ tokenu. Jediný typ, který podporuje Azure AD je **nosiče**. Další informace o nosné tokeny, najdete v článku [Framework autorizace OAuth 2.0: Použití tokenu nosiče (RFC 6750)](https://www.rfc-editor.org/rfc/rfc6750.txt). |
 | expires_in |Jak dlouho je přístupový token platný (v sekundách). |
 | expires_on |Čas, kdy vyprší platnost přístupového tokenu. Datum je vyjádřena jako počet sekund od 1970-01-01T0:0:0Z UTC až do okamžiku vypršení platnosti. Tato hodnota se používá k určení doby života tokenů v mezipaměti. |
 | not_before |Čas, ze kterého se stane použitelný přístupový token. Datum je vyjádřena jako počet sekund od 1970-01-01T0:0:0Z UTC do doby platnosti tokenu.|

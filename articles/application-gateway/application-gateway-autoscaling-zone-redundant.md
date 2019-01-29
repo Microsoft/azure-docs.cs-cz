@@ -1,25 +1,25 @@
 ---
 title: Automatické škálování a zónově redundantní Application Gateway v Azure (Public Preview)
-description: Tento článek obsahuje informace o omezení velikosti pro požadavek webové aplikace brány firewall a seznamy vyloučení ve službě Application Gateway pomocí webu Azure portal.
+description: Tento článek představuje SKU v2 aplikace Azure, který obsahuje funkce automatického škálování a zónově redundantní.
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: article
-ms.date: 1/10/2019
+ms.date: 1/29/2019
 ms.author: victorh
-ms.openlocfilehash: f5885fd2ac76550990c9a56a1d200bbe11555918
-ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
+ms.openlocfilehash: 7301460014e4d547d1950c8edfbd7534d8a4c103
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54213752"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55101664"
 ---
 # <a name="autoscaling-and-zone-redundant-application-gateway-public-preview"></a>Automatické škálování a zónově redundantní služba Application Gateway (Public Preview)
 
 Služba Application Gateway a Firewall webových aplikací (WAF) jsou teď dostupné ve verzi Public Preview v nové skladové jednotce v2, která nabízí vylepšení výkonu a přidává podporu pro důležité nové funkce jako podporu pro virtuální IP adresy statické, automatické škálování a redundanci zón. Existující funkce v rámci všeobecně dostupné skladové položky i dál podporovaná v nové SKU v2 s několika výjimkami, které jsou uvedené v části známé omezení. Nové SKU v2 zahrnují následující vylepšení:
 
 - **Automatické škálování**: Služba Application Gateway nebo WAF nasazení na základě automatického škálování SKU můžete vertikálně navýšit kapacitu nebo dolů podle aktuálních vzory zatížení provozu. Automatické škálování také eliminuje nutnost zvolit během zřizování velikost nasazení nebo počet instancí. Proto skladová jednotka nabízí true elasticitu. V nové skladové položky můžete provozovat Application Gateway v pevnou kapacitu (automatické škálování, zakázané) a v režimu s povoleným automatickým Škálováním. Režim pevné kapacity je užitečné pro scénáře s konzistentní a předvídatelné zatížení. Režim automatického škálování je výhodné v aplikacích, které se zobrazují velké odchylky v provozu aplikací.
-   
+
    > [!NOTE]
    > Automatické škálování není aktuálně k dispozici pro WAF SKU. Konfigurace WAF s režimem pevnou kapacitu, namísto režim automatického škálování.
 - **Zóna redundance**: Nasazení služby Application Gateway nebo WAF může zahrnovat více zón dostupnosti, není potřeba zřizovat a typu číselník samostatných instancí služby Application Gateway v každé zóně pomocí Traffic Manageru. Můžete v jedné oblasti nebo více zónách ve které jsou nasazené instance aplikační brány, tedy zajistit, že zóna selhání odolnost proti chybám. Fond back-endu pro aplikace můžete podobně distribuované napříč zónami dostupnosti.
@@ -33,10 +33,12 @@ Služba Application Gateway a Firewall webových aplikací (WAF) jsou teď dostu
 ![](./media/application-gateway-autoscaling-zone-redundant/application-gateway-autoscaling-zone-redundant.png)
 
 ## <a name="supported-regions"></a>Podporované oblasti
-Automatické škálování SKU je k dispozici v oblastech východní USA 2, USA – střed, západní USA 2, střed USA – sever, USA – Západ, střed USA – Jih, Francie – střed, západní Evropa, Severní Evropa, Velká Británie – Západ, jihovýchodní Asie a Japonsko – východ.
+
+Automatické škálování SKU je k dispozici v následujících oblastech: eastus2, westus2, westeurope, southeastasia, centralus, francecentral, eastus, japaneast, northeurope, southcentralus, ukwest, northcentralus, westus, eastus BL centralus (DM) japanwest (operačního systému ).
 
 ## <a name="pricing"></a>Ceny
-Ve verzi preview se neúčtuje. Bude vám Účtovaná prostředků než aplikační brány, jako je trezor klíčů, virtuální počítače atd. 
+
+Ve verzi preview se neúčtuje. Bude vám Účtovaná prostředků než aplikační brány, jako je trezor klíčů, virtuální počítače atd.
 
 ## <a name="known-issues-and-limitations"></a>Známé problémy a omezení
 

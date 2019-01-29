@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/22/2018
+ms.date: 01/28/2019
 ms.author: patricka
 ms.reviewer: jerskine
-ms.openlocfilehash: 43f30989fa09e711fc71941e7722dcd195212472
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: fbc6e7586e116df1fa19c6c9e0c5a5b17f00d646
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50416227"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55096756"
 ---
 # <a name="validate-graph-integration-for-azure-stack"></a>Ověření grafu integrace pro Azure Stack
 
@@ -94,7 +94,7 @@ Následující požadavky musí být splněné.
     Invoke-AzsGraphValidation Completed
     ```
 
-V produkčním prostředí testování připojení k síti z pracovní stanice operátoru není plně orientační připojení dostupné pro Azure Stack. Razítko Azure stacku veřejnou síť virtuálních IP adres musíte připojení pro přenos pomocí protokolu LDAP k provedení integrace identit.
+V produkčním prostředí testování připojení k síti z pracovní stanice operátoru není plně orientační připojení dostupné pro Azure Stack. Veřejné sítě VIP razítko Azure Stack potřebuje připojení pro přenos pomocí protokolu LDAP k provedení integrace identit.
 
 ## <a name="report-and-log-file"></a>Sestavy a soubor protokolu
 
@@ -106,8 +106,8 @@ Ve výchozím nastavení, oba soubory jsou zapsány do `C:\Users\<username>\AppD
 
 Použití:
 
-* **-OutputPath**: *cesta* parametr na konci příkazu run a zadejte umístění různých sestav.
-* **-CleanReport**: parametr na konci příkazu run se vymazat *AzsReadinessCheckerReport.json* předchozí informací sestavy. Další informace najdete v tématu [sestavu ověření služby Azure Stack](azure-stack-validation-report.md).
+* **-OutputPath**: *Cesta* parametr na konci příkazu run a zadejte umístění různých sestav.
+* **-CleanReport**: Parametr na konci příkazu run se vymazat *AzsReadinessCheckerReport.json* předchozí informací sestavy. Další informace najdete v tématu [sestavu ověření služby Azure Stack](azure-stack-validation-report.md).
 
 ## <a name="validation-failures"></a>Chyby ověřování
 

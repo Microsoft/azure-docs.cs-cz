@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/21/2018
 ms.author: rkarlin
-ms.openlocfilehash: 6c101878c474e605106bb2fbb6ea6568f433e756
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: b7e2a075df7d0d7f6bb68163414fab525aad25a8
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53338511"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55093440"
 ---
 # <a name="file-integrity-monitoring-in-azure-security-center"></a>Ve službě Azure Security Center monitorování Integrity souborů
 Zjistěte, jak nakonfigurovat monitorování Integrity souborů (FIM) ve službě Azure Security Center pomocí tohoto názorného postupu.
@@ -31,7 +31,7 @@ Monitorování Integrity souborů Security Center ověřuje integritu souborů W
 
 - Vytvoření souboru a registru a odstranění
 - Úpravy souborů (změny velikosti souboru, seznamy řízení přístupu a hodnotu hash obsahu)
-- Registr (změny velikosti, seznamy ovládací přístupu, typ a obsah)
+- Registr (změny velikosti, seznamy řízení přístupu, typ a obsah)
 
 Security Center doporučuje pro monitorování, entit, které lze snadno povolit FIM. Můžete také definovat vlastní zásady FIM nebo entity k monitorování. Tento návod ukazuje, jak.
 
@@ -152,7 +152,7 @@ V části **upravit pro řešení Change Tracking** můžete:
 - Odstranit entitu, zahodit změny nebo uložit změny
 
 ## <a name="add-a-new-entity-to-monitor"></a>Přidat novou entitu k monitorování
-1. Vraťte se **integirty souboru řídicího panelu monitorování** a vyberte **nastavení** v horní části. **Konfigurace pracovního prostoru** otevře.
+1. Vraťte se **řídicí panel monitorování integrity souborů** a vyberte **nastavení** v horní části. **Konfigurace pracovního prostoru** otevře.
 2. V části **konfigurace pracovního prostoru**, vyberte na kartě pro typ entity, které chcete přidat: Registru Windows, Windows soubory nebo soubory Linuxu. V tomto příkladu jsme vybrali **soubory Linuxu**.
 
   ![Přidat novou položku k monitorování][14]

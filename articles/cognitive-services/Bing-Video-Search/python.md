@@ -6,18 +6,18 @@ services: cognitive-services
 author: aahill
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: bing-video-search
+ms.subservice: bing-video-search
 ms.topic: quickstart
 ms.date: 9/21/2017
 ms.author: aahi
-ms.openlocfilehash: e902ae940364810e634434fb1f08408fadea9c8a
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: 1032e6c071f7fb35921d1837f040bf6fa61a0269
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52310544"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55203891"
 ---
-# <a name="quickstart-bing-video-search-api-with-python"></a>Rychlý start: Vyhledávání videí Bingu s Pythonem
+# <a name="quickstart-bing-video-search-api-with-python"></a>Rychlý start: Vyhledávání videí Bingu API s využitím Pythonu
 
 Tento návod vám ukáže, jak používat rozhraní API Bingu pro vyhledávání videí, které je součástí Microsoft Cognitive Services v Azure. Technické podrobnosti o rozhraních API najdete v [referenčních informacích k rozhraním API](https://docs.microsoft.com/rest/api/cognitiveservices/bing-video-api-v7-reference).
 
