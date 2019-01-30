@@ -14,12 +14,13 @@ ms.topic: article
 ms.date: 12/19/2018
 ms.author: mabrigg
 ms.reviewer: kivenkat
-ms.openlocfilehash: bfe53ac99ae1719deeacc156b250fe5a7f87a99a
-ms.sourcegitcommit: 97d0dfb25ac23d07179b804719a454f25d1f0d46
+ms.lastreviewed: 12/19/2018
+ms.openlocfilehash: 421e3bf4465f5aa9aafc4ad666af2178faedb7c3
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/25/2019
-ms.locfileid: "54913449"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55245953"
 ---
 # <a name="considerations-for-using-virtual-machines-in-azure-stack"></a>Důležité informace týkající se používání virtuálních počítačů ve službě Azure Stack
 
@@ -53,7 +54,7 @@ Azure Stack ukládá omezení prostředků, aby se zabránilo za spotřebu prost
 
 V následující tabulce jsou uvedeny virtuálních počítačů, které jsou podporovány ve službě Azure Stack spolu s jejich konfigurace:
 
-| Typ           | Velikost          | Rozsah podporovaných velikostí |
+| Type           | Velikost          | Rozsah podporovaných velikostí |
 | ---------------| ------------- | ------------------------ |
 |Obecné účely |Basic A        |[A0 – A4](azure-stack-vm-sizes.md#basic-a)                   |
 |Obecné účely |Standardní A     |[A0 – A7](azure-stack-vm-sizes.md#standard-a)              |

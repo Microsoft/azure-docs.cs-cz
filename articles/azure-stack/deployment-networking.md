@@ -15,12 +15,13 @@ ms.topic: article
 ms.date: 08/30/2018
 ms.author: jeffgilb
 ms.reviewer: wamota
-ms.openlocfilehash: aac8713f94482e0fc809f24786b96d29b23b076a
-ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
+ms.lastreviewed: 08/30/2018
+ms.openlocfilehash: 3e53d79682772be7eacb649148ceeaec7d9f2865
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/31/2018
-ms.locfileid: "43343384"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55247574"
 ---
 # <a name="about-deployment-network-traffic"></a>Informace o nasazení síťového provozu
 Vysvětlení, jak se provoz probíhá během Azure Stack nasazení je důležité k zajištění úspěšné nasazení. Tento článek vás provede očekávané síťového provozu během procesu nasazení poskytnout představu, co mají očekávat.

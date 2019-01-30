@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/15/2018
 ms.author: jeffgilb
-ms.openlocfilehash: f22754a16c4765989b5773d099fc3ecda73040db
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.lastreviewed: 10/15/2018
+ms.openlocfilehash: a9bf2240e6e60a3d2d80bf4829d74f1043024d7e
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52972384"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55239668"
 ---
 # <a name="azure-stack-administration-basics"></a>Základy správy Azure Stack
 Existuje několik věcí, které je potřeba vědět, pokud je pro vás nová pro správu služby Azure Stack. Tento návod poskytuje přehled o vaší role jako jejich operátory Azure stacku a co je potřeba říct uživatelům pro ně a být tak produktivní rychle.
@@ -45,7 +46,7 @@ Budete potřebovat povědomí o služby, které můžete zpřístupnit uživatel
 Ve výchozím nastavení, služby Azure Stack zahrnuje následující "základní služby" při nasazení Azure Stack:
 
 - Compute
-- Úložiště
+- Storage
 - Sítě
 - Key Vault
 
@@ -63,7 +64,7 @@ Tyto služby vyžadují další konfiguraci, předtím, než můžete zpřístup
 
 **Plán služby**
 
-Azure Stack bude pokračovat a přidat podporu pro služby Azure. Předpokládané plán služby, najdete v článku [Azure Stack: rozšíření Azure](https://go.microsoft.com/fwlink/?LinkId=842846&clcid=0x409) dokument White Paper. Také můžete monitorovat [příspěvcích na blogu Azure Stack](https://azure.microsoft.com/blog/tag/azure-stack-technical-preview) pro nové oznámení.
+Azure Stack bude pokračovat a přidat podporu pro služby Azure. Předpokládané plán služby, najdete v článku [Azure Stack: Rozšíření Azure](https://go.microsoft.com/fwlink/?LinkId=842846&clcid=0x409) dokument White Paper. Také můžete monitorovat [příspěvcích na blogu Azure Stack](https://azure.microsoft.com/blog/tag/azure-stack-technical-preview) pro nové oznámení.
 
 ## <a name="what-account-should-i-use"></a>Jaký účet mám použít?
 Existuje několik důležitých informací účtu, které byste měli vědět při správě služby Azure Stack. Zejména v nasazeních pomocí systému Windows Server Active Directory Federation Services (AD FS) jako poskytovatel identit Azure Active Directory (Azure AD). Integrované systémy Azure Stack a ASDK nasazení, platí následující aspekty účtu:
@@ -108,7 +109,7 @@ Bude potřeba dát uživatelům vědět, jak pracovat se službami v Azure stack
 
 Zde jsou informace, které vaši uživatelé musí porozumět před využívat služby a sestavovat aplikace ve službě Azure Stack. Například jsou konkrétní požadavky na verzi prostředí PowerShell a rozhraní API. Navíc existují některé funkce rozdíly mezi služby v Azure a ekvivalentní ve službě Azure Stack. Ujistěte se, že vaši uživatelé najdete v následujících článcích:
 
-- [Klíč aspekty: použití služeb nebo vytváření aplikací pro Azure Stack](user/azure-stack-considerations.md)
+- [Klíčové aspekty: Pomocí služby nebo vytvářet aplikace pro Azure Stack](user/azure-stack-considerations.md)
 - [Důležité informace týkající se virtuálních počítačů v Azure stacku](user/azure-stack-vm-considerations.md)
 - [Úložiště: rozdíly a aspekty](user/azure-stack-acs-differences.md)
 

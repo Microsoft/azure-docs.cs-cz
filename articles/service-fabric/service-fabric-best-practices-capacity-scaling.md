@@ -14,16 +14,29 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 01/23/2019
 ms.author: pepogors
-ms.openlocfilehash: ff58cc713a6aba211f9eeb1dc42912d21c5b0bdb
-ms.sourcegitcommit: 97d0dfb25ac23d07179b804719a454f25d1f0d46
+ms.openlocfilehash: d6f2ca53829642009adbc50061966c5a7e924f7e
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/25/2019
-ms.locfileid: "54913786"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55240399"
 ---
 # <a name="capacity-planning-and-scaling"></a>Plánování kapacity a škálování
 
 Před vytvořením jakéhokoli jiného clusteru Azure Service Fabric nebo škálování výpočetních prostředků, který je hostitelem vašeho clusteru, je důležité plánovat kapacitu. Další informace o plánování kapacity najdete v tématu [plánování kapacity clusteru Service Fabric](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-capacity). Navíc vzhledem k tomu charakteristiky Nodetype a clusteru, plánování škálování operace trvá déle než hodinu k dokončení pro produkční prostředí bez ohledu na počet virtuálních počítačů, které chcete přidat.
+
+## <a name="auto-scaling"></a>Auto Scaling
+Operace škálování by měl možné provádět prostřednictvím šablony nasazení prostředků Azure, protože je osvědčeným postupem je považovat [konfigurace prostředků jako kód]( https://docs.microsoft.com/azure/service-fabric/service-fabric-best-practices-infrastructure-as-code)a pomocí Škálovací sady virtuálních počítačů automatického škálování bude výsledkem vaší verze šablony Resource Manageru nesprávně vykázán definování škálovací virtuálního počítače nastavte počet instancí; zvýšeného rizika budoucí nasazení způsobuje nežádoucí operace škálování a obecně byste měli použít, automatické škálování, pokud:
+
+* Nasazení své šablony Resource Manageru pomocí příslušné kapacitě deklarované nepodporuje vašemu případu použití.
+  * Kromě ruční škálování, můžete nakonfigurovat [průběžnou integraci a doručování kanál služby Azure DevOps pomocí projekty nasazení skupiny prostředků Azure]( https://docs.microsoft.com/azure/vs-azure-tools-resource-groups-ci-in-vsts), které obvykle aktivuje aplikace logiky, které využívá připojení metriky výkonu virtuálního počítače, posílat dotaz z [REST API služby Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/platform/rest-api-walkthrough); efektivně automatické škálování podle libovolné metriky chcete, při optimalizaci Azure Resource Manageru přidejte hodnotu.
+* Potřebujete horizontálně škálovat 1 uzel škálovací sady virtuálních počítačů najednou.
+  * Horizontální navýšení kapacity 3 nebo více uzlů najednou, měli byste [škálovat cluster Service Fabric out tak, že přidáte Škálovací sady virtuálních počítačů](https://docs.microsoft.com/azure/service-fabric/virtual-machine-scale-set-scale-node-type-scale-out), a je nejbezpečnější, které horizontálně sníží a navýšení kapacity Škálovací virtuálních počítačů nastaví vodorovně 1 uzel najednou.
+* Máte na spolehlivost Silver nebo vyšší pro váš Service Fabric Cluster a Silver odolnosti nebo vyšší v libovolném měřítku Set nakonfigurovat pravidla automatického škálování.
+  * Automatické škálování pravidla kapacity [minimální] musí být roven nebo větší než 5 instancí virtuálních počítačů a musí být roven nebo větší než vaše minimální úroveň spolehlivosti pro svůj typ primárního uzlu.
+
+> [!NOTE]
+> Prostředky infrastruktury pro stavové služby Azure Service Fabric: / System/InfastructureService/< NODE_TYPE_NAME > spustí na každý typ uzlu, který má Silver nebo vyšší odolnost, což je jediná služba systému, která je podporována pro spuštění v Azure na všech vašich clusterů typy uzlů . 
 
 ## <a name="vertical-scaling-considerations"></a>Vertikální škálování důležité informace
 
@@ -150,10 +163,10 @@ scaleSet.Update().WithCapacity(newCapacity).Apply();
 ## <a name="reliability-levels"></a>Úroveň spolehlivosti
 
 [Úroveň spolehlivosti](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-capacity) je vlastnost prostředku clusteru Service Fabric a nedá se konfigurovat odlišně pro jednotlivé nodeTypes. Ovládací prvky faktor replikace systému služeb pro cluster a je nastavení na úrovni prostředku clusteru. Úroveň spolehlivosti určí minimální počet uzlů, které musí mít svůj typ primárního uzlu. Úroveň spolehlivosti můžete provést následující hodnoty:
-* Platinum - spuštění systémových služeb s počtem cílové sady replik částí sedmidílné série
-* Zlatá - spuštění systémových služeb s počtem cílové sady replik částí sedmidílné série
-* Silver – spustí s cílový počet sady replik pět systémových služeb
-* Bronzový – spuštění systémových služeb s cílový počet sady replik tří
+* Platinum - spouští cílový počet sady replik ze sedmi a devět počáteční uzly systémových služeb.
+* Zlatá - spouští cílový počet sady replik sedm na sedm uzlů počáteční hodnoty systémových služeb.
+* Silver – spouští systémové služby a cílové repliky sady počet pěti až pěti uzly počáteční hodnoty.
+* Bronzový – spuštění systémových služeb s cílový počet sady replik tři a tři uzly počáteční hodnoty.
 
 Minimální doporučenou spolehlivostí úroveň je Silver.
 

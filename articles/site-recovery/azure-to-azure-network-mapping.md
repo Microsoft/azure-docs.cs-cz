@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: mayg
-ms.openlocfilehash: 6140687d583534d21ee50652811c2fd1624a5cf5
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: fccc7379794b4b75ff53e517eddd95ff0f7db0e9
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52840448"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55223778"
 ---
 # <a name="set-up-network-mapping-and-ip-addressing-for-vnets"></a>Nastavte mapování sítě a IP adresy pro virtuální sítě
 
@@ -63,7 +63,7 @@ Podsítě, kterou vyberete virtuální počítač s cílem vycházet z názvu po
 IP adresa pro jednotlivé síťové karty na cílový virtuální počítač nakonfigurován takto:
 
 - **DHCP**: Pokud síťového rozhraní zdrojového virtuálního počítače používá DHCP, síťového rozhraní cílového virtuálního počítače je také nastavena na používání protokolu DHCP.
-- **Statická IP adresa**: Pokud NIC zdrojový virtuální počítač používá statické IP adresy, cílové síťové karty virtuálního počítače také používat statickou IP adresu.
+- **Statická IP adresa**: Pokud síťového rozhraní zdrojového virtuálního počítače používá statické IP adresy, cílové síťové karty virtuálního počítače také použít statické IP adresy.
 
 
 ## <a name="ip-address-assignment-during-failover"></a>Přiřazení IP adresy během převzetí služeb při selhání
@@ -79,8 +79,8 @@ Jiným adresním prostorem<br/><br/> Další dostupnou IP adresu v cílové pods
 
 **Cílová síť** | **Podrobnosti**
 --- | ---
-Cílová síť je převzetí služeb při selhání virtuální sítě | -Cílová IP adresa je statická, ale ne stejnou IP adresu jako vyhrazené pro převzetí služeb při selhání.<br/><br/>  -Přiřazenou adresu je další dostupnou adresu od konce rozsahu podsítě.<br/><br/> Příklad: Pokud zdrojová IP adresa je 10.0.0.19 a převzetí služeb při selhání sítě používá rozsah 10.0.0.0/24, pak 10.0.0.254 je IP adresa dalšího přiřazené k cílovému virtuálnímu počítači.
-Cílová síť není převzetí služeb při selhání virtuální sítě | -Cílová IP adresa bude statické pomocí stejné IP adresy rezervované pro převzetí služeb při selhání.<br/><br/>  – Pokud je již přiřazen stejnou IP adresu, IP adresa je další příkaz k dispozici na eeach rozsahu podsítě.<br/><br/> Příklad: Pokud statickou IP adresu zdroje je 10.0.0.19 a převzetí služeb při selhání je připojen k síti, která není převzetí služeb při selhání sítě, s rozsah 10.0.0.0/24, pak bude statickou IP adresu cílového 10.0.0.0.19, pokud je k dispozici a jinak bude 10.0.0.254.
+Cílová síť je převzetí služeb při selhání virtuální sítě | -Cílová IP adresa je statická, ale ne stejnou IP adresu jako vyhrazené pro převzetí služeb při selhání.<br/><br/>  -Přiřazenou adresu je další dostupnou adresu od konce rozsahu podsítě.<br/><br/> Příklad: Pokud zdrojová IP adresa je 10.0.0.19 a převzetí služeb při selhání síť používá rozsah 10.0.0.0/24, IP adresa dalšího přiřazené k cílovému virtuálnímu počítači je 10.0.0.254.
+Cílová síť není převzetí služeb při selhání virtuální sítě | -Cílová IP adresa bude statické pomocí stejné IP adresy rezervované pro převzetí služeb při selhání.<br/><br/>  – Pokud je již přiřazen stejnou IP adresu, IP adresa je dalším objektem v každém z rozsahu podsítě k dispozici.<br/><br/> Příklad: Pokud statickou IP adresu zdrojového 10.0.0.19 a převzetí služeb při selhání je připojen k síti, která není převzetí služeb při selhání sítě, s rozsah 10.0.0.0/24, pak statickou IP adresu cílového bude 10.0.0.0.19, pokud je k dispozici, a v opačném případě bude 10.0.0.254.
 
 - Převzetí služeb virtuální sítě je cílové síti, který vyberete při nastavování zotavení po havárii.
 - Doporučujeme vždy používat mimo produkční sítě pro testovací převzetí služeb při selhání.

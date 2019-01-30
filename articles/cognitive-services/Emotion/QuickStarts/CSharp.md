@@ -1,24 +1,24 @@
 ---
-title: 'Rychlý start: Rozpoznávání emocí ve výrazech tváří na obrázku – rozhraní API pro rozpoznávání emocí, C#'
+title: 'Rychlý start: Na tváří v obrázku – rozhraní API pro rozpoznávání Emocí, rozpoznávání emocíC#'
 titlesuffix: Azure Cognitive Services
 description: Získejte informace a vzorový kód, které vám pomůžou rychle začít používat rozhraní API pro rozpoznávání emocí pomocí jazyka C#.
 services: cognitive-services
 author: anrothMSFT
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: emotion-api
+ms.subservice: emotion-api
 ms.topic: quickstart
 ms.date: 11/02/2017
 ms.author: anroth
 ROBOTS: NOINDEX
-ms.openlocfilehash: 530d05887e585884b184635e01031c1332fad3fb
-ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
-ms.translationtype: HT
+ms.openlocfilehash: 45282c4ad534930fa72a8d8fb71105dca4af23de
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48239366"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55218236"
 ---
-# <a name="quickstart-build-an-app-to-recognize-emotions-on-faces-in-an-image"></a>Rychlý start: Vytvoření aplikace pro rozpoznávání emocí ve výrazech tváří na obrázku
+# <a name="quickstart-build-an-app-to-recognize-emotions-on-faces-in-an-image"></a>Rychlý start: Vytvářejte aplikace pro rozpoznávání emocí na tváří v obrázku.
 
 > [!IMPORTANT]
 > Rozhraní API pro rozpoznávání emocí se přestane používat 15. února 2019. Funkce rozpoznávání emocí je teď obecně dostupná v rámci [rozhraní API pro rozpoznávání tváře](https://docs.microsoft.com/azure/cognitive-services/face/).
@@ -125,8 +125,8 @@ namespace CSHttpClientSample
 ## <a name="recognize-emotions-sample-response"></a>Ukázka odpovědi rozpoznávání emocí
 Úspěšné volání vrátí pole položek tváří s přidruženým skóre rozpoznávání emocí. Tyto položky jsou seřazené podle velikosti obdélníku tváře v sestupném pořadí. Prázdná odpověď znamená, že se nezjistily žádné tváře. Položka rozpoznávání emocí obsahuje následující pole:
 
-* faceRectangle: umístění obdélníku tváře na obrázku
-* scores: skóre rozpoznávání emocí pro jednotlivé tváře na obrázku
+* faceRectangle: Obdélník umístění tvář na obrázku
+* skóre: Pro každou tvář na obrázku stanoví skóre pro rozpoznávání emocí
 
 ```json
 application/json

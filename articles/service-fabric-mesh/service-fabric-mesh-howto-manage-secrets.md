@@ -3,18 +3,18 @@ title: Správa tajných klíčů aplikací Azure Service Fabric sítě | Dokumen
 description: Správa tajných klíčů aplikací vám umožní bezpečně vytvoření a nasazení aplikace Service Fabric mřížky.
 services: service-fabric-mesh
 keywords: tajné kódy
-author: aljo
+author: aljo-microsoft
 ms.author: aljo
 ms.date: 11/28/2018
 ms.topic: get-started-article
 ms.service: service-fabric-mesh
 manager: chackdan
-ms.openlocfilehash: d92726ebc2cd4c6c44afdb2d2a9f53ab5441ac32
-ms.sourcegitcommit: 2bb46e5b3bcadc0a21f39072b981a3d357559191
+ms.openlocfilehash: 06d8519836129a557ec69d59d15eb12129e8099b
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/05/2018
-ms.locfileid: "52893492"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55236747"
 ---
 # <a name="manage-service-fabric-mesh-application-secrets"></a>Správa tajných klíčů aplikací Service Fabric sítě
 Sítě pro Service Fabric podporuje tajné kódy jako prostředky Azure. Tajný klíč služby prostředků infrastruktury sítě může být libovolné citlivé textové informace, jako je například úložiště připojovací řetězce, hesla nebo jiné hodnoty, které mají být uloženy a bezpečně přenášet. Tento článek ukazuje, jak pomocí Service Fabric Secure Store Service můžete nasadit a spravovat tajné kódy.
@@ -183,7 +183,7 @@ Následuje příklad toho, jak deklarovat prostředků sítě tajné klíče/hod
 
 ## <a name="modify-mesh-application-to-reference-mesh-secret-values"></a>Upravit aplikaci sítě tak, aby odkazovaly hodnoty mřížky tajný klíč
 Aplikace Service Fabric sítě je potřeba mít na paměti následující dva řetězce. aby bylo možné využívat tajný klíč služby Secure Store hodnoty:
-1. Micrsoft.ServiceFabricMesh/Secrets.name obsahuje název souboru a bude obsahovat hodnoty tajných kódů jako prostý text.
+1. Microsoft.ServiceFabricMesh/Secrets.name obsahuje název souboru a bude obsahovat hodnoty tajných kódů jako prostý text.
 2. Windows nebo Linuxem proměnnou prostředí "Fabric_SettingPath" obsahuje cestu k adresáři pro soubory, které obsahují hodnoty tajných kódů služby Secure Store kde budou přístupné. Toto je "C:\Settings" pro hostované Windows "/ var/nastavení a" pro aplikace hostované v systému Linux sítě v uvedeném pořadí.
 
 ## <a name="deploy-or-use-a-rolling-upgrade-for-mesh-application-to-consume-secret-values"></a>Nasazení nebo využívají hodnoty tajných kódů pomocí upgradu se zajištěním provozu pro aplikace sítě

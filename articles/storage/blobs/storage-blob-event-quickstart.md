@@ -7,16 +7,16 @@ ms.author: cbrooks
 ms.date: 12/06/2018
 ms.topic: quickstart
 ms.service: storage
-ms.component: blobs
+ms.subservice: blobs
 ms.custom: seodec18
-ms.openlocfilehash: 2586b7f9c2a182ee065daab1d2a43eb5e0e2c99c
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: a1f5946e3dcfd00631ed09b5e9211d0b207fba33
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53073716"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55250414"
 ---
-# <a name="quickstart-route-storage-events-to-web-endpoint-with-azure-cli"></a>Rychlý start: Směrování událostí úložiště na webový koncový bod pomocí rozhraní příkazového řádku Azure
+# <a name="quickstart-route-storage-events-to-web-endpoint-with-azure-cli"></a>Rychlý start: Směrování událostí služby úložiště na webový koncový bod pomocí rozhraní příkazového řádku Azure
 
 Azure Event Grid je služba zpracování událostí pro cloud. V tomto článku se pomocí Azure CLI přihlásíte k odběru událostí služby Blob Storage a aktivujete událost, abyste viděli výsledek.
 

@@ -14,12 +14,13 @@ ms.topic: article
 ms.date: 01/16/2019
 ms.author: mabrigg
 ms.reviewer: waltero
-ms.openlocfilehash: 81a47a730978a9ecdda7a09bbad0707d436fb116
-ms.sourcegitcommit: 9f07ad84b0ff397746c63a085b757394928f6fc0
+ms.lastreviewed: 01/16/2019
+ms.openlocfilehash: b7e293018f2dc248fae8de8bd9e82943606f4ead
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54388475"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55239498"
 ---
 # <a name="add-kubernetes-to-the-azure-stack-marketplace"></a>Přidat Kubernetes na webu Marketplace služby Azure Stack
 
@@ -68,7 +69,7 @@ Pokud používáte Active Directory Federated Services (AD FS) pro vaši službu
 
     - Budete potřebovat následující údaje:
 
-       | Hodnota | Popis |
+       | Value | Popis |
        | ---   | ---         |
        | Heslo | Heslo certifikátu. |
        | Cesta k místní certifikátu | Název a cesta k souboru certifikátu. Příklad: `path\certfilename.pfx` |
@@ -108,7 +109,7 @@ Pokud používáte Active Directory Federated Services (AD FS) pro vaši službu
 
     - Budete potřebovat následující údaje:
 
-       | Hodnota | Popis                     |
+       | Value | Popis                     |
        | ---   | ---                             |
        | ERCS IP | V ASDK, privilegovaných koncový bod je obvykle `AzS-ERCS01`. |
        | Název aplikace | Jednoduchý název instančního objektu aplikace. |

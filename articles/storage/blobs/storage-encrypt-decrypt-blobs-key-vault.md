@@ -7,13 +7,13 @@ ms.service: storage
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: tamram
-ms.component: blobs
-ms.openlocfilehash: 213190863702ec5a7f2ae764c8e2d892764740f9
-ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
+ms.subservice: blobs
+ms.openlocfilehash: 09bb74ead0ff52cc7a70170357ddc54a91bf00d9
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54332196"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55239403"
 ---
 # <a name="tutorial-encrypt-and-decrypt-blobs-in-microsoft-azure-storage-using-azure-key-vault"></a>Kurz: Šifrování a dešifrování objektů BLOB ve službě Microsoft Azure Storage pomocí Azure Key Vault
 ## <a name="introduction"></a>Úvod

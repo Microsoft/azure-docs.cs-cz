@@ -1,6 +1,6 @@
 ---
 Název: Používání webové služby v aplikaci Excel titleSuffix: Azure Machine Learning Studio Popis: Azure Machine Learning Studio usnadňuje volání webové služby přímo z aplikace Excel bez nutnosti psát jakýkoli kód.
-Services: machine learningu ms.service: ms.component strojového učení: studio ms.topic: článku
+Services: machine learningu ms.service: ms.subservice strojového učení: studio ms.topic: článku
 
 Autor: ericlicoding ms.author: amlstudiodocs ms.custom: seodec18 ms.date: 02/01/2018
 ---

@@ -3,18 +3,18 @@ title: POJEM, jako webové služby ve službě Azure Machine Learning v 59 znak�
 description: Tento řetězec popisuje článek v 115 k 145 znaků. Optimalizace pro vyhledávací weby druh akční slovesa zde použijte. například – zjistěte, jak to a, který pomocí slova zákazníka. Tyto informace se zobrazí na vyhledávání vložený stránky v článku časové razítko. Pokud vaše para Úvod popisuje záměr svůj článek, můžete ho zde upravit délku.
 services: machine-learning
 ms.service: machine-learning
-ms.component: core
+ms.subservice: core
 ms.topic: conceptual
 ms.reviewer: jmartens
 ms.author: your-msft-alias
 author: your-github-account-name
 ms.date: 04/10/2018
-ms.openlocfilehash: 759e76a75fffeb31d38439f59b219ad48ebf6277
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: e38a7e2bc55b4cc4b60984d355efad097ac7b068
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51009252"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55249792"
 ---
 # <a name="this-is-the-h1-and-the-article-title-that-shows-on-the-web"></a>Toto je H1 a jeho název, který ukazuje na webu
 

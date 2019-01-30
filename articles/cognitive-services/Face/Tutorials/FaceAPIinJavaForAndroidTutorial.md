@@ -1,23 +1,23 @@
 ---
-title: 'Kurz: Rozpoznávání a orámování tváří na obrázku pomocí sady Android SDK'
+title: 'Kurz: Zjištění a rámečku tváří v obrázku pomocí sady Android SDK'
 titleSuffix: Azure Cognitive Services
 description: V tomto kurzu vytvoříte jednoduchou aplikaci pro Android, která používá rozhraní API pro rozpoznávání tváře ke zjišťování a snímků tváří v obrázku.
 services: cognitive-services
 author: PatrickFarley
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: face-api
+ms.subservice: face-api
 ms.topic: tutorial
 ms.date: 11/12/2018
 ms.author: pafarley
-ms.openlocfilehash: 92344943d2ec19f6730387221974a001e6a2045a
-ms.sourcegitcommit: 7804131dbe9599f7f7afa59cacc2babd19e1e4b9
+ms.openlocfilehash: 2c28aa58e64253d5a25dbdfc8f1473e0e462af57
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/17/2018
-ms.locfileid: "51852890"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55220004"
 ---
-# <a name="tutorial-create-an-android-app-to-detect-and-frame-faces-in-an-image"></a>Kurz: Vytvoření aplikace pro Android k rozpoznání a orámování tváří na obrázku
+# <a name="tutorial-create-an-android-app-to-detect-and-frame-faces-in-an-image"></a>Kurz: Vytvoření aplikace pro Android ke zjišťování a snímků tváří v obrázku
 
 V tomto kurzu vytvoříte jednoduchou aplikaci s Androidem, která používá rozhraní API pro rozpoznávání tváře Azure pomocí sady Java SDK, k detekci lidských tváří v obrázku. Aplikace zobrazí vybrané bitové kopie a nakreslí rámeček kolek každou zjištěnou plochu.
 

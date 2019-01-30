@@ -6,16 +6,16 @@ services: cognitive-services
 author: marco-rossi29
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: custom-decision-service
+ms.subservice: custom-decision-service
 ms.topic: conceptual
 ms.date: 05/09/2018
 ms.author: marossi
-ms.openlocfilehash: 8c5ab0e297690f1fbdb41a2627dd63c3ea522d1b
-ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
+ms.openlocfilehash: 227caaa1b726210fd498596d716aa41365a63c7a
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46366792"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55228113"
 ---
 # <a name="logdownloader"></a>LogDownloader
 
@@ -23,10 +23,10 @@ Stáhněte si soubory protokolů, které jsou vytvořené pomocí služby Azure 
 
 ## <a name="prerequisites"></a>Požadavky
 
-- Python 3: Nainstalovat a na vaší cestě. Doporučujeme, abyste 64bitovou verzi pro zpracování velkých souborů.
+- Python 3: Nainstalovaný a na vaší cestě. Doporučujeme, abyste 64bitovou verzi pro zpracování velkých souborů.
 - *Microsoft/mwt-ds* úložiště: [Naklonujte úložiště](https://github.com/Microsoft/mwt-ds).
-- *Azure storage blob* balíčku: pro podrobné informace o instalaci, přejděte na [knihovna Microsoft Azure Storage pro Python](https://github.com/Azure/azure-storage-python#option-1-via-pypi).
-- Zadejte svůj připojovací řetězec služby Azure storage v *mwt-ds/DataScience/ds.config*: postupujte podle *my_app_id: my_connectionString* šablony. Lze zadat více `app_id`. Při spuštění `LogDownloader.py`, pokud vstupní `app_id` nebyl nalezen v `ds.config`, `LogDownloader.py` používá `$Default` připojovací řetězec.
+- *Azure storage blob* balíčku: Pro podrobné informace o instalaci, přejděte na [knihovna Microsoft Azure Storage pro Python](https://github.com/Azure/azure-storage-python#option-1-via-pypi).
+- Zadejte svůj připojovací řetězec služby Azure storage v *mwt-ds/DataScience/ds.config*: Postupujte podle *my_app_id: my_connectionString* šablony. Lze zadat více `app_id`. Při spuštění `LogDownloader.py`, pokud vstupní `app_id` nebyl nalezen v `ds.config`, `LogDownloader.py` používá `$Default` připojovací řetězec.
 
 ## <a name="usage"></a>Využití
 
@@ -49,7 +49,7 @@ python LogDownloader.py [-h] -a APP_ID -l LOG_DIR [-s START_DATE]
 | `-s START_DATE`, `--start_date START_DATE` | Stažení počátečního data (zahrnout), v *rrrr-MM-DD* formátu. | `None` |
 | `-e END_DATE`, `--end_date END_DATE` | Stahování koncové datum (je součástí), v *rrrr-MM-DD* formátu. | `None` |
 | `-o OVERWRITE_MODE`, `--overwrite_mode OVERWRITE_MODE` | Režim přepisu, který chcete použít. | |
-| | `0`: Přepsat nikdy; Požádejte uživatele, zda objekty BLOB se aktuálně používají. | Výchozí | |
+| | `0`: Nikdy přepsat; Požádejte uživatele, zda objekty BLOB se aktuálně používají. | Výchozí | |
 | | `1`: Požádejte uživatele, jak pokračovat dál, pokud se soubory mají různé velikosti nebo pokud objekty BLOB se aktuálně používá. | |
 | | `2`: Vždy přepsat; aktuálně používané objekty BLOB můžete stáhněte. | |
 | | `3`: Nikdy přepsat a přidat, pokud je větší, aniž by požádal; aktuálně používané objekty BLOB můžete stáhněte. | |
@@ -60,7 +60,7 @@ python LogDownloader.py [-h] -a APP_ID -l LOG_DIR [-s START_DATE]
 | `--verbose` | Tisk více podrobností. | `False` |
 | `-v VERSION`, `--version VERSION` | Verze pro stahování protokolů se má použít. | |
 | | `1`: Pro nevařené protokoly (pouze z důvodu zpětné kompatibility). | Zastaralé |
-| | `2`: Pro vařené protokoly. | Výchozí |
+| | `2`: Vařené protokolů. | Výchozí |
 
 ### <a name="examples"></a>Příklady
 

@@ -1,23 +1,23 @@
 ---
-title: 'Rychlý start: Kontrola obrázků proti vlastním seznamům v jazyce C# – Content Moderator'
+title: 'Rychlý start: Zkontrolujte bitové kopie na základě vlastních seznamů v C# – Content Moderator'
 titlesuffix: Azure Cognitive Services
 description: Návod, jak moderovat obrázky se seznamy vlastních obrázků pomocí sady Content Moderator SDK pro jazyk C#.
 services: cognitive-services
 author: sanjeev3
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: content-moderator
+ms.subservice: content-moderator
 ms.topic: quickstart
 ms.date: 10/10/2018
 ms.author: sajagtap
-ms.openlocfilehash: 7165bdc4aebec886a57990281bc35c83b1d7bf04
-ms.sourcegitcommit: 3a02e0e8759ab3835d7c58479a05d7907a719d9c
-ms.translationtype: HT
+ms.openlocfilehash: f7894fa54b634df450d3f7eb90d594cf0315970c
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/13/2018
-ms.locfileid: "49309395"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55228181"
 ---
-# <a name="quickstart-moderate-with-custom-image-lists-in-c"></a>Rychlý start: Moderování se seznamy vlastních obrázků v jazyce C#
+# <a name="quickstart-moderate-with-custom-image-lists-in-c"></a>Rychlý start: Střední s vlastním seznamem obrázků vC#
 
 Tento článek obsahuje informace a ukázky kódu, které vám pomůžou začít používat [sadu Content Moderator SDK pro .NET](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.ContentModerator/) k následujícím účelům:
 - Vytvoření seznamu vlastních obrázků
@@ -1089,6 +1089,6 @@ Response:
 []
 ```
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Získejte pro tento rychlý start a jiné rychlé starty Content Moderatoru pro technologii .NET [sadu Content Moderator .NET SDK](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.ContentModerator/) a [řešení Visual Studio](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/ContentModerator) a začněte se svou integrací.

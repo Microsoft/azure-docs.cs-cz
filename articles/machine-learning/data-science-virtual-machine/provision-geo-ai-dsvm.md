@@ -9,19 +9,19 @@ manager: cgronlun
 ms.custom: seodec18
 ms.assetid: ''
 ms.service: machine-learning
-ms.component: data-science-vm
+ms.subservice: data-science-vm
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/05/2018
 ms.author: gokuma
-ms.openlocfilehash: 395604da3465e66214f89b4f74ddf9d6bcdc48f8
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 47d5616f86c8f4cb62773d0b92a24a5fb63b2ea7
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53103944"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55240467"
 ---
 # <a name="provision-a-geo-artificial-intelligence-virtual-machine-on-azure"></a>Zřízení virtuálního počítače geografickou umělou inteligenci v Azure 
 
@@ -49,24 +49,24 @@ Tady je postup pro vytvoření instance virtuální počítač pro geograficky A
 
    - **Základy**
 
-      1. **Název**: název serveru data science vytváříte.
+      1. **Název**: Název serveru datové vědy, kterou vytváříte.
 
-      2. **Uživatelské jméno**: id přihlášení účtu správce.
+      2. **Uživatelské jméno**: Id přihlášení účtu správce.
 
-      3. **Heslo**: heslo účtu správce.
+      3. **Heslo**: Heslo účtu správce.
 
       4. **Předplatné**: Pokud máte více předplatných, vyberte ten, ve které je vytvořené a fakturuje počítač.
 
-      5. **Skupina prostředků**: vytvořit nové nebo použijte **prázdný** existující skupinu prostředků Azure v rámci vašeho předplatného.
+      5. **Skupina prostředků**: Vytvořit nové nebo použijte **prázdný** existující skupinu prostředků Azure v rámci vašeho předplatného.
 
-      6. **Umístění**: Vyberte datové centrum, které je nejvhodnější. Obvykle se většina dat nebo je nejblíže vašemu fyzickému umístění pro nejrychlejší přístup k síti datového centra. Pokud je potřeba hloubkového učení na grafickém procesoru, je třeba zvolit jedno z umístění v Azure, která má instance virtuálních počítačů NC-Series GPU. V současné době jsou umístění, které mají virtuální počítače GPU: **východní USA, střed USA – sever, střed USA – Jih, USA – západ 2, Severní Evropa, západní Evropa**. Nejaktuálnější seznam najdete v dokumentaci [produkty Azure podle oblasti stránky](https://azure.microsoft.com/regions/services/) a hledejte **NC-Series** pod **Compute**. 
+      6. **Umístění**: Vyberte datové centrum, které je nejvhodnější. Obvykle se většina dat nebo je nejblíže vašemu fyzickému umístění pro nejrychlejší přístup k síti datového centra. Pokud je potřeba hloubkového učení na grafickém procesoru, je třeba zvolit jedno z umístění v Azure, která má instance virtuálních počítačů NC-Series GPU. Aktuálně jsou umístění, které mají virtuální počítače GPU: **USA – východ, USA (střed) – sever, střed USA – Jih, USA – západ 2, Severní Evropa, západní Evropa**. Nejaktuálnější seznam najdete v dokumentaci [produkty Azure podle oblasti stránky](https://azure.microsoft.com/regions/services/) a hledejte **NC-Series** pod **Compute**. 
 
 
-   - **Nastavení**: vyberte jednu z velikost virtuálního počítače GPU NC-Series, pokud budete chtít spustit hloubkového učení na grafickém procesoru na vaše DSVM Geo. V opačném případě můžete zvolit jeden z procesoru na základě instance.  Vytvoření účtu úložiště pro virtuální počítač. 
+   - **Nastavení**: Pokud budete chtít spustit hloubkové učení na grafickém procesoru na vaší geografické DSVM, vyberte jednu z velikost virtuálního počítače GPU NC-Series. V opačném případě můžete zvolit jeden z procesoru na základě instance.  Vytvoření účtu úložiště pro virtuální počítač. 
    
-   - **Souhrn**: Ověřte správnost všechny informace, které jste zadali.
+   - **Souhrn**: Ověřte správnost všech informací, které jste zadali.
 
-   - **Koupit**: klikněte na tlačítko **koupit** zahájíte zřizování. Pomocí odkazu uvedeného na podmínky služby. Virtuální počítač nemá žádné další poplatky za výpočetní prostředky pro velikost serveru, kterou jste zvolili v **velikost** kroku. 
+   - **Koupit**: Klikněte na tlačítko **koupit** zahájíte zřizování. Pomocí odkazu uvedeného na podmínky služby. Virtuální počítač nemá žádné další poplatky za výpočetní prostředky pro velikost serveru, kterou jste zvolili v **velikost** kroku. 
 
 >[!NOTE]
 > Zřizování zabere asi 20 – 30 minut. Stav zřizování se zobrazí na portálu Azure portal.

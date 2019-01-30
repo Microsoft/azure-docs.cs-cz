@@ -6,16 +6,16 @@ services: cognitive-services
 author: bojunehsu
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: knowledge-exploration
+ms.subservice: knowledge-exploration
 ms.topic: conceptual
 ms.date: 03/26/2016
 ms.author: paulhsu
-ms.openlocfilehash: 07f5536641b55aadf9d8b2623bf4797b8dcd7bd5
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.openlocfilehash: 4fa8f072d420a0245b9de65482ab4c97fa775bdf
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46129246"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55227297"
 ---
 # <a name="schema-format"></a>Formát schémat
 
@@ -41,15 +41,15 @@ Názvy atributů jsou malá a velká písmena identifikátorů, které začínaj
 
 Tady je seznam podporovaných atributů datové typy:
 
-| Typ | Popis | Operace | Příklad: |
+| Type | Popis | Operace | Příklad: |
 |------|-------------|------------|---------|
 | Řetězec | Řetězec (1-1024 znaků). | je rovno, starts_with | "hello world" |
 | Datový typ Int32 | 32bitové celé číslo se znaménkem | je rovno, starts_with, is_between | 2016 |
 | Int64 | 64bitové celé číslo se znaménkem | je rovno, starts_with, is_between | 9876543210 |
 | Double | Dvojité přesnosti s plovoucí desetinnou čárkou | je rovno, starts_with, is_between | 1.602e-19 |
-| Datum | Datum (1400-01-01 do 9999-12-31) | je rovno, is_between | "2016-03-14. |
+| Datum | Datum (1400-01-01 do 9999-12-31) | je rovno, is_between | '2016-03-14' |
 | Guid | Globálně jedinečný identifikátor | rovná se | "602DD052-CC47-4B23-A16A-26B52D30C05B" |
-| Objekt blob | Interně komprimovaných dat neindexovanou | *None* | "Umožněte každé osobě a každá organizace na celém světě, aby dokázali víc." |
+| Objekt blob | Interně komprimovaných dat neindexovanou | *Žádné* | "Umožněte každé osobě a každá organizace na celém světě, aby dokázali víc." |
 | Složené | Složení více dílčích atributů| *–* | {"Name": "harry shum", "Umístění": "microsoft"} |
 
 Atributy řetězec se používá k reprezentování řetězcové hodnoty, které se mohou objevit jako součást příkazu jazyka uživatele.  Podporují spouštění přesnou shodu *rovná* operace, stejně jako *starts_with* operace pro dotaz dokončení scénáře, jako je například porovnávání "micros" s "microsoft".  Velká a malá písmena a přibližné vzorů pro zpracování pravopisné chyby bude podporovat v budoucí verzi.

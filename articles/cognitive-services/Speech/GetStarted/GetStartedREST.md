@@ -6,16 +6,16 @@ services: cognitive-services
 author: zhouwangzw
 manager: wolfma
 ms.service: cognitive-services
-ms.component: bing-speech
+ms.subservice: bing-speech
 ms.topic: article
 ms.date: 09/18/2018
 ms.author: zhouwang
-ms.openlocfilehash: 5cbdad82e25baa95c0342eb514f39c7026f1618b
-ms.sourcegitcommit: 7862449050a220133e5316f0030a259b1c6e3004
+ms.openlocfilehash: fc40f20349e3424dbcf50f5ca0395b06a818566f
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/22/2018
-ms.locfileid: "53753070"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55224050"
 ---
 # <a name="quickstart-use-the-bing-speech-recognition-rest-api"></a>Rychlý start: Rozpoznávání řeči Bingu rozhraní REST API
 
@@ -124,7 +124,7 @@ $RecoResponse
 
 ```
 
-# <a name="curltabcurl"></a>[Curl](#tab/curl)
+# <a name="curltabcurl"></a>[curl](#tab/curl)
 
 V příkladu používá curl v Linuxu pomocí prostředí bash. Pokud není dostupný na vaší platformě, může být potřeba nainstalovat nástroj curl. Tento příklad funguje taky na Cygwin na Windows, Git Bash, zsh a jiné prostředí.
 
@@ -191,7 +191,7 @@ Následující fragment kódu ukazuje příklad, jak si můžete přečíst odpo
 ConvertTo-Json $RecoResponse
 ```
 
-# <a name="curltabcurl"></a>[Curl](#tab/curl)
+# <a name="curltabcurl"></a>[curl](#tab/curl)
 
 V tomto příkladu vrátí curl přímo zprávy s odpovědí v řetězci. Pokud chcete zobrazit ve formátu JSON, můžete použít další nástroje, například jq.
 

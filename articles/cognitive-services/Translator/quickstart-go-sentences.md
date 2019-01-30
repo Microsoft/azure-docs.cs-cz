@@ -1,23 +1,23 @@
 ---
-title: 'Rychlý start: Získání délky vět, Go – Translator Text API'
+title: 'Rychlý start: Získání délky věty přejít – Translator Text API'
 titleSuffix: Azure Cognitive Services
 description: V tomto rychlém startu zjistíte délky vět v textu pomocí rozhraní Translator Text API a jazyka Go.
 services: cognitive-services
 author: erhopf
 manager: erhopf
 ms.service: cognitive-services
-ms.component: translator-text
+ms.subservice: translator-text
 ms.topic: quickstart
 ms.date: 12/05/2018
 ms.author: erhopf
-ms.openlocfilehash: 71b88afeb941e6b635548468e634e07597318116
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: 5f4a4a4518eb973dc9d2c7cbcb34683fe0b3db08
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52994113"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55226838"
 ---
-# <a name="quickstart-use-the-translator-text-api-to-determine-sentence-length-using-go"></a>Rychlý start: Použití rozhraní Translator Text API k určení délky větu pomocí jazyka Go
+# <a name="quickstart-use-the-translator-text-api-to-determine-sentence-length-using-go"></a>Rychlý start: Určení délky větu pomocí jazyka Go pomocí rozhraní Translator Text API
 
 V tomto rychlém startu zjistíte určení délky věta (ve znacích) pomocí Go a rozhraní REST Translator Text API.
 

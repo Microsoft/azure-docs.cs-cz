@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/16/2019
 ms.author: sethm
-ms.openlocfilehash: 0d59c8c43d42babc1f25d014ad493fc59c5e0427
-ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
+ms.lastreviewed: 01/16/2019
+ms.openlocfilehash: ddf08c69b5ef06d6243230230bcfdb56965aef4d
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54352697"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55239940"
 ---
 # <a name="manage-key-vault-in-azure-stack-using-powershell"></a>Správa služby Key Vault ve službě Azure Stack pomocí Powershellu
 

@@ -15,12 +15,13 @@ ms.topic: get-started-article
 ms.date: 10/12/2018
 ms.author: sethm
 ms.reviewer: unknown
-ms.openlocfilehash: 61afc8a736025763f950307fdbb78bb21577b22f
-ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
+ms.lastreviewed: 10/12/2018
+ms.openlocfilehash: 4157c5d43b74cf7556114c5688e2ea717f1d0af3
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/12/2019
-ms.locfileid: "54244201"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55242651"
 ---
 # <a name="plan-offer-quota-and-subscription-overview"></a>Přehled plánů, nabídek, kvót a předplatných
 

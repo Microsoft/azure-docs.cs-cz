@@ -14,12 +14,13 @@ ms.topic: article
 ms.date: 10/19/2018
 ms.author: sethm
 ms.reviewer: alfredop
-ms.openlocfilehash: 32d0e0f48a99b5c06b1efa61e6e1a53cf5b0e61b
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.lastreviewed: 10/19/2018
+ms.openlocfilehash: f17a76b62c511e1cdcd98e387fe0132e2bd15c16
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52971789"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55238063"
 ---
 # <a name="usage-and-billing-in-azure-stack"></a>Využití a fakturace ve službě Azure Stack
 
@@ -59,7 +60,7 @@ Každý zákazník má svou identitu reprezentována na jiného tenanta Azure Ac
 ## <a name="next-steps"></a>Další postup
 
 - [Registrovat pomocí služby Azure Stack](azure-stack-registration.md)
-- [Azure Stack využití dat sestavy do Azure](azure-stack-usage-reporting.md)
+- [Hlášení dat o využití služby Azure Stack do Azure](azure-stack-usage-reporting.md)
 - [Rozhraní API využití prostředků poskytovatele](azure-stack-provider-resource-api.md)
 - [Rozhraní API využití prostředků tenanta](azure-stack-tenant-resource-usage-api.md)
 - [Nejčastější dotazy souvisí s využitím](azure-stack-usage-related-faq.md)

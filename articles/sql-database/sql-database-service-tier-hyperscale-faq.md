@@ -12,12 +12,12 @@ ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
 ms.date: 10/17/2018
-ms.openlocfilehash: 661fd36b4451238f488bff1db60a901a8dabd5aa
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: c5f5b43a96d5fad5d5f7737ef82585593cd05a7b
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51242150"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55240654"
 ---
 # <a name="faq-about-azure-sql-hyperscale-databases"></a>Nejčastější dotazy týkající se databáze Azure SQL Hyperškálováním
 
@@ -51,10 +51,10 @@ Založený na virtuálních jádrech služby, které úrovně se liší předev�
 | **Vypočítat velikost**|Izolovanou databázi nebo elastický fond * | 1 až 80 virtuálních jader | 1 až 80 virtuálních jader * | 1 až 80 virtuálních jader |
 | |Spravovaná instance | 8, 16, 24, 32, 40, 64, 80 virtuálních jader | neuvedeno | 8, 16, 24, 32, 40, 64, 80 virtuálních jader |
 | **Typ úložiště** | Vše |Vzdálené úložiště úrovně Premium (za instanci) | Zrušit propojených úložiště místní mezipaměti SSD (za instanci) | Mimořádně rychlým místní SSD storage (za instanci) |
-| **Velikost úložiště** | Izolované databáze nebo elastického fondu | 5 GB AŽ 4 TB | Až 100 TB | 5 GB AŽ 4 TB |
-| | Spravovaná instance  | 32 GB AŽ 8 TB | neuvedeno | 32 GB AŽ 4 TB |
+| **Velikost úložiště** | Izolované databáze nebo elastického fondu | 5 GB – 4 TB | Až 100 TB | 5 GB – 4 TB |
+| | Spravovaná instance  | 32 GB – 8 TB | neuvedeno | 32 GB – 4 TB |
 | **Vstupně-výstupních operací** | Jednu databázi ** | 500 IOPS na vCore s 7000 maximální IOPS | Zatím neznámý | 5000 vstupně-výstupních operací s 200 000 maximální IOPS|
-| | Spravovaná instance | Závisí na velikosti souboru | neuvedeno | Spravovaná Instance: Závisí na velikosti souboru|
+| | Spravovaná instance | Závisí na velikosti souboru | neuvedeno | Spravovanou instanci: Závisí na velikosti souboru|
 |**Dostupnost**|Vše|1 repliky, žádné škálování pro čtení, ne v místní mezipaměti | Víc replik, až 15 škálování pro čtení, částečné místní mezipaměti | 3 repliky, 1 škálování pro čtení, zónově redundantní vysokou dostupnost, úplná místní mezipaměti |
 |**Zálohování**|Vše|RA-GRS, 7 – 35 dní (7 dní ve výchozím nastavení)| RA-GRS, 7 – 35 dní (7 dní ve výchozím nastavení), konstantní čas in0time bodu obnovení (PITR) | RA-GRS, 7 – 35 dní (7 dní ve výchozím nastavení) |
 
@@ -73,7 +73,7 @@ Založený na virtuálních jádrech služby, které úrovně se liší předev�
 
 ### <a name="what-regions-currently-support-hyperscale"></a>Jaké oblasti v současné době podporují Hyperškálováním
 
-Velkokapacitní je aktuálně dostupné pro izolované databáze v těchto oblastech: západní US1, západní USA 2, východní US1, střed USA, západní Evropa, Severní Evropa, Velká Británie – Západ, jihovýchodní Asie, Japonsko – východ, Korea – střed, Austrálie – jihovýchod a Austrálie – východ.
+Velkokapacitní je aktuálně dostupné pro izolované databáze v těchto oblastech:  Západní US1, západní USA 2, východní US1, střed USA, západní Evropa, Severní Evropa, Velká Británie – Západ, jihovýchodní Asie, Japonsko – východ, Korea – střed, Austrálie – jihovýchod a Austrálie – východ.
 
 ### <a name="can-i-create-multiple-hyperscale-databases-per-logical-server"></a>Můžete vytvořit více databází Hyperškálovatelného v rámci logického serveru
 
@@ -98,7 +98,7 @@ Velkokapacitní SQL Database nabízí rychlou škálovatelnost podle potřeb va�
 
 ## <a name="deep-dive-questions"></a>Podrobné informace o dotazy
 
-### <a name="can-i-mix-hyperscale-and-single-databases-a-my-logical-server"></a>Můžete používat kombinaci Velkokapacitní a izolované databáze logický server
+### <a name="can-i-mix-hyperscale-and-single-databases-on-my-logical-server"></a>Můžete kombinovat Velkokapacitní a izolované databáze na logický server
 
 Ano, je to možné.
 

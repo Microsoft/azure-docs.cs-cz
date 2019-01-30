@@ -12,12 +12,12 @@ ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
 ms.date: 10/17/2018
-ms.openlocfilehash: 80e807a8fcbd6c087ad0995a4481180fa28ef42f
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: 2d5fdde14c1a33ace81e8999dbb365dac9de3e6e
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52872879"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55227892"
 ---
 # <a name="hyperscale-service-tier-preview-for-up-to-100-tb"></a>Velkokapacitní úrovni služeb (preview) pro až 100 TB
 
@@ -40,7 +40,7 @@ Azure SQL Database je založené na architektuře databázový stroj SQL serveru
 Úroveň mírou škálování služby ve službě Azure SQL Database poskytuje následující funkce:
 
 - Podpora pro až 100 TB velikosti databáze
-- Téměř okamžité zálohování (podle snímky souborů uložených ve službě Azure Blob storage) databáze bez ohledu na velikost bez jakéhokoli dopadu na vstupně-výstupních operací na výpočetní prostředky
+- Téměř okamžité zálohování (podle snímky souborů uložených ve službě Azure Blob storage) databáze bez ohledu na velikost bez jakéhokoli dopadu na vstupně-výstupních operací na výpočetní prostředky   
 - Rychlé obnovení databáze (podle snímky) v minutách nikoli hodin nebo dnů (nikoli velikost operace s daty)
 - Vyšší výkon z důvodu větší propustnost v protokolu a kratší doby potvrzení transakce bez ohledu na to datové svazky
 - Rychlé horizontální navýšení kapacity – můžete zřídit jednoho nebo více jen pro čtení uzlů pro přesměrování zpracování úlohy čtení a pro použití jako horkou – možnosti pro případ potřeby
@@ -133,9 +133,6 @@ ALTER DATABASE [DB2] MODIFY (EDITION = 'HyperScale', SERVICE_OBJECTIVE = 'HS_Gen
 GO
 ```
 
-> [!IMPORTANT]
-> [Transparentní šifrování databáze (TDE)](transparent-data-encryption-azure-sql.md) mělo vypnout před změnou databáze hyperškálovatelný systém hyperškálovatelný systém.
-
 ## <a name="connect-to-a-read-scale-replica-of-a-hyperscale-database"></a>Připojíte k replice škálování pro čtení mírou škálování databáze
 
 V Hyperškálovacím databází `ApplicationIntent` v připojovacím řetězci, který klient poskytl argument určuje, zda připojení se směruje do repliky zápisu nebo do sekundární repliky jen pro čtení. Pokud `ApplicationIntent` nastavena na `READONLY` a databáze nemá na sekundární repliku, připojení se budou směrovat na primární repliku a výchozí hodnota je `ReadWrite` chování.
@@ -147,7 +144,7 @@ Server=tcp:<myserver>.database.windows.net;Database=<mydatabase>;ApplicationInte
 
 ## <a name="available-regions"></a>Dostupné oblasti
 
-Úroveň velkokapacitní služby je aktuálně ve verzi public preview a je k dispozici v následujících oblastech Azure: EastUS1 EastUS2, WestUS2, CentralUS, NorthCentralUS, WestEurope, NorthEurope, UKWest, AustraliaEast, AustraliaSouthEast, SouthEastAsia, JapanEast, KoreaCentral
+Velkokapacitní úroveň služby je aktuálně ve verzi public preview a je k dispozici v následujících oblastech Azure: EastUS1 EastUS2, WestUS2, CentralUS, NorthCentralUS, WestEurope, NorthEurope, UKWest, AustraliaEast, AustraliaSouthEast, SouthEastAsia, JapanEast, KoreaCentral
 
 ## <a name="known-limitations"></a>Známá omezení
 
@@ -158,7 +155,8 @@ Server=tcp:<myserver>.database.windows.net;Database=<mydatabase>;ApplicationInte
 | Pokud je soubor databáze roste během migrace z důvodu aktivní úlohy a překročí 1 TB za hranice souboru, se migrace nezdaří | Omezení rizik: <br> – Pokud je to možné, migrace databáze, pokud neexistuje žádné aktualizace zátěži.<br> – Zkuste to znovu migrace, bude úspěšné, tak dlouho, dokud není překročí hranice 1 TB během migrace.|
 | Managed Instance se momentálně nepodporuje. | Aktuálně se nepodporuje. |
 | Migrace do Hyperškálovatelného je aktuálně Jednosměrná operace | Po migraci databáze na Hyperškálovatelného, není možné migrovat přímo do úrovně služeb-mírou škálování. V současné době je jediný způsob, jak migrovat databázi z Hyperškálovatelného do bez Hyperškálovatelného export a import pomocí souborů BACPAC.|
-| Migrace databází pomocí objektů v paměti se aktuálně nepodporuje. | Třeba vyřadit a znovu vytvořen jako objekty bez v paměti před migrací databáze na vrstvu služby Hyperškálovatelného objektů v paměti.
+| Migrace databází pomocí objektů v paměti se aktuálně nepodporuje. | Třeba vyřadit a znovu vytvořen jako objekty bez v paměti před migrací databáze na vrstvu služby Hyperškálovatelného objektů v paměti.|
+| Sledování změn dat není aktuálně podporováno. | Nebudete moct pomocí řešení Change Data Tracking s Hyperškálováním databasess.
 
 ## <a name="next-steps"></a>Další postup
 

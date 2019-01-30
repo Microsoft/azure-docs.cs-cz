@@ -6,23 +6,23 @@ services: cognitive-services
 author: v-jaswel
 manager: nolachar
 ms.service: cognitive-services
-ms.component: conversation-learner
+ms.subservice: conversation-learner
 ms.topic: article
 ms.date: 04/30/2018
 ms.author: v-jaswel
-ms.openlocfilehash: 409647da146a2844384204cb03de5028d45e5763
-ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
+ms.openlocfilehash: 6436193dadb5933074fdce861a31672a0f4849de
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/27/2018
-ms.locfileid: "53792386"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55227331"
 ---
 # <a name="demo-password-reset"></a>Ukázka: Resetování hesla
 Tento kurz představuje robota jednoduché technické podpory, který vám pomůže s resetování hesla s využitím learner konverzace. Model bodu robotů také další toky netriviální dialogové okno a více zapnout včetně třídy mimo doménu pořadí. Úkol můžete udělat bez kódu nebo entity.
 
 ## <a name="video"></a>Video
 
-[![Ukázka heslo ve verzi Preview](https://aka.ms/cl_Tutorial_v3_DemoPassword_Preview)](https://aka.ms/cl_Tutorial_v3_DemoPassword)
+[![Demo Password Preview](https://aka.ms/cl_Tutorial_v3_DemoPassword_Preview)](https://aka.ms/cl_Tutorial_v3_DemoPassword)
 
 ## <a name="requirements"></a>Požadavky
 Tento kurz vyžaduje, zda je spuštěna bot resetování hesla

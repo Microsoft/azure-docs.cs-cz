@@ -15,12 +15,12 @@ ms.workload: na
 ms.date: 10/24/2018
 ms.author: celested
 ms.reviewer: tomfitz
-ms.openlocfilehash: c768d5a35016b0725d4dbca2a418c8e780812d62
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.openlocfilehash: 35a69f12dc73ef0cbf9bc1541fa75037f6ef06f5
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55091642"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55228232"
 ---
 # <a name="how-to-use-azure-powershell-to-create-a-service-principal-with-a-certificate"></a>Postup: Vytvoření instančního objektu s certifikátem pomocí Azure PowerShellu
 
@@ -46,7 +46,7 @@ Nejjednodušším způsobem, jak zkontrolovat, jestli má váš účet dostateč
 
 ## <a name="create-service-principal-with-self-signed-certificate"></a>Vytvoření instančního objektu s certifikátem podepsaným svým držitelem
 
-Následující příklad popisuje jednoduchou situaci. Používá [New-AzADServicePrincipal](/powershell/module/az.resources/new-azadserviceprincipal) k vytvoření instančního objektu pomocí certifikátu podepsaného svým držitelem a používá [New-AzureRmRoleAssignment](/powershell/module/az.resources/new-azroleassignment) přiřadit [Přispěvatel](../../role-based-access-control/built-in-roles.md#contributor) roli instančnímu objektu služby. Přiřazení role je vymezené vaším aktuálně vybraným předplatným Azure. Chcete-li vybrat jiného předplatného, použijte [Set-AzContext](/powershell/module/az.profile/set-azcontext).
+Následující příklad popisuje jednoduchou situaci. Používá [New-AzADServicePrincipal](/powershell/module/az.resources/new-azadserviceprincipal) k vytvoření instančního objektu pomocí certifikátu podepsaného svým držitelem a používá [New-AzureRmRoleAssignment](/powershell/module/az.resources/new-azroleassignment) přiřadit [Přispěvatel](../../role-based-access-control/built-in-roles.md#contributor) roli instančnímu objektu služby. Přiřazení role je vymezené vaším aktuálně vybraným předplatným Azure. Chcete-li vybrat jiného předplatného, použijte [Set-AzContext](/powershell/module/Az.Accounts/Set-AzContext).
 
 ```powershell
 $cert = New-SelfSignedCertificate -CertStoreLocation "cert:\CurrentUser\My" `

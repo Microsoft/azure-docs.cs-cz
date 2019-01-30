@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: mayg
-ms.openlocfilehash: 5a16b81abb9cc95f46bd61f6c0232a28f3cda0ff
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: 7e53b50df88c592386d3f2fb140373a0c5aaab13
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52875395"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55228283"
 ---
 # <a name="integrate-azure-expressroute-with-disaster-recovery-for-azure-vms"></a>Integrace Azure ExpressRoute se zotavení po havárii pro virtuální počítače Azure
 
@@ -28,11 +28,11 @@ Site Recovery umožňuje zotavení po havárii virtuálních počítačů Azure 
 
 ExpressRoute umožňuje rozšířit místní sítě do cloudu Microsoft Azure přes soukromé připojení zajišťované poskytovatelem připojení. Pokud máte nakonfigurovaný ExpressRoute, integruje s využitím Site Recovery následujícím způsobem:
 
-- **Během replikace mezi oblastmi Azure**: provoz replikace pro zotavení po havárii virtuálního počítače Azure je jenom v rámci Azure a ExpressRoute není potřeba ani používanou k replikaci. Pokud se připojujete z místní lokality do virtuálních počítačů Azure v primární lokalitě Azure, existují však některé problémy, které je třeba vědět, když při nastavování zotavení po havárii pro tyto virtuální počítače Azure.
-- **Převzetí služeb při selhání mezi oblastmi Azure**: když dojde k výpadku, můžete převzetí služeb při selhání virtuálních počítačů Azure z primární do sekundární oblasti Azure. Po převzetí služeb při selhání do sekundární oblasti, existuje mnoho kroků provést, aby přístup k virtuálním počítačům Azure v sekundární oblasti přes ExpressRoute.
+- **Během replikace mezi oblastmi Azure**: Provoz replikace pro zotavení po havárii virtuálního počítače Azure je jenom v rámci Azure a ExpressRoute není potřeba ani používanou k replikaci. Pokud se připojujete z místní lokality do virtuálních počítačů Azure v primární lokalitě Azure, existují však některé problémy, které je třeba vědět, když při nastavování zotavení po havárii pro tyto virtuální počítače Azure.
+- **Převzetí služeb při selhání mezi oblastmi Azure**: Když dojde k výpadku, můžete převzetí služeb při selhání virtuálních počítačů Azure z primární do sekundární oblasti Azure. Po převzetí služeb při selhání do sekundární oblasti, existuje mnoho kroků provést, aby přístup k virtuálním počítačům Azure v sekundární oblasti přes ExpressRoute.
 
 
-## <a name="before-you-begin"></a>Než začnete
+## <a name="before-you-begin"></a>Před zahájením
 
 Než začnete, ujistěte se, že rozumíte následující pojmy:
 
@@ -93,7 +93,7 @@ V případě podnikového nasazení obvykle mají úlohy rozdělit mezi více vi
 - **Virtuální síť centra**. Je virtuální síť centra **virtuální síť centra zdroje**: 10.10.10.0/24.
     - Tato virtuální síť centra funguje jako vrátný.
     - Veškerá komunikace mezi podsítěmi, projděte si toto centrum.
- - ** Centrum vNet podsítě**. Virtuální síť centra má dvě podsítě:
+ - ****Hub vNet subnets**. Virtuální síť centra má dvě podsítě:
      - **Podsíť síťových virtuálních zařízení**: 10.10.10.0/25. Tato podsíť obsahuje síťové virtuální zařízení (. 10.10.10.10).
      - **Podsíť brány**: 10.10.10.128/25. Tato podsíť obsahuje bránu ExpressRoute připojené k připojení ExpressRoute, který směruje k místní lokalitě přes privátní partnerský vztah domény směrování.
 - Místní datové centrum má připojení okruhu ExpressRoute prostřednictvím partnerů hrany v Hongkong –.
@@ -146,7 +146,7 @@ Po převzetí služeb při selhání virtuálních počítačů Azure do cílov�
 
 #### <a name="two-circuits-with-two-peering-locations"></a>Dva okruhy s dvěma umístění partnerského vztahu
 
-Tato konfigurace pomáhá chránit okruhy ExpressRoute proti regionálního. Pokud vaše primární partnerského vztahu loation ocitne mimo provoz, můžete pokračovat v připojení z jiného umístění.
+Tato konfigurace pomáhá chránit okruhy ExpressRoute proti regionálního. Pokud vaše primární umístění partnerského vztahu ocitne mimo provoz, můžete pokračovat v připojení z jiného umístění.
 
 - Okruh připojené do produkčního prostředí je obvykle primární. Sekundární okruh obvykle má menší šířku pásma, které je možné zvýšit, pokud dojde k havárii.
 - Po převzetí služeb při selhání můžete vytvořit připojení k cílové síti ze sekundární okruh ExpressRoute. Alternativně můžete mít nastavené a připravené v případě havárie, snížit celkový čas obnovení připojení.

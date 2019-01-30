@@ -4,22 +4,40 @@ description: Zjistěte, jak řešit potíže s Update Management, Change Trackin
 services: automation
 author: georgewallace
 ms.author: gwallace
-ms.date: 06/19/2018
+ms.date: 01/25/2019
 ms.topic: conceptual
 ms.service: automation
 manager: carmonm
-ms.openlocfilehash: 52ff52ffb558278507bb24e1b1e2054c251b2512
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: 78e78bc019ab5f8be1cfd3448220b97b89cde6a5
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52879634"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55228776"
 ---
 # <a name="troubleshoot-errors-when-onboarding-solutions"></a>Řešení chyb při registraci řešení
 
 Pravděpodobně narazíte na chyby při připojování řešení, jako jsou Update Management nebo Change Tracking a Inventory. Tento článek popisuje různé chyby, které mohou nastat a způsob jejich řešení.
 
 ## <a name="general-errors"></a>Obecné chyby
+
+### <a name="missing-write-permissions"></a>Scénář: Registrace selže se zprávou – řešení není možné.
+
+#### <a name="issue"></a>Problém
+
+Při pokusu o připojení virtuálního počítače do řešení zobrazí následující zpráva:
+
+```
+The solution cannot be enabled due to missing permissions for the virtual machine or deployments
+```
+
+#### <a name="cause"></a>Příčina
+
+Tato chyba je způsobena nesprávnou nebo chybějící oprávnění na virtuálním počítači nebo pro uživatele.
+
+#### <a name="resolution"></a>Řešení
+
+Ujistěte se, že máte správná oprávnění k připojení virtuálního počítače. Zkontrolujte [práva potřebná k připojení počítačů](../automation-role-based-access-control.md#onboarding) a připojit řešení znovu.
 
 ### <a name="computer-group-query-format-error"></a>Scénář: ComputerGroupQueryFormatError
 
@@ -55,7 +73,7 @@ Pokud chcete úspěšně nasadit řešení, je potřeba zvážit změnu označen
   * Změnu cíle zásad do konkrétního prostředku (například za účelem konkrétní účet Automation).
   * Úprava sady prostředků této zásadě byl konfigurován k odepření.
 
-Zkontrolovat oznámení v pravém horním rohu webu Azure portal nebo přejděte do skupiny prostředků obsahující účet automation a vyberte **nasazení** pod **nastavení** zobrazíte neúspěšný nasazení. Další informace o Azure Policy najdete: [přehled Azure Policy](../../azure-policy/azure-policy-introduction.md?toc=%2fazure%2fautomation%2ftoc.json).
+Zkontrolovat oznámení v pravém horním rohu webu Azure portal nebo přejděte do skupiny prostředků obsahující účet automation a vyberte **nasazení** pod **nastavení** zobrazíte neúspěšný nasazení. Další informace o službě Azure Policy najdete v tématu: [Přehled služby Azure Policy](../../azure-policy/azure-policy-introduction.md?toc=%2fazure%2fautomation%2ftoc.json).
 
 ## <a name="mma-extension-failures"></a>Chyby rozšíření agenta MMA
 
@@ -67,7 +85,7 @@ Instalace agenta MMA nebo Log Analytics pro Linux může selhat z různých dův
 
 Následující část popisuje různé problémy, které se můžete setkat při připojování, způsobit selhání nasazení rozšíření agenta MMA.
 
-### <a name="webclient-exception"></a>Scénář: Došlo k výjimce během požadavku WebClient
+### <a name="webclient-exception"></a>Scénář: Během požadavku WebClient došlo k výjimce
 
 Rozšíření agenta MMA na virtuálním počítači se nemůže komunikovat s externím prostředkům a nasazení se nezdaří.
 

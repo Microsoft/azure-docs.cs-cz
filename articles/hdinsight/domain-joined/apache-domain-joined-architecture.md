@@ -9,12 +9,12 @@ ms.reviewer: omidm
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: 50c5838f576b6fd6775373f2dbe3c46d751545c1
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.openlocfilehash: 3237932c66c77f979c4e95798163621e65735bed
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53437584"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55247149"
 ---
 # <a name="use-enterprise-security-package-in-hdinsight"></a>Použít balíček zabezpečení podniku v HDInsight
 
@@ -55,9 +55,41 @@ Další informace najdete v tématu [konfigurace HDInsight clustery s využitím
 
 Pokud máte složitější nastavení služby Active Directory nebo instance místní služby Active Directory pro vaši doménu, můžete tyto identity do služby Azure AD synchronizovat s použitím služby Azure AD Connect. Pak můžete povolit Azure AD DS na tohoto tenanta Active Directory. 
 
-Protože protokol Kerberos závisí na hodnot hash hesel, budete muset [povolení synchronizace hodnot hash hesel ve službě Azure AD DS](../../active-directory-domain-services/active-directory-ds-getting-started-password-sync.md). Pokud používáte federace s Active Directory Federation Services (AD FS), můžete volitelně nastavit synchronizace hodnot hash hesel jako záložní v případě selhání infrastruktury služby AD FS. Další informace najdete v tématu [povolení synchronizace hodnot hash hesel pomocí synchronizace Azure AD Connect](../../active-directory/hybrid/how-to-connect-password-hash-synchronization.md). 
+Protože protokol Kerberos závisí na hodnot hash hesel, je nutné [povolení synchronizace hodnot hash hesel ve službě Azure AD DS](../../active-directory-domain-services/active-directory-ds-getting-started-password-sync.md). 
+
+Pokud používáte federace s Active Directory Federation Services (ADFS), musíte povolit synchronizaci hodnot hash hesel (doporučené nastavení, přečtěte si [to](https://youtu.be/qQruArbu2Ew)) což také pomáhá s zotavení po havárii v případě selhání vaší infrastruktury služby AD FS a ochranu uniklé přihlašovací údaje. Další informace najdete v tématu [povolení synchronizace hodnot hash hesel pomocí synchronizace Azure AD Connect](../../active-directory/hybrid/how-to-connect-password-hash-synchronization.md). 
 
 Pomocí místní služby Active Directory nebo Active Directory na virtuálních počítačích IaaS samostatně, bez Azure AD a Azure AD DS, není podporované konfigurace pro clustery HDInsight se ESP.
+
+Pokud federace se právě používá a hodnoty hash hesla jsou synchronizovaná smíšený, ale se zobrazuje počet selhání ověření, prosím zkontrolujte, jestli instančnímu objektu prostředí powershell cloudové ověřování hesla je povoleno, v opačném případě je nutné nastavit [domácí sféry zjišťování (HRD ) zásady](../../active-directory/manage-apps/configure-authentication-for-federated-users-portal.md) pro vašeho tenanta AAD. Kontrola a sada zásad HRD:
+
+ 1. Nainstalujte modul prostředí powershell Azure AD
+
+ ```
+  Install-Module AzureAD
+ ```
+
+ 2. ```Connect-AzureAD``` pomocí přihlašovacích údajů globálního správce (správce klienta)
+
+ 3. Zkontrolujte, zda již byl vytvořen instanční objekt služby "Azure powershell"
+
+```
+ Get-AzureADServicePrincipal -SearchString "1950a258-227b-4e31-a9cf-717495945fc2"
+```
+
+ 4. Pokud neexistuje, vytvořte instanční objekt služby
+
+```
+ New-AzureADServicePrincipal -AppId 1950a258-227b-4e31-a9cf-717495945fc2
+```
+
+ 5. Připojte zásady na tento instanční objekt: 
+
+```
+ $policy = New-AzureADPolicy -Definition @("{"HomeRealmDiscoveryPolicy":{"AllowCloudPasswordValidation":true}}") -DisplayName EnableDirectAuth -Type HomeRealmDiscoveryPolicy
+
+ Add-AzureADServicePrincipalPolicy -Id <Service Principal ID> -refObjectID $policy.ID
+```
 
 ## <a name="next-steps"></a>Další postup
 

@@ -6,23 +6,23 @@ services: cognitive-services
 author: wolfma61
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: speech-service
+ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: wolfma
 ms.custom: seodec18
-ms.openlocfilehash: 04a1f3222b17d91889eb580d9d4e8206d8156d37
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: c906a45443bcba8c84a0624c74255f19a492a4e9
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53095479"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55217149"
 ---
 # <a name="troubleshoot-the-speech-service-sdk"></a>Řešení potíží se službou Speech SDK
 
 Tento článek obsahuje informace, které vám pomůžou při řešení problémů, že se můžete setkat, když použijete služby SDK řeči.
 
-## <a name="error-websocket-upgrade-failed-with-an-authentication-error-403"></a>Chyba: Upgrade objektu websocket na straně se nezdařilo s chybou ověřování (403)
+## <a name="error-websocket-upgrade-failed-with-an-authentication-error-403"></a>Chyba: Upgrade objektu WebSocket se nezdařilo s chybou ověřování (403)
 
 Může být nesprávné koncový bod pro oblast nebo službu. Zkontrolujte identifikátor URI, abyste měli jistotu, že je správný.
 
@@ -104,11 +104,11 @@ Pokud používáte autorizační token pro ověření, spusťte jeden z následu
 
 ---
 
-## <a name="error-http-400-bad-request"></a>Chyba: HTTP 400 Chybný požadavek
+## <a name="error-http-400-bad-request"></a>Chyba: Chybný požadavek HTTP 400
 
 K této chybě obvykle dochází, když text požadavku obsahuje neplatnou zvuková data. Pouze WAV formát je podporován. Zkontrolujte taky, ujistěte se, že jste zadejte příslušné hodnoty pro záhlaví požadavku `Content-Type` a `Content-Length`.
 
-## <a name="error-http-408-request-timeout"></a>Chyba: HTTP 408 žádosti vypršel časový limit
+## <a name="error-http-408-request-timeout"></a>Chyba: Časový limit protokolu HTTP 408 žádosti
 
 Chyba pravděpodobně dochází, protože žádné zvukové dat je odesíláno do služby. Tato chyba může být také způsobena problémy se sítí.
 

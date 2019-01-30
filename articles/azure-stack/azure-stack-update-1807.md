@@ -15,12 +15,13 @@ ms.topic: article
 ms.date: 10/07/2018
 ms.author: sethm
 ms.reviewer: justini
-ms.openlocfilehash: 82343daa9fafe27ac814b6246a303e661a0a22d1
-ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
+ms.lastreviewed: 10/07/2018
+ms.openlocfilehash: 2b36c5d31e9377335a9cc8a37d4e4e0e890bfc3b
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54231032"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55245079"
 ---
 # <a name="azure-stack-1807-update"></a>Aktualizace služby Azure Stack 1807
 
@@ -85,7 +86,7 @@ Tato aktualizace zahrnuje následující vylepšení pro službu Azure Stack.
   Další informace najdete v tématu [předávání syslog Azure Stack](azure-stack-integrate-security.md).
 
 <!-- ####### | IS, ASDK | --> 
-- **Azure Resource Manageru obsahuje název oblasti.** V této verzi načtené z Azure Resource Manageru objekty teď bude zahrnovat atribut názvu oblasti. Pokud stávající skript prostředí PowerShell přímo předá objekt jiná rutina, skript může vést k chybě a selhání. To je chování kompatibilní s Azure Resource Manageru a vyžaduje odečítané atribut oblasti volajícího klienta. Další informace o Azure Resource Manageru najdete v tématu [dokumentaci k Azure Resource Manageru](https://docs.microsoft.com/azure/azure-resource-manager/). Ověřte 8-10 mdb-->
+- **Azure Resource Manageru obsahuje název oblasti.** V této verzi načtené z Azure Resource Manageru objekty teď bude zahrnovat atribut názvu oblasti. Pokud stávající skript prostředí PowerShell přímo předá objekt jiná rutina, skript může vést k chybě a selhání. To je chování kompatibilní s Azure Resource Manageru a vyžaduje odečítané atribut oblasti volajícího klienta. Další informace o Azure Resource Manageru najdete v tématu [dokumentaci k Azure Resource Manageru](https://docs.microsoft.com/azure/azure-resource-manager/). verify 8-10 mdb -->
 
 <!-- TBD | IS, ASDK -->  
 - **Změny funkcí delegované poskytovatele.** Počínaje 1807 delegované poskytovatele modelu je zjednodušená za účelem lepší bylo v souladu s modelem prodejce v systému Azure a delegovat poskytovatelé nebudete moct vytvořit další delegovaný zprostředkovatele v podstatě sloučení modelu a provádění delegované poskytovatele funkce je k dispozici na jedné úrovni. Pokud chcete povolit přechod na nový model a správy předplatných, předplatná uživatelů můžete nyní mezi nové nebo existující delegované poskytovatele předplatnými přesunout, které patří do stejného tenanta adresáře. Předplatná uživatelů, které patří do předplatného výchozí zprostředkovatel můžete také přesunout do delegovaný předplatná poskytovatele ve stejném tenantu Active Directory.  Další informace najdete v části [delegování nabídek v Azure stacku](azure-stack-delegated-provider.md).
@@ -290,7 +291,7 @@ Toto jsou známé problémy této verze sestavení po instalaci.
     ```  
   - **Azure CLI:** Můžete použít [az vm vytvořit](https://docs.microsoft.com/cli/azure/vm?view=azure-cli-latest#az-vm-create) příkaz a zadejte velikost virtuálního počítače jako parametr, podobně jako `--size "Standard_F32s_v2"`.
 
-  - **Prostředí PowerShell:** V prostředí PowerShell můžete použít [New-AzureRMVMConfig](https://docs.microsoft.com/powershell/module/azurerm.compute/new-azurermvmconfig?view=azurermps-6.0.0) s parametrem, který určuje velikost virtuálního počítače, podobně jako `-VMSize "Standard_F32s_v2"`.
+  - **PowerShell:** V prostředí PowerShell můžete použít [New-AzureRMVMConfig](https://docs.microsoft.com/powershell/module/azurerm.compute/new-azurermvmconfig?view=azurermps-6.0.0) s parametrem, který určuje velikost virtuálního počítače, podobně jako `-VMSize "Standard_F32s_v2"`.
 
 
 <!-- TBD - IS ASDK --> 

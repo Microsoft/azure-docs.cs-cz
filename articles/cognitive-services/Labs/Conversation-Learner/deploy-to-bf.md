@@ -6,16 +6,16 @@ services: cognitive-services
 author: v-jaswel
 manager: nolachar
 ms.service: cognitive-services
-ms.component: conversation-learner
+ms.subservice: conversation-learner
 ms.topic: article
 ms.date: 04/30/2018
 ms.author: v-jaswel
-ms.openlocfilehash: 0bcb6262201b3399ca4d759bb306a570bea33b00
-ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
-ms.translationtype: MT
+ms.openlocfilehash: 44d4d3b7b82a2f23f973a9c94cb66c81c430efa8
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45578765"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55225308"
 ---
 # <a name="how-to-deploy-a-conversation-learner-bot"></a>Jak nasadit robota Learner konverzace
 
@@ -53,7 +53,7 @@ Tady je postup získání ID modelu:
 
 5. Identifikátor GUID "ID modelu" se zobrazí v horní části stránky.
 
-## <a name="option-1-deploying-a-conversation-learner-bot-to-run-locally"></a>Možnost 1: Nasazení konverzace Learner bot spustit místně
+## <a name="option-1-deploying-a-conversation-learner-bot-to-run-locally"></a>Option 1: Nasazení konverzace Learner bot spustit místně
 
 To nasadí robota do místního počítače a ukazuje, jak k němu máte přístup pomocí emulátoru služby Bot Framework.
 
@@ -90,7 +90,7 @@ Robot je nyní spuštěna místně.  Můžete k němu přístup s emulátorem Bo
 
 2. Jsou nyní rozhovory s vaším robotem.
 
-## <a name="option-2-deploy-to-azure"></a>Možnost 2: Nasazení do Azure
+## <a name="option-2-deploy-to-azure"></a>Option 2: Nasazení do Azure
 
 Publikování podobné stejným způsobem, jakým bude publikována libovolnému robotu konverzace Learner robota. Na vysoké úrovni Nahrajte svůj kód na hostovaný web, nastavte odpovídající konfiguraci hodnoty a pak zaregistrujte robot s různými kanály. Podrobné pokyny jsou toto video ukazuje, jak publikovat robotů pomocí služeb Azure Bot Service.
 

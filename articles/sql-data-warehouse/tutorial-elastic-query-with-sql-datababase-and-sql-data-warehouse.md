@@ -6,18 +6,18 @@ author: hirokib
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
-ms.component: implement
+ms.subservice: implement
 ms.date: 04/14/2018
 ms.author: elbutter
 ms.reviewer: igorstan
-ms.openlocfilehash: 355ae1c27d0af8f77c2c9bda61c3581562050fc4
-ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
+ms.openlocfilehash: b1ac2edd39ac2e5a765eaf6223ba01c9f9e5df91
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43307088"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55238330"
 ---
-# <a name="tutorial-use-elastic-query-to-access-data-in-azure-sql-data-warehouse-from-azure-sql-database"></a>Kurz: Použití elastického dotazu pro přístup k datům ve službě Azure SQL Data Warehouse z Azure SQL Database
+# <a name="tutorial-use-elastic-query-to-access-data-in-azure-sql-data-warehouse-from-azure-sql-database"></a>Kurz: Použít nástroj Elastic Query přístup k datům ve službě Azure SQL Data Warehouse z Azure SQL Database
 
 Tento kurz používá funkci elastický dotaz k dotazování Azure SQL Data Warehouse z Azure SQL Database. 
 

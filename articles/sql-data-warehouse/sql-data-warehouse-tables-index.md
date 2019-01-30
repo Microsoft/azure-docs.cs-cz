@@ -6,16 +6,16 @@ author: ronortloff
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
-ms.component: implement
+ms.subservice: implement
 ms.date: 04/17/2018
 ms.author: rortloff
 ms.reviewer: igorstan
-ms.openlocfilehash: d709acfe378583a21b72971f465e4b5d73818bcd
-ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
+ms.openlocfilehash: 2d57097e4d3317bfba5055a6b75ae72dd60f046a
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43307724"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55244687"
 ---
 # <a name="indexing-tables-in-sql-data-warehouse"></a>Indexování tabulky ve službě SQL Data Warehouse
 Doporučení a příklady pro indexování tabulky ve službě Azure SQL Data Warehouse.
@@ -213,7 +213,7 @@ Níže je příklad toho, jak přidělit víc paměti uživateli zvýšením sv�
 EXEC sp_addrolemember 'xlargerc', 'LoadUser'
 ```
 
-### <a name="step-2-rebuild-clustered-columnstore-indexes-with-higher-resource-class-user"></a>Krok 2: Znovu vytvořit Clusterované indexy columnstore s větším uživatelském třídy prostředků
+### <a name="step-2-rebuild-clustered-columnstore-indexes-with-higher-resource-class-user"></a>Krok 2: Znovu sestavit Clusterované indexy columnstore s větším uživatelském třídy prostředků
 Přihlaste se jako uživatel z kroku 1 (třeba LoadUser), která je teď vyšší třídě prostředků, a spusťte příkazy ALTER INDEX. Ujistěte se, že tento uživatel má oprávnění ALTER na tabulky, kde index je znovu sestaven. Tyto příklady ukazují, jak znovu sestavte index columnstore celý nebo znovu sestavit jeden oddíl. U velkých tabulek je víc praktických znovu sestavit indexy jeden oddíl v čase.
 
 Místo znovu sestavit index, může případně zkopírujte tabulku, do nové tabulky [použití příkazu CTAS](sql-data-warehouse-develop-ctas.md). Jakým způsobem je nejvhodnější? Pro velké objemy dat, je obvykle rychlejší než CTAS [ALTER INDEX](/sql/t-sql/statements/alter-index-transact-sql). Pro menší objem dat ALTER INDEX se snadněji používá a není třeba vyměnit v tabulce. Zobrazit **nové sestavení indexů CTAS a přepínání oddílů** níže podrobné informace o tom, jak provést nové sestavení indexů s CTAS.
@@ -240,7 +240,7 @@ ALTER INDEX ALL ON [dbo].[FactInternetSales] REBUILD Partition = 5 WITH (DATA_CO
 
 Nové sestavení indexu ve službě SQL Data Warehouse je v režimu offline operace.  Další informace o nové sestavení indexů, naleznete v tématu v části ALTER INDEX REBUILD [defragmentace indexy Columnstore](/sql/relational-databases/indexes/columnstore-indexes-defragmentation), a [ALTER INDEX](/sql/t-sql/statements/alter-index-transact-sql).
 
-### <a name="step-3-verify-clustered-columnstore-segment-quality-has-improved"></a>Krok 3: Ověření, že se zlepšila kvalita segmentů columnstore clusteru
+### <a name="step-3-verify-clustered-columnstore-segment-quality-has-improved"></a>Krok 3: Ověřte, že se zlepšila kvalita segmentů columnstore clusteru
 Opětovné spuštění dotazu, které identifikované tabulky s špatné segmentovat kvality a ověření kvality segmentů zvýšil.  Pokud ke zlepšení kvality segmentů, je možné, že jsou velmi široké řádky v tabulce.  Zvažte použití vyšší třídě prostředků nebo DWU, když nové sestavení indexů.
 
 ## <a name="rebuilding-indexes-with-ctas-and-partition-switching"></a>Nové sestavení indexů CTAS a přepínání oddílů

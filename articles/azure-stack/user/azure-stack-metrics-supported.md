@@ -13,16 +13,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/06/2018
 ms.author: mabrigg
-ms.openlocfilehash: 7ebb9d683803a6c5a5a0fa25308b348eeea586c4
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.lastreviewed: 12/06/2018
+ms.openlocfilehash: c7b0332d2a1df9d61b95b73699bf04f32e3165ff
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53097892"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55240535"
 ---
 # <a name="supported-metrics-with-azure-monitor-on-azure-stack"></a>Podporované metriky ve službě Azure Monitor ve službě Azure Stack
 
-*Platí pro: integrované systémy Azure Stack*
+*Platí pro: Integrované systémy Azure Stack*
 
 Můžete načíst metriky z Azure monitoru ve službě Azure Stack ve stejné jako globální Azure. Můžete vytvářet míry na portálu, je získat z rozhraní REST API nebo dotazovat pomocí Powershellu nebo rozhraní příkazového řádku.
 

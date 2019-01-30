@@ -13,12 +13,13 @@ ms.topic: article
 ms.date: 01/24/2019
 ms.author: sethm
 ms.reviewer: sijuman
-ms.openlocfilehash: 15354cd7472e7cffb7a40ca431bc23eb65b9a9a9
-ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
+ms.lastreviewed: 01/24/2019
+ms.openlocfilehash: 6d494cbc53ce83cfe4aaef63653eab2da9b35937
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54845890"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55249939"
 ---
 # <a name="use-api-version-profiles-with-azure-cli-in-azure-stack"></a>Použití profilů verzí API pomocí Azure CLI ve službě Azure Stack
 

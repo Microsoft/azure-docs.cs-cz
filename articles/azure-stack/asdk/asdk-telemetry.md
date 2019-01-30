@@ -15,12 +15,13 @@ ms.topic: article
 ms.date: 10/15/2018
 ms.author: jeffgilb
 ms.reviewer: misainat
-ms.openlocfilehash: 831c233672e162462439056e56a244e6fb8a2f31
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.lastreviewed: 10/15/2018
+ms.openlocfilehash: 8eb02eadba68f4e226e09e8e243e6c88eb0dc9fe
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54264203"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55239192"
 ---
 # <a name="azure-stack-telemetry"></a>Telemetrická data Azure Stack
 

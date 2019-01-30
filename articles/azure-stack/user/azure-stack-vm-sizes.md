@@ -13,12 +13,13 @@ ms.topic: article
 ms.date: 01/11/2019
 ms.author: mabrigg
 ms.reviewer: kivenkat
-ms.openlocfilehash: e9c2bf52cb1999381d7d1cde3a8f62710514b915
-ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
+ms.lastreviewed: 01/11/2019
+ms.openlocfilehash: 6f3b4632674217133f4af4c95143d2df51ecde6a
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54884507"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55247455"
 ---
 # <a name="virtual-machine-sizes-supported-in-azure-stack"></a>Velikosti virtuálních počítačů, které jsou podporované ve službě Azure Stack
 

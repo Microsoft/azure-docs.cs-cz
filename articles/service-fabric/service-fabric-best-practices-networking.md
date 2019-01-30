@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 01/23/2019
 ms.author: pepogors
-ms.openlocfilehash: 4118e52e8fac34e860f05e17effb01e9375582ec
-ms.sourcegitcommit: 97d0dfb25ac23d07179b804719a454f25d1f0d46
+ms.openlocfilehash: 2571c4a1e5a3ff6228cd6647c4367555d0add866
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/25/2019
-ms.locfileid: "54913769"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55212554"
 ---
 # <a name="networking"></a>Sítě
 
@@ -48,7 +48,7 @@ Maximalizovat výkon virtuálního počítače s Akcelerovanými síťovými slu
 ```
 Cluster Service Fabric je možné zřídit na [Linux s Akcelerovanými síťovými službami](https://docs.microsoft.com/azure/virtual-network/create-vm-accelerated-networking-cli), a [Windows s Akcelerovanými síťovými službami](https://docs.microsoft.com/azure/virtual-network/create-vm-accelerated-networking-powershell).
 
-Akcelerované síťové služby se podporuje pro skladové položky řady virtuálních počítačů Azure: D/DSv2, D/DSv3, E nebo ESv3, F/FS, FSv2 a Ms a Mms. Akcelerované síťové služby byl testován pomocí úspěšně Standard_DS8_v3 SKU 1/23/2019.
+Akcelerované síťové služby se podporuje pro skladové položky řady virtuálních počítačů Azure: D/DSv2, D/DSv3, E nebo ESv3, F/FS, FSv2 a Ms a Mms. Akcelerované síťové služby byl testován úspěšně Standard_DS8_v3 SKU 1/23/2019 pro Service Fabric Windows Cluster a pomocí Standard_DS12_v2 01/29 nebo 2019 pro Linux clusteru Service Fabric.
 
 Povolit Akcelerovanými síťovými službami v existujícím clusteru Service Fabric, musíte si nejdřív [škálovat cluster Service Fabric out tak, že přidáte Škálovací sady virtuálních počítačů](https://docs.microsoft.com/azure/service-fabric/virtual-machine-scale-set-scale-node-type-scale-out), proveďte následující kroky:
 1. Zřízení NodeType s Akcelerovanými síťovými službami povoleno

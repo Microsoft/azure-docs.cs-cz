@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/10/2019
 ms.author: magoedte
-ms.openlocfilehash: 4c9fe269ffa351c1efdb3f94a15a10bae65432d8
-ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
+ms.openlocfilehash: 3013d8997660df95fb12c8b18c1120f726eead04
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54199646"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55216016"
 ---
 # <a name="application-insights-connector-management-solution-preview"></a>Řešení správy Application Insights Connector (Preview)
 
@@ -55,7 +55,7 @@ Na rozdíl od většina jiných řešení Log Analytics data nejsou shromažďov
 
 ## <a name="configuration"></a>Konfigurace
 
-1. Povolení řešení Azure Web Apps Analytics z [Azure marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.ApplicationInsights?tab=Overview) nebo pomocí procesu popsaného v [přidání řešení Log Analytics z Galerie řešení](../../azure-monitor/insights/solutions.md).
+1. Povolení řešení Azure Web Apps Analytics z [Azure marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.AppInsights?tab=Overview) nebo pomocí procesu popsaného v [přidání řešení Log Analytics z Galerie řešení](../../azure-monitor/insights/solutions.md).
 2. Přejděte na web [Azure Portal](https://portal.azure.com). Vyberte **všechny služby** a otevře Application Insights. Vyhledejte Application Insights. 
 3. V části **předplatná**, vyberte předplatné, které má prostředky Application Insights a pak v části **název**, vyberte jednu nebo více aplikací.
 4. Klikněte na **Uložit**.

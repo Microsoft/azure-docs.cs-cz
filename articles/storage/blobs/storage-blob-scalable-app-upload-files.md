@@ -9,13 +9,13 @@ ms.topic: tutorial
 ms.date: 02/20/2018
 ms.author: rogarana
 ms.custom: mvc
-ms.component: blobs
-ms.openlocfilehash: a69d67ee455b447eb038903bb8fafb644d025662
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.subservice: blobs
+ms.openlocfilehash: a1dba92a9e156c82f49b9f6f85faf227fc652029
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51565730"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55240076"
 ---
 # <a name="upload-large-amounts-of-random-data-in-parallel-to-azure-storage"></a>Paralelní nahrávání velkých objemů náhodných dat do úložiště Azure
 
@@ -35,7 +35,7 @@ Dalším důležitým faktorem při návrhu vysoce výkonné aplikace využívaj
 
 ## <a name="prerequisites"></a>Požadavky
 
-K dokončení tohoto kurzu je nutné dokončit předchozí kurz o službě Storage: [Vytvoření virtuálního počítače a účtu úložiště pro škálovatelnou aplikaci][previous-tutorial].
+K dokončení tohoto kurzu, je nutné dokončit předchozí kurz o službě Storage: [Vytvoření virtuálního počítače a účtu úložiště pro škálovatelnou aplikaci][previous-tutorial].
 
 ## <a name="remote-into-your-virtual-machine"></a>Vzdálené připojení k virtuálnímu počítači
 
@@ -69,7 +69,7 @@ Aplikace vytvoří pět náhodně pojmenovaných kontejnerů a začne nahrávat 
 
 Kromě nastavení dělení na vlákna a omezení připojení se ve třídě [BlobRequestOptions](/dotnet/api/microsoft.windowsazure.storage.blob.blobrequestoptions?view=azure-dotnet) pro metodu [UploadFromStreamAsync](/dotnet/api/microsoft.windowsazure.storage.blob.cloudblockblob.uploadfromstreamasync?view=azure-dotnet) nakonfiguruje použití paralelismu a vypnutí ověřování hodnoty hash MD5. Soubory se nahrávají ve 100MB blocích. Tato konfigurace zajišťuje lepší výkon, ale může být nákladnější v případě, že používáte málo výkonnou síť, protože v případě selhání se opakuje nahrávání celého 100MB bloku.
 
-|Vlastnost|Hodnota|Popis|
+|Vlastnost|Value|Popis|
 |---|---|---|
 |[ParallelOperationThreadCount](/dotnet/api/microsoft.windowsazure.storage.blob.blobrequestoptions.paralleloperationthreadcount?view=azure-dotnet)| 8| Toto nastavení při nahrávání rozdělí objekty blob do bloků. Pro zajištění nejvyššího výkonu by tato hodnota měla být osminásobkem počtu jader. |
 |[DisableContentMD5Validation](/dotnet/api/microsoft.windowsazure.storage.blob.blobrequestoptions.disablecontentmd5validation?view=azure-dotnet)| true (pravda)| Tato vlastnost zakazuje kontrolu hodnoty hash MD5 nahrávaného obsahu. Zakázáním ověřování MD5 dosáhnete rychlejšího přenosu. Neprovádí se však potvrzení platnosti ani integrity přenášených souborů.   |

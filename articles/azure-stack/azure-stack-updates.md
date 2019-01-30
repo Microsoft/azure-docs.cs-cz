@@ -13,12 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/22/2019
 ms.author: mabrigg
-ms.openlocfilehash: d97642811d3c3422bd7cbe807303600304fafeba
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.lastreviewed: 01/22/2019
+ms.openlocfilehash: 1ee8b11b131a40150431daa22011e868ab290e3a
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54464047"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55250558"
 ---
 # <a name="manage-updates-in-azure-stack-overview"></a>Správa aktualizací v přehledu služby Azure Stack
 

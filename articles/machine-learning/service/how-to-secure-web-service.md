@@ -11,12 +11,12 @@ ms.author: aashishb
 author: aashishb
 ms.date: 10/02/2018
 ms.custom: seodec18
-ms.openlocfilehash: c2285b4d7764592d3e210177edd8f127ca4bfaee
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
-ms.translationtype: MT
+ms.openlocfilehash: 43f4aa5cc0d8545c6148fc15991817356ff69827
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55090659"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55228096"
 ---
 # <a name="use-ssl-to-secure-web-services-with-azure-machine-learning-service"></a>Použití protokolu SSL pro zabezpečení webové služby pomocí služby Azure Machine Learning
 
@@ -82,36 +82,11 @@ Chcete-li nasadit (nebo znovu nasadit) na službu s protokol SSL povolený, nast
     aci_config = AciWebservice.deploy_configuration(ssl_enabled=True, ssl_cert_pem_file="cert.pem", ssl_key_pem_file="key.pem", ssl_cname="www.contoso.com")
     ```
 
-<a name="fpga"></a>
-+ **Nasazení na pole Programmable Gate Array (FPGA)**
-
-  Odpověď `create_service` operace obsahuje IP adresu služby. IP adresa se používá při mapování názvu DNS na IP adresu služby. Také obsahuje odpovědi __primární klíč__ a __sekundární klíč__ , která se používají k používání této služby. Zadejte hodnoty pro parametry související s protokolem SSL, jak znázorňuje fragment kódu:
-
-    ```python
-    from amlrealtimeai import DeploymentClient
-
-    subscription_id = "<Your Azure Subscription ID>"
-    resource_group = "<Your Azure Resource Group Name>"
-    model_management_account = "<Your Azure Machine Learning service Model Management Account Name>"
-    location = "eastus2"
-
-    model_name = "resnet50-model"
-    service_name = "quickstart-service"
-
-    deployment_client = DeploymentClient(subscription_id, resource_group, model_management_account, location)
-
-    with open('cert.pem','r') as cert_file:
-        with open('key.pem','r') as key_file:
-            cert = cert_file.read()
-            key = key_file.read()
-            service = deployment_client.create_service(service_name, model_id, ssl_enabled=True, ssl_certificate=cert, ssl_key=key)
-    ```
-
 ## <a name="update-your-dns"></a>Aktualizujte svoji službu DNS
 
 V dalším kroku je nutné aktualizovat DNS tak, aby odkazoval na webovou službu.
 
-+ **ACI a FPGA**:
++ **Pro ACI**:
 
   Použijte nástroje poskytované systémem registrátora názvu domény aktualizovat záznam DNS pro název domény. Záznam musí odkazovat na IP adresu služby.
 
@@ -122,6 +97,10 @@ V dalším kroku je nutné aktualizovat DNS tak, aby odkazoval na webovou služb
   Aktualizace DNS na kartě "Konfigurace" z "Veřejné IP adresy" clusteru AKS, jak je znázorněno na obrázku. Veřejnou IP adresu najdete jako jeden z typů prostředků vytvořené v rámci skupiny prostředků, která obsahuje agentské uzly AKS a jiných síťových prostředků.
 
   ![Služba Azure Machine Learning: Zabezpečení webové služby s protokolem SSL](./media/how-to-secure-web-service/aks-public-ip-address.png)
+
++ **Pro FPGA**:
+
+Použití protokolu SSL se službami nasazenými do FPGA se momentálně nepodporuje.
 
 ## <a name="next-steps"></a>Další postup
 

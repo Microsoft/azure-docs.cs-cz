@@ -5,16 +5,16 @@ services: cognitive-services
 author: PanosPeriorellis
 manager: onano
 ms.service: cognitive-services
-ms.component: custom-speech
+ms.subservice: custom-speech
 ms.topic: article
 ms.date: 02/08/2017
 ms.author: panosper
-ms.openlocfilehash: 4bbd4c57556fd4bfd176c915e26be4a4d198418a
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
+ms.openlocfilehash: 7392459f0b80558aac22bd585c0d30bf4105d76f
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49339929"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55224441"
 ---
 # <a name="get-started-with-custom-speech-service"></a>Začínáme s Custom Speech Service
 
@@ -28,15 +28,15 @@ Nachází dobrý příklad, který nabízíme vám pomůže se zorientovat, kter
 ## <a name="prerequisites"></a>Požadavky  
 
 ### <a name="subscribe-to-custom-speech-service-and-get-a-subscription-key"></a>Přihlášení služby Custom Speech Service a získejte klíč předplatného
-Před zobrazením pomocí výše uvedeného příkladu musíte předplatit Custom Speech Service a získat předplatné klíče najdete v tématu [předplatná](https://portal.azure.com/#create/Microsoft.CognitiveServices/apitype/CustomSpeech) nebo postupujte podle vysvětlení [tady](CustomSpeech-How-to-Topics/cognitive-services-custom-speech-subscribe.md). V tomto kurzu můžete použít jak primární a sekundární klíč. Ujistěte se, že dodržujte doporučené postupy zabezpečení pro zachování vašich tajný kód klíče rozhraní API a zabezpečení.
+Před zobrazením pomocí výše uvedeného příkladu musíte předplatit Custom Speech Service a získat předplatné klíče najdete v tématu [předplatná](https://portal.azure.com/#create/Microsoft.CognitiveServices/apitype/CustomSpeech) nebo postupujte podle vysvětlení [tady](CustomSpeech-How-to-Topics/cognitive-services-custom-speech-subscribe.md). V tomto kurzu můžete použít primární i sekundární klíč. Nezapomeňte dodržovat osvědčené postupy pro zajištění utajení a zabezpečení vašeho klíče rozhraní API.
 
-### <a name="get-the-client-library-and-example"></a>Získat klienta knihovny a příklad
-Si můžete stáhnout klientské knihovny a příklad prostřednictvím [SDK](https://www.microsoft.com/cognitive-services/en-us/SDK-Sample?api=bing%20speech&category=sdk). Stažený soubor zip je třeba extrahovat do složky podle vašeho výběru, mnoho uživatelů vyberte složku, Visual Studio 2015.
+### <a name="get-the-client-library-and-example"></a>Získání klientské knihovny a příkladu
+Si můžete stáhnout klientské knihovny a příklad prostřednictvím [SDK](https://www.microsoft.com/cognitive-services/en-us/SDK-Sample?api=bing%20speech&category=sdk). Stažený soubor ZIP je potřeba extrahovat do složky podle vašeho výběru, velká část uživatelů volí složku sady Visual Studio 2015.
 
 ## <a name="creating-a-custom-acoustic-model"></a>Vytvoření vlastního akustického modelu
 K přizpůsobení akustického modelu pro konkrétní doménu je nutná kolekce hlasových dat. Tato kolekce zahrnuje sadu zvukových souborů s hlasovými daty a textový soubor s přepisy všech zvukových souborů. Zvuková data by měla vystihovat scénáře, ve kterém byste chtěli použít nástroj pro rozpoznávání
 
-Příklad: Pokud chcete lépe rozpoznávat řeč v prostředí hlučného objekt pro vytváření, zvukové soubory by měla sestávat z lidí mluvčí hlučného tovární nastavení.
+Příklad: Pokud byste chtěli lépe rozpoznávat řeč v hlučném provozním prostředí, měly by zvukové soubory zahrnovat řeč lidí v hlučném provozu.
 Pokud vás zajímají optimalizace výkonu pro jeden mluvčího, například chcete přepisy všechny konverzace Fireside díky technologii FDR společnosti a potom zvukové soubory by měla obsahovat mnoho příkladů pouze tohoto mluvčího.
 
 Najdete podrobný popis postupu vytvoření vlastního akustického modelu [tady](CustomSpeech-How-to-Topics/cognitive-services-custom-speech-create-acoustic-model.md).

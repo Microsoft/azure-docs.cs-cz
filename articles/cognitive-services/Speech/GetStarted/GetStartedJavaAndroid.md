@@ -6,16 +6,16 @@ services: cognitive-services
 author: zhouwangzw
 manager: wolfma
 ms.service: cognitive-services
-ms.component: bing-speech
+ms.subservice: bing-speech
 ms.topic: article
 ms.date: 09/18/2018
 ms.author: zhouwang
-ms.openlocfilehash: 4c5243ec14a4494222168bb33b3e840b96f8465e
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
+ms.openlocfilehash: 3d7bbdb25815027625b6f56b25e64c4a07b3728f
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49345250"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55222486"
 ---
 [!INCLUDE [Deprecation note](../../../../includes/cognitive-services-bing-speech-api-deprecation-note.md)]
 
@@ -27,7 +27,7 @@ Tento článek provádí ukázková aplikace předvádí způsob použití kniho
 
 ## <a name="prerequisites"></a>Požadavky
 
-### <a name="platform-requirements"></a>Požadavky na platformu
+### <a name="platform-requirements"></a>Požadavky platformy
 
 Ukázka je vyvinutý [Android Studio](http://developer.android.com/sdk/index.html) pro Windows v jazyce Java.
 
@@ -116,9 +116,9 @@ void initializeRecoClient()
 
 Klientská knihovna poskytuje předem implementované rozpoznávání třídy klienta pro typické scénáře v rozpoznávání řeči:
 
-* `DataRecognitionClient`: Rozpoznávání řeči PCM daty (například ze zdrojového souboru nebo ve zvukovém souboru). Data je rozdělený do vyrovnávací paměti a každý vyrovnávací paměti se odesílají službě řeči. Žádné úpravy se provádí do vyrovnávací paměti, tak v případě potřeby může uživatel použít vlastní detekce nečinnosti. Pokud data ze souborů WAV můžete odeslat data ze souboru přímo na Speech Service. Pokud máte nezpracovaná data, například zvukový procházející přes Bluetooth, nejdřív odešlete hlavičku formátu Speech Service, za nímž následuje data.
-* `MicrophoneRecognitionClient`: Rozpoznávání řeči s zvuk přicházející z mikrofon. Ujistěte se, že je zapnutý mikrofon a mikrofon se odešlou do služby rozpoznávání řeči. Integrované "nečinnosti detektoru s" se použije na mikrofon data před odesláním do služby rozpoznávání.
-* `DataRecognitionClientWithIntent` a `MicrophoneRecognitionClientWithIntent`: tito klienti vrátit, kromě rozpoznávání textu, strukturované informace o záměr mluvčího, který slouží k řízení další akce vaší aplikace. Pokud chcete používat "Záměr", budete muset nejprve trénování modelu s použitím [LUIS](https://azure.microsoft.com/services/cognitive-services/language-understanding-intelligent-service/).
+* `DataRecognitionClient`: Rozpoznávání řeči pomocí PCM data (například ze zdrojového souboru nebo ve zvukovém souboru). Data je rozdělený do vyrovnávací paměti a každý vyrovnávací paměti se odesílají službě řeči. Žádné úpravy se provádí do vyrovnávací paměti, tak v případě potřeby může uživatel použít vlastní detekce nečinnosti. Pokud data ze souborů WAV můžete odeslat data ze souboru přímo na Speech Service. Pokud máte nezpracovaná data, například zvukový procházející přes Bluetooth, nejdřív odešlete hlavičku formátu Speech Service, za nímž následuje data.
+* `MicrophoneRecognitionClient`: Rozpoznávání řeči pomocí zvuk přicházející z mikrofon. Ujistěte se, že je zapnutý mikrofon a mikrofon se odešlou do služby rozpoznávání řeči. Integrované "nečinnosti detektoru s" se použije na mikrofon data před odesláním do služby rozpoznávání.
+* `DataRecognitionClientWithIntent` a `MicrophoneRecognitionClientWithIntent`: Tito klienti vrátit, kromě rozpoznávání textu strukturovaných informací o záměr mluvčího, který slouží k řízení další akce aplikace. Pokud chcete používat "Záměr", budete muset nejprve trénování modelu s použitím [LUIS](https://azure.microsoft.com/services/cognitive-services/language-understanding-intelligent-service/).
 
 ### <a name="recognition-language"></a>Rozpoznávání jazyka
 
@@ -128,16 +128,16 @@ Při použití `SpeechRecognitionServiceFactory` pro vytvoření klienta, musít
 
 Budete taky muset zadat `SpeechRecognitionMode` při vytváření klienta se `SpeechRecognitionServiceFactory`:
 
-* `ShortPhrase`: Celé utterance až do 15 sekund dlouho. Odeslání dat službě, obdrží klient několik částečných výsledků a jeden konečný výsledek s několika volbami n-best.
-* `LongDictation`: Celé utterance až dvě minuty dlouho. Odeslání dat službě, obdrží klient několik částečných výsledků a několik konečných výsledků podle kde službu identifikuje pozastaví věty.
+* `ShortPhrase`: Utterance až do 15 sekund. Odeslání dat službě, obdrží klient několik částečných výsledků a jeden konečný výsledek s několika volbami n-best.
+* `LongDictation`: Utterance až dvě minuty dlouho. Odeslání dat službě, obdrží klient několik částečných výsledků a několik konečných výsledků podle kde službu identifikuje pozastaví věty.
 
 ### <a name="attach-event-handlers"></a>Připojte obslužné rutiny událostí
 
 Různé obslužných rutin událostí můžete připojit ke klientovi jste vytvořili:
 
 * **Částečné výsledky události**: Tato událost volána pokaždé, když Speech Service předpovídá, co vám může být říká, ještě předtím, než dokončíte mluvený (Pokud používáte `MicrophoneRecognitionClient`) nebo dokončení odesílání dat (Pokud používáte `DataRecognitionClient`).
-* **Události chyb**: volá se, když služba detekuje chybu.
-* **Záměru události**: volá se na klientech "WithIntent" (pouze v `ShortPhrase` režimu) po rozpoznávání konečný výsledek je analyzován do strukturovaného formátu JSON záměr.
+* **Události chyb**: Volá se, když služba zjistí chybu.
+* **Záměru události**: Volá se na klientech "WithIntent" (pouze v `ShortPhrase` režimu) po rozpoznávání konečný výsledek je analyzován do strukturovaného formátu JSON záměr.
 * **Výsledek události**:
   * V `ShortPhrase` režimu, tato událost se nazývá a vrátí výsledky, n-best po dokončení čtení.
   * V `LongDictation` režimu, obslužná rutina události je volána více než jednou, podle kde službu identifikuje pozastaví věty.

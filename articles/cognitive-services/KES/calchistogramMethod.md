@@ -6,16 +6,16 @@ services: cognitive-services
 author: bojunehsu
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: knowledge-exploration
+ms.subservice: knowledge-exploration
 ms.topic: conceptual
 ms.date: 03/26/2016
 ms.author: paulhsu
-ms.openlocfilehash: 0ca43d6f6879198b8f80794c1948439e15f312ad
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.openlocfilehash: f994a254e661cd245d2e953efd3bd595d50c6fc7
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46122752"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55214309"
 ---
 # <a name="calchistogram-method"></a>calchistogram – metoda
 *Calchistogram* metoda vypočítá objektů, které odpovídají výrazu strukturovaných dotazů a vypočítá distribuci hodnot jejich atributů.
@@ -23,9 +23,9 @@ ms.locfileid: "46122752"
 ## <a name="request"></a>Žádost
 `http://<host>/calchistogram?expr=<expr>[&options]` 
 
-Název|Hodnota|Popis
+Name|Value|Popis
 ----|-----|-----------
-výraz | Textový řetězec | Výraz strukturovaných dotazů, který určuje index entity, přes která chcete vypočítat histogramy.
+expr | Textový řetězec | Výraz strukturovaných dotazů, který určuje index entity, přes která chcete vypočítat histogramy.
 Atributy | Textový řetězec (výchozí = "") | Čárkami oddělený seznam atributu, který má zahrnout do odpovědi.
 count   | Číslo (výchozí = 10) | Číslo s vrácenými výsledky.
 Posun  | Číslo (výchozí = 0) | Index první výsledek vrátit.
@@ -36,13 +36,13 @@ JSONPath | Popis
 $.expr | *výraz* parametr z požadavku.
 $.num_entities | Celkový počet odpovídajících entit.
 $.histograms |  Pole histogramy, jeden pro každý požadovaný atribut.
-$.histograms [\*] .attribute | Název atributu, nad niž se spočítala histogram.
-$.histograms [\*] .distinct_values | Počet jedinečných hodnot mezi odpovídající entity pro tento atribut.
-$.histograms [\*] .total_count | Celkový počet instancí hodnotu mezi odpovídající entity pro tento atribut.
-$.histograms [\*] .histogram | Histogram data pro tento atribut.
-$.histograms [\*] .histogram [\*] .value | Hodnota atributu.
-$.histograms [\*] .histogram [\*] .logprob  | Celkový počet přirozený logaritmus pravděpodobnost odpovídající entity s touto hodnotou atributu.
-$.histograms [\*] .histogram [\*] .count    | Počet odpovídajících entit s touto hodnotou atributu.
+$.histograms[\*].attribute | Název atributu, nad niž se spočítala histogram.
+$.histograms[\*].distinct_values | Počet jedinečných hodnot mezi odpovídající entity pro tento atribut.
+$.histograms[\*].total_count | Celkový počet instancí hodnotu mezi odpovídající entity pro tento atribut.
+$.histograms[\*].histogram | Histogram data pro tento atribut.
+$.histograms[\*].histogram[\*].value | Hodnota atributu.
+$.histograms[\*].histogram[\*].logprob  | Celkový počet přirozený logaritmus pravděpodobnost odpovídající entity s touto hodnotou atributu.
+$.histograms[\*].histogram[\*].count    | Počet odpovídajících entit s touto hodnotou atributu.
 $.aborted | True, pokud vypršel časový limit žádosti.
 
 ### <a name="example"></a>Příklad:

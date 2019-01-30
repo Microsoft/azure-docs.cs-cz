@@ -6,16 +6,16 @@ services: cognitive-services
 author: zhouwangzw
 manager: wolfma
 ms.service: cognitive-services
-ms.component: bing-speech
+ms.subservice: bing-speech
 ms.topic: article
 ms.date: 09/18/2018
 ms.author: zhouwang
-ms.openlocfilehash: 960d2d402f223b306aa6ff05b567d13525e3d525
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
+ms.openlocfilehash: 9b462ba594122b86580b9d136a844db070eea92d
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49340354"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55217641"
 ---
 # <a name="what-is-bing-speech"></a>Co je pro zpracování řeči Bingu?
 
@@ -28,10 +28,10 @@ Založené na cloudu Microsoft Bing Speech API poskytuje vývojářům snadný z
 
 ## <a name="speech-to-text-speech-recognition"></a>Převod řeči na text (rozpoznávání řeči)
 
-Rozhraní API pro rozpoznávání řeči Microsoft *transcribes* příkaz audiostreamy do textu, který vaše aplikace může zobrazit uživateli nebo adekvátně jako vstup. Poskytuje dva způsoby, jak vývojářům přidat do svých aplikací pro zpracování řeči: rozhraní REST API **nebo** ostatní klientské knihovny založené na protokolu Websocket.
+Rozhraní API pro rozpoznávání řeči Microsoft *transcribes* příkaz audiostreamy do textu, který vaše aplikace může zobrazit uživateli nebo adekvátně jako vstup. Poskytuje dva způsoby, jak vývojáři přidat rozpoznávání řeči do svých aplikací: REST API **nebo** ostatní klientské knihovny založené na protokolu Websocket.
 
-- [REST API](GetStarted/GetStartedREST.md): vývojáři mohou pomocí protokolu HTTP volání ze svých aplikací do služby pro rozpoznávání řeči.
-- [Klientské knihovny](GetStarted/GetStartedClientLibraries.md): pro pokročilé funkce, vývojáři mohli stáhnout Microsoft Speech klientských knihoven a propojit do svých aplikací.  Klientské knihovny jsou dostupné na různých platformách (Windows, Android, iOS) používající různé jazyky (C#, Java, JavaScript, ObjectiveC). Na rozdíl od rozhraní REST API využívat klientské knihovny je protokol založený na protokolu Websocket.
+- [Rozhraní REST API](GetStarted/GetStartedREST.md): Vývojáři mohou pomocí protokolu HTTP volání ze svých aplikací do služby pro rozpoznávání řeči.
+- [Klientské knihovny](GetStarted/GetStartedClientLibraries.md): Pro pokročilé funkce můžete vývojáři stáhnout Microsoft Speech klientských knihoven a propojit do svých aplikací.  Klientské knihovny jsou dostupné na různých platformách (Windows, Android, iOS) používající různé jazyky (C#, Java, JavaScript, ObjectiveC). Na rozdíl od rozhraní REST API využívat klientské knihovny je protokol založený na protokolu Websocket.
 
 | Případy použití | [Rozhraní REST API](GetStarted/GetStartedREST.md) | [Klientské knihovny](GetStarted/GetStartedClientLibraries.md) |
 |-----|-----|-----|
@@ -60,4 +60,4 @@ Podle toho, která vývojářům přístup zvolte (rozhraní REST API nebo klien
 
 ### <a name="next-steps"></a>Další postup
 
-- Začínáme používat službu Microsoft převod textu na řeč: [Text, který se Reference k rozhraní API pro rozpoznávání řeči](api-reference-rest/bingvoiceoutput.md). Úplný seznam jazyků a podporuje převod textu na řeč, naleznete v tématu [podporované národní prostředí a hlasová písma](api-reference-rest/bingvoiceoutput.md#SupLocales).
+- Začínáme používat službu Microsoft převod textu na řeč: [Reference k rozhraní API pro převod textu na řeč](api-reference-rest/bingvoiceoutput.md). Úplný seznam jazyků a podporuje převod textu na řeč, naleznete v tématu [podporované národní prostředí a hlasová písma](api-reference-rest/bingvoiceoutput.md#SupLocales).

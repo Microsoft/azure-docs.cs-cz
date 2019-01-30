@@ -1,23 +1,23 @@
 ---
-title: 'Rychlý start: Identifikace jazyka z textu, Go – Translator Text API'
+title: 'Rychlý start: Identifikujte jazyk z textu, přejděte – Translator Text API'
 titleSuffix: Azure Cognitive Services
 description: V tomto rychlém startu identifikujete jazyk zdrojového textu pomocí rozhraní Translator Text API a jazyka Go.
 services: cognitive-services
 author: erhopf
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: translator-text
+ms.subservice: translator-text
 ms.topic: quickstart
 ms.date: 12/05/2018
 ms.author: erhopf
-ms.openlocfilehash: 84522612dbd31d406537b9679887e0f82a971b1c
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: 31db299fba70775c85ac5b5ad1a641c2ebe2575b
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "53000501"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55221126"
 ---
-# <a name="quickstart-use-the-translator-text-api-to-detect-text-language-using-go"></a>Rychlý start: Použití rozhraní Translator Text API rozpoznat jazyk textu pomocí jazyka Go
+# <a name="quickstart-use-the-translator-text-api-to-detect-text-language-using-go"></a>Rychlý start: Zjistit jazyk textu pomocí jazyka Go pomocí rozhraní Translator Text API
 
 V tomto rychlém startu budete zjistěte, jak zjistit jazyk zadaného textu s použitím Go a rozhraní REST Translator Text API.
 
@@ -100,7 +100,7 @@ u.RawQuery = q.Encode()
 ```
 
 >[!NOTE]
-> Další informace o koncových bodech, trasách a parametrech požadavků najdete v tématu [Translator Text API 3.0: Rozpoznávání](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-detect).
+> Další informace o koncových bodech, cesty a parametry požadavku najdete v tématu [Translator Text API 3.0: Zjištění](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-detect).
 
 ## <a name="create-a-struct-for-your-request-body"></a>Vytvoření struktury vaší tělo žádosti
 

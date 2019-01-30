@@ -13,12 +13,13 @@ ms.topic: article
 ms.date: 01/05/2019
 ms.author: sethm
 ms.reviewer: sijuman
-ms.openlocfilehash: 2769b78632e1a7f776359f2a4d768154c224aab5
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.lastreviewed: 01/05/2019
+ms.openlocfilehash: 6866c6d208468e53b04ede1b5e596f0ea625c49d
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54264610"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55248465"
 ---
 # <a name="resource-provider-api-versions-supported-by-profiles-in-azure-stack"></a>Verze rozhraní API poskytovatele prostředků podporované profily ve službě Azure Stack
 
@@ -230,7 +231,7 @@ Poskytovatel prostředků úložiště (SRP) umožňuje spravovat váš účet �
 | Umístění a kvóty | 2016-01-01 |
 | Operace | 2016-01-01 |
 | StorageAccounts | 2016-01-01 |
-| Použití | 2016-01-01 |
+| Využití | 2016-01-01 |
 
 ## <a name="details-for-the-2018-03-01-hybrid"></a>Podrobnosti o 2018-03-01hybridní
 
@@ -325,7 +326,7 @@ Poskytovatel prostředků úložiště (SRP) umožňuje spravovat váš účet �
 | Umístění a kvóty | 2016-01-01 |
 | Operace | 2016-01-01 |
 | StorageAccounts | 2016-01-01 |
-| Použití | 2016-01-01 |
+| Využití | 2016-01-01 |
 
 ## <a name="next-steps"></a>Další postup
 

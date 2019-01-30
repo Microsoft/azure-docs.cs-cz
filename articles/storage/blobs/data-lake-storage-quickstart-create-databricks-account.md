@@ -4,16 +4,16 @@ description: Zjistěte, jak spustit úlohu Spark v Azure Databricks pomocí port
 services: storage
 author: normesta
 ms.author: normesta
-ms.component: data-lake-storage-gen2
+ms.subservice: data-lake-storage-gen2
 ms.service: storage
 ms.topic: quickstart
 ms.date: 01/24/2019
-ms.openlocfilehash: 268da7b7cc75866b9cdee24467e8370a85adc40d
-ms.sourcegitcommit: 97d0dfb25ac23d07179b804719a454f25d1f0d46
+ms.openlocfilehash: cbd17ef81f5bcdf1c5c2f14f11388fd4f23e5da6
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/25/2019
-ms.locfileid: "54912522"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55239910"
 ---
 # <a name="quickstart-analyze-data-in-azure-data-lake-storage-gen2-by-using-azure-databricks"></a>Rychlý start: Analýza dat v Azure Data Lake Storage Gen2 pomocí Azure Databricks
 

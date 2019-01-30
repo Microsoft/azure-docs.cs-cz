@@ -1,10 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 9fe3efba6cc18839f7d65d2f19dfb165bbdecc05
-ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
+ms.openlocfilehash: 8b591cacd1c468f46dcdb5809cdc6ff0adf09ccb
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54331278"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55247676"
 documentType: LandingData
 title: Dokumentace ke službě Azure Machine Learning
 metadata:
@@ -12,7 +12,7 @@ metadata:
   description: Přečtěte si, jak do aplikací a webů zabudovat inteligentní algoritmy. K sestavení modelu strojového učení a jeho trénování místně nebo v cloudu použijte Scikit-learn, Tensorflow, Pytorch nebo libovolnou jinou architekturu založenou na Pythonu. Kurzy, rychlá zprovoznění, reference k rozhraní API a příklady vám ukážou, jak na to.
   services: machine-learning
   ms.service: machine-learning
-  ms.component: core
+  ms.subservice: core
   ms.topic: landing-page
   manager: jhubbard
   author: j-martens

@@ -7,14 +7,14 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 11/27/2018
 ms.author: asgang
-ms.openlocfilehash: c1714fd6ada45f2b4498a3f5972424200afa9aa3
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: c2151be1644cde0e737be7f026bdf63cef0b3686
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52838136"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55221959"
 ---
-# <a name="set-up-disaster-recovery-for-a-multitier-dynamics-ax-application"></a>Nastavení zotavení po havárii pro vícevrstvé aplikace Dynamics AX 
+# <a name="set-up-disaster-recovery-for-a-multitier-dynamics-ax-application"></a>Nastavení zotavení po havárii pro vícevrstvé aplikace Dynamics AX   
 
 
 
@@ -109,7 +109,7 @@ Ve službě Site Recovery k automatizaci procesu převzetí služeb při selhán
 
 4. Vyberte aplikační Server objektu a klientské virtuální počítače v plánu obnovení a vyberte ✓.
 
-    ![Vybrat položky](./media/site-recovery-dynamics-ax/selectvms.png)
+    ![Výběr položek](./media/site-recovery-dynamics-ax/selectvms.png)
 
     Příklad plánu obnovení:
 
@@ -118,15 +118,15 @@ Ve službě Site Recovery k automatizaci procesu převzetí služeb při selhán
 Plán obnovení pro aplikaci Dynamics AX můžete přizpůsobit tak, že přidáte následující kroky. Předchozí snímek ukazuje plán úplné obnovení poté, co přidáte všechny kroky.
 
 
-* **Postup převzetí služeb při selhání systému SQL Server**: informace o postupu obnovení konkrétní k systému SQL server najdete v tématu [replikace aplikace s využitím SQL serveru a Azure Site Recovery](site-recovery-sql.md).
+* **Postup převzetí služeb při selhání systému SQL Server**: Informace o postupu obnovení konkrétní k systému SQL server najdete v tématu [replikace aplikace s využitím SQL serveru a Azure Site Recovery](site-recovery-sql.md).
 
-* **Skupiny převzetí služeb při selhání 1**: převzetí služeb při selhání virtuálních počítačů serveru objektu aplikace.
+* **Skupiny převzetí služeb při selhání 1**: Převzetí služeb při selhání virtuálních počítačů serveru objektu aplikace.
 Ujistěte se, že je vybraný bod obnovení co nejblíže k databázi PIT, ale ne před ho.
 
-* **Skript**: Přidat nástroj pro vyrovnávání zatížení (pouze E-A).
+* **skript**: Přidat nástroj pro vyrovnávání zatížení (pouze E-A).
 Přidáte skript (přes Azure Automation) po skupiny virtuálních počítačů serveru objekt aplikace se zobrazí na ni přidat nástroj pro vyrovnávání zatížení. Skript můžete použít k provedení této úlohy. Další informace najdete v tématu [přidání nástroje pro vyrovnávání zatížení, zotavení po havárii vícevrstvé aplikace](https://azure.microsoft.com/blog/cloud-migration-and-disaster-recovery-of-load-balanced-multi-tier-applications-using-azure-site-recovery/).
 
-* **2. skupina převzetí služeb při selhání**: převzetí služeb při selhání Dynamics AX klientské virtuální počítače. Převzetí služeb při selhání virtuální počítače webové vrstvy jako součást plánu obnovení.
+* **Skupiny převzetí služeb při selhání 2**: Převzetí služeb při selhání Dynamics AX klientské virtuální počítače. Převzetí služeb při selhání virtuální počítače webové vrstvy jako součást plánu obnovení.
 
 
 ### <a name="perform-a-test-failover"></a>Provést testovací převzetí služeb

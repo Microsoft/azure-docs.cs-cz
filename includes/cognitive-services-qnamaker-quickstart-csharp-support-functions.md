@@ -5,17 +5,17 @@ services: cognitive-services
 author: diberry
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: qna-maker
+ms.subservice: qna-maker
 ms.topic: include
 ms.custom: include file
 ms.date: 09/27/2018
 ms.author: diberry
-ms.openlocfilehash: 9ad721be84263969a91b8c27c349676be35ec663
-ms.sourcegitcommit: 7bc4a872c170e3416052c87287391bc7adbf84ff
-ms.translationtype: HT
+ms.openlocfilehash: 445434b3315d9316721656e15bc8886d82f6f1ce
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48019080"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55243701"
 ---
 Přidejte následující blok kódu do třídy Program:
 

@@ -15,12 +15,13 @@ ms.topic: article
 ms.date: 01/05/2019
 ms.author: sethm
 ms.reviewer: sijuman
-ms.openlocfilehash: f6fd560d6ecb9feaa3df14b288cee5d98ce55aee
-ms.sourcegitcommit: 9f07ad84b0ff397746c63a085b757394928f6fc0
+ms.lastreviewed: 01/05/2019
+ms.openlocfilehash: c6bee5c66661f59a6287d624bf5a55428ebbe56e
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54391098"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55238111"
 ---
 # <a name="use-api-version-profiles-for-powershell-in-azure-stack"></a>Použití profilů verzí rozhraní API pro prostředí PowerShell ve službě Azure Stack
 

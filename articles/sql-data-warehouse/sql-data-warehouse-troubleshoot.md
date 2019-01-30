@@ -6,16 +6,16 @@ author: kevinvngo
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
-ms.component: manage
+ms.subservice: manage
 ms.date: 12/04/2018
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: 8f83733462e66bc36ecd31bb2767969e24b78d8c
-ms.sourcegitcommit: 2bb46e5b3bcadc0a21f39072b981a3d357559191
+ms.openlocfilehash: d94d434f83e1a8507b1a98660e8169ff6be4ee24
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/05/2018
-ms.locfileid: "52890734"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55244577"
 ---
 # <a name="troubleshooting-azure-sql-data-warehouse"></a>Řešení potíží s Azure SQL Data Warehouse
 Tento článek uvádí běžné otázka Poradce při potížích.
@@ -23,8 +23,8 @@ Tento článek uvádí běžné otázka Poradce při potížích.
 ## <a name="connecting"></a>Připojování
 | Problém                                                        | Řešení                                                   |
 | :----------------------------------------------------------- | :----------------------------------------------------------- |
-| Přihlášení uživatele "NT AUTHORITY\ANONYMOUS přihlásit" se nezdařilo. (Microsoft SQL Server, chyba: 18456) | K této chybě dochází, když uživatel AAD pokusí připojit k hlavní databázi, ale nemá žádné uživatele v hlavní větvi.  Chcete-li tento problém vyřešit, buď zadejte SQL Data Warehouse, kterou chcete připojit v době připojení nebo přidejte uživatele k hlavní databázi.  Zobrazit [Přehled zabezpečení] [ Security overview] , kde najdete další podrobnosti. |
-| Server instančního objektu "Moje_uživatelské_jméno" není přístup k databázi "master" v aktuálním kontextu zabezpečení. Výchozí databázi uživatele nelze otevřít. Přihlášení se nezdařilo. Přihlašovací jméno uživatele "Moje_uživatelské_jméno" se nezdařilo. (Microsoft SQL Server, chyba: 916) | K této chybě dochází, když uživatel AAD pokusí připojit k hlavní databázi, ale nemá žádné uživatele v hlavní větvi.  Chcete-li tento problém vyřešit, buď zadejte SQL Data Warehouse, kterou chcete připojit v době připojení nebo přidejte uživatele k hlavní databázi.  Zobrazit [Přehled zabezpečení] [ Security overview] , kde najdete další podrobnosti. |
+| Přihlášení uživatele "NT AUTHORITY\ANONYMOUS přihlásit" se nezdařilo. (Microsoft SQL Server, Error: 18456) | K této chybě dochází, když uživatel AAD pokusí připojit k hlavní databázi, ale nemá žádné uživatele v hlavní větvi.  Chcete-li tento problém vyřešit, buď zadejte SQL Data Warehouse, kterou chcete připojit v době připojení nebo přidejte uživatele k hlavní databázi.  Zobrazit [Přehled zabezpečení] [ Security overview] , kde najdete další podrobnosti. |
+| Server instančního objektu "Moje_uživatelské_jméno" není přístup k databázi "master" v aktuálním kontextu zabezpečení. Výchozí databázi uživatele nelze otevřít. Přihlášení se nezdařilo. Přihlašovací jméno uživatele "Moje_uživatelské_jméno" se nezdařilo. (Microsoft SQL Server, Error: 916) | K této chybě dochází, když uživatel AAD pokusí připojit k hlavní databázi, ale nemá žádné uživatele v hlavní větvi.  Chcete-li tento problém vyřešit, buď zadejte SQL Data Warehouse, kterou chcete připojit v době připojení nebo přidejte uživatele k hlavní databázi.  Zobrazit [Přehled zabezpečení] [ Security overview] , kde najdete další podrobnosti. |
 | Chyba CTAIP                                                  | Této chybě může dojít po vytvoření přihlášení v hlavní databázi systému SQL server, ale ne v databázi SQL Data Warehouse.  Pokud dojde k této chybě, podívejte se na [Přehled zabezpečení] [ Security overview] článku.  Tento článek vysvětluje, jak vytvořit přihlášení a uživatele na hlavním serveru a tom, jak vytvořit uživatele v databázi SQL Data Warehouse. |
 | Blokovaná bránou Firewall                                          | Azure SQL Database jsou chráněny serveru a databáze úrovně brány firewall, aby pouze známé IP adresy, které mají přístup k databázi. Bránu firewall se ve výchozím nastavení, což znamená, že je potřeba explicitně povolit a IP adresu nebo rozsah adres zabezpečený před připojením.  Pokud chcete nakonfigurovat bránu firewall pro přístup, postupujte podle kroků v [konfigurovat přístup k serveru brány firewall pro IP adresu vašeho klienta] [ Configure server firewall access for your client IP] v [zřizování pokyny] [Provisioning instructions]. |
 | Nelze se připojit pomocí nástroje nebo ovladače                           | SQL Data Warehouse se doporučuje používat [SSMS][SSMS], [SSDT pro Visual Studio][SSDT for Visual Studio], nebo [sqlcmd] [ sqlcmd] k dotazování na data. Další informace o ovladače a připojení k SQL Data Warehouse najdete v tématu [ovladače pro Azure SQL Data Warehouse] [ Drivers for Azure SQL Data Warehouse] a [připojení k Azure SQL Data Warehouse] [ Connect to Azure SQL Data Warehouse] článků. |
@@ -49,7 +49,7 @@ Tento článek uvádí běžné otázka Poradce při potížích.
 ## <a name="system-management"></a>Správa systému
 | Problém                                                        | Řešení                                                   |
 | :----------------------------------------------------------- | :----------------------------------------------------------- |
-| Zpráva 40847: Nejde provést operaci, protože server by překročil povolenou kvótu Database Transaction Unit 45000. | Snižte [DWU] [ DWU] databáze se pokoušíte vytvořit nebo [požádat o zvýšení kvóty][request a quota increase]. |
+| Msg 40847: Operaci nejde provést, protože server by překročil povolenou kvótu Database Transaction Unit 45000. | Snižte [DWU] [ DWU] databáze se pokoušíte vytvořit nebo [požádat o zvýšení kvóty][request a quota increase]. |
 | Prozkoumat využití místa                              | Zobrazit [tabulky velikostí] [ Table sizes] porozumět využití místa systému. |
 | Pomoci se správou tabulky                                    | Zobrazit [Přehled tabulek] [ Overview] článku pomoci se správou vaší tabulky.  Tento článek obsahuje také odkazy na podrobnější témata zahrnují třeba [typy tabulkových dat][Data types], [distribuce tabulky][Distribute], [Indexování tabulky][Index], [dělení tabulky][Partition], [Správa statistik tabulek] [ Statistics] a [dočasné tabulky][Temporary]. |
 | Indikátor průběhu dat transparentní šifrování (TDE) není aktualizován na webu Azure Portal | Můžete zobrazit stav transparentní šifrování dat prostřednictvím [powershellu](/powershell/module/azurerm.sql/get-azurermsqldatabasetransparentdataencryption). |

@@ -6,16 +6,16 @@ services: cognitive-services
 author: ashmaka
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: text-analytics
+ms.subservice: text-analytics
 ms.topic: article
 ms.date: 10/01/2018
 ms.author: ashmaka
-ms.openlocfilehash: e81428d5bdffb65b5e61a7aba7496da275f249a5
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+ms.openlocfilehash: 3f56bd4efafe506a95d46524713ebe49e3250f63
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50230552"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55220379"
 ---
 # <a name="how-to-use-named-entity-recognition-in-text-analytics-preview"></a>Použití s názvem rozpoznávání entit v rozhraní Text Analytics (Náhled)
 
@@ -41,12 +41,12 @@ Použití rozhraní entity linking v různých jazycích vyžaduje použití odp
 
 ## <a name="supported-types-for-named-entity-recognition"></a>Podporované typy pro rozpoznávání pojmenovaných entit
 
-| Typ  | Podtyp | Příklad: |
+| Type  | SubType | Příklad: |
 |:-----------   |:------------- |:---------|
 | Person (Osoba)        | NENÍ K DISPOZICI\*         | "Jan", "Billem Gatesem"     |
 | Umístění      | NENÍ K DISPOZICI\*         | "Redmond, Washington", "Paříž"  |
 | Organizace  | NENÍ K DISPOZICI\*         | "Microsoft".   |
-| Množství      | Číslo        | "6", "šest"     | 
+| Množství      | Číslo        | "6", "six"     | 
 | Množství      | Procentuální podíl    | "50 %", "50 %"| 
 | Množství      | Pořadí       | "2", "druhé"     | 
 | Množství      | NumberRange   | "4 až 8"     | 
@@ -58,7 +58,7 @@ Použití rozhraní entity linking v různých jazycích vyžaduje použití odp
 | DateTime      | Datum          | ". Května 2. 2017", "05/02/2017"   | 
 | Datum a čas     | Čas          | "8: 00", "8:00"  | 
 | DateTime      | DateRange     | "Května 2. na 5. května"    | 
-| DateTime      | timeRange     | "18: 00 do 19: 00"     | 
+| DateTime      | TimeRange     | "18: 00 do 19: 00"     | 
 | DateTime      | Doba trvání      | "1 minutu a 45 sekundách"   | 
 | DateTime      | Nastavit           | "čtvrtek"     | 
 | DateTime      | Časové pásmo      |    | 
@@ -93,7 +93,7 @@ Dokument nesmí obsahovat více než 5 000 znaků a v každé kolekci můžete 
 
 Podrobnosti o definici žádosti najdete v článku o [volání rozhraní API pro analýzu textu](text-analytics-how-to-call-api.md). Pro usnadnění znovu uvádíme následující body:
 
-+ Vytvořte žádost **POST**. Projděte si dokumentaci k rozhraní API pro tuto žádost: [rozhraní API služby Entity Linking](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/5ac4251d5b4ccd1554da7634)
++ Vytvořte žádost **POST**. Projděte si dokumentaci k rozhraní API pro tuto žádost: [Rozhraní API služby entity Linking](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/5ac4251d5b4ccd1554da7634)
 
 + Nastavení koncového bodu HTTP pro extrakci entity. Musí obsahovat prostředek `/entities`: `https://[your-region].api.cognitive.microsoft.com/text/analytics/v2.1-preview/entities`.
 
@@ -104,7 +104,7 @@ Podrobnosti o definici žádosti najdete v článku o [volání rozhraní API pr
 > [!Tip]
 > Použijte aplikaci [Postman](text-analytics-how-to-call-api.md) nebo otevřete **konzolu pro testování rozhraní API** v [dokumentaci](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-V2-1-Preview/operations/5ac4251d5b4ccd1554da7634) a vytvořte strukturu žádosti a pomocí příkazu POST ji odešlete do služby.
 
-## <a name="step-2-post-the-request"></a>Krok 2: Odeslání žádosti
+## <a name="step-2-post-the-request"></a>Krok 2: Odeslat žádost
 
 Analýza se provede po přijetí žádosti. Služba přijme maximálně 100 žádostí za minutu. Každá žádost může mít maximální velikost 1 MB.
 

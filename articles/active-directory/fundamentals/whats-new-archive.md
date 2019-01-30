@@ -8,15 +8,15 @@ ms.service: active-directory
 ms.subservice: fundamentals
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 12/10/2018
+ms.date: 01/29/2019
 ms.author: lizross
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 2d0c6bb930d0e4c4fe7ae663c88e663e17cae084
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.openlocfilehash: ba538aed855667417e14bef12b708e80f34cd8c4
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55096843"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55243922"
 ---
 # <a name="archive-for-whats-new-in-azure-active-directory"></a>Archiv co je nového? ve službě Azure Active Directory
 
@@ -29,6 +29,166 @@ Co je nového zpráva k vydání verze poskytování informací o:
 - Opravy chyb
 - Zastaralé funkce
 - Plány pro změny
+
+---
+
+## <a name="june-2018"></a>Červen 2018
+
+### <a name="change-notice-security-fix-to-the-delegated-authorization-flow-for-apps-using-azure-ad-activity-logs-api"></a>Oznámení o změně: Oprava zabezpečení do toku delegované autorizace pro aplikace využívající rozhraní API protokoly aktivit Azure AD
+
+**Typ:** Plánování změn  
+**Kategorie služby:** Vytváření sestav  
+**Funkce produktu:** Monitorování a sestavy
+
+Z důvodu naše vynucení silnější zabezpečení museli měnit oprávnění pro aplikace, které používají pro přístup k toku delegované autorizace [rozhraní API protokoly aktivit Azure AD](https://aka.ms/aadreportsapi). Tato změna se provádí **26. června 2018**.
+
+Pokud některé z vašich aplikací pomocí rozhraní API protokolu aktivit Azure AD, ujistěte se, že nedojde k narušení aplikace poté, co se stane, změny pomocí těchto kroků.
+
+**Chcete-li aktualizovat oprávnění aplikace**
+
+1. Přihlaste se k webu Azure portal vyberte **Azure Active Directory**a pak vyberte **registrace aplikací**.
+2. Vyberte vaši aplikaci, která používá rozhraní API Azure AD aktivity protokoly, vyberte **nastavení**vyberte **požadovaná oprávnění**a pak vyberte **Windows Azure Active Directory** rozhraní API.
+3. V **delegovaná oprávnění** oblasti **povolení přístupu** okno, zaškrtněte políčko vedle položky **čtení adresáře** data a pak vyberte **Uložit**.
+4. Vyberte **udělit oprávnění**a pak vyberte **Ano**.
+    
+    >[!Note]
+    >Musíte být globální správce k udělení oprávnění k aplikaci.
+
+Další informace najdete v tématu [udělit oprávnění](https://docs.microsoft.com/azure/active-directory/active-directory-reporting-api-prerequisites-azure-portal#grant-permissions) oblasti požadavky pro přístup k rozhraní API článku generování sestav Azure AD.
+
+---
+
+### <a name="configure-tls-settings-to-connect-to-azure-ad-services-for-pci-dss-compliance"></a>Konfigurace nastavení protokolu TLS pro připojení ke službám Azure AD pro dodržování předpisů PCI DSS
+
+**Typ:** Nová funkce  
+**Kategorie služby:** neuvedeno  
+**Funkce produktu:** Platforma
+
+Zabezpečení TLS (Transport Layer) je protokol, který poskytuje ochranu osobních údajů a integrita dat mezi dvěma aplikacemi komunikaci a je nejčastěji nasazené zabezpečení protokol použitý ještě dnes.
+
+[PCI Security Standards Council](https://www.pcisecuritystandards.org/) bylo zjištěno, že starší verze TLS a vrstva SSL (Secure Sockets) musí být zakázáno a místo toho použití povolení protokolů nové a lepší zabezpečení aplikací, s počáteční dodržování předpisů na **30. června 2018**. Tato změna znamená, že pokud se připojíte ke službám Azure AD a vyžadovat dodržování PCI DSS, je nutné zakázat protokol TLS 1.0. Více verzí TLS jsou k dispozici, ale je dostupná pro Azure Active Directory Services nejnovější verze TLS 1.2. Důrazně doporučujeme přechod přímo na TLS 1.2 pro kombinace klientem a serverem a serverem a prohlížečem.
+
+Zastaralé prohlížeče nemusí podporovat novější verze TLS, jako je protokol TLS 1.2. Chcete-li zjistit, které verze TLS jsou podporována prohlížeč, přejděte na [Qualys SSL Labs](https://www.ssllabs.com/) web a klikněte na tlačítko **testovat prohlížeče**. Doporučujeme upgradovat na nejnovější verzi webového prohlížeče a pokud možno povolit jenom TLS 1.2.
+
+**Povolení protokolu TLS 1.2, prostřednictvím prohlížeče**
+
+- **Microsoft Edge a Internet Explorer (obojí jsou nastaveny v aplikaci Internet Explorer)**
+
+    1. Spusťte aplikaci Internet Explorer, vyberte **nástroje** > **Možnosti Internetu** > **Upřesnit**.
+    2. V **zabezpečení** vyberte **použití protokolu TLS 1.2**a pak vyberte **OK**.
+    3. Zavřete všechna okna prohlížeče a znovu spusťte aplikaci Internet Explorer. 
+
+- **Google Chrome**
+
+    1. Otevřít Google Chrome, typ *chrome://settings/* do adresního řádku a stisknutím klávesy **Enter**.
+    2. Rozbalte **Upřesnit** možnosti, pokračujte **systému** oblast a vyberte **otevřete nastavení serveru proxy**.
+    3. V **vlastnosti Internetu** vyberte **Upřesnit** záložku, přejděte **zabezpečení** vyberte **použití protokolu TLS 1.2**a pak vyberte  **OK**.
+    4. Zavřete všechna okna prohlížeče a znovu spusťte Google Chrome.
+
+- **Mozilla Firefox**
+
+    1. Otevřete Firefox, typ *o: config* do adresního řádku a poté stiskněte klávesu **Enter**.
+    2. Hledání termín, *TLS*a pak vyberte **security.tls.version.max** položka.
+    3. Nastavte hodnotu na **3** přinutit prohlížeče můžete verze protokolu TLS 1.2, a potom vyberte **OK**.
+
+        >[!NOTE]
+        >Firefox verze 60.0 podporuje TLS 1.3, takže můžete taky nastavit hodnotu security.tls.version.max **4**.
+
+    4. Zavřete všechna okna prohlížeče a znovu spusťte Mozilla Firefox.
+
+---
+
+### <a name="new-federated-apps-available-in-azure-ad-app-gallery---june-2018"></a>Nové federované aplikace k dispozici v galerii aplikací Azure AD –. června 2018
+
+**Typ:** Nová funkce  
+**Kategorie služby:** Podnikové aplikace  
+**Funkce produktu:** Integrace třetích stran
+ 
+V červnu 2018 jsme přidali podporu těchto 15 nových aplikací s federací do Galerie aplikací:
+
+[Skytap](https://docs.microsoft.com/azure/active-directory/active-directory-saas-skytap-tutorial), [vystavovací Hudba](https://docs.microsoft.com/azure/active-directory/active-directory-saas-settlingmusic-tutorial), [tokenu SAML 1.1 obchodní aplikace s povoleným](https://docs.microsoft.com/azure/active-directory/active-directory-saas-saml-tutorial), [Supermood](https://docs.microsoft.com/azure/active-directory/active-directory-saas-supermood-tutorial), [Autotask](https://docs.microsoft.com/azure/active-directory/active-directory-saas-autotaskendpointbackup-tutorial), [ Zálohování koncových bodů](https://docs.microsoft.com/azure/active-directory/active-directory-saas-autotaskendpointbackup-tutorial), [Skyhigh sítě](https://docs.microsoft.com/azure/active-directory/active-directory-saas-skyhighnetworks-tutorial), Smartway2, [TonicDM](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tonicdm-tutorial), [Moconavi](https://docs.microsoft.com/azure/active-directory/active-directory-saas-moconavi-tutorial), [Zoho jeden](https://docs.microsoft.com/azure/active-directory/active-directory-saas-zohoone-tutorial), [ Místní SharePoint](https://docs.microsoft.com/azure/active-directory/active-directory-saas-sharepoint-on-premises-tutorial), [přijetím CX Suite](https://docs.microsoft.com/azure/active-directory/active-directory-saas-foreseecxsuite-tutorial), [Vidyard](https://docs.microsoft.com/azure/active-directory/active-directory-saas-vidyard-tutorial), [ChronicX](https://docs.microsoft.com/azure/active-directory/active-directory-saas-chronicx-tutorial)
+
+Další informace o aplikacích najdete v tématu [integrace aplikací SaaS pomocí Azure Active Directory](https://aka.ms/appstutorial). Další informace o zobrazení aplikace v galerii aplikací Azure AD najdete v tématu [uvedení aplikace v galerii aplikací Azure Active Directory](https://docs.microsoft.com/azure/active-directory/develop/active-directory-app-gallery-listing). 
+
+---
+
+### <a name="azure-ad-password-protection-is-available-in-public-preview"></a>Ochrana hesel Azure AD je k dispozici ve verzi public preview
+
+**Typ:** Nová funkce  
+**Kategorie služby:** Identity Protection  
+**Funkce produktu:** Ověřování uživatelů
+
+Pomocí hesel služby Azure AD Protection pomůže omezit problémy, snadno uhádnout hesel z vašeho prostředí. Odstranění tato hesla pomáhá snížit riziko ohrožení zabezpečení z typu útoku heslo zařízení.
+
+Konkrétně ochrana hesel Azure AD vám pomůže:
+
+- Ochrana vaší organizace účty v Azure AD a Windows Server Active Directory (AD). 
+- Zastaví uživatele pomocí hesla na seznam více než 500 nejčastěji používaných hesel a více než 1 milion znaků nahrazení variace tato hesla.
+- Správa hesel služby Azure AD ochrany z jednoho místa na portálu Azure AD pro Azure AD a místní Windows Server AD.
+
+Další informace o ochraně hesel služby Azure AD najdete v tématu [eliminuje chybná hesla ve vaší organizaci](https://aka.ms/aadpasswordprotectiondocs).
+
+---
+
+### <a name="new-all-guests-conditional-access-policy-template-created-during-terms-of-use-tou-creation"></a>Nový "všechny hosté" podmíněného přístupu šablonu zásad během vytváření podmínky použití (ToU)
+
+**Typ:** Nová funkce  
+**Kategorie služby:** Podmínky použití  
+**Funkce produktu:** Zásady správného řízení
+
+Během vytváření vašich podmínek použití (ToU) se také vytvoří novou šablonu zásad podmíněného přístupu pro "všechny hostů" a "všechny aplikace". Tato nová šablona zásad platí nově vytvořený podmínek použití, usnadňuje vytváření a vynucování procesů pro hosty.
+
+Další informace najdete v tématu [Azure Active Directory Terms of použít funkci](https://docs.microsoft.com/azure/active-directory/active-directory-tou).
+
+---
+
+### <a name="new-custom-conditional-access-policy-template-created-during-terms-of-use-tou-creation"></a>Nové šablony zásad podmíněného přístupu "vlastní" během vytváření podmínky použití (ToU)
+
+**Typ:** Nová funkce  
+**Kategorie služby:** Podmínky použití  
+**Funkce produktu:** Zásady správného řízení
+
+Při vytváření vašich podmínek použití (ToU) se vytvoří také novou šablonu zásad podmíněného přístupu "vlastní". Tato nová šablona zásad vám umožní vytvořit podmínky použití a pak okamžitě přejít na okno pro vytvoření zásady podmíněného přístupu, aniž by bylo potřeba ručně přejít na portálu.
+
+Další informace najdete v tématu [Azure Active Directory Terms of použít funkci](https://docs.microsoft.com/azure/active-directory/active-directory-tou).
+
+---
+
+### <a name="new-and-comprehensive-guidance-about-deploying-azure-multi-factor-authentication"></a>Nové a komplexní informace o nasazení Azure Multi-Factor Authentication
+
+**Typ:** Nová funkce  
+**Kategorie služby:** Ostatní  
+**Funkce produktu:** Zabezpečení a ochrana identity
+ 
+Vydali jsme nové podrobné pokyny o tom, jak nasadit Azure Multi-Factor Authentication (MFA) ve vaší organizaci.
+
+Chcete-li zobrazit v Průvodci nasazením vícefaktorového ověřování, přejděte na [postupujte podle průvodců nasazením Identity](https://aka.ms/DeploymentPlans) úložišti na Githubu. Chcete-li poskytnout zpětnou vazbu o průvodcích nasazením, použijte [formulář pro odeslání názoru naplánovat nasazování](https://aka.ms/deploymentplanfeedback). Pokud máte nějaké dotazy ohledně průvodcích nasazením, kontaktujte nás na adrese [IDGitDeploy](mailto:idgitdeploy@microsoft.com).
+
+---
+
+### <a name="azure-ad-delegated-app-management-roles-are-in-public-preview"></a>Delegovaná správa aplikací, které role jsou ve verzi public preview služby Azure AD
+
+**Typ:** Nová funkce  
+**Kategorie služby:** Podnikové aplikace  
+**Funkce produktu:** Řízení přístupu
+
+Správci teď můžete delegovat úkoly při správě aplikací bez přiřazení rolí globálního správce. Nové role a funkce jsou:
+
+- **Nový standard role správce Azure AD:**
+
+    - **Správce aplikací.** Umožňuje spravovat všechny aspekty všechny aplikace, včetně registrace, nastavení jednotného přihlašování, přiřazení aplikace a licencování, nastavení proxy aplikací a vyjádření souhlasu (s výjimkou k prostředkům Azure AD).
+
+    - **Správce cloudové aplikace.** Uděluje všechny schopnosti Správce aplikací, s výjimkou proxy aplikací, protože neposkytuje přístup k místnímu.
+
+    - **Vývojář aplikace.** Umožňuje vytvářet registrace aplikací, i v případě **umožnil uživatelům registrovat aplikace** možnost je vypnuta.
+
+- **Vlastnictví (nastavení pro aplikaci registrace a za podnikové aplikace, podobný procesu pro vlastnictví skupiny:**
+ 
+    - **Vlastník registrace aplikace.** Umožňuje spravovat všechny aspekty registrace vlastní aplikace, včetně manifest aplikace a přidání dalších vlastníků.
+
+    - **Vlastník aplikace organizace.** Uděluje možnost spravovat mnoho aspektů vlastní podnikové aplikace, včetně nastavení jednotného přihlašování, přiřazení aplikace a vyjádření souhlasu (s výjimkou k prostředkům Azure AD).
+
+Další informace o verzi public preview, najdete v článku [Azure AD delegovaná Správa aplikace role jsou ve verzi public preview!](https://cloudblogs.microsoft.com/enterprisemobility/2018/06/13/hallelujah-azure-ad-delegated-application-management-roles-are-in-public-preview/) blog. Další informace o rolích a oprávněních najdete v tématu [přiřazení rolí správce v Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-assign-admin-roles-azure-portal).
 
 ---
 

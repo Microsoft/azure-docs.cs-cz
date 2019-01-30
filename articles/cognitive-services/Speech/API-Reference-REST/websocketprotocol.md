@@ -6,16 +6,16 @@ services: cognitive-services
 author: zhouwangzw
 manager: wolfma
 ms.service: cognitive-services
-ms.component: bing-speech
+ms.subservice: bing-speech
 ms.topic: article
 ms.date: 09/18/2018
 ms.author: zhouwang
-ms.openlocfilehash: 0bbc6b638d11335e6d46501fa651996f05957dd5
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
+ms.openlocfilehash: 1d6c0a8ca04949216e6410ff81b15f79c7067522
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49341816"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55217284"
 ---
 # <a name="bing-speech-websocket-protocol"></a>Protokol WebSocket pro zpracování řeči Bingu
 
@@ -77,7 +77,7 @@ Content-Length: 0
 
 Následující informace záhlaví jsou nezbytné k tokenu přístupu.
 
-| Název | Formát | Popis |
+| Name | Formát | Popis |
 |----|----|----|
 | OCP-Apim-Subscription-Key | ASCII | Váš klíč předplatného |
 
@@ -99,9 +99,9 @@ Klienti *musí* použít příslušný koncový bod služby řeči. Koncový bod
 
 | Mode | Cesta | Identifikátor URI služby |
 | -----|-----|-----|
-| Interaktivní | /Speech/Recognition/Interactive/cognitiveservices/V1 |https://speech.platform.bing.com/speech/recognition/interactive/cognitiveservices/v1?language=pt-BR |
-| Konverzace | /Speech/Recognition/conversation/cognitiveservices/V1 |https://speech.platform.bing.com/speech/recognition/conversation/cognitiveservices/v1?language=en-US |
-| Diktování | /Speech/Recognition/Dictation/cognitiveservices/V1 |https://speech.platform.bing.com/speech/recognition/dictation/cognitiveservices/v1?language=fr-FR |
+| Interaktivní | /speech/recognition/interactive/cognitiveservices/v1 |https://speech.platform.bing.com/speech/recognition/interactive/cognitiveservices/v1?language=pt-BR |
+| Konverzace | /speech/recognition/conversation/cognitiveservices/v1 |https://speech.platform.bing.com/speech/recognition/conversation/cognitiveservices/v1?language=en-US |
+| Diktování | /speech/recognition/dictation/cognitiveservices/v1 |https://speech.platform.bing.com/speech/recognition/dictation/cognitiveservices/v1?language=fr-FR |
 
 Další informace najdete v tématu [identifikátor URI služby](../GetStarted/GetStartedREST.md#service-uri) stránky.
 
@@ -149,7 +149,7 @@ Hlavní zprávy odeslané klientem služby jsou `speech.config`, `audio`, a `tel
 
 Následující hlavičky jsou požadovány pro všechny zprávy klienta pochází.
 
-| Hlavička | Hodnota |
+| Hlavička | Value |
 |----|----|
 | Cesta | Cesta zprávy, jak je uvedeno v tomto dokumentu |
 | X-RequestId | Identifikátor UUID ve formátu "no-dash" |
@@ -178,7 +178,7 @@ Klienti *musí* odeslat `speech.config` zpráv okamžitě po navázání připoj
 
 #### <a name="required-message-headers"></a>Požadovaná zpráva hlavičky
 
-| Název hlavičky | Hodnota |
+| Název hlavičky | Value |
 |----|----|
 | Cesta | `speech.config` |
 | X-časové razítko | Časové razítko hodiny klienta UTC ve formátu ISO 8601 |
@@ -218,17 +218,17 @@ Prvek system.version `speech.config` zpráva obsahuje verzi řeči SDK software 
 
 | Pole | Popis | Využití |
 |-|-|-|
-| OS.Platform | Operační systém platformy, který je hostitelem aplikace, například, Windows, Android, iOS nebo Linuxu |Požaduje se |
+| os.platform | Operační systém platformy, který je hostitelem aplikace, například, Windows, Android, iOS nebo Linuxu |Požaduje se |
 | OS.Name | Název produktu operačního systému, například systému Debian nebo Windows 10 | Požaduje se |
-| OS.Version | Verze operačního systému ve formě *major.minor.build.branch* | Požaduje se |
+| os.version | Verze operačního systému ve formě *major.minor.build.branch* | Požaduje se |
 
 ##### <a name="device-element"></a>Element zařízení
 
 | Pole | Popis | Využití |
 |-|-|-|
-| Device.Manufacturer | Výrobce zařízení | Požaduje se |
-| Device.model | Model zařízení | Požaduje se |
-| Device.Version | Verze softwaru zařízení dodané výrobcem zařízení. Tato hodnota určuje verzi, která lze sledovat výrobce zařízení. | Požaduje se |
+| device.manufacturer | Výrobce zařízení | Požaduje se |
+| device.model | Model zařízení | Požaduje se |
+| device.version | Verze softwaru zařízení dodané výrobcem zařízení. Tato hodnota určuje verzi, která lze sledovat výrobce zařízení. | Požaduje se |
 
 ### <a name="message-audio"></a>Zpráva `audio`
 
@@ -249,7 +249,7 @@ Speech Service používá první `audio` zprávu, která obsahuje identifikátor
 
 Následující hlavičky jsou potřebné pro všechny `audio` zprávy.
 
-| Hlavička         |  Hodnota     |
+| Hlavička         |  Value     |
 | ------------- | ---------------- |
 | Cesta | `audio` |
 | X-RequestId | Identifikátor UUID ve formátu "no-dash" |
@@ -507,10 +507,10 @@ Klienti musí obsahovat informace o událostech, ke kterým došlo během život
 
 | Pole | Popis | Využití |
 | ----- | ----------- | ----- |
-| Název | `Connection` | Požaduje se |
+| Name | `Connection` | Požaduje se |
 | ID | Hodnota identifikátoru připojení, která byla použita v *X ConnectionId* záhlaví pro tento požadavek na připojení | Požaduje se |
 | Start | Čas, kdy klient odešle požadavek na připojení | Požaduje se |
-| End | Čas při přijetí oznámení, že bylo připojení úspěšně vytvořeno klienta nebo v chybových případech, odmítnuto, odmítnuto nebo se nezdařilo | Požaduje se |
+| Konec | Čas při přijetí oznámení, že bylo připojení úspěšně vytvořeno klienta nebo v chybových případech, odmítnuto, odmítnuto nebo se nezdařilo | Požaduje se |
 | Chyba | Popis chyby, ke které došlo k chybě, pokud existuje. Pokud připojení úspěšné, klienti měli vynechat, nechte toto pole. Maximální délka tohoto pole je 50 znaků. | Vyžaduje se pro případy chyb, jinak tento parametr vynechán |
 
 Popis chyby musí být maximálně 50 znaků a v ideálním případě by měla být jedna z hodnot uvedených v následující tabulce. Pokud chybového stavu neodpovídá jednu z těchto hodnot, klientů můžete použít výstižný popis chybovou podmínku s použitím [CamelCasing](https://en.wikipedia.org/wiki/Camel_case) bez mezer. Umožňuje odeslat *telemetrie* zprávy vyžaduje připojení ke službě, takže pouze přechodný nebo dočasné chybové stavy můžete oznámený v *telemetrie* zprávy. Chybové stavy, *trvale* blok klienta v navázání připojení ke službě ochranu klienta v odesílání jakékoli zprávy do služby, včetně *telemetrie* zprávy.
@@ -547,9 +547,9 @@ Použít následující příklady pouze jako vodítka pro záznam *Start* časo
 
 | Pole | Popis | Využití |
 | ----- | ----------- | ----- |
-| Název | Mikrofon | Požaduje se |
+| Name | Mikrofon | Požaduje se |
 | Start | Čas, kdy klient začít používat zvukového vstupu z mikrofon nebo jiných zvukový datový proud nebo aktivační událost poslal spotter – klíčové slovo | Požaduje se |
-| End | Čas, kdy klienta zastavena pomocí datového proudu mikrofon nebo ve zvukovém souboru | Požaduje se |
+| Konec | Čas, kdy klienta zastavena pomocí datového proudu mikrofon nebo ve zvukovém souboru | Požaduje se |
 | Chyba | Popis chyby, ke které došlo k chybě, pokud existuje. Operace mikrofon byly úspěšné, klienti by měl vynechat, nechte toto pole. Maximální délka tohoto pole je 50 znaků. | Vyžaduje se pro případy chyb, jinak tento parametr vynechán |
 
 ### <a name="metric-listeningtrigger"></a>Metrika `ListeningTrigger`
@@ -567,9 +567,9 @@ Použít následující příklady pouze jako vodítka pro záznam *Start* a *En
 
 | Pole | Popis | Využití |
 | ----- | ----------- | ----- |
-| Název | ListeningTrigger | Nepovinné |
+| Name | ListeningTrigger | Nepovinné |
 | Start | Čas zahájení aktivační událost pro naslouchání klienta | Požaduje se |
-| End | Čas dokončení aktivační událost pro naslouchání klienta | Požaduje se |
+| Konec | Čas dokončení aktivační událost pro naslouchání klienta | Požaduje se |
 | Chyba | Popis chyby, ke které došlo k chybě, pokud existuje. Pokud operace aktivační události byl úspěšný, klienti by měl vynechat, nechte toto pole. Maximální délka tohoto pole je 50 znaků. | Vyžaduje se pro případy chyb, jinak tento parametr vynechán |
 
 #### <a name="sample-message"></a>Ukázková zpráva

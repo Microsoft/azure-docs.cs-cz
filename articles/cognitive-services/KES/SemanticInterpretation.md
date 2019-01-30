@@ -6,16 +6,16 @@ services: cognitive-services
 author: bojunehsu
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: knowledge-exploration
+ms.subservice: knowledge-exploration
 ms.topic: conceptual
 ms.date: 03/26/2016
 ms.author: paulhsu
-ms.openlocfilehash: 5fcc7b760b5445e57b41787d8818ef11ed926e6c
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.openlocfilehash: 2b0065dbdac8e3bdbc535f2d7d103b24110e1d02
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46129348"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55217267"
 ---
 # <a name="semantic-interpretation"></a>Sémantického výkladu
 
@@ -33,7 +33,7 @@ Proměnná je určen pomocí identifikátor názvu, který začíná písmenem a
 
 Dále je uveden seznam aktuálně podporované datové typy:
 
-|Typ|Popis|Příklady|
+|Type|Popis|Příklady|
 |----|----|----|
 |Řetězec|Posloupnost 0 nebo více znaků|"Hello World!"<br/>""|
 |BOOL|Logická hodnota|true (pravda)<br/>false (nepravda)|
@@ -41,7 +41,7 @@ Dále je uveden seznam aktuálně podporované datové typy:
 |Int64|64bitové celé číslo se znaménkem. -9.2e18 a 9.2e18|9876543210|
 |Double|Dvojité přesnosti s plovoucí desetinnou čárkou. 1, 7E +/-308 (15 číslic)|123.456789<br/>1.23456789e2|
 |Guid|Globálně jedinečný identifikátor|"602DD052-CC47-4B23-A16A-26B52D30C05B"|
-|Dotaz|Výraz dotazu, který určuje podmnožinu dat objektů do indexu|All()<br/>A (*q1*, *q2*)|
+|Dotaz|Výraz dotazu, který určuje podmnožinu dat objektů do indexu|All()<br/>And(*q1*, *q2*)|
 
 ## <a name="semantic-functions"></a>Sémantické funkce
 
@@ -139,7 +139,7 @@ Proměnné s rozsahem žádosti jsou sdíleny napříč všechny interpretace v 
 
 Systémové proměnné jsou předdefinovány službou a slouží k načtení obsahují různé statistické údaje o aktuálním stavu systému.  Níže je sada proměnných aktuálně podporovaný systémový:
 
-|Název|Typ|Popis|
+|Name|Typ|Popis|
 |----|----|----|
 |IsAtEndOfQuery|BOOL|Hodnota TRUE, pokud aktuální interpretace odpovídá všechny vstupní text|
 |IsBeyondEndOfQuery|BOOL|Hodnota TRUE, pokud aktuální interpretace navrhl dokončování nad rámec vstupní text|
@@ -152,13 +152,13 @@ Přiřadí *hodnotu* proměnné *název* pod zadaným *oboru*.  *název* je iden
 
 Proměnné s rozsahem žádosti jsou sdíleny napříč všechny interpretace v rámci aktuálního požadavku interpretaci.  Jejich lze ovládat hledat interpretace gramatiky.
 
-### <a name="assertequals-function"></a>AssertEquals – funkce
+### <a name="assertequals-function"></a>AssertEquals Function
 
 `AssertEquals(value1, value2);`
 
 Pokud *hodnota1* a *hodnota2* jsou ekvivalentní funkce je úspěšné a nemá žádné vedlejší účinky.  V opačném případě funkce selže a odmítne výkladu.
 
-### <a name="assertnotequals-function"></a>AssertNotEquals – funkce
+### <a name="assertnotequals-function"></a>AssertNotEquals Function
 
 `AssertNotEquals(value1, value2);`
 

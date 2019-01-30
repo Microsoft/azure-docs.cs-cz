@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 05/16/2018
 ms.author: hrasheed
 ms.custom: hdiseo17may2017
-ms.openlocfilehash: 8ef8f66a67ee93ea8c015c33e69b87e7c5d2a898
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: d729d840bb055452eb8bb87cc978f1e38dcea48e
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53259983"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55227943"
 ---
 # <a name="serialize-data-in-apache-hadoop-with-the-microsoft-avro-library"></a>Serializace dat v systému Apache Hadoop pomocí Microsoft Avro Library
 
@@ -1351,7 +1351,7 @@ Pátý příklad ukazuje, jak používat vlastní kompresní kodek souborů Avro
 Ukázka provede následující úlohy:
 
 * Připojí se do existujícího clusteru služby HDInsight.
-* Serializuje několika souborů CSV a nahraje výsledek do úložiště objektů Blob v Azure. (Soubory CSV se distribuují spolu s vzorku a představují extrakci z historických dat AMEX akcie distribuuje společnost [Infochimps](https://www.infochimps.com/) dobu 1970 2010. Ukázka načte data souborů CSV, převede záznamy k instancím typu **akcie** třídy a serializuje je pomocí reflexe. Definice základní typ je vytvořen z schématu JSON přes nástroj pro generování kódu Microsoft Avro Library.
+* Serializuje několika souborů CSV a nahraje výsledek do úložiště objektů Blob v Azure. (Soubory CSV se distribuují spolu s vzorku a představují extrakci z historických dat AMEX akcie distribuuje společnost [Infochimps](https://www.infochimps.org/) dobu 1970 2010. Ukázka načte data souborů CSV, převede záznamy k instancím typu **akcie** třídy a serializuje je pomocí reflexe. Definice základní typ je vytvořen z schématu JSON přes nástroj pro generování kódu Microsoft Avro Library.
 * Vytvoří nový externí tabulky nazvané **akcie** v Hive a odkazy, nahrát ho k datům v předchozím kroku.
 * Provede dotaz s použitím Hive nad **akcie** tabulky.
 

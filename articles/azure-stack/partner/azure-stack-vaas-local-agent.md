@@ -13,13 +13,14 @@ ms.topic: quickstart
 ms.date: 11/26/2018
 ms.author: mabrigg
 ms.reviewer: johnhas
+ms.lastreviewed: 11/26/2018
 ROBOTS: NOINDEX
-ms.openlocfilehash: 53309eceaab566836cef5f73dff2b69db5d9c135
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.openlocfilehash: 23bbcbf6947100db26f31562c44f8073e16e986f
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55102409"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55239337"
 ---
 # <a name="deploy-the-local-agent"></a>Nasazení místního agenta
 

@@ -5,16 +5,16 @@ services: cognitive-services
 author: PanosPeriorellis
 manager: onano
 ms.service: cognitive-services
-ms.component: custom-speech
+ms.subservice: custom-speech
 ms.topic: article
 ms.date: 02/08/2017
 ms.author: panosper
-ms.openlocfilehash: 9f1a21d6f099bc27c81e8c254f7df73d6c3e585d
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
+ms.openlocfilehash: 3f99172f486c374cdbd0b6ebd50fdf7bfec98ec3
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49341794"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55227144"
 ---
 # <a name="use-a-custom-speech-to-text-endpoint"></a>Použití vlastního koncového bodu pro převod řeči na text
 
@@ -36,10 +36,10 @@ Služba se předpokládá, že jsou data přenášena v reálném čase. Pokud p
 
 K odesílání požadavků na vlastní koncový bod s použitím knihovny řečového klienta, spusťte klienta rozpoznávání. Umožňuje využít řeč klientské sady SDK z [NuGet](http://nuget.org/). Vyhledejte *rozpoznávání řeči*a vyberte balíček, rozpoznávání řeči od Microsoftu pro vaši platformu. Vzorový kód můžete najít na [Githubu](https://github.com/Microsoft/Cognitive-Speech-STT-Windows). Klientské sady SDK řeč poskytuje třídu objektů factory **SpeechRecognitionServiceFactory**, což poskytuje následující metody:
 
-  *   ```CreateDataClient(...)```: Data rozpoznávání klienta.
-  *   ```CreateDataClientWithIntent(...)```: Data rozpoznávání klienta s cílem.
-  *   ```CreateMicrophoneClient(...)```: Mikrofon rozpoznávání klienta.
-  *   ```CreateMicrophoneClientWithIntent(...)```: Mikrofon rozpoznávání klienta s cílem.
+  *   ```CreateDataClient(...)```: Klient rozpoznávání data.
+  *   ```CreateDataClientWithIntent(...)```: Klient rozpoznávání dat s cílem.
+  *   ```CreateMicrophoneClient(...)```: Klient rozpoznávání mikrofon.
+  *   ```CreateMicrophoneClientWithIntent(...)```: Klient rozpoznávání mikrofon s cílem.
 
 Podrobnou dokumentaci najdete v článku [rozhraní API pro zpracování řeči Bingu](https://docs.microsoft.com/azure/cognitive-services/speech/home). Koncové body služby Custom Speech Service podporují stejnou sadu SDK.
 

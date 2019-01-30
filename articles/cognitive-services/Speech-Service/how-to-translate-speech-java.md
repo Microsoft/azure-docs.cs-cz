@@ -6,17 +6,17 @@ services: cognitive-services
 author: wolfma61
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: speech-service
+ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: wolfma
 ms.custom: seodec18
-ms.openlocfilehash: 233c6b33a4b6dea8ae5aea56272d43bee228d71f
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: ba0ffff6836228cbee3dc7ec0e3f2213b3044ad4
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53092243"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55226192"
 ---
 # <a name="translate-speech-with-the-speech-sdk-for-java"></a>Překlad řeči se sadou SDK pro řeč pro Javu
 

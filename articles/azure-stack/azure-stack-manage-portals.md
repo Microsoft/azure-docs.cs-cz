@@ -16,12 +16,13 @@ ms.custom: mvc
 ms.date: 01/07/2019
 ms.author: jeffgilb
 ms.reviewer: ''
-ms.openlocfilehash: f60bc6a446309bacc300c5bc3fcee430232e295d
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ms.lastreviewed: 01/07/2019
+ms.openlocfilehash: dacd628098d263234f56b20879a5ac2fdf87a809
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54107595"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55243160"
 ---
 # <a name="quickstart-use-the-azure-stack-administration-portal"></a>Rychlý start: použití portálu pro správu služby Azure Stack
 
@@ -36,7 +37,7 @@ Pro přístup k portálu správce, přejděte na adresu URL portálu a přihlá�
 | Prostředí | Adresa URL portálu pro správce |   
 | -- | -- | 
 | ASDK| https://adminportal.local.azurestack.external  |
-| Integrované systémy | https://adminportal.&lt; *oblasti*&gt;.&lt; *Plně kvalifikovaný název domény*&gt; | 
+| Integrované systémy | https://adminportal.&lt;*region*&gt;.&lt;*FQDN*&gt; | 
 | | |
 
 > [!TIP]

@@ -14,12 +14,13 @@ ms.topic: tutorial
 ms.date: 01/25/2019
 ms.author: mabrigg
 ms.reviewer: anajod
-ms.openlocfilehash: cedc1ec84c049d779f09c31be1aa1a3af63dfe5b
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.lastreviewed: 01/25/2019
+ms.openlocfilehash: 5f142192571bdd15a33575a425d75baf3e5caea2
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55094151"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55243483"
 ---
 # <a name="tutorial-deploy-a-hybrid-cloud-solution-with-azure-and-azure-stack"></a>Kurz: Nasazení řešení s hybridní cloud s Azure a Azure Stack
 

@@ -5,16 +5,16 @@ description: Migrace do vlastní Translator váš pracovní prostor centra a pro
 author: rajdeep-in
 manager: christw
 ms.service: cognitive-services
-ms.component: custom-translator
+ms.subservice: custom-translator
 ms.date: 11/13/2018
 ms.author: v-rada
 ms.topic: article
-ms.openlocfilehash: e243262a3eedb961bc86cfd167db540c0dece8c3
-ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
+ms.openlocfilehash: b8347a8c34cf5a0585e9bb6c247102207a70015a
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54856753"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55225614"
 ---
 # <a name="migrate-hub-workspace-and-projects-to-custom-translator"></a>Migrace na Translator vlastní pracovní prostor centra a projekty
 

@@ -3,17 +3,17 @@ title: Vytvoření účtu úložiště Azure Data Lake Storage Gen2 | Dokumentac
 description: Rychle se naučíte vytvořit nový účet úložiště s přístupem k Data Lake Storage Gen2 pomocí webu Azure portal, prostředí Azure PowerShell nebo rozhraní příkazového řádku Azure
 services: storage
 author: jamesbak
-ms.component: data-lake-storage-gen2
+ms.subservice: data-lake-storage-gen2
 ms.service: storage
 ms.topic: quickstart
 ms.date: 12/06/2018
 ms.author: jamesbak
-ms.openlocfilehash: 7cd1f0fdf8b391ac1d683c6d67c2739b747815a2
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 906f1a85000a2be175a204e9e6e561a75cecfde3
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55193654"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55248431"
 ---
 # <a name="quickstart-create-an-azure-data-lake-storage-gen2-storage-account"></a>Rychlý start: Vytvoření účtu úložiště Azure Data Lake Storage Gen2
 

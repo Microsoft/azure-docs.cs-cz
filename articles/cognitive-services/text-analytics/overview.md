@@ -6,16 +6,16 @@ services: cognitive-services
 author: ashmaka
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: text-analytics
+ms.subservice: text-analytics
 ms.topic: overview
 ms.date: 10/01/2018
 ms.author: ashmaka
-ms.openlocfilehash: 42477a69616024ae9564d3665a47ff00161ea792
-ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
+ms.openlocfilehash: 73505064bf5cde4e97cd210698e21883cc9f5e38
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54451045"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55227875"
 ---
 # <a name="what-is-text-analytics"></a>Co je Analýza textu?
 
@@ -66,7 +66,7 @@ Tato část byla přesunuta do samostatného článku pro lepší vyhledatelnost
 
 Všechny koncové body rozhraní API pro analýzu textu přijímají data v podobě nezpracovaného textu. Současný limit je 5 000 znaků pro každý dokument. Pokud potřebujete analyzovat větší dokumenty, můžete je rozdělit do menších bloků. Pokud budete přesto potřebovat vyšší limit, [kontaktujte nás](https://azure.microsoft.com/overview/sales-number/), abychom mohli projednat vaše požadavky.
 
-| Omezení | Hodnota |
+| Omezení | Value |
 |------------------------|---------------|
 | Maximální velikost jednoho dokumentu | 5 000 znaků pohledu [ `StringInfo.LengthInTextElements` ](https://docs.microsoft.com/dotnet/api/system.globalization.stringinfo.lengthintextelements). |
 | Maximální velikost celého požadavku | 1 MB |

@@ -3,18 +3,18 @@ title: 'Příkaz akce pro službu Azure Machine Learning v 59 znaků nebo méně
 description: Zjistěte, jak na to a že zákazník pomocí slova ve službě Azure Machine Learning. Tento řetězec popisuje článek v 115 k 145 znaků. Optimalizace pro vyhledávací weby druh akční slovesa zde použijte. Tyto informace se zobrazí na vyhledávání vložený stránky v článku časové razítko. Pokud vaše para Úvod popisuje záměr svůj článek, můžete ho zde upravit délku.
 services: machine-learning
 ms.service: machine-learning
-ms.component: core
+ms.subservice: core
 ms.topic: conceptual
 ms.reviewer: jmartens
 ms.author: your-msft-alias
 author: your-github-account-name
 ms.date: 04/10/2018
-ms.openlocfilehash: 1fd64cca8eb51cdcaa2eb6e8cbce853b6a55b0e6
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 1367f09fa9cac3a5d3a23a1192ada49f16976125
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51013006"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55245551"
 ---
 # <a name="this-h1-is-the-title-of-the-article-it-appears-in-search-appears-at-the-top-of-article-second-greatest-impact-on-search-100-chars-or-less"></a>Tato H1 je název článku. Zobrazí se ve službě search se zobrazí v horní části stránky článku, druhé největší vliv na vyhledávání 100 znaků nebo méně
 

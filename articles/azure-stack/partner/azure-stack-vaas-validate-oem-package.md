@@ -10,16 +10,17 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 1/07/2019
+ms.date: 01/07/2019
 ms.author: mabrigg
 ms.reviewer: johnhas
+ms.lastreviewed: 01/07/2019
 ROBOTS: NOINDEX
-ms.openlocfilehash: 5ba290f442f4c27b510538d7c1f7b5e27467efc5
-ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
+ms.openlocfilehash: b3a9ee66907b51a40e9f4b0871d9f6ba6e29763a
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/12/2019
-ms.locfileid: "54246649"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55242395"
 ---
 # <a name="validate-oem-packages"></a>Ověření balíčky výrobce OEM
 
@@ -57,7 +58,7 @@ Vytvoření kontejneru v účtu úložiště pro objekty BLOB balíčku. Tento k
 
 Při vytváření **ověřování balíčku** pracovního postupu portálu VaaS, budete muset zadat adresu URL do služby Azure Storage blob obsahující balíček.
 
-#### <a name="option-1-generating-an-account-sas-url"></a>Možnost 1: Generování SAS URL účtu
+#### <a name="option-1-generating-an-account-sas-url"></a>Option 1: Generování SAS URL účtu
 
 1. V [webu Azure portal](https://portal.azure.com/), přejdete do účtu úložiště a pak na ZIP, který obsahuje váš balíček
 
@@ -71,7 +72,7 @@ Při vytváření **ověřování balíčku** pracovního postupu portálu VaaS,
 
 Použití **SAS URL objektu Blob** při spouštění nového **ověřování balíčku** pracovního postupu portálu VaaS.
 
-#### <a name="option-2-using-public-read-container"></a>Možnost 2: Pomocí veřejné čtení kontejneru
+#### <a name="option-2-using-public-read-container"></a>Option 2: Pomocí veřejné čtení kontejneru
 
 > [!CAUTION]
 > Tato možnost otevře se váš kontejner pro anonymní přístup jen pro čtení.

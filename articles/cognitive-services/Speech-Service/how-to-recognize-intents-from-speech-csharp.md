@@ -1,23 +1,23 @@
 ---
-title: 'Kurz: Rozpoznávání záměrů z řeči pomocí sady Speech SDK pro C#'
+title: 'Kurz: Rozpoznat záměry z řeči pomocí sadou SDK pro řeč pro jazyk C#'
 titleSuffix: Azure Cognitive Services
 description: V tomto kurzu se naučíte rozpoznávat záměry z řeči pomocí sady Speech SDK pro C#.
 services: cognitive-services
 author: wolfma61
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: speech-service
+ms.subservice: speech-service
 ms.topic: tutorial
 ms.date: 09/24/2018
 ms.author: wolfma
-ms.openlocfilehash: 64fa194225c7e9fa4c272ca8a9e95b44282ec1df
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
-ms.translationtype: HT
+ms.openlocfilehash: e810450a8934a8df921c5d952a55ab0deaf853ec
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49466473"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55227963"
 ---
-# <a name="tutorial-recognize-intents-from-speech-using-the-speech-sdk-for-c"></a>Kurz: Rozpoznávání záměrů z řeči pomocí sady Speech SDK pro C#
+# <a name="tutorial-recognize-intents-from-speech-using-the-speech-sdk-for-c"></a>Kurz: Rozpoznat záměry z řeči pomocí sadou SDK pro řeč proC#
 
 [!INCLUDE [Article selector](../../../includes/cognitive-services-speech-service-how-to-recognize-intents-from-speech-selector.md)]
 
@@ -183,7 +183,7 @@ Ověřte, že kód obsahuje klíč koncového bodu služby LUIS, oblast a ID apl
 [!INCLUDE [Download the sample](../../../includes/cognitive-services-speech-service-speech-sdk-sample-download-h2.md)]
 Kód z tohoto článku najdete ve složce samples/csharp/sharedcontent/console.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 > [!div class="nextstepaction"]
 > [Rozpoznávání řeči](how-to-recognize-speech-csharp.md)

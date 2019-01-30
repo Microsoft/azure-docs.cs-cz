@@ -15,12 +15,13 @@ ms.topic: article
 ms.date: 10/15/2018
 ms.author: jeffgilb
 ms.reviewer: misainat
-ms.openlocfilehash: 21c54e2e996bb987f7a27ac3e6333df6f74d6f4b
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
+ms.lastreviewed: 10/15/2018
+ms.openlocfilehash: 2cee4d75a111f56012782228d8070bb728720aca
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49338620"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55238329"
 ---
 # <a name="microsoft-azure-stack-development-kit-architecture"></a>Architektura Microsoft Azure Stack Development Kit
 Azure Stack Development Kit (ASDK) je jedním uzlem nasazení služby Azure Stack. Všechny součásti se instalují do virtuálních počítačů spuštěných na jeden hostitelský počítač. 
@@ -33,7 +34,7 @@ Následující diagram znázorňuje logickou architekturu ASDK a jeho součást�
 ## <a name="virtual-machine-roles"></a>Role virtuálních počítačů
 ASDK nabízí služby pomocí následující virtuální počítače hostované na hostitelském počítači development kit:
 
-| Název | Popis |
+| Name | Popis |
 | ----- | ----- |
 | **AzS-ACS01** | Úložiště služby Azure Stack.|
 | **AzS-ADFS01** | Active Directory Federation Services (ADFS).  |

@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 10/04/2018
 ms.author: ramankum
 ms.component: disks
-ms.openlocfilehash: 4f9e3468cc8ec94eeb3ba936b828e9adfd9a3e6d
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
-ms.translationtype: MT
+ms.openlocfilehash: eacf2c2d2b732a16596afba622244a793a25924c
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54478514"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55227008"
 ---
 # <a name="update-the-storage-type-of-a-managed-disk"></a>Aktualizovat typ úložiště spravovaného disku
 
@@ -83,7 +83,7 @@ Start-AzureRmVM -ResourceGroupName $rgName -Name $vmName
 
 ## <a name="convert-a-managed-disk-from-standard-to-premium"></a>Převést spravovaného disku ze standard na premium
 
-Pro úlohy pro vývoj/testování můžete chtít kombinaci disků úrovně standard a premium ke snížení nákladů. Ano, upgradujte na premium storage úkoly jenom disky, které vyžadují vyšší výkon. Následující příklad ukazuje, jak přepnout jeden disk virtuálního počítače ze standard na premium storage a naopak. Chcete-li používat službu premium managed disks, musíte použít váš virtuální počítač [velikost virtuálního počítače](sizes.md) , který podporuje storage úrovně premium. Tento příklad také ukazuje, jak přepnout na hodnotu, která podporuje službu premium storage:
+Pro úlohy pro vývoj/testování můžete chtít kombinaci disků úrovně standard a premium ke snížení nákladů. Uděláte to tak, upgradujte na premium storage jenom disky, které vyžadují vyšší výkon. Následující příklad ukazuje, jak přepnout jeden disk virtuálního počítače ze standard na premium storage a naopak. Chcete-li používat službu premium managed disks, musíte použít váš virtuální počítač [velikost virtuálního počítače](sizes.md) , který podporuje storage úrovně premium. Tento příklad také ukazuje, jak přepnout na hodnotu, která podporuje službu premium storage:
 
 ```azurepowershell-interactive
 

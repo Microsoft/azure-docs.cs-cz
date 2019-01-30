@@ -3,17 +3,17 @@ title: Nastavení clusteru pro Hadoop, Spark, Kafka, HBase nebo R Server – Azu
 description: Nastavení systému Hadoop, Kafka, Spark, HBase, R Server nebo clustery Storm pro HDInsight z prohlížeče, rozhraní příkazového řádku Azure, Azure PowerShell, REST nebo sady SDK.
 services: storage
 author: jamesbak
-ms.component: data-lake-storage-gen2
+ms.subservice: data-lake-storage-gen2
 ms.service: storage
 ms.topic: conceptual
 ms.date: 01/15/2019
 ms.author: jamesbak
-ms.openlocfilehash: 791598da593c25a135c05d72b6846053af3ff344
-ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
+ms.openlocfilehash: a3c6474c6b1c27c3b413d98d86cdadbcb61e2040
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54353851"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55247285"
 ---
 # <a name="quickstart-set-up-clusters-in-hdinsight"></a>Rychlý start: Nastavení clusterů v HDInsight
 
@@ -142,7 +142,7 @@ Pro uzel využití se účtují, za předpokladu, cluster existuje. Účtování
 
 Každý typ clusteru má svůj vlastní počet uzlů, terminologie pro uzly a výchozí velikosti virtuálního počítače. V následující tabulce počet uzlů pro každý typ uzlu je v závorkách.
 
-| Typ | Uzly | Diagram |
+| Type | Uzly | Diagram |
 | --- | --- | --- |
 | Hadoop |Hlavní uzel (2), datový uzel (1 +) |![Uzly clusteru HDInsight Hadoop](media/data-lake-storage-quickstart-create-connect-hdi-cluster/hdinsight-hadoop-cluster-type-nodes.png) |
 | HBase |Hlavní server (2), oblast serveru (1 +), uzlu master/ZooKeeper (3) |![Uzly clusteru HDInsight HBase](media/data-lake-storage-quickstart-create-connect-hdi-cluster/hdinsight-hbase-cluster-type-setup.png) |

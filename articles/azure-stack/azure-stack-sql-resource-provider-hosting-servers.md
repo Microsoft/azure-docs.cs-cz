@@ -14,12 +14,13 @@ ms.topic: article
 ms.date: 10/16/2018
 ms.author: jeffgilb
 ms.reviewer: quying
-ms.openlocfilehash: a0a482e44617732c9dc6cd6609672e8204001dbc
-ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
+ms.lastreviewed: 10/16/2018
+ms.openlocfilehash: f1b39601f0f6d254daadfafdd812549c6c95ed35
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49362054"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55239464"
 ---
 # <a name="add-hosting-servers-for-the-sql-resource-provider"></a>Přidání hostitelské servery pro poskytovatele prostředků SQL
 
@@ -61,8 +62,8 @@ Existují další možnosti pro virtuální počítače s SQL, včetně šablon 
 
 Administrativní uživatel můžete vytvořit s oprávněními nižší než správce sysadmin systému SQL. Uživatel se musí oprávnění pro tyto operace:
 
-* Databáze: Vytvořit, Alter, se členství ve skupině (pro Always On pouze), Drop, zálohování
-* Skupiny dostupnosti: Alter, připojení, přidání nebo odebrání databáze
+* Databáze: Vytvoření, změna, se členství ve skupině (pro Always On pouze), Drop, zálohování
+* Skupiny dostupnosti: Příkaz ALTER, připojení, přidání nebo odebrání databáze
 * Přihlášení: Vytvořit, vyberte, Alter, Drop, odvolání
 * Vyberte operace: \[hlavní\].\[ sys\].\[ availability_group_listeners\] (AlwaysOn), sloupec sys.availability_replicas (AlwaysOn), zobrazení sys.databases, \[hlavní\].\[ sys\].\[ dm_os_sys_memory\], SERVERPROPERTY, \[hlavní\].\[ sys\].\[ availability_groups\] (AlwaysOn), sys.master_files
 
@@ -86,7 +87,7 @@ Chcete-li přidat samostatný server hostingu, který je už nastavený, postupu
 
 2. Vyberte **všechny služby** &gt; **prostředky pro správu** &gt; **servery hostující SQL**.
 
-   ![Hostování servery SQL](./media/azure-stack-sql-rp-deploy/sqlhostingservers.png)
+   ![SQL Hosting Servers](./media/azure-stack-sql-rp-deploy/sqlhostingservers.png)
 
    V části **servery hostující SQL**, poskytovatele prostředků SQL se můžete připojit k instance systému SQL Server, který bude sloužit jako back-endu poskytovatele prostředků.
 
@@ -94,7 +95,7 @@ Chcete-li přidat samostatný server hostingu, který je už nastavený, postupu
 
 3. Klikněte na tlačítko **přidat** a pak zadejte podrobnosti o připojení pro vaši instanci SQL serveru na **přidat SQL Server pro hostování** okno.
 
-   ![Přidat SQL, který je hostitelem serveru](./media/azure-stack-sql-rp-deploy/sqlrp-newhostingserver.png)
+   ![Add a SQL Hosting Server](./media/azure-stack-sql-rp-deploy/sqlrp-newhostingserver.png)
 
     Volitelně můžete zadat název instance a zadejte číslo portu, pokud instance není přiřazen výchozí port 1433.
 

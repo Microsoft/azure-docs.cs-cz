@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 08/013/2018
 ms.author: genli
-ms.openlocfilehash: 0b6ade7a6031b957f2405e525d61c9ca1d2dac3d
-ms.sourcegitcommit: 9f87a992c77bf8e3927486f8d7d1ca46aa13e849
+ms.openlocfilehash: 2c5fac377dfab4b4c85991dcb8f4e15f4e3cb61a
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/28/2018
-ms.locfileid: "53809093"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55225924"
 ---
 # <a name="troubleshoot-a-windows-vm-by-attaching-the-os-disk-to-a-recovery-vm-using-the-azure-portal"></a>Odstranění virtuálního počítače s Windows pomocí připojení disku s operačním systémem k obnovení virtuálního počítače pomocí webu Azure portal
 Pokud váš Windows virtuální počítač (VM) v Azure dojde k chybě spouštění nebo disku, budete muset provést postup řešení potíží na samotném virtuálním pevném disku. Běžným příkladem může být aktualizace selhání aplikace, která brání virtuálního počítače moci úspěšně spustil. Tento článek podrobně popisuje, jak připojit virtuální pevný disk k jinému virtuálnímu počítači Windows opravte všechny chyby a pak znovu vytvořit původní virtuální počítač pomocí webu Azure portal.
@@ -37,12 +37,11 @@ Pro virtuální počítač používá spravovaný disk jsme nyní pomocí prost�
 ## <a name="determine-boot-issues"></a>Určete spouštěcí problémy
 Pokud chcete zjistit, proč váš virtuální počítač není schopen spuštění systému správně, zkontrolujte diagnostiku spouštění snímek obrazovky virtuálního počítače. Běžným příkladem by se aktualizace aplikace, která selhala, nebo základní virtuální pevný disk se odstraní nebo přesune.
 
-Vyberte svůj virtuální počítač na portálu a potom přejděte dolů k položce **podpora a řešení potíží** oddílu. Klikněte na tlačítko **Diagnostika spouštění** zobrazíte na snímku obrazovky. Poznámka: všechny specifické chybové zprávy nebo kódy chyb, k určení toho, proč tento virtuální počítač se vyskytnout problém. Následující příklad ukazuje čekání na zastavení služby virtuálního počítače:
+Vyberte svůj virtuální počítač na portálu a potom přejděte dolů k položce **podpora a řešení potíží** oddílu. Klikněte na tlačítko **Diagnostika spouštění** zobrazíte na snímku obrazovky. Poznámka: všechny specifické chybové zprávy nebo kódy chyb, k určení toho, proč tento virtuální počítač se vyskytnout problém. 
 
 ![Virtuální počítač zobrazení diagnostiky spouštění protokoly konzoly](./media/troubleshoot-recovery-disks-portal-windows/screenshot-error.png)
 
-Můžete také kliknout na **snímek obrazovky** stáhnout zachycení snímku obrazovky virtuálního počítače.
-
+Můžete také kliknout na **Stáhnout snímek obrazovky** stáhnout zachycení snímku obrazovky virtuálního počítače.
 
 ## <a name="view-existing-virtual-hard-disk-details"></a>Zobrazit podrobnosti o stávající virtuální pevný disk
 Než budete moct připojit virtuální pevný disk k jinému virtuálnímu počítači, musíte určit název virtuálního pevného disku (VHD). 

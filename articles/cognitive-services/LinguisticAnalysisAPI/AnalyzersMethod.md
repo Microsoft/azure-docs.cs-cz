@@ -6,22 +6,22 @@ services: cognitive-services
 author: RichardSunMS
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: linguistic-analysis
+ms.subservice: linguistic-analysis
 ms.topic: conceptual
 ms.date: 06/30/2016
 ms.author: lesun
 ROBOTS: NOINDEX
-ms.openlocfilehash: 762ebf50999a88251dcd05824f2ed450cec97f04
-ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
+ms.openlocfilehash: 8bf13bffe763b88e95da94f885e30d271e36da42
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48237393"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55221678"
 ---
 # <a name="analyzers-method"></a>Metoda analyzers
 
 > [!IMPORTANT]
-> Pro jazykovou analýzu ve verzi preview byla vyřazena z provozu, 9. srpna 2018. Doporučujeme používat [moduly analýzy textu Azure Machine Learning](https://docs.microsoft.com/azure/machine-learning/studio-module-reference/text-analytics) pro zpracování textu a analýzy.
+> Dne 9. srpna 2018 došlo k vyřazení jazykové analýzy ve verzi Preview z provozu. Ke zpracování a analýze textu doporučujeme používat [moduly analýzy textu služby Azure Machine Learning](https://docs.microsoft.com/azure/machine-learning/studio-module-reference/text-analytics).
 
 **Analyzátory** rozhraní REST API poskytuje seznam aktuálně podporované službou analyzátory.
 Odpověď obsahuje jejich [názvy](Analyzer-Names.md) a jazyky podporované jednotlivými (například "en" pro angličtinu).
@@ -32,7 +32,7 @@ Odpověď obsahuje jejich [názvy](Analyzer-Names.md) a jazyky podporované jedn
 <br>
 
 ## <a name="response-parameters"></a>Parametry odpovědi
-Název | Typ | Popis
+Name | Typ | Popis
 -----|------|--------------
 Jazyky | seznam řetězců | seznam kódů dvě písmeno ISO jazyků, pro které je možné tento analyzátor.
 id   | řetězec | Jedinečné ID pro tento analyzátor

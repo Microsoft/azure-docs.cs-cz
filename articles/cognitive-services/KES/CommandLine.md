@@ -6,16 +6,16 @@ services: cognitive-services
 author: bojunehsu
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: knowledge-exploration
+ms.subservice: knowledge-exploration
 ms.topic: conceptual
 ms.date: 03/24/2016
 ms.author: paulhsu
-ms.openlocfilehash: 7ec2282317019275b15a8e506753408c75a68561
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.openlocfilehash: 52d001e32e1bdb0d0046853f18649bafa49b1f14
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46127133"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55228521"
 ---
 # <a name="command-line-interface"></a>Command Line Interface
 
@@ -48,7 +48,7 @@ Tyto soubory mohou být určeno místního souboru cesty nebo cesty adresy URL p
 
 Řetězec s popisem je případně možné zadat následně identifikovat binárního indexového pomocí **describe_index** příkazu.  
 
-Ve výchozím nastavení je index založený na místním počítači.  Mimo prostředí Azure místní sestavení jsou omezené na datové soubory, které obsahují až 10 000 objektů.  Když--vzdálené označen příznakem, index bude založená na dočasně vytvořeného virtuálního počítače Azure o zadané velikosti.  Díky tomu velké indexy, které se efektivně použití virtuálních počítačů Azure s více paměti.  Aby se zabránilo stránkování, což může zpomalit proces sestavení, doporučujeme používat virtuální počítač s 3krát velikost paměti RAM jako velikost souboru vstupní data.  Seznam dostupných velikostí virtuálních počítačů najdete v tématu [velikosti virtuálních počítačů](../../../articles/virtual-machines/virtual-machines-windows-sizes.md).
+Ve výchozím nastavení je index založený na místním počítači.  Mimo prostředí Azure místní sestavení jsou omezené na datové soubory, které obsahují až 10 000 objektů.  Když--vzdálené označen příznakem, index bude založená na dočasně vytvořeného virtuálního počítače Azure o zadané velikosti.  Díky tomu velké indexy, které se efektivně použití virtuálních počítačů Azure s více paměti.  Aby se zabránilo stránkování, což může zpomalit proces sestavení, doporučujeme používat virtuální počítač s 3krát velikost paměti RAM jako velikost souboru vstupní data.  Seznam dostupných velikostí virtuálních počítačů najdete v článku [Velikosti virtuálních počítačů](../../../articles/virtual-machines/virtual-machines-windows-sizes.md).
 
 > [!TIP] 
 > Rychlejší sestavování presort snížením pravděpodobnost objekty v datovém souboru služby.
@@ -70,7 +70,7 @@ Tyto soubory mohou být určeno místního souboru cesty nebo cesty adresy URL p
 
 <a name="host_service-command"/>
 
-## <a name="hostservice-command"></a>host_service příkazu
+## <a name="hostservice-command"></a>host_service Command
 
 **Host_service** příkaz je hostitelem instance služby KES v místním počítači.
 

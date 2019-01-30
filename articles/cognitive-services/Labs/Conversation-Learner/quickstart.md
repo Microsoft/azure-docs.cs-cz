@@ -10,12 +10,12 @@ ms.subservice: conversation-learner
 ms.topic: article
 ms.date: 04/30/2018
 ms.author: v-jaswel
-ms.openlocfilehash: 02501cba75bd64d6a09fce671d2949759b5cd577
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
-ms.translationtype: HT
+ms.openlocfilehash: 0990ae2c21017c0d6ff25478eb4b5e3bfb4f0d11
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55207016"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55251431"
 ---
 # <a name="create-a-conversation-learner-model-using-nodejs"></a>Vytvoření modelu konverzace Learner pomocí Node.js
 
@@ -78,26 +78,18 @@ Konverzace Learner projekt se skládá ze sady SDK je přidat do vašeho robota 
 
     To spustí obecný prázdný robotů v `cl-bot-01/src/app.ts`.
 
-3. Spusťte konverzace Learner uživatelského rozhraní:
-
-    ```bash
-    [open second command prompt window]
-    cd cl-bot-01
-    npm run ui
-    ```
-
-4. Otevřít v prohlížeči na http://localhost:5050 
+3. Otevřít v prohlížeči na http://localhost:3978
 
 Teď používáte Learner konverzace a můžete vytvořit a představuje model Learner konverzace.  
 
 > [!NOTE]
-> Při spuštění je dostupná pro pozvané Learner konverzace projektu.  Pokud http://localhost:5050 ukazuje HTTP `403` chyba, to znamená, že váš účet nebyl pozvaný.  Prosím [požádat o pozvání](https://aka.ms/conversation-learner-request-invite).
+> Při spuštění je dostupná pro pozvané Learner konverzace projektu.  Pokud http://localhost:3978/ui ukazuje HTTP `403` chyba, to znamená, že váš účet nebyl pozvaný.  Prosím [požádat o pozvání](https://aka.ms/conversation-learner-request-invite).
 
 ## <a name="tutorials-demos-and-switching-between-bots"></a>Kurzy, ukázky a přepínání mezi robotů
 
 Výše uvedených pokynů spustit obecný prázdný robota.  Spustit kurz nebo místo toho ukázka bot:
 
-1. Pokud máte webové konverzace Learner otevřete uživatelské rozhraní, vraťte do seznamu modely na úrovni http://localhost:5050/home.
+1. Pokud máte webové konverzace Learner otevřete uživatelské rozhraní, vraťte do seznamu modely na úrovni http://localhost:3978/ui/home.
     
 2. Pokud je spuštěn jiný bot (jako je `npm start` nebo `npm run demo-pizza`), zastavte ji.  Není potřeba zastavit proces uživatelského rozhraní, nebo zavřete webový prohlížeč.
 
@@ -114,7 +106,7 @@ Výše uvedených pokynů spustit obecný prázdný robota.  Spustit kurz nebo m
   npm run demo-storage
   ```
 
-4. Pokud ještě nejste, přepněte do konverzace Learner webového uživatelského rozhraní v prohlížeči Chrome načtením http://localhost:5050/home. 
+4. Pokud ještě nejste, přepněte do konverzace Learner webového uživatelského rozhraní v prohlížeči Chrome načtením http://localhost:3978/ui/home. 
 
 5. Klikněte na "Import kurzy" a vyberte model ukázku v uživatelském rozhraní Learner konverzace, který odpovídá ukázku, kterou jste spustili.
 
@@ -122,7 +114,7 @@ Zdrojové soubory pro ukázkách, které jsou v `cl-bot-01/src/demos`
 
 ## <a name="create-a-bot-which-includes-back-end-code"></a>Vytváření robotů, která zahrnuje kód back endu
 
-1. Pokud máte webové konverzace Learner otevřete uživatelské rozhraní, vraťte do seznamu modely na úrovni http://localhost:5050/home.
+1. Pokud máte webové konverzace Learner otevřete uživatelské rozhraní, vraťte do seznamu modely na úrovni http://localhost:3978/ui/home.
     
 2. Pokud je spuštěn robota (jako je `npm run demo-pizza`), zastavte ji.  Není potřeba zastavit proces uživatelského rozhraní, nebo zavřete webový prohlížeč.
 
@@ -135,7 +127,7 @@ Zdrojové soubory pro ukázkách, které jsou v `cl-bot-01/src/demos`
     npm start
     ```
 
-5. Pokud ještě nejste, přepněte do konverzace Learner webového uživatelského rozhraní v prohlížeči Chrome načtením http://localhost:5050/home. 
+5. Pokud ještě nejste, přepněte do konverzace Learner webového uživatelského rozhraní v prohlížeči Chrome načtením http://localhost:3978/ui/home. 
 
 6. Vytvořit nový model Learner konverzace v uživatelském rozhraní a spusťte výuky.
 

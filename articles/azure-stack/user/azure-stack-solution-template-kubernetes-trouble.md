@@ -14,12 +14,13 @@ ms.topic: article
 ms.date: 01/24/2019
 ms.author: mabrigg
 ms.reviewer: waltero
-ms.openlocfilehash: 8a67ae74f753fdbe3c5301c543e5a57544695922
-ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
+ms.lastreviewed: 01/24/2019
+ms.openlocfilehash: 9a65ef9acf7a1a133b3f479fe75921191949eeb8
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/25/2019
-ms.locfileid: "54904212"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55237847"
 ---
 # <a name="troubleshoot-your-kubernetes-deployment-to-azure-stack"></a>Řešení potíží s Kubernetes nasazení do služby Azure Stack
 
@@ -112,7 +113,7 @@ Při nasazování clusteru Kubernetes, můžete zkontrolovat stav nasazení zkon
     | Vlastnost | Popis |
     | ----     | ----        |
     | Prostředek | Název prostředku. |
-    | Typ | Poskytovatel prostředků a typ prostředku. |
+    | Type | Poskytovatel prostředků a typ prostředku. |
     | Status | Stav položky. |
     | Časové razítko | Časové razítko UTC času. |
     | Podrobnosti o operaci | Podrobnosti operace, jako je poskytovatel prostředků, která byla zahrnuta v operaci, koncový bod prostředku a název prostředku. |

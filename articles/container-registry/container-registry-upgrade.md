@@ -7,12 +7,12 @@ ms.service: container-registry
 ms.topic: article
 ms.date: 08/28/2018
 ms.author: danlep
-ms.openlocfilehash: 73e207dae61dfc8912fd79a151adf982753701f1
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 077ca3c876a3078e7e627dbfefdff38e09ec57b9
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52969103"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55228351"
 ---
 # <a name="upgrade-a-classic-container-registry"></a>Upgrade registru Classic kontejneru
 
@@ -31,7 +31,7 @@ Spravované registry poskytují:
 * Integrace s Azure Active Directory pro [jednotlivých přihlášení](container-registry-authentication.md#individual-login-with-azure-ad)
 * Podpora odstranění Image a značky
 * [Geografická replikace](container-registry-geo-replication.md)
-* [Webhooky](container-registry-webhook.md)
+* [Webhooks](container-registry-webhook.md)
 
 Registru Classic závisí na účet úložiště, Azure automaticky zřídí ve vašem předplatném Azure při vytváření registru. Naopak Basic, Standard a Premium SKU využít výhod Azure [pokročilé funkce úložiště](container-registry-storage.md) transparentně zpracovává úložiště imagí za vás. Samostatný účet úložiště není vytvořena ve svém vlastním předplatném.
 
@@ -52,7 +52,7 @@ Během procesu převodu všechny `docker push` blokovány jsou operace, zatímco
 
 Nemazat ani neupravovat obsah účtu úložiště zálohování vašeho registru Classic během procesu převodu. To může vést k poškození imagí kontejnerů.
 
-Po dokončení migrace účtu úložiště v rámci vašeho předplatného, který původně zálohována registru Classic nebude používat pomocí služby ACR. Po ověření, že migrace byla úspěšná, vezměte v úvahu odstraníte účet úložiště, aby vám pomohla minimalizovat náklady.
+Po dokončení migrace účtu úložiště v rámci vašeho předplatného, který původně zálohována registru Classic podle ACR už nebude používat. Po ověření, že migrace byla úspěšná, vezměte v úvahu odstraníte účet úložiště, aby vám pomohla minimalizovat náklady.
 
 >[!IMPORTANT]
 > Upgrade z modelu Classic na jednu z spravovanými skladovými položkami je **jednosměrný proces**. Po převodu Classic registru na Basic, Standard nebo Premium, nejde vrátit zpět a klasickým modelem. Můžete můžou, ale volně přesouvat mezi spravovanými skladovými položkami s dostatečnou kapacitu pro váš registr.

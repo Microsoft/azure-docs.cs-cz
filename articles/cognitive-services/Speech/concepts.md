@@ -6,16 +6,16 @@ services: cognitive-services
 author: zhouwangzw
 manager: wolfma
 ms.service: cognitive-services
-ms.component: bing-speech
+ms.subservice: bing-speech
 ms.topic: article
 ms.date: 09/18/2018
 ms.author: zhouwang
-ms.openlocfilehash: 6089f053472faaa7fa8c957904f73c7061cb2d3f
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
+ms.openlocfilehash: 4f96302f1035500a10cebaa24efd4b8db329fdff
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49344921"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55219766"
 ---
 # <a name="basic-concepts"></a>Základní koncepty
 
@@ -75,8 +75,8 @@ Protože služba Speech podílí na některé stavy, protokol služby definuje z
 
 Službu rozpoznávání řeči Microsoft poskytuje dva způsoby, jak vývojáři přidat rozpoznávání řeči do svých aplikací.
 
-- [REST API](GetStarted/GetStartedREST.md): vývojáři mohou pomocí protokolu HTTP volání ze svých aplikací do služby pro rozpoznávání řeči.
-- [Klientské knihovny](GetStarted/GetStartedClientLibraries.md): pro pokročilé funkce, vývojáři mohli stáhnout Microsoft Speech klientských knihoven a propojit do svých aplikací.  Klientské knihovny jsou dostupné na různých platformách (Windows, Android, iOS) používající různé jazyky (C#, Java, JavaScript, ObjectiveC).
+- [Rozhraní REST API](GetStarted/GetStartedREST.md): Vývojáři mohou pomocí protokolu HTTP volání ze svých aplikací do služby pro rozpoznávání řeči.
+- [Klientské knihovny](GetStarted/GetStartedClientLibraries.md): Pro pokročilé funkce můžete vývojáři stáhnout Microsoft Speech klientských knihoven a propojit do svých aplikací.  Klientské knihovny jsou dostupné na různých platformách (Windows, Android, iOS) používající různé jazyky (C#, Java, JavaScript, ObjectiveC).
 
 | Případy použití | [Rozhraní REST API](GetStarted/GetStartedREST.md) | [Klientské knihovny](GetStarted/GetStartedClientLibraries.md) |
 |-----|-----|-----|

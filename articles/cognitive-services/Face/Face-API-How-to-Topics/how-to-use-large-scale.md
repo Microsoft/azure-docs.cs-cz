@@ -1,23 +1,23 @@
 ---
-title: 'Příklad: Použití funkce ve velkém měřítku – Rozhraní API pro rozpoznávání tváře'
+title: 'Příklad: Použít funkci ve velkém měřítku – rozhraní API pro rozpoznávání tváře'
 titleSuffix: Azure Cognitive Services
 description: Použijte funkci v rozhraní API pro rozpoznávání tváře ve velkém měřítku.
 services: cognitive-services
 author: SteveMSFT
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: face-api
+ms.subservice: face-api
 ms.topic: sample
 ms.date: 03/01/2018
 ms.author: sbowles
-ms.openlocfilehash: e8bbf78da84ddb77ce956e37f91be46e96144991
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
-ms.translationtype: HT
+ms.openlocfilehash: 9289f7178a6e285b447041937f191d283fc2f2f0
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46123075"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55222894"
 ---
-# <a name="example-how-to-use-the-large-scale-feature"></a>Příklad: Použití funkce ve velkém měřítku
+# <a name="example-how-to-use-the-large-scale-feature"></a>Příklad: Jak používat funkci ve velkém měřítku
 
 Tento průvodce je pokročilý článek o migraci kódu za účelem vertikálního navýšení kapacity z existujících kolekcí PersonGroup a FaceList do kolekcí LargePersonGroup a LargeFaceList.
 Průvodce tímto procesem migrace předpokládá, že ovládáte základy použití kolekcí PersonGroup a FaceList.
@@ -39,13 +39,13 @@ Nevýhodou však je, že dokud se trénink ve velkém měřítku nedokončí, no
 
 Pokud jsou pro vás následující koncepty v tomto průvodci novinka, najdete jejich definice v [glosáři](../Glossary.md):
 
-- LargePersonGroup: kolekce s kapacitou až 1 000 000 osob
-- LargeFaceList: kolekce s kapacitou až 1 000 000 tváří
-- Train: předzpracování zajišťující lepší výkon operací Identification a FindSimilar
-- Identification: identifikace jednoho nebo více obličejů z kolekce PersonGroup nebo LargePersonGroup
-- FindSimilar: vyhledání podobných obličejů z kolekce FaceList nebo LargeFaceList
+- LargePersonGroup: Kolekce osob s kapacitou až 1 000 000.
+- LargeFaceList: V kolekci tváří s kapacitou až 1 000 000.
+- Regrese: Předběžné proces identifikace/FindSimilar výkon.
+- Identifikace: Identifikace tváří nejméně jeden objekt PersonGroup nebo LargePersonGroup.
+- FindSimilar: Vyhledávání podobných tváří z FaceList nebo LargeFaceList.
 
-## <a name="step-1-authorize-the-api-call"></a>Krok 1: Autorizace volání rozhraní API
+## <a name="step-1-authorize-the-api-call"></a>Krok 1: Povolit volání rozhraní API
 
 Když používáte klientskou knihovnu rozhraní API pro rozpoznávání tváře, klíč a koncový bod předplatného se předávají prostřednictvím konstruktoru třídy FaceServiceClient. Příklad:
 
@@ -57,7 +57,7 @@ FaceServiceClient FaceServiceClient = new FaceServiceClient(SubscriptionKey, Sub
 ```
 
 Klíč předplatného s odpovídajícím koncovým bodem můžete získat z webu Marketplace nebo z portálu Azure Portal.
-Viz [předplatná](https://azure.microsoft.com/services/cognitive-services/directory/vision/).
+Přečtěte si téma [Předplatná](https://azure.microsoft.com/services/cognitive-services/directory/vision/).
 
 ## <a name="step-2-code-migration-in-action"></a>Krok 2: Migrace kódu v akci
 
@@ -66,7 +66,7 @@ Přestože návrh a interní implementace kolekcí LargePersonGroup/LargeFaceLis
 
 Migrace dat není podporovaná, místo ní budete muset kolekce LargePersonGroup/LargeFaceList znovu vytvořit.
 
-## <a name="step-21-migrate-persongroup-to-largepersongroup"></a>Krok 2.1: Migrace kolekce PersonGroup do LargePersonGroup
+## <a name="step-21-migrate-persongroup-to-largepersongroup"></a>Krok 2.1: Migrovat jeden objekt PersonGroup LargePersonGroup
 
 Migrace z PersonGroup do LargePersonGroup je snadná, protože tyto kolekce sdílí na úrovni skupiny úplně stejné operace.
 
@@ -74,16 +74,16 @@ U implementace týkající se PersonGroup/Person je potřeba změnit pouze cesty
 
 Pokud jde o migraci dat, přečtěte si článek o [přidání obličejů](how-to-add-faces.md).
 
-## <a name="step-22-migrate-facelist-to-largefacelist"></a>Krok 2.2: Migrace kolekce FaceList do LargeFaceList
+## <a name="step-22-migrate-facelist-to-largefacelist"></a>Krok 2.2: Migrace FaceList LargeFaceList
 
 | Rozhraní API kolekce FaceList | Rozhraní API kolekce LargeFaceList |
 |:---:|:---:|
-| Create | Create |
-| Delete | Delete |
-| Get | Get |
-| List | List |
-| Update | Update |
-| - | Train |
+| Vytvořit | Vytvořit |
+| Odstranění | Odstranění |
+| Získat | Získat |
+| Seznam | Seznam |
+| Aktualizace | Aktualizace |
+| - | Trénování |
 | - | Get Training Status |
 
 Předchozí tabulka je srovnáním operací na úrovni seznamu mezi kolekcemi FaceList a LargeFaceList.
@@ -212,7 +212,7 @@ using (Stream stream = File.OpenRead(QueryImagePath))
 Jak je vidět výše, správa dat a operace FindSimilar jsou téměř stejné.
 Jediným rozdílem je, že kolekce LargeFaceList k fungování operace FindSimilar vyžaduje aktuální předzpracování operací Train.
 
-## <a name="step-3-train-suggestions"></a>Krok 3: Doporučení pro operaci Train
+## <a name="step-3-train-suggestions"></a>Krok 3: Trénování návrhy
 
 Přestože operace Train urychluje operace [FindSimilar](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395237) a [Identification](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395239), doba trénování může zejména při přechodu na velké měřítko trvat.
 Odhadovanou dobu trénování najdete podle měřítka v následující tabulce:
@@ -226,7 +226,7 @@ Odhadovanou dobu trénování najdete podle měřítka v následující tabulce:
 
 Pokud chcete funkce velkého měřítka lépe využít, doporučujeme zvážit některé z následujících strategií.
 
-## <a name="step-31-customize-time-interval"></a>Krok 3.1: Přizpůsobení časového intervalu
+## <a name="step-31-customize-time-interval"></a>Krok 3.1: Upravit časový Interval
 
 Jak je vidět v příkazu `TrainLargeFaceList()`, existuje parametr `timeIntervalInMilliseconds`, který odloží nekončící ověřování stavu trénování.
 U kolekce LargeFaceList s více tvářemi bude použití delšího intervalu znamenat nižší počet volání i náklady.

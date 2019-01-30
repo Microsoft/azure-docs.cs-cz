@@ -6,16 +6,16 @@ services: cognitive-services
 author: Jann-Skotdal
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: translator-text
+ms.subservice: translator-text
 ms.topic: article
 ms.date: 05/10/2018
 ms.author: v-jansko
-ms.openlocfilehash: f02c495c7448334529de2d5b42cda02206daea0d
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: e4e512a69fc783e6c4878298d848a9dccf8768c3
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52877968"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55226918"
 ---
 # <a name="customize-your-text-translations"></a>Upravte svoje textové překlady
 
@@ -40,7 +40,7 @@ Zadaný odpovídající typ a velikost trénovacích dat není, můžete očeká
 Další podrobnosti o různých úrovních přizpůsobení na základě dostupných dat najdete v [uživatelská příručka k vlastní Translator](https://aka.ms/CustomTranslatorDocs).
 
 
-## <a name="microsoft-translator-hub"></a>Centrum Microsoft Translatoru
+## <a name="microsoft-translator-hub"></a>Microsoft Translator Hub
 
 Starší verze centra Microsoft Translator umožňuje překládat statistické strojového překladu. [Další informace](https://www.microsoft.com/en-us/translator/hub.aspx)
 

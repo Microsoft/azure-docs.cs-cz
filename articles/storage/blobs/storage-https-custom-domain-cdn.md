@@ -7,13 +7,13 @@ ms.service: storage
 ms.topic: article
 ms.date: 06/26/2018
 ms.author: mihauss
-ms.component: blobs
-ms.openlocfilehash: 110d2d6db4d87294b56b940a02a6633af0d6f482
-ms.sourcegitcommit: 1b186301dacfe6ad4aa028cfcd2975f35566d756
+ms.subservice: blobs
+ms.openlocfilehash: 1166f98dcd39362ef5e28be12ff9e2f561ab5b1f
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51219235"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55238207"
 ---
 # <a name="use-azure-cdn-to-access-blobs-with-custom-domains-over-https"></a>Přístup k objektům BLOB s použitím vlastních domén přes protokol HTTPS pomocí Azure CDN
 

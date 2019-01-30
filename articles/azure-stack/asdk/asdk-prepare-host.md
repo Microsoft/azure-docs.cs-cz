@@ -15,12 +15,13 @@ ms.topic: article
 ms.date: 10/22/2018
 ms.author: jeffgilb
 ms.reviewer: misainat
-ms.openlocfilehash: b5314ce874c253151b88882b086257f96612c019
-ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
+ms.lastreviewed: 10/22/2018
+ms.openlocfilehash: ec7b56a7324f3c8c3e3459639e4fd00e92d93e8f
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51615384"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55249744"
 ---
 # <a name="prepare-the-asdk-host-computer"></a>Příprava hostitelském počítači ASDK
 Před instalací ASDK v hostitelském počítači, musí být ASDK prostředí připravené k instalaci. Když development kit hostitelský počítač připravený, se spustí z pevného disku virtuálního počítače CloudBuilder.vhdx zahájíte ASDK nasazení.

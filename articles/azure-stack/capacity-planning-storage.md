@@ -15,21 +15,22 @@ ms.topic: article
 ms.date: 09/18/2018
 ms.author: jeffgilb
 ms.reviewer: prchint
-ms.openlocfilehash: 9ea46860817d60c2ffbde68c0fc5ae6f6ca14877
-ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
+ms.lastreviewed: 09/18/2018
+ms.openlocfilehash: 5d9d01a482483d030569a4dcad03c9ecef7cffc0
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46368616"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55245146"
 ---
 # <a name="azure-stack-storage-capacity-planning"></a>Plánování kapacity úložiště s Azure Stack
 Azure Stack úložiště plánování kapacity informace jako pomoc při plánování řešení se úložiště udržet pod naleznete v následujících částech.
 
 ## <a name="uses-and-organization-of-storage-capacity"></a>Použití a organizace kapacita úložiště
-Hyperkonvergované konfiguraci služby Azure Stack umožňuje sdílení fyzickými úložnými zařízeními. Tři hlavní divizí úložiště k dispozici jsou v rozmezí od infrastruktury, dočasné úložiště tenantské virtuální počítače a úložiště, zálohování, objekty BLOB, tabulky a fronty služby konzistentní úložiště Azure (ACS).
+Hyperkonvergovaná konfigurace služby Azure Stack umožňuje sdílení fyzických úložných zařízení. Tři hlavní divizí úložiště k dispozici jsou v rozmezí od infrastruktury, dočasné úložiště tenantské virtuální počítače a úložiště, zálohování, objekty BLOB, tabulky a fronty služby konzistentní úložiště Azure (ACS).
 
 ## <a name="spaces-direct-cache-and-capacity-tiers"></a>Prostorů s přímým přístupem, mezipaměť a kapacitní vrstvy
-Je kapacita úložiště používá pro operační systém, místní protokolování, výpisů paměti a jiné dočasné infrastruktury úložiště potřebám. Tato kapacita místní úložiště je nezávislá na infrastruktuře (zařízení a kapacita) úložných zařízení, převedené pod správu konfigurace prostorů úložiště s přímým. Zbývající část úložných zařízení nachází v jeden fond kapacity úložiště bez ohledu na počet serverů v jednotce škálování. Tato zařízení jsou dvou typů: mezipaměti a kapacity.  Zařízení mezipaměti jsou jenom – vyrovnávací paměť. Prostory s přímým přístupem budou používat tato zařízení se zpětným zápisem a ukládání do mezipaměti pro čtení. Kapacity těchto zařízení, i když je použít, nejsou potvrzeny formátovaný, "visible" kapacita formátovaný virtuálních disků. Úložných zařízení se používají pro tento účel a zadejte "domovské umístění" data spravovaná přes prostory úložiště.
+Je kapacita úložiště používá pro operační systém, místní protokolování, výpisů paměti a jiné dočasné infrastruktury úložiště potřebám. Tato kapacita místní úložiště je nezávislá na infrastruktuře (zařízení a kapacita) úložných zařízení, převedené pod správu konfigurace prostorů úložiště s přímým. Zbývající část úložných zařízení nachází v jeden fond kapacity úložiště bez ohledu na počet serverů v jednotce škálování. Tato zařízení jsou dvou typů: Mezipaměť a kapacity.  Zařízení mezipaměti jsou jenom – vyrovnávací paměť. Prostory s přímým přístupem budou používat tato zařízení se zpětným zápisem a ukládání do mezipaměti pro čtení. Kapacity těchto zařízení, i když je použít, nejsou potvrzeny formátovaný, "visible" kapacita formátovaný virtuálních disků. Úložných zařízení se používají pro tento účel a zadejte "domovské umístění" data spravovaná přes prostory úložiště.
 
 Všechny kapacity úložiště je přidělena a spravuje infrastruktury Azure stacku. Operátor, který se potřebuje rozhodovat o konfiguraci, přidělení, nebo řešení s možností při rozhodování o rozšiřování kapacity. Tato rozhodnutí o návrhu se provedly bylo v souladu s požadavky na řešení a jsou automatizované během buď počáteční instalaci a nasazování nebo při rozšiřování kapacity. Podrobnosti o odolnosti proti chybám, rezervované kapacity pro znovu sestaví a další podrobnosti byly zohledněny jako součást návrhu. 
 
@@ -51,7 +52,7 @@ Virtuální – disky automaticky vytvořen a jejich kapacity jsou následujíc�
 
 
 
-|Název|Výpočet kapacity|Popis|
+|Name|Výpočet kapacity|Popis|
 |-----|-----|-----|
 |Místní/spouštěcí zařízení|Minimální 340 GB<sup>1</sup>|Úložiště jednotlivých serverů pro bitové kopie operačního systému a "local" virtuální počítače infrastruktury|
 |Infrastruktura|3,5 TB|Veškeré využití infrastruktury Azure stacku|

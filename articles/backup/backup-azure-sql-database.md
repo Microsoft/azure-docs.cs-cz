@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: tutorial
 ms.date: 12/21/2018
 ms.author: raynew
-ms.openlocfilehash: 959e58a58099b71a595f995e03cc70255fd6d059
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 334a476fee6e995c33a290d34df2f111baae34c3
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 01/29/2019
-ms.locfileid: "55198023"
+ms.locfileid: "55224237"
 ---
 # <a name="back-up-sql-server-databases-to-azure"></a>Zálohování databází systému SQL Server do Azure
 
@@ -483,7 +483,14 @@ Tento postup vás provede obnovení dat do alternativního umístění. Chcete-l
 > Databázi můžete obnovit do instance systému SQL Server ve stejné oblasti Azure. Cílový server musí být zaregistrované do trezoru služby Recovery Services.
 >
 
-Na **obnovit konfiguraci** nabídky, **Server** rozevíracím seznamu zobrazí pouze instance systému SQL Server, které jsou zaregistrované do trezoru služby Recovery Services. Pokud server, který chcete, aby se v seznamu, přečtěte si téma [databáze SQL serveru zjistit](backup-azure-sql-database.md#discover-sql-server-databases) najít server. Během procesu zjišťování nových serverů zaregistrováni do trezoru služby Recovery Services.
+Na **obnovit konfiguraci** nabídky, **Server** rozevíracím seznamu zobrazí pouze instance systému SQL Server, které jsou zaregistrované do trezoru služby Recovery Services. Pokud server, který chcete, aby se v seznamu, přečtěte si téma [databáze SQL serveru zjistit](backup-azure-sql-database.md#discover-sql-server-databases) najít server. Během procesu zjišťování nových serverů zaregistrováni do trezoru služby Recovery Services.<br>
+Aby bylo možné obnovit SQL DB, potřebujete následující oprávnění:
+
+* **Operátor zálohování** oprávnění služby Recovery Services **trezor** ve kterém provádíte obnovení.
+* **Contributor(write)** přístup k **zdrojový virtuální počítač SQL** (virtuální počítač, který se zálohuje a vy se pokoušíte obnovit z).
+* **Přispěvatel (zápis)** přístup k cílovému virtuálnímu počítači SQL (virtuální počítač obnovení k; bude se stejný virtuální počítač jako zdrojový virtuální počítač v případě Recovery(OLR)) původní umístění.
+
+Chcete-li obnovit do alternativního umístění:
 
 1. V **obnovit konfiguraci** nabídky:
 

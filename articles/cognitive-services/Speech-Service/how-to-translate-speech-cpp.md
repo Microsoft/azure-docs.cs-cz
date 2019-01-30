@@ -6,17 +6,17 @@ services: cognitive-services
 author: wolfma61
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: speech-service
+ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: wolfma
 ms.custom: seodec18
-ms.openlocfilehash: 917eb170ee1798546f4ba6dcf228097d5a5d853c
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: a433269130af595354da49fd5ae400110727f969
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53092209"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55222078"
 ---
 # <a name="translate-speech-with-the-cognitive-services-speech-sdk-for-c"></a>Překlad řeči sadou Cognitive Services řeči SDK pro C++
 

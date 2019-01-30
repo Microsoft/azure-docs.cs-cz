@@ -1,23 +1,23 @@
 ---
-title: 'Rychlý start: Získání podporovaných jazyků, Go – Translator Text API'
+title: 'Rychlý start: Získat podporované jazyky, přejděte – Translator Text API'
 titleSuffix: Azure Cognitive Services
 description: V tomto rychlém startu získáte seznam jazyků podporovaných pro překlad, transkripci a vyhledávání ve slovníku a příklady s použitím služby Translator Text API s Go.
 services: cognitive-services
 author: erhopf
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: translator-text
+ms.subservice: translator-text
 ms.topic: quickstart
 ms.date: 12/05/2018
 ms.author: erhopf
-ms.openlocfilehash: 1e630d4dee3629fc256fdc97eefad259aff909e2
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: 45dcd87910e0dbfc57aa09751cbdaa7a043d7cf1
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "53000291"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55226651"
 ---
-# <a name="quickstart-use-the-translator-text-api-to-get-a-list-of-supported-languages-using-go"></a>Rychlý start: Použití rozhraní Translator Text API k získání seznamu podporovaných jazyků pomocí jazyka Go
+# <a name="quickstart-use-the-translator-text-api-to-get-a-list-of-supported-languages-using-go"></a>Rychlý start: Získání seznamu podporovaných jazycích pomocí jazyka Go pomocí rozhraní Translator Text API
 
 V tomto rychlém startu zjistíte jak požadavek GET, který vrátí seznam hodnot pomocí Go a Translator Text REST API podporované jazyky.
 
@@ -99,7 +99,7 @@ u.RawQuery = q.Encode()
 ```
 
 >[!NOTE]
-> Další informace o koncových bodech, trasách a parametrech požadavků najdete v tématu [Translator Text API 3.0: Jazyky](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-languages).
+> Další informace o koncových bodech, cesty a parametry požadavku najdete v tématu [Translator Text API 3.0: Jazyky](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-languages).
 
 ## <a name="build-the-request"></a>Žádost o sestavení
 

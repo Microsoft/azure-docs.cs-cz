@@ -1,21 +1,21 @@
 ---
-title: 'Rychlý start: Překlad textu, Java – Translator Text API'
+title: 'Rychlý start: Přeložení textu, Javy – Translator Text API'
 titleSuffix: Azure Cognitive Services
 description: V tomto rychlém startu budete zjistěte, jak převést řetězec textu z angličtiny italština a němčina pomocí Javy a rozhraní REST Translator Text API.
 services: cognitive-services
 author: erhopf
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: translator-text
+ms.subservice: translator-text
 ms.topic: quickstart
 ms.date: 12/03/2018
 ms.author: erhopf
-ms.openlocfilehash: 537132a5d77927f130f2737e0ba597b9e74ace6e
-ms.sourcegitcommit: 2bb46e5b3bcadc0a21f39072b981a3d357559191
+ms.openlocfilehash: a757b766537cc4f1105d77478f4a1d7543c27e40
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/05/2018
-ms.locfileid: "52890241"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55227909"
 ---
 # <a name="quickstart-use-the-translator-text-api-to-translate-a-string-using-java"></a>Rychlý start: Použití rozhraní Translator Text API pro převod řetězce pomocí Javy
 

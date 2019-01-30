@@ -8,16 +8,16 @@ ms.topic: include
 ms.date: 11/11/2018
 ms.author: juliako
 ms.custom: include file
-ms.openlocfilehash: 513d9a3a044daacd84b810e4795522c2bd6763f8
-ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
+ms.openlocfilehash: 4207031652db7ec4b2ae5468dc159320f6efdbc2
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51616567"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55228810"
 ---
 ## <a name="create-a-media-services-account"></a>Vytvoření účtu Media Services
 
-Nejprve je nutné vytvořit účet Media Services. Tato část uvádí, co potřebujete k vytvoření účtu pomocí Azure CLI.
+Nejprve je nutné vytvořit účet Media Services. Tato část popisuje, co potřebujete pro vytvoření účtu pomocí Azure CLI.
 
 ### <a name="create-a-resource-group"></a>Vytvoření skupiny prostředků
 
