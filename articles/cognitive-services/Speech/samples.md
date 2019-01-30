@@ -6,22 +6,22 @@ services: cognitive-services
 author: zhouwangzw
 manager: wolfma
 ms.service: cognitive-services
-ms.component: bing-speech
+ms.subservice: bing-speech
 ms.topic: article
 ms.date: 09/18/2018
 ms.author: zhouwang
-ms.openlocfilehash: 778a9e1e2767d5bae8d661dcd70a42d0d7d0caae
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
+ms.openlocfilehash: a1ebb1d818c0085a1741245ed236cf511b1db768
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49339394"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55218049"
 ---
 # <a name="bing-speech-client-samples"></a>Ukázky klienta pro zpracování řeči Bingu
 
 [!INCLUDE [Deprecation note](../../../includes/cognitive-services-bing-speech-api-deprecation-note.md)]
  
-Pro zpracování řeči Bingu poskytuje začátku do konce ukázky ukazují různé případy použití, například rozpoznávání příkaz, průběžné rozpoznávání a rozpoznávání záměru. Všechny ukázky jsou k dispozici na Githubu a můžete si je stáhnout na následujících odkazech: The README.md v každém úložišti také [klientské knihovny](GetStarted/GetStartedClientLibraries.md) stránky obsahují podrobné informace o tom, jak sestavit a spustit ukázky.
+Pro zpracování řeči Bingu poskytuje začátku do konce ukázky ukazují různé případy použití, například rozpoznávání příkaz, průběžné rozpoznávání a rozpoznávání záměru. Všechny ukázky jsou k dispozici na Githubu a můžete si je stáhnout na následujících odkazech: README.md v každém úložišti také [klientské knihovny](GetStarted/GetStartedClientLibraries.md) stránky obsahují podrobné informace o tom, jak sestavit a spustit ukázky.
 
 - [Ukázky rozhraní REST API](https://github.com/Azure-Samples/SpeechToText-REST)
 

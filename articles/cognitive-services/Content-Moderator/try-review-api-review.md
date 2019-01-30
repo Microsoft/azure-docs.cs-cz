@@ -6,16 +6,16 @@ services: cognitive-services
 author: sanjeev3
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: content-moderator
+ms.subservice: content-moderator
 ms.topic: conceptual
 ms.date: 01/10/2019
 ms.author: sajagtap
-ms.openlocfilehash: 9d2daad06ad6cb97fe562db98cab57c4ed970a60
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.openlocfilehash: 7e4c750e7470c6a76e56bd67d6a134b1b61535eb
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54260205"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55218386"
 ---
 # <a name="create-reviews-from-the-api-console"></a>Vytvoření kontroly z konzoly pro rozhraní API
 

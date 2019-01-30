@@ -6,16 +6,16 @@ services: cognitive-services
 author: wolfma61
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: speech-service
+ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 09/24/2018
 ms.author: wolfma
-ms.openlocfilehash: 0accd353f0079e5e9da80e3aab8eb542aaa21edd
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.openlocfilehash: 5bf1ec96689bc5b1d6e667edc01b83b385daae56
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49468315"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55223846"
 ---
 # <a name="recognize-speech-by-using-the-speech-sdk-for-java"></a>Rozpoznávání řeči pomocí sadou SDK pro řeč pro Javu
 

@@ -6,16 +6,16 @@ services: cognitive-services
 author: bojunehsu
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: knowledge-exploration
+ms.subservice: knowledge-exploration
 ms.topic: conceptual
 ms.date: 03/26/2016
 ms.author: paulhsu
-ms.openlocfilehash: 45badbdbe1a7e1f2028a00d54458db35a4f7d440
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.openlocfilehash: 4f950734081be6cf76770b1c6cb2feca7efdae70
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46127999"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55221399"
 ---
 # <a name="interpret-method"></a>interpretace – metoda
 
@@ -25,7 +25,7 @@ ms.locfileid: "46127999"
 
 `http://<host>/interpret?query=<query>[&<options>]`
 
-Název|Hodnota| Popis
+Name|Value| Popis
 ----|----|----
 query    | Textový řetězec | Dotazu zadaného uživatelem.  Pokud dokončení je nastavená na 1, dotaz bude interpretovat jako předponu pro generování návrhy automatického dokončování dotazů.        
 Dokončení | 0 (výchozí) nebo 1 | 1 znamená, že návrhy automatického dokončování jsou generovány na základě dat gramatiky a index.         
@@ -45,8 +45,8 @@ $.interpretations [\*] .logprob   |Relativní protokolu pravděpodobnost výklad
 $.interpretations [\*] .parse |Řetězec XML, který ukazuje, jak byl interpretován každá část dotazu.
 $.interpretations [\*] .rules |Pole 1 nebo více pravidel definovaných v gramatice vyvolána při interpretaci.
 $.interpretations [\*] .rules [\*] .name    |Název pravidla.
-$.interpretations [\*] .rules [\*] .output  |Sémantické výstup pravidla.
-$.interpretations [\*] .rules [\*]. output.type |Datový typ sémantického výstupu.
+$.interpretations[\*].rules[\*].output  |Sémantické výstup pravidla.
+$.interpretations[\*].rules[\*].output.type |Datový typ sémantického výstupu.
 $.interpretations [\*] .rules [\*]. output.value|Hodnota sémantické výstupu.  
 $.aborted | True, pokud vypršel časový limit žádosti.
 

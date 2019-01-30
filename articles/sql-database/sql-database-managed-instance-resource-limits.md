@@ -12,12 +12,12 @@ ms.author: bonova
 ms.reviewer: carlrab, jovanpop, sachinp
 manager: craigg
 ms.date: 01/22/2019
-ms.openlocfilehash: 420d3c256f9bf2d0884e98312a5a66aea08b13bc
-ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
+ms.openlocfilehash: 6bb90480667a899d9d7bc7a5d8269b0cdf1da223
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54450877"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55219715"
 ---
 # <a name="overview-azure-sql-database-managed-instance-resource-limits"></a>Přehled limity prostředků Azure SQL Database Managed Instance
 
@@ -39,6 +39,7 @@ Azure SQL Database Managed Instance je možné nasadit na generování dvě hard
 | Hardware | Intel E5-2673 v3 (Haswell) 2,4 GHz procesorech připojené SSD vCore = 1 PP (fyzických jader) | Intel E5-2673 v4 (Broadwell) 2.3 GHz procesorech rychlé eNVM SSD, vCore = 1 LP (hyper vlákno) |
 | Compute | 8, 16, 24 virtuálních jader | 8, 16, 24, 32, 40, 64, 80 virtuálních jader |
 | Memory (Paměť) | 7 GB na vCore | 5.1 GB na vCore |
+| Paměti OLTP v paměti | 3 GB na vCore | 2.6 GB na vCore |
 | Maximální velikost úložiště (Obecné) |  8 TB | 1 TB |
 | Maximální velikost úložiště (pro důležité obchodní informace) | 8 TB | 1 TB, 2 TB nebo 4 TB, v závislosti na počtu jader |
 

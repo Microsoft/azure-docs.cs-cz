@@ -13,12 +13,12 @@ ms.topic: article
 ms.date: 12/10/2018
 ms.author: routlaw
 ms.custom: seodec18
-ms.openlocfilehash: 653d88aafc683b8a67e93945c62a99bbcf8c92fc
-ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
+ms.openlocfilehash: 61bbc65c543801b0f783d01dfb803f47dbcf8a07
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/25/2019
-ms.locfileid: "54900670"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55215295"
 ---
 # <a name="java-developers-guide-for-app-service-on-linux"></a>Příručka pro vývojáře Java pro službu App Service v Linuxu
 
@@ -28,7 +28,7 @@ Tato příručka obsahuje klíčové koncepty a pokyny pro vývojáře v Javě p
 
 ## <a name="logging-and-debugging-apps"></a>Protokolování a ladění aplikací
 
-Sestavy o výkonu, provoz vizualizace a kontroly stavu jsou k dispozici pro aplikaci eeach prostřednictvím webu Azure portal. Zobrazit [Přehled diagnostiky služby Azure App Service](/azure/app-service/overview-diagnostics) Další informace o tom, jak přistupovat a používat tyto diagnostické nástroje.
+Sestavy o výkonu, provoz vizualizace a kontroly stavu jsou k dispozici pro každou aplikaci na webu Azure portal. Zobrazit [Přehled diagnostiky služby Azure App Service](/azure/app-service/overview-diagnostics) Další informace o tom, jak přistupovat a používat tyto diagnostické nástroje.
 
 ## <a name="application-performance-monitoring"></a>Funkce Application performance monitoring
 

@@ -5,16 +5,16 @@ services: cognitive-services
 author: PanosPeriorellis
 manager: onano
 ms.service: cognitive-services
-ms.component: custom-speech
+ms.subservice: custom-speech
 ms.topic: tutorial
 ms.date: 05/03/2017
 ms.author: panosper
-ms.openlocfilehash: 6af2da9ffc7678a58fcf1c647ba89c586066d2ad
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
-ms.translationtype: HT
+ms.openlocfilehash: 0798fb16954d2d0b5e0d614d619cd772670d30c3
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49339092"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55218083"
 ---
 # <a name="tutorial-create-a-custom-language-model"></a>Kurz: Vytvoření vlastního jazykového modelu
 
@@ -53,9 +53,9 @@ Pokud chcete, aby některé věty měly větší váhu (důležitost), můžete 
 
 Následující tabulka obsahuje souhrn hlavních požadavků na jazyková data.
 
-| Vlastnost | Hodnota |
+| Vlastnost | Value |
 |----------|-------|
-| Kódování textu | en-US: US-ACSII nebo UTF-8; zh-CN: UTF-8|
+| Kódování textu | en-US: USA ACSII nebo UTF-8 nebo zh-CN: UTF-8|
 | počet promluv na řádek | 1 |
 | Maximální velikost souboru | 200 MB |
 | Poznámky | neopakujte znaky více než 4krát, například „aaaaa“|
@@ -106,7 +106,7 @@ Když se model dostane do stavu Complete (Dokončeno), můžete ho nasadit do ko
 
 Pokud někdy budete chtít změnit název nebo popis modelu, můžete k tomu použít odkaz Edit (Upravit) na odpovídajícím řádku tabulky jazykových modelů.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 V tomto kurzu jste vytvořili vlastní jazykový model pro použití s textem. Pokud chcete vytvořit vlastní akustický model pro použití se zvukovými soubory a přepisy, pokračujte ke kurzu vytvoření akustického modelu.
 

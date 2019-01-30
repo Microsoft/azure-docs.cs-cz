@@ -6,17 +6,17 @@ services: cognitive-services
 author: KellyDF
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: computer-vision
+ms.subservice: computer-vision
 ms.topic: sample
 ms.date: 01/20/2017
 ms.author: kefre
 ms.custom: seodec18
-ms.openlocfilehash: 9520d4bcec0e170700aacc5ef4bc69100e333af1
-ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
+ms.openlocfilehash: 4cca3db778347e9bd8c8b881d85f0882f6b90f72
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53581704"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55216247"
 ---
 # <a name="example-how-to-call-the-computer-vision-api"></a>Příklad: Jak volat rozhraní API pro počítačové zpracování obrazu
 
@@ -28,7 +28,7 @@ V tomto průvodci si ukážeme, jak použít REST k volání rozhraní API pro p
 ### <a name="Prerequisites">Požadavky</a> 
 Adresa URL obrázku nebo cesta k místně uloženému obrázku.
   * Podporované metody zadávání znaků: Nezpracovaná binární ve formě application/octet-stream adresa URL obrázku nebo image
-  * Podporované formáty bitové kopie: GIF JPEG, PNG, BMP
+  * Podporované formáty bitové kopie: JPEG, PNG, GIF, BMP
   * Velikost souboru obrázku: Méně než 4MB
   * Dimenze bitové kopie: Větší než 50 × 50 pixelů
   
@@ -40,7 +40,7 @@ V následujících příkladech si ukážeme tyto funkce:
 Funkce můžeme rozdělit na:
 
   * **Možnost 1:** Obor analýzy – analýza daný model
-  * **Možnost 2:** Rozšířená analýza - analýza poskytnout další podrobnosti se [taxonomie kategorií 86](../Category-Taxonomy.md)
+  * **Option Two:** Rozšířená analýza - analýza poskytnout další podrobnosti se [taxonomie kategorií 86](../Category-Taxonomy.md)
   
 ### <a name="Step1">Krok 1: Povolit volání rozhraní API</a> 
 Ke každému volání rozhraní API pro počítačové zpracování obrazu potřebujete klíč předplatného. Klíč je potřeba předat buď jako parametr řetězce dotazu, nebo ho zadat v hlavičce požadavku. 
@@ -110,7 +110,7 @@ U této možnosti jsou všechny ostatní parametry dotazu (visualFeatures, detai
 GET https://westus.api.cognitive.microsoft.com/vision/v2.0/models 
 var models = await visionClient.ListModelsAsync();
 ```
-**Možnost 2:** Rozšířená analýza - analýza poskytnout další podrobnosti se [taxonomie kategorií 86](../Category-Taxonomy.md)
+**Option Two:** Rozšířená analýza - analýza poskytnout další podrobnosti se [taxonomie kategorií 86](../Category-Taxonomy.md)
 
 Pokud chcete kromě podrobností z jednoho nebo několika modelů určitých domén získat i obecnou analýzu obrázku, rozšířili jsme verzi 1 rozhraní API o parametr dotazu do modelů.
 ```
@@ -150,7 +150,7 @@ Tady je příklad:
     }
   }
 ```
-Pole   | Typ  | Obsah
+Pole   | Type  | Obsah
 ------|------|------|
 Značky    | objekt    | Objekt nejvyšší úrovně pro pole značek.
 tags[].Name | řetězec    | Klíčové slovo z klasifikátoru značek.
@@ -180,7 +180,7 @@ Výstupem bude pole značek. Tady je příklad:
   }
 ```
 
-**Možnost 2:** Rozšířená analýza - analýza taxonomie kategorií 86 poskytnout další podrobnosti
+**Option Two:** Rozšířená analýza - analýza taxonomie kategorií 86 poskytnout další podrobnosti
 
 Při použití druhé možnosti (rozšířená analýza) u modelů určitých domén je rozšířený typ vrácených kategorií. Příklad:
 ```
@@ -210,7 +210,7 @@ Při použití druhé možnosti (rozšířená analýza) u modelů určitých do
 
 Pole kategorií představuje seznam jedné nebo několika z [86 kategorií](../Category-Taxonomy.md) původní taxonomie. Všimněte si také, že kategorie končící podtržítkem odpovídají dané kategorii a podřízeným prvkům (příklad: people_ a people_group v modelu celebrities).
 
-Pole   | Typ  | Obsah
+Pole   | Type  | Obsah
 ------|------|------|
 categories | objekt | Objekt nejvyšší úrovně
 categories[].name    | řetězec   | Název z taxonomie 86 kategorií

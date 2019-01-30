@@ -6,17 +6,17 @@ services: cognitive-services
 author: diberry
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: qna-maker
+ms.subservice: qna-maker
 ms.topic: article
 ms.date: 01/24/2019
 ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: 46d88aac8b09e22e719b40c596d3dea5640cd8bc
-ms.sourcegitcommit: 97d0dfb25ac23d07179b804719a454f25d1f0d46
+ms.openlocfilehash: 9e9f9b718928614bcd018677a2ddd094fe68f2c4
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/25/2019
-ms.locfileid: "54913288"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55218202"
 ---
 # <a name="how-to-use-the-qna-maker-rest-api-with-java"></a>Jak používat rozhraní REST API nástroje QnA Maker s Javou 
 <a name="HOLTop"></a>

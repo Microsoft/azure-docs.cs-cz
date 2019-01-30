@@ -1,17 +1,17 @@
 ---
 title: Povolení replikace virtuálních počítačů VMware pro zotavení po havárii VMware do Azure pomocí Azure Site Recovery | Dokumentace Microsoftu
 description: Tento článek popisuje, jak povolit replikaci virtuálních počítačů VMware pro zotavení po havárii do Azure pomocí Azure Site Recovery.
-author: asgang
+author: mayurigupta13
 ms.service: site-recovery
-ms.date: 11/27/2018
+ms.date: 1/29/2019
 ms.topic: conceptual
-ms.author: asgang
-ms.openlocfilehash: f160fc5f15ad9ca8994995c34d9eba7ee375c015
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.author: mayg
+ms.openlocfilehash: 51086b894de7a02ec78302323512c7766dc9f4fb
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54424145"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55226329"
 ---
 # <a name="enable-replication-to-azure-for-vmware-vms"></a>Povolit replikaci do Azure pro virtuální počítače VMware
 
@@ -86,18 +86,20 @@ V dalším kroku ověřit vlastnosti zdrojového počítače. Mějte na paměti,
 
 1. Klikněte na tlačítko **nastavení** > **replikované položky** > a potom vyberte počítač. **Essentials** stránku s informacemi o nastavení počítače a stav.
 2. V části **Vlastnosti** můžete zobrazit informace o replikaci a převzetí služeb při selhání pro virtuální počítač.
-3. V části **Výpočty a síť** > **Výpočetní vlastnosti** můžete zadat název a cílovou velikost virtuálního počítače Azure. Upravte název, který má v případě potřeby v souladu s požadavky na Azure.
+3. V **výpočty a síť** > **výpočetní vlastnosti**, můžete změnit propoerties více virtuálních počítačů:
+* Azure VM name - upravit název, který má v případě potřeby v souladu s požadavky na Azure
+* Cílovou velikost virtuálního počítače nebo typ – výchozí velikost virtuálního počítače je vybrán založené na zdroji velikost virtuálního počítače. Můžete vybrat jinou velikost virtuálního počítače podle potřeb kdykoli před převzetí služeb při selhání. Všimněte si, že velikost zdrojového disku také podle velikosti disku virtuálního počítače a může být pouze změní po převzetí služeb při selhání. Další informace najdete na [standardní](../virtual-machines/windows/disks-standard-ssd.md#scalability-and-performance-targets) a [Premium](../virtual-machines/windows/premium-storage.md#scalability-and-performance-targets) velikosti a IOPS na disku.
 
     ![Výpočetní prostředky a vlastnosti sítě](./media/vmware-azure-enable-replication/vmproperties.png)
 
-4.  Můžete vybrat [skupiny prostředků](https://docs.microsoft.com/azure/virtual-machines/windows/infrastructure-resource-groups-guidelines) z které počítače s stane součástí příspěvek převzetí služeb při selhání. Můžete změnit toto nastavení kdykoli před převzetí služeb při selhání. Příspěvek převzetí služeb při selhání, pokud tento počítač migrovat na jinou skupinu prostředků, nastavení ochrany pro tento počítač přerušení.
-5. Můžete vybrat [dostupnosti](https://docs.microsoft.com/azure/virtual-machines/windows/infrastructure-availability-sets-guidelines) Pokud váš počítač musí být součástí příspěvek převzetí služeb při selhání. Když vybíráte skupinu dostupnosti, mějte na paměti, který:
+*  Skupina prostředků – můžete vybrat [skupiny prostředků](https://docs.microsoft.com/azure/virtual-machines/windows/infrastructure-resource-groups-guidelines) z které počítače s stane součástí příspěvek převzetí služeb při selhání. Můžete změnit toto nastavení kdykoli před převzetí služeb při selhání. Příspěvek převzetí služeb při selhání, pokud tento počítač migrovat na jinou skupinu prostředků, nastavení ochrany pro tento počítač přerušení.
+* Skupina dostupnosti – můžete vybrat [dostupnosti](https://docs.microsoft.com/azure/virtual-machines/windows/infrastructure-availability-sets-guidelines) Pokud váš počítač musí být součástí příspěvek převzetí služeb při selhání. Když vybíráte skupinu dostupnosti, mějte na paměti, který:
 
     * Jsou uvedeny jenom skupiny dostupnosti patří do zadané skupině prostředků.  
     * Počítače s jinou virtuální sítí nemůže být součástí stejné skupiny dostupnosti.
     * Pouze virtuální počítače se stejnou velikostí můžou být součástí nastavení dostupnosti.
-5. Můžete také zobrazit a přidat informace o cílové síti, podsíti a IP adresa přiřazená k virtuálnímu počítači Azure.
-6. V **disky**, uvidíte operačního systému a datové disky na virtuálním počítači se musí replikovat.
+4. Můžete také zobrazit a přidat informace o cílové síti, podsíti a IP adresa přiřazená k virtuálnímu počítači Azure.
+5. V **disky**, uvidíte operačního systému a datové disky na virtuálním počítači se musí replikovat.
 
 ### <a name="configure-networks-and-ip-addresses"></a>Konfigurace sítě a IP adresy
 
@@ -120,7 +122,7 @@ Další informace o [zvýhodněné hybridní využití Azure](https://aka.ms/azu
 
 ## <a name="common-issues"></a>Běžné problémy
 
-* Každý disk by měl být menší než 1 TB.
+* Každý disk by měl být menší než 4 TB.
 * Disk s operačním systémem musí být základní disk a ne dynamický disk.
 * Generace 2/UEFI – virtuální počítače s povoleným třeba řada operačních systémů Windows a spouštěcí disk by měl být menší než 300 GB.
 
@@ -128,4 +130,5 @@ Další informace o [zvýhodněné hybridní využití Azure](https://aka.ms/azu
 
 Po dokončení ochrany si je a počítač byl dosažen chráněném stavu, můžete se pokusit [převzetí služeb při selhání](site-recovery-failover.md) ke kontrole, jestli vaše aplikace se zobrazí v Azure nebo ne.
 
-Pokud chcete zakázat ochranu, zjistěte, jak [vyčistit nastavení registrace a ochrany](site-recovery-manage-registration-and-protection.md).
+* Zjistěte, jak [vyčistit nastavení registrace a ochrany](site-recovery-manage-registration-and-protection.md) zakázat replikaci.
+* Zjistěte, jak [automatizace replikace pro virtuální počítače pomocí Powershellu](vmware-azure-disaster-recovery-powershell.md)

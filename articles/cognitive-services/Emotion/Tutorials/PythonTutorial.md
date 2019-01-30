@@ -1,24 +1,24 @@
 ---
-title: 'Kurz: Rozpoznávání emocí ve výrazech tváří na obrázku – rozhraní API pro rozpoznávání emocí, Python'
+title: 'Kurz: Rozpoznávání emocí na tváří v obrázku – rozhraní API pro rozpoznávání Emocí, Python'
 titlesuffix: Azure Cognitive Services
 description: Pomocí poznámkového bloku Jupyter zjistíte, jak používat rozhraní API pro rozpoznávání emocí s Pythonem. K vizualizaci výsledků můžete použít oblíbené knihovny.
 services: cognitive-services
 author: anrothMSFT
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: emotion-api
+ms.subservice: emotion-api
 ms.topic: tutorial
 ms.date: 05/23/2017
 ms.author: anroth
 ROBOTS: NOINDEX
-ms.openlocfilehash: 31e346cd9a3f43f8181ebee4474ae6c9ee2cc6fc
-ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
-ms.translationtype: HT
+ms.openlocfilehash: ea96495fb9fa453f7c7f9d6a870291329d2793b2
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48237853"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55220531"
 ---
-# <a name="tutorial-use-the-emotion-api-with-a-jupyter-notebook--python"></a>Kurz: Použití rozhraní API pro rozpoznávání emocí s poznámkovým blokem Jupyter a Pythonem
+# <a name="tutorial-use-the-emotion-api-with-a-jupyter-notebook--python"></a>Kurz: Pomocí rozhraní API pro rozpoznávání Emocí Poznámkový blok Jupyter a Pythonu.
 
 > [!IMPORTANT]
 > Rozhraní API pro rozpoznávání emocí se přestane používat 15. února 2019. Funkce rozpoznávání emocí je teď obecně dostupná v rámci [rozhraní API pro rozpoznávání tváře](https://docs.microsoft.com/azure/cognitive-services/face/). 
