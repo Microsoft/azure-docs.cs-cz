@@ -98,6 +98,9 @@ items:
         href: tutorial-create-route-table-powershell.md
       - name: Azure CLI
         href: tutorial-create-route-table-cli.md
+      - name: Ansible
+        href: /azure/ansible/ansible-create-configure-route-table
+        maintainContext: true
     - name: Koncové body služby
       items:
       - name: Azure PowerShell
@@ -247,6 +250,8 @@ items:
       href: virtual-network-troubleshoot-nva.md
     - name: Řešení potíží s odchozím připojením SMTP
       href: troubleshoot-outbound-smtp-connectivity.md
+    - name: IP adresa 168.63.129.16
+      href: what-is-ip-address-168-63-129-16.md
   - name: Classic
     items:
     - name: Vytvoření a správa virtuální sítě
@@ -359,9 +364,9 @@ items:
     href: http://stackoverflow.com/questions/tagged/azure-virtual-network
   - name: Nejčastější dotazy
     href: virtual-networks-faq.md
-ms.openlocfilehash: 0e992cd928597e93d57ec89cae440e7081520c54
-ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
+ms.openlocfilehash: 42aca03869443ea240fb86279509b7345cd9549a
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2019
-ms.locfileid: "54321404"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55228708"

@@ -7,6 +7,8 @@ items:
     href: ./ansible-overview.md
 - name: Šablony Rychlý start
   items:
+  - name: Nasazení šablony řešení Ansible
+    href: ./ansible-deploy-solution-template.md
   - name: Instalace Ansible na virtuálním počítači s Linuxem
     href: /azure/virtual-machines/linux/ansible-install-configure
     maintainContext: true
@@ -74,14 +76,14 @@ items:
   - name: Virtuální počítače
     href: https://docs.ansible.com/ansible/latest/azure_rm_virtualmachine_module.html
   - name: Všechny moduly pro Azure
-    href: https://docs.ansible.com/ansible/latest/list_of_cloud_modules.html#azure
+    href: https://docs.ansible.com/ansible/latest/modules/list_of_cloud_modules#azure
 - name: Nástroje
   items:
   - name: Rozšíření editoru Visual Studio Code pro Ansible
     href: https://marketplace.visualstudio.com/items?itemName=vscoss.vscode-ansible
-ms.openlocfilehash: 914987ee58a2ba09295d425c2107ba7eb192c131
-ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
+ms.openlocfilehash: a3f1dcf9c7672938b35ba5615c8d901cbd1d1332
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54359234"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55226634"

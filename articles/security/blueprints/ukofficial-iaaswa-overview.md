@@ -8,12 +8,12 @@ ms.service: security
 ms.topic: article
 ms.date: 02/08/2018
 ms.author: jomolesk
-ms.openlocfilehash: 04de32b2df630eea918c786a7f065f404f4d8dca
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: ceba377f72ced7d39f0a7e9b18e4fd563dbb39f1
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55164516"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55239909"
 ---
 # <a name="azure-security-and-compliance-blueprint---three-tier-iaas-web-application-for-uk-official"></a>Zabezpečení Azure a dodržování předpisů – IaaS třívrstvé webové aplikace pro UK OFFICIAL
 
@@ -226,7 +226,7 @@ Kromě toho Cloud Security Alliance (CSA) publikované ovládací prvek matice C
 
 ## <a name="deploy-the-solution"></a>Nasazení řešení
 
-Existují dvě metody, které nasazení uživatelé mohou využít k nasazení tohoto podrobného plánu automation. První metoda používá skript prostředí PowerShell, zatímco druhý způsob využívá Azure portal pro tuto referenční architekturu nasadit. Podrobné pokyny jsou k dispozici [tady](https://aka.ms/ukofficial-iaaswa-repo).
+Existují dvě metody, které nasazení uživatelé mohou využít k nasazení tohoto podrobného plánu automation. První metoda používá skript prostředí PowerShell, zatímco druhý způsob využívá na webu Azure portal pro tuto referenční architekturu nasadit. Podrobné pokyny jsou k dispozici [tady](https://aka.ms/ukofficial-iaaswa-repo).
 
 ## <a name="disclaimer"></a>Právní omezení
 
