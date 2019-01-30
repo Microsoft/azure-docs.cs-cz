@@ -4,16 +4,16 @@ description: Pomocí pokročilých algoritmů vyhledávač anomálií můžete i
 services: cognitive-services
 author: tonyxing
 ms.service: cognitive-services
-ms.component: anomaly-detection
+ms.subservice: anomaly-detection
 ms.topic: article
 ms.date: 04/19/2018
 ms.author: tonyxing
-ms.openlocfilehash: c0c15f077a0a7dd302a377aa6f82ba2f8533d862
-ms.sourcegitcommit: 668b486f3d07562b614de91451e50296be3c2e1f
+ms.openlocfilehash: ad0af6137e2a127e2f9981c2707906514bf8c591
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49456248"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55215193"
 ---
 # <a name="what-is-anomaly-finder"></a>Co je Vyhledávač anomálií?
 
@@ -38,7 +38,7 @@ Obrázek 2: Zjištění změn vzoru v žádosti o služby
 
 ## <a name="requirements"></a>Požadavky
 
-- Časové řady minimum dat pro vstup: nejméně 13 data odkazuje minimálně 4 cykly dat body pro časové řady s známé periodicitu bez vymazat periodicitu časové řady. 
+- Minimum dat pro vstupní časové řady: Minimální 13 dat body pro bez vymazat periodicitu časové řady minimálně 4 cykly dat body pro časové řady s známé periodicity. 
 - Integrita dat: časové řady, jsou ve stejném intervalu a žádné chybějící body oddělené datové body. 
 
 ## <a name="identify-anomalies"></a>Identifikovat anomálie

@@ -7,13 +7,13 @@ ms.service: storage
 ms.topic: article
 ms.date: 10/15/2018
 ms.author: tamram
-ms.component: common
-ms.openlocfilehash: d8382cac86abb112018195695340ed12663a2333
-ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
+ms.subservice: common
+ms.openlocfilehash: 15c37be3f3b1b3f72c32865e095091fa10ee9750
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49427412"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55251686"
 ---
 # <a name="authenticate-access-to-blobs-and-queues-with-managed-identities-for-azure-resources-preview"></a>Ověření přístupu k objektům BLOB a fronty pomocí spravované identity pro prostředky Azure (Preview)
 
@@ -43,7 +43,7 @@ K ověření spravovanou identitu aplikace služby Azure Storage, nejprve nakonf
 
 K ověření pomocí spravované identity, musíte získat přístupový token spravovanou identitu vaše aplikace nebo skript. Další informace o tom, jak získat přístupový token, naleznete v tématu [použití spravované identity pro prostředky Azure na Virtuálním počítači Azure získat přístupový token](../../active-directory/managed-identities-azure-resources/how-to-use-vm-token.md).
 
-## <a name="net-code-example-create-a-block-blob"></a>Příklad kódu .NET: vytvoření objektu blob bloku
+## <a name="net-code-example-create-a-block-blob"></a>Příklad kódu .NET: Vytvořit objekt blob bloku
 
 Příklad kódu předpokládá, že máte přístupový token spravovaná identita. Přístupový token se používá k autorizaci spravovanou identitu, chcete-li vytvořit objekt blob bloku.
 

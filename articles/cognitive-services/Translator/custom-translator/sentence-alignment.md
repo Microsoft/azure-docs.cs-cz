@@ -5,16 +5,16 @@ description: Během provádění trénování jsou věty, které jsou k dispozic
 author: rajdeep-in
 manager: christw
 ms.service: cognitive-services
-ms.component: custom-translator
+ms.subservice: custom-translator
 ms.date: 11/13/2018
 ms.author: v-rada
 ms.topic: conceptual
-ms.openlocfilehash: 557cd8d3af0c774d4dd0558d5d25dba8eec07268
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: 663dba72619a14c66fdafe083454d0df9b3f6216
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51627296"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55209923"
 ---
 # <a name="sentence-pairing-and-alignment-in-parallel-documents"></a>Párování věty a zarovnání v paralelní dokumenty
 
@@ -36,9 +36,9 @@ Nejlepších výsledků dosáhnete pokuste se ujistěte se, že máte jeden vět
 
 | Datové sady   | Navrhované extrahované věty minimální počet | Navrhované zarovnané věty minimální počet | Počet maximální zarovnané větu |
 |------------|--------------------------------------------|------------------------------------------|--------------------------------|
-| Školení   | 10 000                                     | 2,000                                    | Žádná horní hranice                 |
-| Ladění     | 2,000                                      | 500                                      | 2,500                          |
-| Testování    | 2,000                                      | 500                                      | 2,500                          |
+| Školení   | 10 000                                     | 2 000                                    | Žádná horní hranice                 |
+| Ladění     | 2 000                                      | 500                                      | 2,500                          |
+| Testování    | 2 000                                      | 500                                      | 2,500                          |
 | Slovník | 0                                          | 0                                        | Žádná horní hranice                 |
 
 ## <a name="next-steps"></a>Další postup

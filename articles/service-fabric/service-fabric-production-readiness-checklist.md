@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 7/10/2018
 ms.author: aljo-microsoft
-ms.openlocfilehash: ac263ef842c780e09576303f2f49e782612294c2
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 02ad880f3c4a4f5812b60887090c29a0a39f6742
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 01/29/2019
-ms.locfileid: "55159110"
+ms.locfileid: "55206965"
 ---
 # <a name="production-readiness-checklist"></a>Kontrolní seznam připravenosti k produkci
 
@@ -62,7 +62,7 @@ Pokud používáte programovacího modelu Service Fabric Reliable Services a Rel
 23. Vyhněte se [běžné nástrahy](service-fabric-work-with-reliable-collections.md) při použití Reliable Collections.
 24. Monitorování výkonu paměti .NET CLR čítačů při spuštění zátěžových testů a vyhledejte vysoký objem uvolňování paměti nebo vyčerpává dlouho běžící haldy růstu.
 25. Zálohování offline udržovat [Reliable Services a Reliable Actors](service-fabric-reliable-services-backup-restore.md) a testování procesu obnovení.
-26. Počet instancí vaše primární NodeType virtuální počítač v ideálním případě by měla být rovna minimum pro vaši úroveň spolehlivosti clustery; podmínky v případě potřeby překročit minimální úroveň zahrnuje: dočasně při vertikální škálování jste už vaši primární NodeTypes virtuálního počítače Škálovací Nastavte skladovou jednotku.
+26. Počet instancí vaše primární NodeType virtuální počítač v ideálním případě by měla být rovna minimum pro vaši úroveň spolehlivosti clustery; podmínky v případě potřeby překročit minimální úroveň zahrnuje: dočasně při vertikální škálování primární NodeTypes virtuálního počítače Škálovací Nastavte skladovou jednotku.
 
 ## <a name="optional-best-practices"></a>Volitelné postupy
 

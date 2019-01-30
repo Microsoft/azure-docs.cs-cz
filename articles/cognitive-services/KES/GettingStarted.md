@@ -1,21 +1,21 @@
 ---
-title: 'Příklad: Začínáme – rozhraní API služby Knowledge Exploration Service'
+title: 'Příklad: Získávání spuštění – Knowledge Exploration Service API'
 titlesuffix: Azure Cognitive Services
 description: Použijte rozhraní API služby KES (Knowledge Exploration Service) k vytvoření modulu pro interaktivní hledání v akademických publikacích.
 services: cognitive-services
 author: bojunehsu
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: knowledge-exploration
+ms.subservice: knowledge-exploration
 ms.topic: sample
 ms.date: 03/26/2016
 ms.author: paulhsu
-ms.openlocfilehash: 6cee339793269af0e8060cce56f94fa81db6a6c5
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
-ms.translationtype: HT
+ms.openlocfilehash: 14dc1ca90ecd342330425db840776fa67caa80b0
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46124010"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55208138"
 ---
 # <a name="get-started-with-the-knowledge-exploration-service"></a>Začínáme se službou Knowledge Exploration Service
 
@@ -41,7 +41,7 @@ Schéma popisuje strukturu atributů objektů v doméně. Určuje název a datov
 }
 ```
 
-Definujete tady atributy *Title* (Název), *Year* (Rok) a *Keyword* (Klíčové slovo) jako atributy typů řetězec (String), celé číslo (Int32) a řetězec (String). Protože autoři jsou reprezentováni ID, jménem a afilací, definujete atribut *Author* jako složený atribut se třemi dílčími atributy: *Author.Id*, *Author.Name* a *Author.Affiliation*.
+Definujete tady atributy *Title* (Název), *Year* (Rok) a *Keyword* (Klíčové slovo) jako atributy typů řetězec (String), celé číslo (Int32) a řetězec (String). Protože autory jsou reprezentovány ID, název a umístění, můžete definovat *Autor* jako složený atribut s tři dílčí atributy: *Author.Id*, *Author.Name*, a *Author.Affiliation*.
 
 Atributy ve výchozím nastavení podporují všechny operace dostupné pro jejich datový typ, včetně operací *equals*, *starts_with* a *is_between*. Protože se atribut Author.ID používá jako identifikátor jenom interně, přepište výchozí nastavení a jako jedinou indexovanou operaci zadejte *equals*.
 
@@ -110,7 +110,7 @@ Gramatika určuje sadu dotazů v přirozeném jazyce, které dokáže služba in
 <grammar root="GetPapers">
 
   <!-- Import academic data schema-->
-  <import schema="Academic.schema" name="academic"/>
+  <import schema="Academic.schema" name="academic"/>
 
   <!-- Define root rule-->
   <rule id="GetPapers">

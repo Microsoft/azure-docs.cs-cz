@@ -14,12 +14,13 @@ ms.topic: article
 ms.date: 12/18/2018
 ms.author: mabrigg
 ms.reviewer: ppacent
-ms.openlocfilehash: e4131bc8f038957e52b914937b2d45e670be8f5f
-ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
+ms.lastreviewed: 12/18/2018
+ms.openlocfilehash: 09988009712f9312eb97d5c32dc8991ec5b2f1f9
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54157271"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55251346"
 ---
 # <a name="rotate-secrets-in-azure-stack"></a>Otočit tajné kódy ve službě Azure Stack
 
@@ -41,9 +42,9 @@ Certifikáty služby infrastruktury externích služeb, které jsou k dispozici 
 - Globální Azure Resource Manageru
 - Správce služby KeyVault
 - KeyVault
-- Hostitel Správce rozšíření
+- Admin Extension Host
 - Služby ACS (včetně objektů blob, table a queue storage)
-- SLUŽBY AD FS *
+- ADFS *
 - Graf *
 
 \* Platí pouze pokud je zprostředkovatel identity prostředí Active Directory Federated Services (AD FS).
@@ -137,7 +138,7 @@ Spuštění tajných kódů otočení pomocí následujícího postupu se opravi
 > Příklad:
 > - Sdílení souborů =  **\\ \\ \<IPAddress >\\\<název_sdílené_položky >\\**
 > - CertFolder = **Certificates\AAD**
-> - FullPath =  **\\ \\ \<IPAddress >\\\<název_sdílené_položky > \Certificates\AAD**
+> - FullPath = **\\\\\<IPAddress>\\\<ShareName>\Certificates\AAD**
 
 ## <a name="rotating-external-secrets"></a>Otáčení externích tajných klíčů
 
@@ -297,7 +298,7 @@ Start-SecretRotation [-ReRun] [-Internal]
 
 ### <a name="parameters"></a>Parametry
 
-| Parametr | Typ | Požaduje se | Umístění | Výchozí | Popis |
+| Parametr | Type | Požaduje se | Umístění | Výchozí | Popis |
 | -- | -- | -- | -- | -- | -- |
 | PfxFilesPath | Řetězec  | False  | s názvem  | Žádný  | Cesta sdílení souborů na **\Certificates** síťové adresáře, který obsahuje všechny externí certifikáty koncový bod. Povinné pouze v případě otáčení externích tajných klíčů. Adresář end musí být **\Certificates**. |
 | CertificatePassword | SecureString | False  | s názvem  | Žádný  | Heslo pro všechny certifikáty v PfXFilesPath – k dispozici. Požadovaná hodnota, pokud PfxFilesPath víceklientského externích tajných klíčů se otočí. |

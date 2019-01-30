@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 01/28/2019
 ms.author: raynew
-ms.openlocfilehash: fef6dc7937b2c83e67a281c69267bdf29216793d
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 61e66a19b625141c69a9473373d3d5d808e18fde
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 01/29/2019
-ms.locfileid: "55198987"
+ms.locfileid: "55211113"
 ---
 # <a name="whats-new-in-site-recovery"></a>Co je nového ve službě Site Recovery
 
@@ -59,7 +59,7 @@ Azure zavedené [standardní Solid stav jednotky SSD (Solid-State Drive)](https:
 
 ### <a name="support-for-azure-storage-firewall"></a>Podpora brány firewall služby Azure storage
 
-Zapnutím pravidla brány firewall pro účet můžete zabezpečit účty Azure storage s konkrétní sadou sítí. Konfigurace účtů úložiště pro odepření provozu z interní sítě a Internetu ve výchozím nastavení a pak udělte přístup pro provoz z konkrétní virtuálních sítí. Site Recovery podporuje replikaci pro virtuální počítače s nespravovanými disky v účtech úložišť s povolenou firewa do sekundární oblasti. V cílové oblasti, pro nespravované disky můžete vybrat účty úložiště s branami firewall povolena. Můžete taky omezit přístup k účtu úložiště mezipaměti tak, že omezíte přístup k síti jenom síť, ve které se nacházejí zdrojové virtuální počítače. Všimněte si, že je potřeba [povolit přístup](https://docs.microsoft.com/azure/storage/common/storage-network-security#exceptions) pro důvěryhodné služby Microsoftu.
+Zapnutím pravidla brány firewall pro účet můžete zabezpečit účty Azure storage s konkrétní sadou sítí. Konfigurace účtů úložiště pro odepření provozu z interní sítě a Internetu ve výchozím nastavení a potom udělit přístup pro provoz z konkrétní virtuálních sítí. Site Recovery podporuje replikaci pro virtuální počítače s nespravovanými disky pro účty úložiště. povolená brána firewall do sekundární oblasti. V cílové oblasti, pro nespravované disky můžete vybrat účty úložiště s branami firewall povolena. Můžete taky omezit přístup k účtu úložiště mezipaměti tak, že omezíte přístup k síti jenom síť, ve které se nacházejí zdrojové virtuální počítače. Všimněte si, že je potřeba [povolit přístup](https://docs.microsoft.com/azure/storage/common/storage-network-security#exceptions) pro důvěryhodné služby Microsoftu.
 
 ## <a name="q3-2018"></a>Q3 2018 
 

@@ -8,12 +8,12 @@ ms.subservice: pod
 ms.topic: article
 ms.date: 01/23/2019
 ms.author: alkohli
-ms.openlocfilehash: 469d553d60eb7c5cdfac3bc16f1fb479bd84cb70
-ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
+ms.openlocfilehash: 7d52af9e3948f40936795efab5b6671c3f71007a
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54886202"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55206743"
 ---
 # <a name="azure-data-box-system-requirements"></a>Požadavky na systém Azure Data Box
 
@@ -48,7 +48,7 @@ Tady je seznam podporovaných operačních systémech pro kopírování dat pros
 
 ### <a name="supported-storage-accounts"></a>Účty úložiště podporuje
 
-Tady je seznam účtů úložiště podporuje a typy úložiště pro zařízení Data Box. Úplný seznam všech různých typů účtů úložiště a jejich úplné možnosti najdete v tématu [typy účtů úložiště](/azure/storage/common/storage-account-overview.md#types-of-storage-accounts).
+Tady je seznam účtů úložiště podporuje a typy úložiště pro zařízení Data Box. Úplný seznam všech různých typů účtů úložiště a jejich úplné možnosti najdete v tématu [typy účtů úložiště](/azure/storage/common/storage-account-overview#types-of-storage-accounts).
 
 | **Účet úložiště / podporované typy úložiště** | **Objekt blob bloku** |**Objekt blob stránky*** |**Služba soubory Azure** |**Poznámky**|
 | --- | --- | -- | -- | -- |

@@ -11,14 +11,14 @@ ms.service: azure-monitor
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: hub-page
-ms.date: 01/25/2019
+ms.date: 01/29/2019
 ms.author: magoedte
-ms.openlocfilehash: afdc71e5bbc70d3553adeb161e0bfc48a129b3c6
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.openlocfilehash: a48e252d1dce2d9142249642a6221e8913c1d92d
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55094083"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55223413"
 ---
 <div id="main" class="v2">
     <div class="container">
@@ -75,8 +75,8 @@ ms.locfileid: "55094083"
                                                                 <div class="cardText" style="padding-left: 0px">
                                                                     <h3>Vysvětlení zabezpečení</h3> 
                                                                     <p>
-                                                                        <a href="/azure/azure-monitor/platform/log-analytics-data-security">Data protokolu</a><br/>
-                                                                        <a href="/azure/azure-monitor/platform/log-analytics-personal-data-mgmt">Zpracování dat osobní protokolu</a><br/>
+                                                                        <a href="/azure/azure-monitor/platform/data-security">Data protokolu</a><br/>
+                                                                        <a href="/azure/azure-monitor/platform/personal-data-mgmt">Zpracování dat osobní protokolu</a><br/>
                                                                         <a href="/azure/azure-monitor/platform/roles-permissions-security">Role oprávnění a zabezpečení</a><br/>
                                                                     </p>
                                                                     <br>

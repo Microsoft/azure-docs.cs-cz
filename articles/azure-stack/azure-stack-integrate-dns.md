@@ -9,13 +9,14 @@ ms.topic: article
 ms.date: 10/15/2018
 ms.author: jeffgilb
 ms.reviewer: wfayed
+ms.lastreviewed: 10/15/2018
 keywords: ''
-ms.openlocfilehash: bf412809f9d10296ad600e64abb6d870dbb88d3e
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
+ms.openlocfilehash: dce59cf012a8c3bc5b6b3baf705b5619bdf43104
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49339674"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55252304"
 ---
 # <a name="azure-stack-datacenter-integration---dns"></a>Integrace datových center Azure Stack – DNS
 Abyste mohli přístup ke koncovým bodům služby Azure Stack (**portál**, **adminportal**, **správu**, **adminmanagement**atd.)  z mimo Azure Stack budete muset integraci služeb Azure Stack DNS servery DNS, které jsou hostiteli zóny DNS, který chcete použít ve službě Azure Stack.
@@ -56,7 +57,7 @@ Aby bylo možné přeložit názvy DNS pro koncové body služby Azure Stack a i
 Existují dva typy serverů DNS:
 
 - Autoritativní server DNS hostí zóny DNS. Odpovídá pouze na dotazy DNS pro záznamy v těchto zónách.
-- Rekurzivní server DNS nehostuje zóny DNS. Odpovídá na všechny dotazy DNS voláním autoritativních serverů DNS, které shromáždí potřebná data.
+- A recursive DNS server does not host DNS zones. Odpovídá na všechny dotazy DNS voláním autoritativních serverů DNS, které shromáždí potřebná data.
 
 Azure Stack zahrnuje oba autoritativnímu a rekurzivních serverů DNS. Rekurzivních serverů slouží k překladu názvů všeho s výjimkou interní privátní zónu a externí veřejné zóny DNS pro toto nasazení Azure Stack. 
 
@@ -98,7 +99,7 @@ Autoritativní servery jsou ty, které obsahují informace o zóně externí DNS
 Pokud chcete integrovat nasazení Azure Stack s vaší infrastrukturou DNS, budete potřebovat následující informace:
 
 - Server DNS plně kvalifikovaných názvů domén
-- IP adresy serveru DNS
+- DNS server IP addresses
 
 Plně kvalifikované názvy domény pro servery Azure Stack DNS mít následující formát:
 
@@ -121,7 +122,7 @@ Pokud nasazení virtuálního počítače už není k dispozici nebo je nedostup
 
 Nejjednodušší a nejbezpečnější způsob integrace služby Azure Stack s infrastruktury služby DNS je provést podmíněné předávání zóny ze serveru, který hostuje nadřazenou zónu. Tento přístup se doporučuje, pokud máte přímou kontrolu nad servery DNS, které hostují nadřazené zóně oboru názvů služby Azure Stack externí DNS.
 
-Pokud nejste obeznámeni s postup podmíněné předávání s DNS, najdete v následujícím článku na webu TechNet: [přiřazení pro název domény pro podmíněné předávání](https://technet.microsoft.com/library/cc794735), nebo dokumentaci k řešení DNS.
+Pokud nejste obeznámeni s postup podmíněné předávání s DNS, najdete v následujícím článku na webu TechNet: [Přiřazení pro název domény pro podmíněné předávání](https://technet.microsoft.com/library/cc794735), nebo dokumentaci k řešení DNS.
 
 Ve scénářích, kde jste zadali externí Azure Stack zónu DNS, aby vypadala jako podřízenou doménu s názvem vaší firemní domény nelze použít podmíněné předávání. Delegování DNS musí být nakonfigurovaný.
 

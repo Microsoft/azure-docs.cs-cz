@@ -6,16 +6,16 @@ services: cognitive-services
 author: zhouwangzw
 manager: wolfma
 ms.service: cognitive-services
-ms.component: bing-speech
+ms.subservice: bing-speech
 ms.topic: article
 ms.date: 09/18/2018
 ms.author: zhouwang
-ms.openlocfilehash: 2da6795e938f1a0c0ed0495fb169007126501eea
-ms.sourcegitcommit: 7862449050a220133e5316f0030a259b1c6e3004
+ms.openlocfilehash: bcb8b421eeb0db215aa21b93a7792e0e978a4f48
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/22/2018
-ms.locfileid: "53753656"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55215465"
 ---
 # <a name="troubleshooting-bing-speech"></a>Řešení potíží pro zpracování řeči Bingu
 
@@ -68,7 +68,7 @@ $OAuthToken
 
 ```
 
-# <a name="curltabcurl"></a>[Curl](#tab/curl)
+# <a name="curltabcurl"></a>[curl](#tab/curl)
 
 V příkladu používá curl v Linuxu pomocí prostředí bash. Pokud není dostupný na vaší platformě, budete muset nainstalovat curl. V příkladu by měl také pracovat na Cygwin ve Windows, Git Bash, zsh a jiné prostředí.
 
@@ -112,7 +112,7 @@ $RecoResponse
 
 ```
 
-# <a name="curltabcurl"></a>[Curl](#tab/curl)
+# <a name="curltabcurl"></a>[curl](#tab/curl)
 
 ```
 curl -v -X POST "https://speech.platform.bing.com/speech/recognition/interactive/cognitiveservices/v1?language=en-us&format=detailed" -H "Transfer-Encoding: chunked" -H "Authorization: Bearer YOUR_ACCESS_TOKEN" -H "Content-type: audio/wav; codec=audio/pcm; samplerate=16000" --data-binary @YOUR_AUDIO_FILE

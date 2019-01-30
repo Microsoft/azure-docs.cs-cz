@@ -1,23 +1,23 @@
 ---
-title: 'Příklad: Rozpoznávání tváří v obrázcích – rozhraní API pro rozpoznávání tváře'
+title: 'Příklad: Rozpoznávání tváří na obrázcích – rozhraní API pro rozpoznávání tváře'
 titleSuffix: Azure Cognitive Services
 description: Rozpoznejte tváře v obrázcích pomocí rozhraní API pro rozpoznávání tváře.
 services: cognitive-services
 author: SteveMSFT
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: face-api
+ms.subservice: face-api
 ms.topic: sample
 ms.date: 03/01/2018
 ms.author: sbowles
-ms.openlocfilehash: a4c74ff70a4426abf97562bf997479a91afbf17a
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
-ms.translationtype: HT
+ms.openlocfilehash: 8c89a43910a5e98286a82de8626870d3aec55b94
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46124044"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55214207"
 ---
-# <a name="example-how-to-detect-faces-in-image"></a>Příklad: Jak rozpoznat tváře v obrázku
+# <a name="example-how-to-detect-faces-in-image"></a>Příklad: Jak rozpoznávání tváří v obrázku
 
 V této příručce vám ukážeme, jak v obrázku rozpoznat tváře pomocí extrahovaných atributů tváří, jako jsou pohlaví, věk a pozice hlavy. Ukázky jsou napsané v jazyce C# pomocí klientské knihovny rozhraní API pro rozpoznávání tváře. 
 
@@ -40,21 +40,21 @@ V tomto příkladu ukážeme následující funkce:
 
 Aby bylo možné tyto funkce provést, je potřeba připravit obrázek s alespoň jednou zřetelnou tváří. 
 
-## <a name="step-1-authorize-the-api-call"></a>1. krok: Autorizace volání rozhraní API
+## <a name="step-1-authorize-the-api-call"></a>Krok 1: Povolit volání rozhraní API
 
-Ke každému volání rozhraní API pro rozpoznávání tváře potřebujete klíč předplatného (subscription key). Klíč je potřeba předat jako řetězcový parametr dotazu nebo ho uvést v hlavičce žádosti. Pokud chcete klíč předplatného předat pomocí řetězce dotazu, použijte jako příklad adresu URL žádosti pro [Face - Detect](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236):
+Ke každému volání rozhraní API pro rozpoznávání tváře potřebujete klíč předplatného. Klíč je potřeba předat jako řetězcový parametr dotazu nebo ho uvést v hlavičce žádosti. Pokud chcete klíč předplatného předat pomocí řetězce dotazu, použijte jako příklad adresu URL žádosti pro [Face - Detect](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236):
 
 ```
 https://westus.api.cognitive.microsoft.com/face/v1.0/detect[?returnFaceId][&returnFaceLandmarks][&returnFaceAttributes]
 &subscription-key=<Subscription Key>
 ```
 
-Klíč předplatného může být případně také uvedený v hlavičce žádosti HTTP: **ocp-apim-subscription-key: &lt;Subscription Key&gt;**. Při použití klientské knihovny se klíč předává prostřednictvím konstruktoru třídy FaceServiceClient. Příklad:
+Jako alternativu, klíč předplatného také dá se zadat v hlavičce požadavku protokolu HTTP: **ocp-apim-subscription-key: &lt;Klíč předplatného&gt;**  při použití klientské knihovny, klíč předplatného se předává v konstruktoru třídy FaceServiceClient. Příklad:
 ```CSharp
 faceServiceClient = new FaceServiceClient("<Subscription Key>");
 ```
 
-## <a name="step-2-upload-an-image-to-the-service-and-execute-face-detection"></a>2. krok: Odeslání obrázku službě a spuštění rozpoznávání tváře
+## <a name="step-2-upload-an-image-to-the-service-and-execute-face-detection"></a>Krok 2: Nahrajte image do služby a spusťte rozpoznávání tváře
 
 Základním způsobem provádění rozpoznávání tváře je přímé odeslání obrázku. Dělá se to odesláním žádosti POST s typem obsahu aplikace/oktet-stream, s daty vyčtenými z obrázku JPEG. Maximální velikost obrázku jsou 4 MB.
 
@@ -90,7 +90,7 @@ foreach (var face in faces)
 
 Vlastnost FaceRectangle, která se vrátí s rozpoznanými tvářemi, je v podstatě tvořená umístěními na tváři v pixelech. Tento obdélník obvykle obsahuje oči, obočí, nos a ústa – vršek hlavy, uši a brada nejsou zahrnuté. Pokud oříznete celkový portrét hlavy nebo portrét do pasu (typ obrázku pro fotografickou identifikaci), může být potřeba rozšířit oblast obdélníkového rámce tváře, protože oblast tváře může být pro některé aplikace příliš malá. K přesnějšímu vyhledání tváře může být užitečné použít orientační body tváře (mechanismy vyhledání rysů tváře nebo směru tváře) popisované v další části.
 
-## <a name="step-3-understanding-and-using-face-landmarks"></a>3. krok: Vysvětlení a použití orientačních bodů tváře
+## <a name="step-3-understanding-and-using-face-landmarks"></a>Krok 3: Principy a použití orientačních bodů pro rozpoznávání tváře
 
 Orientační body tváře jsou řady podrobných bodů na obličeji – obvykle body částí obličeje, jako jsou zorničky, oční koutky a nos. Orientační body tváře jsou volitelné atributy, které můžou být analyzované během rozpoznávání tváře. Abyste zahrnuli orientační body tváře do výsledků rozpoznávání tváře, můžete buď předat logickou hodnotu „true“ do parametru dotazu returnFaceLandmarks při volání [Face - Detect](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236), nebo použít volitelný parametr returnFaceLandmarks pro metodu DetectAsync třídy FaceServiceClient.
 
@@ -145,7 +145,7 @@ Vector faceDirection = new Vector(
 
 Když znáte směr tváře, můžete natočit obdélníkový rámec tváře tak, aby odpovídal směru tváře. Je zřejmé, že orientační body tváře můžou poskytnout více podrobností a užitku.
 
-## <a name="step-4-using-other-face-attributes"></a>4. krok: Použití dalších atributů tváře
+## <a name="step-4-using-other-face-attributes"></a>Krok 4: Pomocí dalších atributů pro rozpoznávání tváře
 
 Rozhraní API pro rozpoznávání tváře může kromě orientačních bodů tváře analyzovat také několik dalších atributů tváře. K těmto atributům patří:
 
@@ -185,7 +185,7 @@ foreach (var face in faces)
 }
 ``` 
 
-## <a name="summary"></a>Shrnutí
+## <a name="summary"></a>Souhrn
 
 V této příručce jste se seznámili s funkcemi rozhraní API [Face - Detect](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236) a s tím, jak toto rozhraní může rozpoznat tváře u místně nahraných obrázků nebo u obrázků s adresami URL na webu, jak může rozpoznat tváře vrácením obdélníkových rámců tváří a jak může analyzovat orientační body tváře, 3D pozice hlavy a další atributy tváře.
 

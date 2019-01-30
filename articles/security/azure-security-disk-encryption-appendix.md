@@ -8,12 +8,12 @@ ms.topic: article
 ms.author: mstewart
 ms.date: 01/14/2019
 ms.custom: seodec18
-ms.openlocfilehash: b6d0b702a334bf1127f570bff026fa4332331209
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.openlocfilehash: 64ae354c9233821ea7e53abfdc0dde105b22e466
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54260113"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55208070"
 ---
 # <a name="appendix-for-azure-disk-encryption"></a>Dodatek pro Azure Disk Encryption 
 
@@ -325,7 +325,7 @@ Konfigurace šifrování pro práci s Azure provedením následujících kroků:
 
 1. Vytvoření souboru v rámci /usr/local/sbin/azure_crypt_key.sh, s obsahem v následujícím skriptu. Věnujte pozornost KeyFileName, protože je název souboru přístupové heslo používané Azure.
 
-    ```
+    ```bash
     #!/bin/sh
     MountPoint=/tmp-keydisk-mount
     KeyFileName=LinuxPassPhraseFileName
@@ -405,7 +405,7 @@ Ke konfiguraci šifrování pro práci s Azure, proveďte následující kroky:
     add_drivers+=" vfat ntfs nls_cp437 nls_iso8859-1"
     ```
 2. Okomentujte řádky na konci souboru /usr/lib/dracut/modules.d/90crypt/module-setup.sh:
- ```
+ ```bash
     #        inst_multiple -o \
     #        $systemdutildir/system-generators/systemd-cryptsetup-generator \
     #        $systemdutildir/systemd-cryptsetup \
@@ -418,20 +418,20 @@ Ke konfiguraci šifrování pro práci s Azure, proveďte následující kroky:
  ```
 
 3. Připojte následující řádek na začátek souboru /usr/lib/dracut/modules.d/90crypt/parse-crypt.sh:
- ```
+ ```bash
     DRACUT_SYSTEMD=0
  ```
 A změňte všechny výskyty položky:
- ```
+ ```bash
     if [ -z "$DRACUT_SYSTEMD" ]; then
  ```
 na:
-```
+```bash
     if [ 1 ]; then
 ```
 4. Upravit /usr/lib/dracut/modules.d/90crypt/cryptroot-ask.sh a přidejte je do "# Otevřít LUKS zařízení":
 
-    ```
+    ```bash
     MountPoint=/tmp-keydisk-mount
     KeyFileName=LinuxPassPhraseFileName
     echo "Trying to get the key from disks ..." >&2
@@ -485,7 +485,7 @@ Ke konfiguraci šifrování pro práci s Azure, proveďte následující kroky:
     ```
 
 2. Okomentujte řádky na konci souboru /usr/lib/dracut/modules.d/90crypt/module-setup.sh:
-```
+```bash
     #        inst_multiple -o \
     #        $systemdutildir/system-generators/systemd-cryptsetup-generator \
     #        $systemdutildir/systemd-cryptsetup \
@@ -498,19 +498,19 @@ Ke konfiguraci šifrování pro práci s Azure, proveďte následující kroky:
 ```
 
 3. Připojte následující řádek na začátek souboru /usr/lib/dracut/modules.d/90crypt/parse-crypt.sh:
-```
+```bash
     DRACUT_SYSTEMD=0
 ```
 A změňte všechny výskyty položky:
-```
+```bash
     if [ -z "$DRACUT_SYSTEMD" ]; then
 ```
 na
-```
+```bash
     if [ 1 ]; then
 ```
 4. Upravit /usr/lib/dracut/modules.d/90crypt/cryptroot-ask.sh a přidat následující za "otevřené LUKS zařízení #":
-    ```
+    ```bash
     MountPoint=/tmp-keydisk-mount
     KeyFileName=LinuxPassPhraseFileName
     echo "Trying to get the key from disks ..." >&2

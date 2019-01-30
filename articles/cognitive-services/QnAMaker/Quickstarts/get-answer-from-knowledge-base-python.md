@@ -1,21 +1,21 @@
 ---
-title: 'Rychlý start: Získat odpověď ze znalostní báze knowledge base - REST, Python – QnA Maker'
+title: 'Rychlý start: Získání odpovědí ze znalostní báze knowledge base - REST, Python – QnA Maker'
 titlesuffix: Azure Cognitive Services
 description: V tomto rychlém startu založené na protokolu REST Python provede získat odpověď ze znalostní báze, prostřednictvím kódu programu.
 services: cognitive-services
 author: diberry
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: qna-maker
+ms.subservice: qna-maker
 ms.topic: quickstart
 ms.date: 11/19/2018
 ms.author: diberry
-ms.openlocfilehash: 4aac7921633c8265f0fa6c254c28ea7510fe79d1
-ms.sourcegitcommit: 8314421d78cd83b2e7d86f128bde94857134d8e1
+ms.openlocfilehash: 0647d850491f31d0f66de18a593ac7ff471e8906
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/19/2018
-ms.locfileid: "51977445"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55206404"
 ---
 # <a name="get-answers-to-a-question-from-a-knowledge-base-with-python"></a>Získejte odpovědi na dotaz zadaný ze znalostní báze pomocí Pythonu
 

@@ -5,16 +5,16 @@ description: Vlastní Translator Glosář
 author: rajdeep-in
 manager: christw
 ms.service: cognitive-services
-ms.component: custom-translator
+ms.subservice: custom-translator
 ms.date: 11/13/2018
 ms.author: v-rada
 ms.topic: reference
-ms.openlocfilehash: 35d2ef734e1d1ce71ae6c8d7a607fe0dad1915fb
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: 28f9ca2cdb622e54bf4938863e4dd826c28d92de
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51627332"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55206421"
 ---
 # <a name="glossary"></a>Glosář
 
@@ -35,4 +35,4 @@ ms.locfileid: "51627332"
 | Testování souborů            | Tyto soubory jsou často odvozené soubory, náhodně vybrány z trénovací sady (Pokud nevyberete žádné testovací sadě). Účelem těchto věty je vyhodnotit přesnost modelu překladu. Jedná se o věty, které chcete zajistit, aby že přesně přeloží systém. Proto můžete chtít vytvořit testovací sadu a nahrajte ho do translator zajistit, že tyto věty se používají v systému hodnocení (generování BLEU skóre).   |
 | Soubor se seznamem               | Typ souboru, ve kterém zdroje a přeložených vět jsou obsaženy ve stejném souboru. Podporované formáty souborů (".tmx", ".xliff", ".xlf", ".lcl", ".xlsx").                                                                                                                                                                                                                                                                                                                       |
 | Soubor archivu             | Soubor, který obsahuje jiné soubory. Podporované formáty souborů (zip, gz, tgz).                                                                                                                                                                                                                                                                                                                                                                                                |
-| BLEU skóre               | [BLEU](what-is-bleu-score.md) je standardní způsob za vaše rozhodnutí vyzkoušet "přesnost" nebo přesnost modelu překladu. I když existují další metody vyhodnocení využívá Microsoft Translator BLEU metodu přesnosti sestav vlastníkům projektu.
+| Skóre BLEU               | [BLEU](what-is-bleu-score.md) je standardní způsob za vaše rozhodnutí vyzkoušet "přesnost" nebo přesnost modelu překladu. I když existují další metody vyhodnocení využívá Microsoft Translator BLEU metodu přesnosti sestav vlastníkům projektu.

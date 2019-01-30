@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: nisoneji
-ms.openlocfilehash: 7c5a5cddca2aa8e459bde711465425bdd32c669e
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 06e3139ffa958637721aae7e912b34070d307757
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52964012"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55207390"
 ---
 # <a name="about-the-azure-site-recovery-deployment-planner-for-hyper-v-disaster-recovery-to-azure"></a>Informace o Azure Site Recovery Deployment Planner pro zotavení po havárii Hyper-V do Azure
 
@@ -84,7 +84,7 @@ Nástroj má pro Hyper-V tři hlavní fáze: získání seznamu virtuálních po
 
 | Požadavek na server | Popis |
 |---|---|
-|Získání seznamu virtuálních počítačů, profilace a měření propustnosti |<ul><li>Operační systém: Microsoft Windows Server 2016 nebo Microsoft Windows Server 2012 R2 </li><li>Konfigurace počítače: 8 virtuálních CPU, 16 GB paměti RAM, 300 GB HDD</li><li>[Microsoft .NET Framework 4.5](https://aka.ms/dotnet-framework-45)</li><li>[Microsoft Visual C++ Redistributable for Visual Studio 2012](https://aka.ms/vcplusplus-redistributable)</li><li>Internetový přístup k Azure z tohoto serveru</li><li>Účet služby Azure Storage</li><li>Přístup správce na server</li><li>Volné místo na disku alespoň 100 GB (za předpokladu 1 000 virtuálních počítačů, každý průměrně se 3 disky a profilovaný po dobu 30 dnů)</li><li>Virtuální počítač, ze kterého spouštíte nástroj Plánovač nasazení služby Azure Site Recovery, musí být přidaný do seznamu TrustedHosts všech serverů Hyper-V.</li><li>Všechny profilované virtuální počítače serveru Hyper-V musí být přidané do seznamu TrustedHosts klientského virtuálního počítače, ze kterého se nástroj spouští. [Další informace o přidání serverů do seznamu TrustedHosts](#steps-to-add-servers-into-trustedhosts-list) </li><li> Nástroj by měl být spuštěný pomocí oprávnění pro správu z PowerShellu nebo konzoly příkazového řádku na klientovi.</ul></ul>|
+|Získání seznamu virtuálních počítačů, profilace a měření propustnosti |<ul><li>Operační systém: Microsoft Windows Server 2016 nebo Microsoft Windows Server 2012 R2 </li><li>Konfigurace počítače: 8 virtuálních CPU, 16 GB paměti RAM, 300 GB HDD</li><li>[Microsoft .NET Framework 4.5](https://aka.ms/dotnet-framework-45)</li><li>[Microsoft Visual C++ Redistributable for Visual Studio 2012](https://aka.ms/vcplusplus-redistributable)</li><li>Internetový přístup k Azure z tohoto serveru</li><li>Účet služby Azure Storage</li><li>Přístup správce na server</li><li>Volné místo na disku alespoň 100 GB (za předpokladu 1 000 virtuálních počítačů, každý průměrně se 3 disky a profilovaný po dobu 30 dnů)</li><li>Virtuální počítač, ze kterého spouštíte nástroj Plánovač nasazení služby Azure Site Recovery, musí být přidaný do seznamu TrustedHosts všech serverů Hyper-V.</li><li>Všechny servery Hyper-V určených k profilaci musí být přidány do seznamu TrustedHosts klientského virtuálního počítače z ve kterém je nástroj spuštěn. [Další informace o přidání serverů do seznamu TrustedHosts](#steps-to-add-servers-into-trustedhosts-list) </li><li> Nástroj by měl být spuštěný pomocí oprávnění pro správu z PowerShellu nebo konzoly příkazového řádku na klientovi.</ul></ul>|
 | Generování sestav | Počítač s Windows nebo Windows Server s aplikací Microsoft Excel 2013 nebo novější |
 | Uživatelská oprávnění | Účet správce pro přístup ke clusteru Hyper-V / hostiteli Hyper-V během operací získání seznamu virtuálních počítačů a profilace<br>Všichni hostitelé, pro které je potřeba provést profilaci, by měli mít účet správce domény se stejnými přihlašovacími údaji, tj. uživatelským jménem a heslem.
  |
@@ -110,14 +110,14 @@ Nástroj má pro Hyper-V tři hlavní fáze: získání seznamu virtuálních po
 Nástroje je zabalený ve složce .zip. Stejný nástroj podporuje scénáře zotavení po havárii jak z VMware do Azure, tak i z Hyper-V do Azure. Tento nástroj můžete použít i pro scénář zotavení po havárii z Hyper-V do sekundární lokality, ale ignorujte doporučení infrastruktury Azure ze sestavy.
 
 1.  Zkopírujte složku .zip na Windows Server, ze kterého chcete nástroj spustit. Nástroj můžete spustit na Windows Serveru 2012 R2 nebo Windows Serveru 2016. Server musí mít přístup k síti, aby se připojil ke clusteru Hyper-V nebo hostiteli Hyper-V, kde jsou profilované virtuální počítače. Doporučujeme, abyste měli stejnou hardwarovou konfiguraci virtuálního počítače, kde chcete nástroj spustit, jako toho serveru Hyper-V, který chcete chránit. Taková konfigurace zajistí, že dosažená propustnost, kterou nástroj hlásí, bude odpovídat skutečné propustnosti, které může Azure Site Recovery dosáhnout během replikace. Výpočet propustnosti závisí na dostupné šířce pásma sítě na serveru a na konfiguraci hardwaru (CPU, úložiště atd.) serveru. Propustnost je počítána ze serveru, na kterém je nástroj spuštěný, do Azure. Pokud se konfigurace hardwaru tohoto serveru liší od serveru Hyper-V, dosažená propustnost, kterou nástroj hlásí, nebude přesná.
-Doporučená konfigurace virtuálního počítače: 8 virtuálních CPU, 16 GB paměti RAM, 300 GB HDD.
+Doporučená konfigurace virtuálního počítače: 8 vCPUs, 16 GB RAM, 300 GB HDD.
 
 1.  Rozbalte složku .zip.
 Složka obsahuje několik souborů a podsložek. Spustitelný soubor je ASRDeploymentPlanner.exe v nadřazené složce.
 
-Příklad: Zkopírujte soubor .zip na jednotku E:\ a rozbalte jej. Planner_v2.3.zip E:\ASR nasazení
+Příklad: Zkopírujte soubor .zip na jednotku E:\ a rozbalte jej. E:\ASR Deployment Planner_v2.3.zip
 
-Planner_v2.3\ASRDeploymentPlanner.exe E:\ASR nasazení
+E:\ASR Deployment Planner_v2.3\ASRDeploymentPlanner.exe
 
 ### <a name="updating-to-the-latest-version-of-deployment-planner"></a>Aktualizace na nejnovější verzi plánovače nasazení
 Pokud máte předchozí verzi plánovače nasazení, proveďte jednu z následujících akcí:

@@ -4,36 +4,36 @@ description: zahrnout soubor
 author: ghogen
 services: cognitive-services
 ms.service: cognitive-services
-ms.component: computer-vision
+ms.subservice: computer-vision
 ms.topic: include
 ms.date: 03/01/2018
 ms.author: ghogen
 ms.custom: include file
 manager: douge
-ms.openlocfilehash: d4be9cf6b72fb828a55a0304013c0077e1ba8089
-ms.sourcegitcommit: 170d2a3b8b6ee9376c0716783ce9768e1b33ddbb
+ms.openlocfilehash: 892db95a3d8ebaf4d9d3339d4965ce96b1084537
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/14/2018
-ms.locfileid: "35550363"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55252349"
 ---
-## <a name="install-the-cognitive-services-vsix-extension"></a>Nainstalujte rozšíření VSIX kognitivní služby
+## <a name="install-the-cognitive-services-vsix-extension"></a>Instalace rozšíření VSIX služeb Cognitive Services
 
-1. Pomocí svého webového projektu otevřete v sadě Visual Studio, vyberte **připojené služby** kartě. Na kartě je k dispozici na úvodní stránce, který se zobrazí při otevření nového projektu. Pokud se nezobrazí na kartě, vyberte **připojené služby** ve vašem projektu v Průzkumníku řešení.
+1. Webový projekt otevřít v sadě Visual Studio, zvolte **připojené služby** kartu. Na kartě je k dispozici na úvodní stránce, která se zobrazí při otevření nového projektu. Pokud nevidíte kartu, vyberte **připojené služby** ve vašem projektu v Průzkumníku řešení.
 
-   ![Karta – snímek obrazovky připojení služby](./media/vs-install-cognitive-services-vsix/Connected-Services-Tab.PNG)
+   ![Snímek obrazovky připojené služby kartu](./media/vs-install-cognitive-services-vsix/Connected-Services-Tab.PNG)
 
 1. Posuňte se dolů na konec seznamu služeb a vyberte **najít další služby**.
 
-    ![Snímek obrazovky najít více služeb odkaz](./media/vs-install-cognitive-services-vsix/Find-More-Services.PNG)
+    ![Snímek obrazovky najít další služby odkaz](./media/vs-install-cognitive-services-vsix/Find-More-Services.PNG)
  
     **Rozšíření a aktualizace** zobrazí se dialogové okno.
 
-1. V **rozšíření a aktualizace** dialogové okno, vyhledejte **kognitivní služby**a pak stáhnout a nainstalovat balíček kognitivní VSIX služby.
+1. V **rozšíření a aktualizace** dialogovém okně vyhledejte **služeb Cognitive Services**a pak si stáhnout a nainstalovat balíček Cognitive Services VSIX.
 
    ![Dialogové okno snímek obrazovky rozšíření a aktualizace](./media/vs-install-cognitive-services-vsix/install-cognitive-services-vsix.PNG)
 
-   Instalace rozšíření vyžaduje restartování integrované vývojové prostředí (IDE).
+   Instalace rozšíření, musí se restartovat integrované vývojové prostředí (IDE).
 
-2. Restartujte Visual Studio. Rozšíření nainstaluje, když zavřete Visual Studio a je k dispozici, při příštím spuštění prostředí IDE.
+2. Restartujte sadu Visual Studio. Rozšíření nainstaluje po zavření sady Visual Studio a je k dispozici při příštím spuštění rozhraní IDE.
 

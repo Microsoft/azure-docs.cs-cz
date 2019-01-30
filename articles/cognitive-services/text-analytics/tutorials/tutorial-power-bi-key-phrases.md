@@ -1,23 +1,23 @@
 ---
-title: 'Kurz: Analýza textu s Power BI'
+title: 'Kurz: Analýza textu s využitím Power BI'
 titleSuffix: Azure Cognitive Services
 description: Zjistěte, jak pomocí Analýzy textu extrahovat klíčové fráze z textu uloženého v Power BI.
 services: cognitive-services
 author: luiscabrer
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: text-analytics
+ms.subservice: text-analytics
 ms.topic: tutorial
 ms.date: 09/12/2018
 ms.author: luisca
-ms.openlocfilehash: fe6bc384e4190cd17df00ddf285701db8c4199a6
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
-ms.translationtype: HT
+ms.openlocfilehash: 0bda38db089218e0d5f6f8ff15c9eac888900e95
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45733325"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55209090"
 ---
-# <a name="tutorial-integrate-power-bi-with-the-text-analytics-cognitive-service"></a>Kurz: Integrace Power BI do Analýzy textu službou Cognitive Service
+# <a name="tutorial-integrate-power-bi-with-the-text-analytics-cognitive-service"></a>Kurz: Integrace Power BI s Text Analytics služby Cognitive Services
 
 Microsoft Power BI Desktop je bezplatná aplikace, se kterou se můžete připojit k datům abyste je mohli transformovat a vizualizovat. Služba Analýza textu je součástí služby Microsoft Azure Cognitive Services. Umožňuje zpracovat jazyk v jeho přirozené podobě. Služba dokáže z nezpracovaného a nestrukturovaného textu extrahovat nejdůležitější fráze, analyzovat mínění a identifikovat známé prvky, jako jsou značky. Společně vám tyto služby můžou pomoct rychle zjistit, o čem mluví vaši zákazníci a jak se při tom cítí.
 
@@ -285,7 +285,7 @@ A konečně, tady je již uvedená varianta funkce Klíčové fráze, která vr�
 in  keyphrases
 ```
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 <a name="NextSteps"></a>
 
 Přečtěte si další informace o službě Analýza textu, jazyce vzorců Power Query M nebo Power BI.

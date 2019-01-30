@@ -12,12 +12,12 @@ ms.author: ronitr
 ms.reviewer: vanto
 manager: craigg
 ms.date: 10/15/2018
-ms.openlocfilehash: ffa1c45b2d9449310a2b0dcc66a513b4d8efbc5d
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+ms.openlocfilehash: 8dfcee6e7f0e2fd21c35ed2507b572c6e8cffc42
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50232983"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55217233"
 ---
 # <a name="azure-sql-database-data-discovery-and-classification"></a>Azure SQL Database Data zjišťování a klasifikace
 
@@ -28,7 +28,7 @@ Zjišťování a klasifikace nejcitlivější data (obchodní finanční, zdravo
 - Různé scénáře zabezpečení, jako je například monitorování (auditování) a upozorňuje na neobvyklé přístup k citlivým datům.
 - Řízení přístupu k a posílení zabezpečení databáze, které obsahují hodně citlivá data.
 
-Zjišťování a klasifikace dat je součástí [rozšířené ochrany před internetovými útoky SQL](sql-advanced-threat-protection.md) nabídky (ATP), která je jednotný balíček pro pokročilé funkce zabezpečení SQL. Zjišťování a klasifikace dat je možné získat přístup a spravovat prostřednictvím portálu pro centrální ochrany ATP v programu SQL.
+Zjišťování a klasifikace dat je součástí [pokročilé zabezpečení dat SQL](sql-advanced-threat-protection.md) (reklamy) nabídky, která je jednotný balíček pro pokročilé funkce zabezpečení SQL. Zjišťování a klasifikace dat je možné získat přístup a spravovat prostřednictvím portálu pro centrální SQL reklamy.
 
 > [!NOTE]
 > Tento dokument se týká pouze ke službě Azure SQL Database. SQL Server (v místním prostředí), najdete v části [SQL Data zjišťování a klasifikace](https://go.microsoft.com/fwlink/?linkid=866999).
@@ -77,7 +77,7 @@ Po definování zásady pro celého tenanta, můžete pokračovat s klasifikací
 
 1. Přejděte na [Azure Portal](https://portal.azure.com).
 
-2. Přejděte do **Advanced Threat Protection** v záhlaví zabezpečení v podokně pro Azure SQL Database. Klikněte na tlačítko se povolit rozšířenou ochranu před internetovými útoky a potom klikněte na **Data zjišťování a klasifikace (preview)** karty.
+2. Přejděte do **rozšířené zabezpečení dat** v záhlaví zabezpečení v podokně pro Azure SQL Database. Klikněte na tlačítko Povolit pokročilé zabezpečení dat a potom klikněte na **Data zjišťování a klasifikace (preview)** karty.
 
    ![Kontrola databáze](./media/sql-data-discovery-and-classification/data_classification.png)
 
@@ -134,8 +134,8 @@ T-SQL můžete použít k přidání nebo odebrání klasifikace sloupců, jako�
 > [!NOTE]
 > Při použití jazyka T-SQL ke správě popisků, neexistuje žádné ověření, která popisky přidané k sloupec existuje v zásadě ochrany informací v organizaci (sadu popisků, které se zobrazují v portálu doporučení). Je proto vás, abyste to ověřit.
 
-- Přidat nebo aktualizovat klasifikaci jeden nebo více sloupců: [přidat klasifikace utajení](https://docs.microsoft.com/sql/t-sql/statements/add-sensitivity-classification-transact-sql)
-- Odebrání klasifikace z jednoho nebo více sloupců: [VYŘADIT klasifikace utajení](https://docs.microsoft.com/sql/t-sql/statements/drop-sensitivity-classification-transact-sql)
+- Přidat nebo aktualizovat klasifikaci jeden nebo více sloupců: [PŘIDAT KLASIFIKACI UTAJENÍ](https://docs.microsoft.com/sql/t-sql/statements/add-sensitivity-classification-transact-sql)
+- Odebrání klasifikace z jednoho nebo více sloupců: [KLASIFIKACE UTAJENÍ PŘETAŽENÍ](https://docs.microsoft.com/sql/t-sql/statements/drop-sensitivity-classification-transact-sql)
 - Zobrazit všechny klasifikace pro databázi: [sys.sensitivity_classifications](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-sensitivity-classifications-transact-sql)
 
 Můžete také použít rozhraní REST API můžete programově spravovat klasifikace. Publikovaná rozhraní REST API podporují tyto operace:
@@ -147,7 +147,7 @@ Můžete také použít rozhraní REST API můžete programově spravovat klasif
 
 ## <a id="subheading-5"></a>Další kroky
 
-- Další informace o [SQL Advanced Threat Protection](sql-advanced-threat-protection.md).
+- Další informace o [SQL rozšířené zabezpečení dat](sql-advanced-threat-protection.md).
 - Zvažte možnost nakonfigurovat [auditování služby Azure SQL Database](https://docs.microsoft.com/azure/sql-database/sql-database-auditing) pro sledování a auditování přístupu k vaší klasifikované citlivá data.
 
 <!--Anchors-->

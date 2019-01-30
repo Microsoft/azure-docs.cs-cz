@@ -10,14 +10,14 @@ ms.service: operations-management-suite
 ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 08/15/2018
+ms.date: 01/24/2019
 ms.author: bwren
-ms.openlocfilehash: ba79365ec310c7d62d0a4de07991d516430b9d41
-ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
+ms.openlocfilehash: 370483b92dcd2c468cd676a32db0ded80e8814d0
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54886135"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55216608"
 ---
 # <a name="office-365-management-solution-in-azure-preview"></a>Řešení pro správu Office 365 v Azure (Preview)
 
@@ -158,7 +158,7 @@ Pokud chcete povolit účet správce poprvé, je nutné zadat souhlas správce p
     AdminConsent -ErrorAction Stop
     ```
 
-2. Pomocí následujícího příkazu spusťte skript.
+2. Pomocí následujícího příkazu spusťte skript. Zobrazí se výzva k zadání přihlašovacích údajů dvakrát. Nejprve zadejte přihlašovací údaje pro váš pracovní prostor Log Analytics a pak přihlašovací údaje globálního správce pro Office 365 tenanta.
     ```
     .\office365_consent.ps1 -WorkspaceName <Workspace name> -ResourceGroupName <Resource group name> -SubscriptionId <Subscription ID>
     ```
@@ -351,7 +351,7 @@ Posledním krokem je přihlášení k odběru aplikace do pracovního prostoru L
 
 ### <a name="troubleshooting"></a>Řešení potíží
 
-Při pokusu o vytvoření odběru po předplatné už existuje, může se zobrazit následující chyba.
+Pokud vaše aplikace je již naslouchá na tento pracovní prostor, nebo pokud tohoto tenanta je přihlášen s jiným pracovním prostorem, může se zobrazit následující chyba.
 
 ```
 Invoke-WebRequest : {"Message":"An error has occurred."}
@@ -394,7 +394,7 @@ Můžete odebrat pomocí procesu v řešení pro správu Office 365 [odebrat ře
     $Subscription = (Select-AzureRmSubscription -SubscriptionId $($SubscriptionId) -ErrorAction Stop)
     $Subscription
     $option = [System.StringSplitOptions]::RemoveEmptyEntries 
-    $Workspace = (Set-AzureRMOperationalInsightsWorkspace -Name $($WorkspaceName) -ResourceGroupName $($ResourceGroupName) -ErrorAction Stop)
+    $Workspace = (Get-AzureRMOperationalInsightsWorkspace -Name $($WorkspaceName) -ResourceGroupName $($ResourceGroupName) -ErrorAction Stop)
     $Workspace
     $WorkspaceLocation= $Workspace.Location
     
@@ -510,7 +510,7 @@ Následující vlastnosti jsou společné pro všechny záznamy Office 365.
 
 | Vlastnost | Popis |
 |:--- |:--- |
-| Typ | *OfficeActivity* |
+| Type | *OfficeActivity* |
 | Když | IP adresa zařízení použitá při protokolování aktivity. IP adresa se zobrazí ve formátu adresy IPv4 nebo IPv6. |
 | OfficeWorkload | Služby Office 365, odkazující na záznam.<br><br>AzureActiveDirectory<br>Výměna<br>SharePoint|
 | Operace | Název aktivity uživatele nebo správce.  |

@@ -1,24 +1,24 @@
 ---
-title: 'Příklad: Volání rozhraní API pro rozpoznávání emocí ve videu'
+title: 'Příklad: Volání rozhraní API pro rozpoznávání Emocí pro videa'
 titlesuffix: Azure Cognitive Services
 description: Zjistěte, jak volat rozhraní API pro rozpoznávání emocí ve videu v rámci služeb Cognitive Services.
 services: cognitive-services
 author: anrothMSFT
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: emotion-api
+ms.subservice: emotion-api
 ms.topic: sample
 ms.date: 02/06/2017
 ms.author: anroth
 ROBOTS: NOINDEX
-ms.openlocfilehash: 6c96ab18161230ffabd0703bdb6d0230bdc8d3ba
-ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
-ms.translationtype: HT
+ms.openlocfilehash: dd2df32ed43fd540a0516b7d5c1debc6a4f49f4f
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50026258"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55211164"
 ---
-# <a name="example-call-emotion-api-for-video"></a>Příklad: Volání rozhraní API pro rozpoznávání emocí ve videu
+# <a name="example-call-emotion-api-for-video"></a>Příklad: Volání rozhraní API pro rozpoznávání Emocí pro videa
 
 > [!IMPORTANT]
 > Rozhraní API pro rozpoznávání emocí se přestane používat 15. února 2019. Funkce rozpoznávání emocí je teď obecně dostupná v rámci [rozhraní API pro rozpoznávání tváře](https://docs.microsoft.com/azure/cognitive-services/face/). 
@@ -28,7 +28,7 @@ Tato příručka ukazuje, jak volat rozhraní API pro rozpoznávání emocí ve 
 ### <a name="Prep">Příprava</a>
 Pokud chcete použít rozhraní API pro rozpoznávání emocí ve videu, budete potřebovat video s lidmi, ideálně video s lidmi, kteří stojí tváří ke kameře.
 
-### <a name="Step1">Krok 1: Autorizace volání rozhraní API</a>
+### <a name="Step1">Krok 1: Povolit volání rozhraní API</a>
 Ke každému volání rozhraní API pro rozpoznávání emocí ve videu potřebujete klíč předplatného. Tento klíč je potřeba předat buď jako parametr řetězce dotazu, nebo ho zadat v hlavičce požadavku. Pokud chcete klíč předplatného předat pomocí řetězce dotazu, použijte jako příklad následující adresu URL požadavku na rozhraní API pro rozpoznávání emocí ve videu:
 
 ```
@@ -48,7 +48,7 @@ var emotionServiceClient = new emotionServiceClient("Your subscription key");
 ```
 Pokud potřebujete získat klíč předplatného, přejděte na [předplatná](https://azure.microsoft.com/try/cognitive-services/).
 
-### <a name="Step2">Krok 2: Nahrání videa do služby a kontrola stavu</a>
+### <a name="Step2">Krok 2: Nahrát video ke službě a zkontrolovat stav</a>
 Základním způsobem, jak volat rozhraní API pro rozpoznávání emocí ve videu, je přímo nahrát video. Provede se to odesláním požadavku POST s typem obsahu application/octet-stream společně s daty přečtenými z videosouboru. Maximální velikost videa je 100 MB.
 
 Při použití klientské knihovny se předáním objektu datového proudu provádí stabilizace prostřednictvím nahrávání. Viz následující příklad:
@@ -107,7 +107,7 @@ Jakmile se stav operace VideoOperationResult změní na Succeeded (Úspěch), m�
 var emotionRecognitionJsonString = ((VideoOperationInfoResult<VideoAggregateRecognitionResult>)operationResult).ProcessingResult;
 ```
 
-### <a name="Step3">Krok 3: Načtení a porozumění výstupu JSON rozpoznávání a sledování emocí</a>
+### <a name="Step3">Krok 3: Získávání a pochopení rozpoznávání emocí a sledování výstup ve formátu JSON</a>
 
 Výstup výsledku obsahuje metadata o tvářích v daném souboru ve formátu JSON.
 

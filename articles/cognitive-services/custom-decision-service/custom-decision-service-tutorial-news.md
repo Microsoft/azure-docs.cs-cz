@@ -1,23 +1,23 @@
 ---
-title: 'Kurz: Přizpůsobení článků – Custom Decision Service'
+title: 'Kurz: Přizpůsobení článku – Custom Decision Service'
 titlesuffix: Azure Cognitive Services
 description: Tento kurz je určen pro přizpůsobení článků pro kontextové rozhodování.
 services: cognitive-services
 author: slivkins
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: custom-decision-service
+ms.subservice: custom-decision-service
 ms.topic: tutorial
 ms.date: 05/08/2018
 ms.author: slivkins
-ms.openlocfilehash: b142fe2051c017d0c0ec3c4cac6aaedd563f6cd7
-ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
-ms.translationtype: HT
+ms.openlocfilehash: 1589ef94946a6396ee51b8fecfe2ed3e80db08e5
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46366331"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55212218"
 ---
-# <a name="tutorial-article-personalization-for-contextual-decision-making"></a>Kurz: Přizpůsobení článků pro kontextové rozhodování
+# <a name="tutorial-article-personalization-for-contextual-decision-making"></a>Kurz: Přizpůsobení článku kontextové rozhodování
 
 Tento kurz se zaměřuje na přizpůsobení výběru článků na úvodní stránce webu. Služba Custom Decision Service například ovlivňuje *množství* seznamů článků na přední stránce. Stránka může být webovou stránkou se zprávami, která se zaměřuje pouze na politiku a sport. Měla by zobrazovat tři seřazené seznamy článků: politika, sport a nejnovější.
 
@@ -137,6 +137,6 @@ function callback(data) {
 
 V tomto příkladu implementujte funkci `render()` za účelem vykreslení daného článku pro danou aplikaci. Tato funkce poskytuje vstupy ID aplikace a článek (ve formátu z rozhraní Ranking API). Parametr `onClick` je funkce, která by se měla volat z `render()` pro zpracování kliknutí. Zkontroluje, jestli bylo kliknutí provedeno na horní pozici. Potom zavolá rozhraní Reward API s odpovídajícím ID aplikace a ID události.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
-* Další informace o poskytovaných funkcích najdete v [referenčních informacích o rozhraní API](custom-decision-service-api-reference.md).
+* Více informací o podporovaných funkcích se dozvíte v [referenční dokumentaci k rozhraní API](custom-decision-service-api-reference.md).

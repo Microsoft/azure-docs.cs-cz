@@ -6,16 +6,16 @@ services: cognitive-services
 author: anrothMSFT
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: custom-vision
+ms.subservice: custom-vision
 ms.topic: conceptual
 ms.date: 05/03/2018
 ms.author: anroth
-ms.openlocfilehash: 5830257cf246e059cbccb654462f709df981e06b
-ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
+ms.openlocfilehash: d53e9a7c6c4e797de66b50feae81ee291bf3da4b
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46367946"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55212201"
 ---
 # <a name="test-and-retrain-a-model-with-custom-vision-service"></a>Testování a přeučování modelů pomocí služby Custom Vision Service
 

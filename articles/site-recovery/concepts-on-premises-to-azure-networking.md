@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: mayg
-ms.openlocfilehash: 7e682850d331770766a9b97c2b4b9102af143f2e
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: a78e5c411c03aaff07818c4e45183f8eff40492d
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52836266"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55211351"
 ---
 # <a name="set-up-ip-addressing-to-connect-to-azure-vms-after-failover"></a>Nastavení IP adres pro připojení k virtuálním počítačům Azure po převzetí služeb při selhání
 
@@ -30,8 +30,8 @@ V tomto článku se dozvíte o:
 
 Při plánování replikace a převzetí služeb při selhání, jeden z klíčových otázek je, jak se připojit k virtuálnímu počítači Azure po převzetí služeb při selhání. Při navrhování strategie sítě pro virtuální počítače Azure repliky, máte několik možností:
 
-- **Použít jinou IP adresu**: můžete vybrat použít jiný rozsah IP adres pro replikované síť virtuálních počítačů Azure. V tomto scénáři virtuální počítač dostane novou IP adresu po převzetí služeb při selhání, a vyžaduje se aktualizace DNS.
-- **Zachovat stejnou IP adresu**: můžete chtít použít stejného rozsahu IP adres, který ve vaší místní lokalitě pro síť Azure po převzetí služeb při selhání. Zachování stejné IP adresy zjednodušuje obnovení snížením problémy související se sítí po převzetí služeb při selhání. Ale při replikaci do Azure, je potřeba aktualizovat trasy s novým umístěním IP adresy po převzetí služeb při selhání.
+- **Použít jinou IP adresu**: Můžete vybrat použít jiný rozsah IP adres pro replikované síť virtuálních počítačů Azure. V tomto scénáři virtuální počítač dostane novou IP adresu po převzetí služeb při selhání, a vyžaduje se aktualizace DNS.
+- **Zachovat stejnou IP adresu**: Můžete chtít použít stejného rozsahu IP adres, který ve vaší místní lokalitě pro síť Azure po převzetí služeb při selhání. Zachování stejné IP adresy zjednodušuje obnovení snížením problémy související se sítí po převzetí služeb při selhání. Ale při replikaci do Azure, je potřeba aktualizovat trasy s novým umístěním IP adresy po převzetí služeb při selhání.
 
 ## <a name="retaining-ip-addresses"></a>Zachování IP adresy
 
@@ -73,7 +73,7 @@ Pro organizaci Woodgrove mohli své virtuální počítače replikovat do Azure 
 #### <a name="site-to-site-connection"></a>Připojení Site-to-site
 
 Kromě připojení vnet-to-vnet, po převzetí služeb při selhání Woodgrove můžete nastavit připojení VPN typu site-to-site:
-- Při nastavování připojení site-to-site v síti Azure, které můžete pouze směrovat provoz do místního umístění (místní síť) Pokud rozsah adres IP se liší od místní rozsah IP adres. Je to proto, že Azure nepodporuje roztažené podsítě. Takže pokud máte podsítě 192.168.1.0/24 místní, nelze přidat 192.168.1.0/24 místní sítě v síti Azure. To je očekáváno, protože Azure nebude vědět, že neexistují žádné aktivní virtuální počítače v podsíti, a že podsíť se vytváří jenom zotavení po havárii.
+- Při nastavování připojení site-to-site v síti Azure, které můžete pouze směrovat provoz do místního umístění (místní sítě) Pokud rozsah adres IP se liší od místní rozsah IP adres. Je to proto, že Azure nepodporuje roztažené podsítě. Takže pokud máte podsítě 192.168.1.0/24 místní, nelze přidat 192.168.1.0/24 místní sítě v síti Azure. To je očekáváno, protože Azure nebude vědět, že neexistují žádné aktivní virtuální počítače v podsíti, a že podsíť se vytváří jenom zotavení po havárii.
 - Aby bylo možné správně směrování síťového provozu mimo síť Azure, nesmí být v konfliktu podsítě v síti a v místní síti.
 
 

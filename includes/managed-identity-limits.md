@@ -4,17 +4,17 @@ description: zahrnout soubor
 services: active-directory
 author: daveba
 ms.service: active-directory
-ms.component: msi
+ms.subservice: msi
 ms.topic: include
 ms.date: 05/31/2018
 ms.author: daveba
 ms.custom: include file
-ms.openlocfilehash: 55814f5515649e0fc6d646d3580f281fd9ec37a5
-ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
+ms.openlocfilehash: 7cdd2ce44cfa24b2b6bad2bb45260299bc8eda5f
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51191422"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55252366"
 ---
 | Kategorie | Omezení |
 | --- | --- |

@@ -1,26 +1,22 @@
 ---
 title: Řešení potíží s převzetí služeb při selhání do Azure selhání | Dokumentace Microsoftu
 description: Tento článek popisuje, jak řešit běžné chyby v přebírání služeb při selhání do Azure
-services: site-recovery
-documentationcenter: ''
 author: ponatara
 manager: abhemraj
-editor: ''
-ms.assetid: ''
 ms.service: site-recovery
+services: site-recovery
 ms.topic: article
-ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
-ms.date: 12/11/2018
+ms.date: 1/29/2019
 ms.author: mayg
-ms.openlocfilehash: 742e7891ec9c7151f23f1ad6eb57e728dd2a1ddd
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: 62b69364f0b3d3e14d0b2d877604cecfcc346dce
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53255087"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55207492"
 ---
-# <a name="troubleshoot-errors-when-failing-over-a-virtual-machine-to-azure"></a>Řešení chyb při selhání virtuálního počítače do Azure
+# <a name="troubleshoot-errors-when-failing-over-vmware-vm-or-physical-machine-to-azure"></a>Řešení chyb při selhání virtuálního počítače VMware nebo fyzických počítačů do Azure
 
 Může zobrazit jedna z následující chyby při provádění převzetí služeb při selhání virtuálního počítače do Azure. Řešení potíží s, popsané kroky použijte pro všechny chybové stavy.
 
@@ -48,7 +44,9 @@ Site Recovery se nepodařilo vytvořit nezdařené přes klasický virtuální p
 
 Site Recovery se nepodařilo vytvořit nezdařené přes virtuální počítač v Azure. K tomu mohlo dojít, protože se nepovedlo interní aktivitu dosazení dat pro místní virtuální počítač.
 
-Zobrazíte všechny počítače v Azure, prostředí Azure vyžaduje některé z ovladačů ve spouštěcí start stavu a služeb, jako je DHCP ve stavu automatické spuštění. Proto dosazení dat do aktivity, v okamžiku převzetí služeb při selhání, převede typ spouštění **atapi, intelide, storflt, vmbus a storvsc ovladače** do začátku spuštění. Také převádí typ spuštění několik služeb, jako je DHCP na automatické spuštění. Tato aktivita může selhat z důvodu konkrétní chyby prostředí. Chcete-li ručně změnit typ spouštění ovladačů, postupujte následujících kroků:
+Zobrazíte všechny počítače v Azure, prostředí Azure vyžaduje některé z ovladačů ve spouštěcí start stavu a služeb, jako je DHCP ve stavu automatické spuštění. Proto dosazení dat do aktivity, v okamžiku převzetí služeb při selhání, převede typ spouštění **atapi, intelide, storflt, vmbus a storvsc ovladače** do začátku spuštění. Také převádí typ spuštění několik služeb, jako je DHCP na automatické spuštění. Tato aktivita může selhat z důvodu konkrétní chyby prostředí. 
+
+Ruční změna typu spouštění ovladače pro **hostovaného operačního systému Windows**, postupujte následujících kroků:
 
 1. [Stáhněte si](http://download.microsoft.com/download/5/D/6/5D60E67C-2B4F-4C51-B291-A97732F92369/Script-no-hydration.ps1) ne dosazování skript a spustit ho jako následující. Tento skript kontroluje, pokud virtuální počítač dosazování.
 
@@ -78,7 +76,7 @@ Zobrazíte všechny počítače v Azure, prostředí Azure vyžaduje některé z
 
 Pokud **připojit** tlačítko na převzetí virtuálního počítače v Azure je zobrazena šedě a nejste připojení k Azure přes Expressroute nebo VPN typu Site-to-Site připojení, potom
 
-1. Přejděte na **virtuálního počítače** > **sítě**, klikněte na název požadované síťové rozhraní.  ![síťové rozhraní](media/site-recovery-failover-to-azure-troubleshoot/network-interface.PNG)
+1. Přejděte na **virtuálního počítače** > **sítě**, klikněte na název požadované síťové rozhraní.  ![network-interface](media/site-recovery-failover-to-azure-troubleshoot/network-interface.PNG)
 2. Přejděte do **konfigurací protokolu Ip**, potom klikněte na název pole požadované konfigurace protokolu IP. ![Konfigurací IP adresy](media/site-recovery-failover-to-azure-troubleshoot/IpConfigurations.png)
 3. Pokud chcete povolit veřejné IP adresy, klikněte na **povolit**. ![Povolit IP adresu](media/site-recovery-failover-to-azure-troubleshoot/Enable-Public-IP.png)
 4. Klikněte na **konfigurovat požadované nastavení** > **vytvořit nový**. ![Vytvořit nový](media/site-recovery-failover-to-azure-troubleshoot/Create-New-Public-IP.png)

@@ -6,16 +6,16 @@ services: cognitive-services
 author: v-jaswel
 manager: nolachar
 ms.service: cognitive-services
-ms.component: conversation-learner
+ms.subservice: conversation-learner
 ms.topic: article
 ms.date: 04/30/2018
 ms.author: v-jaswel
-ms.openlocfilehash: b048509f38356b19d52507f4dfb5bfa61122f9f6
-ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
+ms.openlocfilehash: 8050008bbae4a23f09b5fa94874a6315e798b448
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45576421"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55211283"
 ---
 # <a name="default-values-and-boundaries"></a>Výchozí hodnoty a hranice
 

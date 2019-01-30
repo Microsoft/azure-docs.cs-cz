@@ -15,12 +15,13 @@ ms.topic: article
 ms.date: 09/12/2018
 ms.author: jeffgilb
 ms.reviewer: wfayed
-ms.openlocfilehash: 3cbe7c1d458e95aa27c51f0d1c9f61326888a5ab
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.lastreviewed: 09/12/2018
+ms.openlocfilehash: afb4e634b7e255ef8f2cfc84319029af7412372e
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52962677"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55251873"
 ---
 # <a name="datacenter-integration-considerations-for-azure-stack-integrated-systems"></a>Důležité informace o integraci Datacenter pro integrované systémy Azure Stack
 Pokud vás zajímá systémech pro Azure Stack integrované, měli byste porozumět některé hlavní rozhodnutí při plánování nasazení a jak se systém zapadá do vašeho datového centra. Tento článek obsahuje základní přehled o tyto aspekty, které pomůžou při rozhodování důležitou infrastrukturu pro váš systém Azure Stack víc uzlů. Znalost těchto aspektů pomáhá při práci s OEM dodavatele hardwaru, jako jsou nasazení do vašeho datového centra Azure Stack.  
@@ -67,7 +68,7 @@ Můžete také integrovat službu grafu ve službě Azure Stack s existující s
 Následující diagram znázorňuje integrované služby AD FS a grafu toku provozu.
 ![Diagram znázorňující tok provozu služby AD FS a grafu](media/azure-stack-datacenter-integration/ADFSIntegration.PNG)
 
-## <a name="licensing-model"></a>Licenční model
+## <a name="licensing-model"></a>Model licencování
 Musíte rozhodnout, které licenčního modelu, který chcete použít. Dostupné možnosti závisí na Určuje, jestli nasazení Azure Stack připojený k Internetu:
 - Pro [připojené nasazení](azure-stack-connected-deployment.md), můžete platit jako využití nebo založená na kapacitě licencování. Platba jako využití vyžaduje připojení k Azure pro využití sestav, které se pak fakturuje v rámci Azure commerce. 
 - Pouze licencování na základě kapacity je podporován, když jste [nasazení odpojení](azure-stack-disconnected-deployment.md) z Internetu. 
@@ -87,7 +88,7 @@ Bude potřeba uvažovat o způsobu plánování oboru názvů služby Azure Stac
 
 Následující tabulka shrnuje tato rozhodnutí názvů domény.
 
-| Název | Popis | 
+| Name | Popis | 
 | -------- | ------------- | 
 |Název oblasti | Název vaší první oblasti Azure Stack. Tento název se používá jako součást plně kvalifikovaný název domény pro veřejnou virtuální IP adresy (VIP), které spravuje Azure Stack. Název oblasti obvykle by měl být identifikátor fyzické umístění, jako je například umístění datového centra.<br><br>Název oblasti musí obsahovat jenom písmena a číslice mezi 0 až 9. Žádné speciální znaky, například "-" nebo "#", atd. jsou povoleny.| 
 | Název externí domény | Název zóny systému DNS (Domain Name) pro koncové body s externích virtuálních IP adres. Používá se v plně kvalifikovaný název domény pro tyto veřejné virtuální IP adresy. | 
@@ -196,7 +197,7 @@ Replikace dat do sekundárního umístění a orchestrovat převzetí služeb p�
 ## <a name="learn-more"></a>Další informace
 
 - Informace o případy použití, nákup, partnery a dodavateli hardwaru OEM, najdete v článku [Azure Stack](https://azure.microsoft.com/overview/azure-stack/) stránce produktu.
-- Informace o plánu a geografické dostupnosti pro službu Azure Stack integrované systémy, najdete v dokumentu white paper: [Azure Stack: rozšíření Azure](https://azure.microsoft.com/resources/azure-stack-an-extension-of-azure/). 
+- Informace o plánu a geografické dostupnosti pro službu Azure Stack integrované systémy, najdete v dokumentu white paper: [Azure Stack: Rozšíření Azure](https://azure.microsoft.com/resources/azure-stack-an-extension-of-azure/). 
 
 ## <a name="next-steps"></a>Další postup
 [Modely připojení nasazení služby Azure Stack](azure-stack-connection-models.md)

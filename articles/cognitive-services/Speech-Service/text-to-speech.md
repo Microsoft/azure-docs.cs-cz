@@ -6,17 +6,17 @@ services: cognitive-services
 author: erhopf
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: speech-service
+ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 12/13/2018
 ms.author: erhopf
 ms.custom: seodec18
-ms.openlocfilehash: b06864e08f6edf52e4c96c33c88bba9f8ef4e859
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: b413bd65582dceadd9aab912694c3b560070c4f3
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53343203"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55251550"
 ---
 # <a name="about-the-text-to-speech-api"></a>O rozhraní API pro převod textu na řeč
 
@@ -37,6 +37,9 @@ Mezi scénáře, v které řeči syntézu přijali patří:
 ## <a name="voice-support"></a>Podpora hlasu
 
 Microsoft **převod textu na řeč** služba nabízí více než 75 hlasy ve více než 45 jazyků a národních prostředí. Pokud chcete použít tyto standardní "hlasová písma", stačí zadat název hlas s několika dalších parametrů při volání rozhraní REST API služby. Další informace o podporovaných jazycích, národních prostředích a hlasy najdete v tématu [podporované jazyky](language-support.md#text-to-speech).
+
+> [!IMPORTANT]
+> Náklady se liší pro standardní, vlastní a neuronových sítí hlasy. Další informace najdete v tématu [ceny](https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/).
 
 ### <a name="neural-voices"></a>Neurální hlasů
 
@@ -64,6 +67,6 @@ Mnoho funkcí **převod textu na řeč** rozhraní API, zejména v oblasti Vlast
 ## <a name="next-steps"></a>Další postup
 
 * [Pořiďte si předplatné služby zdarma řeči](https://azure.microsoft.com/try/cognitive-services/)
-* [Rychlý start: Převést převod textu na řeč, Python](quickstart-python-text-to-speech.md)
-* [Rychlý start: Převést převod textu na řeč, .NET Core](quickstart-dotnet-text-to-speech.md)
+* [Rychlé zprovoznění: Převést převod textu na řeč, Python](quickstart-python-text-to-speech.md)
+* [Rychlé zprovoznění: Převést převod textu na řeč, .NET Core](quickstart-dotnet-text-to-speech.md)
 * [REST API – referenční informace](rest-apis.md)

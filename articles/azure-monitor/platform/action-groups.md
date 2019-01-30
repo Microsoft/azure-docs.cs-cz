@@ -5,19 +5,19 @@ author: dkamstra
 services: azure-monitor
 ms.service: azure-monitor
 ms.topic: conceptual
-ms.date: 11/30/2018
+ms.date: 1/29/2019
 ms.author: dukek
 ms.subservice: alerts
-ms.openlocfilehash: 38cccf17980f5a6a2cf162cdecdc6aad40d4f38e
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: 5717074d53e267018b7697aeed21ea00d246592e
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54432553"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55252213"
 ---
 # <a name="create-and-manage-action-groups-in-the-azure-portal"></a>Vytvoření a Správa skupin akcí na webu Azure Portal
 ## <a name="overview"></a>Přehled ##
-Skupiny akcí je kolekce předvolby oznamování určené vlastník předplatného Azure. Upozornění Azure Monitor a stavy služeb použití skupin akcí uživatelům oznámit, že výstraha byla aktivována. Různé výstrahy použít stejnou skupinu akcí nebo skupiny různých akcí v závislosti na požadavcích uživatele.
+Skupiny akcí je kolekce předvolby oznamování určené vlastník předplatného Azure. Upozornění Azure Monitor a stavy služeb použití skupin akcí uživatelům oznámit, že výstraha byla aktivována. Různé výstrahy použít stejnou skupinu akcí nebo skupiny různých akcí v závislosti na požadavcích uživatele. V rámci předplatného můžete nakonfigurovat až 2 000 skupin akcí.
 
 Když akce konfigurován pro osoby pro oznámení e-mailem nebo SMS osoby se zobrazí potvrzení, která udává, že / Jana se přidal do skupiny akcí.
 
@@ -88,15 +88,18 @@ Můžete mít až 1 000 e-mailových akcí do skupiny akcí. Zobrazit [tady info
 **Hlasové** -může obsahovat až 10 hlasové akce skupiny akcí</dd>
 Zobrazit [tady informace](./../../azure-monitor/platform/alerts-rate-limiting.md) článku</dd>
 
-**Webhook** – můžete mít až 10 akce Webhooku v skupiny akcí. Zkuste logic - časový limit pro odpověď je 10 sekund. Volání webhooku se bude opakovat maximálně 2 při následující stavové kódy HTTP vrácené časy jsou časy: 408, 429, 503, 504 nebo koncový bod HTTP neodpovídá. Prvním opakováním se stane po 10 sekundách. Druhý a poslední opakování se stane po 100 sekund.
+**Webhook** – můžete mít až 10 akce Webhooku v skupiny akcí.
+Zkuste logic - časový limit pro odpověď je 10 sekund. Volání webhooku se bude opakovat maximálně 2 při následující stavové kódy HTTP vrácené časy jsou časy: 408, 429, 503, 504 nebo koncový bod HTTP neodpovídá. Prvním opakováním se stane po 10 sekundách. Druhý opakování se stane po 100 sekund. Po dvou selháních nebude koncový bod volána po dobu 30 minut všechny skupiny akcí.
 
 Zdrojové rozsahy IP adres
+    - 13.72.19.232
     - 13.106.57.181
     - 13.106.54.3
     - 13.106.54.19
     - 13.106.38.142
     - 13.106.38.148
     - 13.106.57.196
+    - 52.244.68.117
 
 Získat informace o změnách na tyto IP adresy, doporučujeme, abyste konfiguraci [upozornění na stav služby](./../../azure-monitor/platform/service-notifications.md) monitoruje informační upozornění týkající se služby skupiny akcí.
 

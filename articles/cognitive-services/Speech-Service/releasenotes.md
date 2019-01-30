@@ -6,21 +6,21 @@ services: cognitive-services
 author: wolfma61
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: speech-service
+ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 12/18/2018
 ms.author: wolfma
 ms.custom: seodec18
-ms.openlocfilehash: 7485ca1e4b1143ed46c9b3bef9ca66af0638b4f8
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.openlocfilehash: 80cf0d9970eb7052eeb19fb297176453864202cf
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53599412"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55205691"
 ---
 # <a name="release-notes"></a>Poznámky k verzi
 
-## <a name="speech-sdk-120-2018-december-release"></a>Sada SDK 1.2.0 řeči: Verze prosince 2018
+## <a name="speech-sdk-120-2018-december-release"></a>Speech SDK 1.2.0: Verze prosince 2018
 
 **Nové funkce**
 
@@ -53,15 +53,15 @@ ms.locfileid: "53599412"
 * C#: Pokud asynchronní operace nebyla očekávána v hlavním vlákně, bylo možné že nástroj pro rozpoznávání může být uvolněn předtím, než se asynchronní úloha byla dokončena.
 * Java: Opravili jsme problém, což vede k chybovému ukončení virtuálního počítače Java.
 * Objective-C: Oprava výčtu mapování; RecognizedIntent vrátila místo RecognizingIntent.
-* Jazyk JavaScript: Nastavení výchozího formátu výstupu na jednoduché v SpeechConfig.
-* Jazyk JavaScript: Odebírá se nekonzistence mezi vlastnosti objektu konfigurace v jazyce JavaScript a další jazyky.
+* JavaScript: Nastavení výchozího formátu výstupu na jednoduché v SpeechConfig.
+* JavaScript: Odebírá se nekonzistence mezi vlastnosti objektu konfigurace v jazyce JavaScript a další jazyky.
 
 **Ukázky**
 
 * Aktualizace a opravy několik vzorových (například výstup hlasy pro překlad atd).
 * Přidání ukázky Node.js v [ukázkové úložiště](https://aka.ms/csspeech/samples).
 
-## <a name="speech-sdk-110"></a>Rozpoznávání řeči SDK 1.1.0
+## <a name="speech-sdk-110"></a>Speech SDK 1.1.0
 
 **Nové funkce**
 
@@ -92,7 +92,7 @@ ms.locfileid: "53599412"
 
 * Přidání C++ a C# samplea pull a push využití datový proud v [ukázkové úložiště](https://aka.ms/csspeech/samples).
 
-## <a name="speech-sdk-101"></a>Sada SDK 1.0.1 řeči
+## <a name="speech-sdk-101"></a>Speech SDK 1.0.1
 
 Vylepšení spolehlivosti a opravy chyb:
 
@@ -101,7 +101,7 @@ Vylepšení spolehlivosti a opravy chyb:
 * Přidané Další chyba a Kontrola parametrů.
 * Objective-C: Oprava možné závažná chyba způsobila přepsáním název v NSString.
 * Objective-C: Upravené viditelnost rozhraní API
-* Jazyk JavaScript: Opravili jsme týkající se událostí a instalační soubory.
+* JavaScript: Opravili jsme týkající se událostí a instalační soubory.
 * Dokumentace k vylepšení.
 
 V našem [ukázkové úložiště](https://aka.ms/csspeech/samples), byl přidán nový ukázky pro jazyk JavaScript.
@@ -169,7 +169,7 @@ V našem [ukázkové úložiště](https://aka.ms/csspeech/samples), byl přidá
    * V jazyce Java `read` metody nyní vrací `long` místo `int`.
    * V jazyce C# `Read` metody nyní vrací `uint` místo `int`.
    * V jazyce C++ `Read` a `GetFormat` metody nyní návratový `size_t` místo `int`.
-* JAZYK C++: Instance vstupního audiostreamy nyní mohou být předány pouze jako `shared_ptr`.
+* C++: Instance vstupního audiostreamy nyní mohou být předány pouze jako `shared_ptr`.
 
 **Opravy chyb**
 

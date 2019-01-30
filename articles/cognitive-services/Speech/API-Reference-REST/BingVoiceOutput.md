@@ -6,16 +6,16 @@ services: cognitive-services
 author: priyaravi20
 manager: yanbo
 ms.service: cognitive-services
-ms.component: bing-speech
+ms.subservice: bing-speech
 ms.topic: article
 ms.date: 09/18/2018
 ms.author: priyar
-ms.openlocfilehash: db69a9e3beb819600109603a8c0129547db57fa5
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
+ms.openlocfilehash: 61bd1879a4b1bf8281ac03c8254fb3d48c07a139
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49343023"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55215856"
 ---
 # <a name="bing-text-to-speech-api"></a>Převod textu na řeč z Bingu rozhraní API
 
@@ -40,7 +40,7 @@ Content-Length: 0
 
 Informace o požadované záhlaví pro přístup pomocí tokenu je následujícím způsobem.
 
-Název| Formát | Popis
+Name| Formát | Popis
 ----|----|----
 OCP-Apim-Subscription-Key | ASCII | Váš klíč předplatného
 
@@ -59,10 +59,10 @@ Následující koncový bod musí ho klienti používat pro přístup k převod 
 
 V následující tabulce jsou uvedeny hlavičky protokolu HTTP, které se používají pro hlasové požadavky syntézu.
 
-Hlavička |Hodnota |Komentáře
+Hlavička |Value |Komentáře
 ----|----|----
 Typ obsahu | aplikace/ssml + xml | Vstupní typ obsahu.
-X-Microsoft-OutputFormat | **1.** ssml – 16 khz – 16 bitů-mono – převod textu na řeč <br> **2.** nezpracovaná – 16 khz – 16 bitů-mono-pcm <br>**3.** zvuk – 16 khz – 16 kb/s – mono-siren <br> **4.** riff – 16 khz – 16 kb/s – mono-siren <br> **5.** riff – 16 khz – 16 bitů-mono-pcm <br> **6.** zvuk – 16 khz-128kbitrate-mono-mp3 <br> **7.** zvuk – 16 khz-64kbitrate-mono-mp3 <br> **8.** zvuk – 16 khz-32kbitrate-mono-mp3 | Zvukový formát výstupu.
+X-Microsoft-OutputFormat | **1.** ssml – 16 khz – 16 bitů-mono – převod textu na řeč <br> **2.** nezpracovaná – 16 khz – 16 bitů-mono-pcm <br>**3.** audio-16khz-16kbps-mono-siren <br> **4.** riff-16khz-16kbps-mono-siren <br> **5.** riff – 16 khz – 16 bitů-mono-pcm <br> **6.** audio-16khz-128kbitrate-mono-mp3 <br> **7.** audio-16khz-64kbitrate-mono-mp3 <br> **8.** audio-16khz-32kbitrate-mono-mp3 | Zvukový formát výstupu.
 X-Search-AppId | Identifikátor GUID (pouze hex, pomlčky) | ID, které jednoznačně identifikuje klientskou aplikaci. To může být ID úložiště pro aplikace. Pokud není k dispozici, může být ID uživatele vygenerované aplikace.
 X-Search-ClientID | Identifikátor GUID (pouze hex, pomlčky) | ID, které jednoznačně identifikuje instance aplikace pro každou instalaci.
 Uživatelský Agent | Název aplikace | Název aplikace je povinné a musí být kratší než 255 znaků.
@@ -179,7 +179,7 @@ Rozhraní API pro převod textu na řeč k Microsoft podporuje SSML 1.0 podle W3
   ```
 
 > [!NOTE]
-> Poznámka: zvukových dat musí být 8 kB nebo 16 kB wav zaznamenaná v následujícím formátu: **CRC kód** (CRC-32): 4 bajty (DWORD) s platným rozsahem 0x00000000 ~ 0xFFFFFFFF; **Zvuk formátu příznak**: 4 bajty (DWORD) s platným rozsahem 0x00000000 ~ 0xFFFFFFFF; **Počet vzorků**: 4 bajty (DWORD) s platným rozsahem 0x00000000 ~ 0x7FFFFFFF; **Velikost binární tělo**: 4 bajty (DWORD) s platným rozsahem 0x00000000 ~ 0x7FFFFFFF; **Binární tělo**: n bajtů.
+> Poznámka: zvukových dat musí být 8 kB nebo 16 kB wav zaznamenaná v následujícím formátu: **Kód CRC** (CRC-32): 4 bajty (DWORD) s platným rozsahem 0x00000000 ~ 0xFFFFFFFF; **Zvuk formátu příznak**: 4 bajty (DWORD) s platným rozsahem 0x00000000 ~ 0xFFFFFFFF; **Počet vzorků**: 4 bajty (DWORD) s platným rozsahem 0x00000000 ~ 0x7FFFFFFF; **Velikost binární tělo**: 4 bajty (DWORD) s platným rozsahem 0x00000000 ~ 0x7FFFFFFF; **Binární tělo**: n bajtů.
 
 ## <a name="SampleApp"></a>Ukázkové aplikace
 
@@ -191,7 +191,7 @@ V následující tabulce jsou uvedeny některé z podporovaných národních pro
 
 Národní prostředí | Pohlaví | Název mapování služby
 ---------|--------|------------
-ar – třeba * | Žena | "Microsoft Server řeči Text na řeč hlas (ar např Hoda)"
+ar-EG* | Žena | "Microsoft Server řeči Text na řeč hlas (ar např Hoda)"
 ar-SA | Muž | "Microsoft serveru řeči Text na řeč hlas (ar-SA, Naayf)"
 bg-BG | Muž | "Microsoft Server řeči převod textu na řeč hlasové (bg – BG, Ivan)"
 ES certifikační autority | Žena | "Microsoft Server řeči převod textu na řeč hlasové (ca-ES, HerenaRUS)"
@@ -214,9 +214,9 @@ cs IE | Muž | "Microsoft serveru řeči Text na řeč hlas (en-IE, Sean)"
 en-IN | Žena | "Microsoft serveru řeči Text na řeč hlas (en-IN, Heera, Apollo)"
 en-IN | Žena | "Microsoft serveru řeči Text na řeč hlas (en-IN, PriyaRUS)"
 en-IN | Muž | "Microsoft serveru řeči Text na řeč hlas (en-IN, Ravi, Apollo)"
-cs-CZ | Žena | "Microsoft serveru řeči Text na řeč hlas (en US, ZiraRUS)"
-cs-CZ | Žena | "Microsoft serveru řeči Text na řeč hlas (en US, JessaRUS)"
-cs-CZ | Muž | "Microsoft serveru řeči Text na řeč hlas (en US, BenjaminRUS)"
+en-US | Žena | "Microsoft serveru řeči Text na řeč hlas (en US, ZiraRUS)"
+en-US | Žena | "Microsoft serveru řeči Text na řeč hlas (en US, JessaRUS)"
+en-US | Muž | "Microsoft serveru řeči Text na řeč hlas (en US, BenjaminRUS)"
 es-ES | Žena | "Microsoft Server řeči převod textu na řeč hlasové (es-ES, Laura, Apollo)"
 es-ES | Žena | "Microsoft Server řeči převod textu na řeč hlasové (es-ES, HelenaRUS)"
 es-ES | Muž | "Microsoft Server řeči převod textu na řeč hlasové (es-ES, tablet Pablo, Apollo)"

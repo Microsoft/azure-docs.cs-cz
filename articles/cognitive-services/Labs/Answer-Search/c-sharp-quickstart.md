@@ -1,23 +1,23 @@
 ---
-title: 'Rychlý start: Project Answer Search, C#'
+title: 'Rychlý start: Hledání odpovědí projekt,C#'
 titlesuffix: Azure Cognitive Services
 description: Ukázka kódu, která vám pomůže začít používat Project Answer Search s jazykem C#.
 services: cognitive-services
 author: mikedodaro
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: answer-search
+ms.subservice: answer-search
 ms.topic: quickstart
 ms.date: 04/13/2018
 ms.author: rosh
-ms.openlocfilehash: 6d00c420ba84ea78235e138977cc4b5fde4fae64
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
-ms.translationtype: HT
+ms.openlocfilehash: fa6ee10b9597c32be11d15cad2a63eefe768472c
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49464841"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55207424"
 ---
-# <a name="quickstart-project-answer-search-query-in-c"></a>Rychlý start: Dotaz Project Answer Search v C#
+# <a name="quickstart-project-answer-search-query-in-c"></a>Rychlý start: Hledání odpovědí dotazu projektu v jazyce C#
 
 Následující příklad kódu v C# vytvoří a odešle dotaz na informace o třetím zákoně integrálního počtu.
 
@@ -194,5 +194,5 @@ Spusťte aplikaci:
 3. Hodnotu `YOUR-ACCESS-KEY` nahraďte platným přístupovým klíčem pro vaše předplatné.
 4. Spusťte program.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 [Rychlý start pro Javu](java-quickstart.md)

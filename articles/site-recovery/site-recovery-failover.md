@@ -6,14 +6,14 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 12/27/2018
-ms.author: raynew
-ms.openlocfilehash: 3d07b7156800b50daa75978add3ad3922108f142
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.date: 1/18/2019
+ms.author: mayg
+ms.openlocfilehash: 05a60ff2b2995642f797897d0e1f4db46c5b6741
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53974008"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55215839"
 ---
 # <a name="fail-over-vms-and-physical-servers"></a>Převzetí služeb při selhání virtuálních počítačů a fyzických serverů 
 
@@ -27,7 +27,7 @@ Použijte následující tabulku vědět o možnosti převzetí služeb při sel
 
 | Scénář | Požadavek na obnovení aplikace | Pracovní postup pro Hyper-V | Pracovní postup pro VMware
 |---|--|--|--|
-|Plánované převzetí služeb při selhání kvůli výpadku nadcházející datacenter| Nulová ztráta dat pro aplikace, kdy se provádí plánované aktivity| Pro Hyper-V Azure Site Recovery replikuje data s frekvencí kopírování, která je zadaná uživatelem. Plánované převzetí služeb při selhání se používá k přepsání četnost a replikace poslední změny předtím, než je zahájeno převzetí služeb při selhání. <br/> <br/> 1.    Naplánujte časové období údržby podle procesu správy změn vaši firmu. <br/><br/> 2. upozorněte uživatele na nadcházející výpadek. <br/><br/> 3. Přepněte do režimu offline aplikaci zaměřené na uživatele.<br/><br/>4. zahajte plánované převzetí služeb při selhání pomocí portálu Azure Site Recovery. Místní virtuální počítač je automaticky k jeho vypnutí.<br/><br/>Účinné používání ztrátě dat = 0 <br/><br/>Deník bodů obnovení je také součástí interval uchovávání dat pro uživatele, který chce použít staršího bodu obnovení. (24 hodin uchovávání dat pro technologii Hyper-V).| Azure Site Recovery pro replikaci z VMware, replikuje data neustále pomocí distribučního místa seznamu CRL. Převzetí služeb při selhání umožňuje uživateli možnost převzetí služeb při selhání na nejnovější data (včetně příspěvek aplikace vypnuto)<br/><br/> 1. Naplánovat časové období údržby podle procesu správy změn <br/><br/>2. upozornit uživatele na nadcházející výpadek <br/><br/>3.    Přepněte do režimu offline aplikaci zaměřené na uživatele. <br/><br/>4.  Zahajte plánované převzetí služeb při selhání pomocí portálu Azure Site Recovery k nejnovějšímu bodu po aplikace je offline. Pomocí možnosti "Neplánované převzetí služeb při selhání" na portál a vyberte nejnovější bod pro převzetí služeb při selhání. Místní virtuální počítač je automaticky k jeho vypnutí.<br/><br/>Účinné používání ztrátě dat = 0 <br/><br/>Deník bodů obnovení v intervalu se poskytuje pro zákazníky, kteří chce použít staršího bodu obnovení. (72 hodin dobu uchování pro replikaci z VMware).
+|Plánované převzetí služeb při selhání kvůli výpadku nadcházející datacenter| Nulová ztráta dat pro aplikace, kdy se provádí plánované aktivity| Pro Hyper-V Azure Site Recovery replikuje data s frekvencí kopírování, která je zadaná uživatelem. Plánované převzetí služeb při selhání se používá k přepsání četnost a replikace poslední změny předtím, než je zahájeno převzetí služeb při selhání. <br/> <br/> 1.    Naplánujte časové období údržby podle procesu správy změn vaši firmu. <br/><br/> 2. upozorněte uživatele na nadcházející výpadek. <br/><br/> 3. Přepněte do režimu offline aplikaci zaměřené na uživatele.<br/><br/>4. zahajte plánované převzetí služeb při selhání pomocí portálu Azure Site Recovery. Místní virtuální počítač je automaticky k jeho vypnutí.<br/><br/>Účinné používání ztrátě dat = 0 <br/><br/>Deník bodů obnovení je také součástí interval uchovávání dat pro uživatele, který chce použít staršího bodu obnovení. (24 hodin uchovávání dat pro technologii Hyper-V). Pokud replikace se zastavil nad rámec časovém intervalu uchovávání dat, zákazníci mohou mít stále moct převzetí služeb při selhání pomocí nejnovější dostupné body obnovení. | Azure Site Recovery pro replikaci z VMware, replikuje data neustále pomocí distribučního místa seznamu CRL. Převzetí služeb při selhání umožňuje uživateli možnost převzetí služeb při selhání na nejnovější data (včetně příspěvek aplikace vypnuto)<br/><br/> 1. Naplánovat časové období údržby podle procesu správy změn <br/><br/>2. upozornit uživatele na nadcházející výpadek <br/><br/>3.    Přepněte do režimu offline aplikaci zaměřené na uživatele. <br/><br/>4.  Zahajte plánované převzetí služeb při selhání pomocí portálu Azure Site Recovery k nejnovějšímu bodu po aplikace je offline. Pomocí možnosti "Neplánované převzetí služeb při selhání" na portál a vyberte nejnovější bod pro převzetí služeb při selhání. Místní virtuální počítač je automaticky k jeho vypnutí.<br/><br/>Účinné používání ztrátě dat = 0 <br/><br/>Deník bodů obnovení v intervalu se poskytuje pro zákazníky, kteří chce použít staršího bodu obnovení. (72 hodin dobu uchování pro replikaci z VMware). Pokud replikace se zastavil nad rámec časovém intervalu uchovávání dat, zákazníci mohou mít stále moct převzetí služeb při selhání pomocí nejnovější dostupné body obnovení.
 |Převzetí služeb při selhání kvůli výpadku neplánované datacenter (přirozený nebo IT po havárii) | Minimální úniku informací u aplikace | 1. zahájit plán BCP organizace. <br/><br/>2. Zahájení neplánovaného převzetí služeb při selhání pomocí portálu Azure Site Recovery na nejnovější verzi nebo bodu z interval uchovávání dat (deník).| 1. Spustit plán BCP organizace. <br/><br/>2.  Zahájení neplánovaného převzetí služeb při selhání pomocí portálu Azure Site Recovery na nejnovější verzi nebo bodu z interval uchovávání dat (deník).
 
 
@@ -97,7 +97,7 @@ Převzetí služeb při selhání virtuálních počítačů v určitých příp
 * Virtuální počítače Hyper-V chráněné jako fyzické servery
 * Virtuální počítače VMware, kde nejsou k dispozici jako následující ovladače spuštění ovladače
     * storvsc
-    * VMBus
+    * vmbus
     * storflt
     * Intelide
     * ATAPI

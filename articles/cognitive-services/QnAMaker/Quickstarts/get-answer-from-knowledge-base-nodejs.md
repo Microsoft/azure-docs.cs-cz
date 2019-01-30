@@ -1,21 +1,21 @@
 ---
-title: 'Rychlý start: Získat odpověď ze znalostní báze knowledge base - REST, Node.js – QnA Maker'
+title: 'Rychlý start: Získání odpovědí ze znalostní báze knowledge base - REST, Node.js – QnA Maker'
 titlesuffix: Azure Cognitive Services
 description: V tomto rychlém startu založené na Node.js REST provede získat odpověď ze znalostní báze, prostřednictvím kódu programu.
 services: cognitive-services
 author: diberry
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: qna-maker
+ms.subservice: qna-maker
 ms.topic: quickstart
 ms.date: 11/19/2018
 ms.author: diberry
-ms.openlocfilehash: 9a3db996429bbbd0883643e2b7c6622dcff5480f
-ms.sourcegitcommit: 8314421d78cd83b2e7d86f128bde94857134d8e1
+ms.openlocfilehash: 720d249321d20161b6a1ef19bb522ec6c2fc665e
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/19/2018
-ms.locfileid: "51977448"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55216667"
 ---
 # <a name="get-answers-to-a-question-from-a-knowledge-base-with-nodejs"></a>Získejte odpovědi na dotaz zadaný ze znalostní báze s využitím Node.js
 

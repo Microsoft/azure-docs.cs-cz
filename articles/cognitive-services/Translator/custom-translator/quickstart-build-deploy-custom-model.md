@@ -5,16 +5,16 @@ description: V tomto rychlém startu projděte si podrobný postup vytváření 
 author: rajdeep-in
 manager: christw
 ms.service: cognitive-services
-ms.component: custom-translator
+ms.subservice: custom-translator
 ms.date: 11/13/2018
 ms.author: v-rada
 ms.topic: quickstart
-ms.openlocfilehash: cb713ac53b399d8ba79d003ee6d948bb5af5220b
-ms.sourcegitcommit: 8314421d78cd83b2e7d86f128bde94857134d8e1
+ms.openlocfilehash: 61e02a1c85e89e207a96ba56e068eaa96bff6b94
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/19/2018
-ms.locfileid: "51975768"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55205858"
 ---
 # <a name="quickstart-build-deploy-and-use-a-custom-model-for-translation"></a>Rychlý start: Vytvořit, nasadit a používat vlastní model pro překlad
 
@@ -28,7 +28,7 @@ Tento článek obsahuje podrobné pokyny k sestavení překladový systém s vla
 
 3. Až budete mít obě z výše uvedeného, přihlaste se k [vlastní Translator](https://portal.customtranslator.azure.ai) portálu. Jednou na portálu pro vlastní Translator, přejděte na stránku nastavení, kde můžete přidružit váš klíč předplatného Microsoft Translator Text API pracovního prostoru.
 
-## <a name="create-a-project"></a>Vytvořit projekt
+## <a name="create-a-project"></a>Vytvoření projektu
 
 Na portálu cílové stránce vlastní Translator klikněte na nový projekt. V dialogovém okně můžete zadat název požadovaného projektu, dvojici jazyků a kategorie, jakož i další příslušná pole. Uložte projekt. Další podrobnosti najdete na webu [vytvořit projekt](how-to-create-project.md).
 

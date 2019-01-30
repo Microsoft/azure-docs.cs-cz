@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/11/2019
 ms.author: anwestg
-ms.openlocfilehash: bbb8e39e60500a2d8310159cfbac5659964fc387
-ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
+ms.lastreviewed: 01/11/2019
+ms.openlocfilehash: c3d120b8d124ce8c5536365e25bf8ffa500d4cbb
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54230012"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55251160"
 ---
 # <a name="add-an-app-service-resource-provider-to-azure-stack"></a>Přidání poskytovatele prostředků App Service do služby Azure Stack
 
@@ -56,7 +57,7 @@ Nasazení poskytovatele prostředků App Service, postupujte podle těchto krok�
 
 2. Vyberte **nasazení služby App Service nebo upgradujte na nejnovější verzi**.
 
-    ![Instalační program služby App Service][1]
+    ![App Service Installer][1]
 
 3. Přečtěte si a přijměte licenční podmínky pro Software společnosti Microsoft a pak vyberte **Další**.
 
@@ -66,7 +67,7 @@ Nasazení poskytovatele prostředků App Service, postupujte podle těchto krok�
 
    Například pokud používáte mycloud.com příponu domény, musíte změnit koncový bod služby Azure Stack Tenanta Azure Resource Manageru pro správu. &lt;oblasti&gt;. mycloud.com. Zkontrolujte nastavení a pak vyberte **Další** uložte nastavení.
 
-   ![Instalační program služby App Service][2]
+   ![App Service Installer][2]
 
 6. Na další stránce Instalační služby App Service postupujte podle těchto kroků:
 
@@ -82,7 +83,7 @@ Nasazení poskytovatele prostředků App Service, postupujte podle těchto krok�
 
    c. V **lokality Azure Stack**, vyberte umístění, které odpovídá nasazujete do oblasti. Vyberte například **místní** Pokud vaše nasazení Azure Stack Development Kit.
 
-    ![Instalační program služby App Service][3]
+    ![App Service Installer][3]
 
 7. Teď můžete nasadit do virtuální sítě, kterou jste nakonfigurovali [tímto postupem](azure-stack-app-service-before-you-get-started.md#virtual-network), nebo nechat instalační program služby App Service vytvořit novou virtuální síť a podsítě. Pokud chcete vytvořit virtuální síť, postupujte takto:
 
@@ -95,14 +96,14 @@ Nasazení poskytovatele prostředků App Service, postupujte podle těchto krok�
      - Vyberte správné **podsítě** hodnoty pro každé z podsítí požadované role.
      - Vyberte **Další**.
 
-   ![Instalační program služby App Service][4]
+   ![App Service Installer][4]
 
 8. Zadejte informace pro svou sdílenou složku a potom vyberte **Další**. Plně kvalifikovaný název domény (FQDN) nebo IP adresa souborového serveru se musí používat adresu sdílené složky. Například \\\appservicefileserver.local.cloudapp.azurestack.external\websites, nebo \\\10.0.0.1\websites.
 
    >[!NOTE]
    >Instalační program se pokusí o test připojení ke sdílené složce než budete pokračovat. Ale pokud nasazení provádíte do existující virtuální síť, tento test připojení se nemusí podařit. Jsou uvedeny upozornění a výzvy, chcete-li pokračovat. Pokud je správný soubor sdílet informace, pokračujte v nasazení.
 
-   ![Instalační program služby App Service][7]
+   ![App Service Installer][7]
 
 9. Na další stránce Instalační služby App Service postupujte podle těchto kroků:
 
@@ -116,7 +117,7 @@ Nasazení poskytovatele prostředků App Service, postupujte podle těchto krok�
 
    e. Vyberte **Další**.
 
-   ![Instalační program služby App Service][9]
+   ![App Service Installer][9]
 
 10. Pro každý soubor polí tři certifikátu vyberte **Procházet** a přejděte k souboru příslušný certifikát. Musíte zadat heslo pro každý certifikát. Tyto certifikáty jsou ty, které jste vytvořili [vytvořit požadované certifikáty krok](azure-stack-app-service-before-you-get-started.md#get-certificates). Vyberte **Další** po zadání všech informací.
 
@@ -128,7 +129,7 @@ Nasazení poskytovatele prostředků App Service, postupujte podle těchto krok�
 
     Pokud jste použili jinou doménu přípona při vytvoření certifikátů, nepoužívejte názvy souborů certifikátů *místní. AzureStack.external*. Místo toho použijte informace o vaší vlastní doméně.
 
-    ![Instalační program služby App Service][10]
+    ![App Service Installer][10]
 
 11. Zadejte podrobnosti serveru SQL Server instance serveru použitý k hostování databáze poskytovatele prostředků App Service a potom vyberte **Další**. Instalační program ověří vlastnosti připojení SQL.
 
@@ -147,7 +148,7 @@ Nasazení poskytovatele prostředků App Service, postupujte podle těchto krok�
     > ```
     > Odkazovat [poznámky k verzi pro služby Azure App Service v Azure stacku 1.3](azure-stack-app-service-release-notes-update-three.md) další podrobnosti.
 
-    ![Instalační program služby App Service][11]
+    ![App Service Installer][11]
 
 12. Seznamte se s role instance a skladovou Položku možnosti. Minimální počet instancí a minimální SKU pro každou roli v nasazení ASDK naplnit výchozí hodnoty. Abyste mohli naplánovat nasazení poskytuje přehled požadavků na virtuální procesor a paměť. Vyberte po provedení výběru **Další**.
 
@@ -162,7 +163,7 @@ Nasazení poskytovatele prostředků App Service, postupujte podle těchto krok�
     | FrontEnd | 1 | Standard_A1 - (1 virtuální procesor, 1792 MB) | Směruje žádosti do aplikace služby App Service. |
     | Sdílených pracovních serverů | 1 | Standard_A1 - (1 virtuální procesor, 1792 MB) | Hostitelé web nebo aplikace rozhraní API a aplikace Azure Function App. Můžete chtít přidat další instance. Jako operátor můžete definovat vaši nabídku a zvolte všechny úroveň skladové položky. Na úrovních musí mít minimálně jeden virtuální procesor. |
 
-    ![Instalační program služby App Service][13]
+    ![App Service Installer][13]
 
     >[!NOTE]
     >**Jádru Windows serveru 2016 není image platformy podporované pro použití se službou Azure App Service ve službě Azure Stack.  Nepoužívejte vyhodnocení Image pro nasazení v produkčním prostředí.**
@@ -177,7 +178,7 @@ Nasazení poskytovatele prostředků App Service, postupujte podle těchto krok�
 
      c. Vyberte **Další**.
 
-    ![Instalační program služby App Service][15]
+    ![App Service Installer][15]
 
 15. Na stránce se souhrnem Instalační služby App Service postupujte podle těchto kroků:
 
@@ -187,7 +188,7 @@ Nasazení poskytovatele prostředků App Service, postupujte podle těchto krok�
 
     c. Chcete-li spustit nasazení, vyberte **Další**.
 
-    ![Instalační program služby App Service][16]
+    ![App Service Installer][16]
 
 16. Na další stránce Instalační služby App Service postupujte podle těchto kroků:
 
@@ -195,7 +196,7 @@ Nasazení poskytovatele prostředků App Service, postupujte podle těchto krok�
 
     b. Jakmile se instalační program úspěšně dokončí, vyberte **ukončovací**.
 
-    ![Instalační program služby App Service][17]
+    ![App Service Installer][17]
 
 ## <a name="validate-the-app-service-on-azure-stack-installation"></a>Ověření služby App Service na instalaci služby Azure Stack
 

@@ -6,22 +6,22 @@ services: cognitive-services
 author: RichardSunMS
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: linguistic-analysis
+ms.subservice: linguistic-analysis
 ms.topic: conceptual
 ms.date: 03/23/2016
 ms.author: lesun
 ROBOTS: NOINDEX
-ms.openlocfilehash: f8c7aba2b853f3916c2d01d94d49090a4b3e36a0
-ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
+ms.openlocfilehash: 997dcdd6ce99815a79006b40b87568e573c63ff3
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48237226"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55221671"
 ---
 # <a name="analyzer-names"></a>Názvy analyzátorů
 
 > [!IMPORTANT]
-> Pro jazykovou analýzu ve verzi preview byla vyřazena z provozu, 9. srpna 2018. Doporučujeme používat [moduly analýzy textu Azure Machine Learning](https://docs.microsoft.com/azure/machine-learning/studio-module-reference/text-analytics) pro zpracování textu a analýzy.
+> Dne 9. srpna 2018 došlo k vyřazení jazykové analýzy ve verzi Preview z provozu. Ke zpracování a analýze textu doporučujeme používat [moduly analýzy textu služby Azure Machine Learning](https://docs.microsoft.com/azure/machine-learning/studio-module-reference/text-analytics).
 
 Používáme poměrně složitá struktura názvů analyzátory pro obě flexibilitu v analyzátory a přesnost porozumět tomu, co znamená název.
 Názvy analyzátorů se skládají ze čtyř částí: ID, typ, specifikace a implementaci.
@@ -31,7 +31,7 @@ Role jednotlivých komponent je definována níže.
 Analyzátor jako první, má jedinečné ID; identifikátor GUID.
 Tyto identifikátory GUID by se měla změnit poměrně zřídka, ale je jediný způsob, jak jednoznačně popisují konkrétní analyzátor.
 
-## <a name="kind"></a>Druh
+## <a name="kind"></a>Kind
 V dalším kroku je každý analyzátoru **druh**.
 Definuje v velmi široké podmínky typu analýzu vrátil a jednoznačně by měl definovat strukturu dat používá k reprezentování analýzy.
 V současné době jsou tři odlišné typy:

@@ -6,18 +6,18 @@ services: cognitive-services
 author: zhouwangzw
 manager: wolfma
 ms.service: cognitive-services
-ms.component: bing-speech
+ms.subservice: bing-speech
 ms.topic: article
 ms.date: 09/18/2018
 ms.author: zhouwang
-ms.openlocfilehash: f79b148558e7881f852ccd57916b0b0f31a98219
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
+ms.openlocfilehash: 4d03ccfddab9a4aab4a1eacde02d68652bf5103a
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49342326"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55219069"
 ---
-# <a name="quickstart-use-the-bing-speech-recognition-api-in-c35-for-net-on-windows"></a>Rychlý start: Použití rozpoznávání řeči Bingu rozhraní API v jazyce C&#35; pro .NET pro Windows
+# <a name="quickstart-use-the-bing-speech-recognition-api-in-c35-for-net-on-windows"></a>Rychlý start: Rozpoznávání řeči Bingu rozhraní API v jazyce C&#35; pro .NET pro Windows
 
 [!INCLUDE [Deprecation note](../../../../includes/cognitive-services-bing-speech-api-deprecation-note.md)]
 
@@ -29,7 +29,7 @@ Následující části popisují, jak nainstalovat, sestavení a spuštění uk�
 
 ## <a name="prerequisites"></a>Požadavky
 
-### <a name="platform-requirements"></a>Požadavky na platformu
+### <a name="platform-requirements"></a>Požadavky platformy
 
 Následující ukázka byla vyvinuta pro Windows 8 + a rozhraní .NET Framework 4.5 + pomocí [Visual Studio 2015, Community Edition](https://www.visualstudio.com/products/visual-studio-community-vs).
 
@@ -46,7 +46,7 @@ Rozhraní Speech API je součástí služeb Cognitive Services (dříve Project 
 >
 > * Použijte váš klíč předplatného. Pomocí zadaného jazyka C# klasické pracovní plochy ukázkové aplikace vložte váš klíč předplatného do textového pole při spuštění ukázky. Další informace najdete v tématu [spuštění ukázkové aplikace](#step-3-run-the-sample-application).
 
-## <a name="step-1-install-the-sample-application"></a>Krok 1: Instalace ukázkové aplikace
+## <a name="step-1-install-the-sample-application"></a>Krok 1: Nainstalovat ukázkovou aplikaci
 
 1. Spusťte Visual Studio 2015 a vyberte **souboru** > **otevřít** > **projekt či řešení**.
 
@@ -78,9 +78,9 @@ Rozhraní Speech API je součástí služeb Cognitive Services (dříve Project 
 
    Každá kategorie má tři režimy rozpoznávání:
 
-    * **Režim ShortPhrase**: utterance až do 15 sekund dlouho. Jak se odešlou na server, obdrží klient několik částečných výsledků a jeden konečný výsledek s několika volbami n-best.
-    * **Režim LongDictation**: utterance až dvě minuty dlouho. Jak se odešlou na server, obdrží klient několik částečných výsledků a několik konečných výsledků podle označuje, kde server pozastaví věty.
-    * **Rozpoznávání záměru**: server vrátí další strukturovaných informací o rozpoznávání řeči, zadejte. Používání záměru detekce, budete muset nejprve trénování modelu s použitím [LUIS](https://azure.microsoft.com/services/cognitive-services/language-understanding-intelligent-service/).
+    * **Režim ShortPhrase**: Utterance až do 15 sekund. Jak se odešlou na server, obdrží klient několik částečných výsledků a jeden konečný výsledek s několika volbami n-best.
+    * **Režim LongDictation**: Utterance až dvě minuty dlouho. Jak se odešlou na server, obdrží klient několik částečných výsledků a několik konečných výsledků podle označuje, kde server pozastaví věty.
+    * **Rozpoznávání záměru**: Server vrací další strukturovaných informace o řeči vstup. Používání záměru detekce, budete muset nejprve trénování modelu s použitím [LUIS](https://azure.microsoft.com/services/cognitive-services/language-understanding-intelligent-service/).
 
 Ukázka zvukové soubory pomocí této ukázkové aplikaci. Najdete soubory v úložišti, které jste stáhli s touto ukázkou ve složce samples/SpeechRecognitionServiceExample. Tyto ukázkové zvukové soubory spouštěny automaticky, pokud vyberete nebyly vybrány žádné soubory **použít souborů wav Shortphrase režimu** nebo **použít souborů wav pro režim Longdictation** jako řeč vstup. V současné době je podporována pouze WAV zvukový formát.
 
@@ -91,8 +91,8 @@ Ukázka zvukové soubory pomocí této ukázkové aplikaci. Najdete soubory v ú
 ### <a name="recognition-events"></a>Rozpoznávání události
 
 * **Částečné výsledky události**: Tato událost volána pokaždé, když Speech Service předpovídá, co vám může být říká, ještě předtím, než dokončíte mluvený (Pokud používáte `MicrophoneRecognitionClient`) nebo dokončení odesílání dat (Pokud používáte `DataRecognitionClient`).
-* **Události chyb**: volá se, když služba detekuje chybu.
-* **Záměru události**: volá se na klientech "WithIntent" (pouze v režimu ShortPhrase) po posledním rozpoznávání výsledek je analyzován do strukturovaného formátu JSON záměr.
+* **Události chyb**: Volá se, když služba zjistí chybu.
+* **Záměru události**: Volá se na klientech "WithIntent" (pouze v režimu ShortPhrase) po posledním rozpoznávání výsledek je analyzován do strukturovaného formátu JSON záměr.
 * **Výsledek události**:
   * V `ShortPhrase` režimu, tato událost se nazývá a vrátí výsledky n-best po dokončení čtení.
   * V `LongDictation` režimu, obslužná rutina události je volána více než jednou, podle kde službu identifikuje pozastaví věty.

@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 01/05/2019
 ms.author: sethm
-ms.openlocfilehash: a0867399ab00910950598bb83309d1862b407d34
-ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
+ms.lastreviewed: 01/05/2019
+ms.openlocfilehash: afbc4d08e898cb0a465b8561dde65614f2cb6211
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54192379"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55251329"
 ---
 # <a name="introduction-to-key-vault-in-azure-stack"></a>Úvod do služby Key Vault ve službě Azure Stack
 
@@ -35,7 +36,7 @@ Key Vault ve službě Azure Stack pomáhá chránit kryptografické klíče a ta
 * Ověřovací klíče
 * Klíče účtu úložiště
 * Šifrovací klíče dat
-* soubory .pfx
+* .pfx files
 * Hesla
 
 Key Vault zjednodušuje proces správy klíčů a zajišťuje vám kontrolu nad klíči, které se používají k přístupu a šifrování dat. Vývojáři můžou během pár minut vytvořit klíče pro vývoj a testování a potom je bez problémů migrovat na produkční klíče. Zabezpečení Správci můžou udělovat (a odvolávat) oprávnění pro klíče, podle potřeby.

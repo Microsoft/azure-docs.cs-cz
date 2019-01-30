@@ -1,23 +1,23 @@
 ---
-title: 'Příklad: Identifikace tváří na obrázku – rozhraní API pro rozpoznávání tváře'
+title: 'Příklad: Identifikace tváří na obrázcích – rozhraní API pro rozpoznávání tváře'
 titleSuffix: Azure Cognitive Services
 description: Rozhraní API pro rozpoznávání tváře můžete použít k identifikaci tváří na obrázcích.
 services: cognitive-services
 author: SteveMSFT
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: face-api
+ms.subservice: face-api
 ms.topic: sample
 ms.date: 03/01/2018
 ms.author: sbowles
-ms.openlocfilehash: a26f7d6057f92fd3ab92405ecca6965dbd6e37ad
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
-ms.translationtype: HT
+ms.openlocfilehash: c61852763353189321b8f98711928e0e8b3a389d
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46129067"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55208087"
 ---
-# <a name="example-how-to-identify-faces-in-images"></a>Příklad: Jak identifikovat tváře na obrázcích
+# <a name="example-how-to-identify-faces-in-images"></a>Příklad: Postup identifikace tváří na obrázcích
 
 Tato příručka ukazuje, jak identifikovat neznámé tváře pomocí skupin PersonGroup, které jsou předem vytvořené ze známých osob. Ukázky jsou napsané v jazyce C# pomocí klientské knihovny rozhraní API pro rozpoznávání tváře.
 
@@ -41,7 +41,7 @@ Abyste mohli provést demonstraci této ukázky, musíte si připravit sadu obr�
 - Několik fotek s tváří určité osoby. [Kliknutím sem si stáhnete ukázkové fotky](https://github.com/Microsoft/Cognitive-Face-Windows/tree/master/Data) Anny, Billa a Clare.
 - Sérii fotek, které mohou ale nemusí obsahovat tváře Anny, Billa nebo Clare, sloužící k testu identifikace. Můžete také vybrat některé obrázky z předchozího odkazu.
 
-## <a name="step-1-authorize-the-api-call"></a>Krok 1: Autorizace volání rozhraní API
+## <a name="step-1-authorize-the-api-call"></a>Krok 1: Povolit volání rozhraní API
 
 Ke každému volání rozhraní API pro rozpoznávání tváře potřebujete klíč předplatného. Tento klíč lze předat buď jako řetězcový parametr dotazu, nebo uvést v hlavičce žádosti. Pokud chcete klíč předplatného předat pomocí řetězce dotazu, použijte jako příklad adresu URL žádosti pro [Face - Detect](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236):
 ```
@@ -49,17 +49,17 @@ https://westus.api.cognitive.microsoft.com/face/v1.0/detect[?returnFaceId][&retu
 &subscription-key=<Subscription key>
 ```
 
-Klíč předplatného může být případně také uvedený v hlavičce žádosti HTTP: **ocp-apim-subscription-key: &lt;klíč předplatného&gt;**. Při použití klientské knihovny se klíč předplatného předává prostřednictvím konstruktoru třídy FaceServiceClient. Příklad:
+Jako alternativu, klíč předplatného také dá se zadat v hlavičce požadavku protokolu HTTP: **ocp-apim-subscription-key: &lt;Klíč předplatného&gt;**  při použití klientské knihovny, klíč předplatného se předává v konstruktoru třídy FaceServiceClient. Příklad:
  
 ```CSharp 
 faceServiceClient = new FaceServiceClient("<Subscription Key>");
 ```
  
-Klíč předplatného můžete získat z webu Marketplace nebo z portálu Azure Portal. Viz [Předplatná](https://azure.microsoft.com/try/cognitive-services/).
+Klíč předplatného můžete získat z webu Marketplace nebo z portálu Azure Portal. Přečtěte si téma [Předplatná](https://azure.microsoft.com/try/cognitive-services/).
 
-## <a name="step-2-create-the-persongroup"></a>Krok 2: Vytvoření skupiny PersonGroup
+## <a name="step-2-create-the-persongroup"></a>Krok 2: Vytvořte jeden objekt PersonGroup
 
-V tomto kroku jsme vytvořili skupinu PersonGroup s názvem MyFriends, která obsahuje tři osoby: Annu, Billa a Clare. Každá osoba má zaregistrovaných několik tváří. Tyto tváře se musí detekovat z obrázků. Po provedení všech těchto kroků máte skupinu PersonGroup jako na následujícím obrázku:
+V tomto kroku jsme vytvořili jeden objekt PersonGroup, s názvem "MyFriends", který obsahuje tři lidi: Anna, faktury a Clare. Každá osoba má zaregistrovaných několik tváří. Tyto tváře se musí detekovat z obrázků. Po provedení všech těchto kroků máte skupinu PersonGroup jako na následujícím obrázku:
 
 ![HowToIdentify1](../Images/group.image.1.jpg)
 
@@ -106,7 +106,7 @@ foreach (string imagePath in Directory.GetFiles(friend1ImageDir, "*.jpg"))
 ``` 
 Pokud obrázek obsahuje více než jednu tvář, přidá se jen největší tvář. Další tváře můžete osobě přidat předáním řetězce ve formátu „targetFace = vlevo, nahoře, šířka, výška“ do parametru dotazu targetFace rozhraní API [PersonGroup Person - Add Face](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523b), nebo pomocí volitelného parametru targetFace metody AddPersonFaceAsync pro přidání dalších tváří. Každá tvář přidaná osobě dostane jedinečné trvalé ID tváře, které lze následně použít v [PersonGroup Person – Delete Face](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523e) a [Face – Identify](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395239).
 
-## <a name="step-3-train-the-persongroup"></a>Krok 3: Trénování skupiny PersonGroup
+## <a name="step-3-train-the-persongroup"></a>Krok 3: Trénování jeden objekt PersonGroup
 
 Předtím, než lze skupinu PersonGroup použít k identifikaci, je potřeba ji vytrénovat. Po přidání nebo odebrání jakékoli osoby nebo při úpravě registrované tváře osoby se navíc musí vytrénovat znovu. K trénování se používá rozhraní API [PersonGroup – Train](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395249). Při použití této klientské knihovny jde o jednoduché volání metody TrainPersonGroupAsync:
  
@@ -131,7 +131,7 @@ while(true)
 } 
 ``` 
 
-## <a name="step-4-identify-a-face-against-a-defined-persongroup"></a>Krok 4: Identifikace tváře vůči definované skupině PersonGroup
+## <a name="step-4-identify-a-face-against-a-defined-persongroup"></a>Krok 4: Identifikace tváře proti definovaný jeden objekt PersonGroup
 
 Při provádění identifikací dokáže rozhraní API pro rozpoznávání tváře vypočítat podobnost testovací tváře mezi všemi tvářemi ve skupině a vrátí osobu (osoby) nejpodobnější testovací tváři. To se provádí pomocí rozhraní API [Face - Identify](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395239) nebo metody IdentifyAsync klientské knihovny.
 
@@ -170,7 +170,7 @@ Až tento postup dokončíte, můžete se pokusit identifikovat různé tváře 
 
 ![HowToIdentify2](../Images/identificationResult.1.jpg )
 
-## <a name="step-5-request-for-large-scale"></a>Krok 5: Zpracování ve velkém měřítku
+## <a name="step-5-request-for-large-scale"></a>Krok 5: Žádost o ve velkém měřítku
 
 Je známo, že skupina PersonGroup může kvůli omezením předchozí návrhu obsahovat až 10 000 osob.
 Další informace o scénářích s až miliónem osob najdete v článku[Způsob použití funkce ve velkém měřítku](how-to-use-large-scale.md).

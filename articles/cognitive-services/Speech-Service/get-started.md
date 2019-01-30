@@ -6,17 +6,17 @@ services: cognitive-services
 author: erhopf
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: speech-service
+ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 09/24/2018
 ms.author: erhopf
 ms.custom: seodec18
-ms.openlocfilehash: 69e2c094e1fca57d0dddc662cc1dae6453897c38
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 2317341d508f6e4f681c396f649179691f5485f3
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53079105"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55208887"
 ---
 # <a name="try-the-speech-service-for-free"></a>Vyzkoušejte si službu Speech zdarma
 
@@ -123,5 +123,5 @@ Klíče vytvořené pro oblasti jsou platné pouze v dané oblasti. Pokus o pou�
 Proveďte jeden z našich šablon rychlý start během 10 minut nebo projděte si naše ukázky SDK:
 
 > [!div class="nextstepaction"]
-> [Rychlý start: Rozpoznávat řeč v jazyce C#](quickstart-csharp-dotnet-windows.md)
-> [ukázky sadou SDK pro řeč](speech-sdk.md#get-the-samples)
+> [Rychlé zprovoznění: Rozpoznávání řeči v C# ](quickstart-csharp-dotnet-windows.md) 
+>  [ukázky sadou SDK pro řeč](speech-sdk.md#get-the-samples)

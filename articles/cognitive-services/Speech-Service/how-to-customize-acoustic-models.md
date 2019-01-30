@@ -1,21 +1,21 @@
 ---
-title: 'Kurz: Vytvoření akustického modelu s využitím služby Speech'
+title: 'Kurz: Vytvoření akustický model s Speech Service'
 titlesuffix: Azure Cognitive Services
 description: Zjistěte, jak vytvořit akustický model s využitím služby Speech ve službách Azure Cognitive Services.
 services: cognitive-services
 author: PanosPeriorellis
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: speech-service
+ms.subservice: speech-service
 ms.topic: tutorial
 ms.date: 06/25/2018
 ms.author: panosper
-ms.openlocfilehash: 70fc9c34599f27eb5d67b79ef823f8037ae55ba9
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
-ms.translationtype: HT
+ms.openlocfilehash: 8bee93c4bb932730000a06cc2bc3fe5a3e330a1f
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50215238"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55217624"
 ---
 # <a name="tutorial-create-a-custom-acoustic-model"></a>Kurz: Vytvoření vlastního akustického modelu
 
@@ -46,7 +46,7 @@ Příklad:
 * Pokud byste chtěli lépe rozpoznávat řeč v hlučném provozním prostředí, měly by zvukové soubory zahrnovat řeč lidí v hlučném provozu.
 * Pokud vás zajímá optimalizace výkonu pro jednoho mluvčího &mdash; například chcete pořídit přepis všech důležitých projevů prezidenta Franklina D. Roosevelta &mdash;, měly by zvukové soubory zahrnovat jenom řadu ukázek od tohoto mluvčího.
 
-Sada akustických dat pro přizpůsobení akustického modelu se skládá ze dvou částí: (1) sada zvukových souborů obsahujících hlasová data a (2) soubor obsahující přepisy všech zvukových souborů.
+Akustický datové sady pro přizpůsobení akustického modelu se skládá ze dvou částí: (1) sadu zvukové soubory, které obsahují data rozpoznávání řeči a (2) soubor, který obsahuje přepisy všechny zvukové soubory.
 
 ### <a name="audio-data-recommendations"></a>Doporučení pro zvuková data
 
@@ -63,7 +63,7 @@ Sada akustických dat pro přizpůsobení akustického modelu se skládá ze dvo
 > Importy dat přes webový portál jsou momentálně omezené na 2 GB, což je maximální velikost sady akustických dat. Tato velikost odpovídá přibližně 17 hodinám zvukového záznamu na frekvenci 16 kHz nebo 34 hodinám zvukového záznamu na frekvenci 8 kHz. Následující tabulka obsahuje souhrn hlavních požadavků na zvuková data:
 >
 
-| Vlastnost | Hodnota |
+| Vlastnost | Value |
 |---------- |----------|
 | Formát souboru | RIFF (WAV) |
 | Vzorkovací frekvence | 8 000 hertzů (Hz) nebo 16 000 Hz |
@@ -112,7 +112,7 @@ Do polí **Name** (Název) a **Description** (Popis) zadejte odpovídající inf
 
 V polích **Transcriptions file (.txt)** (Soubor s přepisy – .txt) and **Audio files (.zip)** (Zvukové soubory – .zip) vyberte **Browse** (Procházet) a pak vyberte soubor prostého textu s přepisem a archiv ZIP se soubory WAV. Po dokončení přípravy nahrajte data výběrem možnosti **Import** (Importovat). Vaše data se nahrají. U větších datových sad může proces importu trvat několik minut.
 
-Po dokončení nahrávání se vraťte k tabulce **Acoustic Datasets** (Sady akustických dat). Zobrazí se položka, která odpovídá vaší sadě akustických dat. Všimněte si, že má přiřazené jedinečné ID (GUID). Během zařazování dat do fronty ke zpracování bude jejich aktuální stav *NotStarted* (Nespuštěno), během ověřování bude jejich stav *Running* (Spuštěno), a až budou data připravená k použití, bude jejich stav *Complete* (Dokončeno).
+Po dokončení nahrávání se vraťte k tabulce **Acoustic Datasets** (Sady akustických dat). Zobrazí se položka, která odpovídá vaší sadě akustických dat. Všimněte si, že má přiřazené jedinečné ID (GUID). Data se zobrazí jeho aktuální stav: *NotStarted* zatímco je právě ve frontě pro zpracování, *systémem* zatímco probíhá ověřování, a *Complete* kdy data jsou připravené k použití.
 
 Součástí ověření dat je řada kontrol zvukových souborů, které ověřují formát souboru, délku a vzorkovací frekvenci, a kontrol souborů s přepisy, které ověřují formát souboru a provádějí určitou normalizaci textu.
 
@@ -141,17 +141,17 @@ Pak v rozevíracím seznamu **Acoustic Data** (Akustická data) vyberte akustick
 
 ![Stránka Create Acoustic Model (Vytvoření akustického modelu)](media/stt/speech-acoustic-models-create2.png)
 
-Po dokončení zpracování můžete volitelně vybrat, aby se provedlo testování přesnosti vašeho nového modelu. Tento test spustí u zadané sady akustických dat vyhodnocení převodu řeči na text s využitím přizpůsobeného akustického modelu a zobrazí sestavu výsledků. Pokud chcete toto testování provést, zaškrtněte políčko **Accuracy Testing** (Testování přesnosti). Pak v rozevíracím seznamu vyberte jazykový model. Pokud jste ještě žádné vlastní jazykové modely nevytvořili, v rozevíracím seznamu se zobrazí jenom základní jazykové modely. Informace o výběru nejvhodnějšího jazykového modelu najdete v [kurzu vytvoření vlastního jazykového modelu](how-to-customize-language-model.md).
+Po dokončení zpracování můžete volitelně vybrat, aby se provedlo testování přesnosti vašeho nového modelu. Tento test spustí u zadané sady akustických dat vyhodnocení převodu řeči na text s využitím přizpůsobeného akustického modelu a zobrazí sestavu výsledků. Pokud chcete toto testování provést, zaškrtněte políčko **Accuracy Testing** (Testování přesnosti). Pak v rozevíracím seznamu vyberte jazykový model. Pokud jste ještě žádné vlastní jazykové modely nevytvořili, v rozevíracím seznamu se zobrazí jenom základní jazykové modely. Pokud chcete vybrat nejvhodnější jazykový model, najdete v článku [kurzu: Vytvoření vlastního jazykového modelu](how-to-customize-language-model.md).
 
 Nakonec vyberte sadu akustických dat, kterou chcete použít k vyhodnocení vlastního modelu. Pokud provádíte testování přesnosti, je k získání realistické představy o výkonu modelu důležité vybrat sadu akustických dat, která se liší od sady použité k vytvoření modelu. Testování přesnosti na trénovacích datech neumožňuje vyhodnotit výkon upraveného modelu za skutečných podmínek. Výsledek bude příliš optimistický. Upozorňujeme také, že testování přesnosti je omezené na maximálně 1 000 promluv. Pokud je sada akustických dat pro testování větší, vyhodnotí se jenom prvních 1 000 promluv.
 
 Až budete chtít spustit proces přizpůsobování, vyberte **Create** (Vytvořit).
 
-V tabulce akustických modelů se zobrazí nová položka, která odpovídá tomuto novému modelu. V tabulce se zobrazí také stav procesu: *Waiting* (Čekající), *Processing* (Zpracování) nebo *Complete* (Dokončeno).
+V tabulce akustických modelů se zobrazí nová položka, která odpovídá tomuto novému modelu. V tabulce také zobrazí stav procesu: *Čekání na*, *zpracování*, nebo *kompletní*.
 
 ![Stránka Acoustic Models (Akustické modely)](media/stt/speech-acoustic-models-creating.png)
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 - [Získání zkušebního předplatného služby Speech](https://azure.microsoft.com/try/cognitive-services/)
 - [Rozpoznávání řeči v jazyce C#](quickstart-csharp-dotnet-windows.md)

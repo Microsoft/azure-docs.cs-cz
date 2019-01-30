@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 11/29/2017
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017, mvc
-ms.openlocfilehash: 96daacef134ca60cb497907a770c83a4bba24a5b
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 66ba6aa874e84ce86d54d5ea0f827a83dc6564b4
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52956020"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55208547"
 ---
 # <a name="azure-and-linux"></a>Azure a Linux
 Microsoft Azure je rostoucí kolekce integrovaných veřejných cloudových služeb včetně analýz, virtuálních počítačů, databází, mobilních a síťových služeb, úložiště a webu &mdash; je tak ideální pro hostování vašich řešení.  Microsoft Azure poskytuje škálovatelnou výpočetní platformu, s kterou můžete platit jenom za to, co používáte a když to potřebujete – nemusíte tak investovat do hardwaru místně ve své firmě.  Platforma Azure dokáže flexibilně reagovat na vaše potřeby. Můžete tak libovolně škálovat kapacitu (vertikálně i horizontálně) pro svá řešení podle požadavků svých klientů.
@@ -72,7 +72,7 @@ Každé předplatné Azure má nastavené výchozí kvóty, které můžou ovliv
 Microsoft úzce spolupracuje s partnery na zajištění aktualizace a optimalizace dostupných imagí pro modul runtime Azure.  Další informace o partnerech Azure najdete na následujících odkazech:
 
 * Linux v Azure – [Schválené distribuce](endorsed-distros.md)
-* SUSE – [Azure Marketplace – SUSE Linux Enterprise Server](https://azuremarketplace.microsoft.com/en-us/marketplace/apps?search=%27SUSE%27)
+* SUSE – [Azure Marketplace – SUSE Linux Enterprise Server](https://azuremarketplace.microsoft.com/marketplace/apps/SUSE.SLES?tab=Overview)
 * Red Hat – [Azure Marketplace – Red Hat Enterprise Linux 7.2](https://azure.microsoft.com/marketplace/partners/redhat/redhatenterpriselinux72/)
 * Canonical – [Azure Marketplace – Ubuntu Server 16.04 LTS](https://azure.microsoft.com/marketplace/partners/canonical/ubuntuserver1604lts/)
 * Debian –[Azure Marketplace – Debian 8 „Jessie“](https://azure.microsoft.com/marketplace/partners/credativ/debian8/)
@@ -110,7 +110,7 @@ Vytvoření virtuálního počítače na webovém portálu Azure představuje sn
 Virtuální počítač je teď spuštěný v Azure a vy jste připraveni se k němu přihlásit.  Používání hesel při přihlašování přes SSH je riskantní a časově náročné.  Nejbezpečnější a zároveň nejrychlejší způsob přihlášení představuje použití klíčů SSH.  Při vytváření virtuálního počítače s Linuxem prostřednictvím portálu nebo rozhraní příkazového řádku máte na výběr dvě metody ověřování.  Pokud pro SSH zvolíte heslo, Azure nakonfiguruje virtuální počítač tak, aby umožňoval přihlašování pomocí hesel.  Pokud se rozhodnete použít veřejný klíč SSH, Azure nakonfiguruje virtuální počítač tak, aby umožňoval přihlašování pouze pomocí klíčů SSH a zakázal přihlašování pomocí hesel. Pokud chcete svůj virtuální počítač s Linuxem zabezpečit tím, že povolíte přihlašování pouze pomocí klíče SSH, při vytváření virtuálního počítače na portálu nebo v rozhraní příkazového řádku použijte možnost veřejného klíče SSH.
 
 ## <a name="related-azure-components"></a>Související komponenty Azure
-## <a name="storage"></a>Úložiště
+## <a name="storage"></a>Storage
 * [Úvod do Microsoft Azure Storage](../../storage/common/storage-introduction.md)
 * [Přidání disku do virtuálního počítače s Linuxem pomocí Azure CLI](add-disk.md)
 * [Postup připojení datového disku k virtuálnímu počítači s Linuxem na webu Azure Portal](attach-disk-portal.md)

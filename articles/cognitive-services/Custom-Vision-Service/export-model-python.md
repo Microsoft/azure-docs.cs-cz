@@ -1,21 +1,21 @@
 ---
-title: 'Kurz: Spuštění modelu TensorFlow v Pythonu – Custom Vision Service'
+title: 'Kurz: Spustit TensorFlow model v Pythonu – Custom Vision Service'
 titlesuffix: Azure Cognitive Services
 description: Spusťte model TensorFlow v Pythonu.
 services: cognitive-services
 author: areddish
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: custom-vision
+ms.subservice: custom-vision
 ms.topic: tutorial
 ms.date: 05/17/2018
 ms.author: areddish
-ms.openlocfilehash: 26427406b045b96f2f3f612e4444b7dc2afcefc6
-ms.sourcegitcommit: 609c85e433150e7c27abd3b373d56ee9cf95179a
-ms.translationtype: HT
+ms.openlocfilehash: 8b86214513d12655958038037abf486a6a1a4d88
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48247308"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55209600"
 ---
 # <a name="tutorial-run-tensorflow-model-in-python"></a>Kurz: Spuštění modelu TensorFlow v Pythonu
 
@@ -25,9 +25,9 @@ V tomto rychlém startu se dozvíte, jak po [exportování modelu TensorFlow](ht
 
 ### <a name="prerequisites"></a>Požadavky
 
-K použití tohoto kurzu potřebujete:
+Pro tento kurz budete muset:
 
-- Nainstalovat Python 2.7 nebo novější nebo Python 3.5 nebo novější.
+- Nainstalovat Python 2.7+ nebo Python 3.5+.
 - Nainstalovat pip.
 
 Budete muset nainstalovat také následující balíčky:
@@ -195,7 +195,7 @@ Výsledky zpracování tensoru obrázku modelem pak bude potřeba namapovat zpě
         print (labels[label_index], truncated_probablity)
         label_index += 1
 ```
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Model můžete také zabalit do mobilní aplikace:
 * [Použití exportovaného modelu Tensorflow v aplikaci pro Android](https://github.com/Azure-Samples/cognitive-services-android-customvision-sample)

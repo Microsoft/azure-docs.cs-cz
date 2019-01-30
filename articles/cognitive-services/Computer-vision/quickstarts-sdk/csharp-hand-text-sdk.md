@@ -6,17 +6,17 @@ services: cognitive-services
 author: PatrickFarley
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: computer-vision
+ms.subservice: computer-vision
 ms.topic: quickstart
 ms.date: 09/27/2018
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 7ed33290a9c5cede6fd80058d8557eae65c11b28
-ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
+ms.openlocfilehash: 41f0b1237ad88ad730893d2f219109f724626a4b
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53578593"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55214054"
 ---
 # <a name="quickstart-extract-text-using-the-computer-vision-sdk-and-c"></a>Rychlý start: Extrahovat text pomocí sady SDK služby pro zpracování obrazu počítač aC#
 

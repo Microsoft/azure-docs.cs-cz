@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 07/19/2018
 ms.author: wgries
 ms.component: files
-ms.openlocfilehash: 1b3e33c47d4188ba273fb232e2e166a2c33cb1b1
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: d530bfce0dfda44a467bdbf1f729e51b4250e824
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54463826"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55214479"
 ---
 # <a name="deploy-azure-file-sync"></a>Nasazení Synchronizace souborů Azure
 Azure File Sync umožňuje centralizovat sdílené složky organizace ve službě soubory Azure, při zachování flexibility, výkonu a kompatibility s místními souborového serveru. Azure File Sync transformuje serveru systému Windows na rychlou mezipaměť sdílené složky Azure. Můžete použít jakýkoli protokol dostupný ve Windows serveru pro přístup k datům místně, včetně SMB, NFS a FTPS. Můžete mít libovolný počet mezipamětí po celém světě potřebujete.
@@ -417,3 +417,4 @@ Další informace najdete v tématu [spolupráce Azure File Sync s distribuovan�
 ## <a name="next-steps"></a>Další postup
 - [Přidání nebo odebrání koncového bodu Azure File Sync serveru](storage-sync-files-server-endpoint.md)
 - [Zaregistrovat nebo zrušit registraci serveru pomocí služby Azure File Sync](storage-sync-files-server-registration.md)
+- [Monitorování Azure File Sync](storage-sync-files-monitoring.md)

@@ -6,16 +6,16 @@ services: cognitive-services
 author: bojunehsu
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: knowledge-exploration
+ms.subservice: knowledge-exploration
 ms.topic: conceptual
 ms.date: 03/26/2016
 ms.author: paulhsu
-ms.openlocfilehash: 4b4010152622cd9a1d8111ac92dd1960e78d4601
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.openlocfilehash: f3cb307a52cfddebfa97c1b8608549acdd89169d
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46125149"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55215063"
 ---
 # <a name="grammar-format"></a>Formát gramatiky
 
@@ -130,9 +130,9 @@ V následující tabulce jsou uvedeny podporované `op` hodnoty pro každý typ 
 |----|----|----|----|
 | Řetězec | EQ | Přesná shoda pro řetězec | rovná se |
 | Řetězec | starts_with | Porovnání předpony řetězce | starts_with |
-| Datový typ Int32, Int64, Double | EQ |  Číselné přesnou shodu | rovná se |
-| Datový typ Int32, Int64, Double | lt, le, gt, ge | Porovnání číselných nerovnost (<, < =, >, > =) | is_between |
-| Datový typ Int32, Int64, Double | starts_with | Shodu předpony hodnoty v desítkovém zápisu | starts_with |
+| Int32, Int64, Double | EQ |  Číselné přesnou shodu | rovná se |
+| Int32, Int64, Double | lt, le, gt, ge | Porovnání číselných nerovnost (<, < =, >, > =) | is_between |
+| Int32, Int64, Double | starts_with | Shodu předpony hodnoty v desítkovém zápisu | starts_with |
 
 Příklady:
 * `<attrref uri="academic#Year" op="lt" name="year"/>` shoduje se vstupním řetězcem "2000" a vrátí všech dokumentů výhradně zveřejněny do roku 2000.

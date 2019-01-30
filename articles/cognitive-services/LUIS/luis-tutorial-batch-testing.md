@@ -7,16 +7,16 @@ author: diberry
 manager: cgronlun
 ms.custom: seodec18
 ms.service: cognitive-services
-ms.component: language-understanding
+ms.subservice: language-understanding
 ms.topic: article
 ms.date: 12/21/2018
 ms.author: diberry
-ms.openlocfilehash: 2c8d4486b235534db2bb7d06206d5767c1496fbd
-ms.sourcegitcommit: 7862449050a220133e5316f0030a259b1c6e3004
+ms.openlocfilehash: 12107ce5596f1a238675ffe4ef17ca08e2aac5f1
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/22/2018
-ms.locfileid: "53754386"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55211667"
 ---
 # <a name="tutorial-batch-test-data-sets"></a>Kurz: Batch testovací datové sady
 

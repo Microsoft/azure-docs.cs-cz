@@ -7,16 +7,16 @@ author: diberry
 ms.custom: seodec18
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: language-understanding
+ms.subservice: language-understanding
 ms.topic: article
 ms.date: 12/05/2018
 ms.author: diberry
-ms.openlocfilehash: 9e0d1ae39431ca75b43680981802b82f16703d4d
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 160721560b6cf311f146cd0f48ae719d95b30a0f
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53103927"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55206275"
 ---
 # <a name="prebuilt-entities-to-recognize-common-data-types"></a>Předem připravených entit rozpoznat běžné typy dat
 
@@ -60,7 +60,7 @@ Test nové záměr na koncovém bodu podle přidán hodnotu **q** parametru. Ná
 
  Pokud chcete aplikaci označit tento typ token, pokud jeho část je již označena s využitím předem připravených entit, odeberte z aplikace LUIS předem připravených entit. Není nutné k trénování aplikace. Označte token s vlastní entitu. Přidejte zpátky do aplikace LUIS předem připravených entit.
 
- Další příklad, zvažte utterance jako seznam tříd předvolby: `I want first year spanish, second year calculus, and fourth year english lit.` Pokud řadová číslovka Prebuild přidat, má aplikace LUIS `first`, `second`, a `fourth` se již označen atributem řadové číslovky. Pokud chcete zaznamenat řadová číslovka a třídy, můžete vytvořit složenou entitu a obtékat kolem pořadovém místě předem připravená a vlastní entity pro název třídy.
+ Další příklad vezměte v úvahu utterance jako seznam předvolby třídy: `I want first year spanish, second year calculus, and fourth year english lit.` Pokud má aplikace LUIS řadová číslovka Prebuild přidali, `first`, `second`, a `fourth` se již označen atributem řadové číslovky. Pokud chcete zaznamenat řadová číslovka a třídy, můžete vytvořit složenou entitu a obtékat kolem pořadovém místě předem připravená a vlastní entity pro název třídy.
 
 ## <a name="next-steps"></a>Další postup
 > [!div class="nextstepaction"]

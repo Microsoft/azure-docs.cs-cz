@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 11/27/2018
 ms.author: sutalasi
-ms.openlocfilehash: c20f61788086806d3eebb62d35b7ac9fbcbd6fb9
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: f4e1b25133914a65f34e281c145d7db5969b0581
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52846925"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55208019"
 ---
 # <a name="set-up-disaster-recovery-to-azure-for-hyper-v-vms-using-powershell-and-azure-resource-manager"></a>Nastavení zotavení po havárii do Azure pro virtuální počítače Hyper-V pomocí Powershellu a Azure Resource Manageru
 
@@ -43,12 +43,12 @@ Kromě toho konkrétní příklad popsaných v tomto článku má následující
 * Hostitel Hyper-V systémem Windows Server 2012 R2 nebo Microsoft Hyper-V Server 2012 R2 obsahující jeden nebo více virtuálních počítačů. Servery Hyper-V musí být připojené k Internetu, buď přímo nebo prostřednictvím proxy serveru.
 * Virtuální počítače, které chcete replikovat musí být v souladu s [těchto nezbytných podmínkách](hyper-v-azure-support-matrix.md#replicated-vms).
 
-## <a name="step-1-sign-in-to-your-azure-account"></a>Krok 1: Přihlaste se ke svému účtu Azure
+## <a name="step-1-sign-in-to-your-azure-account"></a>Krok 1: Přihlášení k účtu Azure
 
 1. Otevřete konzolu Powershellu a spusťte tento příkaz pro přihlášení ke svému účtu Azure. Vyvolá rutina na webové stránce vás vyzve k zadání přihlašovacích údajů k účtu: **Connect-AzureRmAccount**.
     - Alternativně můžete zahrnout přihlašovacích údajů k účtu jako parametr v **Connect-AzureRmAccount** rutiny, pomocí **-Credential** parametr.
     - Pokud jste partner CSP, který spolupracuje jménem klienta, určení zákazníka jako tenant, pomocí názvu primární doména tenanta nebo ID Tenanta. Příklad: **Connect-AzureRmAccount-Tenant "fabrikam.com"**
-2. Přidružte předplatné, které chcete používat účet, protože účet může mít několik předplatných:
+2. Přidružte předplatné, které chcete používat s účtem, protože účet může mít několik předplatných:
 
     `Select-AzureRmSubscription -SubscriptionName $SubscriptionName`
 
@@ -84,7 +84,7 @@ Nastavte kontext trezoru následujícím způsobem:
 
 `Set-AsrVaultSettings -Vault $vault`
 
-## <a name="step-4-create-a-hyper-v-site"></a>Krok 4: Vytvoření do lokality Hyper-V
+## <a name="step-4-create-a-hyper-v-site"></a>Krok 4: Vytvoření webu Hyper-V
 
 1. Vytvořte novou lokalitu Hyper-V následujícím způsobem:
 
@@ -132,7 +132,7 @@ Než začnete, mějte na paměti, že zadaný účet úložiště musí být ve 
         $protectionContainer = Get-AsrProtectionContainer
 3. Kontejner ochrany přidružte k zásadě replikace takto:
 
-     $Policy = get-AsrPolicy - FriendlyName $PolicyName $associationJob = New-AsrProtectionContainerMapping – název $mappingName – zásady $Policy - PrimaryProtectionContainer $protectionContainer [0]
+     $Policy = Get-AsrPolicy -FriendlyName $PolicyName   $associationJob  = New-AsrProtectionContainerMapping -Name $mappingName -Policy $Policy -PrimaryProtectionContainer $protectionContainer[0]
 
 4. Čekání úlohy přidružení úspěšně dokončit.
 
@@ -175,7 +175,7 @@ Než začnete, mějte na paměti, že zadaný účet úložiště musí být ve 
 
 
 
-## <a name="step-8-run-a-test-failover"></a>Krok 8: Spuštění testovací převzetí služeb při selhání
+## <a name="step-8-run-a-test-failover"></a>Krok 8: Spuštění testovacího převzetí služeb při selhání
 1. Spustíte testovací převzetí služeb takto:
 
         $nw = Get-AzureRmVirtualNetwork -Name "TestFailoverNw" -ResourceGroupName "MyRG" #Specify Azure vnet name and resource group

@@ -4,19 +4,19 @@ titleSuffix: Azure Machine Learning service
 description: Získejte podporu a školení a poskytování zpětné vazby pro službu Azure Machine Learning
 services: machine-learning
 ms.service: machine-learning
-ms.component: core
+ms.subservice: core
 ms.topic: conceptual
 ms.reviewer: jmartens
 author: j-martens
 ms.author: jmartens
 ms.date: 01/15/2019
 ms.custom: seodec18
-ms.openlocfilehash: bfde26bd455d24a3f38f225de30496953d7b4ead
-ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
+ms.openlocfilehash: 0d730634bc5f12828fe26a213bebb291b79a6bad
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54329901"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55251907"
 ---
 # <a name="get-support-and-training-for-azure-machine-learning-service"></a>Získat podporu a školení pro služby Azure Machine Learning
 

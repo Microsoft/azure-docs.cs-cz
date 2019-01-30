@@ -1,23 +1,23 @@
 ---
-title: 'Rychlý start: Překlad textu, PHP – Translator Text API'
+title: 'Rychlý start: Přeložení textu, PHP – Translator Text API'
 titleSuffix: Azure Cognitive Services
 description: V tomto rychlém startu přeložíte text z jednoho jazyka do jiného pomocí služby Translator Text API a PHP.
 services: cognitive-services
 author: erhopf
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: translator-text
+ms.subservice: translator-text
 ms.topic: quickstart
 ms.date: 06/22/2018
 ms.author: erhopf
-ms.openlocfilehash: 5edecf780c1687a4abc583f3223f0245964ddf18
-ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
-ms.translationtype: HT
+ms.openlocfilehash: 66b4fddb84b28ba1189fff6c77c9ec588ee2c2e2
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49647795"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55207220"
 ---
-# <a name="quickstart-translate-text-with-the-translator-text-rest-api-php"></a>Rychlý start: Překlad textu pomocí rozhraní REST API služby Translator Text (PHP)
+# <a name="quickstart-translate-text-with-the-translator-text-rest-api-php"></a>Rychlý start: Přeložení textu s Translator Text REST API (PHP)
 
 V tomto rychlém startu přeložíte text z jednoho jazyka do jiného pomocí služby Translator Text API.
 
@@ -132,7 +132,7 @@ echo $json;
 ]
 ```
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Prozkoumejte vzorový kód pro tento a další rychlé starty, včetně transkripce a identifikace jazyka a také dalších vzorových projektů služby Translator Text na GitHubu.
 

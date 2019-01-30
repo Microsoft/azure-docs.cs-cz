@@ -6,16 +6,16 @@ services: cognitive-services
 author: ashmaka
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: text-analytics
+ms.subservice: text-analytics
 ms.topic: conceptual
 ms.date: 10/01/2018
 ms.author: ashmaka
-ms.openlocfilehash: a70ef893019264ffc0eb3cb2982b05b15ebd0acf
-ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
+ms.openlocfilehash: 579040c3a1466d431a9ae2105edbf02fa41570b6
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2018
-ms.locfileid: "48884364"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55211582"
 ---
 # <a name="how-to-call-the-text-analytics-rest-api"></a>Volání REST API pro analýzu textu
 
@@ -42,11 +42,11 @@ Vstup musí být v nezpracované nestrukturovaného textu JSON. XML není podpor
 
 Aktuálně můžete odeslat dokumenty stejný pro všechny operace rozhraní Text Analytics: zabarvení, klíčových frází, rozpoznávání jazyka a identifikace entit. (Schéma je pravděpodobně lišit pro každou analýzy v budoucnu.)
 
-| Prvek | Platné hodnoty | Povinné? | Využití |
+| Element | Platné hodnoty | Povinné? | Využití |
 |---------|--------------|-----------|-------|
 |`id` |Datový typ je řetězec, ale v praxi ID dokumentu mají být celá čísla. | Požaduje se | Systém používá ID zadáte strukturovat výstup. Pro každé ID v požadavku se generují kódech jazyků, klíčové fráze a skóre mínění.|
 |`text` | Nestrukturované nezpracovaný text, maximálně 5 000 znaků. | Požaduje se | Pro rozpoznávání jazyka lze vyjádřit text v libovolném jazyce. Pro analýzu mínění, extrakci klíčových frází a identifikace entit, musí mít text [podporovaný jazyk](../text-analytics-supported-languages.md). |
-|`language` | 2 znacích [ISO 639-1](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes) kód [podporovaný jazyk](../text-analytics-supported-languages.md) | Se liší | Vyžaduje se pro analýzu mínění, extrakci klíčových frází a propojování entit; volitelné pro rozpoznání jazyka. Se nezobrazí žádná chyba, pokud se můžete vyloučit, ale analýza správné provedení příslušných činností bez něj. Kód jazyka, musí odpovídat `text` zadáte. |
+|`language` | 2 znacích [ISO 639-1](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes) kód [podporovaný jazyk](../text-analytics-supported-languages.md) | Různé | Vyžaduje se pro analýzu mínění, extrakci klíčových frází a propojování entit; volitelné pro rozpoznání jazyka. Se nezobrazí žádná chyba, pokud se můžete vyloučit, ale analýza správné provedení příslušných činností bez něj. Kód jazyka, musí odpovídat `text` zadáte. |
 
 Další informace o omezeních najdete v tématu [Text Analytics – přehled > omezení datové](../overview.md#data-limits). 
 

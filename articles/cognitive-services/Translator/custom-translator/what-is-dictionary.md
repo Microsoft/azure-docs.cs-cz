@@ -5,16 +5,16 @@ description: Slovník je zarovnaný dokumentu, který určuje seznam fráze nebo
 author: rajdeep-in
 manager: christw
 ms.service: cognitive-services
-ms.component: custom-translator
+ms.subservice: custom-translator
 ms.date: 11/13/2018
 ms.author: v-rada
 ms.topic: article
-ms.openlocfilehash: 3a92e41ad9611981777012cd231845587a6f947b
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: bc297fd4cdda8cdb3dc618b73e91d2f4e31e8b6a
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51627301"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55212405"
 ---
 # <a name="what-is-a-dictionary"></a>Co je slovník?
 
@@ -32,7 +32,7 @@ Slovník věty můžete zadat přesný cíl překlad pro zdroj věty. Věty slov
 Můžete trénování modelu s použitím pouze data slovníku. Provedete to tak, vyberte pouze slovníku dokument (nebo více dokumentů slovník), které chcete zahrnout a klepněte na tlačítko Vytvořit model. Protože jde čistě slovníku školení, neexistuje žádná minimální počet školení věty vyžaduje. Model se obvykle dokončí školení mnohem rychlejší než standardní školení.  Výsledný modely použije Microsoft základní modely pro překlad a uveďte slovníky, které jste přidali.  Nezískáte sestava testu.
 
 >[!Note]
->Vlastní Translator nemá věty zarovnat soubory slovníku, proto je důležité, aby se stejný počet zdroj a cíl fráze/věty v dokumentech slovníku a že jsou přesně zarovnaná.
+>Vlastní Translator věta není zarovnat soubory slovníku, takže je důležité, aby se stejný počet fráze zdroj a cíl / věty ve slovníku dokumenty a že jsou přesně odpovídají.
 
 ## <a name="recommendations"></a>Doporučení
 

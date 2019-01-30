@@ -6,17 +6,17 @@ services: cognitive-services
 author: RichardSunMS
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: linguistic-analysis
+ms.subservice: linguistic-analysis
 ms.topic: conceptual
 ms.date: 03/21/2016
 ms.author: lesun
 ROBOTS: NOINDEX
-ms.openlocfilehash: 8d6e768e5cf846cb2c34ceb61d269854418e1dc5
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: 778005ee321c981fec1d1271cee54229bb3a522f
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53976592"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55214166"
 ---
 # <a name="constituency-parsing"></a>Analýza konstituentů
 
@@ -72,25 +72,25 @@ Existuje několik takových frází: *Můžu*, *nové hybridní automobile*, *Bl
 |CONJP  | Fráze spojení | "i" |
 |KŘEH   | Fragment pro neúplné nebo fragmentary vstupy | "Důrazně doporučujeme..." |
 |INTJ   | interjection | "Radostných" |
-|OBRÁZKŮ    | Seznam značek, včetně interpunkce | "#4)" |
+|LST    | Seznam značek, včetně interpunkce | "#4)" |
 |NAC    | Není A základní, slouží k určení nastavení rozsahu bez rozložený fráze |  "a pro mnoho" v "získáte věci a dobrého řešení" |
 |NP | Fráze podstatné jméno | "tasty brambory masopustní" |
 |NX | V některých složitých server NPs používá k označení hlavičky| |
-|STR | Prepositional fráze| "ve fondu" |
+|PP | Prepositional fráze| "ve fondu" |
 |PRN    | Kulatých závorek| "(tedy volána)" |
 |PRT    | částicový| "out" v "zkopírované si" |
 |QP | Množství fráze (například komplexní míry/Částka) v rámci podstatné jméno fráze| "around $75" |
-|KÓD DŮVODU REGISTRACE    | Snížení relativní klauzule.| "stále nevyřešené" v "mnoho problémů stále nevyřešené" |
+|RRC    | Snížení relativní klauzule.| "stále nevyřešené" v "mnoho problémů stále nevyřešené" |
 |S  | Věty nebo klauzuli. | "Toto je větu."
 |SBAR   | Klauzule podřízené, často zavedené subordinating spojení | "Jak mám left" v "I trochu jak mi zbývá."|
 |SBARQ  | Přímý dotaz zavedených v co slova nebo - fráze | "Jak se bod?" |
 |SINV   | Obráceným deklarativní větu | "Současně tato nabídka neunikne jejich." (Všimněte si, jak normální předmět "," byl přesunut do po operaci "byly") |
-|SQ. | Převrátí Ano/Ne otázku nebo klauzuli hlavní otázky shod | "Se dostaly auta?" |
+|SQ | Převrátí Ano/Ne otázku nebo klauzuli hlavní otázky shod | "Se dostaly auta?" |
 |UCP    | Na rozdíl od koordinovaného fráze| "malý a s chybami" (Všimněte si, jak conjoined přídavné a frází mezerami s "a")|
-|VICEPREZIDENT | Příkaz fráze | "narazili lese" |
+|VP | Příkaz fráze | "narazili lese" |
 |WHADJP | Co přídavného jména fráze | "jak nepříjemně" |
 |WHADVP | Co příslovce fráze| "when" |
-|WHNP   | Co-podstatné jméno fráze| "které brambory", "kolik polévky"|
+|WHNP   | Wh-noun Phrase| "které brambory", "kolik polévky"|
 |WHPP   | Co prepositional fráze| "v zemi"|
 |X  | Neznámý stav nebo unbracketable.| první "the" v "... polévky" |
 

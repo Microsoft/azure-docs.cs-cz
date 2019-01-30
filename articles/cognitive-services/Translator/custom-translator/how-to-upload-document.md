@@ -5,16 +5,16 @@ description: Pomocí funkce nahrání dokumentu můžete nahrát paralelní doku
 author: rajdeep-in
 manager: christw
 ms.service: cognitive-services
-ms.component: custom-translator
+ms.subservice: custom-translator
 ms.date: 11/13/2018
 ms.author: v-rada
 ms.topic: article
-ms.openlocfilehash: 3a0adb4b761121334e93f2b8d2d764ff3ab495e2
-ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
+ms.openlocfilehash: e08813c71a0b95b6b130ab71313bda6d044d730a
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52633244"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55217216"
 ---
 # <a name="upload-a-document"></a>Nahrání dokumentu
 
@@ -37,7 +37,7 @@ Z [vlastní Translator](https://portal.customtranslator.azure.ai) portálu, klik
 
     a.  Typ dokumentu:
 
-    -  Školení: Tyto dokumenty se použije pro trénovací sady.
+    -  Školení: Tyto dokumenty se použije pro trénovací sada.
     -  Ladění: Tyto dokumenty se použije pro ladění sady.
     -  Testování: Tyto dokumenty se použije pro testovací sadu.
     -  Fráze slovníku: Tyto dokumenty se použije pro fráze slovníku.
@@ -50,9 +50,9 @@ Z [vlastní Translator](https://portal.customtranslator.azure.ai) portálu, klik
     d.  Zadejte příslušné části paralelních dat nebo dat – pole se seznamem.
 
     -  Paralelních dat:
-        -  Zdrojový soubor: Zdrojový jazyk vyberte soubor ze svého místního počítače.
-        -  Cílový soubor: Vyberte cílový jazyk souboru ze svého místního počítače.
-        -  Název dokumentu: použít pouze v případě, že se nahrávání paralelní souborů.
+        -  Zdrojový soubor: Vyberte jazyk zdrojového souboru ze svého místního počítače.
+        -  Cílový soubor: Vyberte cílový jazyk soubor ze svého místního počítače.
+        -  Název dokumentu: Použít pouze v případě, že se nahrávání paralelní souborů.
 
     - Pole se seznamem data:
         -  Soubor se seznamem: Vyberte soubor se seznamem ze svého místního počítače. Váš soubor se seznamem obsahuje zdrojový i cílový jazyk věty. [Zásady vytváření názvů](document-formats-naming-convention.md) je důležité pro soubory se seznamem.

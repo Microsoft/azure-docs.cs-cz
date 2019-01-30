@@ -15,13 +15,14 @@ ms.topic: tutorial
 ms.date: 09/11/2018
 ms.author: jeffgilb
 ms.reviewer: unknown
+ms.lastreviewed: 09/11/2018
 ms.custom: mvc
-ms.openlocfilehash: 7c4f8fd3d7a4885893a126c63776a5e241dc0f91
-ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
+ms.openlocfilehash: 59a113739734c5e1a29de7e5876f255906ef5323
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/12/2019
-ms.locfileid: "54246530"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55252281"
 ---
 # <a name="tutorial-make-virtual-machines-available-to-your-azure-stack-users"></a>Kurz: zpřístupníte virtuálních počítačů pro vaše uživatele Azure stacku
 

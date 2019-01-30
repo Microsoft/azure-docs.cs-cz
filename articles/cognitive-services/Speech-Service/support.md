@@ -6,16 +6,16 @@ services: cognitive-services
 author: wolfma61
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: speech-service
+ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/26/2018
 ms.author: wolfma
-ms.openlocfilehash: 58fb5d4be2137eed7d62e702f08bdd66c80be347
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.openlocfilehash: 9ed4f14ee5c3f6023e5529aca7fbd824f5ca460a
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49468054"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55207033"
 ---
 # <a name="support-and-help-options"></a>Možnosti podpory a Nápověda
 
@@ -61,11 +61,11 @@ Pokud nemůžete najít odpověď na váš problém prostřednictvím vyhledáv�
 
 |Komponenta nebo oblast  |Značky  |
 |---------|---------|
-|Rozpoznávání řeči |[[microsoft-cognitive + speech-to-text]](http://stackoverflow.com/questions/tagged/microsoft-cognitive+speech-to-text)|
-|Syntézu řeči |[[microsoft-cognitive + text na řeči]](http://stackoverflow.com/questions/tagged/microsoft-cognitive+text-to-speech)|
-|Překlad řeči |[[microsoft-překladu cognitive +]](http://stackoverflow.com/questions/tagged/microsoft-cognitive+translation)|
-|Záměru řeči |[[microsoft-luis cognitive +]](http://stackoverflow.com/questions/tagged/microsoft-cognitive+luis)|
-|Obecné sadou SDK pro řeč |[[microsoft-cognitive +-řeči – rozhraní api microsoft]](http://stackoverflow.com/questions/tagged/microsoft-cognitive+microsoft-speech-api)|
+|Rozpoznávání řeči |[[microsoft-cognitive+speech-to-text]](http://stackoverflow.com/questions/tagged/microsoft-cognitive+speech-to-text)|
+|Syntézu řeči |[[microsoft-cognitive+text-to-speech]](http://stackoverflow.com/questions/tagged/microsoft-cognitive+text-to-speech)|
+|Překlad řeči |[[microsoft-cognitive+translation]](http://stackoverflow.com/questions/tagged/microsoft-cognitive+translation)|
+|Speech Intent |[[microsoft-cognitive+luis]](http://stackoverflow.com/questions/tagged/microsoft-cognitive+luis)|
+|Obecné sadou SDK pro řeč |[[microsoft-cognitive+microsoft-speech-api]](http://stackoverflow.com/questions/tagged/microsoft-cognitive+microsoft-speech-api)|
 
 > [!TIP]
 > Následující příspěvky z přetečení zásobníku obsahuje tipy, jak dotazy formulář a přidejte zdrojový kód. Dodržení těchto pokynů může zvýšit pravděpodobnost, že členové komunity, vyhodnocení a rychle reagovat na vaši otázku:  
@@ -102,7 +102,7 @@ Kterou verzi sady SDK je používáte.
 **Programovací jazyk, platformu a operačního systému**
 
  - Operační systém: [třeba Windows, Linux, Android, iOS,...] - buďte konkrétní
- - Hardware - x64, x86, ARM...
+ - Hardware - x64, x86, ARM, ...
  - Prohlížeč [např Chrome, Safari] (pokud existuje)-buďte konkrétní
 
 **Další kontext**

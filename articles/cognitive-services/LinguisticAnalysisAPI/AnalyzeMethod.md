@@ -6,22 +6,22 @@ services: cognitive-services
 author: RichardSunMS
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: linguistic-analysis
+ms.subservice: linguistic-analysis
 ms.topic: conceptual
 ms.date: 12/13/2016
 ms.author: lesun
 ROBOTS: NOINDEX
-ms.openlocfilehash: 87df00ae5ca12b168f2e1c03850da2e94cec350b
-ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
+ms.openlocfilehash: a14a685ba80dbd5e7e3d44e9032e5baaad5ef3fe
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48239298"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55208631"
 ---
 # <a name="analyze-method"></a>Analýza – metoda
 
 > [!IMPORTANT]
-> Pro jazykovou analýzu ve verzi preview byla vyřazena z provozu, 9. srpna 2018. Doporučujeme používat [moduly analýzy textu Azure Machine Learning](https://docs.microsoft.com/azure/machine-learning/studio-module-reference/text-analytics) pro zpracování textu a analýzy.
+> Dne 9. srpna 2018 došlo k vyřazení jazykové analýzy ve verzi Preview z provozu. Ke zpracování a analýze textu doporučujeme používat [moduly analýzy textu služby Azure Machine Learning](https://docs.microsoft.com/azure/machine-learning/studio-module-reference/text-analytics).
 
 **Analyzovat** rozhraní REST API slouží k analýze vstup dané přirozeného jazyka.
 Která může zahrnovat jenom hledání [věty a tokeny](Sentences-and-Tokens.md) v rámci tento vstup, hledání [značek částí řeči](POS-tagging.md), nebo hledání [constitutency stromu](Constituency-Parsing.md).
@@ -38,7 +38,7 @@ https://westus.api.cognitive.microsoft.com/linguistics/v1.0/analyze
 
 ## <a name="request-parameters"></a>Parametry žádosti
 
-Název | Typ | Požaduje se | Popis
+Name | Type | Povinné | Popis
 -----|-------|----------|------------
 **Jazyk**    | řetězec | Ano | Dvě písmena kód ISO jazyka použitého pro analýzu. Angličtina je například "en".
 **analyzerIds** | seznam řetězců | Ano | Seznam identifikátorů GUID analyzátory použít. Další informace v dokumentaci analyzátory.
@@ -50,7 +50,7 @@ Pole analýzy výstupy, jeden pro každý atribut v požadavku.
 
 Výsledky budou vypadat takto:
 
-Název | Typ | Popis
+Name | Typ | Popis
 -----|------|--------------
 analyzerId | řetězec | Analyzátor zadaný identifikátor GUID
 výsledek | objekt | výsledek analyzátoru
@@ -59,12 +59,12 @@ Všimněte si, že typ výsledku závisí na typu vstupu analyzátor.
 
 ### <a name="tokens-response-json"></a>Tokeny odpovědí (JSON)
 
-Název | Typ | Popis
+Name | Typ | Popis
 -----|------|-------------
 výsledek | seznam objektů větu | hranice věty identifikované v textu |
 výsledek [x]. Posun | int | počáteční odsazení znaku každé věty. |
 výsledek [x]. Délka | int | Délka ve znacích jednotlivé věty |
-výsledek [x]. Tokeny | seznam tokenů objektů | Token hranice identifikované ve větě |
+result[x].Tokens | seznam tokenů objektů | Token hranice identifikované ve větě |
 výsledek [x]. Tokeny [y]. Posun | int | počáteční odsazení znaku tokenu |
 výsledek [x]. Tokeny [y]. Délka | int | Délka ve znacích tokenu |
 výsledek [x]. Tokeny [y]. RawToken | řetězec | znaky uvnitř tohoto tokenu, před normalizace |
@@ -147,7 +147,7 @@ Stromů analýzy jsou reprezentovány ve formě v závorkách.
 
 `POST /analyze`
 
-Těla požadavku: Datová část JSON
+Text žádosti: Datová část JSON
 ```json
 {
   "language": "en",
