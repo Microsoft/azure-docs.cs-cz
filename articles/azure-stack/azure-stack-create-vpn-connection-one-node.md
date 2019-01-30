@@ -15,13 +15,14 @@ ms.topic: get-started-article
 ms.date: 09/12/2018
 ms.author: sethm
 ms.reviewer: scottnap
+ms.lastreviewed: 09/12/2018
 ROBOTS: NOINDEX
-ms.openlocfilehash: b17b1b077a1acac5ddb0e9eea8c4a2cf44697979
-ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
+ms.openlocfilehash: 65bf3d7eb84f4a4e6fe6d74bd08c41ba4d9dd637
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49078898"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55247217"
 ---
 # <a name="create-a-site-to-site-vpn-connection-between-two-virtual-networks-in-different-azure-stack-development-kit-environments"></a>Vytvoření připojení site-to-site VPN mezi dvěma virtuálními sítěmi v různých prostředích Azure Stack Development Kit
 ## <a name="overview"></a>Přehled
@@ -32,10 +33,10 @@ Následující diagram znázorňuje konfiguraci připojení by měl vypadat až 
 
 ![Konfigurace připojení Site-to-site VPN](media/azure-stack-create-vpn-connection-one-node-tp2/OneNodeS2SVPN.png)
 
-### <a name="before-you-begin"></a>Než začnete
+### <a name="before-you-begin"></a>Před zahájením
 K dokončení konfigurace připojení, zkontrolujte, že máte následující položky než začnete:
 
-* Dva servery a další nezbytné součásti, které splňují požadavky na hardware Azure Stack Development Kit, jak je popsáno v [rychlý start: vyhodnocení Azure Stack Development Kit](azure-stack-deploy-overview.md). 
+* Dva servery a další nezbytné součásti, které splňují požadavky na hardware Azure Stack Development Kit, jak je popsáno v [rychlý start: Vyzkoušejte Azure Stack Development Kit](azure-stack-deploy-overview.md). 
 * [Azure Stack Development Kit](https://azure.microsoft.com/overview/azure-stack/try/) balíček pro nasazení.
 
 ## <a name="deploy-the-azure-stack-development-kit-environments"></a>Nasazení prostředí Azure Stack Development Kit
@@ -55,7 +56,7 @@ Následující tabulka shrnuje konfiguraci sítě pro obou prostředích Azure S
 |---------|---------|---------|
 |Název virtuální sítě     |VNET-01|VNET-02 |
 |Adresní prostor virtuální sítě |10.0.10.0/23|10.0.20.0/23|
-|Název podsítě     |Podsíť-01|Podsíť-02|
+|Název podsítě     |Subnet-01|Subnet-02|
 |Rozsah adres podsítě|10.0.10.0/24 |10.0.20.0/24 |
 |Podsíť brány     |10.0.11.0/24|10.0.21.0/24|
 |Externí adresu BGPNAT     |         |         |
@@ -94,7 +95,7 @@ Správce služeb můžete přihlásit jako tenant k testovací plány, nabídky 
 1. Pro přihlášení k portálu user portal pomocí účtu tenanta.
 2. Na portálu user portal, vyberte **+ vytvořit prostředek**.
 3. Přejděte na **Marketplace**a pak vyberte **sítě**.
-4. Vyberte **virtuální síť**.
+4. Vyberte **Virtuální síť**.
 5. Pro **název**, **adresní prostor**, **název podsítě**, a **rozsah adres podsítě**, použijte hodnoty, které se zobrazí dříve v síti Konfigurace tabulky.
 6. V **předplatné**, zobrazí se předplatné, které jste vytvořili dříve.
 7. Pro **skupiny prostředků**, můžete vytvořit skupinu prostředků nebo pokud ještě nemáte, vyberte **použít existující**.
@@ -184,7 +185,7 @@ Správce služeb můžete přihlásit jako tenant k testovací plány, nabídky 
 1. Přihlaste se pomocí účtu tenanta.
 2. Na portálu user portal, vyberte **+ vytvořit prostředek**.
 3. Přejděte na **Marketplace**a pak vyberte **sítě**.
-4. Vyberte **virtuální síť**.
+4. Vyberte **Virtuální síť**.
 5. Použijte informace uvedené výše v tabulce Konfigurace sítě a určete hodnoty pro POC2 **název**, **adresní prostor**, **název podsítě**a **Rozsah adres podsítě**.
 6. V **předplatné**, zobrazí se předplatné, které jste vytvořili dříve.
 7. Pro **skupiny prostředků**, vytvořte novou skupinu prostředků, nebo pokud ještě nemáte, vyberte **použít existující**.
@@ -207,7 +208,7 @@ Správce služeb můžete přihlásit jako tenant k testovací plány, nabídky 
 3. V seznamu síťových prostředků, vyberte **Brána virtuální sítě**.
 4. V **název**, zadejte **GW2**.
 5. Chcete-li zvolit virtuální síť, vyberte **virtuální síť**. Potom vyberte **připojení typu VNET-02** ze seznamu.
-6. Vyberte **veřejnou IP adresu**. Když **zvolte veřejnou IP adresu** otevře se okno, vyberte **vytvořit nový**.
+6. Vyberte **Veřejná IP adresa**. Když **zvolte veřejnou IP adresu** otevře se okno, vyberte **vytvořit nový**.
 7. V **název**, zadejte **GW2-PiP**a pak vyberte **OK**.
 8. Ve výchozím nastavení pro **typ sítě VPN**, **založené na trasách** zaškrtnuto.
     Zachovat **založené na trasách** typ sítě VPN.

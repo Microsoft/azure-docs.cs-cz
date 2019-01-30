@@ -15,12 +15,13 @@ ms.topic: article
 ms.date: 05/18/2018
 ms.author: anwestg
 ms.reviewer: sethm
-ms.openlocfilehash: f40d88df7a46c73981b6f20bee0b119743c08257
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.lastreviewed: 05/18/2018
+ms.openlocfilehash: ec0c80925770c75ee1f23df29f1724444c1e7337
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53714487"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55249659"
 ---
 # <a name="app-service-on-azure-stack-update-2-release-notes"></a>App Service v Azure stacku zpráva k vydání verze update 2
 
@@ -57,10 +58,10 @@ Azure App Service v Azure stacku Update 2 zahrnuje následující vylepšení a 
 - **Aktualizace následujících aplikační architektury a nástroje**:
   - Přidání rozhraní .net Framework 4.7.1
   - Přidání **Node.JS** verze:
-    - Prostředí NodeJS 6.12.3
-    - Prostředí NodeJS 8.9.4
-    - Prostředí NodeJS 8.10.0
-    - Prostředí NodeJS 8.11.1
+    - NodeJS 6.12.3
+    - NodeJS 8.9.4
+    - NodeJS 8.10.0
+    - NodeJS 8.11.1
   - Přidání **NPM** verze:
     - 5.6.0
   - Aktualizace.Net Core součásti bylo v souladu s Azure App Service ve veřejném cloudu.

@@ -6,16 +6,16 @@ author: ronortloff
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
-ms.component: implement
+ms.subservice: implement
 ms.date: 04/17/2018
 ms.author: rortloff
 ms.reviewer: igorstan
-ms.openlocfilehash: abe245e6174cb947e78252941c71ce6857b77f77
-ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
+ms.openlocfilehash: 5cb406a52cb8fa9b5e40d9b0775f4a616950f507
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43306787"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55250853"
 ---
 # <a name="using-identity-to-create-surrogate-keys-in-azure-sql-data-warehouse"></a>Chcete-li vytvořit náhradní klíče ve službě Azure SQL Data Warehouse pomocí IDENTITY
 Doporučení a příklady pro vlastnost IDENTITY používá k vytváření náhradní klíče tabulky ve službě Azure SQL Data Warehouse.
@@ -188,10 +188,10 @@ Následující související funkce nejsou podporované ve službě SQL Data War
 - [IDENTITY()](/sql/t-sql/functions/identity-function-transact-sql)
 - [@@IDENTITY](/sql/t-sql/functions/identity-transact-sql)
 - [SCOPE_IDENTITY](/sql/t-sql/functions/scope-identity-transact-sql)
-- [FUNKCE IDENT_CURRENT](/sql/t-sql/functions/ident-current-transact-sql)
+- [IDENT_CURRENT](/sql/t-sql/functions/ident-current-transact-sql)
 - [IDENT_INCR](/sql/t-sql/functions/ident-incr-transact-sql)
 - [IDENT_SEED](/sql/t-sql/functions/ident-seed-transact-sql)
-- [PŘÍKAZ DBCC CHECK_IDENT()](/sql/t-sql/database-console-commands/dbcc-checkident-transact-sql)
+- [DBCC CHECK_IDENT()](/sql/t-sql/database-console-commands/dbcc-checkident-transact-sql)
 
 ## <a name="common-tasks"></a>Běžné úkoly
 

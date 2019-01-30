@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 12/28/2018
 ms.author: mayg
-ms.openlocfilehash: 210872a468f92f92edef9c8e29a26382c5646dae
-ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
+ms.openlocfilehash: 8e46f47f1d3a95e4635609f24dc413141304d3c2
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2019
-ms.locfileid: "54321547"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55228164"
 ---
 # <a name="run-the-azure-site-recovery-deployment-planner-for-vmware-disaster-recovery-to-azure"></a>Spusťte Azure Site Recovery Deployment Planner pro zotavení po havárii VMware do Azure
 Tento článek představuje uživatelskou příručku k nástroji Azure Site Recovery Deployment Planner pro produkční nasazení VMware do Azure.
@@ -42,7 +42,7 @@ Nejprve potřebujete seznam virtuálních počítačů určených k profilaci. V
 
             Set-ExecutionPolicy –ExecutionPolicy AllSigned
 
-4. Možná bude potřeba spustit následující příkaz, pokud Connect-VIServer nebude rozpoznán jako název rutiny.
+4. Volitelně můžete spuštěním následujícího příkazu, pokud Connect-VIServer nebude rozpoznán jako název rutiny.
 
             Add-PSSnapin VMware.VimAutomation.Core
 

@@ -12,12 +12,13 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/18/2018
 ms.author: sethm
-ms.openlocfilehash: 50ece9edbc4bee1dea2cc61f2cdd851b278aa7b0
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.lastreviewed: 12/18/2018
+ms.openlocfilehash: 5ff2ee3ed271d8c32e2d41f40a56f71aa4c6c67c
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53720437"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55245265"
 ---
 # <a name="provide-applications-access-to-azure-stack"></a>Poskytnutí přístupu aplikací do Azure Stack
 
@@ -71,7 +72,7 @@ Při programovém přihlášení pomocí ID je pro vaši aplikaci a webové apli
 
 Jakmile klíč uložíte, zobrazí se jeho hodnota. Zkopírujte tuto hodnotu do poznámkového bloku nebo jiného dočasného umístění, protože klíč nelze načíst později. Hodnotu klíče uveďte s ID aplikace, aby přihlásit jako aplikace. Hodnota klíče Store na místě, kde aplikace může načíst ji.
 
-![Uložený klíč](./media/azure-stack-create-service-principal/image15.png)
+![uložený klíč](./media/azure-stack-create-service-principal/image15.png)
 
 Jakmile budete hotovi, můžete [přiřazení role aplikace](#assign-role-to-service-principal).
 
@@ -85,7 +86,7 @@ Vytvoření instančního objektu služby se službou AD FS můžete použít je
 
 Úlohy pro správu služby AD FS instanční.
 
-| Typ | Akce |
+| Type | Akce |
 | --- | --- |
 | Certifikát služby AD FS | [Vytvoření](azure-stack-create-service-principals.md#create-a-service-principal-using-a-certificate) |
 | Certifikát služby AD FS | [Aktualizace](azure-stack-create-service-principals.md#update-certificate-for-service-principal-for-AD-FS) |
@@ -115,8 +116,8 @@ Tyto informace se vyžaduje jako vstup pro automatizaci parametry:
 
 |Parametr|Popis|Příklad:|
 |---------|---------|---------|
-|Název|Název pro účet hlavní název služby|Moje aplikace|
-|Vlastnost ClientCertificates|Pole objektů certifikátu|X509 certifikátu|
+|Name|Název pro účet hlavní název služby|MyAPP|
+|ClientCertificates|Pole objektů certifikátu|X509 certifikátu|
 |ClientRedirectUris<br>(Volitelné)|Identifikátor URI přesměrování aplikace|-|
 
 #### <a name="use-powershell-to-create-a-service-principal"></a>Použití Powershellu k vytvoření instančního objektu
@@ -125,19 +126,19 @@ Tyto informace se vyžaduje jako vstup pro automatizaci parametry:
 
    ```PowerShell  
     # Credential for accessing the ERCS PrivilegedEndpoint, typically domain\cloudadmin
-    $creds = Get-Credential
+    $Creds = Get-Credential
 
     # Creating a PSSession to the ERCS PrivilegedEndpoint
-    $session = New-PSSession -ComputerName <ERCS IP> -ConfigurationName PrivilegedEndpoint -Credential $creds
+    $Session = New-PSSession -ComputerName <ERCS IP> -ConfigurationName PrivilegedEndpoint -Credential $Creds
 
     # If you have a managed certificate use the Get-Item command to retrieve your certificate from your certificate location.
     # If you don't want to use a managed certificate, you can produce a self signed cert for testing purposes: 
-    # $cert = New-SelfSignedCertificate -CertStoreLocation "cert:\CurrentUser\My" -Subject "CN=<yourappname>" -KeySpec KeyExchange
-    $cert = Get-Item "<yourcertificatelocation>"
+    # $Cert = New-SelfSignedCertificate -CertStoreLocation "cert:\CurrentUser\My" -Subject "CN=<YourAppName>" -KeySpec KeyExchange
+    $Cert = Get-Item "<YourCertificateLocation>"
     
-    $ServicePrincipal = Invoke-Command -Session $session -ScriptBlock { New-GraphApplication -Name '<yourappname>' -ClientCertificates $using:cert}
-    $AzureStackInfo = Invoke-Command -Session $session -ScriptBlock { get-azurestackstampinformation }
-    $session|remove-pssession
+    $ServicePrincipal = Invoke-Command -Session $Session -ScriptBlock {New-GraphApplication -Name '<YourAppName>' -ClientCertificates $using:cert}
+    $AzureStackInfo = Invoke-Command -Session $Session -ScriptBlock {Get-AzureStackStampInformation}
+    $Session | Remove-PSSession
 
     # For Azure Stack development kit, this value is set to https://management.local.azurestack.external. This is read from the AzureStackStampInformation output of the ERCS VM.
     $ArmEndpoint = $AzureStackInfo.TenantExternalEndpoints.TenantResourceManager
@@ -159,7 +160,7 @@ Tyto informace se vyžaduje jako vstup pro automatizaci parametry:
     -GraphAudience $GraphAudience `
     -EnableAdfsAuthentication:$true
 
-    Add-AzureRmAccount -EnvironmentName "azurestackuser" `
+    Add-AzureRmAccount -EnvironmentName "AzureStackUser" `
     -ServicePrincipal `
     -CertificateThumbprint $ServicePrincipal.Thumbprint `
     -ApplicationId $ServicePrincipal.ClientId `
@@ -173,7 +174,7 @@ Tyto informace se vyžaduje jako vstup pro automatizaci parametry:
    > Pro účely ověření certifikátu podepsaného svým držitelem můžete vytvořit pomocí následujícím příkladu:
 
    ```PowerShell  
-   $cert = New-SelfSignedCertificate -CertStoreLocation "cert:\CurrentUser\My" -Subject "CN=<yourappname>" -KeySpec KeyExchange
+   $Cert = New-SelfSignedCertificate -CertStoreLocation "cert:\CurrentUser\My" -Subject "CN=<yourappname>" -KeySpec KeyExchange
    ```
 
 
@@ -202,7 +203,7 @@ Tyto informace se vyžaduje jako vstup pro automatizaci parametry:
 
 |Parametr|Popis|Příklad:|
 |---------|---------|---------|
-|Název|Název pro účet hlavní název služby|Moje aplikace|
+|Name|Název pro účet hlavní název služby|MyAPP|
 |ApplicationIdentifier|Jedinečný identifikátor|S-1-5-21-1634563105-1224503876-2692824315-2119|
 |ClientCertificate|Pole objektů certifikátu|X509 certifikátu|
 
@@ -214,14 +215,14 @@ Tento příklad vytvoří certifikát podepsaný svým držitelem. Při spuště
 
      ```powershell
           # Creating a PSSession to the ERCS PrivilegedEndpoint
-          $session = New-PSSession -ComputerName <ERCS IP> -ConfigurationName PrivilegedEndpoint -Credential $creds
+          $Session = New-PSSession -ComputerName <ERCS IP> -ConfigurationName PrivilegedEndpoint -Credential $Creds
 
           # This produces a self signed cert for testing purposes. It is preferred to use a managed certificate for this.
-          $Newcert = New-SelfSignedCertificate -CertStoreLocation "cert:\CurrentUser\My" -Subject "CN=<yourappname>" -KeySpec KeyExchange
+          $NewCert = New-SelfSignedCertificate -CertStoreLocation "cert:\CurrentUser\My" -Subject "CN=<YourAppName>" -KeySpec KeyExchange
 
-          $RemoveServicePrincipal = Invoke-Command -Session $session -ScriptBlock {Set-GraphApplication -ApplicationIdentifier  S-1-5-21-1634563105-1224503876-2692824315-2120 -ClientCertificates $Newcert}
+          $RemoveServicePrincipal = Invoke-Command -Session $Session -ScriptBlock {Set-GraphApplication -ApplicationIdentifier  S-1-5-21-1634563105-1224503876-2692824315-2120 -ClientCertificates $NewCert}
 
-          $session|remove-pssession
+          $Session | Remove-PSSession
      ```
 
 2. Po dokončení automatizace, zobrazí aktualizovaný kryptografický otisk hodnota povolená pro ověření hlavního názvu služby.
@@ -246,7 +247,7 @@ Tyto informace se vyžaduje jako vstup pro automatizaci parametry:
 
 | Parametr | Popis | Příklad: |
 |----------------------|--------------------------|---------|
-| Název | Název pro účet hlavní název služby | Moje aplikace |
+| Name | Název pro účet hlavní název služby | MyAPP |
 | GenerateClientSecret | Vytvoření tajného kódu |  |
 
 #### <a name="use-the-ercs-privilegedendpoint-to-create-the-service-principal"></a>Použít ERCS PrivilegedEndpoint k vytvoření instančního objektu služby
@@ -255,15 +256,15 @@ Tyto informace se vyžaduje jako vstup pro automatizaci parametry:
 
      ```PowerShell  
       # Credential for accessing the ERCS PrivilegedEndpoint, typically domain\cloudadmin
-     $creds = Get-Credential
+     $Creds = Get-Credential
 
      # Creating a PSSession to the ERCS PrivilegedEndpoint
-     $session = New-PSSession -ComputerName <ERCS IP> -ConfigurationName PrivilegedEndpoint -Credential $creds
+     $Session = New-PSSession -ComputerName <ERCS IP> -ConfigurationName PrivilegedEndpoint -Credential $Creds
 
      # Creating a SPN with a secre
-     $ServicePrincipal = Invoke-Command -Session $session -ScriptBlock { New-GraphApplication -Name '<yourappname>' -GenerateClientSecret}
-     $AzureStackInfo = Invoke-Command -Session $session -ScriptBlock { get-azurestackstampinformation }
-     $session|remove-pssession
+     $ServicePrincipal = Invoke-Command -Session $Session -ScriptBlock {New-GraphApplication -Name '<YourAppName>' -GenerateClientSecret}
+     $AzureStackInfo = Invoke-Command -Session $Session -ScriptBlock {Get-AzureStackStampInformation}
+     $Session | Remove-PSSession
 
      # Output the SPN details
      $ServicePrincipal
@@ -299,20 +300,20 @@ Tyto informace se vyžaduje jako vstup pro automatizaci parametry:
 
 ##### <a name="example-of-updating-a-client-secret-for-ad-fs"></a>Příklad aktualizuje tajný klíč klienta služby AD FS
 
-V příkladu se používá **resetclientsecret** parametr, který tyto hodnoty okamžitě změnit tajný kód klienta.
+V příkladu se používá **ResetClientSecret** parametr, který okamžitě změní tajný kód klienta.
 
 1. Otevřete relaci Windows Powershellu se zvýšenými oprávněními a spusťte následující rutiny:
 
      ```PowerShell  
           # Creating a PSSession to the ERCS PrivilegedEndpoint
-          $session = New-PSSession -ComputerName <ERCS IP> -ConfigurationName PrivilegedEndpoint -Credential $creds
+          $Session = New-PSSession -ComputerName <ERCS IP> -ConfigurationName PrivilegedEndpoint -Credential $Creds
 
           # This produces a self signed cert for testing purposes. It is preferred to use a managed certificate for this.
-          $Newcert = New-SelfSignedCertificate -CertStoreLocation "cert:\CurrentUser\My" -Subject "CN=<yourappname>" -KeySpec KeyExchange
+          $NewCert = New-SelfSignedCertificate -CertStoreLocation "cert:\CurrentUser\My" -Subject "CN=<YourAppName>" -KeySpec KeyExchange
 
-          $UpdateServicePrincipal = Invoke-Command -Session $session -ScriptBlock {Set-GraphApplication -ApplicationIdentifier  S-1-5-21-1634563105-1224503876-2692824315-2120 -ResetClientSecret}
+          $UpdateServicePrincipal = Invoke-Command -Session $Session -ScriptBlock {Set-GraphApplication -ApplicationIdentifier  S-1-5-21-1634563105-1224503876-2692824315-2120 -ResetClientSecret}
 
-          $session|remove-pssession
+          $Session | Remove-PSSession
      ```
 
 2. Po dokončení automatizace, zobrazí nově vygenerovaný tajného klíče pro ověření hlavního názvu služby. Ujistěte se, že ukládáte nový tajný kód klienta.
@@ -348,14 +349,14 @@ Tyto informace se vyžaduje jako vstup pro automatizaci parametry:
 
 ```powershell  
      Credential for accessing the ERCS PrivilegedEndpoint, typically domain\cloudadmin
-     $creds = Get-Credential
+     $Creds = Get-Credential
 
      # Creating a PSSession to the ERCS PrivilegedEndpoint
-     $session = New-PSSession -ComputerName <ERCS IP> -ConfigurationName PrivilegedEndpoint -Credential $creds
+     $Session = New-PSSession -ComputerName <ERCS IP> -ConfigurationName PrivilegedEndpoint -Credential $Creds
 
-     $UpdateServicePrincipal = Invoke-Command -Session $session -ScriptBlock { Remove-GraphApplication -ApplicationIdentifier S-1-5-21-1634563105-1224503876-2692824315-2119}
+     $UpdateServicePrincipal = Invoke-Command -Session $Session -ScriptBlock {Remove-GraphApplication -ApplicationIdentifier S-1-5-21-1634563105-1224503876-2692824315-2119}
 
-     $session|remove-pssession
+     $Session | Remove-PSSession
 ```
 
 ## <a name="assign-a-role"></a>Přiřazení role

@@ -6,16 +6,16 @@ author: kavithaj
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
-ms.component: implement
+ms.subservice: implement
 ms.date: 04/17/2018
 ms.author: kavithaj
 ms.reviewer: igorstan
-ms.openlocfilehash: 7ff23235e9681301984e13e346b23f277662bb5c
-ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
+ms.openlocfilehash: 112d093946099e623d1edfa4555eda681069892e
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43300930"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55243381"
 ---
 # <a name="threat-detection-in-azure-sql-data-warehouse"></a>Detekce hrozeb ve službě Azure SQL Data Warehouse
 Konfigurace zjišťování hrozeb a prozkoumat podezřelé události ve službě Azure SQL Data Warehouse.
@@ -54,7 +54,7 @@ Detekce hrozeb například detekuje určité neobvyklé databázové aktivity zn
    
     ![Navigační podokno](media/sql-data-warehouse-security-threat-detection/6_td_audit_record_details.png)
 4. V okně Záznamy auditování klikněte na **Otevřít v aplikaci Excel** a otevřete předkonfigurovanou šablonu aplikace Excel umožňující import a spuštění hlubší analýzy protokolu auditu v době výskytu podezřelé události.<br/>
-   **Poznámka:** v aplikaci Excel 2010 nebo novější Power Query a **rychle zkombinovat** nastavení je povinné
+   **Poznámka:** V aplikaci Excel 2010 nebo novější Power Query a **rychle zkombinovat** nastavení je povinné
    
     ![Navigační podokno](media/sql-data-warehouse-security-threat-detection/7_td_audit_records_open_excel.png)
 5. Konfigurace nastavení **Rychle zkombinovat** – Na záložce pásu karet **POWER QUERY** vyberte **Možnosti** a zobrazte dialogové okno Možnosti. Vyberte část Osobní údaje a zvolte druhou možnost – Ignorovat úrovně ochrany osobních údajů a potenciálně tak vylepšit výkon:

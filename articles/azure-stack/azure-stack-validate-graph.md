@@ -15,12 +15,13 @@ ms.topic: article
 ms.date: 01/28/2019
 ms.author: patricka
 ms.reviewer: jerskine
-ms.openlocfilehash: fbc6e7586e116df1fa19c6c9e0c5a5b17f00d646
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.lastreviewed: 01/28/2019
+ms.openlocfilehash: 0755f9d60bee8a57f9259a51cf54e8cda566175e
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55096756"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55247003"
 ---
 # <a name="validate-graph-integration-for-azure-stack"></a>Ověření grafu integrace pro Azure Stack
 

@@ -9,15 +9,15 @@ author: VanMSFT
 ms.author: vanto
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 12/18/2018
-ms.openlocfilehash: e0311174303fc91767d3f99e6db05927b25aea05
-ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
+ms.date: 01/18/2019
+ms.openlocfilehash: 05d1f69a5a8bc38c63a842a92266dd15e010d694
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54051658"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55227263"
 ---
-# <a name="tutorial-secure-a-single-database"></a>Kurz: Zabezpečené izolované databáze
+# <a name="tutorial-single-database-security-in-azure-sql-database"></a>Kurz: Izolované databáze zabezpečení ve službě Azure SQL Database
 
 Azure SQL Database chrání data v izolované databáze SQL, neboť umožňuje:
 

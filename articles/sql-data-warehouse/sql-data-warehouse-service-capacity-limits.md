@@ -6,16 +6,16 @@ author: sachinpMSFT
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
-ms.component: implement
+ms.subservice: implement
 ms.date: 11/14/2018
 ms.author: anvang
 ms.reviewer: igorstan
-ms.openlocfilehash: aa1d98f5ea2db0cc549b60e33769c8628181721b
-ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
+ms.openlocfilehash: 131a2102ec3ede930de3cad7516e486d793fec3d
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51686598"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55250551"
 ---
 # <a name="sql-data-warehouse-capacity-limits"></a>Limity kapacity SQL Data Warehouse
 Maximální hodnoty povolené pro různé komponenty služby Azure SQL Data Warehouse.
@@ -28,12 +28,12 @@ Maximální hodnoty povolené pro různé komponenty služby Azure SQL Data Ware
 | Připojení databáze |Otevřít souběžných relací |1024<br/><br/>Všechny aktivní relace 1024 můžete poslat požadavek na databázi SQL Data Warehouse ve stejnou dobu. Mějte na paměti, existují omezení počtu dotazů, které mohou být prováděna současně. Při překročení limitu souběžnosti, požadavek přejde do vnitřní fronty, kde čeká na zpracování. |
 | Připojení databáze |Maximální velikost paměti pro připravené příkazy |20 MB |
 | [Správa úloh](resource-classes-for-workload-management.md) |Maximální počet souběžných dotazů |128<br/><br/> SQL Data Warehouse mohou spouštět maximálně 128 souběžných dotazů a fronty zbývající dotazy.<br/><br/>Počet souběžných dotazů můžete snížit, když uživatelé přiřazeni k vyšší třídy prostředků nebo pokud SQL Data Warehouse má nižší [jednotka datového skladu](memory-and-concurrency-limits.md) nastavení. Některé dotazy, jako jsou dotazy na zobrazení dynamické správy, jsou vždy povoleny ke spuštění a provést negativní vliv na omezení souběžných dotazu. Další podrobnosti o spuštění souběžných dotazů, najdete v článku [souběžnosti maxima](memory-and-concurrency-limits.md#concurrency-maximums) článku. |
-| [databáze tempdb](sql-data-warehouse-tables-temporary.md) |Maximální GB |399 GB na DW100. Proto v DWU1000, tempdb přizpůsoben pro 3,99 TB. |
+| [tempdb](sql-data-warehouse-tables-temporary.md) |Maximální GB |399 GB na DW100. Proto v DWU1000, tempdb přizpůsoben pro 3,99 TB. |
 
 ## <a name="database-objects"></a>Databázové objekty
 | Kategorie | Popis | Maximum |
 |:--- |:--- |:--- |
-| Databáze |Maximální velikost | Gen1: 240 TB na disk komprimován. Toto místo je nezávislý na místa protokolu nebo databáze tempdb, a proto je tento prostor vyhrazený pro trvalé tabulky.  Komprese columnstore clusteru se odhadují 5 X.  Tato komprese umožňuje databáze, kterou chcete dosáhnout přibližně 1 PB všech tabulek po Clusterované columnstore (výchozí typ tabulky). <br/><br/> Gen2: 240TB rowstore a neomezené úložiště tabulek columnstore |
+| Databáze |Maximální velikost | Gen1: 240 TB na disk komprimován. Toto místo je nezávislý na místa protokolu nebo databáze tempdb, a proto je tento prostor vyhrazený pro trvalé tabulky.  Komprese columnstore clusteru se odhadují 5 X.  Tato komprese umožňuje databáze, kterou chcete dosáhnout přibližně 1 PB všech tabulek po Clusterované columnstore (výchozí typ tabulky). <br/><br/> Gen2: 240TB pro rowstore a neomezené úložiště tabulek columnstore |
 | Table |Maximální velikost |60 TB komprimované na disku |
 | Table |Tabulky na databázi | 100 000 |
 | Table |Sloupce na tabulku |1024 sloupců |
@@ -69,7 +69,7 @@ Maximální hodnoty povolené pro různé komponenty služby Azure SQL Data Ware
 | SELECT |Sloupce na spojení |1024 sloupců<br/><br/>Nikdy nemůžete mít více než 1024 sloupců ve spojení. Neexistuje žádná záruka, že budete mít vždy 1024. Pokud plán spojení vyžaduje dočasnou tabulku s více sloupců než výsledek spojení, platí limit 1 024 do dočasné tabulky. |
 | SELECT |Počet bajtů za Seskupit podle sloupce. |8060<br/><br/>Sloupce v klauzuli GROUP BY může mít maximálně 8 060 bajtů. |
 | SELECT |Bajtů na pořadí podle sloupce |8 060 bajtů<br/><br/>Sloupce v klauzuli ORDER by může mít maximálně 8 060 bajtů |
-| Identifikátory na – příkaz |Počet identifikátorů odkazované |65,535<br/><br/>SQL Data Warehouse omezuje počet identifikátorů, které mohou být obsaženy v jednom výrazu dotazu. Vyšší než tento počet výsledků v chybě systému SQL Server 8632. Další informace najdete v tématu [vnitřní chyba: bylo dosaženo limitu služby výrazu](https://support.microsoft.com/en-us/help/913050/error-message-when-you-run-a-query-in-sql-server-2005-internal-error-a). |
+| Identifikátory na – příkaz |Počet identifikátorů odkazované |65,535<br/><br/>SQL Data Warehouse omezuje počet identifikátorů, které mohou být obsaženy v jednom výrazu dotazu. Vyšší než tento počet výsledků v chybě systému SQL Server 8632. Další informace najdete v tématu [došlo k vnitřní chybě: Bylo dosaženo limitu služby výrazu](https://support.microsoft.com/en-us/help/913050/error-message-when-you-run-a-query-in-sql-server-2005-internal-error-a). |
 | Řetězcové literály | Počet řetězcových literálů v příkazu | 20,000 <br/><br/>SQL Data Warehouse omezuje počet řetězcové konstanty v jednom výrazu dotazu. Vyšší než tento počet výsledků v chybě systému SQL Server 8632.|
 
 ## <a name="metadata"></a>Metadata

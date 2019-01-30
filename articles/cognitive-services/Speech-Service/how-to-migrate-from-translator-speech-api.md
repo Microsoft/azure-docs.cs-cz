@@ -6,16 +6,16 @@ services: cognitive-services
 author: aahill
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: speech-service
+ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 10/01/2018
 ms.author: aahi
-ms.openlocfilehash: dec903d8557145701e06ddd588a58eb11fef96f5
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: 42f1279e0459f113fbe9540a6a3a15b307c93763
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52879298"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55225580"
 ---
 # <a name="migrate-from-the-translator-speech-api-to-the-speech-service"></a>Migrace z Translator Speech API k Speech Service
 
@@ -62,7 +62,7 @@ Pokud aplikace v vývojové nebo produkční prostředí, které používají ro
 ## <a name="next-steps"></a>Další postup
 
 * [Vyzkoušejte zdarma službu rozpoznávání řeči](get-started.md)
-* [Rychlý start: Rozpoznávat řeč v aplikace pro UPW pomocí sady SDK pro řeč](quickstart-csharp-uwp.md)
+* [Rychlé zprovoznění: Rozpoznávání řeči do aplikace pro UPW pomocí sady SDK pro řeč](quickstart-csharp-uwp.md)
 
 ## <a name="see-also"></a>Další informace najdete v tématech
 

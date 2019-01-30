@@ -1,23 +1,23 @@
 ---
-title: 'Rychlý start: Volání rozhraní API pro analýzu textu pomocí Go'
+title: 'Rychlý start: Pomocí jazyka Go k volání rozhraní Text Analytics API'
 titleSuffix: Azure Cognitive Services
 description: Získejte informace a vzorové kódy, které vám usnadní začátky práce s rozhraním API pro analýzu textu ve službách Microsoft Cognitive Services v Azure.
 services: cognitive-services
 author: noellelacharite
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: text-analytics
+ms.subservice: text-analytics
 ms.topic: quickstart
 ms.date: 10/01/2018
 ms.author: nolachar
-ms.openlocfilehash: 10b6015a5d0755c77c787003e429c79f0e2669e5
-ms.sourcegitcommit: 022cf0f3f6a227e09ea1120b09a7f4638c78b3e2
+ms.openlocfilehash: c8e88066769b16cf50e3a8317d401a425bcc5d85
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/21/2018
-ms.locfileid: "52283412"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55228266"
 ---
-# <a name="quickstart-using-go-to-call-the-text-analytics-cognitive-service"></a>Rychlý start: Volání rozhraní API pro analýzu textu ve službách Cognitive Services s využitím Go 
+# <a name="quickstart-using-go-to-call-the-text-analytics-cognitive-service"></a>Rychlý start: Pomocí jazyka Go k volání Text Analytics služby Cognitive Services 
 <a name="HOLTop"></a>
 
 Tento článek vám ukáže, jak k [rozpoznání jazyka](#Detect), [analýza sentimentu](#SentimentAnalysis), [extrakce klíčových frází](#KeyPhraseExtraction), a [identifikovat propojených entit](#Entities) pomocí  [rozhraní Text Analytics API](//go.microsoft.com/fwlink/?LinkID=759711) s využitím Go.

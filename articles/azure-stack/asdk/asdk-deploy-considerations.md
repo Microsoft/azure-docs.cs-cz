@@ -15,12 +15,13 @@ ms.topic: article
 ms.date: 12/12/2018
 ms.author: jeffgilb
 ms.reviewer: misainat
-ms.openlocfilehash: 4bcb71829b2fb5f35398f36dee36d4e98c5a609b
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ms.lastreviewed: 12/12/2018
+ms.openlocfilehash: f874be6081a1ea01ecf616c9b97db878554d441c
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54106729"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55242412"
 ---
 # <a name="azure-stack-deployment-planning-considerations"></a>Co zvážit při plánování nasazení Azure Stack
 Než nasadíte Azure Stack Development Kit (ASDK), zkontrolujte, zda že splňuje požadavky popsané v tomto článku hostitelského počítače development kit.
@@ -32,7 +33,7 @@ Než nasadíte Azure Stack Development Kit (ASDK), zkontrolujte, zda že splňuj
 | Diskové jednotky: Operační systém |1 disk s operačním systémem s alespoň 200 GB místa pro systémový oddíl (SSD nebo HDD) |Jeden disk s operačním systémem a alespoň 200 GB místa pro systémový oddíl (SSD nebo pevný disk) |
 | Diskové jednotky: Obecný vývoj sady dat<sup>*</sup>  |Čtyři disky. Každý disk nabízí minimálně 240 GB místa (SSD nebo HDD). Všechny dostupné disky se používají. |Čtyři disky. Každý disk nabízí minimálně 400 GB místa (SSD nebo HDD). Všechny dostupné disky se používají. |
 | COMPUTE: Procesor |Duální soket: 16 fyzických jader (celkem) |Duální soket: 20 fyzických jader (celkem) |
-| COMPUTE: Memory (Paměť) |192 GB PAMĚTI RAM |256 GB PAMĚTI RAM |
+| COMPUTE: Memory (Paměť) |192 GB RAM |256 GB RAM |
 | COMPUTE: SYSTÉMU BIOS |Povolená technologie Hyper-V (s podporou SLAT) |Povolená technologie Hyper-V (s podporou SLAT) |
 | Síť: NIC |Certifikace pro Windows Server 2012 R2. Specializované funkce se nepožadují |Certifikace pro Windows Server 2012 R2. Specializované funkce se nepožadují |
 | Hardwarová certifikace loga |[Certifikované pro systém Windows Server 2012 R2](http://windowsservercatalog.com/results.aspx?&chtext=&cstext=&csttext=&chbtext=&bCatID=1333&cpID=0&avc=79&ava=0&avq=0&OR=1&PGS=25&ready=0) |[Certifikované pro systém Windows Server 2016](http://windowsservercatalog.com/results.aspx?&chtext=&cstext=&csttext=&chbtext=&bCatID=1333&cpID=0&avc=79&ava=0&avq=0&OR=1&PGS=25&ready=0) |

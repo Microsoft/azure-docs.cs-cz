@@ -8,13 +8,13 @@ ms.topic: tutorial
 ms.date: 01/03/2019
 ms.author: tamram
 ms.custom: mvc
-ms.component: blobs
-ms.openlocfilehash: e6b64c7545e7a36b9178af84f88ee89b498077b0
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.subservice: blobs
+ms.openlocfilehash: 81cd6b073fb46b01b3b98543d8f92e2ef7b1ec1b
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54019092"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55245375"
 ---
 # <a name="tutorial-make-your-application-data-highly-available-with-azure-storage"></a>Kurz: Zajištění vysoké dostupnosti dat aplikací pomocí úložiště Azure
 
@@ -54,7 +54,7 @@ Pro absolvování tohoto kurzu potřebujete:
 * Nainstalovat a nakonfigurovat [Maven](http://maven.apache.org/download.cgi) pro práci z příkazového řádku
 * Nainstalovat a nakonfigurovat sadu [JDK](http://www.oracle.com/technetwork/java/javase/downloads/index.html)
 
-# <a name="java-v10-sdk-tabjava-v10"></a>[Java V10 SDK] (# kartu nebo java – v10)
+# <a name="java-v10-sdk-tabjava-v10"></a>[Java V10 SDK] (#tab/java-v10)
 
 * Nainstalovat a nakonfigurovat [Maven](http://maven.apache.org/download.cgi) pro práci z příkazového řádku
 * Nainstalovat a nakonfigurovat sadu [JDK](http://www.oracle.com/technetwork/java/javase/downloads/index.html)
@@ -115,7 +115,7 @@ git clone https://github.com/Azure-Samples/storage-python-circuit-breaker-patter
 git clone https://github.com/Azure-Samples/storage-java-ha-ra-grs.git
 ```
 
-# <a name="java-v10-sdk-tabjava-v10"></a>[Java V10 SDK] (# kartu nebo java – v10)
+# <a name="java-v10-sdk-tabjava-v10"></a>[Java V10 SDK] (#tab/java-v10)
 
 [Stáhněte si ukázkový projekt](https://github.com/Azure-Samples/storage-java-V10-ha-ra-grs) a extrahujte soubor storage-java-ragrs.zip. Můžete také použít [git](https://git-scm.com/) a stáhnout si kopii aplikace do vývojového prostředí. Ukázkový projekt obsahuje základní aplikaci v Javě.
 
@@ -176,7 +176,7 @@ export storageconnectionstring=\<yourconnectionstring\>
 setx storageconnectionstring "\<yourconnectionstring\>"
 ```
 
-# <a name="java-v10-sdk-tabjava-v10"></a>[Java V10 SDK] (# kartu nebo java – v10)
+# <a name="java-v10-sdk-tabjava-v10"></a>[Java V10 SDK] (#tab/java-v10)
 
 Tato ukázka vyžaduje bezpečné uložení názvu a klíče účtu úložiště. Store je v počítači, který se spustí ukázku místních proměnných prostředí. Použijte Linuxu nebo Windows příklad, v závislosti na operačním systému vytvořte proměnné prostředí. Ve Windows, je proměnná prostředí není k dispozici dokud znovu nenačtete **příkazového řádku** nebo používané prostředí.
 
@@ -220,13 +220,13 @@ Funkce opakování pro objekt Storage je nastavená na zásadu lineárního opak
 
 Před stažením se definuje funkce [retry_callback](https://docs.microsoft.com/python/api/azure.storage.common.storageclient.storageclient?view=azure-python) a [response_callback](https://docs.microsoft.com/python/api/azure.storage.common.storageclient.storageclient?view=azure-python) objektu Service. Tyto funkce definují obslužné rutiny událostí, které se spustí po úspěšném stažení nebo pokud se stažení nepovede a opakuje se.  
 
-# <a name="java-v7-sdk-tabjava-v7"></a>[Java V7 SDK] (# kartu nebo java – v7)
+# <a name="java-v7-sdk-tabjava-v7"></a>[Java V7 SDK] (#tab/java-v7)
 
 Aplikaci můžete spustit tak, že otevřete terminál nebo příkazový řádek v oboru složky stažené aplikace. Odtud aplikaci spustíte zadáním příkazu `mvn compile exec:java`. Aplikace pak nahraje obrázek **HelloWorld.png** z adresáře do vašeho účtu úložiště a zkontroluje, že se obrázek replikoval do sekundárního koncového bodu RA-GRS. Po dokončení kontroly zahájí aplikace opakované stahování obrázku a hlášení zpět do koncového bodu, ze kterého stahování provádí.
 
 Funkce opakování pro objekt Storage je nastavená tak, aby používala zásadu lineárního opakování. Funkce opakování určuje, jestli se má opakovat žádost, a určuje, kolik sekund se má čekat mezi opakováními. Vlastnost **LocationMode** objektu **BlobRequestOptions** je nastavená na **PRIMARY\_THEN\_SECONDARY**. To umožňuje aplikaci automaticky přepnout na sekundární umístění v případě, že se jí při pokusu o stažení obrázku **HelloWorld.png** nepodaří spojit s primárním umístěním.
 
-# <a name="java-v10-sdk-tabjava-v10"></a>[Java V10 SDK] (# kartu nebo java – v10)
+# <a name="java-v10-sdk-tabjava-v10"></a>[Java V10 SDK] (#tab/java-v10)
 
 Ke spuštění ukázky použití Mavenu na příkazovém řádku.
 
@@ -380,7 +380,7 @@ U Javy není nutné definovat obslužné rutiny zpětných volání, pokud je vl
     blob.downloadToFile(downloadedFile.getAbsolutePath(),null,blobClient.getDefaultRequestOptions(),opContext);
 ```
 
-# <a name="java-v10-sdk-tabjava-v10"></a>[Java V10 SDK] (# kartu nebo java – v10)
+# <a name="java-v10-sdk-tabjava-v10"></a>[Java V10 SDK] (#tab/java-v10)
 
 Definování obslužné rutiny zpětných volání je zbytečné stále V10 sady Java SDK a SDK má teď některé základní rozdíl oproti sadě SDK V7. Místo LocationMode, máme sekundární **kanálu**. Můžete definovat sekundární kanál prostřednictvím **RequestRetryOptions** a pokud definována, vám umožní aplikaci automaticky přepnout na sekundární kanálu, pokud se nepodaří kontaktovat vaše data přes primární kanál.
 

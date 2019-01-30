@@ -14,12 +14,13 @@ ms.topic: article
 ms.date: 11/20/2018
 ms.author: jeffgilb
 ms.reviewer: quying
-ms.openlocfilehash: 8b6257519c3b1db2180335523047e8dc55558d57
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.lastreviewed: 11/20/2018
+ms.openlocfilehash: ac0b4ddf876fb8108e20eeaf48c6fb0ab797af0d
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52954569"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55246327"
 ---
 # <a name="remove-the-sql-resource-provider"></a>Odebrat poskytovatele prostředků SQL
 

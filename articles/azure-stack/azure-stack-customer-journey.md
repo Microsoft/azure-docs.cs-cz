@@ -15,12 +15,13 @@ ms.topic: article
 ms.date: 12/10/2018
 ms.author: jeffgilb
 ms.reviewer: asganesh
-ms.openlocfilehash: 554fd9c32c9831d45a40c62a871e3a8d5f8d7cb9
-ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
+ms.lastreviewed: 12/10/2018
+ms.openlocfilehash: f900fa5105f42dac57b392d41a8cd888850fc648
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54191747"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55249487"
 ---
 # <a name="azure-stack-datacenter-integration"></a>Integrace datových center Azure Stack
 

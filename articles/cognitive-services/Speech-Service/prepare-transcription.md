@@ -6,16 +6,16 @@ services: cognitive-services
 author: PanosPeriorellis
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: speech-service
+ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/01/2018
 ms.author: panosper
-ms.openlocfilehash: 07b90942c8d231418888491fd47a9be3caff77ea
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.openlocfilehash: 44f2cb9e95a9a79c85c23b0eebd919851b94c1f8
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49467731"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55228130"
 ---
 # <a name="transcription-guidelines-for-using-the-speech-service"></a>Přepis pokyny k používání Speech Service
 
@@ -53,7 +53,7 @@ Zde je několik příkladů:
 | "Co?" uvedené Batman sidekick dotazování. | jaké uvedené batman sidekick dotazování |
 | Go get - em! | em přejděte get |
 | Já jsem double-jointed | Já jsem double jointed |
-| Ulice jilm 104 | jeden ale čtyři jilm ulice |
+| 104 Elm Street | jeden ale čtyři jilm ulice |
 | Vyladění 102.7 | ladění na jednu ale dvě sedm |
 | Pi je asi 3.14 | Pi je přibližně tři čtyři jeden bod |
 | To stojí $3.14 | to stojí tři čtrnáct |
@@ -70,10 +70,10 @@ Zde je několik příkladů:
 
 | Původní text | Po normalizace |
 |----- | ----- |
-| 14 NE 3rd zotavení po havárii. | čtrnáct severovýchod třetí disk |
+| 14 NE 3rd Dr. | čtrnáct severovýchod třetí disk |
 | Dr. Bruce Banner | Banner Bruce lékař |
 | James Bond, 007 | James Bond dvakrát ale sedm |
-| Ke$ ha | Kesha |
+| Ke$ha | Kesha |
 | Jak dlouhé je 2 × 4 | Jak dlouhé je pomocí čtyř |
 | Schůzky přejde z 1 – 15: 00 | Schůzky přechází z jedné do tří hodin |
 | Můj typ krve je O + | Můj typ krve je O pozitivní |
@@ -90,7 +90,7 @@ Nepoužívejte poloviční šířku interpunkční znaménka. Tyto znaky může 
 | Aby se zabránilo znaků | Nahrazení |
 |----- | ----- |
 | "你好" (levá a pravá dvojité uvozovky) | "你好" (dvojité uvozovky) |
-| 需要什么帮助? (otazník) | 需要什么帮助? |
+| 需要什么帮助? (otazník) | 需要什么帮助？ |
 
 ### <a name="text-normalization-rules-for-chinese"></a>Text pravidel normalizace pro čínštinu
 
@@ -105,7 +105,7 @@ Zde je několik příkladů:
 
 | Původní text | Po normalizace |
 |----- | ----- |
-| 3,1415 | 三 点 一 四 一 五 |
+| 3.1415 | 三 点 一 四 一 五 |
 | ￥3.5 | 三 元 五 角 |
 | w f y z | W F Y Z |
 | 1992年8月8日 | 一 九 九 二 年 八 月 八 日 |
@@ -166,7 +166,7 @@ Zde je několik příkladů:
 |--------  | ----- | -------- |
 | Uhr TIS 12.23 ES | ES TIS 12:23 Uhr | ES TIS zwölf uhr drei a zwanzig uhr |
 | {12.45} | {12,45} | zwölf komma vier fünf ||
-| 2 + 3-4 | 2 a 3 minus 4 | zwei plus drei minus vier|
+| 2 + 3 - 4 | 2 plus 3 minus 4 | zwei plus drei minus vier|
 
 ## <a name="next-steps"></a>Další postup
 

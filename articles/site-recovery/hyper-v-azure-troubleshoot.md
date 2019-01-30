@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 11/27/2018
 ms.author: ramamill
-ms.openlocfilehash: 2f9c4c0b973efe26e6ece2235f2d0c7a6878ebef
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 94b2ab0263ccb7b6835a7bbe76ed8776aadb1a65
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52844987"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55228198"
 ---
 # <a name="troubleshoot-hyper-v-to-azure-replication-and-failover"></a>Řešení potíží s technologií Hyper-V do Azure replikace a převzetí služeb při selhání
 
@@ -110,9 +110,9 @@ Konzistentní vzhledem k snímku je bodu v čase snímek dat aplikací ve virtu�
 5. Zkontrolujte, zda je povolena služba zálohování. Ověřte, zda je povolena v **nastavení technologie Hyper-V** > **integrační služby**.
 6. Zkontrolujte, zda nedochází ke konfliktům s aplikacemi pro pořizování snímků VSS. Může dojít, pokud více aplikací se pokoušíte pořizování snímků VSS ve stejný čas konflikty. Pokud například zálohování aplikace je pořizování snímků VSS plánu ve vašich zásadách replikace Site Recovery k vytvoření snímku.   
 7. Zaškrtněte, pokud virtuální počítač dochází k vysoké výpovědí:
-    - Můžete měřit denní četnost změn dat u virtuálních počítačů hosta pomocí čítačů výkonu na hostiteli Hyper-V. Pokud chcete změřit četnost změn dat, povolte následující čítač. Aggregrate ukázku této hodnoty na discích virtuálních počítačů po dobu 5 – 15 minut, chcete-li získat četnost změn virtuálním počítači.
-        - Kategorie: "zařízení virtuálního úložiště technologie Hyper-V"
-        - Čítač: "zapsané bajty za sekundu"</br>
+    - Můžete měřit denní četnost změn dat u virtuálních počítačů hosta pomocí čítačů výkonu na hostiteli Hyper-V. Pokud chcete změřit četnost změn dat, povolte následující čítač. Agregovat ukázku této hodnoty na discích virtuálních počítačů po dobu 5 – 15 minut, zobrazíte četnost změn virtuálním počítači.
+        - Kategorie: "Zařízení virtuálního úložiště technologie hyper-V"
+        - Čítače: "Zapsané bajty za sekundu"</br>
         - Tato data četnost změn dat zvyšuje nebo zůstat na vysoké úrovni, v závislosti na jejich vytížení virtuálního počítače nebo jeho aplikace je.
         - Zdroj průměrná četnost změn dat na disku je 2 MB za sekundu pro úložiště úrovně standard pro Site Recovery. [Další informace](hyper-v-deployment-planner-analyze-report.md#azure-site-recovery-limits)
     - Kromě toho můžete [ověřte cíle škálovatelnosti úložiště](https://docs.microsoft.com/azure/storage/common/storage-scalability-targets#scalability-targets-for-a-storage-account).
@@ -125,7 +125,7 @@ Konzistentní vzhledem k snímku je bodu v čase snímek dat aplikací ve virtu�
 1. Zkontrolujte protokoly událostí pro chyby VSS a doporučení:
     - Na hostitelském serveru Hyper-V, otevřete Správce technologie Hyper-V protokolu událostí v **Prohlížeč událostí** > **protokoly aplikací a služeb** > **Microsoft**  >  **Windows** > **technologie Hyper-V** > **správce**.
     - Ověřte, zda jsou všechny události, které označují selhání snímky konzistentní s aplikací.
-    - Typické chyba je: "Hyper-V se nepodařilo vytvořit sadu snímků VSS pro virtuální počítač"XYZ": modul pro zápis došlo k chybě nepřechodných. Restartování služby VSS může vyřešit problémy Pokud služba přestane reagovat."
+    - Typické chyba je: "Hyper-V se nepodařilo vytvořit sadu snímků VSS pro virtuální počítač"XYZ": Zapisovač došlo k chybě nepřechodných. Restartování služby VSS může vyřešit problémy Pokud služba přestane reagovat."
 
 2. Chcete-li generovat snímky VSS pro virtuální počítač, zkontrolujte, že jsou na virtuálním počítači nainstalované integrační služby Hyper-V, a zda je povolena Služba integrace zálohování (VSS).
     - Zkontrolujte, zda běží na hostovaném služby/procesy démon integrace služby VSS a jsou v **OK** stavu.
@@ -136,7 +136,7 @@ Konzistentní vzhledem k snímku je bodu v čase snímek dat aplikací ve virtu�
 
 **Kód chyby:** | **Zpráva** | **Podrobnosti**
 --- | --- | ---
-**0x800700EA.** | "Hyper-V se nepodařilo vytvořit sadu snímků VSS pro virtuální počítač: k dispozici další data. (0x800700EA). Nastavte generování snímků služby VSS může selhat, pokud probíhá operace zálohování.<br/><br/> Operace replikace pro virtuální počítač se nepovedlo: je k dispozici další data. " | Zkontrolujte, jestli váš virtuální počítač má povoleno dynamického disku. Toto není podporováno.
+**0x800700EA** | "Hyper-V se nepodařilo vytvořit sadu snímků VSS pro virtuální počítač: Další data jsou k dispozici. (0x800700EA). Nastavte generování snímků služby VSS může selhat, pokud probíhá operace zálohování.<br/><br/> Operace replikace pro virtuální počítač se nepovedlo: Další data jsou k dispozici." | Zkontrolujte, jestli váš virtuální počítač má povoleno dynamického disku. Toto není podporováno.
 **0x80070032** | "Se nepodařilo připojit k virtuálnímu počítači Hyper-V svazek stínové kopie žadatel <. / VMname > protože verze neodpovídá verzi očekává technologie Hyper-V | Zaškrtněte, pokud jsou nainstalované nejnovější aktualizace Windows.<br/><br/> [Upgrade](https://docs.microsoft.com/windows-server/virtualization/hyper-v/manage/manage-hyper-v-integration-services#keep-integration-services-up-to-date) na nejnovější verzi integrační služby.
 
 

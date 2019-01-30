@@ -9,13 +9,14 @@ ms.topic: article
 ms.date: 01/28/2019
 ms.author: patricka
 ms.reviewer: fiseraci
+ms.lastreviewed: 01/28/2019
 keywords: ''
-ms.openlocfilehash: 5826ab8ac50a5d27f5a74cff4bebba4b2809d5f0
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.openlocfilehash: 7dff82538448b27f14dd81e2862cd63d4dd56a9b
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55096615"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55247098"
 ---
 # <a name="azure-stack-datacenter-integration---syslog-forwarding"></a>Integrace datových center Azure Stack – předávání syslog
 
@@ -60,7 +61,7 @@ Set-SyslogClient [-pfxBinary <Byte[]>] [-CertPassword <SecureString>] [-RemoveCe
 
 Parametry pro *Set-SyslogServer* rutiny:
 
-| Parametr | Popis | Typ | Požaduje se |
+| Parametr | Popis | Type | Požaduje se |
 |---------|---------|---------|---------|
 |*ServerName* | Plně kvalifikovaný název domény nebo IP adresa serveru syslog | Řetězec | ano|
 |*ServerPort* | Číslo portu serveru syslog naslouchá | Řetězec | ano|
@@ -71,7 +72,7 @@ Parametry pro *Set-SyslogServer* rutiny:
 |*odebrat*| Odebrat konfiguraci serveru z klienta a ukončit předávání syslog| Příznak | ne|
 
 Parametry pro *Set-SyslogClient* rutiny:
-| Parametr | Popis | Typ |
+| Parametr | Popis | Type |
 |---------|---------| ---------|
 | *pfxBinary* | soubor PFX obsahující certifikát, který se použije klient jako identita k ověření vůči serveru syslog  | Byte] |
 | *CertPassword* |  Heslo pro import privátní klíč, který je přidružený k souboru pfx | SecureString |

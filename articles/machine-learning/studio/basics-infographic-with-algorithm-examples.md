@@ -1,6 +1,6 @@
 ---
 Název: Příklady titleSuffix algoritmus: Azure Machine Learning Studio Popis: Přehled snadno pochopit základy machine learning obsahuje příklady algoritmů. Infografika ke stažení obsahuje většina strojového učení dotazy.
-Services: machine learningu ms.service: ms.component strojového učení: studio ms.topic: článku
+Services: machine learningu ms.service: ms.subservice strojového učení: studio ms.topic: článku
 
 Autor: garyericson ms.author: garye ms.custom: seodc18 ms.date: 12/18/2017
 ---

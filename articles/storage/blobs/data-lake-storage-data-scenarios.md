@@ -3,17 +3,17 @@ title: Data scénáře zahrnující Azure Data Lake Storage Gen2 | Dokumentace M
 description: Pochopit různé scénáře a nástroje, pomocí kterých můžete ingestuje, zpracování, stahování a vizualizovat v Data Lake Storage Gen2 (dříve označované jako Azure Data Lake Store)
 services: storage
 author: normesta
-ms.component: data-lake-storage-gen2
+ms.subservice: data-lake-storage-gen2
 ms.service: storage
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: normesta
-ms.openlocfilehash: 978f86141d72cc7be43f24909f9780ab9570605d
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: dfc47c40ce82eb8e9d414cb49c22bee033d000a6
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52974889"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55239024"
 ---
 # <a name="using-azure-data-lake-storage-gen2-for-big-data-requirements"></a>Pro potřeby velkého objemu dat pomocí Azure Data Lake Storage Gen2
 
@@ -36,7 +36,7 @@ To představuje menší datové sady, které se používá pro vytváření prot
 
 | Zdroj dat | Ingestování pomocí |
 | --- | --- |
-| Místní počítač |<ul> <li>[Průzkumník služby Storage](https://azure.microsoft.com/features/storage-explorer/)</ul> |
+| Místní počítač |<ul> <li>[Storage Explorer](https://azure.microsoft.com/features/storage-explorer/)</ul> |
 | Azure Storage Blob |<ul> <li>[Azure Data Factory](../../data-factory/connector-azure-data-lake-store.md)</li> <li>[Nástroj AzCopy](../common/storage-use-azcopy-v10.md)</li><li>[DistCp běžící v clusteru HDInsight](data-lake-storage-use-distcp.md)</li> </ul> |
 
 ### <a name="streamed-data"></a>Datové proudy

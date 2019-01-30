@@ -5,16 +5,16 @@ services: cognitive-services
 author: PanosPeriorellis
 manager: onano
 ms.service: cognitive-services
-ms.component: custom-speech
+ms.subservice: custom-speech
 ms.topic: article
 ms.date: 02/07/2017
 ms.author: panosper
-ms.openlocfilehash: 97eee2b6440dbbf740ad5fa856bd518facabbfef
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
+ms.openlocfilehash: 00c9a89bea9deafe4096566032cc9685df8c111c
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49342289"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55227994"
 ---
 # <a name="what-is-custom-speech-service"></a>Co je Custom Speech Service?
 

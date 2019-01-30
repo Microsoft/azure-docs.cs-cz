@@ -1,6 +1,6 @@
 ---
 Název: Jednoduchý experiment titleSuffix: Azure Machine Learning Studio Popis: Tento kurz Machine Learningu vás provede jednoduchým experimentem z oblasti datové vědy. Pomocí regresního algoritmu předpovíme cenu automobilu.
-Services: machine learningu ms.service: ms.component strojového učení: studio ms.topic: kurz
+Services: machine learningu ms.service: ms.subservice strojového učení: studio ms.topic: kurz
 
 Autor: garyericson ms.author: garye ms.custom: seodec18 ms.date: 03/20/2017
 ---

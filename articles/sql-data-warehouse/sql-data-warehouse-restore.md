@@ -6,16 +6,16 @@ author: kevinvngo
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
-ms.component: manage
+ms.subservice: manage
 ms.date: 08/29/2018
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: 112b9bac5d99556201b2038cf150293c9f2ed86d
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 5de9c674ceeab6d45211b46e2f03d91b943751ac
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51005797"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55246207"
 ---
 # <a name="restoring-azure-sql-data-warehouse"></a>Obnovení Azure SQL Data Warehouse 
 V tomto článku se dozvíte, jak provést následující webu Azure portal a prostředí PowerShell:
@@ -26,7 +26,7 @@ V tomto článku se dozvíte, jak provést následující webu Azure portal a pr
 - Obnovit z geografické zálohy
 - Vytvoření kopie vašeho datového skladu z bodu obnovení definovaný uživatelem
 
-## <a name="before-you-begin"></a>Než začnete
+## <a name="before-you-begin"></a>Před zahájením
 **Ověřte kapacitu jednotek DTU.** Každý datový sklad SQL je hostitelem SQL serveru (např. myserver.database.windows.net), který má výchozí kvóty DTU.  Předtím, než bude možné obnovit datový sklad SQL, ověřte, že serveru SQL server má dostatek zbývající kvóta DTU databáze obnovena. Pokud chcete zjistit, jak chcete-li vypočítat potřebné DTU, nebo požádat o další DTU, přečtěte si téma [žádost o změnu kvóty DTU][Request a DTU quota change].
 
 ## <a name="restore-through-powershell"></a>Obnovit přes PowerShell

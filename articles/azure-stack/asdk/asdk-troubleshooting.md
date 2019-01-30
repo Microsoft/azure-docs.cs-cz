@@ -15,12 +15,13 @@ ms.topic: article
 ms.date: 10/15/2018
 ms.author: jeffgilb
 ms.reviewer: misainat
-ms.openlocfilehash: 3caa45064c41b641aa913e210aa698d818d5355e
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.lastreviewed: 10/15/2018
+ms.openlocfilehash: 2111fe6a70f45559faeb3e0f8096548dcc7b48bc
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52970259"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55238937"
 ---
 # <a name="microsoft-azure-stack-development-kit-asdk-troubleshooting"></a>Řešení potíží s Microsoft Azure Stack Development Kit (ASDK)
 Tento dokument obsahuje běžné informace o odstraňování potíží pro ASDK. Pokud dochází k problému, který nebyl zdokumentován, nezapomeňte zaškrtnout [fórum MSDN pro Azure Stack](https://social.msdn.microsoft.com/Forums/azure/home?forum=azurestack) informace a požádejte o pomoc.  
@@ -66,7 +67,7 @@ Pokud se zobrazí "oddělena" virtuální pevné disky, je důležité vědět, 
 
 Další informace o konfiguraci uchování prahové hodnoty a podle potřeby recyklace v [Správa účtů úložiště](../azure-stack-manage-storage-accounts.md).
 
-## <a name="storage"></a>Úložiště
+## <a name="storage"></a>Storage
 ### <a name="storage-reclamation"></a>Recyklace úložiště
 To může trvat až 14 hodin uvolňovaného kapacity se zobrazí na portálu. Recyklace místa závisí na různých faktorech včetně procento využití souborů interní kontejneru v úložišti objektů blob bloku. Proto se v závislosti na tom, kolik dat je odstraněn, neexistuje žádná záruka na množství místa, které může být získány zpět při spuštění systému uvolňování paměti.
 

@@ -3,17 +3,17 @@ title: Azure Data Lake Storage Gen2 výkonu pokyny k ladění | Dokumentace Micr
 description: Azure Data Lake Storage Gen2 výkonu pokyny k ladění
 services: storage
 author: swums
-ms.component: data-lake-storage-gen2
+ms.subservice: data-lake-storage-gen2
 ms.service: storage
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: stewu
-ms.openlocfilehash: 403d60232f6b22161031dd4eb1af062336c370ee
-ms.sourcegitcommit: c31a2dd686ea1b0824e7e695157adbc219d9074f
+ms.openlocfilehash: 7039df6dde25fd4ba9a8b9cb7670e72df7e68797
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/18/2019
-ms.locfileid: "54401754"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55245812"
 ---
 # <a name="tuning-azure-data-lake-storage-gen2-for-performance"></a>Optimalizace výkonu pro Azure Data Lake Storage Gen2
 

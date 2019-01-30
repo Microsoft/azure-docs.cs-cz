@@ -13,12 +13,13 @@ ms.topic: get-started-article
 ms.date: 10/22/2018
 ms.author: sethm
 ms.reviewer: unknown
-ms.openlocfilehash: ee247dcadd7ba8574bbdae1e25b0e39ca1ebc2da
-ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
+ms.lastreviewed: 10/22/2018
+ms.openlocfilehash: b12e696260793a79bab6b384fc7be810eb2a803c
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/12/2019
-ms.locfileid: "54246224"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55240824"
 ---
 # <a name="connect-azure-stack-to-azure-using-azure-expressroute"></a>Připojení k Azure pomocí Azure ExpressRoute Azure Stack
 
@@ -107,7 +108,7 @@ Použijte následující postupy k vytvoření požadovaných síťových prost�
 
    |Pole  |Hodnota  |
    |---------|---------|
-   |Název     |Tenant1VNet1         |
+   |Name     |Tenant1VNet1         |
    |Adresní prostor     |10.1.0.0/16|
    |Název podsítě     |Tenant1 Sub1|
    |Rozsah adres podsítě     |10.1.1.0/24|
@@ -297,7 +298,7 @@ Po dokončení konfigurace služby Azure Stack, můžete nasadit prostředky Azu
 
 *Obrázek 3. Virtuální sítě Azure*
 
-![Virtuální sítě Azure](media/azure-stack-connect-expressroute/AzureArchitecture.png)
+![Azure VNets](media/azure-stack-connect-expressroute/AzureArchitecture.png)
 
 Prostředky, které nasazují v Azure jsou podobné prostředky, které jste nasadili ve službě Azure Stack. Budete nasazovat následující komponenty:
 

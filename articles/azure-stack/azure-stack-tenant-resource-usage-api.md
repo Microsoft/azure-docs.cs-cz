@@ -11,15 +11,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 1/14/2019
+ms.date: 01/14/2019
 ms.author: mabrigg
 ms.reviewer: alfredop
-ms.openlocfilehash: 5a9859fda2c6cac6acf08c8dcca3a0ce205d2e15
-ms.sourcegitcommit: 70471c4febc7835e643207420e515b6436235d29
+ms.lastreviewed: 01/14/2019
+ms.openlocfilehash: db0cdfce5903b8866985b0545494351e2796d8e2
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2019
-ms.locfileid: "54302727"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55244619"
 ---
 # <a name="tenant-resource-usage-api"></a>Rozhraní API využití prostředků tenanta
 

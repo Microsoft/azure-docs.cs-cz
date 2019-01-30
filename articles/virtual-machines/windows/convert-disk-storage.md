@@ -3,7 +3,7 @@ title: Převést Azure spravované disky úložiště úroveň ze standard na pr
 description: Jak převést Azure spravované disky ze standard na premium a naopak, pomocí Azure Powershellu.
 services: virtual-machines-windows
 documentationcenter: ''
-author: ramankum
+author: ramankumarlive
 manager: kavithag
 editor: ''
 tags: azure-resource-manager
@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 10/04/2018
 ms.author: ramankum
 ms.component: disks
-ms.openlocfilehash: eacf2c2d2b732a16596afba622244a793a25924c
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
-ms.translationtype: HT
+ms.openlocfilehash: 7a28db8976168617b7850ec6bf764a8b28a6d78a
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55227008"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55242378"
 ---
 # <a name="update-the-storage-type-of-a-managed-disk"></a>Aktualizovat typ úložiště spravovaného disku
 

@@ -15,12 +15,13 @@ ms.topic: get-started-article
 ms.date: 10/24/2018
 ms.author: sethm
 ms.reviewer: scottnap
-ms.openlocfilehash: 6a82204e8401cbc325485d3882505395528bc52d
-ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
+ms.lastreviewed: 10/24/2018
+ms.openlocfilehash: 882724c5f45cc2c5b3debb8fa80538239a98b749
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/19/2019
-ms.locfileid: "54414859"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55240688"
 ---
 # <a name="connect-azure-stack-to-azure-using-vpn"></a>Připojení k Azure pomocí VPN Azure Stack
 

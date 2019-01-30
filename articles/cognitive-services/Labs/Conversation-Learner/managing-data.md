@@ -10,12 +10,12 @@ ms.subservice: conversation-learner
 ms.topic: article
 ms.date: 04/30/2018
 ms.author: v-jaswel
-ms.openlocfilehash: 1d3687585a663cf937374e76dafe834c641ad3a2
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
-ms.translationtype: HT
+ms.openlocfilehash: 83c7e808e48733487e84d668236cdb327c21c44c
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55215278"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55249074"
 ---
 # <a name="managing-user-data"></a>Správa dat uživatele
 
@@ -48,8 +48,8 @@ cl.EntityDetectionCallback(async (text: string, memoryManager: ClientMemoryManag
     var sessionData = memoryManager.SessionInfo();
 
     // sessionData.sessionId is the ID of this logged dialog.
-    // In your bot-specific datastore, store an association
-    // bewteen your user identifier and this session ID.
+    // In your bot-specific data store, store an association
+    // between your user identifier and this session ID.
     console.log(sessionData.logDialogId)
 
     // sessionData.userId and sessionData.userName are the 

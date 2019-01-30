@@ -11,15 +11,16 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: quickstart
-ms.date: 1/14/2019
+ms.date: 01/14/2019
 ms.author: mabrigg
 ms.custom: mvc
-ms.openlocfilehash: 77194de0b175ae66c0a119a816f32b152f269e56
-ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
+ms.lastreviewed: 01/14/2019
+ms.openlocfilehash: bb0eac4f7de11c2b80412319227a00d5dbe6d8c6
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/19/2019
-ms.locfileid: "54413341"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55243398"
 ---
 # <a name="quickstart-create-a-linux-server-virtual-machine-by-using-azure-cli-in-azure-stack"></a>Rychlý start: vytvoření serveru virtuálního počítače s Linuxem pomocí Azure CLI ve službě Azure Stack
 

@@ -3,17 +3,17 @@ title: Kopírování dat do Azure Data Lake Storage Gen2 Preview pomocí DistCp 
 description: Pomocí DistCp nástroje pro kopírování dat do a z Data Lake Storage Gen2 ve verzi Preview
 services: storage
 author: seguler
-ms.component: data-lake-storage-gen2
+ms.subservice: data-lake-storage-gen2
 ms.service: storage
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: seguler
-ms.openlocfilehash: 6c231de0a37eda4f5593c9fbbfa5e611a97996a0
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 9c12f96399de218241c8aa7ed686113c17a7410c
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52975561"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55244143"
 ---
 # <a name="use-distcp-to-copy-data-between-azure-storage-blobs-and-azure-data-lake-storage-gen2-preview"></a>Použití DistCp ke kopírování dat mezi objekty BLOB Azure Storage a Azure Data Lake Storage Gen2 ve verzi Preview
 
@@ -71,7 +71,7 @@ Protože DistCp na nejnižší členitost je jeden soubor, nastavení maximáln�
 
 Tady je několik rad, kterými se můžete řídit.
 
-* **Krok 1: Určení celkové paměti k dispozici do fronty aplikace YARN "default"** -prvním krokem je stanovit paměť k dispozici do fronty aplikace YARN "default". Tyto informace jsou k dispozici na portálu Ambari přidružené ke clusteru. Přejděte na YARN a zobrazit na kartě Konfigurace zobrazíte dostupné do fronty "default" aplikace YARN paměti. Toto je do celkově dostupné paměti pro úlohu DistCp (která je ve skutečnosti úlohu MapReduce).
+* **Krok 1: Určit celkové paměti k dispozici do fronty aplikace YARN "default"** -prvním krokem je stanovit paměť k dispozici do fronty aplikace YARN "default". Tyto informace jsou k dispozici na portálu Ambari přidružené ke clusteru. Přejděte na YARN a zobrazit na kartě Konfigurace zobrazíte dostupné do fronty "default" aplikace YARN paměti. Toto je do celkově dostupné paměti pro úlohu DistCp (která je ve skutečnosti úlohu MapReduce).
 
 * **Krok 2: Vypočítat počet mapovačů** – hodnota **m** rovná podíl celkové paměti YARN děleného velikostí kontejneru YARN. Informace o velikosti kontejneru YARN je k dispozici na portálu Ambari. Přejděte na YARN a zobrazit na kartě konfigurace. V tomto okně je zobrazena velikost kontejneru YARN. Rovnice, můžete přejít na počet mapovačů (**m**) je
 
@@ -81,11 +81,11 @@ Tady je několik rad, kterými se můžete řídit.
 
 Předpokládejme, že máte 4 x D14v2s cluster a pokoušíte se převést 10 TB dat z 10 různými složkami. Všechny složky obsahuje různé množství dat a velikostí souboru v rámci každé složky se liší.
 
-* **Celková kapacita paměti YARN**: zjistíte, že paměti YARN 96 GB pro uzel D14 portál z Ambari. Ano v celkové paměti YARN u clusteru se čtyřmi uzly se: 
+* **Celková kapacita paměti YARN**: Z portálu Ambari zjistíte, že paměti YARN 96 GB pro D14 uzel. Ano v celkové paměti YARN u clusteru se čtyřmi uzly se: 
 
         YARN memory = 4 * 96GB = 384GB
 
-* **Počet mapovačů**: portál z Ambari zjistíte, že velikost kontejneru YARN 3,072 MB pro D14 uzlu clusteru. Ano počet mapovačů je:
+* **Počet mapovačů**: Z portálu Ambari zjistíte, že velikost kontejneru YARN 3,072 MB pro D14 uzlu clusteru. Ano počet mapovačů je:
 
         m = (4 nodes * 96GB) / 3072MB = 128 mappers
 

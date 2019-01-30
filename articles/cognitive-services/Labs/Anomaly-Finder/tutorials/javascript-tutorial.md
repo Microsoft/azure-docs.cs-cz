@@ -1,23 +1,23 @@
 ---
-title: 'Kurz: Detekce anomálií pomocí JavaScriptu'
+title: 'Kurz: Detekce anomálií pomocí jazyka Javascript'
 titlesuffix: Azure Cognitive Services
-description: Prozkoumejte webovou aplikaci v JavaScriptu, která používá rozhraní API pro detekci anomálií. Odešlete do rozhraní API původní datové body a získejte očekávanou hodnotu a body anomálií.
+description: Prozkoumejte webovou aplikaci v JavaScriptu, která používá rozhraní API pro detekci anomálií. Odešlete původní datové body do rozhraní API a získejte očekávanou hodnotu a body anomálie.
 services: cognitive-services
 author: wenya
 manager: bix
 ms.service: cognitive-services
-ms.component: anomaly-detection
+ms.subservice: anomaly-detection
 ms.topic: tutorial
 ms.date: 05/01/2018
 ms.author: wenya
-ms.openlocfilehash: cd65a5275fac651968197c9000b2d4cd3962693b
-ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
-ms.translationtype: HT
+ms.openlocfilehash: 9e66b24987b2318f3022404d951fbb911e7b592d
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2018
-ms.locfileid: "48883699"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55227824"
 ---
-# <a name="tutorial-anomaly-detection-with-javascript-application"></a>Kurz: Detekce anomálií pomocí aplikace JavaScriptu
+# <a name="tutorial-anomaly-detection-with-javascript-application"></a>Kurz: Detekce anomálií pomocí aplikace jazyka Javascript
 
 [!INCLUDE [PrivatePreviewNote](../../../../../includes/cognitive-services-anomaly-finder-private-preview-note.md)]
 
@@ -103,7 +103,7 @@ function anomalyDetection(url, subscriptionKey, points, period) {
 
 ```
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 > [!div class="nextstepaction"]
 > [REST API – referenční informace](https://dev.labs.cognitive.microsoft.com/docs/services/anomaly-detection/operations/post-anomalydetection)

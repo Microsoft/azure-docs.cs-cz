@@ -7,13 +7,13 @@ ms.service: storage
 ms.topic: article
 ms.date: 12/12/2018
 ms.author: tamram
-ms.component: common
-ms.openlocfilehash: fce89cc754ac179054a60ce837949bb02b2102c6
-ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
+ms.subservice: common
+ms.openlocfilehash: 6cecb2d5fde4fc651cf0ba971189ef62fa330c13
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53408693"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55241700"
 ---
 # <a name="manage-access-rights-to-azure-blob-and-queue-data-with-rbac-preview"></a>Spravovat přístupová práva k Azure Blob a fronty dat pomocí RBAC (Preview)
 
@@ -43,7 +43,7 @@ Můžete také definovat vlastní role pro použití s kontejnery a fronty. Dal�
 
 Přiřazení RBAC role pro Azure identity k udělení oprávnění pro kontejnery nebo fronty ve vašem účtu úložiště. Můžete omezit rozsah přiřazení rolí k účtu úložiště nebo konkrétní kontejner nebo fronty. Následující tabulka shrnuje přístupová práva udělují předdefinované role, v závislosti na rozsahu:
 
-|Rozsah|Vlastník dat objektů BLOB|Přispěvatel dat objektu BLOB|Čtenář dat objektu BLOB|Přispěvatel dat fronty služby|Čtenář dat fronty služby|
+|Rozsah|Vlastník dat objektů BLOB|Blob Data Contributor|Čtenář dat objektu BLOB|Přispěvatel dat fronty služby|Čtenář dat fronty služby|
 |---|---|---|---|---|---|
 |Úroveň předplatného|Přístup pro čtení a zápis a POSIX přístup k řízení všech kontejnerů a objektů BLOB v rámci předplatného|Přístup pro čtení a zápis pro všechny kontejnery a objekty BLOB v rámci předplatného| Přístup pro čtení pro všechny kontejnery a objekty BLOB v rámci předplatného|Přístup pro čtení a zápis pro všechny fronty v rámci předplatného|Přístup pro čtení pro všechny fronty v rámci předplatného|
 |Úrovni skupiny prostředků|Přístup pro čtení a zápis a POSIX přístup k řízení ke všem kontejnery a objekty BLOB ve skupině prostředků|Přístup pro čtení a zápis pro všechny kontejnery a objekty BLOB ve skupině prostředků|Přístup pro čtení pro všechny kontejnery a objekty BLOB ve skupině prostředků|Přístup pro čtení a zápis pro všechny fronty ve skupině prostředků|Přístup pro čtení pro všechny fronty ve skupině prostředků|

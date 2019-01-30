@@ -6,16 +6,16 @@ author: ronortloff
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
-ms.component: implement
+ms.subservice: implement
 ms.date: 04/17/2018
 ms.author: rortloff
 ms.reviewer: igorstan
-ms.openlocfilehash: eb469e6a654414b0411f8c45b73658f99a383751
-ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
+ms.openlocfilehash: aab51c3dc66a1486e8ad7ced55425a2b49c7dea1
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43306579"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55247506"
 ---
 # <a name="table-data-types-in-azure-sql-data-warehouse"></a>Typy tabulkových dat ve službě Azure SQL Data Warehouse
 Doporučení pro definování typy tabulkových dat ve službě Azure SQL Data Warehouse. 
@@ -55,12 +55,12 @@ Následující seznam obsahuje datové typy, že SQL Data Warehouse nepodporuje 
 | [Geometrie](/sql/t-sql/spatial-geometry/spatial-types-geometry-transact-sql) |[varbinary](/sql/t-sql/data-types/binary-and-varbinary-transact-sql) |
 | [Zeměpisné oblasti](/sql/t-sql/spatial-geography/spatial-types-geography) |[varbinary](/sql/t-sql/data-types/binary-and-varbinary-transact-sql) |
 | [hierarchyid](/sql/t-sql/data-types/hierarchyid-data-type-method-reference) |[nvarchar](/sql/t-sql/data-types/nchar-and-nvarchar-transact-sql)(4000) |
-| [Bitové kopie](/sql/t-sql/data-types/ntext-text-and-image-transact-sql) |[varbinary](/sql/t-sql/data-types/binary-and-varbinary-transact-sql) |
+| [image](/sql/t-sql/data-types/ntext-text-and-image-transact-sql) |[varbinary](/sql/t-sql/data-types/binary-and-varbinary-transact-sql) |
 | [Text](/sql/t-sql/data-types/ntext-text-and-image-transact-sql) |[varchar](/sql/t-sql/data-types/char-and-varchar-transact-sql) |
 | [ntext](/sql/t-sql/data-types/ntext-text-and-image-transact-sql) |[nvarchar](/sql/t-sql/data-types/nchar-and-nvarchar-transact-sql) |
-| [SQL_VARIANT](/sql/t-sql/data-types/sql-variant-transact-sql) |Rozdělit sloupec do několika sloupců silného typu. |
+| [sql_variant](/sql/t-sql/data-types/sql-variant-transact-sql) |Rozdělit sloupec do několika sloupců silného typu. |
 | [Tabulka](/sql/t-sql/data-types/table-transact-sql) |Převeďte na dočasné tabulky. |
-| [Časové razítko](/sql/t-sql/data-types/date-and-time-types) |Přepracujte kód, který použijete [datetime2](/sql/t-sql/data-types/datetime2-transact-sql) a [CURRENT_TIMESTAMP](/sql/t-sql/functions/current-timestamp-transact-sql) funkce. Jsou podporovány pouze konstanty jako výchozí, proto current_timestamp nelze definovat jako výchozí omezení. Pokud je potřeba migrovat hodnoty verze řádků z zadaný sloupec časového razítka, použijte [binární](/sql/t-sql/data-types/binary-and-varbinary-transact-sql)(8) nebo [VARBINARY](/sql/t-sql/data-types/binary-and-varbinary-transact-sql)(8) pro není NULL nebo hodnota NULL, řádek hodnoty verze. |
+| [timestamp](/sql/t-sql/data-types/date-and-time-types) |Přepracujte kód, který použijete [datetime2](/sql/t-sql/data-types/datetime2-transact-sql) a [CURRENT_TIMESTAMP](/sql/t-sql/functions/current-timestamp-transact-sql) funkce. Jsou podporovány pouze konstanty jako výchozí, proto current_timestamp nelze definovat jako výchozí omezení. Pokud je potřeba migrovat hodnoty verze řádků z zadaný sloupec časového razítka, použijte [binární](/sql/t-sql/data-types/binary-and-varbinary-transact-sql)(8) nebo [VARBINARY](/sql/t-sql/data-types/binary-and-varbinary-transact-sql)(8) pro není NULL nebo hodnota NULL, řádek hodnoty verze. |
 | [xml](/sql/t-sql/xml/xml-transact-sql) |[varchar](/sql/t-sql/data-types/char-and-varchar-transact-sql) |
 | [uživatelem definovaný typ](/sql/relational-databases/native-client/features/using-user-defined-types) |Převeďte zpět do nativního datového typu, pokud je to možné. |
 | Výchozí hodnoty | Výchozí hodnoty podporují literály a konstanty pouze. |

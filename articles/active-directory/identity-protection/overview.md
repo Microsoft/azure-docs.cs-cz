@@ -13,15 +13,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/13/2018
+ms.date: 01/29/2019
 ms.author: markvi
 ms.reviewer: raluthra
-ms.openlocfilehash: 3017d92115a61dbf5ce647e75a01360224843f44
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 1e08af577bec463263045a0f0355acffaad5e599
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55165026"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55244160"
 ---
 # <a name="what-is-azure-active-directory-identity-protection"></a>Co je Azure Active Directory Identity Protection?
 
@@ -48,7 +48,7 @@ Následkem toho budete muset:
 
 Zjišťování ohrožení zabezpečení identit je žádný snadný úkol. Azure Active Directory používá algoritmy adaptivní strojového učení a heuristik detekovat anomálie a podezřelé incidenty, které indikují potenciální ohrožení identit. Ochrana Identity na základě těchto dat generuje sestavy a výstrahy, které vám umožní zjištěné problémy vyhodnotit a přijmout odpovídající omezení nebo nápravné akce.
 
-Azure Active Directory Identity Protection je větší než monitorování a vytváření sestav nástroje. K ochraně identity ve vaší organizaci, můžete nakonfigurovat zásady, které automaticky reagují na zjištěné problémy, když se dosáhne úroveň zadané rizika. Tyto zásady, kromě jiných ovládacích prvků podmíněný přístup poskytuje Azure Active Directory a EMS, můžete buď automaticky blokovat nebo zahájit adaptivní nápravných akcí, které resetuje heslo včetně a vynucování služby Multi-Factor authentication.
+Azure Active Directory Identity Protection je větší než monitorování a vytváření sestav nástroje. K ochraně identity ve vaší organizaci, můžete nakonfigurovat zásady, které automaticky reagují na zjištěné problémy, když se dosáhne úroveň zadané rizika. Tyto zásady, kromě jiných ovládacích prvků podmíněný přístup poskytuje služba Azure Active Directory a [Enterprise Mobility + Security](https://docs.microsoft.com/enterprise-mobility-security/) (EMS), můžete buď automaticky blokovat nebo zahájit adaptivní nápravných akcí, včetně resetování hesla a vynucování služby Multi-Factor authentication.
 
 
 #### <a name="identity-protection-capabilities"></a>Možnosti ochrany identit

@@ -15,12 +15,13 @@ ms.topic: article
 ms.date: 01/04/2019
 ms.author: sethm
 ms.reviewer: unknown
-ms.openlocfilehash: 6bb3215e63e2fc672cde5746e6a9867df899ee88
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.lastreviewed: 01/04/2019
+ms.openlocfilehash: 274240aab54f27f36734516026e9feebf64ae4b5
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54016694"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55248108"
 ---
 # <a name="install-visual-studio-and-connect-to-azure-stack"></a>Instalace sady Visual Studio a připojte se ke službě Azure Stack
 

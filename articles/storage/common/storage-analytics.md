@@ -8,13 +8,13 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 03/03/2017
 ms.author: rogarana
-ms.component: common
-ms.openlocfilehash: 0f237b4d742c0c7de1e836e2b9d83502cfe1a30d
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.subservice: common
+ms.openlocfilehash: 233a0685bffba1192193f97b8d98dabd7c65d3c9
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51230981"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55239770"
 ---
 # <a name="storage-analytics"></a>Storage Analytics
 
@@ -79,7 +79,7 @@ Následující tabulka popisuje jednotlivé atributy v názvu protokolu.
 | RRRR |Čtyřmístný rok protokolu. Příklad: 2011. |
 | MM |Dvoumístným měsícem protokolu. Příklad: 07. |
 | DD |Dvoumístným měsícem protokolu. Příklad: 07. |
-| hh |Hodina dvou číslic určující počáteční hodina protokolů ve 24hodinovém formátu UTC. Například: 18. |
+| hh |Hodina dvou číslic určující počáteční hodina protokolů ve 24hodinovém formátu UTC. Příklad: 18. |
 | mm |Dvoumístné číslo určující počáteční minut protokolů. Tato hodnota není podporován v aktuální verzi analytika úložiště a jeho hodnota bude vždy 00. |
 | <counter> |Založený na nule čítač se šesti číslicemi, která určuje počet objektů BLOB protokolu vygenerovaný pro službu storage do jedné hodiny časové období. Tento čítač začíná 000000. Příklad: 000001. |
 
@@ -135,9 +135,9 @@ Transakce jsou zaznamenány pro uživatelských požadavků a požadavků proved
 
 Kapacity dat je denně zaznamenána pro službu Blob service účtu úložiště a dvě tabulky entity, které jsou zapsány. Jedna entita poskytuje statistiky pro uživatelská data a druhý poskytuje statistické údaje o `$logs` kontejner objektů blob Storage Analytics používá. `$MetricsCapacityBlob` Tabulka obsahuje následující statistiky:
 
-* **Kapacita**: velikost úložiště využitá službou Blob service účtu úložiště, v bajtech.
-* **ContainerCount**: počet kontejnerů objektů blob ve službě Blob service účtu úložiště.
-* **ObjectCount**: počet potvrzených a nepotvrzené bloku nebo stránky objekty BLOB ve službě Blob service účtu úložiště.
+* **Kapacita**: Velikost úložiště využitá službou Blob service účtu úložiště, v bajtech.
+* **ContainerCount**: Počet kontejnerů objektů blob ve službě Blob service účtu úložiště.
+* **ObjectCount**: Počet potvrzených a nepotvrzené bloku nebo stránky objekty BLOB ve službě Blob service účtu úložiště.
 
 Další informace o metriky kapacity najdete v tématu [tabulkovému schématu metrik Storage Analytics](https://msdn.microsoft.com/library/hh343264.aspx).
 

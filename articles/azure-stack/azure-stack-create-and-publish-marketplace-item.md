@@ -14,12 +14,13 @@ ms.topic: article
 ms.date: 01/08/2019
 ms.author: sethm
 ms.reviewer: avishwan
-ms.openlocfilehash: b2520864589558a530f4f9dbfed83a9f3b8c727a
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ms.lastreviewed: 01/08/2019
+ms.openlocfilehash: 44cf5b2cc7547a4e85c65215fdc1e4fe2cb585a9
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54104093"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55243636"
 ---
 # <a name="create-and-publish-a-marketplace-item"></a>Vytvoření a publikování položky Marketplace
 
@@ -128,15 +129,15 @@ ms.locfileid: "54104093"
 
 ### <a name="identity-information"></a>Informace o identitě
 
-| Název | Požaduje se | Typ | Omezení | Popis |
+| Name | Požaduje se | Type | Omezení | Popis |
 | --- | --- | --- | --- | --- |
-| Název |X |Řetězec |[A-Za-z0-9]+ | |
+| Name |X |Řetězec |[A-Za-z0-9]+ | |
 | Vydavatel |X |Řetězec |[A-Za-z0-9]+ | |
 | Verze |X |Řetězec |[SemVer v2](https://semver.org/) | |
 
 ### <a name="metadata"></a>Metadata
 
-| Název | Požaduje se | Typ | Omezení | Popis |
+| Name | Požaduje se | Type | Omezení | Popis |
 | --- | --- | --- | --- | --- |
 | Zobrazovaný název |X |Řetězec |Doporučení 80 znaků. |Na portálu se nemusí zobrazit název vaší položky řádně Pokud je delší než 80 znaků. |
 | PublisherDisplayName |X |Řetězec |Doporučení 30 znaků |Na portálu nemusí řádně zobrazit název vydavatele, pokud je delší než 30 znaků. |
@@ -149,7 +150,7 @@ ms.locfileid: "54104093"
 
 Na webu Marketplace používá následující ikony:
 
-| Název | Šířka | Výška | Poznámky |
+| Name | Šířka | Výška | Poznámky |
 | --- | --- | --- | --- |
 | Široký |255 px |115 px |Vždycky se vyžaduje |
 | Dlouhodobé používání |115 px |115 px |Vždycky se vyžaduje |
@@ -165,7 +166,7 @@ Každá položka Marketplace by měl být s klíčovým slovem kategorii, která
 
 Každá položka Marketplace může obsahovat různé odkazy na další obsah. Odkazy jsou zadané jako seznam názvy a identifikátory URI:
 
-| Název | Požaduje se | Typ | Omezení | Popis |
+| Name | Požaduje se | Type | Omezení | Popis |
 | --- | --- | --- | --- | --- |
 | Zobrazovaný název |X |Řetězec |Maximálně 64 znaků. | |
 | URI |X |Identifikátor URI | | |
@@ -174,10 +175,10 @@ Každá položka Marketplace může obsahovat různé odkazy na další obsah. O
 
 Kromě předchozích metadat můžete Marketplace autoři uvádějí data dvojice vlastní klíč/hodnota v následujícím tvaru:
 
-| Název | Požaduje se | Typ | Omezení | Popis |
+| Name | Požaduje se | Type | Omezení | Popis |
 | --- | --- | --- | --- | --- |
 | Zobrazovaný název |X |Řetězec |Maximálně 25 znaků | |
-| Hodnota |X |Řetězec |Maximálně 30 znaků | |
+| Value |X |Řetězec |Maximálně 30 znaků | |
 
 ### <a name="html-sanitization"></a>Sanitizace HTML
 

@@ -4,18 +4,18 @@ titleSuffix: Microsoft
 description: Porovnejte produkty v široké nabídce Microsoftu pro sestavování, nasazování a správu modelů strojového učení. Rozhodněte, které produkty by byly vhodné pro vaše řešení.
 services: machine-learning
 ms.service: machine-learning
-ms.component: core
+ms.subservice: core
 ms.topic: overview
 ms.reviewer: jmartens
 author: garyericson
 ms.author: garye
 ms.date: 1/17/2019
-ms.openlocfilehash: d5660d1a4d5d2a26af57e2a2411552e3f6267379
-ms.sourcegitcommit: 9f07ad84b0ff397746c63a085b757394928f6fc0
+ms.openlocfilehash: d7c7c383f51d8bcc2b1691724e8f22b43782c5e8
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54389132"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55242065"
 ---
 # <a name="what-are-the-machine-learning-products-at-microsoft"></a>Co je strojové učení produktů v Microsoftu?
 

@@ -4,19 +4,19 @@ titleSuffix: Azure Machine Learning Studio
 description: Můžete exportovat a odstraňovat svá data v rámci produktu uživatele z Galerie Azure AI pomocí rozhraní nebo rozhraní API katalogu AI galerie. V tomto článku se dozvíte, jak.
 services: machine-learning
 ms.service: machine-learning
-ms.component: studio
+ms.subservice: studio
 ms.topic: conceptual
 author: ericlicoding
 ms.author: amlstudiodocs
 ms.custom: seodec18
 ms.date: 05/25/2018
 ms.reviewer: jmartens, mldocs
-ms.openlocfilehash: 14f46ffd45f0b1948dfc4892a45dc880dc378355
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.openlocfilehash: 85d7286c1fd075da7034a2a43d46a158550d2fe9
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54263983"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55247710"
 ---
 # <a name="view-and-delete-in-product-user-data-from-azure-ai-gallery"></a>Zobrazení a odstranit data uživatelů v rámci produktu z Galerie Azure AI
 

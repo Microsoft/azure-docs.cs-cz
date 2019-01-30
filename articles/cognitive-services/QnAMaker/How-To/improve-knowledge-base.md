@@ -8,16 +8,16 @@ displayName: active learning, suggestion, dialog prompt, train api, feedback loo
 ms.service: cognitive-services
 ms.component: qna-maker
 ms.topic: article
-ms.date: 01/28/2019
+ms.date: 01/29/2019
 ms.author: diberry
-ms.openlocfilehash: da32d1e7a3cc9fc0c37418e24c1f1f270a104b09
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.openlocfilehash: cf652c1b0edd469f29d14ed10d66ebe78b0fbb7c
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55105649"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55247829"
 ---
-# <a name="use-active-learning-to-improve-knowledge-base"></a>Aktivní studium slouží ke zlepšení znalostní báze
+# <a name="use-active-learning-to-improve-knowledge-base"></a>Využití aktivního učení k vylepšení znalostní báze
 
 Můžete aktivně učit a zlepšovat tak kvalitu znalostní báze Navrhněte alternativní dotazy založené na příspěvky uživatele, na vaše otázky a odpovědi spárování. Buď je přidáte do stávající dotazy nebo odmítat je zkontrolujete tyto návrhy. 
 
@@ -39,6 +39,10 @@ Když jsou Clusterované podobné dotazy, navrhuje nástroje QnA Maker dotazy za
 Aktivní učení se aktivuje podle skóre nejčastější několik odpovědi vrácené QnA Maker pro libovolný daný dotaz. Pokud skóre rozdíly ležet v rozsahu malé, pak dotazu je považován za možný výskyt _návrh_ pro všechny možné odpovědi. 
 
 Všechny návrhy jsou Clusterované společně odpovědným a nejčastějších návrhů pro alternativní otázky se zobrazují na základě četnosti konkrétní dotazů koncovými uživateli. Aktivní učení nabízí nejlepší možný návrhů v případech, kde se zobrazuje koncové body přiměřené množství a různorodost dotazů na využití.
+
+## <a name="upgrade-version-to-use-active-learning"></a>Upgrade verze použití aktivního učení
+
+Aktivní učení se podporuje v modulu runtime verze 4.4.0 a vyšší. Pokud se znalostní báze vytvořil v dřívější verzi, [upgrade vaší služby](upgrade-qnamaker-service.md) pro použití této funkce. 
 
 ## <a name="best-practices"></a>Osvědčené postupy
 
@@ -152,7 +156,9 @@ Content-Type: application/json
 {"feedbackRecords": [{"userId": "1","userQuestion": "<question-text>","qnaId": 1}]}
 ```
 
+Další informace o tom, jak použití aktivního učení se [Azure Bot C# příklad](https://github.com/Microsoft/BotBuilder-Samples/tree/master/experimental/csharp_dotnetcore/qnamaker-activelearning-bot)
+
 ## <a name="next-steps"></a>Další postup
  
 > [!div class="nextstepaction"]
-> [Použití rozhraní QnAMaker API](./upgrade-qnamaker-service.md)
+> [Použití rozhraní API nástroje QnA Maker](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da75ff)

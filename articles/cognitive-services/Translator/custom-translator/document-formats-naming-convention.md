@@ -5,16 +5,16 @@ description: Toto je Průvodce na formát dokumentu a zásady vytváření názv
 author: rajdeep-in
 manager: christw
 ms.service: cognitive-services
-ms.component: custom-translator
+ms.subservice: custom-translator
 ms.date: 11/13/2018
 ms.author: v-rada
 ms.topic: conceptual
-ms.openlocfilehash: 74b421691f5d3536c44af16e99dc54451dfde3f7
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: afd3192117bd22c62fd8e36752515166e4c6e043
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52872760"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55225474"
 ---
 # <a name="document-formats-and-naming-convention-guidance"></a>Zdokumentujte formátů a pojmenování pokyny konvence
 
@@ -25,15 +25,15 @@ Tato tabulka obsahuje všechny podporované formáty souborů, které vám umož
 | Formát            | Rozšíření   | Popis                                                                                                                                                                                                                                                                    |
 |-------------------|--------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | XLIFF             | . XLF. XLIFF | Paralelní dokumentu formát exportu systémů překladu paměti. Použít jazyky jsou definovány v souboru.                                                                                                                                                              |
-| TMX               | . TMX         | Paralelní dokumentu formát exportu systémů překladu paměti. Použít jazyky jsou definovány v souboru.                                                                                                                                                              |
-| PSČ               | . PSČ         | PSČ je ve formátu souboru archivu.                                                                                                                                                                                                        |
-| Locstudio         | . LCL         | Microsoft formát pro paralelní dokumenty                                                                                                                                                                                                                                      |
-| Aplikace Microsoft Word    | . DOCX        | Dokument aplikace Microsoft Word                                                                                                                                                                                                                                                        |
-| Adobe Acrobat     | . SOUBOR PDF         | Adobe Acrobat PDF                                                                                                                                                                                                                                                |
-| HTML              | . HTML. HTM  | Dokument HTML                                                                                                                                                                                                                                                                  |
-| Textový soubor         | . TXT         | Textových souborů s kódováním UTF-16 nebo UTF-8                                                                                                                                                                                                                                             |
+| TMX               | .TMX         | Paralelní dokumentu formát exportu systémů překladu paměti. Použít jazyky jsou definovány v souboru.                                                                                                                                                              |
+| ZIP               | . PSČ         | PSČ je ve formátu souboru archivu.                                                                                                                                                                                                        |
+| Locstudio         | .LCL         | Microsoft formát pro paralelní dokumenty                                                                                                                                                                                                                                      |
+| Microsoft Word    | .DOCX        | Dokument aplikace Microsoft Word                                                                                                                                                                                                                                                        |
+| Adobe Acrobat     | .PDF         | Adobe Acrobat PDF                                                                                                                                                                                                                                                |
+| HTML              | .HTML, .HTM  | Dokument HTML                                                                                                                                                                                                                                                                  |
+| Textový soubor         | .TXT         | Textových souborů s kódováním UTF-16 nebo UTF-8                                                                                                                                                                                                                                             |
 | Zarovnané textový soubor | . ZAROVNÁNÍ       | Rozšíření `.ALIGN` je zvláštní rozšíření, které můžete použít, pokud víte, že jsou věty v páru dokumentu perfektně zarovnaný. Pokud zadáte `.ALIGN` souboru, vlastní Translator nebude zarovnat vět za vás. |
-| Excelový soubor        | . XLSX        | Soubor aplikace Excel (2013 nebo novější). První řádek / řádků tabulky by měl být kód jazyka.                                                                                                                                                                                                                                                      |
+| Excelový soubor        | .XLSX        | Soubor aplikace Excel (2013 nebo novější). První řádek / řádků tabulky by měl být kód jazyka.                                                                                                                                                                                                                                                      |
 
 ## <a name="dictionary-formats"></a>Slovník formátů
 

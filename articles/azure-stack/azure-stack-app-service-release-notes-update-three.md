@@ -15,12 +15,13 @@ ms.topic: article
 ms.date: 08/20/2018
 ms.author: anwestg
 ms.reviewer: sethm
-ms.openlocfilehash: 3e88e0a3337eafdd25c9c0cc655912a4cdbd3b68
-ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
+ms.lastreviewed: 08/20/2018
+ms.openlocfilehash: a7e8b1471e056fd789cda5258dd088e623c3cebd
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49079527"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55248499"
 ---
 # <a name="app-service-on-azure-stack-update-3-release-notes"></a>App Service v Azure stacku zpráva k vydání verze update 3
 
@@ -184,12 +185,12 @@ Ověření
 - Pracovní procesy se nám kontaktovat souborového serveru při nasazení služby App Service v existující virtuální sítě a souborový server je k dispozici v privátní síti.  To se také nazývá ve službě Azure App Service v dokumentaci k nasazení Azure Stack.
 
 Pokud jste se rozhodli nasadit do existující virtuální sítě a interní IP adresu pro připojení k souborovému serveru, je nutné přidat odchozí pravidlo zabezpečení, povolení provozu SMB mezi podsítě pracovního procesu a souborový server. Chcete-li to provést, přejděte na WorkersNsg v portálu pro správu a přidat odchozí pravidlo zabezpečení s následujícími vlastnostmi:
- * Zdroj: žádné
+ * Zdroj: Všechny
  * Zdrojový rozsah portů: *
  * Cíl: IP adresy
- * Rozsah cílových IP adres: rozsah IP adres pro souborový server
+ * Rozsah cílových IP adres: Rozsah IP adres pro souborový server
  * Rozsah cílových portů: 445
- * Protocol: TCP
+ * Protokol: TCP
  * Akce: Povolit
  * Priorita: 700
  * Název: Outbound_Allow_SMB445

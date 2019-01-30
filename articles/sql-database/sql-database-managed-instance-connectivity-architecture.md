@@ -12,12 +12,12 @@ ms.author: srbozovi
 ms.reviewer: bonova, carlrab
 manager: craigg
 ms.date: 12/10/2018
-ms.openlocfilehash: 2077978ac9353531d10359edf396e4426e9d6988
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.openlocfilehash: b709bbacce23a89b8c60b77a524018b50ca1ca5e
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55104399"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55245663"
 ---
 # <a name="azure-sql-database-managed-instance-connectivity-architecture"></a>Azure SQL Database Managed Instance architektura připojení
 
@@ -111,6 +111,9 @@ Managed Instance můžete nasadit ve vyhrazené podsíti (podsíť Managed Insta
 |Správa  |80, 443, 12000|TCP     |Všechny              |Internet   |Povolit |
 |mi_subnet   |Všechny           |Všechny     |Všechny              |MI SUBNET  |Povolit |
 
+  > [!Note]
+  > PODSÍŤ MI odkazuje na rozsah IP adres podsítě v 10.x.x.x/y formuláře. Tyto informace můžete najít na webu Azure Portal (prostřednictvím vlastnosti podsítě).
+  
   > [!Note]
   > I když povinné zabezpečení příchozích pravidel povolit provoz z _jakékoli_ zdroje na portech 9000 9003, 1438, 1440, 1452 tyto porty jsou chráněné bránou firewall integrované. To [článku](sql-database-managed-instance-find-management-endpoint-ip-address.md) ukazuje, jak lze zjistit IP adresu koncového bodu správy a ověřte pravidla brány firewall. 
   

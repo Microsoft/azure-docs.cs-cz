@@ -15,12 +15,13 @@ ms.topic: article
 ms.date: 09/28/2018
 ms.author: sethm
 ms.reviewer: sijuman
-ms.openlocfilehash: 5a97a683e7f25029199ba68ce3d5cee410c3cf29
-ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
+ms.lastreviewed: 09/28/2018
+ms.openlocfilehash: cd02845f648275ee17f763bd5a94b386f7ed64fd
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2018
-ms.locfileid: "48886820"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55246360"
 ---
 # <a name="use-api-version-profiles-with-java-in-azure-stack"></a>Použití profilů verzí API s Javou v Azure stacku
 
@@ -77,8 +78,8 @@ Instalace sady Java SDK, postupujte následovně:
 
 4.  Balíčky, které je potřeba nainstalovat závisí na verzi profilu, který chcete použít. Názvy balíčků pro profil verze jsou:
     
-   - **com.microsoft.Azure.Profile\_2018\_03\_01\_hybridní**
-   - **com.microsoft.Azure**
+   - **com.microsoft.azure.profile\_2018\_03\_01\_hybrid**
+   - **com.microsoft.azure**
       - **nejnovější**
 
 5.  Pokud není k dispozici, vytvořte předplatné a uložit pro pozdější použití. ID předplatného. Pokyny pro vytvoření odběru naleznete v tématu [vytvářet předplatná na nabídky ve službě Azure Stack](../azure-stack-subscribe-plan-provision-vm.md).
@@ -149,9 +150,9 @@ Ukázkový soubor JSON:
 
 ## <a name="existing-api-profiles"></a>Stávající profily rozhraní API
 
-1.  **com.microsoft.Azure.Profile\_2018\_03\_01\_hybridní**: nejnovější profil vytvořené pro Azure Stack. Použijte tento profil služby bude nejvíc kompatibilní se systémem Azure Stack, dokud jsou na razítku. 1808 a další.
+1.  **com.microsoft.azure.profile\_2018\_03\_01\_hybrid**: Nejnovější profil vytvořené pro Azure Stack. Použijte tento profil služby bude nejvíc kompatibilní se systémem Azure Stack, dokud jsou na razítku. 1808 a další.
 
-2.  **com.microsoft.Azure**: profil, který se skládá z nejnovější verze všech služeb. Použijte nejnovější verze všech služeb.
+2.  **com.microsoft.azure**: Profil, který se skládá z nejnovější verze všech služeb. Použijte nejnovější verze všech služeb.
 
 Další informace o profilech rozhraní API a služby Azure Stack, najdete v článku [souhrn rozhraní API profily](../user/azure-stack-version-profiles.md#summary-of-api-profiles).
 

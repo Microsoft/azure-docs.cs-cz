@@ -8,13 +8,13 @@ ms.topic: article
 ms.devlang: dotnet
 ms.date: 05/15/2017
 ms.author: tamram
-ms.component: blobs
-ms.openlocfilehash: 6e33f700e9f453f419bf431d772d3db27e806ac0
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.subservice: blobs
+ms.openlocfilehash: 9c5f32bb1b4f335fab11f0fd865421f2eec5eee9
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51240694"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55244908"
 ---
 # <a name="shared-access-signatures-part-2-create-and-use-a-sas-with-blob-storage"></a>Sdílené přístupové podpisy, část 2: Vytvoření a použití SAS s úložištěm objektů Blob
 
@@ -28,9 +28,9 @@ ms.locfileid: "51240694"
 ## <a name="about-this-tutorial"></a>O tomto kurzu
 V tomto kurzu vytvoříme dvě konzolové aplikace, které ukazují, vytváření a používání sdílených přístupových podpisů pro kontejnery a objekty BLOB:
 
-**Aplikace 1**: aplikace pro správu. Vygeneruje sdílený přístupový podpis kontejneru a objektu blob. Přístupový klíč účtu úložiště obsahuje ve zdrojovém kódu.
+**Aplikace 1**: Aplikace pro správu. Vygeneruje sdílený přístupový podpis kontejneru a objektu blob. Přístupový klíč účtu úložiště obsahuje ve zdrojovém kódu.
 
-**Aplikace 2**: klientská aplikace. Přístupy do kontejneru a objektu blob prostředky použití sdílených přístupových podpisů, který je vytvořen s první aplikací. Používá sdílené přístupové podpisy ke kontejneru přístup a objektů blob prostředky – provádí *není* zahrnují přístupový klíč účtu úložiště.
+**Aplikace 2**: Klientská aplikace. Přístupy do kontejneru a objektu blob prostředky použití sdílených přístupových podpisů, který je vytvořen s první aplikací. Používá sdílené přístupové podpisy ke kontejneru přístup a objektů blob prostředky – provádí *není* zahrnují přístupový klíč účtu úložiště.
 
 ## <a name="part-1-create-a-console-application-to-generate-shared-access-signatures"></a>Část 1: Vytvořte konzolovou aplikaci pro generování sdílených přístupových podpisů
 Nejprve ujistěte se, že máte Klientská knihovna Azure Storage pro .NET nainstalovat. Můžete nainstalovat [balíček NuGet](http://nuget.org/packages/WindowsAzure.Storage/ "balíček NuGet") obsahující aktuální sestavení klientské knihovny. Toto je doporučená metoda pro zajištění, že máte nejnovější opravy. Klientská knihovna můžete také stáhnout jako součást nejnovější verzi [sady Azure SDK for .NET](https://azure.microsoft.com/downloads/).
@@ -337,7 +337,7 @@ Container SAS URI using stored access policy: https://storagesample.blob.core.wi
 Blob SAS URI using stored access policy: https://storagesample.blob.core.windows.net/sascontainer/sasblobpolicy.txt?sv=2016-05-31&sr=b&si=tutorialpolicy&sig=%2FkTWkT23SS45%2FoF4bK2mqXkN%2BPKs%2FyHuzkfQ4GFoZVU%3D
 ```
 
-## <a name="part-2-create-a-console-application-to-test-the-shared-access-signatures"></a>Část 2: Vytvoření konzolové aplikace pro testování sdílených přístupových podpisů
+## <a name="part-2-create-a-console-application-to-test-the-shared-access-signatures"></a>Část 2: Vytvořte konzolovou aplikaci otestovat sdílených přístupových podpisů
 K otestování sdílených přístupových podpisů vytvořený v předchozích příkladech, vytvoříme druhou aplikaci konzoly využívající podpisy k provádění operací na kontejneru a objektu BLOB.
 
 > [!NOTE]

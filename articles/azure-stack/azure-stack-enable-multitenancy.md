@@ -14,12 +14,13 @@ ms.topic: article
 ms.date: 11/6/2018
 ms.author: patricka
 ms.reviewer: bryanr
-ms.openlocfilehash: 91d5f24eacff83f8c6263a20aaa08665871bfd04
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.lastreviewed: 11/6/2018
+ms.openlocfilehash: 7d013fce08f688c49d828b829f84e385455c84fe
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55094015"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55249693"
 ---
 # <a name="multi-tenancy-in-azure-stack"></a>Víceklientská architektura v Azure stacku
 

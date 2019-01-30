@@ -6,16 +6,16 @@ author: ckarst
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
-ms.component: implement
+ms.subservice: implement
 ms.date: 05/09/2018
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: 1a7ea00e8bdf4fa1a22dd765e5108dce72e2d380
-ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
+ms.openlocfilehash: 699538666a3bdbea94d35844f9c5c4fb7b4fd0f2
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43307458"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55241045"
 ---
 # <a name="creating-updating-statistics-on-tables-in-azure-sql-data-warehouse"></a>Vytváření, aktualizaci statistik tabulek v Azure SQL Data Warehouse
 Doporučení a příklady pro vytváření a aktualizaci statistik optimalizaci dotazu na tabulky ve službě Azure SQL Data Warehouse.
@@ -50,7 +50,7 @@ Automatické vytváření statistik generováno synchronně, případně utrpít
 > Vytvoření statistiky také zaznamenají [sys.dm_pdw_exec_requests](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql?view=aps-pdw-2016) v kontextu jiného uživatele.
 > 
 
-Když se vytvoří automatické statistiky, bude mít tuto podobu: _WA_Sys_< id sloupce 8 číslice v šestnáctkové soustavě > _ < id tabulky 8 číslice v šestnáctkové soustavě >. Můžete zobrazit statistiky, které již byly vytvořeny spuštěním [DBCC SHOW_STATISTICS](https://docs.microsoft.com/sql/t-sql/database-console-commands/dbcc-show-statistics-transact-sql?view=sql-server-2017) příkaz:
+Když se vytvoří automatické statistiky, budou mít formuláře: _WA_Sys_< id sloupce 8 číslice v šestnáctkové soustavě > _ < id tabulky 8 číslice v šestnáctkové soustavě >. Můžete zobrazit statistiky, které již byly vytvořeny spuštěním [DBCC SHOW_STATISTICS](https://docs.microsoft.com/sql/t-sql/database-console-commands/dbcc-show-statistics-transact-sql?view=sql-server-2017) příkaz:
 
 ```sql
 DBCC SHOW_STATISTICS (<tablename>, <targetname>)
@@ -67,7 +67,7 @@ Toto jsou doporučení aktualizaci statistiky:
 
 |||
 |-|-|
-| **Četnosti aktualizací statistik**  | Konzervativní: denně <br></br> Po načtení nebo transformace dat |
+| **Četnosti aktualizací statistik**  | Konzervativní: Denně <br></br> Po načtení nebo transformace dat |
 | **Vzorkování** |  Menší než 1 miliarda řádků, použijte výchozí vzorkování (20 procent) <br></br> S více než 1 miliarda řádků je dobré statistiky v oblasti % 2 |
 
 Jedním ze základních otázek požádat, pokud řešíte potíže s dotazu je, **"Je statistika aktuální?"**
@@ -337,7 +337,7 @@ EXEC [dbo].[prc_sqldw_create_stats] 3, 20;
 
 Chcete-li vytvořit odběr statistiku pro všechny sloupce 
 
-## <a name="examples-update-statistics"></a>Příklady: Update statistics
+## <a name="examples-update-statistics"></a>Příklady: Aktualizovat statistiku
 Chcete-li aktualizovat statistiku, můžete:
 
 - Aktualizujte statistiku objektů. Zadejte název objektu statistiky, které chcete aktualizovat.
@@ -393,10 +393,10 @@ Tato systémová zobrazení poskytují informace o statistiky:
 | [sys.columns](/sql/relational-databases/system-catalog-views/sys-columns-transact-sql) |Jeden řádek pro každý sloupec. |
 | [sys.objects](/sql/relational-databases/system-catalog-views/sys-objects-transact-sql) |Jeden řádek pro každý objekt v databázi. |
 | [sys.schemas](/sql/relational-databases/system-catalog-views/sys-objects-transact-sql) |Jeden řádek pro každé schéma databáze. |
-| [Sys.stats](/sql/relational-databases/system-catalog-views/sys-stats-transact-sql) |Jeden řádek pro každý objekt statistiky. |
+| [sys.stats](/sql/relational-databases/system-catalog-views/sys-stats-transact-sql) |Jeden řádek pro každý objekt statistiky. |
 | [sys.stats_columns](/sql/relational-databases/system-catalog-views/sys-stats-columns-transact-sql) |Jeden řádek pro každý sloupec v objektu statistiky. Obsahuje odkazy na sys.columns zpět. |
-| [zobrazení Sys.Tables](/sql/relational-databases/system-catalog-views/sys-tables-transact-sql) |Jeden řádek pro každou tabulku (včetně externích tabulek). |
-| [Sys.table_types](/sql/relational-databases/system-catalog-views/sys-table-types-transact-sql) |Jeden řádek pro jednotlivé datové typy. |
+| [sys.tables](/sql/relational-databases/system-catalog-views/sys-tables-transact-sql) |Jeden řádek pro každou tabulku (včetně externích tabulek). |
+| [sys.table_types](/sql/relational-databases/system-catalog-views/sys-table-types-transact-sql) |Jeden řádek pro jednotlivé datové typy. |
 
 ### <a name="system-functions-for-statistics"></a>Funkce systému pro statistiku
 Tyto funkce systému jsou užitečné při práci s statistiky:
@@ -448,7 +448,7 @@ AND     st.[user_created] = 1
 ## <a name="dbcc-showstatistics-examples"></a>Příkaz DBCC SHOW_STATISTICS() příklady
 Příkaz DBCC SHOW_STATISTICS() zobrazuje data ukládaná v rámci objektu statistiky. Tato data k dispozici ve třech částech:
 
-- Záhlaví
+- Hlavička
 - Hustota vektoru
 - Histogram
 

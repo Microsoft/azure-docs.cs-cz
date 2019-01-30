@@ -13,12 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/16/2019
 ms.author: sethm
-ms.openlocfilehash: 3fcbf2b3160d57e56a59ba9c374c9b1b2a75a159
-ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
+ms.lastreviewed: 01/16/2019
+ms.openlocfilehash: d4bc560a1c607d4a12cfb3d08ffeacf9b5d2196a
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54330241"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55244269"
 ---
 # <a name="store-service-principal-credentials-in-key-vault"></a>Store pověření instančního objektu ve službě Key Vault
 

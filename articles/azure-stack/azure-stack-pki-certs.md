@@ -15,12 +15,13 @@ ms.topic: article
 ms.date: 01/02/2019
 ms.author: mabrigg
 ms.reviewer: ppacent
-ms.openlocfilehash: 6cf32ba50e83b95d51493244ef8e8646433b0b02
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.lastreviewed: 01/02/2019
+ms.openlocfilehash: 93e6345ba50bab21e03fb7a30148ea51c52a10f2
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54024939"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55244245"
 ---
 # <a name="azure-stack-public-key-infrastructure-certificate-requirements"></a>Požadavky na certifikáty infrastruktury veřejných klíčů Azure Stack
 
@@ -69,24 +70,24 @@ Pro vaše nasazení [Oblast] a [externalfqdn] hodnoty musí odpovídat oblasti a
 
 | Složka pro nasazení | Požadovaný certifikát subjektu a alternativní názvy subjektu (SAN) | Obor (podle oblasti) | SubDomain namespace |
 |-------------------------------|------------------------------------------------------------------|----------------------------------|-----------------------------|
-| Veřejný portál | portál. &lt;oblast >. &lt;plně kvalifikovaný název domény > | Portály | &lt;oblast >. &lt;plně kvalifikovaný název domény > |
-| Portál pro správu | adminportal. &lt;oblast >. &lt;plně kvalifikovaný název domény > | Portály | &lt;oblast >. &lt;plně kvalifikovaný název domény > |
-| Veřejné Azure Resource Manageru | Správa. &lt;oblast >. &lt;plně kvalifikovaný název domény > | Azure Resource Manager | &lt;oblast >. &lt;plně kvalifikovaný název domény > |
-| Správce Azure Resource Manageru | adminmanagement. &lt;oblast >. &lt;plně kvalifikovaný název domény > | Azure Resource Manager | &lt;oblast >. &lt;plně kvalifikovaný název domény > |
-| ACSBlob | *.blob.&lt;region>.&lt;fqdn><br>(Certifikát SSL typu Wildcard) | Blob Storage | objekt BLOB. &lt;oblast >. &lt;plně kvalifikovaný název domény > |
+| Veřejný portál | portal.&lt;region>.&lt;fqdn> | Portály | &lt;region>.&lt;fqdn> |
+| Portál pro správu | adminportal.&lt;region>.&lt;fqdn> | Portály | &lt;region>.&lt;fqdn> |
+| Veřejné Azure Resource Manageru | Správa. &lt;oblast >. &lt;plně kvalifikovaný název domény > | Azure Resource Manager | &lt;region>.&lt;fqdn> |
+| Správce Azure Resource Manageru | adminmanagement.&lt;region>.&lt;fqdn> | Azure Resource Manager | &lt;region>.&lt;fqdn> |
+| ACSBlob | *.blob.&lt;region>.&lt;fqdn><br>(Certifikát SSL typu Wildcard) | Blob Storage | blob.&lt;region>.&lt;fqdn> |
 | ACSTable | * .table. &lt;oblast >. &lt;plně kvalifikovaný název domény ><br>(Certifikát SSL typu Wildcard) | Table Storage | Tabulka. &lt;oblast >. &lt;plně kvalifikovaný název domény > |
-| ACSQueue | * .queue. &lt;oblast >. &lt;plně kvalifikovaný název domény ><br>(Certifikát SSL typu Wildcard) | Queue Storage | fronty. &lt;oblast >. &lt;plně kvalifikovaný název domény > |
+| ACSQueue | *.queue.&lt;region>.&lt;fqdn><br>(Certifikát SSL typu Wildcard) | Queue Storage | queue.&lt;region>.&lt;fqdn> |
 | KeyVault | * .vault. &lt;oblast >. &lt;plně kvalifikovaný název domény ><br>(Certifikát SSL typu Wildcard) | Key Vault | trezor. &lt;oblast >. &lt;plně kvalifikovaný název domény > |
-| KeyVaultInternal | *.adminvault. &lt;oblast >. &lt;plně kvalifikovaný název domény ><br>(Certifikát SSL typu Wildcard) |  Interní služby Keyvault |  adminvault. &lt;oblast >. &lt;plně kvalifikovaný název domény > |
-| Hostitel Správce rozšíření | *.adminhosting. \<oblast >. \<plně kvalifikovaný název domény > (zástupné certifikáty SSL) | Hostitel Správce rozšíření | adminhosting. \<oblast >. \<plně kvalifikovaný název domény > |
-| Veřejná rozšiřující hostitele | * .hosting. \<oblast >. \<plně kvalifikovaný název domény > (zástupné certifikáty SSL) | Veřejná rozšiřující hostitele | hostování. \<oblast >. \<plně kvalifikovaný název domény > |
+| KeyVaultInternal | *.adminvault.&lt;region>.&lt;fqdn><br>(Certifikát SSL typu Wildcard) |  Interní služby Keyvault |  adminvault. &lt;oblast >. &lt;plně kvalifikovaný název domény > |
+| Admin Extension Host | *.adminhosting.\<region>.\<fqdn> (Wildcard SSL Certificates) | Admin Extension Host | adminhosting.\<region>.\<fqdn> |
+| Public Extension Host | *.hosting.\<region>.\<fqdn> (Wildcard SSL Certificates) | Public Extension Host | hostování. \<oblast >. \<plně kvalifikovaný název domény > |
 
 Pokud provádíte nasazení Azure Stack pomocí režimu nasazení služby Azure AD, stačí pro žádosti o certifikáty uvedené v předchozí tabulce. Nicméně pokud provádíte nasazení Azure Stack pomocí režimu nasazení služby AD FS, musíte také požádat o certifikáty jsou popsané v následující tabulce:
 
 |Složka pro nasazení|Požadovaný certifikát subjektu a alternativní názvy subjektu (SAN)|Obor (podle oblasti)|SubDomain namespace|
 |-----|-----|-----|-----|
-|ADFS|služby AD FS.  *&lt;oblast >.&lt; plně kvalifikovaný název domény >*<br>(Certifikát SSL)|ADFS|*&lt;oblast >. &lt;plně kvalifikovaný název domény >*|
-|Graph|graf.  *&lt;oblast >.&lt; plně kvalifikovaný název domény >*<br>(Certifikát SSL)|Graph|*&lt;oblast >. &lt;plně kvalifikovaný název domény >*|
+|ADFS|adfs.*&lt;region>.&lt;fqdn>*<br>(Certifikát SSL)|ADFS|*&lt;region>.&lt;fqdn>*|
+|Graph|graph.*&lt;region>.&lt;fqdn>*<br>(Certifikát SSL)|Graph|*&lt;region>.&lt;fqdn>*|
 |
 
 > [!IMPORTANT]
@@ -102,8 +103,8 @@ Následující tabulka popisuje koncové body a certifikáty, které jsou nutné
 
 |Obor (podle oblasti)|Certifikát|Požadovaný certifikát subjektu a alternativní názvy subjektu (SAN)|SubDomain namespace|
 |-----|-----|-----|-----|
-|SQL, MySQL|SQL a MySQL|&#42;.dbadapter.  *&lt;oblast >.&lt; plně kvalifikovaný název domény >*<br>(Certifikát SSL typu Wildcard)|dbadapter.  *&lt;oblast >.&lt; plně kvalifikovaný název domény >*|
-|App Service|Webové přenosy výchozí certifikát SSL|&#42;.appservice.*&lt;region>.&lt;fqdn>*<br>&#42;.scm.appservice.*&lt;region>.&lt;fqdn>*<br>&#42;.sso.appservice.*&lt;region>.&lt;fqdn>*<br>(Certifikát SSL typu Wildcard více domény<sup>1</sup>)|appservice.*&lt;region>.&lt;fqdn>*<br>scm.appservice.*&lt;region>.&lt;fqdn>*|
+|SQL, MySQL|SQL a MySQL|&#42;.dbadapter.*&lt;region>.&lt;fqdn>*<br>(Certifikát SSL typu Wildcard)|dbadapter.  *&lt;oblast >.&lt; plně kvalifikovaný název domény >*|
+|App Service|Webové přenosy výchozí certifikát SSL|&#42;.appservice.*&lt;region>.&lt;fqdn>*<br>&#42;.scm.appservice.*&lt;region>.&lt;fqdn>*<br>&#42;.sso.appservice.*&lt;region>.&lt;fqdn>*<br>(Multi Domain Wildcard SSL Certificate<sup>1</sup>)|appservice.*&lt;region>.&lt;fqdn>*<br>scm.appservice.*&lt;region>.&lt;fqdn>*|
 |App Service|Rozhraní API|api.appservice.*&lt;region>.&lt;fqdn>*<br>(Certifikát SSL<sup>2</sup>)|appservice.*&lt;region>.&lt;fqdn>*<br>scm.appservice.*&lt;region>.&lt;fqdn>*|
 |App Service|FTP|ftp.appservice.*&lt;region>.&lt;fqdn>*<br>(Certifikát SSL<sup>2</sup>)|appservice.*&lt;region>.&lt;fqdn>*<br>scm.appservice.*&lt;region>.&lt;fqdn>*|
 |App Service|Jednotné přihlašování|sso.appservice.*&lt;region>.&lt;fqdn>*<br>(Certifikát SSL<sup>2</sup>)|appservice.*&lt;region>.&lt;fqdn>*<br>scm.appservice.*&lt;region>.&lt;fqdn>*|

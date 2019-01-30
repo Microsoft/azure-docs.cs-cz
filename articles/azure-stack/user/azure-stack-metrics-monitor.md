@@ -13,16 +13,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/01/2018
 ms.author: mabrigg
-ms.openlocfilehash: fbd4552a9e40f16a6fedec4e04be0d7d6d39351d
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.lastreviewed: 12/01/2018
+ms.openlocfilehash: 54d12cc709c9579fcd056bef22bdf767c81f8e61
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52724481"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55246945"
 ---
 # <a name="how-to-consume-monitoring-data-from-azure-stack"></a>Jak používat data monitorování z Azure Stack
 
-*Platí pro: integrované systémy Azure Stack*
+*Platí pro: Integrované systémy Azure Stack*
 
 Můžete najít data monitorování na jednom místě s kanálem monitorování Azure, stejně, jako je Azure Monitor v globální Azure. Ale ne všechny data monitorování, které jsou součástí globální Azure je k dispozici ve službě Azure Stack. V tomto článku najdete přehled různých způsobů, jak může prostřednictvím kódu programu ingestovat data monitorování ze služby.
  
@@ -33,7 +34,7 @@ Můžete najít data monitorování na jednom místě s kanálem monitorování 
 | Metriky Azure Monitor úrovni platformy | Metriky | [Podporované metriky ve službě Azure Monitor ve službě Azure Stack](azure-stack-metrics-supported.md) | REST API |
 | Vypočítat metriky hostovaného operačního systému (například počet výk.) | Metriky | Windows a virtuální počítače s Linuxem | Storage table nebo blob:<br>Windows nebo Linux Azure Diagnostics <br>Centrum událostí:<br>Diagnostika Azure pro Windows |
 | Metriky úložiště | Metriky | Azure Storage | Tabulka úložiště:<br>Storage Analytics |
-| Protokol aktivit | Události | Všechny služby Azure | ROZHRANÍ REST API:<br>Azure Monitor událostí rozhraní API |
+| Protokol aktivit | Události | Všechny služby Azure | REST API:<br>Azure Monitor událostí rozhraní API |
 | COMPUTE protokoly operačního systému hosta (například služby IIS, trasování událostí pro Windows, syslogy) | Události | Windows a virtuální počítače s Linuxem | Storage table nebo blob:<br>Windows nebo Linux Azure Diagnostics <br>Centrum událostí:<br>Diagnostika Azure pro Windows |
 | Protokoly úložiště | Události | Azure Storage | Tabulka úložiště:<br>Storage Analytics |
 

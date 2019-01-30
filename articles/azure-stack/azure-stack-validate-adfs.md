@@ -15,12 +15,13 @@ ms.topic: article
 ms.date: 01/28/2019
 ms.author: patricka
 ms.reviewer: jerskine
-ms.openlocfilehash: 7e6c54add856a69e1750b0b6ca0a058c2d80bfd8
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.lastreviewed: 01/28/2019
+ms.openlocfilehash: 2200b9a48d7f83d6785c8dbb4a7b02be52fca75a
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55101724"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55241062"
 ---
 # <a name="validate-ad-fs-integration-for-azure-stack"></a>Ověření integrace služby AD FS pro Azure Stack
 

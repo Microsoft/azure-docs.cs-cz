@@ -11,15 +11,16 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 1/08/2019
+ms.date: 01/08/2019
 ms.author: mabrigg
 ms.reviewer: ppacent
-ms.openlocfilehash: 6b2b72403365dc0f6cc61232e0b70801b57a29e2
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.lastreviewed: 01/08/2019
+ms.openlocfilehash: 898fb12c4e38804cca71be6ef08b078f92633e32
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55095483"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55240149"
 ---
 # <a name="validate-azure-stack-pki-certificates"></a>Ověření certifikátů infrastruktury veřejných KLÍČŮ Azure Stack
 

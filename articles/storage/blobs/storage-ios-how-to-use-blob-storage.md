@@ -8,13 +8,13 @@ ms.devlang: objective-c
 ms.topic: article
 ms.date: 11/20/2018
 ms.author: michaelhauss
-ms.component: blobs
-ms.openlocfilehash: be9254686eeb285fb4f0a5e29ba60023abee84ab
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.subservice: blobs
+ms.openlocfilehash: 9e4c717b3b205d6c8fdd309dada918eb6df35181
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52961922"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55244755"
 ---
 # <a name="how-to-use-blob-storage-from-ios"></a>Používání úložiště Blob z iOS
 
@@ -28,7 +28,7 @@ Další informace o službě Blob storage najdete v tématu [seznámení se slu�
 Můžete importovat iOS knihovnu pro úložiště Azure do své aplikace s použitím [Azure Storage CocoaPod](https://cocoapods.org/pods/AZSClient) nebo importováním **Framework** souboru. CocoaPod je doporučeným způsobem, jako je integrace jednodušší, ale import ze souboru framework je teď míň obtěžující pro existující projekt knihovny.
 
 Použití této knihovny, budete potřebovat následující:
-- iOS 8 +
+- iOS 8+
 - Xcode 7 +
 
 ## <a name="cocoapod"></a>CocoaPod
@@ -129,9 +129,9 @@ Můžete potvrdit, že to funguje, zobrazením [Microsoft Azure Storage Explorer
 ## <a name="set-container-permissions"></a>Nastavit oprávnění pro kontejner
 Kontejneru oprávnění jsou nakonfigurované pro **privátní** přístup ve výchozím nastavení. Ale kontejnerů poskytuje několik různých možností přístupu ke kontejneru:
 
-* **Privátní**: data kontejneru a objektu blob je možné načíst pouze vlastník účtu.
-* **Objekt BLOB**: data objektů Blob v tomto kontejneru lze číst prostřednictvím anonymní žádosti, ale kontejnerů dat není k dispozici. Klienty nelze vytvořit výčet objektů BLOB v kontejneru prostřednictvím anonymní žádosti.
-* **Kontejner**: kontejneru a objektu blob data lze číst prostřednictvím anonymní žádosti. Klienty můžete zobrazit výčet objektů BLOB v kontejneru prostřednictvím anonymní žádosti, ale nelze vytvořit výčet kontejnery v rámci účtu úložiště.
+* **Privátní**: Pouze vlastník účtu může číst data kontejneru a objektu blob.
+* **Blob**: Data objektů BLOB v tomto kontejneru lze číst prostřednictvím anonymní žádosti, ale kontejnerů dat není k dispozici. Klienty nelze vytvořit výčet objektů BLOB v kontejneru prostřednictvím anonymní žádosti.
+* **kontejner**: Data kontejneru a objektu blob může číst prostřednictvím anonymní žádosti. Klienty můžete zobrazit výčet objektů BLOB v kontejneru prostřednictvím anonymní žádosti, ale nelze vytvořit výčet kontejnery v rámci účtu úložiště.
 
 Následující příklad ukazuje, jak vytvořit kontejner s **kontejneru** přístupová oprávnění, které vám umožní přístup public, jen pro čtení pro všechny uživatele na Internetu:
 
@@ -216,12 +216,12 @@ Následující příklad ukazuje, jak zobrazit seznam všech objektů BLOB v kon
 * **Předpona** -můžete určit předpona, kterou chcete použít pro výpis objektů blob. Zobrazí se pouze na objekty BLOB, které začínají s touto předponou.
 * **useFlatBlobListing** – jak je uvedeno v [pojmenování a odkazování na ně kontejnerům a objektům blob](/rest/api/storageservices/Naming-and-Referencing-Containers--Blobs--and-Metadata) oddíl, i když službu Blob service je schéma plochého úložiště, můžete vytvořit hierarchii virtuální pojmenování objektů BLOB pomocí cesty informace. Bez plochý výpis však není aktuálně podporováno. Tato funkce je již brzy. Prozatím se tato hodnota by měla být **Ano**.
 * **blobListingDetails** -můžete určit položky, které chcete zahrnout při výpisu objektů BLOB
-  * _AZSBlobListingDetailsNone_: výpis pouze potvrzené objektů BLOB a nevrací metadata objektu blob.
-  * _AZSBlobListingDetailsSnapshots_: výpis potvrzené objektů BLOB a snímků objektů blob.
-  * _AZSBlobListingDetailsMetadata_: vrátil načíst metadata objektu blob pro každý objekt blob ve výpisu.
-  * _AZSBlobListingDetailsUncommittedBlobs_: výpis objektů BLOB nepotvrzené a potvrzené.
-  * _AZSBlobListingDetailsCopy_: kopie vlastnosti v seznamu.
-  * _AZSBlobListingDetailsAll_: seznam dostupných potvrzené objekty BLOB, nepotvrzené objekty BLOB a snímků a vrátí všechna metadata a kopírování stav pro tyto objekty BLOB.
+  * _AZSBlobListingDetailsNone_: Výpis pouze potvrzené objektů BLOB a nevrací metadata objektu blob.
+  * _AZSBlobListingDetailsSnapshots_: Výpis objektů BLOB potvrzené a snímků objektů blob.
+  * _AZSBlobListingDetailsMetadata_: Načíst metadata objektu blob pro každý objekt blob se vrátil v seznamu.
+  * _AZSBlobListingDetailsUncommittedBlobs_: Výpis objektů BLOB nepotvrzené a potvrzené.
+  * _AZSBlobListingDetailsCopy_: Kopírovat vlastnosti zahrňte do seznamu.
+  * _AZSBlobListingDetailsAll_: Seznam dostupných potvrzené objekty BLOB, nepotvrzené objekty BLOB a snímků a vrátí všechna metadata a kopírování stav pro tyto objekty BLOB.
 * **maxResults** – maximální počet výsledků k vrácení této operace. Nenastavovat limit použijte hodnotu -1.
 * **completionHandler** – blok kódu, které jsou spouštěny s výsledky operace výpisu.
 

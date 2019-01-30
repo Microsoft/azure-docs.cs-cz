@@ -15,12 +15,13 @@ ms.topic: article
 ms.date: 10/15/2018
 ms.author: jeffgilb
 ms.reviewer: misainat
-ms.openlocfilehash: 6da81ab90a87285f9e1874e3f10eff4570124192
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
+ms.lastreviewed: 10/15/2018
+ms.openlocfilehash: b8d13377b2fb1545ecf88645a5e19bf5eab24c74
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49344009"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55238131"
 ---
 # <a name="start-and-stop-azure-stack"></a>Spuštění a zastavení služby Azure Stack
 Postupujte podle postupů v tomto článku řádně vypnout a restartovat služby Azure Stack. Vypnutí se fyzicky vypnutí celého prostředí Azure Stack. Po spuštění zapne všechny role infrastruktury a vrátí prostředků tenanta power stavu, ve kterém se nacházely před vypnutí.

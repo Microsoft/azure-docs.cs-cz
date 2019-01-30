@@ -4,19 +4,19 @@ titleSuffix: Azure Machine Learning service
 description: Zjistěte, jak generovat modelu strojového učení pomocí automatizovaných machine learningu. Azure Machine Learning můžete provádět předzpracování dat, výběr algoritmů a výběr hyperparameter v automatizovaný způsob, jak za vás. Potom pomocí služby Azure Machine Learning je nasazení finálního modelu.
 services: machine-learning
 ms.service: machine-learning
-ms.component: core
+ms.subservice: core
 ms.topic: tutorial
 author: nacharya1
 ms.author: nilesha
 ms.reviewer: sgilley
 ms.date: 12/04/2018
 ms.custom: seodec18
-ms.openlocfilehash: 97910241cb4f903deeeb9ff6971839530903efe2
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: 1e2746ef55f5c50ce9452b7a9d1ab060c69830db
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54823007"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55244263"
 ---
 # <a name="tutorial-use-automated-machine-learning-to-build-your-regression-model"></a>Kurz: Automatizované machine learningu k vytváření regresní model
 
@@ -118,7 +118,7 @@ dflow_prepared.get_profile()
   <thead>
     <tr style="text-align: right;">
       <th></th>
-      <th>Typ</th>
+      <th>Type</th>
       <th>Minimum</th>
       <th>Maximum</th>
       <th>Počet</th>

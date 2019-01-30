@@ -7,13 +7,13 @@ ms.author: cbrooks
 ms.date: 01/30/2018
 ms.topic: article
 ms.service: storage
-ms.component: blobs
-ms.openlocfilehash: 0f726769b9e4266e310f9f50b1a7ef768c0c1d55
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.subservice: blobs
+ms.openlocfilehash: 6c2a642c30be79c907286e4ffac6bcea40d86fcd
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45735880"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55247744"
 ---
 # <a name="reacting-to-blob-storage-events"></a>Reakce na události služby Blob storage
 
@@ -28,7 +28,7 @@ Podívejte se na [událostí služby směrování Blob storage do vlastního web
 ![Event Grid modelu](./media/storage-blob-event-overview/event-grid-functional-model.png)
 
 ## <a name="blob-storage-accounts"></a>Účty úložiště Blob
-Události služby BLOB storage jsou k dispozici v účtech úložiště pro obecné účely v2 a účty Blob storage. **Pro obecné účely v2** účty úložiště podporují všechny funkce všech služeb úložiště, včetně objektů BLOB, soubory, fronty a tabulky. **Účet úložiště objektů blob** je specializovaný účet úložiště pro ukládání nestrukturovaných dat v podobě objektů blob do služby Azure Storage. Účty úložiště objektů blob jsou podobné účtům úložiště pro obecné účely a mají stejně vysokou odolnost, dostupnost, škálovatelnost a výkonnost, a navíc mají 100% konzistentnost rozhraní API pro objekty blob bloku a doplňovací objekty blob. Další informace najdete v tématu [přehled účtu Azure storage](../common/storage-account-overview.md).
+Události služby Blob Storage jsou dostupné v účtech úložiště pro obecné účely verze 2 a v účtech Blob Storage. **Pro obecné účely v2** účty úložiště podporují všechny funkce všech služeb úložiště, včetně objektů BLOB, soubory, fronty a tabulky. **Účet úložiště objektů blob** je specializovaný účet úložiště pro ukládání nestrukturovaných dat v podobě objektů blob do služby Azure Storage. Účty úložiště objektů blob jsou podobné účtům úložiště pro obecné účely a mají stejně vysokou odolnost, dostupnost, škálovatelnost a výkonnost, a navíc mají 100% konzistentnost rozhraní API pro objekty blob bloku a doplňovací objekty blob. Další informace najdete v tématu [Přehled účtu Azure Storage](../common/storage-account-overview.md).
 
 ## <a name="available-blob-storage-events"></a>K dispozici události služby Blob storage
 Pomocí služby Event grid [odběry událostí](../../event-grid/concepts.md#event-subscriptions) pro směrování zpráv událostí pro předplatitele.  Odběry událostí pro úložiště objektů BLOB může obsahovat dva typy událostí:  
@@ -44,12 +44,12 @@ Události služby BLOB storage obsahovat všechny informace, které je potřeba 
 > |Vlastnost|Typ|Popis|
 > |-------------------|------------------------|-----------------------------------------------------------------------|
 > |téma|řetězec|Úplné id Azure Resource Manageru z účtu úložiště, který vysílá události.|
-> |Předmět|řetězec|Prostředků relativní cesta k objektu, který je předmětem události ve formátu stejné rozšířené Azure Resource Manageru, který jsme použili pro popis účtů úložiště, služby a kontejnerů pro Azure RBAC.  Tento formát obsahuje název objektu blob zachování případ.|
+> |předmět|řetězec|Prostředků relativní cesta k objektu, který je předmětem události ve formátu stejné rozšířené Azure Resource Manageru, který jsme použili pro popis účtů úložiště, služby a kontejnerů pro Azure RBAC.  Tento formát obsahuje název objektu blob zachování případ.|
 > |čas události|řetězec|Datum a čas, byla událost vygenerována ve formátu ISO 8601|
-> |Typ události|řetězec|"Microsoft.Storage.BlobCreated" nebo "Microsoft.Storage.BlobDeleted"|
+> |eventType|řetězec|"Microsoft.Storage.BlobCreated" nebo "Microsoft.Storage.BlobDeleted"|
 > |ID|řetězec|Jedinečný identifikátor, pokud se tato událost|
 > |dataVersion|řetězec|Verze schématu datového objektu|
-> |verze metadataVersion|řetězec|Verze schématu vlastnosti nejvyšší úrovně.|
+> |metadataVersion|řetězec|Verze schématu vlastnosti nejvyšší úrovně.|
 > |data|objekt|Kolekce dat událostí specifické pro úložiště objektů blob|
 > |data.contentType|řetězec|Typ obsahu objektu blob, protože by být vrácená v hlavičce Content-Type z objektu blob|
 > |data.contentLength|číslo|Velikost objektu blob jako celé číslo představující počet bajtů, protože by být vrácená v hlavičce Content-Length z objektu blob.  Odeslané s BlobCreated událostí, ale ne s BlobDeleted.|

@@ -15,12 +15,13 @@ ms.topic: article
 ms.date: 08/10/2018
 ms.author: jeffgilb
 ms.reviewer: misainat
-ms.openlocfilehash: dc301f218855139cfb3a5faa30109dd5a301eb07
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.lastreviewed: 08/10/2018
+ms.openlocfilehash: 195f865a6977eaf78b09c611b7cd9e5119b2f62a
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52871196"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55241249"
 ---
 # <a name="download-and-extract-the-azure-stack-development-kit-asdk"></a>Stažení a extrakci Azure Stack Development Kit (ASDK)
 Až se ujistíte, že hostitelského počítače development kit splňuje základní požadavky na instalaci ASDK, dalším krokem je ke stažení a extrahování balíčku pro nasazení ASDK zobrazíte Cloudbuilder.vhdx.

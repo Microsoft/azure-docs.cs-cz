@@ -14,12 +14,13 @@ ms.topic: article
 ms.date: 01/11/2019
 ms.author: jeffgilb
 ms.reviewer: jiahan
-ms.openlocfilehash: e0de6b26499b4a5166db411eccee543be43c8352
-ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
+ms.lastreviewed: 01/11/2019
+ms.openlocfilehash: fdc75f169ebd4b85e5e413277c265922fb27dfdb
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/12/2019
-ms.locfileid: "54245986"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55239719"
 ---
 # <a name="mysql-resource-provider-maintenance-operations"></a>Operace údržby poskytovatele prostředků MySQL
 
@@ -150,7 +151,7 @@ Při použití poskytovatele prostředků SQL nebo MySQL pomocí služby Azure S
 
 ```
 
-### <a name="secretrotationmysqlproviderps1-parameters"></a>Parametry SecretRotationMySQLProvider.ps1
+### <a name="secretrotationmysqlproviderps1-parameters"></a>SecretRotationMySQLProvider.ps1 parameters
 
 |Parametr|Popis|
 |-----|-----|
@@ -177,7 +178,7 @@ Shromažďování protokolů z uzamčená virtuálního počítače, můžete po
 
 - **Get-AzsDBAdapterLog**. Tento příkaz vytvoří balíček zip diagnostické protokoly pro poskytovatele prostředků a uloží soubor na disku uživatelské relace. Můžete spustit tento příkaz bez parametrů a poslední 4 hodiny protokoly se shromažďují.
 
-- **Odebrat AzsDBAdapterLog**. Tento příkaz odebere existující balíčky protokolu v poskytovateli prostředků virtuálního počítače.
+- **Remove-AzsDBAdapterLog**. Tento příkaz odebere existující balíčky protokolu v poskytovateli prostředků virtuálního počítače.
 
 ### <a name="endpoint-requirements-and-process"></a>Koncový bod požadavky a proces
 

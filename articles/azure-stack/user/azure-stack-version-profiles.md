@@ -13,12 +13,13 @@ ms.topic: article
 ms.date: 01/04/2019
 ms.author: sethm
 ms.reviewer: sijuman
-ms.openlocfilehash: 9c4b66501cfb51088609de81fe00b5b041e056d3
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.lastreviewed: 01/04/2019
+ms.openlocfilehash: 28ff7c9f6ca5fc6365b3fe1b9a91d2159c8b3f48
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54037524"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55247608"
 ---
 # <a name="manage-api-version-profiles-in-azure-stack"></a>Správa profilů verzí API ve službě Azure Stack
 
@@ -53,7 +54,7 @@ Nejnovější rozhraní API služby Azure profily nejsou kompatibilní s Azure S
 **nejnovější**  
 Tento profil má nejaktuálnější verzi API součástí globální Azure, které nebudou fungovat ve službě Azure Stack. **Nejnovější** má největší počet nejnovější změny. Profil, který nabízí jste si poznamenali stabilitu a kompatibilitu s jinými cloudy. Pokud se pokoušíte použít nejnovější verze rozhraní API **nejnovější** tedy profil, který byste měli použít.
 
-**Rrrr mm-dd hybridní**  
+**Yyyy-mm-dd-hybrid**  
 Tento profil je vydána v březnu a září každý rok. Má optimální stabilitu a kompatibility s různými cloudy. **Rrrr mm-dd hybridní** je určená k cílení na global Azure a Azure Stack. Verze rozhraní API služby Azure uvedené v tomto profilu budou stejné jako ty, které jsou uvedeny ve službě Azure Stack. Tento profil slouží k vývoji kódu pro hybridní Cloudová řešení.
 
 **yyyy-mm-dd-profile**  

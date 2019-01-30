@@ -1,23 +1,23 @@
 ---
-title: 'Kurz: Analýza textu pomocí C#'
+title: 'Kurz: Analýza textu s využitímC#'
 titleSuffix: Azure Cognitive Services
 description: Připojte se ke službě analýzy textu z webové aplikace ASP.NET Core.
 services: cognitive-services
 author: ghogen
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: text-analytics
+ms.subservice: text-analytics
 ms.topic: tutorial
 ms.date: 09/12/2018
 ms.author: ghogen
-ms.openlocfilehash: 95de174087fb2a73ad6c75a2e96caf872c351854
-ms.sourcegitcommit: 616e63d6258f036a2863acd96b73770e35ff54f8
-ms.translationtype: HT
+ms.openlocfilehash: 6527e053f685fd7947e123d15c0d33399d07e61f
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45605228"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55227246"
 ---
-# <a name="tutorial-connect-to-the-text-analytics-cognitive-service-by-using-connected-services-in-visual-studio"></a>Kurz: Připojení ke službě analýzy textu ve službě Cognitive Service pomocí připojených služeb v sadě Visual Studio
+# <a name="tutorial-connect-to-the-text-analytics-cognitive-service-by-using-connected-services-in-visual-studio"></a>Kurz: Připojení ke službě Text Analytics Cognitive pomocí připojené služby v sadě Visual Studio
 
 Pomocí služby analýzy textu se dá extrahovat velké množství dat, které je možné využít ke kategorizaci a zpracování vizuálních dat a také k usnadnění správy služeb díky moderování obrázků s podporou počítače.
 
@@ -259,12 +259,12 @@ Tento článek a jeho doprovodné články obsahují podrobnosti k použití fun
    
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Odstraňte skupinu prostředků, pokud ji už nepotřebujete. Tím se odstraní kognitivní služba a související prostředky. Odstranění skupiny prostředků přes portál:
+Pokud už ji nepotřebujete, odstraňte skupinu prostředků. Tím se odstraní služba Cognitive Services a související prostředky. Odstranění skupiny prostředků přes portál:
 
 1. Do pole Hledat v horní části portálu zadejte název vaší skupiny prostředků. Až se ve výsledcích hledání zobrazí skupina prostředků použitá v tomto kurzu, vyberte ji.
 2. Vyberte **Odstranit skupinu prostředků**.
 3. Do pole **ZADEJTE NÁZEV SKUPINY PROSTŘEDKŮ:** zadejte název vaší skupiny prostředků a vyberte **Odstranit**.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Další informace o službě analýzy textu najdete v [dokumentaci ke službě analýzy textu](index.yml).

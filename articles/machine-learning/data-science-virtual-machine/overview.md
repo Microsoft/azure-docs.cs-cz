@@ -8,19 +8,19 @@ author: gopitk
 manager: cgronlun
 ms.assetid: d4f91270-dbd2-4290-ab2b-b7bfad0b2703
 ms.service: machine-learning
-ms.component: data-science-vm
+ms.subservice: data-science-vm
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
 ms.date: 10/27/2017
 ms.author: gokuma
-ms.openlocfilehash: 3b3b15db171dc00519c532a229205df96ef29e31
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: 44427183b6cc785af33daf92bda050336eec5284
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52316884"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55245282"
 ---
 # <a name="introduction-to-azure-data-science-virtual-machine-for-linux-and-windows"></a>Úvod k virtuálnímu počítači pro datové vědy pro Linux a Windows
 
@@ -97,7 +97,7 @@ Virtuální počítač pro datovou vědu obsahuje mnoho oblíbených nástrojů 
 | &nbsp;&nbsp;&nbsp;&nbsp;* [Ovladač Blob FUSE](https://github.com/Azure/azure-storage-fuse) | Ne | Ano |
 | &nbsp;&nbsp;&nbsp;&nbsp;* [Adlcopy (Azure Data Lake Storage)](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-copy-data-azure-storage-blob) | Ano | Ne |
 | &nbsp;&nbsp;&nbsp;&nbsp;* [Nástroj pro migraci dat DocDB](https://docs.microsoft.com/azure/documentdb/documentdb-import-data) | Ano | Ne |
-| &nbsp;&nbsp;&nbsp;&nbsp;* [Brána pro správu dat společnosti Microsoft](https://msdn.microsoft.com/library/dn879362.aspx): Přesun dat mezi místním úložištěm a cloudem | Ano | Ne |
+| &nbsp;&nbsp;&nbsp;&nbsp;* [Brána správy dat Microsoft](https://msdn.microsoft.com/library/dn879362.aspx): Přesun dat mezi místním úložištěm a cloudem | Ano | Ne |
 | &nbsp;&nbsp;&nbsp;&nbsp;* Nástroje příkazového řádku Unixu/Linuxu | Ano | Ano |
 | [Apache Drill](http://drill.apache.org) pro průzkum dat | Ano | Ano |
 | **Nástroje pro strojové učení** |||

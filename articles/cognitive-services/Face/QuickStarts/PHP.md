@@ -1,23 +1,23 @@
 ---
-title: 'Rychlý start: Rozpoznávání tváří na obrázku pomocí rozhraní REST API a PHP'
+title: 'Rychlý start: Rozpoznávání tváří v obrázku pomocí rozhraní REST API a PHP'
 titleSuffix: Azure Cognitive Services
 description: V tomto rychlém startu budete rozpoznávat tváře na obrázku pomocí rozhraní API pro rozpoznávání tváře s PHP.
 services: cognitive-services
 author: PatrickFarley
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: face-api
+ms.subservice: face-api
 ms.topic: quickstart
 ms.date: 05/30/2018
 ms.author: pafarley
-ms.openlocfilehash: be322cafc381dbc6e8b7cf03cd65e1dd5f9c9ad4
-ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
-ms.translationtype: HT
+ms.openlocfilehash: 63484f4dcb47aeecbb33c84b7924b2a7e471d3cd
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49954893"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55223390"
 ---
-# <a name="quickstart-detect-faces-in-an-image-using-the-rest-api-and-php"></a>Rychlý start: Rozpoznávání tváří na obrázku pomocí rozhraní REST API a PHP
+# <a name="quickstart-detect-faces-in-an-image-using-the-rest-api-and-php"></a>Rychlý start: Rozpoznávání tváří v obrázku pomocí rozhraní REST API a PHP
 
 V tomto rychlém startu budete pomocí rozhraní API pro rozpoznávání tváře rozpoznávat lidské tváře na obrázku.
 
@@ -29,9 +29,9 @@ Ke spuštění této ukázky budete potřebovat klíč předplatného. Klíče b
 
 Pomocí metody [Face - Detect](https://westcentralus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236) rozpoznejte tváře na obrázku a vraťte atributy tváře, včetně:
 
-* Face ID: jedinečná hodnota ID používaná v několika scénářích rozhraní API pro rozpoznávání tváře
-* Obdélník tváře: umístění tváře na obrázku vlevo a nahoře a šířka a výška obličeje
-* Rysy: soustava 27 bodů obličejových rysů odkazující na důležité polohy součástí obličeje.
+* Face ID: Jedinečné ID v několika situacích API pro rozpoznávání tváře.
+* Rámeček pro rozpoznávání tváře: Vlevo, horní, šířku a výšku označující umístění tvář na obrázku.
+* Zajímavá: Pole odkazující na důležité pozice tváří součásti památek 27 bodu pro rozpoznávání tváře.
 * Atributy obličeje včetně věku, pohlaví, intenzity úsměvu, pozice hlavy a vousů.
 
 Pokud chcete spustit ukázku, postupujte takto:
@@ -289,7 +289,7 @@ catch (HttpException $ex)
 ]
 ```
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Prozkoumejte rozhraní API pro rozpoznávání lidských tváří na obrázku, ohraničte obličeje obdélníky a vraťte atributy, jako je věk a pohlaví.
 

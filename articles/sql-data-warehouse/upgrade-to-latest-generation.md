@@ -6,16 +6,16 @@ author: kevinvngo
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
-ms.component: manage
+ms.subservice: manage
 ms.date: 11/26/2018
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: 1e2f1a3c46c9d343c305292a217fff5750f442fa
-ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
+ms.openlocfilehash: 173846e4828228bdc51fc42858e0c6c9b00cafd6
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52682550"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55242786"
 ---
 # <a name="optimize-performance-by-upgrading-sql-data-warehouse"></a>Optimalizace výkonu díky upgradu SQL Data Warehouse
 Upgradujte na nejnovější generace architektury Azure hardware a úložiště Azure SQL Data Warehouse.
@@ -32,7 +32,7 @@ Tento upgrade se vztahuje na – Compute optimalizované Gen1 úroveň datových
 
 Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
 
-## <a name="before-you-begin"></a>Než začnete
+## <a name="before-you-begin"></a>Před zahájením
 > [!NOTE]
 > Pokud vaše existující datový sklad – Compute optimalizované Gen1 vrstvy není v oblasti, kde je k dispozici na úrovni Gen2 – Compute optimalizované, můžete si [geografické obnovení](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-restore-database-powershell#restore-from-an-azure-geographical-region) prostřednictvím prostředí PowerShell v podporované oblasti.
 >
@@ -78,7 +78,7 @@ Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
 
 ## <a name="start-the-upgrade"></a>Spuštění upgradu
 
-1. Přejděte na vaše – Compute optimalizované Gen1 úroveň datového skladu na webu Azure Portal a klikněte na **upgradovat na Gen2** karty na kartě úlohy: ![Upgrade_1](./media/sql-data-warehouse-upgrade-to-latest-generation/Upgrade_to_Gen2_1.png)
+1. Přejděte na vaše – Compute optimalizované Gen1 úroveň datového skladu na webu Azure Portal a klikněte na **upgradovat na Gen2** karty na kartě úlohy:  ![Upgrade_1](./media/sql-data-warehouse-upgrade-to-latest-generation/Upgrade_to_Gen2_1.png)
     
     > [!NOTE]
     > Pokud se nezobrazí **upgradovat na Gen2** karet na kartě úlohy, typ vašeho předplatného je omezený v aktuální oblasti.
@@ -89,11 +89,11 @@ Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
    | Služba COMPUTE úrovně optimalizované Gen1 | Služba COMPUTE úrovně optimalizované Gen2 |
    | :-------------------------: | :-------------------------: |
    |            DW100            |           DW100c            |
-   |            ÚROVEŇ DW200            |           DW200c            |
+   |            DW200            |           DW200c            |
    |            DW300            |           DW300c            |
    |            DW400            |           DW400c            |
    |            DW500            |           DW500c            |
-   |            ÚROVEŇ DW600            |           DW500c            |
+   |            DW600            |           DW500c            |
    |           DW1000            |           DW1000c           |
    |           DW1200            |           DW1000c           |
    |           DW1500            |           DW1500c           |
@@ -113,7 +113,7 @@ Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
 
    Druhým krokem procesu upgradu je migrace dat ("upgrade – Online"). Migrace dat je proces skapat online na pozadí, který pomalu pohybuje sloupcová data ze starého architektura úložiště na nové architektuře úložiště využití místní mezipaměti SSD. Během této doby bude váš datový sklad pro dotazování a načítání online. Všechna vaše data budou k dispozici pro dotazy bez ohledu na to, zda je před migrací nebo ne. Migrace dat se stane s různou rychlostí v závislosti na velikost vašich dat, úroveň výkonu a počet segmentů columnstore. 
 
-5. **Volitelné doporučení:** urychlit proces na pozadí migrace dat, můžete okamžitě vynutit přesun dat spuštěním [Alter Index znovu sestavit](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-tables-index) ve všech tabulkách primární columnstore je by dotazování na vyšší SLO a třída prostředků. Tato operace je **offline** ve srovnání s procesy na pozadí skapat, což může trvat hodiny v závislosti na počtu a velikosti tabulek, ale migrace dat bude mnohem rychlejší, protože ve kterém mohou následně využít výhod nové architektury rozšířené úložiště po dokončení s vysoce kvalitní rowgroups. 
+5. **Volitelné doporučení:** Pokud chcete urychlit proces na pozadí migrace dat, můžete okamžitě vynutit přesun dat spuštěním [Alter Index znovu sestavit](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-tables-index) ve všech tabulkách primární columnstore by dotazování na větší třídu cíle na úrovni služby a prostředky. Tato operace je **offline** ve srovnání s procesy na pozadí skapat, což může trvat hodiny v závislosti na počtu a velikosti tabulek, ale migrace dat bude mnohem rychlejší, protože ve kterém mohou následně využít výhod nové architektury rozšířené úložiště po dokončení s vysoce kvalitní rowgroups. 
 
 Následující dotaz generuje požadované příkazy Alter Index Rebuild urychlit proces migrace dat:
 

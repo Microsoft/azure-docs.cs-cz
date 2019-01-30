@@ -14,12 +14,13 @@ ms.topic: article
 ms.date: 11/12/2018
 ms.author: sethm
 ms.reviewer: avishwan
-ms.openlocfilehash: bf70f9a74b58758e03800d7f6fb92a8f8754828a
-ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
+ms.lastreviewed: 11/12/2018
+ms.openlocfilehash: 03a6f649f15f6a4905433d6e2ec292a901340929
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51613091"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55249676"
 ---
 # <a name="windows-server-in-azure-stack-marketplace-faq"></a>Windows Server v Azure stacku nejčastější dotazy k Marketplace
 
@@ -37,9 +38,9 @@ Dále pokud všechny Virtual Machine Scale Sets odkazovat na konkrétní verzi, 
 
 Společnost Microsoft nabízí dvě verze Image Windows serveru z Tržiště Azure Stack:
 
-- **Platit používáte**: těchto imagí spustit plné ceny měřiče Windows. 
-   Kdo by měl používat: Enterprise Agreement (EA) Zákazníci, kteří používají *model fakturace spotřeby*; Poskytovatelé CSP, kteří nechtějí použít licencování SPLA.
-- **Používání vlastní licence (BYOL)**: spustit základní měřiče využití těchto imagí.
+- **Platit používáte**: Tyto Image spustit plné ceny měřiče Windows. 
+   Kdo by měl používat: Zákazníci s Enterprise Agreement (EA), kteří používají *model fakturace spotřeby*; Poskytovatelé CSP, kteří nechtějí použít licencování SPLA.
+- **Používání vlastní licence (BYOL)**: Tyto Image spustit základní měřiče.
    Kdo by měl používat: Zákazníci EA s licencí k Windows serveru; Poskytovatelé CSP, kteří používají licence SPLA.
 
 Výhoda použití Azure Hybrid (AHUB) se nepodporuje v Azure stacku. Zákazníci, kteří licencují prostřednictvím "Kapacita" modelu musí používat BYOL image. Pokud testujete s Azure Stack Development Kit (ASDK), můžete použít kteroukoli z těchto možností.

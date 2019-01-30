@@ -15,12 +15,13 @@ ms.topic: article
 ms.date: 10/25/2018
 ms.author: jeffgilb
 ms.reviewer: hectorl
-ms.openlocfilehash: 1edb4818ff7fda170d123ea8b81e6df9d620f354
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.lastreviewed: 10/25/2018
+ms.openlocfilehash: 80cca629ea49d8843580c23f74d1d2076aa623e3
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53713569"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55246707"
 ---
 # <a name="infrastructure-backup-service-reference"></a>Odkaz na službu Backup infrastruktury
 
@@ -119,7 +120,7 @@ Tato omezení zvažte při plánování, nasazení a provozování vašich insta
 | Naplánované zálohování                                                | Plánovaná a ruční  | Záložní řadič podporuje zálohování na vyžádání a plánované                                                                                 |
 | Maximální počet souběžných úloh zálohování                                   | 1            | Na instanci zálohování řadiče je podporována pouze jedna aktivní úloha zálohování.                                                                  |
 | Konfigurace přepínače sítě                                     | Není v oboru | Správce musí zálohování konfigurace přepínače sítě pomocí nástrojů pro výrobce OEM. V dokumentaci pro Azure Stack vám poskytne dodavatel každý výrobce OEM. |
-| Životní cyklus hostitelský hardware                                          | Není v oboru | Správce musí zálohovat hostitele životního cyklu hardwaru pomocí nástroje pro výrobce OEM. V dokumentaci pro Azure Stack vám poskytne dodavatel každý výrobce OEM.      |
+| Hardware Lifecycle Host                                          | Není v oboru | Správce musí zálohovat hostitele životního cyklu hardwaru pomocí nástroje pro výrobce OEM. V dokumentaci pro Azure Stack vám poskytne dodavatel každý výrobce OEM.      |
 | Maximální počet sdílených složek                                    | 1            | Pouze jedné sdílené složce je možné ukládat data záloh                                                                                        |
 | Zálohování SQL App Services, funkce, data poskytovatele prostředků mysql | Není v oboru | Přečtěte si pokyny k publikování pro nasazení a správa hodnotu – přidejte RPs vytvořené microsoftem.                                                  |
 | Poskytovatelé prostředků zálohování třetích stran                              | Není v oboru | Najdete pokyny k publikování pro nasazení a správě přidanou hodnotu RPs vytvořené pomocí jiných výrobců.                                          |

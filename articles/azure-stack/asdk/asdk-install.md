@@ -15,12 +15,13 @@ ms.topic: article
 ms.date: 09/10/2018
 ms.author: jeffgilb
 ms.reviewer: misainat
-ms.openlocfilehash: 2bdda273a32167f70633096d463be59884eca033
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.lastreviewed: 09/10/2018
+ms.openlocfilehash: 363e0868542f56df8c37639b2af7ac295be97da2
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44718217"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55249901"
 ---
 # <a name="install-the-azure-stack-development-kit-asdk"></a>Instalace sady Azure Stack Development Kit (ASDK)
 Po [Příprava hostitelském počítači ASDK](asdk-prepare-host.md), je možné nasadit ASDK CloudBuilder.vhdx Image, pomocí následujících kroků v tomto článku.
@@ -38,8 +39,8 @@ Kroky v tomto článku ukazují, jak nasadit ASDK pomocí grafického uživatels
     ![](media/asdk-install/1.PNG) 
 
 3. V poskytovateli Identity **typ** rozevíracího seznamu vyberte **Azure Cloud** nebo **služby AD FS**. V části **heslo místního správce** zadejte heslo místního správce (který musí odpovídat aktuální heslo místního správce nakonfigurovanou) **heslo** pole a potom klikněte na tlačítko  **Další**.
-    - **Azure Cloud**: nakonfiguruje služby Azure Active Directory (Azure AD) jako zprostředkovatele identity. Pokud chcete použít tuto možnost, budete potřebovat připojení k Internetu, úplný název služby Azure AD tenanta adresáře ve formě *domainname*. onmicrosoft.com nebo Azure AD ověřit vlastní název domény a přihlašovací údaje globálního správce pro zadaný rozbočovač adresář. Po nasazení není potřeba oprávnění globálního správce Azure Active Directory. Některé operace však může vyžadovat přihlašovací údaje globálního správce. Například skript instalační program zprostředkovatele prostředků nebo nová funkce vyžaduje oprávnění bylo uděleno. Můžete buď dočasně znovu vytvořit oprávnění účtu globálního správce nebo použijte samostatné globální správce účtu, který je vlastníkem *výchozí předplatné poskytovatele*.
-    - **Služba AD FS**: výchozí razítko adresářové služby se používá jako zprostředkovatel identity. Je výchozí účet pro přihlášení pomocí azurestackadmin@azurestack.local, a heslo pro použití se zadal jako součást instalace.
+    - **Azure Cloud**: Azure Active Directory (Azure AD) se nakonfiguruje jako zprostředkovatele identity. Pokud chcete použít tuto možnost, budete potřebovat připojení k Internetu, úplný název služby Azure AD tenanta adresáře ve formě *domainname*. onmicrosoft.com nebo Azure AD ověřit vlastní název domény a přihlašovací údaje globálního správce pro zadaný rozbočovač adresář. Po nasazení není potřeba oprávnění globálního správce Azure Active Directory. Některé operace však může vyžadovat přihlašovací údaje globálního správce. Například skript instalační program zprostředkovatele prostředků nebo nová funkce vyžaduje oprávnění bylo uděleno. Můžete buď dočasně znovu vytvořit oprávnění účtu globálního správce nebo použijte samostatné globální správce účtu, který je vlastníkem *výchozí předplatné poskytovatele*.
+    - **AD FS**: Výchozí razítko adresářové služby se používá jako zprostředkovatel identity. Je výchozí účet pro přihlášení pomocí azurestackadmin@azurestack.local, a heslo pro použití se zadal jako součást instalace.
 
     ![](media/asdk-install/2.PNG) 
     
@@ -53,16 +54,16 @@ Kroky v tomto článku ukazují, jak nasadit ASDK pomocí grafického uživatels
     > [!TIP]
     > Virtuální počítač BGPNAT01 je hraniční směrovač, který poskytuje možnosti NAT a sítě VPN pro službu Azure Stack.
 
-    - **DHCP** (výchozí): virtuální počítač získá konfiguraci protokolu IP sítě ze serveru DHCP.
-    - **Statické**: tuto možnost použijte pouze v případě protokol DHCP nemůže přiřadit platnou IP adresu pro službu Azure Stack pro přístup k Internetu. **Statická IP adresa musí být zadaný pomocí maska podsítě délka ve formátu CIDR (například 10.0.0.5/24)**.
+    - **DHCP** (výchozí): Virtuální počítač získá konfiguraci protokolu IP sítě ze serveru DHCP.
+    - **Statické**: Tuto možnost použijte pouze v případě, že protokol DHCP nemůže přiřadit platnou IP adresu pro službu Azure Stack pro přístup k Internetu. **Statická IP adresa musí být zadaný pomocí maska podsítě délka ve formátu CIDR (například 10.0.0.5/24)**.
     - Zadejte platný **času IP adresa serveru** adresu. To vyžaduje, že pole nastaví čas serveru použije development kit. Tento parametr musí být ve formě IP adresy serveru platný čas. Názvy serverů nejsou podporovány.
 
       > [!TIP]
       > Čas serveru IP adresu najdete v tématu [pool.ntp.org](http://pool.ntp.org) nebo odešlete zprávu ping time.windows.com. 
 
     - **Volitelně**, nastavte následující hodnoty:
-        - **ID sítě VLAN**: Nastaví ID sítě VLAN. Tuto možnost použijte pouze v případě hostitelů a AzS-BGPNAT01 musíte nakonfigurovat ID sítě VLAN pro přístup k fyzické síti (a Internetu). 
-        - **Server DNS pro předávání**: server A DNS je vytvořen jako součást svého nasazení Azure Stack. Povolit počítačům uvnitř řešení k překladu názvů mimo razítka, zadejte existující infrastrukturu DNS server. Server DNS v razítku předá požadavky na řešení Neznámý název k tomuto serveru.
+        - **VLAN ID**: Nastaví ID sítě VLAN. Tuto možnost použijte pouze v případě hostitelů a AzS-BGPNAT01 musíte nakonfigurovat ID sítě VLAN pro přístup k fyzické síti (a Internetu). 
+        - **Server DNS pro předávání**: DNS server se vytvoří jako součást nasazení Azure Stack. Povolit počítačům uvnitř řešení k překladu názvů mimo razítka, zadejte existující infrastrukturu DNS server. Server DNS v razítku předá požadavky na řešení Neznámý název k tomuto serveru.
 
     ![](media/asdk-install/4.PNG)
 
@@ -81,7 +82,7 @@ Kroky v tomto článku ukazují, jak nasadit ASDK pomocí grafického uživatels
 
     ![](media/asdk-install/7.PNG)
 
-11. Proces nasazení potrvá několik hodin, během kterých hostitelský počítač automaticky restartuje jednou. Pokud chcete monitorovat průběh nasazení, přihlaste se jako azurestack\AzureStackAdmin po restartování hostitele development kit. Po úspěšném nasazení se zobrazí konzola Powershellu: **DOKONČENO: akci "Nasazení"**. 
+11. Proces nasazení potrvá několik hodin, během kterých hostitelský počítač automaticky restartuje jednou. Pokud chcete monitorovat průběh nasazení, přihlaste se jako azurestack\AzureStackAdmin po restartování hostitele development kit. Po úspěšném nasazení se zobrazí konzola Powershellu: **DOKONČENÍ: Akce "Nasazení"**. 
     > [!IMPORTANT]
     > Pokud se přihlásíte jako místní správce poté, co je počítač připojen k doméně, zobrazí se průběh nasazení. Nelze znovu spustit nasazení, místo toho se přihlaste jako azurestack\AzureStackAdmin chcete ověřit, jestli je spuštěná.
 

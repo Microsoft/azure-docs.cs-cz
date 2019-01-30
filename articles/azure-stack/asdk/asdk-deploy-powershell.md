@@ -16,12 +16,13 @@ ms.custom: ''
 ms.date: 09/10/2018
 ms.author: jeffgilb
 ms.reviewer: misainat
-ms.openlocfilehash: c6b2387360973cd4e65b5a1e4ba483abf5ea9070
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.lastreviewed: 09/10/2018
+ms.openlocfilehash: 2513f397457c4866229605487149aa1fe03a2c68
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44716022"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55247727"
 ---
 # <a name="deploy-the-asdk-from-the-command-line"></a>Nasazení ASDK z příkazového řádku
 ASDK je vývoj a testování prostředí, které můžete nasadit k vyhodnocení a k předvedení funkcí služby Azure Stack a služeb. K jeho získání pracovat, musíte připravit prostředí hardwaru a spustit některé skripty (bude to trvat i několik hodin). Potom můžete přihlásit na portály správce a uživatele chcete začít používat Azure Stack.
@@ -105,7 +106,7 @@ K nasazení vývojové sady **pomocí služby AD FS jako zprostředkovatele iden
 
 V nasazení služby AD FS výchozí razítko adresářové služby se používá jako zprostředkovatele identity. Je výchozí účet pro přihlášení pomocí azurestackadmin@azurestack.local, a heslo se nastaví na zadaný jako součást instalace příkazy prostředí PowerShell.
 
-Proces nasazení může trvat několik hodin, během kterých systém automaticky restartuje jednou. Po úspěšném nasazení se zobrazí konzola Powershellu: **DOKONČENO: akci "Nasazení"**. Pokud se nasazení nezdaří, můžete zkusit spuštění skriptu znovu pomocí parametru-opětovného spuštění. Nebo můžete [znovu nasadit ASDK](asdk-redeploy.md) úplně od začátku.
+Proces nasazení může trvat několik hodin, během kterých systém automaticky restartuje jednou. Po úspěšném nasazení se zobrazí konzola Powershellu: **DOKONČENÍ: Akce "Nasazení"**. Pokud se nasazení nezdaří, můžete zkusit spuštění skriptu znovu pomocí parametru-opětovného spuštění. Nebo můžete [znovu nasadit ASDK](asdk-redeploy.md) úplně od začátku.
 
 > [!IMPORTANT]
 > Pokud chcete monitorovat průběh nasazení po restartování hostitele ASDK, musíte se přihlásit jako AzureStack\AzureStackAdmin. Pokud se přihlásíte jako místní správce poté, co hostitelského počítače restartovat (a připojený k doméně azurestack.local), zobrazí se průběh nasazení. Nelze znovu spustit nasazení, místo toho se přihlaste jako azurestack chcete ověřit, jestli je spuštěná.
@@ -148,7 +149,7 @@ Pokud vaše prostředí nemá server DHCP, je nutné zahrnout další parametry 
 |NatIPv4Address|Vyžadované pro podporu překladu síťových adres DHCP|Nastaví statickou IP adresu pro MAS-BGPNAT01. Tento parametr použijte jenom v případě, že protokol DHCP nemůže přiřadit platnou IP adresu pro přístup k internetu.|
 |NatIPv4Subnet|Vyžadované pro podporu překladu síťových adres DHCP|Předpona podsítě IP používané k DHCP přes podpora překladu adres. Tento parametr použijte jenom v případě, že protokol DHCP nemůže přiřadit platnou IP adresu pro přístup k internetu.|
 |PublicVlanId|Nepovinné|Nastaví ID sítě VLAN. Tento parametr použijte pouze v případě, že hostitel a MAS-BGPNAT01 musíte nakonfigurovat ID sítě VLAN pro přístup k fyzické síti (a Internetu). Například.\InstallAzureStackPOC.ps1-Verbose – PublicVLan 305|
-|Spustit znovu|Nepovinné|Pomocí tohoto příznaku znovu spustit nasazení. Používá se všechny předchozí vstup. Znovu zadávat data dříve k dispozici není podporována, protože jsou generovány a použita pro nasazení několika jedinečné hodnoty.|
+|Znovu spustit|Nepovinné|Pomocí tohoto příznaku znovu spustit nasazení. Používá se všechny předchozí vstup. Znovu zadávat data dříve k dispozici není podporována, protože jsou generovány a použita pro nasazení několika jedinečné hodnoty.|
 
 
 ## <a name="perform-post-deployment-configurations"></a>Provedení konfigurace po nasazení

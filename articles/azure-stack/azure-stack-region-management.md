@@ -15,12 +15,13 @@ ms.topic: article
 ms.date: 11/27/2018
 ms.author: sethm
 ms.reviewer: efemmano
-ms.openlocfilehash: 80a8414d98eba984f2427f5f746cd0e1061248a4
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.lastreviewed: 11/27/2018
+ms.openlocfilehash: c28fce9c6c9d7b0ddeba54e1ba643817436adb4e
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53726908"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55244959"
 ---
 # <a name="region-management-in-azure-stack"></a>Správa oblastí ve službě Azure Stack
 

@@ -11,12 +11,13 @@ ms.date: 12/03/2018
 ms.author: mabrigg
 ms.reviewer: kivenkat
 ms.custom: mvc
-ms.openlocfilehash: 0664316d73b1473ab52b08f8abead2ec33d121b6
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.lastreviewed: 12/03/2018
+ms.openlocfilehash: ef2d59393902194af3e257ce0fd5bf403b293af1
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52836742"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55245419"
 ---
 # <a name="quickstart-create-a-linux-server-virtual-machine-with-the-azure-stack-portal"></a>Rychlý start: vytvoření serveru virtuálního počítače s Linuxem pomocí portálu Azure Stack
 
@@ -40,7 +41,7 @@ Virtuální počítače s Ubuntu Server 16.04 LTS můžete vytvořit pomocí por
 
 * **Přístup k klienta SSH**
 
-   Pokud používáte Azure Stack Development Kit (ASDK), nebudete mít přístup k klienta SSH. Pokud budete potřebovat klienta, existuje několik balíčků, které zahrnují klienta SSH. Například PuTTY zahrnuje generátor klíče SSH (puttygen.exe) a služby klienta SSH. Další informace o dostupných balíčků, přečtěte si následující článek k Azure: [jak používat klíče SSH s Windows v Azure](https://docs.microsoft.com/azure/virtual-machines/linux/ssh-from-windows#windows-packages-and-ssh-clients).
+   Pokud používáte Azure Stack Development Kit (ASDK), nebudete mít přístup k klienta SSH. Pokud budete potřebovat klienta, existuje několik balíčků, které zahrnují klienta SSH. Například PuTTY zahrnuje generátor klíče SSH (puttygen.exe) a služby klienta SSH. Další informace o dostupných balíčků přečtěte si následující článek k Azure: [Jak používat klíče SSH s Windows v Azure](https://docs.microsoft.com/azure/virtual-machines/linux/ssh-from-windows#windows-packages-and-ssh-clients).
 
    Tento rychlý start využívá PuTTY generování klíčů SSH a připojte se k virtuálnímu počítači Linux serverem. Stáhněte si a nainstalujte PuTTY, přejděte na [ http://www.putty.org/ ](http://www.putty.org).
 

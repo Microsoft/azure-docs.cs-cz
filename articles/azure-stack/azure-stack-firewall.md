@@ -15,12 +15,13 @@ ms.topic: article
 ms.date: 10/15/2018
 ms.author: jeffgilb
 ms.reviewer: wfayed
-ms.openlocfilehash: 3759a9845d4ad1514fc5f0183c78b5eca2e31464
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.lastreviewed: 10/15/2018
+ms.openlocfilehash: eff526118f6fd127ba720d28296baf86abd01393
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52960647"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55246429"
 ---
 # <a name="azure-stack-firewall-integration"></a>Integrace brány firewall služby Azure Stack
 Doporučuje se použít zařízení brány firewall umožňující zabezpečení Azure stacku. I když se třeba distribuovanými útoky s cílem odepření služeb (DDOS), zjišťování neoprávněných vniknutí a kontroly obsahu vám může pomoci brány firewall, jsou zároveň může stát kritickým bodem propustnost pro služby Azure storage jako objekty BLOB, tabulky a fronty.
@@ -34,7 +35,7 @@ Pro organizace může být externí síť existující podnikové síti. V takov
 ### <a name="network-address-translation"></a>Překlad síťových adres
 Překlad síťových adres (NAT) je doporučená metoda má povolit nasazení virtuálního počítače (DVM) pro přístup k externím prostředkům a Internetu během nasazování, jakož i virtuální počítače nouzovou obnovení konzoly (ERCS) nebo privilegovaného koncový bod (období) během registrace a řešení potíží.
 
-NAT může být také o alternativu k veřejné IP adresy v externí síti nebo veřejné virtuální IP adresy. Ale nedoporučujeme to provést, protože omezuje klienta uživatelské prostředí a zvyšuje složitost. Tyto dvě možnosti by stále vyžadující jedna veřejná IP adresa a uživatel IP adresu ve fondu nebo mnoho NAT 1:1:1 NAT, která vyžaduje pravidlo NAT na uživatele, který obsahuje přidružení pro všechny porty virtuálních IP adres uživatele může používat.
+NAT může být také o alternativu k veřejné IP adresy v externí síti nebo veřejné virtuální IP adresy. Ale nedoporučujeme to provést, protože omezuje klienta uživatelské prostředí a zvyšuje složitost. 1:1 NAT, která stále vyžaduje jedna veřejná IP adresa a uživatel IP adresu ve fondu nebo mnoho by měl dvě možnosti: 1 NAT, která vyžaduje pravidlo NAT na uživatele, který obsahuje přidružení pro všechny porty virtuálních IP adres může uživatel použít.
 
 Zde jsou některé nevýhody použití NAT pro veřejných virtuálních IP adres:
 - NAT přidá režie při správě pravidel brány firewall, protože uživatelé řídit své vlastní koncové body a jejich vlastní pravidla pro publikování v zásobníku softwarově definované sítě (SDN). Uživatelé musí kontaktovat operátory Azure stacku získat své virtuální IP adresy, publikovat a aktualizovat seznam portů.
@@ -54,7 +55,7 @@ Obvykle jsou veřejné IP adresy směrovatelné zadaný pro fond veřejných vir
 ## <a name="enterprise-intranet-or-perimeter-network-firewall-scenario"></a>Podnikového intranetu nebo hraniční sítě brány firewall scénáře
 V podnikovém intranetu nebo hraniční nasazení se nasadí Azure Stack na bráně firewall rozdělený zóny s více nebo mezi hraniční bráně firewall a brány firewall interní podnikové sítě. Jeho provoz je poté distribuován mezi zabezpečené, hraniční síti (nebo hraniční síti) a nezabezpečené zóny, jako je popsáno níže:
 
-- **Zabezpečené zóně**: Jedná se o interní síť, který používá interní nebo firemní směrovatelné IP adresy. Zabezpečené sítě je možné rozdělit, mít odchozí přístup k Internetu prostřednictvím překladu adres v bráně Firewall a je obvykle přístupné z kdekoli uvnitř vašeho datového centra prostřednictvím interní síti. Všechny služby Azure Stack sítě by měl být uložený v zabezpečené zóně s výjimkou veřejný fond VIP externí síť.
+- **Zabezpečené zóně**: Toto je interní sítě, který používá interní nebo firemní směrovatelné IP adresy. Zabezpečené sítě je možné rozdělit, mít odchozí přístup k Internetu prostřednictvím překladu adres v bráně Firewall a je obvykle přístupné z kdekoli uvnitř vašeho datového centra prostřednictvím interní síti. Všechny služby Azure Stack sítě by měl být uložený v zabezpečené zóně s výjimkou veřejný fond VIP externí síť.
 - **Zóna hraniční**. Hraniční síť je tam, kde je to externí nebo aplikace, jako jsou webové servery jsou obvykle implementovány směřujících do Internetu. Obvykle je monitorovaný bránou firewall, aby se zabránilo útokům DDoS a neoprávněného vniknutí (hacking) zároveň umožní zadané příchozí provoz z Internetu. Pouze externí síť veřejných virtuálních IP adres fondu služby Azure Stack by měl být umístěn v zóně DMZ.
 - **Nezabezpečená zóny**. Jedná se o externí síť Internetu. To **není** doporučujeme nasadit Azure Stack v nezabezpečené zóny.
 

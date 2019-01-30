@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: article
-ms.date: 01/18/2019
+ms.date: 01/29/2019
 ms.author: diberry
-ms.openlocfilehash: 2e5ecf32782c86b236c4947d5d2793be9c3883d8
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
-ms.translationtype: HT
+ms.openlocfilehash: 26954c8f839ff0bfb2da484e4fb535f33d4e07ed
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55223676"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55239175"
 ---
 # <a name="using-subscription-keys-with-your-luis-app"></a>Použití klíčů předplatného s aplikací LUIS
 
@@ -32,7 +32,7 @@ Pro účely testování a prototypu pouze úroveň free (F0) můžete použijte.
 
 Tato procedura vytváří **Language Understanding** prostředků. Pokud chcete prostředek, který lze použít v rámci služeb Cognitive Services, vytvořte klíč All-in-one **[služby Cognitive Services](../cognitive-services-apis-create-account.md)** místo Language Understanding prostředků. 
 
-Tento klíč by měla sloužit pouze pro dotazy předpovědi s koncový bod. To nejste si jistí tento klíč se změny modelu nebo na aplikaci. 
+Tento klíč by měla sloužit pouze pro dotazy předpovědi s koncový bod. Nepoužívejte tento klíč se změny modelu nebo na aplikaci. 
 
 1. Přihlaste se k  **[webu Azure portal](https://ms.portal.azure.com/)**. 
 1. Vyberte zelené **+** přihlásit v horním levém panelu a vyhledejte `Language Understanding` na webu Marketplace, pak vyberte na **Language Understanding** a postupujte podle pokynů  **Vytvoření prostředí** k vytvoření účtu předplatného služba LUIS. 
@@ -43,7 +43,7 @@ Tento klíč by měla sloužit pouze pro dotazy předpovědi s koncový bod. To 
 
     ![Volbou Azure API](./media/luis-azure-subscription/azure-api-choice.png) 
 
-1. Jakmile vytvoříte prostředek Language Understanding, můžete zobrazit přístupové klíče vygenerované v **správy prostředků -> klíče**. To není klíče. Jak propojit tento nový prostředek na aplikaci LUIS na portálu služby LUIS se zobrazí v další části. Budete potřebovat název prostředku služby LUIS z kroku 3.
+1. Jakmile vytvoříte prostředek Language Understanding, můžete zobrazit přístupové klíče vygenerované v **správy prostředků -> klíče**. Jak propojit tento nový prostředek na aplikaci LUIS na portálu služby LUIS se zobrazí v další části. Budete potřebovat název prostředku služby LUIS z kroku 3.
 
     ![Azure klíče](./media/luis-azure-subscription/azure-keys.png)
 
@@ -71,7 +71,7 @@ Tento klíč by měla sloužit pouze pro dotazy předpovědi s koncový bod. To 
 
     ![Přiřadit prostředek vaší aplikace](./media/luis-manage-keys/assign-key.png)
 
-1. Vyberte Tenanta v dialogovém okně přidružené k e-mailová adresa vaše přihlášení se k webu služby LUIS.  
+1. Vyberte Tenanta v dialogovém okně přidružené k e-mailu adresa vaší slouží k přihlášení na web služby LUIS.  
 
 1. Zvolte **název předplatného** spojené s prostředky Azure, které chcete přidat.
 
@@ -122,7 +122,7 @@ Příkazů a jejich výsledky jsou také zahrnuté protokoly koncového bodu. Je
 ### <a name="enable-bing-spell-checker"></a>Povolit kontrolu pravopisu Bingu 
 V **nastavení adresy url koncového bodu**, **kontrolu pravopisu Bingu** přepínač umožňuje LUIS opravovat slova s překlepem před předpovědi. Vytvoření  **[kontrolu pravopisu Bingu klíč](https://azure.microsoft.com/try/cognitive-services/?api=spellcheck-api)**. 
 
-Přidat **kontrola pravopisu = true** parametr querystring a **Bingu – pravopisu – kontrola subscription-key = {YOUR_BING_KEY_HERE}** . Nahradit `{YOUR_BING_KEY_HERE}` vaším klíčem kontrolu pravopisu Bingu.
+Přidat **kontrola pravopisu = true** parametr querystring a **Bingu – pravopisu – kontrola subscription-key = {YOUR_BING_KEY_HERE}**. Nahradit `{YOUR_BING_KEY_HERE}` vaším klíčem kontrolu pravopisu Bingu.
 
 ```JSON
 {
@@ -142,7 +142,7 @@ Další informace o publikování [oblastech](luis-reference-regions.md) včetn�
 
 ## <a name="assign-resource-without-luis-portal"></a>Přiřazení prostředků bez portál LUIS
 
-Pro účely automatizace, jako je kanál CI/CD můžete automatizovat přiřazování prostředků LUIS na aplikaci LUIS. V pořadí, je třeba provést následující kroky:
+Pro účely automatizace, jako je kanál CI/CD můžete automatizovat přiřazování prostředků LUIS na aplikaci LUIS. Aby bylo možné provést, je třeba provést následující kroky:
 
 1. Získání tokenu Azure Resource Manageru z tohoto [webu](https://resources.azure.com/api/token?plaintext=true). Vypršení platnosti tohoto tokenu tak okamžitě použít. Požadavek vrátí token Azure Resource Manageru.
 

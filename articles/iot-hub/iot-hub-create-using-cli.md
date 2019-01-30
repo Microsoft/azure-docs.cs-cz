@@ -7,12 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 08/23/2018
 ms.author: robinsh
-ms.openlocfilehash: 90830c4e27e90af6c9d77509844696f64e4909f0
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 78ea9071f220b2a78c6d9260d47145f22284d760
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46994764"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55250261"
 ---
 # <a name="create-an-iot-hub-using-the-azure-cli"></a>Vytvoření IoT hubu pomocí rozhraní příkazového řádku Azure
 
@@ -32,9 +32,9 @@ Pokud používáte Azure CLI místně, namísto použití Cloud Shell, musíte s
 
 Na příkazovém řádku, spusťte [přihlašovací příkaz](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli):
 
-    ```azurecli
-    az login
-    ```
+   ```azurecli
+   az login
+   ```
 
 Postupujte podle pokynů pro ověření pomocí kódu a přihlaste se ke svému účtu Azure ve webovém prohlížeči.
 

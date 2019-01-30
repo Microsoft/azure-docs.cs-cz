@@ -15,12 +15,13 @@ ms.topic: article
 ms.date: 01/24/2019
 ms.author: sethm
 ms.reviewer: justini
-ms.openlocfilehash: b91da771587dea60048a83471ec1f585690f2a33
-ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
+ms.lastreviewed: 01/24/2019
+ms.openlocfilehash: beb86284256d42c119e551a18d9900f0dad61b7f
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54848610"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55247489"
 ---
 # <a name="azure-stack-1808-update"></a>Aktualizace služby Azure Stack. 1808
 

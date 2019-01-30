@@ -13,13 +13,14 @@ ms.topic: article
 ms.date: 01/05/2019
 ms.author: sethm
 ms.reviewer: sijuman
+ms.lastreviewed: 01/05/2019
 <!-- dev: viananth -->
-ms.openlocfilehash: 8049db848e34b0aa9bc23f08169a8c63f765791a
-ms.sourcegitcommit: 9f07ad84b0ff397746c63a085b757394928f6fc0
+ms.openlocfilehash: c7c23352cea4f9e79b371f38112fb66ac31ac849
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54389754"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55242293"
 ---
 # <a name="use-api-version-profiles-with-python-in-azure-stack"></a>Použití profilů verzí API s využitím Pythonu ve službě Azure Stack
 
@@ -50,7 +51,7 @@ Python SDK podporuje profilů verzí API cílit na různé cloudové platformy, 
 
 Chcete-li použít sady Azure Python SDK pro Azure Stack, musíte zadat následující hodnoty a pak nastavte hodnoty proměnné prostředí. Postupujte podle pokynů pod tabulkou pro váš operační systém na nastavení proměnných prostředí.
 
-| Hodnota | Proměnné prostředí | Popis |
+| Value | Proměnné prostředí | Popis |
 |---------------------------|-----------------------|-------------------------------------------------------------------------------------------------------------------------|
 | ID tenanta | AZURE_TENANT_ID | Výhody služby Azure Stack [ID tenanta](../azure-stack-identity-overview.md). |
 | ID klienta | AZURE_CLIENT_ID | Služba ID instančního objektu aplikace neuloží, když se vytvoří nový instanční objekt služby v předchozí části tohoto článku. |

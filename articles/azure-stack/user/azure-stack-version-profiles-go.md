@@ -13,12 +13,13 @@ ms.topic: article
 ms.date: 01/19/2019
 ms.author: sethm
 ms.reviewer: sijuman
-ms.openlocfilehash: 3c5a261eb5216c2dca93243d11b5d21b1d92846f
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
-ms.translationtype: HT
+ms.lastreviewed: 01/19/2019
+ms.openlocfilehash: 9b66a7a176862fce687b7cc0b1ff3c14bda118d7
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55224152"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55243885"
 ---
 # <a name="use-api-version-profiles-with-go-in-azure-stack"></a>Použití profilů verzí API s využitím Go ve službě Azure Stack
 

@@ -3,17 +3,17 @@ title: Přehled řízení přístupu v Azure Data Lake Storage Gen2 | Dokumentac
 description: Vysvětlení, jak funguje řízení přístupu v Azure Data Lake Storage Gen2
 services: storage
 author: jamesbak
-ms.component: data-lake-storage-gen2
+ms.subservice: data-lake-storage-gen2
 ms.service: storage
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: jamesbak
-ms.openlocfilehash: 52af1a45f920139ddda1d02734de91372fe4719d
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 3005f19ffbc4771da442e36290a5803dddebfdbb
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52974910"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55240166"
 ---
 # <a name="access-control-in-azure-data-lake-storage-gen2"></a>Řízení přístupu v Azure Data Lake Storage Gen2
 
@@ -28,7 +28,7 @@ Při použití přiřazení rolí pro RBAC je efektivní mechanismus pro řízen
 Azure Storage nabízí tři předdefinované role RBAC pro úložiště objektů Blob: 
 
 - [Vlastník dat úložiště objektů Blob](../../role-based-access-control/built-in-roles.md#storage-blob-data-owner-preview)
-- [Přispěvatel dat objektu Blob služby Storage](../../role-based-access-control/built-in-roles.md#storage-blob-data-contributor-preview)
+- [Storage Blob Data Contributor](../../role-based-access-control/built-in-roles.md#storage-blob-data-contributor-preview)
 - [Čtenář dat objektu Blob služby Storage](../../role-based-access-control/built-in-roles.md#storage-blob-data-reader-preview)
 
 Když uživatel nebo instanční objekt služby, jsou udělena oprávnění RBAC dat prostřednictvím některého z těchto předdefinovaných rolí nebo prostřednictvím vlastní roli, tato oprávnění jsou vyhodnocen jako první při ověření požadavku. Pokud požadovaná operace je oprávnění RBAC přiřazení volajícího autorizace se okamžitě vyřešit a další jsou provedeny kontroly seznamu ACL. Případně, pokud volající nemá RBAC přiřazení nebo operace požadavku se neshoduje s přiřazená oprávnění, pak seznamu ACL se provádí kontroly určit, pokud má volající autorizaci provést požadovanou operaci.
@@ -47,7 +47,7 @@ Tokeny SAS zahrnout jako součást tokenu mechanismu povolených oprávnění. O
 
 Existují dva typy přístupu ovládací prvek seznamy ACL: přístup k seznamy řízení přístupu a výchozí seznamy ACL.
 
-* **Přístupové seznamy ACL**: přístupové seznamy ACL řízení přístupu k objektu. Soubory a adresáře měli seznamy ACL.
+* **Přístupové seznamy ACL**: Přístupové seznamy ACL řízení přístupu k objektu. Soubory a adresáře měli seznamy ACL.
 
 * **Výchozí seznamy ACL**: Šablona seznamů ACL asociovaná s adresářem, který zjistí přístup k seznamy ACL pro všechny podřízené položky, které jsou vytvořené v rámci tohoto adresáře. Výchozí seznamy ACL pro soubory není definován.
 
@@ -91,7 +91,7 @@ V následující tabulce jsou uvedeny některé obvyklé scénáře, které vám
 | Připojit k Data.txt       |   `--X`   |   `--X`    |  `--X`      | `RW-`          |
 | Odstranit Data.txt          |   `--X`   |   `--X`    |  `-WX`      | `---`          |
 | Vytvoření Data.txt          |   `--X`   |   `--X`    |  `-WX`      | `---`          |
-| Seznam /                   |   `R-X`   |   `---`    |  `---`      | `---`          |
+| List /                   |   `R-X`   |   `---`    |  `---`      | `---`          |
 | Seznam /Oregon/           |   `--X`   |   `R-X`    |  `---`      | `---`          |
 | Seznam /Oregon/Portland /  |   `--X`   |   `--X`    |  `R-X`      | `---`          |
 
@@ -130,8 +130,8 @@ V seznamech ACL POSIX je přidružený každý uživatel *primární skupina*. U
 
 #### <a name="assigning-the-owning-group-for-a-new-file-or-directory"></a>Přiřazuje se vlastnící skupina pro nový soubor nebo adresář
 
-* **Případ 1**: kořenový adresář "/". Tento adresář se vytvoří při vytvoření systémem souborů Data Lake Storage Gen2. V takovém případě je vlastnící skupina nastavena pro uživatele, který vytvořil systému souborů, pokud bylo provedeno pomocí metody OAuth. Pokud systém souborů je vytvořen pomocí sdíleného klíče, SAS účtu nebo SAS služby, pak vlastníka a vlastnící skupina nastavena **$superuser**.
-* **Případ 2** (všechny ostatní případy): při vytvoření nové položky se vlastnící skupina je zkopírován z adresáře nadřazené.
+* **Případ 1**: Kořenový adresář "/". Tento adresář se vytvoří při vytvoření systémem souborů Data Lake Storage Gen2. V takovém případě je vlastnící skupina nastavena pro uživatele, který vytvořil systému souborů, pokud bylo provedeno pomocí metody OAuth. Pokud systém souborů je vytvořen pomocí sdíleného klíče, SAS účtu nebo SAS služby, pak vlastníka a vlastnící skupina nastavena **$superuser**.
+* **Případ 2** (všechny ostatní případy): Při vytvoření nové položky se vlastnící skupina je zkopírován z adresáře nadřazené.
 
 #### <a name="changing-the-owning-group"></a>Mění se vlastnící skupina
 

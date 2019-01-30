@@ -4,29 +4,29 @@ titleSuffix: Azure Machine Learning service
 description: Další informace o nejnovějších aktualizacích služby Azure Machine Learning a strojové učení a pro přípravu dat sady SDK pro Python.
 services: machine-learning
 ms.service: machine-learning
-ms.component: core
+ms.subservice: core
 ms.topic: reference
 author: hning86
 ms.author: haining
 ms.reviewer: j-martens
 ms.date: 12/20/2018
 ms.custom: seodec18
-ms.openlocfilehash: 9556a87b8de08dadb211d73e93f3daa9033c2cc1
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
-ms.translationtype: HT
+ms.openlocfilehash: a615b6c59d178fcc1d47d11bf89691c7e83249f3
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55221313"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55250644"
 ---
 # <a name="azure-machine-learning-service-release-notes"></a>Zpráva k vydání verze služby Azure Machine Learning
 
-V tomto článku najdete další informace o vydaných verzích služby Azure Machine Learning. 
+V tomto článku najdete další informace o vydaných verzích služby Azure Machine Learning.  Úplný popis jednotlivých sadách SDK navštivte referenční dokumenty pro:
++ Azure Machine Learning [ **hlavní sada SDK pro Python**](https://aka.ms/aml-sdk)
++ Azure Machine Learning [ **sady SDK pro přípravu dat**](https://aka.ms/aml-sdk)
 
 ## <a name="2019-01-28"></a>2019-01-28
 
 ### <a name="azure-machine-learning-sdk-for-python-v1010"></a>Azure Machine Learning sady SDK pro Python v1.0.10
-
-+ **Referenční dokumentace sady SDK**: https://aka.ms/aml-sdk
 
 + **Změny**: 
   + Azure ML SDK není k dispozici balíčky azure-cli jako závislost. Konkrétně závislosti core v rozhraní příkazového řádku azure a azure-cli profilu byly odebrány z azureml jádry. Jedná se o uživatele vliv na změny:
@@ -37,8 +37,6 @@ V tomto článku najdete další informace o vydaných verzích služby Azure Ma
 + **Opravy chyb**: Tato verze obsahuje většinou menšími opravami chyb
 
 ### <a name="azure-machine-learning-data-prep-sdk-v108"></a>Sada SDK v1.0.8 pro přípravu dat Azure Machine Learning
-
-+ **Referenční dokumentace sady SDK**: https://aka.ms/data-prep-sdk
 
 + **Opravy chyb**
   + Výrazně vylepšený výkon načítání dat profilů.
@@ -59,13 +57,9 @@ V tomto článku najdete další informace o vydaných verzích služby Azure Ma
 
 ### <a name="azure-machine-learning-sdk-for-python-v108"></a>Azure Machine Learning sady SDK pro Python v1.0.8
 
-+ **Referenční dokumentace sady SDK**: https://aka.ms/aml-sdk
-
 + **Opravy chyb**: Tato verze obsahuje většinou menšími opravami chyb
 
 ### <a name="azure-machine-learning-data-prep-sdk-v107"></a>Sada SDK v1.0.7 pro přípravu dat Azure Machine Learning
-
-+ **Referenční dokumentace sady SDK**: https://aka.ms/data-prep-sdk
 
 + **Nové funkce**
   + Vylepšení úložiště dat (popsané v [úložiště dat k postupy – průvodce](https://github.com/Microsoft/AMLDataPrepDocs/tree/master/how-to-guides/datastore.ipynb))
@@ -77,22 +71,15 @@ V tomto článku najdete další informace o vydaných verzích služby Azure Ma
 
 ### <a name="azure-machine-learning-data-prep-sdk-v106"></a>Sada SDK v1.0.6 pro přípravu dat Azure Machine Learning
 
-+ **Referenční dokumentace sady SDK**: https://aka.ms/data-prep-sdk
-
 + **Opravy chyb**
   + Oprava chyby čtení z veřejných kontejnerů čitelné objektů Blob v Azure ve Sparku
 
 ## <a name="2018-12-20"></a>2018-12-20 
 
 ### <a name="azure-machine-learning-sdk-for-python-v106"></a>Azure Machine Learning sady SDK pro Python v1.0.6
-
-+ **Referenční dokumentace sady SDK**: https://aka.ms/aml-sdk
-
 + **Opravy chyb**: Tato verze obsahuje většinou menšími opravami chyb
 
 ### <a name="azure-machine-learning-data-prep-sdk-v104"></a>Verzi v1.0.4 sady SDK pro přípravu dat Azure Machine Learning
-
-+ **Referenční dokumentace sady SDK**: https://aka.ms/data-prep-sdk
 
 + **Nové funkce**
   + `to_bool` Funkce teď umožňuje neodpovídající hodnot má být převeden na chybové hodnoty. Toto je nový neshoda výchozí chování pro `to_bool` a `set_column_types`, že bylo předchozí výchozí chování pro převod neodpovídající hodnoty na False.

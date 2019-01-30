@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: overview
 ms.date: 12/27/2018
 ms.author: sethm
-ms.openlocfilehash: 91966bf2958b1670559aa57076eae7a62214fec5
-ms.sourcegitcommit: 9f87a992c77bf8e3927486f8d7d1ca46aa13e849
+ms.lastreviewed: 12/27/2018
+ms.openlocfilehash: 1f65d7711c57930886ac9826bb105b6bc4931268
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/28/2018
-ms.locfileid: "53809793"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55238903"
 ---
 # <a name="key-considerations-using-services-or-building-apps-for-azure-stack"></a>Klíčové aspekty: Pomocí služby nebo vytvářet aplikace pro Azure Stack
 
@@ -64,7 +65,7 @@ Následující tabulka popisuje základní rozdíly mezi Azure Stack a Azure. Ty
 
 | Doporučení | Odkazy |
 | -------- | ------------- |
-| Nainstalujte nástroje správné na vaši vývojářskou pracovní stanici. | - [Instalace Powershellu](azure-stack-powershell-install.md)<br>- [Stáhněte si nástroje](azure-stack-powershell-download.md)<br>- [Konfigurace Powershellu](azure-stack-powershell-configure-user.md)<br>- [Instalace sady Visual Studio](azure-stack-install-visual-studio.md) 
+| Nainstalujte nástroje správné na vaši vývojářskou pracovní stanici. | - [Instalace Powershellu](azure-stack-powershell-install.md)<br>- [Stáhněte si nástroje](azure-stack-powershell-download.md)<br>- [Konfigurace Powershellu](azure-stack-powershell-configure-user.md)<br>- [Install Visual Studio](azure-stack-install-visual-studio.md) 
 | Přečtěte si informace o následujících položkách:<br>– Aspekty šablon azure Resource Manageru<br>– Tom, jak najít šablony pro rychlý start<br>-Použití modulu zásad vám pomůžou používat Azure k vývoji pro Azure Stack | [Vývoj pro Azure Stack](azure-stack-developer.md) | 
 | Přečtěte si a použijte osvědčené postupy pro šablony. | [Šablony Resource Manageru pro rychlý start](https://github.com/Azure/azure-quickstart-templates/blob/master/1-CONTRIBUTION-GUIDE/best-practices.md#best-practices)
 | | |

@@ -4,18 +4,18 @@ titleSuffix: Azure Machine Learning service
 description: Přečtěte si o Azure Machine Learning pro Visual Studio Code a jak spustit trénovací a nasazení strojového učení a hloubkového učení modelů ve službě Azure Machine Learning pomocí nástroje Visual Studio Code.
 services: machine-learning
 ms.service: machine-learning
-ms.component: core
+ms.subservice: core
 ms.topic: conceptual
 ms.author: shwinne
 author: swinner95
 ms.date: 12/04/2018
 ms.custom: seodec18
-ms.openlocfilehash: 7852ff20a7f6528546063365ede10ad5536319a2
-ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
+ms.openlocfilehash: 409d1bb30dc956bb19e9a37212d93990d1401e7b
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/26/2019
-ms.locfileid: "55079133"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55240110"
 ---
 # <a name="use-visual-studio-code-to-train-and-deploy-machine-learning-models"></a>Použití Visual Studio Code pro trénování a nasazovat modely machine learningu
 

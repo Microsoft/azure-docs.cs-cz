@@ -15,12 +15,13 @@ ms.topic: get-started-article
 ms.date: 12/10/2018
 ms.author: jeffgilb
 ms.reviewer: hectorl
-ms.openlocfilehash: 45e22f19c6e2da26105615da6a775eed4f8676f0
-ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
+ms.lastreviewed: 12/10/2018
+ms.openlocfilehash: 759ea6b8e4981b3ea198077cabf9df7966d6e883
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/12/2019
-ms.locfileid: "54243628"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55242956"
 ---
 # <a name="protect-virtual-machines-deployed-on-azure-stack"></a>Ochrana virtuálních počítačů nasazených v Azure stacku
 
@@ -82,7 +83,7 @@ Nejběžnější schéma ochrany pro aplikace založené na virtuálním počít
 Obnovení aplikace vyžaduje obnovení jednoho nebo více virtuálních počítačů na stejném cloudu nebo do nového cloudu. Zacílení na cloud ve vašem datovém centru nebo ve veřejném cloudu. V cloudu, kterou zvolíte je zcela v rámci ovládacího prvku a je na základě dat o ochraně osobních údajů a suverenity požadavků.
  
  - RTO: Výpadek měřeno v hodinách
- - CÍL BODU OBNOVENÍ: Ztráta dat proměnných (v závislosti na četnosti zálohování)
+ - RPO: Ztráta dat proměnných (v závislosti na četnosti zálohování)
  - Topologie nasazení: Aktivní/pasivní vysoká dostupnost
 
 #### <a name="planning-your-backup-strategy"></a>Plánování strategie zálohování
@@ -110,7 +111,7 @@ S tímto přístupem je aplikace nasazená v jeden cloud a jeho virtuální poč
 ![Replikace ruční převzetí služeb při selhání](media/azure-stack-manage-vm-backup/vm_backupdataflow_02.png)
 
  - RTO: Prostoje v minutách
- - CÍL BODU OBNOVENÍ: Ztráta dat proměnných (v závislosti na četnosti replikací)
+ - RPO: Ztráta dat proměnných (v závislosti na četnosti replikací)
  - Topologie nasazení: Neslo aktivní/pasivní vysoká dostupnost
  
 ### <a name="high-availabilityautomatic-failover"></a>Vysoká dostupnost a automatické převzetí služeb při selhání
@@ -122,7 +123,7 @@ V kombinaci se škálovacími sadami aplikace bude vyžadovat nativní podporu v
 Tento přístup aplikace je aktivní pouze v jeden cloud, ale bude software nasazen do několika cloudy. Jiných cloudech jsou pohotovostní režim připraven ke spuštění aplikace, když se aktivuje převzetí služeb při selhání.
 
  - RTO: Výpadku v sekundách
- - CÍL BODU OBNOVENÍ: Minimální únikem informací
+ - RPO: Minimální únikem informací
  - Topologie nasazení: Neslo aktivní/aktivní
 
 ### <a name="fault-tolerance"></a>Odolnost proti chybám
@@ -134,7 +135,7 @@ Nejprve je potřeba zajistit aplikaci, kterou jsou virtuální počítače nasaz
 Uvědomte si, že každý cloud služby Azure Stack je nezávisle na sobě navzájem, takže cloudy jsou vždy považovány za aktivní z hlediska infrastruktury. V takovém případě více aktivních instancích aplikace se nasadí na jeden nebo více cloudů aktivní.
 
  - RTO: Bez výpadků
- - CÍL BODU OBNOVENÍ: Bez ztráty dat.
+ - RPO: Bez ztráty dat.
  - Topologie nasazení: Aktivní/aktivní
 
 ### <a name="no-recovery"></a>Bez obnovení
@@ -142,7 +143,7 @@ Uvědomte si, že každý cloud služby Azure Stack je nezávisle na sobě navz�
 Ochrana proti neplánované výpadky nebo ztrátě dat nemusí potřebovat některé aplikace ve vašem prostředí. Například virtuální počítače používat pro vývoj a testování obvykle není nutné obnovit. Je vaše rozhodnutí bez ochrany pro aplikaci nebo konkrétní virtuální počítač. Azure Stack nenabízí zálohování nebo replikace virtuálních počítačů v základní infrastruktuře. Podobně jako u Azure, musíte vyjádřit výslovný souhlas pro ochranu pro všechny virtuální počítače v každé z vašich předplatných.
 
  - RTO: Neopravitelné
- - CÍL BODU OBNOVENÍ: Úplné ztrátě dat
+ - RPO: Úplné ztrátě dat
 
 ## <a name="recommended-topologies"></a>Doporučená topologie
 

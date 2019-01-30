@@ -5,17 +5,17 @@ services: cognitive-services
 author: chliang
 manager: bix
 ms.service: cognitive-services
-ms.component: anomaly-finder
+ms.subservice: anomaly-finder
 ms.topic: include
 ms.date: 04/13/2018
 ms.author: chliang
 ms.custom: include file
-ms.openlocfilehash: a49df0c18ef9db9d0d41ca2e714474e6386ae7d1
-ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
+ms.openlocfilehash: 5ad589c4adb60369f81979e214935f73d9eb0755
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2018
-ms.locfileid: "48904468"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55228896"
 ---
 <a name="definitions"></a>
 ## <a name="definitions"></a>Definice
@@ -23,7 +23,7 @@ ms.locfileid: "48904468"
 <a name="point"></a>
 ### <a name="point"></a>Bod
 
-|Název|Popis|Schéma|
+|Name|Popis|Schéma|
 |---|---|---|
 |**Časové razítko**  <br>*Volitelné*|Časové razítko pro datový bod. Ujistěte se, že je v souladu s o půlnoci a použití UTC datum a čas, například řetězec 2017-08-01T00:00:00Z.|řetězec (datum a čas)|
 |**Hodnota**  <br>*Volitelné*|Datovou hodnotu míry.|číslo (double)|
@@ -32,7 +32,7 @@ ms.locfileid: "48904468"
 <a name="request"></a>
 ### <a name="request"></a>Žádost
 
-|Název|Popis|Schéma|
+|Name|Popis|Schéma|
 |---|---|---|
 |**Období**  <br>*Volitelné*|Období datových bodů. Pokud hodnota je null nebo nemá k dispozici, rozhraní API se automaticky určit období.|číslo (double)|
 |**body**  <br>*Volitelné*|Data časových řad odkazuje. Data mají být řazeny podle časového razítka vzestupně tak, aby odpovídaly výsledek anomálií. Pokud data nejsou seřazená správně nebo neexistuje duplicitní časové razítko, rozhraní API pro detekci anomálií body správně, ale nelze dobře odpovídají body se vrátil s vstupu. V takovém případě se přidají upozornění v odpovědi.|< [bod](#point) > pole|
@@ -41,7 +41,7 @@ ms.locfileid: "48904468"
 <a name="response"></a>
 ### <a name="response"></a>Odpověď
 
-|Název|Popis|Schéma|
+|Name|Popis|Schéma|
 |---|---|---|
 |**ExpectedValues**  <br>*Volitelné*|Model založený na předpovězené hodnoty učení. Pokud vstupní datové body jsou seřazeny podle časového razítka ascending, index pole je možné mapovat na očekávanou hodnotu a původní hodnotu.|pole < číslo (double) >|
 |**IsAnomaly**  <br>*Volitelné*|Výsledek toho, zda datové body se anomálie nebo není v obou směrech (špičky nebo poklesy). Hodnota TRUE znamená, že se bod nachází anomálií, false znamená, že se bod nachází mimo anomálií. Pokud vstupní datové body jsou seřazeny podle časového razítka ascending, index pole je možné mapovat na očekávanou hodnotu a původní hodnotu.|pole < logická hodnota >|

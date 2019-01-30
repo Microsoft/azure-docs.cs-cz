@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 12/27/2018
 ms.author: sethm
-ms.openlocfilehash: d0807d625cd26b891b9ecb51a8cd40979934583f
-ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
+ms.lastreviewed: 12/27/2018
+ms.openlocfilehash: 3e2ef77e0932c81746e24efecad020bd567a1fd5
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54192458"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55250397"
 ---
 # <a name="create-a-virtual-machine-and-install-a-certificate-retrieved-from-an-azure-stack-key-vault"></a>Vytvoření virtuálního počítače a nainstalovat certifikát načíst z trezoru klíčů Azure Stack
 

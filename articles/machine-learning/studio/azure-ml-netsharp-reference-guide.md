@@ -1,6 +1,6 @@
 ---
 Název: Vytvořte vlastní neuronových sítí Net # titleSuffix: Azure Machine Learning Studio Popis: Průvodce syntaxí pro specifikačnímu jazyku neuronových sítí Net #. Zjistěte, jak vytvářet modely vlastní neuronové sítě v nástroji Azure Machine Learning Studio.
-služby: machine learningu ms.service: ms.component strojového učení: studio ms.topic: referenční dokumentace
+služby: machine learningu ms.service: ms.subservice strojového učení: studio ms.topic: referenční dokumentace
 
 Autor: ericlicoding ms.author: amlstudiodocs ms.custom: předchozí Autor = heatherbshapiro předchozí ms.author=hshapiro ms.date: 03/01/2018
 ---

@@ -15,12 +15,13 @@ ms.topic: get-started-article
 ms.date: 12/04/2018
 ms.author: sethm
 ms.reviewer: unknown
-ms.openlocfilehash: af959507fc2e0d1b68f547d2856eb7020d3ed5c6
-ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
+ms.lastreviewed: 12/04/2018
+ms.openlocfilehash: 861784a2d22d15253c61884bfab62667c0560bcd
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/12/2019
-ms.locfileid: "54247568"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55250635"
 ---
 # <a name="start-azsreadinesschecker-cmdlet-reference"></a>Reference k rutinám Start AzsReadinessChecker
 
@@ -306,14 +307,14 @@ Určuje název oblasti nasazení Azure stacku.
 |Přijměte kanálový vstup:      |False         |
 |Přijměte zástupné znaky: |False         |
 
-> – PLNĚ KVALIFIKOVANÝ NÁZEV DOMÉNY
+> -FQDN
 
 Určuje nasazení Azure stacku externí plně kvalifikovaný název domény, také alias ExternalFQDN a ExternalDomainName.
 |  |  |
 |----------------------------|--------------|
 |Zadejte:                       |Řetězec        |
 |Pozice:                   |s názvem         |
-|Výchozí hodnota:              |ExternalFQDN ExternalDomainName |
+|Výchozí hodnota:              |ExternalFQDN, ExternalDomainName |
 |Přijměte kanálový vstup:      |False         |
 |Přijměte zástupné znaky: |False         |
 
@@ -397,7 +398,7 @@ Určuje seřazený slovník předmětu pro generování žádosti o certifikát.
 
 > Typ RequestType-
 
-Určuje typ SAN žádosti o certifikát. Platné hodnoty MultipleCSR, SingleCSR.
+Určuje typ SAN žádosti o certifikát. Valid values MultipleCSR, SingleCSR.
 
 - *MultipleCSR* generuje více žádosti o certifikát, jeden pro každou službu.
 - *SingleCSR* vygeneruje jedna žádost o certifikát pro všechny služby.
@@ -407,7 +408,7 @@ Určuje typ SAN žádosti o certifikát. Platné hodnoty MultipleCSR, SingleCSR.
 |Zadejte:                       |Řetězec   |
 |Pozice:                   |s názvem    |
 |Výchozí hodnota:              |Žádný     |
-|Platné hodnoty:               |"MultipleCSR", "SingleCSR. |
+|Platné hodnoty:               |'MultipleCSR','SingleCSR' |
 |Přijměte kanálový vstup:      |False    |
 |Přijměte zástupné znaky: |False    |
 
@@ -452,7 +453,7 @@ Určuje instanci služby Azure obsahující účtů, adresářů a předplatnýc
 |Zadejte:                       |Řetězec   |
 |Pozice:                   |s názvem    |
 |Výchozí hodnota:              |Žádný     |
-|Platné hodnoty:               |"AzureCloud", "AzureChinaCloud", "AzureUSGovernment. |
+|Platné hodnoty:               |'AzureCloud','AzureChinaCloud','AzureUSGovernment' |
 |Přijměte kanálový vstup:      |False    |
 |Přijměte zástupné znaky: |False    |
 
@@ -478,7 +479,7 @@ Určuje ID předplatného registrace pro registrace Azure Stack.
 |Přijměte kanálový vstup:      |False    |
 |Přijměte zástupné znaky: |False    |
 
-> Možnost ReportPath-
+> -ReportPath
 
 Určuje cestu pro sestavu připravenosti, výchozí hodnota je aktuální adresář a výchozí název sestavy.
 |  |  |
@@ -501,13 +502,13 @@ Public, trezor klíčů, KeyVaultInternal, veřejný portál ARM ACSBlob ACSQueu
 
 Požadované složky pro nasazení do systému identit Active Directory Federation Services jsou služby Azure Stack:
 
-ACSBlob, ACSQueue, ACSTable, služby AD FS, portál pro správu, ARM správce, veřejné ARM, graf, trezor klíčů, KeyVaultInternal, veřejný portál
+ACSBlob, ACSQueue, ACSTable, ADFS, Admin Portal, ARM Admin, ARM Public, Graph, KeyVault, KeyVaultInternal, Public Portal
 
 |  |  |
 |----------------------------|---------|
 |Zadejte:                       |Řetězec   |
 |Pozice:                   |s názvem    |
-|Výchozí hodnota:              |. \Certificates |
+|Výchozí hodnota:              |.\Certificates |
 |Přijměte kanálový vstup:      |False    |
 |Přijměte zástupné znaky: |False    |
 
@@ -531,7 +532,7 @@ Určuje, zda jenom zobrazit souhrn, sestavy vynechá podrobností.
 |Zadejte:                       |Řetězec   |
 |Pozice:                   |s názvem    |
 |Výchozí hodnota:              |Vše      |
-|Platné hodnoty:               |"Certifikátu", "AzureRegistration", "AzureIdentity", "Úloh", "všechny. |
+|Platné hodnoty:               |'Certificate','AzureRegistration','AzureIdentity','Jobs','All' |
 |Přijměte kanálový vstup:      |False    |
 |Přijměte zástupné znaky: |False    |
 
@@ -552,7 +553,7 @@ Odebere předchozí historie spuštění a ověřování a zapíše ověření d
 |  |  |
 |----------------------------|------------------|
 |Zadejte:                       |SwitchParameter   |
-|Aliasy:                    |CF                |
+|Aliasy:                    |cf                |
 |Pozice:                   |s názvem             |
 |Výchozí hodnota:              |False             |
 |Přijměte kanálový vstup:      |False             |
@@ -566,7 +567,7 @@ Určuje vlastní cesta pro uložení sestavy připravenost JSON a podrobný soub
 |----------------------------|------------------|
 |Zadejte:                       |Řetězec            |
 |Pozice:                   |s názvem             |
-|Výchozí hodnota:              |$ENV: TEMP\AzsReadinessChecker  |
+|Výchozí hodnota:              |$ENV:TEMP\AzsReadinessChecker  |
 |Přijměte kanálový vstup:      |False             |
 |Přijměte zástupné znaky: |False             |
 
@@ -576,7 +577,7 @@ Výzvy k potvrzení před spuštěním rutiny.
 |  |  |
 |----------------------------|------------------|
 |Zadejte:                       |SwitchParameter   |
-|Aliasy:                    |CF                |
+|Aliasy:                    |cf                |
 |Pozice:                   |s názvem             |
 |Výchozí hodnota:              |False             |
 |Přijměte kanálový vstup:      |False             |
@@ -588,7 +589,7 @@ Ukazuje, co by se stalo při spuštění rutiny. Rutina není spuštěna.
 |  |  |
 |----------------------------|------------------|
 |Zadejte:                       |SwitchParameter   |
-|Aliasy:                    |Wi                |
+|Aliasy:                    |wi                |
 |Pozice:                   |s názvem             |
 |Výchozí hodnota:              |False             |
 |Přijměte kanálový vstup:      |False             |

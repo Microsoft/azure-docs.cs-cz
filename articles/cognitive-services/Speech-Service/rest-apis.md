@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 12/13/2018
 ms.author: erhopf
 ms.custom: seodec18
-ms.openlocfilehash: 45af8f554bf38c65c886c4d101c78255f5671037
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
-ms.translationtype: HT
+ms.openlocfilehash: f369ab0ec8c460137f7e2b16a7f2696357d84c50
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55218661"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55247438"
 ---
 # <a name="speech-service-rest-apis"></a>Speech Service REST API
 
@@ -439,6 +439,9 @@ Převod textu na řeč rozhraní REST API podporuje neuronových sítí a standa
 
 * Úplný seznam hlasů, naleznete v tématu [jazykovou podporu](language-support.md#text-to-speech).
 * Informace o dostupnosti v jednotlivých oblastech najdete v tématu [oblastech](regions.md#text-to-speech).
+
+> [!IMPORTANT]
+> Náklady se liší pro standardní, vlastní a neuronových sítí hlasy. Další informace najdete v tématu [ceny](https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/).
 
 ### <a name="request-headers"></a>Hlavičky požadavku
 

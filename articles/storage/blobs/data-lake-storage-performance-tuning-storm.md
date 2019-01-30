@@ -3,17 +3,17 @@ title: Azure Data Lake Storage Gen2 Storm výkonu pokyny k ladění | Dokumentac
 description: Azure Data Lake Storage Gen2 Storm výkonu pokyny k ladění
 services: storage
 author: swums
-ms.component: data-lake-storage-gen2
+ms.subservice: data-lake-storage-gen2
 ms.service: storage
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: stewu
-ms.openlocfilehash: 845bb739408cb38d823ae662e261d6955726d28a
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: b242fca5a5a8490cc51222a6dd8b1ff1bb724417
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52975190"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55247904"
 ---
 # <a name="performance-tuning-guidance-for-storm-on-hdinsight-and-azure-data-lake-storage-gen2"></a>Průvodce laděním výkonu pro Storm v HDInsight a Azure Data Lake Storage Gen2
 
@@ -22,7 +22,7 @@ Seznamte se s faktory, které by se měly zvažovat při optimalizaci výkonu to
 ## <a name="prerequisites"></a>Požadavky
 
 * **Předplatné Azure**. Viz [Získání bezplatné zkušební verze Azure](https://azure.microsoft.com/pricing/free-trial/).
-* **Účet Azure Data Lake Storage Gen2**. Pokyny k jeho vytvoření najdete v tématu [rychlý start: Vytvoření úložiště pro účet analytické](data-lake-storage-quickstart-create-account.md).
+* **Účet Azure Data Lake Storage Gen2**. Pokyny k jeho vytvoření najdete v tématu [rychlý start: Vytvořit úložiště účtů pro analytické](data-lake-storage-quickstart-create-account.md).
 * **Cluster Azure HDInsight** s přístupem k účtu Data Lake Storage Gen2. Ujistěte se, že se že povolení vzdálené plochy pro cluster.
 * **S clusterem Storm v Data Lake Storage Gen2**. Další informace najdete v tématu [Storm v HDInsight](https://docs.microsoft.com/azure/hdinsight/hdinsight-storm-overview).
 * **Pokyny pro Data Lake Storage Gen2 pro optimalizaci výkonu**.  Obecné informace o výkonu koncepty, najdete v části [Data Lake Storage Gen2 ladění Průvodce výkonem](data-lake-storage-performance-tuning-guidance.md).   

@@ -15,12 +15,13 @@ ms.topic: get-started-article
 ms.date: 12/07/2018
 ms.author: sethm
 ms.reviewer: xiaofmao
-ms.openlocfilehash: c5b3be1d5b047e77b12d22fd5d24cbc42d88f783
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.lastreviewed: 12/07/2018
+ms.openlocfilehash: 88cbfc895d188162d0f242a5aceaab721a6c877f
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53715647"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55239091"
 ---
 # <a name="quota-types-in-azure-stack"></a>Typy kvót ve službě Azure Stack
 

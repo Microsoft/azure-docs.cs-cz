@@ -9,13 +9,14 @@ ms.topic: article
 ms.date: 01/23/19
 ms.author: patricka
 ms.reviewer: thoroet
+ms.lastreviewed: 01/23/19
 keywords: ''
-ms.openlocfilehash: 4f599379de07a9628ee81425ddac2374411bdf97
-ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
+ms.openlocfilehash: f05d27effecee6a18a1395520b29d8cf1db1eaaa
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54852758"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55246243"
 ---
 # <a name="azure-stack-datacenter-integration---identity"></a>Integrace datových center Azure Stack – Identity
 Azure Stack pomocí Azure Active Directory (Azure AD) nebo Active Directory Federation Services (AD FS) můžete nasadit jako zprostředkovatele identity. Volba je třeba provést před nasazením služby Azure Stack. Nasazení pomocí služby AD FS se také označuje jako při nasazování služby Azure Stack v odpojeném režimu.
@@ -118,7 +119,7 @@ Služba Graph ve službě Azure Stack používá následující protokoly a port
 
 Služba Graph ve službě Azure Stack používá následující protokoly a porty pro komunikaci s cílem služby Active Directory:
 
-|Typ|Port|Protocol (Protokol)|
+|Type|Port|Protocol (Protokol)|
 |---------|---------|---------|
 |LDAP|389|TCP A UDP|
 |LDAP SSL|636|TCP|

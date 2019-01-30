@@ -14,12 +14,13 @@ ms.topic: article
 ms.date: 01/16/2019
 ms.author: mabrigg
 ms.reviewer: waltero
-ms.openlocfilehash: 3ae0a67a8aa2d403a72b0e20471c2044dbf557bf
-ms.sourcegitcommit: 9f07ad84b0ff397746c63a085b757394928f6fc0
+ms.lastreviewed: 01/16/2019
+ms.openlocfilehash: b032dea67bba6f78b8172e772ab2f8fe492f39f9
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54389064"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55250431"
 ---
 # <a name="deploy-kubernetes-to-azure-stack-using-active-directory-federated-services"></a>Nasazení do služby Azure Stack pomocí Active Directory Federated Services Kubernetes
 
@@ -65,7 +66,7 @@ Potřebujete pracovat se správcem vaší služby Azure Stack a nastavení insta
 
     - Budete potřebovat následující údaje:
 
-        | Hodnota | Popis |
+        | Value | Popis |
         | ---   | ---         |
         | Koncový bod Azure Resource Manageru | Microsoft Azure Resource Manageru je systém správy, který vám umožňuje správcům nasadit, spravovat a monitorovat prostředky Azure. Azure Resource Manageru dokáže zpracovat tyto úkoly, jako se skupinou, nikoli samostatně, v rámci jedné operace.<br>Koncový bod v Azure Stack Development Kit (ASDK) je: `https://management.local.azurestack.external/`<br>Koncový bod v integrovaných systémech je: `https://management.<location>.ext-<machine-name>.masd.stbtest.microsoft.com/` |
         | ID vašeho předplatného | [ID předplatného](https://docs.microsoft.com/azure/azure-stack/azure-stack-plan-offer-quota-overview#subscriptions) je, jak získat přístup k nabídky ve službě Azure Stack. |
@@ -106,7 +107,7 @@ Potřebujete pracovat se správcem vaší služby Azure Stack a nastavení insta
 
     - Budete potřebovat následující údaje:
 
-        | Hodnota | Popis |
+        | Value | Popis |
         | ---   | ---         |
         | Cesta k certifikátu | Plně kvalifikovaný název domény nebo cesta k certifikátu. |
         | Heslo certifikátu | Heslo certifikátu. |

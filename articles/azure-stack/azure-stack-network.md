@@ -15,12 +15,13 @@ ms.topic: article
 ms.date: 08/30/2018
 ms.author: jeffgilb
 ms.reviewer: wamota
-ms.openlocfilehash: 9b1eb6878dcafba68c230255f3b3f43e005421ab
-ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
+ms.lastreviewed: 08/30/2018
+ms.openlocfilehash: a4e04bc9071f4f677230d112a7baa708e9e8dc34
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/31/2018
-ms.locfileid: "43340184"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55243228"
 ---
 # <a name="network-connectivity"></a>Připojení k síti
 Tento článek obsahuje informace o síťové infrastruktury Azure Stack vám pomohou rozhodnout, jak nejlépe integrovat do vaší stávající síťové prostředí Azure Stack. 
@@ -29,7 +30,7 @@ Tento článek obsahuje informace o síťové infrastruktury Azure Stack vám po
 > Překládat externí názvy DNS z Azure Stack (například www.bing.com), budete muset zadat servery DNS pro předávání DNS požadavků. Další informace týkající se požadavků na Azure Stack DNS najdete v tématu [integrace datových center Azure Stack – DNS](azure-stack-integrate-dns.md).
 
 ## <a name="physical-network-design"></a>Návrh fyzické sítě
-Řešení Azure Stack vyžaduje odolné a vysoce dostupné fyzické infrastruktury pro podporu její provoz a služeb. Odchozí připojení ze systému ToR ohraničení přepínače jsou omezené na SFP + nebo SFP28 média a 1 GB, 10 GB nebo rychlosti 25 GB. Obraťte se na dodavatele hardwaru výrobce OEM (OEM), dostupnost. V níže uvedeném diagramu náš doporučený návrh:
+Řešení Azure Stack pro zajištění podpory svého provozu a služeb vyžaduje odolnou a vysoce dostupnou fyzickou infrastrukturu. Odchozí připojení ze systému ToR ohraničení přepínače jsou omezené na SFP + nebo SFP28 média a 1 GB, 10 GB nebo rychlosti 25 GB. Obraťte se na dodavatele hardwaru výrobce OEM (OEM), dostupnost. V níže uvedeném diagramu náš doporučený návrh:
 
 ![Doporučený návrh sítě Azure Stack](media/azure-stack-network/recommended-design.png)
 
@@ -39,7 +40,7 @@ Logické sítě představují abstrakci podkladové fyzické síťové infrastru
 
 V následující tabulce jsou uvedeny logické sítě a přidružené podsítě rozsahy IPv4, které je nutné naplánovat:
 
-| Logické sítě | Popis | Velikost | 
+| Logická síť | Popis | Velikost | 
 | -------- | ------------- | ------------ | 
 | Veřejné virtuální IP adresy | Azure Stack používá celkem 31 adres z této sítě. Osm veřejné IP adresy se používají pro malou skupinu služby Azure Stack a zbývající jsou používány tenantské virtuální počítače. Pokud máte v plánu služby App Service a poskytovatele prostředků SQL, 7 další adresy se používají. Zbývající 15 IP adresy jsou vyhrazené pro budoucí služby Azure. | / 26 (62 hostitelů) - /22 (1022 hostitelů)<br><br>Doporučené = /24 (254 hostiteli) | 
 | Přepínač infrastruktury | Point-to-Point IP adresy pro účely směrování, vyhrazené přepnou rozhraní pro správu a zpětné smyčky adresy přiřazené k přepínači. | /26 | 

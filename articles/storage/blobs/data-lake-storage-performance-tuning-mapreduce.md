@@ -3,17 +3,17 @@ title: Azure Data Lake Storage Gen2 MapReduce výkonu pokyny k ladění | Dokume
 description: Azure Data Lake Storage Gen2 MapReduce výkonu pokyny k ladění
 services: storage
 author: swums
-ms.component: data-lake-storage-gen2
+ms.subservice: data-lake-storage-gen2
 ms.service: storage
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: stewu
-ms.openlocfilehash: 4ba683bc75ed841fc92eb2c9fcc908e419b716d6
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 0cd7ecdc6ee7b6ccd66c9d0d88ebef0a1220a40a
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52975295"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55249108"
 ---
 # <a name="performance-tuning-guidance-for-mapreduce-on-hdinsight-and-azure-data-lake-storage-gen2"></a>Průvodce laděním výkonu pro MapReduce na HDInsight a Azure Data Lake Storage Gen2
 
@@ -22,7 +22,7 @@ Seznamte se s faktory, které byste měli zvážit při optimalizaci výkonu Map
 ## <a name="prerequisites"></a>Požadavky
 
 * **Předplatné Azure**. Viz [Získání bezplatné zkušební verze Azure](https://azure.microsoft.com/pricing/free-trial/).
-* **Účet Azure Data Lake Storage Gen2**. Pokyny k jeho vytvoření najdete v tématu [rychlý start: vytvoření účtu úložiště Azure Data Lake Storage Gen2](data-lake-storage-quickstart-create-account.md).
+* **Účet Azure Data Lake Storage Gen2**. Pokyny k jeho vytvoření najdete v tématu [rychlý start: Vytvoření účtu úložiště Azure Data Lake Storage Gen2](data-lake-storage-quickstart-create-account.md).
 * **Azure HDInsight cluster** s přístupem k účtu Data Lake Storage Gen2. Ujistěte se, že se že povolení vzdálené plochy pro cluster.
 * **Použití prostředí MapReduce na HDInsight**.  Další informace najdete v tématu [použití MapReduce se v clusteru Hadoop v HDInsight](https://docs.microsoft.com/azure/hdinsight/hdinsight-use-mapreduce)
 * **Pokyny pro Data Lake Storage Gen2 pro optimalizaci výkonu**.  Obecné informace o výkonu koncepty, najdete v části [Data Lake Storage Gen2 ladění Průvodce výkonem](data-lake-storage-performance-tuning-guidance.md)
@@ -49,7 +49,7 @@ Při spuštění úlohy mapreduce je možné, tady jsou parametry, jejichž konf
 
 Ve výchozím nastavení použije MapReduce celý cluster pro vaši úlohu.  Můžete použít menší clusteru s použitím méně mapovačů, než je k dispozici kontejnerů.        
 
-**Krok 2: Nastavení mapreduce.map.memory/mapreduce.reduce.memory**
+**Krok 2: Nastavte mapreduce.map.memory/mapreduce.reduce.memory**
 
 Velikost paměti pro mapy a snížit úkoly budou závislé na konkrétní úlohy.  Pokud chcete zvýšit souběžnost, můžete zmenšit velikost paměti.  Počet současně spuštěných úloh závisí na počtu kontejnerů.  Snížením množství paměti za mapovací a redukční funkci víc kontejnerů mohou být vytvořeny, které povolují více mapovačů a reduktorů jak souběžně spustit.  Příliš mnoho snížení množství paměti může způsobit, že některé procesy mít nedostatek paměti.  Pokud při spuštění vaší úlohy se zobrazí chyba haldy, měli byste zvýšit paměti za mapovací a redukční funkci.  Měli byste zvážit, že přidáte víc kontejnerů přidá další režie pro každý další kontejner, který může potenciálně dojít ke snížení výkonu.  Další možností je načíst větší množství paměti pomocí funkce clusteru, který má větší objem paměti a zvýšením počtu uzlů ve vašem clusteru.  Větší množství paměti umožní víc kontejnerů mají být použity, což znamená, že větší souběžnost.  
 
@@ -61,13 +61,13 @@ K vyladění mapreduce.job.maps/mapreduce.job.reduces, měli byste zvážit mno�
 
 Pokud používáte cluster prázdný, paměť, může být celkové paměti YARN pro váš cluster.  Pokud jiné aplikace používají paměti, je možné použít pouze část paměti vašeho clusteru snížením počtu mapovačů a reduktorů počtu kontejnerů, které chcete použít.  
 
-**Krok 4: Výpočet počet kontejnery YARN**
+**Krok 4: Vypočítat počet kontejnery YARN**
 
 Kontejnery YARN diktovat množství souběžnosti, které jsou k dispozici pro konkrétní úlohu.  Využijte celkové paměti YARN a dělení, který mapreduce.map.memory.  
 
     # of YARN containers = total YARN memory / mapreduce.map.memory
 
-**Krok 5: Nastavení mapreduce.job.maps/mapreduce.job.reduces**
+**Krok 5: Nastavte mapreduce.job.maps/mapreduce.job.reduces**
 
 Nastavte mapreduce.job.maps/mapreduce.job.reduces alespoň na počet dostupných kontejnerů.  Můžete experimentovat další zvýšením počtu mapovačů a reduktorů zobrazíte, pokud dosahovat vyšších výkonů.  Uvědomte si, že více mapovačů bude mít další režie, takže máte příliš mnoho mapovačů může snížit výkon.  
 
@@ -81,7 +81,7 @@ Předpokládejme, že máme skládá z 8 D14 uzly clusteru, a chceme se spuště
 
 V tomto příkladu předpokládejme, že naším úkolem je jenom úlohy, na kterém běží.  
 
-**Krok 2: Nastavení mapreduce.map.memory/mapreduce.reduce.memory**
+**Krok 2: Nastavte mapreduce.map.memory/mapreduce.reduce.memory**
 
 V tomto příkladu jsme jsou spuštěny úlohy náročné na vstupně-výstupní operace a rozhodnout, že bude stačit 3GB paměti pro mapování úlohy.
 
@@ -90,11 +90,11 @@ V tomto příkladu jsme jsou spuštěny úlohy náročné na vstupně-výstupní
 **Krok 3: Určení celkového YARN paměti**
 
     Total memory from the cluster is 8 nodes * 96GB of YARN memory for a D14 = 768GB
-**Krok 4: Výpočet # kontejnery YARN**
+**Krok 4: Vypočítat počet kontejnery YARN**
 
     # of YARN containers = 768GB of available memory / 3 GB of memory =   256
 
-**Krok 5: Nastavení mapreduce.job.maps/mapreduce.job.reduces**
+**Krok 5: Nastavte mapreduce.job.maps/mapreduce.job.reduces**
 
     mapreduce.map.jobs = 256
 

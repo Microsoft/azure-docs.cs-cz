@@ -13,12 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/16/2019
 ms.author: anwestg
-ms.openlocfilehash: cfbf71d4cfbd01eb8544d4b577292c5d7f8faf66
-ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
+ms.lastreviewed: 01/16/2019
+ms.openlocfilehash: 7a273dc9267c276ba587d98c86b02c824a1b1b5a
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54359098"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55250074"
 ---
 # <a name="update-azure-app-service-on-azure-stack"></a>Aktualizace služby Azure App Service v Azure stacku
 

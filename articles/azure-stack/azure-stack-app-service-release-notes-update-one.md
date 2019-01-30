@@ -15,12 +15,13 @@ ms.topic: article
 ms.date: 03/20/2018
 ms.author: anwestg
 ms.reviewer: sethm
-ms.openlocfilehash: 632cf506477bdc6f35c66a473963168f81e22351
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.lastreviewed: 03/20/2018
+ms.openlocfilehash: 9288ffa406b0e5765b35fa9b23aa13dee5754e9a
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52971891"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55240021"
 ---
 # <a name="app-service-on-azure-stack-update-1-release-notes"></a>App Service v Azure stacku update 1 poznámky
 
@@ -202,12 +203,12 @@ Prohození slotů webu je v této verzi fungovat. Pokud chcete obnovit funkce, p
 
 Pokud jste se rozhodli nasadit do existující virtuální sítě a interní IP adresu pro připojení k souborovému serveru, je nutné přidat odchozí pravidlo zabezpečení, povolení provozu SMB mezi podsítě pracovního procesu a souborový server. Chcete-li to provést, přejděte na WorkersNsg v portálu pro správu a přidat odchozí pravidlo zabezpečení s následujícími vlastnostmi:
 
-- Zdroj: žádné
+- Zdroj: Všechny
 - Zdrojový rozsah portů: *
 - Cíl: IP adresy
-- Rozsah cílových IP adres: rozsah IP adres pro souborový server
+- Rozsah cílových IP adres: Rozsah IP adres pro souborový server
 - Rozsah cílových portů: 445
-- Protocol: TCP
+- Protokol: TCP
 - Akce: Povolit
 - Priorita: 700
 - Název: Outbound_Allow_SMB445

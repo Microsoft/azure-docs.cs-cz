@@ -14,12 +14,13 @@ ms.topic: article
 ms.date: 10/16/2018
 ms.author: jeffgilb
 ms.reviewer: quying
-ms.openlocfilehash: 78c4e7c6cdc8cf118a351d9030416318e51c69af
-ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
+ms.lastreviewed: 10/16/2018
+ms.openlocfilehash: 3063a3f3f199a591fa94c3a665ea9ecc5457e502
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49365097"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55247591"
 ---
 # <a name="create-mysql-databases"></a>Vytvoření databáze MySQL
 
@@ -58,7 +59,7 @@ Po nasazení databáze, poznamenejte si **připojovací řetězec** pod **Essent
 
 Heslo můžete změnit pomocí změny na instanci serveru MySQL.
 
-1. Vyberte **prostředky pro správu** > **hostitelské servery MySQL**. Vyberte hostitelském serveru.
+1. Select **ADMINISTRATIVE RESOURCES** > **MySQL Hosting Servers**. Vyberte hostitelském serveru.
 2. V části **nastavení**vyberte **heslo**.
 3. V části **heslo**, zadejte nové heslo a pak vyberte **Uložit**.
 

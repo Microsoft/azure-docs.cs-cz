@@ -6,16 +6,16 @@ services: cognitive-services
 author: tulasim88
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: qna-maker
+ms.subservice: qna-maker
 ms.topic: overview
 ms.date: 01/24/2019
 ms.author: tulasim
-ms.openlocfilehash: 255aac8ed5c4268a049393cdc27b06f7a987e891
-ms.sourcegitcommit: 97d0dfb25ac23d07179b804719a454f25d1f0d46
+ms.openlocfilehash: 1295d071fa3ad99aabd2649f7b7e0b7fe1f86584
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/25/2019
-ms.locfileid: "54911435"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55226855"
 ---
 # <a name="what-is-qna-maker"></a>Co je QnA Maker?
 

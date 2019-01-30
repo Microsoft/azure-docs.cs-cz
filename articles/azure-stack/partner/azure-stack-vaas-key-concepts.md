@@ -10,16 +10,17 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 1/07/2019
+ms.date: 01/07/2019
 ms.author: mabrigg
 ms.reviewer: johnhas
+ms.lastreviewed: 01/07/2019
 ROBOTS: NOINDEX
-ms.openlocfilehash: d5b0c15fe5e4740a06af5de8a47b79c6d7528a2c
-ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
+ms.openlocfilehash: 1f5c47dd3453c0c8f02f1b0a87e5f2fff123f8be
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/12/2019
-ms.locfileid: "54243810"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55242803"
 ---
 # <a name="validation-as-a-service-key-concepts"></a>Ověření jako klíčové koncepty služby
 
@@ -53,7 +54,7 @@ Další informace o typech pracovních postupů, najdete v části [co je ověř
 
 1. Na řídicím panelu řešení vytvořte nové řešení nebo vyberte existující. Tím se aktualizuje a umožní dlaždice pracovního postupu.
 2. K vytvoření nového pracovního postupu, vyberte na **Start** na kteroukoli dlaždici. Informace specifické pro každý pracovní postup najdete v následujících článcích:
-    - Průchod testu: [Rychlý start: Použít ověření jako portál služby k naplánování prvního testu](azure-stack-vaas-schedule-test-pass.md)
+    - Průchod testu: [Rychlé zprovoznění: Použít ověření jako portál služby k naplánování prvního testu](azure-stack-vaas-schedule-test-pass.md)
     - Ověření řešení: [Ověření nové řešení Azure Stack](azure-stack-vaas-validate-solution-new.md)
     - Ověření řešení: [Ověření aktualizace softwaru od Microsoftu](azure-stack-vaas-validate-microsoft-updates.md)
     - Ověření řešení: [Ověření balíčky výrobce OEM](azure-stack-vaas-validate-oem-package.md)

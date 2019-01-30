@@ -14,16 +14,17 @@ ms.topic: article
 ms.date: 10/25/2018
 ms.author: jeffgilb
 ms.reviewer: quying
-ms.openlocfilehash: 3d608843ef31a1ed665fcb1fd90b822f34f77fdd
-ms.sourcegitcommit: 5de9de61a6ba33236caabb7d61bee69d57799142
+ms.lastreviewed: 10/25/2018
+ms.openlocfilehash: 7183cae491287042c778c2e56be8a1451c8c71a2
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50086348"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55247761"
 ---
 # <a name="use-sql-databases-on-microsoft-azure-stack"></a>Použití databází SQL v Microsoft Azure Stack
 
-Nabídka databází SQL jako služba pomocí adaptéru poskytovatele prostředků SQL serveru [Azure Stack](azure-stack-poc.md). Po instalaci poskytovatele prostředků a připojte ho k jedné nebo více instancí systému SQL Server, můžete vytvořit vy a vaši uživatelé:
+Nabídka databází SQL jako služba pomocí adaptéru poskytovatele prostředků SQL serveru [Azure Stack](azure-stack-poc.md). Po instalaci poskytovatele prostředků a jeho připojení k jedné nebo několika instancím SQL Serveru můžete vy i vaši uživatelé vytvářet:
 
 - Databáze pro aplikace nativní pro cloud.
 - Weby, které používají SQL.
@@ -46,4 +47,4 @@ Musíte vytvořit alespoň jednu instanci systému SQL Server nebo poskytovat p�
 
 ## <a name="next-steps"></a>Další postup
 
-[Nasazení poskytovatele prostředků SQL serveru](azure-stack-sql-resource-provider-deploy.md)
+[Nasazení poskytovatele prostředků SQL Serveru](azure-stack-sql-resource-provider-deploy.md)
