@@ -1,30 +1,30 @@
 ---
-title: 'Rychlý start: Rozpoznávání emocí ve výrazech tváří na obrázku – rozhraní API pro rozpoznávání emocí, Python'
+title: 'Rychlý start: Rozpoznávání emocí na tváří v obrázku – rozhraní API pro rozpoznávání Emocí, Python'
 description: Získejte informace a vzorové kódy, které vám pomůžou rychle začít používat rozhraní API pro rozpoznávání emocí pomocí Pythonu.
 services: cognitive-services
 author: anrothMSFT
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: emotion-api
+ms.subservice: emotion-api
 ms.topic: quickstart
 ms.date: 02/05/2018
 ms.author: anroth
 ROBOTS: NOINDEX
-ms.openlocfilehash: f0bcc88b60e0a9b93856aa32a10b9c0ad898ce95
-ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
-ms.translationtype: HT
+ms.openlocfilehash: bdc42233d027134ca42e52398eeefd83ae45669f
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50240694"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55211249"
 ---
-# <a name="quickstart-build-an-app-to-recognize-emotions-on-faces-in-an-image"></a>Rychlý start: Vytvoření aplikace pro rozpoznávání emocí ve výrazech tváří na obrázku
+# <a name="quickstart-build-an-app-to-recognize-emotions-on-faces-in-an-image"></a>Rychlý start: Vytvářejte aplikace pro rozpoznávání emocí na tváří v obrázku.
 
 > [!IMPORTANT]
 > Rozhraní API pro rozpoznávání emocí se přestane používat 15. února 2019. Funkce rozpoznávání emocí je teď obecně dostupná v rámci [rozhraní API pro rozpoznávání tváře](https://docs.microsoft.com/azure/cognitive-services/face/). 
 
 Tento návod obsahuje informace a vzorové kódy, které vám pomůžou rychle začít používat [metodu Recognize rozhraní API pro rozpoznávání emocí](https://westus.dev.cognitive.microsoft.com/docs/services/5639d931ca73072154c1ce89/operations/563b31ea778daf121cc3a5fa) s Pythonem k rozpoznávání emocí vyjadřovaných jedním člověkem nebo několika lidmi na obrázku.
 
-Tuto ukázku můžete spustit jako poznámkový blok Jupyter v [MyBinderu](https://mybinder.org) tak, že kliknete na odznáček pro spuštění Binderu: [![Binder](https://mybinder.org/badge.svg)](https://mybinder.org/v2/gh/Microsoft/cognitive-services-notebooks/master?filepath=EmotionAPI.ipynb)
+Tuto ukázku můžete spustit jako poznámkový blok Jupyter v [MyBinderu](https://mybinder.org) tak, že kliknete na odznáček pro spuštění Binderu: ![Binder](https://mybinder.org/badge.svg)](https://mybinder.org/v2/gh/Microsoft/cognitive-services-notebooks/master?filepath=EmotionAPI.ipynb)
 
 
 ## <a name="prerequisite"></a>Požadavek
