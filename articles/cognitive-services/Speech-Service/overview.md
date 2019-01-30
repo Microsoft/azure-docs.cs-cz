@@ -6,16 +6,16 @@ services: cognitive-services
 author: erhopf
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: speech-service
+ms.subservice: speech-service
 ms.topic: overview
 ms.date: 12/13/2018
 ms.author: erhopf
-ms.openlocfilehash: e86adfd4e832e6b9514e4813ddd4a942b07ca624
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: beb1382d2e076052583dd5bbc546259c8aae2f96
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53336590"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55217964"
 ---
 # <a name="what-is-speech-services"></a>Co je hlasové služby?
 
@@ -30,7 +30,7 @@ Primární funkce hlasové služby jsou řeči na text (také nazývané řeči 
 |Funkce|Funkce|
 |-|-|
 |[Převod řeči na text](speech-to-text.md)| <li>Přepisuje plynulou řeč v reálném čase do textové podoby.<li>Dokáže dávkově přepisovat řeč ze zvukových nahrávek. <li>Podporuje okamžité výsledky, detekci konce řeči, automatické formátování textu a maskování vulgarismů. <li>Může volat službu [Language Understanding](https://docs.microsoft.com/azure/cognitive-services/luis/) (LUIS), která z přepsané řeči odvodí záměr uživatele.\*|
-|[Převod textu na řeč](text-to-speech.md)| <li>**NOVÉ**: Poskytuje neuronových sítí převod textu na řeč hlasy téměř nerozeznatelná od lidské řeči (v angličtině). <li>Převádí text do přirozeně znějící řeči. <li>Nabízí několik pohlaví a dialektů pro celou řadu podporovaných jazyků. <li>Podporuje vstup v podobě prostého textu nebo jazyk SSML (Speech Synthesis Markup Language). |
+|[Text-to-Speech](text-to-speech.md)| <li>**NOVÉ**: Poskytuje neuronových sítí převod textu na řeč hlasy téměř nerozeznatelná od lidské řeči (v angličtině). <li>Převádí text do přirozeně znějící řeči. <li>Nabízí několik pohlaví a dialektů pro celou řadu podporovaných jazyků. <li>Podporuje vstup v podobě prostého textu nebo jazyk SSML (Speech Synthesis Markup Language). |
 |[Překlad řeči](speech-translation.md)| <li>Téměř v reálném čase překládá streamovaný zvuk.<li> Dokáže zpracovat také záznam řeči.<li>Poskytuje výsledky v podobě textu nebo syntetizované řeči. |
 
 

@@ -1,23 +1,23 @@
 ---
-title: 'Rychlý start: Překlad textu, Node.js – Translator Text API'
+title: 'Rychlý start: Přeložení textu, Node.js – Translator Text API'
 titleSuffix: Azure Cognitive Services
 description: V tomto rychlém startu přeložíte text z jednoho jazyka do jiného pomocí služby Translator Text API a Node.js.
 services: cognitive-services
 author: erhopf
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: translator-text
+ms.subservice: translator-text
 ms.topic: quickstart
 ms.date: 06/21/2018
 ms.author: erhopf
-ms.openlocfilehash: 68c38d289e4095bd602e681171d8409b21920142
-ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
-ms.translationtype: HT
+ms.openlocfilehash: 40b38fdf2773bd58cf1635d089aec7340b04ce07
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50246537"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55214011"
 ---
-# <a name="quickstart-use-the-translator-text-api-to-translate-a-string-with-nodejs"></a>Rychlý start: Překlad řetězce pomocí služby Translator Text API a Node.js
+# <a name="quickstart-use-the-translator-text-api-to-translate-a-string-with-nodejs"></a>Rychlý start: Použití rozhraní Translator Text API pro převod řetězce s využitím Node.js
 
 V tomto rychlém startu se dozvíte, jak pomocí Node.js a rozhraní REST API služby Translator Text přeložit textový řetězec z angličtiny do italštiny a němčiny.
 
@@ -69,7 +69,7 @@ if (!subscriptionKey) {
 Metoda `request()` zpřístupněná prostřednictvím modulu požadavků nám umožňuje předat metodu HTTP, adresu URL, parametry požadavku, hlavičky a text JSON jako objekt `options`. V tomto fragmentu kódu nakonfigurujeme požadavek:
 
 >[!NOTE]
-> Další informace o koncových bodech, trasách a parametrech požadavků najdete v tématu [Translator Text API 3.0: Překlad](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-translate).
+> Další informace o koncových bodech, cesty a parametry požadavku najdete v tématu [Translator Text API 3.0: Přeložit](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-translate).
 
 ```javascript
 let options = {
@@ -147,12 +147,12 @@ Pokud chcete porovnat svůj kód s naším, kompletní ukázka je k dispozici na
 
 Pokud jste do svého programu pevně zakódovali klíč předplatného, nezapomeňte po dokončení tohoto rychlého startu tento klíč předplatného odebrat.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 > [!div class="nextstepaction"]
 > [Prozkoumejte příklady Node.js na GitHubu](https://github.com/MicrosoftTranslator/Text-Translation-API-V3-NodeJS)
 
-## <a name="see-also"></a>Viz také
+## <a name="see-also"></a>Další informace najdete v tématech
 
 Kromě rozpoznávání jazyka můžete pomocí služby Translator Text API provádět také následující úlohy:
 

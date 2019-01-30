@@ -5,16 +5,16 @@ description: Model je systém, který zajišťuje překlad pro konkrétní jazyk
 author: rajdeep-in
 manager: christw
 ms.service: cognitive-services
-ms.component: custom-translator
+ms.subservice: custom-translator
 ms.topic: conceptual
 ms.date: 11/13/2018
 ms.author: v-rada
-ms.openlocfilehash: e681d40a56bc481fce5a114513a579465ba07c85
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: bd4921cb959e3ea2e893c6837fb47792d3585ca9
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51627298"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55220123"
 ---
 # <a name="what-are-trainings-and-models"></a>Co jsou školení a modely?
 

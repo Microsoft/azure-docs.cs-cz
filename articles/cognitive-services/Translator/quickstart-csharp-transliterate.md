@@ -1,23 +1,23 @@
 ---
-title: 'Rychlý start: Převod textového skriptu, C# – Translator Text API'
+title: 'Rychlý start: Převést text skriptu C# – Translator Text'
 titleSuffix: Azure Cognitive Services
 description: V tomto rychlém startu zjistíte jak transkripce text (převod) z jednoho skriptu na jinou pomocí .NET Core a rozhraní REST Translator Text API. V této ukázce se provádí transkripce z japonštiny do latinky.
 services: cognitive-services
 author: erhopf
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: translator-text
+ms.subservice: translator-text
 ms.topic: quickstart
 ms.date: 11/21/2018
 ms.author: erhopf
-ms.openlocfilehash: d67fbdad32612f23b1de31f7d2a1d7b4dee3b68e
-ms.sourcegitcommit: 2bb46e5b3bcadc0a21f39072b981a3d357559191
+ms.openlocfilehash: 7beddd7f7f21466ee404303b2727370d0cfc86f6
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/05/2018
-ms.locfileid: "52889136"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55220149"
 ---
-# <a name="quickstart-use-the-translator-text-api-to-transliterate-text-using-c"></a>Rychlý start: Transkripce textu s využitím rozhraní Translator Text API umožňujeC#
+# <a name="quickstart-use-the-translator-text-api-to-transliterate-text-using-c"></a>Rychlý start: Použití transkripce textu s využitím rozhraní Translator Text APIC#
 
 V tomto rychlém startu se dozvíte postupy transkripce text (převod) z jednoho skriptu do jiného pomocí .NET Core (C#) a rozhraní REST Translator Text API. V uvedené ukázce se provádí transkripce z japonštiny do latinky.
 

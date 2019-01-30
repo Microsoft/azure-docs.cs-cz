@@ -6,16 +6,16 @@ services: cognitive-services
 author: bojunehsu
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: knowledge-exploration
+ms.subservice: knowledge-exploration
 ms.topic: conceptual
 ms.date: 03/26/2016
 ms.author: paulhsu
-ms.openlocfilehash: 5be39e8dce6aeeef32d20273c56650620d6fe986
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.openlocfilehash: 131d8d58982b5430063aa3dc7b3d1982cd430148
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46122021"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55211300"
 ---
 # <a name="web-api-interface"></a>Webové rozhraní API
 
@@ -29,8 +29,8 @@ Použijí společně, tyto metody rozhraní API umožňují vytvářet výkonné
 
 **Příklad**
 
-V doméně academic publikací, pokud uživatel zadá řetězec "latentní s" *interpretovat* může metoda poskytnout sadu seřazený interpretace navrhuje, že uživatel může vyhledávat – klíčové slovo "latentní sémantické analýzy" název "analýza latentní struktury", nebo dalších výrazů od "latentní s".  Tyto informace slouží k rychlé Průvodce uživatele požadovaných výsledků hledání.
+V doméně academic publikací, pokud uživatel zadá řetězec "latentní s" *interpretovat* může metoda poskytnout sadu seřazený interpretace navrhuje, že uživatel může vyhledávat – klíčové slovo "latentní sémantické analýzy" název "analýza latentní struktury", nebo dalších výrazů od "latentní s".  Tyto informace můžete použít k rychlému přivedení uživatele k požadovaným výsledkům hledání.
 
 Pro tuto doménu *vyhodnotit* metodu je možné načíst sadu odpovídajících publikace z akademického indexu a *calchistogram* metody slouží k výpočtu distribuce atribut hodnoty pro odpovídající publikace, které můžete použít pro další filtrování a upřesnění výsledků hledání.
 
-Všimněte si, že ke zlepšení čitelnosti z příkladů, volání rozhraní REST API obsahovat znaky (například mezery), které nebyly kódovaná adresou URL. Váš kód bude nutné použít odpovídající kódování URL.
+Všimněte si, že ke zlepšení čitelnosti příkladů obsahuje volání rozhraní REST API znaky (například mezery), které nebyly zakódovány do adresy URL. Váš kód bude muset použít odpovídající kódování adresy URL.

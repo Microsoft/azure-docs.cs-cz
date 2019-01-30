@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 01/21/2019
 ms.author: raynew
-ms.openlocfilehash: fa25c144737c4d070b2dbd08700c68e617950e0d
-ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
+ms.openlocfilehash: 148efb47d123938c3914f36e1432d447e277b051
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54452254"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55210553"
 ---
 # <a name="support-matrix-for-replicating-from-one-azure-region-to-another"></a>Matice podpory pro které se replikují z jedné oblasti Azure do jiné
 
@@ -59,9 +59,9 @@ Německo | Německo – střed, Německo – severovýchod
 >
 > - Pro **Brazílie – jih** oblasti, můžete replikaci a převzetí služeb při selhání na jednu z následujících akcí: Střed USA – Jih, střed USA – Západ, USA – východ, USA – východ 2, USA – Západ, USA – západ 2 a oblasti střed USA – sever. Je třeba poznamenat, Site Recovery je povolena pouze oblasti Brazílie – Jih, který se použije jako zdrojové oblasti, ze které se dají chránit virtuální počítače. To **nelze použít jako cíl zotavení po Havárii oblasti** pro všechny oblasti Azure, jako jsou střed USA – jih. Důvod je ten latence zjištěnými z důvodu geografické vzdálenosti doporučujeme vybrat oblasti žádné další Ameriky, než Brazílie – jih.
 > 
-> - Pokud jste **zobrazíte v oblasti není možné** místo, kam chcete **pro vytvoření trezoru** pak Ujistěte se, že má vaše předplatné přístup k vytváření prostředků v dané oblasti. Příklad: Pokud nejste schopni vytvořit trezor v Francie – jih pak vaše předplatné nemá do oblasti Francie – jih přístup. Zadejte soubor lístek podpory v části problém typu "Správa předplatného" a problém na předmět "ostatní obecné dotazy" "whitlelist předplatné XXX oblasti Azure"
+> - Pokud jste **zobrazíte v oblasti není možné** místo, kam chcete **pro vytvoření trezoru** pak Ujistěte se, že má vaše předplatné přístup k vytváření prostředků v dané oblasti. Příklad: Pokud nejste schopni vytvořit trezor v Francie – jih pak vaše předplatné nemá do oblasti Francie – jih přístup. Zadejte soubor lístek podpory v části problém typu "Správa předplatného" a problém na předmět "ostatní obecné dotazy" "seznamu povolených IP adres předplatné XXX oblasti Azure"
 > 
-> - Pokud jste **zobrazíte v oblasti není možné** v rámci zeměpisné clusteru **při povolení replikace** pak Ujistěte se, že má vaše předplatné přístup k vytvoření virtuálního počítače v dané oblasti. Příklad: Pokud se pokoušíte ochránit virtuální počítače před Francie – střed Francie – jih a nezobrazí v oblasti Francie – jih rozevírací seznam, pak vaše předplatné nemá přístup k nasazení virtuálního počítače v dané oblasti. Zadejte soubor lístek podpory v části problém typu "Správa předplatného" a problém na předmět "ostatní obecné dotazy" "whitlelist předplatné XXX oblasti Azure"
+> - Pokud jste **zobrazíte v oblasti není možné** v rámci zeměpisné clusteru **při povolení replikace** pak Ujistěte se, že má vaše předplatné přístup k vytvoření virtuálního počítače v dané oblasti. Příklad: Pokud se pokoušíte ochránit virtuální počítače před Francie – střed Francie – jih a nezobrazí v oblasti Francie – jih rozevírací seznam, pak vaše předplatné nemá přístup k nasazení virtuálního počítače v dané oblasti. Zadejte soubor lístek podpory v části problém typu "Správa předplatného" a problém na předmět "ostatní obecné dotazy" "seznamu povolených IP adres předplatné XXX oblasti Azure"
 > - Nelze vybrat oblasti napříč geografické clustery uvedených výše.
 
 

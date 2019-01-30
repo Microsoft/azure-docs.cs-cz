@@ -7,16 +7,16 @@ author: diberry
 manager: cgronlun
 ms.custom: seodec18
 ms.service: cognitive-services
-ms.component: language-understanding
+ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 01/23/2019
 ms.author: diberry
-ms.openlocfilehash: 4b886dd3b2ecbdcd481eb3ee1d6fd8e1b270f479
-ms.sourcegitcommit: 97d0dfb25ac23d07179b804719a454f25d1f0d46
+ms.openlocfilehash: b1f52c79bfe66f28826ce532f63464f9437094dc
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/25/2019
-ms.locfileid: "54910761"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55208716"
 ---
 # <a name="collaborating-with-other-authors"></a>Spolupráce s jinými autory
 
