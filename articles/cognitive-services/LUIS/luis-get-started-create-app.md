@@ -7,16 +7,16 @@ author: diberry
 ms.custom: seodec18
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: language-understanding
+ms.subservice: language-understanding
 ms.topic: quickstart
 ms.date: 01/09/2019
 ms.author: diberry
-ms.openlocfilehash: 86a09d3d11f9b713bb6228498c072d80e7c45d6b
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.openlocfilehash: 1dc7c0d8f5b55b9fcbe2680470dcb1e8d352bcd2
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54261073"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55222623"
 ---
 # <a name="quickstart-use-prebuilt-home-automation-app"></a>Rychlý start: Použití předem připravené aplikace automatizace Domovská stránka
 

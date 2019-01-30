@@ -6,16 +6,16 @@ services: cognitive-services
 author: Jann-Skotdal
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: translator-text
+ms.subservice: translator-text
 ms.topic: conceptual
 ms.date: 03/27/2018
 ms.author: v-jansko
-ms.openlocfilehash: ce6446caf74e16f69369d5ee8ee7b6342870e826
-ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
+ms.openlocfilehash: 6fa468308bb7187111a6f7f65366d83eaadd9494
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52682586"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55227773"
 ---
 # <a name="translator-text-api-v2-to-v3-migration"></a>Translator Text API V2 na V3 migrace
 
@@ -41,16 +41,16 @@ Následující seznam metod V2 a V3 identifikuje rozhraní API, která poskytne 
 
 | V2 Metoda API   | V3 Kompatibilitu s rozhraními API |
 |:----------- |:-------------|
-| Translate     | [Překlad](reference/v3-0-translate.md)          |
-| TranslateArray      | [Překlad](reference/v3-0-translate.md)        |
+| Překlad     | [Translate](reference/v3-0-translate.md)          |
+| TranslateArray      | [Translate](reference/v3-0-translate.md)        |
 | GetLanguageNames      | [Jazyky](reference/v3-0-languages.md)         |
 | GetLanguagesForTranslate     | [Jazyky](reference/v3-0-languages.md)       |
 | GetLanguagesForSpeak      | [Microsoft Speech Service](https://docs.microsoft.com/azure/cognitive-services/speech-service/language-support#text-to-speech)         |
-| Speak     | [Microsoft Speech Service](https://docs.microsoft.com/azure/cognitive-services/speech-service/text-to-speech)          |
-| Detect     | [Zjištění](reference/v3-0-detect.md)         |
+| Řeči     | [Microsoft Speech Service](https://docs.microsoft.com/azure/cognitive-services/speech-service/text-to-speech)          |
+| Zjišťování     | [Zjištění](reference/v3-0-detect.md)         |
 | DetectArray     | [Zjištění](reference/v3-0-detect.md)         |
-| AddTranslation     | [Centrum Microsoft Translator API](https://hub.microsofttranslator.com/Help/Download/Microsoft%20Translator%20Hub%20API%20Guide.pdf)         |
-| AddTranslationArray    | [Centrum Microsoft Translator API](https://hub.microsofttranslator.com/Help/Download/Microsoft%20Translator%20Hub%20API%20Guide.pdf)          |
+| AddTranslation     | [Microsoft Translator Hub API](https://hub.microsofttranslator.com/Help/Download/Microsoft%20Translator%20Hub%20API%20Guide.pdf)         |
+| AddTranslationArray    | [Microsoft Translator Hub API](https://hub.microsofttranslator.com/Help/Download/Microsoft%20Translator%20Hub%20API%20Guide.pdf)          |
 | BreakSentences      | [BreakSentence](reference/v3-0-break-sentence.md)       |
 | GetTranslations      | Funkce se už nepodporuje.         |
 | GetTranslationsArray      | Funkce se už nepodporuje.         |
@@ -59,11 +59,11 @@ Následující seznam metod V2 a V3 identifikuje rozhraní API, která poskytne 
 
 Microsoft Translator Text překlad V2 přijmout a vrátil data ve formátu XML. Ve verzi 3 všech dat odeslaných a přijatých pomocí rozhraní API je ve formátu JSON. XML se už přijata nebo vráceny ve verzi 3.
 
-Tato změna bude týkat několik aspektů aplikace napsané pro rozhraní API pro překlad textu V2. Jako příklad: rozhraní API jazyků vrátí informace o jazyka pro překlady textů, přepis a metody dvě slovníku. Můžete požádat o všechny informace o jazyk pro všechny metody v jednom volání nebo o ně požádat samostatně.
+Tato změna bude týkat několik aspektů aplikace napsané pro rozhraní API pro překlad textu V2. Jako příklad: Rozhraní API pro jazyky vrátí informace o jazyka pro překlady textů, přepis a metody dvě slovníku. Můžete požádat o všechny informace o jazyk pro všechny metody v jednom volání nebo o ně požádat samostatně.
 
 Metoda jazyky nevyžaduje ověření; Po kliknutí na následující odkaz zobrazí všechny informace o jazyku pro V3 ve formátu JSON:
 
-[https://api.cognitive.microsofttranslator.com/languages?api-version=3.0&scope=translation, slovník, přepis](https://api.cognitive.microsofttranslator.com/languages?api-version=3.0&scope=translation,dictionary,transliteration)
+[https://api.cognitive.microsofttranslator.com/languages?api-version=3.0&scope=translation,dictionary,transliteration](https://api.cognitive.microsofttranslator.com/languages?api-version=3.0&scope=translation,dictionary,transliteration)
 
 ## <a name="authentication-key"></a>Ověřovací klíč
 
@@ -75,25 +75,25 @@ Microsoft Translator V3 se účtuje podle stejným způsobem, který se stanoví
 
 | Metoda v3   | Znaky počítá fakturace |
 |:----------- |:-------------|
-| Languages     | Odeslané žádné znaky, none nepočítají, žádné poplatky.          |
-| Translate     | Počet je založen na tom, kolik znaků se odešlou pro překlad a kolik jazycích jsou znaky přeloženy do. odeslání 50 znaků a 5 jazyky požadovaný bude 50 × 5.           |
+| Jazyky     | Odeslané žádné znaky, none nepočítají, žádné poplatky.          |
+| Překlad     | Počet je založen na tom, kolik znaků se odešlou pro překlad a kolik jazycích jsou znaky přeloženy do. odeslání 50 znaků a 5 jazyky požadovaný bude 50 × 5.           |
 | Transliterace     | Počet odeslaných k transkripci znaků, které se počítají.         |
-| Dictionary lookup & example     | Se počítají počet znaků, odešle ke slovníku lookup a examples.         |
+| Příklad & vyhledávací slovník     | Se počítají počet znaků, odešle ke slovníku lookup a examples.         |
 | BreakSentence     | Bez poplatků.       |
-| Detect     | Bez poplatků.      |
+| Zjišťování     | Bez poplatků.      |
 
 ## <a name="v3-end-points"></a>V3 koncové body
 
 Globální
 
-* API.cognitive.microsofttranslator.com
+* api.cognitive.microsofttranslator.com
 
 
 ## <a name="v3-api-text-translations-methods"></a>Metody překlady text v3 API
 
 [Jazyky](reference/v3-0-languages.md)
 
-[Překlad](reference/v3-0-translate.md)
+[Translate](reference/v3-0-translate.md)
 
 [Transkripce](reference/v3-0-transliterate.md)
 
@@ -113,10 +113,10 @@ Neurální překladové s V3 text API nepodporuje použití standardní kategori
 
 | |Koncový bod|    Dodržování předpisů GDPR procesoru|  Použití centra Translator| Použít vlastní Translator (Preview)|
 |:-----|:-----|:-----|:-----|:-----|
-|Translator Text API verze 2| API.microsofttranslator.com|    Ne  |Ano    |Ne|
-|Translator Text API verze 3| API.cognitive.microsofttranslator.com|  Ano|    Ne| Ano|
+|Translator Text API Version 2| api.microsofttranslator.com|    Ne  |Ano    |Ne|
+|Translator Text API Version 3| api.cognitive.microsofttranslator.com|  Ano|    Ne| Ano|
 
-**Translator Text API verze 3**
+**Translator Text API Version 3**
 * Je obecně dostupné a plně podporovaná.
 * Splňuje všechny požadavky 20001 a 20018 a SOC 3 certifikace ISO je jako zpracovatel dodržovat nařízení GDPR. 
 * Umožňuje vyvolat systémů překladu neuronové sítě, které jste upravili s vlastní překlady (Preview), nové funkce Translator NMT vlastního nastavení. 
@@ -124,7 +124,7 @@ Neurální překladové s V3 text API nepodporuje použití standardní kategori
 
 Pokud používáte api.cognitive.microsofttranslator.com koncový bod používáte verze 3 Translator Text API.
 
-**Translator Text API verze 2**
+**Translator Text API Version 2**
 * je zastaralý. To bude ukončena 30. dubna 2019. 
 * Nevyhovuje všechny ISO 20001,20018 a požadavky na certifikaci SOC 3. 
 * Neumožňuje k vyvolání systémů překladu neuronové sítě, které můžete přizpůsobit pomocí funkce Translator vlastního nastavení.

@@ -7,16 +7,16 @@ author: diberry
 manager: cgronlun
 ms.custom: seodec18
 ms.service: cognitive-services
-ms.component: language-understanding
+ms.subservice: language-understanding
 ms.topic: tutorial
 ms.date: 12/21/2018
 ms.author: diberry
-ms.openlocfilehash: bf4fd5d2a3a9bb06882dcd1b4674ccdf8ad894ee
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: 0dd08fa85ea443a11f14769b63502978eaa8a378
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53971405"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55221143"
 ---
 # <a name="tutorial-get-exact-text-matched-data-from-an-utterance"></a>Kurz: Získat data přesně odpovídající text z utterance
 
@@ -90,13 +90,13 @@ Primární, _kanonické_, název pro každou položku je název oddělení. Mezi
 
 |Název v kanonickém tvaru|Synonyma|
 |--|--|
-|Účetnictví|Acct<br>accting<br>3456|
+|Účetnictví|acct<br>accting<br>3456|
 |Vývoj pro operace|Vývoj a provoz<br>4949|
 |Strojírenství|"Eng"<br>nesmí<br>4567|
 |Finance|dokončení<br>2020|
-|Informační technologie|IT<br>. 2323|
+|Informační technologie|IT<br>2323|
 |Uvnitř prodeje|isale<br>insale<br>1414|
-|Výzkum a vývoj|R &AMP; D<br>1234|
+|Výzkum a vývoj|R&D<br>1234|
 
 1. Na levém panelu vyberte **Entities** (Entity).
 

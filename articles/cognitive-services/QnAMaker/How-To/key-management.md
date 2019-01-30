@@ -6,17 +6,17 @@ services: cognitive-services
 author: tulasim88
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: qna-maker
+ms.subservice: qna-maker
 ms.topic: article
 ms.date: 11/26/2018
 ms.author: tulasim
 ms.custom: seodec18
-ms.openlocfilehash: 2b199e10b1a70bc44065d422d32acd3bea182721
-ms.sourcegitcommit: 70471c4febc7835e643207420e515b6436235d29
+ms.openlocfilehash: 0d245215a61a526b448dd0aaafd6429b90b12b74
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2019
-ms.locfileid: "54302047"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55216126"
 ---
 # <a name="how-to-manage-keys-in-qna-maker"></a>Správa klíčů v nástroje QnA Maker
 

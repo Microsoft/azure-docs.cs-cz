@@ -6,16 +6,16 @@ services: cognitive-services
 author: fmegen
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: speech-service
+ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 09/24/2018
 ms.author: fmegen
-ms.openlocfilehash: b7779131a0fd30d263fa87f2e55c9642984d054b
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.openlocfilehash: 4b7386ad800bea69e7227554c5e4d71ba0c1c101
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49467954"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55213125"
 ---
 # <a name="about-the-speech-sdk-audio-input-stream-api"></a>O sadou SDK pro řeč zvukový vstup datového proudu rozhraní API
 
@@ -38,7 +38,7 @@ Následující kroky jsou potřeba při používání zvuk vstupní datové prou
 
 - Ujistěte se, že váš kód může poskytnout NEZPRACOVANÁ zvukových dat podle těchto specifikací. Pokud data zdroje zvuku neodpovídá podporované formáty, musí být zvuk převedou do požadovaného formátu.
 
-- Vytvoření vlastních zvukových vstupního datového proudu třídu odvozenou z `PullAudioInputStreamCallback`. Implementace `Read()` a `Close()` členy. Signatura funkce stejné je závislá na jazyku, ale kód bude vypadat podobně jako tato ukázka kódu:
+- Vytvoření vlastních zvukových vstupního datového proudu třídu odvozenou z `PullAudioInputStreamCallback`. Implementujte členy `Read()` a `Close()`. Signatura funkce stejné je závislá na jazyku, ale kód bude vypadat podobně jako tato ukázka kódu:
 
   ```
    public class ContosoAudioStream : PullAudioInputStreamCallback {

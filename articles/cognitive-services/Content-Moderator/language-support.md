@@ -6,16 +6,16 @@ services: cognitive-services
 author: sanjeev3
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: content-moderator
+ms.subservice: content-moderator
 ms.topic: article
 ms.date: 01/10/2019
 ms.author: sajagtap
-ms.openlocfilehash: 95e7f5ce52f4bcf45153b4e455c1427f7117641c
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.openlocfilehash: 91fe93df29717519e6bf3fcdb39b97b8ffde02d1
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54263649"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55225173"
 ---
 # <a name="language-support-for-content-moderator-api"></a>Podpora jazyků pro Content Moderator API
 

@@ -16,12 +16,13 @@ ms.date: 11/05/2018
 ms.author: jeffgilb
 ms.reviewer: anwestg
 ms.custom: mvc
-ms.openlocfilehash: f8a54436a61889e6d39c7e491e45c25e3b38236f
-ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
+ms.lastreviewed: 11/05/2018
+ms.openlocfilehash: e3ac94c91742f4a90f9ddd8c975d946bb918ac64
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51036782"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55244738"
 ---
 # <a name="tutorial-make-web-and-api-apps-available-to-your-azure-stack-users"></a>Kurz: zpřístupnění webové aplikace a aplikace API pro vaše uživatele Azure stacku
 

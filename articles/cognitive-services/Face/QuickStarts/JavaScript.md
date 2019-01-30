@@ -1,23 +1,23 @@
 ---
-title: 'Rychlý start: Rozpoznávání tváří na obrázku pomocí rozhraní REST API a JavaScriptu'
+title: 'Rychlý start: Rozpoznávání tváří v obrázku pomocí rozhraní REST API a JavaScript'
 titleSuffix: Azure Cognitive Services
 description: V tomto rychlém startu budete pomocí rozhraní API pro rozpoznávání tváře s JavaScriptem rozpoznávat tváře z obrázku ve službách Cognitive Services.
 services: cognitive-services
 author: PatrickFarley
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: face-api
+ms.subservice: face-api
 ms.topic: quickstart
 ms.date: 05/10/2018
 ms.author: pafarley
-ms.openlocfilehash: 0d0ff627ad2549ff9b6f09b6c934c5a17a102962
-ms.sourcegitcommit: 7804131dbe9599f7f7afa59cacc2babd19e1e4b9
+ms.openlocfilehash: 02066ac7425b5b4843ae8a74c37a928242f2a092
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/17/2018
-ms.locfileid: "51852363"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55225444"
 ---
-# <a name="quickstart-detect-faces-in-an-image-using-the-rest-api-and-javascript"></a>Rychlý start: Rozpoznávání tváří na obrázku pomocí rozhraní REST API a JavaScriptu
+# <a name="quickstart-detect-faces-in-an-image-using-the-rest-api-and-javascript"></a>Rychlý start: Rozpoznávání tváří v obrázku pomocí rozhraní REST API a JavaScript
 
 V tomto rychlém startu budete pomocí rozhraní API pro rozpoznávání tváře rozpoznávat tváře na obrázku.
 
@@ -29,9 +29,9 @@ Ke spuštění této ukázky budete potřebovat klíč předplatného. Klíče b
 
 Pomocí metody [Face - Detect](https://westcentralus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236) rozpoznejte tváře na obrázku a vraťte atributy tváře, včetně:
 
-* Face ID: jedinečná hodnota ID používaná v několika scénářích rozhraní API pro rozpoznávání tváře
-* Obdélník tváře: umístění tváře na obrázku vlevo a nahoře a šířka a výška obličeje
-* Rysy: soustava 27 bodů obličejových rysů odkazující na důležité polohy součástí obličeje.
+* Face ID: Jedinečné ID v několika situacích API pro rozpoznávání tváře.
+* Rámeček pro rozpoznávání tváře: Vlevo, horní, šířku a výšku označující umístění tvář na obrázku.
+* Zajímavá: Pole odkazující na důležité pozice tváří součásti památek 27 bodu pro rozpoznávání tváře.
 * Atributy obličeje včetně věku, pohlaví, intenzity úsměvu, pozice hlavy a vousů.
 
 Pokud chcete spustit ukázku, postupujte takto:

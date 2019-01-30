@@ -9,12 +9,12 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.custom: seodec18
-ms.openlocfilehash: 600651b6c9140aba178bf073675c49957987d10d
-ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
+ms.openlocfilehash: f4dbfae4bada77cf882f7249353a17defebf312e
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54844734"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55209345"
 ---
 # <a name="understand-stream-analytics-job-monitoring-and-how-to-monitor-queries"></a>Porozumění sledování úlohu Stream Analytics a monitorování dotazů
 
@@ -46,6 +46,8 @@ Jak je znázorněno, objeví se okno:
 | Chyby za běhu         | Celkový počet chyb souvisejících s zpracování dotazů (s výjimkou chyby při ingestování události nebo výsledky outputing) |
 | % využití SU       | Využití jednotek streamování přiřazené úlohy, z na kartě Měřítko úlohy. By měl tento ukazatel dosáhnou 80 % nebo vyšší, je vysoká pravděpodobnost, že zpracování událostí se může zpozdit nebo zastavená vidět pokrok. |
 | Zpoždění vodoznaku       | Meze maximální zpoždění mezi všechny oddíly všechny výstupy v rámci úlohy. |
+
+Můžete použít tyto metriky a [sledovat výkon vaší úlohy Stream Analytics](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-set-up-alerts#scenarios-to-monitor). 
 
 ## <a name="customizing-monitoring-in-the-azure-portal"></a>Přizpůsobení sledování na webu Azure Portal
 Můžete upravit typ grafu je vidět, metriky a časový rozsah v nastavení upravit graf. Podrobnosti najdete v tématu [jak přizpůsobit monitorování](../monitoring-and-diagnostics/insights-how-to-customize-monitoring.md).

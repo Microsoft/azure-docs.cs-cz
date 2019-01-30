@@ -7,16 +7,16 @@ author: diberry
 manager: cgronlun
 ms.custom: seodec18
 ms.service: cognitive-services
-ms.component: language-understanding
+ms.subservice: language-understanding
 ms.topic: article
 ms.date: 01/23/2019
 ms.author: diberry
-ms.openlocfilehash: d73b4e4db02c7cbed9c5693b4e8a0a44525f59f7
-ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
+ms.openlocfilehash: 57829d5656a49d4266ad56ea6e7605ac25420c95
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54881099"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55218950"
 ---
 # <a name="train-your-active-version-of-the-luis-app"></a>Trénování vaše aktivní verzi aplikace LUIS 
 

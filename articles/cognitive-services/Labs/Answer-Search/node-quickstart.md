@@ -5,16 +5,16 @@ services: cognitive-services
 author: mikedodaro
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: answer-search
+ms.subservice: answer-search
 ms.topic: quickstart
 ms.date: 04/13/2018
 ms.author: rosh
-ms.openlocfilehash: 3fd10bd08aa86458173dd1d88e2767f6f9ca4191
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.openlocfilehash: 2e79a2d248a81298cb1dd19415a0d9eb75a275c4
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55104330"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55224492"
 ---
 # <a name="quickstart-project-answer-search-with-node"></a>Rychlý start: Hledání odpovědí projektu s uzlem
 

@@ -5,16 +5,16 @@ description: Jak spravovat nastavení, vytvořte pracovní prostor, sdílení pr
 author: rajdeep-in
 manager: christw
 ms.service: cognitive-services
-ms.component: custom-translator
+ms.subservice: custom-translator
 ms.date: 11/13/2018
 ms.author: v-rada
 ms.topic: article
-ms.openlocfilehash: 7b6dd0ec271d335d1055381a8cb7256600be283f
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: 6fabbb57538f5e10e6cd91ebc109707045e54033
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51627300"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55227076"
 ---
 # <a name="how-to-manage-settings"></a>Jak spravovat nastavení
 
@@ -85,11 +85,11 @@ Ve vlastní Translator můžete sdílet váš pracovní prostor s jinými uživa
 
 ## <a name="sharing-permissions"></a>Oprávnění ke sdílení
 
-1.  **Čtenář:** čtečku v pracovním prostoru budou moct prohlížet všechny informace v pracovním prostoru. 
+1.  **Čtenář:** Čtečku v pracovním prostoru budou moct prohlížet všechny informace v pracovním prostoru. 
 
-2.  **Editor:** editoru v pracovním prostoru budete moct přidat dokumenty, trénování modelů a odstraňování dokumentů a projektů. Můžete přidat klíč předplatného, ale nelze upravit, který pracovní prostor se sdílí s, odstranit pracovní prostor nebo změnit název pracovního prostoru.
+2.  **Editor:** V pracovním prostoru editoru budete moci přidat dokumenty, trénování modelů a odstraňování dokumentů a projektů. Můžete přidat klíč předplatného, ale nelze upravit, který pracovní prostor se sdílí s, odstranit pracovní prostor nebo změnit název pracovního prostoru.
 
-3.  **Vlastník:** vlastníka má úplná oprávnění k pracovnímu prostoru.
+3.  **Vlastník:** Vlastníka má úplná oprávnění k pracovnímu prostoru.
 
 ## <a name="change-sharing-permission"></a>Změnit oprávnění pro sdílení obsahu
 

@@ -6,16 +6,16 @@ services: cognitive-services
 author: fmegen
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: speech-service
+ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 12/18/2018
 ms.author: fmegen
-ms.openlocfilehash: 0591ca0275c039ddb5828cb48bda2b0b305d7003
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: 86a57704b20790628a89bce0f8cda4e0599fd103
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53721377"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55220565"
 ---
 # <a name="quickstart-recognize-speech-with-the-speech-sdk-for-java"></a>Rychlý start: Rozpoznávání řeči se sadou SDK pro řeč pro Javu
 
@@ -80,6 +80,6 @@ Další ukázky, jako je čtení řeči z zvukový soubor, jsou k dispozici na G
 
 ## <a name="see-also"></a>Další informace najdete v tématech
 
-- [Rychlý start: Překlad řeči, jazyka Java (Windows, Linux)](quickstart-translate-speech-java-jre.md)
+- [Rychlé zprovoznění: Překlad řeči, jazyka Java (Windows, Linux)](quickstart-translate-speech-java-jre.md)
 - [Přizpůsobení akustických modelů](how-to-customize-acoustic-models.md)
 - [Přizpůsobení jazykových modelů](how-to-customize-language-model.md)

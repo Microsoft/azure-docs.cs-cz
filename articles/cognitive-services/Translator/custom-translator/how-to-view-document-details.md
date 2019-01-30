@@ -5,18 +5,18 @@ description: Stránka seznamu dokumentu ukazuje prvních 10 dokumentu ve vašem 
 author: rajdeep-in
 manager: christw
 ms.service: cognitive-services
-ms.component: custom-translator
+ms.subservice: custom-translator
 ms.date: 11/13/2018
 ms.author: v-rada
 ms.topic: how to edit a model
-ms.openlocfilehash: fe108831f173eb31af79a2f8e5f7faf57015c38a
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: e656c6dd7050851eb9885fe253ab29f4e3675216
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51627317"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55219800"
 ---
-# <a name="view-document-details"></a>Zobrazit podrobnosti dokumentu
+# <a name="view-document-details"></a>Zobrazení podrobností o dokumentu
 
 Stránka seznamu dokumentu ukazuje prvních 10 dokumentu ve vašem pracovním prostoru. Pro každou z dokumentů zobrazí název, párování, typ, jazyk, časové razítko odeslání a e-mailovou adresu uživatele, který nahraje dokumentu.
 

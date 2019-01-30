@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 12/27/2018
 ms.author: sethm
-ms.openlocfilehash: ab82e604eb1af3d5e64571b115dc48d213466328
-ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
+ms.lastreviewed: 12/27/2018
+ms.openlocfilehash: e7a22e6699a69bf89a9c3828433affa0a212116f
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/19/2019
-ms.locfileid: "54414826"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55240773"
 ---
 # <a name="vpn-gateway-configuration-settings-for-azure-stack"></a>Konfigurace nastavení služby VPN gateway pro Azure Stack
 
@@ -169,7 +170,7 @@ Na rozdíl od Azure, která podporuje několik nabídek jako iniciátor i respon
 
 ### <a name="ike-phase-1-main-mode-parameters"></a>Parametry protokolu IKE fáze 1 (hlavní režim)
 
-| Vlastnost              | Hodnota|
+| Vlastnost              | Value|
 |-|-|
 | Verze IKE           | IKEv2 |
 |Skupina Diffie-Hellman   | Skupina 2 (1 024 bitů) |
@@ -179,7 +180,7 @@ Na rozdíl od Azure, která podporuje několik nabídek jako iniciátor i respon
 
 ### <a name="ike-phase-2-quick-mode-parameters"></a>Parametry protokolu IKE fáze 2 (rychlý režim)
 
-| Vlastnost| Hodnota|
+| Vlastnost| Value|
 |-|-|
 |Verze IKE |IKEv2 |
 |Šifrování a hash algoritmy (šifrování)     | GCMAES256|

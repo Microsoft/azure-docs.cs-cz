@@ -7,16 +7,16 @@ author: diberry
 manager: cgronlun
 ms.custom: seodec18
 ms.service: cognitive-services
-ms.component: language-understanding
+ms.subservice: language-understanding
 ms.topic: quickstart
 ms.date: 01/23/2019
 ms.author: diberry
-ms.openlocfilehash: 2a400603f37755069367f1cc16fcd75e3b009bf2
-ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
+ms.openlocfilehash: 9d8010cff82047db570caf447f5bf18e2bbf4ebd
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54847131"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55207475"
 ---
 # <a name="quickstart-change-model-using-python"></a>Rychlý start: Změnit model pomocí Pythonu
 

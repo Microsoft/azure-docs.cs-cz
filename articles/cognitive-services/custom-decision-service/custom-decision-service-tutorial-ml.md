@@ -1,27 +1,27 @@
 ---
-title: 'Kurz: Funkcionalizace a specifikace funkcí – Custom Decision Service'
+title: 'Kurz: Snadné a funkce specifikace – Custom Decision Service'
 titlesuffix: Azure Cognitive Services
 description: Kurz pro funkcionalizaci a specifikaci funkcí strojového učení ve službě Custom Decision Service.
 services: cognitive-services
 author: slivkins
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: custom-decision-service
+ms.subservice: custom-decision-service
 ms.topic: tutorial
 ms.date: 05/08/2018
 ms.author: slivkins
-ms.openlocfilehash: 1e5d012706d1de5a201eecb8ad805b4d6faaf411
-ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
-ms.translationtype: HT
+ms.openlocfilehash: 1c701cbe1a71ed48c71a9441c05a7fb4b63e3814
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48869582"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55226056"
 ---
-# <a name="tutorial-featurization-and-feature-specification"></a>Kurz: Funkcionalizace a specifikace funkcí
+# <a name="tutorial-featurization-and-feature-specification"></a>Kurz: Specifikace snadné a funkce
 
 Tento kurz se zabývá pokročilým strojovým učením ve službě Custom Decision Service. Kurz se skládá ze dvou částí: [funkcionalizace](#featurization-concepts-and-implementation) a [specifikace funkcí](#feature-specification-format-and-apis). Funkcionalizací se rozumí reprezentace vašich dat ve formě „funkcí“ pro účely strojového učení. Specifikace funkcí pak zabývá formátem JSON a pomocnými rozhraními API pro zadávání funkcí.
 
-Strojové učení ve službě Custom Decision Service je ve výchozím nastavení pro zákazníka transparentní. Z vašeho obsahu se automaticky extrahují funkce a použije se standardní algoritmus zpětnovazebního učení. Extrakce funkcí využívá několik dalších služeb Azure Cognitive Services: [spojování entit](../entitylinking/home.md), [analýzu textu](../text-analytics/overview.md), [rozpoznávání emocí](../emotion/home.md) a [počítačové zpracování obrazu](../computer-vision/home.md). Pokud budete používat pouze výchozí režim služby, můžete tento kurz přeskočit.
+Strojové učení ve službě Custom Decision Service je ve výchozím nastavení pro zákazníka transparentní. Z vašeho obsahu se automaticky extrahují funkce a použije se standardní algoritmus zpětnovazebního učení. Extrakce funkce využívá několik dalších služeb Azure Cognitive Services: [Propojování entit](../entitylinking/home.md), [rozhraní Text Analytics](../text-analytics/overview.md), [pro rozpoznávání Emocí](../emotion/home.md), a [pro počítačové zpracování obrazu](../computer-vision/home.md). Pokud budete používat pouze výchozí režim služby, můžete tento kurz přeskočit.
 
 ## <a name="featurization-concepts-and-implementation"></a>Funkcionalizace: koncepty a implementace
 
@@ -29,7 +29,7 @@ Služba Custom Decision Service dělá rozhodnutí, jedno po druhém. Každé ro
 
 Jako příklad si vezměme personalizaci výběru článků na úvodní stránce webu. Akce v tomto případě odpovídají článkům a rozhodnutí tkví v tom, které články se mají zobrazit danému uživateli.
 
-Každá akce je reprezentována vektorem vlastností, které budete odteď označovat *funkce*. Kromě funkcí extrahovaných automaticky můžete zadat i nové funkce. Můžete také službě Custom Decision Service dát instrukce, aby některé funkce zapsala, ale pro strojové učení je pak ignorovala.
+Každá akce je reprezentována vektorem vlastností, které se budou dále označovat jako *funkce*. Kromě funkcí extrahovaných automaticky můžete zadat i nové funkce. Můžete také službě Custom Decision Service dát instrukce, aby některé funkce zapsala, ale pro strojové učení je pak ignorovala.
 
 ### <a name="native-vs-internal-features"></a>Nativní vs. interní funkce
 
@@ -40,12 +40,12 @@ Překlad na interní funkce probíhá následovně:
 - Číselná funkce zůstane stejná.
 - Numerické pole se přeloží na několik číselných funkcí, jednu pro každý prvek pole.
 - Funkce s řetězcovou hodnotou `"Name":"Value"` se ve výchozím nastavení přeloží na funkci s názvem `"NameValue"` a hodnotou 1.
-- Volitelně může být řetězec reprezentován jako [množina slov (bag-of-words)](https://en.wikipedia.org/wiki/Bag-of-words_model). Potom se vytvoří jedna interní funkce se pro každé slovo v řetězci a její hodnota je počet výskytů tohoto slova.
+- Volitelně může být řetězec reprezentován jako [množina slov (bag-of-words)](https://en.wikipedia.org/wiki/Bag-of-words_model). Potom se vytvoří jedna interní funkce pro každé slovo v řetězci a její hodnota je počet výskytů tohoto slova.
 - Interní funkce s nulovou hodnotou jsou vynechány.
 
 ### <a name="shared-vs-action-dependent-features"></a>Sdílené funkce a funkce závislé na akci
 
-Některé funkce se vztahují na celé rozhodnutí a jsou stejné pro všechny akce. Ty označujeme *sdílené funkce*. Jiné funkce jsou specifické pro konkrétní akci. Označujeme je *funkce závislé na akci* (ADF).
+Některé funkce se vztahují na celé rozhodnutí a jsou stejné pro všechny akce. Ty označujeme jako *sdílené funkce*. Jiné funkce jsou specifické pro konkrétní akci. Označujeme je jako *funkce závislé na akci* (ADF).
 
 V dříve uvedeném příkladu můžou sdílené funkce popisovat uživatele nebo stav okolního světa. Patří sem funkce jako zeměpisná poloha, věk a pohlaví uživatele a významné události, které právě probíhají. Funkce závislé na akci by mohly popisovat vlastnosti daného článku, například témata, kterých se článek týká.
 

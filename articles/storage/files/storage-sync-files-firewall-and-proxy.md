@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 11/26/2018
 ms.author: fauhse
 ms.component: files
-ms.openlocfilehash: aa01ffc196ba6ece41fac9a95db04b58ad962060
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.openlocfilehash: 273d6b730f4b92da83e43a8fec3c1188e8111313
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54259814"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55224458"
 ---
 # <a name="azure-file-sync-proxy-and-firewall-settings"></a>Nastavení proxy a firewallu Synchronizace souborů Azure
 Azure File Sync se připojí k Azure Files umožňuje synchronizaci více webů a funkce vrstvení cloudu na místních serverech. V důsledku toho musí být na místním serveru připojený k Internetu. Správce IT je potřeba rozhodnout nejlepší cestu pro server k získání přístupu do cloudových služeb Azure.
@@ -144,3 +144,4 @@ Nastavení domény omezení pravidel brány firewall může být míra pro vylep
 ## <a name="next-steps"></a>Další postup
 - [Plánování nasazení služby Azure File Sync](storage-sync-files-planning.md)
 - [Nasazení služby Azure File Sync](storage-sync-files-deployment-guide.md)
+- [Monitorování Azure File Sync](storage-sync-files-monitoring.md)

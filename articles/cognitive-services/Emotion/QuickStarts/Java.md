@@ -1,23 +1,23 @@
 ---
-title: 'Rychlý start: Rozpoznávání emocí ve výrazech tváří na obrázku – rozhraní API pro rozpoznávání emocí, Java'
+title: 'Rychlý start: Na tváří v jazyce Java obrázek – rozhraní API pro rozpoznávání Emocí, rozpoznávání emocí'
 description: Získáte informace a ukázku kódu, které vám pomůžou rychle začít používat rozhraní API pro rozpoznávání emocí založené na Javě pro Android.
 services: cognitive-services
 author: anrothMSFT
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: emotion-api
+ms.subservice: emotion-api
 ms.topic: quickstart
 ms.date: 05/23/2017
 ms.author: anroth
 ROBOTS: NOINDEX
-ms.openlocfilehash: 5c845c07eff2d4627dd756a49f4b3fee2fca6a7a
-ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
-ms.translationtype: HT
+ms.openlocfilehash: a3250771c51495890c54060dc46b8bd88a8f54af
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48237616"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55228674"
 ---
-# <a name="quickstart-build-an-app-to-recognize-emotions-on-faces-in-an-image"></a>Rychlý start: Vytvoření aplikace pro rozpoznávání emocí ve výrazech tváří na obrázku
+# <a name="quickstart-build-an-app-to-recognize-emotions-on-faces-in-an-image"></a>Rychlý start: Vytvářejte aplikace pro rozpoznávání emocí na tváří v obrázku.
 
 > [!IMPORTANT]
 > Rozhraní API pro rozpoznávání emocí se přestane používat 15. února 2019. Funkce rozpoznávání emocí je teď obecně dostupná v rámci [rozhraní API pro rozpoznávání tváře](https://docs.microsoft.com/azure/cognitive-services/face/). 
@@ -83,7 +83,7 @@ public class Main
 ```
 
 ## <a name="recognize-emotions-sample-response"></a>Ukázka odpovědi rozpoznávání emocí
-Úspěšné volání vrátí pole položek tváří s přidruženým skóre rozpoznávání emocí, které bude seřazené podle velikosti obdélníku s tváří v sestupném pořadí. Prázdná odpověď znamená, že se nezjistily žádné tváře. Položka rozpoznávání emocí obsahuje následující pole:
+Úspěšné volání vrátí pole položek tváří s přidruženým skóre rozpoznávání emocí, které bude seřazené podle velikosti obdélníku tváře v sestupném pořadí. Prázdná odpověď znamená, že se nezjistily žádné tváře. Položka rozpoznávání emocí obsahuje následující pole:
 * faceRectangle – umístění obdélníku tváře na obrázku.
 * scores – skóre rozpoznávání emocí pro jednotlivé tváře na obrázku.
 

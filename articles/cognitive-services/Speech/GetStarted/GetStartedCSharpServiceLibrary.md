@@ -6,18 +6,18 @@ services: cognitive-services
 author: zhouwangzw
 manager: wolfma
 ms.service: cognitive-services
-ms.component: bing-speech
+ms.subservice: bing-speech
 ms.topic: article
 ms.date: 09/18/2018
 ms.author: zhouwang
-ms.openlocfilehash: e9b3d3207f5aca6cba3555ba2578b5c66b3bd193
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
+ms.openlocfilehash: 79ed6f1d2dc5495994d2522abf5af391cc79b705
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49343687"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55226039"
 ---
-# <a name="quickstart-use-the-bing-speech-recognition-service-library-in-c35-for-net-windows"></a>Rychlý start: Použití knihovny služby rozpoznávání řeči Bingu v jazyce C&#35; pro Windows rozhraní .NET
+# <a name="quickstart-use-the-bing-speech-recognition-service-library-in-c35-for-net-windows"></a>Rychlý start: Použít knihovnu pro zpracování řeči Bingu rozpoznávání služby v jazyce C&#35; pro Windows rozhraní .NET
 
 [!INCLUDE [Deprecation note](../../../../includes/cognitive-services-bing-speech-api-deprecation-note.md)]
 
@@ -29,7 +29,7 @@ Následující části popisují, jak nainstalovat, sestavení a spuštění uk�
 
 ## <a name="prerequisites"></a>Požadavky
 
-### <a name="platform-requirements"></a>Požadavky na platformu
+### <a name="platform-requirements"></a>Požadavky platformy
 
 V následujícím příkladu byla vyvinuta pro Windows 8 + a .NET 4.5 + Framework pomocí [Visual Studio 2015, Community Edition](https://www.visualstudio.com/products/visual-studio-community-vs).
 
@@ -46,7 +46,7 @@ Rozhraní Speech API je součástí služeb Cognitive Services (dříve Project 
 >
 > * Použijte váš klíč předplatného. U zadané služby knihovny ukázkové aplikace v C# je třeba jako jeden z parametrů příkazového řádku zadejte klíč předplatného. Další informace najdete v tématu [spuštění ukázkové aplikace](#step-3-run-the-sample-application).
 
-## <a name="step-1-install-the-sample-application"></a>Krok 1: Instalace ukázkové aplikace
+## <a name="step-1-install-the-sample-application"></a>Krok 1: Nainstalovat ukázkovou aplikaci
 
 1. Spusťte Visual Studio 2015 a vyberte **souboru** > **otevřít** > **projekt či řešení**.
 
@@ -64,17 +64,17 @@ Stiskněte kombinaci kláves Ctrl + Shift + B nebo vyberte **sestavení** na pá
 
 3. Spustit `SpeechClientSample.exe` s následujícími argumenty:
 
-   * Arg [0]: Zadejte vstupní zvukový soubor WAV.
+   * Arg [0]: Určení vstupního zvuku WAV souboru.
    * Arg [1]: Určete zvuku národní prostředí.
-   * Argument [2]: Zadejte rozpoznávání režimy: *krátký* pro `ShortPhrase` režimu a *dlouhé* pro `LongDictation` režimu.
+   * Argument [2]: Zadejte režimy rozpoznávání: *Krátký* pro `ShortPhrase` režimu a *dlouhé* pro `LongDictation` režimu.
    * Argument [3]: Zadejte klíč předplatného pro přístup ke službě rozpoznávání řeči.
 
 ## <a name="samples-explained"></a>Vysvětlení ukázky
 
 ### <a name="recognition-modes"></a>Rozpoznávání režimy
 
-* `ShortPhrase` režim: utterance až do 15 sekund dlouho. Jak se odešlou na server, obdrží klient několik částečných výsledků a jeden konečný výsledek nejlepší.
-* `LongDictation` režim: utterance až 10 minut dlouhé. Jak se odešlou na server, obdrží klient několik částečných výsledků a několik konečných výsledků podle označuje, kde server pozastaví věty.
+* `ShortPhrase` režim: Utterance až do 15 sekund. Jak se odešlou na server, obdrží klient několik částečných výsledků a jeden konečný výsledek nejlepší.
+* `LongDictation` režim: Utterance až 10 minut dlouhé. Jak se odešlou na server, obdrží klient několik částečných výsledků a několik konečných výsledků podle označuje, kde server pozastaví věty.
 
 ### <a name="supported-audio-formats"></a>Podporované formáty zvuku
 
@@ -88,7 +88,7 @@ Rozhraní Speech API podporuje audio/WAV pomocí následující kodeky:
 
 K vytvoření SpeechClient, musíte nejprve vytvořit objekt předvolby. Objekt předvolby je sadu parametrů, které konfiguruje chování služby řeči. Skládá se z těchto polí:
 
-* `SpeechLanguage`: Národní prostředí zvuku zaslané službě řeči.
+* `SpeechLanguage`: Národní prostředí zvuk zaslané službě řeči.
 * `ServiceUri`: Koncový bod používá k volání služby řeči.
 * `AuthorizationProvider`: Implementace IAuthorizationProvider slouží k načtení tokeny pro přístup ke službě řeči. I když tento vzorový zprostředkovatele autorizace služby Cognitive Services, důrazně doporučujeme vytvořit vlastní implementaci pro zpracování, ukládání tokenu do mezipaměti.
 * `EnableAudioBuffering`: Upřesňující možnosti. Zobrazit [správu připojení](#connection-management).
@@ -97,7 +97,7 @@ K vytvoření SpeechClient, musíte nejprve vytvořit objekt předvolby. Objekt 
 
 Objekt SpeechInput se skládá ze dvou polí:
 
-* **Zvukový**: implementace datového proudu podle vašeho výběru, ze kterého stáhne sada SDK zvuku. Může být kterýkoli [stream](https://msdn.microsoft.com/library/system.io.stream(v=vs.110).aspx) , který podporuje čtení.
+* **Zvuk**: Datový proud provádění podle vašeho výběru, ze kterého stáhne sada SDK zvuku. Může být kterýkoli [stream](https://msdn.microsoft.com/library/system.io.stream(v=vs.110).aspx) , který podporuje čtení.
    > [!NOTE]
    > Sada SDK rozpozná konce datového proudu, pokud vrací datový proud **0** ve čtení.
 
@@ -122,7 +122,7 @@ Tato událost volána pokaždé, když Speech Service předpovídá, co vám mů
 **Vrátí formát** | Popis |
 ------|------
 **LexicalForm** | Tento formulář je ideální pro použití u aplikací, které je třeba výsledky rozpoznávání řeči a nezpracované.
-**ZobrazenýText** | Rozpoznaný fráze s inverzní text normalizace, malá a velká písmena, interpunkce a maskování vulgárních výrazů, které jsou použity. Vulgárních výrazů je maskována hvězdičkami po počátečním znaku, například "d ***." Tento formulář je ideální pro použití u aplikací, které zobrazují výsledky rozpoznávání řeči pro uživatele.
+**DisplayText** | Rozpoznaný fráze s inverzní text normalizace, malá a velká písmena, interpunkce a maskování vulgárních výrazů, které jsou použity. Vulgárních výrazů je maskována hvězdičkami po počátečním znaku, například "d ***." Tento formulář je ideální pro použití u aplikací, které zobrazují výsledky rozpoznávání řeči pro uživatele.
 **spolehlivosti** | Úroveň spolehlivosti rozpoznanou frázi představuje pro přidružené zvuk serverem rozpoznávání řeči.
 **MediaTime** | Aktuální čas vzhledem k začátku zvukový datový proud (v časových jednotkách 100 nanosekund).
 **MediaDuration** | Aktuální frázi doba trvání/délka vzhledem k zvuku segment (v časových jednotkách 100 nanosekund).

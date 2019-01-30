@@ -7,16 +7,16 @@ author: diberry
 manager: cgronlun
 ms.custom: seodec18
 ms.service: cognitive-services
-ms.component: language-understanding
+ms.subservice: language-understanding
 ms.topic: article
 ms.date: 01/23/2019
 ms.author: diberry
-ms.openlocfilehash: 9f0a7e9af4364ed7d34acdb106481cc39ce32a6a
-ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
+ms.openlocfilehash: dce0a34ea9d195748c47dd30cdd5f591ba597c2f
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54885069"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55228147"
 ---
 # <a name="add-luis-results-to-application-insights-with-a-bot-in-c"></a>Přidání LUIS výsledky do Application Insights s využitím Botu vC#
 

@@ -7,16 +7,16 @@ author: tulasim88
 manager: cgronlun
 ms.custom: seodec18
 ms.service: cognitive-services
-ms.component: qna-maker`
+ms.subservice: qna-maker`
 ms.topic: article
 ms.date: 01/24/2019
 ms.author: tulasim
-ms.openlocfilehash: 74c021788b5fb0cfaa3c2bd8956fc1de4721881c
-ms.sourcegitcommit: 97d0dfb25ac23d07179b804719a454f25d1f0d46
+ms.openlocfilehash: 428aea5775c1777f38d7ea563cfe3af700c27f02
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/25/2019
-ms.locfileid: "54911084"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55211827"
 ---
 # <a name="tutorial-create-a-qna-bot-with-azure-bot-service-v3"></a>Kurz: Vytváření QnA robotů s využitím Azure Bot Service v3
 

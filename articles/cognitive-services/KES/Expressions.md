@@ -6,16 +6,16 @@ services: cognitive-services
 author: bojunehsu
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: knowledge-exploration
+ms.subservice: knowledge-exploration
 ms.topic: conceptual
 ms.date: 03/26/2016
 ms.author: paulhsu
-ms.openlocfilehash: bdde2dfc9ab8e8ffdf7123c916538a8c98ecfce9
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.openlocfilehash: 335bcc025d2f3e972a02234da89e35c90c91afeb
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46129161"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55222690"
 ---
 # <a name="structured-query-expression"></a>Výraz strukturovaných dotazů
 
@@ -29,17 +29,17 @@ Výrazy strukturovaných dotazů mohou pocházet od [ *interpretovat* ](interpre
 
 Výraz dotazu atribut identifikuje sadu objektů na základě shody s konkrétním atributem.  Podporovány jsou různé odpovídající operace v závislosti na typu atributu a indexované operaci zadané v [schématu](SchemaFormat.md):
 
-| Typ | Operace | Příklady |
+| Type | Operace | Příklady |
 |------|-------------|------------|
 | Řetězec | rovná se | Název = "skryté sémantické analýzy" (canonical + synonym) |
 | Řetězec | rovná se | Author.Name=='susan t dumais (canonical jenom)|
 | Řetězec | starts_with | Název = 'skryté s'... |
 | Datový typ Int32 nebo Int64/Double | rovná se | Rok = 2000 |
 | Datový typ Int32 nebo Int64/Double | starts_with | Rok = "20"... (žádné Desítková hodnota začíná "20") |
-| Datový typ Int32 nebo Int64/Double | is_between | Rok&lt;2000 <br/> Rok&lt;= 2000 <br/> Rok&gt;2000 <br/> Rok&gt;= 2000 <br/> Year=[2010,2012) *(obsahuje hodnotu hranice pouze vlevo: 2010, 2011)* <br/> Rok = [2000,2012] *(zahrnuje obě hodnoty hranic: 2010, 2011, 2012)* |
-| Datum | rovná se | Datum narození = "1984-05-14. |
+| Datový typ Int32 nebo Int64/Double | is_between | Rok&lt;2000 <br/> Rok&lt;= 2000 <br/> Rok&gt;2000 <br/> Rok&gt;= 2000 <br/> Year=[2010,2012) *(obsahuje hodnotu pouze levé hranice: 2010, 2011)* <br/> Rok = [2000,2012] *(zahrnuje obě hodnoty hranic: 2010, 2011, 2012)* |
+| Datum | rovná se | BirthDate='1984-05-14' |
 | Datum | is_between | Datum narození&lt;= "2008/03/14' <br/> PublishDate = ["2000-01-01", "2009-12-31'] |
-| Guid | rovná se | ID = "602DD052-CC47-4B23-A16A-26B52D30C05B. |
+| Guid | rovná se | Id='602DD052-CC47-4B23-A16A-26B52D30C05B' |
 
 
 Například výraz "Title = 'latentní s'..." odpovídá všechny academic publikace, jejichž název začíná řetězcem "latentní s".  Aby bylo možné vyhodnotit tento výraz, musíte zadat atribut název operace "starts_with" ve schématu použit k vytvoření indexu.

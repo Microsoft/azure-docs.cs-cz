@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry
-ms.openlocfilehash: 601246ab537c72e787c25d43a190111983c2b350
-ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
+ms.openlocfilehash: 9375b042885459ab88b7c1f2a76a471da55ff5c8
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/26/2019
-ms.locfileid: "55075597"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55209532"
 ---
 # <a name="tutorial-azure-ad-password-reset-from-the-login-screen"></a>Kurz: Resetování hesla Azure AD z přihlašovací obrazovky
 
@@ -28,11 +28,11 @@ V tomto kurzu povolíte uživatelům resetovat svá hesla z přihlašovací obra
 
 ## <a name="prerequisites"></a>Požadavky
 
-* Aktualizace Windows 10 z dubna 2018 nebo novější klient, který je:
-   * [Počítač připojená k Azure AD](../device-management-azure-portal.md) nebo
-   * [Hybridní služby Azure AD připojená k počítači](../device-management-hybrid-azuread-joined-devices-setup.md), s připojením k řadiči domény.
-* Samoobslužné resetování hesla Azure AD musí být povolené.
-* Pokud vaše počítačů s Windows 10 jsou za proxy server nebo bránu firewall, přenosy HTTPS (443) k `passwordreset.microsoftonline.com` a `ajax.aspnetcdn.com` by mělo být povoleno.
+* Musíte spuštěné aspoň Windows 10. dubna 2018 verze aktualizací a zařízení musí být buď:
+   * [Azure AD připojený](../device-management-azure-portal.md) nebo
+   * [Hybridní Azure připojené k AD](../device-management-hybrid-azuread-joined-devices-setup.md), s připojením k řadiči domény.
+* Je nutné povolit Azure AD samoobslužné resetování hesla.
+* Pokud vaše zařízení s Windows 10 jsou za proxy server nebo brána firewall, je nutné přidat adresy URL, `passwordreset.microsoftonline.com` a `ajax.aspnet.cdn.com` do seznamu povolené adresy URL HTTPS provoz (port 443).
 
 ## <a name="configure-reset-password-link-using-intune"></a>Konfigurace odkazu na resetování hesla pomocí Intune
 

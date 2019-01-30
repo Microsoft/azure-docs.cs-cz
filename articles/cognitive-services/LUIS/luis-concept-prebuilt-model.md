@@ -7,16 +7,16 @@ author: diberry
 manager: cgronlun
 ms.custom: seodec18
 ms.service: cognitive-services
-ms.component: language-understanding
+ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 01/24/2019
 ms.author: diberry
-ms.openlocfilehash: 75644fd94e6e00e92547cd9e1d42b26c6a55807f
-ms.sourcegitcommit: 97d0dfb25ac23d07179b804719a454f25d1f0d46
+ms.openlocfilehash: beed7f428576605c870288ed464e782cd4955111
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/25/2019
-ms.locfileid: "54910624"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55218712"
 ---
 # <a name="prebuilt-domain-intent-and-entity-models"></a>Předem připravené modely entity, domény a záměr
 

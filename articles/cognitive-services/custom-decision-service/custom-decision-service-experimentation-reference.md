@@ -6,16 +6,16 @@ services: cognitive-services
 author: marco-rossi29
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: custom-decision-service
+ms.subservice: custom-decision-service
 ms.topic: conceptual
 ms.date: 05/10/2018
 ms.author: marossi
-ms.openlocfilehash: eec2c82b779fa5421bc9ac58107ef56f8c71bd1e
-ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
+ms.openlocfilehash: 90a99d4910b0afb885b415760f6a7ef1ca2aec33
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46366543"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55219817"
 ---
 # <a name="experimentation"></a>Experimentování
 
@@ -36,7 +36,7 @@ Pomocí souboru protokolu služby experimentování ve službě snaží najít z
 * Testy slova.
 * Funkce kvadratické interakce testy:
    * **fáze útoku hrubou silou**: Testuje všechny kombinace s `--q_bruteforce_terms` dvojice nebo méně.
-   * **greedy fáze**: Přidá nejlepší dvojici, dokud nedojde k žádné vylepšení pro `--q_greedy_stop` zaokrouhlí.
+   * **greedy fáze**: Přidá dvojici nejlepší, dokud nedojde k žádné vylepšení pro `--q_greedy_stop` zaokrouhlí.
 * Provádí druhý úklidu hyperparametry (`learning rate`, `L1 regularization`, a `power_t`).
 
 Parametry, které řídí tyto kroky zahrnují některé Vowpal Wabbit argumenty:
@@ -53,13 +53,13 @@ Parametry, které řídí tyto kroky zahrnují některé Vowpal Wabbit argumenty
 Podrobné vysvětlení výše uvedené argumenty, najdete v článku [argumenty příkazového řádku Vowpal Wabbit](https://github.com/JohnLangford/vowpal_wabbit/wiki/Command-line-arguments).
 
 ## <a name="prerequisites"></a>Požadavky
-- Vowpal Wabbit: Instalaci a na vaší cestě.
-  - Windows: [použití `.msi` instalační program](https://github.com/eisber/vowpal_wabbit/releases).
-  - Jiné platformy: [získat zdrojový kód](https://github.com/JohnLangford/vowpal_wabbit/releases).
-- Python 3: Nainstalovat a na vaší cestě.
-- NumPy: Použití Správce balíčků podle vašeho výběru.
+- Vowpal Wabbit: Nainstalovaný a na vaší cestě.
+  - Windows: [Použití `.msi` instalační program](https://github.com/eisber/vowpal_wabbit/releases).
+  - Jiné platformy: [Získat zdrojový kód](https://github.com/JohnLangford/vowpal_wabbit/releases).
+- Python 3: Nainstalovaný a na vaší cestě.
+- NumPy: Pomocí Správce balíčků podle vašeho výběru.
 - *Microsoft/mwt-ds* úložiště: [Naklonujte úložiště](https://github.com/Microsoft/mwt-ds).
-- Soubor protokolu služby JSON rozhodnutí: ve výchozím nastavení, zahrnuje základní příkaz `--dsjson`, umožňující analýza formátu JSON služby rozhodnutí o vstupní data. [Získat příkladem tento formát](https://github.com/JohnLangford/vowpal_wabbit/blob/master/test/train-sets/decisionservice.json).
+- Soubor protokolu služby JSON rozhodnutí: Ve výchozím nastavení, zahrnuje základní příkaz `--dsjson`, což umožňuje analýza formátu JSON služby rozhodnutí o vstupní data. [Získat příkladem tento formát](https://github.com/JohnLangford/vowpal_wabbit/blob/master/test/train-sets/decisionservice.json).
 
 ## <a name="usage"></a>Využití
 Přejděte na `mwt-ds/DataScience` a spusťte `Experimentation.py` s příslušnými argumenty, jak je uvedeno v následujícím kódu:

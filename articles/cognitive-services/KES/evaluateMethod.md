@@ -6,16 +6,16 @@ services: cognitive-services
 author: bojunehsu
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: knowledge-exploration
+ms.subservice: knowledge-exploration
 ms.topic: conceptual
 ms.date: 03/26/2016
 ms.author: paulhsu
-ms.openlocfilehash: 45b25ec5cfc6e198b9b125675f4942463cef247a
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.openlocfilehash: d6ddb76954108c037dc4135393df8622c9dbd101
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46128260"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55220769"
 ---
 # <a name="evaluate-method"></a>vyhodnocení metody
 
@@ -27,9 +27,9 @@ Výraz obvykle budou získány z odpovědí na metodu interpretaci.  Ale můžet
 
 `http://<host>/evaluate?expr=<expr>&attributes=<attrs>[&<options>]`   
 
-Název|Hodnota|Popis
+Name|Value|Popis
 ----|----|----
-výraz       | Textový řetězec | Výraz strukturovaných dotazů, který vybere podmnožinu index entity.
+expr       | Textový řetězec | Výraz strukturovaných dotazů, který vybere podmnožinu index entity.
 Atributy | Textový řetězec | Čárkami oddělený seznam atributů, které chcete zahrnout do odpovědi.
 count      | Číslo (výchozí = 10) | Maximální počet výsledků k vrácení.
 Posun     | Číslo (výchozí = 0) | Index první výsledek vrátit.

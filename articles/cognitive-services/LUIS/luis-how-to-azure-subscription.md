@@ -7,16 +7,16 @@ author: diberry
 manager: cgronlun
 ms.custom: seodec18
 ms.service: cognitive-services
-ms.component: language-understanding
+ms.subservice: language-understanding
 ms.topic: article
 ms.date: 01/18/2019
 ms.author: diberry
-ms.openlocfilehash: 89eb16c51cd5326846cf8a7b44599ff6fc5a3753
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
-ms.translationtype: MT
+ms.openlocfilehash: 2e5ecf32782c86b236c4947d5d2793be9c3883d8
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55100287"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55223676"
 ---
 # <a name="using-subscription-keys-with-your-luis-app"></a>Použití klíčů předplatného s aplikací LUIS
 
@@ -173,7 +173,7 @@ Pro účely automatizace, jako je kanál CI/CD můžete automatizovat přiřazov
 
     Po úspěšné toto rozhraní API vrátí stav 201 – vytvořeno. 
 
-## <a name="change-pricing-tier"></a>Změnit cenovou úroveň
+## <a name="change-pricing-tier"></a>Změna cenové úrovně
 
 1.  V [Azure](https://portal.azure.com), vyhledejte své předplatné služby LUIS. Vyberte předplatné, LUIS.
     ![Vyhledejte své předplatné služby LUIS](./media/luis-usage-tiers/find.png)

@@ -7,16 +7,16 @@ author: diberry
 manager: cgronlun
 ms.custom: seodec18
 ms.service: cognitive-services
-ms.component: language-understanding
+ms.subservice: language-understanding
 ms.topic: article
 ms.date: 01/22/2019
 ms.author: diberry
-ms.openlocfilehash: ac97cf3e269652dc33ce4211947b45631228a697
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: e6f13994d404d58082b953fc98ac6028eea2e43e
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54463274"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55216190"
 ---
 # <a name="install-and-run-luis-docker-containers"></a>Nainstalujte a spusťte LUIS kontejnery dockeru
  
@@ -169,7 +169,7 @@ Host: {AZURE_REGION}.api.cognitive.microsoft.com
 Ocp-Apim-Subscription-Key: {AUTHORING_KEY}
 ```
 
-| Zástupný symbol | Hodnota |
+| Zástupný symbol | Value |
 |-------------|-------|
 |{APPLICATION_ID} | ID aplikace publikované aplikace LUIS. |
 |{APPLICATION_ENVIRONMENT} | Prostředí publikované aplikace LUIS. Použijte jednu z následujících hodnot:<br/>```PRODUCTION```<br/>```STAGING``` |
@@ -197,7 +197,7 @@ Host: {AZURE_REGION}.api.cognitive.microsoft.com
 Ocp-Apim-Subscription-Key: {AUTHORING_KEY}
 ```
 
-| Zástupný symbol | Hodnota |
+| Zástupný symbol | Value |
 |-------------|-------|
 |{APPLICATION_ID} | ID aplikace trénovaného aplikace LUIS. |
 |{APPLICATION_VERSION} | Verze aplikace trénovaného aplikace LUIS. |
@@ -219,7 +219,7 @@ V případě úspěchu je odpověď na soubor balíčku LUIS. Uložte soubor v z
 
 Použití [dockeru spustit](https://docs.docker.com/engine/reference/commandline/run/) příkaz ke spuštění kontejneru. Příkaz používá následující parametry:
 
-| Zástupný symbol | Hodnota |
+| Zástupný symbol | Value |
 |-------------|-------|
 |{ENDPOINT_KEY} | Tento klíč se používá ke spuštění kontejneru. Nepoužívejte klávesu starter. |
 |{BILLING_ENDPOINT} | Fakturační hodnota koncového bodu je k dispozici na stránce s přehledem Language Understanding webu Azure portal.|
@@ -268,7 +268,7 @@ Použít hostitele, https://localhost:5000, pro kontejner rozhraní API.
 
 Konfigurovat parametry dotazu jak a co je vrácená v odpovědi na dotaz:
 
-|Parametr dotazu|Typ|Účel|
+|Parametr dotazu|Type|Účel|
 |--|--|--|
 |`q`|řetězec|Utterance uživatele.|
 |`timezoneOffset`|číslo|TimezoneOffset umožňuje [změnit časové pásmo](luis-concept-data-alteration.md#change-time-zone-of-prebuilt-datetimev2-entity) používané datetimeV2 předem připravených entit.|

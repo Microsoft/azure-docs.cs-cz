@@ -5,16 +5,16 @@ services: cognitive-services
 author: PanosPeriorellis
 manager: onano
 ms.service: cognitive-services
-ms.component: custom-speech
+ms.subservice: custom-speech
 ms.topic: tutorial
 ms.date: 05/03/2017
 ms.author: panosper
-ms.openlocfilehash: 53e93a08782ba66e69b903c32c4c3c7417e5a801
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
-ms.translationtype: HT
+ms.openlocfilehash: 0e4c21a064cdb0a60aef49482eee4b768112b899
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49344570"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55216417"
 ---
 # <a name="tutorial-create-a-custom-acoustic-model"></a>Kurz: Vytvoření vlastního akustického modelu
 
@@ -48,7 +48,7 @@ Příklad:
 <a name="Preparing data to customize the acoustic model"></a>
 *   Pokud vás zajímá optimalizace výkonu pro jednoho mluvčího, například chcete pořídit přepis všech důležitých projevů prezidenta Franklina D. Roosevelta, měly by zvukové soubory zahrnovat jenom řadu ukázek od tohoto mluvčího.
 
-Sadu akustických dat pro přizpůsobení akustického modelu tvoří dvě součásti: (1) sada zvukových souborů, která obsahuje hlasová data, a (2) soubor obsahující přepisy všech zvukových souborů.
+Akustický datové sady pro přizpůsobení akustického modelu se skládá ze dvou částí: (1) sadu zvukové soubory, které obsahují data rozpoznávání řeči a (2) soubor, který obsahuje přepisy všechny zvukové soubory.
 
 ### <a name="audio-data-recommendations"></a>Doporučení pro zvuková data
 
@@ -65,7 +65,7 @@ Sadu akustických dat pro přizpůsobení akustického modelu tvoří dvě souč
 > Importy dat přes webový portál jsou momentálně omezené na 2 GB, což je maximální velikost sady akustických dat. Odpovídá to přibližně 17 hodinám zvukového záznamu na frekvenci 16 kHz nebo 34 hodinám zvukového záznamu na frekvenci 8 kHz. Následující tabulka obsahuje souhrn hlavních požadavků na zvuková data.
 >
 
-| Vlastnost | Hodnota |
+| Vlastnost | Value |
 |---------- |----------|
 | Formát souboru | RIFF (WAV) |
 | Vzorkovací frekvence | 8 000 Hz nebo 16 000 Hz |
@@ -135,7 +135,7 @@ V tabulce akustických modelů se teď zobrazí nová položka, která odpovíd�
 
 ![vyzkoušení](../../../media/cognitive-services/custom-speech-service/custom-speech-acoustic-models-creating.png)
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 V tomto kurzu jste vytvořili vlastní akustický model pro použití se zvukovými soubory a přepisy. Pokud chcete vytvořit vlastní jazykový soubor pro použití s textovými soubory, pokračujte kurzem vytvoření vlastního jazykového modelu.
 

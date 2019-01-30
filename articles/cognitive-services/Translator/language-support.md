@@ -6,16 +6,16 @@ services: cognitive-services
 author: Jann-Skotdal
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: translator-text
+ms.subservice: translator-text
 ms.topic: article
 ms.date: 09/25/2018
 ms.author: v-jansko
-ms.openlocfilehash: 3d25cfd39b4b4278fedf33e042d394208fd5eafc
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: 96f73d7d1324de9e5531aefcc4ee3b9a054cf941
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53713175"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55228044"
 ---
 # <a name="language-and-region-support-for-the-translator-text-api"></a>Podpora jazyka a oblasti pro rozhraní Translator Text API
 
@@ -35,7 +35,7 @@ Translator Text API podporuje následující jazyky pro překlad textu do textu.
 
 **V3 Translator API** V3 Translator API je ve výchozím nastavení neuronových sítí a statistické systémy jsou k dispozici, pouze pokud neexistuje žádný systém neuronových sítí. Vlastní Translator jde použít jenom s jazyky neuronových sítí. 
 
-|Jazyk|  Kód jazyka|  ROZHRANÍ API V2| ROZHRANÍ API V3|
+|Jazyk|  Kód jazyka|  V2 API| V3 API|
 |:-----|:-----:|:-----|:-----|
 |Afrikánština| `af`    |Jenom statistické|  Neuronových sítí|
 |arabština|    `ar`    |Neuronových sítí k dispozici|  Neuronových sítí|
@@ -114,19 +114,19 @@ Metoda Transliterate podporuje následující jazyky. V "do a z" "<> –" označ
 | Čínština (zjednodušená) | `zh-Hans` | Zjednodušená čínština `Hans`| <--> | Tradiční čínština `Hant`|
 | Čínština (tradiční) | `zh-Hant` | Tradiční čínština `Hant`| <--> | Latinská `Latn` |
 | Čínština (tradiční) | `zh-Hant` | Tradiční čínština `Hant`| <--> | Zjednodušená čínština `Hans` |
-| Gudžarátština | `gu`  | Gudžarátština `Gujr` | --> | Latinská `Latn` |
+| Gudžarátština | `gu`  | Gujarati `Gujr` | --> | Latinská `Latn` |
 | Hebrejština | `he` | Hebrejština `Hebr` | <--> | Latinská `Latn` |
 | Hindština | `hi` | Devanágarí `Deva` | <--> | Latinská `Latn` |
 | Japonština | `ja` | Japonština `Jpan` | <--> | Latinská `Latn` |
-| Kannadština | `kn` | Kannadština `Knda` | --> | Latinská `Latn` |
+| Kannadština | `kn` | Kannada `Knda` | --> | Latinská `Latn` |
 | Malajálamština | `ml` | Malajalámština `Mlym` | --> | Latinská `Latn` |
 | Maráthština | `mr` | Devanágarí `Deva` | --> | Latinská `Latn` |
-| urijština | `or` | Urijština `Orya` | <--> | Latinská `Latn` |
+| urijština | `or` | Oriya `Orya` | <--> | Latinská `Latn` |
 | Paňdžábština | `pa` | Gurmukhi `Guru`  | <--> | Latinská `Latn`  |
-| Srbština (cyrilice) | `sr-Cyrl` | Cyrilice `Cyrl`  | --> | Latinská `Latn` |
-| Srbština (latinka) | `sr-Latn` | Latinská `Latn` | --> | Cyrilice `Cyrl`|
+| Srbština (cyrilice) | `sr-Cyrl` | Cyrillic `Cyrl`  | --> | Latinská `Latn` |
+| Srbština (latinka) | `sr-Latn` | Latinská `Latn` | --> | Cyrillic `Cyrl`|
 | Tamilština | `ta` | Tamilština `Taml` | --> | Latinská `Latn` |
-| Telugština | `te` | Telugština `Telu` | --> | Latinská `Latn` |
+| Telugština | `te` | Telugu `Telu` | --> | Latinská `Latn` |
 | Thajština | `th` | Thajština `Thai` | <--> | Latinská `Latn` |
 
 ## <a name="dictionary"></a>Slovník

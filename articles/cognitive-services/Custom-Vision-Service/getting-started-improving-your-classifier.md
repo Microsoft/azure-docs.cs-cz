@@ -6,16 +6,16 @@ services: cognitive-services
 author: PatrickFarley
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: custom-vision
+ms.subservice: custom-vision
 ms.topic: conceptual
 ms.date: 07/05/2018
 ms.author: pafarley
-ms.openlocfilehash: 2bee7f0af98bf03a13e376dea9dbf083b3f61815
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
+ms.openlocfilehash: 72ba363201b27a8ca31c73af1d0cceb436de468d
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49340286"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55209385"
 ---
 # <a name="how-to-improve-your-classifier"></a>K vylepšení klasifikátoru
 
@@ -41,23 +41,23 @@ Je potřeba zamyslet se, měli byste zajistit, že jsou vaše data rovnoměrně.
 
 Zadejte bitové kopie, které jsou zástupce co bude odeslán do třídění během normálního používání. Například pokud se supervizí trénujete "apple" třídění, klasifikátoru nemusí být přesné, pokud pouze trénování fotografie jablka talířů ale zkontrolujte předpovědi na fotografie jablek na stromové struktury. Včetně širokou škálu imagí budete mít jistotu, že klasifikátoru není tendenční a můžete také zobecnit. Tady jsou některé způsoby, které provedete trénování nastavené různorodější:
 
-__Na pozadí:__ poskytují image objektu před různá pozadí (to znamená, ovoce na desce oproti ovoce v kontejneru a blízkým). Fotografie v kontextu jsou lepší než fotografie před neutrální pozadími, jako poskytují další informace pro třídění.
+__Na pozadí:__ Zadejte image objektu před různá pozadí (to znamená, ovoce na desce oproti ovoce v kontejneru a blízkým). Fotografie v kontextu jsou lepší než fotografie před neutrální pozadími, jako poskytují další informace pro třídění.
 
 ![Obrázek pozadí ukázky](./media/getting-started-improving-your-classifier/background.png)
 
-__Osvětlení:__ bitové kopie poskytnout různé osvětlení (to znamená, vytvořených ve vystavení flash, vysoká, atd.), zejména v případě imagí použitých pro předpověď mají různé osvětlení. Také je užitečné zahrnout i obrázky pomocí různých sytost, hue a jas.
+__Osvětlení:__ Bitové kopie poskytnout různé osvětlení (to znamená, vytvořených ve vystavení flash, vysoká, atd.), zejména v případě imagí použitých pro předpověď mají různé osvětlení. Také je užitečné zahrnout i obrázky pomocí různých sytost, hue a jas.
 
 ![Obrázek ukázky osvětlení](./media/getting-started-improving-your-classifier/lighting.png)
 
-__Velikost objektu:__ zadejte Image, ve kterých jsou objekty z nejrůznějších velikosti zachytávání různé části objektu. Například fotku svazcích bananas a Detail jeden banánu. Různé velikosti pomáhá třídění generalize lépe.
+__Velikost objektu:__ Zadejte bitové kopie, ve kterých jsou objekty pohyblivá podle velikosti zachytávání různé části objektu. Například fotku svazcích bananas a Detail jeden banánu. Různé velikosti pomáhá třídění generalize lépe.
 
 ![Obrázek ukázky velikost](./media/getting-started-improving-your-classifier/size.png)
 
-__Úhel kamery:__ poskytují Image pořízené různých kamer. Pokud vaše fotografie pocházejí sadu pevné kamery (například bezpečnostních kamer), nezapomeňte že přiřadit jiný popisek pro každou kameru i v případě, že dojde k zachycení stejné objekty, aby se zabránilo overfitting – modelování nesouvisející objekty (například lampposts) jako klíčovou funkcí.
+__Úhel kamery:__ Zadejte Image pořízené různých kamer. Pokud vaše fotografie pocházejí sadu pevné kamery (například bezpečnostních kamer), nezapomeňte že přiřadit jiný popisek pro každou kameru i v případě, že dojde k zachycení stejné objekty, aby se zabránilo overfitting – modelování nesouvisející objekty (například lampposts) jako klíčovou funkcí.
 
 ![Obrázek ukázky úhel](./media/getting-started-improving-your-classifier/angle.png)
 
-__Style:__ poskytují Image různé styly stejné třídy (to znamená, že různé druhy citrusových). Ale pokud máte Image objektů výrazně různé styly (to znamená, Mickey myš a reálných zkušeností rat), doporučujeme označit je jako samostatné třídy pro lepší reprezentaci jejich různé prvky.
+__Styl:__ Zadejte bitové kopie různé styly stejné třídy (to znamená, že různé druhy citrusových). Ale pokud máte Image objektů výrazně různé styly (to znamená, Mickey myš a reálných zkušeností rat), doporučujeme označit je jako samostatné třídy pro lepší reprezentaci jejich různé prvky.
 
 ![Obrázek ukázky styl](./media/getting-started-improving-your-classifier/style.png)
 

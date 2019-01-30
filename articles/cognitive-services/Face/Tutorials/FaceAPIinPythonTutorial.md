@@ -1,23 +1,23 @@
 ---
-title: 'Rychlý start: Zjišťování a rámečku tváří v obrázku pomocí sady Python SDK'
+title: 'Rychlý start: Zjištění a rámečku tváří v obrázku pomocí sady Python SDK'
 titleSuffix: Azure Cognitive Services
 description: V tomto rychlém startu vytvoříte jednoduchý skript Pythonu, který se používá ke zjišťování a snímků tváří v bitové kopii vzdálené rozhraní API pro rozpoznávání tváře.
 services: cognitive-services
 author: SteveMSFT
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: face-api
+ms.subservice: face-api
 ms.topic: quickstart
 ms.date: 11/13/2018
 ms.author: sbowles
-ms.openlocfilehash: 1e35d650f6fc99bff5bf49e517e2b38fcdc58dde
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: cdf17c40cf932e11307eca28a8216c3080eb90e6
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53076997"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55213289"
 ---
-# <a name="quickstart-create-a-python-script-to-detect-and-frame-faces-in-an-image"></a>Rychlý start: Vytvoření skriptu Pythonu, který zjišťuje a rámce čelí v obrázku
+# <a name="quickstart-create-a-python-script-to-detect-and-frame-faces-in-an-image"></a>Rychlý start: Vytvoříte skript Pythonu ke zjišťování a snímků tváří v obrázku
 
 V tomto rychlém startu vytvoříte jednoduchý skript Pythonu, který používá rozhraní API pro rozpoznávání tváře Azure pomocí sady Python SDK k detekci lidských tváří na vzdálené bitové kopie. Aplikace zobrazí vybrané bitové kopie a nakreslí rámeček kolek každou zjištěnou plochu.
 

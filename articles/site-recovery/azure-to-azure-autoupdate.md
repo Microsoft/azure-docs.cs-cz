@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 11/27/2018
 ms.author: rajanaki
-ms.openlocfilehash: 275dd48e08aa74d84b0e1b91d5df9599ce524489
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: f31fccd2bf6d0daae03b025b53a41a0fad4ce2ef
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52957687"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55210127"
 ---
 # <a name="automatic-update-of-the-mobility-service-in-azure-to-azure-replication"></a>Automatická aktualizace služby Mobility v replikaci z Azure do Azure
 
@@ -25,7 +25,7 @@ Azure Site Recovery obsahuje měsíční vydávání verzí, se přidají vylep�
  
 ## <a name="how-does-automatic-update-work"></a>Jak funguje automatické aktualizace
 
-Jakmile povolíte Site Recovery provádět správu aktualizací, globální runbook (což je používané službami Azure) se nasazuje přes účet automation, který se vytvoří ve stejném předplatném jako trezor. Jeden účet automation se používá pro konkrétní trezor. Sada runbook kontroluje u každého virtuálního počítače v trezoru, pro které se automaticky aktualizuje zapnuté a zahájí upgrade rozšíření služby Mobility, pokud je dostupná novější verze. Výchozí plán pro runbook recurrs každý den v 12:00 podle časového pásma geograficky replikovaný virtuální počítač. Plán sad runbook můžete také upravit přes účet automation tímto uživatelem, v případě potřeby. 
+Jakmile povolíte Site Recovery provádět správu aktualizací, globální runbook (což je používané službami Azure) se nasazuje přes účet automation, který se vytvoří ve stejném předplatném jako trezor. Jeden účet automation se používá pro konkrétní trezor. Sada runbook kontroluje u každého virtuálního počítače v trezoru, pro které se automaticky aktualizuje zapnuté a zahájí upgrade rozšíření služby Mobility, pokud je dostupná novější verze. Výchozí plán sady runbook se opakuje každý den v 12:00 podle časového pásma geograficky replikovaný virtuální počítač. Plán sad runbook můžete také upravit přes účet automation tímto uživatelem, v případě potřeby. 
 
 > [!NOTE]
 > Povolení automatické aktualizace nevyžaduje restartování virtuálních počítačů Azure a nemá vliv na probíhající replikaci.
@@ -46,14 +46,14 @@ Můžete zvolit, aby Site Recovery ke správě aktualizací následujícími zp�
 
 Když povolíte replikaci pro virtuální počítač buď počáteční [ze zobrazení virtuálního počítače](azure-to-azure-quickstart.md), nebo [z trezoru služby recovery services](azure-to-azure-how-to-enable-replication.md), zobrazí se možnost zvolit, aby buď Site Recovery za účelem Správa aktualizací pro rozšíření služby Site Recovery, nebo ručně spravovat stejný.
 
-![Povolení replikace automatické aktualizace](./media/azure-to-azure-autoupdate/enable-rep.png)
+![enable-replication-auto-update](./media/azure-to-azure-autoupdate/enable-rep.png)
 
 ### <a name="toggle-the-extension-update-settings-inside-the-vault"></a>Přepnout rozšíření aktualizovat nastavení uvnitř tohoto trezoru
 
 1. Uvnitř tohoto trezoru, přejděte na **spravovat**-> **infrastruktura Site Recovery**
 2. V části **pro virtuální počítače Azure**-> **nastavení aktualizací rozšíření**, klikněte na přepínač, chcete-li zvolit, jestli chcete povolit *Azure Site Recovery ke správě aktualizací* nebo *spravovat ručně*. Klikněte na **Uložit**.
 
-![Trezor přepnout autuo aktualizace](./media/azure-to-azure-autoupdate/vault-toggle.png)
+![vault-toggle-auto-update](./media/azure-to-azure-autoupdate/vault-toggle.png)
 
 > [!Important] 
 > Pokud zvolíte *povolit správu pomocí ASR*, toto nastavení platí pro všechny virtuální počítače v odpovídající úložiště.
@@ -81,8 +81,8 @@ Pokud se vyskytl problém s automatickými aktualizacemi, budete upozorněni na 
 
 V případě pokusu povolit automatické aktualizace a jeho selhání, najdete níže pro řešení potíží.
 
-**Chyba**: Nemáte oprávnění k vytvoření účtu spustit v Azure jako (instanční objekt) a udělení role Přispěvatel tomuto instančnímu objektu služby. 
-- Doporučená akce: Zajištění, aby přihlášený účet přiřazený "Přispěvatel" a zkuste operaci zopakovat. Odkazovat na [to](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-create-service-principal-portal#required-permissions) dokument pro další informace o přiřazování oprávnění.
+**Chyba**: Nemáte oprávnění vytvořit účet Spustit jako pro Azure (instanční objekt) a udělit tomuto instančnímu objektu roli Přispěvatel. 
+- Doporučená akce: Zajistěte, aby přihlášený účet přiřazený "Přispěvatel" a zkuste operaci zopakovat. Odkazovat na [to](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-create-service-principal-portal#required-permissions) dokument pro další informace o přiřazování oprávnění.
  
 Po automatické aktualizace jsou zapnuté, většinu problémů může být opraven službou Site Recovery a vyžaduje, abyste na "**opravit**' tlačítko.
 
@@ -90,10 +90,10 @@ Po automatické aktualizace jsou zapnuté, většinu problémů může být opra
 
 V případě, že tlačítko Opravit není k dispozici, najdete v podokně nastavení rozšíření zobrazenou chybovou zprávu.
 
- - **Chyba**: The spustit jako účet nemá oprávnění pro přístup k prostředku služby recovery services.
+ - **Chyba**: Účet Spustit jako nemá oprávnění pro přístup k prostředku služby recovery services.
 
-    **Doporučená akce**: odstraňte a pak [znovu vytvořte účet Spustit jako](https://docs.microsoft.com/azure/automation/automation-create-runas-account) nebo se ujistěte, že aplikace účtu Automation spustit jako pro Azure Active Directory má přístup k prostředku služby recovery services.
+    **Doporučená akce**: Odstranit a potom [znovu vytvořte účet Spustit jako](https://docs.microsoft.com/azure/automation/automation-create-runas-account) nebo se ujistěte, že aplikace účtu Automation spustit jako pro Azure Active Directory má přístup k prostředku služby recovery services.
 
-- **Chyba**: nebyl nalezen účet Spustit jako. Jeden z nich byl odstraněn nebo není vytvořená: aplikace Azure Active Directory, instanční objekt, Role, prostředek certifikátu služby Automation, asset připojení Automation – nebo kryptografický otisk není mezi certifikátem a připojením identický. 
+- **Chyba**: Účet Spustit jako se nenašel. Jeden z nich byl odstraněn nebo není vytvořená: aplikace Azure Active Directory, instanční objekt, Role, prostředek certifikátu služby Automation, asset připojení Automation – nebo kryptografický otisk není mezi certifikátem a připojením identický. 
 
-    **Doporučená akce**: odstraňte a [znovu vytvořte účet Spustit jako](https://docs.microsoft.com/azure/automation/automation-create-runas-account).
+    **Doporučená akce**: Odstranit a [znovu vytvořte účet Spustit jako](https://docs.microsoft.com/azure/automation/automation-create-runas-account).

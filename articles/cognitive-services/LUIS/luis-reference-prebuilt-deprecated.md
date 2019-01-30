@@ -7,16 +7,16 @@ author: diberry
 ms.custom: seodec18
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: language-understanding
+ms.subservice: language-understanding
 ms.topic: article
 ms.date: 11/26/2018
 ms.author: diberry
-ms.openlocfilehash: 7b294b9c528d0b7a93a3e287b37124a26d0851dd
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: f7071d34f6167786012bd50be7b778fa08b46371
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53138054"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55216995"
 ---
 # <a name="deprecated-prebuilt-entities-in-a-luis-app"></a>Nepoužívané předem připravených entit v aplikaci LUIS
 Následující předem připravených entit se považují za zastaralé a nelze přidat do nové aplikace LUIS.

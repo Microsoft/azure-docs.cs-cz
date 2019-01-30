@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 12/27/2018
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 4674428cf96562670b0e24e5ac93a2f2979128da
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: ce48e9a17ab6b63c7fb8caa752258e218ca51ba3
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54042049"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55226379"
 ---
 # <a name="migrate-amazon-web-services-aws-vms-to-azure"></a>Migrace virtuálních počítačů služby Amazon Web Services (AWS) do Azure
 
@@ -169,7 +169,7 @@ Po dokončení všech pěti kroků v části **Příprava infrastruktury** vyber
 
 Povolte replikaci pro všechny virtuální počítače, které chcete migrovat. Když je replikace povolená, služba Site Recovery automaticky nainstaluje službu Mobility.
 
-1. Přejděte na [Azure Portal](htts://portal.azure.com).
+1. Přejděte na [Azure Portal](https://portal.azure.com).
 1. Na stránce svého trezoru v části **Začínáme** vyberte **Site Recovery**.
 2. V části **pro místní počítače a virtuální počítače Azure**vyberte **krok 1: Replikovat aplikaci**. Na stránkách průvodce zadejte následující informace. Po zadání údajů na každé stránce zvolte **OK**.
     - 1: Konfigurace zdroje

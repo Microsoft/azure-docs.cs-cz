@@ -11,13 +11,13 @@ author: aliceku
 ms.author: aliceku
 ms.reviewer: vanto, carlrab, emlisa
 manager: craigg
-ms.date: 01/25/2019
-ms.openlocfilehash: d1225cb90d0eecddb5ec7eca56437b020be50c71
-ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
+ms.date: 01/29/2019
+ms.openlocfilehash: f1376e98dc1a018bd6c0b263939cecbc012d4815
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/26/2019
-ms.locfileid: "55080819"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55250768"
 ---
 # <a name="an-overview-of-azure-sql-database-security-capabilities"></a>Přehled možností zabezpečení Azure SQL Database
 
@@ -138,7 +138,7 @@ Maskování dynamických dat SQL Database omezuje riziko ohrožení citlivých d
 
 ### <a name="sql-vulnerability-assessment"></a>Posouzení ohrožení zabezpečení SQL
 
-[Posouzení ohrožení zabezpečení SQL](sql-vulnerability-assessment.md) je snadno konfigurovat službu, můžete zjistit, sledovat a pomáhají náprava potenciálních ohrožení zabezpečení databáze s cílem proaktivně zvýšit celkové zabezpečení databáze. Posouzení ohrožení zabezpečení (VA) je součástí nabídky SQL pokročilé Threat Protection (ATP), která je jednotný balíček pro pokročilé funkce zabezpečení SQL. Posouzení ohrožení zabezpečení je možné získat přístup k a spravovat prostřednictvím portálu pro centrální ochrany ATP v programu SQL.
+[Posouzení ohrožení zabezpečení SQL](sql-vulnerability-assessment.md) je snadno konfigurovat službu, můžete zjistit, sledovat a pomáhají náprava potenciálních ohrožení zabezpečení databáze s cílem proaktivně zvýšit celkové zabezpečení databáze. Posouzení ohrožení zabezpečení (VA) je součástí nabídky SQL pokročilé Data zabezpečení (služby Active Directory), která je jednotný balíček pro pokročilé funkce zabezpečení SQL. Posouzení ohrožení zabezpečení je možné získat přístup a spravovat prostřednictvím portálu pro centrální SQL reklamy.
 
 ### <a name="data-discovery--classification"></a>Zjišťování a klasifikace dat
 

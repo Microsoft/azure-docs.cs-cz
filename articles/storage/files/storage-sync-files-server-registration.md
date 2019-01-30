@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 07/19/2018
 ms.author: wgries
 ms.component: files
-ms.openlocfilehash: a296576d3d7983b710727923043091f5660b693d
-ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
+ms.openlocfilehash: 196e2fadea10c1527576961b0e4b31c058cf9ba6
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "54002548"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55223472"
 ---
 # <a name="manage-registered-servers-with-azure-file-sync"></a>Správa registrovaných serverů pomocí služby Azure File Sync
 Synchronizace souborů Azure umožňuje centralizovat sdílené složky organizace ve službě Soubory Azure bez ztráty flexibility, výkonu a kompatibility místního souborového serveru. Dělá to pomocí transformace serverů Windows na rychlou mezipaměť sdílené složky Azure. Pro místní přístup k datům můžete použít jakýkoli protokol dostupný ve Windows Serveru (včetně SMB, NFS a FTPS) a můžete mít libovolný počet mezipamětí po celém světě.
@@ -191,5 +191,6 @@ Když Azure File Sync je hostovaný na virtuálním počítači spuštěná ve v
 
 ## <a name="see-also"></a>Další informace najdete v tématech
 - [Plánování nasazení služby Azure File Sync](storage-sync-files-planning.md)
-- [Nasazení služby Azure File Sync](storage-sync-files-deployment-guide.md) 
+- [Nasazení služby Azure File Sync](storage-sync-files-deployment-guide.md)
+- [Monitorování Azure File Sync](storage-sync-files-monitoring.md)
 - [Řešení potíží s Azure File Sync](storage-sync-files-troubleshoot.md)

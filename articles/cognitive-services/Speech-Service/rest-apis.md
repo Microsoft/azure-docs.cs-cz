@@ -6,17 +6,17 @@ services: cognitive-services
 author: erhopf
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: speech-service
+ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 12/13/2018
 ms.author: erhopf
 ms.custom: seodec18
-ms.openlocfilehash: 765d93780ad45eaaca61d4deb5f6607ef70ee432
-ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
-ms.translationtype: MT
+ms.openlocfilehash: 45af8f554bf38c65c886c4d101c78255f5671037
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/19/2019
-ms.locfileid: "54413681"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55218661"
 ---
 # <a name="speech-service-rest-apis"></a>Speech Service REST API
 

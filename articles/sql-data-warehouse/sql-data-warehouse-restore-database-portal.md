@@ -6,16 +6,16 @@ author: kevinvngo
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
-ms.component: manage
+ms.subservice: manage
 ms.date: 04/17/2018
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: 8752bc1977bac75928651a62576272ffc673ee7e
-ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
+ms.openlocfilehash: 0d8bb451c821a4883c81e0e51c5d98e146e3008e
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43306296"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55243534"
 ---
 # <a name="restore-azure-sql-data-warehouse-portal"></a>Obnovení Azure SQL Data Warehouse (portál)
 > [!div class="op_single_selector"]
@@ -27,7 +27,7 @@ ms.locfileid: "43306296"
 >
 V tomto článku se dozvíte, jak obnovit Azure SQL Data Warehouse s využitím webu Azure portal.
 
-## <a name="before-you-begin"></a>Než začnete
+## <a name="before-you-begin"></a>Před zahájením
 **Ověřte kapacitu jednotek DTU.** Každá instance služby SQL Data Warehouse je hostitelem SQL serveru (např. myserver.database.windows.net), který má výchozí kvóta jednotek (DTU) propustnost data. Předtím, než bude možné obnovit SQL Data Warehouse, ověřte, zda má váš server SQL dostatečně zbývající kvóta DTU pro databázi, kterou jste obnovení. Zjistěte, jak vypočítat kvóty DTU nebo požádejte o další Dtu, najdete v článku [žádost o změnu kvóty DTU][Request a DTU quota change].
 
 ## <a name="restore-an-active-or-paused-database"></a>Obnovit databázi aktivní nebo pozastavena

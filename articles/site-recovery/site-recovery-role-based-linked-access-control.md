@@ -1,17 +1,17 @@
 ---
 title: Správa přístupu k Azure Site Recovery s řízením přístupu na základě rolí (RBAC) | Dokumentace Microsoftu
-description: Tento článek popisuje, jak použít bontrol přístupu na základě role (RBAC) ke správě přístupu k Azure Site Recovery.
+description: Tento článek popisuje, jak použít řízení přístupu na základě rolí (RBAC) ke správě přístupu k Azure Site Recovery.
 ms.service: site-recovery
 ms.date: 11/27/2018
 author: mayurigupta13
 ms.topic: conceptual
 ms.author: mayg
-ms.openlocfilehash: 815eb1f94d80c36824dc34f3f9410458b9837003
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 5a6ef10f03bb5e108c226fe3d68f1dec67e6164a
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52849526"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55218066"
 ---
 # <a name="manage-site-recovery-access-with-role-based-access-control-rbac"></a>Správa přístupu k Site Recovery s řízením přístupu na základě rolí (RBAC)
 
@@ -59,7 +59,7 @@ Uživatel potřebuje následující oprávnění k dokončení replikace z nové
 |  |  | Microsoft.Network/virtualNetworks/subnets/join/action |
 |  | Classic | Microsoft.ClassicNetwork/virtualNetworks/read |
 |  |  | Microsoft.ClassicNetwork/virtualNetworks/join/action |
-| Úložiště | Resource Manager | Microsoft.Storage/storageAccounts/read |
+| Storage | Resource Manager | Microsoft.Storage/storageAccounts/read |
 |  |  | Microsoft.Storage/storageAccounts/listkeys/action |
 |  | Classic | Microsoft.ClassicStorage/storageAccounts/read |
 |  |  | Microsoft.ClassicStorage/storageAccounts/listKeys/action |
@@ -69,9 +69,9 @@ Uživatel potřebuje následující oprávnění k dokončení replikace z nové
 Zvažte použití "Přispěvatel virtuálních počítačů" a "Classic Přispěvatel virtuálních počítačů" [předdefinované role](../role-based-access-control/built-in-roles.md) pro Resource Manager a Klasický model nasazení modelů v uvedeném pořadí.
 
 ## <a name="next-steps"></a>Další postup
-* [Řízení přístupu na základě role](../role-based-access-control/role-assignments-portal.md): Začínáme s RBAC na webu Azure Portal.
+* [Řízení přístupu na základě rolí](../role-based-access-control/role-assignments-portal.md): Začínáme s RBAC na webu Azure Portal.
 * Další informace o správě přístupu pomocí:
   * [PowerShell](../role-based-access-control/role-assignments-powershell.md)
   * [Azure CLI](../role-based-access-control/role-assignments-cli.md)
   * [REST API](../role-based-access-control/role-assignments-rest.md)
-* [Na základě rolí řešení potíží s řízením přístupu](../role-based-access-control/troubleshooting.md): získat doporučení pro řešení běžných problémů.
+* [Na základě rolí řešení potíží s řízením přístupu](../role-based-access-control/troubleshooting.md): Získáte návrhy pro řešení běžných problémů.

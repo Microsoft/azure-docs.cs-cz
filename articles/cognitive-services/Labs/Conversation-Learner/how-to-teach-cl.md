@@ -6,16 +6,16 @@ services: cognitive-services
 author: v-jaswel
 manager: nolachar
 ms.service: cognitive-services
-ms.component: conversation-learner
+ms.subservice: conversation-learner
 ms.topic: article
 ms.date: 04/30/2018
 ms.author: v-jaswel
-ms.openlocfilehash: 41fe350fd712f6c521a9020af9a540e554abe94b
-ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
+ms.openlocfilehash: 8c55bb27ce5a413c5ceae22371ad61a5acf47281
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39170595"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55220259"
 ---
 # <a name="how-to-teach-with-conversation-learner"></a>Výuka s využitím služby Conversation Learner 
 

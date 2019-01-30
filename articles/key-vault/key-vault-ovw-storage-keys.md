@@ -9,12 +9,12 @@ author: prashanthyv
 ms.author: pryerram
 manager: mbaldwin
 ms.date: 10/03/2018
-ms.openlocfilehash: e9b9620c3c631a9984bc6d1d02dc792c592b6e69
-ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
+ms.openlocfilehash: 0392d84efa3a82a6323d6d09db792df7d6c42256
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/26/2019
-ms.locfileid: "55078385"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55210671"
 ---
 # <a name="azure-key-vault-managed-storage-account---cli"></a>Služba Azure Key Vault spravovat účet úložiště – rozhraní příkazového řádku
 
@@ -82,8 +82,46 @@ V následujících pokynů, jsme služby Key Vault přiřazování jako službu,
 
     az keyvault set-policy --name <YourVaultName> --object-id <ObjectId> --storage-permissions backup delete list regeneratekey recover     purge restore set setsas update
     ```
+    
+## <a name="how-to-access-your-storage-account-with-sas-tokens"></a>Jak získat přístup k účtu úložiště se tokeny SAS
+
+V této části probereme, jak lze provést operace v účtu úložiště načítání [tokeny SAS](https://docs.microsoft.com/azure/storage/common/storage-dotnet-shared-access-signature-part-1) ze služby Key Vault
+
+V níže uvedený oddíl, jsme ukazují, jak načíst klíč účtu úložiště, který je uložený ve službě Key Vault a který používá k vytváření definice SAS (sdíleným přístupovým podpisům) pro účet úložiště.
+
+> [!NOTE] 
+  Existují 3 způsoby ověření do služby Key Vault, jak si můžete přečíst [základní koncepty](key-vault-whatis.md#basic-concepts)
+- Pomocí Identity spravované služby (doporučeno)
+- Pomocí instančního objektu a certifikátů 
+- Pomocí instančního objektu a hesla (nedoporučuje se)
+
+```cs
+// Once you have a security token from one of the above methods, then create KeyVaultClient with vault credentials
+var kv = new KeyVaultClient(new KeyVaultClient.AuthenticationCallback(securityToken));
+
+// Get a SAS token for our storage from Key Vault. SecretUri is of the format https://<VaultName>.vault.azure.net/secrets/<ExamplePassword>
+var sasToken = await kv.GetSecretAsync("SecretUri");
+
+// Create new storage credentials using the SAS token.
+var accountSasCredential = new StorageCredentials(sasToken.Value);
+
+// Use the storage credentials and the Blob storage endpoint to create a new Blob service client.
+var accountWithSas = new CloudStorageAccount(accountSasCredential, new Uri ("https://myaccount.blob.core.windows.net/"), null, null, null);
+
+var blobClientWithSas = accountWithSas.CreateCloudBlobClient();
+```
+
+Pokud váš token SAS vyprší, pak byste znovu načíst změny SAS token ze služby Key Vault a aktualizace kódu
+
+```cs
+// If your SAS token is about to expire, get the SAS Token again from Key Vault and update it.
+sasToken = await kv.GetSecretAsync("SecretUri");
+accountSasCredential.UpdateSASToken(sasToken);
+```
+
+
 ### <a name="relavant-azure-cli-cmdlets"></a>Rutiny Relavant Azure CLI
-- [Rutiny úložiště v Azure CLI](https://docs.microsoft.com/cli/azure/keyvault/storage?view=azure-cli-latest)
+[Rutiny úložiště v Azure CLI](https://docs.microsoft.com/cli/azure/keyvault/storage?view=azure-cli-latest)
 
 ### <a name="relevant-powershell-cmdlets"></a>Odpovídající rutiny prostředí Powershell
 

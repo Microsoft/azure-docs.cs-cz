@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: TomSh
-ms.openlocfilehash: 8a546845adb32823e89b814377bcf3e469562445
-ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
+ms.openlocfilehash: b2b247b50eff446776edfbf3a552e92af3c7dfff
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/19/2019
-ms.locfileid: "54413664"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55228793"
 ---
 # <a name="azure-advanced-threat-detection"></a>Rozšířená detekce hrozeb Azure
 
@@ -115,7 +115,7 @@ Zdroje dat a řešení vytvořit samostatný záznam typy s vlastní sadu vlastn
 
 Většina vaší práce s využitím Log Analytics je na webu Azure portal, který běží v jakémkoli prohlížeči a poskytuje přístup k nastavení konfigurace a několika nástrojům pro analýzy a reagovat na shromážděná data. Z portálu můžete použít:
 * [Prohledávání protokolů](https://docs.microsoft.com/azure/log-analytics/log-analytics-log-searches) kde je možné vytvářet dotazy pro analýzy shromážděných dat.
-* [Řídicí panely](https://docs.microsoft.com/azure/log-analytics/log-analytics-dashboards), které můžete přizpůsobit pomocí grafických zobrazení nejdůležitějších hledání.
+* [Řídicí panely](https://docs.microsoft.com/azure/azure-monitor/learn/tutorial-logs-dashboards), které můžete přizpůsobit pomocí grafických zobrazení nejdůležitějších hledání.
 * [Řešení](https://docs.microsoft.com/azure/log-analytics/log-analytics-add-solutions), která poskytují další funkce a analytické nástroje.
 
 ![Nástroje pro analýzu](./media/azure-threat-detection/azure-threat-detection-fig6.png)

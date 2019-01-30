@@ -13,16 +13,17 @@ ms.topic: article
 ms.date: 11/05/2018
 ms.author: mabrigg
 ms.reviewer: fiseraci
-ms.openlocfilehash: 4641dce6fe8518016ee85cd480de6d11354fe170
-ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
+ms.lastreviewed: 11/05/2018
+ms.openlocfilehash: 09d3d996e4c939d6691162d66f303536a3f2038d
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51037210"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55239260"
 ---
 # <a name="monitor-updates-in-azure-stack-using-the-privileged-endpoint"></a>Monitorování aktualizací ve službě Azure Stack pomocí privilegovaných koncového bodu
 
-*Platí pro: integrované systémy Azure Stack*
+*Platí pro: Integrované systémy Azure Stack*
 
 Můžete použít [privilegovaných koncový bod](azure-stack-privileged-endpoint.md) můžete sledovat průběh služby Azure Stack Hromadná postupná aktualizace, a pokud chcete obnovit aktualizace se nezdařila z poslední úspěšné kroku spuštění by měl na portálu Azure Stack přestanou být dostupné.  Pomocí portálu Azure Stack je doporučená metoda ke správě aktualizací ve službě Azure Stack.
 
@@ -35,7 +36,7 @@ Následující nové rutiny Powershellu pro správu aktualizací jsou součást�
 | | |
 
 ## <a name="verify-the-cmdlets-are-available"></a>Ověřte, zda že jsou k dispozici rutiny
-Protože rutiny jsou nové v balíčku aktualizace 1710 pro službu Azure Stack, proces aktualizace 1710 musí dát do určitého bodu předtím, než je k dispozici možnost monitorování. Obvykle jsou k dispozici, pokud se stav na portálu správce označuje, že aktualizace 1710 je na rutiny **restartování hostitele úložiště** kroku. Konkrétně, rutina aktualizace spadá **krok: provádí se krok 2.6 – aktualizovat PrivilegedEndpoint seznamu povolených IP adres**.
+Protože rutiny jsou nové v balíčku aktualizace 1710 pro službu Azure Stack, proces aktualizace 1710 musí dát do určitého bodu předtím, než je k dispozici možnost monitorování. Obvykle jsou k dispozici, pokud se stav na portálu správce označuje, že aktualizace 1710 je na rutiny **restartování hostitele úložiště** kroku. Konkrétně, rutina aktualizace spadá **kroku: Provádí se krok 2.6 – PrivilegedEndpoint aktualizace seznamu povolených IP adres**.
 
 Můžete také určit, jestli rutiny jsou dostupné prostřednictvím kódu programu pomocí dotazu na seznam příkazů z privileged koncového bodu. Chcete-li to provést, spusťte následující příkazy z hostitele životního cyklu hardware nebo z pracovní stanice Privileged Access. Také ujistěte se, že privilegovaný koncový bod důvěryhodného hostitele. Další informace najdete v kroku 1 postupu [přístup k privilegovaným koncový bod](azure-stack-privileged-endpoint.md#access-the-privileged-endpoint). 
 

@@ -6,16 +6,16 @@ services: cognitive-services
 author: PatrickFarley
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: content-moderator
+ms.subservice: content-moderator
 ms.topic: quickstart
 ms.date: 01/10/2019
 ms.author: pafarley
-ms.openlocfilehash: fd7f6897b20f64a195f7e1f1155ba61eaf5941f2
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 7952ea9a83e6a2a7689bfdf34e39c7862a6daf73
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 01/29/2019
-ms.locfileid: "55154333"
+ms.locfileid: "55217913"
 ---
 # <a name="quickstart-analyze-text-content-for-objectionable-material-in-python"></a>Rychlý start: Analýza textový obsah pro nežádoucím v Pythonu
 

@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 01/09/2019
 ms.author: sethm
-ms.openlocfilehash: 7de32573ac6c0d084be3fdd6ff2c3641559fc31f
-ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
+ms.lastreviewed: 01/09/2019
+ms.openlocfilehash: c0dd183700fe8af24750746dd3d10d40027c9a36
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54118818"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55239379"
 ---
 # <a name="create-subscriptions-to-offers-in-azure-stack"></a>Vytvářet předplatná na nabídky ve službě Azure Stack
 
@@ -48,7 +49,7 @@ Po vytvoření předplatného pro uživatele, mohou přihlásit k portálu user 
 
      - **Azure AD:** `<user1>@<contoso.onmicrosoft.com>`
 
-     - **SLUŽBA AD FS:** `<user1>@<azurestack.local>`
+     - **AD FS:** `<user1>@<azurestack.local>`
 
    - **Adresář tenanta** – vyberte tenantu Active directory, pokud je uživatelský účet členem. Pokud jste ještě nepovolili více tenantů, je k dispozici pouze vašeho místního adresáře tenanta.
 

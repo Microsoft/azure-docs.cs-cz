@@ -5,16 +5,16 @@ description: Poskytuje odpovědi na nejčastější dotazy týkající se vlastn
 author: rajdeep-in
 manager: christw
 ms.service: cognitive-services
-ms.component: custom-translator
+ms.subservice: custom-translator
 ms.date: 11/13/2018
 ms.author: v-rada
 ms.topic: reference
-ms.openlocfilehash: 415866bc4ef396a1b9397c4996d65cf10d78400b
-ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
+ms.openlocfilehash: 4d63eb817f7dc1ff957223cb5e9181fbc441fe29
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54854781"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55227484"
 ---
 # <a name="frequently-asked-questions"></a>Nejčastější dotazy
 

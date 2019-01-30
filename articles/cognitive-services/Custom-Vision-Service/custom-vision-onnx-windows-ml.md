@@ -6,18 +6,18 @@ services: cognitive-services
 author: larryfr
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: custom-vision
+ms.subservice: custom-vision
 ms.topic: tutorial
 ms.date: 10/16/2018
 ms.author: larryfr
-ms.openlocfilehash: f9ffbdd34c6fe7e8fc0f5e8ad8a49a3ad922f88a
-ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
-ms.translationtype: HT
+ms.openlocfilehash: 55235c8c209a17a494c3879d61e22665ba7a893b
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49362958"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55224900"
 ---
-# <a name="tutorial-use-an-onnx-model-from-custom-vision-with-windows-ml-preview"></a>Kurz: Použití modelu ONNX ze služby Custom Vision s Windows ML (Preview)
+# <a name="tutorial-use-an-onnx-model-from-custom-vision-with-windows-ml-preview"></a>Kurz: Pomocí modelu ONNX ze Custom Vision ML Windows (preview)
 
 Naučte se používat model ONNX exportovaný ze služby Custom Vision s Windows ML (Preview).
 
@@ -76,7 +76,7 @@ Pokud chcete použít vlastní model, postupujte následovně:
 
 1. Klikněte na tlačítko a vyberte obrázek k vyhodnocení.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Pokud chcete objevit další způsoby, jak exportovat a používat model služby Custom Vision, podívejte se na následující dokumenty:
 

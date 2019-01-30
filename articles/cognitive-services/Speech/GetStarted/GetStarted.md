@@ -6,16 +6,16 @@ services: cognitive-services
 author: zhouwangzw
 manager: wolfma
 ms.service: cognitive-services
-ms.component: bing-speech
+ms.subservice: bing-speech
 ms.topic: article
 ms.date: 09/18/2018
 ms.author: zhouwang
-ms.openlocfilehash: 35f74630d7f784e7b661257a27ed9ea839b79325
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
+ms.openlocfilehash: 666262c44a37246a5e98b667b447c6a223ff453b
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49341323"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55224067"
 ---
 # <a name="get-started-with-bing-speech"></a>Začínáme s pro zpracování řeči Bingu
 

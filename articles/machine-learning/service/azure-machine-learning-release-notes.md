@@ -11,16 +11,49 @@ ms.author: haining
 ms.reviewer: j-martens
 ms.date: 12/20/2018
 ms.custom: seodec18
-ms.openlocfilehash: 5341c4901ca2a7aa0b4935e13d06c8fb5a1f0d1b
-ms.sourcegitcommit: 70471c4febc7835e643207420e515b6436235d29
-ms.translationtype: MT
+ms.openlocfilehash: 9556a87b8de08dadb211d73e93f3daa9033c2cc1
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2019
-ms.locfileid: "54304089"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55221313"
 ---
 # <a name="azure-machine-learning-service-release-notes"></a>Zpráva k vydání verze služby Azure Machine Learning
 
 V tomto článku najdete další informace o vydaných verzích služby Azure Machine Learning. 
+
+## <a name="2019-01-28"></a>2019-01-28
+
+### <a name="azure-machine-learning-sdk-for-python-v1010"></a>Azure Machine Learning sady SDK pro Python v1.0.10
+
++ **Referenční dokumentace sady SDK**: https://aka.ms/aml-sdk
+
++ **Změny**: 
+  + Azure ML SDK není k dispozici balíčky azure-cli jako závislost. Konkrétně závislosti core v rozhraní příkazového řádku azure a azure-cli profilu byly odebrány z azureml jádry. Jedná se o uživatele vliv na změny:
+    + Pokud provádění "az login" a pak pomocí Azure ml sdk, SDK provede prohlížeče nebo přihlášení zařízení kód ještě jednou. Jakýkoli stav přihlašovací údaje vytvořené "az login" jej nebude používat.
+    + Ověřování příkazového řádku Azure, jako je třeba použití "az login", použijte _azureml.core.authentication.AzureCliAuthentication_ třídy. Ověřování příkazového řádku Azure, proveďte _pip nainstalovat rozhraní příkazového řádku azure_ v prostředí Pythonu, kterého jste nainstalovali azureml sdk.
+    + Pokud provádíte "az login" pomocí hlavního názvu služby pro službu automation, doporučujeme použít _azureml.core.authentication.ServicePrincipalAuthentication_ třídy, jak Azure ml sdk nebude používat stavu přihlašovací údaje vytvořené pomocí azure CLI. 
+
++ **Opravy chyb**: Tato verze obsahuje většinou menšími opravami chyb
+
+### <a name="azure-machine-learning-data-prep-sdk-v108"></a>Sada SDK v1.0.8 pro přípravu dat Azure Machine Learning
+
++ **Referenční dokumentace sady SDK**: https://aka.ms/data-prep-sdk
+
++ **Opravy chyb**
+  + Výrazně vylepšený výkon načítání dat profilů.
+  + Oprava drobných chyb, které jsou spojené s vytvářením sestav chyb.
+  
+### <a name="azure-portal-new-features"></a>Azure portal: nové funkce
++ Nové přetažení prostředí pro vytváření grafů pro sestavy. Uživatelům můžete přetáhnout atribut nebo sloupce z vrtu k oblasti grafu, kde systém automaticky vybere odpovídající grafy pro uživatele na základě typu dat. Uživatelům můžete změnit typ grafu na jiné typy příslušné nebo přidat další atributy.
+
+    Podporované typy grafů:
+    - Spojnicový graf
+    - Histogram
+    - Skládaný pruhový graf
+    - Krabicový graf
+    - Bodové vykreslení
+    - Bublinový graf
 
 ## <a name="2019-01-14"></a>2019-01-14
 

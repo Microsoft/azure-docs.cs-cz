@@ -4,19 +4,19 @@ titleSuffix: Azure Machine Learning service
 description: Tato příručka vysvětluje různé kvóty pro prostředky Azure Machine Learning a postup zobrazení a požádat o navýšení kvóty.
 services: machine-learning
 ms.service: machine-learning
-ms.component: core
+ms.subservice: core
 ms.topic: conceptual
 ms.reviewer: jmartens
 author: nishankgu
 ms.author: nigup
 ms.date: 12/04/2018
 ms.custom: seodec18
-ms.openlocfilehash: 2f7eeab8f9d2265cf0f6cfa28499a078ba9cb108
-ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
+ms.openlocfilehash: b735df4e245d6e3ceebd847e91ed7dfdb255c267
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/26/2019
-ms.locfileid: "55077357"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55245986"
 ---
 # <a name="manage-and-request-quotas-for-azure-resources"></a>Správa a požádat o kvóty pro prostředky Azure
 

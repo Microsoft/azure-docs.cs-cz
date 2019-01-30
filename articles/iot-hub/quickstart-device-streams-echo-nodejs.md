@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 01/15/2019
 ms.author: rezas
-ms.openlocfilehash: fbd1c96cede42c0a5875f28b7b7793bcf20755bf
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 590faaf727345dcfe8ab61a1860ca46d78256b22
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 01/29/2019
-ms.locfileid: "55150306"
+ms.locfileid: "55219001"
 ---
 # <a name="quickstart-communicate-to-a-device-application-in-nodejs-via-iot-hub-device-streams-preview"></a>Rychlý start: Komunikace na zařízení aplikaci v Node.js prostřednictvím datových proudů zařízení služby IoT Hub (preview)
 
@@ -40,7 +40,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 
 Ke spuštění aplikace straně služby v rámci tohoto rychlého startu budete potřebovat Node.js verze 4.x.x nebo novější na vývojovém počítači.
 
-Node.js můžete stáhnout pro různé platformy z [Node.js.org](https://Node.js.org).
+Node.js můžete stáhnout pro různé platformy z [Node.js.org](https://nodejs.org).
 
 Aktuální verzi Node.js na počítači používaném pro vývoj můžete ověřit pomocí následujícího příkazu:
 

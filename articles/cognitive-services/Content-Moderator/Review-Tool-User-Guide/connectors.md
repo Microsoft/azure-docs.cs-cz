@@ -6,16 +6,16 @@ services: cognitive-services
 author: sanjeev3
 manager: mikemcca
 ms.service: cognitive-services
-ms.component: content-moderator
+ms.subservice: content-moderator
 ms.topic: article
 ms.date: 01/10/2019
 ms.author: sajagtap
-ms.openlocfilehash: 99d8b3603278a9c6c432ca32a1d85e9abe34e1da
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.openlocfilehash: 5e56579a856f7b6259acddcbe34f2e5361505cb5
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54265579"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55217607"
 ---
 # <a name="connect-to-other-cognitive-services"></a>Připojte se k jiné služby cognitive services
 

@@ -8,12 +8,12 @@ services: site-recovery
 ms.topic: conceptual
 ms.date: 01/19/2019
 ms.author: mayg
-ms.openlocfilehash: 9b26c80b59a57b4a9b2423e1a9028cf723f40fb1
-ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
+ms.openlocfilehash: a1b35d4c10246af7e4dab36585c2bb9b72fd0c01
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2019
-ms.locfileid: "54321224"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55216961"
 ---
 # <a name="exclude-disks-from-replication"></a>Vyloučení disků z replikace
 Tento článek popisuje, jak vyloučit disky z replikace. Takové vyloučení může optimalizovat jak využití šířky pásma potřebné pro replikaci, tak i prostředků využívaných na cílové straně těmito disky.
@@ -59,7 +59,7 @@ Pojďme se podívat na dva scénáře, abychom porozuměli funkci vyloučení di
 - Disk s databází tempdb systému SQL Server
 - Disk se stránkovacím souborem (pagefile.sys)
 
-## <a name="excample-1-exclude-the-sql-server-tempdb-disk"></a>Příklad 1: Vyloučení disku s databází tempdb systému SQL Server
+## <a name="example-1-exclude-the-sql-server-tempdb-disk"></a>Příklad 1: Vyloučení disku s databází tempdb systému SQL Server
 Uvažujme virtuální počítač se systémem SQL Server, který používá databázi tempdb, kterou chcete vyloučit z replikace.
 
 Název virtuálního disku je SalesDB.

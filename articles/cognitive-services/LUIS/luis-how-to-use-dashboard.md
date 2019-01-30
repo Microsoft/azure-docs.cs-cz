@@ -7,16 +7,16 @@ author: diberry
 manager: cgronlun
 ms.custom: seodec18
 ms.service: cognitive-services
-ms.component: language-understanding
+ms.subservice: language-understanding
 ms.topic: article
 ms.date: 11/26/2018
 ms.author: diberry
-ms.openlocfilehash: 6f6de278e802b83623413b0bf70e556d083818c8
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: 3f263e6e6b74c1d9392ec58f176962b0c37d70c5
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53140604"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55209991"
 ---
 # <a name="model-and-usage-statistics-in-the-dashboard"></a>Statistika modelu a využití na řídicím panelu
 Řídicí panel aplikací umožňuje monitorovat aplikace jeden pohled. **Řídicí panel** zobrazí při otevření aplikace po kliknutí na název aplikace **Moje aplikace** stránce vyberte **řídicí panel** v horním panelu. 

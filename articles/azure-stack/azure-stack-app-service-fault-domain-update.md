@@ -1,5 +1,5 @@
 ---
-title: 'App Service v Azure stacku: selhání aktualizace domény | Dokumentace Microsoftu'
+title: 'App Service v Azure stacku: Selhání aktualizace domény | Dokumentace Microsoftu'
 description: Jak distribuovat napříč doménami selhání služby Azure App Service ve službě Azure Stack
 services: azure-stack
 documentationcenter: ''
@@ -14,16 +14,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/05/2018
 ms.author: anwestg
-ms.openlocfilehash: d361b4165c1fbbf79321e3f6d2ade711f9173c56
-ms.sourcegitcommit: f58fc4748053a50c34a56314cf99ec56f33fd616
+ms.lastreviewed: 09/05/2018
+ms.openlocfilehash: 249e4b466e9be567111aaa22b40ca3e5dadb6cac
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/04/2018
-ms.locfileid: "48267211"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55246377"
 ---
 # <a name="how-to-redistribute-azure-app-service-on-azure-stack-across-fault-domains"></a>Jak distribuovat napříč doménami selhání služby Azure App Service ve službě Azure Stack
 
-*Platí pro: integrované systémy Azure Stack*
+*Platí pro: Integrované systémy Azure Stack*
 
 Aktualizace 1802 Azure Stack teď podporuje distribuci zatížení napříč doménami selhání, funkce, která je velmi důležité pro zajištění vysoké dostupnosti.
 
