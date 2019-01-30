@@ -41,13 +41,13 @@ Následující seznam metod V2 a V3 identifikuje rozhraní API, která poskytne 
 
 | V2 Metoda API   | V3 Kompatibilitu s rozhraními API |
 |:----------- |:-------------|
-| Překlad     | [Translate](reference/v3-0-translate.md)          |
+| Translate     | [Translate](reference/v3-0-translate.md)          |
 | TranslateArray      | [Translate](reference/v3-0-translate.md)        |
 | GetLanguageNames      | [Jazyky](reference/v3-0-languages.md)         |
 | GetLanguagesForTranslate     | [Jazyky](reference/v3-0-languages.md)       |
 | GetLanguagesForSpeak      | [Microsoft Speech Service](https://docs.microsoft.com/azure/cognitive-services/speech-service/language-support#text-to-speech)         |
-| Řeči     | [Microsoft Speech Service](https://docs.microsoft.com/azure/cognitive-services/speech-service/text-to-speech)          |
-| Zjišťování     | [Zjištění](reference/v3-0-detect.md)         |
+| Speak     | [Microsoft Speech Service](https://docs.microsoft.com/azure/cognitive-services/speech-service/text-to-speech)          |
+| Detect     | [Zjištění](reference/v3-0-detect.md)         |
 | DetectArray     | [Zjištění](reference/v3-0-detect.md)         |
 | AddTranslation     | [Microsoft Translator Hub API](https://hub.microsofttranslator.com/Help/Download/Microsoft%20Translator%20Hub%20API%20Guide.pdf)         |
 | AddTranslationArray    | [Microsoft Translator Hub API](https://hub.microsofttranslator.com/Help/Download/Microsoft%20Translator%20Hub%20API%20Guide.pdf)          |
@@ -75,12 +75,12 @@ Microsoft Translator V3 se účtuje podle stejným způsobem, který se stanoví
 
 | Metoda v3   | Znaky počítá fakturace |
 |:----------- |:-------------|
-| Jazyky     | Odeslané žádné znaky, none nepočítají, žádné poplatky.          |
-| Překlad     | Počet je založen na tom, kolik znaků se odešlou pro překlad a kolik jazycích jsou znaky přeloženy do. odeslání 50 znaků a 5 jazyky požadovaný bude 50 × 5.           |
+| Languages     | Odeslané žádné znaky, none nepočítají, žádné poplatky.          |
+| Translate     | Počet je založen na tom, kolik znaků se odešlou pro překlad a kolik jazycích jsou znaky přeloženy do. odeslání 50 znaků a 5 jazyky požadovaný bude 50 × 5.           |
 | Transliterace     | Počet odeslaných k transkripci znaků, které se počítají.         |
-| Příklad & vyhledávací slovník     | Se počítají počet znaků, odešle ke slovníku lookup a examples.         |
+| Dictionary lookup & example     | Se počítají počet znaků, odešle ke slovníku lookup a examples.         |
 | BreakSentence     | Bez poplatků.       |
-| Zjišťování     | Bez poplatků.      |
+| Detect     | Bez poplatků.      |
 
 ## <a name="v3-end-points"></a>V3 koncové body
 
