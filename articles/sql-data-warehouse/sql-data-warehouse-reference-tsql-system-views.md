@@ -6,16 +6,16 @@ author: twounder
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
-ms.component: manage
+ms.subservice: manage
 ms.date: 06/13/2018
 ms.author: twounder
 ms.reviewer: igorstan
-ms.openlocfilehash: c4663c71bb3aee3547174345cfe9fb1d06c4015e
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 6e68fe624a92d0a2d5a8accd3f34b1c5c10f2868
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51256200"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55472163"
 ---
 # <a name="system-views-supported-in-azure-sql-data-warehouse"></a>Systémová zobrazení, které jsou podporované ve službě Azure SQL Data Warehouse
 Odkazy na dokumentaci pro příkazy jazyka T-SQL podporované ve službě Azure SQL Data Warehouse.
@@ -63,7 +63,7 @@ Následující zobrazení dynamické správy se dají použít pro SQL Data Ware
 
 * [sys.database_service_objectives](https://msdn.microsoft.com/library/mt712619.aspx)
 * [sys.dm_operation_status](https://msdn.microsoft.com/library/dn270022.aspx)
-* [Sys.fn_helpcollations()](https://msdn.microsoft.com/library/ms187963.aspx)
+* [sys.fn_helpcollations()](https://msdn.microsoft.com/library/ms187963.aspx)
 
 ## <a name="sql-server-catalog-views"></a>Zobrazení katalogu systému SQL Server
 * [sys.all_columns](https://msdn.microsoft.com/library/ms177522.aspx)
@@ -71,10 +71,10 @@ Následující zobrazení dynamické správy se dají použít pro SQL Data Ware
 * [sys.all_parameters](https://msdn.microsoft.com/library/ms190340.aspx)
 * [sys.all_sql_modules](https://msdn.microsoft.com/library/ms184389.aspx)
 * [sys.all_views](https://msdn.microsoft.com/library/ms189510.aspx)
-* [Sys.Assemblies](https://msdn.microsoft.com/library/ms189790.aspx)
+* [sys.assemblies](https://msdn.microsoft.com/library/ms189790.aspx)
 * [sys.assembly_modules](https://msdn.microsoft.com/library/ms180052.aspx)
 * [sys.assembly_types](https://msdn.microsoft.com/library/ms178020.aspx)
-* [Sys.Certificates](https://msdn.microsoft.com/library/ms189774.aspx)
+* [sys.certificates](https://msdn.microsoft.com/library/ms189774.aspx)
 * [sys.check_constraints](https://msdn.microsoft.com/library/ms187388.aspx)
 * [sys.columns](https://msdn.microsoft.com/library/ms176106.aspx)
 * [sys.computed_columns](https://msdn.microsoft.com/library/ms188744.aspx)
@@ -100,17 +100,17 @@ Následující zobrazení dynamické správy se dají použít pro SQL Data Ware
 * [sys.numbered_procedures](https://msdn.microsoft.com/library/ms179865.aspx)
 * [sys.objects](https://msdn.microsoft.com/library/ms190324.aspx)
 * [sys.parameters](https://msdn.microsoft.com/library/ms176074.aspx)
-* [Sys.partition_functions](https://msdn.microsoft.com/library/ms187381.aspx)
+* [sys.partition_functions](https://msdn.microsoft.com/library/ms187381.aspx)
 * [sys.partition_parameters](https://msdn.microsoft.com/library/ms175054.aspx)
 * [sys.partition_range_values](https://msdn.microsoft.com/library/ms187780.aspx)
 * [sys.partition_schemes](https://msdn.microsoft.com/library/ms189752.aspx)
-* [Sys.Partitions](https://msdn.microsoft.com/library/ms175012.aspx)
+* [sys.partitions](https://msdn.microsoft.com/library/ms175012.aspx)
 * [sys.procedures](https://msdn.microsoft.com/library/ms188737.aspx)
 * [sys.schemas](https://msdn.microsoft.com/library/ms176011.aspx)
 * [sys.securable_classes](https://msdn.microsoft.com/library/ms408301.aspx)
 * [sys.sql_expression_dependencies](https://msdn.microsoft.com/library/bb677315.aspx)
 * [sys.sql_modules](https://msdn.microsoft.com/library/ms175081.aspx)
-* [Sys.stats](https://msdn.microsoft.com/library/ms177623.aspx)
+* [sys.stats](https://msdn.microsoft.com/library/ms177623.aspx)
 * [sys.stats_columns](https://msdn.microsoft.com/library/ms187340.aspx)
 * [sys.symmetric_keys](https://msdn.microsoft.com/library/ms189446.aspx)
 * [sys.synonyms](https://msdn.microsoft.com/library/ms189458.aspx)
@@ -126,8 +126,8 @@ Následující zobrazení dynamické správy se dají použít pro SQL Data Ware
 * [sys.system_sql_modules](https://msdn.microsoft.com/library/ms188034.aspx)
 * [sys.system_views](https://msdn.microsoft.com/library/ms187764.aspx)
 * [sys.systypes](https://msdn.microsoft.com/library/ms175109.aspx)
-* [Sys.sysusers](https://msdn.microsoft.com/library/ms179871.aspx)
-* [zobrazení Sys.Tables](https://msdn.microsoft.com/library/ms187406.aspx)
+* [sys.sysusers](https://msdn.microsoft.com/library/ms179871.aspx)
+* [sys.tables](https://msdn.microsoft.com/library/ms187406.aspx)
 * [sys.types](https://msdn.microsoft.com/library/ms188021.aspx)
 * [sys.views](https://msdn.microsoft.com/library/ms190334.aspx)
 
@@ -221,7 +221,7 @@ Následující zobrazení dynamické správy se dají použít pro SQL Data Ware
 
 ## <a name="sql-server-informationschema-views"></a>SQL Server INFORMATION_SCHEMA zobrazení
 * [CHECK_CONSTRAINTS](https://msdn.microsoft.com/library/ms189772.aspx)
-* [SLOUPCE](https://msdn.microsoft.com/library/ms188348.aspx)
+* [COLUMNS](https://msdn.microsoft.com/library/ms188348.aspx)
 * [PARAMETRY](https://msdn.microsoft.com/library/ms173796.aspx)
 * [RUTINY](https://msdn.microsoft.com/library/ms188757.aspx)
 * [SCHÉMAT](https://msdn.microsoft.com/library/ms182642.aspx)

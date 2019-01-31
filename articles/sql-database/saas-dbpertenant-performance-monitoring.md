@@ -11,19 +11,19 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 manager: craigg
-ms.date: 09/14/2018
-ms.openlocfilehash: 1ba98598a88973c5d5ae09cffda931a54d521b74
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.date: 01/25/2019
+ms.openlocfilehash: d02e552ede4480ee0c4977dc32bbe347ca7db393
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53259133"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55459481"
 ---
 # <a name="monitor-and-manage-performance-of-azure-sql-databases-and-pools-in-a-multi-tenant-saas-app"></a>Monitorování a správa výkonu databáze Azure SQL a fondů v aplikaci SaaS s více tenanty
 
 V tomto kurzu jsou prozkoumali několika důležitým scénářům řízení výkonu použít v aplikacích SaaS. Pomocí generátoru zatížení simulovat aktivity ve všech tenantských databázích, integrované monitorování a upozorňování funkcí služby SQL Database a elastické fondy jsou jsme vám ukázali.
 
-Aplikace Wingtip Tickets SaaS databáze na Tenanta používá model dat s jedním tenantem, kde každé místo (tenant) má svou vlastní databázi. Stejně jako u většiny aplikací SaaS je předpokládaný vzorek úloh tenanta nepředvídatelný a sporadický. Jinými slovy to znamená, že prodej lístků může probíhat kdykoli. Abyste mohli využít výhod tohoto typického vzoru používání databáze, databáze tenantů se nasazují do elastických databázových fondů. Elastické fondy optimalizují náklady na řešení prostřednictvím sdílení prostředků mezi mnoha databázemi. S tímto typem vzorců je důležité monitorovat využití databáze a prostředků fondu k zajištění, že jsou přiměřeně vyvážená přetížení mezi jednotlivými fondy. Je také potřeba zajistit, že jednotlivé databáze mají adekvátní prostředky a že fondy nedosahují limitů [eDTU](sql-database-service-tiers.md#dtu-based-purchasing-model). Tento kurz se věnuje způsobům monitorování a správy databází a fondů a uvádí, jak se provádějí nápravné akce v reakci na variace v úloze.
+Aplikace Wingtip Tickets SaaS databáze na Tenanta používá model dat s jedním tenantem, kde každé místo (tenant) má svou vlastní databázi. Stejně jako u většiny aplikací SaaS je předpokládaný vzorek úloh tenanta nepředvídatelný a sporadický. Jinými slovy to znamená, že prodej lístků může probíhat kdykoli. Chcete-li využít výhod tohoto typického vzoru používání databáze, databáze tenantů se nasazují do elastických fondů. Elastické fondy optimalizují náklady na řešení prostřednictvím sdílení prostředků mezi mnoha databázemi. S tímto typem vzorců je důležité monitorovat využití databáze a prostředků fondu k zajištění, že jsou přiměřeně vyvážená přetížení mezi jednotlivými fondy. Je také potřeba zajistit, že jednotlivé databáze mají adekvátní prostředky a že fondy nedosahují limitů [eDTU](sql-database-service-tiers.md#dtu-based-purchasing-model). Tento kurz se věnuje způsobům monitorování a správy databází a fondů a uvádí, jak se provádějí nápravné akce v reakci na variace v úloze.
 
 V tomto kurzu se naučíte:
 
@@ -42,7 +42,7 @@ Předpokladem dokončení tohoto kurzu je splnění následujících požadavků
 
 ## <a name="introduction-to-saas-performance-management-patterns"></a>Úvod do principu správy výkonu SaaS
 
-Správa výkonu databáze sestává z kompilování a analýz dat výkonu a následného reagování na tato data prostřednictvím úpravy parametrů pro řízení přijatelné doby odezvy na aplikaci. Při hostování více tenantů představují fondy elastické databáze nenákladný způsob zajištění a správy prostředků pro skupinu databází s nepředvídatelnými úlohami. Při určitých vzorcích úloh může být správa ve fondu užitečná pro pouhé dvě databáze S3.
+Správa výkonu databáze sestává z kompilování a analýz dat výkonu a následného reagování na tato data prostřednictvím úpravy parametrů pro řízení přijatelné doby odezvy na aplikaci. Při hostování více tenantů, elastické fondy jsou nákladově efektivní způsob zajištění a správy prostředků pro skupinu databází s nepředvídatelnými úlohami. Při určitých vzorcích úloh může být správa ve fondu užitečná pro pouhé dvě databáze S3.
 
 ![Diagram aplikace](./media/saas-dbpertenant-performance-monitoring/app-diagram.png)
 
@@ -169,7 +169,7 @@ Jako alternativu navýšení kapacity fondu vytvořte druhý fond a přemístět
 
 1. V [webu Azure portal](https://portal.azure.com), otevřete **tenants1-dpt -&lt;uživatele&gt;**  serveru.
 1. Klikněte na tlačítko **+ nový fond** vytvořit fond na aktuálním serveru.
-1. Na **elastického databázového fondu** šablony:
+1. Na **elastického fondu** šablony:
 
     1. Nastavte **název** k *Pool2*.
     1. Cenovou úroveň nechte jako **Fond Standard**.
@@ -189,9 +189,9 @@ Přejděte do **Pool2** (na *tenants1-dpt -\<uživatele\>*  serveru) k otevřen�
 
 Nyní uvidíte že využití prostředků na *Pool1* klesla a že *Pool2* je nyní podobně načten.
 
-## <a name="manage-performance-of-a-single-database"></a>Správa výkonu izolované databáze
+## <a name="manage-performance-of-an-individual-database"></a>Spravovat výkon jednotlivých databází
 
-Pokud má izolovaná databáze ve fondu stabilně vysoké zatížení, může mít v závislosti na konfiguraci fondu tendenci dominovat prostředkům ve fondu a ovlivňovat ostatní databáze. Pokud je aktivita může nějakou dobu pokračovat, můžete databázi dočasně přemístit mimo fond. To umožňuje databázi mít další prostředky, které potřebuje a izolovat ji od ostatních databází.
+Pokud jednotlivé databáze ve fondu stabilně vysoké zatížení, v závislosti na konfiguraci fondu může mají tendenci dominovat prostředkům ve fondu a ovlivňovat ostatní databáze. Pokud je aktivita může nějakou dobu pokračovat, můžete databázi dočasně přemístit mimo fond. To umožňuje databázi mít další prostředky, které potřebuje a izolovat ji od ostatních databází.
 
 Toto cvičení simuluje vliv vysokého zatížení při prodeji lístků na populární koncert v Koncertním sále Contoso.
 
@@ -203,7 +203,7 @@ Toto cvičení simuluje vliv vysokého zatížení při prodeji lístků na popu
 
 1. V [webu Azure portal](https://portal.azure.com), přejděte na seznam databází na *tenants1-dpt -\<uživatele\>*  serveru. 
 1. Klikněte na **contosoconcerthall** databáze.
-1. Klikněte na fond, který **contosoconcerthall** probíhá. Vyhledejte ve fondu **elastického databázového fondu** oddílu.
+1. Klikněte na fond, který **contosoconcerthall** probíhá. Vyhledejte ve fondu **elastického fondu** oddílu.
 
 1. Zkontrolujte **monitorování Elastických fondů** grafu a hledejte zvýšené fondu využití eDTU. Po jedné až dvou minutách by mělo začít zvýšené zatížení a měli byste rychle zaznamenat, že fond dosáhl 100% využití.
 2. Zkontrolujte **monitorování elastické databáze** zobrazení, které zobrazují nejvytíženější databáze za uplynulou hodinu. *Contosoconcerthall* databáze by měla brzy zobrazit jako jedna z 5 nejvytíženějších databází.
@@ -242,7 +242,7 @@ V tomto kurzu se naučíte:
 [Kurz Obnovení jednoho tenanta](saas-dbpertenant-restore-single-tenant.md)
 
 
-## <a name="additional-resources"></a>Další zdroje informací:
+## <a name="additional-resources"></a>Další materiály
 
 * Další [kurzy, které vycházejí z nasazení aplikace Wingtip Tickets SaaS databáze na Tenanta](saas-dbpertenant-wingtip-app-overview.md#sql-database-wingtip-saas-tutorials)
 * [Elastické fondy SQL](sql-database-elastic-pool.md)

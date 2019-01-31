@@ -12,15 +12,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/24/2010
+ms.date: 01/30/2019
 ms.author: markvi
 ms.reviewer: jairoc
-ms.openlocfilehash: 02a961f799ebd8d290385e6be9a3081695453f5d
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.openlocfilehash: 513b1d7468700076ae4d3fd46284ef88d5f28c51
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55093575"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55296157"
 ---
 # <a name="azure-active-directory-device-management-faq"></a>Azure Active Directory nejčastější dotazy ke správě zařízení
 
@@ -176,7 +176,7 @@ Toto chování nelze použít s žádným uživatelem, který se přihlásí na 
 
 **Otázka: Proč se zobrazuje *zobrazí... došlo k chybě!* dialogové okno při pokusu o službě Azure AD join počítač?**
 
-**ODPOVĚĎ:** K této chybě dochází při nastavování registrace Azure Active Directory s Intune. Ujistěte se, že uživatel, který se pokusí o připojení ke službě Azure AD má správné přiřazenou licenci Intune. Další informace najdete v tématu [nastavení registrace pro zařízení s Windows](https://docs.microsoft.com/intune/deploy-use/set-up-windows-device-management-with-microsoft-intune#azure-active-directory-enrollment).  
+**ODPOVĚĎ:** K této chybě dochází při nastavování registrace Azure Active Directory s Intune. Ujistěte se, že uživatel, který se pokusí o připojení ke službě Azure AD má správné přiřazenou licenci Intune. Další informace najdete v tématu [nastavení registrace pro zařízení s Windows](https://docs.microsoft.com/intune/windows-enroll#azure-active-directory-enrollment).  
 
 ---
 

@@ -6,16 +6,16 @@ author: kevinvngo
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
-ms.component: manage
+ms.subservice: manage
 ms.date: 09/06/2018
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: 12764574c92c494e27290f98f274d2b76c7a4dc6
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 3ce5c79d3565a0b9396b15f54d9ab854e8b8d0d8
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55183220"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55462337"
 ---
 # <a name="backup-and-restore-in-azure-sql-data-warehouse"></a>Zálohování a obnovení ve službě Azure SQL Data Warehouse
 Zjistěte, jak funguje zálohování a obnovení Azure SQL Data Warehouse. Použití datového skladu snímky k obnovení nebo zkopírujte váš datový sklad k určitému bodu obnovení v primární oblasti. Použití datového skladu geograficky redundantní zálohy k obnovení do jiné geografické oblasti. 

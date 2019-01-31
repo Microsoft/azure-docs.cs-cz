@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/28/2019
 ms.author: jingwang
-ms.openlocfilehash: 0a8a229beab03dd8cb26d9cfb9c3b945059d6f70
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 835ba407fb72a8cb512425e59cf56ba1a1cc8a4b
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55164941"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55301267"
 ---
 # <a name="copy-activity-performance-and-tuning-guide"></a>Průvodce laděním a výkonem aktivity kopírování
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -243,11 +243,15 @@ Doporučujeme vám, že je provést tyto kroky pro optimalizaci výkonu služby 
 
 2. **Diagnostika a optimalizace výkonu**. Pokud, které můžete sledovat výkon nesplňuje vaše očekávání, budete muset identifikovat kritické body výkonu. Potom optimalizace výkonu můžete odebrat nebo snižují dopad kritické body. 
 
-    Pro některé scénáře, zobrazí se také "**tipy pro optimalizaci výkonu**" v horní části [monitorování stránku aktivita kopírování](copy-activity-overview.md#monitor-visually), které sděluje, identifikovat kritická místa a provede vás o tom, jak zvýšit kopírování propustnost pro takový případ kopírování.
+    V některých případech po provedení aktivity kopírování ve službě ADF, přímo uvidíte "**tipy pro optimalizaci výkonu**" nahoře [monitorování stránku aktivita kopírování](copy-activity-overview.md#monitor-visually) jak je znázorněno v následujícím příkladu. Jenom se říká kritickým bodem identifikovat pro spuštění dané kopie, ale provede vás také o tom, jak změnit tak, aby zvýšení propustnosti kopírování. Tipy pro ladění aktuálně poskytují návrhy, například při kopírování dat do Azure SQL Data Warehouse pomocí PolyBase zvýšit Azure Cosmos DB RU nebo Azure SQL DB DTU při ukládání zdroje dat na straně výkonu je kritický bod, chcete-li odebrat nepotřebné připravené kopírování atd. Výkon ladění pravidel bude postupně rozšiřují i.
 
-    **Příklad: zkopírujte do služby Azure SQL DB s tipy pro optimalizaci výkonu** ![zkopírujte monitorování s tipy pro optimalizaci výkonu](./media/copy-activity-overview/copy-monitoring-with-performance-tuning-tips.png)
+    **Příklad: kopírování do služby Azure SQL DB s tipy pro optimalizaci výkonu**
 
-    Úplný popis Diagnostika výkonu je nad rámec tohoto článku, ale tady jsou některé běžné aspekty:
+    V této ukázce během kopírování spustit ADF Všimněte si, že jímky Azure SQL DB dosáhne vysokého využití DTU, což zpomalí operace zápisu návrh tedy ke zvýšení úrovně služby Azure SQL DB s více DTU. 
+
+    ![Zkopírujte monitorování s tipy pro optimalizaci výkonu](./media/copy-activity-overview/copy-monitoring-with-performance-tuning-tips.png)
+
+    Kromě toho Následují některé společné aspekty. Úplný popis Diagnostika výkonu je nad rámec tohoto článku.
 
    * Funkce výkonu:
      * [Paralelní kopírování](#parallel-copy)

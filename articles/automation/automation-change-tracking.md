@@ -6,16 +6,16 @@ ms.service: automation
 ms.subservice: change-inventory-management
 author: georgewallace
 ms.author: gwallace
-ms.date: 01/04/2019
+ms.date: 01/29/2019
 ms.topic: conceptual
 manager: carmonm
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: a3c2ea1e28ebbc6859db135b743d579d3c632133
-ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
+ms.openlocfilehash: 11b7928512dd1f1d6b284b088af304c6752711f5
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/25/2019
-ms.locfileid: "54901135"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55301437"
 ---
 # <a name="track-changes-in-your-environment-with-the-change-tracking-solution"></a>Sledování změn ve vašem prostředí pomocí řešení Change Tracking
 
@@ -62,7 +62,7 @@ Pokud chcete začít, sledování změn, je potřeba povolit řešení Change Tr
 
 ## <a name="configuring-change-tracking-and-inventory"></a>Konfigurace řešení Change Tracking a Inventory
 
-Další informace jak připojit počítače k řešení najdete v tématu: [Řešení pro automatizaci připojování](automation-onboard-solutions-from-automation-account.md). Jakmile budete mít počítač připojování pomocí řešení Change Tracking a Inventory můžete konfigurovat položky, které chcete sledovat. Když povolíte nový soubor nebo klíč registru pro sledování, je povolen pro řešení Change Tracking a Inventory.
+Další informace jak připojit počítače k řešení najdete v tématu: [Řešení pro automatizaci připojování](automation-onboard-solutions-from-automation-account.md). Jakmile budete mít počítač připojování pomocí řešení Change Tracking a Inventory, můžete konfigurovat položky, které chcete sledovat. Když povolíte nový soubor nebo klíč registru pro sledování, je povolen pro řešení Change Tracking a Inventory.
 
 Při sledování změn souborů na Windows i Linuxem, se používají hodnoty hash MD5 souborů. Tyto hodnoty hash se použije ke zjištění, pokud byla provedena změna od poslední inventarizace.
 
@@ -108,7 +108,7 @@ Použijte následující postup ke konfiguraci soubory sledování na počítač
 
 ## <a name="wildcard-recursion-and-environment-settings"></a>Nastavení zástupný znak, rekurze a prostředí
 
-Rekurze můžete zadat zástupné znaky pro zjednodušení sledování napříč adresářů a proměnných prostředí, aby bylo možné sledovat soubory v rámci prostředí s několika nebo dynamické jednotka názvy. Následuje seznam běžných informací o, byste měli vědět při konfiguraci rekurze:
+Rekurze můžete zadat zástupné znaky pro zjednodušení sledování napříč adresářů a proměnných prostředí, aby bylo možné sledovat soubory v rámci prostředí s několika nebo dynamické jednotka názvy. Následující seznam uvádí běžné informace, které byste měli vědět při konfiguraci rekurze:
 
 * Zástupné znaky jsou požadovány pro sledování více souborů
 * Pokud použijete zástupné znaky, že jde použít jenom v posledním segmentu cesty. (například C:\folder\\**souboru** nebo /etc/*.conf)
@@ -154,7 +154,7 @@ Další omezení:
 
 Řešení Change Tracking chvíli dochází k následujícím problémům:
 
-* Aktualizace hotfix se neshromažďují pro počítače s Windows 10 Creators Update a Windows Server 2016 Core RS3.
+* Aktualizace hotfix se neshromažďují počítačích s Windows serverem 2016 Core RS3.
 
 ## <a name="change-tracking-data-collection-details"></a>Změnit podrobnosti sledování dat kolekce
 
@@ -183,11 +183,11 @@ Následující tabulka uvádí omezení sledované položky na počítač pro ř
 
 ### <a name="windows-service-tracking"></a>Sledování služby Windows
 
-Frekvence shromažďování výchozí služby Windows je 30 minut. Pokud chcete nakonfigurovat četnost přejděte na **řešení Change Tracking**. V části **upravit nastavení** na **služby Windows** kartu, je ovládací prvek posuvník, který vám umožní změnit četnost shromažďování dat služby Windows z tak rychle jako za 10 sekund k až 30 minut. Přesuňte posuvník, kterou chcete četnost a se automaticky uloží.
+Frekvence shromažďování výchozí služby Windows je 30 minut. Pokud chcete nakonfigurovat četnost, přejděte na **řešení Change Tracking**. V části **upravit nastavení** na **služby Windows** kartu, je ovládací prvek posuvník, který vám umožní změnit četnost shromažďování dat služby Windows z tak rychle jako za 10 sekund k až 30 minut. Přesuňte posuvník, kterou chcete četnost a se automaticky uloží.
 
 ![Windows services posuvníku](./media/automation-change-tracking/windowservices.png)
 
-Agent sleduje pouze změny, tím se optimalizuje výkon agenta. Tím, že nastavíte příliš vysokou prahovou hodnotu změny mohou chybět, pokud služba vrátit do původního stavu. Nastavení četnosti na menší hodnotu umožňuje zachytit změny, které jinak může chybět.
+Agent sleduje pouze změny, tím se optimalizuje výkon agenta. Nastavení prahové hodnoty vysoké chybí změn v Pokud služby vrátit do původního stavu. Nastavení četnosti na menší hodnotu umožňuje zachytit změny, které jinak může chybět.
 
 > [!NOTE]
 > I když můžete agenta sledování změn na 10 druhý interval, data stále trvá několik minut, který se má zobrazit na portálu. Změny během doby, kdy chcete-li zobrazit na portálu jsou stále sledovány a protokoluje.
@@ -269,6 +269,41 @@ V následující tabulce jsou uvedeny ukázky hledání v protokolech pro měnit
 |---------|---------|
 |ConfigurationData<br>&#124;kde ConfigDataType == "WindowsServices" a SvcStartupType == "Auto"<br>&#124;kde SvcState == "Zastavena"<br>&#124; summarize arg_max(TimeGenerated, *) by SoftwareName, Computer         | Zobrazuje nejnovější záznamy inventáře pro služby Windows, které byly nastavené na automaticky, ale nebyly hlášeny jako zastavení<br>Výsledky jsou omezené na o nejnovější záznam pro tohoto názvu softwaru nebo počítače      |
 |ConfigurationChange<br>&#124;kde ConfigChangeType == "Software" a ChangeCategory == "Odebrat"<br>&#124;Řadit podle TimeGenerated desc|Záznamy změn pro odebrání softwaru|
+
+## <a name="alert-on-changes"></a>Upozornění na změny
+
+Klíčová dovednost, pomocí řešení Change Tracking a Inventory je schopnost upozornění na stav konfigurace a všechny změny konfigurace stavu vašeho hybridního prostředí.  
+
+V následujícím příkladu snímek obrazovky ukazuje, že soubor `C:\windows\system32\drivers\etc\hosts` byl změněn na počítači. Tento soubor je důležité, protože soubor hostitelů se používá ve Windows k překladu názvů hostitelů IP adres a má přednost před i DNS, což může způsobit problémy s připojením nebo přesměrování provozu na weby škodlivých aktivit nebo jinak nebezpečné.
+
+![Graf zobrazující hostitele změnu souboru](./media/automation-change-tracking/changes.png)
+
+Tato změna dále analyzovat, přejděte na hledání v protokolu od kliknutí na **Log Analytics**. Jednou v prohledávání protokolu, vyhledejte změny obsahu v souboru hostitelů s dotazem `ConfigurationChange | where FieldsChanged contains "FileContentChecksum" and FileSystemPath contains "hosts"`. Tento dotaz hledá změny, které zahrnuté změny obsahu souboru pro soubory, jejichž plně kvalifikovaná cesta obsahuje slovo "hostitelů". Můžete také požádat o konkrétního souboru tak, že změníte jeho plně kvalifikovaný formuláře část cesty (například `FileSystemPath == "c:\\windows\\system32\\drivers\\etc\\hosts"`).
+
+Jakmile dotaz vrací požadovaných výsledků, klikněte na tlačítko **nové pravidlo upozornění** tlačítko v možnosti vyhledávání protokolu a otevřete stránku vytvoření výstrahy. Může také přejít na toto prostředí prostřednictvím **Azure Monitor** na webu Azure Portal. V prostředí pro vytváření výstrahy dotaz znovu zkontrolovat a upravit logika upozornění. V tomto případě chcete výstrahu, kterou chcete aktivovat, pokud je ještě jednu změnu zjistil ve všech počítačích v prostředí.
+
+![Obrázek znázorňující změnit dotaz pro sledování změn do souboru hostitelů](./media/automation-change-tracking/change-query.png)
+
+Po nastavení podmíněné logiky přiřadíte skupiny akcí provádět akce v reakci na upozornění, že dochází k aktivaci. V tomto případě jsem nastavili e-mailů k odeslání a lístek ITSM, který se má vytvořit.  Také je možné provést mnoho dalších užitečné akce jako je aktivace Azure Functions, runbooku Automation, Webhooku nebo aplikaci logiky.
+
+![Obrázek konfigurace skupiny akcí upozornění na změnu](./media/automation-change-tracking/action-groups.png)
+
+Po nastavení jsou všechny parametry a logiku, můžeme použít upozornění v prostředí.
+
+### <a name="alert-suggestions"></a>Upozornění návrhy
+
+Při upozorňování na změny do souboru hostitelů je vhodné použití upozornění na data řešení Change Tracking a Inventory, existuje mnoho více scénářů pro výstrahy, včetně případů definované spolu s jejich příklady dotazů v níže uvedené části.
+
+|Dotaz  |Popis  |
+|---------|---------|
+|ConfigurationChange <br>&#124;kde ConfigChangeType == "Files" a FileSystemPath obsahuje "c:\\windows\\system32\\ovladače\\"|Užitečné při sledování změn do důležitých systémových souborů|
+|ConfigurationChange <br>&#124;kde FieldsChanged obsahuje "FileContentChecksum" a FileSystemPath == "c:\\windows\\system32\\ovladače\\atd\\hostitelů"|Užitečné při sledování změn klíče konfiguračních souborů|
+|ConfigurationChange <br>&#124;kde ConfigChangeType == "WindowsServices" a obsahuje SvcName "w3svc" a SvcState == "Stopped"|Užitečné pro sledování změn systému kritických služeb|
+|ConfigurationChange <br>&#124;kde ConfigChangeType == "Procesy démon" a obsahuje SvcName "ssh" a SvcState! = "Spuštěna"|Užitečné pro sledování změn systému kritických služeb|
+|ConfigurationChange <br>&#124;kde ConfigChangeType == "Software" a ChangeCategory == "Přidání"|Užitečné pro prostředí tuto potřebu uzamčen konfigurace softwaru|
+|ConfigurationData <br>&#124;kde SoftwareName obsahuje "Monitoring Agent" a CurrentVersion! = "8.0.11081.0"|Užitečné pro zobrazení, které mají počítače nainstalovanou verzi softwaru zastaralé nebo nedodržují předpisy. Oznámí poslední stav ohlášené konfigurace není změny.|
+|ConfigurationChange <br>&#124;Pokud klíč registru == "HKEY_LOCAL_MACHINE\\softwaru\\Microsoft\\Windows\\CurrentVersion\\QualityCompat"| Užitečné pro sledování změn zásadní antivirový klíčů|
+|ConfigurationChange <br>&#124;Pokud klíč registru obsahuje "HKEY_LOCAL_MACHINE\\systému\\CurrentControlSet\\služby\\SharedAccess\\parametry\\FirewallPolicy"| Užitečné pro sledování změn v nastavení brány firewall|
 
 ## <a name="next-steps"></a>Další postup
 

@@ -1,6 +1,6 @@
 ---
-Název: Správa iterací experimentů v nástroji Machine Learning Studio titleSuffix: Azure Machine Learning Studio Popis: Jak Správa iterací experimentů v nástroji Azure Machine Learning Studio. Předchozí běhy své experimenty můžete zkontrolovat v okamžiku, aby bylo možné výzva, opakování a nakonec potvrďte nebo upravit předchozí předpoklady.
-Services: machine learningu ms.service: ms.component strojového učení: studio ms.topic: článku
+Název: Správa iterací experimentů v nástroji Machine Learning Studio titleSuffix: Azure Machine Learning Studio Popis: Jak Správa iterací experimentů v nástroji Azure Machine Learning Studio. Předchozí běhy své experimenty můžete zkontrolovat v okamžiku, aby bylo možné výzva, opakování a nakonec potvrďte nebo upravit předchozí předpoklady.
+Services: machine learningu ms.service: ms.subservice strojového učení: studio ms.topic: článku
 
 Autor: ericlicoding ms.author: amlstudiodocs ms.custom: seodec18 ms.date: 03/20/2017
 ---

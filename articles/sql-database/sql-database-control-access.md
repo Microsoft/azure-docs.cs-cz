@@ -11,13 +11,13 @@ author: VanMSFT
 ms.author: vanto
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 10/05/2018
-ms.openlocfilehash: 49da7704c3b1c3c119528201f34f1352b0afbba4
-ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
+ms.date: 01/25/2019
+ms.openlocfilehash: 6153fbdb6e085d1c817fac5db5eddb5e2c6ae7fa
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49362122"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55465434"
 ---
 # <a name="azure-sql-database-and-sql-data-warehouse-access-control"></a>Řízení přístupu k Azure SQL Database a SQL Data Warehouse
 
@@ -40,7 +40,7 @@ SQL Database podporuje dva typy ověřování:
 
 - **Ověřování SQL**:
 
-  Tuto metodu ověřování pomocí uživatelského jména a hesla. Když jste vytvářeli logický server databáze, zadali jste uživatelské jméno a heslo účtu „server admin“. Tyto přihlašovací údaje můžete použít k ověření a přihlášení k libovolné databázi na daném serveru jako vlastník databáze neboli „dbo“. 
+  Tuto metodu ověřování pomocí uživatelského jména a hesla. Při vytváření serveru SQL Database pro vaši databázi, zadat přihlašovací údaje "server admin" pomocí uživatelského jména a hesla. Tyto přihlašovací údaje můžete použít k ověření a přihlášení k libovolné databázi na daném serveru jako vlastník databáze neboli „dbo“. 
 - **Ověřování pomocí Azure Active Directory**:
 
   Tato metoda ověřování používá identity spravované v Azure Active Directory a je podporované u spravovaných a integrovaných domén. [Kdykoliv to půjde](https://docs.microsoft.com/sql/relational-databases/security/choose-an-authentication-mode), použijte ověřování pomocí Active Directory (integrované zabezpečení). Pokud chcete k ověřování použít Azure Active Directory, musíte vytvořit jiného správce serveru, který se jmenuje „Azure AD admin“ a který smí spravovat uživatele a skupiny služby Azure AD. Tento správce také smí provádět všechny operace jako běžný správce serveru. Postup vytvoření účtu správce služby Azure AD, který umožňuje ověřování Azure Active Directory, najdete v tématu [Připojení ke službě SQL Database s ověřením přes Azure Active Directory](sql-database-aad-authentication.md).

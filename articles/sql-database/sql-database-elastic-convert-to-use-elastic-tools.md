@@ -11,13 +11,13 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 manager: craigg
-ms.date: 04/01/2018
-ms.openlocfilehash: 03e1974a91a8c3cceacab777e28e8e4a01ccb313
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.date: 01/25/2019
+ms.openlocfilehash: 8449462f144590e4fe7048366a21090c95a303cb
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51251589"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55455588"
 ---
 # <a name="migrate-existing-databases-to-scale-out"></a>Migrace existujících databází pro horizontální navýšení kapacity
 Snadno spravovat stávající horizontálně dělené databáze horizontálním navýšením kapacity pomocí nástroje pro databáze Azure SQL Database (například [Klientská knihovna Elastic Database](sql-database-elastic-database-client-library.md)). Nejprve převést stávající sadu databází pro použití [správce mapování horizontálních oddílů](sql-database-elastic-scale-shard-map-management.md). 
@@ -69,11 +69,11 @@ Pro jednoho tenanta modelu, vytvořit **mapování seznamu** mapy horizontální
 
 ![Seznam mapování][1]
 
-Víceklientského modelu přiřadí několika klienty izolovanou databázi (a skupin klientů můžete distribuovat napříč několika databázemi). Tento model použijte, pokud očekáváte, že každý tenant má malé dat, které potřebujete. V tomto modelu, přiřaďte rozsah tenantů k databázi pomocí **rozsah mapování**. 
+Víceklientského modelu přiřadí několik tenantů pro jednotlivé databáze (a skupin klientů můžete distribuovat napříč několika databázemi). Tento model použijte, pokud očekáváte, že každý tenant má malé dat, které potřebujete. V tomto modelu, přiřaďte rozsah tenantů k databázi pomocí **rozsah mapování**. 
 
 ![Mapování oblasti][2]
 
-Nebo můžete implementovat pomocí modelu databázi s více tenanty *mapování seznamu* přiřadit více tenantů v jedné databázi. Například DB1 se používá k ukládání informací o tenantovi ID 1 a 5 a DB2 ukládá data pro tenanta 7 a tenanta 10. 
+Nebo můžete implementovat pomocí modelu databázi s více tenanty *mapování seznamu* přiřadit více tenantů pro jednotlivé databáze. Například DB1 se používá k ukládání informací o tenantovi ID 1 a 5 a DB2 ukládá data pro tenanta 7 a tenanta 10. 
 
 ![Více tenantů v jedné databáze][3] 
 
@@ -98,7 +98,7 @@ Chcete-li využívat tento model mapování, tenant ID hodnoty musí být průb�
     -RangeShardMapName 'RangeShardMap' 
     -ShardMapManager $ShardMapManager 
 
-### <a name="option-3-list-mappings-on-a-single-database"></a>Možnost 3: Seznam mapování v izolované databázi
+### <a name="option-3-list-mappings-on-an-individual-database"></a>Možnost 3: Seznam mapování na jednotlivé databáze
 Nastavení tento vzor vyžaduje vytvoření mapy seznamů také, jak je znázorněno v kroku 2, možnost 1.
 
 ## <a name="step-3-prepare-individual-shards"></a>Krok 3: Příprava jednotlivých horizontálních oddílů
@@ -111,7 +111,7 @@ Každý horizontální oddíl (databáze) přidáte do správce mapování horiz
     # The $ShardMap is the shard map created in step 2.
 
 
-## <a name="step-4-add-mappings"></a>Krok 4: Přidejte mapování
+## <a name="step-4-add-mappings"></a>Krok 4: Přidat mapování
 Přidání mapování závisí na druhu mapy horizontálních oddílů, který jste vytvořili. Pokud jste vytvořili mapy seznamů, přidejte seznam mapování. Pokud jste vytvořili mapy rozsahů, přidejte rozsah mapování.
 
 ### <a name="option-1-map-the-data-for-a-list-mapping"></a>Možnost 1: mapování dat pro mapování seznamu
@@ -138,7 +138,7 @@ Přidáte rozsah mapování pro všechny tenant ID rozsahu - přidružení datab
     -SqlDatabaseName '<shard_database_name>' 
 
 
-### <a name="step-4-option-3-map-the-data-for-multiple-tenants-on-a-single-database"></a>Krok 4 – možnost 3: mapování dat pro více tenantů v jedné databáze
+### <a name="step-4-option-3-map-the-data-for-multiple-tenants-on-an-individual-database"></a>Krok 4 – možnost 3: mapování dat pro více tenantů v jednotlivých databází
 Pro každého klienta spouštění ListMapping přidat (možnost 1). 
 
 ## <a name="checking-the-mappings"></a>Kontroluje se mapování
@@ -158,7 +158,7 @@ Nástroje jsou také na Githubu: [Azure/elastic-db-tools](https://github.com/Azu
 
 Použijte nástroj split-merge pro přesun dat do nebo z modelu s více tenanty do modelu jednoho tenanta. Zobrazit [dělení a slučování](sql-database-elastic-scale-get-started.md).
 
-## <a name="additional-resources"></a>Další zdroje informací:
+## <a name="additional-resources"></a>Další materiály
 Informace o běžných vzorech architektury dat databázových aplikací softwaru s více tenanty jako služby (SaaS) naleznete v části [Vzory návrhu pro aplikace SaaS s více tenanty s databází Azure SQL Database](sql-database-design-patterns-multi-tenancy-saas-applications.md).
 
 ## <a name="questions-and-feature-requests"></a>Otázky a žádosti o funkce

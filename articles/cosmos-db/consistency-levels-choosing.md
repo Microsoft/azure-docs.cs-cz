@@ -7,14 +7,14 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 10/24/2018
 ms.reviewer: sngun
-ms.openlocfilehash: c4523b5028aae5de565e517fea61c62e29a4e7a3
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: 75aecd166d03b751f778221632fad68d279f63a3
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54044072"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55468865"
 ---
-# <a name="choose-the-right-consistency-level-for-your-application"></a>Vyberte úroveň konzistence správné pro vaši aplikaci
+# <a name="choose-the-right-consistency-level"></a>Vyberte úroveň konzistence vpravo 
 
 Distribuované databáze spoléhat na replikaci pro vysokou dostupnost, s nízkou latencí nebo obojí, ujistěte se, základní kompromis mezi konzistence čtení a dostupnosti, latence a propustnosti. Většina komerčně dostupný distribuovaných databází požádejte vývojáři zvolit mezi těmito dvěma modely extreme konzistence: silnou konzistenci a konečné konzistence. Azure Cosmos DB umožňuje vývojářům volit pět jasně definované modely konzistence: silná, omezená neaktuálnost, relace, konzistentní Předpona a konečný výsledek. Každá z těchto modelů konzistence je dobře definovaný a intuitivní a je možné u konkrétních scénářů reálného světa. Zadejte každou pět modelů konzistence [dostupnost a výkon kompromisy](consistency-levels-tradeoffs.md) a je zajištěná komplexní smlouvy SLA. Následující pokyny pro jednoduché můžete učinit správnou volbu v mnoha běžným scénářům.
 

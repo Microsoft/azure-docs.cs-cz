@@ -1,6 +1,6 @@
 ---
 title: Azure SQL Database Managed Instance přehled | Dokumentace Microsoftu
-description: Toto téma popisuje Azure SQL Database Managed Instance a vysvětluje, jak to funguje a jak se liší od izolované databáze ve službě Azure SQL Database.
+description: Toto téma popisuje Azure SQL Database Managed Instance a vysvětluje, jak to funguje a jak se liší od jednoho nebo součástí fondu databáze ve službě Azure SQL Database.
 services: sql-database
 ms.service: sql-database
 ms.subservice: managed-instance
@@ -11,13 +11,13 @@ author: bonova
 ms.author: bonova
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 12/03/2018
-ms.openlocfilehash: 2807e989436aa80fa812b337340db8cb534b2b28
-ms.sourcegitcommit: fd488a828465e7acec50e7a134e1c2cab117bee8
+ms.date: 01/25/2019
+ms.openlocfilehash: ac9a7c081515b35348d10a2968b10647af29ef61
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "53994755"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55465703"
 ---
 # <a name="use-sql-database-managed-instance-with-virtual-networks-and-near-100-compatibility"></a>U služeb virtual networks a téměř 100 % kompatibilitou pomocí SQL Database Managed Instance
 
@@ -34,7 +34,7 @@ Azure SQL Database Managed Instance je určená pro zákazníky v úmyslu migrov
 
 Podle všeobecné dostupnosti zaměřuje Managed Instance poskytovat blízko povrchu 100 % kompatibilitu s nejnovější verzí systému SQL Server v místním prostřednictvím plánu dvoufázové instalace verze.
 
-Rozhodování mezi izolovanou databázi Azure SQL Database, Azure SQL Database Managed Instance a SQL Server IaaS hostované ve virtuálních počítačů najdete v tématu [jak zvolit správnou verzi systému SQL Server v cloudu Azure](sql-database-paas-vs-sql-server-iaas.md).
+Při rozhodování mezi izolované databáze Azure SQL Database, databáze ve fondu, spravované instance a SQL Server je hostovaný na virtuálním počítači, naleznete v tématu [jak zvolit správnou verzi systému SQL Server v cloudu Azure](sql-database-paas-vs-sql-server-iaas.md).
 
 ## <a name="key-features-and-capabilities"></a>Klíčové funkce a možnosti
 
@@ -185,7 +185,7 @@ Postup migrace využívá zálohování SQL na úložiště objektů blob v Azur
 - Informace o obnovení z adresy URL, najdete v části [nativní obnovit z adresy URL](sql-database-managed-instance-migrate.md#native-restore-from-url).
 
 > [!IMPORTANT]
-> Zálohování z Managed Instance dají obnovit jen do jiného Managed Instance. Nelze obnovit na místní SQL Server nebo do databáze jedné, nebo součástí fondu logického serveru Azure SQL Database.
+> Zálohování z Managed Instance dají obnovit jen do jiného Managed Instance. Nelze obnovit na místní SQL Server nebo do jedné databáze nebo elastického fondu.
 
 ### <a name="data-migration-service"></a>Data Migration Service
 
@@ -210,7 +210,7 @@ Managed Instance výhody z se vždycky nahoru – k datu v cloudu, což znamená
 - Managed Instance nepovoluje zadání úplné fyzické cesty, takže všechny odpovídající scénáře podporovat jinak: OBNOVENÍ databáze nepodporuje se přesun, vytvořit DB neumožňuje fyzické cesty, BULK INSERT funguje s objekty BLOB Azure pouze atd.
 - Managed Instance podporuje [ověřování Azure AD](sql-database-aad-authentication.md) jako cloudové alternativu k ověřování Windows.
 - Spravovaná Instance automaticky spravuje skupiny souborů XTP a soubory pro databáze, které obsahují objekty OLTP v paměti
-- Podporuje spravovanou instanci SQL Server Integration Services (SSIS) a můžete hostitele katalogu služby SSIS (SSISDB), která ukládá balíčků služby SSIS, ale jsou prováděna na spravované prostředí Azure-SSIS Integration Runtime (IR) v Azure Data Factory (ADF), najdete v článku [Create Prostředí Azure-SSIS IR ve službě ADF](https://docs.microsoft.com/azure/data-factory/create-azure-ssis-integration-runtime). Porovnání funkcí služby SSIS v SQL Database a Managed Instance, najdete v článku [logický server porovnání SQL Database a Managed Instance](../data-factory/create-azure-ssis-integration-runtime.md#compare-sql-database-logical-server-and-sql-database-managed-instance).
+- Podporuje spravovanou instanci SQL Server Integration Services (SSIS) a můžete hostitele katalogu služby SSIS (SSISDB), která ukládá balíčků služby SSIS, ale jsou prováděna na spravované prostředí Azure-SSIS Integration Runtime (IR) v Azure Data Factory (ADF), najdete v článku [Create Prostředí Azure-SSIS IR ve službě ADF](https://docs.microsoft.com/azure/data-factory/create-azure-ssis-integration-runtime). Porovnání funkcí služby SSIS v SQL Database a Managed Instance, najdete v článku [porovnání Azure SQL Database jedné databáze a elastické fondy a Managed Instance](../data-factory/create-azure-ssis-integration-runtime.md#compare-sql-database-single-databaseelastic-pool-and-sql-database-managed-instance).
 
 ### <a name="managed-instance-administration-features"></a>Funkce správy spravované Instance
 
@@ -225,10 +225,10 @@ V následující tabulce jsou uvedeny několik vlastností, které jsou přístu
 
 |Vlastnost|Hodnota|Poznámka|
 |---|---|---|
-|`@@VERSION`|Microsoft SQL Azure (RTM) - 2018-03-07 12.0.2000.8 Copyright (C) 2018 Microsoft Corporation.|Tato hodnota je stejné jako u databáze SQL.|
+|`@@VERSION`|Microsoft SQL Azure (RTM) - 12.0.2000.8 2018-03-07 Copyright (C) 2018 Microsoft Corporation.|Tato hodnota je stejné jako u databáze SQL.|
 |`SERVERPROPERTY ('Edition')`|SQL Azure|Tato hodnota je stejné jako u databáze SQL.|
 |`SERVERPROPERTY('EngineEdition')`|8|Tato hodnota jednoznačně identifikuje Managed Instance.|
-|`@@SERVERNAME`, `SERVERPROPERTY ('ServerName')`|Název DNS úplná instance v následujícím formátu:`<instanceName>`.`<dnsPrefix>`.Database.Windows.NET, kde `<instanceName>` je poskytnutá výhradně zákazník, zatímco `<dnsPrefix>` je automaticky generované část názvu zaručující globální jedinečnost názvu DNS ("wcus17662feb9ce98", například)|Příklad: Moje managed-instance.wcus17662feb9ce98.database.windows.net|
+|`@@SERVERNAME`, `SERVERPROPERTY ('ServerName')`|Název DNS úplná instance v následujícím formátu:`<instanceName>`.`<dnsPrefix>`.Database.Windows.NET, kde `<instanceName>` je poskytnutá výhradně zákazník, zatímco `<dnsPrefix>` je automaticky generované část názvu zaručující globální jedinečnost názvu DNS ("wcus17662feb9ce98", například)|Example: my-managed-instance.wcus17662feb9ce98.database.windows.net|
 
 ## <a name="next-steps"></a>Další postup
 

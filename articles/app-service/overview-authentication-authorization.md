@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 08/24/2018
 ms.author: mahender,cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 7fbf86a24ca6b2ba55ca33b20e67dea6a6e0c994
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: b66b293e5d6e422c994e2b7cef13fd4100144cbf
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53731032"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55297000"
 ---
 # <a name="authentication-and-authorization-in-azure-app-service"></a>Ověřování a autorizace v prostředí Azure App Service
 
@@ -64,7 +64,7 @@ Služba App Service poskytuje předdefinované úložiště tokenů, což je úl
 - příspěvek na časové ose Facebooku ověřeného uživatele
 - Přečtěte si firemní data uživatele z Azure Active Directory Graph API nebo dokonce Microsoft Graphu
 
-Obvykle nutné napsat kód k shromažďování, ukládání a aktualizaci těchto tokenů ve vaší aplikaci. Pomocí tokenu úložiště jste právě [načíst tokeny](app-service-authentication-how-to.md#retrieve-tokens-in-app-code) když je potřebujete a [informace služby App Service je aktualizovat](app-service-authentication-how-to.md#refresh-access-tokens) při stanou neplatnými. 
+Obvykle nutné napsat kód k shromažďování, ukládání a aktualizaci těchto tokenů ve vaší aplikaci. Pomocí tokenu úložiště jste právě [načíst tokeny](app-service-authentication-how-to.md#retrieve-tokens-in-app-code) když je potřebujete a [informace služby App Service je aktualizovat](app-service-authentication-how-to.md#refresh-identity-provider-tokens) při stanou neplatnými. 
 
 Tokeny typu id, přístupové tokeny a obnovovací tokeny v mezipaměti pro ověřená relace a jsou přístupná jenom pro příslušné uživatele.  
 
@@ -151,7 +151,7 @@ Průvodce postupy specifickým pro zprostředkovatele:
 * [Jak nakonfigurovat aplikaci pro použití přihlášení k Google][Google]
 * [Konfigurace aplikace pro použití Microsoft Account login][MSA]
 * [Jak nakonfigurovat aplikaci pro použití přihlášení k Twitteru][Twitter]
-* [Jak: Použití vlastního ověřování pro vaši aplikaci][custom-auth]
+* [Postup: Použití vlastního ověřování pro vaši aplikaci][custom-auth]
 
 [AAD]: configure-authentication-provider-aad.md
 [Facebook]: configure-authentication-provider-facebook.md

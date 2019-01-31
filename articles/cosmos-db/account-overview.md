@@ -8,14 +8,14 @@ ms.topic: conceptual
 ms.date: 11/08/2018
 ms.author: dharmas
 ms.reviewer: sngun
-ms.openlocfilehash: 7c4c1a5991445448f015dc0912383baf53f4e38c
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: cbc11e2fc54ecffbea22a66354f334f3562e3339
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54034926"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55459202"
 ---
-# <a name="working-with-azure-cosmos-account"></a>Práce s účtem Azure Cosmos
+# <a name="work-with-azure-cosmos-account"></a>Práce s účtem Azure Cosmos
 
 Azure Cosmos DB je plně spravovanou platformu as-a-service (PaaS). Pokud chcete začít používat Azure Cosmos DB, by měl nejdřív vytvořit účet Azure Cosmos ve vašem předplatném Azure. Váš účet Azure Cosmos obsahuje jedinečný název DNS a účet můžete spravovat pomocí webu Azure portal, rozhraní příkazového řádku Azure nebo pomocí jiné sady SDK pro konkrétní jazyk. Další informace najdete v tématu [Správa účtu Azure Cosmos](how-to-manage-database-account.md).
 
@@ -42,4 +42,4 @@ Teď můžete přejít k zjistěte, jak spravovat váš účet Azure Cosmos nebo
 * [Koncový bod služby virtuální sítě pro váš účet Azure Cosmos](vnet-service-endpoint.md)
 * [Brány firewall protokolu IP pro váš účet Azure Cosmos](firewall-support.md)
 * [Postup přidání nebo odebrání oblastí Azure na účtu Azure Cosmos](how-to-manage-database-account.md)
-* [Smlouvy o úrovni služeb Azure Cosmos DB](https://azure.microsoft.com/support/legal/sla/cosmos-db/v1_2/)
+* [Azure Cosmos DB SLAs](https://azure.microsoft.com/support/legal/sla/cosmos-db/v1_2/)

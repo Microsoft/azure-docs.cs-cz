@@ -11,13 +11,13 @@ ms.topic: overview
 ms.service: active-directory
 ms.workload: identity
 services: active-directory
-ms.custom: it-pro;seo-update-jan
-ms.openlocfilehash: 8a5d09b476e8c8d17bd49ebece2e00dfb660c9cb
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.custom: it-pro;seo-update-azuread-jan
+ms.openlocfilehash: 2e8fc0cd0321fb59a641e5527b1609c85802dc63
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55192022"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55295181"
 ---
 # <a name="users-groups-licensing-and-roles-for-large-organizations"></a>Uživatelé, skupiny, licencování a role pro velké organizace
 
@@ -58,7 +58,7 @@ Nové role správce Azure Active Directory neustále přidáváme. Aktuální do
 
 ## <a name="assign-app-access"></a>Přiřazení přístup k aplikacím
 
-Azure Active Directory můžete k přiřazení skupinového přístupu k [podnikovým aplikacím, které jsou nasazené ve vašem klientovi Azure AD](/azure/active-directory/manage-apps/methods-for-assigning-users-and-groups#assign-a-group-directly-to-an-application-as-an-administrator?context=azure/active-directory/users-groups-roles/context/ugr-context). Pokud zkombinujete dynamické skupiny s přiřazením skupin k aplikacím, můžete zautomatizovat přiřazování uživatelského přístupu k aplikacím v souladu s růstem vaší organizace. K přiřazení přístupu k podnikovým aplikacím budete potřebovat licenci Azure Active Directory Premium P1 nebo Premium P2.
+Azure Active Directory můžete k přiřazení skupinového přístupu k [podnikovým aplikacím, které jsou nasazené ve vašem klientovi Azure AD](/azure/active-directory/manage-apps/methods-for-assigning-users-and-groups#assign-group?context=azure/active-directory/users-groups-roles/context/ugr-context). Pokud zkombinujete dynamické skupiny s přiřazením skupin k aplikacím, můžete zautomatizovat přiřazování uživatelského přístupu k aplikacím v souladu s růstem vaší organizace. K přiřazení přístupu k podnikovým aplikacím budete potřebovat licenci Azure Active Directory Premium P1 nebo Premium P2.
 
 Azure AD nabízí také podrobné řízení dat, která proudí mezi aplikací a skupinami, kterým přiřadíte přístup. V možnosti [Podnikové aplikace](https://portal.azure.com/#blade/Microsoft_AAD_IAM/StartboardApplicationsMenuBlade/AllApps) otevřete aplikaci a vyberte **Zřizování**, poté můžete provést následující:
 
@@ -72,4 +72,4 @@ Azure AD nabízí také podrobné řízení dat, která proudí mezi aplikací a
 
 Pokud jste začínající správce Azure AD, přečtěte si základní informací v článku [Základní dokumentace ke službě Azure Active Directory](https://docs.microsoft.com/azure/active-directory/fundamentals/index).
 
-Popřípadě můžete začít [vytvářet skupiny](/azure/active-directory/fundamentals/active-directory-groups-create-azure-portal?context=azure/active-directory/users-groups-roles/context/ugr-context), [přiřazovat licence](/azure/active-directory/fundamentals/license-users-groups?context=azure/active-directory/users-groups-roles/context/ugr-context), [přiřazovat přístup k aplikaci](/azure/active-directory/manage-apps/methods-for-assigning-users-and-groups#assign-a-group-directly-to-an-application-as-an-administrator?context=azure/active-directory/users-groups-roles/context/ugr-context) nebo [přiřazovat role správce](directory-assign-admin-roles.md).
+Popřípadě můžete začít [vytvářet skupiny](/azure/active-directory/fundamentals/active-directory-groups-create-azure-portal?context=azure/active-directory/users-groups-roles/context/ugr-context), [přiřazovat licence](/azure/active-directory/fundamentals/license-users-groups?context=azure/active-directory/users-groups-roles/context/ugr-context), [přiřazovat přístup k aplikaci](/azure/active-directory/manage-apps/methods-for-assigning-users-and-groups#assign-group?context=azure/active-directory/users-groups-roles/context/ugr-context) nebo [přiřazovat role správce](directory-assign-admin-roles.md).

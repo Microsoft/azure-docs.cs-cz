@@ -1,10 +1,22 @@
 ---
-Název: Exportovat a odstraňovat data z titleSuffix Machine Learning Studio: Azure Machine Learning Studio Popis: V rámci produktu data uložená pomocí Azure Machine Learning Studio je k dispozici pro exportu a odstranění na webu Azure portal a také prostřednictvím ověřeného rozhraní REST API. Telemetrická data, je přístupný prostřednictvím portálu Azure o ochraně osobních údajů. V tomto článku se dozvíte, jak.
-Services: machine learningu ms.service: ms.component strojového učení: studio ms.topic: koncepční
-
-Autor: ericlicoding ms.author: amlstudiodocs ms.custom: předchozí Autor = heatherbshapiro předchozí ms.author=hshapiro ms.date: 05/25/2018
+title: Exportovat a odstraňovat data z Machine Learning Studio
+titleSuffix: Azure Machine Learning Studio
+description: V rámci produktu data uložená pomocí Azure Machine Learning Studio je k dispozici pro exportu a odstranění na webu Azure portal a také prostřednictvím ověřeného rozhraní REST API. Telemetrická data, je přístupný prostřednictvím portálu Azure o ochraně osobních údajů. V tomto článku se dozvíte, jak.
+services: machine-learning
+ms.service: machine-learning
+ms.subservice: studio
+ms.topic: conceptual
+author: ericlicoding
+ms.author: amlstudiodocs
+ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
+ms.date: 05/25/2018
+ms.openlocfilehash: d2276eb11ce904b485440a6ce91981846a980dbc
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.translationtype: MT
+ms.contentlocale: cs-CZ
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55462184"
 ---
-
 # <a name="export-and-delete-in-product-user-data-from-azure-machine-learning-studio"></a>Exportovat a odstranit data v rámci produktu uživatelů z Azure Machine Learning Studio
 
 Můžete odstranit nebo exportu v rámci produktu data uložená pomocí Azure Machine Learning Studio pomocí webu Azure portal, rozhraní Studio, PowerShell a ověřil rozhraní REST API. Tento článek vysvětluje, jak. 

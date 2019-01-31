@@ -6,16 +6,16 @@ services: cognitive-services
 author: Jann-Skotdal
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: translator-speech
+ms.subservice: translator-speech
 ms.topic: reference
 ms.date: 05/18/2018
 ms.author: v-jansko
-ms.openlocfilehash: dea32146c1e00869de43b50823e81853e6543411
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: e1796b2cb3efee6ff610f9dade7a10b2c2637bba
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53259422"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55466179"
 ---
 # <a name="translator-speech-api"></a>Translator Speech API
 
@@ -71,17 +71,17 @@ Zvukový vstup je ve formátu souboru zvuk zvukového průběhu (WAVE nebo více
 
 |Posun|Hodnota|
 |:---|:---|
-|0 – 3|"RIFF"|
-|4 – 7|0|
+|0 - 3|"RIFF"|
+|4 - 7|0|
 |8 - 11|"WAVE"|
 |12 - 15|"fmt"|
 |16 - 19|16|
-|20 – 21|1|
+|20 - 21|1|
 |22 - 23|1|
 |24 - 27|16000|
 |28 - 31|32000|
 |32 - 33|2|
-|34 – 35|16|
+|34 - 35|16|
 |36 - 39|"data"|
 |40 - 43|0|
 
@@ -180,7 +180,7 @@ Když klientská aplikace dokončení vysílání datového proudu zvuku, obdrž
 |access_token|(prázdné)   |Alternativní způsob, jak předat platný přístupový token OAuth. Nosný token je obvykle poskytují s hlavičkou `Authorization`. Některé knihovny pomocí protokolu websocket neumožňují klientským kódem, aby nastavení hlaviček. V takovém případě může klient použít `access_token` parametr předat platný token dotazu. Při použití přístupového tokenu pro ověření, pokud `Authorization` není nastavena hlavička, pak `access_token` musí být nastavena. Pokud jsou nastaveny záhlaví a parametr dotazu, je ignorován parametr dotazu. Klienti měli používat jenom jedna metoda předat token.|query|řetězec|
 |klíč předplatného|(prázdné)   |Alternativní způsob, jak předat klíč předplatného. Některé knihovny pomocí protokolu websocket neumožňují klientským kódem, aby nastavení hlaviček. V takovém případě může klient použít `subscription-key` parametr předejte platné předplatné klíč dotazu. Pokud používáte klíč předplatného k ověření, `Ocp-Apim-Subscription-Key` není nastavena hlavička, pak musí být nastaven klíč předplatného. Pokud jsou nastaveny záhlaví a parametr dotazu, je ignorován parametr dotazu. Klienti měli používat jenom jednu metodu k předání `subscription key`.|query|řetězec|
 |X-ClientTraceId    |(prázdné)    |Identifikátor GUID klientem generovaná použít ke sledování požadavku. Pro správné řešení potíží, musí klienti zadejte novou hodnotu s každou žádostí a zaznamenejte ho.<br/>Namísto použití záhlaví, lze předat tuto hodnotu s parametrem dotazu `X-ClientTraceId`. Pokud jsou nastaveny záhlaví a parametr dotazu, je ignorován parametr dotazu.|záhlaví|řetězec|
-|X-ID korelace|(prázdné)    |Klientem generovaná identifikátor použité pro sladění více kanálů v konverzaci. Konverzace mezi uživateli povolit lze vytvořit více relací překladu řeči. V takovém scénáři všechny relace překlad řeči pomocí stejné ID korelace spojovat kanály. To usnadňuje trasování a Diagnostika. Musí odpovídat identifikátoru: `^[a-zA-Z0-9-_.]{1,64}$`<br/>Namísto použití záhlaví, lze předat tuto hodnotu s parametrem dotazu `X-CorrelationId`. Pokud jsou nastaveny záhlaví a parametr dotazu, je ignorován parametr dotazu.|záhlaví|řetězec|
+|X-CorrelationId|(prázdné)    |Klientem generovaná identifikátor použité pro sladění více kanálů v konverzaci. Konverzace mezi uživateli povolit lze vytvořit více relací překladu řeči. V takovém scénáři všechny relace překlad řeči pomocí stejné ID korelace spojovat kanály. To usnadňuje trasování a Diagnostika. Musí odpovídat identifikátoru: `^[a-zA-Z0-9-_.]{1,64}$`<br/>Namísto použití záhlaví, lze předat tuto hodnotu s parametrem dotazu `X-CorrelationId`. Pokud jsou nastaveny záhlaví a parametr dotazu, je ignorován parametr dotazu.|záhlaví|řetězec|
 |X-ClientVersion|(prázdné)    |Určuje verzi klientská aplikace. Příklad: "2.1.0.123".<br/>Namísto použití záhlaví, lze předat tuto hodnotu s parametrem dotazu `X-ClientVersion`. Pokud jsou nastaveny záhlaví a parametr dotazu, je ignorován parametr dotazu.|záhlaví|řetězec|
 |X-OsPlatform|(prázdné)   |Určuje název a verzi operačního systému, které klientská aplikace běží na. Příklady: "S androidem 5.0", "iOs 8.1.3", "Windows 8.1".<br/>Namísto použití záhlaví, lze předat tuto hodnotu s parametrem dotazu `X-OsPlatform`. Pokud jsou nastaveny záhlaví a parametr dotazu, je ignorován parametr dotazu.|záhlaví|řetězec|
 

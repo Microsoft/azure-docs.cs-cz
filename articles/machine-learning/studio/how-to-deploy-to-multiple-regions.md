@@ -1,6 +1,6 @@
 ---
-Název: Nasazení sady Studio webové služby pro více oblastí titleSuffix: Azure Machine Learning Studio Popis: Postup nasazení (kopie) nové webové služby do jiné oblasti. Snadno Nasaďte webovou službu do více oblastí, bez nutnosti více předplatná a pracovní prostory.
-Services: machine learningu ms.service: ms.component strojového učení: studio ms.topic: článku
+Název: Nasazení sady Studio webové služby pro více oblastí titleSuffix: Azure Machine Learning Studio Popis: Postup nasazení (kopie) nové webové služby do jiné oblasti. Snadno Nasaďte webovou službu do více oblastí, bez nutnosti více předplatná a pracovní prostory.
+Services: machine learningu ms.service: ms.subservice strojového učení: studio ms.topic: článku
 
 Autor: ericlicoding ms.author: amlstudiodocs ms.custom: seodec18 ms.date: 04/19/2017
 ---

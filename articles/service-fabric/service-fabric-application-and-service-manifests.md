@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 12/19/2018
 ms.author: ryanwi
-ms.openlocfilehash: fa3c94854f8f67da9caa2955f5c62581843e39c8
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 9e8ca50970ff4a845174d7061b60a88a8f5ce578
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55156101"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55465619"
 ---
 # <a name="service-fabric-application-and-service-manifests"></a>Manifesty služby a aplikace Service Fabric
 Tento článek popisuje, jak aplikace Service Fabric a služby jsou definované a verzovaným pomocí souboru ApplicationManifest.xml a ServiceManifest.xml.  Podrobnější příklady najdete v článku [aplikací a službou manifest příklady](service-fabric-manifest-examples.md).  Schéma XML pro tyto soubory manifestu jsou uvedené v [dokumentace schématu ServiceFabricServiceModel.xsd](service-fabric-service-model-schema.md).
@@ -96,7 +96,7 @@ Další informace o tom, jak nakonfigurovat SetupEntryPoint najdete v tématu [n
 </Settings>
 ```
 
-**Prostředky**, jako jsou koncové body, používané službou být deklarován nebo upravené beze změny zkompilovaný kód.  Přístup k prostředkům, které jsou určené v manifestu služby se dá řídit přes **skupiny SecurityGroup** v manifestu aplikace.  Když **koncový bod** prostředek je definován v manifestu služby, Service Fabric přiřazuje porty z rozsahu portů aplikace rezervovaných a není explicitně zadán port.  Další informace o [zadání nebo přepisující prostředky. koncový bod](service-fabric-service-manifest-resources.md).
+Služba Service Fabric **koncový bod** je příkladem prostředek Service Fabric; Prostředek Service Fabric může být deklarován nebo upravené beze změny zkompilovaný kód. Přístup k prostředkům Service Fabric, které jsou určené v manifestu služby se dá řídit přes **skupiny SecurityGroup** v manifestu aplikace. Když prostředek koncového bodu je definovaný v manifestu služby, Service Fabric přiřazuje porty z rozsahu portů aplikace vyhrazené, pokud není explicitně zadán port. Další informace o [zadání nebo přepisující prostředky. koncový bod](service-fabric-service-manifest-resources.md).
 
 
 <!--

@@ -2,18 +2,18 @@
 title: Aplikace DPM nebo Azure Backup server ochrana Sharepointové farmy do Azure
 description: Tento článek obsahuje přehled ochrany aplikace DPM nebo Azure Backup serveru farmy služby SharePoint do Azure
 services: backup
-author: adigan
-manager: Nkolli1
+author: kasinh
+manager: vvithal
 ms.service: backup
 ms.topic: conceptual
-ms.date: 10/18/2018
-ms.author: adigan
-ms.openlocfilehash: b3b4d42d9a48d02639019f815cbf4fca15060771
-ms.sourcegitcommit: 9e179a577533ab3b2c0c7a4899ae13a7a0d5252b
+ms.date: 01/30/2019
+ms.author: kasinh
+ms.openlocfilehash: 79b4962e1c37858fbd52d65aff56476e55ffa371
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49946041"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55296456"
 ---
 # <a name="back-up-a-sharepoint-farm-to-azure"></a>Zálohování sharepointové farmy do Azure
 Zálohujete Sharepointové farmy do Microsoft Azure mnohem stejným způsobem, který je zálohovat zdrojů dat pomocí System Center Data Protection Manager (DPM). Azure Backup poskytuje flexibilitu při plán zálohování a vytvořit každý den, týdenní, měsíční nebo roční zálohu odkazuje a poskytuje možnosti zásad uchovávání informací pro různé body záloh. DPM poskytuje možnost ukládat kopie místního disku pro rychlé cíle plánované doby obnovení (RTO) a k uložení kopie do Azure pro hospodárná a dlouhodobé uchovávání.
@@ -23,7 +23,7 @@ Azure Backup pro DPM podporuje následující scénáře:
 
 | Úloha | Verze | Nasazení služby SharePoint | Typ nasazení aplikace DPM | DPM – System Center 2012 R2 | Ochrana a obnovení |
 | --- | --- | --- | --- | --- | --- |
-| SharePoint |SharePoint 2013, SharePoint 2010 a SharePoint 2007 SharePoint 3.0 |SharePoint nasadit jako fyzický server nebo virtuální počítač Hyper-V nebo VMware <br> -------------- <br> SQL AlwaysOn |Fyzický server nebo místní Hyper-V virtuálního počítače |Podporuje zálohování do Azure od kumulativní aktualizace 5 |Ochrana farmy služby SharePoint možnosti obnovení: obnovení farmy, databáze a soubor nebo položka seznamu z bodů obnovení disku.  Obnovení farmy a databáze z bodů obnovení Azure. |
+| SharePoint |SharePoint 2013, SharePoint 2010, SharePoint 2007, SharePoint 3.0 |SharePoint nasadit jako fyzický server nebo virtuální počítač Hyper-V nebo VMware <br> -------------- <br> SQL AlwaysOn |Fyzický server nebo místní Hyper-V virtuálního počítače |Podporuje zálohování do Azure od kumulativní aktualizace 5 |Ochrana farmy služby SharePoint možnosti obnovení: Obnovení farmy, databáze a soubor nebo položka seznamu z bodů obnovení disku.  Obnovení farmy a databáze z bodů obnovení Azure. |
 
 ## <a name="before-you-start"></a>Než začnete
 Existuje několik věcí, které je potřeba potvrdit před zálohování Sharepointové farmy do Azure.
@@ -229,14 +229,14 @@ V následujícím příkladu *položky obnovení Sharepointu* omylem odstraněn�
 5. V tomto okamžiku postupujte [kroky obnovení dříve v tomto článku](#restore-a-sharepoint-item-from-disk-using-dpm) k obnovení databáze obsahu služby SharePoint z disku.
 
 ## <a name="faqs"></a>Nejčastější dotazy
-Dotaz: které verze aplikace DPM podporuje SQL Server 2014 a SQL 2012 (SP2)?<br>
+DOTAZ: Které verze aplikace DPM podporuje SQL Server 2014 a SQL 2012 (SP2)?<br>
 Odpověď: Aplikace DPM 2012 R2 s kumulativní aktualizací 4 podporuje oboje.
 
-Dotaz: lze obnovit Sharepointových položek do původního umístění, pokud je služba SharePoint nakonfigurována pomocí AlwaysOn serveru SQL (ochrana na disku)?<br>
+DOTAZ: Můžete obnovit Sharepointových položek do původního umístění, pokud je služba SharePoint nakonfigurována pomocí AlwaysOn serveru SQL (ochrana na disku)?<br>
 Odpověď: Ano, položka je možné obnovit do původního webu služby SharePoint.
 
-Dotaz: lze obnovit databáze služby SharePoint do původního umístění, pokud je služba SharePoint nakonfigurována s použitím SQL AlwaysOn?<br>
-Odpověď: protože SharePoint databází nakonfigurovaných v SQL AlwaysOn, jejich nelze upravit, pokud je skupina dostupnosti odebrána. Aplikace DPM v důsledku toho nelze obnovit databázi do původního umístění. Můžete obnovit databázi systému SQL Server na jinou instanci systému SQL Server.
+DOTAZ: Můžete obnovit do původního umístění databáze služby SharePoint, pokud je služba SharePoint nakonfigurována s použitím SQL AlwaysOn?<br>
+Odpověď: Protože SharePoint databází nakonfigurovaných v SQL AlwaysOn, jejich nelze upravit, pokud je skupina dostupnosti odebrána. Aplikace DPM v důsledku toho nelze obnovit databázi do původního umístění. Můžete obnovit databázi systému SQL Server na jinou instanci systému SQL Server.
 
 ## <a name="next-steps"></a>Další postup
 * Další informace o DPM ochrany Sharepointu – viz [seriál videí – DPM ochrany služby SharePoint](http://channel9.msdn.com/Series/Azure-Backup/Microsoft-SCDPM-Protection-of-SharePoint-1-of-2-How-to-create-a-SharePoint-Protection-Group)

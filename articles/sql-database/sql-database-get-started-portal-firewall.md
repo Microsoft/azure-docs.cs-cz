@@ -1,5 +1,5 @@
 ---
-title: 'Azure Portal: Vytvoření pravidla brány firewall pro databázi SQL| Microsoft Docs'
+title: 'Azure portal: Vytvořte pravidlo brány firwall SQL Database | Dokumentace Microsoftu'
 description: Vytvoření pravidla brány firewall na úrovni serveru databáze pro databázi SQL
 services: sql-database
 ms.service: sql-database
@@ -11,13 +11,13 @@ author: sachinpMSFT
 ms.author: sachinp
 ms.reviewer: vanto, carlrab
 manager: craigg
-ms.date: 12/01/2018
-ms.openlocfilehash: cab92539b5019d4807ddefb2b84279c844f53016
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.date: 01/25/2019
+ms.openlocfilehash: 589d3fa8c0ee8c8f374cd4f34f17401caa46d265
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52721897"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55462252"
 ---
 # <a name="quickstart-create-a-server-level-firewall-rule-for-your-sql-database-using-the-azure-portal"></a>Rychlý start: Vytvoření pravidla brány firewall na úrovni serveru pro databázi SQL na webu Azure Portal
 
@@ -57,7 +57,7 @@ Postupujte podle těchto kroků vytvořte pravidlo brány firewall na úrovni se
    > Standardně je přístup přes bránu firewall služby SQL Database povolený pro všechny služby Azure. Zvolte **OFF** na této stránce provedete zákaz pro všechny služby Azure.
    >
 
-5. Vyberte **Uložit**. Vytvoří se pravidlo brány firewall na úrovni serveru pro vaši aktuální IP adresu, které otevře port 1433 na logickém serveru.
+5. Vyberte **Uložit**. Pro vaši aktuální IP adresu, které otevře port 1433 na databáze SQL serveru se vytvoří pravidlo brány firewall na úrovni serveru.
 
 6. Zavřít **nastavení brány Firewall** stránky.
 
@@ -66,7 +66,6 @@ Pomocí SQL Server Management Studio nebo jiného nástroje podle vašeho výbě
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
 Uložte tyto prostředky, pokud chcete přejít na [Další kroky](#next-steps) a seznámit se s několika způsoby, jak se připojit k databázi a dotazovat ji. Pokud však chcete prostředky, které jste vytvořili v rámci tohoto rychlého startu odstranit, použijte následující postup.
-
 
 1. V nabídce vlevo na webu Azure Portal vyberte **skupiny prostředků** a pak vyberte **myResourceGroup**.
 2. Na stránce skupiny prostředků, vyberte **odstranit**, typ **myResourceGroup** v textovém poli a pak vyberte **odstranit**.

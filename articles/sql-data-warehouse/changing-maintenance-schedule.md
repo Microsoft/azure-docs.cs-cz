@@ -6,16 +6,16 @@ author: antvgski
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
-ms.component: design
+ms.subservice: design
 ms.date: 10/15018
 ms.author: anvang
 ms.reviewer: igorstan
-ms.openlocfilehash: 75384aed8c354cf2d549d92cdb75f87038f33ab8
-ms.sourcegitcommit: a4e4e0236197544569a0a7e34c1c20d071774dd6
+ms.openlocfilehash: c1029d5efe0c8e87cd9bc84887826ddf837d32c5
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51713261"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55456251"
 ---
 # <a name="change-a-maintenance-schedule"></a>Změnit plán údržby 
 
@@ -40,9 +40,9 @@ Chcete-li změnit plán údržby pro datový sklad, proveďte následující kro
    ![Okno nastavení údržby](media/sql-data-warehouse-maintenance-scheduling/maintenance-settings-page.png)
 
 5. Vyberte váš upřednostňovaný primární a sekundární správu a údržbu pomocí rozevírací seznamy:
-   - **Den**: upřednostňované den provádění údržby během vybraného časového období.
-   - **Počáteční čas**: upřednostňované počáteční čas pro časové období údržby.
-   - **Časový interval**: upřednostňované dobu trvání časového intervalu.
+   - **Den**: Upřednostňovaný den provádění údržby během vybraného časového období.
+   - **Počáteční čas**: Upřednostňované počáteční čas pro časové období údržby.
+   - **Časový interval**: Upřednostňované doba trvání časového intervalu.
 
    **Souhrn plánu** oblast v dolní části okna je aktualizována na základě hodnot, které jste vybrali. 
   

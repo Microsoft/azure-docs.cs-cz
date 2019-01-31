@@ -12,12 +12,12 @@ ms.author: aliceku
 ms.reviewer: vanto, carlrab, emlisa
 manager: craigg
 ms.date: 01/29/2019
-ms.openlocfilehash: f1376e98dc1a018bd6c0b263939cecbc012d4815
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 7eb3b115c1d16c2a5c380178d316a60b854e80df
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55250768"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55462014"
 ---
 # <a name="an-overview-of-azure-sql-database-security-capabilities"></a>Přehled možností zabezpečení Azure SQL Database
 
@@ -45,7 +45,7 @@ Pravidla firewallu protokolu IP udělit přístup k databázím v závislosti na
 ## <a name="access-management"></a>Správa přístupu
 
 > [!IMPORTANT]
-> Správa databází a logických serverů v Azure se řídí tím, jaké role má uživatelský účet na portálu přiřazené. Další informace v tomto článku najdete v tématu [řízení přístupu na základě rolí na webu Azure portal](../role-based-access-control/overview.md).
+> Správa databází a databázových serverů v rámci Azure se řídí rolemi uživatelský účet na portálu společnosti. Další informace v tomto článku najdete v tématu [řízení přístupu na základě rolí na webu Azure portal](../role-based-access-control/overview.md).
 
 ### <a name="authentication"></a>Authentication
 
@@ -53,7 +53,7 @@ Ověřování je proces kontroly uživatel koho se. Azure SQL Database podporuje
 
 - **Ověřování SQL**:
 
-    Ověřování databáze SQL odkazuje na ověření uživatele při připojování k [Azure SQL Database](sql-database-technical-overview.md) pomocí uživatelského jména a hesla. Při vytvoření logického serveru databáze je třeba zadat přihlašovací údaje "Server admin" pomocí uživatelského jména a hesla. Pomocí těchto přihlašovacích údajů, "server admin" může ověřit k jakékoli databázi na tomto logickém serveru jako vlastník databáze. Dalších přihlášeních SQL a uživatelé mohou vytvořit správce serveru, které uživatelům umožňují připojovat pomocí uživatelského jména a hesla.
+    Ověřování databáze SQL odkazuje na ověření uživatele při připojování k [Azure SQL Database](sql-database-technical-overview.md) pomocí uživatelského jména a hesla. Při vytváření serveru databáze pro databázi je třeba zadat přihlašovací údaje "Server admin" pomocí uživatelského jména a hesla. Pomocí těchto přihlašovacích údajů, "server admin" může ověřit k jakékoli databázi na tomto databázovém serveru jako vlastník databáze. Dalších přihlášeních SQL a uživatelé mohou vytvořit správce serveru, které uživatelům umožňují připojovat pomocí uživatelského jména a hesla.
 
 - **Ověřování pomocí Azure Active Directory**:
 
@@ -63,7 +63,8 @@ Ověřování je proces kontroly uživatel koho se. Azure SQL Database podporuje
 
     Další možnosti ověřování Azure AD, které jsou k dispozici jsou [univerzálního ověřování Active Directory pro SQL Server Management Studio](sql-database-ssms-mfa-authentication.md) připojení včetně [ověřování službou Multi-Factor Authentication](../active-directory/authentication/concept-mfa-howitworks.md) a [ Podmíněný přístup](sql-database-conditional-access.md).
 
-### <a name="authorization"></a>Autorizace
+> [!IMPORTANT]
+> Správa databází a serverů v rámci Azure se řídí rolemi uživatelský účet na portálu společnosti. Další informace v tomto článku najdete v tématu [řízení přístupu na základě rolí na webu Azure portal](../role-based-access-control/overview.md). Řízení přístupu pomocí pravidel brány firewall nemá *není* platí pro **Azure SQL Database Managed Instance**. Podrobnosti najdete v následujícím článku na [připojení k Managed Instance](sql-database-managed-instance-connect-app.md) Další informace o konfiguraci sítě potřeba.
 
 Povolení odkazuje na oprávnění přiřazená uživateli ve službě Azure SQL Database a určuje, co uživatel může udělat. Oprávnění se řídí přidání uživatelských účtů do [databázové role](/sql/relational-databases/security/authentication-access/database-level-roles) , které definují oprávnění na úrovni databáze nebo udělení uživatele určité [oprávnění na úrovni objektu](/sql/relational-databases/security/permissions-database-engine). Další informace najdete v tématu [přihlašovacích údajů a uživatelů](sql-database-manage-logins.md)
 
@@ -75,7 +76,7 @@ Zabezpečení na úrovni řádku umožňuje řízení přístupu k řádkům v d
 
 ![azure-database-rls.png](media/sql-database-security-overview/azure-database-rls.png)
 
-### <a name="permissions"></a>Oprávnění
+  Tuto metodu ověřování pomocí uživatelského jména a hesla. 
 
 Přehled oprávnění ve službě Azure SQL Database najdete v tématu [přihlašovacích údajů a uživatelů](sql-database-manage-logins.md#permissions)
 

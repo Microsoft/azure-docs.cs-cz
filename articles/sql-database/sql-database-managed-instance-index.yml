@@ -1,10 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 01df34025c0389a4ea8bcd5eceaa29f0351df5f7
-ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
+ms.openlocfilehash: 556ec0b55ea2e62975661eb5f668b4d3acda7c30
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54329686"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55466349"
 documentType: LandingData
 title: Azure SQL Database Managed Instance
 metadata:
@@ -78,7 +78,7 @@ sections:
     - html: <a href="https://aka.ms/managed-instance-configurable-backup-retention">Konfigurace uchovávání záloh až 35 dnů</a> pro obnovení k určitému bodu v čase. Všimněte si, že dlouhodobého uchovávání záloh (až 10 let) stále nebude povolená, abyste mohli používat <a href="https://docs.microsoft.com/sql/relational-databases/backup-restore/copy-only-backups-sql-server">Copy-only zálohy</a> jako alternativu.
     - html: (Preview) Použití <a href="https://aka.ms/managed-instance-failover-groups">skupiny převzetí služeb při selhání geograficky distribuované</a> Ujistěte se, že vaše data budou k dispozici i v případě regionálního a zachová kopii instance v jiné oblasti.
     - html: (Preview) <a href="https://aka.ms/managed-instance-tde-byok">Přineste vlastní šifrovací klíče</a> během migrace místních databází, které už jste povolili transparentní šifrování dat (TDE).
-    - html: Spravované instance jsou chráněné službou <a href="https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-management-endpoint-verify-built-in-firewall">integrované firewall</a>.
+    - html: Spravované instance jsou chráněné službou <a href="sql-database-managed-instance-management-endpoint-verify-built-in-firewall.md">integrované firewall</a>.
 - title: Zprovoznění během 5 minut
   items:
   - type: paragraph
@@ -134,7 +134,7 @@ sections:
     - html: <a href="https://medium.com/azure-sqldb-managed-instance/the-ultimate-guide-for-creating-and-configuring-azure-sql-managed-instance-environment-91ff58c0be01">Konfigurace</a> virtuální síť Azure, kde bude nasazen Managed Instance.
     - html: <a href="https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-vnet-configuration#validate-and-modify-an-existing-virtual-network">Ověření</a> , lze použít existující virtuální sítě Azure k nasazení spravované instance.
     - html: Připojte se k instanci pomocí <a href="https://blogs.msdn.microsoft.com/sqlserverstorageengine/2018/09/21/the-easiest-way-to-create-azure-vm-that-can-access-your-azure-sql-managed-instance/">virtuálního počítače Azure</a> nebo <a href="/azure/sql-database/sql-database-managed-instance-configure-p2s">připojeníPoint-to-site</a>, nebo <a href="https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-connect-app">aplikací</a>.
-    - html: Ověřte, že databáze můžete použít k migraci <a href="https://www.microsoft.com/download/details.aspx?id=53595">Asisstant migrace dat</a> nebo <a href="https://blogs.msdn.microsoft.com/datamigration/2018/08/06/release-database-experimentation-assistant-dea-v2-6/">Pomocník pro experimentování ve službě Database</a>.
+    - html: Ověřte, že databáze můžete použít k migraci <a href="https://www.microsoft.com/download/details.aspx?id=53595">Data Migration Assistant</a> nebo <a href="https://blogs.msdn.microsoft.com/datamigration/2018/08/06/release-database-experimentation-assistant-dea-v2-6/">Pomocník pro experimentování ve službě Database</a>.
     - html: Přenést vaše databáze do Managed Instance pomocí <a href="/azure/sql-database/sql-database-managed-instance-get-started-restore">nativní obnovení</a> nebo <a href="/azure/dms/tutorial-sql-server-managed-instance-online">Database Migration Service</a>.
     - html: Přesuňte své balíčky SSIS do <a href="/azure/data-factory/tutorial-deploy-ssis-packages-azure">Azure Data Factory</a>, SSAS tabulkových modelů za účelem <a href="https://azure.microsoft.com/resources/videos/azure-analysis-services-moving-models/">službu Azure Analysis Services</a>, a sestavy SSRS <a href="https://docs.microsoft.com/business-applications-release-notes/april18/power-bi/service/sql-server-reporting-services-ssrs-reports-power-bi-premium">Power BI Premium</a>.
     - html: Použít <a href="https://blogs.msdn.microsoft.com/sqlcat/2018/07/20/storage-performance-best-practices-and-considerations-for-azure-sql-db-managed-instance-general-purpose">úložiště osvědčené postupy z hlediska výkonu a důležité informace pro úroveň služby pro obecné účely</a>.

@@ -6,16 +6,16 @@ author: twounder
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
-ms.component: implement
+ms.subservice: implement
 ms.date: 06/13/2018
 ms.author: twounder
 ms.reviewer: igorstan
-ms.openlocfilehash: fa497979349346016e1c176ace98407d98eebdca
-ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
+ms.openlocfilehash: 4cec5dd38d41f354f4d1430240a23f0b328cbb7b
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43307780"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55452426"
 ---
 # <a name="t-sql-statements-supported-in-azure-sql-data-warehouse"></a>Příkazy jazyka T-SQL podporované ve službě Azure SQL Data Warehouse
 Odkazy na dokumentaci pro příkazy jazyka T-SQL podporované ve službě Azure SQL Data Warehouse.
@@ -26,7 +26,7 @@ Odkazy na dokumentaci pro příkazy jazyka T-SQL podporované ve službě Azure 
 * [PŘÍKAZ ALTER PROCEDURY](https://msdn.microsoft.com/library/ms189762.aspx)
 * [PŘÍKAZ ALTER SCHEMA](https://msdn.microsoft.com/library/ms173423.aspx)
 * [ALTER TABLE](https://msdn.microsoft.com/library/ms190273.aspx)
-* [VYTVOŘTE COLUMNSTORE INDEX](https://msdn.microsoft.com/library/gg492153.aspx)
+* [CREATE COLUMNSTORE INDEX](https://msdn.microsoft.com/library/gg492153.aspx)
 * [CREATE DATABASE](https://msdn.microsoft.com/library/mt204021.aspx)
 * [VYTVOŘENÍ DATABASE SCOPED CREDENTIAL](https://msdn.microsoft.com/library/mt270260.aspx)
 * [VYTVOŘENÍ EXTERNÍHO ZDROJE DAT](https://msdn.microsoft.com/library/dn935022.aspx)
@@ -35,7 +35,7 @@ Odkazy na dokumentaci pro příkazy jazyka T-SQL podporované ve službě Azure 
 * [VYTVOŘENÍ FUNKCE](https://msdn.microsoft.com/library/mt203952.aspx)
 * [VYTVOŘENÍ INDEXU](https://msdn.microsoft.com/library/ms188783.aspx)
 * [VYTVOŘTE PROCEDURU](https://msdn.microsoft.com/library/ms187926.aspx)
-* [VYTVOŘENÍ SCHÉMATU](https://msdn.microsoft.com/library/ms189462.aspx)
+* [CREATE SCHEMA](https://msdn.microsoft.com/library/ms189462.aspx)
 * [CREATE STATISTICS](https://msdn.microsoft.com/library/ms188038.aspx)
 * [CREATE TABLE](https://msdn.microsoft.com/library/mt203953.aspx)
 * [CREATE TABLE AS SELECT](https://msdn.microsoft.com/library/mt204041.aspx)
@@ -64,7 +64,7 @@ Odkazy na dokumentaci pro příkazy jazyka T-SQL podporované ve službě Azure 
 * [PŘÍKAZ DBCC SHRINKLOG](https://msdn.microsoft.com/library/mt204020.aspx)
 * [DBCC PDW_SHOWEXECUTIONPLAN](https://msdn.microsoft.com/library/mt204017.aspx)
 * [PŘÍKAZ DBCC PDW_SHOWPARTITIONSTATS](https://msdn.microsoft.com/library/mt204013.aspx)
-* [PŘÍKAZ DBCC PDW_SHOWSPACEUSED](https://msdn.microsoft.com/library/mt204028.aspx)
+* [DBCC PDW_SHOWSPACEUSED](https://msdn.microsoft.com/library/mt204028.aspx)
 * [PŘÍKAZ DBCC SHOW_STATISTICS](https://msdn.microsoft.com/library/mt204043.aspx)
 
 ## <a name="query-statements"></a>Příkazy dotazu
@@ -86,7 +86,7 @@ Odkazy na dokumentaci pro příkazy jazyka T-SQL podporované ve službě Azure 
 * [Poddotazy](https://msdn.microsoft.com/library/mt631613.aspx)
 
 ## <a name="security-statements"></a>Příkazy zabezpečení
-* Oprávnění: [udělení](https://msdn.microsoft.com/library/ms187965.aspx), [ODEPŘÍT](https://msdn.microsoft.com/library/ms188338.aspx), [ODVOLAT](https://msdn.microsoft.com/library/ms187728.aspx)
+* Oprávnění: [UDĚLENÍ](https://msdn.microsoft.com/library/ms187965.aspx), [ODEPŘÍT](https://msdn.microsoft.com/library/ms188338.aspx), [ODVOLAT](https://msdn.microsoft.com/library/ms187728.aspx)
 * [PŘÍKAZ ALTER AUTORIZACE](https://msdn.microsoft.com/library/ms187359.aspx)
 * [PŘÍKAZ ALTER CERTIFICATE](https://msdn.microsoft.com/library/ms189511.aspx)
 * [PŘÍKAZ ALTER DATABASE ENCRYPTION KEY](https://msdn.microsoft.com/library/bb630389.aspx)

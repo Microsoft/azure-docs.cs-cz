@@ -6,17 +6,17 @@ author: marktab
 manager: cgronlun
 editor: cgronlun
 ms.service: machine-learning
-ms.component: team-data-science-process
+ms.subservice: team-data-science-process
 ms.topic: article
 ms.date: 03/14/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=garyericson, previous-ms.author=garye
-ms.openlocfilehash: 627729ef4f2b6a8df96d9e3b794a1ba24143b4d7
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: 1245255e65412f9bbcba3c8d9caa76b9ffd2dcc3
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53132665"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55453038"
 ---
 # <a name="cheat-sheet-for-an-automated-data-pipeline-for-azure-machine-learning-predictions"></a>Tahák k automatizovanému datovému kanálu pro predikce služby Azure Machine Learning
 **Microsoft Azure Machine Learning automatizované tahák pro datový kanál** si projdete tuto technologii můžete použít k přesunu dat pro Machine Learning pomáhá webová služba, kde mohou být upraveny prediktivní analýzy model.
@@ -27,7 +27,7 @@ Tento tahák vás provede rozhodnutí, která je potřeba udělat, a nabízí od
 ## <a name="download-the-machine-learning-automated-data-pipeline-cheat-sheet"></a>Stáhněte si tahák Machine Learning automatizovaných datových kanálů
 Po stažení tahák můžete ho vytisknout ve velikosti tabloid (11 × 17 palců).
 
-Stáhněte si tahák tady:  **[Microsoft Azure Machine Learning automatizované tahák pro datový kanál](https://download.microsoft.com/download/C/C/7/CC726F8B-2E6F-4C20-9B6F-AFBEE8253023/microsoft-machine-learning-operationalization-cheat-sheet_v1.pdf)**
+Stáhněte si tahák tady: **[Microsoft Azure Machine Learning automatizované tahák pro datový kanál](https://download.microsoft.com/download/C/C/7/CC726F8B-2E6F-4C20-9B6F-AFBEE8253023/microsoft-machine-learning-operationalization-cheat-sheet_v1.pdf)**
 
 ![Přehled možností nástroje Microsoft Machine Learning Studio][op-cheat-sheet]
 

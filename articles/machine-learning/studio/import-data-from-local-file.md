@@ -1,6 +1,6 @@
 ---
-Název: Importovat data ze souboru titleSuffix: Azure Machine Learning Studio Popis: Zjistěte, jak nahrát soubor trénovací data z pevného disku do Azure Machine Learning Studio. Tím se vytvoří datová sada modulu v pracovním prostoru.
-Services: machine learningu ms.service: ms.component strojového učení: studio ms.topic: článku
+Název: Importovat data ze souboru titleSuffix: Azure Machine Learning Studio Popis: Zjistěte, jak nahrát soubor trénovací data z pevného disku do Azure Machine Learning Studio. Tím se vytvoří datová sada modulu v pracovním prostoru.
+Services: machine learningu ms.service: ms.subservice strojového učení: studio ms.topic: článku
 
 Autor: ericlicoding ms.author: amlstudiodocs ms.custom: seodec18 ms.date: 03/20/2017
 ---

@@ -10,12 +10,12 @@ ms.topic: article
 ms.custom: seodec18
 ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: e29cf43f490bf5e8bac5e5c36b16476f93d80bfa
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 0fc9b8b6a8bcd62aafda7c04697ab8b9c096b17e
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53081955"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55296575"
 ---
 # <a name="receive-events-from-azure-event-hubs-using-java"></a>Příjem událostí ze služby Azure Event Hubs pomocí Javy
 
@@ -55,18 +55,18 @@ Pokud chcete EventProcessorHost používat, musíte mít [účtu služby Azure S
 
 ### <a name="create-a-java-project-using-the-eventprocessor-host"></a>Vytvoření projektu jazyka Java pomocí hostitele EventProcessor
 
-Klientská knihovna Java pro Event Hubs je k dispozici pro použití v projektech Maven z [centrálního úložiště Maven][Maven Package]a může být odkazováno pomocí následující deklarace závislostí uvnitř Maven soubor projektu. Aktuální verze pro artefakt azure-eventhubs-eph je 2.0.1 a aktuální verze pro artefakt azure-eventhubs je 1.0.2:    
+Klientská knihovna Java pro Event Hubs je k dispozici pro použití v projektech Maven z [centrálního úložiště Maven][Maven Package]a může být odkazováno pomocí následující deklarace závislostí uvnitř Maven soubor projektu: 
 
 ```xml
 <dependency>
     <groupId>com.microsoft.azure</groupId>
     <artifactId>azure-eventhubs</artifactId>
-    <version>1.0.2</version>
+    <version>2.2.0</version>
 </dependency>
 <dependency>
     <groupId>com.microsoft.azure</groupId>
     <artifactId>azure-eventhubs-eph</artifactId>
-    <version>2.0.1</version>
+    <version>2.4.0</version>
 </dependency>
 ```
 

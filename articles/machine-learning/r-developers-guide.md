@@ -14,12 +14,12 @@ ms.devlang: R
 ms.topic: article
 ms.date: 09/12/2018
 ms.author: jepeach
-ms.openlocfilehash: c5120cdb743e031c081f727c947752419db3a9d7
-ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
+ms.openlocfilehash: 0e5db2c08749a59a03e384c6048e67f7570f6750
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/26/2019
-ms.locfileid: "55081105"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55211425"
 ---
 # <a name="r-developers-guide-to-azure"></a>Příručka pro vývojáře jazyka R do Azure
 <img src="media/r-developers-guide/logo_r.svg" alt="R logo" align="right" width="200" />
@@ -114,7 +114,7 @@ Třetí možností je použít [Azure distribuovaných dat Engineering Toolkit](
 
 [Azure Notebooks](https://notebooks.azure.com) je s nízkými náklady a bezproblémové metodu pro R vývojáři, kteří dávají přednost práci s poznámkových bloků a použít vlastní kód do Azure.  Jedná se o bezplatnou službu pro vývoj a spouštění kódu v jejich používání prohlížeče [Jupyter](https://jupyter.org/), což je open source projekt umožňující kombinace prose markdownu, spustitelného kódu a grafiky na jedné plátno.
 
-Úroveň free služby poznámkových bloků Azure je vhodným řešením pro rozsáhlé projekty, protože se limity každý Poznámkový blok procesu až 4GB paměti a 1GB datových sad. Pokud potřebujete power výpočetní prostředky a data nad rámec těchto omezení, ale můžete spustit poznámkových bloků v instanci virtuálního počítače pro datové vědy. Další informace najdete v tématu [spravovat a nakonfigurovat projekty poznámkových bloků Azure – výpočetní vrstva](/azure/notebooks/configure-manage-azure-notebooks-projects.md#compute-tier).
+Úroveň free služby poznámkových bloků Azure je vhodným řešením pro rozsáhlé projekty, protože se limity každý Poznámkový blok procesu až 4GB paměti a 1GB datových sad. Pokud potřebujete power výpočetní prostředky a data nad rámec těchto omezení, ale můžete spustit poznámkových bloků v instanci virtuálního počítače pro datové vědy. Další informace najdete v tématu [spravovat a nakonfigurovat projekty poznámkových bloků Azure – výpočetní vrstva](/azure/notebooks/configure-manage-azure-notebooks-projects#compute-tier).
 
 ## <a name="azure-sql-database"></a>Azure SQL Database
 [Azure SQL Database](https://azure.microsoft.com/services/sql-database/) je inteligentní plně spravovaná relační Cloudová databázová služba od Microsoftu.  Umožňuje plně využijte potenciál systému SQL Server bez jakékoli nepříjemnostem nastavení infrastruktury.  Jedná se o [Machine Learning Services](https://docs.microsoft.com/sql/advanced-analytics/what-is-sql-server-machine-learning?view=sql-server-2017), což je jedna z více nedávno přidanými funkcemi do služby SQL Service.

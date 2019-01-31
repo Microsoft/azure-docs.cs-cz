@@ -8,12 +8,12 @@ ms.devlang: dotnet
 ms.topic: tutorial
 ms.date: 12/01/2018
 ms.author: dech
-ms.openlocfilehash: 8c5e56baacc6f17fcd88bbc9b95e3634839e2ad8
-ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
+ms.openlocfilehash: d497f3c5e3d64e13b0c6ad4d3021ad2e451f3ae5
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54884840"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55296699"
 ---
 # <a name="build-a-net-console-app-to-manage-data-in-azure-cosmos-db-sql-api-account-sdk-version-3-preview"></a>Vytvoření konzolové aplikace .NET pro správu dat v účtu rozhraní SQL API služby Azure Cosmos DB (sada SDK verze 3 ve verzi Preview)
 
@@ -318,20 +318,20 @@ Kontejner můžete vytvořit buď pomocí [ **CreateContainerIfNotExistsAsync** 
         //ADD THIS PART TO YOUR CODE
         await this.CreateContainer();
     }
-    ´´´
-Select **F5** to run your application.
+    ```
+Vyberte **F5** ke spuštění aplikace.
 
-Congratulations! You have successfully created an Azure Cosmos DB container.  
+Blahopřejeme! Úspěšně jste vytvořili kontejner Azure Cosmos DB.  
 
-## <a id="CreateDoc"></a>Step 6: Add items to the container
-An item can be created by using the [**CreateItemAsync**](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.cosmositems) function of the **CosmosItems** class. When using the SQL API, items are projected as documents, which are user-defined (arbitrary) JSON content. You can now insert an item into your Azure Cosmos DB container.
+## <a id="CreateDoc"></a>Krok 6: Přidání položek do kontejneru
+Položky můžete vytvořit pomocí [ **CreateItemAsync** ](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.cosmositems) funkce **CosmosItems** třídy. Při používání rozhraní SQL API jsou položky dokumenty, které představují uživatelem definovaný (libovolný) obsah JSON. Nyní můžete vložit položku do kontejneru Azure Cosmos DB.
 
-First, we need to create a **Family** class that will represent objects stored within Azure Cosmos DB in this sample. We will also create **Parent**, **Child**, **Pet**, **Address** subclasses that are used within **Family**. Note that documents must have an **Id** property serialized as **id** in JSON. 
-1. Select **Ctrl+Shift+A** to open the **Add New Item** dialog. Add a new class **Family.cs** to your project. 
+Nejprve musíme vytvořit třídu **Family**, která bude v této ukázce představovat objekty uložené ve službě Azure Cosmos DB. Kromě toho vytvoříme i podtřídy **Parent**, **Child**, **Pet** a **Address**, které se použijí v rámci **Family**. Povšimněte si, že dokumenty musí mít vlastnost **Id** serializovanou jako **id** ve formátu JSON. 
+1. Vyberte **Ctrl + Shift + A** otevřít **přidat novou položku** dialogového okna. Přidejte novou třídu **Family.cs** do projektu. 
 
-    ![Screen shot of adding a new Family.cs class into the project](./media/sql-api-get-started/dotnet-tutorial-visual-studio-add-family-class.png)
+    ![Snímek obrazovky okna Přidat novou třídu Family.cs do projektu](./media/sql-api-get-started/dotnet-tutorial-visual-studio-add-family-class.png)
 
-1. Copy and paste the **Family**, **Parent**, **Child**, **Pet**, and **Address** class into **Family.cs**. 
+1. Zkopírujte a vložte **řady**, **nadřazené**, **podřízené**, **domácí mazlíček**, a **adresu** třídy do **Family.cs**. 
     ```csharp
     using Newtonsoft.Json;
 
@@ -596,15 +596,15 @@ Teď aktualizujeme položky ve službě Azure Cosmos DB.
         //ADD THIS PART TO YOUR CODE
         await this.ReplaceFamilyItem();
     }
-    ´´´
-Select **F5** to run your application.
+    ```
+Vyberte **F5** ke spuštění aplikace.
 
-Congratulations! You have successfully replaced an Azure Cosmos DB item.
+Blahopřejeme! Úspěšně jste nahradili položku Azure Cosmos DB.
 
-## <a id="DeleteDocument"></a>Step 9: Delete item
-Now, we will delete an item in Azure Cosmos DB.
+## <a id="DeleteDocument"></a>Krok 9: Odstranit položku
+Teď odstraníme položky ve službě Azure Cosmos DB.
 
-1. Copy and paste the **DeleteFamilyItem** method below your **ReplaceFamilyItem** method.
+1. Zkopírujte a vložte **DeleteFamilyItem** metodu vaše **ReplaceFamilyItem** metody.
     ```csharp
     /*
     Delete an item in the container

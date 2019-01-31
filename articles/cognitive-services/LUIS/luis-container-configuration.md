@@ -11,16 +11,16 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 01/22/2019
 ms.author: diberry
-ms.openlocfilehash: 40cfadd3880b1875e775aae21e667ba0e20086ef
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: 5437e81397182ede37ef98ad40b54c64f94e2092
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55219749"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55294719"
 ---
-# <a name="configure-language-understanding-docker-containers"></a>Konfigurace kontejnery dockeru Language Understanding 
+# <a name="configure-language-understanding-docker-containers"></a>Konfigurace kontejnery Dockeru Language Understanding 
 
-Běhové prostředí kontejneru Language Understanding (LUIS) je nakonfigurovaný nástrojem `docker run` argumenty příkazu. Služba LUIS má několik požadovaná nastavení, společně s pár volitelná nastavení. Několik [příklady](#example-docker-run-commands) příkazu jsou k dispozici. Nastavení pro konkrétní kontejner se vstup [nastavení připojování](#mount-settings) a nastavení fakturace. 
+**Language Understanding** prostředí runtime kontejneru (LUIS) je nakonfigurovaný nástrojem `docker run` argumenty příkazového. Služba LUIS má několik požadovaná nastavení, společně s pár volitelná nastavení. Několik [příklady](#example-docker-run-commands) příkazu jsou k dispozici. Nastavení pro konkrétní kontejner se vstup [nastavení připojování](#mount-settings) a nastavení fakturace. 
 
 Nastavení kontejneru jsou [hierarchické](#hierarchical-settings) a lze ji nastavit s [proměnné prostředí](#environment-variable-settings) nebo docker [argumenty příkazového řádku](#command-line-argument-settings).
 
@@ -32,12 +32,12 @@ Tento kontejner má následující nastavení:
 |--|--|--|
 |Ano|[ApiKey](#apikey-setting)|Lze sledovat fakturační údaje.|
 |Ne|[ApplicationInsights](#applicationinsights-setting)|Umožňuje přidat [Azure Application Insights](https://docs.microsoft.com/azure/application-insights) podporu telemetrická data do kontejneru.|
-|Ano|[Fakturace](#billing-setting)|Určuje identifikátor URI prostředku služby koncového bodu v Azure.|
-|Ano|[Smlouva EULA](#eula-setting)| Označuje, že jste přijali licenční pro kontejner.|
+|Ano|[Billing](#billing-setting)|Určuje identifikátor URI koncového bodu prostředku služby v Azure.|
+|Ano|[Eula](#eula-setting)| Označuje, že jste přijali licenci pro kontejner.|
 |Ne|[Fluentd](#fluentd-settings)|Zápis protokolu a volitelně data metriky Fluentd server.|
 |Ne|[Http Proxy](#http-proxy-credentials-settings)|Konfigurace proxy serveru HTTP pro provedení odchozích požadavků.|
-|Ne|[Protokolování](#logging-settings)|Poskytuje podporu pro váš kontejner protokolování ASP.NET Core. |
-|Ano|[Připojí](#mount-settings)|Čtení a zápis dat z hostitelského počítače do kontejneru a z kontejneru však zpět na hostitelském počítači.|
+|Ne|[Logging](#logging-settings)|Poskytuje podporu protokolování ASP.NET Core pro váš kontejner. |
+|Ano|[Mounts](#mount-settings)|Čtení a zápis dat z hostitelského počítače do kontejneru a z kontejneru zpět do hostitelského počítače.|
 
 > [!IMPORTANT]
 > [ `ApiKey` ](#apikey-setting), [ `Billing` ](#billing-setting), A [ `Eula` ](#eula-setting) nastavení se používají společně a pro všechny tři je; v opačném případě je nutné zadat platné hodnoty kontejner se nespustí. Další informace o používání těchto nastavení konfigurace pro vytvoření instance kontejneru najdete v tématu [fakturace](luis-container-howto.md#billing).
@@ -57,7 +57,7 @@ Nepoužívejte starter klíč nebo klíč pro vytváření obsahu.
 
 [!INCLUDE [Container shared configuration ApplicationInsights settings](../../../includes/cognitive-services-containers-configuration-shared-settings-application-insights.md)]
 
-## <a name="billing-setting"></a>Nastavení fakturace
+## <a name="billing-setting"></a>Nastavení Billing
 
 `Billing` Nastavení, určuje identifikátor URI koncového bodu z _Language Understanding_ prostředků v Azure umožňuje měřit fakturačních údajů pro kontejner. Musíte zadat hodnotu pro toto nastavení konfigurace, a hodnota musí být platný identifikátor URI koncového bodu pro _Language Understanding_ prostředků v Azure.
 
@@ -70,7 +70,7 @@ Toto nastavení najdete v následujících umístěních:
 |--|------|-----------|-------------|
 |Ano| `Billing` | Řetězec | Identifikátor URI koncového bodu fakturace<br><br>Příklad:<br>`Billing=https://westus.api.cognitive.microsoft.com/luis/v2.0` |
 
-## <a name="eula-setting"></a>Smlouva EULA nastavení
+## <a name="eula-setting"></a>Nastavení Eula
 
 [!INCLUDE [Container shared configuration eula settings](../../../includes/cognitive-services-containers-configuration-shared-settings-eula.md)]
 
@@ -83,12 +83,12 @@ Toto nastavení najdete v následujících umístěních:
 
 [!INCLUDE [Container shared configuration fluentd settings](../../../includes/cognitive-services-containers-configuration-shared-settings-http-proxy.md)]
 
-## <a name="logging-settings"></a>Nastavení protokolování
+## <a name="logging-settings"></a>Nastavení Logging
  
 [!INCLUDE [Container shared configuration logging settings](../../../includes/cognitive-services-containers-configuration-shared-settings-logging.md)]
 
 
-## <a name="mount-settings"></a>Nastavení připojování
+## <a name="mount-settings"></a>Nastavení Mounts
 
 Použití vazby připojí ke čtení a zápisu dat do a z kontejneru. Můžete určit vstupní připojení nebo připojení výstup tak, že zadáte `--mount` možnost [dockeru spustit](https://docs.docker.com/engine/reference/commandline/run/) příkazu. 
 

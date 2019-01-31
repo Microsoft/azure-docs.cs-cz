@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: article
 ms.date: 12/05/2018
 ms.author: raynew
-ms.openlocfilehash: a345b410dcf256e8cd07e7708906f5582b5f1828
-ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
+ms.openlocfilehash: e62a792e7503e65ebe008a52430f86f1f3a00006
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/26/2019
-ms.locfileid: "55077383"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55456013"
 ---
 # <a name="group-machines-using-machine-dependency-mapping"></a>Seskupení počítačů s využitím mapování závislostí počítačů
 
@@ -73,6 +73,11 @@ Instalace agenta na počítači s Linuxem:
 
 [Další informace](https://docs.microsoft.com/azure/log-analytics/log-analytics-concept-hybrid#supported-linux-operating-systems) o seznam operačních systémů Linux nepodporuje agenta MMA.
 
+#### <a name="install-the-agent-on-a-machine-monitored-by-scom"></a>Nainstalujte agenta na počítači sledováno SCOM
+
+Počítače monitorované pomocí System Center Operations Manager 2012 R2 nebo novější není nutné k instalaci agenta MMA. Řešení Service Map je integrovaná se sadou SCOM, které využívá připojení MMA SCOM ke shromažďování dat potřebné závislosti. Můžete povolit podle pokynů k integraci [tady](https://docs.microsoft.com/azure/azure-monitor/insights/service-map-scom#prerequisites). Všimněte si však, že agenta závislostí, bude nutné nainstalovat na těchto počítačích.
+
+
 ### <a name="install-the-dependency-agent"></a>Instalace agenta závislostí
 1. Instalace agenta závislostí na počítači s Windows, klikněte dvakrát na instalační soubor a postupujte podle pokynů průvodce.
 2. Pokud chcete nainstalovat agenta závislostí na počítači s Linuxem, nainstalujte jako uživatel root pomocí následujícího příkazu:
@@ -82,6 +87,7 @@ Instalace agenta na počítači s Linuxem:
 Další informace o podpoře agenta závislostí [Windows](../azure-monitor/insights/service-map-configure.md#supported-windows-operating-systems) a [Linux](../azure-monitor/insights/service-map-configure.md#supported-linux-operating-systems) operačních systémů.
 
 [Další informace](https://docs.microsoft.com/azure/monitoring/monitoring-service-map-configure#installation-script-examples) o použití skriptů k instalaci agenta závislostí.
+
 
 ## <a name="create-a-group"></a>Vytvoření skupiny
 
@@ -115,7 +121,7 @@ Jakmile se vytvoří skupina, se doporučuje nainstalovat agenty na všech poč�
 
 ## <a name="query-dependency-data-from-log-analytics"></a>Dotazování na závislost data ze služby Log Analytics
 
-Závislost data zachycená pomocí mapy služeb je k dispozici pro dotazování ve službě Log Analytics. [Další informace](https://docs.microsoft.com/azure/azure-monitor/insights/service-map#log-analytics-records) Service Map tabulky dat k dotazování v Log Analytics. 
+Závislost data zachycená pomocí mapy služeb je k dispozici pro dotazování v pracovním prostoru Log Analytics přidružený k projektu Azure Migrate. [Další informace](https://docs.microsoft.com/azure/azure-monitor/insights/service-map#log-analytics-records) Service Map tabulky dat k dotazování v Log Analytics. 
 
 Pokud chcete spustit dotazy Log Analytics:
 

@@ -9,12 +9,12 @@ ms.service: azure-functions
 ms.topic: tutorial
 ms.date: 12/12/2018
 ms.author: cshoe
-ms.openlocfilehash: 6c77e58e626ba370a6278a0f01b09578930cba09
-ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
+ms.openlocfilehash: 61bece83697a4907a7bf3c881003f4da9b0e8a84
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/12/2019
-ms.locfileid: "54247108"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55466877"
 ---
 # <a name="manually-run-a-non-http-triggered-function"></a>Ruční spuštění funkce neaktivované protokolem HTTP
 
@@ -35,6 +35,9 @@ Ke spuštění jiných funkci aktivovanou protokolem HTTP, potřebujete způsob,
 - **Název funkce:** Název funkce, do které chcete spustit.
 
 Tato žádost o umístění v nástroji Postman spolu s hlavní klíč funkce v žádosti o Azure použijete ke spuštění funkce.
+
+> [!NOTE]
+> Při místním spuštění funkce hlavní klíč se nevyžaduje. Můžete se přímo [volat funkci](#call-the-function) vynechání `x-functions-key` záhlaví.
 
 ## <a name="get-the-functions-master-key"></a>Získat funkce hlavní klíč
 

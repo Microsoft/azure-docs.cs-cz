@@ -16,12 +16,12 @@ ms.workload: iaas-sql-server
 ms.date: 06/01/2017
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: ac5b3bec9915574dd33d40ae2dcbc5aa3c91280a
-ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
+ms.openlocfilehash: df3f4dc163f94ddab08ecdad7f8d4cc625b8917d
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54332162"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55300264"
 ---
 # <a name="use-azure-premium-storage-with-sql-server-on-virtual-machines"></a>Použití Azure Premium Storage s SQL Serverem na virtuálních počítačích
 ## <a name="overview"></a>Přehled
@@ -545,7 +545,7 @@ Tento dokument neukazuje kompletní kompletní příklad, ale [příloha](#appen
 * Naslouchací proces aktualizace buď:
   * Vždy ve skupině pro přepnutí do offline režimu a aktualizuje vždy na naslouchací proces s novou ILB / ELB IP adres.
   * Nebo přidání prostředku IP adresy z nové cloudové služby ILB/ELB prostřednictvím prostředí PowerShell do Windows clustering. Potom nastavte možných vlastníků prostředku IP adresy k uzlu migrované SQL2 a to jako závislost nebo. v názvu sítě. Najdete v části "Přidání prostředku IP adresy ve stejné podsíti" [příloha](#appendix-migrating-a-multisite-always-on-cluster-to-premium-storage).
-* Zkontrolujte konfiguraci DNS/šíření klientům.
+* Zkontrolujte konfiguraci/šíření DNS pro klienty.
 * Migrace virtuálního počítače SQL1 a projít kroky 2 – 4.
 * Pokud používáte 5ii kroky, přidejte počítač SQL1 jako možného vlastníka pro přidání prostředku IP adresy
 * Testovací převzetí služeb při selhání.

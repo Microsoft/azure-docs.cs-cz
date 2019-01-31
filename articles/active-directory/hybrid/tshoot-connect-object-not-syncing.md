@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 08/10/2018
 ms.subservice: hybrid
 ms.author: billmath
-ms.openlocfilehash: d10b8760409d5deb0828d15e8c0daf50853a9624
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 7b43b0e0676cc31938bf64cf84f9e6799c2dd3dd
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55158260"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55296592"
 ---
 # <a name="troubleshoot-an-object-that-is-not-synchronizing-to-azure-ad"></a>Řešení potíží s objekt, který se nesynchronizuje do Azure AD
 
@@ -28,6 +28,34 @@ Pokud objekt nesynchronizuje podle očekávání do služby Azure AD, může bý
 
 >[!IMPORTANT]
 >Pro Azure Active Directory (AAD) Connect nasazení s verzí 1.1.749.0 nebo vyšší, použít [úlohy řešení potíží s](tshoot-connect-objectsync.md) v průvodci k řešení potíží se synchronizací objektu. 
+
+## <a name="synchronization-process"></a>Procesu synchronizace
+
+Před zkoumáním synchronizací, Pojďme **Azure AD Connect** proces synchronizace:
+
+  ![Procesu synchronizace pro Azure AD Connect](./media/tshoot-connect-object-not-syncing/syncingprocess.png)
+
+### <a name="terminology"></a>**Terminologie**
+
+* **CS:** Prostor konektoru, tabulku v databázi.
+* **MV:** Úložiště Metaverse na tabulku v databázi.
+* **AD:** Active Directory
+* **AAD:** Azure Active Directory
+
+### <a name="synchronization-steps"></a>**Koky synchronizace**
+Procesu synchronizace zahrnuje následující kroky:
+
+1. **Import ze služby AD:** **Služby Active Directory** objekty jsou zařazení do systému **službu AD CS**.
+
+2. **Import ze služby AAD:** **Azure Active Directory** objekty jsou zařazení do systému **AAD CS**.
+
+3. **Synchronizace:** **Příchozí pravidla synchronizace** a **pravidla odchozí synchronizace** jsou spouštěny v pořadí podle priority číslo nižší vyšší. Chcete-li zobrazit synchronizační pravidla, můžete přejít na **Editor pravidel synchronizace** z desktopové aplikace. **Příchozí pravidla synchronizace** přináší v datech z CS MV. **Pravidla odchozí synchronizace** přesouvá data z MV ke službě CS.
+
+4. **Export do AD:** Po spuštění synchronizace, jsou exportovány objekty ze služby AD CS na **služby Active Directory**.
+
+5. **Exportovat do AAD:** Po spuštění synchronizace se objekty byly exportovány z CS AAD k **Azure Active Directory**.
+
+## <a name="troubleshooting"></a>Řešení potíží
 
 Najít chyby, kterou budete podívejte se na několik různých místech v následujícím pořadí:
 
@@ -123,7 +151,28 @@ V **Synchronization Service Manager**, klikněte na tlačítko **vyhledávání 
 
 V **výsledky hledání** okna, klikněte na objekt.
 
-Pokud jste se nenašel objekt, pak jej zatím nedosáhly úložiště metaverse. Pokračujte ve vyhledávání u objektu ve službě Active Directory [prostoru konektoru](#connector-space-object-properties). Může dojít k chybě synchronizace, která blokuje objektu z přicházejících do úložiště metaverse nebo může být použit filtr.
+Pokud jste se nenašel objekt, pak jej zatím nedosáhly úložiště metaverse. Pokračujte ve vyhledávání pro objekt v **služby Active Directory** [prostoru konektoru](#connector-space-object-properties). Pokud narazíte na objekt v **služby Active Directory** prostoru konektoru, pak je možné k chybě synchronizace, která blokuje objektu z přicházejících do úložiště metaverse nebo může být synchronizační pravidlo použít filtr oborů.
+
+### <a name="object-not-found-in-the-mv"></a>Objekt nebyl nalezen v MV
+Pokud je objekt v **služby Active Directory** CS, ale není k dispozici v MV pak filtr oborů platí. 
+
+* Podívejte se na filtr oborů, přejděte do nabídky aplikace klasické pracovní plochy a klikněte na **Editor pravidel synchronizace**. Filtrovat pravidla objektu úpravou vidět na následujícím filtru.
+
+  ![Hledat pravidla synchronizace příchozích dat](./media/tshoot-connect-object-not-syncing/syncrulessearch.png)
+
+* Zobrazit všechna pravidla v seznamu výše a zkontrolujte **Scoping filtr**. V níže oborů filtru, pokud **isCriticalSystemObject** hodnota je null nebo FALSE nebo prázdná, pak se nachází v oboru.
+
+  ![Hledat pravidla synchronizace příchozích dat](./media/tshoot-connect-object-not-syncing/scopingfilter.png)
+
+* Přejděte [CS Import](#cs-import) atribut seznam a kontroly, který filtr blokuje objekt, který chcete přesunout MV. Která od sebe **prostoru konektoru** atribut v seznamu se zobrazí pouze atributy jinou hodnotu než null a není prázdná. Například pokud **isCriticalSystemObject** se nezobrazuje v seznamu, pak to znamená, že hodnota tohoto atributu je null nebo prázdný.
+
+### <a name="object-not-found-in-the-aad-cs"></a>Objekt nebyl nalezen ve službě AAD CS
+Pokud není k dispozici v objektu **prostoru konektoru** z **Azure Active Directory**. Ale je k dispozici v MV, podívejte se na filtru, který Scoping **odchozí** pravidla k odpovídající položce **prostoru konektoru** a zaškrtněte políčko, pokud je objekt odfiltrovány z důvodu [MV atributy](#mv-attributes) nesplňuje kritéria.
+
+* Podívat se na odchozí filtr oborů, vyberte použít pravidla pro objekt úpravou vidět na následujícím filtru. Zobrazit každé pravidlo a podívejte se na odpovídající [MV atribut](#mv-attributes) hodnotu.
+
+  ![Hledání Synchroniztion odchozí pravidla](./media/tshoot-connect-object-not-syncing/outboundfilter.png)
+
 
 ### <a name="mv-attributes"></a>Atributy MV
 Na kartě atributy hodnoty se zobrazí a které konektor přispět ho.  

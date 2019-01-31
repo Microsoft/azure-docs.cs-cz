@@ -12,12 +12,12 @@ ms.author: jovanpop
 ms.reviewer: ''
 manager: craigg
 ms.date: 12/17/2018
-ms.openlocfilehash: 0c46ba3d2fcd59f43df2383c3e0471fa36217536
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: d833d6ea695c05f80f7823f391142fee28872c40
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53551342"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55300247"
 ---
 # <a name="multi-model-capabilities-of-azure-sql-database"></a>Více modelů možnosti služby Azure SQL Database
 
@@ -50,7 +50,7 @@ Graf vztahů a možnosti dotazu grafu jsou integrované do jazyka Transact-SQL, 
 
 Nic, které můžete dosáhnout databázi grafu, který není možné dosáhnout pomocí relační databáze. Nicméně databáze grafu můžete usnadňují expresní určitých dotazy. Rozhodnout a zvolte jednu z nich může být založen na následujících faktorech:
 
-- Hierarchická data modelu, ve kterém jeden uzel může mít více nadřazených objektů, takže se nedá použít HieararchyId
+- Hierarchická data modelu, kde jeden uzel může mít více nadřazených objektů, takže se nedá použít HierarchyId
 - Vaše aplikace má model obsahuje komplexní relace many-to-many; jak se vyvíjí aplikace se přidají nové relace.
 - Budete potřebovat analyzovat propojených dat a relace.
 
@@ -96,7 +96,7 @@ Azure SQL Database také poskytuje specializovaný [prostorové indexy](https://
 SQL Server poskytuje výkonnou platformu pro vývoj aplikací s bohatým obsahem pro částečně strukturovaná data správy. Podpora pro formát XML je integrované do všech komponent v serveru SQL Server a zahrnuje následující:
 
 - Datový typ xml. Hodnoty XML mohou být uloženy ve sloupci Typ dat xml, který může zadali podle kolekce schémat XML nebo vlevo netypová nativně. Můžete index pro sloupec XML.
-- Možnost zadat dotaz XQuery pro XML data uložená ve sloupcích a proměnné typu xml. Jazyk XQUery funkce lze použít v dotaz jazyka Transact-SQL, který přístup k datový model, který používáte ve vaší databázi.
+- Možnost zadat dotaz XQuery pro XML data uložená ve sloupcích a proměnné typu xml. Jazyk XQuery funkce lze použít v dotaz jazyka Transact-SQL, který přístup k datový model, který používáte ve vaší databázi.
 - Automaticky indexuje všechny prvky v dokumentech XML pomocí [primární index XML](https://docs.microsoft.com/sql/relational-databases/xml/xml-indexes-sql-server#primary-xml-index) nebo zadat přesné cesty, které se má indexovat pomocí [sekundární index XML](https://docs.microsoft.com/sql/relational-databases/xml/xml-indexes-sql-server#secondary-xml-indexes).
 - OPENROWSET, který umožňuje hromadné načítání dat XML.
 - Transformace relačních dat do formátu XML.
