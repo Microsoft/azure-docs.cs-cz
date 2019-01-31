@@ -6,16 +6,16 @@ author: kevinvngo
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
-ms.component: manage
+ms.subservice: manage
 ms.date: 04/17/2018
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: f38c9e3bed93a77cd9b35c6d23983ee5785a34a7
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: 412c2faead0102d3995e3df9db31b81c4dd4aa22
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44714460"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55452001"
 ---
 # <a name="powershell-cmdlets-and-rest-apis-for-sql-data-warehouse"></a>Rutiny prostředí PowerShell a rozhraní REST API pro službu SQL Data Warehouse
 Mnoho úkolů správy SQL Data Warehouse je možné spravovat pomocí rutin Azure Powershellu nebo rozhraní REST API.  Níže je několik příkladů toho, jak používat příkazy Powershellu k automatizaci běžných úkolů ve službě SQL Data Warehouse.  Některé dobré příklady REST, najdete v článku [spravovat škálovatelnost s využitím REST][Manage scalability with REST].
@@ -74,7 +74,7 @@ Tyto rutiny Powershellu jsou podporovány službou Azure SQL Data Warehouse.
 * [Get-AzureRmSqlDatabase][Get-AzureRmSqlDatabase]
 * [Get-AzureRmSqlDeletedDatabaseBackup][Get-AzureRmSqlDeletedDatabaseBackup]
 * [Get-AzureRmSqlDatabaseRestorePoints][Get-AzureRmSqlDatabaseRestorePoints]
-* [Nový AzureRmSqlDatabase][New-AzureRmSqlDatabase]
+* [New-AzureRmSqlDatabase][New-AzureRmSqlDatabase]
 * [Remove-AzureRmSqlDatabase][Remove-AzureRmSqlDatabase]
 * [Restore-AzureRmSqlDatabase][Restore-AzureRmSqlDatabase]
 * [Resume-AzureRmSqlDatabase][Resume-AzureRmSqlDatabase]

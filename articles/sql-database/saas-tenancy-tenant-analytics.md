@@ -12,16 +12,16 @@ ms.author: sstein
 ms.reviewer: anjangsh,billgib,genemi
 manager: craigg
 ms.date: 09/19/2018
-ms.openlocfilehash: bd766dfb712921a57dd23c4fdecc25dd623eb833
-ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
+ms.openlocfilehash: f63a42afd9dc629bd87dfb23e07e14737ea42a2f
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47393260"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55299839"
 ---
 # <a name="cross-tenant-analytics-using-extracted-data---single-tenant-app"></a>Pomocí analýzy napříč tenanty extrahovaná data – aplikace s jedním tenantem
  
-V tomto kurzu si projdete analytics kompletní scénář pro jednoho tenanta implementatoin. Tento scénář předvádí, jak analytics můžete povolit firmám inteligentní rozhodování. Použití dat extrahovaných z každé databázi tenantů, pomocí analytics získat přehled o chování klienta, včetně jejich použití ukázkové SaaS aplikace Wingtip Tickets aplikace. Tento scénář zahrnuje tři kroky: 
+V tomto kurzu si projdete dokončení analýzy scénář pro implementaci jednoho tenanta. Tento scénář předvádí, jak analytics můžete povolit firmám inteligentní rozhodování. Použití dat extrahovaných z každé databázi tenantů, pomocí analytics získat přehled o chování klienta, včetně jejich použití ukázkové SaaS aplikace Wingtip Tickets aplikace. Tento scénář zahrnuje tři kroky: 
 
 1.  **Extrahovat** data z každé databázi tenantů a **zatížení** do analýzy úložiště.
 2.  **Transformace dat extrahovaných** pro zpracování analýzy.
@@ -238,7 +238,7 @@ V tomto kurzu jste se naučili:
 
 Blahopřejeme!
 
-## <a name="additional-resources"></a>Další zdroje informací:
+## <a name="additional-resources"></a>Další materiály
 
 - Další [kurzy, které vycházejí z aplikace SaaS aplikace Wingtip](saas-dbpertenant-wingtip-app-overview.md#sql-database-wingtip-saas-tutorials).
 - [Elastické úlohy](sql-database-elastic-jobs-overview.md).

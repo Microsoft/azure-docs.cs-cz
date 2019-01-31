@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: howto
 ms.date: 01/10/2019
 ms.author: hrasheed
-ms.openlocfilehash: 9a1d0775c12d424c35e9e9d366f69e07ec9b1468
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.openlocfilehash: a44e53d7a32ab151fa951d1bc89b741390a70dfb
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55096972"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55464785"
 ---
 # <a name="use-azure-data-lake-storage-gen2-with-azure-hdinsight-clusters"></a>Použití Azure Data Lake Storage Gen2 s clustery Azure HDInsight
 
@@ -27,6 +27,8 @@ Azure Data Lake Storage Gen2 je k dispozici jako řešením úložiště pro té
 > Jakmile vyberete Data Lake Storage Gen2 jako vaše **typ primárního úložiště**, nelze vybrat účet Data Lake Storage Gen1 jako další úložiště.
 
 ## <a name="creating-an-hdinsight-cluster-with-data-lake-storage-gen2"></a>Vytvoření clusteru služby HDInsight s Data Lake Storage Gen2
+
+## <a name="using-the-azure-portal"></a>Použití webu Azure Portal
 
 K vytvoření clusteru HDInsight, který používá Data Lake Storage Gen2 pro úložiště, použijte následující kroky k vytvoření účtu Data Lake Storage Gen2, který je nakonfigurovaný správně.
 
@@ -62,6 +64,48 @@ K vytvoření clusteru HDInsight, který používá Data Lake Storage Gen2 pro �
         * V části **Identity** vyberte správné předplatné a nově vytvořený uživatel přiřazený spravovaná identita.
         
             ![Nastavení identity pro Azure HDInsight pomocí Data Lake Storage Gen2](./media/hdinsight-hadoop-data-lake-storage-gen2/managed-identity-cluster-creation.png)
+
+### <a name="using-a-resource-manager-template-deployed-with-azure-cli"></a>Pomocí šablony Resource Manageru nasadit pomocí Azure CLI
+
+Můžete si stáhnout ukázku [soubor šablony tady](https://github.com/Azure-Samples/hdinsight-data-lake-storage-gen2-templates/blob/master/hdinsight-adls-gen2-template.json) a [ukázkové parametry souboru zde](https://github.com/Azure-Samples/hdinsight-data-lake-storage-gen2-templates/blob/master/parameters.json). Před použitím šablony, nahraďte ID vašeho předplatného skutečné Azure pro řetězec `<SUBSCRIPTION_ID>`. Také nahraďte zvolené heslo pro řetězec `<PASSWORD>` nastavit i heslo pro přihlášení, které použijete pro přihlášení ke clusteru, jakož i heslo SSH.
+
+Následující fragment kódu provede počáteční takto:
+
+1. Přihlaste se ke svému účtu Azure.
+1. Nastavte aktivní předplatné, ve kterém bude provádět operace vytvoření.
+1. Vytvořit novou skupinu prostředků pro nové nasazení aktivity `hdinsight-deployment-rg`.
+1. Vytvoření uživatele se identita spravované služby (MSI) `test-hdinsight-msi`.
+1. Přidejte rozšíření do příkazového řádku Azure pro použití funkcí pro Data Lake Storage Gen2.
+1. Vytvořit nový účet Data Lake Storage Gen2 `hdinsightadlsgen2`, s použitím `--hierarchical-namespace true` příznak.
+
+```azurecli
+az login
+az account set --subscription <subscription_id>
+
+#create resource group
+az group create --name hdinsight-deployment-rg --location eastus
+
+# Create managed identity
+az identity create -g hdinsight-deployment-rg -n test-hdinsight-msi
+
+az extension add --name storage-preview
+
+az storage account create --name hdinsightadlsgen2 \
+    --resource-group hdinsight-deployment-rg \
+    --location eastus --sku Standard_LRS \
+    --kind StorageV2 --hierarchical-namespace true
+```
+
+Další, přihlaste se k portálu a přidejte nový soubor MSI pro **Přispěvatel dat objektu Blob služby Storage (Preview)** role v účtu úložiště, jak je popsáno v kroku 3 výše v části [pomocí webu Azure portal](hdinsight-hadoop-use-data-lake-storage-gen2.md#using-the-azure-portal).
+
+Po dokončení MSI přiřazení rolí na portálu přejděte k nasazení šablony pomocí následující fragment kódu.
+
+```azurecli
+az group deployment create --name HDInsightADLSGen2Deployment \
+    --resource-group hdinsight-deployment-rg \
+    --template-file hdinsight-adls-gen2-template.json \
+    --parameters parameters.json
+```
 
 ## <a name="access-control-for-data-lake-storage-gen2-in-hdinsight"></a>Řízení přístupu pro Data Lake Storage Gen2 v HDInsight
 

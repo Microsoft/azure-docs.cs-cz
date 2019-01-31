@@ -6,17 +6,17 @@ author: marktab
 manager: cgronlun
 editor: cgronlun
 ms.service: machine-learning
-ms.component: team-data-science-process
+ms.subservice: team-data-science-process
 ms.topic: article
 ms.date: 11/04/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 7a00f18a8ae51d5118275e904e2ca76fc167d987
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: 91d645e6120040870c7c1696c7bfd8f68509cb35
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53132614"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55451899"
 ---
 # <a name="customer-acceptance-stage-of-the-team-data-science-process-lifecycle"></a>Fáze přijetí zákazníky životního cyklu vědecké zpracování týmových dat
 
@@ -34,13 +34,13 @@ Zde je vizuální znázornění životního cyklu TDSP:
 
 
 ## <a name="goal"></a>Cíl
-**Dokončení výstupy projektu**: Ověřte, že kanál, model a jejich nasazení v produkčním prostředí splňovat cíle zákazníka.
+**Dokončení výstupy projektu**: Potvrďte, že kanál, model a jejich nasazení v produkčním prostředí splňovat cíle zákazníka.
 
 ## <a name="how-to-do-it"></a>Jak na to
 Existují dva hlavní úkoly zákazníky a vyřešené v této fázi:
 
-   * **Ověření systému**: potvrďte, že nasazený model a kanál vyhovět potřebám zákazníků.
-   * **Projekt odevzdání**: projekt přebírají entity, která bude k provozování systému v produkčním prostředí.
+   * **Ověření systému**: Potvrďte, že nasazený model a kanál vyhovět potřebám zákazníků.
+   * **Projekt odevzdání**: Projekt přebírají entity, která bude k provozování systému v produkčním prostředí.
 
 Zákazník měli ověřit, že systém splňuje svých obchodních potřeb a odpovídá dotazy s přijatelnou přesnost k nasazení systému ve své klientské aplikace do produkčního prostředí pro použití. V dokumentaci se dokončí a zkontrolovat. Projekt je předat schválení v entitě za operace. Tato entita může být například IT nebo zákaznický tým pro datové vědy nebo agenta, který je zodpovědný za spouštění systému v produkčním prostředí zákazníka. 
 

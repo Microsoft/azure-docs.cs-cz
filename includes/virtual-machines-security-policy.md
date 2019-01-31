@@ -4,12 +4,12 @@ ms.service: virtual-machines
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: cynthn
-ms.openlocfilehash: 801266ed13aa993ad04ed8a3b21d6a6b3e1d6603
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: c44b39effdc6d8fcdc144915ec7b51489e3798cd
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54841404"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55302355"
 ---
 Je důležité k zabezpečení vašich virtuálních počítačů (VM) pro aplikace, které spustíte. Zabezpečení vašich virtuálních počítačů může obsahovat jednu nebo více služeb Azure a funkce, které se týkají zabezpečený přístup k virtuálním počítačům a zabezpečené ukládání vašich dat. Tento článek obsahuje informace, které umožňuje zabezpečit svůj virtuální počítač a aplikací.
 
@@ -20,6 +20,8 @@ Na šířku moderními hrozbami pro prostředí cloud je dynamická, zvyšuje tl
 ## <a name="azure-security-center"></a>Azure Security Center
 
 [Azure Security Center](../articles/security-center/security-center-intro.md) pomáhá zabránit, detekci a reakce na hrozby do virtuálních počítačů. Security Center poskytuje integrované bezpečnostní sledování a správu zásad ve vašich předplatných Azure, pomáhá zjišťovat hrozby, které jinak nevšimli a spolupracuje s řadou řešení zabezpečení.
+
+Security Center just-in-time přístup je možné použít v nasazení virtuálního počítače tak, aby zamezit příchozímu provozu na virtuální počítače Azure, tím omezit vystavení útokům při poskytování snadného přístupu pro připojení k virtuálním počítačům v případě potřeby. Když uživatel požádá o přístup k virtuálnímu počítači just-in-time je povolený, Security Center rozlišuje jaká oprávnění, které má uživatel k virtuálnímu počítači. Pokud mají správné oprávnění, jeho žádost se schválí a Security Center automaticky nakonfiguruje skupiny zabezpečení sítě (Nsg), které povolí příchozí provoz na vybrané porty pro omezené množství času. Po vypršení doby obnoví Security Center do předchozích stavů skupiny zabezpečení sítě. 
 
 ## <a name="encryption"></a>Šifrování
 

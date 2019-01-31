@@ -1,8 +1,21 @@
 ---
-Název: Používání Studio webové služby s využitím titleSuffix šablony webové aplikace: Azure Machine Learning Studio Popis: Použití šablony webové aplikace v Azure Marketplace k využívání prediktivní webové služby ve službě Azure Machine Learning.
-Services: machine learningu ms.service: ms.subservice strojového učení: studio ms.topic: článku
-
-Autor: ericlicoding ms.author: amlstudiodocs ms.custom: seodec18 ms.date: 03/20/2017
+title: Používání Studio webové služby s využitím šablony webové aplikace
+titleSuffix: Azure Machine Learning Studio
+description: Použití šablony webové aplikace v Azure Marketplace k využívání prediktivní webové služby ve službě Azure Machine Learning.
+services: machine-learning
+ms.service: machine-learning
+ms.subservice: studio
+ms.topic: article
+author: ericlicoding
+ms.author: amlstudiodocs
+ms.custom: seodec18
+ms.date: 03/20/2017
+ms.openlocfilehash: 164aae7c6a4df18b8a28e1ff152e9c61c60f06b9
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
+ms.translationtype: MT
+ms.contentlocale: cs-CZ
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55299057"
 ---
 # <a name="consume-an-azure-machine-learning-studio-web-service-by-using-a-web-app-template"></a>Využívání webové služby Azure Machine Learning Studio pomocí šablony webové aplikace
 

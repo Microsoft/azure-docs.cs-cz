@@ -3,7 +3,7 @@ title: Na virtuálním počítači spusťte Linuxových výpočetních uzlů –
 description: Zjistěte, jak zpracovat paralelní výpočetní úlohy na fondech virtuálních počítačů s Linuxem ve službě Azure Batch.
 services: batch
 documentationcenter: python
-author: dlepow
+author: laurenhughes
 manager: jeconnoc
 editor: ''
 ms.assetid: dc6ba151-1718-468a-b455-2da549225ab2
@@ -13,14 +13,14 @@ ms.topic: article
 ms.tgt_pltfrm: ''
 ms.workload: na
 ms.date: 06/01/2018
-ms.author: danlep
+ms.author: lahugh
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 713583a6a184a583145c610b4e014f56941efa4c
-ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
+ms.openlocfilehash: a841fae791648d179975c2a5330bb41d48d388dd
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39113507"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55453548"
 ---
 # <a name="provision-linux-compute-nodes-in-batch-pools"></a>Zřízení výpočetních uzlů s Linuxem ve fondech služby Batch
 
@@ -32,7 +32,7 @@ Azure Batch můžete použít ke spouštění paralelních výpočetních úloh 
 >
 
 ## <a name="virtual-machine-configuration"></a>Konfigurace virtuálního počítače
-Při vytváření fondu výpočetních uzlů ve službě Batch, máte dvě možnosti, ze kterého se má vybrat velikost uzlu a operační systém: Konfigurace služby Cloud Services a konfiguraci virtuálního počítače.
+Při vytváření fondu výpočetních uzlů ve službě Batch, máte dvě možnosti, ze kterého se má vybrat velikost uzlu a operačního systému: Konfigurace služby cloud Services a konfiguraci virtuálního počítače.
 
 **Konfigurace služby Cloud Services** poskytuje *pouze* výpočetní uzly Windows. Velikosti dostupných výpočetních uzlů, které jsou uvedeny v [velikosti pro Cloud Services](../cloud-services/cloud-services-sizes-specs.md), a dostupných operačních systémů uvedených v [SDK kompatibility přehled verzí hostovaného operačního systému Azure a](../cloud-services/cloud-services-guestos-update-matrix.md). Při vytváření fondu, který obsahuje uzly Azure Cloud Services, můžete zadat velikost uzlu a řada operačního systému, které jsou popsány v výše uvedených článcích. Pro fondy Windows výpočetních uzlů, Cloud Services se nejčastěji používá.
 
@@ -58,8 +58,8 @@ Když nakonfigurujete referenční image virtuálního počítače, můžete zad
 ### <a name="node-agent-sku"></a>SKU agenta uzlu
 Agent uzlu Batch je program, který se spustí na každém uzlu ve fondu a poskytuje rozhraní příkazu a řízení mezi uzlem a služby Batch. Existují různé implementace agenta uzlu, označované jako skladové položky, pro různé operační systémy. V podstatě při vytváření konfigurace virtuálního počítače, nejprve zadat referenční image virtuálního počítače a zadejte agenta uzlu k instalaci na obrázku. Obvykle každého agenta uzlu SKU je kompatibilní s více imagí virtuálních počítačů. Tady je pár příkladů SKU agenta uzlu:
 
-* batch.Node.Ubuntu 14.04
-* batch.Node.centos 7
+* batch.node.ubuntu 14.04
+* batch.node.centos 7
 * batch.Node.Windows amd64
 
 > [!IMPORTANT]
@@ -67,7 +67,7 @@ Agent uzlu Batch je program, který se spustí na každém uzlu ve fondu a posky
 >
 >
 
-## <a name="create-a-linux-pool-batch-python"></a>Vytvoření fondu s Linuxem: Pythonu služby Batch
+## <a name="create-a-linux-pool-batch-python"></a>Vytvoření fondu s Linuxem: Batch Python
 Následující fragment kódu ukazuje příklad, jak používat [klientské knihovny Microsoft Azure Batch pro Python] [ py_batch_package] a vytvořit tak fond Ubuntu Server výpočetních uzlů. Referenční dokumentace pro modul Pythonu služby Batch najdete v [azure.batch balíčku] [ py_batch_docs] na webu Docs pro čtení.
 
 Tento fragment kódu vytvoří [ImageReference] [ py_imagereference] explicitně a určuje jeho vlastnosti (vydavatele, nabídky, SKU, verze). V produkčním kódu, ale doporučujeme použít [list_node_agent_skus] [ py_list_skus] metodu pro určení a vyberte z dostupných image a uzel agenta SKU kombinace za běhu.
@@ -145,7 +145,7 @@ vmc = batchmodels.VirtualMachineConfiguration(
     node_agent_sku_id = ubuntu1404agent.id)
 ```
 
-## <a name="create-a-linux-pool-batch-net"></a>Vytvoření fondu s Linuxem: rozhraní Batch .NET
+## <a name="create-a-linux-pool-batch-net"></a>Vytvoření fondu s Linuxem: Batch .NET
 Následující fragment kódu ukazuje příklad, jak používat [Batch .NET] [ nuget_batch_net] klientské knihovny a vytvořit tak fond Ubuntu Server výpočetních uzlů. Můžete najít [referenční dokumentaci rozhraní Batch .NET] [ api_net] na webu docs.microsoft.com.
 
 Následující kód používá fragment kódu [PoolOperations][net_pool_ops].[ ListNodeAgentSkus] [ net_list_skus] pro výběr ze seznamu aktuálně podporované kombinace SKU agenta Marketplace pro image a uzel. Tato technika je žádoucí, protože může čas od času změnit seznam podporovaných kombinací. Podporované kombinace nejčastěji, jsou přidány.
@@ -216,33 +216,33 @@ V následující tabulce jsou uvedeny Marketplace Image virtuálních počítač
 
 | **Publisher** | **Nabídka** | **Image SKU** | **Verze** | **Agenta uzlu SKU ID** |
 | ------------- | --------- | ------------- | ----------- | --------------------- |
-| dávka | vykreslování centos73 | vykreslování | nejnovější | batch.Node.centos 7 |
-| dávka | vykreslování windows2016 | vykreslování | nejnovější | batch.Node.Windows amd64 |
-| Canonical | UbuntuServer | 16.04-LTS | nejnovější | batch.Node.Ubuntu 16.04 |
-| Canonical | UbuntuServer | 14.04.5-LTS | nejnovější | batch.Node.Ubuntu 14.04 |
+| dávka | rendering-centos73 | vykreslování | nejnovější | batch.node.centos 7 |
+| dávka | rendering-windows2016 | vykreslování | nejnovější | batch.Node.Windows amd64 |
+| Canonical | UbuntuServer | 16.04-LTS | nejnovější | batch.node.ubuntu 16.04 |
+| Canonical | UbuntuServer | 14.04.5-LTS | nejnovější | batch.node.ubuntu 14.04 |
 | credativ | Debian | 9 | nejnovější | batch.Node.debian 9 |
 | credativ | Debian | 8 | nejnovější | batch.Node.debian 8 |
-| microsoft-ads | linux-data-science-vm | linuxdsvm | nejnovější | batch.Node.centos 7 |
+| microsoft-ads | linux-data-science-vm | linuxdsvm | nejnovější | batch.node.centos 7 |
 | microsoft-ads | standard-data-science-vm | standard-data-science-vm | nejnovější | batch.Node.Windows amd64 |
-| Microsoft-azure-batch | centos kontejneru | 7 – 4 | nejnovější | batch.Node.centos 7 |
-| Microsoft-azure-batch | centos. kontejner rdma | 7 – 4 | nejnovější | batch.Node.centos 7 |
-| Microsoft-azure-batch | Ubuntu-server-container | 16-04-lts | nejnovější | batch.Node.Ubuntu 16.04 |
-| Microsoft-azure-batch | Ubuntu server kontejneru rdma | 16-04-lts | nejnovější | batch.Node.Ubuntu 16.04 |
+| microsoft-azure-batch | centos-container | 7-4 | nejnovější | batch.node.centos 7 |
+| microsoft-azure-batch | centos-container-rdma | 7-4 | nejnovější | batch.node.centos 7 |
+| microsoft-azure-batch | ubuntu-server-container | 16-04-lts | nejnovější | batch.node.ubuntu 16.04 |
+| microsoft-azure-batch | ubuntu-server-container-rdma | 16-04-lts | nejnovější | batch.node.ubuntu 16.04 |
 | MicrosoftWindowsServer | WindowsServer | 2016-Datacenter | nejnovější | batch.Node.Windows amd64 |
 | MicrosoftWindowsServer | WindowsServer | 2016-Datacenter-smalldisk | nejnovější | batch.Node.Windows amd64 |
-| MicrosoftWindowsServer | WindowsServer | 2016 Datacenter s kontejnery | nejnovější | batch.Node.Windows amd64 |
+| MicrosoftWindowsServer | WindowsServer | 2016-Datacenter-with-Containers | nejnovější | batch.Node.Windows amd64 |
 | MicrosoftWindowsServer | WindowsServer | 2012-R2-Datacenter | nejnovější | batch.Node.Windows amd64 |
 | MicrosoftWindowsServer | WindowsServer | 2012-R2-Datacenter-smalldisk | nejnovější | batch.Node.Windows amd64 |
 | MicrosoftWindowsServer | WindowsServer | 2012-Datacenter | nejnovější | batch.Node.Windows amd64 |
 | MicrosoftWindowsServer | WindowsServer | 2012-Datacenter-smalldisk | nejnovější | batch.Node.Windows amd64 |
 | MicrosoftWindowsServer | WindowsServer | 2008-R2-SP1 | nejnovější | batch.Node.Windows amd64 |
-| MicrosoftWindowsServer | WindowsServer | 2008 R2 SP1 smalldisk | nejnovější | batch.Node.Windows amd64 |
-| OpenLogic | CentOS | 7.4 | nejnovější | batch.Node.centos 7 |
-| OpenLogic | CentOS-HPC | 7.4 | nejnovější | batch.Node.centos 7 |
-| OpenLogic | CentOS-HPC | 7.3 | nejnovější | batch.Node.centos 7 |
-| OpenLogic | CentOS-HPC | 7.1 | nejnovější | batch.Node.centos 7 |
-| Oracle | Oracle Linux | 7.4 | nejnovější | batch.Node.centos 7 |
-| SUSE | SLES-HPC | 12 SP2 | nejnovější | batch.Node.opensuse 42.1 |
+| MicrosoftWindowsServer | WindowsServer | 2008-R2-SP1-smalldisk | nejnovější | batch.Node.Windows amd64 |
+| OpenLogic | CentOS | 7.4 | nejnovější | batch.node.centos 7 |
+| OpenLogic | CentOS-HPC | 7.4 | nejnovější | batch.node.centos 7 |
+| OpenLogic | CentOS-HPC | 7.3 | nejnovější | batch.node.centos 7 |
+| OpenLogic | CentOS-HPC | 7.1 | nejnovější | batch.node.centos 7 |
+| Oracle | Oracle Linux | 7.4 | nejnovější | batch.node.centos 7 |
+| SUSE | SLES-HPC | 12-SP2 | nejnovější | batch.node.opensuse 42.1 |
 
 ## <a name="connect-to-linux-nodes-using-ssh"></a>Připojte se k uzly s Linuxem pomocí protokolu SSH
 Při vývoji nebo při řešení potíží možná bude nezbytné pro přihlášení k uzlům ve fondu. Na rozdíl od Windows výpočetních uzlů nemůžete použít protokol RDP (Remote Desktop) pro připojení k uzly s Linuxem. Místo toho povolí služba Batch přístup přes SSH na každém uzlu pro vzdálená připojení.
@@ -350,6 +350,6 @@ Jestliže nasadíte aplikace do uzlů služby Batch pomocí [balíčky aplikací
 [py_batch_package]: https://pypi.python.org/pypi/azure-batch
 [py_computenodeuser]: https://docs.microsoft.com/python/api/azure.batch.models.computenodeuser
 [py_imagereference]: https://docs.microsoft.com/python/api/azure.mgmt.batch.models.imagereference
-[py_list_skus]: http://azure-sdk-for-python.readthedocs.org/en/dev/ref/azure.batch.operations.html#azure.batch.operations.AccountOperations.list_node_agent_skus
+[py_list_skus]: https://docs.microsoft.com/python/api/azure-batch/azure.batch.operations.AccountOperations?view=azure-python#list-node-agent-skus
 [vm_marketplace]: https://azure.microsoft.com/marketplace/virtual-machines/
 [vm_pricing]: https://azure.microsoft.com/pricing/details/virtual-machines/

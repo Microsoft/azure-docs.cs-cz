@@ -7,13 +7,13 @@ ms.service: storage
 ms.topic: article
 ms.date: 01/15/2017
 ms.author: muralikk
-ms.component: common
-ms.openlocfilehash: 48c78f4c3332f28cc37aea0c663976ce7c2d489b
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.subservice: common
+ms.openlocfilehash: 53ab1e28c5864b403d52bf5e73f0c5c41b8f18a8
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55170942"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55454738"
 ---
 # <a name="previewing-drive-usage-for-an-export-job"></a>Náhled využití disku pro úlohu exportu
 Než začnete vytvářet úlohy exportu, musíte zvolit sadu objektů BLOB nelze exportovat. Služba Microsoft Azure Import/Export umožňuje použít seznam cesty k objektům blob nebo objekt blob předpony k reprezentaci objektů BLOB, který jste vybrali.  

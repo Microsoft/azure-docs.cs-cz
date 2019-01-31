@@ -11,19 +11,19 @@ author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, carlrab
 manager: craigg
-ms.date: 01/03/2019
-ms.openlocfilehash: e44ac8dca3b27a21e1a7564bbee31c156f80e929
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.date: 01/25/2019
+ms.openlocfilehash: 40dd963a4aad7ffdd092d6835e8444cf0789e129
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55102185"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55462796"
 ---
 # <a name="azure-sql-database-metrics-and-diagnostics-logging"></a>Azure SQL Database metrik a protokolování diagnostiky
 
 Azure SQL Database, elastické fondy, Managed Instance a databáze v Managed Instance můžete streamování protokolů Diagnostika a metriky pro snazší monitorování výkonu. Databáze k přenosu využití prostředků, pracovních procesů a relace a připojení k jednomu z následujících prostředků Azure můžete nakonfigurovat:
 
-- **Azure SQL Analytics**: Chcete-li získat inteligentního monitorování Azure databází, které zahrnují sestavy o výkonu, upozornění a doporučení pro zmírnění dopadů.
+- **Azure SQL Analytics**: Chcete-li získat inteligentního monitorování vašich databází Azure SQL, které zahrnuje sestavy o výkonu, upozornění a doporučení pro zmírnění dopadů.
 - **Azure Event Hubs**: pro integraci telemetrických dat služby SQL Database s vlastními řešeními monitorování nebo aktivními kanály.
 - **Azure Storage**: pro archivaci obrovských objemů telemetrických dat za zlomek ceny.
 
@@ -414,7 +414,7 @@ Najdete v následující tabulce najdete podrobnosti o protokolech pro Managed I
 |TenantId|Vaše ID tenanta |
 |SourceSystem|Vždy: Azure|
 |TimeGenerated [UTC]|Časové razítko, kdy se přihlášení v protokolu |
-|Typ|Vždy: AzureDiagnostics |
+|Type|Vždy: AzureDiagnostics |
 |ResourceProvider|Název poskytovatele prostředků. Vždy: MICROSOFT.SQL |
 |Kategorie|Název kategorie. Vždy: ResourceUsageStats |
 |Prostředek|Název zdroje |
@@ -443,7 +443,7 @@ Najdete v následujících tabulkách podrobnosti o protokolech pro databáze Az
 |TenantId|Vaše ID tenanta |
 |SourceSystem|Vždy: Azure |
 |TimeGenerated [UTC]|Časové razítko, kdy se přihlášení v protokolu |
-|Typ|Vždy: AzureDiagnostics |
+|Type|Vždy: AzureDiagnostics |
 |ResourceProvider|Název poskytovatele prostředků. Vždy: MICROSOFT.SQL |
 |Kategorie|Název kategorie. Vždy: QueryStoreRuntimeStatistics |
 |OperationName|Název operace Vždy: QueryStoreRuntimeStatisticsEvent |
@@ -494,7 +494,7 @@ Další informace o [Query Store runtime statistická data](https://docs.microso
 |TenantId|Vaše ID tenanta |
 |SourceSystem|Vždy: Azure |
 |TimeGenerated [UTC]|Časové razítko, kdy se přihlášení v protokolu |
-|Typ|Vždy: AzureDiagnostics |
+|Type|Vždy: AzureDiagnostics |
 |ResourceProvider|Název poskytovatele prostředků. Vždy: MICROSOFT.SQL |
 |Kategorie|Název kategorie. Vždy: QueryStoreWaitStatistics |
 |OperationName|Název operace Vždy: QueryStoreWaitStatisticsEvent |
@@ -532,7 +532,7 @@ Další informace o [Query Store počkejte statistická data](https://docs.micro
 |TenantId|Vaše ID tenanta |
 |SourceSystem|Vždy: Azure |
 |TimeGenerated [UTC]|Časové razítko, kdy se přihlášení v protokolu |
-|Typ|Vždy: AzureDiagnostics |
+|Type|Vždy: AzureDiagnostics |
 |ResourceProvider|Název poskytovatele prostředků. Vždy: MICROSOFT.SQ |
 |Kategorie|Název kategorie. Vždy: Chyby |
 |OperationName|Název operace Vždy: ErrorEvent |
@@ -561,7 +561,7 @@ Další informace o [chybových zpráv systému SQL Server](https://msdn.microso
 |TenantId|Vaše ID tenanta |
 |SourceSystem|Vždy: Azure |
 |TimeGenerated [UTC]|Časové razítko, kdy se přihlášení v protokolu |
-|Typ|Vždy: AzureDiagnostics |
+|Type|Vždy: AzureDiagnostics |
 |ResourceProvider|Název poskytovatele prostředků. Vždy: MICROSOFT.SQL |
 |Kategorie|Název kategorie. Vždy: DatabaseWaitStatistics |
 |OperationName|Název operace Vždy: DatabaseWaitStatisticsEvent |
@@ -590,7 +590,7 @@ Další informace o [databáze statistiky čekání](https://docs.microsoft.com/
 |TenantId|Vaše ID tenanta |
 |SourceSystem|Vždy: Azure |
 |TimeGenerated [UTC]|Časové razítko, kdy se přihlášení v protokolu |
-|Typ|Vždy: AzureDiagnostics |
+|Type|Vždy: AzureDiagnostics |
 |ResourceProvider|Název poskytovatele prostředků. Vždy: MICROSOFT.SQL |
 |Kategorie|Název kategorie. Vždy: Časové limity |
 |OperationName|Název operace Vždy: TimeoutEvent |
@@ -613,7 +613,7 @@ Další informace o [databáze statistiky čekání](https://docs.microsoft.com/
 |TenantId|Vaše ID tenanta |
 |SourceSystem|Vždy: Azure |
 |TimeGenerated [UTC]|Časové razítko, kdy se přihlášení v protokolu |
-|Typ|Vždy: AzureDiagnostics |
+|Type|Vždy: AzureDiagnostics |
 |ResourceProvider|Název poskytovatele prostředků. Vždy: MICROSOFT.SQL |
 |Kategorie|Název kategorie. Vždy: bloky |
 |OperationName|Název operace Vždy: BlockEvent |
@@ -637,7 +637,7 @@ Další informace o [databáze statistiky čekání](https://docs.microsoft.com/
 |TenantId|Vaše ID tenanta |
 |SourceSystem|Vždy: Azure |
 |TimeGenerated [UTC] |Časové razítko, kdy se přihlášení v protokolu |
-|Typ|Vždy: AzureDiagnostics |
+|Type|Vždy: AzureDiagnostics |
 |ResourceProvider|Název poskytovatele prostředků. Vždy: MICROSOFT.SQL |
 |Kategorie|Název kategorie. Vždy: Zablokování |
 |OperationName|Název operace Vždy: DeadlockEvent |
@@ -658,7 +658,7 @@ Další informace o [databáze statistiky čekání](https://docs.microsoft.com/
 |TenantId|Vaše ID tenanta |
 |SourceSystem|Vždy: Azure |
 |TimeGenerated [UTC]|Časové razítko, kdy se přihlášení v protokolu |
-|Typ|Vždy: AzureDiagnostics |
+|Type|Vždy: AzureDiagnostics |
 |ResourceProvider|Název poskytovatele prostředků. Vždy: MICROSOFT.SQL |
 |Kategorie|Název kategorie. Vždy: AutomaticTuning |
 |Prostředek|Název zdroje |

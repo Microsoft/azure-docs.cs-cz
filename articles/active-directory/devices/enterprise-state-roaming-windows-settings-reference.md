@@ -14,14 +14,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/25/2018
+ms.date: 01/30/2019
 ms.author: markvi
-ms.openlocfilehash: 6698aa7e16b351190f9a5cdde62766cf5d7e1809
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.openlocfilehash: ff607ed44f19e915b6ba94c1d217367d1012f062
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55095987"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55300230"
 ---
 # <a name="windows-10-roaming-settings-reference"></a>Referenční informace k nastavení roamingu pro Windows 10
 Následuje úplný seznam všech nastavení, které budou s roamingem nebo zálohování ve Windows 10. 
@@ -50,15 +50,15 @@ Následující nastavení skupiny jsou k dispozici pro koncovým uživatelům po
 * Další nastavení Windows: viz podrobnosti o nastavení Windows
 * Nastavení prohlížeče Microsoft Edge: Oblíbené položky Microsoft Edge, seznamu a další nastavení
 
-![](./media/enterprise-state-roaming-windows-settings-reference/active-directory-enterprise-state-roaming-syncyoursettings.png)
+![Synchronizovat nastavení](./media/enterprise-state-roaming-windows-settings-reference/active-directory-enterprise-state-roaming-syncyoursettings.png)
 
 Synchronizace nastavení prohlížeče Microsoft Edge skupiny (Oblíbené položky, čtení seznamu) můžete povolit nebo zakázat koncovými uživateli pomocí prohlížeče Microsoft Edge možnost nabídky nastavení.
 
-![](./media/enterprise-state-roaming-windows-settings-reference/active-directory-enterprise-state-roaming-edge.png)
+![Účet](./media/enterprise-state-roaming-windows-settings-reference/active-directory-enterprise-state-roaming-edge.png)
 
 Pro Windows 10 verze 1803 nebo novější, Internet Explorer nastavení skupiny (Oblíbené položky, zadané adresy URL) synchronizaci můžete povolit nebo zakázat koncovými uživateli prostřednictvím možnosti nabídky nastavení aplikace Internet Explorer. 
 
-![](./media/enterprise-state-roaming-windows-settings-reference/active-directory-enterprise-state-roaming-ie.png)
+![Nastavení](./media/enterprise-state-roaming-windows-settings-reference/active-directory-enterprise-state-roaming-ie.png)
 
 ## <a name="windows-settings-details"></a>Podrobnosti o nastavení Windows
 V následující tabulce, ostatní položky ve sloupci skupina nastavení odkazuje na nastavení, která se dají zakázat tak, že přejdete na Nastavení > účty > synchronizovat nastavení > Nastavení ostatní Windows. 

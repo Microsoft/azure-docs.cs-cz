@@ -12,12 +12,12 @@ ms.devlang: nodejs
 ms.topic: reference
 ms.date: 10/26/2018
 ms.author: glenga
-ms.openlocfilehash: 17e0cf170197b99037e2892d1b74a699a3a9eef5
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: a91778f1646807a092a3c8cda66bd3bd104ff8b5
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53275325"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55301879"
 ---
 # <a name="azure-functions-javascript-developer-guide"></a>Příručka pro vývojáře Azure Functions JavaScript
 
@@ -230,7 +230,7 @@ context.bindings.myOutput = {
 
 Můžete také definujte výstupní vazby dat pomocí `context.done` metoda místo `context.binding` objektu (viz níže).
 
-### <a name="contextbindingdata-property"></a>Vlastnost context.bindingData
+### <a name="contextbindingdata-property"></a>context.bindingData property
 
 ```js
 context.bindingData
@@ -274,7 +274,7 @@ Umožňuje zapisovat do protokolů streamování funkce na výchozí úrovni tra
 | **Chyba (_zpráva_)**   | Zapíše chyba úroveň protokolování nebo nižší.   |
 | **upozornění (_zpráva_)**    | Zapíše do protokolování nebo nižší úroveň pro upozornění. |
 | **informace o (_zpráva_)**    | Zapíše informace o úroveň protokolování nebo nižší.    |
-| **verbose (_zpráva_)** | Zápisy na podrobné úrovni protokolování.           |
+| **verbose(_message_)** | Zápisy na podrobné úrovni protokolování.           |
 
 Následující příklad zapíše protokolu na úroveň trasování varování:
 
@@ -326,7 +326,7 @@ context.log('Request Headers = ', JSON.stringify(req.headers));
 
 ### <a name="configure-the-trace-level-for-console-logging"></a>Nakonfiguruje úroveň trasování pro protokolování konzoly
 
-Funkce umožňuje definovat prahové hodnoty úroveň trasování pro zápis do konzoly, která usnadňuje ovládací prvek, který způsob trasování jsou zapsány do konzoly z vaší funkce. Chcete-li nastavení prahové hodnoty pro všechna trasování zapsána do konzoly, použijte `tracing.consoleLevel` vlastnost v souboru host.json. Toto nastavení platí pro všechny funkce v aplikaci function app. Následující příklad nastaví prahovou hodnotu trasování Zapnutí podrobného protokolování:
+Funkce 1.x vám umožní definovat prahové hodnoty úroveň trasování pro výpis do konzoly, což usnadňuje řízení způsobu, jakým trasování jsou zapsány do konzoly z vaší funkce. Chcete-li nastavení prahové hodnoty pro všechna trasování zapsána do konzoly, použijte `tracing.consoleLevel` vlastnost v souboru host.json. Toto nastavení platí pro všechny funkce v aplikaci function app. Následující příklad nastaví prahovou hodnotu trasování Zapnutí podrobného protokolování:
 
 ```json
 {
@@ -336,7 +336,7 @@ Funkce umožňuje definovat prahové hodnoty úroveň trasování pro zápis do 
 }  
 ```
 
-Hodnoty **consoleLevel** odpovídají názvům `context.log` metody. Chcete-li zakázat všechny protokolování trasování do konzoly, nastavte **consoleLevel** k _vypnout_. Další informace najdete v tématu [referenční materiály k host.json](functions-host-json.md).
+Hodnoty **consoleLevel** odpovídají názvům `context.log` metody. Chcete-li zakázat všechny protokolování trasování do konzoly, nastavte **consoleLevel** k _vypnout_. Další informace najdete v tématu [referenční materiály k host.json](functions-host-json-v1.md).
 
 ## <a name="http-triggers-and-bindings"></a>HTTP aktivačními událostmi a vazbami
 
@@ -349,7 +349,7 @@ HTTP a triggerů webhooků a HTTP výstupní vazby pomocí žádostí a odpověd
 | Vlastnost      | Popis                                                    |
 | ------------- | -------------------------------------------------------------- |
 | _Text_        | Objekt, který obsahuje text žádosti.               |
-| _Záhlaví_     | Objekt, který obsahuje hlavičky požadavku.                   |
+| _headers_     | Objekt, který obsahuje hlavičky požadavku.                   |
 | _– Metoda_      | Metoda HTTP požadavku.                                |
 | _PůvodníAdresaURL_ | Adresa URL požadavku.                                        |
 | _params_      | Objekt, který obsahuje směrování parametry požadavku. |
@@ -364,9 +364,9 @@ HTTP a triggerů webhooků a HTTP výstupní vazby pomocí žádostí a odpověd
 | Vlastnost  | Popis                                               |
 | --------- | --------------------------------------------------------- |
 | _Text_    | Objekt, který obsahuje text odpovědi.         |
-| _Záhlaví_ | Objekt, který obsahuje hlavičky odpovědi.             |
+| _headers_ | Objekt, který obsahuje hlavičky odpovědi.             |
 | _isRaw_   | Označuje, že formátování se přeskočí pro odpověď.    |
-| _Stav_  | Stavový kód HTTP odpovědi.                     |
+| _status_  | Stavový kód HTTP odpovědi.                     |
 
 ### <a name="accessing-the-request-and-response"></a>Přístup k požadavku a odpovědi 
 

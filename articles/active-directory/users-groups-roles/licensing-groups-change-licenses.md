@@ -1,6 +1,6 @@
 ---
-title: Migrace uživatelů mezi licencemi produktů se skupinami – Azure Active Directory | Dokumentace Microsoftu
-description: Doporučený postup pro migraci uživatelů mezi licencemi různých produktů (Office 365 Enterprise E1 a E3) popisuje použití skupinové licence
+title: Migrace uživatelů do licence na produkty se skupinami – Azure Active Directory | Dokumentace Microsoftu
+description: Doporučený postup pro migraci uživatelů v rámci skupiny pro jednotlivé produktové licence (Office 365 Enterprise E1 a E3) popisuje použití skupinové licence
 services: active-directory
 keywords: Licencování Azure AD
 documentationcenter: ''
@@ -13,13 +13,13 @@ ms.workload: identity
 ms.date: 01/28/2019
 ms.author: curtand
 ms.reviewer: sumitp
-ms.custom: seo-update-jan
-ms.openlocfilehash: 847801b56fcafc3f1c349cf96690cdf09709b4ad
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.custom: it-pro;seo-update-azuread-jan
+ms.openlocfilehash: ea6159f487b35192e0e2137662a664a2796843c0
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55198295"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55294569"
 ---
 # <a name="how-to-safely-migrate-users-between-product-licenses-by-using-group-based-licensing"></a>Tom, jak bezpečně migrace uživatelů mezi licencemi produktů pomocí licencování na základě skupin
 

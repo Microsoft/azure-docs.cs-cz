@@ -1,6 +1,6 @@
 ---
 title: Připojení k virtuálnímu počítači s Windows Serverem | Dokumentace Microsoftu
-description: Zjistěte, jak se připojit a přihlásit k virtuálnímu počítači s Windows pomocí portálu Azure a modelu nasazení s využitím Resource Manageru.
+description: Zjistěte, jak se připojit a přihlásit k virtuálnímu počítači s Windows pomocí modelu nasazení Resource Manageru a webu Azure portal.
 services: virtual-machines-windows
 documentationcenter: ''
 author: cynthn
@@ -13,17 +13,17 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.devlang: na
 ms.topic: article
-ms.date: 09/13/2018
+ms.date: 11/26/2018
 ms.author: cynthn
-ms.openlocfilehash: fdd0c82f64b55c801ef04f1d533ed91683a07f9a
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: 4bfb17a7c50e97ae71908f052f7f38110cf376df
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52867065"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55296881"
 ---
-# <a name="how-to-connect-and-log-on-to-an-azure-virtual-machine-running-windows"></a>Jak se připojit a přihlásit k virtuálnímu počítači s Windows v Azure
-Pomocí tlačítka **Připojit** na webu Azure Portal spustíte z počítače s Windows relaci Vzdálené plochy (protokol RDP). Nejdřív připojit k virtuálnímu počítači a potom přihlásíte.
+# <a name="how-to-connect-and-sign-on-to-an-azure-virtual-machine-running-windows"></a>Jak se připojit a přihlaste se k virtuálnímu počítači Azure s Windows
+Pomocí tlačítka **Připojit** na webu Azure Portal spustíte z počítače s Windows relaci Vzdálené plochy (protokol RDP). Nejdřív připojit k virtuálnímu počítači a pak přihlásit.
 
 Pro připojení k virtuálnímu počítači s Windows z Macu, budete muset nainstalovat klienta protokolu RDP pro Mac, jako je [Vzdálená plocha od Microsoftu](https://itunes.apple.com/app/microsoft-remote-desktop/id715768417).
 
@@ -32,14 +32,14 @@ Pro připojení k virtuálnímu počítači s Windows z Macu, budete muset nains
 2. V nabídce vlevo vyberte **virtuálních počítačů**.
 3. Ze seznamu vyberte virtuální počítač.
 4. Nahoře na stránce pro virtuální počítač, vyberte **připojit**.
-2. Na **připojit k virtuálnímu počítači** stránky, vyberte požadované možnosti a vyberte **soubor stáhnout RDP**.
+2. Na **připojit k virtuálnímu počítači** vyberte správnou IP adresu a port. Ve většině případů by měla sloužit výchozí IP adresu a port. Vyberte **soubor stáhnout RDP**RDP stáhnout soubor **. Pokud má virtuální počítač just-in-time zásad nastavit, musíte nejprve vybrat **žádat o přístup** tlačítko požádat o přístup, než si můžete stáhnout soubor RDP. Další informace o zásadách just-in-time najdete v tématu [spravovat přístup k virtuálním počítačům podle potřeby pomocí v zásadách čas](../../security-center/security-center-just-in-time.md).
 2. Otevřete stažený soubor RDP a vyberte **připojit** po zobrazení výzvy. 
-2. Zobrazí se upozornění, že soubor .rdp je od neznámého vydavatele. To se očekává. V **připojení ke vzdálené ploše** okně **připojit** pokračujte.
+2. Zobrazí se upozornění, která `.rdp` souboru je od neznámého vydavatele. To se očekává. V **připojení ke vzdálené ploše** okně **připojit** pokračujte.
    
     ![Snímek obrazovky upozornění na neznámého vydavatele](./media/connect-logon/rdp-warn.png)
 3. V okně **Zabezpečení systému Windows** vyberte **Další možnosti** a pak **Použít jiný účet**. Zadejte přihlašovací údaje pro účet na virtuálním počítači a pak vyberte **OK**.
    
-     **Místní účet**: Toto je obvykle místní účet uživatelské jméno a heslo, které jste zadali při vytváření virtuálního počítače. V tomto případě je doménou název virtuálního počítače ve formátu *název_virtuálního_počítače*&#92;*uživatelské_jméno*.  
+     **Místní účet**: Obvykle je místní účet uživatelské jméno a heslo, které jste zadali při vytváření virtuálního počítače. V tomto případě je doménou název virtuálního počítače ve formátu *název_virtuálního_počítače*&#92;*uživatelské_jméno*.  
    
     **Virtuální počítač připojený k doméně**: Pokud virtuální počítač patří do domény, zadejte uživatelské jméno ve formátu *domény*&#92;*uživatelské jméno*. Účet také musí být členem skupiny Administrators nebo musí mít udělené oprávnění ke vzdálenému přístupu k virtuálnímu počítači.
    

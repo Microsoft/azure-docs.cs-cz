@@ -1,23 +1,23 @@
 ---
-title: 'Rychlý start: Překlad textu, Python – Translator Text API'
+title: 'Rychlý start: Přeložení textu, Python – Translator Text API'
 titleSuffix: Azure Cognitive Services
 description: V tomto rychlém startu za méně než 10 minut přeložíte text z jednoho jazyka do jiného pomocí služby Translator Text API a Pythonu.
 services: cognitive-services
 author: erhopf
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: translator-text
+ms.subservice: translator-text
 ms.topic: quickstart
 ms.date: 10/17/2018
 ms.author: erhopf
-ms.openlocfilehash: db2328d09f9e06ccabdc2408327a342fe94fefe0
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: b5307db01cc7242ba73876409f18d511c2516091
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52999583"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55458155"
 ---
-# <a name="quickstart-use-the-translator-text-api-to-translate-a-string-using-python"></a>Rychlý start: Překlad řetězce pomocí služby Translator Text API a Pythonu
+# <a name="quickstart-use-the-translator-text-api-to-translate-a-string-using-python"></a>Rychlý start: Použití rozhraní Translator Text API pro převod řetězce pomocí Pythonu
 
 V tomto rychlém startu se dozvíte, jak pomocí Pythonu a rozhraní REST API služby Translator Text přeložit textový řetězec z angličtiny do italštiny a němčiny.
 
@@ -69,7 +69,7 @@ V současné době je pro službu Translator Text dostupný jeden koncový bod, 
 `params` slouží k nastavení jazyků výstupu. V této ukázce překládáme z angličtiny do italštiny a němčiny: `it` a `de`.
 
 >[!NOTE]
-> Další informace o koncových bodech, trasách a parametrech požadavků najdete v tématu [Translator Text API 3.0: Překlad](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-translate).
+> Další informace o koncových bodech, cesty a parametry požadavku najdete v tématu [Translator Text API 3.0: Přeložit](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-translate).
 
 ```python
 base_url = 'https://api.cognitive.microsofttranslator.com'

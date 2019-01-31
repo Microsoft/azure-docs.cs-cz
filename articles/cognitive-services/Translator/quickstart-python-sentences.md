@@ -1,23 +1,23 @@
 ---
-title: 'Rychlý start: Získání délky vět, Python – Translator Text API'
+title: 'Rychlý start: Získání délky věty, Python – Translator Text API'
 titleSuffix: Azure Cognitive Services
 description: V tomto rychlém startu se dozvíte, jak pomocí Pythonu a rozhraní REST API služby Translator Text určit délku věty (ve znacích).
 services: cognitive-services
 author: erhopf
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: translator-text
+ms.subservice: translator-text
 ms.topic: quickstart
 ms.date: 10/24/2018
 ms.author: erhopf
-ms.openlocfilehash: 1d7ba50bf57a5c7f88f4380c4874d6053f07082e
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: 22b12349ac93f0c9dd595e01ecb4661e019c346b
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52992592"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55458215"
 ---
-# <a name="quickstart-use-the-translator-text-api-to-determine-sentence-length-using-python"></a>Rychlý start: Určení délky věty pomocí služby Translator Text API a Pythonu
+# <a name="quickstart-use-the-translator-text-api-to-determine-sentence-length-using-python"></a>Rychlý start: Použití rozhraní Translator Text API k určení délky větu pomocí Pythonu
 
 V tomto rychlém startu se dozvíte, jak pomocí Pythonu a rozhraní REST API služby Translator Text určit délku věty (ve znacích).
 
@@ -69,7 +69,7 @@ V současné době je pro službu Translator Text dostupný jeden koncový bod, 
 Hodnota `params` v této ukázce slouží k nastavení jazyka zadaného textu. Pro trasu `breaksentence` není hodnota `params` potřeba. Pokud ji v požadavku vynecháte, rozhraní API se pokusí rozpoznat jazyk zadaného textu a uvede tuto informaci společně se skóre spolehlivosti v odpovědi.
 
 >[!NOTE]
-> Další informace o koncových bodech, trasách a parametrech požadavků najdete v tématu [Translator Text API 3.0: Jazyky](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-break-sentence).
+> Další informace o koncových bodech, cesty a parametry požadavku najdete v tématu [Translator Text API 3.0: Jazyky](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-break-sentence).
 
 ```python
 base_url = 'https://api.cognitive.microsofttranslator.com'

@@ -11,13 +11,13 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 manager: craigg
-ms.date: 01/03/2019
-ms.openlocfilehash: f3192aafb6f19695bc99310dd980382510bc633b
-ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
+ms.date: 01/25/2019
+ms.openlocfilehash: b5ba5fadd229fa7119f9af791f7eaedbc984c92a
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54188109"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55457186"
 ---
 # <a name="elastic-database-tools-frequently-asked-questions-faq"></a>Nejčastější dotazy (FAQ) nástrojů pro elastické databáze
 
@@ -43,13 +43,13 @@ Ne – vytvoření správce mapování horizontálních oddílů (například [S
 
 ## <a name="i-have-questions-about-using-elastic-database-tools-how-do-i-get-them-answered"></a>Mám otázky týkající se používání nástrojů elastic database, jak je odpovědi získat
 
-Kontaktujte nás na [fórum pro Azure SQL Database](https://social.msdn.microsoft.com/forums/azure/home?forum=ssdsgetstarted).
+Kontaktujte nás na [fórum SQL Database](https://social.msdn.microsoft.com/forums/azure/home?forum=ssdsgetstarted).
 
 ## <a name="when-i-get-a-database-connection-using-a-sharding-key-i-can-still-query-data-for-other-sharding-keys-on-the-same-shard--is-this-by-design"></a>Když obdržím připojení k databázi pomocí klíče horizontálního dělení, můžu dál dotazy na data pro další klíče horizontálního dělení ve stejném horizontálním oddílu.  Toto chování je záměrné
 
 Rozhraní API pružné škálování umožňují připojení ke správné databázi pro klíč horizontálního dělení, ale neposkytuje filtrování klíče horizontálního dělení.  Přidat **kde** klauzule dotazu v případě potřeby omezit obor ke klíči poskytnutý horizontálního dělení.
 
-## <a name="can-i-use-a-different-azure-database-edition-for-each-shard-in-my-shard-set"></a>Můžu použít jinou edici databáze Azure pro každý horizontální oddíl v sadě horizontálních oddílů
+## <a name="can-i-use-a-different-sql-database-edition-for-each-shard-in-my-shard-set"></a>Můžu použít jinou edici SQL Database pro každý horizontální oddíl v sadě horizontálních oddílů
 
 Ano, horizontální oddíl představuje jednotlivé databáze, a proto jeden horizontální oddíl může být Premium edition, zatímco jiné se Standard edition. Edice horizontálního oddílu dál, můžete škálovat směrem nahoru nebo dolů více než jednou po dobu životnosti horizontálního oddílu.
 

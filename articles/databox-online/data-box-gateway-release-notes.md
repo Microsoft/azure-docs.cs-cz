@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: gateway
 ms.topic: article
-ms.date: 01/07/2019
+ms.date: 01/29/2019
 ms.author: alkohli
-ms.openlocfilehash: 738cc5b4e90d9572b65f122076973e2d9f1b264f
-ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
+ms.openlocfilehash: 34e7a578fb04b617221376f5d1065997b12d2613
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54450486"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55302117"
 ---
 # <a name="azure-data-box-gateway-preview-release-notes"></a>Poznámky k verzi Azure Data Box brány ve verzi Preview
 
@@ -50,7 +50,9 @@ Následující tabulka obsahuje souhrn známé problémy pro bránu dat pole spu
 | **5.** |Typy souborů | Nejsou podporovány následující typy souborů Linux: znak soubory, soubory bloku, sokety, kanály, symbolické odkazy.  |Kopírování tyto souborů sdílet výsledky v 0-length souborech vytvářených v systému souborů NFS. Tyto soubory zůstávají v chybovém stavu a jsou rovněž uvedeny v *error.xml*. |
 | **6.** |Odstranění | Z důvodu chyby v této verzi Pokud se odstraní sdílenou složku systému souborů NFS, pak sdílenou složku se možná neodstranily. Stav sdílené složky se zobrazí *odstranění*.  |K tomu dojde pouze v případě, že sdílená složka používá představuje název souboru. |
 | **7.** |Obnovení | Mezi operace aktualizace není zachováno oprávnění a seznamy řízení přístupu (ACL).  | |
-| **8.** |Online nápověda |Odkazy nápovědy na webu Azure Portal nesmí odkazovat na dokumentaci.|Odkazy nápovědy bude fungovat ve verzi všeobecné dostupnosti. |
+| **8.** |Kopírovat | Kopírování dat se nezdaří s chybou:  Požadovanou operaci nelze dokončit z důvodu omezení systému souborů.  |Tato chyba nastane, pokud Stream alternativní Data (reklamy) přidružené k souboru přesahuje 128 KB (maximální limit pro odolný systém souborů).  |
+| **9.** |Symbolické odkazy |Symbolické odkazy nejsou podporovány.  |Symbolické odkazy k adresářům za následek adresáře nikdy načtení označený v režimu offline. V důsledku toho nemusí zobrazit šedé napříč na adresáře, které označuje, že adresáře jsou offline a související obsah byl zcela nahráli do Azure. |
+| **10.** |Online nápověda |Odkazy nápovědy na webu Azure Portal nesmí odkazovat na dokumentaci.|Odkazy nápovědy bude fungovat ve verzi všeobecné dostupnosti. |
 
 
 

@@ -7,13 +7,13 @@ ms.service: storage
 ms.topic: article
 ms.date: 03/29/2018
 ms.author: alkohli;
-ms.component: common
-ms.openlocfilehash: 321f59b1fd7b408d13856d7345d5d00608e3d250
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.subservice: common
+ms.openlocfilehash: 1494ccea1580d7415c6c86f14682ca59ad7124d5
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39521077"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55459892"
 ---
 # <a name="open-a-support-ticket-for-an-importexport-job"></a>Vytvořit lístek podpory pro úlohu importu/exportu
 
@@ -38,7 +38,7 @@ Proveďte následující kroky a vytvoříte žádost o podporu:
         - Pokud se rozhodnete **správu účtu úložiště**vyberte **prostředků**, a **plán podpory**.
             ![Zvolte možnost správy účtu úložiště](./media/storage-import-export-contact-microsoft-support/import-export-support3.png)
         - Pokud se rozhodnete **Blob**vyberte **prostředků**, **názvy kontejnerů** (volitelné), a **plán podpory**.
-            ![Zvolte Objekt Blob](./media/storage-import-export-contact-microsoft-support/import-export-support2.png)
+            ![Choose Blob](./media/storage-import-export-contact-microsoft-support/import-export-support2.png)
         - Pokud se rozhodnete **souboru**vyberte **prostředků**, **názvy sdílených složek** (volitelné), a **plán podpory** ![zvolit soubor](./media/storage-import-export-contact-microsoft-support/import-export-support4.png)
     4. Klikněte na **Další**.
 

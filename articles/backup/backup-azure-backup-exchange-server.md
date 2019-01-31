@@ -2,18 +2,18 @@
 title: Zálohování serveru Exchange do služby Azure Backup pomocí nástroje System Center 2012 R2 DPM
 description: Zjistěte, jak k zálohování serveru Exchange server do Azure Backup pomocí System Center 2012 R2 – DPM
 services: backup
-author: adigan
-manager: NKolli1
+author: kasinh
+manager: vvithal
 ms.service: backup
 ms.topic: conceptual
-ms.date: 10/19/2018
-ms.author: adigan
-ms.openlocfilehash: 7e95fa0cc6b5f9476df68ab44e5dbc8bb5432d52
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.date: 01/31/2019
+ms.author: kasinh
+ms.openlocfilehash: ef976667ec580ea75dd1b8566c7bdddf35eeb0fc
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51234443"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55298309"
 ---
 # <a name="back-up-an-exchange-server-to-azure-backup-with-system-center-2012-r2-dpm"></a>Zálohování serveru Exchange do služby Azure Backup pomocí nástroje System Center 2012 R2 DPM
 Tento článek popisuje, jak nakonfigurovat server System Center 2012 R2 Data Protection Manager (DPM) k zálohování serveru Microsoft Exchange server do služby Azure Backup.  
@@ -110,10 +110,10 @@ Pokud chcete nainstalovat agenta ochrany aplikace DPM na serveru Exchange, postu
 
 Pro body obnovení online je pět typů obnovení:
 
-* **Obnovit do původního umístění serveru Exchange Server:** data budou obnoveny do původního serveru Exchange.
-* **Obnovit do jiné databáze na serveru Exchange Server:** data bude možné obnovit do jiné databáze na jiném serveru Exchange.
-* **Obnovit do databáze obnovení:** dat bude obnovena obnovení databáze systému Exchange (RDB).
-* **Kopírovat do síťové složky:** data bude možné obnovit do síťové složky.
+* **Obnovte do původního umístění serveru Exchange Server:** Data se obnoví do původního serveru Exchange.
+* **Obnovte do jiné databáze na serveru Exchange Server:** Data budou obnoveny do jiné databáze na jiném serveru Exchange.
+* **Obnovte do databáze obnovení:** Data budou obnoveny obnovení databáze systému Exchange (RDB).
+* **Kopírovat do síťové složky:** Data budou obnoveny do síťové složky.
 * **Kopírovat na pásku:** Pokud máte knihovnu pásků nebo samostatnou páskovou jednotku, připojit a nakonfigurovat na serveru DPM, bodu obnovení se zkopírují na volnou pásku.
 
     ![Zvolit online replikaci](./media/backup-azure-backup-exchange-server/choose-online-replication.png)

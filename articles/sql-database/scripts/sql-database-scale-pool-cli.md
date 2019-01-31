@@ -1,6 +1,6 @@
 ---
 title: Příklad rozhraní příkazového řádku – Škálování elastického fondu SQL – Azure SQL Database | Microsoft Docs
-description: Ukázkový skript Azure CLI pro škálování elastického fondu SQL ve službě Azure SQL Database
+description: Ukázkový skript Azure CLI pro škálování elastického fondu ve službě Azure SQL Database
 services: sql-database
 ms.service: sql-database
 ms.subservice: elastic-pools
@@ -11,17 +11,17 @@ author: CarlRabeler
 ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
-ms.date: 09/20/2018
-ms.openlocfilehash: af7af24497054f7868e373150eefae9141239ec6
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.date: 01/25/2019
+ms.openlocfilehash: 444c93ea8c25e9f1ca9d906fd6d8fc69169163ae
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53605021"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55452018"
 ---
-# <a name="use-cli-to-scale-a-sql-elastic-pool-in-azure-sql-database"></a>Škálování elastického fondu SQL ve službě Azure SQL Database pomocí rozhraní příkazového řádku
+# <a name="use-cli-to-scale-an-elastic-pool-in-azure-sql-database"></a>Škálování elastického fondu ve službě Azure SQL Database pomocí rozhraní příkazového řádku
 
-Tento ukázkový skript Azure CLI vytvoří elastické fondy SQL, přesune databáze ve fondu a změní velikosti výpočetních prostředků elastických fondů. 
+Tento ukázkový skript Azure CLI vytvoří elastické fondy, přesune databáze ve fondu a změny elastický fond – compute úrovně velikosti. 
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
@@ -43,15 +43,15 @@ az group delete --name myResourceGroup
 
 ## <a name="script-explanation"></a>Vysvětlení skriptu
 
-Tento skript k vytvoření skupiny prostředků, logického serveru, služby SQL Database a pravidel brány firewall používá následující příkazy. Každý příkaz v tabulce odkazuje na příslušnou část dokumentace.
+Tento skript používá následující příkazy k vytvoření skupiny prostředků, server služby SQL Database, izolovaná databáze a pravidla brány firewall SQL Database. Každý příkaz v tabulce odkazuje na příslušnou část dokumentace.
 
 | Příkaz | Poznámky |
 |---|---|
 | [az group create](https://docs.microsoft.com/cli/azure/group#az-group-create) | Vytvoří skupinu prostředků, ve které se ukládají všechny prostředky. |
-| [az sql server create](https://docs.microsoft.com/cli/azure/sql/server#az-sql-server-create) | Vytvoří logický server, který je hostitelem služby SQL Database. |
-| [az sql elastic-pools create](https://docs.microsoft.com/cli/azure/sql/elastic-pool#az-sql-elastic-pool-create) | Vytvoří v rámci logického serveru fond elastické databáze. |
-| [az sql db create](https://docs.microsoft.com/cli/azure/sql/db#az-sql-db-create) | Vytvoří na logickém serveru službu SQL Database. |
-| [az sql elastic-pools update](https://docs.microsoft.com/cli/azure/sql/elastic-pool#az-sql-elastic-pool-update) | Aktualizuje fond elastické databáze. V tomto příkladu změní přiřazenou jednotku eDTU. |
+| [az sql server create](https://docs.microsoft.com/cli/azure/sql/server#az-sql-server-create) | Vytvoří server služby SQL Database, který je hostitelem izolovaných databází a elastických fondů. |
+| [az sql elastic-pools create](https://docs.microsoft.com/cli/azure/sql/elastic-pool#az-sql-elastic-pool-create) | Vytvoří elastický fond. |
+| [az sql db create](https://docs.microsoft.com/cli/azure/sql/db#az-sql-db-create) | Vytvoří samostatné nebo databázi ve fondu. |
+| [az sql elastic-pools update](https://docs.microsoft.com/cli/azure/sql/elastic-pool#az-sql-elastic-pool-update) | Aktualizuje elastického fondu, v tomto příkladu změní přiřazenou jednotku eDTU. |
 | [az group delete](https://docs.microsoft.com/cli/azure/vm/extension#az-vm-extension-set) | Odstraní skupinu prostředků včetně všech vnořených prostředků. |
 
 ## <a name="next-steps"></a>Další postup

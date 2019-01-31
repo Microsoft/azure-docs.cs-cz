@@ -11,13 +11,13 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 manager: craigg
-ms.date: 09/14/2018
-ms.openlocfilehash: 7681e3fabe9eb216da81d9f09dc584097bcbaf84
-ms.sourcegitcommit: 26cc9a1feb03a00d92da6f022d34940192ef2c42
+ms.date: 01/25/2019
+ms.openlocfilehash: 4257baf437ec6c77ccf9fe4a7f0e6195ddd933be
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2018
-ms.locfileid: "48830001"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55458121"
 ---
 # <a name="monitor-and-manage-performance-of-sharded-multi-tenant-azure-sql-database-in-a-multi-tenant-saas-app"></a>Monitorování a správa výkonu horizontálně dělené databázi Azure SQL s více tenanty v aplikaci SaaS s více tenanty
 
@@ -161,7 +161,7 @@ Pokud jste už zřídili nového tenanta v její vlastní databázi, přeskočte
 
 Skript zřízení tohoto tenanta v samostatné databáze, databáze a tenanta zaregistrovat v katalogu a v prohlížeči otevřete stránku události vašeho tenanta. Aktualizujte stránku centra událostí a uvidíte, že "Salix Salsa" se přidala jako jako místo.
 
-## <a name="manage-performance-of-a-single-database"></a>Správa výkonu izolované databáze
+## <a name="manage-performance-of-an-individual-database"></a>Spravovat výkon jednotlivých databází
 
 Pokud jednoho tenanta v databázi s více tenanty stabilně vysoké zatížení, může mají tendenci dominovat prostředkům databáze a mít vliv na ostatní tenanti ve stejné databázi. Pokud je aktivita může nějakou dobu pokračovat, tenanta může být dočasně přesunul z databáze a samostatné databáze s jedním tenantem. To umožňuje, aby měl další prostředky a zase se plně izolovat ji od ostatních tenantů tenant.
 
@@ -194,7 +194,7 @@ V tomto kurzu se naučíte:
 > * Vertikálně navýšit kapacitu databáze v reakci na zvýšení zatížení databáze
 > * Zřizování tenanta do databáze s jedním tenantem
 
-## <a name="additional-resources"></a>Další zdroje informací:
+## <a name="additional-resources"></a>Další materiály
 
 <!--* [Additional tutorials that build upon the Wingtip Tickets SaaS Multi-tenant Database application deployment](saas-multitenantdb-wingtip-app-overview.md#sql-database-wingtip-saas-tutorials)-->
 * [Azure Automation](../automation/automation-intro.md)

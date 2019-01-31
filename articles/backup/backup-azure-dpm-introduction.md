@@ -2,19 +2,18 @@
 title: Příprava serveru aplikace DPM k zálohování úloh do Azure
 description: Úvod k zálohování dat DPM do trezoru služby Azure Recovery Services.
 services: backup
-author: adigan
-manager: nkolli
-keywords: System Center Data Protection Manager, aplikace data protection manager, zálohy aplikace dpm
+author: kasinh
+manager: vvithal
 ms.service: backup
 ms.topic: conceptual
-ms.date: 10/18/2018
-ms.author: adigan
-ms.openlocfilehash: ac89f0f2e2f86fa34fc754ee23e9b67329560fa4
-ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
+ms.date: 01/30/2019
+ms.author: kasinh
+ms.openlocfilehash: 1f2defd2adb580aee71482a699c7987ca3fa7807
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50024473"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55301063"
 ---
 # <a name="prepare-to-back-up-workloads-to-azure-with-system-center-dpm"></a>Příprava zálohování úloh do Azure pomocí nástroje System Center DPM
 
@@ -51,7 +50,7 @@ Aplikace DPM ve virtuálním počítači Hyper-V | System Center 2012 SP1 nebo n
 Aplikace DPM ve virtuálním počítači VMware | System Center 2012 R2 s kumulativní aktualizací 5 nebo novější.
 Komponenty | Server aplikace DPM musí mít Windows PowerShell a rozhraní .net Framework 4.5 nainstalované.
 Podporované aplikace | [Přečtěte si](https://docs.microsoft.com/system-center/dpm/dpm-protection-matrix) co aplikace DPM může zálohovat.
-Podporované typy souborů | Tyto typy souborů lze zálohovat pomocí služby Azure Backup: šifrované (pouze úplné zálohy); Komprimované (je podporováno přírůstkové zálohování); Zhuštěné (je podporováno přírůstkové zálohování); Komprimované a zhuštěné (zpracovány jako zhuštěné).
+Podporované typy souborů | Tyto typy souborů lze zálohovat pomocí služby Azure Backup: Šifrované (pouze úplné zálohy); Komprimované (je podporováno přírůstkové zálohování); Zhuštěné (je podporováno přírůstkové zálohování); Komprimované a zhuštěné (zpracovány jako zhuštěné).
 Nepodporované typy souborů | Servery v systémech souborů s rozlišením velkých; pevné odkazy (vynecháno); spojovací body (vynecháno); zašifrované a komprimované (vynecháno); šifrované a zhuštěné (vynecháno); Komprimovaný datový proud; analýzy datového proudu.
 Místní úložiště | Každý počítač, který chcete zálohovat, musí mít místní volné úložiště, který je minimálně 5 % velikost dat, která je právě zálohován.  Například zálohování 100 GB dat vyžaduje minimálně 5 GB volného místa v pomocné umístění.
 Trezoru úložiště | Neexistuje žádné omezení množství dat, která můžete zálohovat do trezoru služby Azure Backup, ale velikost zdroje dat (třeba virtuální počítač nebo databázi) nepřekročí 54400 GB.

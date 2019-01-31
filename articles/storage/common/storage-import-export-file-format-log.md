@@ -7,13 +7,13 @@ ms.service: storage
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: muralikk
-ms.component: common
-ms.openlocfilehash: 2ae44edf0d9356000f64ab72fd609f1921cf095c
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.subservice: common
+ms.openlocfilehash: cd3ae85e88151e234d42a29ad871a18c7829b05c
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53316576"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55454840"
 ---
 # <a name="azure-importexport-service-log-file-format"></a>Azure formát souborů protokolu služby Import/Export
 Když služba Microsoft Azure Import/Export provede akci na disk jako součást úlohy importu nebo úlohy exportu, protokoly se zapisují do bloku, objekty BLOB v účtu úložiště přidruženého k této úlohy.  
@@ -101,19 +101,19 @@ properties-status ::=
 
 Následující tabulka popisuje prvky souboru protokolu.  
   
-|– Element XML|Typ|Popis|  
+|– Element XML|Type|Popis|  
 |-----------------|----------|-----------------|  
 |`DriveLog`|– Element XML|Představuje jednotku protokolu.|  
 |`Version`|Atribut řetězců|Verze formátu protokolu.|  
-|`DriveId`|Řetězec|Sériové číslo jednotky hardwaru.|  
-|`Status`|Řetězec|Stav zpracování jednotky. Zobrazit `Drive Status Codes` tabulka níže pro další informace.|  
+|`DriveId`|String|Sériové číslo jednotky hardwaru.|  
+|`Status`|String|Stav zpracování jednotky. Zobrazit `Drive Status Codes` tabulka níže pro další informace.|  
 |`Blob`|Vnořené – XML element|Představuje objekt blob.|  
-|`Blob/BlobPath`|Řetězec|Identifikátor URI objektu blob.|  
-|`Blob/FilePath`|Řetězec|Relativní cesta k souboru na disku.|  
+|`Blob/BlobPath`|String|Identifikátor URI objektu blob.|  
+|`Blob/FilePath`|String|Relativní cesta k souboru na disku.|  
 |`Blob/Snapshot`|DateTime|Verze snímku objektu blob pro úlohu exportu.|  
 |`Blob/Length`|Integer|Celková délka objektu blob v bajtech.|  
 |`Blob/LastModified`|DateTime|Datum/čas poslední změny objektu blob, pro úlohu exportu.|  
-|`Blob/ImportDisposition`|Řetězec|Import dispozice objektu blob pro úlohu importu.|  
+|`Blob/ImportDisposition`|String|Import dispozice objektu blob pro úlohu importu.|  
 |`Blob/ImportDisposition/@Status`|Atribut řetězců|Stav importu dispozice.|  
 |`PageRangeList`|Vnořené – XML element|Představuje seznam rozsahů stránek pro objekt blob stránky.|  
 |`PageRange`|– Element XML|Představuje celou stránku.|  
@@ -130,17 +130,17 @@ Následující tabulka popisuje prvky souboru protokolu.
 |`Block/@Status`|Atribut řetězců|Stav zpracování bloku.|  
 |`Metadata`|Vnořené – XML element|Představuje metadata objektu blob.|  
 |`Metadata/@Status`|Atribut řetězců|Stav zpracování metadata objektu blob.|  
-|`Metadata/GlobalPath`|Řetězec|Relativní cesta k souboru globální metadata.|  
+|`Metadata/GlobalPath`|String|Relativní cesta k souboru globální metadata.|  
 |`Metadata/GlobalPath/@Hash`|Atribut řetězců|Kódování Base16 hodnota hash MD5 globální metadata souboru.|  
-|`Metadata/Path`|Řetězec|Relativní cesta k souboru metadat.|  
+|`Metadata/Path`|String|Relativní cesta k souboru metadat.|  
 |`Metadata/Path/@Hash`|Atribut řetězců|Kódování Base16 hodnota hash MD5 souboru metadat.|  
 |`Properties`|Vnořené – XML element|Představuje vlastnosti objektu blob.|  
 |`Properties/@Status`|Atribut řetězců|Stav zpracování vlastnosti objektu blob, například soubor nebyl nalezen, dokončeno.|  
-|`Properties/GlobalPath`|Řetězec|Relativní cesta k souboru globální vlastnosti.|  
+|`Properties/GlobalPath`|String|Relativní cesta k souboru globální vlastnosti.|  
 |`Properties/GlobalPath/@Hash`|Atribut řetězců|Kódování Base16 hodnota hash MD5 globální vlastnosti souboru.|  
-|`Properties/Path`|Řetězec|Relativní cesta k vlastnosti souboru.|  
+|`Properties/Path`|String|Relativní cesta k vlastnosti souboru.|  
 |`Properties/Path/@Hash`|Atribut řetězců|Kódování Base16 hodnota hash MD5 vlastnosti souboru.|  
-|`Blob/Status`|Řetězec|Stav zpracování objektu blob.|  
+|`Blob/Status`|String|Stav zpracování objektu blob.|  
   
 ## <a name="drive-status-codes"></a>Drive stavové kódy  
 Následující tabulka uvádí stavové kódy pro zpracování jednotku.  

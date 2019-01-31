@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 10/20/2018
 ms.author: raynew
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: f0a18931c037a1cf34d8a296a6330264bc8d38af
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: fa53a7e598b42e93e86eb059c36ff89f38bb7093
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54424507"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55300587"
 ---
 # <a name="use-powershell-to-back-up-and-restore-virtual-machines"></a>Použití Powershellu k zálohování a obnovení virtuálních počítačů
 
@@ -355,11 +355,17 @@ $restorejob
 #### <a name="restore-managed-disks"></a>Obnovení spravovaných disků
 
 > [!NOTE]
-> Pokud chcete obnovit jako spravovaných disků zálohovaného virtuálního počítače má spravované disky, zavedli jsme možnost z prostředí Azure PowerShell v 6.7.0. a vyšší
+> Pokud chcete obnovit jako spravovaných disků zálohovaného virtuálního počítače má spravované disky, zavedli jsme možnost z modulu Azure RM Powershellu v 6.7.0. a vyšší
 >
 >
 
-Zadejte další parametr **TargetResourceGroupName** k určení RG, ke kterému se obnovit spravované disky.
+Zadejte další parametr **TargetResourceGroupName** k určení RG, ke kterému se obnovit spravované disky. 
+
+> [!NOTE]
+> Důrazně doporučujeme použít **TargetResourceGroupName** parametr pro obnovení spravovaných disků, protože to má za následek výrazné zlepšení výkonu. Navíc z prostředí Azure Powershell Az modulu 1.0 a vyšší, tento parametr je povinný v případě obnovení se spravovanými disky
+>
+>
+
 
 ```powershell
 $restorejob = Restore-AzureRmRecoveryServicesBackupItem -RecoveryPoint $rp[0] -StorageAccountName "DestAccount" -StorageAccountResourceGroupName "DestRG" -TargetResourceGroupName "DestRGforManagedDisks"

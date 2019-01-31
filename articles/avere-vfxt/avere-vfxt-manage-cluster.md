@@ -4,24 +4,24 @@ description: Jak spravovat Avere cluster – přidat nebo odebrat uzly, restarto
 author: ekpgh
 ms.service: avere-vfxt
 ms.topic: conceptual
-ms.date: 10/31/2018
+ms.date: 01/29/2019
 ms.author: v-erkell
-ms.openlocfilehash: a47b18972e945e495e5a5d3dd90e383390612865
-ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
+ms.openlocfilehash: 0eb5941bfecc023429556434a45460c8727056ec
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54189605"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55300179"
 ---
 # <a name="manage-the-avere-vfxt-cluster"></a>Správa clusteru Avere vFXT
 
 Po vytvoření clusteru může být potřeba přidat uzly clusteru nebo zastavení nebo restartování clusteru. A po dokončení projektu je potřeba vědět, jak zastavit a trvalé odebrání clusteru. 
 
-V závislosti na úloze správy clusteru můžete potřebovat udělat pomocí ovládacího panelu Avere, skriptu pro vytváření clusteru vfxt.py nebo na webu Azure portal. 
+V závislosti na úloze správy clusteru můžete potřebovat udělat pomocí ovládacího panelu Avere, skriptu vfxt.py příkazového řádku pro vytváření clusteru nebo na webu Azure portal. 
 
 Tato tabulka poskytuje přehled, z nichž lze použít nástroje pro každý úkol. 
 
-| Akce | Avere ovládací panely | vfxt.PY  | portál Azure |
+| Akce | Avere ovládací panely | vfxt.py  | portál Azure |
 | --- | --- | --- | --- |
 | Přidat uzly clusteru | ne | ano | ne |
 | Odebrání uzlů clusteru | ano | ne | ne |
@@ -71,7 +71,11 @@ Vypnout, restartovat nebo odebrání uzlu, uzlu v seznamu vyhledejte na **FXT uz
 
 Cluster se vypíná, odešle stavové zprávy pro **řídicí panel** kartu v první. Po chvíli se relace Avere ovládací panely, přestane reagovat, což znamená, že byl vypnut clusteru.
 
-## <a name="manage-the-cluster-with-vfxtpy"></a>Správa clusteru s vfxt.py 
+## <a name="manage-the-cluster-with-vfxtpy"></a>Správa clusteru s vfxt.py
+
+vfxt.PY je nástroj příkazového řádku pro správu a vytváření clusteru. 
+
+vfxt.PY je předinstalován v řadiči clusteru virtuálních počítačů. Pokud chcete nainstalovat na jiný systém, najdete v dokumentaci na adrese <https://github.com/Azure/AvereSDK>.
 
 Skript vfxt.py lze použít pro tyto úlohy správy clusteru:
 
@@ -80,8 +84,6 @@ Skript vfxt.py lze použít pro tyto úlohy správy clusteru:
 * Odstranit cluster
 
 Jako Avere ovládací panely zkuste vfxt.py operace Ujistěte se, že je změněná data trvale uložen na back endové úložné před vypnutím nebo zničení clusteru nebo uzlu. Díky tomu je bezpečnější možnost než Avere portálu.
-
-vfxt.PY je předinstalován v řadiči clusteru virtuálních počítačů. <!-- (If you want to install it on another system, refer to https://github.com/Azure/AvereSDK) xxx change when this repo goes  public -->
 
 Průvodce kompletní vfxt.py využití je k dispozici na Githubu: [Cloudová Správa clusteru s vfxt.py](https://github.com/azure/averesdk/blob/master/docs/README.md)
 

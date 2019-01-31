@@ -6,17 +6,17 @@ author: marktab
 manager: cgronlun
 editor: cgronlun
 ms.service: machine-learning
-ms.component: team-data-science-process
+ms.subservice: team-data-science-process
 ms.topic: article
 ms.date: 11/04/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: d05f831aa1ae1f9b0912dce66bf7f5e15c109d49
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: 00710183828892c81d3ea887e4394237288eb6bb
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53138564"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55452511"
 ---
 # <a name="deployment-stage-of-the-team-data-science-process-lifecycle"></a>Fáze nasazení životní cyklus vědeckého zpracování týmových dat
 
@@ -39,7 +39,7 @@ Modely s datovým kanálem nasazení do produkčního prostředí nebo prostřed
 ## <a name="how-to-do-it"></a>Jak na to
 Hlavního úkolu zákazníky a vyřešené v této fázi:
 
-**Zprovoznění modelu**: nasazení modelu a kanál do produkčního prostředí nebo prostředí podobném produkci za využití aplikace.
+**Zprovoznění modelu**: Nasazení modelu a kanál do produkčního prostředí nebo prostředí podobném produkci za využití aplikace.
 
 ### <a name="operationalize-a-model"></a>Zprovoznění modelu
 Až budete mít sadu modely, které dobře fungují, můžete je pro jiné aplikace při využívání provozu. V závislosti na obchodních požadavcích předpovědi probíhají v reálném čase nebo na základě služby batch. Pokud chcete nasadit modely, umístěte je otevřené rozhraní API. Rozhraní umožňuje modelu snadno využít v různých aplikacích, jako například:

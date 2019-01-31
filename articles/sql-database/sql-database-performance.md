@@ -10,15 +10,16 @@ author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, carlrab
 manager: craigg
-ms.date: 04/01/2018
-ms.openlocfilehash: 3629215dc1f6dfcb28194c487358adb058af3e8e
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.date: 01/25/2019
+ms.openlocfilehash: adbccd5f9cfd5ddd1912e304f800f3ebe04912c7
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53602915"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55453004"
 ---
 # <a name="monitor-and-improve-performance"></a>Monitorování a zlepšování výkonnosti
+
 Identifikuje potenciální problémy ve vaší databázi Azure SQL Database a doporučuje akce, které může zlepšit výkon úloh tím, že poskytuje inteligentní optimalizačních akcí a doporučení.
 
 Chcete-li zkontrolovat výkon své databáze, použijte **výkonu** dlaždice na stránce Přehled, nebo přejděte dolů "Podpora a řešení potíží" části:
@@ -34,6 +35,7 @@ V "Podpora a řešení potíží" oddílu, můžete použít na následujících
 4. [Automatické ladění](#automatic-tuning) umožňuje automaticky Optimalizujte vaši databázi Azure SQL Database.
 
 ## <a name="performance-overview"></a>Přehled výkonu
+
 Toto zobrazení poskytuje přehled výkonu vaší databáze a pomáhá s výkonem, ladění a řešení potíží. 
 
 ![Výkon](./media/sql-database-performance/performance.png)
@@ -44,6 +46,7 @@ Toto zobrazení poskytuje přehled výkonu vaší databáze a pomáhá s výkone
 * **Dotazy na databázi** dlaždici se zobrazuje souhrn výkonu pro vaši databázi (celkové DTU využití a zároveň klauzuli top dotazy využívající prostředky). Kliknutím na tuto dlaždici přejdete na  **[Query Performance Insight](#query-performance-insight)**.
 
 ## <a name="performance-recommendations"></a>Doporučení k výkonu
+
 Tato stránka poskytuje inteligentní [doporučení pro optimalizaci](sql-database-advisor.md) , který může zlepšit výkon vaší databáze. Na této stránce jsou uvedeny následující typy doporučení:
 
 * Doporučení pro indexy, které chcete vytvořit nebo vyřadit.
@@ -57,9 +60,11 @@ Můžete také vyhledat úplnou historii ladění akce, které byly použity v m
 Zjistěte, jak najít použít doporučení k výkonu v [vyhledání a použití doporučení k výkonu](sql-database-advisor-portal.md) článku.
 
 ## <a name="automatic-tuning"></a>Automatické ladění
+
 Azure SQL Database může automaticky ladění výkonu databáze s použitím [doporučení k výkonu](sql-database-advisor.md). Další informace najdete v článku [automatické ladění článku](sql-database-automatic-tuning.md). Ho Pokud chcete povolit, přečtěte si [povolení automatického ladění](sql-database-automatic-tuning-enable.md).
 
 ## <a name="query-performance-insight"></a>Query Performance Insight
+
 [Query Performance Insight](sql-database-query-performance.md) umožňuje strávit míň času tím, že poskytuje řešení potíží s výkonem databáze:
 
 * Podrobnější přehledy o využití prostředků (DTU) databáze. 
@@ -71,6 +76,7 @@ Azure SQL Database může automaticky ladění výkonu databáze s použitím [d
 Další informace o této stránce najdete v článku  **[postup použití nástroje Query Performance Insight](sql-database-query-performance.md)**.
 
 ## <a name="additional-resources"></a>Další materiály
+
 * [Azure SQL Database – Průvodce výkonem pro izolované databáze](sql-database-performance-guidance.md)
 * [Pokud by měl používat elastický fond?](sql-database-elastic-pool-guidance.md)
 

@@ -6,17 +6,17 @@ author: marktab
 manager: cgronlun
 editor: cgronlun
 ms.service: machine-learning
-ms.component: team-data-science-process
+ms.subservice: team-data-science-process
 ms.topic: article
 ms.date: 11/13/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 6d833dc41677ddb027964ff535b27324e2b0c3da
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: c417950e07ae3c6922aa260a3ef40d862870aa1e
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53133073"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55452324"
 ---
 # <a name="sample-data-in-azure-hdinsight-hive-tables"></a>Ukázková data v tabulkách Azure HDInsight Hive
 Tento článek popisuje, jak na nižší data uložená v tabulkách Azure HDInsight Hive pomocí dotazů Hive ke snížení velikosti lépe zvládnutelné pro analýzu. Ho pokrývají tři metody popularly používané vzorkování:
@@ -81,7 +81,7 @@ Tady je příklad dotazu této ukázky ve skupině:
     on b.catfield=c.catfield
 
 ## <a name="stratified"></a>Vrstveného vzorkování
-Náhodný vzorkování je si s ohledem na proměnnou zařazené do kategorií, pokud ukázky získat hodnoty zařazené do kategorií, které se nacházejí v poměr, jako byly v nadřazené naplnění. Jak je uvedeno výše, pokud použijeme stejný příklad předpokládejme, že data obsahují následující pozorování státy: NJ má 100 pozorování, NY má 60 připomínky a WA má 300 pozorování. Pokud chcete zadat počet vrstveného vzorkování bude 0,5, potom ukázka získali by měl mít přibližně 50, 30 a 150 pozorování NJ, USA a WA v uvedeném pořadí.
+Náhodný vzorkování je si s ohledem na proměnnou zařazené do kategorií, pokud ukázky získat hodnoty zařazené do kategorií, které se nacházejí v poměr, jako byly v nadřazené naplnění. Použijeme stejný příklad, jak je uvedeno výše, Předpokládejme, že vaše data má následující pozorování podle stavu: NJ má 100 pozorování, NY má 60 připomínky a WA má 300 pozorování. Pokud chcete zadat počet vrstveného vzorkování bude 0,5, potom ukázka získali by měl mít přibližně 50, 30 a 150 pozorování NJ, USA a WA v uvedeném pořadí.
 
 Zde je příklad dotazu:
 

@@ -15,16 +15,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/11/2018
 ms.author: cynthn
-ms.openlocfilehash: 63a7602deee402bed056937c8465fd87c8256cd8
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: d442d09c8c8ded3aa50faf74e28c8d95ded24a5e
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46962841"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55300196"
 ---
-# <a name="quick-steps-create-and-use-an-ssh-public-private-key-pair-for-linux-vms-in-azure"></a>Rychlé kroky: vytvořit a používat pár veřejného a privátního klíče SSH pro virtuální počítače s Linuxem v Azure
+# <a name="quick-steps-create-and-use-an-ssh-public-private-key-pair-for-linux-vms-in-azure"></a>Rychlé kroky: Vytvořit a používat pár veřejného a privátního klíče SSH pro virtuální počítače s Linuxem v Azure
 
-Pomocí páru klíčů SSH (Secure Shell) můžete v Azure vytvořit virtuální počítače, které k ověřování používají klíče SSH. Není potom potřeba používat k přihlašování hesla. Tento článek ukazuje, jak rychle vygenerovat a použít pár souborů veřejného a privátního klíče SSH pro virtuální počítače s Linuxem. Můžete provést tyto kroky s Azure Cloud Shell, s macOS nebo Linux hostitele, subsystém Windows pro Linux a další nástroje, které podporují OpenSSH. 
+Pomocí páru klíčů (SSH secure shell) můžete vytvořit virtuální počítače (VM) v Azure, která k ověřování používají klíče SSH, takže odpadá potřeba používat k přihlášení hesla. Tento článek ukazuje, jak rychle vygenerovat a použít pár souborů veřejného a privátního klíče SSH pro virtuální počítače s Linuxem. Můžete provést tyto kroky s Azure Cloud Shell, s macOS nebo Linux hostitele, subsystém Windows pro Linux a další nástroje, které podporují OpenSSH. 
 
 > [!NOTE]
 > Virtuální počítače vytvořené pomocí klíčů SSH jsou ve výchozím nastavení nakonfigurované se hesla, který výrazně zvyšuje obtížnost rozluštění útoky hrubou silou. 
@@ -65,7 +65,7 @@ Pokud nejste obeznámeni s formátem veřejný klíč SSH, můžete zobrazit ve�
 cat ~/.ssh/id_rsa.pub
 ```
 
-Typická hodnota veřejného klíče vypadá takto:
+Typická hodnota veřejného klíče bude vypadat jako v tomto příkladu:
 
 ```
 ssh-rsa AAAAB3NzaC1yc2EAABADAQABAAACAQC1/KanayNr+Q7ogR5mKnGpKWRBQU7F3Jjhn7utdf7Z2iUFykaYx+MInSnT3XdnBRS8KhC0IP8ptbngIaNOWd6zM8hB6UrcRTlTpwk/SuGMw1Vb40xlEFphBkVEUgBolOoANIEXriAMvlDMZsgvnMFiQ12tD/u14cxy1WNEMAftey/vX3Fgp2vEq4zHXEliY/sFZLJUJzcRUI0MOfHXAuCjg/qyqqbIuTDFyfg8k0JTtyGFEMQhbXKcuP2yGx1uw0ice62LRzr8w0mszftXyMik1PnshRXbmE2xgINYg5xo/ra3mq2imwtOKJpfdtFoMiKhJmSNHBSkK7vFTeYgg0v2cQ2+vL38lcIFX4Oh+QCzvNF/AXoDVlQtVtSqfQxRVG79Zqio5p12gHFktlfV7reCBvVIhyxc2LlYUkrq4DHzkxNY5c9OGSHXSle9YsO3F1J5ip18f6gPq4xFmo6dVoJodZm9N0YMKCkZ4k1qJDESsJBk2ujDPmQQeMjJX3FnDXYYB182ZCGQzXfzlPDC29cWVgDZEXNHuYrOLmJTmYtLZ4WkdUhLLlt5XsdoKWqlWpbegyYtGZgeZNRtOOdN6ybOPJqmYFd2qRtb4sYPniGJDOGhx4VodXAjT09omhQJpE6wlZbRWDvKC55R2d/CSPHJscEiuudb+1SG2uA/oik/WQ== username@domainname
@@ -88,6 +88,8 @@ ssh azureuser@myvm.westus.cloudapp.azure.com
 ```
 
 Pokud jste při vytváření páru klíčů zadali přístupové heslo, zadejte přístupové heslo vyzvání během procesu přihlášení. Virtuální počítač se přidá do souboru ~/.ssh/known_hosts a nebudete vyzváni k připojení znovu, dokud buď veřejný klíč na změny virtuálního počítače Azure nebo z ~/.ssh/known_hosts neodebere název serveru.
+
+Pokud virtuální počítač používá zásady přístupu v čase, budete muset požádat o přístup před připojením k virtuálnímu počítači. Další informace o zásadách just-in-time najdete v tématu [spravovat přístup k virtuálním počítačům podle potřeby pomocí v zásadách čas](../../security-center/security-center-just-in-time.md).
 
 ## <a name="next-steps"></a>Další postup
 

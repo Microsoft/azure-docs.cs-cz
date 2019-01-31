@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 06/19/2018
 ms.author: anuragm
 ms.custom: ''
-ms.openlocfilehash: 89344b6e06dbc62fe56c0aebc30a049aebf5c097
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: 0d910269a16223c610e4606cdd6660cc5d43947f
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53339514"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55296117"
 ---
 # <a name="troubleshoot-back-up-sql-server-on-azure"></a>Řešení potíží s zálohování SQL serveru v Azure
 
@@ -37,6 +37,15 @@ Konfigurace ochrany pro databáze serveru SQL Server na virtuálním počítači
 ## <a name="troubleshooting-errors"></a>Řešení potíží s chybami
 
 Použijte informace v následujících tabulkách k řešení problémů a chyb zjištěných při ochraně SQL serveru do Azure.
+
+## <a name="alerts"></a>Výstrahy
+
+### <a name="backup-type-unsupported"></a>Nepodporovaný typ zálohování
+
+| Severity | Popis | Možné příčiny | Doporučená akce |
+|---|---|---|---|
+| Upozornění | Aktuální nastavení pro tuto databázi nepodporují určitý druh typy v přidružené zásady zálohování. | <li>**Master DB**: Pouze úplné zálohování lze provést v hlavní databázi. ani **rozdílové** zálohování ani transakce **protokoly** zálohování jsou možné. </li> <li>Všechny databáze v **jednoduchý model obnovení** neumožňuje transakce **protokoly** zálohování, které mají být provedeny.</li> | Změňte nastavení databáze tak, aby se podporují všechny typy zálohování v zásadách. Můžete také změňte aktuální zásady zahrnout pouze podporované typy zálohování. V opačném případě se přeskočí nepodporované typy zálohování během naplánovaného zálohování nebo úloha zálohování se nezdaří zálohování ad hoc.
+
 
 ## <a name="backup-failures"></a>Selhání zálohování
 

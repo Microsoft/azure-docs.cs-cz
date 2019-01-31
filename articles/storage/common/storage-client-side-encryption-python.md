@@ -8,13 +8,13 @@ ms.devlang: python
 ms.topic: article
 ms.date: 05/11/2017
 ms.author: lakasa
-ms.component: common
-ms.openlocfilehash: 6a6508393fe935b456cde815d35f2fd4447cd2d4
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.subservice: common
+ms.openlocfilehash: dfff159d7e0204a752935458a2b4845499c0d652
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39528118"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55453395"
 ---
 # <a name="client-side-encryption-with-python-for-microsoft-azure-storage"></a>Šifrování na straně klienta s využitím Pythonu pro službu Microsoft Azure Storage
 [!INCLUDE [storage-selector-client-side-encryption-include](../../../includes/storage-selector-client-side-encryption-include.md)]
@@ -125,12 +125,12 @@ Po vytvoření objektu služby storage (tj. blockblobservice), uživatel může 
 
 Klíče KEK musí implementovat následující metody, které úspěšně šifrování dat:
 
-* wrap_key(cek): zabaluje zadaný CEK (v bajtech), pomocí algoritmu podle volby uživatele. Vrátí zabaleného klíče.
-* get_key_wrap_algorithm(): vrátí algoritmus, který slouží k zabalení klíče.
-* get_kid(): vrátí řetězec id klíče pro tento KEK.
+* wrap_key(cek): Zabalí zadanou CEK (v bajtech), pomocí algoritmu podle volby uživatele. Vrátí zabaleného klíče.
+* get_key_wrap_algorithm(): Vrátí algoritmus, který slouží k zabalení klíče.
+* get_kid(): Vrátí řetězec id klíče pro tento KEK.
   Klíče KEK musí implementovat následující metody, které úspěšně dešifrovat data:
-* unwrap_key (cek, algoritmus): vrátí nezabalené formu zadané CEK pomocí algoritmu zadaný řetězec.
-* get_kid(): vrátí id klíče řetězec pro tento KEK.
+* unwrap_key (cek, algoritmus): Vrátí nezabalené formu zadané CEK pomocí algoritmu zadaný řetězec.
+* get_kid(): Vrátí id klíče řetězec pro tento KEK.
 
 Překladač klíčů alespoň musí implementovat metodu, která zadané id klíče, vrátí odpovídající klíče KEK implementující rozhraní výše. Jenom tato metoda slouží k přiřazení vlastnosti key_resolver_function na objekt služby.
 

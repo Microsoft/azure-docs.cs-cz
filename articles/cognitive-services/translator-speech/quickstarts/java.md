@@ -1,23 +1,23 @@
 ---
-title: 'Rychlý start: Rozhraní Translator Speech API v jazyce Java'
+title: 'Rychlý start: Translator Speech API Java'
 titlesuffix: Azure Cognitive Services
 description: Získejte informace a ukázky kódu, které vám pomůžou rychle začít používat rozhraní Translator Speech API.
 services: cognitive-services
 author: v-jaswel
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: translator-speech
+ms.subservice: translator-speech
 ms.topic: quickstart
 ms.date: 3/5/2018
 ms.author: v-jaswel
-ms.openlocfilehash: ebff07a68975f3629b57df4cfc8a5bbcf564ce27
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
-ms.translationtype: HT
+ms.openlocfilehash: 1fb6eeb30b8ba348ce90916955bd8ffbb2cbb7c5
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50412920"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55459160"
 ---
-# <a name="quickstart-translator-speech-api-with-java"></a>Rychlý start: Rozhraní Translator Speech API v jazyce Java 
+# <a name="quickstart-translator-speech-api-with-java"></a>Rychlý start: Translator Speech API s využitím Javy 
 <a name="HOLTop"></a>
 
 [!INCLUDE [Deprecation note](../../../../includes/cognitive-services-translator-speech-deprecation-note.md)]
@@ -272,12 +272,12 @@ public class Speak {
 
 [Zpět na začátek](#HOLTop)
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 > [!div class="nextstepaction"]
 > [Kurz ke službě Translator Speech](../tutorial-translator-speech-csharp.md)
 
-## <a name="see-also"></a>Viz také 
+## <a name="see-also"></a>Další informace najdete v tématech 
 
 [Přehled služby Translator Speech](../overview.md)
 [Referenční materiály k rozhraní API](https://docs.microsoft.com/azure/cognitive-services/translator-speech/reference)

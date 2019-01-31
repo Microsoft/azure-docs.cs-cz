@@ -4,162 +4,164 @@ description: Kroky k nasazení clusteru vFXT Avere v Azure
 author: ekpgh
 ms.service: avere-vfxt
 ms.topic: conceptual
-ms.date: 10/31/2018
+ms.date: 01/29/2019
 ms.author: v-erkell
-ms.openlocfilehash: 8e265f2bed480f7b40476e09ab8f442aedcc9dd4
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: da329b5c50fe7c39d9773743b40c2f990e298963
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52999454"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55296371"
 ---
 # <a name="deploy-the-vfxt-cluster"></a>Nasazení clusteru vFXT
 
-Nejjednodušší způsob, jak vytvořit vFXT cluster v Azure je pro použití kontroléru clusteru. Kontroler clusteru je virtuální počítač, který obsahuje požadované skripty, šablony a infrastruktury softwaru pro vytváření a správu clusteru vFXT.
+Tento postup vás provede pomocí Průvodce nasazení k dispozici z webu Azure Marketplace. Průvodce automaticky nasadí do clusteru s použitím šablony Azure Resource Manageru. Po zadání parametrů ve formuláři a klikněte na tlačítko **vytvořit**, Azure automaticky provede tyto kroky: 
 
-Nasazení nového clusteru vFXT zahrnuje tyto kroky:
-
-1. [Vytvoření clusteru řadiče](#create-the-cluster-controller-vm).
-1. Pokud používáte úložiště objektů Blob v Azure, [vytvořit koncový bod úložiště](#create-a-storage-endpoint-if-using-azure-blob) ve vaší virtuální síti.
-1. [Připojení k řadiči clusteru](#access-the-controller). Zbývající kroky se provádějí z kontroleru clusteru virtuálních počítačů. 
-1. [Vytvoření role přístupu](#create-the-cluster-node-access-role) pro uzly clusteru. Je k dispozici prototyp.
-1. [Upravit skript pro vytvoření clusteru](#edit-the-deployment-script) typu vFXT clusteru, kterou chcete vytvořit.
-1. [Spuštění skriptu pro vytváření clusteru](#run-the-script).
-
-Další informace o plánování a kroky nasazení clusteru, najdete v článku [plánování vašeho systému vFXT Avere](avere-vfxt-deploy-plan.md) a [Přehled nasazení](avere-vfxt-deploy-overview.md). 
+* Vytvoření kontroleru clusteru, což je základní virtuální počítač, který obsahuje software potřebný k nasazení a správě clusteru.
+* Nastavte skupinu prostředků a virtuální síťové infrastruktury, včetně vytváření nových elementů v případě potřeby.
+* Vytvořit virtuální počítače uzlu clusteru a lze nakonfigurovat jako Avere cluster.
+* Pokud o to požádá, vytvořit nový kontejner objektů Blob v Azure a nakonfiguruje ho jako filtr core clusteru.
 
 Po provedení kroků v tomto dokumentu, budete mít virtuální síť, podsíť, kontroleru a vFXT clusteru, jak je znázorněno v následujícím diagramu:
 
 ![Diagram znázorňující virtuální síť obsahuje volitelné blob storage a podsítě obsahující tři seskupené virtuálních počítačů označené jako clusterové uzly/vFXT vFXT a jeden kontroler s popiskem clusteru virtuálních počítačů](media/avere-vfxt-deployment.png)
 
-Než začnete, ujistěte se, že jste vyřešili těchto nezbytných podmínkách:  
+Po vytvoření clusteru, měli byste [vytvořit koncový bod úložiště](#create-a-storage-endpoint-if-using-azure-blob) ve službě virtual network při použití služby Blob storage. 
+
+Před použitím šablonu pro vytvoření, ujistěte se, že se že odstranily tyto požadavky:  
 
 1. [Nové předplatné](avere-vfxt-prereqs.md#create-a-new-subscription)
 1. [Oprávnění vlastníka předplatného](avere-vfxt-prereqs.md#configure-subscription-owner-permissions)
 1. [Kvóta pro vFXT clusteru](avere-vfxt-prereqs.md#quota-for-the-vfxt-cluster)
+1. [Vlastní přístup role](avere-vfxt-prereqs.md#create-access-roles) -musí vytvořit roli řízení přístupu na základě role přiřadit uzlům clusteru. Máte možnost také vytvářet vlastní přístup role pro správce clusteru, ale většina uživatelů bude trvat výchozí role vlastníka, který dává oprávnění kontroleru odpovídající vlastníkovi skupiny prostředků. Čtení [předdefinované role pro prostředky Azure](../role-based-access-control/built-in-roles.md#owner) další podrobnosti.
 
-Volitelně můžete vytvořit role uzlu clusteru [před](avere-vfxt-pre-role.md) vytváření adaptéru clusteru, ale je snazší to udělat později.
+Další informace o plánování a kroky nasazení clusteru, najdete v článku [plánování vašeho systému vFXT Avere](avere-vfxt-deploy-plan.md) a [Přehled nasazení](avere-vfxt-deploy-overview.md).
 
-## <a name="create-the-cluster-controller-vm"></a>Vytvoření virtuálního počítače řadiče clusteru
+## <a name="create-the-avere-vfxt-for-azure"></a>Vytvoření Avere vFXT pro Azure
 
-Prvním krokem je vytvoření virtuálního počítače, které vytvoříte a nakonfigurujete vFXT uzly clusteru. 
+Hledání Avere a výběrem "Avere vFXT pro nasazení Azure" přístup k vytvoření šablony na webu Azure Portal. <!-- xxx update if that name changes xxx --> 
 
-Kontroler clusteru je virtuální počítač s Linuxem se Avere vFXT clusteru vytváření softwaru a skripty a předinstalovaným. Nemusí operací zpracování napájení nebo úložný prostor, abyste si mohli vybrat cenově dostupné možnosti. Tento virtuální počítač se použije čas od času v celém životním vFXT clusteru.
+<!-- **[XXX need production image of template deploy in search and/or entry page of template deploy XXX]** -->
 
-Existují dva způsoby vytvoření virtuálního počítače řadiče clusteru. [Šablony Azure Resource Manageru](#create-controller---arm-template) je k dispozici [níže](#create-controller---arm-template) ke zjednodušení procesu, ale můžete vytvořit také kontroler, z [image na Azure Marketplace](#create-controller---azure-marketplace-image). 
+Klikněte na tlačítko **vytvořit** začít. 
 
-Můžete vytvořit novou skupinu prostředků jako součást vytváření kontroleru.
+![Azure marketplace s první stránka zobrazující šablony nasazení](media/avere-vfxt-deploy-first.png)
+
+Šablona je rozdělen na čtyři kroky – dva shromáždění informací stránky a ověřování a potvrzení kroky. 
+
+* Stránce se zaměřuje na nastavení pro kontroler clusteru virtuálních počítačů. 
+* Stránka dvě shromažďuje parametry pro vytvoření clusteru a přidružené prostředky, jako jsou podsítě a úložiště. 
+* Stránka tři obsahuje souhrn nastavení a ověří konfiguraci. 
+* Čtvrtá stránka vysvětluje softwaru podmínky a ujednání a umožňuje spuštění v procesu vytváření clusteru. 
+
+## <a name="page-one-parameters---cluster-controller-information"></a>Stránka parametrů - informace o řadičích pro cluster
+
+První stránka šablony nasazení shromažďuje informace o kontroleru clusteru. 
+
+![První stránka šablony nasazení](media/avere-vfxt-deploy-1.png)
+
+Zadejte následující informace:
+
+* **Název kontroleru clusteru** – nastavte název kontroleru clusteru virtuálních počítačů.
+
+* **Uživatelské jméno řadič** – zadejte uživatelské jméno kořenový řadič clusteru virtuálních počítačů. 
+
+* **Typ ověřování** – zvolte buď heslo nebo ověření veřejného klíče SSH pro připojení ke kontroleru. Metodu veřejného klíče SSH se doporučuje; Přečtěte si [jak vytvořit a používat klíče SSH](https://docs.microsoft.com/azure/virtual-machines/linux/ssh-from-windows) Pokud potřebujete pomoc.
+
+* **Heslo** nebo **veřejný klíč SSH** – v závislosti na typ ověřování, který jste vybrali, je nutné zadat veřejný klíč RSA nebo heslo v další pole. Tento přihlašovací údaj se používá s dříve zadané uživatelské jméno.
+
+* **Role ID pro vytvoření clusteru Avere** – toto pole použít k určení role řízení přístupu pro správce clusteru. Výchozí hodnota je předdefinovaná role [vlastníka](../role-based-access-control/built-in-roles.md#owner). Oprávnění vlastníka pro kontroler clusteru jsou omezeny na skupinu prostředků clusteru. 
+
+  Je nutné použít globálně jedinečný identifikátor, který odpovídá roli. Výchozí hodnota (Vlastník) identifikátor GUID je 8e3af657 a8ff-443c-a75c-2fe8c4bcb635. K vyhledání identifikátoru GUID pro vlastní roli, použijte tento příkaz: 
+
+  ```azurecli
+  az role definition list --query '[*].{roleName:roleName, name:name}' -o table --name 'YOUR ROLE NAME'
+  ```
+
+* **Předplatné** – vyberte předplatné pro Avere vFXT. 
+
+* **Skupina prostředků** – vyberte skupinu prostředků clusteru vFXT Avere, nebo klikněte na tlačítko Vytvořit novou. "a zadejte nový název skupiny prostředků. 
+
+* **Umístění** – vyberte umístění pro váš cluster a prostředky Azure.
+
+Klikněte na tlačítko **OK** po dokončení. 
+
+> [!NOTE]
+> Pokud chcete řadič clusteru mít veřejnou IP adresu, vytvořte novou virtuální síť pro cluster místo výběru existující síť. Toto nastavení je na stránce dvě.
+
+## <a name="page-two-parameters---vfxt-cluster-information"></a>Informace o stránce dva parametry – vFXT clusteru
+
+Na druhé stránce šablonu nasazení umožňuje nastavit velikost clusteru, typu uzlu, velikost mezipaměti a parametry úložiště, kromě jiných nastavení. 
+
+![Druhá stránka šablony nasazení](media/avere-vfxt-deploy-2.png)
+
+* **Počet uzlů clusteru vFXT Avere** – zvolte počet uzlů v clusteru. Tři uzly je minimální a maximální hodnota je 12. 
+
+* **Heslo pro správu clusteru** – vytvořit heslo pro správu clusteru. Toto heslo se použije k uživatelskému jménu ```admin``` pro přihlášení ke clusteru ovládací panely pro monitorování clusteru a ke konfiguraci nastavení.
+
+* **Role clusteru operations Avere** – zadejte název role řízení přístupu pro uzly clusteru. Toto je vlastní roli, který byl vytvořen v kroku požadavků. 
+
+  V příkladu je popsáno v [vytvořit role clusteru uzel přístupu](avere-vfxt-prereqs.md#create-the-cluster-node-access-role) uloží soubor jako ```avere-operator.json``` a odpovídající název role je ```avere-operator```.
+
+* **Název clusteru vFXT Avere** – zadejte jedinečný název clusteru. 
+
+* **Velikost** -zadat typ virtuálního počítače pro použití při vytváření uzly clusteru. 
+
+* **Velikost na jeden uzel mezipaměti** -clusteru mezipaměti se pak rozdělí mezi uzly clusteru, takže celková velikost mezipaměti ve vašem clusteru vFXT Avere bude velikost mezipaměti podle počtu uzlů vynásobenému z počtu uzlů. 
+
+  Doporučená konfigurace je používat 1 TB na jeden uzel, pokud pomocí Standard_D16s_v3 uzly clusteru a použít 4 TB na jeden uzel, pokud pomocí Standard_E32s_v3 uzlů.
+
+* **Virtuální síť** – vyberte existující virtuální síť k umístění clusteru nebo definovat novou virtuální síť vytvořit. 
+
+  > [!NOTE]
+  > Pokud vytvoříte novou virtuální síť, clusteru kontrolér bude mít veřejnou IP adresu, aby měli přístup ke novou privátní síť. Pokud zvolíte existující virtuální síť, kontroler cluster je nakonfigurovaný bez veřejné IP adresy. 
+  > 
+  > Veřejně viditelné IP adresu na adaptéru clusteru nabízí jednodušší přístup ke clusteru vFXT, ale vytvoří malý bezpečnostní riziko. 
+  >  * Veřejné IP adresy na adaptéru clusteru můžete použít jako hostitele jump pro připojení ke clusteru vFXT Avere z mimo privátní podsítě.
+  >  * Pokud není nastavení veřejné IP adresy na řadiči, musíte použít jiný hostitel jump, připojení k síti VPN nebo ExpressRoute pro přístup ke clusteru. Například vytvořte řadič ve virtuální síti, který už má nakonfigurované připojení k síti VPN.
+  >  * Pokud vytvoříte řadič s použitím veřejné IP adresy, by měl ochranu virtuálního počítače řadiče se skupinou zabezpečení sítě. Ve výchozím nastavení vFXT Avere pro nasazení v Azure vytvoří skupinu zabezpečení sítě a omezuje příchozí přístup jenom port 22 pro řadiče s veřejnými IP adresami. Systém jde dál chránit zamčením dolů přístup ke zdrojové váš rozsah IP adres – to znamená, povolit připojení pouze z počítačů, které máte v úmyslu používat pro přístup ke clusteru.
+
+* **Podsíť** – zvolte podsíť z existující virtuální sítě, nebo vytvořte novou. 
+
+* **Používání úložiště blob** – zvolte, jestli chcete vytvořit nový kontejner objektů Blob v Azure a nakonfiguruje ho jako back endové úložiště pro nový cluster vFXT Avere. Pokud budete chtít vytvořit nový kontejner, musíte zadat účet úložiště pro tento kontejner. Pokud se rozhodnete vytvořit nový kontejner objektů blob, je nutné připojit úložiště po vytvoření clusteru (čtení [konfigurace úložiště](avere-vfxt-add-storage.md) pokyny). Nastavte pole na **false** Pokud nechcete vytvořit nový kontejner.
+
+* **Účet úložiště** - li vytvořit nový kontejner objektů Blob v Azure, zadejte název účtu úložiště. Účet úložiště musí být standard pro obecné účely V2 účtu nakonfigurovanému pro místně redundantní úložiště a horká vrstva přístupu. [Konfigurace úložiště](avere-vfxt-add-storage.md#azure-storage-cloud-core-filer) článku obsahuje další podrobnosti o požadavcích na účet úložiště.
+
+## <a name="validation-and-purchase"></a>Ověření a nákup
+
+Stránka tři poskytuje souhrnné informace o konfiguraci a ověří parametry. Po ověření proběhne úspěšně, klikněte na tlačítko **OK** tlačítka budete pokračovat. 
+
+![Třetí stránka šablony nasazení – ověření](media/avere-vfxt-deploy-3.png)
+
+Na stránce čtyři, klikněte na tlačítko **vytvořit** tlačítko a přijměte podmínky a vytvořit vFXT Avere pro Azure cluster. 
+
+![Čtvrtá stránka šablony nasazení – podmínky a ujednání, vytvoříte tlačítko](media/avere-vfxt-deploy-4.png)
+
+Nasazení clusteru trvá 15 – 20 minut.
+
+## <a name="gather-template-output"></a>Shromážděte výstup šablony
+
+Po dokončení vytváření clusteru šablony vFXT Avere vypíše některé důležité informace o novém clusteru. 
 
 > [!TIP]
->
-> Rozhodněte, jestli se mají použít veřejnou IP adresu na adaptéru clusteru. Veřejná IP adresa usnadňuje přístup k vFXT clusteru, ale vytvoří malý bezpečnostní riziko.
->
->  * Veřejné IP adresy na adaptéru clusteru můžete použít jako hostitele jump pro připojení ke clusteru vFXT Avere z mimo privátní podsítě.
->  * Pokud není nastavení veřejné IP adresy na řadiči, musíte použít jiný hostitel jump, připojení k síti VPN nebo ExpressRoute pro přístup ke clusteru. Například vytvořte řadič ve virtuální síti, který má připojení k síti VPN nakonfigurovaná.
->  * Pokud vytvoříte řadič s použitím veřejné IP adresy, by měl ochranu virtuálního počítače řadiče se skupinou zabezpečení sítě. Povolte přístup jenom přes port 22 pro poskytnutí přístupu k Internetu.
+> Nezapomeňte si zkopírovat IP adresa pro správu z výstupu šablony. Budete potřebovat tato adresa pro správu clusteru.
 
-### <a name="create-controller---resource-manager-template"></a>Vytvoření kontroleru – šablona Resource Manageru
+Jak najít tyto informace, podle následujícího postupu:
 
-Můžete vytvořit řadič uzel clusteru z portálu, klikněte na tlačítko "Nasazení do Azure" níže. Toto nasazení vytvoří virtuální počítač, který bude vytvářet a spravovat Avere vFXT cluster šablony.
+1. Přejděte do skupiny prostředků pro váš cluster kontroleru.
 
-[![pro vytvoření kontroleru](media/deploytoazure.png)](https://ms.portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2FAvere%2Fmaster%2Fsrc%2Fvfxt%2Fazuredeploy.json)
+1. Na levé straně a klikněte na tlačítko **nasazení**a potom **šablona microsoft avere.vfxt**.
 
-Zadejte následující informace.
+   ![Skupina prostředků s nasazením na levé straně a microsoft-avere.vfxt – šablona zobrazuje v tabulce pod názvem nasazení stránka portálu](media/avere-vfxt-outputs-deployments.png)
 
-V **BASIC** části:  
+1. Na levé straně a klikněte na tlačítko **výstupy**. Zkopírujte hodnoty v každém z těchto polí. 
 
-* **Předplatné** pro cluster
-* **Skupina prostředků** pro cluster 
-* **Umístění** 
+   ![Vypíše hodnoty SSHSTRING RESOURCE_GROUP, umístění, NETWORK_RESOURCE_GROUP, sítě, PODSÍTĚ, SUBNET_ID, VSERVER_IPs a MGMT_IP zobrazení stránky v polích napravo od popisků](media/avere-vfxt-outputs-values.png)
 
-V **nastavení** části:
-
-* Jestli chcete vytvořit novou virtuální síť
-
-  * Pokud vytvoříte novou virtuální síť, Správce clusteru se přiřadí veřejnou IP adresu tak, že jste k němu přistoupit. Skupina zabezpečení sítě se také vytvoří pro tuto virtuální síť, která omezuje příchozí provoz na jediný port 22.
-  * Pokud chcete použít ExpressRoute nebo sítě VPN pro připojení k řadiči clusteru, nastavte tuto hodnotu na `false` a zadejte existující virtuální síť v zbývající pole. Kontroler cluster použije tuto virtuální síť pro síťovou komunikaci. 
-
-* Skupina prostředků virtuální sítě, název a název podsítě – zadejte názvy stávajících prostředků (Pokud používáte stávající virtuální síť) nebo zadejte nové názvy, pokud vytváříte novou virtuální síť
-* **Název kontroleru** – nastavte název virtuálního počítače řadiče
-* Uživatelské jméno správce řadiče – výchozí hodnota je `azureuser`
-* Klíč SSH - vložit veřejný klíč pro přidružení k uživatelské jméno správce. Čtení [jak vytvořit a používat klíče SSH](https://docs.microsoft.com/azure/virtual-machines/linux/ssh-from-windows) Pokud potřebujete pomoc.
-
-V části **podmínky a ujednání**: 
-
-* Přečtěte si podmínky služby a klikněte na zaškrtávací políčko, přijměte je. 
-
-  > [!NOTE] 
-  > Pokud nejste vlastníkem předplatného, mít vlastníka, přijměte podmínky, můžete pomocí následujících kontrolu požadovaných součástí kroků [přijměte podmínky předem softwaru](avere-vfxt-prereqs.md#accept-software-terms-in-advance). 
-
-
-Klikněte na tlačítko **nákupní** po dokončení. Po pěti nebo šesti minut bude uzel vaše řadiče do provozu.
-
-Na stránce výstupy shromažďovat informace o řadičích, které potřebujete k vytvoření clusteru. Čtení [informace potřebné k vytvoření clusteru](#information-needed-to-create-the-cluster) Další informace.
-
-### <a name="create-controller---azure-marketplace-image"></a>Vytvoření řadiče - image na Azure Marketplace
-
-Najít šablonu adaptéru tak, že na webu Azure Marketplace pro název ``Avere``. Vyberte **Avere vFXT pro kontroler Azure** šablony.
-
-Pokud jste tak již neučinili, přijměte podmínky a povolit programový přístup pro Marketplace image kliknutím "chcete nasadit prostřednictvím kódu programu?" odkaz pod **vytvořit** tlačítko.
-
-![Snímek obrazovky s odkazem programový přístup, který je pod tlačítko Vytvořit](media/avere-vfxt-deploy-programmatically.png)
-
-Klikněte na tlačítko **povolit** tlačítko a uložte nastavení.
-
-![Snímek obrazovky znázorňující kliknutí myší povolit programový přístup](media/avere-vfxt-enable-program.png)
-
-Vraťte se do hlavní stránky **Avere vFXT pro kontroler Azure** šablonu a klikněte na tlačítko **vytvořit**. 
-
-V prvním panelu zadejte nebo potvrďte tyto základní možnosti:
-
-* **Předplatné**
-* **Skupina prostředků** (Pokud chcete vytvořit novou skupinu, zadejte nový název.)
-* **Název virtuálního počítače** – název kontroleru
-* **Oblast**
-* **Možnosti dostupnosti** – není potřeba redundance
-* **Obrázek** -image uzlu Avere vFXT kontroleru
-* **Velikost** – ponechte výchozí nastavení nebo zvolte jiný typ levné
-* **Účet správce** – nastavení přihlášení ke clusteru kontroleru: 
-  * Vyberte uživatelské jméno/heslo nebo veřejný klíč SSH (doporučeno).
-  
-    > [!TIP] 
-    > Klíč SSH je bezpečnější. Čtení [jak vytvořit a používat klíče SSH](https://docs.microsoft.com/azure/virtual-machines/linux/ssh-from-windows) Pokud potřebujete pomoc. 
-  * Zadejte uživatelské jméno 
-  * Vložte klíč SSH, nebo zadejte a potvrďte heslo
-* **Příchozí pravidla portů** – Pokud se používá veřejnou IP adresu, otevřený port 22 (SSH)
-
-Klikněte na tlačítko **Další** nastavit možnosti disku:
-
-* **Typ disku operačního systému** – stačí na výchozí hodnotu pevný disk
-* **Použití nespravovaných disků** – není potřeba
-* **Datové disky** – nepoužívat
-
-Klikněte na tlačítko **Další** pro síťové možnosti:
-
-* **Virtuální síť** – vyberte virtuální síť, ke kontroleru nebo zadejte název pro vytvoření nové sítě vnet. Pokud nechcete použít veřejnou IP adresu na kontroleru, vezměte v úvahu umístění v síti vnet, která má ExpressRoute nebo jiné metody přístupu už nastavili.
-* **Podsíť** -vybrat podsíť v rámci virtuální sítě (volitelné). Pokud vytvoříte novou virtuální síť, můžete vytvořit novou podsíť ve stejnou dobu.
-* **Veřejná IP adresa** – Pokud chcete použít veřejnou IP adresu, můžete zadat sem. 
-* **Skupina zabezpečení sítě** – ponechte výchozí nastavení (**základní**) 
-* **Veřejné příchozí porty** – Pokud chcete povolit přístup z provoz SSH pomocí veřejné IP adresy, použití tohoto ovládacího prvku. 
-* **Akcelerovanými síťovými službami** není k dispozici pro tento virtuální počítač.
-
-Klikněte na tlačítko **Další** nastavit možnosti správy:
-
-* **Diagnostika spouštění** – změňte na **vypnuto**
-* **Operační systém hosta diagnostiky** – ponechte zakázáno
-* **Účet úložiště diagnostiky** – volitelně vyberte nebo zadejte nový účet pro uložení diagnostických informací.
-* **Identita spravované služby** – změňte tuto možnost k **na**, vytváří instančnímu objektu služby Azure AD pro správce clusteru.
-* **Automatické vypnutí** -vynechat 
-
-V tomto okamžiku můžete kliknout na **revize + vytvořit** Pokud nechcete používat instanci značky. V opačném případě klikněte na tlačítko **Další** dvakrát přejděte **hosta config** stránce a na stránku značek. Po dokončení existuje, klikněte na tlačítko **revize + vytvořit**. 
-
-Jakmile se ověří váš výběr, klikněte na tlačítko **vytvořit** tlačítko.  
-
-Vytvoření trvá pět nebo šest minut.
 
 ## <a name="create-a-storage-endpoint-if-using-azure-blob"></a>Vytvoření koncového bodu úložiště (Pokud se používá objektů Blob v Azure)
 
-Pokud používáte úložiště objektů Blob v Azure pro váš back endovým datům úložiště, měli byste vytvořit koncový bod služby úložiště ve službě virtual network. To [koncový bod služby](https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoints-overview) udržuje objektů Blob v Azure provoz místní namísto směrování přes internet.
+Pokud používáte úložiště objektů Blob v Azure pro váš back endovým datům úložiště, měli byste vytvořit koncový bod služby úložiště ve službě virtual network. To [koncový bod služby](../virtual-network/virtual-network-service-endpoints-overview.md) udržuje objektů Blob v Azure provoz místní namísto směrování přes internet.
 
 1. Z portálu, klikněte na tlačítko **virtuální sítě** na levé straně.
 1. Vyberte virtuální síť pro kontrolér. 
@@ -170,151 +172,6 @@ Pokud používáte úložiště objektů Blob v Azure pro váš back endovým da
 
   ![Azure portal – snímek obrazovky s poznámkami postup vytvoření koncového bodu služby](media/avere-vfxt-service-endpoint.png)
 
-## <a name="information-needed-to-create-the-cluster"></a>Informace potřebné k vytvoření clusteru
-
-Po vytvoření clusteru kontroleru, ujistěte se, že máte informace, které potřebujete pro další kroky. 
-
-Informace potřebné pro připojení ke kontroleru: 
-
-* Kontroler uživatelské jméno a klíč SSH (nebo heslo)
-* IP adresa adaptéru nebo jiné metody pro připojení k řadiči virtuálního počítače
-
-Informace potřebné pro cluster: 
-
-* Název skupiny prostředků
-* Lokalita Azure 
-* Název virtuální sítě
-* Název podsítě
-* Název role uzlu clusteru – tento název je nastavena, když vytvoříte roli, je popsáno [níže](#create-the-cluster-node-access-role)
-* Název účtu úložiště při vytváření kontejneru objektů Blob
-
-Pokud uzel řadiče vytvoříte pomocí šablony Resource Manageru, můžete získat informace z [výstup šablony](#find-template-output). 
-
-Pokud jste použili k vytvoření kontroleru image Azure Marketplace, většina z těchto položek můžete zadat přímo. 
-
-Najdete všechny chybějící položky tak, že přejdete na stránku informace virtuálního počítače řadiče. Klikněte například na **všechny prostředky** a vyhledejte názvu kontroleru a pak klikněte na název kontroleru zobrazíte její podrobnosti.
-
-### <a name="find-template-output"></a>Najít výstup šablony
-
-Jak najít tyto informace ze Správce prostředků výstup šablony, postupujte takto:
-
-1. Přejděte do skupiny prostředků pro váš cluster kontroleru.
-
-1. Na levé straně a klikněte na tlačítko **nasazení**a potom **Microsoft.Template**.
-
-   ![Portálu stránce skupiny prostředků s nasazením na levé straně a Microsoft.Template zobrazující v tabulce v části název nasazení](media/avere-vfxt-deployment-template.png)
-
-1. Na levé straně a klikněte na tlačítko **výstupy**. Zkopírujte hodnoty v každém z těchto polí. 
-
-   ![výstupy stránku SSHSTRING, RESOURCE_GROUP, umístění, síť, podsíť a SUBNET_ID zobrazené v polích napravo od popisků](media/avere-vfxt-template-outputs.png)
-
-## <a name="access-the-controller"></a>Přístup ke kontroleru
-
-Proveďte zbývající kroky nasazení, budete muset připojit ke kontroleru clusteru.
-
-1. Metoda pro připojení k řadiči clusteru závisí na nastavení.
-
-   * Nastavíte-li kontroler má veřejnou IP adresu, SSH na IP adresu kontroleru jako uživatelské jméno správce (například ``ssh azureuser@40.117.136.91``).
-   * Pokud kontroler nemá veřejnou IP adresu, používat síť VPN nebo [ExpressRoute](https://docs.microsoft.com/azure/expressroute/) připojení k virtuální síti.
-
-1. Po přihlášení k řadiči, ověřit spuštěním `az login`. Zkopírování ověřovacího kódu v prostředí a potom pomocí webového prohlížeče k načtení [ https://microsoft.com/devicelogin ](https://microsoft.com/devicelogin) a proveďte ověření pomocí systému společnosti Microsoft. Vraťte se do okna pro potvrzení.
-
-   ![Výstup příkazového řádku příkazu "AZ login" zobrazením prohlížeče odkaz a ověřování kódu](media/avere-vfxt-azlogin.png)
-
-1. Přidáte předplatné spuštěním tohoto příkazu pomocí ID předplatného:  ```az account set --subscription YOUR_SUBSCRIPTION_ID```
-
-## <a name="create-the-cluster-node-access-role"></a>Umožňuje vytvořit roli přístup k uzlu clusteru
-
-> [!NOTE] 
-> * Pokud si nejste vlastník předplatného a dosud nebyla vytvořena role, jste vlastníkem předplatného, postupujte podle těchto kroků nebo použijte postup uvedený v [vytvořit přístup role Avere vFXT clusteru runtime bez kontroleru](avere-vfxt-pre-role.md).
-> 
-> * Interní uživatele Microsoftu by měl použít existující roli s názvem "Operátor modulu Runtime clusteru Avere" namísto pokusu o k jejímu vytvoření. 
-
-[Řízení přístupu na základě rolí](https://docs.microsoft.com/azure/role-based-access-control/) (RBAC) poskytuje vFXT uzly clusteru oprávnění k provedení nezbytných úloh.  
-
-Jako součást normální vFXT operace clusteru jednotlivé vFXT uzly se muset zabývat záležitostmi, jako je čtení vlastností prostředků Azure, spravovat úložiště a řídit, ostatní uzly nastavení síťového rozhraní. 
-
-1. V řadiči, otevřete ``/avere-cluster.json`` soubor v editoru.
-
-   ![Konzola znázorňující příkaz seznamu a potom "vi /avere-cluster.json"](media/avere-vfxt-open-role.png)
-
-1. Upravte soubor uvést ID předplatného a odstranit řádek nad ním. Uložte soubor jako ``avere-cluster.json``.
-
-   ![Konzola znázorňující ID předplatného a "Odebrat tento řádek" vybraných pro odstranění textový editor](media/avere-vfxt-edit-role.png)
-
-1. Použijte tento příkaz pro vytvoření role:  
-
-   ```bash
-   az role definition create --role-definition /avere-cluster.json
-   ```
-
-Název role předá do clusteru vytváření skriptu v dalším kroku. 
-
-## <a name="create-nodes-and-configure-the-cluster"></a>Vytvoření uzlů a konfigurace clusteru
-
-K vytvoření clusteru vFXT Avere, jednu z ukázkových skriptech na kontroleru a spustíme ji. Ukázky skriptů jsou umístěné v kořenovém adresáři (`/`) na řadiči clusteru.
-
-* Pokud chcete vytvořit kontejner objektů Blob, který chcete použít jako Avere vFXT úložiště back-end systém, použijte ``create-cloudbacked-cluster`` skriptu.
-
-* Pokud přidáte úložiště později, použijte ``create-minimal-cluster`` skriptu.
-
-> [!TIP]
-> Prototyp skriptů pro přidávání uzlů a zničení vFXT clusteru jsou také zahrnuté v `/` tohoto kontroleru clusteru virtuálních počítačů.
-
-### <a name="edit-the-deployment-script"></a>Upravit skript pro nasazení
-
-Ukázkový skript otevře v editoru. Můžete chtít uložit upravený skript s jiným názvem, aby nedošlo k přepsání původní ukázce.
-
-Zadejte hodnoty pro tyto proměnné skriptu.
-
-* Název skupiny prostředků
-
-  * Pokud používáte sítě nebo úložiště komponent, které jsou v různých skupinách prostředků, zrušte komentář u proměnné a také zadat tyto názvy. 
-
-```python
-# Resource groups
-# At a minimum specify the resource group.  If the network resources live in a
-# different group, specify the network resource group.  Likewise for the storage
-# account resource group.
-RESOURCE_GROUP=
-#NETWORK_RESOURCE_GROUP=
-#STORAGE_RESOURCE_GROUP=
-```
-
-* Název místa
-* Název virtuální sítě
-* Název podsítě
-* Azure AD název modulu runtime role – Pokud jste postupovali podle příkladu v [vytvořit role clusteru uzel přístupu](#create-the-cluster-node-access-role), použijte ``avere-cluster``. 
-* Název účtu úložiště (Pokud vytváříte nový kontejner objektů Blob)
-* Název clusteru - nemůže mít dva clustery vFXT se stejným názvem ve stejné skupině prostředků. Zadejte jedinečný název pro osvědčený postup na každý cluster.
-* Heslo správce – zvolte zabezpečené heslo pro monitorování a správu clusteru. Toto heslo je přiřazena uživateli ``admin``. 
-* Typ instance uzlu - naleznete v tématu [velikosti uzlů vFXT](avere-vfxt-deploy-plan.md#vfxt-node-sizes) informace
-* Velikost mezipaměti uzlu – viz [velikosti uzlů vFXT](avere-vfxt-deploy-plan.md#vfxt-node-sizes) informace
-
-Uložte soubor a ukončete.
-
-### <a name="run-the-script"></a>Spuštění skriptu
-
-Spusťte skript zadáním názvu souboru, který jste vytvořili. (Příklad: `./create-cloudbacked-cluster-west1`)  
-
-> [!TIP]
-> Zvažte spuštění tohoto příkazu uvnitř [terminálu multiplexor](http://linuxcommand.org/lc3_adv_termmux.php) jako `screen` nebo `tmux` v případě ztráty připojení.  
-
-Výstup se taky zaznamenává do `~/vfxt.log`.
-
-Po dokončení skriptu zkopírujte IP adresu správy, která je potřebná pro správu clusteru.
-
-![Výstup příkazového řádku souboru, který zobrazuje IP adresa pro správu poblíž konce](media/avere-vfxt-mgmt-ip.png)
-
-> [!IMPORTANT] 
-> Pokud jste vytvořili nový kontejner objektů Blob, může být zašifrovaný pomocí klíče výchozí, který není uložili mimo cluster. Než ukládat data v kontejneru, musí buď stáhnout soubor obnovení klíčů nebo vytvořit vlastní šifrovací klíč a uložit jeho obnovení souboru do trvalého umístění. 
-> 
-> Pokud používáte výchozí klíč bez stažení souboru pro obnovení, je možné byste ztratili přístup k šifrovaných dat v filer základní objekt Blob, pokud vFXT cluster je zničen nebo ztráty.
->
-> Pokud se zobrazí váš skript `WARNING` zpráv podobné těm v kruhu na snímku obrazovky níže, postupujte podle pokynů v [konfigurace úložiště](avere-vfxt-add-storage.md) stáhnout soubor klíče nebo vytvořte nový klíč pro váš kontejner objektů Blob. Pomocí nástroje Konfigurace clusteru, Avere ovládacích panelech.
-
-![Výstup příkazového řádku skriptu zobrazení zprávy s upozorněním vytváření nového šifrovacího klíče](media/avere-vfxt-key-warning.png)
-
 ## <a name="next-step"></a>Další krok
 
-Teď, když cluster běží a znáte jeho IP adresa pro správu, můžete [připojit k nástroji Konfigurace clusteru](avere-vfxt-cluster-gui.md) povolení podpory, přidejte úložiště, pokud potřeby, nebo IP adresa výchozího šifrovacího klíče na nové úložiště objektů Blob.
+Teď, když cluster běží a znáte jeho IP adresa pro správu, můžete [připojit k nástroji Konfigurace clusteru](avere-vfxt-cluster-gui.md) povolení podpory, přidejte úložiště v případě potřeby a přizpůsobit další nastavení clusteru.

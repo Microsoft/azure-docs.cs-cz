@@ -2,18 +2,18 @@
 title: Zálohování souborů v zásobníku virtuálních počítačů Azure.
 description: Použití Azure Backup k zálohování a obnovení souborů Azure Stack a aplikace do prostředí Azure Stack.
 services: backup
-author: adiganmsft
+author: adigan
 manager: shivamg
 ms.service: backup
 ms.topic: conceptual
 ms.date: 6/5/2018
 ms.author: adigan
-ms.openlocfilehash: acbd1bb98fd9a3eb24b7b3262c3fe9fe47200385
-ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
+ms.openlocfilehash: 67d79f2aa41bab8a14d693098538d22ffeb05a4e
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45579178"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55301471"
 ---
 # <a name="back-up-files-on-azure-stack"></a>Zálohování souborů ve službě Azure Stack
 Azure Backup vám umožní chránit (nebo zobrazit souhrny) souborů a aplikací ve službě Azure Stack. K zálohování souborů a aplikací, nainstalujte Microsoft Azure Backup Server jako virtuální počítač spuštěný ve službě Azure Stack. Můžete chránit soubory na libovolném serveru služby Azure Stack ve stejné virtuální síti. Jakmile nainstalujete Azure Backup Server, přidání disků pro zvýšení místní úložiště k dispozici pro krátkodobé zálohování dat v Azure. Azure Backup serveru využívá úložiště Azure pro dlouhodobé uchovávání.
@@ -55,7 +55,7 @@ Ke konfiguraci serveru Azure Backup při ochraně souborů ve službě Azure Sta
 
     ![Otevře se Průvodce novou skupinou ochrany](./media/backup-mabs-files-applications-azure-stack/6-select-data-protection-method.png)
 
-    Chcete-li vybrat **chci online ochranu**, musíte nejprve vybrat **chci krátkodobou ochranu pomocí:** disku. Azure Backup Server neposkytuje ochranu na pásku, tedy pouze volbu pro krátkodobou ochranu pomocí disku.
+    Chcete-li vybrat **chci online ochranu**, musíte nejprve vybrat **chci krátkodobou ochranu pomocí:** Disk. Azure Backup Server neposkytuje ochranu na pásku, tedy pouze volbu pro krátkodobou ochranu pomocí disku.
 
 5. V **zadat krátkodobé cíle** obrazovky, určit, jak dlouho chcete zachovat body obnovení, který je uložen na disk a kdy se má uložit přírůstkové zálohování. Klikněte na **Další**.
 

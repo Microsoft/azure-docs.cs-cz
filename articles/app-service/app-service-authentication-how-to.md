@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 11/08/2018
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: f3e30309b230ec44ddf39648b943f3f76dc7805d
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: 34902016578d92847bd83a7dede8ef73bb640b3e
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53722647"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55301573"
 ---
 # <a name="advanced-usage-of-authentication-and-authorization-in-azure-app-service"></a>Rozšířené využití ověřování a autorizace ve službě Azure App Service
 
@@ -151,8 +151,8 @@ az webapp config appsettings set --name <app_name> --resource-group <group_name>
 
 App Service předává pomocí speciálními záhlavími deklarace identity uživatelů do vaší aplikace. Požadavky na externí nejsou povoleny tyto hlavičky nastavit tak, aby byly k dispozici pouze v případě nastavení ve službě App Service. Některé hlavičky příkladu patří:
 
-* X-MS-KLIENTA PRINCIPAL-NAME
-* X-MS-CLIENT-INSTANČNÍ OBJEKT ID
+* X-MS-CLIENT-PRINCIPAL-NAME
+* X-MS-CLIENT-PRINCIPAL-ID
 
 Kód, který je napsán v libovolném jazyce nebo rozhraní můžete získat informace, které je nutné z těchto záhlaví. Pro aplikace ASP.NET 4.6 **ClaimsPrincipal** se automaticky nastaví příslušnými hodnotami.
 
@@ -176,14 +176,14 @@ Z klientského kódu (například mobilní aplikace nebo jazyka JavaScript v pro
 > [!NOTE]
 > Přístupové tokeny jsou určené pro přístup k prostředkům zprostředkovatele, takže jsou k dispozici pouze v případě, že nakonfigurujete poskytovatele s tajným klíčem klienta. Jak získat tokeny obnovení najdete v tématu [aktualizaci přístupových tokenů](#refresh-access-tokens).
 
-## <a name="refresh-access-tokens"></a>Obnovit přístupové tokeny
+## <a name="refresh-identity-provider-tokens"></a>Obnovovacích tokenů zprostředkovatele identity
 
-Když vyprší platnost přístupového tokenu poskytovatele, musíte uživatele donutit k. Vypršení platnosti tokenu se můžete vyhnout tím, že `GET` volání `/.auth/refresh` koncový bod aplikace. Při volání služby App Service automaticky aktualizuje přístupové tokeny v úložišti tokenů pro ověřeného uživatele. Odeslání dalších žádostí o tokeny pomocí kódu vaší aplikace získáte aktualizovat tokeny. Ale token aby aktualizace fungovala, musí obsahovat úložiště tokenů [obnovovacích tokenů](https://auth0.com/learn/refresh-tokens/) pro vašeho poskytovatele. Způsob, jak získat tokeny obnovení jsou popsány od každého poskytovatele, ale v následujícím seznamu je uveden stručný přehled:
+Když váš poskytovatel přístupový token (není [tokenu relace](#extend-session-token-expiration-grace-period)) vyprší, je nutné donutit uživatele, než použijete tento token znovu. Vypršení platnosti tokenu se můžete vyhnout tím, že `GET` volání `/.auth/refresh` koncový bod aplikace. Při volání služby App Service automaticky aktualizuje přístupové tokeny v úložišti tokenů pro ověřeného uživatele. Odeslání dalších žádostí o tokeny pomocí kódu vaší aplikace získáte aktualizovat tokeny. Ale token aby aktualizace fungovala, musí obsahovat úložiště tokenů [obnovovacích tokenů](https://auth0.com/learn/refresh-tokens/) pro vašeho poskytovatele. Způsob, jak získat tokeny obnovení jsou popsány od každého poskytovatele, ale v následujícím seznamu je uveden stručný přehled:
 
 - **Google**: Připojit `access_type=offline` parametr řetězce do dotazu vaše `/.auth/login/google` volání rozhraní API. Pokud pomocí sady SDK služby Mobile Apps, můžete přidat parametr do jednoho z `LogicAsync` přetížení (naleznete v tématu [Google aktualizovat tokeny](https://developers.google.com/identity/protocols/OpenIDConnect#refresh-tokens)).
 - **Facebook**: Neposkytuje obnovovací tokeny. Dlouhodobé tokeny vyprší za 60 dní (naleznete v tématu [Facebook vypršení platnosti a rozšíření přístupové tokeny](https://developers.facebook.com/docs/facebook-login/access-tokens/expiration-and-extension)).
 - **Twitter**: Přístupové tokeny nevyprší (viz [nejčastější dotazy k Twitteru OAuth](https://developer.twitter.com/en/docs/basics/authentication/FAQ)).
-- **Účet Microsoft**: Když [nastavení ověřování účtu Microsoft](configure-authentication-provider-microsoft.md), vyberte `wl.offline_access` oboru.
+- **Microsoft Account**: Když [nastavení ověřování účtu Microsoft](configure-authentication-provider-microsoft.md), vyberte `wl.offline_access` oboru.
 - **Azure Active Directory**: V [ https://resources.azure.com ](https://resources.azure.com), proveďte následující kroky:
     1. V horní části stránky vyberte **r/w**.
     2. V levém prohlížeč, přejděte na **předplatná** > **_\<předplatné\_název_**   >  **resourceGroups** > _**\<prostředků\_skupiny\_name >**_   >  **poskytovatelé** > **Microsoft.Web** > **lokality** > _**\<aplikace \_name >**_ > **config** > **authsettings**. 
@@ -213,9 +213,9 @@ function refreshTokens() {
 
 Pokud uživatel Odvolá oprávnění udělená aplikaci volání `/.auth/me` může selhat s `403 Forbidden` odpovědi. Chcete-li diagnostikovat chyby, najdete v protokolech aplikace podrobnosti.
 
-## <a name="extend-session-expiration-grace-period"></a>Rozšíření období odkladu vypršení platnosti relace
+## <a name="extend-session-token-expiration-grace-period"></a>Rozšiřovat lhůta odkladu vypršení platnosti tokenu relace
 
-Po vypršení platnosti ověřená relace, je ve výchozím nastavení období odkladu 72 hodin. Během tohoto období odkladu povolená aktualizace souboru cookie relace nebo tokenu relace se službou App Service bez opětovném uživatele. Můžete ho prostě zavoláte `/.auth/refresh` při souboru cookie relace nebo tokenu relace stává neplatným a není nutné ke sledování vypršení platnosti tokenu sami. Po období odkladu 72 hodin zavřeli, uživatel musí přihlásit znovu a získat platný soubor cookie nebo tokenu relace.
+Ověřená relace vyprší po 8 hodin. Po vypršení platnosti ověřená relace, je ve výchozím nastavení období odkladu 72 hodin. Během tohoto období odkladu povolená aktualizace tokenu relace se službou App Service bez opětovném uživatele. Můžete ho prostě zavoláte `/.auth/refresh` při tokenu relace stává neplatným a není nutné ke sledování vypršení platnosti tokenu sami. Zavřeli po období odkladu 72 hodin uživatel musí přihlásit znovu a získat relaci platný token.
 
 Pokud 72 hodin není dostatečně dlouho, můžete rozšířit toto okno vypršení platnosti. Rozšíření vypršení platnosti po dlouhou dobu, může mít vliv na důležité zabezpečení (například když ověřovací token úniku nebo vám ho někdo ukradne). Proto by měl ponechat výchozí 72 hodin nebo nastavte období na nejmenší hodnotu.
 

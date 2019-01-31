@@ -11,13 +11,13 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 manager: craigg
-ms.date: 01/03/2019
-ms.openlocfilehash: ed7e8346cba2a2243ef71cb9782219fb26481dc7
-ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
+ms.date: 01/25/2019
+ms.openlocfilehash: 35759f03d7cf09a4114ca6dca74bd3ee92fdcbfa
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54190045"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55462167"
 ---
 # <a name="multi-shard-querying-using-elastic-database-tools"></a>Dotazování více horizontálních oddílů pomocí nástrojů pro elastické databáze
 
@@ -59,7 +59,7 @@ using (MultiShardConnection conn = new MultiShardConnection(myShardMap.GetShards
 }
 ```
 
-Klíčovým rozdílem je konstrukce připojení více horizontálních oddílů. Kde **SqlConnection** funguje v izolované databáze **MultiShardConnection** přijímá ***sadu horizontálních oddílů*** jako vstup. Naplnění kolekce horizontálních oddílů z mapy horizontálních oddílů. Potom spuštění dotazu na sadu horizontálních oddílů pomocí **UNION ALL** sémantiku sestavit jeden celkový výsledek. Volitelně můžete do výstupu pomocí přidali jméno horizontálních oddílů, odkud pochází řádku z **ExecutionOptions** vlastnost příkazu.
+Klíčovým rozdílem je konstrukce připojení více horizontálních oddílů. Kde **SqlConnection** pracuje na jednotlivé databáze, **MultiShardConnection** přijímá ***sadu horizontálních oddílů*** jako vstup. Naplnění kolekce horizontálních oddílů z mapy horizontálních oddílů. Potom spuštění dotazu na sadu horizontálních oddílů pomocí **UNION ALL** sémantiku sestavit jeden celkový výsledek. Volitelně můžete do výstupu pomocí přidali jméno horizontálních oddílů, odkud pochází řádku z **ExecutionOptions** vlastnost příkazu.
 
 Všimněte si volání **myShardMap.GetShards()**. Tato metoda načte všechny horizontální oddíly z mapy horizontálních oddílů a poskytuje snadný způsob, jak spustit dotaz napříč všemi databázemi relevantní. Kolekce horizontálních oddílů pro dotazování více horizontálních oddílů může být kontrast dále provedením dotazu LINQ nad shromažďováním vrácená z volání **myShardMap.GetShards()**. V kombinaci se zásadou částečných výsledků byla navržena tak, aby fungovat dobře pro desítky až stovek horizontálních oddílů aktuální funkce v dotazování více horizontálních oddílů.
 

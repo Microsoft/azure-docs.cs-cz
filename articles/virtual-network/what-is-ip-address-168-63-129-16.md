@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/21/2019
 ms.author: genli
-ms.openlocfilehash: e018cbf0c71a9acf76e60f38aff1aa1ba8a81516
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: 7f0539e7c2f7e5ae8847b35b47d3708c6c5d6a09
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55229312"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55296034"
 ---
 # <a name="what-is-ip-address-1686312916"></a>Jaká je adresa IP adresy 168.63.129.16?
 
@@ -35,8 +35,7 @@ IP adresy 168.63.129.16 je virtuální veřejnou IP adresu, která slouží k us
 
 Virtuální veřejné IP adresy 168.63.129.16 se používá ve všech oblastech a všech národních cloudech. Tato speciální veřejná IP adresa se nezmění. Je povoleno podle výchozího pravidla skupiny zabezpečení sítě. Doporučujeme povolit tuto IP adresu v rámci zásad žádné místní brány firewall. Komunikace mezi tento speciální IP adresu a prostředky je bezpečné, protože pouze interní platformy Azure mají možnost zprávy z této IP adresy. Pokud tato adresa je blokovaný, může dojít k neočekávanému chování v různých scénářích.
 
-Kromě toho traffics z veřejné virtuální IP adresy 168.63.129.16 na koncový bod nakonfigurovaný [sondy stavu nástroje pro vyrovnávání zatížení](../load-balancer/load-balancer-custom-probe-overview.md) by neměly být zahrnuté jako provoz útoku. Ve scénáři mimo virtuální síť sondy stavu pochází z privátní IP adresy.
-
+Kromě toho můžete očekávat, že tento provoz tok z virtuální veřejné IP adresy 168.63.129.16 na koncový bod, který je nakonfigurovaný pro [sondy stavu nástroje pro vyrovnávání zatížení](../load-balancer/load-balancer-custom-probe-overview.md). Ve scénáři mimo virtuální síť sondy stavu pochází z privátní IP adresy. 
 
 ## <a name="next-steps"></a>Další postup
 

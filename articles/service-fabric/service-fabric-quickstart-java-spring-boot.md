@@ -12,17 +12,17 @@ ms.devlang: java
 ms.topic: quickstart
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 11/23/2017
+ms.date: 01/29/2019
 ms.author: suhuruli
 ms.custom: mvc, devcenter
-ms.openlocfilehash: 97dcde4cd3597262b49000f2330e487e4fa48188
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
-ms.translationtype: HT
+ms.openlocfilehash: e4fde75aeaf86219518daf92b67434fe9fd63f86
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51241884"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55297393"
 ---
-# <a name="quickstart-deploy-a-java-spring-boot-application-to-service-fabric"></a>Rychlý start: Nasazení aplikace Spring Boot v Javě do Service Fabric
+# <a name="quickstart-deploy-a-java-spring-boot-application-to-service-fabric"></a>Rychlý start: Nasazení aplikace Java Spring Boot do Service Fabric
 
 Azure Service Fabric je platforma distribuovaných systémů pro nasazování a správu mikroslužeb a kontejnerů.
 
@@ -34,7 +34,6 @@ V tomto rychlém startu se naučíte:
 
 * Nasazení aplikace Spring Boot do služby Service Fabric
 * Nasazení aplikace do místního clusteru
-* Nasazení aplikace do clusteru v Azure
 * Škálování aplikace na více instancí napříč několika uzly
 * Převzetí služeb při selhání vaší služby bez omezení dostupnosti
 
@@ -168,68 +167,6 @@ V této fázi jste vytvořili aplikaci Service Fabric pro ukázku Spring Boot Ge
 
 Teď máte přístup k aplikaci Spring Boot, která je nasazená do clusteru Service Fabric.
 
-## <a name="deploy-the-application-to-azure"></a>Nasazení aplikace v Azure
-
-### <a name="set-up-your-azure-service-fabric-cluster"></a>Nastavení clusteru Azure Service Fabric
-
-Pokud chcete nasadit aplikaci do clusteru v Azure, vytvořte si vlastní cluster.
-
-Party Clustery jsou bezplatné, časově omezené clustery Service Fabric hostované v Azure a provozované týmem Service Fabric. Party Clustery můžete použít k nasazování aplikací a seznámení se s platformou. Cluster k zajištění zabezpečení mezi uzly a mezi klientem a uzlem využívá jeden certifikát podepsaný svým držitelem.
-
-Přihlaste se a připojte se ke [clusteru s Linuxem](https://aka.ms/tryservicefabric). Stáhněte si do počítače certifikát PFX kliknutím na odkaz **PFX**. Kliknutím na odkaz **ReadMe** zobrazíte heslo certifikátu a pokyny ke konfiguraci různých prostředí pro použití certifikátu. **Úvodní** stránku a stránku **ReadMe** nechte otevřené, protože některé pokyny využijete v následujících krocích.
-
-> [!Note]
-> Každou hodinu je k dispozici omezený počet Party Clusterů. Pokud se vám při pokusu o registraci Party Clusteru zobrazí chyba, můžete chvíli počkat a zkusit to znovu nebo můžete podle kroků v kurzu [Vytvoření clusteru Service Fabric v Azure](service-fabric-tutorial-create-vnet-and-linux-cluster.md) vytvořit cluster ve svém předplatném.
->
-> Služba Spring Bot je nakonfigurovaná k naslouchání příchozímu provozu na portu 8080. Ujistěte se, že je ve vašem clusteru tento port otevřený. Pokud používáte Party Cluster, je tento port otevřený.
->
-
-Service Fabric poskytuje několik nástrojů, pomocí kterých můžete spravovat cluster a jeho aplikace:
-
-* Nástroj v prohlížeči Service Fabric Explorer.
-* Rozhraní příkazového řádku (CLI) Service Fabric, které se spouští nad Azure CLI.
-* Příkazy PowerShellu.
-
-V tomto rychlém startu použijete Service Fabric CLI a Service Fabric Explorer.
-
-Pokud chcete použít rozhraní příkazového řádku, musíte ze souboru PFX, který jste stáhli, vytvořit soubor PEM. K převodu souboru použijte následující příkaz. (V případě Party Clusterů můžete zkopírovat příkaz specifický pro váš soubor PFX z pokynů na stránce **ReadMe**.)
-
-```bash
-openssl pkcs12 -in party-cluster-1486790479-client-cert.pfx -out party-cluster-1486790479-client-cert.pem -nodes -passin pass:1486790479
-``` 
-
-Pokud chcete použít Service Fabric Explorer, musíte importovat soubor PFX certifikátu, který jste stáhli z webu Party Clusteru, do svého úložiště certifikátů (Windows nebo Mac) nebo do samotného prohlížeče (Ubuntu). Potřebujete heslo privátního klíče PFX, které můžete získat na stránce **ReadMe**.
-
-K importování certifikátu do svého systému použijte jakoukoli metodu, která vám vyhovuje nejvíce. Příklad:
-
-* Windows: Dvakrát klikněte na soubor PFX a podle zobrazených výzev nainstalujte certifikát do svého osobního úložiště `Certificates - Current User\Personal\Certificates`. Alternativně můžete použít příkaz PowerShellu uvedený v pokynech **ReadMe**.
-* Mac: Dvakrát klikněte na soubor PFX a podle zobrazených výzev nainstalujte certifikát do své klíčenky.
-* Ubuntu: Výchozím prohlížečem v Ubuntu 16.04 je Mozilla Firefox. Pokud chcete certifikát importovat do prohlížeče Firefox, klikněte na tlačítko nabídky v pravém horním rohu prohlížeče a pak klikněte na **Možnosti**. Na stránce **Předvolby** pomocí vyhledávacího pole vyhledejte „certifikáty“. Klikněte na **Zobrazit certifikáty**, vyberte kartu **Osobní**, klikněte na **Importovat** a podle zobrazených výzev importujte certifikát.
-
-   ![Instalace certifikátu v prohlížeči Firefox](./media/service-fabric-quickstart-java-spring-boot/install-cert-firefox.png)
-
-### <a name="deploy-the-application-using-cli"></a>Nasazení aplikace pomocí rozhraní příkazového řádku
-
-Když jsou teď aplikace i cluster připravené, můžete aplikaci nasadit do clusteru přímo z příkazového řádku.
-
-1. Přejděte do složky `gs-spring-boot/SpringServiceFabric`.
-1. Spusťte následující příkaz pro připojení ke clusteru Azure.
-
-    ```bash
-    sfctl cluster select --endpoint https://<ConnectionIPOrURL>:19080 --pem <path_to_certificate> --no-verify
-    ```
-1. Spusťte skript `install.sh`.
-
-    ```bash
-    ./install.sh
-    ```
-
-1. Otevřete webový prohlížeč a přejděte do aplikace na adrese **http://\<IP_adresa_nebo_adresa_URL_připojení>:8080**.
-
-    ![Front-end aplikace – místní prostředí](./media/service-fabric-quickstart-java-spring-boot/springbootsfazure.png)
-
-Teď máte přístup k aplikaci Spring Boot spuštěné v clusteru Service Fabric v Azure.
-
 ## <a name="scale-applications-and-services-in-a-cluster"></a>Škálování aplikací a služeb v clusteru
 
 Služby je možné škálovat napříč clusterem a vyřešit tak změny v jejich zatížení. Služby se škálují změnou počtu instancí spuštěných v clusteru. Služby můžete škálovat mnoha způsoby – můžete použít například skripty nebo příkazy v Service Fabric CLI (sfctl). V následujících krocích se používá Service Fabric Explorer.
@@ -277,13 +214,12 @@ Jako ukázku převzetí služeb při selhání simulujeme restartování uzlu po
 
     ![Service Fabric Explorer – úspěšné restartování uzlu](./media/service-fabric-quickstart-java-spring-boot/sfxfailedover.png)
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 V tomto rychlém startu jste se naučili:
 
 * Nasazení aplikace Spring Boot do služby Service Fabric
 * Nasazení aplikace do místního clusteru
-* Nasazení aplikace do clusteru v Azure
 * Škálování aplikace na více instancí napříč několika uzly
 * Převzetí služeb při selhání vaší služby bez omezení dostupnosti
 

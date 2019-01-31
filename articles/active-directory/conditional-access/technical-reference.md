@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 01/24/2019
+ms.date: 01/30/2019
 ms.author: markvi
 ms.reviewer: spunukol
-ms.openlocfilehash: dbb8417975d051b4a13d6f94fca76fd3bf321a35
-ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
+ms.openlocfilehash: 6c340cde488ee37d2454468356f1ceee03f74844
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/26/2019
-ms.locfileid: "55074239"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55302100"
 ---
 # <a name="azure-active-directory-conditional-access-settings-reference"></a>Odkaz nastavení podmíněného přístupu Azure Active Directory
 
@@ -151,7 +151,7 @@ Toto rozšíření automaticky nasazovat do prohlížečů Chrome, vytvořte ná
 |--- | ---|
 |Cesta | HKEY_LOCAL_MACHINE\Software\Policies\Google\Chrome\ExtensionInstallForcelist |
 |Název | 1 |
-|Typ | REG_SZ (String) |
+|Type | REG_SZ (String) |
 |Data | ppnbnpeolgkicgegkbkbjmhlideopiji; https://clients2.google.com/service/update2/crx
 
 Chrome podpoře v **Windows 8.1 a 7**, vytvořte následující klíč registru:
@@ -160,7 +160,7 @@ Chrome podpoře v **Windows 8.1 a 7**, vytvořte následující klíč registru:
 |--- | ---|
 |Cesta | HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Google\Chrome\AutoSelectCertificateForUrls |
 |Název | 1 |
-|Typ | REG_SZ (String) |
+|Type | REG_SZ (String) |
 |Data | {"vzor": "https://device.login.microsoftonline.comfiltr","": {"VYSTAVITELE": {"CN": "MS-organizace přístup"}}}|
 
 Tyto prohlížeče podporují ověřování zařízení umožňuje identifikovat a ověřovat na zásady zařízení. Kontrola zařízení selže, pokud je spuštěn prohlížeč v privátním režimu. 
@@ -244,7 +244,7 @@ Toto nastavení platí pro následující klientské aplikace:
 
 - **Vyžadovat klientem schválenou aplikaci** požadavek:
 
-    - Podporuje jenom pro iOS a Android pro [podmínku platformy zařízení](#device-platforms-condition).
+    - Podporuje jenom pro iOS a Android pro [podmínku platformy zařízení](#device-platform-condition).
 
 
 ## <a name="next-steps"></a>Další postup

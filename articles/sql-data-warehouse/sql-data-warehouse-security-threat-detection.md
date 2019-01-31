@@ -2,7 +2,7 @@
 title: Detekce hrozeb – Azure SQL Data Warehouse | Dokumentace Microsoftu
 description: Konfigurace zjišťování hrozeb a prozkoumat podezřelé události ve službě Azure SQL Data Warehouse.
 services: sql-data-warehouse
-author: kavithaj
+author: KavithaJonnakuti
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
@@ -10,12 +10,12 @@ ms.subservice: implement
 ms.date: 04/17/2018
 ms.author: kavithaj
 ms.reviewer: igorstan
-ms.openlocfilehash: 112d093946099e623d1edfa4555eda681069892e
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 2f07699b49b7791894d1f183b0686161375ea17a
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 01/30/2019
-ms.locfileid: "55243381"
+ms.locfileid: "55295413"
 ---
 # <a name="threat-detection-in-azure-sql-data-warehouse"></a>Detekce hrozeb ve službě Azure SQL Data Warehouse
 Konfigurace zjišťování hrozeb a prozkoumat podezřelé události ve službě Azure SQL Data Warehouse.

@@ -1,6 +1,6 @@
 ---
-Název: Předpověď odpovědi pomocí regresní modely titleSuffix: Azure Machine Learning Studio Popis: Jak vytvořit jednoduchý regresní model k predikci cenu v datová věda pro začátečníky č. 4. Zahrnuje lineární regrese s daty cíl.
-Services: machine learningu ms.service: ms.component strojového učení: studio ms.topic: článku
+Název: Předpověď odpovědi pomocí regresní modely titleSuffix: Azure Machine Learning Studio Popis: Jak vytvořit jednoduchý regresní model k predikci cenu v datová věda pro začátečníky č. 4. Zahrnuje lineární regrese s daty cíl.
+Services: machine learningu ms.service: ms.subservice strojového učení: studio ms.topic: článku
 
 Autor: garyericson ms.author: garye ms.custom: seodec18 ms.date: 01/03/2018
 ---

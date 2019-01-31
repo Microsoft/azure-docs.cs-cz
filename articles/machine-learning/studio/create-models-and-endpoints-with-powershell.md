@@ -1,5 +1,5 @@
 ---
-Název: Vytvoření více modelů z jednoho experimentu titleSuffix Studio: Azure Machine Learning Studio Popis: Použití Powershellu k vytvoření více modelů Machine Learning a webových koncových bodů služby se stejný algoritmus, ale s jinou cvičných datových sad.
+Název: Vytvoření více modelů z jednoho experimentu titleSuffix Studio: Azure Machine Learning Studio Popis: Použití Powershellu k vytvoření více modelů Machine Learning a webových koncových bodů služby se stejný algoritmus, ale s jinou cvičných datových sad.
 Services: machine learningu ms.service: ms.subservice strojového učení: studio ms.topic: článku
 
 Autor: ericlicoding ms.author: amlstudiodocs ms.custom: seodec18 ms.date: 04/04/2017

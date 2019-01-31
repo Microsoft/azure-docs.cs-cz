@@ -7,13 +7,13 @@ ms.service: storage
 ms.topic: article
 ms.date: 7/19/2018
 ms.author: wgries
-ms.component: files
-ms.openlocfilehash: 05e5c0a37d2de78393048728b73d9bcf6e56c491
-ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
+ms.subservice: files
+ms.openlocfilehash: 277c570079e8c3f051916452492ff62758688e03
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54159162"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55454857"
 ---
 # <a name="azure-files-scalability-and-performance-targets"></a>Azure soubory škálovatelnost a výkonnostní cíle
 [Služba soubory Azure](storage-files-introduction.md) nabízí plně spravované sdílené složky v cloudu, které jsou přístupné přes standardní protokol SMB. Tento článek popisuje škálovatelnost a výkonnostní cíle pro soubory Azure a Azure File Sync.
@@ -59,7 +59,7 @@ Při plánování nasazení pro každou z fází, níže jsou výsledky pozorov�
 |-|-|
 | Počet objektů | 10 milionů objektů | 
 | Velikost datové sady| ~ 4 TB |
-| Průměrná velikost souboru | ~ 500 KiB (největší soubor: 100 GB) |
+| Průměrná velikost souboru | ~ 500 KiB (největší soubor: 100 GiB) |
 | Nahrát propustnost | 20 objekty za sekundu |
 | Namespace stahování propustnost * | 400 objekty za sekundu |
  

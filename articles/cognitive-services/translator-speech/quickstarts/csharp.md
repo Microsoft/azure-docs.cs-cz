@@ -6,16 +6,16 @@ services: cognitive-services
 author: v-jaswel
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: translator-speech
+ms.subservice: translator-speech
 ms.topic: quickstart
 ms.date: 3/5/2018
 ms.author: v-jaswel
-ms.openlocfilehash: b873dbd3132e549c529280400d5a9644174232f9
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.openlocfilehash: d650be954770fae4924c8e65a8d8f4e17acbafa1
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54259018"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55459617"
 ---
 # <a name="quickstart-translator-speech-api-with-c"></a>Rychlý start: Translator Speech API sC# 
 <a name="HOLTop"></a>

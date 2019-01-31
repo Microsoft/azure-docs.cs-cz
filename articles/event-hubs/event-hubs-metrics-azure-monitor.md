@@ -1,5 +1,5 @@
 ---
-title: Metriky ve službě Azure Monitor (preview) – služby Azure Event Hubs | Dokumentace Microsoftu
+title: Metriky na platformě Azure Monitor – služba Azure Event Hubs | Dokumentace Microsoftu
 description: Tento článek obsahuje informace o tom, jak použít monitorování Azure k monitorování služby Azure Event Hubs
 services: event-hubs
 documentationcenter: .NET
@@ -15,14 +15,14 @@ ms.workload: na
 ms.custom: seodec18
 ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: 148071d71030638ddec4095ef2e33482327f3db3
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: 31aaa24dd6020cb8203e4ab1bfec8ce3e0ffd2b8
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53537916"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55299686"
 ---
-# <a name="azure-event-hubs-metrics-in-azure-monitor-preview"></a>Metriky Azure Event Hubs ve službě Azure Monitor (preview)
+# <a name="azure-event-hubs-metrics-in-azure-monitor"></a>Metriky Azure Event Hubs ve službě Azure Monitor
 
 Metriky Event Hubs poskytuje stav služby Event Hubs prostředků ve vašem předplatném Azure. S bohatou sadou dat metrik můžete posouzení celkového stavu služby event hubs, pouze na úrovni oboru názvů, ale také na úrovni entity. Ve statistikách může být důležité, protože pomáhají s monitorováním stavu služby event hubs. Metriky může také pomoct potíží hlavní příčinu, aniž byste museli kontaktovat podporu Azure.
 
@@ -40,7 +40,7 @@ Metriky můžete sledovat v čase [webu Azure portal](https://portal.azure.com).
 
 ![Zobrazit úspěšné metriky][1]
 
-Můžete také přístup k metrikám přímo prostřednictvím oboru názvů. Uděláte to tak, zvolte svůj obor názvů a pak klikněte na tlačítko **metriky (Peview)**. Pokud chcete zobrazit metriky vyfiltrovaný tak, aby oboru centra událostí, vyberte Centrum událostí a klikněte na **metriky (preview)**.
+Můžete také přístup k metrikám přímo prostřednictvím oboru názvů. Uděláte to tak, zvolte svůj obor názvů a pak klikněte na ** nastavení **. Pokud chcete zobrazit metriky vyfiltrovaný tak, aby oboru centra událostí, vyberte Centrum událostí a klikněte na **metriky**.
 
 Pro metrika podporuje dimenze musí filtr s hodnotou požadované dimenze, jak je znázorněno v následujícím příkladu:
 
@@ -48,7 +48,7 @@ Pro metrika podporuje dimenze musí filtr s hodnotou požadované dimenze, jak j
 
 ## <a name="billing"></a>Fakturace
 
-Použití metrik ve službě Azure Monitor je aktuálně zdarma ve verzi preview. Ale pokud používáte další řešení, která ingestovat data metrik, vám může účtovat podle těchto řešení. Například jste se účtují po Azure Storage při archivaci dat metrik do účtu služby Azure Storage. Se taky účtují Azure Pokud streamování dat metrik do Log Analytics pro pokročilé analýzy.
+Pomocí metrik ve službě Azure Monitor je aktuálně zdarma. Ale pokud používáte další řešení, která ingestovat data metrik, vám může účtovat podle těchto řešení. Například jste se účtují po Azure Storage při archivaci dat metrik do účtu služby Azure Storage. Se taky účtují Azure Pokud streamování dat metrik do Log Analytics pro pokročilé analýzy.
 
 Následujících metrik získáte přehled o stavu vaší služby. 
 

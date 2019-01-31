@@ -7,14 +7,14 @@ ms.topic: conceptual
 ms.date: 11/15/2018
 ms.author: govindk
 ms.reviewer: sngun
-ms.openlocfilehash: e21a3ae23ca6a856c9524e52e80f33362f53cae1
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: 7f99b6d2f6fc1c6d1c270bd66965d978749ac63f
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54040842"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55455928"
 ---
-# <a name="how-to-restore-azure-cosmos-db-data-from-a-backup"></a>Postup obnovení dat služby Azure Cosmos DB ze zálohy
+# <a name="restore-data-from-a-backup-in-azure-cosmos-db"></a>Obnovte data ze zálohy ve službě Azure Cosmos DB 
 
 Pokud omylem odstraníte, databáze nebo kontejner, můžete si [lístek podpory]( https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) nebo [obraťte se na podporu Azure]( https://azure.microsoft.com/support/options/) data obnovit z automatických záloh online. Podpora Azure je dostupný pro vybrané plány například pouze **standardní**, ** pro vývojáře a vyšší, než je plány. Podpora Azure není k dispozici **základní** plánu. Další informace o plánech podpory různých, najdete v článku [plánů podpory Azure](https://azure.microsoft.com/support/plans/) stránky. 
 

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/28/2019
 ms.author: jingwang
-ms.openlocfilehash: d20ba372a23d2d4865bd9d6c5c004f955c896201
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 74061eb081fcc7c2c84707f2414a2edfbfde3289
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55199021"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55299533"
 ---
 # <a name="copy-data-from-sap-business-warehouse-via-open-hub-using-azure-data-factory"></a>Kopírování dat z řešení SAP Business Warehouse prostřednictvím Open centra pomocí služby Azure Data Factory
 
@@ -37,14 +37,14 @@ Kopírování dat z řešení SAP Business Warehouse prostřednictvím Open rozb
 
 Konkrétně tento konektor SAP Business Warehouse otevřete Centrum podporuje:
 
-- SAP Business Warehouse **verze 7.30 nebo novější s SAPK 73013INPIBASIS nainstalovaný balíček pro podporu**.
+- SAP Business Warehouse **verze 7.30 nebo vyšší (v posledních SAP podporu balíčku zásobníku vydanou po roce 2015)**.
 - Kopírování dat přes otevřít Centrum cílový místní tabulky, který pod může být DSO InfoCube, MultiProvider, zdroj dat, atd.
 - Kopírování dat pomocí základního ověřování.
 - Připojení k aplikační Server.
 
 ## <a name="prerequisites"></a>Požadavky
 
-Pokud chcete použít tento konektor SAP Business Warehouse, je potřeba:
+Pokud chcete použít tento konektor SAP Business Warehouse otevřete Centrum, je potřeba:
 
 - Nastavte modul Integration Runtime s verzí 3.13 nebo vyšší. Zobrazit [modul Integration Runtime](create-self-hosted-integration-runtime.md) , kde najdete podrobnosti.
 
@@ -57,17 +57,17 @@ Pokud chcete použít tento konektor SAP Business Warehouse, je potřeba:
     - Autorizace RFC a SAP BW. 
     - Oprávnění k autorizace objektu "S_SDSAUTH" aktivity "Spustit".
 
-- Craete SAP otevřít Centrum cílový typ jako **databázové tabulky** se zaškrtnutým políčkem "Technické klíč".  Doporučujeme také ponechat Data odstranění z tabulky jako zaškrtnuté políčko, i když není potřeba. Spustit DTP pro příjem dat ze zdrojového objektu (například datové krychle) jste se rozhodli otevřete Centrum cílové tabulky.
+- Vytvořit SAP otevřít Centrum cílový typ jako **databázové tabulky** se zaškrtnutým políčkem "Technické klíč".  Doporučujeme také ponechat Data odstranění z tabulky jako zaškrtnuté políčko, i když není potřeba. Využití DTP (přímo spouštět ani integrovat do existujících procesů řetězce) objevil data ze zdrojového objektu (například datové krychle) jste se rozhodli otevřete Centrum cílové tabulky.
 
 ## <a name="getting-started"></a>Začínáme
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
-Následující části obsahují podrobnosti o vlastnostech, které se používají k definování entit služby Data Factory konkrétní konektor SAP Business Warehouse.
+Následující části obsahují podrobnosti o vlastnostech, které se používají k definování entit služby Data Factory konkrétní konektor SAP Business Warehouse otevřete Centrum.
 
 ## <a name="linked-service-properties"></a>Vlastnosti propojené služby
 
-Pro SAP Business Warehouse (BW) propojené služby jsou podporovány následující vlastnosti:
+Pro SAP Business Warehouse otevřete Centrum propojené služby jsou podporovány následující vlastnosti:
 
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
@@ -75,6 +75,7 @@ Pro SAP Business Warehouse (BW) propojené služby jsou podporovány následují
 | server | Název serveru, na kterém se nachází instance SAP BW. | Ano |
 | systemNumber | Číslo systému systému SAP BW.<br/>Povolené hodnoty: dvě číslice desetinné číslo reprezentované jako řetězec. | Ano |
 | ID klienta | ID klienta v systému SAP W klienta.<br/>Povolené hodnoty: tři číslice desetinné číslo reprezentované jako řetězec. | Ano |
+| language | Jazyk, který používá systém SAP. | Ne (výchozí hodnota je **EN**)|
 | uživatelské jméno | Jméno uživatele, který má přístup k serveru SAP. | Ano |
 | heslo | Heslo pro tohoto uživatele. Označte toto pole jako SecureString bezpečně uložit ve službě Data Factory nebo [odkazovat tajného klíče do služby Azure Key Vault](store-credentials-in-key-vault.md). | Ano |
 | connectVia | [Prostředí Integration Runtime](concepts-integration-runtime.md) se použije k připojení k úložišti. Modul Integration Runtime je povinný, jak je uvedeno v [požadavky](#prerequisites). |Ano |
@@ -128,7 +129,7 @@ Pro kopírování dat z a do SAP BW Open centra, nastavte vlastnost typ datové 
     "properties": {
         "type": "SapOpenHubTable",
         "linkedServiceName": {
-            "referenceName": "<SAP BW linked service name>",
+            "referenceName": "<SAP BW Open Hub linked service name>",
             "type": "LinkedServiceReference"
         },
         "typeProperties": {
@@ -140,7 +141,7 @@ Pro kopírování dat z a do SAP BW Open centra, nastavte vlastnost typ datové 
 
 ## <a name="copy-activity-properties"></a>Vlastnosti aktivity kopírování
 
-Úplný seznam oddílů a vlastnosti, které jsou k dispozici pro definování aktivit najdete v článku [kanály](concepts-pipelines-activities.md) článku. Tato část obsahuje seznam vlastností podporována zdroji SAP BW.
+Úplný seznam oddílů a vlastnosti, které jsou k dispozici pro definování aktivit najdete v článku [kanály](concepts-pipelines-activities.md) článku. Tato část obsahuje seznam vlastností podporovaných zdrojem SAP BW Open rozbočovače.
 
 ### <a name="sap-bw-open-hub-as-source"></a>Otevřete Centrum SAP BW jako zdroj
 
@@ -179,18 +180,18 @@ Ke zkopírování dat z centra otevřít SAP BW, nastavte typ zdroje v aktivitě
 
 ## <a name="data-type-mapping-for-sap-bw-open-hub"></a>Mapování datového typu pro SAP BW Open Centrum
 
-Kopírování dat ze SAP BW, se používají následující mapování z datových typů SAP BW na Azure Data Factory dočasné datové typy. Zobrazit [schéma a data zadejte mapování](copy-activity-schema-and-type-mapping.md) Další informace o způsobu, jakým aktivitu kopírování, která mapuje typ zdroje schéma a data na jímce.
+Kopírování dat ze SAP BW Open centra, se používají následující mapování z datových typů SAP BW do služby Azure Data Factory dočasné datových typů. Zobrazit [schéma a data zadejte mapování](copy-activity-schema-and-type-mapping.md) Další informace o způsobu, jakým aktivitu kopírování, která mapuje typ zdroje schéma a data na jímce.
 
 | Typ ABAP SAP | Data factory dočasné datový typ |
 |:--- |:--- |
-| C (String) | Řetězec |
-| Můžu (celé číslo) | Datový typ Int32 |
+| C (String) | String |
+| Můžu (celé číslo) | Int32 |
 | F (Float) | Double |
-| D (Date) | Řetězec |
-| T (čas) | Řetězec |
-| P (konfiguračních dat spouštění, balení, Měna, Decimal, množství) | Desítkově |
-| N (Numc) | Řetězec |
-| X (binární a Raw) | Řetězec |
+| D (Date) | String |
+| T (čas) | String |
+| P (konfiguračních dat spouštění, balení, Měna, Decimal, množství) | Decimal |
+| N (Numc) | String |
+| X (binární a Raw) | String |
 
 ## <a name="next-steps"></a>Další postup
 Seznam úložišť dat podporovaných jako zdroje a jímky v aktivitě kopírování ve službě Azure Data Factory najdete v tématu [podporovanými úložišti dat](copy-activity-overview.md#supported-data-stores-and-formats).

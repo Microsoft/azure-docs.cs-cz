@@ -14,12 +14,12 @@ ms.author: arib
 ms.reviewer: vanto
 manager: craigg
 ms.date: 01/15/2019
-ms.openlocfilehash: 04c4bba2647b9b17b1282c9a1608fd2e9325f661
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: 3a445fbc135e0d7dc19907339506fd0c32bffb45
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54427912"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55456030"
 ---
 # <a name="get-started-with-azure-sql-database-managed-instance-auditing"></a>Začínáme s Azure auditem SQL Database Managed Instance
 
@@ -207,7 +207,7 @@ Existuje několik metod, které lze použít k zobrazení protokolů auditován�
 
 - Protokoly auditu můžete prozkoumat pomocí nástroje [Průzkumníka služby Azure Storage](https://azure.microsoft.com/features/storage-explorer/). Ve službě Azure storage se ukládají protokoly auditování jako kolekce souborů, objektů blob do kontejneru, který byl definován pro ukládání protokolů auditu. Další podrobnosti o hierarchii složky úložiště konvence pojmenování a formát protokolu, najdete v článku [odkaz na formát protokolu auditování objektů Blob](https://go.microsoft.com/fwlink/?linkid=829599).
 
-- Úplný seznam metod spotřeby protokolu auditu, najdete [Začínáme s auditem SQL database](https://docs.microsoft.com/azure/sql-database/sql-database-auditing).
+- Úplný seznam metod spotřeby protokolu auditu, najdete [Začínáme s auditem SQL database](sql-database-auditing.md).
 
   > [!IMPORTANT]
   > Zobrazení záznamů auditu na webu Azure Portal (záznamy auditu podokno) je nyní k dispozici pro Managed Instance.
@@ -242,7 +242,7 @@ Klíč rozdíly v `CREATE AUDIT` syntaxe pro auditování do Azure blob storage 
 
 ## <a name="next-steps"></a>Další postup
 
-- Úplný seznam metod spotřeby protokolu auditu, najdete [Začínáme s auditem SQL database](https://docs.microsoft.com/azure/sql-database/sql-database-auditing).
+- Úplný seznam metod spotřeby protokolu auditu, najdete [Začínáme s auditem SQL database](sql-database-auditing.md).
 - Další informace o Azure programy dodržování standardů tuto podporu, najdete v článku [Centrum zabezpečení Azure](https://azure.microsoft.com/support/trust-center/compliance/).
 
 <!--Image references-->

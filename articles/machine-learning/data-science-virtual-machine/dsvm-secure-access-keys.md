@@ -9,19 +9,19 @@ manager: cgronlun
 ms.custom: seodec18
 ms.assetid: ''
 ms.service: machine-learning
-ms.component: data-science-vm
+ms.subservice: data-science-vm
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 05/08/2018
 ms.author: gokuma
-ms.openlocfilehash: d7d68e784aab371503e4828ce51387b86502de62
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 79dba586a5f7102d0012c381593551a951f1b38e
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53103434"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55451288"
 ---
 # <a name="store-access-credentials-on-the-data-science-virtual-machine-securely"></a>Store přístup k zabezpečené přihlašovací údaje na virtuální počítač pro datové vědy
 

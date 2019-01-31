@@ -11,14 +11,14 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 10/30/2018
+ms.date: 01/30/2019
 ms.author: alkohli
-ms.openlocfilehash: 5166e154e1a67cea777933b6bf8757661a9c3ad5
-ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
+ms.openlocfilehash: bbf1eb623232332ed025fa0806e942e638c39974
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50242955"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55456047"
 ---
 # <a name="options-to-migrate-data-from-storsimple-5000-7000-series"></a>Možnosti, jak migrovat data ze StorSimple řad 5000 – 7000 
 
@@ -45,11 +45,13 @@ Zákazníci, kteří používají StorSimple 5000 – 7000 series k dispozici n�
 
     - **Migrace na Panzura volnosti NAS** – StorSimple 5000 – 7000 Zákazníci si mohou vybrat k migraci do volného NAS Panzura chtějí uchovávat svá data v Azure. Panzura volnosti řešení poskytuje řešení NAS, která zahrnuje datová centra, pobočky, privátních a veřejných cloudech. Toto řešení umožňuje místní, hybridní a pracovní postupy dat v cloudu pro systém souborů NFS, SMB a mobilní klienty. Tato migrace podporuje Panzura a zákazníci můžou začít tím, že žádosti o podporu migrace z [Panzura webu](https://panzura.com/storsimple-migration/).
 
+    - **Migrace na Cohesity** -Cohesity umožňuje migrovat data z aktuální StorSimple 5000 – 7000 Cohesity datovou platformu v Azure. Datová platforma Cohesity je webové škálování softwarově definované řešení, která spojuje soubory, zálohování, objektů a virtuální počítače do jediného řešení nativní pro cloud. Po migraci datové platformy můžete spravovat, ochrana a zřídit dat a aplikací z cloudu na jádro prostřednictvím podokně ze skla. S využitím Cohesity začněte s pouhými třemi uzly. Další informace najdete na [migrace do Cohesity DataPlatform](https://info.cohesity.com/migrate-from-storsimple-to-cohesity.html).
+
 ## <a name="migration---frequently-asked-questions"></a>Migrace – nejčastější dotazy
 
 ### <a name="q-when-do-the-storsimple-5000-and-7000-series-devices-reach-end-of-service"></a>Otázka: Když StorSimple 5000 a 7000 series zařízení dosáhnout konce služby? 
 
-A. StorSimple řad 5000 – 7000 oslovit [konec služby](https://support.microsoft.com/lifecycle/search?alpha=StorSimple%205000%2F7000%20Series) v červenci 2019. Konec služby znamená, že Microsoft bude už moct poskytovat podporu pro hardware a software takových zařízení po 2019. července. Důrazně doporučujeme, že začínáte zpracovávající plán pro migraci dat ze zařízení teď.
+A. StorSimple řad 5000 – 7000 oslovit [konec služby](https://support.microsoft.com/lifecycle/search?alpha=StorSimple%205000%2F7000%20Series) v červenci 2019. Konec služby znamená, že Microsoft bude už moct poskytovat podporu pro hardware a software tato zařízení po. července 2019. Důrazně doporučujeme, že začínáte zpracovávající plán pro migraci dat ze zařízení teď.
 
 ### <a name="q-what-happens-to-the-data-i-have-stored-in-azure"></a>Otázka: Co se stane s daty, která jsem uloženého v Azure?  
 
@@ -68,8 +70,8 @@ A. Služby mohou pokračovat v práci, Microsoft si už ho může poskytovat pod
 
 A. V závislosti na jejich scénáři StorSimple 5000 – 7000 series uživatele máte následující možnosti migrace. 
 
- - **Upgrade na 8000 series**: tuto možnost použijte, pokud chcete pokračovat na platformě StorSimple. 
- - **Migrace do Azure File Sync**: tuto možnost použijte, pokud chcete přejít na Azure nativním formátu. Pro centralizovanou správu sdílených složek můžete použít Azure File Sync. 
+ - **Upgrade na 8000 series**: Tuto možnost použijte, pokud chcete pokračovat na platformě StorSimple. 
+ - **Migrace do Azure File Sync**: Tuto možnost použijte, pokud chcete přejít na Azure nativním formátu. Pro centralizovanou správu sdílených složek můžete použít Azure File Sync. 
 
 Obraťte se na Microsoft Support můžete projednávat možnosti migrace, které tu nejsou uvedené.
 

@@ -7,13 +7,13 @@ ms.service: storage
 ms.topic: article
 ms.date: 03/30/2018
 ms.author: fryu
-ms.component: common
-ms.openlocfilehash: 3f2ebb82f5affa3c41f237edcc039eb6214c7a4c
-ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
+ms.subservice: common
+ms.openlocfilehash: f8a73bb6e86a187a504c2d36098001cfd90015f9
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49649291"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55454919"
 ---
 # <a name="azure-storage-metrics-migration"></a>Migrace do Azure Storage metrics
 
@@ -76,7 +76,7 @@ Nové nabídky, která nepodporují staré metriky jsou následující metriky:
 | **AuthorizationError** | Transakce s dimenzí **hodnotu ResponseType** rovna **AuthorizationError** |
 | **Dostupnost** | **Dostupnost** |
 | **Hodnotu AverageE2ELatency** | **SuccessE2ELatency** |
-| **Hodnotu AverageServerLatency.** | **SuccessServerLatency** |
+| **AverageServerLatency** | **SuccessServerLatency** |
 | **ClientOtherError** | Transakce s dimenzí **hodnotu ResponseType** rovna **ClientOtherError** |
 | **ClientTimeoutError** | Transakce s dimenzí **hodnotu ResponseType** rovna **ClientTimeoutError** |
 | **NetworkError** | Transakce s dimenzí **hodnotu ResponseType** rovna **NetworkError** |

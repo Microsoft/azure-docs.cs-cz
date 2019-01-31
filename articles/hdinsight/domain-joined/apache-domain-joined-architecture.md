@@ -9,12 +9,12 @@ ms.reviewer: omidm
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: 3237932c66c77f979c4e95798163621e65735bed
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 3e58c22048c9b71b00cffb0657fc924277304662
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55247149"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55462424"
 ---
 # <a name="use-enterprise-security-package-in-hdinsight"></a>Použít balíček zabezpečení podniku v HDInsight
 
@@ -71,24 +71,24 @@ Pokud federace se právě používá a hodnoty hash hesla jsou synchronizovaná 
 
  2. ```Connect-AzureAD``` pomocí přihlašovacích údajů globálního správce (správce klienta)
 
- 3. Zkontrolujte, zda již byl vytvořen instanční objekt služby "Azure powershell"
+ 3. Zkontrolujte, zda již byl vytvořen "Microsoft Azure Powershell" instanční objekt
 
 ```
- Get-AzureADServicePrincipal -SearchString "1950a258-227b-4e31-a9cf-717495945fc2"
+ $powershellSPN = Get-AzureADServicePrincipal -SearchString "Microsoft Azure Powershell"
 ```
 
- 4. Pokud neexistuje, vytvořte instanční objekt služby
+ 4. Pokud neexistuje (tj. Pokud ($powershellSPN - q $null)) potom vytvořte instanční objekt služby
 
 ```
- New-AzureADServicePrincipal -AppId 1950a258-227b-4e31-a9cf-717495945fc2
+ $powershellSPN = New-AzureADServicePrincipal -AppId 1950a258-227b-4e31-a9cf-717495945fc2
 ```
 
- 5. Připojte zásady na tento instanční objekt: 
+ 5. Vytvořte a připojte zásady na tento instanční objekt: 
 
 ```
- $policy = New-AzureADPolicy -Definition @("{"HomeRealmDiscoveryPolicy":{"AllowCloudPasswordValidation":true}}") -DisplayName EnableDirectAuth -Type HomeRealmDiscoveryPolicy
+ $policy = New-AzureADPolicy -Definition @("{`"HomeRealmDiscoveryPolicy`":{`"AllowCloudPasswordValidation`":true}}") -DisplayName EnableDirectAuth -Type HomeRealmDiscoveryPolicy
 
- Add-AzureADServicePrincipalPolicy -Id <Service Principal ID> -refObjectID $policy.ID
+ Add-AzureADServicePrincipalPolicy -Id $powershellSPN.ObjectId -refObjectID $policy.ID
 ```
 
 ## <a name="next-steps"></a>Další postup

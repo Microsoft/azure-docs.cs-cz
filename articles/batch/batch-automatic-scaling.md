@@ -3,7 +3,7 @@ title: Automatické škálování výpočetních uzlů ve fondu služby Azure Ba
 description: Povolte automatické škálování v cloudu fondu dynamicky upravit počet výpočetních uzlů ve fondu.
 services: batch
 documentationcenter: ''
-author: dlepow
+author: laurenhughes
 manager: jeconnoc
 editor: ''
 ms.assetid: c624cdfc-c5f2-4d13-a7d7-ae080833b779
@@ -13,14 +13,14 @@ ms.topic: article
 ms.tgt_pltfrm: ''
 ms.workload: multiple
 ms.date: 06/20/2017
-ms.author: danlep
+ms.author: lahugh
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: ab41211fb0b0b6360bdbc255e367d0492c2438ed
-ms.sourcegitcommit: 7ad9db3d5f5fd35cfaa9f0735e8c0187b9c32ab1
+ms.openlocfilehash: fa5588ae31e63ae54e654ef26563c7570fe4cd13
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39330810"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55459838"
 ---
 # <a name="create-an-automatic-scaling-formula-for-scaling-compute-nodes-in-a-batch-pool"></a>Vytvořit vzorec automatického škálování pro škálování výpočetních uzlů ve fondu služby Batch
 
@@ -129,7 +129,7 @@ Podporovány jsou tyto typy ve vzorci:
 * řetězec
 * časové razítko – časové razítko je složené strukturu, která obsahuje následující členy:
 
-  * rok
+  * za rok
   * měsíc (1-12)
   * den (1-31)
   * den v týdnu (ve formátu číslo; například 1, pro pondělí)
@@ -579,7 +579,7 @@ Error:
 ## <a name="example-autoscale-formulas"></a>Příklad vzorce automatického škálování
 Podívejme se na několik vzorců, které ukazují různé způsoby, jak upravit množství výpočetních prostředků ve fondu.
 
-### <a name="example-1-time-based-adjustment"></a>Příklad 1: Nastavení podle času
+### <a name="example-1-time-based-adjustment"></a>Příklad 1: Úpravy podle času
 Předpokládejme, že chcete upravovat velikost fondu na základě den v týdnu a denní dobu. Tento příklad ukazuje, jak zvýšit nebo snížit počet uzlů ve fondu odpovídajícím způsobem.
 
 Vzorec nejprve získá aktuální čas. Pokud je jeden den v týdnu (1-5) a v rámci pracovní doby (8: 00 do 18: 00), cílovou velikost fondu je nastavena na 20 uzlů. V opačném případě je nastavena na 10 uzlů.
@@ -611,7 +611,7 @@ $TargetDedicatedNodes = max(0, min($targetVMs, 20));
 $NodeDeallocationOption = taskcompletion;
 ```
 
-### <a name="example-3-accounting-for-parallel-tasks"></a>Příklad 3: Připadají paralelní úlohy
+### <a name="example-3-accounting-for-parallel-tasks"></a>Příklad 3: Monitorování účtů pro paralelní úlohy
 Tento příklad upraví velikost fondu na základě počtu úloh. Tento vzorec také bere v úvahu [MaxTasksPerComputeNode] [ net_maxtasks] hodnotu, která byla nastavena pro fond. Tento přístup je užitečné v situacích, kdy [paralelní provádění úkolů](batch-parallel-node-tasks.md) bylo povoleno ve vašem fondu.
 
 ```csharp

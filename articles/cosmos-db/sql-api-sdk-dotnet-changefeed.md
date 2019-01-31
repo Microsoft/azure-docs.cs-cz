@@ -6,14 +6,14 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.devlang: dotnet
 ms.topic: reference
-ms.date: 10/24/2018
+ms.date: 01/30/2019
 ms.author: maquaran
-ms.openlocfilehash: 03862f88bb5debc66940ebae5308771525f51b0b
-ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
+ms.openlocfilehash: 0f6fff5047bc72fa1171e06bb2f160196ecef807
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54351642"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55300604"
 ---
 # <a name="net-change-feed-processor-sdk-download-and-release-notes"></a>.NET change Feed procesoru SDK: Stáhněte si a poznámky k verzi
 > [!div class="op_single_selector"]
@@ -40,6 +40,12 @@ ms.locfileid: "54351642"
 ## <a name="release-notes"></a>Poznámky k verzi
 
 ### <a name="v2-builds"></a>sestavení v2
+
+### <a name="a-name226226"></a><a name="2.2.6"/>2.2.6
+* Vylepšené zpracování výjimek pozorovatele.
+* Podrobnější informace o chybách pozorovatele:
+ * Při zavření pozorovatel z důvodu výjimky vyvolané ProcessChangesAsync pozorovatele, CloseAsync teď budete přijímat důvod parametrem nastaveným na ChangeFeedObserverCloseReason.ObserverError.
+ * Přidání trasy k identifikaci chyb v uživatelském kódu v pozorovatele.
 
 ### <a name="a-name225225"></a><a name="2.2.5"/>2.2.5
 * Přidání podpory pro zpracování rozdělit do kolekce, které používají sdílenou databázi propustnost.
@@ -157,6 +163,7 @@ Jakoukoli žádost do služby Cosmos DB pomocí vyřazeno sady SDK budou odmítn
 
 | Verze | Datum vydání | Datum vyřazení z provozu |
 | --- | --- | --- |
+| [2.2.6](#2.2.6) |29. ledna 2019 |--- |
 | [2.2.5](#2.2.5) |13. prosince 2018 |--- |
 | [2.2.4](#2.2.4) |29. listopadu 2018 |--- |
 | [2.2.3](#2.2.3) |19. listopadu 2018 |--- |

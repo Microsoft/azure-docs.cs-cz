@@ -5,17 +5,17 @@ author: marktab
 manager: cgronlun
 editor: cgronlun
 ms.service: machine-learning
-ms.component: team-data-science-process
+ms.subservice: team-data-science-process
 ms.topic: article
 ms.date: 11/28/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: ee8e3e3ef33a8b09b92d4dfc262fce26dd60abb3
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: adf713fc3f875168f99b302b0a9affef88e8414f
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53134399"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55457679"
 ---
 # <a name="agile-development-of-data-science-projects"></a>Agilní vývoj projekty datových věd
 
@@ -38,20 +38,20 @@ Následující obrázek ukazuje typické sprintů, plánování, kódování a p
 
 ##  1. <a name='Terminology-1'></a>Terminologie 
 
-V TDSP sprintů plánování framework, existují čtyři často používané typy **pracovní položky**: **funkce**, **uživatelský scénář**, **úloh**, a **Chyb**. Každý projekt udržuje jednu sadu nevyřízených položek pro všechny pracovní položky. Na úrovni úložiště Git v rámci projektu se nevyskytuje žádná nevyřízená úloha. Tady je jejich definice:
+V TDSP sprintů plánování framework, existují čtyři často používané typy **pracovní položky**: **Funkce**, **uživatelský scénář**, **úloh**, a **chyb**. Každý projekt udržuje jednu sadu nevyřízených položek pro všechny pracovní položky. Na úrovni úložiště Git v rámci projektu se nevyskytuje žádná nevyřízená úloha. Tady je jejich definice:
 
-- **Funkce**: funkce odpovídá engagement projektu. Různé zapojení klienta jsou považovány za různých funkcí. Podobně je nejlepší vzít v úvahu různých fází projektu pomocí klienta jako různé funkce. Pokud se například rozhodnete schéma ***ClientName EngagementName*** název funkce, pak snadno poznáte kontext projektu/engagement z názvů sami.
-- **Scénář**: scénáře jsou různé pracovní položky, které jsou vyžadovány k dokončení funkce (projekt) end až do konce. Příklady scénářů:
+- **Funkce**: Funkce odpovídá engagement projektu. Různé zapojení klienta jsou považovány za různých funkcí. Podobně je nejlepší vzít v úvahu různých fází projektu pomocí klienta jako různé funkce. Pokud se například rozhodnete schéma ***ClientName EngagementName*** název funkce, pak snadno poznáte kontext projektu/engagement z názvů sami.
+- **Scénář**: Scénáře jsou různé pracovní položky, které jsou vyžadovány k dokončení funkce (projekt) end až do konce. Příklady scénářů:
     - Získání dat 
     - Zkoumání dat 
     - Generuje se funkce
     - Vytváření modelů
     - Až po zprovoznění modelů 
     - Přeučení modelů
-- **Úloha**: jsou úkoly lze přiřadit kódu nebo dokumentu pracovních položek nebo jiných aktivit, které je potřeba provést k dokončení konkrétní scénáře. Například úkoly v textu *načtení dat* může být:
+- **Úloha**: Úlohy jsou Přiřaditelné kódu nebo dokument pracovní položky nebo ostatní aktivity, které je potřeba provést k dokončení konkrétní scénáře. Například úkoly v textu *načtení dat* může být:
     -  Získání přihlašovacích údajů systému SQL Server 
     -  Nahrávání dat do SQL Data Warehouse. 
-- **Chyba**: chyby obvykle najdete opravy, které jsou potřeba pro existující kód nebo dokumentu, které se provádějí při dokončování úkolu. Je-li chybu nebyl nalezen fází nebo úlohy, můžete předat do scénáře nebo úkol. 
+- **Chyba**: Chyby se obvykle najdete opravy, které jsou potřeba pro existující kód nebo dokumentu, které se provádějí při dokončování úkolu. Je-li chybu nebyl nalezen fází nebo úlohy, můžete předat do scénáře nebo úkol. 
 
 > [!NOTE]
 > Koncepty jsou si funkcí, scénářů, úloh a chyb z softwaru správy kódu (SCM), který se má použít v datových věd. Se může od jejich konvenční SCM definice mírně liší.

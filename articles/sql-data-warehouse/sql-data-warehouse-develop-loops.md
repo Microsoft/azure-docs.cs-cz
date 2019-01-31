@@ -6,16 +6,16 @@ author: ckarst
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
-ms.component: implement
+ms.subservice: implement
 ms.date: 04/17/2018
 ms.author: cakarst
 ms.reviewer: igorstan
-ms.openlocfilehash: b7c21566916c9728900e69dc6480098fadae7622
-ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
+ms.openlocfilehash: 5aa26aeb27d962e6e6289a754ef57b49158b68db
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43301204"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55456285"
 ---
 # <a name="using-t-sql-loops-in-sql-data-warehouse"></a>Pomocí smyček T-SQL ve službě SQL Data Warehouse
 Tipy pro pomocí smyček T-SQL a pro vývoj řešení pro nahrazení kurzory ve službě Azure SQL Data Warehouse.
@@ -25,7 +25,7 @@ Tipy pro pomocí smyček T-SQL a pro vývoj řešení pro nahrazení kurzory ve 
 SQL Data Warehouse podporuje [při](/sql/t-sql/language-elements/while-transact-sql) smyčky pro opakované spuštění výkazu bloků. Tuto smyčku WHILE pokračuje, pokud jsou zadané podmínky nastavena hodnota true, nebo dokud kód konkrétně ukončí smyčku pomocí klíčového slova přerušení. Smyčky jsou užitečné pro nahrazení kurzory definované v kódu SQL. Naštěstí téměř všechny ukazatele, které jsou napsány v SQL kódu mají různé rychloposuv vpřed, jen pro čtení. Proto [a] jsou skvělou alternativou k nahrazení kurzory smyčky.
 
 ## <a name="replacing-cursors-in-sql-data-warehouse"></a>Nahrazení kurzory ve službě SQL Data Warehouse
-Ale než se nejprve podíváme v hlavní zeptejte se sami na následující otázku: "měl by tento kurzor být přepsán používání založeným na set operace?." V mnoha případech odpověď je Ano a je často nejlepším řešením. Operace založeným na set často provádí rychleji než metodiky iterativní, řádek po řádku.
+Ale než se nejprve podíváme v hlavní vám by měl položte si otázku: následující otázky: "Měl by tento kurzor být přepsán používání založeným na set operace?." V mnoha případech odpověď je Ano a je často nejlepším řešením. Operace založeným na set často provádí rychleji než metodiky iterativní, řádek po řádku.
 
 Rychloposuv vpřed jen pro čtení ukazatele lze snadno nahradit uvozuje konstruktor cyklu. Níže je jednoduchý příklad. Tento příklad kódu aktualizuje statistiku pro všechny tabulky v databázi. Pomocí provádí iterace tabulek ve smyčce, každý příkaz spouští v sekvenci.
 

@@ -11,13 +11,13 @@ author: oslake
 ms.author: moslake
 ms.reviewer: vanto, genemi
 manager: craigg
-ms.date: 01/17/2019
-ms.openlocfilehash: 0a0a5a046bd1afefe3f4c72e713a0dafe0c856e4
-ms.sourcegitcommit: 9f07ad84b0ff397746c63a085b757394928f6fc0
+ms.date: 01/25/2019
+ms.openlocfilehash: ccc97adadef43390d2b82e206adb60962d6e1fb2
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54390395"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55453923"
 ---
 # <a name="use-virtual-network-service-endpoints-and-rules-for-azure-sql"></a>Použití koncové body služeb virtuální sítě a pravidel pro Azure SQL
 
@@ -162,7 +162,7 @@ V současné době existují dva způsoby, jak povolit auditování pro SQL Data
 
 ### <a name="impact-on-data-sync"></a>Dopad na synchronizace dat
 
-Azure SQL Database má funkce synchronizace dat, která se připojuje k vaší databáze pomocí IP adresy Azure. Při použití koncové body služby, je pravděpodobné, že se vypne **služby Azure umožňují přístup k serveru** přístup ke svému logickému serveru. Tímto přerušíte funkce synchronizace Data.
+Azure SQL Database má funkce synchronizace dat, která se připojuje k vaší databáze pomocí IP adresy Azure. Při použití koncové body služby, je pravděpodobné, že se vypne **služby Azure umožňují přístup k serveru** přístup k vašemu serveru služby SQL Database. Tímto přerušíte funkce synchronizace Data.
 
 ## <a name="impact-of-using-vnet-service-endpoints-with-azure-storage"></a>Dopad koncové body služby virtuální sítě pomocí služby Azure storage
 
@@ -173,17 +173,18 @@ Azure Storage implementoval stejné funkce, která vám umožní omezit připoje
 PolyBase se běžně používá k načtení dat do Azure SQL Data Warehouse z účtů služby Azure Storage. Pokud účet služby Azure Storage, která se načítají data z omezuje přístup jenom na sadu podsítí virtuální sítě, dojde k přerušení připojení z PolyBase k účtu. Umožňující použití obou PolyBase importovat a exportovat scénáře s Azure SQL Data Warehouse připojení k Azure Storage, která je zabezpečena k virtuální síti, postupujte podle kroků uvedených dole:
 
 #### <a name="prerequisites"></a>Požadavky
+
 1.  Instalace Azure Powershellu pomocí tohoto [průvodce](https://docs.microsoft.com/powershell/azure/install-az-ps).
 2.  Pokud máte účet pro obecné účely v1 a blob storage, je nutné nejprve upgradovat na v2 pro obecné účely použití této funkce [průvodce](https://docs.microsoft.com/azure/storage/common/storage-account-upgrade).
 3.  Musíte mít **Povolit důvěryhodné služby Microsoftu pro přístup k tomuto účtu úložiště** zapnuté pod účtem služby Azure Storage **brány firewall a virtuální sítě** nabídky nastavení. Projít tento [průvodce](https://docs.microsoft.com/azure/storage/common/storage-network-security#exceptions) Další informace.
  
 #### <a name="steps"></a>Kroky
-1.  V prostředí PowerShell **zaregistrovat logického SQL serveru** s Azure Active Directory (AAD):
+1.  V prostředí PowerShell **registraci serveru služby SQL Database** s Azure Active Directory (AAD):
 
     ```powershell
     Add-AzureRmAccount
     Select-AzureRmSubscription -SubscriptionId your-subscriptionId
-    Set-AzureRmSqlServer -ResourceGroupName your-logical-server-resourceGroup -ServerName your-logical-servername -AssignIdentity
+    Set-AzureRmSqlServer -ResourceGroupName your-database-server-resourceGroup -ServerName your-database-servername -AssignIdentity
     ```
     
  1. Vytvoření **pro obecné účely v2 účtu úložiště** použití této funkce [průvodce](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account).
@@ -192,7 +193,7 @@ PolyBase se běžně používá k načtení dat do Azure SQL Data Warehouse z ú
     > - Pokud máte účet pro obecné účely v1 a blob storage, je nutné **nejprve upgradovat na v2** použití této funkce [průvodce](https://docs.microsoft.com/azure/storage/common/storage-account-upgrade).
     > - Známé problémy s Azure Data Lake Storage Gen2 najdete to [průvodce](https://docs.microsoft.com/azure/storage/data-lake-storage/known-issues).
     
-1.  V rámci účtu úložiště, přejděte do **řízení přístupu (IAM)** a klikněte na tlačítko **přidat přiřazení role**. Přiřadit **Přispěvatel dat objektu Blob služby Storage (Preview)** role RBAC ke svému logickému SQL serveru.
+1.  V rámci účtu úložiště, přejděte do **řízení přístupu (IAM)** a klikněte na tlačítko **přidat přiřazení role**. Přiřadit **Přispěvatel dat objektu Blob služby Storage (Preview)** role RBAC pro váš server SQL Database.
 
     > [!NOTE] 
     > Tento krok lze provést pouze členové s oprávněními vlastníka. Různé předdefinované role pro prostředky Azure, najdete to [průvodce](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles).

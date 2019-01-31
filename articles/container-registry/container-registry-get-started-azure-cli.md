@@ -5,23 +5,25 @@ services: container-registry
 author: dlepow
 ms.service: container-registry
 ms.topic: quickstart
-ms.date: 03/03/2018
+ms.date: 01/22/2019
 ms.author: danlep
 ms.custom: seodec18, H1Hack27Feb2017, mvc
-ms.openlocfilehash: e75a2d126680c71542aa04bae5a30ea7c376cea1
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: 37b1c8516268611a1174edfe20fef36dfb6b36c2
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53255920"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55295827"
 ---
 # <a name="quickstart-create-a-private-container-registry-using-the-azure-cli"></a>Rychlý start: Vytvořit privátní registr pomocí rozhraní příkazového řádku Azure
 
-Azure Container Registry je spravovaná služba registru kontejnerů Dockeru sloužící k ukládání privátních imagí kontejnerů Dockeru. Tato příručka podrobně popisuje vytvoření instance služby Azure Container Registry pomocí Azure CLI, nasdílení image kontejneru do registru a nakonec nasazení kontejneru z registru do služby Azure Container Instances (ACI).
+Azure Container Registry je spravovaná služba registru kontejnerů Dockeru sloužící k ukládání privátních imagí kontejnerů Dockeru. Tato příručka podrobně popisuje vytvoření instance služby Azure Container Registry pomocí Azure CLI. Potom použijte příkazy Dockeru pro nasdílení image kontejneru do registru a nakonec o přijetí změn a spusťte image z registru.
 
-Tento rychlý start vyžaduje použití Azure CLI verze 2.0.27 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI][azure-cli].
+Tento rychlý start vyžaduje použití rozhraní příkazového řádku Azure (verze 2.0.55 nebo později doporučené). Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI][azure-cli].
 
 Je také nutné mít Docker nainstalovaný místně. Docker nabízí balíčky pro snadnou konfiguraci Dockeru v libovolném systému [macOS][docker-mac], [Windows][docker-windows] nebo [Linux][docker-linux].
+
+Azure Cloud Shell neobsahuje všechny požadované součásti Dockeru (démon `dockerd`), a proto pro tento rychlý start nelze Cloud Shell použít.
 
 ## <a name="create-a-resource-group"></a>Vytvoření skupiny prostředků
 
@@ -35,9 +37,7 @@ az group create --name myResourceGroup --location eastus
 
 ## <a name="create-a-container-registry"></a>Vytvoření registru kontejnerů
 
-V tomto rychlém startu vytvoříte registr úrovně *Basic*. Služba Azure Container Registry je dostupná v několika různých skladových položkách, které stručně popisuje následující tabulka. Další podrobnosti o každé z nich najdete v tématu [Skladové položky služby Container Registry][container-registry-skus].
-
-[!INCLUDE [container-registry-sku-matrix](../../includes/container-registry-sku-matrix.md)]
+V tomto rychlém startu vytvoříte *základní* registru, který je možnost náklady optimalizovaná pro vývojáře, další informace o službě Azure Container Registry. Podrobnosti o úrovních služeb najdete v tématu [skladové položky služby Container registry][container-registry-skus].
 
 Pomocí příkazu [az acr create][az-acr-create] vytvořte instanci služby ACR. Název registru musí být jedinečný v rámci Azure a musí obsahovat 5 až 50 alfanumerických znaků. V následujícím příkladu se používá *myContainerRegistry007*. Aktualizujte název na jedinečnou hodnotu.
 
@@ -50,10 +50,10 @@ Po vytvoření registru je výstup podobný tomuto:
 ```json
 {
   "adminUserEnabled": false,
-  "creationDate": "2017-09-08T22:32:13.175925+00:00",
+  "creationDate": "2019-01-08T22:32:13.175925+00:00",
   "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myResourceGroup/providers/Microsoft.ContainerRegistry/registries/myContainerRegistry007",
   "location": "eastus",
-  "loginServer": "myContainerRegistry007.azurecr.io",
+  "loginServer": "mycontainerregistry007.azurecr.io",
   "name": "myContainerRegistry007",
   "provisioningState": "Succeeded",
   "resourceGroup": "myResourceGroup",
@@ -68,11 +68,11 @@ Po vytvoření registru je výstup podobný tomuto:
 }
 ```
 
-V celé zbývající části tohoto rychlého startu se položka `<acrName>` používá jako zástupný symbol pro název registru kontejneru.
+Poznamenejte si `loginServer` ve výstupu, který je plně kvalifikovaný název registru (malými písmeny). V celé zbývající části tohoto rychlého startu se položka `<acrName>` používá jako zástupný symbol pro název registru kontejneru.
 
-## <a name="log-in-to-acr"></a>Přihlášení ke službě ACR
+## <a name="log-in-to-registry"></a>Přihlášení k registru
 
-Před odesíláním a vyžadováním imagí kontejnerů se musíte přihlásit k instanci služby ACR. K tomu použijte příkaz [az acr login][az-acr-login].
+Před odesíláním a vyžadováním imagí kontejnerů, musíte se přihlásit k registru. K tomu použijte příkaz [az acr login][az-acr-login].
 
 ```azurecli
 az acr login --name <acrName>
@@ -80,31 +80,7 @@ az acr login --name <acrName>
 
 Příkaz po dokončení vrátí zprávu `Login Succeeded` (Přihlášení bylo úspěšné).
 
-## <a name="push-image-to-acr"></a>Nasdílení image do služby ACR
-
-Pokud chcete nasdílet image do služby Azure Container Registry, musíte nejprve mít nějakou image. Pokud ještě nemáte žádné image místního kontejneru, spusťte následující příkaz a vyžádejte si existující image z Docker Hubu.
-
-```bash
-docker pull microsoft/aci-helloworld
-```
-
-Předtím než můžete nasdílet image do registru, musíte ji označit plně kvalifikovaným názvem přihlašovacího serveru ACR. Spuštěním následujícího příkazu získáte úplný název přihlašovacího serveru instance ACR.
-
-```azurecli
-az acr list --resource-group myResourceGroup --query "[].{acrLoginServer:loginServer}" --output table
-```
-
-Označte image pomocí příkazu [docker tag][docker-tag]. Nahraďte `<acrLoginServer>` názvem přihlašovacího serveru vaší instance ACR.
-
-```bash
-docker tag microsoft/aci-helloworld <acrLoginServer>/aci-helloworld:v1
-```
-
-Nakonec pomocí příkazu [docker push][docker-push] nasdílejte image do instance služby ACR. Nahraďte `<acrLoginServer>` názvem přihlašovacího serveru vaší instance ACR.
-
-```bash
-docker push <acrLoginServer>/aci-helloworld:v1
-```
+[!INCLUDE [container-registry-quickstart-docker-push](../../includes/container-registry-quickstart-docker-push.md)]
 
 ## <a name="list-container-images"></a>Výpis imagí kontejnerů
 
@@ -116,69 +92,31 @@ az acr repository list --name <acrName> --output table
 
 Výstup:
 
-```bash
+```
 Result
 ----------------
-aci-helloworld
+busybox
 ```
 
-Následující příklad vypíše značky v úložišti **aci-helloworld**.
+Následující příklad vypíše značky v **busybox** úložiště.
 
 ```azurecli
-az acr repository show-tags --name <acrName> --repository aci-helloworld --output table
+az acr repository show-tags --name <acrName> --repository busybox --output table
 ```
 
 Výstup:
 
-```bash
+```
 Result
 --------
 v1
 ```
 
-## <a name="deploy-image-to-aci"></a>Nasazení image do služby ACI
-
-Abyste mohli nasadit instanci kontejneru z registru, který jste vytvořili, musíte při nasazování zadat přihlašovací údaje registru. V produkčních scénářích byste pro přístup k registru kontejneru měli použít [instanční objekt][container-registry-auth-aci], ale pro zkrácení tohoto rychlého startu povolte ve svém registru uživatele s rolí správce pomocí následujícího příkazu:
-
-```azurecli
-az acr update --name <acrName> --admin-enabled true
-```
-
-Po povolení správce bude uživatelské jméno stejné jako název vašeho registru a heslo můžete načíst pomocí tohoto příkazu:
-
-```azurecli
-az acr credential show --name <acrName> --query "passwords[0].value"
-```
-
-Pokud chcete nasadit svou image kontejneru s 1 jádrem procesoru a 1 GB paměti, spusťte následující příkaz. Nahraďte `<acrName>`, `<acrLoginServer>` a `<acrPassword>` hodnotami, které jste získali z předchozích příkazů.
-
-```azurecli
-az container create --resource-group myResourceGroup --name acr-quickstart --image <acrLoginServer>/aci-helloworld:v1 --cpu 1 --memory 1 --registry-username <acrName> --registry-password <acrPassword> --dns-name-label aci-demo --ports 80
-```
-
-Z Azure Resource Manageru byste měli získat první odezvu s podrobnostmi o kontejneru. Pokud chcete monitorovat stav kontejneru a zkontrolovat, kdy je spuštěný, zopakujte příkaz [az container show][az-container-show]. Mělo by to trvat necelou minutu.
-
-```azurecli
-az container show --resource-group myResourceGroup --name acr-quickstart --query instanceView.state
-```
-
-## <a name="view-the-application"></a>Zobrazení aplikace
-
-Po úspěšném nasazení do služby ACI načtěte plně kvalifikovaný název domény kontejneru pomocí příkazu [az container show][az-container-show]:
-
-```azurecli
-az container show --resource-group myResourceGroup --name acr-quickstart --query ipAddress.fqdn
-```
-
-Příklad výstupu: `"aci-demo.eastus.azurecontainer.io"`
-
-Pokud chcete zobrazit spuštěnou aplikaci, v oblíbeném prohlížeči přejděte na tuto veřejnou IP adresu.
-
-![Aplikace Hello World v prohlížeči][aci-app-browser]
+[!INCLUDE [container-registry-quickstart-docker-pull](../../includes/container-registry-quickstart-docker-pull.md)]
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Pokud už je nepotřebujete, můžete k odebrání skupiny prostředků, instance ACR a všech imagí kontejneru použít příkaz [az group delete][az-group-delete].
+Pokud už je nepotřebujete, můžete použít [odstranění skupiny az] [ az-group-delete] příkazu odeberte skupinu prostředků, do registru kontejneru a imagí kontejnerů v ní uloženy.
 
 ```azurecli
 az group delete --name myResourceGroup
@@ -186,20 +124,18 @@ az group delete --name myResourceGroup
 
 ## <a name="next-steps"></a>Další postup
 
-V tomto rychlém startu jste pomocí Azure CLI vytvořili službu Azure Container Registry, nasdíleli jste image kontejneru do registru a prostřednictvím služby Azure Container Instances jste spustili její instanci. Pokračujte ke kurzu služby Azure Container Instances, kde najdete podrobnější přehled ACI.
+V tomto rychlém startu jste vytvořili službu Azure Container Registry pomocí Azure CLI, nahráli image kontejneru do registru a vyžádá a spustili image z registru. Pokračujte na Azure Container Registry kurzy pro najdete podrobnější přehled služby ACR.
 
 > [!div class="nextstepaction"]
-> [Kurz služby Azure Container Instances][container-instances-tutorial-prepare-app]
-
-<!-- IMAGES> -->
-[aci-app-browser]: ../container-instances/media/container-instances-quickstart/aci-app-browser.png
-
+> [Kurzy služby Azure Container Registry][container-registry-tutorial-quick-task]
 
 <!-- LINKS - external -->
 [docker-linux]: https://docs.docker.com/engine/installation/#supported-platforms
-[docker-login]: https://docs.docker.com/engine/reference/commandline/login/
 [docker-mac]: https://docs.docker.com/docker-for-mac/
 [docker-push]: https://docs.docker.com/engine/reference/commandline/push/
+[docker-pull]: https://docs.docker.com/engine/reference/commandline/pull/
+[docker-rmi]: https://docs.docker.com/engine/reference/commandline/rmi/
+[docker-run]: https://docs.docker.com/engine/reference/commandline/run/
 [docker-tag]: https://docs.docker.com/engine/reference/commandline/tag/
 [docker-windows]: https://docs.docker.com/docker-for-windows/
 
@@ -209,7 +145,5 @@ V tomto rychlém startu jste pomocí Azure CLI vytvořili službu Azure Containe
 [az-group-create]: /cli/azure/group#az-group-create
 [az-group-delete]: /cli/azure/group#az-group-delete
 [azure-cli]: /cli/azure/install-azure-cli
-[az-container-show]: /cli/azure/container#az-container-show
-[container-instances-tutorial-prepare-app]: ../container-instances/container-instances-tutorial-prepare-app.md
+[container-registry-tutorial-quick-task]: container-registry-tutorial-quick-task.md
 [container-registry-skus]: container-registry-skus.md
-[container-registry-auth-aci]: container-registry-auth-aci.md

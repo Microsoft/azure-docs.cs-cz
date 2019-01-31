@@ -3,7 +3,7 @@ title: Instalovat balíčky aplikací na výpočetních uzlech – Azure Batch |
 description: Použití funkce balíčky aplikací služby Azure Batch můžete snadno spravovat více aplikací a verzí pro instalaci na Batch výpočetních uzlů.
 services: batch
 documentationcenter: .net
-author: dlepow
+author: laurenhughes
 manager: jeconnoc
 editor: ''
 ms.assetid: 3b6044b7-5f65-4a27-9d43-71e1863d16cf
@@ -13,14 +13,14 @@ ms.topic: article
 ms.tgt_pltfrm: ''
 ms.workload: big-compute
 ms.date: 06/15/2018
-ms.author: danlep
+ms.author: lahugh
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 333161042e968b4baf4b962869d688fd0b696b24
-ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
+ms.openlocfilehash: 6fd3eccf3de5d46520dc5a50cab66667c875799e
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47094131"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55454603"
 ---
 # <a name="deploy-applications-to-compute-nodes-with-batch-application-packages"></a>Nasazení aplikací do výpočetních uzlů pomocí balíčků aplikací Batch
 
@@ -113,9 +113,9 @@ Výběrem této možnosti se otevře **aplikací** okno:
 
 Toto okno zobrazuje ID každé aplikace v účtu a následující vlastnosti:
 
-* **Balíčky**: číslo verze přidružené k této aplikaci.
-* **Výchozí verze**: verze aplikace nainstalovat, pokud při zadávání žádosti o fond nevyžadují verze. Toto nastavení je volitelné.
-* **Povolit aktualizace**: hodnotu, která určuje, jestli balíček aktualizace, odstranění a přidání jsou povoleny. Pokud je nastavené na **ne**, balíček aktualizace a odstranění jsou zakázané pro aplikaci. Je možné přidat pouze nové verze balíčku aplikace. Výchozí hodnota je **Yes** (Ano).
+* **Balíčky**: Číslo verze přidružené k této aplikaci.
+* **Výchozí verze**: Verze aplikace nainstalovat, pokud při zadávání žádosti o fond nevyžadují verze. Toto nastavení je volitelné.
+* **Povolit aktualizace**: Hodnota, která určuje, jestli balíček aktualizace, odstranění a přidání jsou povoleny. Pokud je nastavené na **ne**, balíček aktualizace a odstranění jsou zakázané pro aplikaci. Je možné přidat pouze nové verze balíčku aplikace. Výchozí hodnota je **Yes** (Ano).
 
 ### <a name="view-application-details"></a>Zobrazení podrobností aplikace
 Chcete-li zobrazit podrobnosti o aplikaci, vyberte aplikaci v **aplikací** okna.

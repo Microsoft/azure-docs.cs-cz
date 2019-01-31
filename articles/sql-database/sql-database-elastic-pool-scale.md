@@ -11,19 +11,19 @@ author: oslake
 ms.author: moslake
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 10/15/2018
-ms.openlocfilehash: 04fcb84b22e84060652b4a3743cb73e4543ee573
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.date: 01/25/2019
+ms.openlocfilehash: 310d662782ff7d9713007b59f0d9b75620a03f5f
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52868442"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55455095"
 ---
 # <a name="scale-elastic-pool-resources-in-azure-sql-database"></a>Škálování elastického fondu prostředků ve službě Azure SQL Database
 
 Tento článek popisuje, jak škálovat výpočetní a úložné prostředky dostupné pro elastické fondy a databáze ve fondu ve službě Azure SQL Database.
 
-## <a name="vcore-based-purchasing-model-change-elastic-pool-storage-size"></a>nákupní model založený na virtuálních jádrech: změnit velikost úložiště elastického fondu
+## <a name="vcore-based-purchasing-model-change-elastic-pool-storage-size"></a>nákupní model založený na virtuálních jádrech: Změnit velikost úložiště elastického fondu
 
 - Úložiště lze zřídit až do limitu maximální velikost:
 
@@ -44,7 +44,7 @@ Můžete zvýšit nebo snížit velikost výpočetního do elastického fondu po
 - Obecně platí, doba trvání, chcete-li změnit min virtuálních jader na databázi nebo maximální počet virtuálních jader na databázi je pět minut nebo méně.
 - Když downsizing fondu virtuálních jader, musí být menší než maximální povolenou velikost cílové služby vrstvy a fondu virtuální jádra místo fondu používá.
 
-## <a name="dtu-based-purchasing-model-change-elastic-pool-storage-size"></a>Nákupní model založený na DTU: změnit velikost úložiště elastického fondu
+## <a name="dtu-based-purchasing-model-change-elastic-pool-storage-size"></a>Nákupní model založený na DTU: Změnit velikost úložiště elastického fondu
 
 - Cena eDTU pro elastický fond obsahuje objem úložiště bez dalších poplatků. Dodatečné úložiště nad rámec objemu zahrnutého v ceně je možné zřídit za poplatek až po limit maximální velikosti, v přírůstcích po 250 GB až 1 TB a potom dokupuje se násobek 256 GB nad rámec 1 TB. Částky zahrnutého úložiště a omezení maximální velikosti najdete v tématu [elastického fondu: velikosti úložiště a výpočty velikostí](sql-database-dtu-resource-limits-elastic-pools.md#elastic-pool-storage-sizes-and-compute-sizes).
 - Dodatečné úložiště pro elastický fond je možné zřídit zvýšením jeho pomocí maximální velikosti [webu Azure portal](sql-database-elastic-pool-manage.md#azure-portal-manage-elastic-pools-and-pooled-databases), [PowerShell](/powershell/module/azurerm.sql/set-azurermsqlelasticpool), [rozhraní příkazového řádku Azure](/cli/azure/sql/elastic-pool#az-sql-elastic-pool-update), nebo [rozhraní REST API ](https://docs.microsoft.com/rest/api/sql/elasticpools/update).
@@ -53,7 +53,7 @@ Můžete zvýšit nebo snížit velikost výpočetního do elastického fondu po
 > [!IMPORTANT]
 > Za určitých okolností budete muset zmenšit databázi uvolnění nevyužívaného místa. Další informace najdete v tématu [spravovat místo souborů ve službě Azure SQL Database](sql-database-file-space-management.md).
 
-## <a name="dtu-based-purchasing-model-change-elastic-pool-compute-resources-edtus"></a>Nákupní model založený na DTU: Změna elastický fond, výpočetní prostředky (Edtu)
+## <a name="dtu-based-purchasing-model-change-elastic-pool-compute-resources-edtus"></a>Nákupní model založený na DTU: Změnit elastický fond, výpočetní prostředky (Edtu)
 
 Při zvětšování a zmenšování prostředků k dispozici do elastického fondu podle potřeby pomocí prostředků [webu Azure portal](sql-database-elastic-pool-manage.md#azure-portal-manage-elastic-pools-and-pooled-databases), [PowerShell](/powershell/module/azurerm.sql/set-azurermsqlelasticpool), [rozhraní příkazového řádku Azure](/cli/azure/sql/elastic-pool#az-sql-elastic-pool-update), nebo [ Rozhraní REST API](https://docs.microsoft.com/rest/api/sql/elasticpools/update).
 
