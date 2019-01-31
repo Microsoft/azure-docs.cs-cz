@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 09/12/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: ae03e1498d948e7d044561c3e6bea8c343d7b165
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: 95ada2cb146bdbc972afee883a1d174c95aa67d7
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44713965"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55297578"
 ---
 # <a name="sap-hana-availability-across-azure-regions"></a>Dostupnost SAP HANA v různých oblastech Azure
 
@@ -39,14 +39,14 @@ Virtuální síť Azure používá jiný rozsah IP adres. IP adresy se nasazují
 
 ## <a name="simple-availability-between-two-azure-regions"></a>Jednoduché dostupnosti mezi dvěma oblastmi Azure
 
-Můžete rozhodnout není zavedený žádnou konfiguraci dostupnosti v rámci jedné oblasti, ale ještě další požadavek mít úlohu obsluhuje, pokud dojde k havárii. Typické případy pro systémy, jako je to jsou neprovozním systémy. Sice udržitelné poloviční denně nebo dokonce i za den s systému dolů nemůže povolit systém, aby byl k dispozici na 48 hodin nebo více. Chcete-li nastavení levnější, spusťte další systémy, které je i méně důležitá ve virtuálním počítači. Druhý systém funguje jako cíl. Můžete také velikost virtuálního počítače v sekundární oblasti menší a rozhodnou předběžné načtení dat. Protože převzetí služeb při selhání je ruční a zahrnuje mnoho kroků další převzít služby při selhání aplikace dokončena a zásobníku, je přijatelné další čas vypnout virtuální počítač, změňte jeho velikost a restartujte virtuální počítač.
+Můžete rozhodnout není zavedený žádnou konfiguraci dostupnosti v rámci jedné oblasti, ale ještě další požadavek mít úlohu obsluhuje, pokud dojde k havárii. Typické případy pro takové scénáře jsou neprovozním systémy. Sice udržitelné poloviční denně nebo dokonce i za den s systému dolů nemůže povolit systém, aby byl k dispozici na 48 hodin nebo více. Chcete-li nastavení levnější, spusťte další systémy, které je i méně důležitá ve virtuálním počítači. Druhý systém funguje jako cíl. Můžete také velikost virtuálního počítače v sekundární oblasti menší a rozhodnou předběžné načtení dat. Protože převzetí služeb při selhání je ruční a zahrnuje mnoho kroků další převzít služby při selhání aplikace dokončena a zásobníku, je přijatelné další čas vypnout virtuální počítač, změňte jeho velikost a restartujte virtuální počítač.
 
 Pokud používáte scénáři sdílení cíle zotavení po Havárii systémem dotazů a odpovědí v jeden virtuální počítač, budete muset vzít v úvahu tyto aspekty:
 
 - Existují dva [režimy operace](https://help.sap.com/viewer/6b94445c94ae495c83a19646e7c3fd56/2.0.02/en-US/627bd11e86c84ec2b9fcdf585d24011c.html) delta_datashipping a logreplay, které jsou k dispozici pro takové situaci
 - Oba režimy operace mají jiné paměťové požadavky bez předběžného načítání dat
 - Delta_datashipping potřebovat výrazně méně paměti bez předběžného načítání možnosti než logreplay může vyžadovat. Naleznete v kapitole 4.3 dokument SAP [jak k provádění systémové replikace pro SAP HANA](https://archive.sap.com/kmuuid2/9049e009-b717-3110-ccbd-e14c277d84a3/How%20to%20Perform%20System%20Replication%20for%20SAP%20HANA.pdf)
-- Požadavek na paměť logreplay operace režimu bez předběžné načtení není deterministický. a závisí na načíst columnstore struktury. V extrémních případech můžete potřebovat 50 % paměti primární instance. Paměť pro režim operace logreplay je nezávislá na tom, jestli jste se rozhodli mají data předem nastavené.
+- Požadavek na paměť logreplay operace režimu bez předběžné načtení není deterministický. a závisí na načíst columnstore struktury. V extrémních případech se může vyžadovat 50 % paměti primární instance. Paměť pro režim operace logreplay je nezávislá na tom, jestli jste se rozhodli mají data předem nastavené.
 
 
 ![Diagram dvou virtuálních počítačů přes dvě oblasti](./media/sap-hana-availability-two-region/two_vm_HSR_async_2regions_nopreload.PNG)
@@ -64,14 +64,24 @@ Kombinace dostupnost v různých oblastech i mohou být způsobeny tyto faktory:
 - Organizace není ochoten nebo schopen mít globální operace ovlivněny hlavní přírodní katastrofa, který má vliv větší oblasti. To se stává třeba u některých hurikány, které přístupů Karibiku během posledních několika let.
 - Předpisy o vývozu vyžádání vzdálenosti mezi primárních a sekundárních lokalit, které jsou jasně nad rámec jaké dostupnost Azure může poskytnout zóny.
 
-V těchto případech můžete nastavit jaké SAP volání [konfigurace replikace vícevrstvé systému SAP HANA](https://help.sap.com/viewer/6b94445c94ae495c83a19646e7c3fd56/2.0.02/en-US/ca6f4c62c45b4c85a109c7faf62881fc.html) s využitím systémové replikace HANA. Architektura bude vypadat takto:
+V těchto případech můžete nastavit jaké SAP volání [konfigurace replikace vícevrstvé systému SAP HANA](https://help.sap.com/viewer/6b94445c94ae495c83a19646e7c3fd56/2.0.02/en-US/ca6f4c62c45b4c85a109c7faf62881fc.html) s využitím systémové replikace HANA. Architektura vypadat nějak takto:
 
 ![Diagram tři virtuální počítače prostřednictvím dvou oblastech](./media/sap-hana-availability-two-region/three_vm_HSR_async_2regions_ha_and_dr.PNG)
+
+SAP zavedené [replikace více cílový systém](https://help.sap.com/viewer/42668af650f84f9384a3337bcd373692/2.0.03/en-US/0b2c70836865414a8c65463180d18fec.html) s HANA 2.0 SPS3. Replikace více cílový systém přináší určité výhody ve scénářích aktualizace. Zotavení po Havárii site (2 oblasti) například nemá žádný vliv při sekundární lokality HA je mimo provoz kvůli údržbě nebo aktualizace. Můžete najít další informace o více cíl systémové replikace HANA [tady](https://help.sap.com/viewer/6b94445c94ae495c83a19646e7c3fd56/2.0.03/en-US/ba457510958241889a459e606bbcf3d3.html).
+Možnou architekturu s více cíl replikace vypadat nějak takto:
+
+![Diagram tři virtuální počítače přes dvě oblasti milti cíl](./media/sap-hana-availability-two-region/saphanaavailability_hana_system_2region_HA_and_DR_multitarget_3VMs.PNG)
+
+Pokud má organizace požadavky na vysokou dostupnost připravenosti v second(DR) oblast Azure, tato architektura může vypadat třeba:
+
+![Diagram tři virtuální počítače přes dvě oblasti milti cíl](./media/sap-hana-availability-two-region/saphanaavailability_hana_system_2region_HA_and_DR_multitarget_4VMs.PNG)
+
 
 Použití logreplay jako režim operace, tato konfigurace poskytuje plánovaný bod obnovení = 0, s nízké RTO, v rámci primární oblasti. Konfigurace také poskytuje vrazíme cíle bodu obnovení, pokud se jedná o přesun do druhé oblasti. RTO časy v druhé oblasti jsou závislé na tom, jestli se předem načtou data. Mnozí uživatelé používají k provozování systému testovacího virtuálního počítače v sekundární oblasti. V tomto případ použití, nemůže být předem načtena data.
 
 > [!IMPORTANT]
-> Režimy operace mezi různé vrstvy musí být homogenní. Můžete **nelze** použít logreply režim operace mezi 1 a vrstvu 2 a delta_datashipping slouží k poskytování vrstvy 3. Můžete pouze jednu nebo jiné operace režim, ve kterém musí být konzistentní pro všechny úrovně. Protože delta_datashipping není vhodné poskytnout plánovaný bod obnovení = 0, režim pouze přiměřené operace pro taková více úroveň konfigurace zůstane logreplay. Podrobnosti o operaci režimech a určitá omezení, najdete v článku SAP [režimy operace pro systémové replikace SAP HANA](https://help.sap.com/viewer/6b94445c94ae495c83a19646e7c3fd56/2.0.02/en-US/627bd11e86c84ec2b9fcdf585d24011c.html). 
+> Režimy operace mezi různé vrstvy musí být homogenní. Můžete **nelze** použít logreply režim operace mezi 1 a vrstvu 2 a delta_datashipping slouží k poskytování vrstvy 3. Můžete pouze jednu nebo jiné operace režim, ve kterém musí být konzistentní pro všechny úrovně. Protože delta_datashipping není vhodné poskytnout plánovaný bod obnovení = 0, režim pouze přiměřené operace pro taková konfigurace vícevrstvé zůstává logreplay. Podrobnosti o operaci režimech a určitá omezení, najdete v článku SAP [režimy operace pro systémové replikace SAP HANA](https://help.sap.com/viewer/6b94445c94ae495c83a19646e7c3fd56/2.0.02/en-US/627bd11e86c84ec2b9fcdf585d24011c.html). 
 
 ## <a name="next-steps"></a>Další postup
 

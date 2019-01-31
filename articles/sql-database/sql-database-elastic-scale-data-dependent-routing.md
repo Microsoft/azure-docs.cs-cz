@@ -11,17 +11,17 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 manager: craigg
-ms.date: 01/03/2019
-ms.openlocfilehash: 46febbeb2675c38bf68c6ba0b911f799b268e208
-ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
+ms.date: 01/25/2019
+ms.openlocfilehash: fe9098592fcfde2d5e23b78a3e33f2b4ebb9e2dc
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54201104"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55468644"
 ---
 # <a name="use-data-dependent-routing-to-route-a-query-to-appropriate-database"></a>Použijte závislé na datech směrování směrovat dotaz k příslušné databázi
 
-**Směrování závislé na datech** je možnost používat data v dotazu pro směrování požadavku k příslušné databázi. Směrování dat závislé je základní vzor, pokud pracujete s horizontálně dělené databáze. Kontext požadavku může také sloužit pro směrování požadavku, zejména v případě, že je klíč horizontálního dělení není součástí dotazu. Je omezena na jednu databázi na žádost o přístup k každé konkrétní dotaz nebo transakce v aplikaci pomocí směrování závislé na datech. Pro nástroje Azure SQL Database Elastic tento směrování se provádí pomocí **ShardMapManager** ([Java](/java/api/com.microsoft.azure.elasticdb.shard.mapmanager.shardmapmanager), [.NET](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanager)) třídy.
+**Směrování závislé na datech** je možnost používat data v dotazu pro směrování požadavku k příslušné databázi. Směrování dat závislé je základní vzor, pokud pracujete s horizontálně dělené databáze. Kontext požadavku může také sloužit pro směrování požadavku, zejména v případě, že je klíč horizontálního dělení není součástí dotazu. Je omezena na jednu databázi na jednu žádost o přístup k každé konkrétní dotaz nebo transakce v aplikaci pomocí směrování závislé na datech. Pro nástroje Azure SQL Database Elastic tento směrování se provádí pomocí **ShardMapManager** ([Java](/java/api/com.microsoft.azure.elasticdb.shard.mapmanager.shardmapmanager), [.NET](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanager)) třídy.
 
 Aplikace nemusí pro sledování různých připojovací řetězce nebo DB umístění přidružené k jiné řezy dat v horizontálně dělené prostředí. Místo toho [správce mapování horizontálních oddílů](sql-database-elastic-scale-shard-map-management.md) otevře připojení na správné databáze, pokud je nepotřebujete, založené na datech z mapy horizontálních oddílů a hodnota klíče horizontálního dělení, která je cílem dané žádosti o aplikace. Klíč je obvykle *customer_id*, *tenant_id*, *date_key*, nebo některé konkrétní identifikátor, který je základní parametr požadavek databáze.
 

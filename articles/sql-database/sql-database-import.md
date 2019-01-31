@@ -11,13 +11,13 @@ author: douglaslMS
 ms.author: douglasl
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 12/05/2018
-ms.openlocfilehash: 9e79aa2315118bcd9ce4328e74d51d7a22ea6247
-ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
+ms.date: 01/25/2019
+ms.openlocfilehash: c1b6c55475c1600c89c1ac1cae9dee0068b92070
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53744545"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55478215"
 ---
 # <a name="quickstart-import-a-bacpac-file-to-a-new-azure-sql-database"></a>Rychlý start: Import souboru BACPAC do nové databáze SQL Azure
 
@@ -33,7 +33,7 @@ Tato část ukazuje, jak v [webu Azure portal](https://portal.azure.com), chcete
 > [!NOTE]
 > [Azure SQL Database Managed Instance](sql-database-managed-instance.md) podporuje import ze souboru BACPAC s použitím jiné metody v tomto článku, ale aktuálně nepodporuje migraci na webu Azure Portal.
 
-K importu databáze na webu Azure Portal, otevřete stránku pro logický server, který bude hostitelem import a na panelu nástrojů vyberte **importovat databázi**.  
+K importu databáze na webu Azure Portal, otevřete stránku pro server SQL Database, která bude hostovat import a na panelu nástrojů vyberte **importovat databázi**.  
 
    ![import databáze](./media/sql-database-import/import.png)
 
@@ -41,7 +41,7 @@ Vyberte účet úložiště, kontejner a souboru BACPAC, který chcete importova
 
 ### <a name="monitor-imports-progress"></a>Sledujte průběh importu
 
-Chcete-li sledovat průběh importu, otevřete stránku importovanou databázi logický server a v části **nastavení**vyberte **historie importu a exportu**. V případě úspěchu se import **dokončeno** stav.
+Chcete-li sledovat postup importu, otevřete stránku serveru importovanou databázi a v části **nastavení**vyberte **historie importu a exportu**. V případě úspěchu se import **dokončeno** stav.
 
 Pokud chcete ověřit, je databáze na serveru, vyberte **databází SQL** a ověřte nové databáze **Online**.
 
@@ -51,14 +51,14 @@ Import databáze SQL pomocí [SqlPackage](https://docs.microsoft.com/sql/tools/s
 
 Škálovatelnost a výkon doporučujeme použitím nástroje SqlPackage ve většině produkčních prostředí. Příspěvek na blogu zákaznického poradního týmu SQL Serveru o migraci pomocí souborů BACPAC najdete v tématu popisujícím [migraci z SQL Serveru do služby SQL Database pomocí souborů BACPAC](https://blogs.msdn.microsoft.com/sqlcat/2016/10/20/migrating-from-sql-server-to-azure-sql-database-using-bacpac-files/).
 
-Následující příkaz SqlPackage importuje **AdventureWorks2008R2** databáze z místního úložiště k logickému serveru Azure SQL Database volá **mynewserver20170403**. Vytvoří novou databázi s názvem **myMigratedDatabase** s **Premium** úroveň služby a **P6** cíle služby. Změňte tyto hodnoty v závislosti na vašem prostředí.
+Následující příkaz SqlPackage importuje **AdventureWorks2008R2** databáze z místního úložiště na serveru Azure SQL Database s názvem **mynewserver20170403**. Vytvoří novou databázi s názvem **myMigratedDatabase** s **Premium** úroveň služby a **P6** cíle služby. Změňte tyto hodnoty v závislosti na vašem prostředí.
 
 ```cmd
 SqlPackage.exe /a:import /tcs:"Data Source=mynewserver20170403.database.windows.net;Initial Catalog=myMigratedDatabase;User Id=<your_server_admin_account_user_id>;Password=<your_server_admin_account_password>" /sf:AdventureWorks2008R2.bacpac /p:DatabaseEdition=Premium /p:DatabaseServiceObjective=P6
 ```
 
 > [!IMPORTANT]
-> Logický server Azure SQL Database naslouchá na portu 1433. Pro připojení k logickému serveru za podniková brána firewall, brána firewall musí mít tento port otevřít.
+> Server služby SQL Database naslouchá na portu 1433. Pro připojení k serveru služby SQL Database za podniková brána firewall, brána firewall musí mít tento port otevřít.
 >
 
 Tento příklad ukazuje, jak importovat databázi s použitím nástroje SqlPackage pomocí univerzálního ověřování Active Directory.
@@ -107,7 +107,7 @@ Další příklad skriptu, naleznete v tématu [Import databáze ze souboru BACP
 
 ## <a name="limitations"></a>Omezení
 
-Import do databáze v elastickém fondu se nepodporuje. Můžete importovat data do izolované databáze a potom přesunutí databáze do fondu.
+Import do databáze v elastickém fondu se nepodporuje. Můžete importovat data do izolované databáze a poté přesuňte databázi do elastického fondu.
 
 ## <a name="import-using-wizards"></a>Import pomocí průvodců
 

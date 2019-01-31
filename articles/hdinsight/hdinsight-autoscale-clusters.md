@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 01/21/2019
 ms.author: hrasheed
-ms.openlocfilehash: fd2d9bd325d79a1fd8aa0da74da64f6ba98decda
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.openlocfilehash: bd1ffcfd915fe9ece683ec88d27f54b3a9214621
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55101052"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55475669"
 ---
 # <a name="automatically-scale-azure-hdinsight-clusters-preview"></a>Automatické škálování clusterů Azure HDInsight (Preview)
 
@@ -27,17 +27,17 @@ Cluster Azure HDInsight automatického škálování, které funkce se automatic
 > [!Note]
 > Automatické škálování je momentálně podporována pouze pro verze clusterů Azure HDInsight Hive, MapReduce a Spark 3.6.
 
-Kompletní HDInsight clusteru vytváření postup pomocí webu Azure Portal najdete v [vytvoření linuxových clusterech v HDInsight pomocí webu Azure portal](hdinsight-hadoop-create-linux-clusters-portal.md).  Povolení automatického škálování během procesu vytváření vyžaduje několik odchylky od obvykle instalační kroky.  
+Pokud chcete povolit funkce automatického škálování, postupujte prosím takto jako součást procesu vytváření běžných clusteru:
 
 1. Vyberte **vlastní (velikost, nastavení, aplikace)** spíše než **rychlé vytvoření**.
-2. Na vlastní krok 5 **velikost clusteru**, zkontrolujte **automatického škálování uzlů pracovního procesu** zaškrtávací políčko.
+2. Na **vlastní** kroku 5 (**velikost clusteru**) zkontrolujte **automatického škálování uzlů pracovního procesu** zaškrtávací políčko.
 3. Zadejte požadované hodnoty pro:  
-  &#8226;Počáteční **počet pracovních uzlů**.  
-  &#8226;**Minimální** počet uzlů pracovního procesu.  
-  &#8226;**Maximální** počet uzlů pracovního procesu.  
+
+    * Počáteční **počet pracovních uzlů**.  
+    * **Minimální** počet uzlů pracovního procesu.  
+    * **Maximální** počet uzlů pracovního procesu.  
 
 ![Možnost automatického škálování uzlů pracovního procesu](./media/hdinsight-autoscale-clusters/usingAutoscale.png)
-
 
 Počáteční počet uzlů pracovního procesu se musí nacházet mezi minimální a maximální (včetně). Tato hodnota určuje počáteční velikost clusteru při jeho vytvoření. Minimální počet uzlů pracovního procesu musí být větší než nula.
 
@@ -48,9 +48,11 @@ Vaše předplatné má kvótu kapacity pro každou oblast. Celkový počet jader
 > [!Note]  
 > Pokud překročíte limit kvóty celkový počet jader, zobrazí se chybová zpráva s oznámením "překročil maximální počet uzel dostupných jader v této oblasti, zvolte prosím jiné oblasti nebo požádejte podporu o navýšení kvóty."
 
+Další informace o vytváření clusteru HDInsight pomocí webu Azure portal najdete v tématu [vytvoření linuxových clusterech v HDInsight pomocí webu Azure portal](hdinsight-hadoop-create-linux-clusters-portal.md).  
+
 ### <a name="create-a-cluster-with-a-resource-manager-template"></a>Vytvoření clusteru pomocí šablony Resource Manageru
 
-Kompletní HDInsight clusteru vytváření postup pomocí šablon Resource Manageru najdete v [vytvořit Apache Hadoop clusterů v HDInsight pomocí šablon Resource Manageru](hdinsight-hadoop-create-linux-clusters-arm-templates.md).  Při vytváření clusteru služby HDInsight pomocí šablony Azure Resource Manageru, budete muset přidat následující nastavení v části "workernode" "computeProfile" a odpovídajícím způsobem upravit:
+Vytvoření clusteru HDInsight pomocí šablony Azure Resource Manageru, přidejte `autoscale` uzlu `computeProfile`  >  `workernode` část s vlastnostmi `minInstanceCount` a `maxInstanceCount` jak je znázorněno v následujícím fragmentu kódu json.
 
 ```json
 {                            
@@ -73,6 +75,8 @@ Kompletní HDInsight clusteru vytváření postup pomocí šablon Resource Manag
     "scriptActions": []
 }
 ```
+
+Další informace o vytváření clusterů se šablonami Resource Manageru, najdete v části [vytvořit Apache Hadoop clusterů v HDInsight pomocí šablon Resource Manageru](hdinsight-hadoop-create-linux-clusters-arm-templates.md).  
 
 ### <a name="enable-and-disable-autoscale-for-a-running-cluster"></a>Povolení a zákaz automatického škálování pro spuštěný cluster
 
@@ -106,7 +110,7 @@ Při zjištění těchto podmínek, automatické škálování vydá vertikáln�
 * Celkový počet čekajících procesoru je větší než celkový volný čas procesoru pro více než 1 minuta.
 * Celkový počet čekajících paměti je větší než celkové volné paměti pro více než 1 minuta.
 
-My pak vypočítá N nových pracovních uzlech jsou potřeba splňovala aktuální požadavky na procesor a paměť a potom vydat vertikálního navýšení žádosti můžete si vyžádat N nových pracovních uzlech.
+Můžeme počítat počet nových pracovních uzlech je třeba splnit požadavky na aktuální využití procesoru a paměti a potom vydat vertikálního navýšení požadavek, který se přidá tento počet nových pracovních uzlech.
 
 ### <a name="cluster-scale-down"></a>Škálování clusteru dolů
 
@@ -115,7 +119,7 @@ Při zjištění těchto podmínek, automatické škálování vydá vertikáln�
 * Celkový počet čekajících procesoru je menší než celkový čas procesoru zdarma po dobu více než 10 minut.
 * Celkový počet čekajících paměti je menší než celkové volné paměti pro více než 10 minut.
 
-Podle počtu kontejnerů AM na uzlu, jakož i aktuální požadavky na procesor a paměť, automatické škálování vydá požadavek na odebrání uzlů N zadání uzlů, které jsou možné kandidáty pro odstranění. Ve výchozím nastavení budou odebrány dva uzly v jednom cyklu.
+Podle počtu kontejnerů AM na uzlu, jakož i aktuální požadavky na procesor a paměť, automatické škálování vydá požadavek na odebrání počtu uzlů, určení uzlů, které jsou možné kandidáty pro odstranění. Ve výchozím nastavení budou odebrány dva uzly v jednom cyklu.
 
 ## <a name="next-steps"></a>Další postup
 

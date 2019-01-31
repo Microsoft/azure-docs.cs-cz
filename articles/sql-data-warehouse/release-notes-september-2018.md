@@ -6,22 +6,22 @@ author: twounder
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
-ms.component: manage
+ms.subservice: manage
 ms.date: 10/08/2018
 ms.author: mausher
 ms.reviewer: twounder
-ms.openlocfilehash: f8073fd746bc02c23efab914c45c61830942a677
-ms.sourcegitcommit: 0fc99ab4fbc6922064fc27d64161be6072896b21
+ms.openlocfilehash: 00d29ac1938a1abb63fca50afe3d66253a1e29bf
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51577953"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55460722"
 ---
 # <a name="whats-new-in-azure-sql-data-warehouse-september-2018"></a>Co je nového ve službě Azure SQL Data Warehouse? Září 2018
 Azure SQL Data Warehouse neustále obdrží vylepšení. Tento článek popisuje nové funkce a změny, které byly zavedeny v září 2018.
 
 ## <a name="new-lower-entry-point-for-sql-data-warehouse-gen2"></a>Nové nižší vstupní bod pro SQL Data Warehouse Gen2
-V dubnu 2018 [Microsoft annouced](https://azure.microsoft.com/blog/turbocharge-cloud-analytics-with-azure-sql-data-warehouse/) Azure SQL Data Warehouse Gen2, která nabízí 5 × výkon, 5 x rozsah výpočetních prostředků, 4 x souběžnosti s neomezeným úložištěm. Jak je uvedeno v [datového skladu v cloudu srovnávací test](https://gigaom.com/report/data-warehouse-in-the-cloud-benchmark/) ve společnosti Gigaom, SQL Data Warehouse Gen2 **lepší výkon než Amazon Redshift 42 %**.
+V dubnu 2018 [Microsoft oznámil](https://azure.microsoft.com/blog/turbocharge-cloud-analytics-with-azure-sql-data-warehouse/) Azure SQL Data Warehouse Gen2, která nabízí 5 × výkon, 5 x rozsah výpočetních prostředků, 4 x souběžnosti s neomezeným úložištěm. Jak je uvedeno v [datového skladu v cloudu srovnávací test](https://gigaom.com/report/data-warehouse-in-the-cloud-benchmark/) ve společnosti Gigaom, SQL Data Warehouse Gen2 **lepší výkon než Amazon Redshift 42 %**.
 
 Gen2 je teď obecně k dispozici na nižší vstupní bod z DWU500c díky tomu můžete řídit menší velikosti datového skladu nebo vývojové/testovací prostředí se všemi nejnovější vylepšení služby. Nový vstupní bod uchovává všechny funkce Gen2 včetně [adaptivní ukládání do mezipaměti](https://azure.microsoft.com/blog/adaptive-caching-powers-azure-sql-data-warehouse-performance-gains/), [osvětlení rychle přesouvání dat](https://azure.microsoft.com/blog/lightning-fast-query-performance-with-azure-sql-data-warehouse/)a jeho podpora [skladu dat v reálném čase](https://azure.microsoft.com/blog/enabling-real-time-data-warehousing-with-azure-sql-data-warehouse/).
 
@@ -96,7 +96,7 @@ A konečně zlepšení snižuje celkový provádění příkazů, které provád
 
 ## <a name="bug-fixes"></a>Opravy chyb
 
-| Titul | Popis |
+| Název | Popis |
 |:---|:---|
 | **Oprava při vytváření statistik v distribucích pro unikátních omezení** | Tato oprava řeší chybu, která uživatelé dojde-li zadána spuštěné UPDATE STATISTICS se pouze v tabulce, tabulka, kdy byl definován jedinečné omezení. |
 | **Oprava při kompilaci dotazů na externí tabulky** | Tato oprava řeší vadu vliv na čas kompilace pro dotazy zahrnující externí tabulky.|

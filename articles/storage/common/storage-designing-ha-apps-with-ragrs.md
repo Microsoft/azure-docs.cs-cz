@@ -8,13 +8,13 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 03/21/2018
 ms.author: tamram
-ms.component: common
-ms.openlocfilehash: 718a8fb82c3d85baf94e2e9c316f40b964749912
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.subservice: common
+ms.openlocfilehash: 3e2083b03b8463907c6d80fb5a9e1f25cca9beb5
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51231359"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55454939"
 ---
 # <a name="designing-highly-available-applications-using-ra-grs"></a>Navrhování aplikací s vysokou dostupností pomocí RA-GRS
 
@@ -24,12 +24,12 @@ To běžná funkce cloudové infrastruktury jako služby Azure Storage je, že p
 
 Tento článek se zaměřuje na GRS a RA-GRS. S GRS jsou tři kopie dat uchovávány v primární oblasti, kterou jste vybrali při nastavování účtu úložiště. Další tři kopie se zachovají asynchronně v sekundární oblasti definované v Azure. RA-GRS nabízí geograficky redundantní úložiště s přístupem pro čtení na sekundární kopii.
 
-Informace o tom, které jsou primární oblasti souřadnicí které sekundární oblasti naleznete v tématu [obchodní kontinuity podnikových procesů a zotavení po havárii (BCDR): spárované oblasti Azure](https://docs.microsoft.com/azure/best-practices-availability-paired-regions).
+Informace o tom, které jsou primární oblasti souřadnicí které sekundární oblasti naleznete v tématu [obchodní kontinuity podnikových procesů a zotavení po havárii (BCDR): Spárovaných oblastech Azure](https://docs.microsoft.com/azure/best-practices-availability-paired-regions).
 
 Nejsou zahrnuty v tomto článku a odkaz na kompletní příklad na konci, kterou můžete stáhnout a spustit fragmenty kódu.
 
 > [!NOTE]
-> Azure Storage teď podporuje zónově redundantní úložiště (ZRS) pro vytváření vysoce dostupných aplikací. ZRS poskytuje jednoduché řešení pro spoustu aplikací na potřeby redundance. ZRS poskytuje ochranu proti selhání hardwaru nebo katastrofickými jiného problému ovlivňujícího by to mělo dopad jednom datacentru. Další informace najdete v tématu [zónově redundantní úložiště (ZRS): aplikace služby Azure Storage s vysokou dostupností](storage-redundancy-zrs.md).
+> Azure Storage teď podporuje zónově redundantní úložiště (ZRS) pro vytváření vysoce dostupných aplikací. ZRS poskytuje jednoduché řešení pro spoustu aplikací na potřeby redundance. ZRS poskytuje ochranu proti selhání hardwaru nebo katastrofickými jiného problému ovlivňujícího by to mělo dopad jednom datacentru. Další informace najdete v tématu [zónově redundantní úložiště (ZRS): Vysoce dostupné aplikace služby Azure Storage](storage-redundancy-zrs.md).
 
 ## <a name="key-features-of-ra-grs"></a>Klíčové funkce služby RA-GRS
 

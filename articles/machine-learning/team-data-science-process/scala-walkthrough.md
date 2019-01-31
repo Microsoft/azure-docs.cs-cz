@@ -6,23 +6,23 @@ author: marktab
 manager: cgronlun
 editor: cgronlun
 ms.service: machine-learning
-ms.component: team-data-science-process
+ms.subservice: team-data-science-process
 ms.topic: article
 ms.date: 11/13/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: bf4e65b95211fc03ea4a319fd4e503396b893522
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: 3109c4e6190cd8e485ae9b28117c4688836dfc26
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53135143"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55470310"
 ---
 # <a name="data-science-using-scala-and-spark-on-azure"></a>Vědecké zkoumání dat pomocí Scala a Spark v Azure
 Tento článek ukazuje, jak pomocí Scala pro úkoly technik strojového učení pomocí Sparku škálovatelné MLlib a Spark ML balíčky v clusteru Azure HDInsight Spark. Provede vás provedou úlohami, které tvoří [vědecké zkoumání dat](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/): příjem dat a zkoumání, vizualizaci, vytváření funkcí, modelování a modelu využití. Modely v článku zahrnují logistické a lineární regrese, náhodných doménové struktury a vylepšené přechodu stromů (GBTs), kromě dvě běžné úkoly technik strojového učení:
 
-* Regresní problém: předpověď tip částka cesty taxíkem ($)
-* Binární klasifikace: predikce tip nebo tip cesty taxíkem (1/0)
+* Regresní problém: Predikce tip částka cesty taxíkem ($)
+* Binární klasifikace: Predikce tip nebo tip cesty taxíkem (1/0)
 
 Proces modelování vyžaduje trénování a hodnocení na testovací datové sady a relevantní přesnost metriky. V tomto článku se dozvíte, jak k uložení těchto modelů ve službě Azure Blob storage a jak stanovení skóre a vyhodnotit prediktivní výkonu. Tento článek se týká také pokročilejší témata o tom, jak pomocí křížového ověření a hyperparametrické sweeping optimalizaci modelů. Data používaná je ukázka 2013 NYC taxislužby cesty a tarif datové sady k dispozici na Githubu.
 
@@ -41,7 +41,7 @@ Postup instalace a kód v tomto článku jsou pro Azure HDInsight 3.4 Spark 1.6.
 
 ## <a name="prerequisites"></a>Požadavky
 * Mít předplatné Azure. Pokud již nemáte, [získat bezplatnou zkušební verzi Azure](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/).
-* Potřebujete cluster Azure HDInsight 3.4 Spark 1.6 dokončete následující postup. K vytvoření clusteru, postupujte podle pokynů v [Začínáme: vytvoření Apache Spark v Azure HDInsight](../../hdinsight/spark/apache-spark-jupyter-spark-sql.md). Nastavit typ clusteru a verzi na **vybrat typ clusteru** nabídky.
+* Potřebujete cluster Azure HDInsight 3.4 Spark 1.6 dokončete následující postup. K vytvoření clusteru, postupujte podle pokynů v [začít: Vytvořit Apache Spark v Azure HDInsight](../../hdinsight/spark/apache-spark-jupyter-spark-sql.md). Nastavit typ clusteru a verzi na **vybrat typ clusteru** nabídky.
 
 ![Konfigurace clusteru typu HDInsight](./media/scala-walkthrough/spark-cluster-on-portal.png)
 
@@ -66,7 +66,7 @@ Můžete nahrát ho přímo z Githubu na server poznámkového bloku Jupyter na 
 
 [Exploration-Modeling-and-Scoring-using-Scala.ipynb](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/Scala/Exploration-Modeling-and-Scoring-using-Scala.ipynb)
 
-## <a name="setup-preset-spark-and-hive-contexts-spark-magics-and-spark-libraries"></a>Instalační program: Kontexty přednastavený kontext Spark a Hive, Magic Sparku a Spark knihovny
+## <a name="setup-preset-spark-and-hive-contexts-spark-magics-and-spark-libraries"></a>Instalační program: Přednastavení kontexty Spark a Hive, Magic Sparku a Spark knihovny
 ### <a name="preset-spark-and-hive-contexts"></a>Přednastavení kontexty Spark a Hive
     # SET THE START TIME
     import java.util.Calendar
@@ -532,7 +532,7 @@ Tady je kód pro tyto dvě úlohy.
 
 
 
-## <a name="binary-classification-model-predict-whether-a-tip-should-be-paid"></a>Model binární klasifikace: předpověď, jestli by měla být věnována tip
+## <a name="binary-classification-model-predict-whether-a-tip-should-be-paid"></a>Binární klasifikační model: Předpověď, jestli by měla být věnována tip
 V této části vytvoříte tři typy binární klasifikační modely a vytvořte předpověď, jestli by měla být věnována tip:
 
 * A **model logistické regrese** pomocí Spark ML `LogisticRegression()` – funkce
@@ -725,7 +725,7 @@ Dále vytvořte model klasifikace GBT pomocí vaší MLlib `GradientBoostedTrees
 
 Oblasti pod křivkou roc s více TŘÍDAMI: 0.9846895479241554
 
-## <a name="regression-model-predict-tip-amount"></a>Regresní model: předpověď velikost špičky
+## <a name="regression-model-predict-tip-amount"></a>Regresní model: Předpověď velikost špičky
 V této části vytvoříte dva typy regresní modely a vytvořte předpověď velikost špičky:
 
 * A **trénování modelu lineární regrese Vyřešeno** pomocí Spark ML `LinearRegression()` funkce. Budete uložení modelu a vyhodnocení modelu na testovací data.
@@ -848,7 +848,7 @@ Vytvořte grafy pomocí Pythonu matplotlib.
 
 **Výstup:**
 
-![Tip množství: skutečnost a předpokládané](./media/scala-walkthrough/plot-actual-vs-predicted-tip-amount.png)
+![Velikost špičky: Skutečné vs. předpokládané](./media/scala-walkthrough/plot-actual-vs-predicted-tip-amount.png)
 
 ### <a name="create-a-gbt-regression-model"></a>Vytvořte GBT regresní model
 Vytvoření GBT regresní model pomocí Spark ML `GBTRegressor()` funkci a pak vyhodnotit model na testovací data.
@@ -881,7 +881,7 @@ Vytvoření GBT regresní model pomocí Spark ML `GBTRegressor()` funkci a pak v
 
 **Výstup:**
 
-Je zkušební R-sqr: 0.7655383534596654
+Test R-sqr je: 0.7655383534596654
 
 ## <a name="advanced-modeling-utilities-for-optimization"></a>Nástroje pro pokročilé modelování pro optimalizaci
 V této části použijte nástroje machine learning, které vývojáři často používají pro optimalizaci modelů. Konkrétně můžete optimalizovat modelů strojového učení třemi různými způsoby s použitím parametru sweeping a křížového ověřování:
@@ -938,7 +938,7 @@ V dalším kroku rozdělení dat na trénování a ověření sady, použijte hy
 
 **Výstup:**
 
-Je zkušební R-sqr: 0.6226484708501209
+Test R-sqr je: 0.6226484708501209
 
 ### <a name="optimize-the-binary-classification-model-by-using-cross-validation-and-hyper-parameter-sweeping"></a>Optimalizovat binární klasifikační model s použitím křížového ověření a hyperparametrické sweeping
 V této části se dozvíte, jak optimalizovat binární klasifikační model s použitím křížového ověření a hyperparametrické sweeping. Tento mechanismus využívá Spark ML `CrossValidator` funkce.

@@ -7,13 +7,13 @@ ms.service: storage
 ms.topic: article
 ms.date: 01/30/2017
 ms.author: seguler
-ms.component: common
-ms.openlocfilehash: 28c9e342aec3eb3ba61b46f4f80c7d097b0653b6
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.subservice: common
+ms.openlocfilehash: 211051254e08d69c06afd4242599c909048e7e17
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51258710"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55464836"
 ---
 # <a name="using-the-azure-classic-cli-with-azure-storage"></a>Použití Azure classic CLI s Azure Storage
 
@@ -35,7 +35,7 @@ Tento průvodce to předpokládá, že chápete základní koncepty služby Azur
 ## <a name="get-started-with-azure-storage-and-the-azure-classic-cli-in-5-minutes"></a>Začínáme s Azure Storage a Azure classic CLI během 5 minut
 Tato příručka používá Ubuntu příklady, ale jiné platformy operačního systému by měl provádět podobně.
 
-**Zatím Azure:** získat předplatné Microsoft Azure a účet Microsoft spojený s tímto předplatným. Informace o možnostech nákupu Azure najdete v tématu [bezplatnou zkušební verzi](https://azure.microsoft.com/pricing/free-trial/), [možnostmi nákupu](https://azure.microsoft.com/pricing/purchase-options/), a [nabídky pro členy](https://azure.microsoft.com/pricing/member-offers/) (pro členy programu MSDN, Microsoft Partner Network a BizSpark, a Další programy společnosti Microsoft).
+**Zatím Azure:** Získáte předplatné Microsoft Azure a účet Microsoft spojený s tímto předplatným. Informace o možnostech nákupu Azure najdete v tématu [bezplatnou zkušební verzi](https://azure.microsoft.com/pricing/free-trial/), [možnostmi nákupu](https://azure.microsoft.com/pricing/purchase-options/), a [nabídky pro členy](https://azure.microsoft.com/pricing/member-offers/) (pro členy programu MSDN, Microsoft Partner Network a BizSpark, a Další programy společnosti Microsoft).
 
 Zobrazit [přiřazení rolí správce v Azure Active Directory (Azure AD)](https://docs.microsoft.com/azure/active-directory/active-directory-assign-admin-roles-azure-portal) Další informace o předplatných Azure.
 
@@ -78,7 +78,7 @@ Zobrazit [přiřazení rolí správce v Azure Active Directory (Azure AD)](https
 5. V místním počítači otevřete upřednostňovaném textovém editoru (například vim). Skript výše zadejte do textového editoru.
 6. Teď budete muset aktualizovat skript proměnné podle nastavení konfigurace.
 
-   * **< Název_účtu_úložiště >** použít ve skriptu se zadaným názvem nebo zadejte název nového účtu úložiště. **Důležité:** název účtu úložiště musí být jedinečný v Azure. Musí být malými písmeny příliš!
+   * **< Název_účtu_úložiště >** použít ve skriptu se zadaným názvem nebo zadejte název nového účtu úložiště. **Důležité:** Název účtu úložiště musí být jedinečný v Azure. Musí být malými písmeny příliš!
    * **< Klíč_účtu_úložiště >** přístupový klíč účtu úložiště.
    * **< Container_name >** použít ve skriptu se zadaným názvem nebo zadejte nový název pro váš kontejner.
    * **< Image_to_upload >** zadejte cestu k obrázku v místním počítači, jako například: "~ / images/HelloWorld.png".
@@ -132,7 +132,7 @@ azure storage container create mycontainer
 ```
 
 > [!NOTE]
-> Existují tři úrovně anonymní přístup pro čtení: **vypnout**, **Blob**, a **kontejneru**. Pokud chcete zabránit anonymní přístup k objektům BLOB, nastavte parametr oprávnění na **vypnout**. Ve výchozím nastavení je nový kontejner je privátní a je přístupný pouze vlastník účtu. Chcete-li povolit anonymní veřejné oprávnění ke čtení k prostředkům blob, ale metadata kontejneru nebo seznam objektů BLOB v kontejneru, nastavte parametr oprávnění na **Blob**. Chcete-li povolit úplné veřejné oprávnění ke čtení do objektu blob prostředky, metadata kontejneru a seznamu objektů BLOB v kontejneru, nastavte parametr oprávnění **kontejneru**. Další informace najdete v tématu [Správa anonymního přístupu pro čtení ke kontejnerům a objektům blob](../blobs/storage-manage-access-to-resources.md).
+> Existují tři úrovně anonymní přístup pro čtení: **Vypnout**, **Blob**, a **kontejneru**. Pokud chcete zabránit anonymní přístup k objektům BLOB, nastavte parametr oprávnění na **vypnout**. Ve výchozím nastavení je nový kontejner je privátní a je přístupný pouze vlastník účtu. Chcete-li povolit anonymní veřejné oprávnění ke čtení k prostředkům blob, ale metadata kontejneru nebo seznam objektů BLOB v kontejneru, nastavte parametr oprávnění na **Blob**. Chcete-li povolit úplné veřejné oprávnění ke čtení do objektu blob prostředky, metadata kontejneru a seznamu objektů BLOB v kontejneru, nastavte parametr oprávnění **kontejneru**. Další informace najdete v tématu [Správa anonymního přístupu pro čtení ke kontejnerům a objektům blob](../blobs/storage-manage-access-to-resources.md).
 >
 >
 

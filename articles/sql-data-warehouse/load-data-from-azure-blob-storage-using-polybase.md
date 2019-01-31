@@ -1,23 +1,23 @@
 ---
-title: 'Kurz: Load taxislužby města New York data do služby Azure SQL Data Warehouse | Dokumentace Microsoftu'
+title: 'Kurz: Načtení dat taxislužby města New York do služby Azure SQL Data Warehouse | Dokumentace Microsoftu'
 description: Kurz používá Azure portal a SQL Server Management Studio k načtení dat taxislužby města New York z veřejného Azure blob do služby Azure SQL Data Warehouse.
 services: sql-data-warehouse
 author: ckarst
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
-ms.component: implement
+ms.subservice: implement
 ms.date: 09/12/2018
 ms.author: cakarst
 ms.reviewer: igorstan
-ms.openlocfilehash: b9c42f5b0fc6fb9468d8fd0a1c34270d1734391a
-ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
+ms.openlocfilehash: 979488009f7afa2ccae3993d756e92e1ae15d5a0
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45579907"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55466521"
 ---
-# <a name="tutorial-load-new-york-taxicab-data-to-azure-sql-data-warehouse"></a>Kurz: Load taxislužby města New York data do služby Azure SQL Data Warehouse
+# <a name="tutorial-load-new-york-taxicab-data-to-azure-sql-data-warehouse"></a>Kurz: Načtení dat taxislužby města New York do služby Azure SQL Data Warehouse
 
 Tento kurz využívá PolyBase k načítání dat taxislužby města New York z veřejného Azure blob do služby Azure SQL Data Warehouse. Tento kurz používá [Azure Portal](https://portal.azure.com) a aplikaci [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms) (SSMS) k: 
 
@@ -33,7 +33,7 @@ Tento kurz využívá PolyBase k načítání dat taxislužby města New York z 
 
 Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 
-## <a name="before-you-begin"></a>Než začnete
+## <a name="before-you-begin"></a>Před zahájením
 
 Než začnete s tímto kurzem, stáhněte a nainstalujte nejnovější verzi aplikace [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms) (SSMS).
 

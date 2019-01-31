@@ -1,6 +1,6 @@
 ---
-Název: Správa webových služeb Machine Learning Studio pomocí titleSuffix API Management: Azure Machine Learning Studio Popis: Příručka ukazuje, jak spravovat webové služby Azure ml pomocí služby API Management. Správa koncových bodů rozhraní REST API tak, že definujete uživatelský přístup, omezení využití a řídicí panel monitorování.
-Services: machine learningu ms.service: ms.component strojového učení: studio ms.topic: článku
+Název: Správa webových služeb Machine Learning Studio pomocí titleSuffix API Management: Azure Machine Learning Studio Popis: Příručka ukazuje, jak spravovat webové služby Azure ml pomocí služby API Management. Správa koncových bodů rozhraní REST API tak, že definujete uživatelský přístup, omezení využití a řídicí panel monitorování.
+Services: machine learningu ms.service: ms.subservice strojového učení: studio ms.topic: článku
 
 Autor: ericlicoding ms.author: amlstudiodocs ms.custom: seodec18 ms.date: 11/03/2017
 ---

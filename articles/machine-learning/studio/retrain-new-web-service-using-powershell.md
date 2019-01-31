@@ -1,6 +1,6 @@
 ---
-Název: Přeučování nové webové služby Machine Learning Studio pomocí prostředí PowerShell titleSuffix: Azure Machine Learning Studio Popis: Zjistěte, jak programově přeučit modelu a aktualizovat webovou službu, která používá nově trénovaného modelu ve službě Azure Machine Learning pomocí rutin prostředí PowerShell pro Machine Learning Management.
-Services: machine learningu ms.service: ms.component strojového učení: studio ms.topic: článku
+Název: Přeučování nové webové služby Machine Learning Studio pomocí prostředí PowerShell titleSuffix: Azure Machine Learning Studio Popis: Zjistěte, jak programově přeučit modelu a aktualizovat webovou službu, která používá nově trénovaného modelu ve službě Azure Machine Learning pomocí rutin prostředí PowerShell pro Machine Learning Management.
+Services: machine learningu ms.service: ms.subservice strojového učení: studio ms.topic: článku
 
 Autor: ericlicoding ms.author: amlstudiodocs ms.custom: seodec18 ms.date: 03/28/2017
 ---

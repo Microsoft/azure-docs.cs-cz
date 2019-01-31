@@ -1,8 +1,8 @@
 ---
-title: Azure události spuštění úlohy Batch | Microsoft Docs
-description: Referenční informace pro úlohy Batch spusťte událost.
+title: Událost zahájení úlohy služby Azure Batch | Dokumentace Microsoftu
+description: Referenční informace pro událost zahájení úlohy služby Batch.
 services: batch
-author: dlepow
+author: laurenhughes
 manager: jeconnoc
 ms.assetid: ''
 ms.service: batch
@@ -11,20 +11,20 @@ ms.topic: article
 ms.tgt_pltfrm: ''
 ms.workload: big-compute
 ms.date: 04/20/2017
-ms.author: danlep
-ms.openlocfilehash: 0ad0f87df9db39088769579d538b919b42634c4b
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.author: lahugh
+ms.openlocfilehash: d50a0a7082e409084fd966370934a638ca9bb013
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2018
-ms.locfileid: "30311851"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55474424"
 ---
 # <a name="task-start-event"></a>Událost zahájení úlohy
 
- Tato událost je vygenerované po úlohu bylo naplánováno spuštění na výpočetním uzlu plánovačem. Upozorňujeme, že pokud je úloha opakovat nebo zařazena Tato událost bude znovu vygenerované pro stejnou úlohu, ale počet opakování, a verze systému úloh bude příslušným způsobem aktualizuje.
+ Tato událost je vygenerován, jakmile se úloha je naplánovaná na spuštění na výpočetních uzlech plánovačem. Všimněte si, že pokud je úloha opakovat, nebo znovu zařadit do fronty Tato událost se znovu vygenerován pro stejný úkol, ale počet opakování a verze úlohy systému se podle nich aktualizuje.
 
 
- Následující příklad ukazuje, text úlohu spustit událostí.
+ Následující příklad ukazuje tělo úkolu počáteční událost.
 
 ```
 {
@@ -48,38 +48,38 @@ ms.locfileid: "30311851"
 }
 ```
 
-|Název elementu|Typ|Poznámky|
+|Název elementu|Type|Poznámky|
 |------------------|----------|-----------|
-|JobId|Řetězec|Id úlohy, která obsahuje úlohu.|
-|id|Řetězec|Id úkolu.|
-|taskType|Řetězec|Typ úlohy. To může být JobManager oznamující, že je úkol správce nebo uživatel oznamující, že se nejedná o úkolu Správce úloh.|
-|systemTaskVersion|Int32|Toto je Čítač opakovaných pokusů interní na úlohu. Služba Batch interně může pokus zopakovat úlohu, aby se zohlednily přechodné problémy. Tyto problémy mohou zahrnovat plánování s interními chybami nebo pokusy o obnovení z výpočetních uzlů ve špatném stavu.|
-|[nodeInfo](#nodeInfo)|Komplexní typ|Obsahuje informace o výpočetním uzlu, na kterém byla úloha spuštěna.|
-|[multiInstanceSettings](#multiInstanceSettings)|Komplexní typ|Určuje, že tato úloha je úkol s více instancemi nutnosti několika výpočetních uzlech.  V tématu [multiInstanceSettings](https://docs.microsoft.com/rest/api/batchservice/get-information-about-a-task) podrobnosti.|
-|[Omezení](#constraints)|Komplexní typ|Provádění omezení, které se vztahují k tomuto úkolu.|
-|[executionInfo](#executionInfo)|Komplexní typ|Obsahuje informace o provádění úlohy.|
+|jobId|String|Id úlohy obsahující úlohu.|
+|id|String|Identifikátor úkolu|
+|taskType|String|Typ úlohy. To může být JobManager oznamující, že je úkol Správce úloh nebo uživatel oznamující, že se nejedná o úkol Správce úloh.|
+|systemTaskVersion|Int32|Toto je čítač interní opakovaných pokusů pro úlohu. Interně služba Batch může pokus zopakovat úlohu, aby se zohlednily přechodné problémy. Tyto problémy mohou zahrnovat plánování s interními chybami nebo pokusy o obnovení z výpočetních uzlů ve špatném stavu.|
+|[nodeInfo](#nodeInfo)|Komplexní typ|Obsahuje informace o výpočetním uzlu, na kterém se úkol spustil.|
+|[multiInstanceSettings](#multiInstanceSettings)|Komplexní typ|Určuje, že je úloha úkolu víc instancí vyžaduje víc výpočetních uzlů.  Zobrazit [multiInstanceSettings](https://docs.microsoft.com/rest/api/batchservice/get-information-about-a-task) podrobnosti.|
+|[Omezení](#constraints)|Komplexní typ|Omezení zpracování, které se vztahují k tomuto úkolu.|
+|[executionInfo](#executionInfo)|Komplexní typ|Obsahuje informace o provádění úkolu.|
 
 ###  <a name="nodeInfo"></a> nodeInfo
 
-|Název elementu|Typ|Poznámky|
+|Název elementu|Type|Poznámky|
 |------------------|----------|-----------|
-|poolId|Řetězec|Id fondu, ve kterém byla spuštěna úloha.|
-|nodeId|Řetězec|Id uzlu, na kterém byla úloha spuštěna.|
+|poolId|String|Id fondu, ve kterém se úkol spustil.|
+|nodeId|String|Id uzlu, na kterém se úkol spustil.|
 
 ###  <a name="multiInstanceSettings"></a> multiInstanceSettings
 
-|Název elementu|Typ|Poznámky|
+|Název elementu|Type|Poznámky|
 |------------------|----------|-----------|
 |numberOfInstances|Int|Celkový počet výpočetních uzlů požadovaných úkolem|
 
 ###  <a name="constraints"></a> Omezení
 
-|Název elementu|Typ|Poznámky|
+|Název elementu|Type|Poznámky|
 |------------------|----------|-----------|
-|maxTaskRetryCount|Int32|Maximální počet, který může být Opakovat úlohu. Služba Batch úkol zopakuje, pokud je jeho ukončovací kód nenulové hodnoty.<br /><br /> Všimněte si, že tato hodnota konkrétně určuje počet opakovaných pokusů. Služba Batch bude opakujte úlohu jednou a mohou zkuste až toto omezení. Například pokud je maximální počet opakování je 3, Batch pokusů a úloh až 4 případech (jeden počáteční pokus a 3 opakování).<br /><br /> Pokud je maximální počet opakování 0, služba Batch neopakuje úlohy.<br /><br /> Pokud je maximální počet opakování −1, služba Batch opakuje úlohy bez omezení.<br /><br /> Výchozí hodnota je 0 (bez opakování).|
+|maxTaskRetryCount|Int32|Maximální počet pokusů, které se úkol neopakuje. Služba Batch úkol zopakuje, pokud je jeho ukončovací kód nenulový.<br /><br /> Všimněte si, že tato hodnota konkrétně řídí počet opakování. Služba Batch úkol pokusí jednou a může opakujte až toto omezení. Například pokud se maximální počet opakování 3 pokusy Batch úkol, který je až 4 krát (jeden první pokus a 3 opakování).<br /><br /> Pokud je maximální počet opakování 0, služba Batch úkoly neopakuje.<br /><br /> Pokud je maximální počet opakování -1, služba Batch opakuje bez omezení.<br /><br /> Výchozí hodnota je 0 (žádná opakování).|
 
 ###  <a name="executionInfo"></a> executionInfo
 
-|Název elementu|Typ|Poznámky|
+|Název elementu|Type|Poznámky|
 |------------------|----------|-----------|
-|retryCount|Int32|Počet, kolikrát má byla úloha opakovat službou Batch. Úloha je opakovat, pokud ho ukončí nenulový ukončovací kód, až do zadaného MaxTaskRetryCount|
+|retryCount|Int32|Počet pokusů, které úlohy se pokus o pomocí služby Batch. Úloha je opakovat, pokud ukončen s nenulový ukončovací kód, až do zadaného MaxTaskRetryCount|

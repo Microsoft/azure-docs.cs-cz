@@ -8,18 +8,18 @@ manager: mtillman
 editor: ''
 ms.service: active-directory
 ms.workload: identity
-ms.component: users-groups-roles
+ms.subservice: users-groups-roles
 ms.topic: article
 ms.date: 01/24/2019
 ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
-ms.openlocfilehash: 8408d620ba78fed07c44feae74c607a555d5563b
-ms.sourcegitcommit: 97d0dfb25ac23d07179b804719a454f25d1f0d46
+ms.openlocfilehash: 9ef400a5c7b42f6782fefa28e2351b09d8667861
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/25/2019
-ms.locfileid: "54910581"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55470242"
 ---
 # <a name="administrator-roles-for-microsoft-365-workloads"></a>Role správce pro úlohy Microsoft 365
 

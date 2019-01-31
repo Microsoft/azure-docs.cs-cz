@@ -11,13 +11,13 @@ author: juliemsft
 ms.author: jrasnick
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 10/19/2018
-ms.openlocfilehash: a3a4e2c109541effdac01e0c9c03ee91cfdb30bf
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.date: 01/25/2019
+ms.openlocfilehash: b3ee256072e5c0b5b92daac07eae5b41b194ae8a
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54812246"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55475954"
 ---
 # <a name="scale-single-database-resources-in-azure-sql-database"></a>Škálování izolované databáze prostředků ve službě Azure SQL Database
 
@@ -35,7 +35,7 @@ Tento článek popisuje, jak škálovat výpočetní a úložné prostředky dos
 
 ## <a name="vcore-based-purchasing-model-change-compute-resources"></a>nákupní model založený na virtuálních jádrech: Změna výpočetní prostředky
 
-Po počátečním výběru počet virtuálních jader, můžete vertikálně izolovanou databázi směrem nahoru nebo dolů dynamicky na základě aktuálních zkušeností pomocí [webu Azure portal](sql-database-single-databases-manage.md#manage-an-existing-sql-server), [příkazů jazyka Transact-SQL](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql?view=azuresqldb-current#examples-1), [Powershellu](/powershell/module/azurerm.sql/set-azurermsqldatabase), [rozhraní příkazového řádku Azure](/cli/azure/sql/db#az-sql-db-update), nebo [rozhraní REST API](https://docs.microsoft.com/rest/api/sql/databases/update).
+Po počátečním výběru počet virtuálních jader, můžete vertikálně izolovanou databázi směrem nahoru nebo dolů dynamicky na základě aktuálních zkušeností pomocí [webu Azure portal](sql-database-single-databases-manage.md#manage-an-existing-sql-database-server), [příkazů jazyka Transact-SQL](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql?view=azuresqldb-current#examples-1), [Powershellu](/powershell/module/azurerm.sql/set-azurermsqldatabase), [rozhraní příkazového řádku Azure](/cli/azure/sql/db#az-sql-db-update), nebo [rozhraní REST API](https://docs.microsoft.com/rest/api/sql/databases/update).
 
 Změna služby vrstvy a/nebo vypočítat velikost databáze vytvoří replika původní databáze na novou velikost výpočetních a následně se přepnou připojení na repliku. Během tohoto procesu se neztratí žádná data, ale během krátké chvíle, kdy se přepíná na repliku, jsou zakázána připojení k databázi, takže může dojít k vrácení některých probíhajících transakcí zpět. Doba pro přechod se liší, ale je obecně méně než 30 sekund 99 % času. Pokud existují velké množství transakcí za pochodu okamžiku zákazu připojení probíhá jsou zakázané, může být delší dobu pro přechod.
 

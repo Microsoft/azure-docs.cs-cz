@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 01/15/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 4b6e6cf3fb030f5f9706ded19f85575baed69b39
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: cf2359834aa79b1d3fef8b65e4ef4191eb6ff867
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54471816"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55467437"
 ---
 # <a name="choose-a-pricing-tier-for-azure-search"></a>Zvolte cenovou úroveň pro službu Azure Search
 
@@ -108,7 +108,7 @@ Posunutí fokus pro běžně používané úrovně standard **S1 na S3** jsou pr
 
 |  | S1 | S2 | S3 |  |  |  |  |
 |--|----|----|----|--|--|--|--|
-| Velikost oddílu|  25 GB | 100 GB | 250 GB |  |  |  |  |
+| Velikost oddílu|  25 GB | 100 GB | 200 GB |  |  |  |  |
 | omezení indexu a indexeru| 50 | 200 | 200 |  |  |  |  |
 
 **S1** je běžné volbou až vyhrazených prostředků a několik oddílů budou nezbytné. S oddíly 25 GB až 12 oddílů, omezení za jednoúčelovou **S1** je celkem 300 GB, pokud maximalizovat oddíly přes repliky (naleznete v tématu [přidělit oddílů a replik](search-capacity-planning.md#chart) pro více s vyrovnáváním sestavení.)

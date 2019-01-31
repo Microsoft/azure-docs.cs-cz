@@ -6,17 +6,17 @@ author: marktab
 manager: cgronlun
 editor: cgronlun
 ms.service: machine-learning
-ms.component: team-data-science-process
+ms.subservice: team-data-science-process
 ms.topic: article
 ms.date: 11/04/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: dac686878ff128e3d556c0dbd7e9a2d51ac1756d
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: c22c75b4fe900ecb96d016251c09e9ad6ec31f7c
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53139943"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55474016"
 ---
 # <a name="modeling-stage-of-the-team-data-science-process-lifecycle"></a>Modelování fáze životního cyklu vědecké zpracování týmových dat
 
@@ -41,8 +41,8 @@ Zde je vizuální znázornění životního cyklu TDSP:
 ## <a name="how-to-do-it"></a>Jak na to
 Existují tři hlavní úkoly zákazníky a vyřešené v této fázi:
 
-  * **Konstrukce funkcí**: vytvoření datové funkce z nezpracovaných dat pro usnadnění cvičení modelu.
-  * **Model školení**: najít model, který nejpřesněji odpovědět otázku porovnáním jejich měřítek úspěšnosti.
+  * **konstrukce funkcí**: Vytvoření funkcí data z nezpracovaných dat pro usnadnění cvičení modelu.
+  * **Model školení**: Najdete model, který nejpřesněji odpovědět otázku porovnáním jejich měřítek úspěšnosti.
   * Určení, zda je model **vhodná pro produkční prostředí.**
 
 ### <a name="feature-engineering"></a>Návrh funkcí
@@ -63,7 +63,7 @@ Proces k tréninku modelu zahrnuje následující kroky:
    * **Určit "doporučené" řešení** odpověď na otázku porovnáním měřítek úspěšnosti mezi alternativních metod.
 
 > [!NOTE]
-> **Vyhněte se úniku**: může způsobit úniky dat chránit, zadáte-li data z mimo trénovací datové sady, která umožňuje algoritmus strojového učení pro predikci unrealistically dobré a model. Únik je běžným důvodem, proč data, která odborníci přes získat nervové, pokud se jim zobrazí prediktivní výsledky, které vypadá to, že snad ani na hodnotu true. Tyto závislosti může být obtížné rozpoznat. Aby se zabránilo úniku často vyžaduje iterace mezi sestavení analýze datové sady, vytvoření modelu a vyhodnocení přesnost výsledků. 
+> **Vyhněte se úniku**: Může způsobit úniky dat chránit, pokud zahrnovat data z mimo trénovací datové sady, která umožňuje algoritmus strojového učení pro predikci unrealistically dobré a model. Únik je běžným důvodem, proč data, která odborníci přes získat nervové, pokud se jim zobrazí prediktivní výsledky, které vypadá to, že snad ani na hodnotu true. Tyto závislosti může být obtížné rozpoznat. Aby se zabránilo úniku často vyžaduje iterace mezi sestavení analýze datové sady, vytvoření modelu a vyhodnocení přesnost výsledků. 
 > 
 > 
 
@@ -72,9 +72,9 @@ Poskytujeme [automatizované modelování a vytváření sestav nástroje](https
 ## <a name="artifacts"></a>Artefakty
 Artefakty vytvořené v této fázi patří:
 
-   * [Sady funkcí](https://github.com/Azure/Azure-TDSP-ProjectTemplate/blob/master/Docs/DataReport/Data%20Defintion.md#feature-sets): funkce vyvinuté pro modelování jsou popsány v **sady funkcí** část **definici dat** sestavy. Obsahuje odkazy na kód ke generování funkcí a popis, jak se vygeneroval funkci.
-   * [Model sestavy](https://github.com/Azure/Azure-TDSP-ProjectTemplate/blob/master/Docs/Model/Model%201/Model%20Report.md): pro každý model, ke které se pokusili, což je standard je vytvořen na základě šablony sestavu, která poskytuje podrobné informace o jednotlivých experimentu.
-   * **Kontrolní bod rozhodnutí**: vyhodnocení, zda model dostatečně dobře provede nasazení do produkčního systému. Jsou některé klíčové otázky:
+   * [Sady funkcí](https://github.com/Azure/Azure-TDSP-ProjectTemplate/blob/master/Docs/DataReport/Data%20Defintion.md#feature-sets): Funkce vyvinuté pro modelování jsou popsány v **sady funkcí** část **definici dat** sestavy. Obsahuje odkazy na kód ke generování funkcí a popis, jak se vygeneroval funkci.
+   * [Model sestavy](https://github.com/Azure/Azure-TDSP-ProjectTemplate/blob/master/Docs/Model/Model%201/Model%20Report.md): Pro každý model, ke které se pokusili, což je standard je vytvořen na základě šablony sestavu, která poskytuje podrobné informace o jednotlivých experimentu.
+   * **Kontrolní bod rozhodnutí**: Vyhodnoťte, jestli model dostatečně dobře provede nasazení do produkčního systému. Jsou některé klíčové otázky:
      * Model odpovědět na otázku, s dostatečnou důvěru zadaný testovací data? 
      * Můžete zkusit všechny přístupy? By měl můžete shromažďovat další data, proveďte další vytváření funkcí nebo vyzkoušet ostatní algoritmy?
 

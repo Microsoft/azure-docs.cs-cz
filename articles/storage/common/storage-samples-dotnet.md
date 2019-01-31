@@ -8,13 +8,13 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 01/12/2017
 ms.author: seguler
-ms.component: common
-ms.openlocfilehash: 663df77a7fb574f05cfaa9378dff53ca5db21c49
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.subservice: common
+ms.openlocfilehash: c4dcb3f42d97624e66258228ce27e130a05cac70
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39526105"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55456132"
 ---
 # <a name="azure-storage-samples-using-net"></a>Ukázky pro Azure Storage pomocí .NET
 
@@ -25,11 +25,11 @@ Následující tabulka obsahuje přehled o našem úložišti ukázek a scéná�
 <table style="font-size:90%"><thead><tr><th style="font-size:110%">Koncový bod</th><th style="font-size:110%">Scénář</th><th style="font-size:110%">Vzorový kód</th></tr></thead><tbody> 
 <tr> 
 <td rowspan="16"><b>Objekt blob</b></td>
-<td>Doplňovací objekt Blob</td> 
+<td>Připojit objekt blob</td> 
 <td><a href="https://msdn.microsoft.com/library/microsoft.windowsazure.storage.blob.cloudblobcontainer.getappendblobreference.aspx">Příklad CloudBlobContainer.GetAppendBlobReference – metoda</a></td> 
 </tr> 
 <tr> 
-<td>Objekt Blob bloku</td>
+<td>Objekt blob bloku</td>
 <td><a href="https://github.com/Azure-Samples/storage-blobs-dotnet-webapp/blob/master/WebApp-Storage-DotNet/Controllers/HomeController.cs">Azure Blob Storage Fotogalerie webové aplikace</a></td>
 </tr> 
 <tr> 
@@ -73,7 +73,7 @@ Následující tabulka obsahuje přehled o našem úložišti ukázek a scéná�
 <td><a href="https://github.com/Azure-Samples/storage-blob-dotnet-getting-started/blob/master/BlobStorage/GettingStarted.cs">Začínáme s využitím objektů BLOB</a></td>
 </tr> 
 <tr> 
-<td>Objekt Blob stránky</td>
+<td>Objekt blob stránky</td>
 <td><a href="https://github.com/Azure-Samples/storage-blob-dotnet-getting-started/blob/master/BlobStorage/GettingStarted.cs">Začínáme s využitím objektů BLOB</a></td>
 </tr>
 <tr> 
@@ -210,5 +210,5 @@ Pokud hledáte pokyny o tom, jak nainstalovat a začít s klientských knihoven 
 
 Informace o ukázky pro ostatní jazyky:
 
-* Java: [ukázky služby Azure Storage pomocí Javy](storage-samples-java.md)
-* Všechny ostatní jazyky: [ukázek pro Azure Storage](../storage-samples.md)
+* Java: [Ukázky pro Azure Storage s použitím Javy](storage-samples-java.md)
+* Všechny ostatní jazyky: [Ukázky pro Azure Storage](../storage-samples.md)

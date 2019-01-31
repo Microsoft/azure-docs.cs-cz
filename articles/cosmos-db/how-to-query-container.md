@@ -6,14 +6,14 @@ ms.service: cosmos-db
 ms.topic: sample
 ms.date: 11/06/2018
 ms.author: mjbrown
-ms.openlocfilehash: 647c4dfd6038a04d4d55516ab816bf7701542075
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: 08d9978134ce214a468691ec367fb1797f6e86fc
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54040417"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55457747"
 ---
-# <a name="query-containers-in-azure-cosmos-db"></a>Dotazování kontejnerů ve službě Azure Cosmos DB
+# <a name="query-an-azure-cosmos-container"></a>Dotaz kontejneru Azure Cosmos
 
 Tento článek vysvětluje, jak dotazovat kontejner (kolekci, graf, tabulku) ve službě Azure Cosmos DB.
 
@@ -57,7 +57,7 @@ IQueryable<DeviceReading> crossPartitionQuery = client.CreateDocumentQuery<Devic
 
 Paralelní provádění dotazů můžete spravovat laděním následujících parametrů:
 
-- **Z MaxDegreeOfParallelism**: Nastaví maximální počet souběžných síťových připojení k oddílům kontejneru. Pokud tuto vlastnost nastavíte na hodnotu -1, stupeň paralelismu bude spravovat sada SDK. Pokud hodnota vlastnosti MaxDegreeOfParallelism není zadaná nebo je nastavená na 0, což je výchozí hodnota, k oddílům kontejneru bude existovat jediné síťové připojení.
+- **MaxDegreeOfParallelism**: Nastaví maximální počet souběžných síťových připojení k oddílům kontejneru. Pokud tuto vlastnost nastavíte na hodnotu -1, stupeň paralelismu bude spravovat sada SDK. Pokud hodnota vlastnosti MaxDegreeOfParallelism není zadaná nebo je nastavená na 0, což je výchozí hodnota, k oddílům kontejneru bude existovat jediné síťové připojení.
 
 - **MaxBufferedItemCount**: Obchody dotaz na latenci a využití paměti na straně klienta. Pokud tuto možnost vynecháte nebo ji nastavíte na hodnotu -1, počet položek ukládaných do vyrovnávací paměti během paralelního provádění dotazů bude spravovat sada SDK.
 

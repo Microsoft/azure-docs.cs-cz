@@ -11,13 +11,13 @@ author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, carlrab
 manager: craigg
-ms.date: 09/20/2018
-ms.openlocfilehash: ad7d56b3a23d163cfbc6c9ca14c2788c5f96486b
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.date: 01/25/2019
+ms.openlocfilehash: 156d06b3c3fab5df1cd4360fb9e6ec2648d8d0b6
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53600858"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55455061"
 ---
 # <a name="troubleshoot-azure-sql-database-performance-issues-with-intelligent-insights"></a>Řešení problémů s výkonem Azure SQL Database s Intelligent Insights
 
@@ -50,7 +50,7 @@ Problémy s výkonem Intelligent Insights automaticky rozpozná s databází SQL
 | [Přechod na starší cenová úroveň](sql-database-intelligent-insights-troubleshoot-performance.md#pricing-tier-downgrade) | Cenové úrovně downgrade akce snížení dostupné prostředky. To ovlivňuje výkon databáze SQL. | Cenové úrovně downgrade akce snížení dostupné prostředky. To ovlivňuje výkon databáze. |
 
 > [!TIP]
-> Optimalizace výkonu průběžné služby SQL Database, povolte [automatické ladění Azure SQL Database](https://docs.microsoft.com/azure/sql-database/sql-database-automatic-tuning). Tato jedinečná funkce SQL Database integrované inteligentní funkce nepřetržitě monitoruje vaši databázi SQL, automaticky vyladí indexy a použije opravy plán provádění dotazu.
+> Optimalizace výkonu průběžné služby SQL Database, povolte [automatické ladění Azure SQL Database](sql-database-automatic-tuning.md). Tato jedinečná funkce SQL Database integrované inteligentní funkce nepřetržitě monitoruje vaši databázi SQL, automaticky vyladí indexy a použije opravy plán provádění dotazu.
 >
 
 Následující část popisuje vzory zjistitelná výkonu podrobněji.
@@ -61,7 +61,7 @@ Následující část popisuje vzory zjistitelná výkonu podrobněji.
 
 Tento model zjistitelná výkonu kombinuje problémy s výkonem, které se vztahují k dosažení omezení dostupných prostředků, pracovních procesů limity a omezení relací. Po zjištění, tento problém s výkonem, pole Popis diagnostický protokol označuje, zda se tyto problémy s výkonem související s prostředků, pracovních procesů nebo omezení relace.
 
-Prostředky pro službu SQL Database se obvykle označují [DTU](https://docs.microsoft.com/azure/sql-database/sql-database-what-is-a-dtu) nebo [vCore](https://docs.microsoft.com/azure/sql-database/sql-database-service-tiers-vcore) prostředky. Vzor dosažení omezení prostředků je rozpoznán při zjištění snížení výkonu dotazu je způsobeno tím, že žádné limity prostředků měřené dosáhnout.
+Prostředky pro službu SQL Database se obvykle označují [DTU](sql-database-what-is-a-dtu.md) nebo [vCore](sql-database-service-tiers-vcore.md) prostředky. Vzor dosažení omezení prostředků je rozpoznán při zjištění snížení výkonu dotazu je způsobeno tím, že žádné limity prostředků měřené dosáhnout.
 
 Omezení prostředků relace označuje počet souběžných přihlášení k dispozici ke službě SQL database. Tento model výkonu je rozpoznán po aplikace, které jsou připojené k databázím SQL bylo dosaženo počtu dostupných souběžných přihlášení k databázi. Pokud se aplikace pokusí použít další relace, než je k dispozici na databázi, je vliv na výkon dotazů.
 
@@ -73,7 +73,7 @@ Diagnostický protokol vypíše hodnoty hash dotazu dotazů, které měla vliv n
 
 Pokud bylo dosaženo omezení dostupné relace, můžete optimalizovat aplikací snížením počtu přihlášení, provedené v databázi. Pokud nemůžete snížit počet přihlášení z vaší aplikace k databázi, zvažte zvýšení cenová úroveň databáze. Nebo můžete rozdělit a přesuňte databázi do více databází pro více vyvážené distribuce zatížení.
 
-Další návrhy na řešení omezení relací, naleznete v tématu [jak zacházet s omezeními maximální přihlašovací jména SQL Database](https://blogs.technet.microsoft.com/latam/2015/06/01/how-to-deal-with-the-limits-of-azure-sql-database-maximum-logins/). Zobrazit [Přehled prostředků omezuje na logickém serveru](sql-database-resource-limits-logical-server.md) informace o omezeních na úrovni serveru a předplatné.
+Další návrhy na řešení omezení relací, naleznete v tématu [jak zacházet s omezeními maximální přihlašovací jména SQL Database](https://blogs.technet.microsoft.com/latam/2015/06/01/how-to-deal-with-the-limits-of-azure-sql-database-maximum-logins/). Zobrazit [Přehled prostředků omezuje na server služby SQL Database](sql-database-resource-limits-database-server.md) informace o omezeních na úrovni serveru a předplatné.
 
 ## <a name="workload-increase"></a>Zvýšení zatížení
 
@@ -147,7 +147,7 @@ Nejprve optimalizovat nebo zjednodušení složitých dotazů. Dobrým postupem 
 
 Nastavení serveru MAXDOP možnosti konfigurace na nulu (0), protože výchozí hodnota označuje, že SQL Database můžete použít k dispozici logických jader procesoru paralelizovat vlákna pro provádění pomocí jediného dotazu. Nastavení MAXDOP pro jeden (1) označuje, že pouze jedno jádro lze použít pro provedení jednoho dotazu. V praxi to znamená, že je vypnuto paralelismu. V závislosti na základ za případ dostupných jader na databázi a Diagnostika protokolování informací, možnost MAXDOP počet jader využívaných pro provádění paralelního dotazu, který může být problém ve vašem případě můžete ladit.
 
-## <a name="pagelatch-contention"></a>Pagelatch kolizí
+## <a name="pagelatch-contention"></a>Pagelatch Contention
 
 ### <a name="what-is-happening"></a>Co se děje
 

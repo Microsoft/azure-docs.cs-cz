@@ -7,13 +7,13 @@ ms.service: storage
 ms.topic: article
 ms.date: 01/25/2019
 ms.author: jeffpatt
-ms.component: files
-ms.openlocfilehash: fe712648cf3e76f4161f9f3a7b97b7990bc692a1
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.subservice: files
+ms.openlocfilehash: 228927630540ed0277ca73a978382439f57b77d2
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55214462"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55471398"
 ---
 # <a name="troubleshoot-azure-file-sync"></a>Řešení problémů se Synchronizací souborů Azure
 Azure File Sync umožňuje centralizovat sdílené složky organizace ve službě soubory Azure, při zachování flexibility, výkonu a kompatibility s místními souborového serveru. Azure File Sync transformuje serveru systému Windows na rychlou mezipaměť sdílené složky Azure. Můžete použít jakýkoli protokol dostupný ve Windows serveru pro přístup k datům místně, včetně SMB, NFS a FTPS. Můžete mít libovolný počet mezipamětí po celém světě potřebujete.
@@ -852,6 +852,9 @@ Antivirová ochrana v programu, zálohování a další aplikace, které načít
 Informace o konfiguraci přeskakování čtení offline souborů v řešení vám sdělí dodavatel příslušného softwaru.
 
 Nežádoucí navrácení také může dojít u dalších scénářů, jako jsou při prohlížení souborů v Průzkumníku souborů. Pokud v Průzkumníku souborů na serveru otevřete složku obsahující soubory vrstvené v cloudu, může to mít za následek nežádoucí odvolání. Pravděpodobnost, že k tomu dojde, ještě zvyšuje povolené antivirové řešení na serveru.
+
+> [!NOTE]
+>9059 ID události v protokolu událostí Telemetrie použijte k určení, které aplikace způsobují to, že navrácení. Tato událost poskytuje aplikace spojené s vracením distribuce pro koncový bod serveru a je zaznamenána jednou za hodinu.
 
 ## <a name="general-troubleshooting"></a>Obecné řešení potíží
 Pokud narazíte na problémy s Azure File Sync na serveru, spusťte následující kroky:

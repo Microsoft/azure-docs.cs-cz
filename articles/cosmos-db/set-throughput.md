@@ -1,19 +1,19 @@
 ---
-title: Zřizování propustnosti pro službu Azure Cosmos DB
+title: Zřizování propustnosti na kontejnery Azure Cosmos a databází
 description: Zjistěte, jak nastavit zřízená propustnost pro kontejnery služby Azure Cosmos DB a databáze.
 author: aliuy
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 10/25/2018
 ms.author: andrl
-ms.openlocfilehash: 3e992dd8ab24e4e60b81c6565ea4ec3971a9336b
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: cbcfaab7dc1b716b3978f1b19870d945e0eabf89
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54036410"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55459070"
 ---
-# <a name="provision-throughput-on-azure-cosmos-containers-and-databases"></a>Zřizování propustnosti na kontejnery Azure Cosmos a databází
+# <a name="provision-throughput-on-containers-and-databases"></a>Zřízení propustnosti u kontejnerů a databází
 
 Databáze Azure Cosmos je jednotka správy pro skupinu kontejnerů. Databáze obsahuje sadu kontejnerů dogmaticky na schématu. Kontejner služby Azure Cosmos je jednotka škálovatelnost pro propustnost a úložiště. Kontejner je horizontálně dělené do oddílů mezi sadu počítačů v rámci oblasti Azure a je distribuovaná napříč všemi oblastmi Azure spojené s vaším účtem Azure Cosmos.
 

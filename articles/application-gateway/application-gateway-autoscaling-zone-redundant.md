@@ -5,14 +5,14 @@ services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: article
-ms.date: 1/29/2019
+ms.date: 1/31/2019
 ms.author: victorh
-ms.openlocfilehash: 7301460014e4d547d1950c8edfbd7534d8a4c103
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.openlocfilehash: 0c8a600342e0240d435999b1b5ddabc0234c142f
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55101664"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55461436"
 ---
 # <a name="autoscaling-and-zone-redundant-application-gateway-public-preview"></a>Automatické škálování a zónově redundantní služba Application Gateway (Public Preview)
 
@@ -53,9 +53,9 @@ Ve verzi preview se neúčtuje. Bude vám Účtovaná prostředků než aplikač
 |Režim FIPS, protokol WebSocket|Ty nejsou aktuálně podporovány.|
 |Režim pouze ILB|To není aktuálně podporováno. Veřejné a režim ILB společně se nepodporuje.|
 |Automatické škálování brány firewall webových aplikací|WAF nepodporuje režim automatického škálování. Kapacitu dlouhodobého režimu je podporováno.|
+|Integrace sledování sítě|Není podporováno ve verzi Public Preview.|
 
 ## <a name="next-steps"></a>Další postup
 - [Vytvoření automatickým Škálováním, zóna redundantní služba application gateway s vyhrazenou virtuální IP adresu pomocí Azure Powershellu](tutorial-autoscale-ps.md)
 - Další informace o [Application Gateway](overview.md).
-- Další informace o [Brána Firewall služby Azure](../firewall/overview.md). 
-
+- Další informace o [Brána Firewall služby Azure](../firewall/overview.md).

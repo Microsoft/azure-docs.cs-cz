@@ -1,6 +1,6 @@
 ---
-Název: Import dat do nástroje Machine Learning Studio z titleSuffix zdroje dat online: Azure Machine Learning Studio Popis: Tento článek popisuje podporu pro import online data z různých zdrojů a informace potřebné k přesunu dat z těchto zdrojů do Azure Machine Learning Studio experimentovat.
-Services: machine learningu ms.service: ms.component strojového učení: studio ms.topic: článku
+Název: Import dat do nástroje Machine Learning Studio z titleSuffix zdroje dat online: Azure Machine Learning Studio Popis: Tento článek popisuje podporu pro import online data z různých zdrojů a informace potřebné k přesunu dat z těchto zdrojů do Azure Machine Learning Studio experimentovat.
+Services: machine learningu ms.service: ms.subservice strojového učení: studio ms.topic: článku
 
 Autor: ericlicoding ms.author: amlstudiodocs ms.custom: seodec18 ms.date: 11/29/2017
 ---

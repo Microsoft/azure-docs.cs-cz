@@ -11,13 +11,13 @@ author: CarlRabeler
 ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
-ms.date: 12/04/2018
-ms.openlocfilehash: 055ddfa5c0fb399eea4bbe46126626b60bfe9cff
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.date: 01/25/2019
+ms.openlocfilehash: 5e1319857e16032b6a4922594a33dbed9554d2f8
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52966921"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55476719"
 ---
 # <a name="azure-powershell-samples-for-azure-sql-database"></a>Ukázky v Azure PowerShellu pro službu Azure SQL Database
 
@@ -25,8 +25,8 @@ Následující tabulka obsahuje odkazy na ukázkové skripty Azure PowerShellu p
 
 | |  |
 |---|---|
-|**Vytvořit a nakonfigurovat spravovaná instance, izolovaná databáze a elastického fondu**||
-| [Vytvoření izolované databáze a konfigurace pravidla brány firewall](scripts/sql-database-create-and-configure-database-powershell.md?toc=%2fpowershell%2fmodule%2ftoc.json) | Tento skript PowerShellu vytvoří izolovanou databázi SQL Azure a nakonfiguruje pravidlo brány firewall na úrovni serveru. |
+|**Vytvoření a konfigurace spravovaných instancí izolované databáze a elastické fondy**||
+| [Vytvoření izolované databáze a konfigurace pravidla brány firewall serveru databáze](scripts/sql-database-create-and-configure-database-powershell.md?toc=%2fpowershell%2fmodule%2ftoc.json) | Tento skript PowerShellu vytvoří izolovanou databázi SQL Azure a nakonfiguruje pravidlo brány firewall na úrovni serveru. |
 | [Vytváření elastických fondů a přesun databází ve fondu](scripts/sql-database-move-database-between-pools-powershell.md?toc=%2fpowershell%2fmodule%2ftoc.json) | Tento skript PowerShellu vytvoří elastické fondy Azure SQL Database, přesune databáze ve fondu a změní výpočetní velikosti.|
 | [Vytvoření a správa spravované instance](https://blogs.msdn.microsoft.com/sqlserverstorageengine/2018/06/27/quick-start-script-create-azure-sql-managed-instance-using-powershell/) | Teto skript PowerShellu ukazuje, jak vytvořit a spravovat spravovanou instanci pomocí Azure PowerShellu. |
 | [Vytvoření a správa Managed Instance pomocí šablony Azure Resource Manageru](scripts/sql-managed-instance-create-powershell-azure-resource-manager-template.md?toc=%2fpowershell%2fmodule%2ftoc.json) | Tento skript prostředí PowerShell ukazuje, jak vytvářet a spravovat Managed Instance pomocí šablony Azure Resource Manageru a Azure Powershellu.|

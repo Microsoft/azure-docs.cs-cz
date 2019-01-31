@@ -11,17 +11,17 @@ author: allenwux
 ms.author: xiwu
 ms.reviewer: mathoma
 manager: craigg
-ms.date: 01/16/2019
-ms.openlocfilehash: 568b239cf41c802cc5d25b638f6d1501f58eccdf
-ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
+ms.date: 01/25/2019
+ms.openlocfilehash: b0188a0983ea18490f3997b857386e313daa58ed
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54360084"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55467659"
 ---
 # <a name="configure-replication-in-azure-sql-database-managed-instance"></a>Konfigurace replikace v Azure SQL Database Managed Instance
 
-Transakční replikace umožňuje replikovat data z databáze systému SQL Server nebo Azure SQL Database Managed Instance, do spravované Instance nebo push změny provedené ve vašich databázích ve spravované instanci jiné systému SQL Server, izolovaná databáze Azure nebo jiné Managed Instance. Replikace je ve verzi public preview na [Azure SQL Database Managed Instance](sql-database-managed-instance.md). Managed Instance může hostovat databáze vydavatele, distributor a odběratele. Zobrazit [transakční replikace konfigurace](sql-database-managed-instance-transactional-replication.md#common-configurations) pro dostupné konfigurace.
+Transakční replikace umožňuje replikovat data z databáze systému SQL Server nebo Azure SQL Database Managed Instance do spravované Instance nebo nasdílení změn provedených ve vašich databázích ve spravované instanci jiný SQL Server, izolovanou databázi SQL Database nebo elastický fond, nebo jiné mi. Replikace je ve verzi public preview na [Azure SQL Database Managed Instance](sql-database-managed-instance.md). Managed Instance může hostovat databáze vydavatele, distributor a odběratele. Zobrazit [transakční replikace konfigurace](sql-database-managed-instance-transactional-replication.md#common-configurations) pro dostupné konfigurace.
 
 ## <a name="requirements"></a>Požadavky
 
@@ -71,7 +71,7 @@ Nejsou podporovány následující funkce:
 
    V níže uvedené příklady skriptů pomocí `<SQL_USER>` a `<PASSWORD>` s tímto účtem serveru SQL databáze, uživatele a heslo.
 
-5. [Připojení ke spravované instanci SQL Database](https://docs.microsoft.com/azure/sql-database/sql-database-connect-query-ssms).
+5. [Připojení ke spravované instanci SQL Database](sql-database-connect-query-ssms.md).
 
 6. Spusťte následující dotaz pro přidání distributora a distribuční databázi.
 
@@ -172,4 +172,4 @@ Nejsou podporovány následující funkce:
 ## <a name="see-also"></a>Viz také
 
 - [Transakční replikace](sql-database-managed-instance-transactional-replication.md)
-- [Co je Managed Instance?](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance)
+- [Co je Managed Instance?](sql-database-managed-instance.md)

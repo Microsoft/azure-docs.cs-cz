@@ -8,14 +8,14 @@ ms.topic: reference
 ms.date: 12/07/2018
 ms.author: mjbrown
 ms.custom: seodec18
-ms.openlocfilehash: b099848f2d0392a25a0906a96dba53885962c79b
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.openlocfilehash: bfc3ed5553802c8a87776dc1a5372bc27ac8d13d
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55102341"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55475182"
 ---
-# <a name="azure-cosmos-db-sql-language-reference"></a>Referenční dokumentace jazyka služby Azure Cosmos DB SQL 
+# <a name="sql-language-reference-for-azure-cosmos-db"></a>Referenční příručka jazyka SQL pro službu Azure Cosmos DB 
 
 Azure Cosmos DB podporuje dotazování dokumentů pomocí známých SQL (Structured Query Language), jako je gramatika přes hierarchické dokumenty JSON bez nutnosti explicitního schématu nebo vytváření sekundárních indexů. Tento článek poskytuje dokumentaci pro syntaxi jazyka dotazů SQL, který je kompatibilní s účty SQL API. Postup ukázky dotazů SQL, najdete v části [dotazy SQL ve službě Cosmos DB](how-to-sql-query.md).  
   

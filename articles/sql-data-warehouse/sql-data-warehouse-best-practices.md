@@ -6,16 +6,16 @@ author: ronortloff
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
-ms.component: implement
+ms.subservice: implement
 ms.date: 11/26/2018
 ms.author: rortloff
 ms.reviewer: igorstan
-ms.openlocfilehash: 0324a6f71a0a30fc9f3005a041b4c5413e6af8da
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: 4d61176030285556545e5619669d07c62d908a4e
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52317298"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55471449"
 ---
 # <a name="best-practices-for-azure-sql-data-warehouse"></a>Osvědčené postupy pro službu Azure SQL Data Warehouse
 Tento článek je kolekce doporučené postupy vám pomohou dosáhnout optimálního výkonu služby Azure SQL Data Warehouse.  Některé koncepty v tomto článku jsou základní a snadno se vysvětlují, další koncepty jsou pokročilejší a v tomto článku se jich jenom lehce dotýkáme.  Účelem tohoto článku je poskytnout vám základní pokyny a zvýšit povědomí o důležitých oblastech, na které byste se měli zaměřit, když budete sestavovat svůj datový sklad.  Každá část vám představí nějaký koncept a odkáže vás na podrobnější články, které se danému konceptu věnují více do hloubky.

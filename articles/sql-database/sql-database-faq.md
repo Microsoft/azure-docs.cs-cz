@@ -11,13 +11,13 @@ author: CarlRabeler
 ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
-ms.date: 12/10/2018
-ms.openlocfilehash: 77cb60c1a459d7c3f98d902d82e5fef86e8c34f4
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.date: 01/25/2019
+ms.openlocfilehash: a7ebf246300fdafe69f45aca0237964c8e669d5c
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53541608"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55463952"
 ---
 # <a name="sql-database-frequently-asked-questions-faq"></a>SQL Database – nejčastější dotazy (FAQ)
 
@@ -35,7 +35,7 @@ Ne. Dopad opravy není obecně patrné Pokud jste [použít logiku opakování](
 
 ## <a name="what-is-the-new-vcore-based-purchasing-model-for-azure-sql-database"></a>Co je nového založený na virtuálních jádrech nákupní model pro službu Azure SQL Database
 
-Nový nákupní model doplňuje stávající model založený na DTU. Model založený na virtuálních jádrech je účelem je poskytnout zákazníkům flexibilitu, kontrolu, transparentnost a jednoduchý způsob převodu místních požadavků na zatížení do cloudu. Také umožňuje zákazníkům škálovat své výpočetní prostředky a úložiště prostředků na základě jejich potřebám provádění úloh. Izolovaná databáze a elastický fond možnosti použití modelu virt. jader jsou také nárok až na 30 procent spoření s [zvýhodněné hybridní využití Azure pro SQL Server](https://azure.microsoft.com/pricing/hybrid-benefit/#services). Zobrazit [nákupní model založený na DTU](sql-database-service-tiers-dtu.md) a [nákupní model založený na virtuálních jádrech](sql-database-service-tiers-vcore.md) Další informace.
+Nový nákupní model doplňuje stávající model založený na DTU. Model založený na virtuálních jádrech je účelem je poskytnout zákazníkům flexibilitu, kontrolu, transparentnost a jednoduchý způsob převodu místních požadavků na zatížení do cloudu. Také umožňuje zákazníkům škálovat své výpočetní a úložnou kapacitu podle potřeb pracovního vytížení. Izolovaná databáze a elastický fond možnosti použití modelu virt. jader jsou také nárok až na 30 procent spoření s [zvýhodněné hybridní využití Azure pro SQL Server](https://azure.microsoft.com/pricing/hybrid-benefit/#services). Zobrazit [nákupní model založený na DTU](sql-database-service-tiers-dtu.md) a [nákupní model založený na virtuálních jádrech](sql-database-service-tiers-vcore.md) Další informace.
 
 ## <a name="what-is-a-vcore"></a>Co je virtuální jádro
 
@@ -141,9 +141,9 @@ Tak často, jak chcete. Zobrazit [Správa elastických fondů](sql-database-elas
 
 ## <a name="how-long-does-it-take-to-change-the-service-tier-or-compute-size-of-a-single-database-or-move-a-database-in-and-out-of-an-elastic-pool"></a>Jak dlouho trvá Změna úrovně služby nebo vypočítat velikost u jediné databáze nebo přesunutí databáze do elastického fondu
 
-Změna úrovně služby databáze a přesuny fondu vyžaduje databáze, které se mají zkopírovat na platformě jako operaci na pozadí. Změna úrovně služby může trvat pár minut i několik hodin v závislosti na velikosti databáze. V obou případech se databáze zůstat online a dostupné během přesunu. Podrobnosti o změně izolované databáze najdete v tématu [Změna úrovně služby databáze](sql-database-service-tiers-dtu.md).
+Změna úrovně služby databáze a přesuny fondu vyžaduje databáze, které se mají zkopírovat na platformě jako operaci na pozadí. Změna úrovně služby může trvat pár minut i několik hodin v závislosti na velikosti databáze. V obou případech se databáze zůstat online a dostupné během přesunu. Podrobnosti o změně izolované databáze najdete v tématu [Změna úrovně služby databáze](sql-database-single-database-scale.md).
 
-## <a name="when-should-i-use-a-single-database-vs-elastic-databases"></a>Kdy mám použít izolované databáze a elastické databáze
+## <a name="when-should-i-use-a-single-database-vs-elastic-pools"></a>Kdy použít izolované databáze a elastických fondů
 
 Obecně platí, elastické fondy jsou navrženy pro typické [software jako služba (SaaS) aplikací vzor](sql-database-design-patterns-multi-tenancy-saas-applications.md), ve kterých je jednu databázi tenanta nebo zákazníka. Nakupování jednotlivých databází a zřizovat a měnícím ve špičce pro každou databázi je často není hospodárné z hlediska nákladů. S fondy spravovat celkový výkon fondu a databáze škálování nahoru i dolů automaticky. Inteligentní modul Azure doporučuje fond databází při využití vzoru zaručuje ho. Podrobnosti najdete v tématu [elastického fondu pokyny](sql-database-elastic-pool.md).
 

@@ -9,13 +9,13 @@ ms.devlang: ruby
 ms.topic: article
 ms.date: 12/08/2016
 ms.author: tamram
-ms.component: queues
-ms.openlocfilehash: 67a5dc0eddb6deb51ec69c68c48d5edf308cf43e
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.subservice: queues
+ms.openlocfilehash: 7ebb4326a8ec8a3382a5488ce3b966526bef446a
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51231562"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55456268"
 ---
 # <a name="how-to-use-queue-storage-from-ruby"></a>Používání úložiště Queue z Ruby
 [!INCLUDE [storage-selector-queue-include](../../../includes/storage-selector-queue-include.md)]
@@ -63,7 +63,7 @@ Získání těchto hodnot z klasického účtu úložiště nebo účtu úloži�
 4. V okně Přístupové klíče, které se zobrazí, uvidíte přístupový klíč 1 a přístupový klíč 2. Můžete použít libovolný z nich. 
 5. Kliknutím na ikonu kopírování zkopírujte klíč do schránky. 
 
-## <a name="how-to-create-a-queue"></a>Postupy: Vytvoření fronty
+## <a name="how-to-create-a-queue"></a>Jak: Vytvoření fronty
 Následující kód vytvoří **Azure::QueueService** objektu, který umožňuje pracovat s frontami.
 
 ```ruby
@@ -80,14 +80,14 @@ rescue
 end
 ```
 
-## <a name="how-to-insert-a-message-into-a-queue"></a>Postupy: Vložit zprávu do fronty
+## <a name="how-to-insert-a-message-into-a-queue"></a>Jak: Vložit zprávu do fronty
 Chcete-li vložit zprávu do fronty, použijte **create_message()** metoda vytvořit novou zprávu a přidat do fronty.
 
 ```ruby
 azure_queue_service.create_message("test-queue", "test message")
 ```
 
-## <a name="how-to-peek-at-the-next-message"></a>Postupy: Zobrazení náhledu další zprávy
+## <a name="how-to-peek-at-the-next-message"></a>Jak: Zobrazení náhledu další zprávy
 Můžete prohlížet zprávy ve frontě bez odebrání z fronty pomocí volání **Náhled\_messages()** metody. Ve výchozím nastavení **Náhled\_messages()** prohlédne do jedné zprávy. Můžete také určit počet zpráv, které chcete náhled.
 
 ```ruby
@@ -95,7 +95,7 @@ result = azure_queue_service.peek_messages("test-queue",
   {:number_of_messages => 10})
 ```
 
-## <a name="how-to-dequeue-the-next-message"></a>Postupy: Odstranění z fronty další zprávy
+## <a name="how-to-dequeue-the-next-message"></a>Jak: Vyřazení další zprávy z fronty
 Zpráva můžete odebrat z fronty ve dvou krocích.
 
 1. Při volání **seznamu\_messages()**, získáte další zprávu ve frontě ve výchozím nastavení. Můžete také určit počet zpráv, které chcete načíst. Zprávy vrácené **seznamu\_messages()** stane neviditelnou pro jakýkoli jiný kód přečte zprávy z této fronty. Můžete předat časový limit viditelnosti v řádu sekund jako parametr.
@@ -109,7 +109,7 @@ azure_queue_service.delete_message("test-queue",
   messages[0].id, messages[0].pop_receipt)
 ```
 
-## <a name="how-to-change-the-contents-of-a-queued-message"></a>Postupy: Změna obsahu zpráv zařazených ve frontě
+## <a name="how-to-change-the-contents-of-a-queued-message"></a>Jak: Změna obsahu zpráv zařazených ve frontě
 Podle potřeby můžete změnit obsah zprávy přímo ve frontě. Kód uvedený níže používá **update_message()** způsob aktualizace zprávu. Metoda vrátí řazené kolekce členů, který obsahuje pop přijetí zprávy fronty a hodnotu čas UTC data, která reprezentuje čas zprávy se nebude zobrazovat ve frontě.
 
 ```ruby
@@ -119,7 +119,7 @@ pop_receipt, time_next_visible = azure_queue_service.update_message(
   30)
 ```
 
-## <a name="how-to-additional-options-for-dequeuing-messages"></a>Postupy: Dalších možností pro vyřazování z fronty zpráv
+## <a name="how-to-additional-options-for-dequeuing-messages"></a>Jak: Další možnosti pro zrušení fronty zpráv
 Načítání zpráv z fronty si můžete přizpůsobit dvěma způsoby.
 
 1. Můžete načíst dávku zpráv.
@@ -135,7 +135,7 @@ azure_queue_service.list_messages("test-queue", 300
 end
 ```
 
-## <a name="how-to-get-the-queue-length"></a>Postupy: Získání délky fronty
+## <a name="how-to-get-the-queue-length"></a>Jak: Získání délky fronty
 Můžete získat odhad počtu zpráv ve frontě. **Získat\_fronty\_metadata()** metoda požádá službu front vrátí počet zpráv přibližné a metadata o frontě.
 
 ```ruby
@@ -143,7 +143,7 @@ message_count, metadata = azure_queue_service.get_queue_metadata(
   "test-queue")
 ```
 
-## <a name="how-to-delete-a-queue"></a>Postupy: Odstranění fronty
+## <a name="how-to-delete-a-queue"></a>Jak: Odstranění fronty
 Chcete-li odstranit frontu se všemi zprávami, které v ní, zavolejte **odstranit\_queue()** metodu na objekt fronty.
 
 ```ruby

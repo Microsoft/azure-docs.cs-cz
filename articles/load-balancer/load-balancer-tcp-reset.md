@@ -11,18 +11,18 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 12/03/2018
+ms.date: 01/29/2019
 ms.author: kumud
-ms.openlocfilehash: 0b3e8fc72eb22a67c0672be19f60d4956d3377b7
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: 18e4a7ae5010730054dd110828c63e8418b93f39
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53257283"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55296915"
 ---
 # <a name="load-balancer-with-tcp-reset-on-idle-public-preview"></a>Nástroj pro vyrovnávání zatížení s TCP Nulováním nečinnosti (Public Preview)
 
-Můžete použít [Load balanceru úrovně Standard](load-balancer-standard-overview.md) vytvoření předvídatelnějšího chování aplikace pro vaše scénáře s obousměrný TCP resetuje (TCP RVNÍ paket) pro každé konfigurovatelné nečinnosti časový limit.  Výchozí chování pro vyrovnávání zatížení je tiše síťový toky, když je dosaženo časového limitu nečinnosti toku.
+Můžete použít [Load balanceru úrovně Standard](load-balancer-standard-overview.md) vytvořit předvídatelnějšího chování aplikace pro vaše scénáře tím, že pro dané pravidlo umožňuje TCP resetovat při nečinnosti. Výchozí chování pro vyrovnávání zatížení je tiše síťový toky, když je dosaženo časového limitu nečinnosti toku.  Povolení této funkce způsobí, že nástroj pro vyrovnávání zatížení k odeslání obousměrné (TCP RVNÍ paket) může resetovat TCP na časový limit nečinnosti.  Koncových bodů vaší aplikace to bude informovat, že připojení vypršela platnost a již není použitelné.  Koncové body můžete okamžitě vytvořit nové připojení v případě potřeby.
 
 ![Obnovení protokolu TCP nástroje pro vyrovnávání zatížení](media/load-balancer-tcp-reset/load-balancer-tcp-reset.png)
 
@@ -69,31 +69,10 @@ Pomocí rozhraní API verze 2018-07-01, můžete povolit odesílání obousměrn
 
 ## <a name="regions"></a> Regionální dostupnost
 
-Tento parametr je aktuálně efektivní v následujících oblastech.  V oblasti, které tu nejsou uvedené parametr nemá žádný vliv.
-
-| Oblast |
-|---|
-| Jihovýchodní Asie |
-| Brazílie – jih |
-| Kanada – střed |
-| Evropa – západ |
-| Indie – střed |
-| Indie – západ |
-| Japonsko – západ |
-| Jižní Korea – střed |
-| Jižní Korea – jih |
-| Velká Británie – sever |
-| Velká Británie – jih 2 |
-| USA – východ |
-| USA – východ 2 |
-| USA – sever |
-| USA – západ |
-
-Tato tabulka bude aktualizovat, protože ve verzi preview je rozšířena do jiných oblastí.  
+K dispozici ve všech oblastech.
 
 ## <a name="limitations"></a>Omezení
 
-- Omezené [dostupnost v oblastech](#regions).
 - Portál nelze použít ke konfiguraci nebo zobrazit TCP Reset.  Použijte šablony, rozhraní REST API, Az CLI 2.0 nebo prostředí PowerShell.
 
 ## <a name="next-steps"></a>Další postup

@@ -11,13 +11,13 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 09/20/2018
-ms.openlocfilehash: 05c237eb071b48f2373ecfd78eeab6f7bceb8c5c
-ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
+ms.date: 01/25/2019
+ms.openlocfilehash: 4c8e93948532da02c64eb9eb1277abb425abc250
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52584147"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55455742"
 ---
 # <a name="prepay-for-sql-database-compute-resources-with-azure-sql-database-reserved-capacity"></a>Předem za výpočetní prostředky, SQL Database s Azure SQL Database vyhrazené kapacity
 
@@ -34,9 +34,9 @@ Viz podrobnosti o jak podnikovým zákazníkům a Zákazníci s průběžnými p
 
 ## <a name="determine-the-right-sql-size-before-purchase"></a>Určení správné velikosti SQL před nákupem
 
-Velikost rezervace by měla být založena na celkový objem výpočtů používá SQL existující nebo brzy na--nasadit jeden databází nebo elastických fondů v rámci určité oblasti a pomocí stejného výkonu vrstvy a hardware generování. 
+Velikost rezervace mají zakládat na celkový objem výpočtů používá existující nebo brzy do--nasazen jedné databáze a elastických fondů v rámci určité oblasti a pomocí stejného výkonu vrstvy a hardware generování. 
 
-Například předpokládejme, že používáte jeden obecné účely Gen5 – 16 elastický fond – VCORE úrovně a dvě důležité obchodní informace, Gen5 – 4 vCore izolované databáze. Dále můžeme předpokládaný, že máte v úmyslu nasadit v rámci příští měsíc další obecné účely Gen5 – 16 elastický fond – vCore a jeden pro důležité obchodní informace, Gen5 – 32 elastický fond – vCore. Také Předpokládejme, že máte jistotu, že budete potřebovat tyto prostředky alespoň 1 rok. V tomto případě byste si zakoupit 32 virtuálních jader (2 × 16), rezervace na 1 rok pro SQL Database jedním/elastického fondu pro obecné účely – Compute Gen5 a 40 (2 × 4 + 32) vCore rezervaci 1 rok pro SQL databáze Single/elastického fondu pro důležité obchodní informace – Compute Gen5.
+Například předpokládejme, že používáte jeden obecné účely Gen5 – 16 elastický fond – VCORE úrovně a dvě důležité obchodní informace, Gen5 – 4 vCore izolované databáze. Dále můžeme předpokládaný, že máte v úmyslu nasadit v rámci příští měsíc další obecné účely Gen5 – 16 elastický fond – vCore a jeden pro důležité obchodní informace, Gen5 – 32 elastický fond – vCore. Také Předpokládejme, že máte jistotu, že budete potřebovat tyto prostředky alespoň 1 rok. V tomto případě byste si zakoupit 32 virtuálních jader (2 × 16), rezervace na 1 rok pro SQL Database samostatnou/elastického fondu pro obecné účely – Compute Gen5 a 40 (2 × 4 + 32) – VCORE úrovně 1 rok rezervace pro samostatné databáze SQL/elastické fondu pro důležité obchodní informace – Compute Gen5.
 
 ## <a name="buy-sql-database-reserved-capacity"></a>Nákup kapacity databáze SQL vyhrazený
 
@@ -50,7 +50,7 @@ Například předpokládejme, že používáte jeden obecné účely Gen5 – 16
     | Pole      | Popis|
     |:------------|:--------------|
     |Název        |Název této rezervace.| 
-    |Předplatné|Předplatné použité k úhradě rezervaci kapacity databáze SQL vyhrazený. Způsob platby v rámci předplatného účtuje pořizovací náklady pro rezervaci kapacity databáze SQL vyhrazený. Musí se jednat o předplatné se smlouvou Enterprise (číslo nabídky: MS-AZR-0017P) nebo předplatné s průběžnými platbami (číslo nabídky: MS-AZR-0003P). V případě předplatného se smlouvou Enterprise se poplatky strhávají z peněžního zůstatku v rámci dané registrace nebo se účtují jako nadlimitní využití. V případě předplatného s průběžnými platbami se poplatky účtují na platební kartu nebo pomocí způsobu platby faktur určeného v předplatném.|    
+    |Předplatné|Předplatné použité k úhradě rezervaci kapacity databáze SQL vyhrazený. Způsob platby v rámci předplatného účtuje pořizovací náklady pro rezervaci kapacity databáze SQL vyhrazený. Tento typ předplatného musí být smlouvu enterprise agreement (číslo nabídky: MS-AZR-0017P) i pro průběžné platby (číslo nabídky: MS-AZR-0003P). V případě předplatného se smlouvou Enterprise se poplatky strhávají z peněžního zůstatku v rámci dané registrace nebo se účtují jako nadlimitní využití. V případě předplatného s průběžnými platbami se poplatky účtují na platební kartu nebo pomocí způsobu platby faktur určeného v předplatném.|    
     |Rozsah       |Obor rezervace – VCORE úrovně mohou vztahovat na jedno předplatné jeden nebo více odběrů (sdíleném oboru). Pokud vyberete: <ul><li>Jedno předplatné – sleva za rezervaci vCore se použije pro instance databáze SQL v tomto předplatném. </li><li>Na úrovni Shared – sleva za rezervaci vCore platí pro instance SQL Database běžící v rámci kontextu vaší fakturace žádné předplatné. Pro podnikové zákazníky sdílený obor je registraci a zahrnuje všechna předplatná (s výjimkou předplatná pro vývoj/testování) během registrace. Pro zákazníky s průběžnými platbami sdílený obor je Všechna předplatná s průběžnými platbami, vytváří správce účtu.</li></ul>|
     |Oblast      |Oblast Azure, která je předmětem databáze SQL vyhrazený rezervaci kapacity.|    
     |Typ nasazení|Typ prostředku SQL, který chcete koupit rezervaci pro.|
@@ -87,7 +87,7 @@ Další informace o rezervacích Azure, najdete v následujících článcích:
 - [Vysvětlení využití rezervaci u prováděcí smlouvy Enterprise](../billing/billing-understand-reserved-instance-usage-ea.md)
 - [Rezervace Azure v programu Partnerské centrum Cloud Solution Provider (CSP)](https://docs.microsoft.com/partner-center/azure-reservations)
 
-## <a name="need-help-contact-us"></a>Potřebujete pomoct? Kontaktujte nás.
+## <a name="need-help-contact-us"></a>Potřebujete pomoc? Kontaktujte nás.
 
 Pokud máte otázky nebo potřebujete pomoc, [vytvořit žádost o podporu](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest).
 

@@ -11,17 +11,17 @@ author: allenwux
 ms.author: xiwu
 ms.reviewer: mathoma
 manager: craigg
-ms.date: 11/09/2018
-ms.openlocfilehash: 6fbfaaa82095fbf093560e65076b40a392356da8
-ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
+ms.date: 01/25/2019
+ms.openlocfilehash: 78858ba888986b75a1da77caaec1ef02ffcdf307
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54330156"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55467692"
 ---
 # <a name="replication-to-sql-database-single-and-pooled-databases"></a>Replikace do jednoho a ve fondu databází SQL Database
 
-Replikace systému SQL Server lze konfigurovat pro databáze ve fondu a jeden pro [logický server](sql-database-logical-servers.md) ve službě Azure SQL Database.  
+Replikace systému SQL Server lze konfigurovat pro databáze ve fondu a jeden pro [serveru služby SQL Database](sql-database-servers.md) ve službě Azure SQL Database.  
 
 ## <a name="supported-configurations"></a>**Podporované konfigurace:**
   
@@ -65,7 +65,7 @@ Replikace systému SQL Server lze konfigurovat pro databáze ve fondu a jeden pr
 
 1. Vytvoření publikace transakční replikace na místní databázi systému SQL Server.  
 2. Na místní SQL Server pomocí **Průvodce novým odběrem** nebo příkazy jazyka Transact-SQL k vytvoření oznámení na předplatné Azure SQL Database.  
-3. S databázemi ve fondu a jeden ve službě Azure SQL Database Počáteční sada dat je snímek, který je vytvořil agenta snímku a distribuované a použít tak agenta distribuce. S Azure SQL Database Managed Instance můžete také použít zálohu databáze k přidání dat do databáze odběratele.
+3. S databázemi ve fondu a jeden ve službě Azure SQL Database Počáteční sada dat je snímek, který je vytvořil agenta snímku a distribuované a použít tak agenta distribuce. Pomocí databáze spravované instance můžete také zálohu databáze k přidání dat do databáze odběratele.
 
 ### <a name="data-migration-scenario"></a>Scénáře migrace dat  
 
@@ -107,7 +107,7 @@ Následující možnosti nejsou podporovány pro předplatná Azure SQL Database
 Vytvořte publikaci a nabízený odběr. Další informace naleznete v tématu:
   
 - [Vytvořit publikaci](https://docs.microsoft.com/sql/relational-databases/replication/publish/create-a-publication)
-- [Vytvoření odběru Push](https://docs.microsoft.com/sql/relational-databases/replication/create-a-push-subscription/) pomocí název logického serveru databáze Azure SQL jako odběratele (například **N'azuresqldbdns.database.windows.net "**) a název databáze Azure SQL jako (určení databáze například **AdventureWorks**).  
+- [Vytvoření odběru Push](https://docs.microsoft.com/sql/relational-databases/replication/create-a-push-subscription/) pomocí názvu serveru Azure SQL Database jako odběratele (například **N'azuresqldbdns.database.windows.net "**) a název databáze Azure SQL jako cílové databáze (pro Příklad **AdventureWorks**).  
 
 ## <a name="see-also"></a>Viz také  
 

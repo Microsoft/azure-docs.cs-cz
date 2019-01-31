@@ -6,12 +6,12 @@ ms.service: avere-vfxt
 ms.topic: conceptual
 ms.date: 10/31/2018
 ms.author: v-erkell
-ms.openlocfilehash: 72d1676613de699abda2136a7743a974b2b17c01
-ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
+ms.openlocfilehash: 30c03d52e31f70448eef07b4567083061605d8dd
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52162856"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55300468"
 ---
 # <a name="access-the-vfxt-cluster"></a>Přístup ke clusteru vFXT
 
@@ -25,13 +25,13 @@ Protože vFXT cluster nachází v rámci privátní virtuální síť, musíte v
 > [!NOTE] 
 > Tento článek předpokládá, že jste nastavili veřejné IP adresy na adaptéru clusteru nebo na jiný virtuální počítač ve virtuální síti vašeho clusteru. Tento článek popisuje, jak používat tento virtuální počítač jako hostitele pro přístup ke clusteru. Pokud používáte síť VPN nebo ExpressRoute pro přístup k virtuální síti, přejděte k [připojení v Ovládacích panelech Avere](#connect-to-the-avere-control-panel-in-a-browser).
 
-Před připojením, ujistěte se, že veřejného/soukromého páru klíčů SSH, který jste použili při vytváření clusteru kontroleru je nainstalována na místním počítači. Přečtěte si jejich dokumentaci klíče SSH [Windows](https://docs.microsoft.com/azure/virtual-machines/linux/ssh-from-windows) nebo [Linux](https://docs.microsoft.com/azure/virtual-machines/linux/mac-create-ssh-keys) Pokud potřebujete pomoc.  
+Před připojením, ujistěte se, že veřejného/soukromého páru klíčů SSH, který jste použili při vytváření clusteru kontroleru je nainstalována na místním počítači. Přečtěte si jejich dokumentaci klíče SSH [Windows](https://docs.microsoft.com/azure/virtual-machines/linux/ssh-from-windows) nebo [Linux](https://docs.microsoft.com/azure/virtual-machines/linux/mac-create-ssh-keys) Pokud potřebujete pomoc. (Pokud jste použili heslo místo veřejný klíč, budete vyzváni k jeho zadání, když se připojíte.) 
 
 ## <a name="ssh-tunnel-with-a-linux-host"></a>Tunel SSH s hostiteli se systémem Linux
 
 Pokud používáte klienta se systémem Linux, použijte příkaz v tomto formuláři tunelování SSH: 
 
-SSH -L *local_port*:*cluster_mgmt_ip*: 443 *controller_username*@*controller_public_IP*
+ssh -L *local_port*:*cluster_mgmt_ip*:443 *controller_username*@*controller_public_IP*
 
 Tento příkaz se připojí k IP adresa pro správu clusteru prostřednictvím IP adresa adaptéru clusteru.
 
@@ -41,7 +41,7 @@ Příklad:
 ssh -L 8443:10.0.0.5:443 azureuser@203.0.113.51
 ```
 
-Ověřování je automatické, pokud jste použili veřejný klíč SSH k vytvoření clusteru a v klientském systému je nainstalován odpovídajícího klíče.
+Ověřování je automatické, pokud jste použili veřejný klíč SSH k vytvoření clusteru a v klientském systému je nainstalován odpovídajícího klíče. Pokud jste použili heslo, systém vás vyzve k jeho zadání.
 
 ## <a name="ssh-tunnel-with-a-windows-host"></a>Tunel SSH s Windows hostitele
 
@@ -63,7 +63,7 @@ V **konfigurace** panelu:
 
 ![Aplikace Putty snímek obrazovky znázorňující, kde klikněte na tlačítko Přidat tunel](media/avere-vfxt-ptty-numbered.png)
 
-Ověřování je automatické, pokud jste použili veřejný klíč SSH k vytvoření clusteru a v klientském systému je nainstalován odpovídajícího klíče.
+Ověřování je automatické, pokud jste použili veřejný klíč SSH k vytvoření clusteru a v klientském systému je nainstalován odpovídajícího klíče. Pokud jste použili heslo, systém vás vyzve k jeho zadání.
 
 ## <a name="connect-to-the-avere-control-panel-in-a-browser"></a>Připojení v Ovládacích panelech Avere v prohlížeči
 
@@ -77,7 +77,7 @@ Tento krok používá pro připojení k nástroji pro konfiguraci spuštěné v 
 
 V závislosti na vašem prohlížeči možná budete muset kliknout na **Upřesnit** a ověřte, zda je a pokračujte na stránku.
 
-Zadejte uživatelské jméno `admin` a heslo, které jste zadali při vytváření clusteru.
+Zadejte uživatelské jméno `admin` a hesla pro správu, které jste zadali při vytváření clusteru.
 
 ![Snímek obrazovky Avere přihlašovací stránka vyplní uživatelské jméno admin a heslo](media/avere-vfxt-gui-login.png)
 

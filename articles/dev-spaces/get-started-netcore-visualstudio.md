@@ -5,19 +5,19 @@ services: azure-dev-spaces
 ms.service: azure-dev-spaces
 ms.custom: vs-azure
 ms.workload: azure-vs
-ms.component: azds-kubernetes
+ms.subservice: azds-kubernetes
 author: zr-msft
 ms.author: zarhoads
 ms.date: 07/09/2018
 ms.topic: tutorial
 description: Rychlý vývoj na platformě Kubernetes s využitím kontejnerů a mikroslužeb v Azure
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, kontejnery
-ms.openlocfilehash: aeaa56d192899ef12b698ebbc5f19305f79f4ff1
-ms.sourcegitcommit: 275eb46107b16bfb9cf34c36cd1cfb000331fbff
+ms.openlocfilehash: e81073850ebb45e82f2f702bec976eed4725f62e
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51706258"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55462558"
 ---
 # <a name="get-started-on-azure-dev-spaces-with-net-core-and-visual-studio"></a>Zahájení práce se službou Azure Dev Spaces s .NET Core a sadou Visual Studio
 
@@ -47,7 +47,7 @@ V tomto průvodci se naučíte:
 
    ![Nastavení konfigurace Kubernetes](media/common/Kubernetes-Create-Cluster-2.PNG)
 
-   Po dokončení vyberte **Další: Ověřování**.
+   Vyberte **Další: Ověřování** po dokončení.
 
 1. Vyberte požadované nastavení pro řízení přístupu na základě role (RBAC). Služba Azure Dev Spaces podporuje clustery s vypnutým i zapnutým řízením přístupu na základě role.
 

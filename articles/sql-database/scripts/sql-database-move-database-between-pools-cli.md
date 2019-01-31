@@ -11,17 +11,17 @@ author: douglaslMS
 ms.author: douglasl
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 09/20/2018
-ms.openlocfilehash: 0d532f976304e164732be5184ff132421e13c6b4
-ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
+ms.date: 01/25/2019
+ms.openlocfilehash: a70af29c07c532b43fdf25d0517ae880bfd3cff8
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/20/2018
-ms.locfileid: "53649885"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55476328"
 ---
 # <a name="use-cli-to-move-an-azure-sql-database-in-a-sql-elastic-pool"></a>Přesun databáze SQL Azure v elastickém fondu SQL pomocí rozhraní příkazového řádku
 
-Tento ukázkový skript Azure CLI vytvoří dva elastické fondy, přesune databázi SQL Azure z jednoho elastického fondu SQL do druhého elastického fondu SQL a pak přesune databázi z elastického fondu na velikost výpočetního prostředku izolované databáze Azure. 
+Tento ukázkový skript Azure CLI vytvoří dva elastické fondy a přesune databázi Azure SQL z jednoho elastického fondu SQL do druhého elastického fondu SQL a pak přesune databázi z elastického fondu pro izolované databáze vypočítat velikost. 
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
@@ -48,9 +48,9 @@ Tento skript používá následující příkazy. Každý příkaz v tabulce odk
 | Příkaz | Poznámky |
 |---|---|
 | [az group create](https://docs.microsoft.com/cli/azure/group#az-group-create) | Vytvoří skupinu prostředků, ve které se ukládají všechny prostředky. |
-| [az sql server create](https://docs.microsoft.com/cli/azure/sql/server#az-sql-server-create) | Vytvoří logický server, který je hostitelem databáze nebo elastického fondu. |
-| [az sql elastic-pools create](https://docs.microsoft.com/cli/azure/sql/elastic-pool#az-sql-elastic-pool-create) | Vytvoří v rámci logického serveru elastický fond. |
-| [az sql db create](https://docs.microsoft.com/cli/azure/sql/db#az-sql-db-create) | Vytvoří databázi na logickém serveru jako izolovanou databázi nebo databázi ve fondu. |
+| [az sql server create](https://docs.microsoft.com/cli/azure/sql/server#az-sql-server-create) | Vytvoří server služby SQL Database, který je hostitelem izolovaných databází a elastických fondů. |
+| [az sql elastic-pools create](https://docs.microsoft.com/cli/azure/sql/elastic-pool#az-sql-elastic-pool-create) | Vytvoří elastický fond. |
+| [az sql db create](https://docs.microsoft.com/cli/azure/sql/db#az-sql-db-create) | Vytvoří izolovanou databázi nebo databáze v elastickém fondu. |
 | [az sql db update](https://docs.microsoft.com/cli/azure/sql/db#az-sql-db-update) | Aktualizuje vlastnosti databáze nebo přesune databázi do nebo z elastického fondu nebo mezi elastickými fondy. |
 | [az group delete](https://docs.microsoft.com/cli/azure/vm/extension#az-vm-extension-set) | Odstraní skupinu prostředků včetně všech vnořených prostředků. |
 

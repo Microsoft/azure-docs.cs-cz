@@ -6,17 +6,17 @@ author: marktab
 manager: cgronlun
 editor: cgronlun
 ms.service: machine-learning
-ms.component: team-data-science-process
+ms.subservice: team-data-science-process
 ms.topic: article
 ms.date: 05/11/2018
 ms.author: tdsp
 ms.custom: seodec18, previous-author=fboylu, previous-ms.author=fboylu
-ms.openlocfilehash: 8d2a16047a741daf484d6ccdc48453d49355d443
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: 860d24bf9de02d1b2ca46f05f1e09843a826aaf9
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53135677"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55466825"
 ---
 # <a name="azure-ai-guide-for-predictive-maintenance-solutions"></a>Průvodce Azure AI pro řešení prediktivní údržby
 
@@ -88,16 +88,16 @@ Tato část se zaměřuje na kolekci PdM případy použití v několika oborech
 |:-----------------|-------------------|
 |**Letectví**      |                   |
 |_Testovat zpoždění a zrušení_ z důvodu potíží mechanických. Chyby, které nelze opravit v čase může způsobit, že lety budou zrušeny a narušit plánování a provoz. |PdM řešení můžete předvídá pravděpodobnost letadla se zpozdila nebo zrušená kvůli mechanickým závadám.|
-|_Části selhání modulu letadla_: nahrazení část motoru letadla jsou mezi většiny běžných úloh údržby v leteckém průmyslu. Údržba řešení vyžadují pečlivé správu uložených dostupnost součásti, doručování a plánování|Schopnost shromáždění informací o spolehlivosti komponenty vede k podstatné omezení objemu na investiční náklady.|
+|_Části selhání modulu letadla_: Nahrazení část motoru letadla jsou mezi většiny běžných úloh údržby v leteckém průmyslu. Údržba řešení vyžadují pečlivé správu uložených dostupnost součásti, doručování a plánování|Schopnost shromáždění informací o spolehlivosti komponenty vede k podstatné omezení objemu na investiční náklady.|
 |**Finance** |                         |
 |_Selhání ATM_ problém je běžný v rámci oboru bankovnictví. Problémem je pravděpodobnost, že transakci ATM hotovosti stažení dojde k přerušení kvůli chybě dokumentu zaseknutý nebo její část v hotovosti řadič sestavy. Podle predikcí selhání transakce, Network lze udržovat proaktivně zabránit výskytu chyby.| Místo umožňují počítači nezdaří polovině transakce, žádoucí alternativou je program počítače k odepření služby podle do predikce.|
 |**Energie** |                          |
-|_Větru turbíny selhání_: větrné turbíny jsou zdrojem hlavní energie v dbá zemích a zahrnují vysokou kapitálových nákladů. Klíčovou součástí větrné turbíny je generátor motoru. nezdařeného vykreslí turbíny neefektivní. Je také velmi nákladné opravit.|Předpověď klíčové ukazatele výkonu, jako je například MTTF (průměrný čas potřebný k selhání) může pomoct energetickým společnostem turbíny selhání a zajistit minimálními prostoji. Pravděpodobnosti selhání bude informovat rozvržení služeb techniků pro monitorování turbíny, které můžou brzy dojde k selhání a naplánovat režimy založeného na čase údržby. Prediktivní modely poskytují přehled o různých faktorů, které přispívají k selhání, která pomáhá techniků lépe pochopili původní příčiny problémů.|
-|_Jistič selhání_: distribuce elektřiny domovů a podniků vyžaduje power řádky za všech okolností zaručit doručování energie byla funkční. Jističe pomůžou omezit nebo vyloučit poškození power řádků při přetížení nebo negativní weather podmínky. Obchodní problémem je Předvídejte selhání jističe.| Řešení PdM pomoct snížit náklady na opravu a zvýšit životnost vybavení, jako jsou jističe. Pomáhají zlepšovat kvalitu výkon sítě snížením neočekávaných chyb a přerušení služeb.|
+|_Větru turbíny selhání_: Větrné turbíny jsou zdrojem hlavní energie v dbá zemích a zahrnují vysokou kapitálových nákladů. Klíčovou součástí větrné turbíny je generátor motoru. nezdařeného vykreslí turbíny neefektivní. Je také velmi nákladné opravit.|Předpověď klíčové ukazatele výkonu, jako je například MTTF (průměrný čas potřebný k selhání) může pomoct energetickým společnostem turbíny selhání a zajistit minimálními prostoji. Pravděpodobnosti selhání bude informovat rozvržení služeb techniků pro monitorování turbíny, které můžou brzy dojde k selhání a naplánovat režimy založeného na čase údržby. Prediktivní modely poskytují přehled o různých faktorů, které přispívají k selhání, která pomáhá techniků lépe pochopili původní příčiny problémů.|
+|_Jistič selhání_: Distribuce elektřiny domovů a podniků vyžaduje power řádky za všech okolností zaručit doručování energie byla funkční. Jističe pomůžou omezit nebo vyloučit poškození power řádků při přetížení nebo negativní weather podmínky. Obchodní problémem je Předvídejte selhání jističe.| Řešení PdM pomoct snížit náklady na opravu a zvýšit životnost vybavení, jako jsou jističe. Pomáhají zlepšovat kvalitu výkon sítě snížením neočekávaných chyb a přerušení služeb.|
 |**Dopravy a logistiky** |    |
-|_Selhání dveře elevator_: hodnocení velkých společností poskytování služeb plnohodnotných miliony funkční výtahy po celém světě. Výtah bezpečnost, spolehlivost a dostupnost jsou hlavních cílů pro své zákazníky. Těmto společnostem sledovat tyto a různých dalších atributů prostřednictvím snímačů, abychom jim opravné i preventivní údržby. V hodnocení nejvýraznější potíže zákazníka nefunguje dveře hodnocení. V tomto případě je poskytnout prediktivní aplikace znalostní báze, který bude předpovídat, že způsobí, že riziko chyb dveře obchodního problému.| Výtahy jsou investiční pro potenciálně životnost 20 – 30 rok. Proto může být vysoce konkurenčním prostředí; každý potenciální prodej Proto mají vysoká očekávání pro servis a podporu. Prediktivní údržby může poskytnout tyto společnosti výhodu oproti konkurenci ve svých produktech a nabídek služeb.|
-|_Kolem selhání_: kolem selhání účet polovina všech trénování bezpečnosti proti vykolejení a miliardy rozesílaných zpráv v odvětví představuje špičku globální lišty nákladů. Selhání kolečko také způsobit rails zhoršovat, což občas způsobí lišty přerušení předčasně ukončen. Zalomení lišty vést k katastrofickými událostmi, jako je například bezpečnosti proti vykolejení. Aby tyto instance železniční sledování výkonu kola a nahradíte je preventivní způsobem. Obchodní problémem je predikce selhání kolečka.| Prediktivní Údržba kol vám pomůže s just-in-time nahrazení souborů Wheel |
-|_Selhání dveře trénování subway_: je hlavní důvod zpoždění v operacích subway dveře selhání automobilů trénování. Obchodní problémem je Předvídejte selhání dveře trénování.|Časná povědomí o selhání dveře nebo počet dní do selhání dveře vám pomůže optimalizovat obchodní trénování dveře plány údržby.|
+|_Selhání dveře elevator_: Výtah velkých společností poskytování služeb plnohodnotných miliony funkční výtahy po celém světě. Výtah bezpečnost, spolehlivost a dostupnost jsou hlavních cílů pro své zákazníky. Těmto společnostem sledovat tyto a různých dalších atributů prostřednictvím snímačů, abychom jim opravné i preventivní údržby. V hodnocení nejvýraznější potíže zákazníka nefunguje dveře hodnocení. V tomto případě je poskytnout prediktivní aplikace znalostní báze, který bude předpovídat, že způsobí, že riziko chyb dveře obchodního problému.| Výtahy jsou investiční pro potenciálně životnost 20 – 30 rok. Proto může být vysoce konkurenčním prostředí; každý potenciální prodej Proto mají vysoká očekávání pro servis a podporu. Prediktivní údržby může poskytnout tyto společnosti výhodu oproti konkurenci ve svých produktech a nabídek služeb.|
+|_Kolem selhání_: Kolečko selhání účet pro polovina všech trénování bezpečnosti proti vykolejení a miliardy rozesílaných zpráv v odvětví představuje špičku globální lišty nákladů. Selhání kolečko také způsobit rails zhoršovat, což občas způsobí lišty přerušení předčasně ukončen. Zalomení lišty vést k katastrofickými událostmi, jako je například bezpečnosti proti vykolejení. Aby tyto instance železniční sledování výkonu kola a nahradíte je preventivní způsobem. Obchodní problémem je predikce selhání kolečka.| Prediktivní Údržba kol vám pomůže s just-in-time nahrazení souborů Wheel |
+|_Selhání dveře trénování subway_: Hlavní důvod zpoždění v operacích subway je selhání dveře automobilů trénování. Obchodní problémem je Předvídejte selhání dveře trénování.|Časná povědomí o selhání dveře nebo počet dní do selhání dveře vám pomůže optimalizovat obchodní trénování dveře plány údržby.|
 
 V další části se dostane do podrobnosti o tom, jak začít využívat výhody PdM bylo uvedeno výše.
 
@@ -117,7 +117,7 @@ Tato část obsahuje obecné pokyny pro datové vědy zásady a postupy pro PdM.
 Nejprve, data musí být _týkající se problému_. Vezměte v úvahu _kolem selhání_ případu popsané výše - trénovací data by měla obsahovat funkce týkající se operací kolečka. Pokud se problém předpovídat selhání _systému výrazně nabývá na dynamice_, musí zahrnovat různé součásti systému výrazně nabývá na dynamice trénovací data. Vzhledem k tomu, zaměřuje na druhý případ selhání podsystému větší, zaměřuje prvním případě konkrétní součást. Obecné doporučení je k navrhování systémů předpovědi o konkrétní součásti, nikoli větší subsystémy, protože ten bude mít více jsou daleko od sebe data. Expert domény (naleznete v tématu [kvalifikaci problémy související s prediktivní údržby](#Qualifying-problems-for-predictive-maintenance)) by měly pomoci při výběru nejrelevantnější podmnožiny dat pro analýzu. Příslušné zdroje dat jsou popsány podrobněji v [přípravy dat pro prediktivní údržbu](#Data-preparation-for-predictive-maintenance).
 
 ### <a name="sufficient-data"></a>Dostatečným množstvím dat
-S ohledem na data historie selhání jsou nejčastější dvě otázky: (1) "počet událostí selhání je potřeba trénování modelu?" (2) "kolik záznamů se považuje"dostatek"?" Nejsou žádné konečné odpovědi, ale pouze hrubé odhady. (1) větší počet událostí selhání, lepší modelu. (2) a přesný počet událostí selhání závisí na data a kontext problém je vyřešen. Ale na druhou stranu, pokud se počítači nezdaří příliš často podniku se nahradit ho, což sníží selhání instance. Sem znovu pokynů od expertní domény je důležité. Existují však metody počítat s problémem _výjimečných událostí_. Jsou popsány v části [zpracování dat imbalanced](#Handling-imbalanced-data).
+S ohledem na data historie selhání jsou často kladené dvě otázky: (1) "počet událostí selhání se vyžaduje k natrénování modelu?" (2) "kolik záznamů se považuje"dostatek"?" Nejsou žádné konečné odpovědi, ale pouze hrubé odhady. (1) větší počet událostí selhání, lepší modelu. (2) a přesný počet událostí selhání závisí na data a kontext problém je vyřešen. Ale na druhou stranu, pokud se počítači nezdaří příliš často podniku se nahradit ho, což sníží selhání instance. Sem znovu pokynů od expertní domény je důležité. Existují však metody počítat s problémem _výjimečných událostí_. Jsou popsány v části [zpracování dat imbalanced](#Handling-imbalanced-data).
 
 ### <a name="quality-data"></a>Kvalita dat
 Kvalita dat je důležité – musí být každá hodnota atributu prediktivní _přesné_ ve spojení s hodnotou Cílová proměnná. Kvalita dat je dobře sledované oblast v statistiky a data správy a proto out oboru této příručce.
@@ -167,8 +167,8 @@ Příklady relevantních dat pro [případy použití ukázkové PdM](#Sample-Pd
 ### <a name="data-types"></a>Typy dat
 S ohledem výše uvedené zdroje dat, jsou dvě hlavní datové typy dodržovat v doméně PdM:
 
-- _Dočasná data_: provozní telemetrii, počítač podmínky, typy pracovních pořadí, priority kódy, které se mají časové razítko v době záznam. Selhání, Údržba a opravy a historie využití bude také mít časová razítka spojené s každou událost.
-- _Statická data_: funkce počítačů a funkce operátoru obecně jsou statické od popisují technických specifikací počítače nebo operátor atributů. Pokud tyto funkce může v průběhu času měnit, by měly mít časové razítko k nim má přiřazené.
+- _Dočasná data_: Provozní telemetrie, počítač podmínky, typy pracovních pořadí, priority kódy, které se mají časové razítko v době záznam. Selhání, Údržba a opravy a historie využití bude také mít časová razítka spojené s každou událost.
+- _Statická data_: Funkce počítačů a funkce operátoru obecně jsou statické od popisují technických specifikací počítače nebo operátor atributů. Pokud tyto funkce může v průběhu času měnit, by měly mít časové razítko k nim má přiřazené.
 
 Prediktivní a cíl proměnné by měl být předzpracovaná/transformuje na [číselná, kategorií a další datové typy](https://www.statsdirect.com/help/basics/measurement_scales.htm) podle algoritmu používá.
 
@@ -178,11 +178,11 @@ Předpokladem pro _konstruování_, připravit data z různých datových proud�
 Pro dočasná data rozdělte duration s daty ze snímačů časové jednotky. Každý záznam by měl patřit k časovou jednotku pro určitý prostředek _a by měl nabídnout různé informace_. Časové jednotky jsou definovány v závislosti na obchodních potřebách v násobcích sekund, minut, hodin, dnů, měsíců, a tak dále. Časová jednotka _nemusí být stejná jako četnost shromažďování dat_. Pokud je vysoká frekvence, data nemusí zobrazit všechny značný rozdíl z jedné jednotky na druhý. Předpokládejme například, že teplota shromáždění každých 10 sekund. Pomocí tom samém intervalu pro trénovací data jenom tento počet příklady bez zadání jakýchkoli dalších informací. V takovém případě může být lepší strategie použití průměr dat více než 10 minut nebo hodiny podle obchodní odůvodnění.
 
 Pro statická data,
-- _Údržba záznamy_: údržby nezpracovaných dat má identifikátor prostředku a časové razítko s informacemi o činnosti údržby, které byly provedeny v daném bodě v čase. Transformace aktivity údržby do _zařazené do kategorií_ sloupce, kde každá kategorie popisovač jednoznačně mapuje na akce zvláštní údržby. Schéma pro záznamy údržby by obsahovat identifikátor prostředku, čas a akce údržby.
+- _Údržba záznamy_: Údržba nezpracovaných dat má identifikátor prostředku a časové razítko s informacemi o činnosti údržby, které byly provedeny v daném bodě v čase. Transformace aktivity údržby do _zařazené do kategorií_ sloupce, kde každá kategorie popisovač jednoznačně mapuje na akce zvláštní údržby. Schéma pro záznamy údržby by obsahovat identifikátor prostředku, čas a akce údržby.
 
-- _Selhání záznamy_: selhání nebo důvody selhání můžete zaznamenávat jako konkrétních kódech chyb nebo selhání událostí podle konkrétní obchodní podmínky. V případech, kdy zařízení má více kódů chyb, odborné domény by měl vystihovat těch, které se vztahují k Cílová proměnná. Použít zbývající kódy chyb nebo podmínky k vytvoření _prediktivní_ funkce, které je možné korelovat s tyto chyby. Schéma pro selhání záznamů bude zahrnovat identifikátor prostředku, selhání a čas nebo důvod selhání – Pokud je k dispozici.
+- _Selhání záznamy_: Selhání nebo důvody selhání můžete zaznamenávat jako konkrétních kódech chyb nebo selhání událostí podle konkrétní obchodní podmínky. V případech, kdy zařízení má více kódů chyb, odborné domény by měl vystihovat těch, které se vztahují k Cílová proměnná. Použít zbývající kódy chyb nebo podmínky k vytvoření _prediktivní_ funkce, které je možné korelovat s tyto chyby. Schéma pro selhání záznamů bude zahrnovat identifikátor prostředku, selhání a čas nebo důvod selhání – Pokud je k dispozici.
 
-- _Počítače a operátor metadat_: sloučení dat počítače a operátor do jedno schéma, které chcete přidružit k její operátor spolu s jejich příslušných atributů prostředku. Schéma pro počítač podmínky by být identifikátor prostředku, funkce asset, operátor identifikátoru a funkce operátoru.
+- _Počítače a operátor metadat_: Sloučení dat počítače a operátor do jedno schéma, které chcete přidružit k její operátor spolu s jejich příslušných atributů prostředku. Schéma pro počítač podmínky by být identifikátor prostředku, funkce asset, operátor identifikátoru a funkce operátoru.
 
 Další data předběžného zpracování kroky zahrnují _zpracování chybějící hodnoty_ a _normalizace_ hodnot atributu. Podrobný rozbor je mimo rámec této příručky - naleznete v části Další odkazy na některé užitečné.
 
@@ -209,8 +209,8 @@ Příklady v časovém intervalu se zajištěním provozu agregace jsou počet, 
 - _Zpoždění letu_: počet kódů chyb za poslední den/týden.
 - _Část selhání modulu letadla_: vrácení prostředky, směrodatná odchylka a součet za poslední den týdnu atd. Tato metrika byste měli určit spolu s odborné obchodní domény.
 - _Selhání ATM_: prostředky, střední, rozsah, standardních odchylek, počet odlehlé hodnoty nad rámec tři standardních odchylek, horní a dolní CUMESUM se zajištěním provozu.
-- _Selhání dveře trénování subway_: počet událostí za posledních den, týden, dvou týdnech atd.
-- _Jistič selhání_: selhání se počítá za poslední týden roku, tři roky atd.
+- _Selhání dveře trénování subway_: Počet událostí za posledních den, týden, dvou týdnech atd.
+- _Jistič selhání_: Selhání se počítá za poslední týden roku, tři roky atd.
 
 Další užitečné technikou v PdM je zaznamenat změny trendů, provozní špičky a změny na úrovni pomocí algoritmů, které zjišťovat anomálie v datech.
 
@@ -241,7 +241,7 @@ Posledním krokem při vytváření funkcí je **označování** z Cílová prom
 > [!IMPORTANT]
 > Příprava dat a vytváření funkcí jsou důležité jako modelování techniky můžete přejít na úspěšné PdM řešení. Expert domény a profesionální investovat spoustu času správné funkce a data modelu. Malým vzorkem z mnoho knih na vytváření funkcí jsou uvedeny níže:
 > - Pyle, Příprava D. dat pro dolování (Nováková Kaufmann řady ve systémů pro správu dat), 1999 dat.
-> - Casari Zheng A., vytváření funkcí a pro Machine Learning: zásady a postupy pro odborníky přes Data, O'Reilly, 2018.
+> - Zheng, vytváření funkcí A. A. Casari, pro Machine Learning: Zásady a postupy pro odborníky přes Data, O'Reilly, 2018.
 > - Dong, např. Liu H. (Editory), funkce, technickými pracemi při Machine Learning a analýzy dat (Chapmanova & Hall/CRC dolování dat a řady Knowledge Discovery), stiskněte CRC 2018.
 
 ## <a name="modeling-techniques-for-predictive-maintenance"></a>Modelování techniky pro prediktivní údržbu
@@ -260,7 +260,7 @@ Binární klasifikace se používá k _odhadnout pravděpodobnost, že zařízen
 Při použití této techniky dva typy školení příklady jsou označeny. Pozitivní příklad _označující selhání_, s popiskem = 1. Záporná příkladu, který označuje normální provoz, s popiskem = 0. Cílovou proměnnou, a proto jsou hodnoty popisků _zařazené do kategorií_. Model byste identifikovat každý nový příklad se pravděpodobně nezdaří, nebo pracovat normálně příštích X časové jednotky.
 
 #### <a name="label-construction-for-binary-classification"></a>Popisek konstrukce pro binární klasifikaci
-Je tady na otázku: "co je pravděpodobnost, že prostředek se nezdaří v příštích X časových jednotkách?" Na tuto otázku, popisek X záznamů před selháním prostředek jako "přibližně na selhání" (label = 1) a označovat pomocí popisků všechny záznamy, jako je "normální" (Popisek = 0). (viz obrázek 3).
+Tady otázkou je: "Co je pravděpodobnost, že prostředek se nezdaří v příštích X časových jednotkách?" Na tuto otázku, popisek X záznamů před selháním prostředek jako "přibližně na selhání" (label = 1) a označovat pomocí popisků všechny záznamy, jako je "normální" (Popisek = 0). (viz obrázek 3).
 
 ![Obrázek 3. Popisky pro binární klasifikaci](./media/cortana-analytics-playbook-predictive-maintenance/labelling-for-binary-classification.png) obr. 3. Popisky pro binární klasifikaci
 
@@ -275,7 +275,7 @@ Níže jsou uvedeny příklady vytváření popisků strategie pro některé př
 Regresní modely, které se používají pro _vypočítat zbývající životnosti (RUL) prostředek_. Zbývající doby životnosti je definován jako množství času, který prostředek je funkční, než dojde k následující chybě. Každý příklad školení je záznam, který patří do časovou jednotku _nY_ pro určitý prostředek, ve kterém _n_ je násobek. Model byste měli vypočítat zbývající životnost jednotlivých nový příklad jako _průběžné číslo_. Toto číslo označuje dobu, po zbývající před selháním.
 
 #### <a name="label-construction-for-regression"></a>Popisek konstrukce pro regresní
-Je tady na otázku: "Jak se zbývající životnosti (RUL) zařízení?" Pro každý záznam před selháním vypočítejte tento popisek se počet jednotek času, než budou další selhání. V této metodě jsou popisky průběžné proměnné. (Viz obrázek 4)
+Tady otázkou je: "Jak se zbývající životnosti (RUL) zařízení?" Pro každý záznam před selháním vypočítejte tento popisek se počet jednotek času, než budou další selhání. V této metodě jsou popisky průběžné proměnné. (Viz obrázek 4)
 
 ![Obrázek 4. Vytváření popisků pro regresní](./media/cortana-analytics-playbook-predictive-maintenance/labelling-for-regression.png) obr. 4. Vytváření popisků pro regresní
 
@@ -283,21 +283,21 @@ Pro regresní označování popisky se provádí s odkazem na bod selhání. Vý
 
 ### <a name="multi-class-classification-for-predictive-maintenance"></a>Klasifikace víc tříd pro prediktivní údržbu
 Roc klasifikačních technik lze použít v řešeních PdM pro dva scénáře:
-- Předpověď _dvě budoucích výsledků_: první výsledek je _rozsah doby mezi poruchami_ pro určitý prostředek. Asset se přiřadí k jednomu z několika možných časová období. Druhý výsledek je pravděpodobnost selhání budoucích období kvůli _způsobí, že jeden z několika kořenové_. Tato predikce umožňuje posádky údržby a sledujte příznaky a plánů plánu údržby.
+- Předpověď _dvě budoucích výsledků_: První výsledek je _rozsah doby mezi poruchami_ pro určitý prostředek. Asset se přiřadí k jednomu z několika možných časová období. Druhý výsledek je pravděpodobnost selhání budoucích období kvůli _způsobí, že jeden z několika kořenové_. Tato predikce umožňuje posádky údržby a sledujte příznaky a plánů plánu údržby.
 - Předpověď _nejvíce pravděpodobně hlavní příčinu_ daného selhání. Tento výsledek doporučuje správnou sadu údržby akce k vyřešení selhání. Seřazený seznam hlavní příčiny a doporučené opravy může pomoct technikům upřednostnit jejich opravy akce po selhání.
 
 #### <a name="label-construction-for-multi-class-classification"></a>Konstrukce popisek klasifikace víc tříd
-Je tady na otázku: "co je pravděpodobnost, že prostředek se nezdaří v dalším _nZ_ časových jednotkách kde _n_ je počet období?" Na tuto otázku odpovědět, popisek nZ záznamů před selháním prostředku pomocí intervalů doby (3Z 2Z Z). Popisek všechny ostatní zaznamenává "normální" (label = 0). V této metodě Cílová proměnná drží _zařazené do kategorií_ hodnoty. (Viz obrázek 5).
+Tady otázkou je: "Co je pravděpodobnost, že prostředek se nezdaří v příštích _nZ_ časových jednotkách kde _n_ je počet období?" Na tuto otázku odpovědět, popisek nZ záznamů před selháním prostředku pomocí intervalů doby (3Z 2Z Z). Popisek všechny ostatní zaznamenává "normální" (label = 0). V této metodě Cílová proměnná drží _zařazené do kategorií_ hodnoty. (Viz obrázek 5).
 
 ![Obrázek 5. Chyba času predikcí popisky klasifikace víc tříd](./media/cortana-analytics-playbook-predictive-maintenance/labelling-for-multiclass-classification-for-failure-time-prediction.png) obr. 5. Popisky pro klasifikaci roc pro předpověď časové selhání
 
-Otázky zde: "co je pravděpodobnost, že prostředek se nezdaří v příštích X jednotkami času z důvodu hlavní příčinu/problém _P<sub>můžu</sub>_?" kde _můžu_ je počet možné hlavní příčiny. Na tuto otázku, popisek X záznamů před selháním prostředek jako "o selhat z důvodu hlavní příčinu _P<sub>můžu</sub>_" (popisek = _P<sub>můžu</sub>_). Označte všechny záznamy, jako je "normální" (label = 0). V této metodě také popisky jsou zařazené do kategorií (viz obrázek 6).
+Tady otázkou je: "Co je pravděpodobnost, že prostředek se nezdaří v příštích X jednotkami času z důvodu hlavní příčinu/problém _P<sub>můžu</sub>_?" kde _můžu_ je počet možné hlavní příčiny. Na tuto otázku, popisek X záznamů před selháním prostředek jako "o selhat z důvodu hlavní příčinu _P<sub>můžu</sub>_" (popisek = _P<sub>můžu</sub>_). Označte všechny záznamy, jako je "normální" (label = 0). V této metodě také popisky jsou zařazené do kategorií (viz obrázek 6).
 
 ![Obrázek 6. Hlavní příčina predikcí popisky klasifikace víc tříd](./media/cortana-analytics-playbook-predictive-maintenance/labelling-for-multiclass-classification-for-root-cause-prediction.png) obrázek 6. Popisky pro klasifikaci roc pro kořenové příčiny predikcí
 
 Model přiřadí pravděpodobnost selhání kvůli každý _P<sub>můžu</sub>_  a také pravděpodobnost bez chyby. Tyto pravděpodobnosti lze provést řazení podle velikosti umožňuje předpovědi problémy, které bývají nejčastějším dojít v budoucnosti.
 
-Je tady na otázku: "jaké akce údržby Doporučujete po selhání?" Na tuto otázku odpovědět označování _nevyžaduje budoucí časový horizont k výběru_, protože model není v budoucnu predikce selhání. To je právě předpověď nejvíce pravděpodobně hlavní příčinu _Jakmile již došlo k selhání_.
+Tady otázkou je: "Jaké akce údržby Doporučujete po selhání?" Na tuto otázku odpovědět označování _nevyžaduje budoucí časový horizont k výběru_, protože model není v budoucnu predikce selhání. To je právě předpověď nejvíce pravděpodobně hlavní příčinu _Jakmile již došlo k selhání_.
 
 ## <a name="training-validation-and-testing-methods-for-predictive-maintenance"></a>Školení, ověřování a testovacích metod pro prediktivní údržbu
 [Vědecké zpracování týmových dat](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/overview) poskytuje úplné pokrytí cyklu trénování test ověření modelu. Tato část popisuje aspekty, které jsou jedinečné pro PdM.
@@ -399,7 +399,7 @@ Procesu výše je uvedeno v mnoho způsobech akademické a oborové dokumentace.
 - _Nasazení_ modelu
 - _Spustit model_ pro nová data
 
-Jak bylo uvedeno dříve, se liší od jeho partnerské uzly operacionalizace modelu pro PdM. Scénáře zahrnující detekce anomálií a detekce chyb obvykle implementují _online vyhodnocování_ (také nazývané _vyhodnocování v reálném čase_). Tady, model _skóre_ záznamech příchozí a vrací předpověď. Pro detekci anomálií do predikce. slouží jako ukazatel toho, že došlo k anomálií (Příklad: jedna třída SVM). Pro zjištění selhání bude tento typ nebo třída selhání.
+Jak bylo uvedeno dříve, se liší od jeho partnerské uzly operacionalizace modelu pro PdM. Scénáře zahrnující detekce anomálií a detekce chyb obvykle implementují _online vyhodnocování_ (také nazývané _vyhodnocování v reálném čase_). Tady, model _skóre_ záznamech příchozí a vrací předpověď. Pro detekci anomálií do predikce. slouží jako ukazatel toho, že došlo k anomálií (Příklad: One-Class SVM). Pro zjištění selhání bude tento typ nebo třída selhání.
 
 Naproti tomu PdM zahrnuje _dávkové bodování_. Tak, aby odpovídal na podpis, modelu, musí být analyzovány funkce v nových datech stejným způsobem jako trénovací data. Pro velké datové sady, která je typická pro nová data funkce se agregují přes časová okna a zohlednit ve službě batch. Dávkové vyhodnocování se obvykle provádí v distribuovaných systémech, jako je [Spark](http://spark.apache.org/) nebo [Azure Batch](https://docs.microsoft.com/azure/batch/batch-api-basics). Máte několik možností – obě neoptimální:
 - Streamování datových modulů podporuje agregaci přes okna v paměti. Proto může být uvedl, že podporují online vyhodnocování. Ale tyto systémy jsou vhodné pro kompaktní dat v úzkém windows čas nebo sadu zhuštěných elementů přes širší windows. Jejich nemusí škálování i pro kompaktní data přes širší časová okna, jak je vidět ve scénářích PdM.

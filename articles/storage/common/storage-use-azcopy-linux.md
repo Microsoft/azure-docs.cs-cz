@@ -7,13 +7,13 @@ ms.service: storage
 ms.topic: article
 ms.date: 04/26/2018
 ms.author: seguler
-ms.component: common
-ms.openlocfilehash: 79aa9cd3e634238702419d01650c7ef29c4dbb95
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.subservice: common
+ms.openlocfilehash: 1059dec80dcca80380b58aa8057162679496adc6
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51242021"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55467369"
 ---
 # <a name="transfer-data-with-azcopy-on-linux"></a>Přenos dat pomocí AzCopy v Linuxu
 
@@ -92,7 +92,7 @@ azcopy --source <source> --destination <destination> [Options]
 
 Následující příklady ukazují různé scénáře pro kopírování dat do a z Microsoft Azure Blobs a souborů. Odkazovat `azcopy --help` nabídky podrobné vysvětlení parametrů použitých v každém vzorku.
 
-## <a name="blob-download"></a>Objekt BLOB: stažení
+## <a name="blob-download"></a>Objekt BLOB: Ke stažení
 ### <a name="download-single-blob"></a>Stáhněte si jeden objekt blob
 
 ```azcopy
@@ -211,7 +211,7 @@ azcopy \
     --exclude-older
 ```
 
-## <a name="blob-upload"></a>Objekt BLOB: nahrání
+## <a name="blob-upload"></a>Objekt BLOB: Odeslat
 ### <a name="upload-single-file"></a>Nahrání jednoho souboru
 
 ```azcopy
@@ -346,7 +346,7 @@ azcopy \
 ### <a name="customizing-the-mime-content-type-mapping"></a>Přizpůsobení mapování typ obsahu MIME
 AzCopy používá konfigurační soubor, který obsahuje mapování souboru rozšíření typu obsahu. Můžete přizpůsobit toto mapování a přidat nové páry podle potřeby. Mapování se nachází v  ```/usr/lib/azcopy/AzCopyConfig.json```
 
-## <a name="blob-copy"></a>Objekt BLOB: kopírování
+## <a name="blob-copy"></a>Objekt BLOB: Kopírovat
 ### <a name="copy-single-blob-within-storage-account"></a>Jeden objekt blob kopírování v rámci účtu úložiště
 
 ```azcopy
@@ -420,7 +420,7 @@ azcopy \
 
 `--sync-copy` náklady na další výchozí přenos dat ve srovnání s asynchronní kopie může vygenerovat. Doporučený postup je ve virtuálním počítači Azure, který je ve stejné oblasti jako váš účet úložiště zdroje, aby se zabránilo náklady na výchozí přenos dat pomocí této možnosti.
 
-## <a name="file-download"></a>Soubor: stažení
+## <a name="file-download"></a>Soubor: Ke stažení
 ### <a name="download-single-file"></a>Stažení jednotlivých souborů
 
 ```azcopy
@@ -444,7 +444,7 @@ azcopy \
 
 Všimněte si, že všechny prázdné složky nestahují.
 
-## <a name="file-upload"></a>Soubor: Uložit
+## <a name="file-upload"></a>Soubor: Odeslat
 ### <a name="upload-single-file"></a>Nahrání jednoho souboru
 
 ```azcopy
@@ -477,7 +477,7 @@ azcopy \
     --recursive
 ```
 
-## <a name="file-copy"></a>Soubor: kopírování
+## <a name="file-copy"></a>Soubor: Kopírovat
 ### <a name="copy-across-file-shares"></a>Kopírovat na sdílené složky
 
 ```azcopy
@@ -716,9 +716,9 @@ Další informace o službě Azure Storage a AzCopy najdete v následujících z
 * [Oznamujeme vydání AzCopy v Linuxu ve verzi Preview](https://azure.microsoft.com/blog/announcing-azcopy-on-linux-preview/)
 * [Úvod do služby Azure Storage dat přesun knihovny ve verzi Preview](https://azure.microsoft.com/blog/introducing-azure-storage-data-movement-library-preview-2/)
 * [AzCopy: Představujeme synchronní kopie a vlastní typ obsahu](https://blogs.msdn.com/b/windowsazurestorage/archive/2015/01/13/azcopy-introducing-synchronous-copy-and-customized-content-type.aspx)
-* [AzCopy: Oznámení obecné dostupnosti AzCopy 3.0 a 4.0 nástroje AzCopy vydání ve verzi preview s podporou tabulka a soubor](https://blogs.msdn.com/b/windowsazurestorage/archive/2014/10/29/azcopy-announcing-general-availability-of-azcopy-3-0-plus-preview-release-of-azcopy-4-0-with-table-and-file-support.aspx)
+* [AzCopy: Oznámení obecné dostupnosti AzCopy 3.0 a preview verze AzCopy 4.0 s podporou Table a File](https://blogs.msdn.com/b/windowsazurestorage/archive/2014/10/29/azcopy-announcing-general-availability-of-azcopy-3-0-plus-preview-release-of-azcopy-4-0-with-table-and-file-support.aspx)
 * [AzCopy: Optimalizovaná pro scénáře, ve velkém měřítku kopírování](https://go.microsoft.com/fwlink/?LinkId=507682)
 * [AzCopy: Podpora pro geograficky redundantní úložiště jen pro čtení](https://blogs.msdn.com/b/windowsazurestorage/archive/2014/04/07/azcopy-support-for-read-access-geo-redundant-account.aspx)
 * [AzCopy: Přenos dat pomocí restartovatelnou službu režimu a tokenu SAS](https://blogs.msdn.com/b/windowsazurestorage/archive/2013/09/07/azcopy-transfer-data-with-re-startable-mode-and-sas-token.aspx)
-* [AzCopy: Objekt Blob kopírování mezi účtu pomocí](https://blogs.msdn.com/b/windowsazurestorage/archive/2013/04/01/azcopy-using-cross-account-copy-blob.aspx)
+* [AzCopy: Použití objektů Blob v účtu různé kopie](https://blogs.msdn.com/b/windowsazurestorage/archive/2013/04/01/azcopy-using-cross-account-copy-blob.aspx)
 * [AzCopy: Nahrávání a stahování souborů pro objekty BLOB Azure](https://blogs.msdn.com/b/windowsazurestorage/archive/2012/12/03/azcopy-uploading-downloading-files-for-windows-azure-blobs.aspx)

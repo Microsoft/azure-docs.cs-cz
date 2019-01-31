@@ -6,17 +6,17 @@ author: marktab
 manager: cgronlun
 editor: cgronlun
 ms.service: machine-learning
-ms.component: team-data-science-process
+ms.subservice: team-data-science-process
 ms.topic: article
 ms.date: 11/04/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 8cd7fc5b69fd3ef124a96f00466a0d9a8c4e2240
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: d8cb0829698b13e2193850c29f98492df6c48d4f
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53134348"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55468508"
 ---
 # <a name="move-data-to-or-from-azure-blob-storage-using-ssis-connectors"></a>Přesun dat do nebo z Azure Blob Storage pomocí konektorů SSIS
 [SQL Server Integration Services Feature Pack for Azure](https://msdn.microsoft.com/library/mt146770.aspx) obsahuje součásti pro připojení k Azure, přenos dat mezi Azure a místních zdrojů dat a zpracování dat uložených v Azure.
@@ -42,8 +42,8 @@ K provedení úloh popsaných v tomto článku, musíte mít předplatné Azure 
 
 Použít **konektorů SSIS**, je nutné stáhnout:
 
-* **SQL Server 2014 nebo 2016 Standard (nebo novější)**: instalace zahrnuje SQL Server Integration Services.
-* **Microsoft SQL Server 2014 nebo 2016 integrace služby Feature Pack for Azure**: tyto soubory můžete stáhnout, v uvedeném pořadí, z [SQL Server 2014 Integration Services](https://www.microsoft.com/download/details.aspx?id=47366) a [integrace SQL serveru 2016 Služby](https://www.microsoft.com/download/details.aspx?id=49492) stránky.
+* **SQL Server 2014 nebo 2016 Standard (nebo novější)**: Instalace zahrnuje SQL Server Integration Services.
+* **Microsoft SQL Server 2014 nebo 2016 Integration Services Feature Pack for Azure**: Tyto soubory můžete stáhnout, v uvedeném pořadí, z [SQL Server 2014 Integration Services](https://www.microsoft.com/download/details.aspx?id=47366) a [SQL Server 2016 Integration Services](https://www.microsoft.com/download/details.aspx?id=49492) stránky.
 
 > [!NOTE]
 > Služby SSIS je nainstalovaná se systémem SQL Server, ale není zahrnutý ve verzi Express. Informace o tom, jaké aplikace jsou zahrnuté v různých edicích systému SQL Server, naleznete v tématu [edice SQL serveru](https://www.microsoft.com/en-us/server-cloud/products/sql-server-editions/)
@@ -52,7 +52,7 @@ Použít **konektorů SSIS**, je nutné stáhnout:
 
 Školicí materiály o prostředí SSIS, naleznete v tématu [rukou na školení pro službu SSIS](https://www.microsoft.com/sql-server/training-certification)
 
-Informace o tom, jak získat nahoru a spuštění pomocí SISS vytvářet jednoduchá extrakce, transformace a načítání (ETL) balíčky, viz [SSIS kurz: vytvoření jednoduchého balíčku ETL](https://msdn.microsoft.com/library/ms169917.aspx).
+Informace o tom, jak získat nahoru a spuštění pomocí SISS vytvářet jednoduchá extrakce, transformace a načítání (ETL) balíčky, viz [SSIS kurzu: Vytvoření balíčku jednoduché ETL](https://msdn.microsoft.com/library/ms169917.aspx).
 
 ## <a name="download-nyc-taxi-dataset"></a>Stáhnout NYC taxislužby datovou sadu
 V příkladu je popsáno zde použít veřejně dostupné datové sady – [cesty taxíkem NYC](http://www.andresmh.com/nyctaxitrips/) datové sady. Datová sada se skládá z přibližně 173 milionů taxislužby lyžovačku v NYC v roce 2013. Existují dva druhy dat: Podrobnosti dat a tarif dat o jízdách. Je soubor pro každý měsíc máme 24 soubory ve všech, z nichž každý je přibližně 2GB nekomprimované.

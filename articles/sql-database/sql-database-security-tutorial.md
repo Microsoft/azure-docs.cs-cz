@@ -1,6 +1,6 @@
 ---
-title: Zabezpečené izolované databáze ve službě Azure SQL Database | Dokumentace Microsoftu
-description: Další informace o techniky a funkce pro zabezpečení izolované databáze ve službě Azure SQL Database.
+title: Zabezpečení samostatného nebo databázi ve fondu ve službě Azure SQL Database | Dokumentace Microsoftu
+description: Další informace o techniky a funkce pro zabezpečení samostatné nebo databázi ve fondu ve službě Azure SQL Database.
 services: sql-database
 ms.service: sql-database
 ms.subservice: security
@@ -9,17 +9,17 @@ author: VanMSFT
 ms.author: vanto
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 01/18/2019
-ms.openlocfilehash: 05d1f69a5a8bc38c63a842a92266dd15e010d694
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.date: 01/30/2019
+ms.openlocfilehash: 1fe92f5632544f21506bd19a52a59ed75cabe3b3
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55227263"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55461198"
 ---
-# <a name="tutorial-single-database-security-in-azure-sql-database"></a>Kurz: Izolované databáze zabezpečení ve službě Azure SQL Database
+# <a name="tutorial-secure-a-standalone-or-pooled-database"></a>Kurz: Zabezpečení samostatného nebo databázi ve fondu
 
-Azure SQL Database chrání data v izolované databáze SQL, neboť umožňuje:
+Azure SQL Database chrání data v samostatné nebo databázi ve fondu, neboť umožňuje:
 
 - Omezení přístupu pomocí pravidel brány firewall
 - Použití mechanismů ověřování vyžadujících identitu
@@ -35,7 +35,7 @@ Můžete zvýšit zabezpečení vaší databáze pomocí několika jednoduchých
 > - Vytvoření pravidla brány firewall na úrovni serveru a databáze
 > - Konfigurace správce Azure Active Directory (AD)
 > - Správa přístupu uživatelů pomocí ověřování SQL, ověřování Azure AD a zabezpečený připojovací řetězce
-> - Povolit funkce zabezpečení, jako je ochrana před internetovými útoky, auditování, maskování dat a šifrování
+> - Povolení funkcí zabezpečení, jako je například pokročilé dat zabezpečení, auditování a maskování dat a šifrování
 
 Další informace najdete v tématu [Přehled zabezpečení služby Azure SQL Database](/azure/sql-database/sql-database-security-index) a [možnosti](sql-database-security-overview.md) článků.
 
@@ -45,7 +45,7 @@ Pro absolvování tohoto kurzu, nezapomeňte, že jsou splněné následující 
 
 - [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms)
 - Azure SQL server a databáze služby
-    - Vytvoření pomocí [webu Azure portal](sql-database-get-started-portal.md), [rozhraní příkazového řádku](sql-database-cli-samples.md), nebo [prostředí PowerShell](sql-database-powershell-samples.md)
+  - Vytvoření pomocí [webu Azure portal](sql-database-get-started-portal.md), [rozhraní příkazového řádku](sql-database-cli-samples.md), nebo [prostředí PowerShell](sql-database-powershell-samples.md)
 
 Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 
@@ -62,9 +62,9 @@ Nastavte **povolit přístup ke službám Azure** k **OFF** nejbezpečnější k
 > [!NOTE]
 > SQL Database komunikuje přes port 1433. Pokud se pokoušíte připojit z podnikové sítě, nemusí odchozí provoz přes port 1433 bránou firewall vaší sítě povolený. Pokud ano, nemůžete připojit k serveru Azure SQL Database, dokud správce otevře port 1433.
 
-### <a name="set-up-server-level-firewall-rules"></a>Nastavení pravidel brány firewall na úrovni serveru
+### <a name="set-up-sql-database-server-firewall-rules"></a>Nastavení pravidel brány firewall databáze SQL serveru
 
-Pravidla brány firewall na úrovni serveru se vztahují na všechny databáze v rámci stejného logického serveru.
+Pravidla brány firewall na úrovni serveru se vztahují ke všem databázím na stejném serveru SQL Database.
 
 Nastavit pravidlo brány firewall na úrovni serveru:
 
@@ -88,7 +88,7 @@ Nyní se můžete pomocí zadané IP adresy nebo rozsahu IP adres připojit k ja
 > [!IMPORTANT]
 > Ve výchozím nastavení, přístup přes bránu firewall služby SQL Database je povoleno pro všechny služby Azure, v části **povolit přístup ke službám Azure**. Zvolte **OFF** můžete zakázat přístup pro všechny služby Azure.
 
-### <a name="setup-database-level-firewall-rules"></a>Nastavení pravidel brány firewall na úrovni databáze
+### <a name="setup-database-firewall-rules"></a>Nastavení pravidel brány firewall databáze
 
 Pravidla brány firewall na úrovni databáze platí jenom pro jednotlivé databáze. Tato pravidla jsou přenositelné a bude následovat databáze při selhání serveru. Pravidla brány firewall na úrovni databáze lze konfigurovat pouze pomocí příkazů jazyka Transact-SQL (T-SQL) a až poté, co jste nakonfigurovali pravidlo brány firewall na úrovni serveru.
 
@@ -231,30 +231,30 @@ Zkopírování zabezpečeného připojovacího řetězce:
 
 ## <a name="enable-security-features"></a>Povolení funkcí zabezpečení
 
-Azure SQL Database poskytuje funkce zabezpečení, které jsou přístupné pomocí webu Azure portal. Tyto funkce jsou k dispozici pro databáze a serveru, s výjimkou maskování dat, která je k dispozici pouze v databázi. Další informace najdete v tématu [rozšířeného zjišťování hrozeb](sql-advanced-threat-protection.md), [auditování](sql-database-auditing.md), [dynamické maskování dat](sql-database-dynamic-data-masking-get-started.md), a [transparentní šifrování dat](transparent-data-encryption-azure-sql.md).
+Azure SQL Database poskytuje funkce zabezpečení, které jsou přístupné pomocí webu Azure portal. Tyto funkce jsou k dispozici pro databáze a serveru, s výjimkou maskování dat, která je k dispozici pouze v databázi. Další informace najdete v tématu [rozšířené zabezpečení dat](sql-advanced-threat-protection.md), [auditování](sql-database-auditing.md), [dynamické maskování dat](sql-database-dynamic-data-masking-get-started.md), a [transparentní šifrování dat](transparent-data-encryption-azure-sql.md).
 
-### <a name="advanced-threat-protection"></a>Rozšířená ochrana před internetovými útoky
+### <a name="advanced-data-security"></a>Advanced Data Security
 
-Funkce ochrany pokročilé hrozby zjištění potenciálních hrozeb, protože dojde k a poskytuje výstrahy zabezpečení na neobvyklé aktivity. Uživatelé můžou prozkoumat tyto podezřelé události pomocí funkce auditování a zjistit, zda událost pro přístup, narušení nebo zneužití dat v databázi. Uživatelé jsou taky k dispozici přehled zabezpečení, která zahrnuje posouzení ohrožení zabezpečení a nástroj pro zjišťování a klasifikace dat.
+Funkce zabezpečení pokročilé dat zjištění potenciálních hrozeb, dojde k a poskytuje výstrahy zabezpečení na neobvyklé aktivity. Uživatelé můžou prozkoumat tyto podezřelé události pomocí funkce auditování a zjistit, zda událost pro přístup, narušení nebo zneužití dat v databázi. Uživatelé jsou taky k dispozici přehled zabezpečení, která zahrnuje posouzení ohrožení zabezpečení a nástroj pro zjišťování a klasifikace dat.
 
 > [!NOTE]
 > Před internetovými útoky příkladu je útok prostřednictvím injektáže SQL, proces, kde útočníci injektovat škodlivý SQL do vstupů aplikace. Aplikace můžete neúmyslně spuštění škodlivého SQL a útočníkům umožnit přístup k porušení zabezpečení nebo úpravy dat v databázi.
 
-Pokud chcete povolit ochranu před hrozbami:
+Pokud chcete povolit rozšířené data zabezpečení:
 
 1. Na webu Azure portal, vyberte **databází SQL** z nabídky na levé straně a vyberte svou databázi na **databází SQL** stránky.
 
 1. Na **přehled** stránky, vyberte **název serveru** odkaz. Otevře se stránka serveru databáze.
 
-1. Na **systému SQL server** stránky, vyhledejte **zabezpečení** a vyberte **Advanced Threat Protection**.
+1. Na **systému SQL server** stránky, vyhledejte **zabezpečení** a vyberte **rozšířené zabezpečení dat**.
 
-    1. Vyberte **ON** pod **Advanced Threat Protection** k povolení této funkce. Potom vyberte **Uložit**.
+    1. Vyberte **ON** pod **rozšířené zabezpečení dat** k povolení této funkce. Zvolte účet úložiště pro ukládání výsledků posouzení ohrožení zabezpečení. Potom vyberte **Uložit**.
 
     ![Navigační podokno](./media/sql-database-security-tutorial/threat-settings.png)
 
     Můžete také nakonfigurovat e-mailů dostávat výstrahy zabezpečení a podrobnosti o úložišti a typy detekce hrozeb.
 
-1. Vraťte se na **databází SQL** stránky databáze a vyberte **Advanced Threat Protection** pod **zabezpečení** části. Tady najdete různé ukazatele zabezpečení dostupné pro databázi.
+1. Vraťte se na **databází SQL** stránky databáze a vyberte **rozšířené zabezpečení dat** pod **zabezpečení** oddílu. Tady najdete různé ukazatele zabezpečení dostupné pro databázi.
 
     ![Stav hrozby](./media/sql-database-security-tutorial/threat-status.png)
 
@@ -344,7 +344,7 @@ V tomto kurzu jste zjistili, jak zlepšit zabezpečení vaší databáze pomocí
 > - Vytvoření pravidla brány firewall na úrovni serveru a databáze
 > - Konfigurace správce Azure Active Directory (AD)
 > - Správa přístupu uživatelů pomocí ověřování SQL, ověřování Azure AD a zabezpečený připojovací řetězce
-> - Povolit funkce zabezpečení, jako je ochrana před internetovými útoky, auditování, maskování dat a šifrování
+> - Povolení funkcí zabezpečení, jako je například pokročilé dat zabezpečení, auditování a maskování dat a šifrování
 
 Přejděte k dalšímu kurzu, kde se naučíte, jak implementovat geografická distribuce.
 

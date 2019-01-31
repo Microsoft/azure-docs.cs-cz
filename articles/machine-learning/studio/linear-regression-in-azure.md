@@ -1,5 +1,5 @@
 ---
-Název: Migrace analytics z Excelu do Azure Machine Learning Studio titleSuffix: Azure Machine Learning Studio Popis: Porovnání modelů lineární regrese v Excelu a služby Azure Machine Learning Studio: machine learningu ms.service: ms.component strojového učení: studio ms.topic: článku
+Název: Migrace analytics z Excelu do Azure Machine Learning Studio titleSuffix: Azure Machine Learning Studio Popis: Porovnání modelů lineární regrese v Excelu a služby Azure Machine Learning Studio: machine learningu ms.service: ms.subservice strojového učení: studio ms.topic: článku
 
 Autor: ericlicoding ms.author: amlstudiodocs ms.custom: předchozí Autor = heatherbshapiro předchozí ms.author=hshapiro ms.date: 03/20/2017
 ---

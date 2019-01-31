@@ -11,13 +11,13 @@ ms.author: jaredmoo
 author: jaredmoo
 ms.reviewer: sstein
 manager: craigg
-ms.date: 06/14/2018
-ms.openlocfilehash: e00722259abaa02d3dce6ca26c8cd0ea7c42db29
-ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
+ms.date: 01/25/2019
+ms.openlocfilehash: bb7908c5ed72bf58f1bd8920983d76cb674286a3
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54449397"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55458087"
 ---
 # <a name="use-transact-sql-t-sql-to-create-and-manage-elastic-database-jobs"></a>Použití příkazů jazyka Transact-SQL (T-SQL) k vytvoření a správa Elastických úloh databáze
 
@@ -75,9 +75,9 @@ SELECT * FROM jobs.target_group_members WHERE target_group_name='ServerGroup1';
 ```
 
 
-## <a name="exclude-a-single-database"></a>Vyloučit izolované databáze
+## <a name="exclude-an-individual-database"></a>Vyloučit jednotlivé databáze
 
-Následující příklad ukazuje, jak spustit úlohu proti všem databázím na serveru, s výjimkou databázi s názvem *MappingDB*.  
+Následující příklad ukazuje, jak spustit úlohu proti všem databázím na serveru SQL Database, s výjimkou databázi s názvem *MappingDB*.  
 Připojte se k [ *databáze úloh* ](sql-database-job-automation-overview.md#job-database) a spusťte následující příkaz:
 
 ```sql
@@ -103,7 +103,7 @@ EXEC [jobs].sp_add_target_group_member
 @server_name='server2.database.windows.net'
 GO
 
---Excude a database target member from the server target group
+--Exclude a database target member from the server target group
 EXEC [jobs].sp_add_target_group_member
 @target_group_name = N'ServerGroup',
 @membership_type = N'Exclude',
@@ -1032,10 +1032,10 @@ Určuje, pokud cílový člen skupiny budou zahrnuty nebo vyloučeny. target_gro
 Typ cílové databázi nebo kolekci databází, včetně všech databází na serveru, všechny databáze v Elastickém fondu, všechny databáze v mapě horizontálních oddílů nebo jednotlivé databáze. target_type is nvarchar(128), with no default. Target_type – platné hodnoty jsou "Systému SQL Server", "SqlElasticPool", "SqlDatabase" nebo "SqlShardMap". 
 
 [  **@refresh_credential_name =** ] "refresh_credential_name.  
-Název logického serveru. refresh_credential_name je nvarchar(128) bez výchozí hodnoty.
+Název databáze SQL serveru. refresh_credential_name je nvarchar(128) bez výchozí hodnoty.
 
 [ **@server_name =** ] 'server_name'  
-Název logického serveru, který by měl být přidán do zadanou cílovou skupinu. název_serveru musí být zadaný po target_type – "Systému SQL Server". název_serveru je nvarchar(128) bez výchozí hodnoty.
+Název databáze SQL serveru, který by měl být přidán do zadanou cílovou skupinu. název_serveru musí být zadaný po target_type – "Systému SQL Server". název_serveru je nvarchar(128) bez výchozí hodnoty.
 
 [  **@database_name =** ] "název_databáze.  
 Název databáze, který by měl být přidán do zadanou cílovou skupinu. target_type – po "SqlDatabase" musí být zadaný název databáze database_name. Název databáze database_name je nvarchar(128) bez výchozí hodnoty.
@@ -1051,7 +1051,7 @@ Identifikační číslo cílového přiřazeny k členovi cílové skupiny, poku
 Návratové hodnoty kód 0 (úspěch) nebo 1 (chyba)
 
 #### <a name="remarks"></a>Poznámky
-Úloha se spustí na všechny databáze na daném serveru nebo v době provádění, když elastický fond nebo logického serveru elastický fond je součástí cílové skupiny.
+Úloha se spustí na všech izolovaných databází v rámci databáze SQL serveru nebo v elastickém fondu v době provádění, když server služby SQL Database nebo elastický fond je zahrnuta v cílové skupině.
 
 #### <a name="permissions"></a>Oprávnění
 Ve výchozím nastavení, členové role pevného serveru správce sysadmin systému tuto uloženou proceduru mohou spustit. Omezí uživatelům stačí být schopen monitorovat úlohy, můžete udělit uživatele, aby byla součástí následující role databáze v databáze agenta úloh při vytvoření agenta úlohy:
@@ -1229,7 +1229,7 @@ Zobrazí historii spuštění úlohy.
 |**target_type**|   nvarchar(128)   |Typ cílové databázi nebo kolekci databází, včetně všech databází serveru, všechny databáze v Elastickém fondu nebo v databázi. Valid values for target_type are ‘SqlServer’, ‘SqlElasticPool’ or ‘SqlDatabase’. Hodnota NULL znamená, že to je provádění nadřazené úlohy.
 |**target_id**  |UniqueIdentifier|  Jedinečné ID člena cílové skupiny.  Hodnota NULL znamená, že to je provádění nadřazené úlohy.
 |**target_group_name**  |nvarchar(128)  |Název cílové skupiny. Hodnota NULL znamená, že to je provádění nadřazené úlohy.
-|**target_server_name**|    nvarchar(256)|  Název logického serveru obsažené v cílové skupině. Zadat jenom v případě target_type – je "Systému SQL Server". Hodnota NULL znamená, že to je provádění nadřazené úlohy.
+|**target_server_name**|    nvarchar(256)|  Název databáze SQL serveru, obsažené v cílové skupině. Zadat jenom v případě target_type – je "Systému SQL Server". Hodnota NULL znamená, že to je provádění nadřazené úlohy.
 |**target_database_name**   |nvarchar(128)| Název databáze, které jsou obsaženy v cílové skupině. Zadat, jenom když target_type – je "SqlDatabase". Hodnota NULL znamená, že to je provádění nadřazené úlohy.
 
 
@@ -1253,7 +1253,7 @@ Zobrazí všechny úlohy.
 
 ### <a name="jobversions-view"></a>job_versions zobrazení
 
-[jobs].[job_verions]
+[jobs].[job_versions]
 
 Zobrazí všechny verze úlohy.
 
@@ -1332,7 +1332,7 @@ Zobrazuje všechny členy všechny cílové skupiny.
 |**refresh_credential_name**    |nvarchar(128)  |Název databáze s rozsahem přihlašovací údaje použité pro připojení k cílové člena skupiny.|
 |**subscription_id**    |UniqueIdentifier|  Jedinečné ID předplatného.|
 |**resource_group_name**    |nvarchar(128)| Název skupiny prostředků, ve kterém se nachází cílový člen skupiny.|
-|**server_name**    |nvarchar(128)  |Název logického serveru obsažené v cílové skupině. Zadat jenom v případě target_type – je "Systému SQL Server". |
+|**server_name**    |nvarchar(128)  |Název databáze SQL serveru, obsažené v cílové skupině. Zadat jenom v případě target_type – je "Systému SQL Server". |
 |**database_name**  |nvarchar(128)  |Název databáze, které jsou obsaženy v cílové skupině. Zadat, jenom když target_type – je "SqlDatabase".|
 |**elastic_pool_name**  |nvarchar(128)| Název elastického fondu obsažené v cílové skupině. Zadat, jenom když target_type – je "SqlElasticPool".|
 |**shard_map_name** |nvarchar(128)| Název mapy horizontálních oddílů, které jsou obsaženy v cílové skupině. Zadat, jenom když target_type – je "SqlShardMap".|

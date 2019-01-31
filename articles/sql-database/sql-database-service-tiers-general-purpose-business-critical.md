@@ -11,13 +11,13 @@ author: CarlRabeler
 ms.author: carlrab
 ms.reviewer: sashan, moslake
 manager: craigg
-ms.date: 11/30/2018
-ms.openlocfilehash: 7de4415dd332254c595b6687dfb9d8db01c42362
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.date: 01/25/2019
+ms.openlocfilehash: 61a413fc0b27db66091c8e4a401de654455ebe7c
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52871704"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55470990"
 ---
 # <a name="azure-sql-database-service-tiers"></a>Úrovně služby Azure SQL Database
 
@@ -57,7 +57,7 @@ Chcete-li monitorovat aktuální celková velikost MDF a LDF, použijte [sp_spac
 
 Přidělení úložiště pro zálohování databáze podporují bod v webu času obnovení (PITR) a [dlouhá období uchovávání dat (LTR)](sql-database-long-term-retention.md) schopnosti služby SQL Database. Toto úložiště je přidělena odděleně pro každou databázi a účtovat jako dvě samostatné na databázi poplatky.
 
-- **PITR**: zálohování jednotlivých databází se zkopírují do [úložiště RA-GRS](../storage/common/storage-designing-ha-apps-with-ragrs.md) se automaticky. Velikost úložiště zvyšuje dynamicky vytvářené nových záloh.  Úložiště využívané týdenními úplnými zálohami, denními rozdílovými zálohami a zálohami protokolů transakcí se kopíruje každých 5 minut. Spotřeba úložiště závisí na četnosti změn databáze a dobu uchování. Můžete nakonfigurovat samostatný uchovávají pro každou databázi mezi 7 až 35 dnů. Minimální objem úložiště rovna 1 x velikosti dat je k dispozici bez dalších poplatků. Pro většinu databází je tato částka dostatečná k uložení zálohy za 7 dní.
+- **PITR**: Zálohování jednotlivých databází se zkopírují do [úložiště RA-GRS](../storage/common/storage-designing-ha-apps-with-ragrs.md) se automaticky. Velikost úložiště zvyšuje dynamicky vytvářené nových záloh.  Úložiště využívané týdenními úplnými zálohami, denními rozdílovými zálohami a zálohami protokolů transakcí se kopíruje každých 5 minut. Spotřeba úložiště závisí na četnosti změn databáze a dobu uchování. Můžete nakonfigurovat samostatný uchovávají pro každou databázi mezi 7 až 35 dnů. Minimální objem úložiště rovna 1 x velikosti dat je k dispozici bez dalších poplatků. Pro většinu databází je tato částka dostatečná k uložení zálohy za 7 dní.
 - **LTR**: SQL Database nabízí možnost konfigurace dlouhodobého uchovávání úplné zálohy po dobu až 10 let. Pokud je povolené zásady LTR, tyto zálohy se ukládají do úložiště RA-GRS automaticky, ale můžete řídit, jak často se zkopírují zálohy. Aby splnila požadavek na dodržení jiný, můžete vybrat různých období uchovávání záloh týdenní, měsíční nebo roční. Tato konfigurace bude definovat, jak velké úložiště se použije k zálohování LTR. Zleva doprava cenové kalkulačky můžete odhadnout náklady na úložiště zleva doprava. Další informace najdete v tématu [Dlouhodobé uchovávání](sql-database-long-term-retention.md).
 
 ## <a name="next-steps"></a>Další postup

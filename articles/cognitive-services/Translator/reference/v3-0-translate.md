@@ -6,18 +6,18 @@ services: cognitive-services
 author: Jann-Skotdal
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: translator-text
+ms.subservice: translator-text
 ms.topic: reference
 ms.date: 03/29/2018
 ms.author: v-jansko
-ms.openlocfilehash: bf13ca603927c85784e446157a79cd96fb70ca05
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 77edf892c3c2ca1434331fb5560f0db8ca16e306
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52956974"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55470871"
 ---
-# <a name="translator-text-api-30-translate"></a>Translator Text API 3.0: překlad
+# <a name="translator-text-api-30-translate"></a>Translator Text API 3.0: Translate
 
 Přeloží text.
 
@@ -57,11 +57,11 @@ https://api.cognitive.microsofttranslator.com/translate?api-version=3.0
     <td>*Volitelný parametr*.<br/>Řetězec určující kategorie překladu (domény). Tento parametr slouží k získání překlady z přizpůsobené systému vytvořených pomocí [vlastní Translator](../customization.md). Výchozí hodnota je: `general`.</td>
   </tr>
   <tr>
-    <td>ProfanityAction</td>
+    <td>profanityAction</td>
     <td>*Volitelný parametr*.<br/>Určuje, jak bude pracovat profanities překlady. Možné hodnoty jsou: `NoAction` (výchozí), `Marked` nebo `Deleted`. Způsoby, jak nakládat s vulgárních výrazů najdete v tématu [vulgárních výrazů zpracování](#handle-profanity).</td>
   </tr>
   <tr>
-    <td>ProfanityMarker</td>
+    <td>profanityMarker</td>
     <td>*Volitelný parametr*.<br/>Určuje, jak by měla být označena profanities v překlady. Možné hodnoty jsou: `Asterisk` (výchozí) nebo `Tag`. Způsoby, jak nakládat s vulgárních výrazů najdete v tématu [vulgárních výrazů zpracování](#handle-profanity).</td>
   </tr>
   <tr>
@@ -85,7 +85,7 @@ https://api.cognitive.microsofttranslator.com/translate?api-version=3.0
     <td>*Volitelný parametr*.<br/>Určuje skript přeloženého textu.</td>
   </tr>
   <tr>
-    <td>AllowFallback</td>
+    <td>allowFallback</td>
     <td>*Volitelný parametr*.<br/>Určuje, že služba může nouzového řešení ověření pomocí obecného systému při vlastní systému neexistuje. Možné hodnoty jsou: `true` (výchozí) nebo `false`.<br/><br/>`allowFallback=false` Určuje, zda překlad by měl používat pouze systémy trénovaných ke zpracování `category` určeném požadavkem. Pokud překlad pro jazyk X jazyk Y vyžaduje řetězení prostřednictvím jazyka pivot E, pak všechny systémy v řetězci (X -> E a E -> Y) bude nutné mít vlastní a mají stejné kategorie. Pokud je nalezen žádný systém s konkrétní kategorií, požadavek vrátí stavový kód 400. `allowFallback=true` Určuje, že služba může nouzového řešení ověření pomocí obecného systému při vlastní systému neexistuje.
 </td>
   </tr>
@@ -97,7 +97,7 @@ Hlavičky žádosti patří:
   <th width="20%">Hlavičky</th>
   <th>Popis</th>
   <tr>
-    <td>_Jedním autorizačním_<br/>_Záhlaví_</td>
+    <td>_Jedním autorizačním_<br/>_header_</td>
     <td>*Hlavička požadavku požadované*.<br/>Zobrazit [dostupné možnosti pro ověřování](./v3-0-reference.md#authentication).</td>
   </tr>
   <tr>
@@ -155,17 +155,17 @@ Platí následující omezení:
 
     `transliteration` Objektu není zahrnuta, pokud transkripci není provedena.
 
-    * `alignment`: Objekt s vlastností jednoho řetězce s názvem `proj`, namapovaná vstupní text, který se přeložený text. Informace o zarovnání je zadat, pouze pokud parametr žádosti `includeAlignment` je `true`. Zarovnání se vrátí jako hodnotu řetězce v následujícím formátu: `[[SourceTextStartIndex]:[SourceTextEndIndex]–[TgtTextStartIndex]:[TgtTextEndIndex]]`.  Dvojtečka odděluje počáteční a koncová hodnota, pomlčku odděluje jazyky a slova jsou odděleny mezerou. O jedno slovo může bylo v souladu s žádným, jedním nebo více slov v jiném jazyce, a může být nesouvislé zarovnané slova. Pokud je k dispozici žádné informace o zarovnání, zarovnání element bude prázdný. Zobrazit [získat informace o zarovnání](#obtain-alignment-information) příklad a omezení.
+    * `alignment`: Objekt s jedinou řetězcovou vlastnost s názvem `proj`, namapovaná vstupní text, který se přeložený text. Informace o zarovnání je zadat, pouze pokud parametr žádosti `includeAlignment` je `true`. Zarovnání se vrátí jako hodnotu řetězce v následujícím formátu: `[[SourceTextStartIndex]:[SourceTextEndIndex]–[TgtTextStartIndex]:[TgtTextEndIndex]]`.  Dvojtečka odděluje počáteční a koncová hodnota, pomlčku odděluje jazyky a slova jsou odděleny mezerou. O jedno slovo může bylo v souladu s žádným, jedním nebo více slov v jiném jazyce, a může být nesouvislé zarovnané slova. Pokud je k dispozici žádné informace o zarovnání, zarovnání element bude prázdný. Zobrazit [získat informace o zarovnání](#obtain-alignment-information) příklad a omezení.
 
     * `sentLen`: Objekt vrácení věty hranice ve vstupní a výstupní texty.
 
       * `srcSentLen`: Pole celé číslo představující délku věty ve vstupním textu. Délka pole je počet věty a hodnoty jsou délka jednotlivé věty.
 
-      * `transSentLen`: Pole celé číslo představující délku vět přeloženého textu. Délka pole je počet věty a hodnoty jsou délka jednotlivé věty.
+      * `transSentLen`:  Pole celé číslo představující délku vět přeloženého textu. Délka pole je počet věty a hodnoty jsou délka jednotlivé věty.
 
     Věty hranice jsou pouze zahrnuty při parametr žádosti `includeSentenceLength` je `true`.
 
-  * `sourceText`: Objekt s vlastností jednoho řetězce s názvem `text`, což dává vstupního textu ve výchozím nastavení skriptu zdrojového jazyka. `sourceText` Vlastnost je k dispozici pouze v případě, že vstup je vyjádřena ve skriptu, který není obvykle skript pro jazyk. Například, pokud vstupní byly arabština napsaná v latince, pak `sourceText.text` by stejný Arabské text převést na arabské skriptu.
+  * `sourceText`: Objekt s jedinou řetězcovou vlastnost s názvem `text`, což dává vstupního textu ve výchozím nastavení skriptu zdrojového jazyka. `sourceText` Vlastnost je k dispozici pouze v případě, že vstup je vyjádřena ve skriptu, který není obvykle skript pro jazyk. Například, pokud vstupní byly arabština napsaná v latince, pak `sourceText.text` by stejný Arabské text převést na arabské skriptu.
 
 Jsou k dispozici v příkladu odpověďmi ve formátu JSON [příklady](#examples) oddílu.
 
@@ -179,7 +179,7 @@ Jsou k dispozici v příkladu odpověďmi ve formátu JSON [příklady](#example
     <td>Hodnota vygenerované službou k identifikaci požadavku. Používá se pro účely odstraňování potíží.</td>
   </tr>
   <tr>
-    <td>Systém X MT</td>
+    <td>X-MT-System</td>
     <td>Určuje typ systému, který se použil pro překlad pro každý "k" Jazyk požadovaný pro překlad. Hodnota je čárkou oddělený seznam řetězců. Každý řetězec označuje typ:<br/><ul><li>Vlastní - žádost obsahuje vlastní systém a aspoň jeden vlastní systém se použil při překladu.</li><li>Tým – všechny ostatní žádosti</li></td>
   </tr>
 </table> 
@@ -231,7 +231,7 @@ Tady jsou možné stavové kódy HTTP, které vrátí žádost o.
 
 Tento příklad ukazuje, jak pro převod jedné větě z angličtiny do zjednodušené čínštiny.
 
-# <a name="curltabcurl"></a>[Curl](#tab/curl)
+# <a name="curltabcurl"></a>[curl](#tab/curl)
 
 ```
 curl -X POST "https://api.cognitive.microsofttranslator.com/translate?api-version=3.0&from=en&to=zh-Hans" -H "Ocp-Apim-Subscription-Key: <client-secret>" -H "Content-Type: application/json" -d "[{'Text':'Hello, what is your name?'}]"
@@ -257,7 +257,7 @@ Text odpovědi je:
 
 Tento příklad ukazuje, jak pro převod jedné větě z angličtiny do zjednodušené čínštiny. Jazyk není určen požadavek. Automatická detekce Zdrojový jazyk používá místo toho.
 
-# <a name="curltabcurl"></a>[Curl](#tab/curl)
+# <a name="curltabcurl"></a>[curl](#tab/curl)
 
 ```
 curl -X POST "https://api.cognitive.microsofttranslator.com/translate?api-version=3.0&to=zh-Hans" -H "Ocp-Apim-Subscription-Key: <client-secret>" -H "Content-Type: application/json" -d "[{'Text':'Hello, what is your name?'}]"
@@ -283,7 +283,7 @@ Odpověď je podobný odpovědi z předchozího příkladu. Protože automatick�
 
 Můžeme rozšířit předchozí příklad, tak, že přidáte transkripci. Vyzve k zadání čínské překlad napsané v latince následující požadavek.
 
-# <a name="curltabcurl"></a>[Curl](#tab/curl)
+# <a name="curltabcurl"></a>[curl](#tab/curl)
 
 ```
 curl -X POST "https://api.cognitive.microsofttranslator.com/translate?api-version=3.0&to=zh-Hans&toScript=Latn" -H "Ocp-Apim-Subscription-Key: <client-secret>" -H "Content-Type: application/json" -d "[{'Text':'Hello, what is your name?'}]"
@@ -314,7 +314,7 @@ Teď obsahuje výsledek překladu `transliteration` vlastnost, poskytující př
 
 Překlad najednou více řetězců stačí zadat pole řetězců v textu požadavku.
 
-# <a name="curltabcurl"></a>[Curl](#tab/curl)
+# <a name="curltabcurl"></a>[curl](#tab/curl)
 
 ```
 curl -X POST "https://api.cognitive.microsofttranslator.com/translate?api-version=3.0&from=en&to=zh-Hans" -H "Ocp-Apim-Subscription-Key: <client-secret>" -H "Content-Type: application/json" -d "[{'Text':'Hello, what is your name?'}, {'Text':'I am fine, thank you.'}]"
@@ -343,7 +343,7 @@ Text odpovědi je:
 
 Tento příklad ukazuje, jak převést na stejný vstup do několika jazyků v jedné žádosti.
 
-# <a name="curltabcurl"></a>[Curl](#tab/curl)
+# <a name="curltabcurl"></a>[curl](#tab/curl)
 
 ```
 curl -X POST "https://api.cognitive.microsofttranslator.com/translate?api-version=3.0&from=en&to=zh-Hans&to=de" -H "Ocp-Apim-Subscription-Key: <client-secret>" -H "Content-Type: application/json" -d "[{'Text':'Hello, what is your name?'}]"
@@ -377,14 +377,14 @@ Pokud chcete předejít vulgárních výrazů v překladu, bez ohledu na příto
     <td>`NoAction`</td>
     <td>Toto je výchozí chování. Vulgárních výrazů předá ze zdroje do cíle.<br/><br/>
     **Příklad zdroje (japonština)**: 彼はジャッカスです。<br/>
-    **Příklad překladu (v angličtině)**: je jackass.
+    **Příklad překladu (v angličtině)**: Je jackass.
     </td>
   </tr>
   <tr>
     <td>`Deleted`</td>
     <td>Urážlivá slova se odebere z výstupu bez nahrazení.<br/><br/>
     **Příklad zdroje (japonština)**: 彼はジャッカスです。<br/>
-    **Příklad překladu (v angličtině)**: pracuje.
+    **Příklad překladu (v angličtině)**: Je.
     </td>
   </tr>
   <tr>
@@ -392,16 +392,16 @@ Pokud chcete předejít vulgárních výrazů v překladu, bez ohledu na příto
     <td>Neslušná slova značky ve výstupu. Značky závisí `ProfanityMarker` parametru.<br/><br/>
 Pro `ProfanityMarker=Asterisk`, jsou nahrazeny urážlivá slova `***`:<br/>
     **Příklad zdroje (japonština)**: 彼はジャッカスです。<br/>
-    **Příklad překladu (v angličtině)**: je \* \* \*.<br/><br/>
+    **Příklad překladu (v angličtině)**: Je \* \* \*.<br/><br/>
 Pro `ProfanityMarker=Tag`, urážlivá slova jsou ohraničeny značky XML &lt;vulgárních výrazů&gt; a &lt;/profanity&gt;:<br/>
     **Příklad zdroje (japonština)**: 彼はジャッカスです。<br/>
-    **Příklad překladu (v angličtině)**: je &lt;vulgárních výrazů&gt;jackass&lt;/profanity&gt;.
+    **Příklad překladu (v angličtině)**: Je &lt;vulgárních výrazů&gt;jackass&lt;/profanity&gt;.
   </tr>
 </table> 
 
 Příklad:
 
-# <a name="curltabcurl"></a>[Curl](#tab/curl)
+# <a name="curltabcurl"></a>[curl](#tab/curl)
 
 ```
 curl -X POST "https://api.cognitive.microsofttranslator.com/translate?api-version=3.0&from=en&to=de&profanityAction=Marked" -H "Ocp-Apim-Subscription-Key: <client-secret>" -H "Content-Type: application/json" -d "[{'Text':'This is a fucking good idea.'}]"
@@ -423,7 +423,7 @@ Vrátí:
 
 Porovnejte s:
 
-# <a name="curltabcurl"></a>[Curl](#tab/curl)
+# <a name="curltabcurl"></a>[curl](#tab/curl)
 
 ```
 curl -X POST "https://api.cognitive.microsofttranslator.com/translate?api-version=3.0&from=en&to=de&profanityAction=Marked&profanityMarker=Tag" -H "Ocp-Apim-Subscription-Key: <client-secret>" -H "Content-Type: application/json" -d "[{'Text':'This is a fucking good idea.'}]"
@@ -454,7 +454,7 @@ Je běžné překládat obsah, který obsahuje značky, jako je třeba obsah ze 
 
 Následuje ukázkový požadavek pro ilustraci.
 
-# <a name="curltabcurl"></a>[Curl](#tab/curl)
+# <a name="curltabcurl"></a>[curl](#tab/curl)
 
 ```
 curl -X POST "https://api.cognitive.microsofttranslator.com/translate?api-version=3.0&from=en&to=zh-Hans&textType=html" -H "Ocp-Apim-Subscription-Key: <client-secret>" -H "Content-Type: application/json" -d "[{'Text':'<div class=\"notranslate\">This will not be translated.</div><div>This will be translated.</div>'}]"
@@ -478,7 +478,7 @@ Odpověď je:
 
 Zobrazí informace o zarovnání, zadejte `includeAlignment=true` v řetězci dotazu.
 
-# <a name="curltabcurl"></a>[Curl](#tab/curl)
+# <a name="curltabcurl"></a>[curl](#tab/curl)
 
 ```
 curl -X POST "https://api.cognitive.microsofttranslator.com/translate?api-version=3.0&from=en&to=fr&includeAlignment=true" -H "Ocp-Apim-Subscription-Key: <client-secret>" -H "Content-Type: application/json" -d "[{'Text':'The answer lies in machine translation.'}]"
@@ -516,7 +516,7 @@ Mějte na paměti následující omezení:
 
 Chcete-li získat informace o délka věty zdrojový text a přeložený text, zadejte `includeSentenceLength=true` v řetězci dotazu.
 
-# <a name="curltabcurl"></a>[Curl](#tab/curl)
+# <a name="curltabcurl"></a>[curl](#tab/curl)
 
 ```
 curl -X POST "https://api.cognitive.microsofttranslator.com/translate?api-version=3.0&from=en&to=fr&includeSentenceLength=true" -H "Ocp-Apim-Subscription-Key: <client-secret>" -H "Content-Type: application/json" -d "[{'Text':'The answer lies in machine translation. The best machine translation technology cannot always provide translations tailored to a site or users like a human. Simply copy and paste a code snippet anywhere.'}]"

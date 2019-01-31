@@ -9,15 +9,15 @@ ms.service: event-grid
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 01/19/2019
+ms.date: 01/29/2019
 ms.author: spelluru
 ms.custom: mvc
-ms.openlocfilehash: 4a7e6189914728fac24e51f3b2dee66cc0bd8a05
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: e19d8b1b6eb06f78908238969a4f6e90e42bb564
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54463707"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55301454"
 ---
 # <a name="tutorial-automate-resizing-uploaded-images-using-event-grid"></a>Kurz: Automatizace změny velikosti nahraných obrázků s využitím služby Event Grid
 
@@ -68,11 +68,21 @@ Názvy účtů úložiště musí mít délku 3 až 24 znaků a můžou obsahova
 
 V následujícím příkazu nahraďte zástupný symbol `<general_storage_account>` vlastním globálně jedinečným názvem obecného účtu úložiště. 
 
-```azurecli-interactive
-az storage account create --name <general_storage_account> \
---location westcentralus --resource-group myResourceGroup \
---sku Standard_LRS --kind storage
-```
+1. Nastavte proměnnou, která bude uchovávat název skupiny prostředků, kterou jste vytvořili v předchozím kurzu. 
+
+    ```azurecli-interactive
+    resourceGroupName=<Name of the resource group that you created in the previous tutorial>
+    ```
+2. Nastavte proměnnou pro název účtu úložiště, který vyžaduje funkci Azure. 
+
+    ```azurecli-interactive
+    functionstorage=<name of the storage account to be used by function>
+    ```
+3. Vytvořte účet úložiště pro funkce Azure functions. Tím se liší od úložiště, který obsahuje Image. 
+
+    ```azurecli-interactive
+    az storage account create --name $functionstorage --location eastus --resource-group $resourceGroupName --sku Standard_LRS --kind storage
+    ```
 
 ## <a name="create-a-function-app"></a>Vytvoření Function App  
 
@@ -80,10 +90,16 @@ K hostování provádění funkcí potřebujete aplikaci Function App. Function 
 
 V následujícím příkazu nahraďte zástupný symbol `<function_app>` vlastním jedinečným názvem aplikace Function App. Název aplikace funkcí se použije jako výchozí doména DNS pro příslušnou aplikaci funkcí, a proto musí být název mezi všemi aplikacemi v Azure jedinečný. Hodnotu `<general_storage_account>` nahraďte názvem obecného účtu úložiště, který jste vytvořili.
 
-```azurecli-interactive
-az functionapp create --name <function_app> --storage-account  <general_storage_account>  \
---resource-group myResourceGroup --consumption-plan-location westcentralus
-```
+1. Zadejte název pro aplikaci function app, který se má vytvořit. 
+
+    ```azurecli-interactive
+    functionapp=<name of the function app>
+    ```
+2. Vytvoření funkce Azure functions. 
+
+    ```azurecli-interactive
+    az functionapp create --name $functionapp --storage-account  $functionstorage --resource-group $resourceGroupName --consumption-plan-location eastus
+    ```
 
 Teď je potřeba nakonfigurovat připojení aplikace funkcí k účtu služby Blob Storage, který jste vytvořili v [předchozím kurzu][previous-tutorial].
 
@@ -93,18 +109,18 @@ Funkce potřebuje k připojení k účtu služby Blob Storage připojovací řet
 
 V následujících příkazech rozhraní příkazového řádku je `<blob_storage_account>` název účtu služby Blob Storage, který jste vytvořili v předchozím kurzu.
 
-```azurecli-interactive
-storageConnectionString=$(az storage account show-connection-string \
---resource-group myResourceGroup --name <blob_storage_account> \
---query connectionString --output tsv)
+1. Získá připojovací řetězec pro účet úložiště, který obsahuje Image. 
 
-az functionapp config appsettings set --name <function_app> \
---resource-group myResourceGroup \
---settings myblobstorage_STORAGE=$storageConnectionString \
-myContainerName=thumbnails FUNCTIONS_EXTENSION_VERSION=~2
-```
+    ```azurecli-interactive
+    storageConnectionString=$(az storage account show-connection-string --resource-group $resourceGroupName --name $blobStorageAccount --query connectionString --output tsv)
+    ```
+2. Konfigurace aplikace function app. 
 
-Nastavení `FUNCTIONS_EXTENSION_VERSION=~2` způsobí, že bude aplikace funkcí používat verzi 2.x modulu runtime služby Azure Functions.
+    ```azurecli-interactive
+    az functionapp config appsettings set --name $functionapp --resource-group $resourceGroupName --settings AzureWebJobsStorage=$storageConnectionString THUMBNAIL_CONTAINER_NAME=thumbnails THUMBNAIL_WIDTH=100 FUNCTIONS_EXTENSION_VERSION=~2
+    ```
+
+    Nastavení `FUNCTIONS_EXTENSION_VERSION=~2` způsobí, že bude aplikace funkcí používat verzi 2.x modulu runtime služby Azure Functions.
 
 Teď můžete nasadit do této aplikace Function App nasadit projekt projektu kódu funkce.
 
@@ -117,9 +133,7 @@ Ukázkový skript jazyka C# (.csx) pro změnu velikosti je k dispozici na [GitHu
 V následujícím příkazu je `<function_app>` název aplikace funkcí, kterou jste vytvořili dříve.
 
 ```azurecli-interactive
-az functionapp deployment source config --name <function_app> \
---resource-group myResourceGroup --branch master --manual-integration \
---repo-url https://github.com/Azure-Samples/function-image-upload-resize
+az functionapp deployment source config --name $functionapp --resource-group $resourceGroupName --branch master --manual-integration --repo-url https://github.com/Azure-Samples/function-image-upload-resize
 ```
 
 # <a name="nodejstabnodejs"></a>[Node.js](#tab/nodejs)
@@ -148,11 +162,11 @@ Kód projektu funkce se nasadí přímo z veřejného úložiště ukázek. Dal�
 
 Odběr událostí udává, které události vygenerované zprostředkovatelem chcete odeslat do určitého koncového bodu. V tomto případě zveřejňuje koncový bod vaše funkce. Pomocí následujících kroků vytvořte na webu Azure Portal odběr událostí, který odesílá oznámení do vaší funkce: 
 
-1. Na webu [Azure Portal](https://portal.azure.com) kliknutím na šipku vlevo dole rozbalte všechny služby, do pole **Filtr** zadejte *funkce* a pak zvolte **Aplikace funkcí**. 
+1. V [webu Azure portal](https://portal.azure.com)vyberte **všechny služby** v nabídce vlevo a pak vyberte **aplikace Function App**. 
 
     ![Přechod na aplikace Function App na webu Azure Portal](./media/resize-images-on-storage-blob-upload-event/portal-find-functions.png)
 
-2. Rozbalte svoji aplikaci Function App, vyberte funkci **imageresizerfunc** a potom vyberte **Přidat předplatné Event Gridu**.
+2. Rozbalte aplikaci function app, vyberte **miniaturu** pracovat a pak vyberte **přidat předplatné Event gridu**.
 
     ![Přechod na aplikace Function App na webu Azure Portal](./media/resize-images-on-storage-blob-upload-event/add-event-subscription.png)
 
@@ -162,6 +176,7 @@ Odběr událostí udává, které události vygenerované zprostředkovatelem ch
 
     | Nastavení      | Navrhovaná hodnota  | Popis                                        |
     | ------------ |  ------- | -------------------------------------------------- |
+    | **Název** | imageresizersub | Název identifikující nový odběr událostí. | 
     | **Typ tématu** |  Účty úložiště | Vyberte zprostředkovatele událostí Účty úložiště. | 
     | **Předplatné** | Vaše předplatné Azure | Ve výchozím nastavení je vybrané vaše aktuální předplatné Azure.   |
     | **Skupina prostředků** | myResourceGroup | Vyberte **Použít existující** a zvolte skupinu prostředků, které jste už používali v tomto kurzu.  |
@@ -169,9 +184,8 @@ Odběr událostí udává, které události vygenerované zprostředkovatelem ch
     | **Typy událostí** | Vytvoření objektu blob | Zrušte zaškrtnutí všech typů komě **Vytvoření objektu blob**. Do funkce se předají jenom události typu `Microsoft.Storage.BlobCreated`.| 
     | **Typ odběratele** |  automaticky generovaný |  Předdefinovaný jako webhook. |
     | **Koncový bod odběratele** | automaticky generovaný | Použijte adresu URL koncového bodu, která se vygeneruje. | 
-    | **Název** | imageresizersub | Název identifikující nový odběr událostí. | 
 4. *Volitelné:* V případě, že je potřeba vytvořit další kontejnery ve stejném úložišti objektů blob pro jiné účely v budoucnu, můžete použít **na základě práv subjektů filtrování** funkce v **filtry** kartu pro podrobnější cílení na objektu blob události, aby vaše aplikace function app je volána, pouze pokud objekty BLOB jsou přidány do **imagí** kontejneru zvlášť. 
-5. Přidejte odběr událostí kliknutím na **Vytvořit**. Vytvoří se odběr událostí, který při přidání objektu blob do kontejneru *images* aktivuje funkci `imageresizerfunc`. Tato funkce změní velikost obrázků a přidá je do kontejneru *thumbnails*.
+5. Přidejte odběr událostí kliknutím na **Vytvořit**. Vytvoří se odběr událostí, která aktivuje `Thumbnail` fungovat v případě, že objekt blob se přidá do *imagí* kontejneru. Tato funkce změní velikost obrázků a přidá je do kontejneru *thumbnails*.
 
 Teď máte nakonfigurované back-endové služby a můžete funkci změny velikosti obrázků otestovat v ukázkové webové aplikaci. 
 

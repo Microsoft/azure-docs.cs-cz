@@ -6,19 +6,19 @@ author: marktab
 manager: cgronlun
 editor: cgronlun
 ms.service: machine-learning
-ms.component: team-data-science-process
+ms.subservice: team-data-science-process
 ms.topic: article
 ms.date: 11/29/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: e6adbe5a0e5ce88db12637889e201b5a15a0556f
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: 57f20a6b3a8d2845b0459f05e7b9d9ccd8d44424
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53139618"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55463289"
 ---
-# <a name="the-team-data-science-process-in-action-use-azure-hdinsight-hadoop-clusters"></a>Vědecké zpracování týmových dat v akci: použití Azure HDInsight Hadoop clusterů
+# <a name="the-team-data-science-process-in-action-use-azure-hdinsight-hadoop-clusters"></a>Vědecké zpracování týmových dat v akci: Použití Azure HDInsight Hadoop clusterů
 V tomto názorném postupu používáme [vědecké zpracování týmových dat (TDSP)](overview.md) ve scénáři začátku do konce. Používáme [clusteru Azure HDInsight Hadoop](https://azure.microsoft.com/services/hdinsight/) k ukládání, prozkoumat a funkce analýzu dat z veřejně dostupných [cesty taxíkem NYC](http://www.andresmh.com/nyctaxitrips/) datovou sadu a na nižší data. Pro zpracování víc tříd a binární klasifikace a úlohy prediktivní regrese, jsme integrovali modely dat pomocí Azure Machine Learning. 
 
 Názorný postup ukazuje, jak zpracovávat větší datové sady, naleznete v tématu [vědecké zpracování týmových dat – pomocí Azure HDInsight Hadoop clusterů v datové sadě 1 TB](hive-criteo-walkthrough.md).
@@ -50,18 +50,18 @@ Jedinečný klíč pro připojení o jízdách\_a dat o jízdách\_tarif se skl�
 ## <a name="mltasks"></a>Příklady úloh predikcí
 Určete druh předpovědi, které mají být založené na analýze dat. Díky tomu vysvětlení úloh, které potřebujete k zahrnutí do procesu. Tady jsou tři příklady předpovědi problémy, které jsme v tomto názorném postupu vyřešit. Tyto jsou založeny na *tip\_částka*:
 
-- **Binární klasifikace**: předpovědět, jestli byl tip placené cesty. To znamená *tip\_částka* , který je větší než 0 USD je kladné příklad, zatímco *tip\_částka* $ 0 je záporná příklad.
+- **Binární klasifikace**: Předvídejte, jestli byl tip placené cesty. To znamená *tip\_částka* , který je větší než 0 USD je kladné příklad, zatímco *tip\_částka* $ 0 je záporná příklad.
    
         Class 0: tip_amount = $0
         Class 1: tip_amount > $0
-- **Klasifikace víc tříd**: předpověď rozsah tip částky zaplacené pro cestu. Doporučujeme rozdělit *tip\_částka* do pěti tříd:
+- **Klasifikace víc tříd**: Předpověď rozsah tip částky zaplacené pro cestu. Doporučujeme rozdělit *tip\_částka* do pěti tříd:
    
         Class 0: tip_amount = $0
         Class 1: tip_amount > $0 and tip_amount <= $5
         Class 2: tip_amount > $5 and tip_amount <= $10
         Class 3: tip_amount > $10 and tip_amount <= $20
         Class 4: tip_amount > $20
-- **Úloha regrese**: předpověď částky spropitného placené cesty.  
+- **Úloha regrese**: Předpověď částky spropitného placené cesty.  
 
 ## <a name="setup"></a>Nastavení clusteru HDInsight Hadoop pro pokročilou analýzu
 > [!NOTE]
@@ -286,7 +286,7 @@ Dotazy Hive můžete použít k provedení zkoumání dat a funkce technické ú
 * Generovat popisky klasifikace binární a víc tříd na základě doby, tip.
 * Generovat funkce výpočtem vzdálenosti přímé o jízdách.
 
-### <a name="exploration-view-the-top-10-records-in-table-trip"></a>Zkoumání: Zobrazte prvních 10 záznamů v tabulce cesty
+### <a name="exploration-view-the-top-10-records-in-table-trip"></a>Zkoumání: Zobrazení prvních 10 záznamů v tabulce cesty
 > [!NOTE]
 > Obvykle se jedná o úlohu mezi odborníky přes data.
 > 
@@ -306,7 +306,7 @@ Záznamy můžete uložit do souboru pro pohodlné zobrazení. Menší změnu, k
 
     hive -e "select * from nyctaxidb.fare where month=1 limit 10;" > C:\temp\testoutput
 
-### <a name="exploration-view-the-number-of-records-in-each-of-the-12-partitions"></a>Zkoumání: Zobrazte několik záznamů v každé z 12 oddíly
+### <a name="exploration-view-the-number-of-records-in-each-of-the-12-partitions"></a>Zkoumání: Zobrazí počet záznamů v každé z 12 oddíly
 > [!NOTE]
 > Obvykle se jedná o úlohu mezi odborníky přes data.
 > 
@@ -410,7 +410,7 @@ Z adresáře řádku Hive spusťte následující příkaz:
 
     hive -f "C:\temp\sample_hive_trip_count_by_medallion.hql" > C:\temp\queryoutput.tsv
 
-### <a name="exploration-trip-distribution-by-medallion-and-hack-license"></a>Průzkumu: Distribuce latence podle Medailon a hack licence
+### <a name="exploration-trip-distribution-by-medallion-and-hack-license"></a>Zkoumání: Distribuce latence podle Medailon a hack licence
 > [!NOTE]
 > Obvykle se jedná o úlohu mezi odborníky přes data.
 > 
@@ -435,7 +435,7 @@ Z adresáře řádku Hive spusťte:
 
 Výsledky dotazu jsou zapisovány do místního souboru **C:\temp\queryoutput.tsv**.
 
-### <a name="exploration-assessing-data-quality-by-checking-for-invalid-longitude-or-latitude-records"></a>Zkoumání: Hodnocení kvality dat tak, že zkontrolujete neplatnou zeměpisnou délku nebo záznamy zeměpisné šířky
+### <a name="exploration-assessing-data-quality-by-checking-for-invalid-longitude-or-latitude-records"></a>Zkoumání: Hodnocení kvality dat kontrolou neplatné záznamy zeměpisné délky a šířky
 > [!NOTE]
 > Obvykle se jedná o úlohu mezi odborníky přes data.
 > 
@@ -485,7 +485,7 @@ Z adresáře řádku Hive spusťte:
     hive -f "C:\temp\sample_hive_tipped_frequencies.hql"
 
 
-### <a name="exploration-class-distributions-in-the-multiclass-setting"></a>Zkoumání: Rozdělení třídy v nastavení víc tříd
+### <a name="exploration-class-distributions-in-the-multiclass-setting"></a>Zkoumání: Třída distribuce v nastavení víc tříd
 > [!NOTE]
 > Obvykle se jedná o úlohu mezi odborníky přes data.
 > 
@@ -508,7 +508,7 @@ Spusťte následující příkaz z příkazového řádku konzoly Hadoop:
 
     hive -f "C:\temp\sample_hive_tip_range_frequencies.hql"
 
-### <a name="exploration-compute-the-direct-distance-between-two-longitude-latitude-locations"></a>Zkoumání: Compute přímé vzdálenost mezi dvěma umístěními zeměpisná délka a šířka
+### <a name="exploration-compute-the-direct-distance-between-two-longitude-latitude-locations"></a>Zkoumání: COMPUTE přímé vzdálenost mezi dvěma umístěními zeměpisná délka a šířka
 > [!NOTE]
 > Obvykle se jedná o úlohu mezi odborníky přes data.
 > 
@@ -723,15 +723,15 @@ Tady jsou některé podrobnosti o [Import dat] [ import-data] modulu a parametry
 
 **Identifikátor URI serveru HCatalog**: Pokud je název clusteru **abc123**, to je jednoduše: https://abc123.azurehdinsight.net.
 
-**Název uživatelského účtu systému Hadoop**: uživatelské jméno, které jste zvolili pro cluster (nikoli název vzdáleného přístupu uživatele).
+**Název uživatelského účtu systému Hadoop**: Uživatelské jméno, zvolená pro cluster (nikoli název vzdáleného přístupu uživatele).
 
-**Heslo účtu ser Hadoop**: heslo pro cluster (ne heslo vzdáleného přístupu).
+**Heslo účtu ser Hadoop**: Heslo jste zvolili pro cluster (ne heslo vzdáleného přístupu).
 
-**Umístění výstupních dat**: to je vybrán jako Azure.
+**Umístění výstupních dat**: Zvolí se bude Azure.
 
-**Název účtu služby Azure storage**: název výchozí účet úložiště přidružené ke clusteru.
+**Název účtu služby Azure storage**: Název výchozí účet úložiště přidružené ke clusteru.
 
-**Název kontejneru Azure**: Toto je výchozí název kontejneru clusteru a je obvykle stejný jako název clusteru. Volá se, pro cluster **abc123**, toto je abc123.
+**Název kontejneru Azure**: Toto je výchozí název kontejneru pro cluster a je obvykle stejný jako název clusteru. Volá se, pro cluster **abc123**, toto je abc123.
 
 > [!IMPORTANT]
 > Všechny tabulky, které bychom chtěli provádět dotazy pomocí [Import dat] [ import-data] interní tabulky musí být modul ve službě Machine Learning.
@@ -757,9 +757,9 @@ Datovou sadu můžete teď použít jako výchozí bod pro vytváření modelů 
 ### <a name="mlmodel"></a>Vytváření modelů Machine Learning.
 Teď můžete přejít k vytváření modelů a nasazení modelů v [Machine Learning](https://studio.azureml.net). Data jsou připravené, abyste mohli používat v řeší problémy předpovědi dřív identifikovali:
 
-- **Binární klasifikace**: předpovědět, zda je či není tip byla zaplacena cesty.
+- **Binární klasifikace**: Pro předpověď Určuje, jestli tip byla zaplacena cesty.
 
-  **Student používá:** logistické regrese Two-class
+  **Student používá:** Logistické regrese dvěma třídami
 
   a. Pro daný problém a cíle (nebo třídy) popisek je **šikmý**. Původní datové sady předvýpočtem zredukovaných má několik sloupců, které jsou cílového únikům pro tento experiment klasifikace. Zejména **tip\_třídy**, **tip\_částka**, a **celkový\_částka** zobrazit informace o cíli popisek, který není k dispozici na testování čas. Můžeme odebrat tyto sloupce v úvahu pomocí [výběr sloupců v datové sadě] [ select-columns] modulu.
 
@@ -779,11 +779,11 @@ Teď můžete přejít k vytváření modelů a nasazení modelů v [Machine Lea
 
 - **Klasifikace víc tříd**: K předpovědi rozsahu tip částky zaplacené pro cestu s použitím dříve definovaných tříd.
 
-  **Student používá:** víc tříd logistické regrese
+  **Student používá:** Víc tříd logistické regrese
 
   a. Pro tento problém je náš cíl (nebo třídy) popisku **tip\_třída**, které můžete provést jednu z pěti hodnot (0,1,2,3,4). Stejně jako v případě binární klasifikace budeme mít několik sloupců, které jsou cílového únikům pro tento experiment. Zejména **šikmý**, **tip\_částka**, a **celkový\_částka** zobrazit informace o cílové popisek, který není k dispozici na testování čas. Můžeme odebrat tyto sloupce s použitím [výběr sloupců v datové sadě] [ select-columns] modulu.
 
-  Následující diagram znázorňuje experiment předpovědět, ve které bin je pravděpodobné, aby tip. Jsou přihrádek: Třída 0: tip = 0 USD, třídy 1: tip > 0 USD a tip < = 5 USD, třídy 2: tip > 5 USD a tip < = 10 USD, třídy 3: tip > 10 USD a tip < = 20 USD a třída 4: tip > $20.
+  Následující diagram znázorňuje experiment předpovědět, ve které bin je pravděpodobné, aby tip. Přihrádky jsou: Třída 0: tip = 0 USD, třídy 1: tip > 0 USD a tip < = 5 USD, třídy 2: tip > 5 USD a tip < = 10 USD, třídy 3: tip > 10 USD a tip < = 20 USD a třída 4: tip > $20.
 
   ![Diagram experimentu předpovědět bin pro tip](./media/hive-walkthrough/5ztv0n0.png)
 
@@ -797,9 +797,9 @@ Teď můžete přejít k vytváření modelů a nasazení modelů v [Machine Lea
 
   Všimněte si, že třída přesností na běžně se vyskytujícím třídy jsou poměrně dobré, model nenabízí Dobrá práce "učení" u vzácnějších tříd.
 
-- **Úloha regrese**: odhadnout množství tip placené cesty.
+- **Úloha regrese**: Odhadnout množství tip placené cesty.
 
-  **Student používá:** Boosted rozhodovací strom
+  **Student používá:** Posílený rozhodovací strom
 
   a. Pro daný problém a cíle (nebo třídy) popisek je **tip\_částka**. V tomto případě jsou cílového únikům: **šikmý**, **tip\_třídy**, a **celkový\_částka**. Tyto proměnné zobrazí informace o velikosti tip, který je obvykle není k dispozici na testování čas. Můžeme odebrat tyto sloupce s použitím [výběr sloupců v datové sadě] [ select-columns] modulu.
 

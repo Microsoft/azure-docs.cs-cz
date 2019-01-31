@@ -8,13 +8,13 @@ ms.service: storage
 ms.topic: article
 ms.date: 10/16/2018
 ms.author: jeffpatt
-ms.component: files
-ms.openlocfilehash: b8f77f404a8e5d2d1625a327a1e50c0e169b6135
-ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
+ms.subservice: files
+ms.openlocfilehash: ca7e89f4b7f976633d5f097b7e335fe9b7631985
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53744424"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55477739"
 ---
 # <a name="troubleshoot-azure-files-problems-in-linux"></a>Řešení potíží s Azure Files v Linuxu
 
@@ -183,12 +183,12 @@ Mezi běžné příčiny tohoto problému patří:
 
     |   | SMB 2.1 <br>(Připojení na virtuálních počítačích v rámci stejné oblasti Azure) | SMB 3.0 <br>(Připojení z místního a mezi oblastmi) |
     | --- | :---: | :---: |
-    | Ubuntu Server | 14.04 + | 16.04 + |
-    | RHEL | 7 + | 7.5+ |
-    | CentOS | 7 + |  7.5+ |
+    | Ubuntu Server | 14.04+ | 16.04+ |
+    | RHEL | 7+ | 7.5+ |
+    | CentOS | 7+ |  7.5+ |
     | Debian | 8+ |   |
-    | openSUSE | 13.2 + | 42.3 + |
-    | SUSE Linux Enterprise Server | 12 | 12 SP3 + |
+    | openSUSE | 13.2+ | 42.3+ |
+    | SUSE Linux Enterprise Server | 12 | 12 SP3+ |
 
 - V klientském počítači nejsou nainstalované nástroje CIFS (cfs utils).
 - Minimální verze protokolu SMB/CIFS, 2.1, není nainstalována na straně klienta.

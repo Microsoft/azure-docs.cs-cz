@@ -7,13 +7,13 @@ ms.service: storage
 ms.topic: article
 ms.date: 12/11/2018
 ms.author: alkohli
-ms.component: common
-ms.openlocfilehash: 25ea4f41ac1fa36c7f9b6f64bc7c4eede4702f38
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.subservice: common
+ms.openlocfilehash: 0480a8d4079a39c8e365dde893a9a1af2d7341aa
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53315175"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55453106"
 ---
 # <a name="use-the-azure-importexport-service-to-export-data-from-azure-blob-storage"></a>Export dat z úložiště objektů Blob v Azure pomocí služby Azure Import/Export
 Tento článek obsahuje podrobné pokyny o tom, jak bezpečně export velkých objemů dat z úložiště objektů Blob v Azure pomocí služby Azure Import/Export. Služba vyžaduje, abyste zasílejte prázdné disky do datacentra Azure. Službu exportuje data z vašeho účtu úložiště do jednotky a potom odešle zpět jednotky.
@@ -198,10 +198,10 @@ Následující tabulka uvádí příklady cesty k objektům blob platné:
    | Začíná |/ |Exportuje všechny objekty BLOB v účtu úložiště |
    | Začíná |/$root / |Exportuje všechny objekty BLOB v kontejneru kořenové |
    | Začíná |/Book |Exportuje všechny objekty BLOB v kontejneru, který začíná předponou **knihy** |
-   | Začíná |/Music/ |Exportuje všechny objekty BLOB v kontejneru **Hudba** |
+   | Začíná |/music/ |Exportuje všechny objekty BLOB v kontejneru **Hudba** |
    | Začíná |/ Hudba/láskou |Exportuje všechny objekty BLOB v kontejneru **Hudba** , začínat předponou **máte rádi.** |
    | Je rovno |$root/logo.bmp |Exporty blob **logo.bmp** v kořenovém kontejneru |
-   | Je rovno |videos/Story.MP4 |Exporty blob **story.mp4** v kontejneru **videa** |
+   | Je rovno |videos/story.mp4 |Exporty blob **story.mp4** v kontejneru **videa** |
 
 ## <a name="next-steps"></a>Další postup
 

@@ -7,14 +7,14 @@ ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: sngun
 ms.custom: seodec18
-ms.openlocfilehash: 7f58e851ab7783e43cd6235b2169847cbf0ac5a4
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: 80ed88bbc901d2cbcd6bc8104e55de73549744f8
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54036626"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55477824"
 ---
-# <a name="create-and-manage-azure-cosmos-db-resources-by-using-powershell"></a>Vytváření a správě prostředků Azure Cosmos DB pomocí Powershellu
+# <a name="manage-azure-cosmos-resources-using-powershell"></a>Správa prostředků Azure Cosmos pomocí Powershellu
 
 Následující průvodci popisuje příkazy, které automatizují správu účtů databáze Azure Cosmos DB pomocí Azure Powershellu. Zahrnuje také příkazy pro správu klíčů účtu a priority převzetí služeb při selhání v [účty databáze ve více oblastech][distribute-data-globally]. Aktualizace vašeho účtu databáze můžete upravit zásady konzistence a přidat/odebrat oblasti. Pro různé platformy správy účtu služby Azure Cosmos DB, můžete použít buď [rozhraní příkazového řádku Azure](cli-samples.md), [rozhraní REST API poskytovatele prostředků][rp-rest-api], nebo [webu Azure portal ](create-sql-api-dotnet.md#create-account).
 

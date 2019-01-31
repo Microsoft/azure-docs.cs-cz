@@ -1,21 +1,21 @@
 ---
-title: 'Kurz: Načtení dat do služby Azure SQL Data Warehouse | Microsoft Docs'
+title: 'Kurz: Načtení dat do služby Azure SQL Data Warehouse | Dokumentace Microsoftu'
 description: Kurz používá Azure Portal a SQL Server Management Studio k načtení databáze datového skladu WideWorldImportersDW z veřejného úložiště objektů blob v Azure do služby Azure SQL Data Warehouse.
 services: sql-data-warehouse
 author: ckarst
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
-ms.component: implement
+ms.subservice: implement
 ms.date: 04/17/2018
 ms.author: cakarst
 ms.reviewer: igorstan
-ms.openlocfilehash: 57803d6b83b71e65064c4ec701ed5b7e7607321f
-ms.sourcegitcommit: f94f84b870035140722e70cab29562e7990d35a3
+ms.openlocfilehash: 44ad37120034d59161fe3b5f0ed521fc6f630b0f
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43286929"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55454330"
 ---
 # <a name="tutorial-load-data-to-azure-sql-data-warehouse"></a>Kurz: Načtení dat do služby Azure SQL Data Warehouse
 
@@ -34,7 +34,7 @@ Tento kurz využívá PolyBase k načtení databáze datového skladu WideWorldI
 
 Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 
-## <a name="before-you-begin"></a>Než začnete
+## <a name="before-you-begin"></a>Před zahájením
 
 Než začnete s tímto kurzem, stáhněte a nainstalujte nejnovější verzi aplikace [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms) (SSMS).
 

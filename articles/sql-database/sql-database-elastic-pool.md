@@ -11,13 +11,13 @@ author: oslake
 ms.author: moslake
 ms.reviewer: ninarn, carlrab
 manager: craigg
-ms.date: 10/15/2018
-ms.openlocfilehash: ea548b55bc216b815b5f49f1e0405f1a90d05d08
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.date: 01/25/2019
+ms.openlocfilehash: 1e7ec07c29f742202b17e94d96d88b0dfb223100
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53275614"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55464343"
 ---
 # <a name="elastic-pools-help-you-manage-and-scale-multiple-azure-sql-databases"></a>Elastické fondy umožňují spravovat a škálovat několika databázemi Azure SQL
 
@@ -141,7 +141,7 @@ Databáze ve fondu obecně podporují stejné [funkce provozní kontinuity](sql-
 
   Obnovení k určitému bodu v čase využívá automatické zálohování databází k obnovení databáze ve fondu k určitému bodu v čase. Viz [Obnovení k určitému bodu v čase](sql-database-recovery-using-backups.md#point-in-time-restore).
 
-- **Geografické obnovení**
+- **Geo-restore**
 
   Geografické obnovení poskytuje výchozí možnost zotavení, pokud je databáze není k dispozici z důvodu incidentu v oblasti, kde se hostuje databázi. Viz [Obnovení služby Azure SQL Database a převzetí služeb při selhání sekundární lokalitou](sql-database-disaster-recovery.md).
 

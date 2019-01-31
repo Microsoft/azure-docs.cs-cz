@@ -6,16 +6,16 @@ author: kevinvngo
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
-ms.component: manage
+ms.subservice: manage
 ms.date: 04/17/2018
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: fe989a1693d73dbbea7ed0e3e91ed7aaf6fc37c4
-ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
+ms.openlocfilehash: fdb51bf249990a10b8476a55be1103cb05c5821b
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43301078"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55466978"
 ---
 # <a name="monitor-your-workload-using-dmvs"></a>Monitorování vaší úlohy pomocí DMV
 Tento článek popisuje, jak monitorování vaší úlohy pomocí zobrazení dynamické správy (DMV). To zahrnuje zkoumání provádění dotazů ve službě Azure SQL Data Warehouse.
@@ -45,7 +45,7 @@ Všechny dotazy spouštěné ve službě SQL Data Warehouse se Zaprotokolují [s
 
 Tady je postup, jak zjistit plánům spuštění dotazů a časy pro konkrétní dotaz.
 
-### <a name="step-1-identify-the-query-you-wish-to-investigate"></a>Krok 1: Identifikace dotaz, který chcete prozkoumat
+### <a name="step-1-identify-the-query-you-wish-to-investigate"></a>KROK 1: Identifikovat dotaz, který chcete prozkoumat
 ```sql
 -- Monitor active queries
 SELECT * 
@@ -80,7 +80,7 @@ OPTION (LABEL = 'My Query')
 ;
 ```
 
-### <a name="step-2-investigate-the-query-plan"></a>Krok 2: Prozkoumání plán dotazu
+### <a name="step-2-investigate-the-query-plan"></a>KROK 2: Prozkoumat plán dotazu
 ID požadavku. použijte k načtení dotazu distribuované plánu SQL (DSQL) z [sys.dm_pdw_request_steps][sys.dm_pdw_request_steps].
 
 ```sql
@@ -99,7 +99,7 @@ Dále prozkoumat podrobnosti o jeden krok *operation_type* sloupec dlouhotrvají
 * Pokračovat v kroku 3a pro **SQL operací**: OnOperation RemoteOperation, ReturnOperation.
 * Krok 3b pro pokračujte **operace přesunu dat**: ShuffleMoveOperation BroadcastMoveOperation, TrimMoveOperation, PartitionMoveOperation, MoveOperation, CopyOperation.
 
-### <a name="step-3a-investigate-sql-on-the-distributed-databases"></a>KROK 3a: prozkoumání SQL na distribuované databáze
+### <a name="step-3a-investigate-sql-on-the-distributed-databases"></a>KROK 3a: Prozkoumejte SQL na distribuované databáze
 Umožňuje načíst podrobnosti ze ID žádosti a Index kroku [sys.dm_pdw_sql_requests][sys.dm_pdw_sql_requests], který obsahuje informace o spuštění kroku dotazu na všechny distribuované databáze.
 
 ```sql
@@ -119,7 +119,7 @@ Při spuštění kroku dotazu [DBCC PDW_SHOWEXECUTIONPLAN] [ DBCC PDW_SHOWEXECUT
 DBCC PDW_SHOWEXECUTIONPLAN(1, 78);
 ```
 
-### <a name="step-3b-investigate-data-movement-on-the-distributed-databases"></a>Krok 3b: prozkoumání přesunu dat pro distribuované databáze
+### <a name="step-3b-investigate-data-movement-on-the-distributed-databases"></a>Krok 3b: Prozkoumat přesunu dat pro distribuované databáze
 K načtení informací o běžící na každé distribuci z kroku přesunu dat používat ID žádosti a Index kroku [sys.dm_pdw_dms_workers][sys.dm_pdw_dms_workers].
 
 ```sql

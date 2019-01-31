@@ -1,6 +1,6 @@
 ---
-Název: Řešení potíží s přetrénování titleSuffix klasické webové služby Machine Learning Studio: Azure Machine Learning Studio Popis: Identifikujte a opravte běžných problémů při jsou přetrénování modelu pro webové služby Azure Machine Learning Studio.
-Services: machine learningu ms.service: ms.component strojového učení: studio ms.topic: článku
+Název: Řešení potíží s přetrénování titleSuffix klasické webové služby Machine Learning Studio: Azure Machine Learning Studio Popis: Identifikujte a opravte běžných problémů při jsou přetrénování modelu pro webové služby Azure Machine Learning Studio.
+Services: machine learningu ms.service: ms.subservice strojového učení: studio ms.topic: článku
 
 Autor: ericlicoding ms.author: amlstudiodocs ms.custom: předchozí ms.author=yahajiza, předchozí Autor = YasinMSFT ms.date: 11/01/2017
 ---

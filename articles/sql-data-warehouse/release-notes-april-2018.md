@@ -6,16 +6,16 @@ author: twounder
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
-ms.component: manage
+ms.subservice: manage
 ms.date: 07/23/2018
 ms.author: twounder
 ms.reviewer: twounder
-ms.openlocfilehash: f1a3b99d40435bf2b7e33f81a43372f304fbb856
-ms.sourcegitcommit: f94f84b870035140722e70cab29562e7990d35a3
+ms.openlocfilehash: 0a6f3551498565f5e5343fe53d373816025d944e
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43286999"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55472826"
 ---
 # <a name="whats-new-in-azure-sql-data-warehouse-april-2018"></a>Co je nového ve službě Azure SQL Data Warehouse? Duben 2018
 Azure SQL Data Warehouse neustále obdrží vylepšení. Tento článek popisuje nové funkce a změny, které byly zavedeny v dubnu 2018.

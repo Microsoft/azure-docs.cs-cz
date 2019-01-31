@@ -1,6 +1,6 @@
 ---
-Název: Přeučování existující prediktivní Studio webové služby titleSuffix: Azure Machine Learning Studio Popis: Zjistěte, jak model přetrénujete a aktualizovat webovou službu, která používá nově trained model v Azure Machine Learning Studio.
-Services: machine learningu ms.service: ms.component strojového učení: studio ms.topic: článku
+Název: Přeučování existující prediktivní Studio webové služby titleSuffix: Azure Machine Learning Studio Popis: Zjistěte, jak model přetrénujete a aktualizovat webovou službu, která používá nově trained model v Azure Machine Learning Studio.
+Services: machine learningu ms.service: ms.subservice strojového učení: studio ms.topic: článku
 
 Autor: ericlicoding ms.author: amlstudiodocs ms.custom: předchozí ms.author=yahajiza, předchozí Autor = YasinMSFT ms.date: 11/07/2017
 ---

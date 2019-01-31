@@ -1,6 +1,6 @@
 ---
-Název: "Krok 2: Nahrání dat do experimentu Machine Learning Studio se titleSuffix: Azure Machine Learning Studio Popis: "Krok 2 vývoj prediktivního řešení názorný postup: Nahrávání uloženou veřejná data do Azure Machine Learning Studio. "
-Services: machine learningu ms.service: ms.component strojového učení: studio ms.topic: článku
+Název: "Krok 2: Nahrání dat do experimentu Machine Learning Studio se titleSuffix: Azure Machine Learning Studio Popis: "Krok 2 vývoj prediktivního řešení názorný postup: Nahrávání uloženou veřejná data do Azure Machine Learning Studio. "
+Services: machine learningu ms.service: ms.subservice strojového učení: studio ms.topic: článku
 
 Autor: garyericson ms.author: garye ms.custom: předchozí Autor = heatherbshapiro předchozí ms.author=hshapiro ms.date: 03/23/2017
 ---

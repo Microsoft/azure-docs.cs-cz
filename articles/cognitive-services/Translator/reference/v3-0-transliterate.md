@@ -6,18 +6,18 @@ services: cognitive-services
 author: Jann-Skotdal
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: translator-text
+ms.subservice: translator-text
 ms.topic: reference
 ms.date: 03/29/2018
 ms.author: v-jansko
-ms.openlocfilehash: 841982a4ecbfa5241d826beaaae81921b2859596
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: a37b069d533dc51067aba4f9d9bd87608b116ae6
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52967329"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55466451"
 ---
-# <a name="translator-text-api-30-transliterate"></a>Translator Text API 3.0: transkripce
+# <a name="translator-text-api-30-transliterate"></a>Translator Text API 3.0: Transliterace
 
 Převede text v jednom jazyce z jeden skript pro další skript.
 
@@ -60,7 +60,7 @@ Hlavičky žádosti patří:
   <th width="20%">Hlavičky</th>
   <th>Popis</th>
   <tr>
-    <td>_Jedním autorizačním_<br/>_Záhlaví_</td>
+    <td>_Jedním autorizačním_<br/>_header_</td>
     <td>*Hlavička požadavku požadované*.<br/>Zobrazit [dostupné možnosti pro ověřování](./v3-0-reference.md#authentication).</td>
   </tr>
   <tr>
@@ -163,7 +163,7 @@ Tady jsou možné stavové kódy HTTP, které vrátí žádost o.
 
 Následující příklad ukazuje, jak převést dva řetězce japonské Romanized japonštinu.
 
-# <a name="curltabcurl"></a>[Curl](#tab/curl)
+# <a name="curltabcurl"></a>[curl](#tab/curl)
 
 Datová část JSON pro požadavek v tomto příkladu:
 

@@ -1,6 +1,6 @@
 ---
-Název: Rozšíření experimentů pomocí R titleSuffix: Azure Machine Learning Studio Popis: Jak rozšiřovat funkce Azure Machine Learning Studio pomocí jazyka R s použitím modulu spustit skript jazyka R došlo k chybě.
-Services: machine learningu ms.service: ms.component strojového učení: studio ms.topic: článku
+Název: Rozšíření experimentů pomocí R titleSuffix: Azure Machine Learning Studio Popis: Jak rozšiřovat funkce Azure Machine Learning Studio pomocí jazyka R s použitím modulu spustit skript jazyka R došlo k chybě.
+Services: machine learningu ms.service: ms.subservice strojového učení: studio ms.topic: článku
 
 Autor: ericlicoding ms.author: amlstudiodocs ms.custom: předchozí Autor = heatherbshapiro předchozí ms.author=hshapiro ms.date: 03/20/2017
 ---

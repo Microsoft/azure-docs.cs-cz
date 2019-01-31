@@ -6,15 +6,15 @@ ms.service: automation
 ms.subservice: process-automation
 author: georgewallace
 ms.author: gwallace
-ms.date: 1/24/2019
+ms.date: 1/30/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: cc0ffc0a209dab0e8610966cb24596d95b7927c3
-ms.sourcegitcommit: 97d0dfb25ac23d07179b804719a454f25d1f0d46
+ms.openlocfilehash: 5cacd2d0e4308e15b562169f72efb0f98ce45289
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/25/2019
-ms.locfileid: "54913423"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55476392"
 ---
 # <a name="startstop-vms-during-off-hours-solution-in-azure-automation"></a>Spuštění/zastavení virtuálních počítačů v době mimo špičku řešení ve službě Azure Automation
 
@@ -62,7 +62,7 @@ Proveďte následující kroky pro přidání spouštění/zastavování virtuá
    - Zadejte název pro nový **pracovní prostor Log Analytics**, jako je například "ContosoLAWorkspace".
    - Vyberte **předplatné** k propojení, výběrem z rozevíracího seznamu, pokud výchozí vybrané není vhodné.
    - Pro **skupiny prostředků**, můžete vytvořit novou skupinu prostředků nebo vyberte existující.
-   - Vyberte **Umístění**. V současné době jsou k dispozici pouze umístění **Austrálie – jihovýchod**, **Kanada – střed**, **střed Indie**, **USA – východ**, **Japonsko – východ**, **jihovýchodní Asie**, **Velká Británie – jih**, a **západní Evropa**.
+   - Vyberte **Umístění**. V současné době jsou k dispozici pouze umístění **Austrálie – jihovýchod**, **Kanada – střed**, **střed Indie**, **USA – východ**, **Japonsko – východ**, **jihovýchodní Asie**, **Velká Británie – jih**, **západní Evropa**, a **USA – západ 2**.
    - Vyberte možnost u položky **Cenová úroveň**. Zvolte **Per GB (Standalone)** možnost. Log Analytics se aktualizovala [ceny](https://azure.microsoft.com/pricing/details/log-analytics/) a úroveň Per GB je jedinou možností.
 
 5. Po zadání požadovaných informací v **pracovní prostor Log Analytics** klikněte na **vytvořit**. Můžete sledovat jeho průběh **oznámení** z nabídky, která se vrátíte na **přidat řešení** stránce až budete hotovi.

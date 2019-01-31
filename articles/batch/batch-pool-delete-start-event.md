@@ -1,8 +1,8 @@
 ---
-title: Události fondu počáteční delete Azure Batch | Microsoft Docs
-description: Referenční informace pro odstranění fondu Batch, spusťte událost.
+title: Událost zahájení odstranění fondu sady Azure Batch | Dokumentace Microsoftu
+description: Referenční informace pro událost zahájení odstranění fondu služby Batch.
 services: batch
-author: dlepow
+author: laurenhughes
 manager: jeconnoc
 ms.assetid: ''
 ms.service: batch
@@ -11,19 +11,19 @@ ms.topic: article
 ms.tgt_pltfrm: ''
 ms.workload: big-compute
 ms.date: 04/20/2017
-ms.author: danlep
-ms.openlocfilehash: 8737b9ff6452730ff5a55fa7324e37f0fe715433
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.author: lahugh
+ms.openlocfilehash: 2352971af3844b56f93c16ebaf6cb23bd5fd8a5a
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2018
-ms.locfileid: "30312055"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55474288"
 ---
 # <a name="pool-delete-start-event"></a>Událost zahájení odstranění fondu
 
- Tato událost je vygenerované při operaci odstranění fondu bylo zahájeno. Vzhledem k tomu, že odstranění fondu je asynchronní událostí, můžete očekávat, že událost complete odstranění fondu pro vypuštění po dokončení operace odstranění.
+ Tato událost je vygenerován při spuštění operace odstranění fondu. Odstranění fondu je asynchronní události, můžete očekávat událost dokončení odstranění fondu emitování po dokončení operace odstranění.
 
- Následující příklad ukazuje tělo události spuštění odstranění fondu.
+ Následující příklad ukazuje tělo událost zahájení odstranění fondu.
 
 ```
 {
@@ -31,6 +31,6 @@ ms.locfileid: "30312055"
 }
 ```
 
-|Element|Typ|Poznámky|
+|Element|Type|Poznámky|
 |-------------|----------|-----------|
-|id|Řetězec|Id fondu.|
+|id|String|Id fondu.|

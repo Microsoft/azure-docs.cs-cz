@@ -6,16 +6,16 @@ author: ckarst
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
-ms.component: implement
+ms.subservice: implement
 ms.date: 04/17/2018
 ms.author: cakarst
 ms.reviewer: igorstan
-ms.openlocfilehash: a2cc5b02744c04752ba11cbba14fe95c487d737c
-ms.sourcegitcommit: 2b2129fa6413230cf35ac18ff386d40d1e8d0677
+ms.openlocfilehash: 0f35e14686c2bd3f87faf51ed6a54728f2a54641
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43248113"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55466026"
 ---
 # <a name="best-practices-for-loading-data-into-azure-sql-data-warehouse"></a>Osvědčené postupy načítání dat do služby Azure SQL Data Warehouse
 Doporučení a optimalizace výkonu pro načítání dat do služby Azure SQL Data Warehouse. 
@@ -67,8 +67,8 @@ Spouštějte načítání v rámci statických, a ne dynamických, tříd prost�
 Představte si například schémata databáze schema_A pro oddělení A a schema_B pro oddělení B. Uživatelé databáze user_A a user_B budou uživateli pro načítání PolyBase v oddělení A, respektive oddělení B. Oba uživatelé mají k databázi udělená oprávnění CONTROL. Autoři schémat A a B nyní svá schémata uzamknou pomocí příkazu DENY:
 
 ```sql
-   DENY CONTROL ON SCHEMA :: schema_A TO user_B;
-   DENY CONTROL ON SCHEMA :: schema_B TO user_A;
+   DENY CONTROL ON SCHEMA :: schema_A TO user_B;
+   DENY CONTROL ON SCHEMA :: schema_B TO user_A;
 ```
 
 Uživatelé user_A a user_B jsou nyní vyloučení ze schématu příslušného druhého oddělení.

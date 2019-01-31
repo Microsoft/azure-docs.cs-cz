@@ -1,6 +1,6 @@
 ---
-title: Příklad PowerShellu – Monitorování a škálování elastického fondu SQL ve službě Azure SQL Database | Microsoft Docs
-description: Ukázkový skript Azure PowerShellu pro monitorování a škálování elastického fondu SQL ve službě Azure SQL Database
+title: Prostředí PowerShell příklad monitorování škálování elastického fondu Azure SQL Database | Dokumentace Microsoftu
+description: Ukázkový skript Azure Powershellu pro monitorování a škálování elastického fondu ve službě Azure SQL Database
 services: sql-database
 ms.service: sql-database
 ms.subservice: performance
@@ -11,15 +11,15 @@ author: juliemsft
 ms.author: jrasnick
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 01/17/2019
-ms.openlocfilehash: 94e2f6aedc163d2b53b90908309e5c6167f8e6bb
-ms.sourcegitcommit: 9f07ad84b0ff397746c63a085b757394928f6fc0
+ms.date: 01/25/2019
+ms.openlocfilehash: 4ea6841992d61bd12a1180608abf0fa0ec4421c2
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54388265"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55471619"
 ---
-# <a name="use-powershell-to-monitor-and-scale-a-sql-elastic-pool-in-azure-sql-database"></a>Monitorování a škálování elastického fondu SQL ve službě Azure SQL Database pomocí PowerShellu
+# <a name="use-powershell-to-monitor-and-scale-an-elastic-pool-in-azure-sql-database"></a>Monitorování a škálování elastického fondu ve službě Azure SQL Database pomocí Powershellu
 
 Tento ukázkový skript PowerShellu monitoruje metriky výkonu elastického fondu, škáluje ho na vyšší velikost výpočetního prostředku a vytvoří pravidlo upozornění na jednu z metrik výkonu.
 
@@ -30,7 +30,7 @@ Pokud se rozhodnete nainstalovat a používat PowerShell místně, musíte v tom
 
 ## <a name="sample-script"></a>Ukázkový skript
 
-[!code-powershell-interactive[main](../../../powershell_scripts/sql-database/monitor-and-scale-pool/monitor-and-scale-pool.ps1?highlight=16-17 "Monitor and scale single SQL Database")]
+[!code-powershell-interactive[main](../../../powershell_scripts/sql-database/monitor-and-scale-pool/monitor-and-scale-pool.ps1?highlight=16-17 "Monitor and scale a single SQL Database")]
 
 ## <a name="clean-up-deployment"></a>Vyčištění nasazení
 
@@ -47,9 +47,9 @@ Tento skript používá následující příkazy. Každý příkaz v tabulce odk
 | Příkaz | Poznámky |
 |---|---|
  [New-AzureRmResourceGroup](/powershell/module/azurerm.resources/new-azurermresourcegroup) | Vytvoří skupinu prostředků, ve které se ukládají všechny prostředky. |
-| [New-AzureRmSqlServer](/powershell/module/azurerm.sql/new-azurermsqlserver) | Vytvoří logický server, který je hostitelem databáze nebo elastického fondu. |
-| [New-AzureRmSqlElasticPool](/powershell/module/azurerm.sql/new-azurermsqlelasticpool) | Vytvoří v rámci logického serveru elastický fond. |
-| [New-AzureRmSqlDatabase](/powershell/module/azurerm.sql/new-azurermsqldatabase) | Vytvoří databázi na logickém serveru jako izolovanou databázi nebo databázi ve fondu. |
+| [New-AzureRmSqlServer](/powershell/module/azurerm.sql/new-azurermsqlserver) | Vytvoří server služby SQL Database, který je hostitelem elastický fond nebo izolovanou databázi. |
+| [New-AzureRmSqlElasticPool](/powershell/module/azurerm.sql/new-azurermsqlelasticpool) | Vytvoří elastický fond. |
+| [New-AzureRmSqlDatabase](/powershell/module/azurerm.sql/new-azurermsqldatabase) | Vytvoří izolovanou databázi nebo databáze v elastickém fondu. |
 | [Get-AzureRmMetric](/powershell/module/azurerm.insights/get-azurermmetric) | Zobrazí informace o využití velikosti databáze.|
 | [Add-AzureRMMetricAlertRule](/powershell/module/azurerm.insights/add-azurermmetricalertrule) | Přidá nebo aktualizuje pravidlo upozornění na základě metriky. |
 | [Set-AzureRmSqlElasticPool](/powershell/module/azurerm.sql/set-azurermsqlelasticpool) | Aktualizuje vlastnosti elastického fondu. |

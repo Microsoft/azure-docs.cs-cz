@@ -2,23 +2,18 @@
 title: Aktualizace Azure Backup centrálního generování sestav balíčku obsahu
 description: Informace o aktualizacích k obsahu Azure Backup, aktualizací Service pack v Power BI
 services: backup
-documentationcenter: ''
-author: adigan
-manager: shivamg
-editor: ''
-ms.assetid: 59df5bec-d959-457d-8731-7b20f7f1013e
+author: kasinh
+manager: vvithal
 ms.service: backup
-ms.workload: storage-backup-recovery
-ms.tgt_pltfrm: na
-ms.topic: article
-ms.date: 07/24/2018
-ms.author: adigan
-ms.openlocfilehash: 65ab497b2467846a324d10f8487ab384a01441ee
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.topic: conceptual
+ms.date: 01/30/2019
+ms.author: kasinh
+ms.openlocfilehash: 87bc7ed3bb59266484858f534080fa87a7230981
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52968881"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55293957"
 ---
 # <a name="update-the-azure-backup-central-reporting-content-pack"></a>Aktualizace Azure Backup centrálního generování sestav balíčku obsahu 
 
@@ -51,9 +46,9 @@ Předem nakonfigurované sestavy, které jsou součástí balíčku obsahu Azure
 
 ![Dodržování předpisů](./media/backup-azure-central-reporting/AzBackup-Central-Reporting-Compliance.png)
 
-### <a name="storage"></a>Úložiště
+### <a name="storage"></a>Storage
 
-![Úložiště](./media/backup-azure-central-reporting/AzBackup-Central-Reporting-Storage.png)
+![Storage](./media/backup-azure-central-reporting/AzBackup-Central-Reporting-Storage.png)
 
 ### <a name="backup-items"></a>Zálohované položky
 ![Zálohované položky](./media/backup-azure-central-reporting/AzBackup-Central-Reporting-BackupItem.png)

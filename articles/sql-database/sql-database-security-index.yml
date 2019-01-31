@@ -1,0 +1,99 @@
+### YamlMime:YamlDocument
+ms.openlocfilehash: 904cd593022006bc16908664fb7d7d0e3f6f24b0
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.translationtype: MT
+ms.contentlocale: cs-CZ
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55455214"
+documentType: LandingData
+title: Azure SQL Database – rozšířené zabezpečení
+metadata:
+  document_id: 36d89c48-3646-380e-34a0-ae3ac62e2641
+  title: Azure SQL Database – rozšířené zabezpečení
+  meta.description: Learn about the Advanced security capabilities of Azure SQL Database.
+  services: sql-database
+  author: jovanpop-msft
+  manager: craigg
+  ms.service: sql-database
+  ms.tgt_pltfrm: na
+  ms.devlang: 
+  ms.topic: overview
+  ms.date: 01/25/2019
+  ms.author: jovanpop-msft
+sections:
+- items:
+  - type: paragraph
+    text: Azure SQL Database má pokročilé integrované funkce zabezpečení, které pomáhají chránit vaše databáze.
+  - type: list
+    style: cards
+    className: cardsM
+    columns: 3
+    items:
+    - title: Přehled
+      href: /azure/sql-database/sql-database-security-overview
+      html: <p>Azure SQL Database poskytuje sadu rozšířené funkce zabezpečení, které pomáhají zabezpečit vaše data.</p>
+    - title: Detekce hrozeb
+      href: /azure/sql-database/sql-database-threat-detection
+      html: <p>Detekuje neobvyklé aktivity a potenciálně nebezpečné pokusy o přístup k databázím nebo jejich zneužití.</p>
+    - title: Posouzení ohrožení zabezpečení
+      href: /azure/sql-database/sql-vulnerability-assessment
+      html: <p>Posouzení ohrožení zabezpečení umožňuje zjišťování, sledování a náprava potenciálních ohrožení zabezpečení databáze.</p>
+    - title: Šifrování jako rest
+      href: /azure/sql-database/transparent-data-encryption-azure-sql
+      html: <p>Transparentní šifrování dat (TDE) zajišťuje, že informace ve vašich databázích transparentní šifrování.</p>
+    - title: Zjišťování a klasifikace dat
+      href: /azure/sql-database/sql-database-data-discovery-and-classification
+      html: <p>Data zjišťování a klasifikace umožňuje zjistit, klasifikovat, označovat a chránit citlivá data ve vašich databázích.</p>
+    - title: Azure Active Directory
+      href: /azure/sql-database/sql-database-aad-authentication
+      html: <p>Azure SQL Database vám umožní připojit k databázi pomocí identit v Azure Active Directory (Azure AD).</p>
+- title: Zprovoznění během 5 minut
+  items:
+  - type: paragraph
+    text: 'Nastavit a spravovat funkce zabezpečení ve službě Azure SQL Database pomocí webu Azure portal, Azure CLI nebo Powershellu:'
+  - type: table
+    style: dataMatrix
+    columns:
+    - image:
+        src: media/index/portal.svg
+      title: Azure Portal
+    - image:
+        src: media/index/cli.svg
+      title: Azure CLI
+    - image:
+        src: media/index/logo_powershell.svg
+      title: PowerShell
+    rows:
+    - title: Nastavení detekce hrozeb na izolované databáze
+      values:
+      - href: /azure/sql-database/sql-database-threat-detection#set-up-threat-detection-for-your-database-in-the-azure-portal
+      - href: 
+      - href: /azure/sql-database/scripts/sql-database-auditing-and-threat-detection-powershell
+    - title: Nastavení detekce hrozeb spravované instance
+      values:
+      - href: /azure/sql-database/sql-database-managed-instance-threat-detection#set-up-threat-detection-for-your-managed-instance-in-the-azure-portal
+      - href: 
+      - href: 
+    - title: Nastavení pravidel brány firewall serveru databáze na izolované databáze
+      values:
+      - href: /azure/sql-database/sql-database-firewall-configure#manage-firewall-rules-using-the-azure-portal
+      - href: /azure/sql-database/sql-database-firewall-configure#manage-firewall-rules-using-azure-cli
+      - href: /azure/sql-database/sql-database-firewall-configure#manage-firewall-rules-using-azure-powershell
+    - title: Spravovat pravidla posouzení ohrožení zabezpečení
+      values:
+      - href: 
+      - href: 
+      - href: /azure/sql-database/sql-vulnerability-assessment#manage-vulnerability-assessments-using-azure-powershell
+- title: Další zdroje informací
+  items:
+  - type: paragraph
+    text: Azure SQL Database poskytuje sadu další integrované funkce, můžete zlepšit zabezpečení vašich databází.
+  - type: list
+    style: ordered
+    items:
+    - html: Před internetovými útoky v <a href="/azure/sql-database/sql-database-managed-instance-threat-detection">spravovaných instancí</a> a <a href="/azure/sql-database/sql-database-threat-detection">databází</a> detekuje neobvyklé aktivity a potenciálně nebezpečné pokusy o přístup k databázím nebo jejich zneužití.
+    - html: Auditování pro <a href="/azure/sql-database/sql-database-managed-instance-auditing">spravovaných instancí</a> a <a href="/azure/sql-database/sql-database-auditing">databází</a> sleduje události databáze a zapisuje je do auditu protokolu v účtu úložiště Azure, pracovní prostor OMS nebo Event Hubs.
+    - html: <a href="/azure/sql-database/sql-database-firewall-configure">Pravidla firewallu pro server databáze</a> v izolované databáze umožňují řídit, jaké IP adresy přístup k databázi.
+    - html: <a href="/azure/sql-database/sql-database-managed-instance-vnet-configuration">Integrace virtuální sítě</a> v Managed Instance umožňuje umístit databáze do vlastní privátní adresní prostor.
+    - html: <a href="/azure/sql-database/sql-database-always-encrypted">Funkce Always encrypted</a> chrání citlivá data v klidovém stavu na serveru, při přesouvání mezi klientem a serverem a zatímco data se používá, zajištění, že citlivá data nezobrazí jako prostý text v databázi systému.
+    - html: <a href="/azure/sql-database/sql-database-dynamic-data-masking-get-started">Dynamické maskování dat</a> pomáhá zabránit neoprávněnému přístupu k citlivým datům tím, že umožňuje zákazníkům určit, kolik citlivých dat zobrazíte s minimálním dopadem na aplikační vrstvu.

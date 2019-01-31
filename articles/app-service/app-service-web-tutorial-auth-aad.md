@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 08/07/2018
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 0c2b8b205229ec1ef180e52372f75d06c83f1cc7
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: ff0cb82e3f1ddedf8dabebadf7a0309d08b2c4e3
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53716408"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55297085"
 ---
 # <a name="tutorial-authenticate-and-authorize-users-end-to-end-in-azure-app-service"></a>Kurz: Ověřování a autorizaci uživatelů začátku do konce ve službě Azure App Service
 
@@ -293,7 +293,7 @@ Uložte nastavení kliknutím na **PUT**.
 
 Vaše aplikace jsou teď nakonfigurované. Front-end je teď připravený na přístup do back-endu se správným přístupovým tokenem.
 
-Informace o této konfiguraci pro jiné zprostředkovatele najdete v tématu popisujícím [aktualizaci přístupových tokenů](app-service-authentication-how-to.md#refresh-access-tokens).
+Informace o tom, jak nastavit tuto konfiguraci pro jiné zprostředkovatele najdete v tématu [obnovovacích tokenů zprostředkovatele identity](app-service-authentication-how-to.md#refresh-identity-provider-tokens).
 
 ## <a name="call-api-securely-from-server-code"></a>Zabezpečené volání rozhraní API z kódu serveru
 
@@ -417,7 +417,7 @@ Blahopřejeme! Váš klientský kód teď přistupuje k back-endovým datům jm�
 
 ## <a name="when-access-tokens-expire"></a>Vypršení platnosti přístupových tokenů
 
-Platnost vašich přístupových tokenů po určité době vyprší. Informace o aktualizaci přístupových tokenů, aniž by se uživatelé museli ve vaší aplikaci znovu ověřovat, najdete v tématu popisujícím [aktualizaci přístupových tokenů](app-service-authentication-how-to.md#refresh-access-tokens).
+Platnost vašich přístupových tokenů po určité době vyprší. Informace o tom, jak aktualizovat přístupové tokeny, aniž by uživatelé museli donutit s vaší aplikací naleznete v tématu [obnovovacích tokenů zprostředkovatele identity](app-service-authentication-how-to.md#refresh-identity-provider-tokens).
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 

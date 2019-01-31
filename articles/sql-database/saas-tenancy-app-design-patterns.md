@@ -11,13 +11,13 @@ author: MightyPen
 ms.author: genemi
 ms.reviewer: billgib, sstein
 manager: craigg
-ms.date: 09/14/2018
-ms.openlocfilehash: eff6859dda771bfc2ca2e709578983b6113c6057
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.date: 01/25/2019
+ms.openlocfilehash: 2775ceb3cf27b6feedfd73cd43855204490ebc31
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47227482"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55471194"
 ---
 # <a name="multi-tenant-saas-database-tenancy-patterns"></a>Vzory víceklientské SaaS databáze tenantů
 
@@ -33,8 +33,8 @@ Po platit nadřazené, každý tenant získá přístup k komponenty aplikace Sa
 
 Termín *tenantů modelu* odkazuje na uspořádání uložených dat klientů:
 
-- *Single – tenantů:* &nbsp; Každá databáze uchovává data z pouze jednoho tenanta.
-- *Víceklientská architektura:* &nbsp; Každá databáze uchovává data z více tenantů v samostatných (s mechanismy pro ochranu dat o ochraně osobních údajů).
+- *Single – architektura:*&nbsp; Každá databáze uchovává data z pouze jednoho tenanta.
+- *Víceklientská architektura:*&nbsp; Každá databáze uchovává data z více tenantů v samostatných (s mechanismy pro ochranu dat o ochraně osobních údajů).
 - Hybridní tenantů modely jsou také k dispozici.
 
 ## <a name="b-how-to-choose-the-appropriate-tenancy-model"></a>B. Jak zvolit odpovídající tenantů modelu
@@ -47,9 +47,9 @@ Obecně platí tenantů model nemá vliv na funkce aplikace, ale pravděpodobně
     - Úložiště v agregaci.
     - Úlohy.
 
-- **Izolaci klientů:** &nbsp; izolace dat a výkonu (Určuje, zda pracovní zatížení jednoho tenanta má vliv na ostatní).
+- **Izolaci klientů:**&nbsp; Izolace dat a výkonu (Určuje, zda pracovní zatížení jednoho tenanta má vliv na ostatní).
 
-- **Náklady na tenanta:** &nbsp; databáze náklady.
+- **Náklady na tenanta:**&nbsp; Náklady na databázi.
 
 - **Vývoj složitost:**
     - Změny schématu.
@@ -61,7 +61,7 @@ Obecně platí tenantů model nemá vliv na funkce aplikace, ale pravděpodobně
     - Obnovení klienta.
     - Zotavení po havárii.
 
-- **Přizpůsobitelnost:** &nbsp; snadnost podpora schématu přizpůsobení, které jsou buď specifickým pro tenanta nebo tenanta specifický pro třídu.
+- **Přizpůsobitelnost:**&nbsp; Snadné podpora schématu přizpůsobení, které jsou buď specifickým pro tenanta nebo tenanta specifický pro třídu.
 
 Diskuze tenantů se zaměřuje na *data* vrstvy.  Ale zamysleme *aplikace* vrstvy.  Aplikační vrstvu je považován za monolitické entity.  Pokud budete provádět dělení aplikaci do mnoha malých součástí, podle vašeho výběru modelu tenantů může změnit.  Některé součásti může zpracovávat jinak než ostatní tenantů a technologie úložiště nebo platformu používá.
 
@@ -95,7 +95,7 @@ S databází na tenanta je jednoduché pro dosažení přizpůsobení schéma pr
 
 #### <a name="elastic-pools"></a>Elastické fondy
 
-Při nasazení databáze ve stejné skupině prostředků, mohou být seskupeny do elastických databázových fondů.  Fondy poskytuje nákladově efektivní způsob sdílení prostředků mezi mnoha databázemi.  Tato možnost fondu je levnější než vyžadující každou databázi bude dostatečně velký, aby odpovídala špičky využití, které dochází.  I v případě, že databáze ve fondu sdílejí přístup k prostředkům se můžete stále dosáhnout vysokou míru izolace výkonu.
+Při nasazení databáze ve stejné skupině prostředků, mohou být seskupeny do elastických fondů.  Fondy poskytuje nákladově efektivní způsob sdílení prostředků mezi mnoha databázemi.  Tato možnost fondu je levnější než vyžadující každou databázi bude dostatečně velký, aby odpovídala špičky využití, které dochází.  I v případě, že databáze ve fondu sdílejí přístup k prostředkům se můžete stále dosáhnout vysokou míru izolace výkonu.
 
 ![Návrh aplikace s více tenanty s databází na tenanta, použití elastického fondu.][image-mt-app-db-per-tenant-pool-153p]
 
@@ -126,9 +126,9 @@ Další dostupné vzor je uložit velký počet klientů v databázi s více ten
 
 #### <a name="tenant-isolation-is-sacrificed"></a>Publikovaný izolaci klientů
 
-*Data:* &nbsp; víceklientskou databázi s nutně upřednostňuje izolaci klientů.  Data z více tenantů se ukládají společně v jedné databázi.  Během vývoje Ujistěte se, že dotazy nikdy vystavit data z více než jednoho tenanta.  SQL Database podporuje [zabezpečení na úrovní řádků][docu-sql-svr-db-row-level-security-947w], které můžete vynutit tato data vrácená z dotazu obor do jednoho tenanta.
+*Data:*&nbsp; Databázi s více tenanty nutně upřednostňuje izolaci klientů.  Data z více tenantů se ukládají společně v jedné databázi.  Během vývoje Ujistěte se, že dotazy nikdy vystavit data z více než jednoho tenanta.  SQL Database podporuje [zabezpečení na úrovní řádků][docu-sql-svr-db-row-level-security-947w], které můžete vynutit tato data vrácená z dotazu obor do jednoho tenanta.
 
-*Zpracování:* &nbsp; víceklientskou databází sdílí úložnou a výpočetní prostředky ve všech jeho tenantech.  K zajištění, že funguje přijatelně, je možné monitorovat databáze jako celek.  Systému Azure ale nemá možnost nijak integrované sledovat nebo spravovat pomocí těchto prostředků, jednotlivým tenantem.  Proto databázi s více tenanty přenáší je zvýšené riziko vzniku "hlučným sousedům," kde úloh jednoho tenanta overactive ovlivňuje výkon z jiných tenantů ve stejné databázi.  Další monitorování na úrovni aplikace může monitorovat výkon na úrovni tenanta.
+*Zpracování:*&nbsp; Databázi s více tenanty sdílí výpočetních a úložných kapacit ve všech jeho tenantech.  K zajištění, že funguje přijatelně, je možné monitorovat databáze jako celek.  Systému Azure ale nemá možnost nijak integrované sledovat nebo spravovat pomocí těchto prostředků, jednotlivým tenantem.  Proto databázi s více tenanty přenáší je zvýšené riziko vzniku "hlučným sousedům," kde úloh jednoho tenanta overactive ovlivňuje výkon z jiných tenantů ve stejné databázi.  Další monitorování na úrovni aplikace může monitorovat výkon na úrovni tenanta.
 
 #### <a name="lower-cost"></a>Nižší náklady
 
@@ -191,7 +191,7 @@ Následující tabulka shrnuje rozdíly mezi modely hlavních tenantů.
 | Poplatky za databázi za tenanta | Vysoká; je velikost špičky. | Nízká; fondy použít. | Nejnižší pro malé tenanty v MT databází. |
 | Monitorování a správa výkonu | Na tenanta pouze | Agregace a na tenanta | Agregovat; i když je na tenanta jenom pro určené. |
 | Vývoj složitost | Nízká | Nízká | Střední; z důvodu horizontálního dělení. |
-| Provozní složitost | Nízká – vysoká. Jednotlivě jednoduché a komplexní ve velkém měřítku. | S nízkou až střední. Vzory adres složitost ve velkém měřítku. | Nízká – vysoká. Správa jednoho klienta je složité. |
+| Provozní složitost | Low-High. Jednotlivě jednoduché a komplexní ve velkém měřítku. | S nízkou až střední. Vzory adres složitost ve velkém měřítku. | Low-High. Správa jednoho klienta je složité. |
 | &nbsp; ||||
 
 ## <a name="next-steps"></a>Další postup

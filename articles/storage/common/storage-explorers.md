@@ -7,13 +7,13 @@ ms.service: storage
 ms.topic: article
 ms.date: 09/06/2017
 ms.author: dineshmurthy
-ms.component: common
-ms.openlocfilehash: 55fa63e75768662a0f909cef0e3cc04b9c2dae41
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.subservice: common
+ms.openlocfilehash: c45c70055817eeeed19f9c8a832a76b10beceaa6
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39526194"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55467029"
 ---
 # <a name="azure-storage-client-tools"></a>Klientské nástroje pro Azure Storage
 Uživatele služby Azure Storage se často chtějí mít možnost zobrazit a pracovat s nimi svá data pomocí nástroje klienta služby Azure Storage. V následující tabulce uvádíme různé nástroje, které vám to umožní. Pokud poskytuje možnost vytvořit výčet nebo přístup k data abstraction máme v každém bloku "X". Tabulka také ukazuje, zda nástroje je zdarma, nebo ne. "Zkušební verze" znamená, že je bezplatná zkušební verze, ale plné verze produktu není zdarma. "A/N" znamená, že verze k dispozici zdarma, zatímco jiné verze se dá koupit.
@@ -25,9 +25,9 @@ Poskytujeme jenom snímek dostupné nástroje klienta služby Azure Storage. Tyt
 <table>
   <tr>
     <th rowspan="2">Nástroj pro klienta služby Azure Storage</th>
-    <th rowspan="2">Objekt Blob bloku</th>
-    <th rowspan="2">Objekt Blob stránky</th>
-    <th rowspan="2">Doplňovací objekt Blob</th>
+    <th rowspan="2">Objekt blob bloku</th>
+    <th rowspan="2">Objekt blob stránky</th>
+    <th rowspan="2">Připojit objekt blob</th>
     <th rowspan="2">Tabulky</th>
     <th rowspan="2">Fronty</th>
     <th rowspan="2">Soubory</th>
@@ -41,7 +41,7 @@ Poskytujeme jenom snímek dostupné nástroje klienta služby Azure Storage. Tyt
     <td>Linux</td>
   </tr>
   <tr>
-    <td><a href="https://azure.microsoft.com/features/azure-portal/">Portál Microsoft Azure</a></td>
+    <td><a href="https://azure.microsoft.com/features/azure-portal/">Microsoft Azure Portal</a></td>
     <td>X</td>
     <td>X</td>
     <td>X</td>
@@ -69,7 +69,7 @@ Poskytujeme jenom snímek dostupné nástroje klienta služby Azure Storage. Tyt
     <td>X</td>
   </tr>
   <tr>
-    <td><a href="https://www.visualstudio.com/features/azure-tools-vs.aspx">Průzkumník serveru Microsoft Visual Studio</a></td>
+    <td><a href="https://www.visualstudio.com/features/azure-tools-vs.aspx">Microsoft Visual Studio Server Explorer</a></td>
     <td>X</td>
     <td>X</td>
     <td>X</td>
@@ -91,9 +91,9 @@ Jsme neověřili kvality převzatá podle následujících nástrojů třetích 
 <table>
   <tr>
     <th rowspan="2">Nástroj pro klienta služby Azure Storage</th>
-    <th rowspan="2">Objekt Blob bloku</th>
-    <th rowspan="2">Objekt Blob stránky</th>
-    <th rowspan="2">Doplňovací objekt Blob</th>
+    <th rowspan="2">Objekt blob bloku</th>
+    <th rowspan="2">Objekt blob stránky</th>
+    <th rowspan="2">Připojit objekt blob</th>
     <th rowspan="2">Tabulky</th>
     <th rowspan="2">Fronty</th>
     <th rowspan="2">Soubory</th>
@@ -149,7 +149,7 @@ Jsme neověřili kvality převzatá podle následujících nástrojů třetích 
     <td></td>
   </tr>
   <tr>
-    <td><a href="http://www.cloudberrylab.com/explorer/microsoft-azure.aspx">Průzkumník cloudBerry</a></td>
+    <td><a href="http://www.cloudberrylab.com/explorer/microsoft-azure.aspx">CloudBerry Explorer</a></td>
     <td>X</td>
     <td>X</td>
     <td></td>
@@ -163,7 +163,7 @@ Jsme neověřili kvality převzatá podle následujících nástrojů třetích 
     <td></td>
   </tr>
   <tr>
-    <td><a href="http://www.gapotchenko.com/cloudcombine">Kombinování cloudu</a></td>
+    <td><a href="http://www.gapotchenko.com/cloudcombine">Cloud Combine</a></td>
     <td>X</td>
     <td>X</td>
     <td></td>
@@ -177,7 +177,7 @@ Jsme neověřili kvality převzatá podle následujících nástrojů třetích 
     <td></td>
   </tr>
   <tr>
-    <td><a href="http://clumsyleaf.com">Společnosti ClumsyLeaf: TableXplorer AzureXplorer CloudXplorer,</a></td>
+    <td><a href="http://clumsyleaf.com">Společnosti ClumsyLeaf: AzureXplorer, CloudXplorer, TableXplorer</a></td>
     <td>X</td>
     <td>X</td>
     <td>X</td>
@@ -191,7 +191,7 @@ Jsme neověřili kvality převzatá podle následujících nástrojů třetích 
     <td></td>
   </tr>
   <tr>
-    <td><a href="http://www.gladinet.com/Azure-Storage/index.htm">Gladinet cloudu</a></td>
+    <td><a href="http://www.gladinet.com/Azure-Storage/index.htm">Gladinet Cloud</a></td>
     <td>X</td>
     <td></td>
     <td></td>

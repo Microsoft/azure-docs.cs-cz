@@ -11,13 +11,13 @@ author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 01/17/2019
-ms.openlocfilehash: 593388c143c31bb4736aa317522ed4c52a8a5296
-ms.sourcegitcommit: 9f07ad84b0ff397746c63a085b757394928f6fc0
+ms.date: 01/25/2019
+ms.openlocfilehash: de31ab4e617b872239c1b83324e5b8d52b0b4094
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54388334"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55469105"
 ---
 # <a name="azure-sql-connectivity-architecture"></a>Architektura připojení k Azure SQL
 
@@ -34,7 +34,7 @@ Azure SQL Database a SQL Data Warehouse připojení k architektuře a tento čl�
 >
 > Uživatelé koncový bod služby může být stále postižená v následujících scénářích:
 > - Aplikace se připojí k existující server zřídka, naše telemetrie nebyla zaznamenat informace o těchto aplikací
-> - Automatické nasazení logiky vytvoří logický server za předpokladu, že je výchozí chování pro koncový bod připojení služby `Proxy`
+> - Automatické nasazení logic vytvoří server služby SQL Database za předpokladu, že je výchozí chování pro koncový bod připojení služby `Proxy`
 >
 > Pokud nelze navázat koncový bod připojení služby k serveru Azure SQL a jsou podezření, že se vás tato změna, ověřte prosím, že typ připojení je explicitně nastaveno `Redirect`. Pokud je to tento případ, budete muset otevřít pravidla brány firewall virtuálního počítače a skupiny zabezpečení sítě (NSG) Azure IP adres v oblasti, které patří do Sql [značka služby](../virtual-network/security-overview.md#service-tags) pro porty 11000 12000. Pokud to není pro vás, přepněte server explicitně na `Proxy`.
 > [!NOTE]

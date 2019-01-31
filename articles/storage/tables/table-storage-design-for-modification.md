@@ -7,13 +7,13 @@ ms.service: storage
 ms.topic: article
 ms.date: 04/23/2018
 ms.author: sngun
-ms.component: tables
-ms.openlocfilehash: 5f67a8ffde24d3c3e39065806b07bdd5cba2857a
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.subservice: tables
+ms.openlocfilehash: 5e9ade0f6076a34a5662330bab64e9dd71275ba8
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39522039"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55470531"
 ---
 # <a name="design-for-data-modification"></a>Návrh pro úpravu dat
 Tento článek se zaměřuje na aspekty návrhu pro optimalizaci vložení, aktualizace a odstranění. V některých případech budete muset vyhodnotit kompromis mezi návrhy, které je optimální pro dotazování na návrhy, které je optimální pro úpravu dat stejně jako je tomu v návrhy pro relační databáze (i když jsou techniky pro správu kompromisy návrhu různé v relační databázi). V části [vzory návrhu v tabulce](#table-design-patterns) popisuje některé podrobné návrhové vzory pro služby Table service a zdůrazňuje některé tyto nevýhody. V praxi zjistíte, že řada návrhů, které jsou optimalizované pro dotazování entity také fungovat dobře pro úpravu entity.  

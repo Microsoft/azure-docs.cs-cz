@@ -11,13 +11,13 @@ author: rmatchoro
 ms.author: ronmat
 ms.reviewer: vanto
 manager: craigg
-ms.date: 12/06/2018
-ms.openlocfilehash: f87b7093a732639db8a53ebec68fcae8f29735f3
-ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
+ms.date: 01/25/2019
+ms.openlocfilehash: 59a3b4a4e1b08a9a9985836a9f9be44d1eff9c71
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54158665"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55472061"
 ---
 # <a name="configure-threat-detection-preview-in-azure-sql-database-managed-instance"></a>Konfigurace zjišťování hrozeb (Preview) ve spravované instanci Azure SQL Database
 
@@ -25,7 +25,7 @@ Azure SQL [detekce hrozeb](sql-database-threat-detection-overview.md) pro [SQL D
 
 Budete dostávat oznámení o zjištěných hrozbách prostřednictvím [e-mailová oznámení](sql-database-threat-detection-overview.md#explore-anomalous-database-activities-upon-detection-of-a-suspicious-event) nebo [webu Azure portal](sql-database-threat-detection-overview.md#explore-threat-detection-alerts-for-your-database-in-the-azure-portal)
 
-[Detekce hrozeb](sql-database-threat-detection-overview.md) je součástí [rozšířené ochrany před internetovými útoky SQL](sql-advanced-threat-protection.md) nabídky (ATP), která je jednotný balíček pro pokročilé funkce zabezpečení SQL. Detekce hrozeb je možné získat přístup a spravovat prostřednictvím portálu pro centrální ochrany ATP v programu SQL. Služba detekce hrozeb účtuje se 15$ / měsíc za Managed Instance pomocí prvních 30 dnů zdarma.
+[Detekce hrozeb](sql-database-threat-detection-overview.md) je součástí [pokročilé zabezpečení dat SQL](sql-advanced-threat-protection.md) (reklamy) nabídky, která je jednotný balíček pro pokročilé funkce zabezpečení SQL. Detekce hrozeb je možné získat přístup a spravovat prostřednictvím portálu pro centrální SQL reklamy. Služba detekce hrozeb účtuje se 15$ / měsíc za Managed Instance pomocí prvních 30 dnů zdarma.
 
 ## <a name="set-up-threat-detection-for-your-managed-instance-in-the-azure-portal"></a>Nastavení detekce hrozeb pro Managed Instance na webu Azure Portal
 
@@ -43,6 +43,6 @@ Budete dostávat oznámení o zjištěných hrozbách prostřednictvím [e-mailo
 
 - Další informace o [detekce hrozeb](sql-database-threat-detection-overview.md).
 - Další informace o Managed Instance, přečtěte si téma [co je Managed Instance](sql-database-managed-instance.md).
-- Další informace o [detekce hrozeb pro izolované databáze](sql-database-threat-detection.md).
+- Další informace o [pro izolované databáze detekce hrozeb](sql-database-threat-detection.md).
 - Další informace o [Managed Instance auditování](https://go.microsoft.com/fwlink/?linkid=869430).
 - Další informace o [Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-intro).

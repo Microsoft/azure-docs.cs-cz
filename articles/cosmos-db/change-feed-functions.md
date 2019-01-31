@@ -7,14 +7,14 @@ ms.topic: conceptual
 ms.date: 11/06/2018
 ms.author: rimman
 ms.reviewer: sngun
-ms.openlocfilehash: 41cbb657a4fc83b498c5cc9a6a16397a619aa075
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: 93cd93b40c142d504c52f08f9005d082fb5a2a20
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54034042"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55469477"
 ---
-# <a name="how-to-use-azure-cosmos-db-change-feed-with-azure-functions"></a>Použití změn databáze Azure Cosmos DB kanálu s využitím Azure Functions
+# <a name="trigger-azure-functions-from-azure-cosmos-db"></a>Aktivace Azure Functions z Azure Cosmos DB
 
 Pokud používáte Azure Functions, nejjednodušší způsob, jak připojit ke kanálu změn je přidat [aktivační událost Azure Cosmos DB](../azure-functions/functions-bindings-cosmosdb-v2.md#trigger) do aplikace pro Azure Functions. Když vytvoříte aktivační událost, Cosmos DB v aplikaci Azure Functions, vyberte kontejneru Cosmos pro připojení k a funkce se aktivuje vždy, když změníte něco v kontejneru.
 

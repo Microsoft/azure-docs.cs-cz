@@ -1,6 +1,6 @@
 ---
-Název: Rychlý úvodní kurz pro titleSuffix jazyka R: Azure Machine Learning Studio Popis: V tomto kurzu programovacího jazyka R můžete začít rychle používat jazyk R s Azure Machine Learning Studio k vytvoření řešení Prognózování.
-Services: machine learningu ms.service: ms.component strojového učení: studio ms.topic: článku
+Název: Rychlý úvodní kurz pro titleSuffix jazyka R: Azure Machine Learning Studio Popis: V tomto kurzu programovacího jazyka R můžete začít rychle používat jazyk R s Azure Machine Learning Studio k vytvoření řešení Prognózování.
+Services: machine learningu ms.service: ms.subservice strojového učení: studio ms.topic: článku
 
 Autor: ericlicoding ms.author: amlstudiodocs ms.custom: předchozí Autor = heatherbshapiro předchozí ms.author=hshapiro ms.date: 01/06/2017
 ---

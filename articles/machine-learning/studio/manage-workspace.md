@@ -1,5 +1,5 @@
 ---
-Název: Spravujte titleSuffix pracovního prostoru Machine Learning Studio: Azure Machine Learning Studio Popis: Spravovat přístup do pracovních prostorů Azure Machine Learning a nasazovat a spravovat služby služby webového rozhraní API ML: machine learningu ms.service: ms.component strojového učení: studio ms.topic: článku
+Název: Spravujte titleSuffix pracovního prostoru Machine Learning Studio: Azure Machine Learning Studio Popis: Spravovat přístup do pracovních prostorů Azure Machine Learning a nasazovat a spravovat služby služby webového rozhraní API ML: machine learningu ms.service: ms.subservice strojového učení: studio ms.topic: článku
 
 Autor: ericlicoding ms.author: amlstudiodocs ms.custom: předchozí Autor = heatherbshapiro předchozí ms.author=hshapiro ms.date: 02/27/2017
 ---

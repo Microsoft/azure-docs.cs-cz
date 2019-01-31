@@ -8,13 +8,13 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 05/11/2017
 ms.author: jasontang501
-ms.component: common
-ms.openlocfilehash: 25de4f28d7516f5c7830b24e4c999ceb855a7759
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.subservice: common
+ms.openlocfilehash: b9524f7aff7ae9de37835985787b5d4d9c3cf9b6
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51242972"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55478232"
 ---
 # <a name="managing-concurrency-in-microsoft-azure-storage"></a>Správa souběžnosti v Microsoft Azure Storage
 ## <a name="overview"></a>Přehled
@@ -102,7 +102,7 @@ Následující tabulka shrnuje operace objektů blob, které podmíněné hlavi�
 
 | Operace | Vrátí hodnotu značky ETag | Přijímá podmíněné záhlaví |
 |:--- |:--- |:--- |
-| Vložení objektu Blob |Ano |Ano |
+| Put Blob |Ano |Ano |
 | Získání objektu Blob |Ano |Ano |
 | Získání vlastností objektu Blob |Ano |Ano |
 | Nastavit vlastnosti objektu Blob |Ano |Ano |
@@ -159,7 +159,7 @@ Pokud se pokusíte operaci zápisu zapůjčení objektu BLOB bez při předává
 
 Následující operace objektů blob můžete použít ke správě Pesimistická souběžnost zapůjčení:  
 
-* Vložení objektu Blob
+* Put Blob
 * Získání objektu Blob
 * Získání vlastností objektu Blob
 * Nastavit vlastnosti objektu Blob
@@ -284,5 +284,5 @@ Další informace o Azure Storage najdete:
 * [Microsoft Azure Storage domovské stránky](https://azure.microsoft.com/services/storage/)
 * [Seznámení se službou Azure Storage](storage-introduction.md)
 * Začínáme se Storage [Blob](../blobs/storage-dotnet-how-to-use-blobs.md), [tabulky](../../cosmos-db/table-storage-how-to-use-dotnet.md), [fronty](../storage-dotnet-how-to-use-queues.md), a [soubory](../storage-dotnet-how-to-use-files.md)
-* Architektura úložiště – [služby Azure Storage: vysoce dostupné cloudové služby úložiště se silnou konzistenci](https://blogs.msdn.com/b/windowsazurestorage/archive/2011/11/20/windows-azure-storage-a-highly-available-cloud-storage-service-with-strong-consistency.aspx)
+* Architektura úložiště – [úložiště Azure: Služby s vysokou dostupností cloudového úložiště se silnou konzistenci](https://blogs.msdn.com/b/windowsazurestorage/archive/2011/11/20/windows-azure-storage-a-highly-available-cloud-storage-service-with-strong-consistency.aspx)
 

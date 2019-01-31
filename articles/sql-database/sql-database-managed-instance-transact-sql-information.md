@@ -12,12 +12,12 @@ ms.author: jovanpop
 ms.reviewer: carlrab, bonova
 manager: craigg
 ms.date: 12/03/2018
-ms.openlocfilehash: 95a9f3d553bb3d8ca07ed90578861f6267058532
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: 3186261b935d48343eab2fd818cd8ed936f41f3f
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54463741"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55472776"
 ---
 # <a name="azure-sql-database-managed-instance-t-sql-differences-from-sql-server"></a>Rozdíly ve službě Azure SQL Database Managed Instance T-SQL z SQL serveru
 
@@ -228,7 +228,7 @@ Managed Instance nepodporuje nedokumentované příkazů DBCC, u kterých jde v 
 
 ### <a name="distributed-transactions"></a>Distribuované transakce
 
-Ani jedna služba MSDTC ani [elastické transakce](https://docs.microsoft.com/azure/sql-database/sql-database-elastic-transactions-overview) jsou aktuálně podporované ve spravované instanci.
+Ani jedna služba MSDTC ani [elastické transakce](sql-database-elastic-transactions-overview.md) jsou aktuálně podporované ve spravované instanci.
 
 ### <a name="extended-events"></a>Rozšířené události
 
@@ -279,8 +279,8 @@ Operace
 - Vytvoření přihlášení SQL `FROM CERTIFICATE`, `FROM ASYMMETRIC KEY`, a `FROM SID` jsou podporovány. Zobrazit [vytvořit přihlášení](https://docs.microsoft.com/sql/t-sql/statements/create-login-transact-sql).
 - Vytvořené pomocí Azure Active Directory (AAD) přihlášení [CREATE LOGIN](https://docs.microsoft.com/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current) syntaxe nebo [vytvořit uživatele](https://docs.microsoft.com/sql/t-sql/statements/create-user-transact-sql?view=azuresqldb-mi-current) syntaxe jsou podporovány (**ve verzi public preview**).
 - Přihlašovací údaje Windows vytvořené pomocí `CREATE LOGIN ... FROM WINDOWS` syntaxe nejsou podporovány. Pomocí přihlašovacích údajů Azure Active Directory a uživatelů.
-- Azure Active Directory (Azure AD) uživatele, který vytvořil instanci má [neomezená oprávnění správce](https://docs.microsoft.com/azure/sql-database/sql-database-manage-logins#unrestricted-administrative-accounts).
-- Je možné vytvářet uživatelé bez oprávnění správce služby Azure Active Directory (Azure AD) úrovni databáze pomocí `CREATE USER ... FROM EXTERNAL PROVIDER` syntaxe. Zobrazit [vytvořit uživatele... EXTERNÍ ZPROSTŘEDKOVATELE](https://docs.microsoft.com/azure/sql-database/sql-database-manage-logins#non-administrator-users)
+- Azure Active Directory (Azure AD) uživatele, který vytvořil instanci má [neomezená oprávnění správce](sql-database-manage-logins.md#unrestricted-administrative-accounts).
+- Je možné vytvářet uživatelé bez oprávnění správce služby Azure Active Directory (Azure AD) úrovni databáze pomocí `CREATE USER ... FROM EXTERNAL PROVIDER` syntaxe. Zobrazit [vytvořit uživatele... EXTERNÍ ZPROSTŘEDKOVATELE](sql-database-manage-logins.md#non-administrator-users)
 
 ### <a name="polybase"></a>Polybase
 

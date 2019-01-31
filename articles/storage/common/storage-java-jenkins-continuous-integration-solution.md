@@ -7,13 +7,13 @@ author: tarcher
 services: devops
 custom: jenkins
 ms.date: 07/31/2018
-ms.component: common
-ms.openlocfilehash: 040f7ef8d9b50998ac2b84ed9d4e3712f4ed5835
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.subservice: common
+ms.openlocfilehash: 22db4690ccbd05b25f907e2d2134fa7ce5233d60
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51246863"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55476889"
 ---
 # <a name="using-azure-storage-with-a-jenkins-continuous-integration-solution"></a>Použití služby Azure Storage s řešením Jenkins kontinuální integrace
 
@@ -127,10 +127,10 @@ Po spuštění sestavení, můžete zkontrolovat výstup na konzole historie ses
 ## <a name="components-used-by-the-blob-service"></a>Součásti, které používají službu Blob service
 Tato část obsahuje přehled komponent služby objektů Blob.
 
-* **Účet služby Storage:** Veškerý přístup ke službě Azure Storage se provádí prostřednictvím účtu úložiště. Účet úložiště je nejvyšší úroveň oboru názvů pro přístup k objektům BLOB. Účet může obsahovat neomezený počet kontejnerů, jejich celkové velikosti je v části 100 TB.
-* **Kontejner**: kontejner zajišťuje seskupení sady objektů BLOB. Všechny objekty blob musí být v kontejneru. Účet může obsahovat neomezený počet kontejnerů. Kontejner můžete pojmout neomezený počet objektů blob.
-* **Objekt BLOB**: soubor libovolného typu a velikosti. Existují dva typy objektů BLOB, které mohou být uloženy ve službě Azure Storage: objekty BLOB bloků a stránek. Většina souborů jsou objekty BLOB bloku. Jeden objekt blob bloku může být až do velikosti 200 GB. Tento kurz používá objekty BLOB bloku. Objekty BLOB stránky, jiný typ objektu blob může být až 1 TB, velikost a jsou efektivnější, pokud jsou často upravit rozsah bajtů v souboru. Další informace o objektech BLOB najdete v tématu [vysvětlení objektů BLOB bloku, doplňovací objekty BLOB a objekty BLOB stránky](https://msdn.microsoft.com/library/azure/ee691964.aspx).
-* **Formát adresy URL**: objekty BLOB jsou adresovatelné v následujícím formátu adresy URL:
+* **Účet úložiště**: Veškerý přístup ke službě Azure Storage se provádí prostřednictvím účtu úložiště. Účet úložiště je nejvyšší úroveň oboru názvů pro přístup k objektům BLOB. Účet může obsahovat neomezený počet kontejnerů, jejich celkové velikosti je v části 100 TB.
+* **kontejner**: Kontejner zajišťuje seskupení sady objektů BLOB. Všechny objekty blob musí být v kontejneru. Účet může obsahovat neomezený počet kontejnerů. Kontejner můžete pojmout neomezený počet objektů blob.
+* **Blob**: Soubor libovolného typu a velikosti. Existují dva typy objektů BLOB, které mohou být uloženy ve službě Azure Storage: objekty BLOB bloků a stránek. Většina souborů jsou objekty BLOB bloku. Jeden objekt blob bloku může být až do velikosti 200 GB. Tento kurz používá objekty BLOB bloku. Objekty BLOB stránky, jiný typ objektu blob může být až 1 TB, velikost a jsou efektivnější, pokud jsou často upravit rozsah bajtů v souboru. Další informace o objektech BLOB najdete v tématu [vysvětlení objektů BLOB bloku, doplňovací objekty BLOB a objekty BLOB stránky](https://msdn.microsoft.com/library/azure/ee691964.aspx).
+* **Formát adresy URL**: Objekty BLOB jsou adresovatelné v následujícím formátu adresy URL:
   
     `http://storageaccount.blob.core.windows.net/container_name/blob_name`
   

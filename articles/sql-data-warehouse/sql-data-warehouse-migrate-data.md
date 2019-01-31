@@ -6,16 +6,16 @@ author: jrowlandjones
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
-ms.component: implement
+ms.subservice: implement
 ms.date: 04/17/2018
 ms.author: jrj
 ms.reviewer: igorstan
-ms.openlocfilehash: fc7bf4eaeb073b0337be68632e5057bfce96e06a
-ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
+ms.openlocfilehash: a09037f2e33d87446696dd11477c4e8b45af4187
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43307869"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55474169"
 ---
 # <a name="migrate-your-data"></a>Migrace dat
 Data můžete přesunout z různých zdrojů do služby SQL Data Warehouse pomocí různých nástrojů.  Kopírovat ADF, SSIS a bcp můžete použít k dosažení tohoto cíle. Ale jako objem data zvýšení byste uvažovat o rozdělení proces migrace dat do kroků. To nabízí příležitosti k optimalizaci každý krok, výkon i odolnost zajistit hladký průběh data migrace.
@@ -157,7 +157,7 @@ Může být uveden proces vysoké úrovně:
 3. AZCopy vaše data v kontejneru úložiště objektů Blob v Azure
 4. Načtení dat do SQL Data Warehouse pomocí PolyBase
 
-Úplné dokumentaci k dispozici: [AZCopy][AZCopy].
+Úplnou dokumentaci k dispozici: [AZCopy][AZCopy].
 
 ## <a name="optimizing-data-export"></a>Optimalizace export dat
 Kromě zajištění, že export odpovídá požadavky stanovené polybase můžete také vyhledat exportovat data, která mají vylepšit proces dál optimalizovat.

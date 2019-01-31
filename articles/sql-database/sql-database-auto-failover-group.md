@@ -1,6 +1,6 @@
 ---
 title: Skupiny převzetí služeb při selhání – Azure SQL Database | Dokumentace Microsoftu
-description: Skupiny automatické převzetí služeb při selhání je funkce SQL Database, která vám umožní spravovat replikace a Automatická / koordinované převzetí služeb při selhání skupiny databází na logickém serveru nebo všechny databáze ve spravované instanci.
+description: Skupiny automatické převzetí služeb při selhání je funkce SQL Database, která vám umožní spravovat replikace a Automatická / koordinované převzetí služeb při selhání skupiny databází na serveru služby SQL Database nebo všechny databáze ve spravované instanci.
 services: sql-database
 ms.service: sql-database
 ms.subservice: high-availability
@@ -11,28 +11,28 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
 manager: craigg
-ms.date: 01/03/2019
-ms.openlocfilehash: 958dcb8113f58409d413b5471c96d2e0ba83c361
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.date: 01/25/2019
+ms.openlocfilehash: d24f7ce20a9dfb8ede184e8f013c2d988a8a96c2
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54033804"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55468695"
 ---
 # <a name="use-auto-failover-groups-to-enable-transparent-and-coordinated-failover-of-multiple-databases"></a>Povolit transparentní a koordinovaný převzetí služeb při selhání několika databází pomocí skupiny automatické převzetí služeb při selhání
 
-Skupiny automatické převzetí služeb při selhání je funkce SQL Database, která vám umožní spravovat replikaci a převzetí služeb při selhání skupiny databází na logickém serveru nebo všechny databáze ve spravované instanci do jiné oblasti (aktuálně ve verzi public preview pro Managed Instance). Používá stejné základní technologii jako [aktivní geografickou replikaci](sql-database-active-geo-replication.md). Převzetí služeb při selhání můžete spustit ručně nebo ho můžete delegovat na službu SQL Database založené na uživatelem definované zásady. Druhou možnost můžete automaticky obnovit více související databáze v sekundární oblasti po závažnému selhání nebo jiné neplánované události, jehož výsledkem úplné nebo částečné ztrátě dostupnosti služby SQL Database v primární oblasti. Kromě toho můžete použít čitelné sekundární databáze k přesměrování zpracování úlohy dotazu jen pro čtení. Protože-automatické převzetí služeb při selhání skupiny zahrnují více databází, musí být nakonfigurované tyto databáze na primárním serveru. Primární a sekundární servery pro databáze ve skupině převzetí služeb při selhání musí být ve stejném předplatném. Automatické převzetí služeb při selhání skupiny podporu replikace všech databází ve skupině jenom jednu sekundární server v jiné oblasti.
+Skupiny automatické převzetí služeb při selhání je funkce SQL Database, která vám umožní spravovat replikaci a převzetí služeb při selhání skupiny databází na serveru služby SQL Database nebo všechny databáze ve spravované instanci do jiné oblasti (aktuálně ve verzi public preview pro Managed Instance). Používá stejné základní technologii jako [aktivní geografickou replikaci](sql-database-active-geo-replication.md). Převzetí služeb při selhání můžete spustit ručně nebo ho můžete delegovat na službu SQL Database založené na uživatelem definované zásady. Druhou možnost můžete automaticky obnovit více související databáze v sekundární oblasti po závažnému selhání nebo jiné neplánované události, jehož výsledkem úplné nebo částečné ztrátě dostupnosti služby SQL Database v primární oblasti. Kromě toho můžete použít čitelné sekundární databáze k přesměrování zpracování úlohy dotazu jen pro čtení. Protože-automatické převzetí služeb při selhání skupiny zahrnují více databází, musí být nakonfigurované tyto databáze na primárním serveru. Primární a sekundární servery pro databáze ve skupině převzetí služeb při selhání musí být ve stejném předplatném. Automatické převzetí služeb při selhání skupiny podporu replikace všech databází ve skupině jenom jednu sekundární server v jiné oblasti.
 
 > [!NOTE]
-> Při práci s databázemi jeden, nebo součástí fondu na logický server a nyní má více sekundární databáze v jedné nebo několika oblastech, použijte [aktivní geografickou replikaci](sql-database-active-geo-replication.md).
+> Při práci se samostatnou službu nebo databáze ve fondu na server služby SQL Database a má více sekundární databáze v jedné nebo několika oblastech, použijte [aktivní geografickou replikaci](sql-database-active-geo-replication.md).
 
 Při použití automaticky – převzetí služeb při selhání skupiny zásadám automatické převzetí služeb při selhání, jakémkoli výpadku, který má vliv na jeden nebo několik databází v seskupení výsledků v automatické převzetí služeb při selhání. Kromě toho-automatické převzetí služeb při selhání skupiny poskytují čtení i zápis a koncové body naslouchacího zápisu jen pro čtení, které zůstávají beze změny během převzetí služeb při selhání. Ať už používáte aktivace ruční nebo automatické převzetí služeb při selhání, převzetí služeb při selhání přepne všechny sekundární databáze ve skupině na primární. Po dokončení převzetí služeb při selhání databáze se automaticky aktualizuje záznam DNS přesměrovat koncové body do nové oblasti. Konkrétní data RPO a RTO, naleznete v tématu [přehled kontinuity](sql-database-business-continuity.md).
 
-Když používáte skupiny automatické převzetí služeb při selhání zásadám automatické převzetí služeb při selhání, jakémkoli výpadku, který má vliv na databází na logickém serveru nebo spravované instance za následek automatické převzetí služeb při selhání. Můžete spravovat pomocí skupiny-automatické převzetí služeb při selhání:
+Když používáte skupiny automatické převzetí služeb při selhání zásadám automatické převzetí služeb při selhání, jakémkoli výpadku, který má vliv na databází serveru SQL Database nebo spravované instance za následek automatické převzetí služeb při selhání. Můžete spravovat pomocí skupiny-automatické převzetí služeb při selhání:
 
 - [Azure Portal](sql-database-implement-geo-distributed-database.md)
-- [Prostředí PowerShell: Skupiny převzetí služeb při selhání](scripts/sql-database-setup-geodr-failover-database-failover-group-powershell.md)
-- [ROZHRANÍ REST API: Skupiny převzetí služeb při selhání](https://docs.microsoft.com/rest/api/sql/failovergroups).
+- [PowerShell: Skupiny převzetí služeb při selhání](scripts/sql-database-setup-geodr-failover-database-failover-group-powershell.md)
+- [REST API: Skupiny převzetí služeb při selhání](https://docs.microsoft.com/rest/api/sql/failovergroups).
 
 Po převzetí služeb při selhání Ujistěte se, že požadavky na ověřování pro server a databáze jsou nakonfigurovány na nový primární. Podrobnosti najdete v tématu [zabezpečení služby SQL Database po zotavení po havárii](sql-database-geo-replication-security-config.md).
 
@@ -42,27 +42,27 @@ Pro dosažení skutečné obchodní kontinuity podnikových procesů, je přidá
 
 - **Skupiny převzetí služeb při selhání**
 
-  Skupina převzetí služeb při selhání je skupina databází spravovaných pomocí jednoho logického serveru nebo v rámci jednoho managed instance, můžete převzetí služeb při selhání jako jednotku do jiné oblasti pro případ, že některá nebo všechna primární databáze nedostupné kvůli výpadku v primární oblasti.
+  Skupina převzetí služeb při selhání je skupina databází spravovaných jediný server SQL Database nebo v rámci jednoho managed instance, můžete převzetí služeb při selhání jako jednotku do jiné oblasti pro případ, že některá nebo všechna primární databáze nedostupné kvůli výpadku v primární oblasti.
 
-  - **Logické servery**
+  - **Servery SQL Database**
 
-     Logické servery některé nebo všechny uživatele databáze na jednom serveru je možné použít ve skupině převzetí služeb při selhání. Logický server navíc podporuje více skupin převzetí služeb při selhání na jednom serveru.
+     Servery SQL Database některé nebo všechny uživatele databáze na jednom serveru SQL Database je možné použít ve skupině převzetí služeb při selhání. Server služby SQL Database podporuje také více skupin převzetí služeb při selhání na jednom serveru SQL Database.
 
   - **Spravované instance**
   
-     Managed instance skupiny převzetí služeb při selhání obsahuje všem uživatelským databázím ve spravované instanci a proto Managed Instance podporuje jenom převzetí služeb při selhání jedné skupiny.
+     Spravované instance skupiny převzetí služeb při selhání obsahuje všem uživatelským databázím ve spravované instanci a proto Managed Instance podporuje jenom převzetí služeb při selhání jedné skupiny.
 
 - **Primární**
 
-  Logický server nebo Managed Instance, který je hostitelem primární databází ve skupině převzetí služeb při selhání.
+  Server služby SQL Database nebo spravované Instance, který je hostitelem primární databází ve skupině převzetí služeb při selhání.
 
 - **Sekundární**
 
-  Logický server nebo Managed Instance, který je hostitelem sekundární databází ve skupině převzetí služeb při selhání. Sekundární nemůže být ve stejné oblasti jako primární.
+  Server služby SQL Database nebo spravované Instance, který je hostitelem sekundární databází ve skupině převzetí služeb při selhání. Sekundární nemůže být ve stejné oblasti jako primární.
 
-- **Přidávání databází do skupiny převzetí služeb při selhání na logickém serveru**
+- **Přidávání databází do skupiny převzetí služeb při selhání na serveru služby SQL Database**
 
-  Můžete do několika izolovaných databází nebo databází v elastickém fondu přitom na stejném logickém serveru do stejné skupiny převzetí služeb při selhání. Pokud chcete přidat jednu databázi do skupiny převzetí služeb při selhání, automaticky vytvoří sekundární databáze pomocí stejné velikosti edition a výpočetní výkon. Pokud je primární databáze v elastickém fondu, se automaticky vytvoří sekundární v elastickém fondu se stejným názvem. Pokud chcete přidat databáze, která už má sekundární databáze v sekundární server, geografická replikace je zděděno ve skupině. Pokud chcete přidat databáze, která už má sekundární databáze na serveru, který není součástí skupiny převzetí služeb při selhání, se vytvoří nový sekundární v sekundárním serveru.
+  Můžete umístit několik izolovaných databází nebo databází v elastickém fondu přitom na stejný server SQL Database do stejné skupiny převzetí služeb při selhání. Pokud chcete přidat jednu databázi do skupiny převzetí služeb při selhání, automaticky vytvoří sekundární databáze pomocí stejné velikosti edition a výpočetní výkon. Pokud je primární databáze v elastickém fondu, se automaticky vytvoří sekundární v elastickém fondu se stejným názvem. Pokud chcete přidat databáze, která už má sekundární databáze v sekundární server, geografická replikace je zděděno ve skupině. Pokud chcete přidat databáze, která už má sekundární databáze na serveru, který není součástí skupiny převzetí služeb při selhání, se vytvoří nový sekundární v sekundárním serveru.
   
 > [!IMPORTANT]
   > Ve spravované instanci jsou replikovány všem uživatelským databázím. Nelze vybrat podmnožinu uživatelských databází pro replikaci ve skupině převzetí služeb při selhání.
@@ -71,9 +71,9 @@ Pro dosažení skutečné obchodní kontinuity podnikových procesů, je přidá
 
   Záznam DNS CNAME, který tvar, který odkazuje na aktuální primární adresy URL. Umožňuje aplikacím SQL pro čtení a zápis se transparentně znovu připojit k primární databáze, pokud se primární změní po převzetí služeb při selhání.
 
-  - **Logický server záznam DNS CNAME pro naslouchací proces pro čtení i zápis**
+  - **Server služby SQL Database záznam DNS CNAME pro naslouchací proces pro čtení i zápis**
 
-     Na logickém serveru, je vytvořen záznam DNS CNAME pro skupinu převzetí služeb při selhání, který odkazuje na aktuální primární adresy URL jako `failover-group-name.database.windows.net`.
+     Na server služby SQL Database, je vytvořen záznam DNS CNAME pro skupinu převzetí služeb při selhání, který odkazuje na aktuální primární adresy URL jako `failover-group-name.database.windows.net`.
 
   - **Spravované záznam Instance DNS CNAME pro naslouchací proces pro čtení i zápis**
 
@@ -83,9 +83,9 @@ Pro dosažení skutečné obchodní kontinuity podnikových procesů, je přidá
 
   Záznam DNS CNAME, který tvar, který odkazuje na jen pro čtení naslouchací proces, odkazující na adresu URL sekundární. Umožňuje aplikacím SQL jen pro čtení transparentně připojit do sekundární lokality pomocí zadaného pravidla Vyrovnávání zatížení.
 
-  - **Logický server záznam DNS CNAME pro naslouchacího zápisu jen pro čtení**
+  - **Server služby SQL Database záznam DNS CNAME pro naslouchacího zápisu jen pro čtení**
 
-     Na logickém serveru, je vytvořen záznam DNS CNAME pro posluchače jen pro čtení, který odkazuje na adresu URL sekundární jako `failover-group-name.secondary.database.windows.net`.
+     Na server služby SQL Database, je vytvořen záznam DNS CNAME pro posluchače jen pro čtení, který odkazuje na adresu URL sekundární jako `failover-group-name.secondary.database.windows.net`.
 
   - **Spravované záznam Instance DNS CNAME naslouchacího procesu jen pro čtení**
 
@@ -128,7 +128,7 @@ Pro dosažení skutečné obchodní kontinuity podnikových procesů, je přidá
 
 ## <a name="best-practices-of-using-failover-groups-with-single-databases-and-elastic-pools"></a>Osvědčené postupy používání skupin převzetí služeb při selhání izolované databáze a elastické fondy
 
-Automatické převzetí služeb při selhání skupiny musí být nakonfigurované na logickém serveru primární a se připojí k sekundární logický server v jiné oblasti Azure.  Skupiny může zahrnovat všechny nebo některé databáze v těchto serverů. Následující diagram znázorňuje typickou konfiguraci geograficky redundantní cloudové aplikace pomocí více databází a skupiny – automatické převzetí služeb při selhání.
+Automatické převzetí služeb při selhání skupiny musí být nakonfigurované na primárním serveru SQL Database a bude připojení k sekundární databáze SQL server v jiné oblasti Azure.  Skupiny může zahrnovat všechny nebo některé databáze v těchto serverů. Následující diagram znázorňuje typickou konfiguraci geograficky redundantní cloudové aplikace pomocí více databází a skupiny – automatické převzetí služeb při selhání.
 
 ![automatické převzetí služeb při selhání](./media/sql-database-auto-failover-group/auto-failover-group.png)
 
@@ -295,7 +295,7 @@ Jak je popsáno výše, skupiny automatické převzetí služeb při selhání a
 | [Get-AzureRmSqlDatabaseFailoverGroup](https://docs.microsoft.com/powershell/module/azurerm.sql/get-azurermsqldatabasefailovergroup) | Načte konfiguraci skupiny převzetí služeb při selhání |
 | [Set-AzureRmSqlDatabaseFailoverGroup](https://docs.microsoft.com/powershell/module/azurerm.sql/set-azurermsqldatabasefailovergroup) |Upraví konfiguraci skupiny převzetí služeb při selhání |
 | [Switch-AzureRMSqlDatabaseFailoverGroup](https://docs.microsoft.com/powershell/module/azurerm.sql/switch-azurermsqldatabasefailovergroup) | Aktivační události převzetí služeb při selhání skupiny převzetí služeb při selhání na sekundární server |
-| [Přidat AzureRmSqlDatabaseToFailoverGroup](https://docs.microsoft.com/powershell/module/azurerm.sql/add-azurermsqldatabasetofailovergroup)|Přidá jednu nebo více databází do skupiny převzetí služeb při selhání služby Azure SQL Database|
+| [Add-AzureRmSqlDatabaseToFailoverGroup](https://docs.microsoft.com/powershell/module/azurerm.sql/add-azurermsqldatabasetofailovergroup)|Přidá jednu nebo více databází do skupiny převzetí služeb při selhání služby Azure SQL Database|
 |  | |
 
 > [!IMPORTANT]
@@ -325,13 +325,13 @@ Jak je popsáno výše, skupiny automatické převzetí služeb při selhání a
 
 | Rozhraní API | Popis |
 | --- | --- |
-| Nové AzureRmSqlDatabaseInstanceFailoverGroup |Tento příkaz vytvoří skupinu převzetí služeb při selhání a zaregistruje ho na primární a sekundární server|
+| New-AzureRmSqlDatabaseInstanceFailoverGroup |Tento příkaz vytvoří skupinu převzetí služeb při selhání a zaregistruje ho na primární a sekundární server|
 | Set-AzureRmSqlDatabaseInstanceFailoverGroup |Upraví konfiguraci skupiny převzetí služeb při selhání|
 | Get-AzureRmSqlDatabaseInstanceFailoverGroup |Načte konfiguraci skupiny převzetí služeb při selhání|
-| Přepínač AzureRmSqlDatabaseInstanceFailoverGroup |Aktivační události převzetí služeb při selhání skupiny převzetí služeb při selhání na sekundární server|
-| Odebrat AzureRmSqlDatabaseInstanceFailoverGroup | Odebere skupinu převzetí služeb při selhání|
+| Switch-AzureRmSqlDatabaseInstanceFailoverGroup |Aktivační události převzetí služeb při selhání skupiny převzetí služeb při selhání na sekundární server|
+| Remove-AzureRmSqlDatabaseInstanceFailoverGroup | Odebere skupinu převzetí služeb při selhání|
 
-### <a name="rest-api-manage-sql-database-failover-groups-with-single-and-pooled-databases"></a>ROZHRANÍ REST API: Spravovat skupiny převzetí služeb při selhání databáze SQL s databázemi ve fondu a jeden
+### <a name="rest-api-manage-sql-database-failover-groups-with-standalone-and-pooled-databases"></a>REST API: Spravovat skupiny převzetí služeb při selhání databáze SQL v nasazení samostatné služby a databáze ve fondu
 
 | Rozhraní API | Popis |
 | --- | --- |
@@ -344,7 +344,7 @@ Jak je popsáno výše, skupiny automatické převzetí služeb při selhání a
 | [Aktualizace skupiny převzetí služeb při selhání](https://docs.microsoft.com/rest/api/sql/failovergroups/update) | Aktualizace skupiny převzetí služeb při selhání. |
 |  | |
 
-### <a name="rest-api-manage-failover-groups-with-managed-instances-preview"></a>ROZHRANÍ REST API: Správa skupin převzetí služeb při selhání pomocí spravované instance (preview)
+### <a name="rest-api-manage-failover-groups-with-managed-instances-preview"></a>REST API: Správa skupin převzetí služeb při selhání pomocí spravované instance (preview)
 
 | Rozhraní API | Popis |
 | --- | --- |

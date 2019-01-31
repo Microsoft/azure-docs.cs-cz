@@ -5,15 +5,15 @@ author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 01/07/2019
+ms.date: 01/29/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: f7be89a2c02769d09f93e8d5d1545cf814c86bba
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ms.openlocfilehash: c67b9185f38137113b34c8f3a74ae199e50091f1
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54102733"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55296320"
 ---
 # <a name="client-libraries-for-connecting-to-azure-analysis-services"></a>Klientské knihovny pro připojení ke službě Azure Analysis Services
 
@@ -57,7 +57,7 @@ Klientské knihovny pro připojení klientů se liší od zprostředkovatele dat
   
  OLE DB – zprostředkovatelé jsou často určené v připojovacích řetězcích. Připojovací řetězec služby Analysis Services používá k odkazování na zprostředkovatele OLE DB různé klasifikace: MSOLAP. \<verze > .dll.
 
-### <a name="amo"></a>SADA AMO  
+### <a name="amo"></a>AMO  
 
  Sada AMO je knihovna spravovaných klientů používá pro zajištění správy serverů a definice dat. Má nainstalovat a používat nástroje a klientské aplikace. Například SQL Server Management Studio (SSMS) používá AMO pro připojení ke službě Analysis Services. Připojení pomocí sady AMO je obvykle minimální, který se skládá z `"data source=\<servername>"`. Po vytvoření připojení, je použít rozhraní API pro práci s kolekcí databází a hlavní objekty. Rozšíření SSDT a aplikace SSMS připojit k instanci služby Analysis Services pomocí sady AMO.  
 
@@ -80,7 +80,7 @@ Klientské knihovny pro připojení klientů se liší od zprostředkovatele dat
     ![Podrobnosti ke knihovně klienta](media/analysis-services-data-providers/aas-msolap-details.png)
     
   
-### <a name="amo"></a>SADA AMO
+### <a name="amo"></a>AMO
 
 1. Přejděte do části `C:\Windows\Microsoft.NET\assembly\GAC_MSIL\Microsoft.AnalysisServices\` (Soubor > Nový > Jiné). Pokud máte více než jednu složku a zvolte vyšší číslo.
 2. Klikněte pravým tlačítkem na **Microsoft.AnalysisServices** > **vlastnosti** > **podrobnosti**.  

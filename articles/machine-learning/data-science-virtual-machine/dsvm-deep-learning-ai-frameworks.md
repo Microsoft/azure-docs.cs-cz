@@ -9,19 +9,19 @@ manager: cgronlun
 ms.custom: seodec18
 ms.assetid: ''
 ms.service: machine-learning
-ms.component: data-science-vm
+ms.subservice: data-science-vm
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/11/2017
 ms.author: gokuma
-ms.openlocfilehash: d266ee48a4248584ae22a9ba678d516fe28cd712
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: 610b140fd6049842b993c17fd53bebf799f83f5c
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53259711"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55453140"
 ---
 # <a name="deep-learning-and-ai-frameworks"></a>Architektura AI a hloubkového učení
 [Virtuální počítač pro datové vědy](https://aka.ms/dsvm) (DSVM) a [hloubkového učení VM](https://aka.ms/dsvm/deeplearning) podporuje řadu architektury hloubkového učení, které vám pomůžou vytvářet aplikace umělou inteligenci (AI) k prediktivním analýzám a kognitivní možnosti, jako jsou bitové kopie a umožňující porozumět jazyku.
@@ -195,7 +195,7 @@ Službu spusťte trvá přibližně jednu minutu. Spusťte webový prohlížeč 
 | Podporované DSVM edice      | Ubuntu     |
 | Jak ho nakonfigurovat či nainstalovaná na datové VĚDY?  | Theano je nainstalovaný Python 2.7 (_kořenové_), a také Python 3.5 (_py35_) prostředí.   |
 | Související nástroje na datové VĚDY      | Keras      |
-| Jak používat nebo ji spustit?    | * V terminálu aktivujte verzi Pythonu (kořenové nebo py35), spuštění python a pak importovat theano. <br/> * V Jupyter vyberte Python 2.7 nebo 3.5 jádra a poté importovat theano.  <br/>Poslední MKL chybu obejít, musíte nejdřív nastavit MKL dělení na vlákna vrstvy:<br/><br/>_Export MKL_THREADING_LAYER = GNU._|
+| Jak používat nebo ji spustit?    | * V terminálu aktivujte verzi Pythonu (kořenové nebo py35), spuštění python a pak importovat theano. <br/> * V Jupyter vyberte Python 2.7 nebo 3.5 jádra a poté importovat theano.  <br/>Poslední MKL chybu obejít, musíte nejdřív nastavit MKL dělení na vlákna vrstvy:<br/><br/>_export MKL_THREADING_LAYER=GNU_|
 
 
 

@@ -1,5 +1,5 @@
 ---
-title: 'Kurz: Návrh první databáze Azure SQL Database pomocí SSMS | Microsoft Docs'
+title: 'Kurz: Návrh první databáze jeden ve službě Azure SQL Database pomocí SSMS | Dokumentace Microsoftu'
 description: Zjistěte, jak navrhnout první databázi SQL Azure pomocí aplikace SQL Server Management Studio.
 services: sql-database
 ms.service: sql-database
@@ -9,15 +9,15 @@ author: CarlRabeler
 ms.author: carlrab
 ms.reviewer: v-masebo
 manager: craigg
-ms.date: 12/04/2018
-ms.openlocfilehash: 9fa36b9b87a8e9591b0c863826cd2278a29ba28e
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.date: 01/25/2019
+ms.openlocfilehash: e7229a0816cf74fed08397a68dd34e305bf8c0ea
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52956053"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55459532"
 ---
-# <a name="tutorial-design-your-first-azure-sql-database-using-ssms"></a>Kurz: Návrh první databáze Azure SQL Database pomocí SSMS
+# <a name="tutorial-design-your-first-azure-sql-database-using-ssms"></a>Kurz: Návrh první databáze SQL Azure pomocí SSMS
 
 Azure SQL database je relační databáze as-a-service (DBaaS) v Microsoft cloudu (Azure). V tomto kurzu se naučíte používat web Azure Portal a aplikaci [SQL Server Management Studio](https://msdn.microsoft.com/library/ms174173.aspx) (SSMS), když chcete:
 
@@ -47,7 +47,7 @@ Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
 
 ## <a name="create-a-blank-database"></a>Vytvoření prázdné databáze
 
-Databáze SQL Azure se vytvoří s definovanou sadou [výpočetních prostředků a prostředků úložiště](sql-database-service-tiers-dtu.md). Databáze se vytvoří v rámci [skupiny prostředků Azure](../azure-resource-manager/resource-group-overview.md) a [logického serveru Azure SQL database](sql-database-features.md).
+Databáze SQL Azure se vytvoří s definovanou sadou [výpočetních prostředků a prostředků úložiště](sql-database-service-tiers-dtu.md). Databáze se vytvoří v rámci [skupiny prostředků Azure](../azure-resource-manager/resource-group-overview.md) a [serveru Azure SQL Database](sql-database-features.md).
 
 Pomocí následujících kroků vytvořte prázdnou databázi SQL.
 
@@ -82,7 +82,7 @@ Pomocí následujících kroků vytvořte prázdnou databázi SQL.
    1. Klikněte na **Cenová úroveň** a zadejte úroveň služby, počet DTU nebo virtuálních jader a velikost úložiště. Může prozkoumejte možnosti počtu Dtu nebo virtuálních jader a úložiště, které je k dispozici na jednotlivých úrovních služby. Ve výchozím nastavení **standardní** [nákupní model založený na DTU](sql-database-service-tiers-dtu.md) je vybrána, ale je nutné zvolit [nákupní model založený na virtuálních jádrech](sql-database-service-tiers-vcore.md).
 
       > [!IMPORTANT]
-      > Více než 1 TB úložiště na úrovni Premium je aktuálně k dispozici ve všech oblastech kromě následujících: Velká Británie – sever, střed USA – Západ, Velká Británie South2, Čína – východ, USDoDCentral, Německo – střed, USDoDEast, USA (gov) – jihozápad, USA (gov) – jih – střed, Německo – severovýchod, Čína – Sever, USA (gov) – východ. V ostatních oblastech je úložiště na úrovni Premium omezeno na 1 TB. Viz [Aktuální omezení pro P11–P15]( sql-database-dtu-resource-limits-single-databases.md#single-database-limitations-of-p11-and-p15-when-the-maximum-size-greater-than-1-tb).
+      > Více než 1 TB úložiště na úrovni Premium je aktuálně k dispozici ve všech oblastech kromě následujících: Velká Británie – sever, střed USA – Západ, Velká Británie South2, Čína – východ, USDoDCentral, Německo – střed, USDoDEast, USA (gov) – jihozápad, USA (gov) – jih – střed, Německo-severovýchod, Čína – sever, USA (gov) – východ. V ostatních oblastech je úložiště na úrovni Premium omezeno na 1 TB. Viz [Aktuální omezení pro P11–P15]( sql-database-dtu-resource-limits-single-databases.md#single-database-limitations-of-p11-and-p15-when-the-maximum-size-greater-than-1-tb).
 
       Po výběru úrovně služby, počet Dtu a velikost úložiště, klikněte na **použít**.
 
@@ -96,7 +96,7 @@ Pomocí následujících kroků vytvořte prázdnou databázi SQL.
 
 ## <a name="create-a-firewall-rule"></a>Vytvoření pravidla brány firewall
 
-Službu SQL database vytvoří bránu firewall na úrovni serveru. Brána firewall brání externím aplikacím a nástrojům v připojení k serveru a kterékoli databázi na serveru. Pokud chcete povolit externí připojení k databázi, musí nejprve přidat pravidlo pro vaši IP adresu do brány firewall. Postupujte podle těchto kroků můžete vytvořit [pravidlo brány firewall na úrovni serveru SQL database](sql-database-firewall-configure.md).
+Službu SQL database vytvoří bránu firewall na úrovni serveru. Brána firewall brání externím aplikacím a nástrojům v připojení k serveru a kterékoli databázi na serveru. Pokud chcete povolit externí připojení k databázi, musí nejprve přidat pravidlo pro vaši IP adresu do brány firewall. Postupujte podle těchto kroků můžete vytvořit [pravidlo brány firewall na úrovni serveru služby SQL Database](sql-database-firewall-configure.md).
 
 > [!NOTE]
 > SQL database komunikuje přes port 1433. Pokud se pokoušíte připojit z podnikové sítě, nemusí být odchozí provoz přes port 1433 bránou firewall vaší sítě povolený. Pokud ano, nemůžete připojit k serveru Azure SQL Database, dokud správce otevře port 1433.
@@ -107,24 +107,24 @@ Službu SQL database vytvoří bránu firewall na úrovni serveru. Brána firewa
 
    ![název serveru](./media/sql-database-design-first-database/server-name.png)
 
-1. Na panelu nástrojů klikněte na **Nastavit bránu firewall serveru**. **Nastavení brány Firewall** otevře se stránka pro server služby SQL database.
+1. Na panelu nástrojů klikněte na **Nastavit bránu firewall serveru**. Otevře se stránka **Nastavení brány firewall** pro server služby SQL Database.
 
    ![pravidlo brány firewall serveru](./media/sql-database-design-first-database/server-firewall-rule.png)
 
    1. Klikněte na **Přidat IP adresu klienta** na panelu nástrojů a přidejte svoji aktuální IP adresu do nového pravidla brány firewall. Pravidlo brány firewall může otevřít port 1433 pro jednu IP adresu nebo rozsah IP adres.
 
-   1. Klikněte na **Uložit**. Vytvoří se pravidlo brány firewall na úrovni serveru pro vaši aktuální IP adresu, které otevře port 1433 na logickém serveru.
+   1. Klikněte na **Uložit**. Pro vaši aktuální IP adresu, které otevře port 1433 na databáze SQL serveru se vytvoří pravidlo brány firewall na úrovni serveru.
 
    1. Klikněte na **OK** a pak zavřete stránku **Nastavení brány firewall**.
 
-IP adresu můžete nyní průchod branou firewall. Teď můžete připojit k serveru SQL database a jeho databázím pomocí aplikace SQL Server Management Studio nebo jiného nástroje podle vašeho výběru. Nezapomeňte použít účet správce serveru, který jste vytvořili dříve.
+IP adresu můžete nyní průchod branou firewall. Teď můžete připojit k serveru SQL Database a jeho databázím pomocí aplikace SQL Server Management Studio nebo jiného nástroje podle vašeho výběru. Nezapomeňte použít účet správce serveru, který jste vytvořili dříve.
 
 > [!IMPORTANT]
 > Přístup přes bránu firewall služby SQL database je ve výchozím nastavení povolené pro všechny služby Azure. Kliknutím na **OFF** na této stránce provedete zákaz pro všechny služby Azure.
 
 ## <a name="connect-to-the-database"></a>Připojení k databázi
 
-Použití [SQL Server Management Studio](/sql/ssms/sql-server-management-studio-ssms) k navázání připojení k vašemu serveru Azure SQL database.
+Pomocí aplikace [SQL Server Management Studio](/sql/ssms/sql-server-management-studio-ssms) navažte připojení ke svému serveru Azure SQL Database.
 
 1. Otevřete SQL Server Management Studio.
 

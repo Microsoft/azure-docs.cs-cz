@@ -11,13 +11,13 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
 manager: craigg
-ms.date: 12/10/2018
-ms.openlocfilehash: 0be1ddea4d5eaa253850ae640152b2538b39d0ca
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.date: 01/25/2019
+ms.openlocfilehash: 37b88b254b350d5c9e006e882a2dc5a39b880b2c
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54035419"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55477807"
 ---
 # <a name="automated-backups"></a>Automatizované zálohy
 
@@ -42,7 +42,7 @@ Můžete použít tyto zálohy na:
 
 ## <a name="how-long-are-backups-kept"></a>Jak dlouho se zálohy uchovávat
 
-Každá databáze SQL má výchozí období uchovávání záloh mezi 7 až 35 dnů, na kterých závisí nákupní model a úrovně služeb. Můžete aktualizovat zálohování) doby uchování pro databázi na logickém serveru Azure. Další informace najdete v tématu [období uchování zálohy změnu](#how-to-change-the-pitr-backup-retention-period).
+Každá databáze SQL má výchozí období uchovávání záloh mezi 7 až 35 dnů, na kterých závisí nákupní model a úrovně služeb. Můžete aktualizovat zálohování) doby uchování pro databáze na serveru služby SQL Database. Další informace najdete v tématu [období uchování zálohy změnu](#how-to-change-the-pitr-backup-retention-period).
 
 Když odstraníte databáze, databáze SQL zachovají zálohy stejným způsobem, který by tomu bylo online databáze. Například pokud odstraníte databázi Basic, který má dobu uchování o délce sedm dní, zálohy, která je starší čtyř dní uložená pro další tři dny.
 
@@ -63,7 +63,7 @@ Výchozí době uchování databáze vytvořené využitím nákupní model zalo
 
 #### <a name="vcore-based-purchasing-model"></a>Model nákupu na základě virtuálních jader
 
-Pokud používáte [nákupní model založený na virtuálních jádrech](sql-database-service-tiers-vcore.md), je výchozí období uchování zálohy 7 dní (pro jeden, ve fondu a spravované instanci databáze). Pro všechny databáze Azure SQL (jednoduché, ve fondu, a databáze Managed Instance můžete [změnit období uchování zálohy 35 dnů](#how-to-change-the-pitr-backup-retention-period).
+Pokud používáte [nákupní model založený na virtuálních jádrech](sql-database-service-tiers-vcore.md), je výchozí období uchování zálohy 7 dní (pro samostatnou službu, ve fondu a instanci databáze). Pro všechny databáze Azure SQL (samostatný, ve fondu a instance databáze, můžete [změnit období uchování zálohy 35 dnů](#how-to-change-the-pitr-backup-retention-period).
 
 > [!WARNING]
 > Pokud aktuální dobu uchovávání snížíte, všechny existující zálohy, které jsou starší než novou míru uchování období se již nebude k dispozici. Když aktuální dobu uchovávání prodloužit, SQL Database zachovají existující zálohy, dokud nebude dosaženo delší doba uchovávání dat.
@@ -80,7 +80,7 @@ Další informace najdete v tématu [v daném okamžiku obnovení](sql-database-
 
 ### <a name="backups-for-long-term-retention"></a>Pro dlouhodobé uchovávání záloh
 
-Hostované v logický Server SQL Database nabízí možnost konfigurace dlouhodobého uchovávání dat (LTR) úplných záloh po dobu až 10 let ve službě Azure blob storage. Pokud je povolené zásady LTR, týdenními úplnými zálohami se automaticky zkopírují do jiného kontejneru úložiště RA-GRS. Aby splnila požadavek na dodržení jiný, můžete vybrat různých období uchovávání záloh týdenní, měsíční nebo roční. Spotřeba úložiště závisí na vybrané četnosti zálohování a období uchovávání. Můžete použít [LTR pomocí cenové kalkulačky](https://azure.microsoft.com/pricing/calculator/?service=sql-database) odhadnout náklady na úložiště zleva doprava.
+Nasazení samostatné služby a databáze ve fondu nabízejí možnost konfigurace dlouhodobého uchovávání dat (LTR) úplných záloh po dobu až 10 let ve službě Azure blob storage. Pokud je povolené zásady LTR, týdenními úplnými zálohami se automaticky zkopírují do jiného kontejneru úložiště RA-GRS. Aby splnila požadavek na dodržení jiný, můžete vybrat různých období uchovávání záloh týdenní, měsíční nebo roční. Spotřeba úložiště závisí na vybrané četnosti zálohování a období uchovávání. Můžete použít [LTR pomocí cenové kalkulačky](https://azure.microsoft.com/pricing/calculator/?service=sql-database) odhadnout náklady na úložiště zleva doprava.
 
 Podobně jako PITR, zálohy zleva doprava jsou geograficky redundantní a chráněný [replikace Azure Storage mezi zónami](../storage/common/storage-redundancy-grs.md#read-access-geo-redundant-storage).
 
@@ -111,7 +111,7 @@ Můžete změnit období uchování zálohy PITR výchozí pomocí webu Azure Po
 
 Můžete změnit období uchování zálohy PITR pomocí webu Azure portal, přejděte na objekt serveru jehož doba uchování chcete změnit na portálu a pak vyberte příslušnou možnost základě, na který objekt serveru, kterou upravujete.
 
-#### <a name="change-pitr-for-a-logical-server"></a>Změna PITR pro logický server
+#### <a name="change-pitr-for-a-sql-database-server"></a>Změna PITR pro server služby SQL Database
 
 ![Portál pro změnu PITR Azure](./media/sql-database-automated-backup/configure-backup-retention-sqldb.png)
 

@@ -5,17 +5,17 @@ author: marktab
 manager: cgronlun
 editor: cgronlun
 ms.service: machine-learning
-ms.component: team-data-science-process
+ms.subservice: team-data-science-process
 ms.topic: article
 ms.date: 11/13/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: faf0e06a0649c31cec840a5043a11af601ba5c47
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: 45be3d7f865c7b72ae62efbf99dbbb4594b1846f
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53139635"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55465261"
 ---
 # <a name="tasks-for-the-team-lead-in-the-team-data-science-process-team"></a>Úlohy pro tým vést v týmu Data Science procesu týmu
 
@@ -46,11 +46,11 @@ A **vedoucí týmu** řídí tým v jednotce data science podniku. Tým se sklá
 Toto téma používá zkrácené názvy pro úložiště a adresáře. Tyto názvy usnadňují sledování operací mezi úložišť a adresáře. Tato notace (**R** pro úložiště Git a **D** pro místní adresáře na vaše DSVM) se používá v následujících částech:
 
 - **R1**: **GroupProjectTemplate** úložiště v Gitu, která správce skupiny nastavit na vašem serveru Azure DevOps skupiny.
-- **R3**: tým **ProjectTemplate** úložiště v Gitu můžete nastavit.
+- **R3**: Tým **ProjectTemplate** úložiště v Gitu můžete nastavit.
 - **R4**: **TeamUtilities** úložiště v Gitu můžete nastavit.
-- **D1**: místní adresář naklonovali z R1 a zkopírován do D3.
-- **D3**: místní adresář naklonovali z R3, přizpůsobení a zkopírována zpět k R3.
-- **D4**: místní adresář naklonovali z R4, přizpůsobení a zkopírována zpět k R4.
+- **D1**: Místní adresář naklonovali z R1 a zkopírován do D3.
+- **D3**: Místní adresář naklonovali z R3, přizpůsobení a zkopírována zpět k R3.
+- **D4**: Místní adresář naklonovali z R4, přizpůsobení a zkopírována zpět k R4.
 
 Názvy stanovené pro úložiště a adresářů v tomto kurzu byly zadány na za předpokladu, že je váš cíl k vytvoření samostatného projektu pro váš tým v rámci větší datové vědy skupiny. Ale existují další možnosti Otevřít jako vedoucí týmu:
 
@@ -140,9 +140,9 @@ Osazení postup používá adresáře na místním DSVM jako zprostředkující 
 
 - Klonování úložiště skupiny do místního adresáře: týmu R1 - klonovat do místního D1 ->
 - Klonujte svá úložiště týmu do místních adresářů: týmu R3 & R4 - klonovat na -> místní D3 & D4
-- Zkopírujte obsah šablony skupiny projektu do složky místní týmu: D1 - obsah bude zkopírován do D3 ->
+- Zkopírujte obsah šablony projektu skupiny do složky místní týmu:  D1 - obsah bude zkopírován do D3 ->
 - (Volitelné) přizpůsobení místní D3 & D4
-- Vložit obsah místní adresáře do týmových úložišť: D3 & D4 - do -> přidat obsah týmu R3 & R4
+- Doručovat obsah místní adresáře do týmových úložišť: D3 & D4 - do -> přidat obsah týmu R3 & R4
 
 
 ### <a name="initialize-the-team-repositories"></a>Inicializovat týmových úložišť
@@ -157,7 +157,7 @@ V tomto kroku inicializace úložiště šablony projektu z úložiště šablon
 Chcete-li začít tento postup:
 
 - Vytvoření adresáře na místním počítači:
-    - Pro **Windows**: **C:\GitRepos\GroupCommon** a **C:\GitRepos\MyTeam**
+    - Pro **Windows**: **C:\GitRepos\GroupCommon** and **C:\GitRepos\MyTeam**
     - Pro **Linux**: **GitRepos\GroupCommon** a **GitRepos\MyTeam** na domovský adresář 
 - Přejděte do adresáře **GitRepos\GroupCommon**.
 - Spusťte následující příkaz, v závislosti na operačním systému místního počítače.
@@ -355,7 +355,7 @@ Potvrďte, že nové jednotky F úspěšně připojil k vašemu počítači.
 
 ![34](./media/team-lead-tasks/team-leads-34-attach-s3.png)
 
-**Jak ručně zadat informace o Azure file storage:** Pokud nemáte údaje o Azure file storage s textovým souborem, může podle pokynů na následující obrazovce zadejte požadované předplatné, účet úložiště a Azure informace o souboru úložiště:
+**Jak ručně zadat informace o Azure file storage:** Pokud nemáte údaje o Azure file storage s textovým souborem, může postupujte podle pokynů na následující obrazovce zadejte požadované předplatné, účet úložiště a informace o Azure file storage:
 
 ![35](./media/team-lead-tasks/team-leads-35-attach-s4.png)
 
@@ -384,7 +384,7 @@ Potvrďte, že nové jednotky F úspěšně připojil k vašemu počítači.
 
 ![40](./media/team-lead-tasks/team-leads-40-attach-s4-linux.png)
 
-**Jak ručně zadat informace o Azure file storage:** Pokud nemáte údaje o Azure file storage s textovým souborem, může podle pokynů na následující obrazovce zadejte požadované předplatné, účet úložiště a Azure informace o souboru úložiště:
+**Jak ručně zadat informace o Azure file storage:** Pokud nemáte údaje o Azure file storage s textovým souborem, může postupujte podle pokynů na následující obrazovce zadejte požadované předplatné, účet úložiště a informace o Azure file storage:
 
 - Vstup **n**.
 - Vyberte index název předplatného, ve kterém byla vytvořena Azure file storage v předchozím kroku:

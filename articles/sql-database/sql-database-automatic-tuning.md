@@ -11,13 +11,13 @@ author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, carlrab
 manager: craigg
-ms.date: 04/01/2018
-ms.openlocfilehash: a0b7d3f059001aec28dd52c9666ea7b5af3c6f95
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.date: 01/25/2019
+ms.openlocfilehash: b13becf8530f478a5e58b46a1b422593051c95cf
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53603789"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55478164"
 ---
 # <a name="automatic-tuning-in-azure-sql-database"></a>Automatické ladění ve službě Azure SQL Database
 
@@ -65,6 +65,7 @@ Přehled funkce automatické optimalizace funguje a typické scénáře využit�
 ## <a name="automatic-tuning-options"></a>Možnosti automatického ladění
 
 Možnosti automatického ladění ve službě Azure SQL Database k dispozici jsou:
+
  1. **Vytvoření indexu** -identifikuje indexy, které může zlepšit výkon vaší úlohy, vytvoří indexy a automaticky ověřuje, že se zvýšil výkon dotazů.
  2. **DROP INDEX** -redundantní a duplicitní indexy identifikuje každý den, s výjimkou jedinečných indexů a indexy, které nebyly použity po dlouhou dobu (> 90 dnů). Mějte prosím na paměti, že v tuto chvíli možnost není kompatibilní s aplikací s použitím pomocné parametry přepnutí a index oddílu.
  3. **VYNUCENÍ POSLEDNÍHO dobrého plánu** -identifikuje dotazů SQL pomocí plán provádění, která je nižší než předchozí dobrým plánem a dotazy s posledního známého dobrého plánu místo nižším plánu.
@@ -73,7 +74,7 @@ Automatické ladění identifikuje **CREATE INDEX**, **DROP INDEX**, a **platnos
 
 Můžete buď ručně provést doporučení pro vyladění pomocí portálu nebo můžete nechat automatické ladění autonomně platí doporučení pro vyladění za vás. Výhody umožněte systému autonomně platí doporučení pro vyladění pro vás je, že se automaticky ověřuje existuje existuje kladné zisk na výkon úloh, a pokud neexistuje žádné významné výkonnostní zlepšení zjistila, bude automaticky vrátit zpět doporučení pro ladění. Mějte prosím na paměti, že v případě dotazy ovlivněné doporučení, které nejsou provedeny často pro optimalizaci, ověření fáze může trvat až 72 hodin záměrné. V případě, že jsou ručně zavede ladění doporučení, automatické výkon ověřování a mechanismy opačný nejsou k dispozici.
 
-Možnosti automatického ladění můžete nezávisle na sobě povolit nebo zakázat na databázi, nebo mohou být konfigurovány na logických serverů a použít na každou databázi, která dědí nastavení ze serveru. Logické servery můžete dědit Azure výchozí hodnoty pro nastavení automatického ladění. Výchozích nastavení Azure v tuto chvíli jsou nastaveny na FORCE_LAST_GOOD_PLAN je povoleno, je povoleno CREATE_INDEX a DROP_INDEX je zakázaná.
+Možnosti automatického ladění můžete nezávisle na sobě povolit nebo zakázat na databázi, nebo mohou být konfigurovány na servery SQL Database a použít na každou databázi, která dědí nastavení ze serveru. Servery SQL Database může dědit Azure výchozí hodnoty pro nastavení automatického ladění. Výchozích nastavení Azure v tuto chvíli jsou nastaveny na FORCE_LAST_GOOD_PLAN je povoleno, je povoleno CREATE_INDEX a DROP_INDEX je zakázaná.
 
 Konfigurace automatického ladění možnosti na serveru a nastavení pro databáze, které patří do nadřazeného serveru je doporučená metoda pro konfiguraci automatického ladění jako zjednodušuje správu možnosti automatického ladění pro velký počet databází.
 

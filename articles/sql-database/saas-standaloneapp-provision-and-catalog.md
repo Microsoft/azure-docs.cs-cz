@@ -12,12 +12,12 @@ ms.author: sstein
 ms.reviewer: billgib
 manager: craigg
 ms.date: 01/31/2018
-ms.openlocfilehash: 92a1745f8da9783a22c7cbf417acb0709759f41c
-ms.sourcegitcommit: 715813af8cde40407bd3332dd922a918de46a91a
+ms.openlocfilehash: 12beb167c5225f669529dd2db375468fc881c8eb
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47054297"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55468559"
 ---
 # <a name="provision-and-catalog-new-tenants-using-the--application-per-tenant-saas-pattern"></a>Zřízení a katalogizace nových tenantů v aplikaci na model SaaS tenanta
 
@@ -28,6 +28,7 @@ Tento článek obsahuje dvě hlavní části:
     * V tomto kurzu použijete Wingtip Tickets ukázkové SaaS aplikace upravených pro samostatnou aplikaci za vzor tenanta.
 
 ## <a name="standalone-application-per-tenant-pattern"></a>Samostatná aplikace za vzor tenanta
+
 Samostatná aplikace za vzor tenanta je jedním z několika způsoby pro víceklientské aplikace SaaS.  V tomto vzoru se zřizuje samostatnou aplikaci pro každého tenanta. Aplikace se skládá z úrovně součásti aplikace a SQL database.  Každou klientskou aplikaci je možné nasadit v rámci předplatného od příslušného dodavatele.  Alternativně Azure nabízí [spravovaných aplikací programu](https://docs.microsoft.com/azure/managed-applications/overview) v které aplikace je možné nasadit v předplatném tenanta a spravuje dodavatele jménem klienta. 
 
    ![vzor aplikací na tenanta](media/saas-standaloneapp-provision-and-catalog/standalone-app-pattern.png)
@@ -35,6 +36,7 @@ Samostatná aplikace za vzor tenanta je jedním z několika způsoby pro vícekl
 Při nasazování aplikace pro klienta, aplikace a databáze jsou zřízené v nové skupiny prostředků vytvořené pro tenanta.  Pomocí samostatných skupin prostředků izoluje jednotlivé tenanty aplikační prostředky a umožňuje je spravovat nezávisle. V rámci jednotlivých skupin prostředků je každá instance aplikace nakonfigurovaná pro přístup k jeho odpovídající databázi přímo.  Tento model připojení se liší od jiných vzorků, které používají katalogu pro zprostředkovatele připojení mezi aplikací a databáze.  A protože neexistuje žádný prostředek pro sdílení obsahu, všechny databáze tenantů musí být zřízená s dostatkem prostředků pro zpracování jeho zátěž ve špičce. Tento model se obvykle dá použít pro aplikace SaaS s menším počtem klientů, ve kterých je důrazu na tenanta izolace a nižší důraz na náklady na prostředky.  
 
 ## <a name="using-a-tenant-catalog-with-the-application-per-tenant-pattern"></a>Použití katalogu tenanta s aplikaci za vzor tenanta
+
 Každý tenant aplikace a databáze jsou plně oddělené, různé scénáře analýzy a správy fungovat mezi tenanty.  Například použití změnu schématu pro novou verzi aplikace vyžaduje změny schématu všechny databáze tenantů. Scénáře vytváření sestav a analýzy může také vyžadovat přístup na všech databázích tenantů bez ohledu na to, kde jsou nasazeny.
 
    ![vzor aplikací na tenanta](media/saas-standaloneapp-provision-and-catalog/standalone-app-pattern-with-catalog.png)
@@ -42,19 +44,22 @@ Každý tenant aplikace a databáze jsou plně oddělené, různé scénáře an
 Tenant katalog obsahuje mapování mezi identifikátor tenanta a databází tenantů, což identifikátor pro přeložit na serveru a název databáze.  V aplikaci SaaS aplikace Wingtip identifikátor tenanta je vypočítán jako hodnotu hash názvu tenanta, i když by bylo možné použít jiná schémata.  Zatímco samostatné aplikace nemusí katalogu pro správu připojení, katalog lze použít k určení rozsahu další akce pro sadu databází tenantů. Elastický dotaz můžete například použít katalogu určit sadu databází, ve kterých jsou distribuované dotazy pro vytváření sestav napříč tenanty.
 
 ## <a name="elastic-database-client-library"></a>Klientská knihovna Elastic Database
-Katalog je v ukázkové aplikaci Wingtip implementované funkcí správy horizontálních oddílů [Klientská knihovna Elastic Database](https://docs.microsoft.com/azure/sql-database/sql-database-elastic-database-client-library) (EDCL).  Knihovny umožňuje aplikaci vytvářet, spravovat a používat mapy horizontálních oddílů, který je uložen v databázi. V ukázce Wingtip Tickets je uložené v katalogu v *katalogu tenanta* databáze.  Horizontální oddíl mapuje klíče tenanta do horizontálního oddílu (databáze) ve které je uložený data vašeho tenanta.  EDCL funkcí Správa *mapy horizontálních oddílů globální* ukládají do tabulek v *katalogu tenanta* databáze a *mapy horizontálních oddílů místní* uložených v jednotlivých horizontálních oddílech.
+
+Katalog je v ukázkové aplikaci Wingtip implementované funkcí správy horizontálních oddílů [Klientská knihovna Elastic Database](sql-database-elastic-database-client-library.md) (EDCL).  Knihovny umožňuje aplikaci vytvářet, spravovat a používat mapy horizontálních oddílů, který je uložen v databázi. V ukázce Wingtip Tickets je uložené v katalogu v *katalogu tenanta* databáze.  Horizontální oddíl mapuje klíče tenanta do horizontálního oddílu (databáze) ve které je uložený data vašeho tenanta.  EDCL funkcí Správa *mapy horizontálních oddílů globální* ukládají do tabulek v *katalogu tenanta* databáze a *mapy horizontálních oddílů místní* uložených v jednotlivých horizontálních oddílech.
 
 EDCL funkce lze volat z aplikací nebo skriptů prostředí PowerShell k vytváření a správě položek v mapě horizontálních oddílů. Další funkce EDCL slouží k načtení nastavení horizontálními oddíly nebo se připojte ke správné databázi pro danou klíč tenanta. 
-    
-> [!IMPORTANT] 
+
+> [!IMPORTANT]
 > Neprovádět úpravy dat v databázi katalogu nebo mapy horizontálních oddílů místní databáze tenanta přímo. Kvůli vysokému riziku poškození dat nepodporuje přímé aktualizace. Místo toho upravte mapování dat pomocí rozhraní API EDCL pouze.
 
 ## <a name="tenant-provisioning"></a>Zřizování klientů 
+
 Každý tenant vyžaduje novou skupinu prostředků Azure, kterou musí vytvořit předtím, než je možné zřizovat prostředky v ní. Jakmile se skupina prostředků existuje, šablony Azure Resource Manageru je možné nasadit komponenty aplikace a databáze, a potom nakonfigurujte připojení k databázi. Inicializace schématu databáze, můžete šablonu import souboru bacpac.  Alternativně lze vytvořit databázi jako kopii databáze "Šablona".  Databáze je pak dále aktualizován s daty počáteční míst a zaregistrované v katalogu.
 
 ## <a name="tutorial"></a>Kurz
 
 V tomto kurzu se naučíte:
+
 * Zřízení katalogu
 * Zaregistrujte ukázkové databáze tenanta, které jste nasadili dříve v katalogu
 * Zřízení dalších tenantů a zaregistrujete ho v katalogu
@@ -64,12 +69,16 @@ V tomto kurzu se naučíte:
 Na konci tohoto kurzu máte sadu aplikací samostatné tenanty, každá databáze zaregistrované v katalogu.
 
 ## <a name="prerequisites"></a>Požadavky
+
 Předpokladem dokončení tohoto kurzu je splnění následujících požadavků: 
+
 * Prostředí Azure PowerShell je nainstalované. Podrobnosti najdete v článku [Začínáme s prostředím Azure PowerShell](https://docs.microsoft.com/powershell/azure/get-started-azureps).
-* Jsou tři ukázkové aplikace tenanta nasazené. Tyto aplikace nasadit za méně než pět minut, najdete v článku [nasazení a zkoumání aplikaci Wingtip Tickets SaaS samostatný model](https://docs.microsoft.com/azure/sql-database/saas-standaloneapp-get-started-deploy).
+* Jsou tři ukázkové aplikace tenanta nasazené. Tyto aplikace nasadit za méně než pět minut, najdete v článku [nasazení a zkoumání aplikaci Wingtip Tickets SaaS samostatný model](saas-standaloneapp-get-started-deploy.md).
 
 ## <a name="provision-the-catalog"></a>Zřízení katalogu
+
 V této úloze se dozvíte, jak ke zřízení katalogu použili k registraci ve všech databázích tenantů. Vaším úkolem je: 
+
 * **Zřízení databáze katalogu** pomocí šablony Azure resource Manageru. Databáze je inicializován pomocí import souboru bacpac.  
 * **Registrace tenanta ukázkových aplikací** , který jste předtím nasadili.  Každý tenant je zaregistrovaný používá klíč vytvořený z hodnoty hash názvu tenanta.  Název tenanta je také uložena v tabulce rozšíření v katalogu.
 
@@ -108,6 +117,7 @@ Nyní se podívejte na prostředky, které jste vytvořili.
 ## <a name="provision-a-new-tenant-application"></a>Zřízení nového tenanta aplikace
 
 V této úloze se dozvíte, jak zřídit jednoho tenanta aplikaci. Vaším úkolem je:  
+
 * **Vytvořit novou skupinu prostředků** pro příslušného tenanta. 
 * **Zřídit aplikace a databáze** do nové skupiny prostředků pomocí šablony Azure resource Manageru.  Tato akce zahrnuje inicializace databáze s společné schéma a referenční data importem souboru bacpac. 
 * **Inicializace databáze s informace o základní tenanta**. Tato akce zahrnuje určení typu míst, který určuje fotografie používá jako pozadí na webu jeho události. 
@@ -129,11 +139,11 @@ Pak si můžete prohlédnout nové prostředky vytvořené v rámci webu Azure p
    ![Red maple závodní prostředky](media/saas-standaloneapp-provision-and-catalog/redmapleracing-resources.png)
 
 
-## <a name="to-stop-billing-delete-resource-groups"></a>To ukončit účtování, odstranění skupiny prostředků ##
+## <a name="to-stop-billing-delete-resource-groups"></a>To ukončit účtování, odstranění skupiny prostředků
 
 Po dokončení ukázky, odstraňte všechny skupiny prostředků vytvořené jak ukončit fakturaci související.
 
-## <a name="additional-resources"></a>Další zdroje informací:
+## <a name="additional-resources"></a>Další materiály
 
 - Další informace o víceklientské aplikace SaaS databáze najdete v tématu [vzory návrhu pro víceklientské aplikace SaaS](saas-tenancy-app-design-patterns.md).
 
@@ -146,4 +156,4 @@ V tomto kurzu jste se dozvěděli:
 > * O serverech a databází, které tvoří aplikaci.
 > * Jak odstranit ukázkové prostředky k zastavení souvisejícího účtování.
 
-Můžete prozkoumat, jak se používá v katalogu pro podporu různých scénářů napříč tenanty pomocí verze databáze na tenanta [aplikace SaaS aplikace Wingtip Tickets](https://docs.microsoft.com/azure/sql-database/saas-dbpertenant-wingtip-app-overview).  
+Můžete prozkoumat, jak se používá v katalogu pro podporu různých scénářů napříč tenanty pomocí verze databáze na tenanta [aplikace SaaS aplikace Wingtip Tickets](saas-dbpertenant-wingtip-app-overview.md).  

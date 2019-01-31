@@ -12,16 +12,16 @@ ms.author: ayolubek
 ms.reviewer: sstein
 manager: craigg
 ms.date: 10/15/2018
-ms.openlocfilehash: acc1b9e9561b9468a4638c7073a066e4cb34d911
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.openlocfilehash: d430a9f1ddec785d236f2501178bd3c7d493f716
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54264746"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55470586"
 ---
 # <a name="use-geo-restore-to-recover-a-multitenant-saas-application-from-database-backups"></a>Geografické obnovení použijte k obnovení ze zálohy databáze víceklientské aplikace SaaS
 
-Tento kurz se věnuje celé zotavení po havárii pro víceklientské aplikace SaaS s databází na tenanta modelu implementovaná. Použijete [geografické obnovení](https://docs.microsoft.com/azure/sql-database/sql-database-recovery-using-backups) obnovovat databáze katalogu a tenanta z automaticky udržována geograficky redundantní zálohy do určitá alternativní oblast. Jakmile se výpadek vyřeší, použijete [geografickou replikaci](https://docs.microsoft.com/azure/sql-database/sql-database-geo-replication-overview) repatriovat základní změny databáze do jejich původního oblasti.
+Tento kurz se věnuje celé zotavení po havárii pro víceklientské aplikace SaaS s databází na tenanta modelu implementovaná. Použijete [geografické obnovení](sql-database-recovery-using-backups.md) obnovovat databáze katalogu a tenanta z automaticky udržována geograficky redundantní zálohy do určitá alternativní oblast. Jakmile se výpadek vyřeší, použijete [geografickou replikaci](sql-database-geo-replication-overview.md) repatriovat základní změny databáze do jejich původního oblasti.
 
 ![Geo-restore-architecture](media/saas-dbpertenant-dr-geo-restore/geo-restore-architecture.png)
 
@@ -63,12 +63,12 @@ Zotavení po havárii (DR) je pro mnoho aplikací, což je důležité pro zaji�
 Tento kurz používá funkce služby Azure SQL Database a platformy Azure do řeší tyto problémy:
 
 * [Šablony Azure Resource Manageru](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-create-first-template), co nejrychleji rezervovat všechny potřebné kapacitu. Šablony Azure Resource Manageru se používají ke zřízení zrcadlový obraz původní servery a elastických fondů v oblasti obnovení. Samostatný server a fondu se vytvoří také pro zřizování nových tenantů.
-* [Klientská knihovna elastic Database](https://docs.microsoft.com/azure/sql-database/sql-database-elastic-database-client-library) (EDCL) k vytváření a údržbě databáze katalogu tenanta. Rozšířené katalogu obsahuje pravidelně aktualizovat informace o konfiguraci fondu a databáze.
-* [Funkce obnovení správy horizontálních oddílů](https://docs.microsoft.com/azure/sql-database/sql-database-elastic-database-recovery-manager) z EDCL, chcete-li zachovat databázi umístění položky v katalogu během obnovení a vrácení.  
-* [Geografické obnovení](https://docs.microsoft.com/azure/sql-database/sql-database-disaster-recovery), obnovovat databáze katalogu a tenanta z automaticky udržována geograficky redundantní zálohy. 
+* [Klientská knihovna elastic Database](sql-database-elastic-database-client-library.md) (EDCL) k vytváření a údržbě databáze katalogu tenanta. Rozšířené katalogu obsahuje pravidelně aktualizovat informace o konfiguraci fondu a databáze.
+* [Funkce obnovení správy horizontálních oddílů](sql-database-elastic-database-recovery-manager.md) z EDCL, chcete-li zachovat databázi umístění položky v katalogu během obnovení a vrácení.  
+* [Geografické obnovení](sql-database-disaster-recovery.md), obnovovat databáze katalogu a tenanta z automaticky udržována geograficky redundantní zálohy. 
 * [Operace obnovení asynchronní](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-async-operations), odesílají v pořadí podle priority tenanta, jsou zařazená do fronty pro každý fond systému a zpracování v dávkách tak fondu není přetížen. Tyto operace může být zrušen před nebo během provádění v případě potřeby.   
-* [Geografická replikace](https://docs.microsoft.com/azure/sql-database/sql-database-geo-replication-overview), repatriovat základní databáze do původní oblasti po výpadek. Při použití geografické replikace není bez ztráty dat a minimální dopad na tenanta.
-* [Aliasy DNS serveru SQL](https://docs.microsoft.com/azure/sql-database/dns-alias-overview), aby byl proces synchronizace katalogu pro připojení k aktivní katalogu, bez ohledu na jeho umístění.  
+* [Geografická replikace](sql-database-geo-replication-overview.md), repatriovat základní databáze do původní oblasti po výpadek. Při použití geografické replikace není bez ztráty dat a minimální dopad na tenanta.
+* [Aliasy DNS serveru SQL](dns-alias-overview.md), aby byl proces synchronizace katalogu pro připojení k aktivní katalogu, bez ohledu na jeho umístění.  
 
 ## <a name="get-the-disaster-recovery-scripts"></a>Získat skripty pro zotavení po havárii
 
@@ -378,4 +378,4 @@ Zkuste [zotavení po havárii pro víceklientské aplikace SaaS s využitím geo
 
 ## <a name="additional-resources"></a>Další materiály
 
-[Další kurzy, které vycházejí z aplikace SaaS aplikace Wingtip](https://docs.microsoft.com/azure/sql-database/sql-database-wtp-overview#sql-database-wingtip-saas-tutorials)
+[Další kurzy, které vycházejí z aplikace SaaS aplikace Wingtip](saas-dbpertenant-wingtip-app-overview.md#sql-database-wingtip-saas-tutorials)

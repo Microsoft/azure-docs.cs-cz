@@ -8,13 +8,13 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 02/14/2017
 ms.author: rogarana
-ms.component: common
-ms.openlocfilehash: 3e6a11a8c225afb220f290cee2db39c36750b401
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.subservice: common
+ms.openlocfilehash: 8fc85f82e5b6290a0f7401581e57b77473a495ae
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53632140"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55454007"
 ---
 # <a name="enabling-azure-storage-metrics-and-viewing-metrics-data"></a>Zapnutí metrik Azure Storage a zobrazení dat metrik
 [!INCLUDE [storage-selector-portal-enable-and-view-metrics](../../../includes/storage-selector-portal-enable-and-view-metrics.md)]
@@ -134,7 +134,7 @@ Aby bylo možné prostřednictvím kódu programu k tabulkám analytics, mějte 
 
 Pro tyto tabulky na najdete úplné podrobnosti o schémata [tabulkovému schématu metrik Storage Analytics](https://msdn.microsoft.com/library/azure/hh343264.aspx). Zobrazit pouze podmnožinu sloupců, které jsou k dispozici následující řádky vzorku, ale ukazují některé důležité funkce způsob, jakým metrik Storage ukládá tyto metriky:
 
-| PartitionKey | RowKey | Časové razítko | TotalRequests | TotalBillableRequests | TotalIngress | TotalEgress | Dostupnost | Hodnotu AverageE2ELatency | Hodnotu AverageServerLatency. | PercentSuccess |
+| PartitionKey | RowKey | Časové razítko | TotalRequests | TotalBillableRequests | TotalIngress | TotalEgress | Dostupnost | Hodnotu AverageE2ELatency | AverageServerLatency | PercentSuccess |
 | --- |:---:| ---:| --- | --- | --- | --- | --- | --- | --- | --- |
 | 20140522T1100 |uživatele. Všechny |2014-05-22T11:01:16.7650250Z |7 |7 |4003 |46801 |100 |104.4286 |6.857143 |100 |
 | 20140522T1100 |uživatele. QueryEntities |2014-05-22T11:01:16.7640250Z |5 |5 |2694 |45951 |100 |143.8 |7.8 |100 |

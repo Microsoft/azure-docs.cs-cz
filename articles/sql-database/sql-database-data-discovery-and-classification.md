@@ -11,13 +11,13 @@ author: ronitr
 ms.author: ronitr
 ms.reviewer: vanto
 manager: craigg
-ms.date: 10/15/2018
-ms.openlocfilehash: 8dfcee6e7f0e2fd21c35ed2507b572c6e8cffc42
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.date: 01/29/2019
+ms.openlocfilehash: 57c08fc8e3b7c655bcb59affcde5e37510f98920
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55217233"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55466588"
 ---
 # <a name="azure-sql-database-data-discovery-and-classification"></a>Azure SQL Database Data zjišťování a klasifikace
 
@@ -123,7 +123,7 @@ Po definování zásady pro celého tenanta, můžete pokračovat s klasifikací
 
 ## <a id="subheading-3"></a>Auditování přístupu k citlivým datům
 
-Důležitou součástí ochrany paradigma informace je schopnost sledovat přístup k citlivým datům. [Auditování Azure SQL Database](https://docs.microsoft.com/azure/sql-database/sql-database-auditing) má vylepšené a zahrnují nové pole do protokolu auditu volá *data_sensitivity_information*, které protokoly klasifikace citlivosti (popisky) skutečných dat, který byl vrácen dotaz.
+Důležitou součástí ochrany paradigma informace je schopnost sledovat přístup k citlivým datům. [Auditování Azure SQL Database](sql-database-auditing.md) má vylepšené a zahrnují nové pole do protokolu auditu volá *data_sensitivity_information*, které protokoly klasifikace citlivosti (popisky) skutečných dat, který byl vrácen dotaz.
 
 ![Protokol auditu](./media/sql-data-discovery-and-classification/11_data_classification_audit_log.png)
 
@@ -148,7 +148,7 @@ Můžete také použít rozhraní REST API můžete programově spravovat klasif
 ## <a id="subheading-5"></a>Další kroky
 
 - Další informace o [SQL rozšířené zabezpečení dat](sql-advanced-threat-protection.md).
-- Zvažte možnost nakonfigurovat [auditování služby Azure SQL Database](https://docs.microsoft.com/azure/sql-database/sql-database-auditing) pro sledování a auditování přístupu k vaší klasifikované citlivá data.
+- Zvažte možnost nakonfigurovat [auditování služby Azure SQL Database](sql-database-auditing.md) pro sledování a auditování přístupu k vaší klasifikované citlivá data.
 
 <!--Anchors-->
 [SQL Data Discovery & Classification overview]: #subheading-1

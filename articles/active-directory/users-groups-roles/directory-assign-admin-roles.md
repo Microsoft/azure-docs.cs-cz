@@ -10,16 +10,16 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: article
-ms.date: 01/28/2019
+ms.date: 01/29/2019
 ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
-ms.openlocfilehash: ca988c78abb42aeb377dfabeff58c95b4527e20e
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: 16f238114b56bd4e13358de34dfb33d93dbb1890
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55223523"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55301284"
 ---
 # <a name="administrator-role-permissions-in-azure-active-directory"></a>Oprávnění role správce v Azure Active Directory
 
@@ -85,7 +85,7 @@ K dispozici jsou následující role správce:
   > [!NOTE] 
   > V rozhraní Microsoft Graph API, Azure AD Graph API a Azure AD PowerShell tato role nazývá "Správce služby Dynamics 365". Je "Dynamics 365 správce" v [webu Azure portal](https://portal.azure.com).
 
-* **[Správce Exchange](#exchange-administrator)**: Uživatelé s touto rolí mají globální oprávnění ve službě Microsoft Exchange Online, pokud se tato služba používá. a také možnost vytvářet a spravovat všechny skupiny Office 365 spravovat lístky podpory a monitorovat stav služby. Další informace na [role správců Office 365](https://support.office.com/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d).
+* **[Správce Exchange](#exchange-service-administrator)**: Uživatelé s touto rolí mají globální oprávnění ve službě Microsoft Exchange Online, pokud se tato služba používá. a také možnost vytvářet a spravovat všechny skupiny Office 365 spravovat lístky podpory a monitorovat stav služby. Další informace na [role správců Office 365](https://support.office.com/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d).
   > [!NOTE]
   > V rozhraní Microsoft Graph API, Azure AD Graph API a Azure AD PowerShell tato role je označena jako "Správce služby Exchange". Je "Správce systému Exchange" v [webu Azure portal](https://portal.azure.com).
 
@@ -100,7 +100,7 @@ K dispozici jsou následující role správce:
 
 * **[Správce Information Protection](#information-protection-administrator)**: Uživatelé s touto rolí mají všechna oprávnění ve službě Azure Information Protection. Tato role umožňuje konfigurace popisků pro zásady Azure Information Protection, spravovat šablony ochrany a zapnutí ochrany. Tato role neuděluje žádná oprávnění v Centrum Identity Protection, Privileged Identity Management, monitorování Office 365 Service Health, nebo Office 365 Centru zabezpečení a dodržování předpisů.
 
-* **[Správce Intune](#intune-administrator)**: Uživatelé s touto rolí mají globální oprávnění v Microsoft Intune Online, pokud služba není k dispozici. Kromě toho tato role obsahuje možnost spravovat uživatele a zařízení, aby bylo možné přiřazovat zásady, jakož i vytvářet a spravovat skupiny. Další informace na [řízení správy na základě rolí (RBAC) v Microsoft Intune](https://docs.microsoft.com/intune/role-based-access-control)
+* **[Správce Intune](#intune-service-administrator)**: Uživatelé s touto rolí mají globální oprávnění v Microsoft Intune Online, pokud služba není k dispozici. Kromě toho tato role obsahuje možnost spravovat uživatele a zařízení, aby bylo možné přiřazovat zásady, jakož i vytvářet a spravovat skupiny. Další informace na [řízení správy na základě rolí (RBAC) v Microsoft Intune](https://docs.microsoft.com/intune/role-based-access-control)
   > [!NOTE]
   > V rozhraní Microsoft Graph API, Azure AD Graph API a Azure AD PowerShell tato role je označena jako "Správce služby Intune". Je "Správce Intune" v [webu Azure portal](https://portal.azure.com).
 
@@ -130,7 +130,7 @@ K dispozici jsou následující role správce:
   > V rozhraní Microsoft Graph API, Azure AD Graph API a Azure AD PowerShell tato role nazývá "Správce technické podpory". Je "Heslo správce" v [webu Azure portal](https://portal.azure.com/).
   >
   
-* **[Správce služby Power BI](#power-bi-administrator)**: Uživatelé s touto rolí mají globální oprávnění v Microsoft Power BI, pokud se služba používá, a možnost spravovat lístky podpory a monitorovat stav služby. Další informace na [Principy role správce Power BI](https://docs.microsoft.com/power-bi/service-admin-role).
+* **[Správce služby Power BI](#power-bi-service-administrator)**: Uživatelé s touto rolí mají globální oprávnění v Microsoft Power BI, pokud se služba používá, a možnost spravovat lístky podpory a monitorovat stav služby. Další informace na [Principy role správce Power BI](https://docs.microsoft.com/power-bi/service-admin-role).
   > [!NOTE]
   > V rozhraní Microsoft Graph API, Azure AD Graph API a Azure AD PowerShell tato role je označena jako "Správce služby Power BI". Je "správce Power BI" v [webu Azure portal](https://portal.azure.com).
 
@@ -186,24 +186,24 @@ K dispozici jsou následující role správce:
   > [!NOTE]
   > V rozhraní Microsoft Graph API, Azure AD Graph API a Azure AD PowerShell tato role je označena jako "Správce podpory služeb." Je "Správce služby" v [webu Azure portal](https://portal.azure.com), na portálu pro správu Office 365 a na portálu Intune.
 
-* **[Správce Sharepointu](#sharepoint-administrator)**: Uživatelé s touto rolí mají globální oprávnění v Microsoft SharePoint Online, pokud služba používá, a možnost vytvářet a spravovat všechny skupiny Office 365, spravovat lístky podpory a monitorovat stav služby. Další informace na [role správců Office 365](https://support.office.com/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d).
+* **[Správce Sharepointu](#sharepoint-service-administrator)**: Uživatelé s touto rolí mají globální oprávnění v Microsoft SharePoint Online, pokud služba používá, a možnost vytvářet a spravovat všechny skupiny Office 365, spravovat lístky podpory a monitorovat stav služby. Další informace na [role správců Office 365](https://support.office.com/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d).
   > [!NOTE]
   > V rozhraní Microsoft Graph API, Azure AD Graph API a Azure AD PowerShell tato role je označena jako "Správce služeb Sharepointu." Je "Správce služby SharePoint" v [webu Azure portal](https://portal.azure.com).
 
-* **[Skype pro firmy / Správce služby Lync](#skype-for-business-administrator)**: Uživatelé s touto rolí mají globální oprávnění v rámci Microsoft Skype pro firmy, pokud služba používá, stejně jako správu Skype konkrétní atributy uživatele v Azure Active Directory. Kromě toho tato role uděluje možnost spravovat lístky podpory a monitorovat stav služby a k přístupu do týmů a Skype pro firmy centra pro správu. Účet musí mít také licenci pro týmy, nebo se nedal spustit rutiny prostředí PowerShell týmy. Další informace na [o Skype pro firmy roli správce](https://support.office.com/article/about-the-skype-for-business-admin-role-aeb35bda-93fc-49b1-ac2c-c74fbeb737b5) a týmy, které informace o licencích na [Skype pro firmy a Microsoft Teams doplněk licencování](https://docs.microsoft.com/skypeforbusiness/skype-for-business-and-microsoft-teams-add-on-licensing/skype-for-business-and-microsoft-teams-add-on-licensing)
+* **[Skype pro firmy / Správce služby Lync](#lync-service-administrator)**: Uživatelé s touto rolí mají globální oprávnění v rámci Microsoft Skype pro firmy, pokud služba používá, stejně jako správu Skype konkrétní atributy uživatele v Azure Active Directory. Kromě toho tato role uděluje možnost spravovat lístky podpory a monitorovat stav služby a k přístupu do týmů a Skype pro firmy centra pro správu. Účet musí mít také licenci pro týmy, nebo se nedal spustit rutiny prostředí PowerShell týmy. Další informace na [o Skype pro firmy roli správce](https://support.office.com/article/about-the-skype-for-business-admin-role-aeb35bda-93fc-49b1-ac2c-c74fbeb737b5) a týmy, které informace o licencích na [Skype pro firmy a Microsoft Teams doplněk licencování](https://docs.microsoft.com/skypeforbusiness/skype-for-business-and-microsoft-teams-add-on-licensing/skype-for-business-and-microsoft-teams-add-on-licensing)
 
   > [!NOTE]
   > V rozhraní Microsoft Graph API, Azure AD Graph API a Azure AD PowerShell tato role nazývá "Správce služeb Lyncu". Je "Skype pro firmy správce" v [webu Azure portal](https://portal.azure.com/).
+
+* **[Týmy, které správce](#teams-service-administrator)**: Uživatelé s touto rolí může spravovat všechny aspekty sady funkcí Microsoft Teams přes Microsoft Teams a Skype pro firmy centra pro správu a odpovídajících modulů prostředí PowerShell. To zahrnuje mimo jiné oblasti, všem nástrojům pro správu související s telefonního subsystému, zasílání zpráv, setkání a samotné týmy. Tato role navíc uděluje možnost vytvářet a spravovat všechny skupiny Office 365, spravovat lístky podpory a monitorovat stav služby.
+  > [!NOTE]
+  > V rozhraní Microsoft Graph API, Azure AD Graph API a Azure AD PowerShell tato role je identifikován jako "týmy služby správce". Je "Týmy správce" v [webu Azure portal](https://portal.azure.com).
 
 * **[Týmy, které správce komunikaci](#teams-communications-administrator)**: Uživatelé v této roli mohou spravovat aspekty související s Hl & telefonního subsystému zatížení Microsoft Teams. To zahrnuje nástroje pro správu pro přiřazení telefonní čísla, zásady pro hlasové hovory a schůzky a úplný přístup k nástrojů analytics volání.
 
 * **[Týmy, které pracovník podpory komunikace](#teams-communications-support-engineer)**: Uživatelé v této roli můžete řešit problémy s komunikací v Microsoft Teams a Skype pro firmy pomocí volání uživatele řešení potíží s nástroji v Microsoft Teams a Skype pro firmy centra pro správu. Uživatelé v této roli můžete zobrazit informace o záznamu úplné volání pro všechny účastníky zahrnuté. Tato role nemá přístup k zobrazení, vytvořit nebo spravovat lístky podpory.
 
 * **[Týmy, které odborné komunikace](#teams-communications-support-specialist)**: Uživatelé v této roli můžete řešit problémy s komunikací v Microsoft Teams a Skype pro firmy pomocí volání uživatele řešení potíží s nástroji v Microsoft Teams a Skype pro firmy centra pro správu. Uživatelé v této roli můžete zobrazit podrobnosti o uživateli pouze ve volání pro konkrétního uživatele, že se že mají vyhledávat. Tato role nemá přístup k zobrazení, vytvořit nebo spravovat lístky podpory.
-
-* **[Týmy, které správce](#teams-administrator)**: Uživatelé s touto rolí může spravovat všechny aspekty sady funkcí Microsoft Teams přes Microsoft Teams a Skype pro firmy centra pro správu a odpovídajících modulů prostředí PowerShell. To zahrnuje mimo jiné oblasti, všem nástrojům pro správu související s telefonního subsystému, zasílání zpráv, setkání a samotné týmy. Tato role navíc uděluje možnost vytvářet a spravovat všechny skupiny Office 365, spravovat lístky podpory a monitorovat stav služby.
-  > [!NOTE]
-  > V rozhraní Microsoft Graph API, Azure AD Graph API a Azure AD PowerShell tato role je identifikován jako "týmy služby správce". Je "Týmy správce" v [webu Azure portal](https://portal.azure.com).
 
 * **[Správce uživatelských účtů](#user-account-administrator)**: Uživatelé s touto rolí můžou vytvářet uživatele a spravovat všechny aspekty uživatelů s určitými omezeními (viz níže). Uživatelé s touto rolí kromě toho můžete vytvořit a spravovat všechny skupiny. Tato role zahrnuje také možnost vytvářet a spravovat zobrazení uživatelů, spravovat lístky podpory a monitorovat stav služby.
 

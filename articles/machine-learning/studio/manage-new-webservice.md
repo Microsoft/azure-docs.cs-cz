@@ -1,6 +1,6 @@
 ---
-Název: Použití portálu titleSuffix webových služeb Azure Machine Learning Studio: Azure Machine Learning Studio Popis: Můžete spravovat novou Machine Learning a klasické webové služby pomocí portálu Microsoft Azure Machine Learning Web Services. Protože klasické webové služby a nové webové služby jsou založeny na různé základní technologie, získáte možnosti správy mírně liší pro každý z nich.
-Services: machine learningu ms.service: ms.component strojového učení: studio ms.topic: článku
+Název: Použití portálu titleSuffix webových služeb Azure Machine Learning Studio: Azure Machine Learning Studio Popis: Můžete spravovat novou Machine Learning a klasické webové služby pomocí portálu Microsoft Azure Machine Learning Web Services. Protože klasické webové služby a nové webové služby jsou založeny na různé základní technologie, získáte možnosti správy mírně liší pro každý z nich.
+Services: machine learningu ms.service: ms.subservice strojového učení: studio ms.topic: článku
 
 Autor: ericlicoding ms.author: amlstudiodocs ms.custom: předchozí ms.author=yahajiza, předchozí Autor = YasinMSFT ms.date: 02/28/2017
 ---

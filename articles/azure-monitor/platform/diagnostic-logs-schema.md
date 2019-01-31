@@ -8,12 +8,12 @@ ms.topic: reference
 ms.date: 10/11/2018
 ms.author: johnkem
 ms.subservice: logs
-ms.openlocfilehash: ebadf69d5740dc9b9907880917516419129db170
-ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
+ms.openlocfilehash: 6470e2e48854d091c219fb4ec3224e87b1567dd7
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54890095"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55300213"
 ---
 # <a name="supported-services-schemas-and-categories-for-azure-diagnostic-logs"></a>Podporované služby, schémat a kategorie pro diagnostické protokoly Azure
 
@@ -76,7 +76,7 @@ Schéma protokolů diagnostiky prostředků se liší podle kategorie prostředk
 | Service Bus |[Diagnostické protokoly Azure Service Bus](../../service-bus-messaging/service-bus-diagnostic-logs.md) |
 | SQL Database | [Protokolování diagnostiky služby Azure SQL Database](../../sql-database/sql-database-metrics-diag-logging.md) |
 | Stream Analytics |[Diagnostické protokoly úloh](../../stream-analytics/stream-analytics-job-diagnostic-logs.md) |
-| Traffic Manager | Schéma není k dispozici. |
+| Traffic Manager | [Schéma protokolu Traffic Manageru](../../traffic-manager/traffic-manager-diagnostic-logs.md) |
 | Virtuální sítě | Schéma není k dispozici. |
 | Brány virtuálních sítí | Schéma není k dispozici. |
 

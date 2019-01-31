@@ -7,13 +7,13 @@ ms.service: storage
 ms.topic: article
 ms.date: 10/08/2018
 ms.author: tamram
-ms.component: common
-ms.openlocfilehash: 7afbdaba46674b69aa601355e80160e7c72ff373
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.subservice: common
+ms.openlocfilehash: 3fb3860cbda2e1d46505711d7a175e5d42ec7018
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51240966"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55455503"
 ---
 # <a name="azure-storage-replication"></a>Účet replikace Azure Storage
 
@@ -39,7 +39,7 @@ Následující tabulka poskytuje rychlý přehled o oboru odolnosti a dostupnost
 | K výpadku celé oblasti                                                                                     | Ne                              | Ne                               | Ano                                  | Ano                                  |
 | Přístup pro čtení k datům (v oblasti vzdálené, geograficky replikovaného) v případě nedostupnosti celé oblasti | Ne                              | Ne                               | Ne                                   | Ano                                  |
 | Navrženo pro zajištění \_ \_ odolnosti objektů v průběhu daného roku                                          | alespoň 99,999999999 % (11 9) | alespoň 99,9999999999 % (12 9) | minimálně 99,99999999999999 % (16. 9) | minimálně 99,99999999999999 % (16. 9) |
-| Typy účtů úložiště podporuje                                                                   | Objektů Blob v účtech GPv1, GPv2                | GPv2                             | Objektů Blob v účtech GPv1, GPv2                     | Objektů Blob v účtech GPv1, GPv2                     |
+| Typy účtů úložiště podporuje                                                                   | GPv2, GPv1, Blob                | GPv2                             | GPv2, GPv1, Blob                     | GPv2, GPv1, Blob                     |
 | Smlouva SLA o dostupnosti pro požadavky na čtení | Minimálně 99,9 % (99 % pro vrstvu přístupu cool) | Minimálně 99,9 % (99 % pro vrstvu přístupu cool) | Minimálně 99,9 % (99 % pro vrstvu přístupu cool) | Minimálně 99,99 % (99,9 % pro vrstvu přístupu Cool) |
 | Smlouva SLA o dostupnosti pro požadavky na zápis | Minimálně 99,9 % (99 % pro vrstvu přístupu cool) | Minimálně 99,9 % (99 % pro vrstvu přístupu cool) | Minimálně 99,9 % (99 % pro vrstvu přístupu cool) | Minimálně 99,9 % (99 % pro vrstvu přístupu cool) |
 
@@ -48,7 +48,7 @@ Informace o cenách pro jednotlivé možnosti redundance, naleznete v tématu [c
 Informace o službě Azure Storage záruky dostupnosti a odolnosti najdete v článku [SLA pro Azure Storage](https://azure.microsoft.com/support/legal/sla/storage/).
 
 > [!NOTE]
-> Premium Storage podporuje jen místně redundantní úložiště (LRS). Informace o službě Premium Storage najdete v tématu [Premium Storage: vysoce výkonné úložiště pro úlohy virtuálních počítačů Azure](../../virtual-machines/windows/premium-storage.md).
+> Premium Storage podporuje jen místně redundantní úložiště (LRS). Informace o službě Premium Storage najdete v tématu [Premium Storage: Vysoce výkonné úložiště pro úlohy virtuálních počítačů Azure](../../virtual-machines/windows/premium-storage.md).
 
 ## <a name="changing-replication-strategy"></a>Změna strategie replikace
 Můžeme vám umožňují změnit strategie replikace účtu úložiště pomocí [webu Azure portal](https://portal.azure.com/), [prostředí Azure Powershell](storage-powershell-guide-full.md), [rozhraní příkazového řádku Azure](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest), nebo jeden mnoho [ Klientské knihovny Azure](https://docs.microsoft.com/azure/index?view=azure-dotnet#pivot=sdkstools). Změna typu replikace účtu úložiště nemá za následek časové prodlevy.
@@ -63,10 +63,10 @@ Pokud změníte z GRS na LRS, se neúčtují žádné další poplatky, ale repl
 
 ## <a name="see-also"></a>Další informace najdete v tématech
 
-- [Místně redundantní úložiště (LRS): redundanci dat s nízkými náklady pro službu Azure Storage](storage-redundancy-lrs.md)
-- [Zónově redundantní úložiště (ZRS): vysoce dostupné aplikace služby Azure Storage](storage-redundancy-zrs.md)
-- [Geograficky redundantní úložiště (GRS): replikace mezi zónami pro službu Azure Storage](storage-redundancy-grs.md)
+- [Místně redundantní úložiště (LRS): Redundanci dat s nízkými náklady pro službu Azure Storage](storage-redundancy-lrs.md)
+- [Zónově redundantní úložiště (ZRS): Vysoce dostupné aplikace služby Azure Storage](storage-redundancy-zrs.md)
+- [Geograficky redundantní úložiště (GRS): Replikace mezi zónami pro službu Azure Storage](storage-redundancy-grs.md)
 - [Azure škálovatelnost a výkonnostní cíle Storage](storage-scalability-targets.md)
 - [Navrhování aplikací s vysokou dostupností pomocí RA-GRS úložiště](../storage-designing-ha-apps-with-ragrs.md)
 - [Microsoft Azure Storage redundance možnosti a oprávnění ke čtení geograficky redundantní úložiště ](https://blogs.msdn.com/b/windowsazurestorage/archive/2013/12/11/introducing-read-access-geo-replicated-storage-ra-grs-for-windows-azure-storage.aspx)
-- [Dokument SOSP - Azure Storage: Vysoce dostupné služby cloudového úložiště se silnou konzistenci](https://blogs.msdn.com/b/windowsazurestorage/archive/2011/11/20/windows-azure-storage-a-highly-available-cloud-storage-service-with-strong-consistency.aspx)
+- [Dokument SOSP - Azure Storage: Služby s vysokou dostupností cloudového úložiště se silnou konzistenci](https://blogs.msdn.com/b/windowsazurestorage/archive/2011/11/20/windows-azure-storage-a-highly-available-cloud-storage-service-with-strong-consistency.aspx)

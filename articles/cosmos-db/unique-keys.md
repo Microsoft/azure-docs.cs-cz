@@ -7,14 +7,14 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 10/30/2018
 ms.reviewer: sngun
-ms.openlocfilehash: 20e5c96110f07d8eaec218ed167c87a48fd65782
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: 73d4ba0c82f26a6249528f2dbef1fd30f99ccedb
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54037374"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55475869"
 ---
-# <a name="unique-keys-in-azure-cosmos-db"></a>Jedinečné klíče ve službě Azure Cosmos DB
+# <a name="unique-key-constraints-in-azure-cosmos-db"></a>Omezení jedinečných klíčů ve službě Azure Cosmos DB
 
 Jedinečné klíče umožňují přidat vrstvu integrity dat do kontejneru Cosmos. Vytvoříte zásady jedinečného klíče při vytváření kontejneru Cosmos. S jedinečnými klíči, zajistíte jedinečnost jedné nebo více hodnot v rámci logického oddílu (může zaručit jedinečnost za [klíč oddílu](partition-data.md)). Jakmile vytvoříte kontejner pomocí zásady jedinečného klíče, brání vytváření všechny nové (nebo aktualizované) duplicitní položky v rámci logického oddílu, jak jsou určené omezení unique key. Klíč oddílu v kombinaci s jedinečné klíče zaručuje jedinečnost položky v rámci oboru kontejneru.
 

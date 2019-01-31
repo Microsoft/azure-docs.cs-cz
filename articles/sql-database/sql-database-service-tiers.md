@@ -11,22 +11,24 @@ author: CarlRabeler
 ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
-ms.date: 12/10/2018
-ms.openlocfilehash: 9d566c0f95325635c5ce5030f4d3b22dba7ceb08
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.date: 01/25/2019
+ms.openlocfilehash: 719e8c605dfc91b1d9c358158aa3dca248173f90
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53726027"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55472010"
 ---
 # <a name="azure-sql-database-purchasing-models"></a>Azure SQL Database zakoupení modelů
 
 Azure SQL Database umožňuje jednoduše koupit plně spravovanou PaaS databázový stroj, který nejlépe vyhovuje vašim potřebám výkonu a nákladů. V závislosti na modelu nasazení Azure SQL Database můžete vybrat nákupní model, který nejlépe vyhovuje vašim potřebám:
+
 - [nákupní model založený na virtuálních jádrech](sql-database-service-tiers-vcore.md) (doporučeno), která umožňuje vybrat přesné množství kapacity úložiště a výpočetní potřebné pro vaši úlohu.
 - [Nákupní model založený na DTU](sql-database-service-tiers-dtu.md) kde můžete vybrat dodávat výpočetní a úložné balíčky s vyrovnáváním pro běžné úlohy.
 
 V modelech nasazení Azure SQL Database k dispozici jsou různé modely nákupu:
-- [Logické servery](sql-database-logical-servers.md) v [Azure SQL Database](sql-database-technical-overview.md) nabízí i [nákupní model založený na DTU](sql-database-service-tiers-dtu.md) a [nákupní model založený na virtuálních jádrech](sql-database-service-tiers-vcore.md). V rámci této nákupní model, můžete zvolit [izolované databáze](sql-database-single-databases-manage.md) nebo [elastické fondy](sql-database-elastic-pool.md).
+
+- [Izolované databáze](sql-database-single-databases-manage.md) a [elastické fondy](sql-database-elastic-pool.md) v [Azure SQL Database](sql-database-technical-overview.md) nabízí i [nákupní model založený na DTU](sql-database-service-tiers-dtu.md) a [založený na virtuálních jádrech nákupní model](sql-database-service-tiers-vcore.md). 
 - [Spravované instance](sql-database-managed-instance.md) jenom nabídky Azure SQL Database [nákupní model založený na virtuálních jádrech](sql-database-service-tiers-vcore.md).
 
 > [!IMPORTANT]
@@ -64,7 +66,7 @@ Jednotky transakcí databáze (DTU) představuje kombinaci měření procesoru, 
 
 ### <a name="database-transaction-units-dtus"></a>Jednotky transakcí databáze (Dtu)
 
-Pro izolované databáze Azure SQL na daném vypočítat velikost v rámci [úroveň služby](sql-database-single-database-scale.md), Microsoft zaručuje určité úrovně prostředků pro tuto databázi (nezávisle na jakékoli jiné databáze v cloudu Azure), předvídatelný poskytnutí úroveň výkonu. Objem prostředků se počítá jako počet jednotek databázové transakce nebo počet jednotek Dtu a je jako součást balíčku míra výpočty, úložiště a vstupně-VÝSTUPNÍCH prostředků. Poměr mezi těmito prostředky byl původně určené [úlohou srovnávacího testu OLTP](sql-database-benchmark-overview.md), navržená tak, aby jako typická pro úlohy OLTP v reálném světě. Pokud vaše úloha překračuje množství některý z těchto prostředků, propustnost je omezené – následek pomalejší výkon a časové limity. Prostředky využívané třídou úlohy nemají vliv na prostředky dostupné pro jiné databáze SQL v cloudu Azure a prostředky využívané třídou jiné úlohy nemají vliv na prostředky dostupné pro vaši službu SQL database.
+Pro jednu databázi na daném vypočítat velikost v rámci [úroveň služby](sql-database-single-database-scale.md), Microsoft zaručuje určité úrovně prostředků pro tuto databázi (nezávisle na jakékoli jiné databáze v cloudu Azure), poskytuje předvídatelný úroveň výkon. Objem prostředků se počítá jako počet jednotek databázové transakce nebo počet jednotek Dtu a je jako součást balíčku míra výpočty, úložiště a vstupně-VÝSTUPNÍCH prostředků. Poměr mezi těmito prostředky byl původně určené [úlohou srovnávacího testu OLTP](sql-database-benchmark-overview.md), navržená tak, aby jako typická pro úlohy OLTP v reálném světě. Pokud vaše úloha překračuje množství některý z těchto prostředků, propustnost je omezené – následek pomalejší výkon a časové limity. Prostředky využívané třídou úlohy nemají vliv na prostředky dostupné pro jiné databáze SQL v cloudu Azure a prostředky využívané třídou jiné úlohy nemají vliv na prostředky dostupné pro vaši službu SQL database.
 
 ![ohraničujícího rámečku](./media/sql-database-what-is-a-dtu/bounding-box.png)
 

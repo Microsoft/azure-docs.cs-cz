@@ -16,13 +16,13 @@ ms.workload: infrastructure
 ms.date: 11/05/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.component: disks
-ms.openlocfilehash: d8ae255242979978ac0f16a1b483a99796772192
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.subservice: disks
+ms.openlocfilehash: 1db4dd2f1aa550ea4ccac55882f147c0585cdd0c
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54464404"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55466723"
 ---
 # <a name="tutorial---manage-azure-disks-with-azure-powershell"></a>Kurz: Správa disků v Azure pomocí Azure PowerShellu
 

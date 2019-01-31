@@ -3,19 +3,19 @@ title: Týmový vývoj se službou Azure Dev Spaces pomocí VS Code | Microsoft 
 titleSuffix: Azure Dev Spaces
 services: azure-dev-spaces
 ms.service: azure-dev-spaces
-ms.component: azds-kubernetes
+ms.subservice: azds-kubernetes
 author: zr-msft
 ms.author: zarhoads
 ms.date: 07/09/2018
 ms.topic: tutorial
 description: Rychlý vývoj na platformě Kubernetes s využitím kontejnerů a mikroslužeb v Azure
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, kontejnery
-ms.openlocfilehash: 4b45cf6d986aa8bf404e77e7a6cf0005183f1133
-ms.sourcegitcommit: 275eb46107b16bfb9cf34c36cd1cfb000331fbff
+ms.openlocfilehash: 8a7200723b39c40fe9596bbab0acaf752acbbaf8
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51706564"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55451389"
 ---
 # <a name="team-development-with-azure-dev-spaces"></a>Týmový vývoj se službou Azure Dev Spaces
 
@@ -34,7 +34,7 @@ Ve složce `samples` už byste měli mít k tomuto průvodci ukázkový kód pro
 1. V *samostatném okně editoru VS Code* otevřete složku `mywebapi`.
 1. Otevřete **paletu příkazů** (pomocí nabídky **Zobrazit | Paleta příkazů**) a pomocí automatického dokončování zadejte a vyberte tento příkaz: `Azure Dev Spaces: Prepare configuration files for Azure Dev Spaces`. Nezaměňujte tento příkaz s příkazem `azds prep`, který projekt nakonfiguruje pro nasazení.
 1. Stiskněte F5 a počkejte na sestavení a nasazení služby. Připravenou službu poznáte podle toho, že se zobrazí panel ladění editoru VS Code.
-1. Poznamenejte si adresu URL koncového bodu, která by měla vypadat zhruba takto http://localhost:\<portnumber\>. **Tip: Na stavovém řádku editoru VS Code se zobrazí adresa URL, na kterou můžete kliknout.** I když to vypadá, že kontejner je spuštěný v místním prostředí, ve skutečnosti je spuštěný ve vývojovém prostředí v Azure. Důvodem adresy místního hostitele je, že služba `mywebapi` nemá definované veřejné koncové body, a proto je přístupná jenom z instance Kubernetes. Kvůli jednodušší práci a interakci se soukromou službou z místního počítače vytvoří Azure Dev Spaces do kontejneru se spuštěným Azure dočasný tunel SSH.
+1. Poznamenejte si adresu URL koncového bodu, která by měla vypadat zhruba takto http://localhost:\<portnumber\>. **Tip: Stavový řádek VS Code se zobrazí po kliknutí adresy URL.** I když to vypadá, že kontejner je spuštěný v místním prostředí, ve skutečnosti je spuštěný ve vývojovém prostředí v Azure. Důvodem adresy místního hostitele je, že služba `mywebapi` nemá definované veřejné koncové body, a proto je přístupná jenom z instance Kubernetes. Kvůli jednodušší práci a interakci se soukromou službou z místního počítače vytvoří Azure Dev Spaces do kontejneru se spuštěným Azure dočasný tunel SSH.
 1. Až bude služba `mywebapi` připravená, otevřete v prohlížeči adresu místního hostitele. Měla by se zobrazit odpověď služby `mywebapi` („Hello from mywebapi“).
 
 
@@ -70,7 +70,7 @@ Předchozí příklad kódu předává hlavičku `azds-route-as` z příchozího
 1. Nastavte zarážku ve výchozí obslužné rutině GET `/`.
 1. V projektu `webfrontend` nastavte zarážku těsně před odesláním požadavku GET do `http://mywebapi`.
 1. V projektu `webfrontend` stiskněte klávesu F5.
-1. Otevřete webovou aplikaci a projděte kód obou služeb. Ve webové aplikaci by se měla zobrazit zpráva vytvořená spojením řetězců dvou služeb: „Hello from webfrontend and Hello from mywebapi.“
+1. Otevřete webovou aplikaci a projděte kód obou služeb. Webová aplikace by se zobrazit zpráva zřetězit dvě služby: "Hello webfrontend a Hello z mywebapi."
 
 Hotovo! Teď máte aplikaci s více kontejnery, kde můžete každý kontejner vyvíjet a nasazovat odděleně.
 

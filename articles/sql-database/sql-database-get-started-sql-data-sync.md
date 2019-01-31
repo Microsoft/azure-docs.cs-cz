@@ -11,13 +11,13 @@ author: allenwux
 ms.author: xiwu
 ms.reviewer: douglasl
 manager: craigg
-ms.date: 01/08/2018
-ms.openlocfilehash: eb788c07ed9424ae6d5beed5be11c71a11c62265
-ms.sourcegitcommit: 70471c4febc7835e643207420e515b6436235d29
+ms.date: 01/25/2018
+ms.openlocfilehash: 03ea4a7db27e32b370be89adf308ded9a22f9e37
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2019
-ms.locfileid: "54304274"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55478419"
 ---
 # <a name="tutorial-set-up-sql-data-sync-between-azure-sql-database-and-sql-server-on-premises"></a>Kurz: Nastavení synchronizace dat SQL mezi Azure SQL Database a SQL Server v místním
 
@@ -71,17 +71,17 @@ V **databáze centra** části, zadejte existující přihlašovací údaje pro 
 
 ### <a name="to-add-an-azure-sql-database"></a>Chcete-li přidat službu Azure SQL Database
 
-V **členské databáze** části, volitelně přidat službu Azure SQL Database do skupiny synchronizace tak, že vyberete **přidat databázi Azure**. **Konfigurace služby Azure Database** otevře se stránka.
+V **členské databáze** části, volitelně přidat službu Azure SQL Database do skupiny synchronizace tak, že vyberete **přidat službu Azure SQL Database**. **Konfigurace služby Azure SQL Database** otevře se stránka.
 
   ![Krok 2: Konfigurace databáze](media/sql-database-get-started-sql-data-sync/steptwo-configure.png)
 
-  Na **konfigurace služby Azure Database** stránce, změnit následující nastavení:
+  Na **konfigurace služby Azure SQL Database** stránce, změnit následující nastavení:
 
   | Nastavení                       | Popis |
   | ----------------------------- | ------------------------------------------------- |
   | **Název člena synchronizace** | Zadejte název nového člena synchronizace. Tento název se liší od samotný název databáze. |
   | **Předplatné** | Vyberte k přidruženému předplatnému Azure pro účely fakturace. |
-  | **Azure SQL Server** | Vyberte existující databázi serveru SQL. |
+  | **Azure SQL Server** | Vyberte existující server SQL Database. |
   | **Azure SQL Database** | Vyberte existující databázi SQL. |
   | **Směry synchronizace** | Vyberte **obousměrná synchronizace**, **k centru**, nebo **z centra**. |
   | **Uživatelské jméno** a **heslo** | Zadejte existující přihlašovací údaje pro server SQL Database, na kterém je umístěna databáze člena. Nezadávejte *nové* přihlašovacích údajů v této části. |

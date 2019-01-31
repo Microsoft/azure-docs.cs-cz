@@ -8,13 +8,13 @@ ms.devlang: Java
 ms.topic: article
 ms.date: 02/28/2017
 ms.author: seguler
-ms.component: common
-ms.openlocfilehash: a62af881efd4f6f3422db19850a0ce9987c6ae7b
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.subservice: common
+ms.openlocfilehash: 431a4ef4e84c88467dc7e36bb12d406309f9a8b7
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51245116"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55467828"
 ---
 # <a name="using-azure-storage-with-a-hudson-continuous-integration-solution"></a>Použití Azure Storage s řešením Hudson Continuous Integration
 ## <a name="overview"></a>Přehled
@@ -38,7 +38,7 @@ Výhody použití služby Blob service pro hostování artefakty sestavení agil
 ## <a name="prerequisites"></a>Požadavky
 Budete potřebovat následující příkaz pro použití služby Blob service s řešením Hudson CI:
 
-* Řešení Hudson Continuous Integration.
+* A Hudson Continuous Integration solution.
   
     Pokud momentálně nemáte k dispozici řešení Hudson CI, můžete spustit řešení Hudson CI následujícím způsobem:
   
@@ -144,10 +144,10 @@ Po spuštění sestavení, můžete zkontrolovat výstup na konzole historie ses
 ## <a name="components-used-by-the-blob-service"></a>Součásti, které používají službu Blob service
 Následující body nabízí přehled komponent služby objektů Blob.
 
-* **Účet úložiště**: veškerý přístup ke službě Azure Storage se provádí prostřednictvím účtu úložiště. Toto je nejvyšší úroveň oboru názvů pro přístup k objektům BLOB. Účet může obsahovat neomezený počet kontejnerů, jejich celkové velikosti je v části 100 TB.
-* **Kontejner**: kontejner zajišťuje seskupení sady objektů BLOB. Všechny objekty blob musí být v kontejneru. Účet může obsahovat neomezený počet kontejnerů. Kontejner můžete pojmout neomezený počet objektů blob.
-* **Objekt BLOB**: soubor libovolného typu a velikosti. Existují dva typy objektů BLOB, které mohou být uloženy ve službě Azure Storage: objekty BLOB bloků a stránek. Většina souborů jsou objekty BLOB bloku. Jeden objekt blob bloku může být až do velikosti 200 GB. Tento kurz používá objekty BLOB bloku. Objekty BLOB stránky, jiný typ objektu blob může být až 1 TB, velikost a jsou efektivnější, pokud jsou často upravit rozsah bajtů v souboru. Další informace o objektech BLOB najdete v tématu [vysvětlení objektů BLOB bloku, doplňovací objekty BLOB a objekty BLOB stránky](https://msdn.microsoft.com/library/azure/ee691964.aspx).
-* **Formát adresy URL**: objekty BLOB jsou adresovatelné v následujícím formátu adresy URL:
+* **Účet úložiště**: Veškerý přístup ke službě Azure Storage se provádí prostřednictvím účtu úložiště. Toto je nejvyšší úroveň oboru názvů pro přístup k objektům BLOB. Účet může obsahovat neomezený počet kontejnerů, jejich celkové velikosti je v části 100 TB.
+* **kontejner**: Kontejner zajišťuje seskupení sady objektů BLOB. Všechny objekty blob musí být v kontejneru. Účet může obsahovat neomezený počet kontejnerů. Kontejner můžete pojmout neomezený počet objektů blob.
+* **Blob**: Soubor libovolného typu a velikosti. Existují dva typy objektů BLOB, které mohou být uloženy ve službě Azure Storage: objekty BLOB bloků a stránek. Většina souborů jsou objekty BLOB bloku. Jeden objekt blob bloku může být až do velikosti 200 GB. Tento kurz používá objekty BLOB bloku. Objekty BLOB stránky, jiný typ objektu blob může být až 1 TB, velikost a jsou efektivnější, pokud jsou často upravit rozsah bajtů v souboru. Další informace o objektech BLOB najdete v tématu [vysvětlení objektů BLOB bloku, doplňovací objekty BLOB a objekty BLOB stránky](https://msdn.microsoft.com/library/azure/ee691964.aspx).
+* **Formát adresy URL**: Objekty BLOB jsou adresovatelné v následujícím formátu adresy URL:
   
     `http://storageaccount.blob.core.windows.net/container_name/blob_name`
   
@@ -158,7 +158,7 @@ Následující body nabízí přehled komponent služby objektů Blob.
     `http://example.blob.core.windows.net/myjob/2014-05-01_11-56-22/1/hello.txt`
 
 ## <a name="next-steps"></a>Další postup
-* [Musí splňovat Hudson](http://wiki.eclipse.org/Hudson-ci/Meet_Hudson)
+* [Meet Hudson](http://wiki.eclipse.org/Hudson-ci/Meet_Hudson)
 * [Azure Storage SDK pro Javu](https://github.com/azure/azure-storage-java)
 * [Referenční informace ke klientské sadě SDK služby Azure Storage](http://dl.windowsazure.com/storage/javadoc/)
 * [REST API služby Azure Storage](https://msdn.microsoft.com/library/azure/dd179355.aspx)

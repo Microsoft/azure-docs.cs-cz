@@ -7,14 +7,14 @@ ms.topic: conceptual
 ms.date: 11/14/2018
 ms.author: mjbrown
 ms.reviewer: sngun
-ms.openlocfilehash: 5af305a2e0d4754cf4fad8557db9d367c828ecc5
-ms.sourcegitcommit: 9f07ad84b0ff397746c63a085b757394928f6fc0
+ms.openlocfilehash: 044fe3de265d298ecd366a50b9db77eeea32bbb7
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54389104"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55457934"
 ---
-# <a name="database-transactions-and-optimistic-concurrency-control"></a>Databázové transakce a optimistického řízení souběžnosti
+# <a name="transactions-and-optimistic-concurrency-control"></a>Transakce a optimistického řízení souběžnosti
 
 Databázové transakce poskytují bezpečné a předvídatelné programovací model řešit souběžných změny v datech. Tradičních relačních databází, jako je SQL Server umožňuje psát obchodní logiku pomocí uložené procedury a triggery, odeslat ho na server pro spuštění přímo uvnitř databázového stroje. Pomocí tradičních relačních databází, je nutné řešit dvě různé programovací jazyky - (netransakční) aplikačního programovacího jazyka, jako je JavaScript, Python, C#, Java, atd. a transakční programovací jazyk (T-SQL), která je nativně proveden v databázi.
 

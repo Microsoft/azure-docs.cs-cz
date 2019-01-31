@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry, michmcla
-ms.openlocfilehash: fd56d8e0500b80bcce743a8865b6ca90ca8658a6
-ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
+ms.openlocfilehash: 4080fe07f6624c96f6385492268042f6401f3694
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/26/2019
-ms.locfileid: "55080544"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55472673"
 ---
 # <a name="converged-registration-for-self-service-password-reset-and-azure-multi-factor-authentication-public-preview"></a>Konvergované registrace pro samoobslužné resetování hesla a ověřování Azure Multi-Factor Authentication (public preview)
 
@@ -74,8 +74,6 @@ Na této stránce uživatelé uvidí dříve zaregistrovaný ověřovací metody
 Protokoly auditu pro toto nové prostředí existovat v rámci kategorie metod ověřování protokolu auditu.  
 
 ## <a name="known-issues"></a>Známé problémy
-
-Zjistili jsme chybu s sblížené registrací, kde nejsou B2B uživatele typu Host, kteří jsou povoleny pro konvergované registrace moci zaregistrovat pro vícefaktorové ověřování. Když jsou směrované na stránce pro registraci chyb stránky navýšení kapacity. Naši vývojáři jsou si tohoto problému vědomi a pracují na poskytování řešení. Prozatím doporučujeme vytvořit skupinu a vyloučit všechny uživatele B2B z této skupiny.
 
 **Metoda MFA výchozí je nastavena na telefonní hovor, když se uživatel zaregistruje telefonu pomocí textové zprávy**
 

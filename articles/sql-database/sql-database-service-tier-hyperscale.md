@@ -11,17 +11,18 @@ author: CarlRabeler
 ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
-ms.date: 10/17/2018
-ms.openlocfilehash: 2d5fdde14c1a33ace81e8999dbb365dac9de3e6e
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.date: 01/25/2019
+ms.openlocfilehash: 25936fa1156dea4beff6e593646d0468a4687f36
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55227892"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55476175"
 ---
 # <a name="hyperscale-service-tier-preview-for-up-to-100-tb"></a>Velkokapacitní úrovni služeb (preview) pro až 100 TB
 
 Azure SQL Database je založené na architektuře databázový stroj SQL serveru, která je upravená pro cloudové prostředí, aby bylo možné zajistit 99,99 % dostupnost i v případě selhání infrastruktury. Existují tři modely architektury, které se používají ve službě Azure SQL Database:
+
 - Obecné účely nebo Standard 
 - Kritické obchodní nebo Premium
 - Hyperškálování
@@ -150,7 +151,7 @@ Velkokapacitní úroveň služby je aktuálně ve verzi public preview a je k di
 
 | Problém | Popis |
 | :---- | :--------- |
-| V podokně Správa zálohování pro logický server nezobrazují Hyperškálovatelného databáze bude filtrováno ze serveru SQL server ->  | Velkokapacitní má samostatné metodě pro správu zálohování a jako takový dlouhodobé uchovávání dat a bod v nastavení uchovávání záloh čas se nevztahují / nejsou zneplatněny. Podle toho Hyperškálovatelného databází se nezobrazují v podokně Správa zálohování. |
+| V podokně Správa zálohování pro databázi SQL server není uveden, že se vyfiltrují Hyperškálovatelného databáze ze serveru SQL server ->  | Velkokapacitní má samostatné metodě pro správu zálohování a jako takový dlouhodobé uchovávání dat a bod v nastavení uchovávání záloh čas se nevztahují / nejsou zneplatněny. Podle toho Hyperškálovatelného databází se nezobrazují v podokně Správa zálohování. |
 | Obnovení k určitému bodu v čase | Po migraci databáze do vrstvy služby hyperškálovatelný systém se nepodporuje obnovení k určitému bodu v čase před migrací.|
 | Pokud je soubor databáze roste během migrace z důvodu aktivní úlohy a překročí 1 TB za hranice souboru, se migrace nezdaří | Omezení rizik: <br> – Pokud je to možné, migrace databáze, pokud neexistuje žádné aktualizace zátěži.<br> – Zkuste to znovu migrace, bude úspěšné, tak dlouho, dokud není překročí hranice 1 TB během migrace.|
 | Managed Instance se momentálně nepodporuje. | Aktuálně se nepodporuje. |
@@ -162,6 +163,6 @@ Velkokapacitní úroveň služby je aktuálně ve verzi public preview a je k di
 
 - Nejčastější dotazy na hyperškálovatelný systém, najdete v části [nejčastější dotazy ohledně Hyperškálovatelného](sql-database-service-tier-hyperscale-faq.md).
 - Informace o úrovních služeb najdete v tématu [úrovně služeb](sql-database-service-tiers.md)
-- Zobrazit [Přehled prostředků omezuje na logickém serveru](sql-database-resource-limits-logical-server.md) informace o omezeních na úrovni serveru a předplatné.
+- Zobrazit [Přehled prostředků omezuje na server služby SQL Database](sql-database-resource-limits-database-server.md) informace o omezeních na úrovni serveru a předplatné.
 - Zakoupení modelu omezení pro jednu databázi, naleznete v tématu [založený na virtuálních jádrech zakoupení modelu omezení pro jednu databázi Azure SQL Database](sql-database-vcore-resource-limits-single-databases.md).
 - Pro funkce a seznam porovnání, naleznete v tématu [běžné funkce SQL](sql-database-features.md).

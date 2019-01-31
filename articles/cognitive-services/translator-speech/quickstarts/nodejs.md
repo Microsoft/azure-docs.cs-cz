@@ -1,23 +1,23 @@
 ---
-title: 'Rychlý start: Rozhraní Translator Speech API v jazyce Node.js'
+title: 'Rychlý start: Translator Speech API Node.js'
 titlesuffix: Azure Cognitive Services
 description: Získejte informace a ukázky kódu, které vám pomůžou rychle začít používat rozhraní Translator Speech API.
 services: cognitive-services
 author: v-jaswel
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: translator-speech
+ms.subservice: translator-speech
 ms.topic: quickstart
 ms.date: 3/5/2018
 ms.author: v-jaswel
-ms.openlocfilehash: 3db4e242ad630949533823c22a16587daa4f9786
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
-ms.translationtype: HT
+ms.openlocfilehash: a88eade0d5fbfe4fd951e3e98c72a1e697099f1a
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49389696"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55466315"
 ---
-# <a name="quickstart-translator-speech-api-with-nodejs"></a>Rychlý start: Rozhraní Translator Speech API v jazyce Node.js 
+# <a name="quickstart-translator-speech-api-with-nodejs"></a>Rychlý start: Translator Speech API s využitím Node.js 
 <a name="HOLTop"></a>
 
 [!INCLUDE [Deprecation note](../../../../includes/cognitive-services-translator-speech-deprecation-note.md)]
@@ -164,12 +164,12 @@ connect();
 
 [Zpět na začátek](#HOLTop)
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 > [!div class="nextstepaction"]
 > [Kurz ke službě Translator Speech](../tutorial-translator-speech-csharp.md)
 
-## <a name="see-also"></a>Viz také 
+## <a name="see-also"></a>Další informace najdete v tématech 
 
 [Přehled služby Translator Speech](../overview.md)
 [Referenční materiály k rozhraní API](https://docs.microsoft.com/azure/cognitive-services/translator-speech/reference)

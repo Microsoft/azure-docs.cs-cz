@@ -1,9 +1,9 @@
 ---
-title: Příklad PowerShellu – Vytvoření databáze SQL Azure | Microsoft Docs
-description: Ukázkový skript Azure PowerShellu pro vytvoření databáze SQL Azure
+title: Příklad Powershellu – vytvoření izolované databáze ve službě Azure SQL Database | Dokumentace Microsoftu
+description: Ukázkový skript Azure Powershellu pro vytvoření izolované databáze ve službě Azure SQL Database
 services: sql-database
 ms.service: sql-database
-ms.subservice: single-database
+ms.subservice: standalone-database
 ms.custom: ''
 ms.devlang: PowerShell
 ms.topic: sample
@@ -11,15 +11,15 @@ author: CarlRabeler
 ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
-ms.date: 01/17/2019
-ms.openlocfilehash: 3f6e2429bd0d67e9e6abd27d4a60ee8ef1d20f66
-ms.sourcegitcommit: 9f07ad84b0ff397746c63a085b757394928f6fc0
+ms.date: 01/25/2019
+ms.openlocfilehash: 09a0e40bb935dd5f3e4955af0b45cef93ed1612b
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54388086"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55458513"
 ---
-# <a name="use-powershell-to-create-a-single-azure-sql-database-and-configure-a-firewall-rule"></a>Vytvoření izolované databáze SQL Azure a konfigurace pravidla brány firewall pomocí PowerShellu
+# <a name="use-powershell-to-create-a-single-azure-sql-database-and-configure-a-sql-database-server-firewall-rule"></a>Vytvoření izolované databáze Azure SQL a nakonfigurujte pravidlo brány firewall serveru SQL Database pomocí Powershellu
 
 Tento ukázkový skript PowerShellu vytvoří databázi SQL Azure a nakonfiguruje pravidlo brány firewall na úrovni serveru. Po úspěšném spuštění skriptu bude služba SQL Database přístupná ze všech služeb Azure a nakonfigurovaných IP adres.
 
@@ -47,9 +47,9 @@ Tento skript používá následující příkazy. Každý příkaz v tabulce odk
 | Příkaz | Poznámky |
 |---|---|
 | [New-AzureRmResourceGroup](/powershell/module/azurerm.resources/new-azurermresourcegroup) | Vytvoří skupinu prostředků, ve které se ukládají všechny prostředky. |
-| [New-AzureRmSqlServer](/powershell/module/azurerm.sql/new-azurermsqlserver) | Vytvoří logický server, který je hostitelem databáze nebo elastického fondu. |
+| [New-AzureRmSqlServer](/powershell/module/azurerm.sql/new-azurermsqlserver) | Vytvoří server služby SQL Database, který je hostitelem elastický fond nebo izolovanou databázi. |
 | [New-AzureRmSqlServerFirewallRule](/powershell/module/azurerm.sql/new-azurermsqlserverfirewallrule) | Vytvoří pravidlo brány firewall umožňující přístup ke všem databázím SQL na serveru ze zadaného rozsahu IP adres. |
-| [New-AzureRmSqlDatabase](/powershell/module/azurerm.sql/new-azurermsqldatabase) | Vytvoří databázi na logickém serveru jako izolovanou databázi nebo databázi ve fondu. |
+| [New-AzureRmSqlDatabase](/powershell/module/azurerm.sql/new-azurermsqldatabase) | Vytvoří izolovanou databázi nebo elastický fond. |
 | [Remove-AzureRmResourceGroup](/powershell/module/azurerm.resources/remove-azurermresourcegroup) | Odstraní skupinu prostředků včetně všech vnořených prostředků. |
 |||
 

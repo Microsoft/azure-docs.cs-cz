@@ -10,14 +10,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/24/2018
+ms.date: 01/30/2019
 ms.author: tomfitz
-ms.openlocfilehash: 6e6cd7f1677d8ae11f05c2a2bca4233603a29408
-ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
+ms.openlocfilehash: a816542860a96a8b0dbbeaa63202b6cba4d24acc
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/26/2019
-ms.locfileid: "55075665"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55294974"
 ---
 # <a name="deploy-resources-with-resource-manager-templates-and-azure-powershell"></a>Nasazení prostředků pomocí šablon Resource Manageru a Azure PowerShellu
 

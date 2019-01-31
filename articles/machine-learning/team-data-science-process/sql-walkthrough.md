@@ -6,17 +6,17 @@ author: marktab
 manager: cgronlun
 editor: cgronlun
 ms.service: machine-learning
-ms.component: team-data-science-process
+ms.subservice: team-data-science-process
 ms.topic: article
 ms.date: 01/29/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 97ef7b02690110f571e87960add34b45f683b615
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: 2e71cf90c6e894946a2f3a1c8bfce2179f214a29
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53141403"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55453647"
 ---
 # <a name="the-team-data-science-process-in-action-using-sql-server"></a>Vědecké zpracování týmových dat v akci: použití serveru SQL Server
 V tomto kurzu vás provede procesem sestavování a nasazování modelu strojového učení pomocí SQL serveru a veřejně dostupné datové sady – [cesty taxíkem NYC](http://www.andresmh.com/nyctaxitrips/) datové sady. Postup následující pracovní postup standardních datových věd: ingestování a zkoumání dat, navrhování funkcí usnadnění vzdělávání, pak sestavit a nasadit model.
@@ -46,7 +46,7 @@ Jedinečný klíč pro připojení o jízdách\_a dat o jízdách\_tarif se skl�
 ## <a name="mltasks"></a>Příklady úloh Predikcí
 Jsme se mohli formulovat tři problémy předpovědi na základě *tip\_částka*, konkrétně:
 
-1. Binární klasifikace: předpovědět, jestli byl tip placené cesty, to znamená *tip\_velikost* , který je větší než 0 USD je kladné příklad, zatímco *tip\_velikost* $ 0 je Příklad záporné.
+1. Binární klasifikace: Předpovědět, jestli byl tip placené cesty, to znamená *tip\_částka* , který je větší než 0 USD je kladné příklad, zatímco *tip\_velikost* $ 0 je záporná příklad.
 2. Klasifikace víc tříd: K předpovědi rozsahu tip placené pro cestu. Doporučujeme rozdělit *tip\_částka* do pěti přihrádky nebo třídy:
    
         Class 0 : tip_amount = $0
@@ -54,7 +54,7 @@ Jsme se mohli formulovat tři problémy předpovědi na základě *tip\_částka
         Class 2 : tip_amount > $5 and tip_amount <= $10
         Class 3 : tip_amount > $10 and tip_amount <= $20
         Class 4 : tip_amount > $20
-3. Úloha regrese: odhadnout množství tip placené cesty.  
+3. Regrese. úkol: Odhadnout množství tip placené cesty.  
 
 ## <a name="setup"></a>Prostředí pro datové vědy nastavení si Azure pro pokročilou analýzu
 Jak je vidět [plánování vašeho prostředí](plan-your-environment.md) průvodce, máte několik možností pro práci s datovou sadou NYC taxislužby zkracuje dobu odezvy v Azure:
@@ -79,7 +79,7 @@ Nastavení prostředí Azure pro datové vědy:
    > 
    > 
 
-Na základě velikost datové sady, umístění zdroje dat a vybrané Azure cílového prostředí, tento scénář je podobný [scénář \#5: velkou datovou sadu v místních souborů cílit na SQL Server na virtuálním počítači Azure](plan-sample-scenarios.md#largelocaltodb).
+Na základě velikost datové sady, umístění zdroje dat a vybrané Azure cílového prostředí, tento scénář je podobný [scénář \#5: Velké datové sady v místních souborů cílit na SQL Server na virtuálním počítači Azure](plan-sample-scenarios.md#largelocaltodb).
 
 ## <a name="getdata"></a>Získávají Data z veřejných zdrojů
 Chcete-li získat [cesty taxíkem NYC](http://www.andresmh.com/nyctaxitrips/) datové sady z veřejné umístění, můžete použít některou z metod popsaných v [přesun dat do a z úložiště objektů Blob v Azure](move-azure-blob.md) ke zkopírování dat do nového virtuálního počítače.
@@ -137,7 +137,7 @@ Výkon načítání/přenos velkých objemů dat do služby SQL database a násl
 12. Načtení dat cesty taxíkem NYC ve dvou samostatných tabulkách. Pokud chcete zlepšit operace spojení, důrazně doporučujeme k indexování tabulky. Ukázkový skript **vytvořit\_dělené\_index.sql** vytváří indexy dělené spojení složený klíč **medailonu, najděte, co je\_licence a vyzvednutí\_ Datum a čas**.
 
 ## <a name="dbexplore"></a>Zkoumání dat a vytváření funkcí v systému SQL Server
-V této části budeme provádět zkoumání a funkce generování dat spuštěním dotazy SQL přímo **SQL Server Management Studio** použití databáze systému SQL Server vytvořili dříve. Ukázkový skript s názvem **ukázka\_queries.sql** je součástí **ukázkové skripty** složky. Upravit skript, který chcete změnit název databáze, pokud se liší od výchozí hodnota: **TaxiNYC**.
+V této části budeme provádět zkoumání a funkce generování dat spuštěním dotazy SQL přímo **SQL Server Management Studio** použití databáze systému SQL Server vytvořili dříve. Ukázkový skript s názvem **ukázka\_queries.sql** je součástí **ukázkové skripty** složky. Upravte skript, který chcete změnit název databáze, pokud se liší od výchozího nastavení: **TaxiNYC**.
 
 V tomto cvičení provedeme následující:
 
@@ -179,7 +179,7 @@ V tomto příkladu identifikuje Medailon (taxislužby čísla) s více než 100 
     GROUP BY medallion, hack_license
     HAVING COUNT(*) > 100
 
-#### <a name="data-quality-assessment-verify-records-with-incorrect-longitude-andor-latitude"></a>Hodnocení kvality dat: Ověřte záznamy s nesprávné délky a šířky
+#### <a name="data-quality-assessment-verify-records-with-incorrect-longitude-andor-latitude"></a>Hodnocení kvality dat: Zkontrolujte záznamy s nesprávné délky a šířky
 V tomto příkladu prověří, pokud jakýkoli z polí zeměpisná délka a/nebo zeměpisnou šířku buď obsahuje neplatnou hodnotu (stupně radián by měl být od -90 do 90), nebo máte (0, 0) souřadnic.
 
     SELECT COUNT(*) FROM nyctaxi_trip
@@ -215,7 +215,7 @@ Tento příklad vypočítá distribuci tip rozsahů v daném časovém období (
     WHERE pickup_datetime BETWEEN '20130101' AND '20131231') tc
     GROUP BY tip_class
 
-#### <a name="exploration-compute-and-compare-trip-distance"></a>Zkoumání: Compute a porovnat vzdálenost o jízdách
+#### <a name="exploration-compute-and-compare-trip-distance"></a>Zkoumání: COMPUTE a porovnat vzdálenost o jízdách
 Tento příklad převede sbírat míčky a dropoff délky a šířky do SQL zeměpisné oblasti odkazuje, vypočítá vzdálenost o jízdách pomocí SQL zeměpisné oblasti bodů rozdíl a vrací náhodného vzorku výsledky pro porovnání. V příkladu omezuje výsledky na platné souřadnice pouze pomocí dotazu hodnocení kvality dat věnovali výše.
 
     SELECT
@@ -335,7 +335,7 @@ Dále podíváme na diagramu pole pro cestu vzdálenost k vizualizaci quantiles
 
 ![Vykreslení #1][1]
 
-#### <a name="visualization-distribution-plot-example"></a>Vizualizace: Příklad diagram distribuce
+#### <a name="visualization-distribution-plot-example"></a>Vizualizace: Příklad diagramu distribuce
     fig = plt.figure()
     ax1 = fig.add_subplot(1,2,1)
     ax2 = fig.add_subplot(1,2,2)
@@ -344,7 +344,7 @@ Dále podíváme na diagramu pole pro cestu vzdálenost k vizualizaci quantiles
 
 ![Vykreslení #2][2]
 
-#### <a name="visualization-bar-and-line-plots"></a>Vizualizace: Panelu a řádku grafy
+#### <a name="visualization-bar-and-line-plots"></a>Vizualizace: Panel a vykreslení čáry
 V tomto příkladu jsme bin vzdálenost výlet do pěti přihrádek a vizualizaci výsledků binningu.
 
     trip_dist_bins = [0, 1, 2, 4, 10, 1000]
@@ -407,7 +407,7 @@ V této části jsme spojení tabulek **nyctaxi\_o jízdách** a **nyctaxi\_tari
 ### <a name="data-exploration-using-sql-queries-in-ipython-notebook"></a>Zkoumání dat pomocí dotazů SQL v IPython Notebook
 V této části se podíváme na distribuce dat pomocí % 1 Vzorkovaná data, která se ukládají do nové tabulky, kterou jsme vytvořili výše. Všimněte si, že podobné průzkumy je možné provádět pomocí původní tabulky, případně můžete použít **klauzule TABLESAMPLE** omezit zkoumání ukázkové nebo tím, že omezí výsledky na daném časovém období pomocí **vyzvednutí\_datetime** oddíly, jak je znázorněno [zkoumání dat a technické funkce v systému SQL Server](#dbexplore) oddílu.
 
-#### <a name="exploration-daily-distribution-of-trips"></a>Zkoumání: Denní distribuci zkracuje dobu odezvy
+#### <a name="exploration-daily-distribution-of-trips"></a>Zkoumání: Denní distribuční cesty
     query = '''
         SELECT CONVERT(date, dropoff_datetime) AS date, COUNT(*) AS c
         FROM nyctaxi_one_percent
@@ -416,7 +416,7 @@ V této části se podíváme na distribuce dat pomocí % 1 Vzorkovaná data, kt
 
     pd.read_sql(query,conn)
 
-#### <a name="exploration-trip-distribution-per-medallion"></a>Zkoumání: Distribuční výlet za Medailon
+#### <a name="exploration-trip-distribution-per-medallion"></a>Zkoumání: Distribuce výlet za Medailon
     query = '''
         SELECT medallion,count(*) AS c
         FROM nyctaxi_one_percent
@@ -428,7 +428,7 @@ V této části se podíváme na distribuce dat pomocí % 1 Vzorkovaná data, kt
 ### <a name="feature-generation-using-sql-queries-in-ipython-notebook"></a>Funkce generování pomocí příkazů jazyka SQL v IPython Notebook
 V této části vygenerujeme nové popisky a funkce přímo pomocí příkazů jazyka SQL, fungujícími v tabulce 1 % jsme vytvořili v předchozí části.
 
-#### <a name="label-generation-generate-class-labels"></a>Popisek generace: Generovat třídy popisky
+#### <a name="label-generation-generate-class-labels"></a>Generování popisků: Generovat třídy popisky
 V následujícím příkladu se vygeneruje dvě sady popisky pro modelování:
 
 1. Binární třída popisky **šikmý** (předpověď, pokud se zadaný tip)
@@ -514,7 +514,7 @@ V tomto příkladu transformuje průběžné číselné pole na předvolby kateg
     cursor.execute(nyctaxi_one_percent_update_col)
     cursor.commit()
 
-#### <a name="feature-engineering-extract-location-features-from-decimal-latitudelongitude"></a>Vytváření funkcí: Extrahování umístění funkce z desítkové zeměpisnou šířkou/délkou
+#### <a name="feature-engineering-extract-location-features-from-decimal-latitudelongitude"></a>Vytváření funkcí: Extrakce funkce umístění z desítkové zeměpisnou šířkou/délkou
 V tomto příkladu boří desítkový zápis zeměpisná šířka a zeměpisná délka pole do více polí oblast různých členitosti a jako země, Město, Město, blok, atd. Všimněte si, že nové geografická pole nejsou namapované na skutečné umístění. Informace o umístění geokód mapování, naleznete v tématu [REST služby Bing Maps](https://msdn.microsoft.com/library/ff701710.aspx).
 
     nyctaxi_one_percent_insert_col = '''
@@ -546,9 +546,9 @@ V tomto příkladu boří desítkový zápis zeměpisná šířka a zeměpisná 
 
 Jsme připraveni přejít k vytváření modelů a nasazení modelů v [Azure Machine Learning](https://studio.azureml.net). Data jsou připravena pro některý z předpovědi problémy identifikovat dříve, a to:
 
-1. Binární klasifikace: předpovědět, zda je či není tip byla zaplacena cesty.
+1. Binární klasifikace: Pro předpověď Určuje, jestli tip byla zaplacena cesty.
 2. Klasifikace víc tříd: K předpovědi rozsahu tip placené podle dříve definovaných tříd.
-3. Úloha regrese: odhadnout množství tip placené cesty.  
+3. Regrese. úkol: Odhadnout množství tip placené cesty.  
 
 ## <a name="mlmodel"></a>Vytváření modelů ve službě Azure Machine Learning
 Začněte cvičení modelování, přihlaste se do pracovního prostoru Azure Machine Learning. Pokud jste ještě nevytvořili pracovního prostoru machine learning, přečtěte si téma [vytvoření pracovního prostoru Azure Machine Learning](../studio/create-workspace.md).

@@ -1,6 +1,6 @@
 ---
-Název: Data zkušební titleSuffix: Azure Machine Learning Studio Popis: Čtyři kritéria, vaše data se musí splnit, aby vyhovovalo připravené pro datové vědy. Toto video obsahuje konkrétní příklady, které pomohou s vyhodnocením základní data.
-Services: machine learningu ms.service: ms.component strojového učení: studio ms.topic: článku
+Název: Data zkušební titleSuffix: Azure Machine Learning Studio Popis: Čtyři kritéria, vaše data se musí splnit, aby vyhovovalo připravené pro datové vědy. Toto video obsahuje konkrétní příklady, které pomohou s vyhodnocením základní data.
+Services: machine learningu ms.service: ms.subservice strojového učení: studio ms.topic: článku
 
 Autor: garyericson ms.author: garye ms.custom: seodec18 ms.date: 01/03/2018
 ---

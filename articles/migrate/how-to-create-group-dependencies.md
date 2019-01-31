@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: article
 ms.date: 12/05/2018
 ms.author: raynew
-ms.openlocfilehash: 1f7921093bc97aa6dc776213be4dbdf9537b7fe2
-ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
+ms.openlocfilehash: 007f7fe95be77a2b1661cd6c82118eb875401f24
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/26/2019
-ms.locfileid: "55075699"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55472571"
 ---
 # <a name="refine-a-group-using-group-dependency-mapping"></a>Upřesnění skupiny s využitím mapování závislostí skupin
 
@@ -73,6 +73,10 @@ Instalace agenta na počítači s Linuxem:
 
     ```sudo sh ./omsagent-<version>.universal.x64.sh --install -w <workspace id> -s <workspace key>```
 
+#### <a name="install-the-agent-on-a-machine-monitored-by-system-center-operations-manager"></a>Instalace agenta do počítače monitorované nástrojem System Center Operations Manager
+
+Počítače monitorované pomocí Operations Manageru 2012 R2 nebo novější není nutné k instalaci agenta MMA. Řešení Service Map je integraci s Operations Managerem, které využívá připojení MMA Operations Manager ke shromažďování dat potřebné závislosti. Můžete povolit podle pokynů k integraci [tady](https://docs.microsoft.com/azure/azure-monitor/insights/service-map-scom#prerequisites). Všimněte si však, že agenta závislostí je potřeba nainstalovat na těchto počítačích.
+
 ### <a name="install-the-dependency-agent"></a>Instalace agenta závislostí
 1. Instalace agenta závislostí na počítači s Windows, klikněte dvakrát na instalační soubor a postupujte podle pokynů průvodce.
 2. Pokud chcete nainstalovat agenta závislostí na počítači s Linuxem, nainstalujte jako uživatel root pomocí následujícího příkazu:
@@ -115,7 +119,7 @@ Pokud chcete zkontrolovat závislosti pro konkrétní počítač, který se zobr
 
 ## <a name="query-dependency-data-from-log-analytics"></a>Dotazování na závislost data ze služby Log Analytics
 
-Závislost data zachycená pomocí mapy služeb je k dispozici pro dotazování ve službě Log Analytics. [Další informace](https://docs.microsoft.com/azure/azure-monitor/insights/service-map#log-analytics-records) Service Map tabulky dat k dotazování v Log Analytics. 
+Závislost data zachycená pomocí mapy služeb je k dispozici pro dotazování v Log Analytics workspare přidružený k projektu Azure Migrate. [Další informace](https://docs.microsoft.com/azure/azure-monitor/insights/service-map#log-analytics-records) Service Map tabulky dat k dotazování v Log Analytics. 
 
 Pokud chcete spustit dotazy Log Analytics:
 

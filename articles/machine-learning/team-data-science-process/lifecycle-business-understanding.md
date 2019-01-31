@@ -6,17 +6,17 @@ author: marktab
 manager: cgronlun
 editor: cgronlun
 ms.service: machine-learning
-ms.component: team-data-science-process
+ms.subservice: team-data-science-process
 ms.topic: article
 ms.date: 11/04/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: f45d8a83c323689272313314d0f9ac9b79edecd7
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: 3e897a3fbc76a75e526e4d0706a2678cd29dfc2e
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53141658"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55477450"
 ---
 # <a name="the-business-understanding-stage-of-the-team-data-science-process-lifecycle"></a>Obchodní vysvětlení fáze životní cyklus vědeckého zpracování týmových dat
 
@@ -40,8 +40,8 @@ Zde je vizuální znázornění životního cyklu TDSP:
 ## <a name="how-to-do-it"></a>Jak na to
 Existují dva hlavní úkoly zákazníky a vyřešené v této fázi: 
 
-   * **Definování cílů**: práce se zákazníkem a další zainteresované uživatele, pochopit a identifikaci obchodních problémů. Mohli formulovat otázky, které definují cílených techniky data science obchodních cílů.
-   * **Určení zdrojů dat**: najít relevantní data, která vám pomůže odpovědět na otázky, které definují cíle projektu.
+   * **Definování cílů**: Práce se zákazníkem a další zainteresované uživatele, pochopit a identifikaci obchodních problémů. Mohli formulovat otázky, které definují cílených techniky data science obchodních cílů.
+   * **Určení zdrojů dat**: Najdete relevantní data, která lze zodpovědět otázky, které definují cíle projektu.
 
 ### <a name="define-objectives"></a>Definování cílů
 1. Ústředním cílem tohoto kroku je identifikace klíčových obchodních proměnné, které analýzy, které potřebujete k předpovědi. Budeme odkazovat na tyto proměnné jako *model cíle*, a jak určit úspěch projektu používáme metriky související s nimi. Dva příklady takových cílů jsou prognózy prodeje nebo pravděpodobnost pořadí se podvodné.
@@ -77,8 +77,8 @@ Například můžete zjistit, že je potřeba stávajících systémů shromaž�
 ## <a name="artifacts"></a>Artefakty
 Tady jsou výstupy v této fázi:
 
-   * [Další směrování dokumentu](https://github.com/Azure/Azure-TDSP-ProjectTemplate/blob/master/Docs/Project/Charter.md): standardní šablony je součástí definice struktury TDSP projektu. Další směrování dokumentu je živých dokument. Jak vytvořit nové zjišťování a jako obchodní požadavky se změní aktualizaci šablony v celém projektu. Klíč je pro iteraci na tento dokument, přidání více podrobností, během postupu v procesu zjišťování. Zachovat zákazníka a další zainteresované uživatele zahrnuta v provedení změn a jasně sdělit důvody pro změny k nim.  
-   * [Zdroje dat](https://github.com/Azure/Azure-TDSP-ProjectTemplate/blob/master/Docs/Data_Report/Data%20Defintion.md#raw-data-sources): **nezpracovaná data zdroje** část **definice dat** sestavu, která se nachází v projektu TDSP **sestavu dat** složka obsahuje data zdroje. Tato část určuje původní a cílové umístění pro nezpracovaná data. V pozdějších fázích si vyplňte další podrobnosti, jako jsou skripty pro přesun dat do vašeho analytického prostředí.  
+   * [Další směrování dokumentu](https://github.com/Azure/Azure-TDSP-ProjectTemplate/blob/master/Docs/Project/Charter.md): Standardní šablona je součástí definice struktury TDSP projektu. Další směrování dokumentu je živých dokument. Jak vytvořit nové zjišťování a jako obchodní požadavky se změní aktualizaci šablony v celém projektu. Klíč je pro iteraci na tento dokument, přidání více podrobností, během postupu v procesu zjišťování. Zachovat zákazníka a další zainteresované uživatele zahrnuta v provedení změn a jasně sdělit důvody pro změny k nim.  
+   * [Zdroje dat](https://github.com/Azure/Azure-TDSP-ProjectTemplate/blob/master/Docs/Data_Report/Data%20Defintion.md#raw-data-sources): **Nezpracovaná data zdroje** část **definice dat** sestavu, která se nachází v projektu TDSP **sestavu dat** složka obsahuje zdroje dat. Tato část určuje původní a cílové umístění pro nezpracovaná data. V pozdějších fázích si vyplňte další podrobnosti, jako jsou skripty pro přesun dat do vašeho analytického prostředí.  
    * [Data slovníky](https://github.com/Azure/Azure-TDSP-ProjectTemplate/tree/master/Docs/Data_Dictionaries): Tento dokument obsahuje popis dat, která pochází od klienta. Tyto popisy obsahují informace o schématu (datové typy a informace o ověřovacích pravidel, pokud existuje) a diagramy relace entity, pokud je k dispozici.
 
 ## <a name="next-steps"></a>Další postup

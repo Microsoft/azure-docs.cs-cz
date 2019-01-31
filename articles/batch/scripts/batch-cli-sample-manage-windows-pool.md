@@ -3,7 +3,7 @@ title: Ukázkový skript Azure CLI – Fond s Windows ve službě Batch | Micros
 description: Ukázkový skript Azure CLI – Vytvoření a správa fondu s Windows ve službě Batch
 services: batch
 documentationcenter: ''
-author: dlepow
+author: laurenhughes
 manager: jeconnoc
 editor: ''
 ms.assetid: ''
@@ -13,13 +13,13 @@ ms.topic: sample
 ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 01/29/2018
-ms.author: danlep
-ms.openlocfilehash: 18fc7f9b0675f5c83f716aedfa6968d1ce48c0ed
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
-ms.translationtype: HT
+ms.author: lahugh
+ms.openlocfilehash: c4906ca67137790e19342f0434e6c2b3932819fd
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46968998"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55472217"
 ---
 # <a name="cli-example-create-and-manage-a-windows-pool-in-azure-batch"></a>Příklad rozhraní příkazového řádku: Vytvoření a správa fondu s Windows ve službě Azure Batch
 
@@ -58,6 +58,6 @@ Tento skript používá následující příkazy. Každý příkaz v tabulce odk
 | [az group delete](/cli/azure/group#az-group-delete) | Odstraní skupinu prostředků včetně všech vnořených prostředků. |
 
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Další informace o Azure CLI najdete v [dokumentaci k Azure CLI](https://docs.microsoft.com/cli/azure).

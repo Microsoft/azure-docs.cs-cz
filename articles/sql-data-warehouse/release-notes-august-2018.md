@@ -6,16 +6,16 @@ author: twounder
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
-ms.component: manage
+ms.subservice: manage
 ms.date: 08/13/2018
 ms.author: twounder
 ms.reviewer: twounder
-ms.openlocfilehash: 11125fb1c78852a048787e99d78bf4cb941184fa
-ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
+ms.openlocfilehash: 492bdd30a656a37196cf4d27a2510dbc3a79807d
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2019
-ms.locfileid: "54320357"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55463561"
 ---
 # <a name="whats-new-in-azure-sql-data-warehouse-august-2018"></a>Co je nového ve službě Azure SQL Data Warehouse? Srpen 2018
 Azure SQL Data Warehouse neustále obdrží vylepšení. Tento článek popisuje nové funkce a změny, které byly zavedeny v srpna 2018.
@@ -30,9 +30,9 @@ Můžete zobrazit podrobnosti jednotlivých kategorií můžete zobrazit doporu�
 
 ## <a name="bug-fixes"></a>Opravy chyb
 
-| Titul | Popis |
+| Název | Popis |
 |:---|:---|
-| **Při překročení maximálního limitu počtu rozdělení potenciální chyby dotazu** |Při překročení limitu rozdělení souboru horní mez 1 milion stroj SQL pro výpis způsobila neošetřenou výjimku a všechny dotazy se nezdařilo. Tato oprava adresou problém tak, že správně zpracování výjimek a vrátit chybu, aniž by to způsobilo dotazů. |
+| **Při překročení maximálního limitu počtu rozdělení potenciální chyby dotazu** |Při překročení limitu rozdělení souboru horní mez 1 milion stroj SQL pro výpis způsobila neošetřenou výjimku a všechny dotazy se nezdařilo. Tato oprava problém řešený správně zpracování výjimek a vrátit chybu, aniž by to způsobilo dotazů. |
 | **Větší ExternalMoveReadersPerNode výchozí hodnotu pro zlepšení výkonu načítání** |Tento problém byl způsobený ExternalMoveReadersPerNode nastavení vlastnosti nejsou synchronizovány s využitím service fabric nastavení. Tento regresní způsobit snížení výkonu zatížení Gen2. Oprava přináší výkon načítání Gen2 za parametry optimalizované návrhu.|
 
 

@@ -6,16 +6,16 @@ author: kevinvngo
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
-ms.component: manage
+ms.subservice: manage
 ms.date: 04/17/2018
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: 4ce84e9714b580bcc243285dc1da5ae24a27e8e5
-ms.sourcegitcommit: 2b2129fa6413230cf35ac18ff386d40d1e8d0677
+ms.openlocfilehash: 9025eccabcbf7052131fee741a1e1f6a2139366b
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43248089"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55476753"
 ---
 # <a name="analyze-your-workload-in-azure-sql-data-warehouse"></a>Analýza úloh ve službě Azure SQL Data Warehouse
 Techniky pro stanovení priority dotazů pro vaše úlohy ve službě Azure SQL Data Warehouse analýzu.
@@ -144,10 +144,10 @@ WHERE   r.name IN ('mediumrc','largerc','xlargerc')
 
 SQL Data Warehouse má následující typy čekání:
 
-* **LocalQueriesConcurrencyResourceType**: dotazy, které se nacházejí mimo rámec slotu souběžnosti. Dotazy na zobrazení dynamické správy a systémové funkce, jako například `SELECT @@VERSION` jsou příklady místní dotazů.
-* **UserConcurrencyResourceType**: dotazy, které se nacházejí uvnitř rozhraní concurrency slot. Dotazy na tabulky s koncovým uživatelem představují příklady, které byste použili tento typ prostředku.
-* **DmsConcurrencyResourceType**: plynoucí z operace přesunu dat čeká.
-* **BackupConcurrencyResourceType**: Tato čekací označuje, že databáze je právě zálohován. Maximální hodnota pro tento typ prostředku je 1. Pokud více záloh je požadována ve stejnou dobu, jiné fronty.
+* **LocalQueriesConcurrencyResourceType**: Dotazy, které se nacházejí mimo rámec slotu souběžnosti. Dotazy na zobrazení dynamické správy a systémové funkce, jako například `SELECT @@VERSION` jsou příklady místní dotazů.
+* **UserConcurrencyResourceType**: Dotazy, které se nacházejí uvnitř rozhraní concurrency slot. Dotazy na tabulky s koncovým uživatelem představují příklady, které byste použili tento typ prostředku.
+* **DmsConcurrencyResourceType**: Výsledkem operace přesunu dat čeká.
+* **BackupConcurrencyResourceType**: Tato čekací označuje, že databázi je právě zálohován. Maximální hodnota pro tento typ prostředku je 1. Pokud více záloh je požadována ve stejnou dobu, jiné fronty.
 
 `sys.dm_pdw_waits` Zobrazení dynamické správy je možné zobrazit žádost čeká na prostředky.
 

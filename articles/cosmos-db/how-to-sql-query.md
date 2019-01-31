@@ -6,14 +6,14 @@ ms.service: cosmos-db
 ms.topic: sample
 ms.date: 11/15/2018
 ms.author: mjbrown
-ms.openlocfilehash: c3a25f69424d56e77022a89580ace59259af0e47
-ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
+ms.openlocfilehash: 5884295e93a14d74a125c27ea597f2311478042a
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54888613"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55459022"
 ---
-# <a name="sql-query-examples-to-query-data-from-azure-cosmos-db"></a>Příklady dotazů SQL k dotazování dat ze služby Azure Cosmos DB
+# <a name="sql-query-examples-for-azure-cosmos-db"></a>Příklady dotazů SQL pro službu Azure Cosmos DB
 
 Azure Cosmos DB podporuje dotazování položek pomocí SQL (Structured Query Language) jako dotazovací jazyk typu JSON na účty rozhraní SQL API. Při navrhování dotazovací jazyk pro službu Azure Cosmos DB, jsou považovány za tyto dva cíle:
 

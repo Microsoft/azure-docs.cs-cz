@@ -11,13 +11,13 @@ author: CarlRabeler
 ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
-ms.date: 10/17/2018
-ms.openlocfilehash: c5f5b43a96d5fad5d5f7737ef82585593cd05a7b
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.date: 01/25/2019
+ms.openlocfilehash: 470a00e62aba4baf5dd13a9c80a0c72df04a81c8
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55240654"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55478334"
 ---
 # <a name="faq-about-azure-sql-hyperscale-databases"></a>Nejčastější dotazy týkající se databáze Azure SQL Hyperškálováním
 
@@ -75,9 +75,9 @@ Založený na virtuálních jádrech služby, které úrovně se liší předev�
 
 Velkokapacitní je aktuálně dostupné pro izolované databáze v těchto oblastech:  Západní US1, západní USA 2, východní US1, střed USA, západní Evropa, Severní Evropa, Velká Británie – Západ, jihovýchodní Asie, Japonsko – východ, Korea – střed, Austrálie – jihovýchod a Austrálie – východ.
 
-### <a name="can-i-create-multiple-hyperscale-databases-per-logical-server"></a>Můžete vytvořit více databází Hyperškálovatelného v rámci logického serveru
+### <a name="can-i-create-multiple-hyperscale-databases-per-sql-database-server"></a>Můžete vytvořit více databází hyperškálovatelný systém na serveru služby SQL Database
 
-Ano. Další informace a omezení počtu databází Hyperškálovatelného v rámci logického serveru, najdete v článku [limity prostředků SQL Database pro databáze ve fondu a jeden na logickém serveru](sql-database-resource-limits-logical-server.md).
+Ano. Další informace a omezení počtu databází hyperškálovatelný systém na serveru služby SQL Database najdete v tématu [limity prostředků SQL Database pro jeden a ve fondu databází na serveru služby SQL Database](sql-database-resource-limits-database-server.md).
 
 ### <a name="what-are-the-performance-characteristic-of-a-hyperscale-database"></a>Co jsou charakteristické výkonu databáze hyperškálovatelný systém
 
@@ -98,7 +98,7 @@ Velkokapacitní SQL Database nabízí rychlou škálovatelnost podle potřeb va�
 
 ## <a name="deep-dive-questions"></a>Podrobné informace o dotazy
 
-### <a name="can-i-mix-hyperscale-and-single-databases-on-my-logical-server"></a>Můžete kombinovat Velkokapacitní a izolované databáze na logický server
+### <a name="can-i-mix-hyperscale-and-single-databases-a-my-sql-database-server"></a>Můžete používat kombinaci Velkokapacitní a izolované databáze serveru SQL Database
 
 Ano, je to možné.
 
@@ -235,7 +235,7 @@ Ještě není známý (stále ve verzi preview)
 
 Můžete číst data ze služby Azure Storage a načíst načtení dat do databáze Hyperškálovatelného (stejně jako vám pomůžou s regulární izolované databáze). Polybase se aktuálně nepodporuje v Azure SQL Database. Můžete provést pomocí Polybase [Azure Data Factory](https://docs.microsoft.com/azure/data-factory/) nebo spuštění úlohy Spark job [Azure Databricks](https://docs.microsoft.com/azure/azure-databricks/) s [konektor Spark pro SQL](sql-database-spark-connector.md). Konektor Spark SQL podporuje příkaz bulk insert.
 
-Jednoduché obnovení nebo hromadné protokolování modelu se nepodporuje v Hyperškálovacím. Úplný model obnovení se vyžaduje pro zajištění vysoké dostupnosti. Však nabízí lepší hyperškálovatelný systém pro příjem rychlost v porovnání s izolovanou databázi Azure SQL z důvodu novou architekturu protokolu.
+Jednoduché obnovení nebo hromadné protokolování modelu se nepodporuje v Hyperškálovacím. Úplný model obnovení se vyžaduje pro zajištění vysoké dostupnosti. Však nabízí lepší hyperškálovatelný systém pro příjem rychlost v porovnání s izolovanou databázi z důvodu novou architekturu protokolu.
 
 ### <a name="does-sql-database-hyperscale-allow-provisioning-multiple-nodes-for-ingesting-large-amounts-of-data"></a>Umožňuje SQL Database Hyperškálovatelného zřizování více uzlů pro příjem velkých objemů dat
 

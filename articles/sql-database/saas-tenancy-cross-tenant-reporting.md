@@ -11,13 +11,13 @@ author: stevestein
 ms.author: sstein
 ms.reviewers: billgib,ayolubek
 manager: craigg
-ms.date: 04/01/2018
-ms.openlocfilehash: e23b679d6c81d1a4103f010a9d13c35e80d4d2af
-ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
+ms.date: 01/25/2019
+ms.openlocfilehash: ccf6ff75cb041c7d9998f67d579d1b392f83cee9
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50240984"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55476243"
 ---
 # <a name="cross-tenant-reporting-using-distributed-queries"></a>Vytváření sestav pomocí služby napříč tenanty distribuovaných dotazů
 
@@ -93,7 +93,7 @@ K prozkoumání definice *Venues* zobrazení:
 
 1. V **Průzkumník objektů**, rozbalte **contosoconcerthall** > **zobrazení**:
 
-   ![zobrazení](media/saas-tenancy-cross-tenant-reporting/views.png)
+   ![views](media/saas-tenancy-cross-tenant-reporting/views.png)
 
 2. Klikněte pravým tlačítkem na **dbo. Venues**.
 3. Vyberte **skriptu zobrazení jako** > **vytvořit** > **nové okno editoru dotazů**
@@ -128,7 +128,7 @@ V tomto cvičení přidá do schématu (externí zdroj dat a definice externí t
 
     ![Vytvoření externího zdroje dat](media/saas-tenancy-cross-tenant-reporting/create-external-data-source.png)
 
-   Externí tabulky, které odkazují na globální zobrazení je popsáno v předchozí části a definované pomocí **distribuce = SHARDED(VenueId)**. Protože každý *VenueId* mapuje na jednu databázi, zlepší se výkon pro řadu scénářů, jak je znázorněno v následující části.
+   Externí tabulky, které odkazují na globální zobrazení je popsáno v předchozí části a definované pomocí **distribuce = SHARDED(VenueId)**. Protože každý *VenueId* mapuje na jednotlivé databáze, zlepší se výkon pro řadu scénářů, jak je znázorněno v následující části.
 
     ![Vytvoření externích tabulek](media/saas-tenancy-cross-tenant-reporting/external-tables.png)
 
@@ -148,7 +148,7 @@ Teď, když *adhocreporting* databáze je nastaven, pokračujte a spustit někte
 
 Při kontrole plánu spuštění, najeďte myší plán ikony podrobnosti. 
 
-Je důležité si uvědomit, že nastavení **distribuce = SHARDED(VenueId)** když je definována externí zdroj dat zlepšuje výkon pro řadu scénářů. Protože každému *VenueId* mapuje na jednu databázi, filtrování je snadno provést vzdáleně, vrací pouze data potřebná.
+Je důležité si uvědomit, že nastavení **distribuce = SHARDED(VenueId)** když je definována externí zdroj dat zlepšuje výkon pro řadu scénářů. Protože každému *VenueId* mapuje na jednotlivé databáze, filtrování je snadno provést vzdáleně, vrací pouze data potřebná.
 
 1. Otevřete... \\Learning Modules\\Operational Analytics\\vykazování ad hoc\\*Demo-AdhocReportingQueries.sql* v aplikaci SSMS.
 2. Zkontrolujte, že se připojení k **adhocreporting** databáze.
@@ -188,7 +188,7 @@ V tomto kurzu jste se naučili:
 
 Teď si vyzkoušejte [kurz analýza Tenanta](saas-tenancy-tenant-analytics.md) zkoumání extrahování dat do samostatné analytické databáze pro zpracování složitější analýzy.
 
-## <a name="additional-resources"></a>Další zdroje informací:
+## <a name="additional-resources"></a>Další materiály
 
 * Další [kurzy, které vycházejí z aplikace Wingtip Tickets SaaS databáze na Tenanta](saas-dbpertenant-wingtip-app-overview.md#sql-database-wingtip-saas-tutorials)
 * [Elastic Query](sql-database-elastic-query-overview.md)

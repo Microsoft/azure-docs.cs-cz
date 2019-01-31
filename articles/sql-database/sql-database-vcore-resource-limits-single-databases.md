@@ -3,7 +3,7 @@ title: Limity založený na virtuálních jádrech prostředků Azure SQL Databa
 description: Tato stránka popisuje některé běžné limity prostředků založený na virtuálních jádrech pro izolovanou databázi ve službě Azure SQL Database.
 services: sql-database
 ms.service: sql-database
-ms.subservice: single-database
+ms.subservice: standalone-database
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
@@ -11,24 +11,24 @@ author: CarlRabeler
 ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
-ms.date: 01/09/2019
-ms.openlocfilehash: 894922a80ab874e5304ef441571e03ef559a34b0
-ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
+ms.date: 01/25/2019
+ms.openlocfilehash: e38f90acf1ffb0b63379727287f7451f99b6dd0d
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54215418"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55460161"
 ---
 # <a name="azure-sql-database-vcore-based-purchasing-model-limits-for-a-single-database"></a>Založený na virtuálních jádrech zakoupení modelu omezení pro jednu databázi Azure SQL Database
 
 Tento článek obsahuje podrobné prostředků limity pro izolované databáze Azure SQL Database pomocí nákupní model založený na virtuálních jádrech.
 
-Založený na DTU nákupní model omezení pro izolované databáze na logickém serveru najdete v tématu [Přehled prostředků omezuje na logickém serveru](sql-database-resource-limits-logical-server.md).
+Založený na DTU nákupní model omezení pro izolované databáze na server služby SQL Database najdete v tématu [Přehled prostředků omezuje na server služby SQL Database](sql-database-resource-limits-database-server.md).
 
 > [!IMPORTANT]
 > Za určitých okolností budete muset zmenšit databázi uvolnění nevyužívaného místa. Další informace najdete v tématu [spravovat místo souborů ve službě Azure SQL Database](sql-database-file-space-management.md).
 
-Můžete nastavit úroveň služby, výpočetního prostředí a velikost úložiště pro izolovanou databázi pomocí [webu Azure portal](sql-database-single-databases-manage.md#azure-portal-manage-logical-servers-and-databases), [příkazů jazyka Transact-SQL](sql-database-single-databases-manage.md#transact-sql-manage-logical-servers-and-databases), [PowerShell](sql-database-single-databases-manage.md#powershell-manage-logical-servers-and-databases), [ Azure CLI](sql-database-single-databases-manage.md#azure-cli-manage-logical-servers-and-databases), nebo [rozhraní REST API](sql-database-single-databases-manage.md#rest-api-manage-logical-servers-and-databases).
+Můžete nastavit úroveň služby, výpočetního prostředí a velikost úložiště pro izolovanou databázi pomocí [webu Azure portal](sql-database-single-databases-manage.md#manage-an-existing-sql-database-server), [příkazů jazyka Transact-SQL](sql-database-single-databases-manage.md#transact-sql-manage-sql-database-servers-and-single-databases), [PowerShell](sql-database-single-databases-manage.md#powershell-manage-sql-database-servers-and-single-databases), [ Azure CLI](sql-database-single-databases-manage.md#azure-cli-manage-sql-database-servers-and-single-databases), nebo [rozhraní REST API](sql-database-single-databases-manage.md#rest-api-manage-sql-database-servers-and-single-databases).
 
 ## <a name="general-purpose-service-tier-storage-sizes-and-compute-sizes"></a>Obecné účely vrstvy služby: Velikosti úložiště a výpočty velikostí
 
@@ -152,7 +152,7 @@ Můžete nastavit úroveň služby, výpočetního prostředí a velikost úlož
 |Virtuální jádra|7|8|9|10|16|24|
 |Paměť (GB)|49|56|63|70|112|168|
 |Podpora Columnstore|neuvedeno|neuvedeno|neuvedeno|neuvedeno|neuvedeno|neuvedeno|
-|Úložiště OLTP v paměti (GB)|7|8|9,5|11|20|36|
+|Úložiště OLTP v paměti (GB)|7|8|9.5|11|20|36|
 |Typ úložiště|Místní disk SSD|Místní disk SSD|Místní disk SSD|Místní disk SSD|Místní disk SSD|Místní disk SSD|
 |Maximální velikost dat (GB)|1024|1024|1024|1024|1024|1024|
 |Maximální velikost protokolu (GB)|307|307|307|307|307|307|
@@ -174,7 +174,7 @@ Můžete nastavit úroveň služby, výpočetního prostředí a velikost úlož
 |Virtuální jádra|2|4|6|8|10|12|14|
 |Paměť (GB)|11|22|33|44|55|66|77|
 |Podpora Columnstore|Ano|Ano|Ano|Ano|Ano|Ano|Ano|
-|Úložiště OLTP v paměti (GB)|1.571|3,142|4.713|6.284|8.655|11.026|13.397|
+|Úložiště OLTP v paměti (GB)|1.571|3.142|4.713|6.284|8.655|11.026|13.397|
 |Maximální velikost dat (GB)|1024|1024|1024|1536|1536|1536|1536|
 |Maximální velikost protokolu (GB)|307|307|307|461|461|461|461|
 |Velikost databáze TempDB (GB)|64|128|192|256|320|384|384|

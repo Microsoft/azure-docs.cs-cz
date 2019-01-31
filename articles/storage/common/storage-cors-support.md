@@ -8,13 +8,13 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 2/22/2017
 ms.author: cbrooks
-ms.component: common
-ms.openlocfilehash: fd5df50128885f6a96e68c8ad46204bc21d80264
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.subservice: common
+ms.openlocfilehash: cf40fd45114659bf1a5da4dbaa6bfa928f34088c
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39530849"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55473761"
 ---
 # <a name="cross-origin-resource-sharing-cors-support-for-the-azure-storage-services"></a>Prostředků mezi zdroji (CORS) podporu pro služby Azure Storage pro sdílení obsahu
 Od verze 2013-08-15, služby Azure storage podporu sdílení prostředků mezi zdroji (CORS) ke službám Blob, tabulky, fronty a soubor. CORS je funkce protokolu HTTP, která umožňuje webové aplikaci spuštěné v rámci jedné domény pro přístup k prostředkům v jiné doméně. Webové prohlížeče implementují bezpečnostní omezení, označované jako [zásada stejného zdroje](http://www.w3.org/Security/wiki/Same_Origin_Policy) , který chrání webovou stránku před voláním rozhraní API v jiné doméně. CORS nabízí zabezpečený způsob, jak povolit jednu doménu (zdrojová doména) pro volání rozhraní API v jiné doméně. Zobrazit [specifikace CORS](http://www.w3.org/TR/cors/) podrobnosti o CORS.
@@ -67,11 +67,11 @@ Tady je ukázka jednoho pravidla CORS, určené pomocí operace nastavit vlastno
 
 Níže je popsána jednotlivých prvků, součástí pravidlo CORS:
 
-* **AllowedOrigins**: zdrojové domény, které mohou vytvořit požadavek na službu úložiště přes CORS. Zdrojová doména je doména, ze které žádost pochází. Všimněte si, že počátek musí být velká a malá písmena přesně neshoduje s původ, věk uživatele odešle do služby. Můžete také použít zástupný znak "*" Povolit všechny zdrojové domény k podání žádostí o přes CORS. V příkladu výše, domény [ http://www.contoso.com ](http://www.contoso.com) a [ http://www.fabrikam.com ](http://www.fabrikam.com) mohou vytvářet požadavky na službu pomocí CORS.
-* **Hodnota AllowedMethods**: metody (akce požadavků HTTP), které může doména zdroje použít pro žádost CORS. V předchozím příkladu jsou povoleny pouze požadavky PUT a GET.
-* **AllowedHeaders**: záhlaví požadavku, která doména zdroje může určit v požadavku CORS. V předchozím příkladu jsou povoleny všechny hlavičky metadat od verze x-ms-meta-data, x-ms-meta cíl a x-ms-meta-abc. Všimněte si, že zástupný znak ' *' znamená, že není povoleno žádné začátek záhlaví se zadanou předponou.
-* **ExposedHeaders**: hlavičky odpovědi, které mohou být odeslaný v odpovědi na žádost CORS a zpřístupnit v prohlížeči pro vystavitele žádosti. V předchozím příkladu je vystavit libovolné od záhlaví x-ms-meta pokyn prohlížeče.
-* **MaxAgeInSeconds**: maximální doba, by měl prohlížeč mezipaměti předběžný možnosti žádosti.
+* **AllowedOrigins**: Zdrojové domény, které mohou vytvořit požadavek na službu úložiště přes CORS. Zdrojová doména je doména, ze které žádost pochází. Všimněte si, že počátek musí být velká a malá písmena přesně neshoduje s původ, věk uživatele odešle do služby. Můžete také použít zástupný znak "*" Povolit všechny zdrojové domény k podání žádostí o přes CORS. V příkladu výše, domény [ http://www.contoso.com ](http://www.contoso.com) a [ http://www.fabrikam.com ](http://www.fabrikam.com) mohou vytvářet požadavky na službu pomocí CORS.
+* **Hodnota AllowedMethods**: Metody (akce požadavků HTTP), které může doména zdroje použít pro žádost CORS. V předchozím příkladu jsou povoleny pouze požadavky PUT a GET.
+* **AllowedHeaders**: Hlavičky žádosti, která doména zdroje může určit v požadavku CORS. V předchozím příkladu jsou povoleny všechny hlavičky metadat od verze x-ms-meta-data, x-ms-meta cíl a x-ms-meta-abc. Všimněte si, že zástupný znak ' *' znamená, že není povoleno žádné začátek záhlaví se zadanou předponou.
+* **ExposedHeaders**: Hlavičky odpovědi, které mohou být odeslaný v odpovědi na žádost CORS a zpřístupnit v prohlížeči pro vystavitele žádosti. V předchozím příkladu je vystavit libovolné od záhlaví x-ms-meta pokyn prohlížeče.
+* **MaxAgeInSeconds**: Maximální doba, by měl prohlížeč mezipaměti předběžné požadavky OPTIONS.
 
 Služby Azure storage podporují zadání záhlaví s předponou pro obě **AllowedHeaders** a **ExposedHeaders** elementy. Povolit kategorii záhlaví, můžete zadat běžnou předponu do této kategorie spadají. Například zadání *x-ms-meta** jako hlavičku předponou vytvoří pravidlo, které budou odpovídat všechny hlavičky, které začínají s x-ms-meta.
 
@@ -129,7 +129,7 @@ Dále je třeba zvážit následující požadavků CORS:
 
 | Žádost |  |  | Odpověď |  |
 | --- | --- | --- | --- | --- |
-| **– Metoda** |**Počátek** |**Hlavičky žádosti** |**Pravidlo** |**výsledek** |
+| **Metoda** |**Počátek** |**Hlavičky žádosti** |**Pravidlo** |**výsledek** |
 | **PUT** |http://www.contoso.com |x-ms-blob-content-type |První pravidlo |Úspěch |
 | **GET** |http://www.contoso.com |x-ms-blob-content-type |Druhé pravidlo |Úspěch |
 | **GET** |http://www.contoso.com |x-ms-client-request-id |Druhé pravidlo |Selhání |

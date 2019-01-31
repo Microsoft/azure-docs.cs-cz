@@ -7,14 +7,14 @@ ms.topic: conceptual
 ms.date: 10/15/2018
 ms.author: mjbrown
 ms.reviewer: sngun
-ms.openlocfilehash: 6ec59108652fa928dbbc2a3cbb04c51ae0440dde
-ms.sourcegitcommit: c31a2dd686ea1b0824e7e695157adbc219d9074f
+ms.openlocfilehash: eca20b775b97296510545c4d2f2f005fd91d6758
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/18/2019
-ms.locfileid: "54402387"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55471313"
 ---
-# <a name="high-availability-with-azure-cosmos-db"></a>Vysoká dostupnost s využitím služby Azure Cosmos DB
+# <a name="high-availability-with-azure-cosmos-db"></a>Vysoká dostupnost s využitím Azure Cosmos DB
 
 Azure Cosmos DB transparentně replikuje data napříč všemi oblastmi Azure spojené s vaším účtem Cosmos. Cosmos DB využívá několik vrstev redundance pro vaše data, jak je znázorněno na následujícím obrázku:
 

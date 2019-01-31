@@ -7,13 +7,13 @@ ms.service: storage
 ms.topic: how-to
 ms.date: 05/22/2018
 ms.author: tamram
-ms.component: common
-ms.openlocfilehash: 78e2620ba6e5e29a1f1ac9719b709d5a2f468122
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.subservice: common
+ms.openlocfilehash: 08a86e1b2808a0778734edecc9385f4d61779b25
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39530633"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55476192"
 ---
 # <a name="using-the-azure-storage-rest-api"></a>Použití rozhraní REST API pro službu Azure Storage
 
@@ -58,15 +58,15 @@ Ukázková aplikace vypíše kontejnery v účtu úložiště. Jakmile pochopít
 
 Když se podíváte na [rozhraní REST API služby Blob](/rest/api/storageservices/Blob-Service-REST-API), uvidíte všechny operace můžete provádět na úložiště objektů blob. Klientské knihovny úložiště jsou obálky kolem rozhraní REST API – jejich usnadňují za vás do úložiště bez přímo pomocí rozhraní REST API. Jak bylo uvedeno výše, někdy ale chcete používat rozhraní REST API namísto Klientská knihovna pro úložiště.
 
-## <a name="rest-api-reference-list-containers-api"></a>Reference k rozhraní REST API: Rozhraní API seznam kontejnerů
+## <a name="rest-api-reference-list-containers-api"></a>Reference k rozhraní REST API: Vypsat kontejnery rozhraní API
 
 Podívejme se na stránce v referenci rozhraní REST API pro [ListContainers](/rest/api/storageservices/List-Containers2) takže víte, kde některá pole pocházejí z požadavku a odpovědi v další části s kódem.
 
-**Metoda požadavku**: získat. Tento příkaz je metoda HTTP, který zadáte jako vlastnost objektu požadavku. Ostatní hodnoty pro tuto operaci zahrnují HEAD, PUT a DELETE, v závislosti na rozhraní API, se označuje jako volání.
+**Metoda požadavku**: GET. Tento příkaz je metoda HTTP, který zadáte jako vlastnost objektu požadavku. Ostatní hodnoty pro tuto operaci zahrnují HEAD, PUT a DELETE, v závislosti na rozhraní API, se označuje jako volání.
 
-**Identifikátor URI žádosti**: https://myaccount.blob.core.windows.net/?comp=list tím se vytvoří z koncového bodu účtu úložiště objektů blob `http://myaccount.blob.core.windows.net` a řetězec prostředku `/?comp=list`.
+**Identifikátor URI žádosti**: https://myaccount.blob.core.windows.net/?comp=list  Tím se vytvoří z koncového bodu účtu úložiště objektů blob `http://myaccount.blob.core.windows.net` a řetězec prostředku `/?comp=list`.
 
-[Parametry identifikátoru URI](/rest/api/storageservices/List-Containers2#uri-parameters): existují další parametry dotazu můžete použít při volání metody ListContainers. Několik z těchto parametrů se *vypršení časového limitu* volání (v sekundách) a *předponu*, který se používá k filtrování.
+[Parametry identifikátoru URI](/rest/api/storageservices/List-Containers2#uri-parameters): Existují další parametry dotazu, které můžete použít při volání metody ListContainers. Několik z těchto parametrů se *vypršení časového limitu* volání (v sekundách) a *předponu*, který se používá k filtrování.
 
 Další užitečné parametr *maxresults:* Pokud než tato hodnota jsou k dispozici více kontejnerů, budou obsahovat tělo odpovědi *NextMarker* element, který označuje dalšího kontejneru se vraťte na další požadavek. Pokud chcete tuto funkci používat, je zadat *NextMarker* hodnoty jako *značky* parametr v identifikátoru URI při příští žádosti o. Při použití této funkce je obdobou stránkování přes výsledky. 
 
@@ -76,13 +76,13 @@ Chcete-li použít další parametry, přidejte je na řetězec prostředku s ho
 /?comp=list&timeout=60&maxresults=100
 ```
 
-[Hlavičky požadavku](/rest/api/storageservices/List-Containers2#request-headers)**:** této části jsou uvedené hlavičky žádosti požadované a volitelné. Tři hlavičky jsou povinné: *autorizace* záhlaví, *x-ms-date* (čas UTC požadavku obsahuje), a *x-ms-version* (určuje verzi modulu REST Rozhraní API pro použití). Včetně *x-ms klienta request-id* v hlavičkách je nepovinný – můžete nastavit hodnotu pro toto pole k ničemu; jsou zapsána do úložiště analýzy protokolů, pokud je povoleno protokolování.
+[Hlavičky požadavku](/rest/api/storageservices/List-Containers2#request-headers)**:** Tato část obsahuje seznam hlaviček žádostí požadované a volitelné. Tři hlavičky jsou povinné: *autorizace* záhlaví, *x-ms-date* (čas UTC požadavku obsahuje), a *x-ms-version* (určuje verzi modulu REST Rozhraní API pro použití). Včetně *x-ms klienta request-id* v hlavičkách je nepovinný – můžete nastavit hodnotu pro toto pole k ničemu; jsou zapsána do úložiště analýzy protokolů, pokud je povoleno protokolování.
 
-[Text žádosti](/rest/api/storageservices/List-Containers2#request-body)**:** není ListContainers není datová část požadavku. Text požadavku se používá ve všech operacích PUT při odesílání objektů BLOB, stejně jako SetContainerAccessPolicy, který umožňuje odeslat XML seznam uložené zásady přístupu k použití. Uložené zásady přístupu jsou popsány v následujícím článku [použití sdílených přístupových podpisů (SAS)](storage-dotnet-shared-access-signature-part-1.md).
+[Text žádosti](/rest/api/storageservices/List-Containers2#request-body)**:** Není k dispozici není datová část požadavku pro ListContainers. Text požadavku se používá ve všech operacích PUT při odesílání objektů BLOB, stejně jako SetContainerAccessPolicy, který umožňuje odeslat XML seznam uložené zásady přístupu k použití. Uložené zásady přístupu jsou popsány v následujícím článku [použití sdílených přístupových podpisů (SAS)](storage-dotnet-shared-access-signature-part-1.md).
 
-[Stavový kód odpovědi](/rest/api/storageservices/List-Containers2#status-code)**:** Tells jakékoli stavové kódy, je potřeba vědět. V tomto příkladu je stavový kód HTTP 200 ok. Úplný seznam stavových kódů HTTP, projděte si [definice stavových kódů](http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html). Kódy chyb, které jsou specifické pro rozhraní REST API služby Storage najdete v tématu [kódy chyb společné rozhraní REST API](/rest/api/storageservices/common-rest-api-error-codes)
+[Stavový kód odpovědi](/rest/api/storageservices/List-Containers2#status-code)**:** Říká jakékoli stavové kódy, které potřebujete znát. V tomto příkladu je stavový kód HTTP 200 ok. Úplný seznam stavových kódů HTTP, projděte si [definice stavových kódů](http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html). Kódy chyb, které jsou specifické pro rozhraní REST API služby Storage najdete v tématu [kódy chyb společné rozhraní REST API](/rest/api/storageservices/common-rest-api-error-codes)
 
-[Hlavičky odpovědi](/rest/api/storageservices/List-Containers2#response-headers)**:** patří mezi ně *typ obsahu*; *x-ms-request-id* (id žádosti je předán, pokud je k dispozici); *x-ms-version* (označuje verzi služby Blob service použít) a *datum* (UTC, určuje, kdy byl požadavek).
+[Hlavičky odpovědi](/rest/api/storageservices/List-Containers2#response-headers)**:** Patří mezi ně *typ obsahu*; *x-ms-request-id* (id žádosti je předán, pokud je k dispozici); *x-ms-version* (označuje verzi služby Blob service použít) a *datum* (UTC, určuje, kdy byl požadavek).
 
 [Text odpovědi](/rest/api/storageservices/List-Containers2#response-body): Toto pole je struktury XML poskytuje požadovaná data. V tomto příkladu je odpověď na seznam kontejnery a jejich vlastnosti.
 
@@ -204,7 +204,7 @@ Date: Fri, 17 Nov 2017 00:23:42 GMT
 Content-Length: 1511
 ```
 
-**Text odpovědi (XML):** pro ListContainers zobrazí v seznamu kontejnerů a jejich vlastnosti.
+**Text odpovědi (XML):** Pro ListContainers to zobrazuje seznam kontejnery a jejich vlastnosti.
 
 ```xml  
 <?xml version="1.0" encoding="utf-8"?>
@@ -283,24 +283,24 @@ Tento fragment kódu ukazuje formát řetězce podpis sdíleného klíče:
 
 ```csharp  
 StringToSign = VERB + "\n" +  
-               Content-Encoding + "\n" +  
-               Content-Language + "\n" +  
-               Content-Length + "\n" +  
-               Content-MD5 + "\n" +  
-               Content-Type + "\n" +  
-               Date + "\n" +  
-               If-Modified-Since + "\n" +  
-               If-Match + "\n" +  
-               If-None-Match + "\n" +  
-               If-Unmodified-Since + "\n" +  
-               Range + "\n" +  
-               CanonicalizedHeaders +  
-               CanonicalizedResource;  
+               Content-Encoding + "\n" +  
+               Content-Language + "\n" +  
+               Content-Length + "\n" +  
+               Content-MD5 + "\n" +  
+               Content-Type + "\n" +  
+               Date + "\n" +  
+               If-Modified-Since + "\n" +  
+               If-Match + "\n" +  
+               If-None-Match + "\n" +  
+               If-Unmodified-Since + "\n" +  
+               Range + "\n" +  
+               CanonicalizedHeaders +  
+               CanonicalizedResource;  
 ```
 
 Většina z těchto polí jsou zřídka se používá. Pro úložiště objektů Blob zadejte příkaz, md5, délka obsahu, ho Kanonizovat záhlaví a ho Kanonizovat prostředků. Ostatní můžete nechat prázdné (ale put v `\n` aby věděl, že jsou prázdné).
 
-Co jsou CanonicalizedHeaders a CanonicalizedResource? Funkční dotaz. Ve skutečnosti co dělá ho kanonizovat průměr? Aplikace Microsoft Word i nerozpoznal ho jako slovo. Tady je co [Wikipedia říká o převodu do kanonického tvaru](http://en.wikipedia.org/wiki/Canonicalization): *počítačových věd převodu do kanonického tvaru (někdy normalizaci nebo normalizace) je proces převodu dat, která má více než jeden možný reprezentuje do "standard", "Normální (normal) nebo kanonickém tvaru.* V normální mluvit, to znamená, že seznam položek (například záhlaví, v případě ho Kanonizovat záhlaví) a standardizovat do požadovanému formátu. V podstatě Microsoft jste se rozhodli formátu a budete muset spárujte ji.
+Co jsou CanonicalizedHeaders a CanonicalizedResource? Funkční dotaz. Ve skutečnosti co dělá ho kanonizovat průměr? Aplikace Microsoft Word i nerozpoznal ho jako slovo. Tady je co [Wikipedia říká o převodu do kanonického tvaru](http://en.wikipedia.org/wiki/Canonicalization): *Z počítačových věd převodu do kanonického tvaru (někdy normalizaci nebo normalizace) je proces převodu dat, která má více než jednu možnou reprezentaci do "standard", "Normální (normal) nebo kanonickém tvaru.* V normální mluvit, to znamená, že seznam položek (například záhlaví, v případě ho Kanonizovat záhlaví) a standardizovat do požadovanému formátu. V podstatě Microsoft jste se rozhodli formátu a budete muset spárujte ji.
 
 Začněme s tyto dvě kanonizovaného pole, protože jsou vyžadovány pro vytvoření autorizační hlavičky.
 
@@ -512,7 +512,7 @@ Date: Fri, 17 Nov 2017 05:20:21 GMT
 Content-Length: 1135
 ```
 
-**Text odpovědi (XML):** tento XML odpovědi obsahuje seznam objektů BLOB a jejich vlastnosti. 
+**Text odpovědi (XML):** Tato odpověď XML obsahuje seznam objektů BLOB a jejich vlastnosti. 
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>

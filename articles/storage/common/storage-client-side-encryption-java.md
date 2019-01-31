@@ -8,13 +8,13 @@ ms.devlang: java
 ms.topic: article
 ms.date: 05/11/2017
 ms.author: lakasa
-ms.component: common
-ms.openlocfilehash: 995b54d8eb53efc6001e29366e22e09b246f0bff
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.subservice: common
+ms.openlocfilehash: 9a96f80c609f446dcc1fea2a87925dec3dadfedd
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39522012"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55471891"
 ---
 # <a name="client-side-encryption-and-azure-key-vault-with-java-for-microsoft-azure-storage"></a>Šifrování na straně klienta a Azure Key Vault v Javě pro Microsoft Azure Storage
 [!INCLUDE [storage-selector-client-side-encryption-include](../../../includes/storage-selector-client-side-encryption-include.md)]

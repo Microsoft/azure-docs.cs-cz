@@ -6,17 +6,17 @@ author: marktab
 manager: cgronlun
 editor: cgronlun
 ms.service: machine-learning
-ms.component: team-data-science-process
+ms.subservice: team-data-science-process
 ms.topic: article
 ms.date: 11/13/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 5faa7a58a252a5d3b8cc044f9e81a6d7cb2df7d5
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: 0cf9ffddffe7f97008e69c9c4fb7945faeb779da
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53138037"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55469596"
 ---
 # <a name="how-to-identify-scenarios-and-plan-for-advanced-analytics-data-processing"></a>Jak určit scénáře a plánovat zpracování dat pokročilé analýzy
 Jaké prostředky můžete plán zahrnout při nastavování prostředí pro pokročilé analýzy zpracování pro datovou sadu? Tento článek navrhuje řadu otázky, které pomáhají identifikovat úloh a prostředků odpovídající vašemu scénáři. Pořadí hrubý nástin postupu pro prediktivní analýzy je popsaný v [novinky zpracování týmových dat vědy (TDSP)?](overview.md). Každý z těchto kroků vyžaduje konkrétní prostředky pro úlohy, které jsou relevantní pro váš konkrétní scénář. Klíčových otázek k identifikaci vašeho scénáře se týkají logistiky dat, charakteristiky, kvalitu datové sady, nástroje a jazyky, které chcete provést analýzu.
@@ -65,14 +65,14 @@ Tyto dotazy jsou klíčem k plánování vašeho úložiště a zpracování pro
    * Tabulek systému SQL Server
 3. **Jak velké jsou vaše data?**
    
-   * Malé: menší než 2 GB
+   * Malé: Menší než 2 GB
    * Střední: Větší než 2 GB a menší než 10 GB
    * Velké: Větší než 10 GB
 
 Vezměme si jako příklad prostředí Azure Machine Learning Studio:
 
 * Seznam datových formátů a typy podporované v aplikaci Azure Machine Learning Studio najdete v tématu [formáty dat a datové typy podporované](../studio/import-data.md#data-formats-and-data-types-supported) oddílu.
-* Informace o omezeních dat pro Azure Machine Learning Studio najdete v tématu **jak velká může být datová sada pro mé moduly?** část [import a export dat pro Machine Learning](../studio/faq.md#machine-learning-studio-questions)
+
 
 Informace o omezení použít v procesu analýzy dalšími službami Azure, najdete v části [předplatné Azure a limity, kvóty a omezení](../../azure-subscription-service-limits.md).
 

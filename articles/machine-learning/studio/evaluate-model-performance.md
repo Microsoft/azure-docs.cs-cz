@@ -1,6 +1,6 @@
 ---
-Název: Vyhodnocení výkonu titleSuffix modelu: Azure Machine Learning Studio Popis: Tento článek ukazuje, jak vyhodnotit výkon modelu v nástroji Azure Machine Learning Studio a poskytuje stručný dostupné metriky pro tuto úlohu.
-Services: machine learningu ms.service: ms.component strojového učení: studio ms.topic: článku
+Název: Vyhodnocení výkonu titleSuffix modelu: Azure Machine Learning Studio Popis: Tento článek ukazuje, jak vyhodnotit výkon modelu v nástroji Azure Machine Learning Studio a poskytuje stručný dostupné metriky pro tuto úlohu.
+Services: machine learningu ms.service: ms.subservice strojového učení: studio ms.topic: článku
 
 author: ericlicoding ms.author: amlstudiodocs ms.custom: seodec18, previous-author=heatherbshapiro, previous-ms.author=hshapiro ms.date: 03/20/2017
 ---

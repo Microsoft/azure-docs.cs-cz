@@ -7,12 +7,12 @@ ms.service: container-instances
 ms.topic: article
 ms.date: 08/31/2018
 ms.author: danlep
-ms.openlocfilehash: 41c9302d280d6027e12f2516bca26a98d224f301
-ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
+ms.openlocfilehash: 85b67fb4fa474bb00b5b7ca66580273671081cdf
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49354185"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55478183"
 ---
 # <a name="use-azure-container-instances-as-a-jenkins-build-agent"></a>Použití Azure Container Instances jako Jenkins agenta sestavení
 
@@ -28,26 +28,26 @@ Další informace o službě Azure Container Instances, naleznete v tématu [o s
 
    - **Název**: Zadejte název pro nasazení Jenkinse.
    - **Uživatelské jméno**: Zadejte název pro uživatele s rolí správce Jenkinse virtuálního počítače.
-   - **Typ ověřování**: doporučujeme veřejný klíč SSH pro ověřování. Pokud vyberete tuto možnost, vložte veřejný klíč SSH použitého pro přihlášení k virtuálnímu počítači Jenkinse.
-   - **Předplatné:** Vyberte předplatné Azure.
-   - **Skupina prostředků:** Vytvořte skupinu prostředků nebo vyberte stávající.
+   - **Typ ověřování**: Doporučujeme, abyste veřejný klíč SSH pro ověřování. Pokud vyberete tuto možnost, vložte veřejný klíč SSH použitého pro přihlášení k virtuálnímu počítači Jenkinse.
+   - **Předplatné**: Vyberte předplatné služby Azure.
+   - **Skupina prostředků**: Vytvořte skupinu prostředků nebo vyberte existující.
    - **Umístění**: Vyberte umístění pro Jenkins server.
 
    ![Základní nastavení pro nasazení portálu Jenkinse](./media/container-instances-jenkins/jenkins-portal-01.png)
 
 3. Na **další nastavení** formuláře, dokončete následující položky:
 
-   - **Velikost**: Vyberte možnost příslušné nastavení velikosti pro virtuální počítač Jenkinse.
-   - **Typ disku virtuálního počítače**: Zadejte, jestli **HDD** (jednotku pevného disku) nebo **SSD** (jednotky SSD) pro Jenkins server.
-   - **Virtuální síť**: vyberte šipku, pokud chcete upravit výchozí nastavení.
-   - **Podsítě**: vyberte šipku, zkontrolujte zadané informace a vyberte **OK**.
-   - **Veřejná IP adresa**: vyberte šipku a zadejte veřejnou IP adresu vlastní název, skladovou Položku konfigurace a nastavte jako metodu přiřazení.
+   - **Velikost**: Vyberte možnosti příslušné nastavení velikosti pro virtuální počítač Jenkinse.
+   - **Typ disku virtuálního počítače**: Zadejte buď **HDD** (jednotku pevného disku) nebo **SSD** (jednotky SSD) pro Jenkins server.
+   - **Virtuální síť**: Vyberte šipku, pokud chcete upravit výchozí nastavení.
+   - **Podsítě**: Vyberte šipku, zkontrolujte zadané informace a vyberte **OK**.
+   - **Veřejná IP adresa**: Vyberte šipku a zadejte veřejnou IP adresu vlastní název, skladovou Položku konfigurace a nastavte jako metodu přiřazení.
    - **Popisek názvu domény**: Zadejte hodnotu vytvořit plně kvalifikovanou adresu URL pro virtuální počítač Jenkinse.
-   - **Typ verze Jenkins**: Vyberte typ požadované verze z možností: **LTS**, **týdně sestavení**, nebo **Azure ověřit**.
+   - **Typ verze Jenkins**: Vyberte požadovanou verzi typ z možností: **LTS**, **týdně sestavení**, nebo **Azure ověřit**.
 
    ![Další nastavení pro nasazení portálu Jenkinse](./media/container-instances-jenkins/jenkins-portal-02.png)
 
-4. Integrace instančního objektu služby, vyberte **Auto(MSI)** mají [spravovat identity pro prostředky Azure] [spravovaných identity azure prostředků] automaticky vytvořit identitu ověřování pro instance Jenkinse. Vyberte **ruční** poskytnout vlastní pověření instančního objektu.
+4. Integrace instančního objektu služby, vyberte **Auto(MSI)** mít [spravovaných identit pro prostředky Azure] [ managed-identities-azure-resources] automaticky vytvořit identitu ověřování Instance Jenkinse. Vyberte **ruční** poskytnout vlastní pověření instančního objektu.
 
 5. Agenti cloud nakonfigurovat cloudové platformy pro úlohy sestavení Jenkinse. Pro účely tohoto článku, vyberte **ACI**. S agentem ACI cloudu Každá úloha sestavení Jenkinse běží v instanci kontejneru.
 
@@ -138,4 +138,4 @@ Další informace o systému Jenkins v Azure najdete v tématu [Azure a Jenkinse
 <!-- LINKS - internal -->
 [about-aci]: ./container-instances-overview.md
 [jenkins-azure]: ../jenkins/overview.md
-[managed-service-identity]: ../active-directory/managed-service-identity/overview.md
+[managed-identities-azure-resources]: ../active-directory/managed-identities-azure-resources/overview.md

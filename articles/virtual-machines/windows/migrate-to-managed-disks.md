@@ -15,13 +15,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/03/2018
 ms.author: cynthn
-ms.component: disks
-ms.openlocfilehash: b87e27ae914a01f03ce78eafe5792433d18e417f
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.subservice: disks
+ms.openlocfilehash: 4aefc8c033383125a803eb0c8a38e2f3de119540
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55193705"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55467906"
 ---
 # <a name="migrate-azure-vms-to-managed-disks-in-azure"></a>Migrace virtuálních počítačů Azure na Managed Disks v Azure
 

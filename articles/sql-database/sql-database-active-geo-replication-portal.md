@@ -11,17 +11,17 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
 manager: craigg
-ms.date: 12/04/2018
-ms.openlocfilehash: c25dd911b5648cdf4b64053ef26a7b70c9156074
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.date: 01/25/2019
+ms.openlocfilehash: 18b024efdc4300daca2c5cee933b136dbc99d433
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53599752"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55468899"
 ---
 # <a name="configure-active-geo-replication-for-azure-sql-database-in-the-azure-portal-and-initiate-failover"></a>Konfigurace aktivní geografické replikace pro Azure SQL Database webu Azure portal a zahájit převzetí služeb při selhání
 
-Tento článek ukazuje, jak nakonfigurovat [aktivní geografické replikace pro jednu databázi, databázi ve fondu] na logické server(sql-database-active-geo-replication.md#active-geo-replication-terminology-and-capabilities) ve službě SQL Database pomocí [Webu azure portal](http://portal.azure.com) a k zahájení převzetí služeb při selhání.
+V tomto článku se dozvíte, jak nakonfigurovat [aktivní geografické replikace pro jednu databázi, databázi ve fondu](sql-database-active-geo-replication.md#active-geo-replication-terminology-and-capabilities) v Azure SQL Database pomocí [webu Azure portal](http://portal.azure.com) a k zahájení převzetí služeb při selhání.
 
 Informace o skupinách automatické převzetí služeb při selhání s databázemi ve fondu a jeden, naleznete v tématu [osvědčené postupy používání skupin převzetí služeb při selhání s databázemi ve fondu a jeden](sql-database-auto-failover-group.md#best-practices-of-using-failover-groups-with-single-databases-and-elastic-pools). Informace o skupinách automatické převzetí služeb při selhání s spravované instance (preview) najdete v tématu [osvědčené postupy používání skupin převzetí služeb při selhání s databázemi ve fondu a jeden](sql-database-auto-failover-group.md#best-practices-of-using-failover-groups-with-managed-instances).
 
@@ -40,7 +40,7 @@ Následující kroky vytvoření nové sekundární databáze v partnerství geo
 
 Přidání sekundární databáze, musí být vlastníkem předplatného nebo spoluvlastník.
 
-Sekundární databáze má stejný název jako primární databáze a ve výchozím nastavení, má stejnou službu vrstvy a vypočítat velikost. Sekundární databáze může být izolované databáze nebo databáze v elastickém fondu. Další informace najdete v tématu [nákupní model založený na DTU](sql-database-service-tiers-dtu.md) a [nákupní model založený na virtuálních jádrech](sql-database-service-tiers-vcore.md).
+Sekundární databáze má stejný název jako primární databáze a ve výchozím nastavení, má stejnou službu vrstvy a vypočítat velikost. Sekundární databáze může být izolovanou databázi nebo databázi ve fondu. Další informace najdete v tématu [nákupní model založený na DTU](sql-database-service-tiers-dtu.md) a [nákupní model založený na virtuálních jádrech](sql-database-service-tiers-vcore.md).
 Jakmile sekundární se vytvoří a nasadí, zahájení dat replikace z primární databáze nové sekundární databáze.
 
 > [!NOTE]

@@ -1,23 +1,23 @@
 ---
-title: 'Kurz: Vytvoření aplikace WPF v jazyce C# – Translator Text API'
+title: 'Kurz: Vytvoření aplikace WPF v C# – Translator Text API'
 titleSuffix: Azure Cognitive Services
 description: V tomto kurzu se dozvíte, jak sestavit aplikaci WPF v jazyce C#, která používá rozhraní Translator Text API k překladu textu, načtení lokalizovaného seznamu podporovaných jazyků a dalším akcím.
 services: cognitive-services
 author: erhopf
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: translator-text
+ms.subservice: translator-text
 ms.topic: tutorial
 ms.date: 07/20/2018
 ms.author: erhopf
-ms.openlocfilehash: e302c1aa1cd4021b0d449fd981181b790546c0f8
-ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
-ms.translationtype: HT
+ms.openlocfilehash: f9fe1f40f758ead06c1e86fc0daeb64b72c5fd8b
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49647472"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55476498"
 ---
-# <a name="tutorial-write-a-wpf-application-for-translator-text-using-c35"></a>Kurz: Vytvoření aplikace WPF pro Translator Text s využitím C#
+# <a name="tutorial-write-a-wpf-application-for-translator-text-using-c35"></a>Kurz: Napíšeme aplikaci WPF pro Translator Text pomocí jazyka C&#35;
 
 V tomto kurzu vytvoříte interaktivní nástroj pro překlad textu pomocí rozhraní Translator Text API (V3), které je součástí Microsoft Cognitive Services v Azure. Dozvíte se, jak provést tyto akce:
 
@@ -668,7 +668,7 @@ Hlavička HTTP s názvem `X-ClientTraceId` je nepovinná. Hodnota by měla být 
 > [!NOTE]
 > Tento kurz se zaměřuje na službu Microsoft Translator, a proto metody `DetectLanguage()` a `CorrectSpelling()` nejsou podrobně popsané.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 > [!div class="nextstepaction"]
 > [Referenční informace k rozhraní Microsoft Translator Text API](https://docs.microsoft.com/azure/cognitive-services/Translator/reference/v3-0-reference)

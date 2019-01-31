@@ -7,14 +7,14 @@ ms.topic: conceptual
 ms.date: 11/14/2018
 ms.author: mjbrown
 ms.reviewer: sngun
-ms.openlocfilehash: fbbaefc62adedc2374c47fd0736368d3dec3e6a4
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: 9b5054da56bdc6a88642ea7860702b280a76dbb1
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54043426"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55461164"
 ---
-# <a name="time-to-live-for-azure-cosmos-db-data"></a>Čas TTL pro data služby Azure Cosmos DB
+# <a name="time-to-live-in-azure-cosmos-db"></a>Hodnota Time to live ve službě Azure Cosmos DB 
 
 "Time to Live" nebo TTL Azure Cosmos DB poskytuje možnost automaticky odstraňovat položky z kontejneru po určité časové období. Ve výchozím nastavení můžete nastavit dobu za provozu na úrovni kontejneru a přepište hodnotu na základě za položku. Po nastavení interval TTL, ZÍSKÁ v kontejneru nebo na úrovni položek služby Azure Cosmos DB tyto položky automaticky odebrat po období od chvíle, kdy bylo naposledy změněno. Hodnotu Time to live je nakonfigurovaný v řádu sekund. Při konfiguraci hodnoty TTL se systém automaticky odstraní vypršela platnost položky na základě hodnoty TTL, na rozdíl od, která je explicitně vydala klientskou operaci odstranění.
 

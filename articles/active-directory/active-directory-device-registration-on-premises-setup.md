@@ -17,12 +17,12 @@ ms.date: 07/23/2018
 ms.author: markvi
 ms.reviewer: jairoc
 ms.custom: seohack1
-ms.openlocfilehash: abdeeacc22d2709a3107c9e9e05bd982705d7dea
-ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
+ms.openlocfilehash: 00921fd82463a75e81e1279d436a576461e02f78
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/26/2019
-ms.locfileid: "55079065"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55301641"
 ---
 # <a name="setting-up-on-premises-conditional-access-by-using-azure-active-directory-device-registration"></a>Nastavení místního podmíněného přístupu pomocí registrace zařízení služby Azure Active Directory
 
@@ -109,9 +109,9 @@ Nasazení je nyní dokončen a můžete vyzkoušet některé scénáře. Pomocí
 
 | Úkol | Referenční informace |
 | --- | --- |
-| Připojte se k použití služby registrace zařízení služby Azure Active Directory některá zařízení k pracovní ploše. Můžete připojit zařízení s Androidem, iOS a Windows. |[Připojení zařízení k pracovišti prostřednictvím služby registrace zařízení služby Azure Active Directory](#join-devices-to-your-workplace-using-azure-active-directory-device-registration) |
+| Připojte se k použití služby registrace zařízení služby Azure Active Directory některá zařízení k pracovní ploše. Můžete připojit zařízení s Androidem, iOS a Windows. |[Připojení zařízení k pracovišti prostřednictvím služby registrace zařízení služby Azure Active Directory](#join-devices-to-your-workplace-by-using-azure-active-directory-device-registration-service) |
 | Zobrazit a povolit nebo zakázat registrovaná zařízení pomocí portálu správce. Při plnění tohoto úkolu zobrazit některé registrovaná zařízení pomocí portálu správce. |[Azure Active Directory – registrace zařízení – přehled služby](active-directory-device-registration-get-started.md) |
-| Ověřte, že objekty zařízení jsou zapsány zpět z Azure Active Directory na Windows Server Active Directory. |[Ověřte, že registrovaná zařízení, zapíšou se zpět do služby Active Directory](#verify-registered-devices-are-written-back-to-active-directory) |
+| Ověřte, že objekty zařízení jsou zapsány zpět z Azure Active Directory na Windows Server Active Directory. |[Ověřte, že registrovaná zařízení, zapíšou se zpět do služby Active Directory](#verify-that-registered-devices-are-written-back-to-active-directory) |
 | Teď, když uživatelé mohou registrovat svá zařízení, můžete vytvořit aplikaci ve službě AD FS, díky kterým můžou pouze k registrovaným zařízením zásady přístupu. V této úloze vytvoříte pravidlo přístupu aplikace a vlastní zprávu o odepření přístupu. |[Vytvoření zásad přístupu aplikací a vlastní zprávy o odepřeném přístupu](#create-an-application-access-policy-and-custom-access-denied-message) |
 
 ## <a name="integrate-azure-active-directory-with-on-premises-active-directory"></a>Integrace služby Azure Active Directory se službou Active Directory on-premises

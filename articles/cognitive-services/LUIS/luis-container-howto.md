@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: article
 ms.date: 01/22/2019
 ms.author: diberry
-ms.openlocfilehash: e6f13994d404d58082b953fc98ac6028eea2e43e
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: 97f11523c0418caaee66930c87a7de64570097d6
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55216190"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55296895"
 ---
 # <a name="install-and-run-luis-docker-containers"></a>Nainstalujte a spusťte LUIS kontejnery dockeru
  
@@ -40,11 +40,7 @@ Chcete-li spustit kontejner LUIS, musíte mít následující:
 
 ### <a name="the-host-computer"></a>Hostitelském počítači
 
-**Hostitele** je počítač, který spustí kontejner dockeru. Může být počítač připojený k vlastních prostorách nebo v dockeru, který hostuje službu v Azure včetně:
-
-* [Azure Kubernetes Service](../../aks/index.yml)
-* [Azure Container Instances](../../container-instances/index.yml)
-* [Kubernetes](https://kubernetes.io/) clusteru nasadí do [Azure Stack](../../azure-stack/index.yml). Další informace najdete v tématu [nasazení Kubernetes pro Azure Stack](../../azure-stack/user/azure-stack-solution-template-kubernetes-deploy.md).
+[!INCLUDE [Request access to private preview](../../../includes/cognitive-services-containers-host-computer.md)]
 
 ### <a name="container-requirements-and-recommendations"></a>Požadavků na kontejner a doporučení
 
@@ -52,9 +48,11 @@ Tento kontejner podporuje minimální a doporučené hodnoty pro nastavení:
 
 |Nastavení| Minimální | Doporučené |
 |-----------|---------|-------------|
-|Jádra<BR>`--cpus`|1 jádro<BR>alespoň 2.6 gigahertz (GHz) nebo rychlejší|1 jádro|
+|Jádra<BR>`--cpus`|1 jádro|1 jádro|
 |Memory (Paměť)<BR>`--memory`|2 GB|4 GB|
 |Transakce za sekundu<BR>(TPS)|20 TPS|40 TPS|
+
+Každé jádro, musí být aspoň 2.6 gigahertz (GHz) nebo rychlejší.
 
 `--cpus` a `--memory` nastavení jsou použita jako součást `docker run` příkazu.
 
@@ -66,17 +64,12 @@ Použití [ `docker pull` ](https://docs.docker.com/engine/reference/commandline
 docker pull mcr.microsoft.com/azure-cognitive-services/luis:latest
 ```
 
+Použití [ `docker pull` ](https://docs.docker.com/engine/reference/commandline/pull/) příkaz Stáhnout image kontejneru.
+
 Úplný popis dostupných značek jako například `latest` použili v předchozím příkazu, naleznete v tématu [LUIS](https://go.microsoft.com/fwlink/?linkid=2043204) na Docker Hubu.
 
-> [!TIP]
-> Můžete použít [imagí dockeru](https://docs.docker.com/engine/reference/commandline/images/) příkazu zobrazte výpis imagí kontejnerů stažené. Například následující příkaz zobrazí seznam ID, úložiště a značka image každý stažený kontejneru, formátovaná jako tabulka:
->
->  ```Docker
->  docker images --format "table {{.ID}}\t{{.Repository}}\t{{.Tag}}"
->
->  IMAGE ID            REPOSITORY                                                                TAG
->  ebbee78a6baa        mcr.microsoft.com/azure-cognitive-services/luis                           latest
->  ``` 
+[!INCLUDE [Tip for using docker list](../../../includes/cognitive-services-containers-docker-list-tip.md)]
+
 
 ## <a name="how-to-use-the-container"></a>Jak používat kontejneru
 
@@ -169,7 +162,7 @@ Host: {AZURE_REGION}.api.cognitive.microsoft.com
 Ocp-Apim-Subscription-Key: {AUTHORING_KEY}
 ```
 
-| Zástupný symbol | Value |
+| Zástupný symbol | Hodnota |
 |-------------|-------|
 |{APPLICATION_ID} | ID aplikace publikované aplikace LUIS. |
 |{APPLICATION_ENVIRONMENT} | Prostředí publikované aplikace LUIS. Použijte jednu z následujících hodnot:<br/>```PRODUCTION```<br/>```STAGING``` |
@@ -197,7 +190,7 @@ Host: {AZURE_REGION}.api.cognitive.microsoft.com
 Ocp-Apim-Subscription-Key: {AUTHORING_KEY}
 ```
 
-| Zástupný symbol | Value |
+| Zástupný symbol | Hodnota |
 |-------------|-------|
 |{APPLICATION_ID} | ID aplikace trénovaného aplikace LUIS. |
 |{APPLICATION_VERSION} | Verze aplikace trénovaného aplikace LUIS. |
@@ -219,7 +212,7 @@ V případě úspěchu je odpověď na soubor balíčku LUIS. Uložte soubor v z
 
 Použití [dockeru spustit](https://docs.docker.com/engine/reference/commandline/run/) příkaz ke spuštění kontejneru. Příkaz používá následující parametry:
 
-| Zástupný symbol | Value |
+| Zástupný symbol | Hodnota |
 |-------------|-------|
 |{ENDPOINT_KEY} | Tento klíč se používá ke spuštění kontejneru. Nepoužívejte klávesu starter. |
 |{BILLING_ENDPOINT} | Fakturační hodnota koncového bodu je k dispozici na stránce s přehledem Language Understanding webu Azure portal.|
@@ -325,14 +318,7 @@ Pokud spouštíte kontejner s výstupem [připojit](luis-container-configuration
 
 ## <a name="containers-api-documentation"></a>Dokumentace k rozhraní API kontejneru
 
-Kontejner, poskytuje kompletní dokumentaci pro koncové body a také `Try it now` funkce. Tato funkce umožňuje zadat nastavení do webového formuláře HTML a proveďte dotaz bez nutnosti psát jakýkoli kód. Jakmile je k dispozici dotaz vrací hodnotu, například příkaz CURL k předvedení hlavičky protokolu HTTP a textu formátu potřebném. 
-
-> [!TIP]
-> Čtení [specifikace OpenAPI](https://swagger.io/docs/specification/about/), popisující operace rozhraní API podporuje kontejnerem, od `/swagger` relativní identifikátor URI. Příklad:
->
->  ```http
->  http://localhost:5000/swagger
->  ```
+[!INCLUDE [Container's API documentation](../../../includes/cognitive-services-containers-api-documentation.md)]
 
 ## <a name="billing"></a>Fakturace
 
@@ -346,7 +332,7 @@ Cognitive Services kontejnery nejsou licencované k používání bez připojen�
 |--------|-------------|
 | `ApiKey` | Klíč rozhraní API _Language Understanding_ prostředek, který používá ke sledování fakturační údaje.<br/>Hodnota této možnosti musí být nastavená na klíče rozhraní API pro zřízené LUIS Azure prostředek určený v `Billing`. |
 | `Billing` | Koncový bod _Language Understanding_ prostředek, který používá ke sledování fakturační údaje.<br/>Hodnota této možnosti musí nastavena na identifikátor URI se zřídil prostředek LUIS Azure koncový bod.|
-| `Eula` | Označuje, že jste přijali licenční pro kontejner.<br/>Hodnota této možnosti musí být nastavená na `accept`. |
+| `Eula` | Označuje, že jste přijali licenci pro kontejner.<br/>Hodnota této možnosti musí být nastavená na `accept`. |
 
 > [!IMPORTANT]
 > Všechny tři možnosti je nutné zadat platnou hodnotou nebo kontejneru se nespustí.
@@ -371,7 +357,7 @@ Konfigurace nepodporované aplikací.|Podrobnosti|
 
 V tomto článku jste zjistili, koncepty a pracovní postup pro stažení, instalaci a používání kontejnerů Language Understanding (LUIS). Souhrn:
 
-* Language Understanding (LUIS) poskytuje jeden kontejnery Linuxu pro Docker poskytuje koncový bod dotazu predikce projevy.
+* Language Understanding (LUIS) poskytuje jeden kontejner Linuxu pro Docker poskytuje koncový bod dotazu predikce projevy.
 * Image kontejneru se stáhnou z registru Microsoft kontejneru (MCR).
 * Spuštění imagí kontejnerů v Dockeru.
 * Rozhraní REST API můžete použít k dotazování koncových bodů kontejneru tak, že zadáte identifikátor URI kontejneru hostitele.

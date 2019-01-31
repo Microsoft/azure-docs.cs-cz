@@ -11,86 +11,49 @@ ms.author: sgilley
 ms.reviewer: sgilley
 ms.date: 12/04/2018
 ms.custom: seodec18
-ms.openlocfilehash: 096b72e8abf43d803a5e6c4aa016f904e795366c
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 5ba555ad31545e1ae1aa822ec58b0bd22ef486ac
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 01/30/2019
-ms.locfileid: "55250939"
+ms.locfileid: "55295147"
 ---
 # <a name="use-jupyter-notebooks-to-explore-azure-machine-learning-service"></a>Použití poznámkových bloků Jupyter a prozkoumejte službu Azure Machine Learning
-
 
 Pro usnadnění práce jsme vyvinuli řadu poznámkové bloky Jupyter Python, která vám pomůže prozkoumat službu Azure Machine Learning. 
 
 Zjistěte, jak používat službu s dokumentací na tomto webu a tyto poznámkové bloky můžete přizpůsobit pro vaše konkrétní potřeby. 
 
-## <a name="prerequisite"></a>Požadavek
+Použijte jednu z následujících možností spustit server poznámkového bloku se tyto ukázkové poznámkové bloky.  Jakmile je server spuštěn, Najít kurz poznámkových bloků v **kurzy** složky, nebo si prohlédněte různých funkcí v **postupy-k-použití azureml** složky.
 
-Dokončení [rychlý start Python pro Azure Machine Learning](quickstart-get-started.md) k vytvoření pracovního prostoru a spuštění poznámkových bloků Azure.
 
 ## <a name="try-azure-notebooks-free-jupyter-notebooks-in-the-cloud"></a>Vyzkoušejte Azure poznámkových bloků: Bezplatné poznámkové bloky Jupyter v cloudu
 
 Je snadné začít s poznámkovými bloky Azure! [Azure Machine Learning SDK pro Python](https://aka.ms/aml-sdk) je již nainstalován a nakonfigurován pro vás na [poznámkových bloků Azure](https://notebooks.azure.com/). Instalace a aktualizace budoucí jsou automaticky spravovány prostřednictvím služby Azure.
   
-+ Ke spuštění **základní kurz poznámkových bloků**:
-  1. Přejděte na [poznámkových bloků Azure](https://notebooks.azure.com/).
-    
-  1. Najít **kurzy** složky **Začínáme** knihovny, které jste vytvořili během požadovaných součástí tohoto rychlého startu.
-    
-  1. Otevřete Poznámkový blok, který chcete spustit.
-    
-+ Ke spuštění **jiných poznámkových bloků**:
-
-  1. [Importovat ukázkové poznámkové bloky](https://aka.ms/aml-clone-azure-notebooks) do poznámkových bloků Azure.
-
-  1. Přidáte konfigurační soubor pracovního prostoru do knihovny pomocí některé z těchto metod:
-     + Kopírování **config.json** soubor **Začínáme** klonovat knihovny do nové knihovny.
-
-     + Vytvořit nový pracovní prostor pomocí kódu v [configuration.ipynb](https://github.com/Azure/MachineLearningNotebooks/blob/master/configuration.ipynb).
-    
-  1. Otevřete Poznámkový blok, který chcete spustit.     
+[!INCLUDE [aml-azure-notebooks](../../../includes/aml-azure-notebooks.md)]
 
 
 ## <a name="use-a-data-science-virtual-machine-dsvm"></a>Použít virtuální počítač pro datové vědy (DSVM)
 
-[Azure Machine Learning SDK pro Python](https://aka.ms/aml-sdk) a server poznámkového bloku již nainstalované a nakonfigurované pro vás na DSVM. Pomocí těchto kroků spouštění poznámkových bloků.
+[Azure Machine Learning SDK pro Python](https://aka.ms/aml-sdk) a server poznámkového bloku již nainstalované a nakonfigurované pro vás na DSVM. 
 
-1. [Vytvoření DSVM](how-to-configure-environment.md#dsvm).
+Poté co [vytvořit DSVM](how-to-configure-environment.md#dsvm), pomocí následujících kroků na datové VĚDY spouštění poznámkových bloků.
 
-1. Naklonujte [úložiště GitHub](https://aka.ms/aml-notebooks).
+[!INCLUDE [aml-dsvm-server](../../../includes/aml-dsvm-server.md)]
 
-1. Přidáte konfigurační soubor pracovního prostoru do knihovny pomocí některé z těchto metod:
-    * Kopírovat **aml_config\config.json** soubor vytvořený pomocí tohoto rychlého startu požadovaných součástí na klonovaný adresář.
-
-    * Vytvořit nový pracovní prostor pomocí kódu v [configuration.ipynb](https://github.com/Azure/MachineLearningNotebooks/blob/master/configuration.ipynb).
-
-1. Spusťte server poznámkového bloku v naklonovaném adresáři.
 
 ## <a name="use-your-own-jupyter-notebook-server"></a>Použít vlastní server poznámkového bloku Jupyter
 
 Pomocí těchto kroků můžete vytvořit místní aplikace Jupyter Notebook server ve vašem počítači.
 
-1. Ujistěte se, že jste dokončili požadované rychlý start, do které jste nainstalovali se sadami SDK služby Azure Machine Learning.
+[!INCLUDE [aml-your-server](../../../includes/aml-your-server.md)]
 
-1. Naklonujte [úložiště GitHub](https://aka.ms/aml-notebooks).
+<a name="automated-ml-setup"></a>
 
-1. Přidáte konfigurační soubor pracovního prostoru do knihovny pomocí některé z těchto metod:
-    * Kopírovat **aml_config\config.json** soubor vytvořený pomocí tohoto rychlého startu požadovaných součástí na klonovaný adresář.
-    
-    * Vytvořit nový pracovní prostor pomocí kódu v [configuration.ipynb](https://github.com/Azure/MachineLearningNotebooks/blob/master/configuration.ipynb).
+## <a name="automated-machine-learning-setup"></a>Automatizované strojového učení instalační program 
 
-1. Spusťte server poznámkového bloku v naklonovaném adresáři.
-
-1. Přejděte do složky obsahující poznámkového bloku.
-
-1. Otevřete poznámkový blok.
-
-<a name="auto"></a>
-
-## <a name="automated-ml-setup"></a>Automatická instalace ML 
-
-**Tento postup platí jenom pro poznámkové bloky v `automated-machine-learning` složky.**
+_Tento postup platí jenom pro poznámkové bloky v **how-to-use-azureml/automated-machine-learning** složky._
 
 Přestože můžete použít některou z výše uvedených možností, můžete také nainstalovat prostředí a vytvořit pracovní prostor ve stejnou dobu v následujících pokynech. 
 
@@ -106,7 +69,7 @@ Přestože můžete použít některou z výše uvedených možností, můžete 
    
    1. Přejděte k souborům, které jste extrahovali do místního počítače.
    
-   1. Otevřít `automated-machine-learning` složky.
+   1. Otevřít **automatizované machine-learning** složky.
    
    1. Spustit `automl_setup.cmd` conda řádku pro Windows, nebo `.sh` soubor pro váš operační systém. K provedení může trvat asi 10 minut.
 
@@ -123,7 +86,7 @@ Přestože můžete použít některou z výše uvedených možností, můžete 
 
 1. Přejděte do umístění, kam jste uložili poznámkových bloků. 
 
-1. Otevřete složku, automatické machine-learning a potom ho otevřete `configuration.ipynb` poznámkového bloku. 
+1. Otevřete složku, automatické machine-learning a potom ho otevřete **configuration.ipynb** poznámkového bloku. 
 
 1. Spusťte všechny buňky v poznámkovém bloku, zaregistrujte poskytovatele prostředků služby Machine Learning a vytvoření pracovního prostoru.
 

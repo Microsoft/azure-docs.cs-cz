@@ -12,12 +12,12 @@ ms.author: xiwu
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 04/23/2018
-ms.openlocfilehash: 09035b19ee48602fde70736ab918fccae71108a5
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.openlocfilehash: 864cf49634e4f9452829a30ce4b260179bdeb8db
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47166228"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55476209"
 ---
 # <a name="accelerate-real-time-big-data-analytics-with-spark-connector-for-azure-sql-database-and-sql-server"></a>Urychlení analýzy velkých objemů dat v reálném čase pomocí konektor Spark pro Azure SQL Database a SQL Server
 
@@ -161,7 +161,7 @@ collection.show()
 #### <a name="setup-requirement"></a>Požadavek na instalaci
 Pokud používáte režim ověřování pomocí tokenu přístupu, budete muset stáhnout [azure-activedirectory knihovny pro java](https://github.com/AzureAD/azure-activedirectory-library-for-java) a jeho závislosti a zahrnout je do cesta sestavení Java.
 
-Zobrazit [používání ověřování Azure Active Directory pro ověřování s využitím SQL Database](https://docs.microsoft.com/azure/sql-database/sql-database-aad-authentication) k zjistěte, jak získat přístupový token k vaší databázi Azure SQL.
+Zobrazit [používání ověřování Azure Active Directory pro ověřování s využitím SQL Database](sql-database-aad-authentication.md) k zjistěte, jak získat přístupový token k vaší databázi Azure SQL.
 
 ```scala
 import com.microsoft.azure.sqldb.spark.config.Config

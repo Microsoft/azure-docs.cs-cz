@@ -6,14 +6,14 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: rimman
-ms.openlocfilehash: e2cb1a76bfde5bea7707cf3cc6658e3fc82163c5
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: cb85d09a1d5dee6cb54254baac4698cdad093785
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54043086"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55457662"
 ---
-# <a name="optimize-the-cost-required-to-run-queries-in-azure-cosmos-db"></a>Optimalizovat náklady na potřebné ke spouštění dotazů ve službě Azure Cosmos DB
+# <a name="optimize-query-cost-in-azure-cosmos-db"></a>Optimalizujte náklady dotazu ve službě Azure Cosmos DB
 
 Azure Cosmos DB nabízí bohatou sadu databázových operací včetně relačních a hierarchických dotazů, které pracují na položky v rámci kontejneru. Náklady spojené s každou z těchto operací se liší v závislosti na využití procesoru, vstup/výstup a paměti potřebných k dokončení operace. Místo přemýšlet o tom a správy hardwarových prostředků můžete jako jedno opatření pro prostředky požadované k provádění různých databázových operací, která bude sloužit žádost o představit jednotky žádosti (RU). Tento článek popisuje, jak za jednotky žádosti pro dotaz vyhodnotit a optimalizovat dotaz z hlediska výkonu a nákladů. 
 

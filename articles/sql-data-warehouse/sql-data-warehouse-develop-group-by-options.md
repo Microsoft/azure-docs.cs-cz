@@ -6,16 +6,16 @@ author: ronortloff
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
-ms.component: implement
+ms.subservice: implement
 ms.date: 04/17/2018
 ms.author: rortloff
 ms.reviewer: igorstan
-ms.openlocfilehash: 1f5723bd160abc164779062f213762751e5875c8
-ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
+ms.openlocfilehash: 69a76ae9d6f355fe401b438ec2ab89d6606ba46c
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43303374"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55463476"
 ---
 # <a name="group-by-options-in-sql-data-warehouse"></a>Seskupit podle možnosti ve službě SQL Data Warehouse
 Tipy pro implementaci skupinu podle možnosti ve službě Azure SQL Data Warehouse pro vývoj řešení.

@@ -1,6 +1,6 @@
 ---
-Název: Doplněk Excelu pro webové služby titleSuffix: Azure Machine Learning Studio Popis: Jak používat Azure Machine Learning Web services přímo v aplikaci Excel bez psaní kódu.
-Services: machine learningu ms.service: ms.component strojového učení: studio ms.topic: článku
+Název: Doplněk Excelu pro webové služby titleSuffix: Azure Machine Learning Studio Popis: Jak používat Azure Machine Learning Web services přímo v aplikaci Excel bez psaní kódu.
+Services: machine learningu ms.service: ms.subservice strojového učení: studio ms.topic: článku
 
 Autor: ericlicoding ms.author: amlstudiodocs ms.custom: seodec18 ms.date: 02/01/2018
 ---

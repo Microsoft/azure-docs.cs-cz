@@ -8,12 +8,12 @@ ms.topic: overview
 ms.date: 09/25/2018
 ms.author: stevelas
 ms.custom: seodec18, mvc
-ms.openlocfilehash: b2ea63ec13e1e0b79a87b7bfa5bae4a6cf409331
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: 0118c17045b86c88d8d92048787a20bd7d309c0b
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53253234"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55298343"
 ---
 # <a name="introduction-to-private-docker-container-registries-in-azure"></a>Seznámení se soukromými registry kontejnerů Dockeru v Azure
 
@@ -38,7 +38,7 @@ Nakonfigurujte [úlohy ACR](#azure-container-registry-build) tak, aby se image a
 
 * **Registr** – Vytvořte jeden nebo více registrů kontejnerů ve svém předplatném Azure. Registry jsou dostupné ve třech skladových položkách: [Basic, Standard a Premium](container-registry-skus.md), každý z nich podporuje integraci webhooků, ověřování registru pomocí Azure Active Directory a funkci odstraňování. Využijte místní úložiště imagí kontejnerů v síťové blízkosti vytvořením registru ve stejném umístění Azure, jako jsou vaše nasazení. Funkci [geografické replikace](container-registry-geo-replication.md) v registrech úrovně Premium můžete využít ve scénářích pokročilé replikace a distribuce imagí kontejnerů. Plně kvalifikovaný název registru má formát `myregistry.azurecr.io`.
 
-  [Přístup k registru kontejnerů řídíte](container-registry-authentication.md) pomocí [instančního objektu](../active-directory/develop/app-objects-and-service-principals.md) zajištěného službou Azure Active Directory nebo poskytnutého účtu správce. Spusťte standardní příkaz `docker login` k ověření pomocí registru.
+  Můžete [řízení přístupu](container-registry-authentication.md) do registru kontejnerů pomocí Azure identity, Azure Active Directory zajišťuje [instanční objekt služby](../active-directory/develop/app-objects-and-service-principals.md), nebo poskytnutého účtu správce. Přihlášení k registru pomocí rozhraní příkazového řádku Azure nebo standardní `docker login` příkazu.
 
 * **Úložiště** – registr obsahuje jedno nebo více úložišť, které ukládají skupiny imagí kontejnerů. Azure Container Registry podporuje víceúrovňové obory názvů úložiště. S víceúrovňovými obory názvů můžete seskupovat kolekce imagí souvisejících s konkrétní aplikací nebo kolekcí aplikací pro konkrétní vývojové nebo provozní týmy. Příklad:
 

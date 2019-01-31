@@ -10,12 +10,12 @@ ms.subservice: implement
 ms.date: 04/17/2018
 ms.author: rortloff
 ms.reviewer: igorstan
-ms.openlocfilehash: 6fc3aa3810fa79e0995fd94708d03310cc5cef53
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 76db38a59d2239de79ebcdcfd454ac60a8f514be
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 01/30/2019
-ms.locfileid: "55244976"
+ms.locfileid: "55299874"
 ---
 # <a name="data-warehouse-units-dwus-and-compute-data-warehouse-units-cdwus"></a>Jednotky datového skladu (Dwu) a výpočetní jednotky datového skladu (cDWUs)
 Doporučení pro výběr ideální počet jednotek datového skladu (Dwu, cDWUs) optimalizovat ceny a výkonu a jak změnit počet jednotek. 
@@ -62,7 +62,7 @@ WITH
 Každá úroveň výkonu používá mírně odlišné jednotka měření pro jejich jednotky datového skladu. Tento rozdíl je na faktuře projeví jako jednotka škálování překládá přímo na fakturaci.
 
 - Datové sklady Gen1 se měří v jednotkách datového skladu (Dwu).
-- Warehousesr Gen2 dat se měří v výpočetní jednotky datového skladu (cDWUs). 
+- Data Gen2 sklady se měří v výpočetních jednotek datového skladu (cDWUs). 
 
 Jednotky Dwu a cDWUs podporují škálování výpočetního výkonu navýšit nebo snížit kapacitu a pozastavení výpočetních, když není potřeba použít datový sklad. Tyto operace jsou všechny na vyžádání. Gen2 používá místní mezipaměti na disku na výpočetních uzlech ke zlepšení výkonu. Při škálování nebo pozastavit systému, platnost mezipaměti a tak dobu mezipaměti připravuje se musí provést dosáhnout optimálního výkonu.  
 

@@ -7,14 +7,14 @@ ms.topic: conceptual
 ms.date: 12/11/2018
 ms.author: mjbrown
 ms.reviewer: sngun
-ms.openlocfilehash: 14cb821152e6a380de1be4fddef76aa2edec4a8f
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: 89cc7906c0503daa11f0a34520c17552a4e6b5af
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54042253"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55454211"
 ---
-# <a name="working-with-azure-cosmos-db-stored-procedures-triggers-and-user-defined-functions"></a>Práce s Azure Cosmos DB uložené procedury, triggery a uživatelem definovaných funkcí
+# <a name="stored-procedures-triggers-and-user-defined-functions"></a>Uložené procedury, triggery a uživatelem definovaných funkcí
 
 Azure Cosmos DB poskytuje integrovaný jazyk, transakční provádění jazyka JavaScript. Když ve službě Azure Cosmos DB pomocí rozhraní SQL API, můžete napsat **uložených procedur komponentami TableAdapter**, **triggery**, a **uživatelem definované funkce (UDF)** v jazyce JavaScript. Zapisovat logiku v jazyce JavaScript, který spouští v databázovém stroji. Můžete vytvářet a spouštět aktivační události, uložených procedur a uživatelem definovanými funkcemi pomocí [webu Azure portal](https://portal.azure.com/), [jazyka JavaScript integrovaná rozhraní API pro dotazy ve službě Azure Cosmos DB](javascript-query-api.md) nebo [klienta SQL API služby Cosmos DB Sady SDK](how-to-use-stored-procedures-triggers-udfs.md).
 

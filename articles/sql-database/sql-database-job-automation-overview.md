@@ -11,13 +11,13 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: carlr
 manager: craigg
-ms.date: 01/22/2019
-ms.openlocfilehash: 63a6daa7c409aeb77b07e98cc0108b727f263d4c
-ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
+ms.date: 01/25/2019
+ms.openlocfilehash: 1fd524e858b20c75aef4101ad98ac54c4f485d1e
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54453261"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55457203"
 ---
 # <a name="automate-management-tasks-using-database-jobs"></a>Automatizace úloh správy pomocí úlohy databáze
 
@@ -26,6 +26,7 @@ Můžete definovat cílovou databázi nebo skupiny databází Azure SQL, ve kter
 Úloha zpracuje úloh přihlášení do cílové databáze. Můžete také definujte, udržovat a zachovat skriptů Transact-SQL, který se spustí v rámci skupiny databází Azure SQL.
 
 Existuje několik scénářů, když můžete použít automatizaci úloh:
+
 - Automatizace úloh správy a pak naplánovat spuštění každý den v týdnu po hodiny atd.
   - Nasazování změn schématu, správa přihlašovacích údajů, shromažďování dat o výkonu nebo shromažďování telemetrických dat tenantů (zákazníků).
   - Aktualizace referenčních dat (informace o běžných napříč všemi databázemi), načítání dat z úložiště objektů Blob v Azure.
@@ -39,14 +40,15 @@ Existuje několik scénářů, když můžete použít automatizaci úloh:
  - Vytvoření úlohy, které načítají data z nebo do vaší databáze pomocí SQL Server Integration Services (SSIS).
 
 Následující technologie plánování úlohy jsou k dispozici ve službě Azure SQL Database:
-- **Úlohy agenta serveru SQL** jsou plánování classic a testovány v těžkém provozu úloh SQL serveru součásti, která je k dispozici ve spravované instanci. Úlohy agenta serveru SQL nejsou k dispozici v databáze typu Singleton.
+
+- **Úlohy agenta serveru SQL** jsou plánování classic a testovány v těžkém provozu úloh SQL serveru součásti, která je k dispozici ve spravované instanci. Úlohy agenta serveru SQL nejsou k dispozici v izolované databáze.
 - **Úlohy elastic Database** jsou plánování úloh služby, které provádí vlastní úlohy na jeden nebo více databází Azure SQL Database.
 
-Stojí za povšimnutí několik rozdílů mezi Agent serveru SQL (k dispozici místně a v rámci SQL Database Managed Instance) a agenta Elastických úloh databáze (k dispozici pro jednotlivý prvek SQL Database a SQL Data Warehouse).
+Stojí za povšimnutí několik rozdílů mezi Agent serveru SQL (k dispozici místně a v rámci SQL Database Managed Instance) a agenta Elastických úloh databáze (dostupné pro izolované databáze v Azure SQL database a databází v SQL Data Warehouse).
 
 |  |Elastické úlohy  |Agent serveru SQL |
 |---------|---------|---------|
-|Rozsah     |  Libovolný počet databází Azure SQL nebo datových skladů ve stejném cloudu Azure jako agent úloh. Cíle můžou být na různých logických serverech a v různých oblastech nebo umístěních. <br><br>Cílové skupiny se můžou skládat z jednotlivých databází nebo datových skladů nebo ze všech databází na serveru, ve fondu nebo v mapě horizontálních oddílů (dynamicky se zjišťují za běhu úlohy). | Libovolná izolovaná databáze ve stejné instanci SQL Serveru jako agent SQL. |
+|Rozsah     |  Libovolný počet databází Azure SQL nebo datových skladů ve stejném cloudu Azure jako agent úloh. Cíle může být v jiné servery SQL Database, předplatná a oblasti. <br><br>Cílové skupiny se můžou skládat z jednotlivých databází nebo datových skladů nebo ze všech databází na serveru, ve fondu nebo v mapě horizontálních oddílů (dynamicky se zjišťují za běhu úlohy). | Jednotlivé databáze ve stejné instanci systému SQL Server jako agent serveru SQL. |
 |Podporovaná rozhraní API a nástroje     |  Portál, PowerShell, T-SQL, Azure Resource Manager      |   T-SQL, SQL Server Management Studio (SSMS)     |
 
 ## <a name="sql-agent-jobs"></a>SQL Agent Jobs
@@ -54,6 +56,7 @@ Stojí za povšimnutí několik rozdílů mezi Agent serveru SQL (k dispozici m�
 Úlohy agenta serveru SQL se zadaným řadu skriptů T-SQL na vaší databázi. Použití úloh k definování úlohou správy, můžete spouštět jednou nebo vícekrát a monitorovat úspěch nebo neúspěch.
 Úlohu můžete spustit na místním serveru jeden nebo víc vzdálených serverů. Úloha agenta SQL je vnitřní komponenta databázový stroj, který se spouští v rámci Managed Instance služby.
 Existuje několik klíčových konceptů v úlohy agenta serveru SQL:
+
 - **Kroky úlohy** sadu jeden nebo více kroků, které budou spuštěny v rámci úlohy. Pro každý krok úlohy můžete definovat strategii opakování a akce, která se stane při splnění krok úlohy úspěšné nebo neúspěšné.
 - **Plány** definovat provedení úlohy.
 - **Oznámení** vám umožňují definovat pravidla, která se použije k oznámení operátory prostřednictvím e-mailů po dokončení úlohy.
@@ -64,11 +67,13 @@ Existuje několik klíčových konceptů v úlohy agenta serveru SQL:
 Agent SQL Server vám umožní vytvářet různé typy kroky úlohy, jako je například krok úlohy příkazů jazyka Transact-SQL, který se spustí v jedné dávce Transact-SQL na databázi nebo kroky příkaz/PowerShell operačního systému, které můžete spustit vlastní skript operačního systému, kroky úlohy služby SSIS umožňují načtení dat pomocí modulu runtime služby SSIS, nebo [replikace](sql-database-managed-instance-transactional-replication.md) kroky, které můžete publikovat změny z databáze do jiné databáze.
 
 [Transakční replikace](sql-database-managed-instance-transactional-replication.md) je funkce databázového stroje, který vám umožní publikovat změny provedené na jeden nebo více tabulek v jedné databázi a publikovat/distribuovat na sadu předplatitelskými databázemi. Publikování změn je implementováno pomocí následující typy krok úlohy agenta SQL:
+
 - Čtečky protokolů transakcí.
 - Pořízení snímku.
 - Distributor.
 
 Jiné druhy kroky úlohy se aktuálně nepodporují, včetně:
+
 - Krok úlohy slučovací replikace nepodporuje.
 - Čtečky fronty se nepodporuje.
 - Analysis Services nejsou podporovány.
@@ -77,6 +82,7 @@ Jiné druhy kroky úlohy se aktuálně nepodporují, včetně:
 
 Plán Určuje, kdy se spouští úloha. Více než jednu úlohu můžete spustit ve stejném plánu a více než jeden plán můžou použít stejné úloze.
 Plán můžete definovat dobu, kdy se spouští úloha následující podmínky:
+
 - Při každém restartování Instance (nebo při spuštění agenta systému SQL Server). Úloha se aktivuje po každé převzetí služeb při selhání.
 - Jednou, v určité datum a čas, což je užitečné pro provádění zpožděných některé úlohy.
 - Podle opakovaného plánu.
@@ -215,7 +221,7 @@ Při vytváření agenta úloh se v *databázi úloh* vytvoří schéma, tabulky
 
 *Cílová skupina* definuje sadu databází, pro které se provede určitý krok úlohy. Cílová skupina může obsahovat libovolný počet a kombinaci následujících položek:
 
-- **Server SQL Azure** – pokud je zadaný server, součástí skupiny jsou všechny databáze existující na serveru v době spuštění úlohy. Je potřeba zadat přihlašovací údaje k hlavní databázi, aby se mohla skupina určit a aktualizovat před spuštěním úlohy.
+- **Server služby SQL Database** – Pokud je zadán server, všechny databáze, které existují na serveru v době provádění úlohy jsou součástí skupiny. Je potřeba zadat přihlašovací údaje k hlavní databázi, aby se mohla skupina určit a aktualizovat před spuštěním úlohy.
 - **Elastický fond** – pokud je zadaný elastický fond, součástí skupiny jsou všechny databáze, které jsou v elastickém fondu v době spuštění úlohy. Stejně jako u serveru je potřeba zadat přihlašovací údaje k hlavní databázi, aby se mohla skupina aktualizovat před spuštěním úlohy.
 - **Izolovaná databáze** – zadejte jednu nebo několik samostatných databází, které mají být součástí skupiny.
 - **Mapa horizontálních oddílů** – databáze mapy horizontálních oddílů.
@@ -258,6 +264,7 @@ Výstupy kroků úloh pro každou cílovou databázi se podrobně zaznamenávaj�
 #### <a name="job-history"></a>Historie úlohy
 
 Historie spouštění úloh se ukládá do *databáze úloh*. Úloha vyčištění systému vyprázdní historii spouštění starší než 45 dnů. Pokud chcete odebrat historii mladší než 45 dnů, zavolejte v *databázi úloh* uloženou proceduru **sp_purge_history**.
+
 ### <a name="agent-performance-capacity-and-limitations"></a>Výkon, kapacita a omezení agenta
 
 Elastické úlohy při čekání na dokončení dlouhotrvajících úloh využívají minimum výpočetních prostředků.

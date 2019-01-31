@@ -3,7 +3,7 @@ title: Vytvoření účtu Batch na webu Azure Portal | Dokumentace Microsoftu
 description: Naučte se vytvořit účet Azure Batch na webu Azure Portal, abyste mohli spouštět velké paralelní úlohy v cloudu.
 services: batch
 documentationcenter: ''
-author: dlepow
+author: laurenhughes
 manager: jeconnoc
 editor: ''
 ms.assetid: 3fbae545-245f-4c66-aee2-e25d7d5d36db
@@ -13,14 +13,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
 ms.date: 06/18/2018
-ms.author: danlep
+ms.author: lahugh
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: e526c5f2f446a1ae8134a3e2ca72fcc42024d904
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.openlocfilehash: 89e41dc8e27cf39d9d0e6168dc7352267c321623
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52724090"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55460518"
 ---
 # <a name="create-a-batch-account-with-the-azure-portal"></a>Vytvoření účtu Batch pomocí webu Azure Portal
 
@@ -42,19 +42,19 @@ Informace o scénářích a účtech Batch najdete v [přehledu funkcí](batch-a
 
     ![Vytvoření účtu Batch][account_portal]
 
-    a. **Název účtu:** Název, který zvolíte, musí být jedinečný v oblasti Azure, ve které se účet vytvoří (viz **Umístění** níže). Název účtu smí obsahovat jenom malá písmena a číslice a musí mít 3 až 24 znaků.
+    a. **Název účtu**: Název, který zvolíte, musí být jedinečný v rámci oblasti Azure, kde se účet vytvoří (viz **umístění** níže). Název účtu smí obsahovat jenom malá písmena a číslice a musí mít 3 až 24 znaků.
 
-    b. **Předplatné**: Předplatné, ve kterém chcete účet Batch vytvořit. Pokud máte jenom jedno předplatné, bude ve výchozím nastavení vybrané.
+    b. **Předplatné**: Předplatné, ve kterém chcete vytvořit účet Batch. Pokud máte jenom jedno předplatné, bude ve výchozím nastavení vybrané.
 
-    c. **Skupina prostředků**: Vyberte existující skupinu prostředků vašeho nového účtu Batch, popřípadě si vytvořte novou.
+    c. **Skupina prostředků**: Vyberte existující skupinu prostředků vašeho nového účtu Batch, nebo volitelně vytvořte novou.
 
-    d. **Umístění**: Oblast Azure, ve které chcete účet Batch vytvořit. Jako možnosti se zobrazí jenom oblasti, které podporuje vaše předplatné a skupina prostředků.
+    d. **Umístění**: Azure oblast, ve kterém chcete vytvořit účet Batch. Jako možnosti se zobrazí jenom oblasti, které podporuje vaše předplatné a skupina prostředků.
 
-    e. **Účet úložiště** (volitelné): Účet Azure Storage, který přidružíte k účtu Batch. Toto nastavení se doporučuje pro většinu účtů Batch. Možnosti účtu úložiště ve službě Batch najdete v tématu [Přehled funkcí Batch](batch-api-basics.md#azure-storage-account). Na portálu vyberte stávající účet úložiště nebo vytvořte nový.
+    e. **Účet úložiště** (volitelné): Účet služby Azure Storage, který přidružíte k účtu Batch. Toto nastavení se doporučuje pro většinu účtů Batch. Možnosti účtu úložiště ve službě Batch najdete v tématu [Přehled funkcí Batch](batch-api-basics.md#azure-storage-account). Na portálu vyberte stávající účet úložiště nebo vytvořte nový.
 
       ![vytvořit účet úložiště][storage_account]
 
-    f. **Režim přidělování fondů**: Pro většinu scénářů potvrďte výchozí **službu Batch**.
+    f. **Režim přidělování fondů**: Pro většinu scénářů, přijměte výchozí nastavení **služba Batch**.
 
 1. Výběrem možnosti **Vytvořit** vytvořte účet.
 
@@ -65,7 +65,7 @@ Po vytvoření účtu ho vyberte pro přístup k jeho nastavením a vlastnostem.
 
 ![Stránka účtu Batch na webu Azure Portal][account_blade]
 
-* **Název účtu Batch, URL a klíče**: K vývoji aplikace pomocí [rozhraní API služby Batch](batch-apis-tools.md#azure-accounts-for-batch-development) potřebujete URL a klíč účtu pro přístup k prostředkům služby Batch. (Batch podporuje také ověřování pomocí Azure Active Directory.)
+* **Batch název účtu, adresa URL a klíče**: Při vývoji aplikace se [rozhraní API služby Batch](batch-apis-tools.md#azure-accounts-for-batch-development), budete potřebovat adresu URL účtu a klíč pro přístup k prostředkům Batch. (Batch podporuje také ověřování pomocí Azure Active Directory.)
 
     Pokud chcete zobrazit informace pro přístup k účtu Batch, vyberte **Klíče**.
 

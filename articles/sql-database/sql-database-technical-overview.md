@@ -12,13 +12,13 @@ author: CarlRabeler
 ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
-ms.date: 10/15/2018
-ms.openlocfilehash: e0a3f5239e9d0f16312894dee598c0fc490f1e73
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.date: 01/25/2019
+ms.openlocfilehash: 6b4bc5a75f49287ad0425a7fe94f099204b73e44
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53270004"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55469545"
 ---
 # <a name="the-azure-sql-database-service"></a>Služba Azure SQL Database
 
@@ -26,8 +26,8 @@ SQL Database je spravovaná služba relačních databází pro obecné účely v
 
 Azure SQL Database poskytuje následující možnosti nasazení databáze SQL Azure:
 
-- Jako jednoúčelová databáze s vlastní sadou prostředků spravovaných přes logický server.
-- Jako databáze v [elastickém fondu](sql-database-elastic-pool.md) se sdílenou sadou prostředků spravovaných přes logický server.
+- Jako izolovanou databázi s vlastní sadou prostředky spravované přes server SQL Database
+- Jako databázi ve fondu v [elastického fondu](sql-database-elastic-pool.md) se sdílenou sadou prostředků spravovat přes server SQL Database
 - V rámci kolekce databází říká [spravovanou instanci](sql-database-managed-instance.md) , který obsahuje systémové a uživatelské databáze a sadu prostředků pro sdílení obsahu
 
 Následující obrázek ukazuje tyto možnosti nasazení:
@@ -68,7 +68,7 @@ Můžete sestavit svoji první aplikaci na malou izolovanou databází s nízký
 > [!IMPORTANT]
 > [Úroveň služby Hyperškálovatelného](sql-database-service-tier-hyperscale.md) je aktuálně ve verzi public preview. Nedoporučujeme s jakékoli produkčními úlohami v databázích Hyperškálovatelného ještě. Velkokapacitní databáze nelze aktualizovat na další úrovně služeb. Pro testovací účely doporučujeme vytvořit kopii aktuální databáze a aktualizovat kopii Hyperškálovatelného vrstvu služby.
 
-Dynamická škálovatelnost se liší od automatického škálování. K automatickému škálování dochází, když se služba škáluje automaticky na základě kritérií, zatímco dynamická škálovatelnost umožňuje ruční škálování bez prostojů. Izolovaná databáze Azure SQL Database podporuje ruční dynamickou škálovatelnost, nikoli automatické škálování. Pokud chcete *automatizovanější* prostředí, zvažte použití elastických fondů, které databázím umožňují sdílet prostředky ve fondu na základě potřeb jednotlivých databází. Existují však skripty, které můžou usnadnit automatizaci škálovatelnost pro izolovanou databázi SQL Azure. Příklad najdete v tématu [Monitorování a škálování izolované databáze SQL pomocí PowerShellu](scripts/sql-database-monitor-and-scale-database-powershell.md).
+Dynamická škálovatelnost se liší od automatického škálování. K automatickému škálování dochází, když se služba škáluje automaticky na základě kritérií, zatímco dynamická škálovatelnost umožňuje ruční škálování bez prostojů. Izolované databáze podporuje ruční dynamickou škálovatelnost, ale neprováděl automatické škálování. Pokud chcete *automatizovanější* prostředí, zvažte použití elastických fondů, které databázím umožňují sdílet prostředky ve fondu na základě potřeb jednotlivých databází. Existují však skripty, které můžou usnadnit automatizaci škálovatelnost pro izolované databáze. Příklad najdete v tématu [pomocí Powershellu pro monitorování a škálování izolované databáze](scripts/sql-database-monitor-and-scale-database-powershell.md).
 
 ### <a name="elastic-pools-to-maximize-resource-utilization"></a>Elastické fondy pro maximalizaci využití prostředků
 
@@ -94,7 +94,7 @@ Jak ale můžeme srovnávat relativní výkon izolovaných databází a elastick
 Kromě toho může SQL Database [generovat metriky a diagnostické protokoly](sql-database-metrics-diag-logging.md) pro snazší monitorování. SQL Database můžete nakonfigurovat pro ukládání využití prostředků, pracovních procesů, relací a možností připojení do jednoho z těchto prostředků Azure:
 
 - **Azure Storage**: Pro archivaci obrovských objemů telemetrických dat za nízkou cenu.
-- **Centrum událostí Azure**: Pro integraci telemetrických dat služby SQL Database s vlastními řešeními monitorování nebo aktivními kanály
+- **Azure Event Hub**: Pro integraci telemetrických dat služby SQL Database s vlastními řešeními monitorování nebo aktivními kanály
 - **Azure Log Analytics**: Pro integrované řešení monitorování s generování sestav, upozorňování a snížení rizik souvisejících s možností.
 
     ![Architektura](./media/sql-database-metrics-diag-logging/architecture.png)
@@ -148,7 +148,7 @@ SQL Database nabízí řadu [integrovaných funkcí zabezpečení a dodržován�
 
 ### <a name="advance-threat-protection"></a>Advanced Threat Protection
 
-SQL Advanced Threat Protection je jednotný balíček pokročilých možností zabezpečení SQL. Zahrnuje funkce pro zjišťování a klasifikaci citlivých dat, správu ohrožení zabezpečení databáze a detekci neobvyklých aktivit, které by pro vaši databázi mohly znamenat hrozbu. Poskytuje centrální místo pro povolování a správu těchto možností.
+Pokročilé zabezpečení dat SQL je jednotný balíček pro pokročilé funkce zabezpečení SQL. Zahrnuje funkce pro zjišťování a klasifikaci citlivých dat, správu ohrožení zabezpečení databáze a detekci neobvyklých aktivit, které by pro vaši databázi mohly znamenat hrozbu. Poskytuje centrální místo pro povolování a správu těchto možností.
 
 - [Zjišťování a klasifikace dat](sql-database-data-discovery-and-classification.md):
 

@@ -7,13 +7,13 @@ ms.service: storage
 ms.topic: article
 ms.date: 08/10/2018
 ms.author: tamram
-ms.component: common
-ms.openlocfilehash: 22c7adc5db044568b4aa49dbbb0e36d2c919f6a6
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.subservice: common
+ms.openlocfilehash: b3b011d9789cbb3dcd8557eda1473b7fd2609075
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53629621"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55454279"
 ---
 # <a name="use-the-azure-storage-emulator-for-development-and-testing"></a>Použití emulátoru úložiště Azure pro vývoj a testování
 
@@ -172,7 +172,7 @@ Pokud chcete zobrazit seznam možností, na příkazovém řádku zadejte `/help
 | **Start** |Spuštění emulátoru úložiště. |`AzureStorageEmulator.exe start [-inprocess]` |*-inprocess*: Spusťte emulátor v aktuálním procesu místo vytvoření nového procesu. |
 | **Stop** |Zastaví emulátoru úložiště. |`AzureStorageEmulator.exe stop` | |
 | **Stav** |Vypíše stav emulátoru úložiště. |`AzureStorageEmulator.exe status` | |
-| **Vymazat** |Vymaže data ve všech služeb, které jsou zadané na příkazovém řádku. |`AzureStorageEmulator.exe clear [blob] [table] [queue] [all]                                                    ` |*objekt BLOB*: Data v objektech blob vymaže. <br/>*fronty*: Vymaže data ve frontě. <br/>*Tabulka*: Vymaže dat tabulky. <br/>*Všechny*: Vymaže všechna data ve všech služeb. |
+| **Vymazat** |Vymaže data ve všech služeb, které jsou zadané na příkazovém řádku. |`AzureStorageEmulator.exe clear [blob] [table] [queue] [all]                                                    ` |*blob*: Data v objektech blob vymaže. <br/>*fronty*: Vymaže data ve frontě. <br/>*Tabulka*: Vymaže dat tabulky. <br/>*Všechny*: Vymaže všechna data ve všech služeb. |
 | **Inicializace** |Provádí jednorázová inicializace nastavení emulátoru. |<code>AzureStorageEmulator.exe init [-server serverName] [-sqlinstance instanceName] [-forcecreate&#124;-skipcreate] [-reserveports&#124;-unreserveports] [-inprocess]</code> |*-server serverName\instanceName*: Určuje server, který je hostitelem instance serveru SQL. <br/>*instanceName – sqlinstance*: Určuje název instance SQL pro použití výchozí instance serveru. <br/>*-forcecreate*: Vynutí vytvoření databáze SQL, i v případě, že již existuje. <br/>*-skipcreate*: Přeskočí vytvoření databáze SQL. To má přednost před - forcecreate.<br/>*-reserveports*: Pokusy o rezervaci portů HTTP přidruženého ke službám.<br/>*-unreserveports*: Pokus o odebrání rezervace pro porty HTTP přidruženého ke službám. To má přednost před - reserveports.<br/>*-inprocess*: Provede inicializaci v aktuálním procesu místo vytváření podřízeného procesu nový proces. Aktuální proces musí být spuštěn se zvýšenými oprávněními, pokud Změna portu rezervace. |
 
 ## <a name="differences-between-the-storage-emulator-and-azure-storage"></a>Rozdíly mezi Azure Storage a emulátoru úložiště

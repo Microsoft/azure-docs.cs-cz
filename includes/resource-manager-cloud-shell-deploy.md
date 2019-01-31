@@ -2,18 +2,18 @@
 author: tfitzmac
 ms.service: azure-resource-manager
 ms.topic: include
-ms.date: 11/25/2018
+ms.date: 01/30/2019
 ms.author: tomfitz
-ms.openlocfilehash: a2ee8705be3f34b6df113c68d88e375411f84bf2
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.openlocfilehash: 7c081b3bc5f9e6273f680b24897f9aced4999afa
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52440062"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55302338"
 ---
 ## <a name="deploy-template-from-cloud-shell"></a>Nasazení šablony ze služby Cloud Shell
 
-K nasazení šablony můžete použít [Cloud Shell](../articles/cloud-shell/overview.md). Však můžete musí nejprve šablonu nahrát do účtu úložiště pro službu Cloud Shell. Pokud jste ještě službu Cloud Shell nepoužívali, přečtěte si téma [Přehled služby Azure Cloud Shell](../articles/cloud-shell/overview.md), kde najdete informace o jejím nastavení.
+K nasazení šablony můžete použít [Cloud Shell](../articles/cloud-shell/overview.md). Pokud chcete nasadit šablonu externí, zadejte identifikátor URI šablony stejným způsobem jako u jakéhokoli externího nasazení. Pokud chcete nasadit šablonu místní, musí nejdřív načíst šablony do účtu úložiště pro službu Cloud Shell. Tato část popisuje, jak načíst šablonu do účtu cloudového prostředí a nasaďte ho jako místní soubor. Pokud jste ještě nepoužívali Cloud Shell, přečtěte si téma [Přehled služby Azure Cloud Shell](../articles/cloud-shell/overview.md) informace o jeho nastavení.
 
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 
@@ -55,7 +55,7 @@ K nasazení šablony můžete použít [Cloud Shell](../articles/cloud-shell/ove
 
 1. Zkopírujte adresu URL.
 
-   ![Zkopírujte adresu URL](./media/resource-manager-cloud-shell-deploy/copy-url.png)
+   ![Zkopírovat adresu URL](./media/resource-manager-cloud-shell-deploy/copy-url.png)
 
 1. Otevřete příkazový řádek.
 

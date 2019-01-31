@@ -3,7 +3,7 @@ title: Použití Azure Active Directory k ověřování řešení služby Azure 
 description: Služba batch podporuje Azure AD pro ověřování ze služby Batch.
 services: batch
 documentationcenter: .net
-author: dlepow
+author: laurenhughes
 manager: jeconnoc
 editor: ''
 tags: ''
@@ -14,13 +14,13 @@ ms.topic: article
 ms.tgt_pltfrm: ''
 ms.workload: big-compute
 ms.date: 04/18/2018
-ms.author: danlep
-ms.openlocfilehash: 964ef3bd988d71bfb90dbaa473b4b259769064b3
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.author: lahugh
+ms.openlocfilehash: 574a9ae1e283a3918e316d2daa84df727d729471
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52722051"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55477589"
 ---
 # <a name="authenticate-batch-service-solutions-with-active-directory"></a>Ověřování řešení služby Batch pomocí Active Directory
 
@@ -171,7 +171,7 @@ Příklady kódu v této části ukazují, jak ověřování pomocí Azure AD po
 >
 >
 
-### <a name="code-example-using-azure-ad-integrated-authentication-with-batch-net"></a>Příklad: používání služby Azure AD integrované ověřování pomocí rozhraní Batch .NET
+### <a name="code-example-using-azure-ad-integrated-authentication-with-batch-net"></a>Příklad kódu: Používání služby Azure AD integrované ověřování pomocí rozhraní Batch .NET
 
 K ověření integrované ověřování v Batch .NET, odkazovat [Azure Batch .NET](https://www.nuget.org/packages/Microsoft.Azure.Batch/) balíčku a [ADAL](https://www.nuget.org/packages/Microsoft.IdentityModel.Clients.ActiveDirectory/) balíčku.
 
@@ -244,7 +244,7 @@ public static async Task PerformBatchOperations()
 }
 ```
 
-### <a name="code-example-using-an-azure-ad-service-principal-with-batch-net"></a>Příklad: použití instančního objektu služby Azure AD pomocí rozhraní Batch .NET
+### <a name="code-example-using-an-azure-ad-service-principal-with-batch-net"></a>Příklad kódu: Pomocí instančního objektu služby Azure AD pomocí rozhraní Batch .NET
 
 Ověřování pomocí instančního objektu v Batch .NET, odkazovat [Azure Batch .NET](https://www.nuget.org/packages/Azure.Batch/) balíčku a [ADAL](https://www.nuget.org/packages/Microsoft.IdentityModel.Clients.ActiveDirectory/) balíčku.
 
@@ -311,7 +311,7 @@ public static async Task PerformBatchOperations()
     }
 }
 ```
-### <a name="code-example-using-an-azure-ad-service-principal-with-batch-python"></a>Příklad: instanční objekt Azure AD pomocí služby Batch Pythonu
+### <a name="code-example-using-an-azure-ad-service-principal-with-batch-python"></a>Příklad kódu: Instanční objekt Azure AD pomocí služby Batch Pythonu
 
 K ověření pomocí hlavního názvu služby z Pythonu služby Batch, instalaci a odkazují [azure-batch](https://pypi.org/project/azure-batch/) a [azure běžné](https://pypi.org/project/azure-common/) moduly.
 

@@ -12,13 +12,13 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: billgib
 manager: craigg
-ms.date: 04/01/2018
-ms.openlocfilehash: a05a8ad495e33734a531405902ce34e3591bfe15
-ms.sourcegitcommit: 715813af8cde40407bd3332dd922a918de46a91a
+ms.date: 01/25/2019
+ms.openlocfilehash: b27877e25dd3bdd4711d1c036e2f203e1b8c0e7b
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47056314"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55462133"
 ---
 # <a name="the-wingtip-tickets-saas-application"></a>Aplikace SaaS aplikace Wingtip Tickets
 
@@ -46,7 +46,7 @@ Podívejte se [kurzy] [ docs-tutorials-for-wingtip-dpt] a kódu na Githubu [.../
 
 ## <a name="sharded-multi-tenant-database-pattern"></a>Vzor horizontálně dělené databázi s více tenanty
 
-Poskytovatelé služeb hledají nižší náklady na tenanta a dobře s izolací sníženou tenanta platí databáze s více tenanty. Tento model umožňuje balení velkého počtu klientů do izolované databáze, snižte svoje náklady na tenanta. Téměř nekonečné škálování je možné pomocí horizontálního dělení tenanty napříč několika databázemi. Databáze katalogu mapuje databází tenantů.  
+Poskytovatelé služeb hledají nižší náklady na tenanta a dobře s izolací sníženou tenanta platí databáze s více tenanty. Tento model umožňuje balení velkého počtu klientů do jednotlivých databází, snižte svoje náklady na tenanta. Téměř nekonečné škálování je možné pomocí horizontálního dělení tenanty napříč několika databázemi. Databáze katalogu mapuje databází tenantů.  
 
 Tento model umožňuje také *hybridní* model, ve kterém můžete optimalizovat náklady s více tenanty do databáze nebo optimalizovat pro zajištění izolace pomocí jednoho tenanta v svou vlastní databázi. Možnost provádět na základě tenanta tenanta, buď když tenanta je zřízená nebo novější, bez jakéhokoli dopadu na aplikace.  Tento model dá efektivně skupiny tenantů potřeba zpracovávat odděleně. Například tenantů s nízkými náklady je možné přiřadit na sdílené databáze, zatímco tenanti úrovně premium je možné přiřadit vlastní databáze. 
 

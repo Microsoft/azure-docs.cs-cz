@@ -9,18 +9,18 @@ ms.author: amlstudiodocs
 editor: cgronlun
 ms.assetid: 3a7ac351-ebd3-43a1-8c5d-18223903d08e
 ms.service: machine-learning
-ms.component: studio
+ms.subservice: studio
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/28/2017
-ms.openlocfilehash: d17e4970636818eca14d2e750ec24135e64ddbb6
-ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
+ms.openlocfilehash: ca4c8c2d16e2cc44768785c26ffa070b59d5f8d7
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/26/2019
-ms.locfileid: "55078660"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55478011"
 ---
 # <a name="deploy-azure-machine-learning-studio-web-services-that-use-data-import-and-data-export-modules"></a>Nasazení webové služby Azure Machine Learning Studio, které používají moduly Import dat a Export dat
 

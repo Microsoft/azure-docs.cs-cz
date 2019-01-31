@@ -5,17 +5,17 @@ author: marktab
 manager: cgronlun
 editor: cgronlun
 ms.service: machine-learning
-ms.component: team-data-science-process
+ms.subservice: team-data-science-process
 ms.topic: article
 ms.date: 11/13/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 39e8c5b8dab33ba95b34c4edb9d0a994bc8ec6dc
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: d574f62a51b8aed7acbd1ba7f8b427395add854a
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53135160"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55454126"
 ---
 # <a name="tasks-for-the-project-lead-in-the-team-data-science-process"></a>Úvodní úlohy pro projekt vědeckého zpracování týmových dat
 
@@ -35,10 +35,10 @@ Toto téma popisuje aktuálně úlohy 1,2 a 6 tento pracovní postup pro zájemc
 
 Tento kurz používá zkrácené názvy pro úložiště a adresáře. Tyto názvy usnadňují sledování operací mezi úložišť a adresáře. Tato notace (R pro úložiště Git) a D pro místní adresáře na vaše DSVM se používá v následujících částech:
 
-- **R3**: tým **ProjectTemplate** úložiště v Gitu, které nastavil váš vedoucí týmu.
-- **R5**: V úložišti projektů na Git můžete nastavit pro váš projekt.
-- **D3**: místní adresář naklonovali z R3.
-- **D5**: místní adresář naklonovali z R5.
+- **R3**: Tým **ProjectTemplate** úložiště v Gitu, které nastavil váš vedoucí týmu.
+- **R5**: V úložišti projektů na Git nastavení pro váš projekt.
+- **D3**: Místní adresář naklonovali z R3.
+- **D5**: Místní adresář naklonovali z R5.
 
 
 ## <a name="0-prerequisites"></a>0. Požadavky
@@ -84,15 +84,15 @@ Slouží ke shrnutí tady, třeba tyto požadavky splnit, předtím, než začne
 
 ## <a name="2-seed-the-dsproject1-project-repository"></a>2. Počáteční hodnoty v úložišti projektů DSProject1
 
-Je zde úkol na počáteční hodnotu **DSProject1** úložiště projektu (R5) z úložiště šablony projektu (R3). Osazení postup používá adresáře D3 a D5 na vaše místní DSVM jako zprostředkující pracovní lokality. Stručně řečeno, osazení cestu je: D3-R3 > -> D5 -> R5.
+Je zde úkol na počáteční hodnotu **DSProject1** úložiště projektu (R5) z úložiště šablony projektu (R3). Osazení postup používá adresáře D3 a D5 na vaše místní DSVM jako zprostředkující pracovní lokality. Stručně řečeno osazení cestu je: R3 -> D3 -> D5 -> R5.
 
 Pokud je potřeba upravit vaše **DSProject1** úložiště projektu pro splnění některé specifické potřeby projektu, uděláte v předposlední kroku tohoto postupu. Zde je uveden seznam kroky používají naplnit obsah **DSProject1** úložiště projektu. Témata v postupu osazení odpovídají jednotlivé kroky:
 
 - Klonování úložiště šablon projektu do místního adresáře: týmu R3 - do -> místní D3 klonovat.
 - Klonování úložiště DSProject1 do místního adresáře: týmu R5 - klonovat do místního D5 ->.
-- Zkopírujte obsah šablony naklonované projektu do místní klon úložiště DSProject1: D3 - obsah bude zkopírován do -> D5.
+- Zkopírujte obsah šablony naklonované projektu do místní klon úložiště DSProject1:  D3 - obsah bude zkopírován do -> D5.
 - (Volitelné) Místní D5 přizpůsobení.
-- Předávaný obsah místní DSProject1 do týmových úložišť: D5 – obsah, přidejte do týmu R5 ->.
+- Nahrání místního obsahu DSProject1 do týmových úložišť: D5 - do -> týmu R5 přidat obsah.
 
 
 ### <a name="clone-your-project-template-repository-r3-to-a-directory-d3-on-your-local-machine"></a>Klonování úložiště šablony projektu (R3) do adresáře (D3) na místním počítači.

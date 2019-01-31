@@ -7,13 +7,13 @@ ms.service: storage
 ms.topic: article
 ms.date: 07/11/2018
 ms.author: alkohli
-ms.component: common
-ms.openlocfilehash: 480d67917abf3a8aaca64aa9aae30be5acf55e11
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.subservice: common
+ms.openlocfilehash: ccfc91e85196cbc8295bce71e512d9cf856a23c8
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39528552"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55453378"
 ---
 # <a name="what-is-azure-importexport-service"></a>Co je služba Azure Import/Export?
 
@@ -28,17 +28,17 @@ Pokud chcete přenos dat pomocí disků poskytnutých Microsoft, můžete použ�
 Zvažte použití služby Azure Import/Export při stahování dat přes síť nebo je příliš pomalé nebo získání další šířka pásma je vysokým nákladům. Pomocí této služby v následujících scénářích:
 
 * **Migrace dat do cloudu**: Přesun velkých objemů dat do Azure rychle a nákladově efektivně.
-* **Distribuci obsahu**: rychle posílat data do zákaznické lokality.
-* **Zálohování**: trvat zálohy místních dat do úložiště v Azure Storage.
-* **Obnovení dat**: velké množství dat uložených v úložišti obnovit a nechat si ho doručit na vaše místní umístění.
+* **Distribuci obsahu**: Data rychle posílat zákaznické lokality.
+* **Zálohování**: Využijte zálohy místních dat do úložiště v Azure Storage.
+* **Obnovení dat**: Obnovit velký objem dat uložených v úložišti a nechat si ho doručit na vaše místní umístění.
 
 ## <a name="importexport-components"></a>Import/Export komponenty
 
 Služba Import/Export používá následující součásti:
 
-- **Služba Import/Export**: Tato služba k dispozici na webu Azure portal pomáhá uživateli vytvářet a sledovat data (nahrání) import a export úloh (Stáhnout).  
+- **Služba Import/Export**: Tato služba k dispozici na webu Azure portal pomáhá uživateli vytvářet a sledovat import dat (nahrání) a exportovat úlohy (Stáhnout).  
 
-- **Nástroj WAImportExport**: Toto je nástroj příkazového řádku, který provede následující akce: 
+- **Nástroj WAImportExport**: To je nástroj příkazového řádku, který provede následující akce: 
     - Připraví diskové jednotky, které jsou dodány pro import.
     - Usnadňuje kopírování dat na disk.
     - Šifruje data na disku s Bitlockerem.
@@ -52,7 +52,7 @@ Služba Import/Export používá následující součásti:
 >
 > Nástroj WAImportExport je kompatibilní jenom s operační systém Windows 64-bit. Pro konkrétní verze operačního systému nepodporuje, přejděte na [požadavky Azure Import/Export](storage-import-export-requirements.md#supported-operating-systems).
 
-- **Diskové jednotky**: můžete zaslat jednotky SSD (Solid-State Drive) a jednotky pevného disku (HDD) do datacentra Azure. Při vytvoření úlohy importu, dodávat disky obsahující data. Při vytvoření úlohy exportu, zasílejte prázdné disky do datacentra Azure. Konkrétní typy na disku, přejděte na [podporované typy disků](storage-import-export-requirements.md#supported-hardware).
+- **Diskové jednotky**: Můžete zaslat jednotky SSD (Solid-State Drive) a jednotky pevného disku (HDD) do datacentra Azure. Při vytvoření úlohy importu, dodávat disky obsahující data. Při vytvoření úlohy exportu, zasílejte prázdné disky do datacentra Azure. Konkrétní typy na disku, přejděte na [podporované typy disků](storage-import-export-requirements.md#supported-hardware).
 
 ## <a name="how-does-importexport-work"></a>Jak funguje importu/exportu?
 

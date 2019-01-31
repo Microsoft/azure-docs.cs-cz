@@ -6,17 +6,17 @@ services: cognitive-services
 author: piyushbehre
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: web-language-model
+ms.subservice: web-language-model
 ms.topic: overview
 ms.date: 08/12/2016
 ms.author: pibehre
 ROBOTS: NOINDEX
-ms.openlocfilehash: 3c7f9e4cc4cf023aa93bd80ad1165ba9595e9034
-ms.sourcegitcommit: 9f87a992c77bf8e3927486f8d7d1ca46aa13e849
+ms.openlocfilehash: a4dfe5bb9651e3c5ff9706de829389a1b9df1305
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/28/2018
-ms.locfileid: "53807431"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55464921"
 ---
 # <a name="what-is-the-web-language-model-api-preview"></a>Co je rozhraní Web Language Model API? (Preview)
 

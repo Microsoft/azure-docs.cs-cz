@@ -7,13 +7,13 @@ ms.service: storage
 ms.topic: article
 ms.date: 04/23/2018
 ms.author: sngun
-ms.component: tables
-ms.openlocfilehash: d055ea9b30732e1cc0fc4ae5471bae26adc08b35
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.subservice: tables
+ms.openlocfilehash: 3ba2009ef1ea8fdf5916baab296c7ff5eee953db
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51238892"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55469188"
 ---
 # <a name="table-design-patterns"></a>Způsoby návrhu tabulek
 Tento článek popisuje některé vzory, které jsou vhodné pro použití s řešeními služby tabulky. Uvidíte také, jak se prakticky vyřešit některé problémy a kompromisy popsané v dalších článcích návrh tabulky úložiště. Následující diagram obsahuje souhrn vztahy mezi různé vzorce:  
@@ -197,11 +197,11 @@ Povolit vyhledávání podle příjmení pomocí struktury entit, které jsou uv
 * Vytvořte index entity do stejného oddílu jako entity zaměstnance.  
 * Vytvoření indexu entit v samostatném oddílu nebo tabulky.  
 
-<u>Možnost #1: Úložiště objektů blob můžete použít</u>  
+<u>Možnost #1: Použití služby blob storage</u>  
 
 Pro první možnost se vám vytvoření objektu blob pro každou jedinečnou příjmení a v každé úložiště objektů blob v seznamu **PartitionKey** (department) a **RowKey** (ID zaměstnance) hodnoty pro zaměstnance, kteří mají tento poslední název. Při přidání nebo odstranění zaměstnanci měli byste zajistit, že obsah objektu blob relevantní je konzistentní s entitami zaměstnance.  
 
-<u>Možnost #2:</u> vytvořit index entity do stejného oddílu  
+<u>Možnost #2:</u> Vytvoření indexu entit ve stejném oddílu  
 
 Pro druhou možnost použijte index entity, které ukládat následující data:  
 
@@ -223,7 +223,7 @@ Následující kroky popisují proces, kterým byste měli postupovat, když bud
 2. Parsovat seznam ID v poli EmployeeIDs zaměstnanců.  
 3. Pokud potřebujete další informace o každém z těchto zaměstnanci (například jejich e-mailové adresy), načíst všechny entity zaměstnance pomocí **PartitionKey** hodnotu "Prodeje" a **RowKey** hodnoty z seznam zaměstnanců, které jste získali v kroku 2.  
 
-<u>Možnost #3:</u> vytvořit index entity v samostatném oddílu nebo tabulky  
+<u>Možnost #3:</u> Vytvoření indexu entit v samostatném oddílu nebo tabulky  
 
 Třetí možnost použití indexu entity, které ukládat následující data:  
 
@@ -719,7 +719,7 @@ Služba Table service je *bez schématu* tabulky úložiště, to znamená, že 
 <tr>
 <th>PartitionKey</th>
 <th>RowKey</th>
-<th>Časové razítko</th>
+<th>Timestamp</th>
 <th></th>
 </tr>
 <tr>
@@ -811,7 +811,7 @@ Všimněte si, že každá entita musí mít stále **PartitionKey**, **RowKey**
 <tr>
 <th>PartitionKey</th>
 <th>RowKey</th>
-<th>Časové razítko</th>
+<th>Timestamp</th>
 <th></th>
 </tr>
 <tr>
@@ -916,7 +916,7 @@ Zbývající část Tato část popisuje některé funkce v klientské knihovně
 ### <a name="retrieving-heterogeneous-entity-types"></a>Načítání typů heterogenní entity
 Pokud používáte klientskou knihovnu pro úložiště, máte tři možnosti pro práci s více typy entit.  
 
-Pokud je, že typ entity uložená s konkrétním **RowKey** a **PartitionKey** hodnoty, pokud načítáte entity, jak je znázorněno v předchozích dvou příkladech můžete zadat typ entity, která načtení entit typu **EmployeeEntity**: [provádění dotazu bodu pomocí klientskou knihovnu pro úložiště](#executing-a-point-query-using-the-storage-client-library) a [načítání více entit pomocí jazyka LINQ](#retrieving-multiple-entities-using-linq).  
+Pokud je, že typ entity uložená s konkrétním **RowKey** a **PartitionKey** hodnoty, pokud načítáte entity, jak je znázorněno v předchozích dvou příkladech můžete zadat typ entity, která načtení entit typu **EmployeeEntity**: [Provádění dotazu bodu pomocí klientskou knihovnu pro úložiště](#executing-a-point-query-using-the-storage-client-library) a [načítání více entit pomocí jazyka LINQ](#retrieving-multiple-entities-using-linq).  
 
 Druhou možností je použít **DynamicTableEntity** typ (kontejner objektů) místo konkrétní typ entity POCO (Tato možnost může také zvýšit výkon, protože není nutné k serializaci a deserializaci entita, která má typy rozhraní .NET). Následující kód jazyka C# potenciálně načte více entit různých typů z tabulky, ale vrací všechny entity jako **DynamicTableEntity** instancí. Poté použije **EntityType** a určí typ jednotlivých entit:  
 

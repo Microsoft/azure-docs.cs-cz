@@ -7,13 +7,13 @@ ms.service: storage
 ms.topic: article
 ms.date: 12/16/2016
 ms.author: muralikk
-ms.component: common
-ms.openlocfilehash: 76b2f73442261da4c791aaae8532d7a0dbbb6d95
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.subservice: common
+ms.openlocfilehash: e51803a8baffc904c8d68a8cf22d1ff584e065d1
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39520602"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55456200"
 ---
 # <a name="retrieving-state-information-for-an-importexport-job"></a>Načítání informací o stavu pro úlohu importu/exportu
 Můžete volat [Get Job](/rest/api/storageimportexport/jobs#Jobs_Get) operace k načtení informací o obou import a export úloh. Vrácené informace zahrnují:

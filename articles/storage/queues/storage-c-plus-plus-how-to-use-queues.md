@@ -9,13 +9,13 @@ ms.devlang: cpp
 ms.topic: article
 ms.date: 05/11/2017
 ms.author: cbrooksmsft
-ms.component: queues
-ms.openlocfilehash: 36fa2e5bc7eda7c47017713008aec2a245213462
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.subservice: queues
+ms.openlocfilehash: 1f2f52fc08ab4da4a7525f3018b7a9aea2f7c576
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39521563"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55457357"
 ---
 # <a name="how-to-use-queue-storage-from-c"></a>Používání úložiště Queue z jazyka C++
 [!INCLUDE [storage-selector-queue-include](../../../includes/storage-selector-queue-include.md)]
@@ -41,7 +41,7 @@ Abyste mohli pokračovat, musíte si nainstalovat klientskou knihovnu služby Az
 
 Klientskou knihovnu služby Azure Storage pro C++ můžete nainstalovat následujícími způsoby:
 
-* **Linux:** postupujte podle pokynů v [Klientská knihovna Azure Storage pro C++ – soubor README](https://github.com/Azure/azure-storage-cpp/blob/master/README.md) stránky.
+* **Linux:** Postupujte podle pokynů v [Klientská knihovna Azure Storage pro C++ – soubor README](https://github.com/Azure/azure-storage-cpp/blob/master/README.md) stránky.
 * **Windows:** V sadě Visual Studio klikněte na **Nástroje > Správce balíčků NuGet > Konzola Správce balíčků**. Zadejte následující příkaz do [Konzola správce balíčků NuGet](http://docs.nuget.org/docs/start-here/using-the-package-manager-console) a stiskněte klávesu **ENTER**.
 
 ```  
@@ -83,7 +83,7 @@ Můžete použít **cloud_storage_account** pro reprezentaci informace o vašem 
 azure::storage::cloud_storage_account storage_account = azure::storage::cloud_storage_account::parse(storage_connection_string);
 ```
 
-## <a name="how-to-create-a-queue"></a>Postupy: vytvoření fronty
+## <a name="how-to-create-a-queue"></a>Postup: Vytvoření fronty
 A **cloud_queue_client** objektu umožňuje získat odkaz na objekty pro fronty. Následující kód vytvoří **cloud_queue_client** objektu.
 
 ```cpp
@@ -104,7 +104,7 @@ azure::storage::cloud_queue queue = queue_client.get_queue_reference(U("my-sampl
  queue.create_if_not_exists();  
 ```
 
-## <a name="how-to-insert-a-message-into-a-queue"></a>Postupy: vložit zprávu do fronty
+## <a name="how-to-insert-a-message-into-a-queue"></a>Postup: Vložení zprávy do fronty
 Chcete-li vložit zprávu do existující fronty, vytvořte nejdřív nový **cloud_queue_message**. Pak zavolejte **add_message** metody. A **cloud_queue_message** lze vytvořit buď z řetězce nebo **bajtů** pole. Tady je kód, který vytvoří frontu (pokud neexistuje) a vloží zprávu „Hello, World“:
 
 ```cpp
@@ -125,7 +125,7 @@ azure::storage::cloud_queue_message message1(U("Hello, World"));
 queue.add_message(message1);  
 ```
 
-## <a name="how-to-peek-at-the-next-message"></a>Postupy: zobrazení náhledu další zprávy
+## <a name="how-to-peek-at-the-next-message"></a>Postup: Zobrazení náhledu další zprávy
 Můžete prohlížet zprávy ve frontě bez odebrání z fronty pomocí volání **peek_message** metody.
 
 ```cpp
@@ -145,7 +145,7 @@ azure::storage::cloud_queue_message peeked_message = queue.peek_message();
 std::wcout << U("Peeked message content: ") << peeked_message.content_as_string() << std::endl;
 ```
 
-## <a name="how-to-change-the-contents-of-a-queued-message"></a>Postupy: Změna obsahu zpráv zařazených ve frontě
+## <a name="how-to-change-the-contents-of-a-queued-message"></a>Postup: Změna obsahu zpráv zařazených ve frontě
 Podle potřeby můžete změnit obsah zprávy přímo ve frontě. Pokud zpráva představuje pracovní úlohu, mohli byste tuto funkci použít k aktualizaci stavu pracovních úloh. Následující kód aktualizuje zprávy ve frontě o nový obsah a prodlouží časový limit viditelnosti na 60 sekund. Uloží se tím stav práce spojený se zprávou a klient získá další minutu, aby mohl pokračovat ve zpracování zprávy. Tímto způsobem může sledovat vícekrokového pracovní postupy pro zprávy ve frontě, aniž by bylo nutné v případě, že krok zpracování z důvodu selhání hardwaru nebo softwaru selže, začít znovu od začátku. Obvykle byste udržovali také hodnotu počtu opakování, a pokud se zpráva, je možné vícekrát, odstranili byste ji. Je to ochrana proti tomu, aby zpráva při každém pokusu o zpracování nevyvolala chyby aplikace.
 
 ```cpp
@@ -171,7 +171,7 @@ queue.update_message(changed_message, std::chrono::seconds(60), true);
 std::wcout << U("Changed message content: ") << changed_message.content_as_string() << std::endl;  
 ```
 
-## <a name="how-to-de-queue-the-next-message"></a>Postupy: zrušení další zprávy z fronty
+## <a name="how-to-de-queue-the-next-message"></a>Postup: Vyřazení další zprávy z fronty
 Váš kód vyřazuje zprávy z fronty ve dvou krocích. Při volání **get_message**, získáte další zprávu ve frontě. Zpráva vrácená metodou **get_message** stane neviditelnou pro jakýkoli jiný kód přečte zprávy z této fronty. K dokončení odebrání zprávy z fronty, musíte také zavolat **delete_message**. Tento dvoukrokový proces odebrání zprávy zaručuje, aby v případě, že se vašemu kódu nepodaří zprávu zpracovat z důvodu selhání hardwaru nebo softwaru, mohla stejnou zprávu získat jiná instance vašeho kódu a bylo možné to zkusit znovu. Kód volá **delete_message** hned po zpracování zprávy.
 
 ```cpp
@@ -192,7 +192,7 @@ std::wcout << U("Dequeued message: ") << dequeued_message.content_as_string() <<
 queue.delete_message(dequeued_message);
 ```
 
-## <a name="how-to-leverage-additional-options-for-de-queuing-messages"></a>Postupy: využívání dalších možností pro vyřazování zpráv z fronty
+## <a name="how-to-leverage-additional-options-for-de-queuing-messages"></a>Postup: Využívání dalších možností pro vyřazování zpráv z fronty
 Načítání zpráv z fronty si můžete přizpůsobit dvěma způsoby. Za prvé si můžete načíst dávku zpráv (až 32). Za druhé si můžete nastavit delší nebo kratší časový limit neviditelnosti, aby měl váš kód více nebo méně času na úplné zpracování jednotlivých zpráv. Následující příklad kódu používá **get_messages** metodu k získání 20 zpráv v jednom volání. Pak se každá zpráva zpracuje pomocí **pro** smyčky. Také se pro každou zprávu nastaví časový limit neviditelnosti 5 minut. Všimněte si, že začíná pro všechny zprávy ve stejnou dobu, tak po mít 5 minut předané od posledního volání **get_messages**, všechny zprávy, které nebyly odstraněny, opět viditelné.
 
 ```cpp
@@ -220,7 +220,7 @@ for (auto it = messages.cbegin(); it != messages.cend(); ++it)
 }
 ```
 
-## <a name="how-to-get-the-queue-length"></a>Postupy: získání délky fronty
+## <a name="how-to-get-the-queue-length"></a>Postup: Získání délky fronty
 Podle potřeby můžete získat odhadovaný počet zpráv ve frontě. **Download_attributes** metoda požádá službu front o načtení atributů fronty, včetně počtu zpráv. **Approximate_message_count** metoda získá přibližný počet zpráv ve frontě.
 
 ```cpp
@@ -243,7 +243,7 @@ int cachedMessageCount = queue.approximate_message_count();
 std::wcout << U("Number of messages in queue: ") << cachedMessageCount << std::endl;  
 ```
 
-## <a name="how-to-delete-a-queue"></a>Postupy: odstranění fronty
+## <a name="how-to-delete-a-queue"></a>Postup: Odstranění fronty
 Chcete-li odstranit frontu se všemi zprávami, které v ní, zavolejte **delete_queue_if_exists** metodu na objekt fronty.
 
 ```cpp

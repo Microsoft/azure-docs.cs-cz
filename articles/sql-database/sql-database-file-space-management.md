@@ -11,13 +11,13 @@ author: oslake
 ms.author: moslake
 ms.reviewer: jrasnick, carlrab
 manager: craigg
-ms.date: 09/14/2018
-ms.openlocfilehash: d8ddbb2590852ed80ce02f147886dc125815fc23
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.date: 01/25/2019
+ms.openlocfilehash: 94b793d4ab68ae4d2b8a28961d76eed1ea875ff7
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53605953"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55468627"
 ---
 # <a name="manage-file-space-in-azure-sql-database"></a>Správa místo souborů ve službě Azure SQL Database
 Tento článek popisuje různé druhy prostoru úložiště v Azure SQL Database a kroky, které mohou být provedeny, když přidělené místo souborů databáze a elastické fondy je potřeba explicitně spravovat.
@@ -27,6 +27,7 @@ Tento článek popisuje různé druhy prostoru úložiště v Azure SQL Database
 Ve službě Azure SQL Database existují vzorce úlohy kde přidělení podkladové datové soubory pro databáze, mívá větší než velikost stránek používaná data. Tento stav může nastat v případě, že se zvýší množství využitého prostoru a data se následně odstraní. Důvodem je, protože přidělené místo souboru neuvolní automaticky, když se odstraní data.
 
 V následujících scénářích může být potřeba monitorovat využití prostoru souborů a zmenšení datových souborů:
+
 - Povolení růstu objemu dat v elastickém fondu v případě, že prostor souborů přidělený pro jeho databáze dosáhne maximální velikosti fondu
 - Povolení snížení maximální velikosti jednoúčelové databáze nebo elastického fondu
 - Povolení změny jednoúčelové databáze nebo elastického fondu na jinou úroveň služby nebo výkonu s nižší maximální velikostí
@@ -37,7 +38,7 @@ Většina metrik úložiště prostor zobrazí na webu Azure portal a rozhraní 
 - T-SQL: [sys.dm_db_resource_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database)
 
 Ale následující rozhraní API také měření velikost místa vyhrazeného pro databáze a elastické fondy:
-- T-SQL: [sys.resource_stats](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database)
+- T-SQL:  [sys.resource_stats](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database)
 - T-SQL: [sys.elastic_pool_resource_stats](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-elastic-pool-resource-stats-azure-sql-database)
 
 ### <a name="shrinking-data-files"></a>Probíhá zmenšování souborů dat
@@ -118,6 +119,7 @@ Principy následující množství prostoru úložiště jsou důležité pro sp
 Následující dotazy můžete použít k určení množství prostoru úložiště pro elastický fond.  
 
 ### <a name="elastic-pool-data-space-used"></a>Použít elastický fond datovému prostoru
+
 Upravte následující dotaz, který vrací množství místa data elastický fond používá.  Jednotky výsledku dotazu jsou v MB.
 
 ```sql
@@ -234,9 +236,9 @@ Po datové soubory databáze jsou zmenšit, může fragmentovat. indexy a dojít
 ## <a name="next-steps"></a>Další postup
 
 - Informace o maximální velikosti databáze najdete tady:
-  - [Založený na virtuálních jádrech zakoupení modelu omezení pro jednu databázi Azure SQL Database](https://docs.microsoft.com/azure/sql-database/sql-database-vcore-resource-limits-single-databases)
-  - [Omezení prostředků pro izolované databáze pomocí nákupní model založený na DTU](https://docs.microsoft.com/azure/sql-database/sql-database-dtu-resource-limits-single-databases)
-  - [Založený na virtuálních jádrech zakoupení modelu limity pro elastické fondy Azure SQL Database](https://docs.microsoft.com/azure/sql-database/sql-database-vcore-resource-limits-elastic-pools)
-  - [Omezení prostředků pro elastické fondy pomocí nákupní model založený na DTU](https://docs.microsoft.com/azure/sql-database/sql-database-dtu-resource-limits-elastic-pools)
+  - [Založený na virtuálních jádrech zakoupení modelu omezení pro jednu databázi Azure SQL Database](sql-database-vcore-resource-limits-single-databases.md)
+  - [Omezení prostředků pro izolované databáze pomocí nákupní model založený na DTU](sql-database-dtu-resource-limits-single-databases.md)
+  - [Založený na virtuálních jádrech zakoupení modelu limity pro elastické fondy Azure SQL Database](sql-database-vcore-resource-limits-elastic-pools.md)
+  - [Omezení prostředků pro elastické fondy pomocí nákupní model založený na DTU](sql-database-dtu-resource-limits-elastic-pools.md)
 - Další informace o `SHRINKDATABASE` naleznete [SHRINKDATABASE](https://docs.microsoft.com/sql/t-sql/database-console-commands/dbcc-shrinkdatabase-transact-sql). 
 - Další informace o fragmentace a nové sestavení indexů, naleznete v tématu [Reorganize a znovu vytvořit indexy](https://docs.microsoft.com/sql/relational-databases/indexes/reorganize-and-rebuild-indexes).

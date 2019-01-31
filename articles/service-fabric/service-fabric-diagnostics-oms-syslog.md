@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 10/23/2018
 ms.author: srrengar
-ms.openlocfilehash: 32e67343c5d799157d67408b34753da5a38b6f8e
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 30b064e3c20b184023cb6ada25d673f5cab6597c
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55197241"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55297663"
 ---
 # <a name="service-fabric-linux-cluster-events-in-syslog"></a>Události clusteru Service Fabric s Linuxem v procesu Syslog
 
@@ -84,7 +84,7 @@ Povolit SyslogConsumer, budete muset provést upgrade vašeho clusteru. `fabricS
 Tady jsou změny provádět volání
 1. V části společné je nový parametr s názvem `LinuxStructuredTracesEnabled`. **To se vyžaduje pro Linux se události strukturované a serializovat, když je odeslána s protokolem Syslog.**
 2. V části Diagnostika nové ConsumerInstance: SyslogConsumer se přidala. Platforma říká, že existuje jiný příjemce událostí. 
-3. Nový oddíl SyslogConsumer musí mít `IsEnabled` jako `true`. Je profiloval Local0 zařízení automaticky použije. Toto můžete přepsat tak, že přidáte jiný parametr.
+3. Nový oddíl SyslogConsumer musí mít `IsEnabled` jako `true`. To je nakonfigurován pro použití zařízení Local0 automaticky. Toto můžete přepsat tak, že přidáte jiný parametr.
 
 ```json
     {

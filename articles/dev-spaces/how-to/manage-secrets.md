@@ -3,7 +3,7 @@ title: Správa tajných kódů při práci s prostorem vývoj Azure | Dokumentac
 titleSuffix: Azure Dev Spaces
 services: azure-dev-spaces
 ms.service: azure-dev-spaces
-ms.component: azds-kubernetes
+ms.subservice: azds-kubernetes
 author: zr-msft
 ms.author: zarhoads
 ms.date: 05/11/2018
@@ -11,12 +11,12 @@ ms.topic: article
 ms.technology: azds-kubernetes
 description: Rychlý vývoj na platformě Kubernetes s využitím kontejnerů a mikroslužeb v Azure
 keywords: Docker, Kubernetes, Azure, AKS, Azure Container Service, kontejnery
-ms.openlocfilehash: e155b4151a3b974e9ccc56a88028a89c35896522
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: 7081412172b617632073cad4e76d7c8fc4e81519
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53013997"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55466553"
 ---
 # <a name="how-to-manage-secrets-when-working-with-an-azure-dev-space"></a>Správa tajných kódů při práci s prostorem vývoj Azure
 

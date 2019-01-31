@@ -1,23 +1,23 @@
 ---
-title: 'Rychlý start: Identifikace jazyka z textu, Ruby – Translator Text API'
+title: 'Rychlý start: Identifikujte jazyk z textu Ruby – Translator Text API'
 titleSuffix: Azure Cognitive Services
 description: V tomto rychlém startu identifikujete jazyk zdrojového textu pomocí služby Translator Text API a Ruby.
 services: cognitive-services
 author: erhopf
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: translator-text
+ms.subservice: translator-text
 ms.topic: quickstart
 ms.date: 06/22/2018
 ms.author: erhopf
-ms.openlocfilehash: ee6792358e6d5852c259b8045f77df24d14a6397
-ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
-ms.translationtype: HT
+ms.openlocfilehash: d710f1ae1df04cf5e97a3583a0cbe9a7c59abdb3
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49644858"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55461130"
 ---
-# <a name="quickstart-identify-language-from-text-with-the-translator-text-rest-api-ruby"></a>Rychlý start: Identifikace jazyka z textu pomocí rozhraní REST API služby Translator Text (Ruby)
+# <a name="quickstart-identify-language-from-text-with-the-translator-text-rest-api-ruby"></a>Rychlý start: Identifikujte jazyk z textu s rozhraním Translator Text REST API (Ruby)
 
 V tomto rychlém startu identifikujete jazyk zdrojového textu pomocí služby Translator Text API.
 
@@ -105,7 +105,7 @@ puts json
 ]
 ```
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Prozkoumejte vzorový kód pro tento rychlý start a další, včetně překladu a transkripce, a také další vzorové projekty Translator Text na GitHubu.
 

@@ -11,20 +11,22 @@ author: juliemsft
 ms.author: jrasnick
 ms.reviewer: genemi
 manager: craigg
-ms.date: 09/14/2018
-ms.openlocfilehash: c41420e46a0bd4afbaed96da0e2fb9775d49c6fc
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.date: 01/25/2019
+ms.openlocfilehash: 7542e9fa04eb838baca37dbe13f7cdacdfaf041b
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53606533"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55470259"
 ---
 # <a name="monitor-in-memory-oltp-storage"></a>Úložiště OLTP v paměti monitorování
+
 Při použití [OLTP v paměti](sql-database-in-memory.md), data v paměťově optimalizovaných tabulkách a proměnné tabulky se nachází v úložiště OLTP v paměti. Každá úroveň služby úrovně Premium a pro důležité obchodní informace má maximální velikost úložiště OLTP v paměti. V tématu [omezení prostředků založený na DTU – izolované databáze](sql-database-dtu-resource-limits-single-databases.md), [omezení prostředků založený na DTU - elastické fondy](sql-database-dtu-resource-limits-elastic-pools.md),[omezení prostředků na základě virtuálních jader – izolované databáze](sql-database-vcore-resource-limits-single-databases.md) a [omezení prostředků založený na virtuálních jádrech - elastických fondů](sql-database-vcore-resource-limits-elastic-pools.md).
 
 Jakmile je tento limit překročen, vkládací a aktualizační operace mohou začít selhávat, chyba 41823 pro izolované databáze a elastických fondů v podrobnostech o chybě 41840. V tomto okamžiku budete muset buď odstranit data uvolnit paměť, nebo upgradovat na vrstvu služby nebo vypočítat velikost vaší databáze.
 
 ## <a name="determine-whether-data-fits-within-the-in-memory-oltp-storage-cap"></a>Určení, zda data vešla do kapacita úložiště OLTP v paměti
+
 Určení limitů úložiště z různými úrovněmi služeb. V tématu [omezení prostředků založený na DTU – izolované databáze](sql-database-dtu-resource-limits-single-databases.md), [omezení prostředků založený na DTU - elastické fondy](sql-database-dtu-resource-limits-elastic-pools.md),[omezení prostředků na základě virtuálních jader – izolované databáze](sql-database-vcore-resource-limits-single-databases.md) a [omezení prostředků založený na virtuálních jádrech - elastických fondů](sql-database-vcore-resource-limits-elastic-pools.md).
 
 Odhadnout požadavky na paměť pro paměťově optimalizované tabulky funguje stejným způsobem pro SQL Server jako to dělá ve službě Azure SQL Database. Trvat pár minut a přečtěte si tento článek na [MSDN](https://msdn.microsoft.com/library/dn282389.aspx).
@@ -40,10 +42,12 @@ Můžete monitorovat využití úložiště v paměti jako procento z limitu úl
 
 Nebo použijte tento dotaz k zobrazení využití úložiště v paměti:
 
+```sql
     SELECT xtp_storage_percent FROM sys.dm_db_resource_stats
-
+```
 
 ## <a name="correct-out-of-in-memory-oltp-storage-situations---errors-41823-and-41840"></a>Opravte-v-paměti OLTP úložiště situacích – chyby 41823 a 41840
+
 Dosažení limitu úložiště OLTP v paměti ve výsledcích databáze v vložit, aktualizovat, ALTER a vytvoření operací služeb při selhání s chybovou zprávu 41823 (pro izolované databáze) nebo Chyba 41840 (pro elastické fondy). Obě chyby způsobit aktivní transakci pro přerušení.
 
 Chybové zprávy 41823 a 41840 naznačují, že paměťově optimalizovaných tabulkách a proměnné tabulky v databázi nebo fond dosáhl maximální velikosti úložiště OLTP v paměti.

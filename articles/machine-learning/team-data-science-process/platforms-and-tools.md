@@ -5,17 +5,17 @@ author: marktab
 manager: cgronlun
 editor: cgronlun
 ms.service: machine-learning
-ms.component: team-data-science-process
+ms.subservice: team-data-science-process
 ms.topic: article
 ms.date: 09/04/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 8a37c200e52e1d2786690a8a0e669af57312294d
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: f733b2c9bcd8dc8ad8c068c465e1beda00b45d28
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53139164"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55471007"
 ---
 # <a name="platforms-and-tools-for-data-science-projects"></a>Platformy a nástroje pro projekty datových věd
 
@@ -73,7 +73,7 @@ Další informace o Azure SQL Data Warehouse, najdete v článku [SQL Data Wareh
 
 Azure data lake je jako je úložiště na podnikové úrovni všechny typy dat soustředěné na jednom místě, před žádné formální požadavků nebo schématu se uložila. Díky této flexibilitě umožňuje všechny typy dat, které budou uloženy v data lake, bez ohledu na její velikost nebo strukturu nebo rychlost zpracování. Organizace pak může použít Hadoop nebo pokročilou analýzu k vyhledání vzory v těchto datech jezera. Datová jezera současně může sloužit jako úložiště pro přípravu dat s nižšími náklady než Správa dat a jeho přesunutím do datového skladu.
 
-Další informace o Azure Data Lake najdete v tématu [Introducing Azure Data Lake](https://azure.microsoft.com/blog/introducing-azure-data-lake/). Zjistěte, jak sestavit řešení škálovatelné začátku do konce datové vědy s Azure Data Lake, najdete v článku [škálovatelné vědecké zkoumání dat ve službě Azure Data Lake: návod začátku do konce](data-lake-walkthrough.md)
+Další informace o Azure Data Lake najdete v tématu [Introducing Azure Data Lake](https://azure.microsoft.com/blog/introducing-azure-data-lake/). Zjistěte, jak sestavit řešení škálovatelné začátku do konce datové vědy s Azure Data Lake, najdete v článku [škálovatelné vědecké zkoumání dat ve službě Azure Data Lake: Návod začátku do konce](data-lake-walkthrough.md)
 
 
 ## <a name="azure-hdinsight-hive-hadoop-clusters"></a>Clustery Azure HDInsight Hive (Hadoop)

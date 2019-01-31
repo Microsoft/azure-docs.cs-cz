@@ -4,18 +4,18 @@ titleSuffix: Azure Dev Spaces
 author: zr-msft
 services: azure-dev-spaces
 ms.service: azure-dev-spaces
-ms.component: azds-kubernetes
+ms.subservice: azds-kubernetes
 ms.author: zarhoads
 ms.date: 09/26/2018
 ms.topic: quickstart
 description: Rychlý vývoj na platformě Kubernetes s využitím kontejnerů a mikroslužeb v Azure
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, kontejnery
-ms.openlocfilehash: 52cca29392f226aa0f33081b9303a8c5d1f41036
-ms.sourcegitcommit: b254db346732b64678419db428fd9eb200f3c3c5
+ms.openlocfilehash: ccd4334961ff6e5e687d2f57be0291bd389f43b4
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53413332"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55463799"
 ---
 # <a name="quickstart-create-a-kubernetes-dev-space-with-azure-dev-spaces-nodejs"></a>Rychlý start: Vytvoření prostoru vývoje Kubernetes s Azure Dev prostory (Node.js)
 

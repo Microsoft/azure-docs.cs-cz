@@ -6,16 +6,16 @@ services: cognitive-services
 author: Jann-Skotdal
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: translator-speech
+ms.subservice: translator-speech
 ms.topic: overview
 ms.date: 3/5/2018
 ms.author: v-jansko
-ms.openlocfilehash: 641081e4a01aa5810d569795c10e967e4b46568e
-ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
-ms.translationtype: HT
+ms.openlocfilehash: e2fd6f88f34ac34ea304b5298940f317b4c0d37e
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50023573"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55472486"
 ---
 # <a name="what-is-translator-speech-api"></a>Co je rozhraní Translator Speech API?
 
@@ -57,7 +57,7 @@ Zobrazit podporované jazyky na [Microsoft.com](https://www.microsoft.com/en-us/
 
 Další informace o tom, [jak NMT funguje](https://www.microsoft.com/en-us/translator/mt.aspx#nnt)
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 > [!div class="nextstepaction"]
 > [Zaregistrovat se](translator-speech-how-to-signup.md)
@@ -65,7 +65,7 @@ Další informace o tom, [jak NMT funguje](https://www.microsoft.com/en-us/trans
 > [!div class="nextstepaction"]
 > [Pustit se do psaní kódu](quickstarts/csharp.md)
 
-## <a name="see-also"></a>Viz také
+## <a name="see-also"></a>Další informace najdete v tématech
 - [Stránka dokumentace ke službám Cognitive Services](https://docs.microsoft.com/azure/#pivot=products&panel=cognitive)
 - [Produktová stránka služeb Cognitive Services](https://azure.microsoft.com/services/cognitive-services/)
 - [Informace o řešení a cenách](https://www.microsoft.com/en-us/translator/home.aspx) 

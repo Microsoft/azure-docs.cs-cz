@@ -8,7 +8,7 @@ author: MarkusVi
 manager: mtillman
 ms.assetid: e7434eeb-4e98-4b6b-a895-b5598a6cccf1
 ms.service: active-directory
-ms.component: identity-protection
+ms.subservice: identity-protection
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 09/13/2018
 ms.author: markvi
 ms.reviewer: raluthra
-ms.openlocfilehash: 6624b65e7aa71dc22a3dfe27a691a23030928ec2
-ms.sourcegitcommit: 97d0dfb25ac23d07179b804719a454f25d1f0d46
+ms.openlocfilehash: 2ba6e3b8b844d72b762e9a66629f16b36193a69f
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/25/2019
-ms.locfileid: "54913801"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55478385"
 ---
 # <a name="how-to-improve-the-detection-accuracy"></a>Jak: Zlepšovat přesnost detekce 
 

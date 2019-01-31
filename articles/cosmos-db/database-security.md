@@ -6,14 +6,14 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 11/15/2017
 ms.author: rafats
-ms.openlocfilehash: 5fcf04c57f957b670d813de8ffe2d945f70cb3c5
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: 27254b88c6efcedf1671e08ea02604086b3ef129
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54038768"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55477322"
 ---
-# <a name="azure-cosmos-db-database-security"></a>Zabezpečení databáze Azure Cosmos DB
+# <a name="security-in-azure-cosmos-db---overview"></a>Zabezpečení ve službě Azure Cosmos DB – přehled
 
 Tento článek popisuje osvědčené postupy zabezpečení databáze a klíčových funkcí, které nabízí služba Azure Cosmos DB můžete zabránit, detekci a reakce na porušení databáze.
  

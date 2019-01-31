@@ -2,20 +2,20 @@
 title: Připojení ke službě Azure SQL Data Warehouse pomocí sqlcmd | Dokumentace Microsoftu
 description: Pomocí nástroje příkazového řádku sqlcmd k připojení a dotazování Azure SQL Data Warehouse.
 services: sql-data-warehouse
-author: kavithaj
+author: KavithaJonnakuti
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
-ms.component: consume
+ms.subservice: consume
 ms.date: 04/17/2018
 ms.author: kavithaj
 ms.reviewer: igorstan
-ms.openlocfilehash: 2534d668132db4c66b5e54c33849b76a8f93c348
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: e0e423ef0503bc4d23fddf4e1b9ff985636d2ec2
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53976405"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55463510"
 ---
 # <a name="connect-to-sql-data-warehouse-with-sqlcmd"></a>Připojení k SQL Data Warehouse pomocí sqlcmd
 > [!div class="op_single_selector"]
@@ -38,7 +38,7 @@ Chcete-li začít s nástrojem [sqlcmd][sqlcmd], otevřete příkazový řádek 
 
 Chcete-li používat ověřování systému SQL Server, je třeba přidat parametry uživatelského jména a hesla:
 
-* **Uživatel (-U):** Uživatel serveru v následující podobě `<`uživatele`>`
+* **User (-U):** Uživatel serveru v následující podobě `<`uživatele`>`
 * **Heslo (-P):** Heslo přidružené k uživateli.
 
 Připojovací řetězec může například vypadat následovně:

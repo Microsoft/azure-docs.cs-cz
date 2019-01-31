@@ -2,20 +2,20 @@
 title: Rychlý start Azure – spuštění úlohy služby Batch – rozhraní příkazového řádku
 description: Můžete se rychle naučit, jak pomocí Azure CLI spustit úlohu služby Batch.
 services: batch
-author: dlepow
+author: laurenhughes
 manager: jeconnoc
 ms.service: batch
 ms.devlang: azurecli
 ms.topic: quickstart
 ms.date: 07/03/2018
-ms.author: danlep
+ms.author: lahugh
 ms.custom: mvc
-ms.openlocfilehash: 75703b4b10bbf3864076952990df2e6c2a9ab28d
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
-ms.translationtype: HT
+ms.openlocfilehash: 10f84a758bdb2e01793aee06cba59a29b5639775
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46969644"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55470956"
 ---
 # <a name="quickstart-run-your-first-batch-job-with-the-azure-cli"></a>Rychlý start: Spuštění první úlohy služby Batch pomocí rozhraní příkazového řádku Azure
 
@@ -204,7 +204,7 @@ Pokud už je nepotřebujete, můžete k odebrání skupiny prostředků, účtu 
 az group delete --name myResourceGroup
 ```
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 V tomto rychlém startu jste vytvořili účet Batch, fond služby Batch a úlohu služby Batch. Úloha spustila ukázkové úkoly a prohlédli jste si výstup vytvořený v jednom z uzlů. Teď chápete klíčové koncepty služby Batch a můžete službu Batch vyzkoušet ve větším měřítku s úlohami, které víc odpovídají realitě. Další informace o službě Azure Batch najdete v dalších kurzech o službě Azure Batch. 
 

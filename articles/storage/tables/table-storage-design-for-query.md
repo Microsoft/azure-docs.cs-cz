@@ -7,13 +7,13 @@ ms.service: storage
 ms.topic: article
 ms.date: 04/23/2018
 ms.author: sngun
-ms.component: tables
-ms.openlocfilehash: 8b4ae066edc1c62c25762b5c6feebce1ecfff5a2
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.subservice: tables
+ms.openlocfilehash: 97373f6f0138d3ed8028ed4327b7e6cf90ad76a7
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39521536"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55470735"
 ---
 # <a name="design-for-querying"></a>Návrh pro dotazování
 Náročné na prostředky, zápis náročné na prostředky nebo kombinaci obou, může se načíst řešení Table service. Tento článek se zaměřuje na věcí berte v úvahu při návrhu vaší služby Table service pro podporu operací čtení efektivně. Návrh, že podporuje operace čtení efektivně je obvykle také efektivní pro operace zápisu. Existují však další důležité informace k berte v úvahu při navrhování pro podporu operací zápisu, popsanou v článku [návrhu pro úpravu dat](table-storage-design-for-modification.md).
@@ -42,7 +42,7 @@ Následující příklady předpokládají, že služba table service je uklád�
 | **Jméno** |Řetězec |
 | **LastName** |Řetězec |
 | **Stáří** |Integer |
-| **EmailAddress** |Řetězec |
+| **EmailAddress** |String |
 
 Tento článek [Přehled služby Azure Table storage](table-storage-overview.md) popisuje některé klíčové funkce služby Azure Table service, které mají přímý vliv na návrh pro dotaz. Tyto za následek následující obecné pokyny pro návrh služby dotazy na tabulku. Všimněte si, že se používá v následujících příkladech syntaxe parametru filter je z rozhraní REST API služby tabulky pro další informace najdete v tématu [dotazu entity](https://docs.microsoft.com/rest/api/storageservices/Query-Entities).  
 

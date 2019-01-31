@@ -6,13 +6,13 @@ author: RenaShahMSFT
 ms.service: storage
 ms.date: 01/02/2019
 ms.author: renash
-ms.component: files
-ms.openlocfilehash: cce2254ef54483e7d0c4d26fbc4b08de3b2366c3
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.subservice: files
+ms.openlocfilehash: b3329f591d8478499b8270eb8a211d311465b020
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54825149"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55457016"
 ---
 # <a name="frequently-asked-questions-faq-about-azure-files"></a>O službě soubory Azure – nejčastější dotazy (FAQ)
 [Služba soubory Azure](storage-files-introduction.md) nabízí plně spravované sdílené složky v cloudu, které jsou přístupné prostřednictvím standardních průmyslových [zprávy bloku SMB (Server) protokol](https://msdn.microsoft.com/library/windows/desktop/aa365233.aspx). Sdílené složky Azure je možné připojit současně v cloudových i místních nasazení systémů Windows, Linux a macOS. Také můžete ukládat do mezipaměti sdílených složek Azure v počítačích s Windows serverem pomocí Azure File Sync pro rychlý přístup blízko, ve kterém jsou využívány.

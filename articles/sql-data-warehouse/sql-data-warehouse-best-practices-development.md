@@ -6,16 +6,16 @@ author: ronortloff
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
-ms.component: implement
+ms.subservice: implement
 ms.date: 09/04/2018
 ms.author: rortloff
 ms.reviewer: igorstan
-ms.openlocfilehash: 6c60ec516a5bcefc3fac98fbc09abc89683e2004
-ms.sourcegitcommit: e2348a7a40dc352677ae0d7e4096540b47704374
+ms.openlocfilehash: 13e6aba896e1de8066e942fa0c713567290c2fdf
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43783559"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55460858"
 ---
 # <a name="development-best-practices-for-azure-sql-data-warehouse"></a>Osvědčené postupy pro vývoj pro Azure SQL Data Warehouse
 Tento článek popisuje pokyny a osvědčené postupy při vývoji řešení vašeho datového skladu. 

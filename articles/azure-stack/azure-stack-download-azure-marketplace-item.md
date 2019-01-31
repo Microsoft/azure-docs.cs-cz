@@ -12,16 +12,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 12/10/2018
+ms.date: 01/30/2019
 ms.author: sethm
 ms.reviewer: unknown
 ms.lastreviewed: 12/10/2018
-ms.openlocfilehash: 465f9d51f724bf1c8713259cd1d0b6ebabc230fe
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 8c699f8b3241694f36b73ae75b25754e551c91f6
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55239753"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55470701"
 ---
 # <a name="download-marketplace-items-from-azure-to-azure-stack"></a>Stažení položek z marketplace z Azure do služby Azure Stack
 
@@ -168,7 +168,13 @@ Existují dvě části pro tento scénář:
    $credential = Get-Credential -Message "Enter the azure stack operator credential:"
    Import-AzSOfflineMarketplaceItem -origin "marketplace content folder" -armendpoint "Environment Arm Endpoint" -AzsCredential $credential
    ```
+
+   `-origin` Parametr určuje složku nejvyšší úrovně, která obsahuje všechny stažené produkty; například `"D:\downloadfolder"`.
+
    `-AzsCredential` Parametr je nepovinný. Používá se k obnovení tokenu přístupu, pokud vypršela platnost. Pokud `-AzsCredential` parametr není zadán a vyprší platnost tokenu, zobrazí se výzva k zadání přihlašovacích údajů operátor.
+
+    > [!Note]  
+    > Služba AD FS podporuje pouze interaktivní ověřování pomocí identity uživatelů. Pokud je vyžadován objekt přihlašovacích údajů je nutné použít hlavní název služby (SPN). Další informace o nastavení instančního objektu pomocí služby Azure Stack a AD FS, jako je vaše služba identity management, najdete v části [spravovat instanční objekt služby pro službu AD FS](azure-stack-create-service-principals.md#manage-service-principal-for-ad-fs).
 
 4. Po úspěšném dokončení skriptu položka by měla být k dispozici v Tržišti Azure Stack.
 

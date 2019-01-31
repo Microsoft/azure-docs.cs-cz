@@ -1,6 +1,6 @@
 ---
 Název: Datová věda pro začátečníky titleSuffix: Azure Machine Learning Studio Popis: Vědecké zpracování dat pro začátečníky je vás naučí základní koncepce při 5 krátkých videí, počínaje The 5 odpovídá vědecké zkoumání dat pro dotazy. Ze služby Azure Machine Learning.
-Services: machine learningu ms.service: ms.component strojového učení: studio ms.topic: článku
+Services: machine learningu ms.service: ms.subservice strojového učení: studio ms.topic: článku
 
 Autor: garyericson ms.author: garye ms.custom: seodec18 ms.date: 01/03/2018
 ---

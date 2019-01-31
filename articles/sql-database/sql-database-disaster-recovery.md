@@ -11,21 +11,21 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
 manager: craigg
-ms.date: 07/16/2018
-ms.openlocfilehash: 889f8f597b0b744ea5fe6ef2f5c82f2d09629607
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.date: 01/25/2019
+ms.openlocfilehash: 61957b89bd5ec9a42d6fd03c7009187d71e448f4
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53605207"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55474781"
 ---
 # <a name="restore-an-azure-sql-database-or-failover-to-a-secondary"></a>Obnovení služby Azure SQL Database a převzetí služeb při selhání sekundární lokalitou
 
 Azure SQL Database nabízí následující funkce pro obnovení po výpadku:
 
 - [Aktivní geografická replikace](sql-database-active-geo-replication.md)
-- [Automatické převzetí služeb při selhání skupiny](sql-database-auto-failover-group.md)
-- [Geografické obnovení](sql-database-recovery-using-backups.md#point-in-time-restore)
+- [Skupiny automatického převzetí služeb při selhání](sql-database-auto-failover-group.md)
+- [Geo-restore](sql-database-recovery-using-backups.md#point-in-time-restore)
 - [Zónově redundantní databáze](sql-database-high-availability.md)
 
 Další informace o obchodní kontinuity podnikových procesů scénáře a funkce podporuje tyto scénáře, naleznete v tématu [kontinuita podnikových procesů](sql-database-business-continuity.md).
@@ -37,7 +37,7 @@ Další informace o obchodní kontinuity podnikových procesů scénáře a funk
 
 Pro úspěšné dokončení obnovení do jiné oblasti dat pomocí skupiny převzetí služeb při selhání nebo geograficky redundantní zálohy, je nutné připravit server v jiném datovém centru výpadek stane novým primárním serverem by potřeba nastat také mít dobře definované kroky zdokumentované a testováním k zajištění obnovení proběhlo bez problémů. Tyto přípravné kroky patří:
 
-- Identifikujte logický server v jiné oblasti stane novým primárním serverem. Pro geografické obnovení, obvykle se jedná server v [spárované oblasti](../best-practices-availability-paired-regions.md) pro oblast, ve kterém je umístěna databáze. Tím se eliminují náklady na dodatečný provoz během operací geografické obnovení.
+- Identifikace serveru SQL Database v jiné oblasti stane novým primárním serverem. Pro geografické obnovení, obvykle se jedná server v [spárované oblasti](../best-practices-availability-paired-regions.md) pro oblast, ve kterém je umístěna databáze. Tím se eliminují náklady na dodatečný provoz během operací geografické obnovení.
 - Identifikujte a volitelně můžete definovat pravidla brány firewall na úrovni serveru, třeba uživatelům přístup k nové primární databázi.
 - Zjistěte, jak chcete přesměrovat uživatele na nový primární server, například tak, že změníte připojovací řetězce nebo při změně položky DNS.
 - Identifikovat a volitelně vytvořit přihlašovací údaje, které se musí nacházet v hlavní databázi v nové primární server a ujistěte se, že tyto přihlašovací údaje mít příslušná oprávnění v hlavní databázi, pokud existuje. Další informace najdete v tématu [zabezpečení služby SQL Database po zotavení po havárii](sql-database-geo-replication-security-config.md)

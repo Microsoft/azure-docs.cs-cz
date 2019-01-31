@@ -11,12 +11,12 @@ ms.subservice: text-analytics
 ms.topic: article
 ms.date: 01/02/2019
 ms.author: diberry
-ms.openlocfilehash: c874bdd36813438edbb4546d3ee11705535d5d51
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: 07fbf51f584d691b08d94f68fefa8c3f9348227f
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55207118"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55294824"
 ---
 # <a name="install-and-run-text-analytics-containers"></a>Instalace a spouštění kontejnerů pro analýzu textu
 
@@ -40,12 +40,7 @@ Před použitím kontejnerů pro analýzu textu, musí splňovat následující 
 
 ### <a name="the-host-computer"></a>Hostitelském počítači
 
-**Hostitele** je počítač, který spustí kontejner dockeru. Může být počítač připojený k vlastních prostorách nebo v dockeru, který hostuje službu v Azure včetně:
-
-* [Azure Kubernetes Service](../../../aks/index.yml)
-* [Azure Container Instances](../../../container-instances/index.yml)
-* [Kubernetes](https://kubernetes.io/) clusteru nasadí do [Azure Stack](../../../azure-stack/index.yml). Další informace najdete v tématu [nasazení Kubernetes pro Azure Stack](../../../azure-stack/user/azure-stack-solution-template-kubernetes-deploy.md).
-
+[!INCLUDE [Request access to private preview](../../../../includes/cognitive-services-containers-host-computer.md)]
 
 ### <a name="container-requirements-and-recommendations"></a>Požadavků na kontejner a doporučení
 
@@ -77,6 +72,8 @@ Použití [ `docker pull` ](https://docs.docker.com/engine/reference/commandline
 * [Rozpoznávání jazyka](https://go.microsoft.com/fwlink/?linkid=2018759)
 * [Analýza subjektivního hodnocení](https://go.microsoft.com/fwlink/?linkid=2018654)
 
+Použití [ `docker pull` ](https://docs.docker.com/engine/reference/commandline/pull/) příkaz Stáhnout image kontejneru.
+
 
 ### <a name="docker-pull-for-the-key-phrase-extraction-container"></a>Operace docker pull pro kontejner klíče frázi extrakce
 
@@ -96,13 +93,7 @@ docker pull mcr.microsoft.com/azure-cognitive-services/language:latest
 docker pull mcr.microsoft.com/azure-cognitive-services/sentiment:latest
 ```
 
-### <a name="listing-the-containers"></a>Seznam kontejnerů
-
-Můžete použít [imagí dockeru](https://docs.docker.com/engine/reference/commandline/images/) příkazu zobrazte výpis imagí kontejnerů stažené. Například následující příkaz zobrazí seznam ID, úložiště a značka image každý stažený kontejneru, formátovaná jako tabulka:
-
-```Docker
-docker images --format "table {{.ID}}\t{{.Repository}}\t{{.Tag}}"
-```
+[!INCLUDE [Tip for using docker list](../../../../includes/cognitive-services-containers-docker-list-tip.md)]
 
 
 ## <a name="how-to-use-the-container"></a>Jak používat kontejneru
@@ -116,7 +107,7 @@ Jakmile bude kontejner ve [hostitelský počítač](#the-host-computer), použij
 
 Použití [dockeru spustit](https://docs.docker.com/engine/reference/commandline/run/) příkaz ke spuštění tři kontejnery. Příkaz používá následující parametry:
 
-| Zástupný symbol | Value |
+| Zástupný symbol | Hodnota |
 |-------------|-------|
 |{BILLING_KEY} | Tento klíč se používá ke spuštění kontejneru a je k dispozici na stránce klíče Text Analytics Azure portal.  |
 |{BILLING_ENDPOINT_URI} | Fakturační koncový bod hodnotu identifikátoru URI je k dispozici na stránce s přehledem Text Analytics Azure portal.|
@@ -159,14 +150,7 @@ Pokud spouštíte kontejner s výstupem [připojit](../text-analytics-resource-c
 
 ## <a name="containers-api-documentation"></a>Dokumentace k rozhraní API kontejneru
 
-Kontejner, poskytuje kompletní dokumentaci pro koncové body a také `Try it now` funkce. Tato funkce umožňuje zadat nastavení do webového formuláře HTML a proveďte dotaz bez nutnosti psát jakýkoli kód. Jakmile je k dispozici dotaz vrací hodnotu, například příkaz CURL k předvedení hlavičky protokolu HTTP a textu formátu potřebném. 
-
-> [!TIP]
-> Čtení [specifikace OpenAPI](https://swagger.io/docs/specification/about/), popisující operace rozhraní API podporuje kontejnerem, od `/swagger` relativní identifikátor URI. Příklad:
->
->  ```http
->  http://localhost:5000/swagger
->  ```
+[!INCLUDE [Container's API documentation](../../../../includes/cognitive-services-containers-api-documentation.md)]
 
 ## <a name="billing"></a>Fakturace
 
@@ -180,7 +164,7 @@ Cognitive Services kontejnery nejsou licencované k používání bez připojen�
 |--------|-------------|
 | `ApiKey` | Klíč rozhraní API _rozhraní Text Analytics_ prostředek, který používá ke sledování fakturační údaje. |
 | `Billing` | Koncový bod _rozhraní Text Analytics_ prostředek, který používá ke sledování fakturační údaje.|
-| `Eula` | Označuje, že jste přijali licenční pro kontejner.<br/>Hodnota této možnosti musí být nastavená na `accept`. |
+| `Eula` | Označuje, že jste přijali licenci pro kontejner.<br/>Hodnota této možnosti musí být nastavená na `accept`. |
 
 > [!IMPORTANT]
 > Všechny tři možnosti je nutné zadat platnou hodnotou nebo kontejneru se nespustí.

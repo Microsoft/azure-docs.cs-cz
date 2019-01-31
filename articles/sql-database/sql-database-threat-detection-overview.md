@@ -12,12 +12,12 @@ ms.author: ronmat
 ms.reviewer: vanto, carlrab
 manager: craigg
 ms.date: 01/29/2019
-ms.openlocfilehash: 2f52cbaf5d50eca13a87ff8e745b0f8baefbe23e
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: 4c9700344ca5b973b8dad9fd1505d15f58c06126
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55210365"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55451712"
 ---
 # <a name="azure-sql-database-threat-detection"></a>Detekce hrozeb Azure SQL Database
 
@@ -27,7 +27,6 @@ Detekce hrozeb je součástí [pokročilé zabezpečení dat SQL](sql-advanced-t
 
 > [!NOTE]
 > Toto téma se týká k Azure SQL serveru a databází SQL Database a SQL Data Warehouse, které jsou vytvořené na serveru Azure SQL. Pro zjednodušení se SQL Database používá k označení SQL Database i SQL Data Warehouse.
-
 
 ## <a name="what-is-threat-detection"></a>Co je detekce hrozeb
 
@@ -78,7 +77,7 @@ Klikněte na tlačítko **výstrahu o detekci hrozeb** spustit Azure Security Ce
 
 ## <a name="next-steps"></a>Další postup
 
-- Další informace o [detekce hrozeb v izolované databáze](sql-database-threat-detection.md).
+- Další informace o [detekce hrozeb v samostatných nasazeních a databáze ve fondu](sql-database-threat-detection.md).
 - Další informace o [detekce hrozeb ve spravované instanci](sql-database-managed-instance-threat-detection.md).
 - Další informace o [SQL rozšířené zabezpečení dat](sql-advanced-threat-protection.md).
 - Další informace o [auditování služby Azure SQL Database](sql-database-auditing.md)

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/25/2018
 ms.author: magoedte
-ms.openlocfilehash: 9502c0b5c3ea4b25b7a49448b75fdd43ff28762a
-ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
+ms.openlocfilehash: 5fd5d551290c113e9001328562fd99282548ce3c
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54186984"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55464292"
 ---
 # <a name="how-to-chart-performance-with-azure-monitor-for-vms-preview"></a>Jak graf výkonu pomocí Azure monitoru pro virtuální počítače (preview)
 Azure Monitor pro virtuální počítače obsahuje sadu grafy výkonu, které se zaměřují provádění několika klíčových ukazatelů výkonu (KPI), které vám pomohou určit, jak dobře virtuálního počítače. Grafy zobrazit využití prostředků za časové období, abyste mohli identifikovat kritické body, anomálie, nebo přepněte do pohledu výpis každý počítač, chcete-li zobrazit využití prostředků na základě metriky vybrané. I když existují mnoho prvků vzít v úvahu při práci s výkonem, monitorování Azure pro virtuální počítače se zaměřuje na operačním systému tak, jak se prostřednictvím procesor, paměť, síťové adaptéry a disky. Výkon doplňuje funkci monitorování stavu a pomáhá vystavit problémy, které označují selhání součásti systému je to možné, podpora ladění a optimalizace pro dosažení efektivity nebo podporují plánování kapacity.  
@@ -102,8 +102,8 @@ Jsou k dispozici následující grafy využití kapacity:
 
 ![Virtuální počítač insights přímo výkonu z virtuálního počítače zobrazení](./media/vminsights-performance/vminsights-performance-directvm-01.png)
 
-## <a name="alerting-and-alert-management"></a>Správa výstrah a upozornění 
-Metriky výkonu, které jsou povolené v rámci služby Azure Monitor pro virtuální počítače neobsahují předem nakonfigurovaná pravidla upozornění. I když existují [výstrahy týkající se stavu](vminsights-health.md#alerting-and-alert-management) odpovídající problémy s výkonem na virtuálním počítači Azure, jako je například vysoké využití procesoru, nedostatek paměti k dispozici, diskové vstupně-výstupních operací, málo místa na disku atd., zjistí tato upozornění na stav se použijí jenom u všech virtuálních počítačů připojení ke stejné pracovní prostor Log Analytics pro monitorování Azure pro virtuální počítače povolena. 
+## <a name="alerts"></a>Výstrahy 
+Metriky výkonu, které jsou povolené v rámci služby Azure Monitor pro virtuální počítače neobsahují předem nakonfigurovaná pravidla upozornění. I když existují [výstrahy týkající se stavu](vminsights-health.md#alerts) odpovídající problémy s výkonem na virtuálním počítači Azure, jako je například vysoké využití procesoru, nedostatek paměti k dispozici, diskové vstupně-výstupních operací, málo místa na disku atd., zjistí tato upozornění na stav se použijí jenom u všech virtuálních počítačů připojení ke stejné pracovní prostor Log Analytics pro monitorování Azure pro virtuální počítače povolena. 
 
 Může však pouze shromažďujeme a ukládáme podmnožinu metriky výkonu, které budete potřebovat v pracovním prostoru Log Analytics. Pokud vaše strategie monitorování vyžaduje analýzy nebo výstrahy, které zahrnují další metriky výkonu aby bylo možné vyhodnotit efektivně kapacitu nebo stav virtuálního počítače, nebo pokud potřebujete možnost zadat vlastní výstrahy kritéria nebo logiky, můžete si konfigurace [shromažďování těchto čítačů výkonu](../../azure-monitor/platform/data-sources-performance-counters.md?toc=/azure/azure-monitor/toc.json) v Log Analytics a definovat [upozornění protokolů](../../azure-monitor/platform/alerts-log.md?toc=/azure/azure-monitor/toc.json). Log Analytics umožňuje provádět komplexní analýzy s jinými datovými typy a poskytovat delší dobu uchování pro podporu analýzy trendů metrik na druhé straně, jsou jednoduché a schopný zajistit podporu téměř v reálném čase scénáře. Jsou shromážděné [agenta diagnostiky Azure](../../virtual-machines/windows/monitor.md) a uložené v úložišti Azure Monitor metriky, umožňují vytvářet výstrahy s nižší latencí a s nižšími náklady.
 

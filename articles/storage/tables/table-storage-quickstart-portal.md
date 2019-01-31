@@ -7,13 +7,13 @@ ms.service: storage
 ms.topic: quickstart
 ms.date: 04/23/2018
 ms.author: sngun
-ms.component: tables
-ms.openlocfilehash: 77aba022b3e4e8a41fa83e24b5694542fd2ae259
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
-ms.translationtype: HT
+ms.subservice: tables
+ms.openlocfilehash: 052a462da5349b0886d6d99cd59d1a4ce816220f
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39526525"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55462711"
 ---
 # <a name="quickstart-create-an-azure-storage-table-in-the-azure-portal"></a>Rychlý start: Vytvoření tabulky Azure Storage na webu Azure Portal 
 
@@ -41,6 +41,6 @@ K vytvoření tabulky na webu Azure Portal můžete použít službu Table Servi
 
    ![portál Azure](media/table-storage-quickstart-portal/table-storage-quickstart-03.png)
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 - [Pokyny pro návrh tabulek](table-storage-design-guidelines.md)

@@ -5,15 +5,15 @@ author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 01/09/2019
+ms.date: 01/29/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: e1a001a60151136be6bde9de38f971807cf0c288
-ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
+ms.openlocfilehash: 92c2d59ffe8c144bea6e7f8676880c866e234885
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54188398"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55299040"
 ---
 # <a name="data-sources-supported-in-azure-analysis-services"></a>Zdroje dat podporované ve službě Azure Analysis Services
 
@@ -23,17 +23,20 @@ Zdroje dat a konektory zobrazují v získat Data nebo Průvodce importem v sadě
 
 |Zdroj dat  |V paměti  |DirectQuery  |
 |---------|---------|---------|
-|Azure SQL Database     |   Ano      |    Ano      |
+|Azure SQL Database<sup>[2](#azsqlmanaged)</sup>     |   Ano      |    Ano      |
 |Azure SQL Data Warehouse     |   Ano      |   Ano       |
-|Úložiště objektů Blob v Azure *     |   Ano       |    Ne      |
-|Azure Table Storage *    |   Ano       |    Ne      |
-|Azure Cosmos DB *     |  Ano        |  Ne        |
-|Azure Data Lake Store *     |   Ano       |    Ne      |
-|Azure HDInsight HDFS *     |     Ano     |   Ne       |
-|Azure HDInsight Spark *     |   Ano       |   Ne       |
+|Azure Blob Storage<sup>[1](#tab1400a)</sup>     |   Ano       |    Ne      |
+|Azure Table Storage<sup>[1](#tab1400a)</sup>    |   Ano       |    Ne      |
+|Azure Cosmos DB<sup>[1](#tab1400a)</sup>     |  Ano        |  Ne        |
+|Azure Data Lake Store<sup>[1](#tab1400a)</sup>     |   Ano       |    Ne      |
+|Azure HDInsight HDFS<sup>[1](#tab1400a)</sup>     |     Ano     |   Ne       |
+|Azure HDInsight Spark<sup>[1](#tab1400a)</sup>, <sup> [3](#databricks)</sup>     |   Ano       |   Ne       |
 ||||
 
-\* Tabulkové modely 1400 pouze.
+<a name="tab1400a">1</a> pouze vyšší modely a model tabulkový 1400.   
+<a name="azsqlmanaged">2</a> azure SQL Database Managed Instance je podporována. Proto spravované instance běží v rámci virtuální sítě Azure s použitím privátní IP adresy, není nutná On-premises Data Gateway.   
+<a name="databricks">3</a> azure Databricks pomocí konektoru Spark v tuto chvíli nepodporuje.
+
 
 **Zprostředkovatel**   
 V paměti a modelech DirectQuery připojení ke zdrojům dat Azure pomocí zprostředkovatele dat .NET Framework pro SQL Server.
@@ -57,31 +60,31 @@ Připojení k místní zdroje dat z a serveru Azure AS vyžadují místní brán
 |Zdroj dat  |  
 |---------|---------|
 |Databáze aplikace Access     |  
-|Active Directory *     |  
+|Služby Active Directory<sup>[1](#tab1400b)</sup>     |  
 |Analysis Services     |  
 |Systém Analytics Platform System     |  
-|Dynamics CRM*     |  
+|Dynamics CRM<sup>[1](#tab1400b)</sup>     |  
 |Excelový sešit     |  
-|Exchange*     |  
-|Složka *     |
-|IBM Informix * (beta verze) |
-|Dokument JSON *     |  
-|Řádky z binárního souboru *     | 
+|Exchange<sup>[1](#tab1400b)</sup>     |  
+|Složka<sup>[1](#tab1400b)</sup>     |
+|Databáze IBM Informix<sup>[1](#tab1400b) </sup> (beta verze) |
+|Dokument JSON<sup>[1](#tab1400b)</sup>     |  
+|Řádky z binárního souboru<sup>[1](#tab1400b)</sup>     | 
 |Databáze MySQL     | 
-|Informační kanál OData *     |  
+|Datový kanál OData<sup>[1](#tab1400b)</sup>     |  
 |Dotaz rozhraní ODBC     | 
 |OLE DB     |   
-|Databáze Postgre SQL *    | 
-|Objekty Salesforce * |  
-|Sestavy Salesforce * |
-|SAP HANA *    |  
-|SAP Business Warehouse *    |  
-|SharePoint*     |   
+|Databáze Postgre SQL<sup>[1](#tab1400b)</sup>    | 
+|Objekty Salesforce<sup>[1](#tab1400b)</sup> |  
+|Sestavy služby Salesforce<sup>[1](#tab1400b)</sup> |
+|SAP HANA<sup>[1](#tab1400b)</sup>    |  
+|SAP Business Warehouse<sup>[1](#tab1400b)</sup>    |  
+|SharePoint<sup>[1](#tab1400b)</sup>     |   
 |Databáze Sybase     |  
-|Tabulky XML *    |  
+|Tabulky XML<sup>[1](#tab1400b)</sup>    |  
 |||
  
-\* Tabulkové modely 1400 pouze.
+<a name="tab1400b">1</a> pouze vyšší modely a model tabulkový 1400.
 
 ## <a name="specifying-a-different-provider"></a>Zadání jiného poskytovatele
 

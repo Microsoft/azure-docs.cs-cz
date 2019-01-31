@@ -6,16 +6,16 @@ author: ronortloff
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
-ms.component: manage
+ms.subservice: manage
 ms.date: 10/04/2018
 ms.author: rortloff
 ms.reviewer: igorstan
-ms.openlocfilehash: fdc45f6f1fbbb4580b71a46740fa51278b869ec0
-ms.sourcegitcommit: 2bb46e5b3bcadc0a21f39072b981a3d357559191
+ms.openlocfilehash: 802408f6ccd0a1cc0ed4f4d87d54a11760cd70fe
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/05/2018
-ms.locfileid: "52889306"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55473438"
 ---
 # <a name="memory-and-concurrency-limits-for-azure-sql-data-warehouse"></a>Omezení paměti a souběžnosti pro službu Azure SQL Data Warehouse
 Zobrazení omezení paměti a souběžnosti přidělené pro různé úrovně výkonu a třídy prostředků ve službě Azure SQL Data Warehouse. Další informace a použít tyto možnosti pro váš plán úloh správy najdete v tématu [třídy prostředků pro správu úloh](resource-classes-for-workload-management.md). 
@@ -57,11 +57,11 @@ Maximální DWU Gen2 je DW30000c, který má 60 výpočetních uzlů a k jednomu
 | Úroveň výkonu | Výpočetní uzly | Distribuce podle počtu výpočetních uzlů | Paměť na datový sklad (GB) |
 |:-----------------:|:-------------:|:------------------------------:|:------------------------------:|
 | DW100             | 1             | 60                             |  24                            |
-| ÚROVEŇ DW200             | 2             | 30                             |  48                            |
+| DW200             | 2             | 30                             |  48                            |
 | DW300             | 3             | 20                             |  72                            |
 | DW400             | 4             | 15                             |  96                            |
 | DW500             | 5             | 12                             | 120                            |
-| ÚROVEŇ DW600             | 6             | 10                             | 144                            |
+| DW600             | 6             | 10                             | 144                            |
 | DW1000            | 10            | 6                              | 240                            |
 | DW1200            | 12            | 5                              | 288                            |
 | DW1500            | 15            | 4                              | 360                            |
@@ -136,11 +136,11 @@ Následující tabulka uvádí maximální počet souběžných dotazů a slotů
 | Úroveň služby | Maximální počet souběžných dotazů | Sloty souběžnosti maximální |staticrc10 | staticrc20 | staticrc30 | staticrc40 | staticrc50 | staticrc60 | staticrc70 | staticrc80 |
 |:-------------:|:--------------------------:|:-------------------------:|:---------:|:----------:|:----------:|:----------:|:----------:|:----------:|:----------:|:----------:|
 | DW100         | 4                          |   4                       | 1         | 2          | 4          | 4          |  4         |  4         |  4         |   4        |
-| ÚROVEŇ DW200         | 8                          |   8                       | 1         | 2          | 4          | 8          |  8         |  8         |  8         |   8        |
+| DW200         | 8                          |   8                       | 1         | 2          | 4          | 8          |  8         |  8         |  8         |   8        |
 | DW300         | 12                         |  12                       | 1         | 2          | 4          | 8          |  8         |  8         |  8         |   8        |
 | DW400         | 16                         |  16                       | 1         | 2          | 4          | 8          | 16         | 16         | 16         |  16        |
 | DW500         | 20                         |  20                       | 1         | 2          | 4          | 8          | 16         | 16         | 16         |  16        |
-| ÚROVEŇ DW600         | 24                         |  24                       | 1         | 2          | 4          | 8          | 16         | 16         | 16         |  16        |
+| DW600         | 24                         |  24                       | 1         | 2          | 4          | 8          | 16         | 16         | 16         |  16        |
 | DW1000        | 32                         |  40                       | 1         | 2          | 4          | 8          | 16         | 32         | 32         |  32        |
 | DW1200        | 32                         |  48                       | 1         | 2          | 4          | 8          | 16         | 32         | 32         |  32        |
 | DW1500        | 32                         |  60                       | 1         | 2          | 4          | 8          | 16         | 32         | 32         |  32        |
@@ -159,11 +159,11 @@ Následující tabulka uvádí maximální počet souběžných dotazů a slotů
 | Úroveň služby | Maximální počet souběžných dotazů | Dostupné sloty souběžnosti | smallrc | mediumrc | largerc | xlargerc |
 |:-------------:|:--------------------------:|:---------------------------:|:-------:|:--------:|:-------:|:--------:|
 | DW100         |  4                         |   4                         | 1       |  1       |  2      |   4      |
-| ÚROVEŇ DW200         |  8                         |   8                         | 1       |  2       |  4      |   8      |
+| DW200         |  8                         |   8                         | 1       |  2       |  4      |   8      |
 | DW300         | 12                         |  12                         | 1       |  2       |  4      |   8      |
 | DW400         | 16                         |  16                         | 1       |  4       |  8      |  16      |
 | DW500         | 20                         |  20                         | 1       |  4       |  8      |  16      |
-| ÚROVEŇ DW600         | 24                         |  24                         | 1       |  4       |  8      |  16      |
+| DW600         | 24                         |  24                         | 1       |  4       |  8      |  16      |
 | DW1000        | 32                         |  40                         | 1       |  8       | 16      |  32      |
 | DW1200        | 32                         |  48                         | 1       |  8       | 16      |  32      |
 | DW1500        | 32                         |  60                         | 1       |  8       | 16      |  32      |

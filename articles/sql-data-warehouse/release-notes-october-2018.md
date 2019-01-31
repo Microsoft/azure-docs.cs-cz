@@ -6,16 +6,16 @@ author: twounder
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
-ms.component: manage
+ms.subservice: manage
 ms.date: 12/04/2018
 ms.author: mausher
 ms.reviewer: twounder
-ms.openlocfilehash: 9160a5f4e3a452682787ff500199e43e7fad0c77
-ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
+ms.openlocfilehash: 81096eeb1edcd6681bdc887d267ee477d78a8578
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54213685"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55472078"
 ---
 # <a name="whats-new-in-azure-sql-data-warehouse-october-2018"></a>Co je nového ve službě Azure SQL Data Warehouse? Říjen 2018
 Azure SQL Data Warehouse neustále obdrží vylepšení. Tento článek popisuje nové funkce a změny, které byly zavedeny v října 2018.
@@ -57,7 +57,7 @@ Azure SQL Data Warehouse (SQL data Warehouse) teď má nativní integraci s Azur
 
 ## <a name="bug-fixes"></a>Opravy chyb
 
-| Titul | Popis |
+| Název | Popis |
 |:---|:---|
 | **CETAS Parquet chybám malých prostředků třídy datových skladů DW2000 a provádění dalších akcí** | Tato oprava správně identifikuje nulový odkaz na vytvoření externí tabulky lze případně na cestu kódu Parquet. |
 |**Hodnota sloupce identity můžou přijít o některé operace CTAS** | Hodnota sloupce identifikovat nemusí být zachována při CTASed do jiné tabulky. V blogu: [ https://blog.westmonroepartners.com/azure-sql-dw-identity-column-bugs/ ](https://blog.westmonroepartners.com/azure-sql-dw-identity-column-bugs/). |

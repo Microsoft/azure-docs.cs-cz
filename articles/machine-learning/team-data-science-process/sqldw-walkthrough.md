@@ -6,17 +6,17 @@ author: marktab
 manager: cgronlun
 editor: cgronlun
 ms.service: machine-learning
-ms.component: team-data-science-process
+ms.subservice: team-data-science-process
 ms.topic: article
 ms.date: 11/24/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 00ad0bcb6c3c2542e5f23e915879c9cd951d552b
-ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
+ms.openlocfilehash: 21eec258b14bb0524170c9307d06fee7b7abc644
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/26/2019
-ms.locfileid: "55081122"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55466638"
 ---
 # <a name="the-team-data-science-process-in-action-using-sql-data-warehouse"></a>Vědecké zpracování týmových dat v akci: použití služby SQL Data Warehouse
 V tomto kurzu jsme vás provede procesem vytvoření a nasazení modelu strojového učení pomocí SQL Data Warehouse (SQL data Warehouse) veřejně dostupné datové sady – [cesty taxíkem NYC](http://www.andresmh.com/nyctaxitrips/) datové sady. Binární klasifikační model vytvořený předpovídá, zda tip platí pro cesty a které předpovědět distribuce pro tip částky zaplacené jsou popsány také pro víc tříd klasifikačních a regresních modelů.

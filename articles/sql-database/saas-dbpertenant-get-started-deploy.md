@@ -11,13 +11,13 @@ author: MightyPen
 ms.author: genemi
 ms.reviewer: sstein
 manager: craigg
-ms.date: 10/29/2018
-ms.openlocfilehash: 6a5ee991ca21e60e6c2b14d5e3be560183eae4fa
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+ms.date: 01/25/2019
+ms.openlocfilehash: 957652a63768d25e6b180feb826551ec340b9bf0
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50232898"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55453667"
 ---
 # <a name="deploy-and-explore-a-multitenant-saas-app-that-uses-the-database-per-tenant-pattern-with-sql-database"></a>Nasazení a zkoumání víceklientské aplikace SaaS, která používá vzor databáze na tenanta s využitím SQL Database
 
@@ -63,9 +63,9 @@ Teď zvolte názvy a zapište si.
     > [!IMPORTANT]
     > Některé ověřování a server brány firewall jsou pro demonstrační účely záměrně nezabezpečené. Doporučujeme vytvořit novou skupinu prostředků. Nepoužívejte stávající skupiny prostředků, servery ani fondy. Nepoužívejte tuto aplikaci, skripty nebo všechny nasazené prostředky pro produkční prostředí. Odstraňte tuto skupinu prostředků, až budete hotovi s aplikací k zastavení souvisejícího účtování.
 
-    - **Skupina prostředků**: vyberte **vytvořit nový**a zadejte jedinečný název, který jste zvolili dříve pro skupinu prostředků.
-    - **Umístění**: z rozevíracího seznamu vyberte umístění.
-    - **Uživatel**: použijte hodnotu uživatelského jména dříve.
+    - **Skupina prostředků**: Vyberte **vytvořit nový**a zadejte jedinečný název, který jste zvolili dříve pro skupinu prostředků.
+    - **Umístění**: Z rozevíracího seznamu vyberte umístění.
+    - **Uživatel**: Použijte hodnoty názvu uživatele, kterou jste zvolili dříve.
 
 1. Nasazení aplikace.
 
@@ -123,13 +123,13 @@ Centrální **Centrum akcí** stránka obsahuje seznam odkazů pro tenanty ve va
 
 Aplikace Wingtip používá [*Azure Traffic Manager* ](../traffic-manager/traffic-manager-overview.md) k řízení distribuce příchozích požadavků. Adresa URL pro přístup ke stránce události pro konkrétního tenanta používá následující formát:
 
-- http://events.wingtip-dpt.&lt; Uživatel&gt;.trafficmanager.net/fabrikamjazzclub
+- http://events.wingtip-dpt.&lt;user&gt;.trafficmanager.net/fabrikamjazzclub
 
     Části předchozí formátu jsou vysvětlené v následující tabulce.
 
     | Část adresy URL        | Popis       |
     | :-------------- | :---------------- |
-    | http://events.wingtip-dpt | Události části aplikace Wingtip.<br /><br /> *-dpt* odlišuje *databáze na tenanta* provádění Wingtip Tickets oproti jiným implementacím. Mezi příklady patří *samostatné* aplikace na tenanta (*-sa*) nebo *víceklientské databáze* (*- mt*) implementace. |
+    | http://events.wingtip-dpt | Události části aplikace Wingtip.<br /><br /> *-dpt* odlišuje *databáze na tenanta* provádění Wingtip Tickets oproti jiným implementacím. Mezi příklady patří *jeden* aplikace na tenanta (*-sa*) nebo *víceklientské databáze* (*- mt*) implementace. |
     | .  *&lt;uživatele&gt;* | *af1* v příkladu. |
     | .trafficmanager.net/ | Traffic Manager, základní adresu URL. |
     | fabrikamjazzclub | Identifikuje klienta s názvem společnosti Fabrikam Jazz Club. |
@@ -248,9 +248,9 @@ Přejděte na server **tenants1-dpt -&lt;uživatele&gt;** a vyberte **Pool1** 
 - První graf s popiskem **využití prostředků**, zobrazuje fond využití eDTU.
 - Druhý graf ukazuje využití eDTU pět Nejaktivnější databází ve fondu.
 
-Dva grafy znázorňují, elastické fondy a databáze SQL se skvěle hodí pro nepředvídatelnými úlohami aplikace SaaS. Grafy ukazují, že jsou čtyři databáze, každý s nárazovým zatížením až 40 Edtu a všechny databáze jsou pohodlně podporován 50 eDTU fondu. 50 eDTU fondu může podporovat těžší úlohy. Pokud databáze jsou zřízené jako izolované databáze, každý z nich musí mít úroveň S2 (50 DTU) pro podporu nárazové. Náklady na čtyřech samostatných databází S2 jsou téměř třikrát cena fondu. V reálných situacích zákazníci SQL Database provozovat až 500 databází ve fondech s 200 eDTU. Další informace najdete v tématu [kurz o monitorování výkonu](saas-dbpertenant-performance-monitoring.md).
+Dva grafy znázorňují, elastické fondy a databáze SQL se skvěle hodí pro nepředvídatelnými úlohami aplikace SaaS. Grafy ukazují, že jsou čtyři databáze, každý s nárazovým zatížením až 40 Edtu a všechny databáze jsou pohodlně podporován 50 eDTU fondu. 50 eDTU fondu může podporovat těžší úlohy. Pokud databáze jsou zřízené jako izolované databáze, každý z nich musí mít úroveň S2 (50 DTU) pro podporu nárazové. Náklady na čtyři izolované databáze S2 jsou téměř třikrát cena fondu. V reálných situacích zákazníci SQL Database provozovat až 500 databází ve fondech s 200 eDTU. Další informace najdete v tématu [kurz o monitorování výkonu](saas-dbpertenant-performance-monitoring.md).
 
-## <a name="additional-resources"></a>Další zdroje informací:
+## <a name="additional-resources"></a>Další materiály
 
 - Další informace najdete v části Další [kurzů v aplikaci SaaS aplikace Wingtip Tickets databáze na tenanta](saas-dbpertenant-wingtip-app-overview.md#sql-database-wingtip-saas-tutorials).
 - Další informace o elastických fondech najdete v tématu [co je elastický fond Azure SQL?](sql-database-elastic-pool.md).

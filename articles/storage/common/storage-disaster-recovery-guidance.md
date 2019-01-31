@@ -8,13 +8,13 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 12/12/2018
 ms.author: tamram
-ms.component: common
-ms.openlocfilehash: 39a938d45c8f15c21b44bb5b04b1429fb4733b5a
-ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
+ms.subservice: common
+ms.openlocfilehash: c9d949b32fb298c22142a35b939860bae240c803
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53323264"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55454806"
 ---
 # <a name="what-to-do-if-an-azure-storage-outage-occurs"></a>Co dělat v případě výpadku služby Azure Storage
 V Microsoftu usilovně pracujeme na Ujistěte se, že naše služby byly vždycky dostupné. V některých případech vynutí nad rámec naší dopad ovládací prvek nám takovým způsobem, který způsobit neplánované výpadky v jedné nebo několika oblastech. Při zpracování těchto výjimečných výskytů, nabízíme následující obecné pokyny pro služby Azure Storage.
@@ -34,10 +34,10 @@ Doporučeným způsobem, jak určit stav služby Azure se přihlásit k odběru 
 ## <a name="what-to-do-if-a-storage-outage-occurs"></a>Co dělat, když dojde k výpadku úložiště
 Pokud jeden nebo více služeb úložiště není dočasně k dispozici v jedné nebo několika oblastech, existují dvě možnosti, které byste měli zvážit. Pokud vyžadujete okamžitý přístup k vašim datům, zvažte prosím možnost 2.
 
-### <a name="option-1-wait-for-recovery"></a>Možnost 1: Vyčkat, než obnovení
+### <a name="option-1-wait-for-recovery"></a>Option 1: Vyčkat, než obnovení
 V takovém případě nemusíte vaší nic dělat. Pilně pracujeme na dostupnosti služby Azure. Můžete monitorovat stav služby na [řídicí panel stavu služby Azure](https://azure.microsoft.com/status/).
 
-### <a name="option-2-copy-data-from-secondary"></a>Možnost 2: Kopírování dat ze sekundární
+### <a name="option-2-copy-data-from-secondary"></a>Option 2: Kopírování dat ze sekundární
 Pokud jste zvolili [geograficky redundantní úložiště jen pro čtení (RA-GRS)](storage-redundancy-grs.md#read-access-geo-redundant-storage) (doporučeno) pro vaše účty úložiště, máte přístup pro čtení k datům ze sekundární oblasti. Můžete pomocí nástrojů, jako [AzCopy](storage-use-azcopy.md), [prostředí Azure PowerShell](storage-powershell-guide-full.md)a [knihovna pro přesun dat Azure](https://azure.microsoft.com/blog/introducing-azure-storage-data-movement-library-preview-2/) ke kopírování dat ze sekundární oblasti do jiného účtu úložiště do unimpacted oblasti a pak bod vaší aplikace do tohoto úložiště účtu pro obě čtení a zápisu dostupnosti.
 
 ## <a name="what-to-expect-if-a-storage-failover-occurs"></a>Co očekávat, pokud dojde k selhání úložiště

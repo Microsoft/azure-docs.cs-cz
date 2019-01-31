@@ -12,12 +12,12 @@ ms.author: jovanpop
 ms.reviewer: ''
 manager: craigg
 ms.date: 12/18/2018
-ms.openlocfilehash: 51cf04509608435117e0368b25952a58f7fc3557
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.openlocfilehash: 9a394c0dff74ec5f926356a3d700c5bbba4c0e4f
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53609626"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55478283"
 ---
 # <a name="in-memory-sample"></a>Ukázka v paměti
 
@@ -55,7 +55,7 @@ Více zjednodušenou, ale atraktivnější výkonu ukázku pro OLTP v paměti na
 4. Vložte skript T-SQL do aplikace SSMS a pak spusťte tento skript. `MEMORY_OPTIMIZED = ON` Příkazy CREATE TABLE klauzule jsou velmi důležitá. Příklad:
 
 
-```
+```sql
 CREATE TABLE [SalesLT].[SalesOrderHeader_inmem](
     [SalesOrderID] int IDENTITY NOT NULL PRIMARY KEY NONCLUSTERED ...,
     ...
@@ -69,7 +69,7 @@ CREATE TABLE [SalesLT].[SalesOrderHeader_inmem](
 Pokud se zobrazí chyba 40536 při spuštění skriptu T-SQL, spusťte následující skript T-SQL k ověření, jestli podporuje databázi v paměti:
 
 
-```
+```sql
 SELECT DatabasePropertyEx(DB_Name(), 'IsXTPSupported');
 ```
 
@@ -94,7 +94,7 @@ Paměťově optimalizované tabulky prostřednictvím si můžete prohlédnout *
 Nebo můžete dát dotaz na zobrazení katalogu, jako například:
 
 
-```
+```sql
 SELECT is_memory_optimized, name, type_desc, durability_desc
     FROM sys.tables
     WHERE is_memory_optimized = 1;
@@ -104,7 +104,7 @@ SELECT is_memory_optimized, name, type_desc, durability_desc
 **Nativně kompilované uložené procedury**: SalesLT.usp_InsertSalesOrder_inmem si můžete prohlédnout pomocí zobrazení katalogu dotazu:
 
 
-```
+```sql
 SELECT uses_native_compilation, OBJECT_NAME(object_id), definition
     FROM sys.sql_modules
     WHERE uses_native_compilation = 1;
@@ -145,7 +145,7 @@ Následující skript vloží ukázková prodejní objednávka s pěti řádcíc
 - SalesLT.SalesOrderDetail_inmem
 
 
-```
+```sql
 DECLARE
     @i int = 0,
     @od SalesLT.SalesOrderDetailType_inmem,
@@ -244,7 +244,7 @@ Až budete mít výsledkem *_inmem* spouštění, proveďte následující kroky
 
 
 1. Obnovení databáze spuštěním následujícího příkazu v aplikaci SSMS odstranit všechna data, která byla vložena předchozího spuštění:
-```
+```sql
 EXECUTE Demo.usp_DemoReset;
 ```
 
@@ -315,7 +315,7 @@ Clusterovaný index columnstore probíhá FactResellerSalesXL\_CCI tabulky.
 Následující úryvek skriptu T-SQL vypíše statistiky pro vstup/výstup a čas pro dotaz každou tabulku.
 
 
-```
+```sql
 /*********************************************************************
 Step 2 -- Overview
 -- Page Compressed BTree table v/s Columnstore table performance differences

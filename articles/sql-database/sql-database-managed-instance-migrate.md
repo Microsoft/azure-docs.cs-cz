@@ -11,13 +11,13 @@ author: bonova
 ms.author: bonova
 ms.reviewer: douglas, carlrab
 manager: craigg
-ms.date: 10/15/2018
-ms.openlocfilehash: f68cb2d1c34ca351811050546c0eae818e84300a
-ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
+ms.date: 01/25/2019
+ms.openlocfilehash: 6198c451442bde3f19b44d6c4d6216d8ea8b226d
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/20/2018
-ms.locfileid: "53651754"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55478187"
 ---
 # <a name="sql-server-instance-migration-to-azure-sql-database-managed-instance"></a>Migrace instance SQL serveru do Azure SQL Database Managed Instance
 
@@ -34,7 +34,7 @@ Na vysoké úrovni procesu migrace databáze vypadá takto:
 - [Monitorování aplikací](#monitor-applications)
 
 > [!NOTE]
-> Pokud chcete migrovat do izolované databáze nebo elastického fondu izolované databáze, najdete v článku [migrace databáze SQL serveru do služby Azure SQL Database](sql-database-cloud-migrate.md).
+> Migrace jednotlivých databází do izolované databáze nebo elastického fondu, naleznete v tématu [migrace databáze SQL serveru do služby Azure SQL Database](sql-database-cloud-migrate.md).
 
 ## <a name="assess-managed-instance-compatibility"></a>Vyhodnocení kompatibility Managed Instance
 
@@ -98,8 +98,8 @@ Následující tabulka obsahuje další informace týkající se metod, které m
 
 |Krok|Modul SQL a verze|Zálohování a obnově – metoda|
 |---|---|---|
-|Umístění zálohy do služby Azure Storage|Předchozí SQL 2012 SP1 kumulativní aktualizaci 2|Nahrajte soubor .bak přímo do služby Azure storage|
-||2012 V AKTUALIZACI SP1 KUMULATIVNÍ AKTUALIZACI 2 - 2016|Přímé zálohování pomocí zastaralé [WITH CREDENTIAL](https://docs.microsoft.com/sql/t-sql/statements/restore-statements-transact-sql) syntaxe|
+|Umístění zálohy do služby Azure Storage|Prior SQL 2012 SP1 CU2|Nahrajte soubor .bak přímo do služby Azure storage|
+||2012 SP1 CU2 - 2016|Přímé zálohování pomocí zastaralé [WITH CREDENTIAL](https://docs.microsoft.com/sql/t-sql/statements/restore-statements-transact-sql) syntaxe|
 ||2016 a vyšší|Přímé zálohování pomocí [pomocí pověření SAS](https://docs.microsoft.com/sql/relational-databases/backup-restore/sql-server-backup-to-url)|
 |Obnovení z Azure Storage do spravované Instance|[OBNOVENÍ z adresy URL pomocí pověření SAS](sql-database-managed-instance-get-started-restore.md)|
 

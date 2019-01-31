@@ -11,13 +11,13 @@ author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, carlrab
 manager: craigg
-ms.date: 01/24/2019
-ms.openlocfilehash: 2638617679e1aaadfdb18f1d8580f3aef28ab127
-ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
+ms.date: 01/25/2019
+ms.openlocfilehash: 1f2dcb43878359d20d737cef6ceb492eb79b7f4c
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54884347"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55468319"
 ---
 # <a name="monitoring-and-performance-tuning"></a>Sledování a ladění výkonu
 
@@ -34,14 +34,14 @@ Máte následující možnosti pro monitorování a řešení potíží s výkon
 - Použití [služby SQL Database Advisor](sql-database-advisor-portal.md) Chcete-li zobrazit doporučení pro vytváření a vyřazení indexů, parametrické dotazy a řešení problémů schématu.
 - Použití [Azure SQL Intelligent Insights](sql-database-intelligent-insights.md) pro automatické monitorování výkonu vaší databáze. Po zjištění problému s výkonem se vygeneruje protokol diagnostiky s podrobnostmi a kořenové příčiny analýzy RCA () problému. Pokud je to možné, poskytuje doporučení pro zlepšení výkonu.
 - [Povolení automatického ladění](sql-database-automatic-tuning-enable.md) a nechat Azure SQL database automaticky opravě zjištěných problémů s výkonem.
-- Použití [zobrazení dynamické správy (DMV)](sql-database-monitoring-with-dmvs.md), [rozšířených událostí](https://docs.microsoft.com/azure/sql-database/sql-database-xevent-db-diff-from-svr)a [Query Store](https://docs.microsoft.com/sql/relational-databases/performance/monitoring-performance-by-using-the-query-store) podrobný Poradce při potížích s problémy s výkonem.
+- Použití [zobrazení dynamické správy (DMV)](sql-database-monitoring-with-dmvs.md), [rozšířených událostí](sql-database-xevent-db-diff-from-svr.md)a [Query Store](https://docs.microsoft.com/sql/relational-databases/performance/monitoring-performance-by-using-the-query-store) podrobný Poradce při potížích s problémy s výkonem.
 
 > [!TIP]
 > Zobrazit [Průvodce výkonem](sql-database-performance-guidance.md) najít techniky, které můžete použít ke zlepšení výkonu služby Azure SQL Database po identifikaci problému výkonu pomocí jednoho nebo více z výše uvedených metod.
 
 ## <a name="monitor-databases-using-the-azure-portal"></a>Monitorování databází na portálu Azure
 
-V [webu Azure portal](https://portal.azure.com/), můžete monitorovat využití izolované databáze s výběrem databáze a kliknutím na **monitorování** grafu. Zobrazí se okno **Metrika**, které můžete upravit kliknutím na **Upravit graf**. Přidejte následující metriky:
+V [webu Azure portal](https://portal.azure.com/), můžete monitorovat využití jednotlivých databází s výběrem databáze a kliknutím na **monitorování** grafu. Zobrazí se okno **Metrika**, které můžete upravit kliknutím na **Upravit graf**. Přidejte následující metriky:
 
 - Procento CPU
 - Procento DTU
@@ -204,7 +204,7 @@ Jak je znázorněno v předchozí tabulce, jsou nejčastěji používané čeká
 
 Nakonec pokud nebyly nalezeny žádné užitečné položky, které může zlepšit výkon vaší databáze, můžete změnit množství prostředků, které jsou k dispozici ve službě Azure SQL Database. Můžete přiřadit více prostředků tak, že změníte [jednotek DTU úrovně](sql-database-service-tiers-dtu.md) izolované databáze nebo zvýšení Edtu elastického fondu v každém okamžiku. Případně pokud používáte [nákupní model založený na virtuálních jádrech](sql-database-service-tiers-vcore.md), můžete změnit úroveň služby nebo zvýšit prostředky přidělené k vaší databázi.
 
-1. Pro izolované databáze můžete [změna úrovní služeb](sql-database-service-tiers-dtu.md) nebo [výpočetní prostředky](sql-database-service-tiers-vcore.md) na vyžádání ke zlepšení výkonu databáze.
+1. Pro izolované databáze můžete [změna úrovní služeb](sql-database-single-database-scale.md) nebo [výpočetní prostředky](sql-database-single-database-scale.md) na vyžádání ke zlepšení výkonu databáze.
 2. Pro více databází, zvažte použití [elastické fondy](sql-database-elastic-pool-guidance.md) automaticky škálovat prostředky.
 
 ## <a name="tune-and-refactor-application-or-database-code"></a>Ladění a Refaktorujte aplikace nebo kódu databáze

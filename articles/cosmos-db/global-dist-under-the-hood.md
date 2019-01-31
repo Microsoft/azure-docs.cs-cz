@@ -1,5 +1,5 @@
 ---
-title: Azure Cosmos DB globální distribuce - pod pokličkou
+title: Globální distribuce pomocí rozhraní Azure Cosmos DB - pod pokličkou
 description: Tento článek obsahuje podrobné technické informace o globální distribuci služby Azure Cosmos DB
 author: dharmas-cosmos
 ms.service: cosmos-db
@@ -7,14 +7,14 @@ ms.topic: conceptual
 ms.date: 10/10/2018
 ms.author: dharmas
 ms.reviewer: sngun
-ms.openlocfilehash: e1c84bb28747cf1799b39c70b6df3dc0cb9f8d78
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: 86e4441174fa89fc688fa4e411ead0a7b3ebc8ee
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54038938"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55475376"
 ---
-# <a name="azure-cosmos-db-global-distribution---under-the-hood"></a>Azure Cosmos DB globální distribuce - pod pokličkou
+# <a name="global-data-distribution-with-azure-cosmos-db---under-the-hood"></a>Distribuce globálních dat pomocí služby Azure Cosmos DB - pod pokličkou
 
 Azure Cosmos DB je podkladovou službu Azure, takže je nasazená ve všech oblastech Azure po celém světě, včetně veřejného, suverénních, ministerstva obrany (DoD) a cloudů pro státní správu. V rámci datového centra můžeme nasadit a spravovat služby Azure Cosmos DB na velkém razítka počítačů, každý s vyhrazenou místního úložiště. V rámci datového centra Azure Cosmos DB je nasadit napříč mnoha clusterech je každý potenciálně spuštění více generacemi hardwaru. Počítače v rámci clusteru jsou typicky rozděleny mezi 10-20 domén selhání. Následující obrázek ukazuje topologie systému globální distribuce služby Cosmos DB:
 

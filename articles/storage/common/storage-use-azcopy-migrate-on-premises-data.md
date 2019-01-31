@@ -7,13 +7,13 @@ ms.service: storage
 ms.topic: tutorial
 ms.date: 12/14/2017
 ms.author: rogarana
-ms.component: common
-ms.openlocfilehash: 347092fd7d5865379911265b19477ac16e3bcd69
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.subservice: common
+ms.openlocfilehash: 25a0867d9a2060989ce7206279b4acabe39b4ff3
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51261379"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55478266"
 ---
 #  <a name="tutorial-migrate-on-premises-data-to-cloud-storage-by-using-azcopy"></a>Kurz: Migrace místních dat do cloudového úložiště pomocí AzCopy
 
@@ -148,7 +148,7 @@ Další informace o vytváření plánovaných úloh ve Windows najdete v témat
 
 Pokud chcete ověřit správné spouštění plánované úlohy nebo úlohy Cron, vytvořte v adresáři `myfolder` nové soubory. Počkejte pět minut a ověřte, že se nové soubory nahrály do účtu úložiště. Přejděte do svého adresáře protokolů a zobrazte protokoly výstupu plánované úlohy nebo úlohy Cron.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Další informace o způsobech přesunu místních dat do služby Azure Storage a naopak najdete na následujícím odkazu:
 

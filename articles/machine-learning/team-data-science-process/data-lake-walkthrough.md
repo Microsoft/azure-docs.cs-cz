@@ -6,17 +6,17 @@ author: marktab
 manager: cgronlun
 editor: cgronlun
 ms.service: machine-learning
-ms.component: team-data-science-process
+ms.subservice: team-data-science-process
 ms.topic: article
 ms.date: 11/13/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: e99ffb7f89aab0e9b00495c9ffa8a47c84ec1cc5
-ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
+ms.openlocfilehash: 2f47a145f00748a3366ea5bd1aa961f4b556a08f
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/26/2019
-ms.locfileid: "55080969"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55474662"
 ---
 # <a name="scalable-data-science-with-azure-data-lake-an-end-to-end-walkthrough"></a>Škálovatelné datových věd s využitím Azure Data Lake: Návod začátku do konce
 Tento návod ukazuje, jak pomocí Azure Data Lake a zkoumání dat a úlohy binární klasifikace na vzorek cesty taxíkem NYC jízdenky datovou sadu, která předpovědět, jestli je tip zaplaceno tarif. Provede vás provede postupem [vědecké zpracování týmových dat](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/), začátku do konce, od získání dat pro trénování modelu a nasazení webové služby, který publikuje modelu.

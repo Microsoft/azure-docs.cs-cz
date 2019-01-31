@@ -7,14 +7,14 @@ ms.topic: conceptual
 ms.date: 09/24/2018
 ms.author: rimman
 ms.reviewer: sngun
-ms.openlocfilehash: b4f36abb2136223be8d4eec67935317041a41b93
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: b37aa2eb24fe79d322839b4fb5c3c3a8b1296033
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54044276"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55454093"
 ---
-# <a name="optimize-cost-of-azure-cosmos-db-resources-with-reserved-capacity"></a>Optimalizovat náklady na prostředky Azure Cosmos DB pomocí vyhrazené kapacity
+# <a name="optimize-cost-with-reserved-capacity-in-azure-cosmos-db"></a>Optimalizace nákladů s využitím rezervované kapacity ve službě Azure Cosmos DB
 
 Azure Cosmos DB vyhrazené kapacity je využíván Šetřete peníze optimalizací pro jeden rok nebo tři roky předem platíte za prostředky Azure Cosmos DB. S Azure Cosmos DB vyhrazené kapacity můžete získat a uplatnit tak slevu na zajištěné propustnosti pro prostředky Cosmos DB. Příklady prostředků jsou databáze a kontejnerů (tabulek, kolekcí a grafy).
 

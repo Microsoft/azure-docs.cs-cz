@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/15/2019
 ms.author: jegeib
-ms.openlocfilehash: 00f3cded865fe76a4220c4ab2fa5f747320308e1
-ms.sourcegitcommit: 9f07ad84b0ff397746c63a085b757394928f6fc0
+ms.openlocfilehash: 322e3d08812a75f67995c1e29ae40f168d56869c
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54389766"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55297119"
 ---
 # <a name="threat-modeling-tool-releases"></a>Verze nástroje pro modelování hrozeb
 
@@ -28,11 +28,18 @@ Nástroj pro modelování hrozeb Microsoft aktuálně všeobecně dostupné jako
 ## <a name="system-requirements"></a>Systémové požadavky
 
 - Podporované operační systémy
-  - Microsoft Windows 10
+  - Microsoft Windows 10 Anniversary Update nebo novější
+- Požadovaná verze rozhraní .NET
+  - .NET 4.7.1 nebo novější
 - Další požadavky
   - Připojení k Internetu je potřebný k přijetí aktualizací do nástroje a šablony.
 
 ## <a name="release-notes"></a>Poznámky k verzi
 
 - [Verze sady Microsoft Threat modelování nástroj GA 7.1.50911.2](./azure-security-threat-modeling-tool-releases-71509112.md) – 12. září 2018
-- [Verze sady Microsoft Threat modelování nástroj GA 7.1.51023.1](./azure-security-threat-modeling-tool-releases-71510231.md) – 1. listopadu 2018
+- [Nástroj pro modelování hrozeb Microsoftu aktualizovat verzi 7.1.51023.1](./azure-security-threat-modeling-tool-releases-71510231.md) – 1. listopadu 2018
+- [Nástroj pro modelování hrozeb Microsoftu aktualizovat verzi 7.1.60126.1](./azure-security-threat-modeling-tool-releases-71601261.md) – 2019 29. ledna
+
+## <a name="next-steps"></a>Další postup
+
+Stáhněte si nejnovější verzi [nástroj pro modelování hrozeb Microsoftu](https://aka.ms/threatmodelingtool).

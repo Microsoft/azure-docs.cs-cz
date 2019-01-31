@@ -1,5 +1,5 @@
 ---
-Název: TitleSuffix správy životního cyklu aplikace: Azure Machine Learning Studio Popis: Použít osvědčené postupy správy životního cyklu aplikací služby Azure Machine Learning Studio: machine learningu ms.service: ms.component strojového učení: studio ms.topic: článku
+Název: TitleSuffix správy životního cyklu aplikace: Azure Machine Learning Studio Popis: Použít osvědčené postupy správy životního cyklu aplikací služby Azure Machine Learning Studio: machine learningu ms.service: ms.subservice strojového učení: studio ms.topic: článku
 
 Autor: ericlicoding ms.author: amlstudiodocs ms.custom: předchozí ms.author=haining, předchozí Autor = hning86 ms.date: 10/27/2016
 ---

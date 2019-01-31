@@ -15,13 +15,13 @@ ms.devlang: azurecli
 ms.topic: article
 ms.date: 07/18/2018
 ms.author: cynthn
-ms.component: disks
-ms.openlocfilehash: 5a0c2f91c5290e679cc2a3ac03cbf226ceb902da
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.subservice: disks
+ms.openlocfilehash: df50f1ad4fc12926016b3e22669be474f4aa995f
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54477698"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55461372"
 ---
 # <a name="how-to-detach-a-data-disk-from-a-linux-virtual-machine"></a>Jak odpojit datový disk od virtuálního počítače s Linuxem
 

@@ -8,12 +8,12 @@ ms.topic: article
 ms.author: mstewart
 ms.date: 12/17/2018
 ms.custom: seodec18
-ms.openlocfilehash: 27204710cb6a94efaebc0b8f075b0a8f50b45a6c
-ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
+ms.openlocfilehash: 608cc7a9e7c3b09c4b033397cbae6ac68e0a503a
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/26/2019
-ms.locfileid: "55079830"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55478436"
 ---
 # <a name="enable-azure-disk-encryption-for-linux-iaas-vms"></a>Aktivace Azure Disk Encryption pro virtuální počítače s Linuxem v režimu IaaS 
 
@@ -24,7 +24,7 @@ Přijmout [snímku](../virtual-machines/windows/snapshot-copy-managed-disk.md) n
 >[!WARNING]
 > - Pokud jste už dřív použili [Azure Disk Encryption pomocí Azure AD app](azure-security-disk-encryption-prerequisites-aad.md) pro šifrování tento virtuální počítač, budete muset pokračovat tuto možnost použijte k šifrování virtuálního počítače. Nemůžete použít [Azure Disk Encryption](azure-security-disk-encryption-prerequisites.md) na tento šifrovaný virtuální počítač jako tato akce není podporovaný scénář význam přepnutí mimo aplikaci AAD pro tento šifrovaný virtuální počítač se zatím nepodporuje.
  > - Azure Disk Encryption musí být umístěné ve stejné oblasti služby Key Vault a virtuální počítače. Vytvoření a použití služby Key Vault, která je ve stejné oblasti jako virtuální počítač k šifrování.
-> - Při šifrování svazků operačního systému Linux, proces může trvat několik hodin. Je běžné pro svazky operačního systému Linux trvat déle než datové svazky k šifrování. 
+> - Při šifrování svazků operačního systému Linux, virtuální počítač nebude k dispozici a SSH se deaktivuje. Chcete-li zkontrolovat průběh, [Get-AzureRmVmDiskEncryptionStatus](/powershell/module/azurerm.compute/get-azurermvmdiskencryptionstatus) nebo [vm encryption show](/cli/azure/vm/encryption#az-vm-encryption-show) příkazy lze použít. Tento proces můžete očekávat, že trvat několik hodin pro svazek operačního systému 30GB a další čas pro šifrování svazků s daty. Doba šifrování objem dat se přímo úměrná velikosti a množství datové svazky Pokud všechny možnost šifrovat formátu se používá. 
 > - Zakázáním šifrování na virtuální počítače s Linuxem je podporována pouze pro datové svazky. Není podporován na data nebo svazků operačního systému, pokud byla dříve zašifrována svazek s operačním systémem.  
 
 

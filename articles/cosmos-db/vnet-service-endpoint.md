@@ -7,16 +7,16 @@ ms.topic: conceptual
 ms.date: 11/06/2018
 ms.author: govindk
 ms.reviewer: sngun
-ms.openlocfilehash: 25a05df42029fe444b8d5ceddb2972f779f1b232
-ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
+ms.openlocfilehash: 199e1dda3e4629c0298d4aae1cb5d09e20e4b3b8
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54358724"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55452036"
 ---
-# <a name="access-azure-cosmos-db-resources-from-virtual-networks"></a>Přístup k prostředkům služby Azure Cosmos DB z virtuální sítě
+# <a name="access-azure-cosmos-db-from-virtual-networks-vnet"></a>Přístup k Azure Cosmos DB z virtuálních sítí (VNet)
 
-Můžete nakonfigurovat účet Azure Cosmos, který chcete povolit přístup pouze z konkrétní podsítě virtuální sítě (VNET). Povolením [koncový bod služby](../virtual-network/virtual-network-service-endpoints-overview.md) pro přístup ke službě Azure Cosmos DB na podsítě v rámci virtuální sítě, provoz z této podsítě ke službě Azure Cosmos DB se neposílají identity podsítě a virtuální sítě. Po povolení koncového bodu služby Azure Cosmos DB můžete omezit přístup k podsíti tak, že přidáte ke svému účtu Azure Cosmos.
+Můžete nakonfigurovat účet Azure Cosmos, který chcete povolit přístup pouze z konkrétní podsítě virtuální sítě (VNet). Povolením [koncový bod služby](../virtual-network/virtual-network-service-endpoints-overview.md) pro přístup ke službě Azure Cosmos DB na podsítě v rámci virtuální sítě, provoz z této podsítě ke službě Azure Cosmos DB se neposílají identity podsítě a virtuální sítě. Po povolení koncového bodu služby Azure Cosmos DB můžete omezit přístup k podsíti tak, že přidáte ke svému účtu Azure Cosmos.
 
 Ve výchozím nastavení je přístupný z jakéhokoli zdroje účet služby Azure Cosmos, když žádosti je přiložený platný autorizační token. Při přidání jedné nebo několika podsítí v rámci virtuální sítě, se zobrazí pouze požadavky pocházejících z těchto podsítí platnou odpověď. Žádosti pocházející z jakéhokoli jiného zdroje přijetí odpovědi 403 (zakázáno). 
 

@@ -11,13 +11,13 @@ author: douglaslMS
 ms.author: douglasl
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 10/15/2018
-ms.openlocfilehash: 804202149234a55de4f7f99b18dc40b8136463a3
-ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
+ms.date: 01/25/2019
+ms.openlocfilehash: e980ec81f66e1045a4d9df33b3392589f5c1a668
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/20/2018
-ms.locfileid: "53651041"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55463748"
 ---
 # <a name="export-an-azure-sql-database-to-a-bacpac-file"></a>Exportovat databázi Azure SQL do souboru BACPAC
 
@@ -47,7 +47,7 @@ Chcete-li exportovat databázi pomocí [webu Azure portal](https://portal.azure.
 
 ![export databáze](./media/sql-database-export/database-export.png)
 
-Pokud chcete monitorovat průběh operace exportu, otevřete stránku pro logický server, který obsahuje exportovanou databázi. Přejděte dolů k položce **operace** a potom klikněte na tlačítko **Import/Export** historie.
+Můžete sledovat průběh operace exportu otevřete stránku pro server SQL Database, který obsahuje exportovanou databázi. Přejděte dolů k položce **operace** a potom klikněte na tlačítko **Import/Export** historie.
 
 ![Export historie](./media/sql-database-export/export-history.png)
 ![export historie stavu](./media/sql-database-export/export-history2.png)
@@ -97,7 +97,7 @@ $exportStatus
 
 - Další informace o dlouhodobém uchovávání záloh zálohy Azure SQL database jako alternativu k exportovat databázi pro účely archivace, naleznete v tématu [dlouhodobého uchovávání záloh](sql-database-long-term-retention.md).
 - Příspěvek na blogu zákaznického poradního týmu SQL Serveru o migraci pomocí souborů BACPAC najdete v tématu popisujícím [migraci z SQL Serveru do služby SQL Database pomocí souborů BACPAC](https://blogs.msdn.microsoft.com/sqlcat/2016/10/20/migrating-from-sql-server-to-azure-sql-database-using-bacpac-files/).
-- Další informace o import souboru BACPAC do databáze SQL serveru najdete v tématu [importovat do databáze SQL serveru BACPCAC](https://msdn.microsoft.com/library/hh710052.aspx).
+- Další informace o import souboru BACPAC do databáze SQL serveru najdete v tématu [Import souboru BACPAC do databáze systému SQL Server](https://msdn.microsoft.com/library/hh710052.aspx).
 - Další informace o export souboru BACPAC z databáze SQL serveru najdete v tématu [exportem aplikace datové vrstvy](https://docs.microsoft.com/sql/relational-databases/data-tier-applications/export-a-data-tier-application)
 - Další informace o použití služby migrace dat k migraci databáze, najdete v článku [migrace systému SQL Server do služby Azure SQL Database pomocí DMS offline](../dms/tutorial-sql-server-to-azure-sql.md).
 - Pokud exportujete z SQL serveru jako prelude migrace do Azure SQL Database, přečtěte si téma [migrace databáze SQL serveru do služby Azure SQL Database](sql-database-cloud-migrate.md).

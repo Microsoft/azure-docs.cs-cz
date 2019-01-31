@@ -2,19 +2,19 @@
 title: Nahrání image Dockeru do privátní registr kontejnerů Azure
 description: Nahrání a stažení imagí Dockeru do soukromého registru kontejnerů v Azure pomocí rozhraní příkazového řádku Dockeru
 services: container-registry
-author: stevelas
+author: dlepow
 manager: jeconnoc
 ms.service: container-registry
 ms.topic: article
-ms.date: 11/29/2017
-ms.author: stevelas
+ms.date: 01/23/2019
+ms.author: danlep
 ms.custom: seodec18, H1Hack27Feb2017
-ms.openlocfilehash: 3cbc9f30f180913fefa79f24612e50db75f5c9cd
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: e4963ebae73bdd81246433fe43206139caa1661c
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53260578"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55295776"
 ---
 # <a name="push-your-first-image-to-a-private-docker-container-registry-using-the-docker-cli"></a>Nahrání první image do soukromého registru kontejnerů Dockeru pomocí rozhraní příkazového řádku Dockeru
 
@@ -25,7 +25,7 @@ V následujících krocích stažení oficiální [image serveru Nginx](https://
 ## <a name="prerequisites"></a>Požadavky
 
 * **Registr kontejnerů Azure** – Vytvořte registr kontejnerů ve svém předplatném Azure. Například použít [webu Azure portal](container-registry-get-started-portal.md) nebo [rozhraní příkazového řádku Azure](container-registry-get-started-azure-cli.md).
-* **Rozhraní příkazového řádku dockeru** – Chcete-li nastavit místní počítač jako hostitele Docker a přístup k příkazům rozhraní příkazového řádku Dockeru, nainstalujte [Docker](https://docs.docker.com/engine/installation/).
+* **Rozhraní příkazového řádku dockeru** – je také nutné mít Docker nainstalovaný místně. Docker nabízí balíčky pro snadnou konfiguraci Dockeru na jakékoli [macOS] [docker-mac], [Windows] [docker-windows] nebo [Linux] [docker-linux] systému.
 
 ## <a name="log-in-to-a-registry"></a>Přihlášení k registru
 
@@ -35,13 +35,13 @@ Existují [několik způsobů, jak ověřit](container-registry-authentication.m
 az acr login --name myregistry
 ```
 
-Také se můžete přihlásit pomocí [docker login](https://docs.docker.com/engine/reference/commandline/login/). Následující příklad předá ID a heslo [instančního objektu](../active-directory/develop/app-objects-and-service-principals.md) Azure Active Directory. Například můžete mít [přiřadit instanční objekt služby](container-registry-authentication.md#service-principal) do vašeho registru pro účely scénáře automatizace.
+Také se můžete přihlásit pomocí [docker login](https://docs.docker.com/engine/reference/commandline/login/). Například můžete mít [přiřadit instanční objekt služby](container-registry-authentication.md#service-principal) do vašeho registru pro účely scénáře automatizace. Když spustíte následující příkaz, interaktivně zadejte ID aplikace instančního objektu služby (uživatelské jméno) a heslo po zobrazení výzvy. Osvědčené postupy pro správu přihlašovací údaje, najdete v článku [docker login](https://docs.docker.com/engine/reference/commandline/login/) referenčních příkazu:
 
-```Bash
-docker login myregistry.azurecr.io -u xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx -p myPassword
+```Docker
+docker login myregistry.azurecr.io
 ```
 
-Vrátí oba příkazy `Login Succeeded` po dokončení. Pokud používáte `docker login`, můžete si také prohlédnout upozornění zabezpečení doporučující použití `--password-stdin` parametru. I když je jeho použití nad rámec tohoto článku, doporučujeme řídit se osvědčeným postupem. Další informace najdete v tématu [docker login](https://docs.docker.com/engine/reference/commandline/login/) referenčních příkazu.
+Vrátí oba příkazy `Login Succeeded` po dokončení.
 
 > [!TIP]
 > Vždy plně kvalifikovaný název registru (malými písmeny) zadejte při použití `docker login` a kdy označit Image pro doručením (push) do svého registru. V příkladech v tomto článku, je plně kvalifikovaný název *myregistry.azurecr.io*.
@@ -50,7 +50,7 @@ Vrátí oba příkazy `Login Succeeded` po dokončení. Pokud používáte `dock
 
 Nejprve si stáhněte veřejnou image serveru Nginx do místního počítače.
 
-```Bash
+```Docker
 docker pull nginx
 ```
 
@@ -58,7 +58,7 @@ docker pull nginx
 
 Spusťte následující [dockeru spustit](https://docs.docker.com/engine/reference/run/) příkaz spustit místní instanci kontejneru Nginx interaktivně (`-it`) na portu 8080. `--rm` Argument určuje, že má být odebrána kontejneru při jeho zastavení.
 
-```Bash
+```Docker
 docker run -it --rm -p 8080:80 nginx
 ```
 
@@ -74,7 +74,7 @@ Chcete-li zastavit a odebrat kontejneru, stiskněte `Control` + `C`.
 
 Použití [docker tag](https://docs.docker.com/engine/reference/commandline/tag/) vytvoření aliasu Image s plně kvalifikovanou cestou k vašemu registru. V tomto příkladu se určí obor názvů `samples`, aby se zabránilo nepořádku v kořenovém adresáři registru.
 
-```Bash
+```Docker
 docker tag nginx myregistry.azurecr.io/samples/nginx
 ```
 
@@ -84,7 +84,7 @@ Další informace o značkách s obory názvů najdete v tématu [obory názvů 
 
 Teď, když jste označili image s plně kvalifikovanou cestu do privátního registru, můžete ho odeslat do registru příkazem [docker push](https://docs.docker.com/engine/reference/commandline/push/):
 
-```Bash
+```Docker
 docker push myregistry.azurecr.io/samples/nginx
 ```
 
@@ -92,7 +92,7 @@ docker push myregistry.azurecr.io/samples/nginx
 
 Použití [operace docker pull](https://docs.docker.com/engine/reference/commandline/pull/) příkaz a vyžádejte si image z registru:
 
-```Bash
+```Docker
 docker pull myregistry.azurecr.io/samples/nginx
 ```
 
@@ -100,7 +100,7 @@ docker pull myregistry.azurecr.io/samples/nginx
 
 Použití [dockeru spustit](https://docs.docker.com/engine/reference/run/) příkaz ke spuštění image jste stáhli ze svého registru:
 
-```Bash
+```Docker
 docker run -it --rm -p 8080:80 myregistry.azurecr.io/samples/nginx
 ```
 
@@ -112,7 +112,7 @@ Chcete-li zastavit a odebrat kontejneru, stiskněte `Control` + `C`.
 
 Pokud image serveru Nginx už nepotřebujete, můžete ho místně pomocí odstranit [docker rmi](https://docs.docker.com/engine/reference/commandline/rmi/) příkazu.
 
-```Bash
+```Docker
 docker rmi myregistry.azurecr.io/samples/nginx
 ```
 
@@ -124,7 +124,7 @@ az acr repository delete --name myregistry --repository samples/nginx --tag late
 
 ## <a name="next-steps"></a>Další postup
 
-Teď, když znáte základy, jste připraveni začít používat svůj registr! Nasazení Image kontejneru z registru pro:
+Teď, když znáte základy, jste připraveni začít používat svůj registr! Například nasaďte Image kontejneru z registru pro:
 
 * [Azure Kubernetes Service (AKS)](../aks/tutorial-kubernetes-prepare-app.md)
 * [Azure Container Instances](../container-instances/container-instances-tutorial-prepare-app.md)

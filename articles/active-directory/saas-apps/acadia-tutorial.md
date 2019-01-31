@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 1/17/2019
 ms.author: jeedes
-ms.openlocfilehash: a43db3eba5bec9bef0aacc51d246414d54d222bf
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: dc36e66e9dae62fdfede3a82146cd218ca5eb489
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54813436"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55458172"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-acadia"></a>Kurz: Integrace Azure Active Directory s Acadia
 
@@ -71,10 +71,10 @@ Konfigurace integrace Acadia do služby Azure AD, budete muset přidat Acadia z 
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurace a otestování služby Azure AD jednotného přihlašování
 
-V této části, konfiguraci a testování Azure AD jednotné přihlašování s [název aplikace] podle testovacího uživatele volá **Britta Simon**.
-Pro jednotné přihlašování pro práci je potřeba navázat vztah odkazu mezi uživatele služby Azure AD a související uživatelské v [název aplikace].
+V této části je konfigurace a testování Azure AD jednotné přihlašování pomocí Acadia podle testovacího uživatele volá **Britta Simon**.
+Pro jednotné přihlašování pro práci je potřeba navázat vztah odkazu mezi uživatele služby Azure AD a související uživatelské v Acadia.
 
-Nakonfigurovat a otestovat Azure AD jednotné přihlašování s [název aplikace], které potřebujete k dokončení následujících stavebních bloků:
+Nakonfigurovat a otestovat Azure AD jednotné přihlašování s Acadia, které potřebujete k dokončení následujících stavebních bloků:
 
 1. **[Konfigurovat Azure AD Single Sign-On](#configure-azure-ad-single-sign-on)**  – Pokud chcete, aby uživatelé mohli tuto funkci používat.
 2. **[Konfigurace Acadia Single Sign-On](#configure-acadia-single-sign-on)**  – ke konfiguraci nastavení jednotného přihlašování na straně aplikace.
@@ -87,7 +87,7 @@ Nakonfigurovat a otestovat Azure AD jednotné přihlašování s [název aplikac
 
 V této části můžete povolit Azure AD jednotného přihlašování na portálu Azure portal.
 
-Ke konfiguraci Azure AD jednotné přihlašování s [název aplikace], proveďte následující kroky:
+Ke konfiguraci Azure AD jednotné přihlašování s Acadia, proveďte následující kroky:
 
 1. V [webu Azure portal](https://portal.azure.com/)na **Acadia** integrace stránce aplikace vyberte **jednotného přihlašování**.
 
@@ -116,7 +116,7 @@ Ke konfiguraci Azure AD jednotné přihlašování s [název aplikace], proveďt
     V **přihlašovací adresa URL** textové pole, zadejte adresu URL, pomocí následujícího vzorce:  `https://<CUSTOMER>.acadia.sysalli.com/Shibboleth.sso/Login`
 
     > [!NOTE]
-    > Tyto hodnoty nejsou skutečný. Aktualizujte tyto hodnoty skutečnou adresu URL identifikátor, adresa URL odpovědi a přihlašování. Kontakt [tým podpory Acadia klienta](https://www.systemsalliance.com/contact-us/) k získání těchto hodnot. Můžete také odkazovat na tyto vzory se dají ukazuje **základní konfiguraci SAML** části webu Azure Portal.
+    > Hodnoty pro kroky 4 a 5, poskytneme vám v souboru metadat Acadia tým, který lze importovat kliknutím **nahrát soubor metadat** na **základní konfiguraci SAML** oddílu. Aktualizujte tyto hodnoty skutečnou adresu URL identifikátor, adresa URL odpovědi a přihlašování. Můžete také odkazovat na tyto vzory se dají ukazuje **základní konfiguraci SAML** části webu Azure Portal k potvrzení, že jsou správné hodnoty metadat. Kontakt [tým podpory Acadia klienta](mailto:support@systemsalliance.com) Pokud zadané hodnoty jsou nesprávné.
 
 6. Na **nastavte si jednotné přihlašování pomocí SAML** stránku, **podpisový certifikát SAML** klikněte na tlačítko **Stáhnout** ke stažení **kód XML metadat federace**  z se zadanými možnostmi podle vašich požadavků a uložit je ve vašem počítači.
 
@@ -134,7 +134,7 @@ Ke konfiguraci Azure AD jednotné přihlašování s [název aplikace], proveďt
 
 ### <a name="configure-acadia-single-sign-on"></a>Konfigurace Acadia jednotného přihlašování
 
-Ke konfiguraci jednotného přihlašování na **Acadia** straně, je nutné odeslat na stažený **soubor XML s metadaty** a vhodné zkopírovaný adresy URL z webu Azure portal [tým podpory Acadia](https://www.systemsalliance.com/contact-us/). Nastavují tohoto nastavení můžete mít správně nastavené na obou stranách připojení SAML SSO.
+Ke konfiguraci jednotného přihlašování na **Acadia** straně, je nutné odeslat na stažený **soubor XML s metadaty**, **adresa URL federačních metadat aplikace**, a zkopírovat příslušné adresy URL z Web Azure portal a [tým podpory Acadia](mailto:support@systemsalliance.com). Konfiguraci tohoto nastavení můžete mít správně nastavené na obou stranách připojení SAML SSO.
 
 ### <a name="create-an-azure-ad-test-user"></a>Vytvořit testovacího uživatele Azure AD
 

@@ -11,13 +11,13 @@ author: joesackmsft
 ms.author: josack
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 10/05/2018
-ms.openlocfilehash: 30ee4f1f56a3c8df44e7a14a131371acfebc6c9e
-ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
+ms.date: 01/25/2019
+ms.openlocfilehash: 78879947ae0e702604b56f1cb9c914acc4d4d592
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54052713"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55478470"
 ---
 # <a name="new-dba-in-the-cloud--managing-your-database-in-azure-sql-database"></a>Nové DBA v cloudu – Správa vaší databáze ve službě Azure SQL Database
 
@@ -83,7 +83,7 @@ Existují [dvě metody ověřování](sql-database-control-access.md#authenticat
 - [Ověřování pomocí Azure Active Directory](sql-database-aad-authentication.md)
 - Ověřování pomocí SQL
 
-Tradiční windows ověřování není podporováno. Azure Active Directory (AD) je centralizovaná služba správy identit a přístupu. To velmi jednoduše zadáte jednotné přihlašování přístup (SSO) na všechny zaměstnance ve vaší organizaci. To znamená, že přihlašovací údaje jsou sdíleny napříč všemi službami Azure pro jednodušší ověřování. Podporuje AAD [MFA (Vícefaktorové ověřování)](sql-database-ssms-mfa-authentication.md) a s [několika kliknutími](../active-directory/hybrid/how-to-connect-install-express.md) AAD je možné integrovat se službou Windows Server Active Directory. Ověřování SQL funguje úplně stejně, jako jste používali ho v minulosti. Zadejte uživatelské jméno a heslo a uživatele k jakékoli databázi na daném logický server, můžete ověřovat. Umožňuje také SQL Database a SQL Data Warehouse, která nabízí služby Multi-Factor authentication a uživatelské účty hostů v doméně služby Azure AD. Pokud už máte Active Directory v místním, může provést federaci adresář s Azure Active Directory pro rozšíření adresáře do Azure.
+Tradiční windows ověřování není podporováno. Azure Active Directory (AD) je centralizovaná služba správy identit a přístupu. To velmi jednoduše zadáte jednotné přihlašování přístup (SSO) na všechny zaměstnance ve vaší organizaci. To znamená, že přihlašovací údaje jsou sdíleny napříč všemi službami Azure pro jednodušší ověřování. Podporuje AAD [MFA (Vícefaktorové ověřování)](sql-database-ssms-mfa-authentication.md) a s [několika kliknutími](../active-directory/hybrid/how-to-connect-install-express.md) AAD je možné integrovat se službou Windows Server Active Directory. Ověřování SQL funguje úplně stejně, jako jste používali ho v minulosti. Zadejte uživatelské jméno a heslo a uživatele k jakékoli databázi na daném serveru SQL Database, můžete ověřovat. Umožňuje také SQL Database a SQL Data Warehouse, která nabízí služby Multi-Factor authentication a uživatelské účty hostů v doméně služby Azure AD. Pokud už máte Active Directory v místním, může provést federaci adresář s Azure Active Directory pro rozšíření adresáře do Azure.
 
 |**Pokud jste...**|**SQL Database nebo SQL Data Warehouse**|
 |---|---|
@@ -101,12 +101,12 @@ Tradiční windows ověřování není podporováno. Azure Active Directory (AD)
 Existuje několik postupů vašim službám, které můžete použít k dosažení organizace průběhem připojení pro vaši aplikaci.
 
 - Pravidla brány firewall
-- Koncové body služby virtuální sítě
+- VNet Service Endpoints
 - Vyhrazené IP adresy
 
 #### <a name="firewall"></a>Brána firewall
 
-Brána firewall brání přístupu ke svému serveru z externí entitu tím, že povolíte přístup jenom konkrétní entity ke svému logickému serveru. Ve výchozím nastavení všechna připojení a databázím uvnitř logický server jsou zakázány, s výjimkou připojení nárůst od ostatních služeb Azure. S pravidlem brány firewall můžete otevřít přístup k vašemu serveru jenom pro entity (například počítač Vývojář), které schválíte, tím, že IP adresa tohoto počítače přes bránu firewall. Také vám umožňuje zadat rozsahu IP adres, které chcete povolit přístup k logickému serveru. Například vývojář počítače IP adresy ve vaší organizaci je možné přidat najednou pomocí celé řady na stránce nastavení brány Firewall.
+Brána firewall brání přístupu ke svému serveru z externí entitu tím, že pouze konkrétní entity přístup k vašemu serveru služby SQL Database. Ve výchozím nastavení všechna připojení a databázím uvnitř serveru SQL Database jsou zakázané, s výjimkou připojení nárůst od ostatních služeb Azure. S pravidlem brány firewall můžete otevřít přístup k vašemu serveru jenom pro entity (například počítač Vývojář), které schválíte, tím, že IP adresa tohoto počítače přes bránu firewall. Také umožňuje určit rozsah IP adres, které chcete povolit přístup k serveru SQL Database. Například vývojář počítače IP adresy ve vaší organizaci je možné přidat najednou pomocí celé řady na stránce nastavení brány Firewall.
 
 Můžete vytvořit pravidla brány firewall na úrovni serveru nebo na úrovni databáze. Pravidla brány firewall na úrovni serveru můžete vytvořit buď pomocí Azure portal nebo pomocí aplikace SSMS. Získání informací o tom, jak nastavit pravidlo brány firewall na úrovni databáze a serveru, naleznete v tématu: [Vytvoření pravidla brány firewall ve službě SQL Database](sql-database-security-tutorial.md#create-firewall-rules).
 
@@ -194,7 +194,7 @@ Síťový provoz mezi vaší organizace a SQL Database bude obecně směrované 
 
 - [Společné umístění Exchange cloudu](../expressroute/expressroute-connectivity-models.md#CloudExchange)
 - [Any-to-any](../expressroute/expressroute-connectivity-models.md#IPVPN)
-- [Typu point-to-Point](../expressroute/expressroute-connectivity-models.md#Ethernet)
+- [Point-to-Point](../expressroute/expressroute-connectivity-models.md#Ethernet)
 
 Expressroute vám také umožní burst až 2 x limit šířky pásma, kterou si koupíte na žádné další poplatky. Je také možné nakonfigurovat pro různé oblasti připojení pomocí expressroute. Pokud chcete zobrazit seznam poskytovatelů připojení ER, naleznete v tématu: [Express Route partnery a umístění partnerského vztahu](../expressroute/expressroute-locations.md). Následující články popisují Express Route podrobněji:
 
@@ -240,7 +240,7 @@ Ve službě SQL Database můžete využít intelligent insights platformy monito
 
 #### <a name="azure-portal"></a>portál Azure
 
-Na webu Azure portal zobrazuje využití izolované databáze podle vyberete databázi a kliknete na grafu v podokně s přehledem. Můžete upravit v grafu zobrazí několik metrik, včetně procento využití procesoru, procento DTU, procento datových v/v, procento relací a procento velikosti databáze.
+Na webu Azure portal zobrazuje využití databáze výběrem databáze a kliknutím na grafu v podokně s přehledem. Můžete upravit v grafu zobrazí několik metrik, včetně procento využití procesoru, procento DTU, procento datových v/v, procento relací a procento velikosti databáze.
 
 ![Graf sledování](./media/sql-database-manage-after-migration/monitoring-chart.png)
 
@@ -287,7 +287,7 @@ SQL Database nabízí různé úrovně služeb Basic, Standard a Premium. Každ�
 
 Za to, že jste na správné výpočetního prostředí, můžete monitorovat využití prostředků dotazu a databáze prostřednictvím jednoho z výše uvedených způsobů, jak v "Jak je možné sledovat využití výkonu a prostředků ve službě SQL Database". By pro vás, vaše dotazy databáze běží konzistentně hot na procesoru nebo paměti atd. zvažte možnost škálování na vyšší výpočetní velikost. Podobně pokud Pamatujte, že i během hodiny ve špičce, můžete nevypadají používat příslušné prostředky největší; Vezměte v úvahu škálování z aktuální výpočty velikosti.
 
-Pokud máte vzor pro aplikace SaaS nebo scénáře konsolidace databáze, zvažte použití elastického fondu pro optimalizaci nákladů. Elastický fond je skvělý způsob, jak dosáhnout databázi konsolidace a optimalizaci nákladů. Další informace o správě více databází pomocí Elastických fondů, naleznete v tématu: [Správa fondů a databází](sql-database-elastic-pool-manage.md#azure-portal-manage-elastic-pools-and-pooled-databases).
+Pokud máte vzor pro aplikace SaaS nebo scénáře konsolidace databáze, zvažte použití elastického fondu pro optimalizaci nákladů. Elastický fond je skvělý způsob, jak dosáhnout databázi konsolidace a optimalizaci nákladů. Další informace o správě více databází pomocí elastických fondů, naleznete v tématu: [Správa fondů a databází](sql-database-elastic-pool-manage.md#azure-portal-manage-elastic-pools-and-pooled-databases).
 
 ### <a name="how-often-do-i-need-to-run-database-integrity-checks-for-my-database"></a>Jak často je potřeba spustit kontroly integrity databáze pro moje databáze
 
@@ -297,7 +297,7 @@ SQL Database používá některé inteligentní techniky, které umožňují zpr
 
 ### <a name="how-do-i-export-and-import-data-as-bacpac-files-from-sql-database"></a>Jak exportovat a importovat data jako souborů BACPAC z databáze SQL
 
-- **Exportovat**: Azure SQL database můžete exportovat do souboru BACPAC z portálu Azure portal
+- **Export**: Azure SQL database můžete exportovat do souboru BACPAC z portálu Azure portal
 
    ![export databáze](./media/sql-database-export/database-export.png)
 

@@ -7,13 +7,13 @@ ms.service: storage
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: muralikk
-ms.component: common
-ms.openlocfilehash: 8a5c25cd5836c3bde630684eff24da7dc8b62fc6
-ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
+ms.subservice: common
+ms.openlocfilehash: 306b94fbe23e0ae92dcd59f7a87b7bb58ef7c3b6
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54855801"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55454653"
 ---
 # <a name="diagnostics-and-error-recovery-for-azure-importexport-jobs"></a>Diagnostika a zotavení z chyb pro úlohy Azure Import/Export
 Pro každou jednotku zpracována služba Azure Import/Export vytvoří protokol chyb do přidruženého účtu úložiště. Můžete také povolit podrobné protokolování tak, že nastavíte `LogLevel` vlastnost `Verbose` při volání [úlohy umístit](/rest/api/storageimportexport/jobs) nebo [aktualizovat vlastnosti úlohy](/rest/api/storageimportexport/jobs) operace.

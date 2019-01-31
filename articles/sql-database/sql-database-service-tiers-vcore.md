@@ -11,13 +11,13 @@ author: CarlRabeler
 ms.author: carlrab
 ms.reviewer: sashan, moslake
 manager: craigg
-ms.date: 01/08/2019
-ms.openlocfilehash: 6b5ff7294735048347c500d64b411f16bda5422f
-ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
+ms.date: 01/25/2019
+ms.openlocfilehash: 0d55b5d4c8d42a89a51fa5342d1ed747659a441b
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54212925"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55465091"
 ---
 # <a name="vcore-service-tiers-azure-hybrid-benefit-and-migration"></a>vCore úrovně služeb, zvýhodněné hybridní využití Azure a migrace
 
@@ -42,7 +42,7 @@ Následující tabulka vám pomůže pochopit rozdíly mezi třech úrovních:
 |Nejvhodnější pro|Většinu obchodních úloh. Nabídky rozpočtu orientovaný vybalancovaných a škálovatelných výpočetních možností a možností ukládání.|Podnikové aplikace s vysokými nároky na V/V. Nabízí nejvyšší odolnost proti selhání s využitím několika izolovaných replik.|Většina podnikových úloh pomocí vysoce škálovatelného úložiště a požadavky na škálování pro čtení|
 |Compute|Gen4: vCore 1 až 24<br/>Gen5: vCore 1 až 80|Gen4: vCore 1 až 24<br/>Gen5: vCore 1 až 80|Gen4: vCore 1 až 24<br/>Gen5: vCore 1 až 80|
 |Memory (Paměť)|Gen4: 7 GB na jádro<br>Gen5: 5.1 GB na jádro | Gen4: 7 GB na jádro<br>Gen5: 5.1 GB na jádro |Gen4: 7 GB na jádro<br>Gen5: 5.1 GB na jádro|
-|Storage|Používá [vzdálené úložiště úrovně premium](../virtual-machines/windows/premium-storage.md):<br/>Izolované databáze: 5 GB AŽ 4 TB<br/>Spravovanou instanci: 32 GB AŽ 8 TB |Používá místní úložiště SSD:<br/>Izolované databáze: 5 GB AŽ 4 TB<br/>Spravovanou instanci: 32 GB AŽ 4 TB |Flexibilní a zvětšování úložiště podle potřeby. Podporuje až 100 TB úložiště a další. Místní úložiště SSD pro mezipaměť fondu místní vyrovnávací paměti a místní datové úložiště. Jako konečné dlouhodobé úložiště dat Azure vzdálené úložiště. |
+|Storage|Používá [vzdálené úložiště úrovně premium](../virtual-machines/windows/premium-storage.md):<br/>Izolované databáze: 5 GB – 4 TB<br/>Spravovanou instanci: 32 GB - 8 TB |Používá místní úložiště SSD:<br/>Izolované databáze: 5 GB – 4 TB<br/>Spravovanou instanci: 32 GB - 4 TB |Flexibilní a zvětšování úložiště podle potřeby. Podporuje až 100 TB úložiště a další. Místní úložiště SSD pro mezipaměť fondu místní vyrovnávací paměti a místní datové úložiště. Jako konečné dlouhodobé úložiště dat Azure vzdálené úložiště. |
 |Vstupně-výstupní propustnost (přibližné)|Izolované databáze: 500 IOPS na vCore s 7000 maximální IOPS</br>Spravovanou instanci: Závisí na [velikost souboru](../virtual-machines/windows/premium-storage-performance.md#premium-storage-disk-sizes)|5000 IOPS na jádro s 200 000 maximální IOPS|Bude doplněno|
 |Dostupnost|1 repliky, žádné škálování pro čtení|3 repliky, 1 [repliky pro čtení škálování](sql-database-read-scale-out.md),<br/>Zóna redundantní HA|?|
 |Zálohování|[RA-GRS](../storage/common/storage-designing-ha-apps-with-ragrs.md), 7 – 35 dní (7 dní ve výchozím nastavení)|[RA-GRS](../storage/common/storage-designing-ha-apps-with-ragrs.md), 7 – 35 dní (7 dní ve výchozím nastavení)|zálohování na snímku do vzdáleného úložiště Azure a obnovení použijte tyto snímky pro rychlé obnovení. Zálohy jsou okamžité a nemají vliv vstupně-výstupním výkonem výpočetního výkonu. Obnovení jsou velmi rychlé a nejsou velikost operace dat (s ohledem minut, nikoli hodin nebo dnů).|
@@ -71,9 +71,9 @@ S programem Azure Hybrid Benefit můžete platit jenom za základní infrastrukt
 
 - Nastavení nebo aktualizaci typu licence pomocí Powershellu:
 
-  - [Nové AzSqlDatabase](https://docs.microsoft.com/powershell/module/az.sql/new-azsqldatabase):
+  - [New-AzSqlDatabase](https://docs.microsoft.com/powershell/module/az.sql/new-azsqldatabase):
   - [Set-AzSqlDatabase](https://docs.microsoft.com/powershell/module/az.sql)
-  - [Nové AzSqlInstance](https://docs.microsoft.com/powershell/module/az.sql/new-azsqlinstance)
+  - [New-AzSqlInstance](https://docs.microsoft.com/powershell/module/az.sql/new-azsqlinstance)
   - [Set-AzSqlInstance](https://docs.microsoft.com/powershell/module/az.sql)
 
 - Nastavení nebo aktualizaci typu licence pomocí Azure CLI:

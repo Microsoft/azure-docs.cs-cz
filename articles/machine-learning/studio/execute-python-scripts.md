@@ -1,6 +1,6 @@
 ---
-Název: Spusťte Python strojového učení titleSuffix skriptů: Azure Machine Learning Studio Popis: Jsou podrobněji popsány dále návrh zásadami pro podporu pro skripty Python v Azure Machine Learning Studio a scénáře základní informace o využití, možnosti a omezení.
-Services: machine learningu ms.service: ms.component strojového učení: studio ms.topic: článku
+Název: Spusťte Python strojového učení titleSuffix skriptů: Azure Machine Learning Studio Popis: Jsou podrobněji popsány dále návrh zásadami pro podporu pro skripty Python v Azure Machine Learning Studio a scénáře základní informace o využití, možnosti a omezení.
+Services: machine learningu ms.service: ms.subservice strojového učení: studio ms.topic: článku
 
 Autor: ericlicoding ms.author: amlstudiodocs ms.custom: předchozí Autor = heatherbshapiro předchozí ms.author=hshapiro ms.date: 11/29/2017
 ---

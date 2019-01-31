@@ -2,18 +2,18 @@
 title: Azure Backup pro úlohy SQL Serveru využívající DPM
 description: Úvod k zálohování databází systému SQL Server pomocí služby Azure Backup
 services: backup
-author: adigan
-manager: Nkolli
+author: kasinh
+manager: vvithal
 ms.service: backup
 ms.topic: conceptual
-ms.date: 10/18/2018
-ms.author: adigan
-ms.openlocfilehash: 232885398c996d0c744ac55b6c6967fd398eec0b
-ms.sourcegitcommit: 9e179a577533ab3b2c0c7a4899ae13a7a0d5252b
+ms.date: 01/30/2019
+ms.author: kasinh
+ms.openlocfilehash: d7d94c7b238f8d413d8837c3c34468c6cd653fe3
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49945650"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55300689"
 ---
 # <a name="back-up-sql-server-to-azure-as-a-dpm-workload"></a>Zálohování SQL serveru do Azure jako úloha aplikace DPM
 Tento článek vás provede kroky konfigurace pro zálohování databází systému SQL Server se službou Azure Backup.
@@ -66,9 +66,9 @@ Než začnete, ujistěte se, že všechny [požadavky](backup-azure-dpm-introduc
     Pokud **automaticky rozšiřovat svazky** je vybraná možnost, aplikace DPM můžete účet pro zvýšení záložní svazek při nárůstu jejich objemu produkčního prostředí. Pokud **automaticky rozšiřovat svazky** možnost není vybrána, DPM omezuje na úložiště zálohování pro zdroje dat ve skupině ochrany.
 9. Správci mít přenosu tomto prvotním zálohování ručně (mimo síť) Chcete-li se vyhnout zahlcení šířky pásma nebo v síti. Mohou také nakonfigurovat čas, kdy se může stát počáteční přenos. Klikněte na **Další**.
 
-    ![Metodu počáteční replikace](./media/backup-azure-backup-sql/pg-manual.png)
+    ![Metoda počáteční replikace](./media/backup-azure-backup-sql/pg-manual.png)
 
-    Kopie prvotní zálohy. vyžaduje přenos celý zdroj dat. (databáze SQL serveru) z provozního serveru (počítač s SQL serverem) na serveru DPM. Tato data můžou být velké a přenášení dat přes síť může být delší než šířka pásma. Z tohoto důvodu se mohou správci přenosu prvotní zálohování: **ručně** (pomocí vyměnitelného média) Chcete-li se vyhnout zahlcení šířky pásma, nebo **automaticky přes síť** (v určený čas).
+    Kopie prvotní zálohy. vyžaduje přenos celý zdroj dat. (databáze SQL serveru) z provozního serveru (počítač s SQL serverem) na serveru DPM. Tato data můžou být velké a přenášení dat přes síť může být delší než šířka pásma. Z tohoto důvodu se mohou správci přenosu prvotní zálohování: **Ručně** (pomocí vyměnitelného média) Chcete-li se vyhnout zahlcení šířky pásma, nebo **automaticky přes síť** (v určený čas).
 
     Po dokončení prvotní zálohy se rest k zálohování přírůstkových záloh v kopie prvotní zálohy. Přírůstkové zálohování jsou obvykle malé a snadno přenést přes síť.
 10. Zvolte, pokud chcete kontrolu konzistence pro spuštění a klikněte na tlačítko **Další**.

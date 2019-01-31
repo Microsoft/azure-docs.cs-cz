@@ -3,7 +3,7 @@ title: Použití klíčů SSH s Windows pro virtuální počítače s Linuxem | 
 description: Zjistěte, jak vygenerovat a používat klíče SSH na počítači Windows pro připojení k virtuální počítač s Linuxem v Azure.
 services: virtual-machines-linux
 documentationcenter: ''
-author: dlepow
+author: cynthn
 manager: jeconnoc
 editor: ''
 tags: azure-service-management,azure-resource-manager
@@ -13,14 +13,14 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.devlang: na
 ms.topic: article
-ms.date: 09/12/2018
-ms.author: danlep
-ms.openlocfilehash: abb0ba6eace2e837ea2f74a0d919097f8801101e
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.date: 11/26/2018
+ms.author: cynthn
+ms.openlocfilehash: 247d09e58ded2de12fb7cc6b5a036b695e715077
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47407412"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55298649"
 ---
 # <a name="how-to-use-ssh-keys-with-windows-on-azure"></a>Použití klíčů SSH s Windows v Azure
 
@@ -72,7 +72,7 @@ Pomocí nástroje PuTTYgen vytvoření páru klíčů SSH RSA:
 
 4. Pohybujte myši v prázdné oblasti zajistit náhodnost klíče.
 
-5. Po vygenerování veřejný klíč, volitelně zadejte a potvrďte heslo. Zobrazí se výzva pro heslo, při ověřování pomocí privátního klíče SSH k virtuálnímu počítači. Bez přístupového hesla kdyby někdo získal váš privátní klíč, můžete přihlášení k libovolné virtuální počítač nebo službu, která používá tento klíč. Doporučujeme že vytvořit přístupové heslo. Pokud však heslo zapomenete, neexistuje žádný způsob, jak jej obnovit.
+5. Po vygenerování veřejný klíč, volitelně zadejte a potvrďte heslo. Zobrazí se výzva pro heslo, při ověřování pomocí privátního klíče SSH k virtuálnímu počítači. Bez přístupového hesla kdyby někdo získal váš privátní klíč se mohl přihlásit k žádné virtuální počítač nebo službu, která používá tento klíč. Doporučujeme že vytvořit přístupové heslo. Pokud však heslo zapomenete, neexistuje žádný způsob, jak jej obnovit.
 
 6. Veřejný klíč se zobrazí v horní části okna. Můžete zkopírovat celý veřejný klíč a vložte ho do portálu Azure portal nebo šablony Azure Resource Manageru při vytváření virtuálního počítače s Linuxem. Můžete také vybrat **uložit veřejný klíč** uložit kopii do vašeho počítače:
 
@@ -93,7 +93,7 @@ Následující příklad ukazuje, jak by zkopírujte a vložte veřejný klíč 
    ![Použít veřejný klíč při vytvoření virtuálního počítače na webu Azure Portal](./media/ssh-from-windows/use-public-key-azure-portal.png)
 
 
-## <a name="connect-to-your-vm"></a>Připojte se ke svému virtuálnímu počítači
+## <a name="connect-to-your-vm"></a>Připojení k virtuálnímu počítači
 
 Jedním ze způsobů připojení SSH k virtuálním počítačům s Linuxem z Windows je pomocí klienta SSH. Toto je upřednostňovanou metodou, pokud máte klienta SSH nainstaluje do systému Windows, nebo použití nástroje SSH v Bashi ve službě Azure Cloud Shell. Pokud dáváte přednost nástroje využívající grafické rozhraní, můžete se připojit pomocí klienta PuTTY.  
 
@@ -105,6 +105,8 @@ ssh azureuser@myvm.westus.cloudapp.azure.com
 ```
 
 Pokud jste nakonfigurovali přístupové heslo při vytváření páru klíčů, zadejte heslo vyzvání během procesu přihlášení.
+
+Pokud virtuální počítač používá zásady přístupu v čase, budete muset požádat o přístup před připojením k virtuálnímu počítači. Další informace o zásadách just-in-time najdete v tématu [spravovat přístup k virtuálním počítačům podle potřeby pomocí v zásadách čas](../../security-center/security-center-just-in-time.md).
 
 ### <a name="connect-with-putty"></a>Připojit pomocí klienta PuTTY
 

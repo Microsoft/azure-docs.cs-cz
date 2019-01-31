@@ -8,12 +8,12 @@ ms.topic: article
 ms.author: mstewart
 ms.date: 01/25/2019
 ms.custom: seodec18
-ms.openlocfilehash: 0b486831118ace7d2112acf1562f5df4a64d1e1b
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.openlocfilehash: 70cf6c65592eef94ce657c9aaef7dc78de4ffa11
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55092083"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55468389"
 ---
 # <a name="azure-disk-encryption-troubleshooting-guide"></a>Průvodce odstraňováním potíží Azure Disk Encryption
 
@@ -87,7 +87,7 @@ Při připojení je omezena bránu firewall, proxy požadavek nebo nastavení sk
 Všechna nastavení skupiny zabezpečení sítě, které jsou použity musí umožňovat stále koncového bodu podle zdokumentovaných síťovou konfiguraci [požadavky](azure-security-disk-encryption-prerequisites.md#bkmk_GPO) pro šifrování disku.
 
 ### <a name="azure-key-vault-behind-a-firewall"></a>Služba Azure Key Vault za bránou firewall
-Virtuální počítač musí být schopni přistupovat k trezoru klíčů. Přečtěte si pokyny k přístupu do služby key vault za bránou firewall, která [Azure Key Vault](../key-vault/key-vault-access-behind-firewall.md) tým bude. 
+Když je šifrování povoleno s [přihlašovacích údajů Azure AD.](azure-security-disk-encryption-prerequisites-aad.md), cílový virtuální počítač musí mít udělen přístup k koncové body ověřování Azure AD, stejně jako koncové body služby Key Vault.  Další informace o tomto procesu naleznete v doprovodné materiály k přístupu k služby key vault za bránou firewall, která [Azure Key Vault](../key-vault/key-vault-access-behind-firewall.md) udržuje týmu. 
 
 ### <a name="azure-instance-metadata-service"></a>Azure Instance Metadata Service 
 Virtuální počítač musí mít přístup k [služby Azure Instance Metadata](../virtual-machines/windows/instance-metadata-service.md) koncový bod, který používá známá nesměrovatelných adres IP (`169.254.169.254`), který je přístupný pouze z v rámci virtuálního počítače.

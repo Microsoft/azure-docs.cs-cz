@@ -1,6 +1,6 @@
 ---
-Název: Obsloužených Machine Learning Studio modelů titleSuffix: Azure Machine Learning Studio Popis: Zjistěte, jak prostřednictvím kódu programu programovém přeučení modelů pomocí C# a provedení dávky služby Machine Learning service.
-Services: machine learningu ms.service: ms.component strojového učení: studio ms.topic: článku
+Název: Obsloužených Machine Learning Studio modelů titleSuffix: Azure Machine Learning Studio Popis: Zjistěte, jak prostřednictvím kódu programu programovém přeučení modelů pomocí C# a provedení dávky služby Machine Learning service.
+Services: machine learningu ms.service: ms.subservice strojového učení: studio ms.topic: článku
 
 Autor: ericlicoding ms.author: amlstudiodocs ms.custom: seodec18 ms.date: 04/19/2017
 ---

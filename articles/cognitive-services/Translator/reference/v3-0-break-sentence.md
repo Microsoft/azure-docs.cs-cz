@@ -6,16 +6,16 @@ services: cognitive-services
 author: Jann-Skotdal
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: translator-text
+ms.subservice: translator-text
 ms.topic: reference
 ms.date: 03/29/2018
 ms.author: v-jansko
-ms.openlocfilehash: 1202d49688bfd6aee50d1fa21c10423c071c6d92
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.openlocfilehash: 2a97c55c7caa7b0b2c4aa10b01abd2714b8ace7a
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46124979"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55458521"
 ---
 # <a name="translator-text-api-30-breaksentence"></a>Translator Text API 3.0: BreakSentence
 
@@ -41,7 +41,7 @@ https://api.cognitive.microsofttranslator.com/breaksentence?api-version=3.0
     <td>*Povinný parametr dotazu*.<br/>Verze rozhraní API požadovaná klientem. Hodnota musí být `3.0`.</td>
   </tr>
   <tr>
-    <td>jazyk</td>
+    <td>language</td>
     <td>*Parametr dotazu volitelné*.<br/>Značka jazyka, identifikace jazyka vstupního textu. Pokud není zadán kód, použijí se automatické rozpoznávání jazyka.</td>
   </tr>
   <tr>
@@ -56,7 +56,7 @@ Hlavičky žádosti patří:
   <th width="20%">Hlavičky</th>
   <th>Popis</th>
   <tr>
-    <td>_Jedním autorizačním_<br/>_Záhlaví_</td>
+    <td>_Jedním autorizačním_<br/>_header_</td>
     <td>*Hlavička požadavku požadované*.<br/>Zobrazit [dostupné možnosti pro ověřování](./v3-0-reference.md#authentication).</td>
   </tr>
   <tr>
@@ -73,7 +73,7 @@ Hlavičky žádosti patří:
   </tr>
 </table> 
 
-## <a name="request-body"></a>Tělo požadavku
+## <a name="request-body"></a>Text požadavku
 
 Text požadavku je pole JSON. Každý prvek pole je objekt JSON s řetězcovou vlastnost s názvem `Text`. Hranice věty se počítají pro hodnotu vlastnosti `Text` vlastnost. Ukázkový text žádosti s jednu část textu vypadá tímto způsobem:
 
@@ -170,7 +170,7 @@ Tady jsou možné stavové kódy HTTP, které vrátí žádost o.
 
 Následující příklad ukazuje, jak získat hranice větu v jedné větě. Služba automaticky zjistí jazyk věty.
 
-# <a name="curltabcurl"></a>[Curl](#tab/curl)
+# <a name="curltabcurl"></a>[curl](#tab/curl)
 
 ```
 curl -X POST "https://api.cognitive.microsofttranslator.com/breaksentence?api-version=3.0" -H "Ocp-Apim-Subscription-Key: <client-secret>" -H "Content-Type: application/json" -d "[{'Text':'How are you? I am fine. What did you do today?'}]"

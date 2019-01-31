@@ -1,23 +1,23 @@
 ---
-title: 'Rychlý start: Transkripce textu, Python – Translator Text API'
+title: 'Rychlý start: Transkripce text, Python – Translator Text API'
 titleSuffix: Azure Cognitive Services
 description: V tomto rychlém startu se dozvíte, jak pomocí Pythonu a rozhraní REST API služby Translator Text provést transkripci (převod) textu z jednoho skriptu do druhého. V této ukázce se provádí transkripce z japonštiny do latinky.
 services: cognitive-services
 author: erhopf
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: translator-text
+ms.subservice: translator-text
 ms.topic: quickstart
 ms.date: 10/29/2018
 ms.author: erhopf
-ms.openlocfilehash: 4f6418602fcf1de6ea98c45635029f71aa6fdf06
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: 0997b12ed7bc86134d0f2cc875a98ee554c667d2
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52999287"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55461232"
 ---
-# <a name="quickstart-use-the-translator-text-api-to-transliterate-text-using-python"></a>Rychlý start: Transkripce textu pomocí služby Translator Text API a Pythonu
+# <a name="quickstart-use-the-translator-text-api-to-transliterate-text-using-python"></a>Rychlý start: Transkripce textu s použitím Pythonu pomocí rozhraní Translator Text API
 
 V tomto rychlém startu se dozvíte, jak pomocí Pythonu a rozhraní REST API služby Translator Text provést transkripci (převod) textu z jednoho skriptu do druhého. V uvedené ukázce se provádí transkripce z japonštiny do latinky.
 
@@ -69,7 +69,7 @@ V současné době je pro službu Translator Text dostupný jeden koncový bod, 
 `params` slouží k nastavení jazyka vstupu a vstupního a výstupního skriptu. V této ukázce provádíme transkripci z japonštiny do latinky.
 
 >[!NOTE]
-> Další informace o koncových bodech, trasách a parametrech požadavků najdete v tématu [Translator Text API 3.0: Transkripce](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-transliterate).
+> Další informace o koncových bodech, cesty a parametry požadavku najdete v tématu [Translator Text API 3.0: Transkripce](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-transliterate).
 
 ```python
 base_url = 'https://api.cognitive.microsofttranslator.com'

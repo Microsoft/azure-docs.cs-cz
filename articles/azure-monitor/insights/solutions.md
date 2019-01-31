@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 12/07/2018
 ms.author: bwren
-ms.openlocfilehash: 574391fd64d0525d3d77b80bb488bea8109729af
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: 0103225803ca98cb9d8e27eb57f150e0660cd7ab
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53187326"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55299117"
 ---
 # <a name="management-solutions-in-azure-monitor"></a>Řešení pro správu ve službě Azure Monitor
 Využijte řešení pro správu služby v Azure a poskytuje další informace o provozu určitá aplikace nebo služby. Tento článek poskytuje stručný přehled o řešení pro správu v Azure a podrobnosti o používání a jejich instalace.
@@ -60,7 +60,7 @@ Klikněte na název řešení, otevřete její souhrnnou stránku. Tato stránka
 ## <a name="install-a-management-solution"></a>Nainstalujte řešení pro správu
 Řešení pro správu od Microsoftu a partnerů, jsou k dispozici [Azure Marketplace](https://azuremarketplace.microsoft.com). Můžete vyhledat dostupná řešení a nainstalujte je pomocí následujícího postupu. Při instalaci řešení, musíte vybrat [pracovní prostor Log Analytics](../platform/manage-access.md) nainstalovanou řešení a kde budou shromažďovány svá data.
 
-1. Z [seznam řešení pro vaše předplatné](#list-installed-monitoring-solutions), klikněte na tlačítko **přidat**. 
+1. Z [seznam řešení pro vaše předplatné](#list-installed-management-solutions), klikněte na tlačítko **přidat**. 
 1. Napravo od **řešení pro správu**, klikněte na tlačítko **Další**. 
 1. Vyhledejte řešení pro správu vám vyhovuje a přečtěte si její popis.
 1. Klikněte na tlačítko **vytvořit** spustit proces instalace.

@@ -6,14 +6,14 @@ ms.service: cosmos-db
 ms.topic: sample
 ms.date: 11/06/2018
 ms.author: mjbrown
-ms.openlocfilehash: eb34385087118614f8d7057c2229bc3c9e8d1ae4
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: 550201e692bb79197d50c2f44017c43ab9ea2016
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54039482"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55477318"
 ---
-# <a name="provision-throughput-for-an-azure-cosmos-db-container"></a>Zřízení propustnosti pro kontejner Azure Cosmos DB
+# <a name="provision-throughput-on-an-azure-cosmos-container"></a>Zřizování propustnosti kontejneru Azure Cosmos
 
 Tento článek vysvětluje, jak zřídit propustnost pro kontejner (kolekci, graf, tabulku) ve službě Azure Cosmos DB. Propustnost můžete zřídit pro jeden kontejner nebo [pro databázi](how-to-provision-database-throughput.md) a sdílet ji mezi kontejnery v rámci databáze. Propustnost pro kontejner můžete zřídit pomocí webu Azure Portal, Azure CLI nebo sad SDK služby Cosmos DB.
 

@@ -7,14 +7,14 @@ ms.topic: conceptual
 ms.date: 11/15/2018
 ms.author: dharmas
 ms.reviewer: sngun
-ms.openlocfilehash: f623411c3e8b13aeacc08a6c47053931742a2e82
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: f1be314db7bfc4cbdfcc809eb3b1d985583739a4
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54034178"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55470140"
 ---
-# <a name="azure-cosmos-db-compliance"></a>Dodržování předpisů Azure Cosmos DB
+# <a name="compliance-in-azure-cosmos-db"></a>Dodržování předpisů ve službě Azure Cosmos DB 
 
 Azure Cosmos DB je k dispozici ve všech oblastech Azure. Společnost Microsoft zpřístupňuje pět různých Azure Cloudová prostředí pro zákazníky:
 
@@ -36,7 +36,7 @@ Azure Cosmos DB je neustále rozšiřuje pokrytí její certifikace. Azure Cosmo
 
 | **Globálně použitelné** | **US Government** | **Konkrétní odvětví** | **Oblast nebo zemi konkrétní** |
 | --- | --- | --- | --- | --- |
-| Certifikace CSA STAR<br/><br/>Ověření CSA STAR<br/><br/>ISO 20000 – 1:2011<br/><br/>ISO 22301:2012<br/><br/>ISO 27001: 2013<br/><br/>ISO 27017:2015<br/><br/>ISO 27018:2014<br/><br/>SOC 1, 2, 3| Úroveň SRG ministerstva obrany USA 2<br/><br/>FedRAMP Moderate<br/><br/>GxP (FDA 21 CFR oddíl 11)<br/><br/>| HIPAA BAA<br/><br/>HITRUST<br/><br/>PCI DSS | Austrálie IRAP neutajované<br/><br/>C5 Německo<br/><br/>Singapur MTCS úrovně 3<br/><br/>Vysoce ENS Španělsko|
+| Certifikace CSA STAR<br/><br/>Ověření CSA STAR<br/><br/>ISO 20000-1:2011<br/><br/>ISO 22301:2012<br/><br/>ISO 27001:2013<br/><br/>ISO 27017:2015<br/><br/>ISO 27018:2014<br/><br/>SOC 1, 2, 3| Úroveň SRG ministerstva obrany USA 2<br/><br/>FedRAMP Moderate<br/><br/>GxP (FDA 21 CFR Part 11)<br/><br/>| HIPAA BAA<br/><br/>HITRUST<br/><br/>PCI DSS | Austrálie IRAP neutajované<br/><br/>C5 Německo<br/><br/>Singapur MTCS úrovně 3<br/><br/>Spain ENS High|
 
 Další informace o každé z těchto nabídek dodržování předpisů a jak se vám hodit, najdete v článku [dodržování předpisů přehled Microsoft Azure](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942) stránky.
 
@@ -44,7 +44,7 @@ V následující tabulce jsou uvedeny certifikace podporovány službou Azure Co
 
 | **Globálně použitelné** | **US Government** | **Konkrétní odvětví** | **Oblast nebo zemi konkrétní** |
 | --- | --- | --- | --- |
-| Certifikace CSA STAR<br/><br/>Ověření CSA STAR<br/><br/>ISO 20000 – 1:2011<br/><br/>ISO 9001:2015<br/><br/>ISO 27001: 2013<br/><br/>ISO 27017:2015<br/><br/>ISO 27018:2014<br/><br/>SOC 1, 2, 3 | Úroveň SRG ministerstva obrany USA 2<br/><br/>DoD SRG úroveň 5<br/><br/>CJIS<br/><br/>FedRAMP High<br/><br/>IRS 1075<br/><br/>NIST CSF<br/><br/>NIST SP 800-171| HIPAA BAA<br/><br/>HITRUST<br/><br/>PCI DSS | Austrálie IRAP neutajované<br/><br/>C5 Německo<br/><br/>Singapur MTCS úrovně 3<br/><br/>Vysoce ENS Španělsko|
+| Certifikace CSA STAR<br/><br/>Ověření CSA STAR<br/><br/>ISO 20000-1:2011<br/><br/>ISO 9001:2015<br/><br/>ISO 27001:2013<br/><br/>ISO 27017:2015<br/><br/>ISO 27018:2014<br/><br/>SOC 1, 2, 3 | Úroveň SRG ministerstva obrany USA 2<br/><br/>DoD SRG úroveň 5<br/><br/>CJIS<br/><br/>FedRAMP High<br/><br/>IRS 1075<br/><br/>NIST CSF<br/><br/>NIST SP 800-171| HIPAA BAA<br/><br/>HITRUST<br/><br/>PCI DSS | Austrálie IRAP neutajované<br/><br/>C5 Německo<br/><br/>Singapur MTCS úrovně 3<br/><br/>Spain ENS High|
 
 ## <a name="next-steps"></a>Další postup
 

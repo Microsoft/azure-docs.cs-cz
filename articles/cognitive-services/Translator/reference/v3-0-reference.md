@@ -6,18 +6,18 @@ services: cognitive-services
 author: Jann-Skotdal
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: translator-text
+ms.subservice: translator-text
 ms.topic: reference
 ms.date: 03/29/2018
 ms.author: v-jansko
-ms.openlocfilehash: 5c952370908919deb6531e0b175063dc2657ae98
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: 4d1c33480e408f892517cde6d42e103b34218f26
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52870398"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55459060"
 ---
-# <a name="translator-text-api-v30"></a>Verze Translator Text API 3.0
+# <a name="translator-text-api-v30"></a>Translator Text API v3.0
 
 ## <a name="whats-new"></a>Co je nového?
 
@@ -33,8 +33,8 @@ Verze 3 rozhraní Translator Text API poskytuje moderní webové API založené 
 
 Microsoft Translator je provádět z více umístění datového centra. Aktuálně jsou umístěny v 6 [oblastí Azure](https://azure.microsoft.com/global-infrastructure/regions):
 
-* **Jižní Americe:** západní USA 2 a střed USA – západ 
-* **Asie a Tichomoří:** jihovýchodní Asii a Korea – jih
+* **Jižní Americe:** Západní USA 2 a střed USA – západ 
+* **Asie a Tichomoří:** Jihovýchodní Asie a Korea – jih
 * **Evropa:** Severní Evropa a západní Evropa
 
 Požadavky na rozhraní Microsoft Translator Text API jsou ve většině případů zpracovat datacenter, která je nejblíž k původu žádosti. V případě datacenter selhání může být žádost směrována mimo oblast.
@@ -43,10 +43,10 @@ Vynutit požadavek na ošetřit konkrétní datové centrum, změňte globální
 
 |Popis|Oblast|Základní adresa URL|
 |:--|:--|:--|
-|Azure|Globální|  API.cognitive.microsofttranslator.com|
-|Azure|Severní Amerika|   rozhraní API nam.cognitive.microsofttranslator.com|
-|Azure|Evropa|  rozhraní API eur.cognitive.microsofttranslator.com|
-|Azure|Asie a Tichomoří|    rozhraní API apc.cognitive.microsofttranslator.com|
+|Azure|Globální|  api.cognitive.microsofttranslator.com|
+|Azure|Severní Amerika|   api-nam.cognitive.microsofttranslator.com|
+|Azure|Evropa|  api-eur.cognitive.microsofttranslator.com|
+|Azure|Asie a Tichomoří|    api-apc.cognitive.microsofttranslator.com|
 
 
 ## <a name="authentication"></a>Authentication
@@ -111,7 +111,7 @@ Standardní chybové odpovědi je objekt JSON s dvojice název/hodnota s názvem
 
   * `code`: Kód chyby definované na serveru.
 
-  * `message`: Řetězec poskytuje čitelné reprezentaci chyby.
+  * `message`: Řetězec, který poskytuje reprezentaci čitelné chyby.
 
 Zákazník s bezplatnou zkušební verzi předplatného by například zobrazí následující chyba, po vyčerpání volného kvóty:
 

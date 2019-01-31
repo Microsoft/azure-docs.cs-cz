@@ -6,16 +6,16 @@ author: ckarst
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
-ms.component: implement
+ms.subservice: implement
 ms.date: 04/19/2018
 ms.author: cakarst
 ms.reviewer: igorstan
-ms.openlocfilehash: eb9c66c23440d2fd55c62de02b6c0070245c6d67
-ms.sourcegitcommit: 2b2129fa6413230cf35ac18ff386d40d1e8d0677
+ms.openlocfilehash: f5e0b2b75ac111f3221108936f84e5883aebfc1a
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43247915"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55476260"
 ---
 # <a name="optimizing-transactions-in-azure-sql-data-warehouse"></a>Optimalizace transakcí ve službě Azure SQL Data Warehouse
 Zjistěte, jak optimalizovat výkon transakční kódu ve službě Azure SQL Data Warehouse při minimalizovat rizika pro dlouhé vrácení zpět.
@@ -43,7 +43,7 @@ Transakce bezpečnostní omezení platí jenom pro plně protokolované operace.
 Tyto operace podporují minimálně přihlašováno:
 
 * VYTVOŘENÍ TABLE AS SELECT ([CTAS](sql-data-warehouse-develop-ctas.md))
-* VLOŽIT... VYBERTE
+* INSERT..SELECT
 * VYTVOŘENÍ INDEXU
 * PŘÍKAZ ALTER INDEX ZNOVU SESTAVIT
 * ODSTRANIT INDEX

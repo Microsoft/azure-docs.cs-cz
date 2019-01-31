@@ -6,18 +6,18 @@ services: cognitive-services
 author: Jann-Skotdal
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: translator-text
+ms.subservice: translator-text
 ms.topic: reference
 ms.date: 03/29/2018
 ms.author: v-jansko
-ms.openlocfilehash: 51f15bd9c75f24be0d477d10de55c93a51cfbf3f
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.openlocfilehash: 7489c4298abe91755a2bf9edd8335061ed42d6d2
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46129637"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55470922"
 ---
-# <a name="translator-text-api-30-languages"></a>Translator Text API 3.0: jazyků
+# <a name="translator-text-api-30-languages"></a>Translator Text API 3.0: Languages
 
 Získá sadu jazyků aktuálně podporuje jiné operace rozhraní Translator Text API. 
 
@@ -52,7 +52,7 @@ Hlavičky žádosti jsou:
   <th>Popis</th>
   <tr>
     <td>Přijměte jazyka</td>
-    <td>*Hlavička požadavku volitelné*.<br/>Jazyk, který se má použít pro uživatelské rozhraní řetězce. Některá pole v odpovědi jsou názvy jazyků nebo názvy oblastí. Použijte tento parametr se definuje jazyk, ve kterém jsou vráceny tyto názvy. Jazyk je zadán zadáním značky jazyka ve správném formátu BCP 47. Například použijte hodnotu `fr` žádosti názvy ve francouzštině, nebo použijte hodnotu `zh-Hant` požadavek názvy v tradiční čínštině.<br/>Názvy jsou poskytovány v angličtině, když není zadaný cílový jazyk, nebo pokud lokalizace není k dispozici.
+    <td>*Hlavička požadavku volitelné*.<br/>Jazyk, který se má použít pro řetězce uživatelského rozhraní. Některá pole v odpovědi jsou názvy jazyků nebo názvy oblastí. Použijte tento parametr se definuje jazyk, ve kterém jsou vráceny tyto názvy. Jazyk je zadán zadáním značky jazyka ve správném formátu BCP 47. Například použijte hodnotu `fr` žádosti názvy ve francouzštině, nebo použijte hodnotu `zh-Hant` požadavek názvy v tradiční čínštině.<br/>Názvy jsou poskytovány v angličtině, když není zadaný cílový jazyk, nebo pokud lokalizace není k dispozici.
     </td>
   </tr>
   <tr>
@@ -99,7 +99,7 @@ Hodnota pro každou vlastnost je následujícím způsobem.
 
   * `name`: Zobrazovaný název jazyka v národním prostředí požadovaný prostřednictvím `Accept-Language` záhlaví.
 
-  * `nativeName`: Zobrazí název jazyka v nativní pro tento jazyk národního prostředí.
+  * `nativeName`: Zobrazovaný název jazyka v nativní pro tento jazyk národního prostředí.
 
   * `dir`: Text, který je `rtl` pro jazyky zprava doleva nebo `ltr` jazyků zleva doprava.
 
@@ -125,7 +125,7 @@ Hodnota pro každou vlastnost je následujícím způsobem.
 
   * `name`: Zobrazovaný název jazyka v národním prostředí požadovaný prostřednictvím `Accept-Language` záhlaví.
 
-  * `nativeName`: Zobrazí název jazyka v nativní pro tento jazyk národního prostředí.
+  * `nativeName`: Zobrazovaný název jazyka v nativní pro tento jazyk národního prostředí.
 
   * `scripts`: Seznam skripty pro převod z. Každý prvek `scripts` má seznam vlastností:
 
@@ -133,7 +133,7 @@ Hodnota pro každou vlastnost je následujícím způsobem.
 
     * `name`: Zobrazovaný název souboru, který v národním prostředí požadovaný prostřednictvím `Accept-Language` záhlaví.
 
-    * `nativeName`: Zobrazí název jazyka v nativní pro jazyk národního prostředí.
+    * `nativeName`: Zobrazovaný název jazyka v nativní pro jazyk národního prostředí.
 
     * `dir`: Text, který je `rtl` pro jazyky zprava doleva nebo `ltr` jazyků zleva doprava.
 
@@ -190,7 +190,7 @@ Hodnota pro každou vlastnost je následujícím způsobem.
 
   * `name`: Zobrazovaný název zdrojového jazyka v národním prostředí požadovaný prostřednictvím `Accept-Language` záhlaví.
 
-  * `nativeName`: Zobrazí název jazyka v nativní pro tento jazyk národního prostředí.
+  * `nativeName`: Zobrazovaný název jazyka v nativní pro tento jazyk národního prostředí.
 
   * `dir`: Text, který je `rtl` pro jazyky zprava doleva nebo `ltr` jazyků zleva doprava.
 
@@ -198,11 +198,11 @@ Hodnota pro každou vlastnost je následujícím způsobem.
 
     * `name`: Zobrazovaný název cílového jazyka v národním prostředí požadovaný prostřednictvím `Accept-Language` záhlaví.
 
-    * `nativeName`: Zobrazí název cílového jazyka v nativní pro cílový jazyk národního prostředí.
+    * `nativeName`: Zobrazovaný název cílového jazyka v nativní pro cílový jazyk národního prostředí.
 
     * `dir`: Text, který je `rtl` pro jazyky zprava doleva nebo `ltr` jazyků zleva doprava.
     
-    * `code`: Kód jazyka identifikace cílový jazyk.
+    * `code`: Určení cílového jazyka kód jazyka.
 
   Příkladem je:
 
@@ -279,7 +279,7 @@ Tady jsou možné stavové kódy HTTP, které vrátí žádost o.
 
 Následující příklad ukazuje, jak načíst jazyky podporované pro překlad textu.
 
-# <a name="curltabcurl"></a>[Curl](#tab/curl)
+# <a name="curltabcurl"></a>[curl](#tab/curl)
 
 ```
 curl "https://api.cognitive.microsofttranslator.com/languages?api-version=3.0&scope=translation"

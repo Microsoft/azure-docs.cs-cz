@@ -2,7 +2,7 @@
 title: Zachovat výsledky nebo protokoly z dokončené úlohy a úkoly do úložiště dat – Azure Batch | Dokumentace Microsoftu
 description: Další informace o různých možnostech trvalá data výstup z úlohy a úkoly služby Batch. Je možné zachovat data do služby Azure Storage nebo do jiného.
 services: batch
-author: dlepow
+author: laurenhughes
 manager: jeconnoc
 editor: ''
 ms.assetid: 16e12d0e-958c-46c2-a6b8-7843835d830e
@@ -12,14 +12,14 @@ ms.topic: article
 ms.tgt_pltfrm: ''
 ms.workload: big-compute
 ms.date: 11/14/2018
-ms.author: danlep
+ms.author: lahugh
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 463c3605f96774b6f05235f3c9d7fe0e5a7139f2
-ms.sourcegitcommit: 275eb46107b16bfb9cf34c36cd1cfb000331fbff
+ms.openlocfilehash: ff7224b342aa421c576c170f3c23ac64cad9f161
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51705708"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55474339"
 ---
 # <a name="persist-job-and-task-output"></a>Trvalý výstup úloh a funkcí
 
@@ -77,13 +77,13 @@ Můžete také implementovat svoje vlastní řešení pro přesun celý soubor. 
 
 Při návrhu řešení pro Batch, vezměte v úvahu následující faktory související s výstupy úloh a úkolů.
 
-- **Výpočetní uzel životnost**: výpočetní uzly jsou často přechodné, zejména v povolené automatické škálování fondů. Výstup z úlohy, která běží na uzlu je k dispozici, pouze když existuje uzlu, a pouze v rámci doby uchování souboru jste nastavili pro úlohu. Pokud úloha vytvoří výstup, který může být potřeba po dokončení úkolu, potom úloha musíte nahrát jeho výstupní soubory do odolného úložiště, jako je Azure Storage.
+- **Výpočetní uzel životnost**: Výpočetní uzly jsou často přechodné, zejména v povolené automatické škálování fondů. Výstup z úlohy, která běží na uzlu je k dispozici, pouze když existuje uzlu, a pouze v rámci doby uchování souboru jste nastavili pro úlohu. Pokud úloha vytvoří výstup, který může být potřeba po dokončení úkolu, potom úloha musíte nahrát jeho výstupní soubory do odolného úložiště, jako je Azure Storage.
 
 - **Výstupní úložiště**: Azure Storage se doporučuje jako úložiště dat pro výstup úlohy, ale můžete použít libovolný trvalého úložiště. Zápis výstup úlohy do Azure Storage je integrována do rozhraní API služby Batch. Pokud používáte jiná forma trvalého úložiště, budete muset psát logiku aplikace a zachová sami výstup úlohy.
 
-- **Výstup načítání**: výstup úlohy můžete načíst přímo z výpočetních uzlů ve fondu nebo z úložiště Azure nebo jiného úložiště dat, pokud mají trvalý výstup úloh. Načíst výstup úkolu přímo z výpočetního uzlu, budete potřebovat název souboru a jeho umístění výstupu na uzlu. Pokud je trvalý výstup úloh do služby Azure Storage, potřebujete úplná cesta k souboru ve službě Azure Storage ke stažení výstupních souborů s využitím Azure Storage SDK.
+- **Výstup načítání**: Výstup úlohy můžete načíst přímo z výpočetních uzlů ve fondu nebo z úložiště Azure nebo jiného úložiště dat, pokud mají trvalý výstup úloh. Načíst výstup úkolu přímo z výpočetního uzlu, budete potřebovat název souboru a jeho umístění výstupu na uzlu. Pokud je trvalý výstup úloh do služby Azure Storage, potřebujete úplná cesta k souboru ve službě Azure Storage ke stažení výstupních souborů s využitím Azure Storage SDK.
 
-- **Zobrazení výstupu**: když přejdete na úlohu služby Batch v Azure portal a vyberte **soubory v uzlu**, zobrazí se všechny soubory spojené s úlohou, nejen výstupní soubory vás zajímá. Znovu jsou k dispozici soubory na výpočetních uzlech, pouze když existuje uzlu a pouze v rámci dobu uchovávání souboru jste nastavili pro úlohu. Pokud chcete zobrazit výstup úlohy, které jste ukládají do Azure Storage, můžete použít na webu Azure portal nebo aplikaci klienta služby Azure Storage, jako [Průzkumníka služby Azure Storage][storage_explorer]. Chcete-li zobrazit výstupní data ve službě Azure Storage pomocí portálu nebo jiný nástroj, musíte znát umístění souboru a přejít k němu přímo.
+- **Zobrazení výstupu**: Když přejdete na úlohu služby Batch v Azure portal a vyberte **soubory v uzlu**, zobrazí se všechny soubory spojené s úlohou, nejen výstupní soubory vás zajímá. Znovu jsou k dispozici soubory na výpočetních uzlech, pouze když existuje uzlu a pouze v rámci dobu uchovávání souboru jste nastavili pro úlohu. Pokud chcete zobrazit výstup úlohy, které jste ukládají do Azure Storage, můžete použít na webu Azure portal nebo aplikaci klienta služby Azure Storage, jako [Průzkumníka služby Azure Storage][storage_explorer]. Chcete-li zobrazit výstupní data ve službě Azure Storage pomocí portálu nebo jiný nástroj, musíte znát umístění souboru a přejít k němu přímo.
 
 ## <a name="next-steps"></a>Další postup
 

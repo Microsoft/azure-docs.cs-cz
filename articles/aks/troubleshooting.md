@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: troubleshooting
 ms.date: 08/13/2018
 ms.author: saudas
-ms.openlocfilehash: fd3d1c464c6f2d4cbecd715db0689581ca141769
-ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
+ms.openlocfilehash: 17f6971cfa2dcd8c8988edc063c89859abec5367
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/20/2018
-ms.locfileid: "53654066"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55468831"
 ---
 # <a name="aks-troubleshooting"></a>Řešení potíží s AKS
 
@@ -66,28 +66,3 @@ Ujistěte se, že se nezmění výchozí skupinu zabezpečení sítě (NSG) a ž
 ## <a name="im-trying-to-upgrade-or-scale-and-am-getting-a-message-changing-property-imagereference-is-not-allowed-error--how-do-i-fix-this-problem"></a>Mohu provést upgrade nebo změna velikosti a Power BI Desktop zobrazuje "zpráva: Chyba při změně hodnoty vlastnosti 'elementu imageReference' není povoleno".  Jak tento problém vyřešit?
 
 Vám může zobrazovat tato chyba vzhledem k tomu, že jste upravili značky v agentské uzly v clusteru AKS. Úprava a odstranění značek a dalších vlastností prostředků ve skupině prostředků MC_ * může vést k neočekávaným výsledkům. Upravit prostředky ve skupině MC_ * AKS clusteru dělí cíle úrovně služeb (SLO).
-
-## <a name="how-do-i-renew-the-service-principal-secret-on-my-aks-cluster"></a>Jak obnovit tajný klíč instančního objektu služby v clusteru AKS
-
-Ve výchozím nastavení AKS clustery jsou vytvořeny pomocí objektu služby, který má čas vypršení platnosti jeden rok. Jak jste téměř datum vypršení platnosti můžete resetovat přihlašovací údaje pro instanční objekt služby rozšířit další dobu.
-
-Následující příklad provede tyto kroky:
-
-1. Získá ID instančního objektu služby ve vašem clusteru pomocí [az aks zobrazit](/cli/azure/aks#az-aks-show) příkazu.
-1. Zobrazí seznam tajný klíč klienta instančního objektu služby pomocí [az ad sp přihlašovacích údajů seznamu](/cli/azure/ad/sp/credential#az-ad-sp-credential-list).
-1. Rozšiřuje objekt služby po dobu jednoho roku jiné pomocí [az ad sp reset přihlašovacích údajů](/cli/azure/ad/sp/credential#az-ad-sp-credential-reset) příkazu. Tajný klíč klienta instančního objektu služby musí zůstat stejná pro cluster AKS správně spustit.
-
-```azurecli
-# Get the service principal ID of your AKS cluster.
-sp_id=$(az aks show -g myResourceGroup -n myAKSCluster \
-    --query servicePrincipalProfile.clientId -o tsv)
-
-# Get the existing service principal client secret.
-key_secret=$(az ad sp credential list --id $sp_id --query [].keyId -o tsv)
-
-# Reset the credentials for your AKS service principal and extend for one year.
-az ad sp credential reset \
-    --name $sp_id \
-    --password $key_secret \
-    --years 1
-```

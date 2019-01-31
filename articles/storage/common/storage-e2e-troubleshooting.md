@@ -8,13 +8,13 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 03/15/2017
 ms.author: tamram
-ms.component: common
-ms.openlocfilehash: 80a2ed779fa65c669be81fdf8212b7d018325ee5
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.subservice: common
+ms.openlocfilehash: ce884b95daf8c02e51c79068c360ffe4a4fe0d07
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53634503"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55473200"
 ---
 # <a name="end-to-end-troubleshooting-using-azure-storage-metrics-and-logging-azcopy-and-message-analyzer"></a>Začátku do konce řešení problémů pomocí metrik Azure Storage a protokolování, AzCopy a analyzátoru zpráv
 [!INCLUDE [storage-selector-portal-e2e-troubleshooting](../../../includes/storage-selector-portal-e2e-troubleshooting.md)]
@@ -346,7 +346,7 @@ Teď, když jste se seznámili s použitím nástroje Message Analyzer k analýz
 | Neočekávaným zpožděním při doručování zpráv ve frontě |AzureStorageClientDotNetV4.Description obsahuje "Opakování operace se nezdařila." |Klient |
 | HTTP zvýšení u PercentThrottlingError |HTTP. Response.StatusCode == 500 &#124; &#124; HTTP. Response.StatusCode == 503 |Síť |
 | Zvýšení u PercentTimeoutError |HTTP. Response.StatusCode == 500 |Síť |
-| Zvýšení u PercentTimeoutError (vše) |* StatusCode == 500 |Vše |
+| Zvýšení u PercentTimeoutError (vše) |*StatusCode   == 500 |Vše |
 | Zvýšení u PercentNetworkError |AzureStorageClientDotNetV4.EventLogEntry.Level   < 2 |Klient |
 | HTTP 403 (zakázáno) zprávy |HTTP. Response.StatusCode == 403 |Síť |
 | HTTP 404 (Nenalezeno) zprávy |HTTP. Response.StatusCode == 404 |Síť |

@@ -10,19 +10,19 @@ manager: cgronlun
 ms.custom: seodec18
 ms.assetid: ''
 ms.service: machine-learning
-ms.component: data-science-vm
+ms.subservice: data-science-vm
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/11/2017
 ms.author: gokuma
-ms.openlocfilehash: 8cc5d1a2d78179624ee1ba17482e9d1892625d6f
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: bc7a183220219b14cb793f8115284d38d544b0e0
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53104284"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55453174"
 ---
 # <a name="languages-supported-on-the-data-science-virtual-machine"></a>Jazyky podporované na virtuální počítač pro datové vědy 
 
@@ -193,7 +193,7 @@ R je nainstalována na datové VĚDY v globálním prostředí čitelné všichn
 | ------------- | ------------- |
 | Podporované jazykové verze | 0.6 |
 | Podporované DSVM edice      | Linux, Windows     |
-| Jak ho nakonfigurovat či nainstalovaná na datové VĚDY?  | Windows: Při instalaci `C:\JuliaPro-VERSION`<br /> Linux: Nainstalovaným v `/opt/JuliaPro-VERSION`    |
+| Jak ho nakonfigurovat či nainstalovaná na datové VĚDY?  | Windows: Instalovat v `C:\JuliaPro-VERSION`<br /> Linux: Instalovat v `/opt/JuliaPro-VERSION`    |
 | Odkazy na ukázky      | Ukázkové poznámkové bloky Jupyter pro Julie jsou zahrnuté     |
 | Související nástroje na datové VĚDY      | Python, R      |
 ### <a name="how-to-use--run-it"></a>Jak používat nebo ji spustit?    

@@ -7,13 +7,13 @@ ms.service: storage
 ms.topic: article
 ms.date: 12/04/2018
 ms.author: rogarana
-ms.component: common
-ms.openlocfilehash: d2182942b8d1ce78fd4a72ff387c7a6a1cfead5a
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.subservice: common
+ms.openlocfilehash: ca1012e0f1b0b7a9e0d8bd88d94876c20d22dec5
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52975085"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55473778"
 ---
 # <a name="azure-data-lake-storage-gen2-security-guide"></a>Příručka zabezpečení služby Azure Data Lake Storage Gen2
 
@@ -79,7 +79,7 @@ Tady jsou hlavní body, které je potřeba vědět o použití RBAC pro přístu
 * [Řízení přístupu na základě role v Azure Active Directory](../../role-based-access-control/role-assignments-portal.md)
 
   Tento článek popisuje řízení přístupu podle role v Azure Active Directory a vysvětluje, jak funguje.
-* [RBAC: vestavěné role](../../role-based-access-control/built-in-roles.md)
+* [RBAC: Vestavěné role](../../role-based-access-control/built-in-roles.md)
 
   Tento článek podrobně popisuje všechny vestavěné role dostupné v RBAC.
 * [Principy nasazení podle modelu Resource Manager a klasického nasazení](../../azure-resource-manager/resource-manager-deployment-model.md)

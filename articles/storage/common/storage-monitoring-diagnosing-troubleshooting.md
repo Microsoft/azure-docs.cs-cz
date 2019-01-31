@@ -7,13 +7,13 @@ ms.service: storage
 ms.topic: article
 ms.date: 05/11/2017
 ms.author: fhryo-msft
-ms.component: common
-ms.openlocfilehash: e451fd2c2dad5c411d0a8faa8e9c044648759001
-ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
+ms.subservice: common
+ms.openlocfilehash: 6b40741545ff286bc1b8e696d28c61b197605247
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54121722"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55473999"
 ---
 # <a name="monitor-diagnose-and-troubleshoot-microsoft-azure-storage"></a>Monitorování, diagnostika a řešení problémů s Microsoft Azure Storage
 [!INCLUDE [storage-selector-portal-monitoring-diagnosing-troubleshooting](../../../includes/storage-selector-portal-monitoring-diagnosing-troubleshooting.md)]
@@ -469,14 +469,14 @@ Pokud vaše klientská aplikace způsobující chyby HTTP 403 (zakázáno), prav
 | Zdroj | Podrobnosti | Podrobnosti | ID požadavku klienta | Operace text |
 | --- | --- | --- | --- | --- |
 | Microsoft.WindowsAzure.Storage |Informace |3 |85d077ab-… |Spouští se operace s umístěním primární umístění režim PrimaryOnly podle. |
-| Microsoft.WindowsAzure.Storage |Informace |3 |85d077ab -… |Spouští se požadavku na https://domemaildist.blob.core.windows.netazureimblobcontainer/blobCreatedViaSAS.txt?sv=2014-02-14&amp; sr = c&amp;si = mypolicy&amp;sig = OFnd4Rd7z01fIvh % 2BmcR6zbudIH2F5Ikm 2FyhNYZEmJNQ % 3D&amp;verze api-version = 2014-02-14. |
+| Microsoft.WindowsAzure.Storage |Informace |3 |85d077ab -… |Starting synchronous request to https://domemaildist.blob.core.windows.netazureimblobcontainer/blobCreatedViaSAS.txt?sv=2014-02-14&amp;sr=c&amp;si=mypolicy&amp;sig=OFnd4Rd7z01fIvh%2BmcR6zbudIH2F5Ikm%2FyhNYZEmJNQ%3D&amp;api-version=2014-02-14. |
 | Microsoft.WindowsAzure.Storage |Informace |3 |85d077ab -… |Čekání na odpověď. |
-| Microsoft.WindowsAzure.Storage |Upozornění |2 |85d077ab -… |Došlo k výjimce při čekání na odpověď: Vzdálený server vrátil chybu: Zakázáno (403). |
+| Microsoft.WindowsAzure.Storage |Upozornění |2 |85d077ab -… |Došlo k výjimce při čekání na odpověď: Vzdálený server vrátil chybu: 403 Zakázáno. |
 | Microsoft.WindowsAzure.Storage |Informace |3 |85d077ab -… |Byla přijata odpověď. Stavový kód 403, ID žádosti = = 9d67c64a-64ed-4b0d-9515-3b14bbcdc63d, Content-MD5 = ETag =. |
 | Microsoft.WindowsAzure.Storage |Upozornění |2 |85d077ab -… |Během operace došlo k výjimce: Vzdálený server vrátil chybu: Zakázáno (403)... |
 | Microsoft.WindowsAzure.Storage |Informace |3 |85d077ab -… |Kontroluje se, pokud byste operaci opakovat. Počet opakování 0, stavový kód HTTP 403, výjimka = = vzdálený server vrátil chybu: Zakázáno (403)... |
 | Microsoft.WindowsAzure.Storage |Informace |3 |85d077ab -… |Následujícího umístění je nastavená na primární, na základě umístění režimu. |
-| Microsoft.WindowsAzure.Storage |Chyba |1 |85d077ab -… |Zásady opakování pro opakování nepovolil. Došlo k selhání s vzdálený server vrátil chybu: Zakázáno (403). |
+| Microsoft.WindowsAzure.Storage |Chyba |1 |85d077ab -… |Zásady opakování pro opakování nepovolil. Došlo k selhání s vzdálený server vrátil chybu: 403 Zakázáno. |
 
 V tomto scénáři které byste měli prozkoumat, proč je SAS token vyprší před klient odešle token do serveru:
 
@@ -507,7 +507,7 @@ Následující protokol na straně klienta generovaných knihovny klienta úlož
 | ID požadavku | Operace |
 | --- | --- |
 | 07b26a5d-... |**DeleteIfExists** metoda odstranit kontejner objektů blob. Všimněte si, že tato operace zahrnuje **HEAD** požadavek na provedení kontroly existence kontejneru. |
-| e2d06d78... |**CreateIfNotExists** metodu pro vytvoření kontejneru objektů blob. Všimněte si, že tato operace zahrnuje **HEAD** požadavek, který zkontroluje existenci kontejneru. **HEAD** vrátí zprávu 404, ale bude pokračovat. |
+| e2d06d78… |**CreateIfNotExists** metodu pro vytvoření kontejneru objektů blob. Všimněte si, že tato operace zahrnuje **HEAD** požadavek, který zkontroluje existenci kontejneru. **HEAD** vrátí zprávu 404, ale bude pokračovat. |
 | de8b1c3c-... |**UploadFromStream** metodu pro vytvoření objektu blob. **UMÍSTIT** žádost selže se zprávou 404 |
 
 Položky protokolu:
@@ -515,7 +515,7 @@ Položky protokolu:
 | ID požadavku | Operace Text |
 | --- | --- |
 | 07b26a5d-... |Spouští se požadavku na https://domemaildist.blob.core.windows.net/azuremmblobcontainer. |
-| 07b26a5d-... |StringToSign = 03 června 2014 HEAD...x-ms-client-request-id:07b26a5d-...x-ms-date:Tue, 10:33:11 GMT.x-ms-version:2014-02-14./domemaildist/azuremmblobcontainer.restype:container. |
+| 07b26a5d-... |StringToSign = HEAD............x-ms-client-request-id:07b26a5d-....x-ms-date:Tue, 03 Jun 2014 10:33:11 GMT.x-ms-version:2014-02-14./domemaildist/azuremmblobcontainer.restype:container. |
 | 07b26a5d-... |Čekání na odpověď. |
 | 07b26a5d-... |Byla přijata odpověď. Stavový kód 200, ID žádosti = = eeead849-... Content-MD5 = ETag = &quot;0x8D14D2DC63D059B&quot;. |
 | 07b26a5d-... |Hlavičky odpovědi byly úspěšně zpracována, pokračuje se zbývající operace. |

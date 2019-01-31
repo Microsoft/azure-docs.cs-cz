@@ -1,5 +1,5 @@
 ---
-Název: Vytvoření titleSuffix modelu analýzy subjektivního hodnocení: Azure Machine Learning Studio Popis: Postup vytvoření modelů analýzy textu v Azure Machine Learning Studio pomocí moduly pro předzpracování, N-gramy text nebo funkce hash služby: machine learningu ms.service: ms.component strojového učení: studio ms.topic: článku
+Název: Vytvoření titleSuffix modelu analýzy subjektivního hodnocení: Azure Machine Learning Studio Popis: Postup vytvoření modelů analýzy textu v Azure Machine Learning Studio pomocí moduly pro předzpracování, N-gramy text nebo funkce hash služby: machine learningu ms.service: ms.subservice strojového učení: studio ms.topic: článku
 
 Autor: ericlicoding ms.author: amlstudiodocs ms.custom: seodec18 ms.date: 03/14/2018
 ---

@@ -6,16 +6,16 @@ author: acomet
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
-ms.component: design
+ms.subservice: design
 ms.date: 04/17/2018
 ms.author: acomet
 ms.reviewer: igorstan
-ms.openlocfilehash: 35252b4d262833daef330a89f1874cc0835c480a
-ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
+ms.openlocfilehash: d55c9db9af2eea9a56afe34c7a8689947a689bac
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43306736"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55462541"
 ---
 # <a name="sql-data-warehouse-frequently-asked-questions"></a>SQL Data Warehouse nejčastější dotazy
 
@@ -27,7 +27,7 @@ A. SQL data Warehouse nabízí několik řešení pro ochranu dat, jako je trans
 
 Otázka: Kde najdu jaké standardy právní nebo business se SQL data Warehouse kompatibilní s?
 
-A. Přejděte [Dodržování předpisů Microsoft] stránky pro různé nabídky dodržování předpisů podle produktu, jako je například SOC a ISO. Nejprve zvolte podle názvu dodržování předpisů a potom rozbalte Azure v části služby Microsoft cloud v oboru na pravé straně stránky a zjistit, jaké služby jsou Azure services jsou kompatibilní.
+A. Přejděte [Microsoft Compliance] stránky pro různé nabídky dodržování předpisů podle produktu, jako je například SOC a ISO. Nejprve zvolte podle názvu dodržování předpisů a potom rozbalte Azure v části služby Microsoft cloud v oboru na pravé straně stránky a zjistit, jaké služby jsou Azure services jsou kompatibilní.
 
 Otázka: Můžete připojit k Power BI?
 
@@ -82,19 +82,19 @@ Otázka: Jaké ovladače klienta podporujete?
 
 A. Podpora ovladačů pro datový Sklad můžete najít na [připojovací řetězce] stránky
 
-Otázka: které formáty souborů jsou podporovány službou SQL Data Warehouse polybase?
+DOTAZ: Které formáty souborů jsou podporovány službou SQL Data Warehouse polybase?
 
 Odpověď: Orc, RC, Parquet nebo bez stromové struktury text s oddělovači
 
-Otázka: Co můžu připojit k z SQL data Warehouse pomocí PolyBase? 
+DOTAZ: Co můžu připojit k z SQL data Warehouse pomocí PolyBase? 
 
-Odpověď: [Azure Data Lake Store] a [objekty BLOB služby Azure Storage]
+Odpověď: [Azure Data Lake Store] a [Azure Storage Blobs]
 
-Otázka: je výpočet přenosu směrem dolů možné při připojování ke službě Azure Storage Blobs nebo ADLS? 
+DOTAZ: Při připojování ke službě Azure Storage Blobs nebo ADLS, je výpočet přenosu směrem dolů je to možné? 
 
-Odpověď: Ne, PolyBase služby SQL data Warehouse komunikuje pouze komponenty úložiště. 
+Odpověď: SQL data Warehouse PolyBase Ne, pracuje pouze komponenty úložiště. 
 
-Otázka: je možné připojit k službě Hdinsight?
+DOTAZ: Můžu připojit ke službě Hdinsight?
 
 Odpověď: HDI můžete použít WASB nebo ADLS jako vrstva HDFS. Pokud máte jako vrstva HDFS, můžete načíst data do SQL data Warehouse. Však nelze generovat výpočtu přenosu směrem dolů k instanci HDI. 
 
@@ -108,12 +108,12 @@ Další informace o SQL Data Warehouse jako celek, najdete v našich [přehled] 
 [Stack Overflow]: http://stackoverflow.com/questions/tagged/azure-sqldw
 [Lístky žádostí o podporu]: ./sql-data-warehouse-get-started-create-support-ticket.md
 [Zabezpečení]: ./sql-data-warehouse-overview-manage-security.md
-[Dodržování předpisů Microsoft]: https://www.microsoft.com/en-us/trustcenter/compliance/complianceofferings
+[Microsoft Compliance]: https://www.microsoft.com/en-us/trustcenter/compliance/complianceofferings
 [limity kapacity]: ./sql-data-warehouse-service-capacity-limits.md
 [datové typy]: ./sql-data-warehouse-tables-data-types.md
 [Nepodporovaná tabulka funkce]: ./sql-data-warehouse-tables-overview.md#unsupported-table-features
 [Azure Data Lake Store]: ./sql-data-warehouse-load-from-azure-data-lake-store.md
-[Objekty BLOB služby Azure Storage]: ./sql-data-warehouse-load-from-azure-blob-storage-with-polybase.md
+[Azure Storage Blobs]: ./sql-data-warehouse-load-from-azure-blob-storage-with-polybase.md
 [Žádost o funkci databázové projekty]: https://feedback.azure.com/forums/307516-sql-data-warehouse/suggestions/13313247-database-project-from-visual-studio-to-support-azu
 [MSDN]: https://msdn.microsoft.com/library/azure/mt163685.aspx
 [Přehled]: ./sql-data-warehouse-overview-faq.md

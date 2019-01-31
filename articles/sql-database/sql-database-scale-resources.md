@@ -11,13 +11,13 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: jrasnik, carlrab
 manager: craigg
-ms.date: 10/05/2018
-ms.openlocfilehash: 1c83ebd0153e7a28365317b02d3debbe43d976f9
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.date: 01/25/2019
+ms.openlocfilehash: 49743130966589cceedb7756540c723a6f3276ff
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53601572"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55471663"
 ---
 # <a name="dynamically-scale-database-resources-with-minimal-downtime"></a>Dynamicky škálovat prostředky databáze s minimálními výpadky
 
@@ -54,9 +54,9 @@ Můžete změnit [jednotek DTU úrovně služeb](sql-database-service-tiers-dtu.
 
 Všechny tři typy služby Azure SQL Database nabízí některé schopnost dynamicky škálovat databáze:
 
-- V [izolovanou databázi SQL Azure](sql-database-single-database-scale.md), můžete použít buď [DTU](sql-database-dtu-resource-limits-single-databases.md) nebo [vCore](sql-database-vcore-resource-limits-single-databases.md) modely, které definují maximální množství prostředků, které se přiřadí každé databázi.
-- [Spravované Instance Azure SQL](sql-database-managed-instance.md) používá [virtuálních jader](sql-database-managed-instance.md#vcore-based-purchasing-model) režimu a umožňuje definovat maximální počet jader procesoru a maximální úložiště přidělené k vaší instanci. Všechny databáze v instanci se sdílení prostředků přidělených této instanci.
-- [Elastické fondy Azure SQL](sql-database-elastic-pool-scale.md) vám umožňují definovat prostředek maximální limit pro skupinu databází ve fondu.
+- S [izolované databáze](sql-database-single-database-scale.md), můžete použít buď [DTU](sql-database-dtu-resource-limits-single-databases.md) nebo [vCore](sql-database-vcore-resource-limits-single-databases.md) modely, které definují maximální množství prostředků, které se přiřadí každé databázi.
+- A [Managed Instance](sql-database-managed-instance.md) používá [virtuálních jader](sql-database-managed-instance.md#vcore-based-purchasing-model) režimu a umožňuje definovat maximální počet jader procesoru a maximální úložiště přidělené k vaší instanci. Všechny databáze v instanci se sdílení prostředků přidělených této instanci.
+- [Elastické fondy](sql-database-elastic-pool-scale.md) vám umožňují definovat prostředek maximální limit pro skupinu databází ve fondu.
 
 ## <a name="alternative-scale-methods"></a>Škálování alternativní metody
 

@@ -1,6 +1,6 @@
 ---
 title: Urychlení obnovení databáze – Azure SQL Database | Dokumentace Microsoftu
-description: Azure SQL Database obsahuje novou funkci, která poskytuje obnovení databáze rychlé a konzistentní vzhledem k aplikacím, okamžité transakce vrácení zpět a zkrácení agresivní protokolu pro izolované databáze, elastické fondy a Azure SQL Data Warehouse.
+description: Azure SQL Database obsahuje novou funkci, která poskytuje obnovení databáze rychlé a konzistentní vzhledem k aplikacím, okamžité transakce vrácení zpět a zkrácení agresivní protokolu pro izolované databáze a databáze ve fondu ve službě Azure SQL Database a databází v Azure SQL Data Sklad.
 ms.service: sql-database
 ms.subservice: high-availability
 ms.custom: ''
@@ -10,17 +10,17 @@ author: mashamsft
 ms.author: mathoma
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 10/11/2018
-ms.openlocfilehash: deaf5c9180841f8c5b2d21a820f2ab2362dc2453
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.date: 01/25/2019
+ms.openlocfilehash: 6d962a40fe0e1a7658c0d5ac30c7fd04bfb7fb0f
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53600707"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55475444"
 ---
 # <a name="accelerated-database-recovery-preview"></a>Zrychlené obnovení databáze (preview)
 
-**Obnovení databáze (ADR) Accelerated** novou funkci modul databáze SQL, která výrazně zlepšuje dostupnost databáze, zejména za přítomnosti dlouho běží transakce, realizace proces obnovení modulu databáze SQL. Pravidla automatického nasazení je aktuálně dostupné pro izolované databáze, elastické fondy a Azure SQL Data Warehouse. Hlavní výhody pravidla automatického nasazení jsou:
+**Obnovení databáze (ADR) Accelerated** novou funkci modul databáze SQL, která výrazně zlepšuje dostupnost databáze, zejména za přítomnosti dlouho běží transakce, realizace proces obnovení modulu databáze SQL. Pravidla automatického nasazení je aktuálně dostupné pro izolované databáze a databáze ve fondu ve službě Azure SQL Database a databáze ve službě Azure SQL Data Warehouse. Hlavní výhody pravidla automatického nasazení jsou:
 
 - **Obnovení databáze rychlé a konzistentní vzhledem k aplikacím**
 
@@ -127,4 +127,4 @@ Následující typy zákazníci měli zvážit povolení pravidla automatického
 
 ## <a name="to-enable-adr-during-this-preview-period"></a>Povolit pravidla automatického nasazení během tohoto období preview
 
-Během období preview pro tuto funkci, odešlete e-mail na [ adr@microsoft.com ](mailto:adr@microsoft.com) chcete dozvědět víc a zkuste si Accelerated obnovení databáze (ADR). V tomto e-mailu zahrnout název logického serveru (pro izolované databáze, elastické fondy a Azure Data Warehouse). Protože se jedná o funkci preview, váš testovací server by měl být mimo provozní server.
+Během období preview pro tuto funkci, odešlete e-mail na [ adr@microsoft.com ](mailto:adr@microsoft.com) chcete dozvědět víc a zkuste si Accelerated obnovení databáze (ADR). V e-mailu obsahují název vaší databáze SQL serveru (pro izolované databáze a databáze ve fondu ve službě SQL Database a databáze ve službě Azure Data Warehouse). Protože se jedná o funkci preview, váš testovací server by měl být mimo provozní server.

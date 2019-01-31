@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry
-ms.openlocfilehash: 9375b042885459ab88b7c1f2a76a471da55ff5c8
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: a36f9bf3ade623a6b623116c504c2b6a04fcdf2b
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55209532"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55474866"
 ---
 # <a name="tutorial-azure-ad-password-reset-from-the-login-screen"></a>Kurz: Resetování hesla Azure AD z přihlašovací obrazovky
 
@@ -32,7 +32,7 @@ V tomto kurzu povolíte uživatelům resetovat svá hesla z přihlašovací obra
    * [Azure AD připojený](../device-management-azure-portal.md) nebo
    * [Hybridní Azure připojené k AD](../device-management-hybrid-azuread-joined-devices-setup.md), s připojením k řadiči domény.
 * Je nutné povolit Azure AD samoobslužné resetování hesla.
-* Pokud vaše zařízení s Windows 10 jsou za proxy server nebo brána firewall, je nutné přidat adresy URL, `passwordreset.microsoftonline.com` a `ajax.aspnet.cdn.com` do seznamu povolené adresy URL HTTPS provoz (port 443).
+* Pokud vaše zařízení s Windows 10 jsou za proxy server nebo brána firewall, je nutné přidat adresy URL, `passwordreset.microsoftonline.com` a `ajax.aspnetcdn.com` do seznamu povolené adresy URL HTTPS provoz (port 443).
 
 ## <a name="configure-reset-password-link-using-intune"></a>Konfigurace odkazu na resetování hesla pomocí Intune
 

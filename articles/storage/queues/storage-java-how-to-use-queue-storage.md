@@ -9,13 +9,13 @@ ms.devlang: Java
 ms.topic: article
 ms.date: 12/08/2016
 ms.author: rogarana
-ms.component: queues
-ms.openlocfilehash: 594407ac5f5dc012ab542cedc6393b702fa31804
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.subservice: queues
+ms.openlocfilehash: bec1632199e59994831efe4af583617b01374c53
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39525395"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55473795"
 ---
 # <a name="how-to-use-queue-storage-from-java"></a>Používání úložiště Queue z Javy
 [!INCLUDE [storage-selector-queue-include](../../../includes/storage-selector-queue-include.md)]
@@ -25,7 +25,7 @@ ms.locfileid: "39525395"
 ## <a name="overview"></a>Přehled
 Tato příručka se ukazují, jak provádět běžné scénáře pomocí služby Azure Queue storage. Ukázky jsou napsané v Javě a využívají [sadu SDK služby Azure Storage pro Javu][Azure Storage SDK for Java]. Mezi popsané scénáře patří **vkládání**, **prohlížení**, **získávání**, a **odstranění** fronty zpráv, stejně jako  **vytváření** a **odstranění** fronty. Další informace o frontách najdete v článku [další kroky](#Next-Steps) oddílu.
 
-Poznámka: Sada SDK je k dispozici pro vývojáře, kteří jsou na zařízeních s Androidem pomocí služby Azure Storage. Další informace najdete v tématu [Sada SDK služby Azure Storage pro Android][Azure Storage SDK for Android].
+Poznámka: Sada SDK je k dispozici pro vývojáře používající službu Azure Storage na zařízeních s Androidem. Další informace najdete v tématu [Sada SDK služby Azure Storage pro Android][Azure Storage SDK for Android].
 
 [!INCLUDE [storage-queue-concepts-include](../../../includes/storage-queue-concepts-include.md)]
 
@@ -66,8 +66,8 @@ String storageConnectionString =
 
 V následujících ukázkách se předpokládá, že jste pomocí některé z těchto dvou metod získali připojovací řetězec úložiště.
 
-## <a name="how-to-create-a-queue"></a>Postupy: vytvoření fronty
-A **CloudQueueClient** objektu umožňuje získat odkaz na objekty pro fronty. Následující kód vytvoří **CloudQueueClient** objektu. (Poznámka: existují další způsoby, jak vytvořit **CloudStorageAccount** objekty; Další informace najdete v tématu **CloudStorageAccount** v [Referenční informace ke klientské sadě SDK služby Azure Storage].)
+## <a name="how-to-create-a-queue"></a>Postup: Vytvoření fronty
+A **CloudQueueClient** objektu umožňuje získat odkaz na objekty pro fronty. Následující kód vytvoří **CloudQueueClient** objektu. (Poznámka: Existují další způsoby, jak vytvořit **CloudStorageAccount** objekty; Další informace najdete v tématu **CloudStorageAccount** v [Referenční informace ke klientské sadě SDK služby Azure Storage].)
 
 Použít **CloudQueueClient** můžete získat odkaz na frontu, kterou chcete použít. Můžete vytvořit frontu, pokud neexistuje.
 
@@ -94,7 +94,7 @@ catch (Exception e)
 }
 ```
 
-## <a name="how-to-add-a-message-to-a-queue"></a>Postupy: Přidání zprávy do fronty
+## <a name="how-to-add-a-message-to-a-queue"></a>Postup: Přidání zprávy do fronty
 Pokud chcete vložit zprávu do existující fronty, vytvořte nejdříve novou třídu **CloudQueueMessage**. Pak zavolejte **addMessage** metody. A **CloudQueueMessage** lze vytvořit z řetězce (ve formátu UTF-8) nebo s polem bajtů. Tady je kód, který vytvoří frontu (pokud neexistuje) a vloží zprávu "Hello, World".
 
 ```java
@@ -124,7 +124,7 @@ catch (Exception e)
 }
 ```
 
-## <a name="how-to-peek-at-the-next-message"></a>Postupy: zobrazení náhledu další zprávy
+## <a name="how-to-peek-at-the-next-message"></a>Postup: Zobrazení náhledu další zprávy
 Můžete prohlížet zprávy ve frontě bez odebrání z fronty pomocí volání **peekMessage**.
 
 ```java
@@ -156,7 +156,7 @@ catch (Exception e)
 }
 ```
 
-## <a name="how-to-change-the-contents-of-a-queued-message"></a>Postupy: Změna obsahu zpráv zařazených ve frontě
+## <a name="how-to-change-the-contents-of-a-queued-message"></a>Postup: Změna obsahu zpráv zařazených ve frontě
 Podle potřeby můžete změnit obsah zprávy přímo ve frontě. Pokud zpráva představuje pracovní úlohu, mohli byste tuto funkci použít k aktualizaci stavu pracovních úloh. Následující kód aktualizuje zprávy ve frontě o nový obsah a prodlouží časový limit viditelnosti na 60 sekund. Uloží se tím stav práce spojený se zprávou a klient získá další minutu, aby mohl pokračovat ve zpracování zprávy. Tímto způsobem může sledovat vícekrokového pracovní postupy pro zprávy ve frontě, aniž by bylo nutné v případě, že krok zpracování z důvodu selhání hardwaru nebo softwaru selže, začít znovu od začátku. Obvykle byste udržovali také hodnotu počtu opakování, a pokud by se pokus o zpracování zprávy opakoval více než *n*krát, odstranili byste ji. Je to ochrana proti tomu, aby zpráva při každém pokusu o zpracování nevyvolala chyby aplikace.
 
 Následující ukázky hledání kódu prostřednictvím fronty zpráv, vyhledá první zprávu, která odpovídá "Hello, World" pro obsah, pak upraví obsah zprávu a ukončí.
@@ -239,7 +239,7 @@ catch (Exception e)
 }
 ```
 
-## <a name="how-to-get-the-queue-length"></a>Postupy: získání délky fronty
+## <a name="how-to-get-the-queue-length"></a>Postup: Získání délky fronty
 Podle potřeby můžete získat odhadovaný počet zpráv ve frontě. **DownloadAttributes** metoda požádá službu front pro několik aktuální hodnoty, včetně počet počet zpráv ve frontě. Počet totiž pouze přibližná zprávy můžete přidat nebo odebrat po služba fronty jsou reaguje na váš požadavek. **GetApproximateMessageCount** metoda vrátí poslední hodnotu načtenou volání **downloadAttributes**, bez volání služby front.
 
 ```java
@@ -271,7 +271,7 @@ catch (Exception e)
 }
 ```
 
-## <a name="how-to-dequeue-the-next-message"></a>Postupy: odstranění z fronty další zprávy
+## <a name="how-to-dequeue-the-next-message"></a>Postup: Vyřazení další zprávy z fronty
 Váš kód dequeues zprávy z fronty ve dvou krocích. Při volání **retrieveMessage**, získáte další zprávu ve frontě. Zpráva vrácená metodou **retrieveMessage** stane neviditelnou pro jakýkoli jiný kód přečte zprávy z této fronty. Ve výchozím nastavení tato zpráva zůstává neviditelná po dobu 30 sekund. K dokončení odebrání zprávy z fronty, musíte také zavolat **deleteMessage**. Tento dvoukrokový proces odebrání zprávy zaručuje, aby v případě, že se vašemu kódu nepodaří zprávu zpracovat z důvodu selhání hardwaru nebo softwaru, mohla stejnou zprávu získat jiná instance vašeho kódu a bylo možné to zkusit znovu. Kód volá **deleteMessage** hned po zpracování zprávy.
 
 ```java
@@ -335,7 +335,7 @@ catch (Exception e)
 }
 ```
 
-## <a name="how-to-list-the-queues"></a>Postupy: výpis front
+## <a name="how-to-list-the-queues"></a>Postup: Seznam front
 Chcete-li získat seznam aktuálního front, zavolejte **CloudQueueClient.listQueues()** metodu, která vrátí kolekci **CloudQueue** objekty.
 
 ```java
@@ -363,7 +363,7 @@ catch (Exception e)
 }
 ```
 
-## <a name="how-to-delete-a-queue"></a>Postupy: odstranění fronty
+## <a name="how-to-delete-a-queue"></a>Postup: Odstranění fronty
 Chcete-li odstranit frontu se všemi zprávami, které v ní, zavolejte **deleteIfExists** metodu **CloudQueue** objektu.
 
 ```java

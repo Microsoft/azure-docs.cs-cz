@@ -1,6 +1,6 @@
 ---
-Název: Zkopírujte ostatních data science příklady titleSuffix: Azure Machine Learning Studio Popis: "Tajemství datové vědy: Získejte ostatním uživatelům práci za vás. Získání příkladů strojového učení v galerii Azure AI. "
-Services: machine learningu ms.service: ms.component strojového učení: studio ms.topic: článku
+Název: Zkopírujte ostatních data science příklady titleSuffix: Azure Machine Learning Studio Popis: "Tajemství datové vědy: Získejte ostatním uživatelům práci za vás. Získání příkladů strojového učení v galerii Azure AI. "
+Services: machine learningu ms.service: ms.subservice strojového učení: studio ms.topic: článku
 
 Autor: garyericson ms.author: garye ms.custom: seodec18 ms.date: 01/05/2018
 ---

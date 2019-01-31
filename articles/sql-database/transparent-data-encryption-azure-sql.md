@@ -12,12 +12,12 @@ ms.author: aliceku
 ms.reviewer: vanto
 manager: craigg
 ms.date: 01/22/2019
-ms.openlocfilehash: b0b4a89aaf9b00b30e6b4759c8aa168f06d0d008
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: 7b1d58b82f2ccc99ecacb6099f6063fba5899421
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54462466"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55478453"
 ---
 # <a name="transparent-data-encryption-for-sql-database-and-data-warehouse"></a>Transparentní šifrování dat pro SQL Database a Data Warehouse
 
@@ -96,7 +96,7 @@ Pomocí následujících rutin pro Azure SQL Database a Data Warehouse:
 | [Get-AzureRmSqlDatabaseTransparentDataEncryption](https://docs.microsoft.com/powershell/module/azurerm.sql/get-azurermsqldatabasetransparentdataencryption) |Získá stav šifrování transparentní dat pro databázi |
 | [Get-AzureRmSqlDatabaseTransparentDataEncryptionActivity](https://docs.microsoft.com/powershell/module/azurerm.sql/get-azurermsqldatabasetransparentdataencryptionactivity) |Kontroluje, Probíhá šifrování pro databázi |
 | [Add-AzureRmSqlServerKeyVaultKey](https://docs.microsoft.com/powershell/module/azurerm.sql/add-azurermsqlserverkeyvaultkey) |Přidá klíč služby Key Vault k instanci systému SQL Server |
-| [Get-AzureRmSqlServerKeyVaultKey](https://docs.microsoft.com/powershell/module/azurerm.sql/get-azurermsqlserverkeyvaultkey) |Získá klíče služby Key Vault pro server služby Azure SQL database  |
+| [Get-AzureRmSqlServerKeyVaultKey](https://docs.microsoft.com/powershell/module/azurerm.sql/get-azurermsqlserverkeyvaultkey) |Získá klíče služby Key Vault pro server Azure SQL Database  |
 | [Set-AzureRmSqlServerTransparentDataEncryptionProtector](https://docs.microsoft.com/powershell/module/azurerm.sql/set-azurermsqlservertransparentdataencryptionprotector) |Nastaví ochrana dat transparentní šifrování pro instanci systému SQL Server |
 | [Get-AzureRmSqlServerTransparentDataEncryptionProtector](https://docs.microsoft.com/powershell/module/azurerm.sql/get-azurermsqlservertransparentdataencryptionprotector) |Získá data transparentní ochrana šifrování |
 | [Remove-AzureRmSqlServerKeyVaultKey](https://docs.microsoft.com/powershell/module/azurerm.sql/remove-azurermsqlserverkeyvaultkey) |Odebere klíč služby Key Vault z instance systému SQL Server |

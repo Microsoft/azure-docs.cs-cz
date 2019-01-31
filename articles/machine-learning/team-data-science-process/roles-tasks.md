@@ -6,17 +6,17 @@ manager: cgronlun
 editor: cgronlun
 services: machine-learning
 ms.service: machine-learning
-ms.component: team-data-science-process
+ms.subservice: team-data-science-process
 ms.topic: article
 ms.date: 09/04/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 051f80f16254c25853e476f66e8696423641073b
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: 05fc742bba535ea3968e60cd0f40c80b812c09fd
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53250786"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55466434"
 ---
 # <a name="team-data-science-process-roles-and-tasks"></a>Tým vědecké zpracování dat role a úlohy
 

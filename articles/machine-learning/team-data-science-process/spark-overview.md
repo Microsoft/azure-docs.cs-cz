@@ -6,17 +6,17 @@ author: marktab
 manager: cgronlun
 editor: cgronlun
 ms.service: machine-learning
-ms.component: team-data-science-process
+ms.subservice: team-data-science-process
 ms.topic: article
 ms.date: 11/13/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 9e22299a508810cabaa9361d764fd2a8e1ecdee8
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: b49ec91af0c2b55185d7f750420825bb174c4b6d
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53975980"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55473727"
 ---
 # <a name="overview-of-data-science-using-spark-on-azure-hdinsight"></a>Přehled vědeckého zkoumání dat pomocí Sparku v Azure HDInsight
 
@@ -41,9 +41,9 @@ Tyto poznámkové bloky jsou ke spuštění v jádra pySpark server poznámkové
 ### <a name="spark-20-notebooks"></a>Poznámkové bloky Spark 2.0
 Tyto poznámkové bloky se mají spustit v jádru pySpark3 server poznámkového bloku Jupyter.
 
-- [Spark2.0-pySpark3-Machine-Learning-data-Science-Spark-Advanced-data-Exploration-Modeling.ipynb](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Spark2.0/Spark2.0-pySpark3-machine-learning-data-science-spark-advanced-data-exploration-modeling.ipynb): Tento soubor obsahuje informace o tom, jak provádět zkoumání dat, modelování, a hodnocení ve Spark 2.0 clusterů pomocí cesty taxíkem NYC a tarif datové sady je popsáno [tady](https://docs.microsoft.com/azure/machine-learning/machine-learning-data-science-spark-overview#the-nyc-2013-taxi-data). Tento poznámkový blok může být dobrým výchozím bodem rychle prozkoumat kód, který jsme připravili pro Spark 2.0. Poznámkový blok podrobnější analyzuje data taxislužby NYC, najdete v části Další poznámkového bloku v tomto seznamu. Naleznete v poznámkách za tímto seznamem, které porovnávají tyto poznámkové bloky.
-- [Spark2.0 pySpark3_NYC_Taxi_Tip_Regression.ipynb](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Spark2.0/Spark2.0_pySpark3_NYC_Taxi_Tip_Regression.ipynb): Tento soubor ukazuje, jak provádět tahání dat (Spark SQL a datový rámec operace), průzkum, modelování a vyhodnocování pomocí cesty taxíkem NYC a tarif datové sady je popsáno [tady](https://docs.microsoft.com/azure/machine-learning/machine-learning-data-science-spark-overview#the-nyc-2013-taxi-data).
-- [Spark2.0 pySpark3_Airline_Departure_Delay_Classification.ipynb](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Spark2.0/Spark2.0_pySpark3_Airline_Departure_Delay_Classification.ipynb): Tento soubor ukazuje, jak provádět tahání dat (Spark SQL a datový rámec operace), průzkum, modelování a vyhodnocování pomocí dobře známých letecká společnost na čas odeslání datové sady z 2011 a 2012. Integrovali jsme letecká společnost datovou sadu s daty o počasí letiště (například rychlost větru, teplota, výška atd.) před modelování, takže tyto funkce počasí mohou být součástí modelu.
+- [Spark2.0-pySpark3-machine-learning-data-science-spark-advanced-data-exploration-modeling.ipynb](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Spark2.0/Spark2.0-pySpark3-machine-learning-data-science-spark-advanced-data-exploration-modeling.ipynb): Tento soubor obsahuje informace o tom, jak provádět zkoumání dat, modelování, a hodnocení ve Spark 2.0 clusterů pomocí cesty taxíkem NYC a tarif datové sady je popsáno [tady](https://docs.microsoft.com/azure/machine-learning/machine-learning-data-science-spark-overview#the-nyc-2013-taxi-data). Tento poznámkový blok může být dobrým výchozím bodem rychle prozkoumat kód, který jsme připravili pro Spark 2.0. Poznámkový blok podrobnější analyzuje data taxislužby NYC, najdete v části Další poznámkového bloku v tomto seznamu. Naleznete v poznámkách za tímto seznamem, které porovnávají tyto poznámkové bloky.
+- [Spark2.0-pySpark3_NYC_Taxi_Tip_Regression.ipynb](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Spark2.0/Spark2.0_pySpark3_NYC_Taxi_Tip_Regression.ipynb): Tento soubor ukazuje, jak provádět tahání dat (Spark SQL a datový rámec operace), průzkum, modelování a vyhodnocování pomocí cesty taxíkem NYC a tarif datové sady je popsáno [tady](https://docs.microsoft.com/azure/machine-learning/machine-learning-data-science-spark-overview#the-nyc-2013-taxi-data).
+- [Spark2.0-pySpark3_Airline_Departure_Delay_Classification.ipynb](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Spark2.0/Spark2.0_pySpark3_Airline_Departure_Delay_Classification.ipynb): Tento soubor ukazuje, jak provádět tahání dat (Spark SQL a datový rámec operace), průzkum, modelování a vyhodnocování pomocí dobře známých letecká společnost na čas odeslání datové sady z 2011 a 2012. Integrovali jsme letecká společnost datovou sadu s daty o počasí letiště (například rychlost větru, teplota, výška atd.) před modelování, takže tyto funkce počasí mohou být součástí modelu.
 
 <!-- -->
 
@@ -61,7 +61,7 @@ Tyto poznámkové bloky se mají spustit v jádru pySpark3 server poznámkového
 <!-- -->
 
 > [!NOTE]
-Poznámkové bloky Spark 2.0 na NYC taxislužby města a letecká společnost letu zpoždění-sady dat může trvat 10 minut nebo déle ke spuštění (v závislosti na velikosti vašeho clusteru Hdinsight). První poznámkového bloku v seznamu nahoře ukazuje mnoho aspektů zkoumání, vizualizaci a trénování modelů ML v poznámkovém bloku, která přebírá méně času na spuštění pomocí předvýpočtem zredukovaných NYC datové sady, ve kterém byly soubory taxislužby města a tarif předem připojené k doméně: [Spark2.0-pySpark3-Machine-Learning-data-Science-Spark-Advanced-data-Exploration-Modeling.ipynb](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Spark2.0/Spark2.0-pySpark3-machine-learning-data-science-spark-advanced-data-exploration-modeling.ipynb). Tento poznámkový blok trvá mnohem kratší dobu dokončení (2 až 3 minut) a může být vhodná počáteční bod rychle prozkoumat kód, který jsme připravili pro Spark 2.0.
+Poznámkové bloky Spark 2.0 na NYC taxislužby města a letecká společnost letu zpoždění-sady dat může trvat 10 minut nebo déle ke spuštění (v závislosti na velikosti vašeho clusteru Hdinsight). První poznámkového bloku v seznamu nahoře ukazuje mnoho aspektů zkoumání, vizualizaci a trénování modelů ML v poznámkovém bloku, která přebírá méně času na spuštění pomocí předvýpočtem zredukovaných NYC datové sady, ve kterém byly soubory taxislužby města a tarif předem připojené k doméně: [Spark2.0-pySpark3-machine-learning-data-science-spark-advanced-data-exploration-modeling.ipynb](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Spark2.0/Spark2.0-pySpark3-machine-learning-data-science-spark-advanced-data-exploration-modeling.ipynb). Tento poznámkový blok trvá mnohem kratší dobu dokončení (2 až 3 minut) a může být vhodná počáteční bod rychle prozkoumat kód, který jsme připravili pro Spark 2.0.
 
 <!-- -->
 

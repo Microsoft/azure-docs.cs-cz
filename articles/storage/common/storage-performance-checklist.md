@@ -7,13 +7,13 @@ ms.service: storage
 ms.topic: article
 ms.date: 12/08/2016
 ms.author: rogarana
-ms.component: common
-ms.openlocfilehash: f865768e6ebfd9e01de1bd7e69c1224b66f2ea5e
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.subservice: common
+ms.openlocfilehash: d627fa1ca52356c43c9a771f612ae6d043299678
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51231784"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55460824"
 ---
 # <a name="microsoft-azure-storage-performance-and-scalability-checklist"></a>Kontrolní seznam pro výkon a škálovatelnost Microsoft Azure Storage
 ## <a name="overview"></a>Přehled
@@ -40,9 +40,9 @@ Tento článek slouží k uspořádání osvědčených postupů do následujíc
 | &nbsp; | Všechny služby |Přímý přístup do klienta |[Používáte umožňující přímý přístup k úložišti místo proxy SAS a CORS?](#subheading6) |
 | &nbsp; | Všechny služby |Ukládání do mezipaměti |[Je vaše aplikace ukládání do mezipaměti dat, který se opakovaně používá změny jen zřídka?](#subheading7) |
 | &nbsp; | Všechny služby |Ukládání do mezipaměti |[Je vaše aplikace dávkové aktualizace (je do mezipaměti na straně klienta a odesláním v větší sady)?](#subheading8) |
-| &nbsp; | Všechny služby |Konfigurace rozhraní .NET |[Nakonfigurovali jste vašeho klienta pro použití dostatečný počet souběžných připojení?](#subheading9) |
-| &nbsp; | Všechny služby |Konfigurace rozhraní .NET |[Nakonfigurovali jste .NET použijte dostatečný počet vláken?](#subheading10) |
-| &nbsp; | Všechny služby |Konfigurace rozhraní .NET |[Používáte .NET 4.5 nebo novější, která zvýšil uvolňování paměti?](#subheading11) |
+| &nbsp; | Všechny služby |.NET Configuration |[Nakonfigurovali jste vašeho klienta pro použití dostatečný počet souběžných připojení?](#subheading9) |
+| &nbsp; | Všechny služby |.NET Configuration |[Nakonfigurovali jste .NET použijte dostatečný počet vláken?](#subheading10) |
+| &nbsp; | Všechny služby |.NET Configuration |[Používáte .NET 4.5 nebo novější, která zvýšil uvolňování paměti?](#subheading11) |
 | &nbsp; | Všechny služby |Paralelismus |[Můžete zajistíte, že paralelismu ohraničená odpovídajícím způsobem tak, aby není přetížení vaše možnosti klienta nebo cíle škálovatelnosti?](#subheading12) |
 | &nbsp; | Všechny služby |Nástroje |[Používáte nejnovější verzi Microsoft klientské knihovny a nástroje jsou poskytovány?](#subheading13) |
 | &nbsp; | Všechny služby |Opakování |[Jsou pomocí exponenciálního omezení rychlosti zásady pro omezení chyb a vypršení časových limitů opakování?](#subheading14) |
@@ -147,7 +147,7 @@ Za normálních okolností neumožní prohlížeči JavaScript na stránce hosto
 Obě tyto technologie vám může pomoct vyhnout nepotřebné zatížení (a kritická místa) ve webové aplikaci.  
 
 #### <a name="useful-resources"></a>Užitečné materiály
-Další informace o SAS najdete v tématu [sdílené přístupové podpisy, část 1: vysvětlení modelu SAS](../storage-dotnet-shared-access-signature-part-1.md).  
+Další informace o SAS najdete v tématu [sdílené přístupové podpisy, část 1: Vysvětlení modelu SAS](../storage-dotnet-shared-access-signature-part-1.md).  
 
 Další informace o CORS, najdete v části [podporu sdílení prostředků mezi zdroji (CORS) pro služby Azure Storage](https://msdn.microsoft.com/library/azure/dn535601.aspx).  
 
@@ -164,7 +164,7 @@ Příklad toho, jak získat objekt blob vlastnosti zjišťování datum posledn�
 #### <a name="subheading8"></a>Nahrávání dat do dávek
 V některých scénářích aplikace můžete agregovat data místně a pravidelně nahrajte ji ve službě batch namísto odesílání každá část dat okamžitě. Například webové aplikace mohou mít soubor protokolu aktivit: aplikace by buď nahrát podrobnosti o každé aktivitě, protože se stane jako tabulka entity (která vyžaduje mnoho operací úložiště), nebo podrobnosti o aktivitě může uložit do místního souboru protokolu a pak všechny podrobnosti o aktivitě pravidelně nahrajte jako souboru s oddělovači do objektu blob. Pokud každá položka protokolu má velikost 1KB, můžete nahrát tisíců v rámci jedné transakce "Put Blob" (můžete nahrát objekt blob velikost v rámci jedné transakce až 64MB). Samozřejmě, pokud v místním počítači dojde k chybě před nahrávání, potenciálně ztratíte některá data protokolu: musí vývojář aplikace návrhu pro možnost zařízení klienta nebo chyby nahrávání.  Pokud se data aktivit je potřeba stáhnout pro časových rozpětí (jenom jedna aktivita), se doporučují objekty BLOB přes tabulky.
 
-### <a name="net-configuration"></a>Konfigurace rozhraní .NET
+### <a name="net-configuration"></a>.NET Configuration
 Pokud používáte rozhraní .NET Framework, tato část obsahuje seznam několika rychlé nastavení, které vám umožní provést výrazné zlepšení výkonu.  Pokud používáte jiné jazyky, zkontrolujte, pokud podobně jako koncepty platí ve zvoleném jazyce.  
 
 #### <a name="subheading9"></a>Zvyšte výchozí limit připojení
@@ -178,7 +178,7 @@ Je nutné nastavit limit připojení před otevřením jakékoliv připojení.
 
 Jiných programovacích jazycích najdete v daném jazyce dokumentaci a zjistit, jak nastavit limit připojení.  
 
-Další informace najdete v příspěvku blogu [webové služby: souběžných připojení](https://blogs.msdn.com/b/darrenj/archive/2005/03/07/386655.aspx).  
+Další informace najdete v příspěvku blogu [webové služby: Souběžná připojení](https://blogs.msdn.com/b/darrenj/archive/2005/03/07/386655.aspx).  
 
 #### <a name="subheading10"></a>Použití synchronního kódu se úloh s modifikátorem Async zvýšit Min vláken fondu vláken
 Tento kód se zvýší vláken fondu vláken min:  
@@ -229,7 +229,7 @@ Může číst nebo zapisovat do jednoho objektu blob v až do maximálního poč
 Další informace o propustnosti cílové objektů BLOB najdete v tématu [Azure Storage škálovatelnost a cíle výkonnosti](storage-scalability-targets.md).  
 
 ### <a name="copying-and-moving-blobs"></a>Kopírování a přesouvání objektů BLOB
-#### <a name="subheading17"></a>Zkopírování objektu Blob
+#### <a name="subheading17"></a>Copy Blob
 Zavedená užitečná schopnost kopírování objektů BLOB v účtech úložiště rozhraní REST API verze 2012-02-12: klientská aplikace může dáte pokyn, aby službu storage ke kopírování objektu blob z jiného zdroje (například ve jiný účet úložiště) a nechte provést služby kopie asynchronně. To může výrazně snížit šířku pásma potřebnou pro aplikaci, když se migraci dat z jiné účty úložiště, protože není potřeba stáhnout a nahrát data.  
 
 Jedním z faktorů, ale je, že při kopírování mezi účty úložiště, není zaručeno čas na při kopírování dokončí. Pokud vaše aplikace potřebuje na dokončení kopírování objektu blob rychle pod vaší kontrolou, může být lepší kopírování objektu blob stažením k virtuálnímu počítači a následně pak ho nahrát do cíle.  Pro úplnou předvídatelnost v takové situaci Ujistěte se, že kopírování se provádí pomocí virtuálního počítače s ve stejné oblasti Azure, jinak síťové podmínky mohou (a pravděpodobně bude) ovlivnit výkon kopírování.  Kromě toho můžete monitorovat průběh asynchronní kopírování prostřednictvím kódu programu.  
@@ -255,10 +255,10 @@ K rychlé nahrání objektů BLOB, je první otázku odpovědět: je, že nahrá
 #### <a name="subheading21"></a>Nahrávání velkých objektů blob v jedné rychle
 Rychle nahrát jeden velký objekt blob, měli klientské aplikace nahrávat jeho bloků nebo stránky paralelně (jsou cíle škálovatelnosti pro jednotlivé objekty BLOB a účtu úložiště jako celek s vědomím).  Mějte na paměti, že oficiální poskytovaný společností Microsoft RTM úložiště klientských knihoven (.NET, Java) se budou moct provést.  Pro každou z knihoven, použijte nižší než zadaný objekt nebo vlastnost nastavit úroveň souběžnosti:  
 
-* .NET: Sada ParallelOperationThreadCount BlobRequestOptions objektu má být použit.
-* Javu/Android: Použít BlobRequestOptions.setConcurrentRequestCount()
-* Node.js: Použití parallelOperationThreadCount na možnosti žádosti nebo na službu blob service.
-* Jazyk C++: Použijte metodu blob_request_options::set_parallelism_factor.
+* .NET: Nastavit ParallelOperationThreadCount BlobRequestOptions objektu, který se má použít.
+* Java/Android: Use BlobRequestOptions.setConcurrentRequestCount()
+* Node.js: Použijte parallelOperationThreadCount v možnosti žádosti nebo na službu blob service.
+* C++: Použijte metodu blob_request_options::set_parallelism_factor.
 
 #### <a name="subheading22"></a>Rychle nahrává velký počet objektů BLOB
 Pokud chcete rychle nahrát velký počet objektů BLOB, nahrání objektů BLOB paralelně. Toto je rychlejší, než nahrání jednoho objekty BLOB najednou paralelní blokovat nahrávání ve vzhledem k tomu, že se šíří nahrávání napříč několika oddíly na službu storage. Jeden objekt blob podporuje pouze propustnost 60 MB za sekundu (přibližně 480 MB/s). V době psaní účet LRS státech podporuje až 20 GB/s příchozí přenos dat, což je mnohem více než propustnost podporuje jednotlivých objektů blob.  [AzCopy](#subheading18) ve výchozím nastavení provádí nahrávání paralelně a doporučuje se pro tento scénář.  
@@ -304,7 +304,7 @@ Jak reprezentaci a dotazování na data je největší jednomu faktoru, který o
 Tabulky jsou rozděleny do oddílů. Každá entita, uložená v oddílu sdílí stejný klíč oddílu a klíčem jedinečném řádku pro jeho rozpoznání v rámci daného oddílu. Oddíly poskytují výhody, ale přinášejí s omezením škálovatelnosti.  
 
 * Výhody: Můžete aktualizovat entity do stejného oddílu v rámci jediné, atomické, batch transakce, který obsahuje až 100 samostatné úložiště operací (limit celkové velikosti 4MB). Za předpokladu, že stejný počet entit, které se mají načíst, můžete také zadávat dotazy v rámci jednoho oddílu efektivnější než data, která zahrnuje oddíly (i když číst na Další doporučení na dotazy na data tabulky).
-* Omezení škálovatelnosti: přístup k entitám ukládala do jednoho oddílu nesmí být vyrovnáváním zatížení protože oddíly podporuje atomic dávkové transakce. Z tohoto důvodu cíle škálovatelnosti pro oddíl jednotlivé tabulky je nižší než služby table service jako celek.  
+* Omezení škálovatelnosti: Přístup k entitám ukládala do jednoho oddílu nesmí být vyrovnáváním zatížení protože oddíly podporuje atomic dávkové transakce. Z tohoto důvodu cíle škálovatelnosti pro oddíl jednotlivé tabulky je nižší než služby table service jako celek.  
 
 Z důvodu tyto vlastnosti z tabulky a oddíly, které musí přijmout tyto principy návrhu:  
 
@@ -359,8 +359,8 @@ Dávkové transakce jsou označovány jako Entity skupiny transakce (ETG) ve slu
 ##### <a name="subheading36"></a>Upsertovat
 Použití tabulky **Upsert** operace kdykoli je to možné. Existují dva typy **Upsert**, které může být efektivnější než tradiční **vložit** a **aktualizace** operace:  
 
-* **InsertOrMerge**: použijte ho, když chcete odeslat podmnožinu vlastností entity, ale nejste si jistí, jestli je entita již existuje. Pokud existuje entita toto volání aktualizuje vlastnosti součástí **Upsert** operace a nechá všechny existující vlastnosti jsou, pokud entita neexistuje, vloží nové entity. Jedná se používá projekce v dotazu, podobně jako v tom, že budete muset nahrát vlastnosti, které se mění.
-* **InsertOrReplace**: použijte ho, když chcete odeslat zcela nové entity, ale nejste si jisti, zda již existuje. Tento postup byste měli používat jenom v, když víte, že nově nahraných entity je úplně správná, protože zcela přepíše původní entita. Například chcete aktualizovat entitu, která ukládá aktuální umístění uživatele bez ohledu na to, jestli aplikace dříve uložil data o poloze pro uživatele. Nová entita umístění je kompletní a není nutné žádné informace z jakékoli předchozí entity.
+* **InsertOrMerge**: Použijte ho, když chcete odeslat podmnožinu vlastností entity, ale nejste si jistí, jestli je entita již existuje. Pokud existuje entita toto volání aktualizuje vlastnosti součástí **Upsert** operace a nechá všechny existující vlastnosti jsou, pokud entita neexistuje, vloží nové entity. Jedná se používá projekce v dotazu, podobně jako v tom, že budete muset nahrát vlastnosti, které se mění.
+* **InsertOrReplace**: Použijte ho, když chcete odeslat zcela nové entity, ale nejste si jisti, zda již existuje. Tento postup byste měli používat jenom v, když víte, že nově nahraných entity je úplně správná, protože zcela přepíše původní entita. Například chcete aktualizovat entitu, která ukládá aktuální umístění uživatele bez ohledu na to, jestli aplikace dříve uložil data o poloze pro uživatele. Nová entita umístění je kompletní a není nutné žádné informace z jakékoli předchozí entity.
 
 ##### <a name="subheading37"></a>Ukládání datových řad v jedné Entity
 V některých případech aplikace ukládá řadu data, která se často potřebuje načítat všechny najednou: například aplikace může sledovat využití procesoru v čase k vykreslení grafu postupné data z posledních 24 hodin. Jedním z přístupů je mít jednu entitu tabulky za hodinu, se každá entita představující konkrétní hodiny a ukládání využití procesoru pro určitou hodinu. K vykreslení tato data, aplikace potřebuje k načtení entity, která uchovává data z posledních 24 hodin.  
@@ -395,7 +395,7 @@ Náklady na aktuální informace najdete v tématu [ceny za Azure Storage](https
 ### <a name="subheading44"></a>UpdateMessage
 Můžete použít **UpdateMessage** zvýšit časový limit neviditelnosti nebo aktualizovat informace o stavu zprávy. Když je výkonný, nezapomeňte se každý **UpdateMessage** operace započítává cíle škálovatelnosti. Nicméně to může být mnohem efektivnější přístup než po dokončení každého kroku úlohy, když pracovní postup, který se předá úlohu z jedné fronty na další. Použití **UpdateMessage** operace umožňuje vaší aplikaci uložit stav úlohy pro zprávu a potom pokračovat v práci, namísto znovu pokaždé, když se krok dokončí služby Řízení front zpráv na další krok úlohy.  
 
-Další informace najdete v článku [postupy: Změna obsahu zpráv zařazených ve frontě](../queues/storage-dotnet-how-to-use-queues.md#change-the-contents-of-a-queued-message).  
+Další informace najdete v článku [jak: Změna obsahu zpráv zařazených ve frontě](../queues/storage-dotnet-how-to-use-queues.md#change-the-contents-of-a-queued-message).  
 
 ### <a name="subheading45"></a>Architektura aplikace
 Aby bylo škálovatelné architektuře aplikace by měla pomocí front. V následujícím seznamu uvedeny některé způsobů využití fronty pro zajištění větší škálovatelnost aplikace:  

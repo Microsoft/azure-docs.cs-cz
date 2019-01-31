@@ -6,16 +6,16 @@ author: diberry
 manager: cgronlun
 displayName: active learning, suggestion, dialog prompt, train api, feedback loop, autolearn, auto-learn, user setting, service setting, services setting
 ms.service: cognitive-services
-ms.component: qna-maker
+ms.subservice: qna-maker
 ms.topic: article
 ms.date: 01/29/2019
 ms.author: diberry
-ms.openlocfilehash: cf652c1b0edd469f29d14ed10d66ebe78b0fbb7c
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 7f519729f3ad94324b847ca6b15b254ea7c6abbb
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55247829"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55463731"
 ---
 # <a name="use-active-learning-to-improve-knowledge-base"></a>Využití aktivního učení k vylepšení znalostní báze
 
@@ -42,7 +42,7 @@ Všechny návrhy jsou Clusterované společně odpovědným a nejčastějších 
 
 ## <a name="upgrade-version-to-use-active-learning"></a>Upgrade verze použití aktivního učení
 
-Aktivní učení se podporuje v modulu runtime verze 4.4.0 a vyšší. Pokud se znalostní báze vytvořil v dřívější verzi, [upgrade vaší služby](upgrade-qnamaker-service.md) pro použití této funkce. 
+Aktivní učení se podporuje v modulu runtime verze 4.4.0 a vyšší. Pokud se znalostní báze vytvořil v dřívější verzi, [upgrade vašeho prostředí runtime](troubleshooting-runtime.md#how-to-get-latest-qnamaker-runtime-updates) pro použití této funkce. 
 
 ## <a name="best-practices"></a>Osvědčené postupy
 

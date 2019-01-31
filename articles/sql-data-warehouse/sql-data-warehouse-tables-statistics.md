@@ -10,12 +10,12 @@ ms.subservice: implement
 ms.date: 05/09/2018
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: 699538666a3bdbea94d35844f9c5c4fb7b4fd0f2
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: c11cdd6d1cc24d639d837993e94f3b304228634a
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 01/30/2019
-ms.locfileid: "55241045"
+ms.locfileid: "55299550"
 ---
 # <a name="creating-updating-statistics-on-tables-in-azure-sql-data-warehouse"></a>Vytváření, aktualizaci statistik tabulek v Azure SQL Data Warehouse
 Doporučení a příklady pro vytváření a aktualizaci statistik optimalizaci dotazu na tabulky ve službě Azure SQL Data Warehouse.
@@ -416,7 +416,7 @@ SELECT
         sm.[name]                           AS [schema_name]
 ,       tb.[name]                           AS [table_name]
 ,       st.[name]                           AS [stats_name]
-,       st.[filter_definition]              AS [stats_filter_defiinition]
+,       st.[filter_definition]              AS [stats_filter_definition]
 ,       st.[has_filter]                     AS [stats_is_filtered]
 ,       STATS_DATE(st.[object_id],st.[stats_id])
                                             AS [stats_last_updated_date]

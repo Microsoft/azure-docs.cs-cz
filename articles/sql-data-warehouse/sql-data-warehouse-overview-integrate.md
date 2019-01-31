@@ -2,20 +2,20 @@
 title: Vytváření integrovaných řešení s využitím SQL Data Warehouse | Dokumentace Microsoftu
 description: 'Nástroje a partnery s řešeními, které se integrují s využitím SQL Data Warehouse. '
 services: sql-data-warehouse
-author: kavithaj
+author: KavithaJonnakuti
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
-ms.component: consume
+ms.subservice: consume
 ms.date: 04/17/2018
 ms.author: kavithaj
 ms.reviewer: igorstan
-ms.openlocfilehash: 0d9d10214f8bc61a914de3f72ddae13679f2811e
-ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
+ms.openlocfilehash: 08e144022c79182a63fd99dbce48a5e505aba3f2
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54358503"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55477994"
 ---
 # <a name="integrate-other-services-with-sql-data-warehouse"></a>Integrace ostatních služeb s využitím SQL Data Warehouse
 Kromě jejích klíčových funkcí SQL Data Warehouse umožňuje integrovat s mnoha dalšími službami v Azure. Mezi tyto služby patří:
@@ -31,7 +31,7 @@ SQL Data Warehouse dál integrovat další služby napříč Azure a další [pa
 Integrace Power BI umožňuje kombinovat výkon služby SQL Data Warehouse s dynamické generování sestav a vizualizací Power BI. Integrace Power BI aktuálně zahrnuje:
 
 * **Přímém připojení**: Pokročilejší připojení logické přenosu směrem dolů na SQL Data Warehouse. Přenosu směrem dolů poskytuje rychlejší analýzy ve větším měřítku.
-* **Otevřít v Power BI**: Tlačítko Otevřít v Power BI předává informace o instanci Power BI za účelem simplifed způsob, jak připojit.
+* **Otevřít v Power BI**: Tlačítko Otevřít v Power BI předává informace o instanci Power BI pro jednodušší způsob, jak připojit.
 
 Další informace najdete v tématu [integrace s Power BI](sql-data-warehouse-get-started-visualize-with-power-bi.md), nebo [dokumentaci k Power BI](https://blogs.msdn.com/b/powerbi/archive/2015/06/24/exploring-azure-sql-data-warehouse-with-power-bi.aspx).
 

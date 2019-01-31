@@ -6,17 +6,17 @@ author: marktab
 manager: cgronlun
 editor: cgronlun
 ms.service: machine-learning
-ms.component: team-data-science-process
+ms.subservice: team-data-science-process
 ms.topic: article
 ms.date: 11/04/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: fbc23d53687b908245ffe25bdd418cbe64af080b
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: 7c87a0f478b6efbe7ae9ff07def8b4d0d730b111
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53136184"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55478487"
 ---
 # <a name="move-data-to-sql-server-on-an-azure-virtual-machine"></a>Přesun dat do SQL Serveru na virtuálním počítači Azure
 
@@ -26,7 +26,7 @@ Téma, které popisuje možnosti pro přesun dat do služby Azure SQL Database p
 
 Následující tabulka shrnuje možnosti pro přesun dat do SQL serveru na virtuálním počítači Azure.
 
-| <b>ZDROJ</b> | <b>Cíl: SQL Server na virtuálním počítači Azure</b> |
+| <b>ZDROJ</b> | <b>CÍL: SQL Server na virtuálním počítači Azure</b> |
 | --- | --- |
 | <b>Plochý soubor</b> |1. <a href="#insert-tables-bcp">Nástroj příkazového řádku pro hromadné kopírování (BCP) </a><br> 2. <a href="#insert-tables-bulkquery">Dotaz SQL pro hromadné vložení </a><br> 3. <a href="#sql-builtin-utilities">Grafické nástroje integrované v SQL serveru</a> |
 | <b>Na místním SQL serveru</b> |1. <a href="#deploy-a-sql-server-database-to-a-microsoft-azure-vm-wizard">Nasazení databáze SQL serveru do Průvodce vytvořením virtuálního počítače Microsoft Azure</a><br> 2. <a href="#export-flat-file">Exportovat do plochého souboru </a><br> 3. <a href="#sql-migration">Průvodce migrací služby SQL Database </a> <br> 4. <a href="#sql-backup">Databáze back up a obnovení </a><br> |
@@ -64,20 +64,23 @@ BCP je nástroj příkazového řádku nainstalovat s SQL serverem a je jedním 
 
 1. Ujistěte se, že se vytvoří databáze a tabulky na cílové databázi systému SQL Server. Tady je příklad tohoto postupu, že při použití `Create Database` a `Create Table` příkazy:
 
-        CREATE DATABASE <database_name>
+```sql
+CREATE DATABASE <database_name>
 
-        CREATE TABLE <tablename>
-        (
-            <columnname1> <datatype> <constraint>,
-            <columnname2> <datatype> <constraint>,
-            <columnname3> <datatype> <constraint>
-        )
+CREATE TABLE <tablename>
+(
+    <columnname1> <datatype> <constraint>,
+    <columnname2> <datatype> <constraint>,
+    <columnname3> <datatype> <constraint>
+)
+```
+
 2. Generovat formátový soubor, který popisuje schéma pro tabulku zadáním následujícího příkazu z příkazového řádku na počítači nainstalovanou bcp.
 
     `bcp dbname..tablename format nul -c -x -f exportformatfilename.xml -S servername\sqlinstance -T -t \t -r \n`
 3. Vložení dat do databáze pomocí příkazu bcp následujícím způsobem. Tento postup měl fungovat z příkazového řádku za předpokladu, že SQL Server nainstalovaný na stejném počítači:
 
-    `bcp dbname..tablename in datafilename.tsv -f exportformatfilename.xml -S servername\sqlinstancename -U username -P password -b block_size_to_move_in_single_attemp -t \t -r \n`
+    `bcp dbname..tablename in datafilename.tsv -f exportformatfilename.xml -S servername\sqlinstancename -U username -P password -b block_size_to_move_in_single_attempt -t \t -r \n`
 
 > **Optimalizace BCP vloží** najdete v následujícím článku ["Pokyny pro optimalizaci hromadný Import"](https://technet.microsoft.com/library/ms177445%28v=sql.105%29.aspx) optimalizovat tyto operace vložení.
 >
@@ -87,46 +90,47 @@ BCP je nástroj příkazového řádku nainstalovat s SQL serverem a je jedním 
 Pokud jsou data, které přesouváte velké, můžete urychlit věci současně spuštěním několika příkazů BCP paralelně Powershellového skriptu.
 
 > [!NOTE]
-> **Velké objemy dat Ingestování** optimalizovat pro velká a velmi velkých datových sad pro načítání dat, oddílů tabulek logické a fyzické databázi pomocí více skupin souborů a oddíl tabulky. Další informace o vytváření a načítání dat do tabulek oddílů SQL najdete v tématu [tabulek oddílů SQL paralelní zatížení](parallel-load-sql-partitioned-tables.md).
+> **Velké objemy dat Ingestování** optimalizovat pro velká a velmi velkých datových sad pro načítání dat, oddílů tabulek logické a fyzické databázi pomocí více skupin souborů a rozdělit na oddíly tabulky. Další informace o vytváření a načítání dat do tabulek oddílů SQL najdete v tématu [tabulek oddílů SQL paralelní zatížení](parallel-load-sql-partitioned-tables.md).
 >
 >
 
-Ukázkový skript Powershellu níže ukazují paralelního vložení pomocí bcp:
+Následující ukázkový skript prostředí PowerShell ukazuje, paralelního vložení pomocí bcp:
 
-    $NO_OF_PARALLEL_JOBS=2
+```powershell
+$NO_OF_PARALLEL_JOBS=2
 
-     Set-ExecutionPolicy RemoteSigned #set execution policy for the script to execute
-     # Define what each job does
-       $ScriptBlock = {
-           param($partitionnumber)
+Set-ExecutionPolicy RemoteSigned #set execution policy for the script to execute
+# Define what each job does
+$ScriptBlock = {
+    param($partitionnumber)
 
-           #Explictly using SQL username password
-           bcp database..tablename in datafile_path.csv -F 2 -f format_file_path.xml -U username@servername -S tcp:servername -P password -b block_size_to_move_in_single_attempt -t "," -r \n -o path_to_outputfile.$partitionnumber.txt
+    #Explicitly using SQL username password
+    bcp database..tablename in datafile_path.csv -F 2 -f format_file_path.xml -U username@servername -S tcp:servername -P password -b block_size_to_move_in_single_attempt -t "," -r \n -o path_to_outputfile.$partitionnumber.txt
 
-            #Trusted connection w.o username password (if you are using windows auth and are signed in with that credentials)
-            #bcp database..tablename in datafile_path.csv -o path_to_outputfile.$partitionnumber.txt -h "TABLOCK" -F 2 -f format_file_path.xml  -T -b block_size_to_move_in_single_attempt -t "," -r \n
-      }
-
-
-    # Background processing of all partitions
-    for ($i=1; $i -le $NO_OF_PARALLEL_JOBS; $i++)
-    {
-      Write-Debug "Submit loading partition # $i"
-      Start-Job $ScriptBlock -Arg $i      
-    }
+    #Trusted connection w.o username password (if you are using windows auth and are signed in with that credentials)
+    #bcp database..tablename in datafile_path.csv -o path_to_outputfile.$partitionnumber.txt -h "TABLOCK" -F 2 -f format_file_path.xml  -T -b block_size_to_move_in_single_attempt -t "," -r \n
+}
 
 
-    # Wait for it all to complete
-    While (Get-Job -State "Running")
-    {
-      Start-Sleep 10
-      Get-Job
-    }
+# Background processing of all partitions
+for ($i=1; $i -le $NO_OF_PARALLEL_JOBS; $i++)
+{
+    Write-Debug "Submit loading partition # $i"
+    Start-Job $ScriptBlock -Arg $i      
+}
 
-    # Getting the information back from the jobs
-    Get-Job | Receive-Job
-    Set-ExecutionPolicy Restricted #reset the execution policy
 
+# Wait for it all to complete
+While (Get-Job -State "Running")
+{
+    Start-Sleep 10
+    Get-Job
+}
+
+# Getting the information back from the jobs
+Get-Job | Receive-Job
+Set-ExecutionPolicy Restricted #reset the execution policy
+```
 
 ### <a name="insert-tables-bulkquery"></a>Dotaz SQL pro hromadné vložení
 [Hromadné vložení dotaz SQL](https://msdn.microsoft.com/library/ms188365) lze použít k importu dat do databáze z řádku/sloupce na základě souborů (podporované typy jsou popsané v[připravit Data pro hromadné Export nebo Import (SQL Server)](https://msdn.microsoft.com/library/ms188609)) tématu.
@@ -135,18 +139,22 @@ Tady jsou některé ukázkové příkazy pro Bulk Insert se, jak je uvedeno ní�
 
 1. Analýza dat a nastavit všechny vlastní možnosti před importem, abyste měli jistotu, že databáze serveru SQL Server předpokládá stejný formát pro jakékoli zvláštní pole jako kalendářní data. Tady je příklad toho, jak nastavit formát data jako rok. měsíc den (Pokud data obsahují datum ve formátu rok měsíc dní):
 
-        SET DATEFORMAT ymd;    
+```sql
+SET DATEFORMAT ymd;
+```
 2. Importujte data pomocí hromadného importu:
 
-        BULK INSERT <tablename>
-        FROM    
-        '<datafilename>'
-        WITH
-        (
-        FirstRow=2,
-        FIELDTERMINATOR =',', --this should be column separator in your data
-        ROWTERMINATOR ='\n'   --this should be the row separator in your data
-        )
+```sql
+BULK INSERT <tablename>
+FROM
+'<datafilename>'
+WITH
+(
+    FirstRow = 2,
+    FIELDTERMINATOR = ',', --this should be column separator in your data
+    ROWTERMINATOR = '\n'   --this should be the row separator in your data
+)
+```
 
 ### <a name="sql-builtin-utilities"></a>Integrované nástroje SQL serveru
 Integrace služby SSIS (SQL Server) můžete použít k importu dat do virtuálního počítače s SQL serverem v Azure z plochého souboru.

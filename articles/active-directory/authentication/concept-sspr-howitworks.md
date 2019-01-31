@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry
-ms.openlocfilehash: c2b2ba0e238887531297f6ac2a486d42d885794d
-ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
+ms.openlocfilehash: 41bdc2497ff19f0033a5253814771072b47eef62
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/26/2019
-ms.locfileid: "55079082"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55475172"
 ---
 # <a name="how-it-works-azure-ad-self-service-password-reset"></a>Jak to funguje: Azure AD samoobslužné resetování hesla
 
@@ -50,7 +50,7 @@ Když uživatel přejde na portál pro resetování hesla, pracovní postup je v
        * Pokud nejsou nakonfigurovaná metody ověřování, uživatel se doporučuje pro kontaktování správce resetovat heslo.
      * Pokud tato zásada vyžaduje dvě metody, pak zajišťuje, že uživatel má příslušná data definovaná pro minimálně dvě metody ověřování povolené zásady správce.
        * Pokud nejsou nakonfigurovaná metody ověřování, uživatel se doporučuje pro kontaktování správce resetovat heslo.
-     * Pokud roli Správce služby Azure je přiřazena uživateli je vynutit zásady silných hesel dvě brány. Další informace o těchto zásadách najdete v části [správce resetovat zásady rozdíly](concept-sspr-policy.md#administrator-reset-policy-differences).
+     * Pokud roli Správce služby Azure je přiřazena uživateli, silné heslo dvě brány zásady se vynucují. Další informace o těchto zásadách najdete v části [správce resetovat zásady rozdíly](concept-sspr-policy.md#administrator-reset-policy-differences).
    * Kontroluje, je-li heslo uživatele spravovaly místně (federované předávací ověřování nebo synchronizaci hodnoty hash hesla).
      * Pokud je nasazený zpětný zápis a heslo uživatele je spravovaná místně, uživatel může pokračovat k ověření a resetování hesla.
      * Pokud není nasazený zpětný zápis a heslo uživatele je spravovaná místně, je uživatel vyzván k obraťte se na svého správce resetovat heslo.
@@ -84,7 +84,7 @@ Pokud uživatel nemá zaregistrované minimální požadované metody, zobrazí 
 
 #### <a name="mobile-app-and-sspr-preview"></a>Mobilní aplikace a samoobslužné resetování HESLA (ve verzi Preview)
 
-Při použití mobilní aplikace, jako je aplikace Microsoft Authenticator jako metoda pro resetování hesla, měli byste pamatovat na následující:
+Pokud používáte mobilní aplikace, jako je aplikace Microsoft Authenticator jako metoda pro resetování hesla, byste měli znát následující upozornění:
 
 * Když správci potřebují jednu metodu možné použít k resetování hesla, ověřovací kód je jediná dostupná možnost.
 * Když správci vyžadují dvě metody se používá k resetování hesla, uživatelé se můžou použít **buď** oznámení **nebo** ověřovací kód kromě jiných povolené metody.
@@ -119,7 +119,7 @@ Příklad:
 
 ### <a name="require-users-to-register-when-they-sign-in"></a>Vyžadovat od uživatelů registraci při přihlášení
 
-Když tuto možnost povolíte, musí uživatel k dokončení registrace pro resetování hesla, pokud se přihlásí do všech aplikací pomocí služby Azure AD. To zahrnuje následující aplikace:
+Když tuto možnost povolíte, musí uživatel k dokončení registrace pro resetování hesla, pokud se přihlásí do všech aplikací pomocí služby Azure AD. Tento pracovní postup obsahuje následující aplikace:
 
 * Office 365
 * portál Azure
@@ -132,7 +132,7 @@ Při vyžadování registrace je zakázaná, uživatelé můžou registrovat ru�
 > [!NOTE]
 > Uživatelé můžou zavřít registrační portál pro resetování hesla tak, že vyberete **zrušit** nebo zavřením okna. Ale zobrazí se výzva k registraci pokaždé, když se přihlásí až do dokončení jejich registraci.
 >
-> Tím nedojde k narušení připojení uživatele Pokud už přihlášení.
+> Toto přerušení nedojde k narušení připojení uživatele Pokud už přihlášení.
 
 ### <a name="set-the-number-of-days-before-users-are-asked-to-reconfirm-their-authentication-information"></a>Nastavte počet dní, než se uživatelům zobrazí výzva k potvrzení jejich ověřovacích informací
 
@@ -169,7 +169,7 @@ Tato stránka poskytuje rychlé stav v místním klientovi zpětného zápisu, j
 
 ### <a name="write-back-passwords-to-your-on-premises-directory"></a>Zapisovat hesla zpět do místního adresáře
 
-Tento ovládací prvek určuje, jestli je povolený zpětný zápis hesla pro tento adresář. Je-li zpětný zápis na, označuje stav místní službu zpětného zápisu. To je užitečné, pokud chcete dočasně zakázat zpětný zápis hesel, aniž byste museli změnit konfiguraci služby Azure AD Connect.
+Tento ovládací prvek určuje, jestli je povolený zpětný zápis hesla pro tento adresář. Je-li zpětný zápis na, označuje stav místní službu zpětného zápisu. Tento ovládací prvek je užitečné, pokud chcete dočasně zakázat zpětný zápis hesel, aniž byste museli změnit konfiguraci služby Azure AD Connect.
 
 * Pokud přepínač nastavený na **Ano**, pak je povolený zpětný zápis a federovaný, předávací ověřování, nebo uživatelům synchronizaci hodnot hash hesel se moct resetovat svá hesla.
 * Pokud přepínač nastavený na **ne**, pak je zakázáno zpětný zápis a federovaný, předávací ověřování, nebo uživatelům synchronizaci hodnot hash hesel, je moct resetovat svá hesla.
@@ -180,6 +180,10 @@ Tento ovládací prvek určuje, jestli si uživatelé, kteří navštíví port�
 
 * Pokud hodnotu **Ano**, pak uživatelům se zobrazí možnost resetovat své heslo a odemknout účet nebo odemknout svůj účet bez nutnosti k resetování hesla.
 * Pokud hodnotu **ne**, pak uživatelé jsou pouze nebudou moct provádět obnovení kombinované hesla a odemknutí účtu operace.
+
+### <a name="on-premises-active-directory-password-filters"></a>Filtry hesel místní služby Active Directory
+
+Hesel Azure AD samoobslužné resetování provede ekvivalent iniciované správcem resetování hesla ve službě Active Directory. Pokud použijete filtr na hesla třetích stran pro vynucení pravidel vlastního hesla a vyžadovat, že tento filtr heslo je kontrolován během Azure AD, samoobslužné resetování hesla, ujistěte se, že filtr řešení třetích stran heslo je nakonfigurovaný na použití v scénáře pro resetování hesla správce. [Ochrana hesel Azure AD pro Windows Server Active Directory](concept-password-ban-bad-on-premises.md) se podporuje ve výchozím nastavení.
 
 ## <a name="password-reset-for-b2b-users"></a>Resetování hesla pro uživatele B2B
 

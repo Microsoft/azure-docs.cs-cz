@@ -1,6 +1,6 @@
 ---
-Název: Položte že otázku dat dokáže odpovědět titleSuffix: Azure Machine Learning Studio Popis: Zjistěte, jak formulovat otázku sharp data science v datová věda pro začátečníky videa 3. Obsahuje porovnání klasifikačních a regresních dotazy.
-Services: machine learningu ms.service: ms.component strojového učení: studio ms.topic: článku
+Název: Položte že otázku dat dokáže odpovědět titleSuffix: Azure Machine Learning Studio Popis: Zjistěte, jak formulovat otázku sharp data science v datová věda pro začátečníky videa 3. Obsahuje porovnání klasifikačních a regresních dotazy.
+Services: machine learningu ms.service: ms.subservice strojového učení: studio ms.topic: článku
 
 Autor: garyericson ms.author: garye ms.custom: předchozí Autor = heatherbshapiro předchozí ms.author=hshapiro ms.date: 01/03/2018
 ---

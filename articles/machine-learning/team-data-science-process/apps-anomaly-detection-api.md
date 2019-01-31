@@ -6,17 +6,17 @@ author: marktab
 manager: cgronlun
 editor: cgronlun
 ms.service: machine-learning
-ms.component: team-data-science-process
+ms.subservice: team-data-science-process
 ms.topic: article
 ms.date: 06/05/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=alokkirpal, previous-ms.author=alok
-ms.openlocfilehash: 5f43dba09544d870d9cecc8de34abc4f60554104
-ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
+ms.openlocfilehash: e407aee98bef9917a99e3305e2c99dbdd0c182e0
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/26/2019
-ms.locfileid: "55079116"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55469817"
 ---
 # <a name="machine-learning-anomaly-detection-api"></a>Ve službě Machine Learning rozhraní API pro detekci anomálií
 ## <a name="overview"></a>Přehled

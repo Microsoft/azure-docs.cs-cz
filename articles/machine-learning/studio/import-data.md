@@ -1,6 +1,6 @@
 ---
-Název: Import dat do titleSuffix Machine Learning Studio: Azure Machine Learning Studio Popis: Jak importovat data do Azure Machine Learning Studio z různých zdrojů dat. Zjistěte, jaké datové typy a formáty dat jsou podporovány.
-Services: machine learningu ms.service: ms.component strojového učení: studio ms.topic: článku
+Název: Import dat do titleSuffix Machine Learning Studio: Azure Machine Learning Studio Popis: Jak importovat data do Azure Machine Learning Studio z různých zdrojů dat. Zjistěte, jaké datové typy a formáty dat jsou podporovány.
+Services: machine learningu ms.service: ms.subservice strojového učení: studio ms.topic: článku
 
 Autor: ericlicoding ms.author: amlstudiodocs ms.custom: předchozí Autor = heatherbshapiro předchozí ms.author=hshapiro ms.date: 11/29/2017
 ---
@@ -53,12 +53,12 @@ Můžete explicitně zadat nebo změnit hlavičky a datové typy sloupců pomoc�
 
 Následující **datové typy** jsou rozpoznány modulem pro Machine Learning Studio:
 
-* Řetězec
+* String
 * Integer
 * Double
 * Logická hodnota
 * DateTime
-* Časový interval
+* TimeSpan
 
 Machine Learning Studio používá interní data typ, který volá ***tabulka dat*** k předávání dat mezi moduly. Můžete explicitně převést vaše data do tabulky Data pomocí formátu [převod na datové sadě] [ convert-to-dataset] modulu.
 

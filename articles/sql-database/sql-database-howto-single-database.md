@@ -1,6 +1,6 @@
 ---
-title: Jak nakonfigurovat databázi SQL Azure – Singleton | Dokumentace Microsoftu
-description: Zjistěte, jak konfigurovat a spravovat Azure SQL Database – izolované databáze.
+title: Jak nakonfigurovat databázi SQL Azure – samostatný | Dokumentace Microsoftu
+description: Zjistěte, jak konfigurovat a spravovat samostatnou databázi Azure SQL Database –
 services: sql-database
 ms.service: sql-database
 ms.subservice: ''
@@ -11,21 +11,21 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: carlr
 manager: craigg
-ms.date: 12/14/2018
-ms.openlocfilehash: d34853220e423e73c6ca8cf7c76ba616b815b8bd
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.date: 01/25/2019
+ms.openlocfilehash: bf126caa378eafe569b83f211d9d2bbfd37e18f9
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53440650"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55477790"
 ---
-# <a name="how-to-use-single-database"></a>Jak používat izolované databáze
+# <a name="how-to-use-a-single-database-in-azure-sql-database"></a>Jak používat izolované databáze ve službě Azure SQL Database
 
-V této části najdete různé průvodce, skripty a vysvětlení, které vám mohou pomoci při správě a konfiguraci Azure SQL Database – izolované databáze.
+V této části najdete různé průvodce, skripty a vysvětlení, které vám mohou pomoci při správě a konfiguraci izolované databáze ve službě Azure SQL Database
 
 ## <a name="migrate"></a>Migrace
 
-- [Migrace do SQL Database](sql-database-cloud-migrate.md) – přečtěte si víc o doporučených migrace procesů a nástrojů pro migraci do spravované Instance.
+- [Migrace do SQL Database](sql-database-cloud-migrate.md) – přečtěte si víc o doporučených migrace procesů a nástrojů pro migraci do spravované instance.
 - Zjistěte, jak [Správa SQL database po migraci](sql-database-manage-after-migration.md).
 
 ## <a name="configure-features"></a>Konfigurace funkcí
@@ -66,7 +66,7 @@ V této části najdete různé průvodce, skripty a vysvětlení, které vám m
 - Spustit [více horizontálních oddílů dotazy](sql-database-elastic-scale-multishard-querying.md).
 - [Přesun horizontálně dělených dat](sql-database-elastic-scale-configure-deploy-split-and-merge.md).
 - [Konfigurace zabezpečení](sql-database-elastic-scale-split-merge-security-configuration.md) v horizontálních oddílů databáze.
-- [Přidání horizontálního oddílu](sql-database-elastic-scale-add-a-shard.md) na aktuální nastavení od horizontálních oddílů databáze.
+- [Přidání horizontálního oddílu](sql-database-elastic-scale-add-a-shard.md) do aktuální sady horizontálních oddílů databáze.
 - [Odstraňování problémů s horizontálními oddíly mapy](sql-database-elastic-database-recovery-manager.md).
 - [Migrace horizontálně dělené databáze](sql-database-elastic-convert-to-use-elastic-tools.md).
 - [Vytvoření čítačů](sql-database-elastic-database-perf-counters.md).
@@ -74,4 +74,4 @@ V této části najdete různé průvodce, skripty a vysvětlení, které vám m
 - [Použití Dapper framework](sql-database-elastic-scale-working-with-dapper.md) k dotazování na horizontálně dělená data.
 
 ## <a name="next-steps"></a>Další postup
-- Další informace o [postupy provede ve spravované instanci](sql-database-howto-managed-instance.md)
+- Další informace o [provede postupy pro spravovanou instanci](sql-database-howto-managed-instance.md)

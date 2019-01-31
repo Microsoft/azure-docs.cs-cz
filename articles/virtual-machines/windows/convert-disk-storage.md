@@ -15,13 +15,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/04/2018
 ms.author: ramankum
-ms.component: disks
-ms.openlocfilehash: 7a28db8976168617b7850ec6bf764a8b28a6d78a
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.subservice: disks
+ms.openlocfilehash: 4c13708ad785a2291da3db61d739f604a2c3bb88
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55242378"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55475886"
 ---
 # <a name="update-the-storage-type-of-a-managed-disk"></a>Aktualizovat typ úložiště spravovaného disku
 

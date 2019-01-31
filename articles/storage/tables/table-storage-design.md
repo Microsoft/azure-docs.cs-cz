@@ -7,13 +7,13 @@ ms.service: storage
 ms.topic: article
 ms.date: 04/23/2018
 ms.author: sngun
-ms.component: tables
-ms.openlocfilehash: c5b18bce9d0cf78569d0c2fa02ad14c96ad09bd1
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.subservice: tables
+ms.openlocfilehash: 8387e41d57edfa0e54ac930c9462714aca571f2a
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51237770"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55472554"
 ---
 # <a name="design-scalable-and-performant-tables"></a>Návrh škálovatelných a výkonných tabulek
 
@@ -37,7 +37,7 @@ Následující příklad ukazuje, jednoduché tabulky návrhu k uložení entity
 <tr>
 <th>PartitionKey</th>
 <th>RowKey</th>
-<th>Časové razítko</th>
+<th>Timestamp</th>
 <th></th>
 </tr>
 <tr>
@@ -132,7 +132,7 @@ Název účtu, název tabulky a **PartitionKey** společně identifikovat oddíl
 
 Ve službě Table service, služby jednotlivých uzlů jeden nebo více dokončení oddíly a škálování služby pomocí dynamické vyrovnávání zatížení oddílů mezi uzly. Pokud uzel je zatížení, můžete služby table service *rozdělit* rozsahem oddílů obsluhovány pomocí tohoto uzlu na různých uzlech; při provozu poklesne, můžete službu *sloučení* rozsahů oddílů z quiet uzlů zpět na jeden uzel.  
 
-Další informace o interní informace služby Table service, zejména způsob, jakým služba spravuje oddíly, najdete v dokumentu paper [Microsoft Azure Storage: A vysoce dostupné služby cloudového úložiště se silnou konzistencí](https://blogs.msdn.com/b/windowsazurestorage/archive/2011/11/20/windows-azure-storage-a-highly-available-cloud-storage-service-with-strong-consistency.aspx).  
+Další informace o interní informace služby Table service, zejména způsob, jakým služba spravuje oddíly, najdete v dokumentu paper [Microsoft Azure Storage: Služby s vysokou dostupností cloudového úložiště se silnou konzistenci](https://blogs.msdn.com/b/windowsazurestorage/archive/2011/11/20/windows-azure-storage-a-highly-available-cloud-storage-service-with-strong-consistency.aspx).  
 
 ## <a name="entity-group-transactions"></a>Transakcí skupin entit
 Ve službě Table service transakcí skupin entit (EGTs) jsou pouze předdefinovaný mechanismus pro provádění atomické aktualizace napříč více entit. EGTs jsou někdy označovány jako *dávkové transakce*. EGTs může pracovat pouze s entitami, které jsou uložené ve stejném oddílu (to znamená, sdílet stejný klíč oddílu z dané tabulky). Kdykoli budete potřebovat atomic transakční chování napříč více entit, ujistěte se, že jsou tyto entity do stejného oddílu. To je často důvod pro udržování několik typů entit ve stejné tabulce (a oddílu) a bez použití více tabulek pro typy jiné entity. Jeden EGT může pracovat na maximálně 100 entit.  Pokud uvedete více souběžných EGTs pro zpracování, je důležité zajistit, že tyto EGTs není pracovat u entit, které jsou společné pro EGTs; v opačném případě se může zpozdit zpracování.

@@ -8,13 +8,13 @@ ms.service: storage
 ms.topic: article
 ms.date: 01/02/2019
 ms.author: jeffpatt
-ms.component: files
-ms.openlocfilehash: 8723d7f113a77266d1ee883e41bade1721fa1afa
-ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
+ms.subservice: files
+ms.openlocfilehash: 384a277f3465ac97285fbb08fa299a5bed8c87c4
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54848950"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55477688"
 ---
 # <a name="troubleshoot-azure-files-problems-in-windows"></a>Řešení potíží s Azure Files problémy ve Windows
 

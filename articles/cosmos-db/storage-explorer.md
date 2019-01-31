@@ -7,14 +7,14 @@ ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: dech
 ms.custom: seodec18
-ms.openlocfilehash: 24df1cb5b7a9cc1209940bbaaa1217a80ea74918
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.openlocfilehash: c99b22a5dad1e64525b2b2ebcd214c3dc5bfb28f
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54259644"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55473591"
 ---
-# <a name="manage-azure-cosmos-db-resources-using-azure-storage-explorer"></a>Správa prostředků Azure Cosmos DB pomocí Průzkumníka služby Azure Storage
+# <a name="work-with-data-using-azure-storage-explorer"></a>Práce s daty pomocí Průzkumníka služby Azure Storage
 
 Použití služby Azure Cosmos DB v Průzkumníku služby Azure Storage umožňuje uživatelům spravovat entity Azure Cosmos DB, manipulovat s daty, aktualizovat uložené procedury a triggery, stejně jako další entity Azure, jako jsou objekty blob a fronty služby Storage. Nyní můžete pomocí jednoho nástroje spravovat různé entity Azure na jednom místě. V současné době podporuje Průzkumník služby Azure Storage účty Cosmos konfigurované pro SQL, MongoDB, Graph a Table API služby.
 

@@ -1,6 +1,6 @@
 ---
-Název: Import dat do nástroje Machine Learning Studio z jiného experimentu titleSuffix: Azure Machine Learning Studio Popis: Postup uložení trénovacích dat v Azure Machine Learning Studio a používat ho v jiného experimentu.
-Services: machine learningu ms.service: ms.component strojového učení: studio ms.topic: článku
+Název: Import dat do nástroje Machine Learning Studio z jiného experimentu titleSuffix: Azure Machine Learning Studio Popis: Postup uložení trénovacích dat v Azure Machine Learning Studio a používat ho v jiného experimentu.
+Services: machine learningu ms.service: ms.subservice strojového učení: studio ms.topic: článku
 
 Autor: ericlicoding ms.author: amlstudiodocs ms.custom: předchozí ms.author=deguhath, předchozí Autor = deguhath ms.date: 03/20/2017
 ---

@@ -1,6 +1,6 @@
 ---
-Název: Ladění vašeho modelu titleSuffix: Azure Machine Learning Studio Popis: Jak ladit chyby, vytvořené moduly Train Model a Score Model v Azure Machine Learning Studio.
-Services: machine learningu ms.service: ms.component strojového učení: studio ms.topic: článku
+Název: Ladění vašeho modelu titleSuffix: Azure Machine Learning Studio Popis: Jak ladit chyby, vytvořené moduly Train Model a Score Model v Azure Machine Learning Studio.
+Services: machine learningu ms.service: ms.subservice strojového učení: studio ms.topic: článku
 
 Autor: ericlicoding ms.author: amlstudiodocs ms.custom: seodec18 ms.date: 03/14/2017
 ---

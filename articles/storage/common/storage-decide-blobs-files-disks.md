@@ -7,13 +7,13 @@ ms.service: storage
 ms.topic: article
 ms.date: 11/28/2018
 ms.author: tamram
-ms.component: common
-ms.openlocfilehash: 9819b2bf3c5e5a07d788dc7f51b674a07e6c41ef
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.subservice: common
+ms.openlocfilehash: 2c8f27c9b5b9c13cd6cb722bafb23dd19b944d27
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52972333"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55474679"
 ---
 # <a name="deciding-when-to-use-azure-blobs-azure-files-or-azure-disks"></a>Rozhodování, jestli použít Azure Blobs, soubory Azure nebo Azure Disks
 
@@ -26,7 +26,7 @@ Následující tabulka porovnává souborů, objektů BLOB a disků a ukazuje uk
 | Funkce | Popis | Kdy je použít |
 |--------------|-------------|-------------|
 | **Služba soubory Azure** | Poskytuje rozhraní SMB, klientských knihoven a [rozhraní REST](/rest/api/storageservices/file-service-rest-api) , která umožňuje přístup odkudkoli k uložených souborů. | Chcete metodou "lift and shift" aplikace do cloudu, která již používá rozhraní API systému nativní soubor pro sdílení dat mezi ním a dalších aplikací běžících v Azure.<br/><br/>Chcete uložit vývoje a ladicí nástroje, které je potřeba přistupovat z velký počet virtuálních počítačů. |
-| **Objekty BLOB Azure** | Nabízí klientské knihovny a [rozhraní REST](/rest/api/storageservices/blob-service-rest-api) , který umožňuje nestrukturovaných dat ukládají a získávají ve velkém měřítku v objektech BLOB bloku.<br/><br/>Podporuje také [Azure Data Lake Storage Gen2](../blobs/data-lake-storage-introduction.md) pro řešení pro analýzu velkých objemů dat organizace. | Chcete, aby vaše aplikace podporovat datový proud a scénáře náhodný přístup.<br/><br/>Chcete mít možnost získat přístup k datům aplikace odkudkoli.<br/><br/>Chcete vytvářet data lake enterprise v Azure a provádět analýzy velkých objemů dat. |
+| **Azure Blobs** | Nabízí klientské knihovny a [rozhraní REST](/rest/api/storageservices/blob-service-rest-api) , který umožňuje nestrukturovaných dat ukládají a získávají ve velkém měřítku v objektech BLOB bloku.<br/><br/>Podporuje také [Azure Data Lake Storage Gen2](../blobs/data-lake-storage-introduction.md) pro řešení pro analýzu velkých objemů dat organizace. | Chcete, aby vaše aplikace podporovat datový proud a scénáře náhodný přístup.<br/><br/>Chcete mít možnost získat přístup k datům aplikace odkudkoli.<br/><br/>Chcete vytvářet data lake enterprise v Azure a provádět analýzy velkých objemů dat. |
 | **Disky Azure** | Nabízí klientské knihovny a [rozhraní REST](/rest/api/compute/manageddisks/disks/disks-rest-api) , který umožňuje dat trvale uložena a k němu přistupovat z připojeného virtuálního pevného disku. | Má schopnost přenést aplikace, které používají rozhraní API systému nativní soubor pro čtení a zápis dat do trvalé disky.<br/><br/>Chcete uložit data, která nevyžaduje přístup mimo virtuální počítač, ke kterému je připojený disk. |
 
 ## <a name="comparison-files-and-blobs"></a>Porovnání: Soubory a objekty BLOB
@@ -35,7 +35,7 @@ Následující tabulka porovnává soubory Azure s využitím objektů BLOB Azur
   
 ||||  
 |-|-|-|  
-|**Atribut**|**Objekty BLOB Azure**|**Služba soubory Azure**|  
+|**Atribut**|**Azure Blobs**|**Služba soubory Azure**|  
 |Možnosti odolnosti|LRS, ZRS, GRS, RA-GRS|LRS, ZRS, GRS|  
 |Přístupnost|Rozhraní REST API|Rozhraní REST API<br /><br /> Protokol SMB 2.1, tak i SMB 3.0 (standardní systém souborů rozhraní API)|  
 |Připojení|Rozhraní REST API – po celém světě|Rozhraní REST API – po celém světě<br /><br /> Protokol SMB 2.1--v rámci oblasti<br /><br /> Protokol SMB 3.0 – po celém světě|  

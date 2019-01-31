@@ -6,14 +6,14 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 10/23/2018
+ms.date: 01/30/2019
 ms.author: raynew
-ms.openlocfilehash: 18e8b7699a388dabbf0e4f5cff7d4fb927e549c2
-ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
+ms.openlocfilehash: daf75987a49d2ce90a436fdfcff1a85d2fc0ca21
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54853812"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55300400"
 ---
 # <a name="contoso-migration-assess-on-premises-workloads-for-migration-to-azure"></a>Migrace Contoso: Posouzení místních úloh pro migraci do Azure
 
@@ -121,7 +121,7 @@ Contoso a ostatní uživatelé musí splňovat následující požadavky pro ass
 - Místní vCenter instance serveru spuštěná verze 6.5, 6.0 nebo 5.5.
 - Účet jen pro čtení ve vCenter serveru nebo oprávnění k jeho vytvoření.
 - Oprávnění k vytvoření virtuálního počítače na instanci serveru vCenter pomocí šablony .ova.
-- Minimálně jednoho hostitele ESXi verze 5.0 nebo novější.
+- Minimálně jednoho hostitele ESXi verze 5.5 nebo novější.
 - Alespoň dva místní virtuální počítače VMware, na jednom z nichž běží databáze SQL Serveru.
 - Oprávnění k instalaci agentů Azure Migrate na každém virtuálním počítači.
 - Virtuální počítače by měly mít přímé připojení k internetu.  
@@ -287,13 +287,7 @@ Před nasazením virtuálního počítače, Contoso kontroluje, zda je soubor OV
     **Příklad**
 
     ```C:\>CertUtil -HashFile C:\AzureMigrate\AzureMigrate.ova SHA256```
-3. Vygenerovaná hodnota hash by měla odpovídat následujícímu nastavení (verze 1.0.9.15):
-
-    **Algoritmus** | **Hodnota hash**
-    --- | ---
-    MD5 | e9ef16b0c837638c506b5fc0ef75ebfa
-    SHA1 | 37b4b1e92b3c6ac2782ff5258450df6686c89864
-    SHA256 | 8a86fc17f69b69968eb20a5c4c288c194cdcffb4ee6568d85ae5ba96835559ba
+3. Vygenerovaná hodnota hash by měla odpovídat uvedené hodnoty hash [tady](https://docs.microsoft.com/azure/migrate/tutorial-assessment-vmware#continuous-discovery).
 
 ### <a name="create-the-collector-appliance"></a>Vytvoření zařízení kolektoru
 

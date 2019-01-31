@@ -1,6 +1,6 @@
 ---
-Název: "Řešení potíží: Vytvořit, připojit k pracovnímu prostoru Machine Learning Studio se titleSuffix: Azure Machine Learning Studio Popis: Tato příručka poskytuje řešení pro některé často problémy při nastavení pracovních prostorů Azure Machine Learning Studio.
-Services: machine learningu ms.service: ms.component strojového učení: studio ms.topic: článku
+Název: "Řešení potíží: Vytvořit, připojit k pracovnímu prostoru Machine Learning Studio se titleSuffix: Azure Machine Learning Studio Popis: Tato příručka poskytuje řešení pro některé často problémy při nastavení pracovních prostorů Azure Machine Learning Studio.
+Services: machine learningu ms.service: ms.subservice strojového učení: studio ms.topic: článku
 
 Autor: ericlicoding ms.author: amlstudiodocs ms.custom: předchozí Autor = heatherbshapiro předchozí ms.author=hshapiro ms.date: 03/20/2017
 ---

@@ -6,17 +6,17 @@ author: marktab
 manager: cgronlun
 editor: cgronlun
 ms.service: machine-learning
-ms.component: team-data-science-process
+ms.subservice: team-data-science-process
 ms.topic: article
 ms.date: 11/21/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: f427ce2df8a83a3fb43291fcb375a1e01b32060d
-ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
+ms.openlocfilehash: ce3fdef6429452eeee522896b47ed71de6a10201
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54447016"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55451729"
 ---
 # <a name="create-features-for-data-in-sql-server-using-sql-and-python"></a>Vytvoření funkcí pro data v SQL Serveru pomocí jazyka SQL a Pythonu
 Tento dokument ukazuje, jak generovat funkcí pro data uložená v virtuálního počítače s SQL serverem v Azure, který pomůže algoritmy, Učte se od data efektivněji. K provedení této úlohy můžete použít SQL nebo programovací jazyk, jako je Python. Oba přístupy jsou zde popsané.

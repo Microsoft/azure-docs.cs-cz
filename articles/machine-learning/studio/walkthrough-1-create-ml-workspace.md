@@ -1,6 +1,6 @@
 ---
-Název: "Krok 1: Vytvoření pracovního prostoru "titleSuffix: Azure Machine Learning Studio Popis: "Krok 1 vývoj prediktivního řešení názorný postup: Zjistěte, jak vytvořit nový pracovní prostor Azure Machine Learning Studio. "
-Services: machine learningu ms.service: ms.component strojového učení: studio ms.topic: článku
+Název: "Krok 1: Vytvoření pracovního prostoru "titleSuffix: Azure Machine Learning Studio Popis: "Krok 1 vývoj prediktivního řešení názorný postup: Zjistěte, jak vytvořit nový pracovní prostor Azure Machine Learning Studio. "
+Services: machine learningu ms.service: ms.subservice strojového učení: studio ms.topic: článku
 
 Autor: garyericson ms.author: garye ms.custom: seodec18 ms.date: 03/23/2017
 ---

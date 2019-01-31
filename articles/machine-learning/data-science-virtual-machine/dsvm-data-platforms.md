@@ -9,19 +9,19 @@ manager: cgronlun
 ms.custom: seodec18
 ms.assetid: ''
 ms.service: machine-learning
-ms.component: data-science-vm
+ms.subservice: data-science-vm
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/16/2018
 ms.author: gokuma
-ms.openlocfilehash: adaed5f15facb00b6ed624234ebad31f60782de1
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.openlocfilehash: 744c8d6488b9b0688126d305426f90647a89d4be
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55094321"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55478079"
 ---
 # <a name="data-platforms-supported-on-the-data-science-virtual-machine"></a>Datové platformy podporované na virtuální počítač pro datové vědy
 

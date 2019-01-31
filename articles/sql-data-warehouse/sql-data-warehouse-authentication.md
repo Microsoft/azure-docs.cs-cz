@@ -2,20 +2,20 @@
 title: Ověřování pro Azure SQL Data Warehouse | Dokumentace Microsoftu
 description: Zjistěte, jak provést ověření do služby Azure SQL Data Warehouse pomocí ověřování Azure Active Directory (AAD) nebo SQL Server.
 services: sql-data-warehouse
-author: kavithaj
+author: KavithaJonnakuti
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
-ms.component: implement
+ms.subservice: implement
 ms.date: 04/12/2018
 ms.author: kavithaj
 ms.reviewer: igorstan
-ms.openlocfilehash: d082ba8bd2819450609a8a6e4ab41b4320158d4b
-ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
+ms.openlocfilehash: 7f26ded5fae1bde5b2e6485ae2a2f99eebb17563
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43307838"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55463323"
 ---
 # <a name="authenticate-to-azure-sql-data-warehouse"></a>Ověřování pro Azure SQL Data Warehouse
 Zjistěte, jak provést ověření do služby Azure SQL Data Warehouse pomocí ověřování Azure Active Directory (AAD) nebo SQL Server.
@@ -67,7 +67,7 @@ Azure Active Directory k výhodám patří:
 Postupujte podle těchto kroků a nakonfigurujte ověřování Azure Active Directory.
 
 1. Vytvoření a naplnění služby Azure Active Directory
-2. Volitelné: Přiřadit nebo změnit služby active directory, která je teď přidružená k předplatnému Azure
+2. Volitelné: Přidružení nebo změnit služby active directory, která je teď přidružená k předplatnému Azure
 3. Vytvoření správce Azure Active Directory pro službu Azure SQL Data Warehouse.
 4. Konfigurace klientských počítačů
 5. Vytvořte uživatele databáze s omezením v databázi namapované na identit Azure AD

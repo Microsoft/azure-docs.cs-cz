@@ -1,29 +1,29 @@
 ---
-title: 'Rychlý start: Horizontální navýšení kapacity výpočetních prostředků ve službě Azure SQL Data Warehouse – T-SQL | Microsoft Docs'
+title: 'Rychlý start: Horizontální navýšení kapacity výpočetních prostředků ve službě Azure SQL Data Warehouse – T-SQL | Dokumentace Microsoftu'
 description: Pomocí T-SQL a aplikace SSMS (SQL Server Management Studio) můžete škálovat výpočetní prostředky ve službě Azure SQL Data Warehouse. Kapacitu výpočetních prostředků můžete horizontálně navýšit, abyste získali lepší výkon, nebo snížit, abyste dosáhli nižších nákladů.
 services: sql-data-warehouse
 author: kevinvngo
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: quickstart
-ms.component: manage
+ms.subservice: manage
 ms.date: 04/17/2018
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: e499a2a2201e81d40354069c007790e4bcdff671
-ms.sourcegitcommit: 2b2129fa6413230cf35ac18ff386d40d1e8d0677
-ms.translationtype: HT
+ms.openlocfilehash: a734e0173a3432e03c5876d30cf54ea3fd23d4dc
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43245776"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55460341"
 ---
-# <a name="quickstart-scale-compute-in-azure-sql-data-warehouse-using-t-sql"></a>Rychlý start: Škálování kapacity výpočetních prostředků ve službě Azure SQL Data Warehouse pomocí T-SQL
+# <a name="quickstart-scale-compute-in-azure-sql-data-warehouse-using-t-sql"></a>Rychlý start: Škálování výpočetních prostředků ve službě Azure SQL Data Warehouse pomocí T-SQL
 
 Pomocí T-SQL a aplikace SSMS (SQL Server Management Studio) můžete škálovat výpočetní prostředky ve službě Azure SQL Data Warehouse. Kapacitu výpočetních prostředků můžete [horizontálně navýšit](sql-data-warehouse-manage-compute-overview.md), abyste získali lepší výkon, nebo snížit, abyste dosáhli nižších nákladů. 
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 
-## <a name="before-you-begin"></a>Než začnete
+## <a name="before-you-begin"></a>Před zahájením
 
 Stáhněte a nainstalujte nejnovější verzi aplikace [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms) (SSMS).
  
@@ -146,7 +146,7 @@ AND
 ```
 
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 Teď už víte, jak škálovat výpočetní prostředky pro datový sklad. Další informace o službě Azure SQL Data Warehouse najdete v kurzu načítání dat.
 
 > [!div class="nextstepaction"]

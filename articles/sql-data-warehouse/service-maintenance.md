@@ -6,16 +6,16 @@ author: antvgski
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
-ms.component: manage
+ms.subservice: manage
 ms.date: 04/19/2018
 ms.author: anvang
 ms.reviewer: igorstan
-ms.openlocfilehash: c1e8f94a0131ace6354d070e932e414a1897260e
-ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
+ms.openlocfilehash: 05f82ae571bea41c15099b52282f4efe29b2c763
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53166298"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55468406"
 ---
 # <a name="planning-for-maintenance-on-your-azure-sql-data-warehouse"></a>Plánování údržby ve službě Azure SQL data warehouse
 

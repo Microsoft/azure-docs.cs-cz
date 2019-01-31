@@ -6,14 +6,14 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 11/06/2018
 ms.author: govindk
-ms.openlocfilehash: 2bb3665f0d0ab15f212741a6ce032fcd7ac2620d
-ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
+ms.openlocfilehash: 7cc8e46c841b6e385d1a3b442fdb63d465486af8
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54358109"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55477722"
 ---
-# <a name="ip-firewall-for-azure-cosmos-accounts"></a>Brány firewall protokolu IP pro účty služby Azure Cosmos
+# <a name="ip-firewall-in-azure-cosmos-db"></a>Brány firewall protokolu IP ve službě Azure Cosmos DB
 
 K zabezpečení dat uložených v účtu Azure Cosmos DB podporuje tajného kódu autorizace na základě modelu, který využívá silné Hash-based kódu (metoda HMAC Message Authentication). Kromě toho Azure Cosmos DB podporuje řízení přístupu na základě IP adresy pro podporu brány firewall pro příchozí. Tento model je podobný pravidla brány firewall tradiční databázový systém a poskytuje další úroveň zabezpečení ke svému účtu. S branami firewall můžete nakonfigurovat svůj účet Azure Cosmos a být přístupná jenom schválenou sadu počítačů nebo cloudových služeb. Přístup k datům uloženým v databázi Azure Cosmos z těchto schválených sad počítače a služby se stále vyžadují volající předložit platný autorizační token.
 

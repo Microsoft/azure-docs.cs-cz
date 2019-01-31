@@ -1,19 +1,19 @@
 ---
 title: 'Kurz: Nasazení a konfigurace služby Azure Firewall v hybridní síti pomocí Azure PowerShellu'
-description: V tomto kurzu se naučíte nasadit a konfigurovat bránu Azure Firewall pomocí webu Azure Portal.
+description: V tomto kurzu se dozvíte, jak nasadit a nakonfigurovat Firewall služby Azure pomocí Azure Powershellu.
 services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: tutorial
-ms.date: 12/14/2018
+ms.date: 1/30/2019
 ms.author: victorh
 customer intent: As an administrator, I want to control network access from an on-premises network to an Azure virtual network.
-ms.openlocfilehash: 511fb425c6b31d204c88094ec5b1a49316495a0a
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: 29af70988cf77b9fad47e5c2478e5c86529fe9cf
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54431516"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55458211"
 ---
 # <a name="tutorial-deploy-and-configure-azure-firewall-in-a-hybrid-network-using-azure-powershell"></a>Kurz: Nasazení a konfigurace služby Azure Firewall v hybridní síti pomocí Azure PowerShellu
 
@@ -61,6 +61,8 @@ Postup vytvoření těchto tras najdete v části [Vytvoření pravidel](#create
 
 >[!NOTE]
 >Přenos dat mezi přímo partnerských virtuálních sítích je směrován přímo i v případě, že trasu UDR odkazuje na jako výchozí brána Firewall služby Azure. K odeslání podsítě pro podsíť provozu do brány firewall v tomto scénáři, musí obsahovat trasu UDR předpona cílové podsítě sítě explicitně v obou podsítích.
+
+Související referenční dokumentace k Azure Powershellu najdete v tématu [referenční informace k Azure Powershellu](https://docs.microsoft.com/powershell/module/az.network/new-azfirewall).
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 

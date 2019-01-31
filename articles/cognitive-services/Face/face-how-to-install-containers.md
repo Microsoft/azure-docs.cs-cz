@@ -7,166 +7,154 @@ author: diberry
 manager: cgronlun
 ms.custom: seodec18
 ms.service: cognitive-services
-ms.subservice: text-analytics
+ms.subservice: face-api
 ms.topic: article
-ms.date: 01/22/2019
+ms.date: 01/29/2019
 ms.author: diberry
-ms.openlocfilehash: 2d9d4c3012691965d4396cb3927634111a7dd937
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: 0ed7a007f4d39b36ecc9669d97379323b91a3a09
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55225274"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55477433"
 ---
 # <a name="install-and-run-containers"></a>Instalace a spuštění kontejnerů
-
-Kontejnerizace je přístup k distribuci softwaru, ve kterém je zabalená aplikace nebo služby, jako image kontejneru. Konfigurace a závislosti pro aplikaci nebo službě jsou součástí image kontejneru. Image kontejneru je potom nasadit na hostiteli s téměř nebo vůbec žádné změny. Kontejnery jsou izolované od sebe navzájem a základní operační systém s menší nároky na místo než virtuální počítač. Kontejnery můžete vytvořené z imagí kontejneru pro krátkodobé úlohy a odebrat, pokud už je nepotřebujete.
 
 Rozpoznávání tváře poskytuje standardizované kontejneru Linuxu pro Docker, s názvem pro rozpoznávání tváře, detekuje lidské tváře v obrázcích, který určuje atributy, včetně orientačních bodů pro rozpoznávání tváře (například ústa a oči), pohlaví, věk a další funkce rozpoznávání obličeje předpovědět počítače. Kromě zjišťování můžete pro rozpoznávání tváře zkontrolujte, jestli dvě tváře na stejnou bitovou kopii nebo jinou Image jsou stejné s použitím skóre spolehlivosti nebo porovnání proti databázi a zjistěte, jestli podobně vypadajících tváří, nebo identické pro rozpoznávání tváře již existuje. Můžete také uspořádat podobných tváří do skupin pomocí sdílené visual vlastností.
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
-## <a name="preparation"></a>Příprava
+## <a name="prerequisites"></a>Požadavky
 
-Před použitím kontejnerů pro rozpoznávání tváře, musí splňovat následující požadavky:
+Před použitím kontejnerů API pro rozpoznávání tváře, musí splňovat následující požadavky:
 
-**Modul docker**: Musíte mít lokálně nainstalovaný modul Docker. Docker nabízí balíčky, které nakonfigurují prostředí Dockeru na [macOS](https://docs.docker.com/docker-for-mac/), [Linux](https://docs.docker.com/engine/installation/#supported-platforms), a [Windows](https://docs.docker.com/docker-for-windows/). Na Windows Docker musí být nakonfigurované pro podporu kontejnerů Linuxu. Kontejnery dockeru je také možné nasadit přímo do [Azure Kubernetes Service](../../aks/index.yml), [Azure Container Instances](../../container-instances/index.yml), nebo [Kubernetes](https://kubernetes.io/) clusteru nasadí do [Azure Stack](../../azure-stack/index.yml). Další informace o nasazení Kubernetes pro Azure Stack najdete v tématu [nasazení Kubernetes pro Azure Stack](../../azure-stack/user/azure-stack-solution-template-kubernetes-deploy.md).
+|Požaduje se|Účel|
+|--|--|
+|Modul docker| Je nutné modul Docker nainstalovaný na [hostitelský počítač](#the-host-computer). Docker nabízí balíčky, které nakonfigurují prostředí Dockeru na [macOS](https://docs.docker.com/docker-for-mac/), [Windows](https://docs.docker.com/docker-for-windows/), a [Linux](https://docs.docker.com/engine/installation/#supported-platforms). Základy Dockeru a kontejnerech základní informace o najdete v článku [přehled Dockeru](https://docs.docker.com/engine/docker-overview/).<br><br> Docker je třeba nastavit umožňující kontejnery a spojte se s odesílat fakturačních dat do Azure. <br><br> **Na Windows**, Docker musí být taky nakonfigurovaný pro podporu kontejnerů Linuxu.<br><br>|
+|Znalost Dockeru | Byste měli mít základní znalost konceptů Dockeru, jako je registrů, úložiště, kontejnery a Image kontejneru, jakož i znalost basic `docker` příkazy.| 
+|Rozhraní API pro rozpoznávání tváře prostředků |Chcete-li použít kontejner, musíte mít:<br><br>A _API pro rozpoznávání tváře_ prostředků Azure můžete získat přidružený klíč účtování a fakturace identifikátor URI koncového bodu. Obě hodnoty jsou k dispozici na stránkách portálu Azure přehled rozhraní API pro rozpoznávání tváře a klíče a jsou vyžadovány pro spuštění kontejneru.<br><br>**{BILLING_KEY}** : klíč prostředku<br><br>**{BILLING_ENDPOINT_URI}** : Příklad identifikátor URI koncového bodu je: `https://westus.api.cognitive.microsoft.com/text/analytics/v2.0`|
 
-Docker je třeba nastavit umožňující kontejnery a spojte se s odesílat fakturačních dat do Azure.
-
-**Znalost společnosti Microsoft Container Registry a Docker**: Byste měli mít základní znalost konceptů Microsoft Container Registry a Docker, jako je registrů, úložiště, kontejnery a Image kontejneru, jakož i znalost basic `docker` příkazy.  
-
-Základy Dockeru a kontejnerech základní informace o najdete v článku [přehled Dockeru](https://docs.docker.com/engine/docker-overview/).
-
-### <a name="container-requirements-and-recommendations"></a>Požadavků na kontejner a doporučení
-
-Kontejner pro rozpoznávání tváře vyžaduje minimálně 1 jádra procesoru, alespoň 2.6 gigahertz (GHz) nebo rychlejší a 4 gigabajty (GB) přidělené paměti, ale My doporučujeme aspoň 2 Procesorových jader a 6 GB přidělené paměti.
 
 ## <a name="request-access-to-the-private-container-registry"></a>Požádat o přístup k registru kontejneru soukromého
 
-Nejprve musíte vyplňte a odešlete [formulář žádosti o kontejnery pro zpracování obrazu Cognitive Services](https://aka.ms/VisionContainersPreview) chcete požádat o přístup ke kontejneru pro rozpoznávání tváře. Formulář požádá o informace o vás, vaše společnost a uživatelský scénář, který budete používat kontejneru. Po odeslání týmu Azure Cognitive Services zkontroluje formulář pro ověření, že splňujete kritéria pro přístup k registru kontejneru soukromého.
+[!INCLUDE [Request access to private preview](../../../includes/cognitive-services-containers-request-access.md)]
 
-> [!IMPORTANT]
-> Musíte použít e-mailovou adresu, přidružené k účtu Microsoft (MSA) nebo Azure Active Directory (Azure AD) účtu ve formuláři.
+### <a name="the-host-computer"></a>Hostitelském počítači
 
-Pokud vaše žádost se schválí, pak dostanete e-mail s pokyny popisují, jak získat vaše přihlašovací údaje a přístup privátním registru kontejneru.
+[!INCLUDE [Request access to private preview](../../../includes/cognitive-services-containers-host-computer.md)]
 
-## <a name="create-a-face-resource-on-azure"></a>Vytvoření prostředku pro rozpoznávání tváře na Azure
 
-Pokud chcete použít pro rozpoznávání tváře kontejner, musíte vytvořit prostředek pro rozpoznávání tváře na Azure. Po vytvoření prostředku, pak použijte adresu URL předplatné key a koncového bodu z prostředku nástroje pro vytvoření instance kontejneru. Další informace o vytvoření instance kontejneru najdete v tématu [vytvořit instanci kontejneru z image kontejneru stažené](#instantiate-a-container-from-a-downloaded-container-image).
+### <a name="container-requirements-and-recommendations"></a>Požadavků na kontejner a doporučení
 
-Proveďte následující kroky k vytvoření a načtení informací z prostředku pro rozpoznávání tváře:
+Následující tabulka popisuje minimální a doporučené jader procesoru a paměti k přidělení pro každý kontejner API pro rozpoznávání tváře.
 
-1. Vytvoření prostředku pro rozpoznávání tváře na webu Azure Portal.  
-   Pokud chcete použít pro rozpoznávání tváře kontejner, musíte nejprve vytvořit odpovídající prostředek pro rozpoznávání tváře na webu Azure Portal. Další informace najdete v tématu [rychlý start: Vytvoření účtu služeb Cognitive Services na webu Azure Portal](../cognitive-services-apis-create-account.md).
+| Kontejner | Minimální | Doporučené |
+|-----------|---------|-------------|
+|Tvář | 1 jádro, 2 GB paměti | 1 jádro, 4 GB paměti |
 
-1. Získáte klíče koncového bodu adresy URL a předplatného pro prostředky Azure.  
-   Po vytvoření prostředku Azure musíte použít koncový bod adresy URL a klíč předplatného z tohoto prostředku pro vytvoření instance kontejneru odpovídající pro rozpoznávání tváře. Koncový bod adresy URL a klíč předplatného můžete zkopírovat z prostředku pro rozpoznávání tváře na portálu Azure portal, rychlý Start a klíče stránky.
+Každé jádro, musí být aspoň 2.6 gigahertz (GHz) nebo rychlejší.
 
-## <a name="log-in-to-the-private-container-registry"></a>Přihlásit do soukromého registru kontejnerů
+Jader a paměti odpovídají `--cpus` a `--memory` nastavení, které se používají jako součást `docker run` příkazu.
 
-Existuje několik způsobů, jak ověřování pomocí kontejneru soukromého registru kontejnerů Cognitive Services, ale je doporučená metoda z příkazového řádku s použitím [rozhraní příkazového řádku Dockeru](https://docs.docker.com/engine/reference/commandline/cli/).
+## <a name="get-the-container-image-with-docker-pull"></a>Získat image kontejneru s `docker pull`
 
-Použití [docker login](https://docs.docker.com/engine/reference/commandline/login/) příkaz, jak je znázorněno v následujícím příkladu, pro přihlášení k `containerpreview.azurecr.io`, privátní registr kontejnerů Cognitive Services. Nahraďte *\<uživatelské jméno\>* s uživatelským jménem a *\<heslo\>* s heslo zadané přihlašovací údaje, který jste dostali od Azure Týmu služeb cognitive Services.
+Image kontejneru pro rozhraní API pro rozpoznávání tváře jsou k dispozici. 
 
-```docker
-docker login containerpreview.azurecr.io -u <username> -p <password>
-```
+| Kontejner | Úložiště |
+|-----------|------------|
+| Tvář | `containerpreview.azurecr.io/microsoft/cognitive-services-face:latest` |
 
-Pokud máte zabezpečený svoje přihlašovací údaje do textového souboru, lze zřetězit obsah textu soubor, pomocí `cat` příkaz, `docker login` příkaz, jak je znázorněno v následujícím příkladu. Nahraďte *\<passwordFile\>* cestou a názvem textového souboru, který obsahuje heslo a *\<uživatelské jméno\>* s uživatelským jménem zadat svoje přihlašovací údaje.
+[!INCLUDE [Tip for using docker list](../../../includes/cognitive-services-containers-docker-list-tip.md)]
 
-```docker
-cat <passwordFile> | docker login containerpreview.azurecr.io -u <username> --password-stdin
-```
-
-## <a name="download-container-images-from-the-private-container-registry"></a>Stáhněte si Image kontejneru z registru kontejneru soukromého
-
-Image kontejneru pro kontejner pro rozpoznávání tváře je k dispozici z privátního registru kontejnerů Dockeru s názvem `containerpreview.azurecr.io`, ve službě Azure Container Registry. Image kontejneru pro rozpoznávání tváře kontejner musí stáhnout z úložiště pro místní spuštění kontejneru.
-
-Použití [operace docker pull](https://docs.docker.com/engine/reference/commandline/pull/) příkaz Stáhnout image kontejneru z úložiště. Například chcete-li stáhnout nejnovější image kontejneru pro rozpoznávání tváře z úložiště, použijte následující příkaz:
+### <a name="docker-pull-for-the-face-container"></a>Operace docker pull pro kontejner pro rozpoznávání tváře
 
 ```Docker
-docker pull containerpreview.azurecr.io/microsoft/cognitive-services-face:latest
+docker pull mcr.microsoft.com/azure-cognitive-services/face:latest
 ```
 
-Úplný popis dostupných značek pro rozpoznávání tváře kontejneru najdete v tématu [rozpoznat Text](https://go.microsoft.com/fwlink/?linkid=2018655) na Docker Hubu.
+## <a name="how-to-use-the-container"></a>Jak používat kontejneru
 
-> [!TIP]
-> Můžete použít [imagí dockeru](https://docs.docker.com/engine/reference/commandline/images/) příkazu zobrazte výpis imagí kontejnerů stažené. Například následující příkaz zobrazí seznam ID, úložiště a značka image každý stažený kontejneru, formátovaná jako tabulka:
->
->  ```Docker
->  docker images --format "table {{.ID}}\t{{.Repository}}\t{{.Tag}}"
->  ```
->
+Jakmile bude kontejner ve [hostitelský počítač](#the-host-computer), použijte následující postup pro práci s kontejnerem.
 
-## <a name="instantiate-a-container-from-a-downloaded-container-image"></a>Vytvořit instanci kontejneru z image kontejneru stažené
+1. [Spuštění kontejneru](#run-the-container-with-docker-run), s požadovanými fakturace nastavení. Další [příklady](./face-resource-container-config.md#example-docker-run-commands) z `docker run` příkazu jsou k dispozici. 
+1. [Dotazování koncový bod kontejneru předpovědi](#query-the-containers-prediction-endpoint). 
 
-Použití [dockeru spustit](https://docs.docker.com/engine/reference/commandline/run/) příkaz pro vytvoření instance kontejner z image kontejneru stažené. Například následující příkaz:
+## <a name="run-the-container-with-docker-run"></a>Spusťte kontejner s `docker run`
 
-* Vytvoří kontejner z image kontejneru pro rozpoznávání tváře
-* Přidělí dvě jader procesoru a paměti 6 gigabajtů (GB)
+Použití [dockeru spustit](https://docs.docker.com/engine/reference/commandline/run/) příkaz ke spuštění tři kontejnery. Příkaz používá následující parametry:
+
+| Zástupný symbol | Hodnota |
+|-------------|-------|
+|{BILLING_KEY} | Tento klíč se používá ke spuštění kontejneru a je k dispozici na stránce klíče rozhraní API pro rozpoznávání tváře webu Azure portal.  |
+|{BILLING_ENDPOINT_URI} | Fakturační koncový bod hodnotu identifikátoru URI je k dispozici na stránce Přehled rozhraní API pro rozpoznávání tváře webu Azure portal.|
+
+Tyto parametry nahraďte vlastními hodnotami v následujícím příkladu `docker run` příkazu.
+
+```bash
+docker run --rm -it -p 5000:5000 --memory 4g --cpus 1 \
+containerpreview.azurecr.io/microsoft/ognitive-services-face \
+Eula=accept \
+Billing={BILLING_ENDPOINT_URI} \
+ApiKey={BILLING_KEY}
+```
+
+Tento příkaz:
+
+* Spustí kontejner pro rozpoznávání tváře z image kontejneru
+* Přidělí jedno Procesorové jádro a 4 gigabajty (GB) paměti
 * Zpřístupňuje TCP port 5000 a přiděluje pseudo-TTY pro kontejner
-* Po ukončení automaticky odstraní kontejner
+* Po ukončení automaticky odstraní kontejner. Image kontejneru je stále k dispozici na hostitelském počítači. 
 
-```Docker
-docker run --rm -it -p 5000:5000 --memory 6g --cpus 2 containerpreview.azurecr.io/microsoft/cognitive-services-face Eula=accept Billing=https://westus.api.cognitive.microsoft.com/face/v1.0 ApiKey=0123456789
-```
+Další [příklady](./face-resource-container-config.md#example-docker-run-commands) z `docker run` příkazu jsou k dispozici. 
 
 > [!IMPORTANT]
-> `Eula`, `Billing`, A `ApiKey` musí být zadané možnosti pro vytvoření instance kontejneru; v opačném případě nebude spuštění kontejneru.  Další informace najdete v tématu [fakturace](#billing).
+> `Eula`, `Billing`, A `ApiKey` možnosti musí být zadán pro spuštění kontejneru; v opačném případě nebude spuštění kontejneru.  Další informace najdete v tématu [fakturace](#billing).
 
-Po vytvoření instance, můžete operace volat z kontejneru pomocí kontejneru hostitele identifikátoru URI. Například následující identifikátor URI hostitele představuje kontejner pro rozpoznávání tváře, která byla vytvořena instance v předchozím příkladu:
+## <a name="query-the-containers-prediction-endpoint"></a>Dotazování koncový bod kontejneru predikcí
 
-```http
-http://localhost:5000/
-```
+Kontejner poskytuje koncový bod předpovědi dotazů založených na REST API. 
 
-> [!TIP]
-> Můžete přistupovat [specifikace OpenAPI](https://swagger.io/docs/specification/about/) (dříve specifikace Swagger), popisující operací podporované vytvořenou instanci kontejneru z `/swagger` relativní identifikátor URI pro tento kontejner. Například následující identifikátor URI poskytuje přístup ke specifikaci OpenAPI pro rozpoznávání tváře kontejneru, která byla vytvořena instance v předchozím příkladu:
->
->  ```http
->  http://localhost:5000/swagger
->  ```
+Použít hostitele, https://localhost:5000, pro kontejner rozhraní API.
 
-Můžete buď [volání operací REST API](https://docs.microsoft.com/azure/cognitive-services/face/face-api-how-to-topics/howtodetectfacesinimage) z kontejneru, nebo použijte k dispozici [Azure Cognitive Services Face Klientská knihovna](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Vision.Face/) klientskou knihovnu pro volání těchto operací.  
-> [!IMPORTANT]
-> Pokud chcete použít klientskou knihovnu pro kontejner, musíte mít Cognitive Services Face klientské knihovny Azure verze 2.0 nebo novější.
+## <a name="stop-the-container"></a>Zastavit kontejner
 
-Jediný rozdíl mezi voláním danou operaci z vašeho kontejneru a volání, je stejné operace z odpovídající služby v Azure, použijte identifikátor URI vašeho kontejneru hostitele, nikoli identifikátor URI z oblasti Azure, hostitele k volání operace. Například Kdybyste chtěli použít pro rozpoznávání tváře instanci běžící v oblasti Azure USA – západ k rozpoznávání tváří, by volat následující operaci rozhraní REST API:
+[!INCLUDE [How to stop the container](../../../includes/cognitive-services-containers-stop.md)]
 
-```http
-POST https://westus.api.cognitive.microsoft.com/face/v1.0/detect
-```
+## <a name="troubleshooting"></a>Řešení potíží
 
-Pokud jste chtěli použít kontejner pro rozpoznávání tváře se spuštěnou v místním počítači v její výchozí konfiguraci pro rozpoznávání tváří, by volat následující operaci rozhraní REST API:
+Pokud spouštíte kontejner s výstupem [připojit](./face-resource-container-config.md#mount-settings) a povolení protokolování kontejneru vygeneruje soubory protokolů, které jsou užitečné při řešení potíží, ke kterým dochází při spuštění nebo spuštění kontejneru. 
 
-```http
-POST http://localhost:5000/face/v1.0/detect
-```
+## <a name="containers-api-documentation"></a>Dokumentace k rozhraní API kontejneru
 
-### <a name="billing"></a>Fakturace
+[!INCLUDE [Container's API documentation](../../../includes/cognitive-services-containers-api-documentation.md)]
 
-Kontejner pro rozpoznávání tváře odešle informace o fakturaci Azure, pomocí odpovídající prostředek pro rozpoznávání tváře na účtu Azure. Následující možnosti příkazového řádku se používají pro rozpoznávání tváře kontejnerem pro účely fakturace:
+## <a name="billing"></a>Fakturace
+
+Odeslat kontejnery API pro rozpoznávání tváře fakturační údaje do Azure, pomocí _API pro rozpoznávání tváře_ prostředků v účtu Azure. 
+
+Cognitive Services kontejnery nejsou licencované k používání bez připojení k Azure pro monitorování míry využívání. Zákazníci musí umožňují používání kontejnerů ke komunikaci fakturační údaje ke službě monitorování míry využití po celou dobu. Cognitive Services kontejnery Neodesílat data zákazníků společnosti Microsoft. 
+
+`docker run` Příkaz používá následující argumenty pro účely fakturace:
 
 | Možnost | Popis |
 |--------|-------------|
-| `ApiKey` | Klíč rozhraní API pro rozpoznávání tváře prostředku lze sledovat fakturační údaje.<br/>Hodnota této možnosti musí být nastavená na klíče rozhraní API pro zřízené Azure pro rozpoznávání tváře prostředek určený v `Billing`. |
-| `Billing` | Koncový bod pro rozpoznávání tváře prostředek, který používá ke sledování fakturační údaje.<br/>Hodnota této možnosti musí identifikátor URI se zřídil prostředek Azure pro rozpoznávání tváře na koncový bod.|
-| `Eula` | Označuje, že jste přijali licenční pro kontejner.<br/>Hodnota této možnosti musí být nastavená na `accept`. |
+| `ApiKey` | Klíč rozhraní API _API pro rozpoznávání tváře_ prostředek, který používá ke sledování fakturační údaje. |
+| `Billing` | Koncový bod _API pro rozpoznávání tváře_ prostředek, který používá ke sledování fakturační údaje.|
+| `Eula` | Označuje, že jste přijali licenci pro kontejner.<br/>Hodnota této možnosti musí být nastavená na `accept`. |
 
 > [!IMPORTANT]
 > Všechny tři možnosti je nutné zadat platnou hodnotou nebo kontejneru se nespustí.
 
-Další informace o těchto možnostech najdete v tématu [konfigurace kontejnery](face-resource-container-config.md).
+Další informace o těchto možnostech najdete v tématu [konfigurace kontejnery](./face-resource-container-config.md).
 
 ## <a name="summary"></a>Souhrn
 
-V tomto článku jste zjistili, koncepty a pracovní postup pro stažení, instalaci a používání kontejnerů pro rozpoznávání tváře. Souhrn:
+V tomto článku jste zjistili, koncepty a pracovní postup pro stažení, instalaci a používání rozhraní API pro rozpoznávání tváře kontejnery. Souhrn:
 
-* Rozpoznávání tváře poskytuje jeden kontejner Linuxu pro Docker, s názvem pro rozpoznávání tváře, rozpoznávání tváří nebo identifikace tváře lidí databáze.
-* Image kontejneru se stahují ze soukromého registru kontejnerů v Azure.
+* Rozhraní API pro rozpoznávání tváře nabízí tři kontejnery Linuxu pro Docker, zapouzdření extrakce klíčových frází, rozpoznávání jazyka a analýzy subjektivního hodnocení.
+* Image kontejneru se stáhnou z kontejneru registru Microsoft (MCR) v Azure.
 * Spuštění imagí kontejnerů v Dockeru.
-* Rozhraní REST API nebo sady SDK můžete použít k volání operací v kontejnerech pro rozpoznávání tváře tak, že zadáte identifikátor URI kontejneru hostitele.
+* Rozhraní REST API nebo sady SDK můžete použít k volání operací v rozhraní API pro rozpoznávání tváře kontejnery tak, že zadáte identifikátor URI kontejneru hostitele.
 * Při vytváření instance kontejneru, je nutné zadat fakturační informace.
 
 > [!IMPORTANT]

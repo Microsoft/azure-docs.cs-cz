@@ -2,21 +2,21 @@
 title: Paralelní simulace jazyka R ve službě Azure Batch
 description: Kurz – podrobné pokyny ke spuštění finanční simulace Monte Carlo ve službě Azure Batch pomocí balíku R doAzureParallel
 services: batch
-author: dlepow
+author: laurenhughes
 manager: jeconnoc
 ms.assetid: ''
 ms.service: batch
 ms.devlang: r
 ms.topic: tutorial
 ms.date: 01/23/2018
-ms.author: danlep
+ms.author: lahugh
 ms.custom: mvc
-ms.openlocfilehash: 305ea27e787196f648fcb4c536f33b12c924c015
-ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
+ms.openlocfilehash: bccf12c4e0614ec02414001ab7cf3c4b7f189e65
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53164681"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55455996"
 ---
 # <a name="tutorial-run-a-parallel-r-simulation-with-azure-batch"></a>Kurz: Spuštění paralelní simulace jazyka R ve službě Azure Batch 
 
@@ -38,7 +38,7 @@ V tomto kurzu se dozvíte, jak nasadit fond služby Batch a spustit ve službě 
 
 * Účet služby Azure Batch a služby Azure Storage. Informace o vytvoření těchto účtů prostřednictvím [webu Azure Portal](quick-create-portal.md) nebo [rozhraní Azure CLI](quick-create-cli.md) najdete v rychlém startu služby Batch. 
 
-## <a name="sign-in-to-azure"></a>Přihlášení k Azure
+## <a name="sign-in-to-azure"></a>Přihlásit se k Azure
 
 Přihlaste se k webu Azure Portal na adrese [https://portal.azure.com](https://portal.azure.com).
 

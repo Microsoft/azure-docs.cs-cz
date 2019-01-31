@@ -6,18 +6,18 @@ services: cognitive-services
 author: Jann-Skotdal
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: translator-text
+ms.subservice: translator-text
 ms.topic: reference
 ms.date: 03/29/2018
 ms.author: v-jansko
-ms.openlocfilehash: 4b24ba4b4d83ac3f0c8291308debb6317efa4a55
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: b12b9d56f42911da606e3bdcfedbe3f789d2c4e8
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52967993"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55466929"
 ---
-# <a name="translator-text-api-30-dictionary-examples"></a>Translator Text API 3.0: Ukázky slovníků
+# <a name="translator-text-api-30-dictionary-examples"></a>Translator Text API 3.0: Příklady slovníku
 
 Poskytuje příklady, které ukazují, jak ve slovníku pojmů v kontextu. Tato operace se používá v kombinaci s částí [vyhledávací slovník](./v3-0-dictionary-lookup.md).
 
@@ -56,7 +56,7 @@ Hlavičky žádosti patří:
   <th width="20%">Hlavičky</th>
   <th>Popis</th>
   <tr>
-    <td>_Jedním autorizačním_<br/>_Záhlaví_</td>
+    <td>_Jedním autorizačním_<br/>_header_</td>
     <td>*Hlavička požadavku požadované*.<br/>Zobrazit [dostupné možnosti pro ověřování](./v3-0-reference.md#authentication).</td>
   </tr>
   <tr>
@@ -106,7 +106,7 @@ Platí následující omezení:
 
     * `sourcePrefix`: Řetězec, který má zřetězit _před_ hodnotu `sourceTerm` a vytvoří kompletní příklad. Protože je již nainstalováno ale měla by být nepřidávejte znak mezery. Tato hodnota může být prázdný řetězec.
 
-    * `sourceTerm`: Řetězec stejný jako skutečný vyhledávat. Řetězec se přidá s `sourcePrefix` a `sourceSuffix` a vytvoří kompletní příklad. Její hodnota je oddělená, může být označený v uživatelském rozhraní, například podle tučné ho.
+    * `sourceTerm`: Vyhledávat řetězce, která se rovná skutečné termín. Řetězec se přidá s `sourcePrefix` a `sourceSuffix` a vytvoří kompletní příklad. Její hodnota je oddělená, může být označený v uživatelském rozhraní, například podle tučné ho.
 
     * `sourceSuffix`: Řetězec, který má zřetězit _po_ hodnotu `sourceTerm` a vytvoří kompletní příklad. Protože je již nainstalováno ale měla by být nepřidávejte znak mezery. Tato hodnota může být prázdný řetězec.
 
@@ -123,7 +123,7 @@ Platí následující omezení:
 
 Tento příklad ukazuje, jak vyhledat příklady pro dvojici skládá z anglické termín `fly` a španělština překladu `volar`.
 
-# <a name="curltabcurl"></a>[Curl](#tab/curl)
+# <a name="curltabcurl"></a>[curl](#tab/curl)
 
 ```
 curl -X POST "https://api.cognitive.microsofttranslator.com/dictionary/examples?api-version=3.0&from=en&to=es" -H "Ocp-Apim-Subscription-Key: <client-secret>" -H "Content-Type: application/json" -d "[{'Text':'fly', 'Translation':'volar'}]"

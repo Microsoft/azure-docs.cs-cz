@@ -11,15 +11,16 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: genemi
 manager: craigg
-ms.date: 06/20/2018
-ms.openlocfilehash: 707e10f77bf00ed12f09a23e490105f52ceed4ab
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.date: 01/25/2019
+ms.openlocfilehash: 7473f89b711e804dbe96d299bc6f47adaceb6859
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51241595"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55465210"
 ---
 # <a name="sql-database-application-development-overview"></a>Přehled vývoje databázových aplikací SQL Database
+
 V tomto článku se seznámíte se základními předpoklady, které by měl mít vývojář na zřeteli při zapisování kódu pro připojení ke službě Azure SQL Database.
 
 > [!TIP]
@@ -27,15 +28,17 @@ V tomto článku se seznámíte se základními předpoklady, které by měl mí
 >
 
 ## <a name="language-and-platform"></a>Jazyk a platforma
-K dispozici jsou ukázky kódu pro různé programovací jazyky a platformy. Odkazy na ukázky kódu najdete tady: 
+K dispozici jsou ukázky kódu pro různé programovací jazyky a platformy. Odkazy na ukázky kódu najdete tady:
 
-* Další informace: [připojení knihoven pro službu SQL Database a SQL Server](sql-database-libraries.md).
+Další informace: [Připojení knihoven pro službu SQL Database a SQL Server](sql-database-libraries.md).
 
-## <a name="tools"></a>Nástroje 
+## <a name="tools"></a>Nástroje
+
 Můžete využít opensourcové nástroje, jako je [cheetah](https://github.com/wunderlist/cheetah), [sql-cli](https://www.npmjs.com/package/sql-cli), [VS Code](https://code.visualstudio.com/). Kromě toho Azure SQL Database pracuje s nástroji Microsoftu jako [Visual Studio](https://www.visualstudio.com/downloads/) a [SQL Server Management Studio](https://msdn.microsoft.com/library/ms174173.aspx).  Můžete taky použít Portál pro správu Azure, PowerShell a rozhraní REST API, které vám pomůžou získat další produktivitu.
 
 ## <a name="resource-limitations"></a>Omezení prostředků
-Azure SQL Database spravuje prostředky dostupné pro databázi pomocí dvou různých mechanismů: řízení prostředků a vynucení limitů. Další informace naleznete v tématu:
+
+Azure SQL Database spravuje prostředky dostupné pro databázi pomocí dvou různých mechanismů: Zásady správného řízení prostředků a vynucení limitů. Další informace naleznete v tématu:
 
 - [Omezení model založený na DTU prostředků – jedné databáze](sql-database-dtu-resource-limits-single-databases.md)
 - [Omezení model založený na DTU prostředků – Elastických fondů](sql-database-dtu-resource-limits-elastic-pools.md)
@@ -43,37 +46,44 @@ Azure SQL Database spravuje prostředky dostupné pro databázi pomocí dvou rů
 - [omezení prostředků založený na virtuálních jádrech - Elastických fondů](sql-database-vcore-resource-limits-elastic-pools.md)
 
 ## <a name="security"></a>Zabezpečení
+
 Azure SQL Database poskytuje prostředky pro omezení přístupu, ochranu dat a sledování aktivit služby SQL Database.
 
-* Další informace: [zabezpečení služby SQL Database](sql-database-security-overview.md).
+* Další informace: [Zabezpečení služby SQL Database](sql-database-security-overview.md).
 
 ## <a name="authentication"></a>Authentication
-* Azure SQL Database podporuje uživatele a přihlašování systému SQL Server i uživatele a přihlašování ověřování [Azure Active Directory](sql-database-aad-authentication.md).
-* Musíte zadat konkrétní databázi místo nastavení na výchozí *hlavní* databázi.
-* Nemůžete použít příkaz Transact-SQL **USE myDatabaseName;** ve službě SQL Database pro přechod na jinou databázi.
-* Další informace: [zabezpečení služby SQL Database: Správa databáze přístup a zabezpečení přihlašování](sql-database-manage-logins.md).
+
+- Azure SQL Database podporuje uživatele a přihlašování systému SQL Server i uživatele a přihlašování ověřování [Azure Active Directory](sql-database-aad-authentication.md).
+- Musíte zadat konkrétní databázi místo nastavení na výchozí *hlavní* databázi.
+- Nemůžete použít příkaz Transact-SQL **USE myDatabaseName;** ve službě SQL Database pro přechod na jinou databázi.
+- Další informace: [Zabezpečení služby SQL Database: Správa databáze přístup a zabezpečení přihlašování](sql-database-manage-logins.md).
 
 ## <a name="resiliency"></a>Odolnost
+
 V případě přechodné chyby při připojování ke službě SQL Database by měl váš kód volání zopakovat.  Doporučujeme, aby logika dalších pokusů používala logiku opakování, aby služba SQL Database nebyla zaplavená opakovanými pokusy několika klientů současně.
 
-* Ukázky kódu: ukázky kódu, které ilustrují logiku opakovaných pokusů, najdete v části Ukázky jazyka podle vašeho výběru v: [připojení knihoven pro službu SQL Database a SQL Server](sql-database-libraries.md).
-* Další informace: [chybové zprávy klientských programů služby SQL Database](sql-database-develop-error-messages.md).
+- Ukázky kódu:  Ukázky kódu, které ilustrují logiku opakování, najdete v ukázkách jazyka podle vašeho výběru v: [Připojení knihoven pro službu SQL Database a SQL Server](sql-database-libraries.md).
+- Další informace: [Chybové zprávy klientských programů služby SQL Database](sql-database-develop-error-messages.md).
 
 ## <a name="managing-connections"></a>Správa připojení
-* V logice připojování klienta přepište výchozí časový limit na 30 sekund.  Výchozí hodnota 15 sekund je příliš krátká pro připojení, která jsou závislá na internetu.
-* Pokud používáte [fond připojení](https://msdn.microsoft.com/library/8xx3tyca.aspx), ukončete připojení v okamžiku, kdy ho program aktivně nepoužívá a není připravený na opakované použití.
+
+- V logice připojování klienta přepište výchozí časový limit na 30 sekund.  Výchozí hodnota 15 sekund je příliš krátká pro připojení, která jsou závislá na internetu.
+- Pokud používáte [fond připojení](https://msdn.microsoft.com/library/8xx3tyca.aspx), ukončete připojení v okamžiku, kdy ho program aktivně nepoužívá a není připravený na opakované použití.
 
 ## <a name="network-considerations"></a>Důležité informace o síti
-* Na počítači, který hostuje klientský program, zajistěte, aby brána firewall umožňovala odchozí komunikaci TCP na portu 1433.  Další informace: [konfigurace brány firewall Azure SQL Database](sql-database-configure-firewall-settings.md).
-* Pokud váš klientský program připojuje ke službě SQL Database, zatímco vašeho klienta běží na virtuálním počítači Azure (VM), je nutné otevřít určité rozsahy portů na virtuálním počítači. Další informace: [porty nad 1433 pro ADO.NET 4.5 a službu SQL Database](sql-database-develop-direct-route-ports-adonet-v12.md).
-* Připojení klienta ke službě Azure SQL Database někdy obcházejí proxy a pracovat přímo s databází. Na významu nabývají jiné porty než 1433. Další informace najdete [architektura připojení k Azure SQL Database](sql-database-connectivity-architecture.md) a [porty nad 1433 pro ADO.NET 4.5 a službu SQL Database](sql-database-develop-direct-route-ports-adonet-v12.md).
+
+- Na počítači, který hostuje klientský program, zajistěte, aby brána firewall umožňovala odchozí komunikaci TCP na portu 1433.  Další informace: [Konfigurace brány firewall Azure SQL Database](sql-database-configure-firewall-settings.md).
+- Pokud váš klientský program připojuje ke službě SQL Database, zatímco vašeho klienta běží na virtuálním počítači Azure (VM), je nutné otevřít určité rozsahy portů na virtuálním počítači. Další informace: [Porty nad 1433 pro ADO.NET 4.5 a službu SQL Database](sql-database-develop-direct-route-ports-adonet-v12.md).
+- Připojení klienta ke službě Azure SQL Database někdy obcházejí proxy a pracovat přímo s databází. Na významu nabývají jiné porty než 1433. Další informace najdete [architektura připojení k Azure SQL Database](sql-database-connectivity-architecture.md) a [porty nad 1433 pro ADO.NET 4.5 a službu SQL Database](sql-database-develop-direct-route-ports-adonet-v12.md).
 
 ## <a name="data-sharding-with-elastic-scale"></a>Horizontální dělení dat s elastickým Škálováním
+
 Pružné škálování zjednodušuje proces škálování (a). 
 
-* [Způsoby návrhu pro aplikace SaaS s více tenanty s databází Azure SQL Database](sql-database-design-patterns-multi-tenancy-saas-applications.md).
-* [Směrování závislé na datech](sql-database-elastic-scale-data-dependent-routing.md).
-* [Začínáme s Azure SQL Database Elastic Scale Preview](sql-database-elastic-scale-get-started.md).
+- [Způsoby návrhu pro aplikace SaaS s více tenanty s databází Azure SQL Database](sql-database-design-patterns-multi-tenancy-saas-applications.md).
+- [Směrování závislé na datech](sql-database-elastic-scale-data-dependent-routing.md).
+- [Začínáme s Azure SQL Database Elastic Scale Preview](sql-database-elastic-scale-get-started.md).
 
 ## <a name="next-steps"></a>Další postup
+
 Prozkoumejte všechny [schopnosti služby SQL Database](sql-database-technical-overview.md).

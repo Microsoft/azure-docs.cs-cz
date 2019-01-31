@@ -7,13 +7,13 @@ ms.service: storage
 ms.topic: article
 ms.date: 10/20/2017
 ms.author: tamram
-ms.component: common
-ms.openlocfilehash: 857ab3ad9870407b91b0fdc9c552a89fd1f4ccd4
-ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
+ms.subservice: common
+ms.openlocfilehash: 2f646df3cab0320b574023cd543015921c640cab
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50140515"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55478317"
 ---
 # <a name="client-side-encryption-and-azure-key-vault-for-microsoft-azure-storage"></a>Šifrování na straně klienta a Azure Key Vault pro Microsoft Azure Storage
 [!INCLUDE [storage-selector-client-side-encryption-include](../../../includes/storage-selector-client-side-encryption-include.md)]
@@ -60,7 +60,7 @@ Při šifrování klientské knihovny bude generovat náhodné inicializační v
 > 
 > 
 
-Stažení objektu blob šifrované zahrnuje načítání obsahu z celý objekt blob pomocí **DownloadTo** / **BlobReadStream**\* vhodné metody. Zabalené CEK je neobalený a používá se společně s IV (uložené v tomto případě jako metadata objektu blob) k vrácení dešifrovaná data pro uživatele.
+Stažení objektu blob šifrované zahrnuje načítání obsahu z celý objekt blob pomocí **DownloadTo *** /** BlobReadStream ** vhodné metody. Zabalené CEK je neobalený a používá se společně s IV (uložené v tomto případě jako metadata objektu blob) k vrácení dešifrovaná data pro uživatele.
 
 Stažení libovolného rozsahu (**DownloadRange*** metody) v objektu blob šifrované zahrnuje úpravy rozsahu poskytuje uživatelům zajistí malé množství další data, která slouží k dešifrování úspěšně požadované rozsah.
 

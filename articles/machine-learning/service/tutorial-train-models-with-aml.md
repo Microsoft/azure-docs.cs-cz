@@ -9,18 +9,18 @@ ms.topic: tutorial
 author: hning86
 ms.author: haining
 ms.reviewer: sgilley
-ms.date: 12/04/2018
+ms.date: 01/28/2019
 ms.custom: seodec18
-ms.openlocfilehash: ed5e506e5bb38e6c11c3d8ecd52c85d4f21cf1f2
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 6811888b5113a2cf5a06811f0e1b1bcee57d864b
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 01/30/2019
-ms.locfileid: "55242922"
+ms.locfileid: "55298054"
 ---
 # <a name="tutorial-train-an-image-classification-model-with-azure-machine-learning-service"></a>Kurz: Trénování modelu klasifikace obrázků pomocí služby Azure Machine Learning
 
-V tomto kurzu budete trénovat model strojového učení místně i pomocí vzdálených výpočetních prostředků. Pomocí školení a pracovní postup nasazení služby Azure Machine Learning v poznámkovém bloku Jupyter pro Python. Poznámkový blok poté můžete použít jako šablonu k trénování vlastního modelu strojového učení s vlastními daty. Tento kurz je **první částí z dvoudílné série kurzů**.  
+V tomto kurzu trénování model strojového učení na vzdálené výpočetní prostředky. Budete používat pracovní postup pro trénování a nasazení pro službu Azure Machine Learning (Preview) v poznámkovém bloku Python Jupyter.  Poznámkový blok poté můžete použít jako šablonu k trénování vlastního modelu strojového učení s vlastními daty. Tento kurz je **první částí z dvoudílné série kurzů**.  
 
 V tomto kurzu trénovat jednoduché logistickou regresi s použitím [mnist ručně](http://yann.lecun.com/exdb/mnist/) datové sady a [scikit-informace](https://scikit-learn.org) službou Azure Machine Learning. MNIST je oblíbená datová sada obsahující 70 000 obrázků ve stupních šedi. Každé image je rukou psaný číslice 28 x 28 pixelů, představující číslo od 0 do 9. Cílem je vytvořit víc tříd třídění k identifikaci číslice danou image představuje. 
 
@@ -38,16 +38,40 @@ Zjistíte, jak vybrat model a nasadit ho v [druhou částí z tohoto kurzu](tuto
 Pokud nemáte předplatné Azure, vytvořte si bezplatný účet, před zahájením. Zkuste [bezplatné nebo placené verzi aplikace služby Azure Machine Learning](http://aka.ms/AMLFree) ještě dnes.
 
 >[!NOTE]
-> V tomto článku kódu byl testován s Azure Machine Learning SDK verze 1.0.2.
+> S využitím Azure Machine Learning SDK verze 1.0.8 testovaný kód v tomto článku.
 
-## <a name="get-the-notebook"></a>Získání poznámkového bloku
+## <a name="prerequisites"></a>Požadavky
 
-V zájmu usnadnění práce je tento kurz dostupný jako [poznámkový blok Jupyter](https://github.com/Azure/MachineLearningNotebooks/blob/master/tutorials/img-classification-part1-training.ipynb). Spustit `tutorials/img-classification-part1-training.ipynb` poznámkového bloku v [poznámkových bloků Azure](https://notebooks.azure.com/) nebo vlastní server poznámkového bloku Jupyter.
+Přejděte k [nastavení vývojového prostředí](#start) číst kroky Poznámkový blok, nebo použijte níže uvedené pokyny k získání poznámkového bloku a spustit ho v poznámkových bloků Azure nebo vašeho vlastního serveru poznámkového bloku.  Pokud chcete spustit Poznámkový blok, bude nutné:
 
-[!INCLUDE [aml-clone-in-azure-notebook](../../../includes/aml-clone-in-azure-notebook.md)]
+* Server poznámkového bloku Python 3.6 s nainstalované tyto položky:
+    * Azure Machine Learning sady SDK pro Python
+    * `matplotlib` a `scikit-learn`
+* Výukový program Poznámkový blok a utils.py souboru
+* Pracovní prostor machine learning 
+* Konfigurační soubor pro pracovní prostor ve stejném adresáři jako poznámkového bloku 
+
+Získejte všechny tyto požadavky pomocí kteréhokoli z níže uvedených částech.
+ 
+* Použití [poznámkových bloků Azure](#azure) 
+* Použití [serveru poznámkového bloku](#server)
+
+### <a name="azure"></a>Použití poznámkových bloků Azure: Bezplatné poznámkové bloky Jupyter v cloudu
+
+Je snadné začít s poznámkovými bloky Azure! [Azure Machine Learning SDK pro Python](https://aka.ms/aml-sdk) je již nainstalován a nakonfigurován pro vás na [poznámkových bloků Azure](https://notebooks.azure.com/). Instalace a aktualizace budoucí jsou automaticky spravovány prostřednictvím služby Azure.
+
+Po dokončení následujících kroků spustit **kurzy/img – klasifikace – část 1 – training.ipynb** Poznámkový blok v vaše **Začínáme** projektu.
+
+[!INCLUDE [aml-azure-notebooks](../../../includes/aml-azure-notebooks.md)]
 
 
-## <a name="set-up-your-development-environment"></a>Nastavení vývojového prostředí
+### <a name="server"></a>Použít vlastní server poznámkového bloku Jupyter
+
+Pomocí těchto kroků můžete vytvořit místní aplikace Jupyter Notebook server ve vašem počítači.  Po dokončení kroků, spusťte **kurzy/img – klasifikace – část 1 – training.ipynb** poznámkového bloku.
+
+[!INCLUDE [aml-your-server](../../../includes/aml-your-server.md)]
+
+## <a name="start"></a>Nastavení vývojového prostředí
 
 Veškeré nastavení pro vaši vývojovou práci se dá provést v poznámkovém bloku Pythonu. Instalační program obsahuje následující akce:
 
@@ -63,11 +87,10 @@ Naimportujte balíčky Pythonu, které potřebujete v této relaci. Také zobraz
 ```python
 %matplotlib inline
 import numpy as np
-import matplotlib
 import matplotlib.pyplot as plt
 
-import azureml
-from azureml.core import Workspace, Run
+import azureml.core
+from azureml.core import Workspace
 
 # check core SDK version number
 print("Azure ML SDK Version: ", azureml.core.VERSION)
@@ -94,11 +117,11 @@ from azureml.core import Experiment
 exp = Experiment(workspace=ws, name=experiment_name)
 ```
 
-### <a name="create-or-attach-an-existing-amlcompute"></a>Vytvořit nebo připojit existující AMlCompute
+### <a name="create-or-attach-an-existing-compute-resource"></a>Vytvořit nebo připojit existující výpočetní prostředek
 
-Pomocí Azure Machine Learning Compute (AmlCompute), je spravovaná služba, můžou odborníci přes data trénování modelů strojového učení na clusterech virtuálních počítačů Azure. Mezi příklady patří virtuální počítače s podporou GPU. V tomto kurzu vytvoříte AmlCompute jako prostředí pro školení. Tento kód vytvoří výpočetní clustery pro vás, pokud ještě neexistují ve vašem pracovním prostoru.
+Pomocí Azure Machine Learning Compute, je spravovaná služba, můžou odborníci přes data trénování modelů strojového učení na clusterech virtuálních počítačů Azure. Mezi příklady patří virtuální počítače s podporou GPU. V tomto kurzu vytvoříte Azure Machine Learning Compute jako prostředí pro školení. Následující kód vytvoří výpočetní clustery pro vás, pokud ještě neexistují ve vašem pracovním prostoru.
 
- **Vytváření výpočtů trvá přibližně během pěti minut.** Pokud výpočetní je již v pracovním prostoru, tento kód použije a přeskočí vytvoření procesu:
+ **Vytváření výpočtů trvá přibližně během pěti minut.** Pokud výpočetní je již v pracovním prostoru, tento kód používá ho a přeskočí v procesu vytváření.
 
 
 ```python
@@ -132,8 +155,8 @@ else:
     # if no min node count is provided it will use the scale settings for the cluster
     compute_target.wait_for_completion(show_output=True, min_node_count=None, timeout_in_minutes=20)
     
-     # For a more detailed view of current AmlCompute status, use the 'status' property    
-    print(compute_target.status.serialize())
+     # For a more detailed view of current AmlCompute status, use get_status()
+    print(compute_target.get_status().serialize())
 ```
 
 Nyní máte k dispozici potřebné balíčky a výpočetní prostředky pro trénink modelu v cloudu. 
@@ -155,13 +178,15 @@ Stáhněte datovou sadu MNIST a uložte soubory do místního adresáře `data`.
 import os
 import urllib.request
 
-os.makedirs('./data', exist_ok = True)
+data_path = os.path.join(os.getcwd(), 'data')
+os.makedirs(data_path, exist_ok = True)
 
 urllib.request.urlretrieve('http://yann.lecun.com/exdb/mnist/train-images-idx3-ubyte.gz', filename='./data/train-images.gz')
 urllib.request.urlretrieve('http://yann.lecun.com/exdb/mnist/train-labels-idx1-ubyte.gz', filename='./data/train-labels.gz')
 urllib.request.urlretrieve('http://yann.lecun.com/exdb/mnist/t10k-images-idx3-ubyte.gz', filename='./data/test-images.gz')
 urllib.request.urlretrieve('http://yann.lecun.com/exdb/mnist/t10k-labels-idx1-ubyte.gz', filename='./data/test-labels.gz')
 ```
+Zobrazí se výstup podobný tomuto: ```('./data/test-labels.gz', <http.client.HTTPMessage at 0x7f40864c77b8>)```
 
 ### <a name="display-some-sample-images"></a>Zobrazení některých ukázkových obrázků
 
@@ -210,60 +235,32 @@ Mnist ručně soubory jsou odeslány do adresáře s názvem `mnist` v kořenov�
 ds = ws.get_default_datastore()
 print(ds.datastore_type, ds.account_name, ds.container_name)
 
-ds.upload(src_dir='./data', target_path='mnist', overwrite=True, show_progress=True)
+ds.upload(src_dir=data_path, target_path='mnist', overwrite=True, show_progress=True)
 ```
 Teď máte všechno, co potřebujete k zahájení trénování modelu. 
 
-## <a name="train-a-local-model"></a>Trénování modelu místní
-
-Trénování jednoduchý Logistický regresní model s použitím scikit-informace místně.
-
-**Místně školení může trvat minutu nebo dvě** v závislosti na konfiguraci počítače:
-
-```python
-%%time
-from sklearn.linear_model import LogisticRegression
-
-clf = LogisticRegression()
-clf.fit(X_train, y_train)
-```
-
-Dále predikci testovací sady a vypočítat přesnost: 
-
-```python
-y_hat = clf.predict(X_test)
-print(np.average(y_hat == y_test))
-```
-
-Pro přesnost místního modelu se zobrazí:
-
-`0.9202`
-
-Pomocí několika řádků kódu máte přesnost 92 procent.
 
 ## <a name="train-on-a-remote-cluster"></a>Trénování na vzdáleném clusteru
 
-Teď můžete tento jednoduchý model rozšířit vytvořením modelu s jinou mírou regulace. Tentokrát trénování modelu vzdáleného prostředku.  
-
-Odešlete úlohu do clusteru pro vzdálené trénování, který jste nastavili dříve. Odeslání úlohy, proveďte následující kroky:
-* Vytvořte adresář.
-* Vytvoření trénovací skript.
-* Vytvoření objektu odhad.
-* Odeslání úlohy.
+Odešlete úlohu do clusteru pro vzdálené trénování, který jste nastavili dříve.  K odeslání úlohy je potřeba provést:
+* Vytvoření adresáře
+* Vytvoření trénovacího skriptu
+* Vytvoření objektu odhad
+* Odeslání úlohy 
 
 ### <a name="create-a-directory"></a>Vytvoření adresáře
 
-Vytvořte adresář k zajištění potřebný kód z počítače pro vzdálený prostředek:
+Vytvořte adresář, ze kterého bude dodán potřebný kód z počítače do vzdáleného prostředku.
 
 ```python
 import os
-script_folder = './sklearn-mnist'
+script_folder  = os.path.join(os.getcwd(), "sklearn-mnist")
 os.makedirs(script_folder, exist_ok=True)
 ```
 
 ### <a name="create-a-training-script"></a>Vytvoření trénovacího skriptu
 
-Pokud chcete odeslat úlohu do clusteru, vytvořte nejprve trénovací skript. Spusťte následující kód k vytvoření trénovací skript volá `train.py` v adresáři, který jste vytvořili. Toto školení přidá mírou regularizace cvičení algoritmu. Proto vytvoří trochu jiný model, než místní verze:
+Pokud chcete odeslat úlohu do clusteru, vytvořte nejprve trénovací skript. Spuštěním následujícího kódu vytvořte trénovací skript s názvem `train.py` v adresáři, který jste právě vytvořili.
 
 ```python
 %%writefile $script_folder/train.py
@@ -406,6 +403,8 @@ Je to i snímek widgetu uvedené na konci školení:
 
 ![widget poznámkového bloku](./media/tutorial-train-models-with-aml/widget.png)
 
+Pokud je potřeba zrušit běh, můžete postupovat podle [tyto pokyny](https://aka.ms/aml-docs-cancel-run).
+
 ### <a name="get-log-results-upon-completion"></a>Získání protokolu výsledků při dokončení
 
 Trénování modelu a monitorování probíhají na pozadí. Počkejte na dokončení trénování modelu, předtím, než spustíte další kód. Použití `wait_for_completion` po dokončení cvičení modelu: 
@@ -422,7 +421,7 @@ Teď je model vytrénovaný na vzdáleném clusteru. Načtěte přesnost modelu:
 ```python
 print(run.get_metrics())
 ```
-Výstup ukazuje, že vzdálený modelu má přesnost mírně vyšší než místní model z důvodu součet míry regularizace během cvičení:  
+Výstup ukazuje, že vzdálený modelu má přesnost 0.9204:
 
 `{'regularization rate': 0.8, 'accuracy': 0.9204}`
 
@@ -465,8 +464,7 @@ V tomto kurzu služby Azure Machine Learning používá Python pro následujíc�
 > [!div class="checklist"]
 > * Nastavení vývojového prostředí.
 > * Přístup a prozkoumejte data.
-> * Trénování jednoduchý Logistický regresní místně s použitím oblíbených scikit-informace knihovna pro machine learning.
-> * Trénování modelů více ve vzdáleném clusteru.
+> * Trénování modelů více ve vzdáleném clusteru pomocí oblíbených scikit-informace knihovna pro machine learning
 > * Zkontrolujte podrobnosti o školení a zaregistrujte tento nejlepší model.
 
 Jste připraveni nasadit tuto registrovanému modelu pomocí pokynů v další části této série kurzů:

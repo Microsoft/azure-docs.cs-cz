@@ -6,16 +6,16 @@ author: ckarst
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
-ms.component: implement
+ms.subservice: implement
 ms.date: 04/17/2018
 ms.author: cakarst
 ms.reviewer: igorstan
-ms.openlocfilehash: 121fa87cb295799fdcd3de5e627fb894efc24c49
-ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
+ms.openlocfilehash: 2f463620f43ae95535a55005ebe9732495b89dc9
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43301261"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55456659"
 ---
 # <a name="using-transactions-in-sql-data-warehouse"></a>Použití transakcí v SQL Data Warehouse
 Tipy pro provádění transakcí ve službě Azure SQL Data Warehouse pro vývoj řešení.
@@ -37,11 +37,11 @@ V následující tabulce následujících předpokladů byly provedeny:
 | [DWU](sql-data-warehouse-overview-what-is.md) | Limit na distribuci (GiB) | Počet distribucí | MAXIMÁLNÍ velikost transakce (GiB) | # Řádků na distribuci | Maximální počet řádků na transakci |
 | --- | --- | --- | --- | --- | --- |
 | DW100 |1 |60 |60 |4,000,000 |240,000,000 |
-| ÚROVEŇ DW200 |1,5 |60 |90 |6 000 000 |360,000,000 |
+| DW200 |1,5 |60 |90 |6 000 000 |360,000,000 |
 | DW300 |2.25 |60 |135 |9,000,000 |540,000,000 |
 | DW400 |3 |60 |180 |12,000,000 |720,000,000 |
 | DW500 |3.75 |60 |225 |15,000,000 |900,000,000 |
-| ÚROVEŇ DW600 |4.5 |60 |270 |18,000,000 |1,080,000,000 |
+| DW600 |4.5 |60 |270 |18,000,000 |1,080,000,000 |
 | DW1000 |7.5 |60 |450 |30,000,000 |1,800,000,000 |
 | DW1200 |9 |60 |540 |36,000,000 |2,160,000,000 |
 | DW1500 |11.25 |60 |675 |45,000,000 |2,700,000,000 |

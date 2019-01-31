@@ -6,16 +6,16 @@ author: twounder
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
-ms.component: implement
+ms.subservice: implement
 ms.date: 06/13/2018
 ms.author: mausher
 ms.reviewer: igorstan
-ms.openlocfilehash: d40861650f479f8ef840c5150b2153f461871331
-ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
+ms.openlocfilehash: d88d1390f590a86c83273f2170f3854a7972a24b
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43307755"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55466219"
 ---
 # <a name="t-sql-language-elements-supported-in-azure-sql-data-warehouse"></a>Elementy jazyka T-SQL podporované ve službě Azure SQL Data Warehouse
 Odkazy na dokumentaci pro elementy jazyka T-SQL podporované ve službě Azure SQL Data Warehouse.
@@ -30,7 +30,7 @@ Odkazy na dokumentaci pro elementy jazyka T-SQL podporované ve službě Azure S
 * [datové typy](https://msdn.microsoft.com/library/ms187752.aspx)
 * [SPUŠTĚNÍ](https://msdn.microsoft.com/library/ms188332.aspx)
 * [Výrazy](https://msdn.microsoft.com/library/ms190286.aspx)
-* [UKONČIT](https://msdn.microsoft.com/library/ms173730.aspx)
+* [KILL](https://msdn.microsoft.com/library/ms173730.aspx)
 * [Alternativní řešení vlastnosti IDENTITY](https://msdn.microsoft.com/library/ms186775.aspx)
 * [TISK](https://msdn.microsoft.com/library/ms176047.aspx)
 * [POUŽITÍ](https://msdn.microsoft.com/library/ms188366.aspx)
@@ -43,7 +43,7 @@ Odkazy na dokumentaci pro elementy jazyka T-SQL podporované ve službě Azure S
 * [RAISERROR](https://msdn.microsoft.com/library/ms178592.aspx)
 * [SET@local_variable](https://msdn.microsoft.com/library/ms189484.aspx)
 * [VYVOLÁNÍ VÝJIMKY](https://msdn.microsoft.com/library/ee677615.aspx)
-* [TRY... CATCH](https://msdn.microsoft.com/library/ms175976.aspx)
+* [TRY...CATCH](https://msdn.microsoft.com/library/ms175976.aspx)
 * [WHILE](https://msdn.microsoft.com/library/ms178642.aspx)
 
 ## <a name="operators"></a>Operátory
@@ -51,7 +51,7 @@ Odkazy na dokumentaci pro elementy jazyka T-SQL podporované ve službě Azure S
 * [+ (Zřetězení řetězců)](https://msdn.microsoft.com/library/ms177561.aspx)
 * [-(Záporné)](https://msdn.microsoft.com/library/ms189480.aspx)
 * [-(Odečte)](https://msdn.microsoft.com/library/ms189518.aspx)
-* [* (Vynásobit)](https://msdn.microsoft.com/library/ms176019.aspx)
+* [* (Multiply)](https://msdn.microsoft.com/library/ms176019.aspx)
 * [/ (Dělení)](https://msdn.microsoft.com/library/ms175009.aspx)
 * [Modulo](https://msdn.microsoft.com/library/ms190279.aspx)
 
@@ -66,7 +66,7 @@ Odkazy na dokumentaci pro elementy jazyka T-SQL podporované ve službě Azure S
 * [A](https://msdn.microsoft.com/library/ms188372.aspx)
 * [MEZI](https://msdn.microsoft.com/library/ms187922.aspx)
 * [EXISTUJE](https://msdn.microsoft.com/library/ms188336.aspx)
-* [INDIE](https://msdn.microsoft.com/library/ms177682.aspx)
+* [IN](https://msdn.microsoft.com/library/ms177682.aspx)
 * [IS [NOT] NULL](https://msdn.microsoft.com/library/ms188795.aspx)
 * [STEJNĚ JAKO](https://msdn.microsoft.com/library/ms179859.aspx)
 * [NOT](https://msdn.microsoft.com/library/ms189455.aspx)
@@ -113,7 +113,7 @@ Odkazy na dokumentaci pro elementy jazyka T-SQL podporované ve službě Azure S
 * [CURRENT_TIMESTAMP](https://msdn.microsoft.com/library/ms188751.aspx)
 * [CURRENT_USER](https://msdn.microsoft.com/library/ms176050.aspx)
 * [DATABASEPROPERTYEX](https://msdn.microsoft.com/library/ms186823.aspx)
-* [VLASTNOST DATALENGTH](https://msdn.microsoft.com/library/ms173486.aspx)
+* [DATALENGTH](https://msdn.microsoft.com/library/ms173486.aspx)
 * [FUNKCE DATEADD](https://msdn.microsoft.com/library/ms186819.aspx)
 * [DATEDIFF](https://msdn.microsoft.com/library/ms189794.aspx)
 * [DATEFROMPARTS](https://msdn.microsoft.com/library/hh213228.aspx)
@@ -159,7 +159,7 @@ Odkazy na dokumentaci pro elementy jazyka T-SQL podporované ve službě Azure S
 * [MĚSÍC](https://msdn.microsoft.com/library/ms187813.aspx)
 * [NCHAR](https://msdn.microsoft.com/library/ms182673.aspx)
 * [NTILE POVOLEN](https://msdn.microsoft.com/library/ms175126.aspx)
-* [FUNKCI NULLIF](https://msdn.microsoft.com/library/ms177562.aspx)
+* [NULLIF](https://msdn.microsoft.com/library/ms177562.aspx)
 * [OBJECT_ID](https://msdn.microsoft.com/library/ms190328.aspx)
 * [OBJECT_NAME](https://msdn.microsoft.com/library/ms186301.aspx)
 * [OBJECTPROPERTY](https://msdn.microsoft.com/library/ms176105.aspx)
@@ -219,9 +219,9 @@ Odkazy na dokumentaci pro elementy jazyka T-SQL podporované ve službě Azure S
 * [KÓDOVÁNÍ UNICODE](https://msdn.microsoft.com/library/ms180059.aspx)
 * [HORNÍ](https://msdn.microsoft.com/library/ms180055.aspx)
 * [UŽIVATEL](https://msdn.microsoft.com/library/ms186738.aspx)
-* [UŽIVATELSKÉ_JMÉNO](https://msdn.microsoft.com/library/ms188014.aspx)
+* [USER_NAME](https://msdn.microsoft.com/library/ms188014.aspx)
 * [VAR](https://msdn.microsoft.com/library/ms186290.aspx)
-* [VAR](https://msdn.microsoft.com/library/ms188735.aspx)
+* [VARP](https://msdn.microsoft.com/library/ms188735.aspx)
 * [ROK](https://msdn.microsoft.com/library/ms186313.aspx)
 * [XACT_STATE](https://msdn.microsoft.com/library/ms189797.aspx)
 
@@ -256,25 +256,25 @@ Odkazy na dokumentaci pro elementy jazyka T-SQL podporované ve službě Azure S
 
 ## <a name="set-statements"></a>Příkazy SET
 * [SADA ANSI_DEFAULTS](https://msdn.microsoft.com/library/ms188340.aspx)
-* [SADA ANSI_NULL_DFLT_OFF](https://msdn.microsoft.com/library/ms187356.aspx)
-* [SADA ANSI_NULL_DFLT_ON](https://msdn.microsoft.com/library/ms187375.aspx)
+* [SET ANSI_NULL_DFLT_OFF](https://msdn.microsoft.com/library/ms187356.aspx)
+* [SET ANSI_NULL_DFLT_ON](https://msdn.microsoft.com/library/ms187375.aspx)
 * [SET ANSI_NULLS](https://msdn.microsoft.com/library/ms188048.aspx)
 * [NASTAVENÍ PARAMETRU ANSI_PADDING](https://msdn.microsoft.com/library/ms187403.aspx)
 * [SADA ANSI_WARNINGS](https://msdn.microsoft.com/library/ms190368.aspx)
 * [SADA ARITHABORT](https://msdn.microsoft.com/library/ms190306.aspx)
 * [SADA ARITHIGNORE](https://msdn.microsoft.com/library/ms184341.aspx)
-* [SADA CONCAT_NULL_YIELDS_NULL](https://msdn.microsoft.com/library/ms176056.aspx)
+* [SET CONCAT_NULL_YIELDS_NULL](https://msdn.microsoft.com/library/ms176056.aspx)
 * [PŘÍKAZ SET DATEFIRST](https://msdn.microsoft.com/library/ms181598.aspx)
 * [PARAMETR DATEFORMAT SET](https://msdn.microsoft.com/library/ms189491.aspx)
 * [SET FMTONLY](https://msdn.microsoft.com/library/ms173839.aspx)
 * [SADA IMPLICIT_TRANSACITONS](https://msdn.microsoft.com/library/ms187807.aspx)
 * [SADA LOCK_TIMEOUT](https://msdn.microsoft.com/library/ms189470.aspx)
-* [SADA NUMBERIC_ROUNDABORT](https://msdn.microsoft.com/library/ms188791.aspx)
+* [SET NUMBERIC_ROUNDABORT](https://msdn.microsoft.com/library/ms188791.aspx)
 * [SADA QUOTED_IDENTIFIER](https://msdn.microsoft.com/library/ms174393.aspx)
 * [SET ROWCOUNT](https://msdn.microsoft.com/library/ms188774.aspx)
 * [SET TEXTSIZE](https://msdn.microsoft.com/library/ms186238.aspx)
 * [NASTAVTE ÚROVEŇ IZOLACE TRANSAKCE](https://msdn.microsoft.com/library/ms173763.aspx)
-* [SADA XACT_ABORT](https://msdn.microsoft.com/library/ms188792.aspx)
+* [SET XACT_ABORT](https://msdn.microsoft.com/library/ms188792.aspx)
 
 ## <a name="next-steps"></a>Další postup
 Další informace najdete v části [příkazy jazyka T-SQL ve službě Azure SQL Data Warehouse](sql-data-warehouse-reference-tsql-statements.md), a [systémová zobrazení ve službě Azure SQL Data Warehouse](sql-data-warehouse-reference-tsql-system-views.md).

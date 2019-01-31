@@ -1,23 +1,23 @@
 ---
-title: 'Rychlý start: Získání délky vět, Ruby – Translator Text API'
+title: 'Rychlý start: Získání délky věty Ruby – Translator Text API'
 titleSuffix: Azure Cognitive Services
 description: V tomto rychlém startu zjistíte délky vět v textu pomocí rozhraní Translator Text API a Ruby.
 services: cognitive-services
 author: erhopf
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: translator-text
+ms.subservice: translator-text
 ms.topic: quickstart
 ms.date: 06/22/2018
 ms.author: erhopf
-ms.openlocfilehash: 18ef4e20c28b783738d2be929e063e6dada412d4
-ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
-ms.translationtype: HT
+ms.openlocfilehash: 07da6172b53b9904eb30a61d8b69b0f5b6693fdd
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49644704"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55470106"
 ---
-# <a name="quickstart-get-sentence-lengths-with-the-translator-text-rest-api-ruby"></a>Rychlý start: Získání délky vět pomocí rozhraní REST API služby Translator Text (Ruby)
+# <a name="quickstart-get-sentence-lengths-with-the-translator-text-rest-api-ruby"></a>Rychlý start: Získání délky větu s rozhraním Translator Text REST API (Ruby)
 
 V tomto rychlém startu zjistíte délky vět v textu pomocí služby Translator Text API.
 
@@ -96,7 +96,7 @@ puts json
 ]
 ```
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Prozkoumejte vzorový kód pro tento rychlý start a další, včetně překladu a transkripce, a také další vzorové projekty Translator Text na GitHubu.
 

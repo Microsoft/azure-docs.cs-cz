@@ -10,23 +10,20 @@ ms.topic: conceptual
 author: GithubMirek
 ms.author: MirekS
 ms.reviewer: GeneMi
-ms.date: 04/06/2018
+ms.date: 01/25/2019
 manager: craigg
-ms.openlocfilehash: 0b8b83651fb5466f5d9a2f703667d7645b498e89
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 7a05c6b4fac031482d77827a817ef56920a0c314
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52958813"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55464547"
 ---
 # <a name="use-activedirectoryinteractive-mode-to-connect-to-azure-sql-database"></a>Režim ActiveDirectoryInteractive slouží k připojení ke službě Azure SQL Database
 
 Tento článek obsahuje spustitelný C# příklad kódu, který se připojuje k Microsoft Azure SQL Database. Program jazyka C# používá interaktivní režim ověřování, které podporuje Azure AD vícefaktorové ověřování (MFA). Pokus o připojení, může obsahovat kód pro ověření odesílaných na váš mobilní telefon.
 
 Další informace o podpoře vícefaktorové ověřování pro nástroje systému SQL najdete v tématu [podpora služby Azure Active Directory v SQL Server Data Tools (SSDT)](https://docs.microsoft.com/sql/ssdt/azure-active-directory).
-
-
-
 
 ## <a name="sqlauthenticationmethod-activedirectoryinteractive-enum-value"></a>SqlAuthenticationMethod. Hodnota výčtu ActiveDirectoryInteractive
 
@@ -54,11 +51,9 @@ Snímky obrazovky tyto dialogy, naleznete v tématu [konfigurovat vícefaktorov�
 >
 > [https://docs.microsoft.com/dotnet/api/?term=SqlAuthenticationMethod](https://docs.microsoft.com/dotnet/api/?term=SqlAuthenticationMethod)
 
-
 ## <a name="preparations-for-c-by-using-the-azure-portal"></a>Příprava pro jazyk C# s použitím webu Azure portal
 
 Předpokládáme, že máte [vytvoření serveru Azure SQL Database](sql-database-get-started-portal.md) a k dispozici.
-
 
 ### <a name="a-create-an-app-registration"></a>A. Vytvoření registrace aplikace
 
@@ -87,7 +82,7 @@ Pokud chcete používat ověřování Azure AD, váš klientský program C#, mus
 
 ### <a name="b-set-azure-ad-admin-on-your-sql-database-server"></a>B. Nastavit správce Azure AD na serveru služby SQL Database
 
-Každý server Azure SQL Database má svůj vlastní logický server SQL Azure AD. Pro C# scénáři je potřeba nastavit správce Azure AD pro váš server Azure SQL.
+Každou izolovanou databázi Azure SQL a elastický fond má svou vlastní databázi SQL serveru služby Azure AD. Pro C# scénáři je potřeba nastavit správce Azure AD pro váš server Azure SQL.
 
 1. **SQL Server** &gt; **správce Active Directory** &gt; **nastavit správce**
 
@@ -124,13 +119,13 @@ Program jazyka C# spoléhá na obor názvů **Microsoft.IdentityModel.Clients.Ac
 
 Je jeden obory názvů, příklad jazyka C# využívající **System.Data.SqlClient**. Výčet je speciální zájmová **SqlAuthenticationMethod**. Tento výčet má následující hodnoty:
 
-- **SqlAuthenticationMethod.ActiveDirectory * interaktivní ***:&nbsp; použijte tento fragment se uživatelské jméno Azure AD k dosažení vícefaktorové ověřování služby Multi-Factor authentication.
+- **SqlAuthenticationMethod.ActiveDirectory *Interactive***:&nbsp;  Použijte s Azure AD uživatelské jméno, pro dosažení vícefaktorové ověřování služby Multi-Factor authentication.
     - Tato hodnota je hlavním cílem tohoto článku. Vytvoří interaktivní zobrazením dialogová okna pro heslo uživatele a pro ověřování MFA, pokud vícefaktorové ověřování se vynucují na tohoto uživatele.
     - Tato hodnota je k dispozici od verze rozhraní .NET Framework verze 4.7.2.
 
-- **SqlAuthenticationMethod.ActiveDirectory * integrované ***:&nbsp; se používá *federované* účtu. Pro federované účet, který se označuje uživatelské jméno k doméně Windows. Tato metoda nepodporuje vícefaktorové ověřování.
+- **SqlAuthenticationMethod.ActiveDirectory * integrované ***:&nbsp;  Pro použití *federované* účtu. Pro federované účet, který se označuje uživatelské jméno k doméně Windows. Tato metoda nepodporuje vícefaktorové ověřování.
 
-- **SqlAuthenticationMethod.ActiveDirectory * heslo ***:&nbsp; používá se pro ověřování, které vyžaduje uživatele služby Azure AD a heslo uživatele. Azure SQL Database provádí ověřování. Tato metoda nepodporuje vícefaktorové ověřování.
+- **SqlAuthenticationMethod.ActiveDirectory * heslo ***:&nbsp;  Používá se pro ověřování, které vyžaduje uživatele služby Azure AD a heslo uživatele. Azure SQL Database provádí ověřování. Tato metoda nepodporuje vícefaktorové ověřování.
 
 
 
@@ -142,11 +137,11 @@ Pro úspěšného spuštění programu jazyka C# je nutné přiřadit odpovídaj
 
 | Statické pole název | Předstírají, že hodnota | Pokud na webu Azure portal |
 | :---------------- | :------------ | :-------------------- |
-| Az_SQLDB_svrName | "my Oblíbené sqldb-svr.database.windows.net" | **SQL servery** &gt; **filtrovat podle názvu** |
+| Az_SQLDB_svrName | "my-favorite-sqldb-svr.database.windows.net" | **SQL servery** &gt; **filtrovat podle názvu** |
 | AzureAD_UserID | user9@abc.onmicrosoft.com | **Azure Active Directory** &gt; **uživatele** &gt; **nový uživatel typu Host** |
 | Initial_DatabaseName | "hlavní" | **SQL servery** &gt; **databáze SQL** |
 | ClientApplicationID | "a94f9c62-97fe-4d19-b06d-111111111111" | **Azure Active Directory** &gt; **registrace aplikací**<br /> &nbsp; &nbsp; &gt; **Hledat podle názvu** &gt; **ID aplikace** |
-| Identifikátor URI pro přesměrování | nový identifikátor Uri ("https://bing.com/") | **Azure Active Directory** &gt; **registrace aplikací**<br /> &nbsp; &nbsp; &gt; **Hledat podle názvu** &gt; *[Your-App-regis]* &gt;<br /> &nbsp; &nbsp; **Nastavení** &gt; **RedirectURIs**<br /><br />Libovolná platná hodnota pro účely tohoto článku je v pořádku pro identifikátor URI pro přesměrování. V našem případě není skutečně použita hodnota. |
+| RedirectUri | nový identifikátor Uri ("https://bing.com/") | **Azure Active Directory** &gt; **registrace aplikací**<br /> &nbsp; &nbsp; &gt; **Hledat podle názvu** &gt; *[Your-App-regis]* &gt;<br /> &nbsp; &nbsp; **Nastavení** &gt; **RedirectURIs**<br /><br />Libovolná platná hodnota pro účely tohoto článku je v pořádku pro identifikátor URI pro přesměrování. V našem případě není skutečně použita hodnota. |
 | &nbsp; | &nbsp; | &nbsp; |
 
 
@@ -183,11 +178,11 @@ Chcete-li zkompilovat tento příklad jazyka C#, je nutné přidat odkaz na sest
 
 - **System.Data.SqlClient** obor názvů:
     - Hledání:&nbsp; [https://docs.microsoft.com/dotnet/api/?term=System.Data.SqlClient](https://docs.microsoft.com/dotnet/api/?term=System.Data.SqlClient)
-    - Přímé:&nbsp; [System.Data.Client](https://docs.microsoft.com/dotnet/api/system.data.sqlclient)
+    - S přímým přístupem:&nbsp; [System.Data.Client](https://docs.microsoft.com/dotnet/api/system.data.sqlclient)
 
 - **Microsoft.IdentityModel.Clients.ActiveDirectory** obor názvů:
     - Hledání:&nbsp; [https://docs.microsoft.com/dotnet/api/?term=Microsoft.IdentityModel.Clients.ActiveDirectory](https://docs.microsoft.com/dotnet/api/?term=Microsoft.IdentityModel.Clients.ActiveDirectory)
-    - Přímé:&nbsp; [Microsoft.IdentityModel.Clients.ActiveDirectory](https://docs.microsoft.com/dotnet/api/microsoft.identitymodel.clients.activedirectory)
+    - S přímým přístupem:&nbsp; Microsoft.IdentityModel.Clients.ActiveDirectory](https://docs.microsoft.com/dotnet/api/microsoft.identitymodel.clients.activedirectory)
 
 
 #### <a name="c-source-code-in-two-parts"></a>Zdrojový kód C#, ve dvou částech

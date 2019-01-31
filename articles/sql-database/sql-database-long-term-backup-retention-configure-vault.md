@@ -11,13 +11,13 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma,carlrab
 manager: craigg
-ms.date: 10/05/2018
-ms.openlocfilehash: d8ff07d43d1efbadf1ddd397b6690c93c54c4f27
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.date: 01/25/2019
+ms.openlocfilehash: 5100ef307bc125b21e1c42c87856492a4a496065
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53603544"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55455627"
 ---
 # <a name="configure-long-term-backup-retention-using-azure-recovery-services-vault"></a>Konfigurace dlouhodobého uchovávání záloh pomocí trezoru služby Azure Recovery Services
 
@@ -71,7 +71,7 @@ Nakonfigurujete trezor služby Azure Recovery Services pro [uchovávání automa
    ![Vytvoření trezoru](./media/sql-database-get-started-backup-recovery/create-new-vault.png)
 
    > [!IMPORTANT]
-   > Trezor musí být umístěn ve stejné oblasti Azure jako logický server SQL Azure a musí používat stejnou skupinu prostředků jako logický server.
+   > Trezor se musí nacházet ve stejné oblasti jako databázového SQL serveru a musí používat stejnou skupinu prostředků jako databáze SQL serveru.
 
 10. Po vytvoření nového trezoru proveďte nezbytné kroky se vrátíte **trezor služby Recovery services** stránky.
 
@@ -154,7 +154,7 @@ Následující části ukazují, jak pomocí prostředí PowerShell můžete nak
 Použití [New-AzureRmRecoveryServicesVault](/powershell/module/azurerm.recoveryservices/new-azurermrecoveryservicesvault) vytvoření trezoru služby recovery services.
 
 > [!IMPORTANT]
-> Trezor musí být umístěn ve stejné oblasti Azure jako logický server SQL Azure a musí používat stejnou skupinu prostředků jako logický server.
+> Trezor se musí nacházet ve stejné oblasti jako databázového SQL serveru a musí používat stejnou skupinu prostředků jako databáze SQL serveru.
 
 ```PowerShell
 # Create a recovery services vault

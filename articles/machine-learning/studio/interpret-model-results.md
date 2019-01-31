@@ -1,6 +1,6 @@
 ---
-Název: Interpretace výsledků modelu v nástroji Machine Learning Studio titleSuffix: Azure Machine Learning Studio Popis: Jak vybrat optimální parametr nastavit pro objekt pomocí algoritmu a vypíše vizualizovat určení skóre modelu.
-Services: machine learningu ms.service: ms.component strojového učení: studio ms.topic: článku
+Název: Interpretace výsledků modelu v nástroji Machine Learning Studio titleSuffix: Azure Machine Learning Studio Popis: Jak vybrat optimální parametr nastavit pro objekt pomocí algoritmu a vypíše vizualizovat určení skóre modelu.
+Services: machine learningu ms.service: ms.subservice strojového učení: studio ms.topic: článku
 
 Autor: ericlicoding ms.author: amlstudiodocs ms.custom: předchozí Autor = heatherbshapiro předchozí ms.author=hshapiro ms.date: 11/29/2017
 ---

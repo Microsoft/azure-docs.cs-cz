@@ -12,12 +12,12 @@ ms.author: douglasl
 ms.reviewer: ''
 manager: craigg
 ms.date: 04/01/2018
-ms.openlocfilehash: 225c8093816c5186cbc084f74bc6e0591107ec00
-ms.sourcegitcommit: 5843352f71f756458ba84c31f4b66b6a082e53df
+ms.openlocfilehash: f658afa1a08a6b8779c2f1e18944eec40abdc465
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/01/2018
-ms.locfileid: "47586253"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55299992"
 ---
 # <a name="public-data-sets-for-testing-and-prototyping"></a>Veřejných datových sadách pro tvorbu prototypů a testování
 
@@ -40,11 +40,11 @@ Projdete seznam veřejných datových sadách pro data, která vám pomůže se 
 
 | Zdroj dat | Informace o datech | O souborech |
 |---|---|---|
-| [Data taxislužby města New York](http://www.nyc.gov/html/tlc/html/about/trip_record_data.shtml) | "Záznamy cesty taxíkem obsahovat pole zachytávání odběr dropoff data/časy odběr a dropoff umístění, o jízdách vzdálenosti, rozepsané tarify, míra typy, typy plateb a počítá ovladač ohlásil osobní." | Datové sady jsou v souborech CSV podle měsíce. |
+| [New York City taxi data](http://www.nyc.gov/html/tlc/html/about/trip_record_data.shtml) | "Záznamy cesty taxíkem obsahovat pole zachytávání odběr dropoff data/časy odběr a dropoff umístění, o jízdách vzdálenosti, rozepsané tarify, míra typy, typy plateb a počítá ovladač ohlásil osobní." | Datové sady jsou v souborech CSV podle měsíce. |
 | [Microsoft Research datové sady – "Datové vědy pro výzkum"](https://www.microsoft.com/research/academic-program/data-science-microsoft-research/) | Více datových sad, interakce s počítačem, zvuk/video, načítání dat dolování nebo informace, Geoprostorové/umístění, zpracování přirozeného jazyka a pro robotiku a počítačové zpracování obrazu. | Datové sady jsou v různých formátech, ZIP ke stažení. |
 | [Data veřejného genomu](http://www.completegenomics.com/public-data/) | "Různorodé datové sady plné lidské genomů jsou volně dostupných veřejně přístupný pro zvýšení jakékoli genomický studie..." Privátní komerční corporation je poskytovatel, dokončení Genomics. | Po extrakci, nastavení datových sad a jsou v textovém formátu UNIX. Nástroje pro analýzu jsou také k dispozici. |
-| [Otevřete data Science dat v cloudu](https://www.opensciencedatacloud.org/) | "Otevřené cloudové datové vědy poskytuje vědy s prostředky pro ukládání, sdílení a analýzu terabajt a petabajtů vědecké datových sad."| Datové sady jsou v různých formátech. |
-| [Globální klimatu dat – WorldcLIM](http://worldclim.org/) | "WorldClim je sada globální klimatu vrstvy (gridded klimatu data) prostorových řešení asi 1 km2. Tyto údaje lze použít k mapování a prostorových modelování." | Tyto soubory obsahují Geoprostorová data. Další informace najdete v tématu [formát dat](http://worldclim.org/formats1). |
+| [Open Science Data Cloud data](https://www.opensciencedatacloud.org/) | "Otevřené cloudové datové vědy poskytuje vědy s prostředky pro ukládání, sdílení a analýzu terabajt a petabajtů vědecké datových sad."| Datové sady jsou v různých formátech. |
+| [Globální klimatu dat – WorldClim](http://worldclim.org/) | "WorldClim je sada globální klimatu vrstvy (gridded klimatu data) prostorových řešení asi 1 km2. Tyto údaje lze použít k mapování a prostorových modelování." | Tyto soubory obsahují Geoprostorová data. Další informace najdete v tématu [formát dat](http://worldclim.org/formats1). |
 | [Data o lidských společnosti - GDELT projekt](http://www.gdeltproject.org/data.html) | "GDELT projektu je největší, nejúplnější a nejvyšší řešení otevřít databázi lidské společnosti, kdy byly vytvořeny." | Soubory nezpracovaná data jsou ve formátu CSV. |
 | [Reklamy, klikněte na možnost predikce dat pro machine learning z Criteo](http://labs.criteo.com/2013/12/download-terabyte-click-logs/) | "Největším někdy veřejně vydaných ML datovou sadu." Další informace najdete v tématu [Criteo na 1 TB klikněte na možnost predikce Dataset](https://blogs.technet.microsoft.com/machinelearning/2015/04/01/now-available-on-azure-ml-criteos-1tb-click-prediction-dataset/). | |
 | [ClueWeb09 text dolování datové sady z Lemur projekt](http://www.lemurproject.org/clueweb09.php/) | "ClueWeb09 datové sady bylo vytvořeno pro podporu research na načítání informací a související jazyk lidské technologie. Skládá se z přibližně 1 miliardy webových stránek v 10 jazycích, které byly shromážděny v lednu a únor 2009." | Zobrazit [informací o datové sadě](http://www.lemurproject.org/clueweb09/datasetInformation.php).|
@@ -53,6 +53,6 @@ Projdete seznam veřejných datových sadách pro data, která vám pomůže se 
 
 | Zdroj dat | Informace o datech | O souborech |
 |---|---|---|
-| [Archiv Githubu](https://www.githubarchive.org/) | "Githubu archivu je do projektu zaznamenat veřejné Githubu časové osy [events], archivovat je a zpřístupněte ho snadno k další analýze." | Stáhněte JSON encloded archivy událostí ve formátu .gz (Gzip) z webového klienta. |
-| [Data aktivity Githubu z The GHTorrent projektu](http://ghtorrent.org/) | "GHTorrent projektu [je] se snaží vytvořit škálovatelný, dotazovatelné, offline zrcadlení dat nabízené prostřednictvím rozhraní REST API Githubu. GHTorrent monitoruje na Githubu veřejná událost časové ose. Pro každou událost načte její obsah a jejich závislosti vyčerpávajícím způsobem." | MySQL database jsou ve formátu CSV. |
+| [Archiv Githubu](https://www.githubarchive.org/) | "Githubu archivu je do projektu zaznamenat veřejné Githubu časové osy [events], archivovat je a zpřístupněte ho snadno k další analýze." | Stáhněte si archivy zakódovaná ve formátu JSON událostí ve formátu .gz (Gzip) z webového klienta. |
+| [Data aktivity Githubu z The GHTorrent projektu](http://ghtorrent.org/) | "GHTorrent projektu [je] se snaží vytvořit škálovatelný, zadávat dotazy, offline zrcadlení dat nabízené prostřednictvím rozhraní REST API Githubu. GHTorrent monitoruje na Githubu veřejná událost časové ose. Pro každou událost načte její obsah a jejich závislosti vyčerpávajícím způsobem." | MySQL database jsou ve formátu CSV. |
 | [Výpis dat přetečení zásobníku](https://archive.org/details/stackexchange) | "Toto je anonymizované výpis paměti veškerý obsah za uživatele v síti Stack Exchange [včetně Stack Overflow]". | "Každou lokalitu [například Stack Overflow] je formátován jako samostatné archivu skládající se z XML soubory ZIP prostřednictvím použít kompresi bzip2 7-zip. Každý server archiv obsahuje příspěvky, uživatelé, hlasování, komentáře, PostHistory a PostLinks." |

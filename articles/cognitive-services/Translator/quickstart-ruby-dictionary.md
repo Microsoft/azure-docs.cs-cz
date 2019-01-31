@@ -6,16 +6,16 @@ services: cognitive-services
 author: erhopf
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: translator-text
+ms.subservice: translator-text
 ms.topic: quickstart
 ms.date: 06/22/2018
 ms.author: erhopf
-ms.openlocfilehash: 4574c07f3dfa98c0264d70c08a5ee4feff075bee
-ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
+ms.openlocfilehash: 76357db32ad676cc5246e7f9edfae238d33b0696
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54157077"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55461147"
 ---
 # <a name="quickstart-look-up-words-with-bilingual-dictionary-using-ruby"></a>Rychlý start: Vyhledávání slov s využitím dvojjazyčného slovníku pomocí Ruby
 

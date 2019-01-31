@@ -4,29 +4,23 @@ description: Postup přidání systém back endové úložiště do vašeho Aver
 author: ekpgh
 ms.service: avere-vfxt
 ms.topic: procedural
-ms.date: 10/31/2018
+ms.date: 01/29/2019
 ms.author: v-erkell
-ms.openlocfilehash: a7036f6fbab771dc090e97034a6191cf82b707a7
-ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
+ms.openlocfilehash: 8cd9bece53cd7fb961c5d81ae0c709dc89300ab9
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54190817"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55299448"
 ---
 # <a name="configure-storage"></a>Konfigurace úložiště
 
-Tento krok vytvoří back-end systém úložiště pro váš cluster vFXT.
+Tento krok nainstaluje systém back endové úložiště pro váš cluster vFXT.
 
 > [!TIP]
-> Pokud jste použili `create-cloudbacked-cluster` prototypu skript k vytvoření nového kontejneru objektů Blob společně s clusterem vFXT Avere, že kontejner již nastaven pro použití a není nutné přidávat úložiště.
->
-> Ale pokud nový kontejner objektů Blob byl zašifrován pomocí výchozího šifrovacího klíče, musíte buď stáhnout soubor obnovení klíčů z clusteru nebo nahradit výchozí klíč s novým klíčem před uložením dat. Výchozí klíč se uloží pouze do clusteru a nelze načíst, pokud cluster ztratí nebo je nedostupný.
->
-> Po připojení v Ovládacích panelech Avere, klikněte na tlačítko **nastavení** kartu a pak zvolte **Core Filer** > **nastavení šifrování cloudu**. V **místní klíč Store** zvolte jednu z těchto možností: 
-> * Použití **stáhnout obnovení souboru** tlačítko Zobrazit soubor obnovení pro existující klíč. Soubor obnovení je šifrován pomocí hesla pro správu clusteru. Ujistěte se, že k uložení souboru na místě, spolehlivé. 
-> * Postupujte podle pokynů **generovat nový hlavní klíč** části stránky a vytvořte nový šifrovací klíč, který určujete vy. Tato možnost umožňuje určit jedinečné heslo a vyžaduje, abyste nahrát a znovu stáhne soubor obnovení pro ověření pár souboru s heslem.
+> Pokud jste vytvořili nový kontejner objektů Blob v Azure společně s clusterem vFXT Avere, že kontejner již nastaven pro použití a není nutné přidávat úložiště.
 
-Postupujte podle těchto pokynů, pokud jste použili `create-minimal-cluster` skript prototypu pro váš cluster, nebo pokud chcete přidat další hardware nebo systém úložiště založené na cloudu.
+Pokud jste nevytvořili novou kontejner objektů Blob s vaším clusterem, nebo pokud chcete přidat další hardware nebo systém cloudové úložiště, postupujte podle těchto pokynů.
 
 Existují dvě hlavní úlohy:
 
@@ -43,12 +37,11 @@ Tyto kroky používají Avere ovládacích panelech. Čtení [přístup ke clust
 Přidat filtr core, vyberte jednu z dva hlavní typy křížového core:
 
   * [NAS základní filer](#nas-core-filer) – popisuje, jak přidat filtr core NAS 
-  * [Azure Storage účet cloudu core filer](#azure-storage-account-cloud-core-filer) – popisuje, jak přidat účet služby Azure Storage jako filer core cloudu
+  * [Azure Storage cloudu core filer](#azure-storage-cloud-core-filer) – popisuje, jak přidat účet služby Azure Storage jako filtr základní cloudové
 
 ### <a name="nas-core-filer"></a>Základní filtr NAS
 
-Vyfiltrovat core NAS může být NetApp místní nebo Isilon nebo koncový bod serveru NAS v cloudu.  
-Systém úložiště musí mít spolehlivé vysokorychlostní připojení ke clusteru vFXT Avere – například 1 GB/s připojení ExpressRoute (ne VPN) – a je nutné udělit přístup kořenového clusteru k exporty NAS se používají.
+Vyfiltrovat core NAS může být NetApp místní nebo Isilon nebo koncový bod serveru NAS v cloudu. Systém úložiště musí mít spolehlivé vysokorychlostní připojení ke clusteru vFXT Avere – například 1 GB/s připojení ExpressRoute (ne VPN) – a je nutné udělit přístup kořenového clusteru k exporty NAS se používají.
 
 Takto přidejte filtr core NAS:
 
@@ -79,7 +72,7 @@ Potom pokračujte [vytvořit spojení](#create-a-junction).
 Používání úložiště objektů Blob v Azure jako úložiště clusteru vFXT back-endu, potřebujete prázdného zásobníku přidáte jako filtr core.
 
 > [!TIP] 
-> ``create-cloudbacked-cluster`` Ukázkový skript vytvoří kontejner úložiště, ji definuje jako základní vyfiltrovat a vytvoří obor názvů spojení jako součást vytváření vFXT clusteru. ``create-minimal-cluster`` Vzorový skript není vytvoření kontejneru služby Azure storage. Chcete-li vyhnout se tak nutnosti vytvořit a nakonfigurovat filer základní Azure Storage po vytvoření clusteru, použijte ``create-cloudbacked-cluster`` skriptu pro nasazení clusteru vFXT.
+> Pokud budete chtít vytvořit kontejner objektů blob v době vytváření clusteru vFXT Avere, šablona nasazení nebo skript vytvoří kontejner úložiště, ji definuje jako základní filtr a vytvoří obor názvů spojení jako součást vytváření vFXT clusteru. 
 
 Přidání úložiště objektů Blob ke svému clusteru vyžaduje tyto úlohy:
 

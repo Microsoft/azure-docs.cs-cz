@@ -1,6 +1,6 @@
 ---
-Název: V místním systému SQL Server titleSuffix: Azure Machine Learning Studio Popis: Data z místní databáze systému SQL Server použijte k provádění pokročilých analýz Azure Machine Learning Studio.
-Services: machine learningu ms.service: ms.component strojového učení: studio ms.topic: článku
+Název: V místním systému SQL Server titleSuffix: Azure Machine Learning Studio Popis: Data z místní databáze systému SQL Server použijte k provádění pokročilých analýz Azure Machine Learning Studio.
+Services: machine learningu ms.service: ms.subservice strojového učení: studio ms.topic: článku
 
 Autor: ericlicoding ms.author: amlstudiodocs ms.custom: seodec18 ms.date: 03/13/2017
 ---

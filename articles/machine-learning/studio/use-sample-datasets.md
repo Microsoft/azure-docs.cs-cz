@@ -1,6 +1,6 @@
 ---
-Název: Použití titleSuffix ukázkové datové sady: Azure Machine Learning Studio Popis: Popis datové sady použité v ukázkových modelů, které jsou zahrnuté v nástroji Machine Learning Studio. Tyto ukázkové datové sady můžete použít pro vaše experimenty.
-Services: machine learningu ms.service: ms.component strojového učení: studio ms.topic: článku
+Název: Použití titleSuffix ukázkové datové sady: Azure Machine Learning Studio Popis: Popis datové sady použité v ukázkových modelů, které jsou zahrnuté v nástroji Machine Learning Studio. Tyto ukázkové datové sady můžete použít pro vaše experimenty.
+Services: machine learningu ms.service: ms.subservice strojového učení: studio ms.topic: článku
 
 Autor: ericlicoding ms.author: amlstudiodocs ms.custom: předchozí Autor = heatherbshapiro předchozí ms.author=hshapiro ms.date: 01/19/2018
 ---

@@ -8,7 +8,7 @@ author: MarkusVi
 manager: mtillman
 ms.assetid: e7434eeb-4e98-4b6b-a895-b5598a6cccf1
 ms.service: active-directory
-ms.component: identity-protection
+ms.subservice: identity-protection
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 01/24/2019
 ms.author: markvi
 ms.reviewer: raluthra
-ms.openlocfilehash: c9660dccf4929cb62e78dae1956d01b0d3ba8fcb
-ms.sourcegitcommit: 97d0dfb25ac23d07179b804719a454f25d1f0d46
+ms.openlocfilehash: 912326bb1e5420fd4c9051f5a71aa98e6cff80e5
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/25/2019
-ms.locfileid: "54913768"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55470378"
 ---
 # <a name="faqs-and-known-issues-with-identity-protection-refreshed-in-azure-active-directory"></a>Nejčastější dotazy a známé problémy s (Aktualizovat) v Azure Active Directory identity protection
 

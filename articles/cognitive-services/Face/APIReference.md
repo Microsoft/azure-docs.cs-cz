@@ -10,12 +10,12 @@ ms.subservice: face-api
 ms.topic: reference
 ms.date: 03/01/2018
 ms.author: sbowles
-ms.openlocfilehash: dd36147688f4c53383d31db8b4aa860b5bbf39a7
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: 6c5bfb052fc887bb189edb06247642419b14ecf7
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55214156"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55296966"
 ---
 # <a name="api-reference"></a>Referenční materiály k rozhraní API
 
@@ -28,5 +28,6 @@ Rozhraní API pro rozpoznávání tváře Azure je rozhraní API založené na c
 - [Rozhraní API pro správu LargeFaceList](https://docs.microsoft.com/rest/api/cognitiveservices/face/largefacelist): Použít ke správě LargeFaceList pro [Najít podobné](https://docs.microsoft.com/rest/api/cognitiveservices/face/face/findsimilar).
 - [Rozhraní API pro správu jeden objekt PersonGroup osoba](https://docs.microsoft.com/rest/api/cognitiveservices/face/persongroupperson): Použít ke správě jeden objekt PersonGroup tváří pro [identifikace](https://docs.microsoft.com/rest/api/cognitiveservices/face/face/identify).
 - [Rozhraní API pro správu jeden objekt PersonGroup](https://docs.microsoft.com/rest/api/cognitiveservices/face/persongroup): Použít ke správě datové sady pro jeden objekt PersonGroup [identifikace](https://docs.microsoft.com/rest/api/cognitiveservices/face/face/identify).
+- [Pořízení snímku rozhraní API pro správu](https://docs.microsoft.com/rest/api/cognitiveservices/face/snapshot): Použít ke správě snímku pro migraci dat mezi předplatnými.
 
 <!-- Linguist question: Please confirm that the following are API names and should be left as is: "Person Management, LargePersonGroup/PersonGroup Management, LargeFaceList/FaceList Management, and Face Algorithms" -->

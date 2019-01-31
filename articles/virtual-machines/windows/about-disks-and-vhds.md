@@ -8,13 +8,13 @@ ms.tgt_pltfrm: windows
 ms.topic: article
 ms.date: 11/15/2017
 ms.author: rogarana
-ms.component: disks
-ms.openlocfilehash: b1127475b873c5679946121e570ef2bb51f25be1
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.subservice: disks
+ms.openlocfilehash: 968c8aa74a35bf753d92e7c417aaec2a1361f425
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51234710"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55467964"
 ---
 # <a name="about-disks-storage-for-azure-windows-vms"></a>O diskové úložiště pro virtuální počítače Azure s Windows
 
@@ -55,7 +55,7 @@ Můžete přidat datové disky na virtuální počítač v každém okamžiku po
 
 Velikosti ve verzi preview najdete v tématu naše [nejčastější dotazy k](faq-for-disks.md#new-disk-sizes-managed-and-unmanaged) se dozvíte, jaké oblasti jsou k dispozici v.
 
-## <a name="one-last-recommendation-use-trim-with-unmanaged-standard-disks"></a>Jedním z poslední doporučení: použití uvolnění dočasné paměti s nespravovanými disky standard
+## <a name="one-last-recommendation-use-trim-with-unmanaged-standard-disks"></a>Jedním z poslední doporučení: Pomocí operace TRIM na nespravované disky standard
 
 Pokud používáte nespravované disky úrovně standard (HDD), měli byste povolit uvolnění dočasné paměti. TRIM zahodí nepoužívané bloky na disku tak, že nebudete dostávat faktury za úložiště, které skutečně používáte. To můžete uložit na náklady, pokud vytvoříte velkých souborů a potom je odstraňte.
 

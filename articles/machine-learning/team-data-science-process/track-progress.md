@@ -5,17 +5,17 @@ author: marktab
 manager: cgronlun
 editor: cgronlun
 ms.service: machine-learning
-ms.component: team-data-science-process
+ms.subservice: team-data-science-process
 ms.topic: article
 ms.date: 11/28/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: a9616a4f80a3105118b82ce3f4106a65fdd9ddfe
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: 7745a53084f4477f7b736ea9d130ffd3eed771f4
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53134297"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55451984"
 ---
 # <a name="tracking-the-progress-of-data-science-projects"></a>Sledování průběhu projekty datových věd
 
@@ -39,7 +39,7 @@ Tady je jednoduchý příklad řídicí panel, který je určený pro sledován�
 
 Zbývající panelů zobrazit kumulativní vývojový diagram (CFD), zbývající práci oproti času a burnup pro projekt:
 
-- **Vlevo dole**: CFD množství práce v daném státě, zobrazuje schválené šedě, potvrzené modrou barvu a provádí zeleně.
+- **Vlevo dole**:  CFD množství práce v daném státě, zobrazuje schválené šedě, potvrzené modrou barvu a provádí zeleně.
 - **Pravý horní**: burndown graf práce zbývající k dokončení a zbývající čas).
 - **Vpravo dole**: burnup graf práce, která byla dokončena a celkové množství práce.
 

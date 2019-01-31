@@ -6,16 +6,16 @@ author: twounder
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
-ms.component: manage
+ms.subservice: manage
 ms.date: 08/06/2018
 ms.author: twounder
 ms.reviewer: twounder
-ms.openlocfilehash: c7d2211ca69fcd18588ea1b20b638b2970b8439c
-ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
+ms.openlocfilehash: e63dd0a6feaedf95bb4845a3c5eded89e6585e36
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/15/2018
-ms.locfileid: "49318836"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55463493"
 ---
 # <a name="whats-new-in-azure-sql-data-warehouse-july-2018"></a>Co je nového ve službě Azure SQL Data Warehouse? Červenec 2018
 Azure SQL Data Warehouse neustále obdrží vylepšení. Tento článek popisuje nové funkce a změny, které byly zavedeny do července 2018.
@@ -24,11 +24,11 @@ Azure SQL Data Warehouse neustále obdrží vylepšení. Tento článek popisuje
 [Azure SQL Data Warehouse](https://aka.ms/sqldw) nastaví nové srovnávacího testu výkonu po zavedení služby okamžitý přístup k datům, která zvyšuje náhodné operace. Okamžitý přístup k datům snižuje režijní náklady pro operace přesunu dat pomocí přímá odpověď ze serveru SQL do systému SQL Server native datové operace. Integrace s modulem SQL serveru přímo v případě přesunu dat znamená, že je teď SQL Data Warehouse **67 % rychlejší než Amazon Redshift** pomocí úlohy odvozen od standardní uznávané oborové [TPC Benchmark™ H (TPC-H)](http://www.tpc.org/tpch/).
 
 ![Azure SQL Data Warehouse je rychlejší a levnější než Amazon Redshift](https://azurecomcdn.azureedge.net/mediahandler/acomblog/media/Default/blog/eb3b908a-464d-4847-b384-9f296083a737.png)
-<sub>zdroj: [sestavy analytik společnosti Gigaom Research: datového skladu v cloudu srovnávacích testů](https://gigaom.com/report/data-warehouse-in-the-cloud-benchmark/)</sub>
+<sub>zdroje: [Sestava analytik společnosti Gigaom Research: Datový sklad v cloudu srovnávacích testů](https://gigaom.com/report/data-warehouse-in-the-cloud-benchmark/)</sub>
 
 Nad rámec výkonu modulu runtime [společnosti Gigaom Research](https://gigaom.com/report/data-warehouse-in-the-cloud-benchmark/) sestavy také měří poměr cena – výkon kvantifikovat USD náklady na konkrétní úlohy. SQL Data Warehouse byla **23 procent levnější** než Redshift pro úlohy s 30 TB. S SQL Data Warehouse umožňuje Elasticky škálovat výpočetní prostředky a pozastavit a obnovit úlohy zákazníci platí pouze v případě, že služba se používá, dále snižuje náklady.
 ![Azure SQL Data Warehouse je rychlejší a levnější než Amazon Redshift](https://azurecomcdn.azureedge.net/mediahandler/acomblog/media/Default/blog/cb76447e-621e-414b-861e-732ffee5345a.png)
-<sub>zdroj: [sestavy analytik společnosti Gigaom Research: datového skladu v cloudu srovnávacích testů](https://gigaom.com/report/data-warehouse-in-the-cloud-benchmark/)</sub>
+<sub>zdroje: [Sestava analytik společnosti Gigaom Research: Datový sklad v cloudu srovnávacích testů](https://gigaom.com/report/data-warehouse-in-the-cloud-benchmark/)</sub>
 
 ### <a name="query-concurrency"></a>Dotaz souběžnosti
 SQL Data Warehouse také zajišťuje, že data jsou přístupné napříč vaší organizací. Microsoft má vylepšenou služba podporovala 128 souběžných dotazů tak, aby více uživatelů stejné databáze můžete dotazovat a nebudou blokovat jiné požadavky. Porovnání Amazon Redshift omezuje maximální počet souběžných dotazů na 50, omezení přístupu k datům v rámci organizace.
@@ -53,7 +53,7 @@ Nyní můžete změnit úroveň výkonu (DWU) při obnovení na portálu Azure p
 
 ![Konfigurace vlastní obnovení – Azure SQL Data Warehouse](https://azurecomcdn.azureedge.net/mediahandler/acomblog/media/Default/blog/f4c410c7-8515-409c-a983-0976792b8628.png)
 
-## <a name="spdescribeundeclaredparameters"></a>PROCEDUŘE SP_DESCRIBE_UNDECLARED_PARAMETERS
+## <a name="spdescribeundeclaredparameters"></a>SP_DESCRIBE_UNDECLARED_PARAMETERS
 [Proceduře sp_describe_undeclared_parameters](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-describe-undeclared-parameters-transact-sql) uloženou proceduru se často používá nástroji získat metadata o parametrech v dávce Transact-SQL. Postup vrátí jeden řádek pro každý parametr v dávce s odvozeným typem informace pro tento parametr. 
 
 ```sql
@@ -73,7 +73,7 @@ parameter_ordinal | name | suggested_system_type_id | suggested_system_type_name
 --------------------------------------------------------------------------------
 1                 | @id  | 56                       | int
 ```
-## <a name="sprefreshsqlmodule"></a>ULOŽENÉ PROCEDURY SP_REFRESHSQLMODULE
+## <a name="sprefreshsqlmodule"></a>SP_REFRESHSQLMODULE
 [Uložené procedury sp_refreshsqlmodule](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-refreshsqlmodule-transact-sql) uložená procedura aktualizuje metadata pro objekt databáze, pokud má základní metadata začnou být zastaralé z důvodu změny podkladových objektů. Tato situace může nastat, pokud se změní základní tabulky pro zobrazení a zobrazení nebyl byly znovu vytvořeny. To vám ušetří na krok odstranit a znovu vytvořit závislé objekty.
 
 Následující příklad ukazuje zobrazení, který je zastaralá, protože podkladové tabulky změn. Můžete si všimnout, že je správný pro první změny sloupců (1 až Mollie) data, ale název sloupce není platný a druhý sloupec není k dispozici. 

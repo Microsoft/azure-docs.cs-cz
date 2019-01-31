@@ -5,17 +5,17 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: overview
-ms.date: 03/15/2017
+ms.date: 01/30/2019
 ms.author: mimart
 author: msmimart
 manager: daveba
 ms.reviewer: sasubram
-ms.openlocfilehash: 1580171c0e363da9407c2f5f5bf4da7736119a39
-ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
+ms.openlocfilehash: 4ec9a891777cc8d33b1256a8eb68ea814563b8cc
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/26/2019
-ms.locfileid: "55074982"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55471092"
 ---
 # <a name="compare-b2b-collaboration-and-b2c-in-azure-active-directory"></a>Porovnání spolupráce B2B a B2C v Azure Active Directory
 
@@ -32,7 +32,7 @@ Možnosti spolupráce B2B |     Azure AD B2C – samostatná nabídka
 -------- | --------
 Určený pro: Organizace, které mají být schopen provést ověřování uživatelů z partnerské organizace, bez ohledu na zprostředkovatele identity. | Určený pro: Pozvání zákazníkům mobilní a webové aplikace, ať už jednotlivce, zákazníci institucionální nebo organizace do služby Azure AD.
 Identity nepodporuje: Zaměstnancům pracovní nebo školní účty, partnerům, kteří mají pracovní nebo školní účty nebo všechny e-mailovou adresu. Brzy bude podporované přímé federování.  | Identity nepodporuje: Spotřebitelské uživatele s účty místní aplikaci (všechny e-mailové adresy nebo uživatelského jména) nebo některou podporované identity v sociálních sítích s federací s přímým přístupem.
-Který adresář v jsou uživatelé partnera: Uživatelé partnerských od externí organizace jsou spravované ve stejném adresáři jako zaměstnanci, ale speciálně s poznámkami. Můžete je spravovat stejně jako zaměstnance, můžete je přidávat do stejných skupin atd.  | Který adresář v jsou entity zákazník uživatelů: V adresáři aplikace. Jsou spravované odděleně od zaměstnaneckého a partnerského adresáře organizace (pokud existují).
+Externí uživatelé jsou spravované ve stejném adresáři jako zaměstnanci, ale speciálně s poznámkami. Bylo možné je spravovat stejným způsobem jako zaměstnanci, lze přidat do stejné skupiny a tak dále  | Externí uživatelé jsou spravovány v adresáři aplikace. Jsou spravovány samostatně z organizace pro zaměstnance a adresář partnerů (pokud existuje).
 Ve všech aplikacích připojených k Azure AD je podporované jednotné přihlašování. Můžete třeba poskytnout přístup k aplikacím Office 365 nebo k místním a dalším aplikacím SaaS, jako je Salesforce nebo Workday.  |  V rámci tenantů Azure AD B2C je podporované jednotné přihlašování k aplikacím patřícím zákazníkům. Jednotné přihlašování do aplikací Office 365 nebo do jiných aplikací SaaS od Microsoftu nebo jiných dodavatelů není podporované.
 Životní cyklus partnera: Spravovat hostitele nebo pozvání organizace.  | Životní cyklus zákazníků: Samoobslužný postup nebo spravovaných aplikací.
 Zásady zabezpečení a dodržování předpisů: Spravovat hostitele nebo pozvání organizace (třeba index Mei [zásady podmíněného přístupu](https://docs.microsoft.com/azure/active-directory/b2b/conditional-access)).  | Zásady zabezpečení a dodržování předpisů: Spravované aplikace.

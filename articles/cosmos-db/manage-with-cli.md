@@ -6,14 +6,14 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 10/23/2018
 ms.author: mjbrown
-ms.openlocfilehash: d45f5b5c5945796e30c86b2e3ef48d6b8e693b99
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: c3028fd18bd9afefaa18f7f515a43a852ddef78a
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54038972"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55464394"
 ---
-# <a name="manage-azure-cosmos-db-resources-using-azure-cli"></a>Spravovat prostředky Azure Cosmos DB pomocí rozhraní příkazového řádku Azure
+# <a name="manage-azure-cosmos-resources-using-azure-cli"></a>Správa prostředků Azure Cosmos pomocí Azure CLI
 
 Následující průvodci popisuje příkazy, které automatizují správu účtů služby Azure Cosmos DB, databáze a kontejnerů pomocí Azure CLI. Zahrnuje také příkazy pro škálování propustnosti kontejnerů. Stránky s referenčními informacemi pro všechny příkazy rozhraní příkazového řádku Azure Cosmos DB jsou k dispozici v [referenčních informacích k Azure CLI](https://docs.microsoft.com/cli/azure/cosmosdb). Můžete také najít další příklady v [ukázky v Azure CLI pro službu Azure Cosmos DB](cli-samples.md), jak vytvářet a spravovat účty služby Cosmos DB, databáze a kontejnerů pro MongoDB, Gremlin, Cassandra a Table API.
 

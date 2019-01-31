@@ -1,8 +1,21 @@
 ---
-Název: Využívání webové služby titleSuffix: Azure Machine Learning Studio Popis: Po nasazení služby machine learning service z Azure Machine Learning Studio RESTFul webová služba může zpracovat buď jako službu v reálném čase žádost odpověď, nebo jako služba batch execution.
-Services: machine learningu ms.service: ms.subservice strojového učení: studio ms.topic: článku
-
-Autor: ericlicoding ms.author: amlstudiodocs ms.custom: seodec18 ms.date: 06/02/2017
+title: Používání webové služby
+titleSuffix: Azure Machine Learning Studio
+description: Po nasazení služby machine learning service z Azure Machine Learning Studio RESTFul webová služba může zpracovat buď jako službu v reálném čase žádost odpověď, nebo jako služba batch execution.
+services: machine-learning
+ms.service: machine-learning
+ms.subservice: studio
+ms.topic: article
+author: ericlicoding
+ms.author: amlstudiodocs
+ms.custom: seodec18
+ms.date: 06/02/2017
+ms.openlocfilehash: c3f10e268101cfa5aff6506a64aab98b07fb948a
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.translationtype: MT
+ms.contentlocale: cs-CZ
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55464377"
 ---
 # <a name="how-to-consume-an-azure-machine-learning-studio-web-service"></a>Způsob využívání webové služby Azure Machine Learning Studio
 

@@ -6,16 +6,16 @@ author: hirokib
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
-ms.component: implement
+ms.subservice: implement
 ms.date: 04/11/2018
 ms.author: elbutter
 ms.reviewer: igorstan
-ms.openlocfilehash: d861e1d4cd891e1f1e1be3209ae4dfdbf4420165
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: 4a45d00559a84c178ab760acf8616f97ce7bb57c
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44718278"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55466281"
 ---
 # <a name="best-practices-for-using-elastic-query-in-azure-sql-database-to-access-data-in-azure-sql-data-warehouse"></a>Doporučené postupy pro používání elastického dotazu ve službě Azure SQL Database pro přístup k datům ve službě Azure SQL Data Warehouse
 Přečtěte si doporučené postupy pro používání elastického dotazu pro přístup k datům ve službě Azure SQL Data Warehouse z Azure SQL Database. 
@@ -61,7 +61,7 @@ Pomocí těchto osvědčených postupů efektivně používat elastický dotaz.
 ### <a name="general"></a>Obecné
 
 - Při použití provádění vzdáleného dotazu, ověřte jste pouze výběr nezbytné sloupců a použití správné filtrů. Nejen nepodporuje toto zvýšení nezbytné výpočetní prostředky, ale také zvyšuje velikost sady výsledků dotazu, a proto množství dat, které je potřeba přesunout mezi dvěma instancemi.
-- Spravovat data v Clusterované columnstore analytiIcal výkon pro analytické účely v SQL Database i SQL Data Warehouse.
+- Spravovat data pro analytické účely v SQL Data Warehouse a SQL Database v Clusterované columnstore pro analýzu výkonu.
 - Ujistěte se, že zdrojové tabulky dělí pro přesun dotazy a data.
 - Zkontrolujte použití jako mezipaměť instance databáze SQL jsou podrobněji, pokud chcete povolit podrobnější aktualizace a snadnější správu. 
 - V ideálním případě použijte premiumrs: databáze, protože poskytují analýzu výhod Clusterované columnstore indexování se zaměřením na úlohy náročné na vstupně-výstupní operace z databází Premium se slevou.
@@ -125,29 +125,29 @@ Použití Azure SQL Database při:
 
 ## <a name="faq"></a>Nejčastější dotazy
 
-Otázka: Mohu použít databází v elastickém fondu přitom s elastický dotaz?
+DOTAZ: Můžete použít databáze v elastickém fondu přitom s elastický dotaz?
 
 Odpověď: Ano. Databáze SQL v elastickém fondu přitom můžete použít nástroj Elastic Query. 
 
-Otázka: Existuje limit pro kolik databází můžu můžete použít pro elastický dotaz?
+DOTAZ: Existuje limit pro kolik databází můžu můžete použít pro elastický dotaz?
 
-Odpověď: neexistuje žádná pevný limit na tom, kolik databází je možné pro elastický dotaz. Nicméně každý elastický dotaz (dotazů, které přístupů do SQL Data Warehouse) připočítají se limity normální souběžnosti.
+Odpověď: Na tom, kolik databází je možné pro elastický dotaz neexistuje žádné pevný limit. Nicméně každý elastický dotaz (dotazů, které přístupů do SQL Data Warehouse) připočítají se limity normální souběžnosti.
 
-Dotaz: existují omezení jednotek DTU spojené s elastický dotaz?
+DOTAZ: Existují omezení jednotek DTU spojené s elastický dotaz?
 
-A: omezení jednotek DTU nejsou uložené žádné jinak než pomocí elastického dotazu. Standardní zásady se tak, aby logické servery mají omezení jednotek DTU na místě uživatelům zabránit náhodnému nadměrných výdajů. Pokud chcete povolit několik databází pro elastický dotaz společně s instanci SQL Data Warehouse, můžete narazit na zakončení neočekávaně. Pokud k tomu dojde, odešlete žádost o zvýšení limitu jednotek DTU na logickém serveru. Můžete zvýšit kvótu podle [vytvoření lístku podpory](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-get-started-create-support-ticket) a vyberete *kvóty* jako typ požadavku
+Odpověď: Omezení jednotek DTU nejsou uložené žádné jinak než pomocí elastického dotazu. Standardní zásady se tak, aby logické servery mají omezení jednotek DTU na místě uživatelům zabránit náhodnému nadměrných výdajů. Pokud chcete povolit několik databází pro elastický dotaz společně s instanci SQL Data Warehouse, můžete narazit na zakončení neočekávaně. Pokud k tomu dojde, odešlete žádost o zvýšení limitu jednotek DTU na logickém serveru. Můžete zvýšit kvótu podle [vytvoření lístku podpory](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-get-started-create-support-ticket) a vyberete *kvóty* jako typ požadavku
 
-Otázka: Mohu použít řádek úrovně zabezpečení/dynamických dat maskování s elastický dotaz?
+DOTAZ: Můžete použít řádek úrovně zabezpečení/dynamických dat maskování s elastický dotaz?
 
 Odpověď: Zákazníci, kteří chtěli používat rozšířené funkce zabezpečení SQL Database to tak, že první přesun a ukládání dat ve službě SQL Database. Nelze použít aktuálně zabezpečení na úrovni řádků nebo DDM na datech zasílat dotazy prostřednictvím externí tabulky. 
 
-Dotaz: lze píše ze své instanci SQL database pro instanci datového skladu?
+DOTAZ: Můžete se píše ze své instanci SQL database pro instanci datového skladu?
 
-Odpověď: aktuálně tato funkce není podporována. Navštivte naše [zpětnou vazbu stránky] [ Feedback page] k vytvoření/Hlasujte pro tuto funkci Pokud to je funkce, které byste rádi viděli v budoucích. 
+Odpověď: Tato funkce aktuálně není podporována. Navštivte naše [zpětnou vazbu stránky] [ Feedback page] k vytvoření/Hlasujte pro tuto funkci Pokud to je funkce, které byste rádi viděli v budoucích. 
 
-Otázka: Mohu použít prostorové typy například geometrie nebo Geografie?
+DOTAZ: Můžete použít například geometrie nebo Geografie prostorové typy?
 
-Odpověď: můžete ukládat prostorové typy ve službě SQL Data Warehouse jako hodnoty varbinary(max). Při dotazování těchto sloupců použitím elastického dotazu, můžete je převést na odpovídající typy za běhu.
+Odpověď: Prostorové typy můžete ukládat ve službě SQL Data Warehouse jako hodnoty varbinary(max). Při dotazování těchto sloupců použitím elastického dotazu, můžete je převést na odpovídající typy za běhu.
 
 ![prostorové typy](./media/sql-data-warehouse-elastic-query-with-sql-database/geometry-types.png)
 

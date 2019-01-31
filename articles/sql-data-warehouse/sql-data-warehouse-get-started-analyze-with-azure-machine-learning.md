@@ -2,20 +2,20 @@
 title: Analýza dat pomocí Azure Machine Learning | Dokumentace Microsoftu
 description: Pomocí Azure Machine Learning sestavte prediktivní model Machine Learning založený na datech uložených v datovém skladu SQL Azure.
 services: sql-data-warehouse
-author: kavithaj
+author: KavithaJonnakuti
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
-ms.component: consume
+ms.subservice: consume
 ms.date: 04/17/2018
 ms.author: kavithaj
 ms.reviewer: igorstan
-ms.openlocfilehash: 4324b1ac343a0e2b77c21d7834beffae08403953
-ms.sourcegitcommit: 2b2129fa6413230cf35ac18ff386d40d1e8d0677
+ms.openlocfilehash: 8a33d733f4737bf19e7baad6d80d8fa72999268f
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43247522"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55477654"
 ---
 # <a name="analyze-data-with-azure-machine-learning"></a>Analýza dat pomocí Azure Machine Learning
 > [!div class="op_single_selector"]
@@ -43,7 +43,7 @@ Data jsou v zobrazení dbo.vTargetMail v databázi AdventureWorksDW. Postup nač
 
 1. Přihlaste se k [Azure Machine Learning Studio][Azure Machine Learning studio] a klikněte na Moje experimenty.
 2. Klikněte na **+NOVÝ** a vyberte **Prázdný experiment**.
-3. Zadejte název svého experimentu: Cílený marketing.
+3. Zadejte název svého experimentu: Cíleného marketingu.
 4. Přetáhněte modul **Reader** z podokna modulů na plátno.
 5. V podokně vlastností zadejte podrobné informace o vaší databázi SQL Data Warehouse.
 6. Zadejte databázový **dotaz** pro načtení data, která vás zajímají.
@@ -84,15 +84,15 @@ Pro vymazání dat odstraňte některé sloupce, které nejsou pro model důlež
    ![Odebrání nepotřebných sloupců][5]
 
 ## <a name="3-build-the-model"></a>3. Sestavení modelu
-Data rozdělíme v poměru 80:20 – 80 % pro učení v rámci modelu strojového učení a 20 % pro otestování modelu. Pro tento problém binární klasifikace budeme používat algoritmy Two-Class.
+Rozdělíme data 80 – 20: 80 % pro trénování modelu strojového učení a 20 % pro otestování modelu. Pro tento problém binární klasifikace budeme používat algoritmy Two-Class.
 
 1. Přetáhněte na plátno modul **Split**.
 2. Nastavte podíl řádků v první výstupní sadě dat v podokně vlastností na 0,8.
    ![Rozdělení dat na sadu učení a testovací sadu][6]
 3. Přetáhněte na plátno modul **Two-Class Boosted Decision Tree**.
 4. Přetáhněte na plátno modul **Train Model** a určete vstupy. V podokně vlastností pak klikněte na **Launch column selector** (Spustit selektor sloupců).
-   * První vstup: Algoritmus strojového učení
-   * Druhý vstup: Data pro učení algoritmu
+   * První vstup: Algoritmus strojového učení.
+   * Druhý vstup: Data pro učení algoritmu.
      ![Připojení modulu Train Model][7]
 5. Jako sloupec pro předpověď vyberte sloupec **BikeBuyer**.
    ![Vyberte sloupec pro předpověď][8]
@@ -101,7 +101,7 @@ Data rozdělíme v poměru 80:20 – 80 % pro učení v rámci modelu strojovéh
 Teď otestujeme, jaký je výkon modelu při použití testovacích dat. Porovnáme námi zvolený algoritmus s jiným algoritmem, abychom zjistili, který z nich vrací lepší výsledky.
 
 1. Přetáhněte na plátno modul **Score Model**.
-    První vstup: Train model Druhý vstup: Test data ![Modul Score Model][9]
+    První vstup: Trénovaný model druhý vstup: Testovací data ![modul Score model][9]
 2. Na plátno experimentu přetáhněte **Two-Class Bayes Point Machine**. Porovnáme výsledky tohoto algoritmu s rozhodovacím stromem Two-Class Boosted Decision Tree.
 3. Zkopírujte na plátno moduly Train Model a Score Model.
 4. Přetáhněte modul **Evaluate Model** na plátno pro porovnání obou algoritmů.

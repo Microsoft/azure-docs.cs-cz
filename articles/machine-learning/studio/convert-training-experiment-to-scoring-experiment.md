@@ -1,5 +1,5 @@
 ---
-Název: Příprava nasazení titleSuffix modelu: Azure Machine Learning Studio Popis: Jak připravit trénovaného modelu pro nasazení jako webové služby převedením vašeho výukového experimentu Machine Learning studia na prediktivní experiment.
+Název: Příprava nasazení titleSuffix modelu: Azure Machine Learning Studio Popis: Jak připravit trénovaného modelu pro nasazení jako webové služby převedením vašeho výukového experimentu Machine Learning studia na prediktivní experiment.
 Services: machine learningu ms.service: ms.subservice strojového učení: studio ms.topic: článku
 
 Autor: ericlicoding ms.author: amlstudiodocs ms.date: 03/28/2017

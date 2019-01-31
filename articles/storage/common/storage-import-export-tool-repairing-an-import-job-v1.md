@@ -7,13 +7,13 @@ ms.service: storage
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: muralikk
-ms.component: common
-ms.openlocfilehash: e2eb580df0a90e07e79c7f080ba31e5418fc5956
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.subservice: common
+ms.openlocfilehash: fda1d3d626c91ba984f08b96c79ab6a2fd2ec74b
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39523780"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55471727"
 ---
 # <a name="repairing-an-import-job"></a>Oprava úlohy importu
 Služba Microsoft Azure Import/Export nemusí podařit zkopírujte některé soubory nebo části souborů do služby Windows Azure Blob service. Mezi důvody pro selhání patří:  
@@ -35,12 +35,12 @@ Je možné zadat následující parametry při **RepairImport**:
 |**/ r:**< RepairFile\>|**Povinné.** Cesta k souboru opravit, který sleduje průběh opravy a umožňuje obnovit přerušené opravu, která. Každá jednotka musí mít jeden a pouze jeden soubor opravy. Při spuštění opravu pro daný disk předejte v cestě opravit soubor, který ještě neexistuje. Pokud chcete obnovit přerušené opravit, je třeba předat název existující soubor opravy. Vždy třeba zadat soubor opravy odpovídající cílové jednotce.|  
 |**/logdir:**< LogDirectory\>|**Volitelné.** Adresář protokolu. Souborů podrobného protokolování se zapisují do tohoto adresáře. Pokud není zadán žádný adresář protokolu, se používá aktuální adresář jako adresář protokolu.|  
 |**/ d:**< TargetDirectories\>|**Povinné.** Jeden nebo více oddělených středníkem adresářů, které obsahují původní soubory, které byly naimportovány. Import disku mohou být využity také, ale není potřeba, pokud jsou k dispozici alternativní umístění původních souborů.|  
-|**/BK:**< BitLockerKey\>|**Volitelné.** Pokud chcete, aby nástroj k odemknutí zašifrované jednotky, kde původní soubory jsou k dispozici, měli byste určit klíč Bitlockeru.|  
-|**/sn:**< StorageAccountName\>|**Povinné.** Název účtu úložiště pro úlohy importu.|  
-|**/Sk:**< StorageAccountKey\>|**Vyžaduje** pouze v případě sdíleného přístupového podpisu kontejneru není zadán. Klíč účtu pro účet úložiště pro úlohy importu.|  
-|**/csas:**< ContainerSas\>|**Vyžaduje** pouze v případě není zadaný klíč účtu úložiště. Kontejner SAS pro přístup k objektům BLOB spojené s úlohou importu.|  
-|**/ CopyLogFile:**< DriveCopyLogFile\>|**Povinné.** Cesta k souboru protokolu kopie disku (buď podrobný protokol nebo Chyba protokol). Soubor je vygenerován pomocí služby Windows Azure Import/Export a si můžete stáhnout z úložiště objektů blob, které jsou přidružené k úloze. Kopírovat soubor protokolu obsahuje informace o neúspěšných objekty BLOB nebo soubory, které mají být opraven.|  
-|**/ PathMapFile:**< DrivePathMapFile\>|**Volitelné.** Cesta k souboru text, který slouží k vyřešení nejednoznačnosti, pokud máte více souborů se stejným názvem, který jste importovali ve stejné úloze. Při prvním spuštění nástroje ho do tohoto souboru se všemi nejednoznačné názvy. Následné spuštění nástroje použít tento soubor nejednoznačnosti.|  
+|**/bk:**<BitLockerKey\>|**Volitelné.** Pokud chcete, aby nástroj k odemknutí zašifrované jednotky, kde původní soubory jsou k dispozici, měli byste určit klíč Bitlockeru.|  
+|**/sn:**<StorageAccountName\>|**Povinné.** Název účtu úložiště pro úlohy importu.|  
+|**/sk:**<StorageAccountKey\>|**Vyžaduje** pouze v případě sdíleného přístupového podpisu kontejneru není zadán. Klíč účtu pro účet úložiště pro úlohy importu.|  
+|**/csas:**<ContainerSas\>|**Vyžaduje** pouze v případě není zadaný klíč účtu úložiště. Kontejner SAS pro přístup k objektům BLOB spojené s úlohou importu.|  
+|**/CopyLogFile:**<DriveCopyLogFile\>|**Povinné.** Cesta k souboru protokolu kopie disku (buď podrobný protokol nebo Chyba protokol). Soubor je vygenerován pomocí služby Windows Azure Import/Export a si můžete stáhnout z úložiště objektů blob, které jsou přidružené k úloze. Kopírovat soubor protokolu obsahuje informace o neúspěšných objekty BLOB nebo soubory, které mají být opraven.|  
+|**/PathMapFile:**<DrivePathMapFile\>|**Volitelné.** Cesta k souboru text, který slouží k vyřešení nejednoznačnosti, pokud máte více souborů se stejným názvem, který jste importovali ve stejné úloze. Při prvním spuštění nástroje ho do tohoto souboru se všemi nejednoznačné názvy. Následné spuštění nástroje použít tento soubor nejednoznačnosti.|  
   
 ## <a name="using-the-repairimport-command"></a>Pomocí příkazu RepairImport  
 Chcete-li opravit import dat pomocí streamování dat v síti, je nutné zadat adresáře, které obsahují původní soubory byly import pomocí `/d` parametru. Musíte zadat také kopie souboru protokolu, který jste stáhli ze svého účtu úložiště. Typické příkazového řádku oprava úlohy importu se částečně neúspěšné vypadá takto:  

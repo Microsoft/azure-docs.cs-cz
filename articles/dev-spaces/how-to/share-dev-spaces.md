@@ -3,19 +3,19 @@ title: Jak sdílet prostory vývoj Azure | Dokumentace Microsoftu
 titleSuffix: Azure Dev Spaces
 services: azure-dev-spaces
 ms.service: azure-dev-spaces
-ms.component: azds-kubernetes
+ms.subservice: azds-kubernetes
 author: zr-msft
 ms.author: zarhoads
 ms.date: 05/11/2018
 ms.topic: article
 description: Rychlý vývoj na platformě Kubernetes s využitím kontejnerů a mikroslužeb v Azure
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, kontejnery
-ms.openlocfilehash: 57ca0f7b7704b179a55ac75fea99d35e1024ee8e
-ms.sourcegitcommit: 275eb46107b16bfb9cf34c36cd1cfb000331fbff
+ms.openlocfilehash: 86a9400aca099bb79ca95dfc1c4ac2c4c241a6b2
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51706411"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55466417"
 ---
 # <a name="share-azure-dev-spaces"></a>Sdílené složky Azure Dev mezery
 

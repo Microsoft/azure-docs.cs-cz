@@ -7,13 +7,13 @@ ms.service: storage
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: muralikk
-ms.component: common
-ms.openlocfilehash: 69daac71b69969a7ad9acfeb7095053f8138bf53
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.subservice: common
+ms.openlocfilehash: 017208c6fca7c4e55a45070f5aa21652e83e7e8d
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39520876"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55462913"
 ---
 # <a name="enumerating-jobs-in-the-azure-importexport-service"></a>Vytváření výčtu úloh ve službě Azure Import/Export
 Chcete-li vytvořit výčet všech úloh v rámci předplatného, zavolejte [vypisovat úlohy](/rest/api/storageimportexport/jobs#Jobs_List) operace. `List Jobs` Vrátí seznam úloh, jakož i následující atributy:

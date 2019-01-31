@@ -1,5 +1,5 @@
 ---
-Název: Nasazení pracovní prostor Studio s Azure Resource Manageru titleSuffix: Azure Machine Learning Studio Popis: Postup nasazení pracovního prostoru pro Azure Machine Learning pomocí Azure Resource Manageru šablony služby: machine learningu ms.service: ms.component strojového učení: studio ms.topic: článku
+Název: Nasazení pracovní prostor Studio s Azure Resource Manageru titleSuffix: Azure Machine Learning Studio Popis: Postup nasazení pracovního prostoru pro Azure Machine Learning pomocí Azure Resource Manageru šablony služby: machine learningu ms.service: ms.subservice strojového učení: studio ms.topic: článku
 
 Autor: ericlicoding ms.author: amlstudiodocs ms.custom: seodec18 ms.date: 02/05/2018
 ---

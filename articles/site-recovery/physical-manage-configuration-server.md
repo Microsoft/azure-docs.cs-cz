@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 11/27/2018
 ms.author: ramamill
-ms.openlocfilehash: ee5cc1f185640c9ea22ceb80b1fabb20df245fe2
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: 824c7c70cf3e79df3aa04bbe86674ed9486b79f2
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54823076"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55300434"
 ---
 # <a name="manage-the-configuration-server-for-physical-server-disaster-recovery"></a>Správa konfiguračního serveru pro zotavení po havárii fyzického serveru
 
@@ -20,7 +20,7 @@ Nastavíte místní konfigurační server, když použijete [Azure Site Recovery
 
 ## <a name="prerequisites"></a>Požadavky
 
-Tabulka shrnuje předpoklady pro nasazení počítače místní konfigurační server.
+Tabulka shrnuje požadavky pro nasazování počítače místní konfigurační server.
 
 | **Komponenta** | **Požadavek** |
 | --- |---|
@@ -106,7 +106,7 @@ Spusťte instalační soubor následujícím způsobem:
 
 ### <a name="parameters"></a>Parametry
 
-|Název parametru| Typ | Popis| Hodnoty|
+|Název parametru| Type | Popis| Hodnoty|
 |-|-|-|-|
 | /ServerMode|Požaduje se|Určuje, jestli se má nainstalovat konfigurační i procesový server, nebo jenom procesový server.|CS<br>PS|
 |/InstallLocation|Požaduje se|Složka, ve které jsou nainstalované komponenty| Libovolná složka v počítači|
@@ -128,7 +128,7 @@ Spusťte instalační soubor následujícím způsobem:
 ### <a name="create-file-input-for-mysqlcredsfilepath"></a>Vytvoření vstupní soubor pro MYSQLCredsFilePath
 
 Parametr MySQLCredsFilePath vezme jako vstupní údaje do souboru. Vytvořte soubor v následujícím formátu a předat ji jako vstupní parametr MySQLCredsFilePath.
-```
+```ini
 [MySQLCredentials]
 MySQLRootPassword = "Password>"
 MySQLUserPassword = "Password"
@@ -136,7 +136,7 @@ MySQLUserPassword = "Password"
 ### <a name="create-file-input-for-proxysettingsfilepath"></a>Vytvoření vstupní soubor pro ProxySettingsFilePath
 Parametr ProxySettingsFilePath vezme jako vstupní údaje do souboru. Vytvořte soubor v následujícím formátu a předat ji jako vstupní parametr ProxySettingsFilePath.
 
-```
+```ini
 [ProxySettings]
 ProxyAuthentication = "Yes/No"
 Proxy IP = "IP Address"
@@ -157,7 +157,7 @@ Nastavení proxy serveru pro počítač serveru konfiguraci můžete upravit ná
 5. Zadejte nové podrobnosti proxy a klikněte na tlačítko **zaregistrovat** tlačítko.
 6. Otevřete okno příkazového řádku Powershellu pro správu.
 7. Spusťte následující příkaz:
-  ```
+  ```powershell
   $pwd = ConvertTo-SecureString -String MyProxyUserPassword
   Set-OBMachineSetting -ProxyServer http://myproxyserver.domain.com -ProxyPort PortNumber – ProxyUserName domain\username -ProxyPassword $pwd
   net stop obengine
@@ -177,7 +177,7 @@ Nastavení proxy serveru pro počítač serveru konfiguraci můžete upravit ná
   6. Otevřete okno příkazového řádku Powershellu pro správu.
   7. Spuštěním následujícího příkazu
 
-      ```
+      ```powershell
       $pwd = ConvertTo-SecureString -String MyProxyUserPassword
       Set-OBMachineSetting -ProxyServer http://myproxyserver.domain.com -ProxyPort PortNumber – ProxyUserName domain\username -ProxyPassword $pwd
       net stop obengine
@@ -205,7 +205,7 @@ Nastavení proxy serveru pro počítač serveru konfiguraci můžete upravit ná
 6. Zadejte podrobnosti o Proxy serveru a klikněte na tlačítko **zaregistrovat** tlačítko.  
 7. Otevřete okno příkazového řádku Powershellu pro správu.
 8. Spuštěním následujícího příkazu
-    ```
+    ```powershell
     $pwd = ConvertTo-SecureString -String MyProxyUserPassword
     Set-OBMachineSetting -ProxyServer http://myproxyserver.domain.com -ProxyPort PortNumber – ProxyUserName domain\username -ProxyPassword $pwd
     net stop obengine
@@ -273,7 +273,7 @@ Upgrade serveru následujícím způsobem:
      `Get-AzureRmSubscription –SubscriptionName <your subscription name> | Select-AzureRmSubscription`
 3.  Teď nastavte kontext trezoru
     
-    ```
+    ```powershell
     $vault = Get-AzureRmRecoveryServicesVault -Name <name of your vault>
     Set-AzureRmSiteRecoveryVaultSettings -ARSVault $vault
     ```

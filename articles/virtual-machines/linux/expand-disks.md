@@ -14,13 +14,13 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 10/15/2018
 ms.author: rogarana
-ms.component: disks
-ms.openlocfilehash: 61c9ce5da02414f535aea42bea64b43298ba7823
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.subservice: disks
+ms.openlocfilehash: abf0c88c356ba695e2f9905f77bf5fd193821712
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54464387"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55461844"
 ---
 # <a name="expand-virtual-hard-disks-on-a-linux-vm-with-the-azure-cli"></a>Rozbalte virtuální pevné disky na virtuální počítač s Linuxem pomocí Azure CLI
 

@@ -7,14 +7,14 @@ ms.topic: conceptual
 ms.date: 11/08/2018
 ms.author: dharmas
 ms.reviewer: sngun
-ms.openlocfilehash: d5714e43c9ba58cdec33ca5fd1eae31eb6a88f51
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ms.openlocfilehash: 85d8b531f19ac35f091f54c2627f7fe6d3a62a42
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54107731"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55468134"
 ---
-# <a name="working-with-azure-cosmos-databases-containers-and-items"></a>Práce s databází Azure Cosmos, kontejnery a položek
+# <a name="work-with-databases-containers-and-items"></a>Práce s databází, kontejnerů a položek
 
 Po vytvoření [účtu služby Azure Cosmos DB](account-overview.md) v rámci vašeho předplatného Azure můžete spravovat data ve vašem účtu tak, že vytvoříte databází, kontejnerů a položek. Tento článek popisuje, každá z těchto entit: databází, kontejnerů a položek. Následující obrázek ukazuje hierarchii různé entity v účtu služby Azure Cosmos:
 

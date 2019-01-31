@@ -7,13 +7,13 @@ ms.service: storage
 ms.topic: article
 ms.date: 06/29/2017
 ms.author: muralikk
-ms.component: common
-ms.openlocfilehash: 44d39dcfd8c271cc97a88da7d1f0bec84bd866df
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.subservice: common
+ms.openlocfilehash: cdcb7dbe726582e525b401bfa765ccc423928610
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54828362"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55454398"
 ---
 # <a name="preparing-hard-drives-for-an-import-job"></a>Příprava pevných disků pro úlohu importu
 

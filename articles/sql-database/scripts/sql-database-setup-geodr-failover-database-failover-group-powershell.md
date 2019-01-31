@@ -1,6 +1,6 @@
 ---
-title: Příklad PowerShellu – Skupina převzetí služeb při selhání geografické replikace – Jedna databáze SQL Azure | Microsoft Docs
-description: Ukázkový skript Azure PowerShellu, který nastaví skupinu převzetí služeb při selhání aktivní geografické replikace pro jednu databázi SQL Azure a převezme její služby.
+title: Prostředí PowerShell příklad geografické replikace převzetí služeb při selhání skupiny samostatná Azure SQL Database | Dokumentace Microsoftu
+description: Ukázkový skript Azure Powershellu nastavit aktivní geografické replikace převzetí služeb při selhání skupiny pro izolovanou databázi ve službě Azure SQL Database a převzetí služeb při selhání.
 services: sql-database
 ms.service: sql-database
 ms.subservice: high-availability
@@ -11,17 +11,17 @@ author: mashamsft
 ms.author: mathoma
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 01/17/2019
-ms.openlocfilehash: d8ec80f417883874796d25c2c1a427d03073080b
-ms.sourcegitcommit: 9f07ad84b0ff397746c63a085b757394928f6fc0
+ms.date: 01/25/2019
+ms.openlocfilehash: 31027e266f29ae0308ed70abfea5dbec3736f824
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54390772"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55469290"
 ---
-# <a name="use-powershell-to-configure-an-active-geo-replication-failover-group-for-a-single-azure-sql-database"></a>Použití PowerShellu ke konfiguraci skupiny převzetí služeb při selhání aktivní geografické replikace pro jednu databázi SQL Azure
+# <a name="use-powershell-to-configure-an-active-geo-replication-failover-group-for-a-single-database-in-azure-sql-database"></a>Konfigurace skupiny převzetí služeb při selhání aktivní geografické replikace pro izolovanou databázi ve službě Azure SQL Database pomocí Powershellu
 
-Tento ukázkový skript PowerShellu nakonfiguruje skupinu převzetí služeb při selhání aktivní geografické replikace pro jednu databázi SQL Azure a převezme její služby při selhání do sekundární repliky databáze SQL Azure.
+Tento ukázkový skript Powershellu nakonfiguruje skupinu převzetí služeb při selhání aktivní geografické replikace pro izolovanou databázi a převezme sekundární replikou databáze.
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 [!INCLUDE [cloud-shell-powershell.md](../../../includes/cloud-shell-powershell.md)]
@@ -48,8 +48,8 @@ Tento skript používá následující příkazy. Každý příkaz v tabulce odk
 | Příkaz | Poznámky |
 |---|---|
 | [New-AzureRmResourceGroup](/powershell/module/azurerm.resources/new-azurermresourcegroup) | Vytvoří skupinu prostředků, ve které se ukládají všechny prostředky. |
-| [New-AzureRmSqlServer](/powershell/module/azurerm.sql/new-azurermsqlserver) | Vytvoří logický server, který je hostitelem databáze nebo elastického fondu. |
-| [New-AzureRmSqlElasticPool](/powershell/module/azurerm.sql/new-azurermsqlelasticpool) | Vytvoří v rámci logického serveru elastický fond. |
+| [New-AzureRmSqlServer](/powershell/module/azurerm.sql/new-azurermsqlserver) | Vytvoří server služby SQL Database, který je hostitelem izolovaných databází a elastických fondů. |
+| [New-AzureRmSqlElasticPool](/powershell/module/azurerm.sql/new-azurermsqlelasticpool) | Vytvoří elastický fond. |
 | [Set-AzureRmSqlDatabase](/powershell/module/azurerm.sql/set-azurermsqldatabase) | Aktualizuje vlastnosti databáze nebo přesune databázi do nebo z elastického fondu nebo mezi elastickými fondy. |
 | [New-AzureRmSqlDatabaseSecondary](/powershell/module/azurerm.sql/new-azurermsqldatabasesecondary)| Vytvoří sekundární databázi pro existující databázi a spustí replikaci dat. |
 | [Get-AzureRmSqlDatabase](/powershell/module/azurerm.sql/get-azurermsqldatabase)| Získá jednu nebo více databází. |

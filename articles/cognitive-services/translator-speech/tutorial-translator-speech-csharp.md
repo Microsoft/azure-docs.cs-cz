@@ -1,23 +1,23 @@
 ---
-title: 'Kurz: Rozhraní Translator Speech API v jazyce C#'
+title: 'Kurz: Translator Speech APIC#'
 titleSuffix: Azure Cognitive Services
 description: Rozhraní Translator Speech API můžete použít k překladu textu v reálném čase.
 services: cognitive-services
 author: v-jerkin
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: translator-speech
+ms.subservice: translator-speech
 ms.topic: tutorial
 ms.date: 3/5/2018
 ms.author: v-jerkin
-ms.openlocfilehash: 6a53eaf2154162ab9ec85a5a75c2cd52962b53a9
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
-ms.translationtype: HT
+ms.openlocfilehash: 01e56366fc8ae0e711664d35e95ac1aacc89730f
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49340422"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55458495"
 ---
-# <a name="tutorial-translator-speech-application-in-c"></a>Kurz: Aplikace služby Translator Speech v jazyce C#
+# <a name="tutorial-translator-speech-application-in-c"></a>Kurz: Translator Speech aplikace vC#
 
 [!INCLUDE [Deprecation note](../../../includes/cognitive-services-translator-speech-deprecation-note.md)]
 
@@ -427,7 +427,7 @@ Po ověření vytvoří tato metoda instanci `SpeechClient`. Třída `SpeechClie
 
 Binární data představují zvuk (výstup převodu textu na řeč) odesílaný službou, pokud je zaškrtnuté políčko TTS. Textová data představují částečný nebo úplný překlad vysloveného textu. Po vytvoření instance proto tato metoda připojí funkce pro zpracování těchto zpráv: zvuk jeho uložením pro pozdější přehrání a text jeho zobrazením v okně.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Tato ukázka kódu je plnohodnotná aplikace, která demonstruje použití rozhraní Translator Speech API. Vyžaduje pochopení celé řady součástí. Prošli jste si ty nejdůležitější prvky. U zbytku může být poučné, když si nastavíte v sadě Visual Studio pár zarážek a celý proces překladu si projdete. Až této ukázkové aplikaci porozumíte, budete mít dostatek vědomostí k použití služby Translator Speech ve svých vlastních aplikacích.
 

@@ -11,13 +11,13 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: billgib
 manager: craigg
-ms.date: 04/01/2018
-ms.openlocfilehash: 58a354950e303eda8158ca072870bfecbf33a89f
-ms.sourcegitcommit: 2bb46e5b3bcadc0a21f39072b981a3d357559191
+ms.date: 01/25/2019
+ms.openlocfilehash: 7a5245a9c97748e7b46132eaaa91f6bbc8311266
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/05/2018
-ms.locfileid: "52890207"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55475138"
 ---
 # <a name="set-up-and-use-log-analytics-with-a-multitenant-sql-database-saas-app"></a>Nastavit a používat službu Log Analytics s víceklientské aplikace SaaS databáze SQL
 
@@ -104,7 +104,7 @@ V tomto cvičení otevřete Log Analytics na webu Azure Portal se podívat na te
 
     ![Filtr času](media/saas-dbpertenant-log-analytics/log-analytics-time-filter.png)
 
-1. Vyberte jednu databázi a prozkoumejte využití dotazu a metriky pro tuto databázi.
+1. Vyberte jednotlivé databáze a prozkoumejte využití dotazu a metriky pro tuto databázi.
 
     ![Databáze analýzy](media/saas-dbpertenant-log-analytics/log-analytics-database.png)
 
@@ -148,7 +148,7 @@ V tomto kurzu jste se naučili:
 
 Zkuste [kurz analýza Tenanta](saas-dbpertenant-log-analytics.md).
 
-## <a name="additional-resources"></a>Další zdroje informací:
+## <a name="additional-resources"></a>Další materiály
 
 * [Další kurzy, které vycházejí z počátečního nasazení databáze na tenanta aplikace SaaS aplikace Wingtip Tickets](saas-dbpertenant-wingtip-app-overview.md#sql-database-wingtip-saas-tutorials)
 * [Azure Log Analytics](../azure-monitor/insights/azure-sql.md)

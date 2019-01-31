@@ -3,7 +3,7 @@ title: Použití úkolů s více instancemi ke spouštění aplikací MPI – Az
 description: Zjistěte, jak spouštět aplikace rozhraní MPI (Message Passing Interface) ve službě Azure Batch pomocí úloh typem s více instancemi.
 services: batch
 documentationcenter: ''
-author: dlepow
+author: laurenhughes
 manager: jeconnoc
 editor: ''
 ms.assetid: 83e34bd7-a027-4b1b-8314-759384719327
@@ -12,14 +12,14 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: ''
 ms.date: 06/12/2018
-ms.author: danlep
+ms.author: lahugh
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: a443dd7ed4f95b3e283603fa8938a08c2c177827
-ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
+ms.openlocfilehash: f2c7d6f75b9f2d6932ae3c8de863ad277fea8ffe
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39174420"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55460535"
 ---
 # <a name="use-multi-instance-tasks-to-run-message-passing-interface-mpi-applications-in-batch"></a>Použití úkolů s více instancemi ke spouštění aplikací rozhraní MPI (Message Passing Interface) ve službě Batch
 
@@ -286,7 +286,7 @@ await subtasks.ForEachAsync(async (subtask) =>
     `azure-batch-samples\CSharp\ArticleProjects\MultiInstanceTasks\`
 3. Zadejte přihlašovací údaje účtu Batch a Storage v `AccountSettings.settings` v **Microsoft.Azure.Batch.Samples.Common** projektu.
 4. **Sestavte a spusťte** MultiInstanceTasks řešení k provedení rozhraní MPI ukázkovou aplikaci na výpočetní uzlech ve fondu služby Batch.
-5. *Volitelné*: použijte [webu Azure portal] [ portal] nebo [Batch Explorer] [ batch_labs] prozkoumat ukázkový fond, úlohy a úkolů (" MultiInstanceSamplePool","MultiInstanceSampleJob","MultiInstanceSampleTask") před odstraněním zdroje.
+5. *Volitelné*: Použití [webu Azure portal] [ portal] nebo [Batch Explorer] [ batch_labs] prozkoumat ukázkový fond, úlohy a úkolů ("MultiInstanceSamplePool"," MultiInstanceSampleJob","MultiInstanceSampleTask") před odstraněním zdroje.
 
 > [!TIP]
 > Můžete si stáhnout [Visual Studio Community] [ visual_studio] zdarma, pokud nemáte Visual Studio.

@@ -12,13 +12,13 @@ author: CarlRabeler
 ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
-ms.date: 12/04/2018
-ms.openlocfilehash: 23f2d32b2323821155467bd1ad12e9baf8c33074
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.date: 01/25/2019
+ms.openlocfilehash: 2b510accb2a30250a2855cfa22dbf45546a77569
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55150746"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55461742"
 ---
 # <a name="quickstart-use-sql-server-management-studio-to-connect-and-query-an-azure-sql-database"></a>Rychlý start: Pomocí SQL Server Management Studio k připojení a dotazování Azure SQL database
 
@@ -30,7 +30,9 @@ Pro absolvování tohoto kurzu potřebujete:
 
 [!INCLUDE [prerequisites-create-db](../../includes/sql-database-connect-query-prerequisites-create-db-includes.md)]
 
-#### <a name="install-the-latest-ssms"></a>Instalace nejnovější verze aplikace SSMS
+* Pravidlo nakonfigurované brány firewall na úrovni serveru. Další informace najdete v tématu [vytvořit pravidlo brány firewall na úrovni serveru](sql-database-get-started-portal-firewall.md).
+
+## <a name="install-the-latest-ssms"></a>Instalace nejnovější verze aplikace SSMS
 
 Než začnete, ujistěte se, že jste nainstalovali nejnovější [SSMS][ssms-install-latest-84g]. 
 
@@ -43,7 +45,7 @@ Než začnete, ujistěte se, že jste nainstalovali nejnovější [SSMS][ssms-in
 V SMSS připojení k vašemu serveru Azure SQL Database. 
 
 > [!IMPORTANT]
-> Logický server Azure SQL Database naslouchá na portu 1433. Pro připojení k logickému serveru za podniková brána firewall, brána firewall musí mít tento port otevřít.
+> Server Azure SQL Database naslouchá na portu 1433. Pro připojení k serveru služby SQL Database za podniková brána firewall, brána firewall musí mít tento port otevřít.
 >
 
 1. Otevřete aplikaci SSMS. Zobrazí se dialogové okno **Připojení k serveru**.

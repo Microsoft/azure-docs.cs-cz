@@ -7,13 +7,13 @@ ms.service: storage
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: muralikk
-ms.component: common
-ms.openlocfilehash: 0066ec20c68d70fac9a6529f8f5b85855d6c5349
-ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
+ms.subservice: common
+ms.openlocfilehash: 935af10c2ebcdc5273671ed058fdf72099059da3
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/04/2018
-ms.locfileid: "43666820"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55475614"
 ---
 # <a name="creating-an-export-job-for-the-azure-importexport-service"></a>Vytvoření úlohy exportu pro službu Azure Import/Export
 Vytvoření úlohy exportu pro službu Microsoft Azure Import/Export pomocí rozhraní REST API zahrnuje následující kroky:

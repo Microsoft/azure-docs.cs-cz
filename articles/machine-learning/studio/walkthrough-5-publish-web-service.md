@@ -9,18 +9,18 @@ ms.author: garye
 editor: cgronlun
 ms.assetid: 3fca74a3-c44b-4583-a218-c14c46ee5338
 ms.service: machine-learning
-ms.component: studio
+ms.subservice: studio
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/23/2017
-ms.openlocfilehash: ab23636aa0480532606268efedcc76ea1ddd339a
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: 9d55b7ebf78e076714f4e937ffa1de896b2ec6e8
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53253727"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55474594"
 ---
 # <a name="walkthrough-step-5-deploy-the-azure-machine-learning-studio-web-service"></a>Krok 5 průvodce: Nasazení webové služby Azure Machine Learning Studio
 Toto je pátý krok tohoto průvodce, [vývoj řešení prediktivní analýzy v Azure Machine Learning](walkthrough-develop-predictive-solution.md)

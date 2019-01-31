@@ -7,13 +7,13 @@ ms.service: storage
 ms.topic: article
 ms.date: 10/15/2018
 ms.author: tamram
-ms.component: common
-ms.openlocfilehash: 49c1c95cfd91c23547c07b6e9388ef366bde4ad3
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.subservice: common
+ms.openlocfilehash: 6369c9c2c3c517012018063883b04487f86ddfd9
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55174682"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55460484"
 ---
 # <a name="use-an-azure-ad-identity-to-access-azure-storage-with-cli-or-powershell-preview"></a>Pomocí identity Azure AD pro přístup k Azure Storage s využitím rozhraní příkazového řádku nebo Powershellu (Preview)
 

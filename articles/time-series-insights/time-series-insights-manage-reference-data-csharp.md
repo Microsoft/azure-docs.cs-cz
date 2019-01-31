@@ -12,18 +12,18 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 03/23/2018
 ms.custom: seodec18
-ms.openlocfilehash: 0ed7d868f0e46e16224e15caaefd2d819c923f29
-ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
+ms.openlocfilehash: d15e229595ded0f814ebc4048d428f044b59e16d
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54200747"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55295725"
 ---
 # <a name="manage-reference-data-for-an-azure-time-series-insights-environment-by-using-c"></a>Správa referenčních dat pro prostředí Azure Time Series Insights pomocí jazyka C#
 
 Tento článek popisuje příklad jazyka C# projekt kompilujete na Správa referenčních dat pro prostředí Azure Time Series Insights.
 
-## <a name="prerequistes"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 Před kompilace a spuštění vzorového kódu, proveďte následující kroky:
 1. [Vytvoření referenční sady dat](time-series-insights-add-reference-data-set.md).
 

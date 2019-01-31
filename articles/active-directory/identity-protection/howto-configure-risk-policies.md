@@ -8,7 +8,7 @@ author: MarkusVi
 manager: mtillman
 ms.assetid: e7434eeb-4e98-4b6b-a895-b5598a6cccf1
 ms.service: active-directory
-ms.component: identity-protection
+ms.subservice: identity-protection
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 01/25/2019
 ms.author: markvi
 ms.reviewer: raluthra
-ms.openlocfilehash: a5e6d63627764ff64ac5e0621e271140ab3ed828
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.openlocfilehash: 021876306c435d3d15996c69ab3613c1d82e6993
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55099811"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55468882"
 ---
 # <a name="how-to-configure-risk-policies-in-azure-active-directory-identity-protection-refreshed"></a>Jak: Konfigurace zásady rizik ve službě Azure Active Directory identity protection (Aktualizovat)
 

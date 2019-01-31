@@ -7,13 +7,13 @@ ms.service: storage
 ms.topic: article
 ms.date: 05/22/2018
 ms.author: wgries
-ms.component: files
-ms.openlocfilehash: b9a98cea8ee19846afc30b322c3fdacb21f2bf44
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.subservice: files
+ms.openlocfilehash: d17389af1129c63d2c0eadfac04c034669200620
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51242445"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55462728"
 ---
 # <a name="how-to-deploy-azure-files"></a>Nasazení služby Soubory Azure
 [Služba soubory Azure](storage-files-introduction.md) nabízí plně spravované sdílené složky v cloudu, které jsou přístupné přes standardní protokol SMB. Tento článek vám ukáže postup prakticky nasazení služby soubory Azure v rámci vaší organizace.
@@ -88,7 +88,7 @@ Následující kroky importovat data z místního umístění na sdílené slož
 
 7. [Vytvořit úlohu importu](../common/storage-import-export-data-to-files.md#step-2-create-an-import-job).
     
-### <a name="robocopy"></a>Příkaz Robocopy
+### <a name="robocopy"></a>Robocopy
 Příkaz Robocopy je dobře známé kopírování nástroj, který se dodává s Windows a Windows Server. Příkaz Robocopy můžou sloužit k připojení sdílené místně a následným použitím umístění připojené jako cíl v příkazu Robocopy přenášet data do soubory Azure. Pomocí příkazu Robocopy je poměrně jednoduchý:
 
 1. [Připojení sdílené složky Azure](storage-how-to-use-files-windows.md). Pro zajištění optimálního výkonu doporučujeme připojení sdílené složky Azure místně na serveru, který obsahuje data. V některých případech, například pokud je souborový server, který poskytuje data zařízení NAS nemusí být možné. V takovém případě je zcela přijatelné pro připojení sdílené složky Azure na počítači. V tomto příkladu `net use` slouží pro připojení sdílené složky na příkazovém řádku:

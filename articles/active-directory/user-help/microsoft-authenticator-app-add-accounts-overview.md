@@ -6,17 +6,17 @@ author: eross-msft
 manager: daveba
 ms.reviewer: olhaun
 ms.service: active-directory
-ms.component: user-help
+ms.subservice: user-help
 ms.workload: identity
 ms.topic: overview
 ms.date: 01/24/2019
 ms.author: lizross
-ms.openlocfilehash: 3c71270a6177a52b330fd561fc2599f3357818e1
-ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
+ms.openlocfilehash: 42cc101f76d106c82dd418d9207ba44f15d96b79
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/25/2019
-ms.locfileid: "54904719"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55476277"
 ---
 # <a name="overview-about-adding-accounts-to-the-microsoft-authenticator-app"></a>Přehled o přidávání účtů do aplikace Microsoft Authenticator
 

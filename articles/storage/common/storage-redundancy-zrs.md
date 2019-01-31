@@ -7,13 +7,13 @@ ms.service: storage
 ms.topic: article
 ms.date: 10/24/2018
 ms.author: jeking
-ms.component: common
-ms.openlocfilehash: 776feba239af5f2cafaf7229554960fab3417943
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.subservice: common
+ms.openlocfilehash: 62c6e24776c1d9a4e6a82eea557244bb390ebd00
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55093355"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55471483"
 ---
 # <a name="zone-redundant-storage-zrs-highly-available-azure-storage-applications"></a>Zónově redundantní úložiště (ZRS): Vysoce dostupné aplikace služby Azure Storage
 [!INCLUDE [storage-common-redundancy-ZRS](../../../includes/storage-common-redundancy-zrs.md)]

@@ -1,6 +1,6 @@
 ---
-Název: Nasazení titleSuffix webové služby Machine Learning Studio: Azure Machine Learning Studio Popis: Postup převedení školicího experimentu na prediktivní experiment, její přípravu na nasazení a pak ji nasadit jako webovou službu Azure Machine Learning Studio.
-Services: machine learningu ms.service: ms.component strojového učení: studio ms.topic: článku
+Název: Nasazení titleSuffix webové služby Machine Learning Studio: Azure Machine Learning Studio Popis: Postup převedení školicího experimentu na prediktivní experiment, její přípravu na nasazení a pak ji nasadit jako webovou službu Azure Machine Learning Studio.
+Services: machine learningu ms.service: ms.subservice strojového učení: studio ms.topic: článku
 
 Autor: ericlicoding ms.author: amlstudiodocs ms.custom: předchozí ms.author=yahajiza, předchozí Autor = YasinMSFT ms.date: 01/06/2017
 ---

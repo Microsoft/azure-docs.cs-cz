@@ -1,6 +1,6 @@
 ---
-Název: Služba Azure Batch pro Machine Learning Studio úlohy titleSuffix: Azure Machine Learning Studio Popis: Přehled služby Azure Batch pro úlohy strojového učení. Zpracování fondu služby batch můžete vytvořit fondy, ve kterých můžete odeslat dávkových úloh Hive.
-Services: machine learningu ms.service: ms.component strojového učení: studio ms.topic: článku
+Název: Služba Azure Batch pro Machine Learning Studio úlohy titleSuffix: Azure Machine Learning Studio Popis: Přehled služby Azure Batch pro úlohy strojového učení. Zpracování fondu služby batch můžete vytvořit fondy, ve kterých můžete odeslat dávkových úloh Hive.
+Services: machine learningu ms.service: ms.subservice strojového učení: studio ms.topic: článku
 
 Autor: ericlicoding ms.author: amlstudiodocs ms.custom: seodec18 předchozí title = "vyhrazenou kapacitu pro úlohy služby batch provádění - Azure Machine Learning Studio | Dokumentace Microsoft ms.date: 04/19/2017
 ---

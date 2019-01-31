@@ -11,13 +11,13 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 manager: craigg
-ms.date: 01/03/2019
-ms.openlocfilehash: 77ef1fed7bbdb53898a688f14944b9b6b16773c7
-ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
+ms.date: 01/25/2019
+ms.openlocfilehash: a9c857ab9e9a3cfc0d1314600b612c4e6293173d
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54200968"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55476787"
 ---
 # <a name="scale-out-databases-with-the-shard-map-manager"></a>Horizontální navýšení kapacity databáze pomocí Správce mapování horizontálních oddílů
 
@@ -40,11 +40,11 @@ Pro jednoho tenanta modelu, vytvořit **mapování seznamu** mapy horizontální
 
 ![Seznam mapování][1]
 
-Víceklientského modelu přiřadí několika klienty izolovanou databázi (a skupin klientů můžete distribuovat napříč několika databázemi). Tento model použijte, pokud očekáváte, že každý tenant má malé dat, které potřebujete. V tomto modelu, přiřaďte rozsah tenantů k databázi pomocí **rozsah mapování**.
+Víceklientského modelu přiřadí několik tenantů pro jednotlivé databáze (a skupin klientů můžete distribuovat napříč několika databázemi). Tento model použijte, pokud očekáváte, že každý tenant má malé dat, které potřebujete. V tomto modelu, přiřaďte rozsah tenantů k databázi pomocí **rozsah mapování**.
 
 ![Mapování oblasti][2]
 
-Nebo můžete implementovat pomocí modelu databázi s více tenanty *mapování seznamu* přiřadit více tenantů v jedné databázi. Například DB1 se používá k ukládání informací o tenantovi ID 1 a 5 a DB2 ukládá data pro tenanta 7 a tenanta 10.
+Nebo můžete implementovat pomocí modelu databázi s více tenanty *mapování seznamu* přiřadit více tenantů pro jednotlivé databáze. Například DB1 se používá k ukládání informací o tenantovi ID 1 a 5 a DB2 ukládá data pro tenanta 7 a tenanta 10.
 
 ![Více tenantů v jedné databáze][3]
 

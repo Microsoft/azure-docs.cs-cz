@@ -6,18 +6,18 @@ services: cognitive-services
 author: Jann-Skotdal
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: translator-text
+ms.subservice: translator-text
 ms.topic: reference
 ms.date: 03/29/2018
 ms.author: v-jansko
-ms.openlocfilehash: 6698960cca39fb49fe8ba6e79b957be469ea7c50
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.openlocfilehash: 892a029c3a51aa3574d92b838a51359438a6bdb6
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46126118"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55464989"
 ---
-# <a name="translator-text-api-30-detect"></a>Translator Text API 3.0: zjišťování
+# <a name="translator-text-api-30-detect"></a>Translator Text API 3.0: Detect
 
 Určuje jazyk část textu.
 
@@ -48,7 +48,7 @@ Hlavičky žádosti patří:
   <th width="20%">Hlavičky</th>
   <th>Popis</th>
   <tr>
-    <td>_Jedním autorizačním_<br/>_Záhlaví_</td>
+    <td>_Jedním autorizačním_<br/>_header_</td>
     <td>*Hlavička požadavku požadované*.<br/>Zobrazit [dostupné možnosti pro ověřování](./v3-0-reference.md#authentication).</td>
   </tr>
   <tr>
@@ -65,7 +65,7 @@ Hlavičky žádosti patří:
   </tr>
 </table> 
 
-## <a name="request-body"></a>Tělo požadavku
+## <a name="request-body"></a>Text požadavku
 
 Text požadavku je pole JSON. Každý prvek pole je objekt JSON s řetězcovou vlastnost s názvem `Text`. Rozpoznávání jazyka se použije pro hodnotu `Text` vlastnost. Text požadavku ukázka vypadá tímto způsobem:
 
@@ -174,7 +174,7 @@ Tady jsou možné stavové kódy HTTP, které vrátí žádost o.
 
 Následující příklad ukazuje, jak načíst jazyky podporované pro překlad textu.
 
-# <a name="curltabcurl"></a>[Curl](#tab/curl)
+# <a name="curltabcurl"></a>[curl](#tab/curl)
 
 ```
 curl -X POST "https://api.cognitive.microsofttranslator.com/detect?api-version=3.0" -H "Ocp-Apim-Subscription-Key: <client-secret>" -H "Content-Type: application/json" -d "[{'Text':'What language is this text written in?'}]"

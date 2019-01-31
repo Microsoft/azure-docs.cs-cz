@@ -9,13 +9,13 @@ ms.devlang: nodejs
 ms.topic: article
 ms.date: 12/08/2016
 ms.author: tamram
-ms.component: queues
-ms.openlocfilehash: 38da370e8e3cd81e209d0fd592d6b2afa8c82e44
-ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
+ms.subservice: queues
+ms.openlocfilehash: 295ca353530fb438d0bd77a9144813543102b997
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50138499"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55472707"
 ---
 # <a name="how-to-use-queue-storage-from-nodejs"></a>Používání úložiště Queue z Node.js
 [!INCLUDE [storage-selector-queue-include](../../../includes/storage-selector-queue-include.md)]
@@ -64,7 +64,7 @@ var azure = require('azure-storage');
 ## <a name="setup-an-azure-storage-connection"></a>Nastavit připojení k Azure Storage
 Modul azure načte proměnné prostředí AZURE\_úložiště\_účet a AZURE\_úložiště\_přístup\_klíč nebo AZURE\_úložiště\_připojení\_ ŘETĚZEC informace požadované pro připojení k účtu služby Azure storage. Pokud nejsou nastavené tyto proměnné prostředí, musíte zadat informace o účtu při volání metody **createQueueService**.
 
-## <a name="how-to-create-a-queue"></a>Postupy: Vytvoření fronty
+## <a name="how-to-create-a-queue"></a>Jak: Vytvoření fronty
 Následující kód vytvoří **QueueService** objektu, který umožňuje pracovat s frontami.
 
 ```javascript
@@ -105,7 +105,7 @@ var retryOperations = new azure.ExponentialRetryPolicyFilter();
 var queueSvc = azure.createQueueService().withFilter(retryOperations);
 ```
 
-## <a name="how-to-insert-a-message-into-a-queue"></a>Postupy: Vložit zprávu do fronty
+## <a name="how-to-insert-a-message-into-a-queue"></a>Jak: Vložit zprávu do fronty
 Chcete-li vložit zprávu do fronty, použijte **createMessage** metoda vytvořit novou zprávu a přidat do fronty.
 
 ```javascript
@@ -116,7 +116,7 @@ queueSvc.createMessage('myqueue', "Hello world!", function(error, results, respo
 });
 ```
 
-## <a name="how-to-peek-at-the-next-message"></a>Postupy: Zobrazení náhledu další zprávy
+## <a name="how-to-peek-at-the-next-message"></a>Jak: Zobrazení náhledu další zprávy
 Můžete prohlížet zprávy ve frontě bez odebrání z fronty pomocí volání **peekMessages** metody. Ve výchozím nastavení **peekMessages** prohlédne do jedné zprávy.
 
 ```javascript
@@ -134,7 +134,7 @@ queueSvc.peekMessages('myqueue', function(error, results, response){
 > 
 > 
 
-## <a name="how-to-dequeue-the-next-message"></a>Postupy: Odstranění z fronty další zprávy
+## <a name="how-to-dequeue-the-next-message"></a>Jak: Vyřazení další zprávy z fronty
 Zpracování zprávy je dvoustupňový proces:
 
 1. Odstranit zprávu z fronty.
@@ -164,7 +164,7 @@ queueSvc.getMessages('myqueue', function(error, results, response){
 > 
 > 
 
-## <a name="how-to-change-the-contents-of-a-queued-message"></a>Postupy: Změna obsahu zpráv zařazených ve frontě
+## <a name="how-to-change-the-contents-of-a-queued-message"></a>Jak: Změna obsahu zpráv zařazených ve frontě
 Můžete změnit obsah zprávu na místě ve frontě pomocí **updateMessage**. Následující příklad aktualizuje text zprávy:
 
 ```javascript
@@ -181,7 +181,7 @@ queueSvc.getMessages('myqueue', function(error, getResults, getResponse){
 });
 ```
 
-## <a name="how-to-additional-options-for-dequeuing-messages"></a>Postupy: Dalších možností pro vyřazování z fronty zpráv
+## <a name="how-to-additional-options-for-dequeuing-messages"></a>Jak: Další možnosti pro zrušení fronty zpráv
 Načítání zpráv z fronty si můžete přizpůsobit dvěma způsoby:
 
 * `options.numOfMessages` -Načíst dávku zpráv (až 32.)
@@ -206,7 +206,7 @@ queueSvc.getMessages('myqueue', {numOfMessages: 15, visibilityTimeout: 5 * 60}, 
 });
 ```
 
-## <a name="how-to-get-the-queue-length"></a>Postupy: Získání délky fronty
+## <a name="how-to-get-the-queue-length"></a>Jak: Získání délky fronty
 **GetQueueMetadata** vrací metadata o frontě, včetně přibližný počet zpráv čekajících ve frontě.
 
 ```javascript
@@ -217,7 +217,7 @@ queueSvc.getQueueMetadata('myqueue', function(error, results, response){
 });
 ```
 
-## <a name="how-to-list-queues"></a>Postupy: Seznam fronty
+## <a name="how-to-list-queues"></a>Jak: Seznam front
 Pokud chcete načíst seznam front, použijte **listQueuesSegmented**. Chcete-li načíst seznam filtrovaný podle konkrétní předpony, použijte **listQueuesSegmentedWithPrefix**.
 
 ```javascript
@@ -230,7 +230,7 @@ queueSvc.listQueuesSegmented(null, function(error, results, response){
 
 Pokud nelze vrátit všechny fronty, `result.continuationToken` může sloužit jako první parametr **listQueuesSegmented** nebo druhý parametr **listQueuesSegmentedWithPrefix** načíst více výsledků.
 
-## <a name="how-to-delete-a-queue"></a>Postupy: Odstranění fronty
+## <a name="how-to-delete-a-queue"></a>Jak: Odstranění fronty
 Chcete-li odstranit frontu se všemi zprávami, které v ní, zavolejte **deleteQueue** metodu na objekt fronty.
 
 ```javascript
@@ -243,7 +243,7 @@ queueSvc.deleteQueue(queueName, function(error, response){
 
 Chcete-li vymazat všechny zprávy z fronty, aniž by byl, použijte **clearMessages**.
 
-## <a name="how-to-work-with-shared-access-signatures"></a>Postupy: práce s podpisy sdíleného přístupu
+## <a name="how-to-work-with-shared-access-signatures"></a>Postup: Použití sdílených přístupových podpisů
 Sdílených přístupových podpisů (SAS) je zabezpečený způsob, jak poskytovat granulární přístup k frontám bez zadání názvu účtu úložiště nebo klíče. SAS se často používají k zajištění omezený přístup k vaší front, například povolení mobilní aplikace pro odesílání zpráv.
 
 Důvěryhodné aplikace, jako je Cloudová služba vygeneruje SAS pomocí **generateSharedAccessSignature** z **QueueService**a poskytuje k nedůvěryhodné nebo částečně důvěryhodnou aplikaci. Například mobilní aplikace. SAS se generuje pomocí zásady, která popisuje počáteční a koncové datum platnosti SAS a také úroveň přístupu udělenou držiteli SAS.

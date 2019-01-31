@@ -4,252 +4,226 @@ description: Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: daveba
-ms.reviewer: joflore
+manager: mtillman
+ms.reviewer: barbkess
 ms.assetid: a9a7ff71-c389-4169-aafd-d7a505244797
-ms.service: active-directory
-ms.subservice: saas-app-tutorial
+ms.service: Azure-Active-Directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 07/19/2017
+ms.topic: tutorial
+ms.date: 01/20/2019
 ms.author: jeedes
-ms.openlocfilehash: c95310043415dc689149521716f37099bfa084c0
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: bd84187d22b9c335a80a243c38a9a08054eab0f4
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55168936"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55458264"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-autotask-workplace"></a>Kurz: Integrace Azure Active Directory s Autotask pracoviště
 
 V tomto kurzu se dozvíte, jak integrovat Autotask pracoviště s Azure Active Directory (Azure AD).
-
 Integrace Autotask pracoviště s Azure AD poskytuje následující výhody:
 
-- Můžete řídit ve službě Azure AD, který má přístup k síti na pracovišti Autotask
-- Uživatele, aby automaticky získat přihlášení k síti na pracovišti Autotask (Single Sign-On) můžete povolit pomocí jejich účtů služby Azure AD
-- Můžete spravovat své účty na jediném místě – na webu Azure portal
+* Můžete řídit ve službě Azure AD, který má přístup k síti na pracovišti Autotask.
+* Uživatelům se automaticky přihlášeni k síti na pracovišti Autotask (Single Sign-On) můžete povolit pomocí jejich účtů služby Azure AD.
+* Můžete spravovat své účty na jediném místě – na webu Azure portal.
 
-Pokud chcete zjistit další podrobnosti o integraci aplikací SaaS v Azure AD, přečtěte si téma [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
+Pokud chcete zjistit další podrobnosti o integraci aplikací SaaS v Azure AD, přečtěte si téma [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 
 ## <a name="prerequisites"></a>Požadavky
 
 Konfigurace integrace Azure AD s Autotask síti na pracovišti, potřebujete následující položky:
 
-- Předplatné Azure AD
-- Síti na pracovišti Autotask jednotného přihlašování povolená předplatné
-- Musíte být správce nebo správce super v síti na pracovišti.
-- Musíte mít účet správce ve službě Azure AD.
-- Uživatele, kteří budou tuto funkci využít, musí mít účty v síti na pracovišti a Azure AD a jejich e-mailové adresy pro obě se musí shodovat.
-
-> [!NOTE]
-> Pokud chcete vyzkoušet kroky v tomto kurzu, nedoporučujeme použití produkční prostředí.
-
-Pokud chcete vyzkoušet kroky v tomto kurzu, postupujte podle těchto doporučení:
-
-- Nepoužívejte produkčním prostředí, pokud to není nutné.
-- Pokud nemáte prostředí zkušební verzi Azure AD, můžete si [získat měsíční zkušební verzi](https://azure.microsoft.com/pricing/free-trial/).
+* Předplatné služby Azure AD. Pokud nemáte prostředí Azure AD, můžete získat měsíční zkušební verze [zde](https://azure.microsoft.com/pricing/free-trial/)
+* Autotask pracoviště jednotného přihlašování povolená předplatného
+* Síti na pracovišti Autotask jednotného přihlašování povolená předplatné
+* Musíte být správce nebo správce super v síti na pracovišti.
+* Musíte mít účet správce ve službě Azure AD.
+* Uživatele, kteří budou tuto funkci využít, musí mít účty v síti na pracovišti a Azure AD a jejich e-mailové adresy pro obě se musí shodovat.
 
 ## <a name="scenario-description"></a>Popis scénáře
-V tomto kurzu je otestovat Azure AD jednotné přihlašování v testovacím prostředí. Scénář popsaný v tomto kurzu se skládá ze dvou hlavních stavebních bloků:
 
-1. Přidání Autotask síti na pracovišti z Galerie
-1. Konfigurace a testování Azure AD jednotného přihlašování
+V tomto kurzu konfigurace a testování v testovacím prostředí Azure AD jednotného přihlašování.
+
+* Podporuje Autotask pracoviště **SP a zprostředkovatele identity** jednotné přihlašování zahájené pomocí
 
 ## <a name="adding-autotask-workplace-from-the-gallery"></a>Přidání Autotask síti na pracovišti z Galerie
+
 Pokud chcete nakonfigurovat integraci pracovní plocha Autotask do služby Azure AD, budete muset přidat Autotask síti na pracovišti z Galerie na váš seznam spravovaných aplikací SaaS.
 
 **Chcete-li přidat Autotask síti na pracovišti z galerie, postupujte následovně:**
 
-1. V **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu. 
+1. V **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu.
 
-    ![Tlačítko Azure Active Directory][1]
+    ![Tlačítko Azure Active Directory](common/select-azuread.png)
 
-1. Přejděte do **podnikové aplikace**. Pak přejděte na **všechny aplikace**.
+2. Přejděte do **podnikové aplikace** a pak vyberte **všechny aplikace** možnost.
 
-    ![V okně podnikové aplikace][2]
-    
-1. Chcete-li přidat novou aplikaci, klikněte na tlačítko **novou aplikaci** tlačítko v horní části dialogového okna.
+    ![V okně podnikové aplikace](common/enterprise-applications.png)
 
-    ![Tlačítko nové aplikace][3]
+3. Chcete-li přidat novou aplikaci, klikněte na tlačítko **novou aplikaci** tlačítko v horní části dialogového okna.
 
-1. Do vyhledávacího pole zadejte **Autotask pracoviště**vyberte **Autotask pracoviště** z panelu výsledků klikněte **přidat** tlačítko pro přidání aplikace.
+    ![Tlačítko nové aplikace](common/add-new-app.png)
 
-    ![Autotask síti na pracovišti v seznamu výsledků](./media/autotaskworkplace-tutorial/tutorial_autotaskworkplace_addfromgallery.png)
+4. Do vyhledávacího pole zadejte **Autotask pracoviště**vyberte **Autotask pracoviště** z panelu výsledků klikněte **přidat** tlačítko pro přidání aplikace.
+
+     ![Autotask síti na pracovišti v seznamu výsledků](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurace a otestování služby Azure AD jednotného přihlašování
 
-V této části nakonfigurujete a test Azure AD jednotné přihlašování s Autotask pracoviště podle testovacího uživatele nazývá "Britta Simon."
-
-Pro jednotné přihlašování pro práci služba Azure AD potřebuje vědět, co uživatel protějšky v síti na pracovišti Autotask je pro uživatele ve službě Azure AD. Jinými slovy vztah odkazu mezi uživatele služby Azure AD a souvisejících uživatelů v síti na pracovišti Autotask musí být vytvořeno.
-
-V síti na pracovišti Autotask, přiřaďte hodnotu **uživatelské jméno** ve službě Azure AD jako hodnotu **uživatelské jméno** a tím vytvoří vztah odkazu.
+V této části nakonfigurujete a test Azure AD jednotné přihlašování s Autotask pracoviště podle testovacího uživatele volá **Britta Simon**.
+Pro jednotné přihlašování pro práci je potřeba navázat vztah odkazu mezi uživatele služby Azure AD a souvisejících uživatelů v síti na pracovišti Autotask.
 
 Nakonfigurovat a otestovat Azure AD jednotné přihlašování s Autotask síti na pracovišti, které potřebujete k dokončení následujících stavebních bloků:
 
 1. **[Konfigurovat Azure AD Single Sign-On](#configure-azure-ad-single-sign-on)**  – Pokud chcete, aby uživatelé mohli tuto funkci používat.
-1. **[Vytvořit testovacího uživatele Azure AD](#create-an-azure-ad-test-user)**  – Pokud chcete otestovat Azure AD jednotné přihlašování s Britta Simon.
-1. **[Vytvořit testovacího uživatele síti na pracovišti Autotask](#create-an-autotask-workplace-test-user)**  – Pokud chcete mít protějšek Britta Simon Autotask pracovišti, který je propojený s Azure AD reprezentace uživatele.
-1. **[Přiřadit uživatele Azure AD](#assign-the-azure-ad-test-user)**  – Pokud chcete povolit Britta Simon používat Azure AD jednotného přihlašování.
-1. **[Otestovat jednotné přihlašování](#test-single-sign-on)**  – Pokud chcete ověřit, jestli funguje v konfiguraci.
+2. **[Konfigurace Autotask pracoviště Single Sign-On](#configure-autotask-workplace-single-sign-on)**  – ke konfiguraci nastavení jednotného přihlašování na straně aplikace.
+3. **[Vytvořit testovacího uživatele Azure AD](#create-an-azure-ad-test-user)**  – Pokud chcete otestovat Azure AD jednotné přihlašování s Britta Simon.
+4. **[Přiřadit uživatele Azure AD](#assign-the-azure-ad-test-user)**  – Pokud chcete povolit Britta Simon používat Azure AD jednotného přihlašování.
+5. **[Vytvořit testovacího uživatele Autotask pracoviště](#create-autotask-workplace-test-user)**  – Pokud chcete mít protějšek Britta Simon Autotask pracovišti, který je propojený s Azure AD reprezentace uživatele.
+6. **[Otestovat jednotné přihlašování](#test-single-sign-on)**  – Pokud chcete ověřit, jestli funguje v konfiguraci.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Konfigurace služby Azure AD jednotného přihlašování
 
-V této části Povolení služby Azure AD jednotného přihlašování na portálu Azure portal a konfigurace jednotného přihlašování v aplikaci Autotask pracoviště.
+V této části můžete povolit Azure AD jednotného přihlašování na portálu Azure portal.
 
-**Ke konfiguraci Azure AD jednotné přihlašování s Autotask pracoviště, postupujte následovně:**
+Ke konfiguraci Azure AD jednotné přihlašování s Autotask pracoviště, postupujte následovně:
 
-1. Na webu Azure Portal na **Autotask pracoviště** integrace stránka aplikace, klikněte na tlačítko **jednotného přihlašování**.
+1. V [webu Azure portal](https://portal.azure.com/)na **Autotask pracoviště** integrace stránce aplikace vyberte **jednotného přihlašování**.
 
-    ![Nakonfigurovat jednotné přihlašování – odkaz][4]
+    ![Nakonfigurovat jednotné přihlašování – odkaz](common/select-sso.png)
 
-1. Na **jednotného přihlašování** dialogového okna, vyberte **režimu** jako **přihlašování na základě SAML** povolit jednotné přihlašování.
- 
-    ![Jednotné přihlašování – dialogové okno](./media/autotaskworkplace-tutorial/tutorial_autotaskworkplace_samlbase.png)
+2. Na **vybrat jedinou metodu přihlašování** dialogového okna, vyberte **SAML/WS-Fed** chcete povolit jednotné přihlašování.
 
-1. Pokud chcete nakonfigurovat aplikace v **zprostředkovatele identity** iniciované režimu, následující postup proveďte **Autotask pracoviště domény a adresy URL** části:
+    ![Jednotné přihlašování režim výběru](common/select-saml-option.png)
 
-    ![Autotask pracoviště domény a adresy URL jednotné přihlašování – informace pro zprostředkovatele identity](./media/autotaskworkplace-tutorial/tutorial_autotaskworkplace_url.png)
+3. Na **nastavte si jednotné přihlašování pomocí SAML** klikněte na **upravit** ikony otevřete **základní konfiguraci SAML** dialogového okna.
 
-    a. V **identifikátor** textového pole zadejte adresu URL pomocí následujícímu vzoru: `https://<subdomain>.awp.autotask.net/singlesignon/saml/metadata`
+    ![Upravit konfiguraci základní SAML](common/edit-urls.png)
 
-    b. V **adresy URL odpovědi** textového pole zadejte adresu URL pomocí následujícímu vzoru: `https://<subdomain>.awp.autotask.net/singlesignon/saml/SSO`
+4. Na **základní konfiguraci SAML** části, pokud chcete nakonfigurovat aplikace v **IDP** iniciované režimu, proveďte následující kroky:
 
-1. Pokud chcete nakonfigurovat aplikace v **SP** iniciované režimu, kontrola **zobrazit pokročilé nastavení URL** a proveďte následující kroky:
+    ![Autotask pracoviště domény a adresy URL jednotného přihlašování – informace](common/idp-intiated.png)
 
-    ![Autotask pracoviště domény a adresy URL jednotné přihlašování – informace pro SP](./media/autotaskworkplace-tutorial/tutorial_autotaskworkplace_url1.png)
+    a. V **identifikátor** textové pole, zadejte adresu URL, pomocí následujícího vzorce: `https://<subdomain>.awp.autotask.net/singlesignon/saml/metadata`
 
-    V **přihlašovací adresa URL** textového pole zadejte adresu URL pomocí následujícímu vzoru: `https://<subdomain>.awp.autotask.net/loginsso`
-     
-    > [!NOTE] 
-    > Tyto hodnoty nejsou skutečný. Tyto hodnoty aktualizujte skutečné identifikátor, adresa URL odpovědi a přihlašovací adresa URL. Kontakt [tým podpory Autotask pracoviště klienta](https://awp.autotask.net/help/Content/0_HOME/Support_for_End_Clients.htm) k získání těchto hodnot. 
+    b. V **adresy URL odpovědi** textové pole, zadejte adresu URL, pomocí následujícího vzorce: `https://<subdomain>.awp.autotask.net/singlesignon/saml/SSO`
 
-1. Na **podpisový certifikát SAML** klikněte na tlačítko **soubor XML s metadaty** a uložte soubor metadat ve vašem počítači.
+5. Klikněte na tlačítko **nastavit další adresy URL** a provést následující krok, pokud chcete nakonfigurovat aplikace v **SP** iniciované režimu:
 
-    ![Odkaz ke stažení certifikátu](./media/autotaskworkplace-tutorial/tutorial_autotaskworkplace_certificate.png) 
+    ![Autotask pracoviště domény a adresy URL jednotného přihlašování – informace](common/metadata-upload-additional-signon.png)
 
-1. Klikněte na tlačítko **Uložit** tlačítko.
+    V **přihlašovací adresa URL** textové pole, zadejte adresu URL, pomocí následujícího vzorce:  `https://<subdomain>.awp.autotask.net/loginsso`
 
-    ![Nakonfigurovat jednotné přihlašování uložit tlačítko](./media/autotaskworkplace-tutorial/tutorial_general_400.png)
+    > [!NOTE]
+    > Tyto hodnoty nejsou skutečný. Aktualizujte tyto hodnoty skutečnou adresu URL identifikátor, adresa URL odpovědi a přihlašování. Kontakt [tým podpory Autotask pracoviště klienta](https://awp.autotask.net/help/Content/0_HOME/Support_for_End_Clients.htm) k získání těchto hodnot. Můžete také odkazovat na tyto vzory se dají ukazuje **základní konfiguraci SAML** části webu Azure Portal.
+
+6. Na **nastavte si jednotné přihlašování pomocí SAML** stránku, **podpisový certifikát SAML** klikněte na tlačítko **Stáhnout** ke stažení **kód XML metadat federace**  z se zadanými možnostmi podle vašich požadavků a uložit je ve vašem počítači.
+
+    ![Odkaz ke stažení certifikátu](common/metadataxml.png)
+
+7. Na **nastavení pracoviště Autotask** tématu, zkopírujte příslušné adresy URL podle vašich požadavků.
+
+    ![Zkopírování adresy URL konfigurace](common/copy-configuration-urls.png)
+
+    a. Přihlašovací adresa URL
+
+    b. Identifikátor služby Azure Ad
+
+    c. Adresa URL – odhlášení
+
+### <a name="configure-autotask-workplace-single-sign-on"></a>Konfigurace Autotask pracoviště jednotného přihlašování
 
 1. V okně jiné webové prohlížeče Přihlaste se k síti na pracovišti Online pomocí přihlašovacích údajů správce.
 
-    >[!Note]
-    >Při konfiguraci zprostředkovatele identity, bude potřeba zadat subdomény. Potvrďte správné subdomény, přihlaste se k síti na pracovišti Online. Po přihlášení, poznamenejte si poddomény v adrese URL.
-    >Poddomény je ta část mezi "https://" a ".awp.autotask.net/" a musí být v USA, Evropa, certifikační autority nebo Austrálie.
+    > [!Note]
+    > Při konfiguraci zprostředkovatele identity, bude potřeba zadat subdomény. Potvrďte správné subdomény, přihlaste se k síti na pracovišti Online. Po přihlášení, poznamenejte si poddomény v adrese URL. Poddomény je ta část mezi "https://" a ".awp.autotask.net/" a musí být v USA, Evropa, certifikační autority nebo Austrálie.
 
-1. Přejděte na **konfigurace** > **Single Sign-On** a proveďte následující kroky:
+2. Přejděte na **konfigurace** > **Single Sign-On** a proveďte následující kroky:
 
     ![Autotask Single Sign-on konfigurace](./media/autotaskworkplace-tutorial/tutorial_autotaskssoconfig1.png)
- 
-    a. Vyberte **soubor metadat XML** možnost a potom ho nahrajete **soubor XML s metadaty** stáhnout z webu Azure portal.
 
-    b. Klikněte na tlačítko **povolení jednotného přihlašování**.
-    
+    a. Vyberte **soubor metadat XML** možnost a potom ho nahrajete na stažený **kód XML metadat federace** z webu Azure portal.
+
+    b. Klikněte na tlačítko **povolit jednotné přihlašování**.
+
     ![Autotask Single Sign-on schválit konfigurace](./media/autotaskworkplace-tutorial/tutorial_autotaskssoconfig2.png)
 
     c. Vyberte **potvrzuji, že tyto informace jsou správné a Věřím tohoto zprostředkovatele identity** zaškrtávací políčko.
 
-    d. Klikněte na tlačítko **schválit**.
-     
->[!Note]
->Pokud potřebujete pomoc s konfigurací Autotask síti na pracovišti, najdete [na této stránce](https://awp.autotask.net/help/Content/0_HOME/Support_for_End_Clients.htm) a vyžádejte si pomoc s vaším účtem v síti na pracovišti.
+    d. Klikněte na tlačítko **SCHVÁLIT**.
 
-> [!TIP]
-> Teď si můžete přečíst stručné verzi těchto pokynů uvnitř [webu Azure portal](https://portal.azure.com), zatímco jsou nastavení aplikace!  Po přidání této aplikace z **služby Active Directory > podnikové aplikace** části, stačí kliknout **Single Sign-On** kartu a přístup k vložené dokumentaci prostřednictvím  **Konfigurace** oblast v dolní části. Další informace o funkci vložená dokumentace: [Dokumentace ke službě Azure AD, embedded]( https://go.microsoft.com/fwlink/?linkid=845985)
+> [!Note]
+> Pokud potřebujete pomoc s konfigurací Autotask síti na pracovišti, najdete [na této stránce](https://awp.autotask.net/help/Content/0_HOME/Support_for_End_Clients.htm) a vyžádejte si pomoc s vaším účtem v síti na pracovišti.
 
 ### <a name="create-an-azure-ad-test-user"></a>Vytvořit testovacího uživatele Azure AD
 
 Cílem této části je vytvoření zkušebního uživatele na webu Azure Portal volá Britta Simon.
 
-   ![Vytvořit testovacího uživatele Azure AD][100]
+1. Na webu Azure Portal, v levém podokně vyberte **Azure Active Directory**vyberte **uživatelé**a pak vyberte **všichni uživatelé**.
 
-**Chcete-li vytvořit testovacího uživatele ve službě Azure AD, postupujte následovně:**
+    !["Uživatele a skupiny" a "Všechny uživatele" odkazy](common/users.png)
 
-1. Na webu Azure Portal, v levém podokně klikněte na tlačítko **Azure Active Directory** tlačítko.
+2. Vyberte **nového uživatele** v horní části obrazovky.
 
-    ![Tlačítko Azure Active Directory](./media/autotaskworkplace-tutorial/create_aaduser_01.png)
+    ![Tlačítko Nový uživatel](common/new-user.png)
 
-1. Chcete-li zobrazit seznam uživatelů, přejděte na **uživatelů a skupin**a potom klikněte na tlačítko **všichni uživatelé**.
+3. Ve vlastnosti uživatele proveďte následující kroky.
 
-    !["Uživatele a skupiny" a "Všechny uživatele" odkazy](./media/autotaskworkplace-tutorial/create_aaduser_02.png)
+    ![Dialogové okno uživatele](common/user-properties.png)
 
-1. Chcete-li otevřít **uživatele** dialogové okno, klikněte na tlačítko **přidat** v horní části **všichni uživatelé** dialogové okno.
+    a. V **název** zadat **BrittaSimon**.
+  
+    b. V **uživatelské jméno** typ pole **brittasimon@yourcompanydomain.extension**  
+    Například BrittaSimon@contoso.com.
 
-    ![Tlačítko Přidat](./media/autotaskworkplace-tutorial/create_aaduser_03.png)
-
-1. V **uživatele** dialogové okno pole, proveďte následující kroky:
-
-    ![Dialogové okno uživatele](./media/autotaskworkplace-tutorial/create_aaduser_04.png)
-
-    a. V **název** zadejte **BrittaSimon**.
-
-    b. V **uživatelské jméno** zadejte e-mailovou adresu uživatele Britta Simon.
-
-    c. Vyberte **zobrazit heslo** zaškrtněte políčko a zapište si hodnotu, která se zobrazí **heslo** pole.
+    c. Vyberte **zobrazit heslo** zaškrtněte políčko a zapište si hodnotu, která se zobrazí v poli heslo.
 
     d. Klikněte na možnost **Vytvořit**.
-
-### <a name="create-an-autotask-workplace-test-user"></a>Vytvořit testovacího uživatele síti na pracovišti Autotask
-
-V této části vytvoříte uživatele v Autotask jako Britta Simon. Prosím práci s [tým podpory Autotask pracoviště](https://awp.autotask.net/help/Content/0_HOME/Support_for_End_Clients.htm) k přidání uživatelů v síti na pracovišti Autotask platformy.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřadit uživatele Azure AD
 
 V této části je povolit Britta Simon používat jednotné přihlašování Azure díky udělení přístupu k síti na pracovišti Autotask.
 
-![Přiřazení role uživatele][200] 
+1. Na webu Azure Portal, vyberte **podnikové aplikace**vyberte **všechny aplikace**a pak vyberte **Autotask pracoviště**.
 
-**Pokud chcete přiřadit k síti na pracovišti Autotask Britta Simon, postupujte následovně:**
+    ![Okno aplikace organizace](common/enterprise-applications.png)
 
-1. Na webu Azure Portal, otevřete zobrazení aplikací a pak přejděte do zobrazení adresáře a přejděte na **podnikové aplikace** klikněte **všechny aplikace**.
+2. V seznamu aplikací vyberte **Autotask pracoviště**.
 
-    ![Přiřadit uživatele][201] 
+    ![Odkaz Autotask síti na pracovišti v seznamu aplikací](common/all-applications.png)
 
-1. V seznamu aplikací vyberte **Autotask pracoviště**.
+3. V nabídce na levé straně vyberte **uživatelů a skupin**.
 
-    ![Odkaz Autotask síti na pracovišti v seznamu aplikací](./media/autotaskworkplace-tutorial/tutorial_autotaskworkplace_app.png) 
+    ![Odkaz "Uživatele a skupiny"](common/users-groups-blade.png)
 
-1. V nabídce na levé straně klikněte na tlačítko **uživatelů a skupin**.
+4. Klikněte na tlačítko **přidat uživatele** tlačítko a pak vyberte **uživatelů a skupin** v **přidat přiřazení** dialogového okna.
 
-    ![Odkaz "Uživatele a skupiny"][202]
+    ![Podokno Přidat přiřazení](common/add-assign-user.png)
 
-1. Klikněte na tlačítko **přidat** tlačítko. Potom vyberte **uživatelů a skupin** na **přidat přiřazení** dialogového okna.
+5. V **uživatelů a skupin** dialogové okno Vybrat **Britta Simon** v seznamu uživatelů, klikněte **vyberte** tlačítko v dolní části obrazovky.
 
-    ![Podokno Přidat přiřazení][203]
+6. Pokud očekáváte libovolnou hodnotu role v kontrolní výraz SAML a potom v **vybrat roli** dialogové okno vybrat vhodnou roli pro uživatele ze seznamu, klikněte **vyberte** tlačítko v dolní části obrazovky.
 
-1. Na **uživatelů a skupin** dialogového okna, vyberte **Britta Simon** v seznamu uživatelů.
+7. V **přidat přiřazení** dialogové okno kliknutím **přiřadit** tlačítko.
 
-1. Klikněte na tlačítko **vyberte** tlačítko **uživatelů a skupin** dialogového okna.
+### <a name="create-autotask-workplace-test-user"></a>Vytvořit testovacího uživatele Autotask pracoviště
 
-1. Klikněte na tlačítko **přiřadit** tlačítko **přidat přiřazení** dialogového okna.
-    
+V této části vytvoříte uživatele v síti na pracovišti Autotask jako Britta Simon. Prosím práci s [tým podpory Autotask pracoviště](https://awp.autotask.net/help/Content/0_HOME/Support_for_End_Clients.htm) k přidání uživatelů v síti na pracovišti Autotask platformy.
+
 ### <a name="test-single-sign-on"></a>Test jednotného přihlašování
 
 V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 
-Po kliknutí na dlaždici Autotask pracoviště na přístupovém panelu, vám by měl získat automaticky přihlášení k síti na pracovišti Autotask aplikace.
-Další informace o přístupovém panelu, naleznete v tématu [Úvod k přístupovému panelu](../user-help/active-directory-saas-access-panel-introduction.md).
+Po kliknutí na dlaždici Autotask pracoviště na přístupovém panelu, vám by měl být automaticky přihlášeni k pracovní ploše Autotask, u kterého nastavíte jednotné přihlašování. Další informace o přístupovém panelu, naleznete v tématu [Úvod k přístupovému panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>Další zdroje informací:
+## <a name="additional-resources"></a>Další prostředky
 
-* [Seznam kurzů o integraci aplikací SaaS pomocí Azure Active Directory](tutorial-list.md)
-* [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](../manage-apps/what-is-single-sign-on.md)
+- [ Seznam kurzů o integraci aplikací SaaS pomocí Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
+- [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory? ](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-<!--Image references-->
-
-[1]: ./media/autotaskworkplace-tutorial/tutorial_general_01.png
-[2]: ./media/autotaskworkplace-tutorial/tutorial_general_02.png
-[3]: ./media/autotaskworkplace-tutorial/tutorial_general_03.png
-[4]: ./media/autotaskworkplace-tutorial/tutorial_general_04.png
-
-[100]: ./media/autotaskworkplace-tutorial/tutorial_general_100.png
-
-[200]: ./media/autotaskworkplace-tutorial/tutorial_general_200.png
-[201]: ./media/autotaskworkplace-tutorial/tutorial_general_201.png
-[202]: ./media/autotaskworkplace-tutorial/tutorial_general_202.png
-[203]: ./media/autotaskworkplace-tutorial/tutorial_general_203.png
-
+- [Co je podmíněný přístup v Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)

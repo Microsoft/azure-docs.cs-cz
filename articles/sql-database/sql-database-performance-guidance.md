@@ -11,13 +11,13 @@ author: juliemsft
 ms.author: jrasnick
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 10/22/2018
-ms.openlocfilehash: b2312534cdd63f5672f6b2294e3aef6b50be229a
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.date: 01/25/2019
+ms.openlocfilehash: c4776d2c6f8ca2b23ba2df379b2682a6844f9a1b
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53600042"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55461589"
 ---
 # <a name="manual-tune-query-performance-in-azure-sql-database"></a>Ruční ladění výkonu dotazů ve službě Azure SQL Database
 
@@ -235,18 +235,18 @@ Pokud úloha obsahuje sadu opakujících se dotazů, často má smysl pro zachyc
 
 ### <a name="cross-database-sharding"></a>Mezidatabázové horizontálního dělení
 
-Protože Azure SQL Database běží na komoditním hardwaru, limity kapacity pro izolované databáze jsou nižší než tradiční místní instalaci systému SQL Server. Někteří zákazníci databázových operací rozdělena více databází, když operace nehodí uvnitř omezení u jediné databáze ve službě Azure SQL Database pomocí technik horizontálního dělení. Většina zákazníků, kteří používají postupů horizontálního dělení ve službě Azure SQL Database svá data na jednom rozměru rozdělit mezi několik databází. U tohoto přístupu je potřeba pochopit, že aplikace s online zpracováním transakcí často provádění transakcí, které se týkají pouze jeden řádek nebo pro malou skupinu řádků ve schématu.
+Protože Azure SQL Database běží na komoditním hardwaru, limity kapacity pro jednotlivé databáze jsou nižší než tradiční místní instalaci systému SQL Server. Někteří zákazníci databázových operací rozdělena více databází, když operace nehodí uvnitř omezení jednotlivé databáze ve službě Azure SQL Database pomocí technik horizontálního dělení. Většina zákazníků, kteří používají postupů horizontálního dělení ve službě Azure SQL Database svá data na jednom rozměru rozdělit mezi několik databází. U tohoto přístupu je potřeba pochopit, že aplikace s online zpracováním transakcí často provádění transakcí, které se týkají pouze jeden řádek nebo pro malou skupinu řádků ve schématu.
 
 > [!NOTE]
 > SQL Database teď poskytuje knihovnu pro účely pomoci s horizontálního dělení. Další informace najdete v tématu [přehled klientské knihovny pro elastické databáze](sql-database-elastic-database-client-library.md).
 
-Například pokud databáze obsahuje jméno zákazníka, pořadí a podrobnosti objednávky (například tradiční ukázkové databázi Northwind, která je dodávána s SQL serverem), můžete rozdělit data do více databází seskupením zákazník s související objednávky a detaily objednávky informace. Můžete zajistit, že zákaznická data zůstanou v izolované databáze. Aplikace by rozdělení různých zákazníků napříč databázemi, efektivně rozložení zátěže mezi několika databázemi. Horizontální dělení zákazníci nejen se můžete vyhnout maximálního limitu velikosti, ale Azure SQL Database může také zpracovávat úlohy, které jsou podstatně větší než omezení různých velikostech výpočetních prostředků, tak dlouho, dokud každé jednotlivé databáze zapadá do jeho DTU.
+Například pokud databáze obsahuje jméno zákazníka, pořadí a podrobnosti objednávky (například tradiční ukázkové databázi Northwind, která je dodávána s SQL serverem), můžete rozdělit data do více databází seskupením zákazník s související objednávky a detaily objednávky informace. Můžete zajistit, že zákaznická data zůstanou v jednotlivých databází. Aplikace by rozdělení různých zákazníků napříč databázemi, efektivně rozložení zátěže mezi několika databázemi. Horizontální dělení zákazníci nejen se můžete vyhnout maximálního limitu velikosti, ale Azure SQL Database může také zpracovávat úlohy, které jsou podstatně větší než omezení různých velikostech výpočetních prostředků, tak dlouho, dokud každé jednotlivé databáze zapadá do jeho DTU.
 
 I když horizontální dělení databází nedojde k omezení kapacity agregační prostředků pro řešení, je velmi efektivní při podpoře velmi rozsáhlých řešeních, která jsou rozdělené do několika databází. Každou databázi můžete spouštět v různých výpočetních velikosti pro podporu velmi velké, "efektivní" databází s vysokými požadavky na prostředky.
 
 ### <a name="functional-partitioning"></a>Funkční dělení
 
-SQL Server uživatelé často kombinovat mnoho funkcí v jediné databázi. Například pokud má aplikace logiky ke správě inventáře pro úložiště, této databáze může mít logiku spojovanou s inventářem, sledování nákupních objednávek, uložených procedur a indexovaných nebo materializovaná zobrazení, které Správa vytváření sestav konci měsíce. Tato technika usnadňuje správu operací, jako je zálohování, ale také vyžaduje, abyste pro nastavení velikosti hardware pro zvládání zatížení ve špičce přes všechny funkce aplikace.
+SQL Server uživatelé často kombinovat mnoho funkcí v jednotlivých databází. Například pokud má aplikace logiky ke správě inventáře pro úložiště, této databáze může mít logiku spojovanou s inventářem, sledování nákupních objednávek, uložených procedur a indexovaných nebo materializovaná zobrazení, které Správa vytváření sestav konci měsíce. Tato technika usnadňuje správu operací, jako je zálohování, ale také vyžaduje, abyste pro nastavení velikosti hardware pro zvládání zatížení ve špičce přes všechny funkce aplikace.
 
 Pokud používáte architekturu škálování ve službě Azure SQL Database, je vhodné pro rozdělení různých funkcí aplikace do jiné databáze. Tímto způsobem, každá aplikace může škálovat nezávisle na. Aplikace se stane Vytíženější (a zvyšuje zatížení databáze), správce můžete velikostí výpočetních nezávisle pro každou funkci v aplikaci. Na hranici s touto architekturou aplikace může být větší než komoditních jeden počítač dokáže zpracovat, protože zatížení je rozdělena mezi více počítačů.
 

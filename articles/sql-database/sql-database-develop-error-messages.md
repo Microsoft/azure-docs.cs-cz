@@ -12,22 +12,24 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 manager: craigg
-ms.date: 10/31/2018
-ms.openlocfilehash: 00fe4e109df2ac8954e657a1a567842ec5eb7d37
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.date: 01/25/2019
+ms.openlocfilehash: 6bbb2bfa0fe3c157114d53b070d6c98e68099643
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53317453"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55464724"
 ---
 # <a name="sql-error-codes-for-sql-database-client-applications-database-connection-errors-and-other-issues"></a>Kódy chyb SQL pro klientské aplikace SQL Database: Chyby připojení databáze a další problémy
 
 Tento článek uvádí kódy chyb SQL pro klientské aplikace SQL Database, včetně chyb připojení databáze, přechodné chyby (také nazývané přechodné chyby), chyby zásad správného řízení prostředků, problémů kopie databáze, elastický fond a další chyby. Většina kategorií jsou konkrétní ke službě Azure SQL Database a se nevztahují na serveru Microsoft SQL Server. Viz také [chybové zprávy systému](https://technet.microsoft.com/library/cc645603(v=sql.105).aspx).
 
 ## <a name="database-connection-errors-transient-errors-and-other-temporary-errors"></a>Chyby připojení databáze, přechodné chyby a jiné dočasné chyby
+
 Následující tabulka popisuje kódy chyb SQL pro chyby připojení ke ztrátě a jiné přechodné chyby, které se můžete setkat, když se aplikace pokusí o přístup k databázi SQL. Získávání začít kurzy o tom, jak se připojit ke službě Azure SQL Database, najdete v části [připojení ke službě Azure SQL Database](sql-database-libraries.md).
 
 ### <a name="most-common-database-connection-errors-and-transient-fault-errors"></a>Většina běžných chyb připojení databáze a přechodných chyb
+
 Infrastrukturu Azure dokáže dynamicky rekonfigurovat servery, když dojde k vysokému zatížení ve službě SQL Database.  Toto dynamické chování může způsobit, že váš klientský program ztratí své připojení ke službě SQL Database. Tento druh chybový stav se nazývá *přechodných chyb*.
 
 Důrazně doporučujeme, že váš klientský program tak, aby ho může znovu vytvořit připojení na zóny umožněte čas přechodná chyba opraví sama, má logika opakovaných pokusů.  Doporučujeme, abyste čekat po dobu 5 sekund před prvním opakováním. Opakování po prodlevě kratší než 5 sekund rizika zahlcení cloudovou službu. Pro každým dalším pokusem exponenciálně růst zpoždění až 60 sekund.
@@ -35,7 +37,7 @@ Důrazně doporučujeme, že váš klientský program tak, aby ho může znovu v
 Přechodná chyba chyby se obvykle manifestu jako jeden z následujících chybových zpráv z klientských programů:
 
 * Databáze &lt;%{db_name/&gt; na serveru &lt;Azure_instance&gt; není aktuálně k dispozici. Opakujte pokus o připojení později. Pokud se problém nevyřeší, obraťte se na zákaznickou podporu a poskytněte ID trasování relace &lt;session_id&gt;
-* Databáze &lt;%{db_name/&gt; na serveru &lt;Azure_instance&gt; není aktuálně k dispozici. Opakujte pokus o připojení později. Pokud se problém nevyřeší, obraťte se na zákaznickou podporu a poskytněte ID trasování relace &lt;session_id&gt;. (Microsoft SQL Server, chyba: 40613)
+* Databáze &lt;%{db_name/&gt; na serveru &lt;Azure_instance&gt; není aktuálně k dispozici. Opakujte pokus o připojení později. Pokud se problém nevyřeší, obraťte se na zákaznickou podporu a poskytněte ID trasování relace &lt;session_id&gt;. (Microsoft SQL Server, Error: 40613)
 * Stávající připojení vynuceně zavřel vzdálený hostitel.
 * System.Data.Entity.Core.EntityCommandExecutionException: Při provádění definice příkazu došlo k chybě. Naleznete informacích o vnitřní výjimce. ---> System.Data.SqlClient.SqlException: Při příjmu výsledků ze serveru došlo k chybě na úrovni přenosu. (poskytovatel: Zprostředkovatel relací, chyba: 19 - fyzické připojení není použitelné)
 * Pokus o připojení k sekundární databázi se nezdařila, protože je právě Rekonfigurace databáze a je zaneprázdněný, použití nových stránek při uprostřed aktivní transakce u primární databáze. 
@@ -48,6 +50,7 @@ Příklady kódu logiku opakování naleznete v tématu:
 Diskuze nad aspekty *blokování období* pro klienty, kteří používají ADO.NET je k dispozici v [SQL sdružování připojení serveru (ADO.NET)](https://msdn.microsoft.com/library/8xx3tyca.aspx).
 
 ### <a name="transient-fault-error-codes"></a>Kódy chyb přechodných chyb
+
 Tyto chyby jsou přechodné a je třeba opakovat v aplikaci logiky: 
 
 | Kód chyby | Severity | Popis |
@@ -62,6 +65,7 @@ Tyto chyby jsou přechodné a je třeba opakovat v aplikaci logiky:
 | 4221 |16 |Přihlášení ke čtení na sekundární se nezdařilo z důvodu dlouhého čekání na "HADR_DATABASE_WAIT_FOR_TRANSITION_TO_VERSIONING". Replika není k dispozici pro přihlášení, protože chybí verze řádků pro transakce, které byly vydávaných za pochodu, pokud se replika byl recyklován. Problém můžete vyřešit vrácení zpět nebo potvrzením aktivních transakcí na primární replice. Výskyty tuto podmínku můžete minimalizovat vyhýbat dlouhým transakcím zápisu na primární. |
 
 ## <a name="database-copy-errors"></a>Chyby kopírování databáze
+
 Při kopírování databáze Azure SQL Database můžete došlo k následujícím chybám. Další informace najdete v tématu [Kopírování databáze služby Azure SQL Database](sql-database-copy.md).
 
 | Kód chyby | Severity | Popis |
@@ -81,6 +85,7 @@ Při kopírování databáze Azure SQL Database můžete došlo k následující
 | 40571 |16 |Kopírování databáze se nezdařilo z důvodu vnitřní chyby. Vyřaďte cílovou databázi a zkuste to znovu později. |
 
 ## <a name="resource-governance-errors"></a>Chyby zásad správného řízení prostředků
+
 Tyto chyby jsou způsobeny nadměrného využití prostředků při práci s Azure SQL Database. Příklad:
 
 * Transakce byl otevřený příliš dlouho.
@@ -94,8 +99,8 @@ Související témata:
 
 | Kód chyby | Severity | Popis |
 | ---:| ---:|:--- |
-| 10928 |20 |ID prostředku: %d. Limit %s pro databázi je %d a bylo ho dosaženo. Další informace najdete v tématu [limity prostředků SQL Database pro databáze ve fondu a jeden](https://docs.microsoft.com/azure/sql-database/sql-database-resource-limits-logical-server).<br/><br/>ID prostředku, které určuje prostředek, který byl dosažen limit. Pro pracovní vlákna, ID zdroje = 1. Pro relace, ID zdroje = 2.<br/><br/>Další informace o této chybě a způsobu jeho řešení najdete v tématu:<br/>• [Limity prostředků azure SQL Database](sql-database-service-tiers-dtu.md). |
-| 10929 |20 |ID prostředku: %d. Minimální záruka %s je %d, maximální limit je %d, a aktuální využití databáze je %d. Server je však aktuálně zaneprázdněna větší než %d žádosti o podporu pro tuto databázi. Další informace najdete v tématu [limity prostředků SQL Database pro databáze ve fondu a jeden](https://docs.microsoft.com/azure/sql-database/sql-database-resource-limits-logical-server). Jinak zkuste to prosím znovu později.<br/><br/>ID prostředku, které určuje prostředek, který byl dosažen limit. Pro pracovní vlákna, ID zdroje = 1. Pro relace, ID zdroje = 2.<br/><br/>Další informace o této chybě a způsobu jeho řešení najdete v tématu:<br/>• [Limity prostředků azure SQL Database](sql-database-service-tiers-dtu.md). |
+| 10928 |20 |ID prostředku: %d. Limit %s pro databázi je %d a bylo ho dosaženo. Další informace najdete v tématu [limity pro nasazení samostatné služby a databáze ve fondu prostředků SQL Database](sql-database-resource-limits-database-server.md).<br/><br/>ID prostředku, které určuje prostředek, který byl dosažen limit. Pro pracovní vlákna, ID zdroje = 1. Pro relace, ID zdroje = 2.<br/><br/>Další informace o této chybě a způsobu jeho řešení najdete v tématu:<br/>• [Limity prostředků azure SQL Database](sql-database-service-tiers-dtu.md). |
+| 10929 |20 |ID prostředku: %d. Minimální záruka %s je %d, maximální limit je %d, a aktuální využití databáze je %d. Server je však aktuálně zaneprázdněna větší než %d žádosti o podporu pro tuto databázi. Další informace najdete v tématu [limity pro nasazení samostatné služby a databáze ve fondu prostředků SQL Database](sql-database-resource-limits-database-server.md). Jinak zkuste to prosím znovu později.<br/><br/>ID prostředku, které určuje prostředek, který byl dosažen limit. Pro pracovní vlákna, ID zdroje = 1. Pro relace, ID zdroje = 2.<br/><br/>Další informace o této chybě a způsobu jeho řešení najdete v tématu:<br/>• [Limity prostředků azure SQL Database](sql-database-service-tiers-dtu.md). |
 | 40544 |20 |Databáze dosáhla své kvóty velikosti. Oddíl nebo odstranění dat, případně odstraňte indexy najdete v dokumentaci k možná řešení. |
 | 40549 |16 |Relace je ukončena, protože máte dlouhotrvající transakci. Zkuste transakci zkrátit. |
 | 40550 |16 |Relace byla ukončena, protože získala příliš mnoho zámků. Zkuste problém se čtením nebo upravit menší počet řádků v rámci jedné transakce. |
@@ -104,15 +109,16 @@ Související témata:
 | 40553 |16 |Relace byla ukončena z důvodu nadměrného využití paměti. Zkuste upravit dotaz a zpracovával méně řádků.<br/><br/>Snížení počtu `ORDER BY` a `GROUP BY` operace ve vašem kódu jazyka Transact-SQL snižuje požadavky na paměť vašeho dotazu. |
 
 ## <a name="elastic-pool-errors"></a>Chyby elastického fondu
+
 Tyto chyby se vztahují k vytváření a používání elastických fondů:
 
 | Kód chyby | Severity | Popis | Nápravné opatření |
 |:--- |:--- |:--- |:--- |
 | 1132 | 17 |Elastický fond dosáhl svého limitu úložiště. Využití úložiště pro elastický fond nemůže být delší než (%d) MB. Došlo k pokusu o zápis dat do databáze, když byl dosažen limit úložiště elastického fondu. |Zvažte možnost zvýšit počet jednotek Dtu a/nebo přidání úložiště do elastického fondu pokud je to možné za účelem zvýšení limitu úložiště, snížit využití strany jednotlivých databází v elastickém fondu úložiště nebo odebrat databáze z elastického fondu. |
-| 10929 | 16 |Minimální záruka %s je %d, maximální limit je %d, a aktuální využití databáze je %d. Server je však aktuálně zaneprázdněna větší než %d žádosti o podporu pro tuto databázi. Zobrazit [limity prostředků SQL Database pro databáze ve fondu a jeden](https://docs.microsoft.com/azure/sql-database/sql-database-resource-limits-logical-server) žádostí o pomoc. Jinak zkuste to prosím znovu později. DTU nebo minimální počet virtuálních jader na databázi. DTU nebo na databázi maximální počet virtuálních jader. Celkový počet souběžných pracovních procesů (požadavků) napříč všemi databázemi v elastickém fondu došlo k pokusu o překročení limitu fondu. |Zvažte zvýšení počtu jednotek Dtu nebo virtuálních jader, pokud je to možné elastického fondu za účelem zvýšení limitu pracovního procesu, nebo odeberte databáze z elastického fondu. |
+| 10929 | 16 |Minimální záruka %s je %d, maximální limit je %d, a aktuální využití databáze je %d. Server je však aktuálně zaneprázdněna větší než %d žádosti o podporu pro tuto databázi. Zobrazit [limity prostředků SQL Database pro databáze ve fondu a jeden](sql-database-resource-limits-database-server.md) žádostí o pomoc. Jinak zkuste to prosím znovu později. DTU nebo minimální počet virtuálních jader na databázi. DTU nebo na databázi maximální počet virtuálních jader. Celkový počet souběžných pracovních procesů (požadavků) napříč všemi databázemi v elastickém fondu došlo k pokusu o překročení limitu fondu. |Zvažte zvýšení počtu jednotek Dtu nebo virtuálních jader, pokud je to možné elastického fondu za účelem zvýšení limitu pracovního procesu, nebo odeberte databáze z elastického fondu. |
 | 40844 | 16 |Databáze: %ls"na serveru"%ls"je"%ls"edice databáze v elastickém fondu a nemůže mít vztah průběžného kopírování.  |neuvedeno |
 | 40857 | 16 |Elastický fond pro server se nepodařilo najít: "%ls", název elastického fondu: "%ls". Zadaný elastického fondu v zadaný server neexistuje. | Zadejte název platné elastického fondu. |
-| 40858 | 16 |Elastický fond "%ls" již existuje v serveru: "%ls". Zadaný elastického fondu v zadané logické serveru již existuje. | Zadejte nový název elastického fondu. |
+| 40858 | 16 |Elastický fond "%ls" již existuje v serveru: "%ls". Zadaný elastického fondu již existuje v zadané databázi SQL serveru. | Zadejte nový název elastického fondu. |
 | 40859 | 16 |Elastický fond nepodporuje úroveň služby "%ls". Zadaná služba úroveň se nepodporuje pro zřizování elastického fondu. |Zadejte správnou verzi nebo nechte prázdné, použije se výchozí úroveň služby úrovně služby. |
 | 40860 | 16 |Kombinace elastického fondu. %ls"a služby cíl"%ls"je neplatná. Elastického fondu a služba úrovně lze zadat současně pouze v případě, že je jako 'ElasticPool' zadaný typ prostředku. |Zadejte správné kombinace elastického fondu a úrovně služeb. |
 | 40861 | 16 |Edice databáze ' %. *ls se nemůže lišit od úrovně služby elastického fondu, což je ' %.* ls. Edice databáze se liší od úrovně služby elastického fondu. |Nezadávejte edici databáze, které se liší od úrovně služby elastického fondu.  Všimněte si, že není nutné nastavit edici databáze. |
@@ -137,6 +143,7 @@ Související témata:
 * [Monitorování a správa elastického fondu (PowerShell)](sql-database-elastic-pool-manage-powershell.md)
 
 ## <a name="general-errors"></a>Obecné chyby
+
 Tyto chyby nespadají do všech předchozích kategorií.
 
 | Kód chyby | Severity | Popis |
@@ -204,10 +211,11 @@ Tyto chyby nespadají do všech předchozích kategorií.
 | 40671 |17 |Selhání komunikace mezi bránou a službu správy. Zkuste to prosím znovu později. |
 | 40852 |16 |Nejde otevřít databázi ' %. \*ls na serveru "%. \*ls požadovaný v přihlášení. Přístup k databázi je povolený jenom pomocí povoleno zabezpečení připojovacího řetězce. Chcete-li přistupovat k databázi, upravte připojovací řetězce obsahující zabezpečení na serveru plně kvalifikovaný název domény –.database.windows "Název_serveru".net by měla upravit tak, aby .database "Název_serveru". `secure`. windows.net. |
 | 40914 | 16 | Nejde otevřít server "*[název_serveru]*' požadovaný v přihlášení. Klient není povolen přístup k serveru.<br /><br />Pokud chcete vyřešit, zvažte přidání [pravidlo virtuální sítě](sql-database-vnet-service-endpoint-rule-overview.md). |
-| 45168 |16 |SQL Azure systém pod zátěží a je uvedení horní limit na souběžné operace DB CRUD pro jeden server (např. vytvoření databáze). Server uvedený v chybové zprávě překročil maximální počet souběžných připojení. Zkuste to znovu později. |
+| 45168 |16 |SQL Azure systém pod zátěží a je uvedení horní limit na souběžné operace DB CRUD pro jeden server služby SQL Database (např. vytvoření databáze). Server uvedený v chybové zprávě překročil maximální počet souběžných připojení. Zkuste to znovu později. |
 | 45169 |16 |Systém SQL azure pod zátěží a je uvedení horní limit počtu souběžných server operace CRUD pro v rámci jednoho předplatného (např. vytvoření serveru). Předplatné zadané v chybové zprávě překročil maximální počet souběžných připojení, a žádost byla zamítnuta. Zkuste to znovu později. |
 
 ## <a name="next-steps"></a>Další postup
+
 * Přečtěte si informace o [funkce služby Azure SQL Database](sql-database-features.md).
 * Přečtěte si informace o [nákupní model založený na DTU](sql-database-service-tiers-dtu.md).
 * Přečtěte si informace o [nákupní model založený na virtuálních jádrech](sql-database-service-tiers-vcore.md).

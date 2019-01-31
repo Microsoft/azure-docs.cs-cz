@@ -13,12 +13,12 @@ author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
 manager: craigg
-ms.openlocfilehash: d4ea471712276ebd0b18155c754d431541108d3c
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: b3c9c2b5040dfc00aa1e8c5eeea57693f86b62d1
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54813606"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55453157"
 ---
 # <a name="provision-the-azure-ssis-integration-runtime-in-azure-data-factory"></a>Zřízení prostředí Azure-SSIS Integration Runtime ve službě Azure Data Factory
 Tento kurz obsahuje postup pro zřízení prostředí Azure-SSIS Integration Runtime (IR) ve službě Azure Data Factory pomocí webu Azure Portal. Následně můžete pomocí SQL Server Data Tools (SSDT) nebo aplikace SQL Server Management Studio (SSMS) v tomto modulu runtime v Azure nasazovat a spouštět balíčky SSIS (SQL Server Integration Services). Informace o konceptu prostředí Azure-SSIS IR najdete v [přehledu prostředí Azure-SSIS Integration Runtime](concepts-integration-runtime.md#azure-ssis-integration-runtime).
@@ -134,7 +134,7 @@ V tomto kurzu provedete následující kroky:
 
    b. Jako **Umístění** vyberte umístění vašeho databázového serveru pro hostování databáze SSISDB. Doporučujeme vybrat stejné umístění, jako má vaše prostředí Integration Runtime. 
 
-   c. Jako **Koncový bod databázového serveru katalogu** vyberte koncový bod vašeho databázového serveru pro hostování databáze SSISDB. V závislosti na vybraném databázovém serveru je možné databázi SSISDB vytvořit vaším jménem jako samostatnou databázi, součást elastického fondu nebo ve spravované instanci a zpřístupnit ji ve veřejné síti nebo prostřednictvím připojení k virtuální síti. Pokyny pro výběr typu databázového serveru pro hostování SSISDB najdete ve [srovnání spravované instance a logického serveru SQL Database](../data-factory/create-azure-ssis-integration-runtime.md#compare-sql-database-logical-server-and-sql-database-managed-instance). Pokud k hostování databáze SSISDB vyberete službu Azure SQL Database s koncovými body služby virtuální sítě nebo spravovanou instanci nebo pokud vyžadujete přístup k místním datům, musíte prostředí Azure-SSIS IR připojit k virtuální síti. Další informace najdete v tématu o [vytvoření prostředí Azure-SSIS IR ve virtuální síti](https://docs.microsoft.com/azure/data-factory/create-azure-ssis-integration-runtime). 
+   c. Jako **Koncový bod databázového serveru katalogu** vyberte koncový bod vašeho databázového serveru pro hostování databáze SSISDB. V závislosti na vybraném databázovém serveru je možné databázi SSISDB vytvořit vaším jménem jako jednoúčelovou databázi, součást elastického fondu nebo ve spravované instanci a zpřístupnit ji ve veřejné síti nebo prostřednictvím připojení k virtuální síti. Pokyny k výběru typu databázový server pro hostování služby SSISDB, naleznete v tématu [porovnání Azure SQL Database jedné databáze a elastické fondy a Managed Instance](../data-factory/create-azure-ssis-integration-runtime.md#compare-sql-database-single-databaseelastic-pool-and-sql-database-managed-instance). Pokud k hostování databáze SSISDB vyberete službu Azure SQL Database s koncovými body služby virtuální sítě nebo spravovanou instanci nebo pokud vyžadujete přístup k místním datům, musíte prostředí Azure-SSIS IR připojit k virtuální síti. Další informace najdete v tématu o [vytvoření prostředí Azure-SSIS IR ve virtuální síti](https://docs.microsoft.com/azure/data-factory/create-azure-ssis-integration-runtime). 
 
    d. Na **ověřování pomocí AAD...**  zaškrtávací políčko, vyberte metodu ověřování pro databázový server pro hostování služby SSISDB: SQL nebo Azure Active Directory (AAD) s identitou, pro váš Azure Data Factory (ADF). Pokud toto políčko zaškrtnete, je potřeba přidat spravovanou identitu služby ADF do skupiny AAD s přístupovými oprávněními k databázovému serveru. Další informace najdete v tématu [Vytvoření prostředí Azure-SSIS IR s ověřováním AAD](https://docs.microsoft.com/azure/data-factory/create-azure-ssis-integration-runtime). 
 

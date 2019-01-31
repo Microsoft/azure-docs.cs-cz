@@ -7,13 +7,13 @@ ms.service: storage
 ms.topic: article
 ms.date: 05/31/2018
 ms.author: tamram
-ms.component: common
-ms.openlocfilehash: 3d9da96e5bf6c88f76089dea930b02248cfa1d24
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.subservice: common
+ms.openlocfilehash: 72d4a9cd9a8b9244c428d49b5270952deb6f5162
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51243790"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55454483"
 ---
 # <a name="azure-storage-security-guide"></a>Průvodci zabezpečením Azure Storage
 
@@ -89,7 +89,7 @@ Tady jsou hlavní body, které je potřeba vědět o použití RBAC pro přístu
 * [Řízení přístupu na základě role v Azure Active Directory](../../role-based-access-control/role-assignments-portal.md)
 
   Tento článek popisuje řízení přístupu podle role v Azure Active Directory a vysvětluje, jak funguje.
-* [RBAC: vestavěné role](../../role-based-access-control/built-in-roles.md)
+* [RBAC: Vestavěné role](../../role-based-access-control/built-in-roles.md)
 
   Tento článek podrobně popisuje všechny vestavěné role dostupné v RBAC.
 * [Principy nasazení podle modelu Resource Manager a klasického nasazení](../../azure-resource-manager/resource-manager-deployment-model.md)
@@ -98,7 +98,7 @@ Tady jsou hlavní body, které je potřeba vědět o použití RBAC pro přístu
 * [Správa řízení přístupu na základě role pomocí REST API](../../role-based-access-control/role-assignments-rest.md)
 
   Tento článek popisuje, jak používat rozhraní REST API ke správě RBAC.
-* [Reference k REST API služby Azure Storage Resource Provider](https://msdn.microsoft.com/library/azure/mt163683.aspx)
+* [Referenční informace o rozhraní REST API pro poskytovatele prostředků Azure Storage](https://msdn.microsoft.com/library/azure/mt163683.aspx)
 
   Reference k rozhraní API popisuje rozhraní API můžete použít ke správě vašeho účtu úložiště prostřednictvím kódu programu.
 * [Ověřování pomocí Správce prostředků rozhraní API pro přístup k předplatným](../../azure-resource-manager/resource-manager-api-authentication.md)
@@ -148,7 +148,7 @@ Další výhodou používání služby Azure Key Vault je, že můžete také ř
 #### <a name="resources"></a>Zdroje a prostředky
 
 * [Spravovat nastavení účtu úložiště na webu Azure Portal](storage-account-manage.md)
-* [Reference k REST API služby Azure Storage Resource Provider](https://msdn.microsoft.com/library/mt163683.aspx)
+* [Referenční informace o rozhraní REST API pro poskytovatele prostředků Azure Storage](https://msdn.microsoft.com/library/mt163683.aspx)
 
 ## <a name="data-plane-security"></a>Zabezpečení roviny dat
 Zabezpečení roviny dat odkazuje na metody používané k zabezpečení datové objekty uložené ve službě Azure Storage – objekty BLOB, fronty, tabulky a soubory. Zaznamenali jsme metody k šifrování dat a zabezpečení během přenosu dat, ale jak do můžete přejít o řízení přístupu k objektům?
@@ -307,7 +307,7 @@ Azure Disk Encryption je nová funkce. Tato funkce umožňuje šifrovat disky s 
 Řešení podporuje následující scénáře pro virtuální počítače IaaS, pokud je povolen v Microsoft Azure:
 
 * Integrace se službou Azure Key Vault
-* Virtuální počítače úrovně Standard: [A, D, DS, G, GS a podobně řady virtuálních počítačů IaaS](https://azure.microsoft.com/pricing/details/virtual-machines/)
+* Úroveň Standard virtuálních počítačů: [A, D, DS, G, GS a podobně řady virtuálních počítačů IaaS](https://azure.microsoft.com/pricing/details/virtual-machines/)
 * Povolení šifrování na Windows a virtuálních počítačů IaaS s Linuxem
 * Zakázáním šifrování u operačního systému a datové disky pro virtuální počítače IaaS s Windows
 * Zakázáním šifrování na datových jednotkách virtuálních počítačů IaaS s Linuxem
@@ -328,7 +328,7 @@ Toto řešení nepodporuje následující scénáře, funkce a technologie ve vy
 
 
 > [!NOTE]
-> Šifrování disku operačního systému Linux momentálně se podporuje v následujících distribucích systému Linux: RHEL 7.2 CentOS 7.2n a Ubuntu 16.04.
+> Šifrování disku operačního systému Linux je nyní podporována v následujících distribucích systému Linux: RHEL 7.2 CentOS 7.2n a Ubuntu 16.04.
 >
 >
 
@@ -504,6 +504,6 @@ Další informace o mechanismů jako CORS a jak se dá povolit projděte si tyto
 * [FIPS 140 ověření](https://technet.microsoft.com/library/cc750357.aspx)
 
   Tento článek obsahuje informace o tom, jak kryptografickými moduly a produkty společnosti Microsoft v souladu se standardem FIPS pro USA Federální vlády.
-* ["Kryptografický modul systému: použití FIPS kompatibilní s algoritmy pro šifrování, hašování a podpisování" vliv na nastavení zabezpečení ve Windows XP a v novějších verzích Windows](https://support.microsoft.com/kb/811833)
+* ["Kryptografický modul systému: Používat algoritmy splňující standard FIPS pro šifrování, hašování a podpisování"nastavení vliv na zabezpečení ve Windows XP a v novějších verzích Windows](https://support.microsoft.com/kb/811833)
 
   Tento článek pojednává o použití režimu FIPS ve starší počítače Windows.

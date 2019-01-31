@@ -11,20 +11,20 @@ author: AyoOlubeko
 ms.author: ayolubek
 ms.reviewer: sstein
 manager: craigg
-ms.date: 04/09/2018
-ms.openlocfilehash: f24c76fb6b7ca24573a97aa122659fe5ca019550
-ms.sourcegitcommit: 715813af8cde40407bd3332dd922a918de46a91a
+ms.date: 01/25/2019
+ms.openlocfilehash: b2be42e4984ac7000cfb31ce6575c529b752db2d
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47056331"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55471143"
 ---
 # <a name="disaster-recovery-for-a-multi-tenant-saas-application-using-database-geo-replication"></a>Zotavení po havárii pro aplikace SaaS s více tenanty pomocí geografické replikace databáze
 
-V tomto kurzu si projít úplné zotavení po havárii pro aplikace SaaS s více tenanty implementované pomocí model databáze na tenanta. K ochraně aplikace před výpadku, můžete použít [ _geografickou replikaci_ ](https://docs.microsoft.com/azure/sql-database/sql-database-geo-replication-overview) v oblasti obnovení alternativního vytvoření repliky pro databáze katalogu a tenanta. Pokud dojde k výpadku, rychlé převzetí služeb při selhání na tyto repliky obnovit normální obchodní operace. Na převzetí služeb při selhání databáze v původní oblasti budou sekundární repliky databáze v oblasti obnovení. Jakmile tyto repliky přejdou do režimu online, automaticky dohnat na stav databáze v oblasti obnovení. Jakmile se výpadek vyřeší, převezme služby při zpět do databáze v oblasti původní produkčního prostředí.
+V tomto kurzu si projít úplné zotavení po havárii pro aplikace SaaS s více tenanty implementované pomocí model databáze na tenanta. K ochraně aplikace před výpadku, můžete použít [ _geografickou replikaci_ ](sql-database-geo-replication-overview.md) v oblasti obnovení alternativního vytvoření repliky pro databáze katalogu a tenanta. Pokud dojde k výpadku, rychlé převzetí služeb při selhání na tyto repliky obnovit normální obchodní operace. Na převzetí služeb při selhání databáze v původní oblasti budou sekundární repliky databáze v oblasti obnovení. Jakmile tyto repliky přejdou do režimu online, automaticky dohnat na stav databáze v oblasti obnovení. Jakmile se výpadek vyřeší, převezme služby při zpět do databáze v oblasti původní produkčního prostředí.
 
 Tento kurz se věnuje na převzetí služeb při selhání a navrácení služeb po obnovení pracovních postupů. Dozvíte se, jak provést tyto akce:
-> [!div classs="checklist"]
+> [!div class="checklist"]
 
 >* Synchronizace databáze a elastický fond konfigurační informace do katalogu tenanta
 >* Nastavení prostředí obnovení ve alternativní oblast, které najdete aplikace, servery a fondy
@@ -53,9 +53,9 @@ Založené na geografické replikace plánu zotavení po Havárii A zahrnuje tř
 Všechny části považuje pečlivě, zejména v případě, že provoz ve velkém měřítku. Celkově plánu musí provádět několik cílů:
 
 * Nastavení
-    * Vybudování a udržování zrcadlový prostředí v oblasti obnovení. Vytváření elastických fondů a replikuje všechny izolované databáze v tomto prostředí obnovení rezervuje kapacitu v oblasti obnovení. Správa tohoto prostředí zahrnuje replikaci nových databází tenantů, jako jsou zřízené.  
+    * Vybudování a udržování zrcadlový prostředí v oblasti obnovení. Vytváření elastických fondů a které se replikují všechny databáze v tomto prostředí obnovení rezervuje kapacitu v oblasti obnovení. Správa tohoto prostředí zahrnuje replikaci nových databází tenantů, jako jsou zřízené.  
 * Obnovení
-    * Použití prostředí škálovat dolů obnovení minimalizovat náklady na každodenní fondy a izolované databáze musí se dá škálovat získat plně funkční kapacity v oblasti obnovení
+    * Pro použití s možností škálovat dolů zotavení minimalizovat náklady na každodenní fondů a databází musí být vertikálně kapacitu až na získat plně funkční kapacity v oblasti obnovení
     * Povolit zřizování v oblasti obnovení co nejdříve nového tenanta  
     * Optimalizované obnovení tenantů v pořadí podle priority
     * Optimalizovat pro získání tenantů online tak rychle tam, kde je to praktické, a to provedením kroků paralelně
@@ -67,10 +67,10 @@ Všechny části považuje pečlivě, zejména v případě, že provoz ve velk�
 V tomto kurzu se tyto výzvy se tak vyřeší, pomocí funkce služby Azure SQL Database a platformy Azure:
 
 * [Šablony Azure Resource Manageru](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-create-first-template), co nejrychleji rezervovat všechny potřebné kapacitu. Šablony Azure Resource Manageru se používají ke zřízení zrcadlový obraz produkční servery a elastických fondů v oblasti obnovení.
-* [Geografická replikace](https://docs.microsoft.com/azure/sql-database/sql-database-geo-replication-overview), vytvořit asynchronně replikovanou sekundární databáze jen pro čtení pro všechny databáze. Během výpadku převezme služby při selhání v oblasti obnovení repliky.  Až se výpadek vyřeší, služeb při selhání zpátky do databáze v původní oblasti bez ztráty.
+* [Geografická replikace](sql-database-geo-replication-overview.md), vytvořit asynchronně replikovanou sekundární databáze jen pro čtení pro všechny databáze. Během výpadku převezme služby při selhání v oblasti obnovení repliky.  Až se výpadek vyřeší, služeb při selhání zpátky do databáze v původní oblasti bez ztráty.
 * [Asynchronní](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-async-operations) operace převzetí služeb při selhání se odesílají v pořadí podle priority tenanta, chcete-li minimalizovat čas převzetí služeb při selhání pro velkým počtem databází.
-* [Funkce obnovení správy horizontálních oddílů](https://docs.microsoft.com/azure/sql-database/sql-database-elastic-database-recovery-manager), chcete-li změnit během obnovení a vrácení databáze položky v katalogu. Tyto funkce umožňují aplikace pro připojení k databází tenantů, bez ohledu na umístění bez nutnosti měnit aplikace.
-* [Aliasy DNS serveru SQL](https://docs.microsoft.com/azure/sql-database/dns-alias-overview)umožnit bezproblémové zřizování nových tenantů, bez ohledu na to, jakou oblast aplikace pracuje v. Aliasy DNS používají také umožňuje procesu synchronizace katalogu pro připojení k aktivní katalogu, bez ohledu na jeho umístění.
+* [Funkce obnovení správy horizontálních oddílů](sql-database-elastic-database-recovery-manager.md), chcete-li změnit během obnovení a vrácení databáze položky v katalogu. Tyto funkce umožňují aplikace pro připojení k databází tenantů, bez ohledu na umístění bez nutnosti měnit aplikace.
+* [Aliasy DNS serveru SQL](dns-alias-overview.md)umožnit bezproblémové zřizování nových tenantů, bez ohledu na to, jakou oblast aplikace pracuje v. Aliasy DNS používají také umožňuje procesu synchronizace katalogu pro připojení k aktivní katalogu, bez ohledu na jeho umístění.
 
 ## <a name="get-the-disaster-recovery-scripts"></a>Získat skripty pro zotavení po havárii 
 
@@ -92,8 +92,8 @@ Později v samostatných vrácení kroku, převzetí služeb při selhání data
 Před zahájením procesu obnovení, zkontrolujte stav v pořádku normální aplikace.
 1. Ve webovém prohlížeči otevřete Centrum akcí aplikace Wingtip Tickets (http://events.wingtip-dpt.&lt; uživatel&gt;. trafficmanager.net - nahradit &lt;uživatele&gt; s hodnotou uživatele vašeho nasazení).
     * Přejděte do dolní části stránky a Všimněte si, že název serveru katalogu a umístění v zápatí. Umístění je oblast, ve které jste nasadili aplikaci.
-    *TIP: Najeďte myší umístění zvětšíte zobrazení.*
-    ![Události v pořádku stav rozbočovače v původní oblast](media/saas-dbpertenant-dr-geo-replication/events-hub-original-region.png)
+    *TIP: Najeďte myší umístění zvětšíte zobrazení. * 
+     ![Události v pořádku stav rozbočovače v původní oblast](media/saas-dbpertenant-dr-geo-replication/events-hub-original-region.png)
 
 2. Klikněte na tlačítko v tenantovi Contoso koncertní Hall a otevřete její stránku událostí.
     * V zápatí Všimněte si, že název serveru tenanta. Umístění bude stejné jako umístění pro server katalogu.
@@ -126,7 +126,7 @@ Nechte okno prostředí PowerShell běžet na pozadí a pokračujte zbývající
 V této úloze spustí se proces, který nasadí instanci duplicitní aplikace a katalogu a všech databázích tenantů se replikuje do oblasti pro zotavení.
 
 > [!Note]
-> V tomto kurzu přidá ochrany geografické replikace do ukázkové aplikace Wingtip Tickets. V případě produkčního prostředí pro aplikace, který používá geografické replikace by každý tenant zřídí s geograficky replikovaná databáze od samého počátku. Zobrazit [navrhování službami s vysokou dostupností s využitím Azure SQL Database](https://docs.microsoft.com/azure/sql-database/sql-database-designing-cloud-solutions-for-disaster-recovery#scenario-1-using-two-azure-regions-for-business-continuity-with-minimal-downtime)
+> V tomto kurzu přidá ochrany geografické replikace do ukázkové aplikace Wingtip Tickets. V případě produkčního prostředí pro aplikace, který používá geografické replikace by každý tenant zřídí s geograficky replikovaná databáze od samého počátku. Zobrazit [navrhování službami s vysokou dostupností s využitím Azure SQL Database](sql-database-designing-cloud-solutions-for-disaster-recovery.md#scenario-1-using-two-azure-regions-for-business-continuity-with-minimal-downtime)
 
 1. V *prostředí PowerShell ISE*otevřete ...\Learning skript Modules\Business kontinuity podnikových procesů a Recovery\DR-FailoverToReplica\Demo-FailoverToReplica.ps1 po havárii a nastavte následující hodnoty:
     * **$DemoScenario = 2**vytvořte zrcadlový obraz obnovení prostředí a replikace databáze katalogu a tenanta
@@ -135,12 +135,14 @@ V této úloze spustí se proces, který nasadí instanci duplicitní aplikace a
 ![Procesu synchronizace](media/saas-dbpertenant-dr-geo-replication/replication-process.png)  
 
 ## <a name="review-the-normal-application-state"></a>Zkontrolujte stav normální aplikace
+
 V tomto okamžiku aplikace běží normálně. v původní oblasti a nyní je chráněn geografickou replikaci.  Existují sekundární repliky jen pro čtení v oblasti obnovení pro všechny databáze. 
+
 1. Na webu Azure Portal, podívejte se na skupiny prostředků a Všimněte si, že se vytvořila skupinu prostředků s – přípona obnovení v oblasti obnovení. 
 
-1. Prozkoumejte prostředky ve skupině prostředků pro obnovení.  
+2. Prozkoumejte prostředky ve skupině prostředků pro obnovení.  
 
-1. Klikněte na databázi Hall koncertní Contoso na _tenants1-dpt -&lt;uživatele&gt;– obnovení_ serveru.  Na levé straně klikněte na geografickou replikaci. 
+3. Klikněte na databázi Hall koncertní Contoso na _tenants1-dpt -&lt;uživatele&gt;– obnovení_ serveru.  Na levé straně klikněte na geografickou replikaci. 
 
     ![Contoso koncertní odkaz geografické replikace](media/saas-dbpertenant-dr-geo-replication/contoso-geo-replication.png) 
 
@@ -193,6 +195,7 @@ Nyní imagine, dojde k výpadku v oblasti, ve kterém je aplikace nasazené a sp
 > Prozkoumejte kód pro úlohy obnovení, najdete v tématu Powershellových skriptů v složce ...\Learning Modules\Business kontinuity podnikových procesů a Recovery\DR-FailoverToReplica\RecoveryJobs po havárii.
 
 ### <a name="review-the-application-state-during-recovery"></a>Zkontrolujte stav aplikace během obnovení
+
 Zatímco koncový bod aplikace je v Traffic Manageru zakázán, aplikace je k dispozici. Poté, co katalogu se převzaly při selhání na oblast pro obnovení a označena za všechny tenanty v režimu offline, aplikace je opět nepřipojí online. I když je aplikace dostupná, každý tenant zdá se být offline v Centru událostí až do své databáze se převzaly při selhání. Je důležité při návrhu vaší aplikace pro zpracování databází tenantů v režimu offline.
 
 1. Okamžitě po databáze katalogu byla obnovena, aktualizujte Centrum akcí lístků Wingtip ve webovém prohlížeči.
@@ -301,7 +304,7 @@ Databáze tenantů může rozděleny mezi obnovení a původní oblastech nechys
 ## <a name="next-steps"></a>Další postup
 
 V tomto kurzu jste se naučili:
-> [!div classs="checklist"]
+> [!div class="checklist"]
 
 >* Synchronizace databáze a elastický fond konfigurační informace do katalogu tenanta
 >* Nastavení prostředí obnovení ve alternativní oblast, které najdete aplikace, servery a fondy
@@ -311,6 +314,6 @@ V tomto kurzu jste se naučili:
 
 Další informace o technologiích Azure SQL database poskytuje umožňující kontinuita podnikových procesů v [přehled zajištění provozní kontinuity firmy](sql-database-business-continuity.md) dokumentaci.
 
-## <a name="additional-resources"></a>Další zdroje informací:
+## <a name="additional-resources"></a>Další materiály
 
-* [Další kurzy, které vycházejí z aplikace SaaS aplikace Wingtip](https://docs.microsoft.com/azure/sql-database/sql-database-wtp-overview#sql-database-wingtip-saas-tutorials)
+* [Další kurzy, které vycházejí z aplikace SaaS aplikace Wingtip](saas-dbpertenant-wingtip-app-overview.md#sql-database-wingtip-saas-tutorials)

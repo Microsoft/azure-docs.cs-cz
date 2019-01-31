@@ -11,13 +11,13 @@ ms.topic: article
 ms.date: 01/28/2019
 ms.author: curtand
 ms.reviewer: beengen
-ms.custom: it-pro;seo-update-jan
-ms.openlocfilehash: 9a4f46f992072eafc82794999b493862217608fe
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.custom: it-pro;seo-update-azuread-jan
+ms.openlocfilehash: a91cd830620cd56ae54006c3e09dfa02d8706d3c
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55180564"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55299924"
 ---
 # <a name="linkedin-integration-data-sharing-and-consent"></a>Sdílení dat integrace Linkedinu a vyjádření souhlasu
 

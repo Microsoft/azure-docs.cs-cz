@@ -12,16 +12,16 @@ ms.author: jovanpop
 ms.reviewer: carlr
 manager: craigg
 ms.date: 01/25/2019
-ms.openlocfilehash: b8eb6d483b9e7a92b50a269e5efbc8ca55946931
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.openlocfilehash: 77deed43c106a451d3de768989233c749e1280e1
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55104214"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55468168"
 ---
 # <a name="getting-started-with-azure-sql-database-managed-instance"></a>Začínáme s Azure SQL Database Managed Instance
 
-[Azure SQL Database Managed Instance](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-index) je plně spravovaná PaaS verzi systému SQL Server hostované v cloudu Azure a umístěn ve své vlastní virtuální síti s privátní IP adresu. V této části se dozvíte, jak rychle nakonfigurovat a vytvoření Managed Instance a migrace databází.
+[Azure SQL Database Managed Instance](sql-database-managed-instance-index.yml) je plně spravovaná PaaS verzi systému SQL Server hostované v cloudu Azure a umístěn ve své vlastní virtuální síti s privátní IP adresu. V této části se dozvíte, jak rychle nakonfigurovat a vytvoření Managed Instance a migrace databází.
 
 ## <a name="quickstart-overview"></a>Rychlý start – přehled
 
@@ -30,6 +30,7 @@ V této části zobrazí přehled dostupných články, které vám umožňují 
 Pokud máte vlastní sítě, kterou chcete použít, nebo chcete přizpůsobit sítě naleznete v tématu Jak [konfigurace prostředí sítě](#configure-network-environment) pro Managed Instance.
 
 Když vytvoříte Managed Instance, je třeba se připojit k instanci pomocí jedné z následujících postupů:
+
 * Vytvoření [virtuálního počítače Azure](sql-database-managed-instance-configure-vm.md) s nainstalovaný SQL Server Management Studio a další aplikace, které lze použít pro přístup k Managed Instance v podsíti ve stejné virtuální síti, ve kterém je umístí Managed Instance. Virtuální počítač nemůže být ve stejné podsíti se vaše Managed instance.
 * Nastavit [připojeníPoint-to-site](sql-database-managed-instance-configure-p2s.md) v počítači, který vám umožní připojit počítače k virtuální síti, ve kterém je umístí Managed Instance a použít Managed Instance jako žádný jiný SQL Server ve vaší síti.
 

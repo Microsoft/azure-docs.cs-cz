@@ -7,13 +7,13 @@ ms.service: storage
 ms.topic: article
 ms.date: 08/16/2018
 ms.author: rogarana
-ms.component: common
-ms.openlocfilehash: 0db6cc02be385ab82d41ecef214c5b158892c415
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.subservice: common
+ms.openlocfilehash: 7fbbcefde583d7e464633d9011e591b4c9bf6f65
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53628130"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55460314"
 ---
 # <a name="using-azure-powershell-with-azure-storage"></a>Použití Azure Powershell s Azure Storage
 
@@ -181,9 +181,9 @@ Remove-AzStorageAccount -ResourceGroup $resourceGroup -AccountName $storageAccou
 Všechny účty úložiště jsou standardně přístupné pro všechny sítě, který má přístup k Internetu. Ale můžete nakonfigurovat pravidla síti povolit jenom aplikace z konkrétní virtuálních sítí pro přístup k účtu úložiště. Další informace najdete v tématu [virtuálních sítí a bran firewall nakonfigurovat Storage Azure](storage-network-security.md). 
 
 Tento článek ukazuje, jak spravovat tato nastavení pomocí následujících rutin Powershellu:
-* [Přidat AzStorageAccountNetworkRule](/powershell/module/az.Storage/Add-azStorageAccountNetworkRule)
-* [Aktualizace AzStorageAccountNetworkRuleSet](/powershell/module/az.storage/update-azstorageaccountnetworkruleset)
-* [Odebrat AzStorageAccountNetworkRule](https://docs.microsoft.com/powershell/module/az.storage/remove-azstorageaccountnetworkrule)
+* [Add-AzStorageAccountNetworkRule](/powershell/module/az.Storage/Add-azStorageAccountNetworkRule)
+* [Update-AzStorageAccountNetworkRuleSet](/powershell/module/az.storage/update-azstorageaccountnetworkruleset)
+* [Remove-AzStorageAccountNetworkRule](https://docs.microsoft.com/powershell/module/az.storage/remove-azstorageaccountnetworkrule)
 
 ## <a name="use-storage-analytics"></a>Použití storage analytics  
 
@@ -222,9 +222,9 @@ Table API služby Azure Cosmos DB nabízí prémiové funkce pro table storage, 
 
 Většina lidí pomocí veřejného cloudu Azure pro globální nasazení v Azure. Existují také některá nezávislé nasazení Microsoft Azure z důvodů suverenity a tak dále. Tato nezávislé nasazení jsou označovány jako "prostředí". Toto jsou k dispozici prostředí:
 
-* [Cloud Azure Government](https://azure.microsoft.com/features/gov/)
+* [Azure Government Cloud](https://azure.microsoft.com/features/gov/)
 * [Cloud Azure China, provozovaný společností 21Vianet v Číně](http://www.windowsazure.cn/)
-* [Německého cloudu Azure](../../germany/germany-welcome.md)
+* [Azure German Cloud](../../germany/germany-welcome.md)
 
 Informace o tom, jak přistupovat k tyto cloudy a jejich úložiště pomocí Powershellu najdete v tématu [Správa úložiště v Azure pomocí Powershellu nezávislé cloudech](storage-powershell-independent-clouds.md).
 

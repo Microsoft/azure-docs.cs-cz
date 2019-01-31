@@ -12,12 +12,12 @@ ms.author: sashan
 ms.reviewer: mathoma, carlrab
 manager: craigg
 ms.date: 01/29/2019
-ms.openlocfilehash: 1aa3960e3a974703cfecec2bd28fc41f74f7df96
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 50f6f114a4d90f48218f751e1649e8694e664491
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 01/30/2019
-ms.locfileid: "55238403"
+ms.locfileid: "55295742"
 ---
 # <a name="managing-rolling-upgrades-of-cloud-applications-using-sql-database-active-geo-replication"></a>Správa postupné upgrady cloudových aplikací s využitím SQL Database aktivní geografické replikace
 
@@ -54,7 +54,7 @@ Po dokončení kroků přípravy, aplikace je připravena pro skutečném upgrad
 Pokud se upgrade úspěšně dokončen, nyní jste připraveni přepnout koncoví uživatelé k upgradované kopie aplikace. Nyní bude produkčního slotu.  Přepnutí zahrnuje několik další kroky, jak je znázorněno na následujícím diagramu.
 
 1. Aktivujte operaci prohození mezi produkční a přípravné sloty webové aplikace (6). Přepne adresy URL dvěma sloty. Nyní `contoso.azurewebsites.net` bude odkazovat na verzi V2 na webu a databáze (produkční prostředí).  
-2. Pokud už nepotřebujete verze V1, kde byl program pracovní kopie po prohození, umožňuje vyřadit z provozu pracovní envoronment (7).
+2. Pokud už nepotřebujete verze V1, kde byl program pracovní kopie po prohození, umožňuje vyřadit z provozu pracovní prostředí (7).
 
 ![Konfigurace geografické replikace databáze SQL. Cloudové zotavení po havárii.](media/sql-database-manage-application-rolling-upgrade/option1-3.png)
 
@@ -111,7 +111,7 @@ Po dokončení kroků přípravy, je pracovní prostředí připraveno k upgradu
 Pokud se upgrade úspěšně dokončen, nyní jste připraveni přepnout koncovým uživatelům na V2 verze aplikace. Následující diagram znázorňuje potřebnými kroky.
 
 1. Aktivujte operaci prohození mezi produkční a přípravné sloty webové aplikace v primární oblasti (13) a v oblasti zálohování (14). V2 aplikace teď bude produkčního slotu redundantních kopií v oblasti zálohování.
-2. Umožňuje vyřadit z provozu testovacím prostředí, pokud už nepotřebujete aplikace V1 (15 a 16).  
+2. Pokud už nepotřebujete aplikace V1 (15 a 16) umožňuje vyřadit z provozu pracovní prostředí.  
 
 ![Konfigurace geografické replikace databáze SQL. Cloudové zotavení po havárii.](media/sql-database-manage-application-rolling-upgrade/option2-3.png)
 

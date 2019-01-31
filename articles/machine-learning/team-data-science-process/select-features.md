@@ -6,17 +6,17 @@ author: marktab
 manager: cgronlun
 editor: cgronlun
 ms.service: machine-learning
-ms.component: team-data-science-process
+ms.subservice: team-data-science-process
 ms.topic: article
 ms.date: 11/21/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: de8070906f7b2470378fb631f2e94a96b4a2960d
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: a74f2c21746deb16372174d4a769f9abb825a1cd
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53138649"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55473302"
 ---
 # <a name="feature-selection-in-the-team-data-science-process-tdsp"></a>Výběr funkcí ve vědeckém zpracování týmových dat (TDSP)
 Tento článek vysvětluje účely výběr součástí a poskytuje příklady jejich rolí v procesu rozšíření dat služby machine learning. Tyto příklady jsou vykreslovány vedle z Azure Machine Learning Studio. 
@@ -25,7 +25,7 @@ Tento článek vysvětluje účely výběr součástí a poskytuje příklady je
 
 Konstrukce a výběr funkcí je jednou ze součástí nástroje zpracování týmových dat vědy (TDSP) uvedených v článku [co je vědecké zpracování týmových dat?](overview.md). Vytváření funkcí a výběru jsou části **vývoj funkcí** krok TDSP.
 
-* **konstrukce funkcí**: Tento proces pokusí vytvořit další odpovídající funkce z existující funkce nezpracovaných dat a ke zvýšení předpovídat algoritmu učení.
+* **konstrukce funkcí**: Tento proces se pokusí vytvořit další odpovídající funkce z existující funkce nezpracovaných dat a ke zvýšení předpovídat algoritmu učení.
 * **Výběr funkcí**: Tento proces vybere klíče podmnožinu funkcí původní data za účelem snížení dimenzionalitu problém školení.
 
 Obvykle **konstruování** se použije první generovat další funkce a pak **výběr funkcí** krok se provádí za účelem odstranění irelevantní, redundantní nebo vysoce korelační funkce.

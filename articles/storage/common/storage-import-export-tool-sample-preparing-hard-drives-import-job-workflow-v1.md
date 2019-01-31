@@ -7,13 +7,13 @@ ms.service: storage
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: muralikk
-ms.component: common
-ms.openlocfilehash: ae792df428d897277e15df9db3ff6f99a5b8859e
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.subservice: common
+ms.openlocfilehash: e183ed5ecda3053ed052952f4db5adfb016bfa68
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39527283"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55459041"
 ---
 # <a name="sample-workflow-to-prepare-hard-drives-for-an-import-job"></a>Ukázkový pracovní postup pro přípravu pevných disků pro úlohu importu
 Toto téma vás provede kompletní proces přípravy disků pro úlohu importu.  
@@ -67,7 +67,7 @@ V tomto příkladu by měla stačit dva 3 TB pevné disky. Nicméně, protože z
   
 Kromě toho můžete nastavit následující metadata pro všechny soubory:  
   
--   **UploadMethod:** služby Windows Azure Import/Export  
+-   **UploadMethod:** Služba Windows Azure Import/Export  
   
 -   **DataSetName:** SampleData  
   
@@ -88,7 +88,7 @@ Můžete také nastavit některé vlastnosti `FavoriteMovie.ISO` objektů blob:
   
 -   **Content-Type:** application/octet-stream  
   
--   **Content-MD5:** Q2hlY2sgSW50ZWdyaXR5IQ ==  
+-   **Content-MD5:** Q2hlY2sgSW50ZWdyaXR5IQ==  
   
 -   **Cache-Control:** no-cache  
   
@@ -169,4 +169,4 @@ Po dokončení kopírování relací, můžete odpojit dvě jednotky z počíta�
 ## <a name="next-steps"></a>Další postup
 
 * [Příprava pevných disků pro úlohu importu](../storage-import-export-tool-preparing-hard-drives-import-v1.md)   
-* [Stručná referenční příručka pro často používané příkazy](../storage-import-export-tool-quick-reference-v1.md) 
+* [Stručná referenční příručka pro často používané příkazy](../storage-import-export-tool-quick-reference-v1.md) 

@@ -8,7 +8,7 @@ author: MarkusVi
 manager: mtillman
 ms.assetid: e7434eeb-4e98-4b6b-a895-b5598a6cccf1
 ms.service: active-directory
-ms.component: identity-protection
+ms.subservice: identity-protection
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 10/03/2018
 ms.author: markvi
 ms.reviewer: raluthra
-ms.openlocfilehash: 1e70c063095d682213239febdb1fb285665f81ff
-ms.sourcegitcommit: 97d0dfb25ac23d07179b804719a454f25d1f0d46
+ms.openlocfilehash: 9cb1c5ebf8809ca3f4f977b513ecaa7909b401c6
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/25/2019
-ms.locfileid: "54913765"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55452273"
 ---
 # <a name="what-is-azure-active-directory-identity-protection-refreshed"></a>Co je Azure Active Directory Identity Protection (Aktualizovat)?
 

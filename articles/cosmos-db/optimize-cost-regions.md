@@ -6,14 +6,14 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: rimman
-ms.openlocfilehash: b4c873e319dd611221c81deb948db3a64062631e
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: 1bf65883ecf23f726aefd2cd889a2bcb08e9b6a6
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54032597"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55457645"
 ---
-# <a name="optimize-the-cost-for-multi-region-deployments-in-azure-cosmos-db"></a>Optimalizujte náklady pro nasazení ve více oblastech ve službě Azure Cosmos DB
+# <a name="optimize-multi-region-cost-in-azure-cosmos-db"></a>Optimalizujte náklady více oblastí ve službě Azure Cosmos DB
 
 Můžete přidávat a odebírat oblastí k vašemu účtu Azure Cosmos v každém okamžiku. V každé oblasti spojené s vaším účtem je vyhrazená propustnost, které nakonfigurujete pro různé databáze Azure Cosmos a kontejnery. Pokud zřízená propustnost za hodinu, který je součtem RU/s, které jsou nakonfigurované ve všech databázích a kontejnerů pro váš účet Azure Cosmos je `T` a počtu oblastí Azure spojené s vaším účtem databáze je `N`, pak součet zřízená propustnost účtu Cosmos pro příslušné hodiny je rovna hodnotě:
 
@@ -35,7 +35,7 @@ Vezměte v úvahu, že máte kontejner v oblasti západní USA zřízený s prop
 |----|----|----|----|
 |Faktura za propustnost za kontejner v oblasti západní USA (více oblastí zápisu) |10 tisíc RU/s * 24 * 31 |0,016 $ za 100 RU/s za hodinu |$1,190.40 |
 |Faktura za propustnost za 3 Další oblasti: východní USA, Severní Evropa a východní Asie (více oblastí zápisu) |(3 + 1) * 10 tisíc RU/s * 24 * 31 |0,016 $ za 100 RU/s za hodinu |$4,761.60 |
-|Faktura za úložiště za kontejner v oblasti Západní USA |100 GB |$ 0,25/GB |25 USD |
+|Faktura za úložiště za kontejner v oblasti Západní USA |100 GB |$ 0,25/GB |$25 |
 |Faktura za úložiště za 3 další oblasti: Východní USA, Severní Evropa a Východní Asie |3 * 1 TB |$ 0,25/GB |$75 |
 |**Celkem**|||**$6,052** |
 

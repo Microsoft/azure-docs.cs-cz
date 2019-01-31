@@ -7,36 +7,36 @@ ms.service: storage
 ms.topic: article
 ms.date: 06/27/2018
 ms.author: fryu
-ms.component: common
-ms.openlocfilehash: 293067b2d76f7ef88b6946aee9d39d4c6da97230
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.subservice: common
+ms.openlocfilehash: 49ea6a3c6be2325acdcdf61188ced777bd36f0da
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51229540"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55478130"
 ---
 # <a name="azure-storage-compliance-offerings"></a>Nabídky dodržování předpisů Azure Storage
 
 Umožňující organizacím, které jsou v souladu s národní, regionální a průmyslové požadavky, kterými se řídí shromažďování a používání údajů jednotlivců, Microsoft Azure a Azure Storage nabízí nejkomplexnější sadu certifikací a atestací žádné Poskytovatel cloudových služeb.
 
-Najdete pod nabídek dodržování předpisů v Azure Storage k zajištění služby upraví pomocí služby Azure Storage. Se vztahuje na následujících nabídek Azure Storage: objekty BLOB, soubory, fronty, tabulky, disky, studeného úložiště a Storage úrovně Premium.
+Najdete pod nabídek dodržování předpisů v Azure Storage k zajištění služby upraví pomocí služby Azure Storage. Se vztahují na následujících nabídek Azure Storage: Objekty BLOB, soubory, fronty, tabulky, disky, studeného úložiště a Storage úrovně Premium.
 
 ## <a name="global"></a>Globální
 
-* [Ověření identity CSA STAR](https://www.microsoft.com/en-us/trustcenter/compliance/csa-star-attestation)
-* [CSA Star certifikaci](https://www.microsoft.com/en-us/trustcenter/compliance/csa-star-certification)
+* [CSA-STAR-Attestation](https://www.microsoft.com/en-us/trustcenter/compliance/csa-star-attestation)
+* [CSA-Star-Certification](https://www.microsoft.com/en-us/trustcenter/compliance/csa-star-certification)
 * [CSA STAR vlastní posouzení](https://www.microsoft.com/en-us/trustcenter/compliance/csa-self-assessment)
-* [ISO 20000 – 1:2011](https://www.microsoft.com/en-us/TrustCenter/Compliance/ISO-20000-1)
+* [ISO 20000-1:2011](https://www.microsoft.com/en-us/TrustCenter/Compliance/ISO-20000-1)
 * [ISO 22301](https://www.microsoft.com/en-us/trustcenter/compliance/iso-22301)
 * [ISO 27001](https://www.microsoft.com/en-us/trustcenter/compliance/iso-iec-27017)
-* [STANDARD ISO 27017](https://www.microsoft.com/en-us/trustcenter/compliance/iso-iec-27017)
+* [ISO 27017](https://www.microsoft.com/en-us/trustcenter/compliance/iso-iec-27017)
 * [ISO 27018](https://www.microsoft.com/en-us/trustcenter/compliance/iso-iec-27018)
 * [ISO 9001](https://www.microsoft.com/en-us/trustcenter/compliance/iso-9001)
 * [WCAG 2.0](https://www.microsoft.com/en-us/trustcenter/compliance/accessibility#WCAG-2-0)
 
 ## <a name="us-government"></a>US Government
 
-* [L2 L4, L5 DISA ministerstva obrany USA](https://www.microsoft.com/en-us/trustcenter/compliance/disa)
+* [DoD DISA L2, L4, L5](https://www.microsoft.com/en-us/trustcenter/compliance/disa)
 * [CFR oddíl doE 10 810](https://aka.ms/AzureCompliance)
 * [Vymazat (USA Export Administration Regulations)](https://aka.ms/AzureCompliance)
 * [FDA název 21 CFR oddíl 11](https://aka.ms/AzureCompliance)
@@ -48,19 +48,19 @@ Najdete pod nabídek dodržování předpisů v Azure Storage k zajištění slu
 
 ## <a name="industry"></a>Odvětví
 
-* [Část 23 NYCRR 500](https://www.microsoft.com/en-us/trustcenter/compliance/NYCRR)
+* [23 NYCRR Part 500](https://www.microsoft.com/en-us/trustcenter/compliance/NYCRR)
 * [APRA (Austrálie)](https://aka.ms/AzureCompliance)
-* [ASOCIACE CDSA](https://www.microsoft.com/en-us/trustcenter/compliance/cdsa)
-* [DPP (SPOJENÉ KRÁLOVSTVÍ)](https://aka.ms/AzureCompliance)
+* [CDSA](https://www.microsoft.com/en-us/trustcenter/compliance/cdsa)
+* [DPP (UK)](https://aka.ms/AzureCompliance)
 * [FAKT (SPOJENÉ KRÁLOVSTVÍ)](https://www.microsoft.com/en-us/trustcenter/compliance/fact)
-* [FCA (SPOJENÉ KRÁLOVSTVÍ)](https://aka.ms/AzureCompliance)
+* [FCA (UK)](https://aka.ms/AzureCompliance)
 * [FFIEC](https://www.microsoft.com/en-us/trustcenter/compliance/FFIEC)
 * [Středisko FISC (Japonsko)](https://www.microsoft.com/en-us/trustcenter/compliance/fisc)
-* [GRAMM](https://aka.ms/AzureCompliance)
+* [GLBA](https://aka.ms/AzureCompliance)
 * [GxP](https://www.microsoft.com/en-us/TrustCenter/Compliance/FDA)
 * [HIPAA/HITECH](https://www.microsoft.com/en-us/trustcenter/compliance/hipaa)
 * [HITRUST](https://www.microsoft.com/en-us/trustcenter/Compliance/HITRUST)
-* [MARS E](https://www.microsoft.com/en-us/trustcenter/compliance/mars-e)
+* [MARS-E](https://www.microsoft.com/en-us/trustcenter/compliance/mars-e)
 * [MAS + ABS (Singapur)](https://aka.ms/AzureCompliance)
 * [MPAA](https://www.microsoft.com/en-us/trustcenter/compliance/mpaa)
 * [NEN-7510 (Nizozemsko)](https://www.microsoft.com/en-us/trustcenter/compliance/nen-7510)
@@ -75,10 +75,10 @@ Najdete pod nabídek dodržování předpisů v Azure Storage k zajištění slu
 * [C5 (Německo)](https://www.microsoft.com/en-us/TrustCenter/Compliance/C5)
 * [CCSL/IRAP (Austrálie)](https://www.microsoft.com/en-us/trustcenter/compliance/ccsl)
 * [CS Gold označit (Japonsko)](https://www.microsoft.com/en-us/trustcenter/compliance/cloud-security-mark)
-* [DJCP (Čína)](https://www.trustcenter.cn/compliance/default.html#DJCP)
-* [IAF AGENTURY ENISA (EU)](https://aka.ms/AzureCompliance)
+* [DJCP (China)](https://www.trustcenter.cn/compliance/default.html#DJCP)
+* [ENISA IAF (EU)](https://aka.ms/AzureCompliance)
 * [ENS (Španělsko)](https://www.microsoft.com/en-us/trustcenter/compliance/spainens)
-* [Doložek EU](https://www.microsoft.com/en-us/trustcenter/compliance/eu-model-clauses)
+* [EU-Model-Clauses](https://www.microsoft.com/en-us/trustcenter/compliance/eu-model-clauses)
 * [EU-US Privacy Shield](https://privacy.microsoft.com/en-US/microsoft-eu-us-privacy-shield)
 * [GB 18030 (Čína)](https://www.trustcenter.cn/compliance/default.html#GB18030)
 * [GDPR (EU)](https://www.microsoft.com/en-us/trustcenter/privacy/gdpr)
@@ -91,7 +91,7 @@ Najdete pod nabídek dodržování předpisů v Azure Storage k zajištění slu
 * [PDPA (Argentina)](https://www.microsoft.com/en-us/trustcenter/privacy/we-set-and-adhere-to-stringent-standards#argentina)
 * [PIPEDA (Kanada)](https://www.microsoft.com/en-us/trustcenter/privacy/we-set-and-adhere-to-stringent-standards#canadian_privacy_laws)
 * [TRUCS (Čína)](https://www.trustcenter.cn/compliance/default.html#TCS)
-* [Hodnocení G-Cloud](https://www.microsoft.com/en-us/trustcenter/compliance/uk-g-cloud)
+* [UK-G-Cloud](https://www.microsoft.com/en-us/trustcenter/compliance/uk-g-cloud)
 
 ## <a name="next-steps"></a>Další postup
 

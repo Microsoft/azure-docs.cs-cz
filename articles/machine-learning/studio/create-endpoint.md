@@ -1,5 +1,5 @@
 ---
-Název: Vytváření titleSuffix koncových bodů webové služby: Azure Machine Learning Studio Popis: Vytváření koncových bodů webové služby ve službě Azure Machine Learning. Každý koncový bod webové služby je nezávisle na sobě zákazníky a vyřešené, omezení a spravované.
+Název: Vytváření titleSuffix koncových bodů webové služby: Azure Machine Learning Studio Popis: Vytváření koncových bodů webové služby ve službě Azure Machine Learning. Každý koncový bod webové služby je nezávisle na sobě zákazníky a vyřešené, omezení a spravované.
 Services: machine learningu ms.service: ms.subservice strojového učení: studio ms.topic: článku
 
 Autor: ericlicoding ms.author: amlstudiodocs ms.custom: seodec18 ms.date: 10/04/2016

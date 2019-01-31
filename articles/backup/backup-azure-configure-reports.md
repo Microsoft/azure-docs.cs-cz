@@ -2,26 +2,25 @@
 title: Konfigurace sestav Azure Backup
 description: Konfigurace sestav Power BI pro službu Azure Backup pomocí trezoru služby Recovery Services.
 services: backup
-author: adiganmsft
+author: adigan
 manager: shivamg
 ms.service: backup
 ms.topic: conceptual
-ms.date: 10/29/2018
+ms.date: 01/30/2019
 ms.author: adigan
-ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 493a8881975e6b7568a7823bfc86fc97b4389378
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: e93c51365adfc867082e180d8e4db804d02003ca
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50418275"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55297720"
 ---
 # <a name="configure-azure-backup-reports"></a>Konfigurace sestav Azure Backup
 Tento článek popisuje postup konfigurace sestav Azure Backup pomocí trezoru služby Recovery Services. Také ukazuje, jak získat přístup k sestavám pomocí Power BI. Po dokončení těchto kroků můžete přejít přímo do Power BI k zobrazení, přizpůsobení a vytváření sestav.
 
 > [!IMPORTANT]
-> Od 1. listopadu 2018 někteří zákazníci mohou podívejte se na problémy při načítání dat v aplikaci Azure Backup v Power BI, jak říkáte "jsme našli nějaké znaky navíc na konci vstupu JSON. Výjimku vyvolalo rozhraní IDataReader."
-Toto je z důvodu změn ve formátu, ve kterém se data načtou do účtu úložiště.
+> Od 1. listopadu 2018 někteří zákazníci mohou podívejte se na problémy při načítání dat v aplikaci Azure Backup v Power BI, jak říkáte "jsme našli nějaké znaky navíc na konci vstupu JSON. Výjimku vyvolalo rozhraní IDataReader.“
+Příčinou je změna formátu dat načítaných do účtu úložiště.
 Stáhněte si prosím nejnovější aplikace (verze 1.8) k tomuto problému vyhnout.
 >
 >

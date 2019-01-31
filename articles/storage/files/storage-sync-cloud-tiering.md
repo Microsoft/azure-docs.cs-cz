@@ -7,13 +7,13 @@ ms.service: storage
 ms.topic: article
 ms.date: 09/21/2018
 ms.author: sikoo
-ms.component: files
-ms.openlocfilehash: a0f427ef84a6540522f521cd365e2422a70eb0cd
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.subservice: files
+ms.openlocfilehash: e73a11d7849d6e304be0844a55ddad46e6966f6e
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51623647"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55470446"
 ---
 # <a name="cloud-tiering-overview"></a>Přehled vrstvení cloudu
 Cloud ovládání datových vrstev je volitelná funkce služby Azure File Sync, ve kterém často používaných souborů jsou uložené v mezipaměti místně na serveru při další souborů proběhne do služby soubory Azure na základě nastavení zásad. Pokud se vrstvený soubor, filtr systému souborů Azure File Sync (StorageSync.sys) nahradí soubor místně ukazatel nebo spojovacím bodem. Bod rozboru představuje adresu URL k souboru ve službě soubory Azure. Vrstvený soubor má atribut "offline" a FILE_ATTRIBUTE_RECALL_ON_DATA_ACCESS atributu nastavit v systému souborů NTFS tak, aby aplikace třetích stran můžou bezpečně identifikovat vrstvené soubory.
@@ -21,7 +21,7 @@ Cloud ovládání datových vrstev je volitelná funkce služby Azure File Sync,
 Když uživatel otevře vrstvených sdílených, Azure File Sync bezproblémově vrátí data souboru z soubory Azure bez uživatele nepotřebuje vědět, že je soubor uložený ve skutečnosti v Azure. 
  
  > [!Important]  
-    > Důležité: Cloudu ovládání datových vrstev se nepodporuje pro koncové body serveru u svazků systému Windows a pouze soubory, které jsou větší než 64 KiB velikosti může být rozvrstvena do služby soubory Azure.
+    > Důležité: Cloud ovládání datových vrstev se nepodporuje pro koncové body serveru u svazků systému Windows a pouze soubory, které jsou větší než 64 KiB velikosti může být rozvrstvena do služby soubory Azure.
     
 Azure File Sync nepodporuje ani soubory menší než 64 KiB by ovládání datových vrstev a vrací tyto soubory malé nároky na výkon převažují nad úspory místa na disku.
 
@@ -105,7 +105,7 @@ Prostředí PowerShell můžete použít také k vynucení soubor, který chcete
 
 <a id="sizeondisk-versus-size"></a>
 ### <a name="why-doesnt-the-size-on-disk-property-for-a-file-match-the-size-property-after-using-azure-file-sync"></a>Proč není *velikost na disku* vlastnost souboru shody *velikost* vlastnost po použití Azure File Sync? 
-Průzkumníka souborů Windows poskytuje dvě vlastnosti k reprezentaci velikosti souboru: **velikost** a **velikost na disku**. Tyto vlastnosti se mírně liší v význam. **Velikost** představuje dokončení velikost souboru. **Velikost na disku** představuje velikost souboru datového proudu, který je uložený na disku. Hodnoty těchto vlastností můžete se liší z různých důvodů, jako je komprese, použít odstranění duplicitních dat nebo pomocí služby Azure File Sync vrstvení cloudu. Pokud je soubor Vrstvená do sdílené složky Azure, velikost na disku je nula, protože datový proud souboru je uložené v adresáři sdílené složky Azure a nikoli na disk. Je také možné pro soubor, který chcete být částečně vrstvené (nebo částečně odvolaného). V částečně vrstvený soubor je část souboru na disku. Tato situace může nastat, když jsou částečně číst pomocí aplikací, jako je multimediálního přehrávače nebo zip nástroje souborů. 
+Průzkumníka souborů Windows poskytuje dvě vlastnosti k reprezentaci velikosti souboru: **Velikost** a **velikost na disku**. Tyto vlastnosti se mírně liší v význam. **Velikost** představuje dokončení velikost souboru. **Velikost na disku** představuje velikost souboru datového proudu, který je uložený na disku. Hodnoty těchto vlastností můžete se liší z různých důvodů, jako je komprese, použít odstranění duplicitních dat nebo pomocí služby Azure File Sync vrstvení cloudu. Pokud je soubor Vrstvená do sdílené složky Azure, velikost na disku je nula, protože datový proud souboru je uložené v adresáři sdílené složky Azure a nikoli na disk. Je také možné pro soubor, který chcete být částečně vrstvené (nebo částečně odvolaného). V částečně vrstvený soubor je část souboru na disku. Tato situace může nastat, když jsou částečně číst pomocí aplikací, jako je multimediálního přehrávače nebo zip nástroje souborů. 
 
 <a id="afs-force-tiering"></a>
 ### <a name="how-do-i-force-a-file-or-directory-to-be-tiered"></a>Jak vynutit soubor nebo adresář vrstvený?

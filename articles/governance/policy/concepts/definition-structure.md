@@ -4,17 +4,17 @@ description: Popisuje, jak je používat prostředku definice zásady Azure Poli
 services: azure-policy
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 01/23/2019
+ms.date: 01/29/2019
 ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: deaad5e7a04362ab021bfb90ab08377cb99694e0
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: d54fd12125902aa5019643df24d78ae81f7fc31f
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 01/30/2019
-ms.locfileid: "55250380"
+ms.locfileid: "55296652"
 ---
 # <a name="azure-policy-definition-structure"></a>Struktura definic Azure Policy
 
@@ -137,7 +137,7 @@ Pokud je umístění definice:
 
 ## <a name="display-name-and-description"></a>Zobrazovaný název a popis
 
-Použijete **displayName** a **popis** identifikovat definice zásad a zadání při použití kontextu.
+Použijete **displayName** a **popis** identifikovat definice zásad a zadání při použití kontextu. **displayName** má maximální délku _128_ znaků a **popis** o maximální délce _512_ znaků.
 
 ## <a name="policy-rule"></a>Pravidlo zásad
 

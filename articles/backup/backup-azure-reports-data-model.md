@@ -2,19 +2,18 @@
 title: Datový model pro službu Azure Backup
 description: Tento článek pojednává o podrobnosti modelu Power BI data pro sestavy Azure Backup.
 services: backup
-author: adiganmsft
+author: adigan
 manager: shivamg
 ms.service: backup
 ms.topic: conceptual
 ms.date: 06/26/2017
 ms.author: adigan
-ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 573b7e9c5c44c7162b4020f1ef54b8986003c0b5
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: c6160570644da108ba713e8229b38f9587495c92
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52877129"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55299414"
 ---
 # <a name="data-model-for-azure-backup-reports"></a>Datový model pro sestavy Azure Backup
 Tento článek popisuje datový model Power BI používá k vytváření sestav Azure Backup. Pomocí tohoto modelu, můžete filtrovat existující sestavy na základě příslušných polí a další důležité je, vytvořit vlastní sestavy pomocí tabulek a polí v modelu. 
@@ -31,14 +30,14 @@ Tato tabulka obsahuje základní polí a agregací přes různé výstrahy souvi
 | Pole | Typ dat | Popis |
 | --- | --- | --- |
 | #AlertsCreatedInPeriod |Celé číslo |Počet upozornění vytvořená ve vybraném časovém období |
-| % ActiveAlertsCreatedInPeriod |Procentuální podíl |Procento aktivních výstrah ve vybraném časovém období |
-| % CriticalAlertsCreatedInPeriod |Procentuální podíl |Procento kritické výstrahy za vybrané časové období |
+| %ActiveAlertsCreatedInPeriod |Procentuální podíl |Procento aktivních výstrah ve vybraném časovém období |
+| %CriticalAlertsCreatedInPeriod |Procentuální podíl |Procento kritické výstrahy za vybrané časové období |
 | AlertOccurrenceDate |Datum |Datum, kdy byla výstraha vytvořena |
 | AlertSeverity |Text |Závažnost výstrahy, například kritický |
 | AlertStatus |Text |Stav výstrahy například aktivní |
 | AlertType |Text |Typ vygenerovaných výstrah, například zálohování |
 | AlertUniqueId |Text |Jedinečné Id generované výstrahy |
-| AsOnDateTime |Datum/čas |Nejnovější čas aktualizace pro vybraný řádek |
+| AsOnDateTime |Datum a čas |Nejnovější čas aktualizace pro vybraný řádek |
 | AvgResolutionTimeInMinsForAlertsCreatedInPeriod |Desetinné číslo |Průměrná doba (v minutách) k vyřešení výstrahy pro vybrané časové období |
 | EntityState |Text |Aktuální stav výstrahy objektu, například aktivní, odstraněno |
 
@@ -49,15 +48,15 @@ Tato tabulka obsahuje základní polí a agregací přes různá backup pole sou
 | --- | --- | --- |
 | #BackupItems |Celé číslo |Počet zálohovaných položek |
 | #UnprotectedBackupItems |Celé číslo |Počet zálohovaných položek zastaveno z důvodu ochrany nebo nakonfigurovaná pro zálohování, ale nebylo zahájeno zálohování|
-| AsOnDateTime |Datum/čas |Nejnovější čas aktualizace pro vybraný řádek |
+| AsOnDateTime |Datum a čas |Nejnovější čas aktualizace pro vybraný řádek |
 | BackupItemFriendlyName |Text |Popisný název zálohované položky |
 | BackupItemId |Text |ID zálohovaná položka |
 | BackupItemName |Text |Název zálohované položky |
 | BackupItemType |Text |Typ položky zálohování například virtuální počítač, FileFolder |
 | EntityState |Text |Aktuální stav objektu zálohovaná položka například aktivní, odstraněno |
-| LastBackupDateTime |Datum/čas |Čas poslední zálohy pro vybranou položku Zálohování |
+| LastBackupDateTime |Datum a čas |Čas poslední zálohy pro vybranou položku Zálohování |
 | LastBackupState |Text |Stav poslední zálohy pro vybrané záložní položky například úspěšné, neúspěšné |
-| LastSuccessfulBackupDateTime |Datum/čas |Čas posledního úspěšného zálohování pro vybrané záložní položky |
+| LastSuccessfulBackupDateTime |Datum a čas |Čas posledního úspěšného zálohování pro vybrané záložní položky |
 | ProtectionState |Text |Aktuální stav ochrany pro příklad, Protected, ProtectionStopped zálohované položky |
 
 ### <a name="calendar"></a>Kalendář
@@ -83,9 +82,9 @@ Tato tabulka obsahuje základní polí a agregací v různých oblastech souvise
 | Pole | Typ dat | Popis |
 | --- | --- | --- |
 | #JobsCreatedInPeriod |Celé číslo |Počet úloh vytvořených ve vybraném časovém období |
-| % FailuresForJobsCreatedInPeriod |Procentuální podíl |Procento celkové selháním úloh ve vybraném časovém období |
+| %FailuresForJobsCreatedInPeriod |Procentuální podíl |Procento celkové selháním úloh ve vybraném časovém období |
 | 80thPercentileDataTransferredInMBForBackupJobsCreatedInPeriod |Desetinné číslo |80 hodnoty percentilu data přenesená v MB pro **zálohování** úlohy vytvořené ve vybraném časovém období |
-| AsOnDateTime |Datum/čas |Nejnovější čas aktualizace pro vybraný řádek |
+| AsOnDateTime |Datum a čas |Nejnovější čas aktualizace pro vybraný řádek |
 | AvgBackupDurationInMinsForJobsCreatedInPeriod |Desetinné číslo |Průměrná doba v minutách pro **dokončené zálohování** úlohy vytvořené ve vybraném časovém období |
 | AvgRestoreDurationInMinsForJobsCreatedInPeriod |Desetinné číslo |Průměrná doba v minutách pro **bylo dokončeno obnovení** úlohy vytvořené ve vybraném časovém období |
 | BackupStorageDestination |Text |Cílové úložiště pro zálohování o cloudu, například disku  |
@@ -104,7 +103,7 @@ Tato tabulka obsahuje základní polí a agregací přes různé zásady souvise
 | --- | --- | --- |
 | #Policies |Celé číslo |Počet zásad zálohování, které existují v systému |
 | #PoliciesInUse |Celé číslo |Počet aktuálně používá pro konfiguraci zálohování zásad |
-| AsOnDateTime |Datum/čas |Nejnovější čas aktualizace pro vybraný řádek |
+| AsOnDateTime |Datum a čas |Nejnovější čas aktualizace pro vybraný řádek |
 | BackupDaysOfTheWeek |Text |Dny v týdnu, kdy bylo naplánováno zálohy |
 | BackupFrequency |Text |Frekvence, se kterým se spouštět zálohování, třeba každý den, každý týden |
 | BackupTimes |Text |Datum a čas, kdy jsou naplánované zálohy |
@@ -137,7 +136,7 @@ Tato tabulka obsahuje základní polí a agregací přes různé chráněné pol
 | Pole | Typ dat | Popis |
 | --- | --- | --- |
 | #ProtectedServers |Celé číslo |Počet chráněných serverů |
-| AsOnDateTime |Datum/čas |Nejnovější čas aktualizace pro vybraný řádek |
+| AsOnDateTime |Datum a čas |Nejnovější čas aktualizace pro vybraný řádek |
 | AzureBackupAgentOSType |Text |Typ operačního systému agenta Azure Backup |
 | AzureBackupAgentOSVersion |Text |Verze operačního systému agenta Azure Backup |
 | AzureBackupAgentUpdateDate |Text |Datum, kdy došlo k aktualizaci agenta Backup Agent |
@@ -150,13 +149,13 @@ Tato tabulka obsahuje základní polí a agregací přes různé chráněné pol
 | ProtectedServerName |Text |Název chráněného serveru, na které zálohovaná položka patří |
 | RegisteredContainerId |Text |ID kontejneru zaregistrované pro zálohování |
 
-### <a name="storage"></a>Úložiště
+### <a name="storage"></a>Storage
 Tato tabulka obsahuje základní polí a agregací přes různá pole týkající se úložiště.
 
 | Pole | Typ dat | Popis |
 | --- | --- | --- |
 | #ProtectedInstances |Desetinné číslo |Počet chráněných instancí sloužící k výpočtu front-endu úložiště fakturace, vypočítané podle nejnovější hodnoty ve vybraném časovém |
-| AsOnDateTime |Datum/čas |Nejnovější čas aktualizace pro vybraný řádek |
+| AsOnDateTime |Datum a čas |Nejnovější čas aktualizace pro vybraný řádek |
 | CloudStorageInMB |Desetinné číslo |Cloudové zálohování úložiště využitá službou zálohování, které se počítá na základě nejnovější hodnoty ve vybraném časovém |
 | EntityState |Text |Aktuální stav objektu, například aktivní, odstraněno |
 | LastUpdatedDate |Datum |Datum poslední aktualizace vybraný řádek |
@@ -179,7 +178,7 @@ Tato tabulka obsahuje základní polí a agregací přes různá pole týkajíc�
 | Pole | Typ dat | Popis |
 | --- | --- | --- |
 | #Vaults |Celé číslo |Počet trezorů |
-| AsOnDateTime |Datum/čas |Nejnovější čas aktualizace pro vybraný řádek |
+| AsOnDateTime |Datum a čas |Nejnovější čas aktualizace pro vybraný řádek |
 | AzureDataCenter |Text |Datové centrum, ve kterém se úložiště nachází |
 | EntityState |Text |Aktuální stav objektu úložiště například aktivní, odstraněno |
 | StorageReplicationType |Text |Typ replikace úložiště pro trezor například GeoRedundant |

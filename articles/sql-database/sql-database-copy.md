@@ -11,13 +11,13 @@ author: douglaslMS
 ms.author: douglasl
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 10/05/2018
-ms.openlocfilehash: fa76762fc9a2eb178e2edce2de254894bde1934c
-ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
+ms.date: 01/25/2019
+ms.openlocfilehash: 6066ca586ce9923158026fbeaa405de16681de9b
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/20/2018
-ms.locfileid: "53651414"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55461335"
 ---
 # <a name="copy-an-transactionally-consistent-copy-of-an-azure-sql-database"></a>Zkopírujte transakčně konzistentní kopie databáze Azure SQL
 
@@ -32,11 +32,11 @@ Kopie databáze je snímek zdrojové databáze k datu požadavku kopírování. 
 
 ## <a name="logins-in-the-database-copy"></a>Přihlašovacích údajů ve službě kopie databáze
 
-Při kopírování databáze do stejného logického serveru stejné přihlašovací údaje je možné s oběma databázemi. Objekt že pomocí zkopírovat databázi zabezpečení stává vlastníkem databáze na novou databázi. Všichni uživatelé databáze, oprávnění k nim a jejich identifikátory zabezpečení (SID) se zkopírují do kopie databáze.  
+Při kopírování databáze na stejný server SQL Database, lze použít stejné přihlašovací údaje s oběma databázemi s. Objekt že pomocí zkopírovat databázi zabezpečení stává vlastníkem databáze na novou databázi. Všichni uživatelé databáze, oprávnění k nim a jejich identifikátory zabezpečení (SID) se zkopírují do kopie databáze.  
 
-Při kopírování databáze do různých logický server, na nový server zaregistrovaný objekt zabezpečení stává vlastníkem databáze na novou databázi. Pokud používáte [uživatelé databáze s omezením](sql-database-manage-logins.md) pro přístup k datům, ujistěte se, že primární a sekundární databáze vždy mají stejné přihlašovací údaje uživatele, tak, aby po dokončení kopírování budete mít okamžitě přístup pomocí stejných přihlašovacích údajů . 
+Při kopírování databáze do jiné databáze SQL serveru na nový server zaregistrovaný objekt zabezpečení stává vlastníkem databáze na novou databázi. Pokud používáte [uživatelé databáze s omezením](sql-database-manage-logins.md) pro přístup k datům, ujistěte se, že primární a sekundární databáze vždy mají stejné přihlašovací údaje uživatele, tak, aby po dokončení kopírování budete mít okamžitě přístup pomocí stejných přihlašovacích údajů . 
 
-Pokud používáte [Azure Active Directory](../active-directory/fundamentals/active-directory-whatis.md), můžete zcela eliminovat potřebu správy přihlašovací údaje v kopii. Ale při kopírování databáze na nový server přístup na základě přihlášení nemusí fungovat, protože přihlášení neexistují na novém serveru. Další informace o správě přihlášení při kopírování databáze do různých logický server, naleznete v tématu [Správa zabezpečení služby Azure SQL database po zotavení po havárii](sql-database-geo-replication-security-config.md). 
+Pokud používáte [Azure Active Directory](../active-directory/fundamentals/active-directory-whatis.md), můžete zcela eliminovat potřebu správy přihlašovací údaje v kopii. Ale při kopírování databáze na nový server přístup na základě přihlášení nemusí fungovat, protože přihlášení neexistují na novém serveru. Další informace o správě přihlášení při kopírování databáze na jiný server SQL Database najdete v tématu [Správa zabezpečení služby Azure SQL database po zotavení po havárii](sql-database-geo-replication-security-config.md). 
 
 Po úspěšném kopírování a předtím, než ostatní uživatelé budou přemapovány, pouze přihlášení, která iniciovala kopírování, vlastník databáze přihlásit k nové databázi. K vyřešení přihlášení po dokončení operace kopírování, zobrazit [vyřešit přihlášení](#resolve-logins).
 
@@ -78,7 +78,7 @@ Tento příkaz zkopíruje databáze 1 pro novou databázi s názvem databáze 2 
 
 ### <a name="copy-a-sql-database-to-a-different-server"></a>Kopírování databáze SQL na jiný server
 
-Přihlaste se k hlavní databázi cílového serveru, kde se má vytvořit novou databázi serveru SQL database. Použijte přihlašovací údaje, která má stejné jméno a heslo jako vlastník databáze zdrojové databáze na zdrojovém serveru SQL database. Přihlašovací jméno na cílovém serveru musí také být členem dbmanager role nebo hlavního přihlášení úrovni serveru.
+Přihlaste se k hlavní databázi cílového serveru, kde se má vytvořit novou databázi serveru SQL Database. Použijte přihlašovací údaje, která má stejné jméno a heslo jako vlastník databáze zdrojové databáze na zdrojovém serveru SQL Database. Přihlašovací jméno na cílovém serveru musí také být členem dbmanager role nebo hlavního přihlášení úrovni serveru.
 
 Tento příkaz zkopíruje databáze 1 na serveru1 do nové databáze s názvem databáze 2 na serveru2. V závislosti na velikosti databáze kopírování operace může trvat nějakou dobu.
 
@@ -104,7 +104,7 @@ Po online na cílovém serveru novou databázi pomocí [ALTER USER](https://msdn
 
 Všichni uživatelé v nové databázi zachovat oprávnění, která měly ve zdrojové databázi. Uživatel, který inicioval kopie databáze se stává vlastníkem databáze nové databáze a je přiřazen nový identifikátor zabezpečení (SID). Po úspěšném kopírování a předtím, než ostatní uživatelé budou přemapovány, pouze přihlášení, která iniciovala kopírování, vlastník databáze přihlásit k nové databázi.
 
-Další informace o správě uživatelů a přihlašovacích údajů při kopírování databáze do různých logický server, naleznete v tématu [Správa zabezpečení služby Azure SQL database po zotavení po havárii](sql-database-geo-replication-security-config.md).
+Další informace o správě uživatelů a přihlašovacích údajů při kopírování databáze na jiný server SQL Database najdete v tématu [Správa zabezpečení služby Azure SQL database po zotavení po havárii](sql-database-geo-replication-security-config.md).
 
 ## <a name="next-steps"></a>Další postup
 

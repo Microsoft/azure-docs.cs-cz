@@ -7,15 +7,15 @@ ms.service: storage
 ms.topic: article
 ms.date: 10/20/2018
 ms.author: jeking
-ms.component: common
-ms.openlocfilehash: 85d69db2f94e4bddf1258233c34c64dcf78a3eeb
-ms.sourcegitcommit: 1b186301dacfe6ad4aa028cfcd2975f35566d756
+ms.subservice: common
+ms.openlocfilehash: 8ffd3c34628f96888145a3639ddfe4a190dffc7f
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51219218"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55467063"
 ---
-# <a name="geo-redundant-storage-grs-cross-regional-replication-for-azure-storage"></a>Geograficky redundantní úložiště (GRS): replikace mezi zónami pro službu Azure Storage
+# <a name="geo-redundant-storage-grs-cross-regional-replication-for-azure-storage"></a>Geograficky redundantní úložiště (GRS): Replikace mezi zónami pro službu Azure Storage
 [!INCLUDE [storage-common-redundancy-GRS](../../../includes/storage-common-redundancy-grs.md)]
 
 ## <a name="read-access-geo-redundant-storage"></a>Geograficky redundantní úložiště jen pro čtení
@@ -34,7 +34,7 @@ Některé aspekty, mějte na paměti při použití RA-GRS:
 * Návrhy k návrhu pro zajištění vysoké dostupnosti s RA-GRS, naleznete v tématu [navrhování aplikací s vysokou dostupností pomocí RA-GRS úložiště](storage-designing-ha-apps-with-ragrs.md).
 
 ## <a name="what-is-the-rpo-and-rto-with-grs"></a>Co je RPO a RTO s GRS?
-**Cíl bodu obnovení (RPO):** GRS a RA-GRS, úložiště služby asynchronně geografickou replikaci dat z primárního do sekundárního umístění. V případě větší havárie regionální v primární oblasti Microsoft provede převzetí služeb při selhání do sekundární oblasti. Pokud dojde k selhání, může dojít ke ztrátě nedávné změny, které dosud nebyly geograficky replikovaný. Počet minut, ke které došlo ke ztrátě dat. se označuje jako cíle bodu obnovení. Cíle bodu obnovení Určuje bod v čase, ke kterému můžete data obnovit. Azure Storage obvykle má RPO kratší než 15 minut, ale aktuálně neexistuje žádná smlouva SLA na jak dlouho georeplikace trvá.
+**Cíl bodu obnovení (RPO):** GRS a RA-GRS služeb úložiště asynchronně geografickou replikaci dat z primárního do sekundárního umístění. V případě větší havárie regionální v primární oblasti Microsoft provede převzetí služeb při selhání do sekundární oblasti. Pokud dojde k selhání, může dojít ke ztrátě nedávné změny, které dosud nebyly geograficky replikovaný. Počet minut, ke které došlo ke ztrátě dat. se označuje jako cíle bodu obnovení. Cíle bodu obnovení Určuje bod v čase, ke kterému můžete data obnovit. Azure Storage obvykle má RPO kratší než 15 minut, ale aktuálně neexistuje žádná smlouva SLA na jak dlouho georeplikace trvá.
 
 **Plánovaná doba obnovení (RTO):** RTO měří dobu potřebnou k provedení převzetí služeb při selhání a získat zpět do online režimu účtu úložiště. Čas k provedení převzetí služeb zahrnuje následující akce:
 
@@ -44,9 +44,9 @@ Některé aspekty, mějte na paměti při použití RA-GRS:
 Společnost Microsoft má na starost zachování vašich dat vážně. Pokud je pravděpodobné, že obnovení dat v primární oblasti, Microsoft zpoždění převzetí služeb při selhání a se zaměřuje na obnovit data. 
 
 ## <a name="paired-regions"></a>Spárované oblasti 
-Při vytváření účtu úložiště vyberte primární oblast pro účet. Spárované oblasti sekundární závisí na primární oblasti a nelze změnit. Aktuální informace o oblasti, které podporuje Azure najdete v tématu [obchodní kontinuity podnikových procesů a zotavení po havárii (BCDR): spárované oblasti Azure](../../best-practices-availability-paired-regions.md).
+Při vytváření účtu úložiště vyberte primární oblast pro účet. Spárované oblasti sekundární závisí na primární oblasti a nelze změnit. Aktuální informace o oblasti, které podporuje Azure najdete v tématu [obchodní kontinuity podnikových procesů a zotavení po havárii (BCDR): Spárovaných oblastech Azure](../../best-practices-availability-paired-regions.md).
 
 ## <a name="see-also"></a>Další informace najdete v tématech
 - [Účet replikace Azure Storage](storage-redundancy.md)
-- [Místně redundantní úložiště (LRS): redundanci dat s nízkými náklady pro službu Azure Storage](storage-redundancy-lrs.md)
-- [Zónově redundantní úložiště (ZRS): vysoce dostupné aplikace služby Azure Storage](storage-redundancy-zrs.md)
+- [Místně redundantní úložiště (LRS): Redundanci dat s nízkými náklady pro službu Azure Storage](storage-redundancy-lrs.md)
+- [Zónově redundantní úložiště (ZRS): Vysoce dostupné aplikace služby Azure Storage](storage-redundancy-zrs.md)

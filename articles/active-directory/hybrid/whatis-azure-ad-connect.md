@@ -7,15 +7,16 @@ manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: get-started-article
-ms.date: 11/28/2018
+ms.component: hybrid
+ms.date: 01/30/2019
 ms.subservice: hybrid
 ms.author: billmath
-ms.openlocfilehash: 0648a0208ac02e846b74ef33fdc162dd89ecb887
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: cb1ba63a0f32d026d51507fe66432a520a6f6e71
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55190679"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55298961"
 ---
 # <a name="what-is-azure-ad-connect"></a>Co je Azure AD Connect?
 
@@ -49,6 +50,20 @@ Integrace místních adresářů se službou Azure AD zvyšuje produktivitu uži
 
 ## <a name="why-use-azure-ad-connect-health"></a>Proč používat službu Azure AD Connect Health?
 Při práci s Azure AD, jsou vaši uživatelé zvýšit produktivitu práce protože společnou identitu pro přístup ke cloudovým i místním prostředkům. Zajištění, že prostředí je spolehlivé, aby uživatelé měli přístup ke tyto prostředky se změní na výzvu.  Azure AD Connect Health pomáhá monitorovat a získávat přehledy o vaší místní infrastruktury identit zajistila spolehlivost tohoto prostředí. Stačí jednoduše nainstalovat agenta na každý z vašich místních serverů identity.
+
+Azure AD Connect Health pro službu AD FS podporuje službu AD FS 2.0 v systémech Windows Server 2008 R2, Windows Server 2012, Windows Server 2012 R2 a Windows Server 2016. Podporuje také monitorování proxy serveru služby AD FS a proxy serverů webových aplikací, které poskytují ověřování pro přístup z extranetu. Díky snadné a rychlé instalaci agenta služby Health poskytuje Azure AD Connect Health pro službu AD FS sadu klíčových funkcí.
+
+Mezi klíčové výhody a osvědčené postupy:
+
+|Klíčové výhody|Osvědčené postupy|
+|-----|-----|
+|Vylepšené zabezpečení|[Trendy uzamčení extranetu](how-to-connect-health-adfs.md#usage-analytics-for-ad-fs)</br>[Sestava neúspěšných přihlášení](how-to-connect-health-adfs.md#risky-ip-report-public-preview)</br>[V kompatibilní ochrany osobních údajů](reference-connect-health-user-privacy.md)|
+|Nechte se upozornit na [všechny kritické problémy systému služby AD FS](how-to-connect-health-alert-catalog.md#alerts-for-active-directory-federation-services)|Konfigurace serveru a dostupnost</br>[Výkon a možnosti připojení](how-to-connect-health-adfs.md#performance-monitoring-for-ad-fs)</br>Pravidelná údržba|
+|Snadné nasazení a správa|[Instalace agenta rychlé](how-to-connect-health-agent-install.md#installing-the-azure-ad-connect-health-agent-for-ad-fs)</br>Automatický upgrade agenta na nejnovější verzi</br>Dostupnost dat na portálu během několika minut|
+Bohaté [metriky využití](how-to-connect-health-adfs.md#usage-analytics-for-ad-fs)|Využití nejčastějších aplikací</br>Umístění v síti a připojení TCP</br>Žádosti o tokeny pro každý server|
+|Skvělé uživatelské prostředí|Styl řídicího panelu z webu Azure Portal</br>[Upozornění prostřednictvím e-mailů](how-to-connect-health-adfs.md#alerts-for-ad-fs)|
+
+
 
 
 ## <a name="next-steps"></a>Další postup

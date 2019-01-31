@@ -7,13 +7,13 @@ ms.service: storage
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: muralikk
-ms.component: common
-ms.openlocfilehash: 920f350ab5ba1e9e1703ffcc32dc8c7153624c0b
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.subservice: common
+ms.openlocfilehash: 831286f1c98a2fc3d26277f4006283c3de64f900
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39525150"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55463238"
 ---
 # <a name="azure-importexport-service-manifest-file-format"></a>Formát souborů manifestu služby Azure Import/Export
 Soubor manifestu jednotky popisuje mapování mezi objekty BLOB ve službě Azure Blob storage a souborů na jednotce, která obsahuje úlohu importu nebo exportu. Operace importu souboru manifestu je vytvořen jako součást procesu přípravy jednotky a je uložená na disku před odesláním jednotky datového centra Azure. Během operace exportu se manifest vytvoří a uloží na disk pomocí služby Azure Import/Export.  
@@ -37,9 +37,9 @@ Následující část popisuje obecný formát souboru manifestu jednotky:
         Hash="md5-hash">global-properties-file-path</PropertiesPath>]  
   
       <!-- First Blob -->  
-      <Blob>  
-        <BlobPath>blob-path-relative-to-account</BlobPath>  
-        <FilePath>file-path-relative-to-transfer-disk</FilePath>  
+      <Blob>  
+        <BlobPath>blob-path-relative-to-account</BlobPath>  
+        <FilePath>file-path-relative-to-transfer-disk</FilePath>  
         [<ClientData>client-data</ClientData>]  
         [<Snapshot>snapshot</Snapshot>]  
         <Length>content-length</Length>  
@@ -47,7 +47,7 @@ Následující část popisuje obecný formát souboru manifestu jednotky:
         page-range-list-or-block-list          
         [<MetadataPath Hash="md5-hash">metadata-file-path</MetadataPath>]  
         [<PropertiesPath Hash="md5-hash">properties-file-path</PropertiesPath>]  
-      </Blob>  
+      </Blob>  
   
       <!-- Second Blob -->  
       <Blob>  
@@ -72,7 +72,7 @@ page-range-list ::=
     <PageRangeList>  
       [<PageRange Offset="page-range-offset" Length="page-range-length"   
        Hash="md5-hash"/>]  
-      [<PageRange Offset="page-range-offset" Length="page-range-length"   
+      [<PageRange Offset="page-range-offset" Length="page-range-length"   
        Hash="md5-hash"/>]  
     </PageRangeList>  
   
@@ -80,7 +80,7 @@ block-list ::=
     <BlockList>  
       [<Block Offset="block-offset" Length="block-length" [Id="block-id"]  
        Hash="md5-hash"/>]  
-      [<Block Offset="block-offset" Length="block-length" [Id="block-id"]   
+      [<Block Offset="block-offset" Length="block-length" [Id="block-id"]   
        Hash="md5-hash"/>]  
     </BlockList>  
 
@@ -90,27 +90,27 @@ block-list ::=
 
 Datové prvky a atributy ve formátu jednotka manifestu XML jsou uvedeny v následující tabulce.  
   
-|– Element XML|Typ|Popis|  
+|– Element XML|Type|Popis|  
 |-----------------|----------|-----------------|  
 |`DriveManifest`|Kořenový element|Kořenový element souboru manifestu. Všechny elementy v souboru jsou pod tímto prvkem.|  
 |`Version`|Atribut řetězců|Verze souboru manifestu.|  
 |`Drive`|Vnořené – XML element|Obsahuje manifest pro každou jednotku.|  
-|`DriveId`|Řetězec|Identifikátor jedinečný jednotky pro jednotku. Identifikátor disku najdete pomocí dotazu na jednotce z důvodu jeho sériového čísla. Sériové číslo jednotky je obvykle vytištěno na straně mimo i na jednotce. `DriveID` Elementu musí být uvedena před jakoukoli `BlobList` element v souboru manifestu.|  
-|`StorageAccountKey`|Řetězec|Vyžadováno pro import úlohách Pokud a pouze v případě `ContainerSas` není zadán. Klíč účtu pro účet úložiště Azure přidruženou k úloze.<br /><br /> Tento element je vynecháno z manifestu pro operace exportu.|  
-|`ContainerSas`|Řetězec|Vyžadováno pro import úlohách Pokud a pouze v případě `StorageAccountKey` není zadán. Kontejner SAS pro přístup k objektům BLOB přidruženou k úloze. Zobrazit [úlohy umístit](/rest/api/storageimportexport/jobs#Jobs_CreateOrUpdate) pro jeho formát. Tento element je vynecháno z manifestu pro operace exportu.|  
-|`ClientCreator`|Řetězec|Určuje klienta, který vytvořil XML soubor. Tato hodnota není interpretována služby Import/Export.|  
+|`DriveId`|String|Identifikátor jedinečný jednotky pro jednotku. Identifikátor disku najdete pomocí dotazu na jednotce z důvodu jeho sériového čísla. Sériové číslo jednotky je obvykle vytištěno na straně mimo i na jednotce. `DriveID` Elementu musí být uvedena před jakoukoli `BlobList` element v souboru manifestu.|  
+|`StorageAccountKey`|String|Vyžadováno pro import úlohách Pokud a pouze v případě `ContainerSas` není zadán. Klíč účtu pro účet úložiště Azure přidruženou k úloze.<br /><br /> Tento element je vynecháno z manifestu pro operace exportu.|  
+|`ContainerSas`|String|Vyžadováno pro import úlohách Pokud a pouze v případě `StorageAccountKey` není zadán. Kontejner SAS pro přístup k objektům BLOB přidruženou k úloze. Zobrazit [úlohy umístit](/rest/api/storageimportexport/jobs#Jobs_CreateOrUpdate) pro jeho formát. Tento element je vynecháno z manifestu pro operace exportu.|  
+|`ClientCreator`|String|Určuje klienta, který vytvořil XML soubor. Tato hodnota není interpretována služby Import/Export.|  
 |`BlobList`|Vnořené – XML element|Obsahuje seznam objektů BLOB, které jsou součástí import nebo export úloh. Každý objekt blob v seznamu objektů blob sdílí stejné metadat a vlastností.|  
-|`BlobList/MetadataPath`|Řetězec|Volitelné. Určuje relativní cestu souboru na disku, který obsahuje výchozí metadata, která bude nastavena na objekty BLOB v seznamu objektů blob pro operaci importu. Tato metadata lze volitelně můžete přepsat na základě objektů blob pomocí objektů blob.<br /><br /> Tento element je vynecháno z manifestu pro operace exportu.|  
+|`BlobList/MetadataPath`|String|Volitelné. Určuje relativní cestu souboru na disku, který obsahuje výchozí metadata, která bude nastavena na objekty BLOB v seznamu objektů blob pro operaci importu. Tato metadata lze volitelně můžete přepsat na základě objektů blob pomocí objektů blob.<br /><br /> Tento element je vynecháno z manifestu pro operace exportu.|  
 |`BlobList/MetadataPath/@Hash`|Atribut řetězců|Určuje hodnotu hash MD5 Base16 kódovaný soubor metadat.|  
-|`BlobList/PropertiesPath`|Řetězec|Volitelné. Určuje relativní cestu souboru na disku, který obsahuje výchozí vlastnosti, které se nastaví na objekty BLOB v seznamu objektů blob pro operaci importu. Tyto vlastnosti lze volitelně můžete přepsat na základě objektů blob pomocí objektů blob.<br /><br /> Tento element je vynecháno z manifestu pro operace exportu.|  
+|`BlobList/PropertiesPath`|String|Volitelné. Určuje relativní cestu souboru na disku, který obsahuje výchozí vlastnosti, které se nastaví na objekty BLOB v seznamu objektů blob pro operaci importu. Tyto vlastnosti lze volitelně můžete přepsat na základě objektů blob pomocí objektů blob.<br /><br /> Tento element je vynecháno z manifestu pro operace exportu.|  
 |`BlobList/PropertiesPath/@Hash`|Atribut řetězců|Určuje hodnotu hash MD5 kódováním Base16 vlastnosti souboru.|  
 |`Blob`|Vnořené – XML element|Obsahuje informace o jednotlivých objektů blob v jednotlivých objektů blob v seznamu.|  
-|`Blob/BlobPath`|Řetězec|Relativní identifikátor URI objektu blob, počínaje název kontejneru. Pokud se objekt blob je v kořenovém kontejneru, musí začínat `$root`.|  
-|`Blob/FilePath`|Řetězec|Určuje relativní cestu k souboru na disku. Pro úlohy exportu cesta objektu blob se použije pro danou cestu k souboru, pokud je to možné, *například*, `pictures/bob/wild/desert.jpg` se exportují do `\pictures\bob\wild\desert.jpg`. Vzhledem k omezením název systému souborů NTFS, může být objekt blob, vyexportovali do souboru za cestu, která nebude vypadat podobně jako cesta objektu blob.|  
-|`Blob/ClientData`|Řetězec|Volitelné. Obsahuje komentáře od zákazníka. Tato hodnota není interpretována služby Import/Export.|  
+|`Blob/BlobPath`|String|Relativní identifikátor URI objektu blob, počínaje název kontejneru. Pokud se objekt blob je v kořenovém kontejneru, musí začínat `$root`.|  
+|`Blob/FilePath`|String|Určuje relativní cestu k souboru na disku. Pro úlohy exportu cesta objektu blob se použije pro danou cestu k souboru, pokud je to možné, *například*, `pictures/bob/wild/desert.jpg` se exportují do `\pictures\bob\wild\desert.jpg`. Vzhledem k omezením název systému souborů NTFS, může být objekt blob, vyexportovali do souboru za cestu, která nebude vypadat podobně jako cesta objektu blob.|  
+|`Blob/ClientData`|String|Volitelné. Obsahuje komentáře od zákazníka. Tato hodnota není interpretována služby Import/Export.|  
 |`Blob/Snapshot`|DateTime|Volitelné pro export úloh. Určuje identifikátor snímku snímek objektu blob exportované.|  
 |`Blob/Length`|Integer|Určuje celková délka objektu blob v bajtech. Hodnota může být až 200 GB pro objekt blob bloku a až 1 TB pro objekty blob stránky. Pro objekt blob stránky tato hodnota musí být násobkem 512.|  
-|`Blob/ImportDisposition`|Řetězec|Volitelné pro úlohy importu, tento parametr vynechán, export úloh. Určuje způsob, jakým služba Import/Export pracovat v případě úlohy importu kde objekt blob se stejným názvem už existuje. Pokud je tato hodnota vynechána z importu manifestu, výchozí hodnota je `rename`.<br /><br /> Hodnoty pro tento element:<br /><br /> -   `no-overwrite`: Pokud se stejným názvem již existuje cílový objekt blob, se operace importu se přeskočí, import tohoto souboru.<br />-   `overwrite`: Všechny stávající cílový objekt blob je úplně přepsán nově importovaného souboru.<br />-   `rename`: Tento nový objekt blob se odeslaly s upravený název.<br /><br /> Přejmenování pravidla vypadá takto:<br /><br /> – Pokud je název objektu blob nemůže obsahovat tečku, nový název je generován připojení `(2)` k původnímu názvu objektu blob; Pokud tento nový název také je v konfliktu s existujícím názvem objektu blob, pak `(3)` se připojí místo `(2)`; a tak dále.<br />– Pokud je název objektu blob obsahuje tečku, část po poslední bod je považován za název rozšíření. Podobně jako výše uvedeného postupu `(2)` je vložen před poslední tečku a vygenerovat nový název; v případě, že nový název stále je v konfliktu s existujícím objektu blob, název a potom služba se pokusí `(3)`, `(4)`, a tak dále, dokud nebude nalezen název jiné konfliktní.<br /><br /> Několik příkladů:<br /><br /> Objekt blob `BlobNameWithoutDot` se přejmenují na:<br /><br /> `BlobNameWithoutDot (2)  // if BlobNameWithoutDot exists`<br /><br /> `BlobNameWithoutDot (3)  // if both BlobNameWithoutDot and BlobNameWithoutDot (2) exist`<br /><br /> Objekt blob `Seattle.jpg` se přejmenují na:<br /><br /> `Seattle (2).jpg  // if Seattle.jpg exists`<br /><br /> `Seattle (3).jpg  // if both Seattle.jpg and Seattle (2).jpg exist`|  
+|`Blob/ImportDisposition`|String|Volitelné pro úlohy importu, tento parametr vynechán, export úloh. Určuje způsob, jakým služba Import/Export pracovat v případě úlohy importu kde objekt blob se stejným názvem už existuje. Pokud je tato hodnota vynechána z importu manifestu, výchozí hodnota je `rename`.<br /><br /> Hodnoty pro tento element:<br /><br /> -   `no-overwrite`: Pokud se stejným názvem již existuje cílový objekt blob, se operace importu přeskočí, import tohoto souboru.<br />-   `overwrite`: Všechny existující cílový objekt blob úplně přepsán nově importovaného souboru.<br />-   `rename`: Nový objekt blob se odeslaly s upravený název.<br /><br /> Přejmenování pravidla vypadá takto:<br /><br /> – Pokud je název objektu blob nemůže obsahovat tečku, nový název je generován připojení `(2)` k původnímu názvu objektu blob; Pokud tento nový název také je v konfliktu s existujícím názvem objektu blob, pak `(3)` se připojí místo `(2)`; a tak dále.<br />– Pokud je název objektu blob obsahuje tečku, část po poslední bod je považován za název rozšíření. Podobně jako výše uvedeného postupu `(2)` je vložen před poslední tečku a vygenerovat nový název; v případě, že nový název stále je v konfliktu s existujícím objektu blob, název a potom služba se pokusí `(3)`, `(4)`, a tak dále, dokud nebude nalezen název jiné konfliktní.<br /><br /> Několik příkladů:<br /><br /> Objekt blob `BlobNameWithoutDot` se přejmenují na:<br /><br /> `BlobNameWithoutDot (2)  // if BlobNameWithoutDot exists`<br /><br /> `BlobNameWithoutDot (3)  // if both BlobNameWithoutDot and BlobNameWithoutDot (2) exist`<br /><br /> Objekt blob `Seattle.jpg` se přejmenují na:<br /><br /> `Seattle (2).jpg  // if Seattle.jpg exists`<br /><br /> `Seattle (3).jpg  // if both Seattle.jpg and Seattle (2).jpg exist`|  
 |`PageRangeList`|Vnořené – XML element|Vyžaduje se pro objekt blob stránky.<br /><br /> Pro import určuje operaci, seznam rozsahů bajtů souboru k importu. Rozsah jednotlivých stránek je popsána posun a délka ve zdrojovém souboru, který popisuje rozsah stránek, společně s hodnotu hash MD5 oblasti. `Hash` Je vyžadován atribut celou stránku. Služba se ověří, že hodnota hash dat v objektu blob odpovídá Vypočítaný algoritmus hash MD5 z rozsahu stránek. Libovolný počet rozsahů slouží k popisu soubor pro import, s celkovou velikost až 1 TB. Všechny rozsahy stránek musí být seřazené podle posun a nejsou povoleny žádné překrytí.<br /><br /> Pro export operace, určuje sadu rozsahů bajtů objektu blob, které byly vyexportovány do jednotky.<br /><br /> Rozsahy stránek společně se může vztahovat pouze dílčí rozsahy objektu blob nebo souboru.  Zbývající část souboru, se nevztahuje libovolnou oblast stránky se očekává a její obsah může nedefinovaný.|  
 |`PageRange`|– Element XML|Představuje celou stránku.|  
 |`PageRange/@Offset`|Atribut, celé číslo|Určuje posun v přenosu souborů a objektů blob, kde začíná zadanou stránku rozsahu. Tato hodnota musí být násobkem 512.|  
@@ -122,9 +122,9 @@ Datové prvky a atributy ve formátu jednotka manifestu XML jsou uvedeny v násl
 |`Block/@Length`|Atribut, celé číslo|Určuje počet bajtů v bloku; Tato hodnota musí být více než 4MB.|  
 |`Block/@Id`|Atribut řetězců|Určuje řetězec představující ID bloku pro blok.|  
 |`Block/@Hash`|Atribut řetězců|Určuje algoritmus hash MD5 kódováním Base16 bloku.|  
-|`Blob/MetadataPath`|Řetězec|Volitelné. Určuje relativní cestu k souboru metadat. Během importu metadata nastavená na cílový objekt blob. Během operace exportu metadat objektu blob je uložen v souboru metadat na jednotce.|  
+|`Blob/MetadataPath`|String|Volitelné. Určuje relativní cestu k souboru metadat. Během importu metadata nastavená na cílový objekt blob. Během operace exportu metadat objektu blob je uložen v souboru metadat na jednotce.|  
 |`Blob/MetadataPath/@Hash`|Atribut řetězců|Určuje algoritmus hash MD5 Base16 kódovaný soubor metadat objektu blob.|  
-|`Blob/PropertiesPath`|Řetězec|Volitelné. Určuje relativní cestu k vlastnosti souboru. Během importu vlastnosti nastavují na cílový objekt blob. Během operace exportu jsou vlastnosti objektu blob uložené ve vlastnosti souboru na disku.|  
+|`Blob/PropertiesPath`|String|Volitelné. Určuje relativní cestu k vlastnosti souboru. Během importu vlastnosti nastavují na cílový objekt blob. Během operace exportu jsou vlastnosti objektu blob uložené ve vlastnosti souboru na disku.|  
 |`Blob/PropertiesPath/@Hash`|Atribut řetězců|Určuje algoritmus hash MD5 Base16 kódovaný soubor vlastností objektu blob.|  
   
 ## <a name="next-steps"></a>Další postup

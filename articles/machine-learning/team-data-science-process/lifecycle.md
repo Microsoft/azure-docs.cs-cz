@@ -6,17 +6,17 @@ author: marktab
 manager: cgronlun
 editor: cgronlun
 ms.service: machine-learning
-ms.component: team-data-science-process
+ms.subservice: team-data-science-process
 ms.topic: article
 ms.date: 11/04/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: a2a4a8c895bddb03271014c50f57b666faa0c2cc
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: 40d1af6e6258b5026853532f7963a76d4fc389db
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53135936"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55469222"
 ---
 # <a name="the-team-data-science-process-lifecycle"></a>Životní cyklus vědeckého zpracování týmových dat
 
@@ -43,9 +43,9 @@ Zde je vizuální znázornění životního cyklu TDSP:
 
 Pro každou fázi jsme zadejte následující informace:
 
-   * **Cíle**: specifické cíle.
+   * **Cíle**: Specifické cíle.
    * **Jak na to**: Přehled konkrétní úlohy a pokyny pro jejich provedení.
-   * **Artefakty**: výstupy a podporu k jejich vytvoření.
+   * **Artefakty**: Výstupy a podporu k jejich vytvoření.
 
 ## <a name="next-steps"></a>Další postup
 

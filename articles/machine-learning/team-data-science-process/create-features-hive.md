@@ -6,17 +6,17 @@ author: marktab
 manager: cgronlun
 editor: cgronlun
 ms.service: machine-learning
-ms.component: team-data-science-process
+ms.subservice: team-data-science-process
 ms.topic: article
 ms.date: 11/21/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 0ade4ac054f345084cf0bc0a6dc7885329eb8b9c
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: be95a75e7cdcaa11ef3e90093ef52c5615608eac
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53141879"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55458019"
 ---
 # <a name="create-features-for-data-in-a-hadoop-cluster-using-hive-queries"></a>Vytvoření funkcí pro data v clusteru Hadoop pomocí dotazů Hive
 Tento dokument ukazuje, jak vytvoření funkcí pro data uložená v clusteru Azure HDInsight Hadoop pomocí dotazů Hive. Tyto dotazy Hive pomocí vložených Hive User-Defined funkcí (UDF), skriptů, pro které jsou k dispozici.
@@ -136,10 +136,10 @@ Matematické rovnice, které vypočítá vzdálenost mezi dvěma souřadnice GPS
 
 Úplný seznam Hive UDF embedded najdete v **předdefinované funkce** části na <a href="https://cwiki.apache.org/confluence/display/Hive/LanguageManual+UDF#LanguageManualUDF-MathematicalFunctions" target="_blank">Apache Hive wiki</a>).  
 
-## <a name="tuning"></a> Pokročilá témata: parametry ladění Hive ke zlepšení rychlosti dotazu
+## <a name="tuning"></a> Pokročilá témata: Optimalizace parametrů Hive ke zlepšení rychlosti dotazu
 Výchozí nastavení parametrů clusteru Hive nemusí být vhodný pro dotazy Hive a data, která jsou zpracování dotazů. Tato část popisuje některé parametry, které můžou uživatelé naladit ke zlepšení výkonu dotazů Hive. Uživatelé musí přidat parametr dotazy před dotazy zpracování dat ladění.
 
-1. **Místo v haldě Java**: pro dotazy týkající se připojení k velké datové sady nebo zpracování dlouhé záznamy **nemá dostatek místa v haldě** je jedním z běžných chyb. Tato chyba se lze vyvarovat nastavením parametrů *mapreduce.map.java.opts* a *mapreduce.task.io.sort.mb* na požadované hodnoty. Zde naleznete příklad:
+1. **Místo v haldě Java**: Pro dotazy týkající se připojení k velké datové sady nebo zpracování dlouhé záznamy **nemá dostatek místa v haldě** je jedním z běžných chyb. Tato chyba se lze vyvarovat nastavením parametrů *mapreduce.map.java.opts* a *mapreduce.task.io.sort.mb* na požadované hodnoty. Zde naleznete příklad:
    
         set mapreduce.map.java.opts=-Xmx4096m;
         set mapreduce.task.io.sort.mb=-Xmx1024m;
@@ -151,11 +151,11 @@ Výchozí nastavení parametrů clusteru Hive nemusí být vhodný pro dotazy Hi
 
         set dfs.block.size=128m;
 
-2. **Optimalizace operace spojení v podregistru**: během operace spojení v rámci mapování/zmenšování obvykle můžou probíhat ve fázi snížit, v některých případech enormní nárůst se dá dosáhnout plánování spojení ve fázi mapy (také nazývané "mapjoins"). Chcete-li přímo Hive k tomu, kdykoli je to možné, nastavte:
+2. **Optimalizace operace spojení v podregistru**: Během operace spojení v rámci mapování/zmenšování obvykle můžou probíhat ve fázi snížit, v některých případech enormní nárůst lze dosáhnout plánování spojení ve fázi mapy (také nazývané "mapjoins"). Chcete-li přímo Hive k tomu, kdykoli je to možné, nastavte:
    
        set hive.auto.convert.join=true;
 
-3. **Určení počtu mapovačů Hive k**: Přestože Hadoop umožňuje uživateli nastavit počet reduktorů, počet mapovačů obvykle nesmí být nastavený uživatelem. Trik, který umožňuje určitý stupeň ovládací prvek na toto číslo je zvolit Hadoop proměnné *mapred.min.split.size* a *mapred.max.split.size* jako velikost každé mapování úkolu se určuje podle:
+3. **Určení počtu mapovačů Hive k**: Přestože Hadoop umožňuje uživateli nastavit počet reduktorů, počet mapovačů je obvykle nesmí být nastavený uživatelem. Trik, který umožňuje určitý stupeň ovládací prvek na toto číslo je zvolit Hadoop proměnné *mapred.min.split.size* a *mapred.max.split.size* jako velikost každé mapování úkolu se určuje podle:
    
         num_maps = max(mapred.min.split.size, min(mapred.max.split.size, dfs.block.size))
    

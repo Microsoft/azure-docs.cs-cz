@@ -6,16 +6,16 @@ author: acomet
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: overview
-ms.component: design
+ms.subservice: design
 ms.date: 04/17/2018
 ms.author: acomet
 ms.reviewer: igorstan
-ms.openlocfilehash: 4ef64b9d4e4e5c7f5a628359a8512dcb61b9c941
-ms.sourcegitcommit: 2b2129fa6413230cf35ac18ff386d40d1e8d0677
-ms.translationtype: HT
+ms.openlocfilehash: cede105f0bff9a65f88e06467e4d13419d389f04
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43245889"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55461555"
 ---
 # <a name="cheat-sheet-for-azure-sql-data-warehouse"></a>Tahák pro službu Azure SQL Data Warehouse
 Tento tahák obsahuje užitečné tipy a osvědčené postupy pro vytváření řešení Azure SQL Data Warehouse. Než začnete, přečtěte si článek [Vzory a antivzory úloh Azure SQL Data Warehouse](https://blogs.msdn.microsoft.com/sqlcat/2017/09/05/azure-sql-data-warehouse-workload-patterns-and-anti-patterns), který podrobně popisuje jednotlivé kroky a vysvětluje, co je služba SQL Data Warehouse, a co není.
@@ -50,7 +50,7 @@ Další informace o [migraci dat], [načítání dat] a [procesu extrakce, nač�
 
 Použijte následující strategie v závislosti na vlastnostech tabulek:
 
-| Typ | Skvěle se hodí pro...| Na co si dát pozor|
+| Type | Skvěle se hodí pro...| Na co si dát pozor|
 |:--- |:--- |:--- |
 | Replikované | • Malé tabulky dimenzí v hvězdicovém schématu s úložištěm menším než 2 GB po kompresi (přibližně 5násobná komprese) |• V tabulce se provádí velké množství transakcí zápisu (například vložení, operace upsert, odstranění, aktualizace).<br></br>• Často měníte zřizování jednotek datového skladu (DWU).<br></br>• Vaše tabulka obsahuje mnoho sloupců, ale používáte pouze 2 až 3 sloupce.<br></br>• Indexujete replikovanou tabulku. |
 | Kruhové dotazování (výchozí) | • Dočasná nebo pracovní tabulka<br></br> • Žádný zřejmý připojovací klíč ani vhodný sloupec |• Nízký výkon kvůli přesunům dat |
@@ -70,7 +70,7 @@ Další informace o [replikovaných tabulkách] a [distribuovaných tabulkách].
 
 Indexování je užitečné pro rychlé čtení tabulek. Existuje jedinečná sada technologií, které můžete použít podle svých potřeb:
 
-| Typ | Skvěle se hodí pro... | Na co si dát pozor|
+| Type | Skvěle se hodí pro... | Na co si dát pozor|
 |:--- |:--- |:--- |
 | Halda | • Pracovní nebo dočasná tabulka<br></br>• Malé tabulky s malým počtem hledání |• Každé hledání prochází celou tabulku. |
 | Clusterovaný index | • Tabulky obsahující až 100 milionů řádků<br></br>• Velké tabulky (více než 100 milionů řádků) obsahující pouze 1 až 2 často používané sloupce |• Používá se u replikované tabulky.<br></br>• Máte složité dotazy zahrnující několik operací spojení a seskupení.<br></br>• Provádíte aktualizace indexovaných sloupců, což zabírá paměť. |

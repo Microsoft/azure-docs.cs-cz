@@ -9,18 +9,22 @@ ms.topic: conceptual
 ms.reviewer: jmartens
 ms.author: tedway
 author: tedway
-ms.date: 12/06/2018
+ms.date: 1/29/2019
 ms.custom: seodec18
-ms.openlocfilehash: 59af9bef586393726222e8d4d306ea806e31efe3
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: a9c26a2a0eaf9c2669a71cdca729a6e64fe5cd5c
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 01/30/2019
-ms.locfileid: "55252077"
+ms.locfileid: "55301301"
 ---
 # <a name="deploy-a-model-as-a-web-service-on-an-fpga-with-azure-machine-learning-service"></a>Nasazení modelu jako webové služby na FPGA s využitím služby Azure Machine Learning
 
-Nasazení modelu jako webové služby na [pole programmable gate Array (FPGA)](concept-accelerate-with-fpgas.md).  Použití FPGA poskytuje mimořádně nízkou latenci odvozování, dokonce i s velikostí jedné dávce.   
+Nasazení modelu jako webové služby na [pole programmable gate Array (FPGA)](concept-accelerate-with-fpgas.md).  Použití FPGA poskytuje mimořádně nízkou latenci odvozování, dokonce i s velikostí jedné dávce.  Tyto modely jsou aktuálně k dispozici:
+  - ResNet 50
+  - ResNet 152
+  - DenseNet-121
+  - VGG-16   
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -34,10 +38,20 @@ Nasazení modelu jako webové služby na [pole programmable gate Array (FPGA)](c
 
     ```shell
     pip install --upgrade azureml-sdk[contrib]
-    ```  
+    ```
+
+  - Aktuálně pouze tensorflow verze < = 1.10 je podporováno, proto ji můžete nainstalovat po dokončení další instalace:
+
+    ```shell
+    pip install "tensorflow==1.10"
+    ```
+
+### <a name="get-the-notebook"></a>Získání poznámkového bloku
+
+Pro usnadnění práce je tento kurz k dispozici jako poznámkový blok Jupyter. Postupujte podle zde nebo spustit kód [Poznámkový blok rychlý Start](https://github.com/Azure/aml-real-time-ai/blob/master/notebooks/project-brainwave-quickstart.ipynb).
 
 ## <a name="create-and-deploy-your-model"></a>Vytvoření a nasazení modelu
-Vytvoření kanálu pro předzpracování vstupního obrázku vytrénovaných pomocí modelem ResNet 50 na FPGA a pak spusťte funkce prostřednictvím classifer školení na datové sadě ImageNet.
+Vytvoření kanálu pro předzpracování vstupního obrázku vytrénovaných pomocí modelem ResNet 50 na FPGA a pak spusťte funkce prostřednictvím třídění školení na datové sadě ImageNet.
 
 Postupujte podle pokynů:
 
@@ -69,7 +83,7 @@ print(image_tensors.shape)
 Inicializovat model a stáhněte si kontrolní bod TensorFlow kvantizované verze ResNet50 má být použit jako featurizer.
 
 ```python
-from azureml.contrib.brainwave.models import QuantizedResnet50, Resnet50
+from azureml.contrib.brainwave.models import QuantizedResnet50
 model_path = os.path.expanduser('~/models')
 model = QuantizedResnet50(model_path, is_frozen = True)
 feature_tensor = model.import_graph_def(image_tensors)
@@ -82,11 +96,11 @@ print(feature_tensor.shape)
 Na datové sadě ImageNet byla vyškolila tento třídění.
 
 ```python
-classifier_input, classifier_output = Resnet50.get_default_classifier(feature_tensor, model_path)
+classifier_output = model.get_default_classifier(feature_tensor)
 ```
 
 ### <a name="create-service-definition"></a>Vytvoření definice služby
-Teď, když máte definované předběžného zpracování obrazu, featurizer a třídění, na kterém běží ve službě, můžete vytvořit definice služby. Definice služby je sada soubory vygenerované z modelu, který je nasazený do FPGA služby. Definice služby se skládá z kanálu. Kanál je několika fází, které jsou spouštěny v pořadí.  Fáze TensorFlow, Keras fáze a fáze BrainWave jsou podporovány.  Fáze jsou spuštěny v pořadí na službu s výstupem každé fáze vstup do další fáze.
+Teď, když jste definovali předběžného zpracování obrazu, featurizer a třídění, na kterém běží ve službě, můžete vytvořit definice služby. Definice služby je sada soubory vygenerované z modelu, který je nasazený do FPGA služby. Definice služby se skládá z kanálu. Kanál je několika fází, které jsou spouštěny v pořadí.  Fáze TensorFlow, Keras fáze a fáze BrainWave jsou podporovány.  Fáze jsou spuštěny v pořadí na službu s výstupem každou z fází stávají vstup do další fáze.
 
 Chcete-li vytvořit fázi TensorFlow, zadejte relaci obsahující grafu (v tomto případě se používá výchozí graf) a vstupní a výstupní tensors do této fáze.  Tyto informace slouží k uložení grafu tak, aby ji můžete spustit ve službě.
 
@@ -94,13 +108,13 @@ Chcete-li vytvořit fázi TensorFlow, zadejte relaci obsahující grafu (v tomto
 from azureml.contrib.brainwave.pipeline import ModelDefinition, TensorflowStage, BrainWaveStage
 
 save_path = os.path.expanduser('~/models/save')
-model_def_path = os.path.join(save_path, 'service_def.zip')
+model_def_path = os.path.join(save_path, 'model_def.zip')
 
 model_def = ModelDefinition()
 with tf.Session() as sess:
     model_def.pipeline.append(TensorflowStage(sess, in_images, image_tensors))
     model_def.pipeline.append(BrainWaveStage(sess, model))
-    model_def.pipeline.append(TensorflowStage(sess, classifier_input, classifier_output))
+    model_def.pipeline.append(TensorflowStage(sess, feature_tensor, classifier_output))
     model_def.save(model_def_path)
     print(model_def_path)
 ```
@@ -129,7 +143,7 @@ except WebserviceException:
     image_config = BrainwaveImage.image_configuration()
     deployment_config = BrainwaveWebservice.deploy_configuration()
     service = Webservice.deploy_from_model(ws, service_name, [registered_model], image_config, deployment_config)
-    service.wait_for_deployment(true)
+    service.wait_for_deployment(True)
 ```
 
 ### <a name="test-the-service"></a>Testování služby

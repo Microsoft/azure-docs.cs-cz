@@ -2,20 +2,20 @@
 title: Rychlý start Azure – spuštění úlohy služby Batch – portál
 description: Můžete se rychle naučit, jak na webu Azure Portal spustit úlohu služby Batch.
 services: batch
-author: dlepow
+author: laurenhughes
 manager: jeconnoc
 ms.service: batch
 ms.devlang: na
 ms.topic: quickstart
 ms.date: 07/03/2018
-ms.author: danlep
+ms.author: lahugh
 ms.custom: mvc
-ms.openlocfilehash: 7daaf042d22ba4ac0369b732b586a3760d8cd51c
-ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
-ms.translationtype: HT
+ms.openlocfilehash: 4356ea57e73e063d18155611b8c11090aa11edb3
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37859570"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55471211"
 ---
 # <a name="quickstart-run-your-first-batch-job-in-the-azure-portal"></a>Rychlý start: Spuštění první úlohy služby Batch na webu Azure Portal
 
@@ -23,7 +23,7 @@ Tento rychlý start ukazuje, jak na webu Azure Portal vytvořit účet Batch, *f
 
 [!INCLUDE [quickstarts-free-trial-note.md](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="sign-in-to-azure"></a>Přihlášení k Azure 
+## <a name="sign-in-to-azure"></a>Přihlásit se k Azure 
 
 Přihlaste se k webu Azure Portal na adrese https://portal.azure.com.
 
@@ -131,7 +131,7 @@ Poplatky se účtují za fond, ve kterém jsou spuštěné uzly, i když nejsou 
 
 Pokud už je nepotřebujete, odstraňte skupinu prostředků, účet Batch a všechny související prostředky. Provedete to tak, že vyberete skupinu prostředků účtu Batch a vyberete **Odstranit skupinu prostředků**.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 V tomto rychlém startu jste vytvořili účet Batch, fond služby Batch a úlohu služby Batch. Úloha spustila ukázkové úkoly a prohlédli jste si výstup vytvořený v jednom z uzlů. Teď chápete klíčové koncepty služby Batch a můžete službu Batch vyzkoušet ve větším měřítku s úlohami, které víc odpovídají realitě. Další informace o službě Azure Batch najdete v dalších kurzech o službě Azure Batch. 
 

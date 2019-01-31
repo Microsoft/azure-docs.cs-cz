@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 12/17/2018
 ms.author: mbullwin
-ms.openlocfilehash: a8c371d9d221ac6232c9293f6ca3192f163dfacb
-ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
+ms.openlocfilehash: 115be0ad1b7dec44f036f6d50c2ac30ceba37ba7
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54156285"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55457084"
 ---
 # <a name="application-insights-frequently-asked-questions"></a>Application Insights: Nejčastější dotazy
 
@@ -245,42 +245,51 @@ Doporučujeme použít naše sady SDK a použít [rozhraní API sady SDK](../../
 
 ## <a name="can-i-monitor-an-intranet-web-server"></a>Můžete monitorovat webový server intranetu?
 
-Tady jsou dvě metody:
+Ano, ale budete muset povolit provoz do našich služeb výjimky brány firewall nebo proxy přesměrování.
+- QuickPulse `rt.services.visualstudio.com:443` 
+- ApplicationIdProvider `https://dc.services.visualstudio.com:443` 
+- TelemetryChannel `https://dc.services.visualstudio.com:443` 
 
-### <a name="firewall-door"></a>Dvířka knihovny brány firewall
 
-Povolit webový server k odesílání telemetrie na naše koncové body https://dc.services.visualstudio.com:443 a https://rt.services.visualstudio.com:443. 
+Projděte si náš seznam služeb a IP adres [tady](../../azure-monitor/app/ip-addresses.md).
 
-### <a name="proxy"></a>Proxy server
+### <a name="firewall-exception"></a>Výjimka brány firewall
 
-Směrování provozu ze serveru brány na vašem intranetu, přepsáním nastavení v souboru ApplicationInsights.config v příkladu. Pokud tyto vlastnosti "Koncového bodu" se nenachází v konfiguraci, tyto třídy pomocí výchozí hodnoty uvedené v následujícím příkladu.
+Povolit webový server k odesílání telemetrie na naše koncových bodů. 
 
-#### <a name="example-applicationinsightsconfig"></a>Příklad souboru ApplicationInsights.config:
+### <a name="proxy-redirect"></a>Přesměrování proxy
+
+Směrování provozu do brány ve vašem intranetu přepsáním koncových bodů v konfiguraci serveru.
+Pokud tyto vlastnosti "Koncového bodu" se nenachází v konfiguraci, tyto třídy použije výchozí hodnoty uvedené níže v souboru ApplicationInsights.config v příkladu. 
+
+Vaše brána by měl směrovat provoz na základní adresu naše koncového bodu. V konfiguraci, nahraďte výchozí hodnoty s `http://<your.gateway.address>/<relative path>`.
+
+
+#### <a name="example-applicationinsightsconfig-with-default-endpoints"></a>Příklad souboru ApplicationInsights.config s výchozí koncové body:
 ```xml
 <ApplicationInsights>
+  ...
+  <TelemetryModules>
+    <Add Type="Microsoft.ApplicationInsights.Extensibility.PerfCounterCollector.QuickPulse.QuickPulseTelemetryModule, Microsoft.AI.PerfCounterCollector"/>
+      <QuickPulseServiceEndpoint>https://rt.services.visualstudio.com/QuickPulseService.svc</QuickPulseServiceEndpoint>
+    </Add>
+  </TelemetryModules>
     ...
-    <TelemetryChannel>
-         <EndpointAddress>https://dc.services.visualstudio.com/v2/track</EndpointAddress>
-    </TelemetryChannel>
-    ...
-    <ApplicationIdProvider Type="Microsoft.ApplicationInsights.Extensibility.Implementation.ApplicationId.ApplicationInsightsApplicationIdProvider, Microsoft.ApplicationInsights">
-        <ProfileQueryEndpoint>https://dc.services.visualstudio.com/api/profiles/{0}/appId</ProfileQueryEndpoint>
-    </ApplicationIdProvider>
-    ...
+  <TelemetryChannel>
+     <EndpointAddress>https://dc.services.visualstudio.com/v2/track</EndpointAddress>
+  </TelemetryChannel>
+  ...
+  <ApplicationIdProvider Type="Microsoft.ApplicationInsights.Extensibility.Implementation.ApplicationId.ApplicationInsightsApplicationIdProvider, Microsoft.ApplicationInsights">
+    <ProfileQueryEndpoint>https://dc.services.visualstudio.com/api/profiles/{0}/appId</ProfileQueryEndpoint>
+  </ApplicationIdProvider>
+  ...
 </ApplicationInsights>
 ```
 
 _Poznámka: ApplicationIdProvider je k dispozici od v2.6.0_
 
-Vaše brána by měl směrovat provoz do https://dc.services.visualstudio.com:443
 
-Nahraďte hodnoty vyšší než: `http://<your.gateway.address>/<relative path>`
  
-Příklad: 
-```
-http://<your.gateway.endpoint>/v2/track 
-http://<your.gateway.endpoint>/api/profiles/{0}/apiId
-```
 
 ## <a name="can-i-run-availability-web-tests-on-an-intranet-server"></a>Můžete spustit testy dostupnosti webu na intranetový server?
 

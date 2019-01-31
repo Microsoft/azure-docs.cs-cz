@@ -12,12 +12,12 @@ ms.author: jrasnick
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 10/22/2018
-ms.openlocfilehash: a87f3861a74bbc7a482423d5f2a2f1b859f83a10
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.openlocfilehash: 1f3aaf34283f4e7c81f97b8e2ec4987749f3935c
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53604425"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55465278"
 ---
 # <a name="monitoring-performance-azure-sql-database-using-dynamic-management-views"></a>Monitorování výkonu Azure SQL Database pomocí zobrazení dynamické správy
 
@@ -131,8 +131,8 @@ ORDER BY end_time DESC;
 
 Pokud byl dosažen limit vstupně-výstupních operací, máte dvě možnosti:
 
-- Možnost 1: Upgrade velikosti výpočetního nebo úroveň služby
-- Možnost 2: Identifikujte a vyladění dotazů využívání většina vstupně-výstupních operací.
+- Option 1: Upgrade velikosti výpočetního nebo úroveň služby
+- Option 2: Identifikujte a vyladění dotazů využívání většina vstupně-výstupních operací.
 
 #### <a name="view-buffer-related-io-using-the-query-store"></a>Zobrazit související vyrovnávací paměti vstupně-výstupních operací pomocí Query Store
 
@@ -549,7 +549,7 @@ Ostatní typy aplikací může do stejného grafu interpretují odlišně. Např
 Azure SQL Database zpřístupňuje využívat informace o prostředku pro každou databázi aktivní **sys.resource_stats** zobrazení **hlavní** databází v každém serveru. Zobrazují se data v tabulce pro 5minutových intervalech. S úrovní služeb Basic, Standard a Premium dat může trvat více než 5 minut se zobrazí v tabulce, takže tato data je užitečnější pro historické analýzy spíše než analýzy téměř v reálném čase. Dotaz **sys.resource_stats** zobrazení nedávné historie databáze a ověřit, jestli se rezervace jste zvolili doručit výkonu chcete, aby v případě potřeby.
 
 > [!NOTE]
-> Musíte být připojeni k **hlavní** databáze logického serveru databáze SQL k dotazování **sys.resource_stats** v následujících příkladech.
+> Musíte být připojeni k **hlavní** databázi vašeho serveru databáze SQL k dotazování **sys.resource_stats** v následujících příkladech.
 
 Tento příklad ukazuje, jak vystavit data v tomto zobrazení:
 

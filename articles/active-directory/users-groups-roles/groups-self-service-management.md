@@ -13,13 +13,13 @@ ms.topic: get-started-article
 ms.date: 01/28/2019
 ms.author: curtand
 ms.reviewer: krbain
-ms.custom: it-pro;seo-update-jan
-ms.openlocfilehash: 6402b2f9b76f476e72cc017f9b2461cb3366b4cc
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.custom: it-pro;seo-update-azuread-jan
+ms.openlocfilehash: 2880e4e32d5a5e3d96b40fa4b696b9853e7b5e89
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55191495"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55296156"
 ---
 # <a name="set-up-azure-active-directory-for-self-service-group-management"></a>Nastavení služby Azure Active Directory pro samoobslužnou správu skupin
 

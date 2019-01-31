@@ -11,13 +11,13 @@ author: sachinpMSFT
 ms.author: sachinp
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 10/22/2018
-ms.openlocfilehash: 5e24ec6124b6a5f7dea66e33018dffc753966075
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.date: 01/25/2019
+ms.openlocfilehash: 911380539e3558e8bb1384449e415a6f0c1cd69b
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53141964"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55465227"
 ---
 # <a name="dtu-based-service-tiers"></a>Úrovně služeb na základě DTU
 
@@ -72,7 +72,7 @@ Výpočetní velikosti se vyjadřují v jednotky transakcí databáze (Dtu) pro 
 ||||||
 
 > [!IMPORTANT]
-> Více než 1 TB úložiště na úrovni Premium je aktuálně k dispozici ve všech oblastech kromě následujících: západní USA – střed, Čína – východ, USDoDCentral, Německo – střed, USDoDEast, USA (gov) – jihozápad, USGov Iowa, Německo-severovýchod, Čína – sever. V ostatních oblastech je úložiště na úrovni Premium omezeno na 1 TB. Viz [Aktuální omezení pro P11–P15](sql-database-dtu-resource-limits-single-databases.md#single-database-limitations-of-p11-and-p15-when-the-maximum-size-greater-than-1-tb).  
+> Více než 1 TB úložiště na úrovni Premium je aktuálně k dispozici ve všech oblastech kromě následujících: Střed USA – Západ, Čína – východ, USDoDCentral, Německo – střed, USDoDEast, USA (gov) – jihozápad, USGov Iowa, Německo – severovýchod, Čína – sever. V ostatních oblastech je úložiště na úrovni Premium omezeno na 1 TB. Viz [Aktuální omezení pro P11–P15](sql-database-dtu-resource-limits-single-databases.md#single-database-limitations-of-p11-and-p15-when-the-maximum-size-greater-than-1-tb).  
 > [!IMPORTANT]
 > Za určitých okolností budete muset zmenšit databázi uvolnění nevyužívaného místa. Další informace najdete v tématu [spravovat místo souborů ve službě Azure SQL Database](sql-database-file-space-management.md).
 

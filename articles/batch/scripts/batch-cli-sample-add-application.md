@@ -3,7 +3,7 @@ title: Ukázkový skript Azure CLI – Přidání aplikace ve službě Batch | M
 description: Ukázkový skript Azure CLI – Přidání aplikace ve službě Batch
 services: batch
 documentationcenter: ''
-author: dlepow
+author: laurenhughes
 manager: jeconnoc
 editor: ''
 ms.assetid: ''
@@ -13,13 +13,13 @@ ms.topic: sample
 ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 01/29/2018
-ms.author: danlep
-ms.openlocfilehash: a407522e1c5e674dcaee2a4bf019bc858668969a
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
-ms.translationtype: HT
+ms.author: lahugh
+ms.openlocfilehash: a2abcfeee6fe1a08e2b02ff87e75217daddcfad4
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46968726"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55472265"
 ---
 # <a name="cli-example-add-an-application-to-an-azure-batch-account"></a>Příklad rozhraní příkazového řádku: Přidání aplikace do účtu Azure Batch
 
@@ -57,6 +57,6 @@ Každý příkaz v tabulce odkazuje na příslušnou část dokumentace.
 | [az batch application set](/cli/azure/batch/application#az-batch-application-set) | Aktualizuje vlastnosti aplikace.  |
 | [az group delete](/cli/azure/group#az-group-delete) | Odstraní skupinu prostředků včetně všech vnořených prostředků. |
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Další informace o Azure CLI najdete v [dokumentaci k Azure CLI](https://docs.microsoft.com/cli/azure).

@@ -7,14 +7,14 @@ ms.topic: conceptual
 ms.date: 10/20/2018
 ms.author: mjbrown
 ms.reviewer: sngun
-ms.openlocfilehash: 52f08511d16e216ced7e3d1de11eae960cdbaeb8
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: f56b1b06e8be46c1a111e920cfb98bc58d4f6636
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54041862"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55466859"
 ---
-# <a name="availability-and-performance-tradeoffs-for-various-consistency-levels-in-azure-cosmos-db"></a>Dostupnost a výkon kompromisy pro různé úrovně konzistence ve službě Azure Cosmos DB
+# <a name="consistency-availability-and-performance-tradeoffs"></a>Kompromisy konzistencí, dostupností a výkonem 
 
 Distribuované databáze, které závisí na replikaci pro vysokou dostupnost a nízkou latencí musíte dělat kompromisy. Nevýhody jsou mezi konzistence čtení a dostupnosti, latence a propustnosti. 
 
@@ -50,4 +50,4 @@ Další informace o globální distribuci a obecné konzistence kompromisů v di
 
 * [Konzistence kompromisy v návrhu systémy moderní distribuované databáze](https://www.computer.org/web/csdl/index/-/csdl/mags/co/2012/02/mco2012020037-abs.html)
 * [Vysoká dostupnost](high-availability.md)
-* [SLA služby Azure Cosmos DB](https://azure.microsoft.com/support/legal/sla/cosmos-db/v1_2/)
+* [Azure Cosmos DB SLA](https://azure.microsoft.com/support/legal/sla/cosmos-db/v1_2/)

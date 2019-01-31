@@ -1,6 +1,6 @@
 ---
 title: Příklad PowerShellu – Aktivní geografická replikace databáze SQL Azure ve fondu | Microsoft Docs
-description: Ukázkový skript Azure PowerShellu, který nastaví aktivní geografickou replikaci pro databázi SQL Azure ve fondu a převezme její služby při selhání.
+description: Ukázkový skript Azure Powershellu nastavit aktivní geografickou replikaci pro databázi ve fondu ve službě Azure SQL Database a převzetí služeb při selhání.
 services: sql-database
 ms.service: sql-database
 ms.subservice: high-availability
@@ -11,17 +11,17 @@ author: mashamsft
 ms.author: mathoma
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 01/17/2019
-ms.openlocfilehash: c108cf57f5db87a7dc6144e5b202a5c6215164a6
-ms.sourcegitcommit: 9f07ad84b0ff397746c63a085b757394928f6fc0
+ms.date: 01/25/2019
+ms.openlocfilehash: 15949ce7263ee3817c9ff0265b21c6b8d6578230
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54388259"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55478300"
 ---
-# <a name="use-powershell-to-configure-active-geo-replication-for-a-pooled-azure-sql-database"></a>Konfigurace aktivní geografické replikace pro databázi SQL Azure ve fondu pomocí PowerShellu
+# <a name="use-powershell-to-configure-active-geo-replication-for-a-pooled-database-in-azure-sql-database"></a>Konfigurace aktivní geografické replikace pro databázi ve fondu ve službě Azure SQL Database pomocí Powershellu
 
-Tento ukázkový skript PowerShellu nakonfiguruje aktivní geografickou replikaci pro databázi SQL Azure v elastickém fondu a převezme její služby při selhání do sekundární repliky databáze SQL Azure.
+Tento ukázkový skript Powershellu nakonfiguruje aktivní geografickou replikaci pro databázi ve fondu ve službě Azure SQL Database a selhání na sekundární repliku databáze.
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 [!INCLUDE [cloud-shell-powershell.md](../../../includes/cloud-shell-powershell.md)]
@@ -48,9 +48,9 @@ Tento skript používá následující příkazy. Každý příkaz v tabulce odk
 | Příkaz | Poznámky |
 |---|---|
 | [New-AzureRmResourceGroup](/powershell/module/azurerm.resources/new-azurermresourcegroup) | Vytvoří skupinu prostředků, ve které se ukládají všechny prostředky. |
-| [New-AzureRmSqlServer](/powershell/module/azurerm.sql/new-azurermsqlserver) | Vytvoří logický server, který je hostitelem databáze nebo elastického fondu. |
-| [New-AzureRmSqlElasticPool](/powershell/module/azurerm.sql/new-azurermsqlelasticpool) | Vytvoří v rámci logického serveru elastický fond. |
-| [New-AzureRmSqlDatabase](/powershell/module/azurerm.sql/new-azurermsqldatabase) | Vytvoří databázi na logickém serveru jako izolovanou databázi nebo databázi ve fondu. |
+| [New-AzureRmSqlServer](/powershell/module/azurerm.sql/new-azurermsqlserver) | Vytvoří server služby SQL Database, který je hostitelem izolovaných databází a elastických fondů. |
+| [New-AzureRmSqlElasticPool](/powershell/module/azurerm.sql/new-azurermsqlelasticpool) | Vytvoří elastický fond. |
+| [New-AzureRmSqlDatabase](/powershell/module/azurerm.sql/new-azurermsqldatabase) | Vytvoří izolovanou databázi nebo databázi ve fondu. |
 | [Set-AzureRmSqlDatabase](/powershell/module/azurerm.sql/set-azurermsqldatabase) | Aktualizuje vlastnosti databáze nebo přesune databázi do nebo z elastického fondu nebo mezi elastickými fondy. |
 | [New-AzureRmSqlDatabaseSecondary](/powershell/module/azurerm.sql/new-azurermsqldatabasesecondary)| Vytvoří sekundární databázi pro existující databázi a spustí replikaci dat. |
 | [Get-AzureRmSqlDatabase](/powershell/module/azurerm.sql/get-azurermsqldatabase)| Získá jednu nebo více databází. |

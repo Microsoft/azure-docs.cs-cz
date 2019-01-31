@@ -12,13 +12,13 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
 manager: craigg
-ms.date: 12/10/2018
-ms.openlocfilehash: 3b3f1268866c936ae4674188f8e3297702167415
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.date: 01/25/2019
+ms.openlocfilehash: b3b48c923b10fc201c5ac06b2dd805ee8638a18c
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53599429"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55473421"
 ---
 # <a name="overview-of-business-continuity-with-azure-sql-database"></a>Přehled provozní kontinuity se službou Azure SQL Database
 
@@ -46,7 +46,7 @@ Potom se dozvíte další mechanismy, které můžete použít k zotavení z ni�
 
 - [Dočasné tabulky](sql-database-temporal-tables.md) vám umožní obnovit verze řádků z libovolného bodu v čase.
 - [Integrované automatické zálohování](sql-database-automated-backups.md) a [obnovení k časovému okamžiku](sql-database-recovery-using-backups.md#point-in-time-restore) umožňuje obnovit kompletní databáze do určitého bodu v čase za posledních 35 dnů.
-- Je možné [obnovení odstraněné databáze](sql-database-recovery-using-backups.md#deleted-database-restore) do bodu, ve kterém byl odstraněn, pokud **logický server, nebyla Odstraněná**.
+- Je možné [obnovení odstraněné databáze](sql-database-recovery-using-backups.md#deleted-database-restore) do bodu, ve kterém byl odstraněn, pokud **databáze SQL serveru, nebyla Odstraněná**.
 - [Dlouhodobé uchovávání záloh](sql-database-long-term-retention.md) umožňuje držet krok zálohy na 10 let.
 - [Aktivní geografická replikace](sql-database-active-geo-replication.md) vám umožní vytvořit čitelné repliky a ruční převzetí služeb při selhání pro všechny repliky v případě upgrade na data center výpadku nebo aplikace.
 - [Automatické převzetí služeb při selhání skupiny](sql-database-auto-failover-group.md#auto-failover-group-terminology-and-capabilities) umožňuje aplikaci automaticky obnovení v případě výpadku datového centra.
@@ -59,11 +59,11 @@ Následující tabulka porovnává ERT a RPO pro každou vrstvu služby pro tři
 | --- | --- | --- | --- |--- |--- |
 | Obnovení k určitému bodu v čase ze zálohy |Libovolný bod obnovení do 7 dní |Libovolný bod obnovení do 35 dní |Libovolný bod obnovení do 35 dní |Libovolný bod obnovení v rámci nakonfigurované doby (až po 35 dnů)|Libovolný bod obnovení v rámci nakonfigurované doby (až po 35 dnů)|
 | Geografické obnovení z geograficky replikovaných záloh |ERT < 12 h<br> RPO < 1 h |ERT < 12 h<br>RPO < 1 h |ERT < 12 h<br>RPO < 1 h |ERT < 12 h<br>RPO < 1 h|ERT < 12 h<br>RPO < 1 h|
-| Skupiny automatického převzetí služeb při selhání |RTO = 1 hodina<br>RPO < 5 s |RTO = 1 hodina<br>RPO < 5 s |RTO = 1 hodina<br>RPO < 5 s |RTO = 1 hodina<br>RPO < 5 s|RTO = 1 hodina<br>RPO < 5 s|
+| Skupiny automatického převzetí služeb při selhání |RTO = 1 h<br>RPO < 5s |RTO = 1 h<br>RPO < 5 s |RTO = 1 h<br>RPO < 5 s |RTO = 1 h<br>RPO < 5 s|RTO = 1 h<br>RPO < 5 s|
 
 ## <a name="recover-a-database-to-the-existing-server"></a>Obnovení databáze do existujícího serveru
 
-SQL Database automaticky provádí kombinaci zálohování úplné databáze každý týden, všeobecně přijatá každých 12 hodin rozdílovými zálohami a zálohami protokolů každých 5 až 10 minut. Chcete-li chránit vaši firmu před ztrátou dat transakcí. Zálohy jsou uložené v úložišti RA-GRS po dobu 35 dní pro všechny úrovně služby s výjimkou základních jednotek DTU úrovně služeb ukládat zálohy po dobu 7 dní. Další informace najdete v tématu [automatické zálohování databází](sql-database-automated-backups.md). Můžete obnovit existující databáze formulář automatizovaných záloh k dřívějšímu bodu v čase jako novou databázi na stejném logickém serveru pomocí webu Azure portal, Powershellu nebo rozhraní REST API. Další informace najdete v tématu [v daném okamžiku obnovení](sql-database-recovery-using-backups.md#point-in-time-restore).
+SQL Database automaticky provádí kombinaci zálohování úplné databáze každý týden, všeobecně přijatá každých 12 hodin rozdílovými zálohami a zálohami protokolů každých 5 až 10 minut. Chcete-li chránit vaši firmu před ztrátou dat transakcí. Zálohy jsou uložené v úložišti RA-GRS po dobu 35 dní pro všechny úrovně služby s výjimkou základních jednotek DTU úrovně služeb ukládat zálohy po dobu 7 dní. Další informace najdete v tématu [automatické zálohování databází](sql-database-automated-backups.md). Můžete obnovit existující databáze formulář automatizovaných záloh k dřívějšímu bodu v čase jako novou databázi na stejný server SQL Database pomocí webu Azure portal, Powershellu nebo rozhraní REST API. Další informace najdete v tématu [v daném okamžiku obnovení](sql-database-recovery-using-backups.md#point-in-time-restore).
 
 Pokud maximální podporované v daném okamžiku obnovit (PITR) doba uchovávání není pro vaši aplikaci dostatečná, můžete ji rozšířit konfigurací zásad dlouhodobého uchovávání (LTR) pro databáze. Další informace najdete v tématu [dlouhodobého uchovávání záloh](sql-database-long-term-retention.md).
 

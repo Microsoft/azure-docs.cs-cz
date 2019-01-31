@@ -6,17 +6,17 @@ author: marktab
 manager: cgronlun
 editor: cgronlun
 ms.service: machine-learning
-ms.component: team-data-science-process
+ms.subservice: team-data-science-process
 ms.topic: article
 ms.date: 11/04/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: be257b49e5ad5acc47a6daeec203e8513995e52e
-ms.sourcegitcommit: 9f07ad84b0ff397746c63a085b757394928f6fc0
+ms.openlocfilehash: be953621dbadee74361b2170c2a532cfec6ef77a
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54390942"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55477845"
 ---
 # <a name="create-hive-tables-and-load-data-from-azure-blob-storage"></a>Vytváření tabulek Hive a načtení dat z úložiště objektů Blob v Azure
 
@@ -25,12 +25,12 @@ Tento článek představuje obecné dotazy Hive, které vytváření tabulek Hiv
 ## <a name="prerequisites"></a>Požadavky
 Tento článek předpokládá, že máte:
 
-* Vytvoření účtu služby Azure storage. Pokud potřebujete získat pokyny, přečtěte si téma [účty Azure storage](../../storage/common/storage-create-storage-account.md).
-* Zřídit vlastní cluster Hadoop ve službě HDInsight.  Pokud potřebujete získat pokyny, přečtěte si téma [přizpůsobit Azure HDInsight Hadoop clusterů pro pokročilou analýzu](customize-hadoop-cluster.md).
-* Povolený vzdálený přístup ke clusteru, přihlášení a otevřít konzolu příkazového řádku Hadoopu. Pokud potřebujete získat pokyny, přečtěte si téma [přístup k hlavní uzel z clusteru Hadoop](customize-hadoop-cluster.md).
+* Vytvoření účtu služby Azure storage. Pokud potřebujete získat pokyny, přečtěte si téma [účty Azure storage](../../storage/common/storage-introduction.md).
+* Zřídit vlastní cluster Hadoop ve službě HDInsight.  Pokud potřebujete získat pokyny, přečtěte si téma [nastavení clusterů v HDInsight](../../hdinsight/hdinsight-hadoop-provision-linux-clusters.md).
+* Povolený vzdálený přístup ke clusteru, přihlášení a otevřít konzolu příkazového řádku Hadoopu. Pokud potřebujete získat pokyny, přečtěte si téma [spravovat Apache Hadoop clusterů](../../hdinsight/hdinsight-administer-use-portal-linux.md).
 
 ## <a name="upload-data-to-azure-blob-storage"></a>Nahrání dat do úložiště objektů blob v Azure
-Pokud jste vytvořili virtuální počítač Azure podle pokynů uvedených v [nastavení virtuálního počítače Azure pro pokročilou analýzu](../data-science-virtual-machine/setup-virtual-machine.md), tento soubor skriptu by byly staženy do *C:\\uživatelů \\ \<uživatelské jméno\>\\dokumenty\\Data Science skripty* adresář na virtuálním počítači. Zapojte své vlastní schéma dat a konfigurace úložiště objektů blob v Azure do příslušných polí bude připravené k odeslání vyžadují jenom tyto dotazy Hive.
+Pokud jste vytvořili virtuální počítač Azure podle pokynů uvedených v [nastavení virtuálního počítače Azure pro pokročilou analýzu](../../machine-learning/data-science-virtual-machine/overview.md), tento soubor skriptu by byly staženy do *C:\\uživatelů \\ \<uživatelské jméno\>\\dokumenty\\Data Science skripty* adresář na virtuálním počítači. Zapojte své vlastní schéma dat a konfigurace úložiště objektů blob v Azure do příslušných polí bude připravené k odeslání vyžadují jenom tyto dotazy Hive.
 
 Předpokládáme, že data do tabulek Hive je v **nekomprimované** formátu tabulky a že je nahraná data na výchozí hodnotu (a další) kontejneru účtu úložiště používá Hadoop cluster.
 
@@ -38,7 +38,7 @@ Pokud chcete postup na **Data o jízdách taxislužby NYC**, budete muset:
 
 * **Stáhněte si** 24 [Data o jízdách taxislužby NYC](http://www.andresmh.com/nyctaxitrips) soubory (12 cesty a 12 tarif souborů)
 * **Rozbalte** všechny soubory do souborů CSV a pak
-* **Nahrát** je výchozí (nebo odpovídajícího kontejneru), který byl vytvořen pomocí postupu uvedeného v účtu úložiště Azure [přizpůsobit Azure HDInsight Hadoop clusterů pro pokročilé analýzy procesu a technologie](customize-hadoop-cluster.md)tématu. Postup nahrání souborů CSV do výchozí kontejner v účtu úložiště najdete v tomto [stránky](hive-walkthrough.md#upload).
+* **Nahrát** výchozí (nebo odpovídajícího kontejneru) služby Azure storage je účet, možnosti pro uvedený účet zobrazí v [použití Azure storage s clustery Azure HDInsight](../../hdinsight/hdinsight-hadoop-use-blob-storage.md) tématu. Postup nahrání souborů CSV do výchozí kontejner v účtu úložiště najdete v tomto [stránky](hive-walkthrough.md#upload).
 
 ## <a name="submit"></a>Postup odesílání dotazů Hive
 Dotazy Hive můžete odeslat pomocí:

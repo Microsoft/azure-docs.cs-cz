@@ -11,13 +11,13 @@ author: VanMSFT
 ms.author: vanto
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 01/03/2019
-ms.openlocfilehash: e4079a4dcaadab8e9cea0cc1b30a609a091e5937
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.date: 01/25/2019
+ms.openlocfilehash: 0579746bc4dc554fd7e082f6258f2c13ce22f69b
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54035266"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55477671"
 ---
 # <a name="azure-sql-database-and-sql-data-warehouse-firewall-rules"></a>Azure SQL Database a SQL Data Warehouse pravidla brány firewall
 
@@ -47,11 +47,11 @@ Pokusy o připojení z internetu a z Azure musí nejdříve projít přes bránu
 
 - **Pravidla brány firewall na úrovni serveru:**
 
-  Tato pravidla umožňují klientům přístup k celému serveru Azure SQL, to znamená, že všechny databáze v rámci stejného logického serveru. Tato pravidla se ukládají v **hlavní** databázi. Pravidla brány firewall na úrovni serveru můžete konfigurovat pomocí portálu nebo pomocí příkazů jazyka Transact-SQL. Pokud chcete vytvořit pravidla brány firewall na úrovni serveru pomocí portálu Azure Portal nebo PowerShellu, musíte být vlastníkem nebo přispěvatelem předplatného. Pokud chcete vytvořit pravidlo brány firewall na úrovni serveru pomocí příkazu Transact-SQL, musíte se připojit k instanci služby SQL Database jako přihlášení objektu zabezpečení nebo správce Azure Active Directory (to znamená, že musí být pravidlo brány firewall na úrovni serveru nejdřív vytvořené uživatelem s oprávněními na úrovni Azure).
+  Tato pravidla umožňují klientům přístup k celému serveru Azure SQL, to znamená, že všem databázím na stejném serveru SQL Database. Tato pravidla se ukládají v **hlavní** databázi. Pravidla brány firewall na úrovni serveru můžete konfigurovat pomocí portálu nebo pomocí příkazů jazyka Transact-SQL. Pokud chcete vytvořit pravidla brány firewall na úrovni serveru pomocí portálu Azure Portal nebo PowerShellu, musíte být vlastníkem nebo přispěvatelem předplatného. Pokud chcete vytvořit pravidlo brány firewall na úrovni serveru pomocí příkazu Transact-SQL, musíte se připojit k instanci služby SQL Database jako přihlášení objektu zabezpečení nebo správce Azure Active Directory (to znamená, že musí být pravidlo brány firewall na úrovni serveru nejdřív vytvořené uživatelem s oprávněními na úrovni Azure).
 
 - **Pravidla brány firewall na úrovni databáze:**
 
-  Tato pravidla umožňují klientům přístup k určitým (zabezpečeným) databázím na stejném logickém serveru. Můžete vytvořit tato pravidla pro každou databázi (včetně **hlavní** databáze) a jsou uloženy v jednotlivých databázích. Pravidla brány firewall na úrovni databáze pro hlavní a uživatelské databáze může pouze vytvořit a spravovat pomocí příkazů jazyka Transact-SQL a pouze po nakonfigurování první brány firewall na úrovni serveru. Pokud v pravidlu brány firewall na úrovni databáze zadáte rozsah IP adres, který je mimo rozsah zadaný v pravidlu brány firewall na úrovni serveru, budou mít k dané databázi přístup pouze klienti, jejichž IP adresa je v rozsahu na úrovni databáze. Pro jednu databázi můžete mít maximálně 128 pravidel brány firewall na úrovni databáze. Další informace o konfiguraci pravidel brány firewall na úrovni databáze, podívejte se na příklad dále v tomto článku a v tématu [sp_set_database_firewall_rule (Azure SQL Database)](https://msdn.microsoft.com/library/dn270010.aspx).
+  Tato pravidla umožňují klientům přístup k určitým (zabezpečeným) databázím na stejném serveru SQL Database. Můžete vytvořit tato pravidla pro každou databázi (včetně **hlavní** databáze) a jsou uloženy v jednotlivých databázích. Pravidla brány firewall na úrovni databáze pro hlavní a uživatelské databáze může pouze vytvořit a spravovat pomocí příkazů jazyka Transact-SQL a pouze po nakonfigurování první brány firewall na úrovni serveru. Pokud v pravidlu brány firewall na úrovni databáze zadáte rozsah IP adres, který je mimo rozsah zadaný v pravidlu brány firewall na úrovni serveru, budou mít k dané databázi přístup pouze klienti, jejichž IP adresa je v rozsahu na úrovni databáze. Pro jednu databázi můžete mít maximálně 128 pravidel brány firewall na úrovni databáze. Další informace o konfiguraci pravidel brány firewall na úrovni databáze, podívejte se na příklad dále v tomto článku a v tématu [sp_set_database_firewall_rule (Azure SQL Database)](https://msdn.microsoft.com/library/dn270010.aspx).
 
 ### <a name="recommendation"></a>Doporučení
 
@@ -94,7 +94,7 @@ Pro zvýšení výkonu se pravidla brány firewall na úrovni serveru dočasně 
 
 ## <a name="manage-firewall-rules-using-the-azure-portal"></a>Správa pravidel brány firewall pomocí webu Azure portal
 
-Pokud chcete nastavit pravidlo brány firewall na úrovni serveru na webu Azure Portal, můžete buď přejít na stránku přehled pro vaši databázi Azure SQL nebo na stránce Přehled logického serveru Azure Database.
+Pokud chcete nastavit pravidlo brány firewall na úrovni serveru na webu Azure Portal, můžete buď přejít na stránku přehled pro vaši databázi Azure SQL nebo na stránce Přehled pro váš server SQL Database.
 
 > [!TIP]
 > Podívejte se kurz [vytvoření databáze pomocí webu Azure portal](sql-database-get-started-portal.md).
@@ -165,7 +165,7 @@ New-AzureRmSqlServerFirewallRule -ResourceGroupName "myResourceGroup" `
 ```
 
 > [!TIP]
-> Příklady prostředí PowerShell v rámci rychlý start, najdete v článku [vytvoření databáze – PowerShell](sql-database-powershell-samples.md) a [vytvoření izolované databáze a konfigurace pravidla brány firewall pomocí Powershellu](scripts/sql-database-create-and-configure-database-powershell.md)
+> Příklady prostředí PowerShell v rámci rychlý start, najdete v článku [vytvoření databáze – PowerShell](sql-database-powershell-samples.md) a [vytvoření izolované databáze a konfigurace pravidla brány firewall SQL Database pomocí Powershellu](scripts/sql-database-create-and-configure-database-powershell.md)
 
 ## <a name="manage-firewall-rules-using-azure-cli"></a>Správa pravidel brány firewall pomocí Azure CLI
 
@@ -185,7 +185,7 @@ az sql server firewall-rule create --resource-group myResourceGroup --server $se
 ```
 
 > [!TIP]
-> Příklad rozhraní příkazového řádku Azure v rámci rychlý start, naleznete v tématu [vytvoření databáze – Azure CLI](sql-database-cli-samples.md) a [vytvoření izolované databáze a konfigurace pravidla brány firewall pomocí Azure CLI](scripts/sql-database-create-and-configure-database-cli.md)
+> Příklad rozhraní příkazového řádku Azure v rámci rychlý start, naleznete v tématu [vytvoření databáze – Azure CLI](sql-database-cli-samples.md) a [vytvoření izolované databáze a konfigurace pravidla brány firewall SQL Database pomocí rozhraní příkazového řádku Azure](scripts/sql-database-create-and-configure-database-cli.md)
 
 ## <a name="manage-firewall-rules-using-rest-api"></a>Správa pravidel brány firewall pomocí rozhraní REST API
 

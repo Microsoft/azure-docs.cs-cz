@@ -7,13 +7,13 @@ ms.service: storage
 ms.topic: article
 ms.date: 06/27/2017
 ms.author: yuemlu
-ms.component: common
-ms.openlocfilehash: c9e9dd0eab127fcb0deb3085915bd51eeb309089
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.subservice: common
+ms.openlocfilehash: d42183e1db49850afc115fcb5645baf7290cf3c8
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53632836"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55477590"
 ---
 # <a name="migrating-to-azure-premium-storage-unmanaged-disks"></a>Migrace na Azure Premium Storage (nespravované disky)
 
@@ -160,7 +160,7 @@ Pro datové disky je možné zachovat některé datové disky v účtu úložiš
 #### <a name="copy-vhd-with-azcopy-or-powershell"></a>Krok 3. Zkopírujte virtuální pevný disk pomocí nástroje AzCopy nebo prostředí PowerShell
 Je potřeba najít váš kontejner cesty a klíč účtu úložiště zpracovat kteroukoli z těchto dvou možností. Kontejner cesty a klíč účtu úložiště najdete v **webu Azure Portal** > **úložiště**. Kontejner bude mít adresu URL jako "https://myaccount.blob.core.windows.net/mycontainer/".
 
-##### <a name="option-1-copy-a-vhd-with-azcopy-asynchronous-copy"></a>Možnost 1: Zkopírujte virtuální pevný disk pomocí nástroje AzCopy (asynchronní kopie)
+##### <a name="option-1-copy-a-vhd-with-azcopy-asynchronous-copy"></a>Option 1: Zkopírujte virtuální pevný disk pomocí nástroje AzCopy (asynchronní kopie)
 Pomocí AzCopy můžete snadno nahrávat VHD přes Internet. V závislosti na velikosti virtuálních pevných disků to může trvat dobu. Nezapomeňte zkontrolovat příchozí a odchozí přenos limity účtu úložiště při použití této možnosti. Zobrazit [Azure Storage škálovatelnost a cíle výkonnosti](storage-scalability-targets.md) podrobnosti.
 
 1. Stáhněte a nainstalujte nástroj AzCopy z tohoto: [Nejnovější verzi AzCopy](https://aka.ms/downloadazcopy)
@@ -180,14 +180,14 @@ Pomocí AzCopy můžete snadno nahrávat VHD přes Internet. V závislosti na ve
     Tady jsou popisy parametrů použitých v příkazu AzCopy:
 
    * **/ Zdroj:  *&lt;zdroj&gt;:*** Umístění složky nebo adresa URL kontejneru úložiště, která obsahuje virtuální pevný disk.
-   * **/ SourceKey:  *&lt;klíč zdrojového účtu&gt;:*** Klíč účtu úložiště účtu zdrojového úložiště.
+   * **/SourceKey: *&lt;source-account-key&gt;:*** Klíč účtu úložiště účtu zdrojového úložiště.
    * **/ Dest:  *&lt;cílové&gt;:*** Adresa URL kontejneru úložiště VHD, který chcete zkopírovat.
    * **/ DestKey:  *&lt;klíč účtu dest&gt;:*** Klíč účtu úložiště účtu cílového úložiště.
    * **Nebo vzor, který:  *&lt;název souboru&gt;:*** Zadejte název souboru VHD, který chcete zkopírovat.
 
 Podrobnosti o použití nástroje AzCopy nástroj, najdete v článku [přenos dat pomocí nástroje příkazového řádku Azcopy](storage-use-azcopy.md).
 
-##### <a name="option-2-copy-a-vhd-with-powershell-synchronized-copy"></a>Možnost 2: Zkopírujte virtuální pevný disk pomocí Powershellu (Synchronized kopie)
+##### <a name="option-2-copy-a-vhd-with-powershell-synchronized-copy"></a>Option 2: Zkopírujte virtuální pevný disk pomocí Powershellu (Synchronized kopie)
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
@@ -249,7 +249,7 @@ Důrazně doporučujeme, abyste přesouvání všech dat pro produkční úlohy,
 #### <a name="step-3-upload-the-vhd-to-azure-storage"></a>Krok 3. Nahrání virtuálního pevného disku do úložiště Azure
 Teď, když máte virtuální pevný disk v místním adresáři, můžete použít nástroj AzCopy nebo AzurePowerShell k nahrání souboru VHD do služby Azure Storage. Obě možnosti jsou k dispozici zde:
 
-##### <a name="option-1-using-azure-powershell-add-azurevhd-to-upload-the-vhd-file"></a>Možnost 1: Použití Azure PowerShell Add-AzureVhd pro nahrání souboru VHD
+##### <a name="option-1-using-azure-powershell-add-azurevhd-to-upload-the-vhd-file"></a>Option 1: Použití Azure PowerShell Add-AzureVhd pro nahrání souboru VHD
 
 ```powershell
 Add-AzureVhd [-Destination] <Uri> [-LocalFilePath] <FileInfo>
@@ -257,7 +257,7 @@ Add-AzureVhd [-Destination] <Uri> [-LocalFilePath] <FileInfo>
 
 Příklad <Uri> může být ***"https://storagesample.blob.core.windows.net/mycontainer/blob1.vhd"***. Příklad <FileInfo> může být ***"C:\path\to\upload.vhd"***.
 
-##### <a name="option-2-using-azcopy-to-upload-the-vhd-file"></a>Možnost 2: Použití AzCopy pro nahrání souboru VHD
+##### <a name="option-2-using-azcopy-to-upload-the-vhd-file"></a>Option 2: Použití AzCopy pro nahrání souboru VHD
 Pomocí AzCopy můžete snadno nahrávat VHD přes Internet. V závislosti na velikosti virtuálních pevných disků to může trvat dobu. Nezapomeňte zkontrolovat příchozí a odchozí přenos limity účtu úložiště při použití této možnosti. Zobrazit [Azure Storage škálovatelnost a cíle výkonnosti](storage-scalability-targets.md) podrobnosti.
 
 1. Stáhněte a nainstalujte nástroj AzCopy z tohoto: [Nejnovější verzi AzCopy](https://aka.ms/downloadazcopy)
@@ -277,7 +277,7 @@ Pomocí AzCopy můžete snadno nahrávat VHD přes Internet. V závislosti na ve
     Tady jsou popisy parametrů použitých v příkazu AzCopy:
 
    * **/ Zdroj:  *&lt;zdroj&gt;:*** Umístění složky nebo adresa URL kontejneru úložiště, která obsahuje virtuální pevný disk.
-   * **/ SourceKey:  *&lt;klíč zdrojového účtu&gt;:*** Klíč účtu úložiště účtu zdrojového úložiště.
+   * **/SourceKey: *&lt;source-account-key&gt;:*** Klíč účtu úložiště účtu zdrojového úložiště.
    * **/ Dest:  *&lt;cílové&gt;:*** Adresa URL kontejneru úložiště VHD, který chcete zkopírovat.
    * **/ DestKey:  *&lt;klíč účtu dest&gt;:*** Klíč účtu úložiště účtu cílového úložiště.
    * **/ BlobType: stránka:** Určuje, že cíl je objekt blob stránky.

@@ -1,9 +1,9 @@
 ---
-title: Sdílenou složku Azure pro fondy Azure Batch | Microsoft Docs
-description: Postup připojení Azure Files složky z výpočetních uzlů ve fondu Linux nebo Windows v Azure Batch.
+title: Sdílené složky Azure pro fondy Azure Batch | Dokumentace Microsoftu
+description: Postup pro připojení sdílené složky služby soubory Azure z výpočetních uzlů ve fondu s Linuxem nebo Windows ve službě Azure Batch.
 services: batch
 documentationcenter: ''
-author: dlepow
+author: laurenhughes
 manager: jeconnoc
 editor: ''
 ms.assetid: ''
@@ -13,72 +13,72 @@ ms.topic: article
 ms.tgt_pltfrm: multiple
 ms.workload: big-compute
 ms.date: 05/24/2018
-ms.author: danlep
+ms.author: lahugh
 ms.custom: ''
-ms.openlocfilehash: 88d7c0d033d7b517a396df27468de8be7ae20be9
-ms.sourcegitcommit: 6cf20e87414dedd0d4f0ae644696151e728633b6
+ms.openlocfilehash: 13ed2caa5ae547747707c368246ea23486dbed72
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/06/2018
-ms.locfileid: "34811725"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55469562"
 ---
-# <a name="use-an-azure-file-share-with-a-batch-pool"></a>Použijte sdílenou složku Azure k fondu služby Batch
+# <a name="use-an-azure-file-share-with-a-batch-pool"></a>Sdílené složky Azure pomocí fondu služby Batch
 
-[Soubory Azure](../storage/files/storage-files-introduction.md) nabízí plně spravované sdílené složky v cloudu, které jsou přístupné přes protokol Server Message Block (SMB). Tento článek obsahuje informace a ukázky kódu pro připojení a používá sdílenou složku Azure na výpočetních uzlech fondu. Příklady kódu pomocí rozhraní Batch .NET a Python SDK, ale můžete provádět pomocí jiných nástrojů a SDK služby Batch podobnými operacemi.
+[Služba soubory Azure](../storage/files/storage-files-introduction.md) nabízí plně spravované sdílené složky v cloudu, které jsou přístupné přes protokol zprávy bloku SMB (Server). Tento článek obsahuje informace a příklady kódu pro připojení a použití sdílené složky Azure na fond výpočetních uzlů. Příklady kódu pomocí rozhraní Batch .NET a sady SDK pro Python, ale můžete provádět podobné operace pomocí jiných nástrojů a sad SDK služby Batch.
 
-Batch poskytuje nativní podporu rozhraní API pro použití ke čtení a zápis dat objektů BLOB služby Azure Storage. V některých případech můžete chtít přístup Azure sdílené složky z fondu výpočetních uzlů. Například máte starší verze pracovních úloh, které závisí na sdílené složce SMB nebo úlohami potřeba přistupovat k sdíleným datům nebo vytvoření sdíleného výstupu. 
+Batch poskytuje nativní podporu rozhraní API pro použití ke čtení a zápis dat objektů BLOB Azure Storage. V některých případech můžete chtít přístup ke sdílené složky Azure z fondu výpočetních uzlů. Například máte starší verzi úlohu, která závisí na sdílené složce SMB nebo vaše úkoly potřebují přistupovat k sdíleným datům nebo sdílené výstup. 
 
-## <a name="considerations-for-use-with-batch"></a>Důležité informace pro použití se službou Batch
+## <a name="considerations-for-use-with-batch"></a>Důležité informace týkající se použití se službou Batch
 
-* Zvažte použití sdílenou složku Azure, když máte fondy, které spustit relativně nízký počet paralelních úloh. Zkontrolujte [výkonu a možností škálování cíle](../storage/files/storage-files-scale-targets.md) k určení, pokud by měl použít Azure soubory (které používá účet úložiště Azure), zadaná velikost očekávané fondu a počet souborů asset. 
+* Zvažte použití sdílené složky Azure v případě, že máte fondy, na kterých běží relativně nízký počet paralelních úloh. Zkontrolujte [cíle výkonu a škálování](../storage/files/storage-files-scale-targets.md) k určení, pokud by měl používat soubory Azure, (ta používá účet Azure Storage), očekávaný fondu velikost a počet souborů prostředků. 
 
-* Sdílené složky Azure jsou [cenově efektivní](https://azure.microsoft.com/pricing/details/storage/files/) a může být nakonfigurovaná s daty na jiné oblasti replikace proto jsou globálně redundantní. 
+* Jsou sdílené složky Azure [nákladově efektivní](https://azure.microsoft.com/pricing/details/storage/files/) a dá se s daty replikace do jiné oblasti tak jsou globálně redundantní. 
 
-* Sdílenou složku Azure současně můžete připojit z místního počítače.
+* Sdílené složky Azure současně můžete připojit z místního počítače.
 
-* Viz také Obecné [plánování](../storage/files/storage-files-planning.md) pro Azure sdílené složky.
+* Viz také Obecné [aspekty plánování](../storage/files/storage-files-planning.md) Azure sdílené složky.
 
 
 ## <a name="create-a-file-share"></a>Vytvoření sdílené složky
 
-[Vytvoření sdílené složky](../storage/files/storage-how-to-create-file-share.md) v účtu úložiště, který je propojený s vaším účtem Batch, nebo účet samostatného úložiště.
+[Vytvoření sdílené složky](../storage/files/storage-how-to-create-file-share.md) v účtu úložiště, který je propojený s vaším účtem Batch, nebo samostatný účet úložiště.
 
-## <a name="mount-a-share-on-a-windows-pool"></a>Připojit sdílenou složku ve fondu Windows
+## <a name="mount-a-share-on-a-windows-pool"></a>Připojení sdílené složky ve fondu Windows
 
-Tato část obsahuje kroky a příklady kódu připojit a používat soubor Azure sdílenou složkou na fond uzlů Windows. Další informace najdete v článku [dokumentace](../storage/files/storage-how-to-use-files-windows.md) pro připojení Azure sdílení souborů v systému Windows. 
+Tato část obsahuje kroky a příklady kódu pro připojení a používání Azure file sdílet na fond uzlů Windows. Další informace najdete v článku [dokumentaci](../storage/files/storage-how-to-use-files-windows.md) pro připojení Azure pro sdílení souborů na Windows. 
 
-Ve službě Batch budete muset připojit sdílenou složku pokaždé, když úloha běží na uzlu systému Windows. V současné době není možné uchovávat síťové připojení mezi úlohy v uzlech systému Windows.
+Ve službě Batch potřebujete připojit sdílenou složku pokaždé, když je úloha spuštěna na uzlu Windows. V současné době není možné zachovat síťové připojení mezi úkoly na uzlech Windows.
 
-Příklady `net use` příkazu připojit sdílenou složku v rámci jednotlivých úloh příkazového řádku. Připojení sdílené složky, jsou potřeba následující pověření:
+Zadejte například `net use` příkaz pro připojení sdílené složky jako součást příkazového řádku jednotlivých úkolů. Pro připojení sdílené složky, jsou potřeba následující přihlašovací údaje:
 
 * **Uživatelské jméno**: AZURE\\\<storageaccountname\>, například AZURE\\*mystorageaccountname*
 * **Heslo**: < StorageAccountKeyWhichEnds v == >, například *XXXXXXXXXXXXXXXXXXXXX ==*
 
-Tento příkaz připojí sdílenou *myfileshare* v účtu úložiště *mystorageaccountname* jako *S:* jednotky:
+Následující příkaz slouží pro připojení sdílené složky *myfileshare* v účtu úložiště *mystorageaccountname* jako *S:* jednotky:
 
 ```
 net use S: \\mystorageaccountname.file.core.windows.net\myfileshare /user:AZURE\mystorageaccountname XXXXXXXXXXXXXXXXXXXXX==
 ```
 
-Pro jednoduchost předejte příklady zde pověření přímo v textu. V praxi důrazně doporučujeme Správa pověření pomocí proměnné prostředí, certifikáty nebo řešení, jako je Azure Key Vault.
+Příklady v tomto článku pro zjednodušení předání přihlašovacích údajů přímo v textu. V praxi důrazně doporučujeme Správa pověření pomocí proměnné prostředí, certifikáty nebo řešení, jako je Azure Key Vault.
 
-Pro zjednodušení operace připojení, volitelně zachovat přihlašovací údaje na uzlech. Pak můžete připojit sdílenou složku bez přihlašovacích údajů. Proveďte následující dva kroky:
+Pro zjednodušení operaci připojení, volitelně uchování přihlašovacích údajů na uzlech. Potom můžou připojovat sdílené bez přihlašovacích údajů. Proveďte následující kroky:
 
-1. Spustit `cmdkey` nástroj příkazového řádku pomocí spouštěcí úkol v konfiguraci fondu. To trvá přihlašovací údaje v každém uzlu systému Windows. Je podobná spuštění úloh příkazového řádku:
+1. Spustit `cmdkey` nástroj příkazového řádku pomocí spouštěcího úkolu v konfiguraci fondu. To potrvá přihlašovací údaje na každém uzlu Windows. Se podobá se příkazový řádek úkolu spuštění:
 
   ```
   cmd /c "cmdkey /add:mystorageaccountname.file.core.windows.net /user:AZURE\mystorageaccountname /pass:XXXXXXXXXXXXXXXXXXXXX=="
 
   ```
 
-2. Připojit sdílenou složku na každém uzlu v rámci jednotlivých úloh pomocí `net use`. Například následující příkazový řádek úkolu připojí jako sdílené složky *S:* jednotky. To by pak příkaz či skript, který odkazuje na sdílenou složku. Přihlašovací údaje v mezipaměti se používají ve volání `net use`. Tento krok předpokládá, že používáte stejnou identitu uživatele pro úlohy, které jste použili v úloze pro spuštění ve fondu, která není vhodná pro všechny scénáře.
+2. Připojit sdílenou složku na každém uzlu v rámci každé úlohy pomocí `net use`. Například následující příkazový řádek úkolu připojí jako sdílené složky souborů *S:* jednotky. To by být následován znakem příkaz či skript, který odkazuje na sdílenou složku. Při volání funkce se používají přihlašovací údaje v mezipaměti `net use`. Tento krok předpokládá, že používáte stejnou identitu uživatele pro úkoly, které jste použili ve spouštěcím úkolu fondu, který není vhodná pro všechny scénáře.
 
   ```
   cmd /c "net use S: \\mystorageaccountname.file.core.windows.net\myfileshare" 
   ```
 
 ### <a name="c-example"></a>Příklad jazyka C#
-Následující příklad jazyka C# ukazuje, jak k uchování přihlašovacích údajů ve Windows fondu pomocí spouštěcí úkol. Název souboru služby úložiště a přihlašovací údaje úložiště jsou předány jako definované konstanty. Zde spouštěcí úkol běží pod účtem standardní auto uživatel (bez oprávnění správce) s oborem fondu.
+Následující C# příklad ukazuje, jak k uchování přihlašovacích údajů ve fondu Windows pomocí spouštěcího úkolu. Název služby file storage a přihlašovací údaje úložiště jsou předány jako definované konstanty. Tady na nich spouštěcí úkol běží pod standardní (bez oprávnění správce) automaticky – uživatelský účet s rozsahem fondu.
 
 ```csharp
 ...
@@ -102,7 +102,7 @@ pool.StartTask = new StartTask
 pool.Commit();
 ```
 
-Po uložení pověření, pomocí vaší příkazové řádky úkolu připojit sdílenou složku a odkaz sdílenou složku v pro čtení nebo operací zápisu. Jako základní příklad používá úlohu příkazového řádku v následující fragment kódu `dir` příkaz pro vytvoření seznamu souborů ve sdílené složce. Zajistěte, aby běžela každý úkol používající stejný [identitu uživatele](batch-user-accounts.md) použitý ke spuštění spouštěcího úkolu ve fondu. 
+Po uložení přihlašovacích údajů pomocí příkazové řádky úkolu připojit sdílenou složku a odkazují na sdílenou složku v čtení nebo zápis. Jako základní příklad příkazového řádku úkolu následující fragment kódu používá `dir` příkaz pro vytvoření seznamu souborů ve sdílené složce. Ujistěte se, že ke spuštění každé úlohy pomocí stejných [identitu uživatele](batch-user-accounts.md) použít ke spuštění spouštěcího úkolu ve fondu. 
 
 ```csharp
 ...
@@ -116,34 +116,34 @@ task.UserIdentity = new UserIdentity(new AutoUserSpecification(
 tasks.Add(task);
 ```
 
-## <a name="mount-a-share-on-a-linux-pool"></a>Připojit sdílenou složku ve fondu Linux
+## <a name="mount-a-share-on-a-linux-pool"></a>Připojte sdílenou složku, ve fondu s Linuxem
 
-Sdílené složky Azure může být připojen v distribucí Linux pomocí [CIFS jádra klienta](https://wiki.samba.org/index.php/LinuxCIFS). Následující příklad ukazuje, jak připojit sdílenou složku ve fondu Ubuntu 16.04 LTS výpočetních uzlů. Pokud chcete použít jiný distribuční Linux, obecné kroky jsou podobné, ale pomocí vhodné pro distribuci balíčku správce. Podrobnosti a další příklady najdete v tématu [soubory pomocí Azure s Linuxem](../storage/files/storage-how-to-use-files-linux.md).
+Sdílené složky Azure je možné připojit v Linuxových distribucích pomocí [CIFS jádra klienta](https://wiki.samba.org/index.php/LinuxCIFS). Následující příklad ukazuje, jak připojit sdílenou složku ve fondu výpočetních uzlů se systémem Ubuntu 16.04 LTS. Pokud používáte jiné distribuce Linuxu, obecné kroky jsou podobné, ale pomocí Správce balíčků pro příslušnou distribuci. Podrobnosti a další příklady najdete v tématu [použít soubory Azure s Linuxem](../storage/files/storage-how-to-use-files-linux.md).
 
-Nejdřív pod identitou správce uživatele, nainstalujte `cifs-utils` balíčků a vytvoření přípojného bodu (například */mnt/MyAzureFileShare*) v místním systému souborů. Složku pro přípojný bod lze vytvořit kdekoli v systému souborů, ale je běžné konvence na vytvořte ji v části `/mnt` složky. Ujistěte se, není k vytvoření přípojného bodu přímo na `/mnt` (na Ubuntu) nebo `/mnt/resource` (na jiných distribuce).
+Nejdřív s identitou uživatele, správce, nainstalujte `cifs-utils` balíčků a vytvoření přípojného bodu (například */mnt/MyAzureFileShare*) v místním systému souborů. Složka pro bod připojení je vytvořit kdekoli v systému souborů, ale je běžné konvence k vytvoření tohoto pod `/mnt` složky. Nezapomeňte vytvořit bod připojení přímo na `/mnt` (na Ubuntu) nebo `/mnt/resource` (na jiné distribuce).
 
 ```
 apt-get update && apt-get install cifs-utils && sudo mkdir -p /mnt/MyAzureFileShare
 ```
 
-Potom spusťte `mount` příkaz pro připojení sdílené složky, poskytuje tyto přihlašovací údaje:
+Potom spusťte `mount` příkaz pro připojení sdílené složky, použijte tyto přihlašovací údaje:
 
 * **Uživatelské jméno**: \<storageaccountname\>, například *mystorageaccountname*
 * **Heslo**: < StorageAccountKeyWhichEnds v == >, například *XXXXXXXXXXXXXXXXXXXXX ==*
 
-Tento příkaz připojí sdílenou *myfileshare* v účtu úložiště *mystorageaccountname* v */mnt/MyAzureFileShare*: 
+Následující příkaz slouží pro připojení sdílené složky *myfileshare* v účtu úložiště *mystorageaccountname* na */mnt/MyAzureFileShare*: 
 
 ```
 mount -t cifs //mystorageaccountname.file.core.windows.net/myfileshare /mnt/MyAzureFileShare -o vers=3.0,username=mystorageaccountname,password=XXXXXXXXXXXXXXXXXXXXX==,dir_mode=0777,file_mode=0777,serverino && ls /mnt/MyAzureFileShare
 ```
 
-Pro jednoduchost předejte příklady zde pověření přímo v textu. V praxi důrazně doporučujeme Správa pověření pomocí proměnné prostředí, certifikáty nebo řešení, jako je Azure Key Vault.
+Příklady v tomto článku pro zjednodušení předání přihlašovacích údajů přímo v textu. V praxi důrazně doporučujeme Správa pověření pomocí proměnné prostředí, certifikáty nebo řešení, jako je Azure Key Vault.
 
-Linux fondu můžete sloučit všechny tyto kroky v jednom spouštěcí úkol nebo spustit ve skriptu. Spusťte úlohu spustit jako uživatel s oprávněním správce ve fondu. Nastavte počáteční úlohu čekání na dokončení úspěšně před spuštěním další úkoly ve fondu, které odkazují na sdílenou složku.
+Ve fondu s Linuxem můžete sloučit všechny tyto kroky v jedné spouštěcí úkol nebo spustit ve skriptu. Spuštění spouštěcího úkolu jako uživatel s oprávněním správce k fondu. Nastavte spouštěcí úkol čekání úspěšně dokončit před spuštěním další úlohy ve fondu, který odkazuje sdílenou složku.
 
-### <a name="python-example"></a>Příklad Python
+### <a name="python-example"></a>Příklad v Pythonu
 
-Následující příklad Python ukazuje postup konfigurace fondu Ubuntu připojit sdílenou složku v spouštěcí úkol. Přípojný bod, koncový bod souborové sdílené složky a přihlašovací údaje úložiště jsou předány jako definované konstanty. Spouštěcí úkol běží pod účtem uživatele automaticky správce s oborem fondu.
+Následující příklad Python ukazuje postup při konfiguraci připojení sdílené složky ve spouštěcím úkolu fondu Ubuntu. Přípojný bod, koncový bod sdílené složky souboru a přihlašovací údaje úložiště jsou předány jako definované konstanty. Spouštěcí úkol běží pod automaticky uživatelský účet správce s oborem fondu.
 
 ```python
 pool = batch.models.PoolAddParameter(
@@ -169,7 +169,7 @@ pool = batch.models.PoolAddParameter(
 batch_service_client.pool.add(pool)
 ```
 
-Po připojení sdílené složky a definování úlohu, použijte sdílenou složku ve vašem příkazové řádky úkolu. Například následující příkaz základní používá `ls` pro vytvoření seznamu souborů ve sdílené složce.
+Po připojení sdílené složky a definování úlohu, použijte sdílenou složku na příkazových řádcích úkolů. Například následující základní příkaz používá `ls` pro vytvoření seznamu souborů ve sdílené složce.
 
 ```python
 ...
@@ -183,6 +183,6 @@ batch_service_client.task.add(job_id, task)
 
 ## <a name="next-steps"></a>Další postup
 
-* Další možnosti pro čtení a zápis dat ve službě Batch najdete v tématu [přehled funkcí Batch](batch-api-basics.md) a [zachovat výstup úlohy a úkolů](batch-task-output.md).
+* Další možnosti číst a zapisovat data ve službě Batch najdete v článku [přehled funkcí Batch](batch-api-basics.md) a [trvalý výstup úloh a úkolů](batch-task-output.md).
 
-* Viz také [loděnice Batch](https://github.com/Azure/batch-shipyard) nástrojů, která zahrnuje [loděnice recepty](https://github.com/Azure/batch-shipyard/tree/master/recipes) nasadit systémy souborů pro kontejner úloh služby Batch.
+* Viz také [Batch loděnice](https://github.com/Azure/batch-shipyard) toolkit, která zahrnuje [loděnice recepty](https://github.com/Azure/batch-shipyard/tree/master/recipes) nasadit systémy souborů pro kontejner úloh služby Batch.

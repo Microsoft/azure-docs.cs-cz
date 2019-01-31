@@ -1,17 +1,17 @@
 ---
-title: Klíče oddílů syntetické ve službě Azure Cosmos DB
+title: Vytvořte klíč syntetické oddíl ve službě Azure Cosmos DB rovnoměrně distribuovat data a úlohy.
 description: Další informace o použití klíče syntetické oddílů v kontejnerech služby Azure Cosmos DB
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 10/30/2018
 ms.author: mjbrown
-ms.openlocfilehash: 37d220a13aec99de94afa3357db1462d11f8662c
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: 987bfe023e7355a2780af57dc5e5cac3129a5ca1
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54043360"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55454144"
 ---
 # <a name="create-a-synthetic-partition-key"></a>Vytvořit klíč syntetické oddílu
 

@@ -11,20 +11,20 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
 manager: craigg
-ms.date: 10/24/2018
-ms.openlocfilehash: b1ef03b97f9fe95286d427effc40e69ae07b6b3c
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.date: 01/25/2019
+ms.openlocfilehash: 3d6010df64c4e3c75bd05e2eb9828c07cf3fb342
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53601487"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55471381"
 ---
 # <a name="store-azure-sql-database-backups-for-up-to-10-years"></a>Store Azure SQL Database zálohy až 10 let
 
 Máte spoustu aplikací na dodržování legislativních, dodržování předpisů nebo jiné obchodní účely, které vyžadují, abyste pro uchovávání záloh databáze se po uplynutí 7 – 35 dnů poskytuje Azure SQL Database [automatické zálohování](sql-database-automated-backups.md). Když použijete funkci dlouhodobé uchovávání dat (LTR), můžete uložit zadaný SQL database úplné zálohy v [RA-GRS](../storage/common/storage-redundancy-grs.md#read-access-geo-redundant-storage) úložiště objektů blob až 10 let. Pak můžete obnovit jakékoli zálohy jako novou databázi.
 
 > [!NOTE]
-> Zleva doprava, je možné povolit v databázích, které jsou hostované v logické servery Azure SQL Database. Zatím není k dispozici pro databáze, které jsou hostované v Managed instance. Úlohy agenta SQL serveru můžete použít k naplánování [pouze kopie zálohy](https://docs.microsoft.com/sql/relational-databases/backup-restore/copy-only-backups-sql-server) jako alternativu k LTR nad rámec po dobu 35 dní.
+> Zleva doprava. lze povolit pro samostatnou službu a ve fondu databází. To je ještě nejsou k dispozici pro instanci databáze ve spravovaných instancí. Úlohy agenta SQL serveru můžete použít k naplánování [pouze kopie zálohy](https://docs.microsoft.com/sql/relational-databases/backup-restore/copy-only-backups-sql-server) jako alternativu k LTR nad rámec po dobu 35 dní.
 > 
 
 ## <a name="how-sql-database-long-term-retention-works"></a>Jak funguje dlouhodobé uchovávání databáze SQL

@@ -1,6 +1,6 @@
 ---
-Název: Přeučování titleSuffix klasické webové služby: Azure Machine Learning Studio Popis: Zjistěte, jak programově přeučit modelu a aktualizovat webovou službu, která používá nově trénovaného modelu ve službě Azure Machine Learning.
-Services: machine learningu ms.service: ms.component strojového učení: studio ms.topic: článku
+Název: Přeučování titleSuffix klasické webové služby: Azure Machine Learning Studio Popis: Zjistěte, jak programově přeučit modelu a aktualizovat webovou službu, která používá nově trénovaného modelu ve službě Azure Machine Learning.
+Services: machine learningu ms.service: ms.subservice strojového učení: studio ms.topic: článku
 
 Autor: ericlicoding ms.author: amlstudiodocs ms.custom: seodec18, předchozí ms.author=yahajiza, předchozí Autor = YasinMSFT ms.date: 04/19/2017
 ---

@@ -7,13 +7,13 @@ ms.service: storage
 ms.topic: article
 ms.date: 01/03/2019
 ms.author: seguler
-ms.component: common
-ms.openlocfilehash: 03d307a324826a4805da5ed6ff8b995b7c3eab62
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.subservice: common
+ms.openlocfilehash: d28ea2972b8b73921bb078d8570afe9a6dffce8f
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54019296"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55461765"
 ---
 # <a name="transfer-data-with-the-azcopy-on-windows"></a>Přenos dat pomocí AzCopy ve Windows
 AzCopy je nástroj příkazového řádku určený pro kopírování dat do a z Microsoft Azure Blob, File a Table storage, pomocí jednoduchých příkazů, které jsou navržené pro zajištění optimálního výkonu. Data můžete kopírovat mezi systémem souborů a účtem úložiště nebo mezi účty úložiště.  
@@ -710,7 +710,7 @@ Určuje, zda cílový objekt blob je objekty blob bloku, objekty blob stránky n
 
 **Vztahuje se:** Objekty blob
 
-### <a name="checkmd5"></a>/ CheckMD5
+### <a name="checkmd5"></a>/CheckMD5
 
 Vypočítá hodnotu hash MD5 pro stažená data a ověřuje, že hodnota hash MD5 uložená v objektu blob nebo vlastnost Content-MD5 souboru odpovídá vypočtený hash. Pokud hodnoty neshodují, AzCopy se nepodaří stáhnout data. Kontrola MD5 je vypnuto ve výchozím nastavení, proto musíte určit tuto možnost, při stahování dat provést kontrolu MD5.
 
@@ -738,7 +738,7 @@ Ve výchozím nastavení, je podrobného souboru protokolu s názvem AzCopyVerbo
 
 **Vztahuje se:** Objekty BLOB, soubory, tabulky
 
-### <a name="zjournal-file-folder"></a>/ Z: [deníku souboru folder]
+### <a name="zjournal-file-folder"></a>/Z:[journal-file-folder]
 
 Určuje složku soubor deníku pro operaci obnovení.
 
@@ -774,7 +774,7 @@ Potlačí všechny výzvy k potvrzení AzCopy. Tato možnost také umožňuje po
 
 **Vztahuje se:** Objekty BLOB, soubory, tabulky
 
-### <a name="l"></a>/ L
+### <a name="l"></a>/L
 
 Určuje operaci výpisu. žádná data zkopírována.
 
@@ -809,7 +809,7 @@ Nahraje pouze soubory, které se mají nastavit atribut pro archivaci.
 
 **Vztahuje se:** Objekty BLOB, soubory
 
-### <a name="iarashcnetoi"></a>/ IA: [RASHCNETOI]
+### <a name="iarashcnetoi"></a>/IA:[RASHCNETOI]
 
 Nahraje pouze soubory, které mají některý z sady zadané atributy.
 
@@ -828,7 +828,7 @@ Dostupné atributy patří:
 
 **Vztahuje se:** Objekty BLOB, soubory
 
-### <a name="xarashcnetoi"></a>/ XA: [RASHCNETOI]
+### <a name="xarashcnetoi"></a>/XA:[RASHCNETOI]
 
 Vyloučí soubory, které mají všechny zadané atributy sady.
 
@@ -847,7 +847,7 @@ Dostupné atributy patří:
 
 **Vztahuje se:** Objekty BLOB, soubory
 
-### <a name="delimiterdelimiter"></a>/ Oddělovač: oddělovač."
+### <a name="delimiterdelimiter"></a>/Delimiter:"delimiter"
 
 Označuje znak oddělovač použitý k oddělení virtuálních adresářů v názvu objektu blob.
 
@@ -879,7 +879,7 @@ Určuje, že `destination` prostředku je k dispozici v místním vývojovém pr
 
 **Vztahuje se:** Objekty BLOB, tabulek
 
-### <a name="pkrskey1key2key3"></a>/ PKRS: "key1 #key2 klíč3 #..."
+### <a name="pkrskey1key2key3"></a>/PKRS:"key1#key2#key3#..."
 
 Rozdělí rozsah klíče oddílu aby povolil export dat tabulky současně, což zvyšuje rychlost operace exportu.
 
@@ -905,7 +905,7 @@ Pokud tabulka data se exportují do objektu blob a velikost exportovaný soubor 
 
 **Vztahuje se:** Tabulky
 
-### <a name="entityoperationinsertorskip--insertormerge--insertorreplace"></a>/ EntityOperation: "InsertOrSkip" | "InsertOrMerge" | "InsertOrReplace"
+### <a name="entityoperationinsertorskip--insertormerge--insertorreplace"></a>/EntityOperation:"InsertOrSkip" | "InsertOrMerge" | "InsertOrReplace"
 
 Určuje chování importu dat tabulky.
 
@@ -935,7 +935,7 @@ Tuto možnost můžete použít při kopírování souborů do úložiště obje
 
 **Vztahuje se:** Objekty BLOB, soubory
 
-### <a name="setcontenttypecontent-type"></a>/ SetContentType: "content-type"
+### <a name="setcontenttypecontent-type"></a>/SetContentType:"content-type"
 
 Určuje typ obsahu MIME pro soubory nebo cílové objektů BLOB.
 
@@ -945,7 +945,7 @@ Pokud zadáte tuto možnost bez hodnoty, AzCopy se nastaví, každý objekt blob
 
 **Vztahuje se:** Objekty BLOB, soubory
 
-### <a name="payloadformatjson--csv"></a>/ PayloadFormat: "JSON" | "SDÍLENÉHO SVAZKU CLUSTERU"
+### <a name="payloadformatjson--csv"></a>/PayloadFormat:"JSON" | "CSV"
 
 Určuje formát souboru exportovaná data tabulky.
 

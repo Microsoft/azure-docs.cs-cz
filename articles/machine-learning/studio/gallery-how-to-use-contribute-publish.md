@@ -1,6 +1,6 @@
 ---
-Název: Azure AI Galerie titleSuffix: Azure Machine Learning Studio Popis: Sdílení a vyhledání prostředků analýzy a další v galerii Azure AI. Učte se od ostatních a vlastní přispívání do komunity.
-Services: machine learningu ms.service: ms.component strojového učení: studio ms.topic: článku
+Název: Azure AI Galerie titleSuffix: Azure Machine Learning Studio Popis: Sdílení a vyhledání prostředků analýzy a další v galerii Azure AI. Učte se od ostatních a vlastní přispívání do komunity.
+Services: machine learningu ms.service: ms.subservice strojového učení: studio ms.topic: článku
 
 Autor: ericlicoding ms.author: amlstudiodocs ms.custom: předchozí Autor = heatherbshapiro předchozí ms.author=hshapiro ms.date: 01/11/2019
 ---

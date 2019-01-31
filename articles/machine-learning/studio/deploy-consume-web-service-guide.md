@@ -1,5 +1,5 @@
 ---
-Název: Nasazení a využití titleSuffix: Azure Machine Learning Studio Popis: Azure Machine Learning můžete použít k nasazení pracovních postupů machine learning a modely jako webové služby. Tyto webové služby můžete pak použita pro volání modely strojového učení z aplikací přes internet vytvářející předpovědi v reálném čase nebo v dávkovém režimu. Services: machine learningu ms.service: ms.component strojového učení: studio ms.topic: článku
+Název: Nasazení a využití titleSuffix: Azure Machine Learning Studio Popis: Azure Machine Learning můžete použít k nasazení pracovních postupů machine learning a modely jako webové služby. Tyto webové služby můžete pak použita pro volání modely strojového učení z aplikací přes internet vytvářející předpovědi v reálném čase nebo v dávkovém režimu. Services: machine learningu ms.service: ms.subservice strojového učení: studio ms.topic: článku
 
 Autor: ericlicoding ms.author: amlstudiodocs ms.custom: seodec18 ms.date: 04/19/2017
 ---

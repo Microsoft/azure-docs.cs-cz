@@ -9,14 +9,14 @@ ms.topic: conceptual
 ms.date: 08/21/2018
 ms.author: rafats
 ms.reviewer: sngun
-ms.openlocfilehash: c80f555a3789a12420cef0dc91ef7accc6a4388d
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: 8a3863ff67549c77692f8629c2e7315aec94faf8
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54036184"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55463306"
 ---
-# <a name="use-key-vault-to-store-and-access-azure-cosmos-db-keys"></a>Použití služby Key Vault k ukládání a přístupové klíče služby Azure Cosmos DB
+# <a name="secure-azure-cosmos-keys-using-azure-key-vault"></a>Zabezpečovací klíče Azure Cosmos pomocí služby Azure Key Vault 
 
 Při použití služby Azure Cosmos DB pro aplikace, můžete přistupovat databází, kolekcí, dokumentů s použitím identifikátor URI koncového bodu a klíče v konfiguračním souboru aplikace.  Však není bezpečné umístění klíče a adresy URL přímo v kódu aplikace, protože jsou k dispozici ve formátu prostého textu pro všechny uživatele. Budete chtít ověřit, že identifikátor URI a klíče jsou k dispozici, ale zabezpečené mechanismem. Je to, kde Azure Key Vault umožňuje bezpečně ukládat a spravovat tajné kódy aplikace.
 

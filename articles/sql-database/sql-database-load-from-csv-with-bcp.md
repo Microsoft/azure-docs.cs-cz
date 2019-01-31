@@ -11,31 +11,36 @@ author: douglaslMS
 ms.author: douglasl
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 04/01/2018
-ms.openlocfilehash: 50c5071ce672e3a2aba130817628ad0d26f656e5
-ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
+ms.date: 01/25/2019
+ms.openlocfilehash: f51b31903953f9a1d4959f78d570d3de92478f50
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/20/2018
-ms.locfileid: "53653480"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55455299"
 ---
 # <a name="load-data-from-csv-into-azure-sql-database-flat-files"></a>Načtení dat ze souboru CSV do Azure SQL Database (ploché soubory)
+
 Nástroj příkazového řádku bcp můžete použít k importu dat ze souboru CSV do databáze Azure SQL Database.
 
 ## <a name="before-you-begin"></a>Před zahájením
+
 ### <a name="prerequisites"></a>Požadavky
+
 K dokončení kroků v tomto článku, budete potřebovat:
 
-* Logický server a databáze Azure SQL Database
+* Server Azure SQL Database a databázi služby
 * Nainstalovaný nástroj příkazového řádku bcp
 * Nainstalovaný nástroj příkazového řádku sqlcmd
 
 Nástroje bcp a sqlcmd si můžete stáhnout z webu [Stažení softwaru společnosti Microsoft][Microsoft Download Center].
 
 ### <a name="data-in-ascii-or-utf-16-format"></a>Data ve formátu ASCII nebo UTF-16
+
 Pokud pro tento kurz používáte svoje vlastní data, musí vaše data používat kódování ASCII nebo UTF-16, protože bcp nepodporuje kódování UTF-8. 
 
 ## <a name="1-create-a-destination-table"></a>1. Vytvoření cílové tabulky
+
 Definujte tabulku ve službě SQL Database jako cílovou tabulku. Sloupce v tabulce musí odpovídat datům v jednotlivých řádcích vašeho datového souboru.
 
 Pokud chcete vytvořit tabulku, otevřete okno příkazového řádku a pomocí sqlcmd.exe spusťte následující příkaz:
@@ -54,6 +59,7 @@ sqlcmd.exe -S <server name> -d <database name> -U <username> -P <password> -I -Q
 
 
 ## <a name="2-create-a-source-data-file"></a>2. Vytvoření zdrojového datového souboru
+
 Otevřete Poznámkový blok a zkopírujte následující řádky dat do nového textového souboru. Pak tento soubor uložte do místního dočasného adresáře C:\Temp\DimDate2.txt. Tato data jsou ve formátu ASCII.
 
 ```
@@ -78,6 +84,7 @@ bcp <TableName> out C:\Temp\DimDate2_export.txt -S <ServerName> -d <DatabaseName
 ```
 
 ## <a name="3-load-the-data"></a>3. Načtení dat
+
 Pokud chcete načíst data, otevřete příkazový řádek a spusťte následující příkaz, přičemž hodnoty parametrů Server Name (Název serveru), Database name (Název databáze), Username (Uživatelské jméno) a Password (Heslo) nahraďte svými vlastními informacemi.
 
 ```bcp
@@ -108,6 +115,7 @@ Výsledky by měly vypadat takto:
 | 20151201 |4 |2 |
 
 ## <a name="next-steps"></a>Další postup
+
 Postup migrace databáze serveru SQL Server naleznete v části [Migrace databáze serveru SQL Server](sql-database-cloud-migrate.md).
 
 <!--MSDN references-->

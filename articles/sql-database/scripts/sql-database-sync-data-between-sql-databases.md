@@ -11,13 +11,13 @@ author: allenwux
 ms.author: xiwu
 ms.reviewer: douglasl
 manager: craigg
-ms.date: 01/17/2019
-ms.openlocfilehash: 92cd67a4b57fcab51f30b4dd9e6c773a056aec8b
-ms.sourcegitcommit: 9f07ad84b0ff397746c63a085b757394928f6fc0
+ms.date: 01/25/2019
+ms.openlocfilehash: 32dfe8a8aaba078b192183f0611719993fa3094d
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54391027"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55471517"
 ---
 # <a name="use-powershell-to-sync-between-multiple-sql-databases"></a>Synchronizace mezi několika databázemi SQL pomocí PowerShellu
  
@@ -37,9 +37,9 @@ Přehled Synchronizace dat SQL najdete v tématu [Synchronizace dat mezi několi
 
 ```powershell-interactive
 # prerequisites: 
-# 1. Create an Azure Database from AdventureWorksLT sample database as hub database
-# 2. Create an Azure Database in the same region as sync database
-# 3. Create an Azure Database as member database
+# 1. Create an Azure SQL Database from AdventureWorksLT sample database as hub database
+# 2. Create an Azure SQL Database in the same region as sync database
+# 3. Create an Azure SQL Database as member database
 # 4. Update the parameters below before running the sample
 #
 using namespace Microsoft.Azure.Commands.Sql.DataSync.Model

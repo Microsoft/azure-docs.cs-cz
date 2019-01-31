@@ -1,23 +1,23 @@
 ---
-title: 'Rychlý start: Získání seznamu podporovaných jazyků, Python – Translator Text API'
+title: 'Rychlý start: Získejte seznam podporovaných jazyků Python – Translator Text API'
 titleSuffix: Azure Cognitive Services
 description: V tomto rychlém startu získáte seznam jazyků podporovaných pro překlad, transkripci a vyhledávání ve slovníku a příklady s použitím služby Translator Text API s Pythonem.
 services: cognitive-services
 author: erhopf
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: translator-text
+ms.subservice: translator-text
 ms.topic: quickstart
 ms.date: 10/29/2018
 ms.author: erhopf
-ms.openlocfilehash: 8b78ec4e358f654342140df1491e19d3fc62fee7
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: c99dbdb95c4dd7a6e078fd6e9ee15a590c8c40c9
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52992401"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55458291"
 ---
-# <a name="quickstart-use-the-translator-text-api-to-get-a-list-of-supported-languages-using-python"></a>Rychlý start: Získání seznamu podporovaných jazyků pomocí služby Translator Text API a Pythonu
+# <a name="quickstart-use-the-translator-text-api-to-get-a-list-of-supported-languages-using-python"></a>Rychlý start: Použití rozhraní Translator Text API k získání seznamu podporovaných jazyků pomocí Pythonu
 
 V tomto rychlém startu se dozvíte, jak pomocí Pythonu a rozhraní REST API služby Translator Text vytvořit požadavek GET, který vrátí seznam podporovaných jazyků.
 
@@ -67,7 +67,7 @@ else:
 V současné době je pro službu Translator Text dostupný jeden koncový bod, který je nastavený jako `base_url`. `path` nastaví trasu `languages` a určuje, že chceme cílit na rozhraní API verze 3.
 
 >[!NOTE]
-> Další informace o koncových bodech, trasách a parametrech požadavků najdete v tématu [Translator Text API 3.0: Jazyky](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-languages).
+> Další informace o koncových bodech, cesty a parametry požadavku najdete v tématu [Translator Text API 3.0: Jazyky](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-languages).
 
 ```python
 base_url = 'https://api.cognitive.microsofttranslator.com'

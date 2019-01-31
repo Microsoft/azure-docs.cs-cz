@@ -6,17 +6,17 @@ author: marktab
 manager: cgronlun
 editor: cgronlun
 ms.service: machine-learning
-ms.component: team-data-science-process
+ms.subservice: team-data-science-process
 ms.topic: article
 ms.date: 11/21/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 5767399189e4ed5168fbcc083ef9b4830cac1421
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: b7c10884682b6537bbfcbb1b1f8b89b38751d05b
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53138951"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55478045"
 ---
 # <a name="feature-engineering-in-data-science"></a>Konstrukce funkcí v datové vědy
 Tento článek vysvětluje účely vytváření funkcí a poskytuje příklady jejich rolí v procesu rozšíření dat služby machine learning. Příklady slouží ke znázornění tohoto procesu jsou vykreslovány vedle z Azure Machine Learning Studio. 
@@ -25,7 +25,7 @@ Tato úloha je nějaký krok [vědecké zpracování týmových dat (TDSP)](http
 
 Funkce engineering pokusy o sofistikované prediktivní učení se supervizí vytvořením funkce z nezpracovaných dat, která usnadňují proces učení. Konstrukce a výběr funkcí TDSP uvedených v jedné části je [co je životní cyklus vědeckého zpracování týmových dat?](overview.md) Vytváření funkcí a výběru jsou části **vývoj funkcí** krok TDSP. 
 
-* **konstrukce funkcí**: Tento proces pokusí vytvořit další odpovídající funkce ze stávajících funkcí nezpracovaných dat a prediktivní sofistikované algoritmus učení.
+* **konstrukce funkcí**: Tento proces se pokusí vytvořit další odpovídající funkce ze stávajících funkcí nezpracovaných dat a prediktivní sofistikované algoritmus učení.
 * **Výběr funkcí**: Tento proces vybere klíče podmnožinu funkcí původní data za účelem snížení dimenzionalitu problém školení.
 
 Obvykle **konstruování** se použije první generovat další funkce a pak **výběr funkcí** krok se provádí za účelem odstranění irelevantní, redundantní nebo vysoce korelační funkce.
@@ -49,7 +49,7 @@ Při spuštění pomocí služby Azure Machine Learning, je nejjednodušší poc
 * Příklad regrese [předpovědi počet pronajatých kol za](http://gallery.cortanaintelligence.com/Experiment/Regression-Demand-estimation-4) v pod dohledem experiment, ve kterém se ví, cílové hodnoty
 * Text dolování klasifikace příklad použití [Hashování](https://msdn.microsoft.com/library/azure/c9a82660-2d9c-411d-8122-4d9e0b3ce92a/)
 
-## <a name="example-1-add-temporal-features-for-a-regression-model"></a>Příklad 1: Přidejte dočasné funkce pro regresní model
+## <a name="example-1-add-temporal-features-for-a-regression-model"></a>Příklad 1: Přidat dočasné funkce pro regresní model
 S použitím experiment "Prognózování poptávky po pro kola" v nástroji Azure Machine Learning Studio demonstrují, jakým způsobem projektovat funkce pro úlohu regrese. Cílem tohoto experimentu je k predikci poptávky kol, to znamená, počet pronajatých kol za v rámci konkrétní měsíc/den/hodina. Datovou sadu "kol pronájmu Cyklistických datovou sadu" slouží jako nezpracovaný vstupní data. Tato datová sada je založen na reálná data z Bikeshare velké společnosti, která udržuje síť pronájem kola ve Washingtonu D.C. ve Spojených státech. Datová sada představuje počet pronajatých kol za v rámci konkrétní hodina dne v roce 2011 a roku 2012 a obsahuje 17379 řádky a sloupce 17. Nezpracovaná funkce sada obsahuje počasí (rychlost teploty a vlhkosti/větru) a zadejte den (sváteční/den v týdnu). Pole k předpovědi je počet "cnt", která představuje pronajatých kol za do konkrétní hodiny a který od 1 do 977.
 
 S cílem vytváření účinné funkce v trénovacích dat čtyři regrese, který modely jsou sestaveny na základě stejný algoritmus, ale s čtyři různé cvičných datových sad. Čtyři datové sady představují stejné nezpracovaná vstupní data, ale s rostoucím počtem funkcí nastavit. Tyto funkce jsou rozděleny do čtyř kategorií:

@@ -6,14 +6,14 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 12/02/2018
 ms.author: dech
-ms.openlocfilehash: 08cd8b332a34075d8e2f939aa9015aa1b0a33a07
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: 689b0bb08e300efc7c5e93dbf346040b82a7c52d
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54036150"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55468474"
 ---
-# <a name="cross-origin-resource-sharing-cors-in-azure-cosmos-db"></a>Prostředků mezi zdroji (CORS) pro sdílení obsahu ve službě Azure Cosmos DB 
+# <a name="configure-cross-origin-resource-sharing-cors"></a>Konfigurace prostředků mezi zdroji (CORS) pro sdílení obsahu 
 
 Sdílení prostředků mezi zdroji (CORS) je funkce protokolu HTTP, která umožňuje webové aplikaci spuštěné v rámci jedné domény pro přístup k prostředkům v jiné doméně. Webové prohlížeče implementují bezpečnostní omezení, označuje jako zásada stejného zdroje, které chrání webovou stránku před voláním rozhraní API v jiné doméně. Však CORS nabízí zabezpečený způsob, jak povolit zdrojová doména pro volání rozhraní API v jiné doméně. Rozhraní SQL API Core ve službě Azure Cosmos DB teď podporuje sdílení prostředků mezi zdroji (CORS) pomocí hlavičky "allowedOrigins". Po povolení podpory CORS pro váš účet Azure Cosmos se vyhodnocují jenom ověřených požadavků k určení, zda jsou povoleny podle pravidel, které jste zadali.
 

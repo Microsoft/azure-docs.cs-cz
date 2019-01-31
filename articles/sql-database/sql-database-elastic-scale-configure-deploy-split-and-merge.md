@@ -12,12 +12,12 @@ ms.author: sstein
 ms.reviewer: ''
 manager: craigg
 ms.date: 12/04/2018
-ms.openlocfilehash: e8a849fdc6674a0c6ab801bd8f26a01f89fb8857
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 7939de5cf45535dc911c25ae8fa8c914a214fa3c
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52969579"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55458053"
 ---
 # <a name="deploy-a-split-merge-service-to-move-data-between-sharded-databases"></a>Nasazení služby dělení a slučování pro přesun dat mezi horizontálně dělené databáze
 
@@ -143,7 +143,7 @@ Pokud své role pracovního procesu selže do režimu online, ale webová role p
    ```
 
 * Ujistěte se, že název serveru nezačíná **https://**.
-* Ujistěte se, že váš server Azure SQL DB umožňuje služby Azure se k němu připojit. Chcete-li to provést, otevřete databázi na portálu a ověřte, že **povolit přístup ke službám Azure** nastavená na **na**\*\*.
+* Ujistěte se, že váš server Azure SQL DB umožňuje služby Azure se k němu připojit. Chcete-li to provést, otevřete databázi na portálu a ověřte, že **povolit přístup ke službám Azure** nastavená na ** na ***.
 
 ## <a name="test-the-service-deployment"></a>Testování nasazení služby
 ### <a name="connect-with-a-web-browser"></a>Připojit pomocí webového prohlížeče
@@ -204,7 +204,7 @@ Zahrnuté soubory skriptů jsou:
    
 ## <a name="use-powershell-to-verify-your-deployment"></a>Použití Powershellu k ověření nasazení
 1. Otevřete nové okno Powershellu a přejděte do adresáře, kam jste stáhli balíček dělení a slučování a pak přejděte do adresáře "powershell".
-2. Vytvoření serveru Azure SQL database (nebo zvolte existující server) kde bude vytvořen správce mapování horizontálních oddílů a horizontálních oddílů.
+2. Vytvoření serveru Azure SQL Database (nebo zvolte existující server) kde bude vytvořen správce mapování horizontálních oddílů a horizontálních oddílů.
    
    > [!NOTE]
    > Ve výchozím nastavení pro zjednodušení tento skript vytvoří skript SetupSampleSplitMergeEnvironment.ps1 těchto databází na stejném serveru. Toto není omezení služby dělení a slučování samotný.

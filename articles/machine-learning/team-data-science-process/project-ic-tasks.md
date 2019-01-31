@@ -5,17 +5,17 @@ author: marktab
 manager: cgronlun
 editor: cgronlun
 ms.service: machine-learning
-ms.component: team-data-science-process
+ms.subservice: team-data-science-process
 ms.topic: article
 ms.date: 11/13/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 6684cc9a0166df9c6d230f6b2a8c05acec5f91b3
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: 6a52907fa6c0e2483479031fbb3d1ad68a121d95
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53136757"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55475554"
 ---
 # <a name="tasks-for-an-individual-contributor-in-the-team-data-science-process"></a>Úlohy pro jednotlivý Přispěvatel v vědecké zpracování týmových dat
 
@@ -37,15 +37,15 @@ Pokyny o tom, jak spustit projekt vědeckého zpracování dat v rámci TDSP naj
 
 Tento kurz používá zkrácené názvy pro úložiště a adresáře. Tyto názvy usnadňují sledování operací mezi úložišť a adresáře. Tato notace (**R** pro úložiště Git a **D** pro místní adresáře na vaše DSVM) se používá v následujících částech:
 
-- **R2**: The GroupUtilities úložiště v Gitu, která správce skupiny je nastavená na vašem serveru Azure DevOps skupiny.
-- **R4**: The TeamUtilities úložiště v Gitu, které nastavil váš vedoucí týmu.
-- **R5**: projekt úložiště v Gitu, který je nastavený podle váš vedoucí projektu.
-- **D2**: místní adresář naklonovali z R2.
-- **D4**: místní adresář naklonovali z R4.
-- **D5**: místní adresář naklonovali z R5.
+- **R2**: GroupUtilities úložiště v Gitu, která správce skupiny je nastavená na vašem serveru Azure DevOps skupiny.
+- **R4**: TeamUtilities úložiště v Gitu, které nastavil váš vedoucí týmu.
+- **R5**: V úložišti projektů na Git, který je nastavený podle váš vedoucí projektu.
+- **D2**: Místní adresář naklonovali z R2.
+- **D4**: Místní adresář naklonovali z R4.
+- **D5**: Místní adresář naklonovali z R5.
 
 
-## <a name="step-0-prerequisites"></a>Krok 0: požadavky
+## <a name="step-0-prerequisites"></a>Krok – 0: Požadavky
 
 Požadavky splněny dokončení úkolů přiřazena vedoucímu skupiny uvedených v [úkoly správce skupiny pro datové vědy tým](group-manager-tasks.md). Slouží ke shrnutí tady, třeba tyto požadavky splnit, předtím, než začnete s úkoly vedoucí týmu: 
 - Vaše skupina správce nastavil **GroupUtilities** úložiště (pokud existuje). 
@@ -60,7 +60,7 @@ Druhá s názvem **TeamUtilities** úložiště, požadovaných součástí je v
 - Pokud používáte **Linux DSVM**vytvořte veřejný klíč SSH na vaše DSVM a přidejte k vašim službám Azure DevOps skupiny. Další informace o SSH najdete v tématu **vytvořit veřejný klíč SSH** tématu [platformami a nástroji příloha](platforms-and-tools.md#appendix). 
 - Pokud váš vedoucí týmu a/nebo projekt byl vytvořen některé Azure file storage, které potřebujete k připojení k vaší DSVM, by měl získat informace o Azure file storage z nich. 
 
-## <a name="step-1-3-clone-group-team-and-project-repositories-to-local-machine"></a>Krok 1 – 3: klonování úložišť projektu do místního počítače, týmu a skupiny
+## <a name="step-1-3-clone-group-team-and-project-repositories-to-local-machine"></a>Krok 1 – 3: Duplicitní skupina týmu, úložišť a projektu do místního počítače
 
 Tato část obsahuje informace o dokončení první tři úkoly jednotlivých přispěvatelů projektu: 
 
@@ -96,7 +96,7 @@ Zkontrolujte, jestli se tři složky v adresáři projektu.
 
 ![5](./media/project-ic-tasks/project-ic-5-three-repo-cloned-to-ic-linux.png)
 
-## <a name="step-4-5-mount-azure-file-storage-to-your-dsvm-optional"></a>Krok 4 – 5: připojení Azure file storage pro vaše DSVM (volitelné)
+## <a name="step-4-5-mount-azure-file-storage-to-your-dsvm-optional"></a>Krok 4 – 5: Připojení Azure file storage pro vaše DSVM (volitelné)
 
 K připojení Azure file storage pro vaše DSVM, postupujte podle pokynů v části 4 [úkoly vedoucí týmu pro datové vědy tým](team-lead-tasks.md)
 

@@ -8,13 +8,13 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 08/07/2017
 ms.author: tamram
-ms.component: queues
-ms.openlocfilehash: d2d4a31097c4050ba9193fc9d6fa076fe9c6e27f
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.subservice: queues
+ms.openlocfilehash: b173934db17b8c3ac5a48e599b75478fb214c240
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39524827"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55458393"
 ---
 # <a name="introduction-to-queues"></a>Seznámení s frontami
 
@@ -40,13 +40,13 @@ Služba front obsahuje následující součásti:
   
     `https://myaccount.queue.core.windows.net/images-to-download`
 
-* **Účet úložiště:** veškerý přístup ke službě Azure Storage se provádí prostřednictvím účtu úložiště. Podrobné informace o kapacitě účtu úložiště najdete v článku [Škálovatelnost a cíle výkonnosti úložiště Azure](../common/storage-scalability-targets.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json).
+* **Účet úložiště:** Veškerý přístup ke službě Azure Storage se provádí prostřednictvím účtu úložiště. Podrobné informace o kapacitě účtu úložiště najdete v článku [Škálovatelnost a cíle výkonnosti úložiště Azure](../common/storage-scalability-targets.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json).
 
 * **Fronta:** Fronta obsahuje sadu zpráv. Všechny zprávy musí být ve frontě. Upozorňujeme, že název fronty musí být psaný malými písmeny. Informace o pojmenování front najdete v tématu [Pojmenování front a metadata](https://msdn.microsoft.com/library/azure/dd179349.aspx).
 
-* **Zpráva:** Zprávu v libovolném formátu o velikosti až 64 kB. Maximální doba, kterou může zpráva zůstat ve frontě je sedm dní.
+* **zpráva:** Zprávu v libovolném formátu o velikosti až 64 KB. Maximální doba, kterou může zpráva zůstat ve frontě je sedm dní.
 
 ## <a name="next-steps"></a>Další postup
 
-* [vytvořit účet úložiště](../storage-create-storage-account.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json)
+* [Vytvoření účtu úložiště](../storage-create-storage-account.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json)
 * [Začínáme s frontami pomocí .NET](storage-dotnet-how-to-use-queues.md)

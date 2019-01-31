@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 11/13/2018
 ms.author: magoedte
-ms.openlocfilehash: c3aef8c0c05c8f018a3218e15fd102163b89084f
-ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
+ms.openlocfilehash: 693d66c6b56fd759086236ae0252d2c6f1b5693e
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54214738"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55301250"
 ---
 # <a name="log-analytics-faq"></a>Nejčastější dotazy k Log Analytics
 Tato FAQ Microsoft je uveden seznam nejčastější dotazy o službě Log Analytics v Microsoft Azure. Pokud máte nějaké další dotazy o službě Log Analytics, pokračujte [diskusní fórum](https://social.msdn.microsoft.com/Forums/azure/home?forum=opinsights) a zveřejněte své dotazy. Pokud je dotaz pokládán často, přidáme ji k tomuto článku tak, aby jej lze rychle a snadno najít.
@@ -49,9 +49,9 @@ Odpověď: Vlastní pole extrakce jsou aktuálně podporované ve classic protok
 
 Odpověď: Zobrazení seznamu není k dispozici v nové protokoly. Je šipka vlevo jednomu záznamu v tabulce výsledků. Klepnutím na šipku otevřete podrobnosti konkrétního záznamu. 
 
-### <a name="q-after-running-a-query-a-list-of-suggested-filters-shows-up-but-it-doesnt-include-all-filters-how-can-i-see-the-rest"></a>Otázka: Po spuštění dotazu se zobrazí seznam filtrů, ale neobsahuje všechny filtry. Jak můžete zobrazit zbývající? 
+### <a name="q-after-running-a-query-a-list-of-suggested-filters-are-available-how-can-i-see-filters"></a>Otázka: Po spuštění dotazu, jsou k dispozici seznam filtrů. Jak můžu zjistit, filtry? 
 
-Odpověď: Co se nyní zobrazí je ve verzi preview novou implementaci filtry. To je teď na základě sady úplné výsledků namísto podle limit 10 000 záznamů uživatelského rozhraní. Toto je momentálně seznam nejpopulárnější filtry a 10 nejběžnějších hodnot u každého filtru. 
+Odpověď: Klikněte na levý posun zobrazíte náhled nové filtry implementace "Filtry". To je teď na základě sady úplné výsledků namísto podle limit 10 000 záznamů uživatelského rozhraní. Toto je momentálně seznam nejpopulárnější filtry a 10 nejběžnějších hodnot u každého filtru. 
 
 ### <a name="q-why-am-i-getting-the-error-register-resource-provider-microsoftinsights-for-this-subscription-to-enable-this-query-in-logs-after-drilling-in-from-vm"></a>Otázka: Proč dochází k chybě: "Zaregistrujte poskytovatele prostředků"Microsoft.Insights' pro toto předplatné chcete povolit tento dotaz "v protokolech, při procházení se změnami z virtuálního počítače? 
 

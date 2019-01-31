@@ -7,13 +7,13 @@ ms.service: storage
 ms.topic: get-started-article
 ms.date: 01/02/2019
 ms.author: tamram
-ms.component: common
-ms.openlocfilehash: dc7932f197931a0fbf1dde924eb70ca18f6f9748
-ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
+ms.subservice: common
+ms.openlocfilehash: a82ea1e7f584cd9cab794d147c3f19f04e23732b
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/07/2019
-ms.locfileid: "54065541"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55474798"
 ---
 # <a name="introduction-to-azure-storage"></a>Seznámení se službou Azure Storage
 
@@ -29,7 +29,7 @@ Azure Storage je řešení cloudového úložiště Microsoftu pro scénáře mo
 
 Azure Storage zahrnuje tyto datové služby: 
 
-- [Objekty BLOB Azure](../blobs/storage-blobs-introduction.md): Široce škálovatelné úložiště objektů pro textové a binární data.
+- [Azure Blobs](../blobs/storage-blobs-introduction.md): Široce škálovatelné úložiště objektů pro textové a binární data.
 - [Služba soubory Azure](../files/storage-files-introduction.md): Spravované sdílené složky pro cloudové nebo místní nasazení.
 - [Fronty Azure](../queues/storage-queues-introduction.md): Úložiště pro spolehlivé zasílání zpráv mezi součástmi aplikace. 
 - [Tabulky Azure](../tables/table-storage-overview.md): Úložiště NoSQL pro úložiště strukturovaných dat bez schématu.
