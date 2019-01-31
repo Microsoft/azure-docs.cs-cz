@@ -167,27 +167,27 @@ Kopírování dat ze SAP BW, se používají následující mapování z datový
 | Typ dat SAP BW | Data factory dočasné datový typ |
 |:--- |:--- |
 | ACCP | Int |
-| CHAR | Řetězec |
-| CLNT | Řetězec |
-| AKTUÁLNÍ | Desítkově |
-| CUKY | Řetězec |
-| DEC | Desítkově |
+| CHAR | String |
+| CLNT | String |
+| CURR | Decimal |
+| CUKY | String |
+| DEC | Decimal |
 | FLTP | Double |
-| INT1 | Bajt |
+| INT1 | Byte |
 | INT2 | Int16 |
 | INT4 | Int |
-| LANG | Řetězec |
-| LCHR | Řetězec |
-| LRAW | Byte] |
+| LANG | String |
+| LCHR | String |
+| LRAW | Byte[] |
 | PREC | Int16 |
-| QUAN | Desítkově |
-| NEZPRACOVANÉ | Byte] |
-| RAWSTRING | Byte] |
-| ŘETĚZEC | Řetězec |
-| JEDNOTKA | Řetězec |
-| DAT | Řetězec |
-| NUMC | Řetězec |
-| TIMS | Řetězec |
+| QUAN | Decimal |
+| RAW | Byte[] |
+| RAWSTRING | Byte[] |
+| STRING | String |
+| UNIT | String |
+| DATS | String |
+| NUMC | String |
+| TIMS | String |
 
 
 ## <a name="next-steps"></a>Další postup
