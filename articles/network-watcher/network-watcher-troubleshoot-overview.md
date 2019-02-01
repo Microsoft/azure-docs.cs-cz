@@ -78,7 +78,7 @@ Následující tabulky popisují typy různých chybových (id v části s výsl
 | Authentication | Předsdílené klíče se neshodují. | Ano|
 | PeerReachability | Brána partnera není dostupná. | Ano|
 | IkePolicyMismatch | Partner brány má IKE zásady, které nejsou podporovány službou Azure. | Ano|
-| Chyba WfpParse | Došlo k chybě při analýze protokolu Ochrana souborů systému Windows. |Ano|
+| WfpParse Error | Došlo k chybě při analýze protokolu Ochrana souborů systému Windows. |Ano|
 
 ## <a name="supported-gateway-types"></a>Podporované typy bran
 
