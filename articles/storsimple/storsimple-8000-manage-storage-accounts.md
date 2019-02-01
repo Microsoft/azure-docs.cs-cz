@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 06/29/2017
 ms.author: alkohli
-ms.openlocfilehash: afaa4c090508ee5a2306c2be1515076e6bd4f100
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: 53aa442b86f5c82ded2f212a64f43852e6b3d2c5
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47225721"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55486822"
 ---
 # <a name="use-the-storsimple-device-manager-service-to-manage-your-storage-account-credentials"></a>Použití služby Správce zařízení StorSimple pro správu přihlašovacích údajů účtu úložiště
 
@@ -54,7 +54,7 @@ Jsou zvládnout běžné úkoly související s účty úložiště, které lze 
 
 Existují tři typy účtů úložiště, které je možné se zařízením StorSimple.
 
-* **Účty úložiště pro automaticky generované** – jak název napovídá, tento typ účtu úložiště se automaticky generuje při prvním vytvoření služby. Další informace o vytvoření tohoto účtu úložiště najdete v tématu [krok 1: vytvoření nové služby](storsimple-8000-deployment-walkthrough-u2.md#step-1-create-a-new-service) v [nasazení zařízení StorSimple v místním](storsimple-8000-deployment-walkthrough-u2.md). 
+* **Účty úložiště pro automaticky generované** – jak název napovídá, tento typ účtu úložiště se automaticky generuje při prvním vytvoření služby. Další informace o vytvoření tohoto účtu úložiště najdete v tématu [krok 1: Vytvořit novou službu](storsimple-8000-deployment-walkthrough-u2.md#step-1-create-a-new-service) v [nasazení zařízení StorSimple v místním](storsimple-8000-deployment-walkthrough-u2.md). 
 * **Účty úložiště v předplatném služby** – jedná se účty úložiště Azure, které jsou přidruženy stejném předplatném jako služby. Další informace o tom, jak tyto úložiště se vytvoří účty, najdete v článku [o účtech Azure Storage](../storage/common/storage-create-storage-account.md). 
 * **Účty úložiště mimo předplatné služby** – jedná se účty úložiště Azure, které nejsou přidružené k vaší službě a pravděpodobně existovala předtím, než služba byla vytvořena.
 
@@ -165,7 +165,7 @@ Informovat službu Správce zařízení StorSimple změny, můžete bude potřeb
       
       ![Synchronizovat klíče](./media/storsimple-8000-manage-storage-accounts/syncaccesskey3.png)
 
-Po úspěšném sycnhronized klíč, budete upozorněni.
+Jakmile se úspěšně synchronizovaly klíče, budete upozorněni.
 
 #### <a name="to-synchronize-keys-for-storage-accounts-outside-of-the-service-subscription"></a>K synchronizaci klíčů pro účty úložiště mimo předplatné služby
 1. Na **služby** stránky, klikněte na tlačítko **konfigurovat** kartu.

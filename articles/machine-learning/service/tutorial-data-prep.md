@@ -11,12 +11,12 @@ ms.author: cforbe
 ms.reviewer: trbye
 ms.date: 12/04/2018
 ms.custom: seodec18
-ms.openlocfilehash: c199a403e65bd084428fd45e8dc67cca214f5f9f
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 994b1eb3f0a39d56d02ff9ed034d7e348a00b86d
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55251278"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55491837"
 ---
 # <a name="tutorial-prepare-data-for-regression-modeling"></a>Kurz: Příprava dat pro regresní modelování
 
@@ -33,26 +33,63 @@ V tomto kurzu se naučíte:
 > * Transformace dat pomocí inteligentních transformace k vytvoření nové funkce.
 > * Uložte objekt toku dat pro použití v regresní model.
 
-Můžete připravit vaše data v jazyce Python pomocí [sady SDK služby Azure Machine Learning Data Prep](https://aka.ms/data-prep-sdk).
+## <a name="prerequisites"></a>Požadavky
 
-## <a name="get-the-notebook"></a>Získání poznámkového bloku
+Přejděte k [nastavení vývojového prostředí](#start) číst kroky Poznámkový blok, nebo použijte níže uvedené pokyny k získání poznámkového bloku a spustit ho v poznámkových bloků Azure nebo vašeho vlastního serveru poznámkového bloku. Pokud chcete spustit Poznámkový blok, bude nutné:
 
-V zájmu usnadnění práce je tento kurz dostupný jako [poznámkový blok Jupyter](https://github.com/Azure/MachineLearningNotebooks/blob/master/tutorials/regression-part1-data-prep.ipynb). Spustit **regrese – část 1 data-prep.ipynb** poznámkového bloku v [poznámkových bloků Azure](https://notebooks.azure.com/) nebo vlastní server poznámkového bloku Jupyter.
+* Server poznámkového bloku Python 3.6 s nainstalované tyto položky:
+    * Azure Machine Learning přípravy dat sady SDK pro Python
+* Výukový program Poznámkový blok
 
-[!INCLUDE [aml-clone-in-azure-notebook](../../../includes/aml-clone-in-azure-notebook.md)]
+Získejte všechny tyto požadavky pomocí kteréhokoli z níže uvedených částech.
 
-## <a name="import-packages"></a>Import balíčků
+* Použití [poznámkových bloků Azure](#azure)
+* Použití [serveru poznámkového bloku](#server)
 
-Začnete importováním sady SDK.
+### <a name="azure"></a>Použití poznámkových bloků Azure: Bezplatné poznámkové bloky Jupyter v cloudu
 
-```python
-import azureml.dataprep as dprep
-```
+Je snadné začít s poznámkovými bloky Azure! [Aplikaci Azure Machine Learning Data Prep SDK pro Python](https://aka.ms/data-prep-sdk) je již nainstalován a nakonfigurován pro vás na [poznámkových bloků Azure](https://notebooks.azure.com/). Instalace a aktualizace budoucí jsou automaticky spravovány prostřednictvím služby Azure.
 
-Pokud jste se v tomto kurzu ve prostředí Pythonu, použijte následující nainstalují potřebné balíčky.
+Po dokončení následujících kroků spustit **kurzy/regrese – část 1 data-prep.ipynb** Poznámkový blok v vaše **Začínáme** projektu.
+
+[!INCLUDE [aml-azure-notebooks](../../../includes/aml-azure-notebooks.md)]
+
+### <a name="server"></a>Použít vlastní server poznámkového bloku Jupyter
+
+Pomocí těchto kroků můžete vytvořit místní aplikace Jupyter Notebook server ve vašem počítači.  Po dokončení kroků, spusťte **kurzy/regrese – část 1 data-prep.ipynb** poznámkového bloku.
+
+1. Dokončení [rychlý start Python pro Azure Machine Learning](quickstart-create-workspace-with-python.md) vytvoření Miniconda prostředí.  Můžete přejít **vytvořit pracovní prostor** části, ale je budete potřebovat pro [2. část](tutorial-auto-train-models.md) této série kurzů.
+1. Instalace v prostředí pomocí sady SDK pro Data Prep `pip install azureml-dataprep`.
+1. Naklonujte [úložiště GitHub](https://aka.ms/aml-notebooks).
+
+    ```
+    git clone https://github.com/Azure/MachineLearningNotebooks.git
+    ```
+
+1. Spusťte server poznámkového bloku v naklonovaném adresáři.
+
+    ```shell
+    jupyter notebook
+
+## <a name="start"></a>Set up your development environment
+
+All the setup for your development work can be accomplished in a Python notebook. Setup includes the following actions:
+
+* Install the SDK
+* Import Python packages
+
+### Install and import packages
+
+Use the following to install necessary packages if you don't already have them.
 
 ```shell
 pip install azureml-dataprep
+```
+
+Importujte sady SDK.
+
+```python
+import azureml.dataprep as dprep
 ```
 
 ## <a name="load-data"></a>Načtení dat

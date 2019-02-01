@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 1/23/2019
-ms.openlocfilehash: eca67cb70756dd1184bd3a66c2582743c8baa8fd
-ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
+ms.date: 1/30/2019
+ms.openlocfilehash: 03e0db822e38cc6823fc32aa915dc9283fa46cbe
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/25/2019
-ms.locfileid: "54903753"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55493044"
 ---
 # <a name="read-replicas-in-azure-database-for-mysql"></a>Repliky pro čtení ve službě Azure Database for MySQL
 
@@ -20,7 +20,7 @@ ms.locfileid: "54903753"
 
 Funkce repliky pro čtení umožňuje replikaci dat ze serveru Azure Database for MySQL server (správce) až k pěti jen pro čtení serverům (repliky) v rámci stejné oblasti Azure. Repliky jen pro čtení se aktualizují asynchronně pomocí technologie replikace na základě pozice souboru nativní binární protokol (binlog) stroje MySQL. Další informace o binlog replikace, najdete v článku [Přehled replikace binlog MySQL](https://dev.mysql.com/doc/refman/5.7/en/binlog-replication-configuration-overview.html).
 
-Repliky vytvořené v Azure Database for MySQL služby jsou nové servery, které je možné spravovat stejným způsobem jako normální nebo samostatné servery MySQL. Pro každou další repliku bude vám Účtovaná zřízených výpočetních jádrech a zřízeného úložiště v GB/měsíc. 
+Repliky vytvořené v Azure Database for MySQL služby jsou nové servery, které je možné spravovat stejným způsobem jako normální nebo samostatné servery MySQL. Za každou repliku pro čtení se vám účtuje zřízený výpočetní výkon ve virtuálních jádrech a zřízené úložiště v GB za měsíc. 
 
 
 Další informace o funkcích replikace MySQL a problémů, najdete v tématu [MySQL replikace dokumentaci](https://dev.mysql.com/doc/refman/5.7/en/replication-features.html).
@@ -86,6 +86,7 @@ Uživatelé na hlavním serveru se replikují do repliky pro čtení. Můžete p
 - Vytváří se replika repliky se nepodporuje.
 - Tabulky v paměti může způsobit, že repliky přestane být synchronní. Jedná se omezení technologie replikace MySQL. Další informace najdete v [MySQL referenční dokumentaci](https://dev.mysql.com/doc/refman/5.7/en/replication-features-memory.html) Další informace.
 - Ladění [ `innodb_file_per_table` ](https://dev.mysql.com/doc/refman/5.7/en/innodb-multiple-tablespaces.html) parametr na hlavním serveru po vytváření serveru repliky může způsobit, že repliky přestane být synchronní. Server repliky není přehled o různých tabulkové prostory.
+- Ujistěte se, že se hlavní server tabulky primární klíče mají. Latence replikace mezi hlavním virtuálním počítači repliky a může znamenat chybějící primární klíče.
 - Úplný seznam omezení replikace MySQL [dokumentace ke službě MySQL](https://dev.mysql.com/doc/refman/5.7/en/replication-features.html)
 
 

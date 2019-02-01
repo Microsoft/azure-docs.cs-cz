@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/28/2017
 ms.author: apimpm
-ms.openlocfilehash: 59562d0571486a4bcbc96be4cb7dcddb4dfb0a44
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.openlocfilehash: 39f23cd0b0b6081d8e54524a0eedc9cce1fd4571
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55095715"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55493416"
 ---
 # <a name="api-management-access-restriction-policies"></a>Zásady omezení přístupu služby API Management
 Toto téma obsahuje odkaz pro následující zásady služby API Management. Informace o přidávání a konfiguraci zásad najdete v tématu [zásady ve službě API Management](https://go.microsoft.com/fwlink/?LinkID=398186).  
@@ -56,14 +56,14 @@ Toto téma obsahuje odkaz pro následující zásady služby API Management. Inf
   
 ### <a name="elements"></a>Elementy  
   
-|Name|Popis|Požaduje se|  
+|Název|Popis|Požaduje se|  
 |----------|-----------------|--------------|  
 |check-header|Kořenový element.|Ano|  
 |hodnota|Povolená hodnota záhlaví HTTP. Pokud je zadaných více elementů hodnotu, kontroly se považuje za úspěchu, pokud některou z hodnot je nalezena shoda.|Ne|  
   
 ### <a name="attributes"></a>Atributy  
   
-|Name|Popis|Požaduje se|Výchozí|  
+|Název|Popis|Požaduje se|Výchozí|  
 |----------|-----------------|--------------|-------------|  
 |failed-check-error-message|Chybová zpráva má vrátit v těle odpovědi protokolu HTTP, pokud záhlaví neexistuje nebo má neplatnou hodnotu. Tato zpráva musí mít žádné speciální znaky správně uvozeny zpětným lomítkem.|Ano|neuvedeno|  
 |failed-check-httpcode|Kód stavu HTTP vrátit Pokud záhlaví neexistuje nebo má neplatnou hodnotu.|Ano|neuvedeno|  
@@ -111,7 +111,7 @@ Toto téma obsahuje odkaz pro následující zásady služby API Management. Inf
   
 ### <a name="elements"></a>Elementy  
   
-|Name|Popis|Požaduje se|  
+|Název|Popis|Požaduje se|  
 |----------|-----------------|--------------|  
 |Nastavte limit|Kořenový element.|Ano|  
 |rozhraní api|Přidejte jednu nebo více z těchto prvků a stanovit omezení frekvence volání rozhraní API v rámci produktu. Produkt a rozhraní API volat rychlost, kterou omezení platí nezávisle na sobě. Rozhraní API může být buď prostřednictvím `name` nebo `id`. Pokud nejsou zadány oba atributy, `id` se použije a `name` budou ignorovány.|Ne|  
@@ -119,7 +119,7 @@ Toto téma obsahuje odkaz pro následující zásady služby API Management. Inf
   
 ### <a name="attributes"></a>Atributy  
   
-|Name|Popis|Požaduje se|Výchozí|  
+|Název|Popis|Požaduje se|Výchozí|  
 |----------|-----------------|--------------|-------------|  
 |jméno|Název rozhraní API, které chcete použít omezení četnosti.|Ano|neuvedeno|  
 |volání|Maximální počet povolených během zadaného časového intervalu ve volání `renewal-period`.|Ano|neuvedeno|  
@@ -171,13 +171,13 @@ Toto téma obsahuje odkaz pro následující zásady služby API Management. Inf
   
 ### <a name="elements"></a>Elementy  
   
-|Name|Popis|Požaduje se|  
+|Název|Popis|Požaduje se|  
 |----------|-----------------|--------------|  
 |Nastavte limit|Kořenový element.|Ano|  
   
 ### <a name="attributes"></a>Atributy  
   
-|Name|Popis|Požaduje se|Výchozí|  
+|Název|Popis|Požaduje se|Výchozí|  
 |----------|-----------------|--------------|-------------|  
 |volání|Maximální počet povolených během zadaného časového intervalu ve volání `renewal-period`.|Ano|neuvedeno|  
 |čítače klíč|Klíč pro zásady omezení četnosti.|Ano|neuvedeno|  
@@ -214,7 +214,7 @@ Toto téma obsahuje odkaz pro následující zásady služby API Management. Inf
   
 ### <a name="elements"></a>Elementy  
   
-|Name|Popis|Požaduje se|  
+|Název|Popis|Požaduje se|  
 |----------|-----------------|--------------|  
 |Filtr IP|Kořenový element.|Ano|  
 |Adresa|Určuje jednu IP adresu, podle kterého chcete filtrovat.|Alespoň jeden `address` nebo `address-range` je vyžadován element.|  
@@ -222,7 +222,7 @@ Toto téma obsahuje odkaz pro následující zásady služby API Management. Inf
   
 ### <a name="attributes"></a>Atributy  
   
-|Name|Popis|Požaduje se|Výchozí|  
+|Název|Popis|Požaduje se|Výchozí|  
 |----------|-----------------|--------------|-------------|  
 |rozsah adres z = "address" k "address" =|Rozsah IP adres umožňuje povolit nebo odepřít přístup.|Požadováno, pokud `address-range` element se používá.|neuvedeno|  
 |Akce filtru IP = "Povolit &#124; zakázat"|Určuje, zda mají být povolená volání nebo není pro zadané IP adresy a rozsahy adres.|Ano|neuvedeno|  
@@ -267,7 +267,7 @@ Toto téma obsahuje odkaz pro následující zásady služby API Management. Inf
   
 ### <a name="elements"></a>Elementy  
   
-|Name|Popis|Požaduje se|  
+|Název|Popis|Požaduje se|  
 |----------|-----------------|--------------|  
 |kvóta|Kořenový element.|Ano|  
 |rozhraní api|Přidejte jednu nebo více z těchto prvků a stanovit kvótu volání rozhraní API v rámci produktu. Produkt a kvóty volání rozhraní API se uplatňují nezávisle na sobě. Rozhraní API může být buď prostřednictvím `name` nebo `id`. Pokud nejsou zadány oba atributy, `id` se použije a `name` budou ignorovány.|Ne|  
@@ -275,7 +275,7 @@ Toto téma obsahuje odkaz pro následující zásady služby API Management. Inf
   
 ### <a name="attributes"></a>Atributy  
   
-|Name|Popis|Požaduje se|Výchozí|  
+|Název|Popis|Požaduje se|Výchozí|  
 |----------|-----------------|--------------|-------------|  
 |jméno|Název rozhraní API nebo operace, pro kterou se vztahují kvóty.|Ano|neuvedeno|  
 |Šířka pásma|Maximální počet povolených během zadaného časového intervalu v kilobajtech `renewal-period`.|Buď `calls`, `bandwidth`, nebo společně musí být zadány oba.|neuvedeno|  
@@ -329,13 +329,13 @@ Toto téma obsahuje odkaz pro následující zásady služby API Management. Inf
   
 ### <a name="elements"></a>Elementy  
   
-|Name|Popis|Požaduje se|  
+|Název|Popis|Požaduje se|  
 |----------|-----------------|--------------|  
 |kvóta|Kořenový element.|Ano|  
   
 ### <a name="attributes"></a>Atributy  
   
-|Name|Popis|Požaduje se|Výchozí|  
+|Název|Popis|Požaduje se|Výchozí|  
 |----------|-----------------|--------------|-------------|  
 |Šířka pásma|Maximální počet povolených během zadaného časového intervalu v kilobajtech `renewal-period`.|Buď `calls`, `bandwidth`, nebo společně musí být zadány oba.|neuvedeno|  
 |volání|Maximální počet povolených během zadaného časového intervalu ve volání `renewal-period`.|Buď `calls`, `bandwidth`, nebo společně musí být zadány oba.|neuvedeno|  
@@ -504,7 +504,7 @@ Toto téma obsahuje odkaz pro následující zásady služby API Management. Inf
   
 ### <a name="attributes"></a>Atributy  
   
-|Name|Popis|Požaduje se|Výchozí|  
+|Název|Popis|Požaduje se|Výchozí|  
 |----------|-----------------|--------------|-------------|  
 |časový posun|Časový interval. Slouží k zadání očekávané maximální časový rozdíl mezi systémovými hodinami vydavatel tokenu a instance API Management.|Ne|0 sekund|  
 |se nezdařilo ověření – chybové zprávy|Chybová zpráva pro vrátí v těle odpovědi protokolu HTTP, pokud token JWT nesplňuje podmínky ověření. Tato zpráva musí mít žádné speciální znaky správně uvozeny zpětným lomítkem.|Ne|Výchozí chybovou zprávu, závisí na problém s ověřováním, například "token JWT není k dispozici."|  
@@ -512,7 +512,7 @@ Toto téma obsahuje odkaz pro následující zásady služby API Management. Inf
 |název hlavičky|Název hlavičky protokolu HTTP s tokenem.|Buď `header-name` nebo `query-parameter-name` musí být zadaný; ale ne obě možnosti současně.|neuvedeno|  
 |id|`id` Atribut na `key` prvek můžete zadat řetězec, který bude hledána `kid` deklarací identity v tokenu (pokud existuje) a zjistěte, příslušný klíč pro ověření podpisu.|Ne|neuvedeno|  
 |shoda|`match` Atribut na `claim` element určuje, zda každá hodnota deklarace identity v zásadách musí být k dispozici v tokenu pro ověření úspěšné. Možné hodnoty:<br /><br /> -                          `all` -Každá hodnota deklarace identity v zásadách musí být k dispozici v tokenu pro ověření úspěšné.<br /><br /> -                          `any` – alespoň jednu deklaraci identity hodnota musí být k dispozici v tokenu pro ověření úspěšné.|Ne|all|  
-|query-paremeter-name|Název parametru dotazu tokenem.|Buď `header-name` nebo `query-paremeter-name` musí být zadaný; ale ne obě možnosti současně.|neuvedeno|  
+|query-parameter-name|Název parametru dotazu tokenem.|Buď `header-name` nebo `query-parameter-name` musí být zadaný; ale ne obě možnosti současně.|neuvedeno|  
 |vyžadovat čas vypršení platnosti|Datový typ Boolean. Určuje, jestli se vyžaduje deklaraci identity vypršení platnosti tokenu.|Ne|true (pravda)|
 |require-scheme|Název tokenu schéma, například "Nosiče". Pokud tento atribut je nastaven, zásady zajistí, že zadané schéma je k dispozici v Hodnota hlavičky autorizace.|Ne|neuvedeno|
 |požadovat podepsané tokenů|Datový typ Boolean. Určuje, zda je token musí být podepsán.|Ne|true (pravda)|  

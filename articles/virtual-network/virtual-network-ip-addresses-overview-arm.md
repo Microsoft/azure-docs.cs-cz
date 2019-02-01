@@ -10,14 +10,14 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/24/2018
+ms.date: 01/30/2019
 ms.author: jdial
-ms.openlocfilehash: f4af899be489dab2fc73bb33943882d4dc81576f
-ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
+ms.openlocfilehash: 5472878542078e2a2dbb900965b59844d6e3b4b3
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54054754"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55488085"
 ---
 # <a name="ip-address-types-and-allocation-methods-in-azure"></a>Typy IP adres a metody přidělování v Azure
 
@@ -61,22 +61,23 @@ Veřejné IP adresy se vytvářejí s jednou z následujících SKU:
 Všechny veřejné IP adresy vytvořené před zavedením skladových položek jsou veřejné IP adresy základních SKU. Se zavedením skladových položek máte možnost pro veřejnou IP adresu určit požadovanou SKU. Adresy základních SKU:
 
 - Jsou přiřazované pomocí metody statického nebo dynamického přidělení.
+- Máte měnitelné příchozí pocházející ze tok, který nečinnosti časový limit 4-30 minut, výchozí hodnota je 4 minuty a oprava odchozí tok pocházející ze časový limit nečinnosti 4 minuty.
 - Jsou standardně otevřené.  K omezení příchozího a odchozího provozu se doporučuje použít skupiny zabezpečení sítě, ale není to nezbytné.
 - Jsou přiřazované k jakémukoli prostředku Azure, ke kterému může být přiřazena veřejná IP adresa, jako jsou například síťová rozhraní, brány VPN Gateway, brány Application Gateway a internetové nástroje pro vyrovnávání zatížení.
-- Můžou být přiřazené ke konkrétní zóně.
-- Nejsou zónově redundantní. Další informace o zónách dostupnosti najdete v tématu [Přehled zón dostupnosti](../availability-zones/az-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
+- Nepodporuje zóny dostupnosti scénáře.  Budete muset použít veřejné IP adresy standardní SKU pro scénáře zónu dostupnosti. Další informace o zónách dostupnosti najdete v článku s [přehledem zón dostupnosti](../availability-zones/az-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) a v článku o [nástroji pro vyrovnávání zatížení úrovně Standard a zónách dostupnosti](../load-balancer/load-balancer-standard-availability-zones.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
 
 #### <a name="standard"></a>Standard
 
 Veřejné IP adresy standardních SKU jsou:
 
-- Přiřazované pouze pomocí metody statického přidělení.
+- Vždy používejte metodu statického přidělování.
+- Máte měnitelné příchozí původ původu a odchozí tok časový limit nečinnosti 4 66 minut, výchozí hodnota je 4 minuty.
 - Standardně zabezpečené a uzavřené vůči příchozímu provozu. Příchozí provoz je nutné explicitně povolit pomocí [skupiny zabezpečení sítě](security-overview.md#network-security-groups).
-- Přiřazená síťová rozhraní, nástrojů pro vyrovnávání zatížení veřejnou standardní, brány Application Gateway nebo bran VPN Gateway. Další informace o nástrojích pro vyrovnávání zatížení Azure úrovně Standard najdete v článku o [nástroji pro vyrovnávání zatížení Azure úrovně Standard](../load-balancer/load-balancer-standard-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
-- Ve výchozím nastavení zónově redundantní. Je možné je vytvořit zónově a zaručit jejich dostupnost v konkrétní zóně dostupnosti. Další informace o zónách dostupnosti najdete v článku s [přehledem zón dostupnosti](../availability-zones/az-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) a v článku o [nástroji pro vyrovnávání zatížení úrovně Standard a zónách dostupnosti](../load-balancer/load-balancer-standard-availability-zones.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
+- Přiřazená síťová rozhraní, Standardní veřejné nástroje pro vyrovnávání zatížení, brány Application Gateway nebo bran VPN Gateway. Další informace o Load balanceru úrovně Standard najdete v tématu [Azure Load balancer úrovně Standard](../load-balancer/load-balancer-standard-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
+- Zónově redundantní ve výchozím nastavení a volitelně oblastmi (je možné vytvořit zónově a zaručit v konkrétní zóně dostupnosti). Další informace o zónách dostupnosti najdete v článku s [přehledem zón dostupnosti](../availability-zones/az-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) a v článku o [nástroji pro vyrovnávání zatížení úrovně Standard a zónách dostupnosti](../load-balancer/load-balancer-standard-availability-zones.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
  
 > [!NOTE]
-> Komunikace s prostředkem SKU Standard nebude možná, dokud nevytvoříte a nepřiřadíte [skupinu zabezpečení sítě](security-overview.md#network-security-groups) a explicitně nepovolíte požadovaný příchozí provoz.
+> Příchozí komunikace s prostředkem standardní SKU selhávat, dokud se můžete vytvořit a přidružit [skupinu zabezpečení sítě](security-overview.md#network-security-groups) a explicitně nepovolíte požadovaný příchozí provoz.
 
 ### <a name="allocation-method"></a>Metoda přidělování
 

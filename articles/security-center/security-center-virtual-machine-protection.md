@@ -3,7 +3,7 @@ title: Ochrana vašich počítačů a aplikací ve službě Azure Security Cente
 description: Tento dokument popisuje doporučení ve službě Security Center, které vám pomůžou chránit virtuální počítače a počítače a webové aplikace a služby App Service Environment.
 services: security-center
 documentationcenter: na
-author: rkarlin
+author: monhaber
 manager: MBaldwin
 editor: ''
 ms.assetid: 47fa1f76-683d-4230-b4ed-d123fef9a3e8
@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 1/15/2019
-ms.author: rkarlin
-ms.openlocfilehash: 2c8f91c6915b23193129ed9e82688ad5967eb6ea
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.date: 1/27/2019
+ms.author: monhaber
+ms.openlocfilehash: 411fc025f5a25e961f69f5e6f66a9f6d115689a7
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55181465"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55487739"
 ---
 # <a name="protecting-your-machines-and-applications-in-azure-security-center"></a>Ochrana vašich počítačů a aplikací ve službě Azure Security Center
 Azure Security Center analyzuje stav zabezpečení vašich prostředků Azure. Když Security Center identifikuje potenciální ohrožení zabezpečení, vytvoří se doporučení, která vás provede procesem konfigurace potřebných kontrol. Doporučení platí pro typy prostředků Azure: virtuální počítače (VM) a počítačů, aplikací, sítí, SQL a identit a přístupů.
@@ -42,7 +42,7 @@ V části **výpočty a aplikace**, existují následující karty:
 - **Přehled:** Monitorování a doporučení identifikovaná službou Security Center
 - **Virtuální počítače a počítače:** Seznam virtuálních počítačů, počítačů a aktuální stav jejich zabezpečení
 - **Cloudové služby:** Seznam webových a pracovních rolí monitorovaných službou Security Center
-- **App Service (Preview)**: seznam prostředí App service a aktuální stav zabezpečení jednotlivých.
+- **Služby App services**: seznam prostředí App service a aktuální stav zabezpečení jednotlivých.
 - **Kontejnery (Preview)**: seznam kontejnerů hostované na počítače s Linuxem IaaS a vyhodnocení zabezpečení jejich konfigurace Dockeru.
 - **Výpočetní prostředky (Preview)**: seznam doporučení pro vaše výpočetní prostředky, jako je například clustery Service Fabric a Event hubs.
 
@@ -124,12 +124,11 @@ Pokud chcete zobrazit podrobnější vysvětlení tohoto doporučení, klikněte
 
 ![Aktualizace verze operačního systému](./media/security-center-virtual-machine-recommendations/security-center-monitoring-fig8-new4.png)
 
-### <a name="app-services-preview"></a>App Services (Preview)
+### <a name="app-services"></a>Aplikační služby
+Budete muset povolit služby App Service v rámci vašeho předplatného, abyste mohli zobrazit informace o službě App Service. Pokyny o tom, jak povolit tuto funkci najdete v tématu [chránit služby App Service pomocí Azure Security Center](security-center-app-services.md).
+[!NOTE]
+> Monitorování služby App Service je ve verzi preview a je k dispozici jenom na úrovni Standard služby Security Center.
 
-> [!NOTE]
-> Monitorování služby App Service je ve verzi preview a je k dispozici jenom na úrovni Standard služby Security Center. Další informace o cenových úrovních služby Security Center najdete na stránce s [cenami](security-center-pricing.md).
->
->
 
 V části **App services**najdete seznam vaší služby App service Environment a provést shrnutí stavu na základě posouzení Security Center.
 
@@ -171,19 +170,9 @@ Existují tři typy ikon v tomto seznamu:
 |App Service|10|Vzdálené ladění by měl být vypnuté pro webovou aplikaci|Vypněte ladění pro webové aplikace, pokud už nepotřebujete ho používat. Vzdálené ladění vyžaduje příchozí porty potřeba otevřít v aplikaci Function App.|
 |App Service|10|Vzdálené ladění by měla být vypnuta aplikace – funkce|Vypněte ladění pro aplikace Function App, pokud už nepotřebujete ho používat. Vzdálené ladění vyžaduje příchozí porty potřeba otevřít v aplikaci Function App.|
 |App Service|10|Nakonfigurovat omezení IP adres pro webovou aplikaci|Definujte seznam IP adres, které můžou přistupovat k vaší aplikace. Použití omezení IP adres, ochrání webovou aplikaci před běžnými útoky.|
-|App Service|10|Nakonfigurovat omezení IP adres pro aplikaci Function App| Definujte seznam IP adres, které můžou přistupovat k vaší aplikace. Použití omezení IP adres chrání před běžnými útoky aplikaci function app.|
 |App Service|10|Nejsou povoleny všechny ("*") prostředkům pro přístup k aplikaci| Nepovolit sadu parametr WEBSITE_LOAD_CERTIFICATES "". Nastavení parametru na "znamená, že jsou načteny všechny certifikáty do úložiště osobních certifikátů webové aplikace. To může vést k porušení principu nejnižší úrovně oprávnění, jak je pravděpodobné, že web potřebuje přístup ke všem certifikátům za běhu.|
-|App Service|5|Webové sokety by mělo být zakázáno pro webovou aplikaci|Zkontrolujte použití webových soketů ve webových aplikacích. Protokol webových soketů se dá ohrozit různými typy bezpečnostních hrozeb.|
-|App Service|5|Webové sokety by mělo být zakázáno pro aplikaci Function App|Zkontrolujte použití procedury webové sokety v rámci aplikace Function App. Protokol webových soketů se dá ohrozit různými typy bezpečnostních hrozeb.|
-|App Service|5|Použijte vlastní domény pro webovou aplikaci|Použijte vlastní domény k ochraně webové aplikace před běžnými útoky, jako je útok phishing a další útoky související s DNS.|
-|App Service|5|Použijte vlastní domény pro aplikaci Function App|Použijte vlastní domény k ochraně aplikace function app před běžnými útoky, jako je útok phishing a další útoky související s DNS.|
 |App Service|20|CORS by nemělo umožňovat každý prostředek pro přístup k vaší webové aplikace|Povolte pouze požadované domény k interakci s vaší webovou aplikací. Pro různé prostředků zdroji (CORS) pro sdílení obsahu by nemělo umožňovat přístup k webové aplikaci všem doménám.|
 |App Service|20|CORS by nemělo umožňovat každý prostředek pro přístup k aplikaci Function App| Povolte pouze požadované domény k interakci s vaší aplikací funkce. Pro různé prostředků zdroji (CORS) pro sdílení obsahu by nemělo umožňovat všechny domény pro přístup k vaší aplikaci funkcí.|
-|App Service|10|Použijte nejnovější podporované rozhraní .NET Framework pro webovou aplikaci|Používejte nejnovější verzi rozhraní .NET Framework pro nejnovější třídy zabezpečení. Použití starší třídy a typy můžou ohrožovat zabezpečení aplikace.|
-|App Service|10|Použít nejnovější podporovanou verzi Javy pro webovou aplikaci|Používejte nejnovější verzi Javy pro nejnovější třídy zabezpečení. Použití starší třídy a typy můžou ohrožovat zabezpečení aplikace.|
-|App Service|10|Použít nejnovější podporovanou verzi PHP pro webovou aplikaci|Používejte nejnovější verzi PHP pro nejnovější třídy zabezpečení. Použití starší třídy a typy můžou ohrožovat zabezpečení aplikace.|
-|App Service|10|Použít nejnovější podporovanou verzi Node.js pro webovou aplikaci|Používejte nejnovější verzi Node.js pro nejnovější třídy zabezpečení. Použití starší třídy a typy můžou ohrožovat zabezpečení aplikace.|
-|App Service|10|Použít nejnovější podporovanou verzi Pythonu pro webovou aplikaci|Používejte nejnovější verzi Pythonu pro nejnovější třídy zabezpečení. Použití starší třídy a typy můžou ohrožovat zabezpečení aplikace.|
 |Výpočetní prostředky (batch)|1|Konfigurace pravidla upozornění na metriky na účet Batch|Konfigurace pravidla upozornění na metriky na účet Batch a zapnutí metrik události dokončení odstranění fondu a spuštění události odstranění fondu|
 |Výpočetní prostředky (service fabric)|10|Použití Azure Active Directory pro ověřování klientů v Service Fabric|Proveďte ověření klienta pouze prostřednictvím Azure Active Directory v Service Fabric.|
 |Výpočetní prostředky (účet služby automation)|5| Povolení šifrování účtu Automation|Při ukládání citlivých dat, povolte šifrování proměnných assetů účtu Automation.|

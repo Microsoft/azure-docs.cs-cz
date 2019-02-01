@@ -1,8 +1,21 @@
 ---
-Název: Spusťte Python strojového učení titleSuffix skriptů: Azure Machine Learning Studio Popis: Jsou podrobněji popsány dále návrh zásadami pro podporu pro skripty Python v Azure Machine Learning Studio a scénáře základní informace o využití, možnosti a omezení.
-Services: machine learningu ms.service: ms.subservice strojového učení: studio ms.topic: článku
-
-Autor: ericlicoding ms.author: amlstudiodocs ms.custom: předchozí Autor = heatherbshapiro předchozí ms.author=hshapiro ms.date: 11/29/2017
+title: Spouštění skriptů Pythonu machine learning
+titleSuffix: Azure Machine Learning Studio
+description: Jsou podrobněji popsány dále návrh zásadami pro podporu pro skripty Python v Azure Machine Learning Studio a scénáře základní informace o využití, možnosti a omezení.
+services: machine-learning
+ms.service: machine-learning
+ms.subservice: studio
+ms.topic: article
+author: ericlicoding
+ms.author: amlstudiodocs
+ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
+ms.date: 11/29/2017
+ms.openlocfilehash: a040991ca4b3a08dec90f4fc6944b006ebea2135
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.translationtype: MT
+ms.contentlocale: cs-CZ
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55487842"
 ---
 # <a name="execute-python-machine-learning-scripts-in-azure-machine-learning-studio"></a>Spouštění skriptů strojového učení v Pythonu v nástroji Azure Machine Learning Studio
 

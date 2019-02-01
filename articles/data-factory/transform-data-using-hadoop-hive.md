@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/15/2019
 ms.author: douglasl
-ms.openlocfilehash: d9a649e3b49c71a24d06656e0667765ef9cc5508
-ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
+ms.openlocfilehash: e77b8c89954064fb143f04f0f901d1512d4fc50d
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2019
-ms.locfileid: "54321326"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55491004"
 ---
 # <a name="transform-data-using-hadoop-hive-activity-in-azure-data-factory"></a>Transformace dat pomocí aktivity Hivu Hadoop ve službě Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -52,7 +52,7 @@ Pokud do služby Azure Data Factory začínáte, přečtěte si [Úvod do služb
         "defines": {
             "param1": "param1Value"
         }
-    }   
+    }
 }
 ```
 ## <a name="syntax-details"></a>Podrobnosti o syntaxi
@@ -67,7 +67,7 @@ Pokud do služby Azure Data Factory začínáte, přečtěte si [Úvod do služb
 | getDebugInfo        | Určuje, kdy se zkopírují soubory protokolů do služby Azure Storage používaný v clusteru HDInsight (a) zadaný ve scriptLinkedService. Povolené hodnoty: NONE, vždy, nebo selhání. Výchozí hodnota: Žádné. | Ne       |
 | argumenty           | Určuje pole argumentů pro úlohy Hadoopu. Argumenty jsou předány jako argumenty příkazového řádku pro každý úkol. | Ne       |
 | definuje             | Zadejte parametry pro odkazování v rámci skriptu Hive jako páry klíč/hodnota. | Ne       |
-| queryTimeout        | Hodnota časového limitu dotazu (v minutách).  Vztahuje se po clusteru HDInsight s balíčkem Enterprise Security Package povolena. | Ne       |
+| queryTimeout        | Hodnota časového limitu dotazu (v minutách). Vztahuje se po clusteru HDInsight s balíčkem Enterprise Security Package povolena. | Ne       |
 
 ## <a name="next-steps"></a>Další postup
 Viz následující články, které vysvětlují, jak transformovat data dalšími způsoby: 
@@ -80,4 +80,3 @@ Viz následující články, které vysvětlují, jak transformovat data další
 * [Vlastní aktivita .NET](transform-data-using-dotnet-custom-activity.md)
 * [Aktivita provedení dávky služby Learning počítače](transform-data-using-machine-learning.md)
 * [Aktivita uložená procedura](transform-data-using-stored-procedure.md)
-

@@ -5,17 +5,17 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 12/14/2018
+ms.date: 01/31/2018
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: rogoya
-ms.openlocfilehash: 101070dab80c69ea1d24dd11fe5e067947505d19
-ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
+ms.openlocfilehash: 8364d09aa2d068e347199d104c069047aa24d7a4
+ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/26/2019
-ms.locfileid: "55077960"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55511900"
 ---
 # <a name="azure-active-directory-smart-lockout"></a>Azure Active Directory inteligentní uzamčení
 
@@ -23,7 +23,7 @@ Inteligentní uzamčení pomáhá při uzamčení nesprávnými účastníky, kt
 
 Ve výchozím nastavení zamkne inteligentní uzamčení účtu z pokusů o přihlášení pro jednu minutu po 10 neúspěšných pokusů o přihlášení. Uzamčení účtu po každé následné selhání pokus o přihlášení, na minutu na první a delší dobu v následné pokusy.
 
-Inteligentní uzamčení sleduje poslední tři hodnoty hash chybných zadání hesla, aby reincrementing čítače uzamčení. Pokud někdo zadá chybné heslo více než jednou, toto chování nezpůsobí účet, který chcete uzamčení.
+Inteligentní uzamčení sleduje posledních tří hodnot hash hesel chybný-li zamezit zvýšení čítače uzamčení pro stejné heslo. Pokud někdo zadá chybné heslo více než jednou, toto chování nezpůsobí účet, který chcete uzamčení.
 
  > [!NOTE]
  > Sledování funkce hash není k dispozici pro zákazníky s předávací ověřování povolit, protože není v cloudu v místním využíváno ověření.

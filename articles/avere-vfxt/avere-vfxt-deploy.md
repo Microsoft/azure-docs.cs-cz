@@ -6,12 +6,12 @@ ms.service: avere-vfxt
 ms.topic: conceptual
 ms.date: 01/29/2019
 ms.author: v-erkell
-ms.openlocfilehash: da329b5c50fe7c39d9773743b40c2f990e298963
-ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
+ms.openlocfilehash: f6d847e9042341f47a06fde0f9aa4a70f2549a07
+ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55296371"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55512147"
 ---
 # <a name="deploy-the-vfxt-cluster"></a>Nasazení clusteru vFXT
 
@@ -39,11 +39,11 @@ Další informace o plánování a kroky nasazení clusteru, najdete v článku 
 
 ## <a name="create-the-avere-vfxt-for-azure"></a>Vytvoření Avere vFXT pro Azure
 
-Hledání Avere a výběrem "Avere vFXT pro nasazení Azure" přístup k vytvoření šablony na webu Azure Portal. <!-- xxx update if that name changes xxx --> 
+Přístup k šabloně vytváření na webu Azure Portal tak, že vyhledáte Avere a výběr "Avere vFXT ARM nasazení". 
 
-<!-- **[XXX need production image of template deploy in search and/or entry page of template deploy XXX]** -->
+![Okno prohlížeče na webu Azure portal pomocí chléb zlomky "Nové > Marketplace > vše". V vše stránce, má pole hledání termín "avere" a druhý výsledek "Avere vFXT ARM nasazení" je označeno červeně zvýraznit ji.](media/avere-vfxt-template-choose.png)
 
-Klikněte na tlačítko **vytvořit** začít. 
+Po přečtení podrobné informace na stránce Avere vFXT nasazení ARM, klikněte na tlačítko **vytvořit** začít. 
 
 ![Azure marketplace s první stránka zobrazující šablony nasazení](media/avere-vfxt-deploy-first.png)
 
@@ -123,9 +123,11 @@ Na druhé stránce šablonu nasazení umožňuje nastavit velikost clusteru, typ
 
 * **Podsíť** – zvolte podsíť z existující virtuální sítě, nebo vytvořte novou. 
 
-* **Používání úložiště blob** – zvolte, jestli chcete vytvořit nový kontejner objektů Blob v Azure a nakonfiguruje ho jako back endové úložiště pro nový cluster vFXT Avere. Pokud budete chtít vytvořit nový kontejner, musíte zadat účet úložiště pro tento kontejner. Pokud se rozhodnete vytvořit nový kontejner objektů blob, je nutné připojit úložiště po vytvoření clusteru (čtení [konfigurace úložiště](avere-vfxt-add-storage.md) pokyny). Nastavte pole na **false** Pokud nechcete vytvořit nový kontejner.
+* **Používání úložiště blob** – zvolte **true** vytvořit nový kontejner objektů Blob v Azure a nakonfiguruje ho jako back endové úložiště pro nový cluster vFXT Avere. Tato možnost také vytvoří nový účet úložiště ve stejné skupině prostředků jako cluster. 
 
-* **Účet úložiště** - li vytvořit nový kontejner objektů Blob v Azure, zadejte název účtu úložiště. Účet úložiště musí být standard pro obecné účely V2 účtu nakonfigurovanému pro místně redundantní úložiště a horká vrstva přístupu. [Konfigurace úložiště](avere-vfxt-add-storage.md#azure-storage-cloud-core-filer) článku obsahuje další podrobnosti o požadavcích na účet úložiště.
+  Nastavte pole na **false** Pokud nechcete vytvořit nový kontejner. V takovém případě musíte připojit a nakonfigurovat úložiště po vytvoření clusteru. Čtení [konfigurace úložiště](avere-vfxt-add-storage.md) pokyny. 
+
+* **Účet úložiště** - li vytvořit nový kontejner objektů Blob v Azure, zadejte název nového účtu úložiště. 
 
 ## <a name="validation-and-purchase"></a>Ověření a nákup
 
@@ -161,7 +163,7 @@ Jak najít tyto informace, podle následujícího postupu:
 
 ## <a name="create-a-storage-endpoint-if-using-azure-blob"></a>Vytvoření koncového bodu úložiště (Pokud se používá objektů Blob v Azure)
 
-Pokud používáte úložiště objektů Blob v Azure pro váš back endovým datům úložiště, měli byste vytvořit koncový bod služby úložiště ve službě virtual network. To [koncový bod služby](../virtual-network/virtual-network-service-endpoints-overview.md) udržuje objektů Blob v Azure provoz místní namísto směrování přes internet.
+Pokud používáte úložiště objektů Blob v Azure pro váš back endovým datům úložiště, měli byste vytvořit koncový bod služby úložiště ve službě virtual network. To [koncový bod služby](../virtual-network/virtual-network-service-endpoints-overview.md) udržuje objektů Blob v Azure provoz místní namísto směrování mimo virtuální síť.
 
 1. Z portálu, klikněte na tlačítko **virtuální sítě** na levé straně.
 1. Vyberte virtuální síť pro kontrolér. 

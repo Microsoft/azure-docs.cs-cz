@@ -8,12 +8,12 @@ services: iot-dps
 ms.topic: conceptual
 ms.date: 09/28/2017
 ms.author: wesmc
-ms.openlocfilehash: e476ca498e4dc1b36d18927beddc812d6d803120
-ms.sourcegitcommit: 58c5cd866ade5aac4354ea1fe8705cee2b50ba9f
+ms.openlocfilehash: 0258a37b0614ca7505a90f88afaaaee1a6d5c04e
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42818506"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55496955"
 ---
 # <a name="control-access-to-azure-iot-hub-device-provisioning-service"></a>Řízení přístupu k Azure IoT Hub Device Provisioning Service
 
@@ -34,7 +34,7 @@ Můžete udělit [oprávnění](#device-provisioning-service-permissions) násle
 
 * **Sdílené zásady přístupu autorizace**. Zásady sdíleného přístupu udělit libovolnou kombinaci [oprávnění](#device-provisioning-service-permissions). Můžete definovat zásady v [webu Azure portal][lnk-management-portal], nebo prostřednictvím kódu programu pomocí [zařízení zřizování služby REST API][lnk-resource-provider-apis]. Nově vytvořenou službu zřizování má následující výchozí zásady:
 
-* **provisioningserviceowner**: zásada se všechna oprávnění.
+* **provisioningserviceowner**: Zásady se všechna oprávnění.
 
 > [!NOTE]
 > Zobrazit [oprávnění](#device-provisioning-service-permissions) podrobné informace.
@@ -77,16 +77,16 @@ Tady jsou očekávané hodnoty:
 
 | Hodnota | Popis |
 | --- | --- |
-| {podpis} |Řetězec podpisu HMAC SHA256 formuláře: `{URL-encoded-resourceURI} + "\n" + expiry`. **Důležité**: klíč je dekódovat z formátu base64 a použít jako klíč pro provádění výpočtů HMAC SHA256.|
+| {podpis} |Řetězec podpisu HMAC SHA256 formuláře: `{URL-encoded-resourceURI} + "\n" + expiry`. **Důležité**: Klíč je dekódovat z formátu base64 a použít jako klíč pro provádění výpočtů HMAC SHA256.|
 | {expiry} |Řetězce UTF8 pro počet sekund od 00:00:00 UTC epocha na 1. ledna 1970. |
-| {Adresu URL-encoded-resourceURI} | Nižší malá a velká kódování URL z identifikátoru URI prostředku malými písmeny. Předponu identifikátoru URI (podle segmentů) koncových bodů, které lze přistupovat pomocí tohoto tokenu, počínaje název hostitele IoT Device Provisioning Service (žádný protokol). Například, `mydps.azure-devices-provisioning.net`. |
+| {URL-encoded-resourceURI} | Nižší malá a velká kódování URL z identifikátoru URI prostředku malými písmeny. Předponu identifikátoru URI (podle segmentů) koncových bodů, které lze přistupovat pomocí tohoto tokenu, počínaje název hostitele IoT Device Provisioning Service (žádný protokol). Například, `mydps.azure-devices-provisioning.net`. |
 | {policyName} |Název zásad sdíleného přístupu, na který odkazuje tento token. |
 
-**Poznámka: na předponě**: identifikátor URI předponu je vypočítán segmentu a ne znak. Například `/a/b` je předpona pro `/a/b/c` , ale nikoli pro `/a/bc`.
+**Poznámka: na předponě**: Předponu identifikátoru URI se počítá podle segmentu a ne podle znaku. Například `/a/b` je předpona pro `/a/b/c` , ale nikoli pro `/a/bc`.
 
 Následující fragment kódu Node.js ukazuje funkci s názvem **generateSasToken** , který počítá token z vstupy `resourceUri, signingKey, policyName, expiresInMins`. Následující části podrobně popisují, jak inicializovat různé vstupy pro případy použití v odlišných tokenu.
 
-```nodejs
+```javascript
 var generateSasToken = function(resourceUri, signingKey, policyName, expiresInMins) {
     resourceUri = encodeURIComponent(resourceUri);
 
@@ -157,7 +157,7 @@ Jako příklad service vygenerované pomocí předem vytvořené na úrovni shar
 
 ![Vytvořit zásady sdíleného přístupu pro instanci služby Device Provisioning na portálu][img-add-shared-access-policy]
 
-```nodejs
+```javascript
 var endpoint ="mydps.azure-devices-provisioning.net";
 var policyName = 'enrollmentread'; 
 var policyKey = '...';

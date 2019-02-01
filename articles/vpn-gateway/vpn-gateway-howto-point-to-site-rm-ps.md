@@ -8,11 +8,11 @@ ms.topic: conceptual
 ms.date: 11/30/2018
 ms.author: cherylmc
 ms.openlocfilehash: f688c0e277f807ff27731c103ca407807052c9d3
-ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
+ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54199744"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55508313"
 ---
 # <a name="configure-a-point-to-site-connection-to-a-vnet-using-native-azure-certificate-authentication-powershell"></a>Konfigurace připojení typu Point-to-Site k virtuální síti s použitím nativního ověřování certifikátů Azure: PowerShell
 
@@ -39,20 +39,20 @@ Ověřte, že máte předplatné Azure. Pokud ještě nemáte předplatné Azure
 
 Příklady hodnot můžete použít k vytvoření testovacího prostředí nebo můžou sloužit k lepšímu pochopení příkladů v tomto článku. Proměnné se nastaví v části [1](#declare) článku. Můžete buď využít kroky jako podrobný postup a převzít hodnoty beze jejich změny, nebo je změnit tak, aby odpovídaly vašemu prostředí.
 
-* **Jméno: Ze sítě VNet1**
+* **Jméno: VNet1**
 * **Adresní prostor: 192.168.0.0/16** a **10.254.0.0/16**<br>V tomto příkladu se používá více adresních prostorů k ilustraci, že tato konfigurace funguje s více adresními prostory. Více adresních prostorů pro ni ale není potřeba.
-* **Název podsítě: Front-endu**
+* **Název podsítě: FrontEnd**
   * **Rozsah adres podsítě: 192.168.1.0/24**
 * **Název podsítě: Back-endu**
   * **Rozsah adres podsítě: 10.254.1.0/24**
-* **Název podsítě: Podsíť brány**<br>Název podsítě *GatewaySubnet* je pro správnou funkci brány VPN Gateway povinný.
+* **Název podsítě: GatewaySubnet**<br>Název podsítě *GatewaySubnet* je pro správnou funkci brány VPN Gateway povinný.
   * **Rozsah adres podsítě brány: 192.168.200.0/24** 
 * **Fond adres klienta VPN: 172.16.201.0/24**<br>Klienti VPN, kteří se budou k síti VNet připojovat pomocí tohoto připojení Point-to-Site, dostanou IP adresu ze zadaného fondu adres klienta VPN.
 * **Předplatné:** Pokud máte více než jedno předplatné, ověřte, že používáte tu správnou.
 * **Skupina prostředků: TestRG**
 * **Umístění: USA – východ**
 * **DNS Server: IP adresa** serveru DNS, který chcete použít pro překlad názvů. (volitelné)
-* **Název brány: Brány Vnet1GW**
+* **Název brány: Vnet1GW**
 * **Název veřejné IP: VNet1GWPIP**
 * **Typ sítě VPN: RouteBased** 
 

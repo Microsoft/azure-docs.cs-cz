@@ -14,15 +14,15 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 07/12/2018
 ms.author: dugill
-ms.openlocfilehash: d7beab66bdaed312f32adef74ceb4b2944e6853e
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ms.openlocfilehash: a81c1d20e0f7b58c132a5ece04f05d6740c2308f
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54103877"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55498246"
 ---
 # <a name="use-resource-manager-authentication-api-to-access-subscriptions"></a>Ověřování pomocí Správce prostředků rozhraní API pro přístup k předplatným
-## <a name="introduction"></a>Úvod
+
 Pokud jste vývojář softwaru, který je potřeba vytvořit aplikaci, která spravuje prostředky Azure zákazníka, tento článek popisuje, jak k ověření pomocí rozhraní API Azure Resource Manageru a získání přístupu k prostředkům v jiných předplatných.
 
 Vaše aplikace neměly přístup k rozhraní API Resource Manageru v několika způsoby:
@@ -32,7 +32,10 @@ Vaše aplikace neměly přístup k rozhraní API Resource Manageru v několika z
 
 Tento článek obsahuje podrobné pokyny k vytvoření aplikace, která používá obě tyto metody ověřování. Ukazuje, jak provést jednotlivé kroky pomocí rozhraní REST API nebo C#. Dokončení aplikace ASP.NET MVC je k dispozici na [ https://github.com/dushyantgill/VipSwapper/tree/master/CloudSense ](https://github.com/dushyantgill/VipSwapper/tree/master/CloudSense).
 
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 ## <a name="what-the-web-app-does"></a>Co dělá webové aplikace
+
 Webové aplikace:
 
 1. Přihlásí uživatele Azure.
@@ -74,7 +77,7 @@ Vzhledem k tomu, že vaše aplikace nemá přístup k jiné předplatné, musít
 Následující příklad ukazuje, jak zaregistrovat aplikaci pomocí Azure Powershellu. Musíte mít nejnovější verze Azure Powershellu pro tento příkaz fungovat (srpen 2016).
 
 ```azurepowershell-interactive
-$app = New-AzureRmADApplication -DisplayName "{app name}" -HomePage "https://{your domain}/{app name}" -IdentifierUris "https://{your domain}/{app name}" -Password "{your password}" -AvailableToOtherTenants $true
+$app = New-AzADApplication -DisplayName "{app name}" -HomePage "https://{your domain}/{app name}" -IdentifierUris "https://{your domain}/{app name}" -Password "{your password}" -AvailableToOtherTenants $true
 ```
 
 Přihlásit se jako aplikace AD, budete potřebovat ID aplikace a heslo. Pokud chcete zobrazit ID aplikace, která je vrácena z předchozího příkazu, použijte:
@@ -303,8 +306,8 @@ Tady jsou identifikátory běžně používaných předdefinované role:
 
 | Role | GUID |
 | --- | --- |
-| Čtenář |acdd72a7-3385-48EF-bd42-f606fba81ae7 |
-| Přispěvatel |b24988ac-6180-42A0-ab88-20f7382dd24c |
+| Čtenář |acdd72a7-3385-48ef-bd42-f606fba81ae7 |
+| Přispěvatel |b24988ac-6180-42a0-ab88-20f7382dd24c |
 | Přispěvatel virtuálních počítačů |d73bb868-a0df-4d4d-bd69-98a00b01fccb |
 | Přispěvatel virtuální sítě |b34d265f-36f7-4a0d-a4d4-e158ca92e90f |
 | Přispěvatel účtů úložiště |86e8f5dc-a6e9-4c67-9d15-de283e8eac25 |
@@ -333,9 +336,9 @@ V požadavku se používají následující hodnoty:
 | Guid | Popis |
 | --- | --- |
 | 09cbd307-aa71-4aca-b346-5f253e6e3ebb |ID předplatného |
-| c3097b31-7309-4C59-b4e3-770f8406bad2 |ID objektu instanční objekt služby aplikace |
-| acdd72a7-3385-48EF-bd42-f606fba81ae7 |ID role čtenáře |
-| 4f87261d-2816-465D-8311-70a27558df4c |nový identifikátor guid vytvořit nové přiřazení role |
+| c3097b31-7309-4c59-b4e3-770f8406bad2 |ID objektu instanční objekt služby aplikace |
+| acdd72a7-3385-48ef-bd42-f606fba81ae7 |ID role čtenáře |
+| 4f87261d-2816-465d-8311-70a27558df4c |nový identifikátor guid vytvořit nové přiřazení role |
 
 Odpověď je v následujícím formátu:
 

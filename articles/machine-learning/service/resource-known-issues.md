@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: article
 ms.date: 12/04/2018
 ms.custom: seodec18
-ms.openlocfilehash: c327d973170a4556471663c3bea9dcae9b5794fb
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 706d8986eb25d2d67e3099ae5b0bfc6e55f94ad3
+ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55238607"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55507364"
 ---
 # <a name="known-issues-and-troubleshooting-azure-machine-learning-service"></a>Známé problémy a řešení problémů služby Azure Machine Learning
 
@@ -26,7 +26,8 @@ Tento článek vám pomůže najít a opravit chyby nebo při použití služby 
 
 **Chybová zpráva: Nelze odinstalovat 'PyYAML.**
 
-Azure Machine Learning pro Python SDK: PyYAML je projektem organizace nainstalovaná distutils. Proto jsme nelze určit přesné soubory, které patří k němu v případě částečné odinstalovat. Pokud chcete pokračovat v instalaci sady SDK při tato chyba se ignoruje, použijte:
+Azure Machine Learning pro Python SDK: PyYAML je projektem organizace nainstalovaná distutils. Proto jsme nelze určit přesné soubory, které patří k němu dojde částečné odinstalovat. Pokud chcete pokračovat v instalaci sady SDK při tato chyba se ignoruje, použijte:
+
 ```Python
 pip install --upgrade azureml-sdk[notebooks,automl] --ignore-installed PyYAML
 ```
@@ -41,7 +42,7 @@ Obrázek po nasazení webové služby vytvářet selhání. Alternativním řeš
 
 ## <a name="deployment-failure"></a>Nasazení se nezdařilo.
 
-Pokud zjistíte "DaskOnBatch:context_managers. DaskOnBatch ", 'setup.py']' ukončila s < Signals.SIGKILL: 9 >-SKU pro virtuální počítače použité ve vašem nasazení, které s větší pamětí a změňte prosím.
+Pokud zjistíte `'DaskOnBatch:context_managers.DaskOnBatch', 'setup.py']' died with <Signals.SIGKILL: 9>`, změna SKU pro virtuální počítače použité ve vašem nasazení, který má více paměti.
 
 ## <a name="fpgas"></a>FPGA
 Nebude moct nasazovat modely na FPGA, dokud si vyžádáte a byla schválena pro FPGA kvótu. Chcete-li požádat o přístup, vyplňte formulář žádosti o kvóty: https://aka.ms/aml-real-time-ai
@@ -50,7 +51,7 @@ Nebude moct nasazovat modely na FPGA, dokud si vyžádáte a byla schválena pro
 
 Problémy s Databricks a Azure Machine Learning.
 
-1. Při instalaci dalších balíčků AML SDK nainstalovat selhání v Databricks.
+1. Azure Machine Learning SDK chyby při instalaci v Databricks při instalaci dalších balíčků
 
    Některé balíčky, jako například `psutil`, může způsobit konflikty. Aby nedocházelo k chybám instalace, instalace balíčků zmrazení lib verzí. Tento problém souvisí s Databricks a není službou Azure Machine Learning SDK – které mohou nastat ho pomocí jiných knihoven příliš. Příklad:
    ```python
@@ -58,9 +59,9 @@ Problémy s Databricks a Azure Machine Learning.
    ```
    Alternativně můžete použít skripty init, pokud je zachovat otočena směrem problémů s instalací s knihoven Pythonu. Tento přístup není oficiálně podporovaných přístup. Můžete se podívat do [tohoto dokumentu](https://docs.azuredatabricks.net/user-guide/clusters/init-scripts.html#cluster-scoped-init-scripts).
 
-2. Při použití automatického Machine Learning v Databricks, pokud chcete zrušit běh a začněte nový experiment spustit, restartujte prosím vaše Azure Databricks pro cluster.
+2. Při použití automatického Machine Learning v Databricks, pokud chcete zrušit běh a začněte nový experiment spustit, restartujte cluster Azure Databricks.
 
-3. V případě, že máte ml nastavení automatické > show_output 10 iterací nastavte prosím hodnotu false, při odesílání spuštění.
+3. V nastavení automatického ml, pokud máte více než 10 iterací, nastavte `show_output` k `False` odeslání příkazu run.
 
 
 ## <a name="azure-portal"></a>portál Azure
@@ -73,6 +74,20 @@ Zde je, kde live soubory protokolu:
 ## <a name="resource-quotas"></a>Kvóty prostředků
 
 Další informace o [kvóty prostředků](how-to-manage-quotas.md) můžete setkat při práci se službou Azure Machine Learning.
+
+## <a name="authentication-errors"></a>Chyby ověřování
+
+Pokud provádíte operaci správy na cílové výpočetní prostředí ze vzdálené úlohy, zobrazí se jedné z následujících chyb:
+
+```json
+{"code":"Unauthorized","statusCode":401,"message":"Unauthorized","details":[{"code":"InvalidOrExpiredToken","message":"The request token was either invalid or expired. Please try again with a valid token."}]}
+```
+
+```json
+{"error":{"code":"AuthenticationFailed","message":"Authentication failed."}}
+```
+
+Například můžete dojde k chybě při pokusu vytvořit nebo připojit cílové výpočetní prostředí z kanálu služby ML, které je odeslána pro vzdálené spuštění.
 
 ## <a name="get-more-support"></a>Získat další podporu.
 

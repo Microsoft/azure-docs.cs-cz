@@ -8,12 +8,12 @@ ms.topic: sample
 ms.date: 04/05/2018
 author: wmengmsft
 ms.author: wmeng
-ms.openlocfilehash: b32fd36c5fd546f7d2138cb2b48ee2854667f948
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: 58022ca4f605b4672cd9b6e22993fca8ff6dc591
+ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54044259"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55510940"
 ---
 # <a name="how-to-use-azure-table-storage-or-the-azure-cosmos-db-table-api-from-nodejs"></a>Jak používat službu Azure Table Storage nebo rozhraní Table API služby Azure Cosmos DB z Node.js
 [!INCLUDE [storage-selector-table-include](../../includes/storage-selector-table-include.md)]
@@ -56,34 +56,34 @@ Pokud chcete používat službu Azure Storage nebo Azure Cosmos DB, potřebujete
 ### <a name="import-the-package"></a>Import balíčku
 Na začátek souboru **server.js** ve vaší aplikaci přidejte následující kód:
 
-```nodejs
+```javascript
 var azure = require('azure-storage');
 ```
 
 ## <a name="add-an-azure-storage-connection"></a>Přidání připojení ke službě Azure Storage
 Modul Azure načte informace potřebné pro připojení k účtu služby Azure Storage z proměnných prostředí AZURE_STORAGE_ACCOUNT a AZURE_STORAGE_ACCESS_KEY nebo AZURE_STORAGE_CONNECTION_STRING. Pokud tyto proměnné prostředí nejsou nastavené, musíte zadat informace o účtu při volání objektu **TableService**. Například následující kód vytvoří objekt **TableService**:
 
-```nodejs
+```javascript
 var tableSvc = azure.createTableService('myaccount', 'myaccesskey');
 ```
 
 ## <a name="add-an-azure-cosmos-db-connection"></a>Přidání připojení ke službě Azure Cosmos DB
 Pokud chcete přidat připojení ke službě Azure Cosmos DB, vytvořte objekt **TableService** a zadejte název, primární klíč a koncový bod vašeho účtu. Tyto hodnoty můžete zkopírovat z části **Nastavení** > **Připojovací řetězec** na webu Azure Portal pro váš účet služby Cosmos DB. Příklad:
 
-```nodejs
+```javascript
 var tableSvc = azure.createTableService('myaccount', 'myprimarykey', 'myendpoint');
 ```  
 
 ## <a name="create-a-table"></a>Vytvoření tabulky
 Následující kód vytvoří objekt **TableService** a použije ho k vytvoření nové tabulky. 
 
-```nodejs
+```javascript
 var tableSvc = azure.createTableService();
 ```
 
 Volání **createTableIfNotExists** vytvoří novou tabulku se zadaným názvem, pokud ještě neexistuje. Následující příklad vytvoří novou tabulku mytable, pokud ještě neexistuje:
 
-```nodejs
+```javascript
 tableSvc.createTableIfNotExists('mytable', function(error, result, response){
   if(!error){
     // Table exists or created
@@ -96,13 +96,13 @@ tableSvc.createTableIfNotExists('mytable', function(error, result, response){
 ### <a name="filters"></a>Filtry
 Na operace provedené pomocí objektu **TableService** můžete použít volitelné filtrování. Filtrování operací může zahrnovat protokolování, automatické opakování pokusů atd. Filtry jsou objekty, které implementují metodu s podpisem:
 
-```nodejs
+```javascript
 function handle (requestOptions, next)
 ```
 
 Po dokončení předzpracování možností požadavku musí metoda zavolat funkci **next** a předat zpětné volání s následujícím podpisem:
 
-```nodejs
+```javascript
 function (returnObject, finalCallback, next)
 ```
 
@@ -110,7 +110,7 @@ V tomto zpětném volání a po zpracování objektu **returnObject** (odpověď
 
 Sada Azure SDK pro Node.js obsahuje dva filtry, které implementují logiku opakování: **ExponentialRetryPolicyFilter** a **LinearRetryPolicyFilter**. Následující kód vytvoří objekt **TableService**, který využívá filtr **ExponentialRetryPolicyFilter**:
 
-```nodejs
+```javascript
 var retryOperations = new azure.ExponentialRetryPolicyFilter();
 var tableSvc = azure.createTableService().withFilter(retryOperations);
 ```
@@ -125,7 +125,7 @@ Pokud chcete přidat entitu, nejprve vytvořte objekt definující vlastnosti en
 
 Následuje příklad definice entity. Všimněte si, že **dueDate** je definovaný jako typ **Edm.DateTime**. Zadání typu je volitelné. Pokud typ není zadaný, odvodí se.
 
-```nodejs
+```javascript
 var task = {
   PartitionKey: {'_':'hometasks'},
   RowKey: {'_': '1'},
@@ -141,7 +141,7 @@ var task = {
 
 K vytváření entit můžete využít také **entityGenerator**. Následující příklad vytvoří stejnou entitu úlohy pomocí generátoru **entityGenerator**.
 
-```nodejs
+```javascript
 var entGen = azure.TableUtilities.entityGenerator;
 var task = {
   PartitionKey: entGen.String('hometasks'),
@@ -153,7 +153,7 @@ var task = {
 
 Pokud chcete do tabulky přidat entitu, předejte objekt entity do metody **insertEntity**.
 
-```nodejs
+```javascript
 tableSvc.insertEntity('mytable',task, function (error, result, response) {
   if(!error){
     // Entity inserted
@@ -165,7 +165,7 @@ Pokud bude operace úspěšná, `result` bude obsahovat [značku entity](https:/
 
 Příklad odpovědi:
 
-```nodejs
+```javascript
 { '.metadata': { etag: 'W/"datetime\'2015-02-25T01%3A22%3A22.5Z\'"' } }
 ```
 
@@ -186,7 +186,7 @@ Existující entitu můžete aktualizovat několika metodami:
 
 Následující příklad ukazuje aktualizaci entity pomocí metody **replaceEntity**:
 
-```nodejs
+```javascript
 tableSvc.replaceEntity('mytable', updatedTask, function(error, result, response){
   if(!error) {
     // Entity updated
@@ -214,7 +214,7 @@ Někdy má smysl odeslat více operací společně v dávce, aby se zajistilo je
 
  Následující příklad ukazuje odeslání dvou entit v dávce:
 
-```nodejs
+```javascript
 var task1 = {
   PartitionKey: {'_':'hometasks'},
   RowKey: {'_': '1'},
@@ -254,7 +254,7 @@ Operace přidané do dávky můžete prozkoumat zobrazením vlastnosti `operatio
 ## <a name="retrieve-an-entity-by-key"></a>Načtení entity podle klíče
 Pokud chcete vrátit konkrétní entitu na základě hodnot **PartitionKey** a **RowKey**, použijte metodu **retrieveEntity**.
 
-```nodejs
+```javascript
 tableSvc.retrieveEntity('mytable', 'hometasks', '1', function(error, result, response){
   if(!error){
     // result contains the entity
@@ -276,7 +276,7 @@ Pokud chcete dotazovat tabulku, pomocí objektu **TableQuery** sestavte výraz d
 
 Následující příklad sestaví dotaz, který vrátí prvních pět položek, které jako PartitionKey mají hodnotu hometasks.
 
-```nodejs
+```javascript
 var query = new azure.TableQuery()
   .top(5)
   .where('PartitionKey eq ?', 'hometasks');
@@ -284,7 +284,7 @@ var query = new azure.TableQuery()
 
 Vzhledem k tomu, že se nepoužila klauzule **select**, vrátí se všechna pole. Pokud chcete provést dotaz na tabulku, použijte **queryEntities**. Následující příklad pomocí tohoto dotazu vrátí entity z tabulky mytable.
 
-```nodejs
+```javascript
 tableSvc.queryEntities('mytable',query, null, function(error, result, response) {
   if(!error) {
     // query was successful
@@ -298,7 +298,7 @@ V případě úspěchu bude `result.entries` obsahovat pole entit, které odpov�
 Dotaz na tabulku dokáže z entity načíst pouze několik polí.
 Díky tomu se snižuje šířka pásma a může se zlepšit výkon dotazů, zejména u velkých entit. Použijte klauzuli **select** a předejte názvy polí, které se mají vrátit. Například následující dotaz vrátí pouze pole **description** a **dueDate**.
 
-```nodejs
+```javascript
 var query = new azure.TableQuery()
   .select(['description', 'dueDate'])
   .top(5)
@@ -308,7 +308,7 @@ var query = new azure.TableQuery()
 ## <a name="delete-an-entity"></a>Odstranění entity
 Entitu můžete odstranit pomocí jejího klíče oddílu a řádku. V tomto příkladu objekt **task1** obsahuje hodnoty **RowKey** a **PartitionKey** entity, která se má odstranit. Objekt se pak předá do metody **deleteEntity**.
 
-```nodejs
+```javascript
 var task = {
   PartitionKey: {'_':'hometasks'},
   RowKey: {'_': '1'}
@@ -329,7 +329,7 @@ tableSvc.deleteEntity('mytable', task, function(error, response){
 ## <a name="delete-a-table"></a>Odstranění tabulky
 Následující kód odstraní tabulku z účtu úložiště.
 
-```nodejs
+```javascript
 tableSvc.deleteTable('mytable', function(error, response){
     if(!error){
         // Table deleted
@@ -346,7 +346,7 @@ Pokud je takový token přítomný, v objektu **results** vraceném během dotaz
 
 Při dotazování můžete zadat parametr `continuationToken` mezi instanci objektu dotazu a funkci zpětného volání:
 
-```nodejs
+```javascript
 var nextContinuationToken = null;
 dc.table.queryEntities(tableName,
     query,
@@ -372,7 +372,7 @@ Důvěryhodná aplikace, jako je například cloudová služba, generuje SAS pom
 
 Následující příklad vygeneruje novou zásadu sdíleného přístupu, která umožní držiteli SAS dotazovat (r) tabulku a jejíž platnost vyprší 100 minut od okamžiku jejího vytvoření.
 
-```nodejs
+```javascript
 var startDate = new Date();
 var expiryDate = new Date(startDate);
 expiryDate.setMinutes(startDate.getMinutes() + 100);
@@ -394,7 +394,7 @@ Všimněte si, že musíte zadat také informace o hostiteli, které se vyžaduj
 
 Klientská aplikace pak provádí operace s tabulkou pomocí SAS a metody **TableServiceWithSAS**. Následující příklad se připojí k tabulce a provede dotaz. Zobrazit [použití sdílených přístupových podpisů](../storage/common/storage-dotnet-shared-access-signature-part-1.md#examples-of-sas-uris) článku pro formát tableSAS. 
 
-```nodejs
+```javascript
 // Note in the following command, host is in the format: `https://<your_storage_account_name>.table.core.windows.net` and the tableSAS is in the format: `sv=2018-03-28&si=saspolicy&tn=mytable&sig=9aCzs76n0E7y5BpEi2GvsSv433BZa22leDOZXX%2BXXIU%3D`;
 
 var sharedTableService = azure.createTableServiceWithSas(host, tableSAS);
@@ -415,7 +415,7 @@ K nastavení zásad přístupu pro SAS můžete použít také seznam řízení 
 
 Seznam ACL se implementuje pomocí pole zásad přístupu, z nichž každá zásada má přidružené ID. Následující příklad definuje dvě zásady, jednu pro uživatele user1 a druhou pro uživatele user2:
 
-```nodejs
+```javascript
 var sharedAccessPolicy = {
   user1: {
     Permissions: azure.TableUtilities.SharedAccessPermissions.QUERY,
@@ -432,7 +432,7 @@ var sharedAccessPolicy = {
 
 Následující příklad získá aktuální seznam ACL pro tabulku **hometasks** a pak pomocí metody **setTableAcl** přidá nové zásady. Tento přístup umožňuje:
 
-```nodejs
+```javascript
 var extend = require('extend');
 tableSvc.getTableAcl('hometasks', function(error, result, response) {
 if(!error){
@@ -448,7 +448,7 @@ if(!error){
 
 Po nastavení seznamu ACL pak můžete pro zásadu vytvořit SAS založený na ID. Následující příklad vytvoří nový SAS pro uživatele user2:
 
-```nodejs
+```javascript
 tableSAS = tableSvc.generateSharedAccessSignature('hometasks', { Id: 'user2' });
 ```
 

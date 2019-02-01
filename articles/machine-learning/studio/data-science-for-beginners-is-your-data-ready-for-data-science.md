@@ -1,8 +1,21 @@
 ---
-Název: Data zkušební titleSuffix: Azure Machine Learning Studio Popis: Čtyři kritéria, vaše data se musí splnit, aby vyhovovalo připravené pro datové vědy. Toto video obsahuje konkrétní příklady, které pomohou s vyhodnocením základní data.
-Services: machine learningu ms.service: ms.subservice strojového učení: studio ms.topic: článku
-
-Autor: garyericson ms.author: garye ms.custom: seodec18 ms.date: 01/03/2018
+title: Vyhodnocení dat
+titleSuffix: Azure Machine Learning Studio
+description: Čtyři kritéria, vaše data se musí splnit, aby vyhovovalo připravené pro datové vědy. Toto video obsahuje konkrétní příklady, které pomohou s vyhodnocením základní data.
+services: machine-learning
+ms.service: machine-learning
+ms.subservice: studio
+ms.topic: article
+author: garyericson
+ms.author: garye
+ms.custom: seodec18
+ms.date: 01/03/2018
+ms.openlocfilehash: f57f6bf93fce2526bdc478558551616ba1fa3c4c
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.translationtype: MT
+ms.contentlocale: cs-CZ
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55496019"
 ---
 # <a name="is-your-data-ready-for-data-science"></a>Jsou data připravená pro vědecké zkoumání?
 ## <a name="video-2-data-science-for-beginners-series"></a>Video 2: Datová věda pro začátečníky řady

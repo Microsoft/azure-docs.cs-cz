@@ -9,11 +9,11 @@ ms.topic: conceptual
 ms.date: 11/30/2018
 ms.author: yushwang
 ms.openlocfilehash: 4996fa23e28b4ba840cc8c97e167484be08a0573
-ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
+ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54199456"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55509282"
 ---
 # <a name="connect-azure-vpn-gateways-to-multiple-on-premises-policy-based-vpn-devices-using-powershell"></a>Připojení Azure VPN Gateway k několika místním založené na zásadách zařízením VPN pomocí Powershellu
 
@@ -41,7 +41,7 @@ V současné době podporuje oba režimy bran VPN Azure: trasovými bránami VPN
 | ---                      | ---                         | ---                                      |
 | **Azure skladové položky brány**    | Basic                       | Basic, Standard, HighPerformance, VpnGw1, VpnGw2, VpnGw3 |
 | **Verze IKE**          | IKEv1                       | IKEv2                                    |
-| **Max. Připojení S2S** | **1**                       | Basic nebo Standard: 10<br> HighPerformance: 30 |
+| **Max. Připojení S2S** | **1**                       | Basic/Standard: 10<br> HighPerformance: 30 |
 |                          |                             |                                          |
 
 Pomocí vlastních zásad IPsec/IKE, teď můžete nakonfigurovat Azure založené na směrování VPN Gateway používat selektory provozu na základě předpony s možností "**PolicyBasedTrafficSelectors**", které umožňuje připojení k místním zařízením VPN na základě zásad. Díky této funkci můžete připojení z virtuální sítě Azure a bránu VPN k několika místních na základě zásad zařízení VPN nebo brána firewall odebrání limitu jednoho připojení z aktuální Azure na základě zásad VPN Gateway.
@@ -147,8 +147,8 @@ New-AzureRmLocalNetworkGateway -Name $LNGName6 -ResourceGroupName $RG1 -Location
 > Je potřeba vytvořit zásady IPsec/IKE, chcete-li povolit možnost "UsePolicyBasedTrafficSelectors" připojení.
 
 Následující příklad vytvoří zásady IPsec/IKE pomocí těchto algoritmů a parametrů:
-* IKEv2: DHGroup24 AES256, SHA384
-* Protokol IPsec: AES256, SHA256, PFS24, doba života přidružení zabezpečení. 3600 sekund & 2048KB
+* IKEv2: AES256, SHA384, DHGroup24
+* Protokol IPsec: AES256, SHA256, PFS24, SA Lifetime 3600 seconds & 2048KB
 
 ```azurepowershell-interactive
 $ipsecpolicy6 = New-AzureRmIpsecPolicy -IkeEncryption AES256 -IkeIntegrity SHA384 -DhGroup DHGroup24 -IpsecEncryption AES256 -IpsecIntegrity SHA256 -PfsGroup PFS24 -SALifeTimeSeconds 3600 -SADataSizeKilobytes 2048

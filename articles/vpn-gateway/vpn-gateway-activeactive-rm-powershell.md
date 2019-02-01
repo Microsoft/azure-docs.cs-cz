@@ -1,5 +1,5 @@
 ---
-title: 'Konfigurace připojení typu S2S VPN typu aktivní aktivní pro brány VPN Gateway: Azure Resource Manageru: PowerShell | Dokumentace Microsoftu'
+title: 'Konfigurovat připojení S2S VPN typu aktivní aktivní pro brány VPN Gateway: Azure Resource Manageru: Prostředí PowerShell | Dokumentace Microsoftu'
 description: Tento článek vás provede konfigurace připojení typu aktivní aktivní s bránami Azure VPN Gateway pomocí Azure Resource Manageru a Powershellu.
 services: vpn-gateway
 documentationcenter: na
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/24/2018
 ms.author: yushwang, cherylmc
-ms.openlocfilehash: 01f25df117eddaaf640a8bd2ef184fe685c5bc75
-ms.sourcegitcommit: c2c64fc9c24a1f7bd7c6c91be4ba9d64b1543231
+ms.openlocfilehash: 05c4a01f4317f311e1ba78a5bf45baa969dc8351
+ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2018
-ms.locfileid: "39258989"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55507855"
 ---
 # <a name="configure-active-active-s2s-vpn-connections-with-azure-vpn-gateways"></a>Konfigurovat připojení S2S VPN typu aktivní aktivní s bránami Azure VPN Gateway
 
@@ -56,7 +56,7 @@ Takto bude konfigurace Azure VPN gateway v režimu aktivní aktivní. Hlavní ro
 
 Další vlastnosti jsou stejné jako aktivní aktivní brány. 
 
-### <a name="before-you-begin"></a>Než začnete
+### <a name="before-you-begin"></a>Před zahájením
 * Ověřte, že máte předplatné Azure. Pokud ještě nemáte předplatné Azure, můžete si aktivovat [výhody pro předplatitele MSDN](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/) nebo si zaregistrovat [bezplatný účet](https://azure.microsoft.com/pricing/free-trial/).
 * Budete potřebovat nainstalovat nejnovější verzi rutin prostředí PowerShell pro Azure Resource Manager. Zobrazit [Přehled prostředí Azure PowerShell](/powershell/azure/overview) pro další informace o instalaci rutin prostředí PowerShell.
 
@@ -230,7 +230,7 @@ V příkladu níže jsou uvedeny parametry, které zadáte do oddílu konfigurac
 
 Po několika minutách by měl navázat připojení a relace partnerského vztahu protokolu BGP se spustí, jakmile se naváže připojení IPsec. V tomto příkladu má nakonfigurovanou zatím pouze jeden zařízení VPN v místním, což vede k diagramu je znázorněno níže:
 
-![aktivní aktivní crossprem](./media/vpn-gateway-activeactive-rm-powershell/active-active.png)
+![active-active-crossprem](./media/vpn-gateway-activeactive-rm-powershell/active-active.png)
 
 ### <a name="step-3---connect-two-on-premises-vpn-devices-to-the-active-active-vpn-gateway"></a>Krok 3: připojení dvou místních zařízení VPN k bráně VPN typu aktivní aktivní
 Pokud máte dvě zařízení VPN ve stejné místní síti, můžete dosáhnout dvojitá redundance připojení Azure VPN gateway, která ve druhém zařízení VPN.
@@ -277,7 +277,7 @@ Obdobně dole najdete parametry zadáte do druhé zařízení VPN:
 
 Jakmile se naváže připojení (tunelů), budete mít dva redundantní zařízení VPN a tunely připojení vaší místní sítí a Azure:
 
-![duální. redundance crossprem](./media/vpn-gateway-activeactive-rm-powershell/dual-redundancy.png)
+![dual-redundancy-crossprem](./media/vpn-gateway-activeactive-rm-powershell/dual-redundancy.png)
 
 ## <a name ="aav2v"></a>Část 3 – vytvoření připojení typu aktivní aktivní připojení typu VNet-to-VNet
 Tato část vytvoří připojení typu aktivní aktivní připojení typu VNet-to-VNet s protokolem BGP. 
@@ -373,7 +373,7 @@ New-AzureRmVirtualNetworkGatewayConnection -Name $Connection21 -ResourceGroupNam
 
 Po dokončení těchto kroků, naváže připojení v pár minut a protokolu BGP bude relaci partnerského vztahu až po dokončení připojení VNet-to-VNet s dvojitá redundance:
 
-![aktivní aktivní v2v](./media/vpn-gateway-activeactive-rm-powershell/vnet-to-vnet.png)
+![active-active-v2v](./media/vpn-gateway-activeactive-rm-powershell/vnet-to-vnet.png)
 
 ## <a name ="aaupdate"></a>Aktualizovat existující bráně VPN
 

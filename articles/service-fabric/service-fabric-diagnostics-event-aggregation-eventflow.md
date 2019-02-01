@@ -1,6 +1,6 @@
 ---
-title: Azure Service Fabric událostí agregace s EventFlow | Microsoft Docs
-description: Další informace o agregaci a shromažďování událostí pomocí EventFlow pro monitorování a Diagnostika Azure Service Fabric clusterů.
+title: Agregace událostí Azure Service Fabric s využitím EventFlow | Dokumentace Microsoftu
+description: Další informace o agregaci a shromažďování událostí pomocí využitím EventFlow pro monitorování a diagnostiku clustery Azure Service Fabric.
 services: service-fabric
 documentationcenter: .net
 author: dkkapur
@@ -14,41 +14,41 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 10/15/2017
 ms.author: dekapur
-ms.openlocfilehash: 9b851b2d75cf78a02dd223788085ac9a0963376e
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 829d1ffd1ef75d18f0d87a127c43666703e8a756
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34211350"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55497362"
 ---
-# <a name="event-aggregation-and-collection-using-eventflow"></a>Seskupení událostí a kolekce pomocí EventFlow
+# <a name="event-aggregation-and-collection-using-eventflow"></a>Agregace událostí a kolekce pomocí využitím EventFlow
 
-[Microsoft Diagnostics EventFlow](https://github.com/Azure/diagnostics-eventflow) může směrovat události z uzlu na jeden nebo více monitorování místa určení. Vzhledem k tomu, že je zahrnut jako balíčku NuGet ve vašem projektu service, se službou, odstraňuje problém konfigurace podle uzlu, již bylo zmíněno dříve o Azure Diagnostics přenosu EventFlow kódu a konfigurace. EventFlow běží v rámci procesu vaší služby a připojuje přímo k nakonfigurované výstupy. Z důvodu přímé připojení EventFlow funguje pro Azure, kontejneru a nasazení služby v místě. Dávejte pozor, pokud spustíte EventFlow v podobě výkonných scénáře, jako třeba v kontejneru, protože každý kanál EventFlow vytvoří externí připojení. Takže pokud hostujete několik procesy, můžete načítat několik odchozí připojení! Tato akce není tolik důležité aplikace Service Fabric, protože všechny repliky `ServiceType` spustit ve stejném procesu, a to omezuje počet odchozí připojení. EventFlow také nabízí filtrování událostí tak, aby se odesílají jenom události, které odpovídají zadané filtru.
+[Microsoft diagnostiky s využitím EventFlow](https://github.com/Azure/diagnostics-eventflow) můžete směrování událostí z uzlu do jednoho nebo více cílů monitorování. Protože je zahrnutý jako balíček NuGet v projektu služby, využitím EventFlow kódu a konfigurace cestují ve službě, odstranění problém s konfigurací podle uzlu již bylo zmíněno dříve o Azure Diagnostics. Využitím EventFlow běží v rámci procesu služby a připojuje přímo k nakonfigurované výstupy. Z důvodu přímé připojení využitím EventFlow funguje pro Azure, kontejnerů a v místním nasazení služeb. Buďte opatrní při spuštění využitím EventFlow v s vysokou hustotou scénáře, jako například v kontejneru, protože každý kanál využitím EventFlow vytvoří externí připojení. Takže pokud hostujete několik procesů, získáte několik odchozích připojení! To není tolik zájmem zajistit u aplikací Service Fabric, protože všechny repliky `ServiceType` spustit ve stejném procesu, a to omezuje počet odchozích připojení. Využitím EventFlow také nabízí filtrování událostí tak, aby se odesílají pouze události, které odpovídají zadaného filtru.
 
-## <a name="set-up-eventflow"></a>Nastavit EventFlow
+## <a name="set-up-eventflow"></a>Nastavit využitím EventFlow
 
-Binární soubory EventFlow jsou k dispozici jako sada balíčků NuGet. Pokud chcete přidat do projektu služby Service Fabric EventFlow, klikněte pravým tlačítkem na projekt v Průzkumníku řešení a zvolte "Balíčky NuGet spravovat". Přejděte na kartu "Vyhledat" a vyhledejte "`Diagnostics.EventFlow`":
+Využitím EventFlow binární soubory jsou k dispozici jako sada balíčků NuGet. Využitím EventFlow přidat do projektu služby Service Fabric, klikněte pravým tlačítkem na projekt v Průzkumníku řešení a zvolte možnost "Spravovat NuGet packages." Přepněte na kartu "Vyhledat" a vyhledejte "`Diagnostics.EventFlow`":
 
-![Balíčky EventFlow NuGet v uživatelské rozhraní Správce balíčků Visual Studio NuGet](./media/service-fabric-diagnostics-event-aggregation-eventflow/eventflow-nuget.png)
+![Balíčky NuGet využitím EventFlow v uživatelské rozhraní Správce balíčků NuGet aplikace Visual Studio](./media/service-fabric-diagnostics-event-aggregation-eventflow/eventflow-nuget.png)
 
-Zobrazí se seznam různých balíčků objeví, s popiskem "Vstup" a "Výstupy". EventFlow podporuje různé zprostředkovatelé různých protokolování a analyzátory. Služby hostování EventFlow by měla obsahovat příslušné balíčky v závislosti na zdroj a cíl pro protokoly aplikací. Kromě základní ServiceFabric balíčku musíte také aspoň jeden vstup a výstup nakonfigurovaný. Můžete například přidat následující balíčky určené k odesílání událostí EventSource Application Insights:
+Zobrazí se seznam různých balíčků zobrazí, s popiskem "Vstupů" a "Výstupy". Využitím EventFlow podporuje různé jiné protokolování poskytovatelů a analyzátory. Služby hostování využitím EventFlow by měla obsahovat odpovídající balíčky v závislosti na zdroji a cíli pro protokoly aplikací. Kromě základní ServiceFabric balíček budete potřebovat alespoň jeden vstup a výstup nakonfigurované. Můžete například přidat následující balíčky k odesílání událostí EventSource do Application Insights:
 
-* `Microsoft.Diagnostics.EventFlow.Inputs.EventSource` k zaznamenání dat od služby EventSource – třída a od standardní EventSources například *služby společnosti Microsoft ServiceFabric* a *Microsoft-ServiceFabric-aktéři*)
-* `Microsoft.Diagnostics.EventFlow.Outputs.ApplicationInsights` (přidáme poslat protokoly prostředek Azure Application Insights)
-* `Microsoft.Diagnostics.EventFlow.ServiceFabric`(umožňuje inicializaci kanálu EventFlow z konfigurace služby Service Fabric a ohlásí případné potíže s odesílání diagnostických dat jako sestav stavu Service Fabric)
-
->[!NOTE]
->`Microsoft.Diagnostics.EventFlow.Inputs.EventSource` balíček vyžaduje projekt služby, který má cílové rozhraní .NET Framework 4.6 nebo novější. Ujistěte se, že nastavíte příslušné cílové rozhraní v okně Vlastnosti projektu před instalací tohoto balíčku.
-
-Po instalaci všech balíčků, dalším krokem je ke konfiguraci a povolení EventFlow ve službě.
-
-## <a name="configure-and-enable-log-collection"></a>Konfigurovat a povolit protokol kolekce
-Odpovědná za zasílání protokolů EventFlow kanálu je vytvořený z specifikaci uložené v konfiguračním souboru. `Microsoft.Diagnostics.EventFlow.ServiceFabric` Balíček nainstaluje výchozí konfigurační soubor EventFlow pod `PackageRoot\Config` složku řešení s názvem `eventFlowConfig.json`. Tento konfigurační soubor je potřeba upravit tak, aby zaznamenání dat z výchozí služba `EventSource` třídy a všechny ostatní vstupy chcete konfigurovat a odesílat data na příslušné místo.
+* `Microsoft.Diagnostics.EventFlow.Inputs.EventSource` například zachytávat data ze třídy EventSource služby a ze standardní EventSources *služby ServiceFabric* a *objektů actor Microsoft ServiceFabric*)
+* `Microsoft.Diagnostics.EventFlow.Outputs.ApplicationInsights` (budeme odesílání protokolů do prostředku služby Azure Application Insights)
+* `Microsoft.Diagnostics.EventFlow.ServiceFabric`(umožňuje inicializaci kanálu využitím EventFlow z konfigurace služby Service Fabric a ohlásí případné potíže s odesílání diagnostických dat jako stavových sestav Service Fabric)
 
 >[!NOTE]
->Pokud váš projekt soubor má formát 2017 Visual Studio `eventFlowConfig.json` souboru nepřidají automaticky. Opravit to vytvoření souboru v `Config` složky a nastavit akce sestavení na `Copy if newer`. 
+>`Microsoft.Diagnostics.EventFlow.Inputs.EventSource` balíček vyžaduje službu projekt cílit na .NET Framework 4.6 nebo novější. Nezapomeňte že nastavit odpovídající cílové rozhraní ve vlastnostech projektu před instalací tohoto balíčku.
 
-Zde je ukázka *eventFlowConfig.json* založené na balíčky NuGet uvedených výše:
+Po instalaci všech balíčků, dalším krokem je ke konfiguraci a povolení využitím EventFlow ve službě.
+
+## <a name="configure-and-enable-log-collection"></a>Nakonfigurovat a Povolit shromažďování protokolů
+Odpovědná za zasílání protokolů využitím EventFlow kanál je vytvořený z specifikace uložené v konfiguračním souboru. `Microsoft.Diagnostics.EventFlow.ServiceFabric` Balíček nainstaluje výchozí konfigurační soubor využitím EventFlow pod `PackageRoot\Config` složku řešení s názvem `eventFlowConfig.json`. Tento konfigurační soubor musí být upravena k zachytávání dat ze služby výchozí `EventSource` třídy a všechny ostatní vstupy chcete konfigurace a odesílání dat na příslušné místo.
+
+>[!NOTE]
+>Pokud váš soubor projektu má formát Visual Studio 2017 `eventFlowConfig.json` soubor nebude přidán automaticky. Chcete-li vyřešit tím vytvoří soubor v `Config` složky a nastavte akci sestavení na `Copy if newer`. 
+
+Tady je ukázka *eventFlowConfig.json* podle výše uvedených balíčků NuGet:
 ```json
 {
   "inputs": [
@@ -79,7 +79,7 @@ Zde je ukázka *eventFlowConfig.json* založené na balíčky NuGet uvedených v
 }
 ```
 
-Název služby ServiceEventSource je hodnota vlastnosti název `EventSourceAttribute` třídy ServiceEventSource použít. Všechny se vyskytuje v `ServiceEventSource.cs` souboru, který je součástí kódu služby. Například v následující fragment kódu je název ServiceEventSource *Moje_firma. Application1 Stateless1*:
+Hodnota vlastnosti Name je název služby ServiceEventSource `EventSourceAttribute` použít pro třídu ServiceEventSource. Vše je uveden v `ServiceEventSource.cs` soubor, který je součástí kódu služby. Například následující fragment kódu je název ServiceEventSource *společnost. Application1 Stateless1*:
 
 ```csharp
 [EventSource(Name = "MyCompany-Application1-Stateless1")]
@@ -89,11 +89,11 @@ internal sealed class ServiceEventSource : EventSource
 }
 ```
 
-Všimněte si, že `eventFlowConfig.json` soubor je součástí balíčku služby konfigurace. Změny tohoto souboru můžou být součástí úplné nebo konfigurace jen upgrady služby, podstoupí kontroly upgradu stavu Service Fabric a automatického vrácení zpět, dojde-li k selhání při upgradu. Další informace najdete v tématu [upgradu aplikace Service Fabric](service-fabric-application-upgrade.md).
+Všimněte si, že `eventFlowConfig.json` je soubor součástí balíčku pro konfiguraci služby. Změny tohoto souboru mohou být součástí upgrady full - nebo pouze pro konfiguraci služby, v souladu s kontroly stavu upgradu Service Fabric a automatického vrácení zpět, pokud se upgrade nezdaří. Další informace najdete v tématu [upgrade aplikace Service Fabric](service-fabric-application-upgrade.md).
 
-*Filtry* část konfigurace můžete dále přizpůsobit informace, které se bude předat kanálem EventFlow výstupy umožňuje vyřadit nebo obsahovat určité informace, nebo změnit strukturu data události. Další informace o filtrování najdete v tématu [EventFlow filtry](https://github.com/Azure/diagnostics-eventflow#filters).
+*Filtry* oddíl konfigurace umožňuje dále přizpůsobit informace, na který budete absolvovat využitím EventFlow kanálu do výstupů, umožňuje vyřadit nebo obsahovat určité informace, nebo změnit strukturu data události. Další informace o filtrování najdete v tématu [využitím EventFlow filtry](https://github.com/Azure/diagnostics-eventflow#filters).
 
-Posledním krokem je vytvoření instance EventFlow kanálu v kódu spuštění vaší služby, umístěný v `Program.cs` souboru:
+Posledním krokem je vytvoření instance využitím EventFlow kanálu v kódu při spuštění vaší služby umístěné v `Program.cs` souboru:
 
 ```csharp
 using System;
@@ -138,24 +138,24 @@ namespace Stateless1
 }
 ```
 
-Název předány jako parametr `CreatePipeline` metodu `ServiceFabricDiagnosticsPipelineFactory` je název *stavu entity* představující kanálu EventFlow protokolu kolekce. Tento název se používá, pokud EventFlow zaznamená a chybu a sestavy prostřednictvím subsystém stavu Service Fabric.
+Název předán jako parametr `CreatePipeline` metodu `ServiceFabricDiagnosticsPipelineFactory` je název *stavu entity* představující kanálu využitím EventFlow protokolu kolekce. Tento název se používá, pokud nalezne využitím EventFlow a chyby a ohlásí ji prostřednictvím subsystému stavu Service Fabric.
 
-### <a name="use-service-fabric-settings-and-application-parameters-in-eventflowconfig"></a>Použít nastavení Service Fabric a parametry aplikace v eventFlowConfig
+### <a name="use-service-fabric-settings-and-application-parameters-in-eventflowconfig"></a>Použijte parametry aplikace a nastavení Service Fabric v eventFlowConfig
 
-EventFlow podporuje konfiguraci nastavení EventFlow pomocí Service Fabric nastavení a aplikace parametry. Můžete se podívat do Service Fabric nastavení parametrů pomocí této syntaxe speciální hodnoty:
+Využitím EventFlow podporuje, pomocí nastavení Service Fabric a parametry aplikace a zadejte nastavení s využitím EventFlow. Můžete odkazovat na parametry nastavení Service Fabric s využitím následující speciální syntaxi pro hodnoty:
 
 ```json
 servicefabric:/<section-name>/<setting-name>
 ```
 
-`<section-name>` představuje název konfiguračního oddílu Service Fabric a `<setting-name>` je zajištění hodnotu, která se použije ke konfiguraci nastavení EventFlow nastavení konfigurace. Číst informace o tom, jak to provést, přejděte na [podporu pro Service Fabric nastavení a aplikace parametry](https://github.com/Azure/diagnostics-eventflow#support-for-service-fabric-settings-and-application-parameters).
+`<section-name>` je název konfiguračního oddílu Service Fabric a `<setting-name>` je zadání hodnoty, který se použije ke konfiguraci nastavení využitím EventFlow nastavení konfigurace. Přečíst další informace o tom, jak to provést, přejděte na [podporu pro parametry aplikace a nastavení Service Fabric](https://github.com/Azure/diagnostics-eventflow#support-for-service-fabric-settings-and-application-parameters).
 
 ## <a name="verification"></a>Ověření
 
-Spuštění služby a sledovat ladění výstup – okno v sadě Visual Studio. Po spuštění služby, měli byste začít zobrazuje důkaz, že vaše služba odesílá záznamy do výstupu, který jste nakonfigurovali. Přejděte k platformě analýzy a vizualizace událostí a ověřte, že protokoly spustili zobrazíte nahoru (může trvat několik minut).
+Spusťte svoji službu, a podívejte se ladění okna výstup v sadě Visual Studio. Poté, co je služba spuštěna, začnou zobrazovat příslušné údaje důkaz, že vaše služba odesílá záznamy do výstupu, který jste nakonfigurovali. Přejděte k vaší platformě analýzu a vizualizaci událostí a potvrďte, že jste začali zobrazit protokoly nahoru (může trvat několik minut).
 
 ## <a name="next-steps"></a>Další postup
 
-* [Analýza události a vizualizace s Application Insights](service-fabric-diagnostics-event-analysis-appinsights.md)
-* [Analýza události a vizualizace s analýzy protokolů](service-fabric-diagnostics-event-analysis-oms.md)
-* [EventFlow dokumentace](https://github.com/Azure/diagnostics-eventflow)
+* [Události analýzy a vizualizace pomocí Application Insights](service-fabric-diagnostics-event-analysis-appinsights.md)
+* [Události analýzy a vizualizace pomocí Log Analytics](service-fabric-diagnostics-event-analysis-oms.md)
+* [Dokumentace ke službě využitím EventFlow](https://github.com/Azure/diagnostics-eventflow)

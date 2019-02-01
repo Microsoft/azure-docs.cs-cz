@@ -8,12 +8,12 @@ ms.topic: get-started-article
 ms.date: 01/02/2019
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: a82ea1e7f584cd9cab794d147c3f19f04e23732b
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 953615a9c6b716db1db0c7bfb993f3d47aefd7a9
+ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 01/31/2019
-ms.locfileid: "55474798"
+ms.locfileid: "55507769"
 ---
 # <a name="introduction-to-azure-storage"></a>Seznámení se službou Azure Storage
 
@@ -130,13 +130,13 @@ Klientské knihovny pro úložiště nabízejí metody, jejichž voláním můž
 
 Další informace o šifrování na straně klienta najdete v tématu [Šifrování na straně klienta s .NET pro úložiště Microsoft Azure](storage-client-side-encryption.md).
 
-## <a name="replication"></a>Replikace
+## <a name="redundancy"></a>Redundance
 
-Aby se zajistila odolnost dat, služba Azure Storage replikuje několik kopií vašich dat. Když nastavujete účet úložiště, vybíráte typ replikace. Ve většině případů toto nastavení můžete po vytvoření účtu úložiště změnit. 
+Aby se zajistila odolnost dat, služba Azure Storage replikuje několik kopií vašich dat. Při nastavování účtu úložiště, vyberte možnost redundance. 
 
 [!INCLUDE [storage-common-redundancy-options](../../../includes/storage-common-redundancy-options.md)]
 
-Informace o zotavení po havárii najdete v tématu [Co dělat v případě výpadku služby Azure Storage](storage-disaster-recovery-guidance.md).
+Další informace o zotavení po havárii najdete v tématu [po havárii pro obnovení a úložiště účtu převzetí služeb při selhání (preview) ve službě Azure Storage](storage-disaster-recovery-guidance.md).
 
 ## <a name="transferring-data-to-and-from-azure-storage"></a>Přesun dat z Azure Storage a do Azure Storage
 

@@ -1,5 +1,5 @@
 ---
-title: 'Propojení virtuální sítě Azure s jinou virtuální síti s použitím připojení typu VNet-to-VNet: PowerShell | Dokumentace Microsoftu'
+title: 'Připojení virtuální sítě Azure k jiné virtuální síti pomocí připojení VNet-to-VNet: Prostředí PowerShell | Dokumentace Microsoftu'
 description: Propojení virtuálních sítí s použitím připojení typu VNet-to-VNet a PowerShellu.
 services: vpn-gateway
 documentationcenter: na
@@ -9,11 +9,11 @@ ms.topic: conceptual
 ms.date: 10/14/2018
 ms.author: cherylmc
 ms.openlocfilehash: d890aabd6b0acad324ef4b632daaed1db6452ac5
-ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
+ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51686955"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55510551"
 ---
 # <a name="configure-a-vnet-to-vnet-vpn-gateway-connection-using-powershell"></a>Konfigurace připojení brány VPN typu VNet-to-VNet pomocí PowerShellu
 
@@ -68,17 +68,17 @@ Klíčovým rozdílem mezi těmito sadami je, že pokud konfigurujete připojen�
 
 Pro toto cvičení můžete konfigurace kombinovat nebo prostě vybrat tu, se kterou chcete pracovat. Všechny konfigurace používají typ připojení VNet-to-VNet. Provoz probíhá mezi virtuálními sítěmi, které jsou vzájemně přímo propojené. V tomto cvičení se provoz ze sítě TestVNet4 nesměruje do sítě TestVNet5.
 
-* [Virtuální sítě patřící do stejného předplatného:](#samesub) V postupu pro tuto konfiguraci se používají sítě TestVNet1 a TestVNet4.
+* [Virtuální sítě patřící do stejného předplatného](#samesub): Kroky pro tuto konfiguraci využívají TestVNet1 a TestVNet4.
 
   ![Diagram v2v](./media/vpn-gateway-vnet-vnet-rm-ps/v2vrmps.png)
 
-* [Virtuální sítě patřící do různých předplatných:](#difsub) V postupu pro tuto konfiguraci se používají sítě TestVNet1 a TestVNet5.
+* [Virtuální sítě patřící do různých předplatných](#difsub): Kroky pro tuto konfiguraci využívají TestVNet1 a TestVNet5.
 
   ![Diagram v2v](./media/vpn-gateway-vnet-vnet-rm-ps/v2vdiffsub.png)
 
 ## <a name="samesub"></a>Postup při propojování virtuálních sítí patřících ke stejnému předplatnému
 
-### <a name="before-you-begin"></a>Než začnete
+### <a name="before-you-begin"></a>Před zahájením
 
 Než začnete, bude třeba nainstalovat nejnovější verzi rutin PowerShellu pro Azure Resource Manager, alespoň verzi 4.0 nebo novější. Další informace o instalaci rutin PowerShellu najdete v tématu [Instalace a konfigurace Azure PowerShellu](/powershell/azure/overview).
 
@@ -92,30 +92,30 @@ V příkladech používáme následující hodnoty:
 
 * Název virtuální sítě: TestVNet1
 * Skupina prostředků: TestRG1
-* Umístění: Východní USA
-* TestVNet1: 10.11.0.0/16 a 10.12.0.0/16
-* FrontEnd: 10.11.0.0/24
-* BackEnd: 10.12.0.0/24
+* Umístění: USA – východ
+* TestVNet1: 10.11.0.0/16 & 10.12.0.0/16
+* Front-endu: 10.11.0.0/24
+* Back-endu: 10.12.0.0/24
 * GatewaySubnet: 10.12.255.0/27
-* Název brány: VNet1GW
-* Veřejná IP adresa: VNet1GWIP
-* Typ sítě VPN: RouteBased
-* Připojení (1 ke 4): VNet1toVNet4
-* Připojení (1 k 5): VNet1toVNet5 (pro virtuální sítě v různých předplatných)
+* GatewayName: VNet1GW
+* Public IP: VNet1GWIP
+* VPNType: RouteBased
+* Connection(1to4): VNet1toVNet4
+* Connection(1to5): VNet1toVNet5 (pro virtuální sítě v různých předplatných)
 * Typ připojení: VNet2VNet
 
 **Hodnoty pro virtuální síť TestVNet4:**
 
 * Název virtuální sítě: TestVNet4
-* TestVNet2: 10.41.0.0/16 a 10.42.0.0/16
-* FrontEnd: 10.41.0.0/24
-* BackEnd: 10.42.0.0/24
+* TestVNet2: 10.41.0.0/16 & 10.42.0.0/16
+* Front-endu: 10.41.0.0/24
+* Back-endu: 10.42.0.0/24
 * GatewaySubnet: 10.42.255.0/27
 * Skupina prostředků: TestRG4
 * Umístění: Západní USA
-* Název brány: VNet4GW
-* Veřejná IP adresa: VNet4GWIP
-* Typ sítě VPN: RouteBased
+* GatewayName: VNet4GW
+* Public IP: VNet4GWIP
+* VPNType: RouteBased
 * Připojení: VNet4toVNet1
 * Typ připojení: VNet2VNet
 
@@ -306,13 +306,13 @@ Je důležité zajistit, aby se prostor IP adres nové virtuální sítě TestVN
 * Název virtuální sítě: TestVNet5
 * Skupina prostředků: TestRG5
 * Umístění: Japonsko – východ
-* TestVNet5: 10.51.0.0/16 a 10.52.0.0/16
-* FrontEnd: 10.51.0.0/24
-* BackEnd: 10.52.0.0/24
+* TestVNet5: 10.51.0.0/16 & 10.52.0.0/16
+* Front-endu: 10.51.0.0/24
+* Back-endu: 10.52.0.0/24
 * GatewaySubnet: 10.52.255.0.0/27
-* Název brány: VNet5GW
-* Veřejná IP adresa: VNet5GWIP
-* Typ sítě VPN: RouteBased
+* GatewayName: VNet5GW
+* Public IP: VNet5GWIP
+* VPNType: RouteBased
 * Připojení: VNet5toVNet1
 * Typ připojení: VNet2VNet
 

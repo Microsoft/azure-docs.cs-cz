@@ -10,15 +10,15 @@ ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 02/26/2018
 ms.author: zhiweiw
-ms.openlocfilehash: 93f0d31f5daa13d0598367e2a4ddab67ff3dbc66
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.openlocfilehash: 3f97e9696a5138d9102037103a45c86988a7506c
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51279693"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55489271"
 ---
 # <a name="health-service-data-is-not-up-to-date-alert"></a>Data služby Health service není aktuální výstrahy
 
@@ -40,7 +40,7 @@ ms.locfileid: "51279693"
 | Datových prvků | Postup při řešení potíží |
 | --- | --- | 
 | PerfCounter | - [Odchozí připojení ke koncovému bodu služby Azure](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-connections) <br />- [Kontrola protokolu SSL pro odchozí provoz je filtrovaná nebo zakázaná](https://technet.microsoft.com/library/ee796230.aspx) <br /> - [Porty brány firewall na serveru se spuštěným agentem](https://technet.microsoft.com/library/ms345310(v=sql.100).aspx) <br /> - [Povolit určené websites, pokud je povoleno rozšířené zabezpečení Internet Exploreru](https://technet.microsoft.com/windows/ms537180(v=vs.60)) |
-| AadSyncService SynchronizationRules, <br /> AadSyncService konektorů <br /> AadSyncService GlobalConfigurations, <br /> AadSyncService RunProfileResults, <br /> AadSyncService ServiceConfigurations, <br /> AadSyncService ServiceStatus | -Odchozí připojení na základě IP adres najdete [rozsahy IP adres Azure](https://www.microsoft.com/download/details.aspx?id=41653) <br /> - [Odchozí připojení ke koncovému bodu služby Azure](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-connections) <br /> -  [Porty brány firewall na serveru se spuštěným agentem](https://technet.microsoft.com/library/ms345310(v=sql.100).aspx) | 
+| AadSyncService SynchronizationRules, <br /> AadSyncService-Connectors, <br /> AadSyncService GlobalConfigurations, <br /> AadSyncService-RunProfileResults, <br /> AadSyncService ServiceConfigurations, <br /> AadSyncService-ServiceStatus | -Odchozí připojení na základě IP adres najdete [rozsahy IP adres Azure](https://www.microsoft.com/download/details.aspx?id=41653) <br /> - [Odchozí připojení ke koncovému bodu služby Azure](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-connections) <br /> -  [Porty brány firewall na serveru se spuštěným agentem](https://technet.microsoft.com/library/ms345310(v=sql.100).aspx) | 
 
 ### <a name="connect-health-for-adfs"></a>Connect Health pro AD FS
 
@@ -48,14 +48,14 @@ Další kroky k ověření pro službu AD FS a pracovní postup v [nápovědy k 
 
 | Datových prvků | Postup při řešení potíží |
 | --- | --- | 
-| PerfCounter TestResult | - [Odchozí připojení ke koncovému bodu služby Azure](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-connections) <br />- [Kontrola protokolu SSL pro odchozí provoz je filtrovaná nebo zakázaná](https://technet.microsoft.com/library/ee796230.aspx) <br />-  [Porty brány firewall na serveru se spuštěným agentem](https://technet.microsoft.com/library/ms345310(v=sql.100).aspx) <br /> - [Povolit určené websites, pokud je povoleno rozšířené zabezpečení Internet Exploreru](https://technet.microsoft.com/windows/ms537180(v=vs.60)) |
-|  UsageMetrics služby AD FS | Odchozí připojení na základě IP adres najdete [rozsahy IP adres Azure](https://www.microsoft.com/download/details.aspx?id=41653) | 
+| PerfCounter, TestResult | - [Odchozí připojení ke koncovému bodu služby Azure](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-connections) <br />- [Kontrola protokolu SSL pro odchozí provoz je filtrovaná nebo zakázaná](https://technet.microsoft.com/library/ee796230.aspx) <br />-  [Porty brány firewall na serveru se spuštěným agentem](https://technet.microsoft.com/library/ms345310(v=sql.100).aspx) <br /> - [Povolit určené websites, pokud je povoleno rozšířené zabezpečení Internet Exploreru](https://technet.microsoft.com/windows/ms537180(v=vs.60)) |
+|  Adfs-UsageMetrics | Odchozí připojení na základě IP adres najdete [rozsahy IP adres Azure](https://www.microsoft.com/download/details.aspx?id=41653) | 
 
 ### <a name="connect-health-for-adds"></a>Connect Health pro AD DS
 
 | Datových prvků | Postup při řešení potíží |
 | --- | --- | 
-| PerfCounter, přidá TopologyInfo-Json a běžné. TestData Json | - [Odchozí připojení ke koncovému bodu služby Azure](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-connections) <br /> - [Kontrola protokolu SSL pro odchozí provoz je filtrovaná nebo zakázaná](https://technet.microsoft.com/library/ee796230.aspx) <br />-  [Porty brány firewall na serveru se spuštěným agentem](https://technet.microsoft.com/library/ms345310(v=sql.100).aspx) <br /> - [Povolit určené websites, pokud je povoleno rozšířené zabezpečení Internet Exploreru](https://technet.microsoft.com/windows/ms537180(v=vs.60)) <br />  -Odchozí připojení na základě IP adres najdete [rozsahy IP adres Azure](https://www.microsoft.com/download/details.aspx?id=41653)  |
+| PerfCounter, Adds-TopologyInfo-Json, Common-TestData-Json | - [Odchozí připojení ke koncovému bodu služby Azure](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-connections) <br /> - [Kontrola protokolu SSL pro odchozí provoz je filtrovaná nebo zakázaná](https://technet.microsoft.com/library/ee796230.aspx) <br />-  [Porty brány firewall na serveru se spuštěným agentem](https://technet.microsoft.com/library/ms345310(v=sql.100).aspx) <br /> - [Povolit určené websites, pokud je povoleno rozšířené zabezpečení Internet Exploreru](https://technet.microsoft.com/windows/ms537180(v=vs.60)) <br />  -Odchozí připojení na základě IP adres najdete [rozsahy IP adres Azure](https://www.microsoft.com/download/details.aspx?id=41653)  |
 
 
 ## <a name="next-steps"></a>Další postup

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: timlt
-ms.openlocfilehash: 3671f6a3e3832a384e968fbf38128aff6bfb2252
-ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
+ms.openlocfilehash: ae57fc5366e1ed99febcd9a9d08e7f95f3bbf196
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/12/2019
-ms.locfileid: "54247669"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55487349"
 ---
 # <a name="device-connectivity-in-azure-iot-central"></a>Připojení zařízení v Azure IoT Central
 
@@ -56,7 +56,7 @@ Pomocí SAS připojení jedno zařízení k IoT Central je jednoduché a zabere 
 
     *   **Jazyk C:** Pokud používáte C, postupujte podle [tohoto klienta zařízení ukázka C](https://github.com/Azure/azure-iot-sdk-c/blob/master/provisioning_client/devdoc/using_provisioning_client.md) připojit zařízení vzorku. Použijte následující nastavení ve vzorku.   
 
-         ```
+         ```c
          hsm_type = SECURE_DEVICE_TYPE_SYMMETRIC_KEY;
 
          ## Enter the Device Id and Symmetric keys 
@@ -118,7 +118,7 @@ Pokud používáte **MxChip** zařízení pro připojení postupujte podle [podr
 V následující tabulce jsou odkazy na další jazyky, které chcete použít.
 
    *   **Jazyk C:** Pokud používáte C postupujte [tohoto klienta zařízení ukázka C](https://github.com/Azure/azure-iot-sdk-c/blob/master/provisioning_client/devdoc/using_provisioning_client.md) připojit zařízení vzorku. Použijte následující nastavení ve vzorku.   
-         ```
+         ```c
          hsm_type = SECURE_DEVICE_TYPE_SYMMETRIC_KEY;
 
          ## Enter the Device Id and Symmetric keys 
@@ -163,7 +163,7 @@ Připojení zařízení k IoT Central X509 pomocí certifikátů, existuje se vy
 
     Program zařízení umožňuje získat jeho podrobnosti připojení a IoT Central přiřazení aplikace při přepnutí informace o službě zřizování.    
 
-    **Další referene** 
+    **Odkaz na další** 
     *   Ukázková implementace pro [raspberrypi nebo.](https://aka.ms/iotcentral-docs-Raspi-releases)  
 
     *   [Ukázky klienta zařízení v jazyce C.](https://github.com/Azure/azure-iot-sdk-c/blob/dps_symm_key/provisioning_client/devdoc/using_provisioning_client.md)
@@ -211,12 +211,12 @@ Postupujte podle pokynů na základě vaší volby schéma ověřování zaříz
 
 1. **Připojení zařízení k IoT Central:** Po zapnutí zařízení připojit k Device Provisioning a IoT Central pro registraci.
 
-1. **Přidružení zařízení do šablony:** Připojené zařízení se zobrazí v části **nepřidružené zařízení** v **Device Explorer**. Zařízení, Stav zřizování je **registrované**. **Přidružit** zařízení k šabloně příslušné zařízení a schválit zařízení pro připojení k aplikaci IoT Central. Zařízení načte podrobnosti připojení aplikace IoT Central, připojení a spuštění odesílá data. Provioning zařízení je teď dokončený a *Stav zřizování* se změní **zřízená**.
+1. **Přidružení zařízení do šablony:** Připojené zařízení se zobrazí v části **nepřidružené zařízení** v **Device Explorer**. Zařízení, Stav zřizování je **registrované**. **Přidružit** zařízení k šabloně příslušné zařízení a schválit zařízení pro připojení k aplikaci IoT Central. Zařízení získá podrobnosti o připojení pro aplikace IoT Central, a potom připojí a spustí odesílat data. Zřizování zařízení je teď dokončený a *Stav zřizování* se změní **zřízená**.
 
 ## <a name="device-provisioning-status"></a>Stav zřizování zařízení
 Obsahuje sérii kroků při se využívá řada skutečné zařízení je připojené k Azure IoT Central 
 1. **Registrovaný**: Zařízení je první **registrované**, což znamená vytvoření zařízení v IoT Central a má ID zařízení pro zařízení.
-Zařízení je Registeretd při  
+Registrace zařízení při  
     *   Jsou přidávány nové skutečné zařízení **Průzkumníka**
     *   Sadu zařízení přidána pomocí **Import** na **Průzkumníka**
     *   Zařízení, který nebyl registrován, ale nepřipojí k platné přihlašovací údaje a je viditelný v **zrušení přidružené** zařízení. 
@@ -233,7 +233,7 @@ Můžete získat připojovací řetězec zařízení Iot hub pro službu Azure I
 
     ![Podrobnosti připojení](media/concepts-connectivity/device-connect.PNG)
 
-1. Získá připojovací řetězec zařízení pomocí nástroje GPupdate řádku níže.
+1. Získá připojovací řetězec zařízení pomocí nástroje příkazového řádku.
     Použití následujících pokynů k získání připojovacího řetězce zařízení  
 
     ```cmd/sh

@@ -4,20 +4,18 @@ description: Použití Azure Advisoru a optimalizovat nasazení Azure.
 services: advisor
 documentationcenter: NA
 author: kasparks
-manager: ''
-ms.assetid: ''
 ms.service: advisor
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 11/16/2016
+ms.date: 02/01/2019
 ms.author: kasparks
-ms.openlocfilehash: 747ce8dc4a4e4c8ac1e26e5b051a431176096d71
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: 1a72225ce29b7a94f2fc402488f6b998cde0a0fb
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53015972"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55494541"
 ---
 # <a name="introduction-to-azure-advisor"></a>Úvod do Azure Advisoru
 
@@ -36,8 +34,8 @@ Můžete přistupovat prostřednictvím Advisor [webu Azure portal](https://aka.
 Řídicí panel služby Advisor zobrazí individuální doporučení pro vaše předplatná.  Můžete použít filtry pro zobrazení doporučení pro konkrétní předplatné a typy prostředků.  Doporučení jsou rozděleny do čtyř kategorií: 
 
 * **Vysoká dostupnost**: K zajištění a zlepšování kontinuity důležité podnikové aplikace. Další informace najdete v tématu [doporučení k vysoké dostupnosti služby Advisor](advisor-high-availability-recommendations.md).
-* **Zabezpečení**: ke zjištění hrozeb a ohrožení zabezpečení, které by mohly vést k narušení zabezpečení. Další informace najdete v tématu [doporučení Advisoru zabezpečení](advisor-security-recommendations.md).
-* **Výkon**: aby se zvýšila rychlost vašich aplikací. Další informace najdete v tématu [doporučení k výkonu služby Advisor](advisor-performance-recommendations.md).
+* **Zabezpečení**: Ke zjištění hrozeb a ohrožení zabezpečení, které by mohly vést k narušení zabezpečení. Další informace najdete v tématu [doporučení Advisoru zabezpečení](advisor-security-recommendations.md).
+* **Výkon**: Aby se zvýšila rychlost vašich aplikací. Další informace najdete v tématu [doporučení k výkonu služby Advisor](advisor-performance-recommendations.md).
 * **Náklady na**: K optimalizaci a snížit vaše celkové útraty Azure. Další informace najdete v tématu [doporučení Advisoru náklady](advisor-cost-recommendations.md).
 
   ![Typy doporučení advisoru](./media/advisor-overview/advisor-dashboard.png)

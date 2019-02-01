@@ -4,7 +4,7 @@ description: Další informace o použití rozšíření stav aplikace pro monit
 services: virtual-machine-scale-sets
 documentationcenter: ''
 author: mayanknayar
-manager: rajraj
+manager: drewm
 editor: ''
 tags: azure-resource-manager
 ms.assetid: ''
@@ -13,14 +13,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/27/2018
+ms.date: 01/30/2019
 ms.author: manayar
-ms.openlocfilehash: 404d983474d6d8705838d288aaa280478043be11
-ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
+ms.openlocfilehash: 1ac7b5f41c0c941db08a63c516febabaf9f07b3e
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53746015"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55491378"
 ---
 # <a name="using-application-health-extension-with-virtual-machine-scale-sets"></a>Použití stavu aplikace rozšíření virtuálního počítače škálovací sad
 Monitorování stavu vaší aplikace je důležité signál pro správu a upgrade vašeho nasazení. Škálovací sady virtuálních počítačů Azure poskytují podporu pro [postupné upgrady](virtual-machine-scale-sets-upgrade-scale-set.md#how-to-bring-vms-up-to-date-with-the-latest-scale-set-model) včetně [automatické upgrady operačního systému image](virtual-machine-scale-sets-automatic-upgrade.md), které využívají monitorování stavu jednotlivých instancí při upgradu nasazení .
@@ -35,7 +35,7 @@ Tento článek předpokládá, že máte zkušenosti s:
 ## <a name="when-to-use-the-application-health-extension"></a>Kdy použít rozšíření stavu aplikace
 Rozšíření stav aplikací – to je nasazený v instanci virtuálního počítače škálovací sady a sestavy o stavu virtuálních počítačů v rámci instance ve škálovací sadě. Můžete nakonfigurovat rozšíření na koncový bod aplikace pro zjišťování a aktualizovat stav žádosti pro tuto instanci. Tento stav instance se kontroluje Azure k určení, zda je instance vhodné k upgradu operations.
 
-Vzhledem k tomu, že rozšíření hlásí stav z v rámci virtuálního počítače, rozšíření lze použít v situacích, kde externí testy, jako je například sondy stavu aplikace (které využívají vlastní Azure Load Balancer [sondy](../load-balancer/load-balancer-custom-probe-overview.md)) nelze využít.
+Jako rozšíření sestavy stavu z v rámci virtuálního počítače, rozšíření lze použít v situacích, kde externí testy, jako je například sondy stavu aplikace (které využívají vlastní Azure Load Balancer [sondy](../load-balancer/load-balancer-custom-probe-overview.md)) nelze použít.
 
 ## <a name="extension-schema"></a>Schéma rozšíření
 
@@ -109,9 +109,9 @@ Použití `PATCH` upravit již nasazenou rozšíření.
 
 ### <a name="azure-powershell"></a>Azure PowerShell
 
-Použití [Add-AzureRmVmssExtension](/powershell/module/azurerm.compute/add-azurermvmssextension) definice modelu rutiny pro přidání rozšíření stav aplikací do škálovací sady.
+Použití [přidat AzVmssExtension](/powershell/module/az.compute/add-azvmssextension) definice modelu rutiny pro přidání rozšíření stav aplikací do škálovací sady.
 
-Následující příklad přidá rozšíření stavu aplikace, které `extensionProfile` ve škálovací nastavení modelu na základě Windows škálovací sady.
+Následující příklad přidá rozšíření stavu aplikace, které `extensionProfile` v škálovací sady modelu na základě Windows škálovací sady. V příkladu se používá nový modul prostředí PowerShell Az.
 
 ```azurepowershell-interactive
 # Define the scale set variables
@@ -125,12 +125,12 @@ $extensionType = "ApplicationHealthWindows"
 $publisher = "Microsoft.ManagedServices"
 
 # Get the scale set object
-$vmScaleSet = Get-AzureRmVmss `
+$vmScaleSet = Get-AzVmss `
   -ResourceGroupName $vmScaleSetResourceGroup `
   -VMScaleSetName $vmScaleSetName
 
 # Add the Application Health extension to the scale set model
-Add-AzureRmVmssExtension -VirtualMachineScaleSet $vmScaleSet `
+Add-AzVmssExtension -VirtualMachineScaleSet $vmScaleSet `
   -Name $extensionName `
   -Publisher $publisher `
   -Setting $publicConfig `
@@ -139,10 +139,12 @@ Add-AzureRmVmssExtension -VirtualMachineScaleSet $vmScaleSet `
   -AutoUpgradeMinorVersion $True
 
 # Update the scale set
-Update-AzureRmVmss -ResourceGroupName $vmScaleSetResourceGroup `
+Update-AzVmss -ResourceGroupName $vmScaleSetResourceGroup `
   -Name $vmScaleSetName `
   -VirtualMachineScaleSet $vmScaleSet
 ```
+
+
 ### <a name="azure-cli-20"></a>Azure CLI 2.0
 
 Použití [az vmss extension set](/cli/azure/vmss/extension#az-vmss-extension-set) přidat rozšíření stav aplikací do škálovací sady definice modelu.

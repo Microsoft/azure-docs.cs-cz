@@ -6,25 +6,25 @@ ms.service: automation
 ms.subservice: change-inventory-management
 author: georgewallace
 ms.author: gwallace
-ms.date: 10/24/2018
+ms.date: 01/31/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 63dc7148904089a31ff95764898a8dac72c37049
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: 2a6610b5cb3f01fc70b1737fc4492e09d9a7637b
+ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54421331"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55507330"
 ---
 # <a name="troubleshoot-change-tracking-and-inventory"></a>Řešení Change Tracking a Inventory
 
 ## <a name="windows"></a>Windows
 
-### <a name="records-not-showing-windows"></a>Scénář: Záznamy řešení Change Tracking nejsou zobrazeny na webu Azure Portal
+### <a name="records-not-showing-windows"></a>Scénář: Záznamy řešení Change Tracking nejsou zobrazeny pro počítače s Windows
 
 #### <a name="issue"></a>Problém
 
-Nevidíte žádné výsledky inventáře a sledování změn pro počítače, které jsou připojili pro řešení Change Tracking.
+Nevidíte žádné výsledky inventáře a sledování změn u počítačů s Windows, které jsou připojili pro řešení Change Tracking.
 
 #### <a name="cause"></a>Příčina
 
@@ -38,12 +38,13 @@ Tato chyba může být způsobeno z následujících důvodů:
 #### <a name="resolution"></a>Řešení
 
 1. Ověřte, **agenta Microsoft Monitoring Agent** (HealthService.exe) běží na počítači.
-2. Navštíví, [plánování sítě](../automation-hybrid-runbook-worker.md#network-planning) Další informace o tom, které adresy a porty je potřeba povolit pro řešení Change Tracking pracovat.
-3. Ověřte, že tyto management packy Change Tracking a Inventory existují místně:
+1. Zkontrolujte **Prohlížeč událostí** v počítači a vyhledejte všechny události, které obsahují slovo `changetracking` v nich.
+1. Navštíví, [plánování sítě](../automation-hybrid-runbook-worker.md#network-planning) Další informace o tom, které adresy a porty je potřeba povolit pro řešení Change Tracking pracovat.
+1. Ověřte, že tyto management packy Change Tracking a Inventory existují místně:
     * Microsoft.IntelligencePacks.ChangeTrackingDirectAgent.*
     * Microsoft.IntelligencePacks.InventoryChangeTracking.*
     * Microsoft.IntelligencePacks.SingletonInventoryCollection.*
-4. Pokud pomocí nejprve image něm Klonovaná image nástroj sysprep a nainstalovat agenta Microsoft Monitoring Agent po jejich výskytu.
+1. Pokud pomocí nejprve image něm Klonovaná image nástroj sysprep a nainstalovat agenta Microsoft Monitoring Agent po jejich výskytu.
 
 Pokud budete kontaktovat podporu těchto řešení není problém vyřešit, spustíte následující příkazy ke shromažďování diagnostiky na agentovi
 

@@ -1,8 +1,21 @@
 ---
-Název: Přeučování titleSuffix model Machine Learning Studio: Azure Machine Learning Studio Popis: Zjistěte, jak model přetrénujete a aktualizovat webovou službu, která používá nově trénovaného modelu ve službě Azure Machine Learning.
-Services: machine learningu ms.service: ms.subservice strojového učení: studio ms.topic: článku
-
-Autor: ericlicoding ms.author: amlstudiodocs ms.custom: seodec18 ms.date: 04/19/2017
+title: Přeučování modelů Machine Learning Studio
+titleSuffix: Azure Machine Learning Studio
+description: Zjistěte, jak model přetrénujete a aktualizovat webovou službu, která používá nově trénovaného modelu ve službě Azure Machine Learning.
+services: machine-learning
+ms.service: machine-learning
+ms.subservice: studio
+ms.topic: article
+author: ericlicoding
+ms.author: amlstudiodocs
+ms.custom: seodec18
+ms.date: 04/19/2017
+ms.openlocfilehash: 4fec32ac2d613486ee65416ccdfac70575ea9543
+ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
+ms.translationtype: MT
+ms.contentlocale: cs-CZ
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55509571"
 ---
 # <a name="retrain-an-azure-machine-learning-studio-model"></a>Přeučování model ve službě Azure Machine Learning Studio
 Jako součást procesu operacionalizace modelů strojového učení v Azure Machine Learning je váš model školení a uložen. Pak použijete ho k vytvoření prediktivní webové služby. Webová služba může být potom používán webové stránky, řídicí panely a mobilních aplikací. 

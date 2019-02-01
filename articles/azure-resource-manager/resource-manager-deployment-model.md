@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/15/2017
 ms.author: tomfitz
-ms.openlocfilehash: 97dffa4952354864f90f75ffb909228eb4202e77
-ms.sourcegitcommit: ba9f95cf821c5af8e24425fd8ce6985b998c2982
+ms.openlocfilehash: cb888367e3204d6750c533eb8952c80947f90c11
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54382799"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55486805"
 ---
 # <a name="azure-resource-manager-vs-classic-deployment-understand-deployment-models-and-the-state-of-your-resources"></a>Azure Resource Manageru a klasického nasazení: Vysvětlení modelů nasazení a stavu prostředků
 
@@ -30,6 +30,8 @@ Tento článek vysvětluje model nasazení Azure Resource Manager a model nasaze
 V zájmu zjednodušení nasazení a správy prostředků Microsoft doporučuje používat pro všechny nové prostředky model Resource Manager. Pokud je to možné, Microsoft doporučuje znovu nasadit existující prostředky prostřednictvím Resource Manageru.
 
 Pokud jste s Resource Managerem ještě nepracovali, můžete si nejdřív projít terminologii definovanou v článku [Přehled Azure Resource Manageru](resource-group-overview.md).
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="history-of-the-deployment-models"></a>Historie modelů nasazení
 Platforma Azure původně poskytovala jenom model nasazení Classic. V tomto modelu existoval každý prostředek odděleně a nebyl dostupný žádný způsob, jak související prostředky seskupit. Bylo tak potřeba ručně sledovat, které prostředky tvoří vaše řešení nebo aplikaci, a spravovat je pomocí koordinovaného přístupu. K nasazení řešení jste buď museli vytvořit každý prostředek zvlášť prostřednictvím webu Portal, nebo vytvořit skript, který nasadil všechny prostředky ve správném pořadí. Pokud jste chtěli řešení odstranit, museli jste odstranit každý prostředek zvlášť. U souvisejících prostředků jste nemohli snadno uplatnit a aktualizovat zásady řízení přístupu. Navíc nebylo možné používat u prostředků značky tvořené výrazy, které by vám pomohly prostředky monitorovat a usnadnily vám správu fakturace.
@@ -57,7 +59,7 @@ U virtuálních počítačů, účtů úložiště a virtuálních sítí platí
 V některých případech může příkaz Resource Manageru načíst informace o prostředku vytvořeném pomocí modelu Classic nebo může provést úlohu správy, jako je přesun prostředku modelu Classic do jiné skupiny prostředků. Tyto případy by ale neměly vzbuzovat mylný dojem, že daný typ podporuje operace Resource Manageru. Můžeme třeba předpokládat, že máte skupinu prostředků, která obsahuje virtuální počítač vytvořený pomocí modelu nasazení Classic. Spustíte následující příkaz prostředí PowerShell Resource Manageru:
 
 ```powershell
-Get-AzureRmResource -ResourceGroupName ExampleGroup -ResourceType Microsoft.ClassicCompute/virtualMachines
+Get-AzResource -ResourceGroupName ExampleGroup -ResourceType Microsoft.ClassicCompute/virtualMachines
 ```
 
 Vrátí se virtuální počítač:
@@ -72,10 +74,10 @@ Location          : westus
 SubscriptionId    : {guid}
 ```
 
-Rutina Resource Manageru **Get-AzureRmVM** ale vrátí jenom virtuální počítače nasazené prostřednictvím Resource Manageru. Následující příkaz nevrátí virtuální počítač vytvořený prostřednictvím nasazení Classic.
+Ale rutiny Resource Manageru **rutiny Get-AzVM** vrátí jenom virtuální počítače nasazené prostřednictvím Resource Manageru. Následující příkaz nevrátí virtuální počítač vytvořený prostřednictvím nasazení Classic.
 
 ```powershell
-Get-AzureRmVM -ResourceGroupName ExampleGroup
+Get-AzVM -ResourceGroupName ExampleGroup
 ```
 
 Značky jsou podporované jenom u prostředků vytvořených pomocí Resource Manageru. Značky se nedají používat u prostředků modelu Classic.

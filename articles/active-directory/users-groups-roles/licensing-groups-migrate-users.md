@@ -1,5 +1,5 @@
 ---
-title: Migrace uživatelské licence uživatelů na licencování na základě skupiny v Azure Active Directory | Dokumentace Microsoftu
+title: Migrace uživatelů na licencování na základě skupin – Azure Active Directory | Dokumentace Microsoftu
 description: Jak přepínat z jednotlivých uživatelských licencí pro licencování na základě skupiny pomocí služby Azure Active Directory
 services: active-directory
 keywords: Licencování Azure AD
@@ -11,15 +11,16 @@ ms.service: active-directory
 ms.topic: article
 ms.workload: identity
 ms.subservice: users-groups-roles
-ms.date: 10/29/2018
+ms.date: 01/31/2019
 ms.author: curtand
-ms.custom: seohack1
-ms.openlocfilehash: b735d994b0a1937bd7bb3571aa1c642bca77817d
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.reviewer: sumitp
+ms.custom: seohack1;it-pro
+ms.openlocfilehash: ecbb0dba42787cd320ef3f6dc4d4a0b44f9eea1e
+ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55182978"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55505984"
 ---
 # <a name="how-to-add-licensed-users-to-a-group-for-licensing-in-azure-active-directory"></a>Jak přidat uživatele s licencí pro skupinu pro licencování v Azure Active Directory
 

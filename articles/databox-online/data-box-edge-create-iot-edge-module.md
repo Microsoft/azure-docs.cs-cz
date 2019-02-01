@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: article
-ms.date: 10/16/2018
+ms.date: 01/31/2019
 ms.author: alkohli
-ms.openlocfilehash: 86eec87d0c466b9172834fa9dbe7dfcb3702ea55
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.openlocfilehash: d0b171f05bb2243da83509348b099bebcb44ebc7
+ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55094100"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55508704"
 ---
 # <a name="develop-a-c-iot-edge-module-to-move-files-on-data-box-edge-preview"></a>Vývoj modulu jazyka C# IoT Edge pro přesun souborů na okraji pole dat (Preview)
 
@@ -266,6 +266,13 @@ V předchozí části jste vytvořili hraničních zařízeních IoT řešení a
     ![Vytváření a nasdílení změn řešení IoT Edge](./media/data-box-edge-create-iot-edge-module/build-iot-edge-solution-2.png)
  
     Pokud dáte Visual Studio Code pro vytvoření řešení, běží v integrovaném terminálu dvou příkazů: sestavení dockeru a docker push. Tyto dva příkazy sestaví kód, provedou kontejnerizaci vaší knihovny CSharpModule.dll a odešlou ji do registru kontejneru, který jste zadali při inicializaci řešení.
+
+    Zobrazí výzva k výběru platformy modulu. Vyberte *amd64* odpovídající Linux.
+
+    ![Vybrat platformu](./media/data-box-edge-create-iot-edge-module/select-platform.png)
+
+    > [!IMPORTANT] 
+    > Jsou podporovány pouze moduly systému Linux.
 
     Mohou se zobrazit následující upozornění, které můžete ignorovat:
 

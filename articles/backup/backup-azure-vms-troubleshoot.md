@@ -2,18 +2,18 @@
 title: Zálohování řešení potíží s virtuálními počítači Azure
 description: Řešení zálohování a obnovení virtuálních počítačů Azure
 services: backup
-author: trinadhk
-manager: shreeshd
+author: srinathv
+manager: vijayts
 ms.service: backup
 ms.topic: conceptual
 ms.date: 8/7/2018
-ms.author: trinadhk
-ms.openlocfilehash: b3bfd7b2f2526dca0079a4411092ed21ee101bcd
-ms.sourcegitcommit: 97d0dfb25ac23d07179b804719a454f25d1f0d46
+ms.author: srinathv
+ms.openlocfilehash: 06157251c073f75d04370debe14dd436202da1d3
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/25/2019
-ms.locfileid: "54912727"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55487707"
 ---
 # <a name="troubleshoot-azure-virtual-machine-backup"></a>Odstraňování potíží se zálohováním virtuálních počítačů Azure
 Řešení potíží s chybami při pomocí služby Azure Backup pomocí informací uvedených v následující tabulce došlo k chybě:

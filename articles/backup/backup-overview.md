@@ -9,12 +9,12 @@ ms.topic: overview
 ms.date: 01/09/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 7156042243b1ba28cea712dc3722600b9fc46c42
-ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
+ms.openlocfilehash: 298c9fabca9d1994e0b952fdf8b48b70370c3ec2
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54360217"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55490665"
 ---
 # <a name="what-is-azure-backup"></a>Co je Azure Backup?
 
@@ -47,7 +47,7 @@ Jak Azure Backup a Azure Site Recovery services přispívá ke provozní kontinu
 
 Obě služby poskytují doplňkové, ale jiné funkce.
 
-- **Azure Site Recovery**: Site Recovery poskytuje řešení pro zotavení po havárii pro místní počítače a pro virtuální počítače Azure. Můžete replikovat počítače z primární umístění do sekundární. V případě náhlé havárie organizační jednotky převzetí služeb počítače do sekundárního umístění a přistupovat k nim tam. Pokud vše, co je zprovozněný obvykle znovu, můžete počítače převzetí služeb při zálohování pro obnovení je v primární lokalitě.
+- **Azure Site Recovery**: Site Recovery poskytuje řešení pro zotavení po havárii pro místní počítače a pro virtuální počítače Azure. Můžete replikovat počítače z primární umístění do sekundární. V případě náhlé havárie selhání počítačů do sekundárního umístění a přistupovat k nim tam. Pokud vše, co je zprovozněný obvykle znovu, můžete počítače selhání zpět a obnovit v primární lokalitě.
 - **Azure Backup**: Služba Azure Backup zálohuje data z místních počítačů a virtuálních počítačů Azure. Data můžete zálohovat a obnovit na velmi podrobné úrovni, včetně zálohování souborů, složek, stav systému počítače a zálohování dat s ohledem na aplikace. Azure Backup zpracovává data na podrobnější úrovni než Site Recovery. Například pokud poškozením prezentace na svém přenosném počítači, můžete použít Azure Backup můžete tuto prezentaci obnovit. Pokud chcete zachovat konfiguraci virtuálního počítače a data, bezpečné a přístupné, použijete Site Recovery.  
 
 Pomocí body tabulku zjistit vašim potřebám BCDR. 

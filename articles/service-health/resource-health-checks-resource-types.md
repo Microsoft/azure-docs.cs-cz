@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: Supportability
-ms.date: 11/15/2018
+ms.date: 01/29/2019
 ms.author: stbaron
-ms.openlocfilehash: 3abf0268a7a6f84e5c26efc5643d048216fc2215
-ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
+ms.openlocfilehash: d88eb0ee5e8ec4c14efeb47a144ec7080ac6eee3
+ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53163034"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55508789"
 ---
 # <a name="resource-types-and-health-checks-in-azure-resource-health"></a>Typy prostředků a kontroly stavu ve službě Azure resource health
 Níže je úplný seznam všech kontrol provést prostřednictvím služby resource health podle typu prostředku.
@@ -86,7 +86,7 @@ Níže je úplný seznam všech kontrol provést prostřednictvím služby resou
 |---|
 |<ul><li>Selhává kvůli problémům s Azure Key Vaultu platformy žádosti o služby key vault?</li><li>Se žádostí o služby key vault omezují z důvodu příliš mnoho požadavků provedených zákazníky?</li></ul>|
 
-## <a name="microsoftnetworkconnections"></a>Microsoft.Network/Connections
+## <a name="microsoftnetworkconnections"></a>Microsoft.network/connections
 |Provedený kontroly|
 |---|
 |<ul><li>Je připojen tunelového připojení sítě VPN?</li><li>Existují konfliktům v konfiguraci v připojení?</li><li>Jsou předsdílené klíče správně nakonfigurovaná?</li><li>Je dostupný v místním zařízení VPN?</li><li>Existují problémy v zásadách zabezpečení protokolu IPSec/IKE?</li><li>Správně zřízené nebo v chybovém stavu, je připojení S2S VPN?</li><li>Správně zřízené nebo v chybovém stavu, je připojení VNET-to-VNET?</li></ul>|
@@ -116,12 +116,17 @@ Níže je úplný seznam všech kontrol provést prostřednictvím služby resou
 |---|
 |<ul><li>Diagnostika operací provést v clusteru?</li></ul>|
 
+## <a name="microsoftservicebusnamespaces"></a>Microsoft.ServiceBus/namespaces
+|Provedený kontroly|
+|---|
+|<ul><li>Jsou zákazníkům dochází k chybám generovaným uživateli služby Service Bus?</li><li>Dochází k uživatelům zvýšení přechodným chybám kvůli upgradu obor názvů služby Service Bus?</li></ul>|
+
 ## <a name="microsoftsqlserverdatabase"></a>Microsoft.SQL/Server/database
 |Provedený kontroly|
 |---|
 |<ul><li> Zde se přihlášení k databázi?</li></ul>|
 
-## <a name="microsoftstoragestorageaccounts"></a>Microsoft.Storage/storageAccounts.
+## <a name="microsoftstoragestorageaccounts"></a>Microsoft.Storage/storageAccounts
 |Provedený kontroly|
 |---|
 |<ul><li>Se žádostí o čtení dat z účtu úložiště nedaří zálohovat z důvodu problémů platformy Azure Storage?</li><li>Se žádostí o zápis dat do účtu úložiště nedaří zálohovat z důvodu problémů platformy Azure Storage?</li><li>Úložiště clusteru, ve které se nachází účet úložiště není k dispozici?</li></ul>|

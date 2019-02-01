@@ -10,12 +10,12 @@ ms.subservice: academic-knowledge
 ms.topic: conceptual
 ms.date: 01/18/2017
 ms.author: alch
-ms.openlocfilehash: 7484b570784f5f058ebd23b1e3c225c5d858a274
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 0e42d5e05268d4a572376f2bdf25d0ce6f8f4be7
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55183335"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55490120"
 ---
 # <a name="similarity-method"></a>Metoda podobnosti
 
@@ -30,12 +30,12 @@ https://westus.api.cognitive.microsoft.com/academic/v1.0/similarity?
 ## <a name="request-parameters"></a>Parametry žádosti
 Parametr        |Typ dat      |Požaduje se | Popis
 ----------|----------|----------|------------
-**s1**        |Řetězec   |Ano  |Řetězec * která se má porovnat
-**s2**        |Řetězec   |Ano  |Řetězec * která se má porovnat
-<sub> * Řetězce k porovnání mají o maximální délce 1MB. </sub>
+**s1**        |String   |Ano  |Řetězec * která se má porovnat
+**s2**        |String   |Ano  |Řetězec * která se má porovnat
+<sub> * Řetězce k porovnání mají maximální délky 1MB. </sub>
 <br>
 ## <a name="response"></a>Odpověď
-Name | Popis
+Název | Popis
 --------|---------
 **SimilarityScore**        |Představující kosinovou podobnost s1 a s2 s hodnotami blíž k 1.0 význam podobné a hodnoty blíže-1.0, což znamená menší hodnota s plovoucí desetinnou čárkou
 <br>

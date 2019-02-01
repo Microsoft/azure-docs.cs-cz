@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 08/13/2018
 ms.author: asrastog
-ms.openlocfilehash: 8424fa721d87467de70b4365578d196b3145b4b0
-ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
+ms.openlocfilehash: cabfe4381f7f941f2a5e049eed73be546902f6ae
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50024266"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55485343"
 ---
 # <a name="use-message-routing-to-send-device-to-cloud-messages-to-different-endpoints"></a>Odesílání zpráv typu zařízení cloud do různých koncových bodů pomocí směrování zpráv
 
@@ -21,13 +21,13 @@ ms.locfileid: "50024266"
 
 Směrování zpráv umožňuje odesílání zpráv z vašich zařízení ke cloudovým službám automatizované, škálovatelných a spolehlivých způsobem. Směrování zpráv je možné pro: 
 
-* **Odesílání telemetrie messsages zařízení, stejně jako události** konkrétně události životního cyklu zařízení a do koncových bodů integrované-endpoint a vlastní události změn dvojčete zařízení. Další informace o [směrování koncových bodů](#routing-endpoints).
+* **Odesílání telemetrie zprávy typu zařízení, stejně jako události** konkrétně události životního cyklu zařízení a do koncových bodů integrované-endpoint a vlastní události změn dvojčete zařízení. Další informace o [směrování koncových bodů](#routing-endpoints).
 
 * **Filtrování dat před směrování do různých koncových bodů** použitím bohaté dotazy. Směrování zpráv umožňuje dotazování na vlastnosti zprávy a tělo zprávy stejně jako značky dvojčat zařízení a vlastnosti dvojčete zařízení. Další informace o používání [dotazy v směrování zpráv](iot-hub-devguide-routing-query-syntax.md).
 
 IoT Hub potřebuje oprávnění k zápisu do těchto koncových bodů služby pro směrování zpráv do práce. Při konfiguraci vašich koncových bodů na webu Azure portal, potřebná oprávnění jsou přidány automaticky. Ujistěte se, že konfigurace služeb pro podporu očekávané propustnosti. Při první konfiguraci řešení IoT, budete muset monitorovat další koncové body a proveďte všechny nezbytné úpravy podle skutečné zátěže.
 
-Definuje služby IoT Hub [běžný formát](iot-hub-devguide-messages-construct.md) pro všechna zařízení cloud zasílání zpráv pro interoperatbility přes protokoly. Pokud zpráva odpovídá několik tras, které odkazují na stejný koncový bod, IoT Hub doručí zprávu do tohoto koncového bodu pouze jednou. Proto není nutné konfigurace odstranění duplicitních dat na frontu služby Service Bus nebo téma. V dělené fronty oddílu spřažení záruky pořadí zpráv. Pomocí tohoto kurzu se dozvíte, jak [konfigurace směrování zpráv](tutorial-routing.md).
+Definuje služby IoT Hub [běžný formát](iot-hub-devguide-messages-construct.md) pro všechna zařízení cloud zasílání zpráv pro interoperabilitu mezi protokoly. Pokud zpráva odpovídá několik tras, které odkazují na stejný koncový bod, IoT Hub doručí zprávu do tohoto koncového bodu pouze jednou. Proto není nutné konfigurace odstranění duplicitních dat na frontu služby Service Bus nebo téma. V dělené fronty oddílu spřažení záruky pořadí zpráv. Pomocí tohoto kurzu se dozvíte, jak [konfigurace směrování zpráv](tutorial-routing.md).
 
 ## <a name="routing-endpoints"></a>Směrování koncových bodů
 

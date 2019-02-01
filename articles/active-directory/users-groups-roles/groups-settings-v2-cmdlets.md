@@ -1,30 +1,29 @@
 ---
-title: Příklady prostředí PowerShell pro správu skupin ve službě Azure Active Directory | Dokumentace Microsoftu
+title: Příklady prostředí PowerShell pro správu skupin – Azure Active Directory | Dokumentace Microsoftu
 description: Tato stránka obsahuje příklady prostředí PowerShell vám pomohou při správě skupin v Azure Active Directory
 keywords: Prostředí PowerShell Azure AD, Azure Active Directory, Správa skupin, skupin
 services: active-directory
-documentationcenter: ''
 author: curtand
 manager: mtillman
-editor: ''
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: article
-ms.date: 06/07/2018
+ms.date: 01/31/2019
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
-ms.openlocfilehash: 9cb496ad1ad679fd3a4e6f55f15f658f084e308a
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 99facedec04eeb2f1626d502b89f3e8c60d07424
+ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55176331"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55512036"
 ---
 # <a name="azure-active-directory-version-2-cmdlets-for-group-management"></a>Rutiny verze 2 Azure Active Directory pro správu skupin
+
 > [!div class="op_single_selector"]
-> * [Azure Portal](../fundamentals/active-directory-groups-create-azure-portal.md)
+> * [Azure Portal](../fundamentals/active-directory-groups-create-azure-portal.md?context=azure/active-directory/users-groups-roles/context/ugr-context)
 > * [PowerShell](groups-settings-v2-cmdlets.md)
 >
 >
@@ -267,5 +266,5 @@ Když skupina se vytvoří, jisti, že koncové body povolí koncovému uživate
 ## <a name="next-steps"></a>Další postup
 Můžete najít další dokumentaci k Azure Active Directory PowerShell na [rutiny Azure Active Directory](/powershell/azure/install-adv2?view=azureadps-2.0).
 
-* [Správa přístupu k prostředkům pomocí skupin služby Azure Active Directory](../fundamentals/active-directory-manage-groups.md)
-* [Integrování místních identit do služby Azure Active Directory](../hybrid/whatis-hybrid-identity.md)
+* [Správa přístupu k prostředkům pomocí skupin služby Azure Active Directory](../fundamentals/active-directory-manage-groups.md?context=azure/active-directory/users-groups-roles/context/ugr-context)
+* [Integrování místních identit do služby Azure Active Directory](../hybrid/whatis-hybrid-identity.md?context=azure/active-directory/users-groups-roles/context/ugr-context)

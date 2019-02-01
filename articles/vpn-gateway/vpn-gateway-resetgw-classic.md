@@ -16,11 +16,11 @@ ms.workload: infrastructure-services
 ms.date: 05/24/2017
 ms.author: cherylmc
 ms.openlocfilehash: 72e990516ce6ae3276c6db6f12d1a5dda4d0386f
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54432502"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55509435"
 ---
 # <a name="reset-a-vpn-gateway"></a>Resetování brány VPN Gateway
 

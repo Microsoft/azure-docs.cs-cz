@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 08/16/2018
 ms.author: jdial
 ms.custom: include file
-ms.openlocfilehash: 3a7c91f4a83cd69bdb87ffaccce555b04eca67cc
-ms.sourcegitcommit: 0fc99ab4fbc6922064fc27d64161be6072896b21
+ms.openlocfilehash: 0394d1cc44dae270682691e2091543e5aab321f6
+ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51597590"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55513956"
 ---
 <a name="virtual-networking-limits-classic"></a>Následující omezení platí pouze pro síťové prostředky spravované přes model nasazení Classic na předplatné. Zjistěte, jak [zobrazit aktuální využití prostředků pro vaše předplatné omezení](../articles/networking/check-usage-against-limits.md).
 
@@ -48,6 +48,7 @@ Následující omezení platí pouze pro síťové prostředky spravované přes
 | Servery DNS na virtuální síť |20 |
 | Privátní IP adresy na virtuální síť |65536 |
 | Privátní IP adresy na síťové rozhraní |256 |
+| Privátní IP adresy na virtuální počítač |256 |
 | Souběžné TCP nebo UDP toky pro síťové rozhraní virtuálního počítače nebo role instance |500 000 |
 | Síťová rozhraní (NIC) |65536 |
 | Skupiny zabezpečení sítě (NSG) |5000 |
@@ -68,7 +69,8 @@ Následující omezení platí pouze pro síťové prostředky spravované přes
 | --- | --- | --- |
 | Veřejné IP adresy – dynamická |1000 (základní) |kontaktovat podporu |
 | Veřejné IP adresy – statické |200 (základní) |kontaktovat podporu |
-| Veřejné IP adresy – statické |200 (standard) |kontaktovat podporu |
+| Veřejné IP adresy – statické |(Standard) 200 |kontaktovat podporu |
+| Velikost veřejného předpony IP (preview) | /28 | /28 |
 
 #### <a name="load-balancer"></a>Omezení nástroje pro vyrovnávání zatížení
 Následující omezení platí pouze pro síťové prostředky spravované přes Azure Resource Manager na oblast a předplatné. Zjistěte, jak [zobrazit aktuální využití prostředků pro vaše předplatné omezení](../articles/networking/check-usage-against-limits.md)

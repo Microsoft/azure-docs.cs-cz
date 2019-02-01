@@ -11,12 +11,12 @@ author: mx-iao
 ms.reviewer: sgilley
 ms.date: 09/24/2018
 ms.custom: seodec18
-ms.openlocfilehash: a4960f3e29011948ec30fbc24222d8a6dccf6b8a
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 74ee7c4bf041edff559c6026f92418a496959556
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55252111"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55485853"
 ---
 # <a name="access-data-during-training-from-your-datastores"></a>Přístup k datům během školení od vašeho úložiště
 Úložiště dat se používají pro přístup a interagování s daty v pracovních postupech Azure Machine Learning.
@@ -76,8 +76,8 @@ ds = Datastore.get(ws, datastore_name='your datastore name')
 
 Můžete také získat všechna úložiště dat pro pracovní prostor:
 ```Python
-datastores = ws.datastores()
-for name, ds in datastores.items(),
+datastores = ws.datastores
+for name, ds in datastores.items():
     print(name, ds.datastore_type)
 ```
 

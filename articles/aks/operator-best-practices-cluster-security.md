@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: iainfou
-ms.openlocfilehash: 0c12136fb0c866ceebf83f6352a33b7e2791ad0f
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: d9ce2661fbdca0a28f917e27e27a3e3f954a9999
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53717207"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55488372"
 ---
 # <a name="best-practices-for-cluster-security-and-upgrades-in-azure-kubernetes-service-aks"></a>Osvědčené postupy pro zabezpečení clusteru a inovace ve službě Azure Kubernetes Service (AKS)
 
@@ -51,6 +51,9 @@ Další informace o integraci služby Azure AD a RBAC najdete v tématu [osvěd�
 Stejným způsobem, že byste měli udělit uživatelům nebo skupinám nejmenší počet oprávnění vyžadovaných, kontejnery by měla být omezené jenom na akce a procesy, které potřebují. Chcete-li minimalizovat riziko útoku, nekonfigurujte aplikací a kontejnerů, které vyžadují eskalované oprávnění nebo kořenový přístup. Například nastavte `allowPrivilegeEscalation: false` v manifestu pod. Tyto *pod kontexty zabezpečení* jsou integrované do Kubernetes a vám umožňují definovat další oprávnění, jako je například uživatel nebo skupina spustit jako, nebo jaké možnosti Linux ke zveřejnění. Osvědčené postupy, najdete v článku [pod zabezpečený přístup k prostředkům][pod-security-contexts].
 
 Pro podrobnější řízení kontejneru akcí, můžete použít také integrované funkce zabezpečení systému Linux, jako *AppArmor* a *seccomp*. Tyto funkce jsou definovány na úrovni uzlu a pak implementované pomocí pod manifestu.
+
+> [!NOTE]
+> Prostředí Kubernetes v AKS nebo jinde, nejsou zcela bezpečný pro použití v nehostinném prostředí více tenantů. Další bezpečnostní funkce, jako *AppArmor*, *seccomp*, *zásady zabezpečení Pod*, nebo další prvky velice přesně kontrolovat přístup na základě rolí (RBAC) pro uzly zneužití obtížnější. True zabezpečení při spouštění úloh v nehostinném prostředí více tenantů, je hypervisor pouze úroveň zabezpečení, které byste měli věřit. Domény zabezpečení pro Kubernetes se změní celý cluster, nikoli jednotlivých uzlů. Pro tyto typy úloh nehostinném prostředí více tenantů měli byste použít fyzicky izolované clustery.
 
 ### <a name="app-armor"></a>Armor aplikace
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 09/28/2017
 ms.author: alkohli
-ms.openlocfilehash: 727cf523f2a505729377f36738657fc5489134a7
-ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
+ms.openlocfilehash: 18fceca51ed67f5beca344160a73ae3f3d1a4b62
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50025986"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55491650"
 ---
 # <a name="use-the-storsimple-device-manager-service-to-modify-your-storsimple-device-configuration"></a>Upravit konfiguraci zařízení StorSimple pomocí služby Správce zařízení StorSimple
 
@@ -65,7 +65,7 @@ Zařízení musí synchronizovat čas, aby bylo možné ověřit pomocí poskyto
 
  Z rozevíracího seznamu vyberte časové pásmo. Můžete zadat až dva servery Protokol NTP (Network Time):
 
- - **Primární server NTP** – konfigurace je povinná a je zadaný při konfiguraci zařízení pomocí Windows Powershellu pro StorSimple. Můžete určit výchozí systému Windows Server **time.windows.com** jako váš server NTP. Primární konfiguraci serveru NTP. na webu Azure portal můžete zobrazit, ale musíte použít rozhraní Windows PowerShell ho změnit. Použití `Set-HcsNTPClientServerAddress` rutiny změnit primární NTP server vašeho zařízení. Další informace najdete v části synxtax pro [Set-HcsNTPClientServerAddress](https://technet.microsoft.com/library/dn688138.aspx) rutiny.
+ - **Primární server NTP** – konfigurace je povinná a je zadaný při konfiguraci zařízení pomocí Windows Powershellu pro StorSimple. Můžete určit výchozí systému Windows Server **time.windows.com** jako váš server NTP. Primární konfiguraci serveru NTP. na webu Azure portal můžete zobrazit, ale musíte použít rozhraní Windows PowerShell ho změnit. Použití `Set-HcsNTPClientServerAddress` rutiny změnit primární NTP server vašeho zařízení. Další informace najdete v části Syntaxe [Set-HcsNTPClientServerAddress](https://technet.microsoft.com/library/dn688138.aspx) rutiny.
 
 - **Sekundární server NTP** – konfigurace je volitelný. Na portálu můžete použít ke konfiguraci sekundární server NTP.
 
@@ -85,7 +85,7 @@ DNS server se používá při zařízení pokusí se komunikovat se svým poskyt
 
 Pro zajištění vysoké dostupnosti je potřeba nakonfigurovat primární a sekundární servery DNS během nasazování počáteční zařízení.
 
-**Primární server DNS** – při počátečním nastavení nejprve zadat primární DNS server pomocí prostředí Windows PowerShell pro StorSimple. Primární server DNS jenom přes rozhraní Windows PowerShell můžete znovu nakonfigurovat. Použití `Set-HcsDNSClientServerAddress` rutiny změnit primární server DNS vašeho zařízení. Další informace najdete v části synxtax pro [Set-HcsDNSClientServerAddress](https://technet.microsoft.com/library/dn688138.aspx) rutiny.
+**Primární server DNS** – při počátečním nastavení nejprve zadat primární DNS server pomocí prostředí Windows PowerShell pro StorSimple. Primární server DNS jenom přes rozhraní Windows PowerShell můžete znovu nakonfigurovat. Použití `Set-HcsDNSClientServerAddress` rutiny změnit primární server DNS vašeho zařízení. Další informace najdete v části Syntaxe [Set-HcsDNSClientServerAddress](https://technet.microsoft.com/library/dn688138.aspx) rutiny.
 
 **Sekundární server DNS** – Chcete-li upravit sekundární server DNS, použijte `Set-HcsDNSClientServerAddress` rutiny v prostředí Windows PowerShell rozhraní zařízení nebo **nastavení sítě** okno zařízení StorSimple na webu Azure Portal.
 
@@ -95,7 +95,7 @@ Pokud chcete upravit sekundární server DNS na webu Azure portal, postupujte n�
 
 2. V **nastavení** okno, přejděte na **nastavení zařízení > sítě**. Otevře **nastavení sítě** okno. Klikněte na tlačítko **nastavení DNS** dlaždici. Úprava IP adresy sekundární server DNS.
 
-    ![Upravit sekundární adderss IP serveru DNS](./media/storsimple-8000-modify-device-config/modify-secondary-dns1.png)
+    ![Upravit sekundární IP adresa serveru DNS](./media/storsimple-8000-modify-device-config/modify-secondary-dns1.png)
 
 4. Na panelu příkazů klikněte na tlačítko **Uložit** a po zobrazení výzvy k potvrzení, klikněte na tlačítko **OK**.
 

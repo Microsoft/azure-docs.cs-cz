@@ -13,16 +13,16 @@ ms.devlang: na
 ms.date: 12/06/2018
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 249356644772ae75b12f5c940ff5f9ed49b2c795
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: 877fb6807cb8a2aafe634b53630eaa30c6d7697a
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52994989"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55495526"
 ---
 # <a name="tutorial-import-sql-bacpac-files-with-azure-resource-manager-templates"></a>Kurz: Import souborů SQL BACPAC pomocí šablon Azure Resource Manageru
 
-Další informace o použití rozšíření Azure SQL Database pro import souboru BACPAC s šablonami Azure Resource Manageru. Artefakty nasazení jsou všechny soubory kromě souboru hlavní šablony, které jsou vyžadovány k dokončení nasazení. Soubor BACPAC je artefakt. V tomto kurzu vytvoříte šablonu k nasazení Azure SQL Server, SQL Database a import souboru BACPAC. Informace o nasazování rozšíření virtuálních počítačů Azure pomocí šablon Azure Resource Manageru najdete v [kurzu nasazování rozšíření virtuálních počítačů pomocí šablon Azure Resource Manageru](./resource-manager-tutorial-deploy-vm-extensions.md).
+Další informace o použití rozšíření Azure SQL Database pro import souboru BACPAC s šablonami Azure Resource Manageru. Artefakty nasazení jsou všechny soubory kromě souboru hlavní šablony, které jsou vyžadovány k dokončení nasazení. Soubor BACPAC je artefakt. V tomto kurzu vytvoříte šablonu k nasazení Azure SQL Server, SQL Database a import souboru BACPAC. Informace o nasazení rozšíření virtuálního počítače Azure pomocí šablon Azure Resource Manageru najdete v tématu [# kurzu: Nasazení rozšíření virtuálních počítačů pomocí šablon Azure Resource Manageru](./resource-manager-tutorial-deploy-vm-extensions.md).
 
 Tento kurz se zabývá následujícími úkony:
 
@@ -35,6 +35,8 @@ Tento kurz se zabývá následujícími úkony:
 
 Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 ## <a name="prerequisites"></a>Požadavky
 
 K dokončení tohoto článku potřebujete:
@@ -45,7 +47,7 @@ K dokončení tohoto článku potřebujete:
     ```azurecli-interactive
     openssl rand -base64 32
     ```
-    Služba Azure Key Vault je určená k ochraně kryptografických klíčů a dalších tajných klíčů. Další informace najdete v [kurzu integrace služby Azure Key Vault v nasazení šablony Resource Manageru](./resource-manager-tutorial-use-key-vault.md). Zároveň doporučujeme heslo každé tři měsíce aktualizovat.
+    Služba Azure Key Vault je určená k ochraně kryptografických klíčů a dalších tajných klíčů. Další informace najdete v tématu [kurzu: Integrace Azure Key Vault v nasazení šablony Resource Manageru](./resource-manager-tutorial-use-key-vault.md). Zároveň doporučujeme heslo každé tři měsíce aktualizovat.
 
 ## <a name="prepare-a-bacpac-file"></a>Příprava souboru BACPAC
 
@@ -127,11 +129,11 @@ Přidejte dva další prostředky do šablony.
 
     Vysvětlení definice prostředku najdete v [referenčních informacích k rozšíření služby SQL Database](https://docs.microsoft.com/azure/templates/microsoft.sql/servers/databases/extensions). Tady je několik důležitých elementů:
 
-    * **dependsOn:** Prostředek rozšíření se musí vytvořit po vytvoření databáze SQL.
-    * **storageKeyType:** Typ klíče úložiště, který se má použít. Hodnota může být `StorageAccessKey` nebo `SharedAccessKey`. Vzhledem k tomu, že uvedený soubor BACPAC je sdílený v účtu služby Azure Storage s veřejným přístupem, používá se zde typ SharedAccessKey.
-    * **storageKey:** Klíč úložiště, který se má použít. Pokud je typ klíče úložiště SharedAccessKey, musí tato hodnota začínat na znak „?“.
-    * **storageUri:** Identifikátor URI úložiště, které se má použít. Pokud se rozhodnete nepoužít uvedený soubor BACPAC, musíte hodnoty aktualizovat.
-    * **administratorLoginPassword:** Heslo správce SQL. Použijte vygenerované heslo. Viz [Požadavky](#prerequisites).
+    * **dependsOn**: Rozšíření prostředků musí být vytvořeny po vytvoření databáze SQL.
+    * **storageKeyType**: Typ klíče úložiště. Hodnota může být `StorageAccessKey` nebo `SharedAccessKey`. Vzhledem k tomu, že uvedený soubor BACPAC je sdílený v účtu služby Azure Storage s veřejným přístupem, používá se zde typ SharedAccessKey.
+    * **storageKey**: Klíč úložiště používat. Pokud je typ klíče úložiště SharedAccessKey, musí tato hodnota začínat na znak „?“.
+    * **storageUri**: Identifikátor uri úložiště používat. Pokud se rozhodnete nepoužít uvedený soubor BACPAC, musíte hodnoty aktualizovat.
+    * **administratorLoginPassword**: Heslo správce SQL. Použijte vygenerované heslo. Viz [Požadavky](#prerequisites).
 
 ## <a name="deploy-the-template"></a>Nasazení šablony
 
@@ -144,8 +146,8 @@ $location = Read-Host -Prompt "Enter the location (i.e. centralus)"
 $adminUsername = Read-Host -Prompt "Enter the SQL admin username"
 $adminPassword = Read-Host -Prompt "Enter the admin password" -AsSecureString
 
-New-AzureRmResourceGroup -Name $resourceGroupName -Location $location
-New-AzureRmResourceGroupDeployment -Name $deploymentName `
+New-AzResourceGroup -Name $resourceGroupName -Location $location
+New-AzResourceGroupDeployment -Name $deploymentName `
     -ResourceGroupName $resourceGroupName `
     -adminUser $adminUsername `
     -adminPassword $adminPassword `

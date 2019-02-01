@@ -1,26 +1,21 @@
 ---
-title: Doporučení Azure Advisoru výkonu | Dokumentace Microsoftu
+title: Zvýšení výkonu aplikace na platformě Azure s využitím Azure Advisoru | Dokumentace Microsoftu
 description: Použijte Advisor za účelem optimalizace výkonu všech vašich nasazení Azure.
 services: advisor
 documentationcenter: NA
 author: kasparks
-manager: carmonm
-editor: ''
-ms.assetid: ''
 ms.service: advisor
 ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: NA
-ms.date: 11/16/2016
+ms.date: 01/29/2019
 ms.author: kasparks
-ms.openlocfilehash: 3caf838fec3a5c0ab847ded85b269df7a66859e0
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.openlocfilehash: f3c6e39203fb0d864ecf952e0468959d66931e1f
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54266741"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55491575"
 ---
-# <a name="advisor-performance-recommendations"></a>Poradce doporučení k výkonu
+# <a name="improve-performance-of-azure-applications-with-azure-advisor"></a>Zvýšení výkonu aplikace na platformě Azure s využitím Azure Advisoru
 
 Doporučení Azure Advisoru výkonu zvýšit rychlost a rychlost odezvy důležitých aplikací. Doporučení k výkonu služby Advisor můžete získat **výkonu** karty řídicí panel služby Advisor.
 
@@ -49,7 +44,7 @@ Další informace o doporučeních App Services najdete v tématu [osvědčené 
 
 ## <a name="use-managed-disks-to-prevent-disk-io-throttling"></a>Chcete-li zabránit omezování disku vstupně-výstupní operace použít Managed Disks
 
-Advisor bude identifikovat virtuální počítače, které patří k účtu úložiště, která dosahuje svého cíle škálovatelnosti. Díky tomu je náchylný k omezování vstupně-výstupních operací. Advisor vám doporučí, že tyto virtuální počítače používat spravované disky, aby se zabránilo snížení výkonu.
+Advisor bude identifikovat virtuální počítače, které patří k účtu úložiště, která dosahuje svého cíle škálovatelnosti. Tato podmínka díky ty virtuální počítače náchylný k omezování vstupně-výstupních operací. Advisor vám doporučí, aby se zabránilo snížení výkonu použít Managed Disks.
 
 ## <a name="improve-the-performance-and-reliability-of-virtual-machine-disks-by-using-premium-storage"></a>Zvýšit výkon a spolehlivost disků virtuálního počítače pomocí služby Premium Storage
 
@@ -63,11 +58,11 @@ Nerovnoměrná distribuce dat může způsobit nepotřebná data pohybu nebo pro
 
 ## <a name="create-or-update-outdated-table-statistics-on-your-sql-data-warehouse-table-to-increase-query-performance"></a>Vytvořit nebo aktualizovat statistiky zastaralé tabulky na tabulku SQL data warehouse ke zvýšení výkonu dotazů
 
-Advisor identifikuje tabulky, které nemají aktuální [Statistika tabulky](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-tables-statistics) a doporučuje se vytváří nebo aktualizuje statistika tabulky. Dotaz, že Optimalizátor používá aktuální statik k odhadu kardinality nebo počet řádků ve výsledku dotazu, který umožňuje optimalizátoru dotazů k vytvoření vysoce kvalitní plán dotazu pro nejrychlejší výkon služby SQL data warehouse.
+Advisor identifikuje tabulky, které nemají aktuální [Statistika tabulky](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-tables-statistics) a doporučuje se vytváří nebo aktualizuje statistika tabulky. Dotaz, že Optimalizátor používá aktuální statik k odhadu kardinality nebo počet řádků ve výsledku dotazu, který umožňuje optimalizátoru dotazů, chcete-li vytvořit plán dotazu vysoce kvalitní nejrychlejší výkon služby SQL data warehouse.
 
 ## <a name="scale-up-to-optimize-cache-utilization-on-your-sql-data-warehouse-tables-to-increase-query-performance"></a>Vertikálně navýšit kapacitu k optimalizaci využití mezipaměti v tabulkách SQL Data Warehouse ke zvýšení výkonu dotazů
 
-Azure Advisor zjišťuje, pokud má vaše služba SQL Data Warehouse vysokou mezipaměti použít procento a nízké procento úspěšnosti. To znamená vyřazení vysokou mezipaměti, což může ovlivnit výkon služby SQL Data Warehouse. Advisor navrhuje, vertikálně navýšit kapacitu služby SQL Data Warehouse k zajištění, že přidělíte dostatek kapacity mezipaměti pro vaše úlohy.
+Azure Advisor zjišťuje, pokud má vaše služba SQL Data Warehouse vysokou mezipaměti použít procento a nízké procento úspěšnosti. Tento stav indikuje vyřazení vysokou mezipaměti, což může ovlivnit výkon služby SQL Data Warehouse. Advisor navrhuje, vertikálně navýšit kapacitu služby SQL Data Warehouse k zajištění, že přidělíte dostatek kapacity mezipaměti pro vaše úlohy.
 
 ## <a name="convert-sql-data-warehouse-tables-to-replicated-tables-to-increase-query-performance"></a>Převést tabulek SQL Data Warehouse na replikované tabulky pro zvýšení výkonu dotazů
 
@@ -75,10 +70,10 @@ Advisor určí tabulek, které nejsou replikované tabulky, ale je výhodná př
 
 ## <a name="migrate-your-storage-account-to-azure-resource-manager-to-get-all-of-the-latest-azure-features"></a>Migrace účtu úložiště do Azure Resource Manageru a mějte všechny nejnovější funkce Azure
 
-Migrace účtu úložiště modelu nasazení k Azure Resource Manageru (ARM) výhod nasazení šablon, další možnosti zabezpečení a možnosti upgradu na účet GPv2 pro využití nejnovějších funkcích Azure Storage. Advisor bude identifikovat všechny samostatné účty, které používají model nasazení Classic a doporučuje migrace do modelu nasazení ARM.
+Migrace vašeho účtu úložiště modelu nasazení do Azure Resource Manageru (Resource Manager) výhod nasazení šablon, další možnosti zabezpečení a možnosti upgradu na účet GPv2 pro využití nejnovějších funkcích Azure Storage. Advisor bude identifikovat všechny samostatné účty, které používají model nasazení Classic a doporučuje migrace do modelu nasazení Resource Manager.
 
 > [!NOTE]
-> Klasických upozornění ve službě Azure Monitor je oznámena vyřadit z provozu v červnu 2019, doporučuje se upgradovat svůj účet klasického úložiště na ARM, pokud chcete zachovat výstrah funkce s novou platformu. Další informace najdete v tématu [klasického upozornění vyřazení](https://azure.microsoft.com/updates/classic-alerting-monitoring-retirement/).
+> Klasických upozornění ve službě Azure Monitor jsou naplánovány k vyřazení z provozu v červnu 2019. Doporučujeme vám upgradovat svůj účet klasického úložiště. pro použití Resource Manageru pro zachování výstrah funkce s novou platformu. Další informace najdete v tématu [klasického upozornění vyřazení](https://azure.microsoft.com/updates/classic-alerting-monitoring-retirement/).
 
 ## <a name="how-to-access-performance-recommendations-in-advisor"></a>Jak získat přístup k doporučení k výkonu v Advisoru
 

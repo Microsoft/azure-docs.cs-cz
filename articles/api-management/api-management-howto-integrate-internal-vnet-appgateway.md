@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/26/2018
 ms.author: sasolank
-ms.openlocfilehash: 6356d930b5bf909f1b209272e7367f5e2dcd5a13
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.openlocfilehash: da195f414da032b5274a9dc1a184b66094f245f2
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52444611"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55493423"
 ---
 # <a name="integrate-api-management-in-an-internal-vnet-with-application-gateway"></a>Integraci služby API Management v interní virtuální síti pomocí služby Application Gateway
 
@@ -59,13 +59,13 @@ V prvním příkladu nastavení všechna svoje rozhraní API spravují pouze v r
 
 ## <a name="what-is-required-to-create-an-integration-between-api-management-and-application-gateway"></a>Co je potřeba k vytvoření integrace mezi službami API Management a služba Application Gateway?
 
-* **Fond back-end serverů:** jde o interní virtuální IP adresu služby API Management.
+* **Fond back-end serverů:** Toto je interní virtuální IP adresa služby API Management.
 * **Nastavení fondu back-end serverů:** Každý fond má nastavení, jako je port, protokol a spřažení na základě souborů cookie. Tato nastavení se použijí na všechny servery v rámci fondu.
-* **Front-end port:** Toto je veřejný port, který se otevírá ve službě application gateway. Přenosů kontaktujících ho přesměruje na jeden back-end serverů.
-* **Naslouchací proces:** Naslouchací proces má front-end port, protokol (Http nebo Https, u těchto hodnot se rozlišují malá a velká písmena) a název certifikátu SSL (pokud se konfiguruje přesměrování zpracování SSL).
-* **Pravidlo:** pravidlo váže naslouchací proces pro fond back endového serveru.
-* **Vlastní sondy stavu:** Application Gateway, ve výchozím nastavení, použije IP adres na základě sondy zjistit, které servery v BackendAddressPool jsou aktivní. API Management, kterou služba reagovala jenom na žádosti se hlavička hostitele správná, proto testy výchozí nezdaří. Sonda stavu vlastní musí definovat tak, aby pomůže zjistit, zda služba je aktivní a předávat požadavky službě application gateway.
-* **Vlastní domény certifikáty:** z Internetu přístup k rozhraní API Management, je potřeba vytvořit mapování CNAME z jeho názvu hostitele front-endu název DNS Application Gateway. Tím se zajistí, že záhlaví názvu hostitele a certifikát odesílat Application Gateway, která je předána API Management je ten, který APIM dokáže rozpoznat jako platný. V tomto příkladu budeme používat dva certifikáty - pro back-endu a portálu pro vývojáře.  
+* **Front-endový port:** Toto je veřejný port, který se otevírá ve službě application gateway. Přenosů kontaktujících ho přesměruje na jeden back-end serverů.
+* **Naslouchací proces:** Naslouchací proces má front-end port, protokol (Http nebo Https, tyto hodnoty jsou malá a velká písmena) a název certifikátu SSL (Pokud se konfiguruje přesměrování zpracování SSL).
+* **Pravidlo:** Pravidlo váže naslouchací proces do fondu back endového serveru.
+* **Vlastní stavu testu:** Application Gateway, ve výchozím nastavení, pomocí IP adres na základě testů zjistit, které servery v BackendAddressPool jsou aktivní. API Management, kterou služba reagovala jenom na žádosti se hlavička hostitele správná, proto testy výchozí nezdaří. Sonda stavu vlastní musí definovat tak, aby pomůže zjistit, zda služba je aktivní a předávat požadavky službě application gateway.
+* **Vlastní domény certifikáty:** Pro přístup k rozhraní API správy z Internetu, musíte vytvořit mapování CNAME z jeho názvu hostitele front-endu název DNS Application Gateway. Tím se zajistí, že záhlaví názvu hostitele a certifikát odesílat Application Gateway, která je předána API Management je ten, který APIM dokáže rozpoznat jako platný. V tomto příkladu budeme používat dva certifikáty - pro back-endu a portálu pro vývojáře.  
 
 ## <a name="overview-steps"> </a> Kroků potřebných pro integraci služby API Management a služba Application Gateway
 
@@ -82,7 +82,7 @@ V prvním příkladu nastavení všechna svoje rozhraní API spravují pouze v r
 V této příručce se také zveřejňujeme **portál pro vývojáře** externí cílovým skupinám na místě přes Application Gateway. Vyžaduje další kroky k vytvoření naslouchacího procesu portál pro vývojáře, test, nastavení a pravidla. Všechny podrobnosti jsou uvedeny v příslušných kroků.
 
 > [!WARNING]
-> V nastavení popsané v portálu pro vývojáře se přistupuje prostřednictvím Application Gateway se můžete setkat s problémy s ověřováním AAD nebo od jiného výrobce.
+> Pokud používáte Azure AD nebo ověřování jiných výrobců, povolte prosím [spřažení relace na základě souborů cookie](https://docs.microsoft.com/azure/application-gateway/overview#session-affinity) funkcí ve službě Application Gateway.
 
 ## <a name="create-a-resource-group-for-resource-manager"></a>Vytvoření skupiny prostředků pro Resource Manager
 

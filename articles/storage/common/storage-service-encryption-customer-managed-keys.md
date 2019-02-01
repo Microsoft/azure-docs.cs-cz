@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 10/11/2018
 ms.author: lakasa
 ms.subservice: common
-ms.openlocfilehash: c749a9dedef3970002c4f0672ffcc67aeaea422a
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 2718c5f06bb64ccd99844e402ac69237f30c310a
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 01/31/2019
-ms.locfileid: "55457424"
+ms.locfileid: "55497787"
 ---
 # <a name="storage-service-encryption-using-customer-managed-keys-in-azure-key-vault"></a>Šifrování služby Storage pomocí klíčů spravovaných zákazníkem ve službě Azure Key Vault
 
@@ -40,7 +40,7 @@ Nejprve vytvořte účet úložiště, pokud již nemáte. Další informace naj
 
 ### <a name="step-2-enable-sse-for-blob-and-file-storage"></a>Krok 2: Povolit SSE pro úložiště objektů Blob a souborů
 
-Pokud chcete povolit SSE pomocí klíčů spravovaných zákazníkem, musí být dvě funkce ochrany klíčů obnovitelného odstranění a proveďte není vyprázdnit, povolená i ve službě Azure Key Vault. Tato nastavení Ujistěte se, že klíče nelze neúmyslně nebo úmyslně odstraněnými. Maximální doba uchování klíčů je nastavena na 90 dnů, ochraně uživatelů před útočníky nebo útoky ransomwaru.
+Pokud chcete povolit SSE pomocí klíčů spravovaných zákazníkem, musí být dvě funkce ochrany klíčů obnovitelného odstranění a proveďte není vyprázdnit, povolená i ve službě Azure Key Vault. Tato nastavení Ujistěte se, že klíče nelze neúmyslně nebo úmyslně odstranit. Maximální doba uchování klíčů je nastavena na 90 dnů, ochraně uživatelů před útočníky nebo útoky ransomwaru.
 
 Pokud chcete prostřednictvím kódu programu pro SSE povolit klíče spravované zákazníkem, můžete použít [Azure Storage Resource Provider REST API](https://docs.microsoft.com/rest/api/storagerp), [Storage Resource Provider Klientská knihovna pro .NET](https://docs.microsoft.com/dotnet/api), [ Prostředí Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview), nebo [rozhraní příkazového řádku Azure](https://docs.microsoft.com/azure/storage/storage-azure-cli).
 
@@ -174,7 +174,7 @@ SSE je povolená pro všechny účty úložiště a pro úložiště objektů Bl
 Je to účet úložiště Azure Resource Manageru? Klíče spravované zákazníkem nepodporují účty klasického úložiště. SSE pomocí klíčů spravovaných zákazníkem lze povolit pouze pro účty úložiště Resource Manageru.
 
 **Co je obnovitelné odstranění a nejsou provést odstranění? Je potřeba povolit toto nastavení používat klíče spravované zákazníkem SSE?**  
-Obnovitelné odstranění a proveďte není vyprázdnění musí být povoleno používat klíče spravované zákazníkem SSE. Tato nastavení Ujistěte se, že váš klíč není neúmyslně nebo úmyslně odstraněnými. Maximální doba uchování klíčů je nastavena na 90 dnů, ochraně uživatelů před útočníky a útoky ransomwaru. Toto nastavení nejde vypnout.
+Obnovitelné odstranění a proveďte není vyprázdnění musí být povoleno používat klíče spravované zákazníkem SSE. Tato nastavení Ujistěte se, že klíč není neúmyslně nebo úmyslně Odstraněná. Maximální doba uchování klíčů je nastavena na 90 dnů, ochraně uživatelů před útočníky a útoky ransomwaru. Toto nastavení nejde vypnout.
 
 **Je SSE pomocí klíčů spravovaných zákazníkem povolen pouze v konkrétní oblasti?**  
 SSE pomocí klíčů spravovaných zákazníkem je k dispozici ve všech oblastech pro úložiště objektů Blob v Azure a službou soubory Azure.

@@ -9,19 +9,19 @@ editor: ''
 ms.assetid: 593eaa71-17eb-4c16-8c98-43cc62987e65
 ms.service: active-directory
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 07/18/2017
 ms.subservice: hybrid
 ms.author: billmath
 ms.custom: seohack1
-ms.openlocfilehash: 44d33e687d64c7e226a20edf3fdcbbf7bcf859b3
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: d3ded429e960679b6bb252bdcec67c5a1d833ac1
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55169259"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55496002"
 ---
 # <a name="determine-directory-synchronization-requirements"></a>Určete požadavky na synchronizaci adresáře
 Synchronizace se točí kolem identity v cloudu na základě jejich identity v místním, že uživatel. Jestli použijí synchronizované účet pro ověřování nebo federovaného ověřování, uživatelé stále musíte nastavit identitu, která v cloudu.  Tato identita bude muset udržované a pravidelně aktualizuje.  Aktualizace mohou mít mnoho forem, od změn názvu pro změny hesla.  

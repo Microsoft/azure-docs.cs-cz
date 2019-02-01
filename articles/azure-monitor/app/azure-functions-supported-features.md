@@ -12,12 +12,12 @@ ms.topic: reference
 ms.date: 10/05/2018
 ms.reviewer: mbullwin
 ms.author: tilee
-ms.openlocfilehash: 06feece050835b2b9188eb702210770b44a6b49c
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: dd28bc3925b0f07a441c46a26498ef1a14c3e650
+ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55185803"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55510319"
 ---
 # <a name="application-insights-for-azure-functions-supported-features"></a>Funkce podporované Application Insights pro službu Azure Functions
 
@@ -32,6 +32,7 @@ Azure Functions nabízí [vestavěná integrace](https://docs.microsoft.com/azur
 | **Automatické shromažďování**        |                 |                   |               
 | &bull; Požadavky                     | Ano             | Ano               | 
 | &bull; Výjimky                   | Ano             | Ano               | 
+| &bull; Čítače výkonu         | Ano             |                   |
 | &bull; Závislosti                   |                   |                   |               
 | &nbsp;&nbsp;&nbsp;&mdash; HTTP      |                 | Ano               | 
 | &nbsp;&nbsp;&nbsp;&mdash; ServiceBus|                 | Ano               | 
@@ -50,6 +51,11 @@ Azure Functions nabízí [vestavěná integrace](https://docs.microsoft.com/azur
 | | | | 
 | **Konfigurovatelné**                      |                   |                   |           
 | &bull;Plně konfigurovatelné.<br/>Zobrazit [Azure Functions](https://github.com/Microsoft/ApplicationInsights-aspnetcore/issues/759#issuecomment-426687852) pokyny.<br/>Zobrazit [Asp.NET Core](https://github.com/Microsoft/ApplicationInsights-aspnetcore/wiki/Custom-Configuration) pro všechny možnosti.               |                   | Ano                   | 
+
+
+## <a name="performance-counters"></a>Čítače výkonu
+
+Automatické shromažďování čítačů výkonu fungují jenom počítače s Windows.
 
 
 ## <a name="live-metrics--secure-control-channel"></a>Živé metriky a zabezpečený kanál ovládacího prvku

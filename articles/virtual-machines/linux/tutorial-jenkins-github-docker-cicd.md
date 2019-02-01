@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 03/27/2017
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 694448f6e3c788c0c9d336e75d5df579b90137df
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: fb47654a3eb6ea45d2aebab956b555e720faef4c
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55189863"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55487111"
 ---
 # <a name="tutorial-create-a-development-infrastructure-on-a-linux-vm-in-azure-with-jenkins-github-and-docker"></a>Kurz: Vytváření vývojové infrastruktury na virtuální počítač s Linuxem v Azure pomocí Jenkinse, Githubu a Dockeru
 
@@ -160,7 +160,7 @@ Pokud chcete testovat integraci GitHubu s Jenkinsem, potvrďte změnu ve forku.
 
 Po návratu do webového uživatelského rozhraní GitHubu vyberte příslušné rozvětvené úložiště a pak vyberte soubor **index.js**. Vyberte ikonu tužky a upravte tento soubor tak, aby řádek 6 vypadal takto:
 
-```nodejs
+```javascript
 response.end("Hello World!");
 ```
 

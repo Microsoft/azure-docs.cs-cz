@@ -8,19 +8,17 @@ ms.topic: article
 ms.date: 11/28/2018
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 2c8f27c9b5b9c13cd6cb722bafb23dd19b944d27
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 77c4377afaff20e77e76c0a7389c79dfdce703ca
+ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 01/31/2019
-ms.locfileid: "55474679"
+ms.locfileid: "55509129"
 ---
 # <a name="deciding-when-to-use-azure-blobs-azure-files-or-azure-disks"></a>Rozhodování, jestli použít Azure Blobs, soubory Azure nebo Azure Disks
-
 Microsoft Azure poskytuje několik funkcí ve službě Azure Storage k ukládání a přístup k datům v cloudu. Tento článek popisuje soubory Azure, objekty BLOB a disků a pomůže vám zvolit mezi těmito funkcemi.
 
 ## <a name="scenarios"></a>Scénáře
-
 Následující tabulka porovnává souborů, objektů BLOB a disků a ukazuje ukázkové scénáře pro každý odpovídající.
 
 | Funkce | Popis | Kdy je použít |
@@ -30,7 +28,6 @@ Následující tabulka porovnává souborů, objektů BLOB a disků a ukazuje uk
 | **Disky Azure** | Nabízí klientské knihovny a [rozhraní REST](/rest/api/compute/manageddisks/disks/disks-rest-api) , který umožňuje dat trvale uložena a k němu přistupovat z připojeného virtuálního pevného disku. | Má schopnost přenést aplikace, které používají rozhraní API systému nativní soubor pro čtení a zápis dat do trvalé disky.<br/><br/>Chcete uložit data, která nevyžaduje přístup mimo virtuální počítač, ke kterému je připojený disk. |
 
 ## <a name="comparison-files-and-blobs"></a>Porovnání: Soubory a objekty BLOB
-
 Následující tabulka porovnává soubory Azure s využitím objektů BLOB Azure.  
   
 ||||  
@@ -49,7 +46,6 @@ Následující tabulka porovnává soubory Azure s využitím objektů BLOB Azur
 |Klientské knihovny|Více jazyků|Více jazyků|  
   
 ## <a name="comparison-files-and-disks"></a>Porovnání: Soubory a disky
-
 Služba soubory Azure doplňují disky Azure. Disk může být připojen pouze na jeden virtuální počítač Azure v čase. Disky jsou pevným formátem virtuální pevné disky uložené jako objekty BLOB stránky ve službě Azure Storage a se používají ve virtuálním počítači k ukládání trvalá data. Sdílené složky ve službě soubory Azure mohou být přístupné stejným způsobem jako přistupovat na místní disk (s použitím rozhraní API systému nativní soubor) a mohou být sdíleny napříč velký počet virtuálních počítačů.  
  
 Následující tabulka porovnává soubory Azure pomocí Azure Disks.  
@@ -61,14 +57,12 @@ Následující tabulka porovnává soubory Azure pomocí Azure Disks.
 |Snímků a kopírování|Ano|Ano|  
 |Konfigurace|Připojen při spuštění virtuálního počítače|Připojení po spuštění virtuálního počítače|  
 |Authentication|Integrované|Nastavit pomocí příkazu net use|  
-|Vyčištění|Automaticky|Ručně|  
 |Přístup pomocí rozhraní REST|Soubory virtuálního pevného disku není přístupný.|Soubory uložené ve sdílené složce je přístupný.|  
 |Maximální velikost|4 TB disku|5 TiB sdílené složky a 1 TiB souboru v rámci sdílené složky|  
 |Maximální počet vstupně-výstupních operací|500 IOps|1 000 IOps|  
 |Propustnost|Až 60 MiB/s na Disk|Cíl je 60 MiB/s na sdílenou složku (můžete získat vyšší pro vyšší velikosti vstupně-výstupních operací)|  
 
 ## <a name="next-steps"></a>Další postup
-
 Při rozhodování o tom, jak se vaše data ukládají a získávají, měli byste také zvážit náklady na zahrnuté. Další informace najdete v tématu [ceny za Azure Storage](https://azure.microsoft.com/pricing/details/storage/).
   
 Některé funkce protokolu SMB se nevztahují na cloudu. Další informace najdete v tématu [funkce nejsou podporovány službou Azure File](/rest/api/storageservices/features-not-supported-by-the-azure-file-service).

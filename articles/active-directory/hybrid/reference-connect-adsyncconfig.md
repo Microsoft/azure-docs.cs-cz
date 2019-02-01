@@ -8,12 +8,13 @@ ms.workload: identity
 ms.date: 01/24/2019
 ms.subservice: hybrid
 ms.author: billmath
-ms.openlocfilehash: 19b7cebd1c75e1a2bbfe34e3ab4e657051e8a6d4
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.topic: reference
+ms.openlocfilehash: 01b138fff437e41366b8442729fba89c82ed9073
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55159511"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55487961"
 ---
 # <a name="azure-ad-connect--adsyncconfig-powershell-reference"></a>Azure AD Connect:  Referenční informace prostředí PowerShell ADSyncConfig
 Následující dokumentace obsahuje referenční informace pro modul Powershellu ADSyncConfig.psm1, která je součástí služby Azure AD Connect.

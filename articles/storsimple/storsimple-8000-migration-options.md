@@ -11,14 +11,14 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 01/30/2019
+ms.date: 01/31/2019
 ms.author: alkohli
-ms.openlocfilehash: bbf1eb623232332ed025fa0806e942e638c39974
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: e3412e31ae976efc8164076b30ad61360a030db4
+ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 01/31/2019
-ms.locfileid: "55456047"
+ms.locfileid: "55511934"
 ---
 # <a name="options-to-migrate-data-from-storsimple-5000-7000-series"></a>Možnosti, jak migrovat data ze StorSimple řad 5000 – 7000 
 
@@ -29,23 +29,31 @@ StorSimple řad 5000 – 7000 dosahuje [konec podpory](https://support.microsoft
 
 ## <a name="migration-options"></a>Možnosti migrace
 
-Zákazníci, kteří používají StorSimple 5000 – 7000 series k dispozici následující možnosti:
+Zákazníci, kteří používají StorSimple řad 5000 – 7000 mají Azure nebo třetích stran možnosti.
 
-- **Možnosti Azure**:
+### <a name="azure-options"></a>Možnosti služby Azure
 
-    - **Upgrade na StorSimple řady 8000** – Upgrade na StorSimple 8000 series a proto pokračovat na platformě StorSimple.  Tento způsob upgradu zvolte vyžaduje, aby zákazníci na svých zařízeních řad 5000 – 7000 nahraďte 8000 series. Pomocí nástroje pro migraci se migrují data ze zařízení řady 5000-7000. Po úspěšném dokončení migrace zařízeních StorSimple řady 8000 nadále úroveň dat do Azure Blob Storage. 
+#### <a name="upgrade-to-storsimple-8000-series"></a>Upgrade na Storsimple řady 8000
 
-    Další informace o tom, jak migrovat data pomocí řady StorSimple 8000, přejděte na [migrovat data ze StorSimple řad 5000 – 7000 zařízení řady 8000](storsimple-8000-migrate-from-5000-7000.md).
+Upgradujte na StorSimple řady 8000 a tedy pokračovat na platformě StorSimple.  Tento způsob upgradu zvolte vyžaduje, aby zákazníci na svých zařízeních řad 5000 – 7000 nahraďte 8000 series. Pomocí nástroje pro migraci se migrují data ze zařízení řady 5000-7000. Po úspěšném dokončení migrace zařízeních StorSimple řady 8000 nadále úroveň dat do Azure Blob Storage. 
 
-    - **Migrace do Azure File Sync** – tento úplně nový možnost migrace umožňuje zákazníkům umožňuje ukládat sdílené složky organizace ve složce služby soubory Azure. Pro přístup k místnímu používání Azure File Sync (AFS) jsou pak centralizované těchto sdílených složek. AFS můžete nasadit na hostitelském Windows serveru. Skutečná data migrace je pak provést, protože hostitel kopírování nebo použití nástroj pro migraci.
+Další informace o tom, jak migrovat data pomocí řady StorSimple 8000, přejděte na [migrovat data ze StorSimple řad 5000 – 7000 zařízení řady 8000](storsimple-8000-migrate-from-5000-7000.md).
 
-    Další informace o tom, jak migrovat data do Azure File Sync, přejděte na [migrovat data ze StorSimple řad 5000 – 7000 do Azure File Sync](https://aka.ms/StorSimpleMigrationAFS).
+#### <a name="migrate-to-azure-file-sync"></a>Migrace do Azure File Sync
 
-- **Možnosti třetích stran**:
+Tento úplně nová možnost migrace umožňuje zákazníkům umožňuje ukládat sdílené složky organizace ve složce služby soubory Azure. Pro přístup k místnímu používání Azure File Sync (AFS) jsou pak centralizované těchto sdílených složek. AFS můžete nasadit na hostitelském Windows serveru. Skutečná data migrace je pak provést, protože hostitel kopírování nebo použití nástroj pro migraci.
 
-    - **Migrace na Panzura volnosti NAS** – StorSimple 5000 – 7000 Zákazníci si mohou vybrat k migraci do volného NAS Panzura chtějí uchovávat svá data v Azure. Panzura volnosti řešení poskytuje řešení NAS, která zahrnuje datová centra, pobočky, privátních a veřejných cloudech. Toto řešení umožňuje místní, hybridní a pracovní postupy dat v cloudu pro systém souborů NFS, SMB a mobilní klienty. Tato migrace podporuje Panzura a zákazníci můžou začít tím, že žádosti o podporu migrace z [Panzura webu](https://panzura.com/storsimple-migration/).
+Další informace o tom, jak migrovat data do Azure File Sync, přejděte na [migrovat data ze StorSimple řad 5000 – 7000 do Azure File Sync](https://aka.ms/StorSimpleMigrationAFS).
 
-    - **Migrace na Cohesity** -Cohesity umožňuje migrovat data z aktuální StorSimple 5000 – 7000 Cohesity datovou platformu v Azure. Datová platforma Cohesity je webové škálování softwarově definované řešení, která spojuje soubory, zálohování, objektů a virtuální počítače do jediného řešení nativní pro cloud. Po migraci datové platformy můžete spravovat, ochrana a zřídit dat a aplikací z cloudu na jádro prostřednictvím podokně ze skla. S využitím Cohesity začněte s pouhými třemi uzly. Další informace najdete na [migrace do Cohesity DataPlatform](https://info.cohesity.com/migrate-from-storsimple-to-cohesity.html).
+### <a name="third-party-options"></a>Možnosti třetích stran
+
+#### <a name="migrate-to-panzura-freedom-nas"></a>Migrace do volného Panzura NAS
+
+StorSimple 5000 – 7000 Zákazníci si mohou vybrat k migraci do volného NAS Panzura chtějí uchovávat svá data v Azure. Panzura volnosti řešení poskytuje řešení NAS, která zahrnuje datová centra, pobočky, privátních a veřejných cloudech. Toto řešení umožňuje místní, hybridní a pracovní postupy dat v cloudu pro systém souborů NFS, SMB a mobilní klienty. Tato migrace podporuje Panzura a zákazníci můžou začít tím, že žádosti o podporu migrace z [Panzura webu](https://panzura.com/storsimple-migration/).
+
+#### <a name="migrate-to-cohesity"></a>Migrace na Cohesity
+
+Cohesity umožňuje migrovat data z aktuální StorSimple 5000 – 7000 Cohesity datovou platformu v Azure. Datová platforma Cohesity je webové škálování softwarově definované řešení, která spojuje soubory, zálohování, objektů a virtuální počítače do jediného řešení nativní pro cloud. Po migraci datové platformy můžete spravovat, ochrana a zřídit dat a aplikací z cloudu na jádro prostřednictvím podokně ze skla. S využitím Cohesity začněte s pouhými třemi uzly. Další informace najdete na [migrace do Cohesity DataPlatform](https://info.cohesity.com/migrate-from-storsimple-to-cohesity.html).
 
 ## <a name="migration---frequently-asked-questions"></a>Migrace – nejčastější dotazy
 

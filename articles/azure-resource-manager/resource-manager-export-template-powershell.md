@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/23/2018
 ms.author: tomfitz
-ms.openlocfilehash: cca81bf3f5a46b32cc901a0ac6024eb7888685f7
-ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
+ms.openlocfilehash: 0313266c9e9bf7814d4581dc04d70cf80e1f8172
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/26/2019
-ms.locfileid: "55081598"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55494710"
 ---
 # <a name="export-azure-resource-manager-templates-with-powershell"></a>Export šablony Azure Resource Manageru pomocí Powershellu
 
@@ -30,6 +30,8 @@ Je důležité si uvědomit, že se dvěma různými způsoby, jak vyexportovat 
 * Můžete exportovat **vygenerovanou šablonu, která představuje aktuální stav skupiny prostředků**. Exportovaná šablona není založena na žádné šabloně, kterou jste použili k nasazení. Místo toho vytvoří šablony, která je "snímek" nebo "zálohování" skupiny prostředků. Exportovaná šablona má řadu pevně definovaných hodnot a pravděpodobně méně parametrů, než byste obvykle definovali. Tuto možnost použijte, chcete-li znovu nasadit prostředky do stejné skupiny prostředků. Tuto šablonu použít pro jiné skupiny prostředků, budete muset podstatně změnit.
 
 Tento článek ukazuje oba přístupy.
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="deploy-a-solution"></a>Nasazení řešení
 

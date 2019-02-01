@@ -2,18 +2,18 @@
 title: Azure Backup – zálohování úloh DPM pomocí Powershellu
 description: Zjistěte, jak nasadit a spravovat Azure Backup pro Data Protection Manager (DPM) pomocí Powershellu
 services: backup
-author: NKolli1
-manager: shreeshd
+author: kasinh
+manager: vvithal
 ms.service: backup
 ms.topic: conceptual
 ms.date: 1/23/2017
 ms.author: adigan
-ms.openlocfilehash: d8241385cde61647222f85c29f45bdaabd621610
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 5ef9d61e880d3252eae2d8ef924ff39a5d2f6acf
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51242921"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55497906"
 ---
 # <a name="deploy-and-manage-backup-to-azure-for-data-protection-manager-dpm-servers-using-powershell"></a>Nasazení a správa zálohování do Azure pro servery DPM (Data Protection Manager) pomocí PowerShellu
 Tento článek popisuje, jak pomocí prostředí PowerShell k instalaci Azure Backup na serveru DPM a Správa zálohování a obnovení.
@@ -39,7 +39,7 @@ Sample DPM scripts: Get-DPMSampleScript
 ## <a name="setup-and-registration"></a>Instalace a registrace
 Chcete-li začít:
 
-1. [Stáhněte si nejnovější PowerShell](https://github.com/Azure/azure-powershell/releases) (je minimální požadovaná verze: 1.0.0)
+1. [Stáhněte si nejnovější PowerShell](https://github.com/Azure/azure-powershell/releases) (minimální požadovaná verze je: 1.0.0)
 2. Povolení rutin Azure Backup přepnutím na *AzureResourceManager* režimu s použitím **Switch-AzureMode** rutinu:
 
 ```
@@ -134,8 +134,8 @@ Mezi dostupné možnosti patří:
 | /nu |Nekontrolovat aktualizace po dokončení instalace |- |
 | /d |Odinstaluje Agenta Microsoft Azure Recovery Services. |- |
 | /pH |Adresa hostitele proxy |- |
-| /Po |Číslo portu proxy serveru hostitele |- |
-| /Pu |Uživatelské jméno hostitele proxy |- |
+| /po |Číslo portu proxy serveru hostitele |- |
+| /pu |Proxy Host UserName |- |
 | /pw |Heslo pro proxy server |- |
 
 ## <a name="registering-dpm-to-a-recovery-services-vault"></a>Registrace aplikace DPM k obnovení služby úložiště
@@ -318,7 +318,7 @@ Při zálohování zdroje dat poprvé, musí aplikace DPM vytvoří počátečn�
 PS C:\> Set-DPMReplicaCreationMethod -ProtectionGroup $MPG -NOW
 ```
 ### <a name="changing-the-size-of-dpm-replica--recovery-point-volume"></a>Změna velikosti repliky aplikace DPM a svazek bodu obnovení
-Můžete také změnit velikost svazku repliky DPM a Stínová kopie svazku pomocí [Set-DPMDatasourceDiskAllocation](https://technet.microsoft.com/library/hh881618.aspx) rutiny jako v následujícím příkladu: Get-DatasourceDiskAllocation - Datasource $DS Set-DatasourceDiskAllocation - Zdroj dat $DS - protectiongroup prostředí $MPG – ruční - ReplicaArea (2 gb) – ShadowCopyArea (2 gb)
+Můžete také změnit velikost svazku repliky DPM a Stínová kopie svazku pomocí [Set-DPMDatasourceDiskAllocation](https://technet.microsoft.com/library/hh881618.aspx) rutiny jako v následujícím příkladu: Get-DatasourceDiskAllocation - Datasource $DS Set-DatasourceDiskAllocation - Datasource $DS - protectiongroup prostředí $MPG – ruční - ReplicaArea (2 gb) – ShadowCopyArea (2 gb)
 
 ### <a name="committing-the-changes-to-the-protection-group"></a>Potvrzují se změny do skupiny ochrany
 Nakonec změny musí být potvrzeny, než aplikace DPM může posloužit zálohování za novou konfiguraci skupiny ochrany. Toho lze dosáhnout pomocí [Set-DPMProtectionGroup](https://technet.microsoft.com/library/hh881758) rutiny.

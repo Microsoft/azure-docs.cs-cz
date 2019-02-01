@@ -1,5 +1,5 @@
 ---
-title: Samoobslužná služba nebo zkušební registrace ve službě Azure Active Directory | Dokumentace Microsoftu
+title: Přidání uživatelů samoobslužných služeb nebo zkušební registrace – Azure Active Directory | Dokumentace Microsoftu
 description: Použijte samoobslužnou registraci do tenanta služby Azure Active Directory (Azure AD)
 services: active-directory
 documentationcenter: ''
@@ -10,18 +10,19 @@ ms.service: active-directory
 ms.subservice: users-groups-roles
 ms.topic: article
 ms.workload: identity
-ms.date: 10/16/2018
+ms.date: 01/31/2019
 ms.author: curtand
 ms.reviewer: elkuzmen
 ms.custom: it-pro
-ms.openlocfilehash: 63ddff08b93ffa072add0e8f093e1d4e0f1aa01e
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: f02a628a55969dfbb883f53f005733482499a42b
+ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55195813"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55506766"
 ---
 # <a name="what-is-self-service-signup-for-azure-active-directory"></a>Co je Samoobslužná registrace do služby Azure Active Directory?
+
 Tento článek vysvětluje Samoobslužná registrace do služby a jak ho podporují v Azure Active Directory (Azure AD). Pokud chcete převzít kontrolu nad název domény z nespravovaného Azure AD tenanta, naleznete v tématu [převzít kontrolu nad nespravovaného adresáře jako správce](domains-admin-takeover.md).
 
 ## <a name="why-use-self-service-signup"></a>Proč používat samoobslužné registrace?

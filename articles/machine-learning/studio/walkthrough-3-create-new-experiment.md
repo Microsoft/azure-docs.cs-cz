@@ -1,8 +1,21 @@
 ---
-Název: "Krok 3: Vytvoření nového experimentu Machine Learning Studio se titleSuffix: Azure Machine Learning Studio Popis: "Krok 3 vývoj prediktivního řešení názorný postup: Vytvoření nového výukového experimentu v nástroji Azure Machine Learning Studio. "
-Services: machine learningu ms.service: ms.subservice strojového učení: studio ms.topic: článku
-
-Autor: garyericson ms.author: garye ms.custom: předchozí Autor = heatherbshapiro předchozí ms.author=hshapiro ms.date: 03/23/2017
+title: 'Krok 3: Vytvoření nového experimentu Machine Learning Studio'
+titleSuffix: Azure Machine Learning Studio
+description: 'Vývoj prediktivního řešení návod krok 3: Vytvoření nového výukového experimentu v nástroji Azure Machine Learning Studio.'
+services: machine-learning
+ms.service: machine-learning
+ms.subservice: studio
+ms.topic: article
+author: garyericson
+ms.author: garye
+ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
+ms.date: 03/23/2017
+ms.openlocfilehash: aee0370b4d1ea1bffe8e6723c14e6248ebbd808a
+ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
+ms.translationtype: MT
+ms.contentlocale: cs-CZ
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55506392"
 ---
 # <a name="walkthrough-step-3-create-a-new-azure-machine-learning-studio-experiment"></a>Krok 3 průvodce: Vytvoření nového experimentu služby Azure Machine Learning Studio
 Toto je třetí krok tohoto průvodce, [vývoj řešení prediktivní analýzy v Azure Machine Learning](walkthrough-develop-predictive-solution.md)

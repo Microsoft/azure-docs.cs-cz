@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/10/2019
 ms.author: magoedte
-ms.openlocfilehash: e3b118306b5a139ba31029bc6191368690b36666
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.openlocfilehash: e0f305d8200a6b78eb138d5a3c6d9cd99a095dbe
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54265205"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55486517"
 ---
 # <a name="unify-multiple-azure-monitor-application-insights-resources"></a>Sjednocení několik prostředků Azure monitoru Application Insights 
 Tento článek popisuje, jak dotaz a zobrazit všechna data protokolů Application Insights aplikaci na jednom místě, i když se nachází v různých předplatných Azure, jako náhrada vyřazení Application Insights Connector.  
@@ -51,7 +51,20 @@ app('Contoso-app5').requests
 >
 >Operátor analýzy je volitelné v tomto příkladu, extrahuje z vlastnosti SourceApp název aplikace. 
 
-Nyní jste připraveni používat funkce applicationsScoping v dotazu napříč prostředky. Alias funkce vrátí sjednocení žádosti ze všech definovaných aplikací. Dotazu a filtry pro chybné žádosti a vizualizuje vývoje aplikací. ![Příklad výsledky dotazů napříč](media/unify-app-resource-data/app-insights-query-results.png)
+Nyní jste připraveni používat funkce applicationsScoping v dotazu napříč prostředky:  
+
+```
+applicationsScoping 
+| where timestamp > ago(12h)
+| where success == 'False'
+| parse SourceApp with * '(' applicationName ')' * 
+| summarize count() by applicationName, bin(timestamp, 1h) 
+| render timechart
+```
+
+Alias funkce vrátí sjednocení žádosti ze všech definovaných aplikací. Dotazu a filtry pro chybné žádosti a vizualizuje vývoje aplikací.
+
+![Příklad výsledky dotazů napříč](media/unify-app-resource-data/app-insights-query-results.png)
 
 ## <a name="query-across-application-insights-resources-and-workspace-data"></a>Dotazování napříč prostředky Application Insights a pracovní prostor dat 
 Když zastavíte konektoru a nutnosti provádět dotazy za časové období, která byla oříznuta podle uchovávání dat Application Insights (90 dnů), je potřeba provést [dotazy napříč prostředky](../../azure-monitor/log-query/cross-workspace-query.md) v pracovním prostoru a Application Insights prostředky v přechodném období. To je, dokud vaše aplikace data hromadí za nové uchovávání dat Application Insights uvedených výše. Dotaz vyžaduje některé manipulace, protože schémata v Application Insights a pracovní prostor se liší. V tabulce dále v tomto oddílu zdůrazněním rozdílů schématu. 

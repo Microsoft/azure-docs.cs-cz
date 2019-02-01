@@ -11,27 +11,27 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: carlrab, bonova
 manager: craigg
-ms.date: 12/03/2018
-ms.openlocfilehash: 3186261b935d48343eab2fd818cd8ed936f41f3f
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.date: 01/31/2019
+ms.openlocfilehash: 80da1058f17b69d82d851bb38482afa0b31daac1
+ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 01/31/2019
-ms.locfileid: "55472776"
+ms.locfileid: "55508857"
 ---
 # <a name="azure-sql-database-managed-instance-t-sql-differences-from-sql-server"></a>Rozdíly ve službě Azure SQL Database Managed Instance T-SQL z SQL serveru
 
-Azure SQL Database Managed Instance poskytuje vysokou kompatibilitu díky místní SQL Server Database Engine. Většina funkcí databázový stroj SQL Server jsou podporovány ve spravované instanci. Protože stále existují určité rozdíly v syntaxi a chování, tento článek shrnuje a popisuje tyto rozdíly.
-
-- [Rozdíly v jazyce T-SQL a nepodporované funkce](#Differences)
+Azure SQL Database Managed Instance poskytuje vysokou kompatibilitu díky místní SQL Server Database Engine. Většina funkcí databázový stroj SQL Server jsou podporovány ve spravované instanci. Protože stále existují určité rozdíly v syntaxi a chování, tento článek shrnuje a popisuje tyto rozdíly. <a name="Differences"></a>
+- [Dostupnost](#availability) včetně rozdílů v [vždy na](#always-on-availability) a [zálohy](#backup),
+- [Zabezpečení](#security) včetně rozdílů v [auditování](#auditing), [certifikáty](#certificates), [pověření](#credentials), [zprostředkovatelé kryptografických služeb](#cryptographic-providers), [Přihlášení / uživatelé](#logins--users), [klíče a hlavní klíč služby služby](#service-key-and-service-master-key),
+- [Konfigurace](#configuration) včetně rozdílů v [rozšíření fondu vyrovnávací paměti](#buffer-pool-extension), [kolace](#collation), [úrovně kompatibility](#compatibility-levels),[databáze zrcadlení](#database-mirroring), [volby databáze](#database-options), [agenta systému SQL Server](#sql-server-agent), [možnosti tabulky](#tables),
+- [Funkce](#functionalities) včetně [HROMADNÉ vložení/OPENROWSET](#bulk-insert--openrowset), [CLR](#clr), [DBCC](#dbcc), [distribuované transakce](#distributed-transactions), [ Rozšířené události](#extended-events), [externí knihovny](#external-libraries), [Filestream a Filetable](#filestream-and-filetable), [sémantické vyhledávání](#full-text-semantic-search), [propojené servery](#linked-servers), [Polybase](#polybase), [replikace](#replication), [obnovení](#restore-statement), [služby Service Broker](#service-broker), [ Uložené procedury, funkce a aktivační události](#stored-procedures-functions-triggers),
 - [Funkce, které mají různé chování v Managed Instance](#Changes)
 - [Dočasná omezení a známé problémy](#Issues)
 
-## <a name="Differences"></a> Rozdíly T-SQL z SQL serveru
+## <a name="availability"></a>Dostupnost
 
-Tento oddíl shrnuje hlavní rozdíly v syntaxi T-SQL a chování mezi Managed Instance a místní SQL Server Database Engine, jakož i nepodporované funkce.
-
-### <a name="always-on-availability"></a>Dostupnosti Always On
+### <a name="always-on-availability"></a>Always On
 
 [Vysoká dostupnost](sql-database-high-availability.md) je integrovaná do Managed Instance a nemůže se dá nastavit podle uživatelů. Nejsou podporovány následující příkazy:
 
@@ -40,27 +40,6 @@ Tento oddíl shrnuje hlavní rozdíly v syntaxi T-SQL a chování mezi Managed I
 - [PŘÍKAZ ALTER AVAILABILITY GROUP](https://docs.microsoft.com/sql/t-sql/statements/alter-availability-group-transact-sql)
 - [PŘETAŽENÍ SKUPINY DOSTUPNOSTI](https://docs.microsoft.com/sql/t-sql/statements/drop-availability-group-transact-sql)
 - [SET HADR](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql-set-hadr) klauzuli [ALTER DATABASE](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql) – příkaz
-
-### <a name="auditing"></a>Auditování
-
-Hlavní rozdíly mezi auditování SQL v Managed Instance, Azure SQL Database a SQL Server v místním jsou:
-
-- Ve spravované instanci SQL Audit funguje na úrovni serveru nebo úložišti `.xel` účtu úložiště objektů blob soubory v Azure.  
-- Ve službě Azure SQL Database SQL Audit funguje na úrovni databáze.
-- V místním SQL serverem / virtuální počítač SQL Audit funguje na úrovni serveru, ale ukládá události do protokolů událostí systému a soubory.  
-  
-Relace XEvent auditování ve spravované instanci podporuje cíle úložiště objektů blob v Azure. Protokolování souborů a systému windows nejsou podporované.
-
-Klíč rozdíly v `CREATE AUDIT` syntaxe pro auditování do Azure blob storage jsou:
-
-- Novou syntaxi `TO URL` je k dispozici a umožní vám zadat adresu URL kontejneru objektů blob v Azure Storage, ve kterém `.xel` budou umístěné soubory
-- Syntaxe `TO FILE` se nepodporuje, protože Managed Instance nemá přístup ke sdílené složky Windows.
-
-Další informace naleznete v tématu:  
-
-- [VYTVOŘIT SERVER AUDIT](https://docs.microsoft.com/sql/t-sql/statements/create-server-audit-transact-sql)  
-- [PŘÍKAZ ALTER SERVER AUDIT](https://docs.microsoft.com/sql/t-sql/statements/alter-server-audit-transact-sql)
-- [Auditování](https://docs.microsoft.com/sql/relational-databases/security/auditing/sql-server-audit-database-engine)
 
 ### <a name="backup"></a>Backup
 
@@ -85,17 +64,28 @@ Omezení:
 
 Informace o zálohách pomocí jazyka T-SQL najdete v tématu [zálohování](https://docs.microsoft.com/sql/t-sql/statements/backup-transact-sql).
 
-### <a name="buffer-pool-extension"></a>Rozšíření fondu vyrovnávací paměti
+## <a name="security"></a>Zabezpečení
 
-- [Rozšíření fondu vyrovnávací paměti](https://docs.microsoft.com/sql/database-engine/configure-windows/buffer-pool-extension) se nepodporuje.
-- `ALTER SERVER CONFIGURATION SET BUFFER POOL EXTENSION` není podporováno. Zobrazit [ALTER SERVER CONFIGURATION](https://docs.microsoft.com/sql/t-sql/statements/alter-server-configuration-transact-sql).
+### <a name="auditing"></a>Auditování
 
-### <a name="bulk-insert--openrowset"></a>Příkaz Bulk insert / openrowset
+Hlavní rozdíly mezi auditování SQL v Managed Instance, Azure SQL Database a SQL Server v místním jsou:
 
-Spravovanou instanci nelze získat přístup k sdílených složek a složek Windows, tak soubory musí být importovány z úložiště objektů blob v Azure:
+- Ve spravované instanci SQL Audit funguje na úrovni serveru nebo úložišti `.xel` účtu úložiště objektů blob soubory v Azure.  
+- Ve službě Azure SQL Database SQL Audit funguje na úrovni databáze.
+- V místním SQL serverem / virtuální počítač SQL Audit funguje na úrovni serveru, ale ukládá události do protokolů událostí systému a soubory.  
+  
+Relace XEvent auditování ve spravované instanci podporuje cíle úložiště objektů blob v Azure. Protokolování souborů a systému windows nejsou podporované.
 
-- `DATASOURCE` je nutné v `BULK INSERT` příkaz při importu souborů z Azure blob storage. Zobrazit [HROMADNÉ vložení](https://docs.microsoft.com/sql/t-sql/statements/bulk-insert-transact-sql).
-- `DATASOURCE` je nutné v `OPENROWSET` fungovat-li si přečíst obsah souboru z úložiště objektů blob v Azure. Zobrazit [OPENROWSET](https://docs.microsoft.com/sql/t-sql/functions/openrowset-transact-sql).
+Klíč rozdíly v `CREATE AUDIT` syntaxe pro auditování do Azure blob storage jsou:
+
+- Novou syntaxi `TO URL` je k dispozici a umožní vám zadat adresu URL kontejneru objektů blob v Azure Storage, ve kterém `.xel` budou umístěné soubory
+- Syntaxe `TO FILE` se nepodporuje, protože Managed Instance nemá přístup ke sdílené složky Windows.
+
+Další informace naleznete v tématu:  
+
+- [VYTVOŘIT SERVER AUDIT](https://docs.microsoft.com/sql/t-sql/statements/create-server-audit-transact-sql)  
+- [PŘÍKAZ ALTER SERVER AUDIT](https://docs.microsoft.com/sql/t-sql/statements/alter-server-audit-transact-sql)
+- [Auditování](https://docs.microsoft.com/sql/relational-databases/security/auditing/sql-server-audit-database-engine)
 
 ### <a name="certificates"></a>Certifikáty
 
@@ -114,22 +104,6 @@ CREATE CERTIFICATE
 WITH PRIVATE KEY (<private_key_options>)
 ```
 
-### <a name="clr"></a>CLR
-
-Spravovaná instance nemá přístup ke sdíleným složkám a složkám Windows, proto platí následující omezení:
-
-- Pouze `CREATE ASSEMBLY FROM BINARY` je podporována. Zobrazit [vytvořit sestavení z binární](https://docs.microsoft.com/sql/t-sql/statements/create-assembly-transact-sql).  
-- `CREATE ASSEMBLY FROM FILE` není podporováno. Zobrazit [vytvořit sestavení ze souboru](https://docs.microsoft.com/sql/t-sql/statements/create-assembly-transact-sql).
-- `ALTER ASSEMBLY` nemůže odkazovat na soubory. Zobrazit [změna sestavení](https://docs.microsoft.com/sql/t-sql/statements/alter-assembly-transact-sql).
-
-### <a name="compatibility-levels"></a>Úrovně kompatibility
-
-- Úrovně kompatibility podporované jsou: 100, 110, 120, 130, 140  
-- Nejsou podporované úrovně kompatibility nižší než 100.
-- Výchozí úroveň kompatibility pro nové databáze je 140. Pro obnovenou databází zůstane beze změny úrovní kompatibility i pokud se jednalo o 100 a vyšší.
-
-Zobrazit [úroveň kompatibility ALTER DATABASE](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql-compatibility-level).
-
 ### <a name="credential"></a>Přihlašovací údaj
 
 Pouze Azure Key Vault a `SHARED ACCESS SIGNATURE` identity podporují. Uživatelé Windows se nepodporují.
@@ -143,9 +117,48 @@ Spravovaná Instance nemají přístup k souborům, proto nelze vytvořit zprost
 - `CREATE CRYPTOGRAPHIC PROVIDER` není podporováno. Zobrazit [vytvořit zprostředkovatele KRYPTOGRAFICKÝCH služeb](https://docs.microsoft.com/sql/t-sql/statements/create-cryptographic-provider-transact-sql).
 - `ALTER CRYPTOGRAPHIC PROVIDER` není podporováno. Zobrazit [Změna zprostředkovatele KRYPTOGRAFICKÝCH služeb](https://docs.microsoft.com/sql/t-sql/statements/alter-cryptographic-provider-transact-sql).
 
+### <a name="logins--users"></a>Přihlášení / uživatelé
+
+- Vytvoření přihlášení SQL `FROM CERTIFICATE`, `FROM ASYMMETRIC KEY`, a `FROM SID` jsou podporovány. Zobrazit [vytvořit přihlášení](https://docs.microsoft.com/sql/t-sql/statements/create-login-transact-sql).
+- Vytvořené pomocí Azure Active Directory (AAD) přihlášení [CREATE LOGIN](https://docs.microsoft.com/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current) syntaxe nebo [vytvořit uživatele](https://docs.microsoft.com/sql/t-sql/statements/create-user-transact-sql?view=azuresqldb-mi-current) syntaxe jsou podporovány (**ve verzi public preview**).
+- Přihlašovací údaje Windows vytvořené pomocí `CREATE LOGIN ... FROM WINDOWS` syntaxe nejsou podporovány. Pomocí přihlašovacích údajů Azure Active Directory a uživatelů.
+- Azure Active Directory (Azure AD) uživatele, který vytvořil instanci má [neomezená oprávnění správce](sql-database-manage-logins.md#unrestricted-administrative-accounts).
+- Je možné vytvářet uživatelé bez oprávnění správce služby Azure Active Directory (Azure AD) úrovni databáze pomocí `CREATE USER ... FROM EXTERNAL PROVIDER` syntaxe. Zobrazit [vytvořit uživatele... EXTERNÍ ZPROSTŘEDKOVATELE](sql-database-manage-logins.md#non-administrator-users)
+
+### <a name="service-key-and-service-master-key"></a>Služby a klíče hlavní klíč služby
+
+- [Záloha hlavního klíče](https://docs.microsoft.com/sql/t-sql/statements/backup-master-key-transact-sql) se nepodporuje (spravované službou SQL Database)
+- [Obnovení hlavního klíče](https://docs.microsoft.com/sql/t-sql/statements/restore-master-key-transact-sql) se nepodporuje (spravované službou SQL Database)
+- [Záloha hlavního klíče služby](https://docs.microsoft.com/sql/t-sql/statements/backup-service-master-key-transact-sql) se nepodporuje (spravované službou SQL Database)
+- [Obnovení hlavního klíče služby](https://docs.microsoft.com/sql/t-sql/statements/restore-service-master-key-transact-sql) se nepodporuje (spravované službou SQL Database)
+
+## <a name="configuration"></a>Konfigurace
+
+### <a name="buffer-pool-extension"></a>Rozšíření fondu vyrovnávací paměti
+
+- [Rozšíření fondu vyrovnávací paměti](https://docs.microsoft.com/sql/database-engine/configure-windows/buffer-pool-extension) se nepodporuje.
+- `ALTER SERVER CONFIGURATION SET BUFFER POOL EXTENSION` není podporováno. Zobrazit [ALTER SERVER CONFIGURATION](https://docs.microsoft.com/sql/t-sql/statements/alter-server-configuration-transact-sql).
+
 ### <a name="collation"></a>Kolace
 
 Je výchozí kolace instance `SQL_Latin1_General_CP1_CI_AS` a je možné zadat jako parametr vytváření. Zobrazit [kolace](https://docs.microsoft.com/sql/t-sql/statements/collations).
+
+### <a name="compatibility-levels"></a>Úrovně kompatibility
+
+- Úrovně kompatibility podporované jsou: 100, 110, 120, 130, 140  
+- Nejsou podporované úrovně kompatibility nižší než 100.
+- Výchozí úroveň kompatibility pro nové databáze je 140. Pro obnovenou databází zůstane beze změny úrovní kompatibility i pokud se jednalo o 100 a vyšší.
+
+Zobrazit [úroveň kompatibility ALTER DATABASE](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql-compatibility-level).
+
+### <a name="database-mirroring"></a>Zrcadlení databáze
+
+Zrcadlení databáze se nepodporuje.
+
+- `ALTER DATABASE SET PARTNER` a `SET WITNESS` možnosti nejsou podporovány.
+- `CREATE ENDPOINT … FOR DATABASE_MIRRORING` není podporováno.
+
+Další informace najdete v tématu [ALTER DATABASE SET PARTNER a SET WITNESS](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql-database-mirroring) a [vytvořit koncový bod... PRO DATABASE_MIRRORING](https://docs.microsoft.com/sql/t-sql/statements/create-endpoint-transact-sql).
 
 ### <a name="database-options"></a>Možnosti databáze
 
@@ -209,14 +222,68 @@ Upravit název není podporován.
 
 Další informace najdete v tématu [ALTER DATABASE](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql-file-and-filegroup-options).
 
-### <a name="database-mirroring"></a>Zrcadlení databáze
+### <a name="sql-server-agent"></a>Agent SQL Server
 
-Zrcadlení databáze se nepodporuje.
+- Nastavení agenta SQL jsou jen pro čtení. Postup `sp_set_agent_properties` není ve spravované instanci podporováno.  
+- Úlohy
+  - Podporují se kroky úlohy T-SQL.
+  - Podporují se následující úlohy replikace:
+    - Čtečky protokolů transakcí.  
+    - Pořízení snímku.
+    - Distributor
+  - Kroky úlohy služby SSIS se podporují.
+  - Jiné druhy kroky úlohy se aktuálně nepodporují, včetně:
+    - Krok úlohy slučovací replikace nepodporuje.  
+    - Čtečky fronty se nepodporuje.  
+    - Příkazové okno se ještě nepodporuje.
+  - Spravovaná Instance nelze přístup k externím prostředkům (například sdílené síťové složky prostřednictvím nástroje robocopy).  
+  - Prostředí PowerShell se ještě nepodporuje.
+  - Analysis Services nejsou podporovány.
+- Jsou podporovány jen částečně oznámení
+- E-mailových oznámení je podporováno, vyžaduje konfiguraci profil databázového e-mailu. Může existovat pouze jedna databáze profil e-mailu a musí být volána `AzureManagedInstance_dbmail_profile` ve verzi public preview (dočasné omezení).  
+  - Operátor není podporován.  
+  - Příkazu není podporován.
+  - Výstrahy se ještě nepodporuje.
+  - Nepodporuje proxy servery.  
+- Protokol událostí se nepodporuje.
 
-- `ALTER DATABASE SET PARTNER` a `SET WITNESS` možnosti nejsou podporovány.
-- `CREATE ENDPOINT … FOR DATABASE_MIRRORING` není podporováno.
+Následující funkce nejsou aktuálně podporovány, ale bude v budoucnu povoleno:
 
-Další informace najdete v tématu [ALTER DATABASE SET PARTNER a SET WITNESS](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql-database-mirroring) a [vytvořit koncový bod... PRO DATABASE_MIRRORING](https://docs.microsoft.com/sql/t-sql/statements/create-endpoint-transact-sql).
+- Proxy
+- Plánování úloh na nečinnosti procesoru
+- Povolení nebo zakázání agenta
+- Výstrahy
+
+Informace o agenta systému SQL Server najdete v tématu [agenta systému SQL Server](https://docs.microsoft.com/sql/ssms/agent/sql-server-agent).
+
+### <a name="tables"></a>Tabulky
+
+Není podporované toto:
+
+- `FILESTREAM`
+- `FILETABLE`
+- `EXTERNAL TABLE`
+- `MEMORY_OPTIMIZED`  
+
+Informace o vytváření a změny tabulek naleznete v tématu [CREATE TABLE](https://docs.microsoft.com/sql/t-sql/statements/create-table-transact-sql) a [ALTER TABLE](https://docs.microsoft.com/sql/t-sql/statements/alter-table-transact-sql).
+
+## <a name="functionalities"></a>Funkce
+
+### <a name="bulk-insert--openrowset"></a>Příkaz Bulk insert / openrowset
+
+Spravovanou instanci nelze získat přístup k sdílených složek a složek Windows, tak soubory musí být importovány z úložiště objektů blob v Azure:
+
+- `DATASOURCE` je nutné v `BULK INSERT` příkaz při importu souborů z Azure blob storage. Zobrazit [HROMADNÉ vložení](https://docs.microsoft.com/sql/t-sql/statements/bulk-insert-transact-sql).
+- `DATASOURCE` je nutné v `OPENROWSET` fungovat-li si přečíst obsah souboru z úložiště objektů blob v Azure. Zobrazit [OPENROWSET](https://docs.microsoft.com/sql/t-sql/functions/openrowset-transact-sql).
+
+### <a name="clr"></a>CLR
+
+Spravovaná instance nemá přístup ke sdíleným složkám a složkám Windows, proto platí následující omezení:
+
+- Pouze `CREATE ASSEMBLY FROM BINARY` je podporována. Zobrazit [vytvořit sestavení z binární](https://docs.microsoft.com/sql/t-sql/statements/create-assembly-transact-sql).  
+- `CREATE ASSEMBLY FROM FILE` není podporováno. Zobrazit [vytvořit sestavení ze souboru](https://docs.microsoft.com/sql/t-sql/statements/create-assembly-transact-sql).
+- `ALTER ASSEMBLY` nemůže odkazovat na soubory. Zobrazit [změna sestavení](https://docs.microsoft.com/sql/t-sql/statements/alter-assembly-transact-sql).
+
 
 ### <a name="dbcc"></a>DBCC
 
@@ -274,14 +341,6 @@ Operace
 - `OPENROWSET` funkci můžete použít k provádění dotazů pouze na instancích systému SQL Server (buď spravovaných, místně nebo ve virtuálních počítačích). Zobrazit [OPENROWSET](https://docs.microsoft.com/sql/t-sql/functions/openrowset-transact-sql).
 - `OPENDATASOURCE` funkci můžete použít k provádění dotazů pouze na instancích systému SQL Server (buď spravovaných, místně nebo ve virtuálních počítačích). Pouze `SQLNCLI`, `SQLNCLI11`, a `SQLOLEDB` hodnoty jsou podporovány jako zprostředkovatel. Například: `SELECT * FROM OPENDATASOURCE('SQLNCLI', '...').AdventureWorks2012.HumanResources.Employee`. Zobrazit [OPENDATASOURCE](https://docs.microsoft.com/sql/t-sql/functions/opendatasource-transact-sql).
 
-### <a name="logins--users"></a>Přihlášení / uživatelé
-
-- Vytvoření přihlášení SQL `FROM CERTIFICATE`, `FROM ASYMMETRIC KEY`, a `FROM SID` jsou podporovány. Zobrazit [vytvořit přihlášení](https://docs.microsoft.com/sql/t-sql/statements/create-login-transact-sql).
-- Vytvořené pomocí Azure Active Directory (AAD) přihlášení [CREATE LOGIN](https://docs.microsoft.com/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current) syntaxe nebo [vytvořit uživatele](https://docs.microsoft.com/sql/t-sql/statements/create-user-transact-sql?view=azuresqldb-mi-current) syntaxe jsou podporovány (**ve verzi public preview**).
-- Přihlašovací údaje Windows vytvořené pomocí `CREATE LOGIN ... FROM WINDOWS` syntaxe nejsou podporovány. Pomocí přihlašovacích údajů Azure Active Directory a uživatelů.
-- Azure Active Directory (Azure AD) uživatele, který vytvořil instanci má [neomezená oprávnění správce](sql-database-manage-logins.md#unrestricted-administrative-accounts).
-- Je možné vytvářet uživatelé bez oprávnění správce služby Azure Active Directory (Azure AD) úrovni databáze pomocí `CREATE USER ... FROM EXTERNAL PROVIDER` syntaxe. Zobrazit [vytvořit uživatele... EXTERNÍ ZPROSTŘEDKOVATELE](sql-database-manage-logins.md#non-administrator-users)
-
 ### <a name="polybase"></a>Polybase
 
 Odkazování na soubory v HDFS nebo Azure blob storage externí tabulky nejsou podporovány. Informace o Polybase najdete v tématu [Polybase](https://docs.microsoft.com/sql/relational-databases/polybase/polybase-guide).
@@ -337,13 +396,6 @@ Různé instance služby Service broker se nepodporuje:
 - `CREATE ROUTE` – nemůžete použít `CREATE ROUTE` s `ADDRESS` jiné než `LOCAL`. Zobrazit [TRASY vytvořit](https://docs.microsoft.com/sql/t-sql/statements/create-route-transact-sql).
 - `ALTER ROUTE` nelze `ALTER ROUTE` s `ADDRESS` jiné než `LOCAL`. Zobrazit [TRASY ALTER](https://docs.microsoft.com/sql/t-sql/statements/alter-route-transact-sql).  
 
-### <a name="service-key-and-service-master-key"></a>Služby a klíče hlavní klíč služby
-
-- [Záloha hlavního klíče](https://docs.microsoft.com/sql/t-sql/statements/backup-master-key-transact-sql) se nepodporuje (spravované službou SQL Database)
-- [Obnovení hlavního klíče](https://docs.microsoft.com/sql/t-sql/statements/restore-master-key-transact-sql) se nepodporuje (spravované službou SQL Database)
-- [Záloha hlavního klíče služby](https://docs.microsoft.com/sql/t-sql/statements/backup-service-master-key-transact-sql) se nepodporuje (spravované službou SQL Database)
-- [Obnovení hlavního klíče služby](https://docs.microsoft.com/sql/t-sql/statements/restore-service-master-key-transact-sql) se nepodporuje (spravované službou SQL Database)
-
 ### <a name="stored-procedures-functions-triggers"></a>Uložené procedury, funkce, aktivační události
 
 - `NATIVE_COMPILATION` není aktuálně podporováno.
@@ -359,51 +411,6 @@ Různé instance služby Service broker se nepodporuje:
 - `Extended stored procedures` nejsou podporované. zahrnuje `sp_addextendedproc`  a `sp_dropextendedproc`. Zobrazit [rozšířené uložené procedury](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/general-extended-stored-procedures-transact-sql)
 - `sp_attach_db`, `sp_attach_single_file_db`, a `sp_detach_db` nejsou podporovány. Zobrazit [sp_attach_db](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-attach-db-transact-sql), [sp_attach_single_file_db](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-attach-single-file-db-transact-sql), a [sp_detach_db](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-detach-db-transact-sql).
 - `sp_renamedb` není podporováno. Zobrazit [sp_renamedb](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-renamedb-transact-sql).
-
-### <a name="sql-server-agent"></a>Agent SQL Server
-
-- Nastavení agenta SQL jsou jen pro čtení. Postup `sp_set_agent_properties` není ve spravované instanci podporováno.  
-- Úlohy
-  - Podporují se kroky úlohy T-SQL.
-  - Podporují se následující úlohy replikace:
-    - Čtečky protokolů transakcí.  
-    - Pořízení snímku.
-    - Distributor
-  - Kroky úlohy služby SSIS se podporují.
-  - Jiné druhy kroky úlohy se aktuálně nepodporují, včetně:
-    - Krok úlohy slučovací replikace nepodporuje.  
-    - Čtečky fronty se nepodporuje.  
-    - Příkazové okno se ještě nepodporuje.
-  - Spravovaná Instance nelze přístup k externím prostředkům (například sdílené síťové složky prostřednictvím nástroje robocopy).  
-  - Prostředí PowerShell se ještě nepodporuje.
-  - Analysis Services nejsou podporovány.
-- Jsou podporovány jen částečně oznámení
-- E-mailových oznámení je podporováno, vyžaduje konfiguraci profil databázového e-mailu. Může existovat pouze jedna databáze profil e-mailu a musí být volána `AzureManagedInstance_dbmail_profile` ve verzi public preview (dočasné omezení).  
-  - Operátor není podporován.  
-  - Příkazu není podporován.
-  - Výstrahy se ještě nepodporuje.
-  - Nepodporuje proxy servery.  
-- Protokol událostí se nepodporuje.
-
-Následující funkce nejsou aktuálně podporovány, ale bude v budoucnu povoleno:
-
-- Proxy
-- Plánování úloh na nečinnosti procesoru
-- Povolení nebo zakázání agenta
-- Výstrahy
-
-Informace o agenta systému SQL Server najdete v tématu [agenta systému SQL Server](https://docs.microsoft.com/sql/ssms/agent/sql-server-agent).
-
-### <a name="tables"></a>Tabulky
-
-Není podporované toto:
-
-- `FILESTREAM`
-- `FILETABLE`
-- `EXTERNAL TABLE`
-- `MEMORY_OPTIMIZED`  
-
-Informace o vytváření a změny tabulek naleznete v tématu [CREATE TABLE](https://docs.microsoft.com/sql/t-sql/statements/create-table-transact-sql) a [ALTER TABLE](https://docs.microsoft.com/sql/t-sql/statements/alter-table-transact-sql).
 
 ## <a name="Changes"></a> Změny chování
 

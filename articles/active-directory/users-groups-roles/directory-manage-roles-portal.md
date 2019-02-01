@@ -1,25 +1,23 @@
 ---
-title: Zobrazte a přiřaďte oprávnění role v Azure Active Directory správce | Dokumentace Microsoftu
+title: Zobrazte a přiřaďte roli oprávnění – Azure Active Directory správce | Dokumentace Microsoftu
 description: Teď můžete zobrazit a spravovat členy role správce Azure AD na portálu. Pro ty, kteří často Spravovat přiřazení rolí.
 services: active-directory
-documentationcenter: ''
 author: curtand
 manager: mtillman
-editor: ''
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: article
-ms.date: 11/06/2018
+ms.date: 01/31/2019
 ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
-ms.openlocfilehash: 267b9f7c6dcdc994345371a0884db3c1271f56bd
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 296fd6edc7f8ca029ea78e86aa605166ba2f585d
+ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55198159"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55511067"
 ---
 # <a name="view-and-assign-administrator-roles-in-azure-active-directory"></a>Zobrazení a přiřazení rolí správce ve službě Azure Active Directory
 

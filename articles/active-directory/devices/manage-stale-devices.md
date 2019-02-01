@@ -1,6 +1,6 @@
 ---
-title: Jak spravovat životní cyklus zařízení ve službě Azure AD | Microsoft Docs
-description: Zjistěte, jak vám správa zařízení může pomoct získat kontrolu nad zařízeními, která přistupují k prostředkům ve vašem prostředí.
+title: Správa zastaralých zařízení ve službě Azure AD | Dokumentace Microsoftu
+description: V důsledku ztráty, odcizené, porušení zařízení nebo operační systém přeinstalace obvykle mít zastaralá zařízení ve vašem prostředí. Zjistěte, jak odebrat zastaralé zařízení z databáze, kterou registrovaná zařízení ve službě Azure Active Directory (Azure AD).
 services: active-directory
 documentationcenter: ''
 author: MarkusVi
@@ -13,17 +13,17 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
-ms.date: 10/03/2018
+ms.date: 01/30/2019
 ms.author: markvi
 ms.reviewer: spunukol
-ms.openlocfilehash: 20bfa4cf02c86922836a70f8885f910814eafb22
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.openlocfilehash: d6d0ee1c9a77006df2239f4e0e0457c0c0aa2c28
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55092150"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55493305"
 ---
-# <a name="how-to-manage-the-stale-devices-in-azure-ad"></a>Jak: Správa zastaralých zařízení ve službě Azure AD
+# <a name="how-to-manage-stale-devices-in-azure-ad"></a>Jak: Správa zastaralých zařízení ve službě Azure AD
 
 Registrace zařízení, která už nejsou zapotřebí, měla se kvůli dokončení jejich životního cyklu měla v ideálním případě zrušit. Avšak například kvůli ztraceným, odcizeným a poškozeným zařízením nebo přeinstalaci operačního systému zpravidla ve svém prostředí máte zastaralá zařízení. Jako správce IT budete zřejmě potřebovat nějakou metodu pro odebrání zastaralých zařízení, abyste se mohli soustředit na správu zařízení, která to opravdu potřebují.
 

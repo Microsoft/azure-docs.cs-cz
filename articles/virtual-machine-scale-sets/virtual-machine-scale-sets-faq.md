@@ -13,15 +13,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/12/2017
+ms.date: 01/30/2019
 ms.author: manayar
 ms.custom: na
-ms.openlocfilehash: 6b470bfbb97cb14ccb1f63b34218575b64e686de
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: cd8bb2bf83d71fb874b3912e98bf3790acc9d915
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54812586"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55493656"
 ---
 # <a name="azure-virtual-machine-scale-sets-faqs"></a>Azure virtual machine scale sets s nejčastější dotazy
 
@@ -61,7 +61,7 @@ Získejte odpovědi na nejčastější dotazy ohledně škálovacích sad virtu�
 
 **Otázka:** Pokud ve škálovací sadě používám několik rozšíření, je možné vynucovat určitou posloupnost provádění?
 
-**Odpověď:** Ne přímo, ale u rozšíření customScript by váš skript mohl čekat na dokončení jiného rozšíření. Další pokyny k nastavení pořadí rozšíření najdete v blogovém příspěvku o [nastavení pořadí rozšíření ve škálovacích sadách virtuálních počítačů Azure](https://msftstack.wordpress.com/2016/05/12/extension-sequencing-in-azure-vm-scale-sets/).
+**Odpověď:** Ano, můžete použít škálovací sady [nastavení posloupnosti rozšíření](virtual-machine-scale-sets-extension-sequencing.md).
 
 **Otázka:** Spolupracují škálovací sady se skupinami dostupnosti Azure?
 
@@ -230,6 +230,7 @@ Veřejné klíče SSH ve formátu prostého textu můžete zadat při vytvářen
             }
         ]
     }
+}
 ```
 
 Název elementu linuxConfiguration | Požaduje se | Typ | Popis
@@ -392,13 +393,13 @@ Existují dva hlavní způsoby, jak změnit heslo pro virtuální počítače ve
 - Resetovat heslo pomocí rozšíření přístupu virtuálních počítačů.
 
     Použijte následující příklad PowerShellu:
-    
+
     ```powershell
     $vmssName = "myvmss"
     $vmssResourceGroup = "myvmssrg"
     $publicConfig = @{"UserName" = "newuser"}
     $privateConfig = @{"Password" = "********"}
-    
+
     $extName = "VMAccessAgent"
     $publisher = "Microsoft.Compute"
     $vmss = Get-AzureRmVmss -ResourceGroupName $vmssResourceGroup -VMScaleSetName $vmssName
@@ -630,7 +631,9 @@ Máte určitou volnost v jak zpracovávat výstrahy pro zadané prahové hodnoty
                     }
                 ]
             }
-        ],
+        ]
+    }
+}
 ```
 
 V tomto příkladu výstraha odkazuje Pagerduty.com po dosažení prahové hodnoty.

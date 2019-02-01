@@ -7,12 +7,12 @@ ms.service: storage
 ms.date: 01/02/2019
 ms.author: renash
 ms.subservice: files
-ms.openlocfilehash: b3329f591d8478499b8270eb8a211d311465b020
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 273039ec271d5d81329ab475ffd2eda82dca7b58
+ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 01/31/2019
-ms.locfileid: "55457016"
+ms.locfileid: "55511000"
 ---
 # <a name="frequently-asked-questions-faq-about-azure-files"></a>O službě soubory Azure – nejčastější dotazy (FAQ)
 [Služba soubory Azure](storage-files-introduction.md) nabízí plně spravované sdílené složky v cloudu, které jsou přístupné prostřednictvím standardních průmyslových [zprávy bloku SMB (Server) protokol](https://msdn.microsoft.com/library/windows/desktop/aa365233.aspx). Sdílené složky Azure je možné připojit současně v cloudových i místních nasazení systémů Windows, Linux a macOS. Také můžete ukládat do mezipaměti sdílených složek Azure v počítačích s Windows serverem pomocí Azure File Sync pro rychlý přístup blízko, ve kterém jsou využívány.
@@ -104,7 +104,7 @@ Tento článek obsahuje odpovědi na běžné otázky o Azure Files funkce a fun
 
 * <a id="afs-storage-redundancy"></a>
 **Je geograficky redundantní úložiště nepodporuje pro Azure File Sync?**  
-    Ano, soubory Azure podporuje místně redundantní úložiště (LRS) a geograficky redundantní úložiště (GRS). Pokud dojde k selhání GRS mezi spárovaných oblastí, doporučujeme považovat nové oblasti jako záložní kopie pouze data. Azure File Sync nezačne automaticky synchronizuje s novou primární oblasti. 
+    Ano, soubory Azure podporuje místně redundantní úložiště (LRS) a geograficky redundantní úložiště (GRS). Pokud spustíte úložiště účtu převzetí služeb při selhání mezi spárovaných oblastí z účtu nakonfigurované pro geograficky redundantní úložiště, společnost Microsoft doporučuje zpracovávat nové oblasti jako záložní kopie pouze data. Azure File Sync nezačne automaticky synchronizuje s novou primární oblasti. 
 
 * <a id="sizeondisk-versus-size"></a>
 **Proč není *velikost na disku* vlastnost souboru shody *velikost* vlastnost po použití Azure File Sync?**  
@@ -116,7 +116,6 @@ Tento článek obsahuje odpovědi na běžné otázky o Azure Files funkce a fun
 
 * <a id="afs-recall-file"></a>**Soubor, který chcete použít zřízeny vrstvené. Jak můžete odvolat soubor na disk používat místně?**  
  Zobrazit [vrstvení cloudu Principy](storage-sync-cloud-tiering.md#afs-recall-file).
-
 
 * <a id="afs-force-tiering"></a>
 **Jak vynutit soubor nebo adresář vrstvený?**  
@@ -149,7 +148,7 @@ Tento článek obsahuje odpovědi na běžné otázky o Azure Files funkce a fun
 
 * <a id="afs-tiered-files-out-of-endpoint"></a>
 **Proč vrstvené soubory existují mimo obor názvů koncový bod serveru?**  
-    Azure File Sync starší než verze agenta Azure File Sync 3, zablokuje přesunutí vrstvených souborů mimo koncový bod serveru, ale na stejném svazku jako koncový bod serveru. Operace kopírování, přesune mimo vrstvené soubory a přesune z vrstveného na jiných svazků byla poškozena. Důvod pro toto chování je implicitní předpoklad, které mají Průzkumníka souborů a jiných rozhraní Windows API, operace na stejném svazku jsou (téměř), že operace přejmenování instanenous se přesunou. To znamená, že přejde způsobí, že Průzkumníka souborů nebo jiné metody move (například příkazového řádku nebo Powershellu) zobrazí reagovat, zatímco Azure File Sync vrátí data z cloudu. Počínaje [verze agenta Azure File Sync 3.0.12.0](storage-files-release-notes.md#supported-versions), Azure File Sync vám umožní přesunout vrstvených sdílených mimo koncový bod serveru. Můžeme vyhnout negativní důsledky už jsme zmínili, což vrstvených sdílených existovat jako vrstvených sdílených mimo koncový bod serveru a pak vrací soubor na pozadí. To znamená, že, který přesune na stejném svazku se instaneous a jsme udělal všechnu práci vrátit soubor na disk po dokončení přesunutí. 
+    Azure File Sync starší než verze agenta Azure File Sync 3, zablokuje přesunutí vrstvených souborů mimo koncový bod serveru, ale na stejném svazku jako koncový bod serveru. Operace kopírování, přesune mimo vrstvené soubory a přesune z vrstveného na jiných svazků byla poškozena. Důvod pro toto chování se operace přejmenování je implicitní předpoklad, že Průzkumník souborů a jiných rozhraní API Windows mají správnost (téměř) okamžité operací přesunu na stejném svazku. To znamená, že přejde způsobí, že Průzkumníka souborů nebo jiné metody move (například příkazového řádku nebo Powershellu) zobrazí reagovat, zatímco Azure File Sync vrátí data z cloudu. Počínaje [verze agenta Azure File Sync 3.0.12.0](storage-files-release-notes.md#supported-versions), Azure File Sync vám umožní přesunout vrstvených sdílených mimo koncový bod serveru. Můžeme vyhnout negativní důsledky už jsme zmínili, což vrstvených sdílených existovat jako vrstvených sdílených mimo koncový bod serveru a pak vrací soubor na pozadí. To znamená, že, který přesune na stejném svazku se okamžité a jsme udělal všechnu práci vrátit soubor na disk po dokončení přesunutí. 
 
 * <a id="afs-do-not-delete-server-endpoint"></a>
 **Mám potíže s Azure File Sync na serveru (synchronizace, cloudových vrstev, etc). By měla odebrat a znovu vytvořte koncový bod pro tento server?**  

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 02/20/2018
 ms.author: abshamsft
-ms.openlocfilehash: 1ba1f11029e98f6bf324466627c465507829dc4d
-ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
+ms.openlocfilehash: 0a364724c72a7bd6dd75dd9720e2e966d07ff297
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54229842"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55496329"
 ---
 # <a name="network-performance-monitor-solution-in-azure"></a>Network Performance Monitor řešení v Azure
 
@@ -37,7 +37,7 @@ Network Performance Monitor nabízí tři různé možnosti:
 
     Tato funkce umožňuje provádět testy založené na protokolu HTTP, HTTPS, TCP a ICMP monitorování v téměř reálném čase nebo v minulosti dostupnost a dobu odezvy služby. Také můžete monitorovat příspěvku v ztrátu paketů a latenci sítě. Pomocí mapy topologie sítě můžete izolovat zpomalení sítě. Můžete identifikovat problém míst, ke kterým dochází na síťové cestě z uzlu do služby s daty čekací doba na každého směrování. Pomocí integrovaných testů můžete monitorovat síťové připojení k Office 365 a Dynamics CRM, bez jakékoli přednastavení. Díky této funkci můžete monitorovat připojení k síti do koncového bodu TCP podporuje, například z webů, aplikací SaaS, PaaS aplikací nebo databází SQL.
 
-* [Monitorování ExpressRoute](network-performance-monitor-expressroute.md): Přes Azure ExpressRoute můžete monitorovat připojení a výkon mezi vašimi pobočkami a Azure.  
+* [ExpressRoute Monitor](network-performance-monitor-expressroute.md): Přes Azure ExpressRoute můžete monitorovat připojení a výkon mezi vašimi pobočkami a Azure.  
 
 Další informace o různých možnostech nepodporuje [Network Performance Monitor](https://docs.microsoft.com/azure/networking/network-monitoring-overview) je k dispozici online.
  
@@ -59,7 +59,7 @@ Seznam podporovaných oblastí pro monitorování ExpressRoute je k dispozici v 
 
 ### <a name="install-and-configure-agents"></a>Instalace a konfigurace agentů 
 
-Můžete nainstalovat agenty na základních procesů [počítače Windows se připojit ke službě Azure Log Analytics](../../azure-monitor/platform/om-agents.md) a [připojení Operations Manageru k Log Analytics](../../azure-monitor/platform/om-agents.md).
+Můžete nainstalovat agenty na základních procesů [počítače Windows se připojit ke službě Azure Log Analytics](../../azure-monitor/platform/agent-windows.md) a [připojení Operations Manageru k Log Analytics](../../azure-monitor/platform/om-agents.md).
 
 ### <a name="where-to-install-the-agents"></a>Kam chcete nainstalovat agenty 
 
@@ -69,7 +69,7 @@ Můžete nainstalovat agenty na základních procesů [počítače Windows se p�
 
 * **Monitorování připojení služby**: Instalace agenta Log Analytics na každém uzlu, ze kterého chcete monitorovat síťové připojení ke koncovému bodu služby. Příkladem je, pokud chcete monitorovat síťové připojení k Office 365 z webů office s popisky O1, O2 a O3. Nainstalujte agenta Log Analytics na alespoň jeden uzel v O1, O2 a O3. 
 
-* **Monitorování ExpressRoute**: Nainstalujte alespoň jednoho agenta Log Analytics ve službě Azure virtual network. Také nainstalujte alespoň jednoho agenta do místní podsítě, která je připojená přes privátní partnerský vztah ExpressRoute.  
+* **ExpressRoute Monitor**: Nainstalujte alespoň jednoho agenta Log Analytics ve službě Azure virtual network. Také nainstalujte alespoň jednoho agenta do místní podsítě, která je připojená přes privátní partnerský vztah ExpressRoute.  
 
 ### <a name="configure-log-analytics-agents-for-monitoring"></a>Konfigurace agentů Log Analytics pro monitorování 
 
@@ -117,7 +117,7 @@ Network Performance Monitor používá k monitorování výkonu sítě mezi zdro
 
    ![Zobrazení monitorování koncového bodu služby](media/network-performance-monitor/npm-service-endpoint-monitor.png)
 
-   **Monitorování ExpressRoute**: Vyberte **zjistit nyní** ke zjišťování všech ExpressRoute privátní partnerské vztahy, které jsou připojené k virtuálním sítím v Azure předplatné propojené s tímto pracovním prostorem Log Analytics. 
+   **ExpressRoute Monitor**: Vyberte **zjistit nyní** ke zjišťování všech ExpressRoute privátní partnerské vztahy, které jsou připojené k virtuálním sítím v Azure předplatné propojené s tímto pracovním prostorem Log Analytics. 
 
    >[!NOTE] 
    > Řešení aktuálně zjišťuje pouze privátní partnerské vztahy ExpressRoute. 
@@ -159,7 +159,7 @@ Konfigurace možností, které chcete, aby:
 
 - [Sledování výkonu](network-performance-monitor-performance-monitor.md#configuration)
 - [Monitorování koncového bodu služby](network-performance-monitor-performance-monitor.md#configuration)
-- [Monitorování ExpressRoute](network-performance-monitor-expressroute.md#configuration)
+- [ExpressRoute Monitor](network-performance-monitor-expressroute.md#configuration)
 
  
 
@@ -193,7 +193,7 @@ Po povolení řešení Network Performance Monitor řešení na dlaždici **pře
 
 * **Nejčastější události stavu sítě**: Tato stránka obsahuje seznam nejaktuálnějších událostí stavu a výstrahy v systému a čas, protože byla aktivní události. Událost stavu nebo výstraha je vygenerována vždy, když hodnotu vybrané metriky (ztráty, latence, dobu odezvy nebo využití šířky pásma) pro pravidlo monitorování překročí prahovou hodnotu. 
 
-* **Monitorování ExpressRoute**: Tato stránka obsahuje souhrny stavů pro různá připojení s partnerským vztahem ExpressRoute řešení monitorování. **Topologie** dlaždici se zobrazuje počet síťových cest prostřednictvím okruhů ExpressRoute, které jsou monitorovány ve vaší síti. Vyberte tuto dlaždici a přejděte tak **topologie** zobrazení.
+* **ExpressRoute Monitor**: Tato stránka obsahuje souhrny stavů pro různá připojení s partnerským vztahem ExpressRoute řešení monitorování. **Topologie** dlaždici se zobrazuje počet síťových cest prostřednictvím okruhů ExpressRoute, které jsou monitorovány ve vaší síti. Vyberte tuto dlaždici a přejděte tak **topologie** zobrazení.
 
 * **Monitorování připojení služby**: Tato stránka obsahuje souhrny stavů pro různé testy, které jste vytvořili. **Topologie** dlaždice ukazuje počet koncových bodů, které jsou monitorovány. Vyberte tuto dlaždici a přejděte tak **topologie** zobrazení.
 

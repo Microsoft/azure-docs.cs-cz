@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 06/29/2017
 ms.author: muralikk
 ms.subservice: common
-ms.openlocfilehash: cdcb7dbe726582e525b401bfa765ccc423928610
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 7645694e9f2b90bfbe26ac3d0747791570f32d1b
+ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 01/31/2019
-ms.locfileid: "55454398"
+ms.locfileid: "55510132"
 ---
 # <a name="preparing-hard-drives-for-an-import-job"></a>Příprava pevných disků pro úlohu importu
 
@@ -81,7 +81,7 @@ BasePath,DstBlobPathOrPrefix,BlobType,Disposition,MetadataFile,PropertiesFile
 | BasePath | **[Povinné]**<br/>Hodnota tohoto parametru představuje zdroj, kde se nachází data, která mají být importována. Nástroj se rekurzivně kopírovat všechna data nachází v rámci této cesty.<br><br/>**Povolené hodnoty**: To musí být platná cesta na místním počítači nebo cestu ke sdílené složce platný a musí být přístupné pro uživatele. Cesta k adresáři musí být absolutní cesta (nikoli relativní cestu). Pokud cesta končí "\\", představuje jiný adresář cesty končí bez"\\" představuje soubor.<br/>V tomto poli je povolený žádný regulární výraz. Pokud cesta obsahuje mezery, vložit ho do "".<br><br/>**Příklad**: "c:\Directory\c\Directory\File.txt"<br>"\\\\FBaseFilesharePath.domain.net\sharename\directory\"  |
 | DstBlobPathOrPrefix | **[Povinné]**<br/> Cesta k cílové virtuální adresář ve vašem účtu úložiště Windows Azure. Virtuální adresář může nebo nemusí již existují. Pokud neexistuje, služba Import/Export ho vytvoří.<br/><br/>Nezapomeňte použít názvy platný kontejner při zadání cílové virtuální adresáře nebo objekty BLOB. Uvědomte si, že názvy kontejnerů musí obsahovat malá písmena. Pravidla pojmenování kontejneru, naleznete v tématu [pojmenování a odkazování na kontejnerů, objektů BLOB a metadat](/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata). Pokud pouze root není zadána, struktura adresářů zdroje jsou replikovány v cílový kontejner objektů blob. Pokud struktura jiný adresář než ten, který ve zdroji více řádků mapování ve sdíleném svazku clusteru<br/><br/>Můžete zadat kontejner nebo objekt blob předpony jako je hudba/70s /. Cílový adresář musí začínat název kontejneru, za nímž následuje lomítko "/" a může volitelně zahrnovat blob virtuální adresář, který končí na "/".<br/><br/>Pokud cílový kontejner je kořenový kontejner, je nutné explicitně zadat kořenový kontejner, včetně lomítka jako $root /. Protože objekty BLOB v kořenovém kontejneru nemůže obsahovat "/" v jejich názvy, nebude všech podadresářích ve zdrojovém adresáři kopírovat, pokud cílový adresář je kořenový kontejner.<br/><br/>**Příklad**<br/>Pokud je cesta k cílovému objektu blob https://mystorageaccount.blob.core.windows.net/video, hodnota tohoto pole může být videa /  |
 | BlobType | **[Volitelné]**  bloku &#124; stránky<br/>Služba Import/Export momentálně podporuje 2 typy objektů BLOB. Stránka objekty BLOB a výchozí BlobsBy bloku, které budou importovány všechny soubory jako objekty BLOB bloku. A \*VHD a \*.vhdx se naimportují, jak BlobsThere stránky, je omezený na objekt blob bloku a povolenou velikost stránky – objekt blob. Zobrazit [cíle škálovatelnosti úložiště](storage-scalability-targets.md) Další informace.  |
-| Dispozice | **[Volitelné]**  přejmenovat &#124; přepsat bez &#124; přepsat <br/> Toto pole určuje chování kopírování během importu tj Když se nahrávaných dat do účtu úložiště z disku. Dostupné možnosti: přejmenování&#124;přepsal&#124;přepsat č. Výchozí hodnota je "přejmenovat", pokud není nic zadané. <br/><br/>**Přejmenovat**: Pokud se nachází objekt se stejným názvem, vytvoří kopii v cílovém umístění.<br/>Přepsat: soubor novější soubor přepíše. Soubor se last-modified wins.<br/>**No-overwrite**: Přeskakuje se zápis souboru, pokud je již k dispozici.|
+| Dispozice | **[Volitelné]**  přejmenovat &#124; přepsat bez &#124; přepsat <br/> Toto pole určuje chování kopírování během importu tj Když se nahrávaných dat do účtu úložiště z disku. Dostupné možnosti: přejmenování&#124;přepsat&#124;přepsat č. Výchozí hodnota je "přejmenovat", pokud není nic zadané. <br/><br/>**Přejmenovat**: Pokud se nachází objekt se stejným názvem, vytvoří kopii v cílovém umístění.<br/>Přepsat: soubor novější soubor přepíše. Soubor se last-modified wins.<br/>**No-overwrite**: Přeskakuje se zápis souboru, pokud je již k dispozici.|
 | MetadataFile | **[Volitelné]** <br/>Hodnota, která má toto pole je soubor metadat, které lze zadat, pokud je potřeba zachovat metadata objektů nebo zadat vlastní metadata. Cesta k souboru metadat pro cílové objektů BLOB. Zobrazit [metadat a formát souboru vlastností služby Import/Export](../storage-import-export-file-format-metadata-and-properties.md) Další informace |
 | PropertiesFile | **[Volitelné]** <br/>Cesta k souboru vlastnost cílové objektů BLOB. Zobrazit [metadat a formát souboru vlastností služby Import/Export](../storage-import-export-file-format-metadata-and-properties.md) Další informace. |
 
@@ -319,7 +319,7 @@ Stejné relace kopie však nelze použít pro import dat do různých účtů ú
 
 Pokud název kopie relace je stejný během různých spuštění nástroje souboru protokolu (/ logdir) a klíč účtu úložiště (/ sk) také má být stejné.
 
-ID relace se může skládat z písmen, 0 ~ 9, understore (\_), pomlčky (-) nebo hodnoty hash (#), a jeho délka musí být 3 ~ 30.
+ID relace se může skládat z písmen, 0 ~ 9, podtržítko (\_), pomlčky (-) nebo hodnoty hash (#), a jeho délka musí být 3 ~ 30.
 
 například relace 1 nebo 1 nebo relaci\_1
 
@@ -388,7 +388,7 @@ I když jsou data distribuovaná napříč disky, data, když se nahraje do úč
 
 #### <a name="how-many-of-the-input-disks-will-have-active-io-in-parallel-when-copy-is-in-progress"></a>Kolik vstupu disků budou mít aktivní vstupně-výstupní operace paralelně, když probíhá kopírování?
 
-Nástroj rozděluje data mezi vstupu disků na základě velikosti vstupních souborů. Ale nutné dodat, počet aktivních disků současně zcela delends na povaze vstupní data. V závislosti na velikosti jednotlivých souborů ve vstupní sadě jeden nebo více disků se můžou zobrazovat active vstupně-výstupní operace paralelně. Podívejte se na další otázky pro další podrobnosti.
+Nástroj rozděluje data mezi vstupu disků na základě velikosti vstupních souborů. Ale nutné dodat, počet aktivních disků současně zcela závisí na povaze vstupní data. V závislosti na velikosti jednotlivých souborů ve vstupní sadě jeden nebo více disků se můžou zobrazovat active vstupně-výstupní operace paralelně. Podívejte se na další otázky pro další podrobnosti.
 
 #### <a name="how-does-the-tool-distribute-the-files-across-the-disks"></a>Jak nástroj distribuovat soubory mezi disky?
 

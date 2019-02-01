@@ -1,5 +1,5 @@
 ---
-title: 'Připojení klasických virtuálních sítí k virtuálním sítím Azure Resource Manageru: portál | Dokumentace Microsoftu'
+title: 'Připojení klasických virtuálních sítí k virtuálním sítím Azure Resource Manageru: Portál | Dokumentace Microsoftu'
 description: Postup připojení klasických virtuálních sítí k virtuálním sítím Resource Manageru pomocí VPN Gateway a na portálu
 services: vpn-gateway
 author: cherylmc
@@ -9,11 +9,11 @@ ms.workload: infrastructure-services
 ms.date: 10/17/2018
 ms.author: cherylmc
 ms.openlocfilehash: 4d2edeaf7423d3a46becf386294d2dd8c46e9ab7
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49405000"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55508330"
 ---
 # <a name="connect-virtual-networks-from-different-deployment-models-using-the-portal"></a>Připojení virtuálních sítí z různých modelů nasazení pomocí portálu
 
@@ -55,7 +55,7 @@ Místní lokalita = RMVNetLocal <br>
 
 Název virtuální sítě = RMVNet <br>
 Adresní prostor = 192.168.0.0/16 <br>
-Skupina prostředků = RG1 <br>
+Resource Group = RG1 <br>
 Umístění = USA – východ <br>
 Název podsítě Subnet-1 = <br>
 Rozsah adres = 192.168.1.0/24 <br>
@@ -137,7 +137,7 @@ V této části vytvoříte bránu virtuální sítě a bránu místní sítě p
 
 * Název virtuální sítě = RMVNet <br>
 * Adresní prostor = 192.168.0.0/16 <br>
-* Skupina prostředků = RG1 <br>
+* Resource Group = RG1 <br>
 * Umístění = USA – východ <br>
 * Název podsítě Subnet-1 = <br>
 * Rozsah adres = 192.168.1.0/24 <br>
@@ -171,7 +171,7 @@ Před vytvořením brány virtuální sítě, musíte nejprve vytvořit podsíť
 
 ### <a name="createlng"></a>4. Vytvoření brány místní sítě
 
-**Ukázkové hodnoty:** bránu místní sítě = ClassicVNetLocal
+**Ukázkové hodnoty:** Brána místní sítě = ClassicVNetLocal
 
 | Virtual Network | Adresní prostor | Oblast | Se připojí k místní síťové lokality |Veřejné IP adresy brány|
 |:--- |:--- |:--- |:--- |:--- |
@@ -261,7 +261,7 @@ Select-AzureSubscription -SubscriptionName "Name of subscription"
 
 ### <a name="2-view-the-network-configuration-file-values"></a>2. Zobrazit hodnoty soubor konfigurace sítě
 
-Při vytváření virtuální sítě na webu Azure Portal, celý název, který používá Azure není viditelný na webu Azure Portal. Například virtuální síť, která se zobrazí s názvem "ClassicVNet" na webu Azure Portal může pojmenovaný mnohem déle, v konfiguračním souboru sítě. Název může vypadat nějak takto: "Skupina ClassicRG ClassicVNet". V následujícím postupu stáhněte si soubor konfigurace sítě a zobrazit hodnoty.
+Při vytváření virtuální sítě na webu Azure Portal, celý název, který používá Azure není viditelný na webu Azure Portal. Například virtuální síť, která se zobrazí s názvem "ClassicVNet" na webu Azure Portal může pojmenovaný mnohem déle, v konfiguračním souboru sítě. Název může vypadat podobně jako: Seskupit ClassicRG ClassicVNet. V následujícím postupu stáhněte si soubor konfigurace sítě a zobrazit hodnoty.
 
 Vytvořte ve svém počítači adresář a potom do něj exportujte soubor konfigurace sítě. V tomto příkladu se soubor konfigurace sítě exportuje do adresáře C:\AzureNet.
 

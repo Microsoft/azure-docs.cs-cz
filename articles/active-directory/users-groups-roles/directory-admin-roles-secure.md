@@ -1,24 +1,24 @@
 ---
-title: Osvědčené postupy pro zabezpečení přístupu pro správu ve službě Azure AD | Dokumentace Microsoftu
+title: Osvědčené postupy pro zabezpečení přístupu správce – Azure Active Directory | Dokumentace Microsoftu
 description: Zajistěte, aby byly zabezpečené účty správců přístup a správce vaší organizace. Pro systémové architekty a IT profesionály, kteří konfigurují služby Azure AD Azure a Microsoft Online Services.
 services: active-directory
 keywords: ''
 author: curtand
 manager: mtillman
 ms.author: curtand
-ms.date: 06/25/2018
+ms.date: 01/31/2019
 ms.topic: article
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.custom: it-pro
-ms.reviewer: martincoetzer, MarkMorow
-ms.openlocfilehash: ba7baf41a1753625ee3e97acde1d954e914545bb
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.reviewer: martincoetzer; MarkMorow
+ms.openlocfilehash: 327ea929b5825abb448cb13b1bd0cbfa5681521c
+ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55190764"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55512495"
 ---
 # <a name="securing-privileged-access-for-hybrid-and-cloud-deployments-in-azure-ad"></a>Zabezpečení privilegovaného přístupu pro hybridní a cloudové nasazení ve službě Azure AD
 

@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 10/16/2018
 ms.author: iainfou
-ms.openlocfilehash: e29b94f270b295725400103f288f3d3bd0c2a2eb
-ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
+ms.openlocfilehash: 7f031bf6fed57857f38d989fb72f99dd93f04de5
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49380944"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55489219"
 ---
 # <a name="security-concepts-for-applications-and-clusters-in-azure-kubernetes-service-aks"></a>Koncepty zabezpečení pro aplikace a clustery ve službě Azure Kubernetes Service (AKS)
 
@@ -28,7 +28,7 @@ Tento článek představuje základní koncepty, které zabezpečení aplikací 
 
 ## <a name="master-security"></a>Hlavní zabezpečení
 
-Hlavní součásti Kubernetes v AKS, jsou součástí spravované služby poskytuje Moje Microsoft. Každý cluster AKS má své vlastní hlavní Kubernetes jedním klienty, vyhrazené poskytnout serveru rozhraní API, Plánovač atd. Tento hlavní je spravovaný a udržovaný microsoftem
+Hlavní součásti Kubernetes ve službě AKS, jsou součástí spravované služby poskytované společností Microsoft. Každý cluster AKS má své vlastní hlavní Kubernetes jedním klienty, vyhrazené poskytnout serveru rozhraní API, Plánovač atd. Tento hlavní je spravovaný a udržovaný microsoftem
 
 Ve výchozím nastavení na serveru Kubernetes API používá veřejnou IP adresu a s plně kvalifikovaný název (plně kvalifikovaný název domény). Můžete řídit přístup k rozhraní API serveru pomocí řízení přístupu na základě rolí Kubernetes a Azure Active Directory. Další informace najdete v tématu [integrace Azure AD s AKS][aks-aad].
 
@@ -41,6 +41,8 @@ Platforma Azure automaticky použije opravy zabezpečení operačního systému 
 Uzly jsou nasazené do privátní virtuální síť podsíť s žádné veřejné IP adresy přiřazené. Pro účely řešení potíží a správu SSH ve výchozím nastavení zapnutá. Tento přístup přes SSH je dostupný pouze pomocí interní IP adresa. Pro další omezení přístupu rozsah IP pro uzly AKS. je možné pravidla skupiny zabezpečení sítě Azure. Odstraňuje se pravidlo výchozí skupiny zabezpečení sítě SSH a zakázat službu SSH na uzlech brání v provádění úloh údržby na platformě Azure.
 
 K poskytování úložiště, uzly pomocí Azure Managed Disks. Pro většinu velikostí virtuálních počítačů uzel jsou založená na jednotkách SSD výkonné disky úrovně Premium. Data uložená na spravovaných discích se automaticky šifrují při nečinnosti v rámci platformy Azure. Ke zlepšení redundance, jsou zároveň se bezpečně tyto disky replikovat v rámci datového centra Azure.
+
+Prostředí Kubernetes v AKS nebo jinde, aktuálně nejsou zcela bezpečný pro použití v nehostinném prostředí více tenantů. Další bezpečnostní funkce, jako *zásady zabezpečení Pod* nebo další prvky velice přesně kontrolovat přístup na základě rolí (RBAC) pro uzly ztížit zneužití. True zabezpečení při spouštění úloh v nehostinném prostředí více tenantů, je hypervisor pouze úroveň zabezpečení, které byste měli věřit. Domény zabezpečení pro Kubernetes se změní celý cluster, nikoli jednotlivých uzlů. Pro tyto typy úloh nehostinném prostředí více tenantů měli byste použít fyzicky izolované clustery. Další informace o způsobech k izolaci úloh najdete v tématu [osvědčené postupy pro zajištění izolace clusteru ve službě AKS][cluster-isolation],
 
 ## <a name="cluster-upgrades"></a>Upgrade clusteru
 
@@ -96,3 +98,4 @@ Další informace o základní Kubernetes a AKS koncepty najdete v následujíc�
 [aks-concepts-scale]: concepts-scale.md
 [aks-concepts-storage]: concepts-storage.md
 [aks-concepts-network]: concepts-network.md
+[cluster-isolation]: operator-best-practices-cluster-isolation.md

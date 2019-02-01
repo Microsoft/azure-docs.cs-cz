@@ -3,7 +3,7 @@ title: Servery služby Azure SQL Database | Dokumentace Microsoftu
 description: Další informace o serverech služby Azure SQL Database a jejich správu.
 services: sql-database
 ms.service: sql-database
-ms.subservice: ''
+ms.subservice: single-database
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
@@ -12,12 +12,12 @@ ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
 ms.date: 01/25/2019
-ms.openlocfilehash: f3378c43c225152ebdcf2e92de6d4fc65c047c31
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 04c89742ac09d1581b978e3612539acb7eab2195
+ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 01/31/2019
-ms.locfileid: "55479275"
+ms.locfileid: "55511050"
 ---
 # <a name="azure-sql-database-servers-and-their-management"></a>Servery služby Azure SQL Database a jejich správa
 

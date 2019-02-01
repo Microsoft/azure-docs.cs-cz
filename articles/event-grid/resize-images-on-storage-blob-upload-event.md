@@ -12,12 +12,12 @@ ms.topic: tutorial
 ms.date: 01/29/2019
 ms.author: spelluru
 ms.custom: mvc
-ms.openlocfilehash: e19d8b1b6eb06f78908238969a4f6e90e42bb564
-ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
+ms.openlocfilehash: 6015d226bce578661816bd0f934f7818746b4c3b
+ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55301454"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55507752"
 ---
 # <a name="tutorial-automate-resizing-uploaded-images-using-event-grid"></a>Kurz: Automatizace změny velikosti nahraných obrázků s využitím služby Event Grid
 
@@ -184,8 +184,12 @@ Odběr událostí udává, které události vygenerované zprostředkovatelem ch
     | **Typy událostí** | Vytvoření objektu blob | Zrušte zaškrtnutí všech typů komě **Vytvoření objektu blob**. Do funkce se předají jenom události typu `Microsoft.Storage.BlobCreated`.| 
     | **Typ odběratele** |  automaticky generovaný |  Předdefinovaný jako webhook. |
     | **Koncový bod odběratele** | automaticky generovaný | Použijte adresu URL koncového bodu, která se vygeneruje. | 
-4. *Volitelné:* V případě, že je potřeba vytvořit další kontejnery ve stejném úložišti objektů blob pro jiné účely v budoucnu, můžete použít **na základě práv subjektů filtrování** funkce v **filtry** kartu pro podrobnější cílení na objektu blob události, aby vaše aplikace function app je volána, pouze pokud objekty BLOB jsou přidány do **imagí** kontejneru zvlášť. 
-5. Přidejte odběr událostí kliknutím na **Vytvořit**. Vytvoří se odběr událostí, která aktivuje `Thumbnail` fungovat v případě, že objekt blob se přidá do *imagí* kontejneru. Tato funkce změní velikost obrázků a přidá je do kontejneru *thumbnails*.
+4. Přepněte **filtr** kartu, a proveďte následující akce:     
+    1. Vyberte **subjektu povolit filtrování** možnost.
+    2. Pro **subjektu začíná**, zadejte následující hodnotu: **/blobServices a výchozí/kontejnery/imagí nebo objekty BLOB nebo**.
+
+        ![Zadejte filtr pro odběr události](./media/resize-images-on-storage-blob-upload-event/event-subscription-filter.png) 
+2. Vyberte **vytvořit** přidat odběr události. Vytvoří se odběr událostí, která aktivuje `Thumbnail` fungovat v případě, že objekt blob se přidá do `images` kontejneru. Tato funkce změní velikost obrázků a přidá je `thumbnails` kontejneru.
 
 Teď máte nakonfigurované back-endové služby a můžete funkci změny velikosti obrázků otestovat v ukázkové webové aplikaci. 
 

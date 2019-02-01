@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 01/07/2019
+ms.date: 01/31/2019
 ms.topic: quickstart
 ms.service: cost-management
 manager: dougeby
 ms.custom: seodec18
-ms.openlocfilehash: cb07ce71162a766add5ca251c97a11d353ee8084
-ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
+ms.openlocfilehash: 5f15a7d7a49724fda56cecd36e92cb40ced59b81
+ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54077653"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55510489"
 ---
 # <a name="quickstart-explore-and-analyze-costs-with-cost-analysis"></a>Rychlý start: Zkoumání a analýzy náklady pomocí Cost analysis
 
@@ -47,7 +47,7 @@ Analýza nákladů je dostupná pro všechny zákazníky se [smlouvou Enterprise
 
 ## <a name="review-costs-in-cost-analysis"></a>Kontrola nákladů v analýze nákladů
 
-Pokud chcete zkontrolovat náklady pomocí analýzy nákladů, přejděte na webu Azure Portal na **Správa nákladů a fakturace** &gt; **Správa nákladů** &gt; **Změnit obor**, zvolte obor a klikněte na **Vybrat**.
+Chcete-li zkontrolovat náklady s využitím analýzu nákladů na webu Azure Portal, přejděte na **Správa nákladů a fakturace** &gt; **analýza nákladů**. Vyberte **oboru: _ScopeName_**, zvolte obor a pak klikněte na tlačítko **vyberte**.
 
 Vybraný obor se použije v celé službě Cost Management k poskytování konsolidace dat a k řízení přístupu k informacím o nákladech. Při použití oborů nevybíráte více oborů. Místo toho vybrat větší rozsah, který ostatní až vrátit a pak je filtr seznamu na co chcete. To je důležité pochopit, protože někteří uživatelé neměli mít přístup, který podřízené obory vrátit až nadřazený obor.
 
@@ -94,7 +94,8 @@ Tady je zobrazení nákladů na služby Azure pro zobrazení minulého měsíce.
 
 ![Seskupené denní souhrnné zobrazení příklad náklady na služby Azure za poslední měsíc](./media/quick-acm-cost-analysis/grouped-daily-accum-view.png)
 
-Kontingenční grafy v rámci hlavní grafu zobrazit různé seskupení abyste získali širší představu o celkové náklady pro vybrané časové období a filtry. Vyberte vlastnost nebo značek zobrazíte souhrnné náklady podle dimenzí. Kompletní sadu dat pro celkový počet zobrazení je v dolní části obrazovky tak, že rozbalíte **Data** zásobník nebo tak, že vyberete **Exportovat > stáhnout CSV** v horní části obrazovky. Tady je příklad dat zásobník pro skupiny prostředků.
+Kontingenční grafy v rámci hlavní grafu zobrazit různé seskupení abyste získali širší představu o celkové náklady pro vybrané časové období a filtry. Vyberte vlastnost nebo značek zobrazíte souhrnné náklady podle dimenzí.
+
 
 ![Úplná data pro aktuální zobrazení zobrazuje názvy skupin prostředků](./media/quick-acm-cost-analysis/full-data-set.png)
 
@@ -103,6 +104,10 @@ Na předchozím obrázku jsou znázorněny názvy skupin prostředků. Zatímco 
 Při seskupování nákladů podle konkrétního atributu je zobrazeno deset nejvýznamnějších přispěvatelů k nákladům, od nejvyššího k nejnižšímu. Pokud existuje více než deset skupin, jsou uvedeny nejčastější devět nákladům přispívá. Také je jako **ostatní** skupiny, které zahrnuje všechny zbývající skupiny společně. Při seskupování podle klíčových slov, může se zobrazit také **Untagged** pro náklady, které nemají značku klíč použít. **Neoznačených** je vždy poslední, i když nejsou více neoznačených nákladů než příznakem náklady. Pokud existují deset nebo více hodnot značek, neoznačených nákladů bude součástí **ostatní**.
 
 *Klasické* virtuálních počítačů (Azure Service Management nebo ASM), sítě a prostředky úložiště Nesdílejte podrobné fakturačních údajů. Při sloučení jako **klasické služby** při seskupování náklady.
+
+Zobrazí se kompletní data pro všechna zobrazení. Jakékoli možnosti nebo filtry, které použijete vliv data zobrazí. Úplná sada dat zobrazíte kliknutím **typ grafu** seznamu a potom klikněte na tlačítko **tabulky** zobrazení.
+
+![Data pro aktuální zobrazení v tabulkovém zobrazení](./media/quick-acm-cost-analysis/chart-type-table-view.png)
 
 
 ## <a name="download-cost-analysis-data"></a>Stažení dat analýzy nákladů

@@ -6,12 +6,12 @@ ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 01/23/2019
-ms.openlocfilehash: 9270c3290bd7be0bbb79d30aff8becc04dcfc603
-ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
+ms.openlocfilehash: 017abd72b3aa1547844f977c3efda69e59901a6f
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/25/2019
-ms.locfileid: "54903991"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55487944"
 ---
 # <a name="read-replicas-in-azure-database-for-postgresql"></a>Repliky pro čtení ve službě Azure Database for PostgreSQL
 
@@ -20,7 +20,7 @@ ms.locfileid: "54903991"
 
 Funkce repliky pro čtení umožňuje replikaci dat ze serveru Azure Database for PostgreSQL server (správce) až k pěti jen pro čtení serverům (replik pro čtení) v rámci stejné oblasti Azure. Repliky pro čtení se aktualizují asynchronně pomocí technologie nativní replikace stroje PostgreSQL.
 
-Repliky jsou nové servery, které je možné spravovat podobným způsobem jako normální samostatné databáze Azure pro servery PostgreSQL. Pro každou další repliku bude vám Účtovaná zřízených výpočetních jádrech a zřízeného úložiště v GB/měsíc.
+Repliky jsou nové servery, které je možné spravovat podobným způsobem jako normální samostatné databáze Azure pro servery PostgreSQL. Za každou repliku pro čtení se vám účtuje zřízený výpočetní výkon ve virtuálních jádrech a zřízené úložiště v GB za měsíc.
 
 ## <a name="when-to-use-read-replicas"></a>Kdy použít repliky pro čtení
 Funkce repliky pro čtení je cílená na pomáhá zlepšit výkon a škálování úlohy náročné na čtení. Další úlohy, může být izolovaných replik, při zápisu úlohy mohou být přesměrováni na hlavní server.
@@ -101,7 +101,7 @@ Je možné [zjistěte, jak zastavit repliky v kompletní dokumentace postupů](h
 **Azure.replication_support** musí být nastavena na REPLIKU na hlavním serveru, než budete moct vytvořit repliky. Změna tento parametr se vyžaduje restartování serveru se projeví. Tento parametr platí jenom pro úrovně obecné účely a optimalizované pro paměť.
 
 ### <a name="stopped-replicas"></a>Zastavené repliky
-Pokud budete chtít zastavit replikaci mezi hlavní a repliky, replika se restartuje, aby tyto změny použít. Potom se ji nelze nastavit do repliky znovu.
+Pokud budete chtít zastavit replikaci mezi hlavní a replika, replika se restartuje, aby tuto změnu použít. Repliky se pak stane serveru pro čtení i zápis. Potom se ji nelze nastavit do repliky znovu.
 
 ### <a name="replicas-are-new-servers"></a>Repliky jsou nové servery
 Repliky jsou vytvořeny jako nové – Azure Database for postgresql – servery. Nelze je převést existující servery repliky.

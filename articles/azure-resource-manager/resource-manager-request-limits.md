@@ -13,14 +13,15 @@ ms.workload: na
 ms.date: 12/09/2018
 ms.author: tomfitz
 ms.custom: seodec18
-ms.openlocfilehash: 0ba4a1a4119db515e10c0b704b0a10501fe79682
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: 0a4be349bfd8ce546ee2a27c206a7bd86306c27a
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53136885"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55493554"
 ---
 # <a name="throttling-resource-manager-requests"></a>Omezování požadavků Resource Manageru
+
 Pro každé předplatné Azure a tenanta Resource Manager umožňuje až 12 000 požadavků za hodinu na čtení a zápis 1 200 žádosti za hodinu. Tato omezení jsou omezená požadavků ID objektu zabezpečení a ID předplatného nebo tenanta ID. Pokud vaše požadavky pocházejí z více než jeden ID instančního objektu, je větší než 12 000 a 1 200 za hodinu limitu vašeho předplatného nebo tenanta.
 
 Požadavky se použijí pro vaše předplatné nebo vašeho tenanta. Žádosti jsou ty zahrnují předání vašeho předplatného, ID, třeba načítání skupin prostředků ve vašem předplatném. Požadavky klientů jsou ID vašeho předplatného, třeba načítání platných umístění Azure.
@@ -30,6 +31,8 @@ Tato omezení platí pro každou instanci Azure Resource Manageru. Existuje víc
 Pokud vaše aplikace nebo skript dosáhne těchto limitů, budete muset omezení požadavků. V tomto článku se dozvíte, jak určit zbývajících požadavků, které je nutné před dosažením limitu a týkající se reakce, když jste dosáhli limitu.
 
 Pokud limit překročíte, obdržíte kód stavu HTTP **429 příliš mnoho požadavků**.
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="remaining-requests"></a>Zbývajících požadavků
 Počet zbývajících požadavků, které můžete určit tím, že kontroluje hlavičky odpovědi. Každý požadavek obsahuje hodnoty pro počet zbývajících pro čtení a požadavky na zápis. Následující tabulka popisuje hlavičky odpovědi, které můžete zkontrolovat pro tyto hodnoty:
@@ -66,7 +69,7 @@ Kompletní příklad Powershellu najdete v části [zkontrolujte omezení Resour
 Pokud chcete zobrazit zbývající požadavky pro ladění, můžete zadat **– ladění** parametr na vaši **Powershellu** rutiny.
 
 ```powershell
-Get-AzureRmResourceGroup -Debug
+Get-AzResourceGroup -Debug
 ```
 
 Který vrátí více hodnot, včetně následujících hodnota odpovědi:
@@ -85,7 +88,7 @@ x-ms-ratelimit-remaining-subscription-reads: 14999
 Zápis omezení získáte pomocí operace zápisu: 
 
 ```powershell
-New-AzureRmResourceGroup -Name myresourcegroup -Location westus -Debug
+New-AzResourceGroup -Name myresourcegroup -Location westus -Debug
 ```
 
 Který vrátí více hodnot, včetně následujících hodnot:

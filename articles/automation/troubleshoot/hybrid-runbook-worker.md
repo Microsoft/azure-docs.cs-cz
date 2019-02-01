@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 12/11/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 9f83a0cf97acfd0bed990cc832ac08eb23c29ef1
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: 5a88e1fc5395a1b935371ae9d1eb24528a87b853
+ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54434454"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55512329"
 ---
 # <a name="troubleshoot-hybrid-runbook-workers"></a>Řešení potíží s procesy Hybrid Runbook Worker
 
@@ -87,8 +87,17 @@ Hybrid Runbook Worker Linuxu závisí na agenta OMS pro Linux ke komunikaci s ú
 
 ### <a name="oms-agent-not-running"></a>Scénář: Není spuštěn Agent OMS pro Linux
 
+#### <a name="issue"></a>Problém
 
-Pokud není spuštěn Agent OMS pro Linux, zabraňuje Hybrid Runbook Worker Linuxu komunikaci s Azure Automation. Ověření, je agent spuštěn tak, že zadáte následující příkaz: `ps -ef | grep python`. Byste měli vidět výstup podobný následujícímu procesů python pomocí **nxautomation** uživatelský účet. Pokud nejsou povolené řešení Update Management nebo služby Azure Automation, žádný z následujících postupů běží.
+Není spuštěn Agent OMS pro Linux
+
+#### <a name="cause"></a>Příčina
+
+Pokud není spuštěn Agent OMS pro Linux, zabraňuje Hybrid Runbook Worker Linuxu komunikaci s Azure Automation. Agent není spuštěna z různých důvodů.
+
+#### <a name="resolution"></a>Řešení
+
+ Ověření, je agent spuštěn tak, že zadáte následující příkaz: `ps -ef | grep python`. Byste měli vidět výstup podobný následujícímu procesů python pomocí **nxautomation** uživatelský účet. Pokud nejsou povolené řešení Update Management nebo služby Azure Automation, žádný z následujících postupů běží.
 
 ```bash
 nxautom+   8567      1  0 14:45 ?        00:00:00 python /opt/microsoft/omsconfig/modules/nxOMSAutomationWorker/DSCResources/MSFT_nxOMSAutomationWorkerResource/automationworker/worker/main.py /var/opt/microsoft/omsagent/state/automationworker/oms.conf rworkspace:<workspaceId> <Linux hybrid worker version>

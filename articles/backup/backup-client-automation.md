@@ -2,18 +2,18 @@
 title: Použití Powershellu k zálohování Windows serveru do Azure
 description: Zjistěte, jak nasadit a spravovat Azure Backup pomocí Powershellu
 services: backup
-author: saurabhsensharma
+author: pvrk
 manager: shivamg
 ms.service: backup
 ms.topic: conceptual
 ms.date: 5/24/2018
-ms.author: saurse
-ms.openlocfilehash: 154d4fbb265a6abb57bc25b4e364983ffe7e399b
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.author: pvrk
+ms.openlocfilehash: d430f6252157c5d34aa236ef88f8490b4ad6a184
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51237753"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55497940"
 ---
 # <a name="deploy-and-manage-backup-to-azure-for-windows-serverwindows-client-using-powershell"></a>Nasazení a správa zálohování do Azure pro servery Windows / klienty Windows pomocí PowerShellu
 V tomto článku se dozvíte, jak pomocí prostředí PowerShell pro nastavení zálohování Azure ve Windows serveru nebo klienta Windows a Správa zálohování a obnovení.
@@ -27,7 +27,7 @@ Tento článek se zaměřuje na Azure Resource Manageru (ARM) a rutiny Powershel
 
 Pokud chcete použít skripty vytvořené pro verzi 0.9.8 prostředí v prostředí 1.0 nebo novější, měli pečlivě aktualizujete a testovat skripty v předprodukčním prostředí před jejich použitím v produkčním prostředí, aby se zabránilo neočekávaným dopad.
 
-[Stáhněte si nejnovější verzi prostředí PowerShell](https://github.com/Azure/azure-powershell/releases) (je minimální požadovaná verze: 1.0.0)
+[Stáhněte si nejnovější verzi prostředí PowerShell](https://github.com/Azure/azure-powershell/releases) (minimální požadovaná verze je: 1.0.0)
 
 [!INCLUDE [arm-getting-setup-powershell](../../includes/arm-getting-setup-powershell.md)]
 
@@ -122,8 +122,8 @@ Mezi dostupné možnosti patří:
 | /nu |Nekontrolovat aktualizace po dokončení instalace |- |
 | /d |Odinstaluje Agenta Microsoft Azure Recovery Services. |- |
 | /pH |Adresa hostitele proxy |- |
-| /Po |Číslo portu proxy serveru hostitele |- |
-| /Pu |Uživatelské jméno hostitele proxy |- |
+| /po |Číslo portu proxy serveru hostitele |- |
+| /pu |Proxy Host UserName |- |
 | /pw |Heslo pro proxy server |- |
 
 ## <a name="registering-windows-server-or-windows-client-machine-to-a-recovery-services-vault"></a>Registrace Windows serveru nebo klientského počítače Windows, do trezoru služby Recovery Services

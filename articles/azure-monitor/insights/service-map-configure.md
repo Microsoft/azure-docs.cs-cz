@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/07/2018
 ms.author: bwren
-ms.openlocfilehash: 808fe41928a99ffc797c96a02305d81765318780
-ms.sourcegitcommit: ba9f95cf821c5af8e24425fd8ce6985b998c2982
+ms.openlocfilehash: dde618de12bf23e754d2516f3b8ef27b3df5bc4e
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54381657"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55495679"
 ---
 # <a name="configure-service-map-in-azure"></a>Konfigurace řešení Service Map v Azure
 Service Map automaticky rozpozná komponenty aplikace v systémech Windows a Linux a mapuje komunikaci mezi službami. Můžete ho zobrazit servery přirozeným způsobem – propojené systémy, které doručují důležité služby. Service Map ukazuje propojení mezi servery, procesy a porty v jakékoli architektuře propojené TCP žádnou konfiguraci kromě instalace agenta vyžaduje.
@@ -387,7 +387,7 @@ Pokud vaše instalace agenta závislostí proběhla úspěšně, ale nevidíte s
 
 * Je odesílání protokolů serveru a data výkonu do Log Analytics? Přejděte na prohledávání protokolů a spusťte následující dotaz pro počítače: 
 
-    Použití | Pokud počítač == "admdemo appsvr" | shrnutí sum(Quantity) any(QuantityUnit) podle datového typu
+    Použití | Pokud počítač == "-název počítače | shrnutí sum(Quantity) any(QuantityUnit) podle datového typu
 
 Obdrželi jste různých událostí ve výsledcích? Jsou data poslední? Pokud ano, agenta Log Analytics je správně funguje a komunikovat s Log Analytics. Pokud ne, zkontrolujte agenta na serveru: [Agenta log Analytics pro řešení potíží s Windows](https://support.microsoft.com/help/3126513/how-to-troubleshoot-monitoring-onboarding-issues) nebo [agenta Log Analytics pro řešení potíží pro Linux](../../azure-monitor/platform/agent-linux-troubleshoot.md).
 

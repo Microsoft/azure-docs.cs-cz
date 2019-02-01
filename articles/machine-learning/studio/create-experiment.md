@@ -1,10 +1,22 @@
 ---
-Název: Jednoduchý experiment titleSuffix: Azure Machine Learning Studio Popis: Tento kurz Machine Learningu vás provede jednoduchým experimentem z oblasti datové vědy. Pomocí regresního algoritmu předpovíme cenu automobilu.
-Services: machine learningu ms.service: ms.subservice strojového učení: studio ms.topic: kurz
-
-Autor: garyericson ms.author: garye ms.custom: seodec18 ms.date: 03/20/2017
+title: Jednoduchý experiment
+titleSuffix: Azure Machine Learning Studio
+description: Tento kurz Machine Learningu vás provede jednoduchým experimentem z oblasti datové vědy. Pomocí regresního algoritmu předpovíme cenu automobilu.
+services: machine-learning
+ms.service: machine-learning
+ms.subservice: studio
+ms.topic: tutorial
+author: garyericson
+ms.author: garye
+ms.custom: seodec18
+ms.date: 03/20/2017
+ms.openlocfilehash: be52f5fbe6c7d282a50e53c4326478b937ea8081
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.translationtype: MT
+ms.contentlocale: cs-CZ
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55488373"
 ---
-
 # <a name="tutorial-create-your-first-data-science-experiment-in-azure-machine-learning-studio"></a>Kurz: Vytvoření prvního experimentu datové vědy v nástroji Azure Machine Learning Studio
 
 Pokud jste **Azure Machine Learning Studio** nikdy nepoužívali, je tento kurz právě pro vás.

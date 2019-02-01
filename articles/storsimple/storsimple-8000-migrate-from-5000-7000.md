@@ -13,12 +13,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/23/2018
 ms.author: alkohli
-ms.openlocfilehash: a638487fb0a622f899095989ca5341013299e181
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 967c03f3c4201bdcf1529fdda93717b6eb74e771
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51234404"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55495849"
 ---
 # <a name="migrate-data-from-storsimple-5000-7000-series-to-8000-series-device"></a>Migrovat data z StorSimple 5000 – 7000 series do zařízení 8000 series
 
@@ -26,7 +26,7 @@ ms.locfileid: "51234404"
 > - Do 31. července 2019 řady StorSimple 5000/7000 skončí jeho stavu podpory (SESTAVENÁ). Doporučujeme vám, že zákazníci řady StorSimple 5000/7000 migrace na jednu z alternativ popsané v dokumentu.
 > - Migrace se aktuálně operaci s asistencí. Pokud máte v úmyslu migrovat data ze zařízení StorSimple řad 5000 – 7000 zařízení řady 8000, budete muset naplánovat migraci do Microsoft Support. Microsoft Support vám pak umožní vaše předplatné pro migraci. Další informace najdete v tématu Jak [vytvořit lístek podpory](storsimple-8000-contact-microsoft-support.md).
 > - Poté, co je soubor žádosti o službu, může trvat několik týdnů k provedení migrace plánu a skutečně zahájit migraci.
-> - Předtím, než se obrátíte na Microsoft Support, být potřeba další a kompletní [požadavky na migraci](#migration-prerequisites) uvedeno v následujícím článku.
+> - Předtím, než se obrátíte na Microsoft Support, nezapomeňte si zkontrolujte a dokončete [požadavky na migraci](#migration-prerequisites) uvedeno v následujícím článku.
 
 ## <a name="overview"></a>Přehled
 
@@ -109,7 +109,7 @@ Nástroj pro migraci StorSimple je nástroj uživatelského rozhraní, který v�
 Počítač je připojený k Internetu a:
 
 * Používá následující operační systém
-    * Windows 10.
+    * Windows 10.
     * Windows Server 2012 R2 (nebo vyšší) Chcete-li nainstalovat nástroj pro migraci StorSimple.
 * Má nainstalované rozhraní .NET 4.5.2.
 * Má minimálně 5 GB volného místa k instalaci a použití nástroje.
@@ -125,7 +125,7 @@ Proveďte následující kroky, chcete-li nainstalovat nástroj pro migraci Stor
 
     Otevřete konfigurační soubor nástroje _StorSimple8000SeriesMigrationTool.exe.config_ ve složce. Tady je fragment kódu souboru.
     
-    ```
+    ```xml
         <add key="UserName" value="username@xyz.com" />
         <add key="SubscriptionName" value="YourSubscriptionName" />
         <add key="SubscriptionId" value="YourSubscriptionId" />

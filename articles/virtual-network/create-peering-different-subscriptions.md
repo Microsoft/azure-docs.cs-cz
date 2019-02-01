@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/24/2018
 ms.author: jdial;anavin
-ms.openlocfilehash: f06f0b5392ebb60cd852d3c2eb201478b31ae167
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 3b929c3f85bab4319fe2fef1b5c0575f0d1d972a
+ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54014960"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55511672"
 ---
 # <a name="create-a-virtual-network-peering---resource-manager-different-subscriptions"></a>Vytvoření partnerského vztahu virtuálních sítí - Resource Manageru, různá předplatná
 
@@ -72,7 +72,7 @@ Následující kroky používají různé účty pro každé předplatné. Pokud
     - **Umístění**: *USA – východ*
 
 13. V **vyhledat prostředky** pole v horní části portálu zadejte *myVnetB*. Vyberte **myVnetB** když se zobrazí ve výsledcích hledání.
-14. V části **myVnetB**vyberte **vlastnosti** z svislý seznam možností na levé straně. Kopírovat **ID prostředku**, který se používá v pozdější fázi. Podobně jako v následujícím příkladu je ID prostředku: /subscriptions/<Susbscription ID>/resourceGroups/myResoureGroupB/providers/Microsoft.ClassicNetwork/virtualNetworks/myVnetB.
+14. V části **myVnetB**vyberte **vlastnosti** z svislý seznam možností na levé straně. Kopírovat **ID prostředku**, který se používá v pozdější fázi. Podobně jako v následujícím příkladu je ID prostředku: /subscriptions/<Subscription ID>/resourceGroups/myResourceGroupB/providers/Microsoft.ClassicNetwork/virtualNetworks/myVnetB.
 15. Vyberte **řízení přístupu (IAM)** pod **myVnetB**a potom proveďte kroky 5 až 10 pro myVnetB zadávání **UserA** v kroku 8.
 16. Odhlaste se z portálu jako UserB a přihlaste se jako UserA.
 17. V **vyhledat prostředky** pole v horní části portálu zadejte *myVnetA*. Vyberte **myVnetA** když se zobrazí ve výsledcích hledání.
@@ -283,7 +283,7 @@ Pokud jsou virtuální sítě v různých předplatných, a že předplatná jso
 3. Připojte se k Azure jako UserA a nasazení pomocí šablony [portál](../azure-resource-manager/resource-group-template-deploy-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json#deploy-resources-from-custom-template), [PowerShell](../azure-resource-manager/resource-group-template-deploy.md?toc=%2fazure%2fvirtual-network%2ftoc.json#deploy-a-template-from-your-local-machine), nebo [rozhraní příkazového řádku Azure](../azure-resource-manager/resource-group-template-deploy-cli.md?toc=%2fazure%2fvirtual-network%2ftoc.json#deploy-local-template). Zadejte název souboru, který jste uložili v kroku 2 k ukázkovému textu json.
 4. Zkopírujte json příklad z kroku 2 do souboru ve vašem počítači a proveďte změny řádků, které začínají řetězcem:
     - **Název**: Změna *myVnetA/myVnetAToMyVnetB* k *myVnetB/myVnetBToMyVnetA*.
-    - **ID**: Nahraďte `<subscription ID>` s ID předplatného a změnit jeho UserB *myVnetB* k *myVnetA*.
+    - **id**: Nahraďte `<subscription ID>` s ID předplatného a změnit jeho UserB *myVnetB* k *myVnetA*.
 5. Dokončení kroku 3, přihlášení k Azure jako UserB.
 6. **Volitelné**: Když se v tomto kurzu nevztahuje vytváření virtuálních počítačů, můžete vytvoření virtuálního počítače v obou virtuálních sítích a připojit z jednoho virtuálního počítače do jiného, a ověření připojení.
 7. **Volitelné**: Odstraňte prostředky, které vytvoříte v tomto kurzu, dokončete kroky [odstraňte prostředky](#delete) části tohoto článku pomocí webu Azure portal, Powershellu nebo rozhraní příkazového řádku Azure.

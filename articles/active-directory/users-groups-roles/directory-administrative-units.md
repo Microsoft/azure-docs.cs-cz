@@ -1,5 +1,5 @@
 ---
-title: Jednotky pro správu správy ve verzi preview ve službě Azure Active Directory
+title: Správa administrativních jednotek (preview) – Azure Active Directory | Dokumentace Microsoftu
 description: Použití jednotek pro správu pro podrobnější delegování oprávnění ve službě Azure Active Directory
 services: active-directory
 documentationcenter: ''
@@ -10,19 +10,20 @@ ms.service: active-directory
 ms.topic: article
 ms.subservice: users-groups-roles
 ms.workload: identity
-ms.date: 08/17/2017
+ms.date: 01/31/2019
 ms.author: curtand
 ms.reviewer: elkuzmen
 ms.custom: oldportal;it-pro;
-ms.openlocfilehash: fe3f41e95cc3aa4f22ff2cdea24388f7e9974755
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 52b71e557ade54cdefd349b8981100210833185a
+ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55181193"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55508449"
 ---
-# <a name="administrative-units-management-in-azure-ad---public-preview"></a>Správa administrativních jednotek v Azure AD – ve verzi public preview
-Tento článek popisuje jednotky pro správu – nový kontejner služby Azure Active Directory prostředků, které lze použít pro delegování oprávnění pro správu přes podmnožiny uživatelů a použití zásady na určitou podskupinu uživatelů. Jednotky pro správu ve službě Azure Active Directory, povolte centrální správu delegovat oprávnění na místní správce nebo nastavit zásady na jemné úrovni.
+# <a name="administrative-units-management-in-azure-active-directory-public-preview"></a>Správa administrativních jednotek v Azure Active Directory (public preview)
+
+Tento článek popisuje jednotky pro správu – nový kontejner prostředků, které lze použít pro delegování oprávnění pro správu přes podmnožiny uživatelů a přiřazení zásad pro podmnožinu uživatelů Azure Active Directory (Azure AD). Jednotky pro správu ve službě Azure Active Directory, povolte centrální správu delegovat oprávnění na místní správce nebo nastavit zásady na jemné úrovni.
 
 To je užitečné v organizacích s nezávislé oddělení, třeba velký vysoké školy, která se skládá z mnoha autonomní školy (obchodní školy, inženýrství školy a tak dále), které jsou na sobě nezávislé. Takové divize mají své vlastní správce IT, kteří řízení přístupu, správu uživatelů a nastavit zásady speciálně pro jejich dělení. Centrální správci chcete mít možnost udělení těchto oddělení oprávnění správců přes uživatelům v jejich konkrétním oddělení. Přesněji řečeno v tomto příkladu centrální správce můžete, například vytvořit jednotce pro správu pro konkrétní školu (obchodní školní) a přidejte do ní pouze podnikoví uživatelé school. Jinými slovy, pak centrální správce můžete přidat obchodní školní pracovníci IT k roli s vymezeným oborem udělte pracovníků IT oprávnění správce školy firmy jenom přes organizační jednotky správce školy.
 

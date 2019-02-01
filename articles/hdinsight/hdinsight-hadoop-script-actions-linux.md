@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 04/10/2018
 ms.author: hrasheed
-ms.openlocfilehash: 9dafe7df3c488dbc6d0c2f27a6265e86eebad41c
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: b0eae86a4927f716c974086411e1098f2e9a190d
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53718924"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55498025"
 ---
 # <a name="script-action-development-with-hdinsight"></a>Vývoj skriptových akcí s HDInsight
 
@@ -72,10 +72,10 @@ Verze operačního systému můžete zkontrolovat pomocí `lsb_release`. Násled
 ```bash
 OS_VERSION=$(lsb_release -sr)
 if [[ $OS_VERSION == 14* ]]; then
-    echo "OS verion is $OS_VERSION. Using hue-binaries-14-04."
+    echo "OS version is $OS_VERSION. Using hue-binaries-14-04."
     HUE_TARFILE=hue-binaries-14-04.tgz
 elif [[ $OS_VERSION == 16* ]]; then
-    echo "OS verion is $OS_VERSION. Using hue-binaries-16-04."
+    echo "OS version is $OS_VERSION. Using hue-binaries-16-04."
     HUE_TARFILE=hue-binaries-16-04.tgz
 fi
 ...
@@ -299,10 +299,10 @@ Pokud chcete zkontrolovat verzi operačního systému, použít `lsb_release`. N
 ```bash
 OS_VERSION=$(lsb_release -sr)
 if [[ $OS_VERSION == 14* ]]; then
-    echo "OS verion is $OS_VERSION. Using hue-binaries-14-04."
+    echo "OS version is $OS_VERSION. Using hue-binaries-14-04."
     HUE_TARFILE=hue-binaries-14-04.tgz
 elif [[ $OS_VERSION == 16* ]]; then
-    echo "OS verion is $OS_VERSION. Using hue-binaries-16-04."
+    echo "OS version is $OS_VERSION. Using hue-binaries-16-04."
     HUE_TARFILE=hue-binaries-16-04.tgz
 fi
 ```
@@ -342,11 +342,11 @@ Tady jsou chyby, které může dojít při používání skriptů, kterou jste v
 
 **Chyba**: `$'\r': command not found`. Někdy následovaný `syntax error: unexpected end of file`.
 
-*Příčina*: K této chybě dojde, pokud řádků ve skriptu končit znaky CRLF. Systémy UNIX očekávat, že pouze LF jako ukončení řádku.
+*Příčina:* K této chybě dojde, pokud řádků ve skriptu končit znaky CRLF. Systémy UNIX očekávat, že pouze LF jako ukončení řádku.
 
 Tento problém nejčastěji nastane, pokud se vytváří skript v prostředí Windows CRLF je běžné řádku ukončení pro mnoho textových editorů na Windows.
 
-*Rozlišení*: Pokud je možnost v textovém editoru, vyberte formát operačního systému Unix nebo LF pro ukončení řádku. Chcete-li změnit znaky CRLF LF může také použít následující příkazy v systému Unix:
+*Řešení:* Pokud je možnost v textovém editoru, vyberte formát operačního systému Unix nebo LF pro ukončení řádku. Chcete-li změnit znaky CRLF LF může také použít následující příkazy v systému Unix:
 
 > [!NOTE]  
 > Následující příkazy jsou zhruba ekvivalentní v tom, že by měl mění konce řádků CRLF k LF. Vyberte jednu podle nástrojů, které jsou k dispozici ve vašem systému.
@@ -360,9 +360,9 @@ Tento problém nejčastěji nastane, pokud se vytváří skript v prostředí Wi
 
 **Chyba**: `line 1: #!/usr/bin/env: No such file or directory`.
 
-*Příčina*: Tato chyba nastane, pokud skript byl uložen jako UTF-8 s značky pořadí bajtů (BOM).
+*Příčina:* Tato chyba nastane, pokud skript byl uložen jako UTF-8 s značky pořadí bajtů (BOM).
 
-*Rozlišení*: Uložte soubor ve formátu ASCII nebo jako UTF-8 bez BOM. Vytvoření souboru bez BOM může také použít následující příkaz v systému Linux nebo Unix:
+*Řešení:* Uložte soubor ve formátu ASCII nebo jako UTF-8 bez BOM. Vytvoření souboru bez BOM může také použít následující příkaz v systému Linux nebo Unix:
 
     awk 'NR==1{sub(/^\xef\xbb\xbf/,"")}{print}' INFILE > OUTFILE
 

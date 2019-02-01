@@ -3,7 +3,7 @@ title: Kurz nasazení LAMP na virtuální počítač s Linuxem v Azure | Microso
 description: V tomto kurzu zjistíte, jak nainstalovat stack LAMP na virtuální počítač s Linuxem v Azure
 services: virtual-machines-linux
 documentationcenter: virtual-machines
-author: dlepow
+author: cynthn
 manager: jeconnoc
 editor: ''
 tags: azure-resource-manager
@@ -13,14 +13,14 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.devlang: azurecli
 ms.topic: tutorial
-ms.date: 11/27/2017
-ms.author: danlep
-ms.openlocfilehash: 5caed6fba607cb93a6168bded7531bc8bf63b9da
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
-ms.translationtype: HT
+ms.date: 01/30/2019
+ms.author: cynthn
+ms.openlocfilehash: 2e0befa302d9fe7b93ce8d9993ffc195dfc7a00b
+ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46970681"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55511239"
 ---
 # <a name="tutorial-install-a-lamp-web-server-on-a-linux-virtual-machine-in-azure"></a>Kurz: Instalace webového serveru LAMP na virtuální počítač s Linuxem v Azure
 
@@ -50,15 +50,12 @@ Spuštěním následujícího příkazu aktualizujte zdroje balíčků Ubuntu a 
 sudo apt update && sudo apt install lamp-server^
 ```
 
-
-Zobrazí se výzva k instalaci balíčků a dalších závislostí. Po zobrazení výzvy nastavte kořenové heslo pro MySQL a pokračujte stisknutím klávesy [Enter]. Postupujte podle zbývajících výzev. Tímto postupem se nainstalují minimální požadovaná rozšíření PHP potřebná k používání PHP a MySQL. 
-
-![Stránka kořenového hesla MySQL][1]
+Zobrazí se výzva k instalaci balíčků a dalších závislostí. Tímto postupem se nainstalují minimální požadovaná rozšíření PHP potřebná k používání PHP a MySQL.  
 
 ## <a name="verify-installation-and-configuration"></a>Ověření instalace a konfigurace
 
 
-### <a name="apache"></a>Apache
+### <a name="verify-apache"></a>Ověřte Apache
 
 Zkontrolujte verzi Apache pomocí následujícího příkazu:
 ```bash
@@ -70,7 +67,7 @@ Když je teď server Apache nainstalovaný a port 80 k virtuálnímu počítači
 ![Výchozí stránka Apache][3]
 
 
-### <a name="mysql"></a>MySQL
+### <a name="verify-and-secure-mysql"></a>Ověřit a zabezpečit MySQL
 
 Zkontrolujte verzi MySQL pomocí následujícího příkazu (všimněte si parametru velké `V`):
 
@@ -78,23 +75,23 @@ Zkontrolujte verzi MySQL pomocí následujícího příkazu (všimněte si param
 mysql -V
 ```
 
-Pokud chcete pomoct se zabezpečením instalace MySQL, spusťte skript `mysql_secure_installation`. Pokud nastavujete pouze dočasný server, můžete tento krok přeskočit.
+Chcete-li pomoc se zabezpečením instalace MySQL, včetně nastavení kořenové heslo, spusťte `mysql_secure_installation` skriptu. 
 
 ```bash
-mysql_secure_installation
+sudo mysql_secure_installation
 ```
 
-Zadejte kořenové heslo pro MySQL a nakonfigurujte nastavení zabezpečení pro vaše prostředí.
+Volitelně můžete nastavit heslo ověření modulu plug-in (doporučeno). Potom nastavte heslo pro kořenového uživatele MySQL a nakonfigurujte zbývající nastavení zabezpečení pro vaše prostředí. Doporučujeme, abyste odpovědět "Y" (Ano) na všechny otázky.
 
 Pokud chcete vyzkoušet funkce MySQL (vytvoření databáze MySQL, přidání uživatelů nebo změna nastavení konfigurace), přihlaste se k MySQL. Tento krok není nezbytný k dokončení kurzu.
 
 ```bash
-mysql -u root -p
+sudo mysql -u root -p
 ```
 
 Jakmile budete hotovi, ukončete příkazový řádek mysql zadáním `\q`.
 
-### <a name="php"></a>PHP
+### <a name="verify-php"></a>Ověřte PHP
 
 Zkontrolujte verzi PHP pomocí následujícího příkazu:
 
@@ -114,8 +111,7 @@ Teď můžete zkontrolovat informační stránku PHP, kterou jste vytvořili. Ot
 
 [!INCLUDE [virtual-machines-linux-tutorial-wordpress.md](../../../includes/virtual-machines-linux-tutorial-wordpress.md)]
 
-
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 V tomto kurzu jste nasadili server LAMP v Azure. Naučili jste se tyto postupy:
 
@@ -131,6 +127,5 @@ V dalším kurzu se dozvíte, jak zabezpečit webové servery pomocí certifiká
 > [!div class="nextstepaction"]
 > [Zabezpečení webového serveru pomocí SSL](tutorial-secure-web-server.md)
 
-[1]: ./media/tutorial-lamp-stack/configmysqlpassword-small.png
 [2]: ./media/tutorial-lamp-stack/phpsuccesspage.png
 [3]: ./media/tutorial-lamp-stack/apachesuccesspage.png

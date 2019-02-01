@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/04/2018
 ms.author: jdial
-ms.openlocfilehash: 769dcd3be33ec5dfecf0607ab3e45a11486c48d4
-ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
+ms.openlocfilehash: eba703e454e02e5b83efae2de01003a2efc1f764
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/19/2019
-ms.locfileid: "54412865"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55493235"
 ---
 # <a name="azure-virtual-network-frequently-asked-questions-faq"></a>Virtuální síť Azure, nejčastější dotazy (FAQ)
 
@@ -230,7 +230,7 @@ Ano. Další informace o používání:
 Partnerský vztah virtuální sítě (nebo partnerský vztah virtuální sítě) můžete použít k propojení virtuálních sítí. Připojení partnerského vztahu virtuální sítě mezi virtuálními sítěmi umožňuje směrovat přenosy mezi nimi soukromě prostřednictvím adresy IPv4. Virtuální počítače v partnerských virtuálních sítích komunikovat mezi sebou, jako kdyby byly ve stejné síti. Tyto virtuální sítě může být ve stejné oblasti nebo v různých oblastech (označované také jako globální VNet Peering). Partnerské vztahy virtuálních sítí můžete také vytvořit napříč předplatnými Azure.
 
 ### <a name="can-i-create-a-peering-connection-to-a-vnet-in-a-different-region"></a>Můžete vytvořit připojení s partnerským vztahem k virtuální síti v jiné oblasti?
-Ano. Globální VNet peering umožní vytvořit partnerský vztah virtuálních sítí v různých oblastech. Globální VNet peering je k dispozici ve všech veřejných oblastech Azure. Můžete nejde vytvořit partnerský vztah globálně z veřejných oblastech Azure k národním cloudům. Globální partnerský vztah není aktuálně k dispozici v národních cloudech.
+Ano. Globální VNet peering umožní vytvořit partnerský vztah virtuálních sítí v různých oblastech. Globální VNet peering je k dispozici ve všech veřejných oblastech Azure a cloudových oblastech Čína. Můžete nejde vytvořit partnerský vztah globálně z veřejných oblastech Azure do národních cloudů oblastí. Globální partnerský vztah není aktuálně k dispozici v cloudu pro státní správu.
 
 ### <a name="can-i-enable-vnet-peering-if-my-virtual-networks-belong-to-subscriptions-within-different-azure-active-directory-tenants"></a>Můžete povolit VNet Peering Pokud Můj virtuální sítě patří do předplatných v rámci různých tenantů Azure Active Directory?
 Ano. Je možné navázat partnerský vztah virtuální sítě (ať už místní nebo globální), pokud vaše předplatná patří do různých tenantů Azure Active Directory. Můžete to provést prostřednictvím Powershellu nebo rozhraní příkazového řádku. Portál se ještě nepodporuje.

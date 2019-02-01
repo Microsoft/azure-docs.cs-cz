@@ -9,12 +9,12 @@ ms.topic: overview
 ms.date: 11/13/2018
 ms.author: lizross
 ms.custom: it-pro, seodec18
-ms.openlocfilehash: 44533ea4430bb7cd3bc7e0b6451892cc68bacc19
-ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
+ms.openlocfilehash: 251161fbb5213c765463835e4537f1b443699670
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54450213"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55491735"
 ---
 # <a name="what-is-azure-active-directory"></a>Představení služby Azure Active Directory 
 Azure Active Directory (Azure AD) je společnosti Microsoft cloudových identit a přístupu služba pro správu. Azure AD pomáhá zaměstnancům přihlásit a získat přístup k prostředkům v:
@@ -72,7 +72,7 @@ Abyste lépe pochopili, Azure AD a jeho dokumentace, měli byste si přečíst n
 |Globální správce Azure AD|Tato role správce je automaticky přiřazené pro všechny uživatele, kteří vytvořili tenanta Azure AD. Globální správci mohou provádět všechny funkce správy pro službu Azure AD a služeb, které vytvořit federaci s Azure AD, jako je Exchange Online, SharePoint Online a Skype for Business Online. Můžete mít víc globálních správců, ale jenom globální správci (včetně přiřazování další globální správce) role správců můžou přiřazovat uživatelům.<br><br>**Poznámka**<br>Tato role správce se nazývá globální správce na webu Azure Portal, ale je volána **správce společnosti** v rozhraní Microsoft Graph API, Azure AD Graph API a Azure AD PowerShell.<br><br>Další informace o různých rolích správce najdete v tématu [oprávnění role správce v Azure Active Directory](../users-groups-roles/directory-assign-admin-roles.md).|
 |Účet Microsoft (také nazývané, MSA)|Osobní účty, které poskytují přístup k vaší spotřebitelské produkty společnosti Microsoft a cloudovým službám, jako je Outlook, OneDrive, Xbox LIVE nebo Office 365. Váš účet Microsoft se vytvoří a uloží v Microsoft systémem identit uživatelů účtu, který se spouští společností Microsoft.|
 
-## <a name="what-features-work-in-azure-ad"></a>Jaké funkce fungují ve službě Azure AD?
+## <a name="which-features-work-in-azure-ad"></a>Které funkce fungují ve službě Azure AD?
 Po zvolení licenci Azure AD je ve vaší organizaci získají přístup k některé nebo všechny z následujících funkcí:
 
 |Kategorie|Popis|

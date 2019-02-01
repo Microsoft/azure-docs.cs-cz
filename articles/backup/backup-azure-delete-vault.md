@@ -6,18 +6,18 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: backup
 ms.topic: conceptual
-ms.date: 7/6/2018
+ms.date: 01/31/2019
 ms.author: raynew
-ms.openlocfilehash: d7617ce96181a0708dfa4731c07d581e332bdff4
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: d514074e56ff37cc7af6a97ea86aa9e02e3763e0
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52873097"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55492279"
 ---
 # <a name="delete-a-recovery-services-vault"></a>Odstranění trezoru služby Recovery Services
 
-Tento článek vysvětluje, jak odebrat všechny položky z trezoru služby Recovery Services a poté jej odstraňte. Nejde odstranit trezor služby Recovery Services, pokud je zaregistrován k serveru a obsahuje zálohovaná data. Pokud při pokusu o odstranění trezoru, ale nikoli, trezor stále probíhá konfigurace pro příjem dat záloh.
+Tento článek popisuje, jak odebrat všechny položky z trezoru služby Recovery Services a poté jej odstraňte. Nejde odstranit trezor služby Recovery Services, pokud je zaregistrován k serveru a obsahuje zálohovaná data. Pokud při pokusu o odstranění trezoru, ale nikoli, trezor stále probíhá konfigurace pro příjem dat záloh.
 
 Postup odstranění trezoru, naleznete v části [odstranění trezoru z portálu Azure portal](backup-azure-delete-vault.md#delete-a-vault-from-azure-portal). Pokud nechcete zachovat žádná data v trezoru služby Recovery Services, a chcete trezor odstranit, naleznete v části [odstranění trezoru vynutí](backup-azure-delete-vault.md#delete-the-recovery-services-vault-by-force). Pokud si nejste jisti, co je v trezoru a potřebujete, abyste měli jistotu, že jste odstranili trezoru, naleznete v části [odebrat závislosti trezor a odstranit trezor](backup-azure-delete-vault.md#remove-vault-dependencies-and-delete-vault).
 

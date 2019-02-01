@@ -9,12 +9,12 @@ ms.reviewer: jmartens
 author: garyericson
 ms.author: garye
 ms.date: 1/30/2019
-ms.openlocfilehash: 4d4d7c587dcc34b12ed757b7da54f5ad0b04e8cc
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: cd156a10faf396778b76687b3666887a6a60876c
+ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 01/31/2019
-ms.locfileid: "55451865"
+ms.locfileid: "55505695"
 ---
 # <a name="what-are-the-machine-learning-products-at-microsoft"></a>Co je strojové učení produktů v Microsoftu?
 
@@ -27,7 +27,7 @@ Tyto možnosti jsou k dispozici pro strojové učení v cloudu Azure.
 
 | Cloud&nbsp;možnosti | Co to je | Jaké nabízí možnosti |
 |-|-|-|
-| [Služba Azure Machine Learning](#azure-machine-learning-services) | Spravovaná cloudová služba pro strojové učení  | Trénování, nasazování a správa modelů v Azure s použitím Pythonu a rozhraní CLI |
+| [Služba Azure Machine Learning](#azure-machine-learning-service) | Spravovaná cloudová služba pro strojové učení  | Trénování, nasazování a správa modelů v Azure s použitím Pythonu a rozhraní CLI |
 | [Azure Machine Learning Studio](#azure-machine-learning-studio) | Přetáhněte&ndash;a&ndash;vizuální rozhraní pro ML | Sestavení, experimentování a nasazování modelů pomocí předem nakonfigurovaných algoritmy (Pythonu a r.)|
 | [Azure Databricks](#azure-databricks) | Analytická platforma založená na Sparku | Sestavování a nasazování modelů a pracovních postupů pro data |
 | [Azure Cognitive Services](#azure-cognitive-services) | Služby Azure s předkonfigurovanými modely umělé inteligence a strojového učení | Jednoduché přidávání inteligentních funkcí do vašich aplikací |

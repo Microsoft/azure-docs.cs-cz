@@ -5,17 +5,17 @@ services: multi-factor-authentication
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: tutorial
-ms.date: 07/11/2018
+ms.date: 01/31/2018
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry
-ms.openlocfilehash: 504e314151409732cba23af97224683eb35a7c81
-ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
+ms.openlocfilehash: df3344efadbc915bba0c863979cae8b8fdff99b0
+ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/26/2019
-ms.locfileid: "55075478"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55512121"
 ---
 # <a name="tutorial-use-risk-events-to-trigger-multi-factor-authentication-and-password-changes"></a>Kurz: Pomocí aktivační události služby Multi-Factor Authentication a změn hesel rizikových událostí
 
@@ -51,7 +51,7 @@ Povolení zásad na základě rizikové události je jednoduchý proces. Násled
 
 ### <a name="enable-users-to-register-for-multi-factor-authentication"></a>Zapnutí registrace uživatelů k vícefaktorovému ověřování
 
-Azure AD Identity Protection obsahuje výchozí zásadu, která vám může pomoct s registrací uživatelů k vícefaktorovému ověřování a snadněji identifikovat aktuální stav registrace. Povolením této zásady nespustíte výzvy k provedení vícefaktorového ověřování, ale požádáte uživatele, aby se k němu předběžně zaregistrovali.
+Služba Azure AD Identity Protection obsahuje výchozí zásady, které vám mohou pomoci při vaši uživatelé zaregistrovali služby Multi-Factor Authentication a snadno identifikovat aktuální stav registrace. Povolením této zásady nespustíte výzvy k provedení vícefaktorového ověřování, ale požádáte uživatele, aby se k němu předběžně zaregistrovali.
 
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 1. Klikněte na **Všechny služby** a přejděte na **Azure AD Identity Protection**.

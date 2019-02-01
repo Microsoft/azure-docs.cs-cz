@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 01/10/2019
-ms.openlocfilehash: c84b814ddc06c583fc2f07288c7aa5cd65cc70a0
-ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
+ms.openlocfilehash: 70cc6210a0c047867980de67ac24701df29ce8bf
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54232120"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55485173"
 ---
 # <a name="azure-stream-analytics-preview-features"></a>Funkce Azure Stream Analytics ve verzi preview
 
@@ -45,7 +45,7 @@ Pomocí .NET standard uživatelem definované funkce můžete spustit .NET Stand
 
 ## <a name="private-previews"></a>Privátní verze Preview
 
-Následující funkce jsou ve verzi private preview. Tyto verze náhledu přístup, najdete v tématu privátní verze preview Azure Stream Analytics [zaregistrovat](https://aka.ms/ASApreview1) stránky.
+Následující funkce jsou ve verzi private preview.
 
 ### <a name="anomaly-detection"></a>Detekce anomálií
 
@@ -59,7 +59,7 @@ Vývojáři teď můžete implementovat vlastní deserializers v jazyce C# k des
 
 Nyní je možné rozdělit do úložiště objektů Blob podle libovolného sloupce v dotazu výstupu Azure Stream Analytics.
 
-### <a name="managed-identities-for-azure-resources-authentication-to-azure-data-lake-storage"></a>Spravovaných identit pro ověřování prostředků Azure do služby Azure Data Lake Storage
+### <a name="managed-identities-for-azure-resource-authentication-to-azure-data-lake-storage"></a>Spravovaných identit pro ověřování prostředků Azure do služby Azure Data Lake Storage
 
 Můžete teď provozu v reálném čase kanály pomocí spravované identity pro prostředky Azure na základě ověření při zápisu do Azure Data Lake Storage Gen1 umožňuje programově vytvářet úlohy. Další informace najdete v článku [použití spravovaných identit pro prostředky Azure, které ověřování Azure Stream Analytics úloh do Azure Data Lake Storage Gen1 výstupu](stream-analytics-managed-identities-adls.md).
 
@@ -67,4 +67,4 @@ Můžete teď provozu v reálném čase kanály pomocí spravované identity pro
 
 * [Osm nových funkcí ve službě Azure Stream Analytics](https://azure.microsoft.com/blog/eight-new-features-in-azure-stream-analytics/)
 
-* [4 nových funkcí, které jsou teď dostupné ve službě Azure Stream Analytics](https://azure.microsoft.com/blog/4-new-features-now-available-in-azure-stream-analytics/)
+* [Čtyři nové funkce, které jsou teď dostupné ve službě Azure Stream Analytics](https://azure.microsoft.com/blog/4-new-features-now-available-in-azure-stream-analytics/)

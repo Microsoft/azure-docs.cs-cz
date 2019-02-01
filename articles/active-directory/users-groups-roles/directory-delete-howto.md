@@ -1,5 +1,5 @@
 ---
-title: Odstranit adresář tenanta služby Azure Active Directory | Dokumentace Microsoftu
+title: Odstranit tenanta služby – Azure Active Directory | Dokumentace Microsoftu
 description: Vysvětluje, jak připravit odstranění adresáře tenanta služby Azure AD
 services: active-directory
 documentationcenter: ''
@@ -9,16 +9,16 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: article
-ms.date: 01/07/2019
+ms.date: 01/31/2019
 ms.author: curtand
 ms.reviewer: elkuzmen
 ms.custom: it-pro
-ms.openlocfilehash: 30e5a147e1cde80c1ab80b1080aad4317a2de968
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 2fa8b6573952220b214294cfd0e89e978f6d00b5
+ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55197717"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55509350"
 ---
 # <a name="delete-an-azure-active-directory-tenant"></a>Odstranit tenanta služby Azure Active Directory
 

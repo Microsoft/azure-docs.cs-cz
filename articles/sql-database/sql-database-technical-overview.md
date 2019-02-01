@@ -4,7 +4,7 @@ description: Přečtěte si základní informace o službě SQL Database – tec
 keywords: představení sql,úvod do sql,co je sql database
 services: sql-database
 ms.service: sql-database
-ms.subservice: ''
+ms.subservice: service
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
@@ -13,12 +13,12 @@ ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
 ms.date: 01/25/2019
-ms.openlocfilehash: 6b4bc5a75f49287ad0425a7fe94f099204b73e44
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: db5e833ea8ee265053b650433562690194b88771
+ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 01/31/2019
-ms.locfileid: "55469545"
+ms.locfileid: "55509061"
 ---
 # <a name="the-azure-sql-database-service"></a>Služba Azure SQL Database
 

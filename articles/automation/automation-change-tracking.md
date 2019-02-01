@@ -10,12 +10,12 @@ ms.date: 01/29/2019
 ms.topic: conceptual
 manager: carmonm
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 11b7928512dd1f1d6b284b088af304c6752711f5
-ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
+ms.openlocfilehash: e40cc3ac0fe17cd030717253f6093bbf8d63a5a2
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55301437"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55487230"
 ---
 # <a name="track-changes-in-your-environment-with-the-change-tracking-solution"></a>Sledování změn ve vašem prostředí pomocí řešení Change Tracking
 
@@ -111,7 +111,7 @@ Použijte následující postup ke konfiguraci soubory sledování na počítač
 Rekurze můžete zadat zástupné znaky pro zjednodušení sledování napříč adresářů a proměnných prostředí, aby bylo možné sledovat soubory v rámci prostředí s několika nebo dynamické jednotka názvy. Následující seznam uvádí běžné informace, které byste měli vědět při konfiguraci rekurze:
 
 * Zástupné znaky jsou požadovány pro sledování více souborů
-* Pokud použijete zástupné znaky, že jde použít jenom v posledním segmentu cesty. (například C:\folder\\**souboru** nebo /etc/*.conf)
+* Pokud použijete zástupné znaky, že jde použít jenom v posledním segmentu cesty. (například `c:\folder\*file*` nebo `/etc/*.conf`)
 * Pokud proměnná prostředí obsahuje neplatnou cestu, bude ověření úspěšné, ale tato cesta se nezdaří spuštění inventáře.
 * Například vyhnout obecné cesty `c:\*.*` při nastavování cestu, protože výsledkem by příliš mnoho složek se procházet.
 
@@ -132,9 +132,9 @@ Pomocí následujících kroků nakonfigurovat sledování klíčů registru v p
 |Vlastnost  |Popis  |
 |---------|---------|
 |Povoleno     | Určuje, pokud je použito nastavení.        |
-|Název položky     | Popisný název souboru, který má být sledovány.        |
-|Skupina     | Název skupiny pro logické seskupení souborů.        |
-|Klíč registru systému Windows   | Cesta ke kontrole souboru. Příklad: "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\User Shell Folders\Common Startup"      |
+|Název položky     | Popisný název klíče registru, které se mají sledovat.        |
+|Skupina     | Název skupiny pro logické seskupení klíče registru.        |
+|Klíč registru systému Windows   | Cesta ke kontrole pro klíč registru. Příklad: "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\User Shell Folders\Common Startup"      |
 
 ## <a name="limitations"></a>Omezení
 
@@ -278,13 +278,13 @@ V následujícím příkladu snímek obrazovky ukazuje, že soubor `C:\windows\s
 
 ![Graf zobrazující hostitele změnu souboru](./media/automation-change-tracking/changes.png)
 
-Tato změna dále analyzovat, přejděte na hledání v protokolu od kliknutí na **Log Analytics**. Jednou v prohledávání protokolu, vyhledejte změny obsahu v souboru hostitelů s dotazem `ConfigurationChange | where FieldsChanged contains "FileContentChecksum" and FileSystemPath contains "hosts"`. Tento dotaz hledá změny, které zahrnuté změny obsahu souboru pro soubory, jejichž plně kvalifikovaná cesta obsahuje slovo "hostitelů". Můžete také požádat o konkrétního souboru tak, že změníte jeho plně kvalifikovaný formuláře část cesty (například `FileSystemPath == "c:\\windows\\system32\\drivers\\etc\\hosts"`).
+Tato změna dále analyzovat, přejděte na hledání v protokolu od kliknutí na **Log Analytics**. Jednou v prohledávání protokolu, vyhledejte změny obsahu v souboru hostitelů s dotazem `ConfigurationChange | where FieldsChanged contains "FileContentChecksum" and FileSystemPath contains "hosts"`. Tento dotaz hledá změny, které zahrnuté změny obsahu souboru pro soubory, jejichž plně kvalifikovaná cesta obsahuje slovo "hostitelů". Můžete také požádat o konkrétního souboru tak, že změníte jeho plně kvalifikovaný formuláře část cesty (například `FileSystemPath == "c:\windows\system32\drivers\etc\hosts"`).
 
 Jakmile dotaz vrací požadovaných výsledků, klikněte na tlačítko **nové pravidlo upozornění** tlačítko v možnosti vyhledávání protokolu a otevřete stránku vytvoření výstrahy. Může také přejít na toto prostředí prostřednictvím **Azure Monitor** na webu Azure Portal. V prostředí pro vytváření výstrahy dotaz znovu zkontrolovat a upravit logika upozornění. V tomto případě chcete výstrahu, kterou chcete aktivovat, pokud je ještě jednu změnu zjistil ve všech počítačích v prostředí.
 
 ![Obrázek znázorňující změnit dotaz pro sledování změn do souboru hostitelů](./media/automation-change-tracking/change-query.png)
 
-Po nastavení podmíněné logiky přiřadíte skupiny akcí provádět akce v reakci na upozornění, že dochází k aktivaci. V tomto případě jsem nastavili e-mailů k odeslání a lístek ITSM, který se má vytvořit.  Také je možné provést mnoho dalších užitečné akce jako je aktivace Azure Functions, runbooku Automation, Webhooku nebo aplikaci logiky.
+Po nastavení podmíněné logiky přiřadíte skupiny akcí provádět akce v reakci na upozornění, že dochází k aktivaci. V tomto případě jsem nastavili e-mailů k odeslání a lístek ITSM, který se má vytvořit.  Také je možné provést mnoho dalších užitečné akce jako je aktivace funkce Azure Functions, automatizace sady runbook, webhook nebo aplikaci logiky.
 
 ![Obrázek konfigurace skupiny akcí upozornění na změnu](./media/automation-change-tracking/action-groups.png)
 

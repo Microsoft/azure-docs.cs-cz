@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/24/2018
 ms.author: tomfitz
-ms.openlocfilehash: 8745519f1a0fdda7a5feb6ffb3f61e5250bb260a
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.openlocfilehash: 8850ef68c665efcf9e66315af20b7d1e8492fc5f
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47164783"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55493758"
 ---
 # <a name="logical-functions-for-azure-resource-manager-templates"></a>Logické funkce pro šablony Azure Resource Manageru
 
@@ -29,7 +29,9 @@ Resource Manager poskytuje několik funkcí pro provádění porovnání v šabl
 * [BOOL](#bool)
 * [if](#if)
 * [Not](#not)
-* [Nebo](#or)
+* [nebo](#or)
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="and"></a>a
 `and(arg1, arg2)`
@@ -77,9 +79,9 @@ Výstup z předchozího příkladu je:
 
 | Název | Typ | Hodnota |
 | ---- | ---- | ----- |
-| andExampleOutput | BOOL | False |
-| orExampleOutput | BOOL | True |
-| notExampleOutput | BOOL | False |
+| andExampleOutput | Bool | False |
+| orExampleOutput | Bool | True |
+| notExampleOutput | Bool | False |
 
 Pokud chcete nasadit šablonu tento příklad pomocí Azure CLI, použijte:
 
@@ -90,7 +92,7 @@ az group deployment create -g functionexamplegroup --template-uri https://raw.gi
 Pokud chcete nasadit tento příklad šablony pomocí prostředí PowerShell, použijte:
 
 ```powershell
-New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/andornot.json
+New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/andornot.json
 ```
 
 ## <a name="bool"></a>BOOL
@@ -141,10 +143,10 @@ Výstup z předchozího příkladu s výchozími hodnotami je:
 
 | Název | Typ | Hodnota |
 | ---- | ---- | ----- |
-| trueString | BOOL | True |
-| falseString | BOOL | False |
-| trueInt | BOOL | True |
-| falseInt | BOOL | False |
+| trueString | Bool | True |
+| falseString | Bool | False |
+| trueInt | Bool | True |
+| falseInt | Bool | False |
 
 Pokud chcete nasadit šablonu tento příklad pomocí Azure CLI, použijte:
 
@@ -155,10 +157,10 @@ az group deployment create -g functionexamplegroup --template-uri https://raw.gi
 Pokud chcete nasadit tento příklad šablony pomocí prostředí PowerShell, použijte:
 
 ```powershell
-New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/bool.json
+New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/bool.json
 ```
 
-## <a name="if"></a>If
+## <a name="if"></a>if
 `if(condition, trueValue, falseValue)`
 
 Vrátí hodnotu podle toho, jestli je podmínka true nebo false.
@@ -252,8 +254,8 @@ Výstup z předchozího příkladu je:
 
 | Název | Typ | Hodnota |
 | ---- | ---- | ----- |
-| yesOutput | Řetězec | ano |
-| noOutput | Řetězec | ne |
+| yesOutput | String | ano |
+| noOutput | String | ne |
 | objectOutput | Objekt | {"test": "hodnota1"} |
 
 Pokud chcete nasadit šablonu tento příklad pomocí Azure CLI, použijte:
@@ -265,7 +267,7 @@ az group deployment create -g functionexamplegroup --template-uri https://raw.gi
 Pokud chcete nasadit tento příklad šablony pomocí prostředí PowerShell, použijte:
 
 ```powershell
-New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/if.json
+New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/if.json
 ```
 
 ## <a name="not"></a>ne
@@ -313,9 +315,9 @@ Výstup z předchozího příkladu je:
 
 | Název | Typ | Hodnota |
 | ---- | ---- | ----- |
-| andExampleOutput | BOOL | False |
-| orExampleOutput | BOOL | True |
-| notExampleOutput | BOOL | False |
+| andExampleOutput | Bool | False |
+| orExampleOutput | Bool | True |
+| notExampleOutput | Bool | False |
 
 Pokud chcete nasadit šablonu tento příklad pomocí Azure CLI, použijte:
 
@@ -326,7 +328,7 @@ az group deployment create -g functionexamplegroup --template-uri https://raw.gi
 Pokud chcete nasadit tento příklad šablony pomocí prostředí PowerShell, použijte:
 
 ```powershell
-New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/andornot.json
+New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/andornot.json
 ```
 
 Následující [Ukázková šablona](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/not-equals.json) používá **není** s [rovná](resource-group-template-functions-comparison.md#equals).
@@ -349,7 +351,7 @@ Výstup z předchozího příkladu je:
 
 | Název | Typ | Hodnota |
 | ---- | ---- | ----- |
-| checkNotEquals | BOOL | True |
+| checkNotEquals | Bool | True |
 
 Pokud chcete nasadit šablonu tento příklad pomocí Azure CLI, použijte:
 
@@ -360,7 +362,7 @@ az group deployment create -g functionexamplegroup --template-uri https://raw.gi
 Pokud chcete nasadit tento příklad šablony pomocí prostředí PowerShell, použijte:
 
 ```powershell
-New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/not-equals.json
+New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/not-equals.json
 ```
 
 ## <a name="or"></a>nebo
@@ -409,9 +411,9 @@ Výstup z předchozího příkladu je:
 
 | Název | Typ | Hodnota |
 | ---- | ---- | ----- |
-| andExampleOutput | BOOL | False |
-| orExampleOutput | BOOL | True |
-| notExampleOutput | BOOL | False |
+| andExampleOutput | Bool | False |
+| orExampleOutput | Bool | True |
+| notExampleOutput | Bool | False |
 
 Pokud chcete nasadit šablonu tento příklad pomocí Azure CLI, použijte:
 
@@ -422,7 +424,7 @@ az group deployment create -g functionexamplegroup --template-uri https://raw.gi
 Pokud chcete nasadit tento příklad šablony pomocí prostředí PowerShell, použijte:
 
 ```powershell
-New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/andornot.json
+New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/andornot.json
 ```
 
 ## <a name="next-steps"></a>Další postup

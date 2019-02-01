@@ -13,15 +13,15 @@ ms.service: service-fabric
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/12/2017
+ms.date: 01/31/2019
 ms.author: suhuruli
 ms.custom: mvc
-ms.openlocfilehash: 7d622b834cef31552cac60b359cdd8404592eda9
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
-ms.translationtype: HT
+ms.openlocfilehash: 135189c576c67212dac6afc1388a6ef9fb045346
+ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51255553"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55512353"
 ---
 # <a name="tutorial-package-and-deploy-containers-as-a-service-fabric-application-using-yeoman"></a>Kurz: Zabalení a nasazení kontejnerů jako aplikace Service Fabric pomocí Yeomanu
 
@@ -227,28 +227,53 @@ V tomto bodě tohoto kurzu je šablona pro aplikaci balíčku služby k dispozic
 
 ## <a name="create-a-service-fabric-cluster"></a>Vytvoření clusteru Service Fabric
 
-Pokud chcete nasadit aplikaci do clusteru v Azure, vytvořte si vlastní cluster.
+Pokud chcete nasadit aplikaci do Azure, potřebujete cluster Service Fabric, ve kterém bude aplikace spuštěná. Následující příkazy vytvoří cluster s pěti uzly v Azure.  Příkazy také vytvořit certifikát podepsaný svým držitelem, přidá ho do služby key vault a soubory ke stažení certifikátu místně jako soubor PEM. Nový certifikát se používá k zabezpečení clusteru nasadí a slouží k ověřování klientů.
 
-Party Clustery jsou bezplatné, časově omezené clustery Service Fabric hostované v Azure. Jsou provozované týmem Service Fabric a kdokoli na nich může nasazovat aplikace a seznamovat se s platformou. Pokud chcete získat přístup k Party Clusteru, [postupujte podle těchto pokynů](https://aka.ms/tryservicefabric).
+```azurecli
+#!/bin/bash
 
-K provádění operací správy na zabezpečeném Party Clusteru můžete použít Service Fabric Explorer, rozhraní příkazového řádku nebo PowerShell. Pokud chcete použít Service Fabric Explorer, budete muset z webu Party Clusteru stáhnout soubor PFX a importovat certifikát do svého úložiště certifikátů (Windows nebo Mac) nebo do samotného prohlížeče (Ubuntu). K certifikátům podepsaným svým držitelem z Party Clusteru není žádné heslo.
+# Variables
+ResourceGroupName="containertestcluster" 
+ClusterName="containertestcluster" 
+Location="eastus" 
+Password="q6D7nN%6ck@6" 
+Subject="containertestcluster.eastus.cloudapp.azure.com" 
+VaultName="containertestvault" 
+VmPassword="Mypa$$word!321"
+VmUserName="sfadminuser"
 
-Pokud chcete provádět operace správy pomocí PowerShellu nebo rozhraní příkazového řádku, budete potřebovat soubor PFX (PowerShell) nebo PEM (rozhraní příkazového řádku). Pokud chcete převést soubor PFX na soubor PEM, spusťte následující příkaz:
+# Login to Azure and set the subscription
+az login
 
-```bash
-openssl pkcs12 -in party-cluster-1277863181-client-cert.pfx -out party-cluster-1277863181-client-cert.pem -nodes -passin pass:
+az account set --subscription <mySubscriptionID>
+
+# Create resource group
+az group create --name $ResourceGroupName --location $Location 
+
+# Create secure five node Linux cluster. Creates a key vault in a resource group
+# and creates a certficate in the key vault. The certificate's subject name must match 
+# the domain that you use to access the Service Fabric cluster.  
+# The certificate is downloaded locally as a PEM file.
+az sf cluster create --resource-group $ResourceGroupName --location $Location \ 
+--certificate-output-folder . --certificate-password $Password --certificate-subject-name $Subject \ 
+--cluster-name $ClusterName --cluster-size 5 --os UbuntuServer1604 --vault-name $VaultName \ 
+--vault-resource-group $ResourceGroupName --vm-password $VmPassword --vm-user-name $VmUserName
 ```
 
-Informace o vytvoření vlastního clusteru najdete v tématu věnovaném [vytvoření clusteru Service Fabric v Azure](service-fabric-tutorial-create-vnet-and-linux-cluster.md).
+> [!Note]
+> Webová front-end služba je nakonfigurovaná k naslouchání příchozímu provozu na portu 80. Výchozí port 80 je otevřen v clusteru virtuální počítače a nástroj pro vyrovnávání zatížení Azure.
+>
+
+Další informace o vytvoření vlastního clusteru najdete v tématu [vytvoření clusteru Service Fabric v Azure](service-fabric-tutorial-create-vnet-and-linux-cluster.md).
 
 ## <a name="build-and-deploy-the-application-to-the-cluster"></a>Vytvoření a nasazení aplikace do clusteru
 
 Aplikaci můžete nasadit do clusteru Azure pomocí rozhraní příkazového řádku Service Fabric. Pokud na počítači nemáte nainstalované rozhraní příkazového řádku Service Fabric, nainstalujte si ho podle [těchto pokynů](service-fabric-get-started-linux.md#set-up-the-service-fabric-cli).
 
-Připojte se ke clusteru Service Fabric v Azure. Ukázkový koncový bod nahraďte svým vlastním. Koncový bod musí být úplná adresa URL podobná této.
+Připojte se ke clusteru Service Fabric v Azure. Ukázkový koncový bod nahraďte svým vlastním. Koncový bod musí být úplná adresa URL podobná této.  Soubor PEM, který je certifikát podepsaný svým držitelem, který byl dříve vytvořen.
 
 ```bash
-sfctl cluster select --endpoint https://linh1x87d1d.westus.cloudapp.azure.com:19080 --pem party-cluster-1277863181-client-cert.pem --no-verify
+sfctl cluster select --endpoint https://containertestcluster.eastus.cloudapp.azure.com:19080 --pem containertestcluster22019013100.pem --no-verify
 ```
 
 Pomocí instalačního skriptu, který je k dispozici v adresáři **TestContainer**, zkopírujte balíček aplikace do úložiště imagí clusteru, zaregistrujte typ aplikace a vytvořte její instanci.
@@ -257,11 +282,11 @@ Pomocí instalačního skriptu, který je k dispozici v adresáři **TestContain
 ./install.sh
 ```
 
-Otevřete prohlížeč a přejděte do Service Fabric Exploreru na adrese http://lin4hjim3l4.westus.cloudapp.azure.com:19080/Explorer. Rozbalte uzel Aplikace a všimněte si, že obsahuje položku pro váš typ aplikace a další položku pro instanci.
+Otevřete prohlížeč a přejděte do Service Fabric Exploreru na adrese http://containertestcluster.eastus.cloudapp.azure.com:19080/Explorer. Rozbalte uzel Aplikace a všimněte si, že obsahuje položku pro váš typ aplikace a další položku pro instanci.
 
 ![Service Fabric Explorer][sfx]
 
-Abyste se mohli ke spuštěné aplikaci připojit, otevřete webový prohlížeč a přejděte na adresu URL clusteru – například http://lin0823ryf2he.cloudapp.azure.com:80. Ve webovém uživatelském rozhraní byste měli vidět aplikaci Voting.
+Abyste se mohli ke spuštěné aplikaci připojit, otevřete webový prohlížeč a přejděte na adresu URL clusteru – například http://containertestcluster.eastus.cloudapp.azure.com:80. Ve webovém uživatelském rozhraní byste měli vidět aplikaci Voting.
 
 ![aplikacevoting][votingapp]
 
@@ -380,7 +405,7 @@ Pomocí odinstalačního skriptu, který je součástí šablony, odstraňte ins
  </ServiceManifest>
 ```
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 V tomto kurzu bylo zabaleno několik kontejnerů do aplikace Service Fabric pomocí Yeomanu. Tato aplikace pak byla nasazena a spuštěna v clusteru Service Fabric. Dokončili jste následující kroky:
 

@@ -1,5 +1,5 @@
 ---
-title: 'Konfigurace protokolu BGP na branách Azure VPN Gateway: Resource Manager: PowerShell | Dokumentace Microsoftu'
+title: 'Konfigurace protokolu BGP na branách Azure VPN Gateway: Správce prostředků: Prostředí PowerShell | Dokumentace Microsoftu'
 description: Tento článek vás provede konfigurací protokolu BGP s bránami Azure VPN Gateway pomocí Azure Resource Manageru a Powershellu.
 services: vpn-gateway
 documentationcenter: na
@@ -16,11 +16,11 @@ ms.workload: infrastructure-services
 ms.date: 04/12/2017
 ms.author: yushwang
 ms.openlocfilehash: 97b33ed76776ae00c109e891b3d91638080ed778
-ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
+ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52632581"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55508398"
 ---
 # <a name="how-to-configure-bgp-on-azure-vpn-gateways-using-powershell"></a>Postup konfigurace protokolu BGP na Azure VPN Gateway pomocí Powershellu
 Tento článek vás provede kroky k povolení protokolu BGP pro připojení VPN typu Site-to-Site (S2S) mezi místními a připojení typu VNet-to-VNet pomocí modelu nasazení Resource Manageru a Powershellu.
@@ -49,7 +49,7 @@ Postup konfigurace nastavení parametrů BGP brány Azure VPN, jak je znázorně
 
 ![Brána protokolu BGP](./media/vpn-gateway-bgp-resource-manager-ps/bgp-gateway.png)
 
-### <a name="before-you-begin"></a>Než začnete
+### <a name="before-you-begin"></a>Před zahájením
 * Ověřte, že máte předplatné Azure. Pokud ještě nemáte předplatné Azure, můžete si aktivovat [výhody pro předplatitele MSDN](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/) nebo si zaregistrovat [bezplatný účet](https://azure.microsoft.com/pricing/free-trial/).
 * Nainstalujte nejnovější verzi rutin Powershellu pro Azure Resource Manager. Další informace o instalaci rutin PowerShellu najdete v tématu [Instalace a konfigurace Azure PowerShellu](/powershell/azure/overview). 
 
@@ -174,7 +174,7 @@ Než budete pokračovat, zkontrolujte, že jste stále připojeni k předplatné
 
 #### <a name="2-create-the-local-network-gateway-for-site5"></a>2. Vytvořte bránu místní sítě pro Site5
 
-Je potřeba vytvořit skupinu prostředků, pokud není vytvořené před vytvoření brány místní sítě. Všimněte si, že dva další parametry pro bránu místní sítě: číslo Asn a BgpPeerAddress.
+Je potřeba vytvořit skupinu prostředků, pokud není vytvořené před vytvoření brány místní sítě. Všimněte si, že dva další parametry pro bránu místní sítě: Číslo ASN a BgpPeerAddress.
 
 ```powershell
 New-AzureRmResourceGroup -Name $RG5 -Location $Location5

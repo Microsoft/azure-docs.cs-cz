@@ -10,12 +10,12 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.service: active-directory
 ms.subservice: B2C
-ms.openlocfilehash: b9708d7b808888fdab41fa00ce667a4418102a23
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: fc9efe919a7eae34b47fc86100f182827315449a
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55180377"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55492704"
 ---
 # <a name="tutorial-grant-access-to-a-nodejs-web-api-from-a-desktop-app-using-azure-active-directory-b2c"></a>Kurz: Poskytnutí přístupu k webovému rozhraní API Node.js z desktopové aplikace pomocí Azure Active Directory B2C
 
@@ -128,7 +128,7 @@ Ukázka webového rozhraní API Node.js s využitím knihovny Passport.js umož�
 1. Otevřete soubor `index.js` v ukázce webového rozhraní API Node.js.
 2. Nakonfigurujte ukázku s použitím informací o registraci tenanta Azure AD B2C. Změňte následující řádky kódu:
 
-```nodejs
+```javascript
 var tenantID = "<your-tenant-name>.onmicrosoft.com";
 var clientID = "<Application ID for your Node.js Web API>";
 var policyName = "B2C_1_SiUpIn";  // Sign-in / sign-up policy name

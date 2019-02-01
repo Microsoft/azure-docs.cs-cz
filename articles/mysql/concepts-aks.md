@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 11/28/2018
-ms.openlocfilehash: 624689fd6b9d8f364b0caf7e96b79b2773ce6171
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: d9f2e26a2bc89329ca9038c666c0d960289e2670
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53538170"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55485445"
 ---
 # <a name="connecting-azure-kubernetes-service-and-azure-database-for-mysql"></a>Připojení Azure Kubernetes Service a Azure Database for MySQL
 
@@ -32,6 +32,14 @@ Můžete ověřit, zda váš cluster AKS akcelerovanými síťovými službami:
 6. Přejděte do Virtuálního počítače **sítě** kartu.
 7. Ověřte, zda **akcelerované síťové služby** "Zapnutý."
 
+Nebo přes rozhraní příkazového řádku Azure pomocí následujících příkazů:
+```azurecli
+az aks show --resource-group myResourceGroup --name myAKSCluster --query "nodeResourceGroup"
+```
+Výstup bude skupina generované prostředků, který vytvoří AKS obsahující síťové rozhraní. Vezme název "nodeResourceGroup" a použít ho v dalším příkazu. **EnableAcceleratedNetworking** buď bude true nebo false:
+```azurecli
+az network nic list --resource-group nodeResourceGroup -o table
+```
 
 ## <a name="open-service-broker-for-azure"></a>Technologie Open Service Broker for Azure 
 [Otevřete Service Broker for Azure](https://github.com/Azure/open-service-broker-azure/blob/master/README.md) (OSBA) umožňuje zřizovat služby Azure přímo z Kubernetes nebo Cloud Foundry. Jde [otevřená rozhraní API služby Service Broker](https://www.openservicebrokerapi.org/) implementace pro Azure.

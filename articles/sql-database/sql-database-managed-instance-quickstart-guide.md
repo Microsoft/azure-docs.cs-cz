@@ -3,7 +3,7 @@ title: Rychlý start – Azure SQL Database Managed Instance | Dokumentace Micro
 description: Zjistěte, jak rychle začít s Azure SQL Database – Managed Instance
 services: sql-database
 ms.service: sql-database
-ms.subservice: ''
+ms.subservice: managed-instance
 ms.custom: ''
 ms.devlang: ''
 ms.topic: quickstart
@@ -12,12 +12,12 @@ ms.author: jovanpop
 ms.reviewer: carlr
 manager: craigg
 ms.date: 01/25/2019
-ms.openlocfilehash: 77deed43c106a451d3de768989233c749e1280e1
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: a23a14ce7fa45ffd216dd9af04314dd1538dc8d7
+ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 01/31/2019
-ms.locfileid: "55468168"
+ms.locfileid: "55512512"
 ---
 # <a name="getting-started-with-azure-sql-database-managed-instance"></a>Začínáme s Azure SQL Database Managed Instance
 

@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 01/02/2019
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: 384a277f3465ac97285fbb08fa299a5bed8c87c4
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: c8d34ecb46721a8dd8dc1b1ad9f73c9f2ca2b3a2
+ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 01/31/2019
-ms.locfileid: "55477688"
+ms.locfileid: "55507395"
 ---
 # <a name="troubleshoot-azure-files-problems-in-windows"></a>Řešení potíží s Azure Files problémy ve Windows
 
@@ -61,7 +61,7 @@ Systémová chyba 53 nebo 67 systémové chybě může dojít, pokud 445 odchoz�
 
 Chcete-li zkontrolovat, zda brána firewall nebo poskytovatele internetových služeb neblokuje port 445, použijte [AzFileDiagnostics](https://gallery.technet.microsoft.com/Troubleshooting-tool-for-a9fa1fe5) nástroj nebo `Test-NetConnection` rutiny. 
 
-Použít `Test-NetConnection` rutiny AzureRM PowerShell musí být nainstalovaný modul, naleznete v tématu [instalace modulu Azure PowerShell](/powershell/azure/azurerm/install-azurerm-ps) Další informace. Nezapomeňte nahradit `<your-storage-account-name>` a `<your-resoure-group-name>` odpovídajícími názvy pro váš účet úložiště.
+Použít `Test-NetConnection` rutiny AzureRM PowerShell musí být nainstalovaný modul, naleznete v tématu [instalace modulu Azure PowerShell](/powershell/azure/azurerm/install-azurerm-ps) Další informace. Nezapomeňte nahradit `<your-storage-account-name>` a `<your-resource-group-name>` odpovídajícími názvy pro váš účet úložiště.
 
    
     $resourceGroupName = "<your-resource-group-name>"

@@ -6,12 +6,12 @@ ms.service: azure-resource-manager
 ms.topic: reference
 ms.date: 1/24/2019
 ms.author: tomfitz
-ms.openlocfilehash: fc085a94e2412ff21b09755102f79636a0b0d3b5
-ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
+ms.openlocfilehash: d9892b158eae1a83ab1f8eed6c14224e1d4bca15
+ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54884941"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55509904"
 ---
 # <a name="tag-support-for-azure-resources"></a>Podpora značek pro prostředky Azure
 Tento článek popisuje, zda typ prostředku podporuje [značky](resource-group-using-tags.md).
@@ -68,13 +68,13 @@ Tento článek popisuje, zda typ prostředku podporuje [značky](resource-group-
 ## <a name="microsoftanalysisservices"></a>Microsoft.AnalysisServices
 | Typ prostředku | Podporuje značky |
 | ------------- | ----------- |
-| serverů | Ano | 
+| servers | Ano | 
 
 ## <a name="microsoftapimanagement"></a>Microsoft.ApiManagement
 | Typ prostředku | Podporuje značky |
 | ------------- | ----------- |
 | reportFeedback | Ne | 
-| služba | Ano | 
+| service | Ano | 
 | validateServiceName | Ne | 
 
 ## <a name="microsoftattestation"></a>Microsoft.Attestation
@@ -110,7 +110,7 @@ Tento článek popisuje, zda typ prostředku podporuje [značky](resource-group-
 ## <a name="microsoftazuregeneva"></a>Microsoft.Azure.Geneva
 | Typ prostředku | Podporuje značky |
 | ------------- | ----------- |
-| Prostředí | Ne | 
+| environments | Ne | 
 | prostředí/účty | Ne | 
 | prostředí/účty nebo obory názvů | Ne | 
 | prostředí/účty nebo obory názvů/konfigurace | Ne | 
@@ -123,7 +123,7 @@ Tento článek popisuje, zda typ prostředku podporuje [značky](resource-group-
 ## <a name="microsoftazurestack"></a>Microsoft.AzureStack
 | Typ prostředku | Podporuje značky |
 | ------------- | ----------- |
-| registrace | Ano | 
+| registrations | Ano | 
 | registrations/customerSubscriptions | Ne | 
 | registrace a produkty | Ne | 
 
@@ -226,7 +226,7 @@ Tento článek popisuje, zda typ prostředku podporuje [značky](resource-group-
 | ------------- | ----------- |
 | appliedReservations | Ne | 
 | calculatePrice | Ne | 
-| katalogy | Ne | 
+| catalogs | Ne | 
 | commercialReservationOrders | Ne | 
 | reservationOrders | Ne | 
 | reservationOrders/calculateRefund | Ne | 
@@ -244,8 +244,8 @@ Tento článek popisuje, zda typ prostředku podporuje [značky](resource-group-
 | Typ prostředku | Podporuje značky |
 | ------------- | ----------- |
 | edgenodes | Ne | 
-| Profily | Ano | 
-| profily a koncových bodů | Ano | 
+| profiles | Ano | 
+| profiles/endpoints | Ano | 
 | profiles/endpoints/customdomains | Ne | 
 | profily/koncové body/zdroje | Ne | 
 | validateProbe | Ne | 
@@ -299,7 +299,7 @@ Tento článek popisuje, zda typ prostředku podporuje [značky](resource-group-
 | Typ prostředku | Podporuje značky |
 | ------------- | ----------- |
 | Možnosti | Ne | 
-| Disky | Ne | 
+| disks | Ne | 
 | images | Ne | 
 | OSImage | Ne | 
 | osPlatformImages | Ne | 
@@ -326,13 +326,13 @@ Tento článek popisuje, zda typ prostředku podporuje [značky](resource-group-
 | Typ prostředku | Podporuje značky |
 | ------------- | ----------- |
 | availabilitySets | Ano | 
-| Disky | Ano | 
+| disks | Ano | 
 | images | Ano | 
 | restorePointCollections | Ano | 
 | restorePointCollections/restorePoints | Ne | 
 | sharedVMImages | Ano | 
 | sharedVMImages/versions | Ano | 
-| snímky | Ano | 
+| snapshots | Ano | 
 | virtualMachines | Ano | 
 | virtualMachines/diagnosticSettings | Ne | 
 | virtualMachines/extensions | Ano | 
@@ -375,7 +375,7 @@ Tento článek popisuje, zda typ prostředku podporuje [značky](resource-group-
 ## <a name="microsoftcontainerregistry"></a>Microsoft.ContainerRegistry
 | Typ prostředku | Podporuje značky |
 | ------------- | ----------- |
-| Registry | Ano | 
+| registries | Ano | 
 | Registry/sestavení | Ne | 
 | Registry/sestavení/zrušit | Ne | 
 | Registry/sestavení/getLogLink | Ne | 
@@ -388,13 +388,13 @@ Tento článek popisuje, zda typ prostředku podporuje [značky](resource-group-
 | registries/queueBuild | Ne | 
 | Registry/regenerateCredential | Ne | 
 | Registry/regenerateCredentials | Ne | 
-| Registry/replikace | Ano | 
+| registries/replications | Ano | 
 | Registry/spuštění | Ne | 
 | Registry/spuštění a zrušit | Ne | 
 | registries/scheduleRun | Ne | 
-| Registry nebo úloh | Ano | 
+| registries/tasks | Ano | 
 | registries/updatePolicies | Ne | 
-| Registry a webhooky | Ano | 
+| registries/webhooks | Ano | 
 | registries/webhooks/getCallbackConfig | Ne | 
 | Registry a webhooky/příkaz ping | Ne | 
 
@@ -407,7 +407,7 @@ Tento článek popisuje, zda typ prostředku podporuje [značky](resource-group-
 ## <a name="microsoftcontentmoderator"></a>Microsoft.ContentModerator
 | Typ prostředku | Podporuje značky |
 | ------------- | ----------- |
-| aplikace | Ano | 
+| applications | Ano | 
 | updateCommunicationPreference | Ne | 
 
 ## <a name="microsoftcortanaanalytics"></a>Microsoft.CortanaAnalytics
@@ -432,7 +432,7 @@ Tento článek popisuje, zda typ prostředku podporuje [značky](resource-group-
 ## <a name="microsoftcustomerinsights"></a>Microsoft.CustomerInsights
 | Typ prostředku | Podporuje značky |
 | ------------- | ----------- |
-| Rozbočovače | Ano | 
+| hubs | Ano | 
 | rozbočovače/authorizationPolicies | Ne | 
 | rozbočovače a konektorů | Ne | 
 | rozbočovače a konektorů/mapování | Ne | 
@@ -449,7 +449,7 @@ Tento článek popisuje, zda typ prostředku podporuje [značky](resource-group-
 ## <a name="microsoftdatabox"></a>Microsoft.DataBox
 | Typ prostředku | Podporuje značky |
 | ------------- | ----------- |
-| úlohy | Ano | 
+| jobs | Ano | 
 
 ## <a name="microsoftdataboxedge"></a>Microsoft.DataBoxEdge
 | Typ prostředku | Podporuje značky |
@@ -459,13 +459,13 @@ Tento článek popisuje, zda typ prostředku podporuje [značky](resource-group-
 ## <a name="microsoftdatabricks"></a>Microsoft.Databricks
 | Typ prostředku | Podporuje značky |
 | ------------- | ----------- |
-| pracovní prostory | Ano | 
+| workspaces | Ano | 
 | workspaces/virtualNetworkPeerings | Ne | 
 
 ## <a name="microsoftdatacatalog"></a>Microsoft.DataCatalog
 | Typ prostředku | Podporuje značky |
 | ------------- | ----------- |
-| katalogy | Ano | 
+| catalogs | Ano | 
 
 ## <a name="microsoftdataconnect"></a>Microsoft.DataConnect
 | Typ prostředku | Podporuje značky |
@@ -478,7 +478,7 @@ Tento článek popisuje, zda typ prostředku podporuje [značky](resource-group-
 | dataFactories | Ano | 
 | dataFactories/diagnosticSettings | Ne | 
 | dataFactorySchema | Ne | 
-| objekty pro vytváření | Ano | 
+| factories | Ano | 
 | objekty pro vytváření/integrationRuntimes | Ne | 
 
 ## <a name="microsoftdatalakeanalytics"></a>Microsoft.DataLakeAnalytics
@@ -500,26 +500,26 @@ Tento článek popisuje, zda typ prostředku podporuje [značky](resource-group-
 | Typ prostředku | Podporuje značky |
 | ------------- | ----------- |
 | services | Ano | 
-| služby a projekty | Ano | 
+| services/projects | Ano | 
 
 ## <a name="microsoftdbformariadb"></a>Microsoft.DBforMariaDB
 | Typ prostředku | Podporuje značky |
 | ------------- | ----------- |
-| serverů | Ano | 
+| servers | Ano | 
 | servery pro/recoverableServers | Ne | 
 | servery pro/virtualNetworkRules | Ne | 
 
 ## <a name="microsoftdbformysql"></a>Microsoft.DBforMySQL
 | Typ prostředku | Podporuje značky |
 | ------------- | ----------- |
-| serverů | Ano | 
+| servers | Ano | 
 | servery pro/recoverableServers | Ne | 
 | servery pro/virtualNetworkRules | Ne | 
 
 ## <a name="microsoftdbforpostgresql"></a>Microsoft.DBforPostgreSQL
 | Typ prostředku | Podporuje značky |
 | ------------- | ----------- |
-| serverů | Ano | 
+| servers | Ano | 
 | servery pro/poradci | Ne | 
 | servers/queryTexts | Ne | 
 | servery pro/recoverableServers | Ne | 
@@ -543,10 +543,10 @@ Tento článek popisuje, zda typ prostředku podporuje [značky](resource-group-
 ## <a name="microsoftdevtestlab"></a>Microsoft.DevTestLab
 | Typ prostředku | Podporuje značky |
 | ------------- | ----------- |
-| Praktická cvičení | Ano | 
+| labs | Ano | 
 | praktická cvičení/serviceRunners | Ano | 
 | labs/virtualMachines | Ano | 
-| Plány | Ano | 
+| schedules | Ano | 
 
 ## <a name="microsoftdocumentdb"></a>Microsoft.DocumentDB
 | Typ prostředku | Podporuje značky |
@@ -557,7 +557,7 @@ Tento článek popisuje, zda typ prostředku podporuje [značky](resource-group-
 ## <a name="microsoftdomainregistration"></a>Microsoft.DomainRegistration
 | Typ prostředku | Podporuje značky |
 | ------------- | ----------- |
-| domény | Ano | 
+| domains | Ano | 
 | domény/domainOwnershipIdentifiers | Ne | 
 | generateSsoRequest | Ne | 
 | topLevelDomains | Ne | 
@@ -573,18 +573,18 @@ Tento článek popisuje, zda typ prostředku podporuje [značky](resource-group-
 ## <a name="microsofteventgrid"></a>Microsoft.EventGrid
 | Typ prostředku | Podporuje značky |
 | ------------- | ----------- |
-| domény | Ano | 
+| domains | Ano | 
 | domény a témat | Ne | 
 | eventSubscriptions | Ne | 
 | extensionTopics | Ne | 
-| témata | Ano | 
+| topics | Ano | 
 | topicTypes | Ne | 
 
 ## <a name="microsofteventhub"></a>Microsoft.EventHub
 | Typ prostředku | Podporuje značky |
 | ------------- | ----------- |
-| Clustery | Ano | 
-| Obory názvů | Ano | 
+| clusters | Ano | 
+| namespaces | Ano | 
 | obory názvů a autorizačních pravidel | Ne | 
 | obory názvů/disasterrecoveryconfigs | Ne | 
 | obory názvů/eventhubs | Ne | 
@@ -627,13 +627,13 @@ Tento článek popisuje, zda typ prostředku podporuje [značky](resource-group-
 ## <a name="microsofthdinsight"></a>Microsoft.HDInsight
 | Typ prostředku | Podporuje značky |
 | ------------- | ----------- |
-| Clustery | Ano | 
+| clusters | Ano | 
 | clustery/aplikace | Ne | 
 
 ## <a name="microsoftimportexport"></a>Microsoft.ImportExport
 | Typ prostředku | Podporuje značky |
 | ------------- | ----------- |
-| úlohy | Ano | 
+| jobs | Ano | 
 
 ## <a name="microsoftinformationprotection"></a>Microsoft.InformationProtection
 | Typ prostředku | Podporuje značky |
@@ -654,7 +654,7 @@ Tento článek popisuje, zda typ prostředku podporuje [značky](resource-group-
 | autoscalesettings | Ano | 
 | základní hodnota | Ne | 
 | calculatebaseline | Ne | 
-| Součásti | Ano | 
+| components | Ano | 
 | součásti/události | Ne | 
 | components/pricingPlans | Ne | 
 | součásti či dotazu | Ne | 
@@ -666,14 +666,15 @@ Tento článek popisuje, zda typ prostředku podporuje [značky](resource-group-
 | logDefinitions | Ne | 
 | logprofiles | Ne | 
 | Protokoly | Ne | 
+| metricAlerts | Ano |
 | migrateToNewPricingModel | Ne | 
 | myWorkbooks | Ne | 
 | dotazy | Ne | 
 | rollbackToLegacyPricingModel | Ne | 
 | scheduledqueryrules | Ano | 
 | vmInsightsOnboardingStatuses | Ne | 
-| webové testy | Ano | 
-| sešity | Ano | 
+| webtests | Ano | 
+| workbooks | Ano | 
 
 ## <a name="microsoftintune"></a>Microsoft.Intune
 | Typ prostředku | Podporuje značky |
@@ -695,14 +696,14 @@ Tento článek popisuje, zda typ prostředku podporuje [značky](resource-group-
 | Typ prostředku | Podporuje značky |
 | ------------- | ----------- |
 | deletedVaults | Ne | 
-| trezory služby | Ano | 
+| vaults | Ano | 
 | trezory/accessPolicies | Ne | 
 | Trezory/tajných klíčů | Ne | 
 
 ## <a name="microsoftkusto"></a>Microsoft.Kusto
 | Typ prostředku | Podporuje značky |
 | ------------- | ----------- |
-| Clustery | Ano | 
+| clusters | Ano | 
 | clustery a databází | Ne | 
 | clustery/databází/dataconnections | Ne | 
 | clustery/databází/eventhubconnections | Ne | 
@@ -732,7 +733,7 @@ Tento článek popisuje, zda typ prostředku podporuje [značky](resource-group-
 | Typ prostředku | Podporuje značky |
 | ------------- | ----------- |
 | integrationAccounts | Ano | 
-| Pracovní postupy | Ano | 
+| workflows | Ano | 
 
 ## <a name="microsoftmachinelearning"></a>Microsoft.MachineLearning
 | Typ prostředku | Podporuje značky |
@@ -745,8 +746,8 @@ Tento článek popisuje, zda typ prostředku podporuje [značky](resource-group-
 | Typ prostředku | Podporuje značky |
 | ------------- | ----------- |
 | accounts | Ano | 
-| účty a pracovní prostory | Ano | 
-| účty/pracovních prostorů a projektů | Ano | 
+| accounts/workspaces | Ano | 
+| accounts/workspaces/projects | Ano | 
 | teamAccounts | Ano | 
 | teamAccounts/pracovní prostory | Ano | 
 | teamAccounts/pracovních prostorů a projektů | Ano | 
@@ -759,7 +760,7 @@ Tento článek popisuje, zda typ prostředku podporuje [značky](resource-group-
 ## <a name="microsoftmachinelearningservices"></a>Microsoft.MachineLearningServices
 | Typ prostředku | Podporuje značky |
 | ------------- | ----------- |
-| pracovní prostory | Ano | 
+| workspaces | Ano | 
 | pracovní prostory a výpočetní prostředí | Ne | 
 
 ## <a name="microsoftmanagedidentity"></a>Microsoft.ManagedIdentity
@@ -832,7 +833,7 @@ Tento článek popisuje, zda typ prostředku podporuje [značky](resource-group-
 ## <a name="microsoftmigrate"></a>Microsoft.Migrate
 | Typ prostředku | Podporuje značky |
 | ------------- | ----------- |
-| Projekty | Ano | 
+| projects | Ano | 
 
 ## <a name="microsoftnetwork"></a>Microsoft.Network
 | Typ prostředku | Podporuje značky |
@@ -842,7 +843,7 @@ Tento článek popisuje, zda typ prostředku podporuje [značky](resource-group-
 | azureFirewallFqdnTags | Ne | 
 | azureFirewalls | Ano | 
 | bgpServiceCommunities | Ne | 
-| připojení | Ano | 
+| connections | Ano | 
 | ddosCustomPolicies | Ano | 
 | ddosProtectionPlans | Ano | 
 | dnsOperationStatuses | Ne | 
@@ -898,7 +899,7 @@ Tento článek popisuje, zda typ prostředku podporuje [značky](resource-group-
 ## <a name="microsoftnotificationhubs"></a>Microsoft.NotificationHubs
 | Typ prostředku | Podporuje značky |
 | ------------- | ----------- |
-| Obory názvů | Ano | 
+| namespaces | Ano | 
 | namespaces/notificationHubs | Ano | 
 
 ## <a name="microsoftoperationalinsights"></a>Microsoft.OperationalInsights
@@ -907,7 +908,7 @@ Tento článek popisuje, zda typ prostředku podporuje [značky](resource-group-
 | zařízení | Ne | 
 | linkTargets | Ne | 
 | storageInsightConfigs | Ne | 
-| pracovní prostory | Ano | 
+| workspaces | Ano | 
 | pracovní prostory/zdroje dat | Ne | 
 | pracovní prostory/linkedServices | Ne | 
 | pracovní prostory/dotazu | Ne | 
@@ -917,8 +918,8 @@ Tento článek popisuje, zda typ prostředku podporuje [značky](resource-group-
 | ------------- | ----------- |
 | managementassociations | Ne | 
 | managementconfigurations | Ano | 
-| Řešení | Ano | 
-| zobrazení | Ano | 
+| solutions | Ano | 
+| views | Ano | 
 
 ## <a name="microsoftpolicyinsights"></a>Microsoft.PolicyInsights
 | Typ prostředku | Podporuje značky |
@@ -932,7 +933,7 @@ Tento článek popisuje, zda typ prostředku podporuje [značky](resource-group-
 | Typ prostředku | Podporuje značky |
 | ------------- | ----------- |
 | konzoly nástroje | Ne | 
-| Řídicí panely | Ano | 
+| dashboards | Ano | 
 | userSettings | Ne | 
 
 ## <a name="microsoftpowerbi"></a>Microsoft.PowerBI
@@ -943,7 +944,7 @@ Tento článek popisuje, zda typ prostředku podporuje [značky](resource-group-
 ## <a name="microsoftpowerbidedicated"></a>Microsoft.PowerBIDedicated
 | Typ prostředku | Podporuje značky |
 | ------------- | ----------- |
-| Kapacity | Ano | 
+| capacities | Ano | 
 
 ## <a name="microsoftprojectoxford"></a>Microsoft.ProjectOxford
 | Typ prostředku | Podporuje značky |
@@ -954,12 +955,12 @@ Tento článek popisuje, zda typ prostředku podporuje [značky](resource-group-
 | Typ prostředku | Podporuje značky |
 | ------------- | ----------- |
 | backupProtectedItems | Ne | 
-| trezory služby | Ano | 
+| vaults | Ano | 
 
 ## <a name="microsoftrelay"></a>Microsoft.Relay
 | Typ prostředku | Podporuje značky |
 | ------------- | ----------- |
-| Obory názvů | Ano | 
+| namespaces | Ano | 
 | obory názvů a autorizačních pravidel | Ne | 
 | obory názvů/hybridconnections | Ne | 
 | obory názvů/hybridconnections/autorizačních pravidel | Ne | 
@@ -1004,13 +1005,13 @@ Tento článek popisuje, zda typ prostředku podporuje [značky](resource-group-
 ## <a name="microsoftsaas"></a>Microsoft.SaaS
 | Typ prostředku | Podporuje značky |
 | ------------- | ----------- |
-| aplikace | Ano | 
+| applications | Ano | 
 | saasresources | Ne | 
 
 ## <a name="microsoftscheduler"></a>Microsoft.Scheduler
 | Typ prostředku | Podporuje značky |
 | ------------- | ----------- |
-| toky | Ano | 
+| flows | Ano | 
 | jobcollections | Ano | 
 
 ## <a name="microsoftsearch"></a>Microsoft.Search
@@ -1025,7 +1026,7 @@ Tento článek popisuje, zda typ prostředku podporuje [značky](resource-group-
 | advancedThreatProtectionSettings | Ne | 
 | výstrahy | Ne | 
 | allowedConnections | Ne | 
-| zařízení | Ne | 
+| appliances | Ne | 
 | applicationWhitelistings | Ne | 
 | AutoProvisioningSettings | Ne | 
 | Dodržování předpisů | Ne | 
@@ -1063,7 +1064,7 @@ Tento článek popisuje, zda typ prostředku podporuje [značky](resource-group-
 ## <a name="microsoftservicebus"></a>Microsoft.ServiceBus
 | Typ prostředku | Podporuje značky |
 | ------------- | ----------- |
-| Obory názvů | Ano | 
+| namespaces | Ano | 
 | obory názvů a autorizačních pravidel | Ne | 
 | obory názvů/disasterrecoveryconfigs | Ne | 
 | obory názvů/eventgridfilters | Ne | 
@@ -1078,15 +1079,15 @@ Tento článek popisuje, zda typ prostředku podporuje [značky](resource-group-
 ## <a name="microsoftservicefabric"></a>Microsoft.ServiceFabric
 | Typ prostředku | Podporuje značky |
 | ------------- | ----------- |
-| Clustery | Ano | 
+| clusters | Ano | 
 | clustery/aplikace | Ne | 
 
 ## <a name="microsoftservicefabricmesh"></a>Microsoft.ServiceFabricMesh
 | Typ prostředku | Podporuje značky |
 | ------------- | ----------- |
-| aplikace | Ano | 
+| applications | Ano | 
 | gateways | Ano | 
-| Sítě | Ano | 
+| networks | Ano | 
 | tajné kódy | Ano | 
 | volumes | Ano | 
 
@@ -1099,16 +1100,16 @@ Tento článek popisuje, zda typ prostředku podporuje [značky](resource-group-
 | Typ prostředku | Podporuje značky |
 | ------------- | ----------- |
 | applianceDefinitions | Ano | 
-| zařízení | Ano | 
+| appliances | Ano | 
 | applicationDefinitions | Ano | 
-| aplikace | Ano | 
+| applications | Ano | 
 | jitRequests | Ano | 
 
 ## <a name="microsoftsql"></a>Microsoft.SQL
 | Typ prostředku | Podporuje značky |
 | ------------- | ----------- |
 | managedInstances | Ano |
-| managedInstances/databáze | Ano |
+| managedInstances/databáze | Ano (viz poznámka níže) |
 | managedInstances/databases/backupShortTermRetentionPolicies | Ne |
 | managedInstances/databases/schemas/tables/columns/sensitivityLabels | Ne |
 | managedInstances/databases/vulnerabilityAssessments | Ne |
@@ -1117,15 +1118,19 @@ Tento článek popisuje, zda typ prostředku podporuje [značky](resource-group-
 | managedInstances/klíče | Ne |
 | managedInstances/restorableDroppedDatabases/backupShortTermRetentionPolicies | Ne |
 | managedInstances/vulnerabilityAssessments | Ne |
-| serverů | Ano | 
+| servers | Ano | 
 | servery pro/správci | Ne | 
 | servery pro/communicationLinks | Ne | 
-| servery pro/databáze | Ano | 
+| servers/databases | Ano (viz poznámka níže) | 
 | servers/encryptionProtector | Ne | 
 | servery pro/klíče | Ne | 
 | servers/restorableDroppedDatabases | Ne | 
 | servery pro/serviceobjectives | Ne | 
 | servers/tdeCertificates | Ne | 
+
+> [!NOTE]
+> Hlavní databáze nepodporuje značky, ale ostatní databáze podporují značky.
+
 
 ## <a name="microsoftsqlvirtualmachine"></a>Microsoft.SqlVirtualMachine
 | Typ prostředku | Podporuje značky |
@@ -1158,13 +1163,16 @@ Tento článek popisuje, zda typ prostředku podporuje [značky](resource-group-
 ## <a name="microsoftstorsimple"></a>Microsoft.StorSimple
 | Typ prostředku | Podporuje značky |
 | ------------- | ----------- |
-| Správci | Ano | 
+| managers | Ano | 
 
 ## <a name="microsoftstreamanalytics"></a>Microsoft.StreamAnalytics
 | Typ prostředku | Podporuje značky |
 | ------------- | ----------- |
-| streamingjobs | Ano | 
+| streamingjobs | Ano (viz poznámka níže) | 
 | streamingjobs/diagnosticSettings | Ne | 
+
+> [!NOTE]
+> Při spuštění streamingjobs nelze přidat značku. Zastavte prostředek, který chcete přidat značku.
 
 ## <a name="microsoftsubscription"></a>Microsoft.Subscription
 | Typ prostředku | Podporuje značky |
@@ -1187,17 +1195,17 @@ Tento článek popisuje, zda typ prostředku podporuje [značky](resource-group-
 ## <a name="microsofttimeseriesinsights"></a>Microsoft.TimeSeriesInsights
 | Typ prostředku | Podporuje značky |
 | ------------- | ----------- |
-| Prostředí | Ano | 
+| environments | Ano | 
 | prostředí/accessPolicies | Ne | 
-| prostředí/eventsources | Ano | 
+| environments/eventsources | Ano | 
 | prostředí/referenceDataSets | Ano | 
 
 ## <a name="microsoftvisualstudio"></a>microsoft.visualstudio
 | Typ prostředku | Podporuje značky |
 | ------------- | ----------- |
 | account | Ano | 
-| účet a rozšíření | Ano | 
-| účet nebo projektu | Ano | 
+| account/extension | Ano | 
+| account/project | Ano | 
 
 ## <a name="microsoftweb"></a>Microsoft.Web
 | Typ prostředku | Podporuje značky |
@@ -1213,9 +1221,9 @@ Tento článek popisuje, zda typ prostředku podporuje [značky](resource-group-
 | apiManagementAccounts/connectionAcls | Ne | 
 | apiManagementAccounts/připojení | Ne | 
 | billingMeters | Ne | 
-| certifikáty | Ano | 
+| certificates | Ano | 
 | connectionGateways | Ano | 
-| připojení | Ano | 
+| connections | Ano | 
 | customApis | Ano | 
 | deletedSites | Ne | 
 | functions | Ne | 
@@ -1230,7 +1238,7 @@ Tento článek popisuje, zda typ prostředku podporuje [značky](resource-group-
 | Moduly runtime | Ne | 
 | serverFarms | Ano | 
 | serverFarms/workers | Ne | 
-| Weby | Ano | 
+| sites | Ano | 
 | sites/domainOwnershipIdentifiers | Ne | 
 | sites/hostNameBindings | Ne | 
 | servery a instancí | Ne | 
@@ -1238,7 +1246,7 @@ Tento článek popisuje, zda typ prostředku podporuje [značky](resource-group-
 | sites/premieraddons | Ano | 
 | servery a doporučení | Ne | 
 | sites/resourceHealthMetadata | Ne | 
-| servery a sloty | Ano | 
+| sites/slots | Ano | 
 | sites/slots/hostNameBindings | Ne | 
 | servery/sloty/instance | Ne | 
 | sites/slots/instances/extensions | Ne | 
@@ -1260,7 +1268,7 @@ Tento článek popisuje, zda typ prostředku podporuje [značky](resource-group-
 ## <a name="microsoftworkloadmonitor"></a>Microsoft.WorkloadMonitor
 | Typ prostředku | Podporuje značky |
 | ------------- | ----------- |
-| Součásti | Ne | 
+| components | Ne | 
 | componentsSummary | Ne | 
 | monitorInstances | Ne | 
 | monitorInstancesSummary | Ne | 

@@ -10,15 +10,15 @@ ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 05/11/2018
 ms.author: zhiweiw
-ms.openlocfilehash: 8841a4d216160af4ed731570b40754307ffbb5a4
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: 7f367049cda76eea2dfb3040f714a7050a26520e
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52996044"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55495900"
 ---
 # <a name="diagnose-and-remediate-duplicated-attribute-sync-errors"></a>Diagnostikovat a opravovat chyby synchronizace duplicitním atributem
 
@@ -52,7 +52,7 @@ Funkce Diagnostika podporuje uživatelské objekty s následujícími duplicitn�
 | ------------------ | -----------------|
 | UserPrincipalName | QuarantinedAttributeValueMustBeUnique nebo AttributeValueMustBeUnique | 
 | ProxyAddresses | QuarantinedAttributeValueMustBeUnique nebo AttributeValueMustBeUnique | 
-| sipProxyAddress | AttributeValueMustBeUnique | 
+| SipProxyAddress | AttributeValueMustBeUnique | 
 | OnPremiseSecurityIdentifier |  AttributeValueMustBeUnique |
 
 >[!IMPORTANT]
@@ -67,7 +67,7 @@ Na webu Azure Portal proveďte několik kroků k identifikaci konkrétní opravi
 1.  Zkontrolujte, **diagnostikovat stav** sloupce. Stav se zobrazí, pokud je možný způsob, jak opravit chybu při synchronizaci přímo ze služby Azure Active Directory. Jinými slovy, řešení problémů s tok existuje, který můžete zúžit případě chyba a potenciálně ho opravit.
 | Status | Co znamená? |
 | ------------------ | -----------------|
-| Nezahájeno | Jste nenavštívili tento proces diagnostiku. V závislosti na výsledek diagnostiky je potenciální způsob, jak opravit chybu synchronizace přímo z portálu. |
+| Není spuštěné | Jste nenavštívili tento proces diagnostiku. V závislosti na výsledek diagnostiky je potenciální způsob, jak opravit chybu synchronizace přímo z portálu. |
 | Vyžaduje se ruční oprava. | Chyba nevejde kritéria dostupných oprav z portálu. Buď konfliktní typy objektů nejsou uživatelů, nebo jste už provedli postup diagnostiky a nemusí se řešit oprava nebyl k dispozici z portálu. V takovém případě oprava ze strany místní je stále jedno z řešení. [Přečtěte si víc o místní opravy](https://support.microsoft.com/help/2647098). | 
 | Čeká se na synchronizaci. | Oprava byla použita. Na portálu je čekání na další cyklus synchronizace vymazat chybu. |
   >[!IMPORTANT]

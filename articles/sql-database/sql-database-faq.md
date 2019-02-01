@@ -3,7 +3,7 @@ title: Azure SQL Database – nejčastější dotazy | Dokumentace Microsoftu
 description: Odpovědi na běžné dotazy zákazníků, požádejte o cloudových databází Azure SQL Database, od Microsoftu relační databázový systém (RDBMS) a databáze jako služba v cloudu.
 services: sql-database
 ms.service: sql-database
-ms.subservice: ''
+ms.subservice: service
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
@@ -12,12 +12,12 @@ ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
 ms.date: 01/25/2019
-ms.openlocfilehash: a7ebf246300fdafe69f45aca0237964c8e669d5c
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 3ede7bdf0837c88340f13a0f921ca1752a3d3c6b
+ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 01/31/2019
-ms.locfileid: "55463952"
+ms.locfileid: "55511645"
 ---
 # <a name="sql-database-frequently-asked-questions-faq"></a>SQL Database – nejčastější dotazy (FAQ)
 

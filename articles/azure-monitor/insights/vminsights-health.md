@@ -11,14 +11,14 @@ ms.service: azure-monitor
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 01/30/2019
+ms.date: 01/31/2019
 ms.author: magoedte
-ms.openlocfilehash: 58da86140b97c5292d390b6f91502b7f0622986a
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 90cd6f640188408771b3a64a31aadf89cfefcaae
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 01/31/2019
-ms.locfileid: "55476838"
+ms.locfileid: "55487859"
 ---
 # <a name="understand-the-health-of-your-azure-virtual-machines-with-azure-monitor-for-vms-preview"></a>Vysvětlení stavu virtuálních počítačů Azure pomocí Azure monitoru pro virtuální počítače (preview)
 Azure obsahuje několik služeb, které jednotlivě provádět konkrétní role nebo úkolu v prostoru pro monitorování, ale poskytuje perspektivy podrobný stav operačního systému hostované na Azure virtual machines nebyl k dispozici.  V průběhu monitorování může pro různé podmínky použití Log Analytics nebo Azure Monitor, nejsou určeny pro modelování a představují stavu základní součásti nebo celkového stavu virtuálního počítače.  Prostřednictvím služby Azure Monitor pro funkci stav virtuálních počítačů aktivně Monitoruje dostupnost a výkon Windows nebo Linuxem hostovaného operačního systému s modelem, které představují klíčových komponent a jejich vztahů kritéria, která určuje, jak měřit kvalitu ty komponenty, a upozorní vás při zjištění není v pořádku podmínky.  
@@ -30,11 +30,11 @@ Tento článek vám pomůže pochopit, jak rychle posoudit, prozkoumat a vyřeš
 Informace o konfiguraci monitorování Azure pro virtuální počítače najdete v tématu [povolit monitorování Azure pro virtuální počítače](vminsights-onboard.md).
 
 >[!NOTE]
->Od 15. února 2019 začneme můžete migrovat z aktuální stav modelu ve službě Azure Monitor pro funkci stav virtuální počítače, který se zobrazí, když jste v prostředí diagnostiku stavu v současné době na novou verzi modelu stavu. Tato aktualizace zlepšuje výkon při zpracování stavu kumulativní a obsahuje model zpracovaných stavů zobrazí v zobrazení stavu diagnostiky. 
+>Od 11. února 2019 začneme můžete migrovat z aktuální stav modelu ve službě Azure Monitor pro funkci stav virtuální počítače, který se zobrazí, když jste v prostředí diagnostiku stavu v současné době na novou verzi modelu stavu. Tato aktualizace zlepšuje výkon při zpracování stavu kumulativní a obsahuje model zpracovaných stavů zobrazí v zobrazení stavu diagnostiky. 
 >
 >Na novém modelu stavu kumulativní podřízené kritéria kritéria úrovně stavu nadřazená/entita bude rychleji a proto stav aktualizace nadřazené do požadovaného nebo cílovém stavu s nižší latencí. Stále můžete filtrovat kritéria stavu v rámci **výkonu** a **dostupnosti** kategorie na rozdíl od předchozích metodu založenou na kartu k výběru obou kategorie v zobrazení.
 >
->Podrobné informace o nové možnosti diagnostiky stavu najdete stav diagnostiky [části](#health-diagnostics) v tomto článku. 
+>Podrobné informace o stavu diagnostiky najdete stav diagnostiky [části](#health-diagnostics) v tomto článku. 
 >
 >Tato aktualizace zlepší následující: 
 >
@@ -106,14 +106,16 @@ Chcete-li zobrazit stav virtuálního počítače Azure, vyberte **Insights (pre
 
 ![Azure Monitor pro přehled stavu virtuálních počítačů z vybraných virtuálních počítačů Azure](./media/vminsights-health/vminsights-directvm-health.png)
 
-Na **stavu** karta, v části **stavu virtuálního počítače hosta**, tato tabulka ukazuje aktuální stav virtuálního počítače a celkový počet upozornění na stav virtuálního počítače vyvolané komponentu není v pořádku. Odkazovat na [upozorňování a oznámení správy](#alerting-and-alert-management) další podrobnosti.  
+Na **stavu** karta, v části **stavu virtuálního počítače hosta**, tato tabulka ukazuje aktuální stav virtuálního počítače a celkový počet upozornění na stav virtuálního počítače vyvolané komponentu není v pořádku. Odkazovat na [výstrahy](#alerting-and-alert-management) části Další podrobnosti o prostředí pro upozorňování.  
 
-Stavy definované pro virtuální počítače jsou: 
+Stavy definované pro virtuální počítač jsou popsány v následující tabulce: 
 
-* **V pořádku** – virtuální počítač se nedetekovaly žádné problémy a funguje podle potřeby.  
-* **Kritické** – jeden nebo více problémů se zjistí, které je třeba řešit, aby bylo možné obnovit normální funkce podle očekávání. 
-* **Upozornění** -zjištění jeden nebo více problémů, které je třeba řešit nebo podmínku stavu může být důležité.  
-* **Neznámý** – Pokud službu nebylo možné navázat připojení s virtuálním Počítačem, stav se změní na neznámém stavu.  
+|Ikona |Stav |Význam |
+|-----|-------------|------------|
+| |V pořádku |Stav je v pořádku, pokud je v rámci podmínky definované stavu, o žádných problémech zjistila pro virtuální počítač a funguje podle potřeby. V případě nadřazené souhrnné monitorování stavu zobrazí nahoru a odráží nejlepší a nejhorší stav podřízené.|
+| |Kritická |Stav je velmi důležité, pokud není v podmínce definované stavu označující, že byly zjištěny jeden nebo více problémů, které je třeba řešit, aby bylo možné obnovit normální funkce. V případě nadřazené souhrnné monitorování stavu zobrazí nahoru a odráží nejlepší a nejhorší stav podřízené.|
+| |Upozornění |Stav je upozornění. Pokud je mezi dvěma prahovými hodnotami podmínky definované stavu, kde jeden udává *upozornění* stavu a druhý je uvedeno *kritický* stavu (tři prahové hodnoty stavu health můžete nakonfigurovat), nebo při, nekritické problém je zjištěna, což může způsobit kritické problémy, pokud nebyl vyřešen. V případě nadřazené souhrnné monitorování, pokud jeden nebo více podřízených je ve stavu upozornění, pak bude odrážet nadřazené *upozornění* stavu. Pokud je podřízený, který je v *kritický* a jiné podřízené v *upozornění* stavu, nadřazené souhrn se zobrazí stav *kritický*.|
+| |Neznámé |Stav je v *neznámý* stav, když stav nelze vypočítat z několika důvodů, například není možné ke shromažďování dat, služba neinicializované atd. Tento stav se nedá konfigurovat.| 
 
 Výběr **zobrazit stav diagnostiky** se otevře stránka zobrazuje všechny součásti virtuálního počítače, přidruženého stavu kritéria, změny stavů a další závažné potíže, se kterými monitorování součásti související se virtuální počítač. Další informace najdete v tématu [stav diagnostiky](#health-diagnostics). 
 
@@ -191,16 +193,7 @@ Diagnostika stavu organizuje informace o stavu do následujících kategorií:
  
 Všechna kritéria stavu definovaný pro konkrétní součást, jako je například logického disku, využití procesoru, atd. Kromě toho můžete zobrazit kategorie monitorování vedle **kritéria** sloupce.  
 
-Stav kritérií stavu je definován pomocí jedné ze čtyř stavů – *kritický*, *upozornění*, *pořádku*, a *neznámý*. První tři se dají konfigurovat, což znamená, můžete upravit prahové hodnoty monitorování pomocí [úlohy monitorování API](https://docs.microsoft.com/rest/api/monitor/microsoft.workloadmonitor/monitors/update). *Neznámý* není Konfigurovatelný a vyhrazené pro konkrétní scénáře, jak je popsáno v následující tabulce.  
-
-Následující tabulka obsahuje podrobnosti o stavů ve stavu diagnostiky.
-
-|Ikona |Stav |Význam |
-|-----|-------------|------------|
-| |V pořádku |Stav je v pořádku, pokud je ve stavu definované podmínky, o žádných problémech zjistila pro virtuální počítač tak, že funguje podle potřeby. V případě nadřazené souhrnné monitorování stavu zobrazí nahoru a odráží nejlepší a nejhorší stav podřízené.|
-| |Kritická |Stav je velmi důležité, pokud není v podmínce definované stavu označující, že byly zjištěny jeden nebo více problémů, které je třeba řešit, aby bylo možné obnovit normální funkce. V případě nadřazené souhrnné monitorování stavu zobrazí nahoru a odráží nejlepší a nejhorší stav podřízené.|
-| |Upozornění |Stav je upozornění. Pokud je mezi dvěma prahovými hodnotami podmínky definované stavu, kde jeden udává *upozornění* stavu a druhý je uvedeno *kritický* stavu (tři stavy pod kontrolou uživatele jsou je to možné), nebo při, nekritické problém je zjištěna, což může způsobit kritické problémy, pokud nebyl vyřešen. V případě nadřazené souhrnné monitorování, pokud jeden nebo více podřízených je ve stavu upozornění, pak bude odrážet nadřazené *upozornění* stavu. Pokud je podřízený, který je v *kritický* a jiné podřízené v *upozornění* stavu, nadřazené souhrn se zobrazí stav *kritický*.|
-| |Neznámé |Stav je v *neznámý* stav, když stav nelze vypočítat z několika důvodů, například není možné shromažďovat data, služba neinicializované atd. Toto není stav pod kontrolou uživatele.| 
+Stav kritérií stavu je definován pomocí jedné ze čtyř stavů – *kritický*, *upozornění*, *pořádku*, a *neznámý*. První tři se dají konfigurovat, což znamená, můžete upravit prahové hodnoty monitorování pomocí [úlohy monitorování API](https://docs.microsoft.com/rest/api/monitor/microsoft.workloadmonitor/monitors/update). *Neznámý* není Konfigurovatelný a vyhrazené pro konkrétní scénáře.  
 
 Stav diagnostiky stránka má tři hlavní části:
 
@@ -230,10 +223,10 @@ Celkový stav cíl je určen podle stavu všech jeho stav kritéria definovaná 
 
 ![Příklad kritéria stavu konfigurace](./media/vminsights-health/health-diagnostics-vm-example-02.png)
 
-V podokně Konfigurace pro vybraný stav kritéria, použijeme příklad **průměrné sekund za zápisu disku**, jeho prahová hodnota se dá nakonfigurovat s jinou číselnou hodnotu. Monitorování dvou stavů, což znamená pouze změny provedené od v dobrém stavu na varování je. Další kritéria stavu může být tři stavu, ve kterém můžete nakonfigurovat hodnotu pro upozornění a kritickou stavu mezní hodnotu stavu.  
+V podokně Konfigurace pro vybraný stav kritéria, použijeme příklad **průměrné sekund za zápisu disku**, jeho prahová hodnota se dá nakonfigurovat s jinou číselnou hodnotu. Monitorování dvou stavů, což znamená pouze změny provedené od v dobrém stavu na varování je. Další kritéria stavu může být tři stavy, ve kterém můžete nakonfigurovat hodnotu pro upozornění a kritickou stavu mezní hodnotu stavu.  
 
 >[!NOTE]
->Provádění změn konfigurace kritérií stavu do jedné instance se použijí pro všechny sledované instance.  Pokud vyberete třeba **fyzický Disk -1 D:** a upravovat **průměrné sekund za zápisu disku** prahovou hodnotu, se nevztahuje na pouze tuto instanci, ale všechny ostatní instance disku zjišťování a monitorování na virtuální počítač.
+>Provádění změn konfigurace kritérií stavu do jedné instance se použijí pro všechny sledované instance.  Pokud vyberete třeba **disku D:-1** a upravovat **průměrné sekund za zápisu disku** prahovou hodnotu, se nevztahuje na pouze tuto instanci, ale všechny ostatní instance disku zjišťování a monitorování ve virtuálním počítači.
 >
 
 ![Konfigurace stavu kritéria příkladu monitorování jednotky](./media/vminsights-health/health-diagnostics-criteria-config-01.png)
@@ -252,7 +245,7 @@ Tři sloupce jsou vzájemně propojena mezi sebou. Když vyberete zjištěné in
 
 ![Příklad výběru sledované instance a výsledky](./media/vminsights-health/health-diagnostics-vm-example-01.png)
 
-V příkladu výše, když vyberete **fyzického disku – 1 D:**, je filtrovaná stromu kritéria **fyzický Disk - 1 D:**. **Změny stavu** sloupci se zobrazuje změny stavu založené na dostupnosti **fyzického disku – 1 D:**. 
+V příkladu výše, když vyberete **disku – 1 D:**, je filtrovaná stromu kritéria **Disk - 1 D:**. **Změny stavu** sloupci se zobrazuje změny stavu založené na dostupnosti **disku – 1 D:**. 
 
 Najdete v článku aktualizovaný stav, můžete aktualizovat stránku diagnostiky stavu kliknutím **aktualizovat** odkaz.  Při aktualizaci stavu kritérium stav podle předem definovaného intervalu dotazování tento úkol vám umožní vyhnout čekání a odráží nejnovější stav.  **Kritéria stavu** je filtr umožňuje určit obor výsledky na základě vybraného stavu - *pořádku*, *upozornění*, *kritický*, *Neznámý*, a *všechny*.  **Poslední aktualizace** čas v pravém horním rohu představuje poslední čas při poslední stránku diagnostiky stavu aktualizace.  
 

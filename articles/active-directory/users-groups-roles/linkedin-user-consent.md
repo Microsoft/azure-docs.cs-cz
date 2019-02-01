@@ -1,5 +1,5 @@
 ---
-title: LinkedIn integrace sdílení dat a vyjádření souhlasu v Azure Active Directory | Dokumentace Microsoftu
+title: LinkedIn integrace sdílení dat a vyjádření souhlasu – Azure Active Directory | Dokumentace Microsoftu
 description: Vysvětluje, jak integrace LinkedIn sdílí data prostřednictvím aplikace Microsoftu ve službě Azure Active Directory
 services: active-directory
 author: curtand
@@ -12,12 +12,12 @@ ms.date: 01/28/2019
 ms.author: curtand
 ms.reviewer: beengen
 ms.custom: it-pro;seo-update-azuread-jan
-ms.openlocfilehash: a91cd830620cd56ae54006c3e09dfa02d8706d3c
-ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
+ms.openlocfilehash: ab0663ef40c61a4d8aced9050c8147b1ec4d81b0
+ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55299924"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55506495"
 ---
 # <a name="linkedin-integration-data-sharing-and-consent"></a>Sdílení dat integrace Linkedinu a vyjádření souhlasu
 

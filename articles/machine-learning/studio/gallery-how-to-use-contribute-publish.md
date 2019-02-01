@@ -1,8 +1,21 @@
 ---
-Název: Azure AI Galerie titleSuffix: Azure Machine Learning Studio Popis: Sdílení a vyhledání prostředků analýzy a další v galerii Azure AI. Učte se od ostatních a vlastní přispívání do komunity.
-Services: machine learningu ms.service: ms.subservice strojového učení: studio ms.topic: článku
-
-Autor: ericlicoding ms.author: amlstudiodocs ms.custom: předchozí Autor = heatherbshapiro předchozí ms.author=hshapiro ms.date: 01/11/2019
+title: Galerie Azure AI
+titleSuffix: Azure Machine Learning Studio
+description: Sdílení a vyhledání prostředků analýzy a další v galerii Azure AI. Učte se od ostatních a vlastní přispívání do komunity.
+services: machine-learning
+ms.service: machine-learning
+ms.subservice: studio
+ms.topic: article
+author: ericlicoding
+ms.author: amlstudiodocs
+ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
+ms.date: 01/11/2019
+ms.openlocfilehash: b5a460f3449785721ac360ba398bc47d1945b954
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.translationtype: MT
+ms.contentlocale: cs-CZ
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55497688"
 ---
 # <a name="share-and-discover-resources-in-the-azure-ai-gallery"></a>Sdílení a vyhledání prostředků v galerii Azure AI
 

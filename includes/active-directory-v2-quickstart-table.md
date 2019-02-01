@@ -7,7 +7,7 @@ author: andretms
 manager: mtillman
 editor: ''
 service: active-directory
-ms.component: develop
+ms.subservice: develop
 ms.devlang: na
 ms.topic: include
 ms.tgt_pltfrm: na
@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 01/09/2019
 ms.author: andret
 ms.custom: include file
-ms.openlocfilehash: 3f863d0d5d0a7ee30ff7cfdfd55f0b656d487ed0
-ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
+ms.openlocfilehash: 93dc56243f48bc456a6546a873039a4178984a5a
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54242352"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55480318"
 ---
 | Mobilní a nativní aplikace | Webové aplikace a SPA | Webová rozhraní API |
 | --- | --- | --- |

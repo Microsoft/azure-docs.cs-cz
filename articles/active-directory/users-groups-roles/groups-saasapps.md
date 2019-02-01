@@ -1,27 +1,27 @@
 ---
-title: Pomocí skupiny pro správu přístupu k aplikacím SaaS | Dokumentace Microsoftu
-description: Jak používat skupiny v Azure Active Directory Premium nebo Basic k přiřazení přístupu k aplikacím SaaS, které jsou integrované s Azure Active Directory.
+title: Pomocí skupiny pro správu přístupu k aplikacím SaaS – Azure Active Directory | Dokumentace Microsoftu
+description: Jak používat skupiny v Azure Active Directory k přiřazení přístupu k aplikacím SaaS, které jsou integrované s Azure Active Directory.
 services: active-directory
 documentationcenter: ''
 author: curtand
 manager: mtillman
-editor: ''
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: article
-ms.date: 03/14/2017
+ms.date: 01/31/2019
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
-ms.openlocfilehash: a7e4a20905b390945c22557af044cf739bc17ce8
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 26a726f200ea64895a7ebf289c030089c7de5555
+ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55197207"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55506256"
 ---
 # <a name="using-a-group-to-manage-access-to-saas-applications"></a>Použití skupiny ke správě přístupu k aplikacím SaaS
+
 Pomocí Azure Active Directory (Azure AD) s licencí Azure AD Premium nebo Azure AD Basic, můžete použít skupiny k přiřazení přístupu k aplikaci SaaS, která je integrovaná s Azure AD. Například pokud chcete přiřadit přístup pro marketingové oddělení k použití pěti různým aplikacím SaaS, můžete vytvořit skupinu, která obsahuje uživatelé v marketingovém oddělení a potom přidělit této skupině na těchto pět SaaS aplikací, které jsou vyžadované marketingové oddělení. Tímto způsobem můžete ušetřit čas tím, že spravuje členství v marketingovém oddělení na jednom místě. Uživatelé pak jsou přiřazeni k aplikaci při jsou přidány jako členové skupiny marketing a jejich přiřazení odebrali z aplikace, když jsou odebrány ze skupiny marketing. Tato funkce je možné se stovkami aplikací, které můžete přidat z v rámci Galerie aplikací Azure AD.
 
 > [!IMPORTANT]

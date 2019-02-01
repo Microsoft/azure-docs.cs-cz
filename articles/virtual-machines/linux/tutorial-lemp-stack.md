@@ -3,7 +3,7 @@ title: Kurz nasazení LEMP na virtuální počítač s Linuxem v Azure | Microso
 description: V tomto kurzu zjistíte, jak nainstalovat stack LEMP na virtuální počítač s Linuxem v Azure.
 services: virtual-machines-linux
 documentationcenter: virtual-machines
-author: dlepow
+author: cynthn
 manager: jeconnoc
 editor: ''
 tags: azure-resource-manager
@@ -13,14 +13,14 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.devlang: azurecli
 ms.topic: tutorial
-ms.date: 11/27/2017
-ms.author: danlep
-ms.openlocfilehash: c4926760162baa5687242f4372377c64c7e24b19
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
-ms.translationtype: HT
+ms.date: 01/30/2019
+ms.author: cynthn
+ms.openlocfilehash: 0a9d63f4064952adbfedfc3f9656370ef7c4a1cc
+ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46999354"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55511273"
 ---
 # <a name="tutorial-install-a-lemp-web-server-on-a-linux-virtual-machine-in-azure"></a>Kurz: Instalace webového serveru LEMP na virtuální počítač s Linuxem v Azure
 
@@ -46,17 +46,15 @@ Pokud se rozhodnete nainstalovat a místně používat rozhraní příkazového 
 Spuštěním následujícího příkazu aktualizujte zdroje balíčků Ubuntu a nainstalujte NGINX, MySQL a PHP. 
 
 ```bash
-sudo apt update && sudo apt install nginx mysql-server php-mysql php php-fpm
+sudo apt update && sudo apt install nginx && sudo apt install mysql-server php-mysql php-fpm
 ```
 
-Zobrazí se výzva k instalaci balíčků a dalších závislostí. Po zobrazení výzvy nastavte kořenové heslo pro MySQL a pokračujte stisknutím klávesy [Enter]. Postupujte podle zbývajících výzev. Tímto postupem se nainstalují minimální požadovaná rozšíření PHP potřebná k používání PHP a MySQL. 
-
-![Stránka kořenového hesla MySQL][1]
+Zobrazí se výzva k instalaci balíčků a dalších závislostí. Tímto postupem se nainstalují minimální požadovaná rozšíření PHP potřebná k používání PHP a MySQL.  
 
 ## <a name="verify-installation-and-configuration"></a>Ověření instalace a konfigurace
 
 
-### <a name="nginx"></a>NGINX
+### <a name="verify-nginx"></a>Ověření serveru NGINX
 
 Zkontrolujte verzi serveru NGINX pomocí následujícího příkazu:
 ```bash
@@ -68,7 +66,7 @@ Když je teď server NGINX nainstalovaný a port 80 k virtuálnímu počítači 
 ![Výchozí stránka serveru NGINX][3]
 
 
-### <a name="mysql"></a>MySQL
+### <a name="verify-and-secure-mysql"></a>Ověřit a zabezpečit MySQL
 
 Zkontrolujte verzi MySQL pomocí následujícího příkazu (všimněte si parametru velké `V`):
 
@@ -76,24 +74,24 @@ Zkontrolujte verzi MySQL pomocí následujícího příkazu (všimněte si param
 mysql -V
 ```
 
-Pokud chcete pomoct se zabezpečením instalace MySQL, spusťte skript `mysql_secure_installation`. Pokud nastavujete pouze dočasný server, můžete tento krok přeskočit. 
+Chcete-li pomoc se zabezpečením instalace MySQL, včetně nastavení kořenové heslo, spusťte `mysql_secure_installation` skriptu. 
 
 ```bash
-mysql_secure_installation
+sudo mysql_secure_installation
 ```
 
-Zadejte kořenové heslo pro MySQL a nakonfigurujte nastavení zabezpečení pro vaše prostředí.
+Volitelně můžete nastavit heslo ověření modulu plug-in (doporučeno). Potom nastavte heslo pro kořenového uživatele MySQL a nakonfigurujte zbývající nastavení zabezpečení pro vaše prostředí. Doporučujeme, abyste odpovědět "Y" (Ano) na všechny otázky.
 
 Pokud chcete vyzkoušet funkce MySQL (vytvoření databáze MySQL, přidání uživatelů nebo změna nastavení konfigurace), přihlaste se k MySQL. Tento krok není nezbytný k dokončení kurzu. 
 
 
 ```bash
-mysql -u root -p
+sudo mysql -u root -p
 ```
 
 Jakmile budete hotovi, ukončete příkazový řádek mysql zadáním `\q`.
 
-### <a name="php"></a>PHP
+### <a name="verify-php"></a>Ověřte PHP
 
 Zkontrolujte verzi PHP pomocí následujícího příkazu:
 
@@ -109,7 +107,7 @@ sudo cp /etc/nginx/sites-available/default /etc/nginx/sites-available/default_ba
 sudo sensible-editor /etc/nginx/sites-available/default
 ```
 
-V editoru nahraďte obsah souboru `/etc/nginx/sites-available/default` následujícím kódem. Komentáře obsahují vysvětlení jednotlivých nastavení. Nahraďte hodnotu *yourPublicIPAddress* veřejnou IP adresou svého virtuálního počítače a ponechte zbývající nastavení. Pak soubor uložte.
+V editoru nahraďte obsah souboru `/etc/nginx/sites-available/default` následujícím kódem. Komentáře obsahují vysvětlení jednotlivých nastavení. Použijte veřejnou IP adresu virtuálního počítače, *yourPublicIPAddress*, zkontrolujte verzi PHP v `fastcgi_pass`a ponechte zbývající nastavení. Pak soubor uložte.
 
 ```
 server {
@@ -129,7 +127,7 @@ server {
     # Include FastCGI configuration for NGINX
     location ~ \.php$ {
         include snippets/fastcgi-php.conf;
-        fastcgi_pass unix:/run/php/php7.0-fpm.sock;
+        fastcgi_pass unix:/run/php/php7.2-fpm.sock;
     }
 }
 ```
@@ -161,7 +159,7 @@ Teď můžete zkontrolovat informační stránku PHP, kterou jste vytvořili. Ot
 
 [!INCLUDE [virtual-machines-linux-tutorial-wordpress.md](../../../includes/virtual-machines-linux-tutorial-wordpress.md)]
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 V tomto kurzu jste nasadili server LEMP v Azure. Naučili jste se tyto postupy:
 
@@ -177,6 +175,5 @@ V dalším kurzu se dozvíte, jak zabezpečit webové servery pomocí certifiká
 > [!div class="nextstepaction"]
 > [Zabezpečení webového serveru pomocí SSL](tutorial-secure-web-server.md)
 
-[1]: ./media/tutorial-lemp-stack/configmysqlpassword-small.png
 [2]: ./media/tutorial-lemp-stack/phpsuccesspage.png
 [3]: ./media/tutorial-lemp-stack/nginx.png

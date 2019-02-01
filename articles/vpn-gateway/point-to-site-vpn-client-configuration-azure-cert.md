@@ -8,11 +8,11 @@ ms.topic: article
 ms.date: 01/18/2019
 ms.author: cherylmc
 ms.openlocfilehash: 0f834c88a22aca52a861309681ea0da204b2a552
-ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
+ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/19/2019
-ms.locfileid: "54412061"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55507991"
 ---
 # <a name="create-and-install-vpn-client-configuration-files-for-native-azure-certificate-authentication-p2s-configurations"></a>Vytvoření a instalace konfiguračních souborů klienta VPN pro ověřování P2S konfigurace nativního certifikátu Azure
 
@@ -93,7 +93,7 @@ Klikněte na tlačítko **přidat** k importu.
 
   **Rozhraní** hodnota je "VPN" a **typ sítě VPN** hodnota je "IKEv2". Zadejte název profilu, který **název služby** pole a potom klikněte na **vytvořit** k vytvoření profilu připojení klienta VPN.
 
-  ![Sítě](./media/point-to-site-vpn-client-configuration-azure-cert/network.png)
+  ![síť](./media/point-to-site-vpn-client-configuration-azure-cert/network.png)
 4. V **obecný** složky, ze **VpnSettings.xml** soubor, zkopírujte **VpnServer** hodnota značky. Vložte tuto hodnotu v **adresa serveru** a **vzdáleného ID** pole profilu.
 
   ![informace o serveru](./media/point-to-site-vpn-client-configuration-azure-cert/server.png)

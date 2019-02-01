@@ -8,15 +8,15 @@ manager: cgronlun
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: article
-ms.date: 01/24/2019
+ms.date: 01/30/2019
 ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: 1bc70e5c8243c50506cea871220412a4941cbe35
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: 7e7e362a2536f7adf2a7d68b096ab76d73f15a61
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55213102"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55496223"
 ---
 # <a name="how-to-use-the-qna-maker-rest-api-with-nodejs"></a>Jak používat rozhraní REST API nástroje QnA Maker s využitím Node.js 
 <a name="HOLTop"></a>
@@ -57,7 +57,7 @@ Následující kód vytvoří novou znalostní bázi pomocí metody [Create](htt
 3. Hodnotu `key` nahraďte přístupovým klíčem platným pro vaše předplatné.
 4. Spusťte program.
 
-```nodejs
+```javascript
 'use strict';
 
 let fs = require ('fs');
@@ -253,7 +253,7 @@ Následující kód aktualizuje existující znalostní báze pomocí metody [Up
 3. Hodnotu `key` nahraďte přístupovým klíčem platným pro vaše předplatné.
 4. Spusťte program.
 
-```nodejs
+```javascript
 'use strict';
 
 let fs = require ('fs');
@@ -454,7 +454,7 @@ Následující kód publikuje existující znalostní bázi pomocí metody [Publ
 3. Hodnotu `key` nahraďte přístupovým klíčem platným pro vaše předplatné.
 4. Spusťte program.
 
-```nodejs
+```javascript
 'use strict';
 
 let fs = require ('fs');
@@ -566,7 +566,7 @@ Následující kód nahrazuje obsah zadané znalostní báze pomocí metody [Rep
 3. Hodnotu `key` nahraďte přístupovým klíčem platným pro vaše předplatné.
 4. Spusťte program.
 
-```nodejs
+```javascript
 'use strict';
 
 let fs = require ('fs');
@@ -699,7 +699,7 @@ Následující kód stáhne obsah zadané znalostní báze pomocí metody [Downl
 3. Hodnotu `key` nahraďte přístupovým klíčem platným pro vaše předplatné.
 4. Spusťte program.
 
-```nodejs
+```javascript
 'use strict';
 
 let fs = require ('fs');
@@ -832,7 +832,7 @@ Následující kód získá odpovědi na dotazy pomocí zadané znalostní báze
 1. Hodnotu `kb` nahraďte ID znalostní báze, ve které se chcete dotazovat na odpovědi. Mějte na paměti, že tato znalostní báze už musí být publikovaná pomocí metody [Publish](#Publish).
 1. Spusťte program.
 
-```nodejs
+```javascript
 'use strict';
 
 let fs = require ('fs');
@@ -961,7 +961,7 @@ Následující kód získá informace o zadané znalostní bázi pomocí metody 
 3. Hodnotu `key` nahraďte přístupovým klíčem platným pro vaše předplatné.
 4. Spusťte program.
 
-```nodejs
+```javascript
 'use strict';
 
 let fs = require ('fs');
@@ -1076,7 +1076,7 @@ Následující kód získá informace o všech znalostních bázích zadaného u
 3. Hodnotu `key` nahraďte přístupovým klíčem platným pro vaše předplatné.
 4. Spusťte program.
 
-```nodejs
+```javascript
 'use strict';
 
 let fs = require ('fs');
@@ -1204,7 +1204,7 @@ Následující kód odstraní zadanou znalostní bázi pomocí metody [Delete kn
 3. Hodnotu `key` nahraďte přístupovým klíčem platným pro vaše předplatné.
 4. Spusťte program.
 
-```nodejs
+```javascript
 'use strict';
 
 let fs = require ('fs');
@@ -1316,7 +1316,7 @@ Následující kód získá klíče aktuálního koncového bodu pomocí metody 
 3. Hodnotu `key` nahraďte přístupovým klíčem platným pro vaše předplatné.
 4. Spusťte program.
 
-```nodejs
+```javascript
 'use strict';
 
 let fs = require ('fs');
@@ -1417,7 +1417,7 @@ Následující kód znovu vygeneruje klíče aktuálního koncového bodu pomoc�
 3. Hodnotu `key` nahraďte přístupovým klíčem platným pro vaše předplatné.
 4. Spusťte program.
 
-```nodejs
+```javascript
 'use strict';
 
 let fs = require ('fs');
@@ -1543,7 +1543,7 @@ Následující kód získá aktuální změny slov pomocí metody [Download alte
 3. Hodnotu `key` nahraďte přístupovým klíčem platným pro vaše předplatné.
 4. Spusťte program.
 
-```nodejs
+```javascript
 'use strict';
 
 let fs = require ('fs');
@@ -1650,7 +1650,7 @@ Následující kód nahradí aktuální změny slov pomocí metody [Replace alte
 3. Hodnotu `key` nahraďte přístupovým klíčem platným pro vaše předplatné.
 4. Spusťte program.
 
-```nodejs
+```javascript
 'use strict';
 
 let fs = require ('fs');

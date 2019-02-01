@@ -1,20 +1,20 @@
 ---
-title: Navrhování aplikací s vysokou dostupností pomocí Azure Storage geograficky redundantní jen pro čtení (RA-GRS) | Dokumentace Microsoftu
+title: Návrh s vysokou dostupností Aaplications pomocí geograficky redundantního úložiště jen pro čtení (RA-GRS) | Dokumentace Microsoftu
 description: Jak používat úložiště Azure RA-GRS se navrhovat vysoce dostupné aplikace dostatečně flexibilní, aby zpracování výpadků.
 services: storage
 author: tamram
 ms.service: storage
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 03/21/2018
+ms.date: 01/17/2019
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 3e2083b03b8463907c6d80fb5a9e1f25cca9beb5
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 47ca2febeffe395ba2482165f04ee29aa0193c63
+ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 01/31/2019
-ms.locfileid: "55454939"
+ms.locfileid: "55512240"
 ---
 # <a name="designing-highly-available-applications-using-ra-grs"></a>Navrhování aplikací s vysokou dostupností pomocí RA-GRS
 
@@ -43,9 +43,7 @@ Při navrhování aplikace za RA-GRS, mějte na paměti tyto klíčové body:
 
 * Můžete použít klientskou knihovnu pro úložiště pro interakci s daty v primární nebo sekundární oblast. Můžete také vytvořit přesměrování čtení požadavky automaticky do sekundární oblasti, pokud vyprší časový limit čtení žádosti do primární oblasti.
 
-* Pokud neexistuje závažný problém by to mělo dopad dostupnost dat v primární oblasti, tým Azure můžou aktivovat geo-převzetí služeb při selhání, v tomto okamžiku se záznamy DNS, odkazuje na primární oblast změní tak, aby odkazoval na sekundární oblasti.
-
-* Pokud dojde k selhání geo, Azure bude vyberte nový sekundární umístění a replikovat data do tohoto umístění a pak na něj odkažte sekundární položky DNS. Sekundární koncový bod nebude k dispozici, až do dokončení účet úložiště, které se replikují. Další informace najdete v tématu [co dělat, když dojde k výpadku služby Azure Storage](https://docs.microsoft.com/azure/storage/storage-disaster-recovery-guidance).
+* Pokud primární oblast stane nedostupnou, můžete spustit účtu převzetí služeb při selhání. Při převzetí služeb při selhání do sekundární oblasti, jsou položky DNS, odkazuje na primární oblast změnit tak, aby odkazoval na sekundární oblasti. Po dokončení převzetí služeb se obnoví oprávnění k zápisu pro účty GRS a RA-GRS. Další informace najdete v tématu [po havárii pro obnovení a úložiště účtu převzetí služeb při selhání (preview) ve službě Azure Storage](storage-disaster-recovery-guidance.md).
 
 ## <a name="application-design-considerations-when-using-ra-grs"></a>Aspekty návrhu aplikace při používání RA-GRS
 

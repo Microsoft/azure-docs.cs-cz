@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.service: cost-management
 manager: dougeby
 ms.custom: seodec18
-ms.openlocfilehash: 2b9702dbae0414ba597b6e1f6080d9de86f624fc
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 439b68edf1d50d5d5292542640793b8b526b5891
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53077068"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55485768"
 ---
 # <a name="tutorial-optimize-costs-from-recommendations"></a>Kurz: Optimalizace nákladů od doporučení.
 
@@ -53,7 +53,7 @@ Seznam doporučení identifikuje nedostatečné efektivity využití, nebo obsah
 
 Azure Advisor sleduje využívání virtuálních počítačů po dobu 14 dnů a pak identifikuje nedostatečně využité virtuální počítače. Virtuální počítače, jejichž využití procesoru je pět nebo míň procento a využívání sítě je 7 MB nebo méně čtyři nebo více dny jsou považovány za nízké využití virtuálních počítačů.
 
-5 % nebo méně nastavení využití procesoru je výchozí nastavení, ale můžete upravit nastavení. Další informace o úpravě nastavení, najdete v článku [konfiguraci pravidla průměrné využití procesoru](../advisor/advisor-get-started.md#configure-the-average-cpu-utilization-rule-for-the-low-usage-virtual-machine-recommendation) článku [pro doporučení pro virtuální počítače s nízkým využitím](../advisor/advisor-get-started.md#configure-the-average-cpu-utilization-rule-for-the-low-usage-virtual-machine-recommendation).
+5 % nebo méně nastavení využití procesoru je výchozí nastavení, ale můžete upravit nastavení. Další informace o úpravě nastavení, najdete v článku [nakonfigurovat pravidlo průměrné využití procesoru nebo doporučení pro virtuální počítače s nízkým využitím](../advisor/advisor-get-started.md#configure-low-usage-vm-recommendation).
 
 I když některé scénáře, může způsobit nízké využití podle návrhu, můžete často ušetřit peníze změnou velikosti virtuálních počítačů na levnější velikosti. Vaše skutečné úspory se můžou lišit, pokud zvolíte akce změny velikosti. Projděme si příklad změny velikosti virtuálního počítače.
 

@@ -13,16 +13,18 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 12/10/2018
 ms.author: tomfitz
-ms.openlocfilehash: 704aa488d40a18d7be0b64c9fc9a1bd33f8a3d96
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: e87ff83470ac8d375b4eee3b69f8793e3e11c0f5
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53184538"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55497413"
 ---
 # <a name="resolve-errors-for-resource-provider-registration"></a>Vyřešit chyby registrace poskytovatele prostředků
 
 Tento článek popisuje, chyby, které může dojít při používání poskytovatele prostředků, který jste dříve nepoužili ve vašem předplatném.
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="symptom"></a>Příznak
 
@@ -53,28 +55,28 @@ Tyto chyby se zobrazí na jednu ze tří důvodů:
 
 ## <a name="solution-1---powershell"></a>Řešení 1 – PowerShell
 
-Pokud používáte PowerShell, použijte **Get-AzureRmResourceProvider** zobrazíte stav registrace.
+Pokud používáte PowerShell, použijte **Get-AzResourceProvider** zobrazíte stav registrace.
 
 ```powershell
-Get-AzureRmResourceProvider -ListAvailable
+Get-AzResourceProvider -ListAvailable
 ```
 
-K registraci poskytovatele použijte **Register-AzureRmResourceProvider** a zadejte název poskytovatele prostředků, kterou chcete zaregistrovat.
+K registraci poskytovatele použijte **Register-AzResourceProvider** a zadejte název poskytovatele prostředků, kterou chcete zaregistrovat.
 
 ```powershell
-Register-AzureRmResourceProvider -ProviderNamespace Microsoft.Cdn
+Register-AzResourceProvider -ProviderNamespace Microsoft.Cdn
 ```
 
 Podporovaná umístění pro konkrétní typ prostředku, použijte:
 
 ```powershell
-((Get-AzureRmResourceProvider -ProviderNamespace Microsoft.Web).ResourceTypes | Where-Object ResourceTypeName -eq sites).Locations
+((Get-AzResourceProvider -ProviderNamespace Microsoft.Web).ResourceTypes | Where-Object ResourceTypeName -eq sites).Locations
 ```
 
 Pokud chcete získat podporované verze rozhraní API pro konkrétní typ prostředku, použijte:
 
 ```powershell
-((Get-AzureRmResourceProvider -ProviderNamespace Microsoft.Web).ResourceTypes | Where-Object ResourceTypeName -eq sites).ApiVersions
+((Get-AzResourceProvider -ProviderNamespace Microsoft.Web).ResourceTypes | Where-Object ResourceTypeName -eq sites).ApiVersions
 ```
 
 ## <a name="solution-2---azure-cli"></a>Řešení 2 – rozhraní příkazového řádku Azure

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/03/2019
 ms.author: tomfitz
-ms.openlocfilehash: 110b909106f5b9eae639639adf418647e3e8bea9
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: c5bd40741ec0fe047f98b4b4431819d90e188385
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54022338"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55491463"
 ---
 # <a name="deployment-functions-for-azure-resource-manager-templates"></a>Nasazení funkce pro šablony Azure Resource Manageru 
 
@@ -30,6 +30,8 @@ Resource Manager poskytuje následující funkce pro načtení hodnot z části 
 K získání hodnot z prostředky, skupiny prostředků nebo předplatná, najdete v článku [funkce Resource](resource-group-template-functions-resource.md).
 
 <a id="deployment" />
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="deployment"></a>nasazení
 `deployment()`
@@ -149,10 +151,10 @@ az group deployment create -g functionexamplegroup --template-uri https://raw.gi
 Pokud chcete nasadit tento příklad šablony pomocí prostředí PowerShell, použijte:
 
 ```powershell
-New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/deployment.json
+New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/deployment.json
 ```
 
-Úroveň předplatného šablony, která používá funkci nasazení, najdete v části [předplatné nasazení funkce](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/deploymentsubscription.json). Nasazuje se s oběma `az deployment create` nebo `New-AzureRmDeployment` příkazy.
+Úroveň předplatného šablony, která používá funkci nasazení, najdete v části [předplatné nasazení funkce](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/deploymentsubscription.json). Nasazuje se s oběma `az deployment create` nebo `New-AzDeployment` příkazy.
 
 <a id="parameters" />
 
@@ -252,11 +254,11 @@ Výstup z předchozího příkladu s výchozími hodnotami je:
 
 | Název | Typ | Hodnota |
 | ---- | ---- | ----- |
-| stringOutput | Řetězec | Možnost 1 |
+| stringOutput | String | Možnost 1 |
 | intOutput | Int | 1 |
 | objectOutput | Objekt | {"jedna": "a", "2": "b"} |
 | arrayOutput | Pole | [1, 2, 3] |
-| crossOutput | Řetězec | Možnost 1 |
+| crossOutput | String | Možnost 1 |
 
 Pokud chcete nasadit šablonu tento příklad pomocí Azure CLI, použijte:
 
@@ -267,7 +269,7 @@ az group deployment create -g functionexamplegroup --template-uri https://raw.gi
 Pokud chcete nasadit tento příklad šablony pomocí prostředí PowerShell, použijte:
 
 ```powershell
-New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/parameters.json
+New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/parameters.json
 ```
 
 <a id="variables" />
@@ -281,7 +283,7 @@ Vrátí hodnotu proměnné. Zadaný název proměnné musí být definovaný v s
 
 | Parametr | Požaduje se | Typ | Popis |
 |:--- |:--- |:--- |:--- |
-| NázevProměnné |Ano |Řetězec |Název proměnné, která se vrátí. |
+| variableName |Ano |String |Název proměnné, která se vrátí. |
 
 ### <a name="return-value"></a>Návratová hodnota
 
@@ -355,9 +357,9 @@ Výstup z předchozího příkladu s výchozími hodnotami je:
 
 | Název | Typ | Hodnota |
 | ---- | ---- | ----- |
-| exampleOutput1 | Řetězec | MojePromenna |
+| exampleOutput1 | String | myVariable |
 | exampleOutput2 | Pole | [1, 2, 3, 4] |
-| exampleOutput3 | Řetězec | MojePromenna |
+| exampleOutput3 | String | myVariable |
 | exampleOutput4 |  Objekt | {"vlastnost1": "hodnota1", "vlastnost2": "hodnota2"} |
 
 Pokud chcete nasadit šablonu tento příklad pomocí Azure CLI, použijte:
@@ -369,7 +371,7 @@ az group deployment create -g functionexamplegroup --template-uri https://raw.gi
 Pokud chcete nasadit tento příklad šablony pomocí prostředí PowerShell, použijte:
 
 ```powershell
-New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/variables.json
+New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/variables.json
 ```
 
 ## <a name="next-steps"></a>Další postup

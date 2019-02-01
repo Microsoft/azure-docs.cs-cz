@@ -9,14 +9,14 @@ ms.topic: tutorial
 author: hning86
 ms.author: haining
 ms.reviewer: sgilley
-ms.date: 09/24/2018
+ms.date: 01/29/2019
 ms.custom: seodec18
-ms.openlocfilehash: 887be89060a6d02eea74cd127cfbc93e48c0b3ff
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 167cc390fb9cc28f4249d168e452825b37902723
+ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55240858"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55510421"
 ---
 # <a name="tutorial-deploy-an-image-classification-model-in-azure-container-instances"></a>Kurz: Nasadit model klasifikace obrázků ve službě Azure Container Instances
 
@@ -33,23 +33,18 @@ V této části kurzu se pomocí služby Azure Machine Learning pro následujíc
 > * Nasazení modelu do služby Container Instances.
 > * Otestujte nasazeného modelu.
 
-Container Instances není ideální pro nasazení v produkčním prostředí, ale je velmi vhodná pro testování a pochopení pracovního postupu. Pro nasazení v produkčním prostředí škálovatelné zvažte použití služby Azure Kubernetes Service. Další informace najdete v tématu [nasazení a kde](how-to-deploy-and-where.md).
-
-## <a name="get-the-notebook"></a>Získání poznámkového bloku
-
-V zájmu usnadnění práce je tento kurz dostupný jako [poznámkový blok Jupyter](https://github.com/Azure/MachineLearningNotebooks/blob/master/tutorials/img-classification-part2-deploy.ipynb). Spustit *kurzy/img – klasifikace – část2 deploy.ipynb* poznámkového bloku v [poznámkových bloků Azure](https://notebooks.azure.com/) nebo vlastní server poznámkového bloku Jupyter.
-
-[!INCLUDE [aml-clone-in-azure-notebook](../../../includes/aml-clone-in-azure-notebook.md)]
+Container Instances je skvělým řešením pro testování a pochopení pracovního postupu. Pro nasazení v produkčním prostředí škálovatelné zvažte použití služby Azure Kubernetes Service. Další informace najdete v tématu [nasazení a kde](how-to-deploy-and-where.md).
 
 >[!NOTE]
-> V tomto článku kódu byl testován s Azure Machine Learning SDK verze 1.0.2.
+> S využitím Azure Machine Learning SDK verze 1.0.8 testovaný kód v tomto článku.
 
 ## <a name="prerequisites"></a>Požadavky
+Přejděte k [nastavit vývojové prostředí](#start) číst kroky poznámkového bloku.  
 
-Proveďte cvičení modelu do poznámkového bloku následující: [Kurz (část 1): Trénování modelu klasifikace obrázků pomocí služby Azure Machine Learning](tutorial-train-models-with-aml.md).  
+Poznámkový blok spustit, nejdřív dokončit cvičení modelu v [kurzu (část 1): Trénování modelu klasifikace obrázků pomocí služby Azure Machine Learning](tutorial-train-models-with-aml.md).   Spusťte **kurzy/img – klasifikace – část2 deploy.ipynb** poznámkového bloku pomocí stejné server poznámkového bloku.
 
 
-## <a name="set-up-the-environment"></a>Nastavení prostředí
+## <a name="start"></a>Nastavení prostředí
 
 Začněte tím, že nastavíte testovací prostředí.
 
@@ -78,13 +73,16 @@ V předchozím kurzu jste zaregistrovali model ve vašem pracovním prostoru. Te
 ```python
 from azureml.core import Workspace
 from azureml.core.model import Model
-
+import os 
 ws = Workspace.from_config()
 model=Model(ws, 'sklearn_mnist')
-model.download(target_dir = '.')
-import os 
+
+model.download(target_dir=os.getcwd(), exist_ok=True)
+
 # verify the downloaded model file
-os.stat('./sklearn_mnist_model.pkl')
+file_path = os.path.join(os.getcwd(), "sklearn_mnist_model.pkl")
+
+os.stat(file_path)
 ```
 
 ## <a name="test-the-model-locally"></a>Místní testování modelu
@@ -102,10 +100,8 @@ Načíst testovací data z **. /data/** adresář vytvořený během kurzu škol
 from utils import load_data
 
 # note we also shrink the intensity values (X) from 0-255 to 0-1. This helps the neural network converge faster
-
 X_test = load_data('./data/test-images.gz', False) / 255.0
 y_test = load_data('./data/test-labels.gz', True).reshape(-1)
-
 ```
 
 ### <a name="predict-test-data"></a>Předpovídání testovacích dat
@@ -214,7 +210,8 @@ def run(raw_data):
     data = np.array(json.loads(raw_data)['data'])
     # make prediction
     y_hat = model.predict(data)
-    return json.dumps(y_hat.tolist())
+    # you can return any data type as long as it is JSON-serializable
+    return y_hat.tolist()
 ```
 
 <a name="make-myenv"></a>
@@ -314,10 +311,10 @@ n = 30
 sample_indices = np.random.permutation(X_test.shape[0])[0:n]
 
 test_samples = json.dumps({"data": X_test[sample_indices].tolist()})
-test_samples = bytes(test_samples, encoding = 'utf8')
+test_samples = bytes(test_samples, encoding='utf8')
 
 # predict using the deployed model
-result = json.loads(service.run(input_data=test_samples))
+result = service.run(input_data=test_samples)
 
 # compare actual value vs. the predicted values:
 i = 0
@@ -347,7 +344,6 @@ Můžete také odeslat nezpracovaná požadavku HTTP k otestování webové slu�
 
 ```python
 import requests
-import json
 
 # send a random row from the test set to score
 random_index = np.random.randint(0, len(X_test)-1)
@@ -380,6 +376,8 @@ service.delete()
 
 ## <a name="next-steps"></a>Další postup
 
-+ Přečtěte si o všech [možnosti nasazení pro službu Azure Machine Learning](how-to-deploy-and-where.md). Mezi možnosti patří Azure Container Instances, Azure Kubernetes Service, FPGA a Azure IoT Edge.
-
-+ Podívejte se jak služba Azure Machine Learning může automatický výběr je a vyladit nejlepšího algoritmu pro model. Můžete ale zároveň vytvoří tohoto modelu. Vyzkoušejte si [automatické algoritmus výběru](tutorial-auto-train-models.md) kurzu. 
++ Přečtěte si o všech [možnosti nasazení pro službu Azure Machine Learning](how-to-deploy-and-where.md).
++ Zjistěte, jak [vytvoření klientů pro webovou službu](how-to-consume-web-service.md).
++  [Vytvoření predikcí velkým objemům dat.](how-to-run-batch-predictions.md) asynchronně.
++ Monitorování vašich modelů Azure Machine Learning s [Application Insights](how-to-enable-app-insights.md).
++ Vyzkoušejte si [automatické algoritmus výběru](tutorial-auto-train-models.md) kurzu. 

@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 12/04/2018
 ms.custom: seodec18
-ms.openlocfilehash: 55d35237adc384ca8344e6ff69abc4a93d540ec6
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.openlocfilehash: 6126a9d56059435be32299bcd1f03050f031f81b
+ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55099896"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55507811"
 ---
 # <a name="time-series-model"></a>Model služby Time Series
 
@@ -152,9 +152,11 @@ V předchozím příkladu ID1 a u ID 4 zobrazuje jako součást hierarchie H1 v 
 
 Instance jsou časové řady sami. Ve většině případů *deviceId* nebo *assetId* je jedinečný identifikátor prostředku v prostředí. Instance mít popisné informace k nim má přiřazené názvem vlastnosti instance. Minimálně instance vlastnosti zahrnují informace o hierarchii. Také mohou obsahovat užitečné a popisný data, jako jsou výrobce, operátor nebo datum posledního služby.
 
-Instance, které jsou definovány pomocí *timeSeriesId*, *typeId*, *hierarchyId*, a *instanceFields*. Každá instance se mapuje na jediný *typ*a jeden nebo více hierarchií. Instance dědí všechny vlastnosti z hierarchie a další *instanceFields* lze přidat další instanci vlastnosti definice.
+Instance, které jsou definovány pomocí *typeId*, *timeSeriesId*, *název*, *popis*, *hierarchyIds* , a *instanceFields*. Každá instance se mapuje na jediný *typ*a jeden nebo více hierarchií. Instance dědí všechny vlastnosti z hierarchie a další *instanceFields* lze přidat další instanci vlastnosti definice.
 
 *instanceFields* jsou vlastnosti instance a statická data, která definuje instanci. Hodnoty vlastností hierarchie nebo jiné hierarchie definují současně také podporuje indexování provádět operace vyhledávání.
+
+*Název* vlastnost je volitelná a malá a velká písmena. Pokud *název* není k dispozici, výchozí ID řady čas. Pokud *název* je k dispozici řada ID času budou stále k dispozici v kontejneru (mřížce níže grafů v Průzkumníku). 
 
 ## <a name="time-series-model-instance-json-example"></a>Časové řady Model instance JSON – příklad
 
@@ -164,6 +166,7 @@ Ukázka:
 {
     "typeId": "1be09af9-f089-4d6b-9f0b-48018b5f7393",
     "timeSeriesId": ["sampleTimeSeriesId"],
+    "name": "sampleName",
     "description": "Sample Instance",
     "hierarchyIds": [
         "1643004c-0a84-48a5-80e5-7688c5ae9295"

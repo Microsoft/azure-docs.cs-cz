@@ -11,12 +11,12 @@ ms.custom: seodec18
 ms.topic: article
 ms.date: 12/06/2018
 ms.author: spelluru
-ms.openlocfilehash: 707290d7bf453ca71dd3c5cf8b39c917b3a1c479
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: ccb2fa7b0805b332957513c52c0c1051d068d2cc
+ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53268270"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55507531"
 ---
 # <a name="use-firewall-rules"></a>Pomocí pravidel brány Firewall
 
@@ -24,7 +24,7 @@ Pro scénáře, ve kterých Azure Event Hubs by měly být pouze přístupné z 
 
 ## <a name="when-to-use"></a>Kdy je použít
 
-Pokud chcete nastavit váš obor názvů služby Event Hubs, které by měla přijímat provoz ze zadaného rozsahu IP adres a odmítnout všechno ostatní, pak můžete využít *pravidlo brány Firewall* blokování koncové body centra událostí z ostatní IP adresy. Například používáte Event Hubs s využitím [Azure Express Route] [ express-route] můžete vytvářet privátní připojení k vaší místní infrastruktuře.
+Pokud chcete nastavit váš obor názvů služby Event Hubs, které by měla přijímat provoz ze zadaného rozsahu IP adres a odmítnout všechno ostatní, pak můžete využít *pravidlo brány Firewall* blokování koncové body centra událostí z ostatní IP adresy. Například, pokud používáte Event Hubs s využitím [Azure Express Route][express-route], můžete vytvořit *pravidlo brány Firewall* omezit přenosy z IP adresy vaší místní infrastruktury adresy.
 
 ## <a name="how-filter-rules-are-applied"></a>Jak se používají pravidla filtru
 
@@ -49,7 +49,7 @@ Pravidla filtru IP jsou použity v zadaném pořadí a první pravidlo, které o
 > - Azure Monitor
 > - Azure Stream Analytics
 > - Integrace s Azure Event Grid
-> - Směruje Azure IoT Hub
+> - Azure IoT Hub Routes
 > - Azure IoT Device Explorer
 > - Průzkumník dat Azure
 >

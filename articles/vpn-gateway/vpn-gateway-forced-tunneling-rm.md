@@ -1,5 +1,5 @@
 ---
-title: 'Konfigurace vynuceného tunelování pro připojení k Azure Site-to-Site: Resource Manager | Dokumentace Microsoftu'
+title: 'Konfigurace vynuceného tunelování pro Azure Site-to-Site připojení: Resource Manager | Dokumentace Microsoftu'
 description: Jak přesměrování nebo "Vynutit" veškerý provoz směřující na Internet zpět do místního umístění.
 services: vpn-gateway
 documentationcenter: na
@@ -15,18 +15,18 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/01/2018
 ms.author: cherylmc
-ms.openlocfilehash: 00330f49d4acc9bd2d720a60b743b78c86b08f86
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 21004c29f1baf0346cd83d8483ff1862a98fc845
+ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38308148"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55506460"
 ---
 # <a name="configure-forced-tunneling-using-the-azure-resource-manager-deployment-model"></a>Konfigurace vynuceného tunelování pomocí modelu nasazení Azure Resource Manageru
 
 Vynucené tunelování umožňuje přesměrování nebo "Vynutit" veškerý provoz směřující na Internet zpět do místního umístění prostřednictvím tunelu VPN typu Site-to-Site pro kontrolu a auditování. Toto je důležité zabezpečení požadavek pro většinu podnikových IT zásady. Bez vynucené tunelování, internetový provoz z virtuálních počítačů v Azure vždy překračuje z Azure síťovou infrastrukturu přímo na Internetu, bez možnosti a umožňuje tak kontrolovat nebo auditování provozu. Neoprávněný přístup k Internetu může potenciálně vést k zpřístupnění informací nebo jiných druhů porušení zabezpečení.
 
-[!INCLUDE [vpn-gateway-clasic-rm](../../includes/vpn-gateway-classic-rm-include.md)] 
+[!INCLUDE [vpn-gateway-classic-rm](../../includes/vpn-gateway-classic-rm-include.md)] 
 
 Tento článek vás provede konfigurací vynuceného tunelového propojení virtuální sítě vytvořené pomocí modelu nasazení Resource Manager. Vynucené tunelování se dá konfigurovat pomocí prostředí PowerShell, na portálu. Pokud chcete nakonfigurovat vynucené tunelování pro model nasazení classic, vyberte z rozevíracího seznamu následující klasické článku:
 
@@ -52,9 +52,9 @@ Vynucené tunelování v Azure se konfiguruje prostřednictvím virtuální sít
 
 * Každé podsíti virtuální sítě má integrované, směrovací tabulky systému. Systémovou tabulku směrování má následující tři skupiny tras:
   
-  * **Místní virtuální sítě trasy:** přímo do cílového umístění virtuálních počítačů ve stejné virtuální síti.
-  * **Místní trasy:** pro Azure VPN gateway.
-  * **Výchozí trasa:** přímo k Internetu. Pakety směřující na privátní IP adresy není pokrytá předchozí dvě trasy se zahodí.
+  * **Místní virtuální sítě trasy:** Přímo do cílového umístění virtuálních počítačů ve stejné virtuální síti.
+  * **Místní trasy:** Ke službě Azure VPN gateway.
+  * **Výchozí trasy:** Přímo k Internetu. Pakety směřující na privátní IP adresy není pokrytá předchozí dvě trasy se zahodí.
 * Tento postup používá trasy definované uživatelem (UDR) k vytvoření směrovací tabulky k přidání výchozí trasy a přidružte směrovací tabulky do vaší virtuální síti tento počet podsítí: Povolit vynucené tunelování na těchto podsítí.
 * Vynucené tunelování musí být přidružen virtuální síť, která má bránu sítě VPN založené na směrování. Budete muset nastavit "výchozí web" mezi místy místní servery připojené k virtuální síti. Navíc místního zařízení VPN musí být nakonfigurovaný pomocí 0.0.0.0/0 jako selektory provozu. 
 * ExpressRoute se vynucené tunelování přes tento mechanismus není nakonfigurovaná, ale místo toho zajišťuje inzeruje výchozí trasu prostřednictvím relací vytvoření partnerského vztahu protokolu BGP ExpressRoute. Další informace najdete v tématu [dokumentace ke službě ExpressRoute](https://azure.microsoft.com/documentation/services/expressroute/).

@@ -15,12 +15,12 @@ ms.date: 01/25/2019
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: it-pro
-ms.openlocfilehash: 8626dcb5b5c8eb7e83123eaeadb601e65d52f2c8
-ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
+ms.openlocfilehash: 23fab567fc2fdd5c5c8f3c5d173a5201d3322f81
+ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/26/2019
-ms.locfileid: "55081224"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55512546"
 ---
 # <a name="built-in-roles-for-azure-resources"></a>Předdefinované role pro prostředky Azure
 [Řízení přístupu na základě role (RBAC)](overview.md) má několik definic předdefinovaná role, které jste přiřadili pro uživatele, skupiny nebo instanční objekty. Přiřazení rolí představují způsob, jak řídit přístup k prostředkům v Azure. Pokud předdefinované role nesplňují konkrétní požadavky vaší organizace, můžete si vytvořit [vlastní role](custom-roles.md).
@@ -149,8 +149,8 @@ Následující tabulka obsahuje stručný popis předdefinované role. Klikněte
 > | **Akce** |  |
 > | * | Vytváření a správě prostředků všech typů. |
 > | **notActions** |  |
-> | Microsoft.Authorization/*/Delete | Nelze odstranit, role a přiřazení rolí |
-> | Microsoft.Authorization/*/Write | Nelze vytvořit role a přiřazení rolí |
+> | Microsoft.Authorization/*/Delete | Odstranit role a přiřazení rolí |
+> | Microsoft.Authorization/*/Write | Vytvoření role a přiřazení rolí |
 > | Microsoft.Authorization/elevateAccess/Action | Udělí volajícímu přístup Správce uživatelských přístupů v oboru tenanta. |
 > | Microsoft.Blueprint/blueprintAssignments/write | Vytvoří nebo aktualizuje všechny artefakty podrobného plánu. |
 > | Microsoft.Blueprint/blueprintAssignments/delete | Odstraní všechny artefakty podrobného plánu. |
@@ -1600,15 +1600,15 @@ Následující tabulka obsahuje stručný popis předdefinované role. Klikněte
 > | **notActions** |  |
 > | Microsoft.Sql/managedInstances/databases/vulnerabilityAssessments/* |  |
 > | Microsoft.Sql/managedInstances/vulnerabilityAssessments/* |  |
-> | Microsoft.Sql/servers/databases/auditingPolicies/* | Nelze upravit zásady auditu |
-> | Microsoft.Sql/servers/databases/auditingSettings/* | Nelze upravit nastavení auditu |
+> | Microsoft.Sql/servers/databases/auditingPolicies/* | Upravit zásady auditu |
+> | Microsoft.Sql/servers/databases/auditingSettings/* | Upravit nastavení auditu |
 > | Microsoft.Sql/servers/databases/auditRecords/read | Načtení záznamů auditu databáze objektů blob |
-> | Microsoft.Sql/servers/databases/connectionPolicies/* | Nelze upravit zásady připojení |
-> | Microsoft.Sql/servers/databases/dataMaskingPolicies/* | Nelze upravit zásady maskování dat |
+> | Microsoft.Sql/servers/databases/connectionPolicies/* | Upravit zásady připojení |
+> | Microsoft.Sql/servers/databases/dataMaskingPolicies/* | Upravit zásady maskování dat |
 > | Microsoft.Sql/servers/databases/extendedAuditingSettings/* |  |
 > | Microsoft.Sql/servers/databases/schemas/tables/columns/sensitivityLabels/* |  |
-> | Microsoft.Sql/servers/databases/securityAlertPolicies/* | Upozornění zásad zabezpečení nelze upravit. |
-> | Microsoft.Sql/servers/databases/securityMetrics/* | Nelze upravit zabezpečení metriky |
+> | Microsoft.Sql/servers/databases/securityAlertPolicies/* | Upravit upozornění zásad zabezpečení |
+> | Microsoft.Sql/servers/databases/securityMetrics/* | Úprava metrik zabezpečení |
 > | Microsoft.Sql/servers/databases/sensitivityLabels/* |  |
 > | Microsoft.Sql/servers/databases/vulnerabilityAssessments/* |  |
 > | Microsoft.Sql/servers/databases/vulnerabilityAssessmentScans/* |  |
@@ -1676,23 +1676,23 @@ Následující tabulka obsahuje stručný popis předdefinované role. Klikněte
 > | **notActions** |  |
 > | Microsoft.Sql/managedInstances/databases/vulnerabilityAssessments/* |  |
 > | Microsoft.Sql/managedInstances/vulnerabilityAssessments/* |  |
-> | Microsoft.Sql/servers/auditingPolicies/* | Nelze upravit zásady auditování SQL serveru |
-> | Microsoft.Sql/servers/auditingSettings/* | Nelze upravit nastavení auditování serveru SQL |
-> | Microsoft.Sql/servers/databases/auditingPolicies/* | Nelze upravit zásady auditování databáze SQL serveru |
-> | Microsoft.Sql/servers/databases/auditingSettings/* | Nelze upravit nastavení auditování databáze SQL serveru |
-> | Microsoft.Sql/servers/databases/auditRecords/read | Nelze číst záznamy auditu |
-> | Microsoft.Sql/servers/databases/connectionPolicies/* | Nelze upravit zásady připojení databáze serveru SQL |
-> | Microsoft.Sql/servers/databases/dataMaskingPolicies/* | Nelze upravit zásady maskování dat z databáze SQL serveru |
+> | Microsoft.Sql/servers/auditingPolicies/* | Upravit zásady auditování SQL serveru |
+> | Microsoft.Sql/servers/auditingSettings/* | Upravit nastavení auditování serveru SQL |
+> | Microsoft.Sql/servers/databases/auditingPolicies/* | Upravit zásady auditování databáze SQL serveru |
+> | Microsoft.Sql/servers/databases/auditingSettings/* | Upravit nastavení auditování databáze SQL serveru |
+> | Microsoft.Sql/servers/databases/auditRecords/read | Záznamy auditu pro čtení |
+> | Microsoft.Sql/servers/databases/connectionPolicies/* | Upravit zásady připojení databáze serveru SQL |
+> | Microsoft.Sql/servers/databases/dataMaskingPolicies/* | Upravit zásady maskování dat z databáze SQL serveru |
 > | Microsoft.Sql/servers/databases/extendedAuditingSettings/* |  |
 > | Microsoft.Sql/servers/databases/schemas/tables/columns/sensitivityLabels/* |  |
-> | Microsoft.Sql/servers/databases/securityAlertPolicies/* | Upozornění zásad zabezpečení serveru SQL server databáze nelze upravit. |
-> | Microsoft.Sql/servers/databases/securityMetrics/* | Nelze upravit metrik zabezpečení databáze SQL serveru |
+> | Microsoft.Sql/servers/databases/securityAlertPolicies/* | Upravit upozornění zásad zabezpečení serveru SQL server databáze |
+> | Microsoft.Sql/servers/databases/securityMetrics/* | Upravit metrik zabezpečení databáze SQL serveru |
 > | Microsoft.Sql/servers/databases/sensitivityLabels/* |  |
 > | Microsoft.Sql/servers/databases/vulnerabilityAssessments/* |  |
 > | Microsoft.Sql/servers/databases/vulnerabilityAssessmentScans/* |  |
 > | Microsoft.Sql/servers/databases/vulnerabilityAssessmentSettings/* |  |
 > | Microsoft.Sql/servers/extendedAuditingSettings/* |  |
-> | Microsoft.Sql/servers/securityAlertPolicies/* | Nelze upravit upozornění zásad zabezpečení SQL serveru |
+> | Microsoft.Sql/servers/securityAlertPolicies/* | Upravit upozornění zásad zabezpečení SQL serveru |
 > | Microsoft.Sql/servers/vulnerabilityAssessments/* |  |
 
 ## <a name="storage-account-contributor"></a>Přispěvatel účtů úložiště

@@ -6,12 +6,12 @@ ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 09/22/2018
-ms.openlocfilehash: 41a5f2eab78d68bdb1f51b423955cfefa5a541b8
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: 366a38951363d52df3d52d3a670943dc41211c8a
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53538580"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55493996"
 ---
 # <a name="migrate-your-postgresql-database-using-dump-and-restore"></a>Migrace vaší databáze PostgreSQL pomocí výpisu a obnovení.
 Můžete použít [pg_dump](https://www.postgresql.org/docs/9.3/static/app-pgdump.html) extrahovat databázi PostgreSQL do souboru s výpisem paměti a [pg_restore](https://www.postgresql.org/docs/9.3/static/app-pgrestore.html) obnovit ze souboru archivu vytvořené pg_dump databázi PostgreSQL.
@@ -69,7 +69,9 @@ Jeden způsob, jak migrovat existující databázi PostgreSQL do služby Azure D
 
 ### <a name="for-the-restore"></a>Pro obnovení
 - Doporučujeme přesunout záložní soubor do virtuálního počítače Azure ve stejné oblasti jako serveru Azure Database for PostgreSQL migrují na a proveďte pg_restore z tohoto virtuálního počítače chcete snížit latenci sítě. Doporučujeme také, že virtuální počítač se vytvoří s [akcelerovanými síťovými službami](../virtual-network/create-vm-accelerated-networking-powershell.md) povolena.
+
 - By mělo být provedeno již ve výchozím nastavení, ale otevřete soubor s výpisem paměti a ověřte, že příkazy create index se po vložení dat. Pokud není tento případ, přesuňte po vložení dat příkazy create index.
+
 - Obnovit pomocí přepínače -Fc a -j *#* pro paralelní zpracování obnovení. *#* je počet jader na cílovém serveru. Můžete také zkusit s *#* nastavte zobrazení dopadů na dvojnásobný počet jader na cílový server. Příklad:
 
     ```
@@ -77,6 +79,13 @@ Jeden způsob, jak migrovat existující databázi PostgreSQL do služby Azure D
     ```
 
 - Soubor s výpisem paměti můžete také upravit tak, že přidáte příkaz *nastavit synchronous_commit = off;* na začátku a příkaz *nastavit synchronous_commit = on;* na konci. Není jeho zapnutím na konci, než aplikace změnit data, může způsobit ztrátu dalších údajů.
+
+- Na cíl – Azure Database pro PostgreSQL server vezměte v úvahu ještě před obnovením následujícím způsobem:
+    - Vypnete dotazu sledování výkonu, protože během migrace nejsou potřeba tyto statistiky. Můžete to provést tak, že nastavíte pg_stat_statements.track pg_qs.query_capture_mode a pgms_wait_sampling.query_capture_mode na hodnotu NONE.
+
+    - Použití vysokou výpočetní a paměťové prostředky sku, jako je 32 – vCore optimalizované pro paměť pro urychlení migrace. Je možné snadno škálovat zase dolů upřednostňované skladové jednotky po dokončení obnovení. Čím vyšší skladovou položku, další paralellism můžete dosáhnout zvýšení odpovídající `-j` parametr v příkazu pg_restore. 
+
+    - Více vstupně-výstupních operací na cílovém serveru může zlepšit výkon obnovení. Zvýšením velikosti úložiště serveru můžete zřídit další vstupně-výstupních operací. Toto nastavení je nevratná operace, ale vezměte v úvahu, jestli vyšší vstupně-výstupních operací, budou těžit skutečné úlohy v budoucnu.
 
 Nezapomeňte otestovat a ověřit tyto příkazy v testovacím prostředí před použitím v produkčním prostředí.
 

@@ -11,12 +11,12 @@ ms.author: sanpil
 author: sanpil
 ms.date: 01/08/2019
 ms.custom: seodec18
-ms.openlocfilehash: 074184d1465236fadebb5afa229a5b7f8689bbc9
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: b1098622ad96ccdcd1941466c6e32255b4415820
+ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55251652"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55507998"
 ---
 # <a name="create-and-run-a-machine-learning-pipeline-by-using-azure-machine-learning-sdk"></a>Vytvoření a spuštění kanálu strojového učení s využitím Azure Machine Learning SDK
 
@@ -103,6 +103,9 @@ output_data1 = PipelineData(
 ## <a name="set-up-compute-target"></a>Nastavení cílové výpočetní prostředí
 
 V Azure Machine Learning termín __compute__ (nebo __cílové výpočetní prostředí__) odkazuje na počítačích nebo clustery, které provádějí výpočetní kroky ve vašem kanálu machine learning.   Zobrazit [cílových výpočetních prostředí pro trénování modelu](how-to-set-up-training-targets.md) úplný seznam cílových výpočetních prostředí a jak vytvořit a připojit je k vašemu pracovnímu prostoru.  Proces pro vytvoření a připojení cílového výpočetního prostředí je stejný bez ohledu na to, jestli trénování modelu, nebo spuštěním kroku profilace. Po vytvoření a připojení vaší cílové výpočetní prostředí, použijte `ComputeTarget` objekt vaše [kanálu krok](#steps).
+
+> [!IMPORTANT]
+> Provádění operací správy na cílových výpočetních prostředí není podporován v rámci vzdálené úlohy. Protože strojového učení kanály odesílají jako vzdálené úlohy, nepoužívejte operace správy v cílových výpočetních prostředí v rámci kanálu.
 
 Níže jsou uvedené příklady vytvoření a připojení cílových výpočetních prostředí pro:
 

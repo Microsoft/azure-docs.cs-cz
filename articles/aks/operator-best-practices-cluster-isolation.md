@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 11/26/2018
 ms.author: iainfou
-ms.openlocfilehash: 3a4b62fb16745a3b226bda6c0574812278a34456
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.openlocfilehash: 94aaa72497a8a5f171d6b42f59a3c5b507c71492
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52428729"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55494999"
 ---
 # <a name="best-practices-for-cluster-isolation-in-azure-kubernetes-service-aks"></a>Osvědčené postupy pro zajištění izolace clusteru ve službě Azure Kubernetes Service (AKS)
 
@@ -43,6 +43,8 @@ Logické izolace jeden cluster AKS je možné pro více úloh, týmy nebo prost�
 ![Logické izolace cluster Kubernetes v AKS](media/operator-best-practices-cluster-isolation/logical-isolation.png)
 
 Logické rozdělení clustery obvykle zajišťuje vyšší hustota pod než fyzicky izolované clustery. Doba nečinnosti v clusteru je méně nadbytečnou kapacitu výpočetních, který je umístěný. V kombinaci s automatického škálování clusteru Kubernetes, můžete škálovat počet uzlů nahoru nebo dolů musí splňovat požadavky. Tento doporučený postup ke automatického škálování vám umožní spustit pouze počet uzlů požadovaných a minimalizuje náklady.
+
+Prostředí Kubernetes v AKS nebo jinde, nejsou zcela bezpečný pro použití v nehostinném prostředí více tenantů. Další bezpečnostní funkce, jako *zásady zabezpečení Pod* a další prvky velice přesně kontrolovat přístup na základě rolí (RBAC) pro uzly ztížit zneužití. True zabezpečení při spouštění úloh v nehostinném prostředí více tenantů, je hypervisor pouze úroveň zabezpečení, které byste měli věřit. Domény zabezpečení pro Kubernetes se změní celý cluster, nikoli jednotlivých uzlů. Pro tyto typy úloh nehostinném prostředí více tenantů měli byste použít fyzicky izolované clustery.
 
 ## <a name="physically-isolate-clusters"></a>Fyzicky izolování clusterů
 

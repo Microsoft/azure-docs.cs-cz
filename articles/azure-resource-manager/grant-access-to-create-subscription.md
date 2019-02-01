@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/05/2018
 ms.author: adpick
-ms.openlocfilehash: 86e457cf553c84386937c35bab1ab0fd20518bed
-ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
+ms.openlocfilehash: 3577edff19788ed9f0925876e3de737eb749b90e
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2018
-ms.locfileid: "39369055"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55490919"
 ---
 # <a name="grant-access-to-create-azure-enterprise-subscriptions-preview"></a>Udělení přístupu k vytvoření předplatného Azure Enterprise (preview)
 
@@ -42,6 +42,7 @@ PUT  https://management.azure.com/providers/Microsoft.Billing/enrollmentAccounts
   }
 }
 ```
+
 Když v rozsahu účtu registrace úspěšně přiřazení role vlastníka, Azure jako odpověď vrátí informace o přiřazení role:
 
 ```json
@@ -63,10 +64,10 @@ Když v rozsahu účtu registrace úspěšně přiřazení role vlastníka, Azur
 
 # <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
 
-Použití [New-AzureRmRoleAssignment](../active-directory/role-based-access-control-manage-access-powershell.md) přidělit jinému uživateli přístup vlastníka účtu registrace.
+Použití [New-AzRoleAssignment](../active-directory/role-based-access-control-manage-access-powershell.md) přidělit jinému uživateli přístup vlastníka účtu registrace.
 
 ```azurepowershell-interactive
-New-AzureRmRoleAssignment -RoleDefinitionName Owner -ObjectId <userObjectId> -Scope /providers/Microsoft.Billing/enrollmentAccounts/747ddfe5-xxxx-xxxx-xxxx-xxxxxxxxxxxx
+New-AzRoleAssignment -RoleDefinitionName Owner -ObjectId <userObjectId> -Scope /providers/Microsoft.Billing/enrollmentAccounts/747ddfe5-xxxx-xxxx-xxxx-xxxxxxxxxxxx
 ```
 
 # <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
@@ -85,7 +86,7 @@ Jakmile uživatel se stane vlastníkem RBAC pro váš účet pro zápis, může 
 
 Chcete-li sledovat předplatná vytvořená přes toto rozhraní API, použijte [rozhraní API pro klienty aktivitu protokolu](/rest/api/monitor/tenantactivitylogs). Aktuálně není možné pomocí Powershellu, rozhraní příkazového řádku nebo portálu Azure portal ke sledování vytváření odběru.
 
-1. Jako správce tenanta Azure AD tenanta [zvýšení úrovně přístupu](../active-directory/role-based-access-control-tenant-admin-access.md) pak auditování uživateli přes obor přiřadit role Čtenář `/providers/microsoft.insights/eventtypes/management`.
+1. Jako správce tenanta Azure AD [zvyšte úroveň přístupu](../active-directory/role-based-access-control-tenant-admin-access.md) uživateli provádějícímu audit a pak mu přiřaďte roli Čtenář v oboru `/providers/microsoft.insights/eventtypes/management`.
 1. Jako uživatel, auditování, zavolejte [rozhraní API pro klienty aktivitu protokolu](/rest/api/monitor/tenantactivitylogs) zobrazíte předplatné Vytvoření aktivity. Příklad:
 
 ```
@@ -93,7 +94,7 @@ GET "/providers/Microsoft.Insights/eventtypes/management/values?api-version=2015
 ```
 
 > [!NOTE]
-> Jednoduše volat toto rozhraní API z příkazového řádku, zkuste [ARMClient](https://github.com/projectkudu/ARMClient).
+> Pokud chcete toto rozhraní API pohodlně volat z příkazového řádku, vyzkoušejte [ARMClient](https://github.com/projectkudu/ARMClient).
 
 ## <a name="next-steps"></a>Další postup
 

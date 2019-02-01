@@ -4,17 +4,17 @@ description: Tento článek vás provede programově vytváření a Správa zás
 services: azure-policy
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 01/26/2019
+ms.date: 01/31/2019
 ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: 575e2974131a09bdbdbc96d3ad252365ac9da86e
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.openlocfilehash: afdd6a238671bf41252eae8b55f1b6e61f358336
+ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55101783"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55510822"
 ---
 # <a name="programmatically-create-policies-and-view-compliance-data"></a>Prostřednictvím kódu programu vytvořit zásady a zobrazit data o dodržování předpisů
 
@@ -96,8 +96,9 @@ Prvním krokem k lepší přehled o vašich prostředků je vytvoření a přiř
    Nahraďte _ContosoRG_ s názvem vaší skupiny prostředků určené.
 
    **Oboru** parametru u `New-AzPolicyAssignment` funguje taky s předplatných a skupin pro správu. Parametr používá cestu úplné prostředku, který **ResourceId** vlastnost `Get-AzResourceGroup` vrátí. Vzor pro **oboru** pro každý kontejner je následujícím způsobem.
-   Nahraďte `{rgName}`, `{subId}`, a `{mgName}` s vaším prostředkem název skupiny, ID předplatného a název skupiny pro správu, v uvedeném pořadí.
+   Nahraďte `{rName}`, `{rgName}`, `{subId}`, a `{mgName}` se název prostředku, skupina prostředků název, ID předplatného a název skupiny pro správu, v uvedeném pořadí. `{rType}` by měl být nahrazen **typ prostředku** prostředku, jako například `Microsoft.Compute/virtualMachines` pro virtuální počítač.
 
+   - Prostředek – `/subscriptions/{subID}/resourceGroups/{rgName}/providers/{rType}/{rName}`
    - Skupina prostředků- `/subscriptions/{subId}/resourceGroups/{rgName}`
    - Předplatné – `/subscriptions/{subId}/`
    - Skupina pro správu- `/providers/Microsoft.Management/managementGroups/{mgName}`

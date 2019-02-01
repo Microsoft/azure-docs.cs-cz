@@ -8,12 +8,12 @@ ms.topic: get-started-article
 ms.date: 06/07/2018
 ms.author: renash
 ms.subservice: files
-ms.openlocfilehash: e3b0773da49499e2eaa8c9b9f59ced4ed26276ba
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 4361ec72f5f9cff924900ddd712aa1aa029c5ef4
+ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 01/31/2019
-ms.locfileid: "55465159"
+ms.locfileid: "55509016"
 ---
 # <a name="use-an-azure-file-share-with-windows"></a>Použití sdílené složky Azure s Windows
 Služba [Soubory Azure](storage-files-introduction.md) je snadno použitelný cloudový systém souborů od Microsoftu. Sdílené složky Azure je možné bez problémů používat v systémech Windows a Windows Server. Tento článek popisuje důležité informace o používání sdílené složky Azure s Windows a Windows Serverem.
@@ -45,7 +45,7 @@ Sdílené složky Azure můžete používat v instalaci Windows na virtuálním 
 
 * **Klíč účtu úložiště**: Připojení sdílené složky Azure, musíte primární (nebo sekundární) klíč úložiště. Klíče SAS aktuálně nejsou pro připojení podporovány.
 
-* **Zkontrolujte, jestli je port 445 otevřený**: Protokol SMB vyžaduje port TCP 445 být otevřená. připojení se nezdaří, pokud je port 445 blokovaný. Ke kontrole, jestli vaše brána firewall neblokuje port 445, můžete použít rutinu `Test-NetConnection`. Následující kód PowerShellu předpokládá, že máte nainstalovaný modul AzureRM PowerShell. Další informace najdete v tématu [Instalace modulu Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-az-ps). Nezapomeňte nahradit `<your-storage-account-name>` a `<your-resoure-group-name>` odpovídajícími názvy pro váš účet úložiště.
+* **Zkontrolujte, jestli je port 445 otevřený**: Protokol SMB vyžaduje port TCP 445 být otevřená. připojení se nezdaří, pokud je port 445 blokovaný. Ke kontrole, jestli vaše brána firewall neblokuje port 445, můžete použít rutinu `Test-NetConnection`. Následující kód PowerShellu předpokládá, že máte nainstalovaný modul AzureRM PowerShell. Další informace najdete v tématu [Instalace modulu Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-az-ps). Nezapomeňte nahradit `<your-storage-account-name>` a `<your-resource-group-name>` odpovídajícími názvy pro váš účet úložiště.
 
     ```PowerShell
     $resourceGroupName = "<your-resource-group-name>"
@@ -83,7 +83,7 @@ Na rozdíl od ostatních sdílených složek SMB, se kterými jste možná praco
 Při migraci obchodních aplikací očekávajících sdílenou složku SMB metodou „lift and shift“ do Azure se jako alternativa k provozu vyhrazeného souborového serveru Windows na virtuálním počítači Azure běžně používá sdílená složka Azure. Jedním z důležitých aspektů úspěšné migrace obchodní aplikace, která má používat sdílenou složku Azure, je to, že řada obchodních aplikací se spouští v kontextu vyhrazeného účtu služby s omezenými systémovými oprávněními, a ne v kontextu účtu správce virtuálního počítače. Proto je potřeba zajistit připojení a uložení přihlašovacích údajů pro sdílenou složku Azure z kontextu účtu služby, a nikoli účtu správce.
 
 ### <a name="persisting-azure-file-share-credentials-in-windows"></a>Trvalé uložení přihlašovacích údajů sdílené složky Azure ve Windows  
-Nástroj [cmdkey](https://docs.microsoft.com/windows-server/administration/windows-commands/cmdkey) umožňuje uložit přihlašovací údaje účtu úložiště v rámci Windows. To znamená, že při pokusu o přístup ke sdílené složce Azure přes cestu UNC nebo její připojení nebudete muset zadávat přihlašovací údaje. Pokud chcete uložit přihlašovací údaje vašeho účtu úložiště, spusťte následující příkazy PowerShellu, ve kterých podle potřeby nahraďte `<your-storage-account-name>` a `<your-resoure-group-name>`.
+Nástroj [cmdkey](https://docs.microsoft.com/windows-server/administration/windows-commands/cmdkey) umožňuje uložit přihlašovací údaje účtu úložiště v rámci Windows. To znamená, že při pokusu o přístup ke sdílené složce Azure přes cestu UNC nebo její připojení nebudete muset zadávat přihlašovací údaje. Pokud chcete uložit přihlašovací údaje vašeho účtu úložiště, spusťte následující příkazy PowerShellu, ve kterých podle potřeby nahraďte `<your-storage-account-name>` a `<your-resource-group-name>`.
 
 ```PowerShell
 $resourceGroupName = "<your-resource-group-name>"

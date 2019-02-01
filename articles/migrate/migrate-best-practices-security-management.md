@@ -7,12 +7,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 12/08/2018
 ms.author: raynew
-ms.openlocfilehash: b2b5d62c54fbfdef8a5e448a089800eedcb66d07
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: f9f4d544a407a75231302b0eb53c27904585250f
+ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54827495"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55510676"
 ---
 # <a name="best-practices-for-securing-and-managing-workloads-migrated-to-azure"></a>Osvědčené postupy pro zabezpečení a Správa úloh migrovat do Azure
 
@@ -400,8 +400,7 @@ Virtuální počítače Azure jsou uložené jako objekty BLOB stránky ve služ
 - [Zjistěte, jak](https://docs.microsoft.com/azure/storage/blobs/storage-blob-snapshots) vytvořit snímek objektu blob.
 - [Projděte si ukázkový scénář](https://azure.microsoft.com/blog/microsoft-azure-block-blob-storage-backup) pro zálohování úložiště objektů blob.
 - [Přečtěte si informace o](https://docs.microsoft.com/azure/storage/blobs/storage-blob-soft-delete) obnovitelné odstranění.
-- [Kontrola](https://docs.microsoft.com/azure/storage/common/storage-disaster-recovery-guidance?toc=%2fazure%2fstorage%2fblobs%2ftoc.json) co dělat, když dojde k výpadku služby Azure Storage?
-
+- [Zotavení po havárii a Vynucené převzetí služeb při selhání (preview) ve službě Azure Storage](../storage/common/storage-disaster-recovery-guidance.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)
 
 #### <a name="third-party-backup"></a>Zálohování třetích stran
 

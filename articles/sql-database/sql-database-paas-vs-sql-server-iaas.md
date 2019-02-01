@@ -3,7 +3,7 @@ title: SQL (PaaS) Database vs. SQL Server v cloudu na virtuálních počítačí
 description: 'Další informace, které Cloudová možnost SQL serveru nejlépe odpovídá vaší aplikaci: Azure SQL (PaaS) Database nebo SQL Server v cloudu na virtuálních počítačích Azure.'
 services: sql-database
 ms.service: sql-database
-ms.subservice: ''
+ms.subservice: service
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
@@ -13,12 +13,12 @@ ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
 ms.date: 01/25/2019
-ms.openlocfilehash: e550400a84c7a9a7c25718e56ceb35d228491d85
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: c3df9cfd9b1c43dadd30bbdc4b132d6263bdda59
+ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 01/31/2019
-ms.locfileid: "55462099"
+ms.locfileid: "55510065"
 ---
 # <a name="choose-the-right-sql-server-option-in-azure---paas-or-iaas"></a>Zvolte vpravo systému SQL Server v Azure – PaaS nebo IaaS
 

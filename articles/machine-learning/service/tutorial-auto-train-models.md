@@ -11,12 +11,12 @@ ms.author: nilesha
 ms.reviewer: sgilley
 ms.date: 12/04/2018
 ms.custom: seodec18
-ms.openlocfilehash: 1e2746ef55f5c50ce9452b7a9d1ab060c69830db
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: cd14f2bdc394cb0887d318457dcf9295e216eb7b
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55244263"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55489491"
 ---
 # <a name="tutorial-use-automated-machine-learning-to-build-your-regression-model"></a>Kurz: Automatizované machine learningu k vytváření regresní model
 
@@ -43,18 +43,64 @@ Pokud nemáte předplatné Azure, vytvořte si bezplatný účet, před zahájen
 
 ## <a name="prerequisites"></a>Požadavky
 
-> * [Spustit kurz přípravy dat](tutorial-data-prep.md).
-> * Automatizované strojového učení nakonfigurované prostředí. Mezi příklady patří [poznámkových bloků Azure](https://notebooks.azure.com/), místní prostředí Python nebo virtuální počítač pro datové vědy. [Nastavit automatizované strojového učení](samples-notebooks.md).
+Přejděte k [nastavení vývojového prostředí](#start) číst kroky Poznámkový blok, nebo použijte níže uvedené pokyny k získání poznámkového bloku a spustit ho v poznámkových bloků Azure nebo vašeho vlastního serveru poznámkového bloku. Pokud chcete spustit Poznámkový blok, bude nutné:
 
-## <a name="get-the-notebook"></a>Získání poznámkového bloku
+* [Spustit kurz přípravy dat](tutorial-data-prep.md).
+* Server poznámkového bloku Python 3.6 s nainstalované tyto položky:
+    * Azure Machine Learning SDK pro Python s `automl` a `notebooks` funkce
+    * `matplotlib`
+* Výukový program Poznámkový blok
+* Pracovní prostor machine learning
+* Konfigurační soubor pro pracovní prostor ve stejném adresáři jako poznámkového bloku
 
-V zájmu usnadnění práce je tento kurz dostupný jako [poznámkový blok Jupyter](https://github.com/Azure/MachineLearningNotebooks/blob/master/tutorials/regression-part2-automated-ml.ipynb). Spustit `regression-part2-automated-ml.ipynb` poznámkového bloku v [poznámkových bloků Azure](https://notebooks.azure.com/) nebo vlastní aplikace Jupyter Notebook server.
+Získejte všechny tyto požadavky pomocí kteréhokoli z níže uvedených částech.
 
-[!INCLUDE [aml-clone-in-azure-notebook](../../../includes/aml-clone-in-azure-notebook.md)]
+* Použití [poznámkových bloků Azure](#azure)
+* Použití [serveru poznámkového bloku](#server)
 
-## <a name="import-packages"></a>Import balíčků
+### <a name="azure"></a>Použití poznámkových bloků Azure: Bezplatné poznámkové bloky Jupyter v cloudu
+
+Je snadné začít s poznámkovými bloky Azure! [Azure Machine Learning SDK pro Python](https://aka.ms/aml-sdk) je již nainstalován a nakonfigurován pro vás na [poznámkových bloků Azure](https://notebooks.azure.com/). Instalace a aktualizace budoucí jsou automaticky spravovány prostřednictvím služby Azure.
+
+Po dokončení následujících kroků spustit **kurzy/regrese – část2 automated-ml.ipynb** Poznámkový blok v vaše **Začínáme** projektu.
+
+[!INCLUDE [aml-azure-notebooks](../../../includes/aml-azure-notebooks.md)]
+
+### <a name="server"></a>Použít vlastní server poznámkového bloku Jupyter
+
+Pomocí těchto kroků můžete vytvořit místní aplikace Jupyter Notebook server ve vašem počítači.  Po dokončení kroků, spusťte **kurzy/regrese – část2 automated-ml.ipynb** poznámkového bloku.
+
+1. Dokončení [rychlý start Python pro Azure Machine Learning](quickstart-create-workspace-with-python.md) k vytvoření prostředí Miniconda a vytvoření pracovního prostoru.
+1. Nainstalujte `automl` a `notebooks` funkce v prostředí pomocí `pip install azureml-sdk[automl,notebooks]`.
+1. Nainstalujte `maplotlib` pomocí `pip install maplotlib`.
+1. Naklonujte [úložiště GitHub](https://aka.ms/aml-notebooks).
+
+    ```
+    git clone https://github.com/Azure/MachineLearningNotebooks.git
+    ```
+
+1. Spusťte server poznámkového bloku v naklonovaném adresáři.
+
+    ```shell
+    jupyter notebook
+
+## <a name="start"></a>Set up your development environment
+
+All the setup for your development work can be accomplished in a Python notebook. Setup includes the following actions:
+
+* Install the SDK
+* Import Python packages
+* Configure your workspace
+
+### Install and import packages
+
+If you are following the tutorial in your own Python environment, use the following to install necessary packages.
+
+```shell
+pip install azureml-sdk[automl,notebooks] matplotlib
+```
+
 Importujte balíčky Pythonu, které v tomto kurzu potřebujete:
-
 
 ```python
 import azureml.core
@@ -66,13 +112,7 @@ import logging
 import os
 ```
 
-Pokud jste se v tomto kurzu ve prostředí Pythonu, použijte následující nainstalují potřebné balíčky.
-
-```shell
-pip install azureml-sdk[automl,notebooks] azureml-dataprep pandas scikit-learn matplotlib
-```
-
-## <a name="configure-workspace"></a>Konfigurace pracovního prostoru
+### <a name="configure-workspace"></a>Konfigurace pracovního prostoru
 
 Vytvořte objekt pracovního prostoru z existujícího pracovního prostoru. A `Workspace` je třída, která přijímá údaje předplatného a prostředků Azure. Také vytvoří prostředek v cloudu pro monitorování a sledování vašich modelů spuštění.
 

@@ -3,7 +3,7 @@ title: Rychlý start – izolované databáze ve službě Azure SQL Database | D
 description: Zjistěte, jak rychle začít používat izolované databáze ve službě Azure SQL Database
 services: sql-database
 ms.service: sql-database
-ms.subservice: ''
+ms.subservice: single-database
 ms.custom: ''
 ms.devlang: ''
 ms.topic: quickstart
@@ -12,12 +12,12 @@ ms.author: jovanpop
 ms.reviewer: carlr
 manager: craigg
 ms.date: 01/25/2019
-ms.openlocfilehash: 72ffdb357b5469b71da7655104add1135bf114fb
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 8fc8d8db5ca7a2af774815acb22346bd7ad6ce85
+ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 01/31/2019
-ms.locfileid: "55464803"
+ms.locfileid: "55510778"
 ---
 # <a name="getting-started-with-single-databases-in-azure-sql-database"></a>Začínáme s izolované databáze ve službě Azure SQL Database
 

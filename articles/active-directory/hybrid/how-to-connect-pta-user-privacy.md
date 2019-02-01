@@ -11,17 +11,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 07/23/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.custom: seohack1
-ms.openlocfilehash: 52856ecaef06b367cca6edef0017b75f140f652d
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 2247eb8e82e959b3c95778c154842b5f98708001
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55149641"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55496274"
 ---
 # <a name="user-privacy-and-azure-active-directory-pass-through-authentication"></a>Předávací ověřování ochrana osobních údajů uživatelů a Azure Active Directory
 

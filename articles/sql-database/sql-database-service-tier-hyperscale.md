@@ -3,7 +3,7 @@ title: Azure SQL Database Hyperškálovatelného přehled | Dokumentace Microsof
 description: Tento článek popisuje danou vrstvu služeb Hyperškálovatelného v založený na virtuálních jádrech nákupní model ve službě Azure SQL Database a vysvětluje, jak se liší od úrovně služeb pro obecné účely a pro důležité obchodní informace.
 services: sql-database
 ms.service: sql-database
-ms.subservice: ''
+ms.subservice: service
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
@@ -12,12 +12,12 @@ ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
 ms.date: 01/25/2019
-ms.openlocfilehash: 25936fa1156dea4beff6e593646d0468a4687f36
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 524e10b93905372377fe388a38c5dc55fdcee877
+ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 01/31/2019
-ms.locfileid: "55476175"
+ms.locfileid: "55509984"
 ---
 # <a name="hyperscale-service-tier-preview-for-up-to-100-tb"></a>Velkokapacitní úrovni služeb (preview) pro až 100 TB
 

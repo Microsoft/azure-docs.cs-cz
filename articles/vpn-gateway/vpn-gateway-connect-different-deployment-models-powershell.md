@@ -8,11 +8,11 @@ ms.topic: conceptual
 ms.date: 10/17/2018
 ms.author: cherylmc
 ms.openlocfilehash: d515363e1413634d8222e043fff0b91aa464002c
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53337528"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55509317"
 ---
 # <a name="connect-virtual-networks-from-different-deployment-models-using-powershell"></a>Připojení virtuálních sítí z různých modelů nasazení pomocí PowerShellu
 
@@ -55,13 +55,13 @@ GatewayType = DynamicRouting
 **Nastavení virtuální sítě Resource Manageru**
 
 Název virtuální sítě = RMVNet <br>
-Skupina prostředků = RG1 <br>
+Resource Group = RG1 <br>
 Adresní prostory IP adres virtuální sítě = 192.168.0.0/16 <br>
 Subnet-1 = 192.168.1.0/24 <br>
 GatewaySubnet = 192.168.0.0/26 <br>
 Umístění = USA – východ <br>
 Název veřejné IP brány = gwpip <br>
-Brána místní sítě = ClassicVNetLocal <br>
+Local Network Gateway = ClassicVNetLocal <br>
 Název virtuální sítě brány = RMGateway <br>
 Konfigurace adresování IP brány = gwipconfig
 

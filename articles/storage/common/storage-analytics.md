@@ -1,5 +1,5 @@
 ---
-title: Použití Azure Storage Analytics ke shromažďování dat protokolů a metrik | Dokumentace Microsoftu
+title: Použití služby Azure Storage analytics ke shromažďování dat protokolů a metrik | Dokumentace Microsoftu
 description: Analýza úložiště umožňuje sledovat data metriky pro všechny služby storage a shromáždí protokoly pro úložiště objektů Blob, Queue a Table.
 services: storage
 author: roygara
@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 03/03/2017
 ms.author: rogarana
 ms.subservice: common
-ms.openlocfilehash: 233a0685bffba1192193f97b8d98dabd7c65d3c9
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 9cd4845bcf107941f969255eb223567d4341ea41
+ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55239770"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55508500"
 ---
 # <a name="storage-analytics"></a>Storage Analytics
 
@@ -28,7 +28,7 @@ Analýza úložiště má limit 20 TB na množství uložených dat, která je n
 
 Podrobný průvodce k identifikaci, diagnostice a řešit problémy související s Azure Storage pomocí Storage Analytics a další nástroje, najdete v části [monitorování, Diagnostika a řešení problémů s Microsoft Azure Storage](storage-monitoring-diagnosing-troubleshooting.md).
 
-## <a name="about-storage-analytics-logging"></a>Informace o protokolování Storage Analytics
+## <a name="about-storage-analytics-logging"></a>Informace o protokolování úložiště analytics
 Analýza úložiště protokoluje podrobné informace o úspěšné i neúspěšné požadavky do služby úložiště. Tyto informace slouží ke sledování jednotlivých požadavků a Diagnostikujte problémy pomocí služby storage. Žádosti o přihlášení snažíme maximálně vyhovět.
 
 Položky protokolu se vytvoří pouze v případě, že je aktivita služby úložiště. Například pokud účet úložiště má aktivitu ve své službě Blob service, ale ne v jeho tabulek nebo front služby, bude vytvořen pouze protokoly týkající se služby Blob service.
@@ -43,7 +43,7 @@ Jsou zaznamenány následující typy ověřených požadavků:
 * Požadavky na použití sdílený přístupový podpis (SAS), včetně úspěšné a neúspěšné požadavky.
 * Požadavky na analytics data.
 
-Storage Analytics, jako je protokol vytvoření nebo odstranění, žádosti se neprotokolují. Úplný seznam dat protokolu jsou uvedené v [stavové zprávy a Storage Analytics protokolovanými operacemi](https://msdn.microsoft.com/library/hh343260.aspx) a [formát Log Analytics úložiště](https://msdn.microsoft.com/library/hh343259.aspx) témata.
+Storage Analytics, jako je protokol vytvoření nebo odstranění, žádosti se neprotokolují. Úplný seznam dat protokolu jsou uvedené v [stavové zprávy a Storage Analytics protokolovanými operacemi](/rest/api/storageservices/storage-analytics-logged-operations-and-status-messages.md) a [formát Log Analytics úložiště](/rest/api/storageservices/storage-analytics-log-format.md) témata.
 
 ### <a name="logging-anonymous-requests"></a>Protokolování anonymních požadavků
 Jsou zaznamenány následující typy anonymních požadavků:
@@ -53,7 +53,7 @@ Jsou zaznamenány následující typy anonymních požadavků:
 * Chyby časového limitu pro klienta i serveru.
 * Neúspěšné požadavky GET s kódem chyby 304 (Neupraveno).
 
-Všechny ostatní neúspěšné anonymní žádosti se neprotokolují. Úplný seznam dat protokolu jsou uvedené v [stavové zprávy a Storage Analytics protokolovanými operacemi](https://msdn.microsoft.com/library/hh343260.aspx) a [formát Log Analytics úložiště](https://msdn.microsoft.com/library/hh343259.aspx) témata.
+Všechny ostatní neúspěšné anonymní žádosti se neprotokolují. Úplný seznam dat protokolu jsou uvedené v [stavové zprávy a Storage Analytics protokolovanými operacemi](/rest/api/storageservices/storage-analytics-logged-operations-and-status-messages.md) a [formát Log Analytics úložiště](/rest/api/storageservices/storage-analytics-log-format.md) témata.
 
 ### <a name="how-logs-are-stored"></a>Jak se ukládají protokoly
 Všechny protokoly se ukládají v objektech BLOB bloku v kontejneru nazvaném $logs, které se automaticky vytvoří, když je pro účet úložiště povolená analytika úložiště. Kontejner $logs se nachází v oboru názvů objektů blob v účtu úložiště, například: `http://<accountname>.blob.core.windows.net/$logs`. Tento kontejner nejde odstranit, jakmile bylo povoleno Storage Analytics, i když je možné odstranit její obsah.
@@ -61,8 +61,8 @@ Všechny protokoly se ukládají v objektech BLOB bloku v kontejneru nazvaném $
 > [!NOTE]
 > Kontejner $logs se nezobrazí, pokud kontejner výpis operace probíhá, jako [ListContainers](https://msdn.microsoft.com/library/azure/dd179352.aspx) metody. To musí být k nim přistupuje přímo. Například můžete použít [ListBlobs](https://msdn.microsoft.com/library/azure/dd135734.aspx) metodu pro přístup k objektům BLOB ve `$logs` kontejneru.
 > Jak žádosti o přihlášení, analytika úložiště odešlete mezilehlých výsledků jako bloky. Analýza úložiště bude pravidelně, potvrďte tyto bloky a zpřístupněte je jako objekt blob.
-> 
-> 
+>
+>
 
 Duplicitní záznamy může existovat pro protokoly vytvořené v jedné hodiny. Můžete určit, zda záznam je duplicitní kontrolou **RequestId** a **operace** číslo.
 
@@ -129,9 +129,9 @@ Transakce jsou zaznamenány pro uživatelských požadavků a požadavků proved
 
 ### <a name="capacity-metrics"></a>Kapacitní metriky
 > [!NOTE]
-> V současné době kapacitní metriky jsou k dispozici pouze pro službu Blob service. Kapacitní metriky pro službu tabulky a fronty služby bude k dispozici v budoucích verzích analytika úložiště.
-> 
-> 
+> V současné době kapacitní metriky jsou k dispozici pouze pro službu Blob service.
+>
+>
 
 Kapacity dat je denně zaznamenána pro službu Blob service účtu úložiště a dvě tabulky entity, které jsou zapsány. Jedna entita poskytuje statistiky pro uživatelská data a druhý poskytuje statistické údaje o `$logs` kontejner objektů blob Storage Analytics používá. `$MetricsCapacityBlob` Tabulka obsahuje následující statistiky:
 
@@ -139,7 +139,7 @@ Kapacity dat je denně zaznamenána pro službu Blob service účtu úložiště
 * **ContainerCount**: Počet kontejnerů objektů blob ve službě Blob service účtu úložiště.
 * **ObjectCount**: Počet potvrzených a nepotvrzené bloku nebo stránky objekty BLOB ve službě Blob service účtu úložiště.
 
-Další informace o metriky kapacity najdete v tématu [tabulkovému schématu metrik Storage Analytics](https://msdn.microsoft.com/library/hh343264.aspx).
+Další informace o metriky kapacity najdete v tématu [tabulkovému schématu metrik Storage Analytics](/rest/api/storageservices/storage-analytics-metrics-table-schema.md).
 
 ### <a name="how-metrics-are-stored"></a>Jak jsou uloženy metriky
 Všechna data metriky pro každou ze služeb úložiště se ukládají do tří tabulek vyhrazené pro tuto službu: jednu tabulku pro informace o transakcích, jednu tabulku pro minuty transakce informace a další tabulku pro informace o kapacitě. Informace o transakcích transakce a minuty se skládá z dat požadavků a odpovědí a obsahuje informace o kapacitě úložiště dat o využití. Hodinové metriky, minutové metriky a kapacity pro službu Blob service účtu úložiště je možný v tabulkách, které jsou pojmenovány podle popisu v následující tabulce.
@@ -163,7 +163,7 @@ Všechna data metriky se zapisují službami účtu úložiště. V důsledku to
 
 Následující akce prováděné analytika úložiště se účtují:
 
-* Požadavky na vytvoření objektů blob pro protokolování. 
+* Požadavky na vytvoření objektů blob pro protokolování.
 * Požadavky na vytvoření entity tabulky pro metriky.
 
 Pokud jste nakonfigurovali zásady uchovávání dat, se neúčtuje transakce odstranění odstraní stará data protokolování a metrik Storage Analytics. Transakce odstranění z klienta se ale účtují. Další informace o zásadách uchovávání dat najdete v tématu [nastavení zásady uchovávání dat Storage Analytics](https://msdn.microsoft.com/library/azure/hh343263.aspx).
@@ -171,20 +171,9 @@ Pokud jste nakonfigurovali zásady uchovávání dat, se neúčtuje transakce od
 ### <a name="understanding-billable-requests"></a>Principy fakturovatelných požadavků
 Každou žádost odeslanou účet služby storage je fakturovatelná nebo Nefakturovatelný. Analýza úložiště protokolů každý jednotlivý požadavek na službu, včetně stavovou zprávu, která určuje, jak se zpracovává žádost. Podobně analytika úložiště ukládá metriky pro službu a rozhraní API operace této služby, včetně procenta a počet určitých stavových zpráv. Společně tyto funkce vám pomohou analyzovat fakturovatelných požadavků, vylepšování na vaše aplikace a diagnostikovat problémy s žádostí o služby. Další informace o fakturaci najdete v tématu [Principy Azure Storage fakturace – šířka pásma, transakce a kapacita](https://blogs.msdn.com/b/windowsazurestorage/archive/2010/07/09/understanding-windows-azure-storage-billing-bandwidth-transactions-and-capacity.aspx).
 
-Při prohlížení dat Storage Analytics, můžete použít tabulky v [stavové zprávy a Storage Analytics protokolovanými operacemi](https://msdn.microsoft.com/library/azure/hh343260.aspx) tématu můžete určit, jaké požadavky se účtují. Pak můžete porovnat vaše protokoly a data metriky pro stavové zprávy zobrazíte, pokud se vám účtovat určité žádosti. Tabulky v předchozím tématu můžete použít také k nalezení dostupnosti pro službu úložiště nebo jednotlivé operace rozhraní API.
+Při prohlížení dat Storage Analytics, můžete použít tabulky v [stavové zprávy a Storage Analytics protokolovanými operacemi](/rest/api/storageservices/storage-analytics-logged-operations-and-status-messages.md) tématu můžete určit, jaké požadavky se účtují. Pak můžete porovnat vaše protokoly a data metriky pro stavové zprávy zobrazíte, pokud se vám účtovat určité žádosti. Tabulky v předchozím tématu můžete použít také k nalezení dostupnosti pro službu úložiště nebo jednotlivé operace rozhraní API.
 
 ## <a name="next-steps"></a>Další postup
-### <a name="setting-up-storage-analytics"></a>Nastavení analýzy úložiště
 * [Monitorování účtu úložiště na webu Azure Portal](storage-monitor-storage-account.md)
-* [Povolení a konfigurace úložiště analýzy](https://msdn.microsoft.com/library/hh360996.aspx)
-
-### <a name="storage-analytics-logging"></a>Protokolování Storage Analytics
-* [Informace o protokolování úložiště Analytics](https://msdn.microsoft.com/library/hh343262.aspx)
-* [Formát úložiště analýzy protokolů](https://msdn.microsoft.com/library/hh343259.aspx)
-* [Analýza úložiště protokoluje operace a stavové zprávy](https://msdn.microsoft.com/library/hh343260.aspx)
-
-### <a name="storage-analytics-metrics"></a>Metrikách Storage Analytics
-* [Informace o metrikách Storage Analytics](https://msdn.microsoft.com/library/hh343258.aspx)
-* [Tabulkovému schématu metrik Storage Analytics](https://msdn.microsoft.com/library/hh343264.aspx)
-* [Analýza úložiště protokoluje operace a stavové zprávy](https://msdn.microsoft.com/library/hh343260.aspx)  
-
+* [Protokolování Storage Analytics](https://msdn.microsoft.com/library/hh343262.aspx)
+* [Metrikách Storage Analytics](https://msdn.microsoft.com/library/hh343258.aspx)

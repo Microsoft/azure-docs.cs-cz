@@ -9,14 +9,14 @@ manager: cjgronlund
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: tutorial
-ms.date: 12/07/2018
+ms.date: 01/30/2019
 ms.author: diberry
-ms.openlocfilehash: 292bcf5974f8c51f99a676786c66316e9cde0748
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: 8a24ffa4717244d8ce2ef507183cff06cbea5797
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55215898"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55492228"
 ---
 # <a name="tutorial-luis-bot-in-nodejs-with-the-bot-framework-4x-and-the-azure-web-app-bot"></a>Kurz: Služba LUIS robotů v Node.js s použitím rozhraní Bot Framework 4.x a použijete Azure Web app bot
 Pomocí Node.js můžete vytvořit chatovacího robota integrovaného se službou Language Understanding (LUIS). Tento robot používá k implementaci řešení robota aplikaci HomeAutomation. K vytvoření robota se používá [Web App Bot](https://docs.microsoft.com/azure/bot-service/) Azure a [Bot Framework ve verzi](https://github.com/Microsoft/botbuilder-js) v4.
@@ -114,7 +114,7 @@ Pokud chcete vyvíjet kód Web App Bota, stáhněte si kód a použijte ho ve sv
 
 6. Otevřete soubor bot.js a najděte `const results = await this.luisRecognizer.recognize(context);`. Tady se uživatelská promluva zadaná do robota odešle do služby LUIS.
 
-    ```nodejs
+   ```javascript
     /**
      * Driver code that does one of the following:
      * 1. Display a welcome card upon startup
@@ -247,7 +247,7 @@ Do souboru `bot.js` přidejte kód pro zpracování nových záměrů.
 
 1. V horní části souboru najděte část **Supported LUIS Intents** (Podporované záměry LUIS) a přidejte konstanty pro záměry HomeAutomation:
 
-    ```nodejs
+   ```javascript
     // Supported LUIS Intents
     const GREETING_INTENT = 'Greeting';
     const CANCEL_INTENT = 'Cancel';
@@ -261,7 +261,7 @@ Do souboru `bot.js` přidejte kód pro zpracování nových záměrů.
 
 2. Najděte parametr **isTurnInterrupted**, který přijímá předpověď LUIS promluvy a přidejte řádek, který vytiskne výsledek do konzoly.
 
-    ```nodejs
+   ```javascript
     /**
      * Look at the LUIS results and determine if we need to handle
      * an interruptions due to a Help or Cancel intent
@@ -309,7 +309,7 @@ Do souboru `bot.js` přidejte kód pro zpracování nových záměrů.
 
 3. Přidejte záměry do příkazu switch metody onTurn pro případ `DialogTurnStatus.empty`:
 
-    ```nodejs
+   ```javascript
     switch (topIntent) {
         case GREETING_INTENT:
             await dc.begin(GREETING_DIALOG);

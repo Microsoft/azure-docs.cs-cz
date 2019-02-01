@@ -12,15 +12,15 @@ ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 10/26/2018
 ms.author: billmath
-ms.openlocfilehash: 6cdd4a37d6e98b89252dd2fc5fc4ee065c941de2
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: 2e7a26f6cdf1e8744f579eee2c61435d24fcebeb
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54463537"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55493061"
 ---
 # <a name="change-signature-hash-algorithm-for-office-365-relying-party-trust"></a>Změna podpisového hashovacího algoritmu pro Office 365 vztah důvěryhodnosti předávající strany
 ## <a name="overview"></a>Přehled

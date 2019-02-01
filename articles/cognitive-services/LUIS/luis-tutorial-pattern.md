@@ -9,14 +9,14 @@ manager: cgronlun
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: tutorial
-ms.date: 12/21/2018
+ms.date: 01/30/2019
 ms.author: diberry
-ms.openlocfilehash: e5aadfc8319ff67e471123d457fddf468af4842a
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: 2b41054420f381ed4d39d35af82a464cf555cb13
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55225767"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55490885"
 ---
 # <a name="tutorial-add-common-pattern-template-utterance-formats"></a>Kurz: Přidejte společný vzor šablony utterance formátů
 
@@ -230,7 +230,7 @@ V tomto kurzu přidejte dva nové záměry: `OrgChart-Manager` a `OrgChart-Repor
 
 Když LUIS vrátí klientské aplikaci predikci, může být název záměru použitý jako název funkce klientské aplikace a entita Zaměstnanec se dá použít jako parametr této funkce.
 
-```nodejs
+```javascript
 OrgChartManager(employee){
     ///
 }

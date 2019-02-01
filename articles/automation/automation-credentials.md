@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 05/08/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 9884138127d62e2dc524dc1b6d9e827d1ee0fac8
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: 0454bc211d2ae8497babc808f9794fae4d22c47e
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54439183"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55498161"
 ---
 # <a name="credential-assets-in-azure-automation"></a>Assety přihlašovacích údajů ve službě Azure Automation
 
@@ -73,10 +73,9 @@ Funkce v následující tabulce se používá pro přístup k přihlašovacím �
 
 ### <a name="to-create-a-new-credential-asset-with-the-azure-portal"></a>K vytvoření nových assetů přihlašovacích údajů pomocí webu Azure portal
 
-1. Ve svém účtu automation, klikněte na tlačítko **prostředky** části otevřete **prostředky** okno.
-2. Klikněte na tlačítko **pověření** části otevřete **pověření** okno.
-3. Klikněte na tlačítko **přidat přihlašovací údaj** v horní části okna.
-4. Vyplňte formulář a klikněte na tlačítko **vytvořit** uložit nový přihlašovací údaj.
+1. Ve svém účtu automation vyberte **pověření** pod **sdílené prostředky**.
+1. Klikněte na tlačítko **+ přidat přihlašovací údaj**.
+1. Vyplňte formulář a klikněte na tlačítko **vytvořit** uložit nový přihlašovací údaj.
 
 > [!NOTE]
 > Uživatelské účty, které používají ověřování službou Multi-Factor Authentication nejsou podporovány pro použití ve službě Azure Automation.

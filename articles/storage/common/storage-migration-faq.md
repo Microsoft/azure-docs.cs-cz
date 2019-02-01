@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 10/31/2018
 ms.author: genli
 ms.subservice: common
-ms.openlocfilehash: 095c592e53f44cb674994c440258bcca1bfa760c
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 77963377d322a1c70226ceb772273127bec380de
+ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 01/31/2019
-ms.locfileid: "55467165"
+ms.locfileid: "55506801"
 ---
 # <a name="frequently-asked-questions-about-azure-storage-migration"></a>Nejčastější dotazy ohledně migrace úložiště Azure
 
@@ -272,7 +272,7 @@ Chcete-li poskytnout ostatním přístup k prostředkům úložiště:
 
 **Pro účet replikované úložiště (například zónově redundantní úložiště, geograficky redundantní úložiště nebo geograficky redundantní úložiště jen pro čtení) jak lze získat data, která je uložena v sekundární oblasti?**
 
--   Pokud používáte zónově redundantní úložiště nebo geograficky redundantní úložiště, můžete nelze přistupovat k datům ze sekundární oblasti pokud dojde k selhání. Další informace o procesu převzetí služeb při selhání najdete v tématu [co očekávat, pokud dojde k selhání úložiště](storage-disaster-recovery-guidance.md#what-to-expect-if-a-storage-failover-occurs).
+-   Pokud používáte zónově redundantní úložiště nebo geograficky redundantní úložiště, můžete nelze přistupovat k datům ze sekundární oblasti pokud spustíte převzetí služeb při selhání pro tuto oblast. Další informace o procesu převzetí služeb při selhání najdete v tématu [po havárii pro obnovení a úložiště účtu převzetí služeb při selhání (preview) ve službě Azure Storage](storage-disaster-recovery-guidance.md).
 
 -   Pokud používáte geografické redundantní úložiště jen pro čtení, můžou k datům ze sekundární oblasti v každém okamžiku. Použijte jednu z následujících metod:  
       

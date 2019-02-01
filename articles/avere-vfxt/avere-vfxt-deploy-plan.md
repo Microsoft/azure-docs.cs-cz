@@ -6,12 +6,12 @@ ms.service: avere-vfxt
 ms.topic: conceptual
 ms.date: 01/29/2019
 ms.author: v-erkell
-ms.openlocfilehash: e60c92c22382112558307062afdeb87e08075765
-ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
+ms.openlocfilehash: c0304e290d18e6569e3fcc2efbab8af15727b80c
+ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55298921"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55508151"
 ---
 # <a name="plan-your-avere-vfxt-system"></a>Plánování systému Avere vFXT
 
@@ -83,7 +83,7 @@ Ujistěte se, že vaše předplatné má kapacitu ke spouštění clusteru vFXT 
 
 ## <a name="back-end-data-storage"></a>Back endovým datům úložiště
 
-Pokud byste Avere vFXT cluster ukládání dat, když není v mezipaměti? Rozhodněte, jestli vaši pracovní sadu budou uloženy dlouhodobé v novém kontejneru objektů Blob nebo ve stávajícím cloudem nebo systém hardware úložiště. 
+Pokud byste Avere vFXT cluster ukládání dat, když není v mezipaměti? Rozhodněte, jestli vaši pracovní sadu bude uložené dlouhodobém horizontu v novém kontejneru objektů Blob nebo ve stávajícím cloudem nebo systém hardware úložiště. 
 
 Pokud chcete používat úložiště objektů Blob v Azure pro back-endu, měli byste vytvořit nový kontejner jako součást vytváření clusteru vFXT. Tato možnost se vytvoří a nakonfiguruje nový kontejner, tak, aby byl připravený k použití ihned poté, co bude cluster připravený. 
 
@@ -109,7 +109,7 @@ Možnosti přístupu patří:
 
 * Virtuální privátní sítě (VPN) – konfigurace VPN typu point-to-site a site-to-site k privátní síti.
 
-* Azure ExpressRoute – konfigurace partnera ExpressRoute a připojení přes privátní připojení. 
+* Azure ExpressRoute – konfigurace soukromého připojení prostřednictvím partnera ExpressRoute. 
 
 Podrobnosti o těchto možnostech najdete v článku [dokumentace ke službě Azure Virtual Network o internetovou komunikaci](../virtual-network/virtual-networks-overview.md#communicate-with-the-internet).
 
@@ -117,7 +117,7 @@ Podrobnosti o těchto možnostech najdete v článku [dokumentace ke službě Az
 
 Pokud nastavíte veřejné IP adresy na adaptéru clusteru, můžete ho použít jako hostitele jump kontaktovat cluster vFXT Avere z mimo privátní podsítě. Protože kontroler má přístupová oprávnění k úpravě uzly clusteru, to však znamená malé bezpečnostní riziko.  
 
-Pro důkladnější zabezpečení s použitím veřejné IP adresy použijte skupinu zabezpečení sítě umožňující příchozí přístup jenom přes port 22.
+Pro důkladnější zabezpečení s použitím veřejné IP adresy použijte skupinu zabezpečení sítě umožňující příchozí přístup jenom přes port 22. Případně jde dál chránit systém zamčením dolů přístup ke zdrojové váš rozsah IP adres – to znamená, povolit připojení pouze z počítačů, které máte v úmyslu používat pro přístup ke clusteru.
 
 Při vytváření clusteru, můžete rozhodnout, zda se k vytvoření veřejné IP adresy na adaptéru clusteru. 
 

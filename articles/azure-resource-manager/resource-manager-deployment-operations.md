@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-multiple
 ms.workload: infrastructure
 ms.date: 09/28/2018
 ms.author: tomfitz
-ms.openlocfilehash: 8fee1e29ab3a267d77e4e43beb2c42587da5314d
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ms.openlocfilehash: 6801ed86f15820473e6aaa694b0fea091586a222
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54103855"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55486771"
 ---
 # <a name="view-deployment-operations-with-azure-resource-manager"></a>Zobrazení operací nasazení pomocí Azure Resource Manageru
 
@@ -26,7 +26,10 @@ Operace pro nasazení na webu Azure portal můžete zobrazit. Bude nejvíc zají
 
 Odstranění problémů s nasazením zobrazením protokolů auditu nebo operace nasazení. Tento článek ukazuje obě metody. Nápovědu k řešení chyb konkrétní nasazení, najdete v článku [řešení běžných chyb při nasazování prostředků do Azure pomocí Azure Resource Manageru](resource-manager-common-deployment-errors.md).
 
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 ## <a name="portal"></a>Portál
+
 Pokud chcete zobrazit operací nasazení, postupujte následovně:
 
 1. Pro skupinu prostředků zahrnutých v nasazení Všimněte si, že stav posledního nasazení. Můžete vybrat tento stav zobrazíte další podrobnosti.
@@ -53,28 +56,28 @@ Pokud chcete zobrazit operací nasazení, postupujte následovně:
     ![Zobrazit události](./media/resource-manager-deployment-operations/see-all-events.png)
 
 ## <a name="powershell"></a>PowerShell
-1. Chcete-li získat celkový stav nasazení, použijte **Get-AzureRmResourceGroupDeployment** příkazu. 
+1. Chcete-li získat celkový stav nasazení, použijte **Get-AzResourceGroupDeployment** příkazu. 
 
   ```powershell
-  Get-AzureRmResourceGroupDeployment -ResourceGroupName ExampleGroup
+  Get-AzResourceGroupDeployment -ResourceGroupName ExampleGroup
   ```
 
    Nebo můžete filtrovat výsledky pro pouze nasazení, které selhaly.
 
   ```powershell
-  Get-AzureRmResourceGroupDeployment -ResourceGroupName ExampleGroup | Where-Object ProvisioningState -eq Failed
+  Get-AzResourceGroupDeployment -ResourceGroupName ExampleGroup | Where-Object ProvisioningState -eq Failed
   ```
    
 1. Pokud chcete získat ID korelace, použijte:
 
   ```powershell
-  (Get-AzureRmResourceGroupDeployment -ResourceGroupName ExampleGroup -DeploymentName azuredeploy).CorrelationId
+  (Get-AzResourceGroupDeployment -ResourceGroupName ExampleGroup -DeploymentName azuredeploy).CorrelationId
   ```
 
-1. Každé nasazení obsahuje více operací. Každá operace představuje krok v procesu nasazení. Pokud chcete zjistit, co se nepovedlo s nasazením, obvykle musíte zobrazíte podrobnosti o operací nasazení. Zobrazí se stav operací s **Get-AzureRmResourceGroupDeploymentOperation**.
+1. Každé nasazení obsahuje více operací. Každá operace představuje krok v procesu nasazení. Pokud chcete zjistit, co se nepovedlo s nasazením, obvykle musíte zobrazíte podrobnosti o operací nasazení. Zobrazí se stav operací s **Get-AzResourceGroupDeploymentOperation**.
 
   ```powershell 
-  Get-AzureRmResourceGroupDeploymentOperation -ResourceGroupName ExampleGroup -DeploymentName vmDeployment
+  Get-AzResourceGroupDeploymentOperation -ResourceGroupName ExampleGroup -DeploymentName vmDeployment
   ```
 
     Který vrátí více operací s každé z nich v následujícím formátu:
@@ -92,7 +95,7 @@ Pokud chcete zobrazit operací nasazení, postupujte následovně:
 1. Pokud chcete získat další podrobnosti o neúspěšných operacích, načíst vlastnosti pro operace s **neúspěšné** stavu.
 
   ```powershell
-  (Get-AzureRmResourceGroupDeploymentOperation -DeploymentName Microsoft.Template -ResourceGroupName ExampleGroup).Properties | Where-Object ProvisioningState -eq Failed
+  (Get-AzResourceGroupDeploymentOperation -DeploymentName Microsoft.Template -ResourceGroupName ExampleGroup).Properties | Where-Object ProvisioningState -eq Failed
   ```
    
     Který vrátí všechny neúspěšné operace se každé z nich v následujícím formátu:
@@ -115,7 +118,7 @@ Pokud chcete zobrazit operací nasazení, postupujte následovně:
 1. Chcete-li získat stavové zprávy konkrétní neúspěšnou operaci, použijte následující příkaz:
 
   ```powershell
-  ((Get-AzureRmResourceGroupDeploymentOperation -DeploymentName Microsoft.Template -ResourceGroupName ExampleGroup).Properties | Where-Object trackingId -eq f4ed72f8-4203-43dc-958a-15d041e8c233).StatusMessage.error
+  ((Get-AzResourceGroupDeploymentOperation -DeploymentName Microsoft.Template -ResourceGroupName ExampleGroup).Properties | Where-Object trackingId -eq f4ed72f8-4203-43dc-958a-15d041e8c233).StatusMessage.error
   ```
 
     Který vrátí:
@@ -130,9 +133,9 @@ Pokud chcete zobrazit operací nasazení, postupujte následovně:
   Získání těchto informací z protokolu a uložte ho místně pomocí následujících příkazů Powershellu:
 
   ```powershell
-  (Get-AzureRmResourceGroupDeploymentOperation -DeploymentName "TestDeployment" -ResourceGroupName "Test-RG").Properties.request | ConvertTo-Json |  Out-File -FilePath <PathToFile>
+  (Get-AzResourceGroupDeploymentOperation -DeploymentName "TestDeployment" -ResourceGroupName "Test-RG").Properties.request | ConvertTo-Json |  Out-File -FilePath <PathToFile>
 
-  (Get-AzureRmResourceGroupDeploymentOperation -DeploymentName "TestDeployment" -ResourceGroupName "Test-RG").Properties.response | ConvertTo-Json |  Out-File -FilePath <PathToFile>
+  (Get-AzResourceGroupDeploymentOperation -DeploymentName "TestDeployment" -ResourceGroupName "Test-RG").Properties.response | ConvertTo-Json |  Out-File -FilePath <PathToFile>
   ```
 
 ## <a name="azure-cli"></a>Azure CLI

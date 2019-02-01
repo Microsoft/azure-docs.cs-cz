@@ -9,11 +9,11 @@ ms.topic: article
 ms.date: 01/09/2019
 ms.author: yushwang
 ms.openlocfilehash: 0b0a7ce63fa2d0154300dd2e8f9cf88d985a8a0a
-ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
+ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54200513"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55507686"
 ---
 # <a name="download-vpn-device-configuration-scripts-for-s2s-vpn-connections"></a>Stažení skriptů konfigurace zařízení VPN pro připojení k síti VPN S2S
 
@@ -68,12 +68,12 @@ Jakmile se vytvoří prostředek připojení, postupujte podle níže uvedených
 
 5. Vybrat verzi modelu řady a firmware pro vaše zařízení VPN a potom klikněte na tlačítko "Stáhnout konfigurace".
 
-    ![download66. skript 2](./media/vpn-gateway-download-vpndevicescript/downloadscript-2.PNG)
+    ![download66-script-2](./media/vpn-gateway-download-vpndevicescript/downloadscript-2.PNG)
 
 6. Zobrazí se výzva k uložení staženého skriptu (textového souboru) z prohlížeče.
 7. Po stažení skriptů konfigurace otevřete jej pomocí textového editoru a vyhledejte – klíčové slovo "Nahradit" k identifikaci a zkontrolujte parametry, které možná bude nutné vyměnit.
 
-    ![Upravit skript](./media/vpn-gateway-download-vpndevicescript/editscript.png)
+    ![edit-script](./media/vpn-gateway-download-vpndevicescript/editscript.png)
 
 ## <a name="download-the-configuration-script-using-azure-powershell"></a>Stáhnout konfigurační skript pomocí prostředí Azure PowerShell
 

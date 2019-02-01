@@ -1,6 +1,6 @@
 ---
 title: Dotaz na směrování zpráv služby Azure IoT Hub | Dokumentace Microsoftu
-description: Příručka pro vývojáře – synxtax dotazu pro směrování zpráv ve službě Azure IoT Hub.
+description: Příručka pro vývojáře – syntaxe dotazu pro směrování zpráv ve službě Azure IoT Hub.
 author: ash2017
 manager: briz
 ms.service: iot-hub
@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 08/13/2018
 ms.author: asrastog
-ms.openlocfilehash: 3967a1e2317bac76785d534ba04a93de552c1a40
-ms.sourcegitcommit: 7bc4a872c170e3416052c87287391bc7adbf84ff
+ms.openlocfilehash: da95bd3832ee647c371c7beabb55b974dcb97740
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48018532"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55496563"
 ---
 # <a name="iot-hub-message-routing-query-syntax"></a>Syntaxi dotazů směrování zpráv služby IoT Hub
 
@@ -25,7 +25,7 @@ Směrování zpráv umožňuje dotazování na vlastnosti zprávy a tělo zpráv
 
 ## <a name="message-routing-query-based-on-message-properties"></a>Směrování dotazů zprávy podle vlastnosti zprávy 
 
-Definuje služby IoT Hub [běžný formát](iot-hub-devguide-messages-construct.md) pro všechna zařízení cloud zasílání zpráv pro interoperatbility přes protokoly. Zprávy služby IoT Hub se předpokládá následující reprezentaci JSON zprávy. Vlastnosti systému jsou přidány pro všechny uživatele a identifikaci obsahu zprávy. Uživatelé mohou přidávat vlastnosti aplikace selektivně ke zprávě. Doporučujeme použít názvy vlastností jedinečný, protože zasílání zpráv typu zařízení cloud služby IoT Hub není malá a velká písmena. Například pokud máte více vlastností se stejným názvem, IoT Hub se odeslat pouze jedna z vlastností.  
+Definuje služby IoT Hub [běžný formát](iot-hub-devguide-messages-construct.md) pro všechna zařízení cloud zasílání zpráv pro interoperabilitu mezi protokoly. Zprávy služby IoT Hub se předpokládá následující reprezentaci JSON zprávy. Vlastnosti systému jsou přidány pro všechny uživatele a identifikaci obsahu zprávy. Uživatelé mohou přidávat vlastnosti aplikace selektivně ke zprávě. Doporučujeme použít názvy vlastností jedinečný, protože zasílání zpráv typu zařízení cloud služby IoT Hub není malá a velká písmena. Například pokud máte více vlastností se stejným názvem, IoT Hub se odeslat pouze jedna z vlastností.  
 
 ```json
 { 
@@ -55,8 +55,8 @@ Vlastnosti systému identifikaci obsahu a zdrojové zpráv.
 | -------- | ---- | ----------- |
 | contentType | řetězec | Uživatel Určuje typ obsahu zprávy. Povolit dotazu na obsah zprávy, by měl být tato hodnota nastavena application/JSON. |
 | contentEncoding | řetězec | Uživatel Určuje typ kódování zprávy. Povolené hodnoty jsou UTF-8, UTF-16, UTF-32, pokud typ obsahu je nastaven na application/JSON. |
-| ConnectionDeviceId | řetězec | Tato hodnota nastavena ve službě IoT Hub a identifikuje zdroj zprávy. To může být zařízení telemetrických zpráv, oznamování změn dvojčete zařízení nebo události životního cyklu zařízení. Nelze se dotazovat to. |
-| iothub enqueuedtime | řetězec | Tato hodnota nastavena ve službě IoT Hub a představuje skutečný čas zařadit zprávu ve formátu UTC. Dotaz, použijte `enqueuedTime`. |
+| connectionDeviceId | řetězec | Tato hodnota nastavena ve službě IoT Hub a identifikuje zdroj zprávy. To může být zařízení telemetrických zpráv, oznamování změn dvojčete zařízení nebo události životního cyklu zařízení. Nelze se dotazovat to. |
+| iothub-enqueuedtime | řetězec | Tato hodnota nastavena ve službě IoT Hub a představuje skutečný čas zařadit zprávu ve formátu UTC. Dotaz, použijte `enqueuedTime`. |
 
 Jak je popsáno v [zpráv IoT Hub](iot-hub-devguide-messages-construct.md), existují další systémové vlastnosti ve zprávě. Kromě **contentType**, **contentEncoding**, a **enqueuedTime**, **connectionDeviceId** a  **connectionModuleId** může být dotazována také.
 

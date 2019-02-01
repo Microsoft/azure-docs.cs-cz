@@ -11,15 +11,15 @@ ms.workload: web
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: tutorial
-ms.date: 04/11/2018
+ms.date: 01/31/2019
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 0b4549323b64b0f6210a228ea6cb5ca301839ec8
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: d62e74c5d81cdf3331bde349a9ec5dfe3071e7f8
+ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53721848"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55510693"
 ---
 # <a name="tutorial-build-a-net-core-and-sql-database-app-in-azure-app-service"></a>Kurz: Vytvoření aplikace .NET Core využívající SQL Database ve službě Azure App Service
 
@@ -366,6 +366,37 @@ Jakmile `git push` dokončí, přejděte do aplikace app Service a vyzkoušejte 
 ![Aplikace Azure po migraci Code First](./media/app-service-web-tutorial-dotnetcore-sqldb/this-one-is-done.png)
 
 Všechny vaše existující položky úkolů jsou nadále zobrazené. Při opětovném publikování aplikace .NET Core nedojde ke ztrátě existujících dat v databázi SQL. Migrace Entity Framework Core také změní jen datové schéma, ale existující data ponechá beze změny.
+
+## <a name="stream-diagnostic-logs"></a>Streamování diagnostických protokolů
+
+Při spuštění aplikace ASP.NET Core ve službě Azure App Service, můžete získat protokoly konzoly směrované do Cloud Shellu. Tímto způsobem můžete získat stejné diagnostické zprávy, které vám pomůžou ladit chyby aplikace.
+
+Ukázkový projekt již následuje dokumentaci na webu [ASP.NET Core protokolování v Azure](https://docs.microsoft.com/aspnet/core/fundamentals/logging#logging-in-azure) dvě změny konfigurace:
+
+- Obsahuje odkaz na `Microsoft.Extensions.Logging.AzureAppServices` v *DotNetCoreSqlDb.csproj*.
+- Volání `loggerFactory.AddAzureWebAppDiagnostics()` v *Startup.cs*.
+
+Nastavení ASP.NET Core [úrovně protokolování](https://docs.microsoft.com/aspnet/core/fundamentals/logging#log-level) ve službě App Service k `Information` z výchozí úrovně `Warning`, použijte [ `az webapp log config` ](/cli/azure/webapp/log?view=azure-cli-latest#az-webapp-log-config) příkazu ve službě Cloud Shell.
+
+```azurecli-interactive
+az webapp log config --name <app_name> --resource-group myResourceGroup --application-logging true --level information
+```
+
+> [!NOTE]
+> Úroveň protokolu projektu je již nastavena na `Information` v *appsettings.json*.
+> 
+
+Ke spuštění streamování protokolů použijte příkaz [`az webapp log tail`](/cli/azure/webapp/log?view=azure-cli-latest#az-webapp-log-tail) v Cloud Shellu.
+
+```azurecli-interactive
+az webapp log tail --name <app_name> --resource-group myResourceGroup
+```
+
+Po zahájení streamování protokolu aktualizací aplikace Azure v prohlížeči získáte webový provoz. Teď se zobrazí protokoly konzoly směrované do terminálu. Pokud nevidíte protokoly konzoly okamžitě, podívejte se znovu za 30 sekund.
+
+Streamování protokolů můžete kdykoli zastavit zadáním `Ctrl`+`C`.
+
+Další informace o přizpůsobení protokoly ASP.NET Core najdete v tématu [protokolování v ASP.NET Core](https://docs.microsoft.com/aspnet/core/fundamentals/logging).
 
 ## <a name="manage-your-azure-app"></a>Spravovat svou aplikaci Azure
 

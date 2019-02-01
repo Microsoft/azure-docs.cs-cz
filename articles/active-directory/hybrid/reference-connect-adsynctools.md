@@ -8,12 +8,13 @@ ms.workload: identity
 ms.date: 10/19/2018
 ms.subservice: hybrid
 ms.author: billmath
-ms.openlocfilehash: ceb00572d352954eea67d2b5a2a35bab996c3d7e
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.topic: reference
+ms.openlocfilehash: 5a897482c07be900cf9a1c2cea62d08f831c312e
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55203874"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55497991"
 ---
 # <a name="azure-ad-connect--adsynctools-powershell-reference"></a>Azure AD Connect:  Referenční informace prostředí PowerShell ADSyncTools
 Následující dokumentace obsahuje referenční informace pro modul Powershellu ADSyncTools.psm1, která je součástí služby Azure AD Connect.

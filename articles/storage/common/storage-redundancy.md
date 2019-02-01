@@ -1,29 +1,29 @@
 ---
-title: Replikace dat ve službě Azure Storage | Dokumentace Microsoftu
-description: Data ve vašem účtu Microsoft Azure Storage se pro zajištění vysoké dostupnosti a odolnosti replikuje. Možnosti replikace zahrnují místně redundantní úložiště (LRS), zónově redundantní úložiště (ZRS), geograficky redundantní úložiště (GRS) a geograficky redundantní úložiště jen pro čtení (RA-GRS).
+title: Redundanci dat ve službě Azure Storage | Dokumentace Microsoftu
+description: Data ve vašem účtu Microsoft Azure Storage se pro zajištění vysoké dostupnosti a odolnosti replikuje. Možnosti redundance zahrnují místně redundantní úložiště (LRS), zónově redundantní úložiště (ZRS), geograficky redundantní úložiště (GRS) a geograficky redundantní úložiště jen pro čtení (RA-GRS).
 services: storage
 author: tamram
 ms.service: storage
 ms.topic: article
-ms.date: 10/08/2018
+ms.date: 01/18/2019
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 3fb3860cbda2e1d46505711d7a175e5d42ec7018
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 0ba36042d02d0b4101f1e80c63af232717bcf4ca
+ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 01/31/2019
-ms.locfileid: "55455503"
+ms.locfileid: "55506783"
 ---
-# <a name="azure-storage-replication"></a>Účet replikace Azure Storage
+# <a name="azure-storage-redundancy"></a>Azure redundance úložiště
 
-Data na vašem účtu Microsoft Azure Storage se vždy replikují, aby byla zajištěna jejich stálost a vysoká dostupnost. Účet replikace Azure Storage zkopíruje data, takže je chráněný před plánovaných a neplánovaných událostí od krátkodobého selhání hardwaru, sítě nebo výpadků napájení, masivní přírodními katastrofami a tak dále. Můžete replikovat data ve stejném datovém centru, mezi oblastmi datových center v rámci stejné oblasti a dokonce i oblastmi.
+Data na vašem účtu Microsoft Azure Storage se vždy replikují, aby byla zajištěna jejich stálost a vysoká dostupnost. Úložiště Azure zkopíruje data, takže je chráněný před plánovaných a neplánovaných událostí, včetně krátkodobého selhání hardwaru, sítě nebo výpadky napájení a masivní přírodními pohromami. Můžete replikovat data ve stejném datovém centru, napříč oblastmi datovými centry v rámci stejné oblasti nebo napříč geograficky oddělenými regiony.
 
 Replikace zajišťuje, že váš účet úložiště splňuje [smlouvu o úrovni služeb (SLA) pro Storage](https://azure.microsoft.com/support/legal/sla/storage/) i při selhání. Podívejte se do smlouvy SLA na informace o zárukách služby Azure Storage na stálost a dostupnost.
 
-## <a name="choosing-a-replication-option"></a>Pokud vyberete možnost replikace
+## <a name="choosing-a-redundancy-option"></a>Pokud vyberete možnost redundance
 
-Při vytvoření účtu úložiště si můžete vybrat jednu z těchto možností replikace:
+Když vytvoříte účet úložiště, můžete vybrat jednu z následujících možností redundance:
 
 * [Místně redundantní úložiště (LRS)](storage-redundancy-lrs.md)
 * [Zónově redundantní úložiště (ZRS)](storage-redundancy-zrs.md)

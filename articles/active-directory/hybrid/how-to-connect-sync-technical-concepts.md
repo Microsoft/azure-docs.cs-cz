@@ -11,16 +11,16 @@ ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/15/2018
 ms.subservice: hybrid
 ms.author: billmath
-ms.openlocfilehash: e56d5b7a38a5cc467ee0752e1af40255856f860b
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: b5af004cda60111259e95e833d6661e1d9d67ff1
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55198125"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55487247"
 ---
 # <a name="azure-ad-connect-sync-technical-concepts"></a>Synchronizace Azure AD Connect: Technické koncepce
 Tento článek je uveden seznam tématu [vysvětlení architektury](how-to-connect-sync-technical-concepts.md).

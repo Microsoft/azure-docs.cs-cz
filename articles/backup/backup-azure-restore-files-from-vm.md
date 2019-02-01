@@ -8,13 +8,13 @@ keywords: obnovení na úrovni položek; obnovení souborů ze záloh virtuáln�
 ms.service: backup
 ms.topic: conceptual
 ms.date: 8/22/2018
-ms.author: pullabhk
-ms.openlocfilehash: d38da87bae07dadb10894593dd41ded22f5f162d
-ms.sourcegitcommit: 17633e545a3d03018d3a218ae6a3e4338a92450d
+ms.author: pvrk
+ms.openlocfilehash: c267b3a8289d87402647a399376161cf18716112
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/22/2018
-ms.locfileid: "49638303"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55488488"
 ---
 # <a name="recover-files-from-azure-virtual-machine-backup"></a>Obnovení souborů ze záloh virtuálních počítačů Azure
 
@@ -214,10 +214,10 @@ Pokud máte potíže při obnovení souborů z virtuálních počítačů, zkont
 
 | Chybová zpráva / scénář | Pravděpodobná příčina | Doporučená akce |
 | ------------------------ | -------------- | ------------------ |
-| Výstupní soubor EXE: *výjimky připojení k cíli* |Skript není možné získat přístup k bodu obnovení    | Zkontrolujte, zda počítač splňuje předchozí požadavky na přístup. |  
-| Výstupní soubor EXE: *cíl má již byl přihlášen prostřednictvím relace iSCSI.* | Skript byl již spuštěn ve stejném počítači a byly připojeny jednotky | Již byly připojeny svazků bodu obnovení. Může není připojený s stejná písmena jednotek původního virtuálního počítače. Projděte si všechny svazky, které jsou k dispozici v Průzkumníku souborů k nahrání souboru |
-| Výstupní soubor EXE: *tento skript je neplatný, protože disky mají byly odpojeny prostřednictvím 12 hodin portál/překročil limit. Stáhněte nový skript z portálu.* |    Disky mají byla odpojena z portálu nebo Překročili jste limit 12 hodin | Tento konkrétní soubor exe je neplatný a nelze jej spustit. Pokud chcete získat přístup k souborům této obnovení v daném okamžiku, navštivte portál pro nový exe|
-| Na počítači, ve kterém je spuštěn soubor exe: nové svazky nejsou odpojeny, po kliknutí na tlačítko odpojení | Iniciátor iSCSI na počítači není reagovat nebo aktualizuje jeho připojení k cíli a zachování mezipaměti. |  Po kliknutí na tlačítko **odpojení**, počkejte několik minut. Pokud nové svazky nejsou odpojeny, projděte si všechny svazky. Procházení všech svazků vynutí ze zahajujícího zařízení na aktualizovat připojení a svazek je odpojený s chybovou zprávou, že disk není k dispozici.|
-| Výstupní soubor EXE: skript je úspěšně spuštěn, ale "Nové svazky připojené" není zobrazena na výstup skriptu |    Jedná se o přechodnou chybu    | Svazky by byly již připojeny. Otevřete Průzkumníka a přejděte. Pokud ke spouštění skriptů pokaždé, když používáte stejný počítač, vezměte v úvahu počítač se restartuje a v seznamu má být zobrazena v následných exe spustí. |
-| Specifické pro Linux: není možné zobrazit požadovaný svazky | Operační systém počítače, ve kterém se skript spouští nemusí rozpoznat základní systému souborů chráněných virtuálních počítačů | Zkontrolujte, zda bod obnovení je selhání konzistentní vzhledem k aplikacím nebo konzistentní. Pokud soubor konzistentní, spusťte skript na jiném počítači jejichž operační systém rozpozná systému souborů chráněném virtuálním počítači |
-| Specifické pro Windows: není možné zobrazit požadovaný svazky | Disky připojené, ale nebyly nakonfigurovány svazky | Na obrazovce správy disků zjistěte další disky týkající se bodu obnovení. Jestliže má některý z těchto disků v offline stavu akci, díky kterým online kliknutím pravým tlačítkem na disk a klikněte na tlačítko "Online.|
+| Výstupní soubor EXE: *Výjimka připojení k cíli* |Skript není možné získat přístup k bodu obnovení    | Zkontrolujte, zda počítač splňuje předchozí požadavky na přístup. |  
+| Výstupní soubor EXE: *Cíl má již byl přihlášen prostřednictvím relace iSCSI.* | Skript byl již spuštěn ve stejném počítači a byly připojeny jednotky | Již byly připojeny svazků bodu obnovení. Může není připojený s stejná písmena jednotek původního virtuálního počítače. Projděte si všechny svazky, které jsou k dispozici v Průzkumníku souborů k nahrání souboru |
+| Výstupní soubor EXE: *Tento skript je neplatný, protože disky mají byly odpojeny prostřednictvím 12 hodin portál/překročil limit. Stáhněte nový skript z portálu.* |    Disky mají byla odpojena z portálu nebo Překročili jste limit 12 hodin | Tento konkrétní soubor exe je neplatný a nelze jej spustit. Pokud chcete získat přístup k souborům této obnovení v daném okamžiku, navštivte portál pro nový exe|
+| Na počítači, ve kterém je spuštěn soubor exe: Nové svazky nejsou odpojeny, po kliknutí na tlačítko odpojení | Iniciátor iSCSI na počítači není reagovat nebo aktualizuje jeho připojení k cíli a zachování mezipaměti. |  Po kliknutí na tlačítko **odpojení**, počkejte několik minut. Pokud nové svazky nejsou odpojeny, projděte si všechny svazky. Procházení všech svazků vynutí ze zahajujícího zařízení na aktualizovat připojení a svazek je odpojený s chybovou zprávou, že disk není k dispozici.|
+| Výstupní soubor EXE: Skript je úspěšně spuštěn, ale "Nové svazky připojené" není zobrazena na výstup skriptu |    Jedná se o přechodnou chybu    | Svazky by byly již připojeny. Otevřete Průzkumníka a přejděte. Pokud ke spouštění skriptů pokaždé, když používáte stejný počítač, vezměte v úvahu počítač se restartuje a v seznamu má být zobrazena v následných exe spustí. |
+| Konkrétní Linux: Nelze zobrazit požadované svazky | Operační systém počítače, ve kterém se skript spouští nemusí rozpoznat základní systému souborů chráněných virtuálních počítačů | Zkontrolujte, zda bod obnovení je selhání konzistentní vzhledem k aplikacím nebo konzistentní. Pokud soubor konzistentní, spusťte skript na jiném počítači jejichž operační systém rozpozná systému souborů chráněném virtuálním počítači |
+| Konkrétní Windows: Nelze zobrazit požadované svazky | Disky připojené, ale nebyly nakonfigurovány svazky | Na obrazovce správy disků zjistěte další disky týkající se bodu obnovení. Jestliže má některý z těchto disků v offline stavu akci, díky kterým online kliknutím pravým tlačítkem na disk a klikněte na tlačítko "Online.|

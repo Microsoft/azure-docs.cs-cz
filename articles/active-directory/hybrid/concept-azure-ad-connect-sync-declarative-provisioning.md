@@ -11,16 +11,16 @@ ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 07/13/2017
 ms.subservice: hybrid
 ms.author: billmath
-ms.openlocfilehash: a59a7610a067a292d9b5dd7bb1a611b4bade05e9
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 8ac8f2fe62898cdeb386fd3a8275fec1712c1728
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55193807"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55491548"
 ---
 # <a name="azure-ad-connect-sync-understanding-declarative-provisioning"></a>Synchronizace Azure AD Connect: Principy deklarativního zřizování
 Toto téma popisuje model konfigurace ve službě Azure AD Connect. Model se nazývá deklarativní zřizování a umožní vám provádět změny s lehkostí a elegancí konfigurace. Mnoho věcí, které jsou popsané v tomto tématu jsou rozšířené a nevyžaduje se pro většinu scénářů zákazníků.

@@ -6,15 +6,15 @@ ms.service: automation
 ms.subservice: process-automation
 author: georgewallace
 ms.author: gwallace
-ms.date: 10/25/2018
+ms.date: 01/31/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 1671a068611d9f5842c2cb09f3b83b18dd483921
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: d61b39eb0a7b6a35330e0cde2142029b8eb7ce03
+ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54820678"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55512206"
 ---
 # <a name="automate-resources-in-your-datacenter-or-cloud-by-using-hybrid-runbook-worker"></a>Automatizace prostředky v datovém centru nebo v cloudu s využitím procesu Hybrid Runbook Worker
 
@@ -51,13 +51,13 @@ Zkontrolujte [informace pro plánování sítě](#network-planning) před zaháj
 Jeden nebo více procesy Hybrid Runbook Worker můžete odebrat ze skupiny, nebo můžete odebrat skupinu, v závislosti na vašich požadavcích. Odebrání funkce Hybrid Runbook Worker v místním počítači, použijte následující postup:
 
 1. Na webu Azure Portal přejděte na svůj účet Automation.
-2. V části **nastavení**vyberte **klíče** a poznamenejte si hodnoty pro **URL** a **primární přístupový klíč**. Tyto informace budete potřebovat další krok.
+2. V části **nastavení účtu**vyberte **klíče** a poznamenejte si hodnoty pro **URL** a **primární přístupový klíč**. Tyto informace budete potřebovat další krok.
 
 ### <a name="windows"></a>Windows
 
 Otevřete relaci Powershellu v režimu správce a spusťte následující příkaz. Použití **-Verbose** přepnout podrobný protokol odebrání.
 
-```powershell
+```powershell-interactive
 Remove-HybridRunbookWorker -url <URL> -key <PrimaryAccessKey>
 ```
 
@@ -68,6 +68,8 @@ Remove-HybridRunbookWorker -url <URL> -key <PrimaryAccessKey> -machineName <Comp
 ```
 
 ### <a name="linux"></a>Linux
+
+Můžete použít příkaz `ls /var/opt/microsoft/omsagent` v procesu Hybrid Runbook Worker zobrazíte ID pracovního prostoru. Složka existuje v adresáři, ve kterém název složky je pracovní prostor ID.
 
 ```bash
 sudo python onboarding.py --deregister --endpoint="<URL>" --key="<PrimaryAccessKey>" --groupname="Example" --workspaceid="<workspaceId>"
@@ -81,11 +83,11 @@ sudo python onboarding.py --deregister --endpoint="<URL>" --key="<PrimaryAccessK
 Můžete odebrat skupinu, budete nejdřív muset odebrat funkce Hybrid Runbook Worker v každém počítači, který je členem skupiny postupem, jak je uvedeno výše. Potom použijte následující kroky k odebrání skupiny:
 
 1. Na webu Azure Portal otevřete účet Automation.
-1. V části **automatizace procesů**vyberte **skupiny hybridních pracovních procesů**. Vyberte skupinu, kterou chcete odstranit. Zobrazí se stránka Vlastnosti pro tuto skupinu.
+2. V části **automatizace procesů**vyberte **skupiny hybridních pracovních procesů**. Vyberte skupinu, kterou chcete odstranit. Zobrazí se stránka Vlastnosti pro tuto skupinu.
 
    ![Stránka Vlastnosti](media/automation-hybrid-runbook-worker/automation-hybrid-runbook-worker-group-properties.png)
 
-1. Na stránce vlastnosti pro vybranou skupinu, vyberte **odstranit**. Výzva k potvrzení této akce. Vyberte **Ano** Pokud si nejste jisti, že chcete pokračovat.
+3. Na stránce vlastnosti pro vybranou skupinu, vyberte **odstranit**. Výzva k potvrzení této akce. Vyberte **Ano** Pokud si nejste jisti, že chcete pokračovat.
 
    ![Potvrzovací zpráva](media/automation-hybrid-runbook-worker/automation-hybrid-runbook-worker-confirm-delete.png)
 

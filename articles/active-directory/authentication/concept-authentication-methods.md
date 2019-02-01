@@ -5,17 +5,17 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 07/11/2018
+ms.date: 01/31/2018
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry, michmcla
-ms.openlocfilehash: 7951044f850d93659ca458d3bcc46376e7e6b34a
-ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
+ms.openlocfilehash: 2720d239c31a0cbfab215c7e297627c9f0d8c781
+ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/26/2019
-ms.locfileid: "55077350"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55510234"
 ---
 # <a name="what-are-authentication-methods"></a>Co jsou metody ověřování?
 
@@ -171,6 +171,8 @@ Jakmile ve správném formátu jako soubor CSV může správce a přihlaste se k
 V závislosti na velikosti souboru CSV může trvat několik minut ke zpracování. Klikněte na tlačítko **aktualizovat** tlačítko Zobrazit aktuální stav. Pokud v souboru nejsou žádné chyby, budete mít možnost Stáhnout soubor CSV výpis všechny chyby vyřešte.
 
 Jakmile vyřeší všechny chyby, Správce pak může aktivovat každý klíč kliknutím **aktivovat** pro token aktivovat a zadávání kombinací jednorázového HESLA zobrazovaný na tokenu.
+
+Uživatelé mohou mít kombinaci až 5 hardwarové tokeny OATH nebo ověřovací aplikace, jako je nakonfigurován pro použití v každém okamžiku aplikaci Microsoft Authenticator.
 
 ## <a name="mobile-phone"></a>Mobilní telefon
 

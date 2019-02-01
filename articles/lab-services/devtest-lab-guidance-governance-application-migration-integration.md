@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/03/2018
 ms.author: spelluru
-ms.openlocfilehash: 8a661c94ecc660e0ebd0e9818acef81b8a7b819b
-ms.sourcegitcommit: 1fc949dab883453ac960e02d882e613806fabe6f
+ms.openlocfilehash: 4bab3413b3e3cfcf1972b6cf721120d95851f7cd
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/03/2018
-ms.locfileid: "50978611"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55498195"
 ---
 # <a name="governance-of-azure-devtest-labs-infrastructure---application-migration-and-integration"></a>Zásady správného řízení infrastruktury Azure DevTest Labs - migrace aplikací a integrace
 Po vytvoření prostředí laboratoře vývoj/testování, je potřeba uvažovat o na následující otázky:
@@ -58,14 +58,14 @@ Dodatečný faktor si je ale frekvence změny vašeho softwarového balíčku. P
 Jak nastavím snadno opakovatelné procesu uvést Moje vlastní organizační Image v prostředí DevTest Labs?
 
 ### <a name="answer"></a>Odpověď
-Zobrazit [toto video na objekt pro vytváření Immage vzoru](https://blogs.msdn.microsoft.com/devtestlab/2017/04/17/video-custom-image-factory-with-azure-devtest-labs/). Tento scénář je pokročilý scénář a skripty k dispozici jsou pouze ukázkové skripty. Pokud jsou vyžadovány žádné změny, musíte pro správu a údržbu skripty používané ve vašem prostředí.
+Zobrazit [toto video na objekt pro vytváření bitové kopie vzoru](https://blogs.msdn.microsoft.com/devtestlab/2017/04/17/video-custom-image-factory-with-azure-devtest-labs/). Tento scénář je pokročilý scénář a skripty k dispozici jsou pouze ukázkové skripty. Pokud jsou vyžadovány žádné změny, musíte pro správu a údržbu skripty používané ve vašem prostředí.
 
 Použití k vytvoření vlastní image kanálu v kanálech Azure DevTest Labs:
 
 - [Představení: Příprava virtuálních počítačů během několika minut díky nastavení objektu pro vytváření bitové kopie ve službě Azure DevTest Labs](https://blogs.msdn.microsoft.com/devtestlab/2016/09/14/introduction-get-vms-ready-in-minutes-by-setting-up-image-factory-in-azure-devtest-labs/)
 - [Obrázek Factory – 2. část! Nastavit kanály pro Azure a objekt pro vytváření testovacího prostředí k vytvoření virtuálních počítačů](https://blogs.msdn.microsoft.com/devtestlab/2017/10/25/image-factory-part-2-setup-vsts-to-create-vms-based-on-devtest-labs/)
 - [Obrázek Factory – část 3: Uložení vlastních Imagí a distribuovat do více testovacích prostředí](https://blogs.msdn.microsoft.com/devtestlab/2018/01/10/image-factory-part-3-save-custom-images-and-distribute-to-multiple-labs/)
-- [Video: Vlastní Image objekt pro vytváření s Azure DevTest Labs](https://blogs.msdn.microsoft.com/devtestlab/2017/04/17/video-custom-image-factory-with-azure-devtest-labs/)
+- [Video: Objekt pro vytváření vlastní Image s Azure DevTest Labs](https://blogs.msdn.microsoft.com/devtestlab/2017/04/17/video-custom-image-factory-with-azure-devtest-labs/)
 
 ## <a name="patterns-to-set-up-network-configuration"></a>Vzorce, a nastavení konfigurace sítě
 
@@ -103,7 +103,7 @@ Kdy použít se sdílené IP Adresou a veřejnou IP adresu a privátní IP adres
 Pokud používáte síť VPN site-to-site nebo Expressroute, zvažte použití privátních IP adres tak, že vaše počítače jsou přístupné prostřednictvím vaší interní síti a nejsou přístupné prostřednictvím veřejného Internetu.
 
 > [!NOTE]
-> Vlastníků testovacího prostředí můžete změnit tyto zásady podsítě k zajištění, že nikdo neúmyslně vytvoří veřejné IP adresy pro své virtuální počítače. Vlastník předplatného byste vytvořit zásady předplatného brání vytváření veřejné IP adresy.
+> Vlastníků testovacího prostředí můžete změnit tyto zásady podsítě k zajištění, že nikdo omylem vytvoří veřejné IP adresy pro své virtuální počítače. Vlastník předplatného byste vytvořit zásady předplatného brání vytváření veřejné IP adresy.
 
 Při použití sdílené veřejné IP adresy, virtuální počítače v testovacím prostředí, sdílet veřejnou IP adresu. Tento přístup může být užitečné, když budete chtít zabránit porušení omezení pro veřejné IP adresy pro daný odběr.
 

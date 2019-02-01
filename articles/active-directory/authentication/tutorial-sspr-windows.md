@@ -5,17 +5,17 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: tutorial
-ms.date: 12/05/2018
+ms.date: 01/30/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry
-ms.openlocfilehash: a36f9bf3ade623a6b623116c504c2b6a04fcdf2b
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 3446548a89c33e6eb8026e41fbea01ee651b2c88
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 01/31/2019
-ms.locfileid: "55474866"
+ms.locfileid: "55488063"
 ---
 # <a name="tutorial-azure-ad-password-reset-from-the-login-screen"></a>Kurz: Resetování hesla Azure AD z přihlašovací obrazovky
 
@@ -33,6 +33,7 @@ V tomto kurzu povolíte uživatelům resetovat svá hesla z přihlašovací obra
    * [Hybridní Azure připojené k AD](../device-management-hybrid-azuread-joined-devices-setup.md), s připojením k řadiči domény.
 * Je nutné povolit Azure AD samoobslužné resetování hesla.
 * Pokud vaše zařízení s Windows 10 jsou za proxy server nebo brána firewall, je nutné přidat adresy URL, `passwordreset.microsoftonline.com` a `ajax.aspnetcdn.com` do seznamu povolené adresy URL HTTPS provoz (port 443).
+* Kontrola omezení níže než to zkusíte to ve vašem prostředí.
 
 ## <a name="configure-reset-password-link-using-intune"></a>Konfigurace odkazu na resetování hesla pomocí Intune
 
@@ -116,7 +117,9 @@ Při testování této funkce s použitím vzdálené plochy nebo relaci rozší
 
 * Resetování hesla u Vzdálené plochy se v současné době nepodporuje.
 
-Pokud zásady vyžadují stisknutí Ctrl+Alt+Del nebo jsou vypnutá oznámení pro uzamčenou obrazovku, nebude **resetování hesla** fungovat.
+Pokud před 1809, vyžaduje zásady v systému Windows 10 ve verzi Ctrl + Alt + Del **resetovat heslo** nebude fungovat.
+
+Pokud jsou oznámení pro uzamčenou obrazovku vypne, **resetovat heslo** nebude fungovat.
 
 Je známo, že následující nastavení zásad v konfliktu s možností k resetování hesel
 
@@ -128,7 +131,7 @@ Je známo, že následující nastavení zásad v konfliktu s možností k reset
 
 Tato funkce nefunguje pro sítí pomocí protokolu 802. 1 x ověřování sítě nasazené a možnost "Provádět bezprostředně před přihlášením uživatele". Sítí pomocí protokolu 802. 1 x ověřování sítě nasadit se doporučuje použití ověřování počítače pro tuto funkci povolil.
 
-U scénářů s hybridní k doméně scénáři existuje, kde bude pracovní postup samoobslužné resetování HESLA dokončit bez nutnosti řadič domény služby Active Directory. Připojení k řadiči domény, je potřeba pomocí nového hesla poprvé.
+U scénářů s hybridní k doméně se úspěšně dokončí pracovního postupu samoobslužné resetování HESLA bez nutnosti řadič domény služby Active Directory. Pokud uživatel dokončí proces resetování hesla při komunikaci s řadičem domény služby Active Directory není k dispozici, stejně jako při práci vzdáleně, uživatel nebude moct přihlásit k zařízení, dokud se zařízení může komunikovat s řadičem domény a aktualizace mezipaměti přihlašovacích údajů. **Připojení k řadiči domény je potřeba pomocí nového hesla poprvé**.
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 

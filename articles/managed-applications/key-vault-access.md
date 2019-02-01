@@ -3,23 +3,24 @@ title: Použití Azure Key Vault se spravovanými aplikacemi | Dokumentace Micro
 description: Ukazuje způsob použití tajné přístupové kódy ve službě Azure Key Vault při nasazení spravované aplikace
 services: managed-applications
 author: tfitzmac
-manager: timlt
 ms.service: managed-applications
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
-ms.date: 07/11/2018
+ms.date: 01/30/2019
 ms.author: tomfitz
-ms.openlocfilehash: dcfbb7f3b1d110d4c1fdf22863d795c85152ec35
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.openlocfilehash: 55410250ccd4dfceac8ac9ae5b81d4736de0d91a
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52725008"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55492670"
 ---
 # <a name="access-key-vault-secret-when-deploying-azure-managed-applications"></a>Tajný kód trezoru klíčů přístup při nasazení spravované aplikace Azure
 
-Pokud potřebujete předat jako parametr zabezpečenou hodnotu (jako jsou hesla) během nasazení, můžete načíst hodnotu z [Azure Key Vault](../key-vault/key-vault-whatis.md). Pro přístup k trezoru klíčů při nasazování spravovaných aplikací, je nutné udělit přístup k **poskytovatele prostředků zařízení** instančního objektu. Tento článek popisuje postup konfigurace služby Key Vault pro práci s spravované aplikace.
+Pokud potřebujete předat jako parametr zabezpečenou hodnotu (jako jsou hesla) během nasazení, můžete načíst hodnotu z [Azure Key Vault](../key-vault/key-vault-whatis.md). Pro přístup k trezoru klíčů při nasazování spravovaných aplikací, je nutné udělit přístup k **poskytovatele prostředků zařízení** instančního objektu. Služba spravované aplikace používá tuto identitu pro spouštění operací. K úspěšnému načtení hodnoty ze služby Key Vault během nasazení, musí být instanční objekt moci přistupovat k trezoru klíčů.
+
+Tento článek popisuje postup konfigurace služby Key Vault pro práci s spravované aplikace.
 
 ## <a name="enable-template-deployment"></a>Povolit nasazení šablony
 

@@ -1,10 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 9ead8d485a12a6c21b653bc6e1f8536781f762d1
-ms.sourcegitcommit: ba9f95cf821c5af8e24425fd8ce6985b998c2982
+ms.openlocfilehash: daf575f60739c58ba0380880ade2de865ae1d6ad
+ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54380964"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55510865"
 documentType: LandingData
 title: Dokumentace k Resource Manageru v Azure
 metadata:
@@ -78,7 +78,7 @@ sections:
     - title: Šablony
       html: <p><a href="/azure/templates/">Referenční informace k šablonám</a></p><p><a href="/azure/resource-group-template-functions">Funkce šablon</a></p><p><a href="/azure/azure-resource-manager/managed-application-createuidefinition-functions">Funkce definic uživatelského rozhraní</a></p><p><a href="/azure/azure-resource-manager/managed-application-createuidefinition-elements">Definiční prvky uživatelského rozhraní</a></p>
     - title: Příkazový řádek
-      html: <p><a href="/cli/azure/resource">Azure CLI</a></p><p><a href="/powershell/module/azurerm.resources">PowerShell</a></p>
+      html: <p><a href="/cli/azure/resource">Azure CLI</a></p><p><a href="/powershell/module/az.resources">Azure PowerShell</a></p>
     - title: Jazyky
       html: <p><a href="/dotnet/api/microsoft.azure.management.resourcemanager">.NET</a></p><p><a href="/java/api/com.microsoft.azure.management.resources">Java</a></p><p><a href="/python/azure/">Python</a></p>
     - title: REST

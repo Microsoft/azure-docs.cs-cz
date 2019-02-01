@@ -5,17 +5,17 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 01/08/2019
+ms.date: 01/31/2018
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry
-ms.openlocfilehash: 45cd9188b420f9c6db3f1adaa4244b30cce0ccc6
-ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
+ms.openlocfilehash: 735bc2569436b99d3366d1ce5ff01f40ab7f587a
+ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/26/2019
-ms.locfileid: "55081887"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55510455"
 ---
 # <a name="password-policies-and-restrictions-in-azure-active-directory"></a>Zásady hesel a omezení v Azure Active Directory
 
@@ -86,7 +86,7 @@ Následující tabulka popisuje nastavení zásad k dispozici heslo, které lze 
 | Vypršení platnosti hesla |<ul><li>Výchozí hodnota: **false** dnů (to znamená, že vypršení platnosti hesla je povoleno).</li><li>Hodnotu lze nastavit pro jednotlivé uživatelské účty pomocí `Set-MsolUser` rutiny.</li></ul> |
 | Historie změn hesel |Poslední heslo *nelze* znovu použít, když uživatel změní heslo. |
 | Historie pro resetování hesla | Poslední heslo *můžete* znovu použít, když uživatel může resetovat zapomenuté heslo. |
-| Uzamčení účtu |Po 10 neúspěšných pokusů o přihlášení pomocí nesprávné heslo uživatel je uzamčen pro jednominutovým. Další nesprávné pokusy o přihlášení uzamčení uživatele pro zvýšení doby trvání čas. |
+| Uzamčení účtu |Po 10 neúspěšných pokusů o přihlášení pomocí nesprávné heslo uživatel je uzamčen pro jednominutovým. Další nesprávné pokusy o přihlášení uzamčení uživatele pro zvýšení doby trvání čas. [Inteligentní uzamčení](howto-password-smart-lockout.md) sleduje posledních tří hodnot hash hesel chybný-li zamezit zvýšení čítače uzamčení pro stejné heslo. Pokud někdo zadá chybné heslo více než jednou, toto chování nezpůsobí účet, který chcete uzamčení. |
 
 ## <a name="set-password-expiration-policies-in-azure-ad"></a>Nastavení zásad vypršení platnosti hesel ve službě Azure AD
 

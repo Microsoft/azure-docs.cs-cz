@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 01/21/2019
 ms.author: raynew
-ms.openlocfilehash: 138c5ee54d175c4bd5f727acc3375405850f86a0
-ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
+ms.openlocfilehash: 3b41f975b484083dab79f16984e84018b2e830a1
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55301590"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55497294"
 ---
 # <a name="support-matrix-for-replicating-from-one-azure-region-to-another"></a>Matice podpory pro které se replikují z jedné oblasti Azure do jiné
 
@@ -186,7 +186,7 @@ Datový disk - účet úložiště úrovně standard | Podporováno |
 Datový disk - účtu služby premium storage | Podporováno | Pokud virtuální počítač obsahuje disky, které jsou rozděleny mezi účty úložiště úrovně standard a premium, můžete vybrat jiný cílový účet úložiště pro každý z disků, zajistěte, že abyste měli stejnou konfiguraci úložiště v cílové oblasti.
 Spravovaný disk – standard | Podporované v oblastech Azure, ve kterých je Azure Site Recovery nepodporuje. |
 Spravovaný disk – premium | Podporované v oblastech Azure, ve kterých je Azure Site Recovery nepodporuje. |
-SSD úrovně Standard | Nepodporuje se |
+SSD úrovně Standard | Podporováno |
 Redundance | Jsou podporovány LRS a GRS.<br/><br/> ZRS se nepodporuje.
 Úložiště Cool a hot | Nepodporuje se | Disky virtuálních počítačů se nepodporují studené a horké úložiště
 Prostory úložiště | Podporováno |
@@ -195,8 +195,8 @@ Azure Disk Encryption (ADE) pro operační systém Windows | Povoleno pro virtu�
 Azure Disk Encryption (ADE) pro operační systém Linux | Nepodporuje se |
 Přidání nebo odebrání horké disku | Nepodporuje se | Je-li přidat nebo odebrat datový disk na virtuálním počítači, musíte zakázat replikaci a povolte replikaci pro virtuální počítač znovu.
 Vyloučení disku | Nepodporuje se|   Dočasný disk je ve výchozím nastavení vyloučen.
-Prostory úložiště s přímým přístupem  | Nepodporuje se|
-Souborový Server se Škálováním  | Nepodporuje se|
+Prostory úložiště s přímým přístupem  | Podporované pro body obnovení konzistentní vzhledem k chybě. Body obnovení konzistentní vzhledem k aplikaci nejsou podporovány. |
+Souborový Server se Škálováním  | Podporované pro body obnovení konzistentní vzhledem k chybě. Body obnovení konzistentní vzhledem k aplikaci nejsou podporovány. |
 LRS | Podporováno |
 GRS | Podporováno |
 RA-GRS | Podporováno |

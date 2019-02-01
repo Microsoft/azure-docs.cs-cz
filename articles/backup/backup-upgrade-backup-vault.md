@@ -2,18 +2,18 @@
 title: Upgrade úložiště záloh do trezoru služby Recovery Services, Azure Backup.
 description: Upgrade úložiště záloh do trezoru služby Recovery Services se získat nové funkce, jako je zálohování virtuálních počítačů, vyšší míru zabezpečení, zálohování virtuálních počítačů VMware a zálohování stavu systému pro servery Windows Resource Manageru
 services: backup
-author: trinadhk
-manager: vijayts
+author: raynew
+manager: carmonm
 ms.service: backup
 ms.topic: conceptual
-ms.date: 02/10/2017
-ms.author: trinadhk
-ms.openlocfilehash: 01aacaecba8c5a4adf1dab5483a2f921df9314c0
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.date: 01/31/2019
+ms.author: raynew
+ms.openlocfilehash: b7671271e569802311884861265a7825404c9c75
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51252526"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55490341"
 ---
 # <a name="backup-vault-upgraded-to-recovery-services-vault"></a>Úložiště záloh se upgradovalo na trezor služby Recovery Services
 Tento článek obsahuje přehled o jaké trezoru služby Recovery Services poskytuje, nejčastější dotazy týkající se upgradu existující zálohy trezoru do trezoru služby Recovery Services a kroků po upgradu. Trezor služby Recovery Services je ekvivalentem Azure Resource Manageru z trezoru služby Backup, které jsou uloženy vaše zálohovaná data. Data je obvykle kopií dat, nebo informace o konfiguraci pro virtuální počítače (VM), úlohy, serverech nebo pracovních stanic, zda v místním prostředí nebo v Azure.
@@ -24,22 +24,22 @@ Trezor služby Recovery Services je entita online úložiště v Azure, která s
 ## <a name="comparing-recovery-services-vaults-and-backup-vaults"></a>Trezory Recovery Services porovnání služeb zotavení a trezory Backup
 Trezory služby Recovery Services jsou založené na modelu Azure Resource Manageru v Azure, zatímco trezory služby Backup jsou založené na modelu Azure Service Manager. Při upgradu trezoru služby Backup na trezor služby Recovery Services záložní data zůstanou beze změny během a po procesu upgradu. Trezory služby Recovery Services poskytují funkce není k dispozici pro trezory služby Backup, jako například:
 
-- **Rozšířené možnosti zabezpečení zálohování dat**: trezory Recovery Services pomocí služby Recovery Services, Azure Backup poskytuje funkce zabezpečení k ochraně cloudové zálohy. Tyto funkce zabezpečení zajistit, že můžete zabezpečit vaše zálohy a bezpečně obnovit data ze zálohy v cloudu i v případě, že dojde k ohrožení produkční a zálohování serverů. [Další informace](backup-azure-security-feature.md)
+- **Rozšířené možnosti zabezpečení zálohování dat**: Trezory služby Recovery Services Azure Backup zajišťuje možnosti zabezpečení k ochraně cloudové zálohy. Tyto funkce zabezpečení zajistit, že můžete zabezpečit vaše zálohy a bezpečně obnovit data ze zálohy v cloudu i v případě, že dojde k ohrožení produkční a zálohování serverů. [Další informace](backup-azure-security-feature.md)
 
-- **Centrální monitorování pro vaši hybridní IT prostředí**: trezory Recovery Services pomocí služby Recovery Services, můžete monitorovat nejenom vaše [virtuálních počítačů Azure IaaS](backup-azure-manage-vms.md) , ale také vaše [místní prostředky](backup-azure-manage-windows-server.md#manage-backup-items) z centrální portál. [Další informace](https://azure.microsoft.com/blog/alerting-and-monitoring-for-azure-backup)
+- **Centrální monitorování pro vaši hybridní IT prostředí**: S trezory služby Recovery Services, můžete monitorovat nejenom vaše [virtuálních počítačů Azure IaaS](backup-azure-manage-vms.md) , ale také vaše [místní prostředky](backup-azure-manage-windows-server.md#manage-backup-items) z centrální portál. [Další informace](https://azure.microsoft.com/blog/alerting-and-monitoring-for-azure-backup)
 
-- **Řízení přístupu na základě rolí (RBAC)**: RBAC poskytuje jemně odstupňované řízení řízení přístupu v Azure. [Azure nabízí různé předdefinované role](../role-based-access-control/built-in-roles.md), a Azure Backup obsahuje tři [předdefinovaných rolí ke správě body obnovení](backup-rbac-rs-vault.md). Trezory služby Recovery Services, musí být kompatibilní s RBAC, který omezuje zálohování a obnovení přístupu k definovanou sadu rolí uživatelů. [Další informace](backup-rbac-rs-vault.md)
+- **Řízení přístupu na základě role (RBAC)**: RBAC poskytuje jemně odstupňované řízení řízení přístupu v Azure. [Azure nabízí různé předdefinované role](../role-based-access-control/built-in-roles.md), a Azure Backup obsahuje tři [předdefinovaných rolí ke správě body obnovení](backup-rbac-rs-vault.md). Trezory služby Recovery Services, musí být kompatibilní s RBAC, který omezuje zálohování a obnovení přístupu k definovanou sadu rolí uživatelů. [Další informace](backup-rbac-rs-vault.md)
 
-- **Chránit všechny konfigurace virtuálních počítačů Azure**: trezory služby Recovery Services ochrany založené na správci prostředků virtuálních počítačů, včetně disků Premium Managed Disks a šifrovaných virtuálních počítačů. Upgrade úložiště záloh do trezoru služby Recovery Services vám dává příležitost k upgradu vašich virtuálních počítačů založené na portálu Service Manager na virtuální počítače založené na Resource Manageru. Při upgradu trezoru, můžete zachovat body obnovení virtuálního počítače založené na portálu Service Manager a nakonfigurujte ochranu pro upgradovaný virtuální počítače (Resource Manager s podporou). [Další informace](https://azure.microsoft.com/blog/azure-backup-recovery-services-vault-ga)
+- **Chránit všechny konfigurace virtuálních počítačů Azure**: Trezory Recovery Services chrání založené na správci prostředků virtuálních počítačů, včetně disků Premium Managed Disks a šifrovaných virtuálních počítačů. Upgrade úložiště záloh do trezoru služby Recovery Services vám dává příležitost k upgradu vašich virtuálních počítačů založené na portálu Service Manager na virtuální počítače založené na Resource Manageru. Při upgradu trezoru, můžete zachovat body obnovení virtuálního počítače založené na portálu Service Manager a nakonfigurujte ochranu pro upgradovaný virtuální počítače (Resource Manager s podporou). [Další informace](https://azure.microsoft.com/blog/azure-backup-recovery-services-vault-ga)
 
-- **Okamžitá obnova pro virtuální počítače IaaS**: trezory Recovery Services pomocí služby Recovery Services, můžete obnovit soubory a složky z virtuálního počítače IaaS bez obnovení celého virtuálního počítače, který umožňuje rychlejší obnovení. Okamžitá obnova pro virtuální počítače IaaS je k dispozici pro virtuální počítače s Linuxem i Windows. [Další informace](https://azure.microsoft.com/blog/instant-file-recovery-from-azure-linux-vm-backup-using-azure-backup-preview)
+- **Okamžitá obnova pro virtuální počítače IaaS**: Pomocí trezory služby Recovery Services, můžete obnovit soubory a složky z virtuálního počítače IaaS bez obnovení celého virtuálního počítače, který umožňuje rychlejší obnovení. Okamžitá obnova pro virtuální počítače IaaS je k dispozici pro virtuální počítače s Linuxem i Windows. [Další informace](https://azure.microsoft.com/blog/instant-file-recovery-from-azure-linux-vm-backup-using-azure-backup-preview)
 
 > [!NOTE]
 > Pokud máte položky zaregistrované do trezoru služby Backup pomocí agenta MARS starší než 2.0.9083.0, [stáhnout nejnovější verzi agenta MARS]( http://download.microsoft.com/download/F/4/B/F4B06356-150F-4DB0-8AD8-95B4DB4BBF7C/MARSAgentInstaller.exe) verzi, aby mohli výhody všechny funkce trezoru služby Recovery Services. 
 > 
 
 ## <a name="managing-your-recovery-services-vaults"></a>Správa vašich trezorech služby Recovery Services
-Na následující obrazovce zobrazit nový trezor služby Recovery Services, upgradovali z trezoru služby Backup na webu Azure Portal. Upgradovaný trezor bude k dispozici ve výchozí skupině prostředků s názvem "Výchozí RecoveryServices-ResourceGroup geografické". Příklad: Pokud trezoru služby Backup se nachází v oblasti západní USA, se zařadí se ve výchozím nastavení s názvem výchozí RecoveryServices ResourceGroup westus RG.
+Na následující obrazovce zobrazit nový trezor služby Recovery Services, upgradovali z trezoru služby Backup na webu Azure Portal. Upgradovaný trezor bude k dispozici ve výchozí skupině prostředků s názvem "Výchozí RecoveryServices-ResourceGroup geografické". Příklad: Pokud se v oblasti západní USA trezoru služby Backup, bude ve výchozím nastavení RG s názvem výchozí RecoveryServices ResourceGroup westus vyvěste.
 > [!NOTE]
 > Pro zákazníky, kteří CPS Standard skupina prostředků se nezmění po upgradu trezoru a zůstává stejná jako před upgradem.
 
@@ -53,7 +53,7 @@ Druhá obrazovka ukazuje Nápověda odkazy vám pomůžou začít s pomocí trez
 ## <a name="post-upgrade-steps"></a>Kroky po upgradu
 Trezor služby Recovery Services umožňuje zadat informace o časovém pásmu zásady zálohování. Po úspěšném upgradu trezoru přejděte na zásady zálohování z nabídky Nastavení trezoru a aktualizujte informace o časovém pásmu pro každé ze zásad, které jsou nakonfigurované v trezoru. Tato obrazovka ukazuje již časovému plánu zálohování na místní časové pásmo použita při vytváření zásad. 
 
-## <a name="enhanced-security"></a>Rozšířené zabezpečení
+## <a name="enhanced-security"></a>Vylepšené zabezpečení
 Při upgradu trezoru služby Backup na trezor služby Recovery Services, jsou nastavení zabezpečení pro tento trezor automaticky zapnuté. Při nastavení zabezpečení se na určité operace, jako je například odstranění zálohy, nebo změna přístupového hesla vyžadovat [ověřování Azure Multi-Factor Authentication](../active-directory/authentication/multi-factor-authentication.md) PIN kód. Další informace o rozšířené zabezpečení, najdete v článku [funkcí zabezpečení, ochraně hybridní zálohy](backup-azure-security-feature.md). Pokud je zapnuté rozšířené zabezpečení, data se uchovávají až do 14 dnů po informace o bodu obnovení se odstranil z trezoru. Zákazníkům se účtuje úložiště pro tato data zabezpečení. Uchovávání dat zabezpečení platí pro body obnovení pro agenta Azure Backup, Azure Backup Server a System Center Data Protection Manager. 
 
 ## <a name="gather-data-on-your-vault"></a>Shromažďování dat pro váš trezoru
