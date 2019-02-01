@@ -13,6 +13,8 @@ items:
     items:
     - name: Streamování dat – centrum událostí
       href: ingest-data-event-hub.md
+    - name: Streamování dat – Event Grid
+      href: ingest-data-event-grid.md
     - name: Streamování dat – Kafka
       href: ingest-data-kafka.md
     - name: Dávkové zpracování dat – Python
@@ -21,6 +23,8 @@ items:
       href: node-ingest-data.md
     - name: Dávkové zpracování dat – NET Standard SDK
       href: net-standard-ingest-data.md
+    - name: Dávkové zpracování dat – Logstash
+      href: ingest-data-logstash.md
   - name: Dotazování dat
     items:
     - name: Webové uživatelské rozhraní
@@ -116,9 +120,9 @@ items:
     href: http://aka.ms/adecostestimator
   - name: Aktualizace služeb
     href: https://azure.microsoft.com/updates/?product=data-explorer
-ms.openlocfilehash: fd86d2d3ceb8e23567c8bfbfbbee87485d1def58
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: a3ebd0582761ed9f0ee69cb8eaed637e46049d4d
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54021627"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55295453"

@@ -5,6 +5,9 @@ items:
   items:
   - name: Co jsou Automatické návrhy Bingu?
     href: get-suggested-search-terms.md
+  - name: Porovnání rozhraní API pro vyhledávání Bingu
+    href: ../Bing-Web-Search/bing-api-comparison.md
+    maintainContext: true
 - name: Rychlá zprovoznění pro REST API
   items:
   - name: C#
@@ -28,8 +31,6 @@ items:
     href: tutorials/autosuggest-source.md
 - name: Návody
   items:
-  - name: Požadavky na zobrazení a použití
-    href: UseAndDisplayRequirements.md
   - name: Upgrade z v5 na v7
     href: bing-autosuggest-upgrade-guide-v5-to-v7.md
 - name: Referenční informace
@@ -46,6 +47,9 @@ items:
       href: https://docs.microsoft.com/java/api/overview/azure/cognitiveservices/client/autosuggest?view=azure-java-stable
     - name: Přejít
       href: https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v1.0/autosuggest
+  - name: Požadavky na zobrazení a použití
+    href: ../Bing-Web-Search/use-display-requirements.md
+    maintainContext: true
 - name: Zdroje a prostředky
   items:
   - name: Nejčastější dotazy
@@ -72,9 +76,9 @@ items:
     href: language-support.md
   - name: Analýzy pro rozhraní API pro automatické návrhy Bingu
     href: bing-autosuggest-stats.md
-ms.openlocfilehash: b22fab3676a061b52019060ded02b1a272a66b74
-ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
+ms.openlocfilehash: 072a551846ccefa05ba5b938fd75cd15bb003c8d
+ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/27/2018
-ms.locfileid: "53792607"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55509680"

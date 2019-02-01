@@ -152,6 +152,8 @@ items:
     href: https://azure.microsoft.com/global-infrastructure/services/?products=key-vault
   - name: Smlouvy o úrovni služeb (SLA)
     href: https://azure.microsoft.com/support/legal/sla/key-vault/
+  - name: Běžné atributy zabezpečení
+    href: key-vault-security-attributes.md
   - name: Omezení služby
     href: key-vault-service-limits.md
   - name: Stav služby
@@ -162,9 +164,9 @@ items:
     href: http://blogs.technet.com/b/kv/
 - name: Zpětná vazba k produktu
   href: https://feedback.azure.com/forums/906355-azure-key-vault
-ms.openlocfilehash: 7015de273dc13a4319d6e17cf6bb0a5ffd0681ed
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: 15db7be3409b36d12583df07e54f0d36cd845b6b
+ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55226940"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55510711"

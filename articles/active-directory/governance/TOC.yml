@@ -43,9 +43,9 @@ items:
         href: ../privileged-identity-management/pim-how-to-start-security-review.md?toc=%2fazure%2factive-directory%2fgovernance%2ftoc.json
       - name: Dokončení kontroly přístupu
         href: ../privileged-identity-management/pim-how-to-complete-review.md?toc=%2fazure%2factive-directory%2fgovernance%2ftoc.json
-    - name: Role prostředků
+    - name: Role prostředků Azure
       items:
-      - name: Kontrola mých rolí prostředku
+      - name: Kontrola mých rolí prostředků Azure
         href: ../privileged-identity-management/pim-resource-roles-perform-access-review.md?toc=%2fazure%2factive-directory%2fgovernance%2ftoc.json
       - name: Zahájení kontroly přístupu
         href: ../privileged-identity-management/pim-resource-roles-start-access-review.md?toc=%2fazure%2factive-directory%2fgovernance%2ftoc.json
@@ -54,9 +54,9 @@ items:
   - name: Podmínky použití
     href: active-directory-tou.md
   expanded: true
-ms.openlocfilehash: b1c70e219aab05e8f8bd905cdc341ccd0d7b563a
-ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
+ms.openlocfilehash: dfd269d79cafbad2530e4cbd8125bacae4a06214
+ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52261142"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55508551"

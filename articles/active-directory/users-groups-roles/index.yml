@@ -1,12 +1,12 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: feb192b32928ef66f5722b4a0141eab437bddd27
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 00752e0b42b907699e9f314c2f216b69c9d3b2e8
+ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55203347"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55506732"
 documentType: LandingData
-title: Dokumentace ke správě uživatelů ve službě Azure Active Directory
+title: Dokumentace ke správě podnikových uživatelů – Azure Active Directory
 metadata:
   document_id: 
   title: Dokumentace k uživatelům, skupinám, rolím a licencím služby Azure Active Directory
@@ -17,7 +17,7 @@ metadata:
   manager: mtillman
   ms.service: active-directory
   ms.topic: landing-page
-  ms.date: 08/12/2018
+  ms.date: 01/31/2019
   ms.author: curtand
 abstract:
   description: Nástroje pro správu uživatelů služby Azure AD, jako jsou skupiny a přiřazení rolí správců, vám pomůže rychleji zvládnout nejdůležitější úlohy a zajistit možnost růstu. Licence nebo přístup k aplikacím SaaS můžete místo jednotlivců přiřazovat celým skupinám. Můžete také delegovat oprávnění a distribuovat tak režii spojenou se správou identit Azure AD.

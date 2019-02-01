@@ -70,7 +70,7 @@ items:
       href: ../common/storage-analytics.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
     - name: Metriky na platformě Azure Monitor
       href: ../common/storage-metrics-in-azure-monitor.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-  - name: Zotavení po havárii
+  - name: Zotavení po havárii a převzetí služeb při selhání
     href: ../common/storage-disaster-recovery-guidance.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
   - name: Omezení
   - name: Nejčastější dotazy
@@ -105,6 +105,8 @@ items:
       href: storage-sync-files-server-endpoint.md
     - name: Správa úložiště v nezávislých cloudech Azure
       href: ../common/storage-powershell-independent-clouds.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
+    - name: Zahájení převzetí služeb při selhání účtu
+      href: ../common/storage-initiate-account-failover.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
   - name: Monitorování
     items:
     - name: Sledování služby Synchronizace souborů Azure
@@ -249,9 +251,9 @@ items:
       href: https://github.com/Azure/azure-storage-cpp
     - name: Python
       href: https://github.com/Azure/azure-storage-python
-ms.openlocfilehash: d303fd76043616c194ef56b8f28795b325b37b01
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 6df9d99a4b10987dad56315144d3bb082f76e62a
+ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55162493"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55507208"

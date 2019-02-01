@@ -1,10 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 0049468330a9fcb26f023de2a8adb5dfd1544321
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.openlocfilehash: 0f5c60b25ad305b9e76eebcc72639a596b407801
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53436802"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55457543"
 documentType: LandingData
 title: Dokumentace ke službě Azure SQL Database
 metadata:
@@ -15,10 +15,11 @@ metadata:
   author: CarlRabeler
   manager: craigg
   ms.service: sql-database
+  ms.subservice: service
   ms.tgt_pltfrm: na
   ms.devlang: 
   ms.topic: overview
-  ms.date: 07/07/2018
+  ms.date: 01/25/2019
   ms.author: carlrab
 abstract:
   description: Azure SQL Database je relační databáze jako služba (DBaaS), která je založená na nejnovější stabilní verzi databázového stroje Microsoft SQL Server. SQL Database je vysoce výkonná, spolehlivá a zabezpečená databáze, kterou můžete použít k vytváření datových aplikací a webů v programovacím jazyce podle vašeho výběru, aniž by bylo potřeba zabývat se správou infrastruktury. Naučte se používat SQL Database prostřednictvím našich šablon Rychlý start, výukových kurzů a ukázek.
@@ -54,7 +55,7 @@ sections:
         src: media/index/i_scale.svg
       title: Škálovatelnost
     - href: /azure/sql-database/sql-database-single-index
-      html: <p>Pro vaše aplikace SaaS a mikroslužby, které vyžadují jednoúčelovou databázi s předvídatelným výkonem, můžete využít jednoúčelovou databázi hostovanou na logických serverech.</p>
+      html: <p>Pro vaše aplikace SaaS a mikroslužby, které vyžadují jednoúčelovou databázi s předvídatelným výkonem, můžete využít jednoúčelovou databázi spravovanou serverem SQL Database.</p>
       image:
         src: media/index/i_db.svg
       title: Izolovaná databáze
@@ -103,31 +104,31 @@ sections:
         src: media/index/logo_arm.svg
       title: Šablona Azure Resource Manageru
     rows:
-    - title: Vytvoření izolované databáze SQL
+    - title: Vytvoření izolované databáze
       values:
       - href: /azure/sql-database/sql-database-get-started-portal
       - href: /azure/sql-database/scripts/sql-database-create-and-configure-database-cli
       - href: /azure/sql-database/scripts/sql-database-create-and-configure-database-powershell
       - href: 
-    - title: Vytvoření spravované instance SQL
+    - title: Vytvoření spravované instance
       values:
       - href: /azure/sql-database/sql-database-managed-instance-get-started
       - href: https://medium.com/azure-sqldb-managed-instance/working-with-sql-managed-instance-using-azure-cli-611795fe0b44
       - href: https://blogs.msdn.microsoft.com/sqlserverstorageengine/2018/06/27/quick-start-script-create-azure-sql-managed-instance-using-powershell/
       - href: https://github.com/Azure/azure-quickstart-templates/tree/master/101-sqlmi-new-vnet
-    - title: Vytvoření elastického fondu SQL
+    - title: Vytvoření elastického fondu
       values:
       - href: 
       - href: /azure/sql-database/scripts/sql-database-move-database-between-pools-cli
       - href: /azure/sql-database/scripts/sql-database-move-database-between-pools-powershell
       - href: https://github.com/Azure/azure-quickstart-templates/tree/master/101-sql-elastic-pool-create
-    - title: Škálování izolované databáze SQL
+    - title: Škálování izolované databáze
       values:
       - href: 
       - href: /azure/sql-database/scripts/sql-database-monitor-and-scale-database-cli
       - href: /azure/sql-database/scripts/sql-database-monitor-and-scale-database-powershell
       - href: 
-    - title: Škálování elastického fondu SQL
+    - title: Škálování elastického fondu
       values:
       - href: 
       - href: /azure/sql-database/scripts/sql-database-scale-pool-cli
@@ -147,11 +148,11 @@ sections:
 - title: Podrobné kurzy
   items:
   - type: paragraph
-    text: Jak vytvářet, spravovat a migrovat databáze s využitím SQL DB
+    text: Zjistěte, jak vytvářet, spravovat a migrovat databáze s využitím SQL Database.
   - type: list
     style: ordered
     items:
-    - html: Vytvoření a návrh schématu pro novou službu SQL Database s využitím <a href="/azure/sql-database/sql-database-design-first-database">SSMS</a> nebo <a href="/azure/sql-database/sql-database-design-first-database-csharp">.NET</a>
+    - html: Vytvoření a návrh schématu pro novou izolovanou databázi s využitím <a href="/azure/sql-database/sql-database-design-first-database">SSMS</a> nebo <a href="/azure/sql-database/sql-database-design-first-database-csharp">.NET</a>
     - html: Migrace existující databáze do Azure s využitím funkcí <a href="/azure/sql-database/sql-database-managed-instance-get-started-restore">Database RESTORE</a>, <a href="/azure/sql-database/sql-database-migrate-your-sql-server-database">Database Migration Assistant</a> nebo <a href="/azure/sql-database/sql-database-import">BACPAC Import</a>
     - html: <a href="/azure/sql-database/sql-database-security-tutorial">Zabezpečení SQL Database</a>
     - html: Globální distribuce dat s využitím <a href="/azure/sql-database/sql-database-implement-geo-distributed-database">geograficky distribuované databáze</a>

@@ -5,6 +5,9 @@ items:
   items:
   - name: Co je rozhraní API pro vizuální vyhledávání Bingu?
     href: overview.md
+  - name: Porovnání rozhraní API pro vyhledávání Bingu
+    href: ../Bing-Web-Search/bing-api-comparison.md
+    maintainContext: true
 - name: Šablony Rychlý start
   items:
   - name: REST API
@@ -51,8 +54,6 @@ items:
   items:
   - name: Získání přehledů s využitím tokenu
     href: use-insights-token.md
-  - name: Použití a zobrazení výsledků
-    href: use-and-display-requirements.md
   - name: Změna velikosti a oříznutí miniatur
     href: resize-and-crop-thumbnails.md
   - name: Hledání obrázků s využitím přehledových tokenů obrázků
@@ -71,6 +72,9 @@ items:
       href: https://docs.microsoft.com/java/api/overview/azure/cognitiveservices/client/visualsearch?view=azure-java-stable
     - name: Python
       href: https://docs.microsoft.com/python/api/overview/azure/cognitiveservices/visualsearch?view=azure-python
+  - name: Požadavky na zobrazení a použití
+    href: ../Bing-Web-Search/use-display-requirements.md
+    maintainContext: true
 - name: Zdroje a prostředky
   items:
   - name: Podpora jazyků a oblastí
@@ -83,9 +87,9 @@ items:
     href: https://stackoverflow.com/questions/tagged/bing-search
   - name: User Voice
     href: https://cognitive.uservoice.com/forums/555907-bing-search
-ms.openlocfilehash: 6291b480d8c1ba44f6c0306c090cdee3df1fec95
-ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
+ms.openlocfilehash: 9fa28fc3e8398d6fe3b0253a7d6e146e61b48021
+ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/27/2018
-ms.locfileid: "53789173"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55510285"

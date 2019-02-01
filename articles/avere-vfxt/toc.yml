@@ -43,15 +43,15 @@ items:
     items:
     - name: Doprovodná dokumentace
       href: avere-vfxt-additional-resources.md
-    - name: Vytvoření role clusteru bez kontroleru
-      href: avere-vfxt-pre-role.md
+    - name: Přizpůsobená role s přístupem kontroleru
+      href: avere-vfxt-controller-role.md
     - name: Konfigurace DNS clusteru Avere
       href: avere-vfxt-configure-dns.md
     - name: Oprávnění k nasazení Avere vFXT pro jiné uživatele než vlastníky
       href: avere-vfxt-non-owner.md
-ms.openlocfilehash: 319745fad14ca3cce97e8735def901f380132eff
-ms.sourcegitcommit: 8d88a025090e5087b9d0ab390b1207977ef4ff7c
+ms.openlocfilehash: ee0f2be03f44e1d458c118f5d5d963824922f99a
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/21/2018
-ms.locfileid: "52273707"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55300316"

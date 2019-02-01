@@ -3,13 +3,13 @@ items:
   href: index.yml
 - name: Služba SQL Database
   items:
-  - name: Co je databáze SQL?
+  - name: Co je SQL Database
     href: sql-database-technical-overview.md
   - name: Volba verze Azure SQL
     href: sql-database-paas-vs-sql-server-iaas.md
 - name: Šablony Rychlý start
   items:
-  - name: Izolovaná databáze – průvodce rychlým zprovozněním
+  - name: Jednoúčelová databáze – průvodce rychlým zprovozněním
     href: sql-database-quickstart-guide.md
   - name: Spravovaná instance – průvodce rychlým zprovozněním
     href: sql-database-managed-instance-quickstart-guide.md
@@ -17,11 +17,11 @@ items:
     items:
     - name: Izolovaná databáze
       href: sql-database-get-started-portal.md
-    - name: MI
+    - name: Spravovaná instance
       href: sql-database-managed-instance-get-started.md
   - name: Konfigurace
     items:
-    - name: Pravidlo brány firewall logického serveru
+    - name: Pravidla brány firewall serveru SQL Database
       href: sql-database-get-started-portal-firewall.md
     - name: Připojení klientského virtuálního počítače ke spravované instanci
       href: sql-database-managed-instance-configure-vm.md
@@ -75,7 +75,7 @@ items:
       href: sql-database-design-first-database-csharp.md
   - name: Migrace do Azure SQL Database
     items:
-    - name: Migrace do izolované databáze s využitím DMS
+    - name: Migrace do izolované databáze / databáze ve fondu s využitím DMS
       href: ../dms/tutorial-sql-server-to-azure-sql.md?toc=/azure/sql-database/toc.json
     - name: Migrace do spravované instance s využitím DMS
       href: ../dms/tutorial-sql-server-to-managed-instance.md?toc=/azure/sql-database/toc.json
@@ -115,11 +115,11 @@ items:
     items:
     - name: Přehled
       href: sql-database-service-tiers-general-purpose-business-critical.md
-    - name: Pro obecné účely / Standard
+    - name: Úrovně služeb Pro obecné účely / Standard
       href: sql-database-service-tier-general-purpose.md
-    - name: Pro důležité obchodní informace / Premium
+    - name: Úrovně služeb Pro důležité obchodní informace / Premium
       href: sql-database-service-tier-business-critical.md
-    - name: Hyperškálování
+    - name: Hyperškálování úrovně služeb
       href: sql-database-service-tier-hyperscale.md
     - name: Nejčastější dotazy k hyperškálování
       href: sql-database-service-tier-hyperscale-faq.md
@@ -127,36 +127,40 @@ items:
     items:
     - name: Přehled izolované databáze
       href: sql-database-single-index.yml
-    - name: Referenční informace k rozhraní API pro správu
+    - name: Servery SQL Database
+      items:
+      - name: Přehled databázových serverů
+        href: sql-database-servers.md
+      - name: Omezení prostředků databázových serverů
+        href: sql-database-resource-limits-database-server.md
+    - name: Prostředky izolované databáze
+      items:
+      - name: Omezení prostředků na základě virtuálních jader
+        href: sql-database-vcore-resource-limits-single-databases.md
+      - name: Omezení prostředků na základě DTU
+        href: sql-database-dtu-resource-limits-single-databases.md
+      - name: Škálování prostředků
+        href: sql-database-single-database-scale.md
+    - name: Vytváření a správa serverů a databází
       href: sql-database-single-databases-manage.md
-    - name: Logické servery
-      items:
-      - name: Vytvoření a správa
-        href: sql-database-logical-servers.md
-      - name: Omezení prostředků
-        href: sql-database-resource-limits-logical-server.md
-      - name: Architektura připojení
-        href: sql-database-connectivity-architecture.md
+    - name: Architektura připojení
+      href: sql-database-connectivity-architecture.md
+    - name: Rozdíly v jazyce T-SQL
+      href: sql-database-transact-sql-information.md
+  - name: Elastické fondy
+    items:
     - name: Elastické fondy
+      href: sql-database-elastic-pool.md
+    - name: Prostředky elastických fondů
       items:
-      - name: Elastické fondy
-        href: sql-database-elastic-pool.md
-      - name: Vytvoření a správa
-        href: sql-database-elastic-pool-manage.md
       - name: Omezení prostředků na základě virtuálních jader
         href: sql-database-vcore-resource-limits-elastic-pools.md
       - name: Omezení prostředků na základě DTU
         href: sql-database-dtu-resource-limits-elastic-pools.md
       - name: Škálování prostředků
         href: sql-database-elastic-pool-scale.md
-    - name: Omezení prostředků na základě virtuálních jader
-      href: sql-database-vcore-resource-limits-single-databases.md
-    - name: Omezení prostředků na základě DTU
-      href: sql-database-dtu-resource-limits-single-databases.md
-    - name: Škálování prostředků
-      href: sql-database-single-database-scale.md
-    - name: Rozdíly v jazyce T-SQL
-      href: sql-database-transact-sql-information.md
+    - name: Vytvoření a správa
+      href: sql-database-elastic-pool-manage.md
   - name: Spravované instance
     items:
     - name: Přehled spravovaných instancí
@@ -209,9 +213,9 @@ items:
       href: sql-database-security-index.yml
     - name: Možnosti zabezpečení
       href: sql-database-security-overview.md
-    - name: Rozšířená ochrana před internetovými útoky
+    - name: Advanced Data Security
       items:
-      - name: Rozšířená ochrana před internetovými útoky
+      - name: Advanced Data Security
         href: sql-advanced-threat-protection.md
       - name: Zjišťování a klasifikace dat
         href: sql-database-data-discovery-and-classification.md
@@ -561,7 +565,7 @@ items:
           href: saas-tenancy-welcome-wingtip-tickets-app.md
         - name: Obecné pokyny
           href: saas-tenancy-wingtip-app-guidance-tips.md
-        - name: Samostatná aplikace
+        - name: Jedna aplikace
           items:
           - name: Nasazení ukázkové aplikace
             href: saas-standaloneapp-get-started-deploy.md
@@ -696,9 +700,9 @@ items:
       href: sql-database-elastic-jobs-getting-started.md
     - name: Odinstalace elastické úlohy (zastaralé)
       href: sql-database-elastic-jobs-uninstall.md
-ms.openlocfilehash: b69adc5f54e2566f62049225ccb0fc438a33ca6e
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: 0c34894ea3a09a4cd630938a045e0ab78681c10f
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55226804"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55471024"

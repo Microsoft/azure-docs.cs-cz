@@ -5,6 +5,9 @@ items:
   items:
   - name: Co je rozhraní API pro vlastní vyhledávání Bingu?
     href: overview.md
+  - name: Porovnání rozhraní API pro vyhledávání Bingu
+    href: ../Bing-Web-Search/bing-api-comparison.md
+    maintainContext: true
   expanded: true
 - name: Šablony Rychlý start
   items:
@@ -66,7 +69,8 @@ items:
   - name: Referenční informace k rozhraní API pro vlastní vyhledávání videí Bingu
     href: https://docs.microsoft.com/rest/api/cognitiveservices/bing-custom-videos-api-v7-reference
   - name: Požadavky rozhraní API pro vyhledávání Bingu na zobrazení a použití
-    href: use-and-display-requirements.md
+    href: ../Bing-Web-Search/use-display-requirements.md
+    maintainContext: true
   - name: Sady SDK
     items:
     - name: .NET
@@ -105,9 +109,9 @@ items:
     href: endpoint-custom.md
   - name: Podpora jazyků a oblastí
     href: language-support.md
-ms.openlocfilehash: d027f3483be960381964071fda7124c79ea31a10
-ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
+ms.openlocfilehash: 6cba0cdf82b24811753a34441ab1f62bc5e445e7
+ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/27/2018
-ms.locfileid: "53789343"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55506749"

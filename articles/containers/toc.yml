@@ -1,82 +1,87 @@
+items:
 - name: Azure pro kontejnery
   href: index.yml
   items:
-    - name: Kubernetes Service (AKS)
-      href: 'https://docs.microsoft.com/azure/aks/'
-      expanded: true
+  - name: Kubernetes Service (AKS)
+    href: https://docs.microsoft.com/azure/aks/
+    items:
+    - name: Seznámení s AKS
+      href: ../aks/intro-kubernetes.md
+    - name: Rychlé zprovoznění – Nasazení clusteru AKS
+      href: ../aks/kubernetes-walkthrough.md
+    expanded: true
+  - name: Container Instances (ACI)
+    href: https://docs.microsoft.com/azure/container-instances/
+    items:
+    - name: Rychlý start – Vytvoření instance kontejneru
+      href: https://docs.microsoft.com/azure/container-instances/container-instances-quickstart
+    - name: Kurz – Sestavení a nasazení kontejneru
       items:
-        - name: Seznámení s AKS
-          href: ../aks/intro-kubernetes.md
-        - name: Nasazení clusteru AKS
-          href: ../aks/kubernetes-walkthrough.md
-    - name: Container Instances (ACI)
-      href: 'https://docs.microsoft.com/azure/container-instances/'
+      - name: 1. Vytvoření image kontejneru
+        href: https://docs.microsoft.com/azure/container-instances/container-instances-tutorial-prepare-app
+      - name: 2. Vytvoření registru kontejneru
+        href: https://docs.microsoft.com/azure/container-instances/container-instances-tutorial-prepare-acr
+      - name: 3. Nasazení aplikace
+        href: https://docs.microsoft.com/azure/container-instances/container-instances-tutorial-deploy-app
+  - name: Container Registry (ACR)
+    href: https://docs.microsoft.com/azure/container-registry/
+    items:
+    - name: Rychlé zprovoznění – Vytvoření registru
+      href: https://docs.microsoft.com/azure/container-registry/container-registry-get-started-azure-cli
+    - name: Kurz – Sestavování imagí kontejneru
       items:
-        - name: Rychlý start – Vytvoření instance kontejneru
-          href: 'https://docs.microsoft.com/azure/container-instances/container-instances-quickstart'
-        - name: Kurz – Sestavení a nasazení kontejneru
-          items:
-            - name: 1. Vytvoření image kontejneru
-              href: 'https://docs.microsoft.com/azure/container-instances/container-instances-tutorial-prepare-app'
-            - name: 2. Vytvoření registru kontejneru
-              href: 'https://docs.microsoft.com/azure/container-instances/container-instances-tutorial-prepare-acr'
-            - name: 3. Nasazení aplikace
-              href: 'https://docs.microsoft.com/azure/container-instances/container-instances-tutorial-deploy-app'
-    - name: Container Registry (ACR)
-      href: 'https://docs.microsoft.com/azure/container-registry/'
+      - name: 1. Sestavení imagí v Azure
+        href: ../container-registry/container-registry-tutorial-quick-task.md
+      - name: 2. Automatizace sestavování imagí
+        href: ../container-registry/container-registry-tutorial-build-task.md
+      - name: 3. Sestavení aktualizací základních imagí
+        href: ../container-registry/container-registry-tutorial-base-image-update.md
+  - name: Web App for Containers
+    href: https://docs.microsoft.com/azure/app-service/containers/app-service-linux-intro
+    items:
+    - name: Použití vlastní image Dockeru pro službu Azure Web App for Containers
+      href: https://docs.microsoft.com/azure/app-service/containers/tutorial-custom-docker-image
+    - name: Kurz – Vícekontejnerová aplikace
+      href: https://docs.microsoft.com/azure/app-service/containers/tutorial-multi-container-app
+  - name: Service Fabric
+    href: https://docs.microsoft.com/azure/service-fabric/
+    items:
+    - name: Přehled – Service Fabric a kontejnery
+      href: https://docs.microsoft.com/azure/service-fabric/service-fabric-containers-overview
+    - name: Postup
       items:
-        - name: Vytvoření registru – rozhraní příkazového řádku
-          href: 'https://docs.microsoft.com/azure/container-registry/container-registry-get-started-azure-cli'
-        - name: Postup
-          items:
-            - name: Nabízená a vyžádaná instalace image
-              href: 'https://docs.microsoft.com/azure/container-registry/container-registry-get-started-docker-cli'
-            - name: Zobrazení úložišť
-              href: 'https://docs.microsoft.com/azure/container-registry/container-registry-repositories'
-            - name: Vytvoření instančního objektu
-              href: 'https://docs.microsoft.com/azure/azure-resource-manager/resource-group-create-service-principal-portal?toc=%2fazure%2fcontainer-registry%2ftoc.json'
-            - name: Ověření pomocí registru
-              href: 'https://docs.microsoft.com/azure/container-registry/container-registry-authentication'
-            - name: Použití webhooků ACR
-              href: 'https://docs.microsoft.com/azure/container-registry/container-registry-webhook'
-    - name: Web App for Containers
-      href: 'https://docs.microsoft.com/azure/app-service/containers/app-service-linux-intro'
-      items:
-        - name: Použití vlastní image Dockeru pro službu Azure Web App for Containers
-          href: 'https://docs.microsoft.com/azure/app-service/containers/tutorial-custom-docker-image'
-    - name: Service Fabric
-      href: 'https://docs.microsoft.com/azure/service-fabric/'
-      items:
-        - name: Přehled – Service Fabric a kontejnery
-          href: 'https://docs.microsoft.com/azure/service-fabric/service-fabric-containers-overview'
-        - name: Postup
-          items:
-            - name: Vytvoření aplikace typu kontejner ve Windows
-              href: 'https://docs.microsoft.com/azure/service-fabric/service-fabric-get-started-containers'
-            - name: Vytvoření aplikace typu kontejner v Linuxu
-              href: 'https://docs.microsoft.com/azure/service-fabric/service-fabric-get-started-containers-linux'
-            - name: Kontejnerizace existující aplikace .NET
-              href: 'https://docs.microsoft.com/azure/service-fabric/service-fabric-host-app-in-a-container'
-    - name: Kontejnery Windows
-      href: 'https://docs.microsoft.com/azure/virtual-machines/windows/overview'
-      items:
-        - name: Rychlý start – Kontejnery Windows na Windows Serveru
-          href: 'https://docs.microsoft.com/virtualization/windowscontainers/quick-start/quick-start-windows-server'
-        - name: Informace o kontejnerech Windows
-          href: 'https://docs.microsoft.com/virtualization/windowscontainers/about/index'
-    - name: Referenční informace
-      items:
-        - name: Azure Container Instances (az container)
-          href: 'https://docs.microsoft.com/cli/azure/container'
-        - name: Azure Container Service (az acs)
-          href: 'https://docs.microsoft.com/cli/azure/acs'
-        - name: Azure Container Registry (az acr)
-          href: 'https://docs.microsoft.com/cli/azure/acr'
-        - name: Web App for Containers(az appservice)
-          href: 'https://docs.microsoft.com/cli/azure/appservice'
-        - name: Webová aplikace služby Azure App Service (az webapp)
-          href: 'https://docs.microsoft.com/cli/azure/webapp'
-        - name: Azure Service Fabric (az sf)
-          href: 'https://docs.microsoft.com/cli/azure/sf'
-        - name: Azure Virtual Machines (az vm)
-          href: 'https://docs.microsoft.com/cli/azure/vm'
+      - name: Vytvoření aplikace typu kontejner ve Windows
+        href: https://docs.microsoft.com/azure/service-fabric/service-fabric-get-started-containers
+      - name: Vytvoření aplikace typu kontejner v Linuxu
+        href: https://docs.microsoft.com/azure/service-fabric/service-fabric-get-started-containers-linux
+      - name: Kontejnerizace existující aplikace .NET
+        href: https://docs.microsoft.com/azure/service-fabric/service-fabric-host-app-in-a-container
+  - name: Kontejnery Windows
+    href: https://docs.microsoft.com/azure/virtual-machines/windows/overview
+    items:
+    - name: Rychlý start – Kontejnery Windows na Windows Serveru
+      href: https://docs.microsoft.com/virtualization/windowscontainers/quick-start/quick-start-windows-server
+    - name: Informace o kontejnerech Windows
+      href: https://docs.microsoft.com/virtualization/windowscontainers/about/index
+  - name: Referenční informace
+    items:
+    - name: Azure Container Instances (az container)
+      href: https://docs.microsoft.com/cli/azure/container
+    - name: Azure Container Service (az acs)
+      href: https://docs.microsoft.com/cli/azure/acs
+    - name: Azure Container Registry (az acr)
+      href: https://docs.microsoft.com/cli/azure/acr
+    - name: Web App for Containers (az appservice)
+      href: https://docs.microsoft.com/cli/azure/appservice
+    - name: Webová aplikace služby Azure App Service (az webapp)
+      href: https://docs.microsoft.com/cli/azure/webapp
+    - name: Azure Service Fabric (az sf)
+      href: https://docs.microsoft.com/cli/azure/sf
+    - name: Azure Virtual Machines (az vm)
+      href: https://docs.microsoft.com/cli/azure/vm
+ms.openlocfilehash: 9ee48a00784c0ca9fa00507e2956e34e7e6792d5
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.translationtype: HT
+ms.contentlocale: cs-CZ
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55486227"

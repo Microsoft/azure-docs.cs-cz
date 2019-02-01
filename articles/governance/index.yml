@@ -1,10 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 1c25ae1acb112221047876ea6dd360c6d3bb2817
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: d99fcc9a8bb69926da7538edc06ae2b7533c86be
+ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46946234"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55507422"
 documentType: LandingData
 title: Správa Azure – zásady správného řízení
 metadata:
@@ -18,7 +18,16 @@ metadata:
   ms.date: 09/18/2018
   ms.author: dacoulte
 abstract:
-  description: Zásady správného řízení Azure je kolekce konceptů a služeb, které umožňují správu různých prostředků Azure ver velkém měřítku. Tyto služby poskytují možnost logicky uspořádat a strukturovat vaše předplatná, vytvářet a nasazovat opakovaně použitelné balíčky prostředků nativní pro Azure, definovat, audit a opravovat vaše prostředky a nejenom to. Na této stránce se dozvíte víc o těchto konceptech a službách a také o tom, jak je povolit a využít ve vašem prostředí.
+  description: Zásady správného řízení Azure jsou kolekcí konceptů a služeb, které umožňují správu různých prostředků Azure ve velkém měřítku. Tyto služby poskytují možnost logicky uspořádat a strukturovat vaše předplatná, vytvářet a nasazovat opakovaně použitelné balíčky prostředků nativní pro Azure, definovat, audit a opravovat vaše prostředky a nejenom to. Na této stránce se dozvíte víc o těchto konceptech a službách a také o tom, jak je povolit a využít ve vašem prostředí.
+  aside:
+    image:
+      alt: 
+      height: 225
+      src: ./media/video.png
+      width: 250
+    title: Azure Governance vám poskytne rychlost a kontrolu nad prostředky (1:47)
+    href: https://www.youtube.com/watch?v=MhGbKjlmuRs
+    width: 250
 sections:
 - title: Komponenty a služby
 - items:
@@ -43,10 +52,10 @@ sections:
         src: ./media/policy-illustration.svg
       title: Zásada
     - href: ./blueprints/
-      html: <p>Vytvořte si nativní balíček <i>artefaktů</i> Azure (skupiny prostředků, zásady, přiřazení rolí, šablony Resoure Manageru atd.), který se dá dynamicky nasazovat do předplatných a vytvářet tak konzistentní opakovatelná prostředí.</p>
+      html: <p>Vytvořte si nativní balíček <i>artefaktů</i> Azure (skupiny prostředků, zásady, přiřazení rolí, šablony Resource Manageru atd.), který se dá dynamicky nasazovat do předplatných a vytvářet tak konzistentní opakovatelná prostředí.</p>
       image:
         src: ./media/blueprints-illustration.svg
-      title: Podrobné plány
+      title: Blueprint
 - title: Implementace
 - items:
   - type: list
@@ -54,17 +63,9 @@ sections:
     className: cardsZ
     columns: 3
     items:
-    - href: /azure/architecture/cloud-adoption/governance/what-is-governance?toc=/azure/governance/toc.json
+    - href: /azure/architecture/cloud-adoption/getting-started/what-is-governance?toc=/azure/governance/toc.json
       html: <p>V minulosti podniky přebíraly vlastnictví všech úrovní technologií od infrastruktury po software a zodpovědnost za ně. V současnosti cloud nabízí potenciál pro transformaci způsobu využití technologií ze strany podniků, a to díky zřizování a využívání prostředků podle potřeby.</p>
       title: Přechod na podnikový cloud
     - href: /azure/architecture/cloud-adoption/appendix/azure-scaffold?toc=/azure/governance/toc.json
       html: <p>Umožňuje správcům zajistit, že úlohy splňují minimální požadavky zásad správného řízení organizace, aniž by to obchodním skupinám a vývojářům bránilo v rychlém plnění jejich vlastních cílů.<br /><br /></p>
       title: Vygenerované podnikové uživatelské prostředí
-- title: Referenční informace
-  items:
-  - type: list
-    style: cards
-    className: cardsD
-    items:
-    - title: Zásada
-      html: <p>Příkazový řádek<ul><li><a href="/cli/azure/policy">Azure CLI</a></li></ul></p><p>PowerShell<ul><li><a href="/powershell/module/azurerm.resources/#policies">Azure PowerShell</a></li></ul></p><p>REST API<ul><li><a href="/rest/api/policy-insights/policyevents">Události</a></li><li><a href="/rest/api/policy-insights/policystates">Stavy</a></li><li><a href="/rest/api/resources/policyassignments">Přiřazení</a></li><li><a href="/rest/api/resources/policydefinitions">Definice zásad</a></li><li><a href="/rest/api/resources/policysetdefinitions">Definice iniciativ</a></li></ul></p>

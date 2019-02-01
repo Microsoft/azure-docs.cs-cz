@@ -86,7 +86,7 @@ items:
       href: consistency-levels-tradeoffs.md
     - name: Vysoká dostupnost
       href: high-availability.md
-    - name: Zřízená propustnost globálního škálování
+    - name: Globální škálování zřízené propustnosti
       href: scaling-throughput.md
     - name: Zásady řešení a typy konfliktů
       href: conflict-resolution-policies.md
@@ -98,7 +98,7 @@ items:
     items:
     - name: Přehled
       href: partitioning-overview.md
-    - name: Logické oddíly
+    - name: Dělení a horizontální škálování
       href: partition-data.md
     - name: Vytvoření syntetického klíče oddílu
       href: synthetic-partition-keys.md
@@ -122,7 +122,7 @@ items:
       items:
       - name: Přehled
         href: index-overview.md
-      - name: Zásady indexování
+      - name: Zásady indexů
         href: index-policy.md
       - name: Typy indexů
         href: index-types.md
@@ -136,17 +136,17 @@ items:
         href: read-change-feed.md
       - name: Procesor kanálu změn
         href: change-feed-processor.md
-      - name: Kanál změn s využitím Azure Functions
+      - name: Aktivace Azure Functions
         href: change-feed-functions.md
     - name: Hodnota TTL (Time to Live)
       href: time-to-live.md
     - name: Omezení jedinečných klíčů
       href: unique-keys.md
-    - name: Transakce a optimistická souběžnost
+    - name: Řízení optimistické souběžnosti a transakce
       href: database-transactions-optimistic-concurrency.md
   - name: Programování na straně serveru
     items:
-    - name: Uložené procedury, triggery a funkce UDF
+    - name: Uložené procedury, triggery a systémy souborů UDF
       href: stored-procedures-triggers-udfs.md
     - name: Rozhraní API pro dotazy JavaScript
       href: javascript-query-api.md
@@ -168,9 +168,9 @@ items:
       href: optimize-cost-reads-writes.md
     - name: Optimalizace nákladů na více oblastí
       href: optimize-cost-regions.md
-    - name: Optimalizace úloh vývoje a testování
+    - name: Optimalizace nákladů na vývoj/testování
       href: optimize-dev-test.md
-    - name: Optimalizace s využitím záložní kapacity
+    - name: Optimalizace nákladů s využitím záložní kapacity
       href: cosmos-db-reserved-capacity.md
   - name: Zabezpečení
     items:
@@ -186,7 +186,7 @@ items:
       href: vnet-service-endpoint.md
   - name: Připravenost pro podnikové zpracování
     items:
-    - name: Online zálohování a obnovení
+    - name: Online zálohování a obnovení na vyžádání
       href: online-backup-and-restore.md
     - name: Dodržování předpisů
       href: compliance.md
@@ -254,14 +254,6 @@ items:
       items:
       - name: Ladění výkonu dotazů
         href: sql-api-query-metrics.md
-      - name: Programování na straně serveru
-        items:
-        - name: Psaní uložených procedur, triggerů a funkcí UDF
-          href: how-to-write-stored-procedures-triggers-udfs.md
-        - name: Psaní uložených procedur a triggerů s rozhraním API pro dotazy JavaScript
-          href: how-to-write-javascript-query-api.md
-        - name: Použití uložených procedur, triggerů a funkcí UDF
-          href: how-to-use-stored-procedures-triggers-udfs.md
       - name: Typy dat
         items:
         - name: DateTime
@@ -337,7 +329,7 @@ items:
         - name: Aplikace React a Node.js
           href: tutorial-develop-mongodb-react.md
       - name: 2. Migrace dat
-        href: mongodb-migrate.md
+        href: https://docs.microsoft.com/azure/dms/tutorial-mongodb-cosmos-db?toc=/azure/cosmos-db/toc.json
       - name: 3. Dotazování dat
         href: tutorial-query-mongodb.md
       - name: 4. Globální distribuce dat
@@ -467,19 +459,19 @@ items:
   expanded: true
 - name: Návody
   items:
-  - name: Správa účtu databáze
+  - name: Správa účtu Azure Cosmos
     href: how-to-manage-database-account.md
   - name: Globální distribuce
     items:
-    - name: Správa konzistence
+    - name: Správa úrovní konzistence
       href: how-to-manage-consistency.md
-    - name: Správa konfliktů
+    - name: Konfigurace zásad řešení konfliktů
       href: how-to-manage-conflicts.md
   - name: Zřízená propustnost
     items:
-    - name: Zřízení propustnosti kontejneru
+    - name: Zřízení propustnosti pro kontejner
       href: how-to-provision-container-throughput.md
-    - name: Zřízení propustnosti databáze
+    - name: Zřízení propustnosti pro databázi
       href: how-to-provision-database-throughput.md
   - name: Práce s kontejnery a položkami
     items:
@@ -489,10 +481,22 @@ items:
       href: how-to-query-container.md
     - name: Konfigurace hodnoty TTL (Time to Live)
       href: how-to-time-to-live.md
+    - name: Práce s daty s využitím Průzkumníka služby Azure Storage
+      href: storage-explorer.md
+    - name: Práce s daty s využitím průzkumníka Azure Cosmos
+      href: data-explorer.md
     - name: Indexování
       items:
-      - name: Konfigurace indexování
+      - name: Správa indexování
         href: how-to-manage-indexing-policy.md
+  - name: Programování na straně serveru
+    items:
+    - name: Psaní uložených procedur, triggerů a funkcí UDF
+      href: how-to-write-stored-procedures-triggers-udfs.md
+    - name: Psaní uložených procedur a triggerů s rozhraním API pro dotazy JavaScript
+      href: how-to-write-javascript-query-api.md
+    - name: Použití uložených procedur, triggerů a funkcí UDF
+      href: how-to-use-stored-procedures-triggers-udfs.md
   - name: Zabezpečení
     items:
     - name: Konfigurace brány firewall protokolu P
@@ -501,22 +505,18 @@ items:
       href: how-to-configure-vnet-service-endpoint.md
     - name: Konfigurace sdílení prostředků mezi zdroji (CORS, Cross-Origin Resource Sharing)
       href: how-to-configure-cross-origin-resource-sharing.md
-    - name: Zabezpečení s využitím služby Key Vault
+    - name: Zabezpečení klíčů Azure Cosmos s využitím služby Key Vault
       href: access-secrets-from-keyvault.md
   - name: Připravenost pro podnikové zpracování
     items:
     - name: Obnovení dat ze zálohy
       href: how-to-backup-and-restore.md
-  - name: Spravovat
+  - name: Správa prostředků Azure Cosmos DB
     items:
     - name: Správa pomocí prostředí PowerShell
       href: manage-account-with-powershell.md
     - name: Správa s využitím rozhraní příkazového řádku Azure
       href: manage-with-cli.md
-    - name: Správa s využitím Průzkumníka služby Azure Storage
-      href: storage-explorer.md
-    - name: Správa s využitím Průzkumníka dat
-      href: data-explorer.md
   - name: Protokolování
     items:
     - name: Protokolování diagnostiky
@@ -627,9 +627,9 @@ items:
       href: use-cases.md
     - name: Aplikace sociálních médií
       href: social-media-apps.md
-ms.openlocfilehash: 72d6169090749f81025dabed2b919e6c0a1dc70f
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.openlocfilehash: 2fdf08837bc239ba10da85fad7b81c819b9f26fc
+ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55094474"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55511917"

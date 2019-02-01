@@ -1,10 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 39ff5ba2ae6a9d4cf48499d4e73974e531a492a3
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.openlocfilehash: 82ba644f844c59b59f449e137c64b767d5dffbff
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51564863"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55464020"
 documentType: LandingData
 title: Azure IoT Edge
 metadata:
@@ -15,7 +15,7 @@ metadata:
   ms.service: iot-edge
   services: iot-edge
   ms.topic: landing-page
-  ms.date: 06/21/2018
+  ms.date: 01/30/2019
   ms.author: kgremban
 abstract:
   description: Azure IoT Edge je služba Internetu věcí (IoT) postavená na službě IoT Hub. Tato služba je určená pro zákazníky, kteří chtějí analyzovat data na zařízeních, jinými slovy na hraničních zařízeních, a ne v cloudu. Díky přesunu částí úlohy do hraničních zařízení můžou vaše zařízení šetřit čas strávený odesíláním zpráv do cloudu a rychleji reagovat na změny stavu.
@@ -47,15 +47,17 @@ sections:
 - title: Podrobné kurzy
   items:
   - type: paragraph
-    text: Zjistěte, jak nainstalovat a nakonfigurovat IoT Edge, nasazovat moduly a využívat na hraničních zařízeních služby Azure, jako je Stream Analytics.
+    text: Zjistěte, jak nainstalovat a nakonfigurovat IoT Edge, nasazovat moduly a využívat na hraničních zařízeních služby Azure, jako je Stream Analytics a Custom Vision.
   - type: list
-    style: ordered
+    style: unordered
     items:
     - html: <a href="/azure/iot-edge/tutorial-deploy-function">Filtrování zpráv s využitím Azure Functions</a>
     - html: <a href="/azure/iot-edge/tutorial-deploy-stream-analytics">Zjištění průměrů s využitím Azure Stream Analytics jako modulu</a>
     - html: <a href="/azure/iot-edge/tutorial-deploy-machine-learning">Hodnocení dat s využitím služby Azure Machine Learning jako modulu</a>
+    - html: <a href="/azure/iot-edge/tutorial-deploy-custom-vision">Klasifikace obrázků s využitím služby Custom Vision jako modulu</a>
     - html: <a href="/azure/iot-edge/tutorial-csharp-module">Filtrování dat s využitím modulu C#</a>
     - html: <a href="/azure/iot-edge/tutorial-python-module">Filtrování dat s využitím modulu Python</a>
     - html: <a href="/azure/iot-edge/tutorial-node-module">Filtrování dat s využitím modulu Node.js</a>
+    - html: <a href="/azure/iot-edge/tutorial-java-module">Filtrování dat s využitím modulu Javy</a>
     - html: <a href="/azure/iot-edge/tutorial-c-module">Filtrování dat s využitím modulu C</a>
     - html: <a href="/azure/iot-edge/tutorial-store-data-sql-server">Uložení dat na hraničních zařízeních s využitím SQL Serveru</a>

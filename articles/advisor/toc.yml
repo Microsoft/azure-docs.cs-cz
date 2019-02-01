@@ -1,0 +1,59 @@
+items:
+- name: Dokumentace ke službě Azure Advisor
+  href: index.yml
+- name: Přehled
+  items:
+  - name: Co je Azure Advisor?
+    href: advisor-overview.md
+- name: Kurzy
+  items:
+  - name: Začínáme se službou Advisor
+    href: advisor-get-started.md
+- name: Návody
+  items:
+  - name: Zlepšení dostupnosti aplikace Azure
+    href: advisor-high-availability-recommendations.md
+  - name: Lepší zabezpečení prostředků
+    href: advisor-security-recommendations.md
+  - name: Vylepšení výkonu aplikací Azure
+    href: advisor-performance-recommendations.md
+  - name: Snížení nákladů na služby
+    href: advisor-cost-recommendations.md
+- name: Referenční informace
+  items:
+  - name: Security Center
+    href: https://azure.microsoft.com/services/security-center/
+  - name: SQL DB Advisor
+    href: https://azure.microsoft.com/documentation/articles/sql-database-advisor/
+  - name: App Service
+    href: https://docs.microsoft.com/azure/app-service/app-service-best-practices
+  - name: REST API
+    href: https://docs.microsoft.com/rest/api/advisor/
+  - name: Rozhraní příkazového řádku
+    href: https://docs.microsoft.com/cli/azure/advisor?view=azure-cli-latest
+  - name: PowerShell
+    href: https://docs.microsoft.com/powershell/module/az.advisor/?view=azps-1.2.0
+- name: Zdroje a prostředky
+  items:
+  - name: Plány Azure do budoucna
+    href: https://azure.microsoft.com/roadmap/
+  - name: Ceny
+    href: https://azure.microsoft.com/pricing/details/advisor
+  - name: Cenová kalkulačka
+    href: https://azure.microsoft.com/pricing/calculator/
+  - name: Aktualizace služeb
+    href: https://azure.microsoft.com/updates/?product=advisor
+  - name: Regionální dostupnost
+    href: https://azure.microsoft.com/global-infrastructure/services/?products=advisor
+  - name: Videa
+    href: https://azure.microsoft.com/resources/videos/index/?services=advisor
+  - name: Stack Overflow
+    href: https://stackoverflow.com/search?q=azure+advisor
+  - name: Ukázky kódů
+    href: https://azure.microsoft.com/resources/samples/?service=advisor
+ms.openlocfilehash: 1f6f848d9e69d0e478c2027b4e3f09089b4714bb
+ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
+ms.translationtype: HT
+ms.contentlocale: cs-CZ
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55509894"

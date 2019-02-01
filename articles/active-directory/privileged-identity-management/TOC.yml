@@ -29,7 +29,7 @@ items:
     items:
     - name: Aktivace mých rolí adresáře
       href: pim-how-to-activate-role.md
-    - name: Aktivace mých rolí prostředku
+    - name: Aktivace mých rolí prostředků Azure
       href: pim-resource-roles-activate-your-roles.md
   - name: Konfigurace PIM
     items:
@@ -53,7 +53,7 @@ items:
       href: pim-how-to-configure-security-alerts.md
     - name: Zobrazení historie auditů
       href: pim-how-to-use-audit-log.md
-  - name: Správa rolí prostředků
+  - name: Správa rolí prostředků Azure
     items:
     - name: Přiřazení rolí
       href: pim-resource-roles-assign-roles.md
@@ -81,18 +81,18 @@ items:
         href: pim-how-to-start-security-review.md
       - name: Dokončení kontroly přístupu
         href: pim-how-to-complete-review.md
-    - name: Role prostředků
+    - name: Role prostředků Azure
       items:
-      - name: Kontrola mých rolí prostředku
+      - name: Kontrola mých rolí prostředků Azure
         href: pim-resource-roles-perform-access-review.md
       - name: Zahájení kontroly přístupu
         href: pim-resource-roles-start-access-review.md
       - name: Dokončení kontroly přístupu
         href: pim-resource-roles-complete-access-review.md
   expanded: true
-ms.openlocfilehash: 84c50c4d3fe6472f53d64ba42f462a6fdf2783fe
-ms.sourcegitcommit: 97d0dfb25ac23d07179b804719a454f25d1f0d46
+ms.openlocfilehash: a7c314bd6fd7fdc96900411db78a37b45b8c3e07
+ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/25/2019
-ms.locfileid: "54913117"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55512330"

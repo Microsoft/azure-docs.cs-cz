@@ -1,0 +1,49 @@
+### YamlMime:YamlDocument
+ms.openlocfilehash: f4f35156f9b2b356e3e47695725351562af9796f
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.translationtype: HT
+ms.contentlocale: cs-CZ
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55501152"
+documentType: LandingData
+title: Dokumentace ke službě Azure Advisor
+metadata:
+  title: Dokumentace ke službě Azure Advisor | Microsoft Docs
+  description: 
+  services: advisor
+  author: rboucher
+  layout: LandingPage
+  ms.service: advisor
+  ms.tgt_pltfrm: na
+  ms.topic: landing-page
+  ms.date: 02/01/2019
+  ms.author: robb
+abstract:
+  description: Azure Advisor je přizpůsobený cloudový konzultant, který pomáhá dodržovat osvědčené postupy pro optimalizaci nasazení Azure. Analyzuje telemetrii využití a konfiguraci prostředků. Na jejich základě doporučuje řešení, která pomáhají zajistit vysoký výkon, zabezpečení a dostupnost vašich prostředků, a současně hledá možnosti, jak snížit vaše celkové náklady na Azure.
+sections:
+- title: 
+  items:
+  - type: paragraph
+  - type: list
+    style: icon48
+    items:
+    - image:
+        src: media/index/advisor.svg
+      text: Další informace o službě Azure Advisor
+      href: /azure/advisor/advisor-overview
+    - image:
+        src: media/index/get-started.svg
+      text: Začínáme se službou Azure Advisor
+      href: /azure/advisor/advisor-get-started
+- title: Referenční informace
+  items:
+  - type: list
+    style: cards
+    className: cardsD
+    items:
+    - title: REST
+      html: <p><a href="https://docs.microsoft.com/rest/api/advisor/">Reference k rozhraní REST API</a></p>
+    - title: Příkazový řádek
+      html: <p><a href="https://docs.microsoft.com/cli/azure/advisor?view=azure-cli-latest">CLI (Common Language Interface)</a></p>
+    - title: PowerShell
+      html: <p><a href="https://docs.microsoft.com/powershell/module/az.advisor/?view=azps-1.2.0">Azure PowerShell</a></p>
