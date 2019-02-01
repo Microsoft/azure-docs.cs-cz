@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/08/2018
 ms.author: tomfitz
-ms.openlocfilehash: e32e972be4e355f01a760b45905404b70a1450bd
-ms.sourcegitcommit: d372d75558fc7be78b1a4b42b4245f40f213018c
+ms.openlocfilehash: 04a82d1ed8735954072f9549f3b2676df0935449
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/09/2018
-ms.locfileid: "51300859"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55489457"
 ---
 # <a name="string-functions-for-azure-resource-manager-templates"></a>Řetězec funkce pro šablony Azure Resource Manageru
 
@@ -37,12 +37,12 @@ Resource Manager poskytuje následující funkce pro práci s řetězci:
 * [první](#first)
 * [identifikátor GUID](#guid)
 * [indexOf](#indexof)
-* [poslední](#last)
+* [last](#last)
 * [lastIndexOf](#lastindexof)
 * [Délka](#length)
 * [padLeft](#padleft)
 * [nahradit](#replace)
-* [Přeskočit](#skip)
+* [skip](#skip)
 * [split](#split)
 * [startsWith](resource-group-template-functions-string.md#startswith)
 * [řetězec](#string)
@@ -50,15 +50,17 @@ Resource Manager poskytuje následující funkce pro práci s řetězci:
 * [Take](#take)
 * [toLower](#tolower)
 * [toUpper](#toupper)
-* [Trim](#trim)
+* [trim](#trim)
 * [uniqueString](#uniquestring)
-* [Identifikátor URI](#uri)
+* [uri](#uri)
 * [uriComponent](resource-group-template-functions-string.md#uricomponent)
 * [uriComponentToString](resource-group-template-functions-string.md#uricomponenttostring)
 
 <a id="base64" />
 
-## <a name="base64"></a>ve formátu Base64
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
+## <a name="base64"></a>base64
 `base64(inputString)`
 
 Vrátí reprezentaci ve formátu base64 vstupního řetězce.
@@ -118,8 +120,8 @@ Výstup z předchozího příkladu s výchozími hodnotami je:
 
 | Název | Typ | Hodnota |
 | ---- | ---- | ----- |
-| base64Output | Řetězec | b25lLCB0d28sIHRocmVl |
-| toStringOutput | Řetězec | Jedna dva tři |
+| base64Output | String | b25lLCB0d28sIHRocmVl |
+| toStringOutput | String | Jedna dva tři |
 | toJsonOutput | Objekt | {"jedna": "a", "2": "b"} |
 
 Pokud chcete nasadit šablonu tento příklad pomocí Azure CLI, použijte:
@@ -131,7 +133,7 @@ az group deployment create -g functionexamplegroup --template-uri https://raw.gi
 Pokud chcete nasadit tento příklad šablony pomocí prostředí PowerShell, použijte:
 
 ```azurepowershell-interactive
-New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/base64.json
+New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/base64.json
 ```
 
 <a id="base64tojson" />
@@ -196,8 +198,8 @@ Výstup z předchozího příkladu s výchozími hodnotami je:
 
 | Název | Typ | Hodnota |
 | ---- | ---- | ----- |
-| base64Output | Řetězec | b25lLCB0d28sIHRocmVl |
-| toStringOutput | Řetězec | Jedna dva tři |
+| base64Output | String | b25lLCB0d28sIHRocmVl |
+| toStringOutput | String | Jedna dva tři |
 | toJsonOutput | Objekt | {"jedna": "a", "2": "b"} |
 
 Pokud chcete nasadit šablonu tento příklad pomocí Azure CLI, použijte:
@@ -209,7 +211,7 @@ az group deployment create -g functionexamplegroup --template-uri https://raw.gi
 Pokud chcete nasadit tento příklad šablony pomocí prostředí PowerShell, použijte:
 
 ```azurepowershell-interactive
-New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/base64.json
+New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/base64.json
 ```
 
 <a id="base64tostring" />
@@ -274,8 +276,8 @@ Výstup z předchozího příkladu s výchozími hodnotami je:
 
 | Název | Typ | Hodnota |
 | ---- | ---- | ----- |
-| base64Output | Řetězec | b25lLCB0d28sIHRocmVl |
-| toStringOutput | Řetězec | Jedna dva tři |
+| base64Output | String | b25lLCB0d28sIHRocmVl |
+| toStringOutput | String | Jedna dva tři |
 | toJsonOutput | Objekt | {"jedna": "a", "2": "b"} |
 
 Pokud chcete nasadit šablonu tento příklad pomocí Azure CLI, použijte:
@@ -287,7 +289,7 @@ az group deployment create -g functionexamplegroup --template-uri https://raw.gi
 Pokud chcete nasadit tento příklad šablony pomocí prostředí PowerShell, použijte:
 
 ```azurepowershell-interactive
-New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/base64.json
+New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/base64.json
 ```
 
 <a id="concat" />
@@ -335,7 +337,7 @@ Výstup z předchozího příkladu s výchozími hodnotami je:
 
 | Název | Typ | Hodnota |
 | ---- | ---- | ----- |
-| concatOutput | Řetězec | Předpona 5yj4yjf5mbg72 |
+| concatOutput | String | Předpona 5yj4yjf5mbg72 |
 
 Pokud chcete nasadit šablonu tento příklad pomocí Azure CLI, použijte:
 
@@ -346,7 +348,7 @@ az group deployment create -g functionexamplegroup --template-uri https://raw.gi
 Pokud chcete nasadit tento příklad šablony pomocí prostředí PowerShell, použijte:
 
 ```azurepowershell-interactive
-New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/concat-string.json
+New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/concat-string.json
 ```
 
 Následující [Ukázková šablona](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/concat-array.json) ukazuje, jak kombinace dvou polí.
@@ -399,7 +401,7 @@ az group deployment create -g functionexamplegroup --template-uri https://raw.gi
 Pokud chcete nasadit tento příklad šablony pomocí prostředí PowerShell, použijte:
 
 ```azurepowershell-interactive
-New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/concat-array.json
+New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/concat-array.json
 ```
 
 <a id="contains" />
@@ -477,12 +479,12 @@ Výstup z předchozího příkladu s výchozími hodnotami je:
 
 | Název | Typ | Hodnota |
 | ---- | ---- | ----- |
-| stringTrue | BOOL | True |
-| stringFalse | BOOL | False |
-| objectTrue | BOOL | True |
-| objectFalse | BOOL | False |
-| arrayTrue | BOOL | True |
-| arrayFalse | BOOL | False |
+| stringTrue | Bool | True |
+| stringFalse | Bool | False |
+| objectTrue | Bool | True |
+| objectFalse | Bool | False |
+| arrayTrue | Bool | True |
+| arrayFalse | Bool | False |
 
 Pokud chcete nasadit šablonu tento příklad pomocí Azure CLI, použijte:
 
@@ -493,12 +495,12 @@ az group deployment create -g functionexamplegroup --template-uri https://raw.gi
 Pokud chcete nasadit tento příklad šablony pomocí prostředí PowerShell, použijte:
 
 ```azurepowershell-interactive
-New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/contains.json
+New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/contains.json
 ```
 
 <a id="datauri" />
 
-## <a name="datauri"></a>Parametr
+## <a name="datauri"></a>dataUri
 `dataUri(stringToConvert)`
 
 Převede hodnotu na identifikátor URI dat.
@@ -549,8 +551,8 @@ Výstup z předchozího příkladu s výchozími hodnotami je:
 
 | Název | Typ | Hodnota |
 | ---- | ---- | ----- |
-| dataUriOutput | Řetězec | data: text / prostý; charset = utf8; ve formátu base64, SGVsbG8 = |
-| toStringOutput | Řetězec | Ahoj světe! |
+| dataUriOutput | String | data:text/plain;charset=utf8;base64,SGVsbG8= |
+| toStringOutput | String | Ahoj světe! |
 
 Pokud chcete nasadit šablonu tento příklad pomocí Azure CLI, použijte:
 
@@ -561,7 +563,7 @@ az group deployment create -g functionexamplegroup --template-uri https://raw.gi
 Pokud chcete nasadit tento příklad šablony pomocí prostředí PowerShell, použijte:
 
 ```azurepowershell-interactive
-New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/datauri.json
+New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/datauri.json
 ```
 
 <a id="datauritostring" />
@@ -617,8 +619,8 @@ Výstup z předchozího příkladu s výchozími hodnotami je:
 
 | Název | Typ | Hodnota |
 | ---- | ---- | ----- |
-| dataUriOutput | Řetězec | data: text / prostý; charset = utf8; ve formátu base64, SGVsbG8 = |
-| toStringOutput | Řetězec | Ahoj světe! |
+| dataUriOutput | String | data:text/plain;charset=utf8;base64,SGVsbG8= |
+| toStringOutput | String | Ahoj světe! |
 
 Pokud chcete nasadit šablonu tento příklad pomocí Azure CLI, použijte:
 
@@ -629,12 +631,12 @@ az group deployment create -g functionexamplegroup --template-uri https://raw.gi
 Pokud chcete nasadit tento příklad šablony pomocí prostředí PowerShell, použijte:
 
 ```azurepowershell-interactive
-New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/datauri.json
+New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/datauri.json
 ```
 
 <a id="empty" /> 
 
-## <a name="empty"></a>prázdný
+## <a name="empty"></a>Prázdná
 `empty(itemToTest)`
 
 Určuje, zda je pole, objekt nebo řetězec prázdný.
@@ -694,9 +696,9 @@ Výstup z předchozího příkladu s výchozími hodnotami je:
 
 | Název | Typ | Hodnota |
 | ---- | ---- | ----- |
-| arrayEmpty | BOOL | True |
-| objectEmpty | BOOL | True |
-| stringEmpty | BOOL | True |
+| arrayEmpty | Bool | True |
+| objectEmpty | Bool | True |
+| stringEmpty | Bool | True |
 
 Pokud chcete nasadit šablonu tento příklad pomocí Azure CLI, použijte:
 
@@ -707,7 +709,7 @@ az group deployment create -g functionexamplegroup --template-uri https://raw.gi
 Pokud chcete nasadit tento příklad šablony pomocí prostředí PowerShell, použijte:
 
 ```azurepowershell-interactive
-New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/empty.json
+New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/empty.json
 ```
 
 <a id="endswith" />
@@ -770,12 +772,12 @@ Výstup z předchozího příkladu s výchozími hodnotami je:
 
 | Název | Typ | Hodnota |
 | ---- | ---- | ----- |
-| startsTrue | BOOL | True |
-| startsCapTrue | BOOL | True |
-| startsFalse | BOOL | False |
-| endsTrue | BOOL | True |
-| endsCapTrue | BOOL | True |
-| endsFalse | BOOL | False |
+| startsTrue | Bool | True |
+| startsCapTrue | Bool | True |
+| startsFalse | Bool | False |
+| endsTrue | Bool | True |
+| endsCapTrue | Bool | True |
+| endsFalse | Bool | False |
 
 Pokud chcete nasadit šablonu tento příklad pomocí Azure CLI, použijte:
 
@@ -786,7 +788,7 @@ az group deployment create -g functionexamplegroup --template-uri https://raw.gi
 Pokud chcete nasadit tento příklad šablony pomocí prostředí PowerShell, použijte:
 
 ```azurepowershell-interactive
-New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/startsendswith.json
+New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/startsendswith.json
 ```
 
 <a id="first" />
@@ -839,8 +841,8 @@ Výstup z předchozího příkladu s výchozími hodnotami je:
 
 | Název | Typ | Hodnota |
 | ---- | ---- | ----- |
-| arrayOutput | Řetězec | jeden |
-| stringOutput | Řetězec | O |
+| arrayOutput | String | jeden |
+| stringOutput | String | O |
 
 Pokud chcete nasadit šablonu tento příklad pomocí Azure CLI, použijte:
 
@@ -851,7 +853,7 @@ az group deployment create -g functionexamplegroup --template-uri https://raw.gi
 Pokud chcete nasadit tento příklad šablony pomocí prostředí PowerShell, použijte:
 
 ```azurepowershell-interactive
-New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/first.json
+New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/first.json
 ```
 
 ## <a name="guid"></a>identifikátor GUID
@@ -934,7 +936,7 @@ az group deployment create -g functionexamplegroup --template-uri https://raw.gi
 Pokud chcete nasadit tento příklad šablony pomocí prostředí PowerShell, použijte:
 
 ```azurepowershell-interactive
-New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/guid.json
+New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/guid.json
 ```
 
 <a id="indexof" />
@@ -1008,7 +1010,7 @@ az group deployment create -g functionexamplegroup --template-uri https://raw.gi
 Pokud chcete nasadit tento příklad šablony pomocí prostředí PowerShell, použijte:
 
 ```azurepowershell-interactive
-New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/indexof.json
+New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/indexof.json
 ```
 
 <a id="last" />
@@ -1061,8 +1063,8 @@ Výstup z předchozího příkladu s výchozími hodnotami je:
 
 | Název | Typ | Hodnota |
 | ---- | ---- | ----- |
-| arrayOutput | Řetězec | tři |
-| stringOutput | Řetězec | e |
+| arrayOutput | String | tři |
+| stringOutput | String | e |
 
 Pokud chcete nasadit šablonu tento příklad pomocí Azure CLI, použijte:
 
@@ -1073,7 +1075,7 @@ az group deployment create -g functionexamplegroup --template-uri https://raw.gi
 Pokud chcete nasadit tento příklad šablony pomocí prostředí PowerShell, použijte:
 
 ```azurepowershell-interactive
-New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/last.json
+New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/last.json
 ```
 
 <a id="lastindexof" />
@@ -1147,7 +1149,7 @@ az group deployment create -g functionexamplegroup --template-uri https://raw.gi
 Pokud chcete nasadit tento příklad šablony pomocí prostředí PowerShell, použijte:
 
 ```azurepowershell-interactive
-New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/indexof.json
+New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/indexof.json
 ```
 
 <a id="length" />
@@ -1219,7 +1221,7 @@ az group deployment create -g functionexamplegroup --template-uri https://raw.gi
 Pokud chcete nasadit tento příklad šablony pomocí prostředí PowerShell, použijte:
 
 ```azurepowershell-interactive
-New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/length.json
+New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/length.json
 ```
 
 <a id="padleft" />
@@ -1234,7 +1236,7 @@ Vrátí řetězec zarovnaný doprava přidáním znaků na levé straně až do 
 | Parametr | Požaduje se | Typ | Popis |
 |:--- |:--- |:--- |:--- |
 | valueToPad |Ano |řetězec nebo int |Hodnota zarovnání vpravo. |
-| Hodnota totalLength |Ano |int |Celkový počet znaků ve vráceném řetězci. |
+| totalLength |Ano |int |Celkový počet znaků ve vráceném řetězci. |
 | paddingCharacter |Ne |jeden znak |Znak, který se má použít pro odsazení vlevo až do dosažení celkové délky. Výchozí hodnota je mezera. |
 
 Pokud původní řetězec je delší než počet znaků pro vyplnění, přidají se žádné znaky.
@@ -1271,7 +1273,7 @@ Výstup z předchozího příkladu s výchozími hodnotami je:
 
 | Název | Typ | Hodnota |
 | ---- | ---- | ----- |
-| stringOutput | Řetězec | 0000000123 |
+| stringOutput | String | 0000000123 |
 
 Pokud chcete nasadit šablonu tento příklad pomocí Azure CLI, použijte:
 
@@ -1282,7 +1284,7 @@ az group deployment create -g functionexamplegroup --template-uri https://raw.gi
 Pokud chcete nasadit tento příklad šablony pomocí prostředí PowerShell, použijte:
 
 ```azurepowershell-interactive
-New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/padleft.json
+New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/padleft.json
 ```
 
 <a id="replace" />
@@ -1336,8 +1338,8 @@ Výstup z předchozího příkladu s výchozími hodnotami je:
 
 | Název | Typ | Hodnota |
 | ---- | ---- | ----- |
-| firstOutput | Řetězec | 1231231234 |
-| secodeOutput | Řetězec | 123-123-xxxx |
+| firstOutput | String | 1231231234 |
+| secodeOutput | String | 123-123-xxxx |
 
 Pokud chcete nasadit šablonu tento příklad pomocí Azure CLI, použijte:
 
@@ -1348,7 +1350,7 @@ az group deployment create -g functionexamplegroup --template-uri https://raw.gi
 Pokud chcete nasadit tento příklad šablony pomocí prostředí PowerShell, použijte:
 
 ```azurepowershell-interactive
-New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/replace.json
+New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/replace.json
 ```
 
 <a id="skip" />
@@ -1418,7 +1420,7 @@ Výstup z předchozího příkladu s výchozími hodnotami je:
 | Název | Typ | Hodnota |
 | ---- | ---- | ----- |
 | arrayOutput | Pole | ["tři"] |
-| stringOutput | Řetězec | dva tři |
+| stringOutput | String | dva tři |
 
 Pokud chcete nasadit šablonu tento příklad pomocí Azure CLI, použijte:
 
@@ -1429,7 +1431,7 @@ az group deployment create -g functionexamplegroup --template-uri https://raw.gi
 Pokud chcete nasadit tento příklad šablony pomocí prostředí PowerShell, použijte:
 
 ```azurepowershell-interactive
-New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/skip.json
+New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/skip.json
 ```
 
 <a id="split" />
@@ -1501,7 +1503,7 @@ az group deployment create -g functionexamplegroup --template-uri https://raw.gi
 Pokud chcete nasadit tento příklad šablony pomocí prostředí PowerShell, použijte:
 
 ```azurepowershell-interactive
-New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/split.json
+New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/split.json
 ```
 
 <a id="startswith" />
@@ -1564,12 +1566,12 @@ Výstup z předchozího příkladu s výchozími hodnotami je:
 
 | Název | Typ | Hodnota |
 | ---- | ---- | ----- |
-| startsTrue | BOOL | True |
-| startsCapTrue | BOOL | True |
-| startsFalse | BOOL | False |
-| endsTrue | BOOL | True |
-| endsCapTrue | BOOL | True |
-| endsFalse | BOOL | False |
+| startsTrue | Bool | True |
+| startsCapTrue | Bool | True |
+| startsFalse | Bool | False |
+| endsTrue | Bool | True |
+| endsCapTrue | Bool | True |
+| endsFalse | Bool | False |
 
 Pokud chcete nasadit šablonu tento příklad pomocí Azure CLI, použijte:
 
@@ -1580,7 +1582,7 @@ az group deployment create -g functionexamplegroup --template-uri https://raw.gi
 Pokud chcete nasadit tento příklad šablony pomocí prostředí PowerShell, použijte:
 
 ```azurepowershell-interactive
-New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/startsendswith.json
+New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/startsendswith.json
 ```
 
 <a id="string" />
@@ -1651,9 +1653,9 @@ Výstup z předchozího příkladu s výchozími hodnotami je:
 
 | Název | Typ | Hodnota |
 | ---- | ---- | ----- |
-| objectOutput | Řetězec | {"Hodnotaa": 10, "Hodnotab": "Ukázkovému textu"} |
-| arrayOutput | Řetězec | ["a", "b", "c"] |
-| intOutput | Řetězec | 5 |
+| objectOutput | String | {"Hodnotaa": 10, "Hodnotab": "Ukázkovému textu"} |
+| arrayOutput | String | ["a","b","c"] |
+| intOutput | String | 5 |
 
 Pokud chcete nasadit šablonu tento příklad pomocí Azure CLI, použijte:
 
@@ -1664,7 +1666,7 @@ az group deployment create -g functionexamplegroup --template-uri https://raw.gi
 Pokud chcete nasadit tento příklad šablony pomocí prostředí PowerShell, použijte:
 
 ```azurepowershell-interactive
-New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/string.json
+New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/string.json
 ```
 
 <a id="substring" />
@@ -1688,7 +1690,7 @@ Dílčí řetězec. Nebo prázdný řetězec, pokud délka je 0.
 
 ### <a name="remarks"></a>Poznámky
 
-Funkce selže, když podřetězec přesahuje konec řetězce, nebo když délka je menší než nula. V následujícím příkladu se nezdaří s chybou "parametry index a délka musí odkazovat na umístění v rámci řetězce. Parametr indexu: "0", parametr délky: 11, délky řetězce: "10". ".
+Funkce selže, když podřetězec přesahuje konec řetězce, nebo když délka je menší než nula. V následujícím příkladu se nezdaří s chybou "parametry index a délka musí odkazovat na umístění v rámci řetězce. Index parametru: "0", parametr délky: "11", délky řetězce: '10'.".
 
 ```json
 "parameters": {
@@ -1727,7 +1729,7 @@ Výstup z předchozího příkladu s výchozími hodnotami je:
 
 | Název | Typ | Hodnota |
 | ---- | ---- | ----- |
-| substringOutput | Řetězec | dva |
+| substringOutput | String | dva |
 
 Pokud chcete nasadit šablonu tento příklad pomocí Azure CLI, použijte:
 
@@ -1738,7 +1740,7 @@ az group deployment create -g functionexamplegroup --template-uri https://raw.gi
 Pokud chcete nasadit tento příklad šablony pomocí prostředí PowerShell, použijte:
 
 ```azurepowershell-interactive
-New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/substring.json
+New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/substring.json
 ```
 
 <a id="take" />
@@ -1808,7 +1810,7 @@ Výstup z předchozího příkladu s výchozími hodnotami je:
 | Název | Typ | Hodnota |
 | ---- | ---- | ----- |
 | arrayOutput | Pole | ["1", "dvě"] |
-| stringOutput | Řetězec | zapnuté |
+| stringOutput | String | zapnuté |
 
 Pokud chcete nasadit šablonu tento příklad pomocí Azure CLI, použijte:
 
@@ -1819,7 +1821,7 @@ az group deployment create -g functionexamplegroup --template-uri https://raw.gi
 Pokud chcete nasadit tento příklad šablony pomocí prostředí PowerShell, použijte:
 
 ```azurepowershell-interactive
-New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/take.json
+New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/take.json
 ```
 
 <a id="tolower" />
@@ -1871,8 +1873,8 @@ Výstup z předchozího příkladu s výchozími hodnotami je:
 
 | Název | Typ | Hodnota |
 | ---- | ---- | ----- |
-| toLowerOutput | Řetězec | Jedna dva tři |
-| toUpperOutput | Řetězec | JEDNA DVA TŘI |
+| toLowerOutput | String | Jedna dva tři |
+| toUpperOutput | String | JEDNA DVA TŘI |
 
 Pokud chcete nasadit šablonu tento příklad pomocí Azure CLI, použijte:
 
@@ -1883,7 +1885,7 @@ az group deployment create -g functionexamplegroup --template-uri https://raw.gi
 Pokud chcete nasadit tento příklad šablony pomocí prostředí PowerShell, použijte:
 
 ```azurepowershell-interactive
-New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/tolower.json
+New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/tolower.json
 ```
 
 <a id="toupper" />
@@ -1935,8 +1937,8 @@ Výstup z předchozího příkladu s výchozími hodnotami je:
 
 | Název | Typ | Hodnota |
 | ---- | ---- | ----- |
-| toLowerOutput | Řetězec | Jedna dva tři |
-| toUpperOutput | Řetězec | JEDNA DVA TŘI |
+| toLowerOutput | String | Jedna dva tři |
+| toUpperOutput | String | JEDNA DVA TŘI |
 
 Pokud chcete nasadit šablonu tento příklad pomocí Azure CLI, použijte:
 
@@ -1947,7 +1949,7 @@ az group deployment create -g functionexamplegroup --template-uri https://raw.gi
 Pokud chcete nasadit tento příklad šablony pomocí prostředí PowerShell, použijte:
 
 ```azurepowershell-interactive
-New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/tolower.json
+New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/tolower.json
 ```
 
 <a id="trim" />
@@ -1995,7 +1997,7 @@ Výstup z předchozího příkladu s výchozími hodnotami je:
 
 | Název | Typ | Hodnota |
 | ---- | ---- | ----- |
-| Vrátí | Řetězec | Jedna dva tři |
+| Vrátí | String | Jedna dva tři |
 
 Pokud chcete nasadit šablonu tento příklad pomocí Azure CLI, použijte:
 
@@ -2006,7 +2008,7 @@ az group deployment create -g functionexamplegroup --template-uri https://raw.gi
 Pokud chcete nasadit tento příklad šablony pomocí prostředí PowerShell, použijte:
 
 ```azurepowershell-interactive
-New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/trim.json
+New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/trim.json
 ```
 
 <a id="uniquestring" />
@@ -2095,7 +2097,7 @@ az group deployment create -g functionexamplegroup --template-uri https://raw.gi
 Pokud chcete nasadit tento příklad šablony pomocí prostředí PowerShell, použijte:
 
 ```azurepowershell-interactive
-New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/uniquestring.json
+New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/uniquestring.json
 ```
 
 <a id="uri" />
@@ -2159,9 +2161,9 @@ Výstup z předchozího příkladu s výchozími hodnotami je:
 
 | Název | Typ | Hodnota |
 | ---- | ---- | ----- |
-| uriOutput | Řetězec | http://contoso.com/resources/nested/azuredeploy.json |
-| componentOutput | Řetězec | http%3a%2f%2Fcontoso.com%2Fresources%2Fnested%2Fazuredeploy.JSON |
-| toStringOutput | Řetězec | http://contoso.com/resources/nested/azuredeploy.json |
+| uriOutput | String | http://contoso.com/resources/nested/azuredeploy.json |
+| componentOutput | String | http%3A%2F%2Fcontoso.com%2Fresources%2Fnested%2Fazuredeploy.json |
+| toStringOutput | String | http://contoso.com/resources/nested/azuredeploy.json |
 
 Pokud chcete nasadit šablonu tento příklad pomocí Azure CLI, použijte:
 
@@ -2172,7 +2174,7 @@ az group deployment create -g functionexamplegroup --template-uri https://raw.gi
 Pokud chcete nasadit tento příklad šablony pomocí prostředí PowerShell, použijte:
 
 ```azurepowershell-interactive
-New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/uri.json
+New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/uri.json
 ```
 
 <a id="uricomponent" />
@@ -2227,9 +2229,9 @@ Výstup z předchozího příkladu s výchozími hodnotami je:
 
 | Název | Typ | Hodnota |
 | ---- | ---- | ----- |
-| uriOutput | Řetězec | http://contoso.com/resources/nested/azuredeploy.json |
-| componentOutput | Řetězec | http%3a%2f%2Fcontoso.com%2Fresources%2Fnested%2Fazuredeploy.JSON |
-| toStringOutput | Řetězec | http://contoso.com/resources/nested/azuredeploy.json |
+| uriOutput | String | http://contoso.com/resources/nested/azuredeploy.json |
+| componentOutput | String | http%3A%2F%2Fcontoso.com%2Fresources%2Fnested%2Fazuredeploy.json |
+| toStringOutput | String | http://contoso.com/resources/nested/azuredeploy.json |
 
 Pokud chcete nasadit šablonu tento příklad pomocí Azure CLI, použijte:
 
@@ -2240,7 +2242,7 @@ az group deployment create -g functionexamplegroup --template-uri https://raw.gi
 Pokud chcete nasadit tento příklad šablony pomocí prostředí PowerShell, použijte:
 
 ```azurepowershell-interactive
-New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/uri.json
+New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/uri.json
 ```
 
 <a id="uricomponenttostring" />
@@ -2295,9 +2297,9 @@ Výstup z předchozího příkladu s výchozími hodnotami je:
 
 | Název | Typ | Hodnota |
 | ---- | ---- | ----- |
-| uriOutput | Řetězec | http://contoso.com/resources/nested/azuredeploy.json |
-| componentOutput | Řetězec | http%3a%2f%2Fcontoso.com%2Fresources%2Fnested%2Fazuredeploy.JSON |
-| toStringOutput | Řetězec | http://contoso.com/resources/nested/azuredeploy.json |
+| uriOutput | String | http://contoso.com/resources/nested/azuredeploy.json |
+| componentOutput | String | http%3A%2F%2Fcontoso.com%2Fresources%2Fnested%2Fazuredeploy.json |
+| toStringOutput | String | http://contoso.com/resources/nested/azuredeploy.json |
 
 Pokud chcete nasadit šablonu tento příklad pomocí Azure CLI, použijte:
 
@@ -2308,7 +2310,7 @@ az group deployment create -g functionexamplegroup --template-uri https://raw.gi
 Pokud chcete nasadit tento příklad šablony pomocí prostředí PowerShell, použijte:
 
 ```azurepowershell-interactive
-New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/uri.json
+New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/uri.json
 ```
 
 ## <a name="next-steps"></a>Další postup

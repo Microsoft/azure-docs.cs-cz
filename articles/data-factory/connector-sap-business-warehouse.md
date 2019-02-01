@@ -20,7 +20,7 @@ ms.lasthandoff: 01/04/2019
 ms.locfileid: "54022276"
 ---
 # <a name="copy-data-from-sap-business-warehouse-using-azure-data-factory"></a>Kopírování dat z řešení SAP Business Warehouse pomocí Azure Data Factory
-> [!div class="op_single_selector" title1="Vyberte verzi služby Data Factory, kterou používáte:"]
+> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
 > * [Verze 1](v1/data-factory-sap-business-warehouse-connector.md)
 > * [Aktuální verze](connector-sap-business-warehouse.md)
 
@@ -181,11 +181,11 @@ Kopírování dat ze SAP BW, se používají následující mapování z datový
 | LRAW | Byte[] |
 | PREC | Int16 |
 | QUAN | Decimal |
-| RAW | Byte[] |
+| NEZPRACOVANÉ | Byte[] |
 | RAWSTRING | Byte[] |
-| STRING | String |
-| UNIT | String |
-| DATS | String |
+| ŘETĚZEC | String |
+| JEDNOTKA | String |
+| DAT | String |
 | NUMC | String |
 | TIMS | String |
 

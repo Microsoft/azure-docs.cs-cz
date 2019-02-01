@@ -1,7 +1,21 @@
 ---
-Název: Definujte vlastní moduly titleSuffix R: Azure Machine Learning Studio Popis: Toto téma popisuje, jak vytvořit a nasadit vlastní modul R ve službě Azure Machine Learning. Vysvětluje, co jsou vlastních modulů R a jaké soubory se používají k jejich definování. Services: machine learningu ms.service: ms.subservice strojového učení: studio ms.topic: článku
-
-Autor: ericlicoding ms.author: amlstudiodocs ms.custom: seodec18 ms.date: 11/29/2017
+title: Definování vlastních modulů R
+titleSuffix: Azure Machine Learning Studio
+description: Toto téma popisuje, jak vytvořit a nasadit vlastní modul R ve službě Azure Machine Learning. Vysvětluje, co jsou vlastních modulů R a jaké soubory se používají k jejich definování.
+services: machine-learning
+ms.service: machine-learning
+ms.subservice: studio
+ms.topic: article
+author: ericlicoding
+ms.author: amlstudiodocs
+ms.custom: seodec18
+ms.date: 11/29/2017
+ms.openlocfilehash: 0da5456845b940ef88ac40ffed1f53e84fe54080
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.translationtype: MT
+ms.contentlocale: cs-CZ
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55488301"
 ---
 # <a name="define-custom-r-modules-for-azure-machine-learning-studio"></a>Definování vlastních modulů R pro Azure Machine Learning Studio
 

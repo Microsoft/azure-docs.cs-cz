@@ -9,12 +9,12 @@ ms.reviewer: omidm
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: 3e58c22048c9b71b00cffb0657fc924277304662
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: acae8076350c26e7a7157fd2063f64220b167771
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 01/31/2019
-ms.locfileid: "55462424"
+ms.locfileid: "55486057"
 ---
 # <a name="use-enterprise-security-package-in-hdinsight"></a>Použít balíček zabezpečení podniku v HDInsight
 
@@ -73,23 +73,23 @@ Pokud federace se právě používá a hodnoty hash hesla jsou synchronizovaná 
 
  3. Zkontrolujte, zda již byl vytvořen "Microsoft Azure Powershell" instanční objekt
 
-```
- $powershellSPN = Get-AzureADServicePrincipal -SearchString "Microsoft Azure Powershell"
-```
+ ```
+  $powershellSPN = Get-AzureADServicePrincipal -SearchString "Microsoft Azure Powershell"
+ ```
 
- 4. Pokud neexistuje (tj. Pokud ($powershellSPN - q $null)) potom vytvořte instanční objekt služby
+ 4. Pokud neexistuje (tj. Pokud ($powershellSPN - eq $null)) potom vytvořte instanční objekt služby
 
-```
- $powershellSPN = New-AzureADServicePrincipal -AppId 1950a258-227b-4e31-a9cf-717495945fc2
-```
+ ```
+  $powershellSPN = New-AzureADServicePrincipal -AppId 1950a258-227b-4e31-a9cf-717495945fc2
+ ```
 
  5. Vytvořte a připojte zásady na tento instanční objekt: 
 
-```
+ ```
  $policy = New-AzureADPolicy -Definition @("{`"HomeRealmDiscoveryPolicy`":{`"AllowCloudPasswordValidation`":true}}") -DisplayName EnableDirectAuth -Type HomeRealmDiscoveryPolicy
 
  Add-AzureADServicePrincipalPolicy -Id $powershellSPN.ObjectId -refObjectID $policy.ID
-```
+ ```
 
 ## <a name="next-steps"></a>Další postup
 

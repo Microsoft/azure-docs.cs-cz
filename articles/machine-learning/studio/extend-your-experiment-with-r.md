@@ -1,8 +1,21 @@
 ---
-Název: Rozšíření experimentů pomocí R titleSuffix: Azure Machine Learning Studio Popis: Jak rozšiřovat funkce Azure Machine Learning Studio pomocí jazyka R s použitím modulu spustit skript jazyka R došlo k chybě.
-Services: machine learningu ms.service: ms.subservice strojového učení: studio ms.topic: článku
-
-Autor: ericlicoding ms.author: amlstudiodocs ms.custom: předchozí Autor = heatherbshapiro předchozí ms.author=hshapiro ms.date: 03/20/2017
+title: Rozšíření experimentu pomocí R
+titleSuffix: Azure Machine Learning Studio
+description: Jak rozšiřovat funkce Azure Machine Learning Studio pomocí jazyka R s použitím modulu spustit skript jazyka R došlo k chybě.
+services: machine-learning
+ms.service: machine-learning
+ms.subservice: studio
+ms.topic: article
+author: ericlicoding
+ms.author: amlstudiodocs
+ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
+ms.date: 03/20/2017
+ms.openlocfilehash: 98f5922cc329aedc8deeffbcb042bddf90405883
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.translationtype: MT
+ms.contentlocale: cs-CZ
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55497143"
 ---
 # <a name="azure-machine-learning-studio-extend-your-experiment-with-r"></a>Azure Machine Learning Studio: Rozšíření experimentu pomocí R 
 Funkce Azure Machine Learning Studio pomocí jazyka R můžete rozšířit pomocí [spustit skript jazyka R] [ execute-r-script] modulu.

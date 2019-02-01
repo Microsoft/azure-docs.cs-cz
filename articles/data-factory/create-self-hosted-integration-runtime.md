@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/15/2019
 ms.author: abnarain
-ms.openlocfilehash: f8827f3013ee83d8f4846e7e15d34ea7c6553f24
-ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
+ms.openlocfilehash: 68878a68b5f0051c1ee9beda96293dd7cd00eaf1
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54331805"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55493582"
 ---
 # <a name="create-and-configure-a-self-hosted-integration-runtime"></a>Vytvoření a konfigurace místní prostředí integration runtime
 Prostředí integration runtime (IR) je výpočetní infrastruktura, která Azure Data Factory používá pro poskytují funkce integrace dat v různých síťových prostředích. Podrobnosti o prostředí IR najdete v tématu [přehled modulu runtime integrace](concepts-integration-runtime.md).
@@ -141,6 +141,9 @@ Tady jsou požadavky na certifikát TLS/SSL, který se používá k zabezpečen�
 - Alternativní název předmětu (SAN) certifikáty nedoporučujeme, protože se použijí jenom poslední položka po síti SAN a všechny ostatní se bude ignorovat kvůli aktuálním omezením. Například pokud máte síť SAN certifikát, jehož sítě SAN jsou **node1.domain.contoso.com** a **node2.domain.contoso.com**, tento certifikát můžete použít pouze v počítači, jehož plně kvalifikovaný název domény je  **NODE2.domain.contoso.com**.
 - Certifikát podporuje všechny klíče velikost podporovaná ve Windows serveru 2012 R2 pro certifikáty SSL.
 - Certifikáty, které používají klíče CNG nejsou podporovány.  
+
+> [!NOTE]
+> Tento certifikát se používá k šifrování portů na uzel v místním prostředí IR použít pro **komunikace mezi uzly** (pro stav synchronizace) a současně přitom **Powershellu pomocí rutiny pro propojenou službu přihlašovacích údajů nastavení**z v rámci místní sítě. Doporučujeme použít tento certifikát, pokud prostředí privátní síť není zabezpečená, nebo pokud chcete k zabezpečení komunikace mezi uzly v rámci vaší privátní sítě. Přesun dat při přenosu z místní prostředí IR do dalších úložišť dat. dojde vždy pomocí šifrovaného kanálu, bez ohledu na tento certifikát nastavené. 
 
 ## <a name="sharing-the-self-hosted-integration-runtime-with-multiple-data-factories"></a>Sdílení místního prostředí integration runtime s více objekty pro vytváření dat
 

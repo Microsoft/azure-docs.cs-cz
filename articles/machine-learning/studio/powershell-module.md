@@ -1,7 +1,21 @@
 ---
-Název: Moduly prostředí PowerShell pro Machine Learning Studio titleSuffix: Azure Machine Learning Studio Popis: Pomocí Powershellu vytvářet a spravovat Azure Machine Learning Studio pracovní prostory, experimenty, webové služby a další. Services: machine learningu ms.service: ms.subservice strojového učení: studio ms.topic: článku
-
-Autor: ericlicoding ms.author: amlstudiodocs ms.custom: předchozí ms.author=haining, předchozí Autor = hning86 ms.date: 01/25/2019
+title: Moduly prostředí PowerShell pro Machine Learning Studio
+titleSuffix: Azure Machine Learning Studio
+description: Pomocí Powershellu vytvářet a spravovat Azure Machine Learning Studio pracovní prostory, experimenty, webové služby a další.
+services: machine-learning
+ms.service: machine-learning
+ms.subservice: studio
+ms.topic: article
+author: ericlicoding
+ms.author: amlstudiodocs
+ms.custom: previous-ms.author=haining, previous-author=hning86
+ms.date: 01/25/2019
+ms.openlocfilehash: b6080e6e81b6cedce4d08cf20e082c87e5cecade
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.translationtype: MT
+ms.contentlocale: cs-CZ
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55489814"
 ---
 # <a name="powershell-modules-for-azure-machine-learning-studio"></a>Moduly Powershellu pro Azure Machine Learning Studio
 

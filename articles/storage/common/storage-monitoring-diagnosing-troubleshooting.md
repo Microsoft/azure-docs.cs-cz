@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 05/11/2017
 ms.author: fhryo-msft
 ms.subservice: common
-ms.openlocfilehash: 6b40741545ff286bc1b8e696d28c61b197605247
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 25ec52b44f8d5a36868cc609c42b6db5ab939fa4
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 01/31/2019
-ms.locfileid: "55473999"
+ms.locfileid: "55490242"
 ---
 # <a name="monitor-diagnose-and-troubleshoot-microsoft-azure-storage"></a>Monitorování, diagnostika a řešení problémů s Microsoft Azure Storage
 [!INCLUDE [storage-selector-portal-monitoring-diagnosing-troubleshooting](../../../includes/storage-selector-portal-monitoring-diagnosing-troubleshooting.md)]
@@ -637,7 +637,7 @@ Kód v klientské aplikaci odstraní a potom hned znovu vytvoří kontejner obje
 Klientská aplikace by měl použít názvy kontejnerů jedinečné pokaždé, když se vytvoří nové kontejnery, pokud je běžný vzor odstranit a znovu vytvořte.
 
 ### <a name="metrics-show-low-percent-success"></a>Metrika ukazuje nízkou PercentSuccess nebo položky log analytics mají operací se stavem transakce ClientOtherErrors
-**PercentSuccess** metrika zaznamená procento operace, které byly úspěšné podle jejich stavového kódu protokolu HTTP. Počet operací s stavové kódy 2XX jako úspěšně dokončený, že operace s stavové kódy oblastí 3XX, 4XX a 5XX se počítají jako neúspěšná a nižší **PercentSucess** hodnota metriky. V souborech protokolů úložiště na straně serveru, se zaznamenávají tyto operace se stavem transakce **ClientOtherErrors**.
+**PercentSuccess** metrika zaznamená procento operace, které byly úspěšné podle jejich stavového kódu protokolu HTTP. Počet operací s stavové kódy 2XX jako úspěšně dokončený, že operace s stavové kódy oblastí 3XX, 4XX a 5XX se počítají jako neúspěšná a nižší **PercentSuccess** hodnota metriky. V souborech protokolů úložiště na straně serveru, se zaznamenávají tyto operace se stavem transakce **ClientOtherErrors**.
 
 Je důležité si uvědomit, že tyto operace byly úspěšně dokončeny a proto nemají vliv na jiné metriky, jako je dostupnost. Mezi operace, která proběhl úspěšně, ale, který může mít za následek neúspěšné stavové kódy HTTP patří:
 

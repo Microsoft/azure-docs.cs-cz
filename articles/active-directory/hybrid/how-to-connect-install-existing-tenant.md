@@ -11,16 +11,16 @@ ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 07/13/2017
 ms.subservice: hybrid
 ms.author: billmath
-ms.openlocfilehash: c672264952622fca47bf602f93ad49595293e206
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: e0e4331b245edcfcbe1529354e605e7505b81268
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55169448"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55494965"
 ---
 # <a name="azure-ad-connect-when-you-have-an-existent-tenant"></a>Azure AD Connect: Pokud máte existující tenanta
 Většina z témat o tom, jak používat Azure AD Connect se předpokládá začínat novou Azure AD tenant a, že neexistují žádní uživatelé, nebo existuje jiné objekty. Pokud jste začali s tenantem Azure AD, ale naplněný uživatelů a dalších objektů a teď se chcete připojit, použijte pak toto téma je pro vás.
