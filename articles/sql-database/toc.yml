@@ -21,7 +21,7 @@ items:
       href: sql-database-managed-instance-get-started.md
   - name: Konfigurace
     items:
-    - name: Pravidla brány firewall serveru SQL Database
+    - name: Pravidla brány firewall databázového serveru
       href: sql-database-get-started-portal-firewall.md
     - name: Připojení klientského virtuálního počítače ke spravované instanci
       href: sql-database-managed-instance-configure-vm.md
@@ -127,12 +127,20 @@ items:
     items:
     - name: Přehled izolované databáze
       href: sql-database-single-index.yml
-    - name: Servery SQL Database
+    - name: Možnosti izolované databáze
+      href: sql-database-single-database.md
+    - name: Referenční informace k rozhraní API pro správu
+      href: sql-database-single-databases-manage.md
+    - name: Rozdíly v jazyce T-SQL
+      href: sql-database-transact-sql-information.md
+    - name: Databázové servery a prostředky
       items:
       - name: Přehled databázových serverů
         href: sql-database-servers.md
       - name: Omezení prostředků databázových serverů
         href: sql-database-resource-limits-database-server.md
+      - name: Architektura připojení
+        href: sql-database-connectivity-architecture.md
     - name: Prostředky izolované databáze
       items:
       - name: Omezení prostředků na základě virtuálních jader
@@ -141,12 +149,6 @@ items:
         href: sql-database-dtu-resource-limits-single-databases.md
       - name: Škálování prostředků
         href: sql-database-single-database-scale.md
-    - name: Vytváření a správa serverů a databází
-      href: sql-database-single-databases-manage.md
-    - name: Architektura připojení
-      href: sql-database-connectivity-architecture.md
-    - name: Rozdíly v jazyce T-SQL
-      href: sql-database-transact-sql-information.md
   - name: Elastické fondy
     items:
     - name: Elastické fondy
@@ -223,7 +225,7 @@ items:
         href: sql-vulnerability-assessment.md
       - name: Detekce hrozeb
         href: sql-database-threat-detection-overview.md
-    - name: Pravidla brány firewall
+    - name: Pravidla brány firewall protokolu IP databázového serveru
       items:
       - name: Vytvoření a správa
         href: sql-database-firewall-configure.md
@@ -241,7 +243,7 @@ items:
       href: sql-database-aad-authentication.md
     - name: Auditování
       items:
-      - name: Auditování – servery, fondy a databáze
+      - name: Auditování – izolované databáze a elastické fondy
         href: sql-database-auditing.md
       - name: Auditování – spravovaná instance
         href: sql-database-managed-instance-auditing.md
@@ -662,6 +664,8 @@ items:
       href: /sql/connect/odbc/microsoft-odbc-driver-for-sql-server
 - name: Zdroje a prostředky
   items:
+  - name: Glosář termínů
+    href: sql-database-glossary-terms.md
   - name: Získávání dovedností pomocí Microsoft Learn
     href: /learn/browse/?products=azure-sql-database
   - name: Plány Azure do budoucna
@@ -700,9 +704,9 @@ items:
       href: sql-database-elastic-jobs-getting-started.md
     - name: Odinstalace elastické úlohy (zastaralé)
       href: sql-database-elastic-jobs-uninstall.md
-ms.openlocfilehash: 0c34894ea3a09a4cd630938a045e0ab78681c10f
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 7530d0926cca2b89e532407d32e394e0b3018a60
+ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 01/31/2019
-ms.locfileid: "55471024"
+ms.locfileid: "55512410"
