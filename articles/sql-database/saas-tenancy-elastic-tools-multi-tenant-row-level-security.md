@@ -11,13 +11,13 @@ author: VanMSFT
 ms.author: vanto
 ms.reviewer: sstein
 manager: craigg
-ms.date: 04/01/2018
-ms.openlocfilehash: 5a9f168a0abc28b1decc6f327a62f5eaa4163e6f
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.date: 12/18/2018
+ms.openlocfilehash: 24375ca3fec50c1a9e194918ac4f824ab6fa81be
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53601521"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55568256"
 ---
 # <a name="multi-tenant-applications-with-elastic-database-tools-and-row-level-security"></a>Aplikace s více tenanty s nástroji elastic database a zabezpečení na úrovní řádků
 
@@ -145,7 +145,7 @@ SqlDatabaseUtils.SqlRetryPolicy.ExecuteAction(() =>
 }); 
 ```
 
-### <a name="adonet-sqlclient"></a>Sqlclienta ADO.NET
+### <a name="adonet-sqlclient"></a>ADO.NET SqlClient
 
 Pro aplikace pomocí Sqlclienta ADO.NET vytvořte funkce obálky kolem metoda ShardMap.OpenConnectionForKey. Obálka automaticky nastaví ID Tenanta v RELACI mít\_kontextu aktuální ID Tenanta před vrácením připojení. K zajištění této relace\_kontextu je vždycky nastavený, byste měli otvírat jenom připojení pomocí této funkce obálky.
 

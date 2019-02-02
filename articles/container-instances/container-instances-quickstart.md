@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.date: 10/02/2018
 ms.author: danlep
 ms.custom: seodec18, mvc
-ms.openlocfilehash: 70d1bc9003d98f0154b9f38738f1b8e82b0c506d
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: 93a41610035d91774256410cea6af1d06b085d30
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53189604"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55562058"
 ---
 # <a name="quickstart-run-a-container-application-in-azure-container-instances-with-the-azure-cli"></a>Rychlý start: Spuštění aplikace typu kontejner ve službě Azure Container Instances pomocí Azure CLI
 
@@ -39,7 +39,9 @@ az group create --name myResourceGroup --location eastus
 
 ## <a name="create-a-container"></a>Vytvoření kontejneru
 
-Teď máte skupinu prostředků a můžete spustit kontejner v Azure. K vytvoření instance kontejneru pomocí Azure CLI zadejte do příkazu [az container create] [ az-container-create] název skupiny prostředků, název instance kontejneru a image kontejneru Dockeru. Kontejnery můžete zveřejnit na Internetu tak, že zadáte jeden nebo více otevíraných portů, popisek názvu DNS nebo oboje. V tomto rychlém startu nasadíte kontejner s popiskem názvu DNS, který je hostitelem malé webové aplikace napsané v Node.js.
+Teď máte skupinu prostředků a můžete spustit kontejner v Azure. K vytvoření instance kontejneru pomocí Azure CLI zadejte do příkazu [az container create] [ az-container-create] název skupiny prostředků, název instance kontejneru a image kontejneru Dockeru. V tomto rychlém startu použijete `microsoft/aci-helloworld` bitovou kopii z veřejného registru Docker Hub. Tento obrázek balíčky malé webové aplikace napsané v Node.js, která slouží jako statická stránka HTML.
+
+Kontejnery můžete zveřejnit na internetu tak, že zadáte jeden nebo více otevíraných portů, popisek názvu DNS nebo oboje. V tomto rychlém startu nasadíte kontejner s použitím popisku názvu DNS tak, aby webová aplikace je veřejně dostupný.
 
 Spuštěním následujícího příkazu spusťte instanci kontejneru. Hodnota `--dns-name-label` musí být jedinečná v rámci oblasti Azure, ve které vytváříte instanci. Pokud se zobrazí chybová zpráva „Popisek názvu DNS není dostupný“, zkuste jiný popisek názvu DNS.
 
@@ -92,7 +94,7 @@ listening on port 80
 
 Kromě zobrazení protokolů můžete k datovým proudům kontejneru připojit i standardní výstupní a chybový datový proud.
 
-Nejprve spuštěním příkazu [az container attach][az-container-attach] připojte svou konzolu k výstupním datovým proudům kontejneru:
+Nejprve je potřeba provést [az container attach] [ az-container-attach] výstupním datovým proudům příkazu připojte svou konzolu ke kontejneru:
 
 ```azurecli-interactive
 az container attach --resource-group myResourceGroup -n mycontainer
@@ -145,7 +147,7 @@ V tomto rychlém startu jste vytvořili instanci kontejneru Azure pomocí image 
 > [!div class="nextstepaction"]
 > [Kurz služby Azure Container Instances](./container-instances-tutorial-prepare-app.md)
 
-Pokud chcete vyzkoušet možnosti spouštění kontejnerů v systému orchestrace v Azure, prostudujte si rychlé starty pro [Service Fabric][service-fabric] nebo [Azure Kubernetes Service (AKS)][container-service].
+Vyzkoušet možnosti spouštění kontejnerů v systému Orchestrace v Azure, najdete v článku [Azure Kubernetes Service (AKS)] [ container-service] šablon rychlý start.
 
 <!-- IMAGES -->
 [aci-app-browser]: ./media/container-instances-quickstart/aci-app-browser.png
@@ -166,4 +168,3 @@ Pokud chcete vyzkoušet možnosti spouštění kontejnerů v systému orchestrac
 [az-group-delete]: /cli/azure/group#az-group-delete
 [azure-cli-install]: /cli/azure/install-azure-cli
 [container-service]: ../aks/kubernetes-walkthrough.md
-[service-fabric]: ../service-fabric/service-fabric-quickstart-containers.md

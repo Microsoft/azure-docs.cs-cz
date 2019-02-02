@@ -12,16 +12,16 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/02/2019
+ms.date: 01/30/2019
 ms.author: mabrigg
 ms.reviewer: ppacent
-ms.lastreviewed: 01/02/2019
-ms.openlocfilehash: 93e6345ba50bab21e03fb7a30148ea51c52a10f2
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.lastreviewed: 01/30/2019
+ms.openlocfilehash: 51ab999880dd3bfd453b0e6c2d20d8d6f9a0e093
+ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55244245"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55660115"
 ---
 # <a name="azure-stack-public-key-infrastructure-certificate-requirements"></a>Požadavky na certifikáty infrastruktury veřejných klíčů Azure Stack
 
@@ -49,7 +49,7 @@ Následující seznam popisuje požadavky na certifikáty, které jsou nutné k 
 - Soubory certifikátů pfx musí mít hodnotu "Ověření serveru (1.3.6.1.5.5.7.3.1)" a "Ověření klienta (1.3.6.1.5.5.7.3.2)" v poli "Použití rozšířeného klíče".
 - Certifikátu "vystaveno pro:" pole nesmí být stejný jako jeho "Vystavitel:" pole.
 - Hesla, aby všechny soubory certifikátů pfx musí být stejná v době nasazování
-- Heslo pro soubor pfx certifikátu musí být složité heslo.
+- Heslo pro soubor pfx certifikátu musí být složité heslo. Vytvořte heslo, které splňuje následující požadavky na složitost hesla. Minimální délku osmi znaků. Heslo obsahuje alespoň tři z následujících možností: velká písmena, malé písmeno, číslice 0-9, speciální znaky, abecední znak, který není velká písmena ani malá písmena. Poznamenejte si toto heslo. Použijete ji jako parametr nasazení.
 - Ujistěte se, že názvy subjektu a alternativní názvy subjektu v rozšíření (x509v3_config) shody alternativní název subjektu. Pole alternativní název subjektu umožňuje určit další hostitele (weby, IP adresy, běžné názvy) která bude chráněná funkcí jedním certifikátem SSL.
 
 > [!NOTE]  

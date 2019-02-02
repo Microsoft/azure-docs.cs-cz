@@ -11,13 +11,13 @@ author: AyoOlubeko
 ms.author: ayolubek
 ms.reviewer: sstein
 manager: craigg
-ms.date: 04/01/2018
-ms.openlocfilehash: a5c829ee77f1ba61bf8b1a19488c51dabe2262a0
-ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
+ms.date: 10/30/2018
+ms.openlocfilehash: 2780215e409886be82ac70642dabe05c9257945e
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50241969"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55568443"
 ---
 # <a name="run-ad-hoc-analytics-queries-across-multiple-azure-sql-databases"></a>Spouštění dotazů ad hoc analýzy napříč několika databázemi Azure SQL
 
@@ -153,7 +153,7 @@ V tomto kurzu jste se naučili:
 
 Teď si vyzkoušejte [kurz analýza Tenanta](saas-multitenantdb-tenant-analytics.md) zkoumání extrahování dat do samostatné analytické databáze pro zpracování složitější analýzy.
 
-## <a name="additional-resources"></a>Další zdroje informací:
+## <a name="additional-resources"></a>Další materiály
 
 <!-- ??
 * Additional [tutorials that build upon the Wingtip Tickets SaaS Multi-tenant Database application](saas-multitenantdb-wingtip-app-overview.md#sql-database-wingtip-saas-tutorials)

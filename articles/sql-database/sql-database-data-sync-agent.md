@@ -11,13 +11,13 @@ author: allenwux
 ms.author: xiwu
 ms.reviewer: douglasl
 manager: craigg
-ms.date: 11/12/2018
-ms.openlocfilehash: b5916b781c636752ada6898cfa0c03bc02891501
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.date: 12/20/2018
+ms.openlocfilehash: 78d85239e1e82c290b210d33d3ca7000d6a05a1f
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53715014"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55567906"
 ---
 # <a name="data-sync-agent-for-azure-sql-data-sync"></a>Agent synchronizace dat pro synchronizaci dat Azure SQL
 
@@ -26,7 +26,7 @@ Synchronizace dat s místní databází SQL serveru z hlediska instalace a konfi
 > [!IMPORTANT]
 > Azure SQL Data synchronizace provádí vložení změn **není** v tuto chvíli podporován Azure SQL Database Managed Instance.
 
-## <a name="download-and-install"></a>Stažení a instalace
+## <a name="download-and-install"></a>Stáhnout a nainstalovat
 
 Chcete-li stáhnout agenta synchronizace dat, přejděte na [agenta synchronizace dat SQL Azure](https://www.microsoft.com/download/details.aspx?id=27693).
 

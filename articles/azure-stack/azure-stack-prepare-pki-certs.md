@@ -11,22 +11,23 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/02/2019
+ms.date: 01/30/2019
 ms.author: mabrigg
 ms.reviewer: ppacent
-ms.lastreviewed: 01/02/2019
-ms.openlocfilehash: 496a6c45c9f8930f77b3a3dab2f81db1b24c1801
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.lastreviewed: 01/30/2019
+ms.openlocfilehash: fab7ead59ce8d7e12d145095c64cedf4234e6233
+ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55247200"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55656715"
 ---
 # <a name="prepare-azure-stack-pki-certificates-for-use-in-deployment-or-rotation"></a>Přidejte certifikáty Azure Stack PKI pro použití v nasazení nebo otočení
+
 Soubory certifikátů [získané z certifikační Autority podle výběru](azure-stack-get-pki-certs.md) musí importovat a exportovat s vlastnostmi odpovídající požadavky na certifikát služby Azure Stack.
 
-
 ## <a name="prepare-certificates-for-deployment"></a>Přidejte certifikáty pro nasazení
+
 Pomocí těchto kroků můžete připravit a ověřit certifikáty infrastruktury veřejných KLÍČŮ Azure Stack, které se použijí k nasazení nového prostředí Azure Stack nebo pro výměnu tajné kódy ve stávajícím prostředí Azure Stack: 
 
 ### <a name="import-the-certificate"></a>Importovat certifikát
@@ -83,7 +84,9 @@ Otevřete konzolu MMC Správce certifikátů a připojení k úložišti certifi
     
     ![Průvodce exportem certifikátu se vybrané možnosti](./media/prepare-pki-certs\azure-stack-save-cert.png)
 
-1. Vyberte **heslo** a zadejte heslo pro certifikáty. Toto heslo si zapamatujte, protože se používá jako parametr nasazení. Vyberte **Další**.
+1. Vyberte **heslo** a zadejte heslo pro certifikáty. Vytvořte heslo, které splňuje následující požadavky na složitost hesla. Minimální délku osmi znaků. Heslo obsahuje alespoň tři z následujících možností: velká písmena, malé písmeno, číslice 0-9, speciální znaky, abecední znak, který není velká písmena ani malá písmena. Poznamenejte si toto heslo. Použijete ji jako parametr nasazení.
+
+1. Vyberte **Další**.
 
 1. Zvolte název souboru a umístění pro export souboru pfx. Vyberte **Další**.
 

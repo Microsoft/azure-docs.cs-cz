@@ -10,17 +10,17 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 11/21/2018
+ms.date: 02/01/2019
 ms.author: jingwang
-ms.openlocfilehash: 35c0d9190a11ad76ef44b43ef5160d2b39bee1fc
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 64f348880bf8872c61a1d1c90930c25ce9551bbf
+ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54016903"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55658025"
 ---
 # <a name="copy-data-from-and-to-oracle-by-using-azure-data-factory"></a>Kopírování dat z a do databáze Oracle pomocí služby Azure Data Factory
-> [!div class="op_single_selector" title1="Vyberte verzi služby Data Factory, kterou používáte:"]
+> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
 > * [Verze 1](v1/data-factory-onprem-oracle-connector.md)
 > * [Aktuální verze](connector-oracle.md)
 
@@ -58,7 +58,7 @@ Následující vlastnosti jsou podporovány pro Oracle propojenou službu.
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
 | type | Vlastnost type musí být nastavená na **Oracle**. | Ano |
-| připojovací řetězec | Určuje informace potřebné pro připojení k instanci databáze Oracle. Označte toto pole jako SecureString bezpečně uložit ve službě Data Factory nebo [odkazovat tajného klíče do služby Azure Key Vault](store-credentials-in-key-vault.md).<br><br>**Podporovaný typ připojení**: Můžete použít **Oracle SID** nebo **název služby Oracle** k identifikaci vaší databáze:<br>– Pokud používáte SID: `Host=<host>;Port=<port>;Sid=<sid>;User Id=<username>;Password=<password>;`<br>– Pokud používáte název služby: `Host=<host>;Port=<port>;ServiceName=<servicename>;User Id=<username>;Password=<password>;` | Ano |
+| připojovací řetězec | Určuje informace potřebné pro připojení k instanci databáze Oracle. <br/>Označte toto pole jako SecureString bezpečně uložit ve službě Data Factory. Heslo můžete také vložit do služby Azure Key Vault a o přijetí změn `password` konfigurace z připojovacího řetězce. Podívejte se na následující ukázky a [Store přihlašovacích údajů ve službě Azure Key Vault](store-credentials-in-key-vault.md) článku s dalšími podrobnostmi. <br><br>**Podporovaný typ připojení**: Můžete použít **Oracle SID** nebo **název služby Oracle** k identifikaci vaší databáze:<br>– Pokud používáte SID: `Host=<host>;Port=<port>;Sid=<sid>;User Id=<username>;Password=<password>;`<br>– Pokud používáte název služby: `Host=<host>;Port=<port>;ServiceName=<servicename>;User Id=<username>;Password=<password>;` | Ano |
 | connectVia | [Prostředí integration runtime](concepts-integration-runtime.md) se použije k připojení k úložišti. Můžete použít modul Integration Runtime nebo prostředí Azure Integration Runtime (Pokud vaše úložiště dat je veřejně dostupná). Pokud není zadán, použije výchozí prostředí Azure Integration Runtime. |Ne |
 
 >[!TIP]
@@ -126,6 +126,34 @@ Následující vlastnosti jsou podporovány pro Oracle propojenou službu.
 }
 ```
 
+**Příklad: ukládání hesel ve službě Azure Key Vault**
+
+```json
+{
+    "name": "OracleLinkedService",
+    "properties": {
+        "type": "Oracle",
+        "typeProperties": {
+            "connectionString": {
+                "type": "SecureString",
+                "value": "Host=<host>;Port=<port>;Sid=<sid>;User Id=<username>;"
+            },
+            "password": { 
+                "type": "AzureKeyVaultSecret", 
+                "store": { 
+                    "referenceName": "<Azure Key Vault linked service name>", 
+                    "type": "LinkedServiceReference" 
+                }, 
+                "secretName": "<secretName>" 
+            }
+        },
+        "connectVia": {
+            "referenceName": "<name of Integration Runtime>",
+            "type": "IntegrationRuntimeReference"
+        }
+    }
+}
+```
 ## <a name="dataset-properties"></a>Vlastnosti datové sady
 
 Úplný seznam oddílů a vlastnosti, které jsou k dispozici pro definování datové sady, najdete v článku [datových sad](concepts-datasets-linked-services.md) článku. Tato část obsahuje seznam vlastností, které podporuje datové sady Oracle.
@@ -251,27 +279,27 @@ Při kopírování dat z a do databáze Oracle, se používají následující m
 
 | Oracle datového typu | Data Factory dočasné datový typ |
 |:--- |:--- |
-| BFILE |Byte] |
-| OBJEKT BLOB |Byte]<br/>(podporováno pouze pro Oracle 10g a vyšší) |
-| CHAR |Řetězec |
-| DATOVÝ TYP CLOB |Řetězec |
+| BFILE |Byte[] |
+| BLOB |Byte[]<br/>(podporováno pouze pro Oracle 10g a vyšší) |
+| CHAR |String |
+| DATOVÝ TYP CLOB |String |
 | DATE (Datum) |DateTime |
 | PLOVOUCÍ DESETINNOU ČÁRKOU |Desetinné číslo, řetězec (Pokud přesnost > 28) |
 | CELÉ ČÍSLO |Desetinné číslo, řetězec (Pokud přesnost > 28) |
-| LONG |Řetězec |
-| DLOUHO NEZPRACOVANÉ |Byte] |
-| NCHAR |Řetězec |
-| NCLOB |Řetězec |
+| LONG |String |
+| DLOUHO NEZPRACOVANÉ |Byte[] |
+| NCHAR |String |
+| NCLOB |String |
 | ČÍSLO |Desetinné číslo, řetězec (Pokud přesnost > 28) |
-| NVARCHAR2 |Řetězec |
-| NEZPRACOVANÉ |Byte] |
-| ID ŘÁDKU |Řetězec |
+| NVARCHAR2 |String |
+| RAW |Byte[] |
+| ID ŘÁDKU |String |
 | ČASOVÉ RAZÍTKO |DateTime |
-| ČASOVÉ RAZÍTKO S MÍSTNÍM ČASOVÉM PÁSMU |Řetězec |
-| ČASOVÉ RAZÍTKO S ČASOVÝM PÁSMEM |Řetězec |
+| ČASOVÉ RAZÍTKO S MÍSTNÍM ČASOVÉM PÁSMU |String |
+| ČASOVÉ RAZÍTKO S ČASOVÝM PÁSMEM |String |
 | CELÉ ČÍSLO BEZ ZNAMÉNKA |Číslo |
-| VARCHAR2 |Řetězec |
-| XML |Řetězec |
+| VARCHAR2 |String |
+| XML |String |
 
 > [!NOTE]
 > Za druhé datové typy na INTERVALU roku a měsíce a dne do INTERVALU nejsou podporovány.

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/25/2018
 ms.author: kumud
-ms.openlocfilehash: 7edd6acc090e4a41939811497a21886d91631fdf
-ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
+ms.openlocfilehash: 26d61c1b263a8fa7ff4f0ff5b2888f1d900e772e
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54229247"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55567838"
 ---
 # <a name="how-traffic-manager-works"></a>Jak funguje Traffic Manager
 
@@ -47,7 +47,7 @@ Získat tuto konfiguraci, proveďte následující kroky:
 ![Konfigurace DNS Traffic Manageru][1]
 
 > [!NOTE]
-> Pokud používáte vlastní doménu s Azure Traffic Managerem, musíte použít záznam CNAME tak, aby odkazoval název vaší vlastní domény na váš název domény Traffic Manageru. Standardy DNS nepovolují můžete vytvořit záznam CNAME v "vrcholu" (neboli kořenového) domény. Proto nelze vytvořit záznam CNAME pro "contoso.com" (někdy nazývané "základní" doména). Můžete vytvořit pouze záznam CNAME pro doménu v části "contoso.com", jako je "www.contoso.com". Chcete-li toto omezení obejít, doporučujeme používat jednoduché přesměrování protokolu HTTP k přímé požadavky pro "contoso.com" na alternativní název, například "www.contoso.com".
+> Pokud používáte vlastní doménu s Azure Traffic Managerem, musíte použít záznam CNAME tak, aby odkazoval název vaší vlastní domény na váš název domény Traffic Manageru. Standardy DNS nepovolují můžete vytvořit záznam CNAME v "vrcholu" (neboli kořenového) domény. Proto nelze vytvořit záznam CNAME pro "contoso.com" (někdy nazývané "základní" doména). Můžete vytvořit pouze záznam CNAME pro doménu v části "contoso.com", jako je "www.contoso.com". Toto omezení obejít, doporučujeme, abyste svoji doménu DNS hostovat na [Azure DNS](../dns/dns-overview.md) a pomocí [záznamů aliasů](../dns/tutorial-alias-tm.md) tak, aby odkazoval na svůj profil traffic Manageru. Případně můžete použít jednoduchý přesměrování protokolu HTTP k přímé požadavky pro "contoso.com" na alternativní název, například "www.contoso.com".
 
 ### <a name="how-clients-connect-using-traffic-manager"></a>Připojení klientů pomocí Traffic Manageru
 

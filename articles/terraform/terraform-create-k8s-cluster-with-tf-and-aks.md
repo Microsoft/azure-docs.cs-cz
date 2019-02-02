@@ -9,12 +9,12 @@ manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
 ms.date: 12/04/2018
-ms.openlocfilehash: 3ccba82e626882a99deaca2f12be3d2f96869b81
-ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
+ms.openlocfilehash: f8047960c1e52d77534742d85448ef566f851811
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54078945"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55567430"
 ---
 # <a name="create-a-kubernetes-cluster-with-azure-kubernetes-service-and-terraform"></a>Vytvoření clusteru Kubernetes pomocí služby Azure Kubernetes Service a Terraformu
 [Azure Kubernetes Service (AKS)](/azure/aks/) spravuje hostované prostředí Kubernetes a umožňuje rychle a snadno nasazovat a spravovat kontejnerizované aplikace bez znalosti orchestrace kontejnerů. Zároveň eliminuje režii spojenou s probíhajícími operacemi a údržbou díky zřizování, upgradování a škálování prostředků na vyžádání bez nutnosti odpojovat aplikace.
@@ -362,7 +362,7 @@ V této části zjistíte, jak použít příkaz `terraform init` k vytvoření 
 
     ![Příklad výsledků příkazu „terraform apply“](./media/terraform-create-k8s-cluster-with-tf-and-aks/terraform-apply-complete.png)
 
-1. Na webu Azure Portal vyberte z levé nabídky **Všechny služby**, abyste si zobrazili vytvořené prostředky nového clusteru Kubernetes.
+1. Na webu Azure Portal, vyberte **všechny služby** v levé nabídce zobrazíte prostředky vytvořené pro nový cluster Kubernetes.
 
     ![Příkazový řádek Cloud Shellu](./media/terraform-create-k8s-cluster-with-tf-and-aks/k8s-resources-created.png)
 

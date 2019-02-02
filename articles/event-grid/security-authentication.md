@@ -8,12 +8,12 @@ ms.service: event-grid
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: babanisa
-ms.openlocfilehash: 23e1de98fff891d199d1f33fcb714b2b284e8edb
-ms.sourcegitcommit: ba9f95cf821c5af8e24425fd8ce6985b998c2982
+ms.openlocfilehash: 1761dafd04a4b8d27a16af4a5e1b0034b90c51a0
+ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54382922"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55656868"
 ---
 # <a name="event-grid-security-and-authentication"></a>Event Grid zabezpečení a ověřování 
 
@@ -29,7 +29,7 @@ Webhooky jsou jedním z mnoha způsoby příjem událostí ze služby Azure Even
 
 Stejně jako mnoho dalších služeb, které podporují webhooky služby Event Grid vyžaduje, abyste prokázali vlastnictví váš koncový bod Webhooku před spuštěním doručování událostí do tohoto koncového bodu. Tento požadavek uživatel se zlými úmysly zabraňuje zahlcení váš koncový bod s událostmi. Když použijete některou z níže uvedených tří služby Azure, infrastruktura Azure automaticky zpracovává toto ověření:
 
-* Azure Logic Apps s [konektor Event Grid](https://docs.microsoft.com/en-us/connectors/azureeventgrid/)
+* Azure Logic Apps s [konektor Event Grid](https://docs.microsoft.com/connectors/azureeventgrid/)
 * Azure Automation prostřednictvím [webhooku](../event-grid/ensure-tags-exists-on-new-virtual-machines.md)
 * Azure Functions s [Trigger služby Event Grid](../azure-functions/functions-bindings-event-grid.md)
 

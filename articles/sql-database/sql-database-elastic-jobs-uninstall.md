@@ -11,13 +11,13 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 manager: craigg
-ms.date: 06/14/2018
-ms.openlocfilehash: f717c0c656c5a80b14ef09a10cda18bd12500eeb
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.date: 12/04/2018
+ms.openlocfilehash: 16ef5beb066ccf62702cfb3f632dd459d603dd3b
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52869020"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55560613"
 ---
 # <a name="uninstall-elastic-database-jobs-components"></a>Odinstalovat součásti úlohy elastické databáze
 
@@ -35,7 +35,7 @@ ms.locfileid: "52869020"
 5. Odstraníte skupinu prostředků.
 
 ## <a name="uninstall--elastic-database-jobs-components-using-powershell"></a>Odinstalovat součásti úlohy elastické databáze pomocí Powershellu
-1. Spusťte příkazové okno Microsoft Azure Powershellu a přejděte na nástroje podadresář ve složce Microsoft.Azure.SqlDatabase.Jobs.x.x.xxxx.x: typ **nástroje průběžného nasazování**.
+1. Spusťte příkazové okno Microsoft Azure Powershellu a přejděte na nástroje podadresář ve složce Microsoft.Azure.SqlDatabase.Jobs.x.x.xxxx.x: Typ **nástroje průběžného nasazování**.
    
      PS C:\*Microsoft.Azure.SqlDatabase.Jobs.x.x.xxxx.x* > Nástroje průběžného nasazování
 2. Spusťte.\UninstallElasticDatabaseJobs.ps1 skript prostředí PowerShell.

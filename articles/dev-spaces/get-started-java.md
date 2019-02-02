@@ -1,5 +1,5 @@
 ---
-title: Vytvoření vývojového prostoru Kubernetes v cloudu pomocí Javy a VS Code | Microsoft Docs
+title: Vytvoření prostoru vývoje Kubernetes v cloudu pomocí Javy a VS Code | Dokumentace Microsoftu
 titleSuffix: Azure Dev Spaces
 services: azure-dev-spaces
 ms.service: azure-dev-spaces
@@ -11,14 +11,14 @@ ms.topic: tutorial
 description: Rychlý vývoj na platformě Kubernetes s využitím kontejnerů a mikroslužeb v Azure
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, kontejnery
 manager: mmontwil
-ms.openlocfilehash: 9dc219078377d8b8da5d1700fb2a93133649d924
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: d1840a451fc9354b32950283b335455d67ccbf43
+ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55475769"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55657242"
 ---
-# <a name="get-started-on-azure-dev-spaces-with-java"></a>Začínáme s Javou v Azure Dev Spaces
+# <a name="get-started-on-azure-dev-spaces-with-java"></a>Začínáme s Azure Dev prostory s Javou
 
 V tomto průvodci se naučíte:
 
@@ -226,4 +226,4 @@ Aktualizujte webovou aplikaci v prohlížeči. V uživatelském rozhraní by se 
 ## <a name="next-steps"></a>Další postup
 
 > [!div class="nextstepaction"]
-> [Informace o týmovém vývoji](team-development-java.md)
+> [Informace o vývoji pro víc služeb](multi-service-java.md)

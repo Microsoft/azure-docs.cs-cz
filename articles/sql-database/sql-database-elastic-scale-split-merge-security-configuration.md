@@ -11,33 +11,38 @@ author: VanMSFT
 ms.author: vanto
 ms.reviewer: sstein
 manager: craigg
-ms.date: 12/04/2018
-ms.openlocfilehash: de758d38626107f28211f79a4772c3e887085776
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.date: 12/18/2018
+ms.openlocfilehash: a3ba80ce7b5abcb2f112880c4fef5ed3f067f691
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53599822"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55563214"
 ---
 # <a name="split-merge-security-configuration"></a>Konfigurace zabezpečení dělení a slučování
+
 Použití služby dělení a slučování, musíte správně nakonfigurovat zabezpečení. Tato služba je součástí funkce elastické škálování služby Microsoft Azure SQL Database. Další informace najdete v tématu [elastické škálování rozdělení a sloučení kurz Service](sql-database-elastic-scale-configure-deploy-split-and-merge.md).
 
 ## <a name="configuring-certificates"></a>Konfigurace certifikátů
+
 Certifikáty jsou nakonfigurovat dvěma způsoby. 
 
 1. [Konfigurace certifikátu SSL](#to-configure-the-ssl-certificate)
 2. [Ke konfiguraci klientských certifikátů](#to-configure-client-certificates) 
 
 ## <a name="to-obtain-certificates"></a>Chcete-li získat certifikáty
+
 Certifikáty můžete získat z veřejné certifikační autority (CA) nebo [služby certifikátů Windows](https://msdn.microsoft.com/library/windows/desktop/aa376539.aspx). Toto jsou upřednostňované metody k získání certifikátů.
 
 Pokud tyto možnosti nejsou k dispozici, můžete vygenerovat **certifikáty podepsané svým držitelem**.
 
 ## <a name="tools-to-generate-certificates"></a>Nástroje pro generování certifikátů
+
 * [makecert.exe](https://msdn.microsoft.com/library/bfsktky3.aspx)
 * [pvk2pfx.exe](https://msdn.microsoft.com/library/windows/hardware/ff550672.aspx)
 
 ### <a name="to-run-the-tools"></a>Chcete-li spustit nástroje
+
 * Z příkazový řádek vývojáře pro Visual Studia, najdete v článku [příkazový řádek sady Visual Studio](https://msdn.microsoft.com/library/ms229859.aspx) 
   
     Pokud je nainstalovaná, přejděte na:
@@ -46,9 +51,11 @@ Pokud tyto možnosti nejsou k dispozici, můžete vygenerovat **certifikáty pod
 * Získat ze sady WDK [Windows 8.1: Stažení sad a nástrojů](https://msdn.microsoft.com/windows/hardware/gg454513#drivers)
 
 ## <a name="to-configure-the-ssl-certificate"></a>Konfigurace certifikátu SSL
+
 Certifikát SSL se vyžaduje k zašifrování komunikace a ověřování serveru. Zvolte nejvíce hodí následující tři scénáře a spusťte všechny jeho kroky:
 
 ### <a name="create-a-new-self-signed-certificate"></a>Vytvořit nový certifikát podepsaný svým držitelem
+
 1. [Vytvořit certifikát podepsaný svým držitelem](#create-a-self-signed-certificate)
 2. [Vytvoření souboru PFX pro certifikát SSL podepsaný svým držitelem](#create-pfx-file-for-self-signed-ssl-certificate)
 3. [Nahrát certifikát SSL pro Cloudovou službu](#upload-ssl-certificate-to-cloud-service)
@@ -398,16 +405,16 @@ Postupujte následovně:
 ## <a name="export-certificate"></a>Export certifikátu
 V **Průvodce exportem certifikátu**:
 
-1. Klikněte na tlačítko **Další**.
+1. Klikněte na **Další**.
 2. Vyberte **Ano**, pak **exportovat soukromý klíč**.
-3. Klikněte na tlačítko **Další**.
+3. Klikněte na **Další**.
 4. Vyberte požadovaný výstupní formát souboru.
 5. Zkontrolujte požadované možnosti.
 6. Zkontrolujte **heslo**.
 7. Zadejte silné heslo a potvrďte ho.
-8. Klikněte na tlačítko **Další**.
+8. Klikněte na **Další**.
 9. Zadejte nebo vyhledejte název souboru, kam se má certifikát uložit (použijte. Příponu PFX).
-10. Klikněte na tlačítko **Další**.
+10. Klikněte na **Další**.
 11. Klikněte na **Dokončit**.
 12. Klikněte na **OK**.
 
@@ -418,7 +425,7 @@ V Průvodci importem certifikátu:
    
    * Vyberte **aktuálního uživatele** Pokud pouze procesů spuštěných v rámci aktuální uživatel bude mít přístup k službě
    * Vyberte **místního počítače** Pokud jiné procesy v tomto počítači bude mít přístup k službě
-2. Klikněte na tlačítko **Další**.
+2. Klikněte na **Další**.
 3. Pokud import ze souboru, zkontrolujte cestu k souboru.
 4. Pokud importujete. Soubor PFX:
    1. Zadejte heslo ochranou privátního klíče

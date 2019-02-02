@@ -1,10 +1,10 @@
 ---
-title: Vytvoření účtu Azure Media Services pomocí webu Azure Portal | Microsoft Docs
+title: Vytvoření účtu Azure Media Services pomocí webu Azure Portal | Dokumentace Microsoftu
 description: Tento kurz vás provede kroky pro vytvoření účtu služby Azure Media Services pomocí webu Azure Portal.
 services: media-services
 documentationcenter: ''
 author: Juliako
-manager: cfowler
+manager: femila
 editor: ''
 ms.assetid: c551e158-aad6-47b4-931e-b46260b3ee4c
 ms.service: media-services
@@ -12,42 +12,34 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 07/01/2018
+ms.date: 01/31/2019
 ms.author: juliako
-ms.openlocfilehash: da190bf2418f1cfb8ea952b69d3bf1d76258da5f
-ms.sourcegitcommit: 4597964eba08b7e0584d2b275cc33a370c25e027
-ms.translationtype: HT
+ms.openlocfilehash: 32e81b4c5c551f5fe7fd8ccda3e1b9a4e7d3b26f
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2018
-ms.locfileid: "37342323"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55565934"
 ---
 # <a name="create-an-azure-media-services-account-using-the-azure-portal"></a>Vytvoření účtu Azure Media Services pomocí webu Azure Portal
-> [!div class="op_single_selector"]
-> * [Azure Portal](media-services-portal-create-account.md)
-> * [REST](https://docs.microsoft.com/rest/api/media/mediaservice)
-> 
-> [!NOTE]
-> K dokončení tohoto kurzu potřebujete mít účet Azure. Podrobnosti najdete v tématu [Bezplatná zkušební verze Azure](https://azure.microsoft.com/pricing/free-trial/). 
-> 
-> 
 
-Azure Portal nabízí rychlou možnost vytvoření účtu Azure Media Services (AMS). Účet můžete použít pro přístup ke službě Media Services, která vám umožní ukládat, šifrovat, kódovat, spravovat a streamovat mediální obsah v Azure. V okamžiku vytvoření účtu Media Services si současně vytvoříte i přidružený účet úložiště (nebo použijete existující) ve stejné zeměpisné oblasti jako účet Media Services. 
+Azure Portal nabízí rychlou možnost vytvoření účtu Azure Media Services (AMS). Účet můžete použít pro přístup ke službě Media Services, která vám umožní ukládat, šifrovat, kódovat, spravovat a streamovat mediální obsah v Azure. Během vytváření účtu Azure Media Services můžete také vytvořit přidružený účet úložiště (nebo použijte již existující). Pokud odstraníte účet Media Services, objekty blob v souvisejícím účtu úložiště odstraněny nebudou.
 
 Primárním účtem úložiště může být verze 1 pro obecné účely nebo verze 2 pro obecné účely. V současné době Azure Portal umožňuje zvolit jenom verzi 1, ale při vytváření účtu pomocí rozhraní API nebo PowerShellu je možné přidat verzi 2. Další informace o typech úložiště najdete v článku [Informace o účtech Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-create-storage-account).
 
-Tento článek popisuje některé obvyklé koncepty a ukazuje jak vytvořit účet Media Services pomocí webu Azure Portal.
+Účet Media Services a všechny přidružené úložiště účty musí být ve stejném předplatném Azure. Doporučujeme použít účty úložiště ve stejném umístění jako účet Media Services.
+
+Tento článek ukazuje, jak vytvořit účet Media Services pomocí webu Azure portal.
 
 > [!NOTE]
 > Informace o dostupnosti funkcí služby Azure Media Services v různých oblastech najdete v tématu popisujícím [dostupnost funkcí AMS v datových centrech](scenarios-and-availability.md#availability).
 
-## <a name="concepts"></a>Koncepty
-Přístup ke službě Media Services vyžaduje dva přidružené účty:
+## <a name="prerequisites"></a>Požadavky
 
-* Účet Media Services. Váš účet umožňuje přístup k sadě cloudových prostředků Media Services, které jsou dostupné v Azure. Účet Media Services neukládá samotný mediální obsah. Místo toho na vašem účtu ukládají metadata o mediálním obsahu a úlohách zpracování médií v účtu. Při vytváření účtu vybíráte dostupnou oblast služby Media Services. Oblast, kterou vyberete, je datové centrum, které ukládá záznamy metadat vašeho účtu.
-  
-* Účet úložiště Azure. Účty úložiště pro mediální soubory musí být umístěné ve stejné zeměpisné oblasti jako účet Media Services. Při vytváření účtu Media Services můžete zvolit buď stávající účet úložiště ve stejné oblasti, nebo můžete vytvořit nový účet úložiště ve stejné oblasti. Pokud odstraníte účet Media Services, objekty blob v souvisejícím účtu úložiště odstraněny nebudou.
+K dokončení tohoto kurzu potřebujete mít účet Azure. Podrobnosti najdete v článku [Bezplatná zkušební verze Azure](https://azure.microsoft.com/pricing/free-trial/). 
 
 ## <a name="create-an-ams-account"></a>Vytvoření účtu AMS
+
 Postup v této části ukazuje, jak vytvořit účet AMS.
 
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
@@ -75,10 +67,10 @@ Postup v této části ukazuje, jak vytvořit účet AMS.
    
 ## <a name="to-manage-your-ams-account"></a>Správa účtu AMS
 
-Pokud chcete spravovat svůj účet AMS (například připojit se prostřednictvím kódu programu k rozhraní API pro AMS, nahrát videa, kódovat prostředky, konfigurovat ochranu obsahu nebo monitorovat průběh úloh), vyberte **Nastavení** na levé straně portálu. V **Nastavení** přejděte do některého z dostupných oken (například: **Přístup k rozhraní API**, **Prostředky**, **Úlohy** nebo **Ochrana obsahu**).
+Pokud chcete spravovat svůj účet AMS (například připojit se prostřednictvím kódu programu k rozhraní API pro AMS, nahrát videa, kódovat prostředky, konfigurovat ochranu obsahu nebo monitorovat průběh úloh), vyberte **Nastavení** na levé straně portálu. Z **nastavení**, přejděte do jednoho z dostupných oken (například: **Přístup přes rozhraní API**, **prostředky**, **úlohy**, **Content protection**).
 
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Soubory teď můžete nahrát do účtu AMS. Další informace najdete v tématu [Nahrání souborů](media-services-portal-upload-files.md).
 

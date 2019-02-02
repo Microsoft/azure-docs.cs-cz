@@ -1,6 +1,6 @@
 ---
 title: Blokování starší verze ověřování do Azure Active Directory (Azure AD) s podmíněným přístupem | Dokumentace Microsoftu
-description: Zjistěte, jak nakonfigurovat zásady podmíněného přístupu v Azure Active Directory (Azure AD) pro pokusy o přístup z nedůvěryhodných sítích.
+description: Zjistěte, jak zlepšit tak stav zabezpečení zákonné zodpovědnosti organizací blokováním starší verze ověřování pomocí podmíněného přístupu Azure AD.
 services: active-directory
 keywords: conditional access to apps, conditional access with Azure AD, secure access to company resources, conditional access policies
 documentationcenter: ''
@@ -14,19 +14,20 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 01/24/2019
+ms.date: 02/01/2019
 ms.author: markvi
 ms.reviewer: calebb
-ms.openlocfilehash: 164ff12eeec057855476d3808d3d1d44ef3179fe
-ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
+ms.openlocfilehash: 5ff4861c288b82d6ce90d85c38ef3f92eb299ea4
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/26/2019
-ms.locfileid: "55076839"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55562976"
 ---
 # <a name="how-to-block-legacy-authentication-to-azure-ad-with-conditional-access"></a>Postup: Blok starší verze ověřování do služby Azure AD s podmíněným přístupem   
 
 Azure Active Directory (Azure AD) a poskytovat uživatelům snadný přístup k vašim cloudovým aplikacím, podporuje množství různých ověřovacích protokolů včetně starší verze ověřování. Ale nepodporují starších verzí protokolů ověřování službou Multi-Factor Authentication (MFA). MFA je v mnoha prostředích běžné požadavky na krádež identity adres. 
+
 
 Pokud je vaše prostředí připravené na blok starší verze ověřování ke zlepšení ochrany vašeho tenanta, můžete dosažení tohoto cíle s podmíněným přístupem. Tento článek vysvětluje, jak nakonfigurovat zásady podmíněného přístupu, že blok starší verze ověřování pro vašeho tenanta.
 
@@ -119,8 +120,7 @@ Může trvat až 24 hodin pro zásady tak, aby projeví.
 
 Můžete vybrat všechny dostupné udělení ovládacích prvků pro ostatní klienty podmínka. ale činnost koncového uživatele je vždy stejný - blokovaný přístup.
 
-Můžete nakonfigurovat další podmínky u jiných klientů podmínek.
-Například pokud chcete blokovat starší verze ověřování pro mobilní zařízení, nastavit **platformy zařízení** podmínku tak, že vyberete:
+Pokud zablokujete starší verze ověřování s použitím jiných klientů podmínek, můžete také nastavit podmínku zařízení platformy a umístění. Například pokud chcete blokovat starší verze ověřování pro mobilní zařízení, nastavit **platformy zařízení** podmínku tak, že vyberete:
 
 - Android
 

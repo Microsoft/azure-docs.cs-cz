@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 12/14/2017
 ms.author: cynthn
-ms.openlocfilehash: ec520e7d06f6c5a560af56e6616eeed8481520fe
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 75853d0fa35d1cb5fe593ad92a88d054d2ed77f6
+ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55180360"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55662276"
 ---
 # <a name="create-a-complete-linux-virtual-machine-with-the-azure-cli"></a>Vytvoření kompletní Linuxový virtuální počítač pomocí Azure CLI
 Rychle vytvořit virtuální počítač (VM) v Azure, můžete jediným příkazem Azure CLI, který používá výchozí hodnoty pro vytvoření jakékoli požadované podpůrné prostředky. Prostředky, jako jsou virtuální síť, veřejnou IP adresu a pravidla skupiny zabezpečení sítě se vytvoří automaticky. Pro další kontrolu nad vaším prostředím v produkčním prostředí používat, můžete vytvořit tyto prostředky předem domluvili a pak do nich přidejte virtuální počítače. Tento článek vás provede postupy vytvoření virtuálního počítače a všechny podpůrné prostředky jeden po druhém.
@@ -51,7 +51,7 @@ Ve výchozím nastavení je výstup příkazů Azure CLI ve formátu JSON (JavaS
 ```
 
 ## <a name="create-a-virtual-network-and-subnet"></a>Vytvoření virtuální sítě a podsítě
-Další, které vytvoříte v Azure a podsíť ve virtuální sítě do kterého můžete vytvořit virtuální počítače. Použití [az network vnet vytvořit](/cli/azure/network/vnet#az_network_vnet_create) vytvořit virtuální síť s názvem *myVnet* s *192.168.0.0/16* předponu adresy. Můžete také přidat podsíť s názvem *mySubnet* s předponou adresy *192.168.1.0/24*:
+Další, které vytvoříte v Azure a podsíť ve virtuální sítě do kterého můžete vytvořit virtuální počítače. Použití [az network vnet vytvořit](/cli/azure/network/vnet) vytvořit virtuální síť s názvem *myVnet* s *192.168.0.0/16* předponu adresy. Můžete také přidat podsíť s názvem *mySubnet* s předponou adresy *192.168.1.0/24*:
 
 ```azurecli
 az network vnet create \

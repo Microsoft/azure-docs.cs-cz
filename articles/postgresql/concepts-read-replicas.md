@@ -5,13 +5,13 @@ author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 01/23/2019
-ms.openlocfilehash: 017abd72b3aa1547844f977c3efda69e59901a6f
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.date: 02/01/2019
+ms.openlocfilehash: 270231b2ad7d94789595cfa4e681cf6c2b0f0541
+ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55487944"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55657871"
 ---
 # <a name="read-replicas-in-azure-database-for-postgresql"></a>Repliky pro čtení ve službě Azure Database for PostgreSQL
 
@@ -21,6 +21,8 @@ ms.locfileid: "55487944"
 Funkce repliky pro čtení umožňuje replikaci dat ze serveru Azure Database for PostgreSQL server (správce) až k pěti jen pro čtení serverům (replik pro čtení) v rámci stejné oblasti Azure. Repliky pro čtení se aktualizují asynchronně pomocí technologie nativní replikace stroje PostgreSQL.
 
 Repliky jsou nové servery, které je možné spravovat podobným způsobem jako normální samostatné databáze Azure pro servery PostgreSQL. Za každou repliku pro čtení se vám účtuje zřízený výpočetní výkon ve virtuálních jádrech a zřízené úložiště v GB za měsíc.
+
+Přejděte [postupy stránku a zjistěte, jak vytvářet a spravovat repliky](howto-read-replicas-portal.md).
 
 ## <a name="when-to-use-read-replicas"></a>Kdy použít repliky pro čtení
 Funkce repliky pro čtení je cílená na pomáhá zlepšit výkon a škálování úlohy náročné na čtení. Další úlohy, může být izolovaných replik, při zápisu úlohy mohou být přesměrováni na hlavní server.
@@ -56,7 +58,7 @@ psql -h myreplica.postgres.database.azure.com -U myadmin@myreplica -d postgres
 a při zobrazení výzvy zadejte heslo pro uživatelský účet.
 
 ## <a name="monitoring-replication"></a>Sledování replikace
-Je **maximální prodleva mezi repliky** metriky, které jsou k dispozici ve službě Azure Monitor. Tato metrika je k dispozici na hlavní server. Metrika ukazuje prodleva mezi hlavní a většina obložení repliky. 
+Je **maximální prodleva mezi repliky** metriky, které jsou k dispozici ve službě Azure Monitor. Tato metrika je k dispozici na hlavní server. Metrika ukazuje je zpoždění v bajtech mezi hlavní a nejvíce obložení repliky. 
 
 Poskytujeme také **repliky prodleva** metriky ve službě Azure Monitor. Tato metrika je k dispozici pro pouze repliky. 
 

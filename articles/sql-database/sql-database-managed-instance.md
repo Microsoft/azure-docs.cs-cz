@@ -9,15 +9,15 @@ ms.devlang: ''
 ms.topic: conceptual
 author: bonova
 ms.author: bonova
-ms.reviewer: carlrab
+ms.reviewer: carlrab, vanto
 manager: craigg
-ms.date: 01/25/2019
-ms.openlocfilehash: ac9a7c081515b35348d10a2968b10647af29ef61
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.date: 02/01/2019
+ms.openlocfilehash: 2582f7eff052968c4a08eefd0027f9785451a564
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55465703"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55562806"
 ---
 # <a name="use-sql-database-managed-instance-with-virtual-networks-and-near-100-compatibility"></a>U služeb virtual networks a téměř 100 % kompatibilitou pomocí SQL Database Managed Instance
 
@@ -75,7 +75,7 @@ Klíčové funkce Managed Instance jsou uvedeny v následující tabulce:
 V modelu virt. jader můžete mezi generacemi hardwaru.
 
 - **Gen 4** logické procesory jsou založeny na Intel E5-2673 v3 (Haswell) 2,4 GHz procesory, SSD připojené, fyzických jader, 7 GB paměti RAM na jádro a velikostí výpočetních mezi 8 až 24 virtuálních jader.
-- **5. generace** logické procesory jsou založeny na Intel E5-2673 v4 (Broadwell) 2.3 GHz procesorech rychlé eNVM SSD, technologie hyper-threaded logické jádro a výpočet velikosti mezi 80 a 8 jader.
+- **5. generace** logické procesory jsou založeny na Intel E5-2673 v4 (Broadwell) 2.3 GHz procesorech rychlé NVMe SSD, technologie hyper-threaded logické jádro a výpočet velikosti mezi 80 a 8 jader.
 
 Další informace o rozdílech mezi generacemi hardwaru v [omezení prostředků Managed Instance](sql-database-managed-instance-resource-limits.md#hardware-generation-characteristics).
 

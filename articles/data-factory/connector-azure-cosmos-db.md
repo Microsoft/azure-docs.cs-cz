@@ -10,14 +10,14 @@ ms.service: multiple
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 12/20/2018
+ms.date: 02/01/2019
 ms.author: jingwang
-ms.openlocfilehash: 6dd7707c489bbbad7a97a0ec0a76e7c631bd1465
-ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
+ms.openlocfilehash: b969743c13e541c491b56066061464f40a6d2d9e
+ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54359251"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55657106"
 ---
 # <a name="copy-data-to-or-from-azure-cosmos-db-sql-api-by-using-azure-data-factory"></a>Kopírování dat do nebo ze služby Azure Cosmos DB (rozhraní SQL API) pomocí služby Azure Data Factory
 
@@ -28,7 +28,7 @@ ms.locfileid: "54359251"
 Tento článek popisuje, jak pomocí aktivity kopírování ve službě Azure Data Factory pro kopírování dat z a do služby Azure Cosmos DB (rozhraní SQL API). Tento článek vychází [aktivita kopírování ve službě Azure Data Factory](copy-activity-overview.md), který nabízí obecný přehled o aktivitě kopírování.
 
 >[!NOTE]
->Tento konektor podporuje pouze kopírování dat do a z rozhraní SQL API služby Cosmos DB. MongoDB, najdete v tématu [konektor pro rozhraní API služby Azure Cosmos DB pro MongoDB](connector-azure-cosmos-db-mongodb-api.md). Jiné typy rozhraní API nejsou nyní podporovány.
+>Tento konektor podporuje pouze kopírování dat do a z rozhraní SQL API služby Cosmos DB. Rozhraní MongoDB API najdete v tématu [konektor pro rozhraní API služby Azure Cosmos DB pro MongoDB](connector-azure-cosmos-db-mongodb-api.md). Jiné typy rozhraní API nejsou nyní podporovány.
 
 ## <a name="supported-capabilities"></a>Podporované funkce
 
@@ -58,7 +58,7 @@ Pro službu propojenou službu Azure Cosmos DB (rozhraní SQL API) jsou podporov
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
 | type | **Typ** musí být vlastnost nastavena na **CosmosDb**. | Ano |
-| připojovací řetězec |Zadejte informace potřebné k připojení k databázi Azure Cosmos DB.<br /><br />**Poznámka:** Je nutné zadat informace o databázi v připojovacím řetězci, jak je znázorněno v následující příklady. Označte toto pole jako **SecureString** typ bezpečně uložit ve službě Data Factory. Můžete také [odkazovat tajného klíče do služby Azure Key Vault](store-credentials-in-key-vault.md). |Ano |
+| připojovací řetězec |Zadejte informace potřebné k připojení k databázi Azure Cosmos DB.<br />**Poznámka:** Je nutné zadat informace o databázi v připojovacím řetězci, jak je znázorněno v následující příklady. <br/>Označte toto pole jako SecureString bezpečně uložit ve službě Data Factory. Klíč účtu můžete také vložit do služby Azure Key Vault a o přijetí změn `accountKey` konfigurace z připojovacího řetězce. Podívejte se na následující ukázky a [Store přihlašovacích údajů ve službě Azure Key Vault](store-credentials-in-key-vault.md) článku s dalšími podrobnostmi. |Ano |
 | connectVia | [Prostředí Integration Runtime](concepts-integration-runtime.md) používat pro připojení k úložišti. (Pokud je vaše úložiště dat se nachází v privátní síti), můžete použít modul Runtime integrace v Azure nebo místního prostředí integration runtime. Pokud není tato vlastnost určena, použije se výchozí prostředí Azure Integration Runtime. |Ne |
 
 **Příklad**
@@ -72,6 +72,35 @@ Pro službu propojenou službu Azure Cosmos DB (rozhraní SQL API) jsou podporov
             "connectionString": {
                 "type": "SecureString",
                 "value": "AccountEndpoint=<EndpointUrl>;AccountKey=<AccessKey>;Database=<Database>"
+            }
+        },
+        "connectVia": {
+            "referenceName": "<name of Integration Runtime>",
+            "type": "IntegrationRuntimeReference"
+        }
+    }
+}
+```
+
+**Příklad: klíč účtu úložiště ve službě Azure Key Vault**
+
+```json
+{
+    "name": "CosmosDbSQLAPILinkedService",
+    "properties": {
+        "type": "CosmosDb",
+        "typeProperties": {
+            "connectionString": {
+                "type": "SecureString",
+                "value": "AccountEndpoint=<EndpointUrl>;Database=<Database>"
+            },
+            "accountKey": { 
+                "type": "AzureKeyVaultSecret", 
+                "store": { 
+                    "referenceName": "<Azure Key Vault linked service name>", 
+                    "type": "LinkedServiceReference" 
+                }, 
+                "secretName": "<secretName>" 
             }
         },
         "connectVia": {

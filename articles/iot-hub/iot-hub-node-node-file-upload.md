@@ -9,12 +9,12 @@ ms.devlang: nodejs
 ms.topic: conceptual
 ms.date: 06/28/2017
 ms.author: dobett
-ms.openlocfilehash: 12ff4fef5e04819e967a39fe65845b89790e22d6
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: b3afbeb5a3fa2cda6ec5eaabe368163a370352d1
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51234441"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55568188"
 ---
 # <a name="upload-files-from-your-device-to-the-cloud-with-iot-hub"></a>Nahrání souborů ze zařízení do cloudu pomocí služby IoT Hub
 
@@ -69,7 +69,7 @@ V této části vytvoříte aplikaci pro nahrání souboru do služby IoT hub za
 
 1. Na začátek souboru **SimulatedDevice.js** přidejte následující příkazy ```require```:
 
-    ```nodejs
+    ```javascript
     'use strict';
     
     var fs = require('fs');
@@ -79,7 +79,7 @@ V této části vytvoříte aplikaci pro nahrání souboru do služby IoT hub za
 
 1. Přidejte proměnnou ```deviceconnectionstring``` a použijte ji k vytvoření instance **klienta**.  Nahraďte ```{deviceconnectionstring}``` s názvem zařízení, kterou jste vytvořili v _vytvoření služby IoT Hub_ části:
 
-    ```nodejs
+    ```javascript
     var connectionString = '{deviceconnectionstring}';
     var filename = 'myimage.png';
     ```
@@ -89,14 +89,14 @@ V této části vytvoříte aplikaci pro nahrání souboru do služby IoT hub za
 
 1. Přidejte následující kód k připojení klienta:
 
-    ```nodejs
+    ```javascript
     var client = clientFromConnectionString(connectionString);
     console.log('Client connected');
     ```
 
 1. Vytvořte zpětné volání a použijte **uploadToBlob** funkce pro nahrání souboru.
 
-    ```nodejs
+    ```javascript
     fs.stat(filename, function (err, stats) {
         const rr = fs.createReadStream(filename);
     
@@ -136,7 +136,7 @@ Můžete použít **iothubowner** připojovací řetězec ze služby IoT Hub k d
 
 1. Přidejte následující ```require``` příkazy na začátku **FileUploadNotification.js** souboru:
 
-    ```nodejs
+    ```javascript
     'use strict';
     
     var Client = require('azure-iothub').Client;
@@ -144,7 +144,7 @@ Můžete použít **iothubowner** připojovací řetězec ze služby IoT Hub k d
 
 1. Přidejte proměnnou ```iothubconnectionstring``` a použijte ji k vytvoření instance **klienta**.  Nahraďte ```{iothubconnectionstring}``` připojovacím řetězcem ke službě IoT hub, kterou jste vytvořili v _vytvoření služby IoT Hub_ části:
 
-    ```nodejs
+    ```javascript
     var connectionString = '{iothubconnectionstring}';
     ```
 
@@ -153,13 +153,13 @@ Můžete použít **iothubowner** připojovací řetězec ze služby IoT Hub k d
 
 1. Přidejte následující kód k připojení klienta:
 
-    ```nodejs
+    ```javascript
     var serviceClient = Client.fromConnectionString(connectionString);
     ```
 
 1. Otevřít klienta a použít **getFileNotificationReceiver** funkci pro příjem aktualizace stavu.
 
-    ```nodejs
+    ```javascript
     serviceClient.open(function (err) {
       if (err) {
         console.error('Could not connect: ' + err.message);

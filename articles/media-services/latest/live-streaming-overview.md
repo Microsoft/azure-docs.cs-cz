@@ -11,14 +11,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: ne
 ms.topic: article
-ms.date: 01/27/2019
+ms.date: 02/01/2019
 ms.author: juliako
-ms.openlocfilehash: a3e4821d9deb7ceee815d804f58d0b1ba14925b4
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.openlocfilehash: e90dd052f6a4af83d2dd794dd405a4700da75bde
+ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55103560"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55656330"
 ---
 # <a name="live-streaming-with-azure-media-services-v3"></a>Živé streamování pomocí služby Azure Media Services v3
 
@@ -47,8 +47,8 @@ Informace o tom živého streamování pracovního postupu v Media Services v3, 
 
 Tady jsou kroky pro pracovní postup živého streamování:
 
-1. Přejděte do účtu Media Services a ujistěte se, že **koncový bod streamování** běží. 
-2. Vytvoření **živá událost**. <br/>Při vytváření události, můžete je zadat na automatické spuštění. Alternativně můžete spustit událost, když budete chtít spustit streamování.<br/> Když automatické spuštění je nastavena na hodnotu true, živá událost se spustí správné po jeho vytvoření. To znamená, fakturace spustí, jakmile živá událost se spustí. Musíte explicitně volat Stop prostředku živá událost, která zastaví další fakturace. Další informace najdete v tématu [živá událost stavy a fakturace](live-event-states-billing.md).
+1. Ve vašem účtu Media Services, ujistěte se, **koncový bod streamování** běží. 
+2. Vytvoření [živá událost](live-events-outputs-concept.md). <br/>Při vytváření události, můžete je zadat na automatické spuštění. Alternativně můžete spustit událost, když budete chtít spustit streamování.<br/> Když automatické spuštění je nastavena na hodnotu true, živá událost se spustí správné po jeho vytvoření. Účtování začne Jakmile živá událost se spustí. Musíte explicitně volat Stop prostředku živá událost, která zastaví další fakturace. Další informace najdete v tématu [živá událost stavy a fakturace](live-event-states-billing.md).
 3. Získání adresy URL ingestování a konfiguraci vaší místní kodér použití adresy URL k odeslání příspěvku informačního kanálu.<br/>Zobrazit [doporučuje kodéry](recommended-on-premises-live-encoders.md).
 4. Získat adresu URL ve verzi preview a použít ho k ověření, že je ve skutečnosti přijímají vstup z kodéru.
 5. Vytvořte nový **Asset** objektu.

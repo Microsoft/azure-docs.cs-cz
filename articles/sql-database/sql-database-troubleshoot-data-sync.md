@@ -11,13 +11,13 @@ author: allenwux
 ms.author: xiwu
 ms.reviewer: douglasl
 manager: craigg
-ms.date: 07/16/2018
-ms.openlocfilehash: 87f3b9de2ff86016f11a0996cbe448651ee6844f
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.date: 12/20/2018
+ms.openlocfilehash: d9e1eee9ab45e9f3a74f296e555c8f91802f36ab
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53723888"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55563180"
 ---
 # <a name="troubleshoot-issues-with-sql-data-sync"></a>Řešení potíží se synchronizací dat SQL
 
@@ -60,16 +60,16 @@ Ve skupině synchronizace právě zablokované ve stavu zpracování může způ
 
 - **Příčina**. Klientský agent je v režimu offline
 
-- **Rozlišení**. Ujistěte se, že agenta klienta je online a pak to zkuste znovu.
+- **Rozlišení**. Ujistěte se, že je klientský agent online, a zkuste to znovu.
 
 - **Příčina**. Klientský agent je odinstalovaný nebo chybí.
 
-- **Rozlišení**. Pokud agenta klienta je odinstalovaný nebo jinak chybí:
+- **Rozlišení**. Pokud je klientský agent odinstalovaný nebo chybí z jiného důvodu:
 
-    1. Pokud soubor existuje, odstraňte soubor XML agenta z instalační složky sady synchronizace dat SQL.
-    1. Nainstalujte agenta na místním počítači (může být stejný nebo jiný počítač). Pak odešlete klíč agenta, který se generuje na portálu pro agenta, který se zobrazuje v režimu offline.
+    1. Odeberte z instalační složky Synchronizace dat SQL soubor XML agenta, pokud existuje.
+    1. Nainstalujte agenta na místní počítač (může se jednat o stejný nebo jiný počítač). Pak odešlete klíč agenta, který se vygeneruje na portálu, pro agenta, který se zobrazuje ve stavu offline.
 
-- **Příčina**. Služba synchronizace dat SQL je zastavená.
+- **Příčina**. Služba Synchronizace dat SQL je zastavená.
 
 - **Rozlišení**. Restartujte službu synchronizace dat SQL.
 
@@ -148,15 +148,15 @@ Synchronizace dat nezpracuje. cyklické odkazy. Ujistěte se, že jim vyhnout.
 
 Pokus o odstranění skupiny synchronizace se nezdaří. Některé z následujících scénářů může mít za následek selhání se odstranit skupinu synchronizace:
 
-- **Příčina**. Klientský agent je v režimu offline.
+- **Příčina**. Klientský agent je offline.
 
 - **Rozlišení**. Ujistěte se, že je agent klienta online a pak to zkuste znovu.
 
 - **Příčina**. Klientský agent je odinstalovaný nebo chybí.
 
-- **Rozlišení**. Pokud agenta klienta je odinstalovaný nebo jinak chybí:  
-    a. Pokud soubor existuje, odstraňte soubor XML agenta z instalační složky sady synchronizace dat SQL.  
-    b. Nainstalujte agenta na místním počítači (může být stejný nebo jiný počítač). Pak odešlete klíč agenta, který se generuje na portálu pro agenta, který se zobrazuje v režimu offline.
+- **Rozlišení**. Pokud je klientský agent odinstalovaný nebo chybí z jiného důvodu:  
+    a. Odeberte z instalační složky Synchronizace dat SQL soubor XML agenta, pokud existuje.  
+    b. Nainstalujte agenta na místní počítač (může se jednat o stejný nebo jiný počítač). Pak odešlete klíč agenta, který se vygeneruje na portálu, pro agenta, který se zobrazuje ve stavu offline.
 
 - **Příčina**. Databáze je offline.
 
@@ -231,8 +231,8 @@ V rámci tří minut odinstalace nebo zastavení přidružené klientského agen
   1. Odstranit skupinu synchronizace agenti přidružené synchronizace jsou online (doporučeno).
   1. Pokud agent je v režimu offline, ale je nainstalovaná, přepněte na místní počítač je online. Počkejte, stav agenta jako **Online** na portálu pro synchronizaci dat SQL. Potom odeberte skupinu synchronizace.
   1. Pokud je agent offline, protože byla odinstalována:  
-    a.  Pokud soubor existuje, odstraňte soubor XML agenta z instalační složky sady synchronizace dat SQL.  
-    b.  Nainstalujte agenta na místním počítači (může být stejný nebo jiný počítač). Pak odešlete klíč agenta, který se generuje na portálu pro agenta, který se zobrazuje v režimu offline.  
+    a.  Odeberte z instalační složky Synchronizace dat SQL soubor XML agenta, pokud existuje.  
+    b.  Nainstalujte agenta na místní počítač (může se jednat o stejný nebo jiný počítač). Pak odešlete klíč agenta, který se vygeneruje na portálu, pro agenta, který se zobrazuje ve stavu offline.  
     c. Pokuste se odstranit skupinu synchronizace.
 
 ### <a name="setup-restore"></a> Co se stane, když obnovit ztracené nebo poškozené databáze?

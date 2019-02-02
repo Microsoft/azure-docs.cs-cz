@@ -7,12 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 10/29/2018
 ms.author: rezas
-ms.openlocfilehash: d3b039c30557499233eec72d7c560ad4bf49a776
-ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
+ms.openlocfilehash: 65de1279c47f5992dd82e9f4634b3de52925769c
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54157203"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55568375"
 ---
 # <a name="iot-hub-query-language-for-device-and-module-twins-jobs-and-message-routing"></a>Dotazovací jazyk služby IoT Hub pro dvojčata zařízení a modul, úlohy a směrování zpráv
 
@@ -207,7 +207,7 @@ Funkce dotazu je zveřejněna rozhraním [pro službu Azure IoT SDK pro Node.js]
 
 Tady je příklad jednoduchého dotazu:
 
-```nodejs
+```javascript
 var query = registry.createQuery('SELECT * FROM devices', 100);
 var onResults = function(err, results) {
     if (err) {
@@ -440,7 +440,7 @@ Informace o tom co zastupuje každý symbol v syntaxi výrazů, najdete v násle
 | Název_funkce| Všechny funkce uvedené v [funkce](#functions) oddílu. |
 | decimal_literal |Plovoucí desetinné čárky v desítkovém zápisu. |
 | hexadecimal_literal |Číslo vyjadřuje řetězcem "0 x", za nímž následuje řetězec šestnáctkových číslic. |
-| řetězcový_literál |Řetězcové literály jsou reprezentovány posloupnost nula nebo více znaků Unicode nebo řídicí sekvence řetězců v kódu Unicode. Řetězcové literály jsou uzavřeny v jednoduchých uvozovkách nebo dvojité uvozovky. Povolené řídicí sekvence: `\'`, `\"`, `\\`, `\uXXXX` znaků Unicode, které jsou definovány 4 šestnáctkovými číslicemi. |
+| string_literal |Řetězcové literály jsou reprezentovány posloupnost nula nebo více znaků Unicode nebo řídicí sekvence řetězců v kódu Unicode. Řetězcové literály jsou uzavřeny v jednoduchých uvozovkách nebo dvojité uvozovky. Povolené řídicí sekvence: `\'`, `\"`, `\\`, `\uXXXX` znaků Unicode, které jsou definovány 4 šestnáctkovými číslicemi. |
 
 ### <a name="operators"></a>Operátory
 Jsou podporovány následující operátory:
@@ -468,7 +468,7 @@ V podmínkách trasy jsou podporovány následující matematické funkce:
 | Square(x) | Vrátí druhou mocninu zadané číselnou hodnotu. |
 | CEILING(x) | Vrátí nejmenší hodnotu celé číslo větší než nebo rovna zadané číselný výraz. |
 | Floor(x) | Vrátí největší celé číslo menší nebo rovna zadané číselný výraz. |
-| Sign(x) | Vrátí kladné (+ 1), nula (0) nebo záporné znaménko (-1), z určeného číselného výrazu.|
+| SIGN(x) | Vrátí kladné (+ 1), nula (0) nebo záporné znaménko (-1), z určeného číselného výrazu.|
 | SQRT(x) | Vrátí druhou odmocninu zadanou číselnou hodnotu. |
 
 V podmínkách trasy jsou podporovány následující kontroly typu a funkce přetypování:
@@ -476,7 +476,7 @@ V podmínkách trasy jsou podporovány následující kontroly typu a funkce př
 | Funkce | Popis |
 | -------- | ----------- |
 | AS_NUMBER | Převede vstupní řetězec na číslo. `noop` Pokud je vstup na číslo. `Undefined` Pokud řetězec nepředstavuje číslo.|
-| IS_ARRAY – | Vrátí logickou hodnotu označující, zda je typ z určeného výrazu pole. |
+| IS_ARRAY | Vrátí logickou hodnotu označující, zda je typ z určeného výrazu pole. |
 | IS_BOOL | Vrátí logickou hodnotu označující, pokud typ z určeného výrazu je logická hodnota. |
 | IS_DEFINED | Vrátí logickou hodnotu označující, pokud vlastnost byla přiřazena hodnota. |
 | IS_NULL | Vrátí logickou hodnotu označující, zda je typ z určeného výrazu hodnotu null. |
@@ -489,7 +489,7 @@ V podmínkách trasy jsou podporovány následující funkce řetězec:
 
 | Funkce | Popis |
 | -------- | ----------- |
-| CONCAT (x, y,...) | Vrátí řetězec, který je výsledkem zřetězení dvou nebo více řetězcových hodnot. |
+| CONCAT(x, y, …) | Vrátí řetězec, který je výsledkem zřetězení dvou nebo více řetězcových hodnot. |
 | LENGTH(x) | Vrátí počet znaků ze zadaného řetězcového výrazu.|
 | LOWER(x) | Vrátí řetězcový výraz po převedení dat velkým písmenem na malá písmena. |
 | UPPER(x) | Vrátí řetězcový výraz po převedení data znaků na malá písmena na velká písmena. |

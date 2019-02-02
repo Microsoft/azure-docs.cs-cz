@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/27/2018
 ms.author: kumud
-ms.openlocfilehash: 114b01f3c1636f57813adcd199b90a4c72d0013e
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 746d0f51a876f24afc731486412eca0277b76d22
+ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53106001"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55659792"
 ---
 # <a name="create-an-internal-load-balancer-to-load-balance-vms-using-azure-cli"></a>Vytvoření interního nástroje pro vyrovnávání zatížení virtuálních počítačů pomocí Azure CLI
 
@@ -30,7 +30,7 @@ Pokud se rozhodnete nainstalovat a používat rozhraní příkazového řádku m
 
 ## <a name="create-a-resource-group"></a>Vytvoření skupiny prostředků
 
-Vytvořte skupinu prostředků pomocí příkazu [az group create](https://docs.microsoft.com/cli/azure/group#create). Skupina prostředků Azure je logický kontejner, ve kterém se nasazují a spravují prostředky Azure.
+Vytvořte skupinu prostředků pomocí příkazu [az group create](https://docs.microsoft.com/cli/azure/group). Skupina prostředků Azure je logický kontejner, ve kterém se nasazují a spravují prostředky Azure.
 
 Následující příklad vytvoří skupinu prostředků *myResourceGroupILB* v umístění *eastus*:
 
@@ -41,7 +41,7 @@ Následující příklad vytvoří skupinu prostředků *myResourceGroupILB* v u
 ```
 ## <a name="create-a-virtual-network"></a>Vytvoření virtuální sítě
 
-Pomocí příkazu [az network vnet create](https://docs.microsoft.com/cli/azure/network/vnet#create) vytvořte virtuální síť *myVnet* s podsítí *mySubnet* ve skupině prostředků *myResourceGroup*.
+Pomocí příkazu [az network vnet create](https://docs.microsoft.com/cli/azure/network/vnet) vytvořte virtuální síť *myVnet* s podsítí *mySubnet* ve skupině prostředků *myResourceGroup*.
 
 ```azurecli-interactive
   az network vnet create \
@@ -60,7 +60,7 @@ Tato část podrobně popisuje vytvoření a konfiguraci následujících kompon
 
 ### <a name="create-the-load-balancer"></a>Vytvoření nástroje pro vyrovnávání zatížení
 
-Pomocí příkazu [az network lb create](https://docs.microsoft.com/cli/azure/network/lb?view=azure-cli-latest#create) vytvořte veřejný Load Balancer úrovně Basic **myLoadBalancer**, který obsahuje konfiguraci front-endových IP adres **myFrontEnd** a back-endový fond **myBackEndPool** přidružený k privátní IP adrese **10.0.0.7.
+Pomocí příkazu [az network lb create](https://docs.microsoft.com/cli/azure/network/lb?view=azure-cli-latest) vytvořte veřejný Load Balancer úrovně Basic **myLoadBalancer**, který obsahuje konfiguraci front-endových IP adres **myFrontEnd** a back-endový fond **myBackEndPool** přidružený k privátní IP adrese **10.0.0.7.
 
 ```azurecli-interactive
   az network lb create \
@@ -74,7 +74,7 @@ Pomocí příkazu [az network lb create](https://docs.microsoft.com/cli/azure/ne
   ```
 ### <a name="create-the-health-probe"></a>Vytvoření sondy stavu
 
-Sonda stavu kontroluje všechny instance virtuálních počítačů a ověřuje, že můžou přijímat síťový provoz. Instance virtuálního počítače, u níž se kontroly testu nezdaří, se odebere z nástroje pro vyrovnávání zatížení do té doby, než znovu přejde do režimu online a kontrola testu určí, že je v pořádku. Pomocí příkazu [az network lb probe create](https://docs.microsoft.com/cli/azure/network/lb/probe?view=azure-cli-latest#create) vytvořte sondu stavu pro monitorování stavu virtuálních počítačů. 
+Sonda stavu kontroluje všechny instance virtuálních počítačů a ověřuje, že můžou přijímat síťový provoz. Instance virtuálního počítače, u níž se kontroly testu nezdaří, se odebere z nástroje pro vyrovnávání zatížení do té doby, než znovu přejde do režimu online a kontrola testu určí, že je v pořádku. Pomocí příkazu [az network lb probe create](https://docs.microsoft.com/cli/azure/network/lb/probe?view=azure-cli-latest) vytvořte sondu stavu pro monitorování stavu virtuálních počítačů. 
 
 ```azurecli-interactive
   az network lb probe create \
@@ -87,7 +87,7 @@ Sonda stavu kontroluje všechny instance virtuálních počítačů a ověřuje,
 
 ### <a name="create-the-load-balancer-rule"></a>Vytvoření pravidla nástroje pro vyrovnávání zatížení
 
-Pravidlo nástroje pro vyrovnávání zatížení definuje konfiguraci front-endových IP adres pro příchozí provoz, back-endový fond IP adres pro příjem provozu a také požadovaný zdrojový a cílový port. Pomocí příkazu [az network lb rule create](https://docs.microsoft.com/cli/azure/network/lb/rule?view=azure-cli-latest#create) vytvořte pravidlo nástroje pro vyrovnávání zatížení *myHTTPRule* pro naslouchání na portu 80 ve front-endovém fondu *myFrontEnd* a odesílání síťového provozu s vyrovnáváním zatížení do back-endového fondu adres *myBackEndPool*, a to taky na portu 80. 
+Pravidlo nástroje pro vyrovnávání zatížení definuje konfiguraci front-endových IP adres pro příchozí provoz, back-endový fond IP adres pro příjem provozu a také požadovaný zdrojový a cílový port. Pomocí příkazu [az network lb rule create](https://docs.microsoft.com/cli/azure/network/lb/rule?view=azure-cli-latest) vytvořte pravidlo nástroje pro vyrovnávání zatížení *myHTTPRule* pro naslouchání na portu 80 ve front-endovém fondu *myFrontEnd* a odesílání síťového provozu s vyrovnáváním zatížení do back-endového fondu adres *myBackEndPool*, a to taky na portu 80. 
 
 ```azurecli-interactive
   az network lb rule create \

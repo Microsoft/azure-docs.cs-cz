@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 11/13/2018
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: e3e60a7ee435cb23bd6a7f78d409691c94d6c49e
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: f8309424b8e1eed97d66fbd168444418cc1f98fd
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55153262"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55562432"
 ---
 # <a name="enable-age-gating-in-azure-active-directory-b2c"></a>Povolit věku v Azure Active Directory B2C
 
@@ -103,7 +103,7 @@ Po nastavený věku použití vašeho tenanta se pak můžete použít tuto funk
 1. Vytvořte tok uživatele, který má povolené věku.
 2. Když vytvoříte tok uživatele, vyberte **vlastnosti** v nabídce.
 3. V **věku** vyberte **povoleno**.
-4. Potom rozhodnout, jak chcete spravovat uživatele, které identifikují jako nezletilé osoby. Pro **registrace nebo přihlašování**, vyberete `Allow minors to access your application` nebo `Block minors from accessing your application`. Pokud je vybrána zablokování nezletilé osoby, můžete vybrat `Send a JSON bcak to the application` nebo `Show an error message`. 
+4. Potom rozhodnout, jak chcete spravovat uživatele, které identifikují jako nezletilé osoby. Pro **registrace nebo přihlašování**, vyberete `Allow minors to access your application` nebo `Block minors from accessing your application`. Pokud je vybrána zablokování nezletilé osoby, můžete vybrat `Send a JSON back to the application` nebo `Show an error message`. 
 
 
 

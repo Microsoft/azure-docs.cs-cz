@@ -1,27 +1,25 @@
 ---
-title: Získejte nové poznatky z videí - Bingu pro vyhledávání videí
+title: Získejte nové poznatky z videí pomocí Video API Bingu pro vyhledávání
 titlesuffix: Azure Cognitive Services
-description: Ukazuje, jak můžete získat další informace o videu Video API Bingu pro vyhledávání.
+description: Další informace o použití rozhraní API Bingu pro vyhledávání Video Pokud chcete získat další informace o videích, jako je například související videa.
 services: cognitive-services
 author: swhite-msft
 manager: cgronlun
 ms.service: cognitive-services
 ms.subservice: bing-video-search
 ms.topic: conceptual
-ms.date: 04/15/2017
+ms.date: 01/31/2019
 ms.author: scottwhi
-ms.openlocfilehash: 9c36208a35d66fcd6df6ac2ccd4a28c55ed92937
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 5abc5ee96c503bed9509e3d35b442ea5e0330ac7
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55170773"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55568205"
 ---
 # <a name="get-insights-about-a-video"></a>Získejte přehled o videa
 
-Každé video obsahuje ID videa, která vám umožní získat další informace o videa, například související videa.  
-  
-Pokud chcete získat přehled o videa, zachycení jeho [videoId](https://docs.microsoft.com/rest/api/cognitiveservices/bing-video-api-v7-reference#video-videoid) tokenu v odpovědi. 
+Každé video vrácený Video API Bingu pro vyhledávání zahrnuje ID videa, která vám umožní získat další informace o tom, například související videa. Pokud chcete získat přehled o videa, získat její [videoId](https://docs.microsoft.com/rest/api/cognitiveservices/bing-video-api-v7-reference#video-videoid) tokenu v odpovědi rozhraní API. 
 
 ```json
     "value" : [
@@ -36,9 +34,9 @@ Pokud chcete získat přehled o videa, zachycení jeho [videoId](https://docs.mi
     ],
 ```
 
-V dalším kroku odesílejte následující požadavek GET na koncový bod podrobnosti videa. Nastavte [id](https://docs.microsoft.com/rest/api/cognitiveservices/bing-video-api-v7-reference#id) parametr k dotazu `videoId` token. K určení přehledy, které chcete načíst, nastavit [moduly](https://docs.microsoft.com/rest/api/cognitiveservices/bing-video-api-v7-reference#modulesrequested) parametr dotazu. Chcete-li získat všechny přehledy, nastavte `modules` ke všem. Odpověď obsahuje všechny přehledy, které jste požádali, pokud je k dispozici.
+Později odesílejte požadavek GET na koncový bod podrobnosti videa se ID. Nastavte [id](https://docs.microsoft.com/rest/api/cognitiveservices/bing-video-api-v7-reference#id) parametr k dotazu `videoId` token. K určení přehledy, které chcete načíst, nastavit [moduly](https://docs.microsoft.com/rest/api/cognitiveservices/bing-video-api-v7-reference#modulesrequested) parametr dotazu. Chcete-li získat všechny přehledy, nastavte `modules` ke všem. Odpověď obsahuje všechny přehledy, které jste požádali, pokud je k dispozici.
 
-```
+```cURL
 GET https://api.cognitive.microsoft.com/bing/v7.0/videos/details?q=sailiing+dinghies&id=6DB795E11A6E3CBAAD636DB795E11A6E3CBAAD63&modules=All&mkt=en-us HTTP/1.1  
 Ocp-Apim-Subscription-Key: 123456789ABCDE  
 User-Agent: Mozilla/5.0 (compatible; MSIE 10.0; Windows Phone 8.0; Trident/6.0; IEMobile/10.0; ARM; Touch; NOKIA; Lumia 822)  
@@ -50,9 +48,9 @@ Host: api.cognitive.microsoft.com
 
 ## <a name="getting-related-videos-insights"></a>Získávají se přehledy související videa  
 
-Chcete-li získat videa, která se vztahují k zadané video, nastavte [moduly](https://docs.microsoft.com/rest/api/cognitiveservices/bing-video-api-v7-reference#modulesrequested) parametr k RelatedVideos dotazu.
+Chcete-li získat videa, která se vztahují k zadané video, nastavte [moduly](https://docs.microsoft.com/rest/api/cognitiveservices/bing-video-api-v7-reference#modulesrequested) parametr do dotazu `RelatedVideos`.
   
-```  
+```cURL  
 GET https://api.cognitive.microsoft.com/bing/v7.0/videos/details?q=sailiing+dinghies&id=6DB795E11A6E3CBAAD636DB795E11A6E3CBAAD63&modules=RelatedVideos&mkt=en-us HTTP/1.1  
 Ocp-Apim-Subscription-Key: 123456789ABCDE  
 User-Agent: Mozilla/5.0 (compatible; MSIE 10.0; Windows Phone 8.0; Trident/6.0; IEMobile/10.0; ARM; Touch; NOKIA; Lumia 822)  
@@ -61,10 +59,10 @@ X-Search-Location: lat:47.60357;long:-122.3295;re:100
 X-MSEdge-ClientID: <blobFromPriorResponseGoesHere>  
 Host: api.cognitive.microsoft.com  
 ```  
+
+Odpověď na tuto žádost bude mít na nejvyšší úrovni [VideoDetails](https://docs.microsoft.com/rest/api/cognitiveservices/bing-video-api-v7-reference#videodetails) místo objektu [videa](https://docs.microsoft.com/rest/api/cognitiveservices/bing-video-api-v7-reference#videos) objektu.  
   
-Tady je odpověď na předchozí požadavek. Je objekt nejvyšší úrovně [VideoDetails](https://docs.microsoft.com/rest/api/cognitiveservices/bing-video-api-v7-reference#videodetails) místo objektu [videa](https://docs.microsoft.com/rest/api/cognitiveservices/bing-video-api-v7-reference#videos) objektu.  
-  
-```  
+```json
 {
     "_type" : "Api.VideoDetails.VideoDetails",
     "relatedVideos" : {
@@ -95,3 +93,9 @@ Tady je odpověď na předchozí požadavek. Je objekt nejvyšší úrovně [Vid
     }
 }
 ```
+
+## <a name="next-steps"></a>Další postup
+
+> [!div class="nextstepaction"]
+> [Hledat populárních videí](trending-videos.md)
+

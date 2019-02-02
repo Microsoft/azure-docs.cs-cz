@@ -11,13 +11,13 @@ author: MightyPen
 ms.author: genemi
 ms.reviewer: jrasnik
 manager: craigg
-ms.date: 04/01/2018
-ms.openlocfilehash: fdf426d9f4c8744570d0b9c6cc30bea63b06dd6c
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.date: 12/19/2018
+ms.openlocfilehash: 035d2731a78ad6216f56255fb87e32444366ea97
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53600676"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55563487"
 ---
 # <a name="event-file-target-code-for-extended-events-in-sql-database"></a>Cílový kód souboru události pro rozšířené události ve službě SQL Database
 
@@ -30,7 +30,7 @@ V systému Microsoft SQL Server [cíle souboru událostí](https://msdn.microsof
 Toto téma představuje ukázku kódu dvoufázového:
 
 * Prostředí PowerShell k vytvoření kontejneru služby Azure Storage v cloudu.
-* Příkaz Transact-SQL:
+* Transact-SQL:
   
   * Kontejner Azure Storage přiřadit cíl soubor událostí.
   * K vytvoření a spuštění relace událostí a tak dále.
@@ -530,7 +530,7 @@ Další informace o účtech a kontejnerů ve službě Azure Storage najdete v t
 * [Použití Blob storage pomocí technologie .NET](../storage/blobs/storage-dotnet-how-to-use-blobs.md)
 * [Názvy kontejnerů, objektů blob a metadat a odkazování na ně](https://msdn.microsoft.com/library/azure/dd135715.aspx)
 * [Práce s Kořenový kontejner](https://msdn.microsoft.com/library/azure/ee395424.aspx)
-* [Lekce 1: Vytvoření uložené zásady přístupu a sdílený přístupový podpis v kontejneru Azure](https://msdn.microsoft.com/library/dn466430.aspx)
+* [Lesson 1: Vytvoření uložené zásady přístupu a sdílený přístupový podpis v kontejneru Azure](https://msdn.microsoft.com/library/dn466430.aspx)
   * [Lekce 2: Vytvoření přihlašovacích údajů systému SQL Server pomocí sdíleného přístupového podpisu](https://msdn.microsoft.com/library/dn466435.aspx)
 * [Rozšířené události pro Microsoft SQL Server](https://docs.microsoft.com/sql/relational-databases/extended-events/extended-events)
 

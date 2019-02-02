@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 04/28/2018
+ms.date: 02/01/2019
 ms.author: jingwang
-ms.openlocfilehash: cbf8a70dae566dcc22b5c5caa84d0781dc2467f9
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: d56b7506230b3a1351c973d2ecbe73008dbcf9c6
+ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54022168"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55658500"
 ---
 # <a name="copy-data-from-azure-database-for-mysql-using-azure-data-factory"></a>Kopírování dat ze služby Azure Database for MySQL pomocí Azure Data Factory
 
@@ -42,7 +42,7 @@ Pro službu Azure Database pro MySQL propojené služby jsou podporovány násle
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
 | type | Vlastnost type musí být nastavená na: **AzureMySql** | Ano |
-| připojovací řetězec | Zadejte informace potřebné pro připojení k Azure Database for MySQL – instance. Označte toto pole jako SecureString bezpečně uložit ve službě Data Factory nebo [odkazovat tajného klíče do služby Azure Key Vault](store-credentials-in-key-vault.md). | Ano |
+| připojovací řetězec | Zadejte informace potřebné pro připojení k Azure Database for MySQL – instance. <br/>Označte toto pole jako SecureString bezpečně uložit ve službě Data Factory. Heslo můžete také vložit do služby Azure Key Vault a o přijetí změn `password` konfigurace z připojovacího řetězce. Podívejte se na následující ukázky a [Store přihlašovacích údajů ve službě Azure Key Vault](store-credentials-in-key-vault.md) článku s dalšími podrobnostmi. | Ano |
 | connectVia | [Prostředí Integration Runtime](concepts-integration-runtime.md) se použije k připojení k úložišti. (Pokud je vaše úložiště dat se nachází v privátní síti), můžete použít prostředí Azure Integration Runtime nebo modul Integration Runtime. Pokud není zadán, použije výchozí prostředí Azure Integration Runtime. |Ne |
 
 Připojovací řetězec je `Server=<server>.mysql.database.azure.com;Port=<port>;Database=<database>;UID=<username>;PWD=<password>`. Další vlastnosti, které můžete nastavit na váš případ:
@@ -50,7 +50,7 @@ Připojovací řetězec je `Server=<server>.mysql.database.azure.com;Port=<port>
 | Vlastnost | Popis | Možnosti | Požaduje se |
 |:--- |:--- |:--- |:--- |:--- |
 | SSLMode | Tato možnost určuje, jestli ovladač používá šifrování pomocí protokolu SSL a ověřování při připojení k MySQL. Například `SSLMode=<0/1/2/3/4>`| ZAKÁZÁNO (0) / upřednostňované (1) **(výchozí)** / požadované (2) / VERIFY_CA (3) / VERIFY_IDENTITY (4) | Ne |
-| useSystemTrustStore | Tato možnost určuje, jestli se má používat certifikát certifikační Autority z úložiště důvěryhodných systému, nebo ze zadaného souboru PEM. Například `UseSystemTrustStore=<0/1>;`| (1) povolený / zakázaný (0) **(výchozí)** | Ne |
+| UseSystemTrustStore | Tato možnost určuje, jestli se má používat certifikát certifikační Autority z úložiště důvěryhodných systému, nebo ze zadaného souboru PEM. Například `UseSystemTrustStore=<0/1>;`| (1) povolený / zakázaný (0) **(výchozí)** | Ne |
 
 **Příklad:**
 
@@ -61,8 +61,37 @@ Připojovací řetězec je `Server=<server>.mysql.database.azure.com;Port=<port>
         "type": "AzureMySql",
         "typeProperties": {
             "connectionString": {
+                "type": "SecureString",
+                "value": "Server=<server>.mysql.database.azure.com;Port=<port>;Database=<database>;UID=<username>;PWD=<password>"
+            }
+        },
+        "connectVia": {
+            "referenceName": "<name of Integration Runtime>",
+            "type": "IntegrationRuntimeReference"
+        }
+    }
+}
+```
+
+**Příklad: ukládání hesel ve službě Azure Key Vault**
+
+```json
+{
+    "name": "AzureDatabaseForMySQLLinkedService",
+    "properties": {
+        "type": "AzureMySql",
+        "typeProperties": {
+            "connectionString": {
                  "type": "SecureString",
-                 "value": "Server=<server>.mysql.database.azure.com;Port=<port>;Database=<database>;UID=<username>;PWD=<password>"
+                 "value": "Server=<server>.mysql.database.azure.com;Port=<port>;Database=<database>;UID=<username>;"
+            },
+            "password": { 
+                "type": "AzureKeyVaultSecret", 
+                "store": { 
+                    "referenceName": "<Azure Key Vault linked service name>", 
+                    "type": "LinkedServiceReference" 
+                }, 
+                "secretName": "<secretName>" 
             }
         },
         "connectVia": {
@@ -193,7 +222,6 @@ Při kopírování dat ze služby Azure Database for MySQL, se používají nás
 | `tinytext` |`String` |
 | `varchar` |`String` |
 | `year` |`Int32` |
-
 
 ## <a name="next-steps"></a>Další postup
 Seznam úložišť dat podporovaných jako zdroje a jímky v aktivitě kopírování ve službě Azure Data Factory najdete v tématu [podporovanými úložišti dat](copy-activity-overview.md#supported-data-stores-and-formats).

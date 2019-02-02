@@ -4,17 +4,17 @@ description: Podrobné plány Azure Blueprint slouží k vytváření, definová
 services: blueprints
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 10/25/2018
+ms.date: 02/01/2019
 ms.topic: quickstart
 ms.service: blueprints
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: 0eebf1a2d1c173e2e37d24ff083e5d7ae011a900
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: c6c498920d407dbbac2449d1da0d76237db0c63d
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53315294"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55566308"
 ---
 # <a name="define-and-assign-an-azure-blueprint-in-the-portal"></a>Definování a přiřazení podrobného plánu Azure na portálu
 
@@ -42,10 +42,7 @@ Jako první krok při definování standardního vzoru pro dodržování předpi
 
    ![Vytvořit podrobný plán](./media/create-blueprint-portal/create-blueprint-button.png)
 
-1. Zadejte **název podrobného plánu** jako je například "MyBlueprint" (písmena a čísla – až 48 znaků, ale žádné mezery ani speciální znaky) pro podrobný plán, ale nechejte pole **popis podrobného plánu** zatím prázdné.  V poli **Umístění definice** klikněte na tři tečky na pravé straně, vyberte [skupinu pro správu](../management-groups/overview.md), do které chcete podrobný plán uložit, a klikněte na **Vybrat**.
-
-   > [!NOTE]
-   > Definice podrobného plánu lze uložit pouze do skupin pro správu. Pokud chcete vytvořit vaši první skupinu pro správu, postupujte podle [těchto kroků](../management-groups/create.md).
+1. Zadejte **název podrobného plánu** jako je například "MyBlueprint" (písmena a čísla – až 48 znaků, ale žádné mezery ani speciální znaky) pro podrobný plán, ale nechejte pole **popis podrobného plánu** zatím prázdné.  V **umístění definice** pole, klikněte na tlačítko se třemi tečkami na pravé straně, vyberte [skupiny pro správu](../management-groups/overview.md) nebo předplatného, ve které chcete uložit podrobný plán a klikněte na tlačítko **vyberte**.
 
 1. Ověřte správnost informací ( **název podrobného plánu** a **umístění definice** pole není možné později změnit) a klikněte na tlačítko **Další: Artefakty** v dolní části stránky nebo **artefakty** kartě v horní části stránky.
 
@@ -154,7 +151,7 @@ Publikováním ho zpřístupní, aby se dalo přiřadit k předplatnému.
 
 ## <a name="assign-a-blueprint"></a>Přiřazení podrobného plánu
 
-Jakmile podrobný plán publikujete, můžete ho přiřadit předplatnému. Přiřaďte vytvořený podrobný plán některému z předplatných v hierarchii skupiny pro správu.
+Jakmile podrobný plán publikujete, můžete ho přiřadit předplatnému. Přiřaďte vytvořený podrobný plán některému z předplatných v hierarchii skupiny pro správu. Pokud podrobný plán je uložený na předplatné, můžete přiřadit pouze k tomuto předplatnému.
 
 1. Vyberte **definice podrobného plánu** ze stránky na levé straně.
 

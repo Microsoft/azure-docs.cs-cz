@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 12/13/2017
 ms.author: cynthn
-ms.openlocfilehash: f6aee3c42c7c01d226732245b47dfb87e07a5ce4
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: dd254f0640e17bdc055171dde69b04103f389354
+ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54464455"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55659826"
 ---
 # <a name="open-ports-and-endpoints-to-a-linux-vm-with-the-azure-cli"></a>Otevření portů a koncových bodů pro virtuální počítač s Linuxem pomocí Azure CLI
 
@@ -74,7 +74,7 @@ az network nic update \
     --network-security-group myNetworkSecurityGroup
 ```
 
-Alternativně můžete přidružit skupiny zabezpečení sítě k podsíti virtuální sítě s [az network vnet podsíť aktualizace](/cli/azure/network/vnet/subnet#az_network_vnet_subnet_update) , nikoli pouze k síťovému rozhraní na jeden virtuální počítač. Následující příklad přiřadí existující podsíť s názvem *mySubnet* v *myVnet* virtuální sítě se skupinou zabezpečení sítě s názvem *myNetworkSecurityGroup*:
+Alternativně můžete přidružit skupiny zabezpečení sítě k podsíti virtuální sítě s [az network vnet podsíť aktualizace](/cli/azure/network/vnet/subnet) , nikoli pouze k síťovému rozhraní na jeden virtuální počítač. Následující příklad přiřadí existující podsíť s názvem *mySubnet* v *myVnet* virtuální sítě se skupinou zabezpečení sítě s názvem *myNetworkSecurityGroup*:
 
 ```azurecli
 az network vnet subnet update \

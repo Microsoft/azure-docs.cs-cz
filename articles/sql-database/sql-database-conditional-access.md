@@ -11,13 +11,13 @@ author: GithubMirek
 ms.author: mireks
 ms.reviewer: vanto
 manager: craigg
-ms.date: 04/01/2018
-ms.openlocfilehash: e7386e2f926132f5657bdb17011dafe1e1c7b101
-ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
+ms.date: 09/24/2018
+ms.openlocfilehash: 95103ec7438a01e73617587bf919404e2bdcc686
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47063077"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55567192"
 ---
 # <a name="conditional-access-mfa-with-azure-sql-database-and-data-warehouse"></a>Podmíněný přístup (MFA) s Azure SQL Database a Data Warehouse  
 
@@ -41,7 +41,7 @@ Následující kroky ukazují, jak nakonfigurovat databázi SQL k vynucení zás
   ![Vyberte uživatele a skupiny](./media/sql-database-conditional-access/select-users-and-groups.png)  
 
 4.  Vyberte **cloudové aplikace**, klikněte na tlačítko **vyberte aplikace**. Zobrazí všechny aplikace dostupné pro podmíněný přístup. Vyberte **Azure SQL Database**, v dolní části klikněte na tlačítko **vyberte**a potom klikněte na tlačítko **provádí**.  
-  ![Vyberte databázi SQL](./media/sql-database-conditional-access/select-sql-database.png)  
+  ![select SQL Database](./media/sql-database-conditional-access/select-sql-database.png)  
   Pokud nemůžete najít **Azure SQL Database** uvedené v následujícím snímku obrazovky třetí, proveďte následující kroky:   
   - Přihlaste se k vaší instanci Azure SQL DB/DW pomocí aplikace SSMS pomocí účtu správce AAD.  
   - Spuštění `CREATE USER [user@yourtenant.com] FROM EXTERNAL PROVIDER`.  

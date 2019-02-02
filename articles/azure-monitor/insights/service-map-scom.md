@@ -13,18 +13,15 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/21/2017
 ms.author: bwren
-ms.openlocfilehash: bf0e672ea6f1d62442233993bd778c82a8a16037
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: 19e842fc3674536972327c3bc6d31641560e38db
+ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53187207"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55659180"
 ---
 # <a name="service-map-integration-with-system-center-operations-manager"></a>Řešení Service Map integrace s nástrojem System Center Operations Manager
-  > [!NOTE]
-  > Tato funkce je ve verzi Public Preview.
-  > 
-  
+
 Service Map automaticky rozpozná komponenty aplikace v systémech Windows a Linux a mapuje komunikaci mezi službami. Řešení Service Map umožňuje zobrazit vaše servery tak, jak přirozeným způsobem, jako propojené systémy, které doručují důležité služby. Service Map ukazuje propojení mezi servery, procesy a porty v jakékoli architektuře propojené TCP, žádnou konfiguraci kromě instalace agenta vyžaduje. Další informace najdete v tématu [dokumentace ke službě Service Map]( service-map.md).
 
 Díky této integraci mezi službami Service Map a System Center Operations Manager můžete automaticky vytvořit diagramy distribuované aplikace v nástroji Operations Manager, které jsou založeny na mapách dynamické závislostí v Service Map.
@@ -43,7 +40,7 @@ Povolení integrace mezi nástrojem Operations Manager a Service Map importován
 * Microsoft System Center Service Map
 
 ## <a name="configure-the-service-map-integration"></a>Konfigurovat integraci řešení Service Map
-Po instalaci sady management Service Map, nový uzel, **Service Map**, se zobrazí v části **Operations Management Suite** v **správu** podokně. 
+Po instalaci sady management Service Map, nový uzel, **Service Map**, se zobrazí v části **Operations Management Suite** v **správu** podokně.
 
 >[!NOTE]
 >[Operations Management Suite se kolekce služeb](https://github.com/MicrosoftDocs/azure-docs-pr/pull/azure-monitor/azure-monitor-rebrand.md#retirement-of-operations-management-suite-brand) , které obsahovat Log Analytics, která je nyní součástí sady [Azure Monitor](https://github.com/MicrosoftDocs/azure-docs-pr/pull/azure-monitor/overview.md).
@@ -63,11 +60,11 @@ Pokud chcete nakonfigurovat integraci řešení Service Map, postupujte takto:
     ![Pracovní prostor Operations Manageru konfigurace](media/service-map-scom/scom-config-workspace.png)
 
 4. V **výběr skupiny počítačů** okna, vyberte skupiny počítačů mapy které služby chcete synchronizovat do nástroje Operations Manager. Klikněte na tlačítko **přidat nebo odebrat skupiny počítačů**, vyberte ze seznamu skupin **dostupné skupiny počítačů**a klikněte na tlačítko **přidat**.  Když jste hotovi s výběrem skupin, klikněte na tlačítko **Ok** na dokončení.
-    
+
     ![Skupiny počítačů Configuration Manager Operations](media/service-map-scom/scom-config-machine-groups.png)
-    
+
 5. V **výběr serveru** okně Konfigurovat skupinu serverů Service Map se servery, které chcete synchronizovat mezi nástrojem Operations Manager a Service Map. Klikněte na tlačítko **přidat nebo odebrat servery**.   
-    
+
     Pro integraci sestavení diagramu distribuované aplikace pro server musí být na serveru:
 
     * Spravovaných nástrojem Operations Manager
@@ -91,7 +88,7 @@ Po připojení pracovního prostoru Log Analytics novou složku Service Map se z
 ![V podokně monitorování nástroje Operations Manager](media/service-map-scom/scom-monitoring.png)
 
 Složka řešení Service Map má čtyři uzly:
-* **Aktivní výstrahy**: Zobrazí seznam všech aktivních výstrah o komunikaci mezi nástrojem Operations Manager a Service Map.  Všimněte si, že se tato upozornění Log Analytics výstrahy, synchronizuje do nástroje Operations Manager. 
+* **Aktivní výstrahy**: Zobrazí seznam všech aktivních výstrah o komunikaci mezi nástrojem Operations Manager a Service Map.  Všimněte si, že se tato upozornění Log Analytics výstrahy, synchronizuje do nástroje Operations Manager.
 
 * **Servery**: Jsou monitorované servery, které jsou nakonfigurovány k synchronizaci ze služeb Service Map.
 
@@ -120,9 +117,9 @@ Pravidlo, _Microsoft.SystemCenter.ServiceMapImport.Rule_, vytvoření pravideln�
 
 ![V okně Vlastnosti přepsání Operations Manageru](media/service-map-scom/scom-overrides.png)
 
-* **Povolené**: Povolí nebo zakáže automatické aktualizace. 
+* **Povolené**: Povolí nebo zakáže automatické aktualizace.
 * **IntervalMinutes**: Resetování času mezi aktualizacemi. Výchozí interval je jedna hodina. Pokud chcete synchronizovat server mapy častěji, můžete změnit hodnotu.
-* **TimeoutSeconds**: Resetujte dobu, než vyprší časový limit žádosti. 
+* **TimeoutSeconds**: Resetujte dobu, než vyprší časový limit žádosti.
 * **TimeWindowMinutes**: Obnoví časový interval pro dotazování na data. Výchozí hodnota je 60 minut okna. Maximální hodnotu povolenou Service Map je 60 minut.
 
 ## <a name="known-issues-and-limitations"></a>Známé problémy a omezení

@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 03/03/2018
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: f4abacb42cfd5efe22d29b58b36eca0a7a1f5ba8
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 4d4acecbbb90fff7865902a3371d282f1d402374
+ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55161306"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55662886"
 ---
 # <a name="azure-active-directory-b2c-migrate-users-with-social-identities"></a>Azure Active Directory B2C: Migrace uživatelů se sociálními identitami
 Při plánování migrace vašeho zprostředkovatele identity do Azure AD B2C, budete také muset migrace uživatelů se sociálními identitami. Tento článek vysvětluje, jak provést migraci existujících účtů sociálních identit, jako například: Facebook, LinkedIn, Microsoft nebo Google účty Azure AD B2C. Tento článek se týká také federované identity, ale jsou méně běžné tyto migrace.
@@ -46,7 +46,7 @@ V tomto článku je pokračování článku migrace uživatelů a se zaměřuje 
 * V závislosti na poskytovateli identity **sociální Id_uživatele** je jedinečná hodnota pro daného uživatele a účet aplikace nebo vývoj. Konfigurovat zásady Azure AD B2C se stejným ID aplikace, která dříve byla přiřazena pomocí poskytovatele sociálních sítí. Nebo v jiné aplikaci v rámci stejného účtu vývoje.
 
 ## <a name="use-graph-api-to-migrate-users"></a>Používání rozhraní Graph API pro migraci uživatelů
-Vytvoření uživatelského účtu Azure AD B2C prostřednictvím [rozhraní Graph API](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-devquickstarts-graph-dotnet). Ke komunikaci s rozhraním Graph API, nejprve musíte mít účet služby s oprávněními správce. Ve službě Azure AD registrace aplikace a ověřování do služby Azure AD. Přihlašovací údaje aplikací jsou ID aplikace a tajný klíč aplikace. Aplikace slouží jako samostatně, nikoli jako uživatel, pro volání rozhraní Graph API. Postupujte podle pokynů v kroku 1 v [migraci uživatelů](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-user-migration#step-1-use-graph-api-to-migrate-users) článku.
+Vytvoření uživatelského účtu Azure AD B2C prostřednictvím [rozhraní Graph API](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-devquickstarts-graph-dotnet). Ke komunikaci s rozhraním Graph API, nejprve musíte mít účet služby s oprávněními správce. Ve službě Azure AD registrace aplikace a ověřování do služby Azure AD. Přihlašovací údaje aplikací jsou ID aplikace a tajný klíč aplikace. Aplikace slouží jako samostatně, nikoli jako uživatel, pro volání rozhraní Graph API. Postupujte podle pokynů v kroku 1 v [migraci uživatelů](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-user-migration) článku.
 
 ## <a name="required-properties"></a>Požadované vlastnosti
 V následujícím seznamu jsou uvedeny vlastnosti, které jsou potřeba při vytvoření uživatele.

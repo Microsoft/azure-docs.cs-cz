@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 10/18/2018
 ms.author: douglasl
-ms.openlocfilehash: 3fb9f98e94191c019b78c5666d2ff5336cc895eb
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: fdbae70718ad62f96dda85e2d9574c7ec2d5ef23
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54021862"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55561089"
 ---
 # <a name="create-a-trigger-that-runs-a-pipeline-in-response-to-an-event"></a>Vytvoření aktivační události, která běží v reakci na událost kanálu
 
@@ -30,7 +30,7 @@ Pro zavedení 10 minut a ukázku této funkce z následujícího videa:
 
 
 > [!NOTE]
-> Integrace popsaných v tomto článku, závisí na [Azure Event Grid](https://azure.microsoft.com/services/event-grid/). Ujistěte se, že vaše předplatné je zaregistrované u poskytovatele prostředků služby Event Grid. Další informace najdete v tématu [poskytovatelé a typy prostředků](../azure-resource-manager/resource-manager-supported-services.md#portal).
+> Integrace popsaných v tomto článku, závisí na [Azure Event Grid](https://azure.microsoft.com/services/event-grid/). Ujistěte se, že vaše předplatné je zaregistrované u poskytovatele prostředků služby Event Grid. Další informace najdete v tématu [poskytovatelé a typy prostředků](../azure-resource-manager/resource-manager-supported-services.md#azure-portal).
 
 ## <a name="data-factory-ui"></a>Uživatelské rozhraní Data Factory
 
@@ -69,10 +69,10 @@ Následující tabulka obsahuje přehled elementů schématu souvisejících s t
 
 | **JSON Element** | **Popis** | **Typ** | **Povolené hodnoty** | **Požadováno** |
 | ---------------- | --------------- | -------- | ------------------ | ------------ |
-| **Obor** | Azure Resource Manageru ID prostředku účtu úložiště. | Řetězec | ID Azure Resource Manageru | Ano |
-| **Události** | Typ události, které způsobují tento aby trigger provedl akci. | Pole    | Microsoft.Storage.BlobCreated Microsoft.Storage.BlobDeleted | Ano, libovolnou kombinací těchto hodnot. |
-| **blobPathBeginsWith** | Cesta objektu blob musí začínat uvedeném vzorku pro aktivační událost, která se aktivuje. Například `/records/blobs/december/` pouze aktivuje trigger pro objekty BLOB v `december` ve složce `records` kontejneru. | Řetězec   | | Je nutné zadat hodnotu pro nejméně jednu z těchto vlastností: `blobPathBeginsWith` nebo `blobPathEndsWith`. |
-| **blobPathEndsWith** | Cesta objektu blob musí končit uvedeném vzorku pro aktivační událost, která se aktivuje. Například `december/boxes.csv` pouze aktivuje trigger pro objekty BLOB s názvem `boxes` v `december` složky. | Řetězec   | | Je nutné zadat hodnotu pro nejméně jednu z těchto vlastností: `blobPathBeginsWith` nebo `blobPathEndsWith`. |
+| **Obor** | Azure Resource Manageru ID prostředku účtu úložiště. | String | ID Azure Resource Manageru | Ano |
+| **Události** | Typ události, které způsobují tento aby trigger provedl akci. | Pole    | Microsoft.Storage.BlobCreated, Microsoft.Storage.BlobDeleted | Ano, libovolnou kombinací těchto hodnot. |
+| **blobPathBeginsWith** | Cesta objektu blob musí začínat uvedeném vzorku pro aktivační událost, která se aktivuje. Například `/records/blobs/december/` pouze aktivuje trigger pro objekty BLOB v `december` ve složce `records` kontejneru. | String   | | Je nutné zadat hodnotu pro nejméně jednu z těchto vlastností: `blobPathBeginsWith` nebo `blobPathEndsWith`. |
+| **blobPathEndsWith** | Cesta objektu blob musí končit uvedeném vzorku pro aktivační událost, která se aktivuje. Například `december/boxes.csv` pouze aktivuje trigger pro objekty BLOB s názvem `boxes` v `december` složky. | String   | | Je nutné zadat hodnotu pro nejméně jednu z těchto vlastností: `blobPathBeginsWith` nebo `blobPathEndsWith`. |
 
 ## <a name="examples-of-event-based-triggers"></a>Příklady triggery založené na události
 

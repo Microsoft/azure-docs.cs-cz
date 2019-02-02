@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/21/2018
 ms.author: aschhab
-ms.openlocfilehash: 35c643b9bb4f348b790577e560eaf14d3a19802f
-ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
+ms.openlocfilehash: 6b1dfc3b9b2d54922b8d2de2e4f7e168ce21fb8f
+ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54848340"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55661035"
 ---
 # <a name="paired-namespace-implementation-details-and-cost-implications"></a>Spárované podrobnosti implementace oboru názvů a důsledky nákladů
 
@@ -106,7 +106,7 @@ Zobrazit [asynchronní zasílání zpráv schémata a vysoká dostupnost] [ Asyn
 [SendAvailabilityPairedNamespaceOptions]: /dotnet/api/microsoft.servicebus.messaging.sendavailabilitypairednamespaceoptions
 [MessageSender]: /dotnet/api/microsoft.servicebus.messaging.messagesender
 [MessagingFactory]: /dotnet/api/microsoft.servicebus.messaging.messagingfactory
-[FailoverInterval]: /dotnet/api/microsoft.servicebus.messaging.pairednamespaceoptions#Microsoft_ServiceBus_Messaging_PairedNamespaceOptions_FailoverInterval
+[FailoverInterval]: /dotnet/api/microsoft.servicebus.messaging.pairednamespaceoptions
 [MessagingException]: /dotnet/api/microsoft.servicebus.messaging.messagingexception
 [TimeoutException]: https://msdn.microsoft.com/library/azure/system.timeoutexception.aspx
 [BrokeredMessage]: /dotnet/api/microsoft.servicebus.messaging.brokeredmessage
@@ -115,7 +115,7 @@ Zobrazit [asynchronní zasílání zpráv schémata a vysoká dostupnost] [ Asyn
 [PingPrimaryInterval]: /dotnet/api/microsoft.servicebus.messaging.sendavailabilitypairednamespaceoptions#Microsoft_ServiceBus_Messaging_SendAvailabilityPairedNamespaceOptions_PingPrimaryInterval
 [QueueClient]: /dotnet/api/microsoft.servicebus.messaging.queueclient
 [TopicClient]: /dotnet/api/microsoft.servicebus.messaging.topicclient
-[ContentType]: /dotnet/api/microsoft.servicebus.messaging.brokeredmessage#Microsoft_ServiceBus_Messaging_BrokeredMessage_ContentType
+[ContentType]: /dotnet/api/microsoft.servicebus.messaging.brokeredmessage
 [TimeToLive]: /dotnet/api/microsoft.servicebus.messaging.brokeredmessage#Microsoft_ServiceBus_Messaging_BrokeredMessage_TimeToLive
 [Asynchronous messaging patterns and high availability]: service-bus-async-messaging.md
 [0]: ./media/service-bus-paired-namespaces/IC673405.png

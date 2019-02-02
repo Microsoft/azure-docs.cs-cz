@@ -14,19 +14,19 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 06/05/2018
 ms.author: ellacroi
-ms.openlocfilehash: 487872b1e9344aaefad5ca0953c41b59f01027b0
-ms.sourcegitcommit: 7862449050a220133e5316f0030a259b1c6e3004
+ms.openlocfilehash: 43badaada3de352ec7bafeb422965a047261a1e4
+ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/22/2018
-ms.locfileid: "53753961"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55656830"
 ---
 # <a name="azure-marketplace-and-appsource-publishing-guide"></a>Azure Marketplace a AppSource Průvodce publikováním
 
 Průvodce publikováním na webu Marketplace je určen pro nové a stávající vydavatelé Další informace o použití prodejních míst v [Azure Marketplace](https://azuremarketplace.microsoft.com) a [Microsoft AppSource](https://appsource.microsoft.com) k rozvoji podnikání v partnerství u Microsoftu nejpozději do aplikací a služeb.
 
 >[!Note]
->Na webu Marketplace odkazuje na Azure Marketplace a AppSource.  Zobrazit [Marketplace jeden, dva prodejní místa](https://docs.microsoft.com/en-us/azure/marketplace/comparing-appsource-azure-marketplace) Další informace.
+>Na webu Marketplace odkazuje na Azure Marketplace a AppSource.  Zobrazit [Marketplace jeden, dva prodejní místa](https://docs.microsoft.com/azure/marketplace/comparing-appsource-azure-marketplace) Další informace.
 
 Tato příručka obsahuje následující témata: 
 *   Co je na webu Marketplace a jak to funguje 

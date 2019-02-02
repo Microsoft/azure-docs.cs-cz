@@ -15,24 +15,22 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 11/15/2017
 ms.author: ergreenl
-ms.openlocfilehash: 448b6238e11dfc42c0a9d9d733326c0e6d81399d
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 74ad811481aea83454d7e3179652e68d4c406521
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55196799"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55564965"
 ---
 # <a name="enable-password-synchronization-to-azure-active-directory-domain-services"></a>Povolení synchronizace hesel do služby Azure Active Directory Domain Services
 V předchozích úlohách jste povolili službu Azure Active Directory Domain Services pro tenanta služby Azure Active Directory (Azure AD). Další úlohou je povolení synchronizace hodnot hash přihlašovacích údajů požadovaných pro ověřování protokolů NT LAN Manager (NTLM) a Kerberos do služby Azure AD Domain Services. Po nastavení synchronizace přihlašovacích údajů se uživatelé mohou přihlásit ke spravované doméně s použitím podnikových přihlašovacích údajů.
 
 Potřebný postup se liší pro uživatelské účty jenom cloudu a uživatelské účty synchronizované z místního adresáře pomocí služby Azure AD Connect.
 
-<br>
 | **Typ uživatelského účtu** | **Požadovaný postup** |
 | --- | --- |
-| **Uživatelské účty synchronizované z místního adresáře** |**&#x2713;** [Postupujte podle pokynů v tomto článku](active-directory-ds-getting-started-password-sync-synced-tenant.md#task-5-enable-password-synchronization-to-your-managed-domain-for-user-accounts-synced-with-your-on-premises-ad) | 
+| **Uživatelské účty synchronizované z místního adresáře** |**&#x2713;** [Postupujte podle pokynů v tomto článku](active-directory-ds-getting-started-password-sync-synced-tenant.md#task-5-enable-password-synchronization-to-your-managed-domain-for-user-accounts-synced-with-your-on-premises-ad) |
 | **Cloudové uživatelské účty vytvořené ve službě Azure AD** |**&#x2713;** [Synchronizujte hesla pro uživatelské účty jenom cloudu do spravované domény](active-directory-ds-getting-started-password-sync.md) |
-<br>
 
 > [!TIP]
 > **Možná bude nutné dokončit oba postupy.**
@@ -65,22 +63,20 @@ Pokyny k instalaci služby Azure AD Connect jsou dostupné v následujícím čl
 Pro každou doménovou strukturu služby AD spusťte následující skript PowerShellu. Tento skript povolí synchronizaci místních hodnot hash uživatelských hesel protokolů NTLM a Kerberos do tenanta služby Azure AD. Skript také zahájí úplnou synchronizaci ve službě Azure AD Connect.
 
 ```powershell
-$adConnector = "<CASE SENSITIVE AD CONNECTOR NAME>"  
-$azureadConnector = "<CASE SENSITIVE AZURE AD CONNECTOR NAME>"  
-Import-Module adsync  
-$c = Get-ADSyncConnector -Name $adConnector  
+$adConnector = "<CASE SENSITIVE AD CONNECTOR NAME>"
+$azureadConnector = "<CASE SENSITIVE AZURE AD CONNECTOR NAME>"
+Import-Module adsync
+$c = Get-ADSyncConnector -Name $adConnector
 $p = New-Object Microsoft.IdentityManagement.PowerShell.ObjectModel.ConfigurationParameter "Microsoft.Synchronize.ForceFullPasswordSync", String, ConnectorGlobal, $null, $null, $null
-$p.Value = 1  
-$c.GlobalParameters.Remove($p.Name)  
-$c.GlobalParameters.Add($p)  
-$c = Add-ADSyncConnector -Connector $c  
-Set-ADSyncAADPasswordSyncConfiguration -SourceConnector $adConnector -TargetConnector $azureadConnector -Enable $false   
-Set-ADSyncAADPasswordSyncConfiguration -SourceConnector $adConnector -TargetConnector $azureadConnector -Enable $true  
+$p.Value = 1
+$c.GlobalParameters.Remove($p.Name)
+$c.GlobalParameters.Add($p)
+$c = Add-ADSyncConnector -Connector $c
+Set-ADSyncAADPasswordSyncConfiguration -SourceConnector $adConnector -TargetConnector $azureadConnector -Enable $false
+Set-ADSyncAADPasswordSyncConfiguration -SourceConnector $adConnector -TargetConnector $azureadConnector -Enable $true
 ```
 
 Synchronizace hodnot hash přihlašovacích údajů do služby Azure AD bude v závislosti na velikosti adresáře (počtu uživatelů, skupin atd.) chvíli trvat. Hesla bude možné použít ve spravované doméně služby Azure AD Domain Services zanedlouho poté, co se hodnoty hash přihlašovacích údajů synchronizují do služby Azure AD.
-
-<br>
 
 ## <a name="related-content"></a>Související obsah
 * [Povolení synchronizace hesel do služby AAD Domain Services u výhradně cloudového adresáře služby Azure AD](active-directory-ds-getting-started-password-sync.md)

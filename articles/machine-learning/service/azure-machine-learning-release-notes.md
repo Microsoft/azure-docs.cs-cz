@@ -11,12 +11,12 @@ ms.author: haining
 ms.reviewer: j-martens
 ms.date: 12/20/2018
 ms.custom: seodec18
-ms.openlocfilehash: 1cf2f25ab96fde342244c99029db6a96c72a5681
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: cea5f2a3eaa7bddb523d95936fbe0a50e0fd16ed
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55473098"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55564336"
 ---
 # <a name="azure-machine-learning-service-release-notes"></a>Zpráva k vydání verze služby Azure Machine Learning
 
@@ -52,6 +52,7 @@ V tomto článku najdete další informace o vydaných verzích služby Azure Ma
     - Krabicový graf
     - Bodové vykreslení
     - Bublinový graf
++ Na portálu teď dynamicky generuje sestavy pro experimentů. Když uživatel odešle na spuštění experimentu, automaticky se vygeneruje sestava s zaznamenané metriky a grafy umožňující porovnání během různých spuštění. 
 
 ## <a name="2019-01-14"></a>2019-01-14
 

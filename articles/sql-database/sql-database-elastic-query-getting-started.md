@@ -11,15 +11,16 @@ author: MladjoA
 ms.author: mlandzic
 ms.reviewer: sstein
 manager: craigg
-ms.date: 04/01/2018
-ms.openlocfilehash: da876152b55ee626025b6192a5004648a29545dc
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.date: 12/18/2018
+ms.openlocfilehash: a73938c98ebaea310875f0db8b665d0f1aed55e8
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53604180"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55561990"
 ---
 # <a name="report-across-scaled-out-cloud-databases-preview"></a>Sestavy napříč databázemi s horizontálním navýšením kapacity (preview)
+
 Můžete vytvořit sestavy z několika databázemi Azure SQL z jednoho připojení bodu pomocí [elastický dotaz](sql-database-elastic-query-overview.md). Databáze musí být horizontálně dělené do oddílů (označované také jako "horizontálně dělené").
 
 Pokud máte existující databázi, naleznete v tématu [migrace existujících databází do databází s horizontálním navýšením kapacity](sql-database-elastic-convert-to-use-elastic-tools.md).
@@ -27,6 +28,7 @@ Pokud máte existující databázi, naleznete v tématu [migrace existujících 
 Vysvětlení SQL objektů potřebných k dotazování, najdete v tématu [dotazování napříč databázemi s horizontálně dělené](sql-database-elastic-query-horizontal-partitioning.md).
 
 ## <a name="prerequisites"></a>Požadavky
+
 Stáhněte a spusťte [Začínáme s ukázkou nástrojů Elastic Database](sql-database-elastic-scale-get-started.md).
 
 ## <a name="create-a-shard-map-manager-using-the-sample-app"></a>Vytvořte ukázkovou aplikaci pomocí Správce mapování horizontálního oddílu
@@ -38,7 +40,7 @@ Tady vytvoříte mapy horizontálních oddílů manager společně s několika h
 2. V příkazovém okně zadejte "1" a stiskněte klávesu **Enter**. To vytvoří správce mapování horizontálního oddílu a přidá dvě horizontálních oddílů k serveru. Potom zadejte "3" a stiskněte klávesu **Enter**; čtyřikrát opakujte akci. To vloží ukázková data řádků vaše horizontálních oddílů.
 3. [Webu Azure portal](https://portal.azure.com) by se zobrazit tři nové databáze na serveru:
 
-   ![Visual Studio potvrzení][2]
+   ![Visual Studio confirmation][2]
 
    Mezidatabázové dotazy v tomto okamžiku jsou podporovány pomocí klientské knihovny Elastic Database. Možnost 4 například použijte v příkazovém okně. Výsledky z více horizontálních oddílů dotazu jsou vždy **UNION ALL** výsledků ze všech horizontálních oddílů.
 

@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 01/02/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 50b2973f2b245cfb42ed7212e443fec1c66217cf
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 191cff21cdaa6a4e94358ed0b9c63cd942f71a6e
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54015268"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55564557"
 ---
 # <a name="quickstart-create-a-cognitive-search-pipeline-using-skills-and-sample-data"></a>Rychlý start: Vytvoření kanálu kognitivního vyhledávání využitím dovedností a ukázkových dat
 
@@ -147,15 +147,19 @@ Obvykle dokáže Průvodce odvodit výchozí index. V tomto kroku můžete zobra
 
 Pro tento rychlý start průvodce odvedl dobrou práci při nastavování rozumných výchozích hodnot: 
 
-+ Výchozí název je *azureblob index*.
++ Výchozí název je *azureblob index* na základě datového typu zdroje. 
+
++ Výchozí pole jsou založena na původní zdrojové pole dat (`content`), a navíc výstupních polí (`people`, `organizations`, a `locations`) vytvořené pomocí cognitive kanálu. Výchozí datové typy jsou odvozeny z metadat a dat vzorkování.
+
 + Výchozí klíč je *metadata_storage_path* (Toto pole obsahuje jedinečné hodnoty).
-+ Výchozí datové typy a atributy jsou platné pro scénáře hledání textu v plném znění.
 
-Vezměte v úvahu vymazání **Retrievable** z `content` pole. V objektech BLOB můžete spustit toto pole do tisíců řádků. Si dovedete představit, jak složité může být náročná na výkon obsah souborů, jako jsou dokumenty aplikace Word nebo PowerPoint balíčky zobrazit jako dokumenty JSON v seznamu výsledků hledání. 
-
-Vzhledem k tomu, že jste definovali dovedností, průvodce předpokládá, který má původní zdrojové pole dat, a navíc výstupních polí vytvořené cognitive kanálu. Z tohoto důvodu portál přidává pole indexů pro `content`, `people`, `organizations` a `locations`. Všimněte si, že průvodce automaticky povolí **Retrievable** a **Searchable** těchto polí. **Prohledávání** určuje pole lze prohledávat. **Retrievable** znamená, že mohou být vráceny ve výsledcích. 
++ Výchozí atributy jsou **Retrievable** a **Searchable** těchto polí. **Prohledávání** určuje pole lze prohledávat. **Retrievable** znamená, že mohou být vráceny ve výsledcích. V Průvodci se předpokládá, že chcete tato pole bude retrievable a prohledávatelné, protože jste vytvořili pomocí dovedností.
 
   ![Pole indexu](media/cognitive-search-quickstart-blob/index-fields.png)
+
+Všimněte si, přeškrtnutí a otazník na **Retrievable** atribut podle `content` pole. Pro objekt blob hodně textu dokumenty `content` pole obsahuje větší část souboru, potenciálně narazíte na tisíce řádků. Pokud je potřeba předat obsah souboru kódu klienta, ujistěte se, že **Retrievable** zůstane vybrali. V opačném případě zvažte vymazání tohoto atributu na `content` Pokud extrahovaných elementů (`people`, `organizations`, a `locations`) jsou dostačující pro účely.
+
+Označení polí jako **Retrievable** neznamená, že pole *musí* nacházet ve výsledcích hledání. Složení výsledky hledání můžete přesně řídit pomocí **$select** parametr k určení pole, která chcete zahrnout dotazu. Například pole hodně textu pro `content`, **$select** parametr je vaše řešení pro poskytující výsledky hledání spravovatelné lidské uživatelům vaší aplikace, zatímco je zajištěna klientský kód má přístup ke všem informacím, které potřebuje prostřednictvím **Retrievable** atribut.
   
 Přejít na další stránku.
 

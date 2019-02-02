@@ -1,27 +1,31 @@
 ---
-title: Hledat na webu pro populárních videí – Video Bingu pro vyhledávání
+title: Hledat na webu pro populárních videí pomocí API pro vyhledávání videí Bingu
 titlesuffix: Azure Cognitive Services
-description: Ukazuje, jak použít API pro vyhledávání videí Bingu pro vyhledávání na webu populárních videí.
+description: Další informace o použití API pro vyhledávání videí Bingu pro vyhledávání na webu populárních videí.
 services: cognitive-services
 author: swhite-msft
 manager: cgronlun
 ms.service: cognitive-services
 ms.subservice: bing-video-search
 ms.topic: conceptual
-ms.date: 04/15/2017
+ms.date: 01/31/2019
 ms.author: scottwhi
-ms.openlocfilehash: 71dd888199e9e630835c4916d35f6308431bab62
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 55f29a31a9574c7c32e6708565e961950520593f
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55203551"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55566065"
 ---
-# <a name="get-trending-videos"></a>Získání videí, která jsou v kurzu  
+# <a name="get-trending-videos-with-the-bing-video-search-api"></a>Získat populární videa s API pro vyhledávání videí Bingu 
 
-Chcete-li získat dnešní populárních videí, poslat následující požadavek GET:  
+API pro vyhledávání videí Bingu umožňuje najít dnešní populárních videí z webu i v různých kategoriích. 
+
+## <a name="get-request"></a>Žádost o získání
+
+Chcete-li získat dnešní populárních videí z API Bingu pro vyhledávání videí, odešlete následující požadavek GET:  
   
-```
+```cURL
 GET https://api.cognitive.microsoft.com/bing/v7.0/videos/trending?mkt=en-us HTTP/1.1
 Ocp-Apim-Subscription-Key: 123456789ABCDE  
 User-Agent: Mozilla/5.0 (compatible; MSIE 10.0; Windows Phone 8.0; Trident/6.0; IEMobile/10.0; ARM; Touch; NOKIA; Lumia 822)  
@@ -30,6 +34,8 @@ X-Search-Location: lat:47.60357;long:-122.3295;re:100
 X-MSEdge-ClientID: <blobFromPriorResponseGoesHere>  
 Host: api.cognitive.microsoft.com  
 ```
+
+## <a name="market-support"></a>Podpora na trhu
 
 Následujících zemích podporují populárních videí.  
  
@@ -47,10 +53,11 @@ Následujících zemích podporují populárních videí.
 -   cs ZA (angličtina, Jižní Afrika)  
 -   zh-CN (čínština, Čína)
 
-  
-Následující příklad ukazuje odpověď obsahující populárních videí.  
+## <a name="example-json-response"></a>Příklad JSON odpovědi  
 
-```  
+Následující příklad ukazuje odpověď rozhraní API, která obsahuje populárních videí, které jsou uvedené podle kategorie a podkategorie. Odpověď obsahuje také nápis videa, které jsou nejoblíbenější populárních videí a můžou pocházet z jedné nebo více kategorií.  
+
+```json
 {  
     "_type" : "TrendingVideos",  
     "bannerTiles" : [
@@ -112,8 +119,9 @@ Následující příklad ukazuje odpověď obsahující populárních videí.
     ]  
 }  
   
-```  
-Odpověď obsahuje seznam videí podle kategorie a podkategorie. Například pokud byl jeden ze své podkategorie horní seznam kategorií obsažených kategorie Hudba, videa, můžete vytvořit kategorii horní Hudba videa ve vašem prostředí uživatele. Můžete pak použít `thumbnailUrl`, `displayText`, a `webSearchUrl` pole k vytvoření kliknout, čímž dlaždice podle jednotlivých kategorií (například horní Hudba videa). Po kliknutí na dlaždici, přejdete do prohlížeče video Bingu kde je video přehrát.
+```
 
-Odpověď obsahuje také nápis videa, které jsou nejoblíbenější populárních videí. Banner videa, která mohou pocházet z jedné nebo více kategorií.  
-  
+## <a name="next-steps"></a>Další postup
+
+> [!div class="nextstepaction"]
+[Získejte nové poznatky z videí](video-insights.md)

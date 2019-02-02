@@ -1,6 +1,6 @@
 ---
 title: 'Rychlý start: Nastavení a načtení tajného klíče ze služby Azure Key Vault pomocí webové aplikace node - Azure Key Vault | Dokumentace Microsoftu'
-description: 'Rychlý start: Nastavení a načtení tajného klíče ze služby Azure Key Vault pomocí webové aplikace .NET'
+description: V tomto rychlém startu nastavení a načtení tajného klíče ze služby Azure Key Vault pomocí webové aplikace .NET
 services: key-vault
 author: prashanthyv
 manager: sumedhb
@@ -9,31 +9,32 @@ ms.topic: quickstart
 ms.date: 01/02/2019
 ms.author: barclayn
 ms.custom: mvc
-ms.openlocfilehash: 20d47ecaea8ce393f60cba93c3dbcf7ca4a076c8
-ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
+ms.openlocfilehash: 300ee1b01f346f7e1c118b76d64d0eda6e4d7934
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "54002599"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55565543"
 ---
 # <a name="quickstart-set-and-retrieve-a-secret-from-azure-key-vault-by-using-a-net-web-app"></a>Rychlý start: Nastavení a načtení tajného klíče ze služby Azure Key Vault pomocí webové aplikace .NET
 
-V tomto rychlém startu si projdete nezbytné kroky pro využití webové aplikace Azure k načtení informací ze služby Azure Key Vault pomocí spravovaných identit pro prostředky Azure. Získáte informace o těchto tématech:
+V tomto rychlém startu postupujte podle kroků pro přesun webové aplikace Azure ke čtení informací z Azure Key Vault pomocí spravované identity pro prostředky Azure. Pomocí služby Key Vault pomáhá udržovat informace v bezpečí. Získáte informace o těchto tématech:
 
-> [!div class="checklist"]
-> * Vytvoření trezoru klíčů
-> * Uložení tajného klíče v trezoru klíčů
-> * Načtení tajného klíče z trezoru klíčů
-> * Vytvoření webové aplikace Azure
-> * Povolení [identity spravované služby](../active-directory/managed-identities-azure-resources/overview.md) pro webovou aplikaci
-> * Udělení požadovaných oprávnění k načtení dat z trezoru klíčů pro webovou aplikaci
+* Vytvoření trezoru klíčů
+* Uložení tajného klíče v trezoru klíčů
+* Načtení tajného klíče z trezoru klíčů
+* Vytvoření webové aplikace Azure
+* Povolení [identity spravované služby](../active-directory/managed-identities-azure-resources/overview.md) pro webovou aplikaci
+* Udělení požadovaných oprávnění k načtení dat z trezoru klíčů pro webovou aplikaci
 
-Než budeme pokračovat, přečtěte si [základní koncepty](key-vault-whatis.md#basic-concepts).
+Než půjdeme dál, přečtěte si prosím [základní koncepty služby Key Vault](key-vault-whatis.md#basic-concepts).
 
 >[!NOTE]
->Služba Key Vault je centrální úložiště pro ukládání tajných klíčů prostřednictvím kódu programu. Aby to bylo možné, aplikace a uživatelé se nejprve musí ve službě Key Vault ověřit, tedy předložit tajný klíč. Za účelem dodržení osvědčených postupů zabezpečení je potřeba tento první tajný klíč pravidelně obměňovat. 
+>Služba Key Vault je centrální úložiště pro ukládání tajných klíčů prostřednictvím kódu programu. Aby to bylo možné, aplikace a uživatelé se nejprve musí ve službě Key Vault ověřit, tedy předložit tajný klíč. Podle osvědčené postupy zabezpečení tento první tajný klíč musí pravidelně otočen. 
 >
->Při použití [identit spravovaných služeb pro prostředky Azure](../active-directory/managed-identities-azure-resources/overview.md) se aplikacím spouštěným v Azure udělí identita, kterou automaticky spravuje Azure. To vám pomůže vyřešit *problém se zavedením tajného klíče*, abyste uživatelům a aplikacím umožnili dodržovat osvědčené postupy bez starostí o obměňování prvního tajného klíče.
+>S [identit spravovaných služeb pro prostředky Azure](../active-directory/managed-identities-azure-resources/overview.md), aplikace, které běží v Azure získat identitu, která automaticky spravuje Azure. To vám pomůže vyřešit *problém se zavedením tajného klíče*, abyste uživatelům a aplikacím umožnili dodržovat osvědčené postupy bez starostí o obměňování prvního tajného klíče.
+
+[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -77,7 +78,7 @@ V tomto článku se používá skupina prostředků, kterou jste právě vytvoř
 
 Dále ve skupině prostředků, kterou jste vytvořili v předchozím kroku, vytvoříte trezor klíčů. Zadejte tyto informace:
 
-* Název trezoru klíčů: Název musí být řetězec dlouhý 3 až 24 znaků a musí obsahovat pouze (0-9, a – z, A-Z a -).
+* Název trezoru klíčů: Název musí být řetězec dlouhý 3 až 24 znaků a musí obsahovat pouze 0-9, a-z, A-Z a pomlčka (-).
 * Název skupiny prostředků.
 * Umístění: **USA – východ**.
 
@@ -119,7 +120,7 @@ Upravte soubor program.cs, aby se ukázka spustila s konkrétním názvem vašeh
 
 1. Přejděte do složky key-vault-dotnet-core-quickstart.
 2. V sadě Visual Studio 2017 otevřete soubor key-vault-dotnet-core-quickstart.sln.
-3. Otevřete soubor Program.cs a nahraďte zástupný text *YourKeyVaultName* názvem trezoru klíčů, který jste předtím vytvořili.
+3. Otevřete soubor Program.cs a aktualizujte zástupný text *YourKeyVaultName* s názvem služby key vault, kterou jste vytvořili dříve.
 
 Toto řešení používá knihovny NuGet [AppAuthentication](https://www.nuget.org/packages/Microsoft.Azure.Services.AppAuthentication) a [KeyVault](https://www.nuget.org/packages/Microsoft.Azure.KeyVault).
 
@@ -143,8 +144,7 @@ Publikujte tuto aplikaci do Azure, abyste ji mohli zobrazit živě jako webovou 
 
 Azure Key Vault nabízí možnost bezpečného ukládání přihlašovacích údajů a dalších klíčů a tajných kódů, ale váš kód se musí ověřit ve službě Key Vault, aby je mohl načíst. [Přehled spravovaných identit pro prostředky Azure](../active-directory/managed-identities-azure-resources/overview.md) tuto překážku usnadňuje tím, že dává službám Azure v Azure Active Directory (Azure AD) automaticky spravovanou identitu. Tuto identitu můžete použít k ověření pro jakoukoli službu, která podporuje ověřování Azure AD, včetně služby Key Vault, aniž byste ve vašem kódu museli mít přihlašovací údaje.
 
-1. Vraťte se k Azure CLI.
-2. Spusťte příkaz assign-identity a vytvořte identitu pro tuto aplikaci:
+V Azure CLI spusťte příkaz přiřadit identity vytvořit identitu pro tuto aplikaci:
 
    ```azurecli
    az webapp identity assign --name "keyvaultdotnetcorequickstart" --resource-group "<YourResourceGroupName>"
@@ -171,10 +171,20 @@ az keyvault set-policy --name '<YourKeyVaultName>' --object-id <PrincipalId> --s
 
 ```
 
-Když teď spustíte aplikaci, měla by se zobrazit načtená hodnota vašeho taného klíče. Ve výše uvedeném příkazu udělujete identitě spravované služby App Service oprávnění k operacím **get** a **list** ve službě Key Vault.
+Když teď spustíte aplikaci, měla by se zobrazit načtená hodnota vašeho taného klíče. V předchozím příkazu uvádíte identitu aplikace aervice oprávnění udělat **získat** a **seznamu** operace v trezoru klíčů.
+
+## <a name="clean-up-resources"></a>Vyčištění prostředků
+Když už je budete potřebovat, odstraňte skupinu prostředků, virtuálního počítače a všech souvisejících prostředků. Uděláte to tak, vyberte skupinu prostředků příslušného virtuálního počítače a vyberte **odstranit**.
+
+Odstranění trezoru klíčů pomocí [az keyvault delete](https://docs.microsoft.com/en-us/cli/azure/keyvault?view=azure-cli-latest#az-keyvault-delete) příkaz:
+
+```azurecli
+az keyvault delete --name
+                   [--resource-group]
+                   [--subscription]
+```
 
 ## <a name="next-steps"></a>Další postup
 
-* [Další informace o službě Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-whatis)
-* [Sada Azure SDK pro .NET](https://github.com/Azure/azure-sdk-for-net)
-* [Referenční informace k rozhraní Azure REST API](https://docs.microsoft.com/rest/api/keyvault/)
+> [!div class="nextstepaction"]
+> [Další informace o službě Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-whatis)

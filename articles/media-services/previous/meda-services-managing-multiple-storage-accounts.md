@@ -1,27 +1,28 @@
 ---
-title: Správa Media Services prostředků napříč několika účty úložiště | Dokumentace Microsoftu
-description: Tento článek poskytují pokyny o tom, jak spravovat mediálních materiálů služeb napříč několika účty úložiště.
+title: Správa prostředků služby Media Services ve více účtech úložiště | Dokumentace Microsoftu
+description: Tento článek poskytují pokyny o tom, jak spravovat prostředky služby Media Services ve více účtech úložiště.
 services: media-services
 documentationcenter: ''
 author: Juliako
-manager: cfowler
+manager: femila
 editor: ''
 ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/10/2017
+ms.date: 01/31/2018
 ms.author: juliako
-ms.openlocfilehash: 8c67ce4fd9597c66e795269972d2048ddd5a60c1
-ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
+ms.openlocfilehash: d43adf7009fcd668299f018b6308765bb115b237
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54886335"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55565900"
 ---
-# <a name="managing-media-services-assets-across-multiple-storage-accounts"></a>Správa Media Services prostředků napříč několika účty úložiště
-Od Microsoft Azure Media Services 2.2, můžete k jednomu účtu Media Services připojit více účtů úložiště. Možnost připojit více účtů úložiště do účtu Azure Media Services nabízí následující výhody:
+# <a name="managing-media-services-assets-across-multiple-storage-accounts"></a>Správa prostředků služby Media Services ve více účtech úložiště
+
+K jednomu účtu Media Services připojit více účtů úložiště. Možnost připojit více účtů úložiště do účtu Azure Media Services nabízí následující výhody:
 
 * Vyrovnávání zatížení vašich prostředků napříč několika účty úložiště.
 * Škálování Media Services pro velké objemy zpracování obsahu (jako je aktuálně na jeden účet úložiště má maximální limit 500 TB). 
@@ -29,12 +30,13 @@ Od Microsoft Azure Media Services 2.2, můžete k jednomu účtu Media Services 
 Tento článek ukazuje, jak připojit více účtů úložiště do účtu Media Services pomocí [rozhraní API Azure Resource Manageru](/rest/api/media/operations/azure-media-services-rest-api-reference) a [Powershellu](/powershell/module/azurerm.media). Také ukazuje, jak zadat jiný účet úložiště při vytváření prostředků pomocí sady SDK služby Media Services. 
 
 ## <a name="considerations"></a>Požadavky
+
 Při připojování k účtu Media Services více účtů úložiště, platí následující aspekty:
 
-* Všechny účty úložiště připojené k účtu Azure Media Services musí být ve stejném datovém centru jako účet Media Services.
-* V současné době po účet úložiště je připojen k uvedenému účtu Media Services, ho nelze odpojit.
+* Účet Media Services a všechny přidružené úložiště účty musí být ve stejném předplatném Azure. Doporučujeme použít účty úložiště ve stejném umístění jako účet Media Services.
+* Jakmile účet úložiště je připojen k uvedenému účtu Media Services, nelze odpojit.
 * Primární účet úložiště je síť určená při vytváření účtu Media Services. V současné době nelze změnit výchozí účet úložiště. 
-* V současné době Pokud chcete přidat účet studeného úložiště do účtu AMS, účet úložiště musí být typu Blob a nastavit pro jiné než primární.
+* Pokud chcete přidat účet studeného úložiště do účtu AMS, účet úložiště musí být typu Blob a nastavit pro jiné než primární.
 
 Další důležité informace:
 

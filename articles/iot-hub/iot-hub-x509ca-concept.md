@@ -1,6 +1,6 @@
 ---
-title: Koncepty zabezpečení Azure IoT Hub X.509 | Microsoft Docs
-description: Koncept - pochopení hodnota X.509 certificate autority certifikáty ve výrobním zařízení IoT a ověřování.
+title: Koncepty zabezpečení Azure IoT Hub X.509 | Dokumentace Microsoftu
+description: Koncept – Principy hodnotu X.509 certifikační autority certifikáty ve výrobním zařízení IoT a ověřování.
 author: eustacea
 manager: arjmands
 ms.service: iot-hub
@@ -8,123 +8,123 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 09/18/2017
 ms.author: eustacea
-ms.openlocfilehash: 1f7a02f66a8d87f33d7bac9068628dbd29e5bd7c
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: e3d6464f3e69868b4903d999e52a37b0520018c6
+ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34635691"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55659452"
 ---
-# <a name="conceptual-understanding-of-x509-ca-certificates-in-the-iot-industry"></a>Koncepční přehled o certifikáty X.509 certifikační Autority v odvětví IoT
+# <a name="conceptual-understanding-of-x509-ca-certificates-in-the-iot-industry"></a>Koncepční přehled o certifikáty webu X.509 v odvětví IoT
 
-Tento článek popisuje hodnotu pomocí certifikátu X.509 – certifikáty certifikační autority v zařízení výrobní IoT a ověřování do služby IoT Hub.  Obsahuje informace o napájení řetězu instalační program a zvýraznit výhody.
+Tento článek vysvětluje výhody použití certifikáty X.509 certifikační autority (CA) v zařízení výrobní IoT a ověřování do služby IoT Hub.  Obsahuje informace o napájení zřetězit instalační program a zvýraznit výhody.
 
 Tento článek popisuje:
 
-* Jaké jsou certifikáty X.509 certifikační Autority a jak získat je
-* Postup registrace svůj certifikát X.509 certifikační Autority do služby IoT Hub
-* Jak nastavit výrobní dodavatelský řetězec pro ověřování založené na certifikační Autority X.509
-* Jak zařízení, které jsou podepsané certifikační Autority X.509 připojit ke službě IoT Hub
+* Co jsou certifikáty webu X.509 a jak je získat
+* Postup při registraci vašeho certifikátu webu X.509 do služby IoT Hub
+* Jak nastavit výrobní společnost dodavatelského řetězce pro ověřování založené na X.509 certifikační Autority
+* Jak připojit zařízení s podmíněným Přístupem X.509 podepsaný do služby IoT Hub
 
 ## <a name="overview"></a>Přehled
 
-Ověřování certifikační autoritou (CA) X.509 je přístup pro ověřování zařízení do služby IoT Hub pomocí metody, která výrazně zjednodušuje správu vytváření a životního cyklu identitu zařízení v zásobovací řetězec.
+Ověřování X.509 certifikační autoritu (CA) je přístup pro ověřování zařízení do IoT Hubu pomocí metody, která výrazně zjednodušuje správu vytváření a životního cyklu identit zařízení v dodavatelském řetězci.
 
-Jedinečný atribut ověřování X.509 certifikační Autority je vztah jeden mnoho, který obsahuje certifikát Certifikační autority s jeho podřízené zařízení.  Tento vztah umožňuje registraci libovolný počet zařízení do služby IoT Hub tak, že zaregistrujete certifikát certifikační Autority X.509 jednou, v opačném případě jedinečných certifikátů zařízení musí být předem zaregistrovaných pro každé zařízení, než se zařízení může připojit. Tento vztah jeden mnoho také zjednodušuje operace správy životního cyklu certifikátů zařízení.
+Rozlišovací atribut ověřování X.509 certifikační Autority je vztah jeden mnoho, který obsahuje certifikát certifikační Autority s jeho podřízených zařízení.  Tento vztah umožňuje zaregistrovat libovolný počet zařízení do služby IoT Hub pomocí registrace certifikátu webu X.509 jednou, v opačném případě jedinečných certifikátů zařízení musí být předem registrované pro každé zařízení, aby zařízení mohlo připojit. Tento vztah jeden mnoho zjednodušuje také operace správy životního cyklu certifikátů zařízení.
 
-Další důležité atribut ověřování X.509 certifikační Autority je zjednodušení logistiky řetězu napájení.  Zabezpečené ověřování zařízení vyžaduje, aby každé zařízení obsahuje jedinečný tajný klíč jako klíč jako základ pro vztah důvěryhodnosti. V ověřování pomocí certifikátů je tento tajný klíč soukromý klíč. Typické zařízení výrobní tok zahrnuje několik kroků a správce klíče.  Správa zařízení privátní klíče napříč více správce klíče a udržování vztahu důvěryhodnosti je bezpečně složitá a nákladná.  Pomocí certifikačních autorit řeší tento problém tím podepisování každý správce do řetěz kryptografického než pověření je s privátní klíče zařízení.  Každý správce zase podepisuje zařízení v jejich odpovídajících proces kroku výrobní toku.  Celkový výsledek je optimální zásobovací řetězec s integrovanou odpovědnosti za použití kryptografického řetěz certifikátů.  Je vhodné poznamenat, že tento proces poskytuje nejvyšší zabezpečení při ochraně zařízení jejich jedinečný privátní klíče.  K tomuto elementu end doporučujeme použít z zabezpečení moduly HSM (Hardware) podporující interně generování privátním klíčům, které nikdy zobrazit světlým den.
+Další důležité atribut ověřování X.509 certifikační Autority je zjednodušení logistiky dodavatelského řetězce.  Zabezpečené ověřování zařízení vyžaduje, aby každé zařízení obsahuje jedinečné tajný kód jako klíč jako základ pro vztah důvěryhodnosti. V ověřování na základě certifikátů je tento tajný kód privátní klíč. Zařízení typické výrobní flow zahrnuje více kroků a správce.  Bezpečně spravovat soukromé klíče zařízení napříč více správce a zachování důvěryhodnosti je složitá a nákladná.  Použití certifikační autority se tento problém řeší tím podepisování každý správce do řetěz kryptografického spíše než pověření s privátní klíče zařízení.  Každý správce pak zaregistruje zařízení v kroku jejich odpovídajících procesu výroby toku.  Celkový výsledek je optimální dodavatelský řetězec s integrovanou zodpovědnost pomocí kryptografických řetěz certifikátů.  Je vhodné poznamenat, že tento proces poskytuje nejvyšší zabezpečení, když zařízení chránit jejich jedinečných privátních klíčů.  K tomuto účelu doporučujeme použít nástroje zabezpečení moduly HSM (Hardware) schopný interně vytvářet privátní klíče, které se nikdy zobrazí indikátor den.
 
-Tento článek nabízí pomocí ověřování X.509 certifikační Autority, z instalačního programu, zadejte řetězec připojení zařízení začátku do konce zobrazení při provádění použití v praxi příkladu přesvědčit zúčastněné pochopení.
+Tento článek nabízí pohled začátku do konce použití ověřování X.509 certifikační Autority, z instalačního programu dodavatelského řetězce k připojení zařízení, při vytváření se použije jako příklad reálného světa ztuhnout principy.
 
 ## <a name="introduction"></a>Úvod
 
-Certifikát X.509 certifikační Autority je digitální certifikát, jehož vlastníka můžete podepisování jiných certifikátů.  Tento digitální certifikát totiž vyhovuje formátování standard předepsané standard na IETF RFC 5280 certifikát X.509 a je certifikační autorita (CA), protože jeho držitel můžete podepisování jiných certifikátů.
+Certifikát X.509 certifikační Autority je digitální certifikát, jehož vlastník může podepisování jiných certifikátů.  Tento digitální certifikát totiž vyhovuje formátování standard předepsané standard RFC 5280 sdružení IETF pro certifikát X.509 a je certifikační autorita (CA), protože jeho držitel můžete podepisování jiných certifikátů.
 
-Použití certifikační autority X.509 odhalíte nejlépe ve vztahu k konkrétní příklady.  Vezměte v úvahu společnosti-X, maker čipové-X-widgetů určené pro odborníky v oblasti instalace. Společnost X outsources výrobní a instalaci.  Smlouvy o výrobce Factory-Y výroba čipové-X-pomůcky a poskytovatele služeb technika Z instalace. Společnost X chce že čipové-X-pomůcky přímo se dodává z objektu pro vytváření-Y až technika Z pro instalaci a že připojuje přímo k společnosti-značkou instanci služby IoT Hub po instalaci bez dalšího zásahu od společnosti X. To lze provést, společnosti X muset dokončit několik operací jednorázové instalace primárního čipové-X-pomůcky pro automatické připojení.  Scénář začátku do konce pamatovat zbývající části tohoto článku je strukturu:
+Použití certifikační Autority X.509 nejlépe odhalíte ve vztahu k konkrétní příklad.  Vezměte v úvahu společnosti-X, Tvůrce Smart-X-widgetů pro profesionální instalace. Společnost X outsources výrobní a instalaci.  Smlouvy o výrobce Factory-Y výroba Smart-X-Widgetů a poskytovatele služeb Z technik pro instalaci. Společnost X chce, aby Smart-X-widgetu přímo se dodává z Factory-Y až technik Z pro instalaci a se připojuje přímo ke společnosti – každé instanci služby IoT Hub po instalaci bez dalšího zásahu od společnosti X. Dosáhnete toho, třeba splnit několik operací jednorázová nastavení vymazat Smart-X-widgetu pro automatické připojení společnosti X.  Se scénářem začátku do konce v úvahu zbývající část tohoto článku strukturovaná následujícím způsobem:
 
 * Získání certifikátu X.509 certifikační Autority
 
-* Registrovat certifikát X.509 certifikační Autority do služby IoT Hub
+* Registrace certifikátu webu X.509 do služby IoT Hub
 
-* Přihlašování zařízení do řetěz certifikátů
+* Přihlášení zařízení do řetěz certifikátů
 
 * Připojení zařízení
 
 ## <a name="acquire-the-x509-ca-certificate"></a>Získání certifikátu X.509 certifikační Autority
 
-Společnost X má povolenou možnost zakoupení certifikát X.509 certifikační Autority od certifikační autority veřejnou kořenovou nebo vytvořit procesem podepsaný svým držitelem.  Jednou z možností by optimální z nich, v závislosti na scénáři aplikace.  Bez ohledu na to možnost proces zahrnuje dva základní kroky, generování páru veřejného a privátního klíče RSA a přihlášení veřejný klíč k certifikátu.
+Společnost X má povolenou možnost zakoupení od certifikační autority veřejného kořenového certifikátu webu X.509 nebo vytvoření nového procesem podepsaný svým držitelem.  Jednou z možností by optimální místo druhého v závislosti na scénáři aplikace.  Bez ohledu na to, možnost proces zahrnuje dva základní kroky, generování dvojice veřejného/soukromého klíče a přihlašování veřejný klíč k certifikátu.
 
-![IMG. csr toku](./media/csr-flow.png)
+![img-csr-flow](./media/csr-flow.png)
 
-Podrobnosti o tom, jak provést tyto kroky se liší od různých zprostředkovatelů služby.
+Podrobnosti o tom, jak provádět tyto kroky se liší od různých poskytovatelů služeb.
 
-### <a name="purchasing-an-x509-ca-certificate"></a>Zakoupení certifikát X.509 certifikační Autority.
+### <a name="purchasing-an-x509-ca-certificate"></a>Nákup certifikátu webu X.509
 
-Zakoupení certifikátu certifikační Autority výhodou je, že act dobře známé kořenové certifikační Autority jako důvěryhodné třetích stran k ručit za legitimitu zařízení IoT, když se zařízení připojí. Společnost X by tuto možnost zvolte, pokud se chcete čipové-X-pomůcky pro interakci s produkty třetích stran nebo služby po počátečním připojení ke službě IoT Hub.
+Nákup certifikátu certifikační Autority je výhodou act dobře známé kořenové certifikační Autority jako důvěryhodné třetích stran k ručit pro legitimitu zařízení IoT, když se zařízení připojí. Společnost X by tuto možnost zvolte, pokud tito pracovníci Smart-X-Widget pro interakci s produkty třetích stran nebo služby po počátečním připojení ke službě IoT Hub.
 
-Chcete-li zakoupit certifikát X.509 certifikační Autority, by společnosti X zvolte poskytovatele služeb kořenové certifikáty. Hledání v Internetu pro frázi "kořenové certifikační Autority, předá dobrý zájemce.  Kořenové certifikační Autority na tom, jak vytvořit pár veřejného a privátního klíče a jak vygenerovat žádost (Podepsání certifikátu) pro své služby průvodce společnosti X.  Zástupce oddělení služeb je proces formální použití certifikátu od certifikační autority.  Výsledek tento nákup se certifikát pro použití jako certifikát autoritu.  S ohledem na všudypřítomnost technologií certifikáty X.509, bude pravděpodobně mít byla správně naformátován a umožňuje společnosti IETF RFC 5280 standardní certifikátu.
+Pokud chcete zakoupit certifikátu webu X.509, byste zvolili společnosti X zprostředkovatele kořenové certifikáty služby. Vyhledávání na Internetu pro frázi "Kořenové certifikační Autority" budou poskytovat dobré potenciálních zákazníků.  Kořenové certifikační Autority pokyny pro vytvoření dvojice veřejného/soukromého klíče a jak vygenerovat podepsání certifikátu žádosti (CSR) pro služby společnosti X.  Zástupce je formální proces žádosti o certifikát od certifikační autority.  Výsledek tento nákup je certifikát pro použití jako certifikát autority.  S ohledem na všudypřítomnost technologií certifikáty X.509, bude pravděpodobně byly správně naformátovaná tak jeho IETF RFC 5280 standardní certifikát.
 
-### <a name="creating-a-self-signed-x509-ca-certificate"></a>Vytvořit certifikát podepsaný svým držitelem X.509 Certifikační autority
+### <a name="creating-a-self-signed-x509-ca-certificate"></a>Vytváří se certifikát X.509 podepsaný certifikační Autoritou
 
-Proces vytvoření certifikát podepsaný svým držitelem X.509 Certifikační autority je podobná nákupu s výjimkou zahrnující podepisující osoba třetí strany jako kořenové certifikační autority. V našem příkladu společnosti X podepíše certifikát jeho autority místo z kořenové certifikační autority.  Tuto možnost pro testování, dokud se připraveni k nákupu certifikát autority může zvolte společnosti X. Společnost X také používat certifikát podepsaný svým držitelem X.509 Certifikační autority v produkčním prostředí, pokud čipové-X-pomůcky není určen pro připojení k žádné služby třetích stran mimo službu IoT Hub.
+Proces vytvoření certifikát X.509 podepsaný certifikační Autoritou se podobá při nákupu s výjimkou zahrnující podepisující třetích stran stejně jako kořenové certifikační autority. V našem příkladu společnosti X podepíše certifikát jeho autority místo kořenové certifikační autority.  Společnost X může tuto možnost zvolte pro testování, dokud nebudou připravené zakoupit certifikát autority. Společnost X také použít certifikát CÚ X.509 podepsaného svým držitelem v produkčním prostředí, pokud Smart-X-widgetu není určený pro připojení ke všem službám třetích stran mimo službu IoT Hub.
 
-## <a name="register-the-x509-certificate-to-iot-hub"></a>Registrovat certifikát X.509 do služby IoT Hub
+## <a name="register-the-x509-certificate-to-iot-hub"></a>Zaregistrovat certifikát X.509 do služby IoT Hub
 
-Společnost X je potřeba zaregistrovat X.509 certifikační Autority do služby IoT Hub, kde bude sloužit k ověření čipové-X-pomůcky, protože se připojují.  To je jednorázový proces, který umožňuje možnost ověření a spravovat libovolný počet zařízení čipové-X-pomůcky.  Tento proces je jednorázové kvůli vztah jeden mnoho mezi autority a zařízení a také představuje jeden z hlavních výhod pomocí metody ověřování X.509 certifikační Autority.  Alternativou je nahrát kryptografické otisky certifikátů jednotlivých pro každé zařízení čipové-X-pomůcky a přidání do provozních nákladů.
+Společnost X musí zaregistrovat certifikační Autority X.509 do služby IoT Hub, kde bude sloužit k ověřování Smart-X-Widgetů, jak se připojit.  Toto je jednorázový proces, který nabízí možnost ověřovat a spravovat libovolný počet zařízení Smart-X-widgetu.  Tento proces je jednorázový kvůli vztah jeden mnoho mezi certifikační autoritu a zařízení a také se považuje za jednu z hlavních výhod pomocí metody ověřování X.509 certifikační Autority.  Alternativou je nahrát kryptografické otisky jednotlivých certifikátů pro každé zařízení Smart-X-widgetu a přidání do provozních nákladů.
 
-Registrace certifikátu X.509 certifikační Autority je dvoustupňový proces, nahrávání certifikátu a certifikát ověření z – u sebe.
+Registrace certifikátu webu X.509 je dvoustupňový proces, nahrání certifikátu a certifikát důkaz vlastnictví.
 
 ![img-pop-flow](./media/pop-flow.png)
 
-### <a name="x509-ca-certificate-upload"></a>Nahrávání certifikátu X.509 certifikační Autority
+### <a name="x509-ca-certificate-upload"></a>Nahrání certifikátu X.509 certifikační Autority
 
-Certifikát certifikační Autority X.509 nahrát proces je, že právě, odešlete certifikát certifikační Autority do služby IoT Hub.  IoT Hub očekává, že certifikát v souboru. Společnost X jednoduše odešle soubor certifikátu. Soubor certifikátu za žádných okolností nesmí obsahovat všem privátním klíčům.  Doporučené postupy vyplývající ze standardů pro řízení infrastruktury veřejných klíčů (PKI) vyžaduje dané znalosti společnosti-značkou privátní se nachází v tomto případě výhradně v rámci společnosti X.
+Certifikátu webu X.509 odeslání procesu je přesně to, že nahrajete certifikát certifikační Autority do služby IoT Hub.  IoT Hub očekává, že certifikát v souboru. Společnost X jednoduše nahraje soubor certifikátu. Soubor certifikátu za žádných okolností nesmí obsahovat všem privátním klíčům.  Osvědčené postupy z normy, které upravují infrastruktury veřejných klíčů (PKI) určuje dané znalosti společnosti-bezpodmínečný privátní se nachází v tomto případě výhradně v rámci společnosti X.
 
 ### <a name="proof-of-possession-of-the-certificate"></a>Ověření vlastnictví certifikátu
 
-Certifikát certifikační Autority X.509, stejně jako žádné digitální certifikáty, je veřejné informace, které je ohrožena útoky založenými na odposlechu.  Jako takový úmysly může zachytávat certifikát a odešlete ji jako vlastní.  V našem příkladu by chtěl IoT Hub Ujistěte se, že certifikát certifikační Autority, který odesílá společnosti X skutečně patří společnosti X. Dělá tak náročné společnosti x k prokáže, že certifikát přenést prostřednictvím ve skutečnosti měl [tok ověření z vlastnictví (PoP)](https://tools.ietf.org/html/rfc5280#section-3.1). Tok ověření vlastnictví zahrnuje IoT Hub generování náhodné číslo podepsání společnosti-X pomocí jeho privátní klíč.  Pokud společnosti X a osvědčené postupy infrastruktury veřejných KLÍČŮ a jejich privátní klíč chráněný pak pouze se bude v pozici správně reagovat na výzvy důkaz vlastnictví.  IoT Hub pokračuje pro zaregistrování certifikátu X.509 CA při úspěšná odpověď výzvy důkaz vlastnictví.
+Certifikátu webu X.509, stejně jako žádné digitální certifikáty, je veřejné informace, které jsou náchylné k odposlouchávání.  V důsledku toho může úmysly zachytit certifikát a pokusu o odeslání jako svoje vlastní.  V našem příkladu by chtěli služby IoT Hub Ujistěte se, že certifikát certifikační Autority, který nahrává společnosti X ve skutečnosti patří společnosti X. Učiní tak náročné společnosti-x do prokáže, že certifikát přenést prostřednictvím ve skutečnosti měl [důkaz vlastnictví (PoP) tok](https://tools.ietf.org/html/rfc5280#section-3.1). Důkaz vlastnictví flow zahrnuje služby IoT Hub generuje náhodné číslo podepsání firemní-X pomocí jeho privátní klíč.  Pokud společnosti X a osvědčené postupy infrastruktury veřejných KLÍČŮ a jejich privátní klíč chráněný pak pouze by v pozici, aby správně reagovat na výzvy důkaz vlastnictví.  IoT Hub pokračuje k registraci certifikátu X.509 certifikační Autority po úspěšné odpovědi výzvy důkaz vlastnictví.
 
-Úspěšná odpověď na výzvu ověření vlastnictví ze služby IoT Hub dokončení registrace X.509 certifikační Autority.
+Úspěšná odpověď na výzvu důkaz vlastnictví ze služby IoT Hub dokončení registrace X.509 certifikační Autority.
 
-## <a name="sign-devices-into-a-certificate-chain-of-trust"></a>Přihlašování zařízení do řetěz certifikátů
+## <a name="sign-devices-into-a-certificate-chain-of-trust"></a>Přihlášení zařízení do řetěz certifikátů
 
-IoT vyžaduje každé zařízení měl jedinečnou identitu.  Tyto identity jsou ve tvaru certifikáty pro ověřování pomocí certifikátů schémata.  V našem příkladu to znamená, že každý čipové-X-pomůcky musí mít certifikát jedinečný zařízení.  Jak společnosti X instalační program pro tuto ve svém řetězu napájení?
+IoT vyžaduje, aby každé zařízení mít jedinečnou identitu.  Tyto identity jsou formuláře certifikáty pro ověřování prostřednictvím certifikátu schémata.  V našem příkladu to znamená, že každý Smart-X-widgetu musí mít jedinečný certifikát.  Jak společnosti X instalační program pro to v jeho dodavatelský řetězec?
 
-Jedním ze způsobů přejděte o to je k předběžnému generování certifikáty pro čipové-X-pomůcek a pověření znalosti odpovídající privátní klíče jedinečné zařízení s partnery řetězu napájení.  Ve společnosti X to znamená, že pověření Y objektu pro vytváření a technika Z.  I když jde o platnou metodou, součástí výzvy, které musí předcházet zajistit vztahu důvěryhodnosti, následujícím způsobem:
+Jedním ze způsobů přejít o to je předem vygenerovat certifikáty pro čipové-X-Widgetů a pověření znalost odpovídající privátní klíče jedinečná zařízení s partnery dodavatelského řetězce.  Pro společnosti-X to znamená, že pověření Factory-Y a technik Z.  Když je platnou metodu, dodává s problémy, které musí být překonat zajistit vztahu důvěryhodnosti:
 
-1. Museli sdílet s partnery zadejte řetězec, kromě ignoruje infrastruktury veřejných KLÍČŮ privátní klíče zařízení osvědčených postupů nikdy sdílení privátních klíčů, díky vytváření vztah důvěryhodnosti v nákladné zásobovací řetězec.  Znamená to, kapitálové systémy jako zabezpečené místnostmi úklidové zařízení privátní klíče a procesy, jako jsou audity pravidelné zabezpečení je potřeba nainstalovat.  Jak přidat náklady zásobovací řetězec.
+1. Museli sdílet s partnery dodavatelského řetězce, kromě infrastruktury veřejných KLÍČŮ je ignorována privátní klíče zařízení k osvědčeným postupům nikdy sdílení privátní klíče, díky vytváření důvěryhodnosti v dodavatelském řetězci nákladné.  To znamená, že kapitálových systémy, jako je zabezpečené místnosti na dům zařízení privátního klíče a procesy, jako jsou auditů zabezpečení je potřeba nainstalovat.  Přidat i náklady na dodavatelský řetězec.
 
-2. Úloha 1: 1 pro každou dvojici klíč zařízení z bodu generace (proto privátní klíč) jedinečný certifikát zařízení k vyřazení zařízení se změní na bezpečně monitorování účtů pro zařízení v zásobovací řetězec a později je správa v nasazení. To vylučuje správu skupiny zařízení, pokud koncept skupin je explicitně integrované do procesu nějakým způsobem. Zabezpečené monitorování účtů a zařízení správy životního cyklu, tedy stane operations velkou zátěž.  V našem příkladu by společnosti X berte tato zatížení.
+2. Úkol 1: 1 pro každý pár klíč zařízení z bodu generování zařízení jedinečný certifikát (tedy privátní klíč) k vyřazení zařízení se změní bezpečně monitorování účtů pro zařízení v dodavatelském řetězci a později je správa v nasazení. Správa skupin zařízení to vylučuje Pokud koncept skupin je explicitně integrované do procesu nějakým způsobem. Zabezpečené monitorování účtů a zařízení správy životního cyklu, proto se stane zatížení náročné operace.  V našem příkladu by obsahovat společnosti X tato zatížení.
 
-Ověřování pomocí certifikátu X.509 certifikační Autority nabízí elegantní řešení pro výše uvedené problémy prostřednictvím řetězů certifikátů.  Řetěz certifikátů výsledkem podpisového zprostředkující certifikační Autority, který naopak podepíše jinou zprostředkující certifikační Autority a tak přejde, dokud konečné zprostředkující certifikační Autority přihlásí zařízení certifikační Autority.  V našem příkladu podepisuje společnosti X Factory-Y, které následně podepíše technika-Z, která podepisuje nakonec čipové-X-pomůcky.
+Ověřování pomocí certifikátu X.509 certifikační Autority nabízí elegantní řešení pro výše uvedené problémy prostřednictvím řetězy certifikátů.  Řetěz certifikátů vyplývá z podpisového zprostředkující certifikační Autorita, která pak podepíše jiné zprostředkující certifikační Autority a tak pokračuje až do konečného zprostředkující certifikační Autority zaregistruje zařízení certifikační Autority.  V našem příkladu podepíše společnosti X Factory-Y, který pak podepíše technika-Z, který nakonec podepíše Smart-X-widgetu.
 
-![img cert řetězu hierarchie](./media/cert-chain-hierarchy.png)
+![img-cert-chain-hierarchy](./media/cert-chain-hierarchy.png)
 
-Výše cascade certifikát v řetězu uvede logické ruční – vypnuté autority.  Mnoho řetězců postupujte podle této logické ruční – vypnuté kterým každý zprostředkující certifikační Autority získá přihlášeni řetězu při přijímání všech nadřazeného certifikáty certifikační Autority a poslední zprostředkující certifikační Autority nakonec podepisuje každé zařízení a vložit všechny certifikáty autority z řetězu do zařízení. To je běžné, když kontrakt výrobní společnost s hierarchií objektů Factory zadává konkrétní objekt factory uděláte výrobní.  Při hierarchie může být několik úrovní hloubky (například typ nebo výrobní řádku geography nebo produktu), pouze objekt factory na konci získá k interakci se zařízením, ale řetězu zachovaný od nejvyšší úrovně v hierarchii.
+Nad sebe certifikáty v řetězu uvede logických odevzdání autority.  Dodavatelské mnoho postupujte podle tohoto logického odevzdání kterým získá každý zprostředkující certifikační Autority podepsané do řetězce při příjmu všechny upstreamové certifikáty certifikační Autority, a poslední zprostředkující certifikační Autority a nakonec podepíše každé zařízení a všechny certifikáty autority z řetězce vložení do zařízení. To je běžné, pokud kontrakt výrobní společnost s hierarchií továren provizí konkrétní factory provedete výroby.  Hierarchie může být několik úrovní hluboko (třeba podle zeměpisné oblasti/typu/výrobní řádku produktu), pouze objekt pro vytváření na konci získá komunikovat se zařízením, ale řetězci je spravovaná na nejvyšší úrovni hierarchie.
 
-Alternativní řetězy může mít různé zprostředkující certifikační Autority práce se zařízením, ve kterém případ certifikační Autority interakci s zařízení vloží obsahu řetěz certifikátu v tomto bodě.  Hybridní modely je také možné, kde jen některé certifikační autority má fyzické interakci se zařízením.
+Náhradní řetězce může mít jinou zprostředkující certifikační Autority interakce se zařízením, ve kterém případ certifikační Autority interakce se zařízením vloží obsah řetěz certifikátu v tomto okamžiku.  Hybridní modely jsou také možné kde jenom pro některé certifikační autority má fyzický interakce se zařízením.
 
-V našem příkladu Y objektu pro vytváření a technika Z komunikovat s čipovou-X-pomůcky.  Při společnosti X vlastní čipové-X-pomůcky, je ve skutečnosti není fyzicky s ní pracovat v celé zásobovací řetězec.  Řetěz certifikátů důvěryhodnosti čipové-X-pomůcky proto tvoří společnosti X podepisování Factory-Y, které následně podepíše technika-Z, který pak bude poskytovat konečné podpis čipové-X-pomůcky. Výrobce a instalaci čipové-X-pomůcky tvoří objekt pro vytváření-Y a technika-Z pomocí jejich odpovídajících certifikátů zprostředkující certifikační Autority k podepsání každé čipové-X-pomůcky. Konečný výsledek tohoto celý proces je čipové-X-pomůcky s certifikáty jedinečný zařízení a řetěz certifikátů vztahu důvěryhodnosti, má certifikát certifikační Autority společnosti X.
+Objekt pro vytváření Y a Z technik pracovat v našem příkladu Smart-X-widgetu.  Zatímco společnosti X vlastní Smart-X-widgetu, je ve skutečnosti nekomunikuje fyzicky s ním v celé dodavatelského řetězce.  Řetěz certifikátů důvěryhodnosti Smart-X-pomůcky proto tvoří společnosti X podepisování Factory-Y, který pak podepíše technika-Z, který pak bude poskytovat konečné podpis Smart-X-widgetu. Výroba a instalace Smart-X-widgetu tvoří Factory-Y a technik-pomocí jejich odpovídajících zprostředkujících certifikátů CA pro přihlášení každého Smart-X-pomůcky. Konečný výsledek celý tento proces je Smart-X-pomůcky jedinečná zařízení certifikáty a řetěz certifikátů má certifikát certifikační Autority společnosti X.
 
-![img cert dílu výrobce řetězce](./media/cert-mfr-chain.png)
+![img-cert-mfr-chain](./media/cert-mfr-chain.png)
 
-Toto je vhodný bod chcete-li zkontrolovat hodnotu metody X.509 certifikační Autority.  Místo předem generování a předání certifikáty každých čipové-X-pomůcky do zásobovací řetězec, ruční společnosti X pouze jednou podepsat Factory-Y.  Místo nutnosti sledovat každé zařízení v průběhu životního cyklu zařízení, nemusí společnosti X sledovat a spravovat zařízení prostřednictvím skupiny, které přirozeně dostáváme proces zadejte řetězec, například zařízení nainstalovat pomocí technik Z po července některé roku.
+To je dobrý bod zkontrolovat hodnotu metody X.509 certifikační Autority.  Místo generování předem a předání certifikáty pro každou Smart-X-widgetu do dodavatelský řetězec, společnost X platili jen jednou přihlásit Factory-Y.  Namísto toho, aby ke sledování každého zařízení v průběhu životního cyklu zařízení, může společnost X nyní sledovat a spravovat zařízení prostřednictvím skupiny, které přirozeně základě procesů dodavatelských řetězců, například zařízení nainstaloval Z technik po dne roku některé.
 
-Poslední ale zase infuses certifikační Autority metoda ověřování zabezpečení odpovědnosti za do zařízení výrobní zásobovací řetězec. Z důvodu procesu řetěz certifikátu je akce všech členů v řetězu kryptograficky zaznamenaná a ověřitelné.
+Poslední, ale ne nejméně infuses certifikační Autority metody ověřování zabezpečené zodpovědnost do výroby dodavatelský řetězec zařízení. Z důvodu procesu řetěz certifikátu je akcí pro každého člena v řetězci kryptograficky zaznamenané a ověřitelné.
 
-Tento proces závisí na určité předpoklady, které musí být prezentované pro úplnost.  Vyžaduje nezávislé vytvoření zařízení jedinečné veřejného a privátního klíče RSA a že se privátní klíč chráněný v rámci zařízení.  Naštěstí čipy zabezpečení silicon ve tvaru z zabezpečené moduly HSM (Hardware) umožňuje interně generování klíčů a ochranu privátních klíčů neexistuje.  Společnost X stačit přidat jenom jednu z těchto čipy do kusovník součást čipové-X-ovládacího prvku.
+Tento proces se opírá o určité předpoklady, které musí být prezentované pro úplnost.  Vyžaduje nezávislé vytvoření zařízení jedinečné veřejného/soukromého klíče dvojice a že se privátní klíč chráněný v rámci zařízení.  Naštěstí zabezpečené silicon čipy v podobě z zabezpečených modulů HSM (Hardware) dokáže interně generování klíčů a ochranu privátních klíčů existovat.  Společnost X stačí pro přidání jednoho z těchto čipy do kusovník komponenty Smart-X-ovládacího prvku.
 
 ## <a name="device-connection"></a>Připojení zařízení
 
-Předchozí části výše mít byla vytváření připojení zařízení.  Jednoduše registrací certifikát X.509 certifikační Autority do služby IoT Hub jeden času, jak potenciálně miliony zařízení připojit a získat ověření od prvního?  Jednoduché; prostřednictvím stejné nahrávání certifikátu a ověření vlastnictví toku dříve došlo s registrace certifikátu X.509 certifikační Autority.
+Předchozí části výše mít bylo vytváření připojení zařízení.  Když si zaregistrujete jednoduše certifikátu webu X.509 do služby IoT Hub jedenkrát, jak potenciálně miliony zařízení a získat se ověřil z první?  Jednoduché. prostřednictvím stejné nahrání certifikátu a důkaz vlastnictví toku dříve došlo s registrací certifikátu webu X.509.
 
-Zařízení vyrobila pro ověřování X.509 certifikační Autority jsou vybaveny zařízení jedinečných certifikátů a řetěz certifikátů z jejich odpovídajících výrobní zásobovací řetězec.  Připojení zařízení, i pro úplně první čas probíhá ve dvou krocích: certifikát řetězu odeslání a ověření u sebe.
+Zařízení od pro ověření X.509 certifikační Autority jsou vybavené jedinečných certifikátů zařízení a řetěz certifikátů z jejich odpovídajících výrobní dodavatelského řetězce.  Připojení zařízení i pro úplně první čas, dojde ve dvou krocích: certifikát řetězu nahrávání a důkaz vlastnictví.
 
-Zařízení během nahrávání řetěz certifikátů, odešle svůj jedinečný certifikát zařízení společně s řetěz certifikátů, které jsou v něm nainstalován do služby IoT Hub.  Pomocí předem zaregistrovaných certifikátu X.509 certifikační Autority, můžete Centrum IoT kryptograficky ověřit několik věcí, že řetězu odeslaný certifikát je interně konzistentní a že řetězu byla vytvořena vlastníkem platný certifikát certifikační Autority X.509.  Právě byl se proces registrace X.509 certifikační Autority, IoT Hub by zahájit proces ověření vlastnictví výzvy a odezvy že řetězu a proto zařízení certifikát ve skutečnosti patří do zařízení se nahrávání.  Dělá to tak vygenerováním náhodných výzvy podepsání zařízení pomocí jeho privátní klíč pro ověření službou IoT Hub.   Úspěšná odpověď aktivuje IoT Hub přijmout zařízení jako platná a udělit mu připojení.
+Při nahrávání řetěz certifikátů zařízení odešle svůj jedinečný certifikát zařízení společně s řetěz certifikátů, které jsou nainstalované v něm do služby IoT Hub.  Pomocí předem zaregistrovaných certifikát X.509 certifikační Autority, můžete službu IoT Hub kryptograficky ověřit pár věcí, řetěz certifikátů nahraných je interně konzistentní a že řetězu pocházelo vlastníkem platný certifikát certifikační Autority X.509.  Právě se s procesem registrace X.509 certifikační Autority, IoT Hub by zahájení procesu důkaz vlastnictví – výzva odezva pro ověření, který řetězci a proto zařízení certifikát ve skutečnosti patří do zařízení, pak ho nahrát.  Dělá to tak, že generování náhodného složité být podepsány zařízení pomocí jeho privátní klíč pro ověření ve službě IoT Hub.   Úspěšná odpověď aktivuje IoT Hub a přijmout zařízení jako platná a udělit mu připojení.
 
-V našem příkladu by každý čipové-X-pomůcky nahrát svůj jedinečný certifikát zařízení společně s certifikáty Y objektu pro vytváření a X.509 technika Z certifikační Autority a pak odpověď na výzvu ověření vlastnictví ze služby IoT Hub.
+V našem příkladu by každý Smart-X-widgetu nahrát svůj jedinečný certifikát zařízení společně s certifikáty Y objekt pro vytváření a X.509 technik Z certifikační Autority a pak odpověď na výzvu důkaz vlastnictví ze služby IoT Hub.
 
-![img zařízení pop toku](./media/device-pop-flow.png)
+![img-device-pop-flow](./media/device-pop-flow.png)
 
-Všimněte si, že základ pro vztah důvěryhodnosti postavená na ochraně privátních klíčů, včetně privátního klíče zařízení.  Proto nelze kladen dostatek význam zabezpečené silicon čipy v formuláře z zabezpečené moduly HSM (Hardware) pro ochranu privátního klíče zařízení a celkové osvědčený postup, nikdy sdílení všem privátním klíčům, jako jeden objekt pro vytváření pověření jiný jeho privátní klíč.
+Všimněte si, že základ pro vztah důvěryhodnosti spočívá v ochranu privátních klíčů, včetně privátního klíče zařízení.  Proto nelze kladen dostatek důležitost zabezpečené silicon čipy v podobě sady zabezpečených modulů HSM (Hardware) pro ochranu privátních klíčů zařízení a celkově osvědčený postup nikdy sdílení všem privátním klíčům, jako je jeden objekt pro vytváření pověření jiný jeho privátní klíč.
 

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: jingwang
-ms.openlocfilehash: a3fcff530077a08414b343a775e7ae694b29bc75
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: cecdb9f9af9c5194eb56cfefd63b31348f111980
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54020995"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55562755"
 ---
 # <a name="copy-data-from-magento-using-azure-data-factory-preview"></a>Kopírování dat z Magento pomocí Azure Data Factory (Preview)
 
@@ -61,8 +61,8 @@ Magento propojené služby jsou podporovány následující vlastnosti:
         "typeProperties": {
             "host" : "192.168.222.110/magento3",
             "accessToken": {
-                 "type": "SecureString",
-                 "value": "<accessToken>"
+                "type": "SecureString",
+                "value": "<accessToken>"
             },
             "useEncryptedEndpoints" : true,
             "useHostVerification" : true,

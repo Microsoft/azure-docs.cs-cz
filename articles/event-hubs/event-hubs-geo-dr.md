@@ -14,12 +14,12 @@ ms.topic: article
 ms.custom: seodec18
 ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: 59eebc8389238af7180b94cb094f9528a21d26d1
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 3a7cc7703a6b33eef4c7a10f927b4747bc1d417c
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53091342"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55562180"
 ---
 # <a name="azure-event-hubs---geo-disaster-recovery"></a>Azure Event Hubs – Geo-zotavení po havárii 
 
@@ -41,13 +41,13 @@ Funkce zotavení po havárii implementuje zotavení po havárii metadata a spol�
 
 V tomto článku se používají následující termíny:
 
--  *Alias*: název pro konfigurace zotavení po havárii, které jste nastavili. Alias poskytuje jeden řetězec připojení stabilní plně kvalifikovaný název domény (FQDN). Aplikace použít tento připojovací řetězec aliasu pro připojení k oboru názvů. 
+-  *Alias*: Název konfigurace zotavení po havárii, které jste nastavili. Alias poskytuje jeden řetězec připojení stabilní plně kvalifikovaný název domény (FQDN). Aplikace použít tento připojovací řetězec aliasu pro připojení k oboru názvů. 
 
--  *Obor názvů primárního a sekundárního*: obory názvů, které odpovídají na alias. Primární obor názvů je "aktivní" a přijímá zprávy (to může být existující nebo nový obor názvů). Sekundární obor názvů je "pasivní" a nepřijímá zprávy. Metadata mezi oběma jsou synchronizované, tak i hladce přijmout zprávy bez nutnosti jakkoli měnit aplikace kódu nebo připojovací řetězec. Aby bylo zajištěno, že pouze aktivní obor názvů přijímá zprávy, musíte použít alias. 
+-  *Obor názvů primárního a sekundárního*: Obory názvů, které odpovídají na alias. Primární obor názvů je "aktivní" a přijímá zprávy (to může být existující nebo nový obor názvů). Sekundární obor názvů je "pasivní" a nepřijímá zprávy. Metadata mezi oběma jsou synchronizované, tak i hladce přijmout zprávy bez nutnosti jakkoli měnit aplikace kódu nebo připojovací řetězec. Aby bylo zajištěno, že pouze aktivní obor názvů přijímá zprávy, musíte použít alias. 
 
--  *Metadata*: entity jako jsou event hubs a skupiny uživatelů a jejich vlastnosti služby, které jsou spojeny s oborem názvů. Všimněte si, že se automaticky replikují jenom entity a jejich nastavení. Zprávy a události se nereplikují. 
+-  *Metadata*: Entity, jako jsou event hubs a skupiny uživatelů. a jejich vlastnosti služby, které jsou spojeny s oborem názvů. Všimněte si, že se automaticky replikují jenom entity a jejich nastavení. Zprávy a události se nereplikují. 
 
--  *Převzetí služeb při selhání*: proces aktivace sekundární obor názvů.
+-  *Převzetí služeb při selhání*: Proces aktivace sekundární obor názvů.
 
 ## <a name="setup-and-failover-flow"></a>Instalační program a převzetí služeb při selhání toku
 
@@ -102,12 +102,12 @@ Mějte na paměti následující aspekty brát v úvahu v této vydané verzi:
 
 4. Synchronizace entit může trvat nějakou dobu, přibližně 50 – 100 entit za minutu.
 
-## <a name="availability-zones-preview"></a>Zóny dostupnosti (preview)
+## <a name="availability-zones"></a>Zóny dostupnosti 
 
-Event Hubs standardní skladová jednotka podporuje také [zóny dostupnosti](../availability-zones/az-overview.md), poskytuje umístění s izolací chyb v rámci oblasti Azure. 
+Event Hubs standardní skladová jednotka podporuje [zóny dostupnosti](../availability-zones/az-overview.md), poskytuje umístění s izolací chyb v rámci oblasti Azure. 
 
 > [!NOTE]
-> Ve verzi preview zón dostupnosti je podporována pouze v **USA (střed)**, **USA – východ 2**, a **Francie – střed** oblastech.
+> Podpora zóny dostupnosti Azure Event Hubs úrovně Standard je k dispozici pouze [oblastí Azure](../availability-zones/az-overview.md#regions-that-support-availability-zones) kde zóny dostupnosti jsou k dispozici.
 
 Zóny dostupnosti můžete povolit na pouze nové obory názvů pomocí webu Azure portal. Event Hubs nepodporuje migraci z existující oborů názvů. Po povolení na váš obor názvů nejde zakázat redundanci zón.
 

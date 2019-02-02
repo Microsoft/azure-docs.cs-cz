@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/02/2018
 ms.author: shvija
-ms.openlocfilehash: 2523db3d817b4281b6435374ef0cca4e1d2da695
-ms.sourcegitcommit: d0ea925701e72755d0b62a903d4334a3980f2149
+ms.openlocfilehash: 432f2495dd1b4c8aeb761d12904adf26f3c24c0b
+ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/09/2018
-ms.locfileid: "40005853"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55660693"
 ---
 # <a name="available-event-hubs-apis"></a>Rozhraní API k dispozici události rozbočovače
 
@@ -43,7 +43,7 @@ Další informace o aktuálním stavu jednotlivých knihoven runtime naleznete v
 
 #### <a name="net"></a>.NET
 
-Ekosystému .NET má různými moduly runtime, aby vás nečekala více knihovny .NET pro službu Event Hubs. Knihovny .NET Standard lze spouštět s využitím .NET Core nebo .NET Framework, zatímco knihovně rozhraní .NET Framework lze spustit pouze v prostředí .NET Framework. Další informace o verzích rozhraní .NET Framework najdete v tématu [verze rozhraní framework](https://docs.microsoft.com/dotnet/articles/standard/frameworks#framework-versions).
+Ekosystému .NET má různými moduly runtime, aby vás nečekala více knihovny .NET pro službu Event Hubs. Knihovny .NET Standard lze spouštět s využitím .NET Core nebo .NET Framework, zatímco knihovně rozhraní .NET Framework lze spustit pouze v prostředí .NET Framework. Další informace o verzích rozhraní .NET Framework najdete v tématu [verze rozhraní framework](https://docs.microsoft.com/dotnet/articles/standard/frameworks).
 
 #### <a name="node"></a>Node
 

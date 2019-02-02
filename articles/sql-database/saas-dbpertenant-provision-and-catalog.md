@@ -11,13 +11,13 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 manager: craigg
-ms.date: 04/01/2018
-ms.openlocfilehash: 1f2539ed7ea407e2a1931ab2eb5951e61e4c7b03
-ms.sourcegitcommit: 715813af8cde40407bd3332dd922a918de46a91a
+ms.date: 09/24/2018
+ms.openlocfilehash: aa884f2df76c20d3119022069179b08ba2f2a6b7
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47056263"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55565208"
 ---
 # <a name="learn-how-to-provision-new-tenants-and-register-them-in-the-catalog"></a>Další informace o zřízení nových tenantů a jejich registrace v katalogu
 
@@ -34,7 +34,7 @@ V tomto kurzu se naučíte:
 Předpokladem dokončení tohoto kurzu je splnění následujících požadavků:
 
 * Nasazení aplikace SaaS aplikace Wingtip Tickets databáze na tenanta. Nasazení za méně než pět minut, najdete v článku [nasazení a zkoumání SaaS aplikace Wingtip Tickets databáze na tenanta aplikace](saas-dbpertenant-get-started-deploy.md).
-* Je nainstalované prostředí Azure PowerShell. Další informace najdete v tématu [Začínáme s Azure Powershellem](https://docs.microsoft.com/powershell/azure/get-started-azureps).
+* Je nainstalované prostředí Azure PowerShell. Další informace najdete v tématu [Začínáme s Azure PowerShellem](https://docs.microsoft.com/powershell/azure/get-started-azureps).
 
 ## <a name="introduction-to-the-saas-catalog-pattern"></a>Úvod do katalogovém systému SaaS
 
@@ -155,9 +155,9 @@ Skript nasadí dávku dalších tenantů. Používá [šablony Azure Resource Ma
 
 K dalším způsobům zřizování není zahrnuta v tomto kurzu:
 
-**Předběžným zřizováním databází**: předem zřizovaných způsob využívá skutečnost, že databáze v elastickém fondu nepřidávají další náklady. Účtování probíhá za elastický fond, ne za databáze. Nečinné databáze nespotřebovávají žádné prostředky. Předem zřizovaných databází ve fondu a jejich přidělením v případě potřeby můžete snížit čas na přidání tenantů. Počet předběžně zřizovaných databází je možné upravit tak, aby měli k předpokládanému tempu zřizování tenantů.
+**Předběžným zřizováním databází**: Předem zřizovaných způsob využívá skutečnost, že databáze v elastickém fondu nepřidávají další náklady. Účtování probíhá za elastický fond, ne za databáze. Nečinné databáze nespotřebovávají žádné prostředky. Předem zřizovaných databází ve fondu a jejich přidělením v případě potřeby můžete snížit čas na přidání tenantů. Počet předběžně zřizovaných databází je možné upravit tak, aby měli k předpokládanému tempu zřizování tenantů.
 
-**Automatické zřizování**: vzoru automatického zřizování, zřizovací služba zřídí serverů, fondů a databází automaticky podle potřeby. Pokud chcete, můžete zahrnout předběžné zřizování databází v elastických fondech. Pokud databáze jsou vyřazeny z provozu a odstranit, lze také vyplnit mezery v elastických fondech zřizovací služba. Tato služba může být jednoduché nebo složité, jako je zpracování zřizování v různých geografických oblastech a nastavení geografickou replikaci pro zotavení po havárii. 
+**Automatické zřizování**: Ve vzoru automatického zřizování zřizovací služba zřídí serverů, fondů a databází automaticky podle potřeby. Pokud chcete, můžete zahrnout předběžné zřizování databází v elastických fondech. Pokud databáze jsou vyřazeny z provozu a odstranit, lze také vyplnit mezery v elastických fondech zřizovací služba. Tato služba může být jednoduché nebo složité, jako je zpracování zřizování v různých geografických oblastech a nastavení geografickou replikaci pro zotavení po havárii. 
 
 Se vzorkem automatického zřizování odešle klientská aplikace nebo skript žádost o zřízení do fronty ke zpracování zřizovací služba. Poté dotazuje službu dokončení. Pokud použití předběžného zřizování požadavky rychle zpracovává. Služba zřídí náhradní databáze na pozadí.
 
@@ -174,7 +174,7 @@ V tomto kurzu jste se naučili:
 
 Zkuste [kurz o monitorování výkonu](saas-dbpertenant-performance-monitoring.md).
 
-## <a name="additional-resources"></a>Další zdroje informací:
+## <a name="additional-resources"></a>Další materiály
 
 * Další [kurzů v aplikaci SaaS aplikace Wingtip Tickets databáze na tenanta](saas-dbpertenant-wingtip-app-overview.md#sql-database-wingtip-saas-tutorials)
 * [Klientská knihovna Elastic Database](sql-database-elastic-database-client-library.md)

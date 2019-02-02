@@ -10,24 +10,24 @@ ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: 7dffa1480be73f1dbf5e99d11fd8d33eb2ab9038
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 816d25473bfe5f9dc61d6d6f2e50d6cd82ace50c
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55196408"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55562181"
 ---
 # <a name="configure-the-resource-owner-password-credentials-flow-in-azure-active-directory-b2c-using-a-custom-policy"></a>Konfigurace tok vlastníka prostředku heslo přihlašovacích údajů v Azure Active Directory B2C pomocí vlastních zásad
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-V Azure Active Directory (Azure AD) B2C tok přihlašovacích údajů (ROPC) hesla vlastníka prostředku je tok, který standardní ověřování OAuth. V tomto toku aplikace, označované také jako přijímající strany vymění platné přihlašovací údaje pro tokeny. Přihlašovací údaje zahrnují ID uživatele a heslo. Jsou tokeny, vrátil ID token, přístupový token a aktualizační token. 
+V Azure Active Directory (Azure AD) B2C tok přihlašovacích údajů (ROPC) hesla vlastníka prostředku je tok, který standardní ověřování OAuth. V tomto toku aplikace, označované také jako přijímající strany vymění platné přihlašovací údaje pro tokeny. Přihlašovací údaje zahrnují ID uživatele a heslo. Jsou tokeny, vrátil ID token, přístupový token a aktualizační token.
 
 Ve službě ROPC flow jsou podporovány následující možnosti:
 
 - **Nativní klient systému** – interakce s uživatelem během ověřování se stane, když kód běží na uživatele na straně zařízení.
 - **Tok veřejným klientem** – jenom uživatele, přihlašovací údaje, které jsou shromážděné aplikace jsou odeslány ve volání rozhraní API. Přihlašovací údaje aplikace neodešlou.
-- **Přidání nových deklarací identity** – ID tokenu obsah lze změnit pro přidání nových deklarací identity. 
+- **Přidání nových deklarací identity** – ID tokenu obsah lze změnit pro přidání nových deklarací identity.
 
 Nejsou podporovány v následujících tocích:
 
@@ -43,7 +43,7 @@ Proveďte kroky v [začít pracovat s vlastními zásadami v Azure Active Direct
 
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
 2. Ujistěte se, že používáte adresáře, který obsahuje vašeho tenanta Azure AD B2C kliknutím **filtr adresářů a předplatných** v horní nabídce a výběrem adresáře, který obsahuje váš tenant.
-3. Zvolte **všechny služby** v horním levém horním rohu webu Azure portal a poté vyhledejte a vyberte **Azure AD B2C**. 
+3. Zvolte **všechny služby** v horním levém horním rohu webu Azure portal a poté vyhledejte a vyberte **Azure AD B2C**.
 4. Vyberte **aplikací**a pak vyberte **přidat**.
 5. Zadejte název aplikace, jako například *ROPC_Auth_app*.
 6. Vyberte **ne** pro **webová aplikace/webové rozhraní API**a pak vyberte **Ano** pro **nativního klienta**.
@@ -193,7 +193,7 @@ Proveďte kroky v [začít pracovat s vlastními zásadami v Azure Active Direct
           </Metadata>
         </TechnicalProfile>
       </TechnicalProfiles>
-    </ClaimsProvider>    
+    </ClaimsProvider>
     ```
 
 6. Přidat **Userjourney** elementu a jeho podřízených prvků, které **TrustFrameworkPolicy** element:
@@ -201,7 +201,7 @@ Proveďte kroky v [začít pracovat s vlastními zásadami v Azure Active Direct
     ```XML
     <UserJourney Id="ResourceOwnerPasswordCredentials">
       <PreserveOriginalAssertion>false</PreserveOriginalAssertion>
-        <OrchestrationSteps>
+      <OrchestrationSteps>
         <OrchestrationStep Order="1" Type="ClaimsExchange">
           <ClaimsExchanges>
             <ClaimsExchange Id="ResourceOwnerFlow" TechnicalProfileReferenceId="ResourceOwnerPasswordCredentials-OAUTH2" />
@@ -267,7 +267,7 @@ Generovat volání rozhraní API pomocí aplikace pro vývoj oblíbených rozhra
 - Nahraďte `your-tenant-name` s názvem vašeho tenanta Azure AD B2C.
 - Nahraďte `B2C_1A_ROPC_Auth` úplným názvem zásady pověření heslo vlastníka prostředku.
 
-| Klíč | Value |
+| Klíč | Hodnota |
 | --- | ----- |
 | uživatelské jméno | `user-account` |
 | heslo | `password1` |
@@ -278,7 +278,7 @@ Generovat volání rozhraní API pomocí aplikace pro vývoj oblíbených rozhra
 
 - Nahraďte `user-account` s názvem účet uživatele ve vašem tenantovi.
 - Nahraďte `password1` s heslem uživatelského účtu.
-- Nahraďte `application-id` s ID aplikace z *ROPC_Auth_app* registrace. 
+- Nahraďte `application-id` s ID aplikace z *ROPC_Auth_app* registrace.
 - *Offline_access* je volitelný, pokud chcete dostávat obnovovací token.
 
 Skutečné požadavek POST bude vypadat jako v následujícím příkladu:
@@ -291,17 +291,16 @@ Content-Type: application/x-www-form-urlencoded
 username=contosouser.outlook.com.ws&password=Passxword1&grant_type=password&scope=openid+bef22d56-552f-4a5b-b90a-1988a7d634ce+offline_access&client_id=bef22d56-552f-4a5b-b90a-1988a7d634ce&response_type=token+id_token
 ```
 
-
 Úspěšná odpověď s offline přístupem bude vypadat jako v následujícím příkladu:
 
 ```JSON
-{ 
-    "access_token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImtpZCI6Ik9YQjNhdTNScWhUQWN6R0RWZDM5djNpTmlyTWhqN2wxMjIySnh6TmgwRlki...", 
-    "token_type": "Bearer", 
-    "expires_in": "3600", 
-    "refresh_token": "eyJraWQiOiJacW9pQlp2TW5pYVc2MUY0TnlfR3REVk1EVFBLbUJLb0FUcWQ1ZWFja1hBIiwidmVyIjoiMS4wIiwiemlwIjoiRGVmbGF0ZSIsInNlciI6Ij...", 
-    "id_token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImtpZCI6Ik9YQjNhdTNScWhUQWN6R0RWZDM5djNpTmlyTWhqN2wxMjIySnh6TmgwRlki..." 
-} 
+{
+    "access_token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImtpZCI6Ik9YQjNhdTNScWhUQWN6R0RWZDM5djNpTmlyTWhqN2wxMjIySnh6TmgwRlki...",
+    "token_type": "Bearer",
+    "expires_in": "3600",
+    "refresh_token": "eyJraWQiOiJacW9pQlp2TW5pYVc2MUY0TnlfR3REVk1EVFBLbUJLb0FUcWQ1ZWFja1hBIiwidmVyIjoiMS4wIiwiemlwIjoiRGVmbGF0ZSIsInNlciI6Ij...",
+    "id_token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImtpZCI6Ik9YQjNhdTNScWhUQWN6R0RWZDM5djNpTmlyTWhqN2wxMjIySnh6TmgwRlki..."
+}
 ```
 
 ## <a name="redeem-a-refresh-token"></a>Uplatnění obnovovací token
@@ -313,7 +312,7 @@ Vytvoření volání POST podobný tomu, který je vidět tady. Pomocí informac
 - Nahraďte `your-tenant-name` s názvem vašeho tenanta Azure AD B2C.
 - Nahraďte `B2C_1A_ROPC_Auth` úplným názvem zásady pověření heslo vlastníka prostředku.
 
-| Klíč | Value |
+| Klíč | Hodnota |
 | --- | ----- |
 | grant_type | refresh_token |
 | response_type | id_token |
@@ -322,7 +321,7 @@ Vytvoření volání POST podobný tomu, který je vidět tady. Pomocí informac
 | refresh_token | `refresh-token` |
 
 - Nahraďte `application-id` s ID aplikace z *ROPC_Auth_app* registrace.
-- Nahraďte `refresh-token` s **refresh_token** , který byl odeslán zpět v předchozí odpovědi. 
+- Nahraďte `refresh-token` s **refresh_token** , který byl odeslán zpět v předchozí odpovědi.
 
 Úspěšná odpověď bude vypadat jako v následujícím příkladu:
 
@@ -350,5 +349,3 @@ Azure AD B2C splňuje standardy veřejným klientem přihlašovacího hesla vlas
 
 - Zobrazit kompletní příklad v tomto scénáři [Úvodní sada vlastních zásad pro Azure Active Directory B2C](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/tree/master/scenarios/source/aadb2c-ief-ropc).
 - Další informace o tokeny, které používají Azure Active Directory B2C v [Token odkaz](active-directory-b2c-reference-tokens.md).
-
-

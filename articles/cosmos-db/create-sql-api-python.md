@@ -8,12 +8,12 @@ ms.devlang: python
 ms.topic: quickstart
 ms.date: 09/24/2018
 ms.author: sngun
-ms.openlocfilehash: b9ea87b3a56c4759a0d96b7d01e33087c64ccd91
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: 631642f487986e3315c1988f8b591f6e6b43d760
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54037547"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55561363"
 ---
 # <a name="azure-cosmos-db-build-a-sql-api-app-with-python-and-the-azure-portal"></a>Azure Cosmos DB: Vytvoření aplikace SQL API pomocí Pythonu a webu Azure portal
 
@@ -75,7 +75,27 @@ Teď naklonujeme aplikaci SQL API z GitHubu, nastavíme připojovací řetězec
     ```bash
     git clone https://github.com/Azure-Samples/azure-cosmos-db-python-getting-started.git
     ```  
-    
+
+## <a name="update-your-connection-string"></a>Aktualizace připojovacího řetězce
+
+Teď se vraťte zpátky na portál Azure Portal, kde najdete informace o připojovacím řetězci, a zkopírujte je do aplikace.
+
+1. Na webu [Azure Portal](https://portal.azure.com/) ve svém účtu služby Azure Cosmos DB klikněte v levém navigačním panelu na **Klíče**. V dalším kroku zkopírujete pomocí tlačítek kopírování na pravé straně obrazovky identifikátor **URI** a **primární klíč** do souboru `CosmosGetStarted.py`.
+
+    ![Zobrazení a zkopírování přístupového klíče na webu Azure Portal v okně Klíče](./media/create-sql-api-dotnet/keys.png)
+
+2. Otevřete v aplikaci Visual Studio Code soubor `CosmosGetStarted.py`, který se nachází ve složce C:\git-samples\azure-cosmos-db-python-getting-started.
+
+3. Z portálu zkopírujte hodnotu identifikátoru **URI** (pomocí tlačítka kopírování) a nastavte ji jako hodnotu klíče **endpoint** v souboru ``CosmosGetStarted.py``. 
+
+    `'ENDPOINT': 'https://FILLME.documents.azure.com',`
+
+4. Pak z portálu zkopírujte hodnotu **PRIMÁRNÍ KLÍČ** a nastavte ji jako hodnotu **config.PRIMARYKEY** v souboru ``CosmosGetStarted.py``. Teď jste aktualizovali aplikaci a zadali do ní všechny informace potřebné ke komunikaci s Azure Cosmos DB. 
+
+    `'PRIMARYKEY': 'FILLME',`
+
+5. Uložte soubor ``CosmosGetStarted.py``.
+
 ## <a name="review-the-code"></a>Kontrola kódu
 
 Tento krok je volitelný. Pokud chcete zjistit, jak se v kódu vytvářejí prostředky databáze, můžete si prohlédnout následující fragmenty kódu. Jinak můžete přeskočit přímo k části [Aktualizace informací o připojení](#update-your-connection-string). 
@@ -84,7 +104,7 @@ Poznámka: Pokud znáte předchozí verzi sady Python SDK, možná jste zvyklí 
 
 Všechny následující fragmenty kódu pocházejí ze souboru `CosmosGetStarted.py`.
 
-* Inicializuje se CosmosClient.
+* Inicializuje se CosmosClient. Nezapomeňte aktualizovat hodnoty "Koncového bodu" a "hlavní klíč", jak je popsáno v [aktualizovat připojovací řetězec](#update-your-connection-string) oddílu. 
 
     ```python
     # Initialize the Cosmos client
@@ -146,27 +166,7 @@ Všechny následující fragmenty kódu pocházejí ze souboru `CosmosGetStarted
     for item in iter(result_iterable):
         print(item['message'])
     ```
-
-## <a name="update-your-connection-string"></a>Aktualizace připojovacího řetězce
-
-Teď se vraťte zpátky na portál Azure Portal, kde najdete informace o připojovacím řetězci, a zkopírujte je do aplikace.
-
-1. Na webu [Azure Portal](https://portal.azure.com/) ve svém účtu služby Azure Cosmos DB klikněte v levém navigačním panelu na **Klíče**. V dalším kroku zkopírujete pomocí tlačítek kopírování na pravé straně obrazovky identifikátor **URI** a **primární klíč** do souboru `CosmosGetStarted.py`.
-
-    ![Zobrazení a zkopírování přístupového klíče na webu Azure Portal v okně Klíče](./media/create-sql-api-dotnet/keys.png)
-
-2. Otevřete v aplikaci Visual Studio Code soubor `CosmosGetStarted.py`, který se nachází ve složce C:\git-samples\azure-cosmos-db-python-getting-started.
-
-3. Z portálu zkopírujte hodnotu identifikátoru **URI** (pomocí tlačítka kopírování) a nastavte ji jako hodnotu klíče **endpoint** v souboru ``CosmosGetStarted.py``. 
-
-    `'ENDPOINT': 'https://FILLME.documents.azure.com',`
-
-4. Pak z portálu zkopírujte hodnotu **PRIMÁRNÍ KLÍČ** a nastavte ji jako hodnotu **config.PRIMARYKEY** v souboru ``CosmosGetStarted.py``. Teď jste aktualizovali aplikaci a zadali do ní všechny informace potřebné ke komunikaci s Azure Cosmos DB. 
-
-    `'PRIMARYKEY': 'FILLME',`
-
-5. Uložte soubor ``CosmosGetStarted.py``.
-    
+   
 ## <a name="run-the-app"></a>Spuštění aplikace
 
 1. V aplikaci Visual Studio Code vyberte **Zobrazení**>**Paleta příkazů**. 

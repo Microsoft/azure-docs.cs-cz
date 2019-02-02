@@ -16,12 +16,12 @@ ms.workload: na
 ms.date: 03/27/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: f7acfb068d000eb76ea526ea7fb3244c585beebf
-ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
+ms.openlocfilehash: 6966aead6ced88e0ff9b201dd12bec0a16799907
+ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54887661"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55661374"
 ---
 # <a name="attach-and-use-data-disks-with-a-virtual-machine-scale-set-with-the-azure-cli"></a>Připojení a použití datových disků se škálovací sadou virtuálních počítačů pomocí Azure CLI
 Tento skript vytvoří škálovací sadu virtuálních počítačů a připojí a připraví datové disky.
@@ -45,11 +45,11 @@ Tento skript k vytvoření skupiny prostředků, škálovací sady virtuálních
 
 | Příkaz | Poznámky |
 |---|---|
-| [az group create](/cli/azure/ad/group#az_ad_group_create) | Vytvoří skupinu prostředků, ve které se ukládají všechny prostředky. |
-| [az vmss create](/cli/azure/vmss#az_vmss_create) | Vytvoří škálovací sadu virtuálních počítačů a připojí ji k virtuální síti, podsíti a skupině zabezpečení sítě. Za účelem distribuce provozu do několika instancí virtuálních počítačů se vytvoří také nástroj pro vyrovnávání zatížení. Tento příkaz také určuje image virtuálního počítače, která se má použít, a přihlašovací údaje pro správu.  |
-| [az vmss disk attach](/cli/azure/vmss/disk#az_vmss_disk_attach) | Vytvoří a připojí datový disk ke škálovací sadě virtuálních počítačů. |
-| [az vmss extension set](/cli/azure/vmss/extension#az_vmss_extension_set) | Nainstaluje rozšíření vlastních skriptů Azure pro spuštění skriptu, který na jednotlivých instancích virtuálních počítačů připraví datové disky. |
-| [az group delete](/cli/azure/ad/group#delete) | Odstraní skupinu prostředků včetně všech vnořených prostředků. |
+| [az group create](/cli/azure/ad/group) | Vytvoří skupinu prostředků, ve které se ukládají všechny prostředky. |
+| [az vmss create](/cli/azure/vmss) | Vytvoří škálovací sadu virtuálních počítačů a připojí ji k virtuální síti, podsíti a skupině zabezpečení sítě. Za účelem distribuce provozu do několika instancí virtuálních počítačů se vytvoří také nástroj pro vyrovnávání zatížení. Tento příkaz také určuje image virtuálního počítače, která se má použít, a přihlašovací údaje pro správu.  |
+| [az vmss disk attach](/cli/azure/vmss/disk) | Vytvoří a připojí datový disk ke škálovací sadě virtuálních počítačů. |
+| [az vmss extension set](/cli/azure/vmss/extension) | Nainstaluje rozšíření vlastních skriptů Azure pro spuštění skriptu, který na jednotlivých instancích virtuálních počítačů připraví datové disky. |
+| [az group delete](/cli/azure/ad/group) | Odstraní skupinu prostředků včetně všech vnořených prostředků. |
 
 ## <a name="next-steps"></a>Další postup
 Další informace o Azure CLI najdete v [dokumentaci k Azure CLI](https://docs.microsoft.com/cli/azure/overview).

@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 01/02/2019
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: c8d34ecb46721a8dd8dc1b1ad9f73c9f2ca2b3a2
-ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
+ms.openlocfilehash: 2289fc143abfde0aaaf2bcb079a6d24b74d57975
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55507395"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55564438"
 ---
 # <a name="troubleshoot-azure-files-problems-in-windows"></a>Řešení potíží s Azure Files problémy ve Windows
 
@@ -265,11 +265,11 @@ Můžete například ji nastavit na 0x100000 a zjistit, zda budou lepší výkon
 
 ### <a name="cause"></a>Příčina
 
-Chyba AadDsTenantNotFound se stane při pokusu o [povolit ověřování Azure Active Directory (AAD) pro Azure Files](https://docs.microsoft.com/en-us/azure/storage/files/storage-files-active-directory-enable) v účtu úložiště kde [Service(AAD DS) domény AAD](https://docs.microsoft.com/en-us/azure/active-directory-domain-services/active-directory-ds-overview) není vytvořena v AAD tenanta přidruženého předplatného.  
+Chyba AadDsTenantNotFound se stane při pokusu o [povolit ověřování Azure Active Directory (AAD) pro Azure Files](https://docs.microsoft.com/azure/storage/files/storage-files-active-directory-enable) v účtu úložiště kde [Service(AAD DS) domény AAD](https://docs.microsoft.com/azure/active-directory-domain-services/active-directory-ds-overview) není vytvořena v AAD tenanta přidruženého předplatného.  
 
 ### <a name="solution"></a>Řešení
 
-Povolení služby AAD DS v tenantovi AAD, který se nasazuje se do účtu úložiště předplatného. Je potřeba oprávnění správce tenanta AAD, chcete-li vytvořit spravovanou doménu. Pokud si nejste správce tenanta Azure AD, obraťte se na správce a postupujte podle podrobných pokynů k [povolit Azure Active Directory Domain Services pomocí webu Azure portal](https://docs.microsoft.com/en-us/azure/active-directory-domain-services/active-directory-ds-getting-started).
+Povolení služby AAD DS v tenantovi AAD, který se nasazuje se do účtu úložiště předplatného. Je potřeba oprávnění správce tenanta AAD, chcete-li vytvořit spravovanou doménu. Pokud si nejste správce tenanta Azure AD, obraťte se na správce a postupujte podle podrobných pokynů k [povolit Azure Active Directory Domain Services pomocí webu Azure portal](https://docs.microsoft.com/azure/active-directory-domain-services/active-directory-ds-getting-started).
 
 ## <a name="need-help-contact-support"></a>Potřebujete pomoc? Kontaktujte podporu.
 Pokud stále potřebujete pomoc, [obraťte se na podporu](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) získat rychlé vyřešení problému.

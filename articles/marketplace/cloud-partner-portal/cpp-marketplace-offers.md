@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 01/09/2019
 ms.author: pbutlerm
-ms.openlocfilehash: 0d6879c6b9be06af4bb289761cc8f26b7e56d18e
-ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
+ms.openlocfilehash: ca4979188830fcb53732750a3eaadfc2009c4f9a
+ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54355501"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55658704"
 ---
 # <a name="azure-and-appsource-marketplace-offers"></a>Azure a nabídky na webu Marketplace AppSource
 
@@ -47,6 +47,7 @@ Následující tabulka uvádí aktuální nabídka typů podporovaných [portál
 | [Dynamics 365 for Customer Engagement](./dyn365ce/cpp-customer-engagement-offer.md) | AppSource | Balíček, který rozšiřuje tohoto zákazníka systému pro správu (CRM) zdroje, prodej, služby, služba projektu a modulů služby pole.  |
 | [Dynamics 365 for Finance and Operations](../cloud-partner-portal-orig/cpp-dynamics-365-operations-offer.md) | AppSource | Balíček, který rozšiřuje tento podnikových zdrojů (ERP) služba, která podporuje rozšířené plánování finance, operations, výroba a správa dodavatelského řetězce. |
 | [Modul IoT Edge](./iot-edge-module/cpp-offer-process-parts.md) | Azure | Kompatibilní s Dockerem kontejner, který běží na zařízení IoT Edge.  Obsahuje malé výpočetní modulů, které používají kombinace vlastního kódu, dalších služeb Azure a služby 3. stran. |
+| [Aplikace Power BI](./power-bi/cpp-power-bi-offer.md) | AppSource | Balíček, který používá toky dat pro připojení k datům ve společném úložišti dat sestavy a řídicí panely. |
 | [Aplikace SaaS](./saas-app/cpp-saas-offer.md) | Azure | Řešení je software-as-a-service předplatné, spravuje vydavatele, kteří uživatelé připojují prostřednictvím vlastní rozhraní, které využívá službu Azure Active Directory. |
 | [Virtuální počítač](./virtual-machine/cpp-virtual-machine-offer.md)  | Azure  | Řešení je obsažena v jednom virtuálním počítači nasadit do předplatného zákazníka.  |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |   |   |

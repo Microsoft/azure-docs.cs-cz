@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/06/2018
 ms.author: hrasheed
-ms.openlocfilehash: 20894a74bf0cc3911272385721da74871df95ade
-ms.sourcegitcommit: 97d0dfb25ac23d07179b804719a454f25d1f0d46
+ms.openlocfilehash: ea83d061f7160db04c847be66e79da60da78634d
+ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/25/2019
-ms.locfileid: "54913214"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55662903"
 ---
 # <a name="customize-linux-based-hdinsight-clusters-by-using-script-actions"></a>Přizpůsobení clusterů HDInsight se systémem Linux pomocí akce skriptu
 
@@ -224,7 +224,7 @@ Získejte další informace o tom, jak nasadit šablonu:
 
 ### <a name="use-a-script-action-during-cluster-creation-from-azure-powershell"></a>Použití akce skriptu při vytváření clusteru pomocí Azure Powershellu
 
-V této části použijete [přidat AzureRmHDInsightScriptAction](https://docs.microsoft.com/powershell/module/azurerm.hdinsight/add-azurermhdinsightscriptaction) rutiny vyvolání skriptů přizpůsobení clusteru. Než začnete, ujistěte se, že instalace a konfigurace Azure Powershellu. Informace o konfiguraci pracovní stanice ke spouštění rutin prostředí HDInsight PowerShell najdete v tématu [Přehled prostředí Azure PowerShell](https://docs.microsoft.com/en-us/powershell/azure/overview?view=azps-1.1.0#run-or-install).
+V této části použijete [přidat AzureRmHDInsightScriptAction](https://docs.microsoft.com/powershell/module/azurerm.hdinsight/add-azurermhdinsightscriptaction) rutiny vyvolání skriptů přizpůsobení clusteru. Než začnete, ujistěte se, že instalace a konfigurace Azure Powershellu. Informace o konfiguraci pracovní stanice ke spouštění rutin prostředí HDInsight PowerShell najdete v tématu [Přehled prostředí Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview?view=azps-1.1.0#run-or-install).
 
 Tento skript ukazuje, jak použít akci skriptu při vytváření clusteru pomocí prostředí PowerShell:
 
@@ -276,7 +276,7 @@ Přejděte [webu Azure portal](https://portal.azure.com):
 
 ### <a name="apply-a-script-action-to-a-running-cluster-from-azure-powershell"></a>Použít akci skriptu pro spuštěný cluster z prostředí Azure PowerShell
 
-Než začnete, ujistěte se, že instalace a konfigurace Azure Powershellu. Informace o konfiguraci pracovní stanice ke spouštění rutin prostředí HDInsight PowerShell najdete v tématu [Přehled prostředí Azure PowerShell](https://docs.microsoft.com/en-us/powershell/azure/overview?view=azps-1.1.0#run-or-install).
+Než začnete, ujistěte se, že instalace a konfigurace Azure Powershellu. Informace o konfiguraci pracovní stanice ke spouštění rutin prostředí HDInsight PowerShell najdete v tématu [Přehled prostředí Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview?view=azps-1.1.0#run-or-install).
 
 Následující příklad ukazuje, jak použít akci skriptu spuštěného clusteru:
 

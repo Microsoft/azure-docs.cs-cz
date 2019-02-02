@@ -11,13 +11,13 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 manager: craigg
-ms.date: 10/22/2018
-ms.openlocfilehash: 9647522f4b3990d065f292f05934b8d19c691454
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.date: 12/04/2018
+ms.openlocfilehash: 396e8a487feb2f7a7cb45f3713e641b5ebc6abcd
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52865518"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55565237"
 ---
 # <a name="managing-scaled-out-cloud-databases"></a>Správa databází s horizontálním navýšením kapacity
 
@@ -81,8 +81,8 @@ Můžete definovat vlastní skupiny databází Azure SQL a plány spouštění �
 2. Pomocí rozhraní API prostředí PowerShell pro přístup k více funkcí, například vytvoření uživatelem definovaných databáze kolekcí, přidání plány a/nebo shromažďování sad výsledků. Použití portálu pro jednoduché instalaci a vytváření a monitorování úloh omezen na spuštění proti **elastického fondu**.
 3. Vytvoření zašifrované přihlašovací údaje pro provádění úloh a [přidejte uživatele (nebo rolí) pro každou databázi ve skupině](sql-database-security-overview.md).
 4. Vytvoření idempotentní skriptu T-SQL, které se dají spustit pro každou databázi ve skupině.
-5. Postupujte podle těchto kroků můžete vytvořit úlohy pomocí webu Azure portal: [vytváření a správa úlohy elastické databáze](sql-database-elastic-jobs-create-and-manage.md).
-6. Nebo pomocí skriptů prostředí PowerShell: [vytvořit a spravovat úlohy elastické databáze SQL Database pomocí Powershellu (preview)](sql-database-elastic-jobs-powershell.md).
+5. Postupujte podle těchto kroků můžete vytvořit úlohy pomocí webu Azure portal: [Vytváření a správa úlohy elastické databáze](sql-database-elastic-jobs-create-and-manage.md).
+6. Nebo můžete použít skripty prostředí PowerShell: [Vytváření a Správa úloh elastických databází SQL Database pomocí Powershellu (preview)](sql-database-elastic-jobs-powershell.md).
 
 ## <a name="idempotent-scripts"></a>Idempotentní skripty
 
@@ -116,7 +116,7 @@ Vlastní skupiny, na druhé straně jsou pevně definovány. Musíte explicitně
 
 Následující součásti společně vytvářejí služby Azure Cloud, která umožňuje provádění ad-hoc Správce úloh. Součásti instalace a konfigurace automaticky během instalace, v rámci vašeho předplatného. Služby můžete identifikovat všechny mají stejnou automaticky generovaný název. Název je jedinečný a se skládá z předponu "edj" následované 21 náhodně generovaných znaků.
 
-- Cloudové služby Azure
+- Cloudová služba Azure
 
   Úlohy elastic database (preview) je dodávána jako hostované zákazníků Azure cloudové služby se provede spuštění úloh. Z portálu je nasazení služby a je hostovaná ve vašem předplatném Microsoft Azure. Výchozí hodnota nasazení spouští služba s minimálně dvěma rolemi pracovních procesů pro zajištění vysoké dostupnosti. Výchozí velikost každé role pracovního procesu (ElasticDatabaseJobWorker) se používá v instanci A0. Ceny najdete v tématu [ceny Cloud services](https://azure.microsoft.com/pricing/details/cloud-services/).
 

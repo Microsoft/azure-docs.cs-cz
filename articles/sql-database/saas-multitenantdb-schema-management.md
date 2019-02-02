@@ -11,13 +11,13 @@ author: MightyPen
 ms.author: genemi
 ms.reviewer: billgib, sstein
 manager: craigg
-ms.date: 09/19/2018
-ms.openlocfilehash: 604373d450bb03069fcbf97bef4027420e635f20
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.date: 12/18/2018
+ms.openlocfilehash: b3855386f89eda71e145df6dd83d1b1e7e093735
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53599991"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55563639"
 ---
 # <a name="manage-schema-in-a-saas-application-that-uses-sharded-multi-tenant-sql-databases"></a>Správa schématu v aplikaci SaaS, která používá horizontálně dělené databáze SQL více tenantů
 

@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/01/2017
 ms.author: kasing
-ms.openlocfilehash: 6d84c83efa194543ed10aaed82362021b7053476
-ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
+ms.openlocfilehash: 1960cac28b74980d17f37b4e06e79604e156381e
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45576200"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55566233"
 ---
 # <a name="planning-for-migration-of-iaas-resources-from-classic-to-azure-resource-manager"></a>Plánování migrace prostředků IaaS z modelu classic na Azure Resource Manager
 Zatímco Azure Resource Manager nabízí spoustu skvělých funkcí, je velmi důležité naplánovat, aby to bylo jistě hladký chod průběhu migrace. Plánování zbavuje čas zajistí, že není narazíte na problémy při provádění aktivity migrace.
@@ -88,7 +88,7 @@ V závislosti na vaší velikosti technické požadavky, geografické oblasti a 
 
 Následující byly problémy zjištěné v mnoha větší migrace. Nejedná se o vyčerpávající seznam a by měla odkazovat na [nepodporované funkce a konfigurace](migration-classic-resource-manager-overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json#unsupported-features-and-configurations) další podrobnosti.  Může nebo nemusí mít tyto technické problémy, ale pokud to uděláte před provedením migrace řešení zajistí plynulost.
 
-- **Proveďte ověření/přípravy nebo přerušení spuštění zkušební** – to je pravděpodobně nejdůležitější krok, kterým zajistíte modelu Classic na úspěšné provedení migrace Azure Resource Manageru. Migrace rozhraní API má tři hlavní kroky: ověření, připravte a potvrďte. Ověření se načíst stav prostředí classic a vrátí výsledek všechny problémy. Ale vzhledem k tomu, že některé problémy mohou existovat v zásobníku Azure Resource Manageru, ověřit nezachytí všechno. Dalším krokem v procesu migrace Prepare vám pomůže vystavit těchto problémů. Připravte se přesunout metadat z modelu Classic na Azure Resource Manager, ale nebude potvrzení přesunu a se neodebere ani něco na straně Classic změnit. Spustit zkušební zahrnuje Příprava na migraci a přerušení (**není potvrzování**) Příprava na migraci. Cílem ověření/připravit/přerušení zkušební spuštění je chcete zobrazit všechna metadata v zásobníku Azure Resource Manageru, jej prozkoumat (*programově, nebo portál*) a ověřte, že všechno, co migruje správně a seznámení se základními technické problémy.  Také poskytne vám představu o dobou trvání migrace, odpovídajícím způsobem plánovat výpadku.  Ověřením/připravit/přerušení nezpůsobí žádné výpadky uživatele; je tedy nenarušující k použití aplikací.
+- **Proveďte ověření/přípravy nebo přerušení spuštění zkušební** – to je pravděpodobně nejdůležitější krok, kterým zajistíte modelu Classic na úspěšné provedení migrace Azure Resource Manageru. Migrace rozhraní API má tři hlavní kroky: Ověření, připravte a potvrďte. Ověření se načíst stav prostředí classic a vrátí výsledek všechny problémy. Ale vzhledem k tomu, že některé problémy mohou existovat v zásobníku Azure Resource Manageru, ověřit nezachytí všechno. Dalším krokem v procesu migrace Prepare vám pomůže vystavit těchto problémů. Připravte se přesunout metadat z modelu Classic na Azure Resource Manager, ale nebude potvrzení přesunu a se neodebere ani něco na straně Classic změnit. Spustit zkušební zahrnuje Příprava na migraci a přerušení (**není potvrzování**) Příprava na migraci. Cílem ověření/připravit/přerušení zkušební spuštění je chcete zobrazit všechna metadata v zásobníku Azure Resource Manageru, jej prozkoumat (*programově, nebo portál*) a ověřte, že všechno, co migruje správně a seznámení se základními technické problémy.  Také poskytne vám představu o dobou trvání migrace, odpovídajícím způsobem plánovat výpadku.  Ověřením/připravit/přerušení nezpůsobí žádné výpadky uživatele; je tedy nenarušující k použití aplikací.
   - Položky dole potřeba vyřešit před spuštěním suchého, ale zkušební spuštění testu se také bezpečně vyprázdní si tyto přípravné kroky, pokud je provedena. Během migrace enterprise zjistili jsme zkušební spuštění bude bezpečný a neocenitelný při řízení způsob, jak zajistit přípravu migrace.
   - Při přípravě běží, ovládací prvek roviny (operace Azure správy) uzamknou celé virtuální sítě, takže provedeny žádné změny můžou být metadata virtuálního počítače během ověření/připravit/přerušení.  Jinak, ale všechny funkce aplikace (VP, virtuální počítač využití atd.), zůstanou beze změn.  Uživatelé virtuálních počítačů nebude vědět, se provádí zkušební spuštění.
 
@@ -201,7 +201,7 @@ Co je třeba zvážit:
 
 Být výstižný, na které služby Chcete teď umožňují v Azure Resource Manageru.  Mnoho zákazníků níže atraktivních jejich prostředí Azure:
 
-- [Řízení přístupu podle rolí](../../azure-resource-manager/resource-group-overview.md#access-control).
+- [Řízení přístupu podle rolí](../../role-based-access-control/overview.md).
 - [Šablony Azure Resource Manageru pro snazší a víc řízené nasazení](../../azure-resource-manager/resource-group-overview.md#template-deployment).
 - [Značky](../../azure-resource-manager/resource-group-using-tags.md).
 - [Aktivity řízení](../../azure-resource-manager/resource-group-audit.md)

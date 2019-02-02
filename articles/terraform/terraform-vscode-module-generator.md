@@ -9,12 +9,12 @@ manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
 ms.date: 11/08/2018
-ms.openlocfilehash: 36e4b424cdb961920fccdf7f050e28447ccbd6cf
-ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
+ms.openlocfilehash: 1133e6b35d200ec7f855b41f3ae5d6f37949fc97
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54074508"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55568494"
 ---
 # <a name="create-a-terraform-base-template-in-azure-using-yeoman"></a>Vytvoření základní šablony Terraformu v Azure pomocí Yeomanu
 
@@ -257,7 +257,7 @@ Všechny tyto položky jsou předem nainstalované ve službě Cloud Shell.
     >[!NOTE]
     >V tomto příkladu jsme zvolili `my-module-name` název složky.
 
-1. Přejděte do složky vašeho modulu: Zadejte `cd ~/go/src/<your-module-name>`
+1. Přejděte do složky vašeho modulu: Enter `cd ~/go/src/<your-module-name>`
 
 ### <a name="create-and-test-your-terraform-module"></a>Vytvoření a otestování modul Terraformu
 
@@ -283,4 +283,4 @@ Všechny tyto položky jsou předem nainstalované ve službě Cloud Shell.
 ## <a name="next-steps"></a>Další postup
 
 > [!div class="nextstepaction"]
-> [Instalujte a použijte rozšíření Azure Terraform Visual Studio Code.](https://docs.microsoft.com/azure/terraform/terraform-vscode-extension)
+> [Instalace a použití rozšíření Visual Studio Code Terraformu pro Azure.](https://docs.microsoft.com/azure/terraform/terraform-vscode-extension)

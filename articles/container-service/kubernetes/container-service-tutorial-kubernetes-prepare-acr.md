@@ -9,17 +9,17 @@ ms.topic: tutorial
 ms.date: 02/26/2018
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: c3e5e7c4fb46b3f68013ac857dcad2e5434a978d
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: d0107e09bf8706ba7d4c813814103ca109262d8d
+ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52998317"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55657395"
 ---
 # <a name="deprecated-deploy-and-use-azure-container-registry"></a>(NEPOUŽÍVANÉ) Nasazení a použití služby Azure Container Registry
 
 > [!TIP]
-> Aktualizovaná verze tohoto kurzu, který používá Azure Kubernetes Service, najdete v článku [kurz: nasazení a použití služby Azure Container Registry](../../aks/tutorial-kubernetes-prepare-acr.md).
+> Aktualizovaná verze tohoto kurzu, který používá Azure Kubernetes Service, najdete v článku [kurzu: Nasazení a použití služby Azure Container Registry](../../aks/tutorial-kubernetes-prepare-acr.md).
 
 [!INCLUDE [ACS deprecation](../../../includes/container-service-kubernetes-deprecation.md)]
 
@@ -32,7 +32,7 @@ Azure Container Registry (ACR) je privátní registr prostředí Azure pro image
 
 V následujících kurzech bude tato instance služby ACR integrována do clusteru Kubernetes v Azure Container Service. 
 
-## <a name="before-you-begin"></a>Než začnete
+## <a name="before-you-begin"></a>Před zahájením
 
 V [předchozím kurzu](./container-service-tutorial-kubernetes-prepare-app.md) byla vytvořena image kontejneru pro jednoduchou hlasovací aplikaci v Azure. Pokud jste image hlasovací aplikace v Azure ještě nevytvořili, vraťte se ke [kurzu 1 – Vytváření imagí kontejneru](./container-service-tutorial-kubernetes-prepare-app.md).
 
@@ -141,7 +141,7 @@ Result
 azure-vote-front
 ```
 
-A pak můžete pomocí příkazu [az acr repository show-tags](/cli/azure/acr/repository#show-tags) zobrazit značky pro konkrétní image.
+A pak můžete pomocí příkazu [az acr repository show-tags](/cli/azure/acr/repository) zobrazit značky pro konkrétní image.
 
 ```azurecli
 az acr repository show-tags --name <acrName> --repository azure-vote-front --output table

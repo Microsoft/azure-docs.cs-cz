@@ -10,14 +10,14 @@ ms.date: 09/26/2018
 ms.topic: tutorial
 description: Rychlý vývoj na platformě Kubernetes s využitím kontejnerů a mikroslužeb v Azure
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, kontejnery
-ms.openlocfilehash: 91c4bc76a7753c7d51310fbe9b807f0969ca900c
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 942d9a7b4160189d14ecdd85b21b2537d1a2a8d3
+ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55467284"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55656358"
 ---
-# <a name="get-started-on-azure-dev-spaces-with-nodejs"></a>Začínáme v Azure Dev Spaces s Node.js
+# <a name="get-started-on-azure-dev-spaces-with-nodejs"></a>Začínáme s Azure Dev prostory s využitím Node.js
 
 V tomto průvodci se naučíte:
 
@@ -101,7 +101,7 @@ V této části vytvoříte webovou aplikaci Node.js a spustíte ji v kontejneru
 ### <a name="create-a-nodejs-web-app"></a>Vytvoření webové aplikace Node.js
 Stáhněte si kód z GitHubu. Přejděte na https://github.com/Azure/dev-spaces a vyberte **Clone or Download** (Klonovat nebo stáhnout). Úložiště GitHub se stáhne do vašeho místního prostředí. Kód tohoto průvodce je tady: `samples/nodejs/getting-started/webfrontend`.
 
-## <a name="preparing-code-for-docker-and-kubernetes-development"></a>Příprava kódu pro vývoj v Dockeru a Kubernetes
+## <a name="prepare-code-for-docker-and-kubernetes-development"></a>Příprava kódu pro vývoj v Dockeru a Kubernetes
 Zatím máte základní webovou aplikaci, kterou můžete spustit místně. Teď ji vytvořením prostředků, které definují kontejner aplikace a způsob nasazení do Kubernetes, kontejnerizujete. Tento úkol snadno provedete v Azure Dev Spaces: 
 
 1. Spusťte VS Code a otevřete složku `webfrontend`. (Případné výchozí výzvy ohledně přidání prostředků ladění nebo obnovení projektu můžete ignorovat.)
@@ -278,5 +278,5 @@ Při této konfiguraci kontejner spustí *nodemon*. Po úpravě kódu na straně
 ## <a name="next-steps"></a>Další postup
 
 > [!div class="nextstepaction"]
-> [Informace o týmovém vývoji](team-development-nodejs.md)
+> [Informace o vývoji pro víc služeb](multi-service-nodejs.md)
 

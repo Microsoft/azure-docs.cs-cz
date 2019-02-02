@@ -11,14 +11,14 @@ ms.service: azure-monitor
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 01/31/2019
+ms.date: 02/01/2019
 ms.author: magoedte
-ms.openlocfilehash: 90cd6f640188408771b3a64a31aadf89cfefcaae
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.openlocfilehash: f61f420b6a738a410deed2d68acc06862600104f
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55487859"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55563333"
 ---
 # <a name="understand-the-health-of-your-azure-virtual-machines-with-azure-monitor-for-vms-preview"></a>Vysvětlení stavu virtuálních počítačů Azure pomocí Azure monitoru pro virtuální počítače (preview)
 Azure obsahuje několik služeb, které jednotlivě provádět konkrétní role nebo úkolu v prostoru pro monitorování, ale poskytuje perspektivy podrobný stav operačního systému hostované na Azure virtual machines nebyl k dispozici.  V průběhu monitorování může pro různé podmínky použití Log Analytics nebo Azure Monitor, nejsou určeny pro modelování a představují stavu základní součásti nebo celkového stavu virtuálního počítače.  Prostřednictvím služby Azure Monitor pro funkci stav virtuálních počítačů aktivně Monitoruje dostupnost a výkon Windows nebo Linuxem hostovaného operačního systému s modelem, které představují klíčových komponent a jejich vztahů kritéria, která určuje, jak měřit kvalitu ty komponenty, a upozorní vás při zjištění není v pořádku podmínky.  
@@ -142,13 +142,6 @@ Tady můžete rychle identifikovat hlavní kritické problémy zjištěné podle
 **Distribuce virtuálního počítače podle operačního systému** seznam virtuálních počítačů uvedených ve verzi Windows nebo distribuce Linuxu, spolu s jejich verze. V každé kategorii operačního systému virtuálních počítačů jsou rozdělené další na základě stavu virtuálního počítače. 
 
 ![Přehled virtuálních počítačů virtuálního počítače distribučního perspektivy](./media/vminsights-health/vminsights-vmdistribution-by-os.png)
-
-Stavy definované pro virtuální počítače jsou: 
-
-* **V pořádku** – virtuální počítač se nedetekovaly žádné problémy a funguje podle potřeby.  
-* **Kritické** – jeden nebo více problémů se zjistí, které je třeba řešit, aby bylo možné obnovit normální funkce podle očekávání. 
-* **Upozornění** -zjištění jeden nebo více problémů, které je třeba řešit nebo podmínku stavu může být důležité.  
-* **Neznámý** – Pokud službu nebylo možné navázat připojení s virtuálním Počítačem, stav se změní na neznámém stavu.  
 
 Kliknutím na libovolnou položku sloupec - **počet virtuálních počítačů**, **kritický**, **upozornění**, **stavu v pořádku** nebo **neznámý** do Přejít k **virtuálních počítačů** stránky zobrazení filtrované výsledky odpovídající vybraný sloupec. Například, pokud chcete zkontrolovat všechny virtuální počítače spuštěné **Red Hat Enterprise Linux verze 7.5**, klikněte na **počet virtuálních počítačů** hodnota tohoto operačního systému a otevře se na následující stránce výpis virtuálních počítačů odpovídající Tento filtr a jejich stav aktuálně známé stavu.  
 

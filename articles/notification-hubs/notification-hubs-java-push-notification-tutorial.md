@@ -14,12 +14,12 @@ ms.devlang: java
 ms.topic: article
 ms.date: 01/04/2019
 ms.author: jowargo
-ms.openlocfilehash: 68c87b0fd892d5972e8c6b225c7c7bce3b3704db
-ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
+ms.openlocfilehash: 45ff4ff79a443e49a7d01a41a249db9e4d0a070b
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54449958"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55560800"
 ---
 # <a name="how-to-use-notification-hubs-from-java"></a>Jak používat Notification Hubs z Javy
 
@@ -39,7 +39,7 @@ Sady SDK v současné době podporuje:
 * Pravidelně zasílá
 * Naplánované odešle
 * Asynchronní operace prostřednictvím Java NIO
-* Podporované platformy: APNS (iOS), GCM (Android), služby nabízených oznámení Windows (aplikace pro Windows Store), MPNS (Windows Phone), ADM (Amazon Kindle Fire), Baidu (Android bez služby Google)
+* Podporované platformy: APNS (iOS), FCM (Android), služby nabízených oznámení Windows (aplikace pro Windows Store), MPNS (Windows Phone), ADM (Amazon Kindle Fire), Baidu (Android bez služby Google)
 
 ## <a name="sdk-usage"></a>Použití sady SDK
 
@@ -120,7 +120,7 @@ Sestavení:
     hub.createRegistration(reg);
     ```
 
-Podobně můžete vytvořit registrace pro Android (GCM), Windows Phone (MPNS) a Kindle Fire (ADM).
+Podobně můžete vytvořit registrace Androidu (FCM), Windows Phone (MPNS) a Kindle Fire (ADM).
 
 **Vytvořte šablonu registrace:**
 
@@ -318,7 +318,7 @@ Objekt oznámení je jednoduše text záhlaví, některé metody nástroje pomá
 
     ```java
     String message = "{\"data\":{\"msg\":\"Hello from Java!\"}}";
-    Notification n = Notification.createGcmNotification(message);
+    Notification n = Notification.createFcmNotification(message);
     hub.sendNotification(n);
     ```
 

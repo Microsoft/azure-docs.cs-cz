@@ -11,13 +11,13 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
 manager: craigg
-ms.date: 01/03/2018
-ms.openlocfilehash: 679a02c760d8b37d94a734bc9b023ed8fe59acad
-ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
+ms.date: 01/10/2019
+ms.openlocfilehash: 086e1957c68c5864997c9df9213a0c82cbf4c852
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54198180"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55560749"
 ---
 # <a name="tutorial-implement-a-geo-distributed-database"></a>Kurz: Implementace geograficky distribuované databáze
 

@@ -9,12 +9,12 @@ ms.date: 01/04/2019
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc, seodec18
-ms.openlocfilehash: 1b2692df51afb50822ec542fbda423f598bcb8e4
-ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
+ms.openlocfilehash: 9abdbd232b7f346aae9ee5fbe93d23afa4aaf32c
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54054737"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55562364"
 ---
 # <a name="tutorial-develop-a-java-iot-edge-module-and-deploy-to-your-simulated-device"></a>Kurz: Vývoj modulu jazyka Java IoT Edge a nasazení simulovaného zařízení
 
@@ -99,7 +99,7 @@ Vytvořte šablonu řešení v jazyce Java, kterou můžete přizpůsobit pomoc�
    | Vyberte šablonu modulu | Zvolte **modul Java**. |
    | Zadejte hodnotu pro ID skupiny | Zadejte hodnotu ID skupiny nebo přijměte výchozí **com.edgemodule**. |
    | Zadejte název modulu | Název modulu **JavaModule**. |
-   | Zadejte pro modul úložiště imagí Dockeru | Úložiště imagí zahrnuje název registru kontejneru a název image kontejneru. Image kontejneru je předem vyplněná z předchozího kroku. Nahraďte **localhost:5000** hodnotou přihlašovacího serveru z vašeho registru kontejneru Azure. Přihlašovací server můžete získat na stránce Přehled vašeho registru kontejneru na webu Azure Portal. Konečný řetězec vypadá takto: \<název registru\>.azurecr.io/javamodule. |
+   | Zadejte pro modul úložiště imagí Dockeru | Úložiště imagí zahrnuje název registru kontejneru a název image kontejneru. Svou image kontejneru je předem z názvu, který jste zadali v předchozím kroku. Nahraďte **localhost:5000** hodnotou přihlašovacího serveru z vašeho registru kontejneru Azure. Přihlašovací server můžete získat na stránce Přehled vašeho registru kontejneru na webu Azure Portal. <br><br>Finální bitové kopie úložiště bude vypadat jako \<název registru\>.azurecr.io/javamodule. |
  
    ![Zadání úložiště imagí Dockeru](./media/tutorial-java-module/repository.png)
    
@@ -260,6 +260,12 @@ V předchozí části jste vytvořili hraničních zařízeních IoT řešení a
 Když editoru Visual Studio Code sdělíte, že má sestavit vaše řešení, nejdříve se načtou informace ze šablony nasazení a v nové složce s názvem **config** se vygeneruje soubor deployment.json. Pak se v integrovaném terminálu spustí dva příkazy: `docker build` a `docker push`. Tyto dva příkazy sestaví kód, provedou kontejnerizaci aplikace Java a kód odešlou do kontejneru registru, který jste zadali při inicializaci řešení. 
 
 Úplnou adresu image kontejneru se značkou můžete vidět v integrovaném terminálu VS Code. Adresa image je sestavená z informací v souboru module.json a má formát \<úložiště\>:\<verze\>-\<platforma\>. V tomto kurzu by měla vypadat takto: název_registru.azurecr.io/javamodule:0.0.1-amd64.
+
+>[!TIP]
+>Pokud obdržíte chybu při vytváření a nasdílení změn modul, proveďte následující kontroly:
+>* Přihlásili jste k Dockeru ve Visual Studio Code pomocí přihlašovacích údajů ze služby container registry? Tyto přihlašovací údaje se liší od těch, které používáte k přihlášení k webu Azure portal.
+>* Správnost vašeho kontejneru úložiště? Otevřít **moduly** > **cmodule** > **module.json** a najít **úložiště** pole. Úložiště imagí by měl vypadat jako  **\<registryname\>.azurecr.io/javamodule**. 
+>* Sestavujete stejného typu kontejnerů, které běží v počítači pro vývoj? Visual Studio Code výchozí kontejnery Linuxu amd64. Pokud vývojovém počítači běží kontejnery Windows nebo Linuxem arm32v7 kontejnery, aktualizujte platformy na modrý stavového řádku v dolní části okna VS Code tak, aby odpovídaly vaši kontejnerovou platformu.
 
 ## <a name="deploy-and-run-the-solution"></a>Nasazení a spuštění řešení
 

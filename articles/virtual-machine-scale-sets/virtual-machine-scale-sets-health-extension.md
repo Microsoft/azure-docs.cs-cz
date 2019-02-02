@@ -15,19 +15,19 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/30/2019
 ms.author: manayar
-ms.openlocfilehash: 1ac7b5f41c0c941db08a63c516febabaf9f07b3e
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.openlocfilehash: 34f1b023b2ea2451f3308666d156278e92afb4aa
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55491378"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55565968"
 ---
 # <a name="using-application-health-extension-with-virtual-machine-scale-sets"></a>Použití stavu aplikace rozšíření virtuálního počítače škálovací sad
 Monitorování stavu vaší aplikace je důležité signál pro správu a upgrade vašeho nasazení. Škálovací sady virtuálních počítačů Azure poskytují podporu pro [postupné upgrady](virtual-machine-scale-sets-upgrade-scale-set.md#how-to-bring-vms-up-to-date-with-the-latest-scale-set-model) včetně [automatické upgrady operačního systému image](virtual-machine-scale-sets-automatic-upgrade.md), které využívají monitorování stavu jednotlivých instancí při upgradu nasazení .
 
 Tento článek popisuje, jak můžete pomocí rozšíření stav aplikace tak, aby monitorovala vaše aplikace nasazené do škálovací sady virtuálních počítačů.
 
-## <a name="pre-requisites"></a>Požadavky
+## <a name="prerequisites"></a>Požadavky
 Tento článek předpokládá, že máte zkušenosti s:
 -   Virtuální počítač Azure [rozšíření](../virtual-machines/extensions/overview.md)
 -   [Úprava](virtual-machine-scale-sets-upgrade-scale-set.md) škálovací sady virtuálních počítačů

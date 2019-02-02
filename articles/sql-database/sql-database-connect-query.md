@@ -11,13 +11,13 @@ author: CarlRabeler
 ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
-ms.date: 11/01/2018
-ms.openlocfilehash: be698c9b1030bcabad50d3b56da2e3c7f0509a9e
-ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
+ms.date: 12/18/2018
+ms.openlocfilehash: 0fa950f7f1fe0eac33ecf4e0de5b9db7effdce77
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55509452"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55561973"
 ---
 # <a name="quickstarts-azure-sql-database-connect-and-query"></a>Šablony rychlý start: Azure SQL Database připojení a dotazování
 

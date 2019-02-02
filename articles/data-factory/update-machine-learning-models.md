@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/16/2018
 ms.author: shlo
-ms.openlocfilehash: e2aa82143b8e58e36509ee5d3adf99b34be89c69
-ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
+ms.openlocfilehash: f6d5f2d7df483e0884779c3eac6a77f976e173c3
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/26/2019
-ms.locfileid: "55076606"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55567027"
 ---
 # <a name="update-azure-machine-learning-models-by-using-update-resource-activity"></a>Aktualizace modelů Azure Machine Learning s využitím aktivity aktualizace prostředku
 Tento článek doplňuje hlavní Azure Data Factory – článek integrace Azure Machine Learning: [Vytváření prediktivních kanálů pomocí Azure Machine Learning a Azure Data Factory](transform-data-using-machine-learning.md). Pokud jste tak již neučinili, přečtěte si v hlavním článku před přečtení tohoto článku.
@@ -57,9 +57,6 @@ Následující fragment kódu JSON definuje aktivita provedení dávky služby M
 }
 ```
 
-
-
-
 | Vlastnost                      | Popis                              | Požaduje se |
 | :---------------------------- | :--------------------------------------- | :------- |
 | jméno                          | Název aktivity v kanálu     | Ano      |
@@ -69,7 +66,6 @@ Následující fragment kódu JSON definuje aktivita provedení dávky služby M
 | Hodnota trainedModelName              | Název modulu Trained Model v experimentu webové služby, který má být aktualizován | Ano      |
 | trainedModelLinkedServiceName | Název propojené služby Azure Storage drží soubor ilearner, který nahraje operace aktualizace | Ano      |
 | trainedModelFilePath          | Relativní cesta k souboru v trainedModelLinkedService představující soubor ilearner, který nahraje operace aktualizace | Ano      |
-
 
 ## <a name="end-to-end-workflow"></a>Ucelený pracovní postup
 
@@ -114,14 +110,14 @@ Tady je ukázka propojené definice služby:
         "typeProperties": {
             "mlEndpoint": "https://ussouthcentral.services.azureml.net/workspaces/0000000000000000  000000000000000000000/services/0000000000000000000000000000000000000/jobs?api-version=2.0",
             "apiKey": {
-            "type": "SecureString",
-            "value": "APIKeyOfEndpoint1"
+                "type": "SecureString",
+                "value": "APIKeyOfEndpoint1"
             },
             "updateResourceEndpoint": "https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resource-group-name}/providers/Microsoft.MachineLearning/webServices/{web-service-name}?api-version=2016-05-01-preview",
             "servicePrincipalId": "000000000-0000-0000-0000-0000000000000",
             "servicePrincipalKey": {
-            "type": "SecureString",
-            "value": "servicePrincipalKey"
+                "type": "SecureString",
+                "value": "servicePrincipalKey"
             },
             "tenant": "mycompany.com"
         }
@@ -147,7 +143,7 @@ Tady je ukázková definice JSON propojené služby:
 ```JSON
 {
     "name": "StorageLinkedService",
-      "properties": {
+    "properties": {
         "type": "AzureStorage",
         "typeProperties": {
             "connectionString": "DefaultEndpointsProtocol=https;AccountName=name;AccountKey=key"
@@ -162,13 +158,13 @@ Následující fragment kódu JSON definuje služby Azure Machine Learning propo
 ```JSON
 {
     "name": "trainingEndpoint",
-      "properties": {
+    "properties": {
         "type": "AzureML",
         "typeProperties": {
             "mlEndpoint": "https://ussouthcentral.services.azureml.net/workspaces/xxx/services/--training experiment--/jobs",
-              "apiKey": "myKey"
+            "apiKey": "myKey"
         }
-      }
+    }
 }
 ```
 
@@ -255,9 +251,9 @@ Kanál má dvě aktivity: **AzureMLBatchExecution** a **AzureMLUpdateResource**.
                 "typeProperties": {
                     "trainedModelName": "ADFV2Sample Model [trained model]",
                     "trainedModelLinkedServiceName": {
-                                "type": "LinkedServiceReference",
-                                "referenceName": "StorageLinkedService"
-                            },
+                        "type": "LinkedServiceReference",
+                        "referenceName": "StorageLinkedService"
+                    },
                     "trainedModelFilePath": "azuremltesting/output/newModelForArm.ilearner"
                 },
                 "dependsOn": [
@@ -265,8 +261,7 @@ Kanál má dvě aktivity: **AzureMLBatchExecution** a **AzureMLUpdateResource**.
                         "activity": "amlbeGetilearner",
                         "dependencyConditions": [ "Succeeded" ]
                     }
-                 ]
-
+                ]
             }
         ]
     }

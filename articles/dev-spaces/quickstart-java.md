@@ -11,12 +11,12 @@ ms.topic: quickstart
 description: Rychlý vývoj na platformě Kubernetes s využitím kontejnerů a mikroslužeb v Azure
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, kontejnery
 manager: mmontwil
-ms.openlocfilehash: c448521d7e1ce70a44ca23f58d0034ca2041cbed
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 24bb5a044db813e1ee3cf2c9ff3e36a9b9ff86d7
+ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55453426"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55657055"
 ---
 # <a name="quickstart-create-a-kubernetes-dev-space-with-azure-dev-spaces-java-and-vs-code"></a>Rychlý start: Vytvoření prostoru vývoje Kubernetes s Azure Dev prostory (Javě a VS Code)
 
@@ -27,7 +27,7 @@ V tomto průvodci se naučíte:
 - Ladit kód ve vývojovém prostoru z editoru VS Code
 
 > [!Note]
-> **Pokud se někde zaseknete**, podívejte se do části [Řešení potíží](troubleshooting.md) nebo na tuto stránku přidejte komentář. Můžete také zkusit postupovat podle podrobnějšího [kurzu](get-started-netcore.md).
+> **Pokud se někde zaseknete**, podívejte se do části [Řešení potíží](troubleshooting.md) nebo na tuto stránku přidejte komentář. Můžete také zkusit postupovat podle podrobnějšího [kurzu](get-started-java.md).
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -137,4 +137,4 @@ Aktualizujte webovou aplikaci v prohlížeči. V uživatelském rozhraní by se 
 Zjistěte, jak vám může služba Azure Dev Spaces pomoct s vývojem složitějších aplikací používajících více kontejnerů a jak si můžete zjednodušit spolupráci na vývoji díky práci s různými verzemi nebo větvemi kódu v různých prostorech.
 
 > [!div class="nextstepaction"]
-> [Práce s více kontejnery a týmový vývoj](team-development-java.md)
+> [Práce s více kontejnery a týmový vývoj](multi-service-java.md)

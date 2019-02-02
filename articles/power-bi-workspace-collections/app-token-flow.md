@@ -10,12 +10,12 @@ ms.topic: article
 ms.workload: powerbi
 ms.date: 09/20/2017
 ms.author: maghan
-ms.openlocfilehash: a51664144d0dba8eeb82999b212beaf79b4503b2
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 125c3a925bf6eff04035bb755a07f19367d1abd2
+ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51236926"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55661084"
 ---
 # <a name="authenticating-and-authorizing-with-power-bi-workspace-collections"></a>Ověřování a autorizace pomocí kolekcí pracovních prostorů Power BI
 
@@ -40,11 +40,11 @@ Platnost tokenu aplikace může obsahovat následující deklarace:
 
 | Deklarovat | Popis |    
 | --- | --- |
-| **verze** |Verze tokenu aplikace. 0.2.0 je aktuální verze. |
-| **AUD** |Zamýšlený příjemce tokenu. Pro kolekce pracovních prostorů Power BI používají: *https:\//analysis.windows.net/powerbi/api*. |
-| **jednotky ISS – překročené** |Řetězec označující aplikaci, která token vydala. |
+| **ver** |Verze tokenu aplikace. 0.2.0 je aktuální verze. |
+| **aud** |Zamýšlený příjemce tokenu. Pro kolekce pracovních prostorů Power BI používají: *https:\//analysis.windows.net/powerbi/api*. |
+| **iss** |Řetězec označující aplikaci, která token vydala. |
 | **type** |Typ tokenu aplikace, který se vytváří. Aktuální je jediný podporovaný typ **vložení**. |
-| **WCN** |Název kolekce pracovních prostorů token se vydává. |
+| **wcn** |Název kolekce pracovních prostorů token se vydává. |
 | **interní databáze Windows** |ID pracovního prostoru token se vydává. |
 | **identifikátorů RID** |ID sestavy token se vydává. |
 | **uživatelské jméno** (volitelné) |Uživatelské jméno, používají zabezpečení na úrovni řádků, je řetězec, který vám pomůže identifikovat uživatele při použití pravidel zabezpečení na úrovni řádků. |
@@ -84,7 +84,7 @@ Body
 
 ```
 
-Nejsou k dispozici v rámci sady SDK, které usnadňují vytváření tokenů aplikace metody. Například pro rozhraní .NET můžete prohlédnout [Microsoft.PowerBI.Security.PowerBIToken](https://docs.microsoft.com/dotnet/api/microsoft.powerbi.security.powerbitoken) třídy a [CreateReportEmbedToken](https://docs.microsoft.com/dotnet/api/microsoft.powerbi.security.powerbitoken?redirectedfrom=MSDN#methods_) metody.
+Nejsou k dispozici v rámci sady SDK, které usnadňují vytváření tokenů aplikace metody. Například pro rozhraní .NET můžete prohlédnout [Microsoft.PowerBI.Security.PowerBIToken](https://docs.microsoft.com/dotnet/api/microsoft.powerbi.security.powerbitoken) třídy a [CreateReportEmbedToken](https://docs.microsoft.com/dotnet/api/microsoft.powerbi.security.powerbitoken?redirectedfrom=MSDN) metody.
 
 Pro sadu .NET SDK, můžete se podívat do [obory](https://docs.microsoft.com/dotnet/api/microsoft.powerbi.security.scopes).
 
@@ -176,10 +176,10 @@ Po **kolekce pracovních prostorů Power BI** odešle zprávu pro uživatele, u�
 
 ## <a name="see-also"></a>Viz také
 
-[CreateReportEmbedToken](https://docs.microsoft.com/dotnet/api/microsoft.powerbi.security.powerbitoken?redirectedfrom=MSDN#methods_)  
+[CreateReportEmbedToken](https://docs.microsoft.com/dotnet/api/microsoft.powerbi.security.powerbitoken?redirectedfrom=MSDN)  
 [Začínáme s ukázkou kolekce pracovních prostorů Microsoft Power BI](get-started-sample.md)  
 [Běžné scénáře kolekce pracovních prostorů Microsoft Power BI](scenarios.md)  
 [Začínáme s kolekcemi pracovních prostorů Microsoft Power BI](get-started.md)  
-[Úložiště Git PowerBI-CSharp](https://github.com/Microsoft/PowerBI-CSharp)
+[PowerBI-CSharp Git Repo](https://github.com/Microsoft/PowerBI-CSharp)
 
 Chcete se ještě na něco zeptat? [Vyzkoušejte komunitu Power BI](http://community.powerbi.com/)

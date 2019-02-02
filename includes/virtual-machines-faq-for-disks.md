@@ -5,15 +5,15 @@ services: virtual-machines
 author: roygara
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 06/03/2018
+ms.date: 01/30/2018
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: edf99f57fe2166e5ea7f91817dde978015af9348
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: 311ec7bacdfe58982ee670277000d81756f92005
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54841403"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55648599"
 ---
 # <a name="frequently-asked-questions-about-azure-iaas-vm-disks-and-managed-and-unmanaged-premium-disks"></a>Nejčastější dotazy týkající se disky virtuálního počítače Azure IaaS a spravovaných a nespravovaných prémiové disky
 
@@ -347,7 +347,7 @@ K dosažení propustnost disku SSD na úrovni Standard a standardní HDD velké 
 
 **Které oblasti jsou spravovaný disk větší než 4 TB podporováno v?**
 
-V tuto chvíli ve verzi preview podporují velikosti spravovaného disku jenom v západní USA – střed.
+V tuto chvíli ve verzi preview jsou podporovány velikosti spravovaného disku v západní USA – střed, Severní Evropa, západní Evropa, USA – západ 2, USA – východ 2, USA – východ.
 
 **Podporujeme povolení ukládání do mezipaměti hostitele na novější velikosti disků?**
 

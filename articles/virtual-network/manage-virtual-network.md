@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/10/2019
 ms.author: jdial
-ms.openlocfilehash: 00d5cb48053fe3f34152f29fb20fec8c4a20166f
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: 10717ccbfa05f204e60eb6d8cde5a83e9714b197
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54426161"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55562602"
 ---
 # <a name="create-change-or-delete-a-virtual-network"></a>Vytvoření, změna nebo odstranění virtuální sítě
 
@@ -87,7 +87,7 @@ Před dokončením kroků v jakékoli části tohoto článku, proveďte násled
     - **Diagram**: Diagram nabízí vizuální znázornění všech zařízení, které jsou připojené k virtuální síti. Diagram má některé klíčové informace o zařízení. Ke správě zařízení v tomto zobrazení v diagramu, vyberte zařízení.
     - **Obecná nastavení Azure**: Další informace o běžných nastavení služby Azure, najdete v následující informace:
         *   [Protokol aktivit](../azure-monitor/platform/activity-logs-overview.md)
-        *   [Řízení přístupu (IAM)](../azure-resource-manager/resource-group-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json#access-control)
+        *   [Řízení přístupu (IAM)](../role-based-access-control/overview.md)
         *   [Značky](../azure-resource-manager/resource-group-using-tags.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
         *   [Zámky](../azure-resource-manager/resource-group-lock-resources.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
         *   [Automatizační skript](../azure-resource-manager/resource-manager-export-template.md?toc=%2fazure%2fvirtual-network%2ftoc.json#export-the-template-from-resource-group)

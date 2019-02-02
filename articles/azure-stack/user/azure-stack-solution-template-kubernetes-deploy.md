@@ -11,23 +11,23 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/16/2019
+ms.date: 01/30/2019
 ms.author: mabrigg
 ms.reviewer: waltero
 ms.lastreviewed: 01/16/2019
-ms.openlocfilehash: 9d542f7c2cdeb20806a2db98005ffc03cf72144c
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: c96fdbfb56fe5274de941c0f9ab1a12cbcc241b6
+ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55238012"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55658415"
 ---
 # <a name="deploy-kubernetes-to-azure-stack"></a>Nasazení Kubernetes pro Azure Stack
 
 *Platí pro: Azure Stack integrované systémy a Azure Stack Development Kit*
 
 > [!Note]  
-> Kubernetes ve službě Azure Stack je ve verzi preview.
+> Kubernetes ve službě Azure Stack je ve verzi preview. Azure Stack odpojené scénář není aktuálně podporován ve verzi preview.
 
 Můžete postupovat podle kroků v tomto článku pro nasazení a nastavit prostředky pro Kubernetes v rámci jediné koordinované operace. Kroky pomocí šablony Azure Resource Manageru řešení. Budete potřebovat získat požadované informace o instalaci Azure Stack, generovat šablony a pak nasadit do cloudu. Šablony služby Azure Stack nepoužívá stejnou spravované služby AKS nabízí na global Azure.
 

@@ -11,13 +11,13 @@ author: MightyPen
 ms.author: genemi
 ms.reviewer: sstein
 manager: craigg
-ms.date: 09/19/2018
-ms.openlocfilehash: 7941938b089034565307b0104034589ee44c24bf
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.date: 11/07/2018
+ms.openlocfilehash: 7609f3b0c04bdf74c87123f1125973219e6dda17
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55470395"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55567209"
 ---
 # <a name="deploy-and-explore-a-standalone-single-tenant-application-that-uses-azure-sql-database"></a>Nasazení a zkoumání samostatné aplikace jednoho tenanta, který používá Azure SQL Database
 

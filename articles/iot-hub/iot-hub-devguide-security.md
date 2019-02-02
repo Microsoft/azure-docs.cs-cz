@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 07/18/2018
 ms.author: dobett
-ms.openlocfilehash: ecde1c19a56a7f99284fe738a19eac07322c2dae
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: f347c9ca3d56bedcc838d72ca15793bd13ee19ad
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54826169"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55563928"
 ---
 # <a name="control-access-to-iot-hub"></a>Řízení přístupu k IoT Hubu
 
@@ -40,7 +40,7 @@ Můžete udělit [oprávnění](#iot-hub-permissions) následujícími způsoby:
   | Zásada sdíleného přístupu | Oprávnění |
   | -------------------- | ----------- |
   | iothubowner | Oprávnění All |
-  | služba | **ServiceConnect** oprávnění |
+  | service | **ServiceConnect** oprávnění |
   | zařízení | **DeviceConnect** oprávnění |
   | registryRead | **RegistryRead** oprávnění |
   | registryReadWrite | **RegistryRead** a **RegistryWrite** oprávnění |
@@ -146,7 +146,7 @@ Tady jsou očekávané hodnoty:
 
 Následující fragment kódu Node.js ukazuje funkci s názvem **generateSasToken** , který počítá token z vstupy `resourceUri, signingKey, policyName, expiresInMins`. Následující části podrobně popisují, jak inicializovat různé vstupy pro případy použití v odlišných tokenu.
 
-```nodejs
+```javascript
 var generateSasToken = function(resourceUri, signingKey, policyName, expiresInMins) {
     resourceUri = encodeURIComponent(resourceUri);
 
@@ -260,7 +260,7 @@ Například token vytvořili pro přístup ke všem funkcím zařízení by měl
 
 Příkladem použití předchozí funkci Node.js, může být:
 
-```nodejs
+```javascript
 var endpoint ="myhub.azure-devices.net/devices/device1";
 var deviceKey ="...";
 
@@ -294,7 +294,7 @@ Jako příklad tokenu služby pomocí předem vytvořené sdílené zásady př�
 
 Příkladem použití předchozí funkci Node.js, může být:
 
-```nodejs
+```javascript
 var endpoint ="myhub.azure-devices.net/devices/device1";
 var policyName = 'device';
 var policyKey = '...';
@@ -328,7 +328,7 @@ Jako příklad služby generování předem vytvořené využitím sdílené zá
 * Název zásady: `registryRead`,
 * kdykoli vypršení platnosti.
 
-```nodejs
+```javascript
 var endpoint ="myhub.azure-devices.net/devices";
 var policyName = 'registryRead';
 var policyKey = '...';

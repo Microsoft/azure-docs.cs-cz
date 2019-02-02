@@ -11,13 +11,13 @@ author: MightyPen
 ms.author: genemi
 ms.reviewer: ''
 manager: craigg
-ms.date: 01/03/2019
-ms.openlocfilehash: 874aa2610ae1785e9f40841ed3c3279aac42d660
-ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
+ms.date: 01/15/2019
+ms.openlocfilehash: 088ebd37a4dfcd2b0d68d2519a8b70f7064244b2
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2019
-ms.locfileid: "54321819"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55561047"
 ---
 # <a name="connectivity-libraries-and-frameworks-for-sql-server"></a>Připojení knihoven a architektur pro SQL Server
 

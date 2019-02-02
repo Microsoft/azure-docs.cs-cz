@@ -5,13 +5,13 @@ author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 09/26/2018
-ms.openlocfilehash: 86b6c4284cccb183ac9f19911abd4b6cb1d308e5
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.date: 01/01/2019
+ms.openlocfilehash: a6b31933f7170006046846c458e21efd8c54034c
+ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53546908"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55660720"
 ---
 # <a name="monitor-performance-with-the-query-store"></a>Sledování výkonu s Query Store
 
@@ -83,7 +83,7 @@ Pokud je povolena Query Store uloží data v systému windows agregace 15 minut 
 Tyto možnosti jsou k dispozici pro konfiguraci Query Store parametry.
 | **Parametr** | **Popis** | **Výchozí** | **rozsah**|
 |---|---|---|---|
-| pg_qs.query_capture_mode | Nastaví, které příkazy jsou sledovány. | nahoru | NONE, top, vše |
+| pg_qs.query_capture_mode | Nastaví, které příkazy jsou sledovány. | žádný | NONE, top, vše |
 | pg_qs.max_query_text_length | Nastaví maximální dotazu, který lze uložit. Dotazy na delší dobu se zkrátí. | 6000 | 100 – 10 TISÍC |
 | pg_qs.retention_period_in_days | Nastaví dobu uchování. | 7 | 1 - 30 |
 | pg_qs.track_utility | Nastaví, zda jsou sledovány příkazy nástroje | zapnuté | vypnutý |
@@ -95,7 +95,7 @@ Tyto možnosti platí konkrétně pro počkejte statistiky.
 | Pgms_wait_sampling.history_period | Nastavte četnost, v milisekundách, na které čekání jsou odebírána data události. | 100 | 1-600000 |
 
 > [!NOTE] 
-> **pg_qs.query_capture_mode** nahrazuje **pgms_wait_sampling.query_capture_mode**. Pokud pg_qs.query_capture_mode je NONE, pgms_wait_sampling.query_capture_mode nastavení nemá žádný vliv.
+> **pg_qs.query_capture_mode** supersedes **pgms_wait_sampling.query_capture_mode**. Pokud pg_qs.query_capture_mode je NONE, pgms_wait_sampling.query_capture_mode nastavení nemá žádný vliv.
 
 
 Použití [webu Azure portal](howto-configure-server-parameters-using-portal.md) nebo [rozhraní příkazového řádku Azure](howto-configure-server-parameters-using-cli.md) získat nebo nastavit jinou hodnotu pro parametr.
@@ -111,8 +111,8 @@ Toto zobrazení vrátí všechna data v dotazu Store. Existuje jeden řádek pro
 |**Název**   |**Typ** | **Odkazy**  | **Popis**|
 |---|---|---|---|
 |runtime_stats_entry_id |bigint | | ID z tabulky runtime_stats_entries|
-|USER_ID    |identifikátor objektu    |pg_authid.OID  |Identifikátor objektu uživatele, který je proveden příkaz|
-|%{db_id/  |identifikátor objektu    |pg_database.OID    |Identifikátor objektu databáze, ve kterém byl spuštěn příkaz|
+|user_id    |identifikátor objektu    |pg_authid.oid  |Identifikátor objektu uživatele, který je proveden příkaz|
+|db_id  |identifikátor objektu    |pg_database.oid    |Identifikátor objektu databáze, ve kterém byl spuštěn příkaz|
 |query_id   |bigint  || Interní hodnota hash, vypočítá ze strom analýzy – příkaz|
 |query_sql_text |Varchar(10000)  || Text reprezentativní příkazu. Různé dotazy s stejné struktury jsou Clusterované společně; Tento text je text pro první dotazů v clusteru.|
 |hodnotou plan_id    |bigint |   |ID plánu ještě odpovídající tento dotaz není k dispozici|
@@ -151,8 +151,8 @@ Toto zobrazení, že se vrátí čekání dat události v Query Store. Existuje 
 
 |**Název**|  **Typ**|   **Odkazy**| **Popis**|
 |---|---|---|---|
-|USER_ID    |identifikátor objektu    |pg_authid.OID  |Identifikátor objektu uživatele, který je proveden příkaz|
-|%{db_id/  |identifikátor objektu    |pg_database.OID    |Identifikátor objektu databáze, ve kterém byl spuštěn příkaz|
+|user_id    |identifikátor objektu    |pg_authid.oid  |Identifikátor objektu uživatele, který je proveden příkaz|
+|db_id  |identifikátor objektu    |pg_database.oid    |Identifikátor objektu databáze, ve kterém byl spuštěn příkaz|
 |query_id   |bigint     ||Interní hodnota hash, vypočítá ze strom analýzy – příkaz|
 |event_type |text       ||Typ události, pro které čeká na back-endu|
 |událost  |text       ||Název události čekání, pokud aktuálně čekají na back-endu|
@@ -160,11 +160,11 @@ Toto zobrazení, že se vrátí čekání dat události v Query Store. Existuje 
 
 
 ### <a name="functions"></a>Functions
-Vrací hodnotu void Query_store.qs_reset()
+Query_store.qs_reset() returns void
 
 `qs_reset` zahodí všechny statistiky zatím shromážděné Query Store. Tato funkce může provádět jenom role správce serveru.
 
-Vrací hodnotu void Query_store.staging_data_reset()
+Query_store.staging_data_reset() returns void
 
 `staging_data_reset` zahodí všechny statistiky Query Store (tedy data v paměti, která byla vyprázdněna nebyl dosud k databázi) shromážděné v paměti. Tato funkce může provádět jenom role správce serveru.
 

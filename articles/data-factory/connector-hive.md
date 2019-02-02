@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: jingwang
-ms.openlocfilehash: 5088d1d4f5b80e4de3dca1d8d41ee48feea12a46
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: b245a80967d91b793fcf360772c0dec758f8f252
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54019737"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55566055"
 ---
 # <a name="copy-data-from-hive-using-azure-data-factory"></a>Kopírování dat z Hive pomocí Azure Data Factory 
 
@@ -45,8 +45,8 @@ Pro Hive propojené služby jsou podporovány následující vlastnosti:
 | hostitel | IP adresa nebo název hostitele serveru Hive, oddělených pomocí ';' u více hostitelů (pouze v případě serviceDiscoveryMode povolit).  | Ano |
 | port | Port TCP, který používá Hive server k naslouchání pro připojení klientů. Pokud se připojíte k Azure HDInsights, zadejte port 443. | Ano |
 | serverType | Typ serveru Hive. <br/>Povolené hodnoty jsou: **HiveServer1**, **HiveServer2**, **HiveThriftServer** | Ne |
-| thriftTransportProtocol | Protokol přenos, který se má použít ve vrstvě Thrift. <br/>Povolené hodnoty jsou: **Binární**, **SASL**, **HTTP** | Ne |
-| authenticationType. | Metoda ověřování pro přístup k serveru Hive. <br/>Povolené hodnoty jsou: **Anonymní**, **uživatelské jméno**, **UsernameAndPassword**, **WindowsAzureHDInsightService** | Ano |
+| thriftTransportProtocol | Protokol přenos, který se má použít ve vrstvě Thrift. <br/>Povolené hodnoty jsou: **Binary**, **SASL**, **HTTP** | Ne |
+| authenticationType. | Metoda ověřování pro přístup k serveru Hive. <br/>Povolené hodnoty jsou: **Anonymous**, **Username**, **UsernameAndPassword**, **WindowsAzureHDInsightService** | Ano |
 | serviceDiscoveryMode | Hodnota TRUE označuje pomocí služby ZooKeeper false není.  | Ne |
 | zooKeeperNameSpace | Obor názvů na pod které Hive Server 2 jsou přidány uzly ZooKeeper.  | Ne |
 | useNativeQuery | Určuje, jestli používá nativní dotazy HiveQL ovladače, nebo převede na ekvivalentní formulář v nástrojích pro HiveQL.  | Ne |
@@ -73,8 +73,8 @@ Pro Hive propojené služby jsou podporovány následující vlastnosti:
             "authenticationType" : "WindowsAzureHDInsightService",
             "username" : "<username>",
             "password": {
-                 "type": "SecureString",
-                 "value": "<password>"
+                "type": "SecureString",
+                "value": "<password>"
             }
         }
     }

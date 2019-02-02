@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.date: 10/02/2018
 ms.author: danlep
 ms.custom: seodec18, mvc
-ms.openlocfilehash: 8f547977e544854e281e1c6be442607d55149e5e
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: d6a1d442eca0cf5e433a82fb52ed54b09b56c779
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53190284"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55566084"
 ---
 # <a name="quickstart-run-a-container-application-in-azure-container-instances-in-the-azure-portal"></a>Rychlý start: Spuštění aplikace typu kontejner ve službě Azure Container Instances na webu Azure Portal
 
@@ -21,7 +21,7 @@ Spouštějte kontejnery Dockeru v Azure rychle a snadno pomocí Azure Container 
 
 ![Aplikace nasazená do služby Azure Container Instances zobrazená v prohlížeči][aci-portal-07]
 
-## <a name="sign-in-to-azure"></a>Přihlášení k Azure
+## <a name="sign-in-to-azure"></a>Přihlásit se k Azure
 
 Přihlaste se k webu Azure Portal na adrese https://portal.azure.com.
 
@@ -41,7 +41,7 @@ Do textových polí **Název kontejneru**, **Image kontejneru** a **Skupina pros
 
 ![Konfigurace základního nastavení pro novou instanci kontejneru na webu Azure Portal][aci-portal-03]
 
-Ve službě Azure Container Instances můžete vytvářet kontejnery Windows i Linuxu. Pro účely tohoto rychlého startu ponechte výchozí nastavení **Linux**, aby se nasadila image `microsoft/aci-helloworld` založená na Linuxu.
+Pro účely tohoto rychlého startu ponechte výchozí nastavení **veřejné** k nasazení `microsoft/aci-helloworld` bitovou kopii z veřejného registru Docker Hub. Tento obrázek balíčky malé webové aplikace napsané v Node.js, která slouží jako statická stránka HTML.
 
 V části **Konfigurace** zadejte **Popisek názvu DNS** pro váš kontejner. Název musí být jedinečný v rámci oblasti Azure, ve které instanci kontejneru vytváříte. Váš kontejner bude veřejně dostupný na adrese `<dns-name-label>.<region>.azurecontainer.io`.
 

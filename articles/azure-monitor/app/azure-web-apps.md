@@ -10,22 +10,22 @@ ms.service: application-insights
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 10/25/2018
+ms.date: 01/29/2019
 ms.author: mbullwin
-ms.openlocfilehash: 17d8eff39eabb2f7b4968bf74d2482b980fe8060
-ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
+ms.openlocfilehash: bde73e9ee87ab9165c1d2dd720377d2f9c8771cb
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54116615"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55565951"
 ---
 # <a name="monitor-azure-app-service-performance"></a>Sledování výkonu služby Azure App Service
-V [webu Azure Portal](https://portal.azure.com) můžete nastavit application performance monitoring pro aplikace pro webové aplikace, back-endů mobilních a API apps v [služby Azure App Service](../../app-service/overview.md). [Azure Application Insights](../../azure-monitor/app/app-insights-overview.md) využívá vaši aplikaci k odesílání telemetrických dat o jejích aktivitách do služby Application Insights, kde se ukládají a analyzují. Tam lze grafy metrik a vyhledávací nástroje použít při řešení problémů s diagnostikou, při zvyšování výkonu a při vyhodnocování využití.
+V [webu Azure portal](https://portal.azure.com) můžete nastavit application performance monitoring pro aplikace pro webové aplikace, back-endů mobilních a API apps v [služby Azure App Service](../../app-service/overview.md). [Azure Application Insights](../../azure-monitor/app/app-insights-overview.md) využívá vaši aplikaci k odesílání telemetrických dat o jejích aktivitách do služby Application Insights, kde se ukládají a analyzují. Tam lze grafy metrik a vyhledávací nástroje použít při řešení problémů s diagnostikou, při zvyšování výkonu a při vyhodnocování využití.
 
 ## <a name="run-time-or-build-time"></a>Za běhu nebo při sestavení
 Monitorování s použitím aplikace můžete konfigurovat dvěma způsoby:
 
-* **Za běhu** – můžete vybrat rozšíření pro službu app service je již živá monitorování výkonu. Aplikaci není třeba znovu sestavit ani instalovat. Obdržíte standardní sadu balíčků, které monitorují dobu odezvy, úspěšnost, výjimky, závislosti a další. 
+* **Za běhu** – můžete vybrat rozšíření pro službu app service je již živá monitorování výkonu. Není nutné znovu sestavit nebo znovu nainstalovat aplikaci. Obdržíte standardní sadu balíčků, které monitorují dobu odezvy, úspěšnost, výjimky, závislosti a další. 
 * **Při sestavení** – Do aplikace můžete balíček nainstalovat během vývoje. Tato možnost nabízí větší variabilitu. Kromě stejných standardních balíčků můžete napsat kód pro přizpůsobení telemetrických dat nebo pro odesílání vlastních telemetrických dat. Můžete protokolovat konkrétní aktivity nebo zaznamenávat události podle sémantiky domény aplikace. 
 
 ## <a name="run-time-instrumentation-with-application-insights"></a>Použití za běhu s Application Insights
@@ -42,14 +42,27 @@ Pokud už máte službu app service v Azure, již nabízí některá monitorová
 
     ![Používejte webovou aplikaci.](./media/azure-web-apps/create-resource.png)
 
-2. Po určení, který prostředek se má použít, můžete nastavit, jak chcete application insights shromažďovat data pro jednotlivé platformy pro vaši aplikaci.
+2. Po určení, který prostředek se má použít, můžete nastavit, jak chcete application insights shromažďovat data pro jednotlivé platformy pro vaši aplikaci. (Monitorování aplikace ASP.NET je ve výchozím nastavení se dvou různých úrovních kolekce.)
 
-    ![Vyberte možnosti jednotlivé platformy](./media/azure-web-apps/choose-options.png)
+    ![Vyberte možnosti jednotlivé platformy](./media/azure-web-apps/choose-options-new.png)
+
+    * .NET **základní kolekce** úroveň nabízí základní možnosti APM jednou instancí.
+    
+    * .NET **doporučuje kolekce** úroveň:
+        * Přidá trendy využití procesoru, paměti a vstupně-výstupních operací.
+        * Koreluje mikroslužby napříč hranicemi požadavku nebo závislost.
+        * Shromažďuje trendy využití a umožňuje spojitost s míněním z výsledky dostupnosti transakcí.
+        * Shromažďuje výjimky ošetřena hostitelský proces.
+        * Při vzorkování se používá, zvyšují přesnost metriky APM v zatížení.
+    
+    .NET core nabízí **doporučuje kolekce** nebo zakázáno pro .NET Core 2.0 a 2.1.
 
 3. **Instrumentace vaší služby app service** po instalaci Application Insights.
 
-   **Povolte monitorování na straně klienta** pro zobrazení stránek a telemetrii uživatelů.
+   **Povolit monitorování na straně klienta** pro stránku zobrazení a telemetrii uživatelů.
 
+    (To je povoleno standardně pro aplikace .NET Core s **doporučuje kolekce**, bez ohledu na to, zda je k dispozici nastavení "APPINSIGHTS_JAVASCRIPT_ENABLED" aplikace. Podpora detailní uživatelského rozhraní pro zakázání monitorování na straně klienta není aktuálně k dispozici pro .NET Core.)
+    
    * Klikněte na Nastavení > Nastavení aplikace.
    * V části Nastavení aplikace přidejte novou dvojici klíče a hodnoty:
 
@@ -57,6 +70,7 @@ Pokud už máte službu app service v Azure, již nabízí některá monitorová
 
     Hodnota: `true`
    * Kliknutím na **Uložit** uložte nastavení a kliknutím na **Restartovat** restartujte aplikaci.
+
 4. Prozkoumejte data monitorování vaší aplikace tak, že vyberete **nastavení** > **Application Insights** > **zobrazit více v Application Insights**.
 
 Později můžete pomocí Application Insights aplikaci sestavit, pokud budete chtít.
@@ -78,23 +92,19 @@ Application Insights může poskytovat podrobnější telemetrie po nainstalová
 
     Operace má dva důsledky:
 
-   1. Vytvoří prostředek Application Insights v Azure, kde se ukládají, analyzují a zobrazují telemetrická data.
+   1. Vytvoří prostředek Application Insights v Azure, kde ukládají, analyzují a zobrazí telemetrie.
    2. Přidá do kódu balíček NuGet Application Insights (pokud tam ještě není) a nakonfiguruje ho tak, aby odesílal telemetrická data do příslušného prostředku Azure.
 2. **Otestujte telemetrická data** spuštěním aplikace v počítači pro vývoj (F5).
 3. **Publikujte aplikaci** v Azure obvyklým způsobem. 
 
 *Jak lze přepnout na odesílání do jiného prostředku Application Insights?*
 
-* V sadě Visual Studio klikněte pravým tlačítkem na projekt, zvolte **Nakonfigurovat Application Insights** a zvolte požadovaný prostředek. Budete mít možnost vytvořit nový prostředek. Proveďte opětné sestavení a nasazení.
+* V sadě Visual Studio, klikněte pravým tlačítkem na projekt, zvolte **konfigurovat Application Insights**a zvolte požadovaný prostředek. Budete mít možnost vytvořit nový prostředek. Proveďte opětné sestavení a nasazení.
 
 ## <a name="more-telemetry"></a>Další telemetrická data
 
 * [Data načítání webové stránky](../../azure-monitor/app/javascript.md)
 * [Vlastní telemetrická data](../../azure-monitor/app/api-custom-events-metrics.md)
-
-## <a name="video"></a>Video
-
-> [!VIDEO https://channel9.msdn.com/events/Connect/2016/100/player]
 
 ## <a name="troubleshooting"></a>Řešení potíží
 
@@ -102,10 +112,19 @@ Application Insights může poskytovat podrobnější telemetrie po nainstalová
 
 Povolení jazyka Javascript pomocí App Services může způsobit, že odpovědi html se oříznou.
 
-- Alternativní řešení 1: nastavení aplikace APPINSIGHTS_JAVASCRIPT_ENABLED na hodnotu false nebo ho úplně odeberte a restartování
-- Alternativní řešení 2: přidání sady sdk prostřednictvím kódu a odebrání rozšíření (Profiler a Snapshot debugger nebudou s touto konfigurací)
+* Alternativní řešení 1: nastavení aplikace APPINSIGHTS_JAVASCRIPT_ENABLED na hodnotu false nebo ho úplně odeberte a restartování
+* Alternativní řešení 2: přidání sady sdk prostřednictvím kódu a odebrání rozšíření (Profiler a Snapshot debugger nebudou s touto konfigurací)
 
 Tento problém sledujeme [zde](https://github.com/Microsoft/ApplicationInsights-Home/issues/277)
+
+Pro .NET Core jsou aktuálně **nepodporuje**:
+
+* Samostatná nasazení.
+* Aplikace určené pro rozhraní .NET Framework.
+* Aplikace .NET core 2.2.
+
+> [!NOTE]
+> .NET core 2.0 a .NET Core 2.1 jsou podporovány. Tento článek bude aktualizován, když se přidá podpora .NET Core 2.2.
 
 ## <a name="next-steps"></a>Další postup
 * [Spusťte profiler v živé aplikaci](../../azure-monitor/app/profiler.md).

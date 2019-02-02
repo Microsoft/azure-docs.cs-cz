@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 12/07/2018
+ms.date: 02/01/2019
 ms.author: jingwang
-ms.openlocfilehash: 4e1975409f73804448f844d1bcb84c2b0d0d2afc
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 27f327493fbf3d7856b9488ecd0dd2509976ccfc
+ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54013719"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55657133"
 ---
 # <a name="copy-data-from-couchbase-using-azure-data-factory-preview"></a>Kopírování dat z Couchbase pomocí Azure Data Factory (Preview)
 
@@ -45,7 +45,7 @@ Couchbase propojené služby jsou podporovány následující vlastnosti:
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
 | type | Vlastnost type musí být nastavená na: **Couchbase** | Ano |
-| připojovací řetězec | ODBC připojovací řetězec služby pro připojení k Couchbase. Označte toto pole jako SecureString bezpečně uložit ve službě Data Factory nebo [odkazovat tajného klíče do služby Azure Key Vault](store-credentials-in-key-vault.md). | Ano |
+| připojovací řetězec | ODBC připojovací řetězec služby pro připojení k Couchbase. <br/>Označte toto pole jako SecureString bezpečně uložit ve službě Data Factory. Řetězec přihlašovacích údajů v Azure Key Vault a o přijetí změn můžete také umístit `credString` konfigurace z připojovacího řetězce. Podívejte se na následující ukázky a [Store přihlašovacích údajů ve službě Azure Key Vault](store-credentials-in-key-vault.md) článku s dalšími podrobnostmi. | Ano |
 | connectVia | [Prostředí Integration Runtime](concepts-integration-runtime.md) se použije k připojení k úložišti. Můžete použít modul Integration Runtime nebo prostředí Azure Integration Runtime (Pokud vaše úložiště dat je veřejně dostupná). Pokud není zadán, použije výchozí prostředí Azure Integration Runtime. |Ne |
 
 **Příklad:**
@@ -57,8 +57,37 @@ Couchbase propojené služby jsou podporovány následující vlastnosti:
         "type": "Couchbase",
         "typeProperties": {
             "connectionString": {
+                "type": "SecureString",
+                "value": "Server=<server>; Port=<port>;AuthMech=1;CredString=[{\"user\": \"JSmith\", \"pass\":\"access123\"}, {\"user\": \"Admin\", \"pass\":\"simba123\"}];"
+            }
+        },
+        "connectVia": {
+            "referenceName": "<name of Integration Runtime>",
+            "type": "IntegrationRuntimeReference"
+        }
+    }
+}
+```
+
+**Příklad: uložení řetězce přihlašovacích údajů ve službě Azure Key Vault**
+
+```json
+{
+    "name": "CouchbaseLinkedService",
+    "properties": {
+        "type": "Couchbase",
+        "typeProperties": {
+            "connectionString": {
                  "type": "SecureString",
-                 "value": "Server=<server>; Port=<port>;AuthMech=1;CredString=[{\"user\": \"JSmith\", \"pass\":\"access123\"}, {\"user\": \"Admin\", \"pass\":\"simba123\"}];"
+                 "value": "Server=<server>; Port=<port>;AuthMech=1;"
+            },
+            "credString": { 
+                "type": "AzureKeyVaultSecret", 
+                "store": { 
+                    "referenceName": "<Azure Key Vault linked service name>", 
+                    "type": "LinkedServiceReference" 
+                }, 
+                "secretName": "<secretName>" 
             }
         },
         "connectVia": {

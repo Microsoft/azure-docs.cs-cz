@@ -14,12 +14,12 @@ ms.date: 01/31/2019
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
-ms.openlocfilehash: 98ed7ce3eb58aa870a3cb06864631cd108410195
-ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
+ms.openlocfilehash: 12b23b8a062859da111a067b2655425a611b6c20
+ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55508738"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55658245"
 ---
 # <a name="configure-the-expiration-policy-for-office-365-groups"></a>Konfigurace zásad vypršení platnosti pro skupiny Office 365
 
@@ -53,15 +53,16 @@ Další informace o oprávnění k obnovení odstraněné skupiny, najdete v č�
   
   ![Okno vypršení platnosti](./media/groups-lifecycle/expiration-settings.png)
 
-4. Na **vypršení platnosti** okně můžete:
+3. Na **vypršení platnosti** okně můžete:
 
   * Nastavení doby platnosti skupiny ve dnech. Můžete třeba vybrat jednu z přednastavených hodnot nebo vlastní hodnota (třeba 31 dnů nebo déle). 
   * Zadejte e-mailovou adresu, kde mají být odesílána upozornění prodloužení platnosti a ukončení platnosti při skupina nemá žádného vlastníka. 
   * Vyberte skupiny Office 365, které vyprší. Můžete povolit vypršení platnosti pro **všechny** skupiny Office 365, můžete také povolit pouze **vybrané** skupiny Office 365, nebo vyberte **žádný**  zakázat vypršení platnosti pro všechny skupiny.
   * Až to uděláte tak, že vyberete uložit nastavení **Uložit**.
 
+## <a name="email-notifications"></a>E-mailová oznámení
 
-E-mailová oznámení, jako je například tento se odesílají vlastníkům skupin Office 365 30 dnů, 15 dnů a 1 den před vypršením platnosti skupiny.
+E-mailová oznámení, jako je například tento se odesílají vlastníkům skupin Office 365 30 dnů, 15 dnů a 1 den před vypršením platnosti skupiny. Jazyk e-mailu je určen upřednostňovaného jazyka nebo jazyce tenanta vlastníka skupiny. Pokud vlastník skupiny definoval upřednostňovaného jazyka nebo více vlastníkům mají stejné preferovaný jazyk, použije se tento jazyk. U všech ostatních případech se používá jazyk tenanta.
 
 ![E-mailové oznámení o vypršení platnosti](./media/groups-lifecycle/expiration-notification.png)
 

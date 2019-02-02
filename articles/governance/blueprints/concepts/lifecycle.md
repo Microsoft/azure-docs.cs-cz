@@ -4,17 +4,17 @@ description: Další informace o životního cyklu, která procházejí podrobn�
 services: blueprints
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 10/25/2018
+ms.date: 02/01/2019
 ms.topic: conceptual
 ms.service: blueprints
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: 84dc86f993b0c1b4c4803525a07bdd34dddd229d
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: 2dbf63e745af102de05ec6dc3e3bcb3e98cd3a32
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53309802"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55563707"
 ---
 # <a name="understand-the-lifecycle-of-an-azure-blueprint"></a>Princip životního cyklu Azure podrobného plánu
 
@@ -33,8 +33,7 @@ Abyste úplně pochopili podrobný plán a fáze, si probereme standardní živo
 
 ## <a name="creating-and-editing-a-blueprint"></a>Vytváření a úpravy podrobný plán
 
-Při vytváření podrobný plán, přidejte artefakty, uložit do skupiny pro správu a zadat jedinečný název a jedinečné verze. Podrobný plán je nyní v **koncept** režimu a ještě nemůžete přiřadit.
-Během činnosti v **koncept** režimu, můžete dál aktualizovat a změnit.
+Při vytváření podrobného plánu, přidat artefakty, uložit do skupiny pro správu nebo předplatného a zadat jedinečný název a verzi jedinečný. Podrobný plán je nyní v **koncept** režimu a ještě nemůžete přiřadit. Během činnosti v **koncept** režimu, můžete dál aktualizovat a změnit.
 
 A nemá být nikdy publikováno podrobného plánu v **koncept** režim zobrazuje na jinou ikonu **definice podrobného plánu** stránky než těch, které byly **publikováno**. **Nejnovější verzi** se také zobrazí jako **koncept** tyto nikdy publikovaného podrobné plány.
 

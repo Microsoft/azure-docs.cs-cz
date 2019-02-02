@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: c197ead3a7b0f61b9dd5f1e3ea0bd197c23a2778
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 86f2a8fa11becdf24c0a10c0325893946a033c3d
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55180760"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55568171"
 ---
 # <a name="technicalprofiles"></a>TechnicalProfiles
 
@@ -97,7 +97,7 @@ A **TechnicalProfiles** prvek obsahuje sadu technické profily, které podporuje
 | OutputClaimsTransformations | 0:1 | Seznam dříve definované odkazy na transformace deklarací identity, které má být provedena po přijetí deklarace identity od zprostředkovatele deklarací. |
 | ValidationTechnicalProfiles | 0: n | Seznam odkazů na jiné technické profily, které používá technického profilu pro účely ověření. Další informace najdete v tématu [technický profil ověření](validation-technical-profile.md)|
 | SubjectNamingInfo | 0:1 | Určuje produkční název subjektu v tokenech, kde je v názvu subjektu zadávají samostatně z deklarací identity. Například, OAuth nebo SAML.  |
-| IncludeClaimsFromTechnicalProfile | 0:1 | Identifikátor technického profilu, ze kterého mají být všechny vstupní a výstupní deklarace identity mají být přidány do tohoto technický profil. Odkazované technického profilu musí být definován ve stejném souboru zásad. | 
+| IncludeClaimsFromTechnicalProfile | 0:1 | Identifikátor technického profilu, ze kterého mají být všechny vstupní a výstupní deklarace identity mají být přidány do tohoto technický profil. Odkazované technického profilu musí být definován ve stejném souboru zásad. |
 | IncludeTechnicalProfile |0:1 | Identifikátor technického profilu, ze kterého chcete všechna data mají být přidány do tohoto technický profil. Odkazované technického profilu musí existovat ve stejném souboru zásad. |
 | UseTechnicalProfileForSessionManagement | 0:1 | Různé technický profil pro správu relací. |
 |EnabledForUserJourneys| 0:1 |Určuje, zda technickém profilu je proveden v cestě uživatele.  |
@@ -168,7 +168,7 @@ A **metadat** prvek obsahuje následující prvky:
 | ------- | ----------- | ----------- |
 | InputClaim | 1: n | Typ deklarace identity očekávaný vstup. |
 
-#### <a name="inputclaim"></a>InputClaim 
+#### <a name="inputclaim"></a>InputClaim
 
 **InputClaim** prvek obsahuje následující atributy:
 
@@ -186,7 +186,7 @@ A **metadat** prvek obsahuje následující prvky:
 | ------- | ----------- | ----------- |
 | PersistedClaim | 1: n | Typ deklarace k uchování. |
 
-#### <a name="persistedclaim"></a>PersistedClaim 
+#### <a name="persistedclaim"></a>PersistedClaim
 
 **PersistedClaim** prvek obsahuje následující atributy:
 
@@ -204,7 +204,7 @@ A **metadat** prvek obsahuje následující prvky:
 | ------- | ----------- | ----------- |
 | outputClaim | 1: n | Typ deklarace identity očekávaný výstup. |
 
-#### <a name="outputclaim"></a>outputClaim 
+#### <a name="outputclaim"></a>outputClaim
 
 **OutputClaim** prvek obsahuje následující atributy:
 
@@ -275,9 +275,9 @@ A **metadat** prvek obsahuje následující prvky:
 **ClaimsProviderSelections** uživatele cesty definuje seznam možnosti výběru zprostředkovatele deklarací identity a jejich pořadí. S **EnabledForUserJourneys** element můžete filtrovat, které zprostředkovatel deklarací identity je k dispozici pro uživatele. **EnabledForUserJourneys** element obsahuje jeden z následujících hodnot:
 
 - **Vždy**, provedení technického profilu.
-- **Nikdy**, přeskočte technický profil. 
-- **OnClaimsExistence** spustit pouze v případě, že existuje určitá deklarace identity, zadaná v technickém profilu. 
-- **OnItemExistenceInStringCollectionClaim**, spustit, jenom když položka existuje v deklaraci identity kolekce řetězců. 
+- **Nikdy**, přeskočte technický profil.
+- **OnClaimsExistence** spustit pouze v případě, že existuje určitá deklarace identity, zadaná v technickém profilu.
+- **OnItemExistenceInStringCollectionClaim**, spustit, jenom když položka existuje v deklaraci identity kolekce řetězců.
 - **OnItemAbsenceInStringCollectionClaim** provést, pouze pokud položka neexistuje v deklaraci identity kolekce řetězec.
 
 Pomocí **OnClaimsExistence**, **OnItemExistenceInStringCollectionClaim** nebo **OnItemAbsenceInStringCollectionClaim**, je potřeba zadat následující metadata: **ClaimTypeOnWhichToEnable** Určuje typ deklarace identity, který se má vyhodnotit, **ClaimValueOnWhichToEnable** Určuje hodnotu, která se má porovnat.
@@ -289,22 +289,10 @@ Následující technický profil provádí pouze v případě, **identityProvide
   <DisplayName>Unlink Facebook</DisplayName>
 ...
     <Metadata>
-        <Item Key="ClaimTypeOnWhichToEnable">identityProviders</Item>
-        <Item Key="ClaimValueOnWhichToEnable">facebook.com</Item>
-    </Metadata>        
+      <Item Key="ClaimTypeOnWhichToEnable">identityProviders</Item>
+      <Item Key="ClaimValueOnWhichToEnable">facebook.com</Item>
+    </Metadata>
 ...
   <EnabledForUserJourneys>OnItemExistenceInStringCollectionClaim</EnabledForUserJourneys>
-</TechnicalProfile>  
+</TechnicalProfile>
 ```
-
-
-
-
-
-
-
-
-
-
-
-

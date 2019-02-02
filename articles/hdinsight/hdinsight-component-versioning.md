@@ -10,12 +10,12 @@ ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 09/19/2018
 ms.author: kakampf
-ms.openlocfilehash: 3a8b3a22eb4bdaed0142f8afc6f92128be32eca3
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: 4b9c57785b9b3176def495af6bc5956d70fa5c35
+ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53971116"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55657905"
 ---
 # <a name="what-are-the-apache-hadoop-components-and-versions-available-with-hdinsight"></a>Co je Apache Hadoop komponenty a verze, které jsou k dispozici s HDInsight?
 
@@ -31,7 +31,7 @@ Verze součástí spojené s verzemi clusterů HDInsight jsou uvedeny v následu
 > [!NOTE]  
 > Výchozí verze pro službu HDInsight mohou změnit bez předchozího upozornění. Pokud máte verzi závislosti, zadejte verzi HDInsight při vytváření clusterů s využitím .NET SDK pomocí Azure Powershellu a rozhraní příkazového řádku Azure Classic.
 
-| Komponenta | HDInsight 4.0 (Preview) | HDInsight 3.6 (výchozí) | HDInsight 3.5 | HDInsight 3.4 | HDInsight 3.3 | HDInsight 3.2 | HDInsight verze 3.1 | HDInsight 3.0 |
+| Komponenta | HDInsight 4.0 (Preview) | HDInsight 3.6 (výchozí) | HDInsight 3.5 | HDInsight 3.4 | HDInsight 3.3 | HDInsight 3.2 | HDInsight 3.1 | HDInsight 3.0 |
 | --- | --- | --- | --- | --- | --- | --- | --- |--- |
 | Datová platforma Hortonworks |3.0 |2.6 |2.5 |2.4 |2.3 |2.2 |2.1.7 |2.0 |
 | Apache Hadoop a YARN |3.1.1 |2.7.3 |2.7.3 |2.7.1 |2.7.1 |2.6.0 |2.4.0 |2.2.0 |
@@ -74,7 +74,7 @@ V následujících tabulkách jsou uvedeny verzích HDInsight. Verze HDP, které
 
 Následující tabulka uvádí verze HDInsight, které jsou k dispozici na webu Azure Portal, jakož i jiné metody nasazení, například prostředí PowerShell a sady .NET SDK.
 
-| Verze HDInsight | Verze HDP | OPERAČNÍ SYSTÉM VIRTUÁLNÍHO POČÍTAČE | Datum vydání | Datum vypršení platnosti podpory | Datum vyřazení z provozu | Vysoká dostupnost |  Dostupnost na webu Azure portal | 
+| Verze HDInsight | Verze HDP | VM OS | Datum vydání | Datum vypršení platnosti podpory | Datum vyřazení z provozu | Vysoká dostupnost |  Dostupnost na webu Azure portal | 
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | HDInsight 4.0 <br> (Preview) |HDP 3.0 |Ubuntu 16.0.4 LTS |24. září 2018 | | |Ano |Ano |
 | HDInsight 3.6 |HDP 2.6 |Ubuntu 16.0.4 LTS |4. dubna 2017 | | |Ano |Ano |
@@ -90,14 +90,14 @@ Následující tabulka uvádí verze HDInsight, které jsou k dispozici na webu 
 
 Následující tabulka uvádí verze HDInsight, které jsou **není** k dispozici na webu Azure Portal.
 
-| Verze HDInsight | Verze HDP | OPERAČNÍ SYSTÉM VIRTUÁLNÍHO POČÍTAČE | Datum vydání | Datum vypršení platnosti podpory | Datum vyřazení z provozu | Vysoká dostupnost |  Dostupnost na webu Azure portal | 
+| Verze HDInsight | Verze HDP | VM OS | Datum vydání | Datum vypršení platnosti podpory | Datum vyřazení z provozu | Vysoká dostupnost |  Dostupnost na webu Azure portal | 
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | HDInsight 3.5 <br> (Bez Spark) |HDP 2.5 |Ubuntu 16.0.4 LTS |30. září 2016 |5. září 2017 |28. června 2018 |Ano |Ne |
 | HDInsight 3.4 |HDP 2.4 |Ubuntu 14.0.4 LTS |29. března 2016 |29. prosince 2016 |9. ledna 2018 |Ano |Ne |
 | HDInsight 3.3 |HDP 2.3 |Windows Server 2012 R2 |2. prosince 2015 |27. června 2016 |31. července 2018 |Ano |Ne |
 | HDInsight 3.3 |HDP 2.3 |Ubuntu 14.0.4 LTS |2. prosince 2015 |27. června 2016 |31. července 2017 |Ano |Ne |
 | HDInsight 3.2 |HDP 2.2 |Ubuntu 12.04 LTS nebo Windows Server 2012 R2 |18. února 2015 |1. března 2016 |1. dubna 2017 |Ano |Ne |
-| HDInsight verze 3.1 |HDP 2.1 |Windows Server 2012 R2 |24. června 2014 |18. května 2015 |30. června 2016 |Ano |Ne |
+| HDInsight 3.1 |HDP 2.1 |Windows Server 2012 R2 |24. června 2014 |18. května 2015 |30. června 2016 |Ano |Ne |
 | HDInsight 3.0 |HDP 2.0 |Windows Server 2012 R2 |11. února 2014 |17. září 2014 |30. června 2015 |Ano |Ne |
 | HDInsight 2.1 |HDP 1.3 |Windows Server 2012 R2 |28. října 2013 |12. května 2014 |31. května 2015 |Ano |Ne |
 | HDInsight 1.6 |HDP 1.1 | |28. října 2013 |26. dubna 2014 |31. května 2015 |Ne |Ne |
@@ -162,7 +162,7 @@ Po vyřazení HDInsight ve Windows nelze vytvořit nový cluster HDInsight Windo
 ### <a name="which-versions-of-hdinsight-on-windows-are-affected"></a>Jaké verze rozhraní HDInsight ve Windows se to týká?
 Azure HDInsight verze 3.3 je poslední verze HDInsight pro Windows. Předtím, než byl vyřazen z provozu HDInsight ve Windows, musí migrovat všechny verze clusterů HDInsight Windows 3.3 nebo starší na HDInsight v Linuxu verze 3.5 nebo novější. Migrace clusterů HDInsight v Linuxu umožňuje zachovat možnost vytváření nových clusterů nebo změně velikosti stávajících clusterů. 
 
-### <a name="what-do-i-need-to-do"></a>Co musím udělat?
+### <a name="what-do-i-need-to-do"></a>Co je potřeba udělat?
 Migrace clusterů HDInsight Windows na cluster HDInsight Linux podporované před 31. července 2018. Další informace najdete v [dokumentu migrace HDInsight](hdinsight-migrate-from-windows-to-linux.md). Podrobnosti o verzích HDInsight Azure najdete v tématu seznam [podporované verze](hdinsight-component-versioning.md#supported-hdinsight-versions). 
 
 ### <a name="where-do-i-find-the-cluster-os-type"></a>Kde můžu najít typ operačního systému clusteru?
@@ -228,26 +228,56 @@ Následující tabulky uvádějí výchozí velikostí virtuálních počítač�
 
 * Všechny podporované oblastech kromě Brazílie – jih a Japonsko – západ:
 
-  | Typ clusteru | Hadoop | HBase | Interaktivní dotaz | Storm | Spark  | ML Server |
-  | --- | --- | --- | --- | --- | --- | --- |
-  | Hlavní: výchozí velikosti virtuálního počítače |D12 v2 |D12 v2 | D13 v2 |A3 |D12 v2 |D12 v2 |
-  | Hlavní: doporučené velikosti virtuálních počítačů |D3 v2<br/> D4 v2<br/> D12 v2 |D3 v2<br/> D4 v2<br/> D12 v2  | D13,<br/> D14 |A4 v2<br/> A8 v2<br/> A2m v2 |D12 v2<br/> D13 v2<br/> D14 v2 |D12 v2<br/> D13 v2<br/> D14 v2 |
-  | Pracovních procesů: výchozí velikosti virtuálního počítače |D4 v2 |D4 v2| D14 v2|D3 v2 |D13 v2 | D4 v2 |
-  | Pracovního procesu: doporučené velikosti virtuálních počítačů |D3 v2<br/> D4 v2<br/> D12 v2 |D3 v2<br/> D4 v2<br/> D12 v2  | D13,<br/> D14 |D3 v2<br/> D4 v2<br/> D12 v2 |D4 v2<br/> D12 v2<br/> D13 v2<br/> D14 v2 |D4 v2<br/> D12 v2<br/> D13 v2<br/> D14 v2 |
-  | ZooKeeper: výchozí velikosti virtuálního počítače | |A4 v2 |A4 v2 |A4 v2 | | A2 v2|
-  | ZooKeeper: doporučené velikosti virtuálních počítačů | |A4 v2<br/> A8 v2<br/> A2m v2 | | A2 v2<br/> A4 v2<br/> A8 v2 | | |
-  | Edge: výchozí velikosti virtuálního počítače | | | | | |D4 v2 |
-  | Edge: Doporučená velikost virtuálního počítače | | | | | |D4 v2<br/> D12 v2<br/> D13 v2<br/> D14 v2 |
+<html><body><table width="100%">
+<tr align="left"><th>Typ clusteru</th><th>Hadoop</th><th>HBase&nbsp;&nbsp;</th><th>Interaktivní dotaz</th><th>Storm&nbsp;&nbsp;</th><th>Spark&nbsp;&nbsp;</th><th>ML Server&nbsp;</th><th>Kafka&nbsp;</th></tr>
+
+<tr><td>Hlavní: výchozí velikosti virtuálního počítače</td><td>D12 v2</td><td>D12 v2</td><td>D13 v2</td><td>A3</td><td>D12 v2</td><td>D12 v2</td><td>D3v2</td></tr>
+
+<tr><td rowspan="4" valign="top">Hlavní: doporučené velikosti virtuálních počítačů</td><td>D3 v2</td><td>D3 v2</td><td>D13</td><td>A4 v2</td><td>D12 v2</td><td>D12 v2</td><td>A2M v2</td></tr>
+<tr><td>D4 v2</td><td>D4 v2</td><td>D14</td><td>A8 v2</td><td>D13 v2</td><td>D13 v2</td><td>D3 v2</td></tr>
+<tr><td>D12 v2</td><td>D12 v2</td><td>E16 v3</td><td>A2m v2</td><td>D14 v2</td><td>D14 v2</td><td>D4 v2</td></tr>
+<tr><td>E4 v3</td><td>E4 v3</td><td>E32 v3</td><td>E4 v3</td><td>E4 v3</td><td>E4 v3</td><td>D12 v2</td></tr>
+
+<tr><td>Pracovních procesů: výchozí velikosti virtuálního počítače</td><td>D4 v2</td><td>D4 v2</td><td>D14 v2</td><td>D3 v2</td><td>D13 v2</td><td>D4 v2</td><td>D12v2 4 se 2 disky S30 jednoho zprostředkovatele</td></tr>
+
+<tr><td rowspan="8" valign="top">Pracovního procesu: doporučené velikosti virtuálních počítačů</td><td>D3 v2</td><td>D3 v2</td><td>D13</td><td>D3 v2</td><td>D4 v2</td><td>D4 v2</td><td>D13 v2</td></tr>
+<tr><td>D4 v2</td><td>D4 v2</td><td>D14</td><td>D4 v2</td><td>D12 v2</td><td>D12 v2</td><td>DS12 v2</td></tr>
+<tr><td>D12 v2</td><td>D12 v2</td><td>E16 v3</td><td>D12 v2</td><td>D13 v2</td><td>D13 v2</td><td>DS13 v2</td></tr>
+<tr><td>E4 v3</td><td>E4 v3</td><td>E20 v3</td><td>E4 v3</td><td>D14 v2</td><td>D14 v2</td><td>E4 v3</td></tr>
+<tr><td></td><td></td><td>E32 v3</td><td></td><td>E16 v3</td><td>E16 v3</td><td>ES4 v3</td></tr>
+<tr><td></td><td></td><td>E64 v3</td><td></td><td>E20 v3</td><td>E20 v3</td><td>E8 v3</td></tr>
+<tr><td></td><td></td><td></td><td></td><td>E32 v3</td><td>E32 v3</td><td>ES8 v3</td></tr>
+<tr><td></td><td></td><td></td><td></td><td>E64 v3</td><td>E64 v3</td><td></td></tr>
+
+<tr><td>ZooKeeper: výchozí velikosti virtuálního počítače</td><td></td><td>A4 v2</td><td>A4 v2</td><td>A4 v2</td><td></td><td>A2 v2</td><td>D3v2</td></tr>
+
+<tr><td rowspan="3" valign="top">ZooKeeper: doporučené velikosti virtuálních počítačů</td><td></td><td>A4 v2</td><td></td><td>A2 v2</td><td></td><td></td><td>A2M v2</td></tr>
+<tr><td></td><td>A8 v2</td><td></td><td>A4 v2</td><td></td><td></td><td>D3 v2</td></tr>
+<tr><td></td><td>A2m v2</td><td></td><td>A8 v2</td><td></td><td></td><td>E8 v3</td></tr>
+
+<tr align="left"><td>Edge: výchozí velikosti virtuálního počítače</td><td></td><td></td><td></td><td></td><td></td><td>D4 v2</td><td></td></tr>
+
+<tr><td rowspan="8" valign="top">Edge: Doporučená velikost virtuálního počítače</td><td></td><td></td><td></td><td></td><td></td><td>D4 v2</td><td></td></tr>
+<tr><td></td><td></td><td></td><td></td><td></td><td>D12 v2</td><td></td></tr>
+<tr><td></td><td></td><td></td><td></td><td></td><td>D13 v2</td><td></td></tr>
+<tr><td></td><td></td><td></td><td></td><td></td><td>D14 v2</td><td></td></tr>
+<tr><td></td><td></td><td></td><td></td><td></td><td>E16 v3</td><td></td></tr>
+<tr><td></td><td></td><td></td><td></td><td></td><td>E20 v3</td><td></td></tr>
+<tr><td></td><td></td><td></td><td></td><td></td><td>E32 v3</td><td></td></tr>
+<tr><td></td><td></td><td></td><td></td><td></td><td>E64 v3</td><td></td></tr>
+
+</table></body></html>
+
 * Brazílie – jih a Japonsko – západ pouze (žádné velikosti v2):
 
   | Typ clusteru | Hadoop | HBase | Interaktivní dotaz |Storm | Spark | Služby ML |
   | --- | --- | --- | --- | --- | --- | --- |
   | Hlavní: výchozí velikosti virtuálního počítače |D12 |D12  | D13 |A3 |D12 |D12 |
-  | Hlavní: doporučené velikosti virtuálních počítačů |D3,<br/> D4,<br/> D12 |D3,<br/> D4,<br/> D12  | D13,<br/> D14 |A3<br/> A4<br/> A5 |D12,<br/> D13,<br/> D14 |D12,<br/> D13,<br/> D14 |
+  | Hlavní: doporučené velikosti virtuálních počítačů |D3,<br/> D4,<br/> D12 |D3,<br/> D4,<br/> D12  | D13,<br/> D14 |A3,<br/> A4,<br/> A5 |D12,<br/> D13,<br/> D14 |D12,<br/> D13,<br/> D14 |
   | Pracovních procesů: výchozí velikosti virtuálního počítače |D4 |D4  |  D14 |D3 |D13 |D4 |
   | Pracovního procesu: doporučené velikosti virtuálních počítačů |D3,<br/> D4,<br/> D12 |D3,<br/> D4,<br/> D12  | D13,<br/> D14 |D3,<br/> D4,<br/> D12 |D4,<br/> D12,<br/> D13,<br/> D14 | D4,<br/> D12,<br/> D13,<br/> D14 |
   | ZooKeeper: výchozí velikosti virtuálního počítače | |A4 v2 | A4 v2| A4 v2 | | A2 v2|
-  | ZooKeeper: doporučené velikosti virtuálních počítačů | |A2,<br/> A3<br/> A4 | |A2,<br/> A3<br/> A4 | | |
+  | ZooKeeper: doporučené velikosti virtuálních počítačů | |A2,<br/> A3,<br/> A4 | |A2,<br/> A3,<br/> A4 | | |
   | Edge: velikosti virtuálních počítačů výchozí | | | | | |D4 |
   | Edge: doporučené velikosti virtuálních počítačů | | | | | |D4,<br/> D12,<br/> D13,<br/> D14 |
 
