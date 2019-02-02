@@ -12,12 +12,12 @@ ms.topic: article
 ms.date: 11/20/2018
 ms.author: mahender
 ms.custom: seodec18
-ms.openlocfilehash: c47de9fbe1b9923ff8ce1c38a9a9695af4311858
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: 662260c3cf37f8f8a675c522f3d3dea41153e485
+ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53723140"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55663559"
 ---
 # <a name="use-key-vault-references-for-app-service-and-azure-functions-preview"></a>Použití služby Key Vault odkazy pro App Service a Azure Functions (preview)
 
@@ -37,7 +37,7 @@ Za účelem čtení tajných kódů z trezoru klíčů, budete muset vytvořit t
    > [!NOTE] 
    > Key Vault odkazuje na aktuálně jenom podporu systém přiřadil spravovaných identit. Uživatelsky přiřazené identity nelze použít.
 
-1. Vytvoření [zásady ve službě Key Vault přístupu](../key-vault/key-vault-secure-your-key-vault.md#key-vault-access-policies) pro identitu aplikací, které jste vytvořili dříve. Povolte oprávnění tajného kódu "Get" na tuto zásadu.
+1. Vytvoření [zásady ve službě Key Vault přístupu](../key-vault/key-vault-secure-your-key-vault.md#key-vault-access-policies) pro identitu aplikací, které jste vytvořili dříve. Povolte oprávnění tajného kódu "Get" na tuto zásadu. Neprovádějte konfiguraci "oprávnění aplikace" nebo `appliationId` nastavení, jako to není kompatibilní s spravovanou identitu.
 
 ## <a name="reference-syntax"></a>Odkaz syntaxe
 
@@ -46,8 +46,8 @@ Referenční dokumentace služby Key Vault je ve formátu `@Microsoft.KeyVault({
 > [!div class="mx-tdBreakAll"]
 > | Řetězec odkazu                                                            | Popis                                                                                                                                                                                 |
 > |-----------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-> | SecretUri =_secretUri_                                                       | **SecretUri** by měla být úplná rovina dat identifikátor URI tajného klíče ve službě Key Vault, včetně verze, například https://myvault.vault.azure.net/secrets/mysecret/ec96f02080254f109c51a1f14cdb1931  |
-> | VaultName =_vaultName_; SecretName =_secretName_; SecretVersion =_secretVersion_ | **VaultName** by měl název prostředku služby Key Vault. **SecretName** by měl být název cílového tajného kódu. **SecretVersion** by měla mít verzi tajného klíče používat. |
+> | SecretUri=_secretUri_                                                       | **SecretUri** by měla být úplná rovina dat identifikátor URI tajného klíče ve službě Key Vault, včetně verze, například https://myvault.vault.azure.net/secrets/mysecret/ec96f02080254f109c51a1f14cdb1931  |
+> | VaultName=_vaultName_;SecretName=_secretName_;SecretVersion=_secretVersion_ | **VaultName** by měl název prostředku služby Key Vault. **SecretName** by měl být název cílového tajného kódu. **SecretVersion** by měla mít verzi tajného klíče používat. |
 
 > [!NOTE] 
 > V aktuální verzi preview verze jsou povinné. Při obměně tajné kódy, je potřeba aktualizovat verzi konfigurace vaší aplikace.

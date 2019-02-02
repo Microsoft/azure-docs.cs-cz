@@ -1,5 +1,5 @@
 ---
-title: Vytvoření vývojového prostoru Kubernetes v cloudu pomocí rozhraní .NET Core a editoru VS Code | Microsoft Docs
+title: Vytvoření prostoru vývoje Kubernetes v cloudu s využitím .NET Core a VS Code | Dokumentace Microsoftu
 titleSuffix: Azure Dev Spaces
 services: azure-dev-spaces
 ms.service: azure-dev-spaces
@@ -10,14 +10,14 @@ ms.date: 09/26/2018
 ms.topic: tutorial
 description: Rychlý vývoj na platformě Kubernetes s využitím kontejnerů a mikroslužeb v Azure
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, kontejnery
-ms.openlocfilehash: b51bf83d2e44239ebd6bc17e25efaa2fe94250f3
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: f053f2f70b266a53684f72ceb9d997a718c66444
+ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55467131"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55663906"
 ---
-# <a name="get-started-on-azure-dev-spaces-with-net-core"></a>Začínáme s .NET Core v Azure Dev Spaces
+# <a name="get-started-on-azure-dev-spaces-with-net-core"></a>Začínáme s Azure Dev prostory s .NET Core
 
 V tomto průvodci se naučíte:
 
@@ -245,4 +245,4 @@ Aktualizujte webovou aplikaci v prohlížeči a přejděte na stránku O aplikac
 ## <a name="next-steps"></a>Další postup
 
 > [!div class="nextstepaction"]
-> [Informace o týmovém vývoji](team-development-netcore.md)
+> [Informace o vývoji pro víc služeb](multi-service-netcore.md)

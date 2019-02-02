@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 12/03/2018
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 3468f9341e0a8406733877a05798e427dd454fff
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 93ce86a438fca47100a34da2524515b46bcad574
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55167559"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55567158"
 ---
 # <a name="object-detection"></a>Detekce objektů
 
@@ -87,6 +87,15 @@ Následující odpověď JSON ukazuje, co pro počítačové zpracování obrazu
 }
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="limitations"></a>Omezení
 
-Seznamte se s koncepty [kategorizace obrázků](concept-categorizing-images.md) a [imagí s popisem](concept-describing-images.md).
+Je důležité si uvědomit omezení pro funkci zjišťování objektu můžete vyhnout nebo důsledky falešně negativní (chybějící objekty) a omezené podrobnosti.
+* Objekty nejsou zjištěny obecně v případě, že jsou velmi malé (méně než 5 % obrázku).
+* Objekty nejsou zjištěny obecně, pokud jsou velmi úzce spolupracují uspořádané (stoh talířů shora, například).
+* Objekty nejsou rozlišené pomocí značky nebo názvy produktů (různé druhy sodovky na polici úložiště, například). Však můžete získat značku informace z bitové kopie pomocí [vytvoření detekce](concept-brand-detection.md) funkce.
+
+## <a name="use-the-api"></a>Použití rozhraní API
+Funkce zjišťování objektu je součástí [analyzovat Image](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) rozhraní API. Můžete volat toto rozhraní API prostřednictvím nativní sadou SDK nebo volání REST. Když získáte úplnou odpověď JSON, jednoduše analyzovat řetězec pro obsah `"objects"` oddílu.
+
+* [Rychlé zprovoznění: Analýza obrázku (sadu .NET SDK)](./quickstarts-sdk/csharp-analyze-sdk.md)
+* [Rychlé zprovoznění: Analýza obrázku (REST API)](./quickstarts/csharp-analyze.md)

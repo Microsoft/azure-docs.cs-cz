@@ -9,12 +9,12 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: philmea
-ms.openlocfilehash: 0aef8c5e055eb43576ea0ecc7ef8bf09d22d6ed3
-ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
+ms.openlocfilehash: 1ed1790d9fe1cdaa8d00b45e0684531984906c7f
+ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/19/2019
-ms.locfileid: "54412899"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55661815"
 ---
 # <a name="tutorial-define-a-new-device-type-in-your-azure-iot-central-application"></a>Kurz: Definujte nový typ zařízení v aplikaci Azure IoT Central
 
@@ -42,6 +42,8 @@ V tomto kurzu se naučíte:
 > * Použití nastavení a vlastností
 > * Použití příkazů
 > * Zobrazení simulovaného zařízení na řídicím panelu
+
+[!INCLUDE [iot-central-experimental-note](../../includes/iot-central-experimental-note.md)]
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -405,7 +407,7 @@ Teď máte šablonu **Connected Air Conditioner** definovanou a můžete přizp�
 
     | Nastavení      | Hodnota       |
     | ------------ | ----------- |
-    | Titul        | Teplota |
+    | Název        | Teplota |
     | Časové rozmezí   | Posledních 30 minut |
     | Měření     | Teplota (zvolte **Visibility** (Viditelnost) vedle **temperature**) |
 
@@ -417,7 +419,7 @@ Teď máte šablonu **Connected Air Conditioner** definovanou a můžete přizp�
 
     | Nastavení      | Hodnota       |
     | ------------ | ----------- |
-    | Titul        | Události |
+    | Název        | Události |
     | Časové rozmezí   | Posledních 30 minut |
     | Měření     | Chyba motoru ventilátoru (zvolte **Visibility** (Viditelnost) vedle **Fan Motor Error**) |
 
@@ -429,7 +431,7 @@ Teď máte šablonu **Connected Air Conditioner** definovanou a můžete přizp�
 
     | Nastavení      | Hodnota       |
     | ------------ | ----------- |
-    | Titul        | Režim ventilátoru |
+    | Název        | Režim ventilátoru |
     | Časové rozmezí   | Posledních 30 minut |
     | Měření | Režim ventilátoru (zvolte **Visibility** (Viditelnost) vedle **Fan Mode**) |
 
@@ -445,7 +447,7 @@ Teď máte šablonu **Connected Air Conditioner** definovanou a můžete přizp�
 
     | Nastavení                 | Hodnota         |
     | ----------------------- | ------------- |
-    | Titul                   | Nastavení cílové teploty |
+    | Název                   | Nastavení cílové teploty |
     | Nastavení a vlastností | Nastavená teplota |
 
     V části Available Columns (Dostupné sloupce) se zobrazí nastavení a vlastnosti, které jste definovali dříve na stránkách Settings (Nastavení) a Properties (Vlastnosti). 
@@ -462,7 +464,7 @@ Teď máte šablonu **Connected Air Conditioner** definovanou a můžete přizp�
 
     | Nastavení                 | Hodnota         |
     | ----------------------- | ------------- |
-    | Titul                   | Sériové číslo |
+    | Název                   | Sériové číslo |
     | Nastavení a vlastností | Sériové číslo |
 
     ![Nastavení vlastnosti sériového čísla](./media/tutorial-define-device-type/propertysettings5.png)
@@ -477,7 +479,7 @@ Teď máte šablonu **Connected Air Conditioner** definovanou a můžete přizp�
 
     | Nastavení                 | Hodnota            |
     | ----------------------- | ---------------- |
-    | Titul                   | Verze firmwaru |
+    | Název                   | Verze firmwaru |
     | Nastavení a vlastností | Verze firmwaru |
 
     ![Nastavení vlastnosti sériového čísla](./media/tutorial-define-device-type/propertysettings6.png)

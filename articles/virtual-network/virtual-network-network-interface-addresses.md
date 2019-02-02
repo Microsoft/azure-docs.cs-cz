@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/24/2017
 ms.author: jdial
-ms.openlocfilehash: 64aa936dc1dbb1d2a700a31253cf7a3caee6b66f
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: 4fae4486e6cf47892ba2133885ec864969f66001
+ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54436769"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55663600"
 ---
 # <a name="add-change-or-remove-ip-addresses-for-an-azure-network-interface"></a>Přidání, změna nebo odebrání IP adres pro rozhraní sítě Azure
 
@@ -52,7 +52,7 @@ Můžete přidat tolik [privátní](#private) a [veřejné](#public) [IPv4](#ipv
     |Nastavení|Povinné?|Podrobnosti|
     |---|---|---|
     |Název|Ano|Musí být jedinečný pro síťové rozhraní|
-    |Typ|Ano|Protože přidáváte do stávající síťové rozhraní konfigurace protokolu IP a musí mít každé síťové rozhraní [primární](#primary) je vaší jedinou možností konfigurace protokolu IP, **sekundární**.|
+    |Type|Ano|Protože přidáváte do stávající síťové rozhraní konfigurace protokolu IP a musí mít každé síťové rozhraní [primární](#primary) je vaší jedinou možností konfigurace protokolu IP, **sekundární**.|
     |Metoda přiřazení privátní IP adresy|Ano|[**Dynamické**](#dynamic): Azure přiřadí další dostupnou adresou v rozsahu adres podsítě, že se síťové rozhraní se nasadí. [**Statické**](#static): Přiřadíte nepoužívaná adresa pro rozsah adres podsítě, že se síťové rozhraní se nasadí.|
     |Veřejná IP adresa|Ne|**Zakázáno:** Žádný prostředek veřejné IP adresy je aktuálně přidružená ke konfiguraci IP adresy. **Povoleno:** Vyberte existující adresu veřejnou IP adresu IPv4, nebo vytvořte novou. Zjistěte, jak vytvořit veřejnou IP adresu, přečtěte si [veřejné IP adresy](virtual-network-public-ip-address.md#create-a-public-ip-address) článku.|
 6. Ručně přidat sekundární privátní IP adresy v operačním systému virtuálního počítače pomocí pokynů [přiřadit několik IP adres pro virtuální počítač operační systémy](virtual-network-multiple-ip-addresses-portal.md#os-config) článku. Zobrazit [privátní](#private) IP adres obsahuje důležité informace před ručním přidání IP adres do operačního systému virtuálního počítače. Nepřidávejte žádné veřejné IP adresy do operačního systému virtuálního počítače.
@@ -61,7 +61,7 @@ Můžete přidat tolik [privátní](#private) a [veřejné](#public) [IPv4](#ipv
 
 |Nástroj|Příkaz|
 |---|---|
-|Rozhraní příkazového řádku|[az network nic ip-config create](/cli/azure/network/nic/ip-config#az_network_nic_ip_config_create)|
+|Rozhraní příkazového řádku|[az network nic ip-config create](/cli/azure/network/nic/ip-config)|
 |PowerShell|[Add-AzureRmNetworkInterfaceIpConfig](/powershell/module/azurerm.network/add-azurermnetworkinterfaceipconfig)|
 
 ## <a name="change-ip-address-settings"></a>Změnit nastavení IP adresy
@@ -82,7 +82,7 @@ Můžete třeba změnit metodu přiřazování adresy IPv4 změnit statickou IPv
 
 |Nástroj|Příkaz|
 |---|---|
-|Rozhraní příkazového řádku|[AZ network nic ip-config update](/cli/azure/network/nic/ip-config#az_network_nic_ip_config_update)|
+|Rozhraní příkazového řádku|[AZ network nic ip-config update](/cli/azure/network/nic/ip-config)|
 |PowerShell|[Set-AzureRMNetworkInterfaceIpConfig](/powershell/module/azurerm.network/set-azurermnetworkinterfaceipconfig)|
 
 ## <a name="remove-ip-addresses"></a>Odebrání IP adres
@@ -98,7 +98,7 @@ Můžete odebrat [privátní](#private) a [veřejné](#public) IP adresy k síť
 
 |Nástroj|Příkaz|
 |---|---|
-|Rozhraní příkazového řádku|[az network nic ip-config delete](/cli/azure/network/nic/ip-config#az_network_nic_ip_config_delete)|
+|Rozhraní příkazového řádku|[az network nic ip-config delete](/cli/azure/network/nic/ip-config)|
 |PowerShell|[Remove-AzureRmNetworkInterfaceIpConfig](/powershell/module/azurerm.network/remove-azurermnetworkinterfaceipconfig)|
 
 ## <a name="ip-configurations"></a>Konfigurace protokolu IP
@@ -144,7 +144,7 @@ Existují scénáře, kdy je nutné ručně nastavit adresu IP síťového rozhr
 4. Umožňuje spustit virtuální počítač.
 5. [Ruční konfigurace](virtual-network-multiple-ip-addresses-portal.md#os-config) sekundárních IP adres v rámci operačního systému (a také primární IP adresu v rámci Windows) tak, aby odpovídaly nastavení v rámci Azure.
 
-Podle předchozích kroků, privátní IP adresy přiřazené k síťovému rozhraní v rámci Azure a v rámci operačního systému virtuálního počítače, zůstávají stejné. Chcete-li udržovat přehled o které virtuální počítače v rámci vašeho předplatného, který jste ručně nastavili IP adresy v rámci operačního systému pro, zvažte přidání Azure [značka](../azure-resource-manager/resource-group-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json#tags) k virtuálním počítačům. Můžete použít "přiřazení IP adresy: Statické", například. Díky tomu můžete snadno vyhledat virtuální počítače v rámci vašeho předplatného, který jste ručně nastavili IP adresu v rámci operačního systému.
+Podle předchozích kroků, privátní IP adresy přiřazené k síťovému rozhraní v rámci Azure a v rámci operačního systému virtuálního počítače, zůstávají stejné. Chcete-li udržovat přehled o které virtuální počítače v rámci vašeho předplatného, který jste ručně nastavili IP adresy v rámci operačního systému pro, zvažte přidání Azure [značka](../azure-resource-manager/resource-group-using-tags.md) k virtuálním počítačům. Můžete použít "přiřazení IP adresy: Statické", například. Díky tomu můžete snadno vyhledat virtuální počítače v rámci vašeho předplatného, který jste ručně nastavili IP adresu v rámci operačního systému.
 
 Kromě povolení virtuální počítač, aby komunikovat s ostatními prostředky v rámci stejné nebo připojených virtuálních sítí, privátní IP adresu také umožňuje virtuálním počítačům pro odchozí komunikaci s Internetem. Odchozí připojení se zdrojovou adresu sítě přeložit pomocí Azure na nepředvídatelné veřejnou IP adresu. Další informace o Azure odchozí připojení k Internetu, přečtěte si [Azure odchozí připojení k Internetu](../load-balancer/load-balancer-outbound-connections.md?toc=%2fazure%2fvirtual-network%2ftoc.json) článku. Nemůžete komunikovat příchozí privátní IP adresu virtuálního počítače z Internetu. Pokud vaše odchozí připojení vyžadují předvídatelné veřejnou IP adresu, přidružte prostředek veřejné IP adresy k síťovému rozhraní.
 

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/09/2018
 ms.author: jdial
-ms.openlocfilehash: 3381bf32bfd3df538641b11b35a64b53fda6744f
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: ddf789dc6a1bf6c76643e9b5478ede75f865f4eb
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54466869"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55563010"
 ---
 # <a name="create-change-or-delete-a-route-table"></a>Vytvořit, změnit nebo odstranit tabulku směrování
 
@@ -62,7 +62,7 @@ Do vyhledávacího pole v horní části portálu zadejte *směrovací tabulky* 
 2. Vyberte v seznamu, který chcete zobrazit podrobnosti pro směrovací tabulky. V části **nastavení**, můžete zobrazit **trasy** ve směrovací tabulce a **podsítě** směrovací tabulka je přidružen k.
 3. Další informace o běžných nastavení služby Azure, najdete v následující informace:
     *   [Protokol aktivit](../azure-monitor/platform/activity-logs-overview.md)
-    *   [Řízení přístupu (IAM)](../azure-resource-manager/resource-group-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json#access-control)
+    *   [Řízení přístupu (IAM)](../role-based-access-control/overview.md)
     *   [Značky](../azure-resource-manager/resource-group-using-tags.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
     *   [Zámky](../azure-resource-manager/resource-group-lock-resources.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
     *   [Automatizační skript](../azure-resource-manager/resource-manager-export-template.md?toc=%2fazure%2fvirtual-network%2ftoc.json#export-the-template-from-resource-group)

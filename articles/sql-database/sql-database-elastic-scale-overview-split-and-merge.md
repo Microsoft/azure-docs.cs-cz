@@ -11,13 +11,13 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 manager: craigg
-ms.date: 10/15/2018
-ms.openlocfilehash: 0f5dc5cc7d981eb162ba101671b1e967ddf4bfff
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.date: 12/04/2018
+ms.openlocfilehash: 1d350cae379c5ec790413775138225b60b9c5e32
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52868459"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55564931"
 ---
 # <a name="moving-data-between-scaled-out-cloud-databases"></a>Přesun dat mezi cloudovými databázemi s horizontálním navýšením kapacity
 
@@ -83,7 +83,7 @@ Nástroj split-merge běží jako webová služba Azure. Správce nebo vývojá�
 
   Služby dělení a slučování používá databázi k údržbě stavu a pro protokoly během zpracování požadavku. Uživatel vytvoří databázi v rámci svého předplatného a obsahuje připojovací řetězec pro něj v konfiguračním souboru pro nasazení služby. Správce z organizace uživatele můžete také připojení k této databázi kontrolovat jeho průběh požadavku a prozkoumat podrobné informace o potenciálních selhání.
 
-- **Sledování horizontálního dělení**
+- **Sharding-awareness**
 
   Služby dělení a slučování rozlišuje mezi (1) horizontálně dělené tabulky, (2) referenční tabulky a (3) normální tabulky. Sémantika operace rozdělení/sloučení/move závisí na typu tabulka použitá a jsou definovány takto:
 
@@ -190,7 +190,7 @@ Poskytuje služby dělení a slučování **stavem** tabulky v databázi úloži
 
   Čas a datum zahájení žádosti.
 
-- **ID operace**
+- **OperationId**
 
   Identifikátor GUID, který jednoznačně identifikuje požadavek. Tento požadavek lze také zrušit operaci, i když je stále probíhají.
 
@@ -212,7 +212,7 @@ Poskytuje služby dělení a slučování **stavem** tabulky v databázi úloži
 
 ### <a name="azure-diagnostics"></a>Diagnostika Azure
 
-Služby dělení a slučování používá Azure Diagnostics založené na Azure SDK 2.5 pro monitorování a diagnostiku. Konfigurace diagnostiky můžete řídit, jak je popsáno zde: [povolení diagnostiky v Azure Cloud Services a Virtual Machines](../cloud-services/cloud-services-dotnet-diagnostics.md). Balíček ke stažení obsahuje dvě konfigurace diagnostiky – jeden pro webovou roli a jeden pro roli pracovního procesu. Obsahuje definice a čítače výkonu, protokoly IIS, protokoly událostí Windows a protokoly událostí aplikace dělení a slučování protokolu.
+Služby dělení a slučování používá Azure Diagnostics založené na Azure SDK 2.5 pro monitorování a diagnostiku. Konfigurace diagnostiky se řídit, jak je popsáno zde: [Povolení diagnostiky v Azure Cloud Services a Virtual Machines](../cloud-services/cloud-services-dotnet-diagnostics.md). Balíček ke stažení obsahuje dvě konfigurace diagnostiky – jeden pro webovou roli a jeden pro roli pracovního procesu. Obsahuje definice a čítače výkonu, protokoly IIS, protokoly událostí Windows a protokoly událostí aplikace dělení a slučování protokolu.
 
 ## <a name="deploy-diagnostics"></a>Nasazení diagnostiky
 
@@ -230,7 +230,7 @@ Pokud chcete povolit monitorováním a diagnostikou pomocí konfigurace diagnost
     Set-AzureServiceDiagnosticsExtension -StorageContext $storageContext -DiagnosticsConfigurationPath $config_path -ServiceName $service_name -Slot Production -Role "SplitMergeWorker"
 ```
 
-Můžete najít další informace o tom, jak nakonfigurovat a nasadit nastavení diagnostiky tady: [povolení diagnostiky v Azure Cloud Services a Virtual Machines](../cloud-services/cloud-services-dotnet-diagnostics.md).
+Můžete najít další informace o tom, jak nakonfigurovat a nasadit nastavení diagnostiky tady: [Povolení diagnostiky v Azure Cloud Services a Virtual Machines](../cloud-services/cloud-services-dotnet-diagnostics.md).
 
 ## <a name="retrieve-diagnostics"></a>Získání diagnostiky
 

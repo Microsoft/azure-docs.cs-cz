@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 06/02/2017
 ms.author: rogarana
 ms.subservice: common
-ms.openlocfilehash: 707ee508b0615ab873b60b45eb1d9f0294313367
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: d815bae2478d8853c63cd773cbfeaf5d3e90458c
+ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55464564"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55659759"
 ---
 # <a name="using-the-azure-cli-with-azure-storage"></a>Použití Azure CLI s Azure Storage
 
@@ -38,7 +38,7 @@ Tento průvodce to předpokládá, že chápete základní koncepty služby Azur
 Stáhnout a nainstalovat rozhraní příkazového řádku Azure podle pokynů uvedených v [instalace rozhraní příkazového řádku Azure](/cli/azure/install-az-cli2).
 
 > [!TIP]
-> Pokud máte potíže s instalací, podívejte se [řešení potíží s instalací](/cli/azure/install-az-cli2#installation-troubleshooting) části tohoto článku a [nainstalovat řešení potíží s](https://github.com/Azure/azure-cli/blob/master/doc/install_troubleshooting.md) Průvodce na Githubu.
+> Pokud máte potíže s instalací, podívejte se [řešení potíží s instalací](/cli/azure/install-az-cli2) části tohoto článku a [nainstalovat řešení potíží s](https://github.com/Azure/azure-cli/blob/master/doc/install_troubleshooting.md) Průvodce na Githubu.
 >
 
 ## <a name="working-with-the-cli"></a>Práce pomocí rozhraní příkazového řádku

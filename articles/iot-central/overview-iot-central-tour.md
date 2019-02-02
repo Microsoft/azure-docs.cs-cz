@@ -9,12 +9,12 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: philmea
-ms.openlocfilehash: 13d2c1028cc712092774a3f81d8eeaa5cb109edf
-ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
+ms.openlocfilehash: 5242be4dfe1c79b8f943b3b6d240046d0e8c5181
+ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54199677"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55658758"
 ---
 # <a name="take-a-tour-of-the-azure-iot-central-ui"></a>Prohlídka uživatelského rozhraní Azure IoT Central
 
@@ -32,6 +32,8 @@ Jako _operátor_ můžete pomocí uživatelského rozhraní Azure IoT Central sp
 - Konfigurovat zařízení
 - Řešit potíže a odstraňovat problémy se zařízeními
 - Zřizovat nová zařízení.
+
+[!INCLUDE [iot-central-experimental-note](../../includes/iot-central-experimental-note.md)]
 
 ## <a name="use-the-left-navigation-menu"></a>Použití levé navigační nabídky
 

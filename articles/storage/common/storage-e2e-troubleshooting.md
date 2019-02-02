@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 03/15/2017
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: ce884b95daf8c02e51c79068c360ffe4a4fe0d07
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 73073d5240f29906ade5f9b92cf81fec2f99a3d4
+ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55473200"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55661968"
 ---
 # <a name="end-to-end-troubleshooting-using-azure-storage-metrics-and-logging-azcopy-and-message-analyzer"></a>Začátku do konce řešení problémů pomocí metrik Azure Storage a protokolování, AzCopy a analyzátoru zpráv
 [!INCLUDE [storage-selector-portal-e2e-troubleshooting](../../../includes/storage-selector-portal-e2e-troubleshooting.md)]
@@ -98,10 +98,10 @@ Ke konfiguraci účtu pomocí protokolování a metriky pro úložiště [webu A
 
 Začínáme s prostředím PowerShell for Azure, najdete v článku [instalace a konfigurace Azure Powershellu](/powershell/azure/overview).
 
-1. Použití [Add-AzureAccount](/powershell/module/servicemanagement/azure/add-azureaccount?view=azuresmps-3.7.0) rutiny pro přidání účtu uživatele Azure do okna prostředí PowerShell:
+1. Použití [přidat AzAccount](/powershell/module/az.account/add-azaccount) rutiny pro přidání účtu uživatele Azure do okna prostředí PowerShell:
    
     ```powershell
-    Add-AzureAccount
+    Add-AzAccount
     ```
 
 2. V **Přihlaste se k Microsoft Azure** okně zadejte e-mailovou adresu a heslo spojené s vaším účtem. Azure přihlašovací údaje ověří, uloží je a pak zavře okno.
@@ -110,7 +110,7 @@ Začínáme s prostředím PowerShell for Azure, najdete v článku [instalace a
     ```powershell
     $SubscriptionName = 'Your subscription name'
     $StorageAccountName = 'yourstorageaccount'
-    Set-AzureSubscription -CurrentStorageAccountName $StorageAccountName -SubscriptionName $SubscriptionName
+    Set-AzSubscription -CurrentStorageAccountName $StorageAccountName -SubscriptionName $SubscriptionName
     ```
 
 4. Povolení protokolování úložiště pro službu Blob service:

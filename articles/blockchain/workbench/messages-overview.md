@@ -5,17 +5,17 @@ services: azure-blockchain
 keywords: ''
 author: PatAltimore
 ms.author: patricka
-ms.date: 1/8/2018
+ms.date: 02/01/2019
 ms.topic: article
 ms.service: azure-blockchain
-ms.reviewer: mmercuri
+ms.reviewer: brendal
 manager: femila
-ms.openlocfilehash: 34731bb96a83a901b3fc1a59ce1846083d69bfd7
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ms.openlocfilehash: 48e7de2798d9c34942df281febcc1d4ec443010d
+ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54103379"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55662223"
 ---
 # <a name="azure-blockchain-workbench-messaging-integration"></a>Integrace zasílání zpráv Azure Blockchain Workbench
 
@@ -35,12 +35,12 @@ Požadavek vyžaduje následující pole:
 
 | **Název**             | **Popis**                                      |
 |----------------------|------------------------------------------------------|
-| ID žádosti            | Klientem poskytnutý identifikátor GUID                                |
+| requestId            | Klientem poskytnutý identifikátor GUID                                |
 | Jméno            | Křestní jméno uživatele                              |
 | Příjmení             | Příjmení uživatele                               |
-| EmailAddress         | E-mailovou adresu uživatele                           |
+| emailAddress         | E-mailovou adresu uživatele                           |
 | externalId           | Azure AD ID objektu uživatele                      |
-| ID připojení         | Jedinečný identifikátor pro připojení k blockchainu |
+| connectionId         | Jedinečný identifikátor pro připojení k blockchainu |
 | messageSchemaVersion | Zasílání zpráv verze schématu                            |
 | messageName          | **CreateUserRequest**                               |
 
@@ -63,10 +63,10 @@ Blockchain Workbench vrátí odpověď se následující pole:
 
 | **Název**              | **Popis**                                                                                                             |
 |-----------------------|-----------------------------------------------------------------------------------------------------------------------------|
-| ID žádosti             | Klientem poskytnutý identifikátor GUID |
+| requestId             | Klientem poskytnutý identifikátor GUID |
 | userId                | ID uživatele, který byl vytvořen |
 | UserChainIdentifier   | Adresa uživatele, který byl vytvořen v síti blockchain. V Etherea, je adresa uživatele **v řetězu** adresu. |
-| ID připojení          | Jedinečný identifikátor pro připojení k blockchainu|
+| connectionId          | Jedinečný identifikátor pro připojení k blockchainu|
 | messageSchemaVersion  | Zasílání zpráv verze schématu |
 | messageName           | **CreateUserUpdate** |
 | status                | Stav požadavku na vytvoření uživatele.  Pokud úspěšné, je hodnota **úspěch**. Při selhání, hodnota je **selhání**.     |
@@ -113,12 +113,13 @@ Požadavek vyžaduje následující pole:
 
 | **Název**             | **Popis**                                                                                                           |
 |----------------------|---------------------------------------------------------------------------------------------------------------------------|
-| ID žádosti            | Klientem poskytnutý identifikátor GUID |
+| requestId            | Klientem poskytnutý identifikátor GUID |
 | UserChainIdentifier  | Adresa uživatele, který byl vytvořen v síti blockchain. V Etherea, tato adresa je uživatele **v řetězu** adresu. |
-| ApplicationName      | Název aplikace |
+| applicationName      | Název aplikace |
+| version              | Verze aplikace Povinné, pokud máte více verzí aplikace povolena. V opačném případě verze je volitelné. Další informace o správy verzí aplikací, najdete v části [správy verzí aplikací Azure Blockchain Workbench](version-app.md). |
 | WorkflowName         | Název pracovního postupu |
 | parameters           | Vstupní parametry pro vytvoření kontraktu |
-| ID připojení         | Jedinečný identifikátor pro připojení k blockchainu |
+| connectionId         | Jedinečný identifikátor pro připojení k blockchainu |
 | messageSchemaVersion | Zasílání zpráv verze schématu |
 | messageName          | **CreateContractRequest** |
 
@@ -128,7 +129,8 @@ Příklad:
 { 
     "requestId": "ce3c429b-a091-4baa-b29b-5b576162b211", 
     "userChainIdentifier": "0x9a8DDaCa9B7488683A4d62d0817E965E8f248398", 
-    "applicationName": "AssetTransfer", 
+    "applicationName": "AssetTransfer",
+    "version": "1.0",
     "workflowName": "AssetTransfer", 
     "parameters": [ 
         { 
@@ -150,10 +152,10 @@ Blockchain Workbench vrátí odpověď se následující pole:
 
 | **Název**                 | **Popis**                                                                   |
 |--------------------------|-----------------------------------------------------------------------------------|
-| ID žádosti                | Klientem poskytnutý identifikátor GUID                                                             |
-| ContractId               | Jedinečný identifikátor pro kontrakt uvnitř Azure Blockchain Workbench |
-| ContractLedgerIdentifier | Adresa kontraktu na hlavní knihy                                            |
-| ID připojení             | Jedinečný identifikátor pro připojení k blockchainu                               |
+| requestId                | Klientem poskytnutý identifikátor GUID                                                             |
+| contractId               | Jedinečný identifikátor pro kontrakt uvnitř Azure Blockchain Workbench |
+| contractLedgerIdentifier | Adresa kontraktu na hlavní knihy                                            |
+| connectionId             | Jedinečný identifikátor pro připojení k blockchainu                               |
 | messageSchemaVersion     | Zasílání zpráv verze schématu                                                         |
 | messageName              | **CreateContractUpdate**                                                      |
 | status                   | Stav požadavku na vytvoření kontraktu.  Možné hodnoty: **Odeslání**, **potvrzené**, **selhání**.  |
@@ -215,12 +217,13 @@ Požadavek vyžaduje následující pole:
 
 | **Název**                 | **Popis**                                                                                                           |
 |--------------------------|---------------------------------------------------------------------------------------------------------------------------|
-| ID žádosti                | Klientem poskytnutý identifikátor GUID |
+| requestId                | Klientem poskytnutý identifikátor GUID |
 | UserChainIdentifier      | Adresa uživatele, který byl vytvořen v síti blockchain. V Etherea, tato adresa je uživatele **v řetězu** adresu. |
-| ContractLedgerIdentifier | Adresa kontraktu na hlavní knihy |
-| WorkflowFunctionName     | Název funkce pracovního postupu |
+| contractLedgerIdentifier | Adresa kontraktu na hlavní knihy |
+| version                  | Verze aplikace Povinné, pokud máte více verzí aplikace povolena. V opačném případě verze je volitelné. Další informace o správy verzí aplikací, najdete v části [správy verzí aplikací Azure Blockchain Workbench](version-app.md). |
+| workflowFunctionName     | Název funkce pracovního postupu |
 | parameters               | Vstupní parametry pro vytvoření kontraktu |
-| ID připojení             | Jedinečný identifikátor pro připojení k blockchainu |
+| connectionId             | Jedinečný identifikátor pro připojení k blockchainu |
 | messageSchemaVersion     | Zasílání zpráv verze schématu |
 | messageName              | **CreateContractActionRequest** |
 
@@ -231,6 +234,7 @@ Příklad:
     "requestId": "a5530932-9d6b-4eed-8623-441a647741d3",
     "userChainIdentifier": "0x9a8DDaCa9B7488683A4d62d0817E965E8f248398",
     "contractLedgerIdentifier": "0xde0B295669a9FD93d5F28D9Ec85E40f4cb697BAe",
+    "version": "1.0",
     "workflowFunctionName": "modify",
     "parameters": [
         {
@@ -252,9 +256,9 @@ Blockchain Workbench vrátí odpověď se následující pole:
 
 | **Název**              | **Popis**                                                                   |
 |-----------------------|-----------------------------------------------------------------------------------|
-| ID žádosti             | Klientem poskytnutý identifikátor GUID|
-| ContractId            | Jedinečný identifikátor pro kontrakt uvnitř Azure Blockchain Workbench |
-| ID připojení          | Jedinečný identifikátor pro připojení k blockchainu |
+| requestId             | Klientem poskytnutý identifikátor GUID|
+| contractId            | Jedinečný identifikátor pro kontrakt uvnitř Azure Blockchain Workbench |
+| connectionId          | Jedinečný identifikátor pro připojení k blockchainu |
 | messageSchemaVersion  | Zasílání zpráv verze schématu |
 | messageName           | **CreateContractActionUpdate** |
 | status                | Stav požadavku na akce kontraktu. Možné hodnoty: **Odeslání**, **potvrzené**, **selhání**.                         |
@@ -381,7 +385,7 @@ Obsahuje informace o jednotlivých bloků. *BlockMessage* obsahuje části s inf
 |------|-------------|
 | blokovat | Obsahuje [blokovat informace](#block-information) |
 | transakcí | Obsahuje kolekci [informací o transakcích](#transaction-information) pro blok |
-| ID připojení | Jedinečný identifikátor pro připojení |
+| connectionId | Jedinečný identifikátor pro připojení |
 | messageSchemaVersion | Zasílání zpráv verze schématu |
 | messageName | **BlockMessage** |
 | AdditionalInformation | Další informace, které jsou k dispozici |
@@ -390,21 +394,21 @@ Obsahuje informace o jednotlivých bloků. *BlockMessage* obsahuje části s inf
 
 | Název              | Popis |
 |-------------------|-------------|
-| Blockid %           | Jedinečný identifikátor pro blok uvnitř Azure Blockchain Workbench |
+| blockId           | Jedinečný identifikátor pro blok uvnitř Azure Blockchain Workbench |
 | BlockNumber       | Jedinečný identifikátor pro blok na hlavní knihy |
-| BlockHash         | Hodnota hash bloku |
+| blockHash         | Hodnota hash bloku |
 | previousBlockHash | Hodnota hash předchozího bloku |
-| BlockTimestamp    | Časové razítko bloku |
+| blockTimestamp    | Časové razítko bloku |
 
 #### <a name="transaction-information"></a>Informace o transakci
 
 | Název               | Popis |
 |--------------------|-------------|
-| Identifikátor TransactionId      | Jedinečný identifikátor pro transakce v rámci Azure Blockchain Workbench |
+| transactionId      | Jedinečný identifikátor pro transakce v rámci Azure Blockchain Workbench |
 | TransactionHash    | Hodnota hash transakce na hlavní knihy |
 | od               | Jedinečný identifikátor na účetní knihy pro původ transakce |
 | na                 | Jedinečný identifikátor na účetní knihy pro cíl transakce |
-| ProvisioningStatus | Určuje aktuální stav procesu zřízení pro transakce. Možné hodnoty: </br>0 – transakce byla vytvořena pomocí rozhraní API v databázi</br>1 – transakce byl odeslán na účetní knize</br>2 – transakce byla úspěšně do hlavní knihy</br>3 nebo 4 – transakce se nepodařilo potvrdit do hlavní knihy</br>5 - transakce se úspěšně potvrdilo do hlavní knihy |
+| provisioningStatus | Určuje aktuální stav procesu zřízení pro transakce. Možné hodnoty: </br>0 – transakce byla vytvořena pomocí rozhraní API v databázi</br>1 – transakce byl odeslán na účetní knize</br>2 – transakce byla úspěšně do hlavní knihy</br>3 nebo 4 – transakce se nepodařilo potvrdit do hlavní knihy</br>5 - transakce se úspěšně potvrdilo do hlavní knihy |
 
 Příklad *BlockMessage* z Blockchain Workbench:
 
@@ -446,14 +450,14 @@ Obsahuje informace o smlouvě o. Zpráva obsahuje oddíl s vlastnostmi smlouvy a
 
 | Název | Popis |
 |------|-------------|
-| Blockid % | Jedinečný identifikátor pro blok uvnitř Azure Blockchain Workbench |
-| BlockHash | Hodnota hash bloku |
+| blockId | Jedinečný identifikátor pro blok uvnitř Azure Blockchain Workbench |
+| blockHash | Hodnota hash bloku |
 | modifyingTransactions | [Transakcí, které upravit](#modifying-transaction-information) kontraktu |
-| ContractId | Jedinečný identifikátor pro kontrakt uvnitř Azure Blockchain Workbench |
-| ContractLedgerIdentifier | Jedinečný identifikátor pro kontrakt na hlavní knihy |
+| contractId | Jedinečný identifikátor pro kontrakt uvnitř Azure Blockchain Workbench |
+| contractLedgerIdentifier | Jedinečný identifikátor pro kontrakt na hlavní knihy |
 | contractProperties | [Vlastnosti smlouvy](#contract-properties) |
 | isNewContract | Určuje, zda byl tento kontrakt nově vytvořen. Možné hodnoty jsou: true: Tato smlouva se vytvoří nové smlouvy. FALSE: této smlouvy je aktualizace smlouvy. |
-| ID připojení | Jedinečný identifikátor pro připojení |
+| connectionId | Jedinečný identifikátor pro připojení |
 | messageSchemaVersion | Zasílání zpráv verze schématu |
 | messageName | **ContractMessage** |
 | AdditionalInformation | Další informace, které jsou k dispozici |
@@ -462,7 +466,7 @@ Obsahuje informace o smlouvě o. Zpráva obsahuje oddíl s vlastnostmi smlouvy a
 
 | Název               | Popis |
 |--------------------|-------------|
-| Identifikátor TransactionId | Jedinečný identifikátor pro transakce v rámci Azure Blockchain Workbench |
+| transactionId | Jedinečný identifikátor pro transakce v rámci Azure Blockchain Workbench |
 | TransactionHash | Hodnota hash transakce na hlavní knihy |
 | od | Jedinečný identifikátor na účetní knihy pro původ transakce |
 | na | Jedinečný identifikátor na účetní knihy pro cíl transakce |
@@ -471,7 +475,7 @@ Obsahuje informace o smlouvě o. Zpráva obsahuje oddíl s vlastnostmi smlouvy a
 
 | Název               | Popis |
 |--------------------|-------------|
-| WorkflowPropertyId | Jedinečný identifikátor pro vlastnosti pracovního postupu uvnitř Azure Blockchain Workbench |
+| workflowPropertyId | Jedinečný identifikátor pro vlastnosti pracovního postupu uvnitř Azure Blockchain Workbench |
 | jméno | Název vlastnosti pracovního postupu |
 | hodnota | Hodnota vlastnosti pracovního postupu |
 
@@ -560,15 +564,15 @@ Obsahuje informace, když je vyvolána funkce smlouvy, jako je název funkce, vs
 |------|-------------|
 | eventName                   | **ContractFunctionInvocation** |
 | volající                      | [Informace o volajícím](#caller-information) |
-| ContractId                  | Jedinečný identifikátor pro kontrakt uvnitř Azure Blockchain Workbench |
-| ContractLedgerIdentifier    | Jedinečný identifikátor pro kontrakt na hlavní knihy |
+| contractId                  | Jedinečný identifikátor pro kontrakt uvnitř Azure Blockchain Workbench |
+| contractLedgerIdentifier    | Jedinečný identifikátor pro kontrakt na hlavní knihy |
 | functionName                | Název funkce |
 | parameters                  | [Informace o parametrech](#parameter-information) |
 | Transakce                 | [Informace o transakci](#eventmessage-transaction-information) |
 | inTransactionSequenceNumber | Pořadové číslo sady transakcí v bloku |
-| ID připojení                | Jedinečný identifikátor pro připojení |
+| connectionId                | Jedinečný identifikátor pro připojení |
 | messageSchemaVersion        | Zasílání zpráv verze schématu |
-| messageName                 | **Zpráva události** |
+| messageName                 | **EventMessage** |
 | AdditionalInformation       | Další informace, které jsou k dispozici |
 
 #### <a name="caller-information"></a>Informace o volajícím
@@ -590,7 +594,7 @@ Obsahuje informace, když je vyvolána funkce smlouvy, jako je název funkce, vs
 
 | Název               | Popis |
 |--------------------|-------------|
-| Identifikátor TransactionId      | Jedinečný identifikátor pro transakce v rámci Azure Blockchain Workbench |
+| transactionId      | Jedinečný identifikátor pro transakce v rámci Azure Blockchain Workbench |
 | TransactionHash    | Hodnota hash transakce na hlavní knihy |
 | od               | Jedinečný identifikátor na účetní knihy pro původ transakce |
 | na                 | Jedinečný identifikátor na účetní knihy pro cíl transakce |
@@ -639,17 +643,17 @@ Obsahuje informace při nahrání aplikace do aplikace Workbench, jako napříkl
 | Název | Popis |
 |------|-------------|
 | eventName | **ApplicationIngestion** |
-| ApplicationId | Jedinečný identifikátor pro aplikaci v Azure Blockchain Workbench |
-| ApplicationName | Název aplikace |
-| ApplicationDisplayName | Zobrazovaný název aplikace |
-| ApplicationVersion | Verze aplikace |
+| applicationId | Jedinečný identifikátor pro aplikaci v Azure Blockchain Workbench |
+| applicationName | Název aplikace |
+| applicationDisplayName | Zobrazovaný název aplikace |
+| applicationVersion | Verze aplikace |
 | applicationDefinitionLocation | Adresa URL, kde se nachází konfigurační soubor aplikace |
 | contractCodes | Kolekce [smlouva kódech](#contract-code-information) pro aplikaci |
 | ApplicationRoles | Kolekce [aplikační role](#application-role-information) pro aplikaci |
 | applicationWorkflows | Kolekce [pracovní postupy aplikace](#application-workflow-information) pro aplikaci |
-| ID připojení | Jedinečný identifikátor pro připojení |
+| connectionId | Jedinečný identifikátor pro připojení |
 | messageSchemaVersion | Zasílání zpráv verze schématu |
-| messageName | **Zpráva události** |
+| messageName | **EventMessage** |
 | AdditionalInformation | Další informace, které jsou k dispozici zde zahrnuje stavy pracovního postupu aplikace a informace o přechodu. |
 
 #### <a name="contract-code-information"></a>Informace o kódu kontraktu
@@ -657,7 +661,7 @@ Obsahuje informace při nahrání aplikace do aplikace Workbench, jako napříkl
 | Název | Popis |
 |------|-------------|
 | id | Jedinečný identifikátor souboru kontraktu kódu uvnitř Azure Blockchain Workbench |
-| LedgerId | Jedinečný identifikátor pro knihy uvnitř Azure Blockchain Workbench |
+| ledgerId | Jedinečný identifikátor pro knihy uvnitř Azure Blockchain Workbench |
 | location | Adresa URL, kde je umístěn soubor kódu kontraktu |
 
 #### <a name="application-role-information"></a>Informace o rolích aplikace
@@ -833,16 +837,16 @@ Obsahuje informace, když uživatel má přiřazenou roli v aplikaci Workbench, 
 | Název | Popis |
 |------|-------------|
 | eventName | **RoleAssignment** |
-| ApplicationId | Jedinečný identifikátor pro aplikaci v Azure Blockchain Workbench |
-| ApplicationName | Název aplikace |
-| ApplicationDisplayName | Zobrazovaný název aplikace |
-| ApplicationVersion | Verze aplikace |
+| applicationId | Jedinečný identifikátor pro aplikaci v Azure Blockchain Workbench |
+| applicationName | Název aplikace |
+| applicationDisplayName | Zobrazovaný název aplikace |
+| applicationVersion | Verze aplikace |
 | applicationRole        | Informace o [aplikační role](#roleassignment-application-role) |
 | Pověřující osoby               | Informace o [Pověřující osoby](#roleassignment-assigner) |
 | pověřené osoby               | Informace o [pověřené osoby](#roleassignment-assignee) |
-| ID připojení           | Jedinečný identifikátor pro připojení |
+| connectionId           | Jedinečný identifikátor pro připojení |
 | messageSchemaVersion   | Zasílání zpráv verze schématu |
-| messageName            | **Zpráva události** |
+| messageName            | **EventMessage** |
 | AdditionalInformation  | Další informace, které jsou k dispozici |
 
 #### <a name="roleassignment-application-role"></a>RoleAssignment aplikační role

@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 11/26/2018
 ms.author: tamram
 ms.custom: mvc
-ms.openlocfilehash: 882a43a75fa720b13d931740818e5ee6e893bcab
-ms.sourcegitcommit: 7862449050a220133e5316f0030a259b1c6e3004
+ms.openlocfilehash: c1a279f85ef4e959869e0a3faa86b9ca7d3e05f7
+ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/22/2018
-ms.locfileid: "53753332"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55657667"
 ---
 # <a name="tutorial-upload-image-data-in-the-cloud-with-azure-storage"></a>Kurz: Odeslání dat obrázků do cloudu v Azure Storage
 
@@ -48,7 +48,7 @@ Chcete-li nainstalovat a používat rozhraní příkazového řádku místně, t
 
 ## <a name="create-a-resource-group"></a>Vytvoření skupiny prostředků 
 
-Vytvořte skupinu prostředků pomocí příkazu [az group create](/cli/azure/group#az_group_create). Skupina prostředků Azure je logický kontejner, ve kterém se nasazují a spravují prostředky Azure.  
+Vytvořte skupinu prostředků pomocí příkazu [az group create](/cli/azure/group). Skupina prostředků Azure je logický kontejner, ve kterém se nasazují a spravují prostředky Azure.  
 
 Následující příklad vytvoří skupinu prostředků s názvem `myResourceGroup`.
 
@@ -75,7 +75,7 @@ az storage account create --name <blob_storage_account> \
 
 Aplikace používá v účtu služby Blob Storage dva kontejnery. Kontejnery jsou podobné složkám a ukládání objektů BLOB. Aplikace nahrává obrázky v plném rozlišení do kontejneru *images*. V pozdější části série aplikace funkcí Azure nahraje miniatury obrázků se změněnou velikostí do kontejneru *thumbnails*.
 
-Pomocí příkazu [az storage account keys list](/cli/azure/storage/account/keys#az_storage_account_keys_list) zjistěte klíč účtu úložiště. Potom tento klíč použít k vytvoření dvou kontejnerů pomocí [vytvořit kontejner úložiště az](/cli/azure/storage/container#az_storage_container_create) příkazu.  
+Pomocí příkazu [az storage account keys list](/cli/azure/storage/account/keys) zjistěte klíč účtu úložiště. Potom tento klíč použít k vytvoření dvou kontejnerů pomocí [vytvořit kontejner úložiště az](/cli/azure/storage/container#az_storage_container_create) příkazu.  
 
 V tomto případě je `<blob_storage_account>` název účtu služby Blob Storage, který jste vytvořili. *Image* kontejneru veřejného přístupu nastavená na `off`. *Miniatury* kontejneru veřejného přístupu nastavená na `container`. `container` Nastavení veřejného přístupu umožňuje uživatelům, kteří naleznete na webové stránce, chcete-li zobrazit miniatury.
 

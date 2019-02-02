@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 01/25/2019
 ms.author: raynew
-ms.openlocfilehash: ebd374cc8792545d1db57f624a5831dc9ded272f
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.openlocfilehash: 12c71086509b0c7017b8326c46ed4a31270ef261
+ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55102117"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55657378"
 ---
 # <a name="troubleshoot-azure-migrate"></a>Řešení problémů s Azure Migrate
 
@@ -117,7 +117,7 @@ Pokud používáte jakýkoli proxy server brány firewall na základě adresy UR
 
 **Kolektor se nemůže připojit k Internetu kvůli selhání ověření certifikátu**
 
-To může nastat, pokud používáte prověřuje zachycovací proxy server pro připojení k Internetu, a pokud jste neimportovali certifikát proxy serveru na virtuálním počítači kolektoru. Můžete importovat certifikát proxy serveru pomocí podrobně popsané kroky [tady](https://docs.microsoft.com/azure/migrate/concepts-collector#internet-connectivity).
+To může nastat, pokud používáte prověřuje zachycovací proxy server pro připojení k Internetu, a pokud jste neimportovali certifikát proxy serveru na virtuálním počítači kolektoru. Můžete importovat certifikát proxy serveru pomocí podrobně popsané kroky [tady](https://docs.microsoft.com/azure/migrate/concepts-collector).
 
 **Kolektor se nemůže připojit k projektu pomocí ID projektu a klíče, které můžu zkopírovali z portálu.**
 

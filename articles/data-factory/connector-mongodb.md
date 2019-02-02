@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 12/20/2018
 ms.author: jingwang
-ms.openlocfilehash: 1e0d6fe79d23f3d3d0679445f5120a3ec17ddd67
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: ca6040bb74839f30a2f1b13297f6037f05240c67
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54013770"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55562201"
 ---
 # <a name="copy-data-from-mongodb-using-azure-data-factory"></a>Kopírování dat z MongoDB pomocí Azure Data Factory
 
@@ -88,7 +88,7 @@ Pro MongoDB propojené služby jsou podporovány následující vlastnosti:
 
 ```json
 {
-     "name":  "MongoDbDataset",
+    "name": "MongoDbDataset",
     "properties": {
         "type": "MongoDbV2Collection",
         "linkedServiceName": {
@@ -116,7 +116,7 @@ Následující vlastnosti jsou podporovány v aktivitě kopírování **zdroj** 
 | Filtr | Určuje filtr výběru pomocí operátorů pro dotazování. Který vrátí všechny dokumenty v kolekci, tento parametr vynecháte nebo předat prázdný dokument ({}). | Ne |
 | cursorMethods.project | Určuje pole, která vrátí v dokumentech pro projekci. Tento parametr vynechte, pokud se pokud chcete vrátit všechna pole v odpovídajících dokumentů. | Ne |
 | cursorMethods.sort | Určuje pořadí, ve které dotaz vrátí odpovídajících dokumentů. Odkazovat na [cursor.sort()](https://docs.mongodb.com/manual/reference/method/cursor.sort/#cursor.sort). | Ne |
-| cursorMethods.limit | Určuje maximální počet dokumentů, který server vrátí. Odkazovat na [cursor.limit()](https://docs.mongodb.com/manual/reference/method/cursor.limit/#cursor.limit).  | Ne | 
+| cursorMethods.limit | Určuje maximální počet dokumentů, který server vrátí. Odkazovat na [cursor.limit()](https://docs.mongodb.com/manual/reference/method/cursor.limit/#cursor.limit).  | Ne |
 | cursorMethods.skip | Určuje počet dokumentů, chcete-li přeskočit a od které začíná MongoDB pro vracení výsledků. Odkazovat na [cursor.skip()](https://docs.mongodb.com/manual/reference/method/cursor.skip/#cursor.skip). | Ne |
 | batchSize | Určuje počet dokumenty, které se vrátí v každé dávce odpovědi z MongoDB instance. Ve většině případů Změna velikosti dávky nebude mít vliv na uživatele nebo aplikace. Cosmos DB omezení jednotlivých dávek nemůže být delší než 40MB velikosti, který je součtem batchSize počet dokumentů velikost, takže zmenšete tuto hodnotu, pokud probíhá velké velikosti vašeho dokumentu. | Ne<br/>(výchozí hodnota je **100**) |
 

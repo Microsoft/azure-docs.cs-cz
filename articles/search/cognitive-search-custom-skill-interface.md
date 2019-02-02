@@ -7,15 +7,15 @@ services: search
 ms.service: search
 ms.devlang: NA
 ms.topic: conceptual
-ms.date: 08/14/2018
+ms.date: 01/29/2019
 ms.author: luisca
 ms.custom: seodec2018
-ms.openlocfilehash: deb72bcc41e20057b6e7b214c6a8c93655894a12
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.openlocfilehash: fe575a79fe2f47729e7c7fe039989b2c08af1282
+ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53628268"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55657820"
 ---
 # <a name="how-to-add-a-custom-skill-to-a-cognitive-search-pipeline"></a>Přidání vlastních dovedností do kanálu kognitivního vyhledávání
 
@@ -27,7 +27,14 @@ Vytváření vlastních dovedností poskytuje způsob, jak vložit transformace,
 
 ## <a name="web-api-custom-skill-interface"></a>Rozhraní Web API vlastních dovedností
 
-Vlastní koncové body WebAPI dovednosti musí vracet odpověď v rámci časového období 5 minut. Kanál indexování je synchronní a indexování způsobí vypršení časového limitu v Pokud odpověď přijata nebude v tomto okně."
+Vlastní WebAPI dovednosti koncových bodů ve výchozí hodnota časového limitu, pokud není odpověď v rámci časového období 30 druhý vrátí. Kanál indexování je synchronní a indexování způsobí vypršení časového limitu v Pokud odpověď přijata nebude v tomto okně.  Je možné nakonfigurovat vypršení časového limitu bude až 90 sekund, tak, že nastavíte parametr časového limitu:
+
+```json
+        "@odata.type": "#Microsoft.Skills.Custom.WebApiSkill",
+        "description": "This skill has a 90 second timeout",
+        "uri": "https://[your custom skill uri goes here]",
+        "timeout": "PT90S",
+```
 
 V současné době je pouze mechanismus pro interakci se vlastní dovednosti pomocí rozhraní Web API. Webové rozhraní API vyžaduje, musí splňovat požadavky popsané v této části.
 

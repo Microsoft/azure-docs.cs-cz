@@ -11,15 +11,15 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 09/04/2018
+ms.date: 01/31/2019
 ms.author: saghorpa
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 9a445e5a7d230195472c2202d3f40458a23883e9
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 8cfcf9c2f008abb571347e32f2be190dc51901e3
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55477844"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55563826"
 ---
 # <a name="onboarding-requirements"></a>Požadavky na připojení
 
@@ -33,7 +33,7 @@ Tento seznam sestaví požadavky pro spuštění SAP HANA v Azure (větší inst
 
 **Připojení k síti**
 
-- ExpressRoute mezi místní do Azure: Pro připojení k Azure v místním datovém centru, ujistěte se, že k seřazení alespoň 1 GB/s připojení od svého poskytovatele internetových služeb. Připojení mezi velká Instance HANA jednotky a Azure používá také technologii ExpressRoute. Toto připojení ExpressRoute mezi jednotkami velká Instance HANA a Azure je zahrnutá v ceně jednotek velká Instance HANA. Proto se zákazníky, nevyskytnou dodatečné poplatky nad rámec vašeho spojení ExpressRoute mezi místní a Azure.
+- ExpressRoute mezi místní do Azure: Pro připojení k Azure v místním datovém centru, ujistěte se, že k seřazení alespoň 1 GB/s připojení od svého poskytovatele internetových služeb. Připojení mezi velká Instance HANA jednotky a Azure používá také technologii ExpressRoute. Toto připojení ExpressRoute mezi jednotkami velká Instance HANA a Azure je zahrnutá v ceně velká Instance HANA jednotek, včetně všechny příchozí a odchozí poplatky za dat pro tento konkrétní okruh ExpressRoute. Proto se zákazníky, nevyskytnou dodatečné poplatky nad rámec vašeho spojení ExpressRoute mezi místní a Azure.
 
 **Operační systém**
 

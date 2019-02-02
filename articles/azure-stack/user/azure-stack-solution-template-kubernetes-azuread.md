@@ -11,23 +11,23 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/16/2019
+ms.date: 01/30/2019
 ms.author: mabrigg
 ms.reviewer: waltero
 ms.lastreviewed: 01/16/2019
-ms.openlocfilehash: c207fb866cdd17e4db1796e415c159eb887eef08
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 8d2d8d0595099081498202a3103caa10df8cf67d
+ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55243551"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55657837"
 ---
 # <a name="deploy-kubernetes-to-azure-stack-using-azure-active-directory"></a>Nasazení Kubernetes pro Azure Stack pomocí Azure Active Directory
 
 *Platí pro: Azure Stack integrované systémy a Azure Stack Development Kit*
 
 > [!Note]  
-> Kubernetes ve službě Azure Stack je ve verzi preview.
+> Kubernetes ve službě Azure Stack je ve verzi preview. Azure Stack odpojené scénář není aktuálně podporován ve verzi preview.
 
 Můžete postupovat podle kroků v tomto článku pro nasazení a nastavit prostředky pro Kubernetes, při použití služby Azure Active Directory (Azure AD) jako vaše služba identity management, v jediném koordinované operace.
 

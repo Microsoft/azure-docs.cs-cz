@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 02/16/2017
 ms.author: genli
-ms.openlocfilehash: e6d6c47726b21a241b379366bd1fde6c6b90e223
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: 9e3177b9df41a1612435dddadafd5c7e291e0e35
+ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54462008"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55663583"
 ---
 # <a name="troubleshoot-a-linux-vm-by-attaching-the-os-disk-to-a-recovery-vm-with-the-azure-cli"></a>Řešení potíží s virtuálního počítače s Linuxem připojením disku s operačním systémem k obnovení virtuálního počítače pomocí Azure CLI
 Pokud virtuální počítač s Linuxem (VM), zaznamená chybám spouštění nebo disku, budete muset provést postup řešení potíží na samotném virtuálním pevném disku. Běžným příkladem by byla neplatná položka v `/etc/fstab` virtuální počítač, který brání tomu nebudou moct úspěšně spustil. Tento článek podrobně popisuje, jak připojit virtuální pevný disk k jinému virtuálnímu počítači Linux opravte všechny chyby a pak znovu vytvořit původní virtuální počítač pomocí Azure CLI. 
@@ -43,7 +43,7 @@ V následujících příkladech nahraďte názvy parametrů s vlastními hodnota
 ## <a name="determine-boot-issues"></a>Určete spouštěcí problémy
 Prohlédněte si výstup sériové určit, proč váš virtuální počítač není možné správně spustit. Běžným příkladem jsou neplatná položka v `/etc/fstab`, nebo základní virtuální pevný disk se odstraní nebo přesune.
 
-Získání protokolů spouštění s [az vm boot-diagnostics get-boot-log](/cli/azure/vm/boot-diagnostics#az_vm_boot_diagnostics_get_boot_log). Následující příklad získá sériového portu výstup z virtuálního počítače s názvem `myVM` ve skupině prostředků s názvem `myResourceGroup`:
+Získání protokolů spouštění s [az vm boot-diagnostics get-boot-log](/cli/azure/vm/boot-diagnostics). Následující příklad získá sériového portu výstup z virtuálního počítače s názvem `myVM` ve skupině prostředků s názvem `myResourceGroup`:
 
 ```azurecli
 az vm boot-diagnostics get-boot-log --resource-group myResourceGroup --name myVM

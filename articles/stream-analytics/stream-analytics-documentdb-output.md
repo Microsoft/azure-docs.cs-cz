@@ -9,12 +9,12 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 01/11/2019
 ms.custom: seodec18
-ms.openlocfilehash: 1f142d7551859396b789ee0594880f077e4a7f9f
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.openlocfilehash: 4be3de8de4332e8ffb0e88e612a3041829ccd606
+ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54267126"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55658568"
 ---
 # <a name="azure-stream-analytics-output-to-azure-cosmos-db"></a>Výstup Azure Stream Analytics ke službě Azure Cosmos DB  
 Stream Analytics můžete směrovat [služby Azure Cosmos DB](https://azure.microsoft.com/services/documentdb/) výstup ve formátu JSON, povolení archivace a s nízkou latencí dotazy na data nestrukturovaných dat JSON. Tento dokument uvádí i některé doporučené postupy pro implementaci této konfigurace.
@@ -29,7 +29,7 @@ Pro ty, kteří zkušenosti se službou Cosmos DB, podívejte se na [výuky pro 
 Výstup Azure Cosmos DB ve službě Stream Analytics, který umožňuje zapisovat datový proud zpracování výsledky jako výstup ve formátu JSON do vašeho kolekcí Cosmos DB. Stream Analytics nepodporuje vytváření kolekcí v databázi, místo toho by bylo potřeba vytvořit předem. Je to tak, aby fakturačních nákladů kolekce Cosmos DB se řídí vám a tak, aby mohli vyladit výkon, konzistence a kapacitu vaší kolekce přímo pomocí [API služby Cosmos DB](https://msdn.microsoft.com/library/azure/dn781481.aspx).
 
 > [!Note]
-> 0.0.0.0 je nutné přidat do seznamu povolených IP adres z vaší brány firewall služby Azure Cosmos DB.
+> 0.0.0.0 je nutné přidat do seznamu povolených IP adres ze brána firewall služby Azure Cosmos DB.
 
 Některé možnosti kolekce Cosmos DB je podrobně popsaný níže.
 
@@ -49,7 +49,7 @@ Pokud vstupní dokument JSON má existující pole ID, že pole je automaticky p
 Pokud chcete uložit <i>všechny</i> dokumenty, včetně těch s duplicitním ID přejmenovat pole ID v dotazu (s klíčovým slovem AS) a umožní Cosmos DB vytvořit pole ID nebo nahraďte ID s hodnotou jiného sloupce (pomocí klíčového slova AS, nebo pomocí nastavení "ID dokumentu").
 
 ## <a name="data-partitioning-in-cosmos-db"></a>Dělení dat v databázi Cosmos DB
-Azure Cosmos DB [neomezené](../cosmos-db/partition-data.md) jsou doporučený postup pro dělení dat, jako Azure Cosmos DB automaticky škáluje oddíly na základě vašich úloh. Při zápisu do neomezené kontejnery, Stream Analytics používá libovolný počet paralelních zapisovače jako předchozí krok dotazu nebo vstupní schéma vytváření oddílů.
+Azure Cosmos DB [neomezené](../cosmos-db/partition-data.md) kontejnery jsou doporučený postup pro dělení dat, jako Azure Cosmos DB automaticky škáluje oddíly na základě vašich úloh. Při zápisu do neomezené kontejnery, Stream Analytics používá libovolný počet paralelních zapisovače předchozí dotaz nebo vstupu pro krok schéma rozdělení oddílů.
 > [!Note]
 > V tuto chvíli je v Azure Stream Analytics podporuje pouze neomezený počet kolekcí se klíče oddílů na nejvyšší úrovni. Například `/region` je podporována. Vnořené klíče oddílů (třeba `/region/name`) nejsou podporovány. 
 

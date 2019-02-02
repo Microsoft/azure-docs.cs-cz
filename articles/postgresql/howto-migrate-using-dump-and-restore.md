@@ -6,12 +6,12 @@ ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 09/22/2018
-ms.openlocfilehash: 366a38951363d52df3d52d3a670943dc41211c8a
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.openlocfilehash: d406132c4e359c78567ae47a3acba5b73aa39820
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55493996"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55564200"
 ---
 # <a name="migrate-your-postgresql-database-using-dump-and-restore"></a>Migrace vaší databáze PostgreSQL pomocí výpisu a obnovení.
 Můžete použít [pg_dump](https://www.postgresql.org/docs/9.3/static/app-pgdump.html) extrahovat databázi PostgreSQL do souboru s výpisem paměti a [pg_restore](https://www.postgresql.org/docs/9.3/static/app-pgrestore.html) obnovit ze souboru archivu vytvořené pg_dump databázi PostgreSQL.
@@ -83,7 +83,7 @@ Jeden způsob, jak migrovat existující databázi PostgreSQL do služby Azure D
 - Na cíl – Azure Database pro PostgreSQL server vezměte v úvahu ještě před obnovením následujícím způsobem:
     - Vypnete dotazu sledování výkonu, protože během migrace nejsou potřeba tyto statistiky. Můžete to provést tak, že nastavíte pg_stat_statements.track pg_qs.query_capture_mode a pgms_wait_sampling.query_capture_mode na hodnotu NONE.
 
-    - Použití vysokou výpočetní a paměťové prostředky sku, jako je 32 – vCore optimalizované pro paměť pro urychlení migrace. Je možné snadno škálovat zase dolů upřednostňované skladové jednotky po dokončení obnovení. Čím vyšší skladovou položku, další paralellism můžete dosáhnout zvýšení odpovídající `-j` parametr v příkazu pg_restore. 
+    - Použijte vysokou výpočetní a sku velkého množství paměti, jako je 32 – vCore optimalizované pro paměť pro urychlení migrace. Je možné snadno škálovat zase dolů upřednostňované skladové jednotky po dokončení obnovení. Čím vyšší skladovou položku, další paralelismu můžete dosáhnout zvýšení odpovídající `-j` parametr v příkazu pg_restore. 
 
     - Více vstupně-výstupních operací na cílovém serveru může zlepšit výkon obnovení. Zvýšením velikosti úložiště serveru můžete zřídit další vstupně-výstupních operací. Toto nastavení je nevratná operace, ale vezměte v úvahu, jestli vyšší vstupně-výstupních operací, budou těžit skutečné úlohy v budoucnu.
 

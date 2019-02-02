@@ -6,12 +6,12 @@ ms.service: signalr
 ms.topic: overview
 ms.date: 12/23/2018
 ms.author: zhshang
-ms.openlocfilehash: 45ceebef85254ff030d237f1af13f0750aaafeba
-ms.sourcegitcommit: 9f87a992c77bf8e3927486f8d7d1ca46aa13e849
+ms.openlocfilehash: 6b3ddf7d8069e689231b9dcb6f0f074e84052511
+ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/28/2018
-ms.locfileid: "53811822"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55663260"
 ---
 # <a name="azure-signalr-service-faq"></a>Nejčastější dotazy k službě Azure SignalR
 
@@ -20,7 +20,7 @@ ms.locfileid: "53811822"
 Ano.
 Naše oznámení všeobecné dostupnosti najdete v části [teď všeobecně dostupné služby Azure SignalR](https://azure.microsoft.com/en-us/blog/azure-signalr-service-now-generally-available/). 
 
-[Funkce SignalR technologie ASP.NET Core](https://docs.microsoft.com/en-us/aspnet/core/signalr/introduction) jsou plně podporovány.
+[Funkce SignalR technologie ASP.NET Core](https://docs.microsoft.com/aspnet/core/signalr/introduction) jsou plně podporovány.
 
 Podpora pro funkce SignalR technologie ASP.NET je stále v *ve verzi public preview*. Tady je [příklad kódu](https://github.com/aspnet/AzureSignalR-samples/tree/master/aspnet-samples/ChatRoom).
 
@@ -37,7 +37,7 @@ Pokud máte aplikační servery, tato chybová zpráva znamená, že žádné ap
 Možné příčiny:
 - Žádný server aplikace je propojená s služby SignalR. V protokolech aplikace serveru chyb připojení je to možné. Tento případ není obvyklé v nastavení vysoké dostupnosti s více než jeden aplikační servery.
 - Existují problémy s připojením s instancí služby SignalR. Tento problém je přechodná a se automaticky obnoví.
-Pokud bude přetrvávat pro více než jednu hodinu [otevřete problém na Githubu](https://github.com/Azure/azure-signalr/issues/new) nebo [v Azure vytvořit žádost o podporu](https://docs.microsoft.com/en-us/azure/azure-supportability/how-to-create-azure-support-request).
+Pokud bude přetrvávat pro více než jednu hodinu [otevřete problém na Githubu](https://github.com/Azure/azure-signalr/issues/new) nebo [v Azure vytvořit žádost o podporu](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request).
 
 ## <a name="when-there-are-multiple-application-servers-are-client-messages-sent-to-all-servers-or-just-one-of-them"></a>Po několika aplikačních serverů se odesílají zprávy klienta pro všechny servery, nebo jenom jeden z nich?
 
@@ -67,4 +67,4 @@ Ne.
 
 Službě Azure SignalR poskytuje všechny tři přenosy, které ve výchozím nastavení podporuje funkce SignalR technologie ASP.NET Core. Se nedá konfigurovat. Připojení a přenosy pro všechna připojení klientů bude zpracovávat služby SignalR.
 
-Můžete nakonfigurovat přenosy na straně klienta, jak je uvedeno [tady](https://docs.microsoft.com/en-us/aspnet/core/signalr/configuration?view=aspnetcore-2.1#configure-allowed-transports).
+Můžete nakonfigurovat přenosy na straně klienta, jak je uvedeno [tady](https://docs.microsoft.com/aspnet/core/signalr/configuration?view=aspnetcore-2.1#configure-allowed-transports).

@@ -12,12 +12,12 @@ ms.author: sashan
 ms.reviewer: mathoma, carlrab
 manager: craigg
 ms.date: 01/30/2019
-ms.openlocfilehash: 8db944de93313915926a6fe48a554d00327b1c94
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.openlocfilehash: 18e786ba45e476df2ab223a47f1b77ef6b778d7f
+ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55486198"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55657769"
 ---
 # <a name="configure-active-geo-replication-for-azure-sql-database-in-the-azure-portal-and-initiate-failover"></a>Konfigurace aktivní geografické replikace pro Azure SQL Database webu Azure portal a zahájit převzetí služeb při selhání
 
@@ -32,7 +32,7 @@ Pokud chcete nakonfigurovat aktivní geografickou replikaci s využitím webu Az
 * Azure SQL database: Primární databáze, který chcete replikovat do jiné geografické oblasti.
 
 > [!Note]
-Při použití webu Azure portal, můžete vytvořit pouze sekundární databáze v rámci stejného předplatného jako primární. Pokud aktivní sekundární databáze musí být v jiném předplatném, použijte [vytvořit Database REST API](https://docs.microsoft.com/rest/api/sql/databases/createorupdate) nebo [rozhraní API jazyka Transact-SQL ALTER DATABASE](https://docs.microsoft.com/en-us/sql/t-sql/statements/alter-database-transact-sql).
+Při použití webu Azure portal, můžete vytvořit pouze sekundární databáze v rámci stejného předplatného jako primární. Pokud aktivní sekundární databáze musí být v jiném předplatném, použijte [vytvořit Database REST API](https://docs.microsoft.com/rest/api/sql/databases/createorupdate) nebo [rozhraní API jazyka Transact-SQL ALTER DATABASE](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql).
 
 ## <a name="add-a-secondary-database"></a>Přidání sekundární databáze
 

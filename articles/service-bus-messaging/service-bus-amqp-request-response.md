@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/23/2019
 ms.author: aschhab
-ms.openlocfilehash: 113ed80910e396361396a9c1298fc04a55ac4800
-ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
+ms.openlocfilehash: 13495107aff24b868a4188c25768868945e70db8
+ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54852471"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55658211"
 ---
 # <a name="amqp-10-in-microsoft-azure-service-bus-request-response-based-operations"></a>AMQP 1.0 ve službě Microsoft Azure Service Bus: operace založené na žádost odpověď
 
@@ -505,7 +505,7 @@ Mapa filtrem sql, musí obsahovat následující položky:
 |id relace|řetězec|Ne||  
 |odpověď k relaci id|řetězec|Ne||  
 |content-type|řetězec|Ne||  
-|properties|map|Ne|Mapuje se na Service Bus [BrokeredMessage.Properties](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage#Microsoft_ServiceBus_Messaging_BrokeredMessage_Properties).|  
+|properties|map|Ne|Mapuje se na Service Bus [BrokeredMessage.Properties](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage).|  
   
 **Akce pravidla sql** mapování musí zahrnovat následující položky:  
   

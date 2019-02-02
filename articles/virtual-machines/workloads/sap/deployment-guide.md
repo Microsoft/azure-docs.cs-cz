@@ -16,12 +16,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 09/26/2018
 ms.author: sedusch
-ms.openlocfilehash: dc44394bda1208eb2dab0a02dd73152e51788d4c
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: b2c3e8d7c465ca4fa9427c3a14ef04e4f69d17d6
+ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54424889"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55661560"
 ---
 # <a name="azure-virtual-machines-deployment-for-sap-netweaver"></a>Nasazení virtuálních počítačů pro SAP NetWeaver v Azure
 
@@ -719,7 +719,7 @@ Na webu Azure Portal zadejte následující parametry pro šablonu:
 
     Pro větší systémy důrazně doporučujeme využít Azure Premium Storage. Další informace o typech úložiště najdete v článku na následujících odkazech:
       * [Použití Azure Premium Storage SSD pro instanci SAP DBMS][2367194]
-      * [Struktury úložiště virtuálního počítače pro nasazení relační databázový systém](https://docs.microsoft.com/en-us/azure/virtual-machines/workloads/sap/dbms_guide_general#65fa79d6-a85f-47ee-890b-22e794f51a64)
+      * [Struktury úložiště virtuálního počítače pro nasazení relační databázový systém](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/dbms_guide_general#65fa79d6-a85f-47ee-890b-22e794f51a64)
       * [Premium Storage: Vysoce výkonné úložiště pro úlohy virtuálních počítačů Azure][storage-premium-storage-preview-portal]
       * [Úvod do Microsoft Azure Storage][storage-introduction]
   * **Identifikátor URI VHD disku operačního systému** (pouze šablona nespravovaných disků): Identifikátor URI soukromý disk s operačním systémem, třeba https://&lt;accountname >.blob.core.windows.net/vhds/osdisk.vhd.

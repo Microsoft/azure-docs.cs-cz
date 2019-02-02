@@ -8,18 +8,18 @@ ms.devlang: json
 ms.topic: tutorial
 ms.date: 12/21/2018
 ms.custom: mvc
-ms.openlocfilehash: 3c89c5cc0b299852f85836dd416b5bb270757719
-ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
+ms.openlocfilehash: fa8091011575822907915b67cf48bffaf5e7e728
+ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/07/2019
-ms.locfileid: "54061036"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55657072"
 ---
 # <a name="tutorial-provision-an-azure-database-for-mysql-server-using-azure-resource-manager-template"></a>Kurz: Zřízení serveru Azure Database for MySQL pomocí šablony Azure Resource Manageru
 
-[– Azure Database for MySQL – REST API](https://docs.microsoft.com/en-us/rest/api/mysql/) umožňuje technikům DevOps pro automatizaci a integraci zřizování, konfigurace a operace objektu spravovaný MySQL servery a databáze v Azure.  Rozhraní API umožňuje vytváření, výčet, Správa a odstranění databáze a servery MySQL na služba Azure Database for MySQL.
+[– Azure Database for MySQL – REST API](https://docs.microsoft.com/rest/api/mysql/) umožňuje technikům DevOps pro automatizaci a integraci zřizování, konfigurace a operace objektu spravovaný MySQL servery a databáze v Azure.  Rozhraní API umožňuje vytváření, výčet, Správa a odstranění databáze a servery MySQL na služba Azure Database for MySQL.
 
-Základní rozhraní REST API pro deklaraci a program prostředky Azure potřebné pro nasazení ve velkém měřítku, zarovnání infrastruktury jako kódu konceptu využít Azure Resource Manageru. Šablona parametrizuje sítě název, skladovou Položku, prostředků Azure, konfigurace brány firewall a nastavení, což umožňuje vytvořit jeden čas a použít více než jednou.  Šablony Azure Resource Manageru můžete snadno vytvořit pomocí [webu Azure portal](https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-manager-quickstart-create-templates-use-the-portal) nebo [Visual Studio Code](https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-manager-quickstart-create-templates-use-visual-studio-code?tabs=CLI). Umožňují balení aplikace pro normalizaci a automatizaci nasazení, které je možné integrovat se v kanálu DevOps CI/CD.  Například pokud chcete rychle nasadit webové aplikace s využitím Azure Database for MySQL back-endu, můžete provést pomocí tohoto nasazení začátku do konce [šablonu pro rychlý Start](https://azure.microsoft.com/en-us/resources/templates/101-webapp-managed-mysql/) v galerii Githubu.
+Základní rozhraní REST API pro deklaraci a program prostředky Azure potřebné pro nasazení ve velkém měřítku, zarovnání infrastruktury jako kódu konceptu využít Azure Resource Manageru. Šablona parametrizuje sítě název, skladovou Položku, prostředků Azure, konfigurace brány firewall a nastavení, což umožňuje vytvořit jeden čas a použít více než jednou.  Šablony Azure Resource Manageru můžete snadno vytvořit pomocí [webu Azure portal](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-quickstart-create-templates-use-the-portal) nebo [Visual Studio Code](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-quickstart-create-templates-use-visual-studio-code?tabs=CLI). Umožňují balení aplikace pro normalizaci a automatizaci nasazení, které je možné integrovat se v kanálu DevOps CI/CD.  Například pokud chcete rychle nasadit webové aplikace s využitím Azure Database for MySQL back-endu, můžete provést pomocí tohoto nasazení začátku do konce [šablonu pro rychlý Start](https://azure.microsoft.com/en-us/resources/templates/101-webapp-managed-mysql/) v galerii Githubu.
 
 V tomto kurzu jste pomocí šablony Azure Resource Manageru a další nástroje pro další postup:
 

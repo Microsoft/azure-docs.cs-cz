@@ -8,12 +8,12 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 11/09/2018
 ms.topic: conceptual
-ms.openlocfilehash: 0609a653327640c542457822e41143b9b39dd6d4
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: dc2b38f8e8065b8d8763365bf0cbad56ae00cd4b
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54462195"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55565424"
 ---
 # <a name="customize-the-remote-monitoring-solution-accelerator"></a>Přizpůsobení akcelerátoru řešení vzdáleného monitorování
 
@@ -84,7 +84,7 @@ Protože panely spravovat jejich vlastní rozložení a změna velikosti, může
 * Odkládacího umístění panelů mapy a telemetrie.
 * Změňte relativní šířku panelů mapy a analýzy.
 
-```nodejs
+```javascript
 <PageContent className="dashboard-container">
   <Grid>
     <Cell className="col-1 devices-overview-cell">
@@ -156,7 +156,7 @@ Protože panely spravovat jejich vlastní rozložení a změna velikosti, může
 
 Můžete také přidat více instancí stejného panelu, nebo několik verzí Pokud jste [duplicitní a přizpůsobit panel](#duplicate-and-customize-an-existing-control). Následující příklad ukazuje, jak přidat dvě instance panelu telemetrická data. Chcete-li tyto změny udělat, upravte `src/components/pages/dashboard/dashboard.js` souboru:
 
-```nodejs
+```javascript
 <PageContent className="dashboard-container">
   <Grid>
     <Cell className="col-1 devices-overview-cell">
@@ -247,19 +247,19 @@ Následující kroky popisují, jak duplicitní stávající panely, upravte ho 
 
 1. V **alertsPanel.js** soubor **cust_alerts** složku, upravit název třídy, která má být **CustAlertsPanel**:
 
-    ```nodejs
+    ```javascript
     export class CustAlertsPanel extends Component {
     ```
 
 1. Přidejte následující řádek, který `src/components/pages/dashboard/panels/index.js` souboru:
 
-    ```nodejs
+    ```javascript
     export * from './cust_alerts';
     ```
 
 1. Nahraďte `alertsPanel` s `CustAlertsPanel` v `src/components/pages/dashboard/dashboard.js` souboru:
 
-    ```nodejs
+    ```javascript
     import {
       OverviewPanel,
       CustAlertsPanel,
@@ -287,7 +287,7 @@ Jste teď nahrazuje původní **výstrahy** panel s názvem kopií **CustAlerts*
 
 1. Upravte definice sloupců, jak je znázorněno v následujícím fragmentu kódu:
 
-    ```nodejs
+    ```javascript
     this.columnDefs = [
       rulesColumnDefs.severity,
       {
@@ -312,7 +312,7 @@ Soubory v `src/components/pages/dashboard/panels/telemtry` složky definovat tel
 
 1. V `src/services/telemetryService.js` souboru, vyhledejte volaná funkce **getTelemetryByDeviceIdP15M**. Vytvořte kopii této funkce a upravit kopii následujícím způsobem:
 
-    ```nodejs
+    ```javascript
     static getTelemetryByDeviceIdP5M(devices = []) {
       return TelemetryService.getTelemetryByMessages({
         from: 'NOW-PT5M',
@@ -325,7 +325,7 @@ Soubory v `src/components/pages/dashboard/panels/telemtry` složky definovat tel
 
 1. Chcete-li použít tuto novou funkci pro naplnění telemetrická data grafu, otevřete `src/components/pages/dashboard/dashboard.js` souboru. Vyhledejte řádek, který inicializuje datový proud telemetrických dat a upravte následujícím způsobem:
 
-    ```node.js
+    ```javascript
     const getTelemetryStream = ({ deviceIds = [] }) => TelemetryService.getTelemetryByDeviceIdP5M(deviceIds)
     ```
 
@@ -339,7 +339,7 @@ Telemetrie graf teď zobrazuje pět minut telemetrická data:
 
 1. Otevřete soubor `src/components/pages/dashboard/dashboard.js`. Upravit **initialState** objektu, který chcete zahrnout **warningAlertsChange** vlastnost následujícím způsobem:
 
-    ```nodejs
+    ```javascript
     const initialState = {
       ...
 
@@ -359,7 +359,7 @@ Telemetrie graf teď zobrazuje pět minut telemetrická data:
 
 1. Upravit **currentAlertsStats** objektu, který chcete zahrnout **totalWarningCount** jako vlastnost:
 
-    ```nodejs
+    ```javascript
     return {
       openWarningCount: (acc.openWarningCount || 0) + (isWarning && isOpen ? 1 : 0),
       openCriticalCount: (acc.openCriticalCount || 0) + (isCritical && isOpen ? 1 : 0),
@@ -371,7 +371,7 @@ Telemetrie graf teď zobrazuje pět minut telemetrická data:
 
 1. Vypočítá nový klíčový ukazatel výkonu. Najdete výpočtu pro počet kritických výstrah. Duplicitní kód a upravit kopii následujícím způsobem:
 
-    ```nodejs
+    ```javascript
     // ================== Warning Alerts Count - START
     const currentWarningAlerts = currentAlertsStats.totalWarningCount;
     const previousWarningAlerts = previousAlerts.reduce(
@@ -384,7 +384,7 @@ Telemetrie graf teď zobrazuje pět minut telemetrická data:
 
 1. Zahrnout nové **warningAlertsChange** klíčového ukazatele výkonu v datovém proudu klíčového ukazatele výkonu:
 
-    ```nodejs
+    ```javascript
     return ({
       analyticsIsPending: false,
       analyticsVersion: this.state.analyticsVersion + 1,
@@ -402,7 +402,7 @@ Telemetrie graf teď zobrazuje pět minut telemetrická data:
 
 1. Zahrnout nové **warningAlertsChange** klíčový ukazatel výkonu v data o stavu použitý pro vykreslení uživatelského rozhraní:
 
-    ```nodejs
+    ```javascript
     const {
       ...
 
@@ -421,7 +421,7 @@ Telemetrie graf teď zobrazuje pět minut telemetrická data:
 
 1. Aktualizace dat předávaných do panelu klíčových ukazatelů výkonu:
 
-    ```node.js
+    ```javascript
     <AnalyticsPanel
       timeSeriesExplorerUrl={timeSeriesParamUrl}
       topAlerts={topAlertsWithName}
@@ -439,13 +439,13 @@ Nyní jste dokončili změnami `src/components/pages/dashboard/dashboard.js` sou
 
 1. Upravte následující řádek kódu k načtení nové hodnoty klíčového ukazatele výkonu následujícím způsobem:
 
-    ```nodejs
+    ```javascript
     const { t, isPending, criticalAlertsChange, warningAlertsChange, alertsPerDeviceId, topAlerts, timeSeriesExplorerUrl, error } = this.props;
     ```
 
 1. Upravte značky pro novou hodnotu klíčového ukazatele výkonu se zobrazí takto:
 
-    ```nodejs
+    ```javascript
     <div className="analytics-cell">
       <div className="analytics-header">{t('dashboard.panels.analytics.criticalAlerts')}</div>
       <div className="critical-alerts">

@@ -3,7 +3,7 @@ title: Aplikace orchestraci oprav Azure Service Fabric | Dokumentace Microsoftu
 description: Aplikace automatizace oprav operačního systému v clusteru Service Fabric.
 services: service-fabric
 documentationcenter: .net
-author: novino
+author: khandelwalbrijeshiitr
 manager: timlt
 editor: ''
 ms.assetid: de7dacf5-4038-434a-a265-5d0de80a9b1d
@@ -12,14 +12,14 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 5/22/2018
-ms.author: nachandr
-ms.openlocfilehash: 43133a1666dc3551e0f935ceb2af4cf1297d44a7
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.date: 2/01/2019
+ms.author: brkhande
+ms.openlocfilehash: 646a64435ba02877d2588b8debbb3920a32a5cf1
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55155302"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55563078"
 ---
 # <a name="patch-the-windows-operating-system-in-your-service-fabric-cluster"></a>Opravy operačního systému Windows ve vašem clusteru Service Fabric
 
@@ -413,3 +413,6 @@ Správce musíte zasáhnout a zjistit, proč k problému, kvůli aktualizaci Win
 - Oprava regrese, kde POA 1.3.0 nebude fungovat v systému Windows Server 2012 R2 nebo nižší kvůli chybě při zakázání automatické aktualizace. 
 - Oprava chyby, kde InstallWindowsOSOnlyUpdates konfigurace je vždy vybrán jako True.
 - Výchozí hodnota InstallWindowsOSOnlyUpdates se mění na hodnotu False.
+
+### <a name="version-132"></a>Verze 1.3.2
+- Opravit chybu, která provádí oprav lifecyle na uzlu v případě, že jsou dostupné uzly s názvem, který je podmnožinou názvu aktuálního uzlu. Pro tyto uzly, jeho možné opravy chybí nebo čeká na restartování. 

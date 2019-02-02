@@ -7,17 +7,17 @@ ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 12/29/2018
 ms.author: robb
-ms.openlocfilehash: 9a12ca5deeadfb7272532f404cc9cf7c030fb6c0
-ms.sourcegitcommit: fd488a828465e7acec50e7a134e1c2cab117bee8
+ms.openlocfilehash: 596b7eb53d82f8eee7da439314994fd0951c7e64
+ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "53994347"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55661713"
 ---
 # <a name="what-are-classic-alerts-in-microsoft-azure"></a>Co jsou upozornění v Microsoft Azure classic?
 
 > [!NOTE]
-> Tento článek popisuje, jak vytvářet starší klasické metriky upozornění. Azure teď podporuje monitorování [novějších upozornění metrik v reálném čase a nové prostředí upozornění](../../azure-monitor/platform/alerts-overview.md). Upozornění Classic jsou [naplánované nebudou se dál nabízet](https://docs.microsoft.com/en-us/azure/azure-monitor/platform/monitoring-classic-retirement).  
+> Tento článek popisuje, jak vytvářet starší klasické metriky upozornění. Azure teď podporuje monitorování [novějších upozornění metrik v reálném čase a nové prostředí upozornění](../../azure-monitor/platform/alerts-overview.md). Upozornění Classic jsou [naplánované nebudou se dál nabízet](https://docs.microsoft.com/azure/azure-monitor/platform/monitoring-classic-retirement).  
 >
 
 Výstrahy umožňují nakonfigurovat podmínky nad daty a informováni o podmínky odpovídají data nejnovější monitorování.

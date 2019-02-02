@@ -4,6 +4,7 @@ description: Roli správce můžete přidat uživatele, přiřazovat role správ
 services: active-directory
 author: curtand
 manager: mtillman
+search.appverid: MET150
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
@@ -12,12 +13,12 @@ ms.date: 01/31/2019
 ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
-ms.openlocfilehash: cf04181ad92ab005dccff9fa02fa4772e4c12ea1
-ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
+ms.openlocfilehash: 64b8ca0412461ae1001eecce335f94d9f2f0825f
+ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55512461"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55659061"
 ---
 # <a name="administrator-role-permissions-in-azure-active-directory"></a>Oprávnění role správce v Azure Active Directory
 

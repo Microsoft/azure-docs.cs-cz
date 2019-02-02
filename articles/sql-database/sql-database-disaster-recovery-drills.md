@@ -11,13 +11,13 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
 manager: craigg
-ms.date: 04/01/2018
-ms.openlocfilehash: cffafa68d155273de3b747c0399ce435f609b9fb
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.date: 12/18/2018
+ms.openlocfilehash: 5d754ae558d485036a9a55f573a3f40162ed9f84
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53602201"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55561123"
 ---
 # <a name="performing-disaster-recovery-drill"></a>Provedení postupu zotavení po havárii
 
@@ -26,7 +26,7 @@ Doporučuje se, že se pravidelně provádí ověření připravenosti aplikace 
 Provedení postupu zotavení po havárii zahrnuje:
 
 * Simulaci výpadku úroveň dat
-* Obnovení
+* Obnovování
 * Ověření obnovení příspěvek integrity aplikace
 
 V závislosti na tom, jak můžete [určená aplikace pro zajištění kontinuity](sql-database-business-continuity.md), pracovní postup ke spuštění na postup zotavení se může lišit. Tento článek popisuje osvědčené postupy pro provádění zotavení po havárii v rámci služby Azure SQL Database.

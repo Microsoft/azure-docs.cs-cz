@@ -1,30 +1,30 @@
 ---
-title: Operace ochrany ve verzi preview Azure AD hesel a vytváření sestav
-description: Operace aktualizace ochrany ve verzi preview po nasazení pro Azure AD hesel a vytváření sestav
+title: Operace ve verzi preview Azure AD hesla ochrany a vytváření sestav
+description: Azure AD hesla ve verzi preview po nasazení operace ochrany a vytváření sestav
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: article
-ms.date: 11/02/2018
+ms.date: 02/01/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jsimmons
-ms.openlocfilehash: 8d7002a014fc6cfab1888a6bc97c0f864de1d99d
-ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
+ms.openlocfilehash: a77a6dd8b408fd8151cb12b7d0269b8890ef929b
+ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/26/2019
-ms.locfileid: "55080867"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55662410"
 ---
-# <a name="preview-azure-ad-password-protection-operational-procedures"></a>Verze Preview: Azure AD hesla ochranu provozní postupy
+# <a name="preview-azure-ad-password-protection-operational-procedures"></a>Verze Preview: Azure AD ochranu heslem, provozní postupy
 
 |     |
 | --- |
 | Ochrana hesel Azure AD je funkce ve verzi public preview služby Azure Active Directory. Další informace o verzích Preview najdete v tématu [dodatečných podmínkách použití systémů Microsoft Azure Preview](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)|
 |     |
 
-Po dokončení [instalace ochrany pomocí služby Azure AD hesla](howto-password-ban-bad-on-premises-deploy.md) místně, je několik položek, které musí být nakonfigurované na webu Azure Portal.
+Po dokončení [instalace ochrany hesel služby Azure AD](howto-password-ban-bad-on-premises-deploy.md) místně, je několik položek, které musí být nakonfigurované na webu Azure Portal.
 
 ## <a name="configure-the-custom-banned-password-list"></a>Proveďte konfiguraci seznamu vlastních zakázaných hesel
 
@@ -32,13 +32,13 @@ Postupujte podle pokynů v článku [konfigurace seznamu zakázaných hesel vlas
 
 ## <a name="enable-password-protection"></a>Povolit ochranu heslem
 
-1. Přihlaste se k [webu Azure portal](https://portal.azure.com) a přejděte do **Azure Active Directory**, **metody ověřování**, pak **ochrana heslem (Preview)**.
+1. Přihlaste se k [webu Azure portal](https://portal.azure.com) a přejděte do **Azure Active Directory**, **metody ověřování**, pak **heslo Protection (Preview)**.
 1. Nastavte **povolení ochrany hesla na Windows Server Active Directory** k **Ano**
 1. Jak je uvedeno v [Průvodce nasazením](howto-password-ban-bad-on-premises-deploy.md#deployment-strategy), doporučuje se zpočátku nastaven **režimu** k **auditu**
    * Až si s funkcí, můžete přepnout **režimu** k **vynucené**
 1. Klikněte na **Uložit**.
 
-![Povolení součástí ochrany hesla Azure AD na webu Azure Portal](./media/howto-password-ban-bad-on-premises-operations/authentication-methods-password-protection-on-prem.png)
+![Povolení součástí ochrany hesel služby Azure AD na webu Azure Portal](./media/howto-password-ban-bad-on-premises-operations/authentication-methods-password-protection-on-prem.png)
 
 ## <a name="audit-mode"></a>Režim auditování
 
@@ -51,7 +51,7 @@ Režim auditování je určený jako způsob, jak spustit software v režimu "wh
 
 Vynutit režim je určený jako konečnou konfiguraci. Stejně jako v režimu auditování výše každá služba agenta řadiče domény vyhodnotí příchozí hesla podle aktuálně aktivních zásad. Pokud je povolený režim vynucení, i když byl odmítnut heslo, které se považuje za nezabezpečené podle zásad.
 
-Heslo je zamítnut v režimu vynucení ochrana hesel Azure AD agenta řadiče domény, se shoduje s co objeví pokud své heslo odmítl vynucení složitost hesla tradičních místních viditelné dopad vidět koncový uživatel. Uživatel například může zobrazit na obrazovku pro zadání hesla Windows logon\change následující tradiční chybová zpráva:
+Heslo je v režimu vynucení zamítnut agentem ochrany DC hesel služby Azure AD, se shoduje s co objeví pokud své heslo odmítl vynucení složitost hesla tradičních místních viditelné dopad vidět koncový uživatel. Uživatel například může zobrazit na obrazovku pro zadání hesla Windows logon\change následující tradiční chybová zpráva:
 
 `Unable to update the password. The value provided for the new password does not meet the length, complexity, or history requirements of the domain.`
 
@@ -61,49 +61,8 @@ Ovlivněné koncoví uživatelé potřebovat pro práci s jejich pracovníci IT 
 
 ## <a name="enable-mode"></a>Povolit režim
 
-Toto nastavení by měla zůstat normálně ve výchozím povolené (Ano) stavu. Konfiguraci tohoto nastavení na hodnotu zakázáno (ne) způsobí, že všechny nasazené hesla Azure AD agenty ochrany řadič domény přejděte do tichém režimu, ve kterém všechna hesla se přijímají jako-je, a žádné aktivity ověřování bude provedeno jednání (například, dokonce ani událostí auditu bude možné, protože ho).
-
-## <a name="usage-reporting"></a>Generování sestav o využívání
-
-`Get-AzureADPasswordProtectionSummaryReport` Rutina slouží k vytvoření souhrnné zobrazení aktivity. Ukázkový výstup této rutiny je následujícím způsobem:
-
-```PowerShell
-Get-AzureADPasswordProtectionSummaryReport -DomainController bplrootdc2
-DomainController                : bplrootdc2
-PasswordChangesValidated        : 6677
-PasswordSetsValidated           : 9
-PasswordChangesRejected         : 10868
-PasswordSetsRejected            : 34
-PasswordChangeAuditOnlyFailures : 213
-PasswordSetAuditOnlyFailures    : 3
-PasswordChangeErrors            : 0
-PasswordSetErrors               : 1
-```
-
-Rozsah rutiny reporting může jím můžou být jedním z – doménové struktury, domény nebo – DomainController parametrů. Bez zadání parametru znamená – doménová struktura.
-
-> [!NOTE]
-> Tato rutina funguje tak, že otevřete relaci Powershellu na každém řadiči domény. Aby bylo možné úspěšné, musí být povolena podpora vzdálené relace Powershellu na každém řadiči domény a klient musí mít dostatečná oprávnění. Další informace o požadavcích vzdálené relace prostředí PowerShell spusťte v okně Powershellu "Get-Help about_Remote_Troubleshooting".
-
-> [!NOTE]
-> Tato rutina funguje tak, že vzdáleně dotazování protokolu událostí správce každé služby agenta řadiče domény. Když protokoly událostí obsahují velký počet událostí, rutina může trvat dlouhou dobu pro dokončení. Kromě toho hromadné sítě dotazy velkých datových sad může ovlivnit výkon řadiče domény. Proto by měla tuto rutinu použít pečlivě v produkčním prostředí.
-
-## <a name="dc-agent-discovery"></a>Zjišťování agentů DC
-
-`Get-AzureADPasswordProtectionDCAgent` Rutiny lze zobrazit základní informace o různých agentů DC spuštěných v doméně nebo doménové struktuře. Tyto informace získány z serviceConnectionPoint objekty registrované ve spuštěné službě agenta řadiče domény. Ukázkový výstup této rutiny je následujícím způsobem:
-
-```PowerShell
-Get-AzureADPasswordProtectionDCAgent
-ServerFQDN            : bplChildDC2.bplchild.bplRootDomain.com
-Domain                : bplchild.bplRootDomain.com
-Forest                : bplRootDomain.com
-Heartbeat             : 2/16/2018 8:35:01 AM
-```
-
-Různé vlastnosti se aktualizují každou službu agenta DC přibližně hodinu. Data se stále latenci replikace služby Active Directory.
-
-Rozsah rutiny dotazu může jím můžou být buď pomocí – doménová struktura nebo – doména parametry.
+Toto nastavení by měla zůstat normálně ve výchozím povolené (Ano) stavu. Konfiguraci tohoto nastavení na hodnotu zakázáno (ne) způsobí, že všechny nasazené agenty hesel služby Azure AD ochranu řadič domény přejděte do tichém režimu, ve kterém všechna hesla se přijímají jako-je, a žádné aktivity ověřování bude provedeno jednání (například, dokonce ani událostí auditu bude možné, protože ho).
 
 ## <a name="next-steps"></a>Další postup
 
-[Řešení potíží a monitorování pro ochranu hesel Azure AD](howto-password-ban-bad-on-premises-troubleshoot.md)
+[Monitorování ochrany hesel Azure AD](howto-password-ban-bad-on-premises-monitor.md)

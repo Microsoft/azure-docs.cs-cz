@@ -15,14 +15,14 @@ ms.workload: azure-vs
 ms.date: 03/26/2018
 ms.author: mikhegn
 ms.custom: mvc, devcenter, vs-azure
-ms.openlocfilehash: f2b0cd404c0c5ee94b669f366abc79353096a5a1
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 3b7b70a5ac0c74cc920df823d1f9ae1152f86bff
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51241408"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55561191"
 ---
-# <a name="quickstart-deploy-a-net-reliable-services-application-to-service-fabric"></a>Rychlý start: Nasazení aplikace spolehlivých služeb v .NET do Service Fabric
+# <a name="quickstart-deploy-a-net-reliable-services-application-to-service-fabric"></a>Rychlý start: Nasazení aplikací .NET do Service Fabric reliable services
 
 Azure Service Fabric je platforma distribuovaných systémů pro nasazování a správu škálovatelných a spolehlivých mikroslužeb a kontejnerů.
 
@@ -36,7 +36,6 @@ Pomocí této aplikace se naučíte:
 * Použití ASP.NET jako webového front-endu
 * Ukládání dat aplikace do stavové služby
 * Místní ladění aplikace
-* Nasazení aplikace do clusteru v Azure
 * Škálování aplikace na více instancí napříč několika uzly
 * Provedení upgradu aplikace se zajištěním provozu
 
@@ -50,6 +49,27 @@ K provedení kroků v tomto kurzu Rychlý start je potřeba:
 4. Spusťte následující příkaz a povolte sadě Visual Studio nasazování do místního clusteru Service Fabric:
     ```powershell
     Set-ExecutionPolicy -ExecutionPolicy Unrestricted -Force -Scope CurrentUser
+    ```
+    
+## <a name="build-a-cluster"></a>Sestavení clusteru
+
+Po instalaci modulu runtime, sady SDK, nástroje sady Visual Studio, Docker a mít spuštěnou Dockeru, vytvořte pěti uzly místního vývojového clusteru.
+
+> [!IMPORTANT]
+> Před vytvořením clusteru **musí** být spuštěný Docker.
+> Zkontrolujte, že je Dockeru spuštěný, otevřením okna terminálu a zadáním příkazu `docker ps`, abyste viděli, jestli došlo k chybě. Pokud odpověď neindikuje chybu, Docker je spuštěný a vy jste připravení vytvořit cluster.
+
+
+1. Jako správce otevřete nové okno PowerShellu se zvýšenými oprávněními.
+2. Vývojový cluster vytvoříte spuštěním následujícího příkazu PowerShellu:
+
+    ```powershell
+    . "C:\Program Files\Microsoft SDKs\Service Fabric\ClusterSetup\DevClusterSetup.ps1"
+    ```
+3. Spuštěním následujícího příkazu spusťte nástroj Správce místního clusteru:
+
+    ```powershell
+    . "C:\Program Files\Microsoft SDKs\Service Fabric\Tools\ServiceFabricLocalClusterManager\ServiceFabricLocalClusterManager.exe"
     ```
 
 >[!NOTE]
@@ -70,14 +90,14 @@ Klikněte pravým tlačítkem na ikonu sady Visual Studio v nabídce Start a zvo
 
 Otevřete řešení sady Visual Studio **Voting.sln** z úložiště, které jste naklonovali.
 
-Ve výchozím nastavení je hlasovací aplikace nastavená k naslouchání na portu 8080.  Port aplikace je nastavený v souboru */VotingWeb/PackageRoot/ServiceManifest.xml*.  Port aplikace můžete změnit aktualizací atributu **Port** elementu **Endpoint**.  Pokud chcete aplikaci nasadit a spustit místně, port aplikace musí být otevřený a dostupný na vašem počítači.  Pokud změníte port aplikace, nahraďte hodnotu 8080 v celém tomto článku za novou hodnotu portu aplikace.
+Ve výchozím nastavení je hlasovací aplikace naslouchá na portu 8080.  Port aplikace je nastavený v souboru */VotingWeb/PackageRoot/ServiceManifest.xml*.  Port aplikace můžete změnit aktualizací atributu **Port** elementu **Endpoint**.  Pokud chcete aplikaci nasadit a spustit místně, port aplikace musí být otevřený a dostupný na vašem počítači.  Pokud změníte port aplikace, nahraďte hodnotu 8080 v celém tomto článku za novou hodnotu portu aplikace.
 
 Pokud chcete aplikaci nasadit, stiskněte **F5**.
 
 > [!NOTE]
-> Při prvním spuštění a nasazení aplikace sada Visual Studio vytvoří místní cluster pro účely ladění. Tato operace může nějakou dobu trvat. Stav vytváření clusteru se zobrazí v okně výstupu sady Visual Studio.  Ve výstupu se zobrazí zpráva „The application URL is not set or is not an HTTP/HTTPS URL so the browser will not be opened to the application“ (Adresa URL aplikace není nastavená nebo se nejedná o adresu URL protokolu HTTP/HTTPS, takže se aplikace neotevře v prohlížeči).  Tato zpráva neznačí chybu, pouze informuje, že se prohlížeč nespustí automaticky.
+> V okně výstupu sady Visual Studio se zobrazí zpráva "Adresa URL aplikace není nastavena nebo není adresu URL protokolu HTTP/HTTPS, takže se do aplikace neotevře v prohlížeči."  Tato zpráva neznačí chybu, pouze informuje, že se prohlížeč nespustí automaticky.
 
-Po dokončení nasazení spusťte prohlížeč a otevřete tuto stránku: `http://localhost:8080` – to je webový front-end aplikace.
+Po dokončení nasazení spusťte prohlížeč a otevřete `http://localhost:8080` zobrazíte front-endu webové aplikace.
 
 ![Front-end aplikace](./media/service-fabric-quickstart-dotnet/application-screenshot-new.png)
 
@@ -132,88 +152,6 @@ Pokud se chcete podívat, co se děje v kódu, proveďte následující kroky:
 
 Pokud chcete zastavit ladicí relaci, stiskněte **Shift + F5**.
 
-## <a name="deploy-the-application-to-azure"></a>Nasazení aplikace v Azure
-
-Pokud chcete nasadit aplikaci do Azure, potřebujete cluster Service Fabric, ve kterém bude aplikace spuštěná.
-
-### <a name="join-a-party-cluster"></a>Připojení k Party clusteru
-
-Party clustery jsou bezplatné, časově omezené clustery Service Fabric hostované v Azure a provozované týmem Service Fabric, na kterých může kdokoli nasazovat aplikace a seznamovat se s platformou. Cluster používá jediný certifikát podepsaný svým držitelem pro zabezpečení mezi uzly i mezi klientem a uzlem.
-
-Přihlaste se a [připojte se ke clusteru Windows](https://aka.ms/tryservicefabric). Stáhněte si do počítače certifikát PFX kliknutím na odkaz **PFX**. Klikněte na odkaz **How to connect to a secure Party cluster?** (Jak se připojit k zabezpečenému Party Clusteru?) a zkopírujte heslo certifikátu. Certifikát, heslo certifikátu a hodnotu **Koncový bod připojení** použijete v následujících krocích.
-
-![PFX a koncový bod připojení](./media/service-fabric-quickstart-dotnet/party-cluster-cert.png)
-
-> [!Note]
-> Každou hodinu je k dispozici omezený počet Party Clusterů. Pokud se vám při pokusu o registraci Party Clusteru zobrazí chyba, můžete chvíli počkat a zkusit to znovu nebo můžete podle kroků v kurzu [Nasazení aplikace .NET](https://docs.microsoft.com/azure/service-fabric/service-fabric-tutorial-deploy-app-to-party-cluster#deploy-the-sample-application) vytvořit cluster Service Fabric ve svém předplatném Azure a nasadit aplikaci do něj. Pokud ještě nemáte předplatné Azure, můžete si vytvořit [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F). Po nasazení a ověření aplikace v clusteru můžete přeskočit k části [Škálování aplikací a služeb v clusteru](#scale-applications-and-services-in-a-cluster) v tomto rychlém startu.
->
-
-Na svém počítači s Windows nainstalujte soubor PFX do úložiště certifikátů *CurrentUser\My*.
-
-```powershell
-PS C:\mycertificates> Import-PfxCertificate -FilePath .\party-cluster-873689604-client-cert.pfx -CertStoreLocation Cert:\CurrentUser\My -Password (ConvertTo-SecureString 873689604 -AsPlainText -Force)
-
-
-   PSParentPath: Microsoft.PowerShell.Security\Certificate::CurrentUser\My
-
-Thumbprint                                Subject
-----------                                -------
-3B138D84C077C292579BA35E4410634E164075CD  CN=zwin7fh14scd.westus.cloudapp.azure.com
-```
-
-Zapamatujte si kryptografický otisk pro následující krok.
-
-> [!Note]
-> Webová front-end služba je ve výchozím nastavení nakonfigurovaná k naslouchání příchozímu provozu na portu 8080. Port 8080 je v Party clusteru otevřený.  Pokud potřebujete změnit port aplikace, změňte ho na některý z portů, které jsou v Party clusteru otevřené.
->
-
-### <a name="deploy-the-application-using-visual-studio"></a>Nasazení aplikace pomocí sady Visual Studio
-
-Aplikace je teď připravená a přímo ze sady Visual Studio ji můžete nasadit do clusteru.
-
-1. V Průzkumníku řešení klikněte pravým tlačítkem na **Voting** a zvolte **Publikovat**. Zobrazí se dialogové okno Publikovat.
-
-2. Do pole **Koncový bod připojení** zkopírujte **Koncový bod připojení** ze stránky Party clusteru. Například, `zwin7fh14scd.westus.cloudapp.azure.com:19000`. Klikněte na **Rozšířené parametry připojení** a ujistěte se, že hodnoty *FindValue* and *ServerCertThumbprint* odpovídají kryptografickému otisku certifikátu nainstalovaného v předchozím kroku.
-
-    ![Dialogové okno Publikovat](./media/service-fabric-quickstart-dotnet/publish-app.png)
-
-    Každá aplikace v clusteru musí mít jedinečný název.  Party clustery jsou však veřejné a sdílené prostředí a může dojít ke konfliktu s již existující aplikací.  Pokud dojde ke konfliktu názvů, přejmenujte projekt sady Visual Studio a opakujte nasazení.
-
-3. Klikněte na **Publikovat**.
-
-4. Otevřete prohlížeč a přejděte do aplikace v clusteru zadáním adresy clusteru následované :8080, například `http://zwin7fh14scd.westus.cloudapp.azure.com:8080`. Nyní by se měla zobrazit aplikace spuštěná v clusteru v Azure.
-
-    ![Front-end aplikace](./media/service-fabric-quickstart-dotnet/application-screenshot-new-azure.png)
-
-## <a name="scale-applications-and-services-in-a-cluster"></a>Škálování aplikací a služeb v clusteru
-
-Služby Service Fabric je možné snadno škálovat napříč clusterem a vyřešit tak změny jejich zatížení. Služby se škálují změnou počtu instancí spuštěných v clusteru. Služby můžete škálovat několika způsoby – můžete použít skripty nebo příkazy v PowerShellu nebo Service Fabric CLI (sfctl). V tomto příkladu používáme Service Fabric Explorer.
-
-Nástroj Service Fabric Explorer běží na všech clusterech Service Fabric a je přístupný z prohlížeče po přechodu na port HTTP pro správu clusteru (19080), například `http://zwin7fh14scd.westus.cloudapp.azure.com:19080`.
-
-Můžete obdržet upozornění prohlížeče, že umístění není důvěryhodné. To je způsobeno tím, že je certifikát podepsaný svým držitelem. Můžete se rozhodnout toto varování upozornění a pokračovat.
-1. Po výzvě prohlížeče vyberte nainstalovaný certifikát pro připojení. Certifikát Party clusteru, který vyberete v seznamu, musí odpovídat Party clusteru, ke kterému se pokoušíte získat přístup. Příklad: win243uja6w62r.westus.cloudapp.azure.com.
-2. Po zobrazení výzvy v prohlížeči udělte této relaci přístup ke svému privátnímu klíči rozhraní CryptoAPI.
-
-Pokud chcete škálovat webovou front-end službu, proveďte následující kroky:
-
-1. Otevřete ve vašem clusteru Service Fabric Explorer – například `http://zwin7fh14scd.westus.cloudapp.azure.com:19080`.
-
-2. Ve stromovém zobrazení rozbalte **Aplikace**->**VotingType**->**fabric:/Voting**. Ve stromovém zobrazení klikněte na tři tečky vedle uzlu **fabric:/Voting/VotingWeb** a zvolte **Škálovat službu**.
-
-    ![Service Fabric Explorer](./media/service-fabric-quickstart-dotnet/service-fabric-explorer-scale.png)
-
-    Teď můžete škálovat počet instancí webové front-end služby.
-
-3. Změňte počet na **2** a klikněte na **Škálovat službu**.
-4. Ve stromovém zobrazení klikněte na uzel **fabric:/Voting/VotingWeb** a rozbalte uzel oddílu (reprezentovaný identifikátorem GUID).
-
-    ![Service Fabric Explorer – škálování služby](./media/service-fabric-quickstart-dotnet/service-fabric-explorer-scaled-service.png)
-
-    Po prodlevě uvidíte, že má služba dvě instance.  Ve stromovém zobrazení vidíte, na kterých uzlech jsou instance spuštěné.
-
-Touto jednoduchou úlohou správy se zdvojnásobily prostředky, které má front-end služba k dispozici pro zpracování uživatelské zátěže. Je důležité si uvědomit, že pro spolehlivý provoz služby nepotřebujete více jejích instancí. Pokud služba selže, Service Fabric zajistí v clusteru spuštění nové instance služby.
-
 ## <a name="perform-a-rolling-application-upgrade"></a>Provedení upgradu aplikace se zajištěním provozu
 
 Když do aplikace nasazujete nové aktualizace, Service Fabric je bezpečným způsobem zavádí postupně. Upgrady se zajištěním provozu zajišťují upgradování bez výpadků a také automatické vrácení zpět v případě, že dojde k chybě.
@@ -228,19 +166,23 @@ Pokud chcete upgradovat aplikaci, postupujte následovně:
 6. Změňte například verzi elementu **Kód** v části **VotingWebPkg** na 2.0.0 a klikněte na **Uložit**.
 
     ![Dialogové okno pro změnu verze](./media/service-fabric-quickstart-dotnet/change-version.png)
-7. V dialogovém okně **Publikovat aplikaci Service Fabric** zaškrtněte políčko Upgradovat aplikaci a klikněte na **Publikovat**.
+7. V **publikovat aplikaci Service Fabric** dialogového okna, zkontrolujte **upgradovat aplikaci zaškrtávací políčko**.
+8.  Změna **cílový profil** k **PublishProfiles\Local.5Node.xml** a ujistěte se, že **koncový bod připojení** je nastavena na **místní Cluster**. 
+9. Vyberte **upgradovat aplikaci**.
 
     ![Dialogové okno pro publikování – nastavení upgradu](./media/service-fabric-quickstart-dotnet/upgrade-app.png)
 
+10. Klikněte na **Publikovat**.
+
     V průběhu upgradu můžete aplikaci dál používat. Vzhledem k tomu, že v clusteru máte spuštěné dvě instance služby, můžou některé požadavky přicházet do upgradované verze aplikace, zatímco jiné můžou stále přicházet do staré verze.
 
-8. Otevřete prohlížeč a přejděte na adresu clusteru na portu 19080, například `http://zwin7fh14scd.westus.cloudapp.azure.com:19080`.
-9. Ve stromovém zobrazení klikněte na uzel **Aplikace** a pak na **Probíhající upgrady** v pravém podokně. Zobrazí se postupné zavádění upgradu napříč upgradovacími doménami ve vašem clusteru. U každé domény se nejprve ověří, jestli je v pořádku, a pak se přejde k další. Po ověření stavu domény se upgradovací doména v indikátoru průběhu zobrazí zeleně.
+11. Otevřete prohlížeč a přejděte na adresu clusteru na portu 19080. Například `http://localhost:19080/`.
+12. Ve stromovém zobrazení klikněte na uzel **Aplikace** a pak na **Probíhající upgrady** v pravém podokně. Zobrazí se postupné zavádění upgradu napříč upgradovacími doménami ve vašem clusteru. U každé domény se nejprve ověří, jestli je v pořádku, a pak se přejde k další. Po ověření stavu domény se upgradovací doména v indikátoru průběhu zobrazí zeleně.
     ![Zobrazení upgradu v Service Fabric Exploreru](./media/service-fabric-quickstart-dotnet/upgrading.png)
 
     Service Fabric zajišťuje bezpečné upgrady tím, že po upgradu služby na každém uzlu v clusteru dvě minuty počká. Počítejte s tím, že úplná aktualizace bude trvat přibližně osm minut.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 V tomto rychlém startu jste se naučili:
 
@@ -248,7 +190,6 @@ V tomto rychlém startu jste se naučili:
 * Použití ASP.NET jako webového front-endu
 * Ukládání dat aplikace do stavové služby
 * Místní ladění aplikace
-* Nasazení aplikace do clusteru v Azure
 * Škálování aplikace na více instancí napříč několika uzly
 * Provedení upgradu aplikace se zajištěním provozu
 

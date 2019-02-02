@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 11/28/2016
 ms.author: sogup
-ms.openlocfilehash: b51cf5611bf00c133378a7d90d1693e50b27f7b0
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.openlocfilehash: 0ed7260f35c483d17eb97e625ef72c310a3fcfdb
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55491566"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55564132"
 ---
 # <a name="manage-azure-virtual-machine-backups"></a>Správa záloh virtuálních počítačů Azure
 
@@ -138,9 +138,11 @@ K aktivaci virtuálního počítače zálohu na vyžádání:
 Pokud se rozhodnete ukončit ochranu virtuálního počítače, zobrazí se výzva, jestli chcete zachovat body obnovení. Existují dva způsoby, jak zastavit ochranu virtuálních počítačů:
 
 * Zastavit všechny budoucí úlohy zálohování a odstranit všechny body obnovení, nebo
-* Zastavit všechny budoucí úlohy zálohování, ale ponechat body obnovení.
+* zastavit všechny budoucí úlohy zálohování, ale ponechat body obnovení.
 
 Existuje náklady spojené s ponecháním bodů obnovení v úložišti. Výhodou ponechání bodů obnovení však je, že později, můžete obnovit virtuální počítač, v případě potřeby. Informace o nákladech na ponechání bodů obnovení, najdete v článku [podrobnosti o cenách](https://azure.microsoft.com/pricing/details/backup/). Pokud se rozhodnete odstranit všechny body obnovení, nelze obnovit virtuální počítač.
+
+Pokaždé, když zastavíte zálohování pomocí zachování dat, vyprší platnost bodů obnovení podle zásady uchovávání informací ale Azure Backup bude vždy uchovávat jeden poslední bod obnovení před explicitně odstranit zálohovaná data. Podobně pokud odstranit zdroj dat bez provedení Zastavit zálohování, nových záloh se spustí služeb při selhání a vyprší platnost starých bodů obnovení podle zásady uchovávání informací, ale jednou z posledního bodu obnovení bude vždy uchovávat až provedete Zastavit zálohování s odstraňte data.
 
 Zastavení ochrany pro virtuální počítač:
 

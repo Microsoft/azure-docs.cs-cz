@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jsimmons
-ms.openlocfilehash: b99c1b99fe87c755d6092876ccd598d926289192
-ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
+ms.openlocfilehash: 816c459ca6edd7204ccdcdf9d402f2d4499d9116
+ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/26/2019
-ms.locfileid: "55077826"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55662519"
 ---
 # <a name="preview-enforce-azure-ad-password-protection-for-windows-server-active-directory"></a>Verze Preview: Vynucení ochrany hesla Azure AD pro Windows Server Active Directory
 
@@ -29,7 +29,7 @@ Ochrana hesel Azure AD je nová funkce ve verzi public preview technologii Azure
 Existují tři softwarové komponenty, které tvoří ochrana hesel Azure AD:
 
 * Proxy služby Azure AD hesla ochrany běží na jakýkoli počítač připojený k doméně v aktuální doménové struktuře služby Active Directory. Předává požadavky z řadičů domény do Azure AD a vrátí odpověď ze služby Azure AD zpátky na řadič domény.
-* Agenta služby Azure AD hesla ochranu řadič domény obdrží žádostí o ověření hesla z knihovny dll filtru hesel agenta DC, je pomocí aktuální zásady hesel místně dostupné procesy a vrátí výsledek (pass\fail). Tato služba je zodpovědná za pravidelně (jednou za hodinu) volání proxy služby Azure AD hesla ochrany k načtení nové verze zásad hesel. Komunikace pro volání do a z proxy serveru služby Azure AD hesla ochrany probíhá přes RPC (vzdálené volání procedur) přes protokol TCP. Při načítání nové zásady se ukládají do složky sysvol, kde můžete replikovat do ostatních řadičů domény. Služba agenta DC také monitoruje složku sysvol na změny v případě, že jiné řadiče domény napsali nové zásady hesel, pokud vhodně nejnovější zásady už je k dispozici se přeskočí kontrolu proxy služby Azure AD hesla ochrany.
+* Agenta služby Azure AD hesla ochranu řadič domény obdrží žádostí o ověření hesla z knihovny dll filtru hesel agenta DC, je pomocí aktuální zásady hesel místně dostupné procesy a vrátí výsledek (pass\fail). Tato služba je zodpovědná za pravidelně (jednou za hodinu) volání proxy služby Azure AD hesla ochrany k načtení nové verze zásad hesel. Komunikace mezi agenta služby Azure AD hesla ochranu řadič domény a serveru proxy služby Azure AD hesla ochrany se určují pomocí vzdáleného volání Procedur (RPC) přes protokol TCP. Při načítání nové zásady se ukládají do složky sysvol, kde můžete replikovat do ostatních řadičů domény. Služba agenta DC také monitoruje složku sysvol na změny v případě, že jiné řadiče domény napsali nové zásady pro hesla. Pokud je již k dispozici vhodně poslední zásada bude přeskočen nové žádosti o stažení zásady.
 * Dll filtru hesel agenta pro řadič domény obdrží žádostí o ověření hesla z operačního systému a předává je Azure AD hesla řadiče domény Služba agenta ochrany místně spuštěná na řadiči domény.
 
 ![Jak spolupracují součásti ochrany hesla Azure AD](./media/concept-password-ban-bad-on-premises/azure-ad-password-protection.png)
@@ -57,7 +57,7 @@ Existují dva instalační programy požadovaných k ochraně heslem služby Azu
 * Neexistuje žádný minimální domény služby Active Directory nebo doménové struktuře funkční úrovni (DFL\FFL) požadavek.
 * Software nevytváří ani vyžadovat některé účty domén služby Active Directory, které chrání.
 * Za cenu, že zásady pro hesla bude vynucováno tak, kde je nainstalovaný agent řadič domény je podporováno přírůstkové nasazení.
-* Doporučujeme nainstalovat agenta řadiče domény na všechny řadiče domény k zajištění ochrany vynucení hesla. 
+* Doporučujeme nainstalovat agenta řadiče domény na všechny řadiče domény k zajištění ochrany vynucení hesla.
 * Ochrana hesel Azure AD není modul aplikace v reálném čase zásad. Může docházet k prodlevám v době mezi změna konfigurace zásad hesel a čas dosáhne a vynucování na všechny řadiče domény.
 
 ## <a name="next-steps"></a>Další postup

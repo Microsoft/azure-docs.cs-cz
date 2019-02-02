@@ -14,12 +14,12 @@ ms.devlang: objective-c
 ms.topic: article
 ms.date: 01/04/2019
 ms.author: jowargo
-ms.openlocfilehash: aaaeb4e101147c19af5bd1dc7071cca273255863
-ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
+ms.openlocfilehash: 8b37f86706e47e3998a4ba85e4416ce1a8a44c22
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54449755"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55567075"
 ---
 # <a name="tutorial-push-notifications-to-specific-ios-devices-using-azure-notification-hubs"></a>Kurz: Odesílání nabízených oznámení do zařízení s Iosem konkrétní pomocí Azure Notification Hubs
 
@@ -321,7 +321,7 @@ Obvykle bude odesláno oznámení pomocí back-end službu, ale můžete odesíl
         NSArray* categories = [NSArray arrayWithObjects: @"World", @"Politics", @"Business",
                                 @"Technology", @"Science", @"Sports", nil];
 
-        // Lets send the message as breaking news for each category to WNS, GCM, and APNS
+        // Lets send the message as breaking news for each category to WNS, FCM, and APNS
         // using a template.
         for(NSString* category in categories)
         {

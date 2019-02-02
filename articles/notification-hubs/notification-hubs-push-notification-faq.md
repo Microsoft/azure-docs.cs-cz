@@ -15,12 +15,12 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 01/24/2019
 ms.author: jowargo
-ms.openlocfilehash: 7e31f4f229e722d51f5de6b133e70dfb1c013533
-ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
+ms.openlocfilehash: 7f1a1bd22ecd0b0a7ab64e639683ae316742c5f0
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54888154"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55563979"
 ---
 # <a name="push-notifications-with-azure-notification-hubs-frequently-asked-questions"></a>Nabízená oznámení pomocí Azure Notification Hubs: Nejčastější dotazy
 
@@ -80,7 +80,7 @@ Server sady SDK jsou dostupné pro .NET, Java, Node.js, PHP nebo Python. Rozhran
 
 ### <a name="which-client-platforms-do-you-support"></a>Které klientské platformy podporujete?
 
-Nabízená oznámení jsou podporovány pro [iOS](notification-hubs-ios-apple-push-notification-apns-get-started.md), [Android](notification-hubs-android-push-notification-google-gcm-get-started.md), [Windows Universal](notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md), [Windows Phone](notification-hubs-windows-mobile-push-notifications-mpns.md), [Kindle](notification-hubs-kindle-amazon-adm-push-notification.md), [Android China (přes Baidu)](notification-hubs-baidu-china-android-notifications-get-started.md), Xamarin ([iOS](xamarin-notification-hubs-ios-push-notification-apns-get-started.md) a [Android](xamarin-notification-hubs-push-notifications-android-gcm.md)), [aplikace pro Chrome](notification-hubs-chrome-push-notifications-get-started.md)a [Safari](https://github.com/Azure/azure-notificationhubs-samples/tree/master/PushToSafari). Další informace najdete v části [Kurzy Začínáme centra oznámení] stránky.
+Nabízená oznámení jsou podporovány pro [iOS](notification-hubs-ios-apple-push-notification-apns-get-started.md), [Android](notification-hubs-android-push-notification-google-fcm-get-started.md), [Windows Universal](notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md), [Windows Phone](notification-hubs-windows-mobile-push-notifications-mpns.md), [Kindle](notification-hubs-kindle-amazon-adm-push-notification.md), [Android China (přes Baidu)](notification-hubs-baidu-china-android-notifications-get-started.md), Xamarin ([iOS](xamarin-notification-hubs-ios-push-notification-apns-get-started.md) a s Androidem, [aplikace pro Chrome](notification-hubs-chrome-push-notifications-get-started.md), a [Safari](https://github.com/Azure/azure-notificationhubs-samples/tree/master/PushToSafari). Další informace najdete v části [Kurzy Začínáme centra oznámení] stránky.
 
 ### <a name="do-you-support-text-message-email-or-web-notifications"></a>Podporujete textových zpráv, e-mailu nebo web oznámení?
 
@@ -144,7 +144,7 @@ Obory názvů lze použít pro nasazení seskupení. Můžete také používají
 
 #### <a name="geo-distribution"></a>Geo-distribution
 
-Geografická rozptýlenost není vždy důležité ve scénářích nabízených oznámení. Různé PNSes (například APNS a GCM), které doručení nabízených oznámení do zařízení nejsou rovnoměrně.
+Geografická rozptýlenost není vždy důležité ve scénářích nabízených oznámení. Různé PNSes (například APNS nebo FCM), které doručení nabízených oznámení do zařízení nejsou rovnoměrně.
 
 Pokud máte aplikaci, která se používá globálně, můžete vytvořit centra v různých oborech názvů pomocí služby Notification Hubs v různých oblastech Azure po celém světě.
 
@@ -207,7 +207,7 @@ Azure Notification Hubs poskytuje několik funkcí pro řešení potíží, hlav
 Zobrazení telemetrických dat v Azure Notification Hubs umožňuje [Azure Portal]. Podrobnosti o metriky jsou k dispozici na [Notification Hubs metriky] stránky.
 
 > [!NOTE]
-> Úspěšná oznámení jednoduše znamená, že byly dodány nabízených oznámení do externího systému oznámení platformy (například služby APN pro Apple) nebo pro Google GCM. Je odpovědností systému oznámení platformy doručování oznámení do cílových zařízení. Systém oznámení platformy standardně nevystavuje doručování metrik třetím stranám.  
+> Úspěšná oznámení jednoduše znamená, že byly dodány nabízených oznámení do externího systému oznámení platformy (například služby APN pro Apple) nebo FCM pro Google. Je odpovědností systému oznámení platformy doručování oznámení do cílových zařízení. Systém oznámení platformy standardně nevystavuje doručování metrik třetím stranám.  
 
 Nabízíme také možnost exportovat telemetrická data prostřednictvím kódu programu (na úrovni Standard). Podrobnosti najdete v tématu [Ukázky využití Notification Hubs metriky].
 

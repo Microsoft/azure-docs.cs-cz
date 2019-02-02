@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/29/2018
 ms.author: cynthn
-ms.openlocfilehash: dd75e21f94d342f521effb10f4557529fa3c2052
-ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
+ms.openlocfilehash: e8a41c3bb1401552e7f1a56ec4cdbbce52354075
+ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54888596"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55658925"
 ---
 # <a name="manage-a-virtual-machine-scale-set-with-the-azure-cli"></a>Správa virtuálního počítače škálovací sady pomocí Azure CLI
 V průběhu životního cyklu škálovací sady virtuálních počítačů možná budete potřebovat spustit jednu nebo více úloh správy. Kromě toho možná budete chtít vytvořit skripty pro automatizaci různých úloh souvisejících s životním cyklem. Tento článek podrobně popisuje některé běžné příkazy rozhraní příkazového řádku Azure, které umožňují provádět tyto úlohy.
@@ -79,7 +79,7 @@ az vmss show \
     --output table
 ```
 
-Pak můžete ručně navýšit nebo snížit počet virtuálních počítačů ve škálovací sadě pomocí příkazu [az vmss scale](/cli/azure/vmss#az_vmss_scale). Následující příklad nastaví počet virtuálních počítačů ve škálovací sadě *5*:
+Pak můžete ručně navýšit nebo snížit počet virtuálních počítačů ve škálovací sadě pomocí příkazu [az vmss scale](/cli/azure/vmss). Následující příklad nastaví počet virtuálních počítačů ve škálovací sadě *5*:
 
 ```azurecli
 az vmss scale \

@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: tutorial
 ms.date: 12/21/2018
 ms.author: raynew
-ms.openlocfilehash: 334a476fee6e995c33a290d34df2f111baae34c3
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: 74b104ac399f00e08ed10ded5cd62a9c32c15d4a
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55224237"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55566801"
 ---
 # <a name="back-up-sql-server-databases-to-azure"></a>Zálohování databází systému SQL Server do Azure
 
@@ -721,6 +721,8 @@ Pokud zastavíte ochranu pro databázi serveru SQL Server, požádá o Azure Bac
 * Zastavit všechny budoucí úlohy zálohování, ale ponechat body obnovení.
 
 Pokud se rozhodnete zastavit zálohování při zachování dat, body obnovení se vyčistí podle zásady zálohování. Bude účtovat za chráněnou instanci SQL, ceny za poplatek, a navíc úložiště spotřebovaného před vyčištěním všech bodů obnovení. Další informace o cenách zálohování Azure pro SQL, najdete v článku [stránce s cenami za Azure Backup](https://azure.microsoft.com/pricing/details/backup/).
+
+Pokaždé, když zastavíte zálohování pomocí zachování dat, vyprší platnost bodů obnovení podle zásady uchovávání informací ale Azure Backup bude vždy uchovávat jeden poslední bod obnovení před explicitně odstranit zálohovaná data. Podobně pokud odstranit zdroj dat bez provedení Zastavit zálohování, nových záloh se spustí služeb při selhání a vyprší platnost starých bodů obnovení podle zásady uchovávání informací, ale jednou z posledního bodu obnovení bude vždy uchovávat až provedete Zastavit zálohování s odstraňte data.
 
 Ukončit ochranu pro databázi:
 

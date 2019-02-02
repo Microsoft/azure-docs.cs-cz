@@ -4,7 +4,7 @@ description: V tomto rychlém startu vytvoříte svou první aplikaci typu konte
 services: service-fabric
 documentationcenter: .net
 author: TylerMSFT
-manager: timlt
+manager: jpconnock
 editor: vturecek
 ms.assetid: ''
 ms.service: service-fabric
@@ -12,17 +12,17 @@ ms.devlang: dotNet
 ms.topic: quickstart
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 04/30/2018
+ms.date: 01/31/2019
 ms.author: twhitney
 ms.custom: mvc
-ms.openlocfilehash: 2855d28a3d5414413ca1657a7bef9c060f6d4424
-ms.sourcegitcommit: d372d75558fc7be78b1a4b42b4245f40f213018c
+ms.openlocfilehash: 085f3fd8ee3fe22333c260fb4de18a8c06c9c55c
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/09/2018
-ms.locfileid: "51300332"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55568562"
 ---
-# <a name="quickstart-deploy-windows-containers-to-service-fabric"></a>Rychlý start: Nasazení kontejnerů Windows do Service Fabric
+# <a name="quickstart-deploy-windows-containers-to-service-fabric"></a>Rychlý start: Nasadit kontejnery Windows do Service Fabric
 
 Azure Service Fabric je platforma distribuovaných systémů pro nasazování a správu škálovatelných a spolehlivých mikroslužeb a kontejnerů.
 
@@ -63,11 +63,12 @@ Pojmenujte službu MyContainerService a klikněte na **OK**.
 ![Dialogové okno Nová služba][new-service]
 
 ## <a name="specify-the-os-build-for-your-container-image"></a>Specifikace čísla sestavení operačního systému pro image kontejneru
+
 Kontejnery sestavené s konkrétní verzí Windows Serveru nemusí fungovat na hostiteli s jinou verzí Windows Serveru. Například kontejnery sestavené s využitím Windows Serveru verze 1709 nefungují na hostitelích se systémem Windows Server 2016. Další informace najdete v článku o [kompatibilitě operačního systému kontejneru a operačního systému hostitele s Windows Serverem](service-fabric-get-started-containers.md#windows-server-container-os-and-host-os-compatibility). 
 
 Verze 6.1 modulu runtime služby Service Fabric a novější umožňuje specifikovat více imagí operačního systému na kontejner a označit jednotlivé image verzí sestavení daného operačního systému, na který by se měly nasazovat. Tímto se zajistí, že aplikace poběží na více hostitelích s různými verzemi operačního systému Windows. Další informace najdete v článku o [zadání imagí kontejneru pro konkrétní sestavení operačního systému](service-fabric-get-started-containers.md#specify-os-build-specific-container-images). 
 
-Společnost Microsoft publikuje různé image pro verze IIS sestavené na různých verzích Windows Serveru. Abyste měli jistotu, že služba Service Fabric nasadí kontejner kompatibilní s verzí Windows Serveru běžící v uzlech clusteru, ve kterých nasazuje vaši aplikaci, přidejte do souboru *ApplicationManifest.xml* následující řádky. Verze sestavení pro Windows Server 2016 je 14393 a verze sestavení pro Windows Server verze 1709 je 16299. 
+Společnost Microsoft publikuje různé image pro verze IIS sestavené na různých verzích Windows Serveru. Abyste měli jistotu, že služba Service Fabric nasadí kontejner kompatibilní s verzí Windows Serveru běžící v uzlech clusteru, ve kterých nasazuje vaši aplikaci, přidejte do souboru *ApplicationManifest.xml* následující řádky. Verze sestavení pro Windows Server 2016 je 14393 a verze sestavení pro Windows Server verze 1709 je 16299.
 
 ```xml
     <ContainerHostPolicies CodePackageRef="Code"> 
@@ -80,34 +81,57 @@ Společnost Microsoft publikuje různé image pro verze IIS sestavené na různ�
     </ContainerHostPolicies> 
 ```
 
-Manifest služby dále specifikuje jenom jednu image na nanoserver, `microsoft/iis:nanoserver`. 
+Manifest služby dále specifikuje jenom jednu image na nanoserver, `microsoft/iis:nanoserver`.
+
+Také v *ApplicationManifest.xml* změňte **PasswordEncrypted** k **false**. Účet a heslo je prázdné, pokud veřejné image kontejneru, který je na Docker Hubu, takže jsme vypnout šifrování, protože šifrování heslo necháte prázdné, vygeneruje chybu sestavení.
+
+```xml
+<RepositoryCredentials AccountName="" Password="" PasswordEncrypted="false" />
+```
 
 ## <a name="create-a-cluster"></a>Vytvoření clusteru
 
-Pokud chcete nasadit aplikaci do clusteru v Azure, můžete se připojit k Party Clusteru. Party clustery jsou bezplatné, časově omezené clustery Service Fabric hostované v Azure a provozované týmem Service Fabric, na kterých může kdokoli nasazovat aplikace a seznamovat se s platformou.  Cluster používá jediný certifikát podepsaný svým držitelem (self-signed certificate) pro zabezpečení mezi uzly i mezi klientem a uzlem. Party Clustery podporují kontejnery. Pokud se rozhodnete nastavit a používat vlastní cluster, musí tento cluster využívat skladovou položku, která podporuje kontejnery (například Windows Server 2016 Datacenter s kontejnery).
+Následující ukázkový skript vytvoří clusteru Service Fabric pěti uzly zabezpečený pomocí certifikátu X.509. Příkaz vytvoří certifikát podepsaný svým držitelem a nahraje ho do nového trezoru klíčů. Certifikát se také zkopíruje do místního adresáře. Další informace o vytváření clusteru pomocí tohoto skriptu v [vytvořit cluster Service Fabric](/scripts/service-fabric-powershell-create-secure-cluster-cert).
 
-Přihlaste se a [připojte se ke clusteru Windows](https://aka.ms/tryservicefabric). Stáhněte si do počítače certifikát PFX kliknutím na odkaz **PFX**. Klikněte na odkaz **How to connect to a secure Party cluster?** (Jak se připojit k zabezpečenému Party Clusteru?) a zkopírujte heslo certifikátu. Certifikát, heslo certifikátu a hodnotu **Koncový bod připojení** použijete v následujících krocích.
+V případě potřeby nainstalujte Azure PowerShell podle pokynů v [příručce k Azure Powershellu](/powershell/azure/overview).
 
-![PFX a koncový bod připojení](./media/service-fabric-quickstart-containers/party-cluster-cert.png)
+Před spuštěním následujícího skriptu v prostředí PowerShell spustit `Connect-AzureRmAccount` vytvořit připojení k Azure.
 
-> [!Note]
-> Každou hodinu je k dispozici omezený počet Party Clusterů. Pokud se vám při pokusu o registraci Party Clusteru zobrazí chyba, můžete chvíli počkat a zkusit to znovu nebo můžete podle kroků v kurzu [Nasazení aplikace .NET](https://docs.microsoft.com/azure/service-fabric/service-fabric-tutorial-deploy-app-to-party-cluster#deploy-the-sample-application) vytvořit cluster Service Fabric ve svém předplatném Azure a nasadit aplikaci do něj. Cluster vytvořený prostřednictvím sady Visual Studio podporuje kontejnery. Po nasazení a ověření aplikace v clusteru můžete přeskočit k části [Kompletní příklad manifestů služby a aplikace Service Fabric](#complete-example-service-fabric-application-and-service-manifests) v tomto rychlém startu.
->
+Zkopírujte následující skript do schránky a otevřete **Windows PowerShell ISE**.  Umožňuje vložte obsah do prázdné okno Untitled1.ps1. Potom zadejte hodnoty pro proměnné ve skriptu: `subscriptionId`, `certpwd`, `certfolder`, `adminuser`, `adminpwd`atd.  Adresáře, zadejte pro `certfolder` musí existovat před spuštěním skriptu.
 
-Na počítači s Windows nainstalujte PFX do úložiště certifikátů *CurrentUser\My*.
+[!code-powershell[main](../../powershell_scripts/service-fabric/create-secure-cluster/create-secure-cluster.ps1 "Create a Service Fabric cluster")]
+
+Až zadáte svoje hodnoty pro proměnné, klikněte na **F5** pro spuštění skriptu.
+
+Po spuštění skriptu a vytvoření clusteru, vyhledejte `ClusterEndpoint` ve výstupu. Příklad:
+
+```PowerShell
+...
+ClusterEndpoint : https://southcentralus.servicefabric.azure.com/runtime/clusters/b76e757d-0b97-4037-a184-9046a7c818c0
+```
+
+### <a name="install-the-certificate-for-the-cluster"></a>Nainstalujte certifikát pro cluster
+
+Nyní jsme se nainstalujte PFX do *CurrentUser\My* úložiště certifikátů. Soubor PFX bude v adresáři, které jste určili pomocí `certfolder` proměnné prostředí ve skriptu prostředí PowerShell výše.
+
+Přechod do této složky a potom spusťte následující příkaz prostředí PowerShell, názvem souboru PFX, který je ve vaší `certfolder` adresáře a heslo, které jste zadali v `certpwd` proměnné. V tomto příkladu je nastavena aktuální adresář do adresáře určeného `certfolder` proměnné ve skriptu prostředí PowerShell. Odtud `Import-PfxCertificate` spusťte příkaz:
 
 ```powershell
-PS C:\mycertificates> Import-PfxCertificate -FilePath .\party-cluster-873689604-client-cert.pfx -CertStoreLocation Cert:\CurrentUser\My -Password (ConvertTo-SecureString 873689604 -AsPlainText -Force)
+PS C:\mycertificates> Import-PfxCertificate -FilePath .\mysfclustergroup20190130193456.pfx -CertStoreLocation Cert:\CurrentUser\My -Password (ConvertTo-SecureString Password#1234 -AsPlainText -Force)
+```
 
+Příkaz vrátí kryptografický otisk:
 
+```powershell
+  ...
   PSParentPath: Microsoft.PowerShell.Security\Certificate::CurrentUser\My
 
 Thumbprint                                Subject
 ----------                                -------
-3B138D84C077C292579BA35E4410634E164075CD  CN=zwin7fh14scd.westus.cloudapp.azure.com
+0AC30A2FA770BEF566226CFCF75A6515D73FC686  CN=mysfcluster.SouthCentralUS.cloudapp.azure.com
 ```
 
-Zapamatujte si kryptografický otisk pro následující krok.
+Mějte na paměti hodnotu kryptografický otisk pro následující krok.
 
 ## <a name="deploy-the-application-to-azure-using-visual-studio"></a>Nasazení aplikace do Azure pomocí sady Visual Studio
 
@@ -115,15 +139,23 @@ Aplikace je teď připravená a přímo ze sady Visual Studio ji můžete nasadi
 
 V Průzkumníku řešení klikněte pravým tlačítkem na **MyFirstContainer** a zvolte **Publikovat**. Zobrazí se dialogové okno Publikovat.
 
-Do pole **Koncový bod připojení** zkopírujte **Koncový bod připojení** ze stránky Party clusteru. Například, `zwin7fh14scd.westus.cloudapp.azure.com:19000`. Klikněte na **Rozšířené parametry připojení** a ověřte informace o parametrech připojení.  Hodnoty *FindValue* and *ServerCertThumbprint* musí odpovídat kryptografickému otisku certifikátu nainstalovanému v předchozím kroku.
+Zkopírujte do něj následující obsah **CN =** v okně Powershellu, když jste spustili `Import-PfxCertificate` příkaz výše a přidejte port `19000` k němu. Například, `mysfcluster.SouthCentralUS.cloudapp.azure.com:19000`. Zkopírujte jej do **koncový bod připojení** pole. Nezapomeňte tuto hodnotu, protože ho budete potřebovat v dalším kroku.
+
+Klikněte na **Rozšířené parametry připojení** a ověřte informace o parametrech připojení.  *FindValue* a *ServerCertThumbprint* hodnoty musí odpovídat kryptografickému otisku certifikátu nainstalovanému při spuštění `Import-PfxCertificate` v předchozím kroku.
 
 ![Dialogové okno Publikovat](./media/service-fabric-quickstart-containers/publish-app.png)
 
 Klikněte na **Publikovat**.
 
-Každá aplikace v clusteru musí mít jedinečný název.  Party clustery jsou však veřejné a sdílené prostředí a může dojít ke konfliktu s již existující aplikací.  Pokud dojde ke konfliktu názvů, přejmenujte projekt sady Visual Studio a opakujte nasazení.
+Každá aplikace v clusteru musí mít jedinečný název. Pokud dojde ke konfliktu názvů, přejmenujte projekt sady Visual Studio a opakujte nasazení.
 
-Otevřete prohlížeč a přejděte na **Koncový bod připojení** uvedený na stránce Party Clusteru. Volitelně můžete před adresu URL přidat identifikátor schématu `http://` a připojit za ní port `:80`. Například, http://zwin7fh14scd.westus.cloudapp.azure.com:80. Měla by se zobrazit výchozí webová stránka služby IIS: ![Výchozí webová stránka služby IIS][iis-default]
+Otevřete prohlížeč a přejděte na adresu, kam si ukládáte do **koncový bod připojení** pole v předchozím kroku. Volitelně můžete před adresu URL přidat identifikátor schématu `http://` a připojit za ní port `:80`. Například, http://mysfcluster.SouthCentralUS.cloudapp.azure.com:80.
+
+ Zobrazí se výchozí webová stránka služby IIS: ![Výchozí webová stránka služby IIS][iis-default]
+
+## <a name="clean-up"></a>Vyčištění
+
+Můžete se dál budou účtovat poplatky za spuštěného clusteru. Vezměte v úvahu [odstranění clusteru](service-fabric-cluster-delete.md).
 
 ## <a name="next-steps"></a>Další postup
 

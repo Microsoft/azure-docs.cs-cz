@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/14/2019
 ms.author: terrylan
-ms.openlocfilehash: 4945978fdc27a298daf4de0604b894c53ba51dbe
-ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
+ms.openlocfilehash: 78746324c240e0a1bfab81ca1e45f231909328c0
+ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2019
-ms.locfileid: "54321400"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55661186"
 ---
 # <a name="application-architecture-on-azure"></a>Aplikační architektura v Azure
 Pomáhají zabezpečit vaše Cloudová řešení v Microsoft Azure, základnu architektury je důležité. Architekty, návrháři a implementátoři výhodou silného znalosti architektury aplikací a služeb. Tyto základní znalosti vám pomůže seznámení s komponentami vaší cloudové řešení a bylo snazší integrovat do všech aspektů návrhu a implementaci zabezpečení.
@@ -42,10 +42,10 @@ Každý plán obsahuje:
 [Zobrazit aplikace Visio a symboly Školení video](https://aka.ms/CnESymbolsVideo) a potom [stáhnout cloudu a sada Enterprise symbolů](https://aka.ms/CnESymbols) vám pomohou zajistit technické materiály, které popisují Azure, Windows Server, SQL Server a další. Symboly v diagramy architektury, školicí materiály, prezentace, datové listy, infografika, dokumenty White Paper a dokonce i třetích stran knihy můžete použít, pokud knihu trénovat lidé používají produkty Microsoftu. Však nejsou určeny pro použití v uživatelských rozhraní.
 
 ## <a name="3d-blueprint-visio-template"></a>Šablona aplikace Visio 3D plán
-3D verze [plány architektury Microsoft](https://aka.ms/azblueprints) byly původně vytvořeny v nástroji od jiných výrobců. Nové aplikace Visio 2013 (nebo novější) šablony představené na 5. srpna 2015 jako součást [kurzu certifikace Microsoft Architecture distribuován EDX.ORG](https://docs.microsoft.com/azure/architecture/#microsoft-architecture-certification-course).
+3D verze [plány architektury Microsoft](https://aka.ms/azblueprints) byly původně vytvořeny v nástroji od jiných výrobců. Nové aplikace Visio 2013 (nebo novější) šablony představené na 5. srpna 2015 jako součást [kurzu certifikace Microsoft Architecture distribuován EDX.ORG](https://docs.microsoft.com/azure/architecture/).
 
 Šablona je také k dispozici mimo kurzu.
 
 * [Zobrazit na Výukové video](https://aka.ms/3dBlueprintTemplateVideo) první, abyste věděli, co můžete dělat
 * Stáhněte si [Microsoft 3d Visio Šablona podrobného plánu](https://aka.ms/3DBlueprintTemplate)
-* Stáhněte si [cloudové a podnikové symboly](https://docs.microsoft.com/azure/architecture/#drawing-symbol-and-icon-sets) pro použití s 3D šablony
+* Stáhněte si [cloudové a podnikové symboly](https://docs.microsoft.com/azure/architecture/) pro použití s 3D šablony

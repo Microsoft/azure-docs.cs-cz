@@ -11,13 +11,13 @@ author: CarlRabeler
 ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
-ms.date: 12/10/2018
-ms.openlocfilehash: 4d2acf64f7798f845c2993b108b7074283c40be6
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.date: 12/21/2018
+ms.openlocfilehash: 0b6e5116a90c66852ac39f67f9f32c94470e5332
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55160011"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55565322"
 ---
 # <a name="quickstart-use-net-core-c-to-query-an-azure-sql-database"></a>Rychlý start: Použití .NET Core (jazyk C#) k dotazování databáze SQL Azure
 

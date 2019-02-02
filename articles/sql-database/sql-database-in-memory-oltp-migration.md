@@ -11,15 +11,16 @@ author: jodebrui
 ms.author: jodebrui
 ms.reviewer: MightyPen
 manager: craigg
-ms.date: 04/01/2018
-ms.openlocfilehash: 4455e0c0f31c9026526820b50214efb83720da0d
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.date: 11/07/2018
+ms.openlocfilehash: fbe05186b317d3c24dca55197c2989155b5543bd
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51228041"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55565917"
 ---
 # <a name="use-in-memory-oltp-to-improve-your-application-performance-in-sql-database"></a>OLTP v paměti použijte, chcete-li zvýšit výkon vašich aplikací ve službě SQL Database
+
 [OLTP v paměti](sql-database-in-memory.md) slouží ke zvýšení výkonu při zpracování transakcí, ingestování a případech přechodných dat v [úrovně Premium a pro důležité obchodní informace](sql-database-service-tiers-vcore.md) databází bez zvýšení cenové úrovně. 
 
 > [!NOTE] 
@@ -29,6 +30,7 @@ ms.locfileid: "51228041"
 Následujícím postupem implementace OLTP v paměti v existující databázi.
 
 ## <a name="step-1-ensure-you-are-using-a-premium-and-business-critical-tier-database"></a>Krok 1: Ujistěte se, že používáte databáze úrovně Premium a pro důležité obchodní informace
+
 OLTP v paměti je podporováno pouze v databázích úrovně Premium a pro důležité obchodní informace. V paměti je podporováno, pokud vrácený výsledek je 1 (není 0):
 
 ```
@@ -105,13 +107,13 @@ INSERT INTO <new_memory_optimized_table>
 ```
 
 
-## <a name="step-5-optional-migrate-stored-procedures"></a>Krok 5 (volitelné): migrace uložených procedur
+## <a name="step-5-optional-migrate-stored-procedures"></a>Krok 5 (volitelné): Migrace uložených procedur
 Funkce v paměti můžete také upravit uložené procedury za účelem vylepšení výkonu.
 
 ### <a name="considerations-with-natively-compiled-stored-procedures"></a>Důležité informace o s nativně kompilovanými uloženými procedurami
 Nativně kompilované uložené procedury musí mít na jeho klauzule T-SQL pomocí následujících možností:
 
-* HODNOTOU NATIVE_COMPILATION
+* NATIVE_COMPILATION
 * SCHEMABINDING: význam tabulky, uložené procedury nesmí obsahovat jejich definice sloupců změnit žádným způsobem, který by došlo k ovlivnění uloženou proceduru, pokud odstraníte uloženou proceduru.
 
 Nativní modul musí používat některý velké objemy [ATOMICKÝCH bloků](https://msdn.microsoft.com/library/dn452281.aspx) pro správu transakce. Neexistuje žádná role pro explicitní BEGIN TRANSACTION, nebo pro vrácení transakce zpět. Pokud váš kód zjistí porušení obchodní pravidlo, můžete ukončit Atomický blok s [THROW](https://msdn.microsoft.com/library/ee677615.aspx) příkazu.
@@ -161,7 +163,7 @@ Chcete-li přizpůsobit a spusťte test zatížení, zvažte použití ostress.e
 
 Kvůli minimalizaci latence sítě, spuštění testu ve stejné zeměpisné oblasti Azure ve kterém databáze existuje.
 
-## <a name="step-7-post-implementation-monitoring"></a>Krok 7: Poimplementační monitorování
+## <a name="step-7-post-implementation-monitoring"></a>Krok 7: Po implementaci monitorování
 Vezměte v úvahu monitorování výkonu účinky vaší implementace v paměti v produkčním prostředí:
 
 * [Monitorování úložiště v paměti](sql-database-in-memory-oltp-monitoring.md).

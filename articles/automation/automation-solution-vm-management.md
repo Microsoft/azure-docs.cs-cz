@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 1/30/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 5cacd2d0e4308e15b562169f72efb0f98ce45289
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 0473bccbd249f70139d815b8353f1ac271df754f
+ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55476392"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55658382"
 ---
 # <a name="startstop-vms-during-off-hours-solution-in-azure-automation"></a>Spuštění/zastavení virtuálních počítačů v době mimo špičku řešení ve službě Azure Automation
 
@@ -136,7 +136,7 @@ V prostředí, které obsahuje dvě nebo více součástí na podporu úlohách 
 
 #### <a name="target-the-start-and-stop-action-by-vm-list"></a>Akce spouštění a zastavování cílit, seznam virtuálních počítačů
 
-1. Přidat **sequencestart** a **sequencestop** značky s hodnotou kladné celé číslo k virtuálním počítačům, které chcete přidat do **seznamů VMList** proměnné. 
+1. Přidat **sequencestart** a **sequencestop** značky s hodnotou kladné celé číslo k virtuálním počítačům, které chcete přidat do **seznamů VMList** parametru.
 1. Spustit **SequencedStartStop_Parent** runbooku pomocí akce parametrem nastaveným na **start**, přidejte čárkou oddělený seznam virtuálních počítačů v *seznamů VMList* parametr a pak nastavte Parametr WHATIF **True**. Náhled změn.
 1. Konfigurace **External_ExcludeVMNames** parametr s čárkou oddělený seznam virtuálních počítačů (VM1, VM2 VM3).
 1. Tento scénář nerespektuje **External_Start_ResourceGroupNames** a **External_Stop_ResourceGroupnames** proměnné. V tomto scénáři je potřeba vytvořit vlastní plán Automation. Podrobnosti najdete v tématu [plánování runbooku ve službě Azure Automation](../automation/automation-schedules.md).
@@ -285,8 +285,8 @@ V následující tabulce jsou uvedeny ukázky hledání v protokolech pro zázna
 
 |Dotaz | Popis|
 |----------|----------|
-|Najít úlohy runbooku ScheduledStartStop_Parent, která mají bylo úspěšně dokončeno | ```search Category == "JobLogs" | kde (RunbookName_s == "ScheduledStartStop_Parent") | kde (hodnotu ResultType == "Dokončeno")  | shrnutí |AggregatedValue = count() by ResultType, bin(TimeGenerated, 1h) | Seřadit podle TimeGenerated desc ".|
-|Najít úlohy runbooku SequencedStartStop_Parent, která mají bylo úspěšně dokončeno | ```search Category == "JobLogs" | kde (RunbookName_s == "SequencedStartStop_Parent") | kde (hodnotu ResultType == "Dokončeno") | shrnutí |AggregatedValue = count() by ResultType, bin(TimeGenerated, 1h) | Seřadit podle TimeGenerated desc ".|
+|Najít úlohy runbooku ScheduledStartStop_Parent, která mají bylo úspěšně dokončeno | ```search Category == "JobLogs" | where ( RunbookName_s == "ScheduledStartStop_Parent" ) | where ( ResultType == "Completed" )  | summarize |AggregatedValue = count() by ResultType, bin(TimeGenerated, 1h) | sort by TimeGenerated desc```|
+|Najít úlohy runbooku SequencedStartStop_Parent, která mají bylo úspěšně dokončeno | ```search Category == "JobLogs" | where ( RunbookName_s == "SequencedStartStop_Parent" ) | where ( ResultType == "Completed" ) | summarize |AggregatedValue = count() by ResultType, bin(TimeGenerated, 1h) | sort by TimeGenerated desc```|
 
 ## <a name="viewing-the-solution"></a>Zobrazení řešení
 
@@ -319,13 +319,29 @@ Následuje ukázkový e-mail, který se odešle, když virtuální počítače v
 
 ![Stránka řešení Update Management Automation](media/automation-solution-vm-management/email.png)
 
+## <a name="add-exclude-vms"></a>Přidat nebo vyloučit virtuální počítače
+
+Řešení poskytuje možnost přidávat virtuální počítače, které se zaměřují řešení nebo výslovně vyloučit počítače z řešení.
+
+### <a name="add-a-vm"></a>Přidání virtuálního počítače
+
+Existuje několik možností, které vám pomůže se ujistěte, že virtuální počítač je součástí operací spustit/zastavit řešení při spuštění.
+
+* Každý z nadřazeného [sady runbook](#runbooks) řešení mají **seznamů VMList** parametru. Čárkami oddělený seznam názvů virtuálních počítačů pro tento parametr můžete předat při plánování příslušná nadřazená sada runbook pro vaši situaci a tyto virtuální počítače budou zahrnuty při spuštění řešení.
+
+* Chcete-li vybrat více virtuálních počítačů, nastavte **External_Start_ResourceGroupNames** a **External_Stop_ResourceGroupNames** s názvy skupin prostředků, které obsahují virtuální počítače, které chcete spustit nebo zastavit. Tuto hodnotu lze také nastavit `*`, aby řešení spouštět všechny skupiny prostředků v předplatném.
+
+### <a name="exclude-a-vm"></a>Vyloučit virtuální počítač
+
+Vyloučit virtuální počítač z řešení, můžete přidat tak, **External_ExcludeVMNames** proměnné. Tato proměnná je čárkou oddělený seznam konkrétních virtuálních počítačů určených k vyloučení z operací spustit/zastavit řešení.
+
 ## <a name="modify-the-startup-and-shutdown-schedules"></a>Úprava plánů spouštění a vypínání
 
-Správa plánů spouštění a vypínání v tomto řešení probíhá podle stejných kroků, jak je uvedeno v [plánování runbooku ve službě Azure Automation](automation-schedules.md).
+Správa plánů spouštění a vypínání v tomto řešení probíhá podle stejných kroků, jak je uvedeno v [plánování runbooku ve službě Azure Automation](automation-schedules.md). Musí být samostatný plán spuštění a zastavení virtuálních počítačů.
 
-Konfigurace tohohle řešení pro právě zastavením virtuálních počítačů v určité době se podporuje. Budete muset:
+Konfigurace tohohle řešení pro právě zastavením virtuálních počítačů v určité době se podporuje. V tomto scénáři vy jenom vytvoříte **Zastavit** plánu a odpovídající **Start** naplánované. Budete muset:
 
-1. Ujistěte se, jste přidali skupiny prostředků pro virtuální počítače vypnout ve **External_Start_ResourceGroupNames** proměnné.
+1. Ujistěte se, jste přidali skupiny prostředků pro virtuální počítače vypnout ve **External_Stop_ResourceGroupNames** proměnné.
 2. Vytvořte vlastní plán dobu, kdy chcete vypnout virtuální počítače.
 3. Přejděte **ScheduledStartStop_Parent** sady runbook a klikněte na tlačítko **plán**. To umožňuje vybrat plán, který jste vytvořili v předchozím kroku.
 4. Vyberte **nastavení parametrů a běhu** a nastavte parametr akce "Stop".

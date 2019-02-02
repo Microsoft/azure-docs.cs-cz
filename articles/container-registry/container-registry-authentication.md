@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 12/21/2018
 ms.author: danlep
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 2c1a03d164462da0bc9143399dbcb1e76302433b
-ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
+ms.openlocfilehash: a6ae388107e527b399dc758abccbefcec955a60d
+ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55507888"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55661628"
 ---
 # <a name="authenticate-with-a-private-docker-container-registry"></a>Ověřování pomocí privátního registru kontejnerů Dockeru
 
@@ -67,7 +67,7 @@ docker login myregistry.azurecr.io
 Po přihlášení Docker ukládá do mezipaměti přihlašovací údaje, takže není potřeba pamatovat si ID aplikace.
 
 > [!TIP]
-> Spuštěním můžete obnovit heslo instančního objektu [az ad sp reset-credentials](/cli/azure/ad/sp?view=azure-cli-latest#az-ad-sp-reset-credentials) příkazu.
+> Spuštěním můžete obnovit heslo instančního objektu [az ad sp reset-credentials](/cli/azure/ad/sp?view=azure-cli-latest) příkazu.
 >
 
 ## <a name="admin-account"></a>Účet správce

@@ -17,12 +17,12 @@ ms.date: 01/25/2019
 ms.author: markvi
 ms.reviewer: nigu
 ms.custom: seohack1
-ms.openlocfilehash: b82458de95014d22625a9c8029e064ed21120488
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 4ee2f0387ee3c56dda7cd1a89f5c808f55699856
+ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55158294"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55658619"
 ---
 # <a name="get-started-with-azure-active-directory-identity-protection-and-microsoft-graph"></a>Začínáme s Azure Active Directory Identity Protection a Microsoft Graph
 
@@ -251,7 +251,7 @@ Blahopřejeme, právě provedli první volání Microsoft graphu.
 Teď můžete zadávat dotazy identity rizikové události a používat data, ale podle potřeby.
 
 
-Další informace o tom, jak vytvářet aplikace využívající rozhraní Graph API a Microsoft Graph, podívejte se [dokumentaci](https://docs.microsoft.com/en-us/graph/overview) a mnohem více na [webu Microsoft Graphu](https://developer.microsoft.com/en-us/graph). 
+Další informace o tom, jak vytvářet aplikace využívající rozhraní Graph API a Microsoft Graph, podívejte se [dokumentaci](https://docs.microsoft.com/graph/overview) a mnohem více na [webu Microsoft Graphu](https://developer.microsoft.com/en-us/graph). 
 
 
 Související informace naleznete v tématu:

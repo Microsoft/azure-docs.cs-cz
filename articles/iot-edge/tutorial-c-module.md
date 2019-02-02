@@ -9,12 +9,12 @@ ms.date: 01/04/2019
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc, seodec18
-ms.openlocfilehash: 659d960881f143655e98c6f1d38696f44def3ae8
-ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
+ms.openlocfilehash: 798cf405c222a443dbbd3a316d20c482daf4429f
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54055094"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55563248"
 ---
 # <a name="tutorial-develop-a-c-iot-edge-module-and-deploy-to-your-simulated-device"></a>Kurz: Vývoj modulu jazyka C IoT Edge a nasazení simulovaného zařízení
 
@@ -36,8 +36,8 @@ Modul IoT Edge, který v tomto kurzu vytvoříte, filtruje teplotní údaje gene
 
 Zařízení Azure IoT Edge:
 
-* Jako hraniční zařízení můžete použít svůj vývojový počítač nebo virtuální počítač podle postupu v rychlém startu pro zařízení s [Linuxem](quickstart-linux.md) nebo [Windows](quickstart.md).
-* Moduly C pro Azure IoT Edge nepodporují kontejnery Windows. Pokud je vaše zařízení IoT Edge počítač s Windows, nakonfigurujte ho tak, aby [používal kontejnery Linuxu](https://docs.docker.com/docker-for-windows/#switch-between-windows-and-linux-containers).
+* Jako hraniční zařízení můžete použít svůj vývojový počítač nebo virtuální počítač podle postupu v rychlém startu pro zařízení s [Linuxem](quickstart-linux.md) nebo [Windows](quickstart.md). 
+* Moduly C pro Azure IoT Edge nepodporují kontejnery Windows. Pokud vaše zařízení IoT Edge je počítač s Windows, ujistěte se, že je nakonfigurován na použití kontejnery Linuxu. Informace o instalaci rozdíly mezi kontejnery Windows a Linux najdete v tématu [nainstalovat modul runtime IoT Edge ve Windows](how-to-install-iot-edge-windows.md).
 
 Cloudové prostředky:
 
@@ -49,9 +49,6 @@ Prostředky pro vývoj:
 * [Rozšíření C/C++](https://marketplace.visualstudio.com/items?itemName=ms-vscode.cpptools) pro Visual Studio Code.
 * [Nástroje Azure IoT](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools) pro Visual Studio Code.
 * [Docker CE](https://docs.docker.com/install/).
-
->[!Note]
->Moduly C pro Azure IoT Edge nepodporují kontejnery Windows.
 
 ## <a name="create-a-container-registry"></a>Vytvoření registru kontejnerů
 
@@ -99,7 +96,7 @@ Vytvořte šablonu řešení v C, kterou můžete přizpůsobit pomocí vlastní
    | Zadejte název řešení | Zadejte popisný název pro vaše řešení nebo přijměte výchozí **EdgeSolution**. |
    | Vyberte šablonu modulu | Zvolte **modulu C**. |
    | Zadejte název modulu | Pojmenujte modul **CModule**. |
-   | Zadejte pro modul úložiště imagí Dockeru | Úložiště imagí zahrnuje název registru kontejneru a název image kontejneru. Image kontejneru je předem vyplněná z předchozího kroku. Nahraďte **localhost:5000** hodnotou přihlašovacího serveru z vašeho registru kontejneru Azure. Přihlašovací server můžete získat na stránce Přehled vašeho registru kontejneru na webu Azure Portal. Konečný řetězec vypadá jako \<název registru\>.azurecr.io/cmodule. |
+   | Zadejte pro modul úložiště imagí Dockeru | Úložiště imagí zahrnuje název registru kontejneru a název image kontejneru. Svou image kontejneru je předem z názvu, který jste zadali v předchozím kroku. Nahraďte **localhost:5000** hodnotou přihlašovacího serveru z vašeho registru kontejneru Azure. Přihlašovací server můžete získat na stránce Přehled vašeho registru kontejneru na webu Azure Portal. <br><br> Finální bitové kopie úložiště bude vypadat jako \<název registru\>.azurecr.io/cmodule. |
  
    ![Zadání úložiště imagí Dockeru](./media/tutorial-c-module/repository.png)
 
@@ -296,7 +293,7 @@ Přidejte do modulu C kód, který mu umožní načítat data ze snímače, kont
 
 12. V průzkumníku VS Code otevřete soubor **deployment.template.json** v pracovním prostoru řešení IoT Edge. Tento soubor říká agentovi, IoT Edge které moduly chcete nasadit, v tomto případě **tempSensor** a **CModule**a informuje Centrum IoT Edge, jak můžete směrovat zprávy mezi nimi. Rozšíření Visual Studio Code automaticky naplní většinu informací, že v šablonu nasazení, ale ověřte, že je vše přesné pro vaše řešení: 
 
-   1. Výchozí platformu IoT Edge je nastavena **amd64** ve vaší VS Code stavového řádku, což znamená, že vaše **CModule** je nastavena na Linuxu amd64 verzi image. Změnit výchozí platforma ve stavovém řádku z **amd64** k **arm32v7** nebo **windows amd64** Pokud tomu tak architektuře zařízení IoT Edge. 
+   1. Výchozí platformu IoT Edge je nastavena **amd64** ve vaší VS Code stavového řádku, což znamená, že vaše **CModule** nastavený na verzi image Linuxu amd64. Změnit výchozí platforma ve stavovém řádku z **amd64** k **arm32v7** Pokud tomu tak architektuře zařízení IoT Edge. 
 
       ![Aktualizace modulu image platformy](./media/tutorial-c-module/image-platform.png)
 
@@ -340,6 +337,12 @@ Když editoru Visual Studio Code sdělíte, že má sestavit vaše řešení, ne
 Pak se v integrovaném terminálu editoru Visual Studio Code spustí dva příkazy: `docker build` a `docker push`. Tyto dva příkazy sestaví kód, provedou kontejnerizaci knihovny `CModule.dll` a odešlou ji do kontejneru registru, který jste zadali při inicializaci řešení.
 
 Úplnou adresu image kontejneru se značkou můžete vidět v integrovaném terminálu VS Code. Adresa image je sestavená z informací v souboru `module.json` a má formát **\<úložiště\>:\<verze\>-\<platforma\>**. V tomto kurzu by měla vypadat takto: **myregistry.azurecr.io/cmodule:0.0.1-amd64**.
+
+>[!TIP]
+>Pokud obdržíte chybu při vytváření a nasdílení změn modul, proveďte následující kontroly:
+>* Přihlásili jste k Dockeru ve Visual Studio Code pomocí přihlašovacích údajů ze služby container registry? Tyto přihlašovací údaje se liší od těch, které používáte k přihlášení k webu Azure portal.
+>* Správnost vašeho kontejneru úložiště? Otevřít **moduly** > **cmodule** > **module.json** a najít **úložiště** pole. Úložiště imagí by měl vypadat jako  **\<registryname\>.azurecr.io/cmodule**. 
+>* Sestavujete stejného typu kontejnerů, které běží v počítači pro vývoj? Visual Studio Code výchozí kontejnery Linuxu amd64. Pokud vývojovém počítači běží arm32v7 kontejnery Linuxu, aktualizujte platformy na modrý stavového řádku v dolní části okna VS Code tak, aby odpovídaly vaši kontejnerovou platformu. Moduly C nemůže být sestaven jako kontejnery Windows. 
 
 ## <a name="deploy-and-run-the-solution"></a>Nasazení a spuštění řešení
 

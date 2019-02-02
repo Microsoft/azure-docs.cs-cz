@@ -11,18 +11,18 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 manager: craigg
-ms.date: 04/01/2018
-ms.openlocfilehash: 14eb92141a9d27d9f8978abb6d5c9a738c821ead
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.date: 12/04/2018
+ms.openlocfilehash: 8de155eb0c53a07c88d996e2545be9da3159653f
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52866300"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55565577"
 ---
 # <a name="using-elastic-database-client-library-with-dapper"></a>Používání klientské knihovny pro elastické databáze s Dapperem
 Tento dokument je pro vývojáře, kteří využívají Dapperem k vytváření aplikací, ale také chtít využívat [nástrojů elastic database](sql-database-elastic-scale-introduction.md) k vytvoření tohoto horizontálního dělení implementují pro horizontální navýšení kapacity datovou vrstvu aplikace.  Tento dokument ukazuje změny v aplikacích Dapperem, které jsou potřebné k integraci s nástroji elastic database. Našim hlavním cílem je sestavování, Správa elastických databází horizontálních oddílů a směrování závislé na datech s Dapperem. 
 
-**Ukázkový kód**: [nástrojů Elastic database pro Azure SQL Database – Dapper integrace](https://code.msdn.microsoft.com/Elastic-Scale-with-Azure-e19fc77f).
+**Ukázkový kód**: [Nástroje pro elastické databáze pro službu Azure SQL Database – Dapper integrace](https://code.msdn.microsoft.com/Elastic-Scale-with-Azure-e19fc77f).
 
 Integrace **Dapperem** a **DapperExtensions** službou elastic database klientské knihovny pro službu Azure SQL Database je snadné. Aplikace může použít směrování závislé na datech změnou vytváření a otevírání nových [SqlConnection](https://msdn.microsoft.com/library/system.data.sqlclient.sqlconnection.aspx) objektů na používání [OpenConnectionForKey](https://msdn.microsoft.com/library/azure/dn807226.aspx) volání z [klientské knihovny ](https://msdn.microsoft.com/library/azure/dn765902.aspx). Toto nastavení omezuje změny ve vaší aplikaci pouze tam, kde jsou vytvořeny a otevřít nové připojení. 
 
@@ -49,9 +49,9 @@ Nemusíte používat tradiční způsob, jak vytvořit připojení pro Dapperem,
 ### <a name="requirements-for-dapper-integration"></a>Požadavky pro integraci Dapper
 Při práci s Klientská knihovna elastic database a Dapper rozhraní API, budete chtít zachovat následující vlastnosti:
 
-* **Horizontální navýšení kapacity**: chcete přidat nebo odebrat databází v horizontálně dělené aplikace podle potřeby pro požadavky kapacity aplikace datové vrstvy. 
-* **Konzistence**: vzhledem k tomu, aplikace bude škálovat pomocí horizontálního dělení, je potřeba provést směrování závislé na datech. Chceme použít k tomu možnosti směrování závislé na datech z knihovny. Zejména chcete zachovat ověření a záruky konzistence poskytuje připojení, která jsou zprostředkované přes správce mapování horizontálních oddílů Pokud se chcete vyhnout poškození nebo nesprávné výsledků. Tím se zajistí, že se připojení k dané shardletu Zamítnutá nebo zastaven, pokud (například) shardletu aktuálně přesunout do jiného horizontálního oddílu pomocí rozhraní API pro dělení a slučování.
-* **Mapování objektu**: Chcete zachovat pohodlí mapování poskytované Dapperem pro převod mezi tříd v aplikaci a základní struktury databáze. 
+* **Horizontální navýšení kapacity**: Chcete přidat nebo odebrat databází v horizontálně dělené aplikace podle potřeby pro požadavky kapacity aplikace datové vrstvy. 
+* **Konzistence**: Vzhledem k tomu, aplikace bude škálovat pomocí horizontálního dělení, je potřeba provést směrování závislé na datech. Chceme použít k tomu možnosti směrování závislé na datech z knihovny. Zejména chcete zachovat ověření a záruky konzistence poskytuje připojení, která jsou zprostředkované přes správce mapování horizontálních oddílů Pokud se chcete vyhnout poškození nebo nesprávné výsledků. Tím se zajistí, že se připojení k dané shardletu Zamítnutá nebo zastaven, pokud (například) shardletu aktuálně přesunout do jiného horizontálního oddílu pomocí rozhraní API pro dělení a slučování.
+* **Objekt mapování**: Chcete zachovat pohodlí mapování poskytované Dapperem pro převod mezi tříd v aplikaci a základní struktury databáze. 
 
 Následující část obsahuje pokyny pro tyto požadavky pro aplikace na základě **Dapperem** a **DapperExtensions**.
 
@@ -137,7 +137,7 @@ A tady je příklad dotazu:
     }
 
 ### <a name="handling-transient-faults"></a>Zpracování přechodných chyb
-Tým Microsoft Patterns a postupy publikované [přechodné Fault Handling Application Block](https://msdn.microsoft.com/library/hh680934.aspx) pomáhá vývojářům aplikací zmírnit běžné stavy přechodných chyb došlo při spuštění v cloudu. Další informace najdete v tématu [Perseverance, tajný klíč všechny vítězství: použití blok aplikací zpracování přechodných selhání](https://msdn.microsoft.com/library/dn440719.aspx).
+Tým Microsoft Patterns a postupy publikované [přechodné Fault Handling Application Block](https://msdn.microsoft.com/library/hh680934.aspx) pomáhá vývojářům aplikací zmírnit běžné stavy přechodných chyb došlo při spuštění v cloudu. Další informace najdete v tématu [Perseverance, tajný klíč všechny vítězství: Blok aplikací zpracování přechodných chyb pomocí](https://msdn.microsoft.com/library/dn440719.aspx).
 
 Vzorový kód spoléhá na knihovny přechodných chyb pro ochranu proti přechodným chybám. 
 

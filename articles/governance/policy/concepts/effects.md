@@ -4,17 +4,17 @@ description: Azure definice zásady mají různé účinky, které určují způ
 services: azure-policy
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 01/24/2019
+ms.date: 02/01/2019
 ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: 68abb5fd95823941bdb5d87d7ebc6675b0760850
-ms.sourcegitcommit: 97d0dfb25ac23d07179b804719a454f25d1f0d46
+ms.openlocfilehash: cf30d5dd8648a2b1da3f4a40399376182bf342c4
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/25/2019
-ms.locfileid: "54912505"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55562296"
 ---
 # <a name="understand-policy-effects"></a>Vysvětlení efektu služby Policy
 
@@ -50,7 +50,7 @@ Připojte se používá k přidání další pole k požadovanému prostředku b
 
 ### <a name="append-evaluation"></a>Přidat hodnocení
 
-Připojit vyhodnotí jako předtím, než požadavek zpracuje přes poskytovatele prostředků během vytváření nebo aktualizaci prostředku. Připojit přidá pole do zdroje při **Pokud** je splněna podmínka pravidla zásad. Je-li přidat efekt by se mělo přepsat hodnotu v původní požadavek s jinou hodnotou, funguje jako efektu zamítnutí a žádost odmítne.
+Připojit vyhodnotí jako předtím, než požadavek zpracuje přes poskytovatele prostředků během vytváření nebo aktualizaci prostředku. Připojit přidá pole do zdroje při **Pokud** je splněna podmínka pravidla zásad. Je-li přidat efekt by se mělo přepsat hodnotu v původní požadavek s jinou hodnotou, funguje jako efektu zamítnutí a žádost odmítne. Chcete-li přidat novou hodnotu pro existující pole, použijte **[\*]** verzi alias.
 
 Při spuštění definice zásady pomocí efekt připojit jako součást cyklu hodnocení neprovede změny na prostředky, které už existují. Místo toho označí jakémukoli prostředku, který splňuje **Pokud** podmínka vyhodnocena jako nedodržující předpisy.
 
@@ -89,7 +89,8 @@ Příklad 2: Dvě **pole/hodnota** páry připojit sady značek.
 }
 ```
 
-Příklad 3: Jeden **pole/hodnota** párovat pomocí [alias](definition-structure.md#aliases) s polem **hodnotu** nastavování pravidel IP pro účet úložiště.
+Příklad 3: Jeden **pole/hodnota** párovat pomocí non -**[\*]**
+[alias](definition-structure.md#aliases) s polem **hodnota** nastavit pravidla IP účet úložiště. Když non -**[\*]** alias je pole, připojí vliv **hodnota** jako celého pole. Pokud pole již existuje, dojde k události odepřít z konflikt.
 
 ```json
 "then": {
@@ -100,6 +101,21 @@ Příklad 3: Jeden **pole/hodnota** párovat pomocí [alias](definition-structur
             "action": "Allow",
             "value": "134.5.0.0/21"
         }]
+    }]
+}
+```
+
+Příklad 4: Jeden **pole/hodnota** párovat pomocí **[\*]** [alias](definition-structure.md#aliases) s polem **hodnotu** nastavování pravidel IP pro účet úložiště. S použitím **[\*]** připojí alias, vliv **hodnota** na potenciálně existující pole. Pokud pole není ještě neexistuje, vytvoří se.
+
+```json
+"then": {
+    "effect": "append",
+    "details": [{
+        "field": "Microsoft.Storage/storageAccounts/networkAcls.ipRules[*]",
+        "value": {
+            "value": "40.40.40.40",
+            "action": "Allow"
+        }
     }]
 }
 ```
@@ -259,7 +275,7 @@ Během cyklu vyhodnocení definice zásad s účinností DeployIfNotExists, kter
   - Tato vlastnost musí obsahovat pole řetězců, které odpovídají ID role řízení přístupu na základě role přístupné předplatné. Další informace najdete v tématu [nápravy - nakonfigurovat definici zásady](../how-to/remediate-resources.md#configure-policy-definition).
 - **DeploymentScope** (volitelné)
   - Povolené hodnoty jsou _předplatné_ a _ResourceGroup_.
-  - Nastaví typ nasazení, která má být provedena. _Předplatné_ označuje [nasazení na úrovni předplatného](../../../azure-resource-manager/deploy-to-subscription.md), _ResourceGroup_ indikuje, že nasazení pro skupinu prostředků.
+  - Nastaví typ nasazení se dá spouštět. _Předplatné_ označuje [nasazení na úrovni předplatného](../../../azure-resource-manager/deploy-to-subscription.md), _ResourceGroup_ indikuje, že nasazení pro skupinu prostředků.
   - A _umístění_ v musí být zadaná vlastnost _nasazení_ při použití úrovně nasazení předplatných.
   - Výchozí hodnota je _ResourceGroup_.
 - **Nasazení** [povinné]

@@ -9,14 +9,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 10/22/2017
+ms.date: 02/01/2019
 ms.author: jingwang
-ms.openlocfilehash: 60dd0bdd529b4ee8fc8377093d49b8a27fb9b3f1
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: ff070adbda2a36261ca24eb0cc993ca22eada1c7
+ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54016644"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55661237"
 ---
 # <a name="store-credential-in-azure-key-vault"></a>Store přihlašovacích údajů ve službě Azure Key Vault
 
@@ -27,9 +27,6 @@ V současné době tuto funkci podporovat všechny typy aktivit s výjimkou vlas
 ## <a name="prerequisites"></a>Požadavky
 
 Tato funkce využívá identita služeb datové továrny. Zjistěte, jak to funguje z [identita služeb datové továrny](data-factory-service-identity.md) a ujistěte se, že svou datovou továrnu mít některý z přidružené.
-
->[!TIP]
->Ve službě Azure Key Vault, při vytvoření tajného klíče **put celou hodnotu vlastnosti tajného kódu, ADF propojená služba vyzve k zadání (například připojovací řetězec/heslo nebo službu instančního objektu klíč/atd.)**. Například v případě služby Azure Storage propojené služby, uveďte `DefaultEndpointsProtocol=http;AccountName=myAccount;AccountKey=myKey;` jako AKV tajný klíč a potom odkaz v poli "connectionString" z ADF; pro propojenou službu Dynamics, umístěte `myPassword` jako tajný kód službou AZURE, pak odkazovat v poli "password" z ADF. Najdete v článku každý konektor/výpočetní na podrobnosti o podporovaných vlastností.
 
 ## <a name="steps"></a>Kroky
 
@@ -47,7 +44,7 @@ Pro Azure Key Vault propojené služby jsou podporovány následující vlastnos
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
 | type | Vlastnost type musí být nastavená na: **AzureKeyVault**. | Ano |
-| BaseUrl | Zadejte adresu URL služby Azure Key Vault. | Ano |
+| baseUrl | Zadejte adresu URL služby Azure Key Vault. | Ano |
 
 **Použití pro vytváření uživatelského rozhraní:**
 

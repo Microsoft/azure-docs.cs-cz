@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/14/2019
 ms.author: TomSh
-ms.openlocfilehash: e6fb14fc901b5ae5ad11d94c1e71453c2852239c
-ms.sourcegitcommit: 70471c4febc7835e643207420e515b6436235d29
+ms.openlocfilehash: 93370b927f825752b8ce2b5e9d4ca94b3a4e0536
+ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2019
-ms.locfileid: "54306246"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55664178"
 ---
 # <a name="azure-logging-and-auditing"></a>Protokolování a auditování Azure
 
@@ -194,7 +194,7 @@ Analýza úložiště protokoluje následující typy ověřený a anonymních p
 
 Síť protokolování a monitorování v Azure je komplexní a zahrnuje dvě rozsáhlé kategorie:
 
-* [Network Watcher](https://docs.microsoft.com/azure/network-watcher/network-watcher-monitoring-overview#network-watcher): Monitorování sítě založené na scénářích je součástí funkce ve službě Network Watcher. Tato služba zahrnuje zachycení paketu, další směrování, IP tok ověřit, zobrazení skupin zabezpečení, protokoly toků NSG. Scénář úrovně monitorování poskytuje komplexní přehled síťové prostředky, na rozdíl od sledování jednotlivých síťových prostředků.
+* [Network Watcher](https://docs.microsoft.com/azure/network-watcher/network-watcher-monitoring-overview): Monitorování sítě založené na scénářích je součástí funkce ve službě Network Watcher. Tato služba zahrnuje zachycení paketu, další směrování, IP tok ověřit, zobrazení skupin zabezpečení, protokoly toků NSG. Scénář úrovně monitorování poskytuje komplexní přehled síťové prostředky, na rozdíl od sledování jednotlivých síťových prostředků.
 
 * [Sledování prostředků](https://docs.microsoft.com/azure/network-watcher/network-watcher-monitoring-overview#network-resource-level-monitoring): Sledování na úrovni prostředků obsahuje čtyři funkce, diagnostické protokoly, metriky, řešení potíží a stav prostředku. Všechny tyto funkce jsou sestaveny na úrovni síťových prostředků.
 
@@ -336,16 +336,16 @@ Existují čtyři způsoby, jak [shromažďovat protokoly a metriky pro služby 
 |Cognitive Services|    Microsoft.CognitiveServices/<br>accounts|       Diagnostika|||
 |Azure Data Lake Analytics| Microsoft.DataLakeAnalytics/<br>accounts|   Diagnostika|||
 |Azure Data Lake Store| Microsoft.DataLakeStore/<br>accounts|   Diagnostika|||
-|Azure – obor názvů centra událostí| Microsoft.EventHub/<br>Obory názvů|  Diagnostika|    Diagnostika||
+|Azure – obor názvů centra událostí| Microsoft.EventHub/<br>namespaces|  Diagnostika|    Diagnostika||
 |Azure IoT Hub| Microsoft.Devices/<br>IotHubs||     Diagnostika||
-|Azure Key Vault|   Microsoft.KeyVault/<br>trezory služby|  Diagnostika  || [Analýza služby Key Vault](https://docs.microsoft.com/azure/log-analytics/log-analytics-azure-key-vault)|
+|Azure Key Vault|   Microsoft.KeyVault/<br>vaults|  Diagnostika  || [Analýza služby Key Vault](https://docs.microsoft.com/azure/log-analytics/log-analytics-azure-key-vault)|
 |Nástroj pro vyrovnávání zatížení Azure|   Microsoft.Network/<br>Load Balancerech|    Diagnostika|||
-|Azure Logic Apps|  Microsoft.Logic/<br>Pracovní postupy|  Diagnostika|    Diagnostika||
+|Azure Logic Apps|  Microsoft.Logic/<br>workflows|  Diagnostika|    Diagnostika||
 ||Microsoft.Logic/<br>integrationAccounts||||
 |Network Security Groups (Skupiny zabezpečení sítě)|   Microsoft.Network/<br>networksecuritygroups|Diagnostika||   [Analýzy skupin zabezpečení sítě Azure](https://docs.microsoft.com/azure/log-analytics/log-analytics-azure-networking-analytics#azure-network-security-group-analytics-solution-in-log-analytics)|
-|Trezory služby Recovery|   Microsoft.RecoveryServices/<br>trezory služby|||[Analýza (Preview) služby Azure Recovery Services](https://github.com/krnese/AzureDeploy/blob/master/OMS/MSOMS/Solutions/recoveryservices/)|
+|Trezory služby Recovery|   Microsoft.RecoveryServices/<br>vaults|||[Analýza (Preview) služby Azure Recovery Services](https://github.com/krnese/AzureDeploy/blob/master/OMS/MSOMS/Solutions/recoveryservices/)|
 |Služby hledání|   Microsoft.Search/<br>searchServices|    Diagnostika|    Diagnostika||
-|Obor názvů služby Service Bus| Microsoft.ServiceBus/<br>Obory názvů|    Diagnostika|Diagnostika|    [Služba Service Bus Analytics (Náhled)](https://github.com/Azure/azure-quickstart-templates/tree/master/oms-servicebus-solution)|
+|Obor názvů služby Service Bus| Microsoft.ServiceBus/<br>namespaces|    Diagnostika|Diagnostika|    [Služba Service Bus Analytics (Náhled)](https://github.com/Azure/azure-quickstart-templates/tree/master/oms-servicebus-solution)|
 |Service Fabric||       Storage||    [Analýza služby Service Fabric (verze Preview)](https://docs.microsoft.com/azure/log-analytics/log-analytics-service-fabric)|
 |SQL (v12)| Microsoft.Sql/<br>servery pro /<br>databáze||       Diagnostika||
 ||Microsoft.Sql/<br>servery pro /<br>elasticPools||||
@@ -355,8 +355,8 @@ Existují čtyři způsoby, jak [shromažďovat protokoly a metriky pro služby 
 |Škálovací sady virtuálních počítačů|    Microsoft.Compute/<br>virtualMachines    ||Diagnostika||
 ||Microsoft.Compute/<br>virtualMachineScaleSets/<br>virtualMachines||||
 |Farmy webových serverů|Microsoft.Web/<br>serverfarms||   Diagnostika
-|Websites|  Microsoft.Web/<br>Weby ||      Diagnostika|    [Další informace](https://github.com/Azure/azure-quickstart-templates/tree/master/101-webappazure-oms-monitoring)|
-||Microsoft.Web/<br>servery /<br>sloty|||||
+|Websites|  Microsoft.Web/<br>sites ||      Diagnostika|    [Další informace](https://github.com/Azure/azure-quickstart-templates/tree/master/101-webappazure-oms-monitoring)|
+||Microsoft.Web/<br>servery /<br>slots|||||
 
 
 ## <a name="log-integration-with-on-premises-siem-systems"></a>Integrace protokolů s místními systémy SIEM

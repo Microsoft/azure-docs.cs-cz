@@ -17,12 +17,12 @@ ms.workload: infrastructure-services
 ms.date: 03/14/2018
 ms.author: jdial
 ms.custom: ''
-ms.openlocfilehash: 80ca9df064239e9c7beb9d45acfabe963c532e4a
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 87fcfd98065bcf1f0fea3a06029853f69d67842d
+ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55150544"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55663804"
 ---
 # <a name="restrict-network-access-to-paas-resources-with-virtual-network-service-endpoints-using-the-azure-cli"></a>Omezení síťového přístupu k prostředkům PaaS s koncovými body služby virtuální sítě pomocí Azure CLI
 
@@ -43,7 +43,7 @@ Pokud se rozhodnete nainstalovat a používat rozhraní příkazového řádku 
 
 ## <a name="create-a-virtual-network"></a>Vytvoření virtuální sítě
 
-Před vytvořením virtuální sítě, je nutné vytvořit skupinu prostředků pro virtuální síť a všechny další prostředky vytvořené v tomto článku. Vytvořte skupinu prostředků pomocí příkazu [az group create](/cli/azure/group#az_group_create). Následující příklad vytvoří skupinu prostředků *myResourceGroup* v umístění *eastus*.
+Před vytvořením virtuální sítě, je nutné vytvořit skupinu prostředků pro virtuální síť a všechny další prostředky vytvořené v tomto článku. Vytvořte skupinu prostředků pomocí příkazu [az group create](/cli/azure/group). Následující příklad vytvoří skupinu prostředků *myResourceGroup* v umístění *eastus*.
 
 ```azurecli-interactive
 az group create \
@@ -322,7 +322,7 @@ Přístup byl odepřen, a zobrazí se `mount error(13): Permission denied` chybu
 
 Ukončete relaci SSH k *myVmPublic* virtuálního počítače.
 
-Z počítače, se pokusí o zobrazení sdílené složky v účtu úložiště s [seznamu sdílenou složku úložiště az](/cli/azure/storage/share?view=azure-cli-latest#az_storage_share_list). Nahraďte `<account-name>` a `<account-key>` s názvem účtu úložiště a klíč z [vytvořit účet úložiště](#create-a-storage-account):
+Z počítače, se pokusí o zobrazení sdílené složky v účtu úložiště s [seznamu sdílenou složku úložiště az](/cli/azure/storage/share?view=azure-cli-latest). Nahraďte `<account-name>` a `<account-key>` s názvem účtu úložiště a klíč z [vytvořit účet úložiště](#create-a-storage-account):
 
 ```azurecli-interactive
 az storage share list \

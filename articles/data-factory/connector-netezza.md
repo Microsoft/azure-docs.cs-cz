@@ -10,16 +10,16 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 12/07/2018
+ms.date: 02/01/2019
 ms.author: jingwang
-ms.openlocfilehash: 676eac6853c8cead40cb702855090eac5e2ce7d8
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 9bf90c9d3ce593ba5bf6339cd9cec31bb49f14f1
+ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54025643"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55658517"
 ---
-# <a name="copy-data-from-netezza-by-using-azure-data-factory"></a>Kopírování dat z Netezza pomocí služby Azure Data Factory 
+# <a name="copy-data-from-netezza-by-using-azure-data-factory"></a>Kopírování dat z Netezza pomocí služby Azure Data Factory
 
 Tento článek popisuje, jak pomocí aktivity kopírování ve službě Azure Data Factory ke zkopírování dat z Netezza. Tento článek vychází [aktivita kopírování ve službě Azure Data Factory](copy-activity-overview.md), který nabízí obecný přehled o aktivitě kopírování.
 
@@ -42,14 +42,14 @@ Netezza propojené služby jsou podporovány následující vlastnosti:
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
 | type | **Typ** musí být vlastnost nastavena na **Netezza**. | Ano |
-| připojovací řetězec | ODBC připojovací řetězec služby pro připojení k Netezza. Označte toto pole jako **SecureString** typ bezpečně uložit ve službě Data Factory. Můžete také [odkazovat tajného klíče do služby Azure Key Vault](store-credentials-in-key-vault.md). | Ano |
+| připojovací řetězec | ODBC připojovací řetězec služby pro připojení k Netezza. <br/>Označte toto pole jako SecureString bezpečně uložit ve službě Data Factory. Heslo můžete také vložit do služby Azure Key Vault a o přijetí změn `pwd` konfigurace z připojovacího řetězce. Podívejte se na následující ukázky a [Store přihlašovacích údajů ve službě Azure Key Vault](store-credentials-in-key-vault.md) článku s dalšími podrobnostmi. | Ano |
 | connectVia | [Prostředí Integration Runtime](concepts-integration-runtime.md) používat pro připojení k úložišti. Můžete vybrat v místním prostředí Integration Runtime nebo prostředí Azure Integration Runtime (Pokud vaše úložiště dat je veřejně dostupná). Pokud není zadán, použije se výchozí prostředí Azure Integration Runtime. |Ne |
 
 Připojovací řetězec je `Server=<server>;Port=<port>;Database=<database>;UID=<user name>;PWD=<password>`. Následující tabulka popisuje další vlastnosti, které můžete nastavit:
 
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
-| SecurityLevel | Úroveň zabezpečení (SSL/TLS), který používá ovladač pro připojení k úložišti. Příklad: `SecurityLevel=preferredSecured`. Podporované hodnoty jsou:<br/>- **Pouze nezabezpečené** (**onlyUnSecured**): Ovladač nebude používat protokol SSL.<br/>- **Upřednostňovaný nezabezpečené (preferredUnSecured) (výchozí)**: Pokud server poskytuje možnost volby, ovladač nebude používat protokol SSL. <br/>- **Upřednostňovaný zabezpečené (preferredSecured)**: Pokud server poskytuje možnost volby, ovladač používá protokol SSL. <br/>- **Pouze zabezpečené (onlySecured)**: Ovladač nelze připojit, dokud je k dispozici připojení SSL. | Ne |
+| SecurityLevel | Úroveň zabezpečení (SSL/TLS), který používá ovladač pro připojení k úložišti. Příklad: `SecurityLevel=preferredSecured`. Podporované hodnoty jsou:<br/>- **Only unsecured** (**onlyUnSecured**): Ovladač nebude používat protokol SSL.<br/>- **Upřednostňovaný nezabezpečené (preferredUnSecured) (výchozí)**: Pokud server poskytuje možnost volby, ovladač nebude používat protokol SSL. <br/>- **Upřednostňovaný zabezpečené (preferredSecured)**: Pokud server poskytuje možnost volby, ovladač používá protokol SSL. <br/>- **Pouze zabezpečené (onlySecured)**: Ovladač nelze připojit, dokud je k dispozici připojení SSL. | Ne |
 | Soubor_certifikátu_cú | Úplná cesta k certifikátu SSL, který se používá serverem. Příklad: `CaCertFile=<cert path>;`| Ano, pokud je povolen protokol SSL |
 
 **Příklad**
@@ -61,8 +61,37 @@ Připojovací řetězec je `Server=<server>;Port=<port>;Database=<database>;UID=
         "type": "Netezza",
         "typeProperties": {
             "connectionString": {
+                "type": "SecureString",
+                "value": "Server=<server>;Port=<port>;Database=<database>;UID=<user name>;PWD=<password>"
+            }
+        },
+        "connectVia": {
+            "referenceName": "<name of Integration Runtime>",
+            "type": "IntegrationRuntimeReference"
+        }
+    }
+}
+```
+
+**Příklad: ukládání hesel ve službě Azure Key Vault**
+
+```json
+{
+    "name": "NetezzaLinkedService",
+    "properties": {
+        "type": "Netezza",
+        "typeProperties": {
+            "connectionString": {
                  "type": "SecureString",
-                 "value": "Server=<server>;Port=<port>;Database=<database>;UID=<user name>;PWD=<password>"
+                 "value": "Server=<server>;Port=<port>;Database=<database>;UID=<user name>;"
+            },
+            "pwd": { 
+                "type": "AzureKeyVaultSecret", 
+                "store": { 
+                    "referenceName": "<Azure Key Vault linked service name>", 
+                    "type": "LinkedServiceReference" 
+                }, 
+                "secretName": "<secretName>" 
             }
         },
         "connectVia": {
@@ -77,7 +106,7 @@ Připojovací řetězec je `Server=<server>;Port=<port>;Database=<database>;UID=
 
 Tato část obsahuje seznam vlastností, které podporuje Netezza datové sady.
 
-Úplný seznam oddílů a vlastnosti, které jsou k dispozici pro definování datové sady, naleznete v tématu [datových sad](concepts-datasets-linked-services.md). 
+Úplný seznam oddílů a vlastnosti, které jsou k dispozici pro definování datové sady, naleznete v tématu [datových sad](concepts-datasets-linked-services.md).
 
 Chcete-li kopírovat data z Netezza, nastavte **typ** vlastnosti datové sady na **NetezzaTable**. Podporovány jsou následující vlastnosti:
 
@@ -106,7 +135,7 @@ Chcete-li kopírovat data z Netezza, nastavte **typ** vlastnosti datové sady na
 
 Tato část obsahuje seznam vlastností, které podporuje Netezza zdroje.
 
-Úplný seznam oddílů a vlastnosti, které jsou k dispozici pro definování aktivit najdete v tématu [kanály](concepts-pipelines-activities.md). 
+Úplný seznam oddílů a vlastnosti, které jsou k dispozici pro definování aktivit najdete v tématu [kanály](concepts-pipelines-activities.md).
 
 ### <a name="netezza-as-source"></a>Netezza jako zdroj
 

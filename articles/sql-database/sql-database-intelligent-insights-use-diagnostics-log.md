@@ -11,13 +11,13 @@ author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, carlrab
 manager: craigg
-ms.date: 04/04/2018
-ms.openlocfilehash: 1464b2685e0ae084de3679e8a8fea36a3cf19c4b
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.date: 12/19/2018
+ms.openlocfilehash: a2b4f85ac9c62c93e06f73090b6b144ff79319d1
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53599140"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55561871"
 ---
 # <a name="use-the-intelligent-insights-azure-sql-database-performance-diagnostics-log"></a>Použití protokolu diagnostiky výkonu Intelligent Insights Azure SQL Database
 
@@ -83,7 +83,7 @@ Soubor protokolu v závislosti na výkonu zjištěném problému, podrobnosti v�
 | Přetížení paměti | <li>Paměť fulltextu</li> |
 | Uzamykání | <li>Vliv na hodnoty hash dotazu</li><li>Blokování hodnoty hash dotazu</li> |
 | Zvýšená MAXDOP | <li>Hodnoty hash dotazu</li><li>CXP čekací dobu</li><li>Čekání</li> |
-| Pagelatch kolizí | <li>Dotazování hodnoty hash způsobí kolizi dotazů</li> |
+| Pagelatch Contention | <li>Dotazování hodnoty hash způsobí kolizi dotazů</li> |
 | Chybějící Index | <li>Hodnoty hash dotazu</li> |
 | Nový dotaz | <li>Hodnota hash dotazu nových dotazů</li> |
 | Statistiky neobvyklé čekání | <li>Typy neobvyklé čekání</li><li>Hodnoty hash dotazu</li><li>Dobu čekání dotazu</li> |

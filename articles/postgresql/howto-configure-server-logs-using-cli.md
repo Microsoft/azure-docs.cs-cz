@@ -7,12 +7,12 @@ ms.service: postgresql
 ms.devlang: azurecli
 ms.topic: conceptual
 ms.date: 02/28/2018
-ms.openlocfilehash: 938aadaa1d17135808cbeb34adac5139bd61f833
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: 2ebba9a66e55cf82f42773276e36a952264eeee2
+ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53545018"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55656307"
 ---
 # <a name="configure-and-access-server-logs-by-using-azure-cli"></a>Konfigurace a získat přístup k protokolům serveru pomocí příkazového řádku Azure
 Můžete stáhnout protokoly chyb serveru PostgreSQL pomocí rozhraní příkazového řádku (Azure CLI). Přístup k protokolům transakce však není podporován. 
@@ -38,7 +38,7 @@ Můžete zobrazit seznam souborů protokolu pro server **mydemoserver.postgres.d
 az postgres server-logs list --resource-group myresourcegroup --server mydemoserver > log_files_list.txt
 ```
 ## <a name="download-logs-locally-from-the-server"></a>Místní stažení protokolů ze serveru
-S [az postgres server-logs Stáhnout](/cli/azure/postgres/server-logs#az_postgres_server_logs_download) příkazu si můžete stáhnout jednotlivých protokolových souborů pro váš server. 
+S [az postgres server-logs Stáhnout](/cli/azure/postgres/server-logs) příkazu si můžete stáhnout jednotlivých protokolových souborů pro váš server. 
 
 Použijte následující příklad ke stažení souboru protokolu specifické pro server **mydemoserver.postgres.database.azure.com** ve skupině prostředků **myresourcegroup** do vašeho místního prostředí.
 ```azurecli-interactive

@@ -10,12 +10,12 @@ ms.author: mimart
 author: msmimart
 manager: daveba
 ms.reviewer: sasubram
-ms.openlocfilehash: 764b5defd2fb647fd52e1e93441b68ffe492d0c9
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 1a525bdf422c61526e092c84ac9916dad6b68dd1
+ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55181261"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55656375"
 ---
 # <a name="troubleshooting-azure-active-directory-b2b-collaboration"></a>Řešení potíží s spolupráce Azure Active Directory s B2B
 
@@ -79,7 +79,7 @@ Pokud tento scénář je pro vás důležité, můžete potlačit e-mailová poz
 
 ## <a name="a-guest-user-with-a-just-in-time-or-viral-tenant-is-unable-to-reset-their-password"></a>Uživatel typu Host s tenantem just-in-time nebo "virální" není schopen resetování hesla
 
-Pokud je identity tenant just-in-time (JIT) nebo virálního tenanta (to znamená, že je samostatný, nespravovaného tenanta pro Azure), pouze uživatele typu Host své heslo můžou resetovat. Někdy se organizace [převzít správu virálního tenantů](https://docs.microsoft.com/en-us/azure/active-directory/users-groups-roles/domains-admin-takeover) , které vytvářejí, když zaměstnanci používají jejich pracovní e-mailové adresy k registraci pro služby. Po organizace převezme virálního tenanta, můžete pouze správce v této organizaci resetovat heslo uživatele nebo povolit samoobslužné resetování HESLA. V případě potřeby jako zvoucí organizaci, můžete odebrat uživatelský účet guest z adresáře a znovu odeslat pozvánku.
+Pokud je identity tenant just-in-time (JIT) nebo virálního tenanta (to znamená, že je samostatný, nespravovaného tenanta pro Azure), pouze uživatele typu Host své heslo můžou resetovat. Někdy se organizace [převzít správu virálního tenantů](https://docs.microsoft.com/azure/active-directory/users-groups-roles/domains-admin-takeover) , které vytvářejí, když zaměstnanci používají jejich pracovní e-mailové adresy k registraci pro služby. Po organizace převezme virálního tenanta, můžete pouze správce v této organizaci resetovat heslo uživatele nebo povolit samoobslužné resetování HESLA. V případě potřeby jako zvoucí organizaci, můžete odebrat uživatelský účet guest z adresáře a znovu odeslat pozvánku.
 
 ## <a name="next-steps"></a>Další postup
 

@@ -9,14 +9,14 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: peterpr
-ms.openlocfilehash: 7bdfa1659a0c34b3456ed3e52c72cafafc8be034
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: d7269f61579ce1ffd9a686634effd153837a2f25
+ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52993632"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55662977"
 ---
-# <a name="tutorial-configure-rules-and-actions-for-your-device-in-azure-iot-central"></a>Kurz: Konfigurace pravidel a akcí pro vaše zařízení v Azure IoT Central
+# <a name="tutorial-configure-rules-and-actions-for-your-device-in-azure-iot-central"></a>Kurz: Konfigurace pravidla a akce pro vaše zařízení v Azure IoT Central
 
 *Tento článek je pro operátory, tvůrce a správce.*
 
@@ -27,6 +27,8 @@ V tomto kurzu se naučíte:
 > [!div class="checklist"]
 > * Vytvoření pravidla založeného na telemetrii
 > * Přidání akce
+
+[!INCLUDE [iot-central-experimental-note](../../includes/iot-central-experimental-note.md)]
 
 ## <a name="prerequisites"></a>Požadavky
 

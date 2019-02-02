@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/23/2019
 ms.author: aschhab
-ms.openlocfilehash: cf06be778fb1bd251b55adcc503db63a2adf3f8b
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: c99f4491af8fe3e5f0f0ed7a264995ae3ec5911f
+ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55197921"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55658262"
 ---
 # <a name="amqp-10-in-azure-service-bus-and-event-hubs-protocol-guide"></a>V Azure Service Bus a Event Hubs Průvodce protokolem AMQP 1.0
 
@@ -134,7 +134,7 @@ Service Bus v roli odesílatel odešle zprávy využít žádný kredit zbývaj�
 
 Zámek zprávy je uvolněn při přenosu je vyrovnány do jednoho z terminálu stavů *přijato*, *odmítl*, nebo *vydané*. Zpráva odebere ze služby Service Bus je konečný stav *přijato*. Zůstane ve službě Service Bus a se doručí do další příjemce, když přenos dosáhne některý z jiných stavů. Služby Service Bus automaticky přesune zprávu do fronty nedoručených zpráv entity, když dosáhne doručování maximální počet povolený pro entity z důvodu zamítnutí opakovaných nebo vydané verze.
 
-I v případě, že rozhraní API služby Service Bus nezveřejňujte přímo takovou možnost ještě dnes, klienta protokolu AMQP nižší úrovně můžete použít model link platební Chcete-li "o přijetí změn – vizuální styl" interakce vystavujících kreditu pro každý požadavek na přijetí jednu jednotku do modelu "push stylu" ve vydávání velký počet propojení kredity a potom přijímat zprávy, jakmile budou k dispozici bez dalšího zásahu. Má podporu nabízených oznámení [MessagingFactory.PrefetchCount](/dotnet/api/microsoft.servicebus.messaging.messagingfactory) nebo [MessageReceiver.PrefetchCount](/dotnet/api/microsoft.servicebus.messaging.messagereceiver#Microsoft_ServiceBus_Messaging_MessageReceiver_PrefetchCount) nastavení vlastností. Když jsou nenulové, AMQP klienta se používá jako link platební.
+I v případě, že rozhraní API služby Service Bus nezveřejňujte přímo takovou možnost ještě dnes, klienta protokolu AMQP nižší úrovně můžete použít model link platební Chcete-li "o přijetí změn – vizuální styl" interakce vystavujících kreditu pro každý požadavek na přijetí jednu jednotku do modelu "push stylu" ve vydávání velký počet propojení kredity a potom přijímat zprávy, jakmile budou k dispozici bez dalšího zásahu. Má podporu nabízených oznámení [MessagingFactory.PrefetchCount](/dotnet/api/microsoft.servicebus.messaging.messagingfactory) nebo [MessageReceiver.PrefetchCount](/dotnet/api/microsoft.servicebus.messaging.messagereceiver) nastavení vlastností. Když jsou nenulové, AMQP klienta se používá jako link platební.
 
 V tomto kontextu je důležité pochopit, že začne účtovat poplatky za vypršení platnosti uzamčení zprávy v entitě při zprávy z entity, zprávy není zadaný na lince. Pokaždé, když se klient naznačuje připravenosti pro příjem zpráv pomocí link platební, očekává se proto chcete být aktivně načítat zprávy přes síť a připravená na jejich zpracování. Jinak zpráva může mít vypršela platnost zámku předtím, než zpráva se doručí i. Řízení toku link platební by měly odrážet přímo okamžité připravenosti řešit dostupné zprávy odeslána příjemci.
 
@@ -214,7 +214,7 @@ Jakákoli vlastnost, která aplikace potřebuje definuje musí být mapováno na
 | --- | --- | --- |
 | trvalý |- |- |
 | priorita |- |- |
-| ttl |Hodnota Time to live pro tuto zprávu |[TimeToLive](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage#Microsoft_ServiceBus_Messaging_BrokeredMessage_TimeToLive) |
+| ttl |Hodnota Time to live pro tuto zprávu |[TimeToLive](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) |
 | první nabyvatel |- |- |
 | Počet doručení |- |[DeliveryCount](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) |
 
@@ -222,17 +222,17 @@ Jakákoli vlastnost, která aplikace potřebuje definuje musí být mapováno na
 
 | Název pole | Využití | Název rozhraní API |
 | --- | --- | --- |
-| id zprávy |Definované aplikací, volného tvaru identifikátor pro tuto zprávu. Používá se pro zjišťování duplicit. |[ID zprávy](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage#Microsoft_ServiceBus_Messaging_BrokeredMessage_MessageId) |
+| id zprávy |Definované aplikací, volného tvaru identifikátor pro tuto zprávu. Používá se pro zjišťování duplicit. |[ID zprávy](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) |
 | id uživatele |Identifikátor uživatele definované aplikací, není Interpretovaná ve službě Service Bus. |Není přístupný prostřednictvím rozhraní API služby Service Bus. |
-| na |Identifikátor cíle definované aplikací, není Interpretovaná ve službě Service Bus. |[Komu](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage#Microsoft_ServiceBus_Messaging_BrokeredMessage_To) |
-| předmět |Identifikátor účelu zpráv definované aplikací není Interpretovaná ve službě Service Bus. |[Popisek](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage#Microsoft_ServiceBus_Messaging_BrokeredMessage_Label) |
-| odpovědi |Indikátor definovaného aplikací odpověď path není Interpretovaná ve službě Service Bus. |[replyTo](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage#Microsoft_ServiceBus_Messaging_BrokeredMessage_ReplyTo) |
+| na |Identifikátor cíle definované aplikací, není Interpretovaná ve službě Service Bus. |[Komu](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) |
+| předmět |Identifikátor účelu zpráv definované aplikací není Interpretovaná ve službě Service Bus. |[Popisek](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) |
+| odpovědi |Indikátor definovaného aplikací odpověď path není Interpretovaná ve službě Service Bus. |[replyTo](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) |
 | id korelace |Identifikátor korelace definované aplikací, není Interpretovaná ve službě Service Bus. |[CorrelationId](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) |
 | content-type |Definované aplikací ukazatel typu obsahu pro obsah, není Interpretovaná ve službě Service Bus. |[ContentType](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) |
 | content-encoding |Definované aplikací kódování obsahu indikátor pro text není Interpretovaná ve službě Service Bus. |Není přístupný prostřednictvím rozhraní API služby Service Bus. |
-| absolutní čas vypršení platnosti |Deklaruje, na které absolutní okamžité zprávy vyprší platnost. Pro zadání (hlavička se vyskytuje hodnota TTL), ignoruje autoritativní na výstupu. |[ExpiresAtUtc](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage#Microsoft_ServiceBus_Messaging_BrokeredMessage_ExpiresAtUtc) |
+| absolutní čas vypršení platnosti |Deklaruje, na které absolutní okamžité zprávy vyprší platnost. Pro zadání (hlavička se vyskytuje hodnota TTL), ignoruje autoritativní na výstupu. |[ExpiresAtUtc](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) |
 | čas vytvoření |Deklaruje kdy byla zpráva vytvořena. Nepoužívá se ve službě Service Bus |Není přístupný prostřednictvím rozhraní API služby Service Bus. |
-| id skupiny |Identifikátor definovaného aplikací pro související sadu zpráv. Používá se pro relace služby Service Bus. |[ID relace](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage#Microsoft_ServiceBus_Messaging_BrokeredMessage_SessionId) |
+| id skupiny |Identifikátor definovaného aplikací pro související sadu zpráv. Používá se pro relace služby Service Bus. |[ID relace](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) |
 | skupiny pořadí |Čítač určení relativní pořadové číslo zprávy v relaci. Ignoruje se ve službě Service Bus. |Není přístupný prostřednictvím rozhraní API služby Service Bus. |
 | reply-to-group-id |- |[ReplyToSessionId](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) |
 

@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 01/07/2019
-ms.openlocfilehash: 0cf301b98e5fa530b234dbd5953746241c0021ee
-ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
+ms.openlocfilehash: 15f280b16e362a4b39cb9fc0e4baaf67d0e31942
+ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/12/2019
-ms.locfileid: "54244235"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55661696"
 ---
 # <a name="use-the-azure-portal-to-set-up-alerts-on-metrics-for-azure-database-for-mariadb"></a>Nastavení upozornění na metriky pro službu Azure Database pro MariaDB pomocí webu Azure portal
 
@@ -27,7 +27,7 @@ Můžete nakonfigurovat výstrahu při aktivaci provést následující akce:
 Můžete nakonfigurovat a získat informace o použití pravidel upozornění:
 * [Azure Portal](../azure-monitor/platform/alerts-metric.md#create-with-azure-portal)
 * [Azure CLI](../azure-monitor/platform/alerts-metric.md#with-azure-cli)
-* [Rozhraní REST API služby Azure Monitor](https://docs.microsoft.com/en-us/rest/api/monitor/metricalerts)
+* [Rozhraní REST API služby Azure Monitor](https://docs.microsoft.com/rest/api/monitor/metricalerts)
 
 ## <a name="create-an-alert-rule-on-a-metric"></a>Vytvoření pravidla upozornění na metriku
 1. V [webu Azure portal](https://portal.azure.com/), vyberte serveru Azure Database for MariaDB chcete monitorovat.
@@ -46,13 +46,13 @@ Můžete nakonfigurovat a získat informace o použití pravidel upozornění:
 
 6. Vyberte ze seznamu signálů, které se mají generovat výstrahy na metriku. V tomto příkladu vyberte "Procenta úložiště".
    
-   ![Vyberte metriku](./media/howto-alert-metric/6-configure-signal-logic.png)
+   ![Vybrat metriku](./media/howto-alert-metric/6-configure-signal-logic.png)
 
 7. Konfigurace, včetně logika upozornění **podmínku** (např.) "Větší než"), **prahová hodnota** (např.) 85 procent), **Časová agregace**, **období** času musí být splněny pravidlo metriky před výstrah aktivačních událostí (např.) "Za posledních 30 minut") a **frekvence**.
    
    Vyberte **provádí** po dokončení.
 
-   ![Vyberte metriku](./media/howto-alert-metric/7-set-threshold-time.png)
+   ![Vybrat metriku](./media/howto-alert-metric/7-set-threshold-time.png)
 
 8. V rámci **skupiny akcí** vyberte **vytvořit nový** k vytvoření nové skupiny pro příjem oznámení o výstraze.
 

@@ -10,12 +10,12 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 7/14/2018
 ms.author: victorh
-ms.openlocfilehash: bcb2291059a6d6da2065f6f0987d173fd6509a31
-ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
+ms.openlocfilehash: 5a7edf22be769b9f00d83d6b620691e2329925a5
+ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54852367"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55659809"
 ---
 # <a name="create-an-application-gateway-with-http-to-https-redirection-using-the-azure-cli"></a>Vytvoření služby application gateway s protokolem HTTP na HTTPS přesměrování pomocí rozhraní příkazového řádku Azure
 
@@ -64,7 +64,7 @@ az group create --name myResourceGroupAG --location eastus
 
 ## <a name="create-network-resources"></a>Vytvoření síťových prostředků
 
-Pomocí příkazu [az network vnet create](/cli/azure/network/vnet#az-net) vytvořte virtuální síť s názvem *myVNet* a podsíť s názvem *myAGSubnet*. Potom můžete přidat podsíť s názvem *myBackendSubnet*, kterou potřebují back-endové servery. Použijte k tomu příkaz [az network vnet subnet create](/cli/azure/network/vnet/subnet). Pomocí příkazu [az network public-ip create](/cli/azure/network/public-ip#az-network_public_ip_create) vytvořte veřejnou IP adresu s názvem *myAGPublicIPAddress*.
+Pomocí příkazu [az network vnet create](/cli/azure/network/vnet) vytvořte virtuální síť s názvem *myVNet* a podsíť s názvem *myAGSubnet*. Potom můžete přidat podsíť s názvem *myBackendSubnet*, kterou potřebují back-endové servery. Použijte k tomu příkaz [az network vnet subnet create](/cli/azure/network/vnet/subnet). Pomocí příkazu [az network public-ip create](/cli/azure/network/public-ip) vytvořte veřejnou IP adresu s názvem *myAGPublicIPAddress*.
 
 ```azurecli-interactive
 az network vnet create \
@@ -86,7 +86,7 @@ az network public-ip create \
 
 ## <a name="create-the-application-gateway"></a>Vytvoření služby Application Gateway
 
-K vytvoření aplikační brány s názvem *myAppGateway* použijte příkaz [az network application-gateway create](/cli/azure/network/application-gateway#az-network_application_gateway_create). Při vytváření aplikační brány pomocí Azure CLI zadáte konfigurační údaje, jako je kapacita, skladová položka nebo nastavení HTTP. 
+K vytvoření aplikační brány s názvem *myAppGateway* použijte příkaz [az network application-gateway create](/cli/azure/network/application-gatewaywork_application_gateway_create). Při vytváření aplikační brány pomocí Azure CLI zadáte konfigurační údaje, jako je kapacita, skladová položka nebo nastavení HTTP. 
 
 Aplikační brána je přiřazena k již vytvořené podsíti *myAGSubnet* a adrese *myAGPublicIPAddress*. Při vytváření aplikační brány v tomto příkladu přidružíte certifikát, který jste vytvořili, a heslo. 
 
@@ -121,7 +121,7 @@ az network application-gateway create \
 
 ### <a name="add-the-http-port"></a>Přidejte HTTP port
 
-Můžete použít [az network application-gateway front-endu port vytvořit](/cli/azure/network/application-gateway/frontend-port#az-network_application_gateway_frontend_port_create) přidat HTTP port ke službě application gateway.
+Můžete použít [az network application-gateway front-endu port vytvořit](/cli/azure/network/application-gateway/frontend-portwork_application_gateway_frontend_port_create) přidat HTTP port ke službě application gateway.
 
 ```azurecli-interactive
 az network application-gateway frontend-port create \
@@ -133,7 +133,7 @@ az network application-gateway frontend-port create \
 
 ### <a name="add-the-http-listener"></a>Přidat naslouchací proces protokolu HTTP
 
-Můžete použít [az network application-gateway-naslouchací proces protokolu http vytvořit](/cli/azure/network/application-gateway/http-listener#az-network_application_gateway_http_listener_create) přidat naslouchací proces s názvem *myListener* ke službě application gateway.
+Můžete použít [az network application-gateway-naslouchací proces protokolu http vytvořit](/cli/azure/network/application-gateway/http-listenerwork_application_gateway_http_listener_create) přidat naslouchací proces s názvem *myListener* ke službě application gateway.
 
 ```azurecli-interactive
 az network application-gateway http-listener create \
@@ -146,7 +146,7 @@ az network application-gateway http-listener create \
 
 ### <a name="add-the-redirection-configuration"></a>Přidat konfiguraci přesměrování
 
-Přidejte do konfigurace přesměrování protokolu HTTPS pro aplikační bránu pomocí HTTP [az network application-gateway přesměrování config vytvořit](/cli/azure/network/application-gateway/redirect-config#az-network_application_gateway_redirect_config_create).
+Přidejte do konfigurace přesměrování protokolu HTTPS pro aplikační bránu pomocí HTTP [az network application-gateway přesměrování config vytvořit](/cli/azure/network/application-gateway/redirect-configwork_application_gateway_redirect_config_create).
 
 ```azurecli-interactive
 az network application-gateway redirect-config create \
@@ -161,7 +161,7 @@ az network application-gateway redirect-config create \
 
 ### <a name="add-the-routing-rule"></a>Přidat pravidlo směrování
 
-Přidat pravidlo směrování s názvem *rule2* s konfigurací přesměrování na aplikační bránu pomocí [az network application-gateway pravidlo vytvořte](/cli/azure/network/application-gateway/rule#az-network_application_gateway_rule_create).
+Přidat pravidlo směrování s názvem *rule2* s konfigurací přesměrování na aplikační bránu pomocí [az network application-gateway pravidlo vytvořte](/cli/azure/network/application-gateway/rulework_application_gateway_rule_create).
 
 ```azurecli-interactive
 az network application-gateway rule create \

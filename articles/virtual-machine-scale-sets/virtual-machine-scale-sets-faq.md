@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 01/30/2019
 ms.author: manayar
 ms.custom: na
-ms.openlocfilehash: cd8bb2bf83d71fb874b3912e98bf3790acc9d915
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.openlocfilehash: 85b05e50dd989ef8db737df0a43f29b20aefb596
+ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55493656"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55657752"
 ---
 # <a name="azure-virtual-machine-scale-sets-faqs"></a>Azure virtual machine scale sets s nejčastější dotazy
 
@@ -176,7 +176,7 @@ az sf cluster create -h
 
 Přečtěte si prosím dokumentaci keyvaults pro nejnovější operace certifikátu API podporované v Azure.
 
-Nelze použít pro distribuované vztah důvěryhodnosti certifikační autorita k dispozici certifikáty podepsané svým držitelem a nemělo používat pro všechny určené pro produkční řešení enterprise pro hostitele; clusteru Service Fabric Další informace o zabezpečení služby Service Fabric najdete v tématu [osvědčené postupy Azure Service Fabric zabezpečení](https://docs.microsoft.com/en-us/azure/security/azure-service-fabric-security-best-practices) a [scénáře zabezpečení clusteru Service Fabric](https://azure.microsoft.com/documentation/articles/service-fabric-cluster-security/).
+Nelze použít pro distribuované vztah důvěryhodnosti certifikační autorita k dispozici certifikáty podepsané svým držitelem a nemělo používat pro všechny určené pro produkční řešení enterprise pro hostitele; clusteru Service Fabric Další informace o zabezpečení služby Service Fabric najdete v tématu [osvědčené postupy Azure Service Fabric zabezpečení](https://docs.microsoft.com/azure/security/azure-service-fabric-security-best-practices) a [scénáře zabezpečení clusteru Service Fabric](https://azure.microsoft.com/documentation/articles/service-fabric-cluster-security/).
 
 ### <a name="can-i-specify-an-ssh-key-pair-to-use-for-ssh-authentication-with-a-linux-virtual-machine-scale-set-from-a-resource-manager-template"></a>Můžete zadat pár klíčů SSH pro ověřování SSH pomocí virtuálního počítače škálovací sady s Linuxem ze šablony Resource Manageru?
 

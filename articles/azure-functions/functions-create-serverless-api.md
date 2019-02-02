@@ -10,12 +10,12 @@ ms.topic: tutorial
 ms.date: 05/04/2017
 ms.author: mahender
 ms.custom: mvc
-ms.openlocfilehash: 9f96b4cbe95d918a94ea0d02f9b8fdd8f663eeec
-ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
+ms.openlocfilehash: 1a4a5bada779edfe2766338584c05d4fcf3e3ca4
+ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "54001460"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55660327"
 ---
 # <a name="create-a-serverless-api-using-azure-functions"></a>Vytvoření bezserverového rozhraní API pomocí služby Azure Functions
 
@@ -53,7 +53,7 @@ Funkce aktivovaná protokolem HTTP je standardně nakonfigurovaná tak, aby při
 
 1. Klikněte na **Uložit**.
 
-Další informace o přizpůsobení funkcí HTTP najdete v článku o [vazbách HTTP ve službě Azure Functions](https://docs.microsoft.com/azure/azure-functions/functions-bindings-http-webhook#customizing-the-http-endpoint).
+Další informace o přizpůsobení funkcí HTTP najdete v článku o [vazbách HTTP ve službě Azure Functions](https://docs.microsoft.com/azure/azure-functions/functions-bindings-http-webhook).
 
 ### <a name="test-your-api"></a>Testování rozhraní API
 
@@ -104,7 +104,7 @@ Zopakováním postupu v článku o [vytvoření aplikace funkcí](https://docs.m
     | Pole | Ukázková hodnota | Popis |
     |---|---|---|
     | Název | HelloProxy | Popisný název sloužící jen ke správě |
-    | Šablona trasy | / api/remotehello | Určuje, jaká trasa se používá k vyvolání tohoto proxy. |
+    | Šablona trasy | /api/remotehello | Určuje, jaká trasa se používá k vyvolání tohoto proxy. |
     | Adresa URL back-endu | https://%HELLO_HOST%/api/hello | Určuje koncový bod, na který má být žádost přes proxy směrována. |
     
 1. Všimněte si, že proxy neposkytují předponu základní cesty `/api`; musí být součástí šablony trasy.

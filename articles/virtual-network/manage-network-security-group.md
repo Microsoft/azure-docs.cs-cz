@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/05/2018
 ms.author: jdial
-ms.openlocfilehash: 7505715641462f4a07d999ea419632bd91e925fb
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: 28b73a70ef9ffd4e73117d599448434823747eca
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54438911"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55567396"
 ---
 # <a name="create-change-or-delete-a-network-security-group"></a>Vytvořit, změnit nebo odstranit skupinu zabezpečení sítě
 
@@ -66,7 +66,7 @@ Do vyhledávacího pole v horní části portálu zadejte *skupiny zabezpečení
 2. Vyberte skupinu zabezpečení sítě v seznamu, který chcete zobrazit podrobnosti. V části **nastavení** můžete zobrazit **příchozí pravidla zabezpečení** a **odchozí pravidla zabezpečení**, **síťová rozhraní** a  **Podsítě** je skupina zabezpečení sítě přidružená k. Můžete také povolit nebo zakázat **diagnostické protokoly** a zobrazení **platná pravidla zabezpečení**. Další informace najdete v tématu [diagnostické protokoly](virtual-network-nsg-manage-log.md) a [zobrazit platná pravidla zabezpečení](diagnose-network-traffic-filter-problem.md).
 3. Další informace o běžných nastavení Azure uvedené, naleznete v následujících článcích:
     *   [Protokol aktivit](../azure-monitor/platform/activity-logs-overview.md)
-    *   [Řízení přístupu (IAM)](../azure-resource-manager/resource-group-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json#access-control)
+    *   [Řízení přístupu (IAM)](../role-based-access-control/overview.md)
     *   [Značky](../azure-resource-manager/resource-group-using-tags.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
     *   [Zámky](../azure-resource-manager/resource-group-lock-resources.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
     *   [Automatizační skript](../azure-resource-manager/resource-manager-export-template.md?toc=%2fazure%2fvirtual-network%2ftoc.json#export-the-template-from-resource-group)

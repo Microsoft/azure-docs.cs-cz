@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: article
 ms.date: 01/07/2019
 ms.custom: seodec18
-ms.openlocfilehash: f7b71b2bae540f4ef6b1e9c637c601d6f7b303ae
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 75caad2c183ba2d3c5442a3620705c6af8070755
+ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55250703"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55659588"
 ---
 # <a name="set-up-compute-targets-for-model-training"></a>Nastavení cílových výpočetních prostředí pro trénování modelu
 
@@ -159,7 +159,7 @@ Můžete použít prostředí integrovaného systému conda, již existující p
 
 Použití Azure Data virtuálního počítače VĚDY jako virtuální počítač Azure podle výběru v tomto scénáři. Tento virtuální počítač je předem nakonfigurované datové vědy a AI vývojovým prostředím v Azure. Virtuální počítač nabízí kurátorované řadu nástrojů a architektur pro úplné životního cyklu strojového učení vývoje. Další informace o tom, jak používat datové VĚDY s Azure Machine Learning najdete v tématu [nakonfigurovat prostředí pro vývoj](https://docs.microsoft.com/azure/machine-learning/service/how-to-configure-environment#dsvm).
 
-1. **Vytvoření**: Vytvoření DSVM než je použijete k natrénování modelu. Chcete-li vytvořit tento prostředek, naleznete v tématu [zřídit virtuální počítač pro datové vědy pro Linux (Ubuntu)](https://docs.microsoft.com/en-us/azure/machine-learning/data-science-virtual-machine/dsvm-ubuntu-intro).
+1. **Vytvoření**: Vytvoření DSVM než je použijete k natrénování modelu. Chcete-li vytvořit tento prostředek, naleznete v tématu [zřídit virtuální počítač pro datové vědy pro Linux (Ubuntu)](https://docs.microsoft.com/azure/machine-learning/data-science-virtual-machine/dsvm-ubuntu-intro).
 
     > [!WARNING]
     > Azure Machine Learning podporuje pouze virtuální počítače se systémem Ubuntu. Při vytváření virtuálního počítače nebo vyberte existující virtuální počítač, je nutné vybrat virtuální počítač, který používá Ubuntu.
@@ -384,5 +384,5 @@ Tyto poznámkové bloky příklady trénování s využitím různých cílovýc
 
 * [Kurz: Trénování modelu](tutorial-train-models-with-aml.md) používá cílové spravované výpočetní prostředí k natrénování modelu.
 * Jakmile budete mít trénovaného modelu, přečtěte si [jak a kde nasadit modely](how-to-deploy-and-where.md).
-* Zobrazení [RunConfiguration třídy](https://docs.microsoft.com/en-us/python/api/azureml-core/azureml.core.runconfig.runconfiguration?view=azure-ml-py) odkaz na sadu SDK.
+* Zobrazení [RunConfiguration třídy](https://docs.microsoft.com/python/api/azureml-core/azureml.core.runconfig.runconfiguration?view=azure-ml-py) odkaz na sadu SDK.
 * [Použití služby Azure Machine Learning s Azure Virtual Network](how-to-enable-virtual-network.md)

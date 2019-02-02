@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: article
 ms.date: 01/18/2019
 ms.author: cherylmc
-ms.openlocfilehash: 0f834c88a22aca52a861309681ea0da204b2a552
-ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
+ms.openlocfilehash: 0a9c5b5f0fd47f2fcf0c9df02789abae5f07f023
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55507991"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55564982"
 ---
 # <a name="create-and-install-vpn-client-configuration-files-for-native-azure-certificate-authentication-p2s-configurations"></a>Vytvoření a instalace konfiguračních souborů klienta VPN pro ověřování P2S konfigurace nativního certifikátu Azure
 
@@ -79,7 +79,7 @@ Použijte následující postup ke konfiguraci nativního klienta VPN ve Windows
 
 Pomocí následujících kroků konfigurace nativního klienta VPN v systému Mac pro ověření certifikátu. Je nutné provést tento postup na každý Mac, který se připojí k Azure:
 
-1. Import **VpnServerRoot** kořenového certifikátu do vašeho macu. To můžete udělat tak, že soubor překopírovat na počítači Mac a dvojitým kliknutím na ni.  
+1. Import **VpnServerRoot** kořenového certifikátu do vašeho macu. To můžete udělat tak, že soubor překopírovat na počítači Mac a dvojitým kliknutím na ni.
 Klikněte na tlačítko **přidat** k importu.
 
   ![Přidání certifikátu](./media/point-to-site-vpn-client-configuration-azure-cert/addcert.png)
@@ -113,10 +113,13 @@ Klikněte na tlačítko **přidat** k importu.
 
 ## <a name="linuxgui"></a>Linux (strongSwan grafického uživatelského rozhraní)
 
-### <a name="extract-the-key-and-certificate"></a>Extrahovat klíčů a certifikátů
+### <a name="1-generate-the-key-and-certificate"></a>1: Generování klíčů a certifikátů
 
 Pro strongSwan musíte extrahovat klíč a certifikát z klientského certifikátu (soubor .pfx) a uloží je do jednotlivých .pem souborů.
-Postupujte následovně:
+
+[!INCLUDE [strongSwan certificates](../../includes/vpn-gateway-strongswan-certificates-include.md)]
+
+### <a name="2-extract-the-key"></a>2: Extrahování klíče
 
 1. Stáhněte a nainstalujte OpenSSL z [OpenSSL](https://www.openssl.org/source/).
 2. Otevřete okno příkazového řádku a přejděte do adresáře, kam nainstalovat OpenSSL, například "c:\OpenSLL-Win64\bin\'.
@@ -125,13 +128,13 @@ Postupujte následovně:
   ```
   C:\ OpenSLL-Win64\bin> openssl pkcs12 -in clientcert.pfx -nocerts -out privatekey.pem -nodes
   ```
-4.  Nyní spusťte následující příkaz k extrakci veřejného certifikátu a uložte ho do nového souboru:
-
+4.  Spusťte následující příkaz k extrakci veřejného certifikátu a uložte ho do nového souboru:
+ 
   ```
   C:\ OpenSLL-Win64\bin> openssl pkcs12 -in clientcert.pfx -nokeys -out publiccert.pem -nodes
   ```
 
-### <a name="install"></a>Instalace a konfigurace
+### <a name="install"></a>3: Instalace a konfigurace
 
 Prostřednictvím strongSwan 5.5.1 na Ubuntu 17.0.4 byly vytvořeny podle následujících pokynů. Ubuntu 16.0.10 nepodporuje strongSwan grafického uživatelského rozhraní. Pokud chcete použít Ubuntu 16.0.10, budete muset použít [příkazového řádku](#linuxinstallcli). Následující příklady nemusí odpovídat obrazovky, které se zobrazí, v závislosti na vaší verzi operačních systémů Linux a strongSwan.
 
@@ -160,14 +163,13 @@ Prostřednictvím strongSwan 5.5.1 na Ubuntu 17.0.4 byly vytvořeny podle násle
 
 ## <a name="linuxinstallcli"></a>Linux (strongSwan rozhraní příkazového řádku)
 
-### <a name="install-strongswan"></a>Nainstalujte strongSwan
+### <a name="1-generate-the-key-and-certificate"></a>1: Generování klíčů a certifikátů
 
 Můžete použít následující příkazy rozhraní příkazového řádku nebo postupujte podle kroků strongSwan v [grafickým uživatelským rozhraním](#install) strongSwan instalace.
 
-1. `apt-get install strongswan-ikev2 strongswan-plugin-eap-tls`
-2. `apt-get install libstrongswan-standard-plugins`
+[!INCLUDE [strongSwan certificates](../../includes/vpn-gateway-strongswan-certificates-include.md)]
 
-### <a name="install-and-configure"></a>Instalace a konfigurace
+### <a name="2-install-and-configure"></a>2: Instalace a konfigurace
 
 1. Stažení balíčku klienta VPN z webu Azure portal.
 2. Extrahujte soubor.

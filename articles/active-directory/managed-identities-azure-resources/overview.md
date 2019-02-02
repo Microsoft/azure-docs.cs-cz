@@ -14,12 +14,12 @@ ms.topic: overview
 ms.custom: mvc
 ms.date: 10/23/2018
 ms.author: priyamo
-ms.openlocfilehash: 7cd599ff75827ca8b0c6f7683cae01210a8fc8ab
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 34f6a03fc091fb4d86739af9d56993943ce44956
+ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55183403"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55662104"
 ---
 # <a name="what-is-managed-identities-for-azure-resources"></a>Co jsou spravované identity prostředků Azure?
 
@@ -102,6 +102,9 @@ Následující diagram ukazuje fungování identit spravovaných služeb s virtu
 ## <a name="how-can-i-use-managed-identities-for-azure-resources"></a>Jak mám použít spravované identity prostředků Azure?
 
 Informace o použití spravovaných identit pro přístup k různým prostředkům Azure najdete v těchto kurzech.
+
+> [!NOTE]
+> Podívejte se [implementace identit spravovaných prostředků Microsoft Azure](https://www.pluralsight.com/courses/microsoft-azure-resources-managed-identities-implementing) kurzu podrobné informace o spravovaných identit, včetně videa návody podporovaných scénářů.
 
 Informace o použití spravované identity ve virtuálním počítači s Windows:
 

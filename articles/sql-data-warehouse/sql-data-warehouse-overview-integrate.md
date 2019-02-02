@@ -10,12 +10,12 @@ ms.subservice: consume
 ms.date: 04/17/2018
 ms.author: kavithaj
 ms.reviewer: igorstan
-ms.openlocfilehash: 08e144022c79182a63fd99dbce48a5e505aba3f2
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: c1bc4265c44f007e794b873d732a06d1e30f324f
+ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55477994"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55661934"
 ---
 # <a name="integrate-other-services-with-sql-data-warehouse"></a>Integrace ostatních služeb s využitím SQL Data Warehouse
 Kromě jejích klíčových funkcí SQL Data Warehouse umožňuje integrovat s mnoha dalšími službami v Azure. Mezi tyto služby patří:
@@ -41,7 +41,7 @@ Azure Data Factory poskytuje uživatelům spravovaná platforma pro vytváření
 * **Uložené procedury**: Orchestrace spuštění uložených procedur na SQL Data Warehouse.
 * **Kopírování**: Přesun dat do SQL Data Warehouse pomocí ADF. Tato operace můžete použít mechanismus přesun ADF standardní dat nebo PolyBase pod pokličkou. 
 
-Další informace najdete v tématu [integrace s Azure Data Factory](https://docs.microsoft.com/en-us/azure/data-factory/load-azure-sql-data-warehouse?toc=/azure/sql-data-warehouse/toc.json).
+Další informace najdete v tématu [integrace s Azure Data Factory](https://docs.microsoft.com/azure/data-factory/load-azure-sql-data-warehouse?toc=/azure/sql-data-warehouse/toc.json).
 
 ## <a name="azure-machine-learning"></a>Azure Machine Learning
 Azure Machine Learning je plně spravovaná analytická služba, která umožňuje vytvářet složité modely pomocí rozsáhlé sady nástrojů pro prediktivní. SQL Data Warehouse je podporovaný jako zdroj i cíl pro tyto modely s následujícími funkcemi:

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 06/07/2018
 ms.author: cynthn
-ms.openlocfilehash: aaeec216e2a89cfd230208d0c674e15153224b5a
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 02b70909e701dbeffaec0aa6bdc39e449bdfad08
+ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55157495"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55660347"
 ---
 # <a name="how-to-create-a-linux-virtual-machine-in-azure-with-multiple-network-interface-cards"></a>Jak vytvořit virtuální počítač s Linuxem v Azure s několika síťových karet
 
@@ -37,7 +37,7 @@ Nejdřív vytvořte skupinu prostředků pomocí příkazu [az group create](/cl
 az group create --name myResourceGroup --location eastus
 ```
 
-Vytvoření virtuální sítě s [az network vnet vytvořit](/cli/azure/network/vnet#az_network_vnet_create). Následující příklad vytvoří virtuální síť s názvem *myVnet* a podsíť s názvem *mySubnetFrontEnd*:
+Vytvoření virtuální sítě s [az network vnet vytvořit](/cli/azure/network/vnet). Následující příklad vytvoří virtuální síť s názvem *myVnet* a podsíť s názvem *mySubnetFrontEnd*:
 
 ```azurecli
 az network vnet create \
@@ -87,7 +87,7 @@ az network nic create \
 ## <a name="create-a-vm-and-attach-the-nics"></a>Vytvoření virtuálního počítače a připojte síťové karty
 Při vytváření virtuálního počítače, zadejte síťová rozhraní jste vytvořili pomocí `--nics`. Také je potřeba dbát při volbě velikosti virtuálního počítače. Existují omezení pro celkový počet síťových adaptérů, které můžete přidat do virtuálního počítače. Další informace o [velikosti virtuálního počítače s Linuxem](sizes.md).
 
-Vytvořte virtuální počítač pomocí příkazu [az vm create](/cli/azure/vm#az_vm_create). Následující příklad vytvoří virtuální počítač *myVM*:
+Vytvořte virtuální počítač pomocí příkazu [az vm create](/cli/azure/vm). Následující příklad vytvoří virtuální počítač *myVM*:
 
 ```azurecli
 az vm create \

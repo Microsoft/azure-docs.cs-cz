@@ -11,13 +11,13 @@ author: MightyPen
 ms.author: genemi
 ms.reviewer: billgib, stein
 manager: craigg
-ms.date: 04/02/2018
-ms.openlocfilehash: ff09a5f09393ad642ddb2059b58bd69a17591aff
-ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
+ms.date: 10/16/2018
+ms.openlocfilehash: cb64b96f179bd71c3f885a54b17decb794b40c1a
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49352207"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55567379"
 ---
 # <a name="deploy-and-explore-a-sharded-multi-tenant-application"></a>Nasazení a zkoumání horizontálně dělené aplikace s více tenanty
 
@@ -137,7 +137,7 @@ Centrální **Centrum akcí** webová stránka obsahuje seznam odkazů na klient
 
 K řízení distribuce příchozích požadavků, aplikace Wingtip používá [Azure Traffic Manager](../traffic-manager/traffic-manager-overview.md). Stránka události pro každého klienta obsahuje název tenanta v adrese URL. Každá adresa URL obsahuje také vaše konkrétní hodnotu uživatele. Každá adresa URL dodržuje zobrazených formátu pomocí následujících kroků:
 
-- http://events.wingtip-mt.&lt; Uživatel&gt;.trafficmanager.net/*fabrikamjazzclub*
+- http://events.wingtip-mt.&lt;user&gt;.trafficmanager.net/*fabrikamjazzclub*
 
 1. Aplikace akcí analyzuje název tenanta z adresy URL. Je název tenanta *fabrikamjazzclub* v předchozí příklad adresy URL.
 2. Aplikace pak hash názvu tenanta k vytvoření klíče pro přístup ke katalogu pomocí [správy mapování horizontálních oddílů](sql-database-elastic-scale-shard-map-management.md).
@@ -244,7 +244,7 @@ Někdy víceklientskou databázi s vyžaduje víc prostředků pro dobrý výkon
 
 Úlohy vygenerovaný skript generátor zatížení se jen jako ukázka.
 
-## <a name="additional-resources"></a>Další zdroje informací:
+## <a name="additional-resources"></a>Další materiály
 
 - Další informace o víceklientské aplikace SaaS, naleznete v tématu [vzory návrhu pro víceklientské aplikace SaaS](saas-tenancy-app-design-patterns.md).
 

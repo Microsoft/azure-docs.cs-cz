@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 01/08/2019
 ms.author: markvi
 ms.reviewer: sandeo
-ms.openlocfilehash: 085f95e1df67a12afac5c327b4368efd275600b3
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.openlocfilehash: ab268a27d8ce2f91c52dd5b5df0c22a564831e56
+ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55100168"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55663685"
 ---
 # <a name="how-to-plan-your-hybrid-azure-active-directory-join-implementation"></a>Jak: Naplánování vaší implementace připojení k hybridní službě Azure Active Directory
 
@@ -111,7 +111,7 @@ Pokud vaše organizace potřebuje přístup k internetu přes ověřený odchoz�
 
 Připojení k hybridní službě Azure AD je proces, na zařízení připojeném k doméně místní zařízení automaticky zaregistrovalo s Azure AD. Existují případy, kdy nechcete, aby všechna svá zařízení zaregistrovat automaticky. Pokud je to pro vás platí, přečtěte si téma [řízení připojení k hybridní službě Azure AD. zařízení](hybrid-azuread-join-control.md).
 
-Pokud připojená k vaší doméně Windows 10 už zařízení [registrováno v Azure AD](https://docs.microsoft.com/en-us/azure/active-directory/devices/overview#azure-ad-registered-devices) do svého tenanta, měli byste zvážit odebrání tohoto stavu před povolením připojení k hybridní službě Azure AD. Duální stav zařízení na obě, připojení k hybridní službě Azure AD a Azure AD registrované se nepodporuje. Od verze Windows 10 1809 se provedly následující změny, aby tento duální stav: 
+Pokud připojená k vaší doméně Windows 10 už zařízení [registrováno v Azure AD](https://docs.microsoft.com/azure/active-directory/devices/overview#azure-ad-registered-devices) do svého tenanta, měli byste zvážit odebrání tohoto stavu před povolením připojení k hybridní službě Azure AD. Duální stav zařízení na obě, připojení k hybridní službě Azure AD a Azure AD registrované se nepodporuje. Od verze Windows 10 1809 se provedly následující změny, aby tento duální stav: 
  - Všechny stávající stav registrováno v Azure AD by být automaticky odstraněna po zařízení je připojená k hybridní Azure AD. 
  - Vám může zakázat zařízení připojené k vaší doméně Azure AD registrované přidáním tohoto klíče registru - HKLM\SOFTWARE\Policies\Microsoft\Windows\WorkplaceJoin, "BlockAADWorkplaceJoin" = dword: 00000001
 

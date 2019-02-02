@@ -7,14 +7,14 @@ author: Juliako
 manager: femila
 ms.service: media-services
 ms.topic: article
-ms.date: 01/09/2019
+ms.date: 01/31/2019
 ms.author: juliako
-ms.openlocfilehash: 205a4f2089ec5f415932f98eefe2f3d5f614f0ba
-ms.sourcegitcommit: c31a2dd686ea1b0824e7e695157adbc219d9074f
+ms.openlocfilehash: 84f2b4d68bf95d18a63401f796e2ffca682c808f
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/18/2019
-ms.locfileid: "54402043"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55567268"
 ---
 # <a name="frequently-asked-questions"></a>Nejčastější dotazy
 
@@ -102,6 +102,10 @@ Vaše videa nebo zvukový obsah, které mají veřejné jako jeho nastavení och
 
 Za [podmínky Online služeb Azure](http://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=31) zcela vlastní obsah (OST) a Microsoft se jenom přístup k obsahu a metadat a přehledy, které funkce Video Indexer extrahuje ze svého obsahu podle úložiště offline a Microsoft Prohlášení o ochraně osobních údajů.
 
+### <a name="are-the-custom-models-that-i-build-in-my-video-indexer-account-available-to-other-accounts"></a>Jsou vlastní modely, které vytvářím Můj účet služby Video Indexer jako dostupné pro jiné účty?
+
+ Ne, vlastní modely, které vytvoříte ve svém účtu nejsou k dispozici na jiný účet. Video Indexer aktuálně umožňuje vytvářet vlastní [značky](customize-brands-model-overview.md), [jazyk](customize-language-model-overview.md), a [osoba](customize-person-model-overview.md) modely ve vašem účtu. Tyto modely jsou dostupné jenom v účtu, ve kterém jste vytvořili modely.
+  
 ### <a name="is-the-content-indexed-by-video-indexer-kept-within-the-azure-region-where-i-am-using-video-indexer"></a>Indexované Video Indexer uchovávat v rámci oblasti Azure, kde používám Video Indexer obsah?
 
 Ano, obsah a jeho insights uchovávají v rámci oblasti Azure bez ruční konfigurace ve vašem předplatném Azure, která používá víc oblastí Azure. 

@@ -1,20 +1,20 @@
 ---
 title: Co je služba Azure Search – Azure Search
-description: Azure Search je plně spravovaná hostovaná cloudová vyhledávací služba. Zkontrolujte popis funkcí, pracovní postup vývoje, jak si stojí Azure Search na další produkty search a jak začít pracovat.
+description: Azure Search je plně spravovaná hostovaná Cloudová vyhledávací služba od Microsoftu. Zkontrolujte popis funkcí, pracovní postup vývoje, jak si stojí Azure Search na produkty Microsoft search a jak začít pracovat.
 manager: cgronlun
 author: HeidiSteen
 services: search
 ms.service: search
 ms.topic: overview
-ms.date: 11/09/2018
+ms.date: 02/01/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 884a726dbc7d7f2812f4de2228ca5adaf9b223ea
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.openlocfilehash: 36d65e1ffab79c8f0866d60f4a133798d25e9dea
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53630397"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55562789"
 ---
 # <a name="what-is-azure-search"></a>Co je Azure Search?
 Azure Search je cloudové řešení pro vyhledávání v podobě služby, které poskytuje vývojářům rozhraní API a nástroje, aby mohli přidat výkonné vyhledávání v soukromém heterogenním obsahu ve webových, mobilních a firemních aplikacích. Dotazování se provádí nad indexem definovaným uživatelem.
@@ -92,7 +92,7 @@ Mezi hlavní silné stránky patří:
 
 Mezi naše zákazníky, kteří umí využívat širokou škálu funkcí ve službě Azure Search, patří online katalogy, podnikové programy a aplikace pro zjišťování dokumentů.
 
-## <a name="rest-api--net-sdk"></a>ROZHRANÍ REST API | SADY .NET SDK
+## <a name="rest-api--net-sdk"></a>REST API | .NET SDK
 
 Na portálu jde provádět celá řada úloh, služba Azure Search je ale určená pro vývojáře, kteří chtějí integrovat funkce vyhledávání do stávajících aplikací. Dostupná jsou následující programovací rozhraní.
 

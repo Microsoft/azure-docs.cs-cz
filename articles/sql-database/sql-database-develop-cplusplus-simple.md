@@ -11,18 +11,20 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 manager: craigg
-ms.date: 04/01/2018
-ms.openlocfilehash: f1aa037afd0fa1cbe37add24a354e4dc62c13b9a
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.date: 12/12/2018
+ms.openlocfilehash: 6ebef74cee6f919fe6b8cf666db06e0ab22cec73
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53310126"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55566920"
 ---
 # <a name="connect-to-sql-database-using-c-and-c"></a>Připojení k SQL Database pomocí jazyka C a C++
+
 Tento příspěvek je zaměřené na vývojáře v C a C++ pokusu o připojení ke službě Azure SQL DB. To je rozdělena do oddílů, můžete přeskočit k části zachycující nejlepších váš zájem.
 
 ## <a name="prerequisites-for-the-cc-tutorial"></a>Předpoklady pro kurz jazyka C/C++
+
 Ujistěte se, že máte následující položky:
 
 * Aktivní účet Azure. Pokud žádný nemáte, můžete si zaregistrovat [bezplatnou zkušební verzi Azure](https://azure.microsoft.com/pricing/free-trial/).
@@ -130,7 +132,7 @@ Můžete najít řešení GetStarted, které obsahuje všechny ukázky v tomto �
 * Zkontrolujte [přehled vývoje SQL Database](sql-database-develop-overview.md)
 * Další informace o [Reference k rozhraní API ODBC](https://docs.microsoft.com/sql/odbc/reference/syntax/odbc-api-reference/)
 
-## <a name="additional-resources"></a>Další zdroje informací:
+## <a name="additional-resources"></a>Další materiály
 * [Vzory návrhu pro aplikace SaaS s více tenanty využívající Azure SQL Database](sql-database-design-patterns-multi-tenancy-saas-applications.md)
 * Prozkoumejte všechny [schopnosti služby SQL Database](https://azure.microsoft.com/services/sql-database/).
 

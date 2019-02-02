@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 01/30/2019
 ms.author: markvi
 ms.reviewer: spunukol
-ms.openlocfilehash: 6c340cde488ee37d2454468356f1ceee03f74844
-ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
+ms.openlocfilehash: 9677f6e7f78f241c863fdd9cc88fcfb7298d9164
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55302100"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55563729"
 ---
 # <a name="azure-active-directory-conditional-access-settings-reference"></a>Odkaz nastavení podmíněného přístupu Azure Active Directory
 
@@ -177,24 +177,27 @@ Ve své zásady podmíněného přístupu můžete vybrat **mobilní aplikace a 
 Toto nastavení nemá vliv na pokusy o přístup z následující mobilní aplikace a desktopoví klienti: 
 
 
-|Klientské aplikace|Cílová služba|Platforma|
-|---|---|---|
-|Vzdálené aplikace Azure|Služba vzdálené aplikace Azure|Windows 10, Windows 8.1, Windows 7, iOS, Android a Mac OS X|
-|Aplikace Dynamics CRM|Dynamics CRM|Windows 10, Windows 8.1, iOS a Android|
-|E-mailu, kalendáři/uživatelé aplikace, aplikace Outlook 2016, Outlook 2013 |Office 365 Exchange Online|Windows 10|
-|Zásady MFA a polohy pro aplikace. Zařízení na základě zásad nejsou podporovány. |Všechny služby app service pro Moje aplikace|Android a iOS|
-|Microsoft Teams služby – tato volba určuje všechny služby, které podporují Microsoft Teams a všechny jeho klientské aplikace – Windows Desktop, iOS, Android, webové části a webový klient|Microsoft Teams|Windows 10, Windows 8.1, Windows 7, iOS, Android a macOS |
-|Synchronizačního klienta Onedrivu aplikací, Office 2013, Office 2016 (viz [poznámky](https://support.office.com/article/Azure-Active-Directory-conditional-access-with-the-OneDrive-sync-client-on-Windows-028d73d7-4b86-4ee0-8fb7-9a209434b04e))|Office 365 SharePoint Online|Windows 8.1, Windows 7|
-|Aplikace pro Office 2016, Office univerzální aplikace, Office 2013, synchronizačního klienta Onedrivu (naleznete v tématu [poznámky](https://support.office.com/article/Azure-Active-Directory-conditional-access-with-the-OneDrive-sync-client-on-Windows-028d73d7-4b86-4ee0-8fb7-9a209434b04e)), do budoucna plánujeme přidat podpora skupin Office, do budoucna plánujeme přidat podpora aplikací služby SharePoint|Office 365 SharePoint Online|Windows 10|
-|Office 2016 pro macOS (Word, Excel, PowerPoint, OneNote pouze). OneDrive pro firmy podpora do budoucna plánujeme přidat|Office 365 SharePoint Online|Mac OS X|
-|Mobilní aplikace Office|Office 365 SharePoint Online|Android, iOS|
-|Aplikace Yammer pro Office|Office 365 Yammer|Windows 10, iOS, Android|
-|Outlook 2016 (Office pro macOS)|Office 365 Exchange Online|Mac OS X|
-|Outlook 2016, Outlook 2013, Skype pro firmy|Office 365 Exchange Online|Windows 8.1, Windows 7|
-|Mobilní aplikace Outlook|Office 365 Exchange Online|Android, iOS|
-|Aplikace Power BI|Služba Power BI|Windows 10, Windows 8.1, Windows 7, Android a iOS|
-|Skype pro firmy|Office 365 Exchange Online|Android, IOS |
-|Aplikace Azure DevOps|Azure DevOps|Windows 10, Windows 8.1, Windows 7, iOS a Android|
+| Klientské aplikace| Cílová služba| Platforma |
+| --- | --- | --- |
+| Vzdálené aplikace Azure| Služba vzdálené aplikace Azure| Windows 10, Windows 8.1, Windows 7, iOS, Android a macOS|
+| Aplikace Dynamics CRM| Dynamics CRM| Windows 10, Windows 8.1, iOS a Android|
+| E-mailu nebo kalendáře/lidí aplikace Outlook 2016, Outlook 2013 (s moderním ověřováním)| Office 365 Exchange Online| Windows 10|
+| Zásady MFA a polohy pro aplikace. Zařízení na základě zásad nejsou podporovány.| Všechny služby app service pro Moje aplikace| Android a iOS|
+| Microsoft Teams služby – tato volba určuje všechny služby, které podporují Microsoft Teams a všechny jeho klientské aplikace – Windows Desktop, iOS, Android, webové části a webový klient| Microsoft Teams| Windows 10, Windows 8.1, Windows 7, iOS, Android a macOS|
+| Synchronizovat klientských aplikací Office 2016, Office 2013 (s moderním ověřováním), OneDrive (viz [poznámky](https://support.office.com/en-US/article/Azure-Active-Directory-conditional-access-with-the-OneDrive-sync-client-on-Windows-028d73d7-4b86-4ee0-8fb7-9a209434b04e))| Office 365 SharePoint Online| Windows 8.1, Windows 7|
+| Aplikace pro Office 2016, Office univerzální aplikace, Office 2013 (s moderním ověřováním), synchronizačního klienta Onedrivu (naleznete v tématu [poznámky](https://support.office.com/en-US/article/Azure-Active-Directory-conditional-access-with-the-OneDrive-sync-client-on-Windows-028d73d7-4b86-4ee0-8fb7-9a209434b04e)), do budoucna plánujeme přidat podpora skupin Office, do budoucna plánujeme přidat podpora aplikací služby SharePoint| Office 365 SharePoint Online| Windows 10|
+| Office 2016 (Word, Excel, PowerPoint, OneNote pouze). OneDrive pro firmy podpora do budoucna plánujeme přidat| Office 365 SharePoint Online| macOS|
+| Office 2019| Office 365 SharePoint Online| Windows 10, macOS|
+| Mobilní aplikace Office| Office 365 SharePoint Online| Android, iOS|
+| Aplikace Yammer pro Office| Office 365 Yammer| Windows 10, iOS, Android|
+| Outlook 2019| Office 365 SharePoint Online| Windows 10, macOS|
+| Outlook 2016 (Office pro macOS)| Office 365 Exchange Online| macOS|
+| Outlook 2016, Outlook 2013 (s moderním ověřováním), Skype pro firmy (s moderním ověřováním)| Office 365 Exchange Online| Windows 8.1, Windows 7|
+| Mobilní aplikace Outlook| Office 365 Exchange Online| Android, iOS|
+| Aplikace Power BI| Služba Power BI| Windows 10, Windows 8.1, Windows 7, Android a iOS|
+| Skype pro firmy| Office 365 Exchange Online| Android, IOS|
+| Visual Studio Team Services aplikace| Visual Studio Team Services| Windows 10, Windows 8.1, Windows 7, iOS a Android|
+
 
 
 ## <a name="support-for-legacy-authentication"></a>Podpora pro starší verze ověřování
@@ -214,27 +217,33 @@ Ve své zásady podmíněného přístupu můžete vyžadovat, že přístup pok
 Toto nastavení platí pro následující klientské aplikace:
 
 
-- Microsoft Intune Managed Browser
-- Microsoft PowerBI
-- Microsoft Invoicing
-- Microsoft Launcher
+
 - Microsoft Azure Information Protection
+- Microsoft Edge
 - Microsoft Excel
+- Microsoft Flow
+- Microsoft Intune Managed Browser
+- Microsoft Invoicing
 - Microsoft Kaizala 
+- Microsoft Launcher
 - Microsoft OneDrive
 - Microsoft OneNote
 - Microsoft Outlook
 - Microsoft Planner
+- Microsoft PowerApps
+- Microsoft PowerBI
 - Microsoft PowerPoint
 - Microsoft SharePoint
 - Microsoft Skype pro firmy
 - Microsoft StaffHub
+- Microsoft Stream
 - Microsoft Teams
+- Microsoft To-Do
 - Microsoft Visio
 - Microsoft Word
-- Microsoft To-Do
-- Microsoft Stream
-- Microsoft Edge
+- Microsoft Yammer
+
+
 
 
 

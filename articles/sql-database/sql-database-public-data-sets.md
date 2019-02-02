@@ -11,13 +11,13 @@ author: douglaslMS
 ms.author: douglasl
 ms.reviewer: ''
 manager: craigg
-ms.date: 04/01/2018
-ms.openlocfilehash: f658afa1a08a6b8779c2f1e18944eec40abdc465
-ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
+ms.date: 10/01/2018
+ms.openlocfilehash: 64c93b069766d8f7334c311507102a07f137b2ff
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55299992"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55565407"
 ---
 # <a name="public-data-sets-for-testing-and-prototyping"></a>Veřejných datových sadách pro tvorbu prototypů a testování
 

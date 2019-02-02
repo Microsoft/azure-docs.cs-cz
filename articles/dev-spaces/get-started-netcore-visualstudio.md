@@ -12,14 +12,14 @@ ms.date: 07/09/2018
 ms.topic: tutorial
 description: Rychlý vývoj na platformě Kubernetes s využitím kontejnerů a mikroslužeb v Azure
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, kontejnery
-ms.openlocfilehash: e81073850ebb45e82f2f702bec976eed4725f62e
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 08903bcb15c69e3bc9a2b5435785d4a1ee8edb5c
+ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55462558"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55659044"
 ---
-# <a name="get-started-on-azure-dev-spaces-with-net-core-and-visual-studio"></a>Zahájení práce se službou Azure Dev Spaces s .NET Core a sadou Visual Studio
+# <a name="get-started-on-azure-dev-spaces-with-net-core-and-visual-studio"></a>Začínáme s Azure Dev prostorů s .NET Core a Visual Studio
 
 V tomto průvodci se naučíte:
 
@@ -158,4 +158,4 @@ Aktualizujte webovou aplikaci v prohlížeči a přejděte na stránku O aplikac
 ## <a name="next-steps"></a>Další postup
 
 > [!div class="nextstepaction"]
-> [Informace o týmovém vývoji](team-development-netcore-visualstudio.md)
+> [Informace o vývoji pro víc služeb](multi-service-netcore-visualstudio.md)

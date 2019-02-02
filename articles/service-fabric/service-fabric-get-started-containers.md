@@ -4,7 +4,7 @@ description: Vytvoříte svou první aplikaci typu kontejner pro Windows na plat
 services: service-fabric
 documentationcenter: .net
 author: TylerMSFT
-manager: timlt
+manager: jpconnock
 editor: vturecek
 ms.assetid: ''
 ms.service: service-fabric
@@ -12,26 +12,28 @@ ms.devlang: dotNet
 ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 05/18/2018
+ms.date: 01/25/2019
 ms.author: twhitney
-ms.openlocfilehash: 38979d80e25e0430082b7819d506b653c35697e6
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: e1024fadf6a68307e42b57ee3c383977b7b4fb9b
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55172949"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55562500"
 ---
 # <a name="create-your-first-service-fabric-container-application-on-windows"></a>Vytvoření první aplikace Service Fabric typu kontejner v systému Windows
+
 > [!div class="op_single_selector"]
 > * [Windows](service-fabric-get-started-containers.md)
 > * [Linux](service-fabric-get-started-containers-linux.md)
 
-Spuštění existující aplikace v kontejneru Windows v clusteru Service Fabric nevyžaduje žádné změny aplikace. Tento článek vás provede vytvořením image Dockeru obsahující webovou aplikaci Python [Flask](http://flask.pocoo.org/) a jejím nasazením do clusteru Service Fabric. Kontejnerizovanou aplikaci budete také sdílet prostřednictvím služby [Azure Container Registry](/azure/container-registry/). Tento článek předpokládá základní znalost Dockeru. Informace o Dockeru najdete v článku [Docker Overview](https://docs.docker.com/engine/understanding-docker/) (Přehled Dockeru).
+Spuštění existující aplikace v kontejneru Windows v clusteru Service Fabric nevyžaduje žádné změny aplikace. Tento článek vás provede procesem vytvoření image Dockeru obsahující Python [Flask](http://flask.pocoo.org/) webové aplikace a jeho nasazení do clusteru Service Fabric na místním počítači. Kontejnerizovanou aplikaci budete také sdílet prostřednictvím služby [Azure Container Registry](/azure/container-registry/). Tento článek předpokládá základní znalost Dockeru. Informace o Dockeru najdete v článku [Docker Overview](https://docs.docker.com/engine/understanding-docker/) (Přehled Dockeru).
 
 > [!NOTE]
 > Tento článek se týká prostředí pro vývoj Windows.  Modulu runtime clusteru Service Fabric a modul runtime Docker musí běžet na stejném operačním systému.  Nelze spouštění kontejnerů Windows v clusteru s Linuxem.
 
 ## <a name="prerequisites"></a>Požadavky
+
 * Vývojový počítač s:
   * Visual Studio 2015 nebo Visual Studio 2017.
   * [Sada Service Fabric SDK a nástroje](service-fabric-get-started.md).
@@ -41,10 +43,10 @@ Spuštění existující aplikace v kontejneru Windows v clusteru Service Fabric
 
   Pro účely tohoto článku musí odpovídat verzi (build) systému Windows Server s kontejnery běží na uzly clusteru na vývojovém počítači, který. Je to proto sestavit image dockeru na vývojovém počítači a existují omezení kompatibilitu mezi verzemi kontejneru operačního systému a hostitelský operační systém na kterém je nasazená. Další informace najdete v tématu [kontejneru Kompatibilita operačního systému a hostitele operačního systému Windows Server](#windows-server-container-os-and-host-os-compatibility). 
   
-  Chcete-li zjistit verzi Windows serveru s kontejnery, které potřebujete pro váš cluster, spusťte `ver` příkazu z příkazového řádku Windows na vývojovém počítači:
+Chcete-li zjistit verzi Windows serveru s kontejnery, které potřebujete pro váš cluster, spusťte `ver` příkazu z příkazového řádku Windows na vývojovém počítači:
 
-  * Pokud verze obsahuje *x.x.14323.x*a pak vyberte *WindowsServer 2016 Datacenter s kontejnery* pro operační systém při [vytvoření clusteru](service-fabric-cluster-creation-via-portal.md). Můžete také [bezplatné vyzkoušení Service Fabric](https://aka.ms/tryservicefabric) s party clusteru.
-  * Pokud verze obsahuje *x.x.16299.x*a pak vyberte *WindowsServerSemiAnnual Datacenter – základní – 1709s kontejnery* pro operační systém při [vytvoření clusteru](service-fabric-cluster-creation-via-portal.md). Ale nemůžete použít party clusteru.
+* Pokud verze obsahuje *x.x.14323.x*a pak vyberte *WindowsServer 2016 Datacenter s kontejnery* pro operační systém při [vytvoření clusteru](service-fabric-cluster-creation-via-portal.md).
+  * Pokud verze obsahuje *x.x.16299.x*a pak vyberte *WindowsServerSemiAnnual Datacenter – základní – 1709s kontejnery* pro operační systém při [vytvoření clusteru](service-fabric-cluster-creation-via-portal.md).
 
 * Registr ve službě Azure Container Registry – [Vytvořte registr kontejneru](../container-registry/container-registry-get-started-portal.md) ve svém předplatném Azure.
 
@@ -57,6 +59,7 @@ Spuštění existující aplikace v kontejneru Windows v clusteru Service Fabric
 > 
 
 ## <a name="define-the-docker-container"></a>Definice kontejneru Dockeru
+
 Sestavte image založenou na [imagi Pythonu](https://hub.docker.com/_/python/), která se nachází na Docker Hubu.
 
 Zadejte kontejner Dockeru v souboru Dockerfile. Soubor Dockerfile obsahuje pokyny k nastavení prostředí uvnitř kontejneru, načtení aplikace, kterou chcete spustit, a mapování portů. Soubor Dockerfile je vstupem příkazu `docker build`, který vytvoří image.
@@ -166,6 +169,7 @@ docker rm my-web-site
 
 <a id="Push-Containers"></a>
 ## <a name="push-the-image-to-the-container-registry"></a>Nahrání image do registru kontejneru
+
 Po ověření, že se kontejner spustí na vývojovém počítači, nahrajte image do vašeho registru ve službě Azure Container Service.
 
 Spusťte příkaz ``docker login`` a přihlaste se ke svému registru kontejnerů pomocí [přihlašovacích údajů registru](../container-registry/container-registry-authentication.md).
@@ -257,6 +261,7 @@ Nakonfigurujte port hostitele používaný ke komunikaci s kontejnerem. Vazba po
 > Další PortBindings pro službu je možné přidat další prvky PortBinding s hodnoty příslušných vlastností deklarací.
 
 ## <a name="configure-container-registry-authentication"></a>Konfigurace ověřování registru kontejneru
+
 Nakonfigurujte ověřování registru kontejneru přidáním `RepositoryCredentials` do `ContainerHostPolicies` v souboru ApplicationManifest.xml. Přidejte účet a heslo pro registr kontejneru myregistry.azurecr.io, který službě umožňuje stáhnout image kontejneru z úložiště.
 
 ```xml
@@ -448,7 +453,8 @@ Aplikace je připravena, jakmile se ocitne v ```Ready``` stavu: ![Připraveno][2
 Otevřete prohlížeč a přejděte na adresu http://containercluster.westus2.cloudapp.azure.com:8081. V prohlížeči by se měl zobrazit nadpis „Hello World!“.
 
 ## <a name="clean-up"></a>Vyčištění
-Za spuštěný cluster se vám stále účtují poplatky, proto zvažte [odstranění clusteru](service-fabric-cluster-delete.md). [Party clustery](https://try.servicefabric.azure.com/) se automaticky odstraní po několika hodinách.
+
+Za spuštěný cluster se vám stále účtují poplatky, proto zvažte [odstranění clusteru](service-fabric-cluster-delete.md).
 
 Po nahrání image do registru kontejneru můžete odstranit místní image z vývojového počítače:
 

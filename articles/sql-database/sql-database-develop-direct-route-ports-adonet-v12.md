@@ -11,15 +11,16 @@ author: MightyPen
 ms.author: genemi
 ms.reviewer: sstein
 manager: craigg
-ms.date: 04/01/2018
-ms.openlocfilehash: 594d181a5452317267157415bdaf68f572f0f0af
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.date: 11/07/2018
+ms.openlocfilehash: b6fbb71a827c90abd1fac58d7975ab2f7b2a5674
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51260019"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55560885"
 ---
 # <a name="ports-beyond-1433-for-adonet-45"></a>Porty nad 1433 pro ADO.NET 4.5
+
 Toto téma popisuje chování připojení Azure SQL Database pro klienty, kteří používají technologii ADO.NET 4.5 nebo novější. 
 
 > [!IMPORTANT]
@@ -27,12 +28,15 @@ Toto téma popisuje chování připojení Azure SQL Database pro klienty, kteř�
 >
 
 ## <a name="outside-vs-inside"></a>Vnější vs. vnitřní
+
 Pro připojení ke službě Azure SQL Database, musíte nejprve požádáme, jestli se váš klientský program spouští *mimo* nebo *uvnitř* cloudu Azure. Témata se zabývají dvě běžné scénáře.
 
-#### <a name="outside-client-runs-on-your-desktop-computer"></a>*Vnější:* klienta spuštění na stolním počítači
+#### <a name="outside-client-runs-on-your-desktop-computer"></a>*Vnější:* Klient spustí na stolním počítači
+
 Port 1433 je jediný port, který musí být otevřený ve stolním počítači, který je hostitelem klientské aplikace SQL Database.
 
-#### <a name="inside-client-runs-on-azure"></a>*Vnitřní:* klienta běží na Azure
+#### <a name="inside-client-runs-on-azure"></a>*Uvnitř:* Klient spustí v Azure
+
 Váš klient běží v cloudu Azure, používá, co jsme volat *přímé trasy* komunikovat se serverem SQL Database. Po vytvoření připojení, další interakce mezi klientem a databáze zahrnují žádná brána Azure SQL Database.
 
 Sekvence je následujícím způsobem:
@@ -76,6 +80,6 @@ Tato část vysvětluje zástupných názvů, které odkazují na verze produktu
 * [Seznam verzí protokolu TDS.](http://www.freetds.org/userguide/tdshistory.htm)
 * [Přehled vývoje SQL Database](sql-database-develop-overview.md)
 * [Brána firewall služby Azure SQL Database](sql-database-firewall-configure.md)
-* [Postupy: Konfigurace nastavení brány firewall pro SQL Database](sql-database-configure-firewall-settings.md)
+* [Postup: Konfigurace nastavení brány firewall pro službu SQL Database](sql-database-configure-firewall-settings.md)
 
 

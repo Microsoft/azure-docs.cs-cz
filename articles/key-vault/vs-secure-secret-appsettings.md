@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vs-getting-started
 ms.topic: conceptual
 ms.date: 01/07/2019
 ms.author: cawa
-ms.openlocfilehash: 8f3cdf366830549c3ebb9c5680ecf36d1053d1d9
-ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
+ms.openlocfilehash: df6330827a4fb8bb8e80af89855c3ea104584295
+ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54075290"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55662279"
 ---
 # <a name="securely-save-secret-application-settings-for-a-web-application"></a>Bezpečně uložte nastavení tajných kódů aplikace pro webovou aplikaci
 
@@ -32,7 +32,7 @@ Pokud chcete mít jistotu, že proces vývoje je zabezpečené, nástroje a rozh
 ## <a name="aspnet-and-net-core-applications"></a>Aplikace ASP.NET a .NET core
 
 ### <a name="save-secret-settings-in-user-secret-store-that-is-outside-of-source-control-folder"></a>Uložit nastavení tajných kódů v úložišti tajný klíč uživatele, které je mimo složku správy zdrojového kódu
-Pokud provádíte rychlé prototyp nebo nemáte přístup k Internetu, začněte s přesunem vašich nastavení tajných kódů mimo složku správy zdrojového kódu do úložiště tajného klíče uživatele. Úložiště tajných kódů uživatelů je soubor uložený ve složce profiler uživatele, tak tajné kódy nejsou vrácené se změnami do správy zdrojového kódu. Následující diagram ukazuje, jak [tajného klíče uživatele](https://docs.microsoft.com/aspnet/core/security/app-secrets?tabs=visual-studio#SecretManager) funguje.
+Pokud provádíte rychlé prototyp nebo nemáte přístup k Internetu, začněte s přesunem vašich nastavení tajných kódů mimo složku správy zdrojového kódu do úložiště tajného klíče uživatele. Úložiště tajných kódů uživatelů je soubor uložený ve složce profiler uživatele, tak tajné kódy nejsou vrácené se změnami do správy zdrojového kódu. Následující diagram ukazuje, jak [tajného klíče uživatele](https://docs.microsoft.com/aspnet/core/security/app-secrets?tabs=visual-studio) funguje.
 
 ![Tajný kód uživatele zachová nastavení tajných kódů mimo správy zdrojového kódu](./media/vs-secure-secret-appsettings/aspnetcore-usersecret.PNG)
 

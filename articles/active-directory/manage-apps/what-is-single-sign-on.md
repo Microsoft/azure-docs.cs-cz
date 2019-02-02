@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 01/25/2019
 ms.author: barbkess
 ms.reviewer: arvindh
-ms.openlocfilehash: 9e06e53f83dd05d53b76a2a07e465133f052dba8
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 8216eb9c076111bfa70633b24f36ac97b0ee319a
+ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55157699"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55664025"
 ---
 # <a name="single-sign-on-to-applications-in-azure-active-directory"></a>Jednotné přihlašování k aplikacím v Azure Active Directory
 Jednotné přihlašování (SSO) přidává zabezpečení a pohodlí při přihlašování uživatelů k aplikacím v Azure Active Directory (Azure AD). Tento článek popisuje metody přihlašování a vám pomůže vybrat nejvhodnější metodu jednotného přihlašování, při konfiguraci vašich aplikací.
@@ -49,9 +49,7 @@ Následující tabulka shrnuje metody přihlašování a odkazy na další podro
 | [Založené na hlavičkách](#header-based-sso) | jen místně | Použijte založeným na hlavičkách jednotného přihlašování, pokud aplikace používá hlavičky pro ověřování. Založené na hlavičkách jednotného přihlašování vyžaduje PingAccess pro Azure AD. Proxy aplikace ověřuje uživatele pomocí služby Azure AD a potom předává provoz přes službu konektoru.  | 
 
 ## <a name="openid-connect-and-oauth"></a>OpenID Connect a OAuth
-S OpenID Connect a OAuth povolíte jednotné přihlašování, která zjednodušuje proces přidávání podnikové aplikace do Azure AD. Správce aplikací není nutné konfigurovat jednotné přihlašování. Místo toho přidá aplikace v Azure AD při správce [uděluje souhlas uživatele](configure-user-consent.md). 
-
-[Sady SDK](../develop/reference-v2-libraries.md) OpenID Connect a OAuth se dají snadno přijmout a vaše aplikace bude připravené k použití MS Graphu. 
+Při vývoji nových aplikací, použijte k dosažení nejlépe jednotné přihlašování pro vaši aplikaci na různých platformách zařízení moderní protokoly jako OpenID Connect a OAuth. Uživatelům a správcům umožňuje OAuth [udělit souhlas](configure-user-consent.md) pro chráněné zdroje, jako jsou [MS Graphu](/graph/overview). Zajišťuje snadné přijmout [sady SDK](../develop/reference-v2-libraries.md) pro vaši aplikaci a kromě toho vaše aplikace budou připravené k použití [MS Graphu](/graph/overview).
 
 Další informace naleznete v tématu:
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 06/17/2018
 ms.author: cynthn
-ms.openlocfilehash: c242d8dd64dc58b0c20b6fb15747f201f85cc482
-ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
+ms.openlocfilehash: 8a54ab9e45838a81a2ea4e2e425114e19a65ba76
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2019
-ms.locfileid: "54320923"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55563843"
 ---
 # <a name="log-in-to-a-linux-virtual-machine-in-azure-using-azure-active-directory-authentication-preview"></a>Přihlaste se k virtuální počítač s Linuxem v Azure pomocí ověřování Azure Active Directory (Preview)
 
@@ -105,7 +105,7 @@ Zásady řízení přístupu na základě rolí (RBAC) Azure určí, kdo může 
 > [!NOTE]
 > Pokud chcete, aby uživatel pro přihlášení k virtuálnímu počítači přes SSH, je nutné přiřadit buď *přihlášení správce virtuálního počítače* nebo *přihlášení uživatele virtuálního počítače* role. Uživatele s Azure *vlastníka* nebo *Přispěvatel* role přiřazené pro virtuální počítač automaticky nemají oprávnění k přihlášení k virtuálnímu počítači přes SSH.
 
-Následující příklad používá [vytvořit přiřazení role az](/cli/azure/role/assignment#az-role-assignment-create) přiřadit *přihlášení správce virtuálního počítače* role virtuálního počítače Azure aktuálního uživatele. Uživatelské jméno účtu Azure active se získá pomocí [zobrazit účet az](/cli/azure/account#az-account-show)a *oboru* je nastavena na virtuální počítač vytvořený v předchozím kroku s [az vm show](/cli/azure/vm#az-vm-show). Můžou také mít přiřazené oboru na úrovni skupiny nebo předplatného resource a použít normální dědičnost oprávnění RBAC. Další informace najdete v tématu [řízení přístupu na základě rolí](../../azure-resource-manager/resource-group-overview.md#access-control)
+Následující příklad používá [vytvořit přiřazení role az](/cli/azure/role/assignment#az-role-assignment-create) přiřadit *přihlášení správce virtuálního počítače* role virtuálního počítače Azure aktuálního uživatele. Uživatelské jméno účtu Azure active se získá pomocí [zobrazit účet az](/cli/azure/account#az-account-show)a *oboru* je nastavena na virtuální počítač vytvořený v předchozím kroku s [az vm show](/cli/azure/vm#az-vm-show). Můžou také mít přiřazené oboru na úrovni skupiny nebo předplatného resource a použít normální dědičnost oprávnění RBAC. Další informace najdete v tématu [řízení přístupu na základě rolí](../../role-based-access-control/overview.md)
 
 ```azurecli-interactive
 username=$(az account show --query user.name --output tsv)

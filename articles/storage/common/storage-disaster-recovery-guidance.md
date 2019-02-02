@@ -5,15 +5,15 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: article
-ms.date: 01/30/2019
+ms.date: 02/01/2019
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: b203acefb962d5b3a782ba0ce1e667b6f18b7951
-ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
+ms.openlocfilehash: bc79379d1b893beffc085e79b7643fcb6e1dc26f
+ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55508925"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55657310"
 ---
 # <a name="disaster-recovery-and-storage-account-failover-preview-in-azure-storage"></a>Po havárii pro obnovení a úložiště účtu převzetí služeb při selhání (preview) ve službě Azure Storage
 
@@ -104,7 +104,7 @@ Po účet úložiště se zálohou pro geografickou redundanci, je možné zahá
 
 Aby nedošlo ke ztrátě hlavní data, zkontrolujte hodnotu **čas poslední synchronizace** vlastnost před navrácením služby po obnovení. Porovnat čas poslední synchronizace s posledním časy tato data byla zapsána do nové primární vyhodnotit ztráty očekávaná data. 
 
-## <a name="initiate-an-account-failover"></a>Zahájit účtu převzetí služeb při selhání
+## <a name="initiate-an-account-failover"></a>Zahájení převzetí služeb při selhání účtu
 
 Můžete spustit účtu převzetí služeb při selhání z webu Azure portal, Powershellu, rozhraní příkazového řádku Azure nebo rozhraní API poskytovatele prostředků služby Azure Storage. Další informace o tom, jak spustit převzetí služeb při selhání najdete v části [zahájit účtu převzetí služeb při selhání (preview)](storage-initiate-account-failover.md).
 
@@ -152,6 +152,7 @@ Nespravované disky jsou uložené jako objekty BLOB stránky ve službě Azure 
 4. Počkejte, dokud **čas poslední synchronizace** byl aktualizován a je pozdější než čas, kdy odstraníte virtuální počítač. Tento krok je důležitý, protože pokud sekundární koncový bod nebyl aktualizován plně se soubory virtuálního pevného disku dojde převzetí služeb při selhání, pak virtuální počítač možná nebude fungovat správně v nové primární oblasti.
 5. Zahájení převzetí služeb při selhání účtu.
 6. Počkejte na dokončení převzetí služeb při selhání účtu a sekundární oblasti jsou nové primární oblasti.
+6. Vytvoření účtu úložiště v nové primární oblasti a zkopírujte do něj nespravovaný disk.
 7. Vytvoření virtuálního počítače v nové primární oblasti a znovu ho připojte virtuální pevné disky.
 8. Spuštění nového virtuálního počítače.
 

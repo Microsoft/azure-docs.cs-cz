@@ -1,102 +1,43 @@
 ---
-title: Týmový vývoj pro Azure Dev Spaces pomocí .NET Core a sady Visual Studio | Microsoft Docs
+title: Týmový vývoj prostory vývoj Azure pomocí .NET Core a Visual Studio | Dokumentace Microsoftu
 titleSuffix: Azure Dev Spaces
 services: azure-dev-spaces
 ms.service: azure-dev-spaces
 ms.custom: vs-azure
 ms.workload: azure-vs
 ms.subservice: azds-kubernetes
-author: zr-msft
-ms.author: zarhoads
-ms.date: 07/09/2018
+author: DrEsteban
+ms.author: stevenry
+ms.date: 12/09/2018
 ms.topic: tutorial
 description: Rychlý vývoj na platformě Kubernetes s využitím kontejnerů a mikroslužeb v Azure
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, kontejnery
-ms.openlocfilehash: ecacb7d3d4576b18eee3faf88c2a598d6acf94a0
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 7a77b8a1a2205465956d8c30a3fee6aec5e8428b
+ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55465363"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55663787"
 ---
 # <a name="team-development-with-azure-dev-spaces"></a>Týmový vývoj se službou Azure Dev Spaces
 
-V tomto kurzu zjistíte, jak pomocí vývojových prostorů pracovat v různých vývojových prostředích současně. Různou práci přitom budete uchovávat v samostatných vývojových prostorech na stejném clusteru.
-
-## <a name="call-another-container"></a>Volání jiného kontejneru
-V této části vytvoříte druhou službu `mywebapi`, kterou bude `webfrontend` volat. Každá služba poběží v samostatném kontejneru. Ladění pak provedete v obou kontejnerech.
-
-![](media/common/multi-container.png)
-
-### <a name="download-sample-code-for-mywebapi"></a>Stažení ukázkového kódu pro *mywebapi*
-Kvůli úspoře času si můžete ukázkový kód stáhnout z úložiště GitHub. Přejděte na https://github.com/Azure/dev-spaces a stáhněte si úložiště GitHub výběrem možnosti **Clone or Download** (Klonovat nebo stáhnout). Kód k této části je tady: `samples/dotnetcore/getting-started/mywebapi`.
-
-### <a name="run-mywebapi"></a>Spuštění *mywebapi*
-1. Otevřete službu `mywebapi` projektu v *samostatném okně sady Visual Studio*.
-1. Vyberte v rozevíracím okně nastavení spouštění **Azure Dev Spaces**, jak jste to udělali už dříve pro projekt `webfrontend`. Tentokrát místo vytváření nového clusteru AKS vyberte cluster, který jste už vytvořili. Stejně jako dříve nechte v rozevíracím seznamu Space (Prostor) vybranou položku `default` a klikněte na **OK**. V okně Výstup si můžete všimnout, že sada Visual Studio začíná tuto novou službu „připravovat“ ve vašem vývojovém prostoru, aby se při spuštění ladění postup urychlil.
-1. Stiskněte F5 a počkejte na sestavení a nasazení služby. Až se barva stavového řádku sady Visual Studio změní na oranžovou, bude služba připravená.
-1. Poznamenejte si adresu URL koncového bodu, která se zobrazí v okně **Výstup** v podokně **Azure Dev Spaces for AKS** (Azure Dev Spaces pro AKS). Bude vypadat přibližně takto: http://localhost:\<portnumber\>. I když to může vypadat, že kontejner je spuštěný lokálně, ve skutečnosti je spuštěný ve vývojovém prostoru v Azure.
-2. Až se `mywebapi` připraví, otevřete v prohlížeči adresu místního hostitele a k adrese URL připojte `/api/values`, aby se vyvolalo výchozí rozhraní GET API pro `ValuesController`. 
-3. Pokud byly všechny kroky úspěšné, měla by se zobrazit odpověď ze služby `mywebapi`, která vypadá takto:
-
-    ![](media/get-started-netcore-visualstudio/WebAPIResponse.png)
-
-### <a name="make-a-request-from-webfrontend-to-mywebapi"></a>Vytvoření požadavku z *webfrontend* do *mywebapi*
-Teď napíšeme kód v projektu `webfrontend`, který vygeneruje požadavek do `mywebapi`. Přejděte do okna sady Visual Studio, ve kterém je projekt `webfrontend`. V souboru `HomeController.cs` *nahraďte* kód pro metodu About následujícím kódem:
-
-   ```csharp
-   public async Task<IActionResult> About()
-   {
-      ViewData["Message"] = "Hello from webfrontend";
-
-      using (var client = new System.Net.Http.HttpClient())
-            {
-                // Call *mywebapi*, and display its response in the page
-                var request = new System.Net.Http.HttpRequestMessage();
-                request.RequestUri = new Uri("http://mywebapi/api/values/1");
-                if (this.Request.Headers.ContainsKey("azds-route-as"))
-                {
-                    // Propagate the dev space routing header
-                    request.Headers.Add("azds-route-as", this.Request.Headers["azds-route-as"] as IEnumerable<string>);
-                }
-                var response = await client.SendAsync(request);
-                ViewData["Message"] += " and " + await response.Content.ReadAsStringAsync();
-            }
-
-      return View();
-   }
-   ```
-
-Předchozí příklad kódu předává hlavičku `azds-route-as` z příchozího požadavku do odchozího požadavku. Později se dozvíte, jak se tím v týmových scénářích zvyšuje produktivita vývojového prostředí.
-
-### <a name="debug-across-multiple-services"></a>Ladění více služeb
-1. V této fázi byste měli mít spuštěnou službu `mywebapi` s připojeným ladicím programem. Pokud tomu tak není, stiskněte v projektu `mywebapi` klávesu F5.
-1. V souboru `Controllers/ValuesController.cs`, který zpracovává požadavky GET `api/values/{id}`, nastavte zarážku v metodě `Get(int id)`.
-1. V projektu `webfrontend`, do kterého jste vložili výše uvedený kód, nastavte zarážku těsně před odesláním požadavku GET do `mywebapi/api/values`.
-1. V projektu `webfrontend` stiskněte klávesu F5. Visual Studio znovu otevře v prohlížeči příslušný port místního hostitele a zobrazí se daná webová aplikace.
-1. Zarážku v projektu `webfrontend` aktivujte kliknutím na odkaz **O aplikaci** v horní části stránky. 
-1. Pokračujte stisknutím klávesy F10. Zarážka v projektu `mywebapi` teď bude aktivovaná.
-1. Pokračujte stisknutím klávesy F5, abyste se vrátili ke kódu v projektu `webfrontend`.
-1. Dalším stisknutím klávesy F5 se dokončí daný požadavek a vrátí se stránka v prohlížeči. Ve webové aplikaci na stránce o se zobrazí zpráva zřetězit dvě služby: "Hello webfrontend a Hello z mywebapi."
-
-Hotovo! Teď máte aplikaci s více kontejnery, kde můžete každý kontejner vyvíjet a nasazovat odděleně.
+V tomto kurzu se dozvíte, jak tým vývojářů může současně spolupracovat ve stejném clusteru Kubernetes pomocí prostorů vývoj.
 
 ## <a name="learn-about-team-development"></a>Informace o týmovém vývoji
 
 Zatím jste kód aplikace spouštěli tak, jako byste byli jediným vývojářem, který na aplikaci pracuje. V této části se dozvíte, jak služba Azure Dev Spaces zjednodušuje týmový vývoj:
-* Umožňuje týmu vývojářů podle potřeby pracovat ve stejném prostředí, ať už ve sdíleném pracovním prostoru nebo v oddělených pracovních prostorech.
+* Povolte tým vývojářů pro práci ve stejném prostředí, a to práce ve sdíleném vývojovém prostoru nebo v různých dev mezer podle potřeby.
 * Podporuje iterace kódu každého vývojáře v izolaci a bez obav z narušování práce ostatních.
 * Umožňuje komplexní testování kódu před jeho potvrzením, bez nutnosti vytvářet napodobení nebo simulovat závislosti.
 
 ### <a name="challenges-with-developing-microservices"></a>Problémy při vývoji mikroslužeb
-V tuto chvíli není ukázková aplikace moc složitá. Když ale při vývoji v reálném světě budete přidávat další služby a vývojový tým se bude zvětšovat, začnou brzy vznikat problémy.
+V tuto chvíli není komplexní ukázkovou aplikaci. Když ale při vývoji v reálném světě budete přidávat další služby a vývojový tým se bude zvětšovat, začnou brzy vznikat problémy.
 
-Předpokládejme, že pracujete na službě, která komunikuje s řadou dalších služeb.
-
-- Může se stát, že spouštění všech služeb místně nebude během vývoje reálné. Počítač používaný pro vývoj nemusí mít dostatek prostředků ke spuštění celé aplikace. Anebo třeba vaše aplikace obsahuje koncové body, které musí být veřejně dostupné (aplikace například odpovídá na webhook z aplikace SaaS).
-- Můžete se pokusit spustit jenom služby, na kterých jste závislí, ale to znamená, že byste museli podrobně znát všechny závislosti (třeba i závislosti závislostí). Může také nastat situace, že vytvoření a spuštění vašich závislostí nebude snadné, protože jste na nich nepracovali.
-- Někteří vývojáři se uchylují k simulacím nebo napodobením řady závislostí svých služeb. To někdy může pomoct, ale správa těchto napodobení může brzy vyžadovat svůj vlastní náročný vývoj. Navíc to vede k tomu, že vývojové prostředí vypadá jinak než produkční prostředí a můžou se tak vloudit drobné chyby.
-- Z toho vyplývá, že jakékoli komplexní testování kódu bude obtížné. Testování integrace se dá věrohodně provést až po potvrzení, což znamená, že se problémy projeví později ve vývojovém cyklu.
+* Svého vývojového počítače nemusí mít dostatek prostředků ke spuštění každé služby, které potřebujete najednou.
+* Některé služby bude muset být veřejně dostupný. Služba možná muset mít koncový bod, který reaguje na webhooku.
+* Pokud chcete spustit podmnožinu, budete muset znát hierarchii úplné závislost mezi všechny služby. Určení Tato hierarchie může být obtížné, zejména když zvýšit počet služeb.
+* Někteří vývojáři se uchylují k simulacím nebo napodobením řady závislostí svých služeb. Tento přístup může pomoct, ale Správa těchto mocks může brzy mít vliv na náklady na vývoj. Kromě toho tento postup vede do svého vývojového prostředí hledání rozdíl oproti možnosti production, což může vést k drobným chybám, ke kterým dochází.
+* Z toho vyplývá, že bude obtížné to libovolného typu testování integrace. Testování integrace se dá věrohodně provést až po potvrzení, což znamená, že se problémy projeví později ve vývojovém cyklu.
 
     ![](media/common/microservices-challenges.png)
 
@@ -106,29 +47,55 @@ Pomocí služby Azure Dev Spaces můžete nastavit *sdílený* vývojový prosto
 ### <a name="work-in-your-own-space"></a>Práce ve vašem vlastním prostoru
 Než je kód při vývoji pro vaši službu připravený k odevzdání, často není ve funkčním stavu. Pořád ho iterativně vytváříte, testujete ho a experimentujete s různými řešeními. Služba Azure Dev Spaces nabízí koncept **prostoru**, který umožňuje pracovat v izolaci a bez obav z narušení práce jiných členů vašeho týmu.
 
-Pomocí následujícího postupu se ujistěte, že služby `webfrontend` a `mywebapi` jsou spuštěné **ve vývojovém prostoru `default`**.
+## <a name="use-dev-spaces-for-team-development"></a>Použít Dev prostory pro vývoj v týmu
+Tyto nápadů pomocí konkrétní příklad si ukážeme náš *webfrontend* -> *mywebapi* ukázkovou aplikaci. Jsme budete Představte si situaci, kde pro vývojáře, Scott, musí provést změnu *mywebapi* služby, a *pouze* danou službu. *Webfrontend* není potřeba ji měnit jako součást Scottova aktualizace.
+
+_Bez_ mezerami Dev, Scott má několik způsobů, jak vyvíjet a testovat jeho aktualizace, z nichž žádnou jsou ideální:
+* VŠECHNY součásti spustit místně, což vyžaduje výkonnější vývojovém počítači nainstalovaný Docker, a potenciálně MiniKube.
+* Spusťte všechny součásti v izolované oboru názvů v clusteru Kubernetes. Protože *webfrontend* není změněn izolované pomocí oboru názvů by o plýtvání prostředky clusteru.
+* Spustit pouze *mywebapi*a provádět ruční volání REST pro testování. Tento typ testování není testování tohoto toku úplného začátku do konce.
+* Přidejte kód zaměřený na vývoj pro *webfrontend* , který umožňuje vývojářům k odesílání požadavků na jinou instanci procesu *mywebapi*. Přidání tohoto kódu komplikuje *webfrontend* služby.
+
+### <a name="set-up-your-baseline"></a>Nastavit standardní hodnoty
+Nejdřív potřebujeme nasazení standardních hodnot z našich služeb. Toto nasazení bude představovat "poslední známé dobré", abyste mohli snadno porovnat chování místní kódu oproti verzi vrácené se změnami. Poté vytvoříme podřízené místo podle těchto standardních hodnot, takže můžeme otestovat změny v našich *mywebapi* v rámci větší aplikace.
+
+1. Klonování [Dev prostory ukázkovou aplikaci](https://github.com/Azure/dev-spaces): `git clone https://github.com/Azure/dev-spaces && cd dev-spaces`
+1. Podívejte se na vzdálené větve *azds_updates*: `git checkout -b azds_updates origin/azds_updates`
 1. Zavřete všechny ladicí relace (otevřené pomocí F5) pro obě služby, ale nechte projekty v oknech sady Visual Studio otevřené.
-2. Přejděte do okna sady Visual Studio s projektem `mywebapi` a stisknutím Ctrl+F5 spusťte tuto službu bez připojeného ladicího programu.
-3. Přejděte do okna sady Visual Studio s projektem `webfrontend` a stisknutím Ctrl+F5 spusťte také tuto službu.
+1. Přepněte do okna sady Visual Studio s _mywebapi_ projektu.
+1. V **Průzkumníku řešení** klikněte pravým tlačítkem na projekt a vyberte **Vlastnosti**.
+1. Výběrem karty **Ladění** na levé straně zobrazte nastavení Azure Dev Spaces.
+1. Vyberte **změnu** vytvořit prostor, který bude nepoužívá, pokud jste F5 nebo Ctrl + F5 služby.
+1. V rozevírací nabídce místa, vyberte  **\<vytvořte nový prostor... \>**.
+1. Ujistěte se, že místo nadřazené nastavená na  **\<žádný\>** a zadejte název prostoru **dev**. Klikněte na tlačítko OK.
+1. Stisknutím kláves Ctrl + F5 ke spuštění _mywebapi_ bez ladicí program připojený.
+1. Přepněte do okna sady Visual Studio s _webfrontend_ projektu a stiskněte klávesu Ctrl + F5 ke spuštění i.
 
 > [!Note]
 > Někdy je při stisknutí Ctrl+F5 nutné po prvním zobrazení webové stránky v prohlížeči danou stránku aktualizovat.
 
-Kdokoli, kdo otevře veřejnou adresu URL a přejde k webové aplikaci, vyvolá zapsanou cestu kódu, která spouští obě služby ve výchozím prostoru `default`. Předpokládejme teď, že chcete pokračovat ve vývoji `mywebapi` – jak to uděláte bez toho, že byste narušili práci jiných vývojářů, kteří používají tento vývojový prostor? Vytvoříte si k tomu vlastní prostor.
+> [!TIP]
+> Výše uvedené kroky ručně nastavit směrný plán, ale doporučujeme používat týmy CI/CD a automaticky udržovat aktuální potvrzené kódem směrný plán.
+>
+> Podívejte se na naše [příručka k nastavení CI/CD s Azure DevOps](how-to/setup-cicd.md) vytvořit pracovní postup podobně jako v následujícím diagramu.
+>
+> ![Příklad diagramu CI/CD](media/common/ci-cd-complex.png)
+
+Každý, kdo je otevře veřejnou adresu URL a přejde do webové aplikace se vyvolá do cesty kódu, který jste napsali který projde obou služeb pomocí výchozího _dev_ místa. Nyní předpokládejme, že chcete pokračovat ve vývoji *mywebapi* – jak to provést a přerušit jinými vývojáři, kteří používají místo vývoj? Vytvoříte si k tomu vlastní prostor.
 
 ### <a name="create-a-new-dev-space"></a>Vytvoření nového vývojového prostoru
-V sadě Visual Studio můžete vytvářet další prostory, které se použijí, když pro danou službu stisknete F5 nebo Ctrl+F5. Prostor můžete pojmenovat libovolně (např. `sprint4` nebo `demo`).
+V sadě Visual Studio můžete vytvářet další prostory, které se použijí, když pro danou službu stisknete F5 nebo Ctrl+F5. Prostor můžete pojmenovat libovolně (např. _sprint4_ nebo _ukázka_).
 
 K vytvoření nového prostoru použijte následující postup:
-1. Přejděte do okna sady Visual Studio, ve kterém je projekt `mywebapi`.
+1. Přepněte do okna sady Visual Studio s *mywebapi* projektu.
 2. V **Průzkumníku řešení** klikněte pravým tlačítkem na projekt a vyberte **Vlastnosti**.
 3. Výběrem karty **Ladění** na levé straně zobrazte nastavení Azure Dev Spaces.
 4. Odtud můžete změnit nebo vytvořit cluster nebo prostor, který se použije po stisknutí F5 nebo Ctrl+F5. *Zkontrolujte, že je vybraný vývojový prostor Azure, který jste vytvořili dříve*.
-5. V rozevírací nabídce Space (Prostor) vyberte **<Create New Space…>** <Vytvořit nový prostor...>.
+5. V rozevírací nabídce místa, vyberte  **\<vytvořte nový prostor... \>**.
 
     ![](media/get-started-netcore-visualstudio/Settings.png)
 
-6. V dialogovém okně **Add Space** (Přidat prostor) nastavte nadřazený prostor na **default** (Výchozí) a zadejte název nového prostoru. Můžete pro nový prostor použít svoje jméno (například „scott“), aby bylo vašim kolegům jasné, že se jedná o prostor, ve kterém pracujete vy. Klikněte na **OK**.
+6. V **přidejte místo** dialogové okno, nastavte nadřazené místo na **dev**a zadejte název nové místo. Můžete pro nový prostor použít svoje jméno (například „scott“), aby bylo vašim kolegům jasné, že se jedná o prostor, ve kterém pracujete vy. Klikněte na **OK**.
 
     ![](media/get-started-netcore-visualstudio/AddSpace.png)
 
@@ -138,7 +105,7 @@ K vytvoření nového prostoru použijte následující postup:
 
 ### <a name="update-code-for-mywebapi"></a>Aktualizace kódu pro *mywebapi*
 
-1. V projektu `mywebapi` změňte kód v souboru `Controllers/ValuesController.cs` v metodě `string Get(int id)` následujícím způsobem:
+1. V *mywebapi* projektu provést kód, přejděte `string Get(int id)` metody v souboru `Controllers/ValuesController.cs` následujícím způsobem:
  
     ```csharp
     [HttpGet("{id}")]
@@ -149,18 +116,20 @@ K vytvoření nového prostoru použijte následující postup:
     ```
 
 2. Nastavte zarážku v tomto aktualizovaném bloku kódu (jednu už můžete mít nastavenou z dřívějška).
-3. Stisknutím F5 spusťte službu `mywebapi`. Služba se spustí v clusteru s využitím vybraného prostoru, což je v tomto případě `scott`.
+3. Stisknutím klávesy F5 spusťte _mywebapi_ službu, která se spustí službu ve vašem clusteru pomocí vybraný prostor. V tomto případě je vybraný prostor _scott_.
 
-Následující diagram vám pomůže porozumět tomu, jak různé prostory fungují. Fialová cesta znázorňuje požadavek prostřednictvím prostoru `default`. Je to výchozí cesta, která se použije, když se žádný prostor nepřidá jako předpona k adrese URL. Růžová cesta znázorňuje požadavek prostřednictvím prostoru `default/scott`.
+Následující diagram vám pomůže porozumět tomu, jak různé prostory fungují. Fialový cesta ukazuje žádost přes _dev_ místa, což je výchozí cesta použít, pokud žádný prostor je přidáno jako předpona adresy URL. Cesta růžový ukazuje požadavek prostřednictvím _dev/scott_ místa.
 
 ![](media/common/Space-Routing.png)
 
 Tato integrovaná funkce služby Azure Dev Spaces umožňuje komplexní testování kódu ve sdíleném prostředí bez toho, aby si každý vývojář musel znovu vytvářet všechny služby ve svém prostoru. Tyto cesty vyžadují přesměrování šíření hlaviček v kódu aplikace, jak ukazuje předchozí krok tohoto průvodce.
 
-### <a name="test-code-running-in-the-defaultscott-space"></a>Testování kódu spuštěného v prostoru `default/scott`
-Pokud chcete otestovat novou verzi `mywebapi` ve spojení s projektem `webfrontend`, otevřete v prohlížeči adresu URL veřejného přístupového bodu pro `webfrontend` (například http://webfrontend.123456abcdef.eastus.aksapp.io) a přejděte na stránku O aplikaci. Měla by se zobrazit původní zpráva: „Hello from webfrontend and Hello from mywebapi.“
+### <a name="test-code-running-in-the-devscott-space"></a>Testovací kód spuštěný v _dev/scott_ místa
+Otestovat novou verzi systému *mywebapi* ve spojení s *webfrontend*, otevřete prohlížeč na adresu URL bodu veřejný přístup pro *webfrontend* (například http://dev.webfrontend.123456abcdef.eastus.aksapp.io)a přejděte na stránku o. Měla by se zobrazit původní zpráva: „Hello from webfrontend and Hello from mywebapi.“
 
-Teď k adrese URL přidejte „scott.s.“. Adresa URL tedy bude vypadat nějak podobně jako http://scott.s.webfrontend.123456abcdef.eastus.aksapp.io. Aktualizujte stránku v prohlížeči. Mělo by dojít k zastavení na zarážce, kterou jste nastavili v projektu `mywebapi`. Pokračujte kliknutím na F5. V prohlížeči by se teď měla zobrazit nová zpráva „Hello from webfrontend and mywebapi now says something new.“ Důvodem je skutečnost, že v prostoru `default/scott` je spuštěná cesta k aktualizovanému kódu v `mywebapi`.
+Teď k adrese URL přidejte „scott.s.“. Adresa URL tedy bude vypadat nějak podobně jako http://scott.s.dev.webfrontend.123456abcdef.eastus.aksapp.io. Aktualizujte stránku v prohlížeči. Se zarážka nastavila ve vaší *mywebapi* projektu by měl získat přístupů. Pokračujte kliknutím na F5. V prohlížeči by se teď měla zobrazit nová zpráva „Hello from webfrontend and mywebapi now says something new.“ Důvodem je, že cesta k aktualizovaný kód v *mywebapi* běží v _dev/scott_ místa.
+
+Jakmile budete mít _dev_ místa, které vždy obsahuje nejnovější změny a za předpokladu, že vaše aplikace je navržené tak, aby výhod DevSpace od místa založené na směrování, jak je popsáno v této části kurzu, snad budete moct snadno najdete v článku jak prostory vývoje velmi užitečné při testování nových funkcí v rámci větší aplikace. Namísto nutnosti nasazení _všechny_ služby do privátního prostoru, můžete vytvořit privátní místa, která je odvozena z _dev_a "pouze nahoru" služby ve skutečnosti právě pracujete. Infrastruktura směrování Dev prostory se postaráme o všechno ostatní s využitím tolik služeb z vaší privátní místo jak to můžete znát při jako výchozí se použije zpět do nejnovější verze, která běží _dev_ místa. A stále lepší _více_ vývojáři můžou aktivně vyvíjet různé služby ve stejnou dobu do jejich vlastního prostoru pravidla bez narušení běžného mezi sebou.
 
 ### <a name="well-done"></a>Hotovo!
 Dokončili jste úvodní příručku! Naučili jste se tyto postupy:
@@ -170,6 +139,7 @@ Dokončili jste úvodní příručku! Naučili jste se tyto postupy:
 > * Iterativně vyvíjet kód v kontejnerech
 > * Vyvíjet nezávisle dvě samostatné služby a pomocí zjišťování služby DNS v Kubernetes volat jinou službu
 > * Produktivně vyvíjet a testovat kód v týmovém prostředí
+> * Stanovení základní úrovně funkce s použitím vývoje prostorů na snadno testujte izolovaných změn v rámci větších aplikací mikroslužeb
 
 Teď když jste prozkoumali Azure Dev Spaces, [podělte se o svůj vývojářský prostor se členy týmu](how-to/share-dev-spaces.md) a ukažte jim, jak snadná je vzájemná spolupráce.
 

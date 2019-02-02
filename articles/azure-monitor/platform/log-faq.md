@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 11/13/2018
 ms.author: magoedte
-ms.openlocfilehash: 693d66c6b56fd759086236ae0252d2c6f1b5693e
-ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
+ms.openlocfilehash: 0edb3441083a6eb6f95b3ca3ade2bf0b1582858d
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55301250"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55564948"
 ---
 # <a name="log-analytics-faq"></a>Nejčastější dotazy k Log Analytics
 Tato FAQ Microsoft je uveden seznam nejčastější dotazy o službě Log Analytics v Microsoft Azure. Pokud máte nějaké další dotazy o službě Log Analytics, pokračujte [diskusní fórum](https://social.msdn.microsoft.com/Forums/azure/home?forum=opinsights) a zveřejněte své dotazy. Pokud je dotaz pokládán často, přidáme ji k tomuto článku tak, aby jej lze rychle a snadno najít.
@@ -55,7 +55,7 @@ Odpověď: Klikněte na levý posun zobrazíte náhled nové filtry implementace
 
 ### <a name="q-why-am-i-getting-the-error-register-resource-provider-microsoftinsights-for-this-subscription-to-enable-this-query-in-logs-after-drilling-in-from-vm"></a>Otázka: Proč dochází k chybě: "Zaregistrujte poskytovatele prostředků"Microsoft.Insights' pro toto předplatné chcete povolit tento dotaz "v protokolech, při procházení se změnami z virtuálního počítače? 
 
-Odpověď: Ve výchozím nastavení řada poskytovatelů prostředků jsou automaticky registrované, ale budete muset ručně zaregistrovat někteří poskytovatelé prostředků. Tím se nakonfiguruje vaše předplatné pro práci s poskytovatelem prostředků. Obor pro registraci je vždy předplatné. Další informace najdete v tématu [Poskytovatelé a typy prostředků](../../azure-resource-manager/resource-manager-supported-services.md#portal).
+Odpověď: Ve výchozím nastavení řada poskytovatelů prostředků jsou automaticky registrované, ale budete muset ručně zaregistrovat někteří poskytovatelé prostředků. Tím se nakonfiguruje vaše předplatné pro práci s poskytovatelem prostředků. Obor pro registraci je vždy předplatné. Další informace najdete v tématu [Poskytovatelé a typy prostředků](../../azure-resource-manager/resource-manager-supported-services.md#azure-portal).
 
 ### <a name="q-why-am-i-am-getting-no-access-error-message-when-accessing-logs-from-a-vm-page"></a>Otázka: Proč mi Power BI Desktop zobrazuje žádná chybová zpráva přístup při přístupu k protokoly ze stránky virtuálního počítače? 
 

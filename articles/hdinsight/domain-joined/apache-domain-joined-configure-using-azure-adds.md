@@ -9,12 +9,12 @@ ms.reviewer: hrasheed
 ms.topic: conceptual
 ms.date: 10/09/2018
 ms.custom: seodec18
-ms.openlocfilehash: 7ad494a3a1ce657951a0afab4d5ca838821927ad
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: b6cc65d10fc8924686d01c02177a9cb76f7a9571
+ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55158813"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55660909"
 ---
 # <a name="configure-a-hdinsight-cluster-with-enterprise-security-package-by-using-azure-active-directory-domain-services"></a>Konfigurace clusteru HDInsight s Balíčkem zabezpečení podniku pomocí služby Azure Active Directory Domain Services
 
@@ -28,7 +28,7 @@ V tomto článku se dozvíte, jak konfigurace clusteru HDInsight s ESP pomocí A
 ## <a name="enable-azure-ad-ds"></a>Povolení služby Azure AD DS
 
 > [!NOTE]  
-> Pouze správci tenanta nemá oprávnění pro povolení služby Azure AD – DS. Pokud je úložiště clusteru služby Azure Data Lake Storage (ADLS) Gen1 a Gen2 je potřeba zakázat ověřování službou Multi-Factor Authentication (MFA) pouze pro uživatele, kteří se potřebují přístup ke clusteru pomocí základního ověřování Kerberose. Můžete použít [důvěryhodné IP adresy](https://docs.microsoft.com/en-us/azure/active-directory/authentication/howto-mfa-mfasettings#trusted-ips) nebo [podmíněného přístupu](https://docs.microsoft.com/en-us/azure/active-directory/conditional-access/overview) zakázat MFA pro konkrétní uživatele, pouze když přistupují rozsah adres virtuální sítě IP clusteru HDInsight. Pokud používáte podmíněný přístup Zkontrolujte prosím, že tento koncový bod služby AD v povolena na virtuální síť HDInsight.
+> Pouze správci tenanta nemá oprávnění pro povolení služby Azure AD – DS. Pokud je úložiště clusteru služby Azure Data Lake Storage (ADLS) Gen1 a Gen2 je potřeba zakázat ověřování službou Multi-Factor Authentication (MFA) pouze pro uživatele, kteří se potřebují přístup ke clusteru pomocí základního ověřování Kerberose. Můžete použít [důvěryhodné IP adresy](https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-mfasettings#trusted-ips) nebo [podmíněného přístupu](https://docs.microsoft.com/azure/active-directory/conditional-access/overview) zakázat MFA pro konkrétní uživatele, pouze když přistupují rozsah adres virtuální sítě IP clusteru HDInsight. Pokud používáte podmíněný přístup Zkontrolujte prosím, že tento koncový bod služby AD v povolena na virtuální síť HDInsight.
 >
 >Pokud je cluster úložiště Azure Blob Storage (WASB), nezakazujte vícefaktorové ověřování.
 
@@ -87,7 +87,7 @@ Po vytvoření partnerského vztahu virtuálních sítí, konfigurovat virtuáln
 
 ![Konfigurace vlastního DNS serverů pro partnerské virtuální síti](./media/apache-domain-joined-configure-using-azure-adds/hdinsight-aadds-peered-vnet-configuration.png)
 
-Pokud používáte pravidla skupiny zabezpečení sítě (NSG) v podsíti služby HDInsight, měli byste si nechat [požadované IP adresy](https://docs.microsoft.com/en-us/azure/hdinsight/hdinsight-extend-hadoop-virtual-network#hdinsight-ip-1) pro příchozí i odchozí provoz. 
+Pokud používáte pravidla skupiny zabezpečení sítě (NSG) v podsíti služby HDInsight, měli byste si nechat [požadované IP adresy](https://docs.microsoft.com/azure/hdinsight/hdinsight-extend-hadoop-virtual-network#hdinsight-ip-1) pro příchozí i odchozí provoz. 
 
 **K otestování** Pokud sítě je správně nastavené, připojení k HDInsight virtuálních sítí/podsítí virtuálního počítače s windows a pomocí příkazu ping název domény (ho musí se překládat na IP adresy) a potom spusťte **ldp.exe** pro přístup k doméně Azure AD – DS. Potom **připojení tohoto virtuálního počítače s windows do domény potvrďte** úspěšný všechny požadované volání RPC mezi klientem a serverem. Můžete také použít **nslookup** potvrďte připojení k účtu úložiště nebo všechny externí databáze, můžete použít (například externí Hive metastore nebo Ranger DB).
 Ujistěte se, že všechny [požadované porty](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd772723(v=ws.10)#communication-to-domain-controllers) jsou povolené v podsíti služby AAD DS pravidla skupiny zabezpečení sítě, pokud AAD DS je zabezpečena pomocí skupiny zabezpečení sítě. Pokud připojení k doméně systému windows tohoto virtuálního počítače je úspěšné, můžete pokračovat k dalšímu kroku a vytvoření ESP clusterů.

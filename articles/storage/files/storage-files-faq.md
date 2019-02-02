@@ -7,12 +7,12 @@ ms.service: storage
 ms.date: 01/02/2019
 ms.author: renash
 ms.subservice: files
-ms.openlocfilehash: 273039ec271d5d81329ab475ffd2eda82dca7b58
-ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
+ms.openlocfilehash: 2a3c26c6a815cf934724fba4e8e0f9637803a4ce
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55511000"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55562381"
 ---
 # <a name="frequently-asked-questions-faq-about-azure-files"></a>O službě soubory Azure – nejčastější dotazy (FAQ)
 [Služba soubory Azure](storage-files-introduction.md) nabízí plně spravované sdílené složky v cloudu, které jsou přístupné prostřednictvím standardních průmyslových [zprávy bloku SMB (Server) protokol](https://msdn.microsoft.com/library/windows/desktop/aa365233.aspx). Sdílené složky Azure je možné připojit současně v cloudových i místních nasazení systémů Windows, Linux a macOS. Také můžete ukládat do mezipaměti sdílených složek Azure v počítačích s Windows serverem pomocí Azure File Sync pro rychlý přístup blízko, ve kterém jsou využívány.
@@ -241,7 +241,7 @@ Tento článek obsahuje odpovědi na běžné otázky o Azure Files funkce a fun
 * <a id="data-compliance-policies"></a>
 **Zásady dodržování předpisů dat nepodporuje soubory Azure?**  
 
-   Služba soubory Azure se spouští nad rámec stejné architektury úložiště, který se používá v dalších službách úložiště ve službě Azure Storage. Služba soubory Azure platí stejné zásady dodržování předpisů dat, které se používají v jiných služeb úložiště Azure. Další informace o dodržování předpisů pro data služby Azure Storage najdete [nabídek dodržování předpisů služby Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-compliance-offerings)a přejděte [Microsoft Trust Center](https://microsoft.com/en-us/trustcenter/default.aspx).
+   Služba soubory Azure se spouští nad rámec stejné architektury úložiště, který se používá v dalších službách úložiště ve službě Azure Storage. Služba soubory Azure platí stejné zásady dodržování předpisů dat, které se používají v jiných služeb úložiště Azure. Další informace o dodržování předpisů pro data služby Azure Storage najdete [nabídek dodržování předpisů služby Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-compliance-offerings)a přejděte [Microsoft Trust Center](https://microsoft.com/trustcenter/default.aspx).
 
 ## <a name="on-premises-access"></a>Místní přístup
 * <a id="expressroute-not-required"></a>

@@ -12,12 +12,12 @@ ms.topic: reference
 ms.date: 09/03/2018
 ms.author: cshoe
 ms.custom: cc996988-fb4f-47
-ms.openlocfilehash: 565b4c66c98d62fdcbd23f6446f522b810db1430
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: 9a48127b6a3093c616f08171dd87f9c3e9b45cc9
+ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52999471"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55664078"
 ---
 # <a name="azure-queue-storage-bindings-for-azure-functions"></a>Azure Queue storage vazby pro službu Azure Functions
 
@@ -38,6 +38,9 @@ Vazby front úložiště jsou součástí [Microsoft.Azure.WebJobs](https://www.
 Vazby front úložiště jsou součástí [Microsoft.Azure.WebJobs.Extensions.Storage](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.Storage) balíčku NuGet, verze 3.x. Zdrojový kód pro tento balíček je v [sadu sdk azure webjobs](https://github.com/Azure/azure-webjobs-sdk/tree/dev/src/Microsoft.Azure.WebJobs.Extensions.Storage/Queues) úložiště GitHub.
 
 [!INCLUDE [functions-package-v2](../../includes/functions-package-v2.md)]
+
+## <a name="encoding"></a>Kódování
+Funkce očekávat *base64* řetězec s kódováním. Případně upravit typ kódování (aby bylo možné připravit data jako *ve formátu base64* řetězec s kódováním) potřeba je implementovat ve volání služby.
 
 ## <a name="trigger"></a>Trigger
 

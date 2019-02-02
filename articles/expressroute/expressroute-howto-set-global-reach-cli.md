@@ -8,69 +8,70 @@ ms.topic: conceptual
 ms.date: 12/12/2018
 ms.author: cherylmc
 ms.custom: seodec18
-ms.openlocfilehash: 9a8e0a5df9383d8e3d7159aa916b0e4fbfeea948
-ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
+ms.openlocfilehash: be10489d731b9e01d148ce1ac7892cb6de956662
+ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53384040"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55659316"
 ---
-# <a name="configure-expressroute-global-reach-using-azure-cli-preview"></a>Konfigurace ExpressRoute globální dosah pomocí rozhraní příkazového řádku Azure (Preview)
-Tento článek vám pomůže nakonfigurovat ExpressRoute globální dosah pomocí Azure CLI. Další informace najdete v tématu [ExpressRouteRoute globální dosah](expressroute-global-reach.md).
+# <a name="configure-expressroute-global-reach-by-using-the-azure-cli-preview"></a>Konfigurace ExpressRoute globální dosah s použitím rozhraní příkazového řádku Azure (Preview)
+
+Tento článek vám pomůže nakonfigurovat globální dosah Azure ExpressRoute pomocí Azure CLI. Další informace najdete v článku [ExpressRoute Global Reach](expressroute-global-reach.md).
  
 ## <a name="before-you-begin"></a>Před zahájením
+
 > [!IMPORTANT]
 > Tato verze Public Preview se poskytuje bez smlouvy o úrovni služeb a neměla by se používat pro úlohy v produkčním prostředí. Některé funkce nemusí být podporované, můžou mít omezené možnosti nebo nemusí být dostupné ve všech umístěních Azure. Podrobnosti najdete v [dodatečných podmínkách použití systémů Microsoft Azure Preview](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
-> 
 
+Před zahájením konfigurace, splňte následující požadavky:
 
-Před zahájením konfigurace, je potřeba zkontrolovat následující požadavky.
-
-* Nainstalujte nejnovější verzi Azure CLI. Zobrazit [instalace Azure CLI](/cli/azure/install-azure-cli) a [Začínáme s Azure CLI](/cli/azure/get-started-with-azure-cli).
-* Vysvětlení zřizování okruhů ExpressRoute [pracovních postupů](expressroute-workflows.md).
+* Nainstalujte nejnovější verzi Azure CLI. Viz témata [Instalace Azure CLI](/cli/azure/install-azure-cli) a [Začínáme s Azure CLI](/cli/azure/get-started-with-azure-cli).
+* Vysvětlení ExpressRoute-zřizování [pracovních postupů](expressroute-workflows.md).
 * Zajistěte, aby že vaše okruhy ExpressRoute jsou ve stavu zřízená.
 * Ujistěte se, že soukromý partnerský vztah Azure je nakonfigurovaný na okruhů ExpressRoute.  
 
-### <a name="log-into-your-azure-account"></a>Přihlaste se do svého účtu Azure
-Spustit konfiguraci, musíte se přihlásit ke svému účtu Azure. Příkaz Otevřít váš výchozí prohlížeč, který se vyzve k zadání přihlašovacích údajů přihlašovací jméno ke svému účtu Azure.  
+### <a name="sign-in-to-your-azure-account"></a>Přihlášení k účtu Azure
+
+Spustit konfiguraci, přihlaste se ke svému účtu Azure. Následující příkaz spustí výchozí prohlížeč a zobrazí výzvu pro přihlašovací údaje ke svému účtu Azure:  
 
 ```azurecli
 az login
 ```
 
-Pokud máte více předplatných Azure, zkontrolujte předplatná pro daný účet.
+Pokud máte více předplatných Azure, zkontrolujte předplatná pro tento účet:
 
 ```azurecli
 az account list
 ```
 
-Určete předplatné, které chcete použít.
+Určete předplatné, které chcete použít:
 
 ```azurecli
 az account set --subscription <your subscription ID>
 ```
 
 ### <a name="identify-your-expressroute-circuits-for-configuration"></a>Identifikujte okruhů ExpressRoute pro konfiguraci
-Můžete povolit globální dosah ExpressRoute mezi jakékoli dva okruhy ExpressRoute nacházejí v podporované země a jejich vytvoření při různých umístění partnerského vztahu. Pokud vaše předplatné vlastní obou okruzích můžete buď okruh a spustit konfiguraci v následujících částech. Pokud dva okruhy jsou v různých předplatných Azure, bude nutné autorizace z jednoho předplatného Azure a předat autorizační klíč při spuštění příkazu konfigurace v rámci předplatného Azure.
+
+Můžete povolit globální dosah ExpressRoute mezi jakékoli dva okruhy ExpressRoute, za předpokladu, nacházejí se v podporované země a byly vytvořeny v různých umístění partnerského vztahu. Pokud vaše předplatné vlastní obou okruzích, můžete buď okruh a spustit konfiguraci, jak je popsáno dále v tomto článku. Pokud jsou dva okruhy v různých předplatných Azure, musí mít povolení k jednomu předplatnému Azure a musí projít v jeho autorizační klíč při spuštění příkazu konfigurace v rámci předplatného Azure.
 
 ## <a name="enable-connectivity-between-your-on-premises-networks"></a>Povolit připojení mezi místními sítěmi
 
-Při spuštění příkazu umožnění konektivity, vezměte v úvahu následující hodnoty:
+Při spuštění příkazu umožnění konektivity, mějte na paměti následující požadavky na hodnoty parametrů:
 
-* *okruh peer* by měl být ID úplné prostředku. Příklad: 
+* *okruh peer* by měl být ID úplné prostředku. Příklad:
 
-  ```
-  /subscriptions/{your_subscription_id}/resourceGroups/{your_resource_group}/providers/Microsoft.Network/expressRouteCircuits/{your_circuit_name}
-  ```
-* *-AddressPrefix* musí být IPv4 je/29 podsítě, například "10.0.0.0/29". IP adresy v této podsíti použije k navázání připojení mezi dva okruhy ExpressRoute. Ve virtuálních sítích Azure nebo v místních sítí, nesmí používat adresy v této podsíti.
+  > /subscriptions/{your_subscription_id}/resourceGroups/{your_resource_group}/providers/Microsoft.Network/expressRouteCircuits/{your_circuit_name}
 
-Spusťte následující rozhraní příkazového řádku pro připojení dvou okruhů ExpressRoute. Použijte příkaz v následujícím příkladu:
+* *Předpona adresy* musí být "/ 29" podsíť IPv4 (například "10.0.0.0/29"). K navázání připojení mezi dva okruhy ExpressRoute používáme IP adres v této podsíti. Ve virtuálním sítím Azure nebo v místních sítí, nesmí používat adresy v této podsíti.
+
+Spuštěním následujícího příkazu rozhraní příkazového řádku se připojte dva okruhy ExpressRoute:
 
 ```azurecli
 az network express-route peering connection create -g <ResourceGroupName> --circuit-name <Circuit1Name> --peering-name AzurePrivatePeering -n <ConnectionName> --peer-circuit <Circuit2ResourceID> --address-prefix <__.__.__.__/29>
 ```
 
-Výstup příkazového řádku by měl vypadat jako v následujícím příkladu:
+Výstup příkazového řádku by měl vypadat takto:
 
 ```azurecli
 {
@@ -94,67 +95,67 @@ Výstup příkazového řádku by měl vypadat jako v následujícím příkladu
 }
 ```
 
-Po dokončení výše uvedené operace by měla mít připojení mezi vaší místní sítě na obou stranách prostřednictvím dvou okruhů ExpressRoute.
+Po dokončení této operace musíte připojení mezi vaší místní sítě na obou stranách prostřednictvím dvou okruhů ExpressRoute.
 
-### <a name="expressroute-circuits-in-different-azure-subscriptions"></a>Okruhy ExpressRoute v různých předplatných Azure
+## <a name="enable-connectivity-between-expressroute-circuits-in-different-azure-subscriptions"></a>Povolit připojení mezi okruhů ExpressRoute v různých předplatných Azure
 
-Pokud dva okruhy nejsou ve stejném předplatném Azure, budete potřebovat autorizaci. V následující konfiguraci autorizace je vygenerována v předplatném okruh 2 a autorizační klíč je předána na okruh 1.
+Pokud dva okruhy nejsou ve stejném předplatném Azure, musíte autorizaci. V následující konfiguraci můžete generovat autorizace v předplatném okruh 2 a předat autorizační klíč k okruhu 1.
 
-Generovat autorizačního klíče. 
-```azurecli
-az network express-route auth create --circuit-name <Circuit2Name> -g <Circuit2ResourceGroupName> -n <AuthorizationName>
-```
+1. Generovat autorizačního klíče:
 
-Výstup rozhraní příkazového řádku by měl vypadat nějak takto.
+   ```azurecli
+   az network express-route auth create --circuit-name <Circuit2Name> -g <Circuit2ResourceGroupName> -n <AuthorizationName>
+   ```
 
-```azurecli
-{
-  "authorizationKey": "<authorizationKey>",
-  "authorizationUseStatus": "Available",
-  "etag": "W/\"cfd15a2f-43a1-4361-9403-6a0be00746ed\"",
-  "id": "/subscriptions/<SubscriptionID>/resourceGroups/<Circuit2ResourceGroupName>/providers/Microsoft.Network/expressRouteCircuits/<Circuit2Name>/authorizations/<AuthorizationName>",
-  "name": "<AuthorizationName>",
-  "provisioningState": "Succeeded",
-  "resourceGroup": "<Circuit2ResourceGroupName>",
-  "type": "Microsoft.Network/expressRouteCircuits/authorizations"
-}
-```
+   Výstup příkazového řádku by měl vypadat takto:
 
-Poznamenejte si okruh 2 Id prostředku stejně jako autorizační klíč.
+   ```azurecli
+   {
+     "authorizationKey": "<authorizationKey>",
+     "authorizationUseStatus": "Available",
+     "etag": "W/\"cfd15a2f-43a1-4361-9403-6a0be00746ed\"",
+     "id": "/subscriptions/<SubscriptionID>/resourceGroups/<Circuit2ResourceGroupName>/providers/Microsoft.Network/expressRouteCircuits/<Circuit2Name>/authorizations/<AuthorizationName>",
+     "name": "<AuthorizationName>",
+     "provisioningState": "Succeeded",
+     "resourceGroup": "<Circuit2ResourceGroupName>",
+     "type": "Microsoft.Network/expressRouteCircuits/authorizations"
+   }
+   ```
 
-Spusťte následující příkaz okruh 1. Předejte Id prostředku okruh 2 a autorizační klíč 
-```azurecli
-az network express-route peering connection create -g <ResourceGroupName> --circuit-name <Circuit1Name> --peering-name AzurePrivatePeering -n <ConnectionName> --peer-circuit <Circuit2ResourceID> --address-prefix <__.__.__.__/29> --authorization-key <authorizationKey>
-```
+1. Poznamenejte si ID prostředku a autorizační klíč pro okruh. 2.
 
-Po dokončení výše uvedené operace by měla mít připojení mezi vaší místní sítě na obou stranách prostřednictvím dvou okruhů ExpressRoute.
+1. Spusťte následující příkaz okruh 1, předejte ID a autorizační klíč prostředku okruh 2:
+
+   ```azurecli
+   az network express-route peering connection create -g <ResourceGroupName> --circuit-name <Circuit1Name> --peering-name AzurePrivatePeering -n <ConnectionName> --peer-circuit <Circuit2ResourceID> --address-prefix <__.__.__.__/29> --authorization-key <authorizationKey>
+   ```
+
+Po dokončení této operace musíte připojení mezi vaší místní sítě na obou stranách prostřednictvím dvou okruhů ExpressRoute.
 
 ## <a name="get-and-verify-the-configuration"></a>Získání a ověřit konfiguraci
 
-Použijte následující příkaz k ověření konfigurace na okruh, kde konfigurace byla provedena, například 1 okruh v předchozím příkladu.
+Použijte následující příkaz k ověření konfigurace na okruh, kde konfigurace proběhla (okruh 1 v předchozím příkladu):
 
 ```azurecli
 az network express-route show -n <CircuitName> -g <ResourceGroupName>
 ```
 
-V rozhraní příkazového řádku výstupu se zobrazí *CircuitConnectionStatus*. To zjistíte, zda připojení mezi dva okruhy pokládáme stav, "Připojeno", nebo Ne, "Odpojené". 
+Ve výstupu rozhraní příkazového řádku, zobrazí se vám *CircuitConnectionStatus*. Ta vám zjistí, zda je připojení mezi dva okruhy navázat ("připojeno"), nebo nejde navázat spojení ("odpojeno"). 
 
 ## <a name="disable-connectivity-between-your-on-premises-networks"></a>Zakázat připojení mezi místními sítěmi
 
-Pro jeho zakázání spuštěním příkazů proti okruh, kde konfigurace byla provedena, například 1 okruh v předchozím příkladu.
+Chcete-li zakázat připojení, spusťte následující příkaz je okruh ve kterém byla konfigurace provedené (okruh 1 v předchozím příkladu).
 
 ```azurecli
 az network express-route peering connection delete -g <ResourceGroupName> --circuit-name <Circuit1Name> --peering-name AzurePrivatePeering -n <ConnectionName>
 ```
 
-Můžete použít rozhraní příkazového řádku zobrazit ověření stavu. 
+Použití ```show``` příkazu ověřte stav.
 
-Po dokončení výše uvedené operace se už nebude mít připojení mezi vaší místní síti prostřednictvím okruhů ExpressRoute. 
-
+Po dokončení této operace se již budete mít připojení mezi vaší místní sítě prostřednictvím okruhů ExpressRoute.
 
 ## <a name="next-steps"></a>Další postup
+
 * [Další informace o ExpressRoute globální dosah](expressroute-global-reach.md)
 * [Ověření připojení ExpressRoute](expressroute-troubleshooting-expressroute-overview.md)
-* [Propojení okruhu ExpressRoute k virtuální síti Azure](expressroute-howto-linkvnet-arm.md)
-
-
+* [Propojení okruhu ExpressRoute k virtuální síti](expressroute-howto-linkvnet-arm.md)

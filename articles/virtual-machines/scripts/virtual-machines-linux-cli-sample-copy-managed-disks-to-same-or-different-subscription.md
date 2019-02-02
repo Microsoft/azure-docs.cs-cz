@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 05/19/2017
 ms.author: ramankum
 ms.custom: mvc
-ms.openlocfilehash: 4f870c052d83352c8cfd692ea5f30a42071c95a0
-ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
+ms.openlocfilehash: 3a6133cd512f07ca15b57f3c11402e6ed167d83c
+ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53582028"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55662257"
 ---
 # <a name="copy-managed-disks-to-same-or-different-subscription-with-cli"></a>Kopírování spravovaných disků do stejného nebo jiného předplatného pomocí rozhraní příkazového řádku
 
@@ -44,7 +44,7 @@ Tento skript k vytvoření nového spravovaného disku v cílovém předplatném
 | Příkaz | Poznámky |
 |---|---|
 | [az disk show](https://docs.microsoft.com/cli/azure/disk#az_disk_show) | Získá všechny vlastnosti spravovaného disku s použitím názvu a vlastností skupiny prostředků spravovaného disku. Vlastnost ID se použije ke zkopírování spravovaného disku do jiného předplatného.  |
-| [az disk create](https://docs.microsoft.com/cli/azure/disk#az_disk_create) | Zkopíruje spravovaný disk vytvořením nového spravovaného disku v jiném předplatném s použitím ID a názvu nadřazeného spravovaného disku.  |
+| [az disk create](https://docs.microsoft.com/cli/azure/disk) | Zkopíruje spravovaný disk vytvořením nového spravovaného disku v jiném předplatném s použitím ID a názvu nadřazeného spravovaného disku.  |
 
 ## <a name="next-steps"></a>Další postup
 

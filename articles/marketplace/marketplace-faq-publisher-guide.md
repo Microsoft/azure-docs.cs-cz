@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 12/31/2018
 ms.author: ellacroi
-ms.openlocfilehash: 93b1b0c8288fb408e4af6aba2eb2267ce650208c
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 56a324aba3c5d8f550e5b51ff49b5ee0e74a3415
+ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55247115"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55658330"
 ---
 # <a name="marketplace-faqs"></a>Nejčastější dotazy k tržišti Marketplace
 
@@ -358,7 +358,7 @@ Vydavatelé, kteří publikují Transact seznam typů: Virtuální počítač Az
 
 **Co jsou zájemci a proč jsou pro mě důležité jako vydavatele na webu Marketplace?**
 
-Potenciální zákazníci jsou zákazníci, kteří jsou nasazení produktů z webu Marketplace. Zda váš produkt je uvedená na [Azure Marketplace](https://azuremarketplace.microsoft.com) nebo [AppSource](https://appsource.microsoft.com), budete moci přijímat potenciálních zákazníků od zákazníků, kteří mají zájem o produktu.  Můžete nastavit cílové potenciálních zákazníků na vaši nabídku. Další informace najdete v tématu [stát vydavatelem cloudové Tržiště](https://docs.microsoft.com/en-us/azure/marketplace/become-publisher).
+Potenciální zákazníci jsou zákazníci, kteří jsou nasazení produktů z webu Marketplace. Zda váš produkt je uvedená na [Azure Marketplace](https://azuremarketplace.microsoft.com) nebo [AppSource](https://appsource.microsoft.com), budete moci přijímat potenciálních zákazníků od zákazníků, kteří mají zájem o produktu.  Můžete nastavit cílové potenciálních zákazníků na vaši nabídku. Další informace najdete v tématu [stát vydavatelem cloudové Tržiště](https://docs.microsoft.com/azure/marketplace/become-publisher).
 
 **Kde získám pomoc při nastavování mé určení potenciálních zákazníků?**
 

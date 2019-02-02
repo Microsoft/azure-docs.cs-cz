@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/30/2017
 ms.author: diviso
-ms.openlocfilehash: d57a7baafc533aee52ec8012d410d5f25b510b60
-ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
+ms.openlocfilehash: 5378151d01418a81977f2fc2f562a6540bbb665d
+ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54359948"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55663181"
 ---
 # <a name="automating-azure-virtual-machine-deployment-with-chef"></a>Automatizace nasazení virtuálních počítačů Azure pomocí Chefu
 [!INCLUDE [learn-about-deployment-models](../../../includes/learn-about-deployment-models-both-include.md)]
@@ -57,7 +57,7 @@ Pracovní stanice pro přípravu nejprve vytvoříte adresář pro uložení kon
 
 Vytvořte adresář s názvem C:\chef.
 
-Stáhněte si prostředí Azure PowerShell [nastavení publikování](https://docs.microsoft.com/en-us/dynamics-nav/how-to--download-and-import-publish-settings-and-subscription-information).
+Stáhněte si prostředí Azure PowerShell [nastavení publikování](https://docs.microsoft.com/dynamics-nav/how-to--download-and-import-publish-settings-and-subscription-information).
 
 ## <a name="setup-chef-server"></a>Nastavte Chef Server
 

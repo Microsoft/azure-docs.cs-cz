@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 1/2/2019
 ms.author: ellacroi
-ms.openlocfilehash: ef7b4377da541068cef7cdd2de5a98d33c3b80ec
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 88ffa70f7ac21a2c28af994f1e2ed3b6939f6ad9
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55198974"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55567413"
 ---
 # <a name="azure-marketplace-participation-policies"></a>Zásady účasti na Azure Marketplace
 
@@ -35,7 +35,7 @@ Tyto zásady účasti na webu Microsoft Azure Marketplace platí pro všechny vy
 
 1. Vydavatelé se musí nacházet v zemi, ze které web Azure Marketplace podporuje prodej. Web Azure Marketplace aktuálně podporuje prodej z těchto zemí:  Afghánistán, Albánie, Alžírsko, Angola, Antigua a Barbuda, Argentina, Arménie, Austrálie, Ázerbájdžán, Bahrajn, Bangladéš, Belgie, Bělorusko, Benin, Bolívie, Bosna a Hercegovina, Botswana, Brazílie, Bulharsko, Burkina Faso, Burundi, Čad, Černá Hora, Česká republika, Dánsko, Demokratická republika Kongo, Dominika, Dominikánská republika, Egypt, Ekvádor, Eritrea, Estonsko, Etiopie, Fidži, Filipíny, Finsko, Francie, Ghana, Gruzie, Guatemala, Guinea, Haiti, Honduras, Hongkong – zvláštní administrativní oblast, Chile, Chorvatsko, Indie, Indonésie, Irák, Irsko, Island, Itálie, Izrael, Jamajka, Japonsko, Jihoafrická republika, Jižní Korea, Jordánsko, Kambodža, Kamerun, Kanada, Katar, Kazachstán, Keňa, Kolumbie, Komory, Kostarika, Kuvajt, Kypr, Laos, Libanon, Libérie, Lichtenštejnsko, Litva, Lotyšsko, Lucembursko, Madagaskar, Maďarsko, Malajsie, Malawi, Mali, Malta, Maroko, Mauricius, Mexiko, Monako, Mongolsko, Mosambik, Německo, Nepál, Niger, Nigérie, Nikaragua, Nizozemsko, Norsko, Nový Zéland, Omán, Pákistán, Panama, Paraguay, Peru, Pobřeží slonoviny, Polsko, Portugalsko, Rakousko, Republika Kongo, Rumunsko, Rusko, Rwanda, Řecko, Salvador, Saúdská Arábie, Senegal, Sierra Leone, Singapur, Slovensko, Slovinsko, Somálsko, Spojené arabské emiráty, Spojené království, Srbsko, Srí Lanka, Středoafrická republika, Španělsko, Švédsko, Švýcarsko, Tádžikistán, Tanzanie, Thajsko, Togo, Tonga, Trinidad a Tobago, Tunisko, Turecko, Turkmenistán, Uganda, Ukrajina, Uruguay, USA, Uzbekistán, Venezuela, Vietnam, Východní Timor, Zambie, Zimbabwe.
 
-1. Každou nabídku musí vydavatel zpřístupnit aspoň v jedné ze zemí, do kterých web Azure Marketplace podporuje prodej. Azure Marketplace aktuálně podporuje prodej do těchto zemí:  Alžírsko, Argentina, Austrálie, Bahrajn, Belgie, Bělorusko, Brazílie, Bulharsko, Černá Hora, Česká republika, Dánsko, Dominikánská republika, Egypt, Ekvádor, Estonsko, Filipíny, Finsko, Francie, Guatemala, Hongkong, Chile, Chorvatsko, Indie, Indonésie, Irsko, Island, Itálie, Izrael, Japonsko, Jižní Afrika, Jižní Korea, Jordánsko, Kanada, Katar, Kazachstán, Keňa, Kolumbie, Kostarika, Kuvajt, Kypr, Lichtenštejnsko, Litva, Lotyšsko, Lucembursko, Maďarsko, Makedonie, Malajsie, Malta, Maroko, Mexiko, Německo, Nigérie, Nizozemsko, Norsko, Nový Zéland, Omán, Pákistán, Panama, Paraguay, Peru, Polsko, Portoriko, Portugalsko, Rakousko, Rumunsko, Rusko, Řecko, Salvador, Saúdská Arábie, Singapur, Slovensko, Slovinsko, Spojené arabské emiráty, Spojené království, Srbsko, Srí Lanka, Španělsko, Švédsko, Švýcarsko, Thajsko, Tchaj-wan, Trinidad a Tobago, Tunisko, Turecko, Ukrajina, Uruguay, USA a Venezuela. 
+1. Každou nabídku musí vydavatel zpřístupnit aspoň v jedné ze zemí, do kterých web Azure Marketplace podporuje prodej. Azure Marketplace aktuálně podporuje prodej do těchto zemí: Alžírsko, Argentina, Austrálie, Bahrajn, Belgie, Bělorusko, Brazílie, Bulharsko, Černá Hora, Česká republika, Dánsko, Dominikánská republika, Egypt, Ekvádor, Estonsko, Filipíny, Finsko, Francie, Guatemala, Hongkong, Chile, Chorvatsko, Indie, Indonésie, Irsko, Island, Itálie, Izrael, Japonsko, Jižní Afrika, Jižní Korea, Jordánsko, Kanada, Katar, Kazachstán, Keňa, Kolumbie, Kostarika, Kuvajt, Kypr, Lichtenštejnsko, Litva, Lotyšsko, Lucembursko, Maďarsko, Makedonie, Malajsie, Malta, Maroko, Mexiko, Německo, Nigérie, Nizozemsko, Norsko, Nový Zéland, Omán, Pákistán, Panama, Paraguay, Peru, Polsko, Portoriko, Portugalsko, Rakousko, Rumunsko, Rusko, Řecko, Salvador, Saúdská Arábie, Singapur, Slovensko, Slovinsko, Spojené arabské emiráty, Spojené království, Srbsko, Srí Lanka, Španělsko, Švédsko, Švýcarsko, Thajsko, Tchaj-wan, Trinidad a Tobago, Tunisko, Turecko, Ukrajina, Uruguay, USA a Venezuela.
 
 1. Vydavatelé musí zachovat dobrou finanční situaci.
 
@@ -47,7 +47,7 @@ Tyto zásady účasti na webu Microsoft Azure Marketplace platí pro všechny vy
 
 1. Vydavatelé musí oznámit dostupnost jejich nabídek na webu Azure Marketplace na svém veřejném webu a musí uvést hypertextové odkazy na svých stránkách zveřejněné na nabídky [ https://azuremarketplace.microsoft.com/marketplace/ ](https://azuremarketplace.microsoft.com/marketplace/).
 
-1. Vydavatelé musí každou nabídku klasifikovat podle jedné nebo víc klasifikačních taxonomií poskytovaných microsoftem, včetně kategorií popsaných v 4 části tohoto dokumentu. Pokud Microsoft bere v úvahu klasifikace vydavatel vybraných považovat na nepřesný, si vyhrazuje právo změnit libovolné nabídky.
+1. Vydavatelé musí každou nabídku klasifikovat podle jedné nebo víc klasifikačních taxonomií poskytovaných microsoftem, včetně kategorií popsaných v **nabídka: Definice klasifikací** část tohoto dokumentu. Pokud Microsoft bere v úvahu klasifikace vydavatel vybraných považovat na nepřesný, si vyhrazuje právo změnit libovolné nabídky.
 
 1. Pokud nabídka vydavatele Microsoft Azure Certified a neběží především v Microsoft Azure, třeba vydavatele placenou verzi nabídky na webu Marketplace, do 90 dnů od publikování bezplatné nebo verze BYOL.
 
@@ -122,7 +122,7 @@ Po publikování nabídky služby na webu Marketplace musí vydavatelé udržova
     * Nabídka získává soustavně mnoho lístků podpory nebo
     * Vydavatel nedodržel podmínky a ujednání smlouvy s vydavatelem na webu Microsoft Marketplace, Příručky publikování na webu Marketplace nebo tohoto dokumentu.
 
-1. Z různých důvodů se můžete rozhodnout odebrat svou nabídku z webu Marketplace. Odebrání nabídky zajišťuje, že noví zákazníci už vaši nabídku nebudou moci zakoupit ani nasadit, ale nemá žádný vliv na stávající zákazníky. Ukončení nabídky je proces ukončení služby a/nebo licenční smlouvy mezi vámi a vašimi stávajícími zákazníky. Pokyny a zásady týkající se odebrání a ukončení nabídky se řídí smlouvou s vydavatelem na webu Microsoft Marketplace (Viz Sekce 7). Odebrání nebo ukončení si můžete vyžádat zaprotokolováním lístku podpory.
+1. Z různých důvodů se můžete rozhodnout odebrat svou nabídku z webu Marketplace. Odebrání nabídky zajišťuje, že noví zákazníci už vaši nabídku nebudou moci zakoupit ani nasadit, ale nemá žádný vliv na stávající zákazníky. Ukončení nabídky je proces ukončení služby a/nebo licenční smlouvy mezi vámi a vašimi stávajícími zákazníky. Pokyny a zásady týkající se odebrání a ukončení nabídky se řídí smlouvy vydavatele Microsoft Marketplace (viz oddíl "Platební podmínky"). Odebrání nebo ukončení si můžete vyžádat zaprotokolováním lístku podpory.
 
 ## <a name="payment-terms"></a>Platební podmínky
 
@@ -138,19 +138,35 @@ Microsoft povoluje vydavatelům zahrnout do svých nabídek imagí následujíc�
 
 ## <a name="taxes"></a>Daně
 
-1. **Země pro bankovní převody Microsoftu.**
+1. **Zodpovědnost za daně z prodeje koncový zákazník.**
 
-    1. Následující země jsou bankovní převody Microsoftu, jak je definováno ve smlouvě vydavatele Microsoft Marketplace: Evropská unie, Kanada, Indie, Irsko, Lichtenštejnsko, Monako, Nový Zéland, Norsko, Portoriko, Jižní Korea, Švýcarsko, USA. Austrálie, Saúdská Arábie, Tchaj-wan a Spojené arabské emiráty jsou zeměmi pro Microsoft Remittance pouze pro prodeje přímo na webu.
+    1. Obecně platí každý vydavatele a Microsoftu zodpovědnost za daně z prodeje koncový zákazník závisí na zemi a nákup scénář, ve které se prodávají nabídky.
 
-    1. V Irsku Microsoft účtuje všem irským firemním zákazníkům irskou DPH (pokud neposkytnou podrobnosti o platném certifikátu VAT 56B). Firemním zákazníkům v rámci Evropské unie a Norska (se sídlem mimo Irsko) Microsoft účtuje nulovou sazbu DPH, pokud dodají platné DIČ. Pokud platné DIČ nedodají, účtuje se zákazníkům sazba DPH platná v zemi nebo jurisdikci zákazníka.
+    1. V určitých zemích (**Microsoft Managed zemí**) společnost Microsoft nenese zodpovědnost za správu koncový zákazník zdanění, které mohou zahrnovat ověření stavu firmy zákazníkům získat DIČ nebo potvrzení o osvobození, hlubší spravovat vztahy se zákazníky a výpočtu, shromažďování a/nebo převodu daně.  V případech, kde se provádějí prodej přes partnery Microsoft předpokládá všech partnerů ochrany před jsou firmy a jsou odpovídajícím způsobem plnění jejich daňové povinnosti.  Další informace najdete v [nejčastějších dotazech týkajících se](https://automaticbillingspec.blob.core.windows.net/spec/FAQ%20for%20ISV%20Azure%20Marketplace%20Updates%20March%202019.pdf).
 
-    1. Microsoft účtuje všem zákazníkům ve Švýcarsku nebo Lichtenštejnsku účtovat Švýcarské DPH.
+    1. Ve všech zemích, které nejsou spravované země Microsoft (**ISV spravované zemí**), vydavatelé na vědomí a souhlasíte, že výhradní odpovědností zjistit a spravovat zdanění koncový zákazník, jako je registrace, vydavatelů daně výpočtu, kolekce a pro úhrady, ověření stavu firmy zákazníků a poskytování zákazníkům daňové doklady pro všechny nabídky, kterou těchto vydavatelů v zemích spravované ISV zpřístupnit.  Vydavatelé na vědomí, že s ohledem na prodej v zemi pro spravované nezávislých výrobců softwaru, Microsoft aktuálně nemusí být schopen poskytnout.
 
-1. **Země pro úhrady ISV.**
+    1. Koncovým zákazníkům koupit nabídky přímo od Microsoftu nebo od partnerů Microsoftu, kterým vydavatele licence její produkt.  Kromě toho existuje několik různých multilicenčních programů.  V některých případech může přestat zemí spravované Microsoft ISV spravované zemí a naopak (naleznete v části **Microsoft Managed zemí**níže). Informace týkající se zákaznických nákupní scénářů najdete v [nejčastější dotazy k Azure Marketplace](https://docs.microsoft.com/azure/marketplace/marketplace-faq-publisher-guide).
 
-    1. Bankovní převody ISV zahrnují všechny prodeje do zemí jak definuje sekce 1 (3) těchto zásad, který není pro bankovní převody Microsoftu. Kromě toho jsou prodeje Austrálie, Saúdská Arábie, Tchaj-wan, Spojené arabské emiráty prostřednictvím podnikového kanálu považují i prodeje pro úhrady ISV. S ohledem na vydavatelů v Tchaj-wan, nemůže však Microsoft potvrdit, že jsou všechny tchajwanský vydavatele shromažďování a uhrazení příslušné daně.
+1. **Zemí, spravovaná Microsoftem.**
 
-    1. Pokud se vydavatelé rozhodnou zpřístupnit v zemi pro úhrady ISV, těchto vydavatelů mají odpovědnost za určení svých daňových povinností v zemi pro úhrady ISV, pokud existuje.  Musíte jejich informovanost o tom, že Microsoft nemusí být aktuálně schopný poskytnout podrobnosti o transakci potřebné pro aby vydavatel poskytl zákazníkům daňové doklady.
+    1. Následující země jsou zeměmi pro spravované Microsoftu pro prodej prostřednictvím všech zákaznických nákupní scénářů: Arménie, Bělorusko, Evropské unie, Kanada, Indie, Irsko, Lichtenštejnsko, Monako, Nový Zéland, Norsko, Portoriko, Rusko, Saúdská Arábie, Srbsko, Jižní Korea, Švýcarsko, Tchaj-wan, Turecko, Spojené arabské emiráty a USA. 
+
+    1. Austrálie představuje země spravované Microsoftu pro prodej přes všechny scénáře nákupu zákazníků s výjimkou nákupní situaci u zákazníka smlouvu Enterprise.
+
+    1. Společnost Microsoft spravuje koncový zákazník zdanění pro vydavatele pro přehlednost a předpokládá, že nejběžnějších scénářů pro určení zemí a strategie pro správu koncový zákazník zdanění.
+
+    1. Společnost Microsoft neposkytuje žádné záruky, že akce společnosti Microsoft zcela splňují povinnosti vydavatele v Microsoft Managed zemích.  Pro všechny Microsoft Managed země společnost Microsoft důrazně doporučuje, že vydavatel spolupracovat s vlastní daně poradci pro ověření, zda úhradě daní Microsoft Managed dostatečně řeší požadavky na dodržování předpisů vydavatele.  To je zvlášť zásadní pro všechny Microsoft spravované země, ze kterého vydavatelé prodávat svoje produkty.  Například podle vydavatele a prodejní nabídky v Saúdská Arábie, může určit spoléhání se na Microsoft ke správě daně nemusí být dostatečné pro uspokojení vydavatele závazky dodržování předpisů.
+
+1. **Nezávislý výrobce softwaru spravovat zemích.**
+
+    1. Zemí spravované ISV zahrnují Austrálie, pro všechny prodejní prostřednictvím zákazník se smlouvou Enterprise zakoupit scénář a ve všech zemích není odkazováno v oddíle na **Microsoft Managed zemí**.
+
+1. **Zvláštní případy.**
+
+    1. *Brazílie*.  Prodeje v Brazílii přes všechny zákazník zakoupit scénáře s výjimkou CSP, Brazílie je Microsoft Managed zemi a vystupuje Microsoft jako prodejce, nikoli vydavatelů agenta.  Pro prodej v Brazílii prostřednictvím zákazníka CSP nákupní scénář, Microsoft slouží jako vydavatelů agenta a prodává z Brazílie entity k brazilská CSP, který společnost Microsoft nenese jsou bez daně, které jsou kompatibilní. 
+
+    1. *Mexiko*.  Pro prodej v Mexiku prostřednictvím nákupu situaci u zákazníka smlouvu Enterprise Mexiko je Microsoft Managed zemi a vystupuje Microsoft jako prodejce, nikoli vydavatelů agenta.  Pro prodeje v Mexiku přes všechny scénáře nákupu zákazníků s výjimkou smlouvy Enterprise Mexiko země spravované ISV a vystupuje Microsoft jako vydavatelů agenta.
 
 ## <a name="security-events"></a>Události zabezpečení
 

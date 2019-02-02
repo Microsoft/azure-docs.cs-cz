@@ -8,14 +8,14 @@ ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc
-ms.openlocfilehash: 070a6ee4bc712b2dbec598cdb9be5c324895c033
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
-ms.translationtype: HT
+ms.openlocfilehash: f65463b534988e0a721a1a5f816183f8dd8ebcaf
+ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50154977"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55657650"
 ---
-# <a name="tutorial-customize-the-azure-iot-central-operators-view"></a>Kurz: Přizpůsobení zobrazení Azure IoT Central pro operátora
+# <a name="tutorial-customize-the-azure-iot-central-operators-view"></a>Kurz: Přizpůsobení zobrazení operátora Azure IoT Central
 
 Tento kurz vám jako tvůrci ukáže, jak přizpůsobit zobrazení vaší aplikace pro operátora. Když měníte aplikaci jako tvůrce, můžete zobrazit náhled zobrazení operátor v aplikaci Microsoft Azure IoT Central.
 
@@ -30,6 +30,8 @@ V tomto kurzu se naučíte:
 > * Zobrazení náhledu zařízení jako operátor
 > * Konfigurace výchozí domovské stránky
 > * Zobrazení náhledu výchozí domovské stránky jako operátor
+
+[!INCLUDE [iot-central-experimental-note](../../includes/iot-central-experimental-note.md)]
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -162,7 +164,7 @@ Pokud chcete zobrazit náhled domovské stránky tak, jak ji uvidí operátor, a
 
 Když kliknete na dlaždice s obrázky a odkazy, přejdete na adresy URL, které jste nastavili jako tvůrce.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 V tomto kurzu jste se naučili, jak přizpůsobit zobrazení aplikace pro operátora.
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: TomSh
-ms.openlocfilehash: b2b247b50eff446776edfbf3a552e92af3c7dfff
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: fe98caa2a78722d621c43f1ef708e24add0efb56
+ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55228793"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55664110"
 ---
 # <a name="azure-advanced-threat-detection"></a>Rozšířená detekce hrozeb Azure
 
@@ -29,7 +29,7 @@ Azure nabízí širokou škálu možnosti konfigurace a vlastního nastavení za
 
 ## <a name="azure-active-directory-identity-protection"></a>Azure Active Directory Identity Protection
 
-[Azure AD Identity Protection](https://docs.microsoft.com/azure/active-directory/active-directory-identityprotection) je [Azure Active Directory Premium P2](https://docs.microsoft.com/azure/active-directory/active-directory-editions) edition funkce, která poskytuje přehled o rizikových událostech a potenciálních chybách zabezpečení, které můžou ovlivnit identity vaší organizace. Služba identity Protection používá existující detekce anomálií funkcím služby Azure AD, které jsou k dispozici prostřednictvím [Azure AD neobvyklé aktivity sestavy](https://docs.microsoft.com/azure/active-directory/active-directory-view-access-usage-reports#anomalous-activity-reports)a zavádí nové typy rizikových událostí, které dokáží detekovat anomálie v reálném čase.
+[Azure AD Identity Protection](https://docs.microsoft.com/azure/active-directory/active-directory-identityprotection) je [Azure Active Directory Premium P2](https://docs.microsoft.com/azure/active-directory/active-directory-editions) edition funkce, která poskytuje přehled o rizikových událostech a potenciálních chybách zabezpečení, které můžou ovlivnit identity vaší organizace. Služba identity Protection používá existující detekce anomálií funkcím služby Azure AD, které jsou k dispozici prostřednictvím [Azure AD neobvyklé aktivity sestavy](https://docs.microsoft.com/azure/active-directory/active-directory-view-access-usage-reports)a zavádí nové typy rizikových událostí, které dokáží detekovat anomálie v reálném čase.
 
 ![Azure AD Identity Protection diagramu](./media/azure-threat-detection/azure-threat-detection-fig1.png)
 

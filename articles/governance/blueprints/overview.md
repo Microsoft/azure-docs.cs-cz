@@ -4,17 +4,17 @@ description: Azure Blueprints je služba v Azure, která se používá k vytvá�
 services: blueprints
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 12/05/2018
+ms.date: 02/01/2019
 ms.topic: overview
 ms.service: blueprints
 manager: carmonm
 ms.custom: mvc
-ms.openlocfilehash: bea01e8f017622f1407bbac993e50112140cc472
-ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
+ms.openlocfilehash: 7803ed99a61a9b4ad819da882daf38cbfd6fffe9
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/12/2019
-ms.locfileid: "54246241"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55563367"
 ---
 # <a name="what-is-azure-blueprints"></a>Co je Azure Blueprints?
 
@@ -56,17 +56,14 @@ Podrobný plán se skládá z _artefaktů_. Podrobné plány aktuálně jako art
 
 |Prostředek  | Možnosti hierarchie| Popis  |
 |---------|---------|---------|
-|Skupiny prostředků     | Předplatné | Vytvořte novou skupinu prostředků pro použití jinými artefakty v rámci podrobného plánu.  Tyto zástupné skupiny prostředků vám umožní uspořádat prostředky přesně tak, jak je chcete mít strukturované, a poskytují omezovač oboru pro zahrnuté artefakty zásad a přiřazení rolí a šablony Azure Resource Manageru.         |
-|Šablona Azure Resource Manageru      | Předplatné, skupina prostředků | Šablony slouží k vytváření složitých prostředí. Příklady prostředí: farma SharePointu, konfigurace stavu Azure Automation nebo pracovní prostor Log Analytics. |
-|Přiřazení zásad     | Předplatné, skupina prostředků | Umožňuje přiřazení zásady nebo iniciativy k předplatnému, ke kterému je podrobný plán přiřazený. Zásady nebo iniciativa musí být v rámci oboru podrobného plánu (ve skupině pro správu podrobného plánu nebo pod ní). Pokud zásady nebo iniciativa obsahuje parametry, tyto parametry se přiřadí při vytvoření podrobného plánu nebo během přiřazení podrobného plánu.       |
-|Přiřazení role   | Předplatné, skupina prostředků | Přidejte existujícího uživatele nebo skupinu k předdefinované roli, aby se zajistilo, že k vašim prostředkům budou mít vždy správný přístup správní lidé. Přiřazení rolí se dá definovat pro celé předplatné nebo vnořit do konkrétní skupiny prostředků, která je součástí podrobného plánu. |
+|Skupiny prostředků | Předplatné | Vytvořte novou skupinu prostředků pro použití jinými artefakty v rámci podrobného plánu.  Tyto zástupné skupiny prostředků vám umožní uspořádat prostředky přesně tak, jak je chcete mít strukturované, a poskytují omezovač oboru pro zahrnuté artefakty zásad a přiřazení rolí a šablony Azure Resource Manageru. |
+|Šablona Azure Resource Manageru | Předplatné, skupina prostředků | Šablony slouží k vytváření složitých prostředí. Příklady prostředí: farma SharePointu, konfigurace stavu Azure Automation nebo pracovní prostor Log Analytics. |
+|Přiřazení zásad | Předplatné, skupina prostředků | Umožňuje přiřazení zásady nebo iniciativy k předplatnému, ke kterému je podrobný plán přiřazený. Zásady nebo iniciativa musí být v rámci oboru umístění definice podrobného plánu. Pokud zásady nebo iniciativa obsahuje parametry, tyto parametry se přiřadí při vytvoření podrobného plánu nebo během přiřazení podrobného plánu. |
+|Přiřazení role | Předplatné, skupina prostředků | Přidejte existujícího uživatele nebo skupinu k předdefinované roli, aby se zajistilo, že k vašim prostředkům budou mít vždy správný přístup správní lidé. Přiřazení rolí se dá definovat pro celé předplatné nebo vnořit do konkrétní skupiny prostředků, která je součástí podrobného plánu. |
 
-### <a name="blueprints-and-management-groups"></a>Podrobné plány a skupiny pro správu
+### <a name="blueprint-definition-locations"></a>Umístění definice podrobného plánu
 
-Při vytváření definice podrobného plánu definujete, kam se podrobný plán uloží. V současnosti se podrobné plány můžou uložit jednom do [skupiny pro správu](../management-groups/overview.md), ke které máte přístup jako **Přispěvatel**. Podrobný plán je k dispozici pro přiřazení ke všem podřízeným předplatným této skupiny pro správu.
-
-> [!IMPORTANT]
-> Pokud nemáte přístup k žádné skupině pro správu nebo nemáte žádné skupiny pro správu nakonfigurované, při načtení seznamu definic podrobných plánů se ukáže, že žádná není k dispozici, a při kliknutí na **Obor** se otevře okno s upozorněním o načítání skupin pro správu. Pokud to chcete vyřešit, ujistěte se, že součástí [skupiny pro správu](../management-groups/overview.md) je předplatné, ke kterému máte náležitý přístup.
+Při vytváření definice podrobného plánu definujete, kam se podrobný plán uloží. Podrobné plány. je možné ukládat do [skupiny pro správu](../management-groups/overview.md) nebo předplatné, které máte **Přispěvatel** přístup k. Pokud je umístění skupiny pro správu, podrobný plán je možné přiřadit na všechny podřízené předplatné z této skupiny pro správu.
 
 ### <a name="blueprint-parameters"></a>Parametry podrobného plánu
 
@@ -101,7 +98,7 @@ Pokud chcete podrobné plány odstranit, váš účet potřebuje tato oprávněn
 - `Microsoft.Blueprint/blueprints/versions/delete`
 
 > [!NOTE]
-> Protože se definice podrobného plánu vytvářejí ve skupině pro správu, musí se oprávnění definice podrobného plánu udělit v oboru skupiny pro správu nebo do oboru skupiny pro správu zdědit.
+> Oprávnění definice podrobného plánu musí být povolen nebo zděděná na skupiny nebo předplatného oborem správy kde je uložen.
 
 Pokud chcete podrobný plán přiřadit nebo zrušit jeho přiřazení, váš účet potřebuje tato oprávnění:
 

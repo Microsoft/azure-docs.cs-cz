@@ -1,7 +1,7 @@
 ---
 title: App Service v Linuxu – nejčastější dotazy – Azure | Dokumentace Microsoftu
 description: Azure App Service v Linuxu – nejčastější dotazy.
-keywords: služby Azure app service, web Apps, nejčastější dotazy, linux, oss, služby web app for containers, více kontejnerů, multicontainer
+keywords: azure app service, web app, faq, linux, oss, web app for containers, multi-container, multicontainer
 services: app-service
 documentationCenter: ''
 author: yili
@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 10/30/2018
 ms.author: yili
 ms.custom: seodec18
-ms.openlocfilehash: cdda4b0951edd0d1471113c48a4082dfa7407211
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: f2fe9efd7d75c95d6cd13cb65e196723c9953716
+ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53719078"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55658823"
 ---
 # <a name="azure-app-service-on-linux-faq"></a>Azure App Service v Linuxu – nejčastější dotazy
 
@@ -77,7 +77,7 @@ Pokud selže nasazení z Gitu do webové aplikace v Linuxu, zvolte jednu z násl
 
 - Použijte funkci průběžné doručování (Preview): Zdrojový kód vaší aplikace můžete uložit v úložišti Git v Azure DevOps nebo úložiště GitHub do pomocí nepřetržitého doručování Azure. Další informace najdete v tématu [konfigurace průběžného doručování pro Linuxovou webovou aplikaci](https://blogs.msdn.microsoft.com/devops/2017/05/10/use-azure-portal-to-setup-continuous-delivery-for-web-app-on-linux/).
 
-- Použití [ZIP nasaďte API](https://github.com/projectkudu/kudu/wiki/Deploying-from-a-zip-file): Použití tohoto rozhraní API [SSH do své webové aplikace](https://docs.microsoft.com/azure/app-service/containers/app-service-linux-ssh-support#making-a-client-connection) a přejděte do složky, kam chcete svůj kód můžete nasadit. Spusťte následující kód:
+- Použití [ZIP nasaďte API](https://github.com/projectkudu/kudu/wiki/Deploying-from-a-zip-file): Použití tohoto rozhraní API [SSH do své webové aplikace](https://docs.microsoft.com/azure/app-service/containers/app-service-linux-ssh-support) a přejděte do složky, kam chcete svůj kód můžete nasadit. Spusťte následující kód:
 
    ```bash
    curl -X POST -u <user> --data-binary @<zipfile> https://{your-sitename}.scm.azurewebsites.net/api/zipdeploy

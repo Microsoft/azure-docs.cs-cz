@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/30/2019
 ms.author: manayar
-ms.openlocfilehash: aa6ba07168e86b2163324c62f8bb32ca330551f3
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.openlocfilehash: 2e5dfda16c4828b3113fc50d4cffc79fe6ff19e8
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55501379"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55563996"
 ---
 # <a name="sequence-extension-provisioning-in-virtual-machine-scale-sets"></a>Nastaví pořadí zřizování rozšíření virtuálního počítače škálovací
 Rozšíření virtuálního počítače Azure poskytují funkce, jako je například konfigurace po nasazení a správu, monitorování, zabezpečení a další. Nasazení v produkčním prostředí většinou pomocí kombinace více rozšíření, které jsou nakonfigurované pro instance virtuálních počítačů k dosažení požadovaných výsledků.
@@ -29,7 +29,7 @@ Pokud používám několik rozšíření na virtuálním počítači, je důlež
 
 Tento článek podrobně popisuje, jak můžete pořadí rozšíření nakonfigurovat pro instance virtuálních počítačů ve škálovací sady virtuálních počítačů.
 
-## <a name="pre-requisites"></a>Požadavky
+## <a name="prerequisites"></a>Požadavky
 Tento článek předpokládá, že už znáte:
 -   Virtuální počítač Azure [rozšíření](../virtual-machines/extensions/overview.md)
 -   [Úprava](virtual-machine-scale-sets-upgrade-scale-set.md) škálovací sady virtuálních počítačů

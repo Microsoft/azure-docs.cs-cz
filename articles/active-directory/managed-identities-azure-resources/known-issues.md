@@ -15,12 +15,12 @@ ms.tgt_pltfrm: ''
 ms.workload: identity
 ms.date: 12/12/2017
 ms.author: priyamo
-ms.openlocfilehash: 45bf76696269e1224250b834b67acb2a68c10d7c
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: cbe6d04dfcf9174b15cde71f7becbb371eaee4b2
+ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55189455"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55662463"
 ---
 # <a name="faqs-and-known-issues-with-managed-identities-for-azure-resources"></a>Nejčastější dotazy a známé problémy s spravovaných identit pro prostředky Azure
 
@@ -154,8 +154,8 @@ Jako alternativní řešení po přesunutí předplatného můžete zakázat sys
 
 ## <a name="known-issues-with-user-assigned-managed-identities"></a>Známé problémy s uživatelsky přiřazené identity spravované
 
-- Vytvoření uživatelsky přiřazené spravovanou identitu se speciálními znaky (třeba podtržítko) v názvu, není podporováno.
-- Názvy uživatelsky přiřazené identity jsou omezeny na 24 znaků. Pokud název je delší než 24 znaků, identita nebude možné přiřadit k prostředku (tj. virtuální počítač.)
+- Názvy uživatelsky přiřazené identity jsou omezeny na minimálně 3 znaky a maximálně 128 znaků. Pokud název je delší než 128 znaků, identita nebude možné přiřadit k prostředku (tj. virtuální počítač.)
+- Názvy uživatelsky přiřazené identity můžou obsahovat následující znaky: – z, A - Z,-, \_, 0-9. Vytvoření uživatelsky přiřazené spravovanou identitu se znaky mimo tuto sadu znaků (tedy hvězdička) v názvu, není podporováno.
 - Pokud používáte rozšíření virtuálních počítačů spravovanou identitu (plánovaná k převedení na zastaralého v lednu 2019), je podporovaný limit 32 spravované uživatelsky přiřazené identity. Bez přípon spravovanou identitu virtuálního počítače je podporovaný limit 512.  
 - Přesunutí spravovanou identitu uživatele přiřadit k jiné skupině prostředků způsobí, že identita pro přerušení. V důsledku toho nebudete mít k žádosti o tokeny pro danou identitu. 
 - Přenos předplatného do jiného adresáře budou přerušeny všechny existující uživatelsky přiřazené spravované identity. 

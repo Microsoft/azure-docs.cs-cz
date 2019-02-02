@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 10/12/2018
 ms.author: rezas
-ms.openlocfilehash: 2fbc155afc3fd5280f2baf4eccabb895c158b89f
-ms.sourcegitcommit: 97d0dfb25ac23d07179b804719a454f25d1f0d46
+ms.openlocfilehash: 534d1785336c68a771722f0f464eae278551ffc0
+ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/25/2019
-ms.locfileid: "54913563"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55660234"
 ---
 # <a name="communicate-with-your-iot-hub-using-the-mqtt-protocol"></a>Komunikovat se službou IoT hub pomocí protokolu MQTT
 
@@ -60,17 +60,17 @@ Pokud tak učiníte, ujistěte se, že zkontrolujte následující položky:
 * AMQP vrátí chyby pro mnoho jiných podmínek, zatímco MQTT ukončí připojení. V důsledku výjimky logika zpracování může vyžadovat některé změny.
 * MQTT nepodporuje *odmítnout* operace při přijímání [zprávy typu cloud zařízení][lnk-messaging]. Pokud back endové aplikace potřebuje k přijetí odpovědi z aplikace pro zařízení, zvažte použití [přímé metody][lnk-methods].
 
-## <a name="using-the-mqtt-protocol-directly"></a>Přímo pomocí protokolu MQTT
+## <a name="using-the-mqtt-protocol-directly-as-a-device"></a>Pomocí protokolu MQTT přímo (podle zařízení)
 
 Pokud zařízení nemůže používat sady SDK pro zařízení, se může pořád připojit ke koncovým bodům veřejné zařízení pomocí protokolu MQTT na portu 8883. V **připojit** paketů zařízení by měl použít následující hodnoty:
 
 * Pro **ClientId** , použijte **deviceId**.
 
-* Pro **uživatelské jméno** použijte `{iothubhostname}/{device_id}/api-version=2018-06-30`, kde `{iothubhostname}` je úplný záznam CName služby IoT hub.
+* Pro **uživatelské jméno** použijte `{iothubhostname}/{device_id}/?api-version=2018-06-30`, kde `{iothubhostname}` je úplný záznam CName služby IoT hub.
 
     Například, pokud je název služby IoT hub **contoso.azure-devices.net** a pokud je název vašeho zařízení **MyDevice01**, kompletní **uživatelské jméno** pole by mělo obsahovat:
 
-    `contoso.azure-devices.net/MyDevice01/api-version=2018-06-30`
+    `contoso.azure-devices.net/MyDevice01/?api-version=2018-06-30`
 
 * Pro **heslo** pole, pomocí tokenu SAS. Formát tokenu SAS je stejná jako protokoly HTTPS i AMQP:
 
@@ -108,6 +108,16 @@ Pro Device Explorer:
 MQTT připojit a odpojit pakety, IoT Hub vydá událost na **monitorování Operations** kanálu. Tato událost má další informace, které vám mohou pomoci při řešení problémů s připojením.
 
 Můžete určit aplikace pro zařízení **bude** zprávy v **připojit** paketů. Používejte aplikace pro zařízení s `devices/{device_id}/messages/events/` nebo `devices/{device_id}/messages/events/{property_bag}` jako **bude** název tématu k definování **bude** předávat jako telemetrické zprávy zprávy. V takovém případě pokud se zavře připojení k síti, ale **ODPOJIT** nebyl dříve přijat paket ze zařízení a pak odešle služby IoT Hub **bude** zprávy zadaný v **připojit** paketů do kanálu telemetrická data. Kanál telemetrických dat může být buď výchozí **události** koncového bodu nebo vlastní koncový bod definovaný ve službě IoT Hub směrování. Zpráva obsahuje **iothub-MessageType** vlastnost s hodnotou **bude** přiřazené.
+
+## <a name="using-the-mqtt-protocol-directly-as-a-module"></a>Pomocí protokolu MQTT přímo (jako modul)
+
+Připojení ke službě IoT Hub přes protokol MQTT pomocí modulu identity je podobná zařízení (popsané [nad](#using-the-mqtt-protocol-directly-as-a-device)), ale je třeba použít následující:
+* Nastavte id klienta na `{device_id}/{module_id}`.
+* Pokud ověřování pomocí uživatelského jména a hesla, nastavte uživatelské jméno `<hubname>.azure-devices.net/{device_id}/{module_id}/?api-version=2018-06-30` a pomocí tokenu SAS, které jsou spojené s identitou modul jako heslo.
+* Použití `devices/{device_id}/modules/{module_id}/messages/events/` jako téma pro publikování telemetrická data.
+* Použití `devices/{device_id}/modules/{module_id}/messages/events/` jako se tématu.
+* Dvojče GET a oprava témata jsou stejné pro moduly a zařízení.
+* Téma stav dvojčete je stejný jako moduly a zařízení.
 
 ### <a name="tlsssl-configuration"></a>Konfigurace TLS/SSL
 

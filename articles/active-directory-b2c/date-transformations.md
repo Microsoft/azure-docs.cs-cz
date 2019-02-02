@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: 35c5731d260fb63dece3d2b8ae4f4a4522fb91b8
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: d36abb669490b3d3f6818c018b3844a82ecd0617
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55153400"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55564781"
 ---
 # <a name="date-claims-transformations"></a>Datum deklarace identity transformace
 
@@ -23,7 +23,7 @@ ms.locfileid: "55153400"
 
 Tento článek obsahuje příklady použití transformace deklarací identity data schématu architekturu rozhraní identit v Azure Active Directory (Azure AD) B2C. Další informace najdete v tématu [ClaimsTransformations](claimstransformations.md).
 
-## <a name="assertdatetimeisgreaterthan"></a>AssertDateTimeIsGreaterThan 
+## <a name="assertdatetimeisgreaterthan"></a>AssertDateTimeIsGreaterThan
 
 Kontroluje, že jeden datum a čas deklarace identity (datový typ string) je pozdější než druhý datum a čas deklarací (datový typ string) a vyvolá výjimku.
 
@@ -85,7 +85,6 @@ Volání ověření s vlastním potvrzením technický profil **neinteraktivní 
     - **rightOperand**: 2018-10-01T14:00:00.0000000Z
 - Výsledek: Vyvolána chyba
 
-
 ## <a name="convertdatetodatetimeclaim"></a>ConvertDateToDateTimeClaim
 
 Převede **datum** typu deklarace identity k **data a času** typu deklarace identity. Transformace deklarací identity převede formát času a přičte 12:00:00 AM k datu.
@@ -98,7 +97,7 @@ Převede **datum** typu deklarace identity k **data a času** typu deklarace ide
 Následující příklad ukazuje převod deklarace `dateOfBirth` (datový typ datum) do jiného deklarací `dateOfBirthWithTime` (datový typ dateTime).
 
 ```XML
-<ClaimsTransformation Id="ConvertToDateTime" TransformationMethod="ConvertDateToDateTimeClaim">
+  <ClaimsTransformation Id="ConvertToDateTime" TransformationMethod="ConvertDateToDateTimeClaim">
     <InputClaims>
       <InputClaim ClaimTypeReferenceId="dateOfBirth" TransformationClaimType="inputClaim" />
     </InputClaims>
@@ -163,7 +162,7 @@ Ke spuštění transformace deklarací identity, musíte nejprve získat aktuál
   </InputParameters>
   <OutputClaims>
     <OutputClaim ClaimTypeReferenceId="isLastTOSAcceptedGreaterThanNow" TransformationClaimType="result" />
-  </OutputClaims>      
+  </OutputClaims>
 </ClaimsTransformation>
 ```
 
@@ -175,6 +174,5 @@ Ke spuštění transformace deklarací identity, musíte nejprve získat aktuál
 - Vstupní parametry:
     - **operátor**: později než
     - **timeSpanInSeconds**: 7776000 (90 dnů)
-- Výstupní deklarace identit: 
+- Výstupní deklarace identit:
     - **výsledek**: true
-

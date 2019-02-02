@@ -4,18 +4,20 @@ titleSuffix: Azure Dev Spaces
 author: zr-msft
 services: azure-dev-spaces
 ms.service: azure-dev-spaces
+ms.custom: vs-azure
+ms.workload: azure-vs
 ms.subservice: azds-kubernetes
 ms.author: zarhoads
 ms.date: 07/09/2018
 ms.topic: quickstart
 description: Rychlý vývoj na platformě Kubernetes s využitím kontejnerů a mikroslužeb v Azure
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, kontejnery
-ms.openlocfilehash: 46fc7864e25048dbf9b3db9c97e0008be55a0d03
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 224b8fac3634e5ee9e5ffadc7664bd046467d2ce
+ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55468338"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55660846"
 ---
 # <a name="quickstart-create-a-kubernetes-dev-space-with-azure-dev-spaces-net-core-and-visual-studio"></a>Rychlý start: Vytvoření prostoru vývoje Kubernetes s Azure Dev prostory (.NET Core a Visual Studio)
 
@@ -116,4 +118,4 @@ Aktualizujte webovou aplikaci v prohlížeči a přejděte na stránku O aplikac
 ## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
-> [Práce s více kontejnery a týmový vývoj](team-development-netcore-visualstudio.md)
+> [Práce s více kontejnery a týmový vývoj](multi-service-netcore-visualstudio.md)

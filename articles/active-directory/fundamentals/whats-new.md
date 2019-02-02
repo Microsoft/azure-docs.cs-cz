@@ -11,16 +11,16 @@ ms.service: active-directory
 ms.subservice: fundamentals
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 01/29/2019
+ms.date: 01/31/2019
 ms.author: lizross
 ms.reviewer: dhanyahk
 ms.custom: it-pro
-ms.openlocfilehash: 0847096674d446940ed3fed3390457e3d2e894bf
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 3b2bb76ff8fe8f9ac146dab2a721450bc0562fa6
+ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55248448"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55662070"
 ---
 # <a name="whats-new-in-azure-active-directory"></a>Co je nového ve službě Azure Active Directory?
 
@@ -39,7 +39,17 @@ Tato stránka se aktualizuje každý měsíc, takže návštěvě pravidelně. P
 ---
 ## <a name="january-2019"></a>2019. ledna
 
-### <a name="new-azure-ad-application-proxy-cookie-settings"></a>Nové nastavení souborů cookie Proxy aplikací Azure AD
+### <a name="active-directory-b2b-collaboration-using-one-time-passcode-authentication-public-preview"></a>Active Directory s B2B spolupráce pomocí ověřování jednorázovým heslem (Public preview)
+
+**Typ:** Nová funkce  
+**Kategorie služby:** B2B  
+**Funkce produktu:** B2B/B2C
+
+Zavedli jsme ověřování jednorázovým heslem (OTP) pro B2B uživatele typu Host, kteří nemohou být ověřeni pomocí jiným způsobem, jako je Azure AD, účet Microsoft (MSA) nebo federační služby Google. Tato nová metoda ověřování znamená, že hostovaném uživatelé nemuseli vytvářet nový účet Microsoft. Místo toho při uplatnění pozvání nebo přístup ke sdílenému prostředku, uživatele typu Host můžete požádat o dočasný kód k odeslání e-mailovou adresu. Pomocí tento dočasný kód, můžete pokračovat uživatele typu Host pro přihlášení.
+
+Další informace najdete v tématu [e-mailu ověřování jednorázovým heslem (preview)](https://docs.microsoft.com/azure/active-directory/b2b/one-time-passcode) a na blogu [Azure AD zajišťuje sdílení a spolupráce bezproblémovou pro libovolného uživatele pomocí libovolného účtu](https://techcommunity.microsoft.com/t5/Azure-Active-Directory-Identity/Azure-AD-makes-sharing-and-collaboration-seamless-for-any-user/ba-p/325949).
+
+### <a name="new-azure-ad-application-proxy-cookie-settings"></a>Nová nastavení souborů cookie Proxy aplikací Azure AD
 
 **Typ:** Nová funkce  
 **Kategorie služby:** Proxy aplikace  
@@ -57,7 +67,7 @@ Další informace o nové soubory cookie najdete v tématu [nastavení souborů 
 
 ---
 
-### <a name="new-federated-apps-available-in-azure-ad-app-gallery---january-2019"></a>Nové federované aplikace k dispozici v galerii aplikací Azure AD – leden 2019
+### <a name="new-federated-apps-available-in-azure-ad-app-gallery---january-2019"></a>V galerii aplikací Azure AD jsou k dispozici nové federované aplikace – leden 2019
 
 **Typ:** Nová funkce  
 **Kategorie služby:** Podnikové aplikace  
@@ -71,7 +81,7 @@ Další informace o aplikacích najdete v tématu [integrace aplikací SaaS pomo
 
 ---
 
-### <a name="new-azure-ad-identity-protection-enhancements-public-preview"></a>Nová vylepšení Azure AD Identity Protection (verze Public preview)
+### <a name="new-azure-ad-identity-protection-enhancements-public-preview"></a>Nová vylepšení Azure AD Identity Protection (Public Preview)
 
 **Typ:** Změněná funkce  
 **Kategorie služby:** Identity Protection  
@@ -91,7 +101,7 @@ Další informace o rozšířeních najdete v části [co je Azure Active Direct
 
 ---
 
-### <a name="new-app-lock-feature-for-the-microsoft-authenticator-app-on-ios-and-android-devices"></a>Nová funkce zámku aplikace pro aplikaci Microsoft Authenticator v Iosu a zařízení s Androidem
+### <a name="new-app-lock-feature-for-the-microsoft-authenticator-app-on-ios-and-android-devices"></a>Nová funkce Zámek aplikace pro aplikaci Microsoft Authenticator na zařízeních s iOSem a Androidem
 
 **Typ:** Nová funkce  
 **Kategorie služby:** Aplikace Microsoft Authenticator  
@@ -103,7 +113,7 @@ Další informace najdete v tématu [aplikaci Microsoft Authenticator nejčastě
 
 ---
 
-### <a name="enhanced-azure-ad-privileged-identity-management-pim-export-capabilities"></a>Vylepšené Azure AD Privileged Identity Management (PIM) exportovat funkce
+### <a name="enhanced-azure-ad-privileged-identity-management-pim-export-capabilities"></a>Vylepšené funkce exportování ve službě Azure AD Privileged Identity Management (PIM)
 
 **Typ:** Nová funkce  
 **Kategorie služby:** Privileged Identity Management  
@@ -117,7 +127,7 @@ Další informace najdete v tématu [zobrazit historii aktivit a auditu pro role
 
 ## <a name="novemberdecember-2018"></a>Listopad/prosince 2018
 
-### <a name="users-removed-from-synchronization-scope-no-longer-switch-to-cloud-only-accounts"></a>Uživatelé Odebraní z oboru synchronizace žádný delší přepínač na účty jenom cloudu
+### <a name="users-removed-from-synchronization-scope-no-longer-switch-to-cloud-only-accounts"></a>Uživatelé, kteří se odebrali z oboru synchronizace, se už nepřepínají na čistě cloudové účty
 
 **Typ:** Pevné  
 **Kategorie služby:** Správa uživatelů  
@@ -178,7 +188,7 @@ Další informace o schématu najdete v tématu [protokolů auditu Azure AD inte
 
 ---
 
-### <a name="identity-protection-improvements-to-the-supervised-machine-learning-model-and-the-risk-score-engine"></a>Vylepšení ochrany identit na pod dohledem modelu strojového učení a modul určení skóre rizika
+### <a name="identity-protection-improvements-to-the-supervised-machine-learning-model-and-the-risk-score-engine"></a>Vylepšení Identity Protection pro model strojového učení s učitelem a modul skóre rizika
 
 **Typ:** Změněná funkce  
 **Kategorie služby:** Identity Protection  
@@ -190,7 +200,7 @@ Detekce rizik jsou nyní vyhodnocovány pomocí technik strojového učení mode
 
 ---
 
-### <a name="administrators-can-reset-their-own-password-using-the-microsoft-authenticator-app-public-preview"></a>Správci můžou resetovat vlastní hesla pomocí aplikace Microsoft Authenticator (Public preview)
+### <a name="administrators-can-reset-their-own-password-using-the-microsoft-authenticator-app-public-preview"></a>Správci můžou resetovat své vlastní heslo pomocí aplikace Microsoft Authenticator (Public Preview)
 
 **Typ:** Změněná funkce  
 **Kategorie služby:** Samoobslužné resetování hesla  
@@ -212,7 +222,7 @@ Další informace o používání aplikace Microsoft Authenticator k resetován�
 
 ---
 
-### <a name="new-azure-ad-cloud-device-administrator-role-public-preview"></a>Nová role správce cloudových zařízení Azure AD (Public preview)
+### <a name="new-azure-ad-cloud-device-administrator-role-public-preview"></a>Nová role Správce cloudových zařízení Azure AD (Public preview)
 
 **Typ:** Nová funkce  
 **Kategorie služby:** Registrace a správa zařízení  
@@ -224,7 +234,7 @@ Další informace o rolích a oprávněních najdete v tématu [přiřazení rol
 
 ---
 
-### <a name="manage-your-devices-using-the-new-activity-timestamp-in-azure-ad-public-preview"></a>Správa zařízení pomocí nové časové razítko aktivity ve službě Azure AD (Public preview)
+### <a name="manage-your-devices-using-the-new-activity-timestamp-in-azure-ad-public-preview"></a>Správa zařízení pomocí nových časových razítek aktivity v Azure AD (Public Preview)
 
 **Typ:** Nová funkce  
 **Kategorie služby:** Registrace a správa zařízení  
@@ -236,7 +246,7 @@ Další informace o tom, jak získat a použít tento časové razítko, nalezne
 
 ---
 
-### <a name="administrators-can-require-users-to-accept-a-terms-of-use-on-each-device"></a>Správci můžou vyžadovat, aby uživatelé přijali podmínky použití na všech zařízeních
+### <a name="administrators-can-require-users-to-accept-a-terms-of-use-on-each-device"></a>Správci můžou vyžadovat, aby uživatelé přijali podmínky použití na každém zařízení
 
 **Typ:** Nová funkce  
 **Kategorie služby:** Podmínky použití  
@@ -248,7 +258,7 @@ Další informace najdete v tématu [jednotlivá zařízení podmínky použití
 
 ---
 
-### <a name="administrators-can-configure-a-terms-of-use-to-expire-based-on-a-recurring-schedule"></a>Správci můžou konfigurovat podmínky použití vypršení platnosti podle opakovaného plánu
+### <a name="administrators-can-configure-a-terms-of-use-to-expire-based-on-a-recurring-schedule"></a>Správci můžou nakonfigurovat vypršení platnosti podmínek použití podle plánu opakování
 
 **Typ:** Nová funkce  
 **Kategorie služby:** Podmínky použití  
@@ -273,7 +283,7 @@ Další informace najdete v tématu [přidat podmínky použití části Azure A
  
 ---
 
-### <a name="new-azure-ad-privileged-identity-management-pim-emails-for-azure-active-directory-roles"></a>E-mailem na nový Azure AD Privileged Identity Management (PIM) pro role Azure Active Directory
+### <a name="new-azure-ad-privileged-identity-management-pim-emails-for-azure-active-directory-roles"></a>Nové e-maily služby Azure AD Privileged Identity Management (PIM) pro role Azure Active Directory
 
 **Typ:** Nová funkce  
 **Kategorie služby:** Privileged Identity Management  
@@ -295,7 +305,7 @@ Další informace o PIM a k dispozici e-mailových oznámení najdete v tématu 
 
 ---
 
-### <a name="group-based-licensing-is-now-generally-available"></a>Licencování na základě skupiny je teď obecně dostupná
+### <a name="group-based-licensing-is-now-generally-available"></a>Licencování na základě skupin je teď obecně dostupné
 
 **Typ:** Změněná funkce  
 **Kategorie služby:** Ostatní  
@@ -307,7 +317,7 @@ Další informace o licencování pro skupiny, najdete v části [co je založen
 
 ---
 
-### <a name="new-federated-apps-available-in-azure-ad-app-gallery---november-2018"></a>Nové federované aplikace k dispozici v galerii aplikací Azure AD –. listopadu 2018
+### <a name="new-federated-apps-available-in-azure-ad-app-gallery---november-2018"></a>V galerii aplikací Azure AD jsou k dispozici nové federované aplikace – listopad 2018
 
 **Typ:** Nová funkce  
 **Kategorie služby:** Podnikové aplikace  

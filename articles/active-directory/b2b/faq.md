@@ -10,12 +10,12 @@ ms.author: mimart
 author: msmimart
 manager: daveba
 ms.reviewer: sasubram
-ms.openlocfilehash: 36efb943855d36d1f830ba08554eabd0a8a88f50
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 3ed781b7d3388015de93a81fb745764a8ad95baa
+ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55169327"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55663178"
 ---
 # <a name="azure-active-directory-b2b-collaboration-faqs"></a>Spolupráce Azure Active Directory s B2B nejčastější dotazy
 
@@ -69,11 +69,11 @@ Blokovat přístup uživatelů typu Host [webu Azure portal](https://portal.azur
 Ano. Vícefaktorové ověřování a příjemce e-mailové účty jsou podporované pro spolupráci B2B ve službě Azure AD.
 
 ### <a name="do-you-support-password-reset-for-azure-ad-b2b-collaboration-users"></a>Podporujete resetování hesla pro uživatele spolupráce B2B ve službě Azure AD?
-Pokud domovský adresář pro uživatele vašeho tenanta Azure AD, můžete [resetovat heslo uživatele](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-users-reset-password-azure-portal#how-to-reset-the-password-for-a-user) z portálu Azure portal. Však nelze přímo obnovit heslo pro uživatele typu Host, kteří se přihlásí pomocí účtu, který je spravovaný nástrojem jiného zprostředkovatele identity adresáře, nebo externí služby Azure AD. Pouze uživatel typu Host nebo správcem domovský adresář uživatele můžou resetovat heslo. Tady je několik příkladů jak funguje pro uživatele typu Host resetování hesel:
+Pokud domovský adresář pro uživatele vašeho tenanta Azure AD, můžete [resetovat heslo uživatele](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-users-reset-password-azure-portal) z portálu Azure portal. Však nelze přímo obnovit heslo pro uživatele typu Host, kteří se přihlásí pomocí účtu, který je spravovaný nástrojem jiného zprostředkovatele identity adresáře, nebo externí služby Azure AD. Pouze uživatel typu Host nebo správcem domovský adresář uživatele můžou resetovat heslo. Tady je několik příkladů jak funguje pro uživatele typu Host resetování hesel:
  
 * Uživatelé typu Host, kteří se přihlašují účtem Microsoft (třeba guestuser@live.com) může resetovat hesla pomocí samoobslužné resetování hesla (SSPR) účet Microsoft. Zobrazit [jak resetovat heslo ke svému účtu Microsoft](https://support.microsoft.com/help/4026971/microsoft-account-how-to-reset-your-password).
 * Uživatelé typu Host, kteří se přihlašují účtem Google nebo jiné externího zprostředkovatele identity můžete resetovat hesla pomocí metody jeho poskytovatele identity samoobslužné resetování HESLA. Například uživatel typu Host pomocí účtu Google guestuser@gmail.com můžou resetovat svoje heslo podle pokynů v [změnu nebo resetování hesla](https://support.google.com/accounts/answer/41078).
-* Pokud je identity tenant just-in-time (JIT) nebo "virálního" tenanta (to znamená, že je samostatný, nespravovaného tenanta pro Azure), pouze uživatele typu Host své heslo můžou resetovat. Někdy se organizace [převzít správu virálního tenantů](https://docs.microsoft.com/en-us/azure/active-directory/users-groups-roles/domains-admin-takeover) , které vytvářejí, když zaměstnanci používají jejich pracovní e-mailové adresy k registraci pro služby. Po organizace převezme virálního tenanta, můžete pouze správce v této organizaci resetovat heslo uživatele nebo povolit samoobslužné resetování HESLA. V případě potřeby jako zvoucí organizaci, můžete odebrat uživatelský účet guest z adresáře a znovu odeslat pozvánku.
+* Pokud je identity tenant just-in-time (JIT) nebo "virálního" tenanta (to znamená, že je samostatný, nespravovaného tenanta pro Azure), pouze uživatele typu Host své heslo můžou resetovat. Někdy se organizace [převzít správu virálního tenantů](https://docs.microsoft.com/azure/active-directory/users-groups-roles/domains-admin-takeover) , které vytvářejí, když zaměstnanci používají jejich pracovní e-mailové adresy k registraci pro služby. Po organizace převezme virálního tenanta, můžete pouze správce v této organizaci resetovat heslo uživatele nebo povolit samoobslužné resetování HESLA. V případě potřeby jako zvoucí organizaci, můžete odebrat uživatelský účet guest z adresáře a znovu odeslat pozvánku.
 * Pokud domovský adresář uživatele typu Host je váš tenant Azure AD, můžete resetovat heslo uživatele. Například jste mohli vytvořit uživatele nebo synchronizovat uživatele z vaší místní Active Directory a nastavte jejich UserType hosté. Vzhledem k tomu, že tento uživatel je uložená v adresáři, můžete resetovat své heslo z portálu Azure portal.
 
 ### <a name="does-microsoft-dynamics-365-provide-online-support-for-azure-ad-b2b-collaboration"></a>Poskytuje Microsoft Dynamics 365 online podpory pro spolupráci B2B ve službě Azure AD?

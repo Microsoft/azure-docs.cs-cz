@@ -1,23 +1,23 @@
 ---
-title: Místní ochrana heslem služby Azure AD – nejčastější dotazy
-description: Místní ochrana heslem služby Azure AD – nejčastější dotazy
+title: Místní ochrana hesel Azure AD – nejčastější dotazy
+description: Místní ochrana hesel Azure AD – nejčastější dotazy
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: article
-ms.date: 10/30/2018
+ms.date: 02/01/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jsimmons
-ms.openlocfilehash: f690625fda07bdbff671567f0292cc8e1cabeda1
-ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
+ms.openlocfilehash: 62bda3a1c9cb9d53578c2d471b9e63d1f0873234
+ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/26/2019
-ms.locfileid: "55078691"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55663294"
 ---
-# <a name="preview-azure-ad-password-protection-on-premises---frequently-asked-questions"></a>Verze Preview: Azure AD hesla ochrany místních – nejčastější dotazy
+# <a name="preview-azure-ad-password-protection-on-premises---frequently-asked-questions"></a>Verze Preview: Azure AD ochrana heslem v místním – nejčastější dotazy
 
 |     |
 | --- |
@@ -26,21 +26,21 @@ ms.locfileid: "55078691"
 
 ## <a name="general-questions"></a>Obecné otázky
 
-**Otázka: Při dosažení obecné dostupnosti (GA) ochrany hesla Azure AD**
+**Otázka: Při dosažení obecné dostupnosti (GA) ochranu hesel služby Azure AD**
 
-Ještě jsme oznámili ještě datum všeobecné dostupnosti.
+Verze GA plánujeme přidat Q1 CY2019 (konce března 2019). Děkujeme, že jste pro každého uživatele, který poskytl zpětnou vazbu na funkci tak, aby datum - Vážíme si ho!
 
-**Otázka: Je v místním ochrany hesla Azure AD nepodporuje v jiných veřejných cloudech?**
+**Otázka: Je místní ochrana hesel Azure AD nepodporuje v jiných veřejných cloudech?**
 
-Ne – ochrana heslem v místním Azure AD je podporován pouze ve veřejném cloudu.
+Ne – místní ochrana hesel Azure AD je podporován pouze ve veřejném cloudu.
 
-**Otázka: Jak můžu použít výhody ochrany hesla Azure AD na určitou podskupinu uživatelů v místním?**
+**Otázka: Jak můžu použít výhody ochrany hesel služby Azure AD na určitou podskupinu uživatelů v místním?**
 
 Nepodporuje se. Jakmile nasazená a aktivovaná, ochrana hesel Azure AD není rozlišení – všichni uživatelé obdrží stejné výhody.
 
-**Otázka: Je podporováno pro instalaci služby Azure AD hesla protection souběžně s jinými produkty pomocí filtru hesla?**
+**Otázka: Je podporováno nainstalovat ochranu hesel služby Azure AD souběžně s jinými produkty pomocí filtru hesla?**
 
-Ano. Podpora více knihovny DLL filtru registrované heslo je základní funkcí Windows a nezávislé na ochrana hesel Azure AD. Všechny knihovny DLL filtru registrované hesla musí souhlasit, před přijetím heslo.
+Ano. Podpora více knihovny DLL filtru registrované heslo je základní funkcí Windows a nezávislé na ochranu hesel služby Azure AD. Všechny knihovny DLL filtru registrované hesla musí souhlasit, před přijetím heslo.
 
 **Otázka: Proč je DFSR se vyžaduje k replikování adresáře sysvol?**
 
@@ -62,6 +62,6 @@ Ne.
 
 ## <a name="next-steps"></a>Další postup
 
-Pokud máte dotaz místní služby Azure AD hesla ochrany, který jsem zde nenalezl odpověď, odešlete názor níže – Děkujeme!
+Pokud máte dotaz ochrana hesel Azure AD s místními, který jsem zde nenalezl odpověď, odešlete názor níže – Děkujeme!
 
 [Nasazení ochrany hesel Azure AD](howto-password-ban-bad-on-premises-deploy.md)

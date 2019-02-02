@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 01/04/2019
+ms.date: 02/01/2019
 ms.topic: conceptual
 ms.service: cost-management
 manager: vitavor
 ms.custom: secdec18
-ms.openlocfilehash: 50f048dc36b0248cdbbd85d91c00b7947f9ddc1f
-ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
+ms.openlocfilehash: a64a1e35811b8bcdf721425580fe66641cb8ebe2
+ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54052134"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55660999"
 ---
 # <a name="assign-access-to-cost-management-data"></a>Přiřazení přístupu k datům služby Cost Management
 
@@ -43,6 +43,10 @@ K zobrazení dat na náklady, uživatel musí mít alespoň čtení přístup do
 Následující diagram znázorňuje vztah mezi náklady na správu oborů s rolí a nastavení na portálu EA.
 
 ![Diagram znázorňující vztah mezi náklady na správu oborů s rolí a nastavení na portálu EA](./media/assign-access-acm-data/scope-access-relationship-diagram.png)
+
+Když **DA zobrazit náklady** jsou zakázány na portálu EA, zobrazí se vám zpráva s oznámením *náklady na vaší organizaci zakázaná* při pokusu o zobrazení nákladů pro oddělení a účty.
+
+Podobně, když **AO zobrazit náklady** jsou zakázány na portálu EA, zobrazí se vám zpráva s oznámením *náklady na vaší organizaci zakázaná* při pokusu o zobrazení nákladů pro registračních účtů, skupin pro správu, předplatná a skupiny prostředků.
 
 ## <a name="enable-access-to-costs-in-the-ea-portal"></a>Povolení přístupu k náklady na portálu EA
 

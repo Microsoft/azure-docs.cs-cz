@@ -11,12 +11,12 @@ ms.service: azure-stack
 ms.reviewer: thoroet
 manager: femila
 ms.lastreviewed: 01/25/2019
-ms.openlocfilehash: 840c230ae3b2fc167c0d59a4a9a0155fe5deb661
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 3e838f932299a9ea7f837570f9d15725230eb4f8
+ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55238230"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55660081"
 ---
 # <a name="prepare-for-extension-host-for-azure-stack"></a>Příprava pro rozšíření hostitele pro Azure Stack
 
@@ -141,7 +141,7 @@ V článku [integrace datových center Azure Stack – publikování koncových 
 
 ### <a name="publish-new-endpoints"></a>Publikovat nové koncové body
 
-Existují dvě nové koncové body, které jsou potřebné k publikování přes bránu firewall. Přidělené IP adresy z fondu veřejných virtuálních IP adres se dá načíst pomocí následujícího kódu, který se musí spustit prostřednictvím služby Azure Stack [prostředí na privilegovaný koncový bod](https://docs.microsoft.com/en-gb/azure/azure-stack/azure-stack-privileged-endpoint).
+Existují dvě nové koncové body, které jsou potřebné k publikování přes bránu firewall. Přidělené IP adresy z fondu veřejných virtuálních IP adres se dá načíst pomocí následujícího kódu, který se musí spustit prostřednictvím služby Azure Stack [prostředí na privilegovaný koncový bod](https://docs.microsoft.com/azure/azure-stack/azure-stack-privileged-endpoint).
 
 ```PowerShell
 # Create a PEP Session

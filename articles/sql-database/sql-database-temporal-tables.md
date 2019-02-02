@@ -11,18 +11,20 @@ author: bonova
 ms.author: bonova
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 03/21/2018
-ms.openlocfilehash: ce489bae3a59da47ad6f3677ef493618d01fd6b6
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.date: 09/25/2018
+ms.openlocfilehash: 49491c5283ba16c5379c1115fae597bd7fd6ea19
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55196646"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55567124"
 ---
 # <a name="getting-started-with-temporal-tables-in-azure-sql-database"></a>Začínáme s dočasnými tabulkami ve službě Azure SQL Database
+
 Dočasné tabulky jsou novou funkcí programovatelnosti služby Azure SQL Database, která umožňuje sledovat a analyzovat kompletní historii změn ve vašich datech, bez nutnosti psaní vlastního kódu. Dočasných tabulek se zachovat data úzce souvisí s místní čas tak, aby uložené údaje se dá interpretovat jako platný pouze v rámci konkrétní období. Tato vlastnost dočasných tabulek se umožňuje efektivní analýzy založené na čase a získávání informací z dat vývoj.
 
 ## <a name="temporal-scenario"></a>Dočasné scénář
+
 Tento článek ukazuje postup využívat dočasných tabulek se ve scénáři aplikace. Předpokládejme, že chcete na nový web, který je vyvíjen od začátku nebo na existující web, který chcete rozšířit pomocí analýzy chování uživatelů aktivity sledování činnosti uživatelů. V tomto příkladu zjednodušené předpokládáme, že počet navštívených webových stránek během časového období je indikátor, který je potřeba zachytit a sledovat v databázi webu, který je hostovaný na Azure SQL Database. Cílem historické analýzy aktivity uživatelů je zobrazíte vstupy přepracovat webu a poskytovat lepší prostředí pro návštěvníkům.
 
 Model databáze pro tento scénář je velmi jednoduché – s polem celá čísla, je reprezentována metriky aktivity uživatele **PageVisited**a je zachycená základní informace v profilu uživatele. Kromě toho pro analýzu podle času byste udržovali sadu řádků pro každého uživatele, kde každý řádek představuje počet stránek konkrétní uživatel navštívil v konkrétním časovém období.

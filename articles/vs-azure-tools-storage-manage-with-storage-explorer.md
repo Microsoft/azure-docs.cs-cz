@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/17/2017
 ms.author: cawa
-ms.openlocfilehash: a540e6c585210f7b1dc36a89eaae7a4b4bf8fc70
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.openlocfilehash: cdfb1e11a2eb468e390546d69617ff4cadd17a7e
+ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52422724"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55658872"
 ---
 # <a name="get-started-with-storage-explorer"></a>Začínáme se Storage Explorerem
 
@@ -63,7 +63,7 @@ Průzkumník služby Azure Storage může pracovat na jiné distribuce, ale pouz
 
 Také musíte mít následující závislosti nebo knihovny nainstalována pro spouštění Průzkumníka služby Azure Storage v Linuxu:
 
-* [.NET core 2.x](https://docs.microsoft.com/dotnet/core/linux-prerequisites?tabs=netcore2x)
+* [.NET Core 2.x](https://docs.microsoft.com/dotnet/core/linux-prerequisites?tabs=netcore2x)
 * libsecret (Poznámka: libsecret 1.so.0 musí být k dispozici na svém počítači. Pokud máte jinou verzi libsecret nainstalované, můžete zkusit obnovitelné libsecret 1.so.0 propojení jeho soubor .so)
 * libgconf-2-4
 * Aktuální GCC
@@ -84,12 +84,12 @@ Průzkumník služby Storage nabízí několik způsobů, jak se připojit k ú�
 
 Kromě toho můžete pracovat s účty úložiště v globálním i národním Azure:
 
-* [Připojení k předplatnému Azure:](#connect-to-an-azure-subscription) Umožňuje spravovat prostředky úložiště, které patří do vašeho předplatného Azure.
-* [Práce s místním vývojovým úložištěm:](#work-with-local-development-storage) Umožňuje spravovat místní úložiště pomocí emulátoru úložiště Azure.
-* [Připojení k externímu úložišti:](#attach-or-detach-an-external-storage-account) Umožňuje spravovat prostředky úložiště, které patří do jiného předplatného Azure nebo jiného národního cloudu Azure, pomocí názvu, klíče a koncových bodů účtu úložiště.
-* [Připojení účtu úložiště pomocí SAS:](#attach-storage-account-using-sas) Umožňuje spravovat prostředky úložiště, které patří do jiného předplatného Azure pomocí sdíleného přístupového podpisu (SAS).
-* [Připojení služby pomocí SAS:](#attach-service-using-sas) Umožňuje spravovat konkrétní službu úložiště (kontejner objektů blob, fronty nebo tabulky), která patří do jiného předplatného Azure, pomocí sdíleného přístupového podpisu (SAS).
-* [Připojení k účtu služby Azure Cosmos DB pomocí připojovacího řetězce](#connect-to-an-azure-cosmos-db-account-by-using-a-connection-string): účet spravovat služby Cosmos DB pomocí připojovacího řetězce.
+* [Připojení k předplatnému Azure](#connect-to-an-azure-subscription): Spravujte prostředky úložiště, které patří k předplatnému Azure.
+* [Práce s místním vývojovým úložištěm](#work-with-local-development-storage): Spravujte místní úložiště pomocí emulátoru úložiště Azure.
+* [Připojení k externímu úložišti](#attach-or-detach-an-external-storage-account): Spravujte prostředky úložiště, která patří do jiného předplatného Azure nebo jiného národního cloudu Azure s použitím názvu, klíče a koncových bodů účtu úložiště.
+* [Připojení účtu úložiště pomocí SAS](): Spravujte prostředky úložiště, které patří do jiného předplatného Azure pomocí sdíleného přístupového podpisu (SAS).
+* [Připojení služby pomocí SAS](#attach-service-using-sas): Spravujte konkrétní službu úložiště (kontejner objektů blob, fronty nebo tabulky), který patří do jiného předplatného Azure pomocí SAS.
+* [Připojení k účtu služby Azure Cosmos DB pomocí připojovacího řetězce](#connect-to-an-azure-cosmos-db-account-by-using-a-connection-string): Spravujte účet služby Cosmos DB pomocí připojovacího řetězce.
 
 ## <a name="connect-to-an-azure-subscription"></a>Připojení k předplatnému Azure
 
@@ -100,7 +100,7 @@ Kromě toho můžete pracovat s účty úložiště v globálním i národním A
 
 1. V Průzkumníku služby Storage vyberte **spravovat účty** přejdete **Panel pro správu účtu**.
 
-    ![Správa účtů][1]
+    ![Spravovat účty][1]
 
 2. V levém podokně se teď zobrazí všem účtům Azure, které jste přihlášeni. Chcete-li připojit k jinému účtu, vyberte **přidat účet**
 

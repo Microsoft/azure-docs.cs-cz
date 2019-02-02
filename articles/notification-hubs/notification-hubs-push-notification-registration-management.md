@@ -14,12 +14,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.author: jowargo
 ms.date: 01/23/2019
-ms.openlocfilehash: 1ace7ecd42ac36be1c38e52dcef6663439b7db4c
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: d87cd174e3fca7ce2088ad270a74b08de4ac7cb5
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54817817"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55566147"
 ---
 # <a name="registration-management"></a>Správa registrací
 
@@ -33,7 +33,7 @@ Registrace zařízení ve službě Centrum oznámení se provádí pomocí **reg
 
 ### <a name="registrations"></a>Registrace
 
-Registrace přidruží popisovač služby oznamování platformy (PNS) pro zařízení se značkami a případně šablony. Popisovač systému oznámení platformy může být parametr ChannelURI, token zařízení nebo id registrace služby GCM. Značky se používají k oznámení směrovat na správná sada popisovače zařízení. Další informace najdete v tématu [směrování a výrazy označení](notification-hubs-tags-segment-push-message.md). Šablony slouží k provedení transformace za registraci. Další informace najdete v tématu [Šablony](notification-hubs-templates-cross-platform-push-messages.md).
+Registrace přidruží popisovač služby oznamování platformy (PNS) pro zařízení se značkami a případně šablony. Popisovač systému oznámení platformy může být parametr ChannelURI, token zařízení nebo id registrace FCM. Značky se používají k oznámení směrovat na správná sada popisovače zařízení. Další informace najdete v tématu [směrování a výrazy označení](notification-hubs-tags-segment-push-message.md). Šablony slouží k provedení transformace za registraci. Další informace najdete v tématu [Šablony](notification-hubs-templates-cross-platform-push-messages.md).
 
 > [!NOTE]
 > Azure Notification Hubs podporuje maximálně 60 značek na registraci.
@@ -295,8 +295,8 @@ public async Task<HttpResponseMessage> Put(DeviceInstallation deviceUpdate)
         case "apns":
             installation.Platform = NotificationPlatform.Apns;
             break;
-        case "gcm":
-            installation.Platform = NotificationPlatform.Gcm;
+        case "fcm":
+            installation.Platform = NotificationPlatform.Fcm;
             break;
         default:
             throw new HttpResponseException(HttpStatusCode.BadRequest);

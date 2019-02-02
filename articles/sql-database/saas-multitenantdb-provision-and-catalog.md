@@ -11,13 +11,13 @@ author: MightyPen
 ms.author: genemi
 ms.reviewer: billgib,andrela,stein
 manager: craigg
-ms.date: 04/01/2018
-ms.openlocfilehash: e37bc5f46a1a56357e3dff9d1f67de7dcc2537b0
-ms.sourcegitcommit: 715813af8cde40407bd3332dd922a918de46a91a
+ms.date: 09/24/2018
+ms.openlocfilehash: fd420e29387aedd3f04fdf7437a3ef27c5589fc8
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47055301"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55562891"
 ---
 # <a name="provision-and-catalog-new-tenants-in-a-saas-application-using-a-sharded-multi-tenant-azure-sql-database"></a>Zřízení a katalogizace nových tenantů v SaaS aplikace využívající horizontálně dělené databázi s více tenanty Azure SQL
 
@@ -28,7 +28,7 @@ Tento článek obsahuje dvě hlavní části:
 - [Rozbor](#goto_2_conceptual) zřízení a katalogizace nových tenantů.
 
 - [Kurz](#goto_1_tutorial) , který zvýrazňuje kód skriptu prostředí PowerShell, který provede zřízení a katalogizace.
-    - V tomto kurzu použijete aplikaci SaaS aplikace Wingtip Tickets přizpůsobený vzor horizontálně dělené databázi s více tenanty.
+  - V tomto kurzu použijete aplikaci SaaS aplikace Wingtip Tickets přizpůsobený vzor horizontálně dělené databázi s více tenanty.
 
 <a name="goto_2_conceptual"/>
 
@@ -143,11 +143,11 @@ V této části se zobrazí seznam hlavní akce pro zřizování, které se prov
 
 Toto jsou klíčové prvky pracovního postupu zřizování Procházet:
 
-- **Vypočítejte klíč nového tenanta**: funkce hash se používá k vytvoření klíče tenanta z názvu tenanta.
-- **Zkontrolujte, jestli klíč tenanta už existuje**: katalog zajistit klíč už registrovaný.
-- **Inicializace klienta v databázi tenanta výchozí**: databáze tenanta je aktualizováno za účelem přidání nové informace o tenantovi.  
-- **Registrace klienta v katalogu**: mapování mezi nového klíče tenanta a existující databázi tenants1 je přidaných do katalogu. 
-- **Přidání názvu tenanta do tabulky katalog rozšíření**: název místa se přidá do tabulky Tenantů v katalogu.  Toto přidání ukazuje, jak je možné rozšířit databáze katalogu pro podporu dalších dat specifické pro aplikaci.
+- **Vypočítejte klíč nového tenanta**: K vytvoření klíče tenanta z jeho jména se používá funkce hash.
+- **Zkontrolujte, jestli klíč tenanta už existuje**: Katalog Ujistěte se, že klíč už registrovaný.
+- **Inicializace klienta v databázi tenanta výchozí**: Databáze tenanta se aktualizuje a přidat nové informace o tenantovi.  
+- **Registrace klienta v katalogu**: Mapování mezi nového klíče tenanta a existující databázi tenants1 je přidaných do katalogu. 
+- **Přidání názvu tenanta do tabulky katalog rozšíření**: Název místa se přidá do tabulky Tenantů v katalogu.  Toto přidání ukazuje, jak je možné rozšířit databáze katalogu pro podporu dalších dat specifické pro aplikaci.
 - **Otevřete stránku události pro nového klienta**: *Bushwillow Blues* události stránka se otevře v prohlížeči.
 
    ![stránka events](media/saas-multitenantdb-provision-and-catalog/bushwillow.png)
@@ -161,7 +161,7 @@ Abyste pochopili, jak aplikaci Wingtip implementované zřizování ve sdílené
    - **$VenueType** = **blues**, jeden předdefinovaných typů místa: blues, classicalmusic, dance, jazz, judo, motorracing, multipurpose, opera, rockmusic, soccer (malá, bez mezer).
    - **$DemoScenario** = **1**, zřídit klienta v databázi sdílené s jinými tenanty.
 
-2. Přidejte zarážku vložením ukazatel myši kamkoli na řádku 38, řádek, který říká: *New-Tenant '* a potom stiskněte klávesu **F9**.
+2. Přidejte zarážku vložením ukazatel myši kamkoli na řádku 38, řádek, který uvádí, že: *Nový Tenant "* a potom stiskněte klávesu **F9**.
 
    ![přerušení](media/saas-multitenantdb-provision-and-catalog/breakpoint.png)
 
@@ -181,13 +181,13 @@ Další informace o ladění skriptů Powershellu najdete v tématu [tipy pro pr
 
 Toto jsou klíčové prvky, které projdete při trasování skriptu pracovního postupu:
 
-- **Vypočítejte klíč nového tenanta**: funkce hash se používá k vytvoření klíče tenanta z názvu tenanta.
-- **Zkontrolujte, jestli klíč tenanta už existuje**: katalog zajistit klíč už registrovaný.
-- **Vytvoření nové databáze tenanta**: databáze se vytvoří tak, že zkopírujete *basetenantdb* databáze pomocí šablony Resource Manageru.  Nový název databáze je založen na název vašeho tenanta.
-- **Přidání databáze do katalogu**: nové databáze tenanta se zaregistruje jako horizontálních oddílů v katalogu.
-- **Inicializace klienta v databázi tenanta výchozí**: databáze tenanta je aktualizováno za účelem přidání nové informace o tenantovi.  
-- **Registrace klienta v katalogu**: mapování mezi nového klíče tenanta a *sequoiasoccer* databáze je přidaných do katalogu.
-- **Název tenanta je přidaných do katalogu**: název místa se přidá do tabulky rozšíření Tenantů v katalogu.
+- **Vypočítejte klíč nového tenanta**: K vytvoření klíče tenanta z jeho jména se používá funkce hash.
+- **Zkontrolujte, jestli klíč tenanta už existuje**: Katalog Ujistěte se, že klíč už registrovaný.
+- **Vytvoření nové databáze tenanta**: Databáze se vytvoří tak, že zkopírujete *basetenantdb* databáze pomocí šablony Resource Manageru.  Nový název databáze je založen na název vašeho tenanta.
+- **Přidání databáze do katalogu**: Nová databáze tenanta se zaregistruje jako horizontálních oddílů v katalogu.
+- **Inicializace klienta v databázi tenanta výchozí**: Databáze tenanta se aktualizuje a přidat nové informace o tenantovi.  
+- **Registrace klienta v katalogu**: Mapování mezi nového klíče tenanta a *sequoiasoccer* databáze je přidaných do katalogu.
+- **Název tenanta je přidaných do katalogu**: Název místa se přidá do tabulky rozšíření Tenantů v katalogu.
 - **Otevřete stránku události pro nového klienta**: *Sequoia Soccer* události stránka se otevře v prohlížeči.
 
    ![stránka events](media/saas-multitenantdb-provision-and-catalog/sequoiasoccer.png)
@@ -261,7 +261,7 @@ V automatickém zřizování odešle vyhrazená zřizovací služba se použív�
 
 Tento typ automatizované služby může být jednoduché nebo složité. Například automatizace dokáže zpracovat zřizování v různých geografických oblastech a můžou nastavit geografickou replikaci pro zotavení po havárii. Se vzorkem automatického zřizování by klientská aplikace nebo skript odeslat žádost o zřízení do fronty pro zpracování služby zřizování. Skript by pak dotazovat na dokončení zjišťování. Pokud použití předběžného zřizování požadavky rychle zpracovává zatímco na pozadí služby spravovat zřizování náhradní databáze.
 
-## <a name="additional-resources"></a>Další zdroje informací:
+## <a name="additional-resources"></a>Další materiály
 
 <!-- - Additional [tutorials that build upon the Wingtip SaaS application](saas-dbpertenant-wingtip-app-overview.md#sql-database-wingtip-saas-tutorials)-->
 - [Klientská knihovna Elastic Database](sql-database-elastic-database-client-library.md)

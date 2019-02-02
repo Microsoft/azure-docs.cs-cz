@@ -11,15 +11,15 @@ author: oslake
 ms.author: moslake
 ms.reviewer: genemi, vanto
 manager: craigg
-ms.date: 10/05/2018
-ms.openlocfilehash: b841f985c758cb1e354d3c3537c532a253e81d92
-ms.sourcegitcommit: 9e179a577533ab3b2c0c7a4899ae13a7a0d5252b
+ms.date: 10/23/2018
+ms.openlocfilehash: ae29fcfe39b5844ab948eb55ca314ae51dcae174
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49945922"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55566173"
 ---
-# <a name="powershell--create-a-virtual-service-endpoint-and-vnet-rule-for-sql"></a>PowerShell: Vytvoření koncového bodu služby virtuální a pravidlo virtuální sítě pro SQL
+# <a name="powershell--create-a-virtual-service-endpoint-and-vnet-rule-for-sql"></a>PowerShell:  Vytvoření koncového bodu služby virtuální a pravidlo virtuální sítě pro SQL
 
 Azure [SQL Database](sql-database-technical-overview.md) a [SQL Data Warehouse](../sql-data-warehouse/sql-data-warehouse-overview-what-is.md) podporu koncových bodů služby virtuální.
 
@@ -31,7 +31,7 @@ Tento článek obsahuje a vysvětluje Powershellový skript, který provede nás
 1. Microsoft Azure vytvoří *koncový bod služby virtuální* na vaší podsítě.
 2. Přidá koncový bod do brány firewall vašeho serveru Azure SQL Database, chcete-li vytvořit *pravidlo virtuální sítě*.
 
-Vaše podněty pro vytvoření pravidla jsou vysvětlené v: [koncové body služby virtuální pro službu Azure SQL Database][sql-db-vnet-service-endpoint-rule-overview-735r].
+Vaše podněty pro vytvoření pravidla jsou vysvětlené v: [Virtuální koncové body služby pro službu Azure SQL Database][sql-db-vnet-service-endpoint-rule-overview-735r].
 
 > [!TIP]
 > Pokud všechno, co potřebujete k vyhodnocení nebo přidat koncový bod služby virtuální *název typu* pro službu SQL Database pro vaši podsíť, můžete přeskočit přímo na naše více [přímé skript prostředí PowerShell](#a-verify-subnet-is-endpoint-ps-100).
@@ -42,11 +42,11 @@ V tomto článku klade důraz **New-AzureRmSqlServerVirtualNetworkRule** rutinu,
 
 Následující seznam obsahuje řadu dalších *hlavní* rutiny, které je nutné spustit Příprava volání **New-AzureRmSqlServerVirtualNetworkRule**. V tomto článku se tato volání probíhá [skript 3 "pravidlo virtuální sítě"](#a-script-30):
 
-1. [Nový-AzureRmVirtualNetworkSubnetConfig](https://docs.microsoft.com/powershell/module/azurerm.network/new-azurermvirtualnetworksubnetconfig): vytvoří objekt podsítě.
-2. [Nový-AzureRmVirtualNetwork](https://docs.microsoft.com/powershell/module/azurerm.network/new-azurermvirtualnetwork): vytvoří virtuální síť, že mu poskytneme podsíť.
-3. [Set-AzureRmVirtualNetworkSubnetConfig](https://docs.microsoft.com/powershell/module/azurerm.network/Set-AzureRmVirtualNetworkSubnetConfig): přiřadí koncového bodu služby virtuální podsítě.
-4. [Set-AzureRmVirtualNetwork](https://docs.microsoft.com/powershell/module/azurerm.network/Set-AzureRmVirtualNetwork): nevyřeší aktualizace provedené k virtuální síti.
-5. [Nový-AzureRmSqlServerVirtualNetworkRule](https://docs.microsoft.com/powershell/module/azurerm.sql/new-azurermsqlservervirtualnetworkrule): po vaší podsítě je koncový bod, přidá vaší podsítě jako pravidlo virtuální sítě do seznamu ACL vašeho serveru Azure SQL Database.
+1. [New-AzureRmVirtualNetworkSubnetConfig](https://docs.microsoft.com/powershell/module/azurerm.network/new-azurermvirtualnetworksubnetconfig): Vytvoří objekt podsítě.
+2. [New-AzureRmVirtualNetwork](https://docs.microsoft.com/powershell/module/azurerm.network/new-azurermvirtualnetwork): Vytvoří virtuální síť, předá podsíť.
+3. [Set-AzureRmVirtualNetworkSubnetConfig](https://docs.microsoft.com/powershell/module/azurerm.network/Set-AzureRmVirtualNetworkSubnetConfig): Koncový bod služby virtuální přiřadí vaší podsítě.
+4. [Set-AzureRmVirtualNetwork](https://docs.microsoft.com/powershell/module/azurerm.network/Set-AzureRmVirtualNetwork): Opakuje aktualizace provedené k virtuální síti.
+5. [New-AzureRmSqlServerVirtualNetworkRule](https://docs.microsoft.com/powershell/module/azurerm.sql/new-azurermsqlservervirtualnetworkrule): Koncový bod po vaší podsítě přidá vaší podsítě jako pravidlo virtuální sítě do seznamu ACL vašeho serveru Azure SQL Database.
    - Tato rutina nabízí parametr **- IgnoreMissingVNetServiceEndpoint**začíná v modulu Azure RM Powershellu verze 5.1.1.
 
 ## <a name="prerequisites-for-running-powershell"></a>Požadavky pro spuštění Powershellu
@@ -63,7 +63,7 @@ Náš ukázkový skript Powershellu se dělí posloupnost menší skripty. Rozd�
 
 <a name="a-script-10" />
 
-### <a name="script-1-variables"></a>Skript 1: proměnné
+### <a name="script-1-variables"></a>Script 1: Proměnné
 
 Tento první skript prostředí PowerShell přiřadí hodnoty proměnné. Následující skripty závisí na těchto proměnných.
 
@@ -112,7 +112,7 @@ Write-Host 'Completed script 1, the "Variables".';
 
 <a name="a-script-20" />
 
-### <a name="script-2-prerequisites"></a>Skript 2: požadavky
+### <a name="script-2-prerequisites"></a>Skript 2: Požadavky
 
 Připraví tento skript pro další skript, kde je tato akce koncový bod. Tento skript vytvoří za vás následující uvedené položky, ale pouze pokud ještě neexistují. Skript 2 můžete přeskočit, pokud jste si jistí, že už tyto položky:
 
@@ -289,7 +289,7 @@ Write-Host 'Completed script 3, the "Virtual-Network-Rule".';
 
 <a name="a-script-40" />
 
-## <a name="script-4-clean-up"></a>Skript 4: Čisticí
+## <a name="script-4-clean-up"></a>Script 4: Čištění
 
 Tento poslední skript odstraní prostředky, které předchozí skripty vytvořené pro ukázky. Ale skript vyzve k zadání potvrzení před odstraní následující:
 

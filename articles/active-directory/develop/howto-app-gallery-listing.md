@@ -13,16 +13,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 09/14/2018
+ms.date: 01/30/2019
 ms.author: celested
 ms.reviewer: elisol, bryanla
 ms.custom: aaddev
-ms.openlocfilehash: fd02c2d10d072f33fdc265feaadf9776e9c1d679
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.openlocfilehash: f4caf0cde7225e2c93723f412c53259a5f5646a4
+ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55102030"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55663277"
 ---
 # <a name="how-to-list-your-application-in-the-azure-active-directory-application-gallery"></a>Postup: Uvedení aplikace v galerii aplikací služby Azure Active Directory
 
@@ -45,7 +45,7 @@ ms.locfileid: "55102030"
 
 - Pro heslem jednotného přihlašování Ujistěte se prosím, že vaše aplikace podporuje ověřování formuláře tak, aby ukládání hesel do trezoru můžete udělat plnit jednotné přihlašování podle očekávání.
 
-- Pro automatické zřizování uživatelů požadavky aplikace by měly být uvedeny v galerii se jednotné přihlašování povolenou funkci pomocí kteréhokoli z protokolu federace je popsáno výše. Můžete požádat pro jednotné přihlašování a zřizování společně na portálu, pokud je ještě nejsou uvedená uživatelů.
+- Pro automatické zřizování uživatelů požadavky aplikace by měly být uvedeny v galerii se jednotné přihlašování povolenou funkci pomocí SAML 2.0 a WS-Fed. Můžete požádat pro jednotné přihlašování a zřizování společně na portálu, pokud je ještě nejsou uvedená uživatelů.
 
 ## <a name="submit-the-request-in-the-portal"></a>Odeslání požadavku na portálu
 

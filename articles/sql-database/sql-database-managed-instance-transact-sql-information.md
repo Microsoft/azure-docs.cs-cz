@@ -12,16 +12,20 @@ ms.author: jovanpop
 ms.reviewer: carlrab, bonova
 manager: craigg
 ms.date: 01/31/2019
-ms.openlocfilehash: 80da1058f17b69d82d851bb38482afa0b31daac1
-ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
+ms.openlocfilehash: 3fa0977a8239a3d0db1aea99d39a2079945b724a
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55508857"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55567719"
 ---
 # <a name="azure-sql-database-managed-instance-t-sql-differences-from-sql-server"></a>Rozdíly ve službě Azure SQL Database Managed Instance T-SQL z SQL serveru
 
-Azure SQL Database Managed Instance poskytuje vysokou kompatibilitu díky místní SQL Server Database Engine. Většina funkcí databázový stroj SQL Server jsou podporovány ve spravované instanci. Protože stále existují určité rozdíly v syntaxi a chování, tento článek shrnuje a popisuje tyto rozdíly. <a name="Differences"></a>
+Azure SQL Database Managed Instance poskytuje vysokou kompatibilitu díky místní SQL Server Database Engine. Většina funkcí databázový stroj SQL Server jsou podporovány ve spravované instanci.
+
+![Migrace](./media/sql-database-managed-instance/migration.png)
+
+Protože stále existují určité rozdíly v syntaxi a chování, tento článek shrnuje a popisuje tyto rozdíly. <a name="Differences"></a>
 - [Dostupnost](#availability) včetně rozdílů v [vždy na](#always-on-availability) a [zálohy](#backup),
 - [Zabezpečení](#security) včetně rozdílů v [auditování](#auditing), [certifikáty](#certificates), [pověření](#credentials), [zprostředkovatelé kryptografických služeb](#cryptographic-providers), [Přihlášení / uživatelé](#logins--users), [klíče a hlavní klíč služby služby](#service-key-and-service-master-key),
 - [Konfigurace](#configuration) včetně rozdílů v [rozšíření fondu vyrovnávací paměti](#buffer-pool-extension), [kolace](#collation), [úrovně kompatibility](#compatibility-levels),[databáze zrcadlení](#database-mirroring), [volby databáze](#database-options), [agenta systému SQL Server](#sql-server-agent), [možnosti tabulky](#tables),

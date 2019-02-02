@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 12/14/2018
 ms.author: shlo
-ms.openlocfilehash: 6efccdb3034bb25e60904c858f346ff9a5695fc0
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: e5910d08cf7ea5e1da094a0313513123d7c7813c
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54019720"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55567024"
 ---
 # <a name="create-a-trigger-that-runs-a-pipeline-on-a-tumbling-window"></a>Vytvoření aktivační události, který spouští kanál na aktivační událost pro přeskakující okno
 Tento článek popisuje kroky k vytvoření, spuštění a monitorování přeskakující okno. Obecné informace o aktivačních událostech a podporovaných typů najdete v tématu [spouštění kanálů a triggery](concepts-pipeline-execution-triggers.md).
@@ -33,7 +33,7 @@ Chcete-li vytvořit přeskakující okno na webu Azure Portal, vyberte **aktiva�
 ## <a name="tumbling-window-trigger-type-properties"></a>Přeskakujícího okna vlastnosti typu triggeru
 Aktivační událost pro přeskakující okno má následující vlastnosti typ aktivační události:
 
-```  
+```
 {
     "name": "MyTriggerName",
     "properties": {
@@ -47,43 +47,42 @@ Aktivační událost pro přeskakující okno má následující vlastnosti typ 
             "delay": "<<timespan – optional>>",
             “maxConcurrency”: <<int>> (required, max allowed: 50),
             "retryPolicy": {
-                "count":  <<int - optional, default: 0>>,
+                "count": <<int - optional, default: 0>>,
                 “intervalInSeconds”: <<int>>,
             }
         },
-        "pipeline":
-            {
-                "pipelineReference": {
-                    "type": "PipelineReference",
-                    "referenceName": "MyPipelineName"
+        "pipeline": {
+            "pipelineReference": {
+                "type": "PipelineReference",
+                "referenceName": "MyPipelineName"
+            },
+            "parameters": {
+                "parameter1": {
+                    "type": "Expression",
+                    "value": "@{concat('output',formatDateTime(trigger().outputs.windowStartTime,'-dd-MM-yyyy-HH-mm-ss-ffff'))}"
                 },
-                "parameters": {
-                    "parameter1": {
-                        "type": "Expression",
-                        "value": "@{concat('output',formatDateTime(trigger().outputs.windowStartTime,'-dd-MM-yyyy-HH-mm-ss-ffff'))}"
-                    },
-                    "parameter2": {
-                        "type": "Expression",
-                        "value": "@{concat('output',formatDateTime(trigger().outputs.windowEndTime,'-dd-MM-yyyy-HH-mm-ss-ffff'))}"
-                    },
-                    "parameter3": "https://mydemo.azurewebsites.net/api/demoapi"
-                }
+                "parameter2": {
+                    "type": "Expression",
+                    "value": "@{concat('output',formatDateTime(trigger().outputs.windowEndTime,'-dd-MM-yyyy-HH-mm-ss-ffff'))}"
+                },
+                "parameter3": "https://mydemo.azurewebsites.net/api/demoapi"
             }
-      }    
+        }
+    }
 }
-```  
+```
 
 Následující tabulka obsahuje přehled hlavních elementů JSON, které jsou souvisejících s opakováním a plánováním aktivační události aktivační událost pro přeskakující okno:
 
-| Element JSON | Popis | Typ | Povolené hodnoty | Požaduje se |
+| Element JSON | Popis | Type | Povolené hodnoty | Požaduje se |
 |:--- |:--- |:--- |:--- |:--- |
-| **type** | Typ aktivační události. Typ je pevná hodnota "TumblingWindowTrigger." | Řetězec | "TumblingWindowTrigger" | Ano |
-| **runtimeState** | Aktuální stav čas spuštění aktivační události.<br/>**Poznámka:** Tento element má \<jen pro čtení >. | Řetězec | "Spustit", "zastavena," "Zakázáno" | Ano |
-| **frequency** | Řetězec, který představuje jednotku frekvence (minuty nebo hodiny), ve kterém se aktivační událost opakuje. Pokud **startTime** hodnot data jsou podrobnější než **frekvence** hodnota, **startTime** data jsou považovány za, kdy se zpracovávají hranice okna. Například pokud **frekvence** hodnota je po hodinách a **startTime** hodnotu 2017-09 – 01T10:10:10Z, je první okno (2017-09 – 01T10:10:10Z 2017-09 – 01T11:10:10Z). | Řetězec | "minute", "hour"  | Ano |
+| **type** | Typ aktivační události. Typ je pevná hodnota "TumblingWindowTrigger." | String | "TumblingWindowTrigger" | Ano |
+| **runtimeState** | Aktuální stav čas spuštění aktivační události.<br/>**Poznámka:** Tento element má \<jen pro čtení >. | String | "Spustit", "zastavena," "Zakázáno" | Ano |
+| **frequency** | Řetězec, který představuje jednotku frekvence (minuty nebo hodiny), ve kterém se aktivační událost opakuje. Pokud **startTime** hodnot data jsou podrobnější než **frekvence** hodnota, **startTime** data jsou považovány za, kdy se zpracovávají hranice okna. Například pokud **frekvence** hodnota je po hodinách a **startTime** hodnotu 2017-09 – 01T10:10:10Z, je první okno (2017-09 – 01T10:10:10Z 2017-09 – 01T11:10:10Z). | String | "minute", "hour"  | Ano |
 | **interval** | Kladné celé číslo označující interval pro hodnotu **frequency**, která určuje, jak často se má aktivační událost spouštět. Například pokud **interval** 3 a **frekvence** je "hodina", aktivační událost se opakuje každé 3 hodiny. | Integer | Kladné celé číslo. | Ano |
 | **startTime**| První výskyt, což může být v minulosti. První interval aktivační událost (**startTime**, **startTime** + **interval**). | DateTime | Hodnota data a času. | Ano |
 | **endTime**| Poslední výskyt, což může být v minulosti. | DateTime | Hodnota data a času. | Ano |
-| **delay** | Množství času zpoždění spuštění zpracování dat pro okno. Spuštění kanálu je spuštěna za očekávanou dobu spuštění plus velikost **zpoždění**. **Zpoždění** definuje, jak dlouho čekat aktivační událost po vypršení platnosti čase před aktivací nové spuštění. **Zpoždění** nemění v okně **startTime**. Například **zpoždění** hodnotu 00:10:00 znamená trvat 10 minut. | Časový interval<br/>(hh: mm:)  | Časový interval hodnotu, pokud výchozí hodnota je 00:00:00. | Ne |
+| **delay** | Množství času zpoždění spuštění zpracování dat pro okno. Spuštění kanálu je spuštěna za očekávanou dobu spuštění plus velikost **zpoždění**. **Zpoždění** definuje, jak dlouho čekat aktivační událost po vypršení platnosti čase před aktivací nové spuštění. **Zpoždění** nemění v okně **startTime**. Například **zpoždění** hodnotu 00:10:00 znamená trvat 10 minut. | Časový interval<br/>(hh:mm:ss)  | Časový interval hodnotu, pokud výchozí hodnota je 00:00:00. | Ne |
 | **maxConcurrency** | Počet spuštění souběžných aktivační události, které se aktivuje například pro windows, které jsou připravené. Například výplň pozadí každou hodinu spouštění pro výsledky včera v systému windows 24. Pokud **maxConcurrency** = 10, aktivační události jsou vyvolávány jen u prvních 10 windows (00:00-01:00 - 09:00-10:00). Po dokončení prvních 10 aktivovaných spuštění kanálu se spuštění aktivační události se aktivuje například pro dalších 10 systému windows (10:00-11:00 – 19:00 – 20:00). Pokračujte v tomto příkladu z **maxConcurrency** = 10, pokud existují 10 windows budete mít, existují 10 spuštění celkový kanálu. Pokud je pouze 1 okno připravený, je pouze 1 spuštění kanálu. | Integer | Celé číslo mezi 1 až 50 znaků. | Ano |
 | **retryPolicy: Počet** | Počet opakování před spuštění kanálu je označena jako "Se nezdařilo."  | Integer | Celé číslo, kde výchozí hodnota je 0 (žádná opakování). | Ne |
 | **retryPolicy: intervalInSeconds** | Zpoždění mezi opakovanými pokusy zadávají v sekundách. | Integer | Počet sekund, kde výchozí hodnota je 30. | Ne |
@@ -92,32 +91,31 @@ Následující tabulka obsahuje přehled hlavních elementů JSON, které jsou s
 
 Můžete použít **WindowStart** a **WindowEnd** systémové proměnné přeskakující okno v vaše **kanálu** definice (to znamená pro součást dotazu). Předat do kanálu v systémové proměnné jako parametry **aktivační událost** definice. Následující příklad ukazuje, jak tyto proměnné předat jako parametry:
 
-```  
+```
 {
     "name": "MyTriggerName",
     "properties": {
         "type": "TumblingWindowTrigger",
             ...
-        "pipeline":
-            {
-                "pipelineReference": {
-                    "type": "PipelineReference",
-                    "referenceName": "MyPipelineName"
+        "pipeline": {
+            "pipelineReference": {
+                "type": "PipelineReference",
+                "referenceName": "MyPipelineName"
+            },
+            "parameters": {
+                "MyWindowStart": {
+                    "type": "Expression",
+                    "value": "@{concat('output',formatDateTime(trigger().outputs.windowStartTime,'-dd-MM-yyyy-HH-mm-ss-ffff'))}"
                 },
-                "parameters": {
-                    "MyWindowStart": {
-                        "type": "Expression",
-                        "value": "@{concat('output',formatDateTime(trigger().outputs.windowStartTime,'-dd-MM-yyyy-HH-mm-ss-ffff'))}"
-                    },
-                    "MyWindowEnd": {
-                        "type": "Expression",
-                        "value": "@{concat('output',formatDateTime(trigger().outputs.windowEndTime,'-dd-MM-yyyy-HH-mm-ss-ffff'))}"
-                    }
+                "MyWindowEnd": {
+                    "type": "Expression",
+                    "value": "@{concat('output',formatDateTime(trigger().outputs.windowEndTime,'-dd-MM-yyyy-HH-mm-ss-ffff'))}"
                 }
             }
-      }    
+        }
+    }
 }
-```  
+```
 
 Použít **WindowStart** a **WindowEnd** hodnoty proměnných systému v definici kanálu používat parametry "MyWindowStart" a "MyWindowEnd", odpovídajícím způsobem.
 
@@ -135,10 +133,10 @@ Tato část ukazuje, jak pomocí prostředí Azure PowerShell k vytvoření, spu
 
 1. Vytvořte soubor JSON s názvem **MyTrigger.json** ve složce C:\ADFv2QuickStartPSH\ s následujícím obsahem:
 
-   > [!IMPORTANT]
-   > Předtím, než jste uložili soubor JSON, nastavte hodnotu **startTime** prvek na aktuální čas UTC. Nastavte hodnotu **endTime** element na jednu hodinu, posledních do aktuálního času UTC.
+    > [!IMPORTANT]
+    > Předtím, než jste uložili soubor JSON, nastavte hodnotu **startTime** prvek na aktuální čas UTC. Nastavte hodnotu **endTime** element na jednu hodinu, posledních do aktuálního času UTC.
 
-    ```json   
+    ```json
     {
       "name": "PerfTWTrigger",
       "properties": {
@@ -167,7 +165,7 @@ Tato část ukazuje, jak pomocí prostředí Azure PowerShell k vytvoření, spu
         "runtimeState": "Started"
       }
     }
-    ```  
+    ```
 
 2. Vytvoření aktivační události pomocí **Set-AzureRmDataFactoryV2Trigger** rutiny:
 

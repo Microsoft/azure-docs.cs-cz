@@ -11,13 +11,13 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 manager: craigg
-ms.date: 07/16/2018
-ms.openlocfilehash: 0269a8ea460667d44b6173e4504a9ccb5695d722
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.date: 12/04/2018
+ms.openlocfilehash: ff7e15579bfb0edfe9229238c6a4d5672700d0ef
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52863529"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55567005"
 ---
 # <a name="getting-started-with-elastic-database-jobs"></a>Začínáme s úlohy elastické databáze
 
@@ -42,7 +42,7 @@ Zde vytvořit mapy horizontálních oddílů manager společně s několika hori
 2. V příkazovém okně zadejte "1" a stiskněte klávesu **Enter**. To vytvoří správce mapování horizontálního oddílu a přidá dvě horizontálních oddílů k serveru. Potom zadejte "3" a stiskněte klávesu **Enter**; čtyřikrát opakujte tuto akci. To vloží ukázková data řádků vaše horizontálních oddílů.
 3. [Webu Azure portal](https://portal.azure.com) by se měla zobrazit tři nové databáze:
 
-   ![Visual Studio potvrzení](./media/sql-database-elastic-query-getting-started/portal.png)
+   ![Visual Studio confirmation](./media/sql-database-elastic-query-getting-started/portal.png)
 
    Teď vytvoříme vlastní databázi kolekce, která odpovídá všem databázím na mapy horizontálních oddílů. To umožňuje vytvořit a spustit úlohu, která přidá novou tabulku napříč horizontálními oddíly.
 
@@ -260,19 +260,19 @@ Zásady spouštění aktuálně umožňují definovat:
 
 * Název: Identifikátor pro zásady spouštění.
 * Časový limit úlohy: Celkový čas předtím, než úloha zruší úlohy Elastic Database.
-* Počáteční Interval opakování: Interval čekání před prvním opakováním.
-* Maximální Interval opakování: Zakončení intervalů opakování, které chcete použít.
-* Opakovaný pokus o Interval omezení rychlosti koeficient: Koeficient pro výpočet na další interval mezi opakovanými pokusy.  Se používá tento vzorec: (počátečního intervalu opakování) * Math.Pow – (Interval omezení rychlosti koeficient (), (počet pokusů o) - 2).
-* Maximální počet pokusů o: Maximální počet opakovaných pokusů provést v rámci úlohy.
+* Interval opakování počáteční: Interval čekání před prvním opakováním.
+* Maximální počet opakovaných Interval: Zakončení intervalů opakování používat.
+* Koeficient omezení rychlosti Interval opakování: Koeficient pro výpočet na další interval mezi opakovanými pokusy.  Se používá tento vzorec: (Počáteční Interval opakování) * Math.Pow – (Interval omezení rychlosti koeficient (), (počet opakování) - 2).
+* Maximální počet pokusů: Maximální počet opakovaných pokusů provést v rámci úlohy.
 
 Výchozí zásadu spouštění používá následující hodnoty:
 
 * Název: Výchozí zásadu spouštění
 * Časový limit úlohy: 1 týden
-* Počátečního intervalu opakování: 100 milisekund
-* Maximální Interval opakování: 30 minut
+* Interval opakování počáteční:  100 milisekund
+* Maximální počet opakovaných Interval: 30 minut
 * Koeficient Interval opakování: 2
-* Maximální počet pokusů o: 2 147 483 647
+* Maximální počet pokusů: 2,147,483,647
 
 Vytvoření zásady požadovaného spouštění:
 
@@ -307,8 +307,8 @@ Aktualizujte zásady spouštění požadované aktualizace:
 
 Existují dva různé způsoby, že úlohy Elastic Database můžete provádět zrušení:
 
-1. Ruší se právě spouští úlohy: Pokud se zjistí zrušením zatímco úloha je aktuálně spuštěná, zrušení, dojde k pokusu o v rámci aktuálně prováděné aspekt úlohy.  Příklad: Pokud je dlouho probíhající dotazy aktuálně prováděné při pokusu o zrušení, při pokusu o dotaz zrušíte.
-2. Zrušení úloh opakovaných pokusů: V případě zrušení zjištění vláknem ovládací prvek předtím, než se spustí úloha pro spuštění, vlákno ovládací prvek zabraňuje spuštění úlohy a deklaruje žádosti jako zrušená.
+1. Ruší se právě spouští úkoly: Pokud se zjistí zrušením zatímco úloha je aktuálně spuštěná, zrušení dojde k pokusu o v rámci aktuálně prováděné aspekt úlohy.  Příklad: Pokud je dlouho probíhající dotazy aktuálně prováděné při pokusu o zrušení, je pokus o zrušení dotazu.
+2. Ruší se úloha opakuje: Pokud se předtím, než se spustí úloha pro spuštění zrušením zjistí vláknem ovládacího prvku, vlákno ovládací prvek zabraňuje spuštění úlohy a deklaruje žádosti jako zrušená.
 
 Pokud je úloha zrušení požadováno pro nadřazenou úlohou, žádost o zrušení zachovaný nadřazená úloha a všechny jeho podřízené úlohy.
 

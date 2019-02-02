@@ -11,12 +11,12 @@ ms.topic: tutorial
 ms.date: 01/30/2019
 ms.subservice: hybrid
 ms.author: billmath
-ms.openlocfilehash: fb35f72d45cbdf1690329b0bf146fce4d47d0bd6
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.openlocfilehash: 5219241de9b18008032a3eb78c6aab25a2713370
+ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55490103"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55660404"
 ---
 # <a name="tutorial--setting-up-phs-as-backup-for-ad-fs-in-azure-ad-connect"></a>Kurz:  Nastavení PHS jako zálohu pro službu AD FS v Azure AD Connect
 
@@ -43,7 +43,7 @@ Udělejte toto:
 10. A to je vše!  Dokončení.  Synchronizace hodnot hash hesel teď dojde a může sloužit jako zálohu, pokud služba AD FS přestane být k dispozici.
 
 ## <a name="switch-to-password-hash-synchronization"></a>Přepnout na synchronizaci hodnot hash hesel
-Teď vám ukážeme, jak přejít na synchronizaci hodnot hash hesel, pokud potřebujete.  Udělejte toto:
+Teď vám ukážeme, jak přepnout na synchronizaci hodnot hash hesel. Než začnete, vezměte v úvahu za jakých podmínek by vám ulehčili přechod. Nenastavujte přepínač dočasné z důvodů, jako je výpadek sítě, podverze služby AD FS problém nebo problém, který má vliv na některé uživatele. Pokud se rozhodnete ulehčili přechod, protože opravuje problém bude trvat příliš dlouho, postupujte takto:
 
 1. Dvakrát klikněte na ikonu služby Azure AD Connect, který byl vytvořen v klientských počítačích
 2.  Klikněte na **Konfigurovat**.

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 10/13/2017
 ms.author: vidarmsft
-ms.openlocfilehash: c88df7ba1a9a60ffcda9a5235197037088abca4e
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: f5b128306389a87c432b869b4756a6d232dc903c
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51249264"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55566036"
 ---
 # <a name="automated-disaster-recovery-solution-using-azure-site-recovery-for-file-shares-hosted-on-storsimple"></a>Automatizované řešení zotavení po havárii pomocí Azure Site Recovery pro sdílené složky hostované na StorSimple
 ## <a name="overview"></a>Přehled
@@ -167,17 +167,17 @@ V Azure Site Recovery k automatizaci procesu převzetí služeb při selhání s
    
 1. V účtu automation, klikněte na tlačítko **proměnné** &gt; **přidat proměnnou** a přidejte následující proměnné. Můžete se k šifrování tyto prostředky. Tyto proměnné jsou konkrétní plán obnovení. Pokud v plánu služby recovery, které vytvoříte v dalším kroku název je testovací plány, proměnných by měl být StorSimRegKey testovací plány, testovací plán – AzureSubscriptionName a tak dále.
 
-   - **BaseUrl**: adresa url Resource Manageru pro Azure cloud. Získáte rutinou **Get-AzureRmEnvironment | Název Select-Object, ResourceManagerUrl** rutiny.
-   - *RecoveryPlanName* **- ResourceGroupName**: Skupina Resource Manageru, která má StorSimple prostředků.
-   - *RecoveryPlanName* **- ManagerNázev**: The StorSimple prostředku, který má zařízení StorSimple.
-   - *RecoveryPlanName* **- DeviceName**: zařízení StorSimple, který má být převzetí služeb při selhání.
-   - *RecoveryPlanName* **- DeviceIpAddress**: IP adresa zařízení (lze najít v **zařízení** kartu v části Správce zařízení StorSimple &gt; **nastavení** &gt; **Sítě** &gt; **nastavení DNS** skupiny).
-   - *RecoveryPlanName* **- VolumeContainers**: řetězec oddělených čárkou kontejnerů svazků, které jsou k dispozici na na zařízení, které potřebujete provést více než; například: volcon1 volcon2, volcon3.
-   - *RecoveryPlanName* **- TargetDeviceName**: na které mají být převzetí služeb při selhání kontejnerů řešení StorSimple Cloud Appliance.
-   - *RecoveryPlanName* **- TargetDeviceIpAddress**: IP adresa cílového zařízení (lze najít v **virtuálního počítače** části &gt; **nastavení** skupiny &gt; **sítě** kartu).
-   - *RecoveryPlanName* **- StorageAccountName**: název účtu úložiště, ve kterém se uloží skriptu (který se má spouštět se přes virtuální počítač). To může být libovolný účet úložiště, který má nějaké místo k uložení skriptu dočasně.
-   - *RecoveryPlanName* **- StorageAccountKey**: přístupový klíč pro výše uvedené účtu úložiště.
-   - *RecoveryPlanName* **- VMGUIDS**: při ochraně virtuálního počítače, Azure Site Recovery přiřadí každému virtuálnímu počítači jedinečné ID, které poskytuje podrobné informace o se selhání pro virtuální počítač. Chcete-li získat VMGUID, vyberte **služby Recovery Services** kartě a klikněte na tlačítko **chráněné položky** &gt; **skupin ochrany** &gt;  **Počítače** &gt; **vlastnosti**. Pokud máte několik virtuálních počítačů, přidejte identifikátory GUID jako řetězec oddělených čárkou.
+   - **BaseUrl**: Adresa url správce prostředků cloudu Azure. Získáte rutinou **Get-AzureRmEnvironment | Název Select-Object, ResourceManagerUrl** rutiny.
+   - *RecoveryPlanName***-ResourceGroupName**: Skupina Resource Manageru, který se má prostředek StorSimple.
+   - *RecoveryPlanName***-ManagerName**: StorSimple prostředek, který má zařízení StorSimple.
+   - * RecoveryPlanName ***- DeviceName**: Zařízení StorSimple, který má být převzetí služeb při selhání.
+   - *RecoveryPlanName***-DeviceIpAddress**: IP adresa zařízení (lze najít v **zařízení** kartu v části Správce zařízení StorSimple &gt; **nastavení** &gt; **sítě** &gt; **Nastavení DNS** skupiny).
+   - *RecoveryPlanName***-VolumeContainers**: Čárkou oddělený řetězec kontejnerů svazků, které jsou k dispozici na na zařízení, musí být; převzetí služeb při selhání Příklad: volcon1 volcon2, volcon3.
+   - * RecoveryPlanName ***- TargetDeviceName**: Řešení StorSimple Cloud Appliance ve kterém mají být převzetí služeb při selhání kontejnerů.
+   - *RecoveryPlanName***-TargetDeviceIpAddress**: IP adresa cílového zařízení (lze najít v **virtuálního počítače** části &gt; **nastavení** skupiny &gt; **sítě** kartu).
+   - *RecoveryPlanName***-StorageAccountName**: Název účtu úložiště, ve kterém se uloží skriptu (který se má spouštět se přes virtuální počítač). To může být libovolný účet úložiště, který má nějaké místo k uložení skriptu dočasně.
+   - *RecoveryPlanName***-StorageAccountKey**: Přístupový klíč pro výše uvedené účtu úložiště.
+   - * RecoveryPlanName ***- VMGUIDS**: Při ochraně virtuálního počítače, Azure Site Recovery přiřadí každému virtuálnímu počítači jedinečné ID, které poskytuje podrobné informace o se selhání pro virtuální počítač. Chcete-li získat VMGUID, vyberte **služby Recovery Services** kartě a klikněte na tlačítko **chráněné položky** &gt; **skupin ochrany** &gt;  **Počítače** &gt; **vlastnosti**. Pokud máte několik virtuálních počítačů, přidejte identifikátory GUID jako řetězec oddělených čárkou.
 
     Například, pokud se název plánu obnovení fileServerpredayRP pak vaše **proměnné**, **připojení** a **certifikáty** karta by měla vypadat následovně, po přidání všechny prostředky.
 
@@ -208,7 +208,7 @@ V Azure Site Recovery k automatizaci procesu převzetí služeb při selhání s
       
    1. Vytvořte modul Azure Automation Runbook ke správě zařízení StorSimple řady 8000. Použití následujících příkazů vytvořte soubor zip modulu služby Automation.
          
-      ```
+      ```powershell
             # set path variables
             $downloadDir = "C:\scripts\StorSimpleSDKTools"
             $moduleDir = "$downloadDir\AutomationModule\Microsoft.Azure.Management.StorSimple8000Series"
@@ -250,23 +250,23 @@ V Azure Site Recovery k automatizaci procesu převzetí služeb při selhání s
    
    - Otevře se okno akce vložit, zadejte název, vyberte **primární straně** možnost tam, kde možnost spustit, vyberte účet Automation (ve kterém jste přidali sady runbook) a potom vyberte **převzetí služeb při selhání StorSimple svazku kontejnerů**  sady runbook.
    
-   - Klikněte pravým tlačítkem na **skupiny 1: Start** a klikněte na tlačítko **přidat chráněné položky** možnost a vyberte virtuální počítače, které se mají chránit v plánu obnovení a klikněte na **Ok** tlačítko. Volitelný parametr, pokud je už vybrané virtuální počítače.
+   - Klikněte pravým tlačítkem na **1. skupina: Spustit** a klikněte na tlačítko **přidat chráněné položky** možnost a vyberte virtuální počítače, které se mají chránit v plánu obnovení a klikněte na **Ok** tlačítko. Volitelný parametr, pokud je už vybrané virtuální počítače.
    
-   - Klikněte pravým tlačítkem na **skupiny 1: Start** a klikněte na tlačítko **akce odeslání** možnost pak přidejte následující skriptů:  
+   - Klikněte pravým tlačítkem na **1. skupina: Spustit** a klikněte na tlačítko **akce odeslání** možnost pak přidejte následující skriptů:  
       
       - Sada runbook Start--virtuální-zařízení StorSimple  
       - Selhání sady runbook přes StorSimple svazku kontejnerů  
       - Připojení svazků po selhání sady runbook  
       - Odinstalace--rozšíření vlastních skriptů runbook  
         
-   - Přidejte ruční akce po výše uvedené 4 skripty ve stejném **1. skupina: kroky prováděné po zpracování** oddílu. Tato akce je bod, ve kterém můžete ověřit, zda vše funguje správně. Tato akce musí být přidán pouze jako součást testovacího převzetí služeb při selhání (tedy vyberte pouze **testovací převzetí služeb při selhání** zaškrtávací políčko).
+   - Přidejte ruční akce po výše uvedené 4 skripty ve stejném **1. skupina: Kroky prováděné po zpracování** oddílu. Tato akce je bod, ve kterém můžete ověřit, zda vše funguje správně. Tato akce musí být přidán pouze jako součást testovacího převzetí služeb při selhání (tedy vyberte pouze **testovací převzetí služeb při selhání** zaškrtávací políčko).
     
    - Po ruční akci, přidejte **vyčištění** skriptu pomocí stejného postupu, který jste použili pro sady runbook. **Uložit** plánu obnovení.
     
    > [!NOTE]
    > Při spuštění testovací převzetí služeb při selhání, by všechno, co v kroku ručně prováděné akce ověřit, protože budou odstraněny svazky zařízení StorSimple, které kdyby byly klonovat na cílovém zařízení jako součást vyčištění po dokončení ručně prováděné akce.
        
-      ![Recoery plán](./media/storsimple-disaster-recovery-using-azure-site-recovery/image7.png)
+      ![Plán obnovení](./media/storsimple-disaster-recovery-using-azure-site-recovery/image7.png)
 
 ## <a name="perform-a-test-failover"></a>Provést testovací převzetí služeb
 Odkazovat [řešení zotavení po Havárii Active Directory](../site-recovery/site-recovery-active-directory.md) doprovodná Příručka pro důležité informace o konkrétní do služby Active Directory během testu převzetí služeb. Nastavení místního není vůbec narušen, když se testovací převzetí služeb při selhání. Svazky zařízení StorSimple připojené k místní virtuální počítač se klonují do řešení StorSimple Cloud Appliance v Azure. Virtuální počítač pro účely testování se aktivují v Azure a naklonované svazky jsou připojené k virtuálnímu počítači.
@@ -340,19 +340,19 @@ Plánování kapacity se skládá z alespoň dva důležité procesy:
    - Pokud se nepovede plánované/neplánované převzetí služeb při selhání a virtuální počítače se vytvoří v Azure, pak nevyčišťujte virtuálních počítačů. Místo toho proveďte navrácení služeb po obnovení. Pokud odstraníte virtuální počítače pak místní virtuální počítače nelze zapnout znovu.
    - Po selhání Pokud se vám nedaří zobrazit svazky, přejděte na virtuální počítače, správu disků otevřete tak, zkontrolujte znovu disky a pak je převedení do online režimu.
    - V některých případech může být jiná než písmena v místním písmena jednotek v lokalitě zotavení po Havárii. Pokud k tomu dojde, je potřeba ručně po dokončení převzetí služeb při odstranění problému.
-   - Časový limit úlohy převzetí služeb při selhání: The StorSimple skriptu vyprší časový limit, pokud převzetí služeb při selhání kontejnerů svazků trvá déle než omezení Azure Site Recovery na skript (aktuálně 120 minut).
-   - Časový limit úlohy zálohování: The StorSimple skriptu vyprší časový limit, pokud zálohování svazků trvá déle než omezení Azure Site Recovery na skript (aktuálně 120 minut).
+   - Časový limit úlohy převzetí služeb při selhání: StorSimple skriptu vyprší časový limit, pokud převzetí služeb při selhání kontejnerů svazků trvá déle než omezení Azure Site Recovery na skript (aktuálně 120 minut).
+   - Časový limit úlohy zálohování: StorSimple skriptu vyprší časový limit, pokud zálohování svazků trvá déle než omezení Azure Site Recovery na skript (aktuálně 120 minut).
    
    > [!IMPORTANT]
    > Zálohování spustit ručně z portálu Azure portal a potom znovu spusťte plánu obnovení.
    
-   - Časový limit úlohy klonovat: The StorSimple skriptu vyprší časový limit klonování svazků trvá déle než omezení Azure Site Recovery na skript (aktuálně 120 minut).
-   - Chyba synchronizace času: The StorSimple skripty chyby si informacemi o tom, že zálohování nebyly úspěšné, i když je na portálu pro úspěšné zálohování. Možnou příčinou to může být, že čas zařízení StorSimple může být synchronizován s aktuální čas v časovém pásmu.
+   - Časový limit úlohy klonu: StorSimple skriptu vyprší časový limit, pokud se klonování svazků trvá déle než omezení Azure Site Recovery na skript (aktuálně 120 minut).
+   - Chyba synchronizace času: StorSimple skripty chyby si informacemi o tom, že zálohování nebyly úspěšné, i když je na portálu pro úspěšné zálohování. Možnou příčinou to může být, že čas zařízení StorSimple může být synchronizován s aktuální čas v časovém pásmu.
    
    > [!IMPORTANT]
    > Synchronizaci času zařízení se aktuální čas v časovém pásmu.
    
-   - Chyba převzetí služeb při selhání zařízení: skript StorSimple může selhat, pokud dojde převzetí služeb při selhání zařízení při spuštění plánu obnovení.
+   - Chyba převzetí služeb při selhání zařízení: Skript StorSimple může selhat, pokud dojde převzetí služeb při selhání zařízení při spuštění plánu obnovení.
    
    > [!IMPORTANT]
    > Plán obnovení znovu po dokončení převzetí služeb při selhání zařízení.

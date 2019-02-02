@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: 61bc9da45ac420e5683be1ea3ad253eae9c0ba5a
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.openlocfilehash: fc18262326a8474cac417b67a37df35d91d75439
+ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50158937"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55657735"
 ---
 # <a name="set-up-a-device-template"></a>Nastavení šablony zařízení
 
@@ -39,6 +39,8 @@ Z této šablony zařízení můžete vytvořit a připojit skutečné ventilát
 
 > [!NOTE]
 > Pouze tvůrce a správce může vytvořit, upravit a odstranit zařízení šablony. Každý uživatel může vytvořit zařízení na **Device Explorer** stránky ze stávajících šablon zařízení.
+
+[!INCLUDE [iot-central-experimental-note](../../includes/iot-central-experimental-note.md)]
 
 ## <a name="create-a-device-template"></a>Vytvoření šablony zařízení
 
@@ -84,7 +86,7 @@ Po výběru **provádí**, **teploty** měření se zobrazí v seznamu měření
 ### <a name="create-an-event-measurement"></a>Vytvoření měření událostí
 Chcete-li přidat novou událost měření **upravit šablonu**a potom klikněte na tlačítko **a nové měření** tlačítko. Vyberte **události** jako měření typ a zadejte podrobnosti **vytvořit událost** formuláře.
 
-Zadejte **zobrazovaný název**, **název pole**, a **závažnost** podrobnosti o události. Můžete zvolit ze tří dostupných úrovní závažnosti: **chyba**, **upozornění**, a **informace**.  
+Zadejte **zobrazovaný název**, **název pole**, a **závažnost** podrobnosti o události. Můžete vybrat ze tří dostupných úrovní závažnosti: **Chyba**, **upozornění**, a **informace**.  
 
 Například můžete přidat nový **Motor chyba ventilátor** událostí.
 
@@ -134,11 +136,11 @@ Nastavení řízení zařízení. Umožňují operátory aplikace zadejte vstupy
 
 Nastavení může být v jednom ze tří stavů. Zařízení odesílá tyto stavy.
 
-- **Synchronizované**: zařízení se změnila na hodnotu nastavení.
+- **Synchronizované**: Zařízení se změnila na hodnotu nastavení.
 
-- **Čekající**: zařízení se momentálně mění hodnotu nastavení.
+- **Čekající**: Zařízení se momentálně mění hodnotu nastavení.
 
-- **Chyba**: zařízení vrátilo chybu.
+- **Chyba**: Zařízení vrátilo chybu.
 
 Například můžete přidat nové nastavení rychlost ventilátor tak, že vyberete **upravit šablonu** a zadáte na novém **číslo** nastavení:
 
@@ -165,9 +167,9 @@ Vlastnosti se dělí do dvou kategorií:
 
 Umístění zařízení můžete například přidat jako nový **Text** vlastností (vlastnost aplikací) tak, že vyberete **upravit šablonu** a zadávání v nové vlastnosti:
 
-| Zobrazovaný název  | Název pole | Oříznout úvodní mezery  | Odstranění koncových mezer  | Rozlišování velikosti písmen| Minimální délka | Maximální délka |
+| Zobrazovaný název  | Název pole | Oříznout mezery na začátku  | Oříznout mezery na konci  | Rozlišování velikosti písmen| Minimální délka | Maximální délka |
 | --------------| -----------|---------| ---------|---- |----|----|
-| Umístění      | Umístění        | Vypnuto     |  Vypnuto     | Smíšené  | 0 | 100|
+| Umístění      | loc        | Vypnuto     |  Vypnuto     | Smíšené  | 0 | 100|
 
 !["Konfigurace Text" formuláři na kartě "Properties"](./media/howto-set-up-template/propertiesform.png)
 
@@ -234,9 +236,9 @@ Příkazy se používají ke vzdálené správě zařízení. Umožňují operá
 
 Čím se liší od nastavení příkazu 
 
-* **Nastavení**: nastavení konfigurace, která má být použita k zařízení, a chcete zařízení budou zachovány tuto konfiguraci, dokud ho změnit. Například můžete chtít nastavit teploty mrazničce a chcete, aby toto nastavení i v případě, že mrazírenských restartuje. 
+* **Nastavení**: Nastavení konfigurace, která má být použita k zařízení, a chcete zařízení budou zachovány tuto konfiguraci, dokud ho změnit. Například můžete chtít nastavit teploty mrazničce a chcete, aby toto nastavení i v případě, že mrazírenských restartuje. 
 
-* **Příkaz**: pomocí příkazů pro okamžité spuštění příkazu na zařízení vzdáleně z IoT Central. Pokud zařízení není připojené, vyprší časový limit příkazu a selže. Například chcete restartovat zařízení.  
+* **Příkaz**: Pomocí příkazů okamžité spuštění příkazu na zařízení vzdáleně z IoT Central. Pokud zařízení není připojené, vyprší časový limit příkazu a selže. Například chcete restartovat zařízení.  
 
 
 Například můžete přidat nový **Echo** příkaz tak, že vyberete **úpravy šablony**, pak levým na **+ nový příkaz**a zadáním do nového příkazu:

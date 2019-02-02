@@ -11,13 +11,13 @@ author: GithubMirek
 ms.author: mireks
 ms.reviewer: vanto
 manager: craigg
-ms.date: 06/13/2018
-ms.openlocfilehash: 1761c7040becf0bfe63caf12d8f5ea7b15e9b88b
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.date: 09/25/2018
+ms.openlocfilehash: 98d48659225d89f476ca1e3cc437245bc9e9f753
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47162929"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55564812"
 ---
 # <a name="configure-multi-factor-authentication-for-sql-server-management-studio-and-azure-ad"></a>Konfigurace vícefaktorového ověřování pro SQL Server Management Studio a Azure AD
 
@@ -45,26 +45,26 @@ Následující kroky ukazují, jak se připojit k SQL Database nebo SQL Data War
    ![mfa-tenant-ssms](./media/sql-database-ssms-mfa-auth/mfa-tenant-ssms.png)   
 4. Obvyklým pro SQL Database a SQL Data Warehouse, musíte kliknout na **možnosti** a zadejte databázi na **možnosti** dialogové okno. (Pokud je uživatel typu Host připojeného uživatele (to znamená joe@outlook.com), musíte zaškrtnout políčko a přidat aktuální název domény AD nebo ID tenanta jako součást možnosti. Zobrazit [univerzální ověřování pomocí SQL Database a SQL Data Warehouse (podpora SSMS pro vícefaktorové ověřování)](sql-database-ssms-mfa-authentication.md). Pak klikněte na **Connect** (Připojit).  
 5. Když **přihlásit ke svému účtu** se zobrazí dialogové okno, zadejte účet a heslo vaší identity Azure Active Directory. Pokud je uživatel součástí domény sdružených se službou Azure AD není vyžadováno heslo.  
-   ![2mfa – přihlášení][2]  
+   ![2mfa-sign-in][2]  
 
    > [!NOTE]
    > Univerzální ověřování pomocí účtu, který nevyžaduje vícefaktorové ověřování připojíte se v tuto chvíli. Pro uživatele, kteří vyžadují vícefaktorové ověřování pokračujte následujícími kroky:
    >  
    
 6. Dvě MFA dialogových oken nastavení se může zobrazit. Tentokrát jeden operace závisí na MFA správce nastavení a proto může být volitelný. Pro doménu povolená služba MFA tento krok je někdy předem definovaných (například domény vyžaduje, aby uživatelé používat čipové karty a kód pin).  
-   ![3mfa – nastavení][3]  
+   ![3mfa-setup][3]  
 7. Druhý možné jednou, dialogové okno umožňuje vybrat podrobnosti, které metody ověřování. Možnosti jsou nakonfigurované vaším správcem.  
-   ![4mfa ověřte 1][4]  
+   ![4mfa-verify-1][4]  
 8. Azure Active Directory odešle potvrzující informace o vás. Když dostanete ověřovací kód, zadejte ho do **zadejte ověřovací kód** pole a klikněte na tlačítko **přihlášení**.  
-   ![5mfa ověřte 2][5]  
+   ![5mfa-verify-2][5]  
 
 Po dokončení ověření SSMS připojí, obvykle za předpokladu platné přihlašovací údaje a přístup přes bránu firewall.
 
 ## <a name="next-steps"></a>Další postup
 
 - Přehled služby Azure SQL Database Multi-Factor authentication, naleznete v tématu univerzální ověřování s [SQL Database a SQL Data Warehouse (podpora SSMS pro vícefaktorové ověřování)](sql-database-ssms-mfa-authentication.md).  
-- Ostatní udělit přístup k databázi: [SQL Database ověřování a autorizace: udělení přístupu](sql-database-manage-logins.md)  
-- Ujistěte se, že ostatní se můžete připojit přes bránu firewall: [konfigurace pravidla brány firewall na úrovni serveru Azure SQL Database pomocí webu Azure portal](sql-database-configure-firewall-settings.md)  
+- Udělení přístupu k vaší databázi ostatní: [SQL Database ověřování a autorizace: Udělení přístupu](sql-database-manage-logins.md)  
+- Ujistěte se, že se že ostatní připojit přes bránu firewall: [Konfigurace pravidla brány firewall na úrovni serveru Azure SQL Database pomocí webu Azure portal](sql-database-configure-firewall-settings.md)  
 - Při použití **Active Directory – univerzální vícefaktorovým Ověřováním** ověřování ADAL trasování je k dispozici od [SSMS 17.3](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms). Vypnuto ve výchozím nastavení, můžete zapnout trasování ADAL pomocí **nástroje**, **možnosti** nabídky v části **Azure Services**, **Azure Cloud**,  **ADAL úroveň trasování okna výstup**následovaný povolení **výstup** v **zobrazení** nabídky. Trasování jsou k dispozici v okně výstupu při výběru **Azure Active Directory možnost**.   
 
 

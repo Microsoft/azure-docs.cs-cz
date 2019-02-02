@@ -11,23 +11,23 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/16/2019
+ms.date: 01/30/2019
 ms.author: mabrigg
 ms.reviewer: waltero
 ms.lastreviewed: 01/16/2019
-ms.openlocfilehash: b032dea67bba6f78b8172e772ab2f8fe492f39f9
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: fa95915615efdd8832a983d03a600beec23d1247
+ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55250431"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55658942"
 ---
 # <a name="deploy-kubernetes-to-azure-stack-using-active-directory-federated-services"></a>Nasazení do služby Azure Stack pomocí Active Directory Federated Services Kubernetes
 
 *Platí pro: Azure Stack integrované systémy a Azure Stack Development Kit*
 
 > [!Note]  
-> Kubernetes ve službě Azure Stack je ve verzi preview.
+> Kubernetes ve službě Azure Stack je ve verzi preview. Azure Stack odpojené scénář není aktuálně podporován ve verzi preview.
 
 Můžete postupovat podle kroků v tomto článku pro nasazení a nastavit prostředky pro Kubernetes. Pomocí těchto kroků při Active Directory Federated Services (AD FS) je služba pro správu identit.
 
@@ -66,7 +66,7 @@ Potřebujete pracovat se správcem vaší služby Azure Stack a nastavení insta
 
     - Budete potřebovat následující údaje:
 
-        | Value | Popis |
+        | Hodnota | Popis |
         | ---   | ---         |
         | Koncový bod Azure Resource Manageru | Microsoft Azure Resource Manageru je systém správy, který vám umožňuje správcům nasadit, spravovat a monitorovat prostředky Azure. Azure Resource Manageru dokáže zpracovat tyto úkoly, jako se skupinou, nikoli samostatně, v rámci jedné operace.<br>Koncový bod v Azure Stack Development Kit (ASDK) je: `https://management.local.azurestack.external/`<br>Koncový bod v integrovaných systémech je: `https://management.<location>.ext-<machine-name>.masd.stbtest.microsoft.com/` |
         | ID vašeho předplatného | [ID předplatného](https://docs.microsoft.com/azure/azure-stack/azure-stack-plan-offer-quota-overview#subscriptions) je, jak získat přístup k nabídky ve službě Azure Stack. |
@@ -107,7 +107,7 @@ Potřebujete pracovat se správcem vaší služby Azure Stack a nastavení insta
 
     - Budete potřebovat následující údaje:
 
-        | Value | Popis |
+        | Hodnota | Popis |
         | ---   | ---         |
         | Cesta k certifikátu | Plně kvalifikovaný název domény nebo cesta k certifikátu. |
         | Heslo certifikátu | Heslo certifikátu. |

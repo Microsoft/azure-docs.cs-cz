@@ -15,19 +15,19 @@ ms.topic: article
 ms.date: 01/30/2019
 ms.author: markvi
 ms.reviewer: jairoc
-ms.openlocfilehash: 513b1d7468700076ae4d3fd46284ef88d5f28c51
-ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
+ms.openlocfilehash: cc0521f1f27ddfc1fc44b9f24212393d11177d70
+ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55296157"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55660965"
 ---
 # <a name="azure-active-directory-device-management-faq"></a>Azure Active Directory nejčastější dotazy ke správě zařízení
 
 **Otázka: Nedávno jsem registraci zařízení. Proč nelze zobrazit zařízení v části Moje informace o uživateli na webu Azure Portal? Nebo proč je vlastník zařízení označeno jako zařízení připojená k není k dispozici pro hybridní služby Azure Active Directory (Azure AD)?**
 
 **ODPOVĚĎ:** Zařízení s Windows 10, která jsou připojená k hybridní Azure AD se nezobrazují v části **zařízení uživatelů**.
-Použití **všechna zařízení** zobrazení na webu Azure Portal. Můžete také použít Powershellu [Get-MsolDevice](https://docs.microsoft.com/en-us/powershell/module/msonline/get-msoldevice?view=azureadps-1.0) rutiny.
+Použití **všechna zařízení** zobrazení na webu Azure Portal. Můžete také použít Powershellu [Get-MsolDevice](https://docs.microsoft.com/powershell/module/msonline/get-msoldevice?view=azureadps-1.0) rutiny.
 
 Následující zařízení jsou uvedeny v části **zařízení uživatelů**:
 
@@ -176,7 +176,7 @@ Toto chování nelze použít s žádným uživatelem, který se přihlásí na 
 
 **Otázka: Proč se zobrazuje *zobrazí... došlo k chybě!* dialogové okno při pokusu o službě Azure AD join počítač?**
 
-**ODPOVĚĎ:** K této chybě dochází při nastavování registrace Azure Active Directory s Intune. Ujistěte se, že uživatel, který se pokusí o připojení ke službě Azure AD má správné přiřazenou licenci Intune. Další informace najdete v tématu [nastavení registrace pro zařízení s Windows](https://docs.microsoft.com/intune/windows-enroll#azure-active-directory-enrollment).  
+**ODPOVĚĎ:** K této chybě dochází při nastavování registrace Azure Active Directory s Intune. Ujistěte se, že uživatel, který se pokusí o připojení ke službě Azure AD má správné přiřazenou licenci Intune. Další informace najdete v tématu [nastavení registrace pro zařízení s Windows](https://docs.microsoft.com/intune/windows-enroll).  
 
 ---
 

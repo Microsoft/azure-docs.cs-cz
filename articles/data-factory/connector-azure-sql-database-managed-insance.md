@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 01/23/2019
+ms.date: 02/01/2019
 ms.author: jingwang
-ms.openlocfilehash: 9cd2eaefb845b6ce9ca2f1cfcaf1234f8f96615c
-ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
+ms.openlocfilehash: 9b54c35a5dcd495e7ed460f1fdbbe96ba3dee4fe
+ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55300324"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55663549"
 ---
 # <a name="copy-data-to-and-from-azure-sql-database-managed-instance-by-using-azure-data-factory"></a>Kopírování dat do a z Azure SQL Database Managed Instance pomocí služby Azure Data Factory
 
@@ -54,7 +54,7 @@ Pro službu Azure SQL Database Managed Instance propojené se podporují násled
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
 | type | Vlastnost type musí být nastavená na **SqlServer**. | Ano. |
-| připojovací řetězec |Tato vlastnost určuje informace připojovací řetězec, který je nezbytný pro připojení do spravované instance pomocí ověřování SQL nebo ověřování Windows. Další informace najdete v tématu v následujících příkladech. Vyberte **SecureString** k bezpečnému ukládání connectionString informace ve službě Data Factory nebo [odkazovat tajného klíče do služby Azure Key Vault](store-credentials-in-key-vault.md). |Ano. |
+| připojovací řetězec |Tato vlastnost určuje informace připojovací řetězec, který je nezbytný pro připojení do spravované instance pomocí ověřování SQL nebo ověřování Windows. Další informace najdete v tématu v následujících příkladech. <br/>Označte toto pole jako SecureString bezpečně uložit ve službě Data Factory. Můžete také umístit hesla ve službě Azure Key Vault, a pokud se jedná o přijetí změn ověřování SQL `password` konfigurace z připojovacího řetězce. Podívejte se na příklad JSON pod tabulkou a [Store přihlašovacích údajů ve službě Azure Key Vault](store-credentials-in-key-vault.md) článku s dalšími podrobnostmi. |Ano. |
 | uživatelské jméno |Tato vlastnost určuje uživatelské jméno, pokud používáte ověřování Windows. Příkladem je **domainname\\uživatelské jméno**. |Ne. |
 | heslo |Tato vlastnost určuje heslo pro uživatelský účet, který jste zadali pro uživatelské jméno. Vyberte **SecureString** k bezpečnému ukládání connectionString informace ve službě Data Factory nebo [odkazovat tajného klíče do služby Azure Key Vault](store-credentials-in-key-vault.md). |Ne. |
 | connectVia | To [prostředí integration runtime](concepts-integration-runtime.md) se používá pro připojení k úložišti. Zřizování v místním prostředí integration runtime ve stejné virtuální síti jako spravovanou instanci. |Ano. |
@@ -66,7 +66,7 @@ Pro službu Azure SQL Database Managed Instance propojené se podporují násled
 
 ```json
 {
-    "name": "SqlServerLinkedService",
+    "name": "AzureSqlMILinkedService",
     "properties": {
         "type": "SqlServer",
         "typeProperties": {
@@ -83,11 +83,40 @@ Pro službu Azure SQL Database Managed Instance propojené se podporují násled
 }
 ```
 
-**Příklad 2: Používat ověřování Windows**
+**Příklad 2: Použít ověřování SQL pomocí hesla ve službě Azure Key Vault**
 
 ```json
 {
-    "name": "SqlServerLinkedService",
+    "name": "AzureSqlMILinkedService",
+    "properties": {
+        "type": "SqlServer",
+        "typeProperties": {
+            "connectionString": {
+                "type": "SecureString",
+                "value": "Data Source=<servername>\\<instance name if using named instance>;Initial Catalog=<databasename>;Integrated Security=False;User ID=<username>;"
+            },
+            "password": { 
+                "type": "AzureKeyVaultSecret", 
+                "store": { 
+                    "referenceName": "<Azure Key Vault linked service name>", 
+                    "type": "LinkedServiceReference" 
+                }, 
+                "secretName": "<secretName>" 
+            }
+        },
+        "connectVia": {
+            "referenceName": "<name of Integration Runtime>",
+            "type": "IntegrationRuntimeReference"
+        }
+    }
+}
+```
+
+**Příklad 3: Používat ověřování Windows**
+
+```json
+{
+    "name": "AzureSqlMILinkedService",
     "properties": {
         "type": "SqlServer",
         "typeProperties": {
@@ -124,7 +153,7 @@ Pro kopírování dat do a z Azure SQL Database Managed Instance, nastavte vlast
 
 ```json
 {
-    "name": "SQLServerDataset",
+    "name": "AzureSqlMIDataset",
     "properties":
     {
         "type": "SqlServerTable",
@@ -164,7 +193,7 @@ Je třeba počítat s následujícím:
 ```json
 "activities":[
     {
-        "name": "CopyFromSQLServer",
+        "name": "CopyFromAzureSqlMI",
         "type": "Copy",
         "inputs": [
             {
@@ -196,7 +225,7 @@ Je třeba počítat s následujícím:
 ```json
 "activities":[
     {
-        "name": "CopyFromSQLServer",
+        "name": "CopyFromAzureSqlMI",
         "type": "Copy",
         "inputs": [
             {
@@ -268,7 +297,7 @@ Ke zkopírování dat do Azure SQL Database Managed Instance, nastavte typ jímk
 ```json
 "activities":[
     {
-        "name": "CopyToSQLServer",
+        "name": "CopyToAzureSqlMI",
         "type": "Copy",
         "inputs": [
             {
@@ -302,7 +331,7 @@ Přečtěte si další podrobnosti o [vyvolat uloženou proceduru z SQL jímky](
 ```json
 "activities":[
     {
-        "name": "CopyToSQLServer",
+        "name": "CopyToAzureSqlMI",
         "type": "Copy",
         "inputs": [
             {
@@ -415,7 +444,7 @@ Následující příklad ukazuje, jak provést funkcí upsert do tabulky ve spra
 
 ```json
 {
-    "name": "SQLServerDataset",
+    "name": "AzureSqlMIDataset",
     "properties":
     {
         "type": "SqlServerTable",

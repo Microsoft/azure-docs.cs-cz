@@ -8,12 +8,12 @@ ms.devlang: azurecli
 ms.topic: sample
 ms.custom: mvc
 ms.date: 02/28/2018
-ms.openlocfilehash: c570982fed746b01f5a8c15edb94bdeac679b248
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: 077c3f863ace2ec8b41bc749b613fa1e5bdc094c
+ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53545601"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55659469"
 ---
 # <a name="list-and-update-configurations-of-an-azure-database-for-postgresql-server-using-azure-cli"></a>Výpis a aktualizace konfigurace serveru Azure Database for PostgreSQL pomocí Azure CLI
 Tento ukázkový skript rozhraní příkazového řádku vypíše všechny dostupné parametry konfigurace a jejich povolené hodnoty pro server Azure Database for PostgreSQL a nastaví parametr *log_retention_days* na jinou než výchozí hodnotu.
@@ -38,7 +38,7 @@ Tento skript používá příkazy uvedené v následující tabulce:
 | [az group create](/cli/azure/group#az_group_create) | Vytvoří skupinu prostředků, ve které se ukládají všechny prostředky. |
 | [az postgres server create](/cli/azure/postgres/server#az_postgres_server_create) | Vytvoří server PostgreSQL, který je hostitelem databází. |
 | [az postgres server configuration list](/cli/azure/postgres/server/configuration#az_postgres_server_configuration_list) | Vypíše konfiguraci serveru Azure Database for PostgreSQL. |
-| [az postgres server configuration set](/cli/azure/postgres/server/configuration#az_postgres_server_configuration_set) | Aktualizuje konfiguraci serveru Azure Database for PostgreSQL. |
+| [az postgres server configuration set](/cli/azure/postgres/server/configuration) | Aktualizuje konfiguraci serveru Azure Database for PostgreSQL. |
 | [az postgres server configuration show](/cli/azure/postgres/server/configuration#az_postgres_server_configuration_show) | Zobrazí konfiguraci serveru Azure Database for PostgreSQL. |
 | [az group delete](/cli/azure/group#az_group_delete) | Odstraní skupinu prostředků včetně všech vnořených prostředků. |
 

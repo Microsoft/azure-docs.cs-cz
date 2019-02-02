@@ -10,12 +10,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 12/15/2018
-ms.openlocfilehash: cd7c4014752fb5fa014fd8b5204206cd4efbfdce
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: 230c5a50efe762b8f27e6a0a84c36c74403b8ecc
+ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54818519"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55663872"
 ---
 # <a name="use-azure-hdinsight-tools-for-visual-studio-code"></a>Použití Azure HDInsight Tools pro Visual Studio Code
 
@@ -31,6 +31,7 @@ Jsou vyžadovány k dokončení kroků v tomto článku následující položky:
 - HDInsight cluster. Vytvoření clusteru najdete v tématu [Začínáme s HDInsight](hadoop/apache-hadoop-linux-tutorial-get-started.md).
 - [Visual Studio Code](https://www.visualstudio.com/products/code-vs.aspx).
 - [Mono](https://www.mono-project.com/docs/getting-started/install/). Mono se pouze požadované pro systémy Linux a macOS.
+- VSCode [rozšíření Azure Account](https://marketplace.visualstudio.com/items?itemName=ms-vscode.azure-account)
 
 ## <a name="install-the-hdinsight-tools"></a>Instalace nástrojů HDInsight
    
@@ -331,7 +332,7 @@ Také můžete odeslat soubor, Všimněte si, že složka .vscode je automaticky
     | jméno | description | type | 
     | :- | :- | :- | 
     | id | Id relace | int | 
-    | appId | Id aplikace pro tuto relaci |  Řetězec |
+    | appId | Id aplikace pro tuto relaci |  String |
     | appInfo | Informace o podrobné aplikace | Mapování klíč = val |
     | log | Řádky protokolu | seznam řetězců |
     | state |   Stav služby batch | řetězec |

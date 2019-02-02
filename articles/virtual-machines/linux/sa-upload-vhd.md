@@ -15,12 +15,12 @@ ms.devlang: azurecli
 ms.topic: article
 ms.date: 07/10/2017
 ms.author: cynthn
-ms.openlocfilehash: efb8887085ad1f6f47667b1305191e514de74330
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: a04c4d41d9682389347009446c590fc4e27400b1
+ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54468178"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55659537"
 ---
 # <a name="upload-and-create-a-linux-vm-from-custom-disk-with-the-azure-cli"></a>Nahrání a vytvoření virtuálního počítače s Linuxem z vlastního disku pomocí rozhraní příkazového řádku Azure
 
@@ -54,7 +54,7 @@ Seznam přístupových klíčů pro účet úložiště s [seznamu klíčů úč
 az storage account keys list --resource-group myResourceGroup --account-name mystorageaccount
 ```
 
-Vytvoření kontejneru v účtu úložiště pomocí klíče úložiště, můžete získat pomocí [vytvořit kontejner úložiště az](/cli/azure/storage/container#az_storage_container_create). Následující příklad vytvoří kontejner s názvem `mydisks` hodnotu klíče úložiště z `key1`:
+Vytvoření kontejneru v účtu úložiště pomocí klíče úložiště, můžete získat pomocí [vytvořit kontejner úložiště az](/cli/azure/storage/container). Následující příklad vytvoří kontejner s názvem `mydisks` hodnotu klíče úložiště z `key1`:
 
 ```azurecli
 az storage container create --account-name mystorageaccount \
@@ -164,7 +164,7 @@ info:    storage account keys list command OK
 Poznamenejte si `key1` protože budete ho používat k interakci se svým účtem úložiště v dalších krocích.
 
 ## <a name="create-a-storage-container"></a>Vytvoření kontejneru úložiště
-Stejným způsobem, který vytvoříte různým adresářům logicky tak uspořádat vašeho místního systému souborů můžete vytvořit kontejnery v rámci účtu úložiště pro uspořádání disků. Účet úložiště může obsahovat libovolný počet kontejnerů. Vytvořte kontejner s [vytvořit kontejner úložiště az](/cli/azure/storage/container#az_storage_container_create).
+Stejným způsobem, který vytvoříte různým adresářům logicky tak uspořádat vašeho místního systému souborů můžete vytvořit kontejnery v rámci účtu úložiště pro uspořádání disků. Účet úložiště může obsahovat libovolný počet kontejnerů. Vytvořte kontejner s [vytvořit kontejner úložiště az](/cli/azure/storage/container).
 
 Následující příklad vytvoří kontejner s názvem `mydisks`:
 

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 09/15/2018
 ms.author: vinagara
 ms.subservice: alerts
-ms.openlocfilehash: 64fb629e29de9771ca5f76d1c454ec5d14337a57
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.openlocfilehash: 46fc0202fe8e04cd7caefeeca948ebef251822fc
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55104407"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55562279"
 ---
 # <a name="create-view-and-manage-log-alerts-using-azure-monitor"></a>Vytvoření, zobrazení a Správa upozornění protokolů pomocí Azure monitoru  
 
@@ -228,7 +228,7 @@ Výše uvedené ukázky json se dají uložit jako (Řekněme) sampleScheduledQu
 
 ## <a name="managing-log-alerts-using-powershell-cli-or-api"></a>Správa výstrah protokolu pomocí Powershellu, rozhraní příkazového řádku nebo rozhraní API
 
-Azure Monitor – naplánovaných pravidel dotazu rozhraní API] (https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules/) je rozhraní REST API a plně kompatibilní s rozhraním REST API Azure Resource Manageru. Proto může sloužit prostřednictvím Powershellu pomocí rutiny Resource Manageru a Azure CLI.
+[Azure Monitor – naplánovaných pravidel dotazu API](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules/) je rozhraní REST API a plně kompatibilní s rozhraním REST API Azure Resource Manageru. Proto může sloužit prostřednictvím Powershellu pomocí rutiny Resource Manageru a Azure CLI.
 
 > [!NOTE]
 > Upozornění protokolů pro Log Analytics je také možné spravovat pomocí starší verze [API upozornění Log Analytics](../../azure-monitor/platform/api-alerts.md) a starší verze šablony [uložené výsledky hledání a upozornění Log Analytics](../../azure-monitor/insights/solutions-resources-searches-alerts.md) také. Další informace o použití nového rozhraní API ScheduledQueryRules pomocí zde podrobně ve výchozím nastavení, najdete v části [přepnout na nové rozhraní API pro upozornění Log Analytics](alerts-log-api-switch.md).

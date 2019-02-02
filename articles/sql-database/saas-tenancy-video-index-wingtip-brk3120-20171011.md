@@ -11,13 +11,13 @@ author: MightyPen
 ms.author: genemi
 ms.reviewer: billgib, sstein
 manager: craigg
-ms.date: 05/14/2018
-ms.openlocfilehash: ad1ae537038c84aac7bebe40a1db124521933f3d
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.date: 12/18/2018
+ms.openlocfilehash: bbe220780a3c21e7bfb15d0568904af4ed47f765
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53608898"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55567549"
 ---
 # <a name="video-indexed-and-annotated-for-multi-tenant-saas-app-using-azure-sql-database"></a>Video se indexují a opatřeno poznámkou pro víceklientské aplikace SaaS využívající Azure SQL Database
 
@@ -77,7 +77,7 @@ Následující názvy jsou odkazy na jejich odpovídající s poznámkami v dal�
 - [31. Správa schématu ve velkém měřítku, 1:10:33](#anchor-image-wtip-min11033)
 - [32. Distribuovaný dotaz napříč databází tenantů, 1:12:21](#anchor-image-wtip-min11221)
 - [33. Ukázka lístků generace 1:12:32](#anchor-image-wtip-min11232)
-- [34. SSMS ad hoc analytics, 1:12:46](#anchor-image-wtip-min11246)
+- [34. SSMS adhoc analytics, 1:12:46](#anchor-image-wtip-min11246)
 - [35. Extrahovat data tenanta do SQL data Warehouse, 1:16:32](#anchor-image-wtip-min11632)
 - [36. Graf denní distribuce prodej, 1:16:48](#anchor-image-wtip-min11648)
 - [37. Zabalit a výzva k akci, 1:19:52](#anchor-image-wtip-min11952)
@@ -269,7 +269,7 @@ Kliknutím na jakýkoli obrázek snímku obrazovky vás nasměruje na umístěn�
 
 
 &nbsp; <a name="anchor-image-wtip-min11246"/>
-#### <a name="34-ssms-adhoc-analytics-11235"></a>34. SSMS ad hoc analytics, 1:12:35
+#### <a name="34-ssms-adhoc-analytics-11235"></a>34. SSMS adhoc analytics, 1:12:35
 [![Ad hoc analýzy aplikace SSMS][image-wtip-min11246-ssms-adhoc-analytics]](https://www.youtube.com/watch?v=jjNmcKBVjrc&t=4355)
 
 

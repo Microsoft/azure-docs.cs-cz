@@ -11,13 +11,13 @@ author: GithubMirek
 ms.author: mireks
 ms.reviewer: vanto
 manager: craigg
-ms.date: 04/01/2018
-ms.openlocfilehash: 9837316cab503e6ade623e91a41176e6f4bfc84a
-ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
+ms.date: 10/08/2018
+ms.openlocfilehash: 1f26fb101c9940a51ffb4fb7e1b48a51b943599a
+ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48867645"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55663736"
 ---
 # <a name="universal-authentication-with-sql-database-and-sql-data-warehouse-ssms-support-for-mfa"></a>Univerzální ověřování pomocí SQL Database a SQL Data Warehouse (podpora SSMS pro vícefaktorové ověřování)
 Azure SQL Database a Azure SQL Data Warehouse připojení pomocí SQL Server Management Studio (SSMS) podporují *univerzálního ověřování Active Directory*. 
@@ -52,8 +52,8 @@ Uživatelé Azure AD podporuje pro scénáře B2B ve službě Azure AD jako uži
 ## <a name="next-steps"></a>Další postup
 
 - Postup konfigurace najdete v tématu [konfigurace služby Azure SQL Database vícefaktorové ověřování pro SQL Server Management Studio](sql-database-ssms-mfa-authentication-configure.md).
-- Ostatní udělit přístup k databázi: [SQL Database ověřování a autorizace: udělení přístupu](sql-database-manage-logins.md)  
-- Ujistěte se, že ostatní se můžete připojit přes bránu firewall: [konfigurace pravidla brány firewall na úrovni serveru Azure SQL Database pomocí webu Azure portal](sql-database-configure-firewall-settings.md)  
+- Udělení přístupu k vaší databázi ostatní: [SQL Database ověřování a autorizace: Udělení přístupu](sql-database-manage-logins.md)  
+- Ujistěte se, že se že ostatní připojit přes bránu firewall: [Konfigurace pravidla brány firewall na úrovni serveru Azure SQL Database pomocí webu Azure portal](sql-database-configure-firewall-settings.md)  
 - [Konfigurace a správa ověřování služby Azure Active Directory s využitím služby SQL Database nebo SQL Data Warehouse](sql-database-aad-authentication-configure.md)  
 - [Architektura aplikace na datové vrstvě Microsoft SQL Server (17.0.0 GA)](https://www.microsoft.com/download/details.aspx?id=55088)  
 - [SQLPackage.exe](https://docs.microsoft.com/sql/tools/sqlpackage)  

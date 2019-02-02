@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/25/2019
 ms.author: spelluru
-ms.openlocfilehash: 05e68e13ab5aa526362e71413c105340ad07426f
-ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
+ms.openlocfilehash: e88f3c53479b9cb599474d627d28174516eb672c
+ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/26/2019
-ms.locfileid: "55082074"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55664082"
 ---
 # <a name="add-a-vm-to-a-lab-in-azure-devtest-labs"></a>Přidání virtuálního počítače do testovacího prostředí ve službě Azure DevTest Labs
 Pokud už máte [vytvoření vašeho prvního virtuálního počítače](devtest-lab-create-first-vm.md), pravděpodobně jste to v předem načtené [image z marketplace](devtest-lab-configure-marketplace-images.md). Nyní, pokud chcete přidat další virtuální počítače do testovacího prostředí, můžete také *základní* , který je buď [vlastní image](devtest-lab-create-template.md) nebo [vzorec](devtest-lab-manage-formulas.md). Tento kurz vás provede Přidání virtuálního počítače do testovacího prostředí v DevTest Labs pomocí webu Azure portal.
@@ -41,6 +41,8 @@ Tento článek také ukazuje, jak spravovat artefakty pro virtuální počítač
     2. Zadejte **uživatelské jméno** , která jsou udělena oprávnění správce na virtuálním počítači. **Uživatelské jméno** pro počítač je předem vyplněná jedinečný automaticky generovaný název. Název odpovídá uživatelské jméno v e-mailovou adresu. Tato funkce vám ušetří čas při rozhodování o uživatelského jména pokaždé, když vytvoříte nový počítač. Pokud chcete znovu, můžete přepsat toto pole automaticky vyplněný s uživatelským jménem podle svého výběru. Chcete-li přepsat automaticky vyplněné hodnoty pro uživatelské jméno, zadejte hodnotu v **uživatelské jméno** textového pole. Tomuto uživateli je udělen **správce** oprávnění na virtuálním počítači.
     3. Pokud vytváříte první virtuální počítač v testovacím prostředí, zadejte **heslo** pro daného uživatele. Chcete-li uložit toto heslo jako výchozí heslo ve službě Azure key vault související s testovacím prostředí, vyberte **uložit jako výchozí heslo**. Výchozí heslo se uloží ve službě key vault s názvem: **VmPassword**. Při pokusu o vytvoření dalších virtuálních počítačů v testovacím prostředí, **VmPassword** je automaticky vybrána pro **heslo**. Chcete-li přepsat hodnotu, zrušte **použít uložený tajný kód** zaškrtněte políčko a zadejte heslo. 
 
+        ![Výběr základní image](./media/tutorial-create-custom-lab/new-virtual-machine.png)
+
         Můžete také tajné kódy ve službě key vault nejdříve uložte a pak použít při vytváření virtuálního počítače v testovacím prostředí. Další informace najdete v tématu [Store tajné kódy ve službě key vault](devtest-lab-store-secrets-in-key-vault.md). Chcete-li použít heslo uložené ve službě key vault, vyberte **použít uložený tajný kód**a zadat hodnotu klíče, který odpovídá váš tajný klíč (heslo).
     4. V **další možnosti** vyberte **změnit velikost**. Vyberte jednu z předdefinovaných položek, které určují jader procesoru, velikosti paměti RAM a velikost pevného disku virtuálního počítače k vytvoření.
     5. Vyberte **přidat nebo odebrat artefakty**. Vyberte a nakonfigurujte artefakty, které chcete přidat do základní image.
@@ -52,9 +54,13 @@ Tento článek také ukazuje, jak spravovat artefakty pro virtuální počítač
     4. Pokud chcete automaticky odstranit virtuální počítač, zadejte **datum a čas vypršení**. 
     5. Chcete-li virtuální počítač nárokovatelných uživatelem testovacího prostředí, vyberte **Ano** pro **nastavit tento počítač nárokovatelných** možnost. 
     6. Zadejte počet **instancí virtuálních počítačů** chcete zpřístupnit uživatelům testovacího prostředí. 
-3. Vyberte **vytvořit** zadaný virtuální počítač přidat do testovacího prostředí.
+
+        ![Výběr základní image](./media/tutorial-create-custom-lab/new-vm-advanced-settings.png)
+1. Vyberte **vytvořit** zadaný virtuální počítač přidat do testovacího prostředí.
 
    Na stránce testovacího prostředí se zobrazuje stav vytvoření Virtuálního počítače – nejprve jako **vytváření**, pak jako **systémem** po spuštění virtuálního počítače.
+
+    ![Stav vytváření virtuálního počítače](./media/tutorial-create-custom-lab/vm-creation-status.png)
 
 ## <a name="add-an-existing-artifact-to-a-vm"></a>Přidat existující artefakt do virtuálního počítače
 Při vytváření virtuálního počítače, můžete přidat existující artefakty. Pro každé testovací prostředí obsahuje artefakty z veřejného úložiště artefaktů DevTest Labs, stejně jako artefakty, které jste vytvořili a přidání úložiště artefaktů.
