@@ -1,15 +1,15 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 1ff0b711e2c839f81f7f3b68603c2b9e46092316
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 7f462bf635eeec0e7a7eba4467aa2567fc09cb83
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55152956"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55562398"
 documentType: LandingData
-title: Dokumentace k Vyhledávání videí Bingu
+title: Dokumentace rozhraní API Bingu pro vyhledávání videí
 metadata:
-  title: Dokumentace k Vyhledávání videí Bingu – kurzy, šablony Rychlý start, reference k rozhraní API | Microsoft Docs
-  description: Naučte se používat rozhraní API Bingu pro vyhledávání videí k získání videí z webu, která jsou relevantní pro dotazy uživatelů. Kurzy vám ukážou, jak vytvářet aplikace, které tuto službu používají.
+  title: Dokumentace k rozhraní API Bingu pro vyhledávání videí – kurzy, rychlá zprovoznění, reference k rozhraní API | Microsoft Docs
+  description: Naučte se využívat rozhraní API Bingu pro vyhledávání videí pro hledání videí na webu.
   services: cognitive-services
   author: mikedodaro
   manager: rosh
@@ -18,48 +18,69 @@ metadata:
   ms.tgt_pltfrm: na
   ms.devlang: na
   ms.topic: landing-page
-  ms.date: 11/02/2017
+  ms.date: 01/31/2019
   ms.author: v-gedod
 abstract:
-  description: Rozhraní API Bingu pro vyhledávání videí poskytuje prostředí podobné Bingu. Vrací videa, u kterých Bing rozhodne, že jsou pro dotaz uživatele relevantní.
+  description: Rozhraní API Bingu pro vyhledávání videí umožňuje využívat kognitivní možnosti Bingu pro vyhledávání videí ve vaší aplikaci. Odesíláním vyhledávacích dotazů tomuto rozhraní API můžete získávat a zobrazovat relevantní a vysoce kvalitní videa podobně jako na bing.com/images.
 sections:
+- items:
+  - type: list
+    style: cards
+    className: cardsM
+    columns: 3
+    items:
+    - href: /azure/cognitive-services/bing-video-search/overview
+      html: <p>Přečtěte si víc o rozhraní API Bingu pro vyhledávání videí.</p>
+      image:
+        src: ../media/index/i_overview.svg
+      title: Co je rozhraní API Bingu pro vyhledávání videí?
+    - href: /azure/cognitive-services/bing-video-search/concepts/sending-requests
+      html: <p>Zjistěte, jak odesílat dotazy pro vyhledávání videí do Bingu.</p>
+      image:
+        src: ../media/index/i_guidelines.svg
+      title: Odesílání dotazů pro vyhledávání
+    - href: /azure/cognitive-services/bing-image-search/concepts/bing-image-search-get-images
+      html: <p>Další informace o filtrování výsledků hledání, získání miniatur videa, rozšíření vyhledávacích dotazů</p>
+      image:
+        src: ../media/index/i_guidelines.svg
+      title: Získávání videí z webu
 - title: Zprovoznění během 5 minut
   items:
   - type: paragraph
-    text: 'Začněte využívat rozhraní API Bingu pro vyhledávání videí. Zadejte dotaz a prohlédněte si příslušnou odpověď JSON:'
+    text: 'Hledání videí na webu s využitím nástroje:'
   - type: list
     style: icon48
     items:
     - image:
         src: media/index/logo_csharp.svg
-      href: csharp
+      href: quickstarts/sdk-csharp-quickstart
       text: C&#35;
     - image:
         src: media/index/logo_java.svg
-      href: java
+      href: quickstarts/sdk-java-quickstart
       text: Java
     - image:
         src: media/index/logo_nodejs.svg
-      href: nodejs
+      href: quickstarts/nodejs
       text: Node.js
     - image:
         src: media/index/logo_php.svg
-      href: php
+      href: quickstarts/php
       text: PHP
     - image:
         src: media/index/logo_python.svg
-      href: python
+      href: quickstarts/sdk-python-quickstart
       text: Python
     - image:
         src: media/index/logo_ruby.svg
-      href: ruby
+      href: quickstarts/ruby
       text: Ruby
 - title: Podrobné kurzy
   items:
   - type: paragraph
     text: 'Naučte se vyvíjet aplikace s využitím rozhraní API Bingu pro vyhledávání videí:'
   - type: paragraph
-    text: <a href="tutorial-bing-video-search-single-page-app">Jednostránková webová aplikace</a> &#124; <a href="tutorial-bing-video-search-single-page-app-source">zdrojový kód</a>
+    text: <a href="tutorial-bing-video-search-single-page-app">Jednostránková webová aplikace</a>
 - title: Ukázky
   items:
   - type: paragraph

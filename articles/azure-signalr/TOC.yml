@@ -41,6 +41,8 @@ items:
     href: signalr-key-rotation.md
   - name: Zprávy a připojení
     href: signalr-messages.md
+  - name: Odolnost a zotavení po havárii
+    href: signalr-disaster-recovery.md
 - name: Zdroje a prostředky
   items:
   - name: Plán služby SignalR
@@ -48,7 +50,7 @@ items:
   - name: Nejčastější dotazy
     href: signalr-faq.md
   - name: Omezení úrovní předplatného služby SignalR Service
-    href: https://docs.microsoft.com/en-us/azure/azure-subscription-service-limits#signalr-service-limits
+    href: https://docs.microsoft.com/azure/azure-subscription-service-limits#signalr-service-limits
   - name: Ceny
     href: https://azure.microsoft.com/pricing/details/signalr-service/
   - name: Videa
@@ -59,9 +61,9 @@ items:
     href: https://forums.asp.net/1254.aspx
   - name: Twitter
     href: https://twitter.com/SignalR
-ms.openlocfilehash: d6fa3c2af357814681b696985ad3b1d05ddfb945
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.openlocfilehash: 575be3bc0c3ab83f4279753f34ce095ffff03050
+ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55493010"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55657089"
