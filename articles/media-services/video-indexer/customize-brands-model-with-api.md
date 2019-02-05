@@ -9,12 +9,12 @@ ms.service: media-services
 ms.topic: article
 ms.date: 12/03/2018
 ms.author: anzaman
-ms.openlocfilehash: f970f535f83bc3b3c2a850ec126a7afff2af739f
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: b6c6f2890cf9bd3c8cb412b3fa2f28d8ea3b6f72
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54827580"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55734313"
 ---
 # <a name="customize-a-brands-model-with-the-video-indexer-api"></a>Přizpůsobení modelu značky s rozhraním API pro Video Indexer
 
@@ -26,17 +26,17 @@ Video Indexer API můžete vytvářet, používat a upravovat vlastní modely zn
 
 ## <a name="create-a-brand"></a>Vytvoření značky
 
-Tím se vytvoří nová vlastní značky a přidá ho do vlastního modelu značky pro zadaný účet. 
+Tím se vytvoří nová vlastní značky a přidá ho do vlastního modelu značky pro zadaný účet.
 
 ### <a name="request-url"></a>Adresa URL požadavku
 
 ```
 https://api.videoindexer.ai/{location}/Accounts/{accountId}/Customization/Brands?accessToken={accessToken}
 ```
- 
+
 [Zobrazit požadované parametry a otestujte pomocí portálu pro vývojáře Video Indexer](https://api-portal.videoindexer.ai/docs/services/operations/operations/Create-Brand).
 
-### <a name="request-parameters"></a>Parametry žádosti 
+### <a name="request-parameters"></a>Parametry žádosti
 
 |**Název**|**Typ**|**Požadováno**|**Popis**|
 |---|---|---|---|
@@ -95,7 +95,7 @@ Odebere určitou značku z vlastní značky modelu pro zadaný účet. Účet je
 ```
 https://api.videoindexer.ai/{location}/Accounts/{accountId}/Customization/Brands/{id}?accessToken={accessToken}
 ```
- 
+
 [Zobrazit požadované parametry a otestujte pomocí portálu pro vývojáře Video Indexer](https://api-portal.videoindexer.ai/docs/services/operations/operations/Delete-Brand?).
 
 ### <a name="request-parameters"></a>Parametry žádosti
@@ -117,17 +117,17 @@ Není žádný vrácený obsah, pokud značka se úspěšně odstranil.
 
 ## <a name="get-a-specific-brand"></a>Získat značky
 
-To umožňuje hledat podrobnosti značky v vlastní značky modelu pro zadaný účet pomocí id značky. 
+To umožňuje hledat podrobnosti značky v vlastní značky modelu pro zadaný účet pomocí id značky.
 
 ### <a name="request-url"></a>Adresa URL požadavku
 
 ```
 https://api.videoindexer.ai/{location}/Accounts/{accountId}/Customization/Brands?accessToken={accessToken}
 ```
- 
+
 [Zobrazit požadované parametry a otestujte pomocí portálu pro vývojáře Video Indexer](https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-Brand?).
 
-### <a name="request-parameters"></a>Parametry žádosti 
+### <a name="request-parameters"></a>Parametry žádosti
 
 |**Název**|**Typ**|**Požadováno**|**Popis**|
 |---|---|---|---|
@@ -167,14 +167,14 @@ Odpověď poskytuje informace o značce prohledávat (s použitím ID značky) v
 
 ## <a name="update-a-specific-brand"></a>Aktualizace značky
 
-Díky tomu můžete vyhledat podrobnosti značky v vlastní značky modelu pro zadaný účet pomocí ID značky. 
+Díky tomu můžete vyhledat podrobnosti značky v vlastní značky modelu pro zadaný účet pomocí ID značky.
 
 ### <a name="request-url"></a>Adresa URL požadavku
 
 ```
 https://api.videoindexer.ai/{location}/Accounts/{accountId}/Customization/Brands/{id}?accessToken={accessToken}
 ```
- 
+
 [Zobrazit požadované parametry a otestujte pomocí portálu pro vývojáře Video Indexer](https://api-portal.videoindexer.ai/docs/services/operations/operations/Update-Brand?).
 
 ### <a name="request-parameters"></a>Parametry žádosti
@@ -237,7 +237,7 @@ Vrátí všechny značky v vlastní značky modelu pro zadaný účet bez ohledu
 ```
 https://api.videoindexer.ai/{location}/Accounts/{accountId}/Customization/Brands?accessToken={accessToken}
 ```
- 
+
 [Zobrazit požadované parametry a otestujte pomocí portálu pro vývojáře Video Indexer](https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-Brands?).
 
 ### <a name="request-parameters"></a>Parametry žádosti
@@ -270,7 +270,7 @@ Odpověď obsahuje seznam všech značek ve vašem účtu a všech jejich podrob
         "description": "This is an example",
         "tags": ["Tag1", "Tag2"]
     },
-        {
+    {
         "ReferenceUrl": null,
         "id": 97975,
         "name": "Example2",
@@ -297,7 +297,7 @@ Vrátí nastavení modelu značky v příslušném účtu. Nastavení modelu zna
 ```
 https://api.videoindexer.ai/{location}/Accounts/{accountId}/Customization/Brands?accessToken={accessToken}
 ```
- 
+
 [Zobrazit požadované parametry a otestujte pomocí portálu pro vývojáře Video Indexer](https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-Brands).
 
 ### <a name="request-parameters"></a>Parametry žádosti
@@ -330,14 +330,14 @@ Odpověď ukazuje, jestli jsou povolené značky Bingu ve formátu v příkladu 
 
 Tím se aktualizuje nastavení modelu značky v příslušném účtu. Nastavení modelu značky představují, zda je povoleno zjišťování z databáze značky Bing, nebo ne. Pokud nejsou povoleny značky Bing, Video Indexer zjistí značky z vlastního modelu značky zadaného účtu.
 
-### <a name="request-url"></a>Adresa URL požadavku: 
+### <a name="request-url"></a>Adresa URL požadavku:
 ```
 https://api.videoindexer.ai/{location}/Accounts/{accountId}/Customization/BrandsModelSettings?accessToken={accessToken}
 ```
- 
+
 [Zobrazit požadované parametry a otestujte pomocí portálu pro vývojáře Video Indexer](https://api-portal.videoindexer.ai/docs/services/operations/operations/Update-Brands-Model-Settings?).
 
-### <a name="request-parameters"></a>Parametry žádosti 
+### <a name="request-parameters"></a>Parametry žádosti
 
 |**Název**|**Typ**|**Požadováno**|**Popis**|
 |---|---|---|---|

@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.date: 10/26/2018
 ms.author: wgries
 ms.subservice: files
-ms.openlocfilehash: 82d1a83dfd96dd6d4c2b37567c745998a6f0cbdb
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: ddd97ea73ce476e72c0c94a756c749e5527799ae
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55473506"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55730777"
 ---
 # <a name="quickstart-create-and-manage-azure-file-shares-using-azure-cli"></a>Rychlý start: Vytváření a správě sdílených složek Azure pomocí Azure CLI
 Tato příručka vás provede základy práce se [sdílenými složkami Azure](storage-files-introduction.md) pomocí Azure CLI. Sdílené složky Azure jsou stejné jako ostatní sdílené složky, ale jsou uložené v cloudu a využívají platformu Azure. Sdílené složky Azure podporují standardní průmyslový protokol SMB a umožňují sdílení souborů mezi různými počítači, aplikacemi a instancemi. 
@@ -34,7 +34,7 @@ az login
 ```
 
 ## <a name="create-a-resource-group"></a>Vytvoření skupiny prostředků
-Skupina prostředků je logický kontejner, ve kterém se nasazují a spravují prostředky Azure. Pokud ještě skupinu prostředků Azure nemáte, můžete si ji vytvořit pomocí příkazu [az group create](/cli/azure/group#create). 
+Skupina prostředků je logický kontejner, ve kterém se nasazují a spravují prostředky Azure. Pokud ještě skupinu prostředků Azure nemáte, můžete si ji vytvořit pomocí příkazu [az group create](/cli/azure/group). 
 
 Následující příklad vytvoří skupinu prostředků *myResourceGroup* v umístění *USA – východ*:
 
@@ -45,7 +45,7 @@ az group create --name myResourceGroup --location eastus
 ## <a name="create-a-storage-account"></a>vytvořit účet úložiště
 Účet úložiště je sdílený fond úložiště, ve kterém můžete nasazovat sdílené složky Azure nebo jiné prostředky úložiště, jako jsou objekty blob nebo fronty. Účet úložiště může obsahovat neomezený počet sdílených složek. Sdílená složka může obsahovat neomezený počet souborů až do výše maximální kapacity účtu úložiště.
 
-Následující příklad vytvoří pomocí příkazu [az storage account create](/cli/azure/storage/account#create) účet úložiště s názvem *mystorageaccount\<náhodné číslo\>* a pak vloží název tohoto účtu úložiště do proměnné `$STORAGEACCT`. Názvy účtů úložiště musí být jedinečné. Použitím `$RANDOM` připojíte k názvu účtu úložiště nějaké číslo, díky kterému bude název jedinečný. 
+Následující příklad vytvoří pomocí příkazu [az storage account create](/cli/azure/storage/account) účet úložiště s názvem *mystorageaccount\<náhodné číslo\>* a pak vloží název tohoto účtu úložiště do proměnné `$STORAGEACCT`. Názvy účtů úložiště musí být jedinečné. Použitím `$RANDOM` připojíte k názvu účtu úložiště nějaké číslo, díky kterému bude název jedinečný. 
 
 ```azurecli-interactive 
 STORAGEACCT=$(az storage account create \
@@ -67,7 +67,7 @@ STORAGEKEY=$(az storage account keys list \
 ```
 
 ## <a name="create-an-azure-file-share"></a>Vytvoření sdílené složky Azure
-Nyní můžete vytvořit svou první sdílenou složku Azure. Sdílené složky vytvoříte pomocí příkazu [az storage share create](/cli/azure/storage/share#create). Tento příklad vytvoří sdílenou složku Azure s názvem *myshare*: 
+Nyní můžete vytvořit svou první sdílenou složku Azure. Sdílené složky vytvoříte pomocí příkazu [az storage share create](/cli/azure/storage/share). Tento příklad vytvoří sdílenou složku Azure s názvem *myshare*: 
 
 ```azurecli-interactive
 az storage share create \
@@ -98,7 +98,7 @@ Předpokládáme, že ve většině případů použití služby Soubory Azure b
 Následující příklady ukazují, jak používat rozhraní příkazového řádku Azure k manipulaci s vaší sdílenou složku Azure pomocí REST souboru protokolu. 
 
 ### <a name="create-a-directory"></a>Vytvoření adresáře
-Pomocí příkazu [`az storage directory create`](/cli/azure/storage/directory#az_storage_directory_create) vytvořte nový adresář *myDirectory* v kořenovém adresáři sdílené složky Azure:
+Pomocí příkazu [`az storage directory create`](/cli/azure/storage/directory) vytvořte nový adresář *myDirectory* v kořenovém adresáři sdílené složky Azure:
 
 ```azurecli-interactive
 az storage directory create \
@@ -109,7 +109,7 @@ az storage directory create \
 ```
 
 ### <a name="upload-a-file"></a>Nahrání souboru
-Abychom mohli ukázat, jak soubor pomocí příkazu [`az storage file upload`](/cli/azure/storage/file#az_storage_file_upload) nahrát, musíte nejprve vytvořit soubor, který potom nahrajete do pomocné jednotky služby Cloud Shell. V následujícím příkladu soubor vytvoříte a potom ho nahrajete:
+Abychom mohli ukázat, jak soubor pomocí příkazu [`az storage file upload`](/cli/azure/storage/file) nahrát, musíte nejprve vytvořit soubor, který potom nahrajete do pomocné jednotky služby Cloud Shell. V následujícím příkladu soubor vytvoříte a potom ho nahrajete:
 
 ```azurecli-interactive
 date > ~/clouddrive/SampleUpload.txt
@@ -261,7 +261,7 @@ az storage share delete \
 ```
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
-Jakmile budete hotoví, můžete k odebrání skupiny prostředků a všech souvisejících prostředků použít příkaz [`az group delete`](/cli/azure/group#delete): 
+Jakmile budete hotoví, můžete k odebrání skupiny prostředků a všech souvisejících prostředků použít příkaz [`az group delete`](/cli/azure/group): 
 
 ```azurecli-interactive 
 az group delete --name "myResourceGroup"

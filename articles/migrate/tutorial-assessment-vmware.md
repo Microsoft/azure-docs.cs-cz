@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 01/31/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 61eca35bb03ba62bbc10105819e12a8c0ebb41ca
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.openlocfilehash: dee649c388ee1e9207d1fc0ecb454d03cda304b0
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55487903"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55730760"
 ---
 # <a name="discover-and-assess-on-premises-vmware-vms-for-migration-to-azure"></a>Zjištění místních virtuálních počítačů VMware a posouzení vhodnosti jejich migrace do Azure
 
@@ -185,7 +185,7 @@ Importujte stažený soubor do vCenter Serveru.
     - Pokud má virtuální počítač přístup k internetu přes proxy server, klikněte na **Nastavení proxy**, zadejte adresu proxy serveru a nastavte naslouchající port. Pokud proxy server potřebuje přihlašovací údaje, zadejte je. [Další informace](https://docs.microsoft.com/azure/migrate/concepts-collector#collector-prerequisites) týkající se požadavků na připojení k Internetu a [seznam adres URL](https://docs.microsoft.com/azure/migrate/concepts-collector#connect-to-urls) , který přistupuje k kolektoru.
 
       > [!NOTE]
-      > Adresu proxy serveru je potřeba zadat ve formátu http://ProxyIPAddress nebo http://ProxyFQDN. Podporuje se jen proxy protokolu HTTP. Pokud máte prověřuje zachycovací proxy server, připojení k Internetu může zpočátku selhat, pokud jste neimportovali certifikát proxy serveru; [Další](https://docs.microsoft.com/azure/migrate/concepts-collector#internet-connectivity-with-intercepting-proxy) na jak to vyřešit importem certifikátu proxy jako důvěryhodný certifikát na virtuálním počítači kolektoru.
+      > Adresu proxy serveru je potřeba zadat ve formátu http://ProxyIPAddress nebo http://ProxyFQDN. Podporuje se jen proxy protokolu HTTP. Pokud máte prověřuje zachycovací proxy server, připojení k Internetu může zpočátku selhat, pokud jste neimportovali certifikát proxy serveru; [Další](https://docs.microsoft.com/azure/migrate/concepts-collector) na jak to vyřešit importem certifikátu proxy jako důvěryhodný certifikát na virtuálním počítači kolektoru.
 
     - Kolektor zkontroluje, jestli je spuštěná služba kolektoru. Ta je ve výchozím nastavení nainstalovaná na virtuálním počítači kolektoru.
     - Stáhněte a nainstalujte VMware PowerCLI.
@@ -196,7 +196,7 @@ Importujte stažený soubor do vCenter Serveru.
     - V části **Rozsah kolekce** vyberte kolekci pro zjišťování virtuálních počítačů. Kolektor může vyhledat jen virtuální počítače v rámci zadaného rozsahu. Jako rozsah můžete vybrat konkrétní složku, datové centrum nebo cluster. Neměl by obsahovat víc než 1500 virtuálních počítačů. Přečtěte si [další informace](how-to-scale-assessment.md) o zjišťování větších prostředí.
 
 7. V části **Zadejte projekt migrace** zadejte ID projektu služby Azure Migrate a klíč, který jste zkopírovali z portálu. Pokud jste ho nezkopírovali, na virtuálním počítači kolektoru otevřete Azure Portal. Na stránce **Přehled** projektu klikněte na **Zjistit počítače** a zkopírujte příslušné hodnoty.  
-8. V části **Zobrazit průběh shromažďování** sledujete stav zjišťování. Přečtěte si [další informace](https://docs.microsoft.com/azure/migrate/concepts-collector#what-data-is-collected) o datech, která shromažďuje kolektor Azure Migrate.
+8. V části **Zobrazit průběh shromažďování** sledujete stav zjišťování. Přečtěte si [další informace](https://docs.microsoft.com/azure/migrate/concepts-collector) o datech, která shromažďuje kolektor Azure Migrate.
 
 > [!NOTE]
 > Kolektor podporuje jako jazyk operačního systému a jazyk rozhraní kolektoru jen angličtinu (Spojené státy).

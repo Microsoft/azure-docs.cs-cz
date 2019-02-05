@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 11/12/2018
 ms.author: barbkess
-ms.openlocfilehash: 9fc6bd6e7196d442f46e364a9d5816c5056f34f0
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: f0f4d160b9e9d5e556813115aa39c60ea8f4edb2
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55184372"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55733327"
 ---
 # <a name="how-to-configure-password-single-sign-on-for-a-non-gallery-application"></a>Postup konfigurace hesel jednotného přihlašování pro aplikaci mimo Galerii
 
@@ -23,7 +23,7 @@ Kromě možností najdete v galerii aplikací Azure AD, máte také možnost př
 
 Jakmile přidáte aplikaci mimo galerii, pak můžete nakonfigurovat jednotné přihlašování metodu tato aplikace používá tak, že vyberete **Single Sign-on** navigační položka na podniková aplikace v [webuAzureportal](https://portal.azure.com/).
 
-Jedním z Single Sign-on metody k dispozici, je [založené na heslech Single Sign-on](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis#how-does-single-sign-on-with-azure-active-directory-work) možnost. S **přidat aplikaci mimo galerii** prostředí, můžete integrovat všechny aplikace, který vykreslí založeného na HTML uživatelské jméno a heslo vstupní pole, i když není v naší sadě předem integrovaných aplikací.
+Jedním z Single Sign-on metody k dispozici, je [založené na heslech Single Sign-on](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) možnost. S **přidat aplikaci mimo galerii** prostředí, můžete integrovat všechny aplikace, který vykreslí založeného na HTML uživatelské jméno a heslo vstupní pole, i když není v naší sadě předem integrovaných aplikací.
 
 Způsob, jakým tento postup funguje, je pomocí stránky automatizované získávání dat technologie, která je součástí přístupový Panel rozšíření, která umožňuje automaticky detekovat uživatelské jméno a heslo vstupní pole, uložit je bezpečně pro vaši instanci konkrétní aplikaci. Bezpečně přehrát uživatelských jmen a hesel, která se těchto polí, když uživatel přejde na tuto aplikaci na přístupovém panelu aplikací.
 
@@ -47,7 +47,7 @@ To je skvělý způsob, jak začít rychle integrace jakékoliv aplikaci do slu�
 
 -   Povolit **správce** k určení sdílené uživatelské jméno nebo heslo používané skupinou uživatelů pomocí přihlašovacích údajů pro aktualizace funkcí při [přiřazení skupiny k aplikaci](#assign-an-application-to-a-group-directly)
 
-Následující část popisuje, jak můžete zajistit [založené na heslech Single Sign-on](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis#how-does-single-sign-on-with-azure-active-directory-work) do všech aplikací, přidat direktivu using **přidat aplikaci mimo galerii** prostředí.
+Následující část popisuje, jak můžete zajistit [založené na heslech Single Sign-on](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) do všech aplikací, přidat direktivu using **přidat aplikaci mimo galerii** prostředí.
 
 ## <a name="overview-of-steps-required"></a>Přehled kroků potřebných
 

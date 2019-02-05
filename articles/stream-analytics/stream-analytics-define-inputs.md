@@ -9,12 +9,12 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.custom: seodec18
-ms.openlocfilehash: 98a4d0ace2113c3936e13d357d0d8b641982d7c4
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
+ms.openlocfilehash: 2a366a9030104c885adb1a4f773de04cdc439044
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55567940"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55694631"
 ---
 # <a name="stream-data-as-input-into-stream-analytics"></a>Stream data jako vstup do Stream Analytics
 
@@ -26,7 +26,7 @@ Stream Analytics je prvotřídní integrovaná se sadou Azure datové proudy jak
 Tyto prostředky vstupní může existovat ve stejném předplatném Azure jako svou úlohu Stream Analytics nebo jiné předplatné.
 
 ### <a name="compression"></a>Komprese
-Stream Analytics podporuje kompresi ve všech vstupních zdrojů dat datového proudu. Odkaz na aktuálně podporované typy jsou: NONE, GZip a komprese Deflate. Podpora pro kompresi není k dispozici pro referenční data. Pokud vstupní formát Avro data, která je komprimován, zpracuje se transparentně. Není nutné určit typ komprese se serializace Avro. 
+Stream Analytics podporuje kompresi ve všech vstupních zdrojů dat datového proudu. Komprese aktuálně podporované typy jsou: NONE, GZip a komprese Deflate. Podpora pro kompresi není k dispozici pro referenční data. Pokud vstupní formát Avro data, která je komprimován, zpracuje se transparentně. Není nutné určit typ komprese se serializace Avro. 
 
 ## <a name="create-edit-or-test-inputs"></a>Vytvářet, upravovat nebo testovací vstupy
 Můžete použít [webu Azure portal](https://portal.azure.com) k [vytváření nové vstupů](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-quick-create-portal#configure-job-input) a umožňuje zobrazit nebo upravit existující vstupů na své úlohy streamování. Můžete také testovat vstupní připojení a [testování dotazů](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-manage-job#test-your-query) z ukázková data. Při psaní dotazu, zobrazí se seznam vstup v klauzuli FROM. Můžete získat seznam dostupných vstupů ze **dotazu** stránky na portálu. Pokud chcete použít více vstupů, můžete si `JOIN` jejich nebo zápis více `SELECT` dotazy.

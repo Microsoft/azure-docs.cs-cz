@@ -16,12 +16,12 @@ ms.date: 01/31/2017
 ms.author: mathoma
 ms.reviewer: jroth
 experimental_id: d51f3cc6-753b-4e
-ms.openlocfilehash: d766465f8319b83cd614bfcf24018ef901923429
-ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
+ms.openlocfilehash: b8994d4c1eabf4381bf8364c76f7328d225f7e1a
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54329681"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55732052"
 ---
 # <a name="connect-to-a-sql-server-virtual-machine-on-azure-classic-deployment"></a>Připojení k virtuálnímu počítači s SQL Serverem v Azure (klasické nasazení)
 > [!div class="op_single_selector"]
@@ -49,7 +49,7 @@ Způsob, jakým se klient připojuje k SQL serveru spuštěné na virtuálním p
 > 
 
 ### <a name="connect-to-sql-server-in-the-same-cloud-service"></a>Připojení k SQL serveru v rámci stejné cloudové služby
-Několik virtuálních počítačů lze vytvořit ve stejné cloudové službě. Tento scénář virtuálních počítačů najdete v tématu [postup připojení virtuálních počítačů pomocí virtuální sítě nebo cloudové služby](../classic/connect-vms-classic.md#connect-vms-in-a-standalone-cloud-service). Tento scénář je, když klient na jeden virtuální počítač se pokusí připojit k jinému virtuálnímu počítači ve stejné cloudové službě a systémem SQL Server.
+Několik virtuálních počítačů lze vytvořit ve stejné cloudové službě. Tento scénář virtuálních počítačů najdete v tématu [postup připojení virtuálních počítačů pomocí virtuální sítě nebo cloudové služby](/previous-versions/azure/virtual-machines/windows/classic/connect-vms-classic#connect-vms-in-a-standalone-cloud-service). Tento scénář je, když klient na jeden virtuální počítač se pokusí připojit k jinému virtuálnímu počítači ve stejné cloudové službě a systémem SQL Server.
 
 V tomto scénáři můžete připojit pomocí virtuálního počítače **název** (také zobrazen jako **název_počítače** nebo **hostname** na portálu). Toto je název, který jste zadali pro virtuální počítač při vytvoření. Například pokud pojmenujete virtuálního počítače s SQL **mysqlvm**, klientského virtuálního počítače ve stejné cloudové služby může používat následující připojovací řetězec pro připojení:
 
@@ -64,7 +64,7 @@ Představte si třeba klasický virtuální počítač s názvem **mysqlvm** s n
 
     "Server=mycloudservice.cloudapp.net,57500;Integrated Security=false;User ID=<login_name>;Password=<your_password>"
 
-I když to umožňuje připojení klientů přes internet, to neznamená, že kdokoli může připojit k SQL serveru. Klienti nemusí mimo správné uživatelské jméno a heslo. Za účelem zvýšení zabezpečení nepoužívejte dobře známý port 1433 pro koncový bod veřejné virtuálního počítače. A pokud je to možné, zvažte přidání seznamu ACL portu na váš koncový bod k omezení provozu pouze na klientech povolit. Pokyny k používání seznamů ACL s koncovými body najdete v tématu [spravovat seznam ACL v koncovém bodě](../classic/setup-endpoints.md#manage-the-acl-on-an-endpoint).
+I když to umožňuje připojení klientů přes internet, to neznamená, že kdokoli může připojit k SQL serveru. Klienti nemusí mimo správné uživatelské jméno a heslo. Za účelem zvýšení zabezpečení nepoužívejte dobře známý port 1433 pro koncový bod veřejné virtuálního počítače. A pokud je to možné, zvažte přidání seznamu ACL portu na váš koncový bod k omezení provozu pouze na klientech povolit. Pokyny k používání seznamů ACL s koncovými body najdete v tématu [spravovat seznam ACL v koncovém bodě](/previous-versions/azure/virtual-machines/windows/classic/setup-endpoints#manage-the-acl-on-an-endpoint).
 
 > [!NOTE]
 > Je důležité si uvědomit, že pokud použijete tuto techniku ke komunikaci s SQL serverem, všechny odchozí data z datacentra Azure v souladu s normální [ceny u odchozích přenosů dat](https://azure.microsoft.com/pricing/details/data-transfers/).

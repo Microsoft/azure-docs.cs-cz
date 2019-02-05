@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/29/2018
 ms.author: cynthn
-ms.openlocfilehash: 2448d941db7f27a87fbb5e2267847165f84ede3d
-ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
+ms.openlocfilehash: 4b977a2fe9dadfe42e02063fa4fa291b9be484ac
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54881694"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55733128"
 ---
 # <a name="deploy-your-application-on-virtual-machine-scale-sets"></a>Nasazení aplikace do škálovací sady virtuálních počítačů
 Pokud chcete spouštět aplikace na instancích virtuálních počítačů ve škálovací sadě, musíte nejprve nainstalovat komponenty aplikace a požadované soubory. Tento článek představuje způsobů, jak vytvářet vlastní image virtuálního počítače pro instancí ve škálovací, nastavení nebo automatické spouštění skriptů instalace v existujících instancích virtuálních počítačů. Také se dozvíte, jak spravovat aplikace nebo aktualizace operačního systému na škálovací sadu.
@@ -97,7 +97,7 @@ Cloud-init navíc funguje v různých distribucích. K instalaci balíčku tak n
 
 Další informace, včetně příklad *cloud-init.txt* souborů naleznete v tématu [použití cloud-init přizpůsobí virtuální počítače Azure](../virtual-machines/linux/using-cloud-init.md).
 
-Pokud chcete vytvořit škálovací sadu a používat soubor cloud-init, přidejte `--custom-data` parametr [az vmss vytvořit](/cli/azure/vmss#az_vmss_create) příkaz a zadejte název souboru cloud-init. Následující příklad vytvoří škálovací sadu s názvem *myScaleSet* v *myResourceGroup* a nakonfiguruje instancí virtuálních počítačů pomocí souboru s názvem *cloud-init.txt*. Zadejte vlastní názvy následujícím způsobem:
+Pokud chcete vytvořit škálovací sadu a používat soubor cloud-init, přidejte `--custom-data` parametr [az vmss vytvořit](/cli/azure/vmss) příkaz a zadejte název souboru cloud-init. Následující příklad vytvoří škálovací sadu s názvem *myScaleSet* v *myResourceGroup* a nakonfiguruje instancí virtuálních počítačů pomocí souboru s názvem *cloud-init.txt*. Zadejte vlastní názvy následujícím způsobem:
 
 ```azurecli
 az vmss create \

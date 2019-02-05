@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/23/2019
 ms.author: aschhab
-ms.openlocfilehash: aaeebb200197ba6ef15fbcfe02f262a3840197b5
-ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
+ms.openlocfilehash: 0364304a203e03faf69868174a45cb41850ce112
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54856103"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55733310"
 ---
 # <a name="overview-of-service-bus-dead-letter-queues"></a>Přehled fronty nedoručených zpráv služby Service Bus
 
@@ -60,13 +60,13 @@ Toto chování nelze zakázat, ale můžete nastavit [MaxDeliveryCount](/dotnet/
 
 ## <a name="exceeding-timetolive"></a>Překročení TimeToLive
 
-Když [QueueDescription.EnableDeadLetteringOnMessageExpiration](/dotnet/api/microsoft.servicebus.messaging.queuedescription#Microsoft_ServiceBus_Messaging_QueueDescription_EnableDeadLetteringOnMessageExpiration) nebo [SubscriptionDescription.EnableDeadLetteringOnMessageExpiration](/dotnet/api/microsoft.servicebus.messaging.subscriptiondescription#Microsoft_ServiceBus_Messaging_SubscriptionDescription_EnableDeadLetteringOnMessageExpiration) je nastavena na **true** (výchozí hodnota je **false**), u nichž vyprší platnost všech zpráv se přesouvají na DLQ, určení `TTLExpiredException` kód důvodu.
+Když [QueueDescription.EnableDeadLetteringOnMessageExpiration](/dotnet/api/microsoft.servicebus.messaging.queuedescription) nebo [SubscriptionDescription.EnableDeadLetteringOnMessageExpiration](/dotnet/api/microsoft.servicebus.messaging.subscriptiondescription) je nastavena na **true** (výchozí hodnota je **false**), u nichž vyprší platnost všech zpráv se přesouvají na DLQ, určení `TTLExpiredException` kód důvodu.
 
 Upozorňujeme, že jsou zprávy s vypršenou platností pouze odstraněna a přesunout do DLQ se při přijímání změn z hlavní fronty nebo odběru; aspoň jednoho aktivního příjemce. Toto chování je záměrné.
 
 ## <a name="errors-while-processing-subscription-rules"></a>Chyby při zpracování pravidel odběru
 
-Když [SubscriptionDescription.EnableDeadLetteringOnFilterEvaluationExceptions](/dotnet/api/microsoft.servicebus.messaging.subscriptiondescription#Microsoft_ServiceBus_Messaging_SubscriptionDescription_EnableDeadLetteringOnFilterEvaluationExceptions) vlastnost je povolena pro předplatné, všechny chyby, ke kterým spustí pravidlo filtru SQL předplatného jsou zachyceny v DLQ podél chybná zpráva.
+Když [SubscriptionDescription.EnableDeadLetteringOnFilterEvaluationExceptions](/dotnet/api/microsoft.servicebus.messaging.subscriptiondescription) vlastnost je povolena pro předplatné, všechny chyby, ke kterým spustí pravidlo filtru SQL předplatného jsou zachyceny v DLQ podél chybná zpráva.
 
 ## <a name="application-level-dead-lettering"></a>Aplikace úrovně dead-lettering
 
@@ -84,7 +84,7 @@ K načtení těchto zprávách dead lettered, můžete vytvořit pomocí příje
 
 ## <a name="example"></a>Příklad:
 
-Následující fragment kódu vytvoří příjemce zprávy. Ve smyčce příjmu pro hlavní frontou, kód načte zprávu s [Receive(TimeSpan.Zero)](/dotnet/api/microsoft.servicebus.messaging.messagereceiver#Microsoft_ServiceBus_Messaging_MessageReceiver_Receive_System_TimeSpan_), která žádá zprostředkovatele okamžitě vrátit všechny zprávy snadno k dispozici, nebo budou vráceny s žádný výsledek. Pokud kód obdrží zprávu, okamžitě zruší ho, které zvýší `DeliveryCount`. Jakmile systém přesune zprávu do DLQ, hlavní fronta je prázdná a opakování ve smyčce ukončeno, jako [ReceiveAsync](/dotnet/api/microsoft.servicebus.messaging.messagereceiver#Microsoft_ServiceBus_Messaging_MessageReceiver_ReceiveAsync_System_TimeSpan_) vrátí **null**.
+Následující fragment kódu vytvoří příjemce zprávy. Ve smyčce příjmu pro hlavní frontou, kód načte zprávu s [Receive(TimeSpan.Zero)](/dotnet/api/microsoft.servicebus.messaging.messagereceiver), která žádá zprostředkovatele okamžitě vrátit všechny zprávy snadno k dispozici, nebo budou vráceny s žádný výsledek. Pokud kód obdrží zprávu, okamžitě zruší ho, které zvýší `DeliveryCount`. Jakmile systém přesune zprávu do DLQ, hlavní fronta je prázdná a opakování ve smyčce ukončeno, jako [ReceiveAsync](/dotnet/api/microsoft.servicebus.messaging.messagereceiver) vrátí **null**.
 
 ```csharp
 var receiver = await receiverFactory.CreateMessageReceiverAsync(queueName, ReceiveMode.PeekLock);

@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: erhopf
 ms.custom: seodec18
-ms.openlocfilehash: 875240b779f05c1b13f71bf2133b9abfaa209239
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: f8861b581c0e02bb78d80817cb2242a38e8aac40
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55223353"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55733463"
 ---
 # <a name="get-the-cognitive-services-speech-devices-sdk"></a>Zařízení řeči služeb Cognitive Services SDK
 
@@ -46,7 +46,7 @@ Subject: You're invited to the Microsoft organization
 
 Proveďte následující kroky pro připojení k Azure AD s e-mailovou adresu, kterou jste zadali během registrace. Tento proces uděluje přístup k zařízení sadou SDK pro řeč [web pro stažení](https://shares.datatransfer.microsoft.com/).
 
-1. V e-mailovou zprávu jste obdrželi, vyberte **Začínáme**. Pokud je vaše organizace již zákazníky s Office 365, zobrazí se výzva k přihlášení a můžete přeskočit ke kroku 8.
+1. V e-mailovou zprávu jste obdrželi, vyberte **Začínáme**. Pokud je vaše organizace již zákazníky s Office 365, zobrazí se výzva k přihlášení a můžete přeskočit ke kroku 7.
 
 2. V okně prohlížeče, které se otevře, vyberte **Další**.
 

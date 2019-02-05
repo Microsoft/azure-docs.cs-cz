@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 09/07/2018
 ms.author: lahugh
 ms.custom: seodec18
-ms.openlocfilehash: c51fc9fd3faa1e3bd2210b5105339434ebe3235f
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: 574cdea61a474dda5d20254bfae9ff2f06044cca
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53546482"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55733107"
 ---
 # <a name="monitor-batch-solutions-by-counting-tasks-and-nodes-by-state"></a>Monitorování řešení Batch podle počtu úloh a uzel podle stavu
 
@@ -129,6 +129,6 @@ Chcete-li získat uzel počty pro fondy můžete podobný vzorec pro REST a osta
 [rest_get_node_counts]: /rest/api/batchservice/account/listpoolnodecounts
 [rest_get_task]: /rest/api/batchservice/task/get
 [rest_list_tasks]: /rest/api/batchservice/task/list
-[rest_get_exec_info]: /rest/api/batchservice/task/get#executionInfo
+[rest_get_exec_info]: /rest/api/batchservice/task/get
 [rest_start_task]: /rest/api/batchservice/pool/add#starttask
 

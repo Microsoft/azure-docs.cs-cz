@@ -11,12 +11,12 @@ ms.service: functions
 ms.custom: mvc
 ms.devlang: python
 manager: jeconnoc
-ms.openlocfilehash: 631fc4e613311df9386084408ead625f6d018151
-ms.sourcegitcommit: 97d0dfb25ac23d07179b804719a454f25d1f0d46
+ms.openlocfilehash: 2c14cdf963d1d6c792e6101d8a2179a560dcf096
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/25/2019
-ms.locfileid: "54911886"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55731253"
 ---
 # <a name="create-your-first-python-function-in-azure-preview"></a>Vytvoření první funkce Pythonu v Azure (preview)
 
@@ -179,7 +179,7 @@ Nyní jste připraveni k vytvoření aplikace Function App a ostatní požadovan
 
 ## <a name="create-a-linux-function-app-in-azure"></a>Vytvoření linuxové aplikace funkcí v Azure
 
-Aplikace function app poskytuje prostředí pro provádění kódu funkce. Umožňuje seskupit funkce jako logickou jednotku pro snadnější správu, nasazování a sdílení prostředků. Vytvoření **funkce v Linuxu spuštěnou aplikaci Python** pomocí [az functionapp vytvořit](/cli/azure/functionapp#az_functionapp_create) příkazu.
+Aplikace function app poskytuje prostředí pro provádění kódu funkce. Umožňuje seskupit funkce jako logickou jednotku pro snadnější správu, nasazování a sdílení prostředků. Vytvoření **funkce v Linuxu spuštěnou aplikaci Python** pomocí [az functionapp vytvořit](/cli/azure/functionapp) příkazu.
 
 Spusťte následující příkaz s názvem aplikace jedinečné funkce místo `<app_name>` zástupný text a účet úložiště název `<storage_name>`. `<app_name>` je také výchozí doména DNS pro aplikaci funkcí. Tento název musí být jedinečný mezi všemi aplikacemi v Azure.
 

@@ -7,12 +7,12 @@ ms.service: postgresql
 ms.devlang: azurecli
 ms.topic: conceptual
 ms.date: 05/4/2018
-ms.openlocfilehash: d450b8d154e920bfc9a82314d34f20a52af71dab
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: bde43a02b844d0dc0be8b6a270ac94e0b1422b69
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55181992"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55733276"
 ---
 # <a name="create-and-manage-azure-database-for-postgresql-firewall-rules-using-azure-cli"></a>Vytvoření a správě Azure Database for postgresql – pravidla brány firewall pomocí Azure CLI
 Pravidla brány firewall na úrovni serveru umožňují správcům spravovat přístup ke službě Azure Database for PostgreSQL Server z konkrétní IP adresu nebo rozsah IP adres. Použití vhodné příkazy rozhraní příkazového řádku Azure, můžete vytvořit, aktualizovat, odstranit, seznam a zobrazit pravidla brány firewall pro správu serveru. Přehled služby Azure Database pro PostgreSQL pravidla brány firewall, naleznete v tématu [– Azure Database for PostgreSQL Server pravidla brány firewall](concepts-firewall-rules.md)
@@ -26,7 +26,7 @@ Pro jednotlivé kroky v této příručce s postupy, musíte:
 [Az postgres server firewall-rule](/cli/azure/postgres/server/firewall-rule) příkazy se používají ke konfiguraci pravidel brány firewall.
 
 ## <a name="list-firewall-rules"></a>Výpis pravidel brány firewall 
-Chcete-li vypsat existující pravidla brány firewall serveru, spusťte [az postgres server firewall-rule list](/cli/azure/postgres/server/firewall-rule#az_postgres_server_firewall_rule_list) příkazu.
+Chcete-li vypsat existující pravidla brány firewall serveru, spusťte [az postgres server firewall-rule list](/cli/azure/postgres/server/firewall-rule) příkazu.
 ```azurecli-interactive
 az postgres server firewall-rule list --resource-group myresourcegroup --server-name mydemoserver
 ```
@@ -35,7 +35,7 @@ Výstupu se zobrazí výpis pravidel brány firewall, pokud existuje, ve výchoz
 az postgres server firewall-rule list --resource-group myresourcegroup --server-name mydemoserver --output table
 ```
 ## <a name="create-firewall-rule"></a>Vytvoření pravidla brány firewall
-Chcete-li vytvořit nové pravidlo brány firewall na serveru, spusťte [az postgres server firewall-rule vytvořit](/cli/azure/postgres/server/firewall-rule#az_postgres_server_firewall_rule_create) příkazu. 
+Chcete-li vytvořit nové pravidlo brány firewall na serveru, spusťte [az postgres server firewall-rule vytvořit](/cli/azure/postgres/server/firewall-rule) příkazu. 
 
 ```
 To allow access to a singular IP address, provide the same address in the `--start-ip-address` and `--end-ip-address`, as in this example, replacing the IP shown here with your specific IP.
@@ -54,7 +54,7 @@ az postgres server firewall-rule create --resource-group myresourcegroup --serve
 Po úspěšném nasazení výstup tohoto příkazu jsou uvedeny podrobnosti pravidla brány firewall, které jste vytvořili, ve výchozím nastavení ve formátu JSON. Pokud dojde k selhání, zobrazí výstup chybovou zprávu.
 
 ## <a name="update-firewall-rule"></a>Aktualizovat pravidlo brány firewall 
-Aktualizovat stávající pravidlo brány firewall na serveru pomocí [az postgres server firewall-rule update](/cli/azure/postgres/server/firewall-rule#az_postgres_server_firewall_rule_update) příkazu. Zadejte název stávající pravidlo brány firewall jako vstup a počáteční IP adresy a koncové IP atributů k aktualizaci.
+Aktualizovat stávající pravidlo brány firewall na serveru pomocí [az postgres server firewall-rule update](/cli/azure/postgres/server/firewall-rule) příkazu. Zadejte název stávající pravidlo brány firewall jako vstup a počáteční IP adresy a koncové IP atributů k aktualizaci.
 ```azurecli-interactive
 az postgres server firewall-rule update --resource-group myresourcegroup --server-name mydemoserver --name AllowIpRange --start-ip-address 13.83.152.0 --end-ip-address 13.83.152.0
 ```
@@ -63,7 +63,7 @@ Po úspěšném nasazení výstup tohoto příkazu jsou uvedeny podrobnosti prav
 > Pokud neexistuje pravidlo brány firewall, se vytvoří pomocí příkazu update.
 
 ## <a name="show-firewall-rule-details"></a>Zobrazí podrobnosti pravidla brány firewall
-Můžete také zobrazit podrobnosti pro existující pravidlo brány firewall na úrovni serveru spuštěním [az postgres server firewall-rule show](/cli/azure/postgres/server/firewall-rule#az_postgres_server_firewall_rule_show) příkazu.
+Můžete také zobrazit podrobnosti pro existující pravidlo brány firewall na úrovni serveru spuštěním [az postgres server firewall-rule show](/cli/azure/postgres/server/firewall-rule) příkazu.
 ```azurecli-interactive
 az postgres server firewall-rule show --resource-group myresourcegroup --server-name mydemoserver --name AllowIpRange
 ```

@@ -1,10 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 904cd593022006bc16908664fb7d7d0e3f6f24b0
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: c869d129d901a5c8dee7ed09b907805980e5c573
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55455214"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55727190"
 documentType: LandingData
 title: Azure SQL Database – rozšířené zabezpečení
 metadata:
@@ -91,9 +91,9 @@ sections:
   - type: list
     style: ordered
     items:
-    - html: Před internetovými útoky v <a href="/azure/sql-database/sql-database-managed-instance-threat-detection">spravovaných instancí</a> a <a href="/azure/sql-database/sql-database-threat-detection">databází</a> detekuje neobvyklé aktivity a potenciálně nebezpečné pokusy o přístup k databázím nebo jejich zneužití.
-    - html: Auditování pro <a href="/azure/sql-database/sql-database-managed-instance-auditing">spravovaných instancí</a> a <a href="/azure/sql-database/sql-database-auditing">databází</a> sleduje události databáze a zapisuje je do auditu protokolu v účtu úložiště Azure, pracovní prostor OMS nebo Event Hubs.
+    - html: Před internetovými útoky v <a href="/azure/sql-database/sql-database-managed-instance-threat-detection">spravované instance</a> a <a href="/azure/sql-database/sql-database-threat-detection">databází</a> detekuje neobvyklé aktivity a potenciálně nebezpečné pokusy o přístup k databázím nebo jejich zneužití.
+    - html: Auditování pro <a href="/azure/sql-database/sql-database-managed-instance-auditing">spravované instance</a> a <a href="/azure/sql-database/sql-database-auditing">databází</a> sleduje události databáze a zapisuje je do auditu protokolu v účtu úložiště Azure, pracovní prostor OMS nebo Event Hubs.
     - html: <a href="/azure/sql-database/sql-database-firewall-configure">Pravidla firewallu pro server databáze</a> v izolované databáze umožňují řídit, jaké IP adresy přístup k databázi.
-    - html: <a href="/azure/sql-database/sql-database-managed-instance-vnet-configuration">Integrace virtuální sítě</a> v Managed Instance umožňuje umístit databáze do vlastní privátní adresní prostor.
+    - html: <a href="/azure/sql-database/sql-database-managed-instance-vnet-configuration">Integrace virtuální sítě</a> spravované instance vám umožní umístění databáze do vlastní privátní adresní prostor.
     - html: <a href="/azure/sql-database/sql-database-always-encrypted">Funkce Always encrypted</a> chrání citlivá data v klidovém stavu na serveru, při přesouvání mezi klientem a serverem a zatímco data se používá, zajištění, že citlivá data nezobrazí jako prostý text v databázi systému.
     - html: <a href="/azure/sql-database/sql-database-dynamic-data-masking-get-started">Dynamické maskování dat</a> pomáhá zabránit neoprávněnému přístupu k citlivým datům tím, že umožňuje zákazníkům určit, kolik citlivých dat zobrazíte s minimálním dopadem na aplikační vrstvu.

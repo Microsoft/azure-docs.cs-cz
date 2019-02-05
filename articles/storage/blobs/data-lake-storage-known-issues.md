@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: conceptual
 ms.date: 12/05/2018
 ms.author: normesta
-ms.openlocfilehash: cbd58c0873a4a46d175c6d7cbdf2d004da304c06
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 5677649b8f002490900ec32bee954348b2f444e6
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55247234"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55731542"
 ---
 # <a name="known-issues-with-azure-data-lake-storage-gen2"></a>Známé problémy s Azure Data Lake Storage Gen2
 
@@ -23,7 +23,7 @@ Tento článek obsahuje známé problémy a omezení s Azure Data Lake Storage G
 
 Rozhraní API služby BLOB Storage a Azure Data Lake Gen2 API nejsou interoperabilní mezi sebou.
 
-Pokud budete muset použít nástroje pro práci s veškerý obsah, který nahrajete do vašeho účtu, potom nepovolí hierarchické obory názvů v účtu Blob storage než tato rozhraní API stane interoperabilní mezi sebou. Použití účtu úložiště bez hierarchického oboru názvů pak nebudete mít přístup k Data Lake Storage Gen2 konkrétní funkce, jako je například adresář a systém souborů znamená seznamy řízení přístupu.
+Pokud máte vlastní nástroje, aplikace nebo skripty, které používají rozhraní API služby Blob, a chcete použít pro práci se veškerý obsah, který nahrajete do vašeho účtu, potom nepovolí hierarchické obory názvů v účtu Blob storage než stane interoperabilní rozhraní API služby Blob s rozhraními API služby Azure Data Lake Gen2. Použití účtu úložiště bez hierarchického oboru názvů pak nebudete mít přístup k Data Lake Storage Gen2 konkrétní funkce, jako je například adresář a systém souborů znamená seznamy řízení přístupu.
 
 ## <a name="blob-storage-apis"></a>Úložiště objektů BLOB rozhraní API
 
@@ -79,16 +79,14 @@ Všechny funkce správy verzí, včetně [snímky](https://docs.microsoft.com/re
 
 ## <a name="object-level-storage-tiers"></a>Vrstvy úložiště na úrovni objektu
 
-Objekt vrstvy úrovně úložiště (Hot, studené a archivní) zatím nejsou k dispozici pro účty Azure Data Lake Storage Gen 2, ale jsou dostupné pro účty úložiště, které nemají hierarchické mezery povoleny.
+Objekt vrstvy úrovně úložiště (Hot, studené a archivní) zatím nejsou k dispozici pro účty Azure Data Lake Storage Gen 2, ale jsou dostupné pro účty úložiště, které nemají povolené hierarchické obory názvů.
 
 ## <a name="azure-blob-storage-lifecycle-management-preview-policies"></a>Zásady Správa (Preview) životního cyklu Azure Blob Storage
 
 Zatím nejsou k dispozici pro účty Azure Data Lake Storage Gen2 zásady Správa (Preview) životního cyklu Azure Blob Storage.
 
-Tyto zásady jsou dostupné pro účty úložiště, které nemají hierarchické mezery povoleny.
+Tyto zásady jsou dostupné pro účty úložiště, které nemají povolené hierarchické obory názvů.
 
 ## <a name="diagnostic-logs"></a>Diagnostické protokoly
 
 Diagnostické protokoly nejsou k dispozici pro účty Azure Data Lake Storage Gen2.
-
-Chcete-li požádat o diagnostické protokoly, obraťte se na podporu Azure. Jim poskytnout název svého účtu a dobu, pro který požadujete protokoly.

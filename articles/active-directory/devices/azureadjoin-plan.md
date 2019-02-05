@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 11/21/2018
 ms.author: markvi
 ms.reviewer: sandeo
-ms.openlocfilehash: bb8ab22db18bbe170a20d253e601eb78855aafa7
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.openlocfilehash: 88a1405a55432b6f5932f2675260540a8aea46aa
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55102732"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55697613"
 ---
 # <a name="how-to-plan-your-azure-ad-join-implementation"></a>Postup: Plánování implementace připojení ke službě Azure AD
 
@@ -126,6 +126,8 @@ Připojení k Azure AD:
 - Platí pouze pro zařízení s Windows 10. 
 
 - Se nevztahuje na předchozích verzích Windows nebo jinými operačními systémy. Pokud máte zařízení s Windows 7/8.1, musíte upgradovat na Windows 10 k nasazení připojení k Azure AD.
+
+- Není podporované na zařízeních s TPM v režimu FIPS.
  
 **Doporučení:** Vždy používejte nejnovější verzi Windows 10 využívat aktualizované funkce.
 

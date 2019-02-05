@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/09/2018
 ms.author: jdial
-ms.openlocfilehash: ddf789dc6a1bf6c76643e9b5478ede75f865f4eb
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
+ms.openlocfilehash: 75040cb8769b1d5d1dd6af758ed03be4a39d01e1
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55563010"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55731865"
 ---
 # <a name="create-change-or-delete-a-route-table"></a>Vytvořit, změnit nebo odstranit tabulku směrování
 
@@ -44,7 +44,7 @@ Platí omezení na počet směrovacích tabulek můžete vytvořit na umístěn�
 
 **Příkazy**
 
-- Azure CLI: [vytvořit sítě az route-table](/cli/azure/network/route-table/route#az_network_route_table_create)
+- Azure CLI: [vytvořit sítě az route-table](/cli/azure/network/route-table/route)
 - PowerShell: [New-AzureRmRouteTable](/powershell/module/azurerm.network/new-azurermroutetable)
 
 ## <a name="view-route-tables"></a>Zobrazení tabulky směrování
@@ -53,7 +53,7 @@ Do vyhledávacího pole v horní části portálu zadejte *směrovací tabulky* 
 
 **Příkazy**
 
-- Azure CLI: [az network route-table seznamu](/cli/azure/network/route-table/route#az_network_route_table_list)
+- Azure CLI: [az network route-table seznamu](/cli/azure/network/route-table/route)
 - PowerShell: [Get-AzureRmRouteTable](/powershell/module/azurerm.network/get-azurermroutetable)
 
 ## <a name="view-details-of-a-route-table"></a>Zobrazit podrobnosti směrovací tabulky
@@ -69,7 +69,7 @@ Do vyhledávacího pole v horní části portálu zadejte *směrovací tabulky* 
 
 **Příkazy**
 
-- Azure CLI: [az network route-table show](/cli/azure/network/route-table/route#az_network_route_table_show)
+- Azure CLI: [az network route-table show](/cli/azure/network/route-table/route)
 - PowerShell: [Get-AzureRmRouteTable](/powershell/module/azurerm.network/get-azurermroutetable)
 
 ## <a name="change-a-route-table"></a>Změnit tabulku směrování
@@ -79,7 +79,7 @@ Do vyhledávacího pole v horní části portálu zadejte *směrovací tabulky* 
 
 **Příkazy**
 
-- Azure CLI: [az network route-table update](/cli/azure/network/route-table/route#az_network_route_table_update)
+- Azure CLI: [az network route-table update](/cli/azure/network/route-table/route)
 - PowerShell: [Set-AzureRmRouteTable](/powershell/module/azurerm.network/set-azurermroutetable)
 
 ## <a name="associate-a-route-table-to-a-subnet"></a>Přidružení směrovací tabulky k podsíti
@@ -124,7 +124,7 @@ Směrovací tabulka je přidružen k žádné podsítě, nelze odstranit. [Zruš
 
 **Příkazy**
 
-- Azure CLI: [az sítě route-table delete](/cli/azure/network/route-table/route#az_network_route_table_delete)
+- Azure CLI: [az sítě route-table delete](/cli/azure/network/route-table/route)
 - PowerShell: [Remove-AzureRmRouteTable](https://docs.microsoft.com/powershell/module/azurerm.network/remove-azurermroutetable?view=azurermps-6.8.1) 
 
 ## <a name="create-a-route"></a>Vytvoření trasy
@@ -143,7 +143,7 @@ Platí omezení na tom, kolik tras ve směrovací tabulce můžete vytvořit pro
 
 **Příkazy**
 
-- Azure CLI: [vytvořit az network route-table trasy](/cli/azure/network/route-table/route?view=azure-cli-latest#az_network_route_table_route_create)
+- Azure CLI: [vytvořit az network route-table trasy](/cli/azure/network/route-table/route?view=azure-cli-latest)
 - PowerShell: [New-AzureRmRouteConfig](/powershell/module/azurerm.network/new-azurermrouteconfig)
 
 ## <a name="view-routes"></a>Zobrazit trasy
@@ -168,7 +168,7 @@ Směrovací tabulka obsahuje nula nebo více tras. Další informace o informace
 
 **Příkazy**
 
-- Azure CLI: [az sítě route-table route show](/cli/azure/network/route-table/route?view=azure-cli-latest#az_network_route_table_route_show)
+- Azure CLI: [az sítě route-table route show](/cli/azure/network/route-table/route?view=azure-cli-latest)
 - PowerShell: [Get-AzureRmRouteConfig](/powershell/module/azurerm.network/get-azurermrouteconfig)
 
 ## <a name="change-a-route"></a>Změna trasy
@@ -194,7 +194,7 @@ Směrovací tabulka obsahuje nula nebo více tras. Další informace o informace
 
 **Příkazy**
 
-- Azure CLI: [az sítě route-table route delete](/cli/azure/network/route-table/route?view=azure-cli-latest#az_network_route_table_route_delete)
+- Azure CLI: [az sítě route-table route delete](/cli/azure/network/route-table/route?view=azure-cli-latest)
 - PowerShell: [Remove-AzureRmRouteConfig](/powershell/module/azurerm.network/remove-azurermrouteconfig)
 
 ## <a name="view-effective-routes"></a>Zobrazení efektivních tras
@@ -209,7 +209,7 @@ Efektivní trasy pro každé síťové rozhraní připojené k virtuálnímu po�
 
 **Příkazy**
 
-- Azure CLI: [az network nic show-effective-route-table](/cli/azure/network/nic?view=azure-cli-latest#az_network_nic_show_effective_route_table)
+- Azure CLI: [az network nic show-effective-route-table](/cli/azure/network/nic?view=azure-cli-latest)
 - PowerShell: [Get-AzureRmEffectiveRouteTable](/powershell/module/azurerm.network/get-azurermeffectiveroutetable) 
 
 ## <a name="validate-routing-between-two-endpoints"></a>Ověřit směrování mezi dva koncové body služby
@@ -226,7 +226,7 @@ Můžete určit typ dalšího segmentu směrování mezi virtuálním počítač
 
 **Příkazy**
 
-- Azure CLI: [az network watcher show-next-hop](/cli/azure/network/watcher?view=azure-cli-latest#az_network_watcher_show_next_hop)
+- Azure CLI: [az network watcher show-next-hop](/cli/azure/network/watcher?view=azure-cli-latest)
 - PowerShell: [Get-AzureRmNetworkWatcherNextHop](/powershell/module/azurerm.network/get-azurermnetworkwatchernexthop) 
 
 ## <a name="permissions"></a>Oprávnění

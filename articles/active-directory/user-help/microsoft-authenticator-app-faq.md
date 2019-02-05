@@ -9,15 +9,15 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: user-help
 ms.topic: conceptual
-ms.date: 01/24/2019
+ms.date: 01/31/2019
 ms.author: lizross
 ms.reviewer: olhaun
-ms.openlocfilehash: 5a646f83d3bd6a2c2824aef679f8a46e352f2263
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 5609661bd49d44693c129547d99fc0b805b4dc41
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55246928"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55700294"
 ---
 # <a name="microsoft-authenticator-app-faq"></a>Aplikace Microsoft Authenticator – nejčastější dotazy
 
@@ -47,7 +47,8 @@ Aplikace Microsoft Authenticator nahradit aplikaci Azure Authenticator a je dopo
 |Dochází k chybě komunikace mezi Apple Watch a mi na telefon. Co mám dělat řešení?|K této chybě dochází, když obrazovce sledování přejde do režimu spánku před dokončením komunikaci s telefonem.<br><br><b>Pokud k tomu dojde během instalace:</b><br>Zkuste spustit instalační program znovu, zajistit, aby hodinkách vzhůru až do dokončení procesu. Ve stejnou dobu otevřete aplikaci na váš telefon a reagovat na případné výzvy, které se zobrazí.<br><br>Pokud váš telefon a sledujte stále nejsou komunikaci, zkuste následující:<ol><li>Vynutit ukončení aplikace Microsoft Authenticator a znovu ho otevřete v Iphonu.</li><li>Vynutit ukončení aplikace companion na vaše Apple Watch.<ol><li> Otevřete doprovodné aplikace Microsoft Authenticator na hodinkách</li><li>Stiskněte tlačítko na straně až **vypnutí** obrazovky.</li><li>Uvolněte tlačítko na straně a podržte klávesu digitální koruna vynutit ukončení aktivní aplikace.</li></ol></li><li>Vypněte Bluetooth a Wi-Fi pro váš telefon a hodinkách a pak je znovu zapnout.</li><li>Restartujte Iphonu a hodinkách.</li></ol><b>Pokud se to stane, když se snažíte schválit oznámení:</b><br>Při příštím pokusu o schválit oznámení na vaše Apple Watch zachovejte obrazovky vzhůru až do dokončení požadavku a poslechněte si zvuk, který označuje, že byla úspěšná.|
 |Proč není doprovodné aplikace Microsoft Authenticator pro Apple Watch synchronizace nebo objeví na mé watch?|Pokud aplikace se nezobrazuje na hodinkách, zkuste následující: <ol><li>Zajistěte, aby že hodinkách běží watchOS 4.0 nebo vyšší.</li><li>Znovu synchronizujte hodinkách.</li></ol>|
 |Doprovodná aplikace Apple Watch došlo k chybě. Můžu vám může poslat Moje protokoly chyb, můžete prozkoumat? |Je nutné nejprve ujistěte se, že jste se rozhodli sdílet analýz s námi. Pokud jste uživatel testovacího prostředí, jste již přihlášeni. V opačném případě můžete přejít na **Nastavení > Ochrana osobních údajů > Analytics** a vyberte možnost **sdílet iPhone & Watch analytics** a **sdílenou složku s vývojáři aplikace** možnosti.<br><br>Když si zaregistrujete, můžete zkusit pro reprodukci vašich chyb tak vaše protokoly o chybách automaticky posílat nám prozkoumat. Ale pokud nelze reprodukovat vaše při selhání, můžete ručně kopírování souborů protokolu a odeslat společnosti Microsoft.<ol><li>Otevřete aplikaci Watch na telefonu, přejděte na **Nastavení > Obecné**a potom klikněte na tlačítko **kopírování Watch Analytics**.</li><li>Najít odpovídající při selhání v rámci **Nastavení > Ochrana osobních údajů > Analytics > analytická Data**a potom ručně zkopírovat celý text.</li><li>Otevřete aplikaci Microsoft Authenticator na telefonu a vložit zkopírovaný text do **sdílenou složku s vývojáři aplikace** textového pole na **odeslat protokoly** stránky.</li></ol>|
-|Co je App Lock funkce a jak to funguje na zůstat bezpečnější?|K lepšímu zabezpečení jednorázového hesla, informace o aplikaci a nastavení aplikace, můžete zapnout funkci App Lock v aplikaci Microsoft Authenticator. Zapnutí zámku aplikace z **nastavení** obrazovce v aplikaci Microsoft Authenticator znamená, že budete vyzváni k ověření pomocí svého PIN kódu nebo biometrické pokaždé, když otevřete aplikaci Microsoft Authenticator. Tato funkce nabízí další ochranu, nedojde ke změně způsobu, jakým schválit oznámení v aplikaci Microsoft Authenticator.<br><br>**Poznámka**<br>Pokud se vrátíte do aplikace Microsoft Authenticator běžící na zařízení s Androidem za méně než 30 sekund, nezobrazí výzva k opakovanému ověření.| 
+|Co je App Lock funkce a jak to funguje na zůstat bezpečnější?|K lepšímu zabezpečení jednorázového hesla, informace o aplikaci a nastavení aplikace, můžete zapnout funkci App Lock v aplikaci Microsoft Authenticator. Zapnutí zámku aplikace z **nastavení** obrazovce v aplikaci Microsoft Authenticator znamená, že budete vyzváni k ověření pomocí svého PIN kódu nebo biometrické pokaždé, když otevřete aplikaci Microsoft Authenticator. Tato funkce nabízí další ochranu, nedojde ke změně způsobu, jakým schválit oznámení v aplikaci Microsoft Authenticator.<br><br>**Poznámka**<br>Pokud se vrátíte do aplikace Microsoft Authenticator běžící na zařízení s Androidem za méně než 30 sekund, nezobrazí výzva k opakovanému ověření.|
+|Proč se zobrazuje oznámení o aktivitách Můj účet?|Chcete-li zajistit, aby byl vám kvalifikovaněji o co se děje s osobním účtem Microsoft, posíláme aktivity oznámení do aplikace Microsoft Authenticator. Tato oznámení se zobrazí okamžitě po něco změní, pomáhá zajistit zabezpečení. Jsme dříve odeslané tato oznámení prostřednictvím e-mailu a SMS a teď rozšířily do aplikace zahrnout. Další informace o těchto oznámeních aktivity, naleznete v tématu [co se stane, pokud dojde neobvyklé přihlášení ke svému účtu](https://support.microsoft.com/en-us/help/13967/microsoft-account-unusual-sign-in). Chcete-li změnit, kam budete dostávat oznámení, přihlaste se k https://account.live.com/SecurityNotifications/Update.|
 
 
 ## <a name="next-steps"></a>Další postup

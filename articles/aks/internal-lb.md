@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 10/08/2018
 ms.author: iainfou
-ms.openlocfilehash: 5fe1739fa341a5e3bd2f4d26ef1e94d725b74a61
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: e4b5b6085dbe9a09c90e059a5db8bee5d6d7a004
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "53001243"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55699310"
 ---
 # <a name="use-an-internal-load-balancer-with-azure-kubernetes-service-aks"></a>Použití interního nástroje Azure Kubernetes Service (AKS)
 
@@ -131,7 +131,7 @@ Další informace o službách Kubernetes na [dokumentace ke službě services K
 [aks-engine]: https://github.com/Azure/aks-engine
 
 <!-- LINKS - Internal -->
-[advanced-networking]: configure-advanced-networking.md
+[advanced-networking]: configure-azure-cni.md
 [az-aks-show]: /cli/azure/aks#az-aks-show
 [az-role-assignment-create]: /cli/azure/role/assignment#az-role-assignment-create
 [azure-lb-comparison]: ../load-balancer/load-balancer-overview.md#skus

@@ -4,21 +4,19 @@ description: Popisuje části parametrů šablony Azure Resource Manageru pomoc�
 services: azure-resource-manager
 documentationcenter: na
 author: tfitzmac
-manager: timlt
-editor: tysonn
 ms.service: azure-resource-manager
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/18/2018
+ms.date: 02/03/2019
 ms.author: tomfitz
-ms.openlocfilehash: fd6fcff6ac556abe3b2d34c7e8b1b0290208f5b0
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: dc817302ab39d12ccd1d1a20d4dd72f94352c796
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53722138"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55695625"
 ---
 # <a name="parameters-section-of-azure-resource-manager-templates"></a>Sekci parametrů šablony Azure Resource Manageru
 V sekci parametrů šablony zadejte hodnoty, které můžete zadat při nasazování prostředků. Tyto hodnoty parametrů umožňují vlastní nastavení nasazení tím, že poskytuje hodnoty, které jsou přizpůsobené pro konkrétní prostředí (jako je vývoj, testování a produkce). Není nutné zadat parametry v šabloně, ale bez parametrů by vždy šablony nasadit stejným prostředkům se stejnými názvy, umístění a vlastnosti.
@@ -89,11 +87,11 @@ Předchozí příklad ukázal jenom některé vlastnosti, které můžete v čá
 | type |Ano |Typ hodnoty parametru. Povolené typy a hodnoty jsou **řetězec**, **securestring**, **int**, **bool**, **objekt**, **secureObject**, a **pole**. |
 | Výchozí hodnota |Ne |Výchozí hodnota pro parametr, pokud se nezadá žádná hodnota pro parametr. |
 | allowedValues |Ne |Povolené hodnoty pro parametr, abyste měli jistotu, že se zadal správný hodnotu pole. |
-| Hodnota minValue |Ne |Minimální hodnota pro parametry typu int, tato hodnota je také zahrnuto. |
-| Hodnota maxValue |Ne |Maximální hodnoty pro parametry typu int, tato hodnota je také zahrnuto. |
+| minValue |Ne |Minimální hodnota pro parametry typu int, tato hodnota je také zahrnuto. |
+| maxValue |Ne |Maximální hodnoty pro parametry typu int, tato hodnota je také zahrnuto. |
 | minLength |Ne |Minimální délku řetězce, zabezpečený řetězec a parametry typu pole, tato hodnota je také zahrnuto. |
 | maxLength |Ne |Maximální délka řetězce, zabezpečený řetězec a parametry typu pole, tato hodnota je také zahrnuto. |
-| description |Ne |Popis parametru, který se zobrazí uživatelům na portálu. |
+| description |Ne |Popis parametru, který se zobrazí uživatelům na portálu. Další informace najdete v tématu [komentáře v šablonách](resource-group-authoring-templates.md#comments). |
 
 ## <a name="template-functions-with-parameters"></a>Šablony funkce s parametry
 

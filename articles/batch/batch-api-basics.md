@@ -15,12 +15,12 @@ ms.workload: big-compute
 ms.date: 12/18/2018
 ms.author: lahugh
 ms.custom: seodec18
-ms.openlocfilehash: f844b460e5fc6548a17b93038d1232fe61483018
-ms.sourcegitcommit: 7862449050a220133e5316f0030a259b1c6e3004
+ms.openlocfilehash: bdb7b1477725235ca88e9cf527c7f711fd6f6b73
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/22/2018
-ms.locfileid: "53754063"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55732256"
 ---
 # <a name="develop-large-scale-parallel-compute-solutions-with-batch"></a>Vývoj rozsáhlých paralelních výpočetních řešení pomocí služby Batch
 
@@ -153,7 +153,7 @@ Podrobné požadavky a kroky najdete v tématu popisujícím [použití vlastní
 
 #### <a name="container-support-in-virtual-machine-pools"></a>Podpora kontejnerů ve fondech virtuálních počítačů
 
-Při vytváření fondu konfigurace virtuálních počítačů pomocí rozhraní API služby Batch můžete ve fondu nastavit spouštění úloh v kontejnerech Dockeru. V současné době musíte fond vytvořit pomocí image, která podporuje kontejnery Dockeru. Použijte Windows Server 2016 Datacenter s použitím image kontejnerů z webu Azure Marketplace nebo zadejte vlastní image virtuálního počítače, která zahrnuje Docker Community Edition nebo Enterprise Edition a všechny požadované ovladače. Nastavení fondu musí obsahovat [konfiguraci kontejneru](/rest/api/batchservice/pool/add#definitions_containerconfiguration), která při vytvoření fondu zkopíruje image kontejneru do virtuálních počítačů. Úlohy spouštěné ve fondu pak můžou odkazovat na image kontejneru a možnosti spuštění kontejneru.
+Při vytváření fondu konfigurace virtuálních počítačů pomocí rozhraní API služby Batch můžete ve fondu nastavit spouštění úloh v kontejnerech Dockeru. V současné době musíte fond vytvořit pomocí image, která podporuje kontejnery Dockeru. Použijte Windows Server 2016 Datacenter s použitím image kontejnerů z webu Azure Marketplace nebo zadejte vlastní image virtuálního počítače, která zahrnuje Docker Community Edition nebo Enterprise Edition a všechny požadované ovladače. Nastavení fondu musí obsahovat [konfiguraci kontejneru](/rest/api/batchservice/pool/add), která při vytvoření fondu zkopíruje image kontejneru do virtuálních počítačů. Úlohy spouštěné ve fondu pak můžou odkazovat na image kontejneru a možnosti spuštění kontejneru.
 
 Další informace najdete v tématu věnovaném [spuštění kontejnerových aplikací Dockeru ve službě Azure Batch](batch-docker-container-workloads.md).
 
@@ -356,7 +356,7 @@ Kořenový adresář obsahuje následující adresářovou strukturu:
 ![Adresářová struktura výpočetního uzlu][1]
 
 * **sdílené**: Tento adresář poskytuje přístup pro čtení/zápis *všechny* úlohy, které běží na uzlu. Každý úkol spuštěný na uzlu může vytvořit, číst, aktualizovat a odstranit soubory v tomto adresáři. Úkoly mohou získat přístup do tohoto adresáře odkazem na proměnnou prostředí `AZ_BATCH_NODE_SHARED_DIR`.
-* **Po spuštění**: Tento adresář se používá ve spouštěcím úkolem jako jeho pracovní adresář. Jsou sem uloženy všechny soubory, které byly staženy do uzlu spouštěcím úkolem. Spouštěcí úkol může vytvořit, číst, aktualizovat a odstranit soubory v tomto adresáři. Úkoly mohou získat přístup do tohoto adresáře odkazem na proměnnou prostředí `AZ_BATCH_NODE_STARTUP_DIR`.
+* **startup**: Tento adresář se používá ve spouštěcím úkolem jako jeho pracovní adresář. Jsou sem uloženy všechny soubory, které byly staženy do uzlu spouštěcím úkolem. Spouštěcí úkol může vytvořit, číst, aktualizovat a odstranit soubory v tomto adresáři. Úkoly mohou získat přístup do tohoto adresáře odkazem na proměnnou prostředí `AZ_BATCH_NODE_STARTUP_DIR`.
 * **Úlohy**: Adresář se vytvoří pro každý úkol, který běží na uzlu. Přistupuje se k němu odkazem na proměnnou prostředí `AZ_BATCH_TASK_DIR`.
 
     V rámci každého adresáře úkolu vytvoří služba Batch pracovní adresář (`wd`), jehož jedinečná cesta je určena proměnnou prostředí `AZ_BATCH_TASK_WORKING_DIR`. Tento adresář poskytuje přístup pro čtení a zápis pro úkol. Úkol může vytvořit, číst, aktualizovat a odstranit soubory v tomto adresáři. Tento adresář je zachován podle pravidel omezení *RetentionTime*, které je zadáno pro úkol.

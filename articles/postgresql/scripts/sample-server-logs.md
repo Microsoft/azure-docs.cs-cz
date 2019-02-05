@@ -8,12 +8,12 @@ ms.devlang: azurecli
 ms.topic: sample
 ms.custom: mvc
 ms.date: 02/28/2018
-ms.openlocfilehash: eb6f1624a3fefbad829600d2280d4eaeedd188bc
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 107c844051ab396fe467a1a629883746b2903125
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55179969"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55731814"
 ---
 # <a name="enable-and-download-server-slow-query-logs-of-an-azure-database-for-postgresql-server-using-azure-cli"></a>Povolení a stažení protokolů pomalých dotazů serveru Azure Database for PostgreSQL pomocí Azure CLI
 Tento ukázkový skript rozhraní příkazového řádku povolí a stáhne protokoly pomalých dotazů jednoho serveru Azure Database for PostgreSQL.
@@ -35,13 +35,13 @@ Tento skript používá příkazy uvedené v následující tabulce:
 
 | **Příkaz** | **Poznámky** |
 |---|---|
-| [az group create](/cli/azure/group#az_group_create) | Vytvoří skupinu prostředků, ve které se ukládají všechny prostředky. |
-| [az postgres server create](/cli/azure/postgres/server#az_msql_server_create) | Vytvoří server PostgreSQL, který je hostitelem databází. |
+| [az group create](/cli/azure/group) | Vytvoří skupinu prostředků, ve které se ukládají všechny prostředky. |
+| [az postgres server create](/cli/azure/postgres/server) | Vytvoří server PostgreSQL, který je hostitelem databází. |
 | [az postgres server configuration list](/cli/azure/postgres/server/configuration) | Vypíše hodnoty konfigurace serveru. |
-| [az postgres server configuration set](/cli/azure/postgres/server/configuration#az_postgres_server_configuration_set) | Aktualizuje konfiguraci serveru. |
-| [az postgres server-logs list](/cli/azure/postgres/server-logs#az_postgres_server_logs_list) | Vypíše soubory protokolů serveru. |
-| [az postgres server-logs download](/cli/azure/postgres/server-logs#az_postgres_server_logs_download) | Stáhne soubory protokolů. |
-| [az group delete](/cli/azure/group#az_group_delete) | Odstraní skupinu prostředků včetně všech vnořených prostředků. |
+| [az postgres server configuration set](/cli/azure/postgres/server/configuration) | Aktualizuje konfiguraci serveru. |
+| [az postgres server-logs list](/cli/azure/postgres/server-logs) | Vypíše soubory protokolů serveru. |
+| [az postgres server-logs download](/cli/azure/postgres/server-logs) | Stáhne soubory protokolů. |
+| [az group delete](/cli/azure/group) | Odstraní skupinu prostředků včetně všech vnořených prostředků. |
 
 ## <a name="next-steps"></a>Další postup
 - Přečtěte si další informace o Azure CLI: [Dokumentace k Azure CLI](/cli/azure).

@@ -13,12 +13,12 @@ ms.workload: na
 ms.custom: seodec18
 ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: e5c81a172c99ea6e2591a25f53705ab9cd30fd83
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
+ms.openlocfilehash: 97c7af9eb86b1c2e904e2253933b2b01c9e38cf5
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55660625"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55729332"
 ---
 # <a name="event-hubs-messaging-exceptions"></a>Výjimky zasílání zpráv služby Event Hubs
 
@@ -38,8 +38,8 @@ Následující tabulka uvádí zasílání zpráv typy výjimek a jejich příč
 
 | Typ výjimky | Popis a příčinu a příklady | Navrhované akce | Poznámka: na automatické/okamžité opakování |
 | -------------- | -------------------------- | ---------------- | --------------------------------- |
-| [TimeoutException](https://msdn.microsoft.com/library/system.timeoutexception.aspx) |Server neodpověděl na požadovanou operaci v zadaném čase, které řídí [OperationTimeout](/dotnet/api/microsoft.servicebus.messaging.messagingfactorysettings#Microsoft_ServiceBus_Messaging_MessagingFactorySettings_OperationTimeout). Server může dokončit požadovanou operaci. Tato výjimka může dojít, sítě nebo jiné infrastruktury zpoždění. |Zkontrolujte stav systému pro zajištění konzistence a opakujte akci v případě potřeby.<br /> Zobrazit [TimeoutException](#timeoutexception). | V některých případech; může pomoci opakování Přidejte do kódu logiku opakování. |
-| [InvalidOperationException](https://msdn.microsoft.com/library/system.invalidoperationexception.aspx) |Požadovaná uživatelská operace není povolena v rámci serveru nebo služby. Zobrazit zpráva o výjimce podrobnosti. Například [Complete](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage#Microsoft_ServiceBus_Messaging_BrokeredMessage_Complete) vygeneruje tuto výjimku, pokud byla zpráva přijata v [ReceiveAndDelete](/dotnet/api/microsoft.servicebus.messaging.receivemode) režimu. | Zkontrolujte kód a dokumentace. Ujistěte se, že požadovaná operace je platná. | Opakování nepomůže. |
+| [TimeoutException](https://msdn.microsoft.com/library/system.timeoutexception.aspx) |Server neodpověděl na požadovanou operaci v zadaném čase, které řídí [OperationTimeout](/dotnet/api/microsoft.servicebus.messaging.messagingfactorysettings). Server může dokončit požadovanou operaci. Tato výjimka může dojít, sítě nebo jiné infrastruktury zpoždění. |Zkontrolujte stav systému pro zajištění konzistence a opakujte akci v případě potřeby.<br /> Zobrazit [TimeoutException](#timeoutexception). | V některých případech; může pomoci opakování Přidejte do kódu logiku opakování. |
+| [InvalidOperationException](https://msdn.microsoft.com/library/system.invalidoperationexception.aspx) |Požadovaná uživatelská operace není povolena v rámci serveru nebo služby. Zobrazit zpráva o výjimce podrobnosti. Například [Complete](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) vygeneruje tuto výjimku, pokud byla zpráva přijata v [ReceiveAndDelete](/dotnet/api/microsoft.servicebus.messaging.receivemode) režimu. | Zkontrolujte kód a dokumentace. Ujistěte se, že požadovaná operace je platná. | Opakování nepomůže. |
 | [OperationCanceledException –](https://msdn.microsoft.com/library/system.operationcanceledexception.aspx) | Je proveden pokus o vyvolání operace u objektu, který již byl uzavřen, byla přerušena nebo odstraněn. Ve výjimečných případech je již uvolněna okolí transakce. | Zkontrolujte kód a ujistěte se, že vyvolat operace na smazaném objektu. | Opakování nepomůže. |
 | [UnauthorizedAccessException –](https://msdn.microsoft.com/library/system.unauthorizedaccessexception.aspx) | [TokenProvider](/dotnet/api/microsoft.servicebus.tokenprovider) objekt nebylo možné získat token, token je neplatný nebo token neobsahuje deklarace potřebné k provedení této operace. | Zajistěte, aby že poskytovatele tokenu, kterého se vytvoří s správné hodnoty. Zkontrolujte konfiguraci služby Řízení přístupu. | V některých případech; může pomoci opakování Přidejte do kódu logiku opakování. |
 | [ArgumentException](https://msdn.microsoft.com/library/system.argumentexception.aspx)<br /> [ArgumentNullException](https://msdn.microsoft.com/library/system.argumentnullexception.aspx)<br />[ArgumentOutOfRangeException](https://msdn.microsoft.com/library/system.argumentoutofrangeexception.aspx) | Jeden nebo více argumentů zadaný pro metodu nejsou platné. Identifikátor URI dodaný [NamespaceManager](/dotnet/api/microsoft.servicebus.namespacemanager) nebo [vytvořit](/dotnet/api/microsoft.servicebus.messaging.messagingfactory) obsahuje segmenty cesty. Schéma identifikátoru URI předaná [NamespaceManager](/dotnet/api/microsoft.servicebus.namespacemanager) nebo [vytvořit](/dotnet/api/microsoft.servicebus.messaging.messagingfactory) je neplatný. Hodnota vlastnosti je větší než 32 KB. | Zkontrolujte volající kód a ujistěte se, že argumenty jsou správné. | Opakování nepomůže. |
@@ -81,7 +81,7 @@ Této chybě může dojít z jednoho ze dvou důvodů:
 
 1. Zatížení se rovnoměrně mezi všechny oddíly v Centru událostí a omezení na jednotku propustnosti místní narazí na jeden oddíl.
     
-    Řešení: Úprava distribuční strategie oddílu ani se nemusíte pokoušet [EventHubClient.Send(eventDataWithOutPartitionKey)](/dotnet/api/microsoft.servicebus.messaging.eventhubclient#Microsoft_ServiceBus_Messaging_EventHubClient_Send_Microsoft_ServiceBus_Messaging_EventData_) můžou pomoct.
+    Řešení: Úprava distribuční strategie oddílu ani se nemusíte pokoušet [EventHubClient.Send(eventDataWithOutPartitionKey)](/dotnet/api/microsoft.servicebus.messaging.eventhubclient) můžou pomoct.
 
 2. Obor názvů služby Event Hubs nemá dostatek jednotek propustnosti (můžete zkontrolovat **metriky** obrazovky okno Hubs oboru názvů v události [webu Azure portal](https://portal.azure.com) potvrďte). Na portálu se zobrazí informace o agregovaných (1 minuta), ale můžeme měřit propustnost v reálném čase – tak, aby byl pouze odhad.
 

@@ -16,12 +16,12 @@ ms.workload: iaas-sql-server
 ms.date: 03/23/2018
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 61cfc458ed965fd4f1446ff8cfb5e9a6e244f246
-ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
+ms.openlocfilehash: 69b6bd07699d179fc87ac6c5364a7a34b23d14eb
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54332383"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55731712"
 ---
 # <a name="security-considerations-for-sql-server-in-azure-virtual-machines"></a>Informace o zabezpečení pro SQL Server v Azure Virtual Machines
 
@@ -54,7 +54,7 @@ Vybrané možnosti na portálu použijte pravidla zabezpečení příchozích da
 
 Kromě pravidla skupiny zabezpečení sítě je možné omezit síťový provoz můžete také použít bránu Windows Firewall na virtuálním počítači.
 
-Pokud použijete koncové body pomocí modelu nasazení classic, odeberte žádné koncové body na virtuálním počítači, pokud je nepoužíváte. Pokyny k používání seznamů ACL s koncovými body najdete v tématu [spravovat seznam ACL v koncovém bodě](../classic/setup-endpoints.md#manage-the-acl-on-an-endpoint). To není nutné pro virtuální počítače využívající Resource Manager.
+Pokud použijete koncové body pomocí modelu nasazení classic, odeberte žádné koncové body na virtuálním počítači, pokud je nepoužíváte. Pokyny k používání seznamů ACL s koncovými body najdete v tématu [spravovat seznam ACL v koncovém bodě](/previous-versions/azure/virtual-machines/windows/classic/setup-endpoints#manage-the-acl-on-an-endpoint). To není nutné pro virtuální počítače využívající Resource Manager.
 
 Nakonec je třeba zvážit povolení šifrované připojení k instanci databázového stroje SQL Server ve virtuálním počítači Azure. Konfigurovat instanci SQL serveru s podepsaným certifikátem. Další informace najdete v tématu [povolit šifrované připojení databázový stroj](https://docs.microsoft.com/sql/database-engine/configure-windows/enable-encrypted-connections-to-the-database-engine) a [syntaxe připojovacího řetězce](https://msdn.microsoft.com/library/ms254500.aspx).
 

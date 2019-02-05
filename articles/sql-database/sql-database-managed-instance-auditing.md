@@ -1,6 +1,6 @@
 ---
-title: Azure SQL Database Managed Instance auditování | Dokumentace Microsoftu
-description: Zjistěte, jak začít pracovat s auditování Azure SQL Database Managed Instance pomocí jazyka T-SQL
+title: Azure SQL Database managed instance auditování | Dokumentace Microsoftu
+description: Zjistěte, jak začít pracovat s Azure SQL Database managed instance auditu pomocí T-SQL
 services: sql-database
 ms.service: sql-database
 ms.subservice: security
@@ -13,24 +13,24 @@ author: vainolo
 ms.author: arib
 ms.reviewer: vanto
 manager: craigg
-ms.date: 01/15/2019
-ms.openlocfilehash: 3a445fbc135e0d7dc19907339506fd0c32bffb45
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.date: 02/04/2019
+ms.openlocfilehash: f82c96b972baa161658f4a864572bfcb791939ed
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55456030"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55728993"
 ---
-# <a name="get-started-with-azure-sql-database-managed-instance-auditing"></a>Začínáme s Azure auditem SQL Database Managed Instance
+# <a name="get-started-with-azure-sql-database-managed-instance-auditing"></a>Začínáme s auditováním služby Azure SQL Database managed instance
 
-[Azure SQL Database Managed Instance](sql-database-managed-instance.md) auditování sleduje události databáze a zapisuje je do auditu protokolu ve vašem účtu úložiště Azure. Také auditování:
+[Spravovaná instance](sql-database-managed-instance.md) auditování sleduje události databáze a zapisuje je do protokolu auditu ve vašem účtu úložiště Azure. Také auditování:
 
 - Pomáhá zajistit dodržování předpisů, porozumět databázové aktivitě a proniknout do nesrovnalostí a anomálií, které můžou značit problémy obchodního charakteru nebo vzbuzovat podezření na narušení zabezpečení.
 - Povolí a umožňuje dodržování standardů dodržování předpisů, ale nezaručuje dodržování předpisů. Další informace o Azure programy dodržování standardů tuto podporu, najdete v článku [Centrum zabezpečení Azure](https://azure.microsoft.com/support/trust-center/compliance/).
 
-## <a name="set-up-auditing-for-your-server-to-azure-storage"></a>Nastavení auditování serveru do služby Azure Storage
+## <a name="set-up-auditing-for-your-server-to-azure-storage"></a>Nastavení auditování serveru do služby Azure storage
 
-Následující část popisuje konfiguraci auditování pro Managed Instance.
+Následující část popisuje konfiguraci auditování pro spravovanou instanci.
 
 1. Přejděte na [Azure Portal](https://portal.azure.com).
 1. Vytvoření služby Azure Storage **kontejneru** kde jsou uloženy protokoly auditu.
@@ -38,7 +38,7 @@ Následující část popisuje konfiguraci auditování pro Managed Instance.
    1. Přejděte do služby Azure Storage, ve kterém chcete ukládat vaše protokoly auditu.
 
       > [!IMPORTANT]
-      > Použijte účet úložiště ve stejné oblasti jako server pro Managed Instance, aby křížová čtení/zápisu.
+      > Aby se zabránilo křížová čtení/zápisu použijte účet úložiště ve stejné oblasti jako spravované instance.
 
    1. V účtu úložiště, přejděte na **přehled** a klikněte na tlačítko **objekty BLOB**.
 
@@ -64,7 +64,7 @@ Následující část popisuje konfiguraci auditování pro Managed Instance.
 
         ![Adresa URL kopírování objektů BLOB v kontejneru](./media/sql-managed-instance-auditing/5_container_copy_name.png)
 
-     1. Generovat služby Azure Storage **tokenů SAS** udělit Managed Instance auditování přístupová práva k účtu úložiště:
+     1. Generovat služby Azure Storage **tokenů SAS** udělit spravovanou instanci auditování přístupová práva k účtu úložiště:
 
         - Přejděte do účtu Azure Storage, ve které jste vytvořili kontejner v předchozím kroku.
 
@@ -94,7 +94,7 @@ Následující část popisuje konfiguraci auditování pro Managed Instance.
           > [!IMPORTANT]
           > Odebrat otazník ("?") znaků od začátku tokenu.
 
-     1. Připojte k Managed Instance pomocí SQL Server Management Studio (SSMS) nebo jakýkoli jiný podporovaný nástroj.
+     1. Připojte se k vaší spravované instance pomocí SQL Server Management Studio (SSMS) nebo jakýkoli jiný podporovaný nástroj.
 
      1. Spuštěním následujícího příkazu T-SQL k **vytvoření nových přihlašovacích údajů** pomocí adresy URL kontejneru a tokenu SAS, který jste vytvořili v předchozích krocích:
 
@@ -154,15 +154,15 @@ Následující část popisuje konfiguraci auditování pro Managed Instance.
 
 Další informace:
 
-- [Auditování rozdíly mezi Managed Instance, Azure SQL DB a systému SQL Server](#auditing-differences-between-managed-instance-azure-sql-database-and-sql-server)
+- [Auditování rozdíly mezi izolované databáze, elastický fond, s a spravované instance Azure SQL Database a databází v systému SQL Server](#auditing-differences-between-managed-instance-azure-sql-database-and-sql-server)
 - [VYTVOŘIT SERVER AUDIT](https://docs.microsoft.com/sql/t-sql/statements/create-server-audit-transact-sql)
 - [PŘÍKAZ ALTER SERVER AUDIT](https://docs.microsoft.com/sql/t-sql/statements/alter-server-audit-transact-sql)
 
 ## <a name="set-up-auditing-for-your-server-to-event-hub-or-log-analytics"></a>Nastavení auditování serveru do centra událostí nebo Log Analytics
 
-Protokoly auditu z Managed Instance můžete odeslat do i rozbočovače nebo Log Analytics pomocí Azure monitoru. Tato část popisuje, jak nastavit tuto konfiguraci:
+Protokoly auditu ze spravované instance můžete odesílat i rozbočovače nebo Log Analytics pomocí Azure monitoru. Tato část popisuje, jak nastavit tuto konfiguraci:
 
-1. Přejděte v [webu Azure Portal](https://portal.azure.com/) na SQL Managed Instance.
+1. Přejděte v [webu Azure Portal](https://portal.azure.com/) do spravované instance.
 
 2. Klikněte na **nastavení diagnostiky**.
 
@@ -176,7 +176,7 @@ Protokoly auditu z Managed Instance můžete odeslat do i rozbočovače nebo Log
 
     ![Konfigurace nastavení diagnostiky](./media/sql-managed-instance-auditing/9_mi_configure_diagnostics.png)
 
-7. Připojte se k Managed Instance pomocí **SQL Server Management Studio (SSMS)** nebo jakéhokoli klienta podporované.
+7. Připojte se k použití spravované instance **SQL Server Management Studio (SSMS)** nebo jakéhokoli klienta podporované.
 
 8. Spusťte následující příkaz jazyka T-SQL k vytvoření auditu serveru:
 
@@ -209,9 +209,6 @@ Existuje několik metod, které lze použít k zobrazení protokolů auditován�
 
 - Úplný seznam metod spotřeby protokolu auditu, najdete [Začínáme s auditem SQL database](sql-database-auditing.md).
 
-  > [!IMPORTANT]
-  > Zobrazení záznamů auditu na webu Azure Portal (záznamy auditu podokno) je nyní k dispozici pro Managed Instance.
-
 ### <a name="consume-logs-stored-in-event-hub"></a>Využívání protokolů uložených v Centru událostí
 
 Chcete-li využívají data protokolů auditu z centra událostí, je potřeba nastavit, aby datový proud zpracování událostí a jejich zápisu do cílového. Další informace najdete v článku dokumentace k Azure Event Hubs.
@@ -222,21 +219,21 @@ Pokud se protokoly auditu se zapisují do Log Analytics, jsou k dispozici v prac
 
 Log Analytics nabízí provozní informace v reálném čase pomocí integrovaného vyhledávání a vlastních řídicích panelů, díky kterým můžete analyzovat miliony záznamů napříč vašimi úlohami a servery. Další užitečné informace o vyhledávací jazyk Log Analytics a příkazy najdete v tématu [referenční příručce k vyhledávání Log Analytics](https://docs.microsoft.com/azure/azure-monitor/log-query/log-query-overview).
 
-## <a name="auditing-differences-between-managed-instance-azure-sql-database-and-sql-server"></a>Auditování rozdíly mezi Managed Instance, Azure SQL Database a SQL Server
+## <a name="auditing-differences-between-databases-in-azure-sql-database-and-databases-in-sql-server"></a>Auditování rozdíly mezi databázemi ve službě Azure SQL Database a databází v systému SQL Server
 
-Hlavní rozdíly mezi auditování SQL v Managed Instance, Azure SQL Database a SQL Server v místním jsou:
+Hlavní rozdíly mezi auditování v databázích v Azure SQL Database a databází v systému SQL Server jsou:
 
-- Ve spravované instanci SQL Audit funguje na úrovni serveru nebo úložišti `.xel` soubory protokolu na účet úložiště objektů blob v Azure.
-- Ve službě Azure SQL Database SQL Audit funguje na úrovni databáze.
-- V místním SQL serverem / virtuální počítače, funguje auditování SQL serveru na úrovni, ale události úložiště v systému souborů protokolů událostí.
+- S možností nasazení spravované instance Azure SQL Database, auditování funguje na úrovni serveru nebo úložišti `.xel` soubory protokolu na účet úložiště objektů blob v Azure.
+- Izolované databáze a elastický fond možnosti nasazení ve službě Azure SQL Database auditování funguje na úrovni databáze.
+- V místním SQL serverem / virtuální počítače, audit funguje na serveru úrovně, ale ukládá události do protokolů událostí systému a soubory.
 
-Relace XEvent auditování ve spravované instanci podporuje cíle úložiště objektů blob v Azure. Souborová služba a windows protokoly jsou **nepodporuje**.
+Auditování ve spravované instanci relace XEvent podporuje cíle úložiště objektů blob v Azure. Souborová služba a windows protokoly jsou **nepodporuje**.
 
 Klíč rozdíly v `CREATE AUDIT` syntaxe pro auditování do Azure blob storage jsou:
 
 - Novou syntaxi `TO URL` je k dispozici a umožní vám zadat adresu URL kontejneru objektů blob v Azure Storage, kde `.xel` soubory jsou umístěny.
 - Novou syntaxi `TO EXTERNAL MONITOR` je k dispozici pro povolení cíle i centra a Log Analytics.
-- Syntaxe `TO FILE` je **nepodporuje** protože Managed Instance nemá přístup ke sdílené složky Windows.
+- Syntaxe `TO FILE` je **nepodporuje** protože SQL Database nemá přístup ke sdílené složky Windows.
 - Možnost vypnutí je **nepodporuje**.
 - `queue_delay` 0 je **nepodporuje**.
 

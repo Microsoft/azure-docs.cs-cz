@@ -16,12 +16,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/16/2018
 ms.author: gokuma
-ms.openlocfilehash: 744c8d6488b9b0688126d305426f90647a89d4be
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 27e0deae9c35ad8fa00659e3e3e505cace6e9014
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55478079"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55733429"
 ---
 # <a name="data-platforms-supported-on-the-data-science-virtual-machine"></a>Datové platformy podporované na virtuální počítač pro datové vědy
 
@@ -105,5 +105,5 @@ Hadoop můžete zastavit a souvisejících služeb, když už nejsou potřeba sp
 |Linux   | /dsvm/tools/spark-X.X.X-bin-hadoopX.X|
 
 
-Knihovny pro přístup k datům z objektů Blob v Azure nebo Azure Data Lake storage (ADLS) a použití knihovny MMLSpark strojového učení od Microsoftu je předinstalován v $SPARK_HOME/JAR. Tyto kromě souborů JAR jsou automaticky načteny při spuštění Sparku. Ve výchozím nastavení používá Spark data na místním disku. Pro instanci Spark na přístup k datům uloženým na objektů blob v Azure nebo ADLS datové VĚDY je nutné vytvořit a nakonfigurovat `core-site.xml` soubor založený na šabloně v $SPARK_HOME/conf/core-site.xml.template (Pokud je zástupných symbolů pro objekt Blob a ADLS Konfigurace) se správnými přihlašovacími údaji do objektů blob v Azure a Azure Data Lake Storage. Najít další podrobný postup k vytvoření přihlašovacích údajů služby ADLS [tady](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-authenticate-using-active-directory#create-an-active-directory-application). Jakmile přihlašovací údaje pro Azure blob nebo ADLS byly zadány v souboru core-site.xml, odkazovat lze data uložená v těch zdrojích se identifikátor URI předponu wasb: / / nebo adl: / /. 
+Knihovny pro přístup k datům z objektů Blob v Azure nebo Azure Data Lake storage (ADLS) a použití knihovny MMLSpark strojového učení od Microsoftu je předinstalován v $SPARK_HOME/JAR. Tyto kromě souborů JAR jsou automaticky načteny při spuštění Sparku. Ve výchozím nastavení používá Spark data na místním disku. Pro instanci Spark na přístup k datům uloženým na objektů blob v Azure nebo ADLS datové VĚDY je nutné vytvořit a nakonfigurovat `core-site.xml` soubor založený na šabloně v $SPARK_HOME/conf/core-site.xml.template (Pokud je zástupných symbolů pro objekt Blob a ADLS Konfigurace) se správnými přihlašovacími údaji do objektů blob v Azure a Azure Data Lake Storage. Najít další podrobný postup k vytvoření přihlašovacích údajů služby ADLS [tady](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-authenticate-using-active-directory). Jakmile přihlašovací údaje pro Azure blob nebo ADLS byly zadány v souboru core-site.xml, odkazovat lze data uložená v těch zdrojích se identifikátor URI předponu wasb: / / nebo adl: / /. 
 

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/04/2018
 ms.author: jdial
-ms.openlocfilehash: eba703e454e02e5b83efae2de01003a2efc1f764
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.openlocfilehash: 7d8047e569d3506f9ebb798b4f8c31ff94204fa4
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55493235"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55694053"
 ---
 # <a name="azure-virtual-network-frequently-asked-questions-faq"></a>Virtuální síť Azure, nejčastější dotazy (FAQ)
 
@@ -329,7 +329,7 @@ Prostředky služeb Azure svázané s virtuálními sítěmi ve výchozím nasta
 Pokud chcete svázat služby Azure s několika podsítěmi v rámci virtuální sítě nebo mezi několika virtuálními sítěmi, povolit koncové body služby na straně sítě na každé z podsítí nezávisle na sobě a pak nastavte svázat prostředky služeb Azure pro všemi podsítěmi příslušné seznamy ACL sítě VNet na straně služby Azure.
  
 ### <a name="how-can-i-filter-outbound-traffic-from-a-virtual-network-to-azure-services-and-still-use-service-endpoints"></a>Jak můžete dál používat koncové body služby a filtrování odchozího provozu z virtuální sítě do služby Azure?
-Pokud chcete prozkoumat nebo filtrovat provoz směřující z virtuální sítě do služby Azure, můžete nasadit síťové virtuální zařízení v rámci virtuální sítě. Koncové body služby lze následně použít na podsíť, kde síťové virtuální zařízení je prostředky nasazených služeb Azure pouze s touto podsítí prostřednictvím seznamů ACL virtuální sítě. Tento scénář může být také užitečný v případě, že chcete omezit přístup služby Azure z vaší virtuální sítě pouze ke konkrétním prostředkům Azure pomocí filtrování síťového virtuálního zařízení. Další informace najdete v popisu [výchozího přenosu dat se síťovými virtuálními zařízeními](https://docs.microsoft.com/azure/architecture/reference-architectures/dmz/nva-ha#egress-with-layer-7-nvas.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
+Pokud chcete prozkoumat nebo filtrovat provoz směřující z virtuální sítě do služby Azure, můžete nasadit síťové virtuální zařízení v rámci virtuální sítě. Koncové body služby lze následně použít na podsíť, kde síťové virtuální zařízení je prostředky nasazených služeb Azure pouze s touto podsítí prostřednictvím seznamů ACL virtuální sítě. Tento scénář může být také užitečný v případě, že chcete omezit přístup služby Azure z vaší virtuální sítě pouze ke konkrétním prostředkům Azure pomocí filtrování síťového virtuálního zařízení. Další informace najdete v popisu [výchozího přenosu dat se síťovými virtuálními zařízeními](https://docs.microsoft.com/azure/architecture/reference-architectures/dmz/nva-ha).
 
 ### <a name="what-happens-when-you-access-an-azure-service-account-that-has-virtual-network-access-control-list-acl-enabled-from-outside-the-vnet"></a>Co se stane při přístupu k účtu služby Azure, který má virtuální síť seznam řízení přístupu (ACL) povolená možnost mimo virtuální síť?
 Vrátí se chyba HTTP 403 nebo HTTP 404.

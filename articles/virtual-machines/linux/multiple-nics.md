@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 06/07/2018
 ms.author: cynthn
-ms.openlocfilehash: 02b70909e701dbeffaec0aa6bdc39e449bdfad08
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
+ms.openlocfilehash: b77ed879375cff8d45f7d532283647e70252bdab
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55660347"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55732834"
 ---
 # <a name="how-to-create-a-linux-virtual-machine-in-azure-with-multiple-network-interface-cards"></a>Jak vytvořit virtuální počítač s Linuxem v Azure s několika síťových karet
 
@@ -27,7 +27,7 @@ ms.locfileid: "55660347"
 Tento článek podrobně popisuje, jak vytvořit virtuální počítač s několika síťovými kartami pomocí Azure CLI.
 
 ## <a name="create-supporting-resources"></a>Vytvořte Podpůrné prostředky
-Nainstalujte nejnovější [rozhraní příkazového řádku Azure](/cli/azure/install-az-cli2) a přihlaste se k Azure pomocí účtu [az login](/cli/azure/reference-index#az_login).
+Nainstalujte nejnovější [rozhraní příkazového řádku Azure](/cli/azure/install-az-cli2) a přihlaste se k Azure pomocí účtu [az login](/cli/azure/reference-index).
 
 V následujících příkladech nahraďte ukázkové názvy parametrů s vlastními hodnotami. Ukázkové názvy parametrů zahrnutých *myResourceGroup*, *mystorageaccount*, a *myVM*.
 
@@ -48,7 +48,7 @@ az network vnet create \
     --subnet-prefix 10.0.1.0/24
 ```
 
-Vytvořte podsíť pro back-end provozu s využitím [az podsíti virtuální sítě vytvořit](/cli/azure/network/vnet/subnet#az_network_vnet_subnet_create). Následující příklad vytvoří podsíť s názvem *mySubnetBackEnd*:
+Vytvořte podsíť pro back-end provozu s využitím [az podsíti virtuální sítě vytvořit](/cli/azure/network/vnet/subnet). Následující příklad vytvoří podsíť s názvem *mySubnetBackEnd*:
 
 ```azurecli
 az network vnet subnet create \
@@ -116,14 +116,14 @@ az network nic create \
     --network-security-group myNetworkSecurityGroup
 ```
 
-Chcete-li přidat síťové rozhraní existujícímu virtuálnímu počítači, nejprve zrušte přidělení virtuálního počítače s [az vm deallocate](/cli/azure/vm#az_vm_deallocate). V následujícím příkladu se uvolní virtuální počítač s názvem *myVM*:
+Chcete-li přidat síťové rozhraní existujícímu virtuálnímu počítači, nejprve zrušte přidělení virtuálního počítače s [az vm deallocate](/cli/azure/vm). V následujícím příkladu se uvolní virtuální počítač s názvem *myVM*:
 
 
 ```azurecli
 az vm deallocate --resource-group myResourceGroup --name myVM
 ```
 
-Přidání síťového rozhraní s [az vm nic přidat](/cli/azure/vm/nic#az_vm_nic_add). Následující příklad přidá *myNic3* k *myVM*:
+Přidání síťového rozhraní s [az vm nic přidat](/cli/azure/vm/nic). Následující příklad přidá *myNic3* k *myVM*:
 
 ```azurecli
 az vm nic add \
@@ -141,13 +141,13 @@ az vm start --resource-group myResourceGroup --name myVM
 Přidání tabulek směrování do hostovaného operačního systému podle postupu uvedeného v [konfigurace hostovaného operačního systému pro několik síťových karet](#configure-guest-os-for- multiple-nics).
 
 ## <a name="remove-a-nic-from-a-vm"></a>Z virtuálního počítače odeberte síťovou kartu
-Odebrání síťové rozhraní z existujícího virtuálního počítače, nejprve zrušte přidělení virtuálního počítače s [az vm deallocate](/cli/azure/vm#az_vm_deallocate). V následujícím příkladu se uvolní virtuální počítač s názvem *myVM*:
+Odebrání síťové rozhraní z existujícího virtuálního počítače, nejprve zrušte přidělení virtuálního počítače s [az vm deallocate](/cli/azure/vm). V následujícím příkladu se uvolní virtuální počítač s názvem *myVM*:
 
 ```azurecli
 az vm deallocate --resource-group myResourceGroup --name myVM
 ```
 
-Odebrání síťového adaptéru s [az vm nic odebrat](/cli/azure/vm/nic#az_vm_nic_remove). Následující příklad odebere *myNic3* z *myVM*:
+Odebrání síťového adaptéru s [az vm nic odebrat](/cli/azure/vm/nic). Následující příklad odebere *myNic3* z *myVM*:
 
 ```azurecli
 az vm nic remove \

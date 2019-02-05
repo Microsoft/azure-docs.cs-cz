@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 10/30/2018
 ms.author: cbrooks
 ms.subservice: common
-ms.openlocfilehash: c6b4ed787fa9e8881990801bdee77550a1a0bf2f
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: ce682263663c0547d9e35a4d29037fd125d8bc6c
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55473625"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55699172"
 ---
 # <a name="configure-azure-storage-firewalls-and-virtual-networks"></a>Konfigurace virtuálních sítí a bran firewall Azure Storage
 
@@ -241,7 +241,7 @@ Každý účet úložiště podporuje až 100 IP sítě pravidla, která mohou b
 
 Pokud chcete udělit přístup z vaší místní sítě k vašemu účtu úložiště s pravidlem síť IP, je nutné určit internetové IP adresy používané ve vaší síti. Požádejte o pomoc svého správce sítě.
 
-Můžete použít [ExpressRoute](/azure/expressroute/expressroute-introduction) k připojení sítě k síti Azure. Každý okruh tady, se nakonfigurují dvě veřejné IP adresy. Lze nalézt v Microsoft Edge a použít [veřejné partnerské vztahy Azure](/azure/expressroute/expressroute-circuit-peerings#expressroute-routing-domains) pro připojení k Microsoft Services jako je Azure Storage. Umožňující navázat komunikaci s Azure Storage, vytvořte pravidla sítě protokolu IP pro veřejné IP adresy vaší obvody. Najít váš okruh ExpressRoute veřejné IP adresy [otevřete lístek podpory pro ExpressRoute](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview) prostřednictvím webu Azure portal.
+Můžete použít [ExpressRoute](/azure/expressroute/expressroute-introduction) k připojení sítě k síti Azure. Každý okruh tady, se nakonfigurují dvě veřejné IP adresy. Lze nalézt v Microsoft Edge a použít [veřejné partnerské vztahy Azure](/azure/expressroute/expressroute-circuit-peerings) pro připojení k Microsoft Services jako je Azure Storage. Umožňující navázat komunikaci s Azure Storage, vytvořte pravidla sítě protokolu IP pro veřejné IP adresy vaší obvody. Najít váš okruh ExpressRoute veřejné IP adresy [otevřete lístek podpory pro ExpressRoute](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview) prostřednictvím webu Azure portal.
 
 ### <a name="managing-ip-network-rules"></a>Správa pravidel sítě IP
 
@@ -355,7 +355,7 @@ Pokud povolíte **Povolit důvěryhodné služby Microsoftu...**  výjimky, tyto
 |Azure Event Grid|Microsoft.EventGrid|Povolit publikování událostí v úložišti objektů Blob a umožňují Event Grid k publikování do fronty úložiště. Další informace o [události služby blob storage](/azure/event-grid/event-sources) a [publikování do front](/azure/event-grid/event-handlers).|
 |Azure Event Hubs|Microsoft.EventHub|Archivace dat s Event Hubs Capture. [Další informace](/azure/event-hubs/event-hubs-capture-overview).|
 |Sítě Azure|Microsoft.Networking|Store a analyzovat protokoly přenosů sítě. [Další informace](/azure/network-watcher/network-watcher-packet-capture-overview).|
-|Azure Monitor|Microsoft.Insights|Umožňuje zápis dat do účtu úložiště zabezpečené monitorování [Další](/azure/monitoring-and-diagnostics/monitoring-roles-permissions-security#monitoring-and-secured-Azure-storage-and-networks).|
+|Azure Monitor|Microsoft.Insights|Umožňuje zápis dat do účtu úložiště zabezpečené monitorování [Další](/azure/monitoring-and-diagnostics/monitoring-roles-permissions-security).|
 |Azure SQL Data Warehouse|Microsoft.Sql|Umožňuje importovat a exportovat scénáře použití technologie PolyBase. [Další informace](/azure/sql-database/sql-database-vnet-service-endpoint-rule-overview).|
 
 ### <a name="storage-analytics-data-access"></a>Přístup k datům Storage analytics

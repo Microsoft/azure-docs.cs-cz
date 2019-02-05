@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 08/02/2018
 ms.author: rogirdh
-ms.openlocfilehash: f341c7e4a56aacb35ee16cbae00115196325b46a
-ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
+ms.openlocfilehash: c98e59cd0e547381d6b173b3a4b91c3a3e27b3a8
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54855818"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55731117"
 ---
 # <a name="implement-oracle-data-guard-on-an-azure-linux-virtual-machine"></a>Implementace Oracle Data Guard na virtuálním počítači Azure s Linuxem 
 
@@ -70,7 +70,7 @@ az vm availability-set create \
 
 ### <a name="create-a-virtual-machine"></a>Vytvoření virtuálního počítače
 
-Vytvoření virtuálního počítače pomocí [az vm vytvořit](/cli/azure/vm#az_vm_create) příkazu. 
+Vytvoření virtuálního počítače pomocí [az vm vytvořit](/cli/azure/vm) příkazu. 
 
 Následující příklad vytvoří dva virtuální počítače s názvem `myVM1` a `myVM2`. Také vytvoří klíče SSH, pokud ještě neexistují ve výchozím umístění klíčů. Chcete-li použít konkrétní sadu klíčů, použijte možnost `--ssh-key-value`.
 

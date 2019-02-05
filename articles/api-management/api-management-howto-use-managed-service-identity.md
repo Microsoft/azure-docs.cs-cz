@@ -11,12 +11,12 @@ ms.workload: integration
 ms.topic: article
 ms.date: 10/18/2017
 ms.author: apimpm
-ms.openlocfilehash: b7208943a27bcd184100ae426721a2fe8f6e1c72
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 54c4d58dc881ffc7c1f5ecc2242b64e5b61fa68f
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52970480"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55730743"
 ---
 # <a name="use-azure-managed-service-identity-in-azure-api-management"></a>Použití identit spravovaných služeb Azure ve službě Azure API Management
 
@@ -38,7 +38,7 @@ Nastavit identitu spravované služby na portálu, nejprve vytvoříte instanci 
 
 ### <a name="using-the-azure-resource-manager-template"></a>Pomocí šablony Azure Resource Manageru
 
-Instance služby API Management s identitou, můžete vytvořit přidáním následující vlastnost v definici prostředků: 
+Instance služby API Management s identitou, můžete vytvořit přidáním následující vlastnost v definici prostředků:
 
 ```json
 "identity" : {
@@ -46,7 +46,7 @@ Instance služby API Management s identitou, můžete vytvořit přidáním nás
 }
 ```
 
-To říká Azure můžete vytvářet a spravovat identity pro vaše instance služby API Management. 
+To říká Azure můžete vytvářet a spravovat identity pro vaše instance služby API Management.
 
 Například úplnou šablonu Azure Resource Manageru, může vypadat takto:
 
@@ -70,8 +70,8 @@ Například úplnou šablonu Azure Resource Manageru, může vypadat takto:
                 "publisherEmail": "admin@contoso.com",
                 "publisherName": "Contoso"
             },
-            "identity": { 
-                "type": "systemAssigned" 
+            "identity": {
+                "type": "systemAssigned"
             }
         }
     ]
@@ -81,14 +81,14 @@ Například úplnou šablonu Azure Resource Manageru, může vypadat takto:
 
 > [!NOTE]
 > Identita spravované služby je v současné době možné získat certifikáty ze služby Azure Key Vault pro API Management vlastních názvů domén. Brzy bude podporováno více scénářů.
-> 
+>
 >
 
 
 ### <a name="obtain-a-certificate-from-azure-key-vault"></a>Získání certifikátu ze služby Azure Key Vault
 
 #### <a name="prerequisites"></a>Požadavky
-1. Key Vault, který obsahuje certifikát pfx musí být ve stejném předplatném Azure ve stejné skupině prostředků jako služba API Management. Jde o požadavek šablony Azure Resource Manageru. 
+1. Key Vault, který obsahuje certifikát pfx musí být ve stejném předplatném Azure ve stejné skupině prostředků jako služba API Management. Jde o požadavek šablony Azure Resource Manageru.
 2. Typ obsahu tajného klíče musí být *application/x-pkcs12*. Na kterou odešlete certifikát můžete použít následující skript:
 
 ```powershell
@@ -106,7 +106,7 @@ Set-AzureKeyVaultSecret -VaultName KEY_VAULT_NAME -Name KEY_VAULT_SECRET_NAME -S
 ```
 
 > [!Important]
-> Verze objektu certifikátu není k dispozici, API Management získá novější verzi certifikát automaticky po odeslání do služby Key Vault. 
+> Verze objektu certifikátu není k dispozici, API Management získá novější verzi certifikát automaticky po odeslání do služby Key Vault.
 
 Následující příklad ukazuje šablonu Azure Resource Manageru, který obsahuje následující kroky:
 
@@ -180,7 +180,6 @@ Následující příklad ukazuje šablonu Azure Resource Manageru, který obsahu
         "type": "Microsoft.ApiManagement/service",
         "location": "[resourceGroup().location]",
         "tags": {
-            
         },
         "sku": {
             "name": "[parameters('sku')]",
@@ -197,10 +196,10 @@ Následující příklad ukazuje šablonu Azure Resource Manageru, který obsahu
     {
         "type": "Microsoft.KeyVault/vaults/accessPolicies",
         "name": "[concat(parameters('keyVaultName'), '/add')]",
-        "apiVersion": "2015-06-01",        
-      "dependsOn": [
-        "[resourceId('Microsoft.ApiManagement/service', variables('apiManagementServiceName'))]"
-      ],
+        "apiVersion": "2015-06-01",
+        "dependsOn": [
+            "[resourceId('Microsoft.ApiManagement/service', variables('apiManagementServiceName'))]"
+        ],
         "properties": {
             "accessPolicies": [{
                 "tenantId": "[reference(variables('apimServiceIdentityResourceId'), '2015-08-31-PREVIEW').tenantId]",
@@ -211,28 +210,28 @@ Následující příklad ukazuje šablonu Azure Resource Manageru, který obsahu
             }]
         }
     },
-    { 
-      "apiVersion": "2017-05-10", 
-      "name": "apimWithKeyVault", 
-      "type": "Microsoft.Resources/deployments",
-      "dependsOn": [
+    {
+        "apiVersion": "2017-05-10",
+        "name": "apimWithKeyVault",
+        "type": "Microsoft.Resources/deployments",
+        "dependsOn": [
         "[resourceId('Microsoft.ApiManagement/service', variables('apiManagementServiceName'))]"
-      ],
-      "properties": { 
-        "mode": "incremental", 
-        "templateLink": {
-          "uri": "https://raw.githubusercontent.com/solankisamir/arm-templates/master/basicapim.keyvault.json",
-          "contentVersion": "1.0.0.0"
-        }, 
-        "parameters": {
-            "publisherEmail": { "value": "[parameters('publisherEmail')]"},
-            "publisherName": { "value": "[parameters('publisherName')]"},
-            "sku": { "value": "[parameters('sku')]"},
-            "skuCount": { "value": "[parameters('skuCount')]"},
-            "proxyCustomHostname1": {"value" : "[parameters('proxyCustomHostname1')]"},
-            "keyVaultIdToCertificate": {"value" : "[parameters('keyVaultIdToCertificate')]"}
+        ],
+        "properties": {
+            "mode": "incremental",
+            "templateLink": {
+                "uri": "https://raw.githubusercontent.com/solankisamir/arm-templates/master/basicapim.keyvault.json",
+                "contentVersion": "1.0.0.0"
+            },
+            "parameters": {
+                "publisherEmail": { "value": "[parameters('publisherEmail')]"},
+                "publisherName": { "value": "[parameters('publisherName')]"},
+                "sku": { "value": "[parameters('sku')]"},
+                "skuCount": { "value": "[parameters('skuCount')]"},
+                "proxyCustomHostname1": {"value" : "[parameters('proxyCustomHostname1')]"},
+                "keyVaultIdToCertificate": {"value" : "[parameters('keyVaultIdToCertificate')]"}
+            }
         }
-      } 
     }]
 }
 ```
@@ -243,4 +242,3 @@ Další informace o identitu spravované služby Azure:
 
 * [Identita spravované služby pro prostředky Azure](../active-directory/msi-overview.md)
 * [Šablony Azure Resource Manageru](https://github.com/Azure/azure-quickstart-templates)
-

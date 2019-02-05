@@ -11,13 +11,13 @@ author: aliceku
 ms.author: aliceku
 ms.reviewer: vanto, carlrab, emlisa
 manager: craigg
-ms.date: 01/29/2019
-ms.openlocfilehash: 7eb3b115c1d16c2a5c380178d316a60b854e80df
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.date: 02/04/2019
+ms.openlocfilehash: a3f47726b1776b260ff8cc5eac766c23053d4fd0
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55462014"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55728398"
 ---
 # <a name="an-overview-of-azure-sql-database-security-capabilities"></a>Přehled možností zabezpečení Azure SQL Database
 
@@ -40,7 +40,7 @@ Pravidla firewallu protokolu IP udělit přístup k databázím v závislosti na
 [Pravidla virtuální sítě](sql-database-vnet-service-endpoint-rule-overview.md) povolit Azure SQL Database a přijímat pouze komunikaci, kterou jsou odesílány z vybrané podsítě ve virtuální síti.
 
 > [!NOTE]
-> Řízení přístupu pomocí pravidel brány firewall nemá *není* platí pro **Azure SQL Database Managed Instance**. Další informace o konfiguraci sítě je nepotřebujete, naleznete v části [připojení k Managed Instance](sql-database-managed-instance-connect-app.md)
+> Řízení přístupu pomocí pravidel brány firewall nemá *není* platí pro **spravovanou instanci**. Další informace o konfiguraci sítě je nepotřebujete, naleznete v části [připojení k managed instance](sql-database-managed-instance-connect-app.md)
 
 ## <a name="access-management"></a>Správa přístupu
 
@@ -64,7 +64,7 @@ Ověřování je proces kontroly uživatel koho se. Azure SQL Database podporuje
     Další možnosti ověřování Azure AD, které jsou k dispozici jsou [univerzálního ověřování Active Directory pro SQL Server Management Studio](sql-database-ssms-mfa-authentication.md) připojení včetně [ověřování službou Multi-Factor Authentication](../active-directory/authentication/concept-mfa-howitworks.md) a [ Podmíněný přístup](sql-database-conditional-access.md).
 
 > [!IMPORTANT]
-> Správa databází a serverů v rámci Azure se řídí rolemi uživatelský účet na portálu společnosti. Další informace v tomto článku najdete v tématu [řízení přístupu na základě rolí na webu Azure portal](../role-based-access-control/overview.md). Řízení přístupu pomocí pravidel brány firewall nemá *není* platí pro **Azure SQL Database Managed Instance**. Podrobnosti najdete v následujícím článku na [připojení k Managed Instance](sql-database-managed-instance-connect-app.md) Další informace o konfiguraci sítě potřeba.
+> Správa databází a serverů v rámci Azure se řídí rolemi uživatelský účet na portálu společnosti. Další informace v tomto článku najdete v tématu [řízení přístupu na základě rolí na webu Azure portal](../role-based-access-control/overview.md). Řízení přístupu pomocí pravidel brány firewall nemá *není* platí pro **spravovanou instanci**. Podrobnosti najdete v následujícím článku na [připojení k managed instance](sql-database-managed-instance-connect-app.md) Další informace o konfiguraci sítě potřeba.
 
 Povolení odkazuje na oprávnění přiřazená uživateli ve službě Azure SQL Database a určuje, co uživatel může udělat. Oprávnění se řídí přidání uživatelských účtů do [databázové role](/sql/relational-databases/security/authentication-access/database-level-roles) , které definují oprávnění na úrovni databáze nebo udělení uživatele určité [oprávnění na úrovni objektu](/sql/relational-databases/security/permissions-database-engine). Další informace najdete v tématu [přihlašovacích údajů a uživatelů](sql-database-manage-logins.md)
 
@@ -86,11 +86,11 @@ SQL Database chrání vaše zákaznická data tím, že poskytuje možnosti dete
 
 ### <a name="sql-auditing-in-log-analytics-and-event-hubs"></a>Auditování SQL v Log Analytics a Event Hubs
 
-Auditování služby SQL Database sleduje databázové aktivity a pomáhá udržovat dodržování standardů zabezpečení díky zaznamenávání databázových událostí k auditu protokolu v účtu Azure Storage vlastněné zákazníkem. Auditování umožňuje uživatelům sledovat probíhající databázové aktivity a pomocí analýzy a zkoumání historické aktivity identifikovat potenciální hrozby nebo možné zneužití a narušení zabezpečení. Další informace najdete v článku s [auditování služby SQL Database](sql-database-auditing.md).  
+Auditování služby SQL Database sleduje databázové aktivity a pomáhá udržovat dodržování standardů zabezpečení díky zaznamenávání databázových událostí k auditu protokolu v účtu úložiště Azure vlastněné zákazníkem. Auditování umožňuje uživatelům sledovat probíhající databázové aktivity a pomocí analýzy a zkoumání historické aktivity identifikovat potenciální hrozby nebo možné zneužití a narušení zabezpečení. Další informace najdete v článku s [auditování služby SQL Database](sql-database-auditing.md).  
 
-### <a name="sql-threat-detection"></a>Detekce hrozeb SQL
+### <a name="threat-detection"></a>Detekce hrozeb
 
-Detekce vylepšuje auditování prostřednictvím analýzy protokolů auditu pro neobvyklé chování a potenciálně škodlivých hrozeb se pokusí o přístup k databázím nebo jejich zneužití. Vytvoří se výstrahy pro podezřelé aktivity nebo vzory přístupu k neobvyklé například útoky prostřednictvím injektáže SQL, potenciální data po infiltraci a útoky na hesla hrubou silou. Výstrahy detekce hrozeb se z pohledu [Azure Security Center](https://azure.microsoft.com/services/security-center/), kde jsou uvedeny podrobnosti o podezřelých aktivitách a doporučení pro další šetření uveden spolu s akce ke zmírnění hrozby. Detekce hrozeb stojí 15 USD a server za měsíc. Prvních 60 dní je zdarma. Další informace najdete v článku [Začínáme zjišťovat hrozby ve službě SQL Database](sql-database-threat-detection.md).
+Detekce vylepšuje auditování prostřednictvím analýzy protokolů auditu pro neobvyklé chování a potenciálně škodlivých hrozeb se pokusí o přístup k databázím nebo jejich zneužití. Vytvoří se výstrahy pro podezřelé aktivity nebo vzory přístupu k neobvyklé například útoky prostřednictvím injektáže SQL, potenciální data po infiltraci a útoky na hesla hrubou silou. Výstrahy detekce hrozeb se z pohledu [Azure Security Center](https://azure.microsoft.com/services/security-center/), kde jsou uvedeny podrobnosti o podezřelých aktivitách a doporučení pro další šetření uveden spolu s akce ke zmírnění hrozby. Detekce hrozeb stojí 15 USD a server za měsíc. Prvních 60 dní je zdarma. Další informace najdete v tématu [Začínáme s detekcí hrozeb SQL Database](sql-database-threat-detection.md).
 
 ![azure-database-td.jpg](media/sql-database-security-overview/azure-database-td.jpg)
 
@@ -137,9 +137,9 @@ Maskování dynamických dat SQL Database omezuje riziko ohrožení citlivých d
 
 ## <a name="security-management"></a>Správa zabezpečení
 
-### <a name="sql-vulnerability-assessment"></a>Posouzení ohrožení zabezpečení SQL
+### <a name="vulnerability-assessment"></a>Posouzení ohrožení zabezpečení
 
-[Posouzení ohrožení zabezpečení SQL](sql-vulnerability-assessment.md) je snadno konfigurovat službu, můžete zjistit, sledovat a pomáhají náprava potenciálních ohrožení zabezpečení databáze s cílem proaktivně zvýšit celkové zabezpečení databáze. Posouzení ohrožení zabezpečení (VA) je součástí nabídky SQL pokročilé Data zabezpečení (služby Active Directory), která je jednotný balíček pro pokročilé funkce zabezpečení SQL. Posouzení ohrožení zabezpečení je možné získat přístup a spravovat prostřednictvím portálu pro centrální SQL reklamy.
+[Posouzení ohrožení zabezpečení](sql-vulnerability-assessment.md) je snadno konfigurovat službu, můžete zjistit, sledovat a pomáhají náprava potenciálních ohrožení zabezpečení databáze s cílem proaktivně zvýšit celkové zabezpečení databáze. Posouzení ohrožení zabezpečení (VA) je součástí nabídky zabezpečení (reklamy) pokročilé data, která je jednotný balíček pro pokročilé funkce zabezpečení SQL. Posouzení ohrožení zabezpečení je možné získat přístup a spravovat prostřednictvím portálu pro centrální SQL reklamy.
 
 ### <a name="data-discovery--classification"></a>Zjišťování a klasifikace dat
 
@@ -149,7 +149,7 @@ Data zjišťování a klasifikace (aktuálně ve verzi preview) nabízí rozší
 - Řízení přístupu k a posílení zabezpečení, databáze obsahující vysoce citlivá data.
 - Pomáhá splnit požadavky na dodržování legislativních předpisů a data standardy ochrany osobních údajů.
 
-Další informace najdete v tématu [Začínáme s SQL DB zjišťování a klasifikace dat](sql-database-data-discovery-and-classification.md).
+Další informace najdete v tématu [začít pracovat s zjišťování a klasifikace dat](sql-database-data-discovery-and-classification.md).
 
 ### <a name="compliance"></a>Dodržování předpisů
 

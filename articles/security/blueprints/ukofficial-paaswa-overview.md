@@ -8,12 +8,12 @@ ms.service: security
 ms.topic: article
 ms.date: 07/13/2018
 ms.author: jomolesk
-ms.openlocfilehash: 0b3b3cd1c9c0410c4cc0ffda8887b40123c1ac7a
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: b69b16cec08c5d29d4812258f694f2d078a9ff35
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53718477"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55700974"
 ---
 # <a name="azure-security-and-compliance-blueprint-paas-web-application-hosting-for-uk-official-workloads"></a>Zabezpečení Azure a dodržování předpisů: PaaS webovou aplikaci hostování pro oficiální úlohy Spojené království
 
@@ -73,7 +73,7 @@ Následující část podrobně popisuje nasazení a implementaci prvky.
 
 #### <a name="identity-and-authentication"></a>Identita a ověřování
 
-Tento podrobný plán zajistí, že je ochrana přístupu k prostředkům prostřednictvím adresáři a identitami služby správy. Tato architektura umožňuje plně využívat [identity jako bezpečnostní hraniční sítě](https://docs.microsoft.com/azure/security/security-paas-deployments#identity-as-the-primary-security-perimeter). 
+Tento podrobný plán zajistí, že je ochrana přístupu k prostředkům prostřednictvím adresáři a identitami služby správy. Tato architektura umožňuje plně využívat [identity jako bezpečnostní hraniční sítě](https://docs.microsoft.com/azure/security/security-paas-deployments). 
 
 Tyto technologie nabízejí identity možnosti správy v prostředí Azure:
 

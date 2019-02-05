@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 12/27/2018
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 2af1ad35ee5f7548352180026f1d613d27b6af46
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ms.openlocfilehash: 0e73c0f94e0aa240349aec45b4a146ba5eb37dab
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54103494"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55700770"
 ---
 # <a name="set-up-disaster-recovery-for-azure-vms-to-a-secondary-azure-region"></a>Nastavení zotavení po havárii pro virtuální počítače Azure do sekundární oblasti Azure
 
@@ -29,7 +29,7 @@ V tomto kurzu se dozvíte, jak nastavit zotavení po havárii do sekundární ob
 > * Povolit replikaci virtuálního počítače
 
 > [!NOTE]
-> Tento článek obsahuje pokyny pro nasazení zotavení po havárii pomocí nejjednodušší nastavení. Pokud chcete další informace o vlastním nastavením, projděte si články v části [části](azure-to-azure-how-to-enable-replication.md). O
+> Tento článek obsahuje pokyny pro nasazení zotavení po havárii pomocí nejjednodušší nastavení. Pokud chcete další informace o vlastním nastavením, projděte si články v části [části](azure-to-azure-how-to-enable-replication.md). o
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -170,7 +170,7 @@ Site Recovery vytvoří výchozí nastavení a zásady replikace pro cílovou ob
     - **Frekvence snímků konzistentní vzhledem k**: Ve výchozím nastavení Site Recovery pořídí konzistentního snímku každé 4 hodiny. Můžete nakonfigurovat jakoukoli hodnotu v rozmezí 1 až 12 hodin. Snímek konzistentní vzhledem k aplikacím je snímek dat aplikací ve virtuálním počítači v daném okamžiku. Služba Stínová kopie svazku (VSS) zajišťuje, že aplikace na virtuálním počítači budou při pořízení snímku v konzistentním stavu.
     - **Replikační skupina**: Pokud vaše aplikace potřebuje konzistenci napříč virtuálními počítači, můžete vytvořit replikační skupinu. u těchto počítačů. Ve výchozím nastavení nejsou vybrané virtuální počítače součástí žádné replikační skupiny.
 
-5. V **vlastní**vyberte **Ano** konzistence více virtuálních počítačů, pokud chcete přidat virtuální počítače do nové nebo existující replikační skupiny. Chcete-li virtuální počítače součástí replikační skupiny. Pak klikněte na **OK**.
+5. V **vlastní**vyberte **Ano** konzistence více virtuálních počítačů, pokud chcete přidat virtuální počítače do nové nebo existující replikační skupiny. Pak klikněte na **OK**.
 
     - Všechny počítače v replikační skupině budou mít v případě převzetí služeb při selhání sdílené body obnovení konzistentní pro případ chyby a konzistentní vzhledem k aplikacím. Povolení konzistence více virtuálních počítačů může mít vliv na výkon úloh (jako je intenzivní nároky na procesor) a musí být použity pouze v případě, že počítačích běží stejná úloha a potřebujete konzistenci napříč několika počítači.
     - Můžete mít maximálně 16 virtuálních počítačů v replikační skupině.

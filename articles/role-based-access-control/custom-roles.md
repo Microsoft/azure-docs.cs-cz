@@ -15,12 +15,12 @@ ms.date: 09/24/2018
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 494826701431ee397b468c6ddfcef664c015861d
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
+ms.openlocfilehash: 8d2e3dc989a44de0c7c091dfbe1254a0e204faae
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55661476"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55697125"
 ---
 # <a name="custom-roles-in-azure"></a>Vlastní role v Azure
 
@@ -48,15 +48,9 @@ Následuje ukázka, jak vlastní roli vypadá jako je zobrazena ve formátu JSON
     "Microsoft.Insights/diagnosticSettings/*",
     "Microsoft.Support/*"
   ],
-  "NotActions": [
-
-  ],
-  "DataActions": [
-
-  ],
-  "NotDataActions": [
-
-  ],
+  "NotActions": [],
+  "DataActions": [],
+  "NotDataActions": [],
   "AssignableScopes": [
     "/subscriptions/{subscriptionId1}",
     "/subscriptions/{subscriptionId2}",
@@ -73,12 +67,12 @@ Když vytvoříte vlastní roli, se zobrazí na webu Azure Portal s ikona oranž
 
 1. Určit oprávnění, které potřebujete
 
-    Když vytvoříte vlastní roli, musíte znát prostředek operace poskytovatele, které je možné definovat oprávnění. Chcete-li zobrazit seznam operací, můžete použít [Get-AzureRMProviderOperation](/powershell/module/azurerm.resources/get-azurermprovideroperation) nebo [seznam operací az provider](/cli/azure/provider/operation#az-provider-operation-list) příkazy.
+    Když vytvoříte vlastní roli, musíte znát prostředek operace poskytovatele, které je možné definovat oprávnění. Chcete-li zobrazit seznam operací, můžete použít [Get-AzProviderOperation](/powershell/module/az.resources/get-azprovideroperation) nebo [seznam operací az provider](/cli/azure/provider/operation#az-provider-operation-list) příkazy.
     Chcete-li zadat oprávnění pro vlastní roli, přidáte operace, které se `Actions` nebo `NotActions` vlastnosti [definice role](role-definitions.md). Pokud máte operace s daty, můžete přidat do `DataActions` nebo `NotDataActions` vlastnosti.
 
 2. Vytvořit vlastní roli
 
-    Prostředí Azure PowerShell nebo rozhraní příkazového řádku Azure můžete použít k vytvoření vlastní role. Obvykle začněte s existující předdefinovanou roli a upravit ji pro vaše potřeby. Použít [New-AzureRmRoleDefinition](/powershell/module/azurerm.resources/new-azurermroledefinition) nebo [az role definition vytvořit](/cli/azure/role/definition#az-role-definition-create) příkazy k vytvoření vlastní role. Chcete-li vytvořit vlastní roli, musíte mít `Microsoft.Authorization/roleDefinitions/write` oprávnění ve všech `AssignableScopes`, jako například [vlastníka](built-in-roles.md#owner) nebo [správce uživatelských přístupů](built-in-roles.md#user-access-administrator).
+    Prostředí Azure PowerShell nebo rozhraní příkazového řádku Azure můžete použít k vytvoření vlastní role. Obvykle začněte s existující předdefinovanou roli a upravit ji pro vaše potřeby. Použít [New-AzRoleDefinition](/powershell/module/az.resources/new-azroledefinition) nebo [az role definition vytvořit](/cli/azure/role/definition#az-role-definition-create) příkazy k vytvoření vlastní role. Chcete-li vytvořit vlastní roli, musíte mít `Microsoft.Authorization/roleDefinitions/write` oprávnění ve všech `AssignableScopes`, jako například [vlastníka](built-in-roles.md#owner) nebo [správce uživatelských přístupů](built-in-roles.md#user-access-administrator).
 
 3. Testování vlastní roli
 

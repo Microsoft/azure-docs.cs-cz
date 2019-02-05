@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/09/2017
 ms.author: apimpm
-ms.openlocfilehash: 90084f6c4fb270c34165bf12763109d9be2398aa
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.openlocfilehash: 00d5e3df78e85d19a519786dad1a1b176ad7fa08
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52446955"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55733055"
 ---
 # <a name="how-to-customize-the-azure-api-management-developer-portal-using-templates"></a>Přizpůsobení portálu pro vývojáře Azure API Management pomocí šablon
 
@@ -45,15 +45,15 @@ Seznam šablon se zobrazí několik kategorií šablon vztahující se na různ�
 
 ![Šablon portálu pro vývojáře][api-management-templates-menu]
 
-Klepnutím na šablonu přejdete na stránku portálu pro vývojáře, který lze přizpůsobit pomocí této šablony. V tomto příkladu **seznam produktů** se šablony zobrazí. **Seznam produktů** šablony určuje oblasti obrazovky označená červeným rámečkem. 
+Klepnutím na šablonu přejdete na stránku portálu pro vývojáře, který lze přizpůsobit pomocí této šablony. V tomto příkladu **seznam produktů** se šablony zobrazí. **Seznam produktů** šablony určuje oblasti obrazovky označená červeným rámečkem.
 
 ![Šablona seznamu produktů][api-management-developer-portal-templates-overview]
 
-Některé šablony, jako jsou **profilu uživatele** šablony, přizpůsobení různých součástí stejné stránky. 
+Některé šablony, jako jsou **profilu uživatele** šablony, přizpůsobení různých součástí stejné stránky.
 
 ![Šablony profilu uživatele][api-management-user-profile-templates]
 
-Editor pro každé šablony portálu pro vývojáře má dvě části zobrazí v dolní části stránky. Zobrazí na levé straně podokna úprav šablony a na pravé straně datový model pro šablonu. 
+Editor pro každé šablony portálu pro vývojáře má dvě části zobrazí v dolní části stránky. Zobrazí na levé straně podokna úprav šablony a na pravé straně datový model pro šablonu.
 
 Úpravy podokně šablony obsahuje kód, který řídí vzhled a chování odpovídající stránku na portálu pro vývojáře. Značky v šabloně používají [DotLiquid](http://dotliquidmarkup.org/) syntaxe. Je jeden oblíbený editor pro DotLiquid [DotLiquid pro profesionální návrháře využívající](https://github.com/dotliquid/dotliquid/wiki/DotLiquid-for-Designers). Všechny změny provedené při úpravách šablony se zobrazují v reálném čase v prohlížeči, ale nejsou viditelné pro vaše zákazníky dokud [Uložit](#to-save-a-template) a [publikovat](#to-publish-a-template) šablony.
 
@@ -118,7 +118,7 @@ Značky **seznam produktů** šablony zpracovává data k poskytnutí požadovan
         <li>
             <h3><a href="/products/{{product.id}}">{{product.title}}</a></h3>
             {{product.description}}
-        </li>    
+        </li>
     {% endfor %}
     </ul>
     <paging-control></paging-control>
@@ -209,10 +209,3 @@ Referenční informace pro šablon portálu pro vývojáře, řetězcové prost�
 [api-management-reset-template]: ./media/api-management-developer-portal-templates/api-management-reset-template.png
 [api-management-reset-template-confirm]: ./media/api-management-developer-portal-templates/api-management-reset-template-confirm.png
 [api-management-restore-templates]: ./media/api-management-developer-portal-templates/api-management-restore-templates.png
-
-
-
-
-
-
-

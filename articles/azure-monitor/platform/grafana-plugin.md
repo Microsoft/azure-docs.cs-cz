@@ -9,12 +9,12 @@ ms.date: 11/06/2017
 ms.topic: conceptual
 ms.service: azure-monitor
 ms.subservice: ''
-ms.openlocfilehash: 9d0f814428a4d7bc57b4f0a01ff5adc658af1d91
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: fc963987b45751aab33035a83b2b477129e9a756
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54466981"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55730896"
 ---
 # <a name="monitor-your-azure-services-in-grafana"></a>Monitorování služeb Azure v Grafana
 Teď můžete monitorovat služby a aplikace z Azure [Grafana](https://grafana.com/) pomocí [zdroje dat monitorování Azure plugin](https://grafana.com/plugins/grafana-azure-monitor-datasource). Modul plug-in shromažďuje data o výkonu aplikace shromážděná službou Azure Monitor, včetně různé protokoly a metriky. Tato data pak můžete zobrazit na řídicím panelu Grafana.
@@ -66,7 +66,7 @@ Po úspěšném přihlášení, měli byste vidět, že modul plug-in Azure Moni
 
 3. Vytvoření instančního objektu – Grafana instanční objekt Azure Active Directory používá pro připojení k rozhraní API služby Azure Monitor a shromažďovat data. Musíte vytvořit nebo použít existující instanční objekt služby, ke správě přístupu k prostředkům Azure.
     * Zobrazit [tyto pokyny](../../azure-resource-manager/resource-group-create-service-principal-portal.md) k vytvoření instančního objektu. Zkopírujte a uložte vašeho tenanta, ID (ID adresáře), ID klienta (ID aplikace) a tajný klíč klienta (hodnota klíče aplikace).
-    * Zobrazit [přiřazení aplikace k roli](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-create-service-principal-portal#assign-application-to-role) přiřadit role Čtenář pro aplikace Azure Active Directory pro předplatné, skupinu prostředků nebo prostředek chcete monitorovat. 
+    * Zobrazit [přiřazení aplikace k roli](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-create-service-principal-portal) přiřadit role Čtenář pro aplikace Azure Active Directory pro předplatné, skupinu prostředků nebo prostředek chcete monitorovat. 
     Rozhraní API služby Log Analytics vyžaduje [role Čtenář Log Analytics](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#log-analytics-reader), která zahrnuje všechna oprávnění role čtenáře a přidá do něj.
 
 4. Zadejte podrobnosti připojení k rozhraním API, které chcete použít. Můžete připojit ke všem nebo k některé z nich. 

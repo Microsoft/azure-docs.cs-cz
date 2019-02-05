@@ -7,12 +7,12 @@ ms.service: postgresql
 ms.devlang: azurecli
 ms.topic: conceptual
 ms.date: 02/28/2018
-ms.openlocfilehash: fb9123d792c3b522debb3b1c8d539cbd6cd24f59
-ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
+ms.openlocfilehash: c88518749129abed1cf43a70b9165035626a780f
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54843630"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55731559"
 ---
 # <a name="customize-server-configuration-parameters-using-azure-cli"></a>Přizpůsobení parametrů konfigurace serveru pomocí Azure CLI
 Seznam, zobrazit a aktualizovat parametry konfigurace pro server Azure PostgreSQL pomocí rozhraní příkazového řádku (Azure CLI). Podmnožina stroj konfigurace je zveřejněný na úrovni serveru a je možné upravit. 
@@ -23,7 +23,7 @@ Pro jednotlivé kroky v této příručce s postupy, musíte:
 - Nainstalujte [rozhraní příkazového řádku Azure](/cli/azure/install-azure-cli) rozhraní příkazového řádku na počítači nebo použití [Azure Cloud Shell](../cloud-shell/overview.md) na webu Azure Portal pomocí prohlížeče.
 
 ## <a name="list-server-configuration-parameters-for-azure-database-for-postgresql-server"></a>Seznam parametrů konfigurace serveru pro službu Azure Database pro PostgreSQL server
-Seznam všech parametrů upravitelná v serveru a jejich hodnoty, spusťte [az postgres server configuration list](/cli/azure/postgres/server/configuration#az_postgres_server_configuration_list) příkazu.
+Seznam všech parametrů upravitelná v serveru a jejich hodnoty, spusťte [az postgres server configuration list](/cli/azure/postgres/server/configuration) příkazu.
 
 Můžete vytvořit seznam parametrů konfigurace serveru pro server **mydemoserver.postgres.database.azure.com** ve skupině prostředků **myresourcegroup**.
 ```azurecli-interactive
@@ -37,7 +37,7 @@ Tento příklad ukazuje podrobnosti o **protokolu\_min\_zprávy** parametr konfi
 az postgres server configuration show --name log_min_messages --resource-group myresourcegroup --server mydemoserver
 ```
 ## <a name="modify-server-configuration-parameter-value"></a>Změnit hodnotu parametru konfigurace serveru
-Můžete také změnit hodnotu parametru určité server konfigurace, která aktualizuje hodnotu základní konfigurace pro server stroje PostgreSQL. Chcete-li aktualizovat konfiguraci, použijte [az postgres server configuration set](/cli/azure/postgres/server/configuration#az_postgres_server_configuration_set) příkazu. 
+Můžete také změnit hodnotu parametru určité server konfigurace, která aktualizuje hodnotu základní konfigurace pro server stroje PostgreSQL. Chcete-li aktualizovat konfiguraci, použijte [az postgres server configuration set](/cli/azure/postgres/server/configuration) příkazu. 
 
 Aktualizovat **protokolu\_min\_zprávy** server konfigurační parametr serveru **mydemoserver.postgres.database.azure.com** ve skupině prostředků  **myresourcegroup.**
 ```azurecli-interactive

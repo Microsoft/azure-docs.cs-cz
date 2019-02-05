@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: ''
 ms.author: haroldw
-ms.openlocfilehash: 21eebb6c27a83b939f321d38026da7d4c39b7071
-ms.sourcegitcommit: 5de9de61a6ba33236caabb7d61bee69d57799142
+ms.openlocfilehash: 82dd448bb408e7c4bb3576feee17aef66ee6d01d
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50085862"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55730709"
 ---
 # <a name="deploy-openshift-container-platform-in-azure"></a>Nasazení OpenShift Container Platform v Azure
 
@@ -264,15 +264,15 @@ Nejjednodušší způsob, jak nasadit OpenShift Container Platform v Azure je po
 
 Toto je nejjednodušší možnost, ale je také má omezené možnosti přizpůsobení. Nabídka Marketplace obsahuje následující možnosti konfigurace:
 
-- **Hlavní uzly**: hlavní uzly tři (3) se dají konfigurovat typ instance.
-- **Uzly infra**: tři (3) Infra uzly s typem instance konfigurovatelné.
-- **Uzly**: počet uzlů se dají konfigurovat (2 až 9) a typu instance.
-- **Typ disku**: spravované disky se používají.
-- **Sítě**: podpora pro nové nebo existující síti, stejně jako vlastní rozsah CIDR.
-- **CNS**: CNS je možné povolit.
-- **Metriky**: metriky je možné povolit.
-- **Protokolování**: je možné povolit protokolování.
-- **Zprostředkovatel služby Azure Cloud**: je možné povolit.
+- **Hlavní uzly**: Hlavní uzly tří (3) s konfigurovatelné instancí typu.
+- **Infrastruktura uzly**: Tři (3) Infra uzlů se dají konfigurovat instanci typu.
+- **Uzly**: Počet uzlů se dají konfigurovat (2 až 9) a typu instance.
+- **Typ disku**: Spravované disky se používají.
+- **Sítě**: Podpora pro nové nebo existující síti, stejně jako vlastní rozsah CIDR.
+- **CNS**: Propojené sítě je možné povolit.
+- **Metriky**: Metriky je možné povolit.
+- **Protokolování**: Je možné povolit protokolování.
+- **Azure Cloud Provider**: Je možné povolit.
 
 ## <a name="connect-to-the-openshift-cluster"></a>Připojte se ke clusteru Openshiftu
 
@@ -284,7 +284,7 @@ $ ssh clusteradmin@bastiondns4hawllzaavu6g.eastus.cloudapp.azure.com
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Použití [odstranění skupiny az](/cli/azure/group#az_group_delete) příkazu k odebrání skupiny prostředků, clusteru OpenShift a všechny související prostředky, pokud jste už nepotřebujete.
+Použití [odstranění skupiny az](/cli/azure/group) příkazu k odebrání skupiny prostředků, clusteru OpenShift a všechny související prostředky, pokud jste už nepotřebujete.
 
 ```azurecli 
 az group delete --name openshiftrg

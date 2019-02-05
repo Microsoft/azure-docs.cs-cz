@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/27/2018
 ms.author: kumud
-ms.openlocfilehash: 746d0f51a876f24afc731486412eca0277b76d22
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
+ms.openlocfilehash: da8433e6c03aec5c5b2ff5d290065804816ac724
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55659792"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55732086"
 ---
 # <a name="create-an-internal-load-balancer-to-load-balance-vms-using-azure-cli"></a>Vytvoření interního nástroje pro vyrovnávání zatížení virtuálních počítačů pomocí Azure CLI
 
@@ -128,7 +128,7 @@ V tomto příkladu vytvoříte dva virtuální počítače, které se použijí 
 
 ### <a name="create-an-availability-set"></a>Vytvoření skupiny dostupnosti
 
-Vytvořte skupinu dostupnosti pomocí příkazu [az vm availabilityset create](/cli/azure/network/nic#az-network-availabilityset-create).
+Vytvořte skupinu dostupnosti pomocí příkazu [az vm availabilityset create](/cli/azure/network/nic).
 
  ```azurecli-interactive
   az vm availability-set create \
@@ -215,7 +215,7 @@ Pokud chcete nástroj pro vyrovnávání zatížení otestovat, vytvořte virtu�
 
 Abyste mohli nástroj pro vyrovnávání zatížení otestovat, musíte nejprve získat jeho privátní IP adresu. Pak se přihlaste k virtuálnímu počítači myVMTest a na něm zadejte privátní IP adresu do adresního řádku webového prohlížeče.
 
-Privátní IP adresu nástroje pro vyrovnávání zatížení získáte pomocí příkazu [az network lb show](/cli/azure/network/public-ip##az-network-lb-show). Zkopírujte privátní IP adresu a vložte ji do adresního řádku webového prohlížeče na svém virtuálním počítači *myVMTest*.
+Privátní IP adresu nástroje pro vyrovnávání zatížení získáte pomocí příkazu [az network lb show](/cli/azure/network/public-ip). Zkopírujte privátní IP adresu a vložte ji do adresního řádku webového prohlížeče na svém virtuálním počítači *myVMTest*.
 
 ```azurecli-interactive
   az network lb show \

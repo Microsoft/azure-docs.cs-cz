@@ -8,12 +8,12 @@ ms.service: event-grid
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: babanisa
-ms.openlocfilehash: 1761dafd04a4b8d27a16af4a5e1b0034b90c51a0
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
+ms.openlocfilehash: ec34b9c5f78b4d0ea59382f616fab88e0e1dedc9
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55656868"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55730930"
 ---
 # <a name="event-grid-security-and-authentication"></a>Event Grid zabezpečení a ověřování 
 
@@ -50,7 +50,7 @@ Pokud používáte jiný typ koncového bodu, jako například aktivační udál
 * Text událost má stejné schéma jako ostatní události služby Event Grid.
 * Vlastnost typ eventType události je `Microsoft.EventGrid.SubscriptionValidationEvent`.
 * Vlastnost dat události obsahuje `validationCode` vlastnost náhodně generované řetězcem. Například "validationCode: acb13...".
-* Pokud používáte rozhraní API verze 2018-05-01-preview, také obsahuje data události `validationUrl` vlastnost s adresou URL pro ruční ověření předplatného.
+* Také obsahuje data události `validationUrl` vlastnost s adresou URL pro ruční ověření předplatného.
 * Pole obsahuje pouze událost ověření. Další události se odesílají v samostatné žádosti o po vracení ověřovacího kódu.
 * Sady SDK roviny dat EventGrid mít třídy odpovídající data události ověření předplatného a odpověď ověření předplatného.
 

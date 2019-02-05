@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 10/30/2018
 ms.author: yili
 ms.custom: seodec18
-ms.openlocfilehash: f2fe9efd7d75c95d6cd13cb65e196723c9953716
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
+ms.openlocfilehash: a12d3708cdb547cc036b249bebf901d2ec5121c3
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55658823"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55729315"
 ---
 # <a name="azure-app-service-on-linux-faq"></a>Azure App Service v Linuxu – nejčastější dotazy
 
@@ -132,7 +132,7 @@ Aktuálně nepodporujeme, vystavení více než jeden port.
 
 **Můžete použít vlastní úložiště?**
 
-Aktuálně nepodporujeme, přináší vlastní úložiště.
+Ano, [používání vlastního úložiště](https://docs.microsoft.com/azure/app-service/containers/how-to-serve-content-from-azure-storage) je ve verzi preview.
 
 **Proč nelze procházet procesy systému nebo spuštění souboru Moje vlastní kontejner na webu Správce řízení služeb?**
 

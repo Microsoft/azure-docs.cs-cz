@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: rimman
-ms.openlocfilehash: 443bf5694515720b1b865c310e70ca9c45add262
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 32c0ee4764c7c2b541428c63857286a45a09a634
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55465584"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55733114"
 ---
 # <a name="optimize-provisioned-throughput-cost-in-azure-cosmos-db"></a>Optimalizujte náklady zřízenou propustnost v databázi Azure Cosmos DB
 
@@ -79,7 +79,7 @@ Nativním sadám SDK (.NET/.NET Core, Javy, Node.js a Python) implicitně zachyt
 
 Pokud máte více než jednoho klienta kumulativně provozní konzistentně výše je frekvence požadavků, nemusí být dostatečné výchozí počet opakování aktuálně, který je aktuálně nastavený na 9. V takovém případě se vyvolá klienta `DocumentClientException` se stavem kódu 429 do aplikace. Výchozí počet opakování můžete změnit tak, že nastavíte `RetryOptions` ConnectionPolicy instance. Ve výchozím nastavení je vrácena DocumentClientException se stavovým kódem 429 po uplynutí určité doby kumulativní Počkejte 30 sekund, pokud požadavek dál pracovat nad frekvence požadavků. K tomu dojde i v případě aktuální počet opakování je menší než počet opakování, jde o výchozí hodnotu 9 nebo uživatelem definovanou hodnotu. 
 
-[MaxRetryAttemptsOnThrottledRequests](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.retryoptions.maxretryattemptsonthrottledrequests?view=azure-dotnet#Microsoft_Azure_Documents_Client_RetryOptions_MaxRetryAtte) nastavená na 3, tak v takovém případě pokud operace požadavku je rychlostně omezena překračuje rezervovanou propustnost pro kolekce, operace požadavku se opakuje třikrát před vyvoláním výjimka k aplikaci.  [MaxRetryWaitTimeInSeconds](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.retryoptions.maxretrywaittimeinseconds?view=azure-dotnet#Microsoft_Azure_Documents_Client_RetryOptions_MaxRetryWaitTimeInSeconds) nastavena na 60, tak v tomto případě pokud čeká kumulativní opakovat po dobu v sekundách od prvního požadavku překročí 60 sekund, je vyvolána výjimka.
+[MaxRetryAttemptsOnThrottledRequests](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.retryoptions.maxretryattemptsonthrottledrequests?view=azure-dotnet) nastavená na 3, tak v takovém případě pokud operace požadavku je rychlostně omezena překračuje rezervovanou propustnost pro kolekce, operace požadavku se opakuje třikrát před vyvoláním výjimka k aplikaci.  [MaxRetryWaitTimeInSeconds](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.retryoptions.maxretrywaittimeinseconds?view=azure-dotnet#Microsoft_Azure_Documents_Client_RetryOptions_MaxRetryWaitTimeInSeconds) nastavena na 60, tak v tomto případě pokud čeká kumulativní opakovat po dobu v sekundách od prvního požadavku překročí 60 sekund, je vyvolána výjimka.
 
 ```csharp
 ConnectionPolicy connectionPolicy = new ConnectionPolicy(); 

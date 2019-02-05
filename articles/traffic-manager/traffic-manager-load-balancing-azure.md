@@ -4,7 +4,7 @@ description: 'V tomto kurzu se dozvíte, jak vytvořit scénář s využitím Az
 services: traffic-manager
 documentationcenter: ''
 author: liumichelle
-manager: vitinnan
+manager: dkays
 editor: ''
 ms.assetid: f89be3be-a16f-4d47-bcae-db2ab72ade17
 ms.service: traffic-manager
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/27/2016
 ms.author: limichel
-ms.openlocfilehash: 5faac717cf5e970975c4d5f9d2ae6e64dd0a9a67
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.openlocfilehash: a6f7a690cac5718216636d3191f348c71bcfb5d6
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55497328"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55734347"
 ---
 # <a name="using-load-balancing-services-in-azure"></a>Použití služby Vyrovnávání zatížení v Azure
 

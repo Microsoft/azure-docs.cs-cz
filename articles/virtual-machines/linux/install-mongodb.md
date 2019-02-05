@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 12/15/2017
 ms.author: cynthn
-ms.openlocfilehash: 8a9b14423566e631ddb41b42048104c8ee085486
-ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
+ms.openlocfilehash: cc786b97c38c115fb288a5b9a0f73f566777e7df
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54886692"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55734415"
 ---
 # <a name="how-to-install-and-configure-mongodb-on-a-linux-vm"></a>Jak nainstalovat a nakonfigurovat MongoDB na virtuálním počítači s Linuxem
 
@@ -39,7 +39,7 @@ Vytvořte skupinu prostředků pomocí příkazu [az group create](/cli/azure/gr
 az group create --name myResourceGroup --location eastus
 ```
 
-Vytvořte virtuální počítač pomocí příkazu [az vm create](/cli/azure/vm#az_vm_create). Následující příklad vytvoří virtuální počítač s názvem *myVM* jako uživatel s názvem *azureuser* pomocí ověření veřejného klíče SSH
+Vytvořte virtuální počítač pomocí příkazu [az vm create](/cli/azure/vm). Následující příklad vytvoří virtuální počítač s názvem *myVM* jako uživatel s názvem *azureuser* pomocí ověření veřejného klíče SSH
 
 ```azurecli
 az vm create \
@@ -127,7 +127,7 @@ K vytvoření tohoto prostředí, budete potřebovat nejnovější [rozhraní p�
 az group create --name myResourceGroup --location eastus
 ```
 
-V dalším kroku nasaďte šablonu MongoDB s [vytvořit nasazení skupiny pro az](/cli/azure/group/deployment#az_group_deployment_create). Po zobrazení výzvy zadejte své vlastní jedinečné hodnoty *newStorageAccountName*, *dnsNameForPublicIP*, uživatelské jméno admin a heslo:
+V dalším kroku nasaďte šablonu MongoDB s [vytvořit nasazení skupiny pro az](/cli/azure/group/deployment). Po zobrazení výzvy zadejte své vlastní jedinečné hodnoty *newStorageAccountName*, *dnsNameForPublicIP*, uživatelské jméno admin a heslo:
 
 ```azurecli
 az group deployment create --resource-group myResourceGroup \
@@ -178,7 +178,7 @@ K vytvoření tohoto prostředí, budete potřebovat nejnovější [rozhraní p�
 az group create --name myResourceGroup --location eastus
 ```
 
-V dalším kroku nasaďte šablonu MongoDB s [vytvořit nasazení skupiny pro az](/cli/azure/group/deployment#az_group_deployment_create). Definujte vlastní prostředek názvy a velikosti místech, jako u *mongoAdminUsername*, *sizeOfDataDiskInGB*, a *configNodeVmSize*:
+V dalším kroku nasaďte šablonu MongoDB s [vytvořit nasazení skupiny pro az](/cli/azure/group/deployment). Definujte vlastní prostředek názvy a velikosti místech, jako u *mongoAdminUsername*, *sizeOfDataDiskInGB*, a *configNodeVmSize*:
 
 ```azurecli
 az group deployment create --resource-group myResourceGroup \
@@ -200,7 +200,7 @@ az group deployment create --resource-group myResourceGroup \
   --no-wait
 ```
 
-Toto nasazení může trvat přes hodinu k nasazení a konfiguraci všech instancí virtuálních počítačů. `--no-wait` Příznak se používá na konci předchozího příkazu k vrácení ovládacího prvku na příkazový řádek po nasazení šablony se přijala platformou Azure. Pak můžete zobrazit stav nasazení s [az skupiny nasazení zobrazit](/cli/azure/group/deployment#az_group_deployment_show). Následující příklad zobrazí stav *myMongoDBCluster* nasazení v *myResourceGroup* skupina prostředků:
+Toto nasazení může trvat přes hodinu k nasazení a konfiguraci všech instancí virtuálních počítačů. `--no-wait` Příznak se používá na konci předchozího příkazu k vrácení ovládacího prvku na příkazový řádek po nasazení šablony se přijala platformou Azure. Pak můžete zobrazit stav nasazení s [az skupiny nasazení zobrazit](/cli/azure/group/deployment). Následující příklad zobrazí stav *myMongoDBCluster* nasazení v *myResourceGroup* skupina prostředků:
 
 ```azurecli
 az group deployment show \

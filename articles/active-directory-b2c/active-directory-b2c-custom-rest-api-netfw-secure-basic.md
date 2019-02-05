@@ -10,20 +10,20 @@ ms.topic: conceptual
 ms.date: 09/25/2017
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: 061987105eac976e40a003a8108921ed0008630d
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 71a5ca62dc5d21e30a4944f8be57a77040f4f204
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55169157"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55733684"
 ---
 # <a name="secure-your-restful-services-by-using-http-basic-authentication"></a>Zabezpečení služby RESTful pomocí základního ověřování protokolu HTTP
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-V [souvisejícím článku Azure AD B2C](active-directory-b2c-custom-rest-api-netfw.md), vytváření rozhraní RESTful služby (webové rozhraní API), která se integruje s Azure Active Directory B2C (Azure AD B2C) uživatel cesty bez ověřování. 
+V [souvisejícím článku Azure AD B2C](active-directory-b2c-custom-rest-api-netfw.md), vytváření rozhraní RESTful služby (webové rozhraní API), která se integruje s Azure Active Directory B2C (Azure AD B2C) uživatel cesty bez ověřování.
 
-V tomto článku základního ověřování protokolu HTTP přidat do služby RESTful, které jsou jenom ověřené uživatele, včetně B2C, můžete přístup k rozhraní API. Základní ověřování protokolu HTTP nastavte ve vlastních zásadách přihlašovací údaje uživatele (ID aplikace a tajný klíč aplikace). 
+V tomto článku základního ověřování protokolu HTTP přidat do služby RESTful, které jsou jenom ověřené uživatele, včetně B2C, můžete přístup k rozhraní API. Základní ověřování protokolu HTTP nastavte ve vlastních zásadách přihlašovací údaje uživatele (ID aplikace a tajný klíč aplikace).
 
 Další informace najdete v tématu [základní ověřování v rozhraní ASP.NET web API](https://docs.microsoft.com/aspnet/web-api/overview/security/basic-authentication).
 
@@ -33,7 +33,7 @@ Proveďte kroky v [integrace rozhraní REST API deklarací výměny na vaší ce
 ## <a name="step-1-add-authentication-support"></a>Krok 1: Přidání podpory ověřování
 
 ### <a name="step-11-add-application-settings-to-your-projects-webconfig-file"></a>Krok 1.1: Přidat nastavení aplikace do souboru web.config vašeho projektu
-1. Otevřete projekt aplikace Visual Studio, který jste vytvořili dříve. 
+1. Otevřete projekt aplikace Visual Studio, který jste vytvořili dříve.
 
 2. Přidáním následujícího nastavení aplikace v souboru web.config v rámci `appSettings` element:
 
@@ -205,7 +205,7 @@ Přidání třídy pro spuštění OWIN s názvem `Startup.cs` rozhraní API. Po
         {
             public void Configuration(IAppBuilder app)
             {
-                    app.Use<ClientAuthMiddleware>();
+                app.Use<ClientAuthMiddleware>();
             }
         }
     }
@@ -220,7 +220,7 @@ Otevřete Controllers\IdentityController.cs a přidejte `[Authorize]` značky t�
 Publikování projektu v Průzkumníku řešení, klikněte pravým tlačítkem myši **Contoso.AADB2C.API** projektu a pak vyberte **publikovat**.
 
 ## <a name="step-3-add-the-restful-services-app-id-and-app-secret-to-azure-ad-b2c"></a>Krok 3: Přidání služby typu REST ID aplikace a tajný kód aplikace do Azure AD B2C
-Poté, co vaše služba RESTful ochrání ID klienta (uživatelské jméno) a tajný klíč, musíte uložit přihlašovací údaje ve vašem tenantovi Azure AD B2C. Vlastní zásady poskytuje přihlašovací údaje při vyvolá služby RESTful. 
+Poté, co vaše služba RESTful ochrání ID klienta (uživatelské jméno) a tajný klíč, musíte uložit přihlašovací údaje ve vašem tenantovi Azure AD B2C. Vlastní zásady poskytuje přihlašovací údaje při vyvolá služby RESTful.
 
 ### <a name="step-31-add-a-restful-services-client-id"></a>Krok 3.1: Přidat ID klienta služby typu REST
 1. Ve vašem tenantovi Azure AD B2C vyberte **nastavení B2C** > **architekturu rozhraní identit**.
@@ -275,7 +275,7 @@ Poté, co vaše služba RESTful ochrání ID klienta (uživatelské jméno) a ta
     <Item Key="AuthenticationType">Basic</Item>
     ```
 
-5. Okamžitě po uplynutí `<Metadata>` prvku, přidejte následující fragment kódu XML: 
+5. Okamžitě po uplynutí `<Metadata>` prvku, přidejte následující fragment kódu XML:
 
     ```xml
     <CryptographicKeys>

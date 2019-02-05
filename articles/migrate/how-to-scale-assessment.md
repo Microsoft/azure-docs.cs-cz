@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 12/05/2018
 ms.author: raynew
-ms.openlocfilehash: 6b74c81f44ee747cdd80a1106b669d89c8c7fbc3
-ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
+ms.openlocfilehash: 89b18d71e864c198b7efafcff09777da21930b6c
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55297136"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55733633"
 ---
 # <a name="discover-and-assess-a-large-vmware-environment"></a>Zkoumání a vyhodnocení rozsáhlých prostředí VMware
 
@@ -22,7 +22,7 @@ Azure Migrate má limit 1 500 počítačů pro každý projekt, tento článek p
 - **VMware**: Virtuální počítače, které plánujete migrovat se musí spravovat přes vCenter Server verze 5.5, 6.0, 6.7 nebo 6.5. Kromě toho potřebujete jednoho hostitele ESXi ve verzi 5.5 nebo novější k nasazení virtuálního počítače kolektoru.
 - **účet vCenter**: Potřebujete účet jen pro čtení pro přístup k systému vCenter Server. Azure Migrate ho použije ke zjištění místních virtuálních počítačů.
 - **Oprávnění**: V systému vCenter Server budete potřebovat oprávnění k vytvoření virtuálního počítače pomocí importu souboru ve formátu OVA.
-- **Nastavení statistiky**: Tento požadavek platí pouze pro [model jednorázového zjišťování](https://docs.microsoft.com/azure/migrate/concepts-collector#discovery-methods) který je nyní zastaralý. Před zahájením nasazování, by měla pro model jednorázového zjišťování, nastavit nastavení statistiky systému vCenter Server na úroveň 3. Úroveň statistiky má být nastavena na hodnotu 3 pro každý den, týden a měsíc kolekce intervalech. Pokud úroveň je nižší než 3 pro všechny tři sběru dat, posouzení bude fungovat, ale nebudou shromažďovat data o výkonu pro úložiště a sítě. Doporučené velikosti bude potom založena na údaje o výkonu pro využití procesoru a paměti a konfigurační data pro disk a síťové adaptéry.
+- **Nastavení statistiky**: Tento požadavek platí pouze pro [model jednorázového zjišťování](https://docs.microsoft.com/azure/migrate/concepts-collector) který je nyní zastaralý. Před zahájením nasazování, by měla pro model jednorázového zjišťování, nastavit nastavení statistiky systému vCenter Server na úroveň 3. Úroveň statistiky má být nastavena na hodnotu 3 pro každý den, týden a měsíc kolekce intervalech. Pokud úroveň je nižší než 3 pro všechny tři sběru dat, posouzení bude fungovat, ale nebudou shromažďovat data o výkonu pro úložiště a sítě. Doporučené velikosti bude potom založena na údaje o výkonu pro využití procesoru a paměti a konfigurační data pro disk a síťové adaptéry.
 
 > [!NOTE]
 > Jednorázové zjišťování zařízení je nyní zastaralý a tato metoda spoléhal na vCenter serveru nastavení statistiky dostupnosti bodu dat výkonu shromážděných čítačů průměrný výkon, které umožňují snížení velikosti virtuálních počítačů pro migraci do Azure.

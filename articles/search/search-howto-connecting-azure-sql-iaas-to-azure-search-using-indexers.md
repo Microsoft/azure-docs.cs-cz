@@ -6,20 +6,23 @@ manager: cgronlun
 services: search
 ms.service: search
 ms.topic: conceptual
-ms.date: 01/23/2017
+ms.date: 02/04/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 5f04c98e1337c2b65c9e0bc8401dd6045a84021e
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: 2efc0b76c8556894119ed3f6dd216234414cf313
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53312018"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55732347"
 ---
 # <a name="configure-a-connection-from-an-azure-search-indexer-to-sql-server-on-an-azure-vm"></a>Konfigurace připojení indexeru Azure Search k systému SQL Server na Virtuálním počítači Azure
 Jak je uvedeno v [připojení Azure SQL Database a Azure Search pomocí indexerů](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md#faq), vytváření indexery proti **systému SQL Server na virtuálních počítačích Azure** (nebo **virtuální počítače s SQL Azure** zkráceně) je podporováno Služba Azure Search ale existuje několik požadavků souvisejících se zabezpečením abyste dbali na první. 
 
-**Doba trvání úkolu:** Asi 30 minut za předpokladu, že jste už na virtuálním počítači nainstalovaný certifikát.
+Připojení z Azure Search k systému SQL Server na virtuálním počítači je veřejné připojení k Internetu. Všechny bezpečnostní opatření, které byste běžně postupovali pro tato připojení použijte zde také:
+
++ Získat certifikát od [poskytovatele certifikační autority](https://en.wikipedia.org/wiki/Certificate_authority#Providers) pro plně kvalifikovaný název domény virtuálního počítače Azure.
++ Nainstalujte certifikát na virtuálním počítači a pak povolte a nakonfigurujte šifrovaná připojení na virtuálním počítači podle pokynů v tomto článku.
 
 ## <a name="enable-encrypted-connections"></a>Povolit šifrované připojení
 Služba Azure Search vyžaduje šifrovaný kanál pro všechny požadavky indexer přes veřejné připojení k Internetu. Tato část uvádí kroky, aby tuto práci.

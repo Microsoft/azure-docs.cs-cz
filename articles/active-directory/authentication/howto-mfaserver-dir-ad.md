@@ -1,21 +1,22 @@
 ---
-title: Integrace adresáře mezi službami Azure Multi-Factor Authentication a Active Directory
+title: Integrace Azure MFA serverem a Active Directory
 description: Postup integrace Azure Multi-Factor Authentication Serveru se službou Active Directory pro synchronizaci adresářů.
 services: multi-factor-authentication
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 07/11/2018
+ms.date: 02/01/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
-ms.openlocfilehash: 27c9330e0e2f89cdb4bdc81cbd909126401f0441
-ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
+ms.custom: seo-update-azuread-jan
+ms.openlocfilehash: 92b34a014a42f116a51b8fb1f5dcff531659bdb7
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/26/2019
-ms.locfileid: "55081003"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55696876"
 ---
 # <a name="directory-integration-between-azure-mfa-server-and-active-directory"></a>Integrace adresáře mezi Azure MFA Serverem a službou Active Directory
 

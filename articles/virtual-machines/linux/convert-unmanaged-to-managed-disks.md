@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 12/15/2017
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: 692de0e18ac279174f1227a7c25913fc59e626eb
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 39a42891a73bd64731dd19aa22214a62d913d975
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55470055"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55700821"
 ---
 # <a name="convert-a-linux-virtual-machine-from-unmanaged-disks-to-managed-disks"></a>Převod virtuálního počítače s Linuxem z nespravovaných disků na managed disks
 
@@ -44,13 +44,13 @@ Tato část popisuje, jak převést virtuální počítače Azure s jednou insta
     az vm deallocate --resource-group myResourceGroup --name myVM
     ```
 
-2. Převod virtuálního počítače na managed disks pomocí [az vm, převést](/cli/azure/vm#az_vm_convert). Následující proces převede virtuální počítač s názvem `myVM`, včetně disk s operačním systémem a všechny datové disky:
+2. Převod virtuálního počítače na managed disks pomocí [az vm, převést](/cli/azure/vm). Následující proces převede virtuální počítač s názvem `myVM`, včetně disk s operačním systémem a všechny datové disky:
 
     ```azurecli
     az vm convert --resource-group myResourceGroup --name myVM
     ```
 
-3. Spusťte virtuální počítač po převodu na spravované disky pomocí [az vm start](/cli/azure/vm#az_vm_start). Následující příklad spustí virtuální počítač s názvem `myVM` ve skupině prostředků s názvem `myResourceGroup`.
+3. Spusťte virtuální počítač po převodu na spravované disky pomocí [az vm start](/cli/azure/vm). Následující příklad spustí virtuální počítač s názvem `myVM` ve skupině prostředků s názvem `myResourceGroup`.
 
     ```azurecli
     az vm start --resource-group myResourceGroup --name myVM
@@ -62,7 +62,7 @@ Pokud virtuální počítače, které chcete převést na spravované disky jsou
 
 Všechny virtuální počítače ve skupině dostupnosti musí být napřed zrušit přidělení převést skupinu dostupnosti. Plán pro převod všech virtuálních počítačů na managed disks po samotné skupinu dostupnosti se převedly na spravované skupině dostupnosti. Potom spusťte všechny virtuální počítače a pokračovat v činnosti, jako obvykle.
 
-1. Seznam všech virtuálních počítačů ve skupině dostupnosti s využitím [az vm skupinu dostupnosti seznamu](/cli/azure/vm/availability-set#az_vm_availability_set_list). Následující příklad zobrazí seznam všech virtuálních počítačů ve skupině dostupnosti s názvem `myAvailabilitySet` ve skupině prostředků s názvem `myResourceGroup`:
+1. Seznam všech virtuálních počítačů ve skupině dostupnosti s využitím [az vm skupinu dostupnosti seznamu](/cli/azure/vm/availability-set). Následující příklad zobrazí seznam všech virtuálních počítačů ve skupině dostupnosti s názvem `myAvailabilitySet` ve skupině prostředků s názvem `myResourceGroup`:
 
     ```azurecli
     az vm availability-set show \
@@ -78,7 +78,7 @@ Všechny virtuální počítače ve skupině dostupnosti musí být napřed zru�
     az vm deallocate --resource-group myResourceGroup --name myVM
     ```
 
-3. Převést skupině dostupnosti s využitím [az vm skupinu dostupnosti převést](/cli/azure/vm/availability-set#az_vm_availability_set_convert). Následující příklad převádí skupinu dostupnosti `myAvailabilitySet` ve skupině prostředků s názvem `myResourceGroup`:
+3. Převést skupině dostupnosti s využitím [az vm skupinu dostupnosti převést](/cli/azure/vm/availability-set). Následující příklad převádí skupinu dostupnosti `myAvailabilitySet` ve skupině prostředků s názvem `myResourceGroup`:
 
     ```azurecli
     az vm availability-set convert \
@@ -86,13 +86,13 @@ Všechny virtuální počítače ve skupině dostupnosti musí být napřed zru�
         --name myAvailabilitySet
     ```
 
-4. Převést všechny virtuální počítače na managed disks pomocí [az vm, převést](/cli/azure/vm#az_vm_convert). Následující proces převede virtuální počítač s názvem `myVM`, včetně disk s operačním systémem a všechny datové disky:
+4. Převést všechny virtuální počítače na managed disks pomocí [az vm, převést](/cli/azure/vm). Následující proces převede virtuální počítač s názvem `myVM`, včetně disk s operačním systémem a všechny datové disky:
 
     ```azurecli
     az vm convert --resource-group myResourceGroup --name myVM
     ```
 
-5. Spustit všechny virtuální počítače po převodu na spravované disky s použitím [az vm start](/cli/azure/vm#az_vm_start). Následující příklad spustí virtuální počítač s názvem `myVM` ve skupině prostředků s názvem `myResourceGroup`:
+5. Spustit všechny virtuální počítače po převodu na spravované disky s použitím [az vm start](/cli/azure/vm). Následující příklad spustí virtuální počítač s názvem `myVM` ve skupině prostředků s názvem `myResourceGroup`:
 
     ```azurecli
     az vm start --resource-group myResourceGroup --name myVM

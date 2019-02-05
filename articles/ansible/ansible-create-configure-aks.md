@@ -8,12 +8,12 @@ manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
 ms.date: 08/23/2018
-ms.openlocfilehash: c4f78d8bb43b26814dc3a4b94109dfd8719cb48f
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.openlocfilehash: df1efc1506fbbe51ba5afb03f147c51a57d9bbdb
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54258828"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55727054"
 ---
 # <a name="create-and-configure-azure-kubernetes-service-clusters-in-azure-using-ansible"></a>Vytváření a konfigurace clusterů Azure Kubernetes Service v Azure pomocí Ansible
 Ansible umožňuje automatizovat nasazování a konfiguraci prostředků ve vašem prostředí. Pomocí Ansible můžete spravovat službu Azure Kubernetes Service (AKS). V tomto článku se dozvíte, jak pomocí Ansible vytvořit a nakonfigurovat cluster Azure Kubernetes Service.
@@ -25,13 +25,13 @@ Ansible umožňuje automatizovat nasazování a konfiguraci prostředků ve vaš
 - [!INCLUDE [ansible-prereqs-for-cloudshell-use-or-vm-creation1.md](../../includes/ansible-prereqs-for-cloudshell-use-or-vm-creation1.md)] [!INCLUDE [ansible-prereqs-for-cloudshell-use-or-vm-creation2.md](../../includes/ansible-prereqs-for-cloudshell-use-or-vm-creation2.md)]
 
 > [!Note]
-> Ke spuštění následujících ukázkových playbooků v tomto kurzu se vyžaduje Ansible 2.6. 
+> Ke spuštění následujících ukázkových playbooků v tomto kurzu se vyžaduje Ansible 2.6.
 
 ## <a name="create-a-managed-aks-cluster"></a>Vytvoření spravovaného clusteru AKS
 Kód v této části představuje ukázka playbook Ansible k vytvoření skupiny prostředků a clusteru AKS, který se nachází ve skupině prostředků.
 
 > [!Tip]
-> Pro `your_ssh_key` zástupného symbolu, zadejte veřejný klíč RSA v jednořádkovém formátu – začíná na "ssh-rsa" (bez uvozovek). 
+> Pro `your_ssh_key` zástupného symbolu, zadejte veřejný klíč RSA v jednořádkovém formátu – začíná na "ssh-rsa" (bez uvozovek).
 
   ```yaml
   - name: Create Azure Kubernetes Service
@@ -71,8 +71,8 @@ Kód v této části představuje ukázka playbook Ansible k vytvoření skupiny
   ```
 
 Následující odrážky pomáhají vysvětlit předchozí kód playbooku Ansible:
-- V první části bloku **tasks** se definuje skupina prostředků **myResourceGroup** v umístění **eastus**. 
-- V druhé části bloku **tasks** se definuje cluster AKS **myAKSCluster** ve skupině prostředků **myResourceGroup**. 
+- V první části bloku **tasks** se definuje skupina prostředků **myResourceGroup** v umístění **eastus**.
+- V druhé části bloku **tasks** se definuje cluster AKS **myAKSCluster** ve skupině prostředků **myResourceGroup**.
 
 Pokud chcete vytvořit cluster AKS pomocí Ansible, uložte předchozí ukázkový playbook jako `azure_create_aks.yml` a spusťte ho pomocí následujícího příkazu:
 
@@ -100,10 +100,10 @@ Výstup příkazu *ansible-playbook* bude vypadat podobně jako v následující
 
 ## <a name="scale-aks-nodes"></a>Škálování uzlů AKS
 
-Ukázkový playbook v předchozí části definuje dva uzly. Pokud ve vašem clusteru potřebujete více nebo méně úloh kontejneru, můžete počet uzlů snadno upravit. Ukázkový playbook v této části zvýší počet uzlů ze dvou na tři. Změna počtu uzlů se provádí úpravou hodnoty **count** v bloku **agent_pool_profiles**. 
+Ukázkový playbook v předchozí části definuje dva uzly. Pokud ve vašem clusteru potřebujete více nebo méně úloh kontejneru, můžete počet uzlů snadno upravit. Ukázkový playbook v této části zvýší počet uzlů ze dvou na tři. Změna počtu uzlů se provádí úpravou hodnoty **count** v bloku **agent_pool_profiles**.
 
 > [!Tip]
-> Pro `your_ssh_key` zástupného symbolu, zadejte veřejný klíč RSA v jednořádkovém formátu – začíná na "ssh-rsa" (bez uvozovek). 
+> Pro `your_ssh_key` zástupného symbolu, zadejte veřejný klíč RSA v jednořádkovém formátu – začíná na "ssh-rsa" (bez uvozovek).
 
 ```yaml
 - name: Scale AKS cluster
@@ -120,10 +120,10 @@ Ukázkový playbook v předchozí části definuje dva uzly. Pokud ve vašem clu
   tasks:
   - name: Scaling an existed AKS cluster
     azure_rm_aks:
-        name: "{{ aks_name }}"    
+        name: "{{ aks_name }}"
         location: "{{ location }}"
-        resource_group: "{{ resource_group }}" 
-        dns_prefix: "{{ aks_name }}" 
+        resource_group: "{{ resource_group }}"
+        dns_prefix: "{{ aks_name }}"
         linux_profile:
           admin_username: "{{ username }}"
           ssh_key: "{{ ssh_key }}"
@@ -168,7 +168,7 @@ Následující část ukázkového playbooku Ansible ukazuje, jak odstranit clus
       resource_group: myResourceGroup
       aks_name: myAKSCluster
     tasks:
-    - name: 
+    - name:
       azure_rm_aks:
         name: "{{ aks_name }}"
         resource_group: "{{ resource_group }}"
@@ -193,7 +193,7 @@ TASK [azure_rm_aks] ************************************************************
 PLAY RECAP *********************************************************************
 localhost                  : ok=2    changed=1    unreachable=0    failed=0
   ```
-  
+
 ## <a name="next-steps"></a>Další postup
-> [!div class="nextstepaction"] 
+> [!div class="nextstepaction"]
 > [Kurz: Škálování aplikace ve službě Azure Kubernetes Service (AKS)](https://docs.microsoft.com/azure/aks/tutorial-kubernetes-scale)
