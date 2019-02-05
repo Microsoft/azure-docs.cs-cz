@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/07/2018
 ms.author: cherylmc
-ms.openlocfilehash: 52c7734c2af80d29433c20191d8b5b7c0ee0fe48
-ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
+ms.openlocfilehash: 0d915592053c256d3640d0f0de7bb94bf109f2c8
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55510149"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55700158"
 ---
 # <a name="create-and-install-vpn-client-configuration-files-for-p2s-radius-authentication"></a>Vytvoření a instalace konfiguračních souborů klienta VPN pro ověřování P2S pomocí protokolu RADIUS
 
@@ -98,10 +98,10 @@ Použijte následující postup ke konfiguraci nativního klienta VPN ve Windows
 
 2. Vyhledejte **mobileconfig** soubor na počítači Mac.
 
-   ![Umístění souboru mobilconfig](./media/point-to-site-vpn-client-configuration-radius/admobileconfigfile.png)
+   ![Umístění souboru mobileconfig](./media/point-to-site-vpn-client-configuration-radius/admobileconfigfile.png)
 
 3. Volitelný krok – Pokud chcete zadat vlastní DNS, přidejte následující řádky do **mobileconfig** souboru:
-```
+```xml
     <key>DNS</key>
     <dict>
       <key>ServerAddresses</key>
@@ -262,15 +262,15 @@ Použít jiný typ ověřování (například ověřování jednorázovým HESLE
 
 1. Použití `Get-AzureRmVpnClientConfiguration` rutiny pro generování konfigurace klienta VPN pro EapMSChapv2. Pokyny najdete v tématu [v této části](#ccradius) tohoto článku.
 
-2. Rozbalte soubor VpnClientConfiguration.zip a hledejte **GenenericDevice** složky. Ignorujte složky, které obsahují Windows instalačních programů pro 64bitové a 32bitové architektury.
+2. Rozbalte soubor VpnClientConfiguration.zip a hledejte **GenericDevice** složky. Ignorujte složky, které obsahují Windows instalačních programů pro 64bitové a 32bitové architektury.
  
-3. **GenenericDevice** složka obsahuje soubor XML s názvem **VpnSettings**. Tento soubor obsahuje všechny požadované informace:
+3. **GenericDevice** složka obsahuje soubor XML s názvem **VpnSettings**. Tento soubor obsahuje všechny požadované informace:
 
    * **VpnServer**: Plně kvalifikovaný název domény služby Azure VPN gateway. Toto je adresa, která se klient připojuje k.
    * **VpnType**: Typ tunelového propojení, který použijete k připojení.
    * **Trasy**: Trasy, které je třeba nakonfigurovat ve svém profilu tak, aby se odesílají pouze provoz, který je vázaný virtuální síť Azure prostřednictvím tunelového připojení P2S.
    
-   **GenenericDevice** složka obsahuje také soubor .cer s názvem **VpnServerRoot**. Tento soubor obsahuje kořenový certifikát, který je potřeba ověřit Azure VPN gateway během instalace připojení P2S. Nainstalujte certifikát na všech zařízeních, které se připojují k virtuální síti Azure.
+   **GenericDevice** složka obsahuje také soubor .cer s názvem **VpnServerRoot**. Tento soubor obsahuje kořenový certifikát, který je potřeba ověřit Azure VPN gateway během instalace připojení P2S. Nainstalujte certifikát na všech zařízeních, které se připojují k virtuální síti Azure.
 
 ## <a name="next-steps"></a>Další postup
 

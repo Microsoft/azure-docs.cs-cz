@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 01/23/2017
 ms.author: muralikk
 ms.subservice: common
-ms.openlocfilehash: efe7b6722a9cfa24ea86130a13a0599115e89821
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 15ec4f006147cdffb46598d22a937aec429fd8ac
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55451661"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55729400"
 ---
 # <a name="creating-an-import-job-for-the-azure-importexport-service"></a>Vytvoření úlohy importu pro službu Azure Import/Export
 
@@ -61,14 +61,14 @@ Před vytvoření úlohy importu, je potřeba získat přenosů název umístěn
 
  Podle následujících pokynů k získání umístění dopravě:
 
--   Určete název umístění účtu úložiště. Tuto hodnotu najdete v části **umístění** na účet úložiště **řídicí panel** v Azure portal nebo pro dotaz s použitím operace rozhraní API pro správu služby [získat účet úložiště Vlastnosti](/rest/api/storagerp/storageaccounts#StorageAccounts_GetProperties).
+-   Určete název umístění účtu úložiště. Tuto hodnotu najdete v části **umístění** na účet úložiště **řídicí panel** v Azure portal nebo pro dotaz s použitím operace rozhraní API pro správu služby [získat účet úložiště Vlastnosti](/rest/api/storagerp/storageaccounts).
 
 -   Načíst umístění, které je k dispozici pro zpracování tohoto účtu úložiště pomocí volání `Get Location` operace.
 
 -   Pokud `AlternateLocations` vlastnost umístění obsahuje umístění, sama, pak je možné použít toto umístění. V opačném případě volat `Get Location` operaci znovu s některou z alternativních umístění. Původní umístění může být dočasně uzavřeno kvůli údržbě.
 
 ## <a name="creating-the-import-job"></a>Vytvoření úlohy importu
-Chcete-li vytvořit úlohu importu, zavolejte [úlohy umístit](/rest/api/storageimportexport/jobs#Jobs_CreateOrUpdate) operace. Budete muset zadat následující informace:
+Chcete-li vytvořit úlohu importu, zavolejte [úlohy umístit](/rest/api/storageimportexport/jobs) operace. Budete muset zadat následující informace:
 
 -   Název úlohy.
 

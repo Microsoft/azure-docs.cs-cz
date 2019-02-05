@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 2/01/2019
 ms.author: brkhande
-ms.openlocfilehash: 646a64435ba02877d2588b8debbb3920a32a5cf1
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
+ms.openlocfilehash: 88618e5b9de9cb8ac46b9b167e6fa6dbccd73687
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55563078"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55732307"
 ---
 # <a name="patch-the-windows-operating-system-in-your-service-fabric-cluster"></a>Opravy operačního systému Windows ve vašem clusteru Service Fabric
 
@@ -131,7 +131,7 @@ Pokud chcete povolit službu správce opravy:
     ],
     ```
 
-3. Aktualizace manifestu clusteru se tyto změny pomocí manifestu clusteru aktualizované [vytvořit nový cluster](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-creation-for-windows-server) nebo [upgradovat konfiguraci clusteru](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-upgrade-windows-server#Upgrade-the-cluster-configuration). Když cluster běží s manifestem clusteru aktualizované, nyní je vidět službu opravy správce systému spuštěné v clusteru, která se nazývá `fabric:/System/RepairManagerService`v části systémové služby v Service Fabric explorer části.
+3. Aktualizace manifestu clusteru se tyto změny pomocí manifestu clusteru aktualizované [vytvořit nový cluster](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-creation-for-windows-server) nebo [upgradovat konfiguraci clusteru](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-upgrade-windows-server). Když cluster běží s manifestem clusteru aktualizované, nyní je vidět službu opravy správce systému spuštěné v clusteru, která se nazývá `fabric:/System/RepairManagerService`v části systémové služby v Service Fabric explorer části.
 
 ### <a name="disable-automatic-windows-update-on-all-nodes"></a>Zakázat automatické aktualizace Windows na všech uzlech
 

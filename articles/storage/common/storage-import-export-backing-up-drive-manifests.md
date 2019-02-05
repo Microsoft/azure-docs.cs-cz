@@ -8,18 +8,18 @@ ms.topic: article
 ms.date: 01/23/2017
 ms.author: muralikk
 ms.subservice: common
-ms.openlocfilehash: 61881508e18a2c7dbe1bc3be72d34423f862437a
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: ea223ea3ccd113014ceabff34cc4d0174abb1ddf
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55473387"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55694342"
 ---
 # <a name="backing-up-drive-manifests-for-azure-importexport-jobs"></a>Zálohování disku manifestů pro úlohy Azure Import/Export
 
-Manifestů jednotek můžete být automaticky zálohována do objektů BLOB tak, že nastavíte `BackupDriveManifest` vlastnost `true` v [úlohy umístit](/rest/api/storageimportexport/jobs#Jobs_CreateOrUpdate) nebo [aktualizovat vlastnosti úlohy](/rest/api/storageimportexport/jobs#Jobs_Update) operace REST API. Ve výchozím nastavení nejsou zálohovány manifestů jednotek. Jednotky manifestu zálohy jsou uložené jako objekty BLOB bloku v kontejneru v účtu úložiště, které jsou přidružené k úloze. Ve výchozím nastavení, je název kontejneru `waimportexport`, ale můžete zadat jiný název v `DiagnosticsPath` vlastnost při volání `Put Job` nebo `Update Job Properties` operace. Zálohování manifestu objektů blob jsou pojmenovány v následujícím formátu: `waies/jobname_driveid_timestamp_manifest.xml`.
+Manifestů jednotek můžete být automaticky zálohována do objektů BLOB tak, že nastavíte `BackupDriveManifest` vlastnost `true` v [úlohy umístit](/rest/api/storageimportexport/jobs) nebo [aktualizovat vlastnosti úlohy](/rest/api/storageimportexport/jobs) operace REST API. Ve výchozím nastavení nejsou zálohovány manifestů jednotek. Jednotky manifestu zálohy jsou uložené jako objekty BLOB bloku v kontejneru v účtu úložiště, které jsou přidružené k úloze. Ve výchozím nastavení, je název kontejneru `waimportexport`, ale můžete zadat jiný název v `DiagnosticsPath` vlastnost při volání `Put Job` nebo `Update Job Properties` operace. Zálohování manifestu objektů blob jsou pojmenovány v následujícím formátu: `waies/jobname_driveid_timestamp_manifest.xml`.
 
- Identifikátor URI manifesty zálohování disku pro úlohu můžete načíst pomocí volání [Get Job](/rest/api/storageimportexport/jobs#Jobs_Get) operace. Identifikátor URI se vrátí v objektu blob `ManifestUri` vlastností pro každou jednotku.
+ Identifikátor URI manifesty zálohování disku pro úlohu můžete načíst pomocí volání [Get Job](/rest/api/storageimportexport/jobs) operace. Identifikátor URI se vrátí v objektu blob `ManifestUri` vlastností pro každou jednotku.
 
 ## <a name="next-steps"></a>Další postup
 

@@ -10,12 +10,12 @@ ms.reviewer: klam, jehollan, LADocs
 ms.assetid: d565873c-6b1b-4057-9250-cf81a96180ae
 ms.topic: article
 ms.date: 01/01/2018
-ms.openlocfilehash: 1f2e136810194ad044255f9d129b5c03549221b9
-ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
+ms.openlocfilehash: d50f56fe0f4428186d18195f798633baefd6d125
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43128656"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55732919"
 ---
 # <a name="create-edit-or-extend-json-for-logic-app-definitions-in-azure-logic-apps"></a>Vytvořit, upravit nebo rozšířit JSON pro logiku definic aplikací v Azure Logic Apps
 
@@ -24,11 +24,12 @@ Při vytváření podnikových řešení pro integraci s automatizované pracovn
 Pro práci s definic aplikací logiky ve formátu JSON, otevřete editor zobrazení kódu při práci na webu Azure Portal nebo v sadě Visual Studio nebo zkopírování definice do libovolného editoru, který chcete. Pokud se službou logic Apps teprve začínáte, přečtěte si [vytvoření vaší první aplikací logiky](../logic-apps/quickstart-create-first-logic-app-workflow.md).
 
 > [!NOTE]
-> Některé funkce Azure Logic Apps, jako je například definovat parametry a více aktivačních událostí v definic aplikací logiky, jsou k dispozici pouze ve formátu JSON, není návrháři pro Logic Apps. Abyste pro tyto úlohy, musí pracovat v zobrazení kódu nebo jiného editoru.
+> Některé funkce Azure Logic Apps, jako je například definovat parametry a více aktivačních událostí v definic aplikací logiky, jsou k dispozici pouze ve formátu JSON, není návrháři pro Logic Apps.
+> Abyste pro tyto úlohy, musí pracovat v zobrazení kódu nebo jiného editoru.
 
 ## <a name="edit-json---azure-portal"></a>Upravit JSON - webu Azure portal
 
-1. Přihlaste se k <a href="https://portal.azure.com" target="_blank">portálu Azure</a>.
+1. Přihlaste se k webu <a href="https://portal.azure.com" target="_blank">Azure Portal</a>.
 
 2. V levé nabídce zvolte **všechny služby**. Do vyhledávacího pole vyhledejte "aplikace logiky" a potom ve výsledcích vyberte svou aplikaci logiky.
 
@@ -36,9 +37,9 @@ Pro práci s definic aplikací logiky ve formátu JSON, otevřete editor zobraze
 
    Editor zobrazení kódu se otevře a zobrazí definici aplikace logiky ve formátu JSON.
 
-## <a name="edit-json---visual-studio"></a>Upravit JSON – Visual Studio
+## <a name="edit-json---visual-studio"></a>Edit JSON - Visual Studio
 
-Než můžete pracovat na definici aplikace logiky v sadě Visual Studio, ujistěte se, že jste [nainstalovány nástroje požadované](../logic-apps/quickstart-create-logic-apps-with-visual-studio.md#prerequisites). Vytvoření aplikace logiky pomocí sady Visual Studio, najdete v tématu [rychlý start: automatizace úloh a procesů pomocí Azure Logic Apps – Visual Studio](../logic-apps/quickstart-create-logic-apps-with-visual-studio.md).
+Než můžete pracovat na definici aplikace logiky v sadě Visual Studio, ujistěte se, že jste [nainstalovány nástroje požadované](../logic-apps/quickstart-create-logic-apps-with-visual-studio.md#prerequisites). Vytvoření aplikace logiky pomocí sady Visual Studio, najdete v tématu [rychlý start: Automatizace úloh a procesů pomocí Azure Logic Apps – Visual Studio](../logic-apps/quickstart-create-logic-apps-with-visual-studio.md).
 
 V sadě Visual Studio můžete otevřít aplikace logiky, které byly vytvořeny a nasazeny buď přímo z portálu Azure portal, nebo jako projekty Azure Resource Manageru ze sady Visual Studio.
 
@@ -58,7 +59,7 @@ V sadě Visual Studio můžete otevřít aplikace logiky, které byly vytvořeny
 
 ## <a name="parameters"></a>Parametry
 
-Parametry umožňují opakované použití hodnot v rámci vaší aplikace logiky a jsou vhodné pro nahrazení hodnoty, které může často měnit. Například pokud máte e-mailovou adresu, kterou chcete použít na více místech, byste měli definovat tuto e-mailovou adresu jako parametr. 
+Parametry umožňují opakované použití hodnot v rámci vaší aplikace logiky a jsou vhodné pro nahrazení hodnoty, které může často měnit. Například pokud máte e-mailovou adresu, kterou chcete použít na více místech, byste měli definovat tuto e-mailovou adresu jako parametr.
 
 Parametry jsou užitečné také, pokud je nutné přepsat parametry v různých prostředích, další informace o [parametry pro nasazení](#deployment-parameters) a [rozhraní REST API pro Azure Logic Apps dokumentaci](https://docs.microsoft.com/rest/api/logic).
 
@@ -70,13 +71,13 @@ V [první příklad aplikace logiky](../logic-apps/quickstart-create-first-logic
 1. V zobrazení kódu vyhledejte `parameters : {}` objektu a přidejte `currentFeedUrl` objektu:
 
    ``` json
-     "currentFeedUrl" : {
+   "currentFeedUrl" : {
       "type" : "string",
-            "defaultValue" : "http://rss.cnn.com/rss/cnn_topstories.rss"
+      "defaultValue" : "http://rss.cnn.com/rss/cnn_topstories.rss"
    }
    ```
 
-2. V `When_a_feed-item_is_published` akci najít `queries` části a nahraďte hodnotu dotazu s `"feedUrl": "#@{parameters('currentFeedUrl')}"`. 
+2. V `When_a_feed-item_is_published` akci najít `queries` části a nahraďte hodnotu dotazu s `"feedUrl": "#@{parameters('currentFeedUrl')}"`.
 
    **Před**
    ``` json
@@ -84,7 +85,7 @@ V [první příklad aplikace logiky](../logic-apps/quickstart-create-first-logic
       "queries": {
           "feedUrl": "https://s.ch9.ms/Feeds/RSS"
        }
-   },   
+   },
    ```
 
    **Po**
@@ -93,13 +94,13 @@ V [první příklad aplikace logiky](../logic-apps/quickstart-create-first-logic
       "queries": {
           "feedUrl": "#@{parameters('currentFeedUrl')}"
        }
-   },   
+   },
    ```
 
    Pro připojení dvou nebo více řetězců, můžete použít také `concat` funkce. 
    Například `"@concat('#',parameters('currentFeedUrl'))"` funguje stejně jako v předchozím příkladu.
 
-3.  Jakmile budete hotoví, vyberte **Uložit**. 
+3.  Jakmile budete hotoví, vyberte **Uložit**.
 
 Teď můžete změnit na webu kanálu RSS předáním jinou adresu URL prostřednictvím `currentFeedURL` objektu.
 
@@ -107,9 +108,9 @@ Teď můžete změnit na webu kanálu RSS předáním jinou adresu URL prostřed
 
 ## <a name="deployment-parameters-for-different-environments"></a>Parametry nasazení pro různá prostředí
 
-Životní cyklus nasazení mají obvykle, prostředí pro vývoj, přípravném nebo produkčním prostředí. Může například používat stejnou definici aplikace logiky v těchto prostředích ale použití různých databází. Podobně můžete chtít použít stejnou definici pojmů v různých oblastech pro zajištění vysoké dostupnosti, ale má každé instanci aplikace logiky k použití databáze tuto oblast. 
+Životní cyklus nasazení mají obvykle, prostředí pro vývoj, přípravném nebo produkčním prostředí. Může například používat stejnou definici aplikace logiky v těchto prostředích ale použití různých databází. Podobně můžete chtít použít stejnou definici pojmů v různých oblastech pro zajištění vysoké dostupnosti, ale má každé instanci aplikace logiky k použití databáze tuto oblast.
 
-> [!NOTE] 
+> [!NOTE]
 > Tento scénář se liší od pořízení parametry na *runtime* kam byste měli použít `trigger()` namísto toho funkci.
 
 Zde je základní definice:
@@ -157,13 +158,13 @@ Ve skutečných `PUT` žádosti pro logic apps, můžete zadat parametr `uri`. V
     },
     "location": "westus"
 }
-``` 
+```
 
 Další informace najdete v tématu [rozhraní REST API pro Azure Logic Apps dokumentaci](https://docs.microsoft.com/rest/api/logic/).
 
 ## <a name="process-strings-with-functions"></a>Proces řetězce s využitím functions
 
-Logic Apps se různé funkce pro práci s řetězci. Předpokládejme například, že chcete předat název společnosti z objednávky do jiného systému. Však nevíte o správné zpracování pro kódování znaků. Můžete provést na tento řetězec kódování base64, ale aby se zabránilo řídicí sekvence v adrese URL můžete nahradit několik znaků místo. Navíc potřebujete pouze dílčí řetězec pro název společnosti vzhledem k tomu, že nejsou použity prvních 5 znaků. 
+Logic Apps se různé funkce pro práci s řetězci. Předpokládejme například, že chcete předat název společnosti z objednávky do jiného systému. Však nevíte o správné zpracování pro kódování znaků. Můžete provést na tento řetězec kódování base64, ale aby se zabránilo řídicí sekvence v adrese URL můžete nahradit několik znaků místo. Navíc potřebujete pouze dílčí řetězec pro název společnosti vzhledem k tomu, že nejsou použity prvních 5 znaků.
 
 ``` json
 {
@@ -200,7 +201,7 @@ Logic Apps se různé funkce pro práci s řetězci. Předpokládejme napříkla
 
 Tyto kroky popisují, jak v tomto příkladu zpracovává tento řetězec zevnitř funguje na vnější:
 
-``` 
+```
 "uri": "http://www.example.com/?id=@{replace(replace(base64(substring(parameters('order').companyName,5,sub(length(parameters('order').companyName), 5) )),'+','-') ,'/' ,'_' )}"
 ```
 
@@ -218,7 +219,7 @@ Tyto kroky popisují, jak v tomto příkladu zpracovává tento řetězec zevnit
 
 ## <a name="map-list-items-to-property-values-then-use-maps-as-parameters"></a>Mapování hodnot vlastností položky seznamu, a pak pomocí mapy jako parametry
 
-Chcete-li získat jiné výsledky na základě hodnoty vlastnosti, můžete vytvořit mapu, která odpovídá všechny hodnoty vlastností na výsledek a pak použít jako parametr, která je namapována. 
+Chcete-li získat jiné výsledky na základě hodnoty vlastnosti, můžete vytvořit mapu, která odpovídá všechny hodnoty vlastností na výsledek a pak použít jako parametr, která je namapována.
 
 Například tento pracovní postup definuje některé kategorie jako parametry a mapu, která odpovídá kategorie s konkrétní adresy URL. Nejprve pracovní postup získává seznam článků. Pracovní postup potom použije na mapě Pokud chcete vyhledat adresu URL odpovídající kategorii pro každý článek.
 
@@ -302,13 +303,13 @@ K získání dat ze zdroje dat, která nenabízí nativní podporu *triggery*, m
 "expression": "@less(actions('order').startTime,addseconds(utcNow(),-1))",
 ```
 
-1. Z `order` akce, extrahovat `startTime`. 
+1. Z `order` akce, extrahovat `startTime`.
 2. Získat aktuální čas s `utcNow()`.
 3. Odečtení jedné sekundy:
 
    [`addseconds(..., -1)`](../logic-apps/logic-apps-workflow-definition-language.md) 
 
-   Můžete použít jiné jednotky doby, jako je třeba `minutes` nebo `hours`. 
+   Můžete použít jiné jednotky doby, jako je třeba `minutes` nebo `hours`.
 
 3. Teď můžete porovnat tyto dvě hodnoty. 
 
@@ -365,7 +366,6 @@ K formátování kalendářních dat, můžete použít formátování řetězce
   "outputs": {}
 }
 ```
-
 
 ## <a name="next-steps"></a>Další postup
 

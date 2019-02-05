@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: ''
 ms.author: haroldw
-ms.openlocfilehash: d4b706a088769530e3994d8813b28f99d5a56df5
-ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
+ms.openlocfilehash: 25ec82c923ebe322194d868159332ef145727999
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/19/2019
-ms.locfileid: "54411964"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55692986"
 ---
 # <a name="common-prerequisites-for-deploying-openshift-in-azure"></a>Běžné požadavky pro nasazení OpenShift v Azure
 
@@ -53,14 +53,14 @@ Tato příručka popisuje, jak vytvořit artefakty spojené s požadavky.
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
 ## <a name="sign-in-to-azure"></a>Přihlásit se k Azure 
-Přihlaste se k předplatnému Azure pomocí [az login](/cli/azure/reference-index#az_login) příkaz a postupujte podle pokynů na obrazovce pokynů nebo klikněte na tlačítko **vyzkoušet** použití Cloud Shell.
+Přihlaste se k předplatnému Azure pomocí [az login](/cli/azure/reference-index) příkaz a postupujte podle pokynů na obrazovce pokynů nebo klikněte na tlačítko **vyzkoušet** použití Cloud Shell.
 
 ```azurecli 
 az login
 ```
 ## <a name="create-a-resource-group"></a>Vytvoření skupiny prostředků
 
-Vytvořte skupinu prostředků pomocí příkazu [az group create](/cli/azure/group#az_group_create). Skupina prostředků Azure je logický kontejner, ve kterém se nasazují a spravují prostředky Azure. Doporučujeme použít skupiny vyhrazených prostředků pro hostování služby key vault. Tato skupina je oddělené od skupiny prostředků, do které prostředky clusteru Openshiftu nasazovat.
+Vytvořte skupinu prostředků pomocí příkazu [az group create](/cli/azure/group). Skupina prostředků Azure je logický kontejner, ve kterém se nasazují a spravují prostředky Azure. Doporučujeme použít skupiny vyhrazených prostředků pro hostování služby key vault. Tato skupina je oddělené od skupiny prostředků, do které prostředky clusteru Openshiftu nasazovat.
 
 Následující příklad vytvoří skupinu prostředků s názvem *keyvaultrg* v *eastus* umístění:
 
@@ -69,7 +69,7 @@ az group create --name keyvaultrg --location eastus
 ```
 
 ## <a name="create-a-key-vault"></a>Vytvořte trezor klíčů
-Vytvoření trezoru klíčů pro ukládání klíčů SSH pro cluster s [az keyvault vytvořit](/cli/azure/keyvault#az_keyvault_create) příkazu. Název trezoru klíčů musí být globálně jedinečný.
+Vytvoření trezoru klíčů pro ukládání klíčů SSH pro cluster s [az keyvault vytvořit](/cli/azure/keyvault) příkazu. Název trezoru klíčů musí být globálně jedinečný.
 
 Následující příklad vytvoří trezor klíčů s názvem *keyvault* v *keyvaultrg* skupina prostředků:
 

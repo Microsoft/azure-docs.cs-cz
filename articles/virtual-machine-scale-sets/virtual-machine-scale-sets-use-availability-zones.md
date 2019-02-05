@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/08/2018
 ms.author: cynthn
-ms.openlocfilehash: 771aba1d18dc0cf691c338e06278a356caebda96
-ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
+ms.openlocfilehash: b80ee059459d4c1f4d90d14ee62dcead57596571
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54886233"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55697037"
 ---
 # <a name="create-a-virtual-machine-scale-set-that-uses-availability-zones"></a>Vytvoření škálovací sady virtuálního počítače, který používá zóny dostupnosti
 
@@ -81,7 +81,7 @@ Proces vytvoření škálovací sady, který využívá zónu dostupnosti je ste
 
 Proces vytvoření škálovací sady, který využívá zónu dostupnosti je stejný jako podrobné v [Začínáme článku](quick-create-cli.md). K používání zón dostupnosti, musíte vytvořit svou škálovací sadu v podporované oblasti Azure.
 
-Přidat `--zones` parametr [az vmss vytvořit](/cli/azure/vmss#az_vmss_create) příkaz a zadejte zóně, ve které chcete použít (například zóny *1*, *2*, nebo *3*). Následující příklad vytvoří škálovací sadu s názvem pro jednu zónu *myScaleSet* v zóně *1*:
+Přidat `--zones` parametr [az vmss vytvořit](/cli/azure/vmss) příkaz a zadejte zóně, ve které chcete použít (například zóny *1*, *2*, nebo *3*). Následující příklad vytvoří škálovací sadu s názvem pro jednu zónu *myScaleSet* v zóně *1*:
 
 ```azurecli
 az vmss create \

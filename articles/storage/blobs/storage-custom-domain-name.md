@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 06/26/2018
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: bbbb7f96ebf14781e2f461f5ffbb3e1172595928
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: f0fe4bef436576bec90d1d770d262c2c22d280a3
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55241283"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55694580"
 ---
 # <a name="configure-a-custom-domain-name-for-your-azure-storage-account"></a>Konfigurace vlastního názvu domény pro váš účet úložiště Azure
 
@@ -154,7 +154,7 @@ Po vlastní domény byl úspěšně odebrán, zobrazí se oznámení na portálu
 
 ### <a name="azure-cli"></a>Azure CLI
 
-K odebrání registrace vlastní domény, použijte [aktualizace účtu úložiště az](https://docs.microsoft.com/cli/azure/storage/account#az_storage_account_update) rozhraní příkazového řádku příkaz a pak zadejte prázdný řetězec (`""`) pro `--custom-domain` hodnota argumentu.
+K odebrání registrace vlastní domény, použijte [aktualizace účtu úložiště az](https://docs.microsoft.com/cli/azure/storage/account) rozhraní příkazového řádku příkaz a pak zadejte prázdný řetězec (`""`) pro `--custom-domain` hodnota argumentu.
 
 * Formát příkazu:
 

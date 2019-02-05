@@ -14,25 +14,25 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 12/13/2017
 ms.author: cynthn
-ms.openlocfilehash: dd254f0640e17bdc055171dde69b04103f389354
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
+ms.openlocfilehash: a12952c73863d10c4fffd013ab594a83ab1b6433
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55659826"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55729451"
 ---
 # <a name="open-ports-and-endpoints-to-a-linux-vm-with-the-azure-cli"></a>Otevření portů a koncových bodů pro virtuální počítač s Linuxem pomocí Azure CLI
 
 Otevření portu nebo vytvoření koncového bodu, virtuálního počítače (VM) v Azure vytvořte filtr sítě pro podsíť nebo síťové rozhraní virtuálního počítače. Tyto filtry, které řídí příchozí a odchozí přenosy dat, umístíte na skupinu zabezpečení sítě, který je připojen k prostředku, který přijímá provoz. Použijeme běžným Příkladem webového provozu na portu 80. Tento článek popisuje postup otevření portů k virtuálnímu počítači pomocí rozhraní příkazového řádku Azure. 
 
 
-Chcete-li vytvořit skupinu zabezpečení sítě a pravidel, je třeba nejnovější [rozhraní příkazového řádku Azure](/cli/azure/install-az-cli2) nainstalovaný a přihlášení k účtu Azure pomocí [az login](/cli/azure/reference-index#az_login).
+Chcete-li vytvořit skupinu zabezpečení sítě a pravidel, je třeba nejnovější [rozhraní příkazového řádku Azure](/cli/azure/install-az-cli2) nainstalovaný a přihlášení k účtu Azure pomocí [az login](/cli/azure/reference-index).
 
 V následujících příkladech nahraďte ukázkové názvy parametrů s vlastními hodnotami. Zahrnout názvy parametrů příklad *myResourceGroup*, *myNetworkSecurityGroup*, a *myVnet*.
 
 
 ## <a name="quickly-open-a-port-for-a-vm"></a>Rychle otevření portu pro virtuální počítač
-Pokud potřebujete rychle otevření portu pro virtuální počítač ve scénáři pro vývoj/testování, můžete použít [az vm open-port](/cli/azure/vm#az_vm_open_port) příkazu. Tento příkaz vytvoří skupinu zabezpečení sítě, přidá pravidlo a použije ho k virtuálnímu počítači nebo podsítě. Následující příklad otevře port *80* na virtuálním počítači s názvem *myVM* ve skupině prostředků s názvem *myResourceGroup*.
+Pokud potřebujete rychle otevření portu pro virtuální počítač ve scénáři pro vývoj/testování, můžete použít [az vm open-port](/cli/azure/vm) příkazu. Tento příkaz vytvoří skupinu zabezpečení sítě, přidá pravidlo a použije ho k virtuálnímu počítači nebo podsítě. Následující příklad otevře port *80* na virtuálním počítači s názvem *myVM* ve skupině prostředků s názvem *myResourceGroup*.
 
 ```azure-cli
 az vm open-port --resource-group myResourceGroup --name myVM --port 80
@@ -51,7 +51,7 @@ az network nsg create \
     --name myNetworkSecurityGroup
 ```
 
-Přidat pravidlo s [az network nsg pravidlo vytvořte](/cli/azure/network/nsg/rule#az_network_nsg_rule_create) povolit provoz protokolu HTTP na svůj webový server (nebo upravit vlastní scénáře, jako je například přístup nebo databáze připojení SSH). Následující příklad vytvoří pravidlo *myNetworkSecurityGroupRule* umožňující provoz TCP na portu 80:
+Přidat pravidlo s [az network nsg pravidlo vytvořte](/cli/azure/network/nsg/rule) povolit provoz protokolu HTTP na svůj webový server (nebo upravit vlastní scénáře, jako je například přístup nebo databáze připojení SSH). Následující příklad vytvoří pravidlo *myNetworkSecurityGroupRule* umožňující provoz TCP na portu 80:
 
 ```azurecli
 az network nsg rule create \
@@ -65,7 +65,7 @@ az network nsg rule create \
 
 
 ## <a name="apply-network-security-group-to-vm"></a>Použít skupinu zabezpečení sítě k virtuálnímu počítači
-Přidružení skupiny zabezpečení sítě virtuálního počítače a síťové rozhraní (NIC) s [az network nic update](/cli/azure/network/nic#az_network_nic_update). Následující příklad přiřadí existující síťovou kartu s názvem *myNic* se skupinou zabezpečení sítě s názvem *myNetworkSecurityGroup*:
+Přidružení skupiny zabezpečení sítě virtuálního počítače a síťové rozhraní (NIC) s [az network nic update](/cli/azure/network/nic). Následující příklad přiřadí existující síťovou kartu s názvem *myNic* se skupinou zabezpečení sítě s názvem *myNetworkSecurityGroup*:
 
 ```azurecli
 az network nic update \

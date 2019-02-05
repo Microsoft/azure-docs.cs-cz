@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 01/11/2019
 ms.author: snehaa
-ms.openlocfilehash: 619369972991bab0b23e7e9ae4e0a146f875e59a
-ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
+ms.openlocfilehash: 2c89780722e1f3038f99ab0a4c85cd2d2ecbe624
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/26/2019
-ms.locfileid: "55079252"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55699481"
 ---
 # <a name="azure-migrate---frequently-asked-questions-faq"></a>Azure Migrate – nejčastější dotazy (FAQ)
 
@@ -108,7 +108,7 @@ Zjišťování na základě agenta je druhá možnost dostupná vedle zjišťov�
 
 ### <a name="would-there-be-any-performance-impact-on-the-analyzed-esxi-host-environment"></a>By existovat ovlivnit výkon prostředí analyzované hostitele ESXi?
 
-V případě třídy [jedním z přístupů doba zjišťování](https://docs.microsoft.com/azure/migrate/concepts-collector#discovery-methods), aby se daly shromažďovat data o výkonu, úroveň statistiky na vCenter serveru byste museli být nastavená na 3. Nastavení na této úrovni může shromažďovat velké množství dat, která bude uložena v databázi serveru vCenter pro řešení potíží. Proto to může způsobit problémy s výkonem v systému vCenter Server. Na hostiteli ESXi by mělo pouze nepatrný dopad.
+V případě třídy [jedním z přístupů doba zjišťování](https://docs.microsoft.com/azure/migrate/concepts-collector), aby se daly shromažďovat data o výkonu, úroveň statistiky na vCenter serveru byste museli být nastavená na 3. Nastavení na této úrovni může shromažďovat velké množství dat, která bude uložena v databázi serveru vCenter pro řešení potíží. Proto to může způsobit problémy s výkonem v systému vCenter Server. Na hostiteli ESXi by mělo pouze nepatrný dopad.
 
 Zavedli jsme průběžné profilace údaje o výkonu (což je ve verzi preview). Průběžné profilací, již není potřeba měnit statistiky systému vCenter Server úroveň se spustit posouzení na základě výkonu. Zařízení kolektoru bude nyní profilu místních počítačů k měření data o výkonu virtuálních počítačů. Toto musí téměř žádný vliv na výkon na hostitelích ESXi, stejně jako v systému vCenter Server.
 

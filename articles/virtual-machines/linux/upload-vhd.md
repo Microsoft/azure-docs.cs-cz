@@ -15,12 +15,12 @@ ms.devlang: azurecli
 ms.topic: article
 ms.date: 10/17/2018
 ms.author: cynthn
-ms.openlocfilehash: bbbcc1b3b505aae4bcc6869359ca27a8cd3fd1be
-ms.sourcegitcommit: 17633e545a3d03018d3a218ae6a3e4338a92450d
+ms.openlocfilehash: 47227b1f9ceb4ba9e35180aa0cb171d1edd5bb9a
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/22/2018
-ms.locfileid: "49638101"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55696842"
 ---
 # <a name="create-a-linux-vm-from-a-custom-disk-with-the-azure-cli"></a>Vytvoření virtuálního počítače s Linuxem z vlastního disku pomocí rozhraní příkazového řádku Azure
 
@@ -82,7 +82,7 @@ Viz také [poznámky k instalaci Linux](create-upload-generic.md#general-linux-i
 > 
 > 
 
-## <a name="option-1-upload-a-vhd"></a>Možnost 1: Nahrání virtuálního pevného disku
+## <a name="option-1-upload-a-vhd"></a>Option 1: Nahrání virtuálního pevného disku
 
 Můžete nahrát vlastní virtuální pevný disk, které máte spuštěné na místním počítači nebo které jste vyexportovali z jiného cloudu. Pokud chcete použít virtuální pevný disk k vytvoření nového virtuálního počítače Azure, budete potřebovat k nahrání virtuálního pevného disku do účtu úložiště a vytvoření spravovaného disku z virtuálního pevného disku. Další informace najdete v tématu [Přehled služby Azure Managed Disks](../windows/managed-disks-overview.md).
 
@@ -100,7 +100,7 @@ az group create \
 
 ### <a name="create-a-storage-account"></a>vytvořit účet úložiště
 
-Vytvoření účtu úložiště pro váš vlastní disk a virtuální počítače s [vytvořit účet úložiště az](/cli/azure/storage/account#az-storageaccount-create). Následující příklad vytvoří účet úložiště s názvem *mystorageaccount* ve skupině prostředků vytvořili dříve:
+Vytvoření účtu úložiště pro váš vlastní disk a virtuální počítače s [vytvořit účet úložiště az](/cli/azure/storage/account). Následující příklad vytvoří účet úložiště s názvem *mystorageaccount* ve skupině prostředků vytvořili dříve:
 
 ```azurecli
 az storage account create \
@@ -172,7 +172,7 @@ az disk create \
     --name myManagedDisk \
   --source https://mystorageaccount.blob.core.windows.net/mydisks/myDisk.vhd
 ```
-## <a name="option-2-copy-an-existing-vm"></a>Možnost 2: Kopírování existujícího virtuálního počítače
+## <a name="option-2-copy-an-existing-vm"></a>Option 2: Zkopírovat existující virtuální počítač
 
 Můžete také vytvořit vlastní virtuální počítač v Azure a potom zkopírujte disk s operačním systémem a připojí nový virtuální počítač vytvořit další kopii. To je v pořádku pro testování, ale pokud chcete používat existujícího virtuálního počítače Azure jako model pro více nových virtuálních počítačů, vytvořte *image* místo. Další informace o vytváření image z existujícího virtuálního počítače Azure najdete v tématu [vytvořit vlastní image virtuálního počítače Azure pomocí rozhraní příkazového řádku](tutorial-custom-images.md).
 

@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 01/31/2019
 ms.author: mbaldwin
 ms.openlocfilehash: d8e33113ca9f0886a4cef1c8f9acb855b32c2973
-ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55513544"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55735491"
 ---
 ## <a name="preventative"></a>Preventivní
 

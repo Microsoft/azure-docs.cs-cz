@@ -5,17 +5,17 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: tutorial
-ms.date: 01/30/2019
+ms.date: 02/01/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry
-ms.openlocfilehash: 3446548a89c33e6eb8026e41fbea01ee651b2c88
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.openlocfilehash: c84d876828ac96bfb44b84e99b13489d51ae3370
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55488063"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55694019"
 ---
 # <a name="tutorial-azure-ad-password-reset-from-the-login-screen"></a>Kurz: Resetování hesla Azure AD z přihlašovací obrazovky
 
@@ -33,7 +33,7 @@ V tomto kurzu povolíte uživatelům resetovat svá hesla z přihlašovací obra
    * [Hybridní Azure připojené k AD](../device-management-hybrid-azuread-joined-devices-setup.md), s připojením k řadiči domény.
 * Je nutné povolit Azure AD samoobslužné resetování hesla.
 * Pokud vaše zařízení s Windows 10 jsou za proxy server nebo brána firewall, je nutné přidat adresy URL, `passwordreset.microsoftonline.com` a `ajax.aspnetcdn.com` do seznamu povolené adresy URL HTTPS provoz (port 443).
-* Kontrola omezení níže než to zkusíte to ve vašem prostředí.
+* Kontrola omezení pod před pokusem o tuto funkci ve vašem prostředí.
 
 ## <a name="configure-reset-password-link-using-intune"></a>Konfigurace odkazu na resetování hesla pomocí Intune
 
@@ -87,7 +87,7 @@ Právě jste vytvořili a přiřadili zásady konfigurace zařízení a povolili
 
 ## <a name="configure-reset-password-link-using-the-registry"></a>Konfigurace odkazu na resetování hesla pomocí registru
 
-1. Přihlaste se k počítači s Windows pomocí přihlašovacích údajů pro správu.
+1. Přihlaste se k počítači Windows pomocí přihlašovacích údajů pro správu
 2. Spusťte program **regedit** jako správce.
 3. Nastavte následující klíč registru:
    * `HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\AzureADAccount`
@@ -99,13 +99,15 @@ Co se po konfiguraci a přiřazení zásad změnilo pro uživatele? Jak se dozv�
 
 ![Přihlašovací obrazovka][LoginScreen]
 
-Při pokusu o přihlášení se teď uživatelům na přihlašovací obrazovce zobrazí odkaz Resetovat heslo, který otevře prostředí samoobslužného resetování hesla. Tato funkce umožňuje uživatelům resetovat své heslo, aniž by museli použít jiné zařízení pro přístup k webovému prohlížeči.
+Když uživatel se pokusí přihlásit, uvidí teď resetování prostředí na přihlašovací obrazovce odkaz resetovat heslo, které se otevře hesla pomocí samoobslužné služby. Tato funkce umožňuje uživatelům resetovat své heslo, aniž by museli použít jiné zařízení pro přístup k webovému prohlížeči.
 
 Vaši uživatelé najdou pokyny k použití této funkce v tématu popisujícím [resetování hesla k pracovnímu nebo školnímu účtu](../user-help/active-directory-passwords-update-your-own-password.md#reset-password-at-sign-in).
 
 Protokol auditu služby Azure AD bude obsahovat informace o IP adrese a typu klienta, kde došlo k resetování hesla.
 
 ![Příklad resetování hesla na přihlašovací obrazovce v protokolu auditu služby Azure AD](media/tutorial-sspr-windows/windows-sspr-azure-ad-audit-log.png)
+
+Když uživatelům resetovat své heslo z přihlašovací obrazovky zařízení s Windows 10, se vytvoří nízkou úrovní oprávnění dočasné účet s názvem "defaultuser1". Tento účet slouží k zabezpečení procesu resetování hesla. Účet samotný má náhodně generované heslo, nezobrazí se pro přihlášení k zařízení a bude automaticky odstraněna po uživatel může resetovat své heslo. Může existovat více profilů "defaultuser", ale můžete bezpečně ignorovat.
 
 ## <a name="limitations"></a>Omezení
 

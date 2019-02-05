@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 02/15/2018
 ms.author: priyamo
-ms.openlocfilehash: 03e22ae9aaa3ab967b55443ccbd933c265510227
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 42b0ab15f43d301629b9fbb3208ba24eae8c227e
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55180105"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55694597"
 ---
 # <a name="configure-managed-identities-for-azure-resources-on-a-virtual-machine-scale-set-using-azure-cli"></a>Konfigurace spravovaných identit pro prostředky Azure na virtuální počítač škálovací sady s použitím rozhraní příkazového řádku Azure
 
@@ -113,7 +113,7 @@ Pokud máte virtuální počítač, který už je systém přiřadil spravovanou
 az vmss update -n myVM -g myResourceGroup --set identity.type="none"
 ```
 
-Chcete-li odebrat spravovaných identit pro rozšíření virtuálního počítače prostředky Azure (plánovaná k převedení na zastaralého v lednu 2019), použijte [az vmss identity odebrat](/cli/azure/vmss/identity/#az-vmss-remove-identity) příkazu odeberte systém přiřadil spravovaných identit VMSS:
+Chcete-li odebrat spravovaných identit pro rozšíření virtuálního počítače prostředky Azure (plánovaná k převedení na zastaralého v lednu 2019), použijte [az vmss identity odebrat](/cli/azure/vmss/identity/) příkazu odeberte systém přiřadil spravovaných identit VMSS:
 
 ```azurecli-interactive
 az vmss extension delete -n ManagedIdentityExtensionForWindows -g myResourceGroup -vmss-name myVMSS
@@ -190,7 +190,7 @@ Odpověď obsahuje podrobnosti o uživateli přiřazena spravovanou identitu vyt
    }
    ```
 
-2. Přiřadit uživateli přiřazena spravovaná identita na VMSS pomocí [az vmss identity přiřadit](/cli/azure/vmss/identity#az-vm-assign-identity). Nezapomeňte nahradit hodnoty parametrů `<RESOURCE GROUP>` a `<VMSS NAME>` vlastními hodnotami. `<USER ASSIGNED IDENTITY>` Uživatelsky přiřazené identity prostředku je `name` vlastnost, protože vytvořili v předchozím kroku:
+2. Přiřadit uživateli přiřazena spravovaná identita na VMSS pomocí [az vmss identity přiřadit](/cli/azure/vmss/identity). Nezapomeňte nahradit hodnoty parametrů `<RESOURCE GROUP>` a `<VMSS NAME>` vlastními hodnotami. `<USER ASSIGNED IDENTITY>` Uživatelsky přiřazené identity prostředku je `name` vlastnost, protože vytvořili v předchozím kroku:
 
     ```azurecli-interactive
     az vmss identity assign -g <RESOURCE GROUP> -n <VMSS NAME> --identities <USER ASSIGNED IDENTITY>

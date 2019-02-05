@@ -7,20 +7,16 @@ ms.service: event-grid
 ms.topic: conceptual
 ms.date: 01/06/2019
 ms.author: spelluru
-ms.openlocfilehash: 8660f09c41cf6226f2ffb173508d37c260522b80
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: a15797e9b181aa877b6dfa3350e69b210af5885e
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54474239"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55731763"
 ---
 # <a name="dead-letter-and-retry-policies"></a>Zásady opakování a nedoručené zprávy
 
 Při vytváření odběru událostí, můžete přizpůsobit nastavení pro doručování událostí. V tomto článku se dozvíte, jak nastavit umístění nedoručených zpráv a přizpůsobit nastavení opakování. Informace o těchto funkcích najdete v tématu [doručování zpráv služby Event Grid a zkuste to znovu](delivery-and-retry.md).
-
-## <a name="install-preview-feature"></a>Nainstalujte funkci ve verzi preview
-
-[!INCLUDE [event-grid-preview-feature-note.md](../../includes/event-grid-preview-feature-note.md)]
 
 ## <a name="set-dead-letter-location"></a>Nastavit umístění onta nedoručených zpráv
 
@@ -29,10 +25,6 @@ Pokud chcete nastavit umístění nedoručených zpráv, potřebujete účet úl
 ### <a name="azure-cli"></a>Azure CLI
 
 ```azurecli-interactive
-# If you have not already installed the extension, do it now.
-# This extension is required for preview features.
-az extension add --name eventgrid
-
 containername=testcontainer
 
 topicid=$(az eventgrid topic show --name demoTopic -g gridResourceGroup --query id --output tsv)
@@ -47,13 +39,12 @@ az eventgrid event-subscription create \
 
 Chcete-li vypnout dead-lettering, spusťte znovu příkaz pro vytvoření odběru událostí, ale neposkytují hodnotu `deadletter-endpoint`. Není nutné odstranit odběr události.
 
+> [!NOTE]
+> Pokud používáte rozhraní příkazového řádku Azure v místním počítači, použijte Azure CLI verze 2.0.56 nebo vyšší. Pokyny k instalaci nejnovější verze Azure CLI najdete v tématu [instalace rozhraní příkazového řádku Azure](/cli/azure/install-azure-cli).
+
 ### <a name="powershell"></a>PowerShell
 
 ```azurepowershell-interactive
-# If you have not already installed the module, do it now.
-# This module is required for preview features.
-Install-Module -Name AzureRM.EventGrid -AllowPrerelease -Force -Repository PSGallery
-
 $containername = "testcontainer"
 
 $topicid = (Get-AzureRmEventGridTopic -ResourceGroupName gridResourceGroup -Name demoTopic).Id
@@ -68,6 +59,9 @@ New-AzureRmEventGridSubscription `
 
 Chcete-li vypnout dead-lettering, spusťte znovu příkaz pro vytvoření odběru událostí, ale neposkytují hodnotu `DeadLetterEndpoint`. Není nutné odstranit odběr události.
 
+> [!NOTE]
+> Pokud používáte Azure PowerShell na místním počítači, pomocí prostředí Azure PowerShell verze 1.1.0 nebo vyšší. Stáhněte a nainstalujte nejnovější Azure PowerShell z [soubory ke stažení Azure](https://azure.microsoft.com/downloads/).
+
 ## <a name="set-retry-policy"></a>Nastavit zásady opakování
 
 Při vytváření odběr Event gridu, můžete nastavit hodnoty pro jak dlouho by měl zkuste doručování událostí služby Event Grid. Ve výchozím nastavení služby Event Grid se pokusí za 24 hodin (1 440 minut) nebo 30krát. Pro váš odběr služby event grid můžete nastavit některé z těchto hodnot. Hodnota time to live události musí být celé číslo od 1 do 1440. Hodnota pro maximální počet opakování musí být celé číslo od 1 do 30.
@@ -79,10 +73,6 @@ Nejde nakonfigurovat [plán opakování](delivery-and-retry.md#retry-schedule-an
 Pokud chcete nastavit událost time-to-live na jinou hodnotu než 1 440 minut, použijte:
 
 ```azurecli-interactive
-# if you have not already installed the extension, do it now.
-# This extension is required for preview features.
-az extension add --name eventgrid
-
 az eventgrid event-subscription create \
   -g gridResourceGroup \
   --topic-name <topic_name> \
@@ -109,10 +99,6 @@ Nastavíte-li `event-ttl` a `max-deliver-attempts`, služby Event Grid použije 
 Pokud chcete nastavit událost time-to-live na jinou hodnotu než 1 440 minut, použijte:
 
 ```azurepowershell-interactive
-# If you have not already installed the module, do it now.
-# This module is required for preview features.
-Install-Module -Name AzureRM.EventGrid -AllowPrerelease -Force -Repository PSGallery
-
 $topicid = (Get-AzureRmEventGridTopic -ResourceGroupName gridResourceGroup -Name demoTopic).Id
 
 New-AzureRmEventGridSubscription `

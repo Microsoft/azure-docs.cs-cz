@@ -8,14 +8,14 @@ manager: cgronlun
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: quickstart
-ms.date: 10/21/2018
+ms.date: 02/01/2019
 ms.author: erhopf
-ms.openlocfilehash: 8dcde1231d5e2d73b868411cb22b8420843197be
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 4ca07416c615984b4eb6c7799ff17d9fbe43fa3b
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55458241"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55691466"
 ---
 # <a name="quickstart-look-up-words-with-bilingual-dictionary-using-python"></a>Rychlý start: Vyhledávání slov s využitím dvojjazyčného slovníku pomocí Pythonu
 
@@ -64,7 +64,7 @@ else:
 #subscriptionKey = 'put_your_key_here'
 ```
 
-V současné době je pro službu Translator Text dostupný jeden koncový bod, který je nastavený jako `base_url`. `path` nastaví trasu `dictionary/lookup` a určuje, že chceme cílit na rozhraní API verze 3.
+Translator Text globální koncový bod je nastaven jako `base_url`. `path` nastaví trasu `dictionary/lookup` a určuje, že chceme cílit na rozhraní API verze 3.
 
 `params` slouží k nastavení jazyků zdroje a výstupu. V této ukázce používáme angličtinu a španělštinu: `en` a `es`.
 

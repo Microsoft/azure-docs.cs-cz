@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 09/14/2017
 ms.author: echuvyrov
-ms.openlocfilehash: cf0fad78613d063a0f1270597cf67eadd996124a
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.openlocfilehash: 1e270ce13865684f32623fd964d4a41642d95342
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47406903"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55695552"
 ---
 # <a name="create-a-complete-linux-virtual-machine-infrastructure-in-azure-with-terraform"></a>Vytvoření kompletní infrastrukturu virtuálních počítačů Linux v Azure s využitím Terraformu
 
@@ -105,7 +105,7 @@ resource "azurerm_public_ip" "myterraformpublicip" {
 ```
 
 
-## <a name="create-network-security-group"></a>Vytvořit skupinu zabezpečení sítě
+## <a name="create-network-security-group"></a>Create Network Security Group
 Skupiny zabezpečení sítě řízení toku síťového provozu do a z virtuálního počítače. Následující části se vytvoří skupina zabezpečení sítě s názvem *myNetworkSecurityGroup* a definuje pravidlo, které umožní provoz SSH na portu TCP 22:
 
 ```tf
@@ -455,7 +455,7 @@ Pokud vše vypadá v pořádku a jste připraveni vytvořit infrastrukturu v Azu
 terraform apply
 ```
 
-Po dokončení Terraformu infrastruktury virtuálních počítačů je připraven. Získat veřejnou IP adresu vašeho virtuálního počítače s [az vm show](/cli/azure/vm#az_vm_show):
+Po dokončení Terraformu infrastruktury virtuálních počítačů je připraven. Získat veřejnou IP adresu vašeho virtuálního počítače s [az vm show](/cli/azure/vm):
 
 ```azurecli
 az vm show --resource-group myResourceGroup --name myVM -d --query [publicIps] --o tsv

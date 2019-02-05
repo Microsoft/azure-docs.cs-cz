@@ -10,18 +10,21 @@ author: ericlicoding
 ms.author: amlstudiodocs
 ms.custom: seodec18, previous-title='Dedicated capacity for batch execution service jobs - Azure Machine Learning Studio | Microsoft Docs'
 ms.date: 04/19/2017
-ms.openlocfilehash: 923ce9b5840ec8d99234b9a3b869005ff59848e3
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.openlocfilehash: 55961895dde7cb2770f2180911a78f1e31c741e3
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55494610"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55697496"
 ---
 # <a name="azure-batch-service-for-azure-machine-learning-studio-jobs"></a>Služba Azure Batch pro úlohy Azure Machine Learning Studio
 
 Machine Learning fondu služby Batch zpracování poskytuje spravované zákazníkem škálování pro spuštění služby Azure Machine Learning služby Batch. Klasické dávkové zpracování pro strojové učení probíhá v prostředí s více tenanty, která omezuje počet souběžných úloh, které můžete odeslat a úlohy se zařadí do fronty na základě first-in-first-out. Tento nejistoty znamená, že nelze předvídat přesně kdy se budou spouštět vaše úlohy.
 
 Zpracování fondu služby batch můžete vytvořit fondy, ve kterých můžete odeslat dávkových úloh Hive. Řídíte velikost fondu a do které fondu je úloha odeslána. Úlohy BES se spouští v vlastní zpracování místo poskytování zpracování předvídatelný výkon a schopnost vytvářet fondy zdrojů, které odpovídají zatížení, která odešlete.
+
+> [!NOTE]
+> Musí mít nový správce prostředků na základě webové služby Machine Learning k vytvoření fondu. Po vytvoření můžete ve fondu spustit libovolný BES webová služba i nový Resource Manageru na základě a classic.
 
 ## <a name="how-to-use-batch-pool-processing"></a>Použití fondu Batch zpracování
 
@@ -36,7 +39,7 @@ Po vytvoření účtu pomocí adresy URL služby fondu a autorizačního klíče
 
 ![Architektura fond služby batch.](./media/dedicated-capacity-for-bes-jobs/pool-architecture.png)
 
-Vytvoření fondů zavoláním operace vytvořit fond na adresu URL služby fond, který jste získali šablon stylů CSS. Při vytváření fondu zadejte že počet virtuálních počítačů a adresu URL swagger.json nové Resource Manageru na základě webové služby Machine Learning. Tato webová služba neposkytujeme k navázání fakturační přidružení. Služba fondu služby Batch používá swagger.json k fondu přidružit plán fakturace. Můžete spustit všechny BES webové služby založené na obou nové Resource Manageru a classic zvolíte ve fondu.
+Vytvoření fondů zavoláním operace vytvořit fond na adresu URL služby fond, který jste získali šablon stylů CSS. Při vytváření fondu zadejte že počet virtuálních počítačů a adresu URL swagger.json nové Resource Manageru na základě webové služby Machine Learning. Tato webová služba neposkytujeme k navázání fakturační přidružení. Služba fondu služby Batch používá swagger.json k fondu přidružit plán fakturace. Webová služba i nový správce prostředků na základě a classic, můžete spustit všechny BES ve fondu.
 
 Můžete použít libovolné webové službě založené na nové Resource Manageru, ale mějte na paměti, že fakturace pro úlohy, které se účtují proti fakturační plán přidružený k této službě. Můžete chtít vytvořit webovou službu a nové fakturační plán přímo na spouštění úloh fondu služby Batch.
 

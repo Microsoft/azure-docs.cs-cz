@@ -4,17 +4,17 @@ description: Zjistěte, jak moduly a zařízení IoT Edge může fungovat i bez 
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 09/20/2018
+ms.date: 01/30/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: 4c4713bade487ba46f1abdc6d0a76db3e81e38b1
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 7bf672715b45233807ab848c78aeb1bed2d352e9
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53096940"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55699342"
 ---
 # <a name="understand-extended-offline-capabilities-for-iot-edge-devices-modules-and-child-devices-preview"></a>Seznamte se s rozšířenou offline funkcí pro zařízení IoT Edge, moduly a podřízená zařízení (preview)
 
@@ -25,7 +25,7 @@ Azure IoT Edge podporuje rozšířené offline operace s vašimi zařízeními I
 
 ## <a name="how-it-works"></a>Jak to funguje
 
-Když se zařízení IoT Edge dostane do offline režimu, Centrum Edge se provede na tři role. Nejprve ukládají se všechny zprávy, které přejde nadřazený a uloží je, dokud se zařízení znovu připojí. Za druhé funguje jménem služby IoT Hub k ověřování moduly a podřízená zařízení může i nadále fungovat. Třetí umožňuje komunikaci mezi zařízeními podřízený, které by normálně přejít prostřednictvím služby IoT Hub. 
+Když se zařízení IoT Edge dostane do offline režimu, Centrum IoT Edge přebírá tři role. Nejprve ukládají se všechny zprávy, které přejde nadřazený a uloží je, dokud se zařízení znovu připojí. Za druhé funguje jménem služby IoT Hub k ověřování moduly a podřízená zařízení může i nadále fungovat. Třetí umožňuje komunikaci mezi zařízeními podřízený, které by normálně přejít prostřednictvím služby IoT Hub. 
 
 Následující příklad ukazuje, jak funguje scénáři IoT Edge v režimu offline:
 
@@ -39,7 +39,7 @@ Následující příklad ukazuje, jak funguje scénáři IoT Edge v režimu offl
 
 3. **Přejdete do režimu offline.**
 
-   Při odpojení ze služby IoT Hub, můžete zařízení IoT Edge, jeho nasazené moduly a všechny podřízené objekty zařízení IoT fungovat po neomezenou dobu. Moduly a podřízená zařízení můžete spustit a restartovat díky ověřování pomocí Centrum Edge při offline. Ukládají se místně telemetrie upstream vázán ke službě IoT Hub. Komunikace mezi moduly nebo mezi zařízeními IoT podřízené zachovaný prostřednictvím přímé metody nebo zprávy. 
+   Při odpojení ze služby IoT Hub, můžete zařízení IoT Edge, jeho nasazené moduly a všechny podřízené objekty zařízení IoT fungovat po neomezenou dobu. Moduly a podřízená zařízení můžete spustit a restartovat díky ověřování pomocí centra IoT Edge při offline. Ukládají se místně telemetrie upstream vázán ke službě IoT Hub. Komunikace mezi moduly nebo mezi zařízeními IoT podřízené zachovaný prostřednictvím přímé metody nebo zprávy. 
 
 4. **Znovu připojit a znovu synchronizujte službou IoT Hub.**
 
@@ -55,7 +55,7 @@ Pouze zařízení Edge IoT se dá přidat jako podřízenou zařízení.
 
 Zařízení IoT Edge a jejich zařízení přiřazené podřízené, můžou fungovat po synchronizaci počáteční, jednorázové po neomezenou dobu offline. Úložiště zpráv, které však závisí na time to live (TTL) nastavení a dostupné místo na disku pro ukládání zpráv. 
 
-## <a name="set-up-an-edge-device"></a>Nastavit hraniční zařízení
+## <a name="set-up-an-iot-edge-device"></a>Nastavení zařízení IoT Edge
 
 Pro zařízení IoT Edge rozšířit možnosti rozšířené offline do zařízení IoT podřízené musíte deklarovat vztahy nadřazenosti a podřízenosti na webu Azure Portal.
 
@@ -71,7 +71,7 @@ Nadřazené zařízení může mít více podřízených zařízení, ale podř�
 
 Pokud chcete zlepšit odolnost, se doporučuje zadejte adresy serverů DNS ve svém prostředí. Například v Linuxu, aktualizovat **/etc/docker/daemon.json** (můžete potřebovat pro vytvoření souboru) zahrnout:
 
-```
+```json
 {
     "dns": [“1.1.1.1”]
 }
@@ -82,13 +82,13 @@ Pokud používáte místní server DNS, nahraďte 1.1.1.1 IP adresu místního s
 
 ## <a name="optional-offline-settings"></a>Volitelná nastavení
 
-Pokud očekáváte, že vaše zařízení chcete vyzkoušet dlouho offline období, po které chcete shromažďovat všechny zprávy, které byly vygenerovány, nakonfigurovat Centrum Edge tak, aby ho můžete uložit všechny zprávy. Existují dvě změny, můžete pro Centrum Edge umožňuje dlouhodobé úložiště zpráv. Nejdřív zvýšit time to live nastavení a pak přidejte další místo na disku pro úložiště zpráv. 
+Pokud budete chtít shromažďovat všechny zprávy, které generují zařízení během období dlouhé offline, konfigurace centra IoT Edge tak, aby bylo možné ukládat všechny zprávy. Existují dvě změny, můžete pro Centrum IoT Edge umožňuje dlouhodobé úložiště zpráv. Nejprve zvýšit time to live nastavení. Pak přidejte další místo na disku pro úložiště zpráv. 
 
 ### <a name="time-to-live"></a>Hodnota TTL (Time to Live)
 
 Time to live nastavení je množství času (v sekundách), který zprávu počkat, který bude doručen před vypršením platnosti. Výchozí hodnota je 7200 sekund (dva hodin). 
 
-Toto nastavení je požadovaná vlastnost Centrum Edge, která je uložena ve dvojčeti modulu. Můžete ho nakonfigurovat na webu Azure Portal, v **konfigurovat rozšířená nastavení modulu Runtime Edge** části nebo přímo v nasazení manifestu. 
+Toto nastavení je požadovaná vlastnost centra IoT Edge, která je uložena ve dvojčeti modulu. Můžete ho nakonfigurovat na webu Azure Portal, v **konfigurovat rozšířená nastavení modulu Runtime Edge** části nebo přímo v nasazení manifestu. 
 
 ```json
 "$edgeHub": {
@@ -104,16 +104,25 @@ Toto nastavení je požadovaná vlastnost Centrum Edge, která je uložena ve dv
 
 ### <a name="additional-offline-storage"></a>Další úložiště v režimu offline
 
-Ve výchozím nastavení zprávy jsou uloženy v systému souborů kontejneru Centrum Edge. Pokud toto množství úložiště není dostatečná pro vaše potřeby v režimu offline, který vyhradíte místní úložiště na zařízení IoT Edge. Je potřeba vytvořit proměnnou prostředí pro Centrum Edge, který odkazuje na složku v kontejneru úložiště. Pak použijte možnosti vytvořit pro přiřazení této složky úložiště do složky na hostitelském počítači. 
+Zprávy jsou uloženy ve výchozím nastavení v systému souborů kontejneru hraničních zařízeních IoT hub. Pokud toto množství úložiště není dostatečná pro vaše potřeby v režimu offline, který vyhradíte místní úložiště na zařízení IoT Edge. Vytvořte proměnnou prostředí pro Centrum IoT Edge, který odkazuje na složku v kontejneru úložiště. Pak použijte možnosti vytvořit pro přiřazení této složky úložiště do složky na hostitelském počítači. 
 
-Na webu Azure Portal v můžete nakonfigurovat proměnné prostředí a možnosti vytvořit pro modul Centrum Edge **konfigurovat rozšířená nastavení modulu Runtime Edge** oddílu. Nebo můžete vytvořit přímo v manifestu nasazení. 
+Můžete nakonfigurovat proměnné prostředí a možnosti vytvořit pro modul IoT Edge hub na webu Azure Portal v **konfigurovat rozšířená nastavení modulu Runtime Edge** oddílu. Nebo můžete vytvořit přímo v manifestu nasazení. 
 
 ```json
 "edgeHub": {
     "type": "docker",
     "settings": {
         "image": "mcr.microsoft.com/azureiotedge-hub:1.0",
-        "createOptions": "{\"HostConfig\":{\"Binds\":[\"<HostStoragePath>:<ModuleStoragePath>\"],\"PortBindings\":{\"8883/tcp\":[{\"HostPort\":\"8883\"}],\"443/tcp\":[{\"HostPort\":\"443\"}],\"5671/tcp\":[{\"HostPort\":\"5671\"}]}}}"
+        "createOptions": {
+            "HostConfig": {
+                "Binds": ["<HostStoragePath>:<ModuleStoragePath>"],
+                "PortBindings": {
+                    "8883/tcp": [{"HostPort":"8883"}],
+                    "443/tcp": [{"HostPort":"443"}],
+                    "5671/tcp": [{"HostPort":"5671"}]
+                }
+            }
+        }
     },
     "env": {
         "storageFolder": {
@@ -125,7 +134,11 @@ Na webu Azure Portal v můžete nakonfigurovat proměnné prostředí a možnost
 }
 ```
 
-Nahraďte `<HostStoragePath>` a `<ModuleStoragePath>` cesta k úložišti cestu; hostitele i modul úložiště hostitele a modul musí být absolutní cesta.  Například `\"Binds\":[\"/etc/iotedge/storage/:/iotedge/storage/"` znamená, že hostitelem cesta `/etc/iotedge/storage` je namapována na cestu kontejneru `/iotedge/storage/`.  Můžete také najít další podrobnosti o CreateOptions field z [docker dokumentace](https://docs.docker.com/engine/api/v1.32/#operation/ContainerCreate).
+Nahraďte `<HostStoragePath>` a `<ModuleStoragePath>` cesta k úložišti cestu; hostitele i modul úložiště hostitele a modul musí být absolutní cesta. V možnosti vytvořit svázat dohromady cesty úložiště hostitele a modulu. Pak vytvořte proměnnou prostředí, která odkazuje na cestu úložiště modulu.  
+
+Například `"Binds":["/etc/iotedge/storage/:/iotedge/storage/"]` znamená, že adresář **/etc/iotedge/storage** na hostiteli systému je namapovaný na adresář **/iotedge/úložiště/** v kontejneru. Dalším příkladem pro systémy Windows, nebo `"Binds":["C:\\temp:C:\\contemp]"` znamená, že adresář **C:\\temp** na hostiteli systému je namapovaný na adresář **C:\\contemp** v kontejneru. 
+
+Můžete také najít další podrobnosti o vytvoření možnosti z [docker dokumentace](https://docs.docker.com/engine/api/v1.32/#operation/ContainerCreate).
 
 ## <a name="next-steps"></a>Další postup
 

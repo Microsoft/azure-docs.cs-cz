@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/05/2018
 ms.author: alkarche
-ms.openlocfilehash: 1902091978233ecaf80f04e3a08c70c20aee42c9
-ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
+ms.openlocfilehash: 861a4d4d64f970a13aba68f831d2148f8a354ef4
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "54000015"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55732154"
 ---
 # <a name="how-to-troubleshoot-functions-runtime-is-unreachable"></a>Řešení potíží s "modul runtime služby functions nedostupný"
 
@@ -71,7 +71,7 @@ V předchozím kroku by neměl připojovací řetězec účtu úložiště byly 
 
 ## <a name="storage-account-credentials-invalid"></a>Neplatná pověření účtu úložiště
 
-Výše uvedené připojovací řetězec účtu úložiště musí být aktualizován, je-li znovu vygenerovat klíče úložiště. [Přečtěte si víc o službě storage zde Správa klíčů](https://docs.microsoft.com/azure/storage/common/storage-create-storage-account#manage-your-storage-account)
+Výše uvedené připojovací řetězec účtu úložiště musí být aktualizován, je-li znovu vygenerovat klíče úložiště. [Přečtěte si víc o službě storage zde Správa klíčů](https://docs.microsoft.com/azure/storage/common/storage-create-storage-account)
 
 ## <a name="storage-account-inaccessible"></a>Účet úložiště je nedostupný
 

@@ -11,16 +11,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 05/23/2018
+ms.date: 02/02/2019
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: f8c3c770cb7e30bda16b4857d5b337923d2417d2
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: e47bb293d53df658641a50a1399ead85667e3225
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53541553"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55692731"
 ---
 # <a name="view-activity-logs-for-rbac-changes"></a>Zobrazení protokolů aktivit pro RBAC změny
 
@@ -53,24 +53,26 @@ Další informace o protokolech aktivit najdete v tématu [zobrazení událostí
 
 ## <a name="azure-powershell"></a>Azure PowerShell
 
-Chcete-li zobrazit protokoly aktivit pomocí Azure Powershellu, použijte [Get-AzureRmLog](/powershell/module/azurerm.insights/get-azurermlog) příkazu.
+[!INCLUDE [az-powershell-update](../../includes/updated-for-az.md)]
+
+Chcete-li zobrazit protokoly aktivit pomocí Azure Powershellu, použijte [Get-AzLog](/powershell/module/az.insights/get-azlog) příkazu.
 
 Tento příkaz vypíše všechny změny přiřazení role v rámci předplatného za posledních sedm dnů:
 
 ```azurepowershell
-Get-AzureRmLog -StartTime (Get-Date).AddDays(-7) | Where-Object {$_.Authorization.Action -like 'Microsoft.Authorization/roleAssignments/*'}
+Get-AzLog -StartTime (Get-Date).AddDays(-7) | Where-Object {$_.Authorization.Action -like 'Microsoft.Authorization/roleAssignments/*'}
 ```
 
 Tento příkaz vypíše všechny změny definice rolí ve skupině prostředků za posledních sedm dnů:
 
 ```azurepowershell
-Get-AzureRmLog -ResourceGroupName pharma-sales-projectforecast -StartTime (Get-Date).AddDays(-7) | Where-Object {$_.Authorization.Action -like 'Microsoft.Authorization/roleDefinitions/*'}
+Get-AzLog -ResourceGroupName pharma-sales-projectforecast -StartTime (Get-Date).AddDays(-7) | Where-Object {$_.Authorization.Action -like 'Microsoft.Authorization/roleDefinitions/*'}
 ```
 
 Tento příkaz jsou uvedeny všechny přiřazení role a role definition změny v rámci předplatného za posledních sedm dnů a zobrazí výsledky v seznamu:
 
 ```azurepowershell
-Get-AzureRmLog -StartTime (Get-Date).AddDays(-7) | Where-Object {$_.Authorization.Action -like 'Microsoft.Authorization/role*'} | Format-List Caller,EventTimestamp,{$_.Authorization.Action},Properties
+Get-AzLog -StartTime (Get-Date).AddDays(-7) | Where-Object {$_.Authorization.Action -like 'Microsoft.Authorization/role*'} | Format-List Caller,EventTimestamp,{$_.Authorization.Action},Properties
 ```
 
 ```Example

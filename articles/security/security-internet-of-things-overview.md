@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: terrylan
-ms.openlocfilehash: 41e422d0808cafb45b182c5f0a6bb7176a35516f
-ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
+ms.openlocfilehash: 345a7994f5a117b7aff320edf7b7c79d9b30a2f9
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "35758616"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55695249"
 ---
 # <a name="internet-of-things-security-overview"></a>Přehled zabezpečení IOT
 Azure pro internet věcí (IoT) služby nabízejí řadu možností. Tyto služby na úrovni řešení pro velké firmy umožňují:
@@ -45,7 +45,7 @@ Tento článek popisuje v následujících tématech:
 
 * [Zabezpečení se spustí Model hrozeb](/azure/iot-fundamentals/iot-security-architecture#security-starts-with-a-threat-model)
 * [Zabezpečení ve službě IoT](/azure/iot-fundamentals/iot-security-architecture#security-in-iot)
-* [Před internetovými útoky Modeling the Architecture referenční informace k Azure IoT](/azure/iot-fundamentals/iot-security-architecture#threat-modeling-the-azure-iot-reference-architecture)
+* [Před internetovými útoky Modeling the Architecture referenční informace k Azure IoT](/azure/iot-fundamentals/iot-security-architecture)
 
 ## <a name="security-from-the-ground-up"></a>Zabezpečení od počátku
 IoT představuje jedinečné výzvy zabezpečení, ochrany osobních údajů a dodržování předpisů pro firmy po celém světě. Na rozdíl od tradiční kybernetických technologie, kde tyto problémy točí kolem software a jak je implementován IoT se týká, co se stane, když kybernetických a fyzických světů sloučit. Ochrana řešení IoT vyžaduje zajištění zabezpečeného zřizování zařízení, zabezpečené připojení mezi tato zařízení a cloud a ochranu zabezpečení dat v cloudu při zpracování a ukládání. Práce proti takové funkce, ale zařízení s omezenými zdroji, geografické rozptýlení nasazení a velký počet zařízení v rámci řešení.

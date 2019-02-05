@@ -8,14 +8,14 @@ ms.topic: include
 ms.date: 09/20/2018
 ms.author: akjosh; cynthn
 ms.custom: include file
-ms.openlocfilehash: 2902fe53e7f3ffb86dc727ebcdc2200ba02ac203
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: 0eb47c8ec470ef05f3c6ae37bdc75e5bb1043eb0
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47047482"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55735941"
 ---
-Pokud narazíte na problémy při provádění jakékoli operace s galerií sdílené bitové kopie, definice image a verze image, spusťte znovu příkaz přebírání služeb v režimu ladění. Režim ladění je aktivován předáním **– ladění** přepnout pomocí rozhraní příkazového řádku a **– ladění** přepnout pomocí Powershellu. Jakmile jste vyhledali chyby, postupujte podle tohoto dokumentu pro řešení těchto chyb.
+Pokud při provádění jakýchkoli operací se sdílenými galeriemi imagí, definicemi imagí a verzemi imagí narazíte na problémy, spusťte příkaz, který selhal, znovu v režimu ladění. Režim ladění je aktivován předáním **– ladění** přepnout pomocí rozhraní příkazového řádku a **– ladění** přepnout pomocí Powershellu. Jakmile jste vyhledali chyby, postupujte podle tohoto dokumentu pro řešení těchto chyb.
 
 
 ## <a name="unable-to-create-a-shared-image-gallery"></a>Nelze vytvořit Galerie sdílené bitové kopie
@@ -67,7 +67,7 @@ Ujistěte se, že je stav zřizování spravované image zdroj **Succeeded**.
 Chcete-li zobrazit, pokud se podporuje zamýšlený zdrojové oblasti, použijte následující tabulku:
 <br>
 
-| Vytvoření v galerii nebo "zdrojové oblasti"   | Replikovat rersion k nebo "cílové oblasti" |
+| Vytvoření v galerii nebo "zdrojové oblasti"   | Replikovat verzi nebo "cílové oblasti" |
 |----------------------------------------|-------------------------------------------|
 | Západní střed USA                        | Všechny oblasti veřejném cloudu Azure            |
 | Středojižní USA                       |                                           |

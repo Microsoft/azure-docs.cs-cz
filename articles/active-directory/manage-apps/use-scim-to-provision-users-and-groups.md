@@ -16,12 +16,12 @@ ms.date: 12/12/2017
 ms.author: barbkess
 ms.reviewer: asmalser
 ms.custom: aaddev;it-pro;seohack1
-ms.openlocfilehash: 140391b02dab8ce6b47d5350d6d40a9673b29e11
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: e16598a10cbbe4cfa65e6b5394e749bfee99dbdc
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55161762"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55732579"
 ---
 # <a name="using-system-for-cross-domain-identity-management-scim-to-automatically-provision-users-and-groups-from-azure-active-directory-to-applications"></a>Automatické zřizování uživatelů a skupin ze služby Azure Active Directory do aplikací pomocí systému pro mezi doménami Identity Management (SCIM)
 
@@ -120,7 +120,7 @@ Pro zjednodušení tohoto procesu [ukázky kódu](https://github.com/Azure/Azure
 ### <a name="getting-started"></a>Začínáme
 Nejjednodušší způsob, jak implementovat SCIM koncový bod, který může přijímat žádosti o zřízení ze služby Azure AD je k sestavení a nasazení vzorového kódu, jejichž výstupem jsou zřízené uživatele do souboru hodnot oddělených čárkami (CSV).
 
-**Vytvořte koncový bod SCIM vzorku:**
+#### <a name="to-create-a-sample-scim-endpoint"></a>Chcete-li vytvořit koncový bod ukázka SCIM
 
 1. Stáhněte si balíček ukázky kódu v [https://github.com/Azure/AzureAD-BYOA-Provisioning-Samples/tree/master](https://github.com/Azure/AzureAD-BYOA-Provisioning-Samples/tree/master)
 2. Rozbalte balíček a umístěte ji na svém počítači s Windows do umístění, jako je například C:\AzureAD-BYOA-Provisioning-Samples\.
@@ -142,7 +142,7 @@ Nejjednodušší způsob, jak implementovat SCIM koncový bod, který může př
 8. Ve Windows v rámci **nastavení Windows > síť a Internet nastavení**, vyberte **brány Windows Firewall > Upřesnit nastavení**a vytvoření **příchozí pravidlo** , který umožňuje příchozí přístup k portu 9000.
 9. Pokud počítač Windows je za směrovač a směrovač je potřeba nakonfigurovat provádět překlad přístupu mezi jeho port 9000, který je přístupný z Internetu a port 9000 na počítači s Windows. Tato konfigurace je nutná pro službu Azure AD bude mít přístup k tomuto koncovému bodu v cloudu.
 
-**Koncový bod SCIM ukázkové registrace ve službě Azure AD:**
+#### <a name="to-register-the-sample-scim-endpoint-in-azure-ad"></a>K registraci koncového bodu SCIM ukázky v Azure AD
 
 1. Přihlaste se k [na webu Azure portal](https://portal.azure.com). 
 2. Přejděte do **Azure Active Directory > podnikové aplikace**a vyberte **novou aplikaci > všechny > aplikace mimo galerii**.

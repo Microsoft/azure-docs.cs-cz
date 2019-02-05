@@ -10,19 +10,19 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
-ms.date: 01/10/2019
+ms.date: 01/31/2019
 ms.author: lagayhar
-ms.openlocfilehash: e16432022c8c8525c95fab46bc61197f67fb8f37
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.openlocfilehash: 7ad8b96efeef2a5bb5543ee08150376862abb27f
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54260053"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55699314"
 ---
 # <a name="get-started-with-application-insights-in-a-java-web-project"></a>Začínáme s Application Insights ve webovém projektu Java
 
 
-[Application Insights](https://azure.microsoft.com/services/application-insights/) představují rozšiřitelnou analytickou službu, která webovým vývojářům pomůže pochopit výkon a využití živých aplikací. Použijte ji k [zjištění a diagnostice výjimek a problémů s výkonem](../../azure-monitor/app/detect-triage-diagnose.md) a [napište kód][api] pro sledování, co uživatelé s vaší aplikací dělají.
+[Application Insights](https://azure.microsoft.com/services/application-insights/) představují rozšiřitelnou analytickou službu, která webovým vývojářům pomůže pochopit výkon a využití živých aplikací. Použijte ho k [automaticky nástrojem požadavku, sledování závislostí a shromáždit čítače](auto-collect-dependencies.md#java), [diagnostikovat problémy s výkonem a výjimkami](../../azure-monitor/app/detect-triage-diagnose.md), a [napsat kód] [ api] ke sledování, co uživatelé dělají s vaší aplikací. 
 
 ![Snímek obrazovky Přehled ukázkových dat.](./media/java-get-started/overview-graphs.png)
 

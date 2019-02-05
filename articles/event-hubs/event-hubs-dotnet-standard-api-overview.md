@@ -9,12 +9,12 @@ ms.service: event-hubs
 ms.topic: article
 ms.date: 08/13/2018
 ms.author: shvija
-ms.openlocfilehash: f8cd167d8de738674939180e0d81fc9282434155
-ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
+ms.openlocfilehash: b09f39f45936a7c43dbc1ef109780315d62c768f
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54450445"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55728415"
 ---
 # <a name="event-hubs-net-standard-api-overview"></a>Přehled služby Event Hubs .NET API úrovně Standard
 
@@ -35,7 +35,7 @@ Tento článek obsahuje souhrn některých klíče služby Azure Event Hubs [.NE
 var eventHubClient = EventHubClient.CreateFromConnectionString("Event Hubs connection string");
 ```
 
-Chcete-li programově upravit připojovací řetězec, můžete použít [EventHubsConnectionStringBuilder](/dotnet/api/microsoft.azure.eventhubs.eventhubsconnectionstringbuilder) třídy a předat jako parametr pro připojovací řetězec [EventHubClient.CreateFromConnectionString](/dotnet/api/microsoft.azure.eventhubs.eventhubclient#Microsoft_Azure_EventHubs_EventHubClient_CreateFromConnectionString_System_String_).
+Chcete-li programově upravit připojovací řetězec, můžete použít [EventHubsConnectionStringBuilder](/dotnet/api/microsoft.azure.eventhubs.eventhubsconnectionstringbuilder) třídy a předat jako parametr pro připojovací řetězec [EventHubClient.CreateFromConnectionString](/dotnet/api/microsoft.azure.eventhubs.eventhubclient).
 
 ```csharp
 var connectionStringBuilder = new EventHubsConnectionStringBuilder("Event Hubs connection string")
@@ -65,7 +65,7 @@ Doporučený způsob přijímání události ze služby Event Hubs využívá [E
 
 #### <a name="create-a-receiver"></a>Vytvoření příjemce
 
-Příjemci jsou vázané na konkrétní oddíly, tak aby bylo možné přijímat všechny události v Centru událostí, je třeba vytvořit více instancí. Je vhodné získat informace o oddílu prostřednictvím kódu programu, místo pevného kódování ID oddílů. Pokud chcete udělat, můžete použít [GetRuntimeInformationAsync](/dotnet/api/microsoft.azure.eventhubs.eventhubclient#Microsoft_Azure_EventHubs_EventHubClient_GetRuntimeInformationAsync) metody.
+Příjemci jsou vázané na konkrétní oddíly, tak aby bylo možné přijímat všechny události v Centru událostí, je třeba vytvořit více instancí. Je vhodné získat informace o oddílu prostřednictvím kódu programu, místo pevného kódování ID oddílů. Pokud chcete udělat, můžete použít [GetRuntimeInformationAsync](/dotnet/api/microsoft.azure.eventhubs.eventhubclient) metody.
 
 ```csharp
 // Create a list to keep track of the receivers

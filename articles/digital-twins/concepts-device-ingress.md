@@ -8,18 +8,18 @@ services: digital-twins
 ms.topic: conceptual
 ms.date: 12/14/2018
 ms.author: alinast
-ms.openlocfilehash: e6d95d44dbfe2d66189be5103552d841ccbdf690
-ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
+ms.openlocfilehash: 35d12d0114f9677905c85a9df94ecd074e5f8f75
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54117414"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55729519"
 ---
 # <a name="device-connectivity-and-telemetry-ingress"></a>Možnosti připojení zařízení a příchozí přenos telemetrických dat
 
 Telemetrických dat odesílaných zařízeními a senzory formuláře páteřní jakékoli řešení IoT. Jak reprezentaci těchto různých prostředků a spravovat je v rámci umístění jsou hlavními připomínky můžete vystavit ve vývoji aplikací IoT. Azure digitální dvojče zjednodušuje proces vývoje řešení IoT sdružením zařízení a senzorů s Prostorové řady grafu.
 
-Abyste mohli začít, vytvořte prostředek služby Azure IoT Hub v kořenovém adresáři prostorový graf. Prostředek služby IoT Hub umožňuje všechna zařízení pod kořenové místa pro odesílání zpráv. Po vytvoření služby IoT Hub zaregistrujte senzorů v rámci instance digitální dvojče zařízení. Zařízení může odesílat data pro službu digitální dvojče [zařízení Azure IoT SDK](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-device-sdks).
+Abyste mohli začít, vytvořte prostředek služby Azure IoT Hub v kořenovém adresáři prostorový graf. Prostředek služby IoT Hub umožňuje všechna zařízení pod kořenové místa pro odesílání zpráv. Po vytvoření služby IoT Hub zaregistrujte senzorů v rámci instance digitální dvojče zařízení. Zařízení může odesílat data pro službu digitální dvojče [zařízení Azure IoT SDK](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-sdks).
 
 Podrobné informace o tom, jak připojit zařízení, najdete v článku [kurz k nasazení a konfiguraci digitální dvojče](tutorial-facilities-setup.md). Na první pohled postup je:
 
@@ -69,10 +69,10 @@ Můžete přizpůsobit formát zpráv vaše zařízení a datové části podle 
 
 | Název vlastnosti | Hodnota | Požaduje se | Popis |
 |---|---|---|---|
-| **DigitalTwins Telemetrie** | 1.0 | Ano | Konstantní hodnota, která identifikuje zprávu do systému. |
-| **DigitalTwins SensorHardwareId** | `string(72)` | Ano | Jedinečný identifikátor senzor, který odešle **zpráva**. Tato hodnota musí odpovídat objektu **HardwareId** vlastnost pro systém ke zpracování. Například, `00FF0643BE88-CO2`. |
+| **DigitalTwins-Telemetry** | 1.0 | Ano | Konstantní hodnota, která identifikuje zprávu do systému. |
+| **DigitalTwins-SensorHardwareId** | `string(72)` | Ano | Jedinečný identifikátor senzor, který odešle **zpráva**. Tato hodnota musí odpovídat objektu **HardwareId** vlastnost pro systém ke zpracování. Například, `00FF0643BE88-CO2`. |
 | **CreationTimeUtc** | `string` | Ne | [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) formátovaný řetězec data, která identifikuje doba vzorkování datové části. Například, `2018-09-20T07:35:00.8587882-07:00`. |
-| **ID korelace** | `string` | Ne | Identifikátor UUID, který se používá pro trasování událostí v systému. Například, `cec16751-ab27-405d-8fe6-c68e1412ce1f`.
+| **CorrelationId** | `string` | Ne | Identifikátor UUID, který se používá pro trasování událostí v systému. Například, `cec16751-ab27-405d-8fe6-c68e1412ce1f`.
 
 ### <a name="send-your-message-to-digital-twins"></a>Odeslat zprávu do digitální dvojče
 

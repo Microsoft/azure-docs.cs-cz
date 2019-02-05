@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/30/2018
 ms.author: jeedes
-ms.openlocfilehash: 303d794e558a5e85b4dd2bca3d9bbb4c2a1ff5dc
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 694999048d2f1df92e6b8631953f124c4009d46c
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55151800"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55733956"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-infinite-campus"></a>Kurz: Integrace Azure Active Directory s nekonečnou Campus
 
@@ -111,7 +111,7 @@ V této části Povolení služby Azure AD jednotného přihlašování na port�
 
     ![Konfigurace jednotného přihlašování](common/editconfigure.png)
 
-5. Na **základní konfiguraci SAML** části, pokud máte **soubor metadat poskytovatele služeb** (přejděte ke kroku **11.c**), proveďte následující kroky:
+4. Na **základní konfiguraci SAML** části, pokud máte **soubor metadat poskytovatele služeb**, dokončení kroků 4.a prostřednictvím 4.d a potom přejděte ke kroku 11.c. Pokud nemáte soubor metadat poskytovatele služeb, přejděte ke kroku 5.
 
     a. Klikněte na tlačítko **nahrát soubor metadat**.
 
@@ -127,10 +127,7 @@ V této části Povolení služby Azure AD jednotného přihlašování na port�
 
     d. V **přihlašovací adresa URL** textového pole zadejte adresu URL pomocí následující vzorek (doména bude lišit podle hostování modelu): `https://<DOMAIN>.infinitecampus.com/campus/SSO/<DISTRICTNAME>/SIS`
 
-    > [!NOTE]
-    > Můžete získat **soubor metadat poskytovatele služeb** na stránce nekonečné Campus jednotného přihlašování služby poskytovatele konfigurace, který je vysvětlen později v tomto kurzu. Pokud začínáte s novou konfigurací SAML poskytovatele služeb v nekonečné Campus, přejděte k **krok 11** k dokončení exportu souboru metadat poskytovatele služeb.
-
-6. Pokud nemáte **soubor metadat poskytovatele služeb**, postupujte takto (Všimněte si, že doménu se bude lišit podle hostování modelu):
+5. Pokud nemáte **soubor metadat poskytovatele služeb**, postupujte takto (Všimněte si, že doménu se bude lišit podle hostování modelu):
 
     a. V **přihlašovací adresa URL** textového pole zadejte adresu URL pomocí následujícímu vzoru: `https://<DOMAIN>.infinitecampus.com/campus/SSO/<DISTRICTNAME>/SIS`
 

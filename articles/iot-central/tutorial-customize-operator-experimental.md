@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc
-ms.openlocfilehash: 8636ac26ebf008ef0eb15713f0736650aa00af81
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
+ms.openlocfilehash: ba91bafbdb53269ef622feeceda7dc48359716de
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55666403"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55734687"
 ---
 # <a name="tutorial-customize-the-azure-iot-central-operators-view-new-ui-design"></a>Kurz: Přizpůsobení zobrazení Azure IoT Central – operátor (návrh nové uživatelské rozhraní)
 
@@ -159,5 +159,5 @@ V tomto kurzu jste se naučili, jak přizpůsobit zobrazení aplikace pro operá
 
 Teď když jste se naučili, jak přizpůsobit zobrazení aplikace pro operátora, můžete přejít k dalším navrhovaným krokům:
 
-* [Monitorování zařízení (jako operátor)](tutorial-monitor-devices.md?toc=/azure/iot-central-experimental/toc.json&bc=/azure/iot-central-experimental/breadcrumb/toc.json)
-* [Přidání nového zařízení do aplikace (jako operátor a vývojář zařízení)](tutorial-add-device.md?toc=/azure/iot-central-experimental/toc.json&bc=/azure/iot-central-experimental/breadcrumb/toc.json)
+* [Monitorování zařízení (jako operátor)](tutorial-monitor-devices-experimental.md?toc=/azure/iot-central-experimental/toc.json&bc=/azure/iot-central-experimental/breadcrumb/toc.json)
+* [Přidání nového zařízení do aplikace (jako operátor a vývojář zařízení)](tutorial-add-device-experimental.md?toc=/azure/iot-central-experimental/toc.json&bc=/azure/iot-central-experimental/breadcrumb/toc.json)

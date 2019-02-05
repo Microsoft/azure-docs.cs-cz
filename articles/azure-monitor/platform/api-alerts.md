@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/10/2018
 ms.author: bwren
-ms.openlocfilehash: 295b03a8d61a7f83605a3badcafc7a4d6b59fdbd
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.openlocfilehash: 61dd4930d7c34b30a4cedb34a4d815aa553d001e
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55497345"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55697616"
 ---
 # <a name="create-and-manage-alert-rules-in-log-analytics-with-rest-api"></a>Vytvářet a spravovat pravidla výstrah ve službě Log Analytics pomocí rozhraní REST API
 Log Analytics výstrah REST API můžete vytvářet a spravovat upozornění v Log Analytics.  Tento článek obsahuje podrobnosti o rozhraní API a několik příkladů k provádění různých operací.
@@ -219,7 +219,7 @@ Log Analytics na základě dotazu, který upozornění se aktivuje vždy, když 
 
 Potlačit vlastnosti pravidlo výstrahy je určen pomocí Log Analytics *omezování* hodnotu a období potlačení pomocí *doba trvání v minutách* hodnotu.
 
-Toto je ukázková odpověď pro akce s pouze prahové hodnoty, závažnost a potlačit vlastnosti
+Toto je ukázková odpověď pro akce s pouze prahové hodnoty, závažnosti a potlačit vlastnosti
 
     "etag": "W/\"datetime'2016-02-25T20%3A54%3A20.1302566Z'\"",
     "properties": {

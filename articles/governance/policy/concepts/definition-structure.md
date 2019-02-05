@@ -4,17 +4,17 @@ description: Popisuje, jak je používat prostředku definice zásady Azure Poli
 services: azure-policy
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 01/29/2019
+ms.date: 02/04/2019
 ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: d54fd12125902aa5019643df24d78ae81f7fc31f
-ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
+ms.openlocfilehash: fc0d5c4abc3b8584212798d5ea5b6ab65404e93d
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55296652"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55698284"
 ---
 # <a name="azure-policy-definition-structure"></a>Struktura definic Azure Policy
 
@@ -46,7 +46,8 @@ Například následující kód JSON ukazuje zásadu, která omezí, ve které j
                     "description": "The list of locations that can be specified when deploying resources",
                     "strongType": "location",
                     "displayName": "Allowed locations"
-                }
+                },
+                "defaultValue": "westus2"
             }
         },
         "displayName": "Allowed locations",
@@ -87,8 +88,7 @@ Parametry pomáhají zjednodušit správu zásad snížením počtu definic zás
 Parametry fungovat stejným způsobem jako při vytváření zásad. Včetně parametrů v definici zásad, můžete využít této zásadě pro různé scénáře pomocí různých hodnot.
 
 > [!NOTE]
-> Definice parametry pro zásadu nebo definice iniciativy můžete nakonfigurovat jenom během počátečního vytváření zásady nebo iniciativa. Parametry definici není možné později změnit.
-> To zabrání existující přiřazení zásady nebo iniciativa nepřímo prováděné neplatný.
+> Parametry lze přidat do definice existující a přiřazená. Nový parametr musí obsahovat **defaultValue** vlastnost. To zabrání existující přiřazení zásady nebo iniciativa nepřímo prováděné neplatný.
 
 Například můžete definovat zásady pro omezení umístění, kde můžete nasadit prostředky.
 Při vytváření zásady, by deklarovat následující parametry:
@@ -101,7 +101,8 @@ Při vytváření zásady, by deklarovat následující parametry:
             "description": "The list of allowed locations for resources.",
             "displayName": "Allowed locations",
             "strongType": "location"
-        }
+        },
+        "defaultValue": "westus2"
     }
 }
 ```
@@ -221,7 +222,7 @@ Podporovány jsou následující pole:
 - `location`
   - Použití **globální** za prostředky, které jsou nezávislé na umístění. Příklad najdete v tématu [ukázky – povolená umístění](../samples/allowed-locations.md).
 - `identity.type`
-  - Vrátí typ [Identity spravované](../../../active-directory/managed-identities-azure-resources/overview.md) u daného prostředku povolena.
+  - Vrátí typ [se identita spravované](../../../active-directory/managed-identities-azure-resources/overview.md) u daného prostředku povolena.
 - `tags`
 - `tags.<tagName>`
   - Kde **\<tagName\>** je název značky ověřit podmínku.

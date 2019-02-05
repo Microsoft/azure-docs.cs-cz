@@ -13,18 +13,18 @@ ms.workload: identity
 ms.date: 01/25/2019
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: fa17b2bb440f574f63349c5bb51573725aa45876
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 71ede3d6eb35935e3fec32e8fd4bb71d6c698486
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55191529"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55697042"
 ---
 # <a name="azure-resource-manager-resource-provider-operations"></a>Operace poskytovatele prostředků Azure Resource Manageru
 
 Tento článek obsahuje seznam operací dostupných pro každý poskytovatel prostředků Azure Resource Manageru. Tyto operace lze použít v [vlastní role](custom-roles.md) k poskytování granulární [řízení přístupu na základě role (RBAC)](overview.md) k prostředkům v Azure. Operace řetězce mají tento formát: `{Company}.{ProviderName}/{resourceType}/{action}`
 
-Operace poskytovatele prostředků se vždy vyvíjejí. Chcete-li získat nejnovější operace, použijte [Get-AzureRmProviderOperation](/powershell/module/azurerm.resources/get-azurermprovideroperation) nebo [seznam operací az provider](/cli/azure/provider/operation#az-provider-operation-list).
+Operace poskytovatele prostředků se vždy vyvíjejí. Chcete-li získat nejnovější operace, použijte [Get-AzProviderOperation](/powershell/module/az.resources/get-azprovideroperation) nebo [seznam operací az provider](/cli/azure/provider/operation#az-provider-operation-list).
 
 [!INCLUDE [GDPR-related guidance](../../includes/gdpr-intro-sentence.md)]
 
@@ -2061,7 +2061,7 @@ Operace poskytovatele prostředků se vždy vyvíjejí. Chcete-li získat nejnov
 > | Akce | Microsoft.DevTestLab/labs/vmPools/write | Přidat nebo upravit fondy virtuálních počítačů. |
 > | Akce | Microsoft.DevTestLab/labs/write | Přidání a úpravy testovacích prostředí. |
 > | Akce | Microsoft.DevTestLab/locations/operations/read | Operace čtení. |
-> | Akce | Microsoft.DevTestLab/register/action | Zaregistruje předplatné |
+> | Akce | Microsoft.DevTestLab/register/action | Zaregistruje předplatné. |
 > | Akce | Microsoft.DevTestLab/schedules/delete | Odstraňte plány. |
 > | Akce | Microsoft.DevTestLab/schedules/Execute/action | Spuštění plánu. |
 > | Akce | Microsoft.DevTestLab/schedules/read | Přečtěte si plány. |

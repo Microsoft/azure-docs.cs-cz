@@ -15,12 +15,12 @@ ms.date: 01/15/2019
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: ''
-ms.openlocfilehash: ea022ce9b02fd54be7959f5e9521ca5dc34e4e7b
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: ecfcfd5026f310a617f81af42483c29d89385288
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54426417"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55700719"
 ---
 # <a name="understand-role-definitions"></a>Vysvětlení definic rolí
 
@@ -59,27 +59,23 @@ Tady je [Přispěvatel](built-in-roles.md#contributor) definice role ve formátu
 
 ```json
 {
-    "Name":  "Contributor",
-    "Id":  "b24988ac-6180-42a0-ab88-20f7382dd24c",
-    "IsCustom":  false,
-    "Description":  "Lets you manage everything except access to resources.",
-    "Actions":  [
-                    "*"
-                ],
-    "NotActions":  [
-                       "Microsoft.Authorization/*/Delete",
-                       "Microsoft.Authorization/*/Write",
-                       "Microsoft.Authorization/elevateAccess/Action"
-                   ],
-    "DataActions":  [
-
-                    ],
-    "NotDataActions":  [
-
-                       ],
-    "AssignableScopes":  [
-                             "/"
-                         ]
+  "Name": "Contributor",
+  "Id": "b24988ac-6180-42a0-ab88-20f7382dd24c",
+  "IsCustom": false,
+  "Description": "Lets you manage everything except access to resources.",
+  "Actions": [
+    "*"
+  ],
+  "NotActions": [
+    "Microsoft.Authorization/*/Delete",
+    "Microsoft.Authorization/*/Write",
+    "Microsoft.Authorization/elevateAccess/Action"
+  ],
+  "DataActions": [],
+  "NotDataActions": [],
+  "AssignableScopes": [
+    "/"
+  ]
 }
 ```
 
@@ -105,25 +101,21 @@ Tady je [Čtenář dat objektu Blob služby Storage (Preview)](built-in-roles.md
 
 ```json
 {
-    "Name":  "Storage Blob Data Reader (Preview)",
-    "Id":  "2a2b9908-6ea1-4ae2-8e65-a410df84e7d1",
-    "IsCustom":  false,
-    "Description":  "Allows for read access to Azure Storage blob containers and data",
-    "Actions":  [
-                    "Microsoft.Storage/storageAccounts/blobServices/containers/read"
-                ],
-    "NotActions":  [
-
-                   ],
-    "DataActions":  [
-                        "Microsoft.Storage/storageAccounts/blobServices/containers/blobs/read"
-                    ],
-    "NotDataActions":  [
-
-                       ],
-    "AssignableScopes":  [
-                             "/"
-                         ]
+  "Name": "Storage Blob Data Reader (Preview)",
+  "Id": "2a2b9908-6ea1-4ae2-8e65-a410df84e7d1",
+  "IsCustom": false,
+  "Description": "Allows for read access to Azure Storage blob containers and data",
+  "Actions": [
+    "Microsoft.Storage/storageAccounts/blobServices/containers/read"
+  ],
+  "NotActions": [],
+  "DataActions": [
+    "Microsoft.Storage/storageAccounts/blobServices/containers/blobs/read"
+  ],
+  "NotDataActions": [],
+  "AssignableScopes": [
+    "/"
+  ]
 }
 ```
 
@@ -165,7 +157,7 @@ Zobrazení a práce s operace s daty, musí mít správné verze prvků nástroj
 
 | Nástroj  | Verze  |
 |---------|---------|
-| [Azure PowerShell](/powershell/azure/azurerm/install-azurerm-ps) | 5.6.0 nebo novější |
+| [Azure PowerShell](/powershell/azure/install-az-ps) | 1.1.0 nebo novější |
 | [Azure CLI](/cli/azure/install-azure-cli) | 2.0.30 nebo novější |
 | [Azure for .NET](/dotnet/azure/) | 2.8.0-Preview nebo novější |
 | [Azure SDK for Go](/go/azure/azure-sdk-go-install) | 15.0.0 nebo novější |

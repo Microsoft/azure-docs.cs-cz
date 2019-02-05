@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 10/12/2018
 ms.author: vinynigam
-ms.openlocfilehash: 554d837d9fa70c2af581f9b582001c7f32d442e7
-ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
+ms.openlocfilehash: 5186c11259a03717f83db675cbfe7c90f3ecb7cc
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54232338"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55734551"
 ---
 # <a name="network-performance-monitor-solution-faq"></a>Network Performance Monitor řešení – nejčastější dotazy
 
@@ -134,7 +134,7 @@ NPM můžete monitorovat připojení mezi sítěmi v jakékoli části na svět�
 NPM můžete monitorovat připojení ke službám v jakékoli části na světě, z pracovního prostoru, který je hostován v jednom z [podporované oblasti](../../azure-monitor/insights/network-performance-monitor.md#supported-regions)
 
 ### <a name="which-regions-are-supported-for-npms-expressroute-monitor"></a>Které oblasti jsou podporovány pro monitorování NPM pro ExpressRoute?
-NPM můžete monitorovat okruhů ExpressRoute, který je umístěný v libovolné oblasti Azure. Připojení k NPM, budete potřebovat pracovní prostor Log Analytics, která musí být hostovaný v jednom z [podporované oblasti](/azure/expressroute/how-to-npm#regions)
+NPM můžete monitorovat okruhů ExpressRoute, který je umístěný v libovolné oblasti Azure. Připojení k NPM, budete potřebovat pracovní prostor Log Analytics, která musí být hostovaný v jednom z [podporované oblasti](/azure/expressroute/how-to-npm)
 
 ## <a name="troubleshoot"></a>Řešení potíží
 

@@ -10,12 +10,12 @@ ms.suite: infrastructure-services
 ms.assetid: 5c124986-9f29-4cbc-ad5a-c667b37fbe5a
 ms.topic: article
 ms.date: 11/14/2018
-ms.openlocfilehash: be3f8ddaf9788eb9023ffc2caf2e0d6aeb49bdba
-ms.sourcegitcommit: a4e4e0236197544569a0a7e34c1c20d071774dd6
+ms.openlocfilehash: a13ce85124dc84362ec1ee2aa39a16c2c3f09f88
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51712054"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55701008"
 ---
 # <a name="build-advanced-schedules-and-recurrences-for-jobs-in-azure-scheduler"></a>Vytvářejte upřesnění plánování a opakování pro úlohy v Azure Scheduleru
 
@@ -24,11 +24,11 @@ ms.locfileid: "51712054"
 
 V rámci [Azure Scheduleru](../scheduler/scheduler-intro.md) úlohy, plán je core, která určuje, kdy a jak službu Plánovač spustí úlohu. Můžete nastavit více jednorázové nebo opakované plány pro úlohu s plánovačem. Jednorázové plány spustit pouze jednou v zadaný čas a jsou v podstatě opakující se plány, které se spustí pouze jednou. V zadaných intervalech spustit opakovaných plánů. Tento flexibilní Plánovač lze použít pro různé obchodní scénáře, například:
 
-* **Vyčištění dat pravidelně**: vytvoření každodenní úlohu, která odstraní všechny tweety, které jsou starší než tři měsíce.
+* **Vyčištění dat pravidelně**: Vytvoření každodenní úlohu, která odstraní všechny tweety, které jsou starší než tři měsíce.
 
-* **Archivace dat**: vytvořit úlohu spouštěnou měsíčně, který nabízených oznámení v ceně fakturační historie ke službě zálohování.
+* **Archivace dat**: Vytvořte úlohu spouštěnou měsíčně, který nabízených oznámení v ceně fakturační historie ke službě zálohování.
 
-* **Externí data žádosti**: vytvoření úlohy, která se spouští každých 15 minut a z NOAA si vyžádá novou sestavu o počasí.
+* **Externí data žádosti**: Vytvořte úlohu, která se spouští každých 15 minut a z NOAA si vyžádá novou sestavu o počasí.
 
 * **Zpracování obrázků**: Vytvořte úlohu den v týdnu, který spustí během hodin mimo špičku a použije cloud computingu pro kompresi Image se odeslaly během dne.
 
@@ -53,9 +53,9 @@ Tento článek popisuje později tyto scénáře podrobněji.
 
 Chcete-li vytvořit základní plán se [REST API služby Azure Scheduler](/rest/api/scheduler), postupujte podle těchto kroků:
 
-1. Zaregistrovat vaše předplatné u poskytovatele prostředků pomocí [zaregistrovat operace – REST API Resource Manageru](https://docs.microsoft.com/rest/api/resources/providers#Providers_Register). Název zprostředkovatele pro službu Azure Scheduler je **Microsoft.Scheduler**. 
+1. Zaregistrovat vaše předplatné u poskytovatele prostředků pomocí [zaregistrovat operace – REST API Resource Manageru](https://docs.microsoft.com/rest/api/resources/providers). Název zprostředkovatele pro službu Azure Scheduler je **Microsoft.Scheduler**. 
 
-1. Vytvořit kolekci úloh s použitím [operace vytvoření nebo aktualizace kolekcí úloh](https://docs.microsoft.com/rest/api/scheduler/jobcollections#JobCollections_CreateOrUpdate) v rozhraní REST API Scheduleru. 
+1. Vytvořit kolekci úloh s použitím [operace vytvoření nebo aktualizace kolekcí úloh](https://docs.microsoft.com/rest/api/scheduler/jobcollections) v rozhraní REST API Scheduleru. 
 
 1. Vytvoření úlohy s použitím [operaci vytváření nebo aktualizace pro úlohy](https://docs.microsoft.com/rest/api/scheduler/jobs/createorupdate). 
 

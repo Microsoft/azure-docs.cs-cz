@@ -15,12 +15,12 @@ ms.devlang: azurecli
 ms.topic: article
 ms.date: 05/10/2018
 ms.author: roiyz
-ms.openlocfilehash: 20d806540b0aa814c88ef4ff69834283ba4a7722
-ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
+ms.openlocfilehash: 71aecc1748e70e2119b1f54c21a0f705afc5d5d0
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/19/2019
-ms.locfileid: "54413834"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55731304"
 ---
 # <a name="manage-administrative-users-ssh-and-check-or-repair-disks-on-linux-vms-using-the-vmaccess-extension-with-the-azure-cli"></a>Spravovat administrativní uživatelé, SSH a kontrola nebo opravte disky na virtuální počítače s Linuxem pomocí rozšíření VMAccess pomocí Azure CLI
 ## <a name="overview"></a>Přehled
@@ -110,7 +110,7 @@ az vm user delete \
 ```
 
 ## <a name="use-json-files-and-the-vmaccess-extension"></a>Použít soubory JSON a rozšíření VMAccess
-Následující příklady používají nezpracovaných souborů JSON. Použití [sada rozšíření az vm](/cli/azure/vm/extension#az_vm_extension_set) pak volat souborů JSON. Tyto soubory JSON můžete také volat z šablony Azure. 
+Následující příklady používají nezpracovaných souborů JSON. Použití [sada rozšíření az vm](/cli/azure/vm/extension) pak volat souborů JSON. Tyto soubory JSON můžete také volat z šablony Azure. 
 
 ### <a name="reset-user-access"></a>Resetování přístupu uživatelů
 Pokud jste ztratili přístup do kořenového adresáře na virtuální počítač s Linuxem, můžete spustit skript VMAccess aktualizovat klíč SSH nebo hesla uživatele.

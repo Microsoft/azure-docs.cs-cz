@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 02/28/2018
-ms.openlocfilehash: 9b9e2362553eb93cbb111b70cf29a1cc1524e77e
-ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
+ms.date: 02/01/2019
+ms.openlocfilehash: a09c1934ecb34518b191a8e730a72efecc85aa2f
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53554533"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55692708"
 ---
 # <a name="overview-of-business-continuity-with-azure-database-for-mysql"></a>Přehled kontinuity se službou Azure Database for MySQL
 
@@ -50,6 +50,6 @@ Další možností je používat Azure Database for MySQL geografické obnovení
 
 ## <a name="next-steps"></a>Další postup
 
-- Další informace o automatizovaných záloh najdete v tématu [záloh ve službě Azure Database for MySQL](concepts-backup.md).
-- Obnovení do bodu v čase pomocí webu Azure portal, najdete v článku [obnovit databázi do bodu v čase pomocí webu Azure portal](howto-restore-server-portal.md).
-- Obnovení do bodu v čase pomocí Azure CLI, najdete v článku [obnovit databázi do bodu v čase s použitím rozhraní příkazového řádku](howto-restore-server-cli.md).
+- Další informace o [automatické zálohování ve službě Azure Database for MySQL](concepts-backup.md).
+- Zjistěte, jak provést obnovení pomocí [na webu Azure portal](howto-restore-server-portal.md) nebo [rozhraní příkazového řádku Azure](howto-restore-server-cli.md).
+- Další informace o [čtení replik ve službě Azure Database for MySQL](concepts-read-replicas.md).

@@ -16,12 +16,12 @@ ms.date: 12/11/2018
 ms.author: jeffgilb
 ms.reviewer: wfayed
 ms.lastreviewed: 12/11/2018
-ms.openlocfilehash: 5447bcb0dc37cb3c923c4e6bbff4d69d987b6df6
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 05bf01e2b7c380f7bb79230885e247bd8c834d14
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55244364"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55691163"
 ---
 # <a name="azure-disconnected-deployment-planning-decisions-for-azure-stack-integrated-systems"></a>Integrované systémy pro nasazení Azure odpojené plánování rozhodnutí pro službu Azure Stack
 Poté, co jste se rozhodli [jak budou integrovat Azure Stack v hybridním cloudovém prostředí](azure-stack-connection-models.md), pak můžete dokončit vaše rozhodnutí o nasazení služby Azure Stack.
@@ -47,7 +47,7 @@ Azure Stack je navržena pro spolupráci při připojení k Azure, takže je dů
 |Nasazení virtuálních počítačů pomocí rozšíření Docker spouštět příkazy Dockeru|Zrakově postižené – Docker zkontroluje Internet pro nejnovější verzi a tato kontrola selže.|
 |Odkazy na dokumentaci v portálu Azure Stack|Není k dispozici – odkazy, jako jsou odeslat zpětnou vazbu, pomoc, rychlém startu atd, které využívají internetové adresy URL nebudou fungovat.|
 |Upozornění opravy/omezení rizik, která odkazuje na je online nápravy Průvodce|Není k dispozici – nápravy škod způsobených výstrah odkazy, které využívají internetové adresy URL nebudou fungovat.|
-|Marketplace – možnost a vyberte a přidejte balíčky Galerie přímo z Azure Marketplace|Zrakově postižené – když nasadíte Azure Stack v odpojeném režimu (bez žádné připojení k Internetu), nelze stažení položek z marketplace pomocí portálu Azure Stack. Můžete však použít [marketplace syndikace nástroj](https://docs.microsoft.com/azure/azure-stack/azure-stack-download-azure-marketplace-item#download-marketplace-items-in-a-disconnected-or-a-partially-connected-scenario-with-limited-internet-connectivity) stažení položek z marketplace k počítači, který má připojení k Internetu a přenést je do prostředí Azure Stack.|
+|Marketplace – možnost a vyberte a přidejte balíčky Galerie přímo z Azure Marketplace|Zrakově postižené – když nasadíte Azure Stack v odpojeném režimu (bez žádné připojení k Internetu), nelze stažení položek z marketplace pomocí portálu Azure Stack. Můžete však použít [marketplace syndikace nástroj](https://docs.microsoft.com/azure/azure-stack/azure-stack-download-azure-marketplace-item) stažení položek z marketplace k počítači, který má připojení k Internetu a přenést je do prostředí Azure Stack.|
 |Správa nasazení služby Azure Stack pomocí účtů Azure Active Directory federation|Není k dispozici – tato funkce vyžaduje připojení k Azure. Služba AD FS s místní instancí Active Directory musí použít.|
 |App Services|Zrakově postižené – webové aplikace může vyžadovat přístup k Internetu pro aktualizaci obsahu.|
 |Rozhraní příkazového řádku (CLI)|Zrakově postižené – rozhraní příkazového řádku snížila funkce z hlediska ověřování a zřizování instančních objektů.|

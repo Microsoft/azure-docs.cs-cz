@@ -9,12 +9,12 @@ ms.date: 09/18/2018
 ms.service: application-insights
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 885f4da5ec9b360605a3e46ee8be8d338a638ede
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ms.openlocfilehash: 22e58f31e2f891eb09c3d42a01763c68cdcd11a8
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54102665"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55696179"
 ---
 # <a name="collect-distributed-traces-from-python-preview"></a>Shromažďovat distribuované trasování z Pythonu (Preview)
 
@@ -24,7 +24,7 @@ Application Insights teď podporuje distribuované trasování aplikací v Pytho
 
 - Mít předplatné Azure.
 - Python by měly být nainstalovány, tento článek používá [Python 3.7.0](https://www.python.org/downloads/), i když dřívějších verzích bude pravděpodobně pracovat s menší úpravu.
-- Postupujte podle pokynů k instalaci [místní předávání jako služba Windows](./../../azure-monitor/app/opencensus-local-forwarder.md#windows-service)
+- Postupujte podle pokynů k instalaci [místní předávání jako služba Windows](./../../azure-monitor/app/opencensus-local-forwarder.md)
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 
@@ -57,7 +57,7 @@ Nejprve je nutné vytvořit prostředek Application Insights, která bude genero
 
    ![Snímek obrazovky Instrumentační klíč](./media/opencensus-python/0003-instrumentation-key.png)
 
-2. Upravit vaše `LocalForwarder.config` a přidejte svůj Instrumentační klíč. Pokud jste postupovali podle pokynů [předpoklad](./../../azure-monitor/app/opencensus-local-forwarder.md#windows-service) soubor se nachází v `C:\LF-WindowsServiceHost`
+2. Upravit vaše `LocalForwarder.config` a přidejte svůj Instrumentační klíč. Pokud jste postupovali podle pokynů [předpoklad](./../../azure-monitor/app/opencensus-local-forwarder.md) soubor se nachází v `C:\LF-WindowsServiceHost`
 
     ```xml
       <OpenCensusToApplicationInsights>
@@ -158,7 +158,7 @@ Nejprve je nutné vytvořit prostředek Application Insights, která bude genero
 
 6. Teď, když spustíte skript Pythonu z výše by měl stále výzva k zadání hodnoty, ale teď je pouze hodnotu tisku v prostředí.
 
-7. Zkontrolujte, že **místní předávání** sbírá kontrola trasování `LocalForwarder.config` souboru. Pokud jste postupovali podle kroků v [předpoklad](https://docs.microsoft.com/azure/application-insights/local-forwarder#windows-service), bude nacházet v `C:\LF-WindowsServiceHost`.
+7. Zkontrolujte, že **místní předávání** sbírá kontrola trasování `LocalForwarder.config` souboru. Pokud jste postupovali podle kroků v [předpoklad](https://docs.microsoft.com/azure/application-insights/local-forwarder), bude nacházet v `C:\LF-WindowsServiceHost`.
 
     Na obrázku níže souboru protokolu vidíte, že před spuštěním druhý skriptu, které jsme přidali Exportér `OpenCensus input BatchesReceived` je 0. Jakmile jsme začali používat aktualizovaný skript `BatchesReceived` zvýšena stejný počet hodnot, které jsme zadali:
     
@@ -190,14 +190,14 @@ Nejprve je nutné vytvořit prostředek Application Insights, která bude genero
 
      ![Snímek obrazovky začátku do konce transakce rozhraní](./media/opencensus-python/0009-end-to-end-transaction.png)
 
-## <a name="opencensus-trace-for-python"></a>OpenCensus trasování pro Python
+## <a name="opencensus-trace-for-python"></a>OpenCensus trace for Python
 
 Jsme probrali pouze základní informace o zapojení do OpenCensus pro Python s místní server pro předávání a Application Insights. Oficiální pokyny se zabývá pokročilejší témata zahrnují třeba:
 
 * [Vzorkovačů](https://opencensus.io/api/python/trace/usage.html#samplers)
 * [Integrace Flask](https://opencensus.io/api/python/trace/usage.html#flask)
 * [Integrace Django](https://opencensus.io/api/python/trace/usage.html#django)
-* [Integrace MySQL](https://opencensus.io/api/python/trace/usage.html#service-integration)
+* [MySQL Integration](https://opencensus.io/api/python/trace/usage.html#service-integration)
 * [PostgreSQL](https://opencensus.io/api/python/trace/usage.html#postgresql)
   
 ## <a name="next-steps"></a>Další postup

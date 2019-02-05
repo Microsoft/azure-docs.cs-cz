@@ -7,12 +7,12 @@ services: iot-fundamentals
 ms.topic: overview
 ms.date: 10/09/2018
 ms.author: robinsh
-ms.openlocfilehash: ba4f5fcb08d671937c677d8a14c27aaec16bcb1b
-ms.sourcegitcommit: 02ce0fc22a71796f08a9aa20c76e2fa40eb2f10a
+ms.openlocfilehash: e7ffd8f6f4f3aee376a09071fad0f1a36c23f1c4
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51288709"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55694002"
 ---
 # <a name="internet-of-things-iot-technologies-and-solutions-paas-and-saas"></a>Technologie Internetu věcí (IoT) a řešení: PaaS a SaaS
 
@@ -58,7 +58,7 @@ Výhod IoT prostřednictvím přístupu SaaS mohou nyní využívat organizace s
 
 ### <a name="compare-azure-iot-solution-accelerators-and-azure-iot-central"></a>Porovnání akcelerátorů řešení Azure IoT a Azure IoT Central
 
-Pokud chcete implementovat typickou [architekturu řešení IoT](/azure/iot-fundamentals/iot-introduction#iot-solution-architecture), nabízí vám Azure IoT několik možností – [akcelerátory řešení Azure IoT](/azure/iot-suite) a [Azure IoT Central](https://www.microsoft.com/internet-of-things/iot-central-saas-solutions) –, které jsou vhodné pro různé sady zákaznických požadavků.
+Pokud chcete implementovat typickou [architekturu řešení IoT](/azure/iot-fundamentals/iot-introduction), nabízí vám Azure IoT několik možností – [akcelerátory řešení Azure IoT](/azure/iot-suite) a [Azure IoT Central](https://www.microsoft.com/internet-of-things/iot-central-saas-solutions) –, které jsou vhodné pro různé sady zákaznických požadavků.
 
 Služba [Azure IoT Hub](https://azure.microsoft.com/services/iot-hub/) představuje základní Azure PaaS a využívají ji Azure IoT Central i akcelerátory řešení Azure IoT. IoT Hub umožňuje spolehlivou a zabezpečenou obousměrnou komunikaci mezi miliony zařízení IoT a cloudovým řešením. IoT Hub pomáhá plnit náročné úkoly implementace problémy, jako jsou:
 

@@ -13,12 +13,12 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 01/24/2019
 ms.author: juliako
-ms.openlocfilehash: 5b666551ed47852fe8653fff174589acc4bff348
-ms.sourcegitcommit: 97d0dfb25ac23d07179b804719a454f25d1f0d46
+ms.openlocfilehash: 139f6283c2b59aee53afa3f0dd52e06e2b0eff4c
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/25/2019
-ms.locfileid: "54912029"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55695215"
 ---
 # <a name="filters-and-dynamic-manifests"></a>Filtrů a dynamických manifestů
 
@@ -34,7 +34,7 @@ Filtry jsou pravidla na straně serveru, které umožňují zákazníkům prová
 - Dodávejte pouze zadaný interpretace nebo zadané jazykové stopy, které podporuje zařízení, která se používá k přehrávání obsahu ("verze filtrování"). 
 - Upravte prezentace okno (DVR) aby bylo možné poskytovat omezenou délku okna DVR v přehrávači ("okno s úpravou prezentace").
 
-Toto téma popisuje [koncepty](#concepts) a [ukazuje filtry definice](#definitions). Poté přiřadí podrobnosti o [běžné scénáře](#common-scenarios). Na konci tohoto článku najdete odkazy, které ukazují, jak programově vytvářet filtry.  
+Toto téma popisuje [koncepty](#concepts) a [ukazuje filtry definice](#definitions). Poté přiřadí podrobnosti o běžných scénářích. Na konci tohoto článku najdete odkazy, které ukazují, jak programově vytvářet filtry.  
 
 ## <a name="concepts"></a>Koncepty
 

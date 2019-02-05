@@ -8,12 +8,12 @@ ms.devlang: dotnet
 ms.topic: tutorial
 ms.date: 12/01/2018
 ms.author: dech
-ms.openlocfilehash: fd5383ded8252375b651c47debea3ba72173eb16
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: 4e6d981ef1ac7985e9f230cfbbda440a765e20ea
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54038815"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55695481"
 ---
 # <a name="build-a-net-core-console-app-to-manage-data-in-azure-cosmos-db-sql-api-account-sdk-version-3-preview"></a>Sestavení aplikace konzoly .NET Core pro správu dat v účtu rozhraní SQL API služby Azure Cosmos DB (sada SDK verze 3 ve verzi Preview)
 
@@ -311,7 +311,7 @@ Kontejner můžete vytvořit buď pomocí [ **CreateContainerIfNotExistsAsync** 
    ```csharp
    /*
        Create the container if it does not exist.
-       Specifiy "/LastName" as the partition key since we're storing family information, to ensure good distribution of requests and storage.
+       Specify "/LastName" as the partition key since we're storing family information, to ensure good distribution of requests and storage.
    */
    private async Task CreateContainer()
    {

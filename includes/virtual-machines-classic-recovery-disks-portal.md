@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: cynthn
 ms.openlocfilehash: 5490bdd3934b438a683ce4271fbec20b3d13735d
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50226740"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55735505"
 ---
 Pokud na vašem virtuálním počítači v Azure dochází k chybám spouštění nebo disku, možná bude nutné provést postup při řešení potíží na samotném virtuálním pevném disku. Běžným příkladem je aktualizace aplikace, která selhala a brání úspěšnému spuštění virtuálního počítače. Tento článek popisuje, jak pomocí webu Azure Portal připojit virtuální pevný disk k jinému virtuálnímu počítači, opravit všechny chyby a potom znovu vytvořit původní virtuální počítač.
 

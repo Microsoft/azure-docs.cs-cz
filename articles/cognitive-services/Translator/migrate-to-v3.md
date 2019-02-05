@@ -8,14 +8,14 @@ manager: cgronlun
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: conceptual
-ms.date: 03/27/2018
+ms.date: 02/01/2019
 ms.author: v-jansko
-ms.openlocfilehash: 6fa468308bb7187111a6f7f65366d83eaadd9494
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: 7f5dfd9488e6017acfdf66cdb7d4cee3aedd1ab3
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55227773"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55699920"
 ---
 # <a name="translator-text-api-v2-to-v3-migration"></a>Translator Text API V2 na V3 migrace
 
@@ -109,7 +109,7 @@ Globální
 
 Ve výchozím nastavení používá Microsoft Translator V3 Neurální strojový překlad. V důsledku toho jej nelze použít v centru Microsoft Translator. Překladač rozbočovače podporuje pouze starší verze statistické strojového překladu. Přizpůsobení pro Neurální překladové je nyní dostupné s použitím překladač vlastní. [Další informace o přizpůsobení Neurální strojový překlad](custom-translator/overview.md)
 
-Neurální překladové s V3 text API nepodporuje použití standardní kategorie (SMT, řeči, text, generalnn).
+Neurální překladové s V3 text API nepodporuje použití standardní kategorie (SMT, řeči, odborný, generalnn).
 
 | |Koncový bod|    Dodržování předpisů GDPR procesoru|  Použití centra Translator| Použít vlastní Translator (Preview)|
 |:-----|:-----|:-----|:-----|:-----|

@@ -10,20 +10,20 @@ ms.subservice: answer-search
 ms.topic: quickstart
 ms.date: 04/16/2018
 ms.author: rosh
-ms.openlocfilehash: b8358890658a38133452ba2092ac9b8b78114ff7
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: 8402d0228e062aed60adee1c4622ade31771584d
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55210943"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55700277"
 ---
 # <a name="quickstart-query-for-facts"></a>Rychlý start: Dotaz pro fakty
 
 Pokud se dotaz týká faktu, jako je například datum nebo identifikovatelná znalost, může odpověď obsahovat odpovědi typu `facts`. Odpovědi faktů obsahují relevantní výsledky extrahované z odstavců ve webových dokumentech.  Tyto dotazy vždycky vrací webové stránky. [Fakta](fact-queries.md) nebo [entity](entity-queries.md) jsou závislé na dotazu.
 
-Dotazy, jako je například valentines+2016 nebo when+is+easter jsou považovány za dotazy související s datem. Pokud Bing určí, že dotaz souvisí s datem, bude odpověď obsahovat odpověď typu `facts`. 
+Dotazy, jako je například valentines+2016 nebo when+is+easter jsou považovány za dotazy související s datem. Pokud Bing určí, že dotaz souvisí s datem, bude odpověď obsahovat odpověď typu `facts`.
 
-V následujícím příkladu je odpověď typu `facts` související s datem. 
+V následujícím příkladu je odpověď typu `facts` související s datem.
 
 **Dotaz:**
 ```
@@ -34,28 +34,29 @@ https://labsportalppe.azure-api.net/answerSearch/v7.0/search?q=valentines+2016
 **Odpověď:** `subjectName` Pole obsahuje zobrazení verzi uživatele dotaz, který můžete použít jako popisek při zobrazení na skutečnost. Pokud je řetězec dotazu valentines+2016, Bing jej může změnit na Valentine's Day 2016. Pole description obsahuje fakt.
 
 ```
-{   
-    "_type" : "SearchResponse",   
-    "queryContext" : {   
-        "originalQuery" : "valentines 2016" 
-    },   
-    "facts" : {   
-        "id" : "https:\/\/www.bingapis.com\/api\/v7\/#Facts",   
-        "value" : [{   
-            "description" : "Valentine's Day was on Sunday, February 14, 2016.",   
-            "subjectName" : "Valentine's Day 2016"   
-        }]   
-    },   
-    "rankingResponse" : {   
-        "mainline" : {   
-            "items" : [{   
-                "answerType" : "Facts",   
-                "value" : {   
-                    "id" : "https:\/\/www.bingapis.com\/api\/v7\/knowledge\/#Facts"                   }   
-            }]   
-        }   
-    }   
-}   
+{
+    "_type" : "SearchResponse",
+    "queryContext" : {
+        "originalQuery" : "valentines 2016"
+    },
+    "facts" : {
+        "id" : "https:\/\/www.bingapis.com\/api\/v7\/#Facts",
+        "value" : [{
+            "description" : "Valentine's Day was on Sunday, February 14, 2016.",
+            "subjectName" : "Valentine's Day 2016"
+        }]
+    },
+    "rankingResponse" : {
+        "mainline" : {
+            "items" : [{
+                "answerType" : "Facts",
+                "value" : {
+                    "id" : "https:\/\/www.bingapis.com\/api\/v7\/knowledge\/#Facts"
+                }
+            }]
+        }
+    }
+}
 
 ```
 
@@ -118,7 +119,7 @@ https://api.labs.cognitive.microsoft.com/answerSearch/v7.0/search?q=why+is+the+s
 V některých případech můžou být data vrácena jako typ `_type: StructuredValue/TabularData`. Následující dotaz načte tabulková data s informacemi o rozdílech mezi kávou a čajem.
 
 ```
-https://labsportalppe.azure-api.net/answerSearch/v7.0/search?q=coffee+vs+tea&mkt=en-us 
+https://labsportalppe.azure-api.net/answerSearch/v7.0/search?q=coffee+vs+tea&mkt=en-us
 
 ```
 Výsledky `facts` obsahují následující řádky a buňky:

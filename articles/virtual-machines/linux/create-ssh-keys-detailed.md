@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/17/2018
 ms.author: danlep
-ms.openlocfilehash: 7167e31261ce029a6a0a6fe070232d1086942162
-ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
+ms.openlocfilehash: 3784dd701b3ac44971e134f1b160fcfe2de2d9b3
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55297697"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55731797"
 ---
 # <a name="detailed-steps-create-and-manage-ssh-keys-for-authentication-to-a-linux-vm-in-azure"></a>Podrobný postup: Vytvoření a Správa klíčů SSH pro ověřování, aby virtuální počítač s Linuxem v Azure 
 Pomocí páru klíčů (SSH secure shell) můžete vytvořit virtuální počítač s Linuxem v Azure, který ve výchozím nastavení používá klíče SSH pro ověřování, takže odpadá potřeba používat k přihlášení hesla. Virtuální počítače vytvořené pomocí webu Azure portal, rozhraní příkazového řádku Azure Resource Manageru šablony nebo jiné nástroje můžou zahrnovat veřejný klíč SSH jako součást svého nasazení, která nastaví ověřování pomocí klíče SSH pro připojení SSH. 
@@ -130,11 +130,11 @@ Je *důrazně* doporučujeme přidat si přístupové heslo k privátnímu klí�
 
 ## <a name="generate-keys-automatically-during-deployment"></a>Během nasazení automaticky vygenerovat klíče
 
-Pokud používáte [rozhraní příkazového řádku Azure](/cli/azure) k vytvoření virtuálního počítače, může volitelně Generovat soubory veřejného a privátního klíče SSH spuštěním [az vm vytvořit](/cli/azure/vm#az_vm_create) příkazů `--generate-ssh-keys` možnost. Klíče jsou uložené v adresáři ~/.ssh. Všimněte si, že tento parametr nepřepisuje klíče Pokud již existují v dané oblasti.
+Pokud používáte [rozhraní příkazového řádku Azure](/cli/azure) k vytvoření virtuálního počítače, může volitelně Generovat soubory veřejného a privátního klíče SSH spuštěním [az vm vytvořit](/cli/azure/vm) příkazů `--generate-ssh-keys` možnost. Klíče jsou uložené v adresáři ~/.ssh. Všimněte si, že tento parametr nepřepisuje klíče Pokud již existují v dané oblasti.
 
 ## <a name="provide-ssh-public-key-when-deploying-a-vm"></a>Zadejte veřejný klíč SSH při nasazování virtuálního počítače
 
-Pokud chcete vytvořit virtuální počítač s Linuxem, který používá klíče SSH pro ověřování, zadejte veřejný klíč SSH při vytváření virtuálního počítače pomocí webu Azure portal, rozhraní příkazového řádku, šablon Resource Manageru nebo jiné metody. Během používání portálu, zadejte veřejný klíč samotný. Pokud používáte [rozhraní příkazového řádku Azure](/cli/azure) k vytvoření virtuálního počítače pomocí stávajícího veřejného klíče, zadejte hodnotu nebo umístění veřejného klíče spuštěním [az vm vytvořit](/cli/azure/vm#az_vm_create) příkazů `--ssh-key-value` možnost. 
+Pokud chcete vytvořit virtuální počítač s Linuxem, který používá klíče SSH pro ověřování, zadejte veřejný klíč SSH při vytváření virtuálního počítače pomocí webu Azure portal, rozhraní příkazového řádku, šablon Resource Manageru nebo jiné metody. Během používání portálu, zadejte veřejný klíč samotný. Pokud používáte [rozhraní příkazového řádku Azure](/cli/azure) k vytvoření virtuálního počítače pomocí stávajícího veřejného klíče, zadejte hodnotu nebo umístění veřejného klíče spuštěním [az vm vytvořit](/cli/azure/vm) příkazů `--ssh-key-value` možnost. 
 
 Pokud nejste obeznámeni s formátem veřejný klíč SSH, se zobrazí veřejný klíč spuštěním `cat` následujícím způsobem nahraďte `~/.ssh/id_rsa.pub` nahraďte vlastním umístěním souboru veřejného klíče:
 

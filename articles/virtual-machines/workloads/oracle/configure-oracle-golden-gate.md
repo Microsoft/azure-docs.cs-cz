@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 08/02/2018
 ms.author: rogirdh
-ms.openlocfilehash: cb5ad6f351cdeadb999b1a62c225f23937c5b92e
-ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
+ms.openlocfilehash: 5d7e21661d7ee905ff77a4856544d358924cd9ea
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/19/2019
-ms.locfileid: "54413817"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55700872"
 ---
 # <a name="implement-oracle-golden-gate-on-an-azure-linux-vm"></a>Implementace brány Golden Oracle na virtuálním počítači Azure s Linuxem 
 
@@ -51,7 +51,7 @@ Následuje souhrn konfigurace prostředí:
 
 ### <a name="sign-in-to-azure"></a>Přihlásit se k Azure 
 
-Přihlaste se k předplatnému Azure pomocí [az login](/cli/azure/reference-index#az_login) příkazu. Potom postupujte podle na obrazovce pokynů.
+Přihlaste se k předplatnému Azure pomocí [az login](/cli/azure/reference-index) příkazu. Potom postupujte podle na obrazovce pokynů.
 
 ```azurecli
 az login
@@ -81,7 +81,7 @@ az vm availability-set create \
 
 ### <a name="create-a-virtual-machine"></a>Vytvoření virtuálního počítače
 
-Vytvořte virtuální počítač pomocí příkazu [az vm create](/cli/azure/vm#az_vm_create). 
+Vytvořte virtuální počítač pomocí příkazu [az vm create](/cli/azure/vm). 
 
 Následující příklad vytvoří dva virtuální počítače s názvem `myVM1` a `myVM2`. Vytvoření klíčů SSH, pokud ještě neexistují ve výchozím umístění klíčů. Chcete-li použít konkrétní sadu klíčů, použijte možnost `--ssh-key-value`.
 

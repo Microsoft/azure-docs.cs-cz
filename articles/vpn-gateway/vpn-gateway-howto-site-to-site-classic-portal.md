@@ -1,5 +1,5 @@
 ---
-title: 'Připojení místní sítě k virtuální síti Azure: Síť VPN typu Site-to-Site (Classic): Portál| Dokumentace Microsoftu'
+title: 'Připojení místní sítě ke službě Azure virtual network: Síť Site-to-Site VPN (classic): Portál | Dokumentace Microsoftu'
 description: Vytvořte připojení IPsec z vaší místní sítě k virtuální síti Azure Classic přes veřejný internet.
 services: vpn-gateway
 documentationcenter: na
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/14/2018
 ms.author: cherylmc
-ms.openlocfilehash: 4e9736adfce83fc449b68a7448441ecee481ad2a
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
-ms.translationtype: HT
+ms.openlocfilehash: b0fa60d709c2fa6c286e44797d53e8a4a8d47d00
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38477892"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55695600"
 ---
 # <a name="create-a-site-to-site-connection-using-the-azure-portal-classic"></a>Vytvoření připojení typu Site-to-Site pomocí webu Azure Portal (Classic)
 
@@ -40,7 +40,7 @@ Připojení brány VPN typu Site-to-Site slouží k připojení místní sítě 
 
 ![Diagram připojení VPN Gateway typu Site-to-Site mezi různými místy](./media/vpn-gateway-howto-site-to-site-classic-portal/site-to-site-diagram.png)
 
-## <a name="before-you-begin"></a>Než začnete
+## <a name="before-you-begin"></a>Před zahájením
 
 Před zahájením konfigurace ověřte, že splňujete následující kritéria:
 
@@ -59,14 +59,14 @@ V příkladech v tomto článku se používají následující hodnoty. Tyto hod
   * 10.11.0.0/16
   * 10.12.0.0/16 (volitelné pro toto cvičení)
 * **Podsítě:**
-  * FrontEnd: 10.11.0.0/24
-  * BackEnd: 10.12.0.0/24 (volitelné pro toto cvičení)
-* **Podsíť brány:** 10.11.255.0/27
+  * Front-endu: 10.11.0.0/24
+  * Back-endu: 10.12.0.0/24 (volitelné pro toto cvičení)
+* **GatewaySubnet:** 10.11.255.0/27
 * **Skupina prostředků:** TestRG1
-* **Umístění:** Východní USA
-* **Server DNS:** 10.11.0.3 (volitelné pro toto cvičení)
+* **Umístění:** USA – východ
+* **DNS Server:** 10.11.0.3 (volitelné pro toto cvičení)
 * **Název místní lokality:** Site2
-* **Klientský adresní prostor:** Adresní prostor umístěný ve vaší místní lokalitě.
+* **Klientský adresní prostor:** Adresní prostor, který je umístěný ve vaší místní lokalitě.
 
 ## <a name="CreatVNet"></a>1. Vytvoření virtuální sítě
 
@@ -127,9 +127,9 @@ Místní lokalita obvykle odkazuje na vaše místní umístění. Obsahuje IP ad
   ![Kliknutím nakonfigurujte nastavení brány](./media/vpn-gateway-howto-site-to-site-classic-portal/beforegw125.png "Kliknutím nakonfigurujte nastavení brány")
 3. Na stránce **Nové připojení VPN** vyberte **Site-to-Site**.
 4. Kliknutím na **Místní lokalita – Konfigurovat požadované nastavení** otevřete stránku **Místní lokalita**. Nakonfigurujte nastavení a potom kliknutím na **OK** nastavení uložte.
-  - **Název:** Vytvořte název pro místní lokalitu, abyste ji mohli snadno identifikovat.
-  - **IP adresa brány VPN:** Toto je veřejná IP adresa zařízení VPN pro vaši místní síť. Zařízení VPN vyžaduje veřejnou IP adresu IPv4. Zadejte platnou veřejnou IP adresu pro zařízení VPN, ke kterému se chcete připojit. IP adresa nemůže být za serverem NAT a musí být dostupná pro Azure. Pokud neznáte IP adresu zařízení VPN, pořád můžete použít zástupnou hodnotu (pokud je ve formátu platné veřejné IP adresy) a změnit ji později.
-  - **Klientský adresní prostor:** Vypište rozsahy IP adres, které chcete přes tuto bránu směrovat do místní sítě. Můžete přidat více různých rozsahů adres. Ujistěte se, že se zde zadané rozsahy nepřekrývají s rozsahy jiných sítí, ke kterým se vaše virtuální síť připojuje, nebo s rozsahy adres samotné virtuální sítě.
+  - **Jméno:** Vytvořte název pro místní lokalitu, aby byl snadno identifikovat.
+  - **IP adresa brány VPN:** Toto je veřejnou IP adresu zařízení VPN pro vaši místní síť. Zařízení VPN vyžaduje veřejnou IP adresu IPv4. Zadejte platnou veřejnou IP adresu pro zařízení VPN, ke kterému se chcete připojit. IP adresa nemůže být za serverem NAT a musí být dostupná pro Azure. Pokud neznáte IP adresu zařízení VPN, pořád můžete použít zástupnou hodnotu (pokud je ve formátu platné veřejné IP adresy) a změnit ji později.
+  - **Klientský adresní prostor:** Seznam rozsahů IP adres, které chcete směrovat do místní sítě přes tuto bránu. Můžete přidat více různých rozsahů adres. Ujistěte se, že se zde zadané rozsahy nepřekrývají s rozsahy jiných sítí, ke kterým se vaše virtuální síť připojuje, nebo s rozsahy adres samotné virtuální sítě.
 
   ![Místní lokalita](./media/vpn-gateway-howto-site-to-site-classic-portal/localnetworksite.png "Konfigurace místní lokality")
 
@@ -208,7 +208,7 @@ Při práci s PowerShellem a modelem nasazení Classic někdy názvy prostředk�
   Set-AzureVNetGatewayKey -VNetName 'Group TestRG1 TestVNet1' `
   -LocalNetworkSiteName 'D1BFC9CB_Site2' -SharedKey abc123
   ```
-Jakmile se připojení vytvoří, výsledkem bude: **Stav: Úspěch**.
+Když se připojení vytvoří, výsledkem je: **Stav: Úspěšné**.
 
 ## <a name="verify"></a>9. Ověření stavu připojení
 
@@ -224,7 +224,7 @@ Resetování brány Azure VPN je užitečné v případě ztráty připojení VP
 
 Postup pro změnu skladové položky brány najdete v tématu [Změna velikosti skladové položky brány](vpn-gateway-about-SKUS-legacy.md).
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
-* Po dokončení připojení můžete do virtuálních sítí přidávat virtuální počítače. Další informace najdete v tématu [Virtuální počítače](https://docs.microsoft.com/azure/#pivot=services&panel=Compute).
+* Po dokončení připojení můžete do virtuálních sítí přidávat virtuální počítače. Další informace najdete v tématu [Virtuální počítače](https://docs.microsoft.com/azure/).
 * Informace o vynuceném tunelování najdete v tématu [Informace o vynuceném tunelování](vpn-gateway-about-forced-tunneling.md).

@@ -8,12 +8,12 @@ ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 10/30/2018
-ms.openlocfilehash: 53ef96b561ccaa1480125f2c509381e980084b7a
-ms.sourcegitcommit: 542964c196a08b83dd18efe2e0cbfb21a34558aa
+ms.openlocfilehash: 63182657e7c5793a2102efecabeb7d51fa1086a9
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51636672"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55729485"
 ---
 # <a name="time-series-analysis-in-azure-data-explorer"></a>Analýzu časových řad v Průzkumníku dat Azure
 
@@ -36,16 +36,16 @@ Výsledná tabulka obsahuje sloupec časového razítka, tři sloupce kontextov�
 |   |   |   |   |   |
 | --- | --- | --- | --- | --- |
 |   | Časové razítko | BrowserVer | OsVer | Země |
-|   | 09:12:35.4020000 2016-08-25 | Chrome 51.0 | Windows 7 | Spojené království |
-|   | 09:12:41.1120000 2016-08-25 | Chrome 52.0 | Windows 10 |   |
-|   | 09:12:46.2300000 2016-08-25 | Chrome 52.0 | Windows 7 | Spojené království |
-|   | 09:12:46.5100000 2016-08-25 | Chrome 52.0 | Windows 10 | Spojené království |
-|   | 09:12:46.5570000 2016-08-25 | Chrome 52.0 | Windows 10 | Litevská republika |
-|   | 09:12:47.0470000 2016-08-25 | Chrome 52.0 | Windows 8.1 | Indie |
-|   | 09:12:51.3600000 2016-08-25 | Chrome 52.0 | Windows 10 | Spojené království |
-|   | 09:12:51.6930000 2016-08-25 | Chrome 52.0 | Windows 7 | Nizozemsko |
-|   | 09:12:56.4240000 2016-08-25 | Chrome 52.0 | Windows 10 | Spojené království |
-|   | 09:13:08.7230000 2016-08-25 | Chrome 52.0 | Windows 10 | Indie |
+|   | 2016-08-25 09:12:35.4020000 | Chrome 51.0 | Windows 7 | Spojené království |
+|   | 2016-08-25 09:12:41.1120000 | Chrome 52.0 | Windows 10 |   |
+|   | 2016-08-25 09:12:46.2300000 | Chrome 52.0 | Windows 7 | Spojené království |
+|   | 2016-08-25 09:12:46.5100000 | Chrome 52.0 | Windows 10 | Spojené království |
+|   | 2016-08-25 09:12:46.5570000 | Chrome 52.0 | Windows 10 | Litevská republika |
+|   | 2016-08-25 09:12:47.0470000 | Chrome 52.0 | Windows 8.1 | Indie |
+|   | 2016-08-25 09:12:51.3600000 | Chrome 52.0 | Windows 10 | Spojené království |
+|   | 2016-08-25 09:12:51.6930000 | Chrome 52.0 | Windows 7 | Nizozemsko |
+|   | 2016-08-25 09:12:56.4240000 | Chrome 52.0 | Windows 10 | Spojené království |
+|   | 2016-08-25 09:13:08.7230000 | Chrome 52.0 | Windows 10 | Indie |
 
 Vzhledem k tomu, že neexistují žádné metriky, můžeme vytvořit pouze sadu časové řady představující počet přenosů, samostatně, rozdělený podle operačního systému pomocí následujícího dotazu:
 
@@ -103,6 +103,7 @@ Příklad `series_fit_line()` a `series_fit_2lines()` funkce v dotazu řady čas
 ```kusto
 demo_series2
 | extend series_fit_2lines(y), series_fit_line(y)
+| project x, y, series_fit_2lines_y_line_fit, series_fit_line_y_line_fit 
 | render linechart
 ```
 
@@ -181,11 +182,11 @@ demo_many_series1
 
 |   |   |   |   |   |   |
 | --- | --- | --- | --- | --- | --- |
-|   | ČASOVÉ RAZÍTKO | Umístění | anonOp | DB | Přečtená data |
-|   | 21:00:00.0000000 2016-09-11 | LOC 9 | 5117853934049630089 | 262 | 0 |
-|   | 21:00:00.0000000 2016-09-11 | LOC 9 | 5117853934049630089 | 241 | 0 |
-|   | 21:00:00.0000000 2016-09-11 | LOC 9 | -865998331941149874 | 262 | 279862 |
-|   | 21:00:00.0000000 2016-09-11 | LOC 9 | 371921734563783410 | 255 | 0 |
+|   | ČASOVÉ RAZÍTKO | Loc | anonOp | DB | Přečtená data |
+|   | 2016-09-11 21:00:00.0000000 | Loc 9 | 5117853934049630089 | 262 | 0 |
+|   | 2016-09-11 21:00:00.0000000 | Loc 9 | 5117853934049630089 | 241 | 0 |
+|   | 2016-09-11 21:00:00.0000000 | Loc 9 | -865998331941149874 | 262 | 279862 |
+|   | 2016-09-11 21:00:00.0000000 | Loc 9 | 371921734563783410 | 255 | 0 |
 
 A jednoduché statistiky:
 
@@ -196,8 +197,8 @@ demo_many_series1
 
 |   |   |   |   |
 | --- | --- | --- | --- |
-|   | počet | min\_t | maximální počet\_t |
-|   | 2177472 | 00:00:00.0000000 2016-09-08 | 23:00:00.0000000 2016-09-11 |
+|   | počet | min\_t | max\_t |
+|   | 2177472 | 2016-09-08 00:00:00.0000000 | 2016-09-11 23:00:00.0000000 |
 
 Vytváření časové řady do přihrádky 1 hodinu čtení metriky (celkem čtyři dny * 24 hodin = 96 bodů), výsledkem kolísání normální vzoru:
 
@@ -254,9 +255,9 @@ demo_many_series1
 
 |   |   |   |   |   |
 | --- | --- | --- | --- | --- |
-|   | Umístění | anonOp | DB | křivka |
-|   | LOC 15 | -3207352159611332166 | 1151 | -102743.910227889 |
-|   | LOC 13 | -3207352159611332166 | 1249 | -86303.2334644601 |
+|   | Loc | anonOp | DB | křivka |
+|   | Loc 15 | -3207352159611332166 | 1151 | -102743.910227889 |
+|   | Loc 13 | -3207352159611332166 | 1249 | -86303.2334644601 |
 
 Za méně než dvě minuty ADX analyzovat více než 20 000 časové řady a zjištěna dvě neobvyklé časové řady, ve kterých se čtení počtu náhle vyřadit.
 

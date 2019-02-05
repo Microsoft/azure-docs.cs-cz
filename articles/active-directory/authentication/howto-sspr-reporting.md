@@ -5,17 +5,17 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 07/11/2018
+ms.date: 02/01/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry
-ms.openlocfilehash: 891ab7ce0218e3532b8e503bc9b06da04a13d2c4
-ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
+ms.openlocfilehash: d3d88c29025c1a7a40a6248d3be841a33d1b6761
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/26/2019
-ms.locfileid: "55074543"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55694359"
 ---
 # <a name="reporting-options-for-azure-ad-password-management"></a>Možnosti zasílání zpráv o správě hesel Azure AD
 
@@ -85,7 +85,7 @@ Následující typy aktivit joinkind **samoobslužné správy hesel** kategorii 
 * [Resetování hesla (správcem)](#activity-type-reset-password-by-admin): Označuje, že správce provedena heslo resetovat jménem uživatele z portálu Azure portal.
 * [Resetování hesla (Samoobslužná)](#activity-type-reset-password-self-service): Označuje, že uživatel úspěšně resetovat heslo [portál pro resetování hesel Azure AD](https://passwordreset.microsoftonline.com).
 * [Průběh aktivity toku samoobslužného resetování](#activity-type-self-serve-password-reset-flow-activity-progress): Každý konkrétní krok, který uživatel pokračuje přes, označuje, jako je ověřování brány předá určité heslo resetovat, protože část hesla proces obnovení.
-* [Odemknutí uživatelského účtu (samoobslužné)](#activity-type-unlock-user-account-self-service): Označuje, že uživatel úspěšně odemknuli svůj účet služby Active Directory bez resetování hesel z [portál pro resetování hesel Azure AD](https://passwordreset.microsoftonline.com) pomocí funkce služby Active Directory účet odemknout bez resetování.
+* [Odemknutí uživatelského účtu (samoobslužné)](#activity-type-unlock-a-user-account-self-service)): Označuje, že uživatel úspěšně odemknuli svůj účet služby Active Directory bez resetování hesel z [portál pro resetování hesel Azure AD](https://passwordreset.microsoftonline.com) pomocí funkce služby Active Directory účet odemknout bez resetování.
 * [Uživatel zaregistrovaný pro samoobslužné resetování hesla](#activity-type-user-registered-for-self-service-password-reset): Označuje, že uživatel zaregistroval všechny požadované informace pro také moct resetovat své heslo v souladu s zásady pro resetování hesla nyní zadaného klienta.
 
 ### <a name="activity-type-blocked-from-self-service-password-reset"></a>Typ aktivity: Blokování samoobslužného resetování hesla
@@ -109,7 +109,7 @@ Následující seznam popisuje tato aktivita podrobně:
 * **Aktivita stavy**:
   * _Úspěch_: Označuje, že uživatel se úspěšně změnil heslo.
   * _Selhání_: Udává, že uživatel se nepodařilo změnit své heslo. Můžete vybrat řádek pro zobrazení **důvod stavu aktivity** kategorie Další informace o proč došlo k chybě.
-* **Důvod selhání stavu aktivity**: 
+* **Důvod selhání stavu aktivity**:
   * _FuzzyPolicyViolationInvalidPassword_: Uživatel vybral, který byl automaticky zakázán, protože funkce Microsoft zakázané heslo detekce zjistila, že se moc známé nebo zvlášť slabé heslo.
 
 ### <a name="activity-type-reset-password-by-admin"></a>Typ aktivity: Resetování hesla (správcem)
@@ -133,7 +133,7 @@ Následující seznam popisuje tato aktivita podrobně:
 * **Aktivita stavy**:
   * _Úspěch_: Označuje, že uživatel úspěšně resetoval svoje vlastní heslo.
   * _Selhání_: Udává, že uživatel se nepodařilo resetovat vlastní heslo. Můžete vybrat řádek pro zobrazení **důvod stavu aktivity** kategorie Další informace o proč došlo k chybě.
-* **Důvod selhání stavu aktivity**: 
+* **Důvod selhání stavu aktivity**:
   * _FuzzyPolicyViolationInvalidPassword_: Vybrat správce, který byl automaticky zakázán, protože funkce Microsoft zakázané heslo detekce zjistila, že se moc známé nebo zvlášť slabé heslo.
 
 ### <a name="activity-type-self-serve-password-reset-flow-activity-progress"></a>Typ aktivity: Průběh aktivity toku pro resetování hesla svým slouží
@@ -146,7 +146,7 @@ Následující seznam popisuje tato aktivita podrobně:
 * **Aktivita stavy**:
   * _Úspěch_: Indikuje, že uživatel úspěšně dokončeno konkrétním krokem procesu resetování hesla.
   * _Selhání_: Určuje, že konkrétní krok hesla resetovat tok selhal. Můžete vybrat řádek pro zobrazení **důvod stavu aktivity** kategorie Další informace o proč došlo k chybě.
-* **Důvody stavu aktivity**:   V následující tabulce najdete [všechny důvody přípustné obnovení činnosti stavu](#allowed-values-for-details-column).
+* **Důvody stavu aktivity**:   V následující tabulce najdete [všechny důvody přípustné obnovení činnosti stavu](#description-of-the-report-columns-in-the-azure-portal).
 
 ### <a name="activity-type-unlock-a-user-account-self-service"></a>Typ aktivity: Odemknutí uživatelského účtu (samoobslužné)
 
@@ -168,10 +168,10 @@ Následující seznam popisuje tato aktivita podrobně:
 * **Cílové aktivity**: Uživatel, který je registrovaný pro resetování hesla. Tímto uživatelem může být koncový uživatel nebo správce.
 * **Povolené stavy aktivity**:
   * _Úspěch_: Označuje, že uživatel úspěšně zaregistrován v souladu s aktuální zásady resetování hesla. 
-  * _Selhání_: Označuje, že se nepodařilo zaregistrovat pro resetování hesla uživatele. Můžete vybrat řádek pro zobrazení **důvod stavu aktivity** kategorie Další informace o proč došlo k chybě. 
+  * _Selhání_: Označuje, že se nepodařilo zaregistrovat pro resetování hesla uživatele. Můžete vybrat řádek pro zobrazení **důvod stavu aktivity** kategorie Další informace o proč došlo k chybě.
 
      >[!NOTE]
-     >Selhání neznamená, že uživatel se nepovedlo se resetovat vlastní heslo. Znamená to, že se nedokončilo proces registrace. Pokud neověřené data na svůj účet, který je správný, jako je například telefonní číslo, který není ověřen, i v případě, že neověřili toto telefonní číslo, že ji mohou dál používat k resetování hesla. Další informace najdete v tématu [co se stane, když se uživatel zaregistruje?](https://docs.microsoft.com/azure/active-directory/active-directory-passwords-learn-more#what-happens-when-a-user-registers).
+     >Selhání neznamená, že uživatel se nepovedlo se resetovat vlastní heslo. Znamená to, že se nedokončilo proces registrace. Pokud neověřené data na svůj účet, který je správný, jako je například telefonní číslo, který není ověřen, i v případě, že neověřili toto telefonní číslo, že ji mohou dál používat k resetování hesla.
      >
 
 ## <a name="next-steps"></a>Další postup

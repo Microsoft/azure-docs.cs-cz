@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: howto
 ms.date: 01/10/2019
 ms.author: hrasheed
-ms.openlocfilehash: a44e53d7a32ab151fa951d1bc89b741390a70dfb
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: fae92f8e09cc2ad6b63cb15599e0b1ab72588ed8
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55464785"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55728839"
 ---
 # <a name="use-azure-data-lake-storage-gen2-with-azure-hdinsight-clusters"></a>Použití Azure Data Lake Storage Gen2 s clustery Azure HDInsight
 
@@ -40,7 +40,7 @@ K vytvoření clusteru HDInsight, který používá Data Lake Storage Gen2 pro �
 
     ![Snímek obrazovky znázorňující vytvoření účtu úložiště na webu Azure Portal](./media/hdinsight-hadoop-data-lake-storage-gen2/azure-data-lake-storage-account-create-advanced.png)
  
-1. Přiřazení spravovaných identit k **Přispěvatel dat objektu Blob služby Storage (Preview)** role v účtu úložiště. Zobrazit [Správa přístupových práv k datům objektů Blob v Azure a fronty pomocí RBAC (Preview)](../storage/common/storage-auth-aad-rbac.md#assign-a-role-scoped-to-the-storage-account-in-the-azure-portal)
+1. Přiřazení spravovaných identit k **vlastník dat úložiště objektů Blob (Preview)** role v účtu úložiště. Zobrazit [Správa přístupových práv k datům objektů Blob v Azure a fronty pomocí RBAC (Preview)](../storage/common/storage-auth-aad-rbac.md#assign-a-role-scoped-to-the-storage-account-in-the-azure-portal)
 
     1. V [webu Azure portal](https://portal.azure.com), přejděte do svého účtu úložiště.
     1. Vyberte svůj účet úložiště a pak vyberte **řízení přístupu (IAM)** zobrazíte nastavení řízení přístupu k účtu. Vyberte **přiřazení rolí** kartu pro zobrazení seznamu přiřazení rolí.
@@ -48,9 +48,9 @@ K vytvoření clusteru HDInsight, který používá Data Lake Storage Gen2 pro �
         ![Snímek obrazovky zobrazující nastavení řízení přístupu úložiště](./media/hdinsight-hadoop-data-lake-storage-gen2/portal-access-control.png)
     
     1. Klikněte na tlačítko **přidat přiřazení role** tlačítko Přidat novou roli.
-    1. V **přidat přiřazení role** okna, vyberte **Přispěvatel dat objektu Blob služby Storage (Preview)** role. Vyberte předplatné, které má spravované identity a účtu úložiště. V dalším kroku prohledávat při vyhledávání uživatelsky přiřazené spravovanou identitu, který jste vytvořili dříve. Nakonec vyberte spravovanou identitu a zobrazí se v části **Vybraní členové**.
+    1. V **přidat přiřazení role** okna, vyberte **vlastník dat úložiště objektů Blob (Preview)** role. Vyberte předplatné, které má spravované identity a účtu úložiště. V dalším kroku prohledávat při vyhledávání uživatelsky přiřazené spravovanou identitu, který jste vytvořili dříve. Nakonec vyberte spravovanou identitu a zobrazí se v části **Vybraní členové**.
     
-        ![Snímek obrazovky ukazující, jak přiřadit roli RBAC](./media/hdinsight-hadoop-data-lake-storage-gen2/add-rbac-role2.png)
+        ![Snímek obrazovky ukazující, jak přiřadit roli RBAC](./media/hdinsight-hadoop-data-lake-storage-gen2/add-rbac-role3.png)
     
     1. Klikněte na **Uložit**. Uživatelsky přiřazené identity, který jste vybrali, je teď uvedený v části **Přispěvatel** role.
 

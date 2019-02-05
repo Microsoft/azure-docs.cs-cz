@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 08/14/2018
 ms.author: alsin
-ms.openlocfilehash: ac3e01756ad66dcb44869556bb103eb20bc2658c
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: 6ca4156c19adbeea72ae268fe62638d40919b08f
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47221481"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55699612"
 ---
 # <a name="use-serial-console-for-sysrq-and-nmi-calls"></a>Použít pro volání SysRq a NMI konzoly sériového portu
 
@@ -63,7 +63,7 @@ Z SysRq příručky pro správce výše:
 |``h``  |   Zobrazí nápovědu (libovolné jiné klávesy než ty, které tady najdete také zobrazíte nápovědu, ale ``h`` se snadno zapamatuje :-)
 |``i``  |    Odeslat SIGKILL všech procesů kromě init.
 |``j``  |    Nuceně "Právě uvolnit ji" - zmrazené podle FIFREEZE ioctl systémy souborů.
-|``k``  |    Klíč zabezpečeného přístupu (SAK) ukončí všechny programy v konzole pro aktuální virtuální. Poznámka: Naleznete v tématu důležité poznámky níže v části SAK.
+|``k``  |    Klíč zabezpečeného přístupu (SAK) ukončí všechny programy v konzole pro aktuální virtuální. POZNÁMKA: Zobrazit důležité poznámky níže v části SAK.
 |``l``  |    Zobrazuje backtrace zásobníku pro všechny aktivní procesory.
 |``m``  |    Bude vypsat aktuální informace o paměti ke konzole.
 |``n``  |    Aby nice možné RT úlohy
@@ -111,7 +111,7 @@ Pro systémy Linux, které podporují sysctl jádra parametry konfigurace může
 1. Restartování nebo aktualizaci sysctl spuštěním <br>
     `sysctl -p`
 
-Další informace o konfiguraci jádra systému Linux, včetně `unknown_nmi_panic`, `panic_on_io_nmi`, a `panic_on_unrecovered_nmi`, naleznete v tématu: [dokumentaci/proc/sys/jádra / *](https://www.kernel.org/doc/Documentation/sysctl/kernel.txt). Distribuce příslušnou část dokumentace na NMI a kroky konfigurace Linux při přijetí NMI vytvořit výpis stavu systému najdete na odkazech níže:
+Další informace o konfiguraci jádra systému Linux, včetně `unknown_nmi_panic`, `panic_on_io_nmi`, a `panic_on_unrecovered_nmi`, naleznete v tématu: [Dokumentace ke službě pro/proc/sys/jádra / *](https://www.kernel.org/doc/Documentation/sysctl/kernel.txt). Distribuce příslušnou část dokumentace na NMI a kroky konfigurace Linux při přijetí NMI vytvořit výpis stavu systému najdete na odkazech níže:
  
 ### <a name="ubuntu"></a>Ubuntu 
  - [Výpis jádra](https://help.ubuntu.com/lts/serverguide/kernel-crash-dump.html)

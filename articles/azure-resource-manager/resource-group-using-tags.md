@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 11/20/2018
 ms.author: tomfitz
-ms.openlocfilehash: d7f84e188324bcdb9fb1a26d701805978f1fd625
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.openlocfilehash: ad8a01ecccd7af15686c449b17cd5f014450b015
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55489389"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55734432"
 ---
 # <a name="use-tags-to-organize-your-azure-resources"></a>Používání značek k uspořádání prostředků Azure
 
@@ -29,11 +29,15 @@ Použití značek k prostředkům, musí mít uživatel přístup pro zápis do 
 
 [!INCLUDE [Handle personal data](../../includes/gdpr-intro-sentence.md)]
 
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+## <a name="policies"></a>Zásady
+
+Můžete použít [Azure Policy](../governance/policy/overview.md) vynucovat pravidla a konvence. Tím vytvoříte zásadu, byste se vyhnout scénář prostředky nasazované do vašeho předplatného, které nesplňují očekávaných značek pro vaši organizaci. Místo ručního použití značky nebo vyhledávání prostředků, které nedodržují předpisy můžete vytvořit zásadu, která se automaticky použije potřebné značky během nasazení. Následující část popisuje příklad zásady pro značky.
+
+[!INCLUDE [Tag policies](../../includes/azure-policy-samples-general-tags.md)]
 
 ## <a name="powershell"></a>PowerShell
 
-Příklady v tomto článku vyžadují prostředí Azure PowerShell verze 6.0 nebo novější. Pokud nemáte verzi 6.0 nebo novější, [aktualizovat verzi](/powershell/azure/install-az-ps).
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 Pokud chcete zobrazit existující značky pro *skupinu prostředků*, použijte:
 
@@ -275,5 +279,4 @@ Operace rozhraní REST API najdete v části [Azure Billing Reference k REST API
 ## <a name="next-steps"></a>Další postup
 
 * Ne všechny typy prostředků podporují značky. Pokud chcete zjistit, pokud použijete značku u typu prostředku, naleznete v tématu [podporu pro prostředky Azure se značkami](tag-support.md).
-* Pomocí vlastních zásad, můžete použít omezení a pravidla týkající se vašeho předplatného. Zásady, které definujete může být nutné, aby všechny prostředky hodnotu pro konkrétní značku. Další informace najdete v tématu [co je Azure Policy?](../azure-policy/azure-policy-introduction.md)
 * Úvodní informace o použití portálu najdete v tématu [pomocí webu Azure portal ke správě vašich prostředků Azure](resource-group-portal.md).  

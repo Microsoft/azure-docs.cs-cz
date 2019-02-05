@@ -11,12 +11,12 @@ ms.service: azure-functions
 ms.custom: mvc
 ms.devlang: azure-cli
 manager: jeconnoc
-ms.openlocfilehash: 5d03b7075b1ae590c400eb96525ab84d8487fa3e
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 7b7a239d6c96d1d5b257828ebd49c25c5bafc827
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52840091"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55700804"
 ---
 # <a name="create-a-function-on-linux-using-a-custom-image-preview"></a>Vytvoření funkce v Linuxu pomocí vlastní image (verze Preview)
 
@@ -229,7 +229,7 @@ Parametr _deployment-container-image-name_ určuje image hostovanou v Docker Hub
 
 Funkce potřebuje k připojení k výchozímu účtu úložiště připojovací řetězec. Při publikování vlastní image do účtu privátního kontejneru byste měli místo toho určit tato nastavení aplikace jako proměnné prostředí v souboru Dockerfile pomocí [instrukce ENV](https://docs.docker.com/engine/reference/builder/#env) nebo něčeho podobného.
 
-V tomto případě je `<storage_account>` název účtu úložiště, který jste vytvořili. Připojovací řetězec zobrazíte pomocí příkazu [az storage account show-connection-string](/cli/azure/storage/account#show-connection-string). Pomocí příkazu [az functionapp config appsettings set](/cli/azure/functionapp/config/appsettings#az-functionapp-config-appsettings-set) přidejte tato nastavení aplikace do aplikace Function App.
+V tomto případě je `<storage_account>` název účtu úložiště, který jste vytvořili. Připojovací řetězec zobrazíte pomocí příkazu [az storage account show-connection-string](/cli/azure/storage/account). Pomocí příkazu [az functionapp config appsettings set](/cli/azure/functionapp/config/appsettings#az-functionapp-config-appsettings-set) přidejte tato nastavení aplikace do aplikace Function App.
 
 ```azurecli-interactive
 storageConnectionString=$(az storage account show-connection-string \

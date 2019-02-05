@@ -11,12 +11,12 @@ ms.author: nilesha
 ms.reviewer: sgilley
 ms.date: 12/04/2018
 ms.custom: seodec18
-ms.openlocfilehash: cd14f2bdc394cb0887d318457dcf9295e216eb7b
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.openlocfilehash: 419e2cd8444d391c15c55c60c1cf7e086470b848
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55489491"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55730965"
 ---
 # <a name="tutorial-use-automated-machine-learning-to-build-your-regression-model"></a>Kurz: Automatizované machine learningu k vytváření regresní model
 
@@ -34,7 +34,6 @@ V tomto kurzu přečtěte si následující úkoly:
 > * Autotrain regresní model.
 > * Model spouštět místně pomocí vlastních parametrů.
 > * Prozkoumejte výsledky.
-> * Zaregistrujte tento nejlepší model.
 
 Pokud nemáte předplatné Azure, vytvořte si bezplatný účet, před zahájením. Zkuste [bezplatné nebo placené verzi aplikace služby Azure Machine Learning](http://aka.ms/AMLFree) ještě dnes.
 
@@ -783,7 +782,6 @@ for run in children:
     metrics = {k: v for k, v in run.get_metrics().items() if isinstance(v, float)}
     metricslist[int(properties['iteration'])] = metrics
 
-import pandas as pd
 rundata = pd.DataFrame(metricslist).sort_index(1)
 rundata
 ```
@@ -1217,6 +1215,5 @@ V tomto automatizované kurzu strojového učení jste provedli následující �
 > * Nakonfigurovaný pracovní prostor a připravená data experimentu.
 > * Školení s využitím automatizovaných regresní model místně pomocí vlastních parametrů.
 > * Školení prozkoumaných a přezkoumání výsledků.
-> * Registrované nejvhodnějšího modelu.
 
 [Nasazení modelu](tutorial-deploy-models-with-aml.md) službou Azure Machine Learning.

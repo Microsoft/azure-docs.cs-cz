@@ -13,12 +13,12 @@ ms.workload: iaas-sql-server
 ms.technology: database-engine
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 4087cd93b7342958717a20a08832daba1123417f
-ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
+ms.openlocfilehash: d6a82414974c00d5fa2a7cfe5c1dd00ceaeb3bfa
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54330734"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55729461"
 ---
 # <a name="provision-a-linux-sql-server-virtual-machine-in-the-azure-portal"></a>Zřízení virtuálního počítače s Linuxem a SQL Serverem na webu Azure Portal
 
@@ -129,7 +129,7 @@ Pokud máte spuštěnou na Windows a nemáte prostředí BASH, nainstalujte klie
 
 1. Vyberte **otevřít** a zadejte svoje uživatelské jméno a heslo na vyzvání.
 
-Další informace o připojení k virtuálním počítačům s Linuxem najdete v tématu [Vytvoření virtuálního počítače s Linuxem v Azure pomocí portálu](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-quick-create-portal#ssh-to-the-vm).
+Další informace o připojení k virtuálním počítačům s Linuxem najdete v tématu [Vytvoření virtuálního počítače s Linuxem v Azure pomocí portálu](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-quick-create-portal).
 
 > [!Note]
 > Pokud se zobrazí výstraha zabezpečení PuTTY o klíč hostitele serveru nejsou uložené v mezipaměti v registru, zvolte jednu z následujících možností. Pokud důvěřujete tomuto hostiteli, vyberte **Ano** přidat klíče PuTTy vaší mezipaměti a pokračovat v připojování. Pokud chcete provozovat připojení pouze jednou, bez přidání klíče do mezipaměti, vyberte **ne**. Pokud tento hostitel nedůvěřuje, vyberte **zrušit** proto ukončil připojení.

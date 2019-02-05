@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 04/20/2017
 ms.author: suchiagicha
-ms.openlocfilehash: 8309abac2c56e911c471f0d4be92fa5d5b77817e
-ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
+ms.openlocfilehash: d2f45b6f0db15773615710a4345e85ab09f7d559
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54201087"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55700430"
 ---
 # <a name="configure-fabrictransport-settings-for-reliable-actors"></a>Konfigurace nastavení FabricTransport Reliable actors
 
@@ -32,7 +32,7 @@ Výchozí konfigurace FabricTransport můžete upravit následujícími způsoby
 
 ## <a name="assembly-attribute"></a>Atribut sestavení
 
-[FabricTransportActorRemotingProvider](https://docs.microsoft.com/dotnet/api/microsoft.servicefabric.actors.remoting.fabrictransport.fabrictransportactorremotingproviderattribute?redirectedfrom=MSDN#microsoft_servicefabric_actors_remoting_fabrictransport_fabrictransportactorremotingproviderattribute) atributů je potřeba použít na klientovi objektu actor a sestavení služby objektu actor.
+[FabricTransportActorRemotingProvider](https://docs.microsoft.com/dotnet/api/microsoft.servicefabric.actors.remoting.fabrictransport.fabrictransportactorremotingproviderattribute?redirectedfrom=MSDN) atributů je potřeba použít na klientovi objektu actor a sestavení služby objektu actor.
 
 Následující příklad ukazuje, jak změnit výchozí hodnotu FabricTransport OperationTimeout nastavení:
 

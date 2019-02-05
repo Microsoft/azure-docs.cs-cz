@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: c77467efbbc1c33be5bc2aaf3251a5803beee864
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: 78e3f6a5f4a55fd4bf1925672205eb490e7c6b24
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52317105"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55695681"
 ---
 # <a name="choose-a-map-style-in-azure-maps"></a>Vyberte styl map ve službě Azure Maps
 
@@ -33,7 +33,7 @@ Blok kódu výše nastaví klíč předplatného a vytvoří objekt Map stylu na
 
 Blok kódu výše nastaví klíč předplatného a vytvoří objekt Map bez předem nastavení stylu. Zobrazit [Vytvořte mapu](./map-create.md) pokyny o tom, jak vytvořit mapu.
 
-Druhý blok kódu pomocí mapy [setStyle](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#setstyle) metody nastavte styl mapy satelit.
+Druhý blok kódu pomocí mapy [setStyle](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest) metody nastavte styl mapy satelit.
 
 ## <a name="add-the-style-picker"></a>Přidat nástroj pro výběr stylu
 
@@ -44,7 +44,7 @@ První blok kódu ve výše uvedeném kódu nastaví klíč předplatného a vyt
 
 Druhý blok kódu vytvoří selektor stylů pomocí atlas [StyleControl](/javascript/api/azure-maps-control/atlas.controls.stylecontrol) konstruktoru.
 
-Styl ovládacího prvku pro výběr umožňuje výběr stylu pro mapu. Třetí blok kódu do mapy pomocí mapy Přidá výběr stylu [controls.add](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#addcontrol) metody. Selektor stylů je v rámci mapy **naslouchací proces událostí** zajistit, že načte po plně načte mapy.
+Styl ovládacího prvku pro výběr umožňuje výběr stylu pro mapu. Třetí blok kódu do mapy pomocí mapy Přidá výběr stylu [controls.add](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest) metody. Selektor stylů je v rámci mapy **naslouchací proces událostí** zajistit, že načte po plně načte mapy.
 
 ## <a name="next-steps"></a>Další postup
 

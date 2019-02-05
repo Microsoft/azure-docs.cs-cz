@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: cynthn
 ms.openlocfilehash: 32f533d06b7db0284459951e65f9c04fe0bb0285
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50226645"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55735841"
 ---
 Skupinu dostupnosti pomáhá udržovat vaše virtuální počítače, které jsou k dispozici během výpadků, například při údržbě. Umístěním dvou nebo více podobně nakonfigurovaných virtuálních počítačů ve skupině dostupnosti vytvoří redundance potřebují zachovat dostupnost aplikace nebo služby, které běží ve virtuálním počítači. Podrobnosti o tom, jak to funguje, najdete v článku [Správa dostupnosti virtuálních počítačů][Manage the availability of virtual machines].
 
@@ -17,8 +17,8 @@ Je osvědčeným postupem je použití skupiny dostupnosti a koncových bodů s 
 
 Klasické virtuální počítače můžete přidat do skupiny dostupnosti pomocí jedné ze dvou možností:
 
-* [Možnost 1: Vytvoření virtuálního počítače a dostupnosti ve stejnou dobu][Option 1: Create a virtual machine and an availability set at the same time]. Když vytváříte tyto virtuální počítače pak, přidávání nových virtuálních počítačů do sady.
-* [Možnost 2: Přidání stávajícího virtuálního počítače do skupiny dostupnosti][Option 2: Add an existing virtual machine to an availability set].
+* [Option 1: Vytvoření virtuálního počítače a dostupnosti ve stejnou dobu][Option 1: Create a virtual machine and an availability set at the same time]. Když vytváříte tyto virtuální počítače pak, přidávání nových virtuálních počítačů do sady.
+* [Option 2: Přidat existující virtuální počítač do skupiny dostupnosti][Option 2: Add an existing virtual machine to an availability set].
 
 > [!NOTE]
 > V případě klasického modelu virtuálních počítačů, které chcete umístit do stejné skupiny dostupnosti patřily do stejné cloudové službě.
@@ -46,7 +46,7 @@ Použití webu Azure portal:
 
 Chcete-li použít příkazy prostředí Azure PowerShell k vytvoření virtuálního počítače Azure a přidat ho do nové nebo existující skupiny dostupnosti, přečtěte si téma [pomocí prostředí Azure PowerShell k vytvoření a předkonfigurace virtuálního počítače se systémem Windows](../articles/virtual-machines/windows/classic/create-powershell.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)
 
-## <a id="addmachine"> </a>Možnost 2: Přidání stávajícího virtuálního počítače do skupiny dostupnosti
+## <a id="addmachine"> </a>Možnost 2: Přidat existující virtuální počítač do skupiny dostupnosti
 Na webu Azure Portal můžete přidat stávající klasických virtuálních počítačů k existující skupině dostupnosti nastavena nebo vytvořit nový pro ně. (Mějte na paměti, že virtuální počítače ve stejné skupině dostupnosti patřily do stejné cloudové službě.) Postup je téměř stejný. Pomocí Azure Powershellu můžete přidat virtuální počítač do existující skupiny dostupnosti.
 
 1. Pokud jste tak již neučinili, přihlaste se k [webu Azure portal](https://portal.azure.com).

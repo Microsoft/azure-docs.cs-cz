@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 01/23/2017
 ms.author: muralikk
 ms.subservice: common
-ms.openlocfilehash: 935af10c2ebcdc5273671ed058fdf72099059da3
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 33234c03a3e691a95e61f825a0351cf481431294
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55475614"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55731390"
 ---
 # <a name="creating-an-export-job-for-the-azure-importexport-service"></a>Vytvoření úlohy exportu pro službu Azure Import/Export
 Vytvoření úlohy exportu pro službu Microsoft Azure Import/Export pomocí rozhraní REST API zahrnuje následující kroky:
@@ -45,21 +45,21 @@ Vytvoření úlohy exportu pro službu Microsoft Azure Import/Export pomocí roz
 
 -   Můžete exportovat všechny objekty BLOB a snímky v účtu úložiště.
 
- Další informace o zadávání objekty BLOB k exportu, najdete v článku [úlohy umístit](/rest/api/storageimportexport/jobs#Jobs_CreateOrUpdate) operace.
+ Další informace o zadávání objekty BLOB k exportu, najdete v článku [úlohy umístit](/rest/api/storageimportexport/jobs) operace.
 
 ## <a name="obtaining-your-shipping-location"></a>Získání vaše dodací umístění
 Před vytvoření úlohy exportu, je potřeba získat přenosů název umístění a adresa voláním [získat umístění](https://portal.azure.com) nebo [seznamu umístění](https://docs.microsoft.com/rest/api/storageimportexport/locations/list) operace. `List Locations` Vrátí seznam umístění a jejich poštovních adres. Můžete vybrat umístění ze seznamu vrácených a dodávat pevných disků na tuto adresu. Můžete také použít `Get Location` operaci získat přímo dodací adresu pro konkrétní lokalitu.
 
 Podle následujících pokynů k získání umístění dopravě:
 
--   Určete název umístění účtu úložiště. Tuto hodnotu najdete v části **umístění** na účet úložiště **řídicí panel** v Azure portal nebo pro dotaz s použitím operace rozhraní API pro správu služby [získat účet úložiště Vlastnosti](/rest/api/storagerp/storageaccounts#StorageAccounts_GetProperties).
+-   Určete název umístění účtu úložiště. Tuto hodnotu najdete v části **umístění** na účet úložiště **řídicí panel** v Azure portal nebo pro dotaz s použitím operace rozhraní API pro správu služby [získat účet úložiště Vlastnosti](/rest/api/storagerp/storageaccounts).
 
 -   Načíst umístění, které jsou k dispozici pro zpracování tohoto účtu úložiště pomocí volání `Get Location` operace.
 
 -   Pokud `AlternateLocations` vlastnost umístění obsahuje umístění, sama, pak je možné použít toto umístění. V opačném případě volat `Get Location` operaci znovu s některou z alternativních umístění. Původní umístění může být dočasně uzavřeno kvůli údržbě.
 
 ## <a name="creating-the-export-job"></a>Vytvoření úlohy exportu
- Chcete-li vytvořit úlohu exportu, zavolejte [úlohy umístit](/rest/api/storageimportexport/jobs#Jobs_CreateOrUpdate) operace. Budete muset zadat následující informace:
+ Chcete-li vytvořit úlohu exportu, zavolejte [úlohy umístit](/rest/api/storageimportexport/jobs) operace. Budete muset zadat následující informace:
 
 -   Název úlohy.
 
@@ -82,10 +82,10 @@ Podle následujících pokynů k získání umístění dopravě:
 >  Je nutné dodat jednotky přes službu podporované operátora, který bude zajišťovat sledovací číslo pro svůj balíček.
 
 ## <a name="updating-the-export-job-with-your-package-information"></a>Aktualizuje se úloha exportu s informacemi o balíčku
- Jakmile budete mít sledovací číslo, zavolejte [aktualizovat vlastnosti úlohy](/rest/api/storageimportexport/jobs#Jobs_Update) operace aktualizovat název operátora a sledovací číslo pro úlohu. Volitelně můžete zadat počet jednotek, zpáteční adresu a datem přesouvání.
+ Jakmile budete mít sledovací číslo, zavolejte [aktualizovat vlastnosti úlohy](/rest/api/storageimportexport/jobs) operace aktualizovat název operátora a sledovací číslo pro úlohu. Volitelně můžete zadat počet jednotek, zpáteční adresu a datem přesouvání.
 
 ## <a name="receiving-the-package"></a>Příjem balíček
- Po zpracování úlohy exportu jednotky vrátí se vám s šifrovaná data. Klíč Bitlockeru pro každou z jednotky můžete načíst pomocí volání [Get Job](/rest/api/storageimportexport/jobs#Jobs_Get) operace. Potom můžete odemknout jednotku s použitím klíče. Soubor manifestu jednotky na každém disku obsahuje seznam souborů na jednotce, stejně jako původní adresa objektu blob pro každý soubor.
+ Po zpracování úlohy exportu jednotky vrátí se vám s šifrovaná data. Klíč Bitlockeru pro každou z jednotky můžete načíst pomocí volání [Get Job](/rest/api/storageimportexport/jobs) operace. Potom můžete odemknout jednotku s použitím klíče. Soubor manifestu jednotky na každém disku obsahuje seznam souborů na jednotce, stejně jako původní adresa objektu blob pro každý soubor.
 
 [!INCLUDE [storage-import-export-delete-personal-info.md](../../../includes/storage-import-export-delete-personal-info.md)]
 

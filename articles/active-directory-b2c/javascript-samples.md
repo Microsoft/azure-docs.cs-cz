@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 12/05/2018
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: 2a0fc7cc4e76c4a93f6ff71767d3074ea8ac6564
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: fc4d09b59e568a693b7f7951e9e716d04a5a2a49
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55168205"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55729264"
 ---
 # <a name="javascript-samples-for-use-in-azure-active-directory-b2c"></a>Ukázky jazyka JavaScript pro použití v Azure Active Directory B2C
 
@@ -49,7 +49,7 @@ Povolit spuštění skriptu přidáním **ScriptExecution** elementu [RelyingPar
 
 Při přizpůsobování rozhraní vaší aplikace pomocí jazyka JavaScript, postupujte podle následujících pokynů:
 
-- Událost click není vázán `<a>` elementů HTML. 
+- Událost click není vázán `<a>` elementů HTML.
 - Nevyřídí závislost na Azure AD B2C kódu a v komentářích.
 - Neměnit pořadí nebo hierarchie elementů HTML v Azure AD B2C. Pomocí zásady služby Azure AD B2C můžete řídit pořadí prvků uživatelského rozhraní.
 - Můžete volat jakékoli služby RESTful těchto aspektů:
@@ -113,9 +113,9 @@ function setupPwdTogglers(){
 setupPwdTogglers();
 ```
 
-### <a name="add-terms-of-use"></a>Přidání podmínek použití 
+### <a name="add-terms-of-use"></a>Přidání podmínek použití
 
-Začleňte následující kód na vaši stránku, ve které chcete zahrnout **Terms of Use** zaškrtávací políčko. Toto políčko je obvykle potřeba na stránkách registrace registrace a sociální účtu místní účet.  
+Začleňte následující kód na vaši stránku, ve které chcete zahrnout **Terms of Use** zaškrtávací políčko. Toto políčko je obvykle potřeba na stránkách registrace registrace a sociální účtu místní účet.
 
 ```Javascript
 function addTermsOfUseLink() {
@@ -124,18 +124,18 @@ function addTermsOfUseLink() {
     if (!termsOfUseLabel) {
         return;
     }
-      
+
     // get the label text
     var termsLabelText = termsOfUseLabel.innerHTML;
-      
-    // create a new <a> element with the same inner text 
+
+    // create a new <a> element with the same inner text
     var termsOfUseUrl = 'https://docs.microsoft.com/legal/termsofuse';
     var termsOfUseLink = document.createElement('a');
     termsOfUseLink.setAttribute('href', termsOfUseUrl);
     termsOfUseLink.setAttribute('target', '_blank');
     termsOfUseLink.appendChild(document.createTextNode(termsLabelText));
 
-    // replace the label text with the new element 
+    // replace the label text with the new element
     termsOfUseLabel.replaceChild(termsOfUseLink, termsOfUseLabel.firstChild);
 }
 ```
@@ -145,4 +145,3 @@ V kódu, nahraďte `terms-of-use-url` s odkazem na vaše smlouva o podmínkách 
 ## <a name="next-steps"></a>Další postup
 
 Další informace o tom, jak můžete přizpůsobit uživatelského rozhraní aplikací v [přizpůsobit uživatelské rozhraní vaší aplikace pomocí vlastních zásad v Azure Active Directory B2C](active-directory-b2c-ui-customization-custom.md).
-

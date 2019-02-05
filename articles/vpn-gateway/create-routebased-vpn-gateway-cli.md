@@ -1,5 +1,5 @@
 ---
-title: 'Vytvoření brány Azure VPN založené na trasách: rozhraní příkazového řádku | Dokumentace Microsoftu'
+title: 'Vytvoření brány Azure VPN založené na směrování: ROZHRANÍ PŘÍKAZOVÉHO ŘÁDKU | Dokumentace Microsoftu'
 description: Rychle se naučíte, jak vytvořit VPN Gateway pomocí rozhraní příkazového řádku
 services: vpn-gateway
 author: cherylmc
@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: article
 ms.date: 10/04/2018
 ms.author: cherylmc
-ms.openlocfilehash: b8ca2d74012418dbd8ca9e878f133a250ebb5991
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.openlocfilehash: f5f62a6bfa1baa205e0496dd901f1f1eef660079
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49465096"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55698186"
 ---
 # <a name="create-a-route-based-vpn-gateway-using-cli"></a>Vytvoření pomocí rozhraní příkazového řádku brány VPN založené na trasách
 
@@ -26,7 +26,7 @@ Pokud se rozhodnete nainstalovat a používat rozhraní příkazového řádku (
 
 ## <a name="create-a-resource-group"></a>Vytvoření skupiny prostředků
 
-Abyste vytvořili skupinu prostředků pomocí [vytvořit skupiny az](/cli/azure/group#az_group_create) příkazu. Skupina prostředků je logický kontejner, ve kterém se nasazují a spravují prostředky Azure. 
+Abyste vytvořili skupinu prostředků pomocí [vytvořit skupiny az](/cli/azure/group) příkazu. Skupina prostředků je logický kontejner, ve kterém se nasazují a spravují prostředky Azure. 
 
 
 ```azurecli-interactive 
@@ -35,7 +35,7 @@ az group create --name TestRG1 --location eastus
 
 ## <a name="vnet"></a>Vytvoření virtuální sítě
 
-Vytvoření virtuální sítě pomocí [az network vnet vytvořit](/cli/azure/network/vnet#az_network_vnet_create) příkazu. Následující příklad vytvoří virtuální síť s názvem **ze sítě VNet1** v **EastUS** umístění:
+Vytvoření virtuální sítě pomocí [az network vnet vytvořit](/cli/azure/network/vnet) příkazu. Následující příklad vytvoří virtuální síť s názvem **ze sítě VNet1** v **EastUS** umístění:
 
 ```azurecli-interactive 
 az network vnet create \
@@ -56,7 +56,7 @@ az network vnet subnet create \
   --vnet-name VNet1 \
   -n GatewaySubnet \
   -g TestRG1 \
-  --address-prefix 10.1.255.0/27 
+  --address-prefix 10.1.255.0/27 
 ```
 
 ## <a name="PublicIP"></a>Vyžádejte si veřejnou IP adresu
@@ -67,12 +67,12 @@ Brána VPN musí mít dynamicky přidělené veřejné IP adresy. Veřejná IP a
 az network public-ip create \
   -n VNet1GWIP \
   -g TestRG1 \
-  --allocation-method Dynamic 
+  --allocation-method Dynamic 
 ```
 
 ## <a name="CreateGateway"></a>Vytvoření brány VPN
 
-Vytvořte bránu VPN pomocí příkazu [az network vnet-gateway create](/cli/azure/group#az_network_vnet_gateway_create).
+Vytvořte bránu VPN pomocí příkazu [az network vnet-gateway create](/cli/azure/group).
 
 Pokud spustíte tento příkaz pomocí `--no-wait` parametr, se nezobrazí žádná zpětná vazba ani výstup. `--no-wait` Parametr umožňuje bránu vytvořit na pozadí. Neznamená to, je vytvořená služba VPN gateway okamžitě.
 
@@ -172,7 +172,7 @@ Příklad odpovědi:
 ```
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Pokud už nepotřebujete prostředky, které jste vytvořili, použijte [odstranění skupiny az](/cli/azure/group#az_group_delete) odstranit skupinu prostředků. Tím odstraníte skupinu prostředků a všechny prostředky, které obsahuje.
+Pokud už nepotřebujete prostředky, které jste vytvořili, použijte [odstranění skupiny az](/cli/azure/group) odstranit skupinu prostředků. Tím odstraníte skupinu prostředků a všechny prostředky, které obsahuje.
 
 ```azurecli-interactive 
 az group delete --name TestRG1 --yes

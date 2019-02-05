@@ -13,16 +13,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: quickstart
-ms.date: 09/24/2018
+ms.date: 02/05/2019
 ms.author: celested
 ms.reviewer: dadobali
 ms.custom: aaddev
-ms.openlocfilehash: 3e4cd8859f376fa4fbb9069b145d893483c3fc14
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.openlocfilehash: 0ffde84a39ef2955f14af66a05195e35109d41bb
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55101256"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55692133"
 ---
 # <a name="quickstart-set-up-a-dev-environment"></a>Rychlý start: Vytvoření a nastavení vývojového prostředí
 
@@ -64,8 +64,11 @@ Pokud existujícího tenanta přidruženého k účtu nemáte, zobrazí se pod n
 Pokud ještě tenanta Azure AD nemáte nebo chcete pro účely vývoje vytvořit nového, postupujte podle [prostředí pro vytváření adresářů](https://portal.azure.com/#create/Microsoft.AzureActiveDirectory). Při vytváření nového tenanta budete muset zadat následující informace:
 
 - **Název organizace**
-- **Počáteční doména** – bude to část domény *.onmicrosoft.com. Doménu můžete dále přizpůsobit později. 
+- **Počáteční doména** – bude to část domény *.onmicrosoft.com. Doménu můžete dále přizpůsobit později.
 - **Země nebo oblast**
+
+> [!NOTE]
+> Když pojmenováváte vašeho tenanta, použijte alfanumerické znaky. Speciální znaky nejsou povoleny. Název nesmí být delší než 256 znaků.
 
 ## <a name="social-and-local-accounts"></a>Účty na sociálních sítích a místní účty
 

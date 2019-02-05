@@ -8,14 +8,14 @@ manager: cgronlun
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: quickstart
-ms.date: 10/24/2018
+ms.date: 02/01/2019
 ms.author: erhopf
-ms.openlocfilehash: 22b12349ac93f0c9dd595e01ecb4661e019c346b
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: ad5af3e43e1419246d1692c5028cb2453b04516c
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55458215"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55696132"
 ---
 # <a name="quickstart-use-the-translator-text-api-to-determine-sentence-length-using-python"></a>Rychlý start: Použití rozhraní Translator Text API k určení délky větu pomocí Pythonu
 
@@ -64,7 +64,7 @@ else:
 #subscriptionKey = 'put_your_key_here'
 ```
 
-V současné době je pro službu Translator Text dostupný jeden koncový bod, který je nastavený jako `base_url`. `path` nastaví trasu `breaksentence` a určuje, že chceme cílit na rozhraní API verze 3.
+Translator Text globální koncový bod je nastaven jako `base_url`. `path` nastaví trasu `breaksentence` a určuje, že chceme cílit na rozhraní API verze 3.
 
 Hodnota `params` v této ukázce slouží k nastavení jazyka zadaného textu. Pro trasu `breaksentence` není hodnota `params` potřeba. Pokud ji v požadavku vynecháte, rozhraní API se pokusí rozpoznat jazyk zadaného textu a uvede tuto informaci společně se skóre spolehlivosti v odpovědi.
 

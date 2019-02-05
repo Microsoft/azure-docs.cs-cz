@@ -15,12 +15,12 @@ ms.devlang: azurecli
 ms.topic: article
 ms.date: 11/29/2017
 ms.author: rclaus
-ms.openlocfilehash: 0f7660e8534a74eabe32611c4c01ae5587af7cee
-ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
+ms.openlocfilehash: c0a5e8695b712ca95952ea839fa829dab2c48824
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2018
-ms.locfileid: "43188869"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55700090"
 ---
 # <a name="cloud-init-support-for-virtual-machines-in-azure"></a>Podpora cloud-init pro virtuální počítače v Azure
 Tento článek vysvětluje, zda existuje pro podporu [cloud-init](https://cloudinit.readthedocs.io) ke konfiguraci virtuálního počítače (VM) nebo virtuální počítače škálovacích sad (VMSS) zřizování času v Azure. Tyto skripty cloud-init spustit při prvním spuštění, jakmile se zřizují prostředky Azure.  
@@ -39,8 +39,8 @@ Cloud-init navíc funguje v různých distribucích. K instalaci balíčku tak n
 |Canonical |UbuntuServer |16.04-LTS |nejnovější |ano | 
 |Canonical |UbuntuServer |14.04.5-LTS |nejnovější |ano |
 |CoreOS |CoreOS |Stable |nejnovější |ano |
-|OpenLogic |CentOS |7-CI |nejnovější |náhled |
-|RedHat |RHEL |7-RAW-CI |nejnovější |náhled |
+|OpenLogic |CentOS |7-CI |nejnovější |preview |
+|RedHat |RHEL |7-RAW-CI |nejnovější |preview |
 
 Azure Stack aktuálně nepodporuje, zřizování RHEL 7.4 a CentOS 7.4 použití cloud-init.
 
@@ -54,7 +54,7 @@ WALA konfigurací virtuálních počítačů jsou omezené čas pro práci v rá
 ## <a name="deploying-a-cloud-init-enabled-virtual-machine"></a>Nasazení cloud-init povolené virtuální počítač
 Nasazení virtuálního počítače cloud-init povoleno je stejně jednoduché jako odkazující cloud-init, povolený distribuční během nasazení.  Programu distribuce Linuxu potřeba, abyste si k povolení a integrovat do své základní publikovaných imagí Azure cloud-init. Jakmile se ujistíte, že je povoleno cloud-init image, kterou chcete nasadit, můžete použít rozhraní příkazového řádku Azure k nasazení bitové kopie. 
 
-Prvním krokem při nasazení této bitové kopie, je vytvořit skupinu prostředků pomocí [vytvořit skupiny az](/cli/azure/group#az_group_create) příkazu. Skupina prostředků Azure je logický kontejner, ve kterém se nasazují a spravují prostředky Azure. 
+Prvním krokem při nasazení této bitové kopie, je vytvořit skupinu prostředků pomocí [vytvořit skupiny az](/cli/azure/group) příkazu. Skupina prostředků Azure je logický kontejner, ve kterém se nasazují a spravují prostředky Azure. 
 
 Následující příklad vytvoří skupinu prostředků *myResourceGroup* v umístění *eastus*.
 
@@ -71,7 +71,7 @@ packages:
 ```
 Stisknutím klávesy `ctrl-X` ukončíte soubor, zadejte `y` uložte soubor a stisknutím klávesy `enter` potvrďte název souboru při ukončení.
 
-Posledním krokem je vytvoření virtuálního počítače s [az vm vytvořit](/cli/azure/vm#az_vm_create) příkazu. 
+Posledním krokem je vytvoření virtuálního počítače s [az vm vytvořit](/cli/azure/vm) příkazu. 
 
 Následující příklad vytvoří virtuální počítač s názvem *centos74* a vytvoří klíče SSH, pokud ještě neexistují ve výchozím umístění klíčů. Chcete-li použít konkrétní sadu klíčů, použijte možnost `--ssh-key-value`.  Pomocí parametru `--custom-data` předejte svůj konfigurační soubor cloud-init. Pokud jste konfigurační soubor *cloud-init.txt* uložili mimo aktuální pracovní adresář, zadejte úplnou cestu k němu. Následující příklad vytvoří virtuální počítač s názvem *centos74*:
 

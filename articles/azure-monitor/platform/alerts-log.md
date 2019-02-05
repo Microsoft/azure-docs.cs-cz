@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 09/15/2018
 ms.author: vinagara
 ms.subservice: alerts
-ms.openlocfilehash: 46fc0202fe8e04cd7caefeeca948ebef251822fc
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
+ms.openlocfilehash: 8a78abd7f3eea1493ef3f6e8cf3053720ba47478
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55562279"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55695436"
 ---
 # <a name="create-view-and-manage-log-alerts-using-azure-monitor"></a>Vytvoření, zobrazení a Správa upozornění protokolů pomocí Azure monitoru  
 
@@ -61,21 +61,17 @@ Další podrobné je podrobný návod k použití protokolu výstrah pomocí roz
 
 1.  *Upozornění protokolů*: Po výběru dotazu pro generování výstrah můžou zobrazovat v **vyhledávací dotaz** pole; Pokud syntaxe dotazu není správná, pole se zobrazí chyba červeně. Pokud je správná syntaxe dotazu – pro referenci historických dat stanovených dotazu se zobrazuje jako graf s možností pro upravit časový interval z posledních šest hodin na poslední týden.
 
- ![Konfigurace pravidla výstrahy](media/alerts-log/AlertsPreviewAlertLog.png)
+    ![Konfigurace pravidla výstrahy](media/alerts-log/AlertsPreviewAlertLog.png)
 
- > [!NOTE]
-
+    > [!NOTE]
+    
     > Vizualizaci historických dat mohou být zobrazeny pouze pokud výsledky dotazu obsahovat podrobnosti času. Pokud váš dotaz vrátí souhrnná data nebo konkrétní sloupec hodnot – stejný se zobrazuje jako jednotný vykreslení.
-
-    >  Pro typ měření metriky upozornění protokolů pomocí Application insights, můžete zadat které určité proměnné k seskupení dat pomocí **agregační na** možnosti, jak je znázorněno níže:
-
+    >  Pro typ měření metriky upozornění protokolů pomocí Application Insights nebo [přešla na nové rozhraní API](alerts-log-api-switch.md), které konkrétní proměnné k seskupení dat s využitím můžete určit **agregace na** možnosti, jak je znázorněno v níže:    
     ![agregace na možnost](media/alerts-log/aggregate-on.png)
 
-1.  *Upozornění protokolů*: S vizualizací na místě **Alert Logic** lze vybrat ze zobrazených možností podmínku, agregace a nakonec prahovou hodnotu. Nakonec zadejte v logice, čas pro zadanou podmínku pomocí **období** možnost. Spolu s jak často výstraha spouštět tak, že vyberete **frekvence**.
-
-Pro **upozornění protokolů** výstrahy může být založené na:
-   - *Počet záznamů, které*: Pokud je počet záznamů vrácených dotazem větší nebo menší než hodnota zadaná, vytvoří se výstraha.
-   - *Metriky měření*: Vytvoří se výstraha, pokud každý *agregovat hodnotu* ve výsledcích překračuje prahovou hodnotu k dispozici a je *seskupené podle* zvolena hodnota. Počet porušení upozornění je počet pokusů, které se ve zvoleném časovém období překročil prahovou hodnotu. Můžete určit celkový počet porušení pro libovolnou kombinací těchto porušení přes sadu výsledků nebo po sobě jdoucí porušení tak, aby vyžadovala, porušení se musí vyskytovat v po sobě jdoucích vzorků. Další informace o [upozornění protokolů a jejich typy](../../azure-monitor/platform/alerts-unified-log.md).
+1.  *Upozornění protokolů*: S vizualizací na místě **Alert Logic** lze vybrat ze zobrazených možností podmínku, agregace a nakonec prahovou hodnotu. Nakonec zadejte v logice, čas pro zadanou podmínku pomocí **období** možnost. Spolu s jak často výstraha spouštět tak, že vyberete **frekvence**. **Upozornění protokolů** může být založené na:
+    - [Počet záznamů, které](../../azure-monitor/platform/alerts-unified-log.md#number-of-results-alert-rules): Pokud je počet záznamů vrácených dotazem větší nebo menší než hodnota zadaná, vytvoří se výstraha.
+    - [Metriky měření](../../azure-monitor/platform/alerts-unified-log.md#metric-measurement-alert-rules): Vytvoří se výstraha, pokud každý *agregovat hodnotu* ve výsledcích překračuje prahovou hodnotu k dispozici a je *seskupené podle* zvolena hodnota. Počet porušení upozornění je počet pokusů, které se ve zvoleném časovém období překročil prahovou hodnotu. Můžete určit celkový počet porušení pro libovolnou kombinací těchto porušení přes sadu výsledků nebo po sobě jdoucí porušení tak, aby vyžadovala, porušení se musí vyskytovat v po sobě jdoucích vzorků.
 
 
 1. Jako druhý krok definuje název pro upozornění v **název pravidla upozornění** pole společně s **popis** s podrobnostmi o podrobné informace o upozornění a **závažnost** hodnotu možnosti k dispozici. Tyto podrobnosti údaje znovu použijí ve všech výstrah e-mailů, oznámení nebo push provádí Azure Monitor. Kromě toho uživatel může zvolit okamžitě aktivovat pravidlo upozornění na vytvoření odpovídajícím způsobem přepnutím **Povolit pravidlo po vytvoření** možnost.
@@ -132,9 +128,95 @@ Upozornění protokolů ve službě Azure Monitor jsou spojeny s typem prostřed
 > [!NOTE]
 > Upozornění protokolů pro Log Analytics je také možné spravovat pomocí starší verze [API upozornění Log Analytics](../../azure-monitor/platform/api-alerts.md) a starší verze šablony [uložené výsledky hledání a upozornění Log Analytics](../../azure-monitor/insights/solutions-resources-searches-alerts.md) také. Další informace o použití nového rozhraní API ScheduledQueryRules pomocí zde podrobně ve výchozím nastavení, najdete v části [přepnout na nové rozhraní API pro upozornění Log Analytics](alerts-log-api-switch.md).
 
-Tady je struktury [vytváření pravidel dotazu naplánované](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules/createorupdate) na základě šablony prostředků s ukázkovou datovou sadu jako proměnné.
+
+### <a name="sample-log-alert-creation-using-azure-resource-template"></a>Ukázka protokolu výstrahy vytvoření pomocí šablony Azure Resource
+
+Následuje struktury [vytváření pravidel dotazu naplánované](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules/createorupdate) na základě šablony prostředků pomocí standardního protokolu vyhledávacího dotazu daného [počet upozornění protokolu výsledky typu](../../azure-monitor/platform/alerts-unified-log.md#number-of-results-alert-rules), s ukázkovou datovou sadu jako proměnné.
 
 ```json
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0", 
+    "parameters": {      
+    },   
+    "variables": {
+    "alertLocation": "southcentralus",
+    "alertName": "samplelogalert",
+    "alertTag": "hidden-link:/subscriptions/a123d7efg-123c-1234-5678-a12bc3defgh4/resourceGroups/myRG/providers/microsoft.insights/components/sampleAIapplication",
+    "alertDescription": "Sample log search alert",
+    "alertStatus": "true",
+    "alertSource":{
+        "Query":"requests",
+        "SourceId": "/subscriptions/a123d7efg-123c-1234-5678-a12bc3defgh4/resourceGroups/myRG/providers/microsoft.insights/components/sampleAIapplication",
+        "Type":"ResultCount"
+         },
+     "alertSchedule":{
+         "Frequency": 15,
+         "Time": 60
+         },
+     "alertActions":{
+         "SeverityLevel": "4"
+         },
+      "alertTrigger":{
+        "Operator":"GreaterThan",
+        "Threshold":"1"
+         },
+       "actionGrp":{
+        "ActionGroup": "/subscriptions/a123d7efg-123c-1234-5678-a12bc3defgh4/resourceGroups/myRG/providers/microsoft.insights/actiongroups/sampleAG",
+        "Subject": "Customized Email Header",
+        "Webhook": "{ \"alertname\":\"#alertrulename\", \"IncludeSearchResults\":true }"           
+         }
+  },
+  "resources":[ {
+    "name":"[variables('alertName')]",
+    "type":"Microsoft.Insights/scheduledQueryRules",
+    "apiVersion": "2018-04-16",
+    "location": "[variables('alertLocation')]",
+    "tags":{"[variables('alertTag')]": "Resource"},
+    "properties":{
+       "description": "[variables('alertDescription')]",
+       "enabled": "[variables('alertStatus')]",
+       "source": {
+           "query": "[variables('alertSource').Query]",
+           "dataSourceId": "[variables('alertSource').SourceId]",
+           "queryType":"[variables('alertSource').Type]"
+       },
+      "schedule":{
+           "frequencyInMinutes": "[variables('alertSchedule').Frequency]",
+           "timeWindowInMinutes": "[variables('alertSchedule').Time]"    
+       },
+      "action":{
+           "odata.type": "Microsoft.WindowsAzure.Management.Monitoring.Alerts.Models.Microsoft.AppInsights.Nexus.DataContracts.Resources.ScheduledQueryRules.AlertingAction",
+           "severity":"[variables('alertActions').SeverityLevel]",
+           "aznsAction":{
+               "actionGroup":"[array(variables('actionGrp').ActionGroup)]",
+               "emailSubject":"[variables('actionGrp').Subject]",
+               "customWebhookPayload":"[variables('actionGrp').Webhook]"
+           },
+       "trigger":{
+               "thresholdOperator":"[variables('alertTrigger').Operator]",
+               "threshold":"[variables('alertTrigger').Threshold]"
+           }
+       }
+     }
+   }
+ ]
+}
+
+```
+
+> [!IMPORTANT]
+> Značka pole Skrytá odkazy na cílový prostředek je povinné použití [naplánované pravidla dotazu ](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules/) šablonu volání nebo prostředku rozhraní API. 
+
+Výše uvedené ukázky json se dají uložit jako (Řekněme) sampleScheduledQueryRule.json pro účely Tento názorný postup vás provede a je možné nasadit s použitím [Azure Resource Manageru na webu Azure portal](../../azure-resource-manager/resource-group-template-deploy-portal.md#deploy-resources-from-custom-template).
+
+
+### <a name="log-alert-with-cross-resource-query-using-azure-resource-template"></a>Upozornění protokolu s dotazy napříč prostředky pomocí šablony Azure Resource
+
+Následuje struktury [vytváření pravidel dotazu naplánované](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules/createorupdate) na základě prostředků pomocí šablony [protokolů napříč prostředky vyhledávací dotaz](../../azure-monitor/log-query/cross-workspace-query.md) z [upozornění metriky měření typ protokolu](../../azure-monitor/platform/alerts-unified-log.md#metric-measurement-alert-rules), s ukázkovou datovou sadu jako proměnné.
+
+```json
+
 {
     "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0", 
@@ -220,9 +302,11 @@ Tady je struktury [vytváření pravidel dotazu naplánované](https://docs.micr
    }
  ]
 }
+
 ```
+
 > [!IMPORTANT]
-> Značka pole Skrytá odkazy na cílový prostředek je povinné použití [naplánované pravidla dotazu ](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules/) šablonu volání nebo prostředku rozhraní API. 
+> Značka pole Skrytá odkazy na cílový prostředek je povinné použití [naplánované pravidla dotazu ](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules/) šablonu volání nebo prostředku rozhraní API. Při použití dotazu napříč prostředky v protokolu upozornění, využití [authorizedResources](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules/createorupdate#source) je povinné a musí mít uživatel přístup k seznamu uvedeno prostředků
 
 Výše uvedené ukázky json se dají uložit jako (Řekněme) sampleScheduledQueryRule.json pro účely Tento názorný postup vás provede a je možné nasadit s použitím [Azure Resource Manageru na webu Azure portal](../../azure-resource-manager/resource-group-template-deploy-portal.md#deploy-resources-from-custom-template).
 

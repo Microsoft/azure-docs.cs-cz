@@ -15,12 +15,12 @@ ms.date: 01/18/2019
 ms.author: mabrigg
 ms.reviewer: wfayed
 ms.lastreviewed: 01/18/2019
-ms.openlocfilehash: ff70b1f8eda7bd48f0fba25aa66db42c15acab54
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 585fc4f1bbddb08d881414b581120b7bc14232ab
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55252128"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55729930"
 ---
 # <a name="apply-updates-in-azure-stack"></a>Použití aktualizací ve službě Azure Stack
 
@@ -37,6 +37,9 @@ Pokud společnosti Microsoft nebo výrobce OEM balíčku aktualizace pro Azure S
 - Odpovídající `<PackageName>.bin` soubory. Tyto soubory poskytují kompresi pro datovou část, který je přidružen *název_balíčku*soubor .exe.
 
 - A `Metadata.xml` souboru. Tento soubor obsahuje základní informace o aktualizaci, třeba vydavatele, název, požadovaných součástí, velikost a adresa URL podpory cestu.
+
+> [!IMPORTANT]  
+> Po použití balíčku aktualizace Azure Stack 1901 formát balení pro Azure Stack aktualizace pacakges přejde od .exe, .bin(s) a formátu XML .zip(s) a formátu XML. Operátoři Azure stacku, které se připojily razítka nebude mít vliv. Operátoři Azure stacku, které jsou odpojené jednoduše naimportuje soubory XML a .zip s použitím stejného procesu popsané níže.
 
 ## <a name="import-and-install-updates"></a>Import a aktualizace
 

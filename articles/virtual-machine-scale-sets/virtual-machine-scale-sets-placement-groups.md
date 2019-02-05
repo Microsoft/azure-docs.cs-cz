@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 11/9/2017
 ms.author: rajraj
-ms.openlocfilehash: 5280936cdec25f7b5fc4b77c989b31c7a01f7bd6
-ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
-ms.translationtype: HT
+ms.openlocfilehash: 2a1c78a4cec595b672604c90e103ae3b9e40273f
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49958631"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55693679"
 ---
 # <a name="working-with-large-virtual-machine-scale-sets"></a>Práce s velkými škálovacími sadami virtuálních počítačů
 Nyní můžete vytvořit [škálovací sady virtuálních počítačů](/azure/virtual-machine-scale-sets/) Azure s kapacitou až 1 000 virtuálních počítačů. V tomto dokumentu je _velká škálovací sada virtuálních počítačů_ definována jako škálovací sada umožňující škálování na více než 100 virtuálních počítačů. Tato funkce se nastavuje pomocí vlastnosti škálovací sady (_singlePlacementGroup=False_). 
@@ -61,7 +61,7 @@ Příkaz _vmss create_ použije určité výchozí konfigurační hodnoty, pokud
 az vmss create --help
 ```
 
-Pokud vytváříte velkou škálovací sadu s využitím šablony Azure Resource Manageru, ujistěte se, že šablona vytváří škálovací sadu založenou na službě Azure Managed Disks. Vlastnost _singlePlacementGroup_ můžete nastavit na hodnotu _false_ v části _vlastnosti_ prostředku _Microsoft.Compute/virtualMAchineScaleSets_. Následující fragment ve formátu JSON ukazuje začátek šablony škálovací sady, která zahrnuje nastavení kapacity na 1 000 virtuálních počítačů a nastavení vlastnosti _"singlePlacementGroup" : false_:
+Pokud vytváříte velkou škálovací sadu s využitím šablony Azure Resource Manageru, ujistěte se, že šablona vytváří škálovací sadu založenou na službě Azure Managed Disks. Můžete nastavit _singlePlacementGroup_ vlastnost _false_ v _vlastnosti_ část _Microsoft.Compute/virtualMachineScaleSets_ prostředků. Následující fragment ve formátu JSON ukazuje začátek šablony škálovací sady, která zahrnuje nastavení kapacity na 1 000 virtuálních počítačů a nastavení vlastnosti _"singlePlacementGroup" : false_:
 ```json
 {
   "type": "Microsoft.Compute/virtualMachineScaleSets",

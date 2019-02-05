@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: conceptual
 ms.date: 11/14/2018
 ms.author: tamram
-ms.openlocfilehash: 4400bdf9a88c492a08c7eeafb074af89dee8abb1
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
+ms.openlocfilehash: 6af1a7c1cf140ba8ff4710c0cc90559e3df55135
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55661764"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55734160"
 ---
 # <a name="how-to-upload-download-and-list-blobs-using-nodejs-sdk-v2"></a>Postup nahrání, stažení a výpis objektů BLOB pomocí sady Node.js SDK v2
 
@@ -108,7 +108,7 @@ V následující implementaci jsou všechny funkce *blobService* zabalené do fu
 
 ### <a name="list-containers"></a>Výpis kontejnerů
 
-Funkce *listContainers* zavolá metodu [listContainersSegmented](/javascript/api/azure-storage/azurestorage.services.blob.blobservice.blobservice?view=azure-node-latest#listcontainerssegmented), která vrátí kolekci kontejnerů ve skupině.
+Funkce *listContainers* zavolá metodu [listContainersSegmented](/javascript/api/azure-storage/azurestorage.services.blob.blobservice.blobservice?view=azure-node-latest), která vrátí kolekci kontejnerů ve skupině.
 
 ```javascript
 const listContainers = async () => {
@@ -150,7 +150,7 @@ Použití metody **createContainerIfNotExists** umožňuje aplikaci několikrát
 
 ### <a name="upload-text"></a>Nahrání textu
 
-Funkce *uploadString* zavolá metodu [createBlockBlobFromText](/javascript/api/azure-storage/azurestorage.services.blob.blobservice.blobservice?view=azure-node-latest#createblockblobfromtext) a do kontejneru objektů blob zapíše libovolný řetězec (nebo ho přepíše).
+Funkce *uploadString* zavolá metodu [createBlockBlobFromText](/javascript/api/azure-storage/azurestorage.services.blob.blobservice.blobservice?view=azure-node-latest) a do kontejneru objektů blob zapíše libovolný řetězec (nebo ho přepíše).
 
 ```javascript
 const uploadString = async (containerName, blobName, text) => {
@@ -184,7 +184,7 @@ const uploadLocalFile = async (containerName, filePath) => {
     });
 };
 ```
-Mezi další dostupné přístupy k nahrávání obsahu do objektů blob patří práce s [textem](/javascript/api/azure-storage/azurestorage.services.blob.blobservice.blobservice?view=azure-node-latest#createblockblobfromtext-string--string--string---buffer--errororresult-blobresult--) a [datovými proudy](/javascript/api/azure-storage/azurestorage.services.blob.blobservice.blobservice?view=azure-node-latest#createblockblobfromstream-string--string--stream-readable--number--errororresult-blobresult--). Pokud chcete ověřit nahrání souboru do úložiště objektů blob, můžete pomocí [Průzkumníka služby Azure Storage](https://azure.microsoft.com/features/storage-explorer/) zobrazit data ve vašem účtu.
+Mezi další dostupné přístupy k nahrávání obsahu do objektů blob patří práce s [textem](/javascript/api/azure-storage/azurestorage.services.blob.blobservice.blobservice?view=azure-node-latest-string--string--string---buffer--errororresult-blobresult--) a [datovými proudy](/javascript/api/azure-storage/azurestorage.services.blob.blobservice.blobservice?view=azure-node-latest#createblockblobfromstream-string--string--stream-readable--number--errororresult-blobresult--). Pokud chcete ověřit nahrání souboru do úložiště objektů blob, můžete pomocí [Průzkumníka služby Azure Storage](https://azure.microsoft.com/features/storage-explorer/) zobrazit data ve vašem účtu.
 
 ### <a name="list-the-blobs"></a>Výpis objektů blob
 
@@ -208,7 +208,7 @@ Zavoláním metody *listBlobsSegmented* se vrátí metadata objektů blob jako p
 
 ### <a name="download-a-blob"></a>Stažení objektu blob
 
-Funkce *download* používá metodu [getBlobToLocalFile](/javascript/api/azure-storage/azurestorage.services.blob.blobservice.blobservice?view=azure-node-latest#getblobtotext) ke stažení obsahu objektu blob do zadané absolutní cesty k souboru.
+Funkce *download* používá metodu [getBlobToLocalFile](/javascript/api/azure-storage/azurestorage.services.blob.blobservice.blobservice?view=azure-node-latest) ke stažení obsahu objektu blob do zadané absolutní cesty k souboru.
 
 ```javascript
 const downloadBlob = async (containerName, blobName) => {
@@ -224,7 +224,7 @@ const downloadBlob = async (containerName, blobName) => {
     });
 };
 ```
-Implementace znázorněná v tomto příkladu změní zdroj a vrátí obsah objektu blob jako řetězec. Můžete také stáhnout objekt blob jako [stream](/javascript/api/azure-storage/azurestorage.services.blob.blobservice.blobservice?view=azure-node-latest#getblobtostream) nebo přímo do [místního souboru](/javascript/api/azure-storage/azurestorage.services.blob.blobservice.blobservice?view=azure-node-latest).
+Implementace znázorněná v tomto příkladu změní zdroj a vrátí obsah objektu blob jako řetězec. Můžete také stáhnout objekt blob jako [stream](/javascript/api/azure-storage/azurestorage.services.blob.blobservice.blobservice?view=azure-node-latest) nebo přímo do [místního souboru](/javascript/api/azure-storage/azurestorage.services.blob.blobservice.blobservice?view=azure-node-latest).
 
 ### <a name="delete-a-blob"></a>Odstranění objektu blob
 

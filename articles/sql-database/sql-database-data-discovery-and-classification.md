@@ -1,6 +1,6 @@
 ---
-title: Azure SQL Database Data zjišťování a klasifikace | Dokumentace Microsoftu
-description: Azure SQL Database Data zjišťování a klasifikace
+title: Azure SQL Database zjišťování a klasifikace dat | Dokumentace Microsoftu
+description: Azure SQL Database zjišťování a klasifikace dat
 services: sql-database
 ms.service: sql-database
 ms.subservice: security
@@ -11,15 +11,15 @@ author: ronitr
 ms.author: ronitr
 ms.reviewer: vanto
 manager: craigg
-ms.date: 01/29/2019
-ms.openlocfilehash: 57c08fc8e3b7c655bcb59affcde5e37510f98920
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.date: 02/04/2019
+ms.openlocfilehash: b85afeb18fdd93afdedbee00df995ba52a66cd5e
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55466588"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55731848"
 ---
-# <a name="azure-sql-database-data-discovery-and-classification"></a>Azure SQL Database Data zjišťování a klasifikace
+# <a name="azure-sql-database-data-discovery--classification"></a>Azure SQL Database zjišťování a klasifikace dat
 
 Data zjišťování a klasifikace (aktuálně ve verzi preview) nabízí rozšířené možnosti, které jsou integrované do Azure SQL Database pro **zjišťování**, **klasifikace**, **označování**  &  **ochrana** citlivá data ve vašich databázích.
 Zjišťování a klasifikace nejcitlivější data (obchodní finanční, zdravotní péče, identifikovatelné osobní údaje (PII) a atd.) můžete přehrát velmi důležitou roli v zásadní roli. ochrany vaší organizace. Může sloužit jako infrastruktura pro:
@@ -28,14 +28,14 @@ Zjišťování a klasifikace nejcitlivější data (obchodní finanční, zdravo
 - Různé scénáře zabezpečení, jako je například monitorování (auditování) a upozorňuje na neobvyklé přístup k citlivým datům.
 - Řízení přístupu k a posílení zabezpečení databáze, které obsahují hodně citlivá data.
 
-Zjišťování a klasifikace dat je součástí [pokročilé zabezpečení dat SQL](sql-advanced-threat-protection.md) (reklamy) nabídky, která je jednotný balíček pro pokročilé funkce zabezpečení SQL. Zjišťování a klasifikace dat je možné získat přístup a spravovat prostřednictvím portálu pro centrální SQL reklamy.
+Zjišťování a klasifikace dat je součástí [rozšířené zabezpečení dat](sql-database-advanced-data-security.md) (reklamy) nabídky, která je jednotný balíček pro pokročilé funkce zabezpečení SQL. zjišťování a klasifikace dat je možné získat přístup a spravovat prostřednictvím portálu pro centrální SQL reklamy.
 
 > [!NOTE]
 > Tento dokument se týká pouze ke službě Azure SQL Database. SQL Server (v místním prostředí), najdete v části [SQL Data zjišťování a klasifikace](https://go.microsoft.com/fwlink/?linkid=866999).
 
-## <a id="subheading-1"></a>Co je Data zjišťování a klasifikace
+## <a id="subheading-1"></a>Co je zjišťování a klasifikace dat
 
-Zjišťování a klasifikace dat představuje sadu pokročilých služeb a nové funkce SQL vytváříme nové paradigma SQL Information Protection zaměřených na ochranu dat, ne jenom databáze:
+Zjišťování a klasifikace dat představuje sadu pokročilých služeb a nové funkce SQL, které tvoří nový paradigma SQL Information Protection zaměřených na ochranu dat, ne jenom databáze:
 
 - **Zjišťování a doporučení**
 
@@ -77,7 +77,7 @@ Po definování zásady pro celého tenanta, můžete pokračovat s klasifikací
 
 1. Přejděte na [Azure Portal](https://portal.azure.com).
 
-2. Přejděte do **rozšířené zabezpečení dat** v záhlaví zabezpečení v podokně pro Azure SQL Database. Klikněte na tlačítko Povolit pokročilé zabezpečení dat a potom klikněte na **Data zjišťování a klasifikace (preview)** karty.
+2. Přejděte do **rozšířené zabezpečení dat** v záhlaví zabezpečení v podokně pro Azure SQL Database. Klikněte na tlačítko Povolit pokročilé dat zabezpečení a potom klikněte na **Data zjišťování a klasifikace (preview)** karty.
 
    ![Kontrola databáze](./media/sql-data-discovery-and-classification/data_classification.png)
 
@@ -147,11 +147,11 @@ Můžete také použít rozhraní REST API můžete programově spravovat klasif
 
 ## <a id="subheading-5"></a>Další kroky
 
-- Další informace o [SQL rozšířené zabezpečení dat](sql-advanced-threat-protection.md).
+- Další informace o [rozšířené zabezpečení dat](sql-database-advanced-data-security.md).
 - Zvažte možnost nakonfigurovat [auditování služby Azure SQL Database](sql-database-auditing.md) pro sledování a auditování přístupu k vaší klasifikované citlivá data.
 
 <!--Anchors-->
-[SQL Data Discovery & Classification overview]: #subheading-1
+[SQL data discovery & classification overview]: #subheading-1
 [Discovering, classifying & labeling sensitive columns]: #subheading-2
 [Auditing access to sensitive data]: #subheading-3
 [Automated/Programmatic classification]: #subheading-4

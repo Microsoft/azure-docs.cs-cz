@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/24/2018
 ms.author: anavin
-ms.openlocfilehash: 4207698c57b907cf60fd860bc409c8f8d5a4c565
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: f4da0f992914037f5c95050324af5762e90a2ca4
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54015283"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55696818"
 ---
 # <a name="create-change-or-delete-a-public-ip-address-prefix"></a>Vytvoření, změna nebo odstranění předponu veřejné IP adresy
 
@@ -60,13 +60,13 @@ Předpony veřejných IP adres mají poplatek. Podrobnosti najdete v tématu [ce
 |Nástroj|Příkaz|
 |---|---|
 |Rozhraní příkazového řádku|[Vytvoření az network public-ip předpona](/cli/azure/network/public-ip/prefix#az-network-public-ip-prefix-create)|
-|PowerShell|[Nové AzureRmPublicIpPrefix](/powershell/module/azurerm.network/new-azurermpublicipprefix)|
+|PowerShell|[New-AzureRmPublicIpPrefix](/powershell/module/azurerm.network/new-azurermpublicipprefix)|
 
 ## <a name="create-a-static-public-ip-address-from-a-prefix"></a>Vytvoření statické veřejné IP adresy z předpony
 Jakmile vytvoříte předponu, je nutné vytvořit statické IP adresy z předpony. Pokud to chcete udělat, postupujte podle následujících kroků.
 
 1. Do pole, které obsahuje text *vyhledat prostředky* v horní části stránky na webu Azure portal, zadejte *předpona veřejné ip adresy*. Když **předpony veřejných IP adres** nezobrazí ve výsledcích hledání, vyberte ji.
-2. Vyberte prefx, kterou chcete vytvořit veřejné IP adresy z.
+2. Vyberte předpona, která chcete k vytvoření veřejné IP adresy z.
 3. Když se objeví v seznamu výsledků hledání, vyberte ho a klikněte na **+ přidat IP adresu** v oddílu Přehled. V případě, že se to nezobrazí, ujistěte se, že používáte správné odkaz pro verzi preview: https://aka.ms/publicipprefixportal
 4. Zadejte nebo vyberte hodnoty pro následující nastavení v části **vytvoření veřejné IP adresy**. Protože předponu pro standardní SKU, protokoly IPv4 a statické, potřebujete jenom zadejte následující informace:
 

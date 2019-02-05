@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: ad506e81f6fe9cdb4604aa9bfc7870ce0bafb294
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
+ms.openlocfilehash: b5ec8df9ff08aace69680c188f9ab05e944ce891
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55667119"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55734568"
 ---
 # <a name="set-up-a-device-template-new-ui-design"></a>Nastavit šablonu zařízení (návrh nové uživatelské rozhraní)
 
@@ -245,7 +245,7 @@ Po výběru **Uložit**, **Echo** příkazu se zobrazí jako dlaždice a je při
 
 Pravidla povolení operátory k monitorování zařízení téměř v reálném čase. Pravidla automaticky vyvolat akce, jako je odeslání e-mailu, když se aktivuje pravidlo. Jeden typ pravidla je v současnosti dostupné:
 
-- **Pravidlo telemetrie**, která se aktivuje, když telemetrické vybrané zařízení překročí zadanou prahovou hodnotu. [Další informace o pravidlech telemetrie](howto-create-telemetry-rules.md?toc=/azure/iot-central-experimental/toc.json&bc=/azure/iot-central-experimental/breadcrumb/toc.json).
+- **Pravidlo telemetrie**, která se aktivuje, když telemetrické vybrané zařízení překročí zadanou prahovou hodnotu. [Další informace o pravidlech telemetrie](howto-create-telemetry-rules-experimental.md?toc=/azure/iot-central-experimental/toc.json&bc=/azure/iot-central-experimental/breadcrumb/toc.json).
 
 ## <a name="dashboard"></a>Řídicí panel
 

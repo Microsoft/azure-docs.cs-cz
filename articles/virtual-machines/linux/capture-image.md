@@ -15,12 +15,12 @@ ms.devlang: azurecli
 ms.topic: article
 ms.date: 10/08/2018
 ms.author: cynthn
-ms.openlocfilehash: 32cd3b9eb60a6d12c71be047740fa96ffdd56310
-ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
+ms.openlocfilehash: 5022d765b5dfa4f1f973b7fb4370d5314bb887b8
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49094152"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55731933"
 ---
 # <a name="how-to-create-an-image-of-a-virtual-machine-or-vhd"></a>Jak vytvořit image virtuálního počítače nebo virtuálního pevného disku
 
@@ -61,7 +61,7 @@ Nejprve je budete zrušení zřízení virtuálního počítače pomocí agenta 
 ## <a name="step-2-create-vm-image"></a>Krok 2: Vytvoření image virtuálního počítače
 Pomocí Azure CLI označit virtuální počítač za generalizovaný a zachycení bitové kopie. V následujících příkladech nahraďte ukázkové názvy parametrů s vlastními hodnotami. Zahrnout názvy parametrů příklad *myResourceGroup*, *myVnet*, a *myVM*.
 
-1. Zrušit přidělení virtuálního počítače, zřízení s [az vm deallocate](/cli/azure/vm#deallocate). V následujícím příkladu se uvolní virtuální počítač s názvem *myVM* ve skupině prostředků s názvem *myResourceGroup*.
+1. Zrušit přidělení virtuálního počítače, zřízení s [az vm deallocate](/cli/azure/vm). V následujícím příkladu se uvolní virtuální počítač s názvem *myVM* ve skupině prostředků s názvem *myResourceGroup*.
    
     ```azurecli
     az vm deallocate \
@@ -69,7 +69,7 @@ Pomocí Azure CLI označit virtuální počítač za generalizovaný a zachycen�
       --name myVM
     ```
 
-2. Označit virtuální počítač za generalizovaný s [az vm generalize](/cli/azure/vm#generalize). Následující příklad označuje virtuální počítač s názvem *myVM* ve skupině prostředků s názvem *myResourceGroup* za generalizovaný.
+2. Označit virtuální počítač za generalizovaný s [az vm generalize](/cli/azure/vm). Následující příklad označuje virtuální počítač s názvem *myVM* ve skupině prostředků s názvem *myResourceGroup* za generalizovaný.
    
     ```azurecli
     az vm generalize \
@@ -91,7 +91,7 @@ Pomocí Azure CLI označit virtuální počítač za generalizovaný a zachycen�
    > Pokud chcete ukládat image v zóně odolná úložiště, budete muset vytvořit v oblasti, která podporuje [zóny dostupnosti](../../availability-zones/az-overview.md) a zahrnout `--zone-resilient true` parametru.
 
 ## <a name="step-3-create-a-vm-from-the-captured-image"></a>Krok 3: Vytvoření virtuálního počítače ze zaznamenané bitové kopie
-Vytvoření virtuálního počítače pomocí bitové kopie, které jste vytvořili pomocí [az vm vytvořit](/cli/azure/vm#az_vm_create). Následující příklad vytvoří virtuální počítač s názvem *myVMDeployed* z image s názvem *myImage*.
+Vytvoření virtuálního počítače pomocí bitové kopie, které jste vytvořili pomocí [az vm vytvořit](/cli/azure/vm). Následující příklad vytvoří virtuální počítač s názvem *myVMDeployed* z image s názvem *myImage*.
 
 ```azurecli
 az vm create \

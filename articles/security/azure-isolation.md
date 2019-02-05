@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: TomSh
-ms.openlocfilehash: 776771c6d10bc184e1a1a077e2dbfed70a3e0358
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: 4d9a6b8bf2b6a9a50ee315d5150c15a18f37462d
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53974705"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55696044"
 ---
 # <a name="isolation-in-the-azure-public-cloud"></a>Izolace ve veřejném cloudu Azure
 ##  <a name="introduction"></a>Úvod
@@ -27,7 +27,7 @@ ms.locfileid: "53974705"
 Pomáhat aktuální a budoucí Azure zákazníky, pochopit a využívat různé související se zabezpečením možnosti dostupné v, a obaluje platformy Azure, společnost Microsoft vyvinula řadu dokumenty White Paper, přehledy o zabezpečení, osvědčené postupy a Kontrolní seznamy.
 Témata z hlediska rozebírají v rozsahu a jsou pravidelně aktualizovány. Tento dokument je části této série dle souhrnu v následující části abstraktní.
 
-### <a name="azure-platform"></a>Platforma Azure
+### <a name="azure-platform"></a>Azure Platform
 Azure je otevřená a flexibilní Cloudová platforma služby, který podporuje nejširší škálu operačních systémů, programovacích jazyků, architektur, nástrojů, databází a zařízení. Můžete například provést následující věci:
 - Používejte kontejnery Linuxu s integrací Dockeru;
 - Vytvářejte aplikace pomocí jazyka JavaScript, Python, .NET, PHP, Java a Node.js, a
@@ -52,14 +52,14 @@ V prostředí cloudu se dá klient služby Azure AD definovat jako klient nebo o
 
 Každý adresář služby Azure AD je oddělený od ostatních adresářů služby Azure AD. Adresář služby Azure AD byl navržen tak, aby se jednalo o zabezpečený prostředek k použití pouze pro vaši organizaci – stejně jako je podniková kancelářská budova zabezpečeným prostředkem výhradně vaší organizace. Architektura služby Azure AD znemožňuje míchání dat zákazníků a informací o identitě. To znamená, že se uživatelé a správci jednoho adresáře služby Azure AD nemohou dostat – ať už omylem nebo záměrně – k datům v jiném adresáři.
 
-### <a name="azure-tenancy"></a>Azure Tenantů
+### <a name="azure-tenancy"></a>Azure Tenancy
 Tenantů Azure (předplatné Azure) odkazuje na vztah "zákazník/billing" a jedinečný [tenanta](https://docs.microsoft.com/azure/active-directory/develop/active-directory-howto-tenant) v [Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-whatis). Izolace na úrovni tenanta v Microsoft Azure můžete dosáhnout použitím služby Azure Active Directory a [ovládacích prvků na základě rolí](https://docs.microsoft.com/azure/role-based-access-control/overview) nabízené ho. Každé předplatné Azure je přidružený jeden adresář Azure Active Directory (AD).
 
 Uživatelům, skupinám a aplikacím z tohoto adresáře můžou spravovat prostředky v předplatném Azure. Můžete přiřadit tato přístupová práva pomocí webu Azure portal, nástrojů příkazového řádku Azure a rozhraní API pro správu Azure. Klient služby Azure AD je logicky izolovaný s použitím hranic zabezpečení tak, aby žádný zákazník získat přístup nebo ohrozit společné tenantů speciálně nebo neúmyslně. Azure AD je spuštěna na "holé počítače" serverech izolované v segmentu oddělené sítě, kde filtrování paketů na úrovni hostitele a brány Windows Firewall blokuje nežádoucí připojení a provoz.
 
 - Přístup k datům ve službě Azure AD vyžaduje ověřování uživatelů pomocí služby tokenů zabezpečení (STS). Informace o existenci, povoleného stavu a role uživatele se používá ověřování systému k určení, zda požadovaný přístup k cílovému tenantovi je autorizovaný pro tento uživatel v této relaci.
 
-![Azure Tenantů](./media/azure-isolation/azure-isolation-fig1.png)
+![Azure Tenancy](./media/azure-isolation/azure-isolation-fig1.png)
 
 
 - Tenanti jsou samostatné kontejnery a není žádný vztah mezi těmito.
@@ -131,7 +131,7 @@ Azure Compute nabízí velikosti virtuálních počítačů, které jsou izolova
 
 Použití izolovaného velikost zaručuje, že váš virtuální počítač bude pouze jeden běží na tuto instanci konkrétní server.  Aktuální nabídky izolované virtuálního počítače zahrnují:
 * Standard_E64is_v3
-* Typu Standard_E64i_v3
+* Standard_E64i_v3
 * Standard_M128ms
 * Standard_GS5
 * Standard_G5
@@ -344,7 +344,7 @@ Nasazení Azure má několik úrovní izolace sítě. Následující diagram zn�
 
 **Izolace provozu:** A [virtuální sítě](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview) je hranicí izolace provozu na platformě Azure. Virtuální počítače (VM) v jedné virtuální síti nemůže komunikovat přímo do virtuálních počítačů v jiné virtuální síti, i když obě virtuální sítě jsou vytvořeny tentýž zákazník. Izolace je důležité vlastnost, která zajišťuje virtuální počítače zákazníků a komunikace zůstávají privátní virtuální sítě.
 
-[Podsíť](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview#subnets) nabízí další úroveň izolace ve virtuální síti na základě rozsahu IP. IP adresy ve virtuální síti, virtuální síť můžete rozdělit do několika podsítí organizačních a bezpečnostních důvodů. Virtuální počítače a instance rolí PaaS nasazené do podsítí (stejných nebo různých) v rámci jedné virtuální sítě můžou navzájem komunikovat bez jakékoli další konfigurace. Můžete taky nakonfigurovat [skupinu zabezpečení sítě (Nsg)](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview#network-security-groups-nsg) povolit nebo zamítnout síťový provoz do instancí virtuálních počítačů na základě pravidel, které jsou nakonfigurované v seznamu řízení přístupu (ACL) skupiny zabezpečení sítě. Skupiny NSG můžou být přidružené buď k podsítím, nebo k jednotlivým instancím virtuálních počítačů v této podsíti. Pokud je skupina zabezpečení sítě přidružená k podsíti, pravidla seznamu ACL platí pro všechny instance virtuálních počítačů v této podsíti.
+[Podsíť](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview) nabízí další úroveň izolace ve virtuální síti na základě rozsahu IP. IP adresy ve virtuální síti, virtuální síť můžete rozdělit do několika podsítí organizačních a bezpečnostních důvodů. Virtuální počítače a instance rolí PaaS nasazené do podsítí (stejných nebo různých) v rámci jedné virtuální sítě můžou navzájem komunikovat bez jakékoli další konfigurace. Můžete taky nakonfigurovat [skupinu zabezpečení sítě (Nsg)](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview) povolit nebo zamítnout síťový provoz do instancí virtuálních počítačů na základě pravidel, které jsou nakonfigurované v seznamu řízení přístupu (ACL) skupiny zabezpečení sítě. Skupiny NSG můžou být přidružené buď k podsítím, nebo k jednotlivým instancím virtuálních počítačů v této podsíti. Pokud je skupina zabezpečení sítě přidružená k podsíti, pravidla seznamu ACL platí pro všechny instance virtuálních počítačů v této podsíti.
 
 ## <a name="next-steps"></a>Další kroky
 

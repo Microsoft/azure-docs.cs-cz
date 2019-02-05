@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 11/30/2018
 ms.author: cherylmc
-ms.openlocfilehash: bd74aca180d291042e597ba6893009c38aa22555
-ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
+ms.openlocfilehash: 01ce4bb7b48e2f1331ebb57dc503c79b31bcc8b0
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55510115"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55700019"
 ---
 # <a name="configure-a-point-to-site-connection-to-a-vnet-using-radius-authentication-powershell"></a>Konfigurace připojení typu Point-to-Site k virtuální síti s použitím ověřování pomocí protokolu RADIUS: PowerShell
 
@@ -148,7 +148,7 @@ New-AzureRmVirtualNetworkGateway -Name $GWName -ResourceGroupName $RG `
  
 * RadiusServer – je možné zadat pomocí názvu nebo podle IP adresy. Pokud zadáte název a server se nachází v místním, nemusí být schopni vyřešit název brány sítě VPN. Pokud je to tento případ, je lepší zadejte IP adresu serveru. 
 * -RadiusSecret by měl odpovídat, co je nakonfigurováno na serveru RADIUS.
-* -VpnCientAddressPool je oblast, ze kterého dostanou připojovaní klienti VPN IP adresu. Použijte rozsah privátních IP adres, který se nepřekrývá s místním umístěním, ze kterého se budete připojovat, nebo s virtuální sítí, ke které se chcete připojit. Ujistěte se, že máte fond dostatečně velký adres, nakonfigurována.  
+* -VpnClientAddressPool je oblast, ze kterého dostanou připojovaní klienti VPN IP adresu. Použijte rozsah privátních IP adres, který se nepřekrývá s místním umístěním, ze kterého se budete připojovat, nebo s virtuální sítí, ke které se chcete připojit. Ujistěte se, že máte fond dostatečně velký adres, nakonfigurována.  
 
 1. Vytvořte zabezpečený řetězec poloměru tajného kódu.
 
@@ -243,4 +243,4 @@ Tyto nejčastější dotazy se vztahuje na P2S pomocí ověřování pomocí pro
 
 ## <a name="next-steps"></a>Další postup
 
-Po dokončení připojení můžete do virtuálních sítí přidávat virtuální počítače. Další informace najdete v tématu [Virtuální počítače](https://docs.microsoft.com/azure/#pivot=services&panel=Compute). Bližší informace o sítích a virtuálních počítačích najdete v tématu s [přehledem sítě virtuálních počítačů s Linuxem v Azure](../virtual-machines/linux/azure-vm-network-overview.md).
+Po dokončení připojení můžete do virtuálních sítí přidávat virtuální počítače. Další informace najdete v tématu [Virtuální počítače](https://docs.microsoft.com/azure/). Bližší informace o sítích a virtuálních počítačích najdete v tématu s [přehledem sítě virtuálních počítačů s Linuxem v Azure](../virtual-machines/linux/azure-vm-network-overview.md).

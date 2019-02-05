@@ -15,12 +15,12 @@ ms.devlang: azurecli
 ms.topic: sample
 ms.date: 06/22/2017
 ms.author: tamram
-ms.openlocfilehash: 160509a5a82b71b281d57d97e103bb4190605b7c
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
-ms.translationtype: HT
+ms.openlocfilehash: ac58886225221677aa003833167ff58cd578255d
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/09/2018
-ms.locfileid: "29847807"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55693917"
 ---
 # <a name="create-a-storage-account-and-rotate-its-account-access-keys"></a>Vytvoření účtu úložiště a obměna přístupových klíčů tohoto účtu
 
@@ -48,12 +48,12 @@ Tento skript k vytvoření účtu úložiště a načtení a obměně jeho pří
 
 | Příkaz | Poznámky |
 |---|---|
-| [az group create](/cli/azure/group#az_group_create) | Vytvoří skupinu prostředků, ve které se ukládají všechny prostředky. |
-| [az storage account create](/cli/azure/storage/account#az_storage_account_create) | Vytvoří účet služby Azure Storage v zadané skupině prostředků. |
-| [az storage account keys list](/cli/azure/storage/account/keys#az_storage_account_keys_list) | Zobrazí přístupové klíče účtu úložiště pro zadaný účet. |
-| [az storage account keys renew](/cli/azure/storage/account/keys#az_storage_account_keys_renew) | Znovu vygeneruje primární nebo sekundární přístupový klíč účtu úložiště. |
+| [az group create](/cli/azure/group) | Vytvoří skupinu prostředků, ve které se ukládají všechny prostředky. |
+| [az storage account create](/cli/azure/storage/account) | Vytvoří účet služby Azure Storage v zadané skupině prostředků. |
+| [az storage account keys list](/cli/azure/storage/account/keys) | Zobrazí přístupové klíče účtu úložiště pro zadaný účet. |
+| [az storage account keys renew](/cli/azure/storage/account/keys) | Znovu vygeneruje primární nebo sekundární přístupový klíč účtu úložiště. |
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Další informace o Azure CLI najdete v [dokumentaci k Azure CLI](/cli/azure).
 

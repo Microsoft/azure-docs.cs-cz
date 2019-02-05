@@ -5,13 +5,13 @@ author: jasonwhowell
 ms.author: jasonh
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 02/28/2018
-ms.openlocfilehash: 70577f32debc526aaccbd79b62dd35e82119e3f9
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.date: 02/01/2019
+ms.openlocfilehash: 3f541357d3d45ada694a821b3a3b1474185b6b00
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53548388"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55691350"
 ---
 # <a name="high-availability-concepts-in-azure-database-for-mysql"></a>Koncepty vysoké dostupnosti ve službě Azure Database for MySQL
 Služba Azure Database for MySQL poskytuje zaručenou vysokou dostupnost. Je žádnou finančně zajištěnou smlouvu o úrovni služeb (SLA) 99,99 % při všeobecné dostupnosti. Neexistuje žádná aplikace prakticky časové prodlevy při používání této služby.
@@ -32,5 +32,5 @@ Podobně jako u modelu vysokou dostupnost, když Azure Database for MySQL je ver
 Během operace škálování dojde k přerušení připojení databáze. Nejste připojení klientských aplikací a otevřít nepotvrzené transakce se zrušila. Jakmile se klientská aplikace opakuje připojení, nebo vytvoří nové připojení, brány směruje připojení na nově velikosti instance. 
 
 ## <a name="next-steps"></a>Další postup
-- Přehled služby najdete v tématu [– Azure Database for MySQL – přehled](overview.md)
-- Přehled na logiku opakování, naleznete v tématu [zpracování připojení přechodných chyb pro službu Azure Database for MySQL](concepts-connectivity.md)
+- Další informace o [zpracování připojení přechodných chyb](concepts-connectivity.md)
+- Zjistěte, jak [replikujte svá data pomocí repliky pro čtení](howto-read-replicas-portal.md)

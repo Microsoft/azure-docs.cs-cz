@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 05/19/2017
 ms.author: ramankum
 ms.custom: mvc
-ms.openlocfilehash: 044bd34a5b9e4b9bea61e804aa038daf6129185d
-ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
+ms.openlocfilehash: 030f3d9455956c3c728e450aca058b2df10eb3d3
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53584560"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55691180"
 ---
 # <a name="create-a-managed-disk-from-a-snapshot-with-cli"></a>Vytvoření spravovaného disku ze snímku pomocí rozhraní příkazového řádku
 
@@ -43,8 +43,8 @@ Tento skript k vytvoření spravovaného disku ze snímku používá následují
 
 | Příkaz | Poznámky |
 |---|---|
-| [az snapshot show](https://docs.microsoft.com/cli/azure/snapshot#az_snapshot_show) | Získá všechny vlastnosti snímku s použitím názvu a vlastností skupiny prostředků snímku. Vlastnost ID se použije k vytvoření spravovaného disku.  |
-| [az disk create](https://docs.microsoft.com/cli/azure/disk#az_disk_create) | Vytvoří spravovaný disk s použitím ID spravovaného snímku. |
+| [az snapshot show](https://docs.microsoft.com/cli/azure/snapshot) | Získá všechny vlastnosti snímku s použitím názvu a vlastností skupiny prostředků snímku. Vlastnost ID se použije k vytvoření spravovaného disku.  |
+| [az disk create](https://docs.microsoft.com/cli/azure/disk) | Vytvoří spravovaný disk s použitím ID spravovaného snímku. |
 
 ## <a name="next-steps"></a>Další postup
 

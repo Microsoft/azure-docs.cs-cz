@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/29/2018
+ms.date: 02/01/2019
 ms.author: terrylan
-ms.openlocfilehash: 55686972979c5ac3015802c340cef7dffebdb9bd
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: 8330b63f218108930c5eb66eaa6c8ff6dca67316
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53973124"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55694264"
 ---
 # <a name="azure-storage-security-overview"></a>Přehled zabezpečení služby Azure Storage
 
@@ -47,7 +47,7 @@ Další informace:
 
 ## <a name="delegated-access-to-storage-objects"></a>Delegovaný přístup k úložišti objektů
 
-Sdílený přístupový podpis poskytuje Delegovaný přístup k prostředkům ve vašem účtu úložiště. SAS znamená, že můžete udělit že klienta omezená oprávnění k objektům v účtu úložiště během zadaného období a s konkrétní sadou oprávnění. Omezená oprávnění může udělit aniž byste museli sdílet přístupové klíče vašeho účtu. 
+Sdílený přístupový podpis poskytuje Delegovaný přístup k prostředkům ve vašem účtu úložiště. SAS znamená, že můžete udělit že klienta omezená oprávnění k objektům v účtu úložiště během zadaného období a s konkrétní sadou oprávnění. Omezená oprávnění může udělit aniž byste museli sdílet přístupové klíče vašeho účtu.
 
 PODPIS je identifikátor URI, který zahrnuje všechny informace potřebné pro ověřený přístup k prostředku úložiště v jeho parametry dotazu. Pro přístup k prostředkům úložiště pomocí sdíleného přístupového podpisu, klient musí jen zadejte SAS odpovídajícího konstruktoru nebo metody.
 
@@ -73,7 +73,7 @@ Další informace o šifrování na straně klienta:
 
 Pro mnoho společností [šifrování dat v klidovém stavu](https://cloudblogs.microsoft.com/microsoftsecure/2015/09/10/cloud-security-controls-series-encrypting-data-at-rest/) je povinný krok suverenita dat o ochraně osobních údajů, dodržování předpisů a data. Tři funkce Azure poskytují šifrování dat, která jsou v klidovém stavu:
 
-* [Šifrování služby Storage](../storage/common/storage-security-guide.md#encryption-at-rest) umožňuje vyžádat, že služba úložiště automaticky šifrování dat při zápisu do služby Azure Storage.
+* [Šifrování služby Storage](../storage/common/storage-security-guide.md#encryption-at-rest) bude vždy povolené a při zápisu do služby Azure Storage automaticky šifruje data služby úložiště.
 * [Šifrování na straně klienta](../storage/common/storage-security-guide.md#client-side-encryption) také poskytuje funkci šifrování v klidovém stavu.
 * [Azure Disk Encryption](../storage/common/storage-security-guide.md#using-azure-disk-encryption-to-encrypt-disks-used-by-your-virtual-machines) umožňuje šifrovat disky s operačním systémem a datové disky, které používá virtuální počítač IaaS.
 
@@ -110,13 +110,13 @@ Další informace:
 
 * [Azure Data Box](https://azure.microsoft.com/services/storage/databox/)
 * [Azure Data Box Edge](../databox-online/data-box-edge-overview.md)
-* [Azure Data Box brány](..//databox-online/data-box-gateway-overview.md)
+* [Azure Data Box Gateway](..//databox-online/data-box-gateway-overview.md)
 
 ## <a name="advanced-threat-protection"></a>Rozšířená ochrana před internetovými útoky
 
-Azure Storage poskytuje rozšířené ochrany před internetovými útoky pro další úroveň inteligentního zabezpečení, která zjistí a potenciálně nebezpečné pokusy o přístup nebo zneužití účtu úložiště. Rozšířené ochrany před internetovými útoky monitorování diagnostické protokoly služby Azure Storage pro podezřelé číst, zapsat nebo odstranit požadavky na úložiště objektů Blob. 
+Azure Storage poskytuje rozšířené ochrany před internetovými útoky pro další úroveň inteligentního zabezpečení, která zjistí a potenciálně nebezpečné pokusy o přístup nebo zneužití účtu úložiště. Rozšířené ochrany před internetovými útoky monitorování diagnostické protokoly služby Azure Storage pro podezřelé číst, zapsat nebo odstranit požadavky na úložiště objektů Blob.
 
-Rozšířené ochrany před internetovými útoky výstrahy můžete zobrazit v [Azure Security Center](https://azure.microsoft.com/services/security-center/). Azure Security Center poskytuje podrobnosti o podezřelé aktivity zjištěna a doporučuje akcích pro šetření a náprava potenciálních ohrožení. 
+Rozšířené ochrany před internetovými útoky výstrahy můžete zobrazit v [Azure Security Center](https://azure.microsoft.com/services/security-center/). Azure Security Center poskytuje podrobnosti o podezřelé aktivity zjištěna a doporučuje akcích pro šetření a náprava potenciálních ohrožení.
 
 Další informace:
 

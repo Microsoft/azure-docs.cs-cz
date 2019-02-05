@@ -13,12 +13,12 @@ ms.date: 01/31/2019
 ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
-ms.openlocfilehash: 64b8ca0412461ae1001eecce335f94d9f2f0825f
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
+ms.openlocfilehash: 6fc85bd96294650eb2bbf9495642851ade7c7868
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55659061"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55731508"
 ---
 # <a name="administrator-role-permissions-in-azure-active-directory"></a>Oprávnění role správce v Azure Active Directory
 
@@ -39,6 +39,20 @@ K dispozici jsou následující role správce:
   <b>Důležité</b>: Tato role uděluje možnost spravovat přihlašovací údaje aplikací. Uživatelé s touto rolí můžete přidat přihlašovací údaje k aplikaci a používat tyto přihlašovací údaje k zosobnění aplikace identity. Pokud aplikace byl identitě udělen přístup do služby Azure Active Directory, jako je například schopnost vytvořit nebo aktualizovat uživatele nebo jiné objekty, pak uživatel přiřazený k této roli může provádět tyto akce při zosobňování aplikace. Tato schopnost zosobnit identitu aplikace může být zvýšení oprávnění prostřednictvím co může uživatel provést prostřednictvím svá přiřazení rolí ve službě Azure AD. Je důležité pochopit, že přiřazení uživatele k roli správce aplikace dává jim možnost zosobnit identitu aplikace.
 
 * **[Vývojář aplikace](#application-developer)**: Uživatelé s touto rolí může vytvářet registrace aplikací při "Uživatelé můžou registrovat aplikace" nastavená na Ne. Tato role také umožňuje členům vyjádřili souhlas na vlastním jménem při "Uživatelé můžou udělit souhlas s aplikací, které přistupují k firemním datům jejich jménem" nastavená na Ne. Členové této role jsou přidány jako vlastníky, při vytváření aplikace v kterémkoli nebo podnikové aplikace.
+
+* **[Správce ověřování](#authentication-administrator)**: Uživatelé s touto rolí můžete zobrazit aktuální informace o metodě ověřování a nastavit nebo resetovat přihlašovací údaje bez hesla. Správci ověřování můžete vynutit uživatelům přeregistrovat na existující bez hesla k přihlášení (třeba vícefaktorové ověřování, FIDO) dokumentů a odvolání přístupu "zapamatovat MFA na zařízení", s výzvou pro vícefaktorové ověřování při dalším přihlášení jiných uživatelů, kteří nejsou správci, nebo členy z pouze následující role:
+  * Správce ověření
+  * Uživatelé s oprávněním ke čtení adresářů
+  * Odesílatel pozvánky hostů
+  * Čtenář Centra zpráv
+  * Čtenář sestav
+  
+  <b>Důležité</b>: Uživatelé s touto rolí může změnit přihlašovací údaje pro uživatele, kteří můžou mít přístup k citlivým nebo soukromých informací nebo kritické konfigurace uvnitř i mimo Azure Active Directory. Změna přihlašovacích údajů uživatele, může to znamenat schopnost předpokládat identit a oprávnění daného uživatele. Příklad:
+  * Registrace aplikace a podniková aplikace vlastníky, kteří můžou spravovat aplikace, které vlastní přihlašovací údaje. Tyto aplikace mohou mít Privilegovaná oprávnění ve službě Azure AD a jinam nikoli udělit správcům ověřování. Pomocí této cesty, Správce ověřování může být schopen převzít identitu vlastníka aplikace a pak dále převzít identitu privilegovaného aplikace stačí aktualizovat přihlašovací údaje pro aplikaci.
+  * Vlastníci předplatného Azure, kteří můžou mít přístup k citlivým nebo soukromých informací nebo kritické konfigurace v Azure.
+  * Vlastníci skupiny zabezpečení a skupiny Office 365, kteří můžou spravovat členství ve skupině. Těmto skupinám udělit přístup k citlivým nebo soukromých informací nebo kritické konfigurace ve službě Azure AD a jinde.
+  * Správci v dalších službách mimo Azure AD, jako jsou systémy Exchange Online, Office zabezpečení a dodržování předpisů System Center a lidské zdroje.
+  * Všichni uživatelé, jako jsou vedoucí pracovníci, právním poradcem a lidské zdroje zaměstnanců, kteří můžou mít přístup k citlivým nebo soukromých informací.
 
 * **[Správce fakturace](#billing-administrator)**: Nakupuje, spravuje předplatná, spravuje lístky podpory a monitoruje stav služby.
 
@@ -274,6 +288,19 @@ Může vytvářet registrace aplikací nezávisle "uživatelé můžou registrov
 | microsoft.aad.directory/appRoleAssignments/createAsOwner | Umožňuje vytvářet appRoleAssignments v Azure Active Directory. Autor se přidá jako první vlastník a vytvořený objekt počítat do kvóty 250 vytvořených objektů autora. |
 | microsoft.aad.directory/oAuth2PermissionGrants/createAsOwner | Umožňuje vytvářet oAuth2PermissionGrants v Azure Active Directory. Autor se přidá jako první vlastník a vytvořený objekt počítat do kvóty 250 vytvořených objektů autora. |
 | microsoft.aad.directory/servicePrincipals/createAsOwner | Umožňuje vytvářet servicePrincipals v Azure Active Directory. Autor se přidá jako první vlastník a vytvořený objekt počítat do kvóty 250 vytvořených objektů autora. |
+
+### <a name="authentication-administrator"></a>Správce ověření
+Povoleno zobrazení, nastavení a obnovit informace metody ověřování pro všechny uživatele bez oprávnění správce.
+
+| **Akce** | **Popis** |
+| --- | --- |
+| microsoft.aad.directory/users/invalidateAllRefreshTokens | Umožňuje zneplatnit všechny obnovovací tokeny uživatele v Azure Active Directory. |
+| microsoft.aad.directory/users/strongAuthentication/update | Umožňuje aktualizovat vlastnosti silného ověření, třeba přihlašovací údaje MFA. |
+| microsoft.azure.serviceHealth/allEntities/allTasks | Umožňuje číst a konfigurovat službu Azure Service Health. |
+| microsoft.azure.supportTickets/allEntities/allTasks | Umožňuje vytvářet a spravovat lístky podpory Azure. |
+| microsoft.office365.webPortal/allEntities/basic/read | Umožňuje číst základní vlastnosti ve všech prostředcích v microsoft.office365.webPortal. |
+| microsoft.office365.serviceHealth/allEntities/allTasks | Umožňuje číst a konfigurovat stav služby Office 365. |
+| microsoft.office365.supportTickets/allEntities/allTasks | Umožňuje vytvářet a spravovat lístky podpory Office 365. |
 
 ### <a name="billing-administrator"></a>Správce fakturace
 Může provádět běžné úkoly související s fakturací, třeba aktualizovat platební údaje.

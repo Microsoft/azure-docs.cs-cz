@@ -17,18 +17,18 @@ ms.topic: article
 ms.date: 09/06/2016
 ms.author: rclaus
 ms.subservice: disks
-ms.openlocfilehash: 61f4237756d7a808bcc8a5983508d72fa49f4cbd
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: e983ae549664abf46de256e987e09191a2a44c0f
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55459163"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55728516"
 ---
 # <a name="optimize-your-linux-vm-on-azure"></a>Optimalizace virtuálního počítače s Linuxem v Azure
 Vytvoření virtuálního počítače s Linuxem (VM) je snadné provést z příkazového řádku nebo z portálu. V tomto kurzu se dozvíte, jak zajistit jste ho nastavili optimalizace jeho výkonu na platformě Microsoft Azure. Toto téma používá virtuální počítač s Ubuntu Server, ale můžete také vytvořit virtuální počítač Linux pomocí [svých vlastních imagí jako šablony](create-upload-generic.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).  
 
 ## <a name="prerequisites"></a>Požadavky
-Toto téma předpokládá, že již máte funkční předplatného Azure ([registraci bezplatné zkušební verze](https://azure.microsoft.com/pricing/free-trial/)) a už zřízení virtuálního počítače do vašeho předplatného Azure. Ujistěte se, že máte nejnovější [rozhraní příkazového řádku Azure](/cli/azure/install-az-cli2) nainstalovaný a přihlášení k předplatnému Azure pomocí [az login](/cli/azure/reference-index#az_login) před [vytvoření virtuálního počítače](quick-create-cli.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+Toto téma předpokládá, že již máte funkční předplatného Azure ([registraci bezplatné zkušební verze](https://azure.microsoft.com/pricing/free-trial/)) a už zřízení virtuálního počítače do vašeho předplatného Azure. Ujistěte se, že máte nejnovější [rozhraní příkazového řádku Azure](/cli/azure/install-az-cli2) nainstalovaný a přihlášení k předplatnému Azure pomocí [az login](/cli/azure/reference-index) před [vytvoření virtuálního počítače](quick-create-cli.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
 
 ## <a name="azure-os-disk"></a>Azure Disk s operačním systémem
 Po vytvoření virtuálního počítače s Linuxem v Azure má dva disky, které s ním spojená. **/ dev/sda** je disk s operačním systémem **/dev/sdb** je dočasný disk.  Nepoužívejte hlavní disk s operačním systémem (**/dev/sda**) pro všechno, co s výjimkou operačního systému, protože je optimalizovaný pro rychlé spuštění virtuálního počítače a neposkytuje dostatečný výkon pro vaše úlohy. Chcete se připojit jeden nebo víc disků k virtuálnímu počítači k získání trvalého a optimalizované úložiště pro vaše data. 

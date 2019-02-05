@@ -5,19 +5,19 @@ services: azure-stack
 keywords: ''
 author: PatAltimore
 ms.author: patricka
-ms.date: 11/02/2018
+ms.date: 02/04/2019
 ms.topic: tutorial
 ms.service: azure-stack
 ms.reviewer: seyadava
 ms.custom: mvc
 manager: femila
-ms.lastreviewed: 11/02/2018
-ms.openlocfilehash: 844c81d71734ab17c93f60cb802686c209e04014
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.lastreviewed: 02/04/2019
+ms.openlocfilehash: 6c9893aac349b05580f49a445bd088ed5c76044b
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55239226"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55697466"
 ---
 # <a name="deploy-an-ethereum-blockchain-network-on-azure-stack"></a>Nasazení síť Etherea blockchain v Azure stacku
 
@@ -25,7 +25,7 @@ ms.locfileid: "55239226"
 
 Pomocí několika vstupů uživatele a nasazení jedním kliknutím pomocí portálu Azure Stack tenanta můžete zřídit každý člen jejich nároky na síť. Nároky na síť každého člena se skládá ze sady uzlů s vyrovnáváním zatížení transakce s které aplikace nebo uživatele mohou spolupracovat při odeslání transakce, sada uzlů dolování se záznamu transakcemi a síťové virtuální zařízení (NVA). Krok následné připojení připojí síťových virtuálních zařízení pro vytvoření plně nakonfigurovaného blockchain více členy sítě.
 
-Nastavit to, můžete:
+Nastavení:
 
 - Zvolte architekturu nasazení
 - Nasadit samostatný, vedoucí consortium nebo člen sítě konsorcia
@@ -157,7 +157,7 @@ Pokud chcete ověřit nasazení člena, procházení webu Správce člena. Adres
 
 ![Souhrn nasazení člena](./media/azure-stack-ethereum/ethereum-node-status-2.png)
 
-Jak je znázorněno na obrázku, je stav uzlů člena **neběží**. Je to proto, že nedojde k připojení mezi členem a vedoucí instancí. Připojení mezi členem a vedoucí instance je obousměrné připojení. Při nasazování členské šablony automaticky vytvoří připojení od člena, na vedoucí instancí. K vytvoření připojení z lídr na člen, přejděte k dalšímu kroku.
+Jak je znázorněno na obrázku, je stav uzlů člena **neběží**. Tento stav je vzhledem k tomu, že nedojde k připojení mezi členem a vedoucí instancí. Připojení mezi členem a vedoucí instance je obousměrné připojení. Při nasazování členské šablony automaticky vytvoří připojení od člena, na vedoucí instancí. K vytvoření připojení z lídr na člen, přejděte k dalšímu kroku.
 
 ### <a name="connect-member-and-leader"></a>Připojení člena a leader
 

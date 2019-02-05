@@ -4,15 +4,15 @@ description: Poskytuje informace o zařízení Kolektoru ve službě Azure Migra
 author: snehaamicrosoft
 ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 01/31/2019
+ms.date: 02/04/2019
 ms.author: snehaa
 services: azure-migrate
-ms.openlocfilehash: 9890f68ff61d822f505c4403eb2f1f61e396fd01
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.openlocfilehash: 7a17bed165a5a8ff15a122a1376d1a3a5e17d45f
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55488702"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55700923"
 ---
 # <a name="about-the-collector-appliance"></a>Informace o zařízení Kolektoru
 
@@ -103,8 +103,6 @@ Kolekce musí úspěšně projít několik kontroly splnění podmínek se můž
     7. Zkontrolujte, že je certifikát importován podle očekávání a zkontrolujte, že internetové připojení kontrolu požadovaných součástí funguje podle očekávání.
 
 
-
-
 ### <a name="urls-for-connectivity"></a>Adresy URL pro připojení
 
 Kontrola připojení se ověří pomocí připojení k seznamu adres URL.
@@ -150,6 +148,79 @@ Kolektor komunikuje dle souhrnu v následující diagram a tabulky.
 Služba Azure Migrate | TCP 443 | Kolekce komunikuje se službou Azure Migrate přes SSL 443.
 vCenter Server | TCP 443 | Kolekce musí být schopný komunikovat s systému vCenter Server.<br/><br/> Ve výchozím nastavení připojí k serveru vCenter na 443.<br/><br/> Pokud systém vCenter Server naslouchá na jiném portu, tento port by měl být k dispozici jako odchozí port na Kolektoru.
 Protokol RDP | TCP 3389 |
+
+## <a name="collected-metadata"></a>Shromáždila se metadata
+
+Zařízení kolektoru zjistí následující metadat konfigurace pro každý virtuální počítač. Konfigurační data pro virtuální počítače jsou k dispozici hodinu po spuštění zjišťování.
+
+- Zobrazovaný název virtuálního počítače (v systému vCenter Server)
+- Cesta inventáře Virtuálního počítače (hostitel/složku v systému vCenter Server)
+- IP adresa
+- Adresa MAC
+- Operační systém
+- Počet jader, disků, síťových adaptérů
+- Velikost paměti, velikosti disků
+- Čítače výkonu virtuálních počítačů, disku a sítě.
+
+### <a name="performance-counters"></a>Čítače výkonu
+
+ Zařízení kolektoru shromažďuje následující čítače výkonu pro každý virtuální počítač z hostitele ESXi v intervalech 20 sekund. Tyto čítače jsou čítačů vCenter a i když terminologii říká průměr, 20 sekund ukázky jsou čítačů v reálném čase. Data o výkonu pro virtuální počítače se spustí poté jsou dostupné na portálu, dvě hodiny po mají spustila zjišťování. Důrazně se doporučuje počkejte alespoň den před vytvořením posouzení založená na výkon získat přesné doporučení pro správné velikosti. Pokud chcete pro rychlé provést synchronizaci dříve, můžete vytvořit posouzení s kritérium určení velikosti jako *jako místní* které nebude považovat za data o výkonu pro určení správné velikosti.
+
+**Counter** |  **Dopad na posouzení**
+--- | ---
+cpu.usage.average | Doporučené velikosti virtuálních počítačů a náklady  
+mem.usage.average | Doporučené velikosti virtuálních počítačů a náklady  
+virtualDisk.read.average | Vypočítá velikost disku, náklady na úložiště, velikost virtuálního počítače
+virtualDisk.write.average | Vypočítá velikost disku, náklady na úložiště, velikost virtuálního počítače
+virtualDisk.numberReadAveraged.average | Vypočítá velikost disku, náklady na úložiště, velikost virtuálního počítače
+virtualDisk.numberWriteAveraged.average | Vypočítá velikost disku, náklady na úložiště, velikost virtuálního počítače
+net.received.average | Vypočítá velikost virtuálního počítače                          
+net.transmitted.average | Vypočítá velikost virtuálního počítače     
+
+Úplný seznam čítačů VMware shromážděná službou Azure Migrate je k dispozici níže:
+
+**Kategorie** |  **Metadata** | **Element datapoint vCenter**
+--- | --- | ---
+Podrobnosti o počítači | ID virtuálního počítače | vm.Config.InstanceUuid
+Podrobnosti o počítači | název virtuálního počítače | vm.Config.Name
+Podrobnosti o počítači | vCenter Server ID | VMwareClient.InstanceUuid
+Podrobnosti o počítači |  Popis virtuálního počítače |  virtuální počítač. Summary.Config.Annotation
+Podrobnosti o počítači | Název produktu licencí | vm.Client.ServiceContent.About.LicenseProductName
+Podrobnosti o počítači | Typ operačního systému | virtuální počítač. Summary.Config.GuestFullName
+Podrobnosti o počítači | Verze operačního systému | virtuální počítač. Summary.Config.GuestFullName
+Podrobnosti o počítači | Typ spuštění | vm.Config.Firmware
+Podrobnosti o počítači | Počet jader | vm.Config.Hardware.NumCPU
+Podrobnosti o počítači | Paměť v megabajtech | virtuální počítač. Config.Hardware.MemoryMB
+Podrobnosti o počítači | Počet disků | virtuální počítač. Config.Hardware.Device.ToList(). FindAll(x => x is VirtualDisk).count
+Podrobnosti o počítači | Seznam velikost disků | virtuální počítač. Config.Hardware.Device.ToList(). FindAll (x = > x je VirtualDisk)
+Podrobnosti o počítači | Seznamu síťových adaptérů | virtuální počítač. Config.Hardware.Device.ToList(). FindAll (x = > x je VirtualEthernetCard)
+Podrobnosti o počítači | Využití procesoru | cpu.usage.average
+Podrobnosti o počítači | Využití paměti | mem.usage.average
+Podrobnosti o disku (na disk) | Hodnota klíče disku | disk. Klíč
+Podrobnosti o disku (na disk) | Počet jednotek disku | disk. UnitNumber
+Podrobnosti o disku (na disk) | Hodnota klíče kontroleru disku | disk.ControllerKey.Value
+Podrobnosti o disku (na disk) | GB zřízené | virtualDisk.DeviceInfo.Summary
+Podrobnosti o disku (na disk) | Název disku | Tato hodnota je generována pomocí disku. UnitNumber, disk. Klíč a disku. ControllerKey.Value
+Podrobnosti o disku (na disk) | Počet operací čtení za sekundu | virtualDisk.numberReadAveraged.average
+Podrobnosti o disku (na disk) | Počet operací zápisu za sekundu | virtualDisk.numberWriteAveraged.average
+Podrobnosti o disku (na disk) | MB za sekundu propustnost čtení | virtualDisk.read.average
+Podrobnosti o disku (na disk) | MB za sekundu propustnosti zápisu | virtualDisk.write.average
+Podrobnosti síťového adaptéru (pro síťové rozhraní) | Název síťového adaptéru | síťový adaptér Klíč
+Podrobnosti síťového adaptéru (pro síťové rozhraní) | Adresa MAC | ((VirtualEthernetCard)nic).MacAddress
+Podrobnosti síťového adaptéru (pro síťové rozhraní) | Adresy IPv4 | virtuální počítač. Guest.Net
+Podrobnosti síťového adaptéru (pro síťové rozhraní) | IPv6 adresy | virtuální počítač. Guest.Net
+Podrobnosti síťového adaptéru (pro síťové rozhraní) | MB za sekundu propustnost čtení | net.received.average
+Podrobnosti síťového adaptéru (pro síťové rozhraní) | MB za sekundu propustnosti zápisu | net.transmitted.average
+Podrobnosti o cestě inventáře | Název | container.GetType().Name
+Podrobnosti o cestě inventáře | Typ podřízený objekt | container.ChildType
+Podrobnosti o cestě inventáře | Podrobné referenční informace | container.MoRef
+Podrobnosti o cestě inventáře | Cesta úplnou inventarizaci. | kontejner. Název s úplnou cestu
+Podrobnosti o cestě inventáře | Podrobnosti o nadřazené | Container.Parent
+Podrobnosti o cestě inventáře | Podrobnosti složky pro každý virtuální počítač | ((Folder)container).ChildEntity.Type
+Podrobnosti o cestě inventáře | Podrobnosti o datovém centru pro každou složku virtuálního počítače | ((Datacenter)container).VmFolder
+Podrobnosti o cestě inventáře | Podrobnosti o datovém centru pro každou složku hostitele | ((Datacenter)container).HostFolder
+Podrobnosti o cestě inventáře | Podrobnosti o clusteru pro každého hostitele | ((ClusterComputeResource)container).Host)
+Podrobnosti o cestě inventáře | Podrobnosti hostitele pro každý virtuální počítač | ((HostSystem)container).Vm
 
 
 ## <a name="securing-the-collector-appliance"></a>Zabezpečení zařízení Kolektoru
@@ -200,34 +271,6 @@ Po nastavení zařízení, můžete spustit zjišťování. Zde je, jak to fungu
 - Zjištění virtuálních počítačů a jejich metadat a výkonu data se odesílají do Azure. Tyto akce jsou součástí úlohy kolekce.
     - Zařízení Kolektoru je přiřazena určité ID kolekce, která je pro daný počítač trvalé zjišťování.
     - Spuštěné úlohy kolekce je zadané ID konkrétní relace. ID změní pro každou úlohu kolekce a lze použít pro řešení potíží s.
-
-### <a name="collected-metadata"></a>Shromáždila se metadata
-
-Zařízení kolektoru zjistí následující metadat konfigurace pro každý virtuální počítač. Konfigurační data pro virtuální počítače jsou k dispozici hodinu po spuštění zjišťování.
-
-- Zobrazovaný název virtuálního počítače (v systému vCenter Server)
-- Cesta inventáře Virtuálního počítače (hostitel/složku v systému vCenter Server)
-- IP adresa
-- Adresa MAC
-- Operační systém
-- Počet jader, disků, síťových adaptérů
-- Velikost paměti, velikosti disků
-- Čítače výkonu virtuálních počítačů, disku a sítě.
-
-#### <a name="performance-counters"></a>Čítače výkonu
-
- Zařízení kolektoru shromažďuje následující čítače výkonu pro každý virtuální počítač z hostitele ESXi v intervalech 20 sekund. Tyto čítače jsou čítačů vCenter a i když terminologii říká průměr, 20 sekund ukázky jsou čítačů v reálném čase. Data o výkonu pro virtuální počítače se spustí poté jsou dostupné na portálu, dvě hodiny po mají spustila zjišťování. Důrazně se doporučuje počkejte alespoň den před vytvořením posouzení založená na výkon získat přesné doporučení pro správné velikosti. Pokud chcete pro rychlé provést synchronizaci dříve, můžete vytvořit posouzení s kritérium určení velikosti jako *jako místní* které nebude považovat za data o výkonu pro určení správné velikosti.
-
-**Counter** |  **Dopad na posouzení**
---- | ---
-cpu.usage.average | Doporučené velikosti virtuálních počítačů a náklady  
-mem.usage.average | Doporučené velikosti virtuálních počítačů a náklady  
-virtualDisk.read.average | Vypočítá velikost disku, náklady na úložiště, velikost virtuálního počítače
-virtualDisk.write.average | Vypočítá velikost disku, náklady na úložiště, velikost virtuálního počítače
-virtualDisk.numberReadAveraged.average | Vypočítá velikost disku, náklady na úložiště, velikost virtuálního počítače
-virtualDisk.numberWriteAveraged.average | Vypočítá velikost disku, náklady na úložiště, velikost virtuálního počítače
-net.received.average | Vypočítá velikost virtuálního počítače                          
-net.transmitted.average | Vypočítá velikost virtuálního počítače     
 
 ## <a name="next-steps"></a>Další postup
 

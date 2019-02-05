@@ -9,12 +9,12 @@ ms.date: 04/12/2018
 ms.topic: article
 ms.service: active-directory
 ms.workload: identity
-ms.openlocfilehash: 0238c8f9c7a7e571ab23b3147381d7fa22c4d8d4
-ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
+ms.openlocfilehash: a05874e28c08087b6f82c3aa5a02e83d2629ffe5
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/19/2019
-ms.locfileid: "54413307"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55694682"
 ---
 # <a name="choose-the-right-authentication-method-for-your-azure-active-directory-hybrid-identity-solution"></a>Vyberte metodu správné ověřování pro vaše řešení hybridní identity Azure Active Directory 
 
@@ -184,7 +184,7 @@ Následující diagramy popisují základní architektura služby komponent pot�
 |Jaké jsou možnosti vícefaktorové ověřování?|[Azure MFA](https://docs.microsoft.com/azure/multi-factor-authentication/)<br><br>[Vlastní ovládací prvky pomocí podmíněného přístupu *](https://docs.microsoft.com/azure/active-directory/conditional-access/controls)|[Azure MFA](https://docs.microsoft.com/azure/multi-factor-authentication/)<br><br>[Vlastní ovládací prvky pomocí podmíněného přístupu *](https://docs.microsoft.com/azure/active-directory/conditional-access/controls)|[Azure MFA](https://docs.microsoft.com/azure/multi-factor-authentication/)<br><br>[Azure MFA serveru](https://docs.microsoft.com/azure/active-directory/authentication/howto-mfaserver-deploy)<br><br>[MFA třetích stran](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/configure-additional-authentication-methods-for-ad-fs)<br><br>[Vlastní ovládací prvky pomocí podmíněného přístupu *](https://docs.microsoft.com/azure/active-directory/conditional-access/controls)|
 |Jaké stavy účtu uživatele jsou podporovány?|Zakázané účty<br>(až do 30 minut, než)|Zakázané účty<br><br>Účet uzamčen<br><br>Vypršení platnosti účtu<br><br>Platnost hesla vypršela.<br><br>Přihlašovací hodiny|Zakázané účty<br><br>Účet uzamčen<br><br>Vypršení platnosti účtu<br><br>Platnost hesla vypršela.<br><br>Přihlašovací hodiny|
 |Jaké jsou možnosti podmíněného přístupu?|[Podmíněný přístup Azure AD, s Azure AD Premium](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-azure-portal)|[Podmíněný přístup Azure AD, s Azure AD Premium](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-azure-portal)|[Podmíněný přístup Azure AD, s Azure AD Premium](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-azure-portal)<br><br>[Pravidla deklarací identity služby AD FS](https://adfshelp.microsoft.com/AadTrustClaims/ClaimsGenerator)|
-|Je blokování starších verzí protokolů, které jsou podporovány?|[Ano](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-conditions#legacy-authentication)|[Ano](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-conditions#legacy-authentication)|[Ano](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/access-control-policies-w2k12)|
+|Je blokování starších verzí protokolů, které jsou podporovány?|[Ano](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-conditions)|[Ano](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-conditions)|[Ano](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/access-control-policies-w2k12)|
 |Můžete přizpůsobit logo, obrázku a popisu na přihlašovací stránky?|[Ano, s Azure AD Premium](https://docs.microsoft.com/azure/active-directory/customize-branding)|[Ano, s Azure AD Premium](https://docs.microsoft.com/azure/active-directory/customize-branding)|[Ano](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-federation-management#customlogo)|
 |Jaké pokročilé scénáře jsou podporovány?|[Inteligentní uzamčení hesla](https://docs.microsoft.com/azure/active-directory/active-directory-secure-passwords)<br><br>[Úniku přihlašovacích údajů sestavy s Azure AD Premium P2](https://docs.microsoft.com/azure/active-directory/active-directory-reporting-risk-events)|[Inteligentní uzamčení hesla](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-pass-through-authentication-smart-lockout)|Nasazení ve více lokalitách s nízkou latencí ověřovacím systémem<br><br>[Uzamčení extranetu služby AD FS](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/configure-ad-fs-extranet-soft-lockout-protection)<br><br>[Integrace se systémy identit třetích stran](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-federation-compatibility)|
 

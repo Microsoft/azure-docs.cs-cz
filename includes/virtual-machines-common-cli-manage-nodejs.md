@@ -4,12 +4,12 @@ ms.service: virtual-machines
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: cynthn
-ms.openlocfilehash: 682288338d66f1006e9f1d7f3d6d30f822626425
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.openlocfilehash: 713068b940532331ee4a6c5f5a92816d328e41ec
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50227369"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55736099"
 ---
 Než budete moct použít Azure CLI s příkazy a šablonami Resource Manageru k nasazení prostředků a úloh Azure pomocí skupin prostředků, budete potřebovat účet s Azure. Pokud účet nemáte, [tady můžete získat bezplatnou zkušební verzi Azure](https://azure.microsoft.com/pricing/free-trial/).
 
@@ -44,7 +44,7 @@ Tento článek popisuje základní příkazy, které můžete použít ke správ
 | Odstranění virtuálního počítače |`azure vm delete [options] <resource_group> <name>` |
 | Zachycení virtuálního počítače |`azure vm capture [options] <resource_group> <name>` |
 | Vytvoření virtuálního počítače z uživatelské image |`azure  vm create [options] –q <image-name> <resource-group> <name> <location> <os-type>` |
-| Vytvoření virtuálního počítače ze specializovaného disku |`azue  vm create [options] –d <os-disk-vhd> <resource-group> <name> <location> <os-type>` |
+| Vytvoření virtuálního počítače ze specializovaného disku |`azure  vm create [options] –d <os-disk-vhd> <resource-group> <name> <location> <os-type>` |
 | Přidání datového disku k virtuálnímu počítači |`azure  vm disk attach-new [options] <resource-group> <vm-name> <size-in-gb> [vhd-name]` |
 | Odebrání datového disku z virtuálního počítače |`azure  vm disk detach [options] <resource-group> <vm-name> <lun>` |
 | Přidání obecného rozšíření do virtuálního počítače |`azure  vm extension set [options] <resource-group> <vm-name> <name> <publisher-name> <version>` |

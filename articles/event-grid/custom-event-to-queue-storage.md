@@ -9,12 +9,12 @@ ms.date: 01/07/2019
 ms.topic: quickstart
 ms.service: event-grid
 ms.custom: seodec18
-ms.openlocfilehash: ba48473b0370c2ee0acbb7b03834eb36922db556
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: 9d1d9caccac0fcdeb4e1d2dae40e677f36de40ea
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54474978"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55728041"
 ---
 # <a name="quickstart-route-custom-events-to-azure-queue-storage-with-azure-cli-and-event-grid"></a>Rychlý start: Směrování vlastních událostí do Azure Queue Storage pomocí Azure CLI a Event Gridu
 
@@ -24,9 +24,12 @@ Azure Event Grid je služba zpracování událostí pro cloud. Azure Queue Stora
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-## <a name="install-preview-feature"></a>Nainstalujte funkci ve verzi preview
+Pokud používáte prostředí Azure PowerShell nebo rozhraní příkazového řádku Azure v místním počítači namísto použití Cloud Shell na webu Azure Portal, ujistěte se, že máte následující verze rozhraní příkazového řádku Azure a Azure Powershellu. 
 
-[!INCLUDE [event-grid-preview-feature-note.md](../../includes/event-grid-preview-feature-note.md)]
+- Azure CLI verze 2.0.56 nebo vyšší. Pokyny k instalaci nejnovější verze Azure CLI najdete v tématu [instalace rozhraní příkazového řádku Azure](/cli/azure/install-azure-cli). 
+- Azure PowerShell verze 1.1.0 nebo vyšší. Stáhněte si nejnovější verzi Azure Powershellu na svém počítači s Windows z [stažení Azure – nástroje pro příkazový řádek](https://azure.microsoft.com/downloads/). 
+
+Tento článek obsahuje příkazy pro pomocí Azure CLI. 
 
 ## <a name="create-a-resource-group"></a>Vytvoření skupiny prostředků
 
@@ -47,10 +50,6 @@ az group create --name gridResourceGroup --location westus2
 Téma Event Gridu poskytuje uživatelsky definovaný koncový bod, do kterého odesíláte události. Následující příklad vytvoří vlastní téma ve vaší skupině prostředků. Nahraďte `<topic_name>` jedinečným názvem vlastního tématu. Název tématu Event Gridu musí být jedinečný, protože ho reprezentuje položka DNS.
 
 ```azurecli-interactive
-# if you have not already installed the extension, do it now.
-# This extension is required for preview features.
-az extension add --name eventgrid
-
 az eventgrid topic create --name <topic_name> -l westus2 -g gridResourceGroup
 ```
 

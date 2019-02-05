@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 11/10/2018
 ms.author: priyamo
-ms.openlocfilehash: a2e42b165596d26672ee22813e53d02ca0e3a7e9
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 4c17128f07475b6aeaef9ae15a13bc4863d7e663
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55195660"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55699886"
 ---
 # <a name="configure-managed-identities-for-azure-resources-on-an-azure-vm-using-azure-cli"></a>Konfigurace spravovaných identit pro prostředky Azure na Virtuálním počítači Azure pomocí Azure CLI
 
@@ -82,7 +82,7 @@ Pokud chcete povolit systém přiřadil spravovaná identita na virtuálním po�
    az login
    ```
 
-2. Použití [az vm identity přiřadit](/cli/azure/vm/identity/#az-vm-identity-assign) s `identity assign` příkaz Povolit identitu systém přiřadil k existujícímu virtuálnímu počítači:
+2. Použití [az vm identity přiřadit](/cli/azure/vm/identity/) s `identity assign` příkaz Povolit identitu systém přiřadil k existujícímu virtuálnímu počítači:
 
    ```azurecli-interactive
    az vm identity assign -g myResourceGroup -n myVm
@@ -107,7 +107,7 @@ Pokud máte virtuální počítač, který už je systém přiřadil identity a 
 az vm update -n myVM -g myResourceGroup --set identity.type="none"
 ```
 
-K odebrání spravovanou identitu pro rozšíření virtuálního počítače pro prostředky Azure (plánovaná k převedení na zastaralého v lednu 2019), uživatel `-n ManagedIdentityExtensionForWindows` nebo `-n ManagedIdentityExtensionForLinux` přepnout (v závislosti na typu virtuálních počítačů) s [odstranění rozšíření az vm](https://docs.microsoft.com/cli/azure/vm/#assign-identity):
+K odebrání spravovanou identitu pro rozšíření virtuálního počítače pro prostředky Azure (plánovaná k převedení na zastaralého v lednu 2019), uživatel `-n ManagedIdentityExtensionForWindows` nebo `-n ManagedIdentityExtensionForLinux` přepnout (v závislosti na typu virtuálních počítačů) s [odstranění rozšíření az vm](https://docs.microsoft.com/cli/azure/vm/):
 
 ```azurecli-interactive
 az vm identity --resource-group myResourceGroup --vm-name myVm -n ManagedIdentityExtensionForWindows
@@ -186,7 +186,7 @@ K virtuálnímu počítači přiřadit uživatelsky přiřazené identity, musí
    }
    ```
 
-2. Přiřazení k virtuálnímu počítači pomocí uživatelsky přiřazené identity [az vm identity přiřadit](/cli/azure/vm#az-vm-identity-assign). Nezapomeňte nahradit hodnoty parametrů `<RESOURCE GROUP>` a `<VM NAME>` vlastními hodnotami. `<USER ASSIGNED IDENTITY NAME>` Uživatelsky přiřazené spravované identity prostředku je `name` vlastnost, protože vytvořili v předchozím kroku:
+2. Přiřazení k virtuálnímu počítači pomocí uživatelsky přiřazené identity [az vm identity přiřadit](/cli/azure/vm). Nezapomeňte nahradit hodnoty parametrů `<RESOURCE GROUP>` a `<VM NAME>` vlastními hodnotami. `<USER ASSIGNED IDENTITY NAME>` Uživatelsky přiřazené spravované identity prostředku je `name` vlastnost, protože vytvořili v předchozím kroku:
 
     ```azurecli-interactive
     az vm identity assign -g <RESOURCE GROUP> -n <VM NAME> --identities <USER ASSIGNED IDENTITY>

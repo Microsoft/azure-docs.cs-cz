@@ -10,12 +10,12 @@ ms.author: vanto
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 01/30/2019
-ms.openlocfilehash: 1fe92f5632544f21506bd19a52a59ed75cabe3b3
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 8a0c474ab610d89bd702613bc778ad29523a4192
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55461198"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55732715"
 ---
 # <a name="tutorial-secure-a-standalone-or-pooled-database"></a>Kurz: Zabezpečení samostatného nebo databázi ve fondu
 
@@ -231,7 +231,7 @@ Zkopírování zabezpečeného připojovacího řetězce:
 
 ## <a name="enable-security-features"></a>Povolení funkcí zabezpečení
 
-Azure SQL Database poskytuje funkce zabezpečení, které jsou přístupné pomocí webu Azure portal. Tyto funkce jsou k dispozici pro databáze a serveru, s výjimkou maskování dat, která je k dispozici pouze v databázi. Další informace najdete v tématu [rozšířené zabezpečení dat](sql-advanced-threat-protection.md), [auditování](sql-database-auditing.md), [dynamické maskování dat](sql-database-dynamic-data-masking-get-started.md), a [transparentní šifrování dat](transparent-data-encryption-azure-sql.md).
+Azure SQL Database poskytuje funkce zabezpečení, které jsou přístupné pomocí webu Azure portal. Tyto funkce jsou k dispozici pro databáze a serveru, s výjimkou maskování dat, která je k dispozici pouze v databázi. Další informace najdete v tématu [rozšířené zabezpečení dat](sql-database-advanced-data-security.md), [auditování](sql-database-auditing.md), [dynamické maskování dat](sql-database-dynamic-data-masking-get-started.md), a [transparentní šifrování dat](transparent-data-encryption-azure-sql.md).
 
 ### <a name="advanced-data-security"></a>Advanced Data Security
 

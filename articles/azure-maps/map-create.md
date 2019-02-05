@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: 97b94cf54454a83510c5be2cf0d71281dbf5b004
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.openlocfilehash: 222fc5e9083c03ff0d4e31927363c5f517cf32a9
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52424235"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55699360"
 ---
 # <a name="create-a-map"></a>Vytvoření mapy
 
@@ -40,16 +40,16 @@ Ve výše uvedeném kódu [objekt Map](https://docs.microsoft.com/javascript/api
 <iframe height='500' scrolling='no' title='Vytvořte mapu prostřednictvím CameraBoundsOptions' src='//codepen.io/azuremaps/embed/ZrRbPg/?height=543&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Zobrazit pera <a href='https://codepen.io/azuremaps/pen/ZrRbPg/'>Vytvořte mapu prostřednictvím `CameraBoundsOptions` </a>pomocí Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) na <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
-Ve výše uvedeném kódu [objekt Map](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest) je vytvořená prostřednictvím `new atlas.Map()`. Mapy – vlastnosti, jako `CameraBoundsOptions` lze definovat prostřednictvím [setCamera](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#setcamera) funkce třídy Map. Hranice a odsazení vlastnosti nastavené pomocí `setCamera`.
+Ve výše uvedeném kódu [objekt Map](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest) je vytvořená prostřednictvím `new atlas.Map()`. Mapy – vlastnosti, jako `CameraBoundsOptions` lze definovat prostřednictvím [setCamera](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest) funkce třídy Map. Hranice a odsazení vlastnosti nastavené pomocí `setCamera`.
 
 ### <a name="animate-map-view"></a>Animace zobrazení mapy
 
 <iframe height='500' scrolling='no' title='Animace zobrazení mapy' src='//codepen.io/azuremaps/embed/WayvbO/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Zobrazit pera <a href='https://codepen.io/azuremaps/pen/WayvbO/'>animace zobrazení mapy</a> pomocí Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) na <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
-Ve výše uvedeném kódu, vytvoří první blok kódu [objekt Map](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest) prostřednictvím `new atlas.Map()`. Vlastnosti mapy, jako je úroveň Centrování a přiblížení jsou součástí [CameraOptions](/javascript/api/azure-maps-control/atlas.cameraoptions). `CameraOptions` lze definovat v konstruktoru mapy nebo prostřednictvím [setCamera](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#setcamera) funkce třídy Map. [Mapování styl](https://docs.microsoft.com/azure/azure-maps/supported-map-styles) je nastavena na `road`.
+Ve výše uvedeném kódu, vytvoří první blok kódu [objekt Map](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest) prostřednictvím `new atlas.Map()`. Vlastnosti mapy, jako je úroveň Centrování a přiblížení jsou součástí [CameraOptions](/javascript/api/azure-maps-control/atlas.cameraoptions). `CameraOptions` lze definovat v konstruktoru mapy nebo prostřednictvím [setCamera](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest) funkce třídy Map. [Mapování styl](https://docs.microsoft.com/azure/azure-maps/supported-map-styles) je nastavena na `road`.
 
-Druhý blok kódu vytvoří animovat mapy funkce, který animuje změnu v zobrazení mapy definováním [AnimationOptions](/javascript/api/azure-maps-control/atlas.animationoptions) prostřednictvím [setCamera](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#setcamera) funkce. Funkce se aktivuje tlačítko "animace mapy ke generování náhodných zvětšení při každé klikněte na tlačítko.
+Druhý blok kódu vytvoří animovat mapy funkce, který animuje změnu v zobrazení mapy definováním [AnimationOptions](/javascript/api/azure-maps-control/atlas.animationoptions) prostřednictvím [setCamera](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest) funkce. Funkce se aktivuje tlačítko "animace mapy ke generování náhodných zvětšení při každé klikněte na tlačítko.
 
 ## <a name="try-out-the-code"></a>Vyzkoušejte si kód
 

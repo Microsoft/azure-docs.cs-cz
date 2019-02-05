@@ -12,12 +12,12 @@ ms.author: moslake
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 02/01/2019
-ms.openlocfilehash: 76756a49e967235e7cc349c1881669ba3cc48c8d
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
+ms.openlocfilehash: cb4d3c4d15dded3c7f90a1e3cf118ca10371dcb1
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55664161"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55700991"
 ---
 # <a name="azure-sql-database-vcore-based-purchasing-model-limits-for-elastic-pools"></a>Založený na virtuálních jádrech zakoupení modelu limity pro elastické fondy Azure SQL Database
 
@@ -198,7 +198,7 @@ Můžete nastavit úroveň služby, výpočetního prostředí a pomocí velikos
 |:--- | --: |--: |--: |--: |---: | --: |--: |--: |--: |--: |--: |--: |
 |Generování H/W|5|5|5|5|5|5|5|
 |Virtuální jádra|2|4|6|8|10|12|14|
-|Paměť (GB)|10.2|220.4|30.6|40.8|51|61.2|71.4|
+|Paměť (GB)|10.2|20.4|30.6|40.8|51|61.2|71.4|
 |Podpora Columnstore|Ano|Ano|Ano|Ano|Ano|Ano|Ano|
 |Úložiště OLTP v paměti (GB)|1.571|3.142|4.713|6.284|8.655|11.026|13.397|
 |Maximální velikost dat (GB)|1024|1024|1024|1536|1536|1536|1536|

@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 11/01/2018
 ms.author: genli
-ms.openlocfilehash: 6362b243bff91233c3cd08f26904866dd7be9ebd
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 9610256ac68b6c1be12ca22220e317752c068b85
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51248873"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55730829"
 ---
 # <a name="troubleshoot-deploying-windows-virtual-machine-issues-in-azure"></a>Řešení potíží s nasazením Windows virtuální počítač v Azure
 
@@ -87,7 +87,7 @@ Pokud chcete aktivovat svůj měsíční kredit, najdete v tomto [článku](http
 
 ## <a name="how-to-add-enterprise-devtest-to-my-enterprise-agreement-ea-to-get-access-to-window-client-images"></a>Postup přidání Enterprise pro vývoj/testování pro moje Enterprise Agreement (EA) získat přístup k obrázkům okna klienta?
 
-Možnost vytvářet předplatná na základě nabídky Enterprise pro vývoj/testování je omezená na vlastníky účtů, který jste dostali oprávnění správce podniku. Vlastník účtu vytvoří předplatné na portálu účtů Azure a pak by měl přidat aktivní předplatitele sady Visual Studio jako další spolupracující správce. Tak, aby mohli spravovat a využívat prostředky potřebné pro vývoj a testování. Další informace najdete v tématu [Enterprise pro vývoj/testování](https://azure.microsoft.com/offers/ms-azr-0148p/).
+Možnost vytvářet předplatná na základě nabídky Enterprise pro vývoj/testování je omezená na vlastníky účtů, kterým k tomu udělil oprávnění podnikový správce. Vlastník účtu vytvoří předplatné na portálu účtů Azure a pak by měl přidat aktivní předplatitele sady Visual Studio jako další spolupracující správce. Tak, aby mohli spravovat a využívat prostředky potřebné pro vývoj a testování. Další informace najdete v tématu [Enterprise pro vývoj/testování](https://azure.microsoft.com/offers/ms-azr-0148p/).
 
 ## <a name="my-drivers-are-missing-for-my-windows-n-series-vm"></a>Ovladače nebyly nalezeny virtuální počítače řady N-Series Windows
 
@@ -124,7 +124,7 @@ Zvolte velikost, která je podporována v clusteru pro skupinu dostupnosti. Dopo
 
 ## <a name="can-i-add-an-existing-classic-vm-to-an-availability-set"></a>Můžete přidat existující klasický virtuální počítač do skupiny dostupnosti?
 
-Ano. Chcete nové nebo existující skupinu dostupnosti můžete přidat existující klasický virtuální počítač. Další informace najdete v části [přidat existující virtuální počítač do skupiny dostupnosti](../windows/classic/configure-availability-classic.md#addmachine).
+Ano. Chcete nové nebo existující skupinu dostupnosti můžete přidat existující klasický virtuální počítač. Další informace najdete v části [přidat existující virtuální počítač do skupiny dostupnosti](/previous-versions/azure/virtual-machines/windows/classic/configure-availability-classic#addmachine).
 
 
 ## <a name="next-steps"></a>Další postup

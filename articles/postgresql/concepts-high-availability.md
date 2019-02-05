@@ -5,19 +5,19 @@ author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 02/28/2018
-ms.openlocfilehash: 4b58a95ed149886cb987d316b7738c4a2d778864
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.date: 02/01/2019
+ms.openlocfilehash: d43647b57469efa4581dc1c74a842a51e9d54ad7
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53540671"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55699812"
 ---
 # <a name="high-availability-concepts-in-azure-database-for-postgresql"></a>Koncepty vysoké dostupnosti ve službě Azure Database for PostgreSQL
 Služba Azure Database for PostgreSQL poskytuje zaručenou vysokou dostupnost. Je žádnou finančně zajištěnou smlouvu o úrovni služeb (SLA) 99,99 % při všeobecné dostupnosti. Neexistuje žádná aplikace prakticky časové prodlevy při používání této služby.
 
 ## <a name="high-availability"></a>Vysoká dostupnost
-Model vysoké dostupnosti (HA) je založen na integrovaný mechanismus převzetí služeb při selhání, když dojde k přerušení úrovni uzlu. Přerušení úrovni uzlu mohlo dojít z důvodu selhání hardwaru nebo v reakci na nasazení služby.
+Model vysoké dostupnosti (HA) je založen na převzetí služeb při selhání vestavěné mechanismy, když dojde k přerušení úrovni uzlu. Přerušení úrovni uzlu mohlo dojít z důvodu selhání hardwaru nebo v reakci na nasazení služby.
 
 Po celou dobu změny provedené v Azure Database for PostgreSQL databázový server dochází v kontextu transakce. Změny se zaznamenávají synchronně ve službě Azure storage, když je transakce potvrzena. Pokud dojde k přerušení úrovni uzlu, serveru databáze automaticky vytvoří nový uzel a připojí úložiště dat do nového uzlu. Každé aktivní propojení se zahodí a nejsou potvrzeny všechny probíhající transakce.
 
@@ -32,5 +32,5 @@ Podobně jako u modelu vysokou dostupnost, když Azure Database for PostgreSQL j
 Během operace škálování dojde k přerušení připojení databáze. Nejste připojení klientských aplikací a otevřít nepotvrzené transakce se zrušila. Jakmile se klientská aplikace opakuje připojení, nebo vytvoří nové připojení, brány směruje připojení na nově velikosti instance. 
 
 ## <a name="next-steps"></a>Další postup
-- Přehled služby najdete v tématu [– Azure Database for postgresql – přehled](overview.md)
-- Přehled na logiku opakování, naleznete v tématu [zpracování připojení přechodných chyb pro službu Azure Database for PostgreSQL](concepts-connectivity.md)
+- Další informace o [zpracování připojení přechodných chyb](concepts-connectivity.md)
+- Zjistěte, jak [replikujte svá data pomocí repliky pro čtení](howto-read-replicas-portal.md)

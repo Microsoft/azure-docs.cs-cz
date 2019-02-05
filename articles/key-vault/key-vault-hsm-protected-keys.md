@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/07/2019
 ms.author: barclayn
-ms.openlocfilehash: a53e37cf2ac99dcd755f71e9a2a236f27832fbd7
-ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
+ms.openlocfilehash: 3458bdc0f010cab622a5ddbb87cb8e1077c404a5
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54079200"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55693880"
 ---
 # <a name="how-to-generate-and-transfer-hsm-protected-keys-for-azure-key-vault"></a>Postup generování a přenos chráněných pomocí HSM klíčů pro Azure Key Vault
 
@@ -105,70 +105,70 @@ Přejděte na webu Microsoft Download Center a [stáhnete sadu nástrojů pro BY
 - - -
 **Spojené státy americké:**
 
-Trezor klíčů BYOK-Tools spojené States.zip
+KeyVault-BYOK-Tools-UnitedStates.zip
 
 2E8C00320400430106366A4E8C67B79015524E4EC24A2D3A6DC513CA1823B0D4
 
 - - -
 **Evropa:**
 
-Trezor klíčů BYOK-Tools-Europe.zip
+KeyVault-BYOK-Tools-Europe.zip
 
 9AAA63E2E7F20CF9BB62485868754203721D2F88D300910634A32DFA1FB19E4A
 
 - - -
 **Asie:**
 
-Trezor klíčů BYOK-Tools-AsiaPacific.zip
+KeyVault-BYOK-Tools-AsiaPacific.zip
 
 4BC14059BF0FEC562CA927AF621DF665328F8A13616F44C977388EC7121EF6B5
 
 - - -
 **Latinská Amerika:**
 
-Trezor klíčů BYOK-Tools-LatinAmerica.zip
+KeyVault-BYOK-Tools-LatinAmerica.zip
 
 E7DFAFF579AFE1B9732C30D6FD80C4D03756642F25A538922DD1B01A4FACB619
 
 - - -
 **Japonsko:**
 
-Trezor klíčů BYOK-Tools-Japan.zip
+KeyVault-BYOK-Tools-Japan.zip
 
 3933C13CC6DC06651295ADC482B027AF923A76F1F6BF98B4D4B8E94632DEC7DF
 
 - - -
 **Korea:**
 
-Trezor klíčů BYOK-Tools-Korea.zip
+KeyVault-BYOK-Tools-Korea.zip
 
 71AB6BCFE06950097C8C18D532A9184BEF52A74BB944B8610DDDA05344ED136F
 
 - - -
 **Austrálie:**
 
-Trezor klíčů BYOK-Tools-Australia.zip
+KeyVault-BYOK-Tools-Australia.zip
 
 CD0FB7365053DEF8C35116D7C92D203C64A3D3EE2452A025223EEB166901C40A
 
 - - -
 [**Azure Government:**](https://azure.microsoft.com/features/gov/)
 
-Trezor klíčů BYOK-Tools-USGovCloud.zip
+KeyVault-BYOK-Tools-USGovCloud.zip
 
 F8DB2FC914A7360650922391D9AA79FF030FD3048B5795EC83ADC59DB018621A
 
 - - -
 **Státní správy USA ministerstva obrany USA:**
 
-Trezor klíčů BYOK-Tools-USGovernmentDoD.zip
+KeyVault-BYOK-Tools-USGovernmentDoD.zip
 
 A79DD8C6DFFF1B00B91D1812280207A205442B3DDF861B79B8B991BB55C35263
 
 - - -
 **Kanada:**
 
-Trezor klíčů BYOK-Tools-Canada.zip
+KeyVault-BYOK-Tools-Canada.zip
 
 61BE1A1F80AC79912A42DEBBCC42CF87C88C2CE249E271934630885799717C7B
 
@@ -182,21 +182,21 @@ Trezor klíčů BYOK-Tools-Germany.zip
 - - -
 **Indie:**
 
-Trezor klíčů BYOK-Tools-India.zip
+KeyVault-BYOK-Tools-India.zip
 
 49EDCEB3091CF1DF7B156D5B495A4ADE1CFBA77641134F61B0E0940121C436C8
 
 - - -
 **Francie:**
 
-Trezor klíčů BYOK-Tools-France.zip
+KeyVault-BYOK-Tools-France.zip
 
 5C9D1F3E4125B0C09E9F60897C9AE3A8B4CB0E7D13A14F3EDBD280128F8FE7DF
 
 - - -
 **Spojené království:**
 
-Trezor klíčů BYOK-Tools-UnitedKingdom.zip
+KeyVault-BYOK-Tools-UnitedKingdom.zip
 
 432746BD0D3176B708672CCFF19D6144FCAA9E5EB29BB056489D3782B3B80849
 
@@ -260,6 +260,9 @@ Spusťte příkazový řádek a spusťte nový svět program společnosti Thales
    ```
 
 Tento program vytvoří **architektury Security World** soubor v adresáři % NFAST_KMDATA%\local\world, který odpovídá složce C:\ProgramData\nCipher\Key Management aplikací\Místní. Pro kvorum můžete použít různé hodnoty, ale v našem příkladu zobrazí výzva, zadejte pro každé z nich tři prázdné karty a kódy PIN. Jakékoli dvě karty potom poskytnout úplný přístup do architektury security world. Tyto karty tvoří **Administrator Card Set** pro nové architektury security world.
+
+> [!NOTE]
+> Pokud vašeho HSM podporuje novější DLf3072s256mRijndael sady šifer, můžete nahradit--sadu šifer = DLf1024s160mRijndael s--sadu šifer = DLf3072s256mRijndael
 
 Potom udělejte následující:
 
@@ -421,7 +424,7 @@ Jakmile se příkaz dokončí, uvidíte **výsledek: Úspěch** a kopie vašeho 
 
 Může zkontroluje seznamy řízení přístupu pomocí následujících příkazů pomocí nástrojů Thales:
 
-* aclprint.PY:
+* aclprint.py:
 
         "%nfast_home%\bin\preload.exe" -m 1 -A xferacld -K contosokey "%nfast_home%\python\bin\python" "%nfast_home%\python\examples\aclprint.py"
 * kmfile-dump.exe:
@@ -482,7 +485,7 @@ Při spuštění tohoto příkazu použijte tyto pokyny:
 * Nahraďte *SubscriptionID* s ID předplatného Azure, která obsahuje váš trezor klíčů. Načíst tuto hodnotu dříve, v **krok 1.2: Získejte ID vašeho předplatného Azure** z [Příprava pracovní stanice připojené k Internetu](#step-1-prepare-your-internet-connected-workstation) kroku.
 * Nahraďte *ContosoFirstHSMKey* popiskem, který se používá pro název výstupního souboru.
 
-Po dokončení tohoto postupu úspěšně, zobrazí **výsledek: Úspěch** a nový soubor v aktuální složce, která má následující název: KeyTransferPackage -*ContosoFirstHSMkey*.byok
+Po dokončení tohoto postupu úspěšně, zobrazí **výsledek: Úspěch** a nový soubor v aktuální složce, která má následující název: KeyTransferPackage-*ContosoFirstHSMkey*.byok
 
 ### <a name="step-43-copy-your-key-transfer-package-to-the-internet-connected-workstation"></a>Krok 4.3: Zkopírování balíčku pro přenos klíče na pracovní stanici připojené k Internetu
 

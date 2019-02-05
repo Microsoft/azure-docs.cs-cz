@@ -8,12 +8,12 @@ ms.service: event-grid
 ms.topic: conceptual
 ms.date: 01/01/2019
 ms.author: babanisa
-ms.openlocfilehash: bb22a2545466c72f7dac68f80668b8b530832c21
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.openlocfilehash: cb38fd17c0c1bfbe3e5957d8f432f0a43b285c93
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55094714"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55728618"
 ---
 # <a name="receive-events-to-an-http-endpoint"></a>Příjem událostí pro koncový bod HTTP
 
@@ -51,8 +51,6 @@ Klikněte na odkaz "Zobrazit soubory" ve své funkci Azure (pravém většiny po
 ## <a name="endpoint-validation"></a>Koncový bod ověření
 
 První věc, kterou chcete udělat, je zpracování `Microsoft.EventGrid.SubscriptionValidationEvent` události. Pokaždé, když se uživatel přihlásí k události, služby Event Grid odešle událost ověření koncového bodu se `validationCode` v datové části data. Koncový bod je potřeba echo tomto zpět v textu odpovědi na [koncový bod je platný a je vlastnictví prokázat](security-authentication.md#webhook-event-delivery). Pokud používáte [Trigger služby Event Grid](../azure-functions/functions-bindings-event-grid.md) spíše než funkce aktivované Webhooku, koncový bod ověřování se udělá za vás. Pokud používáte rozhraní API služby třetí strany (například [Zapier](https://zapier.com) nebo [IFTTT](https://ifttt.com/)), nemusí být schopen prostřednictvím kódu programu echo ověřovacího kódu. Za tyto služby můžete ručně ověřit předplatné pomocí adresy URL ověřování, který se posílá událost ověření předplatného. Zkopírujte tuto adresu URL v `validationUrl` vlastnost a odeslat GET vyžádat buď pomocí klienta REST nebo ve webovém prohlížeči.
-
-Ruční ověření je ve verzi preview. Pokud ji chcete používat, je nutné nainstalovat [rozšíření Event Grid ](/cli/azure/azure-cli-extensions-list) pro [Azure CLI](/cli/azure/install-azure-cli). Můžete si je nainstalovat pomocí příkazu `az extension add --name eventgrid`. Pokud používáte rozhraní REST API, ujistěte se, že používáte `api-version=2018-05-01-preview`.
 
 V jazyce C# `DeserializeEventGridEvents()` funkce deserializuje událostí služby Event Grid. Do příslušného typu, jako je například StorageBlobCreatedEventData ho deserializuje data události. Použití `Microsoft.Azure.EventGrid.EventTypes` třídy pro získání názvy a podporované typy událostí.
 

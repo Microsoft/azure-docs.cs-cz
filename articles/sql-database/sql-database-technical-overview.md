@@ -12,13 +12,13 @@ author: CarlRabeler
 ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
-ms.date: 01/25/2019
-ms.openlocfilehash: db5e833ea8ee265053b650433562690194b88771
-ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
+ms.date: 02/04/2019
+ms.openlocfilehash: 2711e2ade0e6a7d385f8a3a2adae336e96fbccf3
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55509061"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55729842"
 ---
 # <a name="the-azure-sql-database-service"></a>Služba Azure SQL Database
 
@@ -53,7 +53,7 @@ SQL Database nabízí předvídatelný výkon s více typů prostředků, úrovn
 
 S využitím SQL Database je každá databáze izolovaná od všech ostatních a, každá má svou vlastní úroveň služby v rámci [nákupní model založený na DTU](sql-database-service-tiers-dtu.md) nebo [nákupní model založený na virtuálních jádrech](sql-database-service-tiers-vcore.md) a garantovanou výpočty velikosti. SQL Database poskytuje různých velikostech výpočetních prostředků pro různé potřeby a umožňuje spojení databází do fondu pro maximalizaci využití prostředků a ušetřit peníze.
 
-- S [SQL Database Managed Instance](sql-database-managed-instance.md), každá instance je izolovaný od ostatních instancí mají garantované prostředky. Další informace najdete v tématu [SQL Database Managed Instance](sql-database-managed-instance.md).
+- S [spravované instance](sql-database-managed-instance.md), každá instance je izolovaný od ostatních instancí mají garantované prostředky. Další informace najdete v tématu [SQL Database managed instance](sql-database-managed-instance.md).
 - S [úroveň služby Hyperškálovatelného](sql-database-service-tier-hyperscale.md) (preview) ve virtuálních jader, model nákupu, můžete škálovat až 100 TB s rychlé zálohování a obnovení funkce.
 
 ### <a name="adjust-performance-and-scale-without-downtime"></a>Úprava výkonu a škálování bez výpadků
@@ -81,7 +81,7 @@ S elastickými fondy se nemusíte starat o zvyšování a snižování výkonu d
 Skripty vám můžou pomoct s monitorováním a škálováním elastických fondů. Příklad najdete v tématu [Monitorování a škálování elastického fondu SQL ve službě Azure SQL Database pomocí PowerShellu](scripts/sql-database-monitor-and-scale-pool-powershell.md).
 
 > [!IMPORTANT]
-> SQL Database Managed Instance nepodporuje elastické fondy.
+> Managed instance nepodporuje elastické fondy. Místo toho managed instance je kolekce instance databází, které sdílejí prostředky spravované instance.
 
 ### <a name="blend-single-databases-with-pooled-databases"></a>Kombinace izolovaných databází s databázemi ve fondu
 
@@ -148,7 +148,7 @@ SQL Database nabízí řadu [integrovaných funkcí zabezpečení a dodržován�
 
 ### <a name="advance-threat-protection"></a>Advanced Threat Protection
 
-Pokročilé zabezpečení dat SQL je jednotný balíček pro pokročilé funkce zabezpečení SQL. Zahrnuje funkce pro zjišťování a klasifikaci citlivých dat, správu ohrožení zabezpečení databáze a detekci neobvyklých aktivit, které by pro vaši databázi mohly znamenat hrozbu. Poskytuje centrální místo pro povolování a správu těchto možností.
+Pokročilé datové zabezpečení je jednotný balíček pro pokročilé funkce zabezpečení SQL. Zahrnuje funkce pro zjišťování a klasifikaci citlivých dat, správu ohrožení zabezpečení databáze a detekci neobvyklých aktivit, které by pro vaši databázi mohly znamenat hrozbu. Poskytuje centrální místo pro povolování a správu těchto možností.
 
 - [Zjišťování a klasifikace dat](sql-database-data-discovery-and-classification.md):
 
@@ -158,15 +158,15 @@ Pokročilé zabezpečení dat SQL je jednotný balíček pro pokročilé funkce 
   Tuto službu můžete zjistit, sledovat a umožňují náprava potenciálních ohrožení zabezpečení databáze. Poskytuje přehled o stavu zabezpečení a zahrnuje praktické kroky k vyřešení problémů se zabezpečením a zlepšení ochrany databáze.
 - [Detekce hrozeb](sql-database-threat-detection.md):
 
-  Tato funkce detekuje neobvyklé aktivity a potenciálně nebezpečné pokusy o přístup nebo zneužití vaší databáze. Nepřetržitě monitoruje podezřelé aktivity v databázi a okamžitě poskytuje výstrahy zabezpečení týkající se potenciálních ohrožení zabezpečení, útoků prostřednictvím injektáže SQL a neobvyklých vzorů přístupu k databázi. Upozornění detekce hrozeb obsahují podrobnosti o podezřelé aktivitě a doporučení akce k prošetření a zmírnění hrozby.
+  Tato funkce detekuje neobvyklé aktivity a potenciálně nebezpečné pokusy o přístup nebo zneužití vaší databáze. Nepřetržitě monitoruje podezřelé aktivity v databázi a okamžitě poskytuje výstrahy zabezpečení týkající se potenciálních ohrožení zabezpečení, útoků prostřednictvím injektáže SQL a neobvyklých vzorů přístupu k databázi. Výstrahy detekce hrozeb zadejte podrobnosti o podezřelé aktivitě a doporučení akce k prošetření a zmírnění hrozby.
 
 ### <a name="auditing-for-compliance-and-security"></a>Auditování dodržování předpisů a zabezpečení
 
-[Auditování služby SQL Database](sql-database-auditing.md) sleduje události databáze a zapisuje je do protokolu auditu ve vašem účtu Azure Storage. Auditování pomáhá zajistit dodržování předpisů, porozumět databázové aktivitě a získat přehled o nesrovnalostech a anomáliích, které můžou značit problémy obchodního charakteru nebo vzbuzovat podezření na narušení zabezpečení.
+[Auditování](sql-database-auditing.md) sleduje události databáze a zapisuje je do auditu protokolu ve vašem účtu úložiště Azure. Auditování pomáhá zajistit dodržování předpisů, porozumět databázové aktivitě a získat přehled o nesrovnalostech a anomáliích, které můžou značit problémy obchodního charakteru nebo vzbuzovat podezření na narušení zabezpečení.
 
 ### <a name="data-encryption"></a>Šifrování dat
 
-SQL Database chrání data tím, že zajišťuje šifrování přenášených dat pomocí [protokolu TLS (Transport Layer Security)](https://support.microsoft.com/kb/3135244), neaktivních uložených dat pomocí [transparentního šifrování dat](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql) a používaných dat pomocí funkce [Always Encrypted](https://docs.microsoft.com/sql/relational-databases/security/encryption/always-encrypted-database-engine).
+SQL Database chrání vaše data zajištěním šifrování pro data přenášená data pomocí [transport layer security](https://support.microsoft.com/kb/3135244), pro data v klidovém stavu pomocí [transparentní šifrování dat](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql)a pro data použitá s [ Funkce Always encrypted](https://docs.microsoft.com/sql/relational-databases/security/encryption/always-encrypted-database-engine).
 
 ### <a name="azure-active-directory-integration-and-multi-factor-authentication"></a>Integrace s Azure Active Directory a vícefaktorové ověřování
 

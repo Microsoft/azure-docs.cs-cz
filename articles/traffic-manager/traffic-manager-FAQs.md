@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/18/2018
 ms.author: kumud
-ms.openlocfilehash: a6a8fee942edf4cec98a6d2f46eb2f63b7595c09
-ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
+ms.openlocfilehash: 309c69862d475a0ef76ab0a24ed804b363ba33c0
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54200043"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55696791"
 ---
 # <a name="traffic-manager-frequently-asked-questions-faq"></a>Traffic Manager – nejčastější dotazy (FAQ)
 
@@ -285,7 +285,7 @@ Ano. Cloudová služba, přípravné sloty lze nakonfigurovat v Traffic Manageru
 
 ### <a name="does-traffic-manager-support-ipv6-endpoints"></a>Traffic Manager podporuje koncové body IPv6?
 
-Traffic Manager aktuálně neposkytuje IPv6 addressible názvové servery. Ale Traffic Manageru můžete stále využívat IPv6 klientů připojujících se ke koncovým bodům protokol IPv6. Klient Nedovolte, aby byly žádosti DNS přímo na Traffic Manager. Klient místo toho použije rekurzivní službu DNS. Pouze protokol IPv6 klient zasílá požadavky na rekurzivní službu DNS prostřednictvím protokolu IPv6. Rekurzivní službu pak by měl být schopen kontaktovat názvové servery Traffic Manageru pomocí protokolu IPv4.
+Traffic Manager aktuálně neposkytuje IPv6 bajtově adresovatelného názvové servery. Ale Traffic Manageru můžete stále využívat IPv6 klientů připojujících se ke koncovým bodům protokol IPv6. Klient Nedovolte, aby byly žádosti DNS přímo na Traffic Manager. Klient místo toho použije rekurzivní službu DNS. Pouze protokol IPv6 klient zasílá požadavky na rekurzivní službu DNS prostřednictvím protokolu IPv6. Rekurzivní službu pak by měl být schopen kontaktovat názvové servery Traffic Manageru pomocí protokolu IPv4.
 
 Traffic Manager jsou reaguje s názvem DNS nebo IP adresu koncového bodu. Pro podporu koncový bod IPv6, existují dvě možnosti. Přidat koncový bod jako název DNS, který má přidružený záznam AAAA a Traffic Manager tento koncový bod a vraťte jej jako záznam CNAME, který zadejte odpovědi na dotaz bude kontrola stavu. Můžete také přidat tento koncový bod přímo pomocí adresy IPv6 a Traffic Manager v odpovědi na dotaz vrátí záznam AAAA typu. 
 

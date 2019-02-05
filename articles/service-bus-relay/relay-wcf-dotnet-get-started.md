@@ -14,12 +14,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 12/20/2017
 ms.author: spelluru
-ms.openlocfilehash: 6c8498a43b127fecc02473177ac955ae51a647d6
-ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
+ms.openlocfilehash: ee78227f645cbeded7a5c689750db835faf1055f
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48854112"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55728308"
 ---
 # <a name="how-to-use-azure-relay-wcf-relays-with-net"></a>Jak používat Azure Relay WCF propojení s využitím .NET
 Tento článek popisuje, jak pomocí služby Azure Relay. Ukázky jsou napsané v C# a používají API Windows Communication Foundation (WCF) s rozšířeními, které jsou součástí sestavení Service Bus. Další informace o službě Azure relay, najdete v článku [přehled Azure Relay](relay-what-is-it.md).
@@ -116,7 +116,7 @@ Console.ReadLine();
 sh.Close();
 ```
 
-V příkladu vytvoříte dva koncové body, které jsou na stejné implementaci kontraktu. Jeden je místní a druhý je promítnutý přes Azure Relay. Hlavní rozdíly mezi nimi jsou vazby [NetTcpBinding](https://msdn.microsoft.com/library/system.servicemodel.nettcpbinding.aspx) pro místní a [NetTcpRelayBinding](/dotnet/api/microsoft.servicebus.nettcprelaybinding#microsoft_servicebus_nettcprelaybinding) pro koncový bod relay a adresy. Místní koncový bod má místní síťovou adresu s vlastním portem. Koncový bod relay má adresu koncového bodu složenou z řetězce `sb`, názvu vašeho oboru názvů a cesty "solver". Výsledkem je identifikátor URI `sb://[serviceNamespace].servicebus.windows.net/solver`, identifikuje koncový bod služby jako koncový bod služby Service Bus (relay) TCP s plně kvalifikovaným názvem externí DNS. Pokud do kódu vložíte skutečné názvy místo zástupných názvů a vložíte ho do funkce `Main` aplikace **Service**, budete mít funkční službu. Pokud chcete, aby služba naslouchala výhradně na službě relay, odeberte deklaraci místního koncového bodu.
+V příkladu vytvoříte dva koncové body, které jsou na stejné implementaci kontraktu. Jeden je místní a druhý je promítnutý přes Azure Relay. Hlavní rozdíly mezi nimi jsou vazby [NetTcpBinding](https://msdn.microsoft.com/library/system.servicemodel.nettcpbinding.aspx) pro místní a [NetTcpRelayBinding](/dotnet/api/microsoft.servicebus.nettcprelaybinding) pro koncový bod relay a adresy. Místní koncový bod má místní síťovou adresu s vlastním portem. Koncový bod relay má adresu koncového bodu složenou z řetězce `sb`, názvu vašeho oboru názvů a cesty "solver". Výsledkem je identifikátor URI `sb://[serviceNamespace].servicebus.windows.net/solver`, identifikuje koncový bod služby jako koncový bod služby Service Bus (relay) TCP s plně kvalifikovaným názvem externí DNS. Pokud do kódu vložíte skutečné názvy místo zástupných názvů a vložíte ho do funkce `Main` aplikace **Service**, budete mít funkční službu. Pokud chcete, aby služba naslouchala výhradně na službě relay, odeberte deklaraci místního koncového bodu.
 
 ### <a name="configure-a-service-host-in-the-appconfig-file"></a>Konfigurace hostitele služby v souboru App.config
 Hostitele taky můžete konfigurovat pomocí souboru App.config. V tomto případě bude kód pro hostování vypadat jako kód v následujícím příkladu.
@@ -161,7 +161,7 @@ Když provedete změny, služba se spustí jako předtím, ale tentokrát budou 
 
 ### <a name="create-the-client"></a>Vytvoření klienta
 #### <a name="configure-a-client-programmatically"></a>Programová konfigurace klienta
-Aby se služba mohla spotřebovávat, musíte postavit klienta WCF pomocí objektu [ChannelFactory](https://msdn.microsoft.com/library/system.servicemodel.channelfactory.aspx). Service Bus používá tokenový model zabezpečení, implementovaný pomocí SAS. Třída [TokenProvider](/dotnet/api/microsoft.servicebus.tokenprovider) představuje poskytovatele tokenu zabezpečení se zabudovanými metodami pro vytváření, které vracení některé známé poskytovatele tokenů. Následující příklad používá metodu [CreateSharedAccessSignatureTokenProvider](/dotnet/api/microsoft.servicebus.tokenprovider#Microsoft_ServiceBus_TokenProvider_CreateSharedAccessSignatureTokenProvider_System_String_) ke zpracování získání příslušného tokenu SAS. Název a klíč se získá z portálu způsobem popsaným v předchozí části.
+Aby se služba mohla spotřebovávat, musíte postavit klienta WCF pomocí objektu [ChannelFactory](https://msdn.microsoft.com/library/system.servicemodel.channelfactory.aspx). Service Bus používá tokenový model zabezpečení, implementovaný pomocí SAS. Třída [TokenProvider](/dotnet/api/microsoft.servicebus.tokenprovider) představuje poskytovatele tokenu zabezpečení se zabudovanými metodami pro vytváření, které vracení některé známé poskytovatele tokenů. Následující příklad používá metodu [CreateSharedAccessSignatureTokenProvider](/dotnet/api/microsoft.servicebus.tokenprovider) ke zpracování získání příslušného tokenu SAS. Název a klíč se získá z portálu způsobem popsaným v předchozí části.
 
 Nejdřív zkopírujte nebo odkažte na kód kontraktu `IProblemSolver` ze služby do vašeho klientského projektu.
 

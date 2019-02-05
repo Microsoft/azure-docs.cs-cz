@@ -64,7 +64,7 @@ items:
       href: custom-roles-rest.md
   - name: Zobrazení protokolů aktivit
     href: change-history-report.md
-  - name: Zvýšení oprávnění přístupu pro globálního správce
+  - name: Zvýšení úrovně přístupu pro správu všech předplatných
     href: elevate-access-global-admin.md
   - name: Správa přístupu pro externí uživatele
     href: role-assignments-external-users.md
@@ -79,7 +79,7 @@ items:
   - name: Omezení RBAC
     href: ../azure-subscription-service-limits.md#role-based-access-control-limits
   - name: Azure PowerShell
-    href: /powershell/module/azurerm.resources
+    href: /powershell/module/az.resources
   - name: Azure CLI
     href: /cli/azure/role?view=azure-cli-latest
   - name: REST API
@@ -94,9 +94,9 @@ items:
   items:
   - name: Získávání dovedností pomocí Microsoft Learn
     href: /learn/browse/?products=azure-active-directory
-ms.openlocfilehash: ca83964ae4ff91fd72fcb0a156a029f4fc41721c
-ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
+ms.openlocfilehash: 893c3f7ad2d86688a1a697fa00f06b0b3f4e09cc
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54232902"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55700549"

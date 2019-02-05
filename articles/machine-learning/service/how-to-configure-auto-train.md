@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 01/08/2019
 ms.custom: seodec18
-ms.openlocfilehash: 310963d5593dde0540c95920214a14a4195c346a
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 6bd61923dafb605e09c6ca6ab86dcd85fe60b37c
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55242327"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55734653"
 ---
 # <a name="configure-automated-machine-learning-experiments"></a>Konfigurace automatizovaného se strojovým učením
 
@@ -174,7 +174,7 @@ Dále určete, kde bude Trénink modelu. Automatické experimentu strojového u�
 
 Zobrazit [webu GitHub](https://github.com/Azure/MachineLearningNotebooks/tree/master/automl) například cílových výpočetních prostředí poznámkové bloky s místním a vzdáleným.
 
-<a name='configure-experiment'/>
+<a name='configure-experiment'></a>
 
 ## <a name="configure-your-experiment-settings"></a>Konfigurovat nastavení testu
 
@@ -207,36 +207,48 @@ Možné příklady:
         n_cross_validations=5)
     ```
 
-Tato tabulka shrnuje nastavení parametrů, které jsou k dispozici pro experiment a jejich výchozí hodnoty.
+Existují tři různé `task` hodnoty parametrů, které určují seznamu algoritmů, které chcete použít.  Použití `whitelist` nebo `blacklist` parametry pokročilejší úpravy iteracím dostupné algoritmy, které mají zahrnout nebo vyloučit.
+* Klasifikace
+    * LogisticRegression
+    * SGD
+    * MultinomialNaiveBayes
+    * BernoulliNaiveBayes
+    * SVM
+    * LinearSVM
+    * KNN
+    * DecisionTree
+    * RandomForest
+    * ExtremeRandomTrees
+    * LightGBM
+    * GradientBoosting
+    * TensorFlowDNN
+    * TensorFlowLinearClassifier
+* Regrese
+    * ElasticNet
+    * GradientBoosting
+    * DecisionTree
+    * KNN
+    * LassoLars
+    * SGD 
+    * RandomForest
+    * ExtremeRandomTree
+    * LightGBM
+    * TensorFlowLinearRegressor
+    * TensorFlowDNN
+* Prognózování
+    * ElasticNet
+    * GradientBoosting
+    * DecisionTree
+    * KNN
+    * LassoLars
+    * SGD 
+    * RandomForest
+    * ExtremeRandomTree
+    * LightGBM
+    * TensorFlowLinearRegressor
+    * TensorFlowDNN
 
-Vlastnost |  Popis | Výchozí hodnota
---|--|--
-`task`  |Zadejte typ problému machine learning. Povolené hodnoty jsou <li>Klasifikace</li><li>Regrese</li><li>Prognózování</li>    | Žádný |
-`primary_metric` |Metrika, kterou chcete optimalizovat při vytváření modelu. Například pokud zadáte jako primary_metric přesnost, automatizované strojového učení vyhledá najít model s nejvyšší přesností. Můžete zadat pouze jeden primary_metric na experiment. Povolené hodnoty jsou <br/>**Klasifikace**:<br/><li> accuracy  </li><li> AUC_weighted</li><li> precision_score_weighted </li><li> balanced_accuracy </li><li> average_precision_score_weighted </li><br/>**Regrese**: <br/><li> normalized_mean_absolute_error </li><li> spearman_correlation </li><li> normalized_root_mean_squared_error </li><li> normalized_root_mean_squared_log_error</li><li> R2_score  </li> | Pro klasifikaci: přesnost <br/>Pro regresní: spearman_correlation <br/> |
-`experiment_exit_score` |   Nastavení cílové hodnoty pro váš primary_metric. Po nalezení modelu, který splňuje cíl primary_metric, automatizované strojového učení se zastaví, iterace a ukončí experimentu. Pokud tato hodnota není nastavená (výchozí), automatické experimentu strojového učení a bude nadále spuštěna počet iterací podle iterace. Přebírá hodnotu double. Pokud cíl nikdy dosáhne, bude pokračovat automatizovaná strojového učení, dokud nebude dosaženo počtu iterací podle iterace.| Žádný
-`iterations` |Maximální počet průchodu cyklem. Každá iterace je rovna trénovací úlohu, která vede kanálu. Kanál je předzpracování dat a modelu. Chcete-li získat model vysoce kvalitní, použijte 250 nebo více    | 100
-`max_concurrent_iterations`|    Maximální počet opakování při paralelním spuštění. Toto nastavení funguje jenom pro vzdálené výpočetní prostředky.|   1
-`max_cores_per_iteration`   | Určuje, kolik jader na cílové výpočetní prostředí se použije k natrénování jeden kanál. Pokud tento algoritmus mohou využívat více jader, to zvyšuje výkon na počítači s více jádry. Můžete ho nastavit na hodnotu -1 použití všech dostupných jader v počítači.|  1
-`iteration_timeout_minutes` |   Omezuje množství času (v minutách), trvá konkrétní iteraci. Pokud iterace překročí zadanou hodnotu, bude zrušen danou iteraci. Pokud není nastavena, pak iterace běží nepřetržitě až do dokončení. |   Žádný
-`n_cross_validations`   |Počet rozdělení křížových ověření| Žádný
-`validation_size`   |Velikost ověření nastavit jako procento všech ukázka školení.|  Žádný
-`preprocess` | True nebo False <br/>Hodnota TRUE povolí experimentovat provádět předběžného zpracování na vstupu. Tady je podmnožinou předběžného zpracování<li>Chybějící Data: Uplatňuje číselných dat s průměrem, Text se většina výskyt chybí </li><li>Hodnoty zařazené do kategorií: Pokud je datový typ číselné a počtem jedinečných hodnot je méně než 5 procentech, převede do jedné hot kódování </li><li>Atd. pro úplný seznam kontrolu [úložiště GitHub](https://aka.ms/aml-notebooks)</li><br/>Poznámka: Pokud je zhuštěný dat nelze použít předzpracování = true |  False |
-`enable_cache`  | True nebo False <br/>Nastavení tuto hodnotu na True umožňuje předzpracování provádí jednou a opakované použití stejné předzpracovaná data pro všechny iterace. | True |
-`blacklist_models`  | Automatizované experimentu strojového učení a má mnoho různých algoritmů, které se pokusí. Konfigurace vyloučení určitých algoritmů z experimentu. Je užitečné, pokud jste si vědomi, že algoritmy nefungují dobře u datové sady. S výjimkou algoritmů můžete ušetřit vám výpočetní prostředky a školení čas.<br/>Povolené hodnoty pro klasifikaci<br/><li>LogisticRegression</li><li>SGD</li><li>MultinomialNaiveBayes</li><li>BernoulliNaiveBayes</li><li>SVM</li><li>LinearSVM</li><li>KNN</li><li>DecisionTree</li><li>RandomForest</li><li>ExtremeRandomTrees</li><li>LightGBM</li><li>GradientBoosting</li><li>TensorFlowDNN</li><li>TensorFlowLinearClassifier</li><br/>Povolené hodnoty pro regresní<br/><li>ElasticNet</li><li>GradientBoosting</li><li>DecisionTree</li><li>KNN</li><li>LassoLars</li><li>SGD </li><li>RandomForest</li><li>ExtremeRandomTree</li><li>LightGBM</li><li>TensorFlowLinearRegressor</li><li>TensorFlowDNN</li></li><br/>Povolené hodnoty pro prognózování<br/><li>ElasticNet</li><li>GradientBoosting</li><li>DecisionTree</li><li>KNN</li><li>LassoLars</li><li>SGD </li><li>RandomForest</li><li>ExtremeRandomTree</li><li>LightGBM</li><li>TensorFlowLinearRegressor</li><li>TensorFlowDNN</li></li>|   Žádný
-`whitelist_models`  | Automatizované experimentu strojového učení a má mnoho různých algoritmů, které se pokusí. Konfigurace zahrnují určitých algoritmů pro experiment. Je užitečné, pokud jste si vědomi, že algoritmy fungují dobře u datové sady. <br/>Povolené hodnoty pro klasifikaci<br/><li>LogisticRegression</li><li>SGD</li><li>MultinomialNaiveBayes</li><li>BernoulliNaiveBayes</li><li>SVM</li><li>LinearSVM</li><li>KNN</li><li>DecisionTree</li><li>RandomForest</li><li>ExtremeRandomTrees</li><li>LightGBM</li><li>GradientBoosting</li><li>TensorFlowDNN</li><li>TensorFlowLinearClassifier</li><br/>Povolené hodnoty pro regresní<br/><li>ElasticNet</li><li>GradientBoosting</li><li>DecisionTree</li><li>KNN</li><li>LassoLars</li><li>SGD </li><li>RandomForest</li><li>ExtremeRandomTree</li><li>LightGBM</li><li>TensorFlowLinearRegressor</li><li>TensorFlowDNN</li></li><br/>Povolené hodnoty pro prognózování<br/><li>ElasticNet</li><li>GradientBoosting</li><li>DecisionTree</li><li>KNN</li><li>LassoLars</li><li>SGD </li><li>RandomForest</li><li>ExtremeRandomTree</li><li>LightGBM</li><li>TensorFlowLinearRegressor</li><li>TensorFlowDNN</li></li>|  Žádný
-`verbosity` |Určuje úroveň protokolování s informacemi, které se nejvíce podrobné a kritické přičemž nejmenší. Úroveň podrobností má stejné hodnoty, jak jsou definovány v protokolování balíček pythonu. Povolené hodnoty jsou:<br/><li>logging.INFO</li><li>protokolování. UPOZORNĚNÍ</li><li>protokolování. CHYBA</li><li>protokolování. KRITICKÁ</li>  | logging.INFO</li>
-`X` | Všechny funkce k trénování s |  Žádný
-`y` |   Popisek dat pro trénování s. Pro klasifikaci by měl být pole celých čísel.|  Žádný
-`X_valid`|_Volitelné_ všechny funkce má provést ověření. Pokud není zadán, X je rozdělená mezi trénování a ověření |   Žádný
-`y_valid`   |_Volitelné_ popisku dat má provést ověření. Pokud není zadán, y je rozdělená mezi trénování a ověření    | Žádný
-`sample_weight` |   _Volitelné_ váženou hodnotu pro každý vzorek. Používá se, když chcete přiřadit různé váhy na základě datových bodů |   Žádný
-`sample_weight_valid`   |   _Volitelné_ váženou hodnotu pro každý vzorek ověření. Pokud není zadán, sample_weight je rozdělená mezi trénování a ověření   | Žádný
-`run_configuration` |   RunConfiguration objektu.  Používá pro vzdálené spuštění. |Žádný
-`data_script`  |    Cesta k souboru, který obsahuje metodu get_data.  Vyžaduje se pro vzdálené spuštění.   |Žádný
-`model_explainability` | _Volitelné_ True nebo False <br/>  Hodnota TRUE povolí experimentovat provádět funkce důležitosti pro každou iteraci. Metoda explain_model() konkrétní iteraci slouží také povolit funkci důležitost na vyžádání pro danou iteraci po dokončení testu. | False
-`enable_ensembling`|Příznak pro povolení iterace ensembling po dokončení všech iterací.| True
-`ensemble_iterations`|Počet iterací, během kterých jsme zvolili vybavené kanálu jako součást konečné skupiny stromů.| 15
-`experiment_timeout_minutes`| Omezuje množství času (v minutách), který může mít celý běh experimentu | Žádný
+Zobrazit [AutoMLConfig třídy](https://docs.microsoft.com/python/api/azureml-train-automl/azureml.train.automl.automlconfig.automlconfig?view=azure-ml-py) zobrazit úplný seznam parametrů.  
 
 ## <a name="data-pre-processing-and-featurization"></a>Předběžné zpracování dat a snadné
 

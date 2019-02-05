@@ -12,12 +12,12 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 11/15/2017
 ms.custom: seodec18
-ms.openlocfilehash: ee695798dc8a2a19d5cd3d94cbf43e0b58065f84
-ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
+ms.openlocfilehash: f6c2c8c49f34c707c7b0fb4d525337fbfa169a3e
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53556675"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55692421"
 ---
 # <a name="how-to-scale-your-time-series-insights-environment"></a>Jak škálovat vaše prostředí Time Series Insights
 
@@ -47,7 +47,7 @@ Kapacity se škálují lineárně, takže S1 SKU s kapacitou 2 podporuje událos
 ## <a name="change-the-capacity-of-your-environment"></a>Změnit kapacitu vašeho prostředí
 1. Na webu Azure Portal vyhledejte a vyberte vaše prostředí Time Series Insights. 
 
-2. V nabídce pro vaše prostředí čas řady Insighs vyberte **konfigurovat**.
+2. V nabídce pro vaše prostředí Time Series Insights, vyberte **konfigurovat**.
 
    ![Configure.PNG](media/scale-your-environment/configure.png)
 

@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jsimmons
-ms.openlocfilehash: a1d06919ae0a76647fafeb9c8499476e533bfebf
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
+ms.openlocfilehash: 7474027368949d5ad2202881ac68096fac2b8bd2
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55656392"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55693900"
 ---
 # <a name="preview-azure-ad-password-protection-troubleshooting"></a>Verze Preview: Řešení potíží Azure AD ochrana heslem
 
@@ -26,8 +26,6 @@ ms.locfileid: "55656392"
 
 Po nasazení ochrany hesel služby Azure AD řešení potíží se může vyžadovat. Tento článek obsahuje podrobnosti vám pomohou pochopit některé běžné kroky při řešení potíží.
 
-## 
-
 ## <a name="weak-passwords-are-not-getting-rejected-as-expected"></a>Slabá hesla nejsou získávání odmítnuta, podle očekávání
 
 To může mít několik možných příčin:
@@ -35,12 +33,16 @@ To může mít několik možných příčin:
 1. Vaše řadiče domény agentům ještě nestáhli zásadu. Příznaky tohoto objektu je 30001 události v protokolu událostí správce agenta řadiče domény.
 
     Možné příčiny tohoto problému patří:
+
     1. Doménová struktura ještě není zaregistrované.
     2. Proxy serveru ještě není zaregistrované.
     3. Problémy se síťovým připojením brání službě Proxy komunikaci s Azure (proxy server HTTP Zkontrolujte požadavky na)
 
-2. Režim vynucení zásad hesel stále nastavena na Audit. Pokud je to tento případ, jednoduše ji překonfigurujte k vynucení ochrany hesel služby Azure AD na portálu.
-3. Algoritmus pro ověření heslo může fungovat podle očekávání.  Podrobnosti najdete na [jak se vyhodnocují hesla](concept-password-ban-bad.md#how-are-passwords-evaluated).
+2. Režim vynucení zásad hesel stále nastavena na Audit. Pokud je to tento případ, můžete ji překonfigurujte k vynucení ochrany hesel služby Azure AD na portálu. Podrobnosti najdete na [ochrana heslem povolit](howto-password-ban-bad-on-premises-operations.md#enable-password-protection).
+
+3. Zásady hesel se zakázalo. Pokud je to tento případ, překonfigurujte ji povolit pomocí portálu pro ochranu hesel služby Azure AD. Podrobnosti najdete na [ochrana heslem povolit](howto-password-ban-bad-on-premises-operations.md#enable-password-protection).
+
+4. Algoritmus pro ověření heslo může fungovat podle očekávání. Podrobnosti najdete na [jak se vyhodnocují hesla](concept-password-ban-bad.md#how-are-passwords-evaluated).
 
 ## <a name="directory-services-repair-mode"></a>Režimu oprav adresářových služeb
 
@@ -50,7 +52,7 @@ Pokud řadič domény, který naběhne do režimu oprav adresářových služeb,
 
 Pokud dojde k situaci, kdy služba agenta DC způsobuje problémy, službu agenta řadiče domény může okamžitě ukončena. Dll filtru hesel agenta DC stále pokusí volat službu bez spuštění a budou protokolovat události upozornění (10012, 10013), ale během této doby jsou přijímány příchozí všechna hesla. Služba agenta řadiče domény může také být nakonfigurována prostřednictvím Windows správce řízení služeb s typem spuštění "Zakázáno" podle potřeby.
 
-Další míry nápravy může být nastavená na ne na portálu ochrany hesel služby Azure AD povolit režim. Po stažení aktualizované zásady, každá služba agentů DC začnou tichém režimu, kde jsou všechna hesla přijímány jako-je. Další informace najdete v tématu [režimu vynucení](howto-password-ban-bad-on-premises-operations.md#enforce-mode).
+Další míry nápravy může být nastavená na ne na portálu ochrany hesel služby Azure AD povolit režim. Po stažení aktualizované zásady, každá služba agenta DC začnou tichém režimu, kde jsou všechna hesla přijímány jako-je. Další informace najdete v tématu [režimu vynucení](howto-password-ban-bad-on-premises-operations.md#enforce-mode).
 
 ## <a name="domain-controller-demotion"></a>Snížení úrovně řadiče domény
 

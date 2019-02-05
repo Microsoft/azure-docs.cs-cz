@@ -1,5 +1,5 @@
 ---
-title: Nahrání, stažení, vypsání a odstranění objektů blob pomocí sady Azure Storage v10 SDK pro JavaScript (verze Preview)
+title: Nahrání, stažení, seznamu a odstraňování objektů BLOB pomocí služby Azure Storage v10 SDK pro JavaScript
 description: Vytvoření, nahrání a odstranění objektů blob a kontejnerů v Node.js pomocí služby Azure Storage
 services: storage
 author: tamram
@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: quickstart
 ms.date: 11/14/2018
 ms.author: tamram
-ms.openlocfilehash: 68d03a5e37559c6db2955cc966d4f074c9adbe64
-ms.sourcegitcommit: a4e4e0236197544569a0a7e34c1c20d071774dd6
+ms.openlocfilehash: 431f75143a118d369ac45fa273f8f16d17bf6785
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51711238"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55695419"
 ---
 # <a name="quickstart-upload-download-list-and-delete-blobs-using-azure-storage-v10-sdk-for-javascript-preview"></a>Rychlý start: Nahrání, stažení, vypsání a odstranění objektů blob pomocí sady Azure Storage v10 SDK pro JavaScript (verze Preview)
 

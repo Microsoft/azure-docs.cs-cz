@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 07/26/2018
 ms.author: dobett
 ms.custom: include file
-ms.openlocfilehash: dc87079083b8f07ad18f5f871bff64de8d492ebd
-ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
+ms.openlocfilehash: 414bb0183e68cb46e52c379ea3f7aceda5d4170e
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39285642"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55701178"
 ---
 ## <a name="the-parts-of-the-device-model-schema"></a>Části schématu modelu zařízení
 
@@ -105,7 +105,7 @@ Spuštění služby simulace **chladič-01-state.js** souboru každých pět sek
 }
 ```
 
-Při spuštění řešení, vyžádá si všechna Simulovaná zařízení, která sestavení seznamu `Type` hodnot pro použití v uživatelském rozhraní. Toto řešení využívá `Latitiude` a `Longitude` vlastnosti, které chcete přidat umístění zařízení do mapy na řídicím panelu.
+Při spuštění řešení, vyžádá si všechna Simulovaná zařízení, která sestavení seznamu `Type` hodnot pro použití v uživatelském rozhraní. Toto řešení využívá `Latitude` a `Longitude` vlastnosti, které chcete přidat umístění zařízení do mapy na řídicím panelu.
 
 ## <a name="telemetry"></a>Telemetrická data
 

@@ -1,21 +1,21 @@
 ---
-title: Vytvoření připojení ExpressRoute k Azure a místním prostředím pomocí služby Azure Virtual WAN | Microsoft Docs
-description: V tomto kurzu zjistíte, jak pomocí služby Azure Virtual WAN vytvořit připojení ExpressRoute k Azure a místním prostředím.
+title: Použití Azure virtuální sítě WAN připojení ExpressRoute k Azure a místním prostředí | Dokumentace Microsoftu
+description: V tomto kurzu se naučíte se používat Azure virtuální sítě WAN připojení ExpressRoute k Azure a místním prostředí.
 services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: tutorial
 ms.date: 10/5/2018
 ms.author: cherylmc
-Customer intent: As someone with a networking background, I want to connect my corporoate on-premises network(s) to my VNets using Virtual WAN and ExpressRoute.
-ms.openlocfilehash: c02020ba8d49b123cf8914214d52ac40896a3c20
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
-ms.translationtype: HT
+Customer intent: As someone with a networking background, I want to connect my corporate on-premises network(s) to my VNets using Virtual WAN and ExpressRoute.
+ms.openlocfilehash: 17d80d07f9b272b0dcb7449404d5d6626e72ce65
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51248176"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55692839"
 ---
-# <a name="tutorial-create-an-expressroute-association-using-azure-virtual-wan-preview"></a>Kurz: Vytvoření přidružení ExpressRoute pomocí služby Azure Virtual WAN (Preview)
+# <a name="tutorial-create-an-expressroute-association-using-azure-virtual-wan-preview"></a>Kurz: Vytvoření přidružení ExpressRoute pomocí Azure virtuální sítě WAN (Preview)
 
 V tomto kurzu se dozvíte, jak se pomocí služby Virtual WAN připojit ke svým prostředkům v Azure s využitím okruhu a přidružení ExpressRoute. Další informace o službě Virtual WAN najdete v článku [Přehled služby Virtual WAN](virtual-wan-about.md)
 
@@ -35,7 +35,7 @@ V tomto kurzu se naučíte:
 > Tato verze Public Preview se poskytuje bez smlouvy o úrovni služeb a neměla by se používat pro úlohy v produkčním prostředí. Některé funkce nemusí být podporované, můžou mít omezené možnosti nebo nemusí být dostupné ve všech umístěních Azure. Podrobnosti najdete v [dodatečných podmínkách použití systémů Microsoft Azure Preview](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 >
 
-## <a name="before-you-begin"></a>Než začnete
+## <a name="before-you-begin"></a>Před zahájením
 
 [!INCLUDE [Before you begin](../../includes/virtual-wan-tutorial-vwan-before-include.md)]
 
@@ -45,7 +45,7 @@ Než budete moci nakonfigurovat virtuální síť WAN, je nejdříve potřeba za
 
 **Požadavky pro verzi Preview:**
 
-* Dostupnost v oblastech: USA – středozápad
+* Dostupnost v oblastech: Západní střed USA
 * V zemích, které podporují [ExpressRoute Global Reach](https://docs.microsoft.com/azure/expressroute/expressroute-faqs#where-is-expressroute-global-reach-supported), musí být povolený okruh ExpressRoute
 
 ## <a name="vnet"></a>1. Vytvoření virtuální sítě
@@ -70,12 +70,12 @@ V prohlížeči přejděte na [Azure Portal (Preview)](https://aka.ms/azurevirtu
 
 1. Vyberte svou virtuální síť WAN a v části **Architektura virtuální sítě WAN** vyberte **Okruhy ExpressRoute**.
 2. Pokud je okruh ExpressRoute ve stejném předplatném jako vaše virtuální síť WAN, klikněte na **Vybrat okruh ExpressRoute** a vyberte okruh ExpressRoute z vašeho předplatného. 
-3. V rozevírací nabídce vyberte svůj okruh ExpressRoute, který chcete přidružit k rozbočovači.
-4. Pokud okruh ExpressRoute není ve stejném předplatném nebo jste obdrželi [autorizační klíč a ID partnerského okruhu](../expressroute/expressroute-howto-linkvnet-portal-resource-manager.md), vyberte **Vyhledat okruh uplatňující autorizační klíč**.
+3. Pomocí rozevírací seznam, vyberte přes ExpressRoute chcete přidružit k rozbočovači.
+4. Pokud není okruhem ExpressRoute v rámci stejného předplatného nebo vám byl poskytnut [autorizační klíč a peer ID](../expressroute/expressroute-howto-linkvnet-portal-resource-manager.md)vyberte **najít okruhu uplatňuje autorizačního klíče**
 5. Zadejte následující podrobnosti:
 * **Autorizační klíč** – Autorizační klíč vygenerovaný vlastníkem okruhu, jak je popsáno výše.
 * **Identifikátor URI partnerského okruhu** – Identifikátor URI okruhu poskytnutý vlastníkem okruhu, který je jedinečným identifikátorem okruhu.
-* **Váha směrování** - [Váha směrování](../expressroute/expressroute-optimize-routing.md) umožňuje upřednostňovat určité cesty v případě, že je k jednomu rozbočovači připojených více okruhů z různých partnerských umístění.
+* **Váha směrování** - [váha směrování](../expressroute/expressroute-optimize-routing.md) umožňuje raději určité cesty ke složkám na stejném centru jsou připojeni víc okruhů z různých umístění partnerského vztahu
 6. Klikněte na **Vyhledat okruh**, a pokud se najde nějaký okruh, vyberte ho.
 7. V rozevíracím seznamu vyberte 1 nebo více rozbočovačů a klikněte na **Uložit**.
 
@@ -116,7 +116,7 @@ Pokud už tyto prostředky nepotřebujete, můžete k odebrání skupiny prostř
 Remove-AzureRmResourceGroup -Name myResourceGroup -Force
 ```
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 V tomto kurzu jste se naučili:
 

@@ -7,12 +7,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 12/08/2018
 ms.author: raynew
-ms.openlocfilehash: b8ff1ae2f4c07dc59bd1ffb631378817493b96b0
-ms.sourcegitcommit: fd488a828465e7acec50e7a134e1c2cab117bee8
+ms.openlocfilehash: 974ea5803b6e31ad8f940265071f41440d5355da
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "53995038"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55700634"
 ---
 # <a name="best-practices-for-costing-and-sizing-workloads-migrated-to-azure"></a>Osvědčené postupy pro úlohy ocenění a změny velikosti migrovat do Azure
 
@@ -154,7 +154,7 @@ Integrované portfolio typu místní nebo Azure produktu Microsoft generuje výh
 
 - [Podívejte se na](https://azure.microsoft.com/pricing/hybrid-benefit/) Kalkulačka úspor Hybrid Benefit.
 - [Další informace](https://azure.microsoft.com/pricing/hybrid-benefit/) o Hybrid Benefit pro Windows Server.
-- [Kontrola](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-sql-server-pricing-guidance#bring-your-own-license-byol) ceny pokyny pro virtuální počítače Azure s SQL serverem.
+- [Kontrola](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-sql-server-pricing-guidance) ceny pokyny pro virtuální počítače Azure s SQL serverem.
 
 
 ## <a name="best-practice-use-reserved-vm-instances"></a>Osvědčený postup: Použití rezervovaných instancí virtuálních počítačů
@@ -174,7 +174,7 @@ Pomocí služby Azure Reserved VM instances, si Předplatíte jeden nebo tři ro
 **Víc se uč:**
 - [Další informace o](https://docs.microsoft.com/azure/billing/billing-save-compute-costs-reservations) Azure rezervace.
 - [Čtení](https://azure.microsoft.com/pricing/reserved-vm-instances/#faq) rezervované instance – nejčastější dotazy.
-- [Získejte doprovodné materiály k cenám](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-sql-server-pricing-guidance#bring-your-own-license-byol) pro virtuální počítače Azure s SQL serverem.
+- [Získejte doprovodné materiály k cenám](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-sql-server-pricing-guidance) pro virtuální počítače Azure s SQL serverem.
 
 
 ## <a name="best-practice-aggregate-cloud-spend-across-subscriptions"></a>Osvědčený postup: Útrata v cloudu agregované napříč předplatnými

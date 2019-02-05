@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 11/25/2018
 ms.author: cynthn
 ms.openlocfilehash: 7c9c52c5cda258908ac8463dd06044e244c75ee2
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52330873"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55735897"
 ---
 Když už nepotřebujete datový disk připojený k virtuálnímu počítači, můžete jej jednoduše odpojit. Při odpojení disku od virtuálního počítače nedojde k odebrání disku z úložiště. Pokud znovu chcete použít existující data na disku, můžete jej znovu připojit ke stejnému nebo jinému virtuálnímu počítači.  
 

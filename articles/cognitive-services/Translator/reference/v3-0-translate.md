@@ -8,14 +8,14 @@ manager: cgronlun
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: reference
-ms.date: 03/29/2018
+ms.date: 02/01/2019
 ms.author: v-jansko
-ms.openlocfilehash: 77edf892c3c2ca1434331fb5560f0db8ca16e306
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 800c6d3441e75f428f58fe76ea653f04353064bb
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55470871"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55699716"
 ---
 # <a name="translator-text-api-30-translate"></a>Translator Text API 3.0: Translate
 
@@ -54,7 +54,7 @@ https://api.cognitive.microsofttranslator.com/translate?api-version=3.0
   </tr>
   <tr>
     <td>category</td>
-    <td>*Volitelný parametr*.<br/>Řetězec určující kategorie překladu (domény). Tento parametr slouží k získání překlady z přizpůsobené systému vytvořených pomocí [vlastní Translator](../customization.md). Výchozí hodnota je: `general`.</td>
+    <td>*Volitelný parametr*.<br/>Řetězec určující kategorie překladu (domény). Tento parametr slouží k získání překlady z přizpůsobené systému vytvořených pomocí [vlastní Translator](../customization.md). Přidáte ID kategorie z projektu vlastní překladač pro tento parametr použijte vaše nasazené přizpůsobený systém. Výchozí hodnota je: `general`.</td>
   </tr>
   <tr>
     <td>profanityAction</td>
@@ -126,7 +126,7 @@ Text požadavku je pole JSON. Každý prvek pole je objekt JSON s řetězcovou v
 
 Platí následující omezení:
 
-* Pole může mít maximálně 25 prvků.
+* Pole může mít maximálně 100 elementů.
 * Celý text zahrnutý v požadavku nemůže být delší než 5 000 znaků včetně mezer.
 
 ## <a name="response-body"></a>Text odpovědi
@@ -224,6 +224,8 @@ Tady jsou možné stavové kódy HTTP, které vrátí žádost o.
     <td>Server je dočasně nedostupný. Zkuste požadavek. Pokud chyba přetrvává, nahlaste to s: datum a čas selhání žádost s identifikátorem v hlavičce odpovědi `X-RequestId`a identifikátor klienta v hlavičce požadavku `X-ClientTraceId`.</td>
   </tr>
 </table> 
+
+Pokud dojde k chybě, vrátí požadavek také chybová odpověď JSON. Kód chyby je, chybu zařadit 6místným číselným číslo kombinování stavový kód HTTP 3 číslice následované číslem 3 číslice na další. Běžné kódy chyb můžete najít na [stránky referenční dokumentace rozhraní Translator Text API v3](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#errors). 
 
 ## <a name="examples"></a>Příklady
 

@@ -8,12 +8,12 @@ ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: 7fdd32f9263b4d1694a0516a98b681ba8744ab6b
-ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
+ms.openlocfilehash: ebe362b89eb6ffcde006ff824fbee40b1a9175d3
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49394574"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55733395"
 ---
 # <a name="ingest-sample-data-into-azure-data-explorer"></a>Ingestování ukázková data do Průzkumníku dat Azure
 
@@ -57,6 +57,11 @@ Ukázková datová sada **StormEvents** obsahuje data týkající se počasí od
 
 ## <a name="next-steps"></a>Další postup
 
-[Zápis dotazů](write-queries.md)
+> [!div class="nextstepaction"]
+> [Rychlé zprovoznění: Dotazování dat v Průzkumníku dat Azure](web-query-data.md)
 
-[Příjem dat Azure Průzkumník dat](ingest-data-overview.md)
+> [!div class="nextstepaction"]
+> [Zápis dotazů](write-queries.md)
+
+> [!div class="nextstepaction"]
+> [Příjem dat Azure Průzkumník dat](ingest-data-overview.md)

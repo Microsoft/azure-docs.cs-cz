@@ -11,17 +11,17 @@ author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, carlrab
 manager: craigg
-ms.date: 01/25/2019
-ms.openlocfilehash: 40dd963a4aad7ffdd092d6835e8444cf0789e129
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.date: 02/04/2019
+ms.openlocfilehash: 24feef28edac73f625de1c1b7dfd9a4aaf9883af
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55462796"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55734619"
 ---
 # <a name="azure-sql-database-metrics-and-diagnostics-logging"></a>Azure SQL Database metrik a protokolování diagnostiky
 
-Azure SQL Database, elastické fondy, Managed Instance a databáze v Managed Instance můžete streamování protokolů Diagnostika a metriky pro snazší monitorování výkonu. Databáze k přenosu využití prostředků, pracovních procesů a relace a připojení k jednomu z následujících prostředků Azure můžete nakonfigurovat:
+Izolované databáze, databáze ve fondu v elastických fondech a instance databáze spravované instance může, streamování protokolů Diagnostika a metriky pro snazší monitorování výkonu. Databáze k přenosu využití prostředků, pracovních procesů a relace a připojení k jednomu z následujících prostředků Azure můžete nakonfigurovat:
 
 - **Azure SQL Analytics**: Chcete-li získat inteligentního monitorování vašich databází Azure SQL, které zahrnuje sestavy o výkonu, upozornění a doporučení pro zmírnění dopadů.
 - **Azure Event Hubs**: pro integraci telemetrických dat služby SQL Database s vlastními řešeními monitorování nebo aktivními kanály.
@@ -34,7 +34,7 @@ Další informace o kategoriích metrik a protokolů, podporuje různé služby 
 - [Přehled metrik v Microsoft Azure](../monitoring-and-diagnostics/monitoring-overview-metrics.md)
 - [Přehled protokoly diagnostiky Azure](../azure-monitor/platform/diagnostic-logs-overview.md)
 
-Tento článek obsahuje pokyny, které vám umožní povolit telemetrická data diagnostiky pro databáze, elastické fondy a Managed Instance. Také může pomoct vás seznámí s postupy ke konfiguraci Azure SQL Analytics jako nástroj pro sledování pro zobrazování diagnostické telemetrie databáze.
+Tento článek obsahuje pokyny, které vám umožní povolit telemetrická data diagnostiky pro databáze, elastické fondy a spravované instance Azure SQL. Také může pomoct vás seznámí s postupy ke konfiguraci Azure SQL Analytics jako nástroj pro sledování pro zobrazování diagnostické telemetrie databáze.
 
 ## <a name="enable-logging-of-diagnostics-telemetry"></a>Povolit protokolování diagnostiky telemetrii
 
@@ -55,15 +55,15 @@ Když povolíte protokolování Diagnostika a metriky, je třeba zadat cílový 
 Můžete zřídit nového prostředku Azure nebo si vybrat existující prostředek. Po výběru prostředku pomocí **nastavení diagnostiky** určete shromažďovaných údajů.
 
 > [!NOTE]
-> Pokud používáte také elastických fondů nebo Managed Instance, doporučujeme, abyste povolili telemetrická data diagnostiky pro i tyto prostředky. Kontejnery databází v elastických fondech a Managed Instance mají své vlastní samostatný diagnostickou telemetrii.
+> Pokud používáte také elastických fondů nebo spravované instance, doporučujeme, abyste povolili telemetrická data diagnostiky pro i tyto prostředky. Kontejnery databází v elastických fondech a spravované instance mají vlastní samostatný diagnostickou telemetrii.
 
-## <a name="enable-logging-for-azure-sql-database-or-databases-in-managed-instance"></a>Povolení protokolování pro Azure SQL Database nebo databází do spravované Instance
+## <a name="enable-logging-for-azure-sql-databases"></a>Povolení protokolování pro Azure SQL Database
 
-Povolení metrik a protokolování diagnostiky pro službu SQL Database a u databází ve spravované instanci; ve výchozím nastavení nejsou povolené.
+Povolení metrik a Diagnostika protokolování pro databáze SQL – nejsou ve výchozím nastavení povolená.
 
-Můžete nastavit Azure SQL Database a databází ve spravované instanci shromažďovat následující telemetrická data diagnostiky:
+Azure SQL Database můžete nastavit shromažďování následujících telemetrická data diagnostiky:
 
-| Monitorování telemetrických dat pro databáze | Podpora Azure SQL Database | Databáze v podpoře Managed Instance |
+| Monitorování telemetrických dat pro databáze | Izolovaná databáze a podpora databáze ve fondu | Managed instance podpory |
 | :------------------- | ------------------- | ------------------- |
 | [Všechny metriky](sql-database-metrics-diag-logging.md#all-metrics): Obsahuje procento využití DTU/procesoru, omezení jednotek DTU a procesoru, fyzických čtení dat procento, protokolu zapisovat procento, úspěšné/neúspěšné/blokovaná bránou připojení brány firewall, relace procento, procento pracovních procesů, úložiště, procento úložiště a XTP úložiště. | Ano | Ne |
 | [QueryStoreRuntimeStatistics](sql-database-metrics-diag-logging.md#query-store-runtime-statistics): Obsahuje informace o dotazu běhové statistiky, jako je například využití procesoru a statistiky doba trvání dotazu. | Ano | Ano |
@@ -76,61 +76,61 @@ Můžete nastavit Azure SQL Database a databází ve spravované instanci shroma
 
 ### <a name="azure-portal"></a>portál Azure
 
-Můžete použít **nastavení diagnostiky** nabídky pro všechny databáze na webu Azure Portal ke konfiguraci streamování telemetrická data diagnostiky pro Azure SQL Database a databáze ve spravované instanci. Můžete nastavit následující cíle: Azure Storage, Azure Event Hubs a Azure Log Analytics.
+Můžete použít **nastavení diagnostiky** nabídku pro každý jednotlivý ve fondu, nebo instanci databáze na webu Azure Portal ke konfiguraci streamování telemetrická data diagnostiky pro Azure SQL Database. Můžete nastavit následující cíle: Azure Storage, Azure Event Hubs a Azure Log Analytics.
 
-### <a name="configure-streaming-of-diagnostics-telemetry-for-azure-sql-database"></a>Konfigurace datové proudy telemetrická data diagnostiky pro Azure SQL Database
+### <a name="configure-streaming-of-diagnostics-telemetry-for-single-pooled-or-instance-databases"></a>Vysílání datového proudu telemetrická data diagnostiky pro zadání jedné konfigurace, ve fondu nebo instanci databáze
 
    ![Ikona SQL Database](./media/sql-database-metrics-diag-logging/icon-sql-database-text.png)
 
-Pokud chcete povolit streamování telemetrická data diagnostiky pro Azure SQL Database, postupujte takto:
+Povolení streamování telemetrická data diagnostiky pro zadání jedné, klientů ve fondu, nebo instance databáze, postupujte podle těchto kroků:
 
-1. Přejdete k prostředku Azure SQL Database.
+1. Přejdete na prostředek databáze Azure SQL.
 1. Vyberte **nastavení diagnostiky**.
 1. Vyberte **zapnout diagnostiku** Pokud neexistují žádné předchozí nastavení, nebo vyberte **upravit nastavení** upravit předchozí nastavení.
    - Můžete vytvořit až tři paralelní připojení telemetrická data diagnostiky datového proudu.
    - Vyberte **+ přidat nastavení diagnostiky** konfigurace paralelní streamování dat diagnostiky k více prostředkům.
 
-   ![Povolit diagnostiku pro službu SQL Database](./media/sql-database-metrics-diag-logging/diagnostics-settings-database-sql-enable.png)
+   ![Povolit diagnostiku pro jeden, ve fondu nebo instanci databáze](./media/sql-database-metrics-diag-logging/diagnostics-settings-database-sql-enable.png)
 1. Zadejte název nastavení pro vlastní referenci.
 1. Vyberte cílový prostředek pro streamování dat diagnostiky: **Archivovat do účtu úložiště**, **Stream do centra událostí**, nebo **odesílat do Log Analytics**.
 1. Standard, založený na událostech monitorování prostředí vyberte následující políčka pro databáze telemetrii protokolů diagnostiky: **SQLInsights**, **AutomaticTuning**, **QueryStoreRuntimeStatistics**, **QueryStoreWaitStatistics**, **chyby** , **DatabaseWaitStatistics**, **vypršení časových limitů**, **bloky**, a **zablokování**.
 1. Monitorování prostředí Upřesnit, na základě jednu minutu, zaškrtněte políčko pro **AllMetrics**.
 1. Vyberte **Uložit**.
 
-   ![Konfigurace diagnostiky pro SQL Database](./media/sql-database-metrics-diag-logging/diagnostics-settings-database-sql-selection.png)
+   ![Konfigurovat diagnostiku pro jeden, ve fondu nebo instanci databáze](./media/sql-database-metrics-diag-logging/diagnostics-settings-database-sql-selection.png)
 
 > [!NOTE]
-> Protokoly auditu zabezpečení není možné z databáze nastavení diagnostiky. Pokud chcete povolit streamování protokolů auditu, naleznete v tématu [nastavení auditování databáze](sql-database-auditing.md#subheading-2), a [auditování SQL v Azure Log Analytics a Azure Event Hubs protokoly](https://blogs.msdn.microsoft.com/sqlsecurity/2018/09/13/sql-audit-logs-in-azure-log-analytics-and-azure-event-hubs/).
+> Protokoly auditu zabezpečení není možné z databáze nastavení diagnostiky. Pokud chcete povolit streamování protokolů auditu, naleznete v tématu [nastavení auditování databáze](sql-database-auditing.md#subheading-2), a [auditování protokolů v Azure Log Analytics a Azure Event Hubs](https://blogs.msdn.microsoft.com/sqlsecurity/2018/09/13/sql-audit-logs-in-azure-log-analytics-and-azure-event-hubs/).
 > [!TIP]
 > Tento postup opakujte pro každý Azure SQL Database, kterou chcete monitorovat.
 
-### <a name="configure-streaming-of-diagnostics-telemetry-for-databases-in-managed-instance"></a>Konfigurace datové proudy telemetrická data diagnostiky pro databáze ve spravované instanci
+### <a name="configure-streaming-of-diagnostics-telemetry-for-instance-databases-in-managed-instance"></a>Konfigurace datové proudy diagnostickou telemetrii pro instanci databáze spravované instance
 
-   ![Databáze spravované Instance ikona](./media/sql-database-metrics-diag-logging/icon-mi-database-text.png)
+   ![Instance databáze spravované instance ikona](./media/sql-database-metrics-diag-logging/icon-mi-database-text.png)
 
-Pokud chcete povolit streamování telemetrická data diagnostiky pro databáze ve spravované instanci, postupujte podle těchto kroků:
+Pokud chcete povolit streamování diagnostickou telemetrii pro instanci databáze ve spravované instanci, postupujte podle těchto kroků:
 
-1. Přejděte k vaší databázi v Managed Instance.
+1. Přejděte do instance databáze spravované instance.
 2. Vyberte **nastavení diagnostiky**.
 3. Vyberte **zapnout diagnostiku** Pokud neexistují žádné předchozí nastavení, nebo vyberte **upravit nastavení** upravit předchozí nastavení.
    - Můžete vytvořit až tři (3) paralelní připojení telemetrická data diagnostiky datového proudu.
    - Vyberte **+ přidat nastavení diagnostiky** konfigurace paralelní streamování dat diagnostiky k více prostředkům.
 
-   ![Povolit diagnostiku pro Managed Instance databáze](./media/sql-database-metrics-diag-logging/diagnostics-settings-database-mi-enable.png)
+   ![Povolit diagnostiku pro instanci databáze](./media/sql-database-metrics-diag-logging/diagnostics-settings-database-mi-enable.png)
 
 4. Zadejte název nastavení pro vlastní referenci.
 5. Vyberte cílový prostředek pro streamování dat diagnostiky: **Archivovat do účtu úložiště**, **Stream do centra událostí**, nebo **odesílat do Log Analytics**.
 6. Zaškrtněte políčka pro databáze diagnostickou telemetrii: **SQLInsights**, **QueryStoreRuntimeStatistics**, **QueryStoreWaitStatistics** a **chyby**.
 7. Vyberte **Uložit**.
 
-   ![Konfigurovat diagnostiku pro Managed Instance databáze](./media/sql-database-metrics-diag-logging/diagnostics-settings-database-mi-selection.png)
+   ![Konfigurovat diagnostiku pro instanci databáze](./media/sql-database-metrics-diag-logging/diagnostics-settings-database-mi-selection.png)
 
 > [!TIP]
-> Tento postup opakujte pro každou databázi ve spravované instanci, kterou chcete monitorovat.
+> Tento postup opakujte pro každou instanci, kterou chcete monitorovat.
 
-## <a name="enable-logging-for-elastic-pools-or-managed-instance"></a>Povolení protokolování pro elastické fondy nebo spravované Instance
+## <a name="enable-logging-for-elastic-pools-or-managed-instances"></a>Povolení protokolování pro elastické fondy nebo spravované instance
 
-Povolte diagnostické telemetrie pro elastické fondy a Managed Instance jako databáze kontejnery. Mají své vlastní diagnostickou telemetrii, která není ve výchozím nastavení povolená.
+Povolte diagnostické telemetrie pro elastické fondy a spravované instance jako databáze kontejnery. Mají své vlastní diagnostickou telemetrii, která není ve výchozím nastavení povolená.
 
 ### <a name="configure-streaming-of-diagnostics-telemetry-for-elastic-pools"></a>Konfigurace datové proudy telemetrická data diagnostiky pro elastické fondy
 
@@ -161,23 +161,23 @@ Pokud chcete povolit streamování telemetrická data diagnostiky pro prostřede
 > [!TIP]
 > Tento postup opakujte pro každý elastický fond, který chcete monitorovat.
 
-### <a name="configure-streaming-of-diagnostics-telemetry-for-managed-instance"></a>Konfigurace datové proudy telemetrická data diagnostiky pro Managed Instance
+### <a name="configure-streaming-of-diagnostics-telemetry-for-managed-instances"></a>Konfigurace datové proudy telemetrická data diagnostiky pro spravované instance
 
-   ![Ikona spravované Instance](./media/sql-database-metrics-diag-logging/icon-managed-instance-text.png)
+   ![Ikona spravované instance](./media/sql-database-metrics-diag-logging/icon-managed-instance-text.png)
 
-Prostředek Managed Instance můžete nastavit shromažďování následujících telemetrická data diagnostiky:
+Můžete nastavit shromažďovat následující telemetrická data diagnostiky prostředků spravovanou instanci:
 
 | Prostředek | Monitorování telemetrických dat |
 | :------------------- | ------------------- |
-| **Spravovaná Instance** | [ResourceUsageStats](sql-database-metrics-diag-logging.md#logs-for-managed-instance) obsahuje počet virtuálních jader, průměrné procento využití procesoru, vstupně-výstupní požadavky, bajtů načtených/zapsaných, vyhrazený úložný prostor a využitého prostoru úložiště. |
+| **Spravovaná instance** | [ResourceUsageStats](sql-database-metrics-diag-logging.md#logs-for-managed-instance) obsahuje počet virtuálních jader, průměrné procento využití procesoru, vstupně-výstupní požadavky, bajtů načtených/zapsaných, vyhrazený úložný prostor a využitého prostoru úložiště. |
 
-Pokud chcete povolit streamování telemetrická data diagnostiky pro prostředek Managed Instance, postupujte takto:
+Pokud chcete povolit streamování telemetrická data diagnostiky pro prostředek spravované instance, postupujte podle těchto kroků:
 
-1. Přejdete k Managed Instance prostředku na webu Azure portal.
+1. Přejděte do spravované instance prostředku na webu Azure portal.
 1. Vyberte **nastavení diagnostiky**.
 1. Vyberte **zapnout diagnostiku** Pokud neexistují žádné předchozí nastavení, nebo vyberte **upravit nastavení** upravit předchozí nastavení.
 
-   ![Povolit diagnostiku pro Managed Instance](./media/sql-database-metrics-diag-logging/diagnostics-settings-container-mi-enable.png)
+   ![Povolit diagnostiku pro spravovanou instanci](./media/sql-database-metrics-diag-logging/diagnostics-settings-container-mi-enable.png)
 
 1. Zadejte název nastavení pro vlastní referenci.
 1. Vyberte cílový prostředek pro streamování dat diagnostiky: **Archivovat do účtu úložiště**, **Stream do centra událostí**, nebo **odesílat do Log Analytics**.
@@ -185,10 +185,10 @@ Pokud chcete povolit streamování telemetrická data diagnostiky pro prostřede
 1. Zaškrtněte políčko pro instanci telemetrická data diagnostiky: **ResourceUsageStats**.
 1. Vyberte **Uložit**.
 
-   ![Konfigurace diagnostiky pro Managed Instance](./media/sql-database-metrics-diag-logging/diagnostics-settings-container-mi-selection.png)
+   ![Konfigurovat diagnostiku pro spravovanou instanci](./media/sql-database-metrics-diag-logging/diagnostics-settings-container-mi-selection.png)
 
 > [!TIP]
-> Tento postup opakujte pro každý Managed Instance, které chcete monitorovat.
+> Tento postup opakujte pro každý spravovanou instanci, kterou chcete monitorovat.
 
 ### <a name="powershell"></a>PowerShell
 
@@ -284,7 +284,7 @@ Přečtěte si informace o tom, jak [povolení nastavení diagnostiky při vytv�
 
 ## <a name="stream-into-azure-sql-analytics"></a>Stream do Azure SQL Analytics
 
-Azure SQL Analytics je cloudové řešení, která monitoruje výkon databáze, elastické fondy a spravované Instance Azure SQL ve velkém měřítku a napříč několika předplatnými. Pomáhá shromažďovat a vizualizovat metriky výkonu databáze SQL Azure a má vestavěné inteligentní algoritmy pro řešení potíží s výkonem.
+Azure SQL Analytics je cloudové řešení, která monitoruje výkon databáze, elastické fondy a spravované instance ve velkém měřítku a napříč několika předplatnými Azure SQL. Pomáhá shromažďovat a vizualizovat metriky výkonu databáze SQL Azure a má vestavěné inteligentní algoritmy pro řešení potíží s výkonem.
 
 ![Přehled služby Azure SQL Analytics](../azure-monitor/insights/media/azure-sql/azure-sql-sol-overview.png)
 
@@ -298,7 +298,7 @@ Můžete monitorovat fleet SQL Database pomocí služby Azure SQL Analytics. Pro
 2. Vytvoření pracovního prostoru monitorování v řešení.
 3. Konfigurovat databáze datového proudu diagnostickou telemetrii do pracovního prostoru.
 
-Pokud používáte elastických fondů nebo Managed Instance, musíte také nakonfigurovat telemetrická data diagnostiky Streamovat z těchto prostředků.
+Pokud používáte elastických fondů nebo spravované instance, musíte také nakonfigurovat telemetrická data diagnostiky Streamovat z těchto prostředků.
 
 ### <a name="create-azure-sql-analytics-resource"></a>Vytvořit prostředek služby Azure SQL Analytics
 
@@ -318,7 +318,7 @@ Pokud používáte elastických fondů nebo Managed Instance, musíte také nako
 
 Nejjednodušší způsob, jak nakonfigurovat, kde záznam metriky databáze pomocí webu Azure portal. Jak již bylo popsáno dříve, přejděte na váš prostředek databáze SQL v Azure portal a vyberte **nastavení diagnostiky**.
 
-Pokud používáte elastických fondů nebo Managed Instance, musíte také nakonfigurovat nastavení diagnostiky na těchto prostředcích, které umožňují telemetrická data diagnostiky ke streamování do pracovního prostoru.
+Pokud používáte elastických fondů nebo spravované instance, musíte také nakonfigurovat nastavení diagnostiky na těchto prostředcích, které umožňují telemetrická data diagnostiky ke streamování do pracovního prostoru.
 
 ### <a name="use-the-sql-analytics-solution"></a>Použití řešení SQL Analytics
 
@@ -403,9 +403,9 @@ Najdete v následujících tabulkách podrobnosti o všech metrik podle prostře
 |---|---|
 |Databáze SQL Azure|Procento DTU DTU použít, omezení jednotek DTU, procentuální využití procesoru, procento fyzických datových čtení, zápisu protokolu procento, úspěšné nebo neúspěšné/zablokovaný připojení brány firewall, procento relací, procento pracovních procesů, úložiště, procento úložiště, procento XTP úložiště, a zablokování |
 
-## <a name="logs-for-managed-instance"></a>Protokoly pro spravovanou instanci
+## <a name="logs-for-managed-instances"></a>Informace pro spravované instance
 
-Najdete v následující tabulce najdete podrobnosti o protokolech pro Managed Instance.
+Přečtěte si podrobnosti o protokolech pro spravované instance v následující tabulce.
 
 ### <a name="resource-usage-statistics"></a>Statistiky o využití prostředků
 
@@ -421,20 +421,20 @@ Najdete v následující tabulce najdete podrobnosti o protokolech pro Managed I
 |ResourceType|Název typu prostředku. Vždy: MANAGEDINSTANCES |
 |SubscriptionId|GUID předplatného pro databázi |
 |ResourceGroup|Název skupiny prostředků pro databázi |
-|LogicalServerName_s|Název spravované Instance |
+|LogicalServerName_s|Název spravované instance |
 |ResourceId|Identifikátor URI prostředku |
-|SKU_s|SKU produktu spravované Instance |
+|SKU_s|Skladová jednotka produktu spravované instance |
 |virtual_core_count_s|Počet virtuálních jader, které jsou k dispozici |
 |avg_cpu_percent_s|Průměrné procento CPU |
-|reserved_storage_mb_s|Kapacita vyhrazeného úložiště na Managed Instance |
-|storage_space_used_mb_s|Využité úložiště na Managed Instance |
+|reserved_storage_mb_s|Kapacita vyhrazeného úložiště spravované instance |
+|storage_space_used_mb_s|Využité úložiště spravované instance |
 |io_requests_s|Počet vstupně-výstupních operací |
 |io_bytes_read_s|Přečtené bajty vstupně-výstupních operací |
 |io_bytes_written_s|Zapsané bajty vstupně-výstupních operací |
 
-## <a name="logs-for-azure-sql-databases-and-managed-instance-databases"></a>Protokoly pro databáze Azure SQL Database a Managed Instance
+## <a name="logs-for-single-pooled-and-instance-databases"></a>Protokoly pro jeden, ve fondu a instanci databáze
 
-Najdete v následujících tabulkách podrobnosti o protokolech pro databáze Azure SQL a Managed Instance.
+Další podrobnosti o protokoly pro jeden, Azure SQL ve fondu a instance databází získáte v následujících tabulkách.
 
 ### <a name="query-store-runtime-statistics"></a>Statistické údaje o Query Store
 

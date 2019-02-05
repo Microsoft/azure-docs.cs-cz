@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 09/12/2018
 ms.author: qianw211
-ms.openlocfilehash: 3ad9308f3bc714ee2877627da8fdb328459b9fe4
-ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
+ms.openlocfilehash: 247a45a38d732ace0455c6ca2ebbd5c44c384004
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49351945"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55732324"
 ---
 # <a name="enable-an-appsource-and-marketplace-listing-by-using-azure-active-directory"></a>Povolení AppSource a Marketplace seznam pomocí služby Azure Active Directory
 
@@ -59,7 +59,7 @@ Další informace o SaaS technických požadavků najdete v tématu [aplikací S
 
 Nastavení automatizovaného odběratele zvýšit pravděpodobnost, že převod. Když zákazník vybere zkušební výpis a je přesměrován na zkušební prostředí, můžete nastavit zákazníka přímo bez nutnosti dalších kroků přihlášení.
 
-Při ověřování Azure AD odešle token do své aplikace nebo nabídky. Informace o uživateli poskytnuté token, který umožňuje vytvořit uživatelský účet v aplikaci nebo nabídky. Další informace najdete v tématu [ukázkový tokeny](https://docs.microsoft.com/azure/active-directory/develop/active-directory-token-and-claims#sample-tokens).
+Při ověřování Azure AD odešle token do své aplikace nebo nabídky. Informace o uživateli poskytnuté token, který umožňuje vytvořit uživatelský účet v aplikaci nebo nabídky. Další informace najdete v tématu [ukázkový tokeny](https://docs.microsoft.com/azure/active-directory/develop/active-directory-token-and-claims).
 
 Kdy použít Azure AD, aby ověřování jedním kliknutím v aplikaci nebo zkušební výpisu, můžete:
 

@@ -10,15 +10,15 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 07/17/2018
+ms.date: 02/02/2019
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 5e080614d4f0001a0bf1b44dd402f37db2463e03
-ms.sourcegitcommit: 30221e77dd199ffe0f2e86f6e762df5a32cdbe5f
+ms.openlocfilehash: b8c6ac78447a4e4db79ed75100222eee8d528b58
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2018
-ms.locfileid: "39206100"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55696893"
 ---
 # <a name="manage-access-using-rbac-and-azure-resource-manager-templates"></a>Správa přístupu pomocí RBAC a Azure Resource Manageru šablony
 
@@ -92,16 +92,18 @@ Následuje příklad čtečku přiřazení role uživateli po nasazení šablony
 
 ## <a name="deploy-template-using-azure-powershell"></a>Nasazení šablony pomocí Azure Powershellu
 
+[!INCLUDE [az-powershell-update](../../includes/updated-for-az.md)]
+
 Pokud chcete nasadit předchozí šablonu pomocí prostředí Azure PowerShell, postupujte takto.
 
 1. Vytvořte nový soubor s názvem rbac rg.json a zkopírujte předchozí šablony.
 
 1. Přihlaste se k [Azure PowerShellu](/powershell/azure/authenticate-azureps).
 
-1. Získá jedinečný identifikátor uživatele, skupinu nebo aplikaci. Například můžete použít [Get-AzureRmADUser](/powershell/module/azurerm.resources/get-azurermaduser) zobrazte seznam uživatelů Azure AD.
+1. Získá jedinečný identifikátor uživatele, skupinu nebo aplikaci. Například můžete použít [Get-AzADUser](/powershell/module/az.resources/get-azaduser) zobrazte seznam uživatelů Azure AD.
 
     ```azurepowershell
-    Get-AzureRmADUser
+    Get-AzADUser
     ```
 
 1. Generovat jedinečný identifikátor, který se použije pro přiřazení role pomocí nástroje identifikátor GUID. Tento identifikátor má následující formát: `11111111-1111-1111-1111-111111111111`
@@ -109,21 +111,21 @@ Pokud chcete nasadit předchozí šablonu pomocí prostředí Azure PowerShell, 
 1. Vytvořte skupinu prostředků příklad.
 
     ```azurepowershell
-    New-AzureRmResourceGroup -Name ExampleGroup -Location "Central US"
+    New-AzResourceGroup -Name ExampleGroup -Location "Central US"
     ```
 
-1. Použití [New-AzureRmResourceGroupDeployment](/powershell/module/azurerm.resources/new-azurermresourcegroupdeployment) příkaz ke spuštění nasazení.
+1. Použití [New-AzResourceGroupDeployment](/powershell/module/az.resources/new-azresourcegroupdeployment) příkaz ke spuštění nasazení.
 
     ```azurepowershell
-    New-AzureRmResourceGroupDeployment -ResourceGroupName ExampleGroup -TemplateFile rbac-rg.json
+    New-AzResourceGroupDeployment -ResourceGroupName ExampleGroup -TemplateFile rbac-rg.json
     ```
 
     Zobrazí se výzva k zadání požadovaných parametrů. Následuje příklad výstupu.
 
     ```Output
-    PS /home/user> New-AzureRmResourceGroupDeployment -ResourceGroupName ExampleGroup -TemplateFile rbac-rg.json
+    PS /home/user> New-AzResourceGroupDeployment -ResourceGroupName ExampleGroup -TemplateFile rbac-rg.json
     
-    cmdlet New-AzureRmResourceGroupDeployment at command pipeline position 1
+    cmdlet New-AzResourceGroupDeployment at command pipeline position 1
     Supply values for the following parameters:
     (Type !? for Help.)
     principalId: 22222222-2222-2222-2222-222222222222
@@ -251,4 +253,4 @@ Pokud chcete nasadit předchozí šablonu pomocí Azure CLI, postupujte takto.
 
 - [Vytvoření a nasazení první šablony Azure Resource Manageru](../azure-resource-manager/resource-manager-create-first-template.md)
 - [Princip struktury a syntaxe šablon Azure Resource Manageru](../azure-resource-manager/resource-group-authoring-templates.md)
-- [Šablony rychlý start Azure](https://azure.microsoft.com/resources/templates/?term=rbac)
+- [Šablony Azure pro rychlý start](https://azure.microsoft.com/resources/templates/?term=rbac)

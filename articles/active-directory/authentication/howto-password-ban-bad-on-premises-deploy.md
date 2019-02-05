@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jsimmons
-ms.openlocfilehash: 105ed999fc7122fb1c99e2c380b26a8c4d8d9f62
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
+ms.openlocfilehash: 824bedf782d6d227f2fa3adcf52492bb5a3eb478
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55659515"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55696859"
 ---
 # <a name="preview-deploy-azure-ad-password-protection"></a>Verze Preview: Nasazení ochrany hesel Azure AD
 
@@ -40,7 +40,7 @@ Po funkci byl spuštěný v režimu auditování rozumné době, můžete konfig
 
 ## <a name="deployment-requirements"></a>Požadavky na nasazení
 
-* Všechny řadiče domény nainstalovanou službu agenta ochrany DC hesel služby Azure AD musí běžet Windows Server 2012 nebo novější.
+* Všechny řadiče domény nainstalovanou službu agenta ochrany řadič domény Azure AD hesla musí běžet Windows Server 2012 nebo novější.
 * Všechny počítače s nainstalovanou službu Proxy ochrana hesel Azure AD musí běžet Windows Server 2012 R2 nebo novější.
 * Všechny počítače, kde jsou nainstalované komponenty ochrana hesel Azure AD, včetně řadičů domény musí mít Universal C runtime nainstalovaný.
 Nejlépe to provádí plně opravy počítače prostřednictvím služby Windows Update. V opačném případě může být vhodné balíček aktualizací specifické pro operační systém nainstalovaný – viz [aktualizace pro Universal C Runtime ve službě Windows](https://support.microsoft.com/help/2999226/update-for-universal-c-runtime-in-windows)
@@ -168,17 +168,17 @@ Existují dva instalační programy požadovaných pro ochranu hesel služby Azu
 
       Výše uvedených příkladech bude úspěšné pouze v případě, že aktuálně přihlášeného uživatele je také správcem domény služby Active Directory pro kořenovou doménu. Pokud to není tento případ, může poskytnout alternativní pověření pomocí parametru - ForestCredential.
 
-      > [!NOTE]
-      > Pokud více proxy serverů jsou nainstalovány ve vašem prostředí, nezáleží na tom, které proxy serveru se používá k registraci doménové struktury.
+   > [!NOTE]
+   > Pokud více proxy serverů jsou nainstalovány ve vašem prostředí, nezáleží na tom, které proxy serveru se používá k registraci doménové struktury.
 
-      > [!TIP]
-      > Může být značné zpoždění (sekund) při prvním spuštění této rutiny pro daného tenanta Azure před dokončením provádění rutiny. Pokud se použije v hlášení selhání Tato prodleva by neměly být zahrnuté znepokojující.
+   > [!TIP]
+   > Může být značné zpoždění (sekund) při prvním spuštění této rutiny pro daného tenanta Azure před dokončením provádění rutiny. Pokud se použije v hlášení selhání Tato prodleva by neměly být zahrnuté znepokojující.
 
-      > [!NOTE]
-      > Registrace v doménové struktuře služby Active Directory očekává se jednorázové krok v platnosti doménové struktury. Agenti řadiče domény spuštěné v doménové struktuře automaticky provede všechny potřebné maintainenance od této chvíle a vyšší. Po úspěšném pro danou doménovou strukturu, další vyvolání `Register-AzureADPasswordProtectionForest` nadále probíhat úspěšně, ale nejsou potřeba.
+   > [!NOTE]
+   > Registrace v doménové struktuře služby Active Directory očekává se jednorázové krok v platnosti doménové struktury. Agenti řadiče domény spuštěné v doménové struktuře automaticky provede všechny potřebné maintainenance od této chvíle a vyšší. Po úspěšném pro danou doménovou strukturu, další vyvolání `Register-AzureADPasswordProtectionForest` nadále probíhat úspěšně, ale nejsou potřeba.
 
-      > [!NOTE]
-      > Aby `Register-AzureADPasswordProtectionForest` úspěšné aspoň jeden Windows Server 2012 nebo novější domény musí být dostupný řadič domény proxy serveru. Neexistuje však žádný software agenta DC možné instalovat na žádném řadiči domény před tento krok.
+   > [!NOTE]
+   > Aby `Register-AzureADPasswordProtectionForest` úspěšné aspoň jeden Windows Server 2012 nebo novější domény musí být dostupný řadič domény proxy serveru. Neexistuje však žádný software agenta DC možné instalovat na žádném řadiči domény před tento krok.
 
 6. Konfigurace služby Proxy ochrana hesel Azure AD komunikovat přes proxy server HTTP
 

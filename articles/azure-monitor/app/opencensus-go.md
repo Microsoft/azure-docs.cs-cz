@@ -9,12 +9,12 @@ ms.date: 09/15/2018
 ms.service: application-insights
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 935119f2efe40ee22d2d11005fa79b12c712b7c2
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ms.openlocfilehash: cdf01fbbcc8ef1f90b2e0f8973f59c46c5bf70f8
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54104562"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55694098"
 ---
 # <a name="collect-distributed-traces-from-go-preview"></a>Shromažďovat distribuované trasování z Go (Preview)
 
@@ -24,7 +24,7 @@ Application Insights teď podporuje distribuované trasování z aplikací Go d�
 
 - Mít předplatné Azure.
 - Go je třeba nainstalovat, tento článek používá verze 1.11 [přejít Stáhnout](https://golang.org/dl/).
-- Postupujte podle pokynů k instalaci [místní předávání jako služba Windows](./opencensus-local-forwarder.md#windows-service).
+- Postupujte podle pokynů k instalaci [místní předávání jako služba Windows](./opencensus-local-forwarder.md).
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 
@@ -57,7 +57,7 @@ Nejprve je nutné vytvořit prostředek Application Insights, která bude genero
 
    ![Snímek obrazovky Instrumentační klíč](./media/opencensus-Go/0003-instrumentation-key.png)
 
-2. Upravit vaše `LocalForwarder.config` a přidejte svůj Instrumentační klíč. Pokud jste postupovali podle pokynů [předpoklad](./opencensus-local-forwarder.md#windows-service) soubor se nachází v `C:\LF-WindowsServiceHost`
+2. Upravit vaše `LocalForwarder.config` a přidejte svůj Instrumentační klíč. Pokud jste postupovali podle pokynů [předpoklad](./opencensus-local-forwarder.md) soubor se nachází v `C:\LF-WindowsServiceHost`
 
     ```xml
       <OpenCensusToApplicationInsights>
@@ -76,7 +76,7 @@ Nejprve je nutné vytvořit prostředek Application Insights, která bude genero
 
 3. Restartování aplikace **místní předávání** služby.
 
-## <a name="opencensus-go-packages"></a>Balíčky OpenCensus Go
+## <a name="opencensus-go-packages"></a>OpenCensus Go packages
 
 1. Instalace balíčků otevřete sčítání přejít z příkazového řádku:
 
@@ -186,7 +186,7 @@ Nejprve je nutné vytvořit prostředek Application Insights, která bude genero
 
 3. Jakmile je spuštění jednoduché aplikace v jazyce go přejděte do `http://localhost:50030`. Každá aktualizace v prohlížeči vygeneruje textu "hello world" doplněny odpovídající značky span data, která převezme místní server pro předávání.
 
-4. Zkontrolujte, že **místní předávání** sbírá kontrola trasování `LocalForwarder.config` souboru. Pokud jste postupovali podle kroků v [předpoklad](https://docs.microsoft.com/azure/application-insights/local-forwarder#windows-service), bude nacházet v `C:\LF-WindowsServiceHost`.
+4. Zkontrolujte, že **místní předávání** sbírá kontrola trasování `LocalForwarder.config` souboru. Pokud jste postupovali podle kroků v [předpoklad](https://docs.microsoft.com/azure/application-insights/local-forwarder), bude nacházet v `C:\LF-WindowsServiceHost`.
 
     Na obrázku níže souboru protokolu vidíte, že před spuštěním druhý skriptu, které jsme přidali Exportér `OpenCensus input BatchesReceived` je 0. Jakmile jsme začali používat aktualizovaný skript `BatchesReceived` zvýšena stejný počet hodnot, které jsme zadali:
     

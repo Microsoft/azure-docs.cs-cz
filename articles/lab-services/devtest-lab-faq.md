@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/17/2018
 ms.author: spelluru
-ms.openlocfilehash: b5ad6321a41c84928cbc6f8c51c4f5fe3567410f
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 23066339ffcb0b8b3c7885ad24c6c3d136629ab2
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51262025"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55700010"
 ---
 # <a name="azure-devtest-labs-faq"></a>Nejčastější dotazy k Azure DevTest Labs
 Získejte odpovědi na některé nejběžnější otázky o Azure DevTest Labs.
@@ -58,14 +58,14 @@ DevTest Labs je bezplatná služba. Vytváření testovacích prostředí a konf
 ## <a name="what-are-the-different-security-levels-in-devtest-labs"></a>Co jsou úrovně zabezpečení ve službě DevTest Labs?
 Zabezpečení přístupu se určuje podle [řízení přístupu na základě Role (RBAC)](../role-based-access-control/built-in-roles.md). Informace o tom, jak funguje přístup, pomáhá další rozdíly mezi oprávnění, role a obor, jak jsou definovány pomocí RBAC.
 
-* **Oprávnění**: oprávnění je definované přístup k určité akce. Oprávnění může být například přístup pro čtení pro všechny virtuální počítače.
-* **Role**: role je sadu oprávnění, které mohou být seskupeny a přiřazená uživateli. Například uživatel s rolí vlastník předplatného má přístup ke všem prostředkům v rámci předplatného.
-* **Obor**: obor je úroveň v hierarchii k prostředku Azure. Obor může být například skupinu prostředků, jednoho testovacího prostředí nebo celé předplatné.
+* **Oprávnění**: Oprávnění je definované přístup k určité akce. Oprávnění může být například přístup pro čtení pro všechny virtuální počítače.
+* **Role**: Role je sadu oprávnění, které mohou být seskupeny a přiřazená uživateli. Například uživatel s rolí vlastník předplatného má přístup ke všem prostředkům v rámci předplatného.
+* **Obor**: Obor je úroveň v hierarchii k prostředku Azure. Obor může být například skupinu prostředků, jednoho testovacího prostředí nebo celé předplatné.
 
 V rámci oboru DevTest Labs existují dva typy rolí, které definují uživatelská oprávnění:
 
-* **Vlastník testovacího prostředí**: vlastník testovacího prostředí má přístup ke všem prostředkům v testovacím prostředí. Vlastník testovacího prostředí můžete upravovat zásady, čtení a zápis pro všechny virtuální počítače, změnit virtuální síť a podobně.
-* **Uživatele testovacího prostředí**: uživatele testovacího prostředí můžete zobrazit všechny prostředky testovacího prostředí, jako jsou virtuální počítače, zásady a virtuální sítě. Ale uživatele testovacího prostředí nelze změnit zásady nebo všechny virtuální počítače, které byly vytvořené jinými uživateli. 
+* **Vlastník testovacího prostředí**: Vlastník testovacího prostředí má přístup ke všem prostředkům v testovacím prostředí. Vlastník testovacího prostředí můžete upravovat zásady, čtení a zápis pro všechny virtuální počítače, změnit virtuální síť a podobně.
+* **Uživatele testovacího prostředí**: Uživatele testovacího prostředí můžete zobrazit všechny prostředky testovacího prostředí, jako jsou virtuální počítače, zásady a virtuální sítě. Ale uživatele testovacího prostředí nelze změnit zásady nebo všechny virtuální počítače, které byly vytvořené jinými uživateli. 
 
 Můžete také vytvořit vlastní role ve službě DevTest Labs. Zjistěte, jak vytvořit vlastní role ve službě DevTest Labs, najdete v článku [udělení uživatelských oprávnění na určitém laboratorním zásady](devtest-lab-grant-user-permissions-to-specific-lab-policies.md).
 
@@ -227,7 +227,7 @@ Jednou z možností je, že váš název virtuální sítě obsahuje období. Po
 ## <a name="why-do-i-get-a-parent-resource-not-found-error-when-i-provision-a-vm-from-powershell"></a>Proč se při zřizování virtuálního počítače z prostředí PowerShell získat chybu "Nadřazený prostředek nebyl nalezen"?
 Pokud jeden prostředek je nadřazený objekt na jiný prostředek, musí existovat nadřazený prostředek vytvořit podřízený prostředek. Pokud se nadřazený prostředek neexistuje, zobrazí se **ParentResourceNotFound** zprávy. Pokud nezadáte závislost na nadřazený prostředek, podřízený prostředek může být nasazena nadřazeného objektu.
 
-Virtuální počítače jsou podřízené prostředky v rámci testovacího prostředí ve skupině prostředků. Při použití šablon Resource Manageru k nasazení virtuálních počítačů pomocí Powershellu, název skupiny prostředků, které jsou k dispozici v skriptu prostředí PowerShell by měl být název skupiny prostředků testovacího prostředí. Další informace najdete v tématu [řešení potíží s běžnými chybami nasazení Azure](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-common-deployment-errors#parentresourcenotfound).
+Virtuální počítače jsou podřízené prostředky v rámci testovacího prostředí ve skupině prostředků. Při použití šablon Resource Manageru k nasazení virtuálních počítačů pomocí Powershellu, název skupiny prostředků, které jsou k dispozici v skriptu prostředí PowerShell by měl být název skupiny prostředků testovacího prostředí. Další informace najdete v tématu [řešení potíží s běžnými chybami nasazení Azure](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-common-deployment-errors).
 
 ## <a name="where-can-i-find-more-error-information-if-a-vm-deployment-fails"></a>Kde najdu Další informace o chybě, pokud se nezdaří nasazení virtuálního počítače?
 Chyby nasazení virtuálního počítače zachyceny v protokolech aktivit. Testovací prostředí můžete najít protokoly aktivit virtuálního počítače v části **protokoly auditu** nebo **Diagnostika virtuálního počítače** v nabídce prostředků v okně virtuálního počítače testovacího prostředí (v okně se zobrazí po výběru virtuálního počítače z **Můj virtuální počítače** seznamu).

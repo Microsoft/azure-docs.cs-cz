@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/04/2018
 ms.author: juluk
-ms.openlocfilehash: 606b36be4a2bbeff8dd226f41341d60e23f0d988
-ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
+ms.openlocfilehash: 4671287d78dafce9b662a167ba99a680d2fa70d2
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44163273"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55734071"
 ---
 [!INCLUDE [PersistingStorage-introblock](../../includes/cloud-shell-persisting-shell-storage-introblock.md)]
 
@@ -105,5 +105,5 @@ Sdílené složky Azure, který je připojený k službě Cloud Shell v každém
 ## <a name="next-steps"></a>Další postup
 [Bash v Cloud Shellu Quickstart](quickstart.md) <br>
 [Prostředí PowerShell ve službě Cloud Shell Quickstart](quickstart-powershell.md) <br>
-[Další informace o Microsoft Azure Files storage](https://docs.microsoft.com/azure/storage/storage-introduction#file-storage) <br>
+[Další informace o Microsoft Azure Files storage](https://docs.microsoft.com/azure/storage/storage-introduction) <br>
 [Další informace o značkách úložiště](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags) <br>

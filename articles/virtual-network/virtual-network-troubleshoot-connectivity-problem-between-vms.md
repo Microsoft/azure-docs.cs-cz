@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/30/2018
 ms.author: genli
-ms.openlocfilehash: 7574ac1a5937fbe963ef764d42f04d00f6c02d69
-ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
+ms.openlocfilehash: fc3d6ab1d7fdf05963d9ecd350deccd940a95b87
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50241765"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55732511"
 ---
 # <a name="troubleshooting-connectivity-problems-between-azure-vms"></a>Řešení potíží s připojením mezi virtuálními počítači Azure
 
@@ -65,15 +65,15 @@ Další informace najdete v tématu [síťová rozhraní pro přidání nebo ode
 - [Opětovné nasazení virtuálního počítače Windows](../virtual-machines/windows/redeploy-to-new-node.md)
 - [Opětovné nasazení virtuálního počítače s Linuxem](../virtual-machines/linux/redeploy-to-new-node.md)
 
-### <a name="step-2-check-whether-network-traffic-is-blocked-by-nsg-or-udr"></a>Krok 2: Kontrola, zda síťový provoz blokuje skupina zabezpečení sítě nebo UDR
+### <a name="step-2-check-whether-network-traffic-is-blocked-by-nsg-or-udr"></a>Krok 2: Zkontrolujte, zda síťový provoz blokuje skupina zabezpečení sítě nebo UDR
 
 Použití [ověření toku protokolu IP sítě sledovacích procesů](../network-watcher/network-watcher-ip-flow-verify-overview.md) a [protokolování toků NSG](../network-watcher/network-watcher-nsg-flow-logging-overview.md) k určení, zda je skupina zabezpečení sítě (NSG) nebo uživatelem definované trasy (UDR) který je v konfliktu s tokem provozu.
 
-### <a name="step-3-check-whether-network-traffic-is-blocked-by-vm-firewall"></a>Krok 3: Kontrola, zda síťový provoz je blokován bránou firewall virtuálního počítače
+### <a name="step-3-check-whether-network-traffic-is-blocked-by-vm-firewall"></a>Krok 3: Zkontrolujte, zda síťový provoz je blokován bránou firewall virtuálního počítače
 
 Zakázat bránu firewall a pak výsledek testu. Pokud se problém nevyřeší, zkontrolujte nastavení brány firewall a potom znovu povolit bránu firewall.
 
-### <a name="step-4-check-whether-vm-app-or-service-is-listening-on-the-port"></a>Krok 4: Kontrola, jestli virtuální počítač aplikace nebo služba naslouchá na portu
+### <a name="step-4-check-whether-vm-app-or-service-is-listening-on-the-port"></a>Krok 4: Zkontrolujte, zda virtuální počítač aplikace nebo služba naslouchá na portu
 
 Chcete-li zkontrolovat, jestli virtuální počítač aplikace nebo služba naslouchá na portu můžete použít jednu z následujících metod.
 
@@ -95,19 +95,19 @@ V některých případech je virtuální počítač umístěn za řešení vyrov
 
 ### <a name="step-6-check-whether-traffic-is-blocked-by-acls-for-the-classic-vm"></a>Krok 6: Zkontrolujte, zda seznamy ACL blokovány přenosy pro klasický virtuální počítač
 
-Seznam řízení přístupu (ACL) umožňuje selektivně povolovat nebo zamítat provoz pro koncový bod virtuálního počítače. Další informace najdete v tématu [spravovat seznam ACL v koncovém bodě](../virtual-machines/windows/classic/setup-endpoints.md#manage-the-acl-on-an-endpoint).
+Seznam řízení přístupu (ACL) umožňuje selektivně povolovat nebo zamítat provoz pro koncový bod virtuálního počítače. Další informace najdete v tématu [spravovat seznam ACL v koncovém bodě](/previous-versions/azure/virtual-machines/windows/classic/setup-endpoints#manage-the-acl-on-an-endpoint).
 
 ### <a name="step-7-check-whether-the-endpoint-is-created-for-the-classic-vm"></a>Krok 7: Zkontrolujte, zda je koncový bod vytvořen pro klasický virtuální počítač
 
 Všechny virtuální počítače, které vytvoříte v Azure s použitím modelu nasazení classic můžou automaticky komunikovat prostřednictvím kanálu privátní sítě s jinými virtuálními počítači ve stejné cloudové službě nebo virtuální síti. Ale v jiných sítích virtuálních počítačů vyžadují koncové body pro přesměrování příchozí síťový provoz do virtuálního počítače. Další informace najdete v tématu [jak nastavit koncové body](../virtual-machines/windows/classic/setup-endpoints.md).
 
-### <a name="step-8-try-to-connect-to-a-vm-network-share"></a>Krok 8: Zkuste se připojit ke sdílení sítě virtuálních počítačů
+### <a name="step-8-try-to-connect-to-a-vm-network-share"></a>Krok 8: Pokuste se připojit ke sdílení sítě virtuálních počítačů
 
 Pokud se nemůžete připojit ke sdílení sítě virtuálních počítačů, problém může být způsobeno není k dispozici síťových adaptérů ve virtuálním počítači. Odstranit síťové karty není k dispozici, najdete v článku [odstranění není k dispozici síťové karty](../virtual-machines/troubleshooting/reset-network-interface.md#delete-the-unavailable-nics)
 
-### <a name="step-9-check-inter-vnet-connectivity"></a>Krok 9: Kontrola sítěmi připojení
+### <a name="step-9-check-inter-vnet-connectivity"></a>Krok 9: Zkontrolujte připojení sítěmi
 
 Použití [ověření toku protokolu IP sítě sledovacích procesů](../network-watcher/network-watcher-ip-flow-verify-overview.md) a [protokolování toků NSG](../network-watcher/network-watcher-nsg-flow-logging-overview.md) k určení, zda je skupina zabezpečení sítě nebo UDR, který je v konfliktu s tokem provozu. Můžete si taky ověřit konfiguraci sítěmi [tady](https://support.microsoft.com/en-us/help/4032151/configuring-and-validating-vnet-or-vpn-connections).
 
-### <a name="need-help-contact-support"></a>Potřebujete pomoct? Obraťte se na podporu.
+### <a name="need-help-contact-support"></a>Potřebujete pomoc? Kontaktujte podporu.
 Pokud stále potřebujete pomoc, [obraťte se na podporu](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) pro rychlé vyřešení problému.

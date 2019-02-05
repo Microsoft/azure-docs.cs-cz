@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 10/11/2018
 ms.author: raynew
-ms.openlocfilehash: 6e15d4376fae576f615cac7c094f53dfcc22618e
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: 76af79cc9ef1ebea30b30a291f451b7b0a4f3ba6
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54826611"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55694478"
 ---
 # <a name="contoso-migration-rehost-an-on-premises-app-on-an-azure-vm-and-sql-database-managed-instance"></a>Migrace Contoso: Změna hostitele aplikace on-premises na virtuálním počítači Azure a SQL Database, spravované Instance
 
@@ -173,7 +173,7 @@ Contoso potřebuje nastavit Azure SQL Database Managed Instance, podsíť, kter�
 - Podsíť musí obsahovat tabulku uživatelem definované trasy směrování (UDR). By měla být přiřazena pouze trasy 0.0.0.0/0 směrování Internetu. 
 - Volitelné vlastní server DNS: Pokud vlastní DNS je zadána ve službě Azure virtual network, Azure rekurzivní překladače IP adresu (například adresy 168.63.129.16) musí být přidaný do seznamu. Zjistěte, jak [konfigurace vlastního DNS pro spravovanou instanci](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-custom-dns).
 - Podsítě nesmí mít koncový bod služby (storage nebo SQL) s ním spojená. Koncové body služby je třeba zakázat ve virtuální síti.
-- Podsíť musí mít minimálně 16 IP adres. Zjistěte, jak [velikost podsíť Managed Instance](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-vnet-configuration#determine-the-size-of-subnet-for-managed-instances).
+- Podsíť musí mít minimálně 16 IP adres. Zjistěte, jak [velikost podsíť Managed Instance](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-vnet-configuration).
 - V hybridním prostředí společnosti Contoso jsou vyžadovány vlastní nastavení služby DNS. Contoso nakonfiguruje nastavení DNS použít jeden nebo více serverů Azure DNS vaší společnosti. Další informace o [DNS přizpůsobení](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-custom-dns).
 
 ### <a name="set-up-a-virtual-network-for-the-managed-instance"></a>Nastavení virtuální sítě pro Managed Instance
@@ -207,7 +207,7 @@ Správce společnosti Contoso ve virtuální síti wmm nastavit takto:
 *Potřebujete další pomoc?*
 
 - Získejte přehled o [SQL Database Managed Instance](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance).
-- Zjistěte, jak [vytvoření virtuální sítě pro SQL Database Managed Instance](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-vnet-configuration#create-a-new-virtual-network-for-managed-instances).
+- Zjistěte, jak [vytvoření virtuální sítě pro SQL Database Managed Instance](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-vnet-configuration).
 - Zjistěte, jak [nastavení partnerského vztahu](https://docs.microsoft.com/azure/virtual-network/virtual-network-manage-peering).
 - Zjistěte, jak [aktualizace nastavení DNS služby Azure Active Directory](https://docs.microsoft.com/azure/active-directory-domain-services/active-directory-ds-getting-started-dns).
 
@@ -609,7 +609,7 @@ Bezpečnostní tým Contoso kontroly virtuálních počítačů Azure a SQL Data
 
      ![Managed Instance zabezpečení – detekce hrozeb](./media/contoso-migration-rehost-vm-sql-managed-instance/mi-security.png)  
 
-Další informace o postupech zabezpečení pro virtuální počítače najdete v tématu [osvědčené postupy zabezpečení pro úlohy IaaS v Azure](https://docs.microsoft.com/azure/security/azure-security-best-practices-vms#vm-authentication-and-access-control).
+Další informace o postupech zabezpečení pro virtuální počítače najdete v tématu [osvědčené postupy zabezpečení pro úlohy IaaS v Azure](https://docs.microsoft.com/azure/security/azure-security-best-practices-vms).
 
 ### <a name="bcdr"></a>BCDR
 

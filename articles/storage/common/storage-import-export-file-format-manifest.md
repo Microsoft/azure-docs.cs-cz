@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 01/23/2017
 ms.author: muralikk
 ms.subservice: common
-ms.openlocfilehash: 831286f1c98a2fc3d26277f4006283c3de64f900
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: ee53cc3a639a79e1b29ac6cd537bfb04e05b1bca
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55463238"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55692472"
 ---
 # <a name="azure-importexport-service-manifest-file-format"></a>Formát souborů manifestu služby Azure Import/Export
 Soubor manifestu jednotky popisuje mapování mezi objekty BLOB ve službě Azure Blob storage a souborů na jednotce, která obsahuje úlohu importu nebo exportu. Operace importu souboru manifestu je vytvořen jako součást procesu přípravy jednotky a je uložená na disku před odesláním jednotky datového centra Azure. Během operace exportu se manifest vytvoří a uloží na disk pomocí služby Azure Import/Export.  
@@ -97,7 +97,7 @@ Datové prvky a atributy ve formátu jednotka manifestu XML jsou uvedeny v násl
 |`Drive`|Vnořené – XML element|Obsahuje manifest pro každou jednotku.|  
 |`DriveId`|String|Identifikátor jedinečný jednotky pro jednotku. Identifikátor disku najdete pomocí dotazu na jednotce z důvodu jeho sériového čísla. Sériové číslo jednotky je obvykle vytištěno na straně mimo i na jednotce. `DriveID` Elementu musí být uvedena před jakoukoli `BlobList` element v souboru manifestu.|  
 |`StorageAccountKey`|String|Vyžadováno pro import úlohách Pokud a pouze v případě `ContainerSas` není zadán. Klíč účtu pro účet úložiště Azure přidruženou k úloze.<br /><br /> Tento element je vynecháno z manifestu pro operace exportu.|  
-|`ContainerSas`|String|Vyžadováno pro import úlohách Pokud a pouze v případě `StorageAccountKey` není zadán. Kontejner SAS pro přístup k objektům BLOB přidruženou k úloze. Zobrazit [úlohy umístit](/rest/api/storageimportexport/jobs#Jobs_CreateOrUpdate) pro jeho formát. Tento element je vynecháno z manifestu pro operace exportu.|  
+|`ContainerSas`|String|Vyžadováno pro import úlohách Pokud a pouze v případě `StorageAccountKey` není zadán. Kontejner SAS pro přístup k objektům BLOB přidruženou k úloze. Zobrazit [úlohy umístit](/rest/api/storageimportexport/jobs) pro jeho formát. Tento element je vynecháno z manifestu pro operace exportu.|  
 |`ClientCreator`|String|Určuje klienta, který vytvořil XML soubor. Tato hodnota není interpretována služby Import/Export.|  
 |`BlobList`|Vnořené – XML element|Obsahuje seznam objektů BLOB, které jsou součástí import nebo export úloh. Každý objekt blob v seznamu objektů blob sdílí stejné metadat a vlastností.|  
 |`BlobList/MetadataPath`|String|Volitelné. Určuje relativní cestu souboru na disku, který obsahuje výchozí metadata, která bude nastavena na objekty BLOB v seznamu objektů blob pro operaci importu. Tato metadata lze volitelně můžete přepsat na základě objektů blob pomocí objektů blob.<br /><br /> Tento element je vynecháno z manifestu pro operace exportu.|  

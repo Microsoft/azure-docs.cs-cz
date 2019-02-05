@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/11/2018
 ms.author: cherylmc
-ms.openlocfilehash: 6aedfa3f0ef65fdb1b663db8637b648e685e31be
-ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
+ms.openlocfilehash: 0482dfd5b7b09d5e66fb830caae654be3242a916
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53321473"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55694071"
 ---
 # <a name="configure-a-point-to-site-connection-by-using-certificate-authentication-classic"></a>Konfigurace připojení typu Point-to-Site s použitím ověření certifikátu (classic)
 
@@ -290,7 +290,7 @@ Po dokončení aktualizace už nebude možné certifikát použít k připojení
 
 ## <a name="next-steps"></a>Další postup
 
-- Po dokončení připojení můžete přidat virtuální počítače k virtuálním sítím. Další informace najdete v tématu [Virtuální počítače](https://docs.microsoft.com/azure/#pivot=services&panel=Compute). 
+- Po dokončení připojení můžete přidat virtuální počítače k virtuálním sítím. Další informace najdete v tématu [Virtuální počítače](https://docs.microsoft.com/azure/). 
 
 - Informace o sítích a virtuálních počítačů s Linuxem najdete v tématu [přehled sítě Azure a virtuální počítač s Linuxem](../virtual-machines/linux/network-overview.md).
 

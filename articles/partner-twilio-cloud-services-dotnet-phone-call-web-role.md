@@ -14,12 +14,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 05/04/2016
 ms.author: jeconnoc
-ms.openlocfilehash: e7cf7518a20f1901e3347350f090c9a8588a7a7c
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.openlocfilehash: c41057203da949e371f62332e938feb92e84534f
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52422911"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55699672"
 ---
 # <a name="how-to-make-a-phone-call-using-twilio-in-a-web-role-on-azure"></a>Jak telefonování pomocí Twilio ve webové roli v Azure
 Tato příručka ukazuje, jak se k volání z webové stránky hostované v Azure použít Twilio. Výsledné aplikace vyzve uživatele k volání daného čísla, zpráva, ujistěte se, jak je znázorněno na následujícím snímku obrazovky.
@@ -34,7 +34,7 @@ Budete muset následujícím postupem použít kód v tomto tématu:
 
 Měli byste se seznámit s vytvářením základní [webová Role na Azure][azure_webroles_get_started].
 
-## <a name="howtocreateform"></a>Postupy: vytvoření webového formuláře pro volání
+## <a name="howtocreateform"></a>Jak: Vytvoří webový formulář pro volání
 <a id="use_nuget"></a>Chcete-li přidat Twilio knihovny do projektu webové role:
 
 1. Otevřete řešení v sadě Visual Studio.
@@ -70,7 +70,7 @@ Následující kód ukazuje, jak vytvořit webový formulář data uživatele pr
 </asp:Content>
 ```
 
-## <a id="howtocreatecode"></a>Postupy: vytvoření kódu pro volání
+## <a id="howtocreatecode"></a>Jak: Vytvoření kódu pro volání
 Následující kód, který se volá, když uživatel vykoná formulář, vytvoří zprávu volání a vygeneruje volání. V tomto příkladu je kód spuštěn v obslužné rutině události onclick tlačítka na formuláři. (Použití vašeho účtu Twilio a ověřování tokenem místo zástupné hodnoty přiřazené `accountSID` a `authToken` v následujícím kódu.)
 
 ```csharp
@@ -96,7 +96,7 @@ namespace WebRole1
 
         protected void callpage_Click(object sender, EventArgs e)
         {
-            // Call porcessing happens here.
+            // Call processing happens here.
 
             // Use your account SID and authentication token instead of
             // the placeholders shown here.

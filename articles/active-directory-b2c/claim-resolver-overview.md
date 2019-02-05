@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 01/25/2019
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: 99498646a65865add35ec4a86cb7a25b42dd5523
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 44ac4a5fd14d262fdbd1f6fcd36bb2351d08f754
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55162187"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55692438"
 ---
 # <a name="about-claim-resolvers-in-azure-active-directory-b2c-custom-policies"></a>O překladače deklarace identity v Azure Active Directory B2C vlastních zásad
 

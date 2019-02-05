@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: reference
 ms.date: 09/17/2018
 ms.author: pbutlerm
-ms.openlocfilehash: a778723093b226ee0e681c2a95ce4db597a310e5
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: c09816d45169ce9bb6c926b8b17b075ea1059ec7
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55198992"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55695368"
 ---
 # <a name="saas-sell-through-azure---apis"></a>Zákazník SaaS pomocí Azure – rozhraní API
 
@@ -176,21 +176,21 @@ Akce POST na vyřešit koncový bod umožňuje uživatelům vyřešit token trva
 
 *Text odpovědi*
 
- ``` json       
-    { 
-        “id”: “”, 
-        “subscriptionName”: “”,
-        “offerId”:””, 
-         “planId”:””
-    }     
+``` json
+{
+    "id": "",
+    "subscriptionName": "",
+    "offerId": "",
+    "planId": "",
+}
 ```
 
 | **Název parametru** | **Datový typ** | **Popis**                       |
 |--------------------|---------------|---------------------------------------|
-| id                 | Řetězec        | ID předplatného SaaS.          |
-| subscriptionName| Řetězec| Název předplatného SaaS nastavena podle uživatele v Azure při přihlášení k odběru ve službě SaaS.|
-| OfferId            | Řetězec        | ID nabídky, který uživatel přihlášen k odběru. |
-| planId             | Řetězec        | ID plánu, který uživatel přihlášen k odběru.  |
+| id                 | String        | ID předplatného SaaS.          |
+| subscriptionName| String| Název předplatného SaaS nastavena podle uživatele v Azure při přihlášení k odběru ve službě SaaS.|
+| OfferId            | String        | ID nabídky, který uživatel přihlášen k odběru. |
+| planId             | String        | ID plánu, který uživatel přihlášen k odběru.  |
 |  |  |  |
 
 
@@ -246,9 +246,9 @@ Koncový bod přihlásit k odběru umožňuje uživatelům spustit předplatné 
 *Text*
 
 ``` json
-  { 
-      “planId”:””
-   }      
+{
+    "lanId": "",
+}
 ```
 
 | **Název elementu** | **Datový typ** | **Popis**                      |
@@ -307,15 +307,13 @@ Změna koncového bodu mu umožní převést jejich aktuálně předplacenému p
 | Autorizace           | Ano          | JSON web token (JWT) nosný token.                    |
 |  |  |  |
 
-
 *Text*
 
-``` json
-                { 
-                    “planId”:””
-                } 
+```json
+{
+    "planId": ""
+}
 ```
-
 
 |  **Název elementu** |  **Datový typ**  | **Popis**                              |
 |  ---------------- | -------------   | --------------------------------------       |
@@ -370,7 +368,6 @@ Akce odstranění na koncovém bodu přihlásit k odběru umožňuje uživateli 
 | x-ms-correlationid | Ne           | Jedinečnou hodnotu řetězce pro operaci na straně klienta. Tato hodnota je pro korelaci všech událostí z operace klienta s událostmi na straně serveru. Pokud není zadáno, jeden se vygeneruje a k dispozici v hlavičkách odpovědi. |
 | Autorizace      | Ano          | JSON web token (JWT) nosný token.                    |
 |  |  |  |
- 
 
 *Kódy odpovědí*
 
@@ -413,7 +410,6 @@ Tento koncový bod umožňuje uživateli sledovat stav aktivovaných asynchronn�
 | verze API-version         | Verze operace pro tento požadavek. |
 |  |  |
 
-
 *Hlavičky*
 
 | **Klíč hlavičky**     | **Požadováno** | **Popis**                                                                                                                                                                                                                  |
@@ -422,25 +418,24 @@ Tento koncový bod umožňuje uživateli sledovat stav aktivovaných asynchronn�
 | x-ms-correlationid | Ne           | Jedinečnou hodnotu řetězce pro operaci na straně klienta. Tato hodnota je pro korelaci všech událostí z operace klienta s událostmi na straně serveru. Pokud tuto hodnotu nezadáte, jeden se vygeneruje a k dispozici v hlavičkách odpovědi.  |
 | Autorizace      | Ano          | JSON web token (JWT) nosný token.                    |
 |  |  |  | 
-  
 
 *Text odpovědi*
 
-``` json
-  { 
-      “id”: “”, 
-      “status”:””, 
-       “resourceLocation”:””, 
-      “created”:””, 
-      “lastModified”:”” 
-  } 
+```json
+{
+    "id": "",
+    "status": "",
+    "resourceLocation": "",
+    "created": "",
+    "lastModified": ""
+}
 ```
 
 | **Název parametru** | **Datový typ** | **Popis**                                                                                                                                               |
 |--------------------|---------------|-------------------------------------------------------------------------------------------|
-| id                 | Řetězec        | ID operace.                                                                      |
+| id                 | String        | ID operace.                                                                      |
 | status             | Výčet          | Stav operace, jednu z následujících: `In Progress`, `Succeeded`, nebo `Failed`.          |
-| resourceLocation   | Řetězec        | Propojit s předplatným, které vytvořil nebo změnil. To pomáhá klientům získat aktualizovaný stav operace post. Tato hodnota není nastavená pro `Unsubscribe` operace. |
+| resourceLocation   | String        | Propojit s předplatným, které vytvořil nebo změnil. To pomáhá klientům získat aktualizovaný stav operace post. Tato hodnota není nastavená pro `Unsubscribe` operace. |
 | vytvořené            | DateTime      | Operace vytvoření čas ve standardu UTC.                                                           |
 | lastModified       | DateTime      | Poslední aktualizace na operaci ve standardu UTC.                                                      |
 |  |  |  |
@@ -494,23 +489,23 @@ Přihlášení k odběru akce Get na koncový bod umožňuje uživateli získat 
 
 *Text odpovědi*
 
-``` json
-  { 
-      “id”: “”, 
-      “saasSubscriptionName”:””, 
-      “offerId”:””, 
-       “planId”:””, 
-      “saasSubscriptionStatus”:””, 
-      “created”:””, 
-      “lastModified”: “” 
-  }
+```json
+{
+    "id": "",
+    "saasSubscriptionName": "",
+    "offerId": "",
+    "planId": "",
+    "saasSubscriptionStatus": "",
+    "created": "",
+    "lastModified": ""
+}
 ```
 | **Název parametru**     | **Datový typ** | **Popis**                               |
 |------------------------|---------------|-----------------------------------------------|
-| id                     | Řetězec        | Prostředek předplatného ID SaaS v Azure.    |
-| offerId                | Řetězec        | ID nabídky, který uživatel přihlášen k odběru.         |
-| planId                 | Řetězec        | ID plánu, který uživatel přihlášen k odběru.          |
-| saasSubscriptionName   | Řetězec        | Název předplatného SaaS.                |
+| id                     | String        | Prostředek předplatného ID SaaS v Azure.    |
+| offerId                | String        | ID nabídky, který uživatel přihlášen k odběru.         |
+| planId                 | String        | ID plánu, který uživatel přihlášen k odběru.          |
+| saasSubscriptionName   | String        | Název předplatného SaaS.                |
 | saasSubscriptionStatus | Výčet          | Stav operace.  Jeden z následujících akcí:  <br/> - `Subscribed`: Je předplatné aktivní.  <br/> - `Pending`: Uživatel vytvoří prostředek služby, ale nebude aktivní nezávislí.   <br/> - `Unsubscribed`: Uživatel má zrušili.   <br/> - `Suspended`: Uživatel pozastavil předplatné.   <br/> - `Deactivated`:  Předplatné Azure je pozastaveno.  |
 | vytvořené                | DateTime      | Hodnotu časové razítko vytvoření předplatného ve standardu UTC. |
 | lastModified           | DateTime      | Předplatné změnit hodnotu časové razítko ve formátu UTC. |
@@ -539,7 +534,6 @@ Přihlášení k odběru akce Get na koncový bod umožňuje uživateli získat 
 | značka eTag               | Ano          | Propojit k prostředku získat stav operace.                                                        |
 |  |  |  |
 
-
 ### <a name="get-subscriptions"></a>Získat předplatná
 
 Akce Get na koncový bod předplatná umožňuje uživateli získat všechna předplatná pro všechny nabídky z ISV.
@@ -564,27 +558,26 @@ Akce Get na koncový bod předplatná umožňuje uživateli získat všechna př
 | Autorizace      | Ano          | JSON web token (JWT) nosný token.                    |
 |  |  |  |
 
-
 *Text odpovědi*
 
-``` json
-  { 
-      “id”: “”, 
-      “saasSubscriptionName”:””, 
-      “offerId”:””, 
-       “planId”:””, 
-      “saasSubscriptionStatus”:””, 
-      “created”:””, 
-      “lastModified”: “”
-  }
+```json
+{
+    "id": "",
+    "saasSubscriptionName": "",
+    "offerId": "",
+    "planId": "",
+    "saasSubscriptionStatus": "",
+    "created": "",
+    "lastModified": ""
+}
 ```
 
 | **Název parametru**     | **Datový typ** | **Popis**                               |
 |------------------------|---------------|-----------------------------------------------|
-| id                     | Řetězec        | Prostředek předplatného ID SaaS v Azure.    |
-| offerId                | Řetězec        | ID nabídky, který uživatel přihlášen k odběru.         |
-| planId                 | Řetězec        | ID plánu, který uživatel přihlášen k odběru.          |
-| saasSubscriptionName   | Řetězec        | Název předplatného SaaS.                |
+| id                     | String        | Prostředek předplatného ID SaaS v Azure.    |
+| offerId                | String        | ID nabídky, který uživatel přihlášen k odběru.         |
+| planId                 | String        | ID plánu, který uživatel přihlášen k odběru.          |
+| saasSubscriptionName   | String        | Název předplatného SaaS.                |
 | saasSubscriptionStatus | Výčet          | Stav operace.  Jeden z následujících akcí:  <br/> - `Subscribed`: Je předplatné aktivní.  <br/> - `Pending`: Uživatel vytvoří prostředek služby, ale nebude aktivní nezávislí.   <br/> - `Unsubscribed`: Uživatel má zrušili.   <br/> - `Suspended`: Uživatel pozastavil předplatné.   <br/> - `Deactivated`:  Předplatné Azure je pozastaveno.  |
 | vytvořené                | DateTime      | Hodnotu časové razítko vytvoření předplatného ve standardu UTC. |
 | lastModified           | DateTime      | Předplatné změnit hodnotu časové razítko ve formátu UTC. |
@@ -616,7 +609,6 @@ Akce Get na koncový bod předplatná umožňuje uživateli získat všechna př
 
 SaaS webhook se používá pro oznamování změn aktivně ve službě SaaS. Toto rozhraní API příspěvku má neověřené a zavolá se službou společnosti Microsoft. Očekává se, že služba SaaS volají operace rozhraní API k ověření a autorizaci před provedením akce na oznámení webhooku. 
 
-
 *Text*
 
 ``` json
@@ -634,12 +626,12 @@ SaaS webhook se používá pro oznamování změn aktivně ve službě SaaS. Tot
 
 | **Název parametru**     | **Datový typ** | **Popis**                               |
 |------------------------|---------------|-----------------------------------------------|
-| id  | Řetězec       | Jedinečné ID pro operaci aktivuje.                |
-| activityId   | Řetězec        | Jedinečnou hodnotu řetězce pro sledování žádosti ze služby. Používá se pro všechny odsouhlasení.               |
-| subscriptionId                     | Řetězec        | Prostředek předplatného ID SaaS v Azure.    |
-| offerId                | Řetězec        | ID nabídky, který uživatel přihlášen k odběru. K dispozici pouze s akcí "Úpravy".        |
-| publisherId                | Řetězec        | ID vydavatele dané nabídky SaaS         |
-| planId                 | Řetězec        | ID plánu, který uživatel přihlášen k odběru. K dispozici pouze s akcí "Úpravy".          |
-| action                 | Řetězec        | Akce, která se aktivuje toto oznámení. Možné hodnoty - aktivovat, odstranit, pozastavit, obnovit, aktualizace          |
-| Časové razítko                 | Řetězec        | Hodnota časového razítka ve standardu UTC, kdy tato upozornění byla aktivována.          |
+| id  | String       | Jedinečné ID pro operaci aktivuje.                |
+| activityId   | String        | Jedinečnou hodnotu řetězce pro sledování žádosti ze služby. Používá se pro všechny odsouhlasení.               |
+| subscriptionId                     | String        | Prostředek předplatného ID SaaS v Azure.    |
+| offerId                | String        | ID nabídky, který uživatel přihlášen k odběru. K dispozici pouze s akcí "Úpravy".        |
+| publisherId                | String        | ID vydavatele dané nabídky SaaS         |
+| planId                 | String        | ID plánu, který uživatel přihlášen k odběru. K dispozici pouze s akcí "Úpravy".          |
+| action                 | String        | Akce, která se aktivuje toto oznámení. Možné hodnoty - aktivovat, odstranit, pozastavit, obnovit, aktualizace          |
+| Časové razítko                 | String        | Hodnota časového razítka ve standardu UTC, kdy tato upozornění byla aktivována.          |
 |  |  |  |

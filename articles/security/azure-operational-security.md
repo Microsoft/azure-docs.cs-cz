@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: TomSh
-ms.openlocfilehash: c7d8ab8beced055d10cebcecf36d957b155c63b7
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: aafa1acdf6cca58ea0cfbc968f73ce13eb65bf91
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51256217"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55700498"
 ---
 # <a name="azure-operational-security"></a>Provozní zabezpečení Azure
 ## <a name="introduction"></a>Úvod
@@ -29,7 +29,7 @@ Víme, že je zabezpečení stavbách v cloudu a jak důležité je, že zjistí
 
 Abychom zákazníkům lépe pochopili škálu kontrolních mechanismů pro zabezpečení implementovaná v rámci Microsoft Azure z obou zákazníka a Microsoft provozní perspektivy, tento dokument white paper, "Provozní zabezpečení Azure", je zapsán, která poskytuje komplexní Podívejte se na provozní zabezpečení přináší Windows Azure.
 
-### <a name="azure-platform"></a>Platforma Azure
+### <a name="azure-platform"></a>Azure Platform
 Azure je platforma služby veřejného cloudu, který podporuje širokou škálu operačních systémů, programovacích jazyků, architektur, nástrojů, databází a zařízení. Může probíhat kontejnery Linuxu s integrací Dockeru; Vytvářejte aplikace pomocí jazyka JavaScript, Python, .NET, PHP, Java a Node.js, Tvořte back EndY pro iOS, Android a Windows zařízení. Cloudovou službu Azure podporuje technologie miliony vývojářů a IT profesionály už spoléhají a kterým důvěřují.
 
 Při sestavení nebo migraci prostředků IT k, poskytovatele služeb veřejného cloudu jste závislí na schopnosti této organizace chránit vaše aplikace a data se službami a ovládací prvky poskytují ke správě zabezpečení vašich cloudových prostředků.
@@ -135,31 +135,31 @@ Security Center shromažďuje data z vašich virtuálních počítačů za úče
 
 - Azure Security Center analyzuje data z následujících zdrojů a poskytuje přehled o stavu vašeho zabezpečení, zjišťuje ohrožení zabezpečení a doporučuje způsoby zmírnění rizik a detekuje aktivní hrozby:
 
--   Služby Azure: Využívá informace o konfiguraci služeb Azure, které máte nasazené, tím, že komunikuje s poskytovatelem prostředků pro příslušnou službu.
+-   Služby Azure: Na základě informací o konfiguraci služeb Azure, které máte nasazené, tím, že komunikuje s poskytovatelem prostředků pro danou službu.
 
-- Síťový provoz: Využívá vzorkovaná metadata síťového provozu z infrastruktury společnosti Microsoft, jako je třeba zdrojová a cílová IP adresa/port, velikost paketu nebo síťový protokol.
+- Síťový provoz: Využívá Vzorkovaná metadata síťového provozu z infrastruktury společnosti Microsoft, například zdrojovou a cílovou adresu IP/port, velikost paketu nebo síťový protokol.
 
--   Partnerská řešení: Využívá výstrahy zabezpečení ze všech integrovaných partnerských řešení, jako jsou třeba brány firewall a antimalwarová řešení.
+-   Partnerská řešení: Využívá výstrahy zabezpečení z integrovaných partnerských řešení, jako jsou brány firewall a antimalwarová řešení.
 
--   Virtuální počítače: Využívá z vašich virtuálních počítačů konfigurační informace a informace o událostech zabezpečení, jako jsou třeba protokoly událostí a auditů systému Windows, protokoly IIS, zprávy syslog a soubory se stavem systému.
+-   Virtuální počítače: Využívá informace o konfiguraci a informace o událostech zabezpečení, jako jsou protokoly událostí a auditů Windows, protokoly služby IIS, zprávy syslog a soubory se stavem systému z vašich virtuálních počítačů.
 
 ### <a name="data-protection"></a>Ochrana dat
 
 Služba Azure Security Center pomáhá zákazníkům předcházet hrozbám, detekovat je a reagovat na ně tím, že shromažďuje a zpracovává data související se zabezpečením, včetně informací o konfiguraci, metadat, protokolů událostí, souborů se stavem systému a dalších dat. Společnost Microsoft dodržuje přísné pokyny pro dodržování předpisů a zabezpečení – od psaní kódu po provoz služeb.
 
--   **Oddělení dat**: Data se v rámci služby ukládají logicky oddělená pro jednotlivé komponenty. Všechna data jsou označená podle organizace. Toto značení přetrvává v průběhu celého životního cyklu dat a je vyžadováno na každé úrovni služby.
+-   **Oddělení dat**: Data se ukládají logicky oddělená pro jednotlivé komponenty v rámci služby. Všechna data jsou označená podle organizace. Toto značení přetrvává v průběhu celého životního cyklu dat a je vyžadováno na každé úrovni služby.
 
--   **Přístup k datům**: K poskytování doporučení zabezpečení a prošetřovat potenciální ohrožení zabezpečení, mají pracovníci společnosti Microsoft přístup k informacím o shromážděných nebo analyzovaným službami Azure, včetně souborů se stavem systému, zpracování události vytváření disku virtuálního počítače snímky a artefakty, které mohou náhodně zahrnovat zákaznických dat ani osobní data z vašich virtuálních počítačů. Dodržujeme [Microsoft Online Services podmínky a prohlášení o zásadách](http://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=31), která stanoví, že společnost Microsoft použije zákaznická Data nebo získávání informací pro reklamní nebo podobné obchodní účely.
+-   **Přístup k datům**: K poskytování doporučení zabezpečení a prošetřovat potenciální ohrožení zabezpečení, mají pracovníci společnosti Microsoft přístup k informacím o shromážděných nebo analyzovaným službami Azure, včetně souborů se stavem systému, zpracování události vytváření snímků disku virtuálního počítače a artefakty, které mohou náhodně zahrnovat informace zákaznických dat ani osobní data z vašich virtuálních počítačů. Dodržujeme [Microsoft Online Services podmínky a prohlášení o zásadách](http://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=31), která stanoví, že společnost Microsoft použije zákaznická Data nebo získávání informací pro reklamní nebo podobné obchodní účely.
 
--   **Použití dat**: Společnost Microsoft vylepšuje své schopnosti prevence a detekce pomocí schémat a analýzy hrozeb napříč několika klienty. Činíme tak v souladu se závazky k ochraně osobních údajů popsanými v našem [Prohlášení o zásadách ochrany osobních údajů](https://www.microsoft.com/en-us/privacystatement/OnlineServices/).
+-   **Za využívání dat**: Společnost Microsoft používá vzory a analýzy hrozeb napříč několika klienty k vylepšení našich schopnosti prevence a detekce; uděláme v souladu se závazky ochrany osobních údajů je popsáno v našem [prohlášení o zásadách](https://www.microsoft.com/en-us/privacystatement/OnlineServices/).
 
 ### <a name="data-location"></a>Umístění dat
 
 Azure Security Center shromažďuje dočasné kopie souborů se stavem systému a analyzuje je za účelem detekce stop pokusů o napadení zabezpečení, neúspěšných i úspěšných. Azure Security Center provádí tuto analýzu v rámci stejné geografie jako pracovní prostor a po dokončení analýzy tyto dočasné kopie odstraní. Artefakty počítačů se ukládají centrálně ve stejné oblasti jako virtuální počítač.
 
--   **Vaše účty úložiště**: pro každou oblast, ve kterém jsou spuštěné virtuální počítače je určen účet úložiště. To umožňuje ukládání dat v oblasti, kde se nachází virtuální počítač, ze kterého data jsou shromažďována.
+-   **Vaše účty úložiště**: Pro každou oblast, ve kterém jsou spuštěné virtuální počítače je určen účet úložiště. To umožňuje ukládání dat v oblasti, kde se nachází virtuální počítač, ze kterého data jsou shromažďována.
 
--   **Azure Security Center Storage**: Informace o výstrahách zabezpečení, včetně partnerských výstrah, doporučení a stavu zabezpečení, se ukládají centrálně (v současnosti v USA). Tyto informace mohou podle potřeby zahrnovat související údaje o konfiguraci a událostech zabezpečení shromažďované z virtuálních počítačů, a to za účelem poskytování výstrah zabezpečení, doporučení nebo informací o stavu zabezpečení.
+-   **Azure Security Center Storage**: Informace o výstrahách zabezpečení, včetně partnerských výstrah, doporučení a stavu zabezpečení se ukládají centrálně, aktuálně ve Spojených státech. Tyto informace mohou podle potřeby zahrnovat související údaje o konfiguraci a událostech zabezpečení shromažďované z virtuálních počítačů, a to za účelem poskytování výstrah zabezpečení, doporučení nebo informací o stavu zabezpečení.
 
 
 ## <a name="azure-monitor"></a>Azure Monitor
@@ -218,7 +218,7 @@ To je funkce v Azure, která umožňuje shromažďování diagnostických dat v 
 
 Auditování zabezpečení sítě je důležité pro zjištění ohrožení zabezpečení sítě a zajištění dodržování předpisů, zabezpečení IT a model dodržování zásad správného řízení. Pomocí zobrazení skupin zabezpečení můžete pak získat nakonfigurovanou skupinu zabezpečení sítě a pravidel zabezpečení a platná pravidla zabezpečení. Pomocí seznamu pravidla platila můžete určit porty, které jsou otevřené a posouzení ohrožení zabezpečení sítě.
 
-[Network Watcher](https://docs.microsoft.com/azure/network-watcher/network-watcher-monitoring-overview#network-watcher) je místní služba, která umožňuje monitorovat a diagnostikovat podmínky na úrovni síťového v, do a z Azure. Pro diagnostiku sítě a vizualizačních nástrojů, které jsou k dispozici pomocí služby Network Watcher pomáhají porozumět, diagnostice a získání přehledu o vaší síti v Azure. Tato služba zahrnuje zachycení paketu, další směrování, IP tok ověřit, zobrazení skupin zabezpečení, protokoly toků NSG. Scénář úrovně monitorování poskytuje komplexní přehled síťové prostředky, na rozdíl od sledování jednotlivých síťových prostředků.
+[Network Watcher](https://docs.microsoft.com/azure/network-watcher/network-watcher-monitoring-overview) je místní služba, která umožňuje monitorovat a diagnostikovat podmínky na úrovni síťového v, do a z Azure. Pro diagnostiku sítě a vizualizačních nástrojů, které jsou k dispozici pomocí služby Network Watcher pomáhají porozumět, diagnostice a získání přehledu o vaší síti v Azure. Tato služba zahrnuje zachycení paketu, další směrování, IP tok ověřit, zobrazení skupin zabezpečení, protokoly toků NSG. Scénář úrovně monitorování poskytuje komplexní přehled síťové prostředky, na rozdíl od sledování jednotlivých síťových prostředků.
 
 ![Azure Network Watcher](./media/azure-operational-security/azure-operational-security-fig8.png)
 

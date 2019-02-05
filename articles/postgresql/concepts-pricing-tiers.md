@@ -5,13 +5,13 @@ author: jan-eng
 ms.author: janeng
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 01/15/2019
-ms.openlocfilehash: 49c9d908970425165fcdd76171c20ab65454f42a
-ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
+ms.date: 02/01/2019
+ms.openlocfilehash: 8cc7d7d93f483289ab7faa3f5a7193fc218b57bc
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2019
-ms.locfileid: "54318572"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55695023"
 ---
 # <a name="azure-database-for-postgresql-pricing-tiers"></a>Azure Database for PostgreSQL cenové úrovně
 
@@ -129,5 +129,5 @@ Nejnovější informace o cenách najdete v článku Služba [stránce s cenami]
 ## <a name="next-steps"></a>Další postup
 
 - Zjistěte, jak [vytvoříte PostgreSQL server na portálu](tutorial-design-database-using-azure-portal.md).
-- Zjistěte, jak [monitorování a škálování serveru Azure Database for PostgreSQL pomocí Azure CLI](scripts/sample-scale-server-up-or-down.md).
-- Další informace o [služby omezení](concepts-limits.md). 
+- Další informace o [omezení služby](concepts-limits.md). 
+- Zjistěte, jak [horizontální navýšení kapacity s čtení replik](howto-read-replicas-portal.md).

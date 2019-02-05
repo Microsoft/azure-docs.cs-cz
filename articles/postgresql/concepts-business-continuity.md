@@ -5,13 +5,13 @@ author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 02/28/2018
-ms.openlocfilehash: c8c62f6a80cf06e3444c4c3efd9979e723dcf488
-ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
+ms.date: 02/01/2019
+ms.openlocfilehash: b1d566ac571ddd2b2be3aff160f669e277887209
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53559038"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55698213"
 ---
 # <a name="overview-of-business-continuity-with-azure-database-for-postgresql"></a>Přehled kontinuity se službou Azure Database for PostgreSQL
 
@@ -49,6 +49,6 @@ Další možností je používat Azure Database for PostgreSQL geografické obno
 > Geografické obnovení je možné, pouze pokud jste zřídili serveru pomocí geograficky redundantního úložiště záloh. Pokud chcete přepnout z místně redundantní na geograficky redundantní zálohy existujícího serveru, musí přijímat jako výpis s daty pomocí pg_dump existující server a obnovit ji na nově vytvořený nakonfigurovanou geograficky redundantní zálohy.
 
 ## <a name="next-steps"></a>Další postup
-- Další informace o automatizovaných záloh najdete v tématu [záloh ve službě Azure Database for PostgreSQL](concepts-backup.md). 
-- Obnovení do bodu v čase pomocí webu Azure portal, najdete v článku [obnovit databázi do bodu v čase pomocí webu Azure portal](howto-restore-server-portal.md).
-- Obnovení do bodu v čase pomocí Azure CLI, najdete v článku [obnovit databázi do bodu v čase s použitím rozhraní příkazového řádku](howto-restore-server-cli.md).
+- Další informace o [automatické zálohování ve službě Azure Database for PostgreSQL](concepts-backup.md). 
+- Zjistěte, jak provést obnovení pomocí [na webu Azure portal](howto-restore-server-portal.md) nebo [rozhraní příkazového řádku Azure](howto-restore-server-cli.md).
+- Další informace o [čtení replik ve službě Azure Database for PostgreSQL](concepts-read-replicas.md).

@@ -10,12 +10,12 @@ ms.topic: article
 ms.custom: seodec18
 ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: c75d4404cb0892c3d90261af2fb4982ac84041c4
-ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
+ms.openlocfilehash: 7281e6bb2dda5dc3fddb5f39bf271293ebb88a73
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53163782"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55732007"
 ---
 # <a name="send-events-to-azure-event-hubs-using-nodejs"></a>Odesílání událostí do služby Azure Event Hubs pomocí Node.js
 
@@ -44,7 +44,7 @@ Naklonujte ukázkové úložiště Git ze [Githubu](https://github.com/Azure/azu
 ## <a name="install-nodejs-package"></a>Nainstalujte balíček Node.js
 Nainstalujte balíček Node.js pro Azure Event Hubs na svém počítači. 
 
-```nodejs
+```shell
 npm install @azure/event-hubs
 ```
 
@@ -59,13 +59,13 @@ Sady SDK, které jste naklonovali obsahuje několik ukázek, které ukazují, ja
 3. Nakonfigurujte připojovací řetězec centra událostí, název centra událostí a koncový bod úložiště. Připojovací řetězec můžete zkopírovat z centra událostí **připojovací řetězec – primární** klíč **RootManageSharedAccessKey** na stránce centra událostí na webu Azure Portal. Podrobné pokyny najdete v článku [získání připojovacího řetězce](event-hubs-create.md#create-an-event-hubs-namespace).
 4. Přejděte na svém rozhraní příkazového řádku Azure **klienta** cesta ke složce. Instalace balíčků uzlu a sestavte projekt spuštěním následujících příkazů:
 
-    ```nodejs
+    ```shell
     npm i
     npm run build
     ```
 5. Zahájit odesílání událostí spuštěním následujícího příkazu: 
 
-    ```nodejs
+    ```shell
     node dist/examples/simpleSender.js
     ```
 
@@ -74,7 +74,7 @@ Sady SDK, které jste naklonovali obsahuje několik ukázek, které ukazují, ja
 Tady je ukázkový kód pro odesílání událostí do centra událostí pomocí node.js. Můžete ručně vytvořit soubor sampleSender.js a spusťte ho k odesílání událostí do centra událostí. 
 
 
-```nodejs
+```javascript
 const { EventHubClient, EventPosition } = require('@azure/event-hubs');
 
 const client = EventHubClient.createFromConnectionString(process.env["EVENTHUB_CONNECTION_STRING"], process.env["EVENTHUB_NAME"]);
@@ -95,7 +95,7 @@ main().catch((err) => {
 
 Nezapomeňte nastavit proměnné prostředí před spuštěním skriptu. Můžete nastavit tuto konfiguraci na příkazovém řádku, jak je znázorněno v následujícím příkladu, nebo použít [dotenv balíčku](https://www.npmjs.com/package/dotenv#dotenv). 
 
-```
+```shell
 // For windows
 set EVENTHUB_CONNECTION_STRING="<your-connection-string>"
 set EVENTHUB_NAME="<your-event-hub-name>"

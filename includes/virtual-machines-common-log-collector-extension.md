@@ -4,12 +4,12 @@ ms.service: virtual-machines
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: cynthn
-ms.openlocfilehash: 52e1a7bf3e8f8770e4ba4f931c4d7427a7362f2f
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.openlocfilehash: 2ed9d9fd020bb14db7e1d171a32c25239d7ee802
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50226955"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55736032"
 ---
 Diagnostika potíží s cloudovou službou Microsoft Azure vyžaduje shromažďování souborů protokolu služby na virtuálních počítačích problémy vedly. AzureLogCollector rozšíření na vyžádání můžete provádět jednorázové shromažďování protokolů z jednoho nebo více cloudové služby virtuálních počítačů (z webové role a role pracovního procesu) a jeho přenosu shromážděných souborů do účtu služby Azure storage – vše bez vzdálené přihlášení k libovolné virtuálních počítačů.
 
@@ -31,9 +31,9 @@ Existují dva režimy kolekce závisí na typy souborů, které se mají shroma�
 
 V obou režimech kolekce se dá nastavit složky shromažďování dalších dat pomocí kolekce následující strukturu:
 
-* **Název**: název kolekce, použít jako název podsložky v souboru zip s shromážděných souborů.
-* **Umístění**: cesta ke složce ve virtuálním počítači, kde jsou uložené soubory, které se mají shromažďovat.
-* **SearchPattern**: vzor názvů souborů, které se mají shromažďovat. Výchozí hodnota je "\*"
+* **Název**: Název kolekce, použít jako název podsložky v souboru zip s shromážděných souborů.
+* **Umístění**: Cesta ke složce ve virtuálním počítači, kde jsou uložené soubory, které se mají shromažďovat.
+* **SearchPattern**: Vzor názvů souborů, které se mají shromažďovat. Výchozí hodnota je "\*"
 * **Rekurzivní**: Pokud jsou soubory se mají shromažďovat rekurzivně nachází v rámci zadané umístění.
 
 ## <a name="prerequisites"></a>Požadavky
@@ -174,14 +174,14 @@ param (
 )
 ```
 
-* **ServiceName**: název vaší cloudové služby.
-* **Role**: seznam rolí, jako je například "WebRole1" nebo "WorkerRole1".
-* **Instance**: seznam názvů instancí role, které jsou oddělené čárkou – použít zástupný znak řetězec ("*") pro všechny instance rolí.
-* **Slot**: název slotu. "Produkční" nebo "Pracovní".
-* **Režim**: režim kolekce. "Úplné" nebo "GA".
-* **StorageAccountName**: Azure název účtu úložiště pro ukládání shromážděných dat.
-* **StorageAccountKey**: název Azure klíč účtu úložiště.
-* **AdditionalDataLocationList**: seznam následující strukturu:
+* **ServiceName**: Název vaší cloudové služby.
+* **role**: Seznam rolí, jako je například "WebRole1" nebo "WorkerRole1".
+* **Instance**: Seznam názvů instancí role, které jsou oddělené čárkou – použít zástupný znak řetězec ("*") pro všechny instance rolí.
+* **Slot**: Název slotu. "Produkční" nebo "Pracovní".
+* **Režim**: Režim kolekce. "Úplné" nebo "GA".
+* **StorageAccountName**: Název účtu úložiště Azure pro ukládání shromážděných dat
+* **StorageAccountKey**: Název klíče účtu úložiště Azure.
+* **AdditionalDataLocationList**: Seznam následující strukturu:
 
   ```powershell
   {
@@ -256,12 +256,12 @@ param (
 )
 ```
 
-* **ServiceName**: název vaší cloudové služby.
-* **VMName**: název virtuálního počítače.
-* **Režim**: režim kolekce. "Úplné" nebo "GA".
-* **StorageAccountName**: Azure název účtu úložiště pro ukládání shromážděných dat.
-* **StorageAccountKey**: název Azure klíč účtu úložiště.
-* **AdditionalDataLocationList**: seznam následující strukturu:
+* **ServiceName**: Název vaší cloudové služby.
+* **VMName**: Název virtuálního počítače.
+* **Režim**: Režim kolekce. "Úplné" nebo "GA".
+* **StorageAccountName**: Název účtu úložiště Azure pro ukládání shromážděných dat
+* **StorageAccountKey**: Název klíče účtu úložiště Azure.
+* **AdditionalDataLocationList**: Seznam následující strukturu:
 
   ```
   {
@@ -374,7 +374,7 @@ else
 }
 
 #
-#This is an optional step: generate a sasUri to the container so it can be shared with other people if nened
+#This is an optional step: generate a sasUri to the container so it can be shared with other people if needed.
 #
 $SasExpireTime = [DateTime]::Now.AddMinutes(120).ToString("o")
 $SasUri = New-AzureStorageContainerSASToken -ExpiryTime $ExpiryTime -FullUri -Name $ContainerName -Permission rl -Context $context
@@ -449,7 +449,7 @@ if ($AdditionDataLocationList -ne $null )
 #
 $publicConfigJSON = $publicConfig | ConvertTo-Json
 
-Write-Output "PublicConfigurtion is: \r\n$publicConfigJSON"
+Write-Output "PublicConfiguration is: \r\n$publicConfigJSON"
 
 #
 #we just provide a empty privateConfig object

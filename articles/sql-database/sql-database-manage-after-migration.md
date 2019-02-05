@@ -11,13 +11,13 @@ author: joesackmsft
 ms.author: josack
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 01/25/2019
-ms.openlocfilehash: a7b091fa02c7ab6eb56826ebc7487d7ca0691610
-ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
+ms.date: 02/04/2019
+ms.openlocfilehash: 79a7aad8cd747c3fdadcd0f7eec12d861f31fcc0
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55510869"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55730505"
 ---
 # <a name="new-dba-in-the-cloud--managing-your-database-in-azure-sql-database"></a>Nové DBA v cloudu – Správa vaší databáze ve službě Azure SQL Database
 
@@ -134,7 +134,7 @@ SQL Database můžete zapnout auditování sledovat události databáze. [Audito
 
 #### <a name="threat-detection"></a>Detekce hrozeb
 
-S [detekce hrozeb](sql-database-threat-detection.md), získáte možnost tak, aby fungoval na porušení zabezpečení nebo zásady auditování velmi snadno zjistit. Nemusíte být zabezpečení odborné vyřešit potenciální hrozby nebo narušení ve vašem systému. Detekce hrozeb má také některé integrované funkce, jako je detekce útoku prostřednictvím injektáže SQL. Útok prostřednictvím injektáže SQL při pokusu o alter nebo ohrozit zabezpečení dat a poměrně běžný způsob obecně napadení databázové aplikace. Detekce hrozeb služby SQL Database se spustí více sad algoritmů, které detekovat potenciální ohrožení zabezpečení a útoky prostřednictvím injektáže SQL, jakož i databáze neobvyklé vzory přístupu k (jako je například přístup z neobvyklého umístění nebo neznámého objektu zabezpečení). Vedoucí pracovníci pověření ochranou zabezpečení nebo jiné určené správci přijímání oznámení, pokud se zjistí ohrožení databáze. Každé upozornění obsahuje podrobnosti o podezřelé aktivitě a doporučení k dále zkoumat a zmírnit hrozby. Zjistěte, jak zapnout detekce hrozeb, najdete v tématech: [Povolení detekce hrozeb služby SQL Database](sql-database-security-tutorial.md#enable-security-features).
+S [detekce hrozeb](sql-database-threat-detection.md), získáte možnost tak, aby fungoval na porušení zabezpečení nebo zásady auditování velmi snadno zjistit. Nemusíte být zabezpečení odborné vyřešit potenciální hrozby nebo narušení ve vašem systému. Detekce hrozeb má také některé integrované funkce, jako je detekce útoku prostřednictvím injektáže SQL. Útok prostřednictvím injektáže SQL při pokusu o alter nebo ohrozit zabezpečení dat a poměrně běžný způsob obecně napadení databázové aplikace. Detekce hrozeb se spustí více sad algoritmů, které detekovat potenciální ohrožení zabezpečení a útoky prostřednictvím injektáže SQL, jakož i databáze neobvyklé vzory přístupu k (jako je například přístup z neobvyklého umístění nebo neznámého objektu zabezpečení). Vedoucí pracovníci pověření ochranou zabezpečení nebo jiné určené správci přijímání oznámení, pokud se zjistí ohrožení databáze. Každé upozornění obsahuje podrobnosti o podezřelé aktivitě a doporučení k dále zkoumat a zmírnit hrozby. Zjistěte, jak zapnout detekce hrozeb, najdete v tématech: [Povolit detekci hrozeb](sql-database-security-tutorial.md#enable-security-features).
 
 ### <a name="how-do-i-protect-my-data-in-general-on-sql-database"></a>Jak chránit svá data obecně pro službu SQL Database
 
@@ -220,7 +220,7 @@ S informace o výkonu dotazů můžete získat přizpůsobená doporučení pro 
 
 ### <a name="security-optimization"></a>Optimalizace zabezpečení
 
-SQL Database poskytuje užitečná doporučení zabezpečení a pomáhá vám zabezpečit vaše data a detekce hrozeb pro identifikaci a vyšetřování podezřelých databázových aktivitách, které mohou představovat potenciální vlákna do databáze. [Posouzení ohrožení zabezpečení SQL](sql-vulnerability-assessment.md) je databáze vyhledávání a vytváření sestav služby, která vám umožní monitorovat stav zabezpečení vašich databází ve velkém měřítku a identifikujte bezpečnostní rizika a odchylují směrný plán zabezpečení, které jste definovali. Po každé skenování je součástí přizpůsobený seznam praktické kroky a skripty pro nápravu a sestavu posouzení, které je možné, aby splňovaly požadavky na dodržování předpisů.
+SQL Database poskytuje užitečná doporučení zabezpečení a pomáhá vám zabezpečit vaše data a detekce hrozeb pro identifikaci a vyšetřování podezřelých databázových aktivitách, které mohou představovat potenciální vlákna do databáze. [Posouzení ohrožení zabezpečení](sql-vulnerability-assessment.md) je databáze vyhledávání a vytváření sestav služby, která vám umožní monitorovat stav zabezpečení vašich databází ve velkém měřítku a identifikujte bezpečnostní rizika a odchylují směrný plán zabezpečení, které jste definovali. Po každé skenování je součástí přizpůsobený seznam praktické kroky a skripty pro nápravu a sestavu posouzení, které je možné, aby splňovaly požadavky na dodržování předpisů.
 
 Pomocí Azure Security Center identifikuje bezpečnostní doporučení uvedená na panelu a použít je jediným kliknutím.
 

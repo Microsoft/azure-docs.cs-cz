@@ -14,18 +14,18 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 07/11/2017
 ms.author: barbkess
-ms.openlocfilehash: dac7e458339e24e0bb6663f4ff0d5e98bc814aad
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
+ms.openlocfilehash: 02c25490ba19521715b48dc7ec92861078332a48
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55658636"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55731780"
 ---
 # <a name="how-to-configure-password-single-sign-on-for-an-azure-ad-gallery-application"></a>Postup konfigurace hesel jednotného přihlašování pro aplikaci Galerie Azure AD
 
 Po přidání aplikace [Galerie aplikací Azure AD](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis), máte taky možnost výběru z jak chcete svým uživatelům se přihlásit k dané aplikaci. Tato volba kdykoli můžete nakonfigurovat tak, že vyberete **Single Sign-on** navigační položka na podnikové aplikace [webu Azure portal](https://portal.azure.com/).
 
-Jednotné přihlašování metody k dispozici, je [založené na heslech Single Sign-on](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis#how-does-single-sign-on-with-azure-active-directory-work) možnost. To je skvělý způsob, jak začít rychle integrace aplikací do služby Azure AD a umožňuje:
+Jednotné přihlašování metody k dispozici, je [založené na heslech Single Sign-on](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) možnost. To je skvělý způsob, jak začít rychle integrace aplikací do služby Azure AD a umožňuje:
 
 -   Povolit **jednotné přihlašování pro vaše uživatele** bezpečně ukládat a přehráním uživatelských jmen a hesel pro aplikaci jste integrovali se službou Azure AD
 
@@ -41,7 +41,7 @@ Jednotné přihlašování metody k dispozici, je [založené na heslech Single 
 
 -   Povolit **správce** k určení sdílené uživatelské jméno nebo heslo používané skupinou uživatelů pomocí přihlašovacích údajů pro aktualizace funkcí při [přiřazení skupiny k aplikaci](#assign-an-application-to-a-group-directly)
 
-Následující část popisuje, jak můžete zajistit [založené na heslech Single Sign-on](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis#how-does-single-sign-on-with-azure-active-directory-work) k aplikaci, která je již [Galerie aplikací Azure AD](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Následující část popisuje, jak můžete zajistit [založené na heslech Single Sign-on](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) k aplikaci, která je již [Galerie aplikací Azure AD](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 
 ## <a name="overview-of-steps-required"></a>Přehled kroků potřebných
 Konfigurace aplikace z Galerie Azure AD, které je potřeba:

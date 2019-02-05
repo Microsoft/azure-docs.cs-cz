@@ -9,12 +9,12 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: peterpr
-ms.openlocfilehash: c3b8f4f8188a6a28cca8b77f169a00657b11dfc5
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
-ms.translationtype: HT
+ms.openlocfilehash: 695050a46df4b208205ce394cc79db891803cfa4
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50154807"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55731525"
 ---
 # <a name="tutorial-add-a-real-device-to-your-azure-iot-central-application"></a>Kurz: Přidání skutečného zařízení do aplikace Azure IoT Central
 
@@ -109,9 +109,11 @@ Následující postup popisuje, jak připravit ukázku [Node.js](https://nodejs.
 
    Další informace o [nástroji příkazového řádku najdete zde](https://www.npmjs.com/package/dps-keygen).
 
-1. Z [GitHubu](https://github.com/Azure/dps-keygen/tree/master/bin) stáhněte nástroj dps_cstr a rozbalte ho (v případě Windows).
+1. Stáhněte a rozbalte nástroj dps_cstr z [Githubu] ((Windows)https://github.com/Azure/dps-keygen/archive/master.zip
 
-    Nezapomeňte zvolit verzi, která odpovídá vaší platformě. Pokud například používáte Windows, vaše složka by teď měla obsahovat soubory dll a dps_cstr.exe. 
+)
+
+    Make sure you choose the one that matches your platform. For example, on Windows the dps_cstr.exe and the dll files should be now available in your folder. 
 
 1. Připojovací řetězec pro instanci zařízení ve vaší aplikaci se vygeneruje z informací o zařízení, které poskytuje IoT Central.
 
@@ -353,7 +355,7 @@ V předchozí části jste vytvořili kostru projektu Node.js pro aplikaci, kter
 
     ![Teplotní telemetrie je nyní vyšší.](media/tutorial-add-device/highertemperature.png)
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 V tomto kurzu jste se naučili:
 

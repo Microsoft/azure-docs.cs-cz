@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 01/07/2019
 ms.author: barbkess
 ms.reviewer: japere
-ms.openlocfilehash: af605f4ad7c4167936a07f2ae8ffd3d2850cda75
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 643ef7f9960b2a91c88b4e13fe318748d175e036
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55185196"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55692698"
 ---
 # <a name="remote-access-to-on-premises-applications-through-azure-active-directorys-application-proxy"></a>Vzdálený přístup k místním aplikacím přes Azure Active Directory Application Proxy 
 
@@ -28,7 +28,7 @@ Proxy aplikací Azure AD je:
 
 - **Zabezpečení**. Prvků pro ověřování a analýzy zabezpečení Azure, můžete použít u místních aplikací. Například u místních aplikací můžete použít podmíněný přístup a dvoustupňové ověřování. Proxy aplikací není nutné otevřít příchozí připojení přes bránu firewall.
  
-- **Nákladově efektivní**. Místní řešení obvykle vyžadují, abyste nastavili a spravovali demilitarizovaná zóny (DMV), hraniční servery nebo jiné komplexní infrastruktury. Proxy aplikace běží v cloudu, což umožňuje snadno používá. Pokud chcete použít Proxy aplikace, nemusíte měnit síťovou infrastrukturu nebo instalaci dalších zařízení ve vašem místním prostředí.
+- **Nákladově efektivní**. Místní řešení obvykle vyžadují, abyste nastavili a spravovali demilitarizovaná zóny (zóny DMZ), hraniční servery nebo jiné komplexní infrastruktury. Proxy aplikace běží v cloudu, což umožňuje snadno používá. Pokud chcete použít Proxy aplikace, nemusíte měnit síťovou infrastrukturu nebo instalaci dalších zařízení ve vašem místním prostředí.
 
 ## <a name="what-is-application-proxy"></a>Co je Proxy aplikací?
 Proxy aplikací je funkce Azure AD, která umožňuje uživatelům přistupovat k místním webovým aplikacím ze vzdáleného klienta. Proxy aplikací zahrnuje službu Proxy aplikací, která běží v cloudu i konektor Proxy aplikací, které běží na místním serveru. Azure AD, Proxy aplikace služby a pracovní konektor Proxy aplikací dohromady a bezpečně předat token přihlašování uživatele ze služby Azure AD do webové aplikace.

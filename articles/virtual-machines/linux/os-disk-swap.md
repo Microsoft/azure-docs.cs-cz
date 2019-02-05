@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/24/2018
 ms.author: cynthn
-ms.openlocfilehash: 291bcec5a2a3d1ed2d49816b0ed7317bcfb07995
-ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
+ms.openlocfilehash: b17647a09c88491e2486046b1ca99ee277f0cc28
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54851852"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55700209"
 ---
 # <a name="change-the-os-disk-used-by-an-azure-vm-using-the-cli"></a>Změnit disk s operačním systémem používané Virtuálním počítači Azure pomocí rozhraní příkazového řádku
 
@@ -44,7 +44,7 @@ az disk list \
 ```
 
 
-Použití [az vm stop](/cli/azure/vm#stop) k stop\deallocate virtuální počítač před přechodem na discích.
+Použití [az vm stop](/cli/azure/vm) k stop\deallocate virtuální počítač před přechodem na discích.
 
 ```azurecli-interactive
 az vm stop \
@@ -62,7 +62,7 @@ az vm update \
    --os-disk /subscriptions/<subscription ID>/resourceGroups/swap/providers/Microsoft.Compute/disks/myDisk 
    ```
    
-Restartujte virtuální počítač pomocí [az vm start](/cli/azure/vm#start).
+Restartujte virtuální počítač pomocí [az vm start](/cli/azure/vm).
 
 ```azurecli-interactive
 az vm start \

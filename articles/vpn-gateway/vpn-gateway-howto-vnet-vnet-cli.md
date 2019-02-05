@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/14/2018
 ms.author: cherylmc
-ms.openlocfilehash: dda4f68046b81d96cfe92d5e8b09eab23df0003b
-ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
+ms.openlocfilehash: e26ae189b6b0bdcbfdcf225772cb3fd0361abca2
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54846301"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55698985"
 ---
 # <a name="configure-a-vnet-to-vnet-vpn-gateway-connection-using-azure-cli"></a>Konfigurace připojení brány VPN typu VNet-to-VNet pomocí Azure CLI
 
@@ -140,7 +140,7 @@ V příkladech používáme následující hodnoty:
   ```azurecli
   az network vnet create -n TestVNet1 -g TestRG1 --address-prefix 10.11.0.0/16 -l eastus --subnet-name FrontEnd --subnet-prefix 10.11.0.0/24
   ```
-3. Vytvořte další adresní prostor pro podsíť back-endu. Všimněte si, že v tomto kroku zadáváme jak adresní prostor, který jsme vytvořili dříve, tak i další adresní prostor, který chceme přidat. Důvodem je, že příkaz [az network vnet update](https://docs.microsoft.com/cli/azure/network/vnet#az_network_vnet_update) přepíše předchozí nastavení. Nezapomeňte při použití tohoto příkazu zadat všechny předpony adres.
+3. Vytvořte další adresní prostor pro podsíť back-endu. Všimněte si, že v tomto kroku zadáváme jak adresní prostor, který jsme vytvořili dříve, tak i další adresní prostor, který chceme přidat. Důvodem je, že příkaz [az network vnet update](https://docs.microsoft.com/cli/azure/network/vnet) přepíše předchozí nastavení. Nezapomeňte při použití tohoto příkazu zadat všechny předpony adres.
 
   ```azurecli
   az network vnet update -n TestVNet1 --address-prefixes 10.11.0.0/16 10.12.0.0/16 -g TestRG1
@@ -384,5 +384,5 @@ Vzhledem k tomu, že brány patří do různých předplatných, je tento krok r
 
 ## <a name="next-steps"></a>Další postup
 
-* Po dokončení připojení můžete do virtuálních sítí přidávat virtuální počítače. Další informace najdete v [dokumentaci ke službě Virtual Machines](https://docs.microsoft.com/azure/#pivot=services&panel=Compute).
+* Po dokončení připojení můžete do virtuálních sítí přidávat virtuální počítače. Další informace najdete v [dokumentaci ke službě Virtual Machines](https://docs.microsoft.com/azure/).
 * Informace o protokolu BGP najdete v tématech [Přehled protokolu BGP](vpn-gateway-bgp-overview.md) a [Postup při konfiguraci protokolu BGP](vpn-gateway-bgp-resource-manager-ps.md).

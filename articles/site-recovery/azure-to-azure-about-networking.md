@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 11/27/2018
 ms.author: sujayt
-ms.openlocfilehash: f48283222f5c5d3b18d3dba17c2856801856fb94
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: 49b5ef6b0dca32baaf05959cc29bb2a8024b6d04
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52992117"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55693985"
 ---
 # <a name="about-networking-in-azure-to-azure-replication"></a>O možnostech sítě v replikaci z Azure do Azure
 
@@ -29,11 +29,11 @@ Zjistěte, jak Site Recovery poskytuje zotavení po havárii pro [tento scéná�
 
 Následující diagram znázorňuje typickou prostředí Azure pro aplikace běžící na virtuálních počítačích Azure:
 
-![prostředí zákazníka](./media/site-recovery-azure-to-azure-architecture/source-environment.png)
+![customer-environment](./media/site-recovery-azure-to-azure-architecture/source-environment.png)
 
 Pokud používáte Azure ExpressRoute nebo VPN připojení z vaší místní sítě do Azure, prostředí vypadá takto:
 
-![prostředí zákazníka](./media/site-recovery-azure-to-azure-architecture/source-environment-expressroute.png)
+![customer-environment](./media/site-recovery-azure-to-azure-architecture/source-environment-expressroute.png)
 
 Obvykle sítě jsou chráněny pomocí brány firewall a skupin zabezpečení sítě (Nsg). Brány firewall pomocí adresy URL nebo na základě IP adresy na seznam povolených připojení k síti. Skupiny Nsg stanovit pravidla, které používají rozsahy IP adres k řízení síťového připojení.
 
@@ -99,7 +99,8 @@ Rozsahy adres IP pro obnovení lokality jsou následující:
    Jižní Korea – jih | 52.231.298.185 | 52.231.200.144
    Francie – střed | 52.143.138.106 | 52.143.136.55
    Francie – jih | 52.136.139.227 |52.136.136.62
-
+   Austrálie, střed| 20.36.34.70 | 20.36.46.142
+   Austrálie – střed 2| 20.36.69.62 | 20.36.74.130
 
 ## <a name="example-nsg-configuration"></a>Příklad konfigurace NSG
 
@@ -112,11 +113,11 @@ Tento příklad ukazuje postup při konfiguraci pravidla skupiny zabezpečení s
 
 1. Vytvořte odchozí pravidlo zabezpečení HTTPS (443) pro "Storage.EastUS" na skupiny zabezpečení sítě, jak je znázorněno v následujícím snímku obrazovky.
 
-      ![úložiště – značka](./media/azure-to-azure-about-networking/storage-tag.png)
+      ![storage-tag](./media/azure-to-azure-about-networking/storage-tag.png)
 
 2. Vytvořte odchozí pravidlo zabezpečení HTTPS (443) pro "AzureActiveDirectory" na skupiny zabezpečení sítě, jak je znázorněno v následujícím snímku obrazovky.
 
-      ![aad – značka](./media/azure-to-azure-about-networking/aad-tag.png)
+      ![aad-tag](./media/azure-to-azure-about-networking/aad-tag.png)
 
 3. Vytvořte odchozí pravidla HTTPS (443) pro obnovení lokality IP adres, odpovídající cílové umístění:
 

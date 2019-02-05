@@ -13,12 +13,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/23/2018
 ms.author: alkohli
-ms.openlocfilehash: aad5b2d2e451f33a3f4f365fa0702eef5d698e4e
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.openlocfilehash: 18853d10c4acf1573772d72a8fb2c347cce545df
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45729159"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55730164"
 ---
 # <a name="migrate-data-from-storsimple-5000-7000-series-to-azure-file-sync"></a>Migrovat data z StorSimple 5000 – 7000 series do Azure File Sync
 
@@ -56,8 +56,8 @@ Tady najdete požadavky migrace pro starší verze zařízení řady 5000 a 7000
 - Svazky zařízení StorSimple jsou připojené na hostiteli a obsahují sdílené složky.
 - Hostitel má dostatečnou místní úložiště pro uložení vašich dat místně uložených v mezipaměti.
 - Vlastník úroveň přístupu k předplatnému Azure, který použijete k nasazení služby Azure File Sync. Při vytváření koncového bodu cloudu pro vaši skupinu synchronizace, pokud máte vlastníka nebo oprávnění na úrovni správce, může docházet k problémům.
-- Přístup k [účet úložiště pro obecné účely v2](https://docs.microsoft.com/azure/storage/common/storage-account-overview) s sdílené složky Azure, který chcete synchronizovat. Další informace najdete v tématu [vytvořit účet úložiště](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account).
- - Jak [vytvořit sdílenou složku Azure](https://docs.microsoft.com/azure/storage/files/storage-how-to-create-file-share#create-file-share-through-the-azure-portal).
+- Přístup k [účet úložiště pro obecné účely v2](https://docs.microsoft.com/azure/storage/common/storage-account-overview) s sdílené složky Azure, který chcete synchronizovat. Další informace najdete v článku o [vytvoření účtu úložiště](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account).
+ - Jak [vytvořit sdílenou složku Azure](https://docs.microsoft.com/azure/storage/files/storage-how-to-create-file-share).
 
 ## <a name="migration-process"></a>Proces migrace
 
@@ -87,7 +87,7 @@ Proveďte následující kroky pro migraci Windows sdílené nakonfigurované na
     Tento krok přeskočit a přejít k dalšímu kroku, pokud používáte jiného hostitele Windows serveru. Pokud používáte stejný souborový Server Windows pro AFS, nastane nyní pár minut prostojů. 
     - **Výpadek nastane** – odstranit koncový bod serveru, který jste vytvořili v *krok 1F*. 
     - Vytvořte nový koncový bod serveru se cesta kde chcete data uložená směrem vpřed.
-    - Jakmile se koncový bod serveru se zobrazí jako v pořádku (to může trvat několik minut), zobrazí se data v tomto novém umístění. Teď můžete nakonfigurovat hostitele Windows serveru k poskytování souborů z tohoto nového umístění.\ -  **Výpadek skončí**.
+    - Jakmile se koncový bod serveru se zobrazí jako v pořádku (to může trvat několik minut), zobrazí se data v tomto novém umístění. Teď můžete nakonfigurovat hostitele Windows serveru k poskytování souborů z tohoto nového umístění. -  **Výpadek skončí**.
 5.  Pokud používáte jiný souborový Server Windows pro Azure File Sync, nebude docházet žádné výpadky. 
     - Přidáte jiný koncový bod serveru se cesta k místní úložiště, které jsou připravené k použití jako mezipaměť namísto zařízení StorSimple. 
     - Budete moci zobrazit soubory do nového serveru během několika minut. Můžete libovolně udělovat ulehčili přechod z vašeho zařízení StorSimple do tohoto nového umístění v hostiteli v každém okamžiku.

@@ -5,13 +5,13 @@ author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 01/23/2019
-ms.openlocfilehash: bf6e9947c21e5b07b2adc99de585c77444447c04
-ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
+ms.date: 02/01/2019
+ms.openlocfilehash: 37150f67e29dae0357c978cfaea9abeebeef428c
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/25/2019
-ms.locfileid: "54902651"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55691401"
 ---
 # <a name="how-to-create-and-manage-read-replicas-in-the-azure-portal"></a>Jak vytvořit a spravovat čtení replik na webu Azure Portal
 
@@ -141,7 +141,7 @@ Alternativně můžete odstranit z okna replikace.
 
 ## <a name="monitor-a-replica"></a>Monitorování replik
 ### <a name="max-lag-across-replicas"></a>Maximální prodleva mezi repliky
-**Maximální prodleva mezi repliky** metrika zobrazuje prodleva mezi hlavní a nejvíce obložení repliky. 
+**Maximální prodleva mezi repliky** metrika zobrazuje je zpoždění v bajtech mezi hlavní a nejvíce obložení repliky. 
 
 1.  Na webu Azure Portal, vyberte **hlavní** – Azure Database for PostgreSQL server.
 

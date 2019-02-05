@@ -16,12 +16,12 @@ ms.date: 01/24/2019
 ms.author: sethm
 ms.reviewer: justini
 ms.lastreviewed: 01/24/2019
-ms.openlocfilehash: c4dcf34ff113c4f1a6d7dcacbe598c453dbd63c3
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
+ms.openlocfilehash: a9cf502f169f4a9c4650545b1b37e11cc16a0a95
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55658228"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55694376"
 ---
 # <a name="azure-stack-1809-update"></a>Aktualizace služby Azure Stack 1809
 
@@ -135,7 +135,7 @@ Další informace o těchto ohrožení zabezpečení, klikněte na výše uveden
 
 ### <a name="prerequisites"></a>Požadavky
 
-- Instalace nejnovější opravy Hotfix Azure Stack. 1808 před použitím 1809. Další informace najdete v tématu [KB 4481066 – Azure Stack opravu Hotfix Azure Stack opravu Hotfix 1.1808.9.117](https://support.microsoft.com/help/4481066/). Společnost Microsoft doporučuje nejnovější dostupné opravy Hotfix, je minimální verze požadovaná k instalaci 1809 1.1808.5.110.
+- Instalace nejnovější opravy Hotfix Azure Stack. 1808 před použitím 1809. Další informace najdete v tématu [KB 4481066 – Azure Stack opravu Hotfix Azure Stack opravu Hotfix 1.1808.9.117](https://support.microsoft.com/help/4481066/). Společnost Microsoft doporučuje k dispozici nejnovější opravy Hotfix, je minimální verze požadovaná k instalaci 1809 1.1808.5.110.
 
   > [!TIP]  
   > Předplatit následující *RRS* nebo *Atom* kanály, držet krok s Azure Stack opravy hotfix:

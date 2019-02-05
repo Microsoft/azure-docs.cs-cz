@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/01/2019
 ms.author: bwren
-ms.openlocfilehash: 492e7cf466dd8019efe8617b67e9fa6b14f5b3c1
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
+ms.openlocfilehash: 8457334e00f7c8dfbaee75a12d6bb71b760e60d9
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55661659"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55696989"
 ---
 # <a name="configure-service-map-in-azure"></a>Konfigurace řešení Service Map v Azure
 Service Map automaticky rozpozná komponenty aplikace v systémech Windows a Linux a mapuje komunikaci mezi službami. Můžete ho zobrazit servery přirozeným způsobem – propojené systémy, které doručují důležité služby. Service Map ukazuje propojení mezi servery, procesy a porty v jakékoli architektuře propojené TCP žádnou konfiguraci kromě instalace agenta vyžaduje.
@@ -385,7 +385,7 @@ Pokud vaše instalace agenta závislostí proběhla úspěšně, ale nevidíte s
 **Windows:** Vyhledejte službu s názvem "Agent služby Microsoft Dependency."<br>
 **Linux:** Vyhledejte spuštěný proces "--agent služby microsoft dependency."
 
-* Se nacházíte [bezplatné cenové úrovni Operations Management Suite/Log Analytics](https://docs.microsoft.com/azure/log-analytics/log-analytics-add-solutions#offers-and-pricing-tiers)? Plán Free umožňuje až k pěti serverům jedinečné řešení Service Map. Všechny následující servery nezobrazí v Service Map, i v případě, že předchozí pět už odesílají data.
+* Se nacházíte [bezplatné cenové úrovni Operations Management Suite/Log Analytics](https://docs.microsoft.com/azure/log-analytics/log-analytics-add-solutions)? Plán Free umožňuje až k pěti serverům jedinečné řešení Service Map. Všechny následující servery nezobrazí v Service Map, i v případě, že předchozí pět už odesílají data.
 
 * Je odesílání protokolů serveru a data výkonu do Log Analytics? Přejděte na prohledávání protokolů a spusťte následující dotaz pro počítače: 
 

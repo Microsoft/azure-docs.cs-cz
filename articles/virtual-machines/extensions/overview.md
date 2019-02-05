@@ -1,6 +1,6 @@
 ---
 title: Funkce a rozšíření virtuálních počítačů Azure | Dokumentace Microsoftu
-description: Naučte se, jaké anre rozšíření virtuálního počítače Azure k použití s virtuálními počítači Azure
+description: Zjistěte, co jsou rozšíření virtuálních počítačů Azure a jak je používat s virtuálními počítači Azure
 services: virtual-machines-linux
 documentationcenter: ''
 author: roiyz-msft
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 03/30/2018
 ms.author: roiyz
-ms.openlocfilehash: 38f885cc230df6e0edb1e5b5254faf0cd519847a
-ms.sourcegitcommit: f31bfb398430ed7d66a85c7ca1f1cc9943656678
+ms.openlocfilehash: 1d092f03013d98106138f35734d960567121a5bf
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47451439"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55692709"
 ---
 # <a name="azure-virtual-machine-extensions-and-features"></a>Funkce a rozšíření virtuálních počítačů Azure
 Rozšíření virtuálních počítačů (VM) Azure jsou malých aplikací, které poskytují konfiguraci a automatizaci úloh po nasazení na virtuálních počítačích Azure, můžete použít existující Image a pak si je přizpůsobit, jako součást nasazení, začít z firmy vlastní vytváření bitové kopie.

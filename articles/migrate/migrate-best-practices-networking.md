@@ -7,12 +7,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 12/04/2018
 ms.author: raynew
-ms.openlocfilehash: 5cbe0c5e86a1dfd8cc3cb374f0ae7e1c67ae9d77
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: 302445038dc9767bd412e232f62fc5249a1a7f09
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54828294"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55696938"
 ---
 # <a name="best-practices-to-set-up-networking-for-workloads-migrated-to-azure"></a>Osvědčené postupy pro nastavení sítě pro úlohy migrovat do Azure
 
@@ -72,7 +72,7 @@ Zvažte použití těchto zdrojů:
 **Víc se uč:**
 
 - [Přečtěte si informace o](https://docs.microsoft.com/azure/architecture/reference-architectures/hybrid-networking/hub-spoke) hvězdicové topologii.
-- Získejte doporučení pro síť pro provoz Azure [Windows](https://docs.microsoft.com/azure/architecture/reference-architectures/n-tier/windows-vm#network-recommendations) a [Linux](https://docs.microsoft.com/azure/architecture/reference-architectures/n-tier/linux-vm#network-recommendations) virtuálních počítačů.
+- Získejte doporučení pro síť pro provoz Azure [Windows](https://docs.microsoft.com/azure/architecture/reference-architectures/n-tier/windows-vm) a [Linux](https://docs.microsoft.com/azure/architecture/reference-architectures/n-tier/linux-vm) virtuálních počítačů.
 - [Další informace o](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview) partnerský vztah virtuální sítě.
 
 

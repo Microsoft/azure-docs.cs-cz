@@ -9,12 +9,12 @@ ms.service: backup, virtual-machines-windows
 ms.topic: article
 ms.date: 12/17/2018
 ms.author: trinadhk
-ms.openlocfilehash: 4d942e21afbf1d87ab67d79e90119a4122d889da
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.openlocfilehash: c41f609786620c8b90d484813d675efcd667d1e1
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53632191"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55692626"
 ---
 # <a name="vm-snapshot-windows-extension-for-azure-backup"></a>Rozšíření Windows snímku virtuálního počítače pro službu Azure Backup
 
@@ -51,7 +51,7 @@ Následující kód JSON ukazuje schéma pro rozšíření snímku virtuálního
       "vmType": "microsoft.compute/virtualmachines"
     },
     "protectedSettings": {
-      "objectStr": "<blob SAS uri represenattion of VM sent by Azure Backup service to extension>",
+      "objectStr": "<blob SAS uri representation of VM sent by Azure Backup service to extension>",
       "logsBlobUri": "<blob uri where logs of command execution by extension are written to>",
       "statusBlobUri": "<blob uri where status of the command executed by extension is written>"
     }
@@ -64,7 +64,7 @@ Následující kód JSON ukazuje schéma pro rozšíření snímku virtuálního
 | Název | Hodnota / příklad | Typ dat |
 | ---- | ---- | ---- |
 | apiVersion | 2015-06-15 | date |
-| taskId | e07354cf 041e-4370-929f-25a319ce8933_1 | řetězec |
+| taskId | e07354cf-041e-4370-929f-25a319ce8933_1 | řetězec |
 | commandStartTimeUTCTicks | 6.36458E + 17 | řetězec |
 | národní prostředí | En-us | řetězec |
 | objectStr | Kódování sas uri pole-"blobSASUri": ["https:\/\/sopattna5365.blob.core.windows.net\/virtuální pevné disky\/vmwin1404ltsc201652903941.vhd? sv = 2014-02-14 & sr = b & sig = TywkROXL1zvhXcLujtCut8g3jTpgbE6JpSWRLZxAdtA % 3D & st = 2017-11-09T14 % 3A23 % 3A28Z & se = 2017-11-09T17 % 3A38 % 3A28Z & sp = rw "," protokol https:\/\/sopattna8461.blob.core.windows.net\/virtuálníchpevnýchdisků\/vmwin1404ltsc. 20160629 122418.vhd? sv = 2014-02-14 & sr = b & sig = 5S0A6YDWvVwqPAkzWXVy % 2BS 2FqMwzFMbamT5upwx05v8Q % 3D & st = 2017-11-09T14 % 3A23 % 3A28Z & se = 2017-11-09T17 % 3A38 % 3A28Z & sp = rw "," protokol https:\/ \/ sopattna8461.BLOB.Core.Windows.NET\/bootdiagnostics-vmwintu1-deb58392-ed5e-48be-9228-ff681b0cd3ee\/vmubuntu1404ltsc. 20160629 122541.vhd? sv = 2014-02-14 & sr = b & sig = X0Me2djByksBBMVXMGIUrcycvhQSfjYvqKLeRA7nBD4 % 3D & st = 2017-11-09T14 % 3A23 % 3A28Z & se = 2017-11-09T17 % 3A38 % 3A28Z & sp = rw "," protokol https:\/\/sopattna5365.blob.core.windows.net\/virtuálníchpevnýchdisků\/vmwin1404ltsc. 20160701 163922.vhd? sv = 2014-02-14 & sr = b & sig = oXvtK2IXCNqWv7fpjc7TAzFDpc1GoXtT7r % 2BC 2BNIAork % 3D & st = 2017-11-09T14 % 3A23 % 3A28Z & se = 2017-11-09T17 % 3A38 % 3A28Z & sp = rw "," protokol https:\/ \/ sopattna5365.BLOB.Core.Windows.NET\/virtuální pevné disky\/vmwin1404ltsc. 20170705 124311.vhd? sv = 2014-02-14 & sr = b & sig = ZUM9d28Mvvm % 2FfrhJ71TFZh0Ni90m38bBs3zMl 2FQ9rs0 % 3D & st = 2017-11-09T14 % 3A23 % 3A28Z & se = 2017-11-09T17 % 3A38 % 3A28Z & sp = rw "] | řetězec |

@@ -8,12 +8,12 @@ ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 11/26/2018
 ms.author: glenga
-ms.openlocfilehash: a0f66f5a1ba64c955fe0669d3ed215ee7c2895c0
-ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
+ms.openlocfilehash: 6e8142e391dd02e78be42e1f16ae2626b74c41c3
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52498393"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55734466"
 ---
 # <a name="how-to-target-azure-functions-runtime-versions"></a>Jak se zaměřit na verze modulu runtime Azure Functions
 
@@ -49,7 +49,7 @@ Můžete také zobrazit a nastavit `FUNCTIONS_EXTENSION_VERSION` z příkazovéh
 >[!NOTE]
 >Protože jiné nastavení může mít vliv na verzi modulu runtime, měli byste změnit verzi na portálu. Na portálu automaticky provede další potřebné aktualizace, jako je například Node.js verze a modulu runtime zásobníku při změně verze modulu runtime.  
 
-Pomocí Azure CLI, zobrazit aktuální verze modulu runtime s [az functionapp config appsettings set](/cli/azure/functionapp/config/appsettings#set) příkazu.
+Pomocí Azure CLI, zobrazit aktuální verze modulu runtime s [az functionapp config appsettings set](/cli/azure/functionapp/config/appsettings) příkazu.
 
 ```azurecli-interactive
 az functionapp config appsettings list --name <function_app> \
@@ -83,7 +83,7 @@ Zobrazí `FUNCTIONS_EXTENSION_VERSION` v následujícím výstupu, který byl zk
 ]
 ```
 
-Můžete aktualizovat `FUNCTIONS_EXTENSION_VERSION` nastavení aplikace function App s [az functionapp config appsettings set](/cli/azure/functionapp/config/appsettings#set) příkazu.
+Můžete aktualizovat `FUNCTIONS_EXTENSION_VERSION` nastavení aplikace function App s [az functionapp config appsettings set](/cli/azure/functionapp/config/appsettings) příkazu.
 
 ```azurecli-interactive
 az functionapp config appsettings set --name <function_app> \

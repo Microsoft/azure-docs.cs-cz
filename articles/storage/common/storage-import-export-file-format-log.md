@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 01/23/2017
 ms.author: muralikk
 ms.subservice: common
-ms.openlocfilehash: cd3ae85e88151e234d42a29ad871a18c7829b05c
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 00e226134039d29efd744290c4bc63abd50adc89
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55454840"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55697828"
 ---
 # <a name="azure-importexport-service-log-file-format"></a>Azure formát souborů protokolu služby Import/Export
 Když služba Microsoft Azure Import/Export provede akci na disk jako součást úlohy importu nebo úlohy exportu, protokoly se zapisují do bloku, objekty BLOB v účtu úložiště přidruženého k této úlohy.  
@@ -22,7 +22,7 @@ Existují dva protokoly, které jde zapsat pomocí služby Import/Export:
   
 -   V protokolu chyb je vždy generována v případě chyby.  
   
--   Podrobný protokol není ve výchozím nastavení povolené, ale může být povoleno tak, že nastavíte `EnableVerboseLog` vlastnosti [úlohy umístit](/rest/api/storageimportexport/jobs#Jobs_CreateOrUpdate) nebo [aktualizovat vlastnosti úlohy](/rest/api/storageimportexport/jobs#Jobs_Update) operace.  
+-   Podrobný protokol není ve výchozím nastavení povolené, ale může být povoleno tak, že nastavíte `EnableVerboseLog` vlastnosti [úlohy umístit](/rest/api/storageimportexport/jobs) nebo [aktualizovat vlastnosti úlohy](/rest/api/storageimportexport/jobs) operace.  
   
 ## <a name="log-file-location"></a>Umístění souboru protokolu  
 Protokoly se zapisují do objekty BLOB v kontejneru nebo virtuálního adresáře určeného bloku `ImportExportStatesPath` nastavení, které můžete nastavit na `Put Job` operace. Umístění, do kterého se protokoly zapisují závisí na způsobu ověřování určena pro úlohy, společně s hodnota zadaná pro `ImportExportStatesPath`. Ověřování úlohy je možné zadat pomocí klíče účtu úložiště nebo kontejneru sdílený přístupový podpis (SAS).  
@@ -38,7 +38,7 @@ Následující tabulka uvádí dostupné možnosti:
 |Sdíleného přístupového podpisu kontejneru|Výchozí hodnota|Virtuální adresář s názvem `waimportexport`, což je výchozí název, pod podle sdíleného přístupového podpisu kontejneru.<br /><br /> Například pokud SAS zadaný pro úlohy je `https://myaccount.blob.core.windows.net/mylogcontainer?sv=2012-02-12&se=2015-05-22T06%3A54%3A55Z&sr=c&sp=wl&sig=sigvalue`, pak by byl umístění protokolu `https://myaccount.blob.core.windows.net/mylogcontainer/waimportexport`|  
 |Sdíleného přístupového podpisu kontejneru|Uživatelem zadanou hodnotu|Virtuální adresář s názvem uživatelem pod podle sdíleného přístupového podpisu kontejneru.<br /><br /> Například pokud SAS zadaný pro úlohy je `https://myaccount.blob.core.windows.net/mylogcontainer?sv=2012-02-12&se=2015-05-22T06%3A54%3A55Z&sr=c&sp=wl&sig=sigvalue`, a je pojmenován zadaný virtuální adresář `mylogblobs`, by to být umístění protokolu `https://myaccount.blob.core.windows.net/mylogcontainer/waimportexport/mylogblobs`.|  
   
-Adresa URL pro chyby a podrobné protokoly můžete načíst pomocí volání [Get Job](/rest/api/storageimportexport/jobs#Jobs_CreateOrUpdate) operace. Po dokončení zpracování jednotky jsou k dispozici protokoly.  
+Adresa URL pro chyby a podrobné protokoly můžete načíst pomocí volání [Get Job](/rest/api/storageimportexport/jobs) operace. Po dokončení zpracování jednotky jsou k dispozici protokoly.  
   
 ## <a name="log-file-format"></a>Formát souboru protokolu  
 Formát pro oba protokoly je stejný: Objekt blob, který obsahuje XML popisy událostí, ke kterým došlo při kopírování objektů BLOB mezi pevného disku a účtu zákazníka.  

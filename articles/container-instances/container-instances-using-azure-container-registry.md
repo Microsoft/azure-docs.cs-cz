@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 01/04/2019
 ms.author: danlep
 ms.custom: mvc
-ms.openlocfilehash: 33cf6650de757f538dcefc858c94fa71b434ec80
-ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
+ms.openlocfilehash: f577a7dd9f517be6ab7b632a82227e4807862ba5
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/07/2019
-ms.locfileid: "54064640"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55727904"
 ---
 # <a name="deploy-to-azure-container-instances-from-azure-container-registry"></a>Nasazení do služby Azure Container Instances ze služby Azure Container Registry
 
@@ -29,7 +29,7 @@ ms.locfileid: "54064640"
 
 V každý produkční scénář, by měl být poskytuje přístup do služby Azure container registry pomocí [instanční](../container-registry/container-registry-auth-service-principal.md). Instanční objekty umožňují poskytovat [řízení přístupu na základě rolí](../container-registry/container-registry-roles.md) do imagí kontejnerů. Můžete například nakonfigurovat instanční objekt s přístupem k registru pouze ke čtení.
 
-V této části vytvoříte služby Azure key vault a hlavního názvu služby a uložení přihlašovacích údajů instančního objektu v trezoru.
+V následující části Vytvoření služby Azure key vault a hlavního názvu služby a uložení přihlašovacích údajů instančního objektu v trezoru. 
 
 ### <a name="create-key-vault"></a>Vytvoření trezoru klíčů
 
@@ -134,9 +134,11 @@ Podrobnosti k odkazování tajných kódů služby Azure Key Vault v šabloně R
 
 ## <a name="deploy-with-azure-portal"></a>Nasazení pomocí webu Azure portal
 
-Pokud je Správa imagí kontejnerů v Azure Container Registry, můžete snadno vytvořit kontejner ve službě Azure Container Instances pomocí webu Azure portal.
+Pokud je Správa imagí kontejnerů ve službě Azure container registry, můžete snadno vytvořit kontejner ve službě Azure Container Instances pomocí webu Azure portal. Během používání portálu nasadit instanci kontejneru z registru kontejneru, je nutné povolit v registru [účet správce](../container-registry/container-registry-authentication.md#admin-account). Účet správce je určená pro jednoho uživatele pro přístup k registru, především pro účely testování. 
 
 1. Na webu Azure Portal přejděte do vašeho registru kontejneru.
+
+1. Potvrďte, že je povoleno účet správce, vyberte **přístupové klíče**a v části **uživatele s rolí správce** vyberte **povolit**.
 
 1. Vyberte **úložišť**, pak vyberte úložiště, které chcete nasadit, klikněte pravým tlačítkem na značku pro image kontejneru, kterou chcete nasadit a vyberte **spustit instanci**.
 

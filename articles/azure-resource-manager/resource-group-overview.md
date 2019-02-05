@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/01/2019
 ms.author: tomfitz
-ms.openlocfilehash: 647a1c7f62b48438d209e3ffacd075414f2439f1
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
+ms.openlocfilehash: fbfbb4e452032073d92e7c2b93f78669da0ceaf5
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55562772"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55691553"
 ---
 # <a name="azure-resource-manager-overview"></a>Přehled Azure Resource Manageru
 
@@ -37,7 +37,7 @@ Pokud s Azure Resource Managerem začínáte, existuje několik termínů, kter�
 * **skupina prostředků** – Kontejner, který obsahuje související prostředky pro řešení Azure. Skupina prostředků obsahuje prostředky, které chcete spravovat jako skupinu. Můžete rozhodnout, jak přidělit prostředky skupiny prostředků, které jsou založené na co je nejvhodnější pro vaši organizaci. Viz [Skupiny prostředků](#resource-groups).
 * **Poskytovatel prostředků** -služba poskytující prostředky Azure. Například běžné poskytovatele prostředků je **Microsoft.Compute**, který poskytuje prostředek virtuálních počítačů. **Microsoft.Storage** je jiné běžné poskytovatele prostředků. Viz [Poskytovatelé prostředků](#resource-providers).
 * **Šablony Resource Manageru** – soubor A jazyka JavaScript Object Notation (JSON), který definuje jeden nebo více prostředků k nasazení do skupiny prostředků nebo předplatného. Šablony lze použít k nasazení prostředků konzistentně a opakovaně. Viz [Nasazení šablon](#template-deployment).
-* **deklarativní syntaxe** – Syntaxe, která umožňuje prohlásit „Toto mám v úmyslu vytvořit“, aniž by k tomu bylo nutné psát sekvence programových příkazů. Šablona Resource Manageru je příkladem deklarativní syntaxe. V souboru definujete vlastnosti pro infrastrukturu k nasazení do Azure. 
+* **deklarativní syntaxe** – Syntaxe, která umožňuje prohlásit „Toto mám v úmyslu vytvořit“, aniž by k tomu bylo nutné psát sekvence programových příkazů. Šablona Resource Manageru je příkladem deklarativní syntaxe. V souboru definujete vlastnosti pro infrastrukturu k nasazení do Azure.
 
 ## <a name="the-benefits-of-using-resource-manager"></a>Výhody použití Resource Manageru
 
@@ -49,7 +49,7 @@ Resource Manager poskytuje několik výhod:
 * Můžete definovat závislosti mezi prostředky, takže se nasadí ve správném pořadí.
 * Můžete využít řízení přístupu pro všechny služby ve vaší skupině prostředků, protože do platformy pro správu je nativně integrováno řízení přístupu na základě role (RBAC).
 * Můžete označit prostředky pomocí značek a logicky tak uspořádat všechny prostředky ve svém předplatném.
-* Můžete zpřehlednit fakturaci svojí organizace zobrazením nákladů na skupinu prostředků, které sdílejí stejnou značku.  
+* Můžete zpřehlednit fakturaci svojí organizace zobrazením nákladů na skupinu prostředků, které sdílejí stejnou značku.
 
 ## <a name="guidance"></a>Doprovodné materiály
 Následující návrhy vám pomohou při práci s vašimi řešeními plně využít výhod Resource Manageru.
@@ -88,7 +88,7 @@ Všechny operace nabízené poskytovatelů prostředků najdete v článku [rozh
 
 ## <a name="template-deployment"></a>Nasazení šablon
 
-Pomocí Resource Manageru můžete vytvořit šablonu (ve formátu JSON), která definuje infrastrukturu a konfiguraci vašeho řešení Azure. Pomocí šablony můžete řešení opakovaně nasadit v průběhu životního cyklu a mít přitom jistotu, že se prostředky nasadí konzistentně. 
+Pomocí Resource Manageru můžete vytvořit šablonu (ve formátu JSON), která definuje infrastrukturu a konfiguraci vašeho řešení Azure. Pomocí šablony můžete řešení opakovaně nasadit v průběhu životního cyklu a mít přitom jistotu, že se prostředky nasadí konzistentně.
 
 Další informace o formátu šablony a způsobu jejího sestavení najdete v tématu [Princip struktury a syntaxe šablon Azure Resource Manageru](resource-group-authoring-templates.md). Syntaxi JSON pro typy prostředků najdete v tématu [Definování prostředků v šablonách Azure Resource Manageru](/azure/templates/).
 
@@ -123,7 +123,7 @@ REQUEST BODY
   }
   "sku": {
     "name": "Standard_LRS"
-  },   
+  },
   "kind": "Storage"
 }
 ```
@@ -144,9 +144,9 @@ Informace o vnořených šablonách najdete v tématu [Použití propojených š
 
 Azure Resource Manager analyzuje závislosti a zajistí, že se prostředky vytvoří ve správném pořadí. Pokud jeden prostředek závisí na hodnotě z jiného prostředku (například virtuální počítač potřebuje účet úložiště pro disky), nastavíte závislost. Další informace najdete v tématu [Definování závislostí v šablonách Azure Resource Manageru](resource-group-define-dependencies.md).
 
-Šablony můžete také využít pro aktualizace infrastruktury. Můžete například ke svému řešení přidat prostředek a konfigurační pravidla pro prostředky, které jsou už nasazené. Pokud šablona definuje prostředek, který již existuje, Resource Manager aktualizuje stávající prostředek místo vytvoření nového.  
+Šablony můžete také využít pro aktualizace infrastruktury. Můžete například ke svému řešení přidat prostředek a konfigurační pravidla pro prostředky, které jsou už nasazené. Pokud šablona definuje prostředek, který již existuje, Resource Manager aktualizuje stávající prostředek místo vytvoření nového.
 
-Resource Manager poskytuje rozšíření pro scénáře, kdy potřebujete další operace, jako je například instalace konkrétního softwaru, který není zahrnutý v původní instalaci. Pokud již využíváte službu pro správu konfigurace, jako je DSC, Chef nebo Puppet, můžete tuto službu s pomocí rozšíření používat i nadále. Informace o rozšířeních virtuálních počítačů najdete v tématu [Funkce a rozšíření virtuálních počítačů](../virtual-machines/windows/extensions-features.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). 
+Resource Manager poskytuje rozšíření pro scénáře, kdy potřebujete další operace, jako je například instalace konkrétního softwaru, který není zahrnutý v původní instalaci. Pokud již využíváte službu pro správu konfigurace, jako je DSC, Chef nebo Puppet, můžete tuto službu s pomocí rozšíření používat i nadále. Informace o rozšířeních virtuálních počítačů najdete v tématu [Funkce a rozšíření virtuálních počítačů](../virtual-machines/windows/extensions-features.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 
 Když vytvoříte řešení z portálu, bude toto řešení automaticky zahrnovat šablonu nasazení. Šablonu nemusíte vytvářet od začátku, protože můžete začít se šablonou pro své řešení a upravit ji tak, aby vyhovovala vašim konkrétním potřebám. Ukázku najdete v tématu [rychlý start: Vytvoření a nasazení šablon Azure Resource Manageru pomocí webu Azure portal](./resource-manager-quickstart-create-templates-use-the-portal.md). Šablonu pro stávající skupinu prostředků můžete také získat tak, že vyexportujete aktuální stav této skupiny prostředků nebo zobrazíte šablonu použitou pro konkrétní nasazení. Zobrazení [vyexportované šablony](resource-manager-export-template.md) vám pomůže blíže se seznámit se syntaxí šablony.
 
