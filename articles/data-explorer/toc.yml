@@ -66,8 +66,10 @@ items:
       href: manage-database-permissions.md
     - name: Kontrola stavu clusteru
       href: check-cluster-health.md
-    - name: Správa škálování clusterů
-      href: manage-cluster-scaling.md
+    - name: Správa horizontálního rozšíření kapacity clusteru
+      href: manage-cluster-scale-out.md
+    - name: Správa vertikálního rozšíření kapacity clusteru
+      href: manage-cluster-scale-up.md
     - name: Odstranění dat
       href: delete-data.md
     - name: Řešení duplicitních dat
@@ -120,9 +122,9 @@ items:
     href: http://aka.ms/adecostestimator
   - name: Aktualizace služeb
     href: https://azure.microsoft.com/updates/?product=data-explorer
-ms.openlocfilehash: a3ebd0582761ed9f0ee69cb8eaed637e46049d4d
-ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
+ms.openlocfilehash: 298df030448f1410ef687405586d4e97827076e9
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55295453"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55727771"

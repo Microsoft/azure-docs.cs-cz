@@ -215,10 +215,10 @@ items:
       href: sql-database-security-index.yml
     - name: Možnosti zabezpečení
       href: sql-database-security-overview.md
-    - name: Advanced Data Security
+    - name: Pokročilé zabezpečení dat
       items:
-      - name: Advanced Data Security
-        href: sql-advanced-threat-protection.md
+      - name: Pokročilé zabezpečení dat
+        href: sql-database-advanced-data-security.md
       - name: Zjišťování a klasifikace dat
         href: sql-database-data-discovery-and-classification.md
       - name: Posouzení ohrožení zabezpečení
@@ -710,9 +710,9 @@ items:
       href: sql-database-elastic-jobs-getting-started.md
     - name: Odinstalace elastické úlohy (zastaralé)
       href: sql-database-elastic-jobs-uninstall.md
-ms.openlocfilehash: 1e0f7cb461441c500e3fd1b9b78ae6e829d9d578
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
+ms.openlocfilehash: fc900fc17f4dbd1ee1527fc8a84053408d83d98d
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55561446"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55731287"

@@ -136,7 +136,11 @@ items:
   - name: Konfigurace sítí
     items:
     - name: Vytvoření nebo použití existující virtuální sítě
-      href: configure-advanced-networking.md
+      items:
+      - name: Použití Kubenet
+        href: configure-kubenet.md
+      - name: Použití Azure-CNI
+        href: configure-azure-cni.md
     - name: Vytvořte interní nástroj pro vyrovnávání zatížení.
       href: internal-lb.md
     - name: Použití statických IP adres
@@ -312,9 +316,9 @@ items:
     href: https://azure.microsoft.com/resources/videos/index/?services=container-service&sort=newest
   - name: Nejčastější dotazy
     href: faq.md
-ms.openlocfilehash: 52956dd55cbb78b074a7898d5415dc204975893b
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
+ms.openlocfilehash: ea35745cdab3cc5a0c1521c03b32c4038fa9fff5
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55656477"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55692544"

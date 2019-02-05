@@ -1,7 +1,7 @@
 # [Dokumentace k platformám Azure Marketplace a AppSource](index.md)
+## [Plán nasazení pro Azure Marketplace a AppSource](./marketplace-roadmap.md)
 
 ## [Přehled a výhody platforem Azure Marketplace a AppSource](./marketplace-publishers-guide.md)  
-
 ### [Jak se stát vydavatelem v Marketplace](./become-publisher.md)  
 #### [Vytvoření účtu Microsoft](./guidelines.md)
 #### [Registrace na webu Dev Center](./register-dev-center.md) 

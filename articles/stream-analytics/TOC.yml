@@ -81,6 +81,8 @@ items:
       href: stream-analytics-job-reliability.md
     - name: Ověřování pomocí spravované identity
       href: stream-analytics-managed-identities-adls.md
+    - name: Použití referenčních informací k SQL
+      href: sql-reference-data.md
   - name: Vytváření řešení
     items:
     - name: Analýza subjektivního hodnocení na Twitteru
@@ -155,7 +157,7 @@ items:
       href: stream-analytics-troubleshoot-output.md
     - name: Logika dotazování
       href: stream-analytics-troubleshoot-query.md
-    - name: Diagnostické protokoly
+    - name: Protokoly aktivit a diagnostické protokoly
       href: stream-analytics-job-diagnostic-logs.md
   - name: Integrace se strojovým učením
     items:
@@ -427,9 +429,9 @@ items:
     href: https://azure.microsoft.com/case-studies/?service=stream-analytics
   - name: Dokument white paper – Zpracování událostí v reálném čase
     href: stream-analytics-real-time-event-processing-reference-architecture.md
-ms.openlocfilehash: a66aa2ae82ab9862de7a6a6be425268462c61755
-ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
+ms.openlocfilehash: 63ca98d968397f7626341e9cfdece664bdde971e
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54352763"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55695300"

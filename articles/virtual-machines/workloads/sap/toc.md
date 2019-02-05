@@ -74,6 +74,7 @@
 ### Architektura pro vysokou dostupnost
 #### [Scénáře a architektura pro vysokou dostupnost](sap-high-availability-architecture-scenarios.md)
 #### [Scénáře a architektura pro vyšší dostupnost](sap-higher-availability-architecture-scenarios.md)
+#### [Konfigurace úloh SAP s využitím služby Zóny dostupnosti Azure](sap-ha-availability-zones.md)
 #### [HA ve Windows se sdíleným diskem pro instanci (A)SCS](sap-high-availability-guide-wsfc-shared-disk.md)
 #### [HA ve Windows se sdílenou složkou SOFS pro instanci (A)SCS](sap-high-availability-guide-wsfc-file-share.md)
 #### [HA v SUSE Linuxu pro instanci (A)SCS](high-availability-guide-suse.md)
