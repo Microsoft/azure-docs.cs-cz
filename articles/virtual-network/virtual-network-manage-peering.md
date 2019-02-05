@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/24/2018
 ms.author: jdial;anavin
-ms.openlocfilehash: 7592203b13f22f5c396b8e8bd2942c230a6fd4bc
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.openlocfilehash: 9c03e0ced565daef01304e288b71c46aa0035384
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55492007"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55730089"
 ---
 # <a name="create-change-or-delete-a-virtual-network-peering"></a>Vytvoření, změna nebo odstranění partnerského vztahu virtuálních sítí
 
@@ -70,7 +70,7 @@ Podrobné pokyny k implementaci partnerský vztah mezi virtuálními sítěmi v 
 
 ### <a name="commands"></a>Příkazy
 
-- **Azure CLI**: [vytvořit partnerský vztah virtuální sítě az sítě](/cli/azure/network/vnet/peering#create)
+- **Azure CLI**: [vytvořit partnerský vztah virtuální sítě az sítě](/cli/azure/network/vnet/peering)
 - **PowerShell**: [Add-AzureRmVirtualNetworkPeering](/powershell/module/azurerm.network/add-azurermvirtualnetworkpeering)
 
 ## <a name="view-or-change-peering-settings"></a>Zobrazit nebo změnit nastavení partnerského vztahu
@@ -87,7 +87,7 @@ Před změnou, partnerský vztah, seznamte se s [požadavky a omezení](#require
 
 **Příkazy**
 
-- **Azure CLI**: [az sítě vnet partnerského vztahu seznam](/cli/azure/network/vnet/peering) na seznam partnerských vztahů pro virtuální síť, [az sítě zobrazit partnerského vztahu virtuálních sítí](/cli/azure/network/vnet/peering#az_network_vnet_peering_show) zobrazit nastavení pro konkrétní partnerského vztahu a [az network aktualizace partnerského vztahu virtuálních sítí](/cli/azure/network/vnet/peering#az_network_vnet_peering_update) Chcete-li změnit nastavení partnerského vztahu. |
+- **Azure CLI**: [az sítě vnet partnerského vztahu seznam](/cli/azure/network/vnet/peering) na seznam partnerských vztahů pro virtuální síť, [az sítě zobrazit partnerského vztahu virtuálních sítí](/cli/azure/network/vnet/peering) zobrazit nastavení pro konkrétní partnerského vztahu a [az network aktualizace partnerského vztahu virtuálních sítí](/cli/azure/network/vnet/peering) Chcete-li změnit nastavení partnerského vztahu. |
 - **PowerShell**: [Get-AzureRmVirtualNetworkPeering](/powershell/module/azurerm.network/get-azurermvirtualnetworkpeering) načíst zobrazení nastavení partnerského vztahu a [Set-AzureRmVirtualNetworkPeering](/powershell/module/azurerm.network/set-azurermvirtualnetworkpeering) Chcete-li změnit nastavení.
 
 ## <a name="delete-a-peering"></a>Odstranit partnerský vztah
@@ -96,7 +96,7 @@ Před odstraňuje se partnerský vztah, ujistěte, že má váš účet [potřeb
 
 Při odstranění partnerského vztahu, provoz z virtuální sítě už vede do partnerské virtuální síti. Po vytvoření partnerského vztahu virtuální sítě nasazené prostřednictvím Resource Manageru, každá virtuální síť má partnerský vztah k jiné virtuální síti. I když odstraňuje se partnerský vztah z jedné virtuální sítě zakáže komunikaci mezi virtuálními sítěmi, ale neodstraníte partnerského připojení z druhé virtuální sítě. Stav partnerského vztahu pro partnerský vztah, který existuje ve virtuální síti je **odpojeno**. Nelze znovu vytvořit partnerský vztah dokud je znovu vytvořit partnerský vztah v první virtuální sítě a stav partnerského vztahu pro obě virtuální sítě změny *připojeno*. 
 
-Pokud chcete, aby virtuální sítě ke komunikaci v některých případech, ale ne vždy místo odstraňuje se partnerský vztah, můžete nastavit **povolit přístup k virtuální síti** nastavení **zakázané** místo toho. Další informace, jak číst kroku 6 postupu [vytvoření partnerského vztahu](#create-peering) části tohoto článku. Může se stát zakázání a povolení přístupu k síti je jednodušší než odstranili a znovu vytvořili partnerské vztahy.
+Pokud chcete, aby virtuální sítě ke komunikaci v některých případech, ale ne vždy místo odstraňuje se partnerský vztah, můžete nastavit **povolit přístup k virtuální síti** nastavení **zakázané** místo toho. Další informace, jak číst kroku 6 postupu [vytvoření partnerského vztahu](#create-a-peering) části tohoto článku. Může se stát zakázání a povolení přístupu k síti je jednodušší než odstranili a znovu vytvořili partnerské vztahy.
 
 1. Do vyhledávacího pole v horní části portálu zadejte *virtuálních sítí* do vyhledávacího pole. Když **virtuální sítě** nezobrazí ve výsledcích hledání, vyberte ji. Nesmí být zvolen **virtuální sítě (klasické)** Pokud se zobrazí v seznamu, nelze vytvoříte partnerské připojení z virtuální sítě nasazené pomocí modelu nasazení classic.
 2. Vyberte v seznamu, který chcete odstranit partnerský vztah virtuální sítě.
@@ -116,7 +116,7 @@ Pokud chcete, aby virtuální sítě ke komunikaci v některých případech, al
 - Při vytváření globální partnerský vztah, partnerských virtuálních sítích mohou existovat v libovolné oblasti veřejného cloudu Azure nebo cloudových oblastech Čína, ale není v Government cloudovým oblastem. Je možné jen partnerské virtuální sítě ve stejné oblasti v oblasti cloudu Azure Government.
 - Prostředky v jedné virtuální sítě nemůže komunikovat s front-endovou IP adresu Azure interního nástroje load balancer v globálním partnerském vztahu virtuální sítě. Nástroje pro vyrovnávání zatížení a prostředky, které s ním komunikují, musí být ve virtuální síti ve stejné oblasti. Pokud partnerských virtuálních sítích se ale ve stejné oblasti, můžete prostředky v obou virtuálních sítích komunikovat s front-endovou IP adresu Azure interního nástroje load balancer v obou virtuálních sítích v partnerském vztahu.
 - Nelze používat vzdálené brány nebo povolit průchod bránou v globálním partnerském vztahu virtuálních sítí. Pokud chcete používat vzdálené brány nebo povolit průchod bránou, musí být partnerských virtuálních sítích ve stejné oblasti.
-- Virtuální sítě může být ve stejném ani jiném předplatném. Po vytvoření partnerského vztahu virtuálních sítí v různých předplatných, dá se přidružit k stejného nebo jiného tenanta Azure Active Directory oběma předplatným. Pokud ještě nemáte klient služby AD, můžete rychle [vytvořit](../active-directory/develop/quickstart-create-new-tenant.md?toc=%2fazure%2fvirtual-network%2ftoc.json#create-a-new-azure-ad-tenant). Podpora pro vytvoření partnerského vztahu mezi virtuálními sítěmi z předplatných přidružených k různým tenantům Azure Active Directory není k dispozici na portálu. Můžete použít rozhraní příkazového řádku, Powershellu nebo šablony.
+- Virtuální sítě může být ve stejném ani jiném předplatném. Po vytvoření partnerského vztahu virtuálních sítí v různých předplatných, dá se přidružit k stejného nebo jiného tenanta Azure Active Directory oběma předplatným. Pokud ještě nemáte klient služby AD, můžete rychle [vytvořit](../active-directory/develop/quickstart-create-new-tenant.md?toc=%2fazure%2fvirtual-network%2ftoc.json-a-new-azure-ad-tenant). Podpora pro vytvoření partnerského vztahu mezi virtuálními sítěmi z předplatných přidružených k různým tenantům Azure Active Directory není k dispozici na portálu. Můžete použít rozhraní příkazového řádku, Powershellu nebo šablony.
 - Virtuální sítě, které můžete vytvořit partnerský vztah musí mít překrývat adresní prostory IP adres.
 - Nelze přidat rozsahy adres do nebo odstranit rozsahy adres z adresního prostoru virtuální sítě, jakmile se virtuální síť má partnerský vztah s jinou virtuální sítí. Chcete-li přidat nebo odebrat rozsahy adres, odstranit partnerský vztah, přidat nebo odebrat rozsahy adres, pak znovu vytvořte partnerský vztah. Přidat rozsahy adres k nebo odebrat rozsahy adres virtuální sítě, najdete v článku [Správa virtuálních sítí](manage-virtual-network.md).
 - Můžete vytvořit partnerský vztah dvou virtuálních sítí, které jsou nasazené prostřednictvím Resource Manageru nebo virtuální sítě nasazené prostřednictvím Resource Manageru pomocí virtuální sítě nasazené pomocí modelu nasazení classic. Nejde vytvořit partnerský vztah dvou virtuálních sítí vytvořených prostřednictvím modelu nasazení classic. Pokud nejste obeznámeni s modely nasazení Azure, přečtěte si [vysvětlení modelů nasazení Azure](../azure-resource-manager/resource-manager-deployment-model.md?toc=%2fazure%2fvirtual-network%2ftoc.json) článku. K propojení dvou virtuálních sítí vytvořených prostřednictvím modelu nasazení Classic můžete použít službu [VPN Gateway](../vpn-gateway/vpn-gateway-about-vpngateways.md?toc=%2fazure%2fvirtual-network%2ftoc.json#V2V).

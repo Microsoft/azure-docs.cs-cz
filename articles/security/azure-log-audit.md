@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/14/2019
 ms.author: TomSh
-ms.openlocfilehash: 93370b927f825752b8ce2b5e9d4ca94b3a4e0536
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
+ms.openlocfilehash: 574c295c3b44d0c6146c852777f2bef3ad13ecdd
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55664178"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55697913"
 ---
 # <a name="azure-logging-and-auditing"></a>Protokolování a auditování Azure
 
@@ -196,7 +196,7 @@ Síť protokolování a monitorování v Azure je komplexní a zahrnuje dvě roz
 
 * [Network Watcher](https://docs.microsoft.com/azure/network-watcher/network-watcher-monitoring-overview): Monitorování sítě založené na scénářích je součástí funkce ve službě Network Watcher. Tato služba zahrnuje zachycení paketu, další směrování, IP tok ověřit, zobrazení skupin zabezpečení, protokoly toků NSG. Scénář úrovně monitorování poskytuje komplexní přehled síťové prostředky, na rozdíl od sledování jednotlivých síťových prostředků.
 
-* [Sledování prostředků](https://docs.microsoft.com/azure/network-watcher/network-watcher-monitoring-overview#network-resource-level-monitoring): Sledování na úrovni prostředků obsahuje čtyři funkce, diagnostické protokoly, metriky, řešení potíží a stav prostředku. Všechny tyto funkce jsou sestaveny na úrovni síťových prostředků.
+* [Sledování prostředků](https://docs.microsoft.com/azure/network-watcher/network-watcher-monitoring-overview): Sledování na úrovni prostředků obsahuje čtyři funkce, diagnostické protokoly, metriky, řešení potíží a stav prostředku. Všechny tyto funkce jsou sestaveny na úrovni síťových prostředků.
 
 ![Síťových protokolů Azure](./media/azure-log-audit/azure-log-audit-fig4.png)
 
@@ -238,7 +238,7 @@ Kromě výše uvedených protokolování možností Network Watcher aktuálně m
 
 * [Brána virtuální sítě a řešení potíží s připojením](https://docs.microsoft.com/azure/network-watcher/network-watcher-troubleshoot-manage-rest): Pomáhá při řešení problémů brány virtuální sítě a připojení.
 
-* [Sítě limity předplatného](https://docs.microsoft.com/azure/network-watcher/network-watcher-monitoring-overview#network-subscription-limits): Umožňuje zobrazit využití prostředků sítě proti omezení.
+* [Sítě limity předplatného](https://docs.microsoft.com/azure/network-watcher/network-watcher-monitoring-overview): Umožňuje zobrazit využití prostředků sítě proti omezení.
 
 ### <a name="application-insights"></a>Application Insights
 

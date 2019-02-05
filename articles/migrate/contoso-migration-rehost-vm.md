@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 10/11/2018
 ms.author: raynew
-ms.openlocfilehash: 36a84618a998dd2e06f5563fb8706a1dc8400e59
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: 47b16966f9e72a43cf4fb934706f7b96becef59a
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54823347"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55694495"
 ---
 # <a name="contoso-migration-rehost-an-on-premises-app-to-azure-vms"></a>Migrace Contoso: Změna hostitele místní aplikace na virtuální počítače Azure
 
@@ -460,7 +460,7 @@ Bezpečnostní tým Contoso kontroly virtuální počítače Azure, chcete-li zj
 - K řízení přístupu, zkontroluje tým skupiny zabezpečení sítě (Nsg) pro virtuální počítače. Skupiny zabezpečení sítě se používají k zajištění, že pouze provoz povolený do aplikace k němu přistoupit.
 - Tým také zvážit zabezpečení dat na disku pomocí Azure Disk Encryption a trezor klíčů.
 
-[Přečtěte si další](https://docs.microsoft.com/azure/security/azure-security-best-practices-vms#vm-authentication-and-access-control) o postupech zabezpečení pro virtuální počítače.
+[Přečtěte si další](https://docs.microsoft.com/azure/security/azure-security-best-practices-vms) o postupech zabezpečení pro virtuální počítače.
 
 ## <a name="bcdr"></a>BCDR
 

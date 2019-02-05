@@ -14,12 +14,12 @@ ms.devlang: nodejs
 ms.topic: hero-article
 ms.date: 08/17/2017
 ms.author: jeconnoc
-ms.openlocfilehash: 182dada35e0bea7101cc58ff62fde76fbcb8971e
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: de78e70b30c4e0b03f87ad6b1bfe00356f897f43
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53722273"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55698223"
 ---
 # <a name="build-and-deploy-a-nodejs-application-to-an-azure-cloud-service"></a>Sestavení a nasazení aplikace Node.js ve službě Azure Cloud Service
 
@@ -60,7 +60,7 @@ Proveďte následující kroky, a vytvořte tak nový projekt Azure Cloud Servic
 
     Rutina vytvoří následující soubory:
 
-   * **ServiceConfiguration.Cloud.cscfg**, **ServiceConfiguration.Local.cscfg** a **ServiceDefinition.csdef**: Soubory týkající se Azure je nezbytné pro publikování aplikace. Další informace najdete v tématu [Přehled vytváření hostované služby pro Azure].
+   * **ServiceConfiguration.Cloud.cscfg**, **ServiceConfiguration.Local.cscfg** and **ServiceDefinition.csdef**: Soubory týkající se Azure je nezbytné pro publikování aplikace. Další informace najdete v tématu [Přehled vytváření hostované služby pro Azure].
    * **deploymentSettings.json**: Uloží místní nastavení, které jsou používány rutin nasazení prostředí Azure PowerShell.
 4. Zadejte následující příkaz pro přidání nové webové role:
 
@@ -168,7 +168,7 @@ Další informace najdete ve [Středisko pro vývojáře Node.js].
 [Použití jednoduché webové aplikace]: ../app-service/app-service-web-get-started-nodejs.md
 [Azure Powershell]: /powershell/azureps-cmdlets-docs
 [Azure SDK pro .NET 2.7]: http://www.microsoft.com/en-us/download/details.aspx?id=48178
-[připojení PowerShellu]: /powershell/azureps-cmdlets-docs#step-3-connect
+[připojení PowerShellu]: /powershell/azureps-cmdlets-docs
 [nodejs.org]: http://nodejs.org/
 [Přehled vytváření hostované služby pro Azure]: https://azure.microsoft.com/documentation/services/cloud-services/
 [Středisko pro vývojáře Node.js]: https://azure.microsoft.com/develop/nodejs/

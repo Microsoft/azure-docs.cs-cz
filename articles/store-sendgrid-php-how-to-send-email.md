@@ -14,12 +14,12 @@ ms.devlang: PHP
 ms.topic: article
 ms.date: 10/30/2014
 ms.author: elmer.thomas@sendgrid.com; erika.berkland@sendgrid.com; vibhork; matt.bernier@sendgrid.com
-ms.openlocfilehash: ee338e2011a7b86a069bd42a028d65b23a123037
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.openlocfilehash: db3333aa52782ceb949ef3f46a903b618f6e3f2f
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52427093"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55693020"
 ---
 # <a name="how-to-use-the-sendgrid-email-service-from-php"></a>Jak používat službu e-mailu Sendgridu z PHP
 
@@ -46,11 +46,11 @@ Další informace najdete v tématu [ https://sendgrid.com ] [ https://sendgrid.
 
 V aplikaci PHP v Azure pomocí Sendgridu vyžaduje žádná zvláštní konfigurace nebo psaní kódu. Protože SendGrid je služba, mohou být přístupné přesně stejným způsobem z cloudové aplikace, jako se můžete z místní aplikace.
 
-## <a name="how-to-send-an-email"></a>Postupy: odesílání e-mailu
+## <a name="how-to-send-an-email"></a>Postup: Odeslání e-mailu
 
 Můžete odeslat e-mailu přes SMTP nebo webové rozhraní API, které SendGrid poskytuje.
 
-### <a name="smtp-api"></a>ROZHRANÍ SMTP API
+### <a name="smtp-api"></a>SMTP API
 
 Chcete-li odeslat e-mailu pomocí rozhraní API SendGrid SMTP, použijte *Swift poštovní*, knihovnu založených na komponentách odesílání e-mailů z aplikací PHP. Si můžete stáhnout [Swift poštovní knihovny](https://swiftmailer.symfony.com/) v5.3.0 (použijte [Composer] instalace poštovní Swift). Odesílání e-mailů s knihovnou zahrnuje vytvoření instance `Swift\_SmtpTransport`, `Swift\_Mailer`, a `Swift\_Message` tříd, nastavení příslušné vlastnosti a volání `Swift\_Mailer::send` metody.
 
@@ -161,9 +161,9 @@ Použití PHP na [curl funkce] [ curl function] k odesílání e-mailu pomocí w
 
 Webové rozhraní API Sendgridu je velmi podobný rozhraní REST API, když není skutečně rozhraní RESTful API, protože ve většině volání, jak získat a operací POST zaměnitelné.
 
-## <a name="how-to-add-an-attachment"></a>Postupy: Přidání přílohy
+## <a name="how-to-add-an-attachment"></a>Postup: Přidat přílohu
 
-### <a name="smtp-api"></a>ROZHRANÍ SMTP API
+### <a name="smtp-api"></a>SMTP API
 
 Odeslání přílohy pomocí rozhraní SMTP API zahrnuje jeden další řádek kódu na ukázkový skript pro odeslání e-mailu s poštovní Swift.
 
@@ -296,7 +296,7 @@ Odeslání přílohy pomocí rozhraní Web API je velmi podobný jako poslání 
  print_r($response);
 ```
 
-## <a name="how-to-use-filters-to-enable-footers-tracking-and-analytics"></a>Postupy: použití filtrů k povolení zápatí, sledování a analýza
+## <a name="how-to-use-filters-to-enable-footers-tracking-and-analytics"></a>Postup: Použití filtrů k povolení zápatí, sledování a analýza
 
 SendGrid umožňuje zajistit další e-mailové funkce prostřednictvím *filtry*. Toto jsou nastavení, které lze přidat do e-mailovou zprávu povolit konkrétní funkce, jako například povolení sledování kliknutí, Google analytics, předplatné, sledování a tak dále.
 
@@ -349,7 +349,7 @@ php composer.phar require sendgrid/sendgrid 2.1.1
  // support@yourcompany.com, info@yourcompany.com
  $from = 'someone@example.com';
 
- // If you do not specify a sender list above, you can specifiy the user here. If
+ // If you do not specify a sender list above, you can specify the user here. If
  // a sender list IS specified above, this email address becomes irrelevant.
  $to = 'john@contoso.com';
 

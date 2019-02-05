@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: erhopf
 ms.custom: seodec18
-ms.openlocfilehash: 85e250f3dee3dbfc9e09524d5f3977a143ee8bac
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: 5bd631bf31ba4e6a840c3e4e818062d322da0158
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55213255"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55727921"
 ---
 # <a name="get-started-with-the-speech-devices-sdk"></a>Začínáme se sadou SDK pro řeč zařízení
 
@@ -47,7 +47,7 @@ Než začnete s vývojem pomocí sady SDK zařízení řeči, shromážděte inf
 
 ## <a name="set-up-the-development-kit"></a>Nastavení sady development kit
 
-1. Vývojová sada připojit k počítači nebo napájení adaptér pomocí kabelu USB mini. Při připojení sadě zelené power indikátor aktivuje v horním panelu.
+1. Vývojová sada připojit k počítači nebo napájení adaptér pomocí USB kabelu micro vysoce kvalitní. Indikátor zelené power bude zprovoznění v horním panelu.
 
 1. Vývojová sada připojení k počítači s použitím druhý mini kabelu USB.
 
