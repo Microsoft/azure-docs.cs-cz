@@ -1,147 +1,104 @@
 ---
-title: Kurz – Poskytnutí přístupu k webovému rozhraní API ASP.NET z webové aplikace pomocí Azure Active Directory B2C | Microsoft Docs
+title: Kurz – poskytnutí přístupu k webovému rozhraní API ASP.NET – Azure Active Directory B2C | Dokumentace Microsoftu
 description: Kurz popisující použití Active Directory B2C k ochraně webového rozhraní API ASP.NET a jeho volání z webové aplikace ASP.NET.
 services: active-directory-b2c
 author: davidmu1
 manager: daveba
 ms.author: davidmu
-ms.date: 11/30/2018
+ms.date: 02/04/2019
 ms.custom: mvc
 ms.topic: tutorial
 ms.service: active-directory
 ms.subservice: B2C
-ms.openlocfilehash: d57a1b5d8e6fee52e617ccffdcf80fa5a04bc64f
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: cc4db0f2fe8f5db41f6e8332a398029bd105f3af
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55158226"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55756338"
 ---
-# <a name="tutorial-grant-access-to-an-aspnet-web-api-from-a-web-app-using-azure-active-directory-b2c"></a>Kurz: Poskytnutí přístupu k webovému rozhraní API ASP.NET z webové aplikace pomocí Azure Active Directory B2C
+# <a name="tutorial-grant-access-to-an-aspnet-web-api-using-azure-active-directory-b2c"></a>Kurz: Udělení přístupu k webovému rozhraní ASP.NET API pomocí Azure Active Directory B2C
 
-V tomto kurzu se dozvíte, jak volat prostředek webového rozhraní API chráněný službou Azure Active Directory (Azure AD) B2C z webové aplikace ASP.NET.
+V tomto kurzu se dozvíte, jak volat chráněné webové rozhraní API prostředku v Azure Active Directory (Azure AD) B2C z webové aplikace ASP.NET.
 
 V tomto kurzu se naučíte:
 
 > [!div class="checklist"]
-> * Registrace webového rozhraní API v tenantovi Azure AD B2C
-> * Definice a konfigurace oborů pro webové rozhraní API
-> * Udělení oprávnění k webovému rozhraní API aplikaci
-> * Aktualizace vzorového kódu tak, aby pomocí Azure AD B2C chránil webové rozhraní API
+> * Přidání webového rozhraní API aplikaci
+> * Konfigurace oborů pro webové rozhraní API
+> * Udělení oprávnění k webovému rozhraní API
+> * Konfigurace ukázky aplikace k používání aplikace
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
 ## <a name="prerequisites"></a>Požadavky
 
-* Dokončete [kurz Použití Azure Active Directory B2C k ověřování uživatelů ve webové aplikaci ASP.NET](active-directory-b2c-tutorials-web-app.md).
-* Nainstalujte sadu [Visual Studio 2017](https://www.visualstudio.com/downloads/) se sadou funkcí **Vývoj pro ASP.NET a web**.
+Dokončete kroky a požadavky [kurzu: Povolit ověření ve webové aplikaci pomocí Azure Active Directory B2C](active-directory-b2c-tutorials-web-app.md).
 
-## <a name="register-web-api"></a>Registrace webového rozhraní API
+## <a name="add-a-web-api-application"></a>Přidání webového rozhraní API aplikaci
 
-Prostředky webového rozhraní API je nejprve potřeba zaregistrovat ve vašem tenantovi, a až pak můžou přijímat a reagovat na [požadavky na chráněné prostředky](../active-directory/develop/developer-glossary.md#resource-server) od [klientských aplikací](../active-directory/develop/developer-glossary.md#client-application), které obsahují [přístupový token](../active-directory/develop/developer-glossary.md#access-token) ze služby Azure Active Directory. Registrací se ve vašem tenantovi vytvoří [objekt aplikace a instanční objekt](../active-directory/develop/developer-glossary.md#application-object). 
+Webové rozhraní API prostředky musí být zaregistrovaní ve vašem tenantovi předtím, než může přijímat a reagovat na požadavky na chráněný prostředek v klientských aplikacích, které se přístupový token.
 
-Přihlaste se k webu [Azure Portal](https://portal.azure.com/) jako globální správce vašeho tenanta Azure AD B2C.
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+2. Ujistěte se, že používáte adresáře, který obsahuje vašeho tenanta Azure AD B2C kliknutím **filtr adresářů a předplatných** v horní nabídce a výběrem adresáře, který obsahuje váš tenant.
+3. Zvolte **všechny služby** v horním levém horním rohu webu Azure portal a poté vyhledejte a vyberte **Azure AD B2C**.
+4. Vyberte **aplikací**a pak vyberte **přidat**.
+5. Zadejte název aplikace. Například *webapi1*.
+6. Pro **zahrnout webovou aplikaci / webové rozhraní API** a **povolit implicitní tok**vyberte **Ano**.
+7. Pro **adresy URL odpovědi**, zadejte koncový bod kam by měl Azure AD B2C vrátí všechny tokeny, které vaše aplikace požaduje. V tomto kurzu se ukázka spouští místně a naslouchá na `https://localhost:44332`.
+8. Pro **identifikátor ID URI aplikace**, zadejte identifikátor použitý pro vaše webového rozhraní API. Vygeneruje se pro vás úplný identifikátor URI včetně domény. Například, `https://contosotenant.onmicrosoft.com/api`.
+9. Klikněte na možnost **Vytvořit**.
+10. Na stránce Vlastnosti zaznamenejte ID aplikace, které budete používat při konfiguraci webové aplikace.
 
-[!INCLUDE [active-directory-b2c-switch-b2c-tenant](../../includes/active-directory-b2c-switch-b2c-tenant.md)]
+## <a name="configure-scopes"></a>Konfigurace oborů
 
-1. Zvolte **Všechny služby** v levém horním rohu portálu Azure Portal a vyhledejte a vyberte **Azure AD B2C**. Teď byste měli používat tenanta, kterého jste vytvořili v předchozím kurzu.
+Obory poskytují způsob řízení přístupu k chráněným prostředkům. Webové rozhraní API používá obory k implementaci řízení přístupu na základě oboru. Například uživatelé webového rozhraní API můžou mít přístup ke čtení i zápisu nebo přístup pouze ke čtení. V tomto kurzu pomocí oborů nadefinujete pro webové rozhraní API oprávnění ke čtení i zápisu.
 
-2. Vyberte **Aplikace** a pak **Přidat**.
+1. Vyberte **aplikací**a pak vyberte *webapi1*.
+2. Vyberte **publikované obory**.
+3. Pro **oboru**, zadejte `Hello.Read`a popis, zadejte `Read access to hello`.
+4. Pro **oboru**, zadejte `Hello.Write`a popis, zadejte `Write access to hello`.
+5. Klikněte na **Uložit**.
 
-    K registraci ukázkového webového rozhraní API ve vašem tenantovi použijte následující nastavení.
-    
-    ![Přidání nového rozhraní API](./media/active-directory-b2c-tutorials-web-api/web-api-registration.png)
-    
-    | Nastavení      | Navrhovaná hodnota  | Popis                                        |
-    | ------------ | ------- | -------------------------------------------------- |
-    | **Název** | My Sample Web API | Zadejte **Název**, který popíše vaše webové rozhraní API pro vývojáře. |
-    | **Zahrnout webovou aplikaci nebo webové rozhraní API** | Ano | Pro webové rozhraní API vyberte **Ano**. |
-    | **Povolit implicitní tok** | Ano | Vyberte **Ano**, protože rozhraní API používá [Přihlášení OpenID Connect](active-directory-b2c-reference-oidc.md). |
-    | **Adresa URL odpovědi** | `https://localhost:44332` | Adresy URL odpovědí jsou koncové body, kam Azure AD B2C vrací všechny tokeny, které vaše rozhraní API požaduje. V tomto kurzu se ukázkové webové rozhraní API spouští místně (localhost) a naslouchá na portu 44332. |
-    | **Identifikátor URI ID aplikace** | myAPISample | Tento identifikátor URI jednoznačně identifikuje rozhraní API v tenantovi. Díky tomu můžete v jednom tenantovi registrovat více rozhraní API. [Obory](../active-directory/develop/developer-glossary.md#scopes) řídí přístup k chráněnému prostředku rozhraní API a definují se pro jednotlivé identifikátory URI ID aplikace. |
-    | **Nativní klient** | Ne | Vzhledem k tomu, že se jedná o webové rozhraní API, a ne nativního klienta, vyberte Ne. |
-    
-3. Kliknutím na **Vytvořit** své rozhraní API zaregistrujte.
+Publikované obory je možné klientovi udělit oprávnění k aplikaci pro webové rozhraní API.
 
-Zaregistrovaná rozhraní API se zobrazí v seznamu aplikací pro příslušného tenanta Azure AD B2C. Vyberte ze seznamu vaše webové rozhraní API. Zobrazí se podokno vlastností webového rozhraní API.
+## <a name="grant-permissions"></a>Udělení oprávnění
 
-![Vlastnosti webového rozhraní API](./media/active-directory-b2c-tutorials-web-api/b2c-web-api-properties.png)
+Pokud chcete volat chráněné webové rozhraní API z aplikace, budete muset udělit oprávnění aplikace rozhraní API. V požadovaném kurzu vytvořili webovou aplikaci v Azure AD B2C s názvem *webapp1*. Volání webového rozhraní API pomocí této aplikace.
 
-Poznamenejte si **ID klienta aplikace**. Toto ID jednoznačně identifikuje rozhraní API a je potřeba při konfiguraci rozhraní API později v tomto kurzu.
-
-Registrací webového rozhraní API v Azure AD B2C se nadefinuje vztah důvěryhodnosti. Vzhledem k tomu, že je rozhraní API zaregistrované v B2C, může teď důvěřovat přístupovým tokenům B2C přijímaným z jiných aplikací.
-
-## <a name="define-and-configure-scopes"></a>Definice a konfigurace oborů
-
-[Obory](../active-directory/develop/developer-glossary.md#scopes) poskytují způsob řízení přístupu k chráněným prostředkům. Webové rozhraní API používá obory k implementaci řízení přístupu na základě oboru. Například uživatelé webového rozhraní API můžou mít přístup ke čtení i zápisu nebo přístup pouze ke čtení. V tomto kurzu pomocí oborů nadefinujete pro webové rozhraní API oprávnění ke čtení i zápisu.
-
-### <a name="define-scopes-for-the-web-api"></a>Definice oborů pro webové rozhraní API
-
-Zaregistrovaná rozhraní API se zobrazí v seznamu aplikací pro příslušného tenanta Azure AD B2C. Vyberte ze seznamu vaše webové rozhraní API. Zobrazí se podokno vlastností webového rozhraní API.
-
-Klikněte na **Publikované obory (Preview)**.
-
-Nakonfigurujte obory pro rozhraní API přidáním následujících záznamů. 
-
-![obory definované ve webovém rozhraní API](media/active-directory-b2c-tutorials-web-api/scopes-defined-in-web-api.png)
-
-| Nastavení      | Navrhovaná hodnota  | Popis                                        |
-| ------------ | ------- | -------------------------------------------------- |
-| **Rozsah** | Hello.Read | Oprávnění ke čtení pro hello |
-| **Rozsah** | Hello.Write | Oprávnění k zápisu pro hello |
-
-Klikněte na **Uložit**.
-
-Publikované obory je možné použít k udělení oprávnění k webovému rozhraní API klientské aplikaci.
-
-### <a name="grant-app-permissions-to-web-api"></a>Udělení oprávnění k webovému rozhraní API aplikaci
-
-Pokud chcete volat chráněné webové rozhraní API z aplikace, musíte aplikaci udělit oprávnění k rozhraní API. V tomto kurzu použijte webovou aplikaci vytvořenou v [kurzu Použití Azure Active Directory B2C k ověřování uživatelů ve webové aplikaci ASP.NET](active-directory-b2c-tutorials-web-app.md). 
-
-1. Na webu Azure Portal vyberte ze seznamu služeb **Azure AD B2C** a kliknutím na **Aplikace** zobrazte seznam zaregistrovaných aplikací.
-
-2. Ze seznamu aplikací vyberte **My Sample Web App**, klikněte na **Přístup přes rozhraní API (Preview)** a pak na **Přidat**.
-
-3. V rozevíracím seznamu **Vybrat rozhraní API** vyberte své zaregistrované webové rozhraní API **My Sample Web API**.
-
-4. V rozevíracím seznamu **Vybrat obory** vyberte obory, které jste definovali v registraci webového rozhraní API.
-
-    ![výběr oborů pro aplikaci](media/active-directory-b2c-tutorials-web-api/selecting-scopes-for-app.png)
-
+1. Vyberte **aplikací**a pak vyberte *webapp1*.
+2. Vyberte **přístup přes rozhraní API**a pak vyberte **přidat**.
+3. V **vybrat rozhraní API** rozevíracím seznamu vyberte *webapi1*.
+4. V **vyberte obory** rozevírací seznam, vyberte **Hello.Read** a **Hello.Write** obory, které jste dříve definovali.
 5. Klikněte na **OK**.
 
-Vaše aplikace **My Sample Web App** je zaregistrovaná a může volat rozhraní **My Sample Web API**. Uživatel se [ověří](../active-directory/develop/developer-glossary.md#authentication) v Azure AD B2C, aby mohl webovou aplikaci použít. Webová aplikace získá z Azure AD B2C [udělení autorizace](../active-directory/develop/developer-glossary.md#authorization-grant) pro přístup k chráněnému webovému rozhraní API.
+Vaše aplikace je zaregistrovaná a může volat chráněné webové rozhraní API. Uživatel se ověřuje pomocí Azure AD B2C k používání aplikace. Aplikace obdrží udělení autorizace z Azure AD B2C pro přístup k chráněné webové rozhraní API.
 
-## <a name="update-code"></a>Aktualizace kódu
+## <a name="configure-the-sample"></a>Konfigurace ukázky aplikace
 
-Když je teď webové rozhraní API zaregistrované a máte definované obory, je potřeba nakonfigurovat kód webového rozhraní API tak, aby používalo vašeho tenanta Azure AD B2C. V tomto kurzu nakonfigurujete ukázkové webové rozhraní API. 
-
-Ukázkové webové rozhraní API je zahrnutý v projektu, který jste stáhli v požadovaném kurzu: [Použití Azure Active Directory B2C k ověřování uživatelů v kurzu webové aplikaci ASP.NET](active-directory-b2c-tutorials-web-app.md). Pokud jste požadovaný kurz nedokončili, dokončete ho, než budete pokračovat.
+Teď, když je webové rozhraní API zaregistrované a máte definované obory, nakonfigurujte webové rozhraní API pro použití vašeho tenanta Azure AD B2C. V tomto kurzu nakonfigurujete ukázkové webové rozhraní API. Ukázkové webové rozhraní API je zahrnutý v projektu, který jste stáhli v požadovaném kurzu.
 
 Ukázkové řešení obsahuje dva projekty:
 
-**Ukázková webová aplikace (TaskWebApp):** Webové aplikace můžete vytvářet a upravovat seznam úkolu. Tato webová aplikace používá **registrace nebo přihlašování** tok uživatele k registraci nebo přihlašování uživatelů pomocí e-mailovou adresu.
+V ukázkovém řešení jsou tyto dva projekty:
 
-**Ukázková aplikace webového rozhraní API (TaskService):** Webové rozhraní API, které podporuje funkce vytvoření, čtení, aktualizace a odstranění seznamu úkolů. Toto webové rozhraní API je zabezpečené službou Azure AD B2C a volané webovou aplikací.
+- **TaskWebApp** – vytvoření a úpravy seznamu úkolů. Ukázka používá **registrace nebo přihlašování** tok uživatele k registraci nebo přihlašování uživatelů.
+- **TaskService** – podporuje vytvoření, čtení, aktualizaci a odstranění seznamu úkolů. Rozhraní API je chráněné službou Azure AD B2C a volané TaskWebApp.
 
-Ukázková webová aplikace a webové rozhraní API definují hodnoty konfigurace jako nastavení aplikace v souboru Web.config každého projektu.
+### <a name="configure-the-web-application"></a>Konfigurace webové aplikace
 
-Otevřete řešení **B2C-WebAPI-DotNet** v sadě Visual Studio.
-
-### <a name="configure-the-web-app"></a>Konfigurace webové aplikace
-
-1. Otevřete soubor **Web.config** v projektu **TaskWebApp**.
-
-2. Pokud chcete rozhraní API spustit místně, jako **api:TaskServiceUrl** použijte nastavení pro localhost. Změňte soubor Web.config následujícím způsobem: 
+1. Otevřete řešení **B2C-WebAPI-DotNet** v sadě Visual Studio.
+2. Otevřete soubor **Web.config** v projektu **TaskWebApp**.
+3. Pokud chcete rozhraní API spustit místně, jako **api:TaskServiceUrl** použijte nastavení pro localhost. Změňte soubor Web.config následujícím způsobem: 
 
     ```C#
     <add key="api:TaskServiceUrl" value="https://localhost:44332/"/>
     ```
 
-3. Nakonfigurujte identifikátor URI rozhraní API. Toto je identifikátor URI, pomocí kterého webová aplikace provede požadavek na rozhraní API. Nakonfigurujte také požadovaná oprávnění.
+3. Nakonfigurujte identifikátor URI rozhraní API. Toto je identifikátor URI, webová aplikace používá k odeslání požadavku rozhraní API. Nakonfigurujte také požadovaná oprávnění.
 
     ```C#
-    <add key="api:ApiIdentifier" value="https://<Your tenant name>.onmicrosoft.com/myAPISample/" />
+    <add key="api:ApiIdentifier" value="https://<Your tenant name>.onmicrosoft.com/api/" />
     <add key="api:ReadScope" value="Hello.Read" />
     <add key="api:WriteScope" value="Hello.Write" />
     ```
@@ -149,7 +106,6 @@ Otevřete řešení **B2C-WebAPI-DotNet** v sadě Visual Studio.
 ### <a name="configure-the-web-api"></a>Konfigurace webového rozhraní API
 
 1. Otevřete soubor **Web.config** v projektu **TaskService**.
-
 2. Nakonfigurujte rozhraní API tak, aby používalo vašeho tenanta.
 
     ```C#
@@ -159,13 +115,13 @@ Otevřete řešení **B2C-WebAPI-DotNet** v sadě Visual Studio.
 3. Nastavte ID klienta na ID aplikace zaregistrované pro vaše rozhraní API.
 
     ```C#
-    <add key="ida:ClientId" value="<The Application ID for your web API obtained from the Azure portal>"/>
+    <add key="ida:ClientId" value="<application-ID>"/>
     ```
 
-4. Aktualizace nastavení hlavního názvu uživatele tok s názvem vygeneruje, když vytváření nahoru a tok přihlášení uživatele.
+4. Aktualizace uživatele tok nastavení s názvem znaménko nahoru a přihlašování uživatelů toku.
 
     ```C#
-    <add key="ida:SignUpSignInUserFlowId" value="B2C_1_SiUpIn" />
+    <add key="ida:SignUpSignInUserFlowId" value="B2C_1_signupsignin1" />
     ```
 
 5. Nakonfigurujte nastavení oborů tak, aby odpovídaly oborům, které jste vytvořili na portálu.
@@ -180,24 +136,26 @@ Otevřete řešení **B2C-WebAPI-DotNet** v sadě Visual Studio.
 Je potřeba spustit jak projekt **TaskWebApp**, tak i projekt **TaskService**. 
 
 1. V Průzkumníku řešení klikněte pravým tlačítkem na řešení a vyberte **Nastavit projekty po spuštění**. 
-2. Vyberte přepínač **Více projektů po spuštění**.
+2. Vyberte **více projektů po spuštění**.
 3. U obou projektů změňte hodnotu **Akce** na **Spustit**.
-4. Kliknutím na OK uložte konfiguraci.
-5. Stisknutím klávesy **F5** spusťte obě aplikace. Obě aplikace se otevřou na samostatné kartě prohlížeče. Na adrese `https://localhost:44316/` je webová aplikace.
+4. Nastavení uložíte kliknutím na **OK**.
+5. Stisknutím klávesy **F5** spusťte obě aplikace. Obě aplikace se otevřou na vlastní kartě prohlížeče `https://localhost:44316/` je webová aplikace.
     Na adrese `https://localhost:44332/` je webové rozhraní API.
 
-6. Ve webové aplikaci klikněte na odkaz pro registraci nebo přihlášení v banneru nabídky a zaregistrujte se do webové aplikace. Použijte účet, který jste vytvořili v [kurzu k webové aplikaci](active-directory-b2c-tutorials-web-app.md). 
-7. Po přihlášení klikněte na odkaz **To-do list** (Seznam úkolů) a vytvořte položku seznamu úkolů.
+6. Ve webové aplikaci, klikněte na tlačítko **registrace / přihlášení** pro přihlášení k webové aplikaci. Použijte účet, který jste předtím vytvořili. 
+7. Jakmile se přihlásíte, klikněte na tlačítko **seznam úkolů** a vytvořte položku seznamu úkolů.
 
-Když vytvoříte položku seznamu úkolů, webová aplikace odešle do webového rozhraní API požadavek na vygenerování položky seznamu úkolů. Vaše chráněná webová aplikace volá chráněné webové rozhraní API ve vašem tenantovi Azure AD B2C.
-
-## <a name="clean-up-resources"></a>Vyčištění prostředků
-
-Svého tenanta Azure AD B2C můžete použít i k vyzkoušení dalších kurzů k Azure AD B2C. Jakmile už ho nebudete potřebovat, můžete [svého tenanta Azure AD B2C odstranit](active-directory-b2c-faqs.md#how-do-i-delete-my-azure-ad-b2c-tenant).
+Když vytvoříte položku seznamu úkolů, webová aplikace odešle požadavek do webového rozhraní API pro generování položky seznamu úkolů. Vaše chráněná webová aplikace je volat chráněné webové rozhraní API ve vašem tenantovi Azure AD B2C.
 
 ## <a name="next-steps"></a>Další postup
 
-Tento článek vás provedl ochranou webového rozhraní API ASP.NET prostřednictvím registrace a definice oborů v Azure AD B2C. Další podrobnosti o vývoji tohoto scénáře, včetně podrobného vysvětlení kódů, najdete v dalším kurzu.
+V tomto kurzu jste se naučili:
+
+> [!div class="checklist"]
+> * Přidání webového rozhraní API aplikaci
+> * Konfigurace oborů pro webové rozhraní API
+> * Udělení oprávnění k webovému rozhraní API
+> * Konfigurace ukázky aplikace k používání aplikace
 
 > [!div class="nextstepaction"]
-> [Vytvoření webové aplikace ASP.NET umožňující registraci, přihlášení, úpravy profilu a resetování hesla s využitím Azure Active Directory B2C](active-directory-b2c-devquickstarts-web-dotnet-susi.md)
+> [Kurz: Přidat zprostředkovatele identity pro vaše aplikace v Azure Active Directory B2C](tutorial-add-identity-providers.md)

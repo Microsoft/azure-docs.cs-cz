@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: codepen
-ms.openlocfilehash: 8c337ba1770b9b618567e7a3ee5fdbadba63181b
-ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
+ms.openlocfilehash: 183194d172b9ac11d4f1c5cb1324f7a09f4a157b
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54231848"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55756304"
 ---
 # <a name="show-directions-from-a-to-b"></a>Zobrazení pokynů pro trasu z A do B
 
@@ -41,7 +41,7 @@ A [symbol vrstvy](https://docs.microsoft.com/javascript/api/azure-maps-control/a
 
 Sedmý bloku kódu nastaví mezí mapy pomocí mapy [setCamera](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#setcamera-cameraoptions---cameraboundsoptions---animationoptions-) vlastnost.
 
-Poslední blok kódu dotazuje služba Směrování Azure Maps, která je součástí sady [modulu service](https://atlas.microsoft.com/sdk/js/atlas-service.js?api-version=1). [GetRouteDirections](https://docs.microsoft.com/javascript/api/azure-maps-rest/services.route?view=azure-iot-typescript-latest#getroutedirections) metoda se používá k získání trasy mezi počáteční a koncový bod. Odpověď se pak Parsuje do pomocí formátu GeoJSON [getGeoJsonRouteDirectionsResponse](https://docs.microsoft.com/javascript/api/azure-maps-rest/atlas.service.geojson.geojsonroutedirectionsresponse?view=azure-iot-typescript-latest#getgeojsonroutes) metody. Pak vykreslí odpovědi jako trasy na mapě. Další informace o přidání řádku do mapy, naleznete v tématu [přidejte řádek na mapě](./map-add-shape.md#addALine).
+Poslední blok kódu dotazuje služba Směrování Azure Maps, která je součástí sady [modulu service](https://atlas.microsoft.com/sdk/js/atlas-service.js?api-version=1). [GetRouteDirections](https://docs.microsoft.com/javascript/api/azure-maps-rest/services.route?view=azure-iot-typescript-latest) metoda se používá k získání trasy mezi počáteční a koncový bod. Odpověď se pak Parsuje do pomocí formátu GeoJSON [getGeoJsonRouteDirectionsResponse](https://docs.microsoft.com/javascript/api/azure-maps-rest/atlas.service.geojson.geojsonroutedirectionsresponse?view=azure-iot-typescript-latest) metody. Pak vykreslí odpovědi jako trasy na mapě. Další informace o přidání řádku do mapy, naleznete v tématu [přidejte řádek na mapě](./map-add-shape.md#addALine).
 
 Směrování dotazů, zdroj dat, symbolů a řádek vrstvy a hranice fotoaparátu vytvářejí se a nastavená na mapě [naslouchací proces událostí](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#events) zajistit, že výsledky se zobrazí po načtení mapy plně.
 
@@ -54,7 +54,7 @@ První blok kódu vytvoří objekt Map. Můžete zobrazit [Vytvořte mapu](./map
 
 Druhý bloku kódu vytvoří a přidá [DataSource](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.datasource?view=azure-iot-typescript-latest) objektu do mapy.
 
-Třetí blok kódu vytváří body start a cíl pro tuto trasu a přidá je do zdroje dat. Můžete zobrazit [přidání špendlíku na mapě](map-add-pin.md) pokyny ohledně použití [addPins](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#addpins).
+Třetí blok kódu vytváří body start a cíl pro tuto trasu a přidá je do zdroje dat. Můžete zobrazit [přidání špendlíku na mapě](map-add-pin.md) pokyny ohledně použití [addPins](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest).
 
  A [LineLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.linelayer?view=azure-iot-typescript-latest) vykresluje řádek objektů, který je obalen [DataSource](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.datasource?view=azure-iot-typescript-latest) jako řádky na mapě. Čtvrtý bloku kódu vytvoří a přidá čárovou vrstvu mapy. Zobrazit vlastnosti čárovou vrstvu na [LineLayerOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.linelayeroptions?view=azure-iot-typescript-latest).
 

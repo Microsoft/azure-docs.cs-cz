@@ -13,12 +13,12 @@ ms.author: vanto
 ms.reviwer: ''
 manager: craigg
 ms.date: 11/07/2018
-ms.openlocfilehash: de8bb0adf45a7cdaf9cc0d9a451af203e01e87da
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
+ms.openlocfilehash: a54fa92e248cb75be315327f7389e62904c7c777
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55564866"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55754862"
 ---
 # <a name="always-encrypted-protect-sensitive-data-and-store-encryption-keys-in-the-windows-certificate-store"></a>Funkce Always Encrypted: Ochrana citlivých dat a ukládání šifrovacích klíčů v úložišti certifikátů Windows
 
@@ -47,7 +47,7 @@ Pro účely tohoto kurzu budete potřebovat:
 ## <a name="create-a-blank-sql-database"></a>Vytvoření prázdné databáze SQL
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
 2. Klikněte na tlačítko **vytvořit prostředek** > **Data + úložiště** > **SQL Database**.
-3. Vytvoření **prázdné** databázi s názvem **Clinic** na nový nebo existující server. Podrobné pokyny pro vytvoření databáze na webu Azure Portal najdete v tématu [první databáze Azure SQL database](sql-database-get-started-portal.md).
+3. Vytvoření **prázdné** databázi s názvem **Clinic** na nový nebo existující server. Podrobné pokyny pro vytvoření databáze na webu Azure Portal najdete v tématu [první databáze Azure SQL database](sql-database-single-database-get-started.md).
    
     ![Vytvoření prázdné databáze](./media/sql-database-always-encrypted/create-database.png)
 

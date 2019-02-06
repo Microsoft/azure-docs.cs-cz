@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: erhopf
 ms.custom: seodec18
-ms.openlocfilehash: 5bd631bf31ba4e6a840c3e4e818062d322da0158
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
+ms.openlocfilehash: a9a1446db66e528cfac98222d4bd258efc660c84
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55727921"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55750371"
 ---
 # <a name="get-started-with-the-speech-devices-sdk"></a>Začínáme se sadou SDK pro řeč zařízení
 
@@ -46,12 +46,14 @@ Než začnete s vývojem pomocí sady SDK zařízení řeči, shromážděte inf
     Je možné [vytvoření jednoduchého modelu LUIS](https://docs.microsoft.com/azure/cognitive-services/luis/) nebo použijte ukázku, model LUIS, LUIS example.json. Ukázka je k dispozici z modelu LUIS [serveru pro stahování sadou SDK pro řeč zařízení](https://shares.datatransfer.microsoft.com/). K nahrání souboru JSON modelu [LUIS portál](https://www.luis.ai/home)vyberte **Import novou aplikaci**a potom vyberte soubor JSON.
 
 ## <a name="set-up-the-development-kit"></a>Nastavení sady development kit
-
-1. Vývojová sada připojit k počítači nebo napájení adaptér pomocí USB kabelu micro vysoce kvalitní. Indikátor zelené power bude zprovoznění v horním panelu.
-
-1. Vývojová sada připojení k počítači s použitím druhý mini kabelu USB.
+    
+1. Vývojová sada obsahuje dva konektory micro USB. Je vlevo konektor k sadě pro vývoj a je zvýrazněn jako napájení na následujícím obrázku. Vpravo je ovládat ji a je označen ladění na obrázku.
 
     ![připojení dev kit](media/speech-devices-sdk/qsg-1.png)
+       
+1. Vývojová sada Power pomocí kabelu USB micro pro připojení k počítači port, který power nebo napájení adaptér. Indikátor zelené power bude zprovoznění v horním panelu.
+
+1. K řízení vývoje kit připojit portu ladění do počítače s použitím druhý micro kabelu USB. Je nutné pomocí kabelu vysoce kvalitní zajistit spolehlivou komunikaci.
 
 1. Orientovat vývojové sady pro buď zacyklená nebo lineární konfigurace.
 
@@ -75,6 +77,8 @@ Než začnete s vývojem pomocí sady SDK zařízení řeči, shromážděte inf
 
     > [!NOTE]
     > Tyto příkazy používají Android Debug Bridge, `adb.exe`, který je součástí instalace sady Android Studio. Tento nástroj se nachází v C:\Users\[uživatelské jméno] \AppData\Local\Android\Sdk\platform nástroje. Tento adresář můžete přidat do cesty k němu pohodlnější, který má být vyvolán `adb`. V opačném případě musíte zadat úplnou cestu k instalaci adb.exe v každý příkaz, který vyvolá `adb`.
+    >
+    > Pokud se zobrazí chyba `no devices/emulators found` zkontrolujte USB kabelu je připojený a vysoce kvalitní kabel. Můžete použít `adb devices` ke kontrole, že počítač může kontaktovat pracovníka development Kit jako vrátí seznam zařízení.
 
     > [!TIP]
     > Ztlumte mikrofonu a reproduktorů Ujistěte se, že pracujete s mikrofonů development kit v počítači. Díky tomu nebude aktivujete omylem zařízení se zvukem z počítače.

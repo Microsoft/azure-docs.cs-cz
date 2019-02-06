@@ -1,23 +1,26 @@
 ---
-title: Vytvoření objektu blob v Azure Storage pomocí sady Node.js SDK v2
+title: Jak vytvořit objekt blob ve službě Azure Storage pomocí klientské knihovny pro Node.js v2
 description: V tomto rychlém startu vytvoříte v úložišti objektů (blob) účet úložiště a kontejner. Potom použijte klientskou knihovnu pro úložiště Azure pro Node.js v2 k nahrání objektu blob do služby Azure Storage, stažení objektu blob a výpisu objektů BLOB v kontejneru.
 services: storage
 author: tamram
 ms.custom: mvc
 ms.service: storage
 ms.topic: conceptual
-ms.date: 11/14/2018
+ms.date: 02/04/2019
 ms.author: tamram
-ms.openlocfilehash: 6af1a7c1cf140ba8ff4710c0cc90559e3df55135
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
+ms.openlocfilehash: 182315c705360d254c3bf342cd9c64ffafa0c021
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55734160"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55750070"
 ---
-# <a name="how-to-upload-download-and-list-blobs-using-nodejs-sdk-v2"></a>Postup nahrání, stažení a výpis objektů BLOB pomocí sady Node.js SDK v2
+# <a name="how-to-upload-download-and-list-blobs-using-the-client-library-for-nodejs-v2"></a>Postup nahrání, stažení a výpis objektů BLOB pomocí klientské knihovny pro Node.js v2
 
-V této příručce s postupy se dozvíte, jak pro nahrávání, stahování a výpis objektů BLOB pomocí Node.js a správu kontejnerů s úložištěm objektů Blob v Azure.
+V této příručce s postupy a zjistěte, jak používat klientskou knihovnu pro Node.js v2 k nahrávání, stahování a výpis objektů BLOB pomocí služby Azure Blob storage.
+
+> [!TIP]
+> Nejnovější verzi klientské knihovny Azure Storage pro Node.js je v10. Společnost Microsoft doporučuje, že používáte nejnovější verzi klientské knihovny, pokud je to možné. Chcete-li začít používat v10, přečtěte si téma [rychlý start: Nahrání, stažení, seznamu a odstraňování objektů BLOB pomocí klientské knihovny Azure Storage pro JavaScript v10 (preview)](storage-quickstart-blobs-nodejs-v10.md).
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -96,7 +99,7 @@ const storage = require('azure-storage');
 
 Načtení souboru s názvem *.env* do aktuálního kontextu spuštění
 - Modul *path* se vyžaduje k určení absolutní cesty k souboru, který se má nahrát do úložiště objektů blob.
-- Modul *azure-storage* je modul sady [SDK služby Azure Storage](https://docs.microsoft.com/javascript/api/azure-storage) pro Node.js.
+- *služby Azure storage* je [Klientská knihovna pro úložiště Azure](https://docs.microsoft.com/javascript/api/azure-storage) modul pro Node.js
 
 Dále se proměnná **blobService** inicializuje jako nová instance služby Azure Blob.
 
@@ -358,4 +361,4 @@ Prohlédněte si tyto další zdroje informací o vývoji v Node.js s využitím
 Tento článek ukazuje, jak odeslat soubor mezi místním diskem a úložištěm objektů Blob v Azure pomocí Node.js. Další informace o práci s úložištěm objektů blob najdete v tématu věnovanému úložišti GitHub.
 
 > [!div class="nextstepaction"]
-> [Sada Azure Storage SDK pro úložiště JavaScript](https://github.com/Azure/azure-storage-node)
+> [Microsoft Azure Storage SDK pro Node.js a JavaScript pro prohlížeče](https://github.com/Azure/azure-storage-node)

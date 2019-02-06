@@ -17,12 +17,12 @@ ms.workload: infrastructure-services
 ms.date: 03/14/2018
 ms.author: jdial
 ms.custom: ''
-ms.openlocfilehash: 87fcfd98065bcf1f0fea3a06029853f69d67842d
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
+ms.openlocfilehash: 31d583456f2ca0a2804c2215906965c2241af52d
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55663804"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55751493"
 ---
 # <a name="restrict-network-access-to-paas-resources-with-virtual-network-service-endpoints-using-the-azure-cli"></a>Omezení síťového přístupu k prostředkům PaaS s koncovými body služby virtuální sítě pomocí Azure CLI
 
@@ -51,7 +51,7 @@ az group create \
   --location eastus
 ```
 
-Vytvoření virtuální sítě s jednou podsítí s [az network vnet vytvořit](/cli/azure/network/vnet#az_network_vnet_create).
+Vytvoření virtuální sítě s jednou podsítí s [az network vnet vytvořit](/cli/azure/network/vnet).
 
 ```azurecli-interactive
 az network vnet create \
@@ -64,7 +64,7 @@ az network vnet create \
 
 ## <a name="enable-a-service-endpoint"></a>Povolení koncového bodu služby 
 
-Můžete povolit koncové body služby pouze pro služby, které podporují koncových bodů služby. Zobrazit povolený koncový bod služby k dispozici v umístění Azure s [az síťové připojení typu vnet seznam endpoint služby](/cli/azure/network/vnet#az_network_vnet_list_endpoint_services). Následující příklad vrátí seznam hodnot povolený koncový bod služby služeb dostupných v *eastus* oblasti. Seznam služeb, vrátí se zvětší v průběhu času dalších služeb Azure jsou povolený koncový bod služby.
+Můžete povolit koncové body služby pouze pro služby, které podporují koncových bodů služby. Zobrazit povolený koncový bod služby k dispozici v umístění Azure s [az síťové připojení typu vnet seznam endpoint služby](/cli/azure/network/vnet). Následující příklad vrátí seznam hodnot povolený koncový bod služby služeb dostupných v *eastus* oblasti. Seznam služeb, vrátí se zvětší v průběhu času dalších služeb Azure jsou povolený koncový bod služby.
 
 ```azurecli-interactive
 az network vnet list-endpoint-services \
@@ -103,7 +103,7 @@ az network vnet subnet update \
   --network-security-group myNsgPrivate
 ```
 
-Vytvoření pravidla zabezpečení se [az network nsg pravidlo vytvořte](/cli/azure/network/nsg/rule#az_network_nsg_rule_create). Pravidlo, které následuje umožňuje odchozí přístup k veřejné IP adresy přiřazené příslušné službě Azure Storage: 
+Vytvoření pravidla zabezpečení se [az network nsg pravidlo vytvořte](/cli/azure/network/nsg/rule). Pravidlo, které následuje umožňuje odchozí přístup k veřejné IP adresy přiřazené příslušné službě Azure Storage: 
 
 ```azurecli-interactive
 az network nsg rule create \
@@ -168,7 +168,7 @@ az storage account create \
   --kind StorageV2
 ```
 
-Po vytvoření účtu úložiště načíst připojovací řetězec pro účet úložiště do proměnné s [az storage account show-connection-string](/cli/azure/storage/account#az_storage_account_show_connection_string). Připojovací řetězec se používá k vytvoření sdílené složky v pozdějším kroku.
+Po vytvoření účtu úložiště načíst připojovací řetězec pro účet úložiště do proměnné s [az storage account show-connection-string](/cli/azure/storage/account). Připojovací řetězec se používá k vytvoření sdílené složky v pozdějším kroku.
 
 ```azurecli-interactive
 saConnectionString=$(az storage account show-connection-string \
@@ -223,7 +223,7 @@ Pokud chcete otestovat síťový přístup k účtu úložiště, nasaďte do ka
 
 ### <a name="create-the-first-virtual-machine"></a>Vytvoření prvního virtuálního počítače
 
-Vytvářet virtuální počítače *veřejné* podsíť s [az vm vytvořit](/cli/azure/vm#az_vm_create). Pokud ve výchozím umístění klíčů ještě neexistují klíče SSH, příkaz je vytvoří. Chcete-li použít konkrétní sadu klíčů, použijte možnost `--ssh-key-value`.
+Vytvářet virtuální počítače *veřejné* podsíť s [az vm vytvořit](/cli/azure/vm). Pokud ve výchozím umístění klíčů ještě neexistují klíče SSH, příkaz je vytvoří. Chcete-li použít konkrétní sadu klíčů, použijte možnost `--ssh-key-value`.
 
 ```azurecli-interactive
 az vm create \

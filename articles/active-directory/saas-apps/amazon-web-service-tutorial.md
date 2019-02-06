@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 01/16/2019
 ms.author: jeedes
-ms.openlocfilehash: d5633648ee94c4db20f095619871ac5cd9cec7da
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: def9d44c31ed50a859bf42aa148fb7e6a36764fd
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54825169"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55751085"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-amazon-web-services-aws"></a>Kurz: Integrace s Azure Active Directory pomocí Amazon Web Services (AWS)
 
@@ -442,6 +442,12 @@ Cílem této části je vytvořte uživatele Britta Simon Amazon Web Services (A
 V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 
 Když kliknete na dlaždici Amazon Web Services (AWS), na přístupovém panelu, vám by měl být automaticky přihlášeni k Amazon Web Services (AWS) u kterého nastavíte jednotné přihlašování. Další informace o přístupovém panelu, naleznete v tématu [Úvod k přístupovému panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+
+## <a name="known-issues"></a>Známé problémy
+
+ * V **zřizování** části **mapování** dílčí části zobrazit zprávu "Načítání...", který se nikdy zobrazit mapování atributů. Pouze dnes podporuje zřizování pracovního postupu je import role z AWS do Azure AD pro výběr během přiřazování uživatele nebo skupiny. Mapování atributů pro toto jsou předem a nelze jej konfigurovat.
+ 
+ * **Zřizování** části podporuje pouze zadat jednu sadu přihlašovacích údajů pro jednoho tenanta AWS najednou. Všechny importované role se zapisují do vlastnost appRoles služby Azure AD [objekt servicePrincipal](https://developer.microsoft.com/en-us/graph/docs/api-reference/beta/resources/serviceprincipal) AWS tenanta. Více tenantů AWS (reprezentovaný identifikátorem servicePrincipals) mohou být přidány do služby Azure AD z Galerie pro zřizování, ale jde o známý problém s nebude moct automaticky všechny importované role zapisovat z více servicePrincipals AWS použit pro zřizování do jednoho servicePrincipal použít pro jednotné přihlašování. Jako alternativní řešení [Microsoft Graph API](https://developer.microsoft.com/en-us/graph/docs/api-reference/beta/resources/serviceprincipal) umožňuje extrahovat všechny appRoles importovat do jednotlivých AWS servicePrincipal kde zřizování je nakonfigurované. Tyto role řetězce lze následně přidat k servicePrincipal AWS, kde nakonfigurován jednotného přihlašování.
 
 ## <a name="additional-resources"></a>Další materiály
 

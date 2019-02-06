@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: article
 ms.date: 12/04/2018
 ms.custom: seodec18
-ms.openlocfilehash: 706d8986eb25d2d67e3099ae5b0bfc6e55f94ad3
-ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
+ms.openlocfilehash: b10e434aece0ac214a0fd397ea94cbeccca4e44a
+ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55507364"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55746486"
 ---
 # <a name="known-issues-and-troubleshooting-azure-machine-learning-service"></a>Známé problémy a řešení problémů služby Azure Machine Learning
 
@@ -42,7 +42,7 @@ Obrázek po nasazení webové služby vytvářet selhání. Alternativním řeš
 
 ## <a name="deployment-failure"></a>Nasazení se nezdařilo.
 
-Pokud zjistíte `'DaskOnBatch:context_managers.DaskOnBatch', 'setup.py']' died with <Signals.SIGKILL: 9>`, změna SKU pro virtuální počítače použité ve vašem nasazení, který má více paměti.
+Pokud zjistíte `['DaskOnBatch:context_managers.DaskOnBatch', 'setup.py']' died with <Signals.SIGKILL: 9>`, změna SKU pro virtuální počítače použité ve vašem nasazení, který má více paměti.
 
 ## <a name="fpgas"></a>FPGA
 Nebude moct nasazovat modely na FPGA, dokud si vyžádáte a byla schválena pro FPGA kvótu. Chcete-li požádat o přístup, vyplňte formulář žádosti o kvóty: https://aka.ms/aml-real-time-ai

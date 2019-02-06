@@ -9,12 +9,12 @@ ms.reviewer: klam, LADocs
 ms.suite: integration
 ms.topic: reference
 ms.date: 06/22/2018
-ms.openlocfilehash: 2b60d4aed1b16db433439e69f9d6813f36f2faac
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
+ms.openlocfilehash: 4fc30deb68039130850f87cb70dbb606be463600
+ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 02/05/2019
-ms.locfileid: "55732545"
+ms.locfileid: "55747386"
 ---
 # <a name="trigger-and-action-types-reference-for-workflow-definition-language-in-azure-logic-apps"></a>Aktivační událost a akce referenční typy pro jazyk pro definování pracovních postupů v Azure Logic Apps
 
@@ -147,7 +147,7 @@ Kontroluje, Tato aktivační událost nebo *hlasování* koncový bod pomocí [r
 | <*query-parameters*> | JSON – objekt | Žádné parametry dotazu zahrnout pomocí rozhraní API volat. Například `"queries": { "api-version": "2018-01-01" }` přidá objekt `?api-version=2018-01-01` volání. |
 | <*max-runs*> | Integer | Ve výchozím instancí pracovních postupů logic app spustí ve stejnou dobu nebo paralelní až [výchozí limit](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits). Chcete-li tento limit změnit tak, že nastavíte nový <*počet*> hodnota naleznete v tématu [souběžnosti aktivační události změnit](#change-trigger-concurrency). |
 | <*max-runs-queue*> | Integer | Pokud vaše aplikace logiky je již spuštěn maximální počet instancí, které můžete změnit na základě `runtimeConfiguration.concurrency.runs` vlastnosti, všechny nové spuštění jsou vloženy do této fronty [výchozí limit](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits). Chcete-li změnit výchozí omezení, [omezit spuštění čekajících změn](#change-waiting-runs). |
-| <*splitOn-expression*> | String | Pro aktivační události, které vrací pole tento výraz odkazuje na pole, které chcete použít, takže můžete vytvořit a spustit instance pracovního postupu pro každou položku pole, místo použít smyčka "for each". <p>Například tento výraz představuje položku v poli vráceném v rámci obsah textu triggeru: `@triggerbody()?['value']` |
+| <*splitOn-expression*> | String | Pro aktivační události, které vrací pole tento výraz odkazuje na pole, které chcete použít, takže můžete vytvořit a spustit instance pracovního postupu pro každou položku pole, místo použít smyčka "Foreach". Při použití `SplitOn` vlastnost, získáte souběžných instancí až do limitu, který aktivační událost a služba může vrátit. <p>Například tento výraz představuje položku v poli vráceném v rámci obsah textu triggeru: `@triggerbody()?['value']` |
 | <*operation-option*> | String | Výchozí chování můžete změnit nastavením `operationOptions` vlastnost. Další informace najdete v tématu [možnosti operace](#operation-options). |
 ||||
 
@@ -237,7 +237,7 @@ Tato aktivační událost odešle žádost předplatné na koncový bod pomocí 
 | <*query-parameters*> | JSON – objekt | Žádné parametry dotazu zahrnout pomocí volání rozhraní API <p>Například `"queries": { "api-version": "2018-01-01" }` přidá objekt `?api-version=2018-01-01` volání. |
 | <*max-runs*> | Integer | Ve výchozím instancí pracovních postupů logic app spustí ve stejnou dobu nebo paralelní až [výchozí limit](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits). Chcete-li tento limit změnit tak, že nastavíte nový <*počet*> hodnota naleznete v tématu [souběžnosti aktivační události změnit](#change-trigger-concurrency). |
 | <*max-runs-queue*> | Integer | Pokud vaše aplikace logiky je již spuštěn maximální počet instancí, které můžete změnit na základě `runtimeConfiguration.concurrency.runs` vlastnosti, všechny nové spuštění jsou vloženy do této fronty [výchozí limit](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits). Chcete-li změnit výchozí omezení, [omezit spuštění čekajících změn](#change-waiting-runs). |
-| <*splitOn-expression*> | String | Pro aktivační události, které vrací pole tento výraz odkazuje na pole, které chcete použít, takže můžete vytvořit a spustit instance pracovního postupu pro každou položku pole, místo použít smyčka "for each". <p>Například tento výraz představuje položku v poli vráceném v rámci obsah textu triggeru: `@triggerbody()?['value']` |
+| <*splitOn-expression*> | String | Pro aktivační události, které vrací pole tento výraz odkazuje na pole, které chcete použít, takže můžete vytvořit a spustit instance pracovního postupu pro každou položku pole, místo použít smyčka "Foreach". Při použití `SplitOn` vlastnost, získáte souběžných instancí až do limitu, který aktivační událost a služba může vrátit. <p>Například tento výraz představuje položku v poli vráceném v rámci obsah textu triggeru: `@triggerbody()?['value']` |
 | <*operation-option*> | String | Výchozí chování můžete změnit nastavením `operationOptions` vlastnost. Další informace najdete v tématu [možnosti operace](#operation-options). |
 ||||
 
@@ -682,8 +682,9 @@ Ve výchozím nastavení, aktivační událost aktivuje pouze po získání "200
 
 ## <a name="trigger-multiple-runs"></a>Aktivovat více běhů
 
-Pokud se aktivační událost vrátí pole pro vaši aplikaci logiky ke zpracování, někdy smyčka "for each" může trvat příliš dlouho zpracovat každou položku pole. Místo toho můžete použít **vlastnost SplitOn** vlastnosti v triggeru k *debatch* pole. Rozdělení dávek rozděluje položky pole a spustí novou instanci aplikace logiky, která se spouští pro každou položku pole. Tento přístup je užitečný, třeba když chcete dotázat na koncový bod, který mezi intervaly dotazování může vrátit několik nových položek.
-Pro maximální počet pole položek, které **vlastnost SplitOn** dokáže zpracovat při spuštění aplikace logiky jednoho a zobrazit [omezení a konfigurace](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits).
+Pokud se aktivační událost vrátí pole pro vaši aplikaci logiky ke zpracování, někdy smyčka "for each" může trvat příliš dlouho zpracovat každou položku pole. Místo toho můžete použít **vlastnost SplitOn** vlastnosti v triggeru k *debatch* pole. Rozdělení dávek rozděluje položky pole a spustí novou instanci aplikace logiky, která se spouští pro každou položku pole. Tento přístup je užitečný, třeba když chcete dotázat na koncový bod, který mezi intervaly dotazování může vrátit několik nových položek. 
+
+Při použití `SplitOn` vlastnost, získáte souběžných instancí až do limitu, který aktivační událost a služba může vrátit. Pro maximální počet pole položek, které **vlastnost SplitOn** dokáže zpracovat při spuštění aplikace logiky jednoho a zobrazit [omezení a konfigurace](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits). 
 
 > [!NOTE]
 > Nemůžete použít **vlastnost SplitOn** pomocí vzoru synchronní odpověď. Jakýkoli pracovní postup, který používá **vlastnost SplitOn** a obsahuje odpověď akce běží asynchronně a okamžitě odešle `202 ACCEPTED` odpovědi.
@@ -1425,9 +1426,9 @@ Na rozdíl od dalších akcí **odpovědi** akce má zvláštní omezení:
 
   Ale pokud váš pracovní postup volá jiné aplikace logiky jako vnořený pracovní postup, nadřazený pracovní postup čeká na dokončení vnořeného pracovního postupu, bez ohledu na to, kolik času předává před dokončením vnořeného pracovního postupu.
 
-* Pokud váš pracovní postup používá **odpovědi** akce a způsob synchronní odpověď, pracovní postup nelze použít také **vlastnost splitOn** příkaz v definici aktivační události, protože tento příkaz vytvoří více běhů. Zkontrolujte pro tento případ, při použití metody PUT a pokud je hodnota true, vrátí odpověď "Chybný požadavek".
+* Pokud váš pracovní postup používá **odpovědi** akce a způsob synchronní odpověď, pracovní postup nelze použít také **vlastnost SplitOn** vlastnost v definici aktivační události vzhledem k tomu tento příkaz vytvoří různých spuštění. Zkontrolujte pro tento případ, při použití metody PUT a pokud je hodnota true, vrátí odpověď "Chybný požadavek".
 
-  Jinak, pokud váš pracovní postup používá **vlastnost splitOn** příkazu a **odpovědi** akce, pracovní postup běží asynchronně a okamžitě se vrátí odpověď "202 PŘIJATO".
+  Jinak, pokud váš pracovní postup používá **vlastnost SplitOn** vlastnost a **odpovědi** akce, pracovní postup běží asynchronně a okamžitě se vrátí odpověď "202 PŘIJATO".
 
 * Při provádění pracovního postupu dosáhne **odpovědi** akce, ale příchozí požadavek má již obdržel odpověď, **odpovědi** akce je označena jako "Failed" z důvodu konfliktu. A v důsledku toho je také označena spuštění aplikace logiky se stavem "NEÚSPĚCH".
 

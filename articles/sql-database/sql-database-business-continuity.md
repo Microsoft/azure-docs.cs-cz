@@ -13,12 +13,12 @@ ms.author: sashan
 ms.reviewer: mathoma, carlrab
 manager: craigg
 ms.date: 01/25/2019
-ms.openlocfilehash: b3b48c923b10fc201c5ac06b2dd805ee8638a18c
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 998d4f45a2d4956e0e230bcf00636a965c35dd97
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55473421"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55755165"
 ---
 # <a name="overview-of-business-continuity-with-azure-sql-database"></a>Přehled provozní kontinuity se službou Azure SQL Database
 
@@ -107,7 +107,7 @@ Následující části poskytují přehled postupů k obnovení pomocí záloh d
 
 Bez ohledu na funkce provozní kontinuity, které používáte, musíte:
 
-- Určit a připravit cílový server, včetně pravidel brány firewall na úrovni serveru, přihlášení a oprávnění na úrovni hlavní databáze
+- Určit a připravit cílový server, včetně pravidel brány firewall na úrovni serveru IP, přihlášení a oprávnění na úrovni hlavní databáze.
 - Určit, jak přesměrovat klienty a klientské aplikace na nový server
 - Zdokumentovat další závislosti, například nastavení auditování a výstrahy
 
@@ -132,7 +132,7 @@ Pokud používáte automatizovaných záloh s geograficky redundantní úložiš
 Po obnovení s použitím libovolného mechanismu musíte provést následující dodatečné úlohy, abyste pro uživatele zprovoznili své aplikace:
 
 - Přesměrujte klienty a klientské aplikace na nový server a obnovenou databázi.
-- Ujistěte se, že platí odpovídající pravidla brány firewall na úrovni serveru, aby se uživatelé mohli připojit (nebo použijte [brány firewall na úrovni databáze](sql-database-firewall-configure.md#creating-and-managing-firewall-rules)).
+- Zajistěte příslušná pravidla brány firewall na úrovni serveru IP jsou nastavené pro uživatele, aby připojení nebo použít [brány firewall na úrovni databáze](sql-database-firewall-configure.md#manage-ip-firewall-rules-using-the-azure-portal) umožňující příslušných pravidel.
 - Ujistěte se, že se používají odpovídající přihlášení a oprávnění na úrovni hlavní databáze (nebo použijte [obsažené uživatelé](https://docs.microsoft.com/sql/relational-databases/security/contained-database-users-making-your-database-portable))
 - Podle potřeby nakonfigurujte auditování.
 - Podle potřeby nakonfigurujte výstrahy.

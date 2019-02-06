@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: quickstart
 ms.date: 11/14/2018
 ms.author: rogarana
-ms.openlocfilehash: 614d8fac4130b3331cf5326800aaf5a2a3c58513
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
+ms.openlocfilehash: 1819d1dba777d97590c0b02a89cde3b46af78fff
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55658042"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55749231"
 ---
 # <a name="quickstart-upload-download-and-list-blobs-using-the-azure-cli"></a>Rychlý start: Nahrávání, stahování a výpis objektů BLOB pomocí Azure CLI
 
@@ -46,7 +46,7 @@ az storage container create --name mystoragecontainer
 Nejprve vytvořte soubor, který nahrajete do objektu blob.
 Pokud používáte Azure Cloud Shell, vytvořte soubor následujícím způsobem: Spusťte příkaz `vi helloworld`, po otevření souboru stiskněte **Insert**, zadejte Hello world a stiskněte **Esc**, zadejte `:x` a stiskněte **Enter**.
 
-V tomto příkladu nahrajete objekt blob do kontejneru, který jste vytvořili v předchozím kroku, a to pomocí příkazu [az storage blob upload](/cli/azure/storage/blob#az_storage_blob_upload).
+V tomto příkladu nahrajete objekt blob do kontejneru, který jste vytvořili v předchozím kroku, a to pomocí příkazu [az storage blob upload](/cli/azure/storage/blob).
 
 ```azurecli-interactive
 az storage blob upload \
@@ -66,11 +66,11 @@ az storage blob upload \
 
 Tato operace vytvoří objekt blob, pokud ještě neexistuje, a přepíše ho, pokud už existoval. Než budete pokračovat, můžete nahrát libovolné množství souborů.
 
-Pokud chcete nahrát více souborů najednou, můžete použít příkaz [az storage blob upload-batch](/cli/azure/storage/blob#az_storage_blob_upload_batch).
+Pokud chcete nahrát více souborů najednou, můžete použít příkaz [az storage blob upload-batch](/cli/azure/storage/blob).
 
 ## <a name="list-the-blobs-in-a-container"></a>Zobrazí seznam objektů blob v kontejneru
 
-Pomocí příkazu [az storage blob list](/cli/azure/storage/blob#az_storage_blob_list) zobrazte seznam objektů blob v kontejneru.
+Pomocí příkazu [az storage blob list](/cli/azure/storage/blob) zobrazte seznam objektů blob v kontejneru.
 
 ```azurecli-interactive
 az storage blob list \
@@ -80,7 +80,7 @@ az storage blob list \
 
 ## <a name="download-a-blob"></a>Stažení objektu blob
 
-Pomocí příkazu [az storage blob download](/cli/azure/storage/blob#az_storage_blob_download) stáhněte objekt blob, který jste nahráli dříve.
+Pomocí příkazu [az storage blob download](/cli/azure/storage/blob) stáhněte objekt blob, který jste nahráli dříve.
 
 ```azurecli-interactive
 az storage blob download \

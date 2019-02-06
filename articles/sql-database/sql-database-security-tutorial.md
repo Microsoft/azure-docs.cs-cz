@@ -10,12 +10,12 @@ ms.author: vanto
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 01/30/2019
-ms.openlocfilehash: 8a0c474ab610d89bd702613bc778ad29523a4192
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
+ms.openlocfilehash: 2ea87b36d8b489abf59ac4550121369a2ddf540f
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55732715"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55752513"
 ---
 # <a name="tutorial-secure-a-standalone-or-pooled-database"></a>Kurz: Zabezpečení samostatného nebo databázi ve fondu
 
@@ -45,7 +45,7 @@ Pro absolvování tohoto kurzu, nezapomeňte, že jsou splněné následující 
 
 - [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms)
 - Azure SQL server a databáze služby
-  - Vytvoření pomocí [webu Azure portal](sql-database-get-started-portal.md), [rozhraní příkazového řádku](sql-database-cli-samples.md), nebo [prostředí PowerShell](sql-database-powershell-samples.md)
+  - Vytvoření pomocí [webu Azure portal](sql-database-single-database-get-started.md), [rozhraní příkazového řádku](sql-database-cli-samples.md), nebo [prostředí PowerShell](sql-database-powershell-samples.md)
 
 Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 
@@ -64,7 +64,7 @@ Nastavte **povolit přístup ke službám Azure** k **OFF** nejbezpečnější k
 
 ### <a name="set-up-sql-database-server-firewall-rules"></a>Nastavení pravidel brány firewall databáze SQL serveru
 
-Pravidla brány firewall na úrovni serveru se vztahují ke všem databázím na stejném serveru SQL Database.
+Pravidla brány firewall na úrovni serveru IP použít ke všem databázím na stejném serveru SQL Database.
 
 Nastavit pravidlo brány firewall na úrovni serveru:
 
@@ -233,7 +233,7 @@ Zkopírování zabezpečeného připojovacího řetězce:
 
 Azure SQL Database poskytuje funkce zabezpečení, které jsou přístupné pomocí webu Azure portal. Tyto funkce jsou k dispozici pro databáze a serveru, s výjimkou maskování dat, která je k dispozici pouze v databázi. Další informace najdete v tématu [rozšířené zabezpečení dat](sql-database-advanced-data-security.md), [auditování](sql-database-auditing.md), [dynamické maskování dat](sql-database-dynamic-data-masking-get-started.md), a [transparentní šifrování dat](transparent-data-encryption-azure-sql.md).
 
-### <a name="advanced-data-security"></a>Advanced Data Security
+### <a name="advanced-data-security"></a>Pokročilé zabezpečení dat
 
 Funkce zabezpečení pokročilé dat zjištění potenciálních hrozeb, dojde k a poskytuje výstrahy zabezpečení na neobvyklé aktivity. Uživatelé můžou prozkoumat tyto podezřelé události pomocí funkce auditování a zjistit, zda událost pro přístup, narušení nebo zneužití dat v databázi. Uživatelé jsou taky k dispozici přehled zabezpečení, která zahrnuje posouzení ohrožení zabezpečení a nástroj pro zjišťování a klasifikace dat.
 

@@ -1,6 +1,6 @@
 ---
-title: Přidat osobním účtům jiných společností než Microsoft k aplikaci Microsoft Authenticator – Azure Active Directory | Dokumentace Microsoftu
-description: Jak přidat osobním účtům jiných společností než Microsoft, například pro Google, Facebook nebo Githubu do aplikace Microsoft Authenticator pro dvoufaktorové ověřování.
+title: Přidat své účty jiných společností než Microsoft k aplikaci Microsoft Authenticator – Azure Active Directory | Dokumentace Microsoftu
+description: Postup přidání vaše účty jiných společností než Microsoft, jako pro Google, Facebook nebo Githubu do aplikace Microsoft Authenticator pro dvoufaktorové ověřování.
 services: active-directory
 author: eross-msft
 manager: daveba
@@ -11,15 +11,15 @@ ms.topic: conceptual
 ms.date: 01/24/2019
 ms.author: lizross
 ms.reviewer: olhaun
-ms.openlocfilehash: db59d3d2795b8cfa3fc7682f4486d968f39ab6ab
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 0103aa7fb9142f38e0f34cd70fbdb198137bc2a0
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55459141"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55753822"
 ---
-# <a name="add-your-personal-non-microsoft-accounts"></a>Přidat váš osobní účty jiných společností než Microsoft
-Přidáte osobním účtům jiných společností než Microsoft, například pro Google, Facebook nebo Githubu do aplikace Microsoft Authenticator pro dvoufaktorové ověřování.
+# <a name="add-your-non-microsoft-accounts"></a>Přidat své účty jiných společností než Microsoft
+Přidáte vaše účty jiných společností než Microsoft, jako pro Google, Facebook nebo Githubu do aplikace Microsoft Authenticator pro dvoufaktorové ověřování. Aplikace Microsoft Authenticator funguje s každou aplikaci, která používá dvojúrovňového ověřování a jakýkoli účet, který podporuje podle času jednorázového hesla (TOTP) normami.
 
 >[!Important]
 >Než budete moct přidat svůj účet, musíte stáhnout a nainstalovat aplikaci Microsoft Authenticator. Pokud jste tak ještě neučinili, postupujte podle kroků v [stáhnout a nainstalovat aplikaci](microsoft-authenticator-app-how-to.md) článku.
@@ -29,7 +29,7 @@ Obecně platí pro všechny vaše osobní účty, musíte mít:
 
 1. Přihlaste se ke svému účtu a zapněte dvojúrovňového ověřování pomocí zařízení nebo počítače.
 
-2. Přidáte účet do aplikace Microsoft Authenticator.
+2. Přidáte účet do aplikace Microsoft Authenticator. Může se zobrazit výzva k naskenovat kód QR jako součást tohoto procesu.
 
 Proces zde poskytujeme pro vaše účty služby Facebook, Google, Githubu a Amazon, ale tento postup je stejný pro jakoukoli jinou aplikaci, jako je například Instagramu a Netflix, Adobe.
 

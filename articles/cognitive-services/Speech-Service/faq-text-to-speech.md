@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 06/11/2018
 ms.author: panosper
-ms.openlocfilehash: 2252dc9d1cb4a8b5666e3f8078528206ac0fddf7
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: 9b8340221c61bedbe010b9ef280ada62cfee7a21
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55228249"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55754863"
 ---
 # <a name="text-to-speech-frequently-asked-questions"></a>Převod textu na řeč – nejčastější dotazy
 
@@ -29,7 +29,7 @@ Pokud nemůžete najít odpovědi na své dotazy v tomto dokumentu, projděte si
 
 **Otázka: Kde mám začít Pokud chci používat standardní hlasové modelu?**
 
-**A**: Více než 80 standardní hlasové modely ve více než 45 jazyků jsou k dispozici prostřednictvím požadavků HTTP. Nejprve získejte [klíč předplatného](https://docs.microsoft.com/azure/cognitive-services/speech-service/get-started). Pro volání REST k modelům predeployed hlasové, najdete v článku [rozhraní REST API](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis#text-to-speech).
+**A**: Více než 80 standardní hlasové modely ve více než 45 jazyků jsou k dispozici prostřednictvím požadavků HTTP. Nejprve získejte [klíč předplatného](https://docs.microsoft.com/azure/cognitive-services/speech-service/get-started). Pro volání REST k modelům predeployed hlasové, najdete v článku [rozhraní REST API](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis).
 
 **Otázka: Pokud chci používat model přizpůsobených hlasových, je rozhraní API stejný jako ten, který se používá pro standardní hlasy?**
 

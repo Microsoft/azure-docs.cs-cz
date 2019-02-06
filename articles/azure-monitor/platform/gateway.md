@@ -11,16 +11,21 @@ ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 01/15/2019
+ms.date: 02/05/2019
 ms.author: magoedte
-ms.openlocfilehash: 551e7c0ca3b4b5e0e94aca39e19d9a35d08e4e05
-ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
+ms.openlocfilehash: e4ea964600c03ce3f3b5b276ed02d12f573814bf
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54353035"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55756491"
 ---
 # <a name="connect-computers-without-internet-access-using-the-log-analytics-gateway"></a>Připojit počítače bez připojení k Internetu pomocí brány Log Analytics
+
+>[!NOTE]
+>Brána OMS se jako součást probíhající přechod z Microsoft Operations Management Suite (OMS) do Azure monitoru, uvedené jako brána Log Analytics. 
+>
+
 Tento dokument popisuje, jak nakonfigurovat komunikaci s Azure Automation a Log Analytics pomocí Log Analytics gateway při přímé připojení nebo Operations Manager monitoruje počítače nemají přístup k Internetu.  Bránu Log Analytics, která je dopředné proxy server HTTP, který podporuje tunelování pomocí příkazu HTTP připojení HTTP, můžete shromažďovat data a odeslat do služby Azure Automation a Log Analytics jejich jménem.  
 
 Log Analytics gateway podporuje:
@@ -146,7 +151,7 @@ Požadavky a pokyny k instalaci agenta Log Analytics na bránu a v počítačíc
 
 Po instalaci agenta na server brány, můžete nakonfigurovat na hlásit do pracovního prostoru nebo pracovním prostorům agentů s bránou. Pokud agenta Log Analytics Windows není nainstalována na bráně, k se zapíše událost 300 **protokol brány OMS** protokolu událostí udávající agenta musí být nainstalovaný. Pokud je agent nainstalován, ale není nakonfigurovaný k ukládání dat do stejného pracovního prostoru jako agenti komunikaci přes něj, se zapíše událost 105 do stejného protokolu událostí, s informacemi o tom, že agent na bráně je potřeba nakonfigurovat k ukládání dat do stejného pracovního prostoru jako agenti s t he brány.
 
-Po dokončení konfigurace budete muset restartovat **bránu OMS** služby, aby se změny projevily. Jinak, brána odmítnou agentů pokouší komunikovat s Log Analytics a sestav id události 105 v **protokol brány OMS** protokolu událostí. To platí i při přidání nebo odebrání pracovního prostoru z konfigurace agenta na server brány.   
+Po dokončení konfigurace budete muset restartovat **bránu OMS** služby, aby se změny projevily. V opačném případě brány odmítnou pokouší komunikovat s Log Analytics a sestav událost ID 105 v agentů **protokol brány OMS** protokolu událostí. To platí i při přidání nebo odebrání pracovního prostoru z konfigurace agenta na server brány.   
 
 Informace týkající se služby Automation Hybrid Runbook Worker, naleznete v tématu [nasazení funkce Hybrid Runbook Worker](../../automation/automation-hybrid-runbook-worker.md).
 

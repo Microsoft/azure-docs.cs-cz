@@ -10,12 +10,12 @@ ms.custom: REST
 ms.topic: article
 ms.date: 06/06/2017
 ms.author: routlaw
-ms.openlocfilehash: bbbaa4c44a7c0d6da189f0c49d73adfa6142cdee
-ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
+ms.openlocfilehash: 6e4bd5977eb1761a065d5583675e6fd405b4610a
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47095787"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55750354"
 ---
 # <a name="get-resource-health-using-the-rest-api"></a>Získat stav prostředku pomocí rozhraní REST API 
 
@@ -44,12 +44,12 @@ Vyžadují se následující hlavičky:
 
 | Název | Popis |
 | :--- | :---------- |
-| subscriptionId | ID předplatného, který identifikuje předplatné Azure. Pokud máte více předplatných, přečtěte si téma [práce s několika předplatnými](https://docs.microsoft.com/cli/azure/manage-azure-subscriptions-azure-cli?view=azure-cli-latest#working-with-multiple-subscriptions). |
+| subscriptionId | ID předplatného, který identifikuje předplatné Azure. Pokud máte více předplatných, přečtěte si téma [práce s několika předplatnými](https://docs.microsoft.com/cli/azure/manage-azure-subscriptions-azure-cli?view=azure-cli-latest). |
 | verze API-version | Verze rozhraní API, která se má použít pro daný požadavek.<br /><br /> Tento dokument popisuje verzi api-version `2015-04-01`, který je obsažen v adrese URL výše.  |
 | $filter | Filtrování možnost omezit sadu vrácených výsledků. Povolená vzory pro tento parametr jsou k dispozici [v referenční dokumentaci pro operaci protokoly aktivit](/rest/api/monitor/activitylogs/list#uri-parameters). Jak ukazuje příklad zaznamenány všechny události v časovém rozmezí mezi 2018-05-16 a 2018-06-20 |
 | &nbsp; | &nbsp; |
 
-### <a name="request-body"></a>Tělo požadavku
+### <a name="request-body"></a>Text požadavku
 
 Pro tuto operaci je potřeba není datová část požadavku.
 

@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 01/24/2019
 ms.author: lizross
 ms.reviewer: olhaun
-ms.openlocfilehash: 0616118274c3698c8f49e02f80dbfb5e2e818074
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 4e83909c23dd5a1dd0768b099e2787d2306480f2
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55168158"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55754349"
 ---
 # <a name="download-and-install-the-microsoft-authenticator-app"></a>Stáhněte a nainstalujte aplikaci Microsoft Authenticator
 Aplikace Microsoft Authenticator přispívá k přihlášení k účtům používáte dvojúrovňového ověřování. Dvoufaktorové ověření vám umožní přístup k účtům bezpečněji, zejména při zobrazování citlivé informace. Protože hesla mohou být vymazány, někdo je ukradne nebo ohrožení zabezpečení, dvojúrovňového ověřování je krok dodatečné zabezpečení, která pomáhá chránit váš účet kvůli tomu je těžší jinými lidmi, kteří možnost proniknout.
@@ -38,10 +38,7 @@ Nainstalujte nejnovější verzi aplikace Microsoft Authenticator, podle vašeho
 
 - **Apple iOS.** Na zařízení s Iosem Apple přejděte na App Store na [stáhnout a nainstalovat aplikaci Microsoft Authenticator](https://app.adjust.com/e3rxkc_7lfdtm?fallback=https%3A%2F%2Fitunes.apple.com%2Fus%2Fapp%2Fmicrosoft-authenticator%2Fid983156458).
 
-- **Windows Phone.** Na váš Windows Phone přejděte na Microsoft Store pro [stáhnout a nainstalovat aplikaci Microsoft Authenticator](https://app.adjust.com/e3rxkc_7lfdtm?fallback=https%3A%2F%2Fwww.microsoft.com%2Fen-us%2Fp%2Fmicrosoft-authenticator%2F9nblgggzmcj6).
-
-    >[!Note]
-    >Proces přihlašování telefonu nelze použít na telefonech Windows Phone. Je nutné použít standardní ověřovací proces, jak je popsáno v [nastavit dvoustupňové ověřování](multi-factor-authentication-end-user-first-time.md) článku.
+    >[Důležité] Pokud nejste aktuálně na svém mobilním zařízení, stále můžete získat aplikaci Microsoft Authenticator odesláním sami odkaz ke stažení z [stránky Microsoft Authenticator](https://www.microsoft.com/en-us/account/authenticator).
 
 ## <a name="next-steps"></a>Další postup
 

@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 04/15/2017
 ms.author: scottwhi
 ms.custom: seodec2018
-ms.openlocfilehash: 7d79e81f8670492d025727ed76d7d529dbd4719d
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 177a9cbf9235bb3d2deb0d5f8e4e31a0e1472b48
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55188316"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55756467"
 ---
 # <a name="get-trending-images-from-the-web"></a>Získat populární imagí z webu
 
@@ -90,7 +90,7 @@ Odpověď obsahuje [TrendingImages](https://docs.microsoft.com/rest/api/cognitiv
 
 Každá dlaždice obsahuje bitovou kopii a možnosti pro získání související obrázky. Chcete-li získat související obrázky, můžete použít dotaz `text` volat [API pro vyhledávání obrázků](./search-the-web.md) a zobrazit související obrázky sami. Nebo můžete použít na adresu URL v `webSearchUrl` umožní uživateli Bingu imagí stránky s výsledky hledání, který obsahuje související obrázky.
 
-Při volání rozhraní API pro vyhledávání obrázků získat související obrázky, nastavte [id](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#id) parametr ID v dotazu `id` pole. Určení ID zajistí, že odpověď obsahuje bitovou kopii (je to první obrázek v odpovědi) a související obrázky. Navíc nastavte [q](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#q) parametr na text v dotazu `query` objektu `text` pole.
+Při volání rozhraní API pro vyhledávání obrázků získat související obrázky, nastavte [id](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#id) parametr ID v dotazu `id` pole. Určení ID zajistí, že odpověď obsahuje bitovou kopii (je to první obrázek v odpovědi) a související obrázky. Navíc nastavte [q](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference) parametr na text v dotazu `query` objektu `text` pole.
 
 Následující příklad ukazuje, jak získat související obrázky pan Smith v předchozí odpovědi vzroste zájem o rozhraní Image API pomocí ID bitové kopie.
 

@@ -10,12 +10,12 @@ ms.topic: tutorial
 ms.date: 11/29/2018
 ms.author: lahugh
 ms.custom: mvc
-ms.openlocfilehash: b5b6f1a1cbd4c06106b7817f9fc28d8d4a9cfc06
-ms.sourcegitcommit: 70471c4febc7835e643207420e515b6436235d29
+ms.openlocfilehash: f537ccfd18685cd5aa8ee06910fc80ac3d2056c9
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2019
-ms.locfileid: "54306331"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55750405"
 ---
 # <a name="tutorial-run-a-parallel-workload-with-azure-batch-using-the-python-api"></a>Kurz: Spuštění paralelní úlohy pomocí služby Azure Batch s využitím rozhraní Python API
 
@@ -170,7 +170,7 @@ Počet uzlů a velikost virtuálních počítačů jsou definované konstanty. B
 
 Spolu s fyzickými vlastnostmi uzlu tato konfigurace fondu také zahrnuje objekt [StartTask](/python/api/azure.batch.models.starttask). StartTask se spustí na každém uzlu, když se takový uzel připojí k fondu, a taky pokaždé, když se uzel restartuje. V tomto příkladě StartTask spouští příkazy prostředí Bash pro instalaci balíčku ffmpeg a závislostí na uzlech.
 
-Metoda [pool.add](/python/api/azure.batch.operations.pooloperations#azure_batch_operations_PoolOperations_add) odešle fond do služby Batch.
+Metoda [pool.add](/python/api/azure.batch.operations.pooloperations) odešle fond do služby Batch.
 
 ```python
 new_pool = batch.models.PoolAddParameter(
@@ -200,7 +200,7 @@ batch_service_client.pool.add(new_pool)
 
 ### <a name="create-a-job"></a>Vytvoření úlohy
 
-Úloha služby Batch určí fond, ve kterém se budou spouštět úkoly, a volitelná nastavení, jako je priorita a plán práce. Ukázka vytvoří úlohu zavoláním metody `create_job`. Tato definovaná funkce používá třídu [JobAddParameter](/python/api/azure.batch.models.jobaddparameter) k vytvoření úlohy ve vašem fondu. Metoda [job.add](/python/api/azure.batch.operations.joboperations#azure_batch_operations_JobOperations_add) odešle fond do služby Batch. Na začátku úloha neobsahuje žádné úkoly.
+Úloha služby Batch určí fond, ve kterém se budou spouštět úkoly, a volitelná nastavení, jako je priorita a plán práce. Ukázka vytvoří úlohu zavoláním metody `create_job`. Tato definovaná funkce používá třídu [JobAddParameter](/python/api/azure.batch.models.jobaddparameter) k vytvoření úlohy ve vašem fondu. Metoda [job.add](/python/api/azure.batch.operations.joboperations) odešle fond do služby Batch. Na začátku úloha neobsahuje žádné úkoly.
 
 ```python
 job = batch.models.JobAddParameter(
@@ -216,7 +216,7 @@ Aplikace vytvoří úkoly pro úlohu pomocí volání `add_tasks`. Tato definova
 
 Ukázka po spuštění příkazového řádku vytvoří pro soubor MP3 objekt [OutputFile](/python/api/azure.batch.models.outputfile). Výstupní soubory všech úkolů (v tomto případě jednoho) se pomocí vlastnosti `output_files` nahrají do kontejneru v propojeném účtu úložiště.
 
-Potom aplikace přidá úkoly do úlohy pomocí metody [task.add_collection](/python/api/azure.batch.operations.taskoperations#azure_batch_operations_TaskOperations_add_collection) a ta je zařadí do fronty ke spuštění ve výpočetních uzlech. 
+Potom aplikace přidá úkoly do úlohy pomocí metody [task.add_collection](/python/api/azure.batch.operations.taskoperations) a ta je zařadí do fronty ke spuštění ve výpočetních uzlech. 
 
 ```python
 tasks = list()

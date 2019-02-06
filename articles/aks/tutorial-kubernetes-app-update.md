@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 12/19/2018
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: e795c275b832fcd59799a4d4d1107b76f6e489b6
-ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
+ms.openlocfilehash: eb1aa90cf7a1fafaa066e5a1109d1031b53034e2
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54856838"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55756423"
 ---
 # <a name="tutorial-update-an-application-in-azure-kubernetes-service-aks"></a>Kurz: Aktualizace aplikace ve službě Azure Kubernetes Service (AKS)
 
@@ -73,7 +73,7 @@ Aktualizované hodnoty, které jsou součástí *config_file.cfg* souboru se zob
 
 ## <a name="tag-and-push-the-image"></a>Označení a odeslání image
 
-Abyste mohli aktualizovanou image správně používat, označte image *azure-vote-front* pomocí názvu přihlašovacího serveru vašeho registru ACR. Název přihlašovacího serveru získáte pomocí příkazu [az acr list](/cli/azure/acr#az_acr_list):
+Abyste mohli aktualizovanou image správně používat, označte image *azure-vote-front* pomocí názvu přihlašovacího serveru vašeho registru ACR. Název přihlašovacího serveru získáte pomocí příkazu [az acr list](/cli/azure/acr):
 
 ```azurecli
 az acr list --resource-group myResourceGroup --query "[].{acrLoginServer:loginServer}" --output table

@@ -6,15 +6,15 @@ ms.service: automation
 ms.subservice: process-automation
 author: georgewallace
 ms.author: gwallace
-ms.date: 06/12/2018
+ms.date: 02/05/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 0125c64a96929db9c8846ca7ad731fa3dc795f98
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: 34a695daa077e882e911d3fb59f8a30e39c3a9d2
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54432961"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55756627"
 ---
 # <a name="forward-job-status-and-job-streams-from-automation-to-log-analytics"></a>Předávání stavu úlohy a datové proudy úlohy ze služby Automation do Log Analytics
 
@@ -64,11 +64,12 @@ Pokud je potřeba najít *název* vašeho účtu Automation na webu Azure Portal
    Set-AzureRmDiagnosticSetting -ResourceId $automationAccountId -WorkspaceId $workspaceId -Enabled $true
    ```
 
-Po spuštění tohoto skriptu se zobrazí záznamy ve službě Log Analytics do 10 minut od nové JobLogs nebo JobStreams probíhá zápis.
+Po spuštění tohoto skriptu, může trvat hodinu, než začnete zobrazit záznamy v Log Analytics nové JobLogs nebo JobStreams probíhá zápis.
 
 Pokud chcete zobrazit protokoly, spuštěním následujícího dotazu v prohledávání protokolu log Analytics: `AzureDiagnostics | where ResourceProvider == "MICROSOFT.AUTOMATION"`
 
 ### <a name="verify-configuration"></a>Ověření konfigurace
+
 Pokud chcete potvrdit, že svůj účet Automation posílá protokoly do pracovního prostoru Log Analytics, zkontrolujte, že Diagnostika je správně nakonfigurované na účtu Automation pomocí následující příkaz Powershellu:
 
 ```powershell-interactive
@@ -76,14 +77,16 @@ Get-AzureRmDiagnosticSetting -ResourceId $automationAccountId
 ```
 
 Ve výstupu zajistěte následující:
-+ V části *protokoly*, hodnota *povoleno* je *True*.
-+ Hodnota *ID pracovního prostoru* je nastavena na ID prostředku pracovního prostoru Log Analytics.
+
+* V části *protokoly*, hodnota *povoleno* je *True*.
+* Hodnota *ID pracovního prostoru* je nastavena na ID prostředku pracovního prostoru Log Analytics.
 
 ## <a name="log-analytics-records"></a>Záznamy služby Log Analytics
 
 Diagnostika ve službě Azure Automation vytvoří dva typy záznamů v Log Analytics a jsou označené jako **AzureDiagnostics**. Následující dotazy pomocí upgradovaný dotazovací jazyk k Log Analytics. Informace o běžných dotazů mezi starší verze dotazovací jazyk a nový dotazovací jazyk Azure Log Analytics najdete [starší verze na nový dotazovací jazyk Azure Log Analytics tahák](https://docs.loganalytics.io/docs/Learn/References/Legacy-to-new-to-Azure-Log-Analytics-Language)
 
 ### <a name="job-logs"></a>Protokoly úloh
+
 | Vlastnost | Popis |
 | --- | --- |
 | TimeGenerated |Datum a čas provedení úlohy runbooku. |
@@ -128,6 +131,7 @@ Diagnostika ve službě Azure Automation vytvoří dva typy záznamů v Log Anal
 | ResourceType | AUTOMATIONACCOUNTS |
 
 ## <a name="viewing-automation-logs-in-log-analytics"></a>Automatizace prohlížení protokolů v Log Analytics
+
 Teď, když jste začali, odesílání vaše protokoly úloh služby Automation do Log Analytics, Podívejme se, co můžete dělat pomocí těchto protokolů v Log Analytics.
 
 Pokud chcete zobrazit protokoly, spusťte následující dotaz: `AzureDiagnostics | where ResourceProvider == "MICROSOFT.AUTOMATION"`
@@ -141,7 +145,7 @@ Pokud chcete vytvořit pravidlo upozornění, začněte vytvořením prohledáv�
 2. Vytvoření vyhledávací dotaz protokolu upozornění tak, že zadáte následující vyhledávání do pole dotazu: `AzureDiagnostics | where ResourceProvider == "MICROSOFT.AUTOMATION" and Category == "JobLogs" and (ResultType == "Failed" or ResultType == "Suspended")`  Můžete taky Seskupit podle RunbookName pomocí: `AzureDiagnostics | where ResourceProvider == "MICROSOFT.AUTOMATION" and Category == "JobLogs" and (ResultType == "Failed" or ResultType == "Suspended") | summarize AggregatedValue = count() by RunbookName_s`
 
    Pokud jste nastavili protokoly z více než jeden účet služby Automation nebo odběru do pracovního prostoru, můžete je seskupovat vaše předplatné a účet Automation. Název účtu služby Automation najdete v poli prostředků ve službě search JobLogs.
-1. Chcete-li otevřít **vytvořit pravidlo** obrazovce, klikněte na tlačítko **+ nové pravidlo upozornění** v horní části stránky. Další informace o možnostech konfigurace upozornění, najdete v části [upozornění protokolů ve službě Azure](../azure-monitor/platform/alerts-unified-log.md).
+3. Chcete-li otevřít **vytvořit pravidlo** obrazovce, klikněte na tlačítko **+ nové pravidlo upozornění** v horní části stránky. Další informace o možnostech konfigurace upozornění, najdete v části [upozornění protokolů ve službě Azure](../azure-monitor/platform/alerts-unified-log.md).
 
 ### <a name="find-all-jobs-that-have-completed-with-errors"></a>Najít všechny úlohy, které byly dokončeny s chybami
 Kromě upozornění na selhání, zjistíte po neukončující Chyba úlohy runbooku. V těchto případech prostředí PowerShell vytvoří chybový proud, ale s neukončujícími chybami nezpůsobí úlohu pozastavit nebo selhání.    

@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 09/24/2018
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: b98261601f352668fa3cc8d18dc3b1d0d7fe2654
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: 40e0230e6a8e03aa53a24f2497fcd016909c0ada
+ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53553415"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55757593"
 ---
 # <a name="azure-premium-storage-design-for-high-performance"></a>Azure Premium Storage: Návrh pro vysoký výkon
 
@@ -116,16 +116,16 @@ Nejlepší způsob, jak měřit požadavky na výkon vaší aplikace, je použit
 
 Čítače výkonu jsou k dispozici pro procesor, paměť a každý logický disk a fyzický disk serveru. Pokud použijete disky storage úrovně premium s virtuálním Počítačem, jsou čítače Fyzický disk pro každý disk storage úrovně premium a čítače logický disk se pro každý svazek na disky premium storage vytvoří. Hodnoty pro disky, které hostují úlohy vaší aplikace musí zachytit. Pokud existuje mapování 1: 1 mezi logické a fyzické disky, můžete odkazovat na fyzický disk čítačů; v opačném případě odkazují na logický disk čítače. V Linuxu příkaz iostat vygeneruje sestavu využití procesoru a disku. Sestava využití disku poskytuje statistické údaje na fyzické zařízení nebo oddíl. Pokud máte databázový server pomocí protokolu a data na různých discích, shromažďování těchto dat pro oba disky. Následující tabulka popisuje čítače pro disky, procesoru a paměti:
 
-| Čítač | Popis | Nástroj PerfMon | iostat |
+| Čítač | Popis | PerfMon | iostat |
 | --- | --- | --- | --- |
 | **Vstupně-výstupních operací nebo transakcí za sekundu** |Počet vstupně-výstupní požadavky vydané na disk úložiště za sekundu. |Čtení disku/s <br> Zápis disku/s |TPS <br> r/s <br> w/s |
 | **Zápisy a čtení disku** |% Čtení a zápisu operace provedené na disku. |Čas čtení disku v % <br> Čas zápisu disku v % |r/s <br> w/s |
 | **Propustnost** |Objem dat číst nebo zapsat na disk za sekundu. |Bajty čtení z disku/s <br> Bajty zapisování na disk/s |kB_read/s <br> kB_wrtn/s |
 | **Latence** |Celková doba nutná k dokončení žádosti o vstupně-výstupní operace disku. |Průměrná doba disku/čtení <br> Průměrná doba disku/zápis |operátor await <br> svctm |
-| **Velikost vstupně-výstupních operací** |Velikost vstupně-výstupních požadavků problémy, které disky úložiště. |Průměrná disku/přečtených bajtů <br> Průměrná disku bajtů/zápis |avgrq sz |
+| **Velikost vstupně-výstupních operací** |Velikost vstupně-výstupních požadavků problémy, které disky úložiště. |Průměrná disku/přečtených bajtů <br> Průměrná disku bajtů/zápis |avgrq-sz |
 | **Hloubka fronty** |Počet nezpracovaných vstupně-výstupních operací žádostí o čekání číst nebo zapsat na disk úložiště. |Aktuální délka fronty disku |avgqu sz |
 | **Max. Paměť** |Objem paměti vyžadované ke spuštění aplikace hladce |% Využití potvrzených bajtů |Použití vmstat |
-| **Max. VYUŽITÍ PROCESORU** |Velikost procesoru potřebné ke spuštění aplikace hladce |% Času procesoru |% využití |
+| **Max. CPU** |Velikost procesoru potřebné ke spuštění aplikace hladce |% Času procesoru |% využití |
 
 Další informace o [iostat](https://linux.die.net/man/1/iostat) a [PerfMon](https://msdn.microsoft.com/library/aa645516.aspx).
 
@@ -198,8 +198,8 @@ Vysoká škálování virtuálních počítačů jsou k dispozici v různých ve
 
 | Velikost virtuálního počítače | Procesorová jádra | Memory (Paměť) | Velikosti disku virtuálního počítače | Max. Datové disky | Velikost mezipaměti | IOPS | Omezení šířky pásma vstupně-výstupní mezipaměti |
 | --- | --- | --- | --- | --- | --- | --- | --- |
-| Standard_DS14 |16 |112 GB |OPERAČNÍHO SYSTÉMU = 1 023 GB <br> Místní disk SSD 224 GB = |32 |576 GB |50 000 VSTUPNĚ-VÝSTUPNÍCH OPERACÍ <br> 512 MB za sekundu |4 000 vstupně-výstupních operací a 33 MB za sekundu |
-| Standard_GS5 |32 |448 GB |OPERAČNÍHO SYSTÉMU = 1 023 GB <br> Místní disk SSD 896 GB = |64 |4224 GB |80 000 VSTUPNĚ-VÝSTUPNÍCH OPERACÍ <br> 2 000 MB za sekundu |5 000 IOPS a přes 50 MB za sekundu |
+| Standard_DS14 |16 |112 GB |OS = 1023 GB <br> Místní disk SSD 224 GB = |32 |576 GB |50 000 VSTUPNĚ-VÝSTUPNÍCH OPERACÍ <br> 512 MB za sekundu |4 000 vstupně-výstupních operací a 33 MB za sekundu |
+| Standard_GS5 |32 |448 GB |OS = 1023 GB <br> Místní disk SSD 896 GB = |64 |4224 GB |80 000 VSTUPNĚ-VÝSTUPNÍCH OPERACÍ <br> 2 000 MB za sekundu |5 000 IOPS a přes 50 MB za sekundu |
 
 Chcete-li zobrazit úplný seznam všech dostupných velikostí virtuálních počítačů Azure, přečtěte si [velikosti virtuálních počítačů s Windows](../articles/virtual-machines/windows/sizes.md) nebo [velikosti virtuálního počítače s Linuxem](../articles/virtual-machines/linux/sizes.md). Zvolte velikost virtuálního počítače, která může splňovat a škálujte vaše požadavky na výkon požadovanou aplikaci. Kromě toho vezměte v úvahu následující důležité informace při volbě velikosti virtuálních počítačů.
 
@@ -235,7 +235,7 @@ Azure Premium Storage nabízí osm GA velikosti disků a třech velikostech disk
 
 | Typ disky Premium  | P4    | P6    | P10   | P15 | P20   | P30   | P40   | P50   | P60   | P70   | P80   |
 |---------------------|-------|-------|-------|-------|-------|-------|-------|-------|-------|-------|-------|
-| Velikost disku           | 32 GiB | 64 GiB | 128 GiB| 256 GiB| 512 GB            | 1 024 GiB (1 TiB)    | 2 048 GiB (2 TiB)    | 4 095 GiB (4 TiB)    | 8 192 GiB (8 TiB)    | 16384 giB (16 TB)    | 32 767 giB (32 GB)    |
+| Velikost disku           | 32 GiB | 64 GiB | 128 GiB| 256 GiB| 512 GB            | 1 024 GiB (1 TiB)    | 2 048 GiB (2 TiB)    | 4 095 GiB (4 TiB)    | 8 192 GiB (8 TiB)    | 16,384 GiB (16 TiB)    | 32 767 giB (32 GB)    |
 | Vstupně-výstupní operace za sekundu / disk       | 120   | 240   | 500   | 1100 | 2300              | 5000              | 7500              | 7500              | 12 500              | 15 000              | 20,000              |
 | Propustnost / disk | 25 MiB za sekundu  | 50 MiB za sekundu  | 100 MiB za sekundu |125 MiB za sekundu | 150 MiB za sekundu | 200 MiB za sekundu | 250 MiB za sekundu | 250 MiB za sekundu | 480 MiB za sekundu | 750 MiB za sekundu | 750 MiB za sekundu |
 
@@ -256,7 +256,7 @@ Určete počet disků, které budete potřebovat tím, že posoudí požadavky a
 
 Mějte na paměti, disků Premium Storage mají vyšší výkon funkce ve srovnání s disky Storage úrovně Standard. Proto pokud provádíte migraci aplikace z virtuálního počítače Azure IaaS pomocí úložiště úrovně Standard na Premium Storage, budete pravděpodobně potřebovat méně disky úrovně premium, abyste dosáhli stejné nebo vyšší výkon pro vaše aplikace.
 
-## <a name="disk-caching"></a>Používání mezipaměti disku
+## <a name="disk-caching"></a>Disk Caching
 
 Vysoké škálování virtuálních počítačů, které využívají Azure Premium Storage mají vícevrstvé technologií ukládání do mezipaměti volá BlobCache. BlobCache používá kombinaci RAM virtuálního počítače a místní disk SSD pro ukládání do mezipaměti. Tato mezipaměť je dostupná pro trvalé disky úrovně Premium Storage a místní disky virtuálních počítačů. Ve výchozím nastavení toto nastavení mezipaměti je nastavena pro čtení a zápis pro disky s operačním systémem a jen pro čtení pro datové disky hostované na Premium Storage. Pomocí disku na disky Storage úrovně Premium povolené ukládání do mezipaměti, virtuální počítače s vysokou škálovatelností může dosáhnout velmi vysokou úroveň výkonu, které přesahují základní výkon disku.
 
@@ -281,7 +281,7 @@ Toto jsou doporučené diskové nastavení mezipaměti pro datové disky
 | ReadOnly |Konfigurace mezipaměti hostitele jako jen pro čtení pro disky jen pro čtení a pro čtení i zápis. |
 | ReadWrite |Konfigurace mezipaměti hostitele jako ReadWrite pouze v případě, že vaše aplikace správně zpracovává zápis dat uložených v mezipaměti do trvalé disky v případě potřeby. |
 
-*Jen pro čtení*  
+*ReadOnly*  
 Konfigurace ukládání do mezipaměti na Premium Storage data disky určené jen pro čtení, můžete dosáhnout nízké latence čtení a získat velmi vysokou propustnost a vstupně-výstupních operací čtení pro vaši aplikaci. Toto je z důvodu dva důvody
 
 1. Čtení provést z mezipaměti, který se nachází na paměť virtuálního počítače a místní disk SSD, je mnohem rychlejší než čtení z datového disku, který je v úložišti objektů blob v Azure.  
@@ -396,7 +396,7 @@ Abychom si předvedli maximální IOPs, použijte menší velikost požadavku. P
 | Specifikace přístupu | Velikost požadavku | Náhodné % | % Čtení |
 | --- | --- | --- | --- |
 | RandomWrites\_8 kb |8 KB |100 |0 |
-| RandomReads\_8 kb |8 KB |100 |100 |
+| RandomReads\_8K |8 KB |100 |100 |
 
 *Specifikace testů maximální propustnost*  
 Abychom si předvedli maximální propustnost, použijte větší velikost požadavku. Použít žádost o velikosti 64 kB a vytvoření specifikace pro náhodné zápisy a čtení.
@@ -404,7 +404,7 @@ Abychom si předvedli maximální propustnost, použijte větší velikost poža
 | Specifikace přístupu | Velikost požadavku | Náhodné % | % Čtení |
 | --- | --- | --- | --- |
 | RandomWrites\_64 kB |64 KB |100 |0 |
-| RandomReads\_64 kB |64 KB |100 |100 |
+| RandomReads\_64K |64 KB |100 |100 |
 
 *Spuštění testu Iometer*  
 Provedení kroků zahřívání mezipaměti
@@ -419,25 +419,25 @@ Provedení kroků zahřívání mezipaměti
 
    | Scénář | Cílový svazek | Název | Doba trvání |
    | --- | --- | --- | --- |
-   | Inicializovat Disk mezipaměti |Čtení z mezipaměti |RandomWrites\_1 MB |2hrs |
+   | Inicializovat Disk mezipaměti |CacheReads |RandomWrites\_1 MB |2hrs |
 1. Spusťte test Iometer pro zahájení práce s disk mezipaměti s následujícími parametry. Použití tří pracovních vláken pro cílový svazek a hloubka fronty 128. Nastavte "Doba běhu" trvání testu na kartě "Nastavení testu" 2hrs.
 
    | Scénář | Cílový svazek | Název | Doba trvání |
    | --- | --- | --- | --- |
-   | Zahřívání Disk mezipaměti |Čtení z mezipaměti |RandomReads\_1 MB |2hrs |
+   | Zahřívání Disk mezipaměti |CacheReads |RandomReads\_1 MB |2hrs |
 
 Po disk mezipaměti je provozní teplotu, pokračujte v testu scénáře uvedené níže. Ke spuštění testů Iometer, použijte aspoň tři pracovní vlákna pro **každý** cílit na svazku. Pro každý pracovní podproces vyberte cílový svazek, nastavte hloubka fronty a vyberte jednu z uložené testovací specifikace, jak je znázorněno v následující tabulce, chcete-li spustit příslušný testovací scénář. Tabulka také ukazuje očekávané výsledky IOPS a propustnost při spuštění těchto testů. Ve všech případech se používá malou velikost vstupně-výstupních operací o velikosti 8KB a hloubka vysokou fronty 128.
 
 | Testovací scénář | Cílový svazek | Název | Výsledek |
 | --- | --- | --- | --- |
-| Max. Čtení vstupně-výstupních operací |Čtení z mezipaměti |RandomWrites\_8 kb |50 000 VSTUPNĚ-VÝSTUPNÍCH OPERACÍ |
-| Max. Zápis IOPS |NoCacheWrites |RandomReads\_8 kb |64 000 VSTUPNĚ-VÝSTUPNÍCH OPERACÍ |
-| Max. Kombinované vstupně-výstupních operací |Čtení z mezipaměti |RandomWrites\_8 kb |100 000 VSTUPNĚ-VÝSTUPNÍCH OPERACÍ |
-| NoCacheWrites |RandomReads\_8 kb | &nbsp; | &nbsp; |
-| Max. Přečtené MB/s |Čtení z mezipaměti |RandomWrites\_64 kB |524 MB/s |
-| Max. Zápisy MB/s |NoCacheWrites |RandomReads\_64 kB |524 MB/s |
-| Kombinované MB/s |Čtení z mezipaměti |RandomWrites\_64 kB |1 000 MB za sekundu |
-| NoCacheWrites |RandomReads\_64 kB | &nbsp; | &nbsp; |
+| Max. Čtení vstupně-výstupních operací |CacheReads |RandomWrites\_8 kb |50 000 VSTUPNĚ-VÝSTUPNÍCH OPERACÍ |
+| Max. Zápis IOPS |NoCacheWrites |RandomReads\_8K |64 000 VSTUPNĚ-VÝSTUPNÍCH OPERACÍ |
+| Max. Kombinované vstupně-výstupních operací |CacheReads |RandomWrites\_8 kb |100 000 VSTUPNĚ-VÝSTUPNÍCH OPERACÍ |
+| NoCacheWrites |RandomReads\_8K | &nbsp; | &nbsp; |
+| Max. Přečtené MB/s |CacheReads |RandomWrites\_64 kB |524 MB/s |
+| Max. Zápisy MB/s |NoCacheWrites |RandomReads\_64K |524 MB/s |
+| Kombinované MB/s |CacheReads |RandomWrites\_64 kB |1 000 MB za sekundu |
+| NoCacheWrites |RandomReads\_64K | &nbsp; | &nbsp; |
 
 Tady jsou snímky obrazovky Iometer výsledky testu pro kombinované scénáře IOPS a propustnost.
 
@@ -464,7 +464,7 @@ Pro řízení operací čtení na discích budeme používat čtyři pracovních
 *Maximální zápis IOPS*  
 Vytvořte soubor projektu s následujícími specifikacemi získat maximální zápis IOPS. Pojmenujte ji "fiowrite.ini".
 
-```
+```ini
 [global]
 size=30g
 direct=1
@@ -504,7 +504,7 @@ Při spuštění testů se bude moct zobrazit počet zápis IOPS virtuálního p
 *Čtení maximální IOPS*  
 Vytvořte soubor projektu s následujícími specifikacemi získat maximální vstupně-výstupních operací čtení. Pojmenujte ji "fioread.ini".
 
-```
+```ini
 [global]
 size=30g
 direct=1
@@ -544,7 +544,7 @@ Při spuštění testů se bude moct zobrazit počet přečtených IOPS virtuál
 *Maximální počet čtení a zápis IOPS*  
 Vytvoření souboru projektu následující specifikace získat maximální kombinaci pro čtení a zápis IOPS. Pojmenujte ji "fioreadwrite.ini".
 
-```
+```ini
 [global]
 size=30g
 direct=1

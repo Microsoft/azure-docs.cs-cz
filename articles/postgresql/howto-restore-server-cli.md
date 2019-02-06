@@ -7,12 +7,12 @@ ms.service: postgresql
 ms.devlang: azurecli
 ms.topic: conceptual
 ms.date: 04/01/2018
-ms.openlocfilehash: 4bee57abe6de8e80ddf6f788fb17bb8b7d82849d
-ms.sourcegitcommit: 97d0dfb25ac23d07179b804719a454f25d1f0d46
+ms.openlocfilehash: 357b22e4d4a6bf42ba165e49fc3cc01762268297
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/25/2019
-ms.locfileid: "54913092"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55756508"
 ---
 # <a name="how-to-back-up-and-restore-a-server-in-azure-database-for-postgresql-using-the-azure-cli"></a>Jak zálohovat a obnovovat server ve službě Azure Database for PostgreSQL pomocí Azure CLI
 
@@ -57,7 +57,7 @@ Období uchování zálohy se řídí jak daleko zpět v čase, které mohou bý
 ## <a name="server-point-in-time-restore"></a>Obnovení bodu v čase serveru
 Server můžete obnovit k dřívějšímu bodu v čase. Obnovená data se zkopíruje na nový server a existující server je ponechán beze změny. Například pokud tabulku omylem, bude vynechána. v poledne ještě dnes můžete obnovit do doby před polednem. Potom můžete načíst chybějící tabulku a data z obnovené kopie serveru. 
 
-K obnovení serveru, použijte rozhraní příkazového řádku Azure [az postgres server restore](/cli/azure/postgres/server#az_postgres_server_restore) příkazu.
+K obnovení serveru, použijte rozhraní příkazového řádku Azure [az postgres server restore](/cli/azure/postgres/server) příkazu.
 
 ### <a name="run-the-restore-command"></a>Spusťte příkaz restore
 

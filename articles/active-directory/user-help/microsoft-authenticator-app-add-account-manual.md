@@ -11,15 +11,15 @@ ms.topic: conceptual
 ms.date: 01/24/2019
 ms.author: lizross
 ms.reviewer: olhaun
-ms.openlocfilehash: 2c07e6a007d8bc5ea283727f5e58a1c8583177f1
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 2a5bd935f9c4ab388388ab3d9264f92a6112689e
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55478096"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55753329"
 ---
 # <a name="manually-add-an-account-to-the-app"></a>Ručně přidat účet do aplikace
-Pokud fotoaparátu nemůže zachytit kód QR, můžete ručně přidat informace o vašem účtu do aplikace Microsoft Authenticator pro dvoufaktorové ověřování. Tento postup funguje pro pracovní nebo školní účty a osobní účty jiných společností než Microsoft.
+Pokud fotoaparátu nemůže zachytit kód QR, můžete ručně přidat informace o vašem účtu do aplikace Microsoft Authenticator pro dvoufaktorové ověřování. Tento postup funguje pro pracovní nebo školní účty a účty jiných společností než Microsoft.
 
 Kódy pro své účty k dispozici nejsou velká a malá písmena a nevyžadují mezery, když se přidá do aplikace Microsoft Authenticator.
 

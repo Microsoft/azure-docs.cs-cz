@@ -10,16 +10,16 @@ ms.topic: conceptual
 ms.date: 01/29/2019
 ms.author: luisca
 ms.custom: seodec2018
-ms.openlocfilehash: fe575a79fe2f47729e7c7fe039989b2c08af1282
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
+ms.openlocfilehash: e4fe511228f6e80a17af8325ee74ae0927a760bd
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55657820"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55754723"
 ---
 # <a name="how-to-add-a-custom-skill-to-a-cognitive-search-pipeline"></a>Přidání vlastních dovedností do kanálu kognitivního vyhledávání
 
-A [kanál indexování kognitivního vyhledávání](cognitive-search-concept-intro.md) ve službě Azure Search lze sestavit z [předdefinované dovednosti](cognitive-search-predefined-skills.md) a také vlastních dovedností, které sami vytvoříte a přidáte do kanálu. V tomto článku najdete informace o vytváření vlastních dovedností, který zpřístupňuje rozhraní, díky kterému jej mají být zahrnuty v kanálu kognitivního vyhledávání. 
+A [kanál indexování kognitivního vyhledávání](cognitive-search-concept-intro.md) ve službě Azure Search lze sestavit z [předdefinované dovednosti](cognitive-search-predefined-skills.md) stejně jako [vlastních dovedností](cognitive-search-custom-skill-web-api.md) , které sami vytvoříte a přidáte do kanál. V tomto článku najdete informace o vytváření vlastních dovedností, který zpřístupňuje rozhraní, díky kterému jej mají být zahrnuty v kanálu kognitivního vyhledávání. 
 
 Vytváření vlastních dovedností poskytuje způsob, jak vložit transformace, které jsou jedinečné pro váš obsah. Vlastní dovednosti spustí nezávisle na sobě použití libovolné rozšíření kroku budete potřebovat. Může například definovat vlastní entity specifické pro pole, vytvářet vlastní klasifikace modely k rozlišení firmy a finanční smlouvy a dokumenty nebo přidání rozpoznávání řeči odbornost umožňují hlubší analýzu zvuku relevantní obsah souboru. Podrobný příklad naleznete v tématu [příklad: vytváření vlastních dovedností](cognitive-search-create-custom-skill-example.md).
 

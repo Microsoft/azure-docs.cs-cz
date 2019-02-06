@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 01/23/2017
 ms.author: muralikk
 ms.subservice: common
-ms.openlocfilehash: 395ff654bcacf1a4f70a9032492deb2a9d5202f3
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 915cf1e66ec400e0d2461873d9fb3d66be9883fb
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55454755"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55756746"
 ---
 # <a name="repairing-an-export-job"></a>Oprava úlohy exportu
 Po dokončení úlohy exportu, můžete spustit nástroj Microsoft Azure Import/Export místní pro:  
@@ -81,7 +81,7 @@ Kopírování souboru protokolu označuje, že došlo k chybě při služby Wind
 ## <a name="using-repairexport-to-validate-drive-contents"></a>Pomocí RepairExport ověřit obsah jednotky  
 Můžete použít také Azure Import/Export s **RepairExport** možnost ověřit obsah na disku jsou správné. Soubor manifestu na každou jednotku exportu obsahuje MD5s pro obsah jednotky.  
   
-Služba Azure Import/Export můžete také uložit soubory manifestu do účtu úložiště během procesu exportu. Umístění souborů manifestu je k dispozici prostřednictvím [Get Job](/rest/api/storageimportexport/jobs#Jobs_CreateOrUpdate) operaci po dokončení úlohy. Zobrazit [služby Import/Export formát souboru manifestu](storage-import-export-file-format-metadata-and-properties.md) Další informace o formátu souboru manifestu jednotky.  
+Služba Azure Import/Export můžete také uložit soubory manifestu do účtu úložiště během procesu exportu. Umístění souborů manifestu je k dispozici prostřednictvím [Get Job](/rest/api/storageimportexport/jobs) operaci po dokončení úlohy. Zobrazit [služby Import/Export formát souboru manifestu](storage-import-export-file-format-metadata-and-properties.md) Další informace o formátu souboru manifestu jednotky.  
   
 Následující příklad ukazuje, jak spustit nástroje Azure Import/Export s **manifestfile** a **/CopyLogFile** parametry:  
   

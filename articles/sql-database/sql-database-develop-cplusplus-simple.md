@@ -12,12 +12,12 @@ ms.author: sstein
 ms.reviewer: ''
 manager: craigg
 ms.date: 12/12/2018
-ms.openlocfilehash: 6ebef74cee6f919fe6b8cf666db06e0ab22cec73
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
+ms.openlocfilehash: 5a6f8328f6809a20b821f5b72106fa48fabf0e91
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55566920"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55755148"
 ---
 # <a name="connect-to-sql-database-using-c-and-c"></a>Připojení k SQL Database pomocí jazyka C a C++
 
@@ -40,7 +40,7 @@ Azure nyní nabízí dvě možnosti pro hostování úloh SQL serveru: Azure SQL
 Připojení ke službě Azure SQL DB se nijak neliší a aktuálně existují dva způsoby, jak připojit se k nim: ODBC (Open Database connectivity) a technologie OLE DB (propojování a vkládání objektů databáze). Microsoft má v posledních letech, v souladu s [rozhraní ODBC pro přístup k datům nativní relační](https://blogs.msdn.microsoft.com/sqlnativeclient/2011/08/29/microsoft-is-aligning-with-odbc-for-native-relational-data-access/). ODBC je poměrně jednoduchá a také mnohem rychlejší než OLE DB. Pouze výstrahou je, že ODBC používat staré API C-style.
 
 ## <a id="Create"></a>Krok 1:  Vytvoření služby Azure SQL Database
-Zobrazit [úvodní stránce](sql-database-get-started-portal.md) informace o vytvoření ukázkové databáze.  Alternativně můžete použít tento [krátký dvouminutové video](https://azure.microsoft.com/documentation/videos/azure-sql-database-create-dbs-in-seconds/) vytvoření Azure SQL database pomocí webu Azure portal.
+Zobrazit [úvodní stránce](sql-database-single-database-get-started.md) informace o vytvoření ukázkové databáze.  Alternativně můžete použít tento [krátký dvouminutové video](https://azure.microsoft.com/documentation/videos/azure-sql-database-create-dbs-in-seconds/) vytvoření Azure SQL database pomocí webu Azure portal.
 
 ## <a id="ConnectionString"></a>Krok 2:  Získání připojovacího řetězce
 Po zřízení Azure SQL database, budete muset provést následující kroky pro určení informací o připojení a přidat IP adresu vašeho klienta pro přístup přes bránu firewall.
