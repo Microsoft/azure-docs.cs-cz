@@ -1,94 +1,114 @@
 ---
-title: 'Rychlý start: Vyhledávání entit Bingu rozhraní API Node.js'
+title: 'Rychlý start: Odeslat žádost o vyhledávání Bingu Entity Search REST API pomocí Node.js'
 titlesuffix: Azure Cognitive Services
-description: Umožňuje získat informace a ukázky kódu, které vám pomůžou rychle začít používat rozhraní API Bingu pro vyhledávání entit.
+description: V tomto rychlém startu můžete odeslat požadavek na pomocí API REST pro vyhledávání entit Bingu C#a získejte odpověď ve formátu JSON.
 services: cognitive-services
 author: aahill
 manager: cgronlun
 ms.service: cognitive-services
 ms.subservice: bing-entity-search
 ms.topic: quickstart
-ms.date: 11/28/2017
+ms.date: 02/01/2019
 ms.author: aahi
-ms.openlocfilehash: 18476b8fa272ea235526693a9e2bab577298244d
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 37e00c6cdc5340607a4aabc446d87e1a8575c552
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55174461"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55755131"
 ---
-# <a name="quickstart-for-bing-entity-search-api-with-nodejs"></a>Rychlý start pro rozhraní API Bingu pro vyhledávání entit v Node.js
+# <a name="quickstart-send-a-search-request-to-the-bing-entity-search-rest-api-using-nodejs"></a>Rychlý start: Odeslat žádost o vyhledávání Bingu Entity Search REST API pomocí Node.js
 
-V tomto článku se dozvíte, jak používat [Bingu pro vyhledávání entit](https://docs.microsoft.com/azure/cognitive-services/bing-entities-search/search-the-web) rozhraní API pomocí Node.JS.
+V tomto rychlém startu můžete provést první volání do rozhraní API Bingu pro vyhledávání entit a zobrazit odpověď JSON. Tato jednoduchá aplikace JavaScript odešle dotaz vyhledávání zpráv na rozhraní API a zobrazí odpovědi. Zdrojový kód k této ukázce je dostupný na [Githubu](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/nodejs/Search/BingEntitySearchv7.js).
+
+Zatímco tato aplikace je napsána v jazyce JavaScript, je rozhraní API RESTful webová služba, která je kompatibilní s Většina programovacích jazyků.
 
 ## <a name="prerequisites"></a>Požadavky
 
-Ke spuštění tohoto kódu budete potřebovat [Node.js 6](https://nodejs.org/en/download/).
+* Nejnovější verze [Node.js](https://nodejs.org/en/download/).
 
-Potřebujete [účet rozhraní API Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) s **rozhraním API Bingu pro vyhledávání entit**. Pro účely tohoto rychlého startu stačí [bezplatná zkušební verze](https://azure.microsoft.com/try/cognitive-services/?api=bing-entity-search-api). Při aktivaci bezplatné zkušební verze budete potřebovat poskytnutý přístupový klíč nebo můžete použít klíč placeného předplatného z řídicího panelu Azure.  Viz také [služeb Cognitive Services ceny – rozhraní API Bingu pro vyhledávání](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/).
+* [Knihovna žádostí o jazyka JavaScript](https://github.com/request/request)
 
-## <a name="search-entities"></a>Vyhledávání entit
+[!INCLUDE [cognitive-services-bing-news-search-signup-requirements](../../../../includes/cognitive-services-bing-entity-search-signup-requirements.md)]
 
-Tuto aplikaci spustíte následujícím postupem.
+## <a name="create-and-initialize-the-application"></a>Vytvoření a inicializace aplikace
 
-1. Ve svém oblíbeném integrovaném vývojovém prostředí vytvořte nový projekt Node.JS.
-2. Přidejte níže uvedený kód.
-3. Hodnotu `key` nahraďte přístupovým klíčem platným pro vaše předplatné.
-4. Spusťte program.
+1. Vytvořte ve svém oblíbeném integrovaném vývojovém prostředí nebo editoru nový soubor JavaScriptu a nastavte striktnost a požadavky protokolu HTTPS.
 
-```nodejs
-'use strict';
+    ```javaScript
+    'use strict';
+    let https = require ('https');
+    ```
 
-let https = require ('https');
+2. Vytváření proměnných pro koncový bod rozhraní API, klíč předplatného a vyhledávací dotaz.
 
-// **********************************************
-// *** Update or verify the following values. ***
-// **********************************************
+    ```javascript
+    let subscriptionKey = 'ENTER YOUR KEY HERE';
+    let host = 'api.cognitive.microsoft.com';
+    let path = '/bing/v7.0/entities';
+    
+    let mkt = 'en-US';
+    let q = 'italian restaurant near me';
+    ```
 
-// Replace the subscriptionKey string value with your valid subscription key.
-let subscriptionKey = 'ENTER KEY HERE';
+3. Přidat vstup na trh a dotaz parametry řetězec s názvem `query`. Nezapomeňte si adresu url – kódování dotazu s `encodeURI()`.
+    ```javascript 
+    let query = '?mkt=' + mkt + '&q=' + encodeURI(q);
+    ```
 
-let host = 'api.cognitive.microsoft.com';
-let path = '/bing/v7.0/entities';
+## <a name="handle-and-parse-the-response"></a>Zpracování a parsování odpovědi
 
-let mkt = 'en-US';
-let q = 'italian restaurant near me';
+1. definovat funkci s názvem `response_handler` , která přijímá volání protokolu HTTP, `response`, jako parametr. v rámci této funkce proveďte následující kroky:
 
-let params = '?mkt=' + mkt + '&q=' + encodeURI(q);
+    1. Definujte proměnnou, která bude obsahovat text odpovědi JSON.  
+        ```javascript
+        let response_handler = function (response) {
+            let body = '';
+        };
+        ```
 
-let response_handler = function (response) {
-    let body = '';
-    response.on ('data', function (d) {
-        body += d;
-    });
-    response.on ('end', function () {
-        let body_ = JSON.parse (body);
-        let body__ = JSON.stringify (body_, null, '  ');
-        console.log (body__);
-    });
-    response.on ('error', function (e) {
-        console.log ('Error: ' + e.message);
-    });
-};
+    2. Uložte text odpovědi při volání příznaku **data**.
+        ```javascript
+        response.on('data', function (d) {
+            body += d;
+        });
+        ```
 
-let Search = function () {
-    let request_params = {
-        method : 'GET',
-        hostname : host,
-        path : path + params,
-        headers : {
-            'Ocp-Apim-Subscription-Key' : subscriptionKey,
-        }
-    };
+    3. Když **koncové** signalizována příznak, analyzovat ve formátu JSON a vytisknout je.
 
-    let req = https.request (request_params, response_handler);
-    req.end ();
-}
+        ```javascript
+        response.on ('end', function () {
+        let json = JSON.stringify(JSON.parse(body), null, '  ');
+        console.log (json);
+        });
+        ```
 
-Search ();
-```
+## <a name="send-a-request"></a>Odeslání požadavku
 
-**Odpověď**
+1. Vytvořit funkci s názvem `Search` odeslat žádost o vyhledávání. V něm proveďte následující kroky.
+
+    1. Vytvořit objekt JSON, který obsahuje parametry požadavku: použijte `Get` pro metodu a přidejte své informace o hostitele a cestu. Přidat klíč předplatného. Chcete `Ocp-Apim-Subscription-Key` záhlaví. 
+    2. Použití `https.request()` k odeslání žádosti s dříve vytvořenou obslužné rutiny a parametry hledání.
+    
+    ```javascript
+    let Search = function () {
+        let request_params = {
+            method : 'GET',
+            hostname : host,
+            path : path + query,
+            headers : {
+                'Ocp-Apim-Subscription-Key' : subscriptionKey,
+            }
+        };
+    
+        let req = https.request (request_params, response_handler);
+        req.end ();
+    }
+    ```
+
+2. Volání `Search()` funkce.
+
+## <a name="example-json-response"></a>Příklad JSON odpovědi
 
 Úspěšná odpověď se vrátí ve formátu JSON, jak je znázorněno v následujícím příkladu: 
 
@@ -153,11 +173,10 @@ Search ();
 }
 ```
 
-[Zpět na začátek](#HOLTop)
-
 ## <a name="next-steps"></a>Další postup
 
 > [!div class="nextstepaction"]
-> [Kurz o vyhledávání entit Bingu](../tutorial-bing-entities-search-single-page-app.md)
-> [Přehled vyhledávání entit Bingu](../search-the-web.md )
-> [Reference k rozhraní API](https://docs.microsoft.com/rest/api/cognitiveservices/bing-entities-api-v7-reference)
+> [Vytvoření webové jednostránkové aplikace](../tutorial-bing-entities-search-single-page-app.md)
+
+* [Co je API pro vyhledávání entit Bingu?](../overview.md )
+* [Reference k rozhraní API vyhledávání entit Bingu](https://docs.microsoft.com/rest/api/cognitiveservices/bing-entities-api-v7-reference)

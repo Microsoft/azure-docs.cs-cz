@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 01/10/2019
 ms.subservice: hybrid
 ms.author: billmath
-ms.openlocfilehash: 5eb8f291b0f27518203c45e8c30c3994780e30ef
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.openlocfilehash: 1fadf186176c8bc82aaefe9a908f25f9c8a7e35a
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55487128"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55755455"
 ---
 # <a name="azure-active-directory-seamless-single-sign-on-quick-start"></a>Azure Active Directory bezproblémové jednotné přihlašování: Rychlý start
 
@@ -164,14 +164,6 @@ Existují dva způsoby, jak upravit nastavení zóny Intranet uživatele:
     ![Jednotné přihlašování](./media/how-to-connect-sso-quick-start/sso16.png)
  
     ![Jednotné přihlašování](./media/how-to-connect-sso-quick-start/sso17.png)
-
-6. Přejděte do **konfigurace uživatele** > **šablony pro správu** > **součásti Windows**  >   **Aplikace Internet Explorer** > **ovládací Panel Možnosti Internetu** > **stránku zabezpečení** > **zóny intranetu**. Potom vyberte **povolit aktualizace stavového řádku prostřednictvím skriptu**.
-
-    ![Jednotné přihlašování](./media/how-to-connect-sso-quick-start/sso11.png)
-
-7. Povolit nastavení zásady a pak vyberte **OK**.
-
-    ![Jednotné přihlašování](./media/how-to-connect-sso-quick-start/sso12.png)
 
 ### <a name="browser-considerations"></a>Důležité informace o prohlížeči
 

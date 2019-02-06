@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 11/28/2018
 ms.author: jingwang
-ms.openlocfilehash: a42f5f441dd63f8d6a7f5bd1cfdf0452d025816e
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: b0cb72b8a9c1710b2b22d987c2818a490a2ea553
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54017680"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55753355"
 ---
 # <a name="azure-data-factory-service-identity"></a>Identita služby Azure Data Factory
 
@@ -192,4 +192,4 @@ Naleznete v následujících tématech, které představují, kdy a jak použív
 - [Store přihlašovacích údajů ve službě Azure Key Vault](store-credentials-in-key-vault.md)
 - [Kopírování dat z/do Azure Data Lake Store pomocí spravované identity pro ověřování prostředků Azure](connector-azure-data-lake-store.md)
 
-Naleznete v tématu [spravovaných identit pro prostředky Azure – přehled](~/articles/active-directory/msi-overview.md) pro další informace o spravovaných identit pro prostředky Azure, je na základě které identita služeb datové továrny. 
+Naleznete v tématu [spravovaných identit pro prostředky Azure – přehled](/azure/active-directory/managed-identities-azure-resources/overview) pro další informace o spravovaných identit pro prostředky Azure, je na základě které identita služeb datové továrny. 

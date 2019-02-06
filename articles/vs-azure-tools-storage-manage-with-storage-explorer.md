@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/17/2017
 ms.author: cawa
-ms.openlocfilehash: cdfb1e11a2eb468e390546d69617ff4cadd17a7e
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
+ms.openlocfilehash: 77763765e75500d994235bba0a5c0c3bb3e3be70
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55658872"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55756814"
 ---
 # <a name="get-started-with-storage-explorer"></a>Začínáme se Storage Explorerem
 
@@ -87,8 +87,8 @@ Kromě toho můžete pracovat s účty úložiště v globálním i národním A
 * [Připojení k předplatnému Azure](#connect-to-an-azure-subscription): Spravujte prostředky úložiště, které patří k předplatnému Azure.
 * [Práce s místním vývojovým úložištěm](#work-with-local-development-storage): Spravujte místní úložiště pomocí emulátoru úložiště Azure.
 * [Připojení k externímu úložišti](#attach-or-detach-an-external-storage-account): Spravujte prostředky úložiště, která patří do jiného předplatného Azure nebo jiného národního cloudu Azure s použitím názvu, klíče a koncových bodů účtu úložiště.
-* [Připojení účtu úložiště pomocí SAS](): Spravujte prostředky úložiště, které patří do jiného předplatného Azure pomocí sdíleného přístupového podpisu (SAS).
-* [Připojení služby pomocí SAS](#attach-service-using-sas): Spravujte konkrétní službu úložiště (kontejner objektů blob, fronty nebo tabulky), který patří do jiného předplatného Azure pomocí SAS.
+* [Připojení účtu úložiště pomocí SAS](#attach-a-storage-account-by-using-a-shared-access-signature-sas): Spravujte prostředky úložiště, které patří do jiného předplatného Azure pomocí sdíleného přístupového podpisu (SAS).
+* [Připojení služby pomocí SAS](#attach-a-service-by-using-a-shared-access-signature-sas): Spravujte konkrétní službu úložiště (kontejner objektů blob, fronty nebo tabulky), který patří do jiného předplatného Azure pomocí SAS.
 * [Připojení k účtu služby Azure Cosmos DB pomocí připojovacího řetězce](#connect-to-an-azure-cosmos-db-account-by-using-a-connection-string): Spravujte účet služby Cosmos DB pomocí připojovacího řetězce.
 
 ## <a name="connect-to-an-azure-subscription"></a>Připojení k předplatnému Azure
@@ -295,7 +295,7 @@ Kromě Správa účtů služby Azure Cosmos DB pomocí předplatného Azure, je 
 
     ![připojení ke službě Azure Cosmos DB pomocí připojovacího řetězce][21]
 
-2. Zvolte rozhraní API služby Azure Cosmos DB, vložte váš **připojovací řetězec**a potom klikněte na tlačítko **OK** připojte k účtu Azure Cosmos DB. Informace o načtení připojovacího řetězce najdete v tématu popisujícím [Získání připojovacího řetězce](https://docs.microsoft.com/azure/cosmos-db/manage-account#get-the--connection-string).
+2. Zvolte rozhraní API služby Azure Cosmos DB, vložte váš **připojovací řetězec**a potom klikněte na tlačítko **OK** připojte k účtu Azure Cosmos DB. Informace o načtení připojovacího řetězce najdete v tématu popisujícím [Získání připojovacího řetězce](https://docs.microsoft.com/azure/cosmos-db/manage-account).
 
     ![connection-string][22]
 

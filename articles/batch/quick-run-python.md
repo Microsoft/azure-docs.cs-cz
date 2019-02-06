@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.date: 11/27/2018
 ms.author: lahugh
 ms.custom: mvc
-ms.openlocfilehash: 3a2e48697efbe0f4969a8fae20c050a38645ed6f
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: 9ede1b48d1b69c738e335676f10233af72e8564e
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54462075"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55754417"
 ---
 # <a name="quickstart-run-your-first-batch-job-with-the-python-api"></a>Rychlý start: Spuštění první úlohy služby Batch pomocí rozhraní Python API
 
@@ -153,7 +153,7 @@ K vytvoření fondu služby Batch aplikace používá třídu [PoolAddParameter]
 
 Počet uzlů (`_POOL_NODE_COUNT`) a velikost virtuálního počítače (`_POOL_VM_SIZE`) jsou definované konstanty. Ukázka ve výchozím nastavení vytvoří fond se 2 uzly velikosti *Standard_A1_v2*. Navržená velikost nabízí pro tento rychlý příklad dobrou rovnováhu mezi výkonem a náklady.
 
-Metoda [pool.add](/python/api/azure.batch.operations.pooloperations#azure_batch_operations_PoolOperations_add) odešle fond do služby Batch.
+Metoda [pool.add](/python/api/azure.batch.operations.pooloperations) odešle fond do služby Batch.
 
 ```python
 new_pool = batch.models.PoolAddParameter(
@@ -187,7 +187,7 @@ batch_service_client.job.add(job)
 
 Aplikace vytvoří seznam objektů úlohy pomocí třídy [TaskAddParameter](/python/api/azure.batch.models.taskaddparameter). Každý úkol zpracovává vstupní objekt `resource_files` pomocí parametru `command_line`. Příkazový řádek v ukázce spustí příkaz prostředí Bash `cat`, který zobrazí textový soubor. Tento příkaz představuje jednoduchý příklad pro demonstrační účely. Při použití služby Batch se aplikace nebo skript zadávají právě na příkazovém řádku. Služba Batch poskytuje několik způsobů, jak nasazovat aplikace a skripty do výpočetních uzlů.
 
-Potom aplikace přidá úkoly do úlohy pomocí metody [task.add_collection](/python/api/azure.batch.operations.taskoperations#azure_batch_operations_TaskOperations_add_collection) a ta je zařadí do fronty ke spuštění ve výpočetních uzlech. 
+Potom aplikace přidá úkoly do úlohy pomocí metody [task.add_collection](/python/api/azure.batch.operations.taskoperations) a ta je zařadí do fronty ke spuštění ve výpočetních uzlech. 
 
 ```python
 tasks = list()

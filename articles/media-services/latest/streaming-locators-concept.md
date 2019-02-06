@@ -9,102 +9,34 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 12/20/2018
+ms.date: 02/03/2019
 ms.author: juliako
-ms.openlocfilehash: 658843fd5acbe0d4e29947e99c00edf4909fe9f4
-ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
+ms.openlocfilehash: be66dcf8115258b6f593ec913e75785a3f8dbe1f
+ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53742741"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55743476"
 ---
 # <a name="streaming-locators"></a>Lokátory streamování
 
-Je potřeba zadat kódovaný klienty pomocí adresy URL, můžete použít k přehrávání video nebo zvukové soubory, je potřeba vytvořit [Lokátor streamování](https://docs.microsoft.com/rest/api/media/streaminglocators) a vytvoření adresy URL pro streamování. Další informace najdete v tématu [Stream souboru](stream-files-dotnet-quickstart.md).
+Chcete-li videa ve výstupu prostředek k dispozici pro klienty pro přehrávání, je nutné vytvořit [Lokátor streamování](https://docs.microsoft.com/rest/api/media/streaminglocators) a následně vytvořit adresy URL pro streamování. Ukázku .NET najdete v tématu [získat Lokátor streamování](stream-files-tutorial-with-api.md#get-a-streaming-locator).
 
-## <a name="streaminglocator-definition"></a>Definice StreamingLocator
+Proces vytváření **Lokátor streamování** nazývá publikování. Ve výchozím nastavení **Lokátor streamování** platnost okamžitě po provedení volání rozhraní API a trvá, dokud je odstraníme, pokud nenakonfigurujete volitelné počáteční a koncový čas. 
 
-Následující tabulka uvádí vlastnosti StreamingLocator a umožňuje jejich definice.
+Při vytváření **Lokátor streamování**, je třeba zadat [Asset](https://docs.microsoft.com/rest/api/media/assets) název a [streamování zásad](https://docs.microsoft.com/rest/api/media/streamingpolicies) název. Můžete buď použít jednu z předdefinovaných zásad streamování nebo vytvořit vlastní zásadu. Předdefinované zásady, které jsou aktuálně k dispozici jsou: "Predefined_DownloadOnly", "Predefined_ClearStreamingOnly", "Predefined_DownloadAndClearStreaming", "Predefined_ClearKey", "Predefined_MultiDrmCencStreaming" a "Predefined_MultiDrmStreaming". Při použití vlastního streamování zásad, doporučujeme navrhnout omezenou sadu zásad pro svůj účet Media Service a je znovu použít pro vaše lokátory streamování pokaždé, když se stejnými možnostmi a protokoly jsou potřeba. 
 
-|Název|Popis|
-|---|---|
-|id |Plně kvalifikované ID prostředku pro prostředek.|
-|jméno|Název prostředku.|
-|properties.alternativeMediaId|ID alternativních médií tento Lokátor streamování.|
-|properties.assetName|Název assetu|
-|properties.contentKeys|Klíčů ContentKeys, používá tento Lokátor streamování.|
-|Properties.Created|Čas vytvoření Lokátor streamování.|
-|properties.defaultContentKeyPolicyName|Název výchozí ContentKeyPolicy používá tento Lokátor streamování.|
-|properties.endTime|Čas ukončení Lokátor streamování.|
-|properties.startTime|Čas zahájení Lokátor streamování.|
-|properties.streamingLocatorId|StreamingLocatorId Lokátor streamování.|
-|properties.streamingPolicyName |Název zásady streamování používá tento Lokátor streamování. Zadejte název streamování zásady, které jste vytvořili nebo použijte jednu z předdefinovaných zásad streamování. Předdefinované datové proudy zásady k dispozici jsou: "Predefined_DownloadOnly", "Predefined_ClearStreamingOnly", "Predefined_DownloadAndClearStreaming", "Predefined_ClearKey", "Predefined_MultiDrmCencStreaming" a "Predefined_MultiDrmStreaming.|
-|type|Typ prostředku.|
+Pokud chcete zadat možnosti šifrování na datový proud, vytvořte [zásad klíče k obsahu](https://docs.microsoft.com/rest/api/media/contentkeypolicies) , který konfiguruje, jak je klíč k obsahu doručit koncovým klientům prostřednictvím součást doručení klíče služby Media Services. Přidružit vaše Lokátor streamování s **zásad klíče k obsahu** a klíče k obsahu. Služba Media Services můžete nechat automaticky vygenerovat klíč. Následující příklad .NET ukazuje, jak nakonfigurovat šifrování AES omezení s tokenem v Media Services v3: [EncodeHTTPAndPublishAESEncrypted](https://github.com/Azure-Samples/media-services-v3-dotnet-core-tutorials/tree/master/NETCore/EncodeHTTPAndPublishAESEncrypted). **Obsah zásady klíčů** jsou aktualizovat, můžete chtít aktualizovat zásady, pokud je třeba provést obměny klíče. Může trvat až 15 minut pro doručení klíče mezipaměti aktualizace a vyzvednutí aktualizované zásady. Doporučuje se tak, aby nevytvářela nové zásady obsahu klíč pro každý Lokátor streamování. Pokuste se znovu použít existující zásady, kdykoli je to stejné možnosti jsou třeba.
 
-Kompletní definici, naleznete v tématu [lokátory streamování](https://docs.microsoft.com/rest/api/media/streaminglocators).
+> [!IMPORTANT]
+> * Vlastnosti **lokátory streamování** jsou DateTime typu jsou vždy ve formátu UTC.
+> * Navrhněte omezenou sadu zásad pro svůj účet Media Service a je znovu použít pro vaše lokátory streamování pokaždé, když jsou potřeba stejné možnosti. 
 
 ## <a name="filtering-ordering-paging"></a>Filtrování, řazení, stránkování
 
-Služba Media Services podporuje následující možnosti dotazu OData pro lokátory streamování: 
-
-* $filter 
-* $orderby 
-* $top 
-* $skiptoken 
-
-Popis operátoru:
-
-* EQ = rovno
-* Ne = není rovno
-* Ge = větší než nebo rovno
-* Le = menší než nebo rovno
-* Gt = je větší než
-* Lt = menší než
-
-### <a name="filteringordering"></a>Filtrování a řazení
-
-Následující tabulka ukazuje, jak tyto možnosti může použít u vlastnosti StreamingLocator: 
-
-|Název|Filtr|Objednání|
-|---|---|---|
-|id |||
-|jméno|Eq, ne, ge, le, gt, lt|Vzestupným a sestupným|
-|properties.alternativeMediaId  |||
-|properties.assetName   |||
-|properties.contentKeys |||
-|Properties.Created |Eq, ne, ge, le, gt, lt|Vzestupným a sestupným|
-|properties.defaultContentKeyPolicyName |||
-|properties.endTime |Eq, ne, ge, le, gt, lt|Vzestupným a sestupným|
-|properties.startTime   |||
-|properties.streamingLocatorId  |||
-|properties.streamingPolicyName |||
-|type   |||
-
-### <a name="pagination"></a>Stránkování
-
-Pro každý ze čtyř povoleno řazení je podporováno stránkování. V současné době je velikost stránky je 10.
-
-> [!TIP]
-> Odkaz na další vždy používejte k vytvoření výčtu kolekce a není závislý na konkrétní stránce velikost.
-
-Pokud odpovědi na dotaz obsahuje mnoho položek, tato služba vrátí "\@odata.nextLink" k získání další stránky výsledků. Tímto lze na stránku prostřednictvím úplná sada výsledků. Nelze konfigurovat velikost stránky. 
-
-Pokud StreamingLocators jsou vytvořeny nebo odstranili stránkování prostřednictvím kolekce, změny se projeví v navrácených výsledcích (pokud tyto změny jsou součástí kolekce, která se nestáhla.) 
-
-Následující příklad jazyka C# ukazuje, jak zobrazit výčet prostřednictvím všech StreamingLocators v účtu.
-
-```csharp
-var firstPage = await MediaServicesArmClient.StreamingLocators.ListAsync(CustomerResourceGroup, CustomerAccountName);
-
-var currentPage = firstPage;
-while (currentPage.NextPageLink != null)
-{
-    currentPage = await MediaServicesArmClient.StreamingLocators.ListNextAsync(currentPage.NextPageLink);
-}
-```
-
-ZBÝVAJÍCÍ příklady naleznete v tématu [lokátory streamování – seznam](https://docs.microsoft.com/rest/api/media/streaminglocators/list)
+Zobrazit [filtrování, řazení, stránkování, Media Services entit](entities-overview.md).
 
 ## <a name="next-steps"></a>Další postup
 
-[Streamování souboru](stream-files-dotnet-quickstart.md)
+* [Kurz: Nahrávání, kódování a streamování videí pomocí .NET](stream-files-tutorial-with-api.md)
+* [Pomocí DRM dynamického šifrování a licence služby pro doručování](protect-with-drm.md)

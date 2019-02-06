@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: overview
 ms.date: 01/24/2019
 ms.author: lizross
-ms.openlocfilehash: 42cc101f76d106c82dd418d9207ba44f15d96b79
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: abae7e3a8be87f51fe49f61305d54158e98ca5b0
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55476277"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55750881"
 ---
 # <a name="overview-about-adding-accounts-to-the-microsoft-authenticator-app"></a>Přehled o přidávání účtů do aplikace Microsoft Authenticator
 
@@ -24,6 +24,9 @@ ms.locfileid: "55476277"
 >Tento obsah je určený pro uživatele. Pokud jste správce, najdete další informace o nastavení a správě vašeho prostředí Azure Active Directory (Azure AD) v [dokumentaci k Azure Active Directory](https://docs.microsoft.com/azure/active-directory).
 
 Aplikace Microsoft Authenticator přispívá k přihlášení k účtům používáte dvojúrovňového ověřování. Dvoufaktorové ověření vám umožní přístup k účtům bezpečněji, zejména při zobrazování citlivé informace. Protože hesla mohou být vymazány, někdo je ukradne nebo ohrožení zabezpečení, dvojúrovňového ověřování je krok dodatečné zabezpečení, která pomáhá chránit váš účet kvůli tomu je těžší jinými lidmi, kteří možnost proniknout.
+
+>[!Important]
+>Aplikace Microsoft Authenticator funguje s každou aplikaci, která používá dvojúrovňového ověřování a jakýkoli účet, který podporuje podle času jednorázového hesla (TOTP) normami.
 
 Můžete použít aplikaci Microsoft Authenticator několika různými způsoby, včetně:
 
@@ -44,7 +47,7 @@ Můžete zapnout dvoufaktorové ověření pro řadu účtů, které používát
 |------|------------|
 |[Přidejte svůj pracovní nebo školní účet](microsoft-authenticator-app-add-work-account.md)|Popisuje, jak přidat svůj pracovní nebo školní účet do aplikace Microsoft Authenticator pro dvoufaktorové ověřování.|
 |[Přidejte svůj osobní účet Microsoft](microsoft-authenticator-app-add-personal-account.md)|Popisuje postup přidání osobní účty Microsoft pro dvoufaktorové ověřování a přihlašování telefonem (označované také jako přihlašování).|
-|[Přidejte svůj osobní účet od jiných výrobců](microsoft-authenticator-app-add-non-microsoft-account.md)|Popisuje postup přidání osobním účtům jiných společností než Microsoft k dvojúrovňovému ověřování.|
+|[Přidat účet jiného subjektu než Microsoft](microsoft-authenticator-app-add-non-microsoft-account.md)|Popisuje, jak přidat vaše účty jiných společností než Microsoft k dvojúrovňovému ověřování.|
 |[Ručně přidejte svůj účet](microsoft-authenticator-app-add-account-manual.md)|Popisuje, jak ručně přidat účet do aplikace Microsoft Authenticator, pokud fotoaparátu nelze zachytit kód QR.|
 
 

@@ -6,12 +6,12 @@ ms.service: avere-vfxt
 ms.topic: conceptual
 ms.date: 01/29/2019
 ms.author: v-erkell
-ms.openlocfilehash: 0eb5941bfecc023429556434a45460c8727056ec
-ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
+ms.openlocfilehash: bc91b052d3d69924af9afeb012c0ebb5be01dfbf
+ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55300179"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55745550"
 ---
 # <a name="manage-the-avere-vfxt-cluster"></a>Správa clusteru Avere vFXT
 
@@ -202,7 +202,7 @@ Kromě odstranění uzlů clusteru, zvažte odebrání těchto součástí:
 
 ### <a name="delete-a-clusters-resource-group-from-the-azure-portal"></a>Odstranit skupinu prostředků clusteru z webu Azure portal
 
-Pokud jste vytvořili skupinu prostředků speciálně pro cluster, lze zničit všechny související prostředky pro cluster pomocí zničení skupinu prostředků. 
+Pokud jste vytvořili skupinu prostředků speciálně pro organizace clusteru, lze zničit všechny související prostředky pro cluster pomocí zničení skupinu prostředků. 
 
 > [!Caution] 
 > Pokud jste si jisti, že žádné hodnoty se nachází ve skupině jenom odstranit skupinu prostředků. Například Ujistěte se, že přesunete veškerá potřebná data z libovolné úložiště kontejnerů v rámci skupiny prostředků.  

@@ -1,31 +1,33 @@
 ---
-title: 'Rychlý start: Vyhledávání entit Bingu rozhraní API, PHP'
+title: 'Rychlý start: Odeslat žádost o vyhledávání Bingu Entity REST API služby Search pomocí PHP'
 titlesuffix: Azure Cognitive Services
-description: Umožňuje získat informace a ukázky kódu, které vám pomůžou rychle začít používat rozhraní API Bingu pro vyhledávání entit.
+description: V tomto rychlém startu můžete odeslat požadavek na rozhraní API Bingu entit Search REST pomocí PHP a přijetí odpovědi JSON.
 services: cognitive-services
 author: aahill
 manager: cgronlun
 ms.service: cognitive-services
 ms.subservice: bing-entity-search
 ms.topic: quickstart
-ms.date: 11/28/2017
+ms.date: 02/01/2019
 ms.author: aahi
-ms.openlocfilehash: 5915346deeea76da8b37ddfbb618fed8392fe725
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 8d963c0de272b29ab592536802ad23387a9b8dad
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55195481"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55753431"
 ---
-# <a name="quickstart-for-bing-entity-search-api-with-php"></a>Rychlý start pro rozhraní API Bingu pro vyhledávání entit v PHP
+# <a name="quickstart-send-a-search-request-to-the-bing-entity-search-rest-api-using-php"></a>Rychlý start: Odeslat žádost o vyhledávání Bingu Entity REST API služby Search pomocí PHP
 
-V tomto článku se dozvíte, jak používat [Bingu pro vyhledávání entit](https://docs.microsoft.com/azure/cognitive-services/bing-entities-search/search-the-web) API s využitím PHP.
+V tomto rychlém startu můžete provést první volání do rozhraní API Bingu pro vyhledávání entit a zobrazit odpověď JSON. Tato jednoduchá aplikace PHP odešle dotaz vyhledávání zpráv na rozhraní API a zobrazí odpovědi. 
+
+Zatímco tato aplikace je napsaný v jazyce PHP, je rozhraní API RESTful webová služba, která je kompatibilní s Většina programovacích jazyků.
 
 ## <a name="prerequisites"></a>Požadavky
 
-Ke spuštění tohoto kódu budete potřebovat [PHP 5.6.x](http://php.net/downloads.php).
+* [PHP 5.6.x](http://php.net/downloads.php) nebo novější
 
-Potřebujete [účet rozhraní API Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) s **rozhraním API Bingu pro vyhledávání entit**. Pro účely tohoto rychlého startu stačí [bezplatná zkušební verze](https://azure.microsoft.com/try/cognitive-services/?api=bing-entity-search-api). Při aktivaci bezplatné zkušební verze budete potřebovat poskytnutý přístupový klíč nebo můžete použít klíč placeného předplatného z řídicího panelu Azure.   Viz také [služeb Cognitive Services ceny – rozhraní API Bingu pro vyhledávání](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/).
+[!INCLUDE [cognitive-services-bing-news-search-signup-requirements](../../../../includes/cognitive-services-bing-entity-search-signup-requirements.md)]
 
 ## <a name="search-entities"></a>Vyhledávání entit
 
@@ -145,11 +147,10 @@ echo json_encode (json_decode ($result), JSON_PRETTY_PRINT);
 }
 ```
 
-[Zpět na začátek](#HOLTop)
-
 ## <a name="next-steps"></a>Další postup
 
 > [!div class="nextstepaction"]
-> [Kurz o vyhledávání entit Bingu](../tutorial-bing-entities-search-single-page-app.md)
-> [Přehled vyhledávání entit Bingu](../search-the-web.md )
-> [Reference k rozhraní API](https://docs.microsoft.com/rest/api/cognitiveservices/bing-entities-api-v7-reference)
+> [Vytvoření webové jednostránkové aplikace](../tutorial-bing-entities-search-single-page-app.md)
+
+* [Co je API pro vyhledávání entit Bingu?](../overview.md )
+* [Reference k rozhraní API vyhledávání entit Bingu](https://docs.microsoft.com/rest/api/cognitiveservices/bing-entities-api-v7-reference)

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 09/16/2018
 ms.author: mbullwin
-ms.openlocfilehash: bbe29f112d752be432c0f922b1cd07b8afe2d45e
-ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
+ms.openlocfilehash: d0e549f0da5eb30dd11992518789d76c0892bca3
+ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54232465"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55747471"
 ---
 # <a name="application-insights-api-for-custom-events-and-metrics"></a>Rozhraní API pro Application Insights pro vlastní události a metriky
 
@@ -509,7 +509,7 @@ Sady SDK pro mnoho výjimek catch automaticky, proto není vždy nutné explicit
 
 * ASP.NET: [Napsání kódu pro zachycení výjimky](../../azure-monitor/app/asp-net-exceptions.md).
 * J2EE: [Výjimky jsou zachyceny automaticky](../../azure-monitor/app/java-get-started.md#exceptions-and-request-failures).
-* Jazyk JavaScript: Výjimky jsou zachyceny automaticky. Pokud chcete zakázat automatické shromažďování, přidá řádek do kódu, který vložíte do své webové stránky:
+* JavaScript: Výjimky jsou zachyceny automaticky. Pokud chcete zakázat automatické shromažďování, přidá řádek do kódu, který vložíte do své webové stránky:
 
 ```javascript
 ({
@@ -1002,7 +1002,7 @@ Můžete napsat kód pro zpracování telemetrických dat před odesláním ze s
 
 [Přidání vlastností](../../azure-monitor/app/api-filtering-sampling.md#add-properties) k telemetrii implementací `ITelemetryInitializer`. Můžete například přidat čísla verzí nebo hodnoty, které se počítá z dalších vlastností.
 
-[Filtrování](../../azure-monitor/app/api-filtering-sampling.md#filtering) můžete upravit nebo zrušit telemetrická data před odesláním ze sady SDK implementací `ITelemetryProcesor`. Můžete řídit, co je odeslána nebo zahozeny, ale budete muset počítat vliv na vaše metriky. V závislosti na tom, jak můžete zahodit položky můžete ztratit možnost navigace mezi související položky.
+[Filtrování](../../azure-monitor/app/api-filtering-sampling.md#filtering) můžete upravit nebo zrušit telemetrická data před odesláním ze sady SDK implementací `ITelemetryProcessor`. Můžete řídit, co je odeslána nebo zahozeny, ale budete muset počítat vliv na vaše metriky. V závislosti na tom, jak můžete zahodit položky můžete ztratit možnost navigace mezi související položky.
 
 [Vzorkování](../../azure-monitor/app/api-filtering-sampling.md) je zabalená řešení a snížit objem dat, který je odesílán z vaší aplikace na portál. Dělá to aniž by to ovlivnilo zobrazených metrik. A dělá to aniž by to ovlivnilo moct lépe diagnostikovat problémy tak, že přejdete mezi související položky jako výjimky, požadavků a zobrazení stránek.
 

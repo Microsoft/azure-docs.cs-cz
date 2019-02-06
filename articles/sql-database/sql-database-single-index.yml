@@ -1,10 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 5656ba34a6bbadd3deaaa023b167a97ef8e0c1b0
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.openlocfilehash: b30dd37ed0928b56af9570b307c18ff94e2e42a9
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55699631"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55750065"
 documentType: LandingData
 title: 'Azure SQL Database: Izolovaná databáze'
 metadata:
@@ -101,7 +101,7 @@ sections:
     rows:
     - title: Vytvoření databáze
       values:
-      - href: /azure/sql-database/sql-database-get-started-portal
+      - href: /azure/sql-database/sql-database-single-database-get-started
       - href: /azure/sql-database/scripts/sql-database-create-and-configure-database-cli
       - href: /azure/sql-database/scripts/sql-database-create-and-configure-database-powershell
       - href: https://github.com/Azure/azure-quickstart-templates/tree/master/201-sql-database-transparent-encryption-create

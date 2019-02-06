@@ -9,12 +9,12 @@ ms.date: 06/06/2018
 ms.topic: article
 manager: carmonm
 ms.custom: mvc
-ms.openlocfilehash: f1607a7d795e3934881429feb18c711a75995e31
-ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
+ms.openlocfilehash: f83c05f4d1dcb93bd424a733866f85edf04bbd05
+ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/07/2019
-ms.locfileid: "54062940"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55745262"
 ---
 # <a name="enable-update-management-change-tracking-and-inventory-solutions-on-multiple-vms"></a>Povolení správy aktualizací, Change Tracking a inventář řešení na několika virtuálních počítačích
 
@@ -76,6 +76,7 @@ V následující tabulce jsou uvedeny podporované mapování:
 |UKSouth|UKSouth|
 |USGovVirginia|USGovVirginia|
 |EastUS2EUAP|CentralUSEUAP|
+|Západní USA 2|Západní USA 2|
 
 Zrušit zaškrtnutí políčka vedle libovolného virtuálního počítače, které nechcete povolit. Virtuálních počítačů, které není možné je už vybraná.
 
@@ -124,13 +125,13 @@ Při připojování více počítačů, může být počítače, které se zobra
 
 ### <a name="vm-reports-to-a-different-workspace-workspacename--change-configuration-to-use-it-for-enabling"></a>Virtuální počítač hlásí s jiným pracovním prostorem: "\<workspaceName\>".  Změna konfigurace použít k povolení
 
-**Příčina**: Tato chyba ukazuje, že virtuální počítač, který se pokoušíte připojit sestavy s jiným pracovním prostorem.
+**Příčina:** Tato chyba ukazuje, že virtuální počítač, který se pokoušíte připojit sestavy s jiným pracovním prostorem.
 
 **Řešení**: Klikněte na tlačítko **jako konfigurace** změnit cílový pracovní prostor účtu Automation a Log Analytics.
 
 ### <a name="vm-reports-to-a-workspace-that-is-not-available-in-this-subscription"></a>Virtuální počítač sestavy do pracovního prostoru, který není v tomto předplatném k dispozici
 
-**Příčina**: Pracovní prostor, který bude virtuální počítač hlásit do:
+**Příčina:** Pracovní prostor, který bude virtuální počítač hlásit do:
 
 * Je v jiném předplatném, nebo
 * Už existuje, nebo
@@ -146,13 +147,13 @@ Při připojování více počítačů, může být počítače, které se zobra
 
 ### <a name="classic-vms-cannot-be-enabled"></a>Klasický virtuální počítač se nedá povolit.
 
-**Příčina**: Virtuální počítače, které používají model nasazení classic se nepodporují.
+**Příčina:** Virtuální počítače, které používají model nasazení classic se nepodporují.
 
 **Řešení**: Virtuální počítač Migrate na modelu nasazení resource manager. Zjistěte, jak to provést, najdete v článku [migrace prostředků modelu nasazení classic](../virtual-machines/windows/migration-classic-resource-manager-overview.md).
 
 ### <a name="vm-is-stopped-deallocated"></a>Virtuální počítač je zastavený. (přidělení zrušeno)
 
-**Příčina**: Virtuální počítač není v **systémem** stavu.
+**Příčina:** Virtuální počítač není v **systémem** stavu.
 
 **Řešení**: Za účelem připojení musí být virtuální počítač do řešení pro virtuální počítač spuštěn. Klikněte na tlačítko **spustit virtuální počítač** vložený odkaz ke spuštění virtuálního počítače bez navigaci pryč z stránky.
 

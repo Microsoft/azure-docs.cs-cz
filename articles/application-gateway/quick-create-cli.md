@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.date: 1/8/2019
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: d14b8c9c752c9d41a42f092662c5f3aa88840dc5
-ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
+ms.openlocfilehash: 0ba18b1ef0ba6c0a73759577c83ab80550baa6f8
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54157713"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55754740"
 ---
 # <a name="quickstart-direct-web-traffic-with-azure-application-gateway---azure-cli"></a>Rychlý start: Přímé webového provozu s využitím Azure Application Gateway – rozhraní příkazového řádku Azure
 
@@ -39,7 +39,7 @@ az group create --name myResourceGroupAG --location eastus
 
 Když vytvoříte virtuální síť, application gateway může komunikovat s ostatními prostředky. Virtuální síť můžete vytvořit současně s aplikační bránou. V tomto příkladu vytvoříte dvě podsítě: jednu pro application gateway a druhou pro virtuální počítače. Podsítě služby application gateway může obsahovat jenom aplikační brány. Jsou povoleny žádné další prostředky.
 
-Pokud chcete vytvořit virtuální síť a podsíť, můžete použít [az network vnet vytvořit](/cli/azure/network/vnet#az-network-vnet-create). Spustit [az network public-ip vytvořit](/cli/azure/network/public-ip#az-public-ip-create) vytvořit veřejnou IP adresu.
+Pokud chcete vytvořit virtuální síť a podsíť, můžete použít [az network vnet vytvořit](/cli/azure/network/vnet#az-network-vnet-create). Spustit [az network public-ip vytvořit](/cli/azure/network/public-ip) vytvořit veřejnou IP adresu.
 
 ```azurecli-interactive
 az network vnet create \
@@ -133,7 +133,7 @@ done
 
 ## <a name="create-the-application-gateway"></a>Vytvoření služby Application Gateway
 
-Vytvoření služby application gateway s využitím [az network application-gateway vytvořit](/cli/azure/network/application-gateway#az-application-gateway-create). Když vytvoříte službu application gateway pomocí Azure CLI, zadejte informace o konfiguraci, jako je například kapacity, SKU a HTTP nastavení. Azure pak přidá privátní IP adresy síťových rozhraní jako servery ve fondu back-endu služby application gateway.
+Vytvoření služby application gateway s využitím [az network application-gateway vytvořit](/cli/azure/network/application-gateway). Když vytvoříte službu application gateway pomocí Azure CLI, zadejte informace o konfiguraci, jako je například kapacity, SKU a HTTP nastavení. Azure pak přidá privátní IP adresy síťových rozhraní jako servery ve fondu back-endu služby application gateway.
 
 ```azurecli-interactive
 address1=$(az network nic show --name myNic1 --resource-group myResourceGroupAG | grep "\"privateIpAddress\":" | grep -oE '[^ ]+$' | tr -d '",')

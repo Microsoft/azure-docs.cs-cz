@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 03/27/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: da7848fe561d061470e8921f1f76ac30bed4c809
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 58090e860b79d59021d467fcf73596271c91c7f6
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55163054"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55751153"
 ---
 # <a name="tutorial-create-and-use-disks-with-virtual-machine-scale-set-with-the-azure-cli"></a>Kurz: Vytvoření a použití disků se škálovací sady virtuálních počítačů pomocí rozhraní příkazového řádku Azure
 Škálovací sady virtuálních počítačů využívají disky k ukládání operačních systémů, aplikací a dat instancí virtuálních počítačů. Při vytváření a správě škálovací sady je důležité, abyste zvolili vhodnou velikost disku a konfiguraci pro očekávané úlohy. Tento kurz se zabývá vytvořením a správou disků virtuálních počítačů. V tomto kurzu se naučíte:
@@ -95,13 +95,13 @@ V tabulce výše se sice uvádí maximum vstupně-výstupních operací za sekun
 Disky můžete vytvořit a připojit při vytváření škálovací sady nebo u existující škálovací sady.
 
 ### <a name="attach-disks-at-scale-set-creation"></a>Připojení disků při vytváření škálovací sady
-Nejdřív vytvořte skupinu prostředků pomocí příkazu [az group create](/cli/azure/group#az_group_create). V tomto příkladu se vytvoří skupina prostředků s názvem *myResourceGroup* v oblasti *eastus*.
+Nejdřív vytvořte skupinu prostředků pomocí příkazu [az group create](/cli/azure/group). V tomto příkladu se vytvoří skupina prostředků s názvem *myResourceGroup* v oblasti *eastus*.
 
 ```azurecli-interactive
 az group create --name myResourceGroup --location eastus
 ```
 
-Vytvořte škálovací sadu virtuálních počítačů pomocí příkazu [az vmss create](/cli/azure/vmss#az_vmss_create). Následující příklad vytvoří škálovací sadu *myScaleSet* a vygeneruje klíče SSH, pokud ještě neexistují. Pomocí parametru `--data-disk-sizes-gb` se vytvoří dva disky. První disk má velikost *64* GB a druhý disk *128* GB:
+Vytvořte škálovací sadu virtuálních počítačů pomocí příkazu [az vmss create](/cli/azure/vmss). Následující příklad vytvoří škálovací sadu *myScaleSet* a vygeneruje klíče SSH, pokud ještě neexistují. Pomocí parametru `--data-disk-sizes-gb` se vytvoří dva disky. První disk má velikost *64* GB a druhý disk *128* GB:
 
 ```azurecli-interactive
 az vmss create \
@@ -117,7 +117,7 @@ az vmss create \
 Vytvoření a konfigurace všech prostředků škálovací sady a instancí virtuálních počítačů trvá několik minut.
 
 ### <a name="attach-a-disk-to-existing-scale-set"></a>Připojení disku k existující škálovací sadě
-Disky můžete připojit také k existující škálovací sadě. Použijte škálovací sadu vytvořenou v předchozím kroku a přidejte další disk pomocí příkazu [az vmss disk attach](/cli/azure/vmss/disk#az_vmss_disk_attach). Následující příklad připojí další *128*GB disk:
+Disky můžete připojit také k existující škálovací sadě. Použijte škálovací sadu vytvořenou v předchozím kroku a přidejte další disk pomocí příkazu [az vmss disk attach](/cli/azure/vmss/disk). Následující příklad připojí další *128*GB disk:
 
 ```azurecli-interactive
 az vmss disk attach \
@@ -144,7 +144,7 @@ az vmss extension set \
   --settings '{"fileUris":["https://raw.githubusercontent.com/Azure-Samples/compute-automation-configurations/master/prepare_vm_disks.sh"],"commandToExecute":"./prepare_vm_disks.sh"}'
 ```
 
-Pokud chcete potvrdit, že se disky správně připravily, připojte se přes SSH k některé z instancí virtuálních počítačů. Vypište informace o připojení pro vaši škálovací sadu pomocí příkazu [az vmss list-instance-connection-info](/cli/azure/vmss#az_vmss_list_instance_connection_info):
+Pokud chcete potvrdit, že se disky správně připravily, připojte se přes SSH k některé z instancí virtuálních počítačů. Vypište informace o připojení pro vaši škálovací sadu pomocí příkazu [az vmss list-instance-connection-info](/cli/azure/vmss):
 
 ```azurecli-interactive
 az vmss list-instance-connection-info \
@@ -225,7 +225,7 @@ exit
 
 
 ## <a name="list-attached-disks"></a>Výpis připojených disků
-Pokud chcete zobrazit informace o discích připojených ke škálovací sadě, použijte příkaz [az vmss show](/cli/azure/vmss#az_vmss_show) a dotaz na *virtualMachineProfile.storageProfile.dataDisks*:
+Pokud chcete zobrazit informace o discích připojených ke škálovací sadě, použijte příkaz [az vmss show](/cli/azure/vmss) a dotaz na *virtualMachineProfile.storageProfile.dataDisks*:
 
 ```azurecli-interactive
 az vmss show \
@@ -279,7 +279,7 @@ Zobrazí se informace o velikosti disku, úrovni úložiště a logické jednotc
 
 
 ## <a name="detach-a-disk"></a>Odpojení disku
-Pokud už daný disk nepotřebujete, můžete ho od škálovací sady odpojit. Disk se odebere ze všech instancí virtuálních počítačů ve škálovací sadě. K odpojení disku od škálovací sady použijte příkaz [az vmss disk detach](/cli/azure/vmss/disk) a zadejte logickou jednotku (LUN) disku. Logické jednotky (LUN) se zobrazí ve výstupu příkazu [az vmss show](/cli/azure/vmss#az_vmss_show) z předchozí části. Následující příklad odpojí od škálovací sady logickou jednotku (LUN) *2*:
+Pokud už daný disk nepotřebujete, můžete ho od škálovací sady odpojit. Disk se odebere ze všech instancí virtuálních počítačů ve škálovací sadě. K odpojení disku od škálovací sady použijte příkaz [az vmss disk detach](/cli/azure/vmss/disk) a zadejte logickou jednotku (LUN) disku. Logické jednotky (LUN) se zobrazí ve výstupu příkazu [az vmss show](/cli/azure/vmss) z předchozí části. Následující příklad odpojí od škálovací sady logickou jednotku (LUN) *2*:
 
 ```azurecli-interactive
 az vmss disk detach \
@@ -290,7 +290,7 @@ az vmss disk detach \
 
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
-Pokud chcete odebrat škálovací sadu a disky, odstraňte skupinu prostředků a všechny její prostředky pomocí příkazu [az group delete](/cli/azure/group#az_group_delete). Parametr `--no-wait` vrátí řízení na příkazový řádek bez čekání na dokončení operace. Parametr `--yes` potvrdí, že chcete prostředky odstranit, aniž by se na to zobrazoval další dotaz.
+Pokud chcete odebrat škálovací sadu a disky, odstraňte skupinu prostředků a všechny její prostředky pomocí příkazu [az group delete](/cli/azure/group). Parametr `--no-wait` vrátí řízení na příkazový řádek bez čekání na dokončení operace. Parametr `--yes` potvrdí, že chcete prostředky odstranit, aniž by se na to zobrazoval další dotaz.
 
 ```azurecli-interactive
 az group delete --name myResourceGroup --no-wait --yes

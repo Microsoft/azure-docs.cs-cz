@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: troubleshooting
 ms.date: 05/30/2017
 ms.author: genli
-ms.openlocfilehash: 1454eb5dbf8c80dcf7024c150dbff6a2082dbd02
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.openlocfilehash: d84881d4c86fd91fce430956705791097e200937
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55100270"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55753414"
 ---
 # <a name="troubleshoot-ssh-connections-to-an-azure-linux-vm-that-fails-errors-out-or-is-refused"></a>Řešení potíží s připojením SSH k virtuálnímu počítači Azure Linux, který selže, chyby, nebo bylo odmítnuto
 Tento článek vám pomůže najít a opravit problémy, které jsou způsobeny chybami Secure Shell (SSH), selhání připojení SSH, nebo SSH byla odmítnuta, při pokusu o připojení pro virtuální počítač s Linuxem (VM). Webu Azure portal, rozhraní příkazového řádku Azure, nebo rozšíření přístupu virtuálních počítačů pro Linux můžete odstraňovat potíže a řešit problémy s připojením.
@@ -78,20 +78,20 @@ Použití [ověření toku protokolu IP](../../network-watcher/network-watcher-c
 Network Watcher můžete využít [směrování](../../network-watcher/network-watcher-check-next-hop-portal.md) schopnost potvrďte trasu nebrání provoz z směrovány do nebo z virtuálního počítače. Můžete také zkontrolovat efektivní trasy, pokud chcete zobrazit všechny efektivní trasy pro síťové rozhraní. Další informace najdete v tématu [provoz řešení potíží s virtuálního počítače pomocí efektivních tras](../../virtual-network/diagnose-network-routing-problem.md).
 
 ## <a name="use-the-azure-cli"></a>Použití Azure CLI
-Pokud jste tak dosud neučinili, nainstalujte nejnovější [rozhraní příkazového řádku Azure](/cli/azure/install-az-cli2) a účtu přihlášení do Azure pomocí [az login](/cli/azure/reference-index#az_login).
+Pokud jste tak dosud neučinili, nainstalujte nejnovější [rozhraní příkazového řádku Azure](/cli/azure/install-az-cli2) a účtu přihlášení do Azure pomocí [az login](/cli/azure/reference-index).
 
 Pokud jste vytvořili a nahrát vlastní image Linuxu disku, ujistěte se, že [Microsoft Azure Linux Agent](../extensions/agent-windows.md) verze 2.0.5 nebo novější nainstalován. Pro virtuální počítače vytvořené pomocí Image z Galerie tato rozšíření přístup k již nainstalován a nakonfigurován pro vás.
 
 ### <a name="reset-ssh-configuration"></a>Resetovat konfiguraci SSH
 Nejprve můžete zkusit resetuje se konfigurace SSH na výchozí hodnoty a restartování serveru SSH na virtuálním počítači. Nezmění se název uživatelského účtu, hesla nebo klíčů SSH.
-V následujícím příkladu [az vm uživatele reset-ssh](/cli/azure/vm/user#az_vm_user_reset_ssh) resetovat konfiguraci SSH na virtuálním počítači s názvem `myVM` v `myResourceGroup`. Použijte vlastní hodnoty následujícím způsobem:
+V následujícím příkladu [az vm uživatele reset-ssh](/cli/azure/vm/user) resetovat konfiguraci SSH na virtuálním počítači s názvem `myVM` v `myResourceGroup`. Použijte vlastní hodnoty následujícím způsobem:
 
 ```azurecli
 az vm user reset-ssh --resource-group myResourceGroup --name myVM
 ```
 
 ### <a name="reset-ssh-credentials-for-a-user"></a>Resetovat přihlašovací údaje SSH pro uživatele
-Následující příklad používá [az vm se aktualizace uživatele](/cli/azure/vm/user#az_vm_user_update) se resetovat přihlašovací údaje pro `myUsername` na hodnotu zadanou v `myPassword`, na virtuálním počítači s názvem `myVM` v `myResourceGroup`. Použijte vlastní hodnoty následujícím způsobem:
+Následující příklad používá [az vm se aktualizace uživatele](/cli/azure/vm/user) se resetovat přihlašovací údaje pro `myUsername` na hodnotu zadanou v `myPassword`, na virtuálním počítači s názvem `myVM` v `myResourceGroup`. Použijte vlastní hodnoty následujícím způsobem:
 
 ```azurecli
 az vm user update --resource-group myResourceGroup --name myVM \
@@ -117,7 +117,7 @@ Vytvořte soubor s názvem `settings.json` s následujícím obsahem:
 }
 ```
 
-Pomocí Azure CLI, poté je zapotřebí zavolat `VMAccessForLinux` rozšíření k resetování připojení SSHD tak, že určíte soubor json. Následující příklad používá [sada rozšíření az vm](/cli/azure/vm/extension#az_vm_extension_set) resetovat SSHD na virtuálním počítači s názvem `myVM` v `myResourceGroup`. Použijte vlastní hodnoty následujícím způsobem:
+Pomocí Azure CLI, poté je zapotřebí zavolat `VMAccessForLinux` rozšíření k resetování připojení SSHD tak, že určíte soubor json. Následující příklad používá [sada rozšíření az vm](/cli/azure/vm/extension) resetovat SSHD na virtuálním počítači s názvem `myVM` v `myResourceGroup`. Použijte vlastní hodnoty následujícím způsobem:
 
 ```azurecli
 az vm extension set --resource-group philmea --vm-name Ubuntu \
@@ -191,7 +191,7 @@ Chcete-li restartovat virtuální počítač pomocí webu Azure portal, vyberte 
 ![Restartování virtuálního počítače na webu Azure Portal](./media/troubleshoot-ssh-connection/restart-vm-using-portal.png)
 
 ### <a name="azure-cli"></a>Azure CLI
-Následující příklad používá [az vm restart](/cli/azure/vm#az_vm_restart) restartovat virtuální počítač s názvem `myVM` ve skupině prostředků s názvem `myResourceGroup`. Použijte vlastní hodnoty následujícím způsobem:
+Následující příklad používá [az vm restart](/cli/azure/vm) restartovat virtuální počítač s názvem `myVM` ve skupině prostředků s názvem `myResourceGroup`. Použijte vlastní hodnoty následujícím způsobem:
 
 ```azurecli
 az vm restart --resource-group myResourceGroup --name myVM
@@ -218,7 +218,7 @@ Opětovné nasazení virtuálního počítače pomocí webu Azure portal, vybert
 ![Opětovné nasazení virtuálního počítače na webu Azure Portal](./media/troubleshoot-ssh-connection/redeploy-vm-using-portal.png)
 
 ### <a name="azure-cli"></a>Azure CLI
-Následující příklad použití [opětovné nasazení virtuálního počítače v rámci az](/cli/azure/vm#az_vm_redeploy) znovu nasadit virtuální počítač s názvem `myVM` ve skupině prostředků s názvem `myResourceGroup`. Použijte vlastní hodnoty následujícím způsobem:
+Následující příklad použití [opětovné nasazení virtuálního počítače v rámci az](/cli/azure/vm) znovu nasadit virtuální počítač s názvem `myVM` ve skupině prostředků s názvem `myResourceGroup`. Použijte vlastní hodnoty následujícím způsobem:
 
 ```azurecli
 az vm redeploy --resource-group myResourceGroup --name myVM

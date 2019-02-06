@@ -8,12 +8,12 @@ ms.service: security
 ms.topic: article
 ms.date: 06/20/2018
 ms.author: dlap
-ms.openlocfilehash: b1a406c15377cb6931f92594f5ce1526a2f2ab99
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: f5efeabf3cf6d52f74aa2d064dc4c67c877d34e5
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53017095"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55751918"
 ---
 # <a name="trusted-internet-connections-guidance"></a>Pokyny k důvěryhodné připojení k Internetu
 
@@ -40,8 +40,8 @@ Iniciativa zaměřená také obsahuje zásady zabezpečení, pokyny a architektu
 
 Existují tři hlavní možnosti pro připojení ke službám Azure:
 
-- Přímé připojení k Internetu: připojení ke službám Azure přímo prostřednictvím otevřené připojení k Internetu. Média a připojení jsou veřejné. Aplikace a šifrování na úrovni přenosu se pak mohli spoléhat na zajištění ochrany osobních údajů. Šířka pásma je omezená lokality připojení k Internetu. Více než jeden aktivní zprostředkovatel slouží k zajištění odolnosti proti chybám.
-- Virtuální privátní sítě (VPN): připojení ke službě Azure virtual network soukromě s použitím brány VPN.
+- Přímé připojení k Internetu: Připojte se ke službám Azure přímo prostřednictvím otevřené připojení k Internetu. Média a připojení jsou veřejné. Aplikace a šifrování na úrovni přenosu se pak mohli spoléhat na zajištění ochrany osobních údajů. Šířka pásma je omezená lokality připojení k Internetu. Více než jeden aktivní zprostředkovatel slouží k zajištění odolnosti proti chybám.
+- Virtuální privátní sítě (VPN): Připojte ke službě Azure virtual network soukromě s použitím brány VPN.
 Médium je veřejné, protože prochází lokality standardní připojení k Internetu, ale připojení je v tunelové připojení k zajištění ochrany osobních údajů. Šířka pásma je omezená, v závislosti na zařízení VPN a zvolenou konfiguraci. Připojení point-to-site Azure jsou obvykle omezené na 100 MB/s a připojení site-to-site jsou omezené na 1,25 GB/s.
 - Azure ExpressRoute: ExpressRoute je přímé připojení ke službám Microsoftu. Vzhledem k tomu, že připojení je prostřednictvím izolované Fibre channel, kterou může být připojení veřejných nebo privátních v závislosti na konfiguraci, která se používá. Šířka pásma je obvykle omezen na maximálně 10 GB/s.
 
@@ -49,7 +49,7 @@ Existuje několik způsobů pro splnění požadavků PIŠKVORKY příloha H (d�
 
 Povolit připojení z **ministerstvo nebo úřad USA (D/A)** Azure nebo Office 365, aniž by směrování provozu přes PIŠKVORKY D/A D/A musí používat šifrovaného tunelu nebo vyhrazené připojení k poskytovateli cloudové služby (CSP). Služby CSP můžete zajistit, že se připojení k D/A cloudovým prostředím nenabízí do veřejného Internetu přístup pracovníci s přímým přístupem agentura.
 
-Office 365 je kompatibilní s H příloha PIŠKVORKY 2.0 s použitím obou ExpressRoute s [Microsoft Peering](https://docs.microsoft.com/azure/expressroute/expressroute-circuit-peerings#expressroute-routing-domains) povolená nebo připojení k Internetu, který šifruje všechny přenosy pomocí protokolu TLS 1.2. D/A koncovým uživatelům v síti D/A můžete připojit prostřednictvím jejich agentura síť a infrastrukturu PIŠKVORKY prostřednictvím Internetu. Všechny vzdálený internetový přístup k Office 365 se zablokuje a směruje prostřednictvím. D/A můžete také připojit k Office 365 přes připojení ExpressRoute s Microsoft Peering (typ veřejného partnerského vztahu) povolena.  
+Office 365 je kompatibilní s H příloha PIŠKVORKY 2.0 s použitím obou ExpressRoute s [Microsoft Peering](https://docs.microsoft.com/azure/expressroute/expressroute-circuit-peerings) povolená nebo připojení k Internetu, který šifruje všechny přenosy pomocí protokolu TLS 1.2. D/A koncovým uživatelům v síti D/A můžete připojit prostřednictvím jejich agentura síť a infrastrukturu PIŠKVORKY prostřednictvím Internetu. Všechny vzdálený internetový přístup k Office 365 se zablokuje a směruje prostřednictvím. D/A můžete také připojit k Office 365 přes připojení ExpressRoute s Microsoft Peering (typ veřejného partnerského vztahu) povolena.  
 
 Pouze Azure druhá možnost (VPN) a třetí možnost (ExpressRoute) můžete splňovat tyto požadavky při jejich použití v souvislosti se službami, které omezují přístup k Internetu.
 
@@ -63,10 +63,10 @@ Hlavní nutnost pomoct zajistit dodržování předpisů s PIŠKVORKY referenčn
 
 Dodržování předpisů Azure IaaS PIŠKVORKY je rozdělena na dva hlavní kroky:
 
-- Krok 1: konfigurace.
-- Krok 2: auditování.
+- Krok 1: Konfigurace.
+- Krok 2: Auditování.
 
-### <a name="azure-iaas-tic-compliance-configuration"></a>Dodržování předpisů Azure IaaS PIŠKVORKY: Konfigurace
+### <a name="azure-iaas-tic-compliance-configuration"></a>Azure IaaS PIŠKVORKY dodržování předpisů: Konfigurace
 
 Ke konfiguraci CLS PIŠKVORKY architektury s Azure, musíte nejprve zakázat přímý přístup k Internetu pro vaši virtuální síť a pak vynucují internetový provoz přes místní síť.
 
@@ -85,7 +85,7 @@ Azure automaticky vytvoří systémové trasy a přiřadí je ke každé podsít
 
 ![PIŠKVORKY vynucené tunelování](media/tic-diagram-c.png)
 
-Veškerý provoz, které se zasílají virtuální sítě je potřeba směrovat přes místní připojení, a ujistěte se, že veškerý provoz prochází skrz D/A PIŠKVORKY. Vlastní trasy můžete vytvořit tak, že vytvoříte trasy definované uživatelem, nebo výměnou tras protokolu BGP (Border Gateway) mezi bránu místní sítě a službou Azure VPN gateway. Další informace o trasách definovaných uživatelem najdete v tématu [směrování provozu virtuální sítě: uživatelem definované trasy](https://docs.microsoft.com/azure/virtual-network/virtual-networks-udr-overview#user-defined). Další informace o protokolu BGP najdete v tématu [směrování provozu virtuální sítě: Border Gateway Protocol](https://docs.microsoft.com/azure/virtual-network/virtual-networks-udr-overview#border-gateway-protocol).
+Veškerý provoz, které se zasílají virtuální sítě je potřeba směrovat přes místní připojení, a ujistěte se, že veškerý provoz prochází skrz D/A PIŠKVORKY. Vlastní trasy můžete vytvořit tak, že vytvoříte trasy definované uživatelem, nebo výměnou tras protokolu BGP (Border Gateway) mezi bránu místní sítě a službou Azure VPN gateway. Další informace o trasách definovaných uživatelem najdete v tématu [směrování provozu virtuální sítě: Trasy definované uživatelem](https://docs.microsoft.com/azure/virtual-network/virtual-networks-udr-overview#user-defined). Další informace o protokolu BGP najdete v tématu [směrování provozu virtuální sítě: Border Gateway Protocol](https://docs.microsoft.com/azure/virtual-network/virtual-networks-udr-overview#border-gateway-protocol).
 
 #### <a name="add-user-defined-routes"></a>Přidání trasy definované uživatelem
 
@@ -97,7 +97,7 @@ Pokud používáte bránu virtuální sítě založené na směrování, můžet
 
 Pokud používáte ExpressRoute nebo brány virtuální sítě s povoleným protokolem BGP, protokol BGP je upřednostňovaný postup pro inzerování tras. Protokol BGP trasy inzerované 0.0.0.0/0 brány virtuální sítě ExpressRoute a s ohledem na BGP Ujistěte se, že výchozí trasa vztahuje na všechny podsítě v rámci virtuální sítě.
 
-### <a name="azure-iaas-tic-compliance-auditing"></a>Dodržování předpisů Azure IaaS PIŠKVORKY: auditování
+### <a name="azure-iaas-tic-compliance-auditing"></a>Azure IaaS PIŠKVORKY dodržování předpisů: Auditování
 
 Azure nabízí několik způsobů, jak auditovat PIŠKVORKY dodržování předpisů.
 
@@ -124,8 +124,8 @@ Služby Azure PaaS, jako je Azure Storage, jsou přístupné prostřednictvím a
 
 Pokud služby Azure PaaS jsou integrované s virtuální sítí, služba přístupný soukromě tuto virtuální síť. Můžete použít vlastní směrování 0.0.0.0/0 prostřednictvím uživatelem definované trasy a protokolu BGP. Vlastní směrování se zajistí, že směruje veškerý provoz směřující na internet k procházení PIŠKVORKY místní. Integrace služeb Azure, do virtuálních sítí s použitím následujících vzorů:
 
-- **Nasazení vyhrazenou instanci služby**: rostoucí počet služeb PaaS, je možné nasadit jako vyhrazené instance s koncovými body virtuální připojeného k síti. V režimu "Izolované" Povolit koncový bod sítě pro omezené k virtuální síti můžete nasadit službu App Service Environment pro PowerApps. Hostujte řadou služeb Azure PaaS, jako je Azure Web Apps, Azure API Management a Azure Functions můžete službě App Service Environment.
-- **Používání koncových bodů služby virtuální sítě**: rostoucí počet služeb PaaS povolit možnost přesunout jejich koncový bod na virtuální síti privátní IP adresu místo veřejné adresy.
+- **Nasazení vyhrazenou instanci služby**: Větší počet služeb PaaS, je možné nasadit jako vyhrazené instance s koncovými body virtuální připojeného k síti. V režimu "Izolované" Povolit koncový bod sítě pro omezené k virtuální síti můžete nasadit službu App Service Environment pro PowerApps. Hostujte řadou služeb Azure PaaS, jako je Azure Web Apps, Azure API Management a Azure Functions můžete službě App Service Environment.
+- **Používání koncových bodů služby virtuální sítě**: Větší počet služeb PaaS povolit možnost přesunout jejich koncový bod na virtuální síti privátní IP adresu místo veřejné adresy.
 
 Služby, které podporují nasazení vyhrazených instancích do virtuální sítě nebo pomocí koncových bodů služby od května 2018, jsou uvedeny v následujících tabulkách.
 
@@ -142,7 +142,7 @@ Služby, které podporují nasazení vyhrazených instancích do virtuální sí
 |Azure Data Lake                | Ve verzi Private preview  |
 |Azure Database for PostgreSQL  | Ve verzi Private preview  |
 |Azure Database for MySQL       | Ve verzi Private preview  |
-|Azure SQL Data Warehouse       | Veřejná verze Preview   |
+|Azure SQL Data Warehouse       | Verze Public Preview   |
 |Azure SQL Database             | Obecné dostupnosti (GA) |
 |Azure Storage                  | GA               |
 
@@ -150,8 +150,8 @@ Služby, které podporují nasazení vyhrazených instancích do virtuální sí
 
 |Služba                               |Dostupnost      |
 |--------------------------------------|------------------|
-|Azure SQL Database Managed Instance   | Veřejná verze Preview   |
-|Azure Kubernetes Service (AKS)        | Veřejná verze Preview   |
+|Azure SQL Database Managed Instance   | Verze Public Preview   |
+|Azure Kubernetes Service (AKS)        | Verze Public Preview   |
 |Azure Service Fabric                  | GA               |
 |Azure API Management                  | GA               |
 |Azure Active Directory                | GA               |
@@ -165,7 +165,7 @@ Služby, které podporují nasazení vyhrazených instancích do virtuální sí
 
 ### <a name="virtual-network-integration-details"></a>Podrobnosti integrace virtuální sítě
 
-Následující diagram znázorňuje tok obecné sítě pro přístup ke službám PaaS. Přístup je zřejmé z virtuální sítě vkládání a tunelové propojení služeb virtuální sítě. Další informace o síťové služby brány virtuální sítě a značky služeb najdete v tématu [sítě a skupin zabezpečení aplikací: značky služeb](https://docs.microsoft.com/azure/virtual-network/security-overview#service-tags).
+Následující diagram znázorňuje tok obecné sítě pro přístup ke službám PaaS. Přístup je zřejmé z virtuální sítě vkládání a tunelové propojení služeb virtuální sítě. Další informace o síťové služby brány virtuální sítě a značky služeb najdete v tématu [sítě a skupin zabezpečení aplikací: Značky služeb](https://docs.microsoft.com/azure/virtual-network/security-overview#service-tags).
 
 ![Možnosti připojení PaaS PIŠKVORKY](media/tic-diagram-e.png)
 
@@ -178,13 +178,13 @@ Následující diagram znázorňuje tok obecné sítě pro přístup ke službá
    - Nasadit přímo do virtuální sítě.
    - Selektivně povolené, na základě pokynů v příslušné službě Azure.
 
-#### <a name="option-a-deploy-a-dedicated-instance-of-a-service-virtual-network-injection"></a>Odpověď: možnost Nasadit vyhrazenou instanci služby (vkládání virtuální sítě)
+#### <a name="option-a-deploy-a-dedicated-instance-of-a-service-virtual-network-injection"></a>Možnost A: Nasadit vyhrazenou instanci služby (vkládání virtuální sítě)
 
 Vkládání virtuální sítě umožňuje zákazníkům nasadit selektivně vyhrazené instance dané Azure služby, jako je HDInsight, do své vlastní virtuální sítě. Instance služby, které jsou nasazené do vyhrazenou podsíť ve virtuální síti zákazníka. Vkládání virtuální sítě umožňuje přístup k prostředkům služby prostřednictvím Internetu jiných směrovatelné adres. Místní instance používat ExpressRoute nebo VPN typu site-to-site pro přímý přístup k instance služby prostřednictvím adresní prostor virtuální sítě, místo otevření brány firewall do veřejného Internetu adresního prostoru. Když vyhrazenou instanci je připojen na koncový bod, můžete použít stejné strategie jako u IaaS PIŠKVORKY dodržování předpisů. Výchozí směrování zajistí, že internetový provoz se přesměruje na bránu virtuální sítě, která je vázána pro místní. Dále můžete řídit příchozí a odchozí přístup pomocí skupin zabezpečení sítě pro danou podsíť.
 
 ![Přehled služby Virtual network vkládání](media/tic-diagram-f.png)
 
-#### <a name="option-b-use-virtual-network-service-endpoints-service-tunnel"></a>Možnost B: použijte koncových bodech virtuální sítě (tunelové propojení služby)
+#### <a name="option-b-use-virtual-network-service-endpoints-service-tunnel"></a>Možnost B: Používání koncových bodů služby virtuální sítě (tunelové propojení služby)
 
 Růst počtu víceklientské služby Azure nabízejí "koncových bodů služby." Koncové body služby je alternativní metoda pro integraci k virtuálním sítím Azure. Koncové body služeb virtuální sítě rozšiřují prostoru IP adres vaší virtuální sítě a její identitu vaší virtuální sítě ke službě přes přímé připojení. Provoz z virtuální sítě do služby Azure vždy zůstává v páteřní síti Azure. 
 
@@ -264,10 +264,10 @@ Můžete snadno nakonfigurovat přístup pro Microsoft Azure, Office 365 a Dynam
 | Databáze | Azure SQL Data Warehouse | | | Ano |
 | Databáze | Azure Cosmos DB | | | Ano |
 | Databáze | Azure Cache for Redis | | Ano | |
-| Úložiště | Azure Blob Storage | Ano | | |
-| Úložiště | Soubory Azure | Ano | | |
-| Úložiště | Azure Queue storage | Ano | | |
-| Úložiště | Azure Table Storage | Ano | | |
-| Úložiště | Azure Disk storage | Ano | | |
+| Storage | Azure Blob Storage | Ano | | |
+| Storage | Soubory Azure | Ano | | |
+| Storage | Azure Queue storage | Ano | | |
+| Storage | Azure Table Storage | Ano | | |
+| Storage | Azure Disk storage | Ano | | |
 
 \* Chcete-li verzi Public preview ve službě Azure Government. května 2018.

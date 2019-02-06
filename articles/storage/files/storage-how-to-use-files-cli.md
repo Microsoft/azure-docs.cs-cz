@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.date: 10/26/2018
 ms.author: wgries
 ms.subservice: files
-ms.openlocfilehash: ddd97ea73ce476e72c0c94a756c749e5527799ae
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
+ms.openlocfilehash: ee8dcf1488cfb407793bdb35cdbbee18b2ef15ab
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55730777"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55750966"
 ---
 # <a name="quickstart-create-and-manage-azure-file-shares-using-azure-cli"></a>Rychlý start: Vytváření a správě sdílených složek Azure pomocí Azure CLI
 Tato příručka vás provede základy práce se [sdílenými složkami Azure](storage-files-introduction.md) pomocí Azure CLI. Sdílené složky Azure jsou stejné jako ostatní sdílené složky, ale jsou uložené v cloudu a využívají platformu Azure. Sdílené složky Azure podporují standardní průmyslový protokol SMB a umožňují sdílení souborů mezi různými počítači, aplikacemi a instancemi. 
@@ -57,7 +57,7 @@ STORAGEACCT=$(az storage account create \
 ```
 
 ### <a name="get-the-storage-account-key"></a>Získání klíče účtu úložiště
-Klíče účtu úložiště řídí přístup k prostředkům v účtu úložiště. Vytváří se automaticky při vytvoření účtu úložiště. Klíče vašeho účtu úložiště můžete získat pomocí příkazu [az storage account keys list](/cli/azure/storage/account/keys#list): 
+Klíče účtu úložiště řídí přístup k prostředkům v účtu úložiště. Vytváří se automaticky při vytvoření účtu úložiště. Klíče vašeho účtu úložiště můžete získat pomocí příkazu [az storage account keys list](/cli/azure/storage/account/keys): 
 
 ```azurecli-interactive 
 STORAGEKEY=$(az storage account keys list \
@@ -124,7 +124,7 @@ az storage file upload \
 
 Pokud používáte Azure CLI místně, nahraďte `~/clouddrive` za cestu, která existuje na vašem počítači.
 
-Po nahrání souboru můžete pomocí příkazu [`az storage file list`](/cli/azure/storage/file#az_storage_file_list) zkontrolovat nahrání souboru do sdílené složky Azure:
+Po nahrání souboru můžete pomocí příkazu [`az storage file list`](/cli/azure/storage/file) zkontrolovat nahrání souboru do sdílené složky Azure:
 
 ```azurecli-interactive
 az storage file list \
@@ -136,7 +136,7 @@ az storage file list \
 ```
 
 ### <a name="download-a-file"></a>Stažení souboru
-Pomocí příkazu [`az storage file download`](/cli/azure/storage/file#az_storage_file_download) můžete stáhnout kopii souboru, který jste nahráli do pomocné jednotky služby Cloud Shell:
+Pomocí příkazu [`az storage file download`](/cli/azure/storage/file) můžete stáhnout kopii souboru, který jste nahráli do pomocné jednotky služby Cloud Shell:
 
 ```azurecli-interactive
 # Delete an existing file by the same name as SampleDownload.txt, if it exists, because you've run this example before
@@ -191,7 +191,7 @@ Další užitečnou úlohou, kterou se sdílenými složkami Azure můžete prov
 
 - Snímky [Správce logických svazků (LVM)](https://en.wikipedia.org/wiki/Logical_Volume_Manager_(Linux)#Basic_functionality) v případě systémů Linux.
 - Snímky [systému souborů Apple (APFS)](https://developer.apple.com/library/content/documentation/FileManagement/Conceptual/APFS_Guide/Features/Features.html) v případě macOS
-- [Služba Stínová kopie svazku (VSS)](https://docs.microsoft.com/windows/desktop/VSS/volume-shadow-copy-service-portal) v případě systémů souborů Windows, jako jsou NTFS a ReFS. Snímek sdílené složky můžete vytvořit pomocí příkazu [`az storage share snapshot`](/cli/azure/storage/share#az_storage_share_snapshot):
+- [Služba Stínová kopie svazku (VSS)](https://docs.microsoft.com/windows/desktop/VSS/volume-shadow-copy-service-portal) v případě systémů souborů Windows, jako jsou NTFS a ReFS. Snímek sdílené složky můžete vytvořit pomocí příkazu [`az storage share snapshot`](/cli/azure/storage/share):
 
 ```azurecli-interactive
 SNAPSHOT=$(az storage share snapshot \
@@ -250,7 +250,7 @@ az storage file copy start \
 ```
 
 ### <a name="delete-a-share-snapshot"></a>Odstranění snímku sdílené složky
-Snímek sdílené složky můžete odstranit pomocí příkazu [`az storage share delete`](/cli/azure/storage/share#az_storage_share_delete). Použijte proměnnou, která obsahuje odkaz `$SNAPSHOT` na parametr `--snapshot`:
+Snímek sdílené složky můžete odstranit pomocí příkazu [`az storage share delete`](/cli/azure/storage/share). Použijte proměnnou, která obsahuje odkaz `$SNAPSHOT` na parametr `--snapshot`:
 
 ```azurecli-interactive
 az storage share delete \

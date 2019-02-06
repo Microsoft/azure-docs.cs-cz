@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: ada579af44d1d0b4ea08a8ae9eadbec386e44f08
-ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
+ms.openlocfilehash: 20616adf649924a13e80411aa5135889a175f442
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/16/2018
-ms.locfileid: "51823006"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55750184"
 ---
 # <a name="get-information-from-a-coordinate"></a>Získání informací ze souřadnice
 
@@ -33,7 +33,7 @@ První blok kódu vytvoří objekt Map. Můžete zobrazit [Vytvořte mapu](./map
 
 Třetí bloku kódu aktualizuje stylu ukazatele myši na ukazatel a [automaticky otevírané okno](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.popup?view=azure-iot-typescript-latest#open) objektu. Můžete zobrazit [přidání vyskakovacího okna na mapě](./map-add-popup.md) pokyny.
 
-Čtvrtý bloku kódu přidá [naslouchací proces událostí](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#events) pro kliknutí myší. Po kliknutí myší vytvoří se souřadnicemi místem kliknutí vyhledávacího dotazu. Poté použije na mapě [getSearchAddressReverse](https://docs.microsoft.com/javascript/api/azure-maps-rest/services.search?view=azure-iot-typescript-latest#getsearchaddressreverse) koncový bod pro dotazování adresu souřadnic.
+Čtvrtý bloku kódu přidá [naslouchací proces událostí](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#events) pro kliknutí myší. Po kliknutí myší vytvoří se souřadnicemi místem kliknutí vyhledávacího dotazu. Poté použije na mapě [getSearchAddressReverse](https://docs.microsoft.com/javascript/api/azure-maps-rest/services.search?view=azure-iot-typescript-latest) koncový bod pro dotazování adresu souřadnic.
 
 Pro úspěšné odpovědi shromažďuje adresy pro kliknutí na umístění a definuje obsah automaticky otevíraného okna a umístění prostřednictvím [setOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.popup?view=azure-iot-typescript-latest#setoptions-popupoptions-) funkce třídy automaticky otevíraného okna.
 

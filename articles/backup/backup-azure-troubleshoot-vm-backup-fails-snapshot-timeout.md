@@ -9,12 +9,12 @@ ms.service: backup
 ms.topic: troubleshooting
 ms.date: 12/03/2018
 ms.author: genli
-ms.openlocfilehash: e96c637e3c01ccfc27afa967d830c7d0254d11e7
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.openlocfilehash: 0869786b2aa6c604ee59deb0f5a5fbc27b9ce3bf
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55104231"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55751561"
 ---
 # <a name="troubleshoot-azure-backup-failure-issues-with-the-agent-or-extension"></a>Řešení potíží s Azure Backup selhání: Potíže s agentů nebo rozšíření
 
@@ -64,7 +64,7 @@ Pokud chcete tento problém vyřešit, odeberte zámek na skupinu prostředků v
 **Kód chyby:**: UserErrorKeyvaultPermissionsNotConfigured <br>
 **Chybová zpráva**: Zálohování nemá dostatečná oprávnění k trezoru klíčů pro zálohování šifrovaných virtuálních počítačů. <br>
 
-Záložní operace úspěšná na šifrovaných virtuálních počítačů musí mít oprávnění pro přístup k trezoru klíčů. To lze provést pomocí [webu Azure portal](https://docs.microsoft.com/azure/backup/backup-azure-vms-encryption#provide-permissions-to-backup) nebo prostřednictvím [prostředí PowerShell](https://docs.microsoft.com/azure/backup/backup-azure-vms-automation#enable-protection)
+Záložní operace úspěšná na šifrovaných virtuálních počítačů musí mít oprávnění pro přístup k trezoru klíčů. To lze provést pomocí [webu Azure portal](https://docs.microsoft.com/azure/backup/backup-azure-vms-encryption) nebo prostřednictvím [prostředí PowerShell](https://docs.microsoft.com/azure/backup/backup-azure-vms-automation#enable-protection)
 
 ## <a name="ExtensionSnapshotFailedNoNetwork-snapshot-operation-failed-due-to-no-network-connectivity-on-the-virtual-machine"></a>ExtensionSnapshotFailedNoNetwork - operace snímku nebyla úspěšná kvůli bez připojení k síti na virtuálním počítači
 
@@ -121,7 +121,7 @@ Azure Backup teď podporuje disky SSD na úrovni Standard pouze pro trezory slu�
 
 Poslední úlohy zálohování se nezdařila, protože je v průběhu existující úlohy zálohování. Nelze spustit novou úlohu zálohování, dokud se nedokončí aktuální úlohu. Ujistěte se, že je aktuálně probíhá operace zálohování dokončeny před aktivací nebo plánování jiné operace zálohování. Pokud chcete zkontrolovat stav úloh zálohování, proveďte následujících kroků:
 
-1. Přihlaste se k webu Azure portal, klikněte na tlačítko **všechny služby**. Typ služby Recovery Services a klikněte na tlačítko **trezory služby Recovery Services**. Objeví se seznam trezorů Recovery Services.
+1. Přihlaste se k webu Azure Portal a klikněte na **Všechny služby**. Zadejte Recovery Services a klikněte na **Trezory služby Recovery Services**. Objeví se seznam trezorů Recovery Services.
 2. Ze seznamu trezorů recovery services vyberte trezor, ve které je nakonfigurované zálohování.
 3. V nabídce řídicího panelu trezoru klikněte na **úlohy zálohování** zobrazí všechny úlohy zálohování.
 

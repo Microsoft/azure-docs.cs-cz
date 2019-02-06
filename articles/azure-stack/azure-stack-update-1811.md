@@ -16,12 +16,12 @@ ms.date: 01/30/2019
 ms.author: sethm
 ms.reviewer: adepue
 ms.lastreviewed: 01/25/2019
-ms.openlocfilehash: 444c67e942fad732c959f834e2c50f0b2a35562c
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: c398e615e943caad40040ff1b87713304fd9f015
+ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55246530"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55746706"
 ---
 # <a name="azure-stack-1811-update"></a>Aktualizace služby Azure Stack 1811
 
@@ -153,6 +153,9 @@ Tato aktualizace zahrnuje následující nové funkce a vylepšení pro službu 
 
 <!-- 3190553 - IS ASDK -->
 - Opravili jsme problém, který vygeneroval hlučného výstrahy indikující, že byla infrastruktury Instance Role není k dispozici nebo uzel jednotek škálování byla ve stavu offline.
+
+<!-- 2724961 - IS ASDK -->
+- Fiexed chybu, ve kterém na stránce Přehled virtuálních počítačů nelze správně zobrazit graf metrik virtuálního počítače. 
 
 ## <a name="changes"></a>Změny
 
@@ -297,11 +300,6 @@ Toto jsou známé problémy této verze sestavení po instalaci.
 
 <!-- 1662991 IS ASDK --> 
 - Diagnostika virtuálních počítačů Linux není podporována ve službě Azure Stack. Při nasazení virtuálního počítače s Linuxem s povolenou diagnostikou virtuálního počítače, nasazení se nezdaří. Nasazení se také nezdaří, pokud povolíte základní metriky virtuálního počítače s Linuxem prostřednictvím nastavení diagnostiky.  
-
-<!-- 2724961- IS ASDK --> 
-- Když se zaregistrujete **Microsoft.Insight** poskytovatele prostředků v nastavení předplatného a vytvoření virtuálního počítače s Windows pomocí hostovaného operačního systému diagnostických povolené, procentuální využití procesoru grafu na stránce Přehled virtuálních počítačů nemá zobrazit data metrik.
-
-   Pokud chcete najít data metrik, jako je například grafu procento využití procesoru pro virtuální počítač, přejděte na **metriky** okno a zobrazit všechny podporované Windows virtuálního počítače hosta metriky.
 
 <!-- 3507629 - IS, ASDK --> 
 - Spravované disky vytvoří dva nové [compute typy kvót](azure-stack-quota-types.md#compute-quota-types) omezit maximální kapacita spravované disky, které je možné zřídit. Ve výchozím nastavení 2048 GiB přidělených pro každý typ kvóty spravované disky. Však může dojít k následujícím problémům:

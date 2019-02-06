@@ -16,12 +16,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/08/2018
 ms.author: gokuma
-ms.openlocfilehash: 2c981d33c8108386e0287d4c2a800f065c9dc431
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 0146ee6ee37c2eb9e98d831b54df2218d7de5b62
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55452851"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55754596"
 ---
 # <a name="set-up-a-common-identity-on-the-data-science-virtual-machine"></a>Nastavte si společnou identitu na virtuální počítač pro datové vědy
 
@@ -31,7 +31,7 @@ Active Directory je poskytovatel oblíbených identity a je podporovaný v Azure
 
 Pokud už máte služby Active Directory ke správě identit, můžete jako běžné zprostředkovatele identity. Pokud nemáte k dispozici služby Active Directory, můžete si projít spravovanou instanci služby Active Directory v Azure služby zvané [Azure Active Directory Domain Services](https://docs.microsoft.com/azure/active-directory-domain-services/) (Azure AD DS). 
 
-V dokumentaci k [Azure AD](https://docs.microsoft.com/azure/active-directory/) poskytuje podrobné [správu pokyny](https://docs.microsoft.com/azure/active-directory/choose-hybrid-identity-solution#synchronized-identity), včetně připojení k místní adresář Azure AD, pokud nějakou máte. 
+V dokumentaci k [Azure AD](https://docs.microsoft.com/azure/active-directory/) poskytuje podrobné [správu pokyny](https://docs.microsoft.com/azure/active-directory/choose-hybrid-identity-solution), včetně připojení k místní adresář Azure AD, pokud nějakou máte. 
 
 Tento článek popisuje postup nastavení plně spravované domény služby Active Directory v Azure pomocí služby Azure AD DS. Pak můžete připojit vaše datové ke spravované doméně služby Active Directory umožňuje uživatelům přístup k fondu datové (a dalších prostředků Azure) pomocí společného uživatelského účtu a přihlašovací údaje. 
 

@@ -1,5 +1,5 @@
 ---
-title: Kurz – přizpůsobení uživatelského rozhraní svých aplikací v Azure Active Directory B2C | Dokumentace Microsoftu
+title: Kurz – přizpůsobení rozhraní uživatelské prostředí – Azure Active Directory B2C | Dokumentace Microsoftu
 description: Zjistěte, jak přizpůsobit uživatelské rozhraní aplikace v Azure Active Directory B2C na webu Azure portal.
 services: B2C
 author: davidmu1
@@ -7,17 +7,17 @@ manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 11/30/2018
+ms.date: 02/01/2019
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: 1c95772eeb6057b4ff7b12a79897fda73e1e017c
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: f3bc1789d0b521b0d91ca42ebe472fed0225d87b
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55156649"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55752377"
 ---
-# <a name="tutorial-customize-the-user-interface-of-your-applications-in-azure-active-directory-b2c"></a>Kurz: Přizpůsobení uživatelského rozhraní svých aplikací v Azure Active Directory B2C
+# <a name="tutorial-customize-the-interface-of-user-experiences-in-azure-active-directory-b2c"></a>Kurz: Přizpůsobení rozhraní uživatelského prostředí v Azure Active Directory B2C
 
 Pro běžné uživatelské prostředí jako například registrace, přihlašování a úpravy profilu, můžete použít [toky uživatelů](active-directory-b2c-reference-policies.md) v Azure Active Directory (Azure AD) B2C. Informace v tomto kurzu vám umožní získat informace tom, jak [přizpůsobení uživatelského rozhraní (UI)](customize-ui-overview.md) z těchto prostředí s využitím vlastní soubory HTML a CSS.
 
@@ -25,14 +25,14 @@ V tomto článku získáte informace o těchto tématech:
 
 > [!div class="checklist"]
 > * Vytvoření souborů přizpůsobení uživatelského rozhraní
-> * Registrace a přihlašování uživatelů tok, který používá soubory
+> * Aktualizovat tok uživatele k využití souborů
 > * Testování vlastní uživatelské rozhraní
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
 ## <a name="prerequisites"></a>Požadavky
 
-Pokud jste ještě nevytvořili vlastní [Tenanta Azure AD B2C](tutorial-create-tenant.md), založte si ho teď. Existujícího tenanta můžete použít, pokud jste vytvořili v předchozím kurzu.
+[Vytvořit tok uživatele](tutorial-create-user-flows.md) umožňují uživatelům registraci a přihlášení do vaší aplikace.
 
 ## <a name="create-customization-files"></a>Vytvořit soubory vlastního nastavení
 
@@ -42,17 +42,15 @@ Vytvoření účtu služby Azure storage a kontejner a pak umístit základní s
 
 I když můžete ukládat soubory v mnoha směrech pro účely tohoto kurzu, jsou uloženy v [úložiště objektů Blob v Azure](../storage/blobs/storage-blobs-introduction.md).
 
-1. Ujistěte se, že používáte adresáře, který obsahuje předplatné Azure. Vyberte **filtr adresářů a předplatných** v horní nabídce a vyberte adresář, který obsahuje vaše předplatné. Tento adresář je jiný než ten, který obsahuje váš tenant Azure B2C.
-
-    ![Přepnout na adresář předplatného](./media/tutorial-customize-ui/switch-directories.png)
-
-2. Vyberte všechny služby v levém horním rohu webu Azure portal, vyhledejte a vyberte **účty úložiště**. 
-3. Vyberte **Přidat**.
-4. V části **skupiny prostředků**vyberte **vytvořit nový**, zadejte název pro novou skupinu prostředků a pak klikněte na tlačítko **OK**.
-5. Zadejte název účtu úložiště. Zvolený název musí být jedinečný v rámci Azure, mít délku 3 až 24 znaků a může obsahovat jen číslice a malá písmena.
-6. Vyberte umístění účtu úložiště, nebo přijměte výchozí umístění. 
-7. Přijměte všechny výchozí hodnoty, vyberte **revize + vytvořit**a potom klikněte na tlačítko **vytvořit**.
-8. Po vytvoření účtu úložiště vyberte **přejít k prostředku**.
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+2. Ujistěte se, že používáte adresáře, který obsahuje předplatné Azure. Vyberte **filtr adresářů a předplatných** v horní nabídce a vyberte adresář, který obsahuje vaše předplatné. Tento adresář je jiný než ten, který obsahuje váš tenant Azure B2C.
+3. Vyberte všechny služby v levém horním rohu webu Azure portal, vyhledejte a vyberte **účty úložiště**. 
+4. Vyberte **Přidat**.
+5. V části **skupiny prostředků**vyberte **vytvořit nový**, zadejte název pro novou skupinu prostředků a pak klikněte na tlačítko **OK**.
+6. Zadejte název účtu úložiště. Zvolený název musí být jedinečný v rámci Azure, mít délku 3 až 24 znaků a může obsahovat jen číslice a malá písmena.
+7. Vyberte umístění účtu úložiště, nebo přijměte výchozí umístění. 
+8. Přijměte všechny výchozí hodnoty, vyberte **revize + vytvořit**a potom klikněte na tlačítko **vytvořit**.
+9. Po vytvoření účtu úložiště vyberte **přejít k prostředku**.
 
 ### <a name="create-a-container"></a>Vytvoření kontejneru
 
@@ -137,42 +135,17 @@ V tomto kurzu ukládáte soubory, které jste vytvořili v účtu úložiště t
 4. Zkopírujte adresu URL souboru, který jste nahráli do použít později v tomto kurzu.
 5. Zopakujte kroky 3 a 4 *style.css* souboru.
 
-## <a name="create-a-sign-up-and-sign-in-user-flow"></a>Vytvořit tok registrace a přihlášení uživatele
+## <a name="update-the-user-flow"></a>Aktualizovat tok uživatele.
 
-K dokončení kroků v tomto kurzu, budete muset vytvořit tok testovací aplikace a registrace nebo přihlášení uživatele v Azure AD B2C. Můžete použít zásady popsané v tomto kurzu k jiné uživatelské prostředí, jako je například upravování profilu.
-
-### <a name="create-an-azure-ad-b2c-application"></a>Vytvoření aplikace Azure AD B2C
-
-Probíhá komunikace s Azure AD B2C prostřednictvím aplikace, kterou vytvoříte ve vašem tenantovi. Následující kroky slouží k vytvoření aplikace, který přesměruje autorizační token, který je vrácen [ https://jwt.ms ](https://jwt.ms).
-
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
-2. Ujistěte se, že používáte adresáře, který obsahuje vašeho tenanta Azure AD B2C kliknutím **filtr adresářů a předplatných** v horní nabídce a výběrem adresáře, který obsahuje váš tenant.
-3. Zvolte **všechny služby** v horním levém horním rohu webu Azure portal a poté vyhledejte a vyberte **Azure AD B2C**.
-4. Vyberte **aplikací**a pak vyberte **přidat**.
-5. Zadejte název aplikace, například *testapp1*.
-6. Pro **webová aplikace / webové rozhraní API**vyberte `Yes`a pak zadejte `https://jwt.ms` pro **adresy URL odpovědi**.
-7. Klikněte na možnost **Vytvořit**.
-
-### <a name="create-the-user-flow"></a>Vytvořit tok uživatele.
-
-Otestovat soubory vlastního nastavení, můžete vytvořit tok integrované registrace / přihlášení uživatele, který používá aplikaci, kterou jste vytvořili.
-
-1. Ve vašem tenantovi Azure AD B2C vyberte **toky uživatelů**a potom klikněte na tlačítko **nový tok uživatele**.
-2. Na **doporučená** klikněte na tlačítko **podepsat a přihlašování**.
-3. Zadejte název toku uživatele. Například *signup_signin*. Předpona, která *B2C_1* se automaticky přidá do názvu, když se tok uživatele.
-4. V části **zprostředkovatelé Identity**vyberte **e-mailová registrace**.
-5. V části **atributy uživatele a deklarace identity**, klikněte na tlačítko **zobrazit více**.
-6. V **shromažďování atribut** sloupce, vyberte atributy, které chcete během registrace shromažďovat od zákazníka. Například nastavte **země/oblast**, **zobrazovaný název**, a **PSČ**.
-7. V **návratový deklarace identity** sloupce, zvolte deklarace identit, které se mají vracet v autorizačních tokenech odesílaných zpět do aplikace po úspěšné registraci nebo přihlašování prostředí. Vyberte například **Zobrazované jméno**, **Zprostředkovatel identity**, **PSČ**, **Uživatel je nový** a **ID objektu uživatele**.
-8. Klikněte na **OK**.
-9. Klikněte na možnost **Vytvořit**.
-10. V části **vlastní**vyberte **rozložení stránek**. Vyberte **stránku registrace nebo přihlášení Unified**a potom na **Ano** pro **použít vlastní obsah stránky**.
-11. V **vlastní identifikátor URI stránky**, zadejte adresu URL *vlastní ui.html* soubor, který jste si poznamenali dříve.
-12. V horní části stránky klikněte na tlačítko **Uložit**.
+1. Zvolte **všechny služby** v horním levém horním rohu webu Azure portal a poté vyhledejte a vyberte **Azure AD B2C**.
+2. Vyberte **toky uživatelů (zásady)** a pak vyberte *B2C_1_signupsignin1* tok uživatele.
+3. Vyberte **rozložení stránek**a potom v části **stránku registrace nebo přihlášení Unified**, klikněte na tlačítko **Ano** pro **použít vlastní obsah stránky**.
+4. V **vlastní identifikátor URI stránky**, zadejte identifikátor URI *vlastní ui.html* soubor, který jste si poznamenali dříve.
+5. V horní části stránky vyberte **Uložit**.
 
 ## <a name="test-the-user-flow"></a>Testování tohoto toku uživatele
 
-1. Ve vašem tenantovi Azure AD B2C vyberte **toky uživatelů** a vyberte tok uživatele, který jste vytvořili. Například *B2C_1_signup_signin*.
+1. Ve vašem tenantovi Azure AD B2C vyberte **toky uživatelů** a vyberte *B2C_1_signupsignin1* tok uživatele.
 2. V horní části stránky klikněte na tlačítko **spustit tok uživatele**.
 3. Klikněte na tlačítko **spustit tok uživatele** tlačítko.
 
@@ -188,7 +161,7 @@ V tomto článku jste zjistili, jak:
 
 > [!div class="checklist"]
 > * Vytvoření souborů přizpůsobení uživatelského rozhraní
-> * Registrace a přihlašování uživatelů tok, který používá soubory
+> * Aktualizovat tok uživatele k využití souborů
 > * Testování vlastní uživatelské rozhraní
 
 > [!div class="nextstepaction"]

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: tbd
 ms.date: 08/30/2017
 ms.author: wesmc
-ms.openlocfilehash: f9a963ec81b78cfcc6ded7d8f35f4066f931e53e
-ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
+ms.openlocfilehash: fd69c3182f026996618fea5e26466e8434ea36f6
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54847311"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55754451"
 ---
 # <a name="get-the-hostname-ports-and-keys-for-azure-cache-for-redis"></a>Získání názvu hostitele, porty a klíče pro Azure Cache pro Redis
 
@@ -40,7 +40,7 @@ Tento skript používá následující příkazy pro načtení názvu hostitele,
 | Příkaz | Poznámky |
 |---|---|
 | [AZ redis show](https://docs.microsoft.com/cli/azure/redis) | Načtěte Podrobnosti mezipaměti Azure pro Redis instance. |
-| [AZ redis list-keys](https://docs.microsoft.com/cli/azure/redis#az_redis_list_keys) | Získání přístupových klíčů pro Azure Cache pro instanci Redis. |
+| [AZ redis list-keys](https://docs.microsoft.com/cli/azure/redis) | Získání přístupových klíčů pro Azure Cache pro instanci Redis. |
 
 
 ## <a name="next-steps"></a>Další postup

@@ -16,12 +16,12 @@ ms.date: 12/04/2018
 ms.author: sethm
 ms.reviewer: unknown
 ms.lastreviewed: 12/04/2018
-ms.openlocfilehash: 0281186be4fae71c56b65327e0c67da3f252a33c
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 614f8a3e3738e1c99f5a089410814765d278d3fe
+ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55239515"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55743834"
 ---
 # <a name="validate-azure-registration"></a>Ověření registrace služby Azure
  
@@ -67,6 +67,8 @@ Na místě musí být splněné následující požadavky:
    ```powershell
    $registrationCredential = Get-Credential subscriptionowner@contoso.onmicrosoft.com -Message "Enter Credentials for Subscription Owner"
    ```
+> [!NOTE]
+  > Jako zprostředkovatel kryptografických služeb, při použití sdílené služby nebo IUR předplatného je potřeba zadat přihlašovací údaje uživatele z tohoto příslušných AAD. Obvykle to bude vypadat podobně jako `subscriptionowner@iurcontoso.onmicrosoft.com`. Tento uživatel musí mít příslušné přihlašovací údaje, jak je popsáno výše.
 
 3. Z příkazového řádku PowerShell, spusťte následující příkaz pro nastavení `$subscriptionID` jako předplatné Azure, které budete používat. Nahraďte `xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx` s vlastním ID předplatného:
    ```powershell

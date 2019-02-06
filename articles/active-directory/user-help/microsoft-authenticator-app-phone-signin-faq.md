@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 01/24/2019
 ms.author: lizross
 ms.reviewer: olhaun
-ms.openlocfilehash: d0da7e19934123534bf063deecb5bff584dbc317
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.openlocfilehash: 9dc1246f8035dbe35ecc35f91f47aeb6caaa9ab8
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55699274"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55750252"
 ---
 # <a name="sign-in-to-your-accounts-using-the-microsoft-authenticator-app"></a>Přihlaste se k účtům pomocí aplikace Microsoft Authenticator
 Aplikace Microsoft Authenticator přispívá k přihlášení k účtům používáte dvojúrovňového ověřování. Dvoufaktorové ověření vám umožní přístup k účtům bezpečněji, zejména při zobrazování citlivé informace. Protože hesla mohou být vymazány, někdo je ukradne nebo ohrožení zabezpečení, dvojúrovňového ověřování je krok dodatečné zabezpečení, která pomáhá chránit váš účet kvůli tomu je těžší jinými lidmi, kteří možnost proniknout.
@@ -35,7 +35,7 @@ Než budete moct použít aplikaci Microsoft Authenticator, musíte mít:
 
  1. Stáhněte a nainstalujte aplikaci Microsoft Authenticator. Pokud jste to ještě neudělali, přečtěte si téma [stáhnout a nainstalovat aplikaci](microsoft-authenticator-app-how-to.md).
 
- 2. Přidáte pracovní nebo školní, osobní a třetí strany účty do aplikace Microsoft Authenticator. Podrobné pokyny najdete v článku [přidejte svůj pracovní nebo školní účet](microsoft-authenticator-app-add-work-account.md), [přidat osobním účtům](microsoft-authenticator-app-add-personal-account.md), a [přidat váš osobní účty jiných společností než Microsoft](microsoft-authenticator-app-add-non-microsoft-account.md).
+ 2. Přidáte pracovní nebo školní, osobní a třetí strany účty do aplikace Microsoft Authenticator. Podrobné pokyny najdete v článku [přidejte svůj pracovní nebo školní účet](microsoft-authenticator-app-add-work-account.md), [přidat osobním účtům](microsoft-authenticator-app-add-personal-account.md), a [přidat své účty jiných společností než Microsoft](microsoft-authenticator-app-add-non-microsoft-account.md).
 
 ## <a name="turn-on-and-use-phone-sign-in-for-your-work-or-school-account"></a>Zapnutí a používat přihlášení telefonem pro váš pracovní nebo školní účet
 Přihlašování telefonem je typ dvoustupňové ověřování. Stále musíte ověřit svou identitu zadáním věcí, které znáte a věc, kterou máte, ale phone přihlašování umožňuje přeskočit zadávání heslo ke svému účtu a provede všechny vaše ověření identity na mobilním zařízení.
@@ -113,7 +113,6 @@ Kroky potřebné k přihlášení k vaší pracovní nebo školní nebo osobní 
 |**Jak přestat používat tuto funkci a přejít zpět k použití hesla?**|Pro osobní účty, vyberte **místo toho použít heslo** propojení během svého přihlašování. Nejnovější podle vašeho výběru se uloží a nabízí ve výchozím nastavení při příštím přihlášení. Pokud někdy budete chtít vrátit k používání přihlášení telefonem, vyberte **použít raději aplikaci** propojení během svého přihlašování.<br><br>Pro pracovní nebo školní účty, je potřeba na další bezpečnostní ověření stránku (jako jsou například https://aka.ms/MFASetup) a odebrání aplikace Microsoft Authenticator.|
 |**Proč nelze použít více než jeden pracovní nebo školní účet pro přihlášení telefonem?**| Telefon musí být zaregistrovaný do jednoho pracovního nebo školního účtu. Pokud chcete zapnout přihlašování telefonem pro různé pracovní nebo školní účet, musíte nejprve zrušit registraci se starým zařízením prostřednictvím **nastavení** stránky.|
 |**Se lze přihlásit do počítače pomocí telefonu?**| Pro počítače doporučujeme přihlásit pomocí Windows Hello ve Windows 10. Windows Hello vám umožní používat rozpoznávání tváře, otisk prstu nebo PIN kód pro přihlášení.|
-|**Můžu použít přihlášení telefonem s Moje Windows Phone?**| Ne. Tato funkce není podporována v aplikaci Microsoft Authenticator na Windows Phone.|
 
 ## <a name="next-steps"></a>Další postup
 - Pokud máte další obecné dotazy o aplikaci, najdete v článku [nejčastější dotazy k aplikaci Microsoft Authenticator](microsoft-authenticator-app-faq.md)

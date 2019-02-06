@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 03/27/2017
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: fb47654a3eb6ea45d2aebab956b555e720faef4c
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.openlocfilehash: be4549b8b9cca3f4aa48a21fb9377dbd203dde69
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55487111"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55751119"
 ---
 # <a name="tutorial-create-a-development-infrastructure-on-a-linux-vm-in-azure-with-jenkins-github-and-docker"></a>Kurz: Vytváření vývojové infrastruktury na virtuální počítač s Linuxem v Azure pomocí Jenkinse, Githubu a Dockeru
 
@@ -69,7 +69,7 @@ runcmd:
   - service jenkins restart
 ```
 
-Než budete moct vytvořit virtuální počítač, vytvořte skupinu prostředků pomocí příkazu [az group create](/cli/azure/group#az_group_create). Následující příklad vytvoří skupinu prostředků *myResourceGroupJenkins* v umístění *eastus*:
+Než budete moct vytvořit virtuální počítač, vytvořte skupinu prostředků pomocí příkazu [az group create](/cli/azure/group). Následující příklad vytvoří skupinu prostředků *myResourceGroupJenkins* v umístění *eastus*:
 
 ```azurecli-interactive 
 az group create --name myResourceGroupJenkins --location eastus
@@ -88,7 +88,7 @@ az vm create --resource-group myResourceGroupJenkins \
 
 Vytvoření a konfigurace virtuálního počítače trvá několik minut.
 
-Pokud chcete ve virtuálním počítači povolit webový provoz, pomocí příkazu [az vm open-port](/cli/azure/vm#az_vm_open_port) otevřete port *8080* pro provoz Jenkinse a port *1337* pro aplikaci Node.js používanou ke spouštění ukázkové aplikace:
+Pokud chcete ve virtuálním počítači povolit webový provoz, pomocí příkazu [az vm open-port](/cli/azure/vm) otevřete port *8080* pro provoz Jenkinse a port *1337* pro aplikaci Node.js používanou ke spouštění ukázkové aplikace:
 
 ```azurecli-interactive 
 az vm open-port --resource-group myResourceGroupJenkins --name myVM --port 8080 --priority 1001

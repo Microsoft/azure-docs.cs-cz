@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 08/13/2018
 ms.author: asrastog
-ms.openlocfilehash: da95bd3832ee647c371c7beabb55b974dcb97740
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.openlocfilehash: 94d3599fe919cf648be7115be68002d2aa458ee3
+ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55496563"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55744837"
 ---
 # <a name="iot-hub-message-routing-query-syntax"></a>Syntaxi dotazů směrování zpráv služby IoT Hub
 
@@ -55,7 +55,7 @@ Vlastnosti systému identifikaci obsahu a zdrojové zpráv.
 | -------- | ---- | ----------- |
 | contentType | řetězec | Uživatel Určuje typ obsahu zprávy. Povolit dotazu na obsah zprávy, by měl být tato hodnota nastavena application/JSON. |
 | contentEncoding | řetězec | Uživatel Určuje typ kódování zprávy. Povolené hodnoty jsou UTF-8, UTF-16, UTF-32, pokud typ obsahu je nastaven na application/JSON. |
-| connectionDeviceId | řetězec | Tato hodnota nastavena ve službě IoT Hub a identifikuje zdroj zprávy. To může být zařízení telemetrických zpráv, oznamování změn dvojčete zařízení nebo události životního cyklu zařízení. Nelze se dotazovat to. |
+| iothub-connection-device-id | řetězec | Tato hodnota nastavena ve službě IoT Hub a identifikuje ID zařízení. Dotaz, použijte `$connectionDeviceId`. |
 | iothub-enqueuedtime | řetězec | Tato hodnota nastavena ve službě IoT Hub a představuje skutečný čas zařadit zprávu ve formátu UTC. Dotaz, použijte `enqueuedTime`. |
 
 Jak je popsáno v [zpráv IoT Hub](iot-hub-devguide-messages-construct.md), existují další systémové vlastnosti ve zprávě. Kromě **contentType**, **contentEncoding**, a **enqueuedTime**, **connectionDeviceId** a  **connectionModuleId** může být dotazována také.

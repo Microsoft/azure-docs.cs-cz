@@ -12,12 +12,12 @@ ms.author: sashan
 ms.reviewer: mathoma, carlrab
 manager: craigg
 ms.date: 01/10/2019
-ms.openlocfilehash: 086e1957c68c5864997c9df9213a0c82cbf4c852
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
+ms.openlocfilehash: 11c1f34176e7852806464781e80d6dc0fd5345a4
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55560749"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55750337"
 ---
 # <a name="tutorial-implement-a-geo-distributed-database"></a>Kurz: Implementace geograficky distribuované databáze
 
@@ -36,7 +36,7 @@ Pro absolvování tohoto kurzu, ujistěte se, že jste nainstalovali následují
 
 - [Azure PowerShell](/powershell/azureps-cmdlets-docs)
 - Databázi SQL Azure. Vytvořte jedno použití
-  - [Azure Portal](sql-database-get-started-portal.md)
+  - [Azure Portal](sql-database-single-database-get-started.md)
   - [Rozhraní příkazového řádku](sql-database-cli-samples.md)
   - [PowerShell](sql-database-powershell-samples.md)
 
@@ -48,7 +48,7 @@ Pro absolvování tohoto kurzu, ujistěte se, že jste nainstalovali následují
 > [!IMPORTANT]
 > Ujistěte se, že nastavení pravidel brány firewall, chcete-li použít veřejnou IP adresu počítače, na kterém provádíte kroky v tomto kurzu. Databáze na úrovni firewall pravidla budou automaticky replikovat do sekundárního serveru.
 >
-> Informace naleznete v tématu [vytvořit pravidlo brány firewall na úrovni databáze](/sql/relational-databases/system-stored-procedures/sp-set-database-firewall-rule-azure-sql-database) nebo zjistit IP adresu používanou pro pravidlo brány firewall na úrovni serveru pro váš počítač najdete v článku [vytvoření brány firewall na úrovni serveru](sql-database-get-started-portal-firewall.md).  
+> Informace naleznete v tématu [vytvořit pravidlo brány firewall na úrovni databáze](/sql/relational-databases/system-stored-procedures/sp-set-database-firewall-rule-azure-sql-database) nebo zjistit IP adresu používanou pro pravidlo brány firewall na úrovni serveru pro váš počítač najdete v článku [vytvoření brány firewall na úrovni serveru](sql-database-server-level-firewall-rule.md).  
 
 ## <a name="create-a-failover-group"></a>Vytvořte skupinu převzetí služeb při selhání
 

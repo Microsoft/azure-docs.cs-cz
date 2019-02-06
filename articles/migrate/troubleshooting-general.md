@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 01/25/2019
 ms.author: raynew
-ms.openlocfilehash: 12c71086509b0c7017b8326c46ed4a31270ef261
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
+ms.openlocfilehash: bb9d22b45011f5156a63444ec8e1651f148993b6
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55657378"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55751901"
 ---
 # <a name="troubleshoot-azure-migrate"></a>Řešení problémů s Azure Migrate
 
@@ -172,7 +172,7 @@ Tomuto problému může dojít kvůli problému s instalací VMware PowerCLI. Po
 
 Nelze se připojit k vCenter serveru "Servername.com:9443" kvůli chybě: Existuje neposlouchal žádný koncový bod v https://Servername.com:9443/sdk , který by mohl přijmout zprávu.
 
-Zaškrtněte, pokud budete používat nejnovější verzi zařízení kolektoru a pokud ne, upgradovat zařízení, abyste [nejnovější verzi](https://docs.microsoft.com/azure/migrate/concepts-collector#how-to-upgrade-collector).
+Zaškrtněte, pokud budete používat nejnovější verzi zařízení kolektoru a pokud ne, upgradovat zařízení, abyste [nejnovější verzi](https://docs.microsoft.com/azure/migrate/concepts-collector).
 
 Pokud problém pořád probíhá na nejnovější verzi, je možné, protože počítače kolektor nedokáže vyřešit zadaný název serveru vCenter nebo zadaný port je chybný. Ve výchozím nastavení Pokud není port určen, kolekce se pokusí připojit k portu číslo 443.
 

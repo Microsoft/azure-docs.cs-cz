@@ -11,16 +11,16 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/30/2019
+ms.date: 02/05/2019
 ms.author: mabrigg
 ms.reviewer: waltero
 ms.lastreviewed: 01/24/2019
-ms.openlocfilehash: 41383a31955b8f9507ec681650cf73df23b2a895
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
+ms.openlocfilehash: 551958317249cbfa25e3af9922f9ded6850c2521
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55663410"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55752292"
 ---
 # <a name="troubleshoot-your-kubernetes-deployment-to-azure-stack"></a>Řešení potíží s Kubernetes nasazení do služby Azure Stack
 
@@ -61,7 +61,7 @@ Následující diagram znázorňuje obecný postup nasazení clusteru.
         4. Nasadí do clusteru Kubernetes ACS Engine a uloží profil cloudové služby Azure Stack na `/etc/kubernetes/azurestackcloud.json`.
 3. Vytvoření hlavních virtuálních počítačů.
 
-4. Stáhněte a spusťte skript rozšíření zákazníka.
+4. Stažení a spuštění rozšíření vlastních skriptů.
 
 5. Hlavní skript spusťte.
 

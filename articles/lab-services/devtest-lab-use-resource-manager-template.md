@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/17/2018
 ms.author: spelluru
-ms.openlocfilehash: 4fd9f76223adba20028288b46037586f8f54fd1a
-ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
+ms.openlocfilehash: 99c4f838c3c4e4708c3e21ff9c7e63b69a507dbe
+ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51686377"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55746910"
 ---
 # <a name="create-virtual-machines-using-an-azure-resource-manager-template"></a>Vytvoření virtuálních počítačů pomocí šablony Azure Resource Manageru 
 
@@ -47,7 +47,7 @@ Zbývající část tohoto článku popisuje šablon Resource Manageru, které p
 [Osvědčené postupy pro vytváření šablon Azure Resource Manageru](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-template-best-practices) nabízí mnoho pokyny a návrhy k vytváření šablon Azure Resource Manageru, které je spolehlivé a snadné použití.
 
 ## <a name="view-and-save-a-virtual-machines-resource-manager-template"></a>Zobrazení a uložení virtuálního počítače šablonu Resource Manageru
-1. Postupujte podle kroků uvedených v [vytvoření vašeho prvního virtuálního počítače v testovacím prostředí](devtest-lab-create-first-vm.md) zahajte proces vytváření virtuálního počítače.
+1. Postupujte podle kroků uvedených v [vytvoření vašeho prvního virtuálního počítače v testovacím prostředí](tutorial-create-custom-lab.md#add-a-vm-to-the-lab) zahajte proces vytváření virtuálního počítače.
 1. Zadejte požadované informace pro váš virtuální počítač a přidat všechny artefakty, které chcete pro tento virtuální počítač.
 1. V dolní části okna Konfigurovat nastavení, zvolte **šablony ARM zobrazení**.
 

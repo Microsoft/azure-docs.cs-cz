@@ -9,12 +9,12 @@ author: prashanthyv
 ms.author: pryerram
 manager: mbaldwin
 ms.date: 10/03/2018
-ms.openlocfilehash: 0392d84efa3a82a6323d6d09db792df7d6c42256
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: b6dc0a63340fee03b34f4c5b6eca8ff011d6b178
+ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55210671"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55744164"
 ---
 # <a name="azure-key-vault-managed-storage-account---cli"></a>Služba Azure Key Vault spravovat účet úložiště – rozhraní příkazového řádku
 
@@ -52,8 +52,9 @@ V následujících pokynů, jsme služby Key Vault přiřazování jako službu,
 1. Po vytvoření účtu úložiště, spuštěním následujícího příkazu Získejte ID prostředku účtu úložiště, kterou chcete spravovat
 
     ```
-    az storage account show -n storageaccountname (Copy ID field out of the result of this command)
+    az storage account show -n storageaccountname 
     ```
+    Zkopírujte ID pole je mimo výsledek výše uvedeného příkazu
     
 2. Získat aplikace ID z Azure Key Vault pro službu objektu zabezpečení 
 
@@ -74,13 +75,16 @@ V následujících pokynů, jsme služby Key Vault přiřazování jako službu,
     az keyvault storage add --vault-name <YourVaultName> -n <StorageAccountName> --active-key-name key2 --auto-regenerate-key --regeneration-period P90D --resource-id <Resource-id-of-storage-account>
     ```
     V případě uživatel nevytvořili účet úložiště a nemá oprávnění k účtu úložiště, následujícím způsobem nastavit oprávnění pro svůj účet a ujistěte se, že můžete spravovat všechna úložiště oprávnění ve službě Key Vault.
+    
  > [!NOTE] 
-    V případě, že uživatel nemá oprávnění k účtu úložiště dostaneme nejprve Id objektu uživatele
+ > V případě, že uživatel nemá oprávnění k účtu úložiště dostaneme nejprve Id objektu uživatele
+
 
     ```
     az ad user show --upn-or-object-id "developer@contoso.com"
 
     az keyvault set-policy --name <YourVaultName> --object-id <ObjectId> --storage-permissions backup delete list regeneratekey recover     purge restore set setsas update
+    
     ```
     
 ## <a name="how-to-access-your-storage-account-with-sas-tokens"></a>Jak získat přístup k účtu úložiště se tokeny SAS
@@ -91,9 +95,9 @@ V níže uvedený oddíl, jsme ukazují, jak načíst klíč účtu úložiště
 
 > [!NOTE] 
   Existují 3 způsoby ověření do služby Key Vault, jak si můžete přečíst [základní koncepty](key-vault-whatis.md#basic-concepts)
-- Pomocí Identity spravované služby (doporučeno)
-- Pomocí instančního objektu a certifikátů 
-- Pomocí instančního objektu a hesla (nedoporučuje se)
+> - Pomocí Identity spravované služby (doporučeno)
+> - Pomocí instančního objektu a certifikátů 
+> - Pomocí instančního objektu a hesla (nedoporučuje se)
 
 ```cs
 // Once you have a security token from one of the above methods, then create KeyVaultClient with vault credentials

@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 01/31/2019
 ms.author: twhitney
 ms.custom: mvc
-ms.openlocfilehash: 085f3fd8ee3fe22333c260fb4de18a8c06c9c55c
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
+ms.openlocfilehash: 816f12ca5837fa99b4e945c965f9cbad406c63bb
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55568562"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55749793"
 ---
 # <a name="quickstart-deploy-windows-containers-to-service-fabric"></a>Rychlý start: Nasadit kontejnery Windows do Service Fabric
 
@@ -91,7 +91,7 @@ Také v *ApplicationManifest.xml* změňte **PasswordEncrypted** k **false**. Ú
 
 ## <a name="create-a-cluster"></a>Vytvoření clusteru
 
-Následující ukázkový skript vytvoří clusteru Service Fabric pěti uzly zabezpečený pomocí certifikátu X.509. Příkaz vytvoří certifikát podepsaný svým držitelem a nahraje ho do nového trezoru klíčů. Certifikát se také zkopíruje do místního adresáře. Další informace o vytváření clusteru pomocí tohoto skriptu v [vytvořit cluster Service Fabric](/scripts/service-fabric-powershell-create-secure-cluster-cert).
+Následující ukázkový skript vytvoří clusteru Service Fabric pěti uzly zabezpečený pomocí certifikátu X.509. Příkaz vytvoří certifikát podepsaný svým držitelem a nahraje ho do nového trezoru klíčů. Certifikát se také zkopíruje do místního adresáře. Další informace o vytváření clusteru pomocí tohoto skriptu v [vytvořit cluster Service Fabric](scripts/service-fabric-powershell-create-secure-cluster-cert.md).
 
 V případě potřeby nainstalujte Azure PowerShell podle pokynů v [příručce k Azure Powershellu](/powershell/azure/overview).
 

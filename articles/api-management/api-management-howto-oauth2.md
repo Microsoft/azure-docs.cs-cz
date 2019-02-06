@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/10/2018
 ms.author: apimpm
-ms.openlocfilehash: 87e5b6098ff9ee74ef8a4314362c30c436d5ad20
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: b195271edeea6cd5ea527454ad1615ac85a32138
+ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52967925"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55746723"
 ---
 # <a name="how-to-authorize-developer-accounts-using-oauth-20-in-azure-api-management"></a>Autorizace vývojářských účtů pomocí OAuth 2.0 ve službě Azure API Management
 
@@ -51,9 +51,9 @@ Tato příručka ukazuje, jak nakonfigurovat instanci služby API Management pou
 
     ![Nový server OAuth 2.0](./media/api-management-howto-oauth2/oauth-02.png)
 
-4. Obsahuje následující části formuláře **typy udělení autorizačního kódu**, **adresu URL koncového bodu autorizace**, a **metoda žádosti o autorizaci** nastavení.
+4. Obsahuje následující části formuláře **typy udělení autorizace**, **adresu URL koncového bodu autorizace**, a **metoda žádosti o autorizaci** nastavení.
 
-    Zadejte **typy udělení autorizačního kódu** kontrolou požadované typy. **Autorizační kód** zadaný ve výchozím nastavení.
+    Zadejte **typy udělení autorizace** kontrolou požadované typy. **Autorizační kód** zadaný ve výchozím nastavení.
 
     Zadejte **adresu URL koncového bodu autorizace**. Pro Azure Active Directory, tato adresa URL bude vypadat podobně jako následující adresu URL, kde `<client_id>` nahradí za id klienta, který identifikuje vaši aplikaci na server OAuth 2.0.
 
@@ -75,7 +75,7 @@ Tato příručka ukazuje, jak nakonfigurovat instanci služby API Management pou
 
     ![Nový server OAuth 2.0](./media/api-management-howto-oauth2/oauth-04.png)
 
-    Pokud **typy udělení autorizačního kódu** je nastavena na **heslo vlastníka prostředku**, **přihlašovacího hesla vlastníka prostředku** oddíl se používá k určení tyto přihlašovací údaje; jinak můžete jej můžete nechat prázdné.
+    Pokud **typy udělení autorizace** je nastavena na **heslo vlastníka prostředku**, **přihlašovacího hesla vlastníka prostředku** použité k určení tyto přihlašovací údaje; v opačném případě je oddíl můžete jej můžete nechat prázdné.
 
     Po dokončení formuláře klikněte na tlačítko **vytvořit** uložte konfiguraci autorizační server API Management OAuth 2.0. Po uložení konfigurace serveru můžete nakonfigurovat rozhraní API pro použití této konfigurace, jak je znázorněno v následující části.
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 01/24/2019
 ms.author: priyamo
-ms.openlocfilehash: c19c5031c27ac37aee3707911268965912c20994
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: e266ebca40ac9a3c1d6c1a77e30fed717f4b1b51
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55158192"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55753449"
 ---
 # <a name="tutorial-use-a-windows-vm-system-assigned-managed-identity-to-access-azure-storage-via-access-key"></a>Kurz: Použití spravované identity systém přiřadil virtuálního počítače Windows pro přístup k úložišti Azure přes přístupový klíč
 
@@ -173,5 +173,5 @@ Name              : testblob
 V tomto kurzu jste se dozvěděli, jak vytvořit spravovanou identitu přiřazenou systémem pro přístup k Azure Storage pomocí přístupového klíče.  Další informace o přístupových klíčích Azure Storage:
 
 > [!div class="nextstepaction"]
->[Správa přístupových klíčů k úložišti](/azure/storage/common/storage-create-storage-account#manage-your-storage-access-keys)
+>[Správa přístupových klíčů k úložišti](/azure/storage/common/storage-create-storage-account)
 

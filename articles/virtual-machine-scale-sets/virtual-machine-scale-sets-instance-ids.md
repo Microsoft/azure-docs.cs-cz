@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/22/2018
 ms.author: manayar
-ms.openlocfilehash: 5d92aa78b132b661af3cdc53b47c0340a0758dd8
-ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
+ms.openlocfilehash: 8f85ded20470ecc5a7868c094e88a149c88b7f39
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54855308"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55749562"
 ---
 # <a name="understand-instance-ids-for-azure-vm-scale-set-vms"></a>Vysvětlení ID instancí pro Azure VM scale sady virtuálních počítačů
 Tento článek popisuje ID instancí škálovací sady a různé způsoby, že surface.
@@ -33,7 +33,7 @@ Rozhraní REST API: `POST https://management.azure.com/subscriptions/{subscripti
 
 Prostředí PowerShell: `Set-AzureRmVmssVM -ResourceGroupName {resourceGroupName} -VMScaleSetName {vmScaleSetName} -InstanceId {instanceId} -Reimage` (Další informace najdete v tématu [dokumentaci k Powershellu](https://docs.microsoft.com/powershell/module/azurerm.compute/set-azurermvmssvm))
 
-Rozhraní příkazového řádku: `az vmss reimage -g {resourceGroupName} -n {vmScaleSetName} --instance-id {instanceId}` (Další informace najdete v tématu [dokumentace k rozhraní příkazového řádku](https://docs.microsoft.com/cli/azure/vmss?view=azure-cli-latest#az_vmss_reimage)).
+Rozhraní příkazového řádku: `az vmss reimage -g {resourceGroupName} -n {vmScaleSetName} --instance-id {instanceId}` (Další informace najdete v tématu [dokumentace k rozhraní příkazového řádku](https://docs.microsoft.com/cli/azure/vmss?view=azure-cli-latest)).
 
 Výpis všech instancí ve škálovací sadě, můžete získat seznam ID instance:
 

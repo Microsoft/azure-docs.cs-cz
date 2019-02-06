@@ -9,19 +9,19 @@ ms.topic: conceptual
 ms.date: 02/04/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 2efc0b76c8556894119ed3f6dd216234414cf313
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
+ms.openlocfilehash: 90e5a133bac519cbc5ab2d7b112d51a019e8f698
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55732347"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55751374"
 ---
 # <a name="configure-a-connection-from-an-azure-search-indexer-to-sql-server-on-an-azure-vm"></a>Konfigurace připojení indexeru Azure Search k systému SQL Server na Virtuálním počítači Azure
 Jak je uvedeno v [připojení Azure SQL Database a Azure Search pomocí indexerů](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md#faq), vytváření indexery proti **systému SQL Server na virtuálních počítačích Azure** (nebo **virtuální počítače s SQL Azure** zkráceně) je podporováno Služba Azure Search ale existuje několik požadavků souvisejících se zabezpečením abyste dbali na první. 
 
 Připojení z Azure Search k systému SQL Server na virtuálním počítači je veřejné připojení k Internetu. Všechny bezpečnostní opatření, které byste běžně postupovali pro tato připojení použijte zde také:
 
-+ Získat certifikát od [poskytovatele certifikační autority](https://en.wikipedia.org/wiki/Certificate_authority#Providers) pro plně kvalifikovaný název domény virtuálního počítače Azure.
++ Získat certifikát od [poskytovatele certifikační autority](https://en.wikipedia.org/wiki/Certificate_authority#Providers) pro plně kvalifikovaný název instance systému SQL Server na virtuálním počítači Azure.
 + Nainstalujte certifikát na virtuálním počítači a pak povolte a nakonfigurujte šifrovaná připojení na virtuálním počítači podle pokynů v tomto článku.
 
 ## <a name="enable-encrypted-connections"></a>Povolit šifrované připojení
@@ -29,8 +29,9 @@ Služba Azure Search vyžaduje šifrovaný kanál pro všechny požadavky indexe
 
 1. Zkontrolujte vlastnosti certifikát, který chcete ověřit, jestli že je název předmětu plně kvalifikovaný název domény (FQDN) virtuálního počítače Azure. Chcete-li zobrazit vlastnosti můžete použít nástroje, jako je CertUtils nebo modulu snap-in Certifikáty. Úplný název domény můžete získat z částí základní údaje okna služby virtuálního počítače, v **veřejné IP adresy nebo DNS název popisku** pole [webu Azure portal](https://portal.azure.com/).
    
-   * Pro virtuální počítače vytvořené pomocí novější **Resource Manageru** šablony, plně kvalifikovaný název domény je formátován jako `<your-VM-name>.<region>.cloudapp.azure.com`. 
-   * Pro starší virtuální počítače vytvořené jako **Classic** virtuálního počítače, plně kvalifikovaný název domény je formátován jako `<your-cloud-service-name.cloudapp.net>`. 
+   * Pro virtuální počítače vytvořené pomocí novější **Resource Manageru** šablony, plně kvalifikovaný název domény je formátován jako `<your-VM-name>.<region>.cloudapp.azure.com`
+   * Pro starší virtuální počítače vytvořené jako **Classic** virtuálního počítače, plně kvalifikovaný název domény je formátován jako `<your-cloud-service-name.cloudapp.net>`.
+
 2. Konfigurace serveru SQL pro použití certifikátu pomocí Editoru registru (regedit). 
    
     I když SQL Server Configuration Manager se často používá pro tuto úlohu, ho nelze použít pro tento scénář. Importovaný certifikát nenajde protože plně kvalifikovaný název domény virtuálního počítače v Azure pravděpodobně neshoduje s plně kvalifikovaný název domény podle virtuálního počítače (identifikuje domény jako místního počítače nebo síťové domény, ke kterému je připojený). Když se názvy neshodují, použijte regedit a určete certifikát.
@@ -41,9 +42,11 @@ Služba Azure Search vyžaduje šifrovaný kanál pro všechny požadavky indexe
    * Nastavte hodnotu **certifikát** klíč **kryptografický otisk** certifikátu protokolu SSL, který jste naimportovali do virtuálního počítače.
      
      Existuje několik způsobů, jak získat kryptografický otisk, některé lépe než jiné. Pokud zkopírujete z **certifikáty** modul snap-in konzoly MMC, budete pravděpodobně vyzvedne, až bude neviditelné úvodní znak [jak je popsáno v tomto článku podpory](https://support.microsoft.com/kb/2023869/), což vede k chybě při pokusu o připojení . Existuje několik alternativní řešení pro opravu tohoto problému. Nejjednodušší je smažte vše přes a opětovným zadáním prvního znaku kryptografický otisk, odebrat úvodní znak v poli hodnota klíče v editoru registru. Alternativně můžete jiný nástroj zkopírujte kryptografický otisk.
+
 3. Udělení oprávnění k účtu služby. 
    
     Ujistěte se, že účet služby SQL Server je udělena příslušná oprávnění pro privátní klíč certifikátu protokolu SSL. Pokud jste tento krok přehlédnout, nebude spustit systém SQL Server. Můžete použít **certifikáty** modul snap-in nebo **CertUtils** pro tuto úlohu.
+    
 4. Restartujte službu SQL Server.
 
 ## <a name="configure-sql-server-connectivity-in-the-vm"></a>Konfigurace připojení k serveru SQL Server ve virtuálním počítači

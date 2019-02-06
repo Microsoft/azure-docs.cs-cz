@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.workload: identity
 ms.date: 06/18/2018
 ms.author: martincoetzer
-ms.openlocfilehash: 3e2fa822698f3888e1168ab7773d87e41db9eb5c
-ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
+ms.openlocfilehash: f0b76e54da60396e01b5893b143bcee9048e2184
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52165641"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55750320"
 ---
 # <a name="five-steps-to-securing-your-identity-infrastructure"></a>Zabezpečení vaší infrastruktury identit v pěti krocích
 
@@ -38,7 +38,7 @@ Doporučení v tomto dokumentu jsou v souladu s [skóre zabezpečení Identity](
 
 ![Skóre zabezpečení identit](media/azure-ad/azure-ad-sec-steps0.png)
 
-## <a name="before-you-begin-protect-privileged-accounts-with-mfa"></a>Než začnete: ochranu privilegovaných účtů s MFA
+## <a name="before-you-begin-protect-privileged-accounts-with-mfa"></a>Než začnete: Ochranu privilegovaných účtů s MFA
 
 Než začnete tento kontrolní seznam, ujistěte se, že jste není dojde k ohrožení zabezpečení při čtete tento kontrolní seznam. Nejprve je třeba chránit privilegované účty.
 
@@ -93,13 +93,13 @@ Pomocí [Windows Hello](https://docs.microsoft.com/windows/security/identity-pro
 
 Zadaný pronikavostí ohrožení zabezpečení hesla, minimalizace útok ve vaší organizaci je důležité. Odstranění použijte protokoly starší, méně bezpečné, omezení položku přístupu odkazuje, a výkonu významnější ovládací prvek pro správu přístupu k prostředkům může pomoct snížit možností útoku.
 
-### <a name="block-legacy-authentication"></a>Blok starší verze ověřování
+### <a name="block-legacy-authentication"></a>Blokování starší verze ověřování
 
 Aplikace s využitím vlastní starší verze metody pro ověřování ve službě Azure AD a přístup k firemním datům, představují další riziko pro organizace. Příkladem aplikací pomocí starší verze ověřování jsou klienti POP3, IMAP4 nebo SMTP. Starší verze ověřování aplikace ověřit jménem uživatele a zabránit tím Upřesnit hodnocení zabezpečení Azure AD. Alternativní moderní ověřování, sníží bezpečnostní riziko, protože podporuje vícefaktorové ověřování a podmíněného přístupu. Doporučujeme následující tři akce:
 
 1. Blok [starší verze ověřování, pokud používáte službu AD FS](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/access-control-policies-w2k12).
 2. Instalační program [Sharepointu Online a Exchange Online aby nepoužívala moderní ověřování](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-no-modern-authentication).
-3. Použití [zásady podmíněného přístupu blokovat starší verze ověřování](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-conditions#legacy-authentication).
+3. Použití [zásady podmíněného přístupu blokovat starší verze ověřování](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-conditions).
 
 ### <a name="block-invalid-authentication-entry-points"></a>Blokovat ověřování Neplatný vstupní body
 

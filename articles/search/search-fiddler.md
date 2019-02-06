@@ -1,5 +1,5 @@
 ---
-title: Zkoumání rozhraní REST API v aplikaci Fiddler nebo Postman webových služeb HTTP testovací nástroje – Azure Search
+title: Zkoumání rozhraní REST API v nástroji Postman nebo Fiddler HTTP nástroje pro testování webu – Azure Search
 description: Způsob použití nástroje Fiddler nebo Postman k vydávání požadavků HTTP a volání rozhraní REST API na službu Azure Search.
 author: HeidiSteen
 manager: cgronlun
@@ -10,16 +10,16 @@ ms.topic: quickstart
 ms.date: 04/20/2018
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 5946ff5e75e7c3fedf42c23200f61e821c0d9d61
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.openlocfilehash: 06e2667b59b27039ad3c62379f654dd693999f99
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53631392"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55756071"
 ---
-# <a name="explore-azure-search-rest-apis-using-fiddler-or-postman"></a>Zkoumání rozhraní REST API služby Azure Search pomocí nástroje Fiddler nebo Postman
+# <a name="explore-azure-search-rest-apis-using-postman-or-fiddler"></a>Prozkoumejte službu REST API služby Azure Search pomocí nástroje Postman nebo Fiddler
 
-Jedním z nejjednodušších způsobů zkoumání [rozhraní REST API služby Azure Search](https://docs.microsoft.com/rest/api/searchservice) je použít nástroj Fiddler nebo Postman k formulování požadavků HTTP a zkontrolovat odpovědi. S využitím správných nástrojů a pokynů můžete odesílat žádosti a zobrazovat odpovědi, ještě než začnete psát kód.
+Jeden z nejjednodušších způsobů zkoumání [REST API služby Azure Search](https://docs.microsoft.com/rest/api/searchservice) využívá Postman nebo Fiddler k formulování požadavků HTTP a zkontrolovat odpovědi. S využitím správných nástrojů a pokynů můžete odesílat žádosti a zobrazovat odpovědi, ještě než začnete psát kód.
 
 > [!div class="checklist"]
 > * Stažení webového nástroje pro testování rozhraní API

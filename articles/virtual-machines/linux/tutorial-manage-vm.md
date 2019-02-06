@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 03/23/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: bc548ea23249f89fadcec481cc97b6ca3ed2b909
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: 270479061ad40fdda9db06571ad4ef24b00d6c4d
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54466852"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55749138"
 ---
 # <a name="tutorial-create-and-manage-linux-vms-with-the-azure-cli"></a>Kurz: Vytváření a správa virtuálních počítačů s Linuxem pomocí Azure CLI
 
@@ -40,7 +40,7 @@ Pokud se rozhodnete nainstalovat a místně používat rozhraní příkazového 
 
 ## <a name="create-resource-group"></a>Vytvoření skupiny prostředků
 
-Vytvořte skupinu prostředků pomocí příkazu [az group create](https://docs.microsoft.com/cli/azure/group#az_group_create). 
+Vytvořte skupinu prostředků pomocí příkazu [az group create](https://docs.microsoft.com/cli/azure/group). 
 
 Skupina prostředků Azure je logický kontejner, ve kterém se nasazují a spravují prostředky Azure. Skupina prostředků musí být vytvořená už před vytvořením virtuálního počítače. V tomto příkladu se vytvoří skupina prostředků s názvem *myResourceGroupVM* v oblasti *eastus*. 
 
@@ -52,7 +52,7 @@ Skupinu prostředků je třeba zadat při vytváření nebo úpravách virtuáln
 
 ## <a name="create-virtual-machine"></a>Vytvoření virtuálního počítače
 
-Vytvořte virtuální počítač pomocí příkazu [az vm create](https://docs.microsoft.com/cli/azure/vm#az_vm_create). 
+Vytvořte virtuální počítač pomocí příkazu [az vm create](https://docs.microsoft.com/cli/azure/vm). 
 
 Při vytváření virtuálního počítače máte k dispozici několik možností, jako jsou image operačního systému, velikost disku a přihlašovací údaje pro správu. Následující příklad vytvoří virtuální počítač s názvem *myVM*, na kterém poběží Ubuntu Server. Ve virtuálním počítači se vytvoří uživatelský účet s názvem *azureuser* a vygenerují se klíče SSH, pokud neexistují ve výchozím umístění klíčů (*~/.ssh*):
 
@@ -98,7 +98,7 @@ exit
 
 Azure Marketplace obsahuje celou řadu imagí, které jde využít k vytváření virtuálních počítačů. V předchozích krocích jsme vytvořili virtuální počítač pomocí image Ubuntu. V tomto kroku pomocí Azure CLI vyhledáme na webu Marketplace image CentOS, kterou pak použijeme k nasazení druhého virtuálního počítače. 
 
-Pokud chcete zobrazit seznam nejčastěji používaných imagí, použijte příkaz [az vm image list](/cli/azure/vm/image#az_vm_image_list).
+Pokud chcete zobrazit seznam nejčastěji používaných imagí, použijte příkaz [az vm image list](/cli/azure/vm/image).
 
 ```azurecli-interactive 
 az vm image list --output table
@@ -155,7 +155,7 @@ Velikost virtuálního počítače určuje množství výpočetních prostředk�
 
 V následující tabulce jsou velikosti rozdělené podle způsobů použití.  
 
-| Typ                     | Velikosti           |    Popis       |
+| Type                     | Velikosti           |    Popis       |
 |--------------------------|-------------------|------------------------------------------------------------------------------------------------------------------------------------|
 | [Obecné účely](sizes-general.md)         |Dsv3, Dv3, DSv2, Dv2, DS, D, Av2, A0-7| Vyvážený poměr procesorů k paměti. Ideální pro vývoj nebo testování a pro malé až střední řešení aplikací a dat.  |
 | [Optimalizované z hlediska výpočetních služeb](sizes-compute.md)   | Fs, F             | Vysoký poměr procesorů k paměti. Vhodné pro aplikace se středním provozem, síťová zařízení a dávkové procesy.        |
@@ -167,7 +167,7 @@ V následující tabulce jsou velikosti rozdělené podle způsobů použití.
 
 ### <a name="find-available-vm-sizes"></a>Zjištění dostupných velikostí virtuálních počítačů
 
-Pokud chcete zobrazit seznam velikostí virtuálních počítačů dostupných v konkrétní oblasti, použijte příkaz [az vm list-sizes](/cli/azure/vm#az_vm_list_sizes). 
+Pokud chcete zobrazit seznam velikostí virtuálních počítačů dostupných v konkrétní oblasti, použijte příkaz [az vm list-sizes](/cli/azure/vm). 
 
 ```azurecli-interactive 
 az vm list-sizes --location eastus --output table
@@ -198,7 +198,7 @@ az vm list-sizes --location eastus --output table
 
 ### <a name="create-vm-with-specific-size"></a>Vytvoření virtuálního počítače s konkrétní velikostí
 
-V předchozím příkladu vytvoření virtuálního počítače jsme nezadali velikost, takže se použila výchozí velikost. Velikost virtuálního počítače je možné při vytváření vybrat pomocí příkazu [az vm create](/cli/azure/vm#az_vm_create) a argumentu `--size`. 
+V předchozím příkladu vytvoření virtuálního počítače jsme nezadali velikost, takže se použila výchozí velikost. Velikost virtuálního počítače je možné při vytváření vybrat pomocí příkazu [az vm create](/cli/azure/vm) a argumentu `--size`. 
 
 ```azurecli-interactive 
 az vm create \
@@ -217,12 +217,12 @@ Po nasazení virtuálního počítače můžete jeho velikost změnit, čímž s
 az vm show --resource-group myResourceGroupVM --name myVM --query hardwareProfile.vmSize
 ```
 
-Před změnou velikosti virtuálního počítače zkontrolujte, jestli je požadovaná velikost dostupná v aktuálním clusteru Azure. Seznam velikostí můžete získat pomocí příkazu [az vm list-vm-resize-options](/cli/azure/vm#az_vm_list_vm_resize_options). 
+Před změnou velikosti virtuálního počítače zkontrolujte, jestli je požadovaná velikost dostupná v aktuálním clusteru Azure. Seznam velikostí můžete získat pomocí příkazu [az vm list-vm-resize-options](/cli/azure/vm). 
 
 ```azurecli-interactive 
 az vm list-vm-resize-options --resource-group myResourceGroupVM --name myVM --query [].name
 ```
-Pokud je požadovaná velikost dostupná, dá se velikost virtuálního počítače změnit i za provozu, ale během této operace se bude vyžadovat restartování. Ke změně velikosti použijte příkaz [az vm resize]( /cli/azure/vm#az_vm_resize).
+Pokud je požadovaná velikost dostupná, dá se velikost virtuálního počítače změnit i za provozu, ale během této operace se bude vyžadovat restartování. Ke změně velikosti použijte příkaz [az vm resize]( /cli/azure/vm).
 
 ```azurecli-interactive 
 az vm resize --resource-group myResourceGroupVM --name myVM --size Standard_DS4_v2
@@ -264,7 +264,7 @@ Virtuální počítač Azure může mít jeden z mnoha stavů napájení. Tento 
 
 ### <a name="find-the-power-state"></a>Zjištění stavu napájení
 
-Pokud chcete zjistit stav konkrétního virtuálního počítače, použijte příkaz [az vm get-instance-view](/cli/azure/vm#az_vm_get_instance_view). Nezapomeňte zadat platný název virtuálního počítače a skupiny prostředků. 
+Pokud chcete zjistit stav konkrétního virtuálního počítače, použijte příkaz [az vm get-instance-view](/cli/azure/vm). Nezapomeňte zadat platný název virtuálního počítače a skupiny prostředků. 
 
 ```azurecli-interactive 
 az vm get-instance-view \

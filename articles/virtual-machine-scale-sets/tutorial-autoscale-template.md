@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 03/27/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 2965040a3e83def6b452b1449a0acb0c9c5a00ee
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.openlocfilehash: 5e02c88d894c01752965af77861d3e11e1bb101d
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55692814"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55749189"
 ---
 # <a name="tutorial-automatically-scale-a-virtual-machine-scale-set-with-an-azure-template"></a>Kurz: Automatické škálování virtuálního počítače škálovací sady pomocí šablony Azure
 Při vytváření škálovací sady definujete počet instancí virtuálních počítačů, které chcete spouštět. S měnícími se požadavky na aplikaci můžete počet instancí virtuálních počítačů automaticky zvyšovat nebo snižovat. Možnost automatického škálování umožňuje držet krok s požadavky zákazníků nebo reagovat na změny výkonu aplikace v průběhu jejího životního cyklu. V tomto kurzu se naučíte:
@@ -144,13 +144,13 @@ Následující příklad definuje pravidlo, které horizontálně sníží kapac
 ## <a name="create-an-autoscaling-scale-set"></a>Vytvoření škálovací sady s automatickým škálováním
 Teď pomocí ukázkové šablony vytvoříme škálovací sadu a použijeme pravidla automatického škálování. Můžete si [prohlédnout celou šablonu](https://raw.githubusercontent.com/Azure-Samples/compute-automation-configurations/master/scale_sets/autoscale.json) nebo její [část poskytovatele prostředků *Microsoft.insights/autoscalesettings*](https://github.com/Azure-Samples/compute-automation-configurations/blob/master/scale_sets/autoscale.json#L220).
 
-Nejdřív vytvořte skupinu prostředků pomocí příkazu [az group create](/cli/azure/group#az_group_create). Následující příklad vytvoří skupinu prostředků *myResourceGroup* v umístění *eastus*:
+Nejdřív vytvořte skupinu prostředků pomocí příkazu [az group create](/cli/azure/group). Následující příklad vytvoří skupinu prostředků *myResourceGroup* v umístění *eastus*:
 
 ```azurecli-interactive
 az group create --name myResourceGroup --location eastus
 ```
 
-Teď vytvořte škálovací sadu virtuálních počítačů pomocí příkazu [az group deployment create](/cli/azure/group/deployment#az_group_deployment_create). Po zobrazení výzvy zadejte své uživatelské jméno, například *azureuser*, a heslo, které se používají jako přihlašovací údaje jednotlivých instancí virtuálních počítačů:
+Teď vytvořte škálovací sadu virtuálních počítačů pomocí příkazu [az group deployment create](/cli/azure/group/deployment). Po zobrazení výzvy zadejte své uživatelské jméno, například *azureuser*, a heslo, které se používají jako přihlašovací údaje jednotlivých instancí virtuálních počítačů:
 
 ```azurecli-interactive
 az group deployment create \
@@ -264,7 +264,7 @@ Stisknutím `Ctrl-c` ukončete nástroj *watch*. Kapacita škálovací sady se n
 
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
-Pokud chcete odebrat škálovací sadu a další prostředky, odstraňte skupinu prostředků a všechny její prostředky pomocí příkazu [az group delete](/cli/azure/group#az_group_delete):
+Pokud chcete odebrat škálovací sadu a další prostředky, odstraňte skupinu prostředků a všechny její prostředky pomocí příkazu [az group delete](/cli/azure/group):
 
 ```azurecli-interactive
 az group delete --name myResourceGroup --yes --no-wait

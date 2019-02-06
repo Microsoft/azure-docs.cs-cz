@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 10/05/2016
 ms.author: hrasheed
 ROBOTS: NOINDEX
-ms.openlocfilehash: ad59decab7233c74e13468b0cf0b11fdb5485d07
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: e11ef458fad11f04ce159d5e79c4152d2bd7e4c6
+ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53722347"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55746776"
 ---
 # <a name="customize-windows-based-hdinsight-clusters-using-script-action"></a>Přizpůsobení clusterů HDInsight se systémem Windows pomocí akce skriptu
 **Skript akce** můžete použít k vyvolání [vlastní skripty](hdinsight-hadoop-script-actions.md) během procesu vytváření clusteru pro instalaci dalšího softwaru v clusteru.
@@ -80,8 +80,9 @@ HDInsight poskytuje několik skriptů v clusterech HDInsight nainstalovat násle
 ## <a name="call-scripts-using-azure-powershell"></a>Volání skriptů pomocí Azure Powershellu
 Tento následující skript prostředí PowerShell ukazuje, jak nainstalovat Windows založené na clusteru HDInsight Spark.  
 
+    ```powershell
     # Provide values for these variables
-    $subscriptionID = "<Azure Suscription ID>" # After "Connect-AzureRmAccount", use "Get-AzureRmSubscription" to list IDs.
+    $subscriptionID = "<Azure Subscription ID>" # After "Connect-AzureRmAccount", use "Get-AzureRmSubscription" to list IDs.
 
     $nameToken = "<Enter A Name Token>"  # The token is use to create Azure service names.
     $namePrefix = $nameToken.ToLower() + (Get-Date -Format "MMdd")
@@ -158,7 +159,7 @@ Tento následující skript prostředí PowerShell ukazuje, jak nainstalovat Win
             -OSType Windows `
             -DefaultStorageContainer $defaultBlobContainerName `
             -Config $config
-
+    ```
 
 Pokud chcete nainstalovat další software, budete muset nahradit soubor skriptu ve skriptu:
 
@@ -171,12 +172,14 @@ Následující příklad ukazuje, jak nainstalovat Apache Spark v clusteru HDIns
 
 1. Vytvořte konzolovou aplikaci C# v sadě Visual Studio.
 2. Z konzoly Správce balíčků Nuget spusťte následující příkaz.
-
+    ```powershell
         Install-Package Microsoft.Rest.ClientRuntime.Azure.Authentication -Pre
         Install-Package Microsoft.Azure.Management.ResourceManager -Pre
         Install-Package Microsoft.Azure.Management.HDInsight
+    ```
 3. Použijte následující příkazy using do souboru Program.cs:
 
+    ```csharp
         using System;
         using System.Security;
         using Microsoft.Azure;
@@ -186,8 +189,10 @@ Následující příklad ukazuje, jak nainstalovat Apache Spark v clusteru HDIns
         using Microsoft.IdentityModel.Clients.ActiveDirectory;
         using Microsoft.Rest;
         using Microsoft.Rest.Azure.Authentication;
+    ```
 4. Umístěte kód ve třídě s následujícími možnostmi:
 
+    ```csharp
         private static HDInsightManagementClient _hdiManagementClient;
 
         // Replace with your AAD tenant ID if necessary
@@ -276,6 +281,8 @@ Následující příklad ukazuje, jak nainstalovat Apache Spark v clusteru HDIns
             // Register the HDInsight provider
             var rpResult = resourceManagementClient.Providers.Register("Microsoft.HDInsight");
         }
+    ```
+
 5. Stisknutím klávesy **F5** spusťte aplikaci.
 
 ## <a name="support-for-open-source-software-used-on-hdinsight-clusters"></a>Podpora pro open source softwaru používaného v clusterech HDInsight

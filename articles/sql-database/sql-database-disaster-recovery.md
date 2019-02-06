@@ -12,12 +12,12 @@ ms.author: sashan
 ms.reviewer: mathoma, carlrab
 manager: craigg
 ms.date: 01/25/2019
-ms.openlocfilehash: 61957b89bd5ec9a42d6fd03c7009187d71e448f4
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 5fcd7f05aeb294441b16bab0aeb18ef5d0bf5c28
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55474781"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55749027"
 ---
 # <a name="restore-an-azure-sql-database-or-failover-to-a-secondary"></a>Obnovení služby Azure SQL Database a převzetí služeb při selhání sekundární lokalitou
 
@@ -38,7 +38,7 @@ Další informace o obchodní kontinuity podnikových procesů scénáře a funk
 Pro úspěšné dokončení obnovení do jiné oblasti dat pomocí skupiny převzetí služeb při selhání nebo geograficky redundantní zálohy, je nutné připravit server v jiném datovém centru výpadek stane novým primárním serverem by potřeba nastat také mít dobře definované kroky zdokumentované a testováním k zajištění obnovení proběhlo bez problémů. Tyto přípravné kroky patří:
 
 - Identifikace serveru SQL Database v jiné oblasti stane novým primárním serverem. Pro geografické obnovení, obvykle se jedná server v [spárované oblasti](../best-practices-availability-paired-regions.md) pro oblast, ve kterém je umístěna databáze. Tím se eliminují náklady na dodatečný provoz během operací geografické obnovení.
-- Identifikujte a volitelně můžete definovat pravidla brány firewall na úrovni serveru, třeba uživatelům přístup k nové primární databázi.
+- Identifikujte a volitelně můžete definovat pravidla firewallu protokolu IP úrovni serveru třeba uživatelům přístup k nové primární databázi.
 - Zjistěte, jak chcete přesměrovat uživatele na nový primární server, například tak, že změníte připojovací řetězce nebo při změně položky DNS.
 - Identifikovat a volitelně vytvořit přihlašovací údaje, které se musí nacházet v hlavní databázi v nové primární server a ujistěte se, že tyto přihlašovací údaje mít příslušná oprávnění v hlavní databázi, pokud existuje. Další informace najdete v tématu [zabezpečení služby SQL Database po zotavení po havárii](sql-database-geo-replication-security-config.md)
 - Určete pravidla výstrah, které je potřeba aktualizovat tak, aby namapovat na novou primární databázi.

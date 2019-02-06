@@ -7,13 +7,13 @@ ms.author: mamccrea
 ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 01/10/2019
-ms.openlocfilehash: 70cc6210a0c047867980de67ac24701df29ce8bf
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.date: 02/05/2019
+ms.openlocfilehash: 29997b2ff7d3834a91389790256cd0d075ce1ece
+ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55485173"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55744904"
 ---
 # <a name="azure-stream-analytics-preview-features"></a>Funkce Azure Stream Analytics ve verzi preview
 
@@ -23,13 +23,21 @@ Tento článek shrnuje všechny funkce aktuálně ve verzi preview pro Azure Str
 
 Následující funkce jsou ve verzi public preview. Můžete využít výhod těchto funkcích ještě dnes, ale nemusíte používat v produkčním prostředí.
 
+### <a name="sql-database-reference-data"></a>SQL Database referenčních dat
+
+Azure Stream Analytics podporuje Azure SQL Database jako zdroj vstupu pro referenční data. SQL Database můžete použít jako referenční data pro vaši úlohu Stream Analytics na portálu Azure portal a v sadě Visual Studio pomocí nástroje Stream Analytics. Další informace najdete, [pomocí referenčních dat z databáze serveru SQL pro úlohy Azure Stream Analytics](sql-reference-data.md).
+
 ### <a name="integration-with-azure-machine-learning"></a>Integrace s Azure Machine Learning
 
 Je možné škálovat úlohy Stream Analytics s funkcemi Machine Learning (ML). Další informace o použití funkce ML v úloze Stream Analytics, najdete v tématu [škálovat úlohy Stream Analytics s funkcemi Azure Machine Learning](stream-analytics-scale-with-machine-learning-functions.md). Podívejte se na skutečném scénáři s [provádět analýzu subjektivního hodnocení s využitím Azure Stream Analytics a Azure Machine Learning](stream-analytics-machine-learning-integration-tutorial.md).
 
 ### <a name="blob-output-partitioning-by-custom-time"></a>Objekt BLOB výstup dělení podle vlastní čas
 
-Azure Stream Analytics můžete výstup do úložiště objektů Blob založeného na vlastní atributy. Další informace najdete v článku [vlastní data a času vzorů cest pro Azure Stream Analytics služby blob storage výstup](stream-analytics-custom-path-patterns-blob-storage-output.md).
+Azure Stream Analytics můžete výstup do úložiště objektů blob založeného na vlastní atributy. Další informace najdete v článku [objektů blob Azure Stream Analytics, vlastní, výstup dělení](stream-analytics-custom-path-patterns-blob-storage-output.md).
+
+### <a name="blob-output-partitioning-by-field-or-attribute"></a>Dělení podle pole nebo atribut výstupní objekt BLOB
+
+Azure Stream Analytics můžete výstup do úložiště objektů blob na základě vlastních polí nebo atributy. Další informace najdete v článku [objektů blob Azure Stream Analytics, vlastní, výstup dělení](stream-analytics-custom-path-patterns-blob-storage-output.md).
 
 ### <a name="javascript-user-defined-aggregate"></a>Uživatelem definovaná agregace jazyka JavaScript
 
@@ -55,13 +63,13 @@ Azure Stream Analytics zavádí nové modely strojového učení s podporou *zá
 
 Vývojáři teď můžete implementovat vlastní deserializers v jazyce C# k deserializaci událostí přijatých službou Azure Stream Analytics. Příklady formátů, které lze deserializovat: Parquet, Protobuf, XML nebo libovolný binární formát.
 
-### <a name="blob-output-partitioning-by-custom-attribute"></a>Objekt BLOB výstup dělení podle vlastního atributu
-
-Nyní je možné rozdělit do úložiště objektů Blob podle libovolného sloupce v dotazu výstupu Azure Stream Analytics.
-
 ### <a name="managed-identities-for-azure-resource-authentication-to-azure-data-lake-storage"></a>Spravovaných identit pro ověřování prostředků Azure do služby Azure Data Lake Storage
 
 Můžete teď provozu v reálném čase kanály pomocí spravované identity pro prostředky Azure na základě ověření při zápisu do Azure Data Lake Storage Gen1 umožňuje programově vytvářet úlohy. Další informace najdete v článku [použití spravovaných identit pro prostředky Azure, které ověřování Azure Stream Analytics úloh do Azure Data Lake Storage Gen1 výstupu](stream-analytics-managed-identities-adls.md).
+
+### <a name="visual-studio-code-for-azure-stream-analytics"></a>Visual Studio Code pro Azure Stream Analytics
+
+Úlohy Azure Stream Analytics se můžou vytvořit ve Visual Studio Code.
 
 ## <a name="next-steps"></a>Další postup
 

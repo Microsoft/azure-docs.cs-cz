@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/22/2018
 ms.author: cynthn
-ms.openlocfilehash: ffc724c52fdab01bfbf2846ff06a35f38a57c8eb
-ms.sourcegitcommit: 4ea0cea46d8b607acd7d128e1fd4a23454aa43ee
+ms.openlocfilehash: 8d421adfae335a976485ed463a69484a74be5b44
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/15/2018
-ms.locfileid: "42058040"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55753925"
 ---
 # <a name="frequently-asked-question-about-linux-virtual-machines"></a>Časté otázky o virtuálních počítačích s Linuxem
 Tento článek se zabývá některými běžnými dotazy o virtuálních počítačích s Linuxem, které jsou vytvořené v Azure s využitím modelu nasazení Resource Manager. Windows verzi tohoto tématu naleznete v části [nejčastější dotazy o Windows Virtual Machines](../windows/faq.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
@@ -31,7 +31,7 @@ Všichni předplatitelé můžou na virtuálním počítači Azure spouštět se
 ## <a name="how-much-storage-can-i-use-with-a-virtual-machine"></a>Kolik úložiště můžu využít s virtuálním počítačem?
 Každý datový disk může být až na 4 TB (4 095 GB). Počet datových disků, které můžete využít, závisí na velikosti virtuálního počítače. Podrobnosti najdete v článku [Velikosti služeb Virtual Machines](sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
 
-Služba Azure Managed Disks se doporučené nabídky diskových úložišť pro použití s Azure Virtual Machines k trvalému ukládání dat. Pro každý virtuální počítač můžete použít několik služeb Managed Disks. Služba Managed Disks nabízí dva typy odolných úložišť: Premium a Standard. Informace o cenách najdete v tématu [spravované disky ceny](https://azure.microsoft.com/pricing/details/managed-disks).
+Služba Azure Managed Disks se doporučené nabídky diskových úložišť pro použití s Azure Virtual Machines k trvalému ukládání dat. Pro každý virtuální počítač můžete použít několik služeb Managed Disks. Spravované disky nabídka dva typy odolných úložišť: Premium a Standard Managed Disks. Informace o cenách najdete v tématu [spravované disky ceny](https://azure.microsoft.com/pricing/details/managed-disks).
 
 Účty úložiště Azure můžete také poskytují úložiště pro disk s operačním systémem a všechny datové disky. Každý disk je soubor .vhd uložený jako objekt blob stránky. Podrobnosti o cenách najdete v tématu [Podrobnosti o cenách úložiště](https://azure.microsoft.com/pricing/details/storage/).
 
@@ -53,10 +53,10 @@ Tyto dvě nové oblasti, Kanada – střed a Kanada – východ nejsou registrov
 Ano, to je nyní možné. Virtuální počítač nejprve musí být zastaven uvolněno. Potom můžete přidat nebo odebrat síťovou kartu (pokud to není poslední síťového rozhraní na virtuálním počítači). 
 
 ## <a name="are-there-any-computer-name-requirements"></a>Existují nějaké požadavky na název počítače?
-Ano. Název počítače může být maximálně 64 znaků. Zobrazit [konvence pravidla a omezení pojmenování](/azure/architecture/best-practices/naming-conventions#naming-rules-and-restrictions?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) pro více informací o pojmenování prostředků.
+Ano. Název počítače může být maximálně 64 znaků. Zobrazit [konvence pravidla a omezení pojmenování](/azure/architecture/best-practices/naming-conventions) pro více informací o pojmenování prostředků.
 
 ## <a name="are-there-any-resource-group-name-requirements"></a>Existují prostředek požadavky na název skupiny?
-Ano. Název skupiny prostředků může být maximálně 90 znaků. Zobrazit [konvence pravidla a omezení pojmenování](/azure/architecture/best-practices/naming-conventions#naming-rules-and-restrictions?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) Další informace o skupinách prostředků.
+Ano. Název skupiny prostředků může být maximálně 90 znaků. Zobrazit [konvence pravidla a omezení pojmenování](/azure/architecture/best-practices/naming-conventions) Další informace o skupinách prostředků.
 
 ## <a name="what-are-the-username-requirements-when-creating-a-vm"></a>Jaké jsou požadavky na uživatelské jméno při vytváření virtuálního počítače?
 
@@ -66,7 +66,7 @@ Nejsou povoleny následující uživatelská jména:
 
 <table>
     <tr>
-        <td style="text-align:center">Správce </td><td style="text-align:center"> Správce </td><td style="text-align:center"> uživatel </td><td style="text-align:center"> uživatele User1</td>
+        <td style="text-align:center">Správce </td><td style="text-align:center"> admin </td><td style="text-align:center"> uživatel </td><td style="text-align:center"> uživatele User1</td>
     </tr>
     <tr>
         <td style="text-align:center">test </td><td style="text-align:center"> uživatel2 </td><td style="text-align:center"> test1 </td><td style="text-align:center"> UŽIVATEL3</td>
@@ -75,19 +75,19 @@ Nejsou povoleny následující uživatelská jména:
         <td style="text-align:center">admin1 </td><td style="text-align:center"> 1 </td><td style="text-align:center"> 123 </td><td style="text-align:center"> a</td>
     </tr>
     <tr>
-        <td style="text-align:center">actuser  </td><td style="text-align:center"> ADM – </td><td style="text-align:center"> admin2 </td><td style="text-align:center"> ASPNET</td>
+        <td style="text-align:center">actuser  </td><td style="text-align:center"> adm </td><td style="text-align:center"> admin2 </td><td style="text-align:center"> aspnet</td>
     </tr>
     <tr>
         <td style="text-align:center">zálohování </td><td style="text-align:center"> konzola </td><td style="text-align:center"> David </td><td style="text-align:center"> hosta</td>
     </tr>
     <tr>
-        <td style="text-align:center">Jan </td><td style="text-align:center"> vlastník </td><td style="text-align:center"> Kořenové </td><td style="text-align:center"> server</td>
+        <td style="text-align:center">Jan </td><td style="text-align:center"> vlastník </td><td style="text-align:center"> kořen </td><td style="text-align:center"> server</td>
     </tr>
     <tr>
         <td style="text-align:center">SQL </td><td style="text-align:center"> podpora </td><td style="text-align:center"> support_388945a0 </td><td style="text-align:center"> Sys</td>
     </tr>
     <tr>
-        <td style="text-align:center">test2 </td><td style="text-align:center"> Test3 </td><td style="text-align:center"> Uživatel4 </td><td style="text-align:center"> user5</td>
+        <td style="text-align:center">test2 </td><td style="text-align:center"> test3 </td><td style="text-align:center"> Uživatel4 </td><td style="text-align:center"> user5</td>
     </tr>
 </table>
 
@@ -108,7 +108,7 @@ Nejsou povoleny následující hesla:
         <td style="text-align:center">P@$$w0rd</td>
         <td style="text-align:center">P@ssw0rd</td>
         <td style="text-align:center">P@ssword123</td>
-        <td style="text-align:center">Pa$ $word</td>
+        <td style="text-align:center">Pa$$word</td>
     </tr>
     <tr>
         <td style="text-align:center">pass@word1</td>

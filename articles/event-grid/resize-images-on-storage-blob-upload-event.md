@@ -12,12 +12,12 @@ ms.topic: tutorial
 ms.date: 01/29/2019
 ms.author: spelluru
 ms.custom: mvc
-ms.openlocfilehash: 6015d226bce578661816bd0f934f7818746b4c3b
-ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
+ms.openlocfilehash: b3ddaf7667baf98d9d5daa93a3106e457d0aeacb
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55507752"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55756865"
 ---
 # <a name="tutorial-automate-resizing-uploaded-images-using-event-grid"></a>Kurz: Automatizace změny velikosti nahraných obrázků s využitím služby Event Grid
 
@@ -105,7 +105,7 @@ Teď je potřeba nakonfigurovat připojení aplikace funkcí k účtu služby Bl
 
 ## <a name="configure-the-function-app"></a>Konfigurace aplikace Function App
 
-Funkce potřebuje k připojení k účtu služby Blob Storage připojovací řetězec. Kód funkce, který v následujícím kroku nasadíte do Azure, hledá připojovací řetězec v nastavení aplikace myblobstorage_STORAGE a název kontejneru obrázků miniatur v nastavení aplikace myContainerName. Připojovací řetězec zobrazíte pomocí příkazu [az storage account show-connection-string](/cli/azure/storage/account#show-connection-string). Pomocí příkazu [az functionapp config appsettings set](/cli/azure/functionapp/config/appsettings#set) nastavte nastavení aplikace.
+Funkce potřebuje k připojení k účtu služby Blob Storage připojovací řetězec. Kód funkce, který v následujícím kroku nasadíte do Azure, hledá připojovací řetězec v nastavení aplikace myblobstorage_STORAGE a název kontejneru obrázků miniatur v nastavení aplikace myContainerName. Připojovací řetězec zobrazíte pomocí příkazu [az storage account show-connection-string](/cli/azure/storage/account). Pomocí příkazu [az functionapp config appsettings set](/cli/azure/functionapp/config/appsettings) nastavte nastavení aplikace.
 
 V následujících příkazech rozhraní příkazového řádku je `<blob_storage_account>` název účtu služby Blob Storage, který jste vytvořili v předchozím kurzu.
 
@@ -128,7 +128,7 @@ Teď můžete nasadit do této aplikace Function App nasadit projekt projektu k�
 
 # <a name="nettabdotnet"></a>[\.NET](#tab/dotnet)
 
-Ukázkový skript jazyka C# (.csx) pro změnu velikosti je k dispozici na [GitHubu](https://github.com/Azure-Samples/function-image-upload-resize). Pomocí příkazu [az functionapp deployment source config](/cli/azure/functionapp/deployment/source#config) nasaďte tento projekt kódu funkce do aplikace Function App. 
+Ukázkový skript jazyka C# (.csx) pro změnu velikosti je k dispozici na [GitHubu](https://github.com/Azure-Samples/function-image-upload-resize). Pomocí příkazu [az functionapp deployment source config](/cli/azure/functionapp/deployment/source) nasaďte tento projekt kódu funkce do aplikace Function App. 
 
 V následujícím příkazu je `<function_app>` název aplikace funkcí, kterou jste vytvořili dříve.
 
@@ -137,7 +137,7 @@ az functionapp deployment source config --name $functionapp --resource-group $re
 ```
 
 # <a name="nodejstabnodejs"></a>[Node.js](#tab/nodejs)
-Ukázková funkce změny velikosti v Node.js je k dispozici na [GitHubu](https://github.com/Azure-Samples/storage-blob-resize-function-node). Pomocí příkazu [az functionapp deployment source config](/cli/azure/functionapp/deployment/source#config) nasaďte tento projekt kódu funkce do aplikace Function App.
+Ukázková funkce změny velikosti v Node.js je k dispozici na [GitHubu](https://github.com/Azure-Samples/storage-blob-resize-function-node). Pomocí příkazu [az functionapp deployment source config](/cli/azure/functionapp/deployment/source) nasaďte tento projekt kódu funkce do aplikace Function App.
 
 V následujícím příkazu je `<function_app>` název aplikace funkcí, kterou jste vytvořili dříve.
 

@@ -1,74 +1,79 @@
 ---
-title: 'Rychlý start: Vyhledávání entit Bingu API pro Python'
+title: 'Rychlý start: Odeslat žádost o vyhledávání Bingu Entity Search REST API pomocí Pythonu'
 titlesuffix: Azure Cognitive Services
-description: Umožňuje získat informace a ukázky kódu, které vám pomůžou rychle začít používat rozhraní API Bingu pro vyhledávání entit.
+description: V tomto rychlém startu můžete odeslat požadavek na rozhraní Bing Entity REST API pro vyhledávání pomocí Pythonu a přijetí odpovědi JSON.
 services: cognitive-services
 author: aahill
 manager: cgronlun
 ms.service: cognitive-services
 ms.subservice: bing-entity-search
 ms.topic: quickstart
-ms.date: 11/28/2017
+ms.date: 02/01/2019
 ms.author: aahi
-ms.openlocfilehash: fb0ed14a2369034b3185875f7e94e4576277b4fb
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: df78c6930552865db9fb25df8e412e8644c8f265
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55186276"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55754706"
 ---
-# <a name="quickstart-for-bing-entity-search-api-with-python"></a>Rychlý start pro rozhraní API pro vyhledávání entit v Pythonu
+# <a name="quickstart-send-a-search-request-to-the-bing-entity-search-rest-api-using-python"></a>Rychlý start: Odeslat žádost o vyhledávání Bingu Entity Search REST API pomocí Pythonu
 
-V tomto článku se dozvíte, jak používat [Bingu pro vyhledávání entit](https://docs.microsoft.com/azure/cognitive-services/bing-entities-search/search-the-web) API s využitím Pythonu.
+V tomto rychlém startu můžete provést první volání do rozhraní API Bingu pro vyhledávání entit a zobrazit odpověď JSON. Tato jednoduchá aplikace Python odešle dotaz vyhledávání zpráv na rozhraní API a zobrazí odpovědi. Zdrojový kód k této ukázce je dostupný na [Githubu](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/python/Search/BingEntitySearchv7.py).
+
+Aplikace je sice napsaná v Pythonu, ale rozhraní API je webová služba RESTful kompatibilní s většinou programovacích jazyků.
 
 ## <a name="prerequisites"></a>Požadavky
 
-Ke spuštění tohoto kódu budete potřebovat [Python 3.x](https://www.python.org/downloads/).
+* [Python](https://www.python.org/downloads/) 2.x nebo 3.x
 
-Potřebujete [účet rozhraní API Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) s **rozhraním API Bingu pro vyhledávání entit**. Pro účely tohoto rychlého startu stačí [bezplatná zkušební verze](https://azure.microsoft.com/try/cognitive-services/?api=bing-entity-search-api). Při aktivaci bezplatné zkušební verze budete potřebovat poskytnutý přístupový klíč nebo můžete použít klíč placeného předplatného z řídicího panelu Azure.   Viz také [služeb Cognitive Services ceny – rozhraní API Bingu pro vyhledávání](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/).
+[!INCLUDE [cognitive-services-bing-news-search-signup-requirements](../../../../includes/cognitive-services-bing-entity-search-signup-requirements.md)]
 
-## <a name="search-entities"></a>Vyhledávání entit
+## <a name="create-and-initialize-the-application"></a>Vytvoření a inicializace aplikace
 
-Tuto aplikaci spustíte následujícím postupem.
+1. Vytvořte nový soubor Pythonu ve vašich oblíbených prostředím IDE nebo editorem a přidejte následující importy. Vytváření proměnných pro váš klíč předplatného, koncový bod, trhu a vyhledávací dotaz. Vyhledání vašeho koncového bodu na řídicím panelu Azure.
 
-1. V oblíbeném integrovaném vývojovém prostředí (IDE) vytvořte nový projekt Pythonu.
-2. Přidejte níže uvedený kód.
-3. Hodnotu `key` nahraďte přístupovým klíčem platným pro vaše předplatné.
-4. Spusťte program.
+    ```python
+    import http.client, urllib.parse
+    import json
+    
+    subscriptionKey = 'ENTER YOUR KEY HERE'
+    host = 'api.cognitive.microsoft.com'
+    path = '/bing/v7.0/entities'
+    mkt = 'en-US'
+    query = 'italian restaurants near me'
+    ```
 
-```python
-# -*- coding: utf-8 -*-
+2. Vytvořit žádost o adresu url připojením vašeho trhu proměnnou `?mkt=` parametru. Kódování URL dotazu a umožňuje připojení `&q=` parametru. 
+    
+    ```python
+    params = '?mkt=' + mkt + '&q=' + urllib.parse.quote (query)
+    ```
 
-import http.client, urllib.parse
-import json
+## <a name="send-a-request-and-get-a-response"></a>Odešle žádost a získejte odpověď
 
-# **********************************************
-# *** Update or verify the following values. ***
-# **********************************************
+1. Vytvořit funkci s názvem `get_suggestions()`. Pak proveďte následující kroky.
+    1. Klíč předplatného. přidejte do slovníku s `Ocp-Apim-Subscription-Key` jako klíč.
+    2. Použití `http.client.HTTPSConnection()` k vytvoření objektu klienta HTTPS. Odeslat `GET` požadovat pomocí `request()` s informacemi o cestu a parametry a záhlaví.
+    3. Odpověď se Store `getresponse()`a vrátí `response.read()`.
 
-# Replace the subscriptionKey string value with your valid subscription key.
-subscriptionKey = 'ENTER KEY HERE'
+    ```python
+    def get_suggestions ():
+        headers = {'Ocp-Apim-Subscription-Key': subscriptionKey}
+        conn = http.client.HTTPSConnection (host)
+        conn.request ("GET", path + params, None, headers)
+        response = conn.getresponse ()
+        return response.read()
+    ```
 
-host = 'api.cognitive.microsoft.com'
-path = '/bing/v7.0/entities'
+2. Volání `get_suggestions()`a tisku odpověď json.
 
-mkt = 'en-US'
-query = 'italian restaurants near me'
+    ```python
+    result = get_suggestions ()
+    print (json.dumps(json.loads(result), indent=4))
+    ```
 
-params = '?mkt=' + mkt + '&q=' + urllib.parse.quote (query)
-
-def get_suggestions ():
-    headers = {'Ocp-Apim-Subscription-Key': subscriptionKey}
-    conn = http.client.HTTPSConnection (host)
-    conn.request ("GET", path + params, None, headers)
-    response = conn.getresponse ()
-    return response.read ()
-
-result = get_suggestions ()
-print (json.dumps(json.loads(result), indent=4))
-```
-
-**Odpověď**
+## <a name="example-json-response"></a>Příklad JSON odpovědi
 
 Úspěšná odpověď se vrátí ve formátu JSON, jak je znázorněno v následujícím příkladu: 
 
@@ -133,11 +138,10 @@ print (json.dumps(json.loads(result), indent=4))
 }
 ```
 
-[Zpět na začátek](#HOLTop)
-
 ## <a name="next-steps"></a>Další postup
 
 > [!div class="nextstepaction"]
-> [Kurz o vyhledávání entit Bingu](../tutorial-bing-entities-search-single-page-app.md)
-> [Přehled vyhledávání entit Bingu](../search-the-web.md )
-> [Reference k rozhraní API](https://docs.microsoft.com/rest/api/cognitiveservices/bing-entities-api-v7-reference)
+> [Vytvoření webové jednostránkové aplikace](../tutorial-bing-entities-search-single-page-app.md)
+
+* [Co je API pro vyhledávání entit Bingu](../search-the-web.md)
+* [Reference k rozhraní API vyhledávání entit Bingu](https://docs.microsoft.com/rest/api/cognitiveservices/bing-entities-api-v7-reference)

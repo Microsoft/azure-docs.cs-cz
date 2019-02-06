@@ -6,12 +6,12 @@ ms.service: avere-vfxt
 ms.topic: conceptual
 ms.date: 01/29/2019
 ms.author: v-erkell
-ms.openlocfilehash: c0304e290d18e6569e3fcc2efbab8af15727b80c
-ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
+ms.openlocfilehash: a097110bac7dad630f9a85dd8b20678db0c739cf
+ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55508151"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55744652"
 ---
 # <a name="plan-your-avere-vfxt-system"></a>Plánování systému Avere vFXT
 
@@ -37,6 +37,9 @@ Při plánování síťové infrastruktury vašeho systému vFXT Avere, postupuj
 * Vyhledejte vaše klientské systémy výpočetní blízko vFXT clusteru. Back endové úložiště může být více vzdálených.  
 
 * Pro jednoduchost vyhledejte vFXT clusteru a clusteru adaptéru virtuálního počítače ve stejné virtuální síti (vnet) a ve stejné skupině prostředků. Měli by také použít stejný účet úložiště. (Kontroler clusteru vytvoří cluster a může také sloužit pro správu příkazového řádku clusteru.)  
+
+  > [!NOTE] 
+  > Šablonu pro vytvoření clusteru můžete vytvořit novou skupinu prostředků a účet úložiště pro cluster. Můžete zadat existující skupinu prostředků, ale musí být prázdný.
 
 * Cluster se musí nacházet ve vlastní podsíti nedošlo ke konfliktům IP adres s klienty nebo výpočetní prostředky. 
 

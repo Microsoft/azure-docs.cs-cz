@@ -1,5 +1,5 @@
 ---
-title: Kurz – vytvoření toky uživatelů v Azure Active Directory B2C | Dokumentace Microsoftu
+title: Kurz – vytvoření toky uživatelů – Azure Active Directory B2C | Dokumentace Microsoftu
 description: Naučíte se vytvářet toky uživatelů pro aplikace v Azure Active Directory B2C na webu Azure portal.
 services: active-directory-b2c
 author: davidmu1
@@ -7,14 +7,14 @@ manager: daveba
 ms.service: active-directory-b2c
 ms.workload: identity
 ms.topic: article
-ms.date: 01/11/2019
+ms.date: 02/01/2019
 ms.author: davidmu
-ms.openlocfilehash: 6e651d23e3b5cced78088d59979507eb09723165
-ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
+ms.openlocfilehash: 7f017583a6eeb61b11df86a908d573dba9bd5929
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54845588"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55750286"
 ---
 # <a name="tutorial-create-user-flows-in-azure-active-directory-b2c"></a>Kurz: Vytvořit toky uživatelů v Azure Active Directory B2C
 
@@ -39,29 +39,30 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 
 Tok uživatele. Zaregistrujte se a přihlaste se zpracovává prostředí jak registrace a přihlášení s konfigurací jedné. Uživatelům vaší aplikace jsou vedla dolů správné cestě, v závislosti na kontextu.
 
-1. Ujistěte se, že používáte adresáře, který obsahuje vašeho tenanta Azure AD B2C kliknutím **filtr adresářů a předplatných** v horní nabídce a výběrem adresáře, který obsahuje váš tenant.
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+2. Ujistěte se, že používáte adresáře, který obsahuje vašeho tenanta Azure AD B2C kliknutím **filtr adresářů a předplatných** v horní nabídce a výběrem adresáře, který obsahuje váš tenant.
 
     ![Přepnout na adresář předplatného](./media/tutorial-create-user-flows/switch-directories.png)
 
-2. Zvolte **všechny služby** v horním levém horním rohu webu Azure portal a poté vyhledejte a vyberte **Azure AD B2C**.
-3. V nabídce vlevo vyberte **toky uživatelů**a pak vyberte **nový tok uživatele**.
+3. Zvolte **všechny služby** v horním levém horním rohu webu Azure portal a poté vyhledejte a vyberte **Azure AD B2C**.
+4. V nabídce vlevo vyberte **toky uživatelů**a pak vyberte **nový tok uživatele**.
 
     ![Vyberte nový tok uživatele](./media/tutorial-create-user-flows/signup-signin-user-flow.png)
 
-4. Vyberte **registrace a přihlášení** tok uživatele na kartě doporučené.
+5. Vyberte **registrace a přihlášení** tok uživatele na kartě doporučené.
 
     ![Vyberte tok registrace a přihlášení uživatele](./media/tutorial-create-user-flows/signup-signin-type.png)
 
-5. Zadejte **název** pro tok uživatele. Například *signupsignin1*.
-6. Pro **zprostředkovatelé Identity**vyberte **e-mailová registrace**.
+6. Zadejte **název** pro tok uživatele. Například *signupsignin1*.
+7. Pro **zprostředkovatelé Identity**vyberte **e-mailová registrace**.
 
     ![Nastavit vlastnosti toku](./media/tutorial-create-user-flows/signup-signin-properties.png)
 
-7. Pro **atributy uživatele a deklarace identity**, zvolte deklarace identity a atributy, které chcete shromažďovat a odesílat od uživatele během registrace. Vyberte například **zobrazit více**a klikněte na tlačítko **země/oblast**, **zobrazovaný název**, a **PSČ**. Klikněte na **OK**.
+8. Pro **atributy uživatele a deklarace identity**, zvolte deklarace identity a atributy, které chcete shromažďovat a odesílat od uživatele během registrace. Vyberte například **zobrazit více**a klikněte na tlačítko **země/oblast**, **zobrazovaný název**, a **PSČ**. Klikněte na **OK**.
 
     ![Vyberte atributy a deklarace identity](./media/tutorial-create-user-flows/signup-signin-attributes.png)
 
-8. Klikněte na tlačítko **vytvořit** přidat tok uživatele. Předpona *B2C_1* se automaticky připojí k názvu.
+9. Klikněte na tlačítko **vytvořit** přidat tok uživatele. Předpona *B2C_1* se automaticky připojí k názvu.
 
 ### <a name="test-the-user-flow"></a>Testování tohoto toku uživatele
 
@@ -123,4 +124,4 @@ V tomto článku jste zjistili, jak:
 > * Vytvořit tok uživatele resetování hesla
 
 > [!div class="nextstepaction"]
-> [Přizpůsobení uživatelského rozhraní svých aplikací v Azure Active Directory B2C](tutorial-customize-ui.md)
+> [Přidat zprostředkovatele identity pro vaše aplikace v Azure Active Directory B2C](tutorial-add-identity-providers.md)

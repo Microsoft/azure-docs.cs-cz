@@ -8,12 +8,12 @@ ms.service: batch
 ms.topic: article
 ms.date: 10/04/2018
 ms.author: lahugh
-ms.openlocfilehash: b296dce0a83971626c8e66ddc314c4d1e07d8602
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 0bc43b82a987ab065677bdbb56de73ef341c249d
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52840363"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55752122"
 ---
 # <a name="use-a-custom-image-to-create-a-pool-of-virtual-machines"></a>Použití vlastní image k vytvoření fondu virtuálních počítačů 
 
@@ -69,7 +69,7 @@ Snímek je kopie virtuálního pevného disku úplné, jen pro čtení. Pokud ch
 
 ### <a name="create-an-image-from-one-or-more-snapshots"></a>Vytvoření image z jedné nebo více snímků
 
-K vytvoření spravované image ze snímku pomocí nástrojů příkazového řádku Azure, jako [az image vytvořit](/cli/azure/image#az_image_create) příkazu. Vytvoření image tak, že zadáte snímku disku operačním systémem a volitelně jeden nebo více snímků disku data.
+K vytvoření spravované image ze snímku pomocí nástrojů příkazového řádku Azure, jako [az image vytvořit](/cli/azure/image) příkazu. Vytvoření image tak, že zadáte snímku disku operačním systémem a volitelně jeden nebo více snímků disku data.
 
 ## <a name="create-a-pool-from-a-custom-image-in-the-portal"></a>Vytvořit fond z vlastní image na portálu
 

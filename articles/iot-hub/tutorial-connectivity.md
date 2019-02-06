@@ -9,14 +9,14 @@ ms.custom: mvc
 ms.date: 05/29/2018
 ms.topic: tutorial
 ms.service: iot-hub
-ms.openlocfilehash: 05f6b32fad4f0a449f0d801c1c7cc6a28be6f940
-ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
+ms.openlocfilehash: bb9bcfcc5f78ee82f187d331055e8f2fd2ed9e64
+ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51685343"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55745805"
 ---
-# <a name="tutorial-use-a-simulated-device-to-test-connectivity-with-your-iot-hub"></a>Kurz: Použití simulovaného zařízení k otestování připojení k IoT Hubu
+# <a name="tutorial-use-a-simulated-device-to-test-connectivity-with-your-iot-hub"></a>Kurz: Použití simulovaného zařízení k otestování připojení k službě IoT hub
 
 V tomto kurzu použijete nástroje portálu Azure IoT Hub a rozhraní příkazového řádku Azure k otestování připojení zařízení. Tento kurz také využívá jednoduchý simulátor zařízení, který spustíte na svém stolním počítači.
 
@@ -75,7 +75,7 @@ Získejte připojovací řetězec zařízení **MyTestDevice** tak, že na něj 
 
 Pokud chcete simulovat, že zařízení **MyTestDevice** odesílá telemetrii do centra IoT, spusťte aplikaci simulovaného zařízení v Node.js, kterou jste si stáhli v předchozí části.
 
-V okně terminálu na počítači pro vývoj přejděte do kořenové složky ukázkového projektu Node.js, který máte stažený. Pak přejděte do složky **iot-hub\Tutorials\ConnectivityTests\simulated-device**.
+V okně terminálu na počítači pro vývoj přejděte do kořenové složky ukázkového projektu Node.js, který máte stažený. Potom přejděte **iot hub\Tutorials\ConnectivityTests** složky.
 
 V okně terminálu pomocí následujících příkazů nainstalujte požadované knihovny a spusťte aplikaci simulovaného zařízení. Použijte připojovací řetězec zařízení jste si poznamenali při přidání zařízení na portálu.
 

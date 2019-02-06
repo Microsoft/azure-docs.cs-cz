@@ -6,14 +6,14 @@ author: rajani-janaki-ram
 manager: rochakm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 01/8/2019
+ms.date: 02/05/2019
 ms.author: rajanaki
-ms.openlocfilehash: 3e5f84a6f05e451b1eafa98c373f9d838421016e
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: a497784a665c62d23a017b71acf709120e34c369
+ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55229326"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55746961"
 ---
 # <a name="service-updates-in-azure-site-recovery"></a>Aktualizace služeb ve službě Azure Site Recovery
 Jako organizace budete muset zjistit, jak budete bezpečnost vašich dat a aplikací a úloh v případě plánovaných a neplánovaných výpadků. Azure Site Recovery přispívá ke strategii BCDR tím, že vaše aplikace běžící na virtuálních počítačích a fyzických serverů, které jsou k dispozici, pokud web přestane fungovat. Site Recovery replikuje úlohy spuštěné na virtuálních počítačích a fyzických serverech, aby zůstaly dostupné v sekundárním umístění v případě, že je primární lokalita nedostupná. Po opětovném zprovoznění primární lokality do ní úlohy obnoví.
@@ -97,10 +97,13 @@ V případě, že jste se rozhodli spravovat aktualizace ručně, postupujte pod
 
 ## <a name="between-an-on-premises-vmware-or-physical-site-to-azure"></a>Mezi VMware v místním prostředí nebo fyzického serveru do Azure
 
-1. Nejprve nainstalujte aktualizaci na server pro místní správu. Jedná se o server, který má konfiguračního serveru a role serveru procesu. 
-2. Pokud máte horizontální navýšení kapacity procesových serverů, potom je aktualizujte.
-3. Přejděte na web Azure Portal a potom pokračujte **chráněné položky** > **replikované položky** stránky.
-Vyberte virtuální počítač na této stránce. Vyberte **Update Agent** tlačítko, které se zobrazí v dolní části stránky pro každý virtuální počítač. Tím se aktualizuje agenta služby Mobility pro všechny chráněné virtuální počítače.
+Než budete pokračovat s aktualizacemi, odkazovat na [výrazem podpory Site Recovery](#support-statement-for-azure-site-recovery) pochopit způsob upgradu.
+
+1. Na základě vaší aktuální verzi a podporu příkazu výše uvedené, nainstalujte aktualizaci nejprve na místní server pro správu podle pokynů uvedených [tady](vmware-azure-deploy-configuration-server.md#upgrade-the-configuration-server). Jedná se o server, který má konfiguračního serveru a role serveru procesu.
+2. Pokud máte horizontální navýšení kapacity zpracování servery, je dále aktualizovat podle následujících pokynů daný [tady](vmware-azure-manage-process-server.md#upgrade-a-process-server).
+3. V dalším kroku aktualizovat agenta mobility na každé chráněné položky, přejděte na web Azure portal a potom přejděte ke **chráněné položky** > **replikované položky** stránky. Vyberte virtuální počítač na této stránce. Vyberte **Update Agent** tlačítko, které se zobrazí v dolní části stránky pro každý virtuální počítač. Tím se aktualizuje agenta služby Mobility pro všechny chráněné virtuální počítače.
+
+### <a name="reboot-of-source-machine-after-mobility-agent-upgrade"></a>Po upgradu agenta mobility restartování zdrojového počítače
 
 Restartování se doporučuje po každém upgradu agenta Mobility Ujistěte se, že jsou načteny všechny nejnovější změny na zdrojovém počítači. Je ale **není povinné**. Pokud rozdíl mezi verze agenta během posledního restartování a aktuální verze je větší než 4, restartování je povinný. Naleznete v následující tabulce pro podrobné vysvětlení.
 
@@ -111,14 +114,12 @@ Restartování se doporučuje po každém upgradu agenta Mobility Ujistěte se, 
 | 9.16 | 9.20 | Není povinná
  | 9.16 | 9.21 | Ano, nejprve upgradovat na 9,20 a potom restartujte před upgradem na 9.21 jako rozdíl mezi verzemi (9.16, kde byla provedena poslední restartování a cílová verze 9.21) je > 4
 
-
-
 ## <a name="links-to-currently-supported-update-rollups"></a>Odkazy na aktuálně podporovaných kumulativních aktualizací
-
 
 |Kumulativní aktualizace  |Poskytovatel  |Jednotný instalační program| OVF  |MARS|
 |---------|---------|---------|---------|--------|
-|[Kumulativní aktualizace 32](https://support.microsoft.com/help/4478871/update-rollup-31-for-azure-site-recovery)     |   5.1.3800.0  |  9.21.5091.1   |  5.1.3800.0  |2.0.9144.0
+|[Kumulativní aktualizace 33](https://support.microsoft.com/en-us/help/4489582/update-rollup-33-for-azure-site-recovery)     |   5.1.3900.0  |  9.22.5109.1   |  5.1.3900.0  | 2.0.9155.0
+|[Kumulativní aktualizace 32](https://support.microsoft.com/en-us/help/4485985/update-rollup-32-for-azure-site-recovery)     |   5.1.3800.0  |  9.21.5091.1   |  5.1.3800.0  |2.0.9144.0
 |[Kumulativní aktualizace 31](https://support.microsoft.com/help/4478871/update-rollup-31-for-azure-site-recovery)     |     5.1.3700.0      |   9.20.5051.1      |     5.1.3700.0    |2.0.9144.0
 |[Kumulativní aktualizace 30](https://support.microsoft.com/help/4468181/azure-site-recovery-update-rollup-30)     |    5.1.3650.0   |   9.19.5007.1    |     5.1.3650.0    |2.0.9139.0
 |[Kumulativní aktualizace 29](https://support.microsoft.com/help/4466466/update-rollup-29-for-azure-site-recovery)     |   5.1.3650.0      |   9.19.4973.1     |     5.1.3700.0    |2.0.9131.0

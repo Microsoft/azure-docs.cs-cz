@@ -5,15 +5,15 @@ services: firewall
 author: vhorne
 ms.service: ''
 ms.topic: include
-ms.date: 12/14/2018
+ms.date: 2/4/2019
 ms.author: victorh
 ms.custom: include file
-ms.openlocfilehash: 3d76f25fc4382c8f03fac682fa7286a4a329a1db
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.openlocfilehash: 8fd8cd93015fdb5cdcf657ecbcbb9a7cc870525a
+ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54300639"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55747743"
 ---
 ### <a name="what-is-azure-firewall"></a>Co je brána Azure Firewall?
 
@@ -34,6 +34,8 @@ Azure Firewall je spravovaná cloudová služba síťového zabezpečení, kter�
 ### <a name="what-is-the-typical-deployment-model-for-azure-firewall"></a>Co je typické nasazení modelu pro Brána Firewall služby Azure?
 
 Brána Firewall služby Azure můžete nasadit na všechny virtuální sítě, ale zákazníci obvykle nasazení v centrální virtuální síti a vytvořit partnerský vztah jiným virtuálním sítím v modelu střed a paprsek do něj. Pak můžete nastavit výchozí trasu v partnerských virtuálních sítích tak, aby odkazoval na tento centrální brány firewall virtuální sítě.
+
+Výhodou tohoto modelu je schopnost centrálně získat ovládací prvek na více virtuálních sítí paprsků napříč různými předplatnými. Je také úspory nákladů, které není potřeba brána firewall v každé virtuální síti nasadit samostatně. Úspory nákladů, které by se mělo měřit a přidružit partnerského vztahu náklady na základě vzorců provozu zákazníka.
 
 ### <a name="how-can-i-install-the-azure-firewall"></a>Jak nainstalovat Azure bránu Firewall?
 
@@ -120,7 +122,7 @@ Ano, brána Firewall služby Azure můžete v centrální virtuální síti pro 
 
 ### <a name="can-azure-firewall-forward-and-filter-network-traffic-between-subnets-in-the-same-virtual-network-or-peered-virtual-networks"></a>Brána Firewall služby Azure můžete předat dál a filtrování síťového provozu mezi podsítěmi ve stejné virtuální síti nebo v partnerských virtuálních sítích?
 
-Provoz mezi podsítěmi ve stejné virtuální síti nebo přímo partnerské virtuální síti je směrován přímo i v případě směrování definovaného uživatelem odkazuje na brány Firewall Azure jako výchozí brána. Doporučenou metodou pro interní síť segmentace, je pomocí skupin zabezpečení sítě. K odeslání podsítě pro podsíť provozu do brány firewall v tomto scénáři, musí obsahovat UDR předpona cílové podsítě sítě explicitně v obou podsítích.
+Ano. Ale konfigurace pro přesměrování přenosu dat mezi podsítěmi v rámci stejného UDR VNET vyžaduje další pozornost. Při používání rozsah adres virtuální sítě je dostatečná předponu cíl pro uživatelem definovaná TRASA, to také směruje veškerý provoz z jednoho počítače do jiného počítače ve stejné podsíti prostřednictvím instance Brána Firewall služby Azure. Abyste tomu předešli, obsahoval trasu pro podsíť v uživatelem definovaná TRASA s typem dalšího segmentu směrování z **VNET**. Správa tyto trasy může být náročné a náchylné k chybám. Doporučenou metodou pro interní síť segmentace, je použití skupin zabezpečení sítě, které nevyžadují trasy definované uživatelem.
 
 ### <a name="are-there-any-firewall-resource-group-restrictions"></a>Existují všechny brány firewall omezení skupin prostředků?
 

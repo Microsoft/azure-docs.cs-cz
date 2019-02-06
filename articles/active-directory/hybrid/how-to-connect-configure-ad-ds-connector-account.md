@@ -10,19 +10,19 @@ ms.topic: conceptual
 ms.date: 01/14/2019
 ms.subservice: hybrid
 ms.author: billmath
-ms.openlocfilehash: 9d58751bc9379d6d9a5a492bee35e349c36087c7
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.openlocfilehash: 5ad77b0c88c71860db939feecac5a1aecfc4ca40
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55497879"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55756274"
 ---
 # <a name="azure-ad-connectconfigure-ad-ds-connector-account-permissions"></a>Azure AD Connect: Konfigurace oprávnění účtu AD DS konektoru 
 
 Modul prostředí PowerShell s názvem [ADSyncConfig.psm1](reference-connect-adsyncconfig.md) byla zavedena v systému sestavení 1.1.880.0 (vydané spolu. srpna 2018), který obsahuje sadu rutin, které vám pomohou nakonfigurovat správné oprávnění služby Active Directory pro vaši službu Azure AD Připojení nasazení. 
 
 ## <a name="overview"></a>Přehled 
-Následující rutiny prostředí PowerShell slouží k nastavení oprávnění služby Active Directory účtu AD DS konektor pro každé funkce, můžete předstírat, že chcete povolit ve službě Azure AD Connect. Pokud chcete zabránit případné problémy, připravte si oprávnění služby Active Directory předem pokaždé, když chcete nainstalovat Azure AD Connect s použitím vlastní doménový účet pro připojení k doménové struktuře. Tento modul ADSyncConfig lze také nakonfigurovat oprávnění po nasazení služby Azure AD Connect.
+Následující rutiny prostředí PowerShell slouží k nastavení oprávnění služby Active Directory účtu AD DS konektor pro jednotlivé funkce, kterou Pokud chcete povolit ve službě Azure AD Connect. Pokud chcete zabránit případné problémy, připravte si oprávnění služby Active Directory předem pokaždé, když chcete nainstalovat Azure AD Connect s použitím vlastní doménový účet pro připojení k doménové struktuře. Tento modul ADSyncConfig lze také nakonfigurovat oprávnění po nasazení služby Azure AD Connect.
 
 ![](media/how-to-connect-configure-ad-ds-connector-account/configure1.png)
 

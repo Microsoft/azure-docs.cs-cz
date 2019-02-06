@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 03/15/2017
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 73073d5240f29906ade5f9b92cf81fec2f99a3d4
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
+ms.openlocfilehash: 5a160ef767909814e363dbb692e58c30783aaf6f
+ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55661968"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55746298"
 ---
 # <a name="end-to-end-troubleshooting-using-azure-storage-metrics-and-logging-azcopy-and-message-analyzer"></a>Začátku do konce řešení problémů pomocí metrik Azure Storage a protokolování, AzCopy a analyzátoru zpráv
 [!INCLUDE [storage-selector-portal-e2e-troubleshooting](../../../includes/storage-selector-portal-e2e-troubleshooting.md)]
@@ -98,7 +98,7 @@ Ke konfiguraci účtu pomocí protokolování a metriky pro úložiště [webu A
 
 Začínáme s prostředím PowerShell for Azure, najdete v článku [instalace a konfigurace Azure Powershellu](/powershell/azure/overview).
 
-1. Použití [přidat AzAccount](/powershell/module/az.account/add-azaccount) rutiny pro přidání účtu uživatele Azure do okna prostředí PowerShell:
+1. Použití [přidat AzAccount](/powershell/module/servicemanagement/azure/add-azureaccount) rutiny pro přidání účtu uživatele Azure do okna prostředí PowerShell:
    
     ```powershell
     Add-AzAccount

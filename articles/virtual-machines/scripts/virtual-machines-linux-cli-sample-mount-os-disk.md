@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 02/27/2017
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 5459ba31d30a86efbe40239f9531298c10cf9d98
-ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
+ms.openlocfilehash: 6f2d4c9a7871e0917b33407605abe1389eb4420e
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/19/2019
-ms.locfileid: "54413596"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55753601"
 ---
 # <a name="troubleshoot-a-vms-operating-system-disk"></a>Řešení potíží s diskem s operačním systémem virtuálního počítače
 
@@ -41,11 +41,11 @@ Tento skript k vytvoření skupiny prostředků, virtuálního počítače a vš
 
 | Příkaz | Poznámky |
 |---|---|
-| [az vm show](https://docs.microsoft.com/cli/azure/vm#az_vm_show) | Vrátí seznam virtuálních počítačů. V tomto případě se možnost dotazu používá k vrácení disku s operačním systémem virtuálního počítače. Tato hodnota se pak přidá do proměnné uri. |
-| [az vm delete](https://docs.microsoft.com/cli/azure/vm#az_vm_delete) | Odstraní virtuální počítač. |
+| [az vm show](https://docs.microsoft.com/cli/azure/vm) | Vrátí seznam virtuálních počítačů. V tomto případě se možnost dotazu používá k vrácení disku s operačním systémem virtuálního počítače. Tato hodnota se pak přidá do proměnné uri. |
+| [az vm delete](https://docs.microsoft.com/cli/azure/vm) | Odstraní virtuální počítač. |
 | [az vm create](https://docs.microsoft.com/cli/azure/vm) | Vytvoří virtuální počítač.  |
 | [az vm disk attach](https://docs.microsoft.com/cli/azure/vm/disk) | Připojí disk k virtuálnímu počítači. |
-| [az vm list-ip-addresses](https://docs.microsoft.com/cli/azure/vm#az_vm_list_ip_addresses) | Vrátí IP adresy virtuálního počítače. |
+| [az vm list-ip-addresses](https://docs.microsoft.com/cli/azure/vm) | Vrátí IP adresy virtuálního počítače. |
 
 ## <a name="next-steps"></a>Další postup
 

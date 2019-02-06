@@ -10,12 +10,12 @@ ms.author: shwinne
 author: swinner95
 ms.date: 12/04/2018
 ms.custom: seodec18
-ms.openlocfilehash: d6f49eb0359db6184b5ecd146d7328a64611a9f9
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: e6da35eeb98d4017baae6aa2c8e19fa3f9d5ac1b
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55245561"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55752564"
 ---
 # <a name="get-started-with-azure-machine-learning-for-visual-studio-code"></a>Začínáme s Azure Machine Learning pro Visual Studio Code
 
@@ -23,7 +23,7 @@ V tomto článku se dozvíte víc o instalaci **Azure Machine Learning pro Visua
 
 Pomocí rozšíření Azure Machine Learning v sadě Visual Studio code pomocí služby Azure Machine Learning pro přípravu dat, trénování a test modely strojového učení na cílových výpočetních prostředí místní a vzdálené, nasadit tyto modely a sledovat, vlastní metriky a experimentů.
 
-## <a name="prerequisite"></a>Požadavek
+## <a name="prerequisites"></a>Požadavky
 
 
 + Pokud nemáte předplatné Azure, vytvořte si bezplatný účet, před zahájením. Zkuste [bezplatné nebo placené verzi aplikace služby Azure Machine Learning](http://aka.ms/AMLFree) ještě dnes.
@@ -60,19 +60,17 @@ Pro práci s Azure Machine Learning, musíme proměnit Python IDE VS Code. Prác
 > [!Tip] 
 > Podívejte se [IntelliCode rozšíření pro VS Code (preview)](https://go.microsoft.com/fwlink/?linkid=2006060). IntelliCode poskytuje sadu funkcí s asistencí AI pro IntelliSense v jazyce Python, jako je například odvození nejrelevantnější auto dokončování podle aktuální kontext kódu.
 
-## <a name="install-the-sdk"></a>Instalace sady SDK
+## <a name="azure-ml-sdk-installation"></a>Instalace sady SDK Azure ML
 
 1. Ujistěte se, že je nainstalovaná a rozpoznaná službou VS Code Python 3.5 nebo vyšší. Pokud vám jeho instalaci, pak znovu spusťte VS Code a vyberte interpret Pythonu pomocí pokynů na adrese https://code.visualstudio.com/docs/python/python-tutorial.
-
-1. V nástroji VS Code, otevřete paletu příkazů **Ctrl + Shift + P**.
-
-1. Typ 'nainstalujte sadu Azure ML SDK"najít pip nainstalovat příkaz pro sadu SDK. Místní privátní prostředí Python se vytvoří, která má požadavky Visual Studio Code pro práci s Azure Machine Learning.
-
-   ![nainstalovat sadu SDK Azure Machine Learning pro Python](./media/vscode-tools-for-ai/install-sdk.png)
 
 1. V okně integrovaného terminálu zadejte určený interpret Pythonu nebo mohli dostat **Enter** určený interpret Pythonu vaše výchozí.
 
    ![Vyberte interpret](./media/vscode-tools-for-ai/python.png)
+
+1. V pravém dolním rohu okna se zobrazí oznámení, označující, že sadě SDK Azure ML se automaticky instaluje.    Místní privátní prostředí Python se vytvoří, která má požadavky Visual Studio Code pro práci s Azure Machine Learning.
+
+   ![nainstalovat sadu SDK Azure Machine Learning pro Python](./media/vscode-tools-for-ai/runtimedependencies.png)
 
 ## <a name="get-started-with-azure-machine-learning"></a>Začínáme se službou Azure Machine Learning
 

@@ -1,6 +1,6 @@
 ---
-title: Import kolekce Postman s operacemi Azure streamování na vyžádání
-description: Tento článek obsahuje definici Postman kolekce pro Azure Media Services REST volání.
+title: Import kolekce Postman se operace On-Demand Streaming Azure
+description: Tento článek poskytuje definici kolekce Postman pro volání Azure Media Services REST.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -13,18 +13,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/04/2017
 ms.author: juliako
-ms.openlocfilehash: 311bc6a67e2b63f6f514da5abacb00e5c3cb434f
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 34eb7c48c8ebc36f9172f97dda845542b3840a19
+ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33790689"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55747675"
 ---
-# <a name="import-a-postman-collection-with-on-demand-streaming-operations"></a>Import kolekce Postman s operacemi streamování na vyžádání
+# <a name="import-a-postman-collection-with-on-demand-streaming-operations"></a>Import kolekce Postman se operace On-Demand Streaming
 
-Tento článek obsahuje definice **Postman** kolekce, která obsahuje seskupené požadavky HTTP, které volání rozhraní API REST Azure Media Services. Informace o tom, jak nakonfigurovat **Postman** tak může sloužit k volání rozhraní API REST služby média naleznete v tématu [Postman nakonfigurovat pro Media Services REST API volá](media-rest-apis-with-postman.md) kurzu.
+Tento článek obsahuje definici **Postman** kolekce, která obsahuje seskupené požadavky HTTP, které volání REST API služby Azure Media Services. Informace o tom, jak nakonfigurovat **Postman** tak je možné volat rozhraní API služby Media Services REST, přečtěte si téma [volá konfigurace nástroje Postman pro REST API služby Media Services](media-rest-apis-with-postman.md) kurzu.
 
-```
+```json
 {
     "info": {
         "name": "Azure Media Services Operations",
@@ -4264,7 +4264,7 @@ Tento článek obsahuje definice **Postman** kolekce, která obsahuje seskupené
                                 "MediaProcessors"
                             ]
                         },
-                        "description": "List MediaProcesors\n\nFull REST API documentation\nhttps://msdn.microsoft.com/library/azure/hh973617.aspx"
+                        "description": "List MediaProcessors\n\nFull REST API documentation\nhttps://msdn.microsoft.com/library/azure/hh973617.aspx"
                     },
                     "response": []
                 }

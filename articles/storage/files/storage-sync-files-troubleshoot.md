@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 01/25/2019
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: c1ac1a0fccc2ac9a428a04a1b15030c489968a3f
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
+ms.openlocfilehash: 376ebcbc17cc9f5c797c2985fe3c0784f5036600
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55563690"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55752088"
 ---
 # <a name="troubleshoot-azure-file-sync"></a>Řešení problémů se Synchronizací souborů Azure
 Azure File Sync umožňuje centralizovat sdílené složky organizace ve službě soubory Azure, při zachování flexibility, výkonu a kompatibility s místními souborového serveru. Azure File Sync transformuje serveru systému Windows na rychlou mezipaměť sdílené složky Azure. Můžete použít jakýkoli protokol dostupný ve Windows serveru pro přístup k datům místně, včetně SMB, NFS a FTPS. Můžete mít libovolný počet mezipamětí po celém světě potřebujete.
@@ -538,7 +538,7 @@ K této chybě dochází, protože došlo ke změnám na sdílené složky Azure
 | **Text chyby** | ECS_E_TOO_MANY_PER_ITEM_ERRORS |
 | **Požadována náprava** | Ano |
 
-V případech, kdy existuje mnoho za chyby synchronizace souborů, může relace synchronizace začnou být neúspěšné. Řešení potíží s tímto stavem, naleznete v tématu [řešení potíží s za chyby synchronizace souborů či složek](#troubleshooting-per-file-directory-sync-errors).
+V případech, kdy existuje mnoho za chyby synchronizace souborů, může relace synchronizace začnou být neúspěšné. Řešení potíží s tímto stavem, naleznete v tématu [řešení potíží s za chyby synchronizace souborů či složek]().
 
 > [!NOTE]
 > Azure File Sync vytvoří dočasné snímek služby VSS jednou za den na serveru, aby synchronizovat soubory, které mají otevřených popisovačů.

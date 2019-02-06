@@ -13,12 +13,12 @@ ms.author: vanto
 ms.reviewer: ''
 manager: craigg
 ms.date: 01/03/2019
-ms.openlocfilehash: e988a3c86302b875f8393264279e4a65c45ba1eb
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: fa37a83799ec50c7a8a87a0ac8a3232035a49234
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54041233"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55755658"
 ---
 # <a name="always-encrypted-protect-sensitive-data-and-store-encryption-keys-in-azure-key-vault"></a>Funkce Always Encrypted: Ochrana citlivých dat a ukládání šifrovacích klíčů ve službě Azure Key Vault
 
@@ -81,7 +81,7 @@ Spuštěním následujícího skriptu můžete rychle vytvořit trezor klíčů.
 ## <a name="create-a-blank-sql-database"></a>Vytvoření prázdné databáze SQL
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
 2. Přejděte na **vytvořit prostředek** > **databází** > **SQL Database**.
-3. Vytvoření **prázdné** databázi s názvem **Clinic** na nový nebo existující server. Podrobné pokyny o tom, jak vytvořit databázi na webu Azure Portal najdete v části [první databáze Azure SQL database](sql-database-get-started-portal.md).
+3. Vytvoření **prázdné** databázi s názvem **Clinic** na nový nebo existující server. Podrobné pokyny o tom, jak vytvořit databázi na webu Azure Portal najdete v části [první databáze Azure SQL database](sql-database-single-database-get-started.md).
    
     ![Vytvoření prázdné databáze](./media/sql-database-always-encrypted-azure-key-vault/create-database.png)
 

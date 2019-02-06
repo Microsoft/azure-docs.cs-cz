@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/08/2018
+ms.date: 01/30/2019
 ms.author: banders
-ms.openlocfilehash: 4133d78ccff1fa4eb712d8928cefa604ca2f52ca
-ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
+ms.openlocfilehash: 14b6125bd1467efcd6120bc367a7042ad29552bb
+ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/25/2019
-ms.locfileid: "54902053"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55744496"
 ---
 # <a name="what-are-azure-reservations"></a>Co jsou rezervace Azure?
 
@@ -38,7 +38,7 @@ Pokud máte virtuální počítače, služby Azure Cosmos DB nebo databází SQL
 
 - Rezervovaná Instance virtuálního počítače: Rezervace pokrývá jenom náklady na výpočetní výkon virtuálního počítače. Nezahrnuje další poplatky za software, sítě nebo úložiště.
 - Databáze SQL vyhrazený vCore: Výpočetní náklady jsou součástí rezervaci. Licence se fakturuje samostatně.
-- Azure Cosmos DB rezervované kapacity: Rezervace pokrývá zajištěné propustnosti pro vaše prostředky, nezahrnuje poplatky za úložiště a sítě. 
+- Azure Cosmos DB rezervované kapacity: Rezervace pokrývá zajištěné propustnosti pro vaše prostředky, nezahrnuje poplatky za úložiště a sítě.
 
 Pro virtuální počítače Windows a SQL Database, může zahrnovat náklady na licencování s [zvýhodněné hybridní využití Azure](https://azure.microsoft.com/pricing/hybrid-benefit/).
 
@@ -46,11 +46,16 @@ Pro virtuální počítače Windows a SQL Database, může zahrnovat náklady na
 
 Zákazníci s těmito typy předplatných Azure, můžete si koupit rezervaci:
 
-- Typ nabídky předplatného se smlouvou Enterprise (MS-AZR-0017P).
-- Typ nabídky předplatného [s průběžnými platbami](https://azure.microsoft.com/offers/ms-azr-0003p/) (MS-AZR-003P). Na předplatné, které chcete koupit rezervaci, musíte mít roli "Vlastník".
+- Podnikové smlouvy typu nabídky předplatného (MS-AZR - 0017P nebo MS-AZR - 0148P).
+- Průběžné platby typu nabídky předplatného (MS-AZR - 003P nebo MS-AZR - 0023P).
 - Partnery cloud Solution Provider (CSP) můžete pomocí webu Azure portal nebo [partnerského centra](https://docs.microsoft.com/partner-center/azure-reservations) k nákupu rezervace Azure.
 
 Sleva za rezervaci se vztahuje pouze na prostředky spojené s typy předplatného Enterprise, s průběžnými platbami nebo poskytovatel CSP.
+
+ Koupit plán:
+
+- Musí být v roli vlastník pro alespoň jeden Enterprise nebo předplatné s průběžnými platbami.
+- Předplatné Enterprise **přidat Reserved Instances** musí být povolená v [portál EA](https://ea.azure.com). Nebo, pokud je toto nastavení zakázané, musíte být správce EA na předplatné.
 
 ## <a name="how-is-a-reservation-billed"></a>Jak se účtuje rezervace?
 
@@ -60,7 +65,7 @@ Rezervace jsou zpoplatněné nad rámec platby vázané na předplatné. Pokud m
 
 Sleva za rezervaci se vztahuje na využití prostředků, která odpovídá atributy, které jste vybrali při nákupu rezervace. Atributy zahrnout rozsahu, kde spustit odpovídající virtuální počítače, databáze SQL, Azure Cosmos DB nebo jiné prostředky. Například pokud chcete sleva za rezervaci pro čtyři virtuální počítače Standard D2 v oblasti západní USA, vyberte předplatné, ve kterém běží virtuální počítače. Pokud jsou virtuální počítače spuštěné v různých předplatných v rámci vaší registrace účtu, vyberte obor jako sdílené. Sdílený obor umožňuje sleva za rezervaci použít napříč předplatnými. Rozsah můžete změnit po nákupu rezervace. Další informace najdete v tématu [spravovat Azure rezervace](billing-manage-reserved-vm-instance.md).
 
-Sleva za rezervaci se vztahuje pouze na prostředky spojené s typy předplatného Enterprise, s průběžnými platbami nebo poskytovatel CSP. Prostředky, které běží v rámci předplatného s jinými typy nabídky nepřijímají sleva za rezervaci. Pro podnikové registrace přihlášení k odběru enterprise pro vývoj/testování nejsou nárok na výhody rezervace.
+Sleva za rezervaci se vztahuje pouze na prostředky spojené s typy předplatného Enterprise, s průběžnými platbami nebo poskytovatel CSP. Prostředky, které běží v rámci předplatného s jinými typy nabídky nepřijímají sleva za rezervaci.
 
 Abyste lépe pochopili, jak ovlivňuje rezervace fakturace, najdete v následujících tématech:
 

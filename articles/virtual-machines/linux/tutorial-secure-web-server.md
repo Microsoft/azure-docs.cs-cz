@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 04/30/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: f751f225d2dc6c81b623542cdb3c1f7f92e05862
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
+ms.openlocfilehash: 79b694b877e7e26c5b9c71fb5cfbde3703ef3cb6
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55656936"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55750915"
 ---
 # <a name="tutorial-secure-a-web-server-on-a-linux-virtual-machine-in-azure-with-ssl-certificates-stored-in-key-vault"></a>Kurz: Zabezpečení webového serveru na virtuální počítač s Linuxem v Azure s využitím certifikátů SSL, které jsou uložené ve službě Key Vault
 K zabezpečení webových serverů můžete použít certifikáty SSL (Secure Sockets Layer), které šifrují webový provoz. Tyto certifikáty SSL můžete ukládat do služby Azure Key Vault a umožnit zabezpečené nasazování certifikátů do virtuálních počítačů s Linuxem v Azure. V tomto kurzu se naučíte:
@@ -44,13 +44,13 @@ Místo použití vlastní image virtuálního počítače, která zahrnuje integ
 
 
 ## <a name="create-an-azure-key-vault"></a>Vytvoření služby Azure Key Vault
-Než vytvoříte službu Key Vault a certifikáty, vytvořte skupinu prostředků pomocí příkazu [az group create](/cli/azure/group#az_group_create). Následující příklad vytvoří skupinu prostředků *myResourceGroupSecureWeb* v umístění *eastus*:
+Než vytvoříte službu Key Vault a certifikáty, vytvořte skupinu prostředků pomocí příkazu [az group create](/cli/azure/group). Následující příklad vytvoří skupinu prostředků *myResourceGroupSecureWeb* v umístění *eastus*:
 
 ```azurecli-interactive 
 az group create --name myResourceGroupSecureWeb --location eastus
 ```
 
-Dále vytvořte službu Key Vault pomocí příkazu [az keyvault create](/cli/azure/keyvault#az_keyvault_create) a povolte její použití při nasazování virtuálního počítače. Každá služba Key Vault vyžaduje jedinečný název, který by měl být malými písmeny. Nahraďte *<mykeyvault>* v následujícím příkladu vlastním jedinečným názvem služby Key Vault:
+Dále vytvořte službu Key Vault pomocí příkazu [az keyvault create](/cli/azure/keyvault) a povolte její použití při nasazování virtuálního počítače. Každá služba Key Vault vyžaduje jedinečný název, který by měl být malými písmeny. Nahraďte *<mykeyvault>* v následujícím příkladu vlastním jedinečným názvem služby Key Vault:
 
 ```azurecli-interactive 
 keyvault_name=<mykeyvault>
@@ -61,7 +61,7 @@ az keyvault create \
 ```
 
 ## <a name="generate-a-certificate-and-store-in-key-vault"></a>Vygenerování certifikátu a jeho uložení do služby Key Vault
-V případě použití v produkčním prostředí byste měli importovat platný certifikát podepsaný důvěryhodným poskytovatelem pomocí příkazu [az keyvault certificate import](/cli/azure/keyvault/certificate#az_keyvault_certificate_import). Pro účely tohoto kurzu následující příklad ukazuje, jak můžete pomocí příkazu [az keyvault certificate create](/cli/azure/keyvault/certificate#az_keyvault_certificate_create) vygenerovat certifikát podepsaný svým držitelem, který využívá výchozí zásady certifikátu:
+V případě použití v produkčním prostředí byste měli importovat platný certifikát podepsaný důvěryhodným poskytovatelem pomocí příkazu [az keyvault certificate import](/cli/azure/keyvault/certificate). Pro účely tohoto kurzu následující příklad ukazuje, jak můžete pomocí příkazu [az keyvault certificate create](/cli/azure/keyvault/certificate) vygenerovat certifikát podepsaný svým držitelem, který využívá výchozí zásady certifikátu:
 
 ```azurecli-interactive 
 az keyvault certificate create \
@@ -111,7 +111,7 @@ runcmd:
 ```
 
 ### <a name="create-a-secure-vm"></a>Vytvoření zabezpečeného virtuálního počítače
-Nyní vytvořte virtuální počítač pomocí příkazu [az vm create](/cli/azure/vm#az_vm_create). Data certifikátu ze služby Key Vault se vloží pomocí parametru `--secrets`. Konfiguraci cloud-init předáte pomocí parametru `--custom-data`:
+Nyní vytvořte virtuální počítač pomocí příkazu [az vm create](/cli/azure/vm). Data certifikátu ze služby Key Vault se vloží pomocí parametru `--secrets`. Konfiguraci cloud-init předáte pomocí parametru `--custom-data`:
 
 ```azurecli-interactive 
 az vm create \
@@ -126,7 +126,7 @@ az vm create \
 
 Vytvoření virtuálního počítače, instalace balíčků a spuštění aplikace trvá několik minut. Po vytvoření virtuálního počítače si poznamenejte hodnotu `publicIpAddress` zobrazenou v Azure CLI. Tato adresa slouží k přístupu k vašemu webu ve webovém prohlížeči.
 
-Pokud chcete pro přístup k virtuálnímu počítači povolit zabezpečený webový provoz, otevřete port 443 z internetu pomocí příkazu [az vm open-port](/cli/azure/vm#az_vm_open_port):
+Pokud chcete pro přístup k virtuálnímu počítači povolit zabezpečený webový provoz, otevřete port 443 z internetu pomocí příkazu [az vm open-port](/cli/azure/vm):
 
 ```azurecli-interactive 
 az vm open-port \

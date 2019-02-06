@@ -17,12 +17,12 @@ ms.workload: infrastructure-services
 ms.date: 02/03/2019
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 4d7caec3fc1b8bf74098a7b0a211ec2ada8280a3
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
+ms.openlocfilehash: 0ce4391e8fb2047320c4d84ac18ce0b1f8c8eaad
+ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 02/05/2019
-ms.locfileid: "55732902"
+ms.locfileid: "55745014"
 ---
 [1928533]:https://launchpad.support.sap.com/#/notes/1928533
 [1999351]:https://launchpad.support.sap.com/#/notes/1999351
@@ -216,7 +216,7 @@ Tento článek se týká jak přejít od jedné instalace ASCS/SCS do konfigurac
 > Konfigurace zavedené v této dokumentaci se zatím nepodporuje má být použit pro [zóny dostupnosti Azure](https://docs.microsoft.com/azure/availability-zones/az-overview)
 > 
 
-Další informace o omezení nástroje pro vyrovnávání zatížení najdete v části "privátní front-endovou IP adresy za nástroj pro vyrovnávání zatížení" v [síťová omezení: Azure Resource Manageru][networking-limits-azure-resource-manager]. Také zvážit použití [Azure Standard načíst SKU nástroje pro vyrovnávání](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-availability-zones) místo základní SKU nástroje pro vyrovnávání zatížení Azure.
+Další informace o omezení nástroje pro vyrovnávání zatížení najdete v části "privátní front-endovou IP adresy za nástroj pro vyrovnávání zatížení" v [síťová omezení: Azure Resource Manageru][networking-limits-azure-resource-manager]. Také zvážit použití [Azure Standard načíst SKU nástroje pro vyrovnávání](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-availability-zones) místo základní SKU Azure nástroj pro vyrovnávání zatížení.
 
 ## <a name="prerequisites"></a>Požadavky
 

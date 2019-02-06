@@ -12,12 +12,12 @@ ms.author: josack
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 02/04/2019
-ms.openlocfilehash: 79a7aad8cd747c3fdadcd0f7eec12d861f31fcc0
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
+ms.openlocfilehash: 2c0d32c5e95504ac99c739af89795ac22a768c63
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55730505"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55751935"
 ---
 # <a name="new-dba-in-the-cloud--managing-your-database-in-azure-sql-database"></a>Nové DBA v cloudu – Správa vaší databáze ve službě Azure SQL Database
 
@@ -108,7 +108,7 @@ Existuje několik postupů vašim službám, které můžete použít k dosažen
 
 Brána firewall brání přístupu ke svému serveru z externí entitu tím, že pouze konkrétní entity přístup k vašemu serveru služby SQL Database. Ve výchozím nastavení všechna připojení a databázím uvnitř serveru SQL Database jsou zakázané, s výjimkou připojení nárůst od ostatních služeb Azure. S pravidlem brány firewall můžete otevřít přístup k vašemu serveru jenom pro entity (například počítač Vývojář), které schválíte, tím, že IP adresa tohoto počítače přes bránu firewall. Také umožňuje určit rozsah IP adres, které chcete povolit přístup k serveru SQL Database. Například vývojář počítače IP adresy ve vaší organizaci je možné přidat najednou pomocí celé řady na stránce nastavení brány Firewall.
 
-Můžete vytvořit pravidla brány firewall na úrovni serveru nebo na úrovni databáze. Pravidla brány firewall na úrovni serveru můžete vytvořit buď pomocí Azure portal nebo pomocí aplikace SSMS. Získání informací o tom, jak nastavit pravidlo brány firewall na úrovni databáze a serveru, naleznete v tématu: [Vytvoření pravidla brány firewall ve službě SQL Database](sql-database-security-tutorial.md#create-firewall-rules).
+Můžete vytvořit pravidla brány firewall na úrovni serveru nebo na úrovni databáze. Pravidla brány firewall na úrovni IP serveru můžete vytvořit buď pomocí Azure portal nebo pomocí aplikace SSMS. Získání informací o tom, jak nastavit pravidlo brány firewall na úrovni serveru a databáze, najdete tady: [Vytvoření pravidla firewallu protokolu IP ve službě SQL Database](sql-database-security-tutorial.md#create-firewall-rules).
 
 #### <a name="service-endpoints"></a>Koncové body služby
 

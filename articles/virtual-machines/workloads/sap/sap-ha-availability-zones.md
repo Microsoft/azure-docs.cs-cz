@@ -3,7 +3,7 @@ title: Konfigurace úlohy SAP se zónami dostupnosti Azure | Dokumentace Microso
 description: Architektura pro vysokou dostupnost a scénáře pro SAP NetWeaver použití zón dostupnosti Azure
 services: virtual-machines-windows,virtual-network,storage
 documentationcenter: saponazure
-author: juergent
+author: msjuergent
 manager: patfilot
 editor: ''
 tags: azure-resource-manager
@@ -15,14 +15,14 @@ ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 02/03/2019
-ms.author: msjuergent
+ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 56c1ffd314a9a8e9440832b9fd92a51cdaf9f228
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
+ms.openlocfilehash: 409a304296d3fdff897a203177e2c150162755c6
+ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 02/05/2019
-ms.locfileid: "55735652"
+ms.locfileid: "55746213"
 ---
 # <a name="sap-workload-configurations-with-azure-availability-zones"></a>Konfigurace úlohy SAP se zónami dostupnosti Azure
 
@@ -74,7 +74,7 @@ Při rozhodování o tom, jak můžete využít zóny dostupnosti, budete muset 
 ### <a name="network-latency-between-zones-and-within-zone"></a>Latence sítě mezi zónami a v rámci zóny
 Chcete-li zjistit, co je latence mezi různými zónami, budete muset:
 
-- Nasazení skladovou Položku virtuálního počítače, které chcete použít pro vaši instanci databázového systému ve všech třech zónách. Ujistěte se, že, který [akcelerovaných síťových služeb Azure](https://azure.microsoft.com/blog/maximize-your-vm-s-performance-with-accelerated-networking-now-generally-available-for-both-windows-and-linux/) je povolená, když provádí toto měření
+- Nasazení skladovou Položku virtuálního počítače, které chcete použít pro vaši instanci databázového systému ve všech třech zónách. Ujistěte se, že [akcelerovaných síťových služeb Azure](https://azure.microsoft.com/blog/maximize-your-vm-s-performance-with-accelerated-networking-now-generally-available-for-both-windows-and-linux/) je povolená, když provádí toto měření
 - Jak to můžete znát dvě zóny s nejnižší síťovou latencí, nasaďte další tři virtuální počítače skladovou Položku virtuálního počítače, které chcete použít jako aplikační vrstvu virtuálních počítačů ve třech zónách dostupnosti. Měření latence sítě proti dvěma "DBMS virtuálními počítači' ve dvou různých zónách 'DBMS' podle vašeho výběru. 
 - Jakožto nástroj k měření použití **niping**. Nástroje ze SAP, což funguje, jak je popsáno v poznámkách k SAP support [#500235](https://launchpad.support.sap.com/#/notes/500235) a [#1100926](https://launchpad.support.sap.com/#/notes/1100926/E). Zaměřte se na příkazy SAP poznamenat, měření latence. Pomocí **ping** není doporučenému nástroji od **ping** nefunguje prostřednictvím Azure akcelerovaných síťových cest kódu.
 

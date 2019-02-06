@@ -10,12 +10,12 @@ ms.service: search
 ms.devlang: rest-api
 ms.topic: conceptual
 ms.custom: seodec2018
-ms.openlocfilehash: 66712b97807135b1e9e8321e441ac21368f86fc5
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.openlocfilehash: 7df785d1493ad2df698ff197d72824ceb15d39ad
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53633023"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55752888"
 ---
 # <a name="connect-to-and-index-azure-sql-database-content-using-azure-search-indexers"></a>Připojte se k a indexování Azure SQL Database obsahu pomocí indexerů Azure Search
 
@@ -210,6 +210,9 @@ Pokud chcete tuto zásadu použít, vytvořit nebo aktualizovat zdroj dat takto:
 
 Při použití SQL integrované řešení change tracking zásad, nezadávejte zásadu samostatná data pro odstranění duplicit – má integrovanou podporu pro identifikaci tuto zásadu odstranit řádky. Ale pro odstranění, který bude zjištěná "automagically", klíč dokumentu v indexu vyhledávání musí být stejná jako primární klíč v tabulce SQL. 
 
+> [!NOTE]  
+> Při použití [TRUNCATE TABLE](https://docs.microsoft.com/sql/t-sql/statements/truncate-table-transact-sql) odebrat velký počet řádků z tabulky SQL, musí být indexeru [resetování](https://docs.microsoft.com/rest/api/searchservice/reset-indexer) resetovat stav ke sbírání odstranění řádku sledování změn.
+
 <a name="HighWaterMarkPolicy"></a>
 
 ### <a name="high-water-mark-change-detection-policy"></a>Zásady detekce změn vysoká označuje jako horní mez
@@ -285,9 +288,9 @@ Při použití obnovitelného odstranění techniku, můžete určit, zásadu ob
 ## <a name="mapping-between-sql-and-azure-search-data-types"></a>Mapování mezi datovými typy SQL a Azure Search
 | Datový typ SQL. | Povolené typy pole cílový index | Poznámky |
 | --- | --- | --- |
-| Bit |Typem Edm.Boolean Edm.String | |
+| Bit |Edm.Boolean, Edm.String | |
 | int, smallint, tinyint |Edm.Int32, Edm.Int64, Edm.String | |
-| bigint |Edm.Int64 Edm.String | |
+| bigint |Edm.Int64, Edm.String | |
 | skutečné, float |Edm.Double, Edm.String | |
 | Smallmoney peníze desítková číslice |Edm.String |Služba Azure Search nepodporuje převod desítkové typy do Edm.Double, protože tím byste ztratit přesnost |
 | Char, nchar, varchar, nvarchar |Edm.String<br/>Collection(Edm.String) |K vyplnění pole Collection(Edm.String), pokud řetězec představuje pole JSON řetězců, které je možné řetězec SQL: `["red", "white", "blue"]` |
@@ -315,27 +318,27 @@ Tato nastavení se používají v `parameters.configuration` objektu v definice 
 
 ## <a name="faq"></a>Nejčastější dotazy
 
-**DOTAZ: Můžete použít indexer pro Azure SQL s SQL Database běžící na virtuálních počítačích IaaS v Azure?**
+**Otázka: Můžete použít indexer pro Azure SQL s SQL Database běžící na virtuálních počítačích IaaS v Azure?**
 
 Ano. Ale budete muset povolit vaší vyhledávací služby pro připojení k vaší databázi. Další informace najdete v tématu [konfigurace připojení indexeru Azure Search k systému SQL Server na Virtuálním počítači Azure](search-howto-connecting-azure-sql-iaas-to-azure-search-using-indexers.md).
 
-**DOTAZ: Můžete použít indexer pro Azure SQL s databází SQL, které jsou spuštěné místně?**
+**Otázka: Můžete použít indexer pro Azure SQL s databází SQL, které jsou spuštěné místně?**
 
 Ne přímo. Společnost Microsoft nedoporučuje ani nepodporuje přímé připojení, jako to uděláte tak by vyžadovalo otevření databází pro provoz sítě Internet. Zákazníci mají proběhlo úspěšně, v tomto scénáři použití most technologií, jako je Azure Data Factory. Další informace najdete v tématu [vložení dat do indexu Azure Search pomocí Azure Data Factory](https://docs.microsoft.com/azure/data-factory/data-factory-azure-search-connector).
 
-**DOTAZ: Můžete použít indexer pro Azure SQL s databázemi než SQL Server běžící na IaaS v Azure?**
+**Otázka: Můžete použít indexer pro Azure SQL s databázemi než SQL Server běžící na IaaS v Azure?**
 
 Ne. Nepodporujeme tento scénář, protože nebyly testovány indexeru se žádné databáze než SQL Server.  
 
-**DOTAZ: Můžete vytvořit několik indexerů spouštění podle plánu?**
+**Otázka: Můžete vytvořit několik indexerů spouštění podle plánu?**
 
 Ano. Nicméně pouze indexerů může běžet na jednom uzlu najednou. Pokud budete potřebovat několik indexerů, které jsou spuštěny souběžně, zvažte možnost škálování služby vyhledávání pro více než jedna jednotka služby search.
 
-**DOTAZ: Spuštění indexeru dotazu úlohy ovlivní?**
+**Otázka: Spuštění indexeru dotazu úlohy ovlivní?**
 
 Ano. Spuštění indexeru na jednom z uzlů ve vaší vyhledávací služby a prostředky daného uzlu jsou sdílené mezi indexování a obsluhující provoz dotazu a další požadavky rozhraní API. Pokud spuštění úlohy náročné na indexování a dotazování a dojde k vysoké rychlosti 503 chyby nebo zvýšení doby odezvy, zvažte [vertikálně kapacitu vaší služby search](search-capacity-planning.md).
 
-**DOTAZ: Můžete použít v sekundární replice [clusteru převzetí služeb při selhání](https://docs.microsoft.com/azure/sql-database/sql-database-geo-replication-overview) jako zdroj dat?**
+**Otázka: Můžete použít v sekundární replice [clusteru převzetí služeb při selhání](https://docs.microsoft.com/azure/sql-database/sql-database-geo-replication-overview) jako zdroj dat?**
 
 To záleží na okolnostech. Pro úplné indexování tabulky nebo zobrazení, můžete použít na sekundární repliku. 
 
@@ -349,7 +352,7 @@ Pokud se pokusíte použít rowversion repliky jen pro čtení, zobrazí se nás
 
     "Using a rowversion column for change tracking is not supported on secondary (read-only) availability replicas. Please update the datasource and specify a connection to the primary availability replica.Current database 'Updateability' property is 'READ_ONLY'".
 
-**DOTAZ: Můžete použít alternativní, sloupci bez rowversion pro vysoce mezí change tracking**
+**Otázka: Můžete použít alternativní, sloupci bez rowversion pro vysoce mezí change tracking**
 
 Není doporučeno. Pouze **rowversion** umožňuje synchronizaci dat spolehlivé. Nicméně, v závislosti na vaší aplikace logiky může být bezpečné pokud:
 

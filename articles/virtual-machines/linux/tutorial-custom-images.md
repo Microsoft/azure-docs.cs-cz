@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 12/13/2017
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 9c6729abefc62aeae232fff5ea48619377630635
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 1c2be140e4d7156a1e23e1064436dda959c9cd14
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55197615"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55749997"
 ---
 # <a name="tutorial-create-a-custom-image-of-an-azure-vm-with-the-azure-cli"></a>Kurz: Vytvoření vlastní image virtuálního počítače Azure pomocí Azure CLI
 
@@ -79,7 +79,7 @@ Abyste mohli vytvořit image, virtuální počítač musí být uvolněný. Uvol
 az vm deallocate --resource-group myResourceGroup --name myVM
 ```
 
-Nakonec pomocí příkazu [az vm generalize](/cli//azure/vm#generalize) nastavte stav virtuálního počítače na generalizovaný, aby platforma Azure věděla, že byl virtuální počítač generalizovaný. Image můžete vytvořit pouze z generalizovaného počítače.
+Nakonec pomocí příkazu [az vm generalize](/cli//azure/vm) nastavte stav virtuálního počítače na generalizovaný, aby platforma Azure věděla, že byl virtuální počítač generalizovaný. Image můžete vytvořit pouze z generalizovaného počítače.
    
 ```azurecli-interactive 
 az vm generalize --resource-group myResourceGroup --name myVM
@@ -87,7 +87,7 @@ az vm generalize --resource-group myResourceGroup --name myVM
 
 ### <a name="create-the-image"></a>Vytvoření image
 
-Teď můžete vytvořit image virtuálního počítače pomocí příkazu [az image create](/cli//azure/image#create). Následující příklad vytvoří image *myImage* z virtuálního počítače *myVM*.
+Teď můžete vytvořit image virtuálního počítače pomocí příkazu [az image create](/cli//azure/image). Následující příklad vytvoří image *myImage* z virtuálního počítače *myVM*.
    
 ```azurecli-interactive 
 az image create \
@@ -98,7 +98,7 @@ az image create \
  
 ## <a name="create-vms-from-the-image"></a>Vytvoření virtuálních počítačů z image
 
-Když teď máte image, můžete vytvořit jeden nebo více nových virtuálních počítačů pomocí příkazu [az vm create](/cli/azure/vm#az_vm_create). Následující příklad vytvoří virtuální počítač *myVMfromImage* z image *myImage*.
+Když teď máte image, můžete vytvořit jeden nebo více nových virtuálních počítačů pomocí příkazu [az vm create](/cli/azure/vm). Následující příklad vytvoří virtuální počítač *myVMfromImage* z image *myImage*.
 
 ```azurecli-interactive 
 az vm create \

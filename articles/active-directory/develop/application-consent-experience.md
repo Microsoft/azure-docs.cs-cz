@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 09/11/2018
 ms.author: celested
 ms.reviewer: zawad
-ms.openlocfilehash: f5ec31cf0f88b9bfdff2e4fa877d56a2689054ae
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.openlocfilehash: 233b77de4a034b5e87aeea2152a3fb6a71aeb8e6
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55097936"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55755374"
 ---
 # <a name="understanding-azure-ad-application-consent-experiences"></a>Principy souhlasu s aplikací Azure AD narazí
 
@@ -83,5 +83,5 @@ Tady jsou souhlasu prostředí, které může uživatel zobrazit v běžných sc
     1. Uživatelé bez oprávnění správce se zobrazí na stejné obrazovce jako 2. ii uvedené výše.
 
 ## <a name="next-steps"></a>Další postup
-- Získejte podrobný přehled o [způsob implementace rozhraní Azure AD pro udělování souhlasu souhlasu](https://docs.microsoft.com/azure/active-directory/develop/active-directory-integrating-applications#overview-of-the-consent-framework).
+- Získejte podrobný přehled o [způsob implementace rozhraní Azure AD pro udělování souhlasu souhlasu](https://docs.microsoft.com/azure/active-directory/develop/active-directory-integrating-applications).
 - Větší hloubky, přečtěte si [použití rozhraní pro udělování souhlasu víceklientské aplikaci](https://docs.microsoft.com/azure/active-directory/develop/active-directory-devhowto-multi-tenant-overview) k implementaci "user" a "admin" souhlas, podpora více pokročilé modely vícevrstvých aplikací.

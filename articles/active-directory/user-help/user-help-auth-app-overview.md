@@ -11,15 +11,18 @@ ms.workload: identity
 ms.topic: overview
 ms.date: 01/24/2019
 ms.author: lizross
-ms.openlocfilehash: 2379f1ff4fb4385015cc6077cb923cab998d1d11
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: fa37ed942158ecc0f58aa5884ff93ce27bc42745
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55175209"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55751068"
 ---
 # <a name="what-is-the-microsoft-authenticator-app"></a>Co je aplikace Microsoft Authenticator?
 Aplikace Microsoft Authenticator přispívá k přihlášení k účtům používáte dvojúrovňového ověřování. Dvoufaktorové ověření vám umožní přístup k účtům bezpečněji, zejména při zobrazování citlivé informace. Protože hesla mohou být vymazány, někdo je ukradne nebo ohrožení zabezpečení, dvojúrovňového ověřování je krok dodatečné zabezpečení, která pomáhá chránit váš účet kvůli tomu je těžší jinými lidmi, kteří možnost proniknout.
+
+>[!Important]
+>Aplikace Microsoft Authenticator funguje s každou aplikaci, která používá dvojúrovňového ověřování a jakýkoli účet, který podporuje podle času jednorázového hesla (TOTP) normami.
 
 Můžete použít aplikaci Microsoft Authenticator několika různými způsoby, včetně:
 
@@ -37,13 +40,14 @@ Můžete použít aplikaci Microsoft Authenticator několika různými způsoby,
 |Multi-Factor Authentication (MFA)|Všechny dvojúrovňového ověřování je ověřování službou Multi-Factor Authentication, které vyžadují, abyste pomocí *alespoň* dva druhy informací o ověření, založené na požadavcích vaší organizace.|
 |Účet Microsoft (také nazývané, MSA)|Můžete vytvořit vlastní osobní účty, a získat přístup k vašim produktům Microsoft orientované příjemce cloudové služby, jako je Outlook, OneDrive, Xbox LIVE nebo Office 365. Váš účet Microsoft se vytvoří a uloží v Microsoft systémem identit uživatelů účtu, který se spouští společností Microsoft.|
 |Pracovní nebo školní účet|Vaše organizace vytvoří pracovní nebo školní účet (například alain@contoso.com) umožňuje přístup k interní a potenciálně omezeným prostředkům, jako je například Microsoft Azure, Windows Intune a Office 365.|
+|Ověřovací kód|Šestimístný kód, který se zobrazí v ověřovací aplikaci, v rámci každé přidání účtu. Ověřovací kód, který změní každých 30 sekund brání pomocí kódu více než jednou. Tím se taky říká jednorázové heslo (OTP).|
 
 ## <a name="how-two-factor-verification-works-with-the-app"></a>Jak funguje dvojúrovňového ověřování v aplikaci
 Dvoufaktorové ověřování funguje s aplikací Microsoft Authenticator následujícími způsoby:
 
 - **Oznámení.** Zadejte uživatelské jméno a heslo do zařízení budete přihlášení pro váš pracovní nebo školní účet nebo osobní účet Microsoft, a potom odešle oznámení s výzvou k aplikaci Microsoft Authenticator **schválit přihlášení**. Zvolte **schválit** Pokud pokus o přihlášení. Jinak klikněte na tlačítko **Odepřít**. Pokud se rozhodnete **Odepřít**, můžete také označit žádosti jako podvodné.
 
-- **Ověřovací kód.** Zadejte uživatelské jméno a heslo do zařízení budete přihlášení pro váš pracovní nebo školní účet nebo osobní účet Microsoft a zkopírujte související ověřovací kód z **účty** obrazovky společnosti Microsoft Ověřovací aplikaci.
+- **Ověřovací kód.** Zadejte uživatelské jméno a heslo do zařízení budete přihlášení pro váš pracovní nebo školní účet nebo osobní účet Microsoft a zkopírujte související ověřovací kód z **účty** obrazovky společnosti Microsoft Ověřovací aplikaci. Ověřovací kód, který se také označuje jako ověřování jednorázovým heslem (OTP).
 
 - **Přihlašování.** Zadejte svoje uživatelské jméno do zařízení budete přihlášení pro váš pracovní nebo školní účet nebo osobní účet Microsoft a pak ověřte, že je můžete pomocí otisku prstu, rozpoznávání tváře nebo PIN kód pomocí vašeho mobilního zařízení. Pro tuto metodu není nutné zadat heslo.
 
@@ -53,19 +57,20 @@ Pokud používáte PIN k dokončení procesu ověřování, můžete nastavit ap
 ## <a name="who-decides-if-you-use-this-feature"></a>Který rozhodne, pokud pomocí této funkce?
 V závislosti na typu účtu vaší organizace rozhodnout, že je nutné použít dvojúrovňové ověřování, nebo je možné rozhodnout sami.
 
-- **Pracovní nebo školní účet.** Pokud používáte pracovní nebo školní účet (třeba alain@contoso.com), je to pro vaši organizaci, zda je nutné použít dvojúrovňové ověřování, spolu s konkrétní ověřovací metody. Další informace o ověření službou Multi-Factor Authentication, naleznete v tématu [Azure Multi-Factor Authentication význam pro mě](multi-factor-authentication-end-user.md). Další informace o tom, jak nastavit bezpečnostní údaje k používání aplikace Microsoft Authentication najdete v tématu [nastavení bezpečnostní údaje pro použití aplikace authenticator (preview)](security-info-setup-auth-app.md).
+- **Pracovní nebo školní účet.** Pokud používáte pracovní nebo školní účet (třeba alain@contoso.com), je to pro vaši organizaci, zda je nutné použít dvojúrovňové ověřování, spolu s konkrétní ověřovací metody. Další informace o přidávání svůj pracovní nebo školní účet do aplikace Microsoft Authenticator, naleznete v tématu [přidat pracovní nebo školní účty](microsoft-authenticator-app-add-work-account.md).
 
-- **Osobní účet Microsoft.** Můžete také nastavit dvoufaktorového ověřování pro osobní účty Microsoft (třeba alain@outlook.com).
+- **Osobní účet Microsoft.** Můžete také nastavit dvoufaktorového ověřování pro osobní účty Microsoft (třeba alain@outlook.com). Další informace o přidání vašeho osobního účtu Microsoft naleznete v tématu 
 
-- **Osobní účet od jiných výrobců.** Můžete také nastavit dvoufaktorového ověřování pro osobní účty od jiných výrobců (například alain@gmail.com). Vaše účty jiných společností než Microsoft nemusí použít výraz, dvojúrovňové ověřování, ale by měla být schopna najít funkce v rámci **zabezpečení** nebo **přihlášení** nastavení.
+- **Účet od jiných výrobců.** Můžete také nastavit dvoufaktorového ověřování pro vaše účty od jiných výrobců (například alain@gmail.com). Vaše účty jiných společností než Microsoft nemusí použít výraz, dvojúrovňové ověřování, ale by měla být schopna najít funkce v rámci **zabezpečení** nebo **přihlášení** nastavení. Aplikace Microsoft Authenticator funguje s všechny účty, které podporují TOTP standardy.
 
 ## <a name="in-this-section"></a>V tomto oddílu
 
 |Článek |Popis |
 |------|------------|
-|[Stažení a instalace aplikace](microsoft-authenticator-app-how-to.md)|Popisuje, kde a jak získat a nainstalovat aplikaci Microsoft Authenticator pro zařízení se systémem Android, iOS a Windows Phone.|
-|[Přidat pracovní nebo školní účty](microsoft-authenticator-app-add-work-account.md)|Popisuje, jak přidat různé pracovní nebo školní a osobní účty do aplikace Microsoft Authenticator.|
-|[Přidat osobním účtům](microsoft-authenticator-app-add-personal-account.md)|Popisuje, jak přidat do aplikace Microsoft Authenticator osobních společnosti Microsoft a účty jiných společností než Microsoft.|
+|[Stažení a instalace aplikace](microsoft-authenticator-app-how-to.md)|Popisuje, kde a jak získat a nainstalovat aplikaci Microsoft Authenticator pro zařízení s Androidem a iOS.|
+|[Přidejte svůj pracovní nebo školní účet](microsoft-authenticator-app-add-work-account.md)|Popisuje, jak přidat různé pracovní nebo školní a osobní účty do aplikace Microsoft Authenticator.|
+|[Přidat osobního účtu Microsoft](microsoft-authenticator-app-add-personal-account.md)|Popisuje, jak přidat váš osobní účet Microsoft pro aplikaci Microsoft Authenticator.|
+|[Přidat účet jiného subjektu než Microsoft](microsoft-authenticator-app-add-non-microsoft-account.md)|Popisuje, jak přidat své účty jiných společností než Microsoft k aplikaci Microsoft Authenticator.|
 |[Ručně přidejte vaše účty](microsoft-authenticator-app-add-account-manual.md)|Pokud nemůžete poskytnutý kód QR naskenovat a popisuje, jak ručně přidat do aplikace Microsoft Authenticator, vaše účty.|
 |[Přihlášení pomocí aplikace](microsoft-authenticator-app-phone-signin-faq.md)|Popisuje, jak se přihlásit k různým účtům, pomocí aplikace Microsoft Authenticator.|
 |[Zálohování a obnovení přihlašovacích údajů k účtu](microsoft-authenticator-app-backup-and-recovery.md)| Poskytuje informace o tom, jak zálohovat a obnovit přihlašovací údaje k účtu pomocí aplikace Microsoft Authenticator.|

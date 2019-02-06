@@ -6,14 +6,14 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.devlang: java
 ms.topic: reference
-ms.date: 1/15/2019
+ms.date: 2/4/2019
 ms.author: moderakh
-ms.openlocfilehash: 760a54a09dd612cef93de0de1e8ac2fd59b04b26
-ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
+ms.openlocfilehash: 15bab6af4054085d00ec5c2edb7afb993a620b55
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54329374"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55756253"
 ---
 # <a name="azure-cosmos-db-async-java-sdk-for-sql-api-release-notes-and-resources"></a>Azure Cosmos DB asynchronní Java SDK pro rozhraní SQL API: Zpráva k vydání verze a prostředky
 > [!div class="op_single_selector"]
@@ -50,6 +50,13 @@ SQL API asynchronní Java SDK se liší od sady Java SDK API SQL tím, že posky
 </table></br>
 
 ## <a name="release-notes"></a>Poznámky k verzi
+
+### <a name="a-name240-beta-1240-beta-1"></a><a name="2.4.0-beta-1"/>2.4.0-beta-1
+* Přidání podpory pro Direct.
+* Rozhraní API přijímá java.util.Collection, pro kterou pořadí je důležité potvrďte java.util.List změnit.
+  Nyní ConnectionPolicy#getPreferredLocations() JsonSerialization a PartitionKey(.) přijímají seznam.
+* Je opravená chyba relace pro dotazování dokumentů v režimu brány.
+* Upgradovat závislosti (netty 0.4.20 [githubu #79](https://github.com/Azure/azure-cosmosdb-java/issues/79), RxJava 1.3.8).
 
 ### <a name="a-name231231"></a><a name="2.3.1"/>2.3.1
 * Zpracování odpovědi na dotazy velmi velké opravy.
@@ -130,6 +137,7 @@ Jakoukoli žádost do služby Cosmos DB pomocí vyřazeno sady SDK budou odmítn
 
 | Verze | Datum vydání | Datum vyřazení z provozu |
 | --- | --- | --- |
+| [2.4.0-beta-1](#2.4.0-beta-1) |4. února 2019|--- |
 | [2.3.1](#2.3.1) |15. ledna 2019|--- |
 | [2.3.0](#2.3.0) |29. listopadu 2018|--- |
 | [2.2.2](#2.2.2) |8. listopadu 2018|--- |

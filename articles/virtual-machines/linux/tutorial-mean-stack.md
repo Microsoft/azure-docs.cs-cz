@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 08/08/2017
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 223b32d3947ca0f663565a90b15e9c24e5ddeb96
-ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
+ms.openlocfilehash: 84860b5098e141bdfbd924d86836bc7b48b0ce8f
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54883207"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55754213"
 ---
 # <a name="tutorial-create-a-mongodb-express-angularjs-and-nodejs-mean-stack-on-a-linux-virtual-machine-in-azure"></a>Kurz: Vytvoření stacku MongoDB, Express, AngularJS a Node.js (MEAN) na virtuální počítač s Linuxem v Azure
 
@@ -42,7 +42,7 @@ Pokud se rozhodnete nainstalovat a místně používat rozhraní příkazového 
 
 ## <a name="create-a-linux-vm"></a>Vytvoření virtuálního počítače s Linuxem
 
-Vytvořte skupinu prostředků pomocí příkazu [az group create](https://docs.microsoft.com/cli/azure/group#az_group_create) a pak vytvořte virtuální počítač s Linuxem pomocí příkazu [az vm create](https://docs.microsoft.com/cli/azure/vm#az_vm_create). Skupina prostředků Azure je logický kontejner, ve kterém se nasazují a spravují prostředky Azure.
+Vytvořte skupinu prostředků pomocí příkazu [az group create](https://docs.microsoft.com/cli/azure/group) a pak vytvořte virtuální počítač s Linuxem pomocí příkazu [az vm create](https://docs.microsoft.com/cli/azure/vm). Skupina prostředků Azure je logický kontejner, ve kterém se nasazují a spravují prostředky Azure.
 
 Následující příklad pomocí Azure CLI vytvoří skupinu prostředků *myResourceGroupMEAN* v umístění *eastus*. Vytvoří se virtuální počítač *myVM* s klíči SSH, pokud ještě neexistují ve výchozím umístění klíčů. Pokud chcete použít konkrétní sadu klíčů, použijte možnost --ssh-key-value.
 

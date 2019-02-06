@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 12/19/2018
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: 51cfc62adaf9d9c780888477aa6eab2a812fe98c
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: 1ba320a523d21beebe089084f40efff4b36dc4af
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53718029"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55753567"
 ---
 # <a name="tutorial-deploy-and-use-azure-container-registry"></a>Kurz: Nasazení a použití služby Azure Container Registry
 
@@ -160,12 +160,12 @@ V dalším kurzu se dozvíte, jak nasadit cluster Kubernetes v Azure.
 [docker-push]: https://docs.docker.com/engine/reference/commandline/push/
 
 <!-- LINKS - internal -->
-[az-acr-create]: /cli/azure/acr#create
-[az-acr-list]: /cli/azure/acr#list
+[az-acr-create]: /cli/azure/acr
+[az-acr-list]: /cli/azure/acr
 [az-acr-login]: https://docs.microsoft.com/cli/azure/acr#az-acr-login
 [az-acr-list]: https://docs.microsoft.com/cli/azure/acr#az-acr-list
-[az-acr-repository-list]: /cli/azure/acr/repository#list
-[az-acr-repository-show-tags]: /cli/azure/acr/repository#show-tags
+[az-acr-repository-list]: /cli/azure/acr/repository
+[az-acr-repository-show-tags]: /cli/azure/acr/repository
 [az-group-create]: /cli/azure/group#az-group-create
 [azure-cli-install]: /cli/azure/install-azure-cli
 [aks-tutorial-deploy-cluster]: ./tutorial-kubernetes-deploy-cluster.md

@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 11/26/2018
 ms.author: wgries
 ms.subservice: files
-ms.openlocfilehash: 246b7ae21ceca80c2d1af74330691e527c73cf51
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 5bff36f17b407c95858924a2a88b133500c350b6
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55452732"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55751408"
 ---
 # <a name="planning-for-an-azure-file-sync-deployment"></a>Plánování nasazení Synchronizace souborů Azure
 Azure File Sync umožňuje centralizovat sdílené složky organizace ve službě soubory Azure, při zachování flexibility, výkonu a kompatibility s místními souborového serveru. Azure File Sync transformuje serveru systému Windows na rychlou mezipaměť sdílené složky Azure. Můžete použít jakýkoli protokol dostupný ve Windows serveru pro přístup k datům místně, včetně SMB, NFS a FTPS. Můžete mít libovolný počet mezipamětí po celém světě potřebujete.
@@ -251,7 +251,10 @@ Azure File Sync je k dispozici pouze v těchto oblastech:
 Azure File Sync podporuje synchronizaci pouze u sdílené složky Azure, který je ve stejné oblasti jako služba synchronizace úložiště.
 
 ### <a name="azure-disaster-recovery"></a>Zotavení po havárii Azure
-Pokud chcete chránit před ztrátou oblasti Azure, Azure File Sync se integruje s [redundance geograficky redundantní úložiště](../common/storage-redundancy-grs.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json) možnost (GRS). Úložiště GRS funguje s použitím bloku asynchronní replikaci mezi úložiště v primární oblasti, pomocí kterého budete obvykle pracovat, a úložiště ve spárovaném sekundární oblasti. V případě havárie, což způsobí, že určitá oblast Azure pro go dočasně nebo trvale offline Microsoft převezme úložiště spárovaných oblastí. 
+Pokud chcete chránit před ztrátou oblasti Azure, Azure File Sync se integruje s [redundance geograficky redundantní úložiště](../common/storage-redundancy-grs.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json) možnost (GRS). Úložiště GRS funguje s použitím bloku asynchronní replikaci mezi úložiště v primární oblasti, pomocí kterého budete obvykle pracovat, a úložiště ve spárovaném sekundární oblasti. V případě havárie, což způsobí, že určitá oblast Azure pro go dočasně nebo trvale offline společnost Microsoft bude úložiště převzetí služeb při selhání pro spárované oblasti. 
+
+> [!Warning]  
+> Pokud používáte sdílené složky Azure jako koncový bod cloudu v účtu úložiště GRS, nesmí iniciovat převzetí služeb při selhání úložiště účtu. To způsobí neočekávané ztráty dat v případě nově vrstvené soubory příčina synchronizaci zastavit pracovní a může také. V případě ztráty určitá oblast Azure Microsoft aktivuje úložiště účtu převzetí služeb při selhání způsobem, který je kompatibilní s Azure File Sync.
 
 Pro podporu integrace převzetí služeb při selhání mezi geograficky redundantní úložiště a Azure File Sync, jsou všechny oblasti Azure File Sync spárovaná s sekundární oblasti, která odpovídá sekundární oblasti používané službou storage. Tyto páry jsou následující:
 

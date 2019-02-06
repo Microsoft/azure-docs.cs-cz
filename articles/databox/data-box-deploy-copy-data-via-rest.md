@@ -8,12 +8,12 @@ ms.subservice: pod
 ms.topic: tutorial
 ms.date: 01/24/2019
 ms.author: alkohli
-ms.openlocfilehash: 85c9eeb60027ba44fd5e65d056864aa76a6e720a
-ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
+ms.openlocfilehash: 412bf66902f156c6c8720a720973f97d1d7b1d8f
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/25/2019
-ms.locfileid: "54900880"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55751612"
 ---
 # <a name="tutorial-copy-data-to-azure-data-box-blob-storage-via-rest-apis"></a>Kurz: Kopírování dat do úložiště objektů Blob v Azure Data Box přes rozhraní REST API  
 
@@ -154,7 +154,7 @@ Prvním krokem je vytvoření kontejneru, protože objekty BLOB se vždy nahráv
 
    ![Vytvořit kontejnery místní nabídka objektu blob](media/data-box-deploy-copy-data-via-rest/create-blob-container-1.png)
 
-4. Textové pole se zobrazí pod **kontejnery objektů Blob** složky. Zadejte název kontejneru objektů blob. Zobrazit [vytvoření kontejneru a nastavení oprávnění](../storage/blobs/storage-quickstart-blobs-dotnet.md#create-the-container-and-set-permissions) informace o pravidlech a omezení pro pojmenování kontejnerů objektů blob.
+4. Textové pole se zobrazí pod **kontejnery objektů Blob** složky. Zadejte název kontejneru objektů blob. Zobrazit [vytvoření kontejneru a nastavení oprávnění](../storage/blobs/storage-quickstart-blobs-dotnet.md) informace o pravidlech a omezení pro pojmenování kontejnerů objektů blob.
 5. Stisknutím klávesy **Enter** po dokončení vytvoření kontejneru objektů blob nebo **Esc** zrušit. Po úspěšném vytvoření kontejneru objektů blob, se zobrazí v části **kontejnery objektů Blob** složku pro vybraný účet úložiště.
 
    ![Vytvoření kontejneru objektů BLOB](media/data-box-deploy-copy-data-via-rest/create-blob-container-2.png)

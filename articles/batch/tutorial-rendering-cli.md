@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 12/11/2018
 ms.author: lahugh
 ms.custom: mvc
-ms.openlocfilehash: c8961017fbd63e2d40e98acc19b2819c85118e15
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
+ms.openlocfilehash: 10e8a7dd256f796160b81b8ec1f566c5ed7e4cad
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55728363"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55750201"
 ---
 # <a name="tutorial-render-a-scene-with-azure-batch"></a>Kurz: Vykreslení scény pomocí služby Azure Batch 
 
@@ -317,7 +317,7 @@ az batch task show \
     --task-id mymultitask1
 ```
  
-Úkoly na výpočetních uzlech vygenerují výstupní soubory s názvy *dragon0002.jpg* - *dragon0007.jpg* a nahrají je do kontejneru *job-myrenderjob* ve vašem účtu úložiště. Pokud chcete zobrazit výstup, stáhněte soubory do složky na svém místním počítači pomocí příkazu [az storage blob download-batch](/cli/azure/storage/blob#az-storage-blob-download_batch). Příklad:
+Úkoly na výpočetních uzlech vygenerují výstupní soubory s názvy *dragon0002.jpg* - *dragon0007.jpg* a nahrají je do kontejneru *job-myrenderjob* ve vašem účtu úložiště. Pokud chcete zobrazit výstup, stáhněte soubory do složky na svém místním počítači pomocí příkazu [az storage blob download-batch](/cli/azure/storage/blob). Příklad:
 
 ```azurecli-interactive
 az storage blob download-batch \

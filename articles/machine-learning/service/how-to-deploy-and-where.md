@@ -11,12 +11,12 @@ author: aashishb
 ms.reviewer: larryfr
 ms.date: 12/07/2018
 ms.custom: seodec18
-ms.openlocfilehash: e8b318626947c1d1147e43ca6c183ae724080a59
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: a32cb694a18f8fff937f647804659efb71be415e
+ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55251601"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55745713"
 ---
 # <a name="deploy-models-with-the-azure-machine-learning-service"></a>Nasazujte modely pomocí služby Azure Machine Learning
 
@@ -511,3 +511,5 @@ Další informace najdete v tématu v referenční dokumentaci [WebService.delet
 * [Shromažďování dat modelů v produkčním prostředí](how-to-enable-data-collection.md)
 * [Sady SDK služby Azure Machine Learning](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py)
 * [Použití služby Azure Machine Learning s Azure Virtual Network](how-to-enable-virtual-network.md)
+* [Osvědčené postupy pro vytváření doporučovacích systémů](https://github.com/Microsoft/Recommenders)
+* [Sestavení v reálném čase doporučení rozhraní API v Azure](https://docs.microsoft.com/azure/architecture/reference-architectures/ai/real-time-recommendation)

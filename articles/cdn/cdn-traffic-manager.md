@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 06/28/2018
 ms.author: kumud
 ms.custom: ''
-ms.openlocfilehash: 2d184cc849eb3da60bbf0c387655da9fdf878853
-ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
+ms.openlocfilehash: 4c072ef63c0d4961fba695fc8d9be1d12b4b0e8b
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49091602"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55749210"
 ---
 # <a name="set-up-failover-across-multiple-azure-cdn-endpoints-with-azure-traffic-manager"></a>Nastavit převzetí služeb při selhání mezi několika koncových bodů Azure CDN pomocí Azure Traffic Manageru
 
@@ -42,7 +42,7 @@ Vytvoření dvou nebo více koncových bodů a profilů CDN s jiným poskytovate
 ## <a name="set-up-azure-traffic-manager"></a>Nastavte Azure Traffic Manager
 Vytvoření profilu Azure Traffic Manageru a nastavit vyrovnávání zatížení napříč koncových bodů CDN. 
 
-1. Vytvoření profilu Azure Traffic Manager pomocí kroků v [vytvořit profil služby Traffic Manager](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-create-profile#create-a-traffic-manager-profile-1). 
+1. Vytvoření profilu Azure Traffic Manager pomocí kroků v [vytvořit profil služby Traffic Manager](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-create-profile). 
 
     Pro **metodu směrování**vyberte **Priority**.
 

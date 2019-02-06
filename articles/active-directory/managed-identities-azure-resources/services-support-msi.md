@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: active-directory
 ms.subservice: msi
 manager: daveba
-ms.openlocfilehash: 2ca70805a0806078613bb37ac1d2836dd8d626c8
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 8274909b40d872309230f9c9f6c045b4283fd6eb
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55180734"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55752326"
 ---
 # <a name="services-that-support-managed-identities-for-azure-resources"></a>Služby, které podporují spravované identity pro prostředky Azure
 
@@ -95,7 +95,7 @@ Typ identity spravované |  Obecně dostupné<br>Globálními oblastmi Azure | A
 Najdete v následujícím seznamu ke konfiguraci spravované identity Azure Logic Apps (v oblastech dostupné):
 
 - [Azure Portal](/azure/logic-apps/create-managed-service-identity#azure-portal)
-- [Šablona Azure Resource Manageru](/azure/app-service/overview-managed-identity#deployment-template)
+- [Šablona Azure Resource Manageru](/azure/app-service/overview-managed-identity)
 
 ### <a name="azure-data-factory-v2"></a>Azure Data Factory V2
 

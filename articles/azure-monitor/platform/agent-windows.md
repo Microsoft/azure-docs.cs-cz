@@ -11,18 +11,18 @@ ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 11/28/2018
+ms.date: 02/05/2019
 ms.author: magoedte
-ms.openlocfilehash: 8ccd2bfe78ca7b0fabac2b8c9bfd6ba002782a41
-ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
+ms.openlocfilehash: d4204d4937b8eca2dcb3f656659f185f30c8bddf
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54352800"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55755016"
 ---
 # <a name="connect-windows-computers-to-the-log-analytics-service-in-azure"></a>Připojení počítačů s Windows ke službě Log Analytics v Azure
 
-Abyste mohli monitorovat a spravovat virtuální počítače nebo fyzického počítače ve vašem místním datovém centru nebo jiných cloudové prostředí pomocí služby Log Analytics, budete muset nasadit Microsoft Monitoring Agent (MMA) a nakonfigurovat, aby zprávy do jednoho nebo více pracovních prostorů Log Analytics.  Agent také podporuje role Hybrid Runbook Worker pro Azure Automation.  
+Pokud chcete monitorování a správa virtuálních počítačů nebo fyzických počítačů v místním datovém centru nebo v jiném prostředí cloudu s využitím Log Analytics, je potřeba nasadit agenta Log Analytics (také označované jako Microsoft Monitoring Agent (MMA)) a konfigurací sestavy na jeden nebo více pracovních prostorů Log Analytics. Agent také podporuje role Hybrid Runbook Worker pro Azure Automation.  
 
 Na monitorovaném počítači Windows je agent uveden jako služba Microsoft Monitoring Agent. Služba Microsoft Monitoring Agent shromažďuje události ze souborů protokolu a protokolu událostí Windows, údaje o výkonu a další telemetrie. I v případě, že agent není schopen komunikovat se službou Log Analytics, který bude posílat sestavy, agent běží dál a zařadí do fronty shromážděná data na disk monitorovaného počítače. Při obnovení připojení služba Microsoft Monitoring Agent odešle shromážděná data do služby.
 
@@ -36,7 +36,7 @@ Může být agent nainstalovaný pomocí jedné z následujících metod. Větš
 Abyste lépe porozuměli podporované konfiguraci, přečtěte si o [podporovaných operačních systémech Windows](log-analytics-agent.md#supported-windows-operating-systems) a [konfiguraci síťové brány firewall](log-analytics-agent.md#network-firewall-requirements).
 
 ## <a name="obtain-workspace-id-and-key"></a>Získání ID a klíče pracovního prostoru
-Před instalací agenta Microsoft Monitoring Agent pro Windows potřebujete ID a klíč vašeho pracovního prostoru Log Analytics.  Tyto informace jsou nezbytné při instalaci z každé metody instalace ke správné konfiguraci agenta a zajistěte, aby že mohla úspěšně komunikovat s Log Analytics v Azure komerční a cloud pro státní správu USA.  
+Před instalací agenta Log Analytics pro Windows, budete potřebovat ID pracovního prostoru a klíč vašeho pracovního prostoru Log Analytics.  Tyto informace jsou nezbytné při instalaci z každé metody instalace ke správné konfiguraci agenta a zajistěte, aby že mohla úspěšně komunikovat s Log Analytics v Azure komerční a cloud pro státní správu USA.  
 
 1. Na webu Azure Portal klikněte na **Všechny služby**. V seznamu prostředků zadejte **Log Analytics**. Seznam se průběžně filtruje podle zadávaného textu. Vyberte **Log Analytics**.
 2. V seznamu pracovních prostorů Log Analytics vyberte pracovní prostor, který chcete v konfiguraci agenta pro hlášení.
@@ -64,7 +64,7 @@ Konfigurace rozhraní .NET Framework 4.6 nebo novější k podpoře zabezpečen�
 5. Restartujte systém pro nastavení projevilo. 
 
 ## <a name="install-the-agent-using-setup-wizard"></a>Instalace agenta pomocí Průvodce instalací
-Následující kroky instalace a konfigurace agenta pro Log Analytics v Azure a cloudu Azure Government s použitím Průvodce instalací pro agenta Microsoft Monitoring Agent v počítači. Pokud chcete další informace o konfiguraci agenta tak, aby také sestavy ke skupině pro správu System Center Operations Manager najdete v tématu [nasazení agenta nástroje Operations Manager pomocí Průvodce instalací agenta](https://docs.microsoft.com/system-center/scom/manage-deploy-windows-agent-manually#to-deploy-the-operations-manager-agent-with-the-agent-setup-wizard).
+Následující kroky instalace a konfigurace agenta pro Log Analytics v Azure a cloudu Azure Government s použitím Průvodce instalací pro agenta v počítači. Pokud chcete další informace o konfiguraci agenta tak, aby také sestavy ke skupině pro správu System Center Operations Manager najdete v tématu [nasazení agenta nástroje Operations Manager pomocí Průvodce instalací agenta](https://docs.microsoft.com/system-center/scom/manage-deploy-windows-agent-manually#to-deploy-the-operations-manager-agent-with-the-agent-setup-wizard).
 
 1. V pracovním prostoru Log Analytics z **servery Windows** přejde dříve, vyberte příslušné stránky **stáhnout agenta Windows** verze ke stažení v závislosti na architektuře procesoru operační systém Windows.   
 2. Spusťte instalační program a nainstalujte agenta na svém počítači.
@@ -87,7 +87,7 @@ Stažený soubor pro agenta je samostatná instalace balíčku.  Instalační pr
 >[!NOTE]
 >Pokud chcete provést upgrade agenta, musíte používat službu Log Analytics, rozhraní API pro skriptování. Naleznete v tématu [Správa a údržba agenta Log Analytics pro Windows a Linux](agent-manage.md) pro další informace.
 
-Následující tabulka obsahuje konkrétní parametry Log Analytics podporuje instalační program pro agenta, včetně při nasazení pomocí Automation DSC.
+Následující tabulka obsahuje konkrétní parametry nepodporuje instalaci agenta, včetně toho, když se nasadí pomocí Automation DSC.
 
 |Možnosti specifické pro agenta MMA                   |Poznámky         |
 |---------------------------------------|--------------|

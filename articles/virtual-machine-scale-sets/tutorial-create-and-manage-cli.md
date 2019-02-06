@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 03/27/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 9abf1d1105c112051041688f1d4305c543b148ce
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: b0d2a72567783ca1c127f76d94ddc9c5e007ea89
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55179476"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55751017"
 ---
 # <a name="tutorial-create-and-manage-a-virtual-machine-scale-set-with-the-azure-cli"></a>Kurz: Vytvoření a Správa virtuálního počítače škálovací sady pomocí Azure CLI
 Škálovací sada virtuálních počítačů umožňuje nasadit a spravovat sadu identických virtuálních počítačů s automatickým škálováním. V průběhu životního cyklu škálovací sady virtuálních počítačů možná budete potřebovat spustit jednu nebo více úloh správy. V tomto kurzu se naučíte:
@@ -41,7 +41,7 @@ Pokud se rozhodnete nainstalovat a používat rozhraní příkazového řádku 
 
 
 ## <a name="create-a-resource-group"></a>Vytvoření skupiny prostředků
-Skupina prostředků Azure je logický kontejner, ve kterém se nasazují a spravují prostředky Azure. Skupina prostředků musí být vytvořená už před vytvořením škálovací sady virtuálních počítačů. Vytvořte skupinu prostředků pomocí příkazu [az group create](/cli/azure/group#az_group_create). V tomto příkladu se vytvoří skupina prostředků s názvem *myResourceGroup* v oblasti *eastus*. 
+Skupina prostředků Azure je logický kontejner, ve kterém se nasazují a spravují prostředky Azure. Skupina prostředků musí být vytvořená už před vytvořením škálovací sady virtuálních počítačů. Vytvořte skupinu prostředků pomocí příkazu [az group create](/cli/azure/group). V tomto příkladu se vytvoří skupina prostředků s názvem *myResourceGroup* v oblasti *eastus*. 
 
 ```azurecli-interactive
 az group create --name myResourceGroup --location eastus
@@ -66,7 +66,7 @@ Vytvoření a konfigurace všech prostředků škálovací sady a instancí virt
 
 
 ## <a name="view-the-vm-instances-in-a-scale-set"></a>Zobrazení instancí virtuálních počítačů ve škálovací sadě
-Pokud chcete zobrazit seznam instancí virtuálních počítačů ve škálovací sadě, použijte příkaz [az vmss list-instances](/cli/azure/vmss#az_vmss_list_instances) následujícím způsobem:
+Pokud chcete zobrazit seznam instancí virtuálních počítačů ve škálovací sadě, použijte příkaz [az vmss list-instances](/cli/azure/vmss) následujícím způsobem:
 
 ```azurecli-interactive
 az vmss list-instances \
@@ -85,7 +85,7 @@ Následující příklad výstupu ukazuje dvě instance virtuálních počítač
 ```
 
 
-První sloupec ve výstupu se ukazuje *InstanceId* (ID instance). Pokud chcete zobrazit další informace o konkrétní instanci virtuálního počítače, přidejte k příkazu [az vmss get-instance-view](/cli/azure/vmss#az_vmss_get_instance_view) parametr `--instance-id`. Následující příklad zobrazí informace o instanci virtuálního počítače *1*:
+První sloupec ve výstupu se ukazuje *InstanceId* (ID instance). Pokud chcete zobrazit další informace o konkrétní instanci virtuálního počítače, přidejte k příkazu [az vmss get-instance-view](/cli/azure/vmss) parametr `--instance-id`. Následující příklad zobrazí informace o instanci virtuálního počítače *1*:
 
 ```azurecli-interactive
 az vmss get-instance-view \
@@ -129,7 +129,7 @@ exit
 
 
 ## <a name="understand-vm-instance-images"></a>Vysvětlení imagí instancí virtuálních počítačů
-Při vytváření škálovací sady na začátku kurzu jste pro instance virtuálních počítačů zadali parametr `--image` s hodnotou *UbuntuLTS*. Azure Marketplace obsahuje celou řadu imagí, které je možné využít k vytváření instancí virtuálních počítačů. Pokud chcete zobrazit seznam nejčastěji používaných imagí, použijte příkaz [az vm image list](/cli/azure/vm/image#az_vm_image_list).
+Při vytváření škálovací sady na začátku kurzu jste pro instance virtuálních počítačů zadali parametr `--image` s hodnotou *UbuntuLTS*. Azure Marketplace obsahuje celou řadu imagí, které je možné využít k vytváření instancí virtuálních počítačů. Pokud chcete zobrazit seznam nejčastěji používaných imagí, použijte příkaz [az vm image list](/cli/azure/vm/image).
 
 ```azurecli-interactive
 az vm image list --output table
@@ -243,7 +243,7 @@ az vmss create \
 ## <a name="change-the-capacity-of-a-scale-set"></a>Změna kapacity škálovací sady
 Při vytváření škálovací sady na začátku kurzu se ve výchozím nastavení nasadily dvě instance virtuálních počítačů. Počet instancí vytvořených se škálovací sadou můžete změnit zadáním parametru `--instance-count` u příkazu [az vmss create](/cli/azure/vmss). Pokud chcete zvýšit nebo snížit počet instancí virtuálních počítačů v existující škálovací sadě, můžete ručně změnit kapacitu. Škálovací sada vytvoří nebo odebere požadovaný počet instancí virtuálních počítačů a pak nakonfiguruje nástroj pro vyrovnávání zatížení pro distribuci provozu.
 
-Pokud chcete ručně zvýšit nebo snížit počet instancí virtuálních počítačů ve škálovací sadě, použijte příkaz [az vmss scale](/cli/azure/vmss#az_vmss_scale). Následující příklad nastaví počet instancí virtuálních počítačů ve vaší škálovací sadě na *3*:
+Pokud chcete ručně zvýšit nebo snížit počet instancí virtuálních počítačů ve škálovací sadě, použijte příkaz [az vmss scale](/cli/azure/vmss). Následující příklad nastaví počet instancí virtuálních počítačů ve vaší škálovací sadě na *3*:
 
 ```azurecli-interactive
 az vmss scale \
@@ -252,7 +252,7 @@ az vmss scale \
     --new-capacity 3
 ```
 
-Aktualizace kapacity škálovací sady trvá několik minut. Pokud chcete zobrazit počet instancí, které teď máte ve škálovací sadě, použijte příkaz [az vmss show](/cli/azure/vmss#az_vmss_show) s dotazem na *sku.capacity*:
+Aktualizace kapacity škálovací sady trvá několik minut. Pokud chcete zobrazit počet instancí, které teď máte ve škálovací sadě, použijte příkaz [az vmss show](/cli/azure/vmss) s dotazem na *sku.capacity*:
 
 ```azurecli-interactive
 az vmss show \
@@ -267,27 +267,27 @@ az vmss show \
 Teď můžete vytvořit škálovací sadu, vypsat informace o připojení a připojit se k instancím virtuálních počítačů. Zjistili jste, jak pro instance virtuálních počítačů použít jinou image operačního systému, vybrat jinou velikost virtuálních počítačů nebo ručně škálovat počet instancí. V rámci každodenní správy můžete potřebovat zastavit, spustit nebo restartovat instance virtuálních počítačů ve své škálovací sadě.
 
 ### <a name="stop-and-deallocate-vm-instances-in-a-scale-set"></a>Zastavení a uvolnění instancí virtuálních počítačů ve škálovací sadě
-Pokud chcete zastavit jednu nebo několik instancí virtuálních počítačů ve škálovací sadě, použijte příkaz [az vmss stop](/cli/azure/vmss#az_vmss_stop). Pomocí parametru `--instance-ids` můžete zadat jednu nebo několik instancí virtuálních počítačů, které se mají zastavit. Pokud nezadáte ID instance, zastaví se všechny instance virtuálních počítačů ve škálovací sadě. Následující příklad zastaví instanci *1*:
+Pokud chcete zastavit jednu nebo několik instancí virtuálních počítačů ve škálovací sadě, použijte příkaz [az vmss stop](/cli/azure/vmss). Pomocí parametru `--instance-ids` můžete zadat jednu nebo několik instancí virtuálních počítačů, které se mají zastavit. Pokud nezadáte ID instance, zastaví se všechny instance virtuálních počítačů ve škálovací sadě. Následující příklad zastaví instanci *1*:
 
 ```azurecli-interactive
 az vmss stop --resource-group myResourceGroup --name myScaleSet --instance-ids 1
 ```
 
-Zastavené instance virtuálních počítačů zůstanou přidělené a nadále se u nich účtují poplatky za výpočty. Pokud místo toho chcete instance virtuálních počítačů uvolnit, aby se vám účtovaly pouze poplatky za úložiště, použijte příkaz [az vmss deallocate](/cli/azure/vmss#az_vmss_deallocate). Následující příklad zastaví a uvolní instanci *1*:
+Zastavené instance virtuálních počítačů zůstanou přidělené a nadále se u nich účtují poplatky za výpočty. Pokud místo toho chcete instance virtuálních počítačů uvolnit, aby se vám účtovaly pouze poplatky za úložiště, použijte příkaz [az vmss deallocate](/cli/azure/vmss). Následující příklad zastaví a uvolní instanci *1*:
 
 ```azurecli-interactive
 az vmss deallocate --resource-group myResourceGroup --name myScaleSet --instance-ids 1
 ```
 
 ### <a name="start-vm-instances-in-a-scale-set"></a>Spuštění instancí virtuálních počítačů ve škálovací sadě
-Pokud chcete spustit jednu nebo několik instancí virtuálních počítačů ve škálovací sadě, použijte příkaz [az vmss start](/cli/azure/vmss#az_vmss_start). Pomocí parametru `--instance-ids` můžete zadat jednu nebo několik instancí virtuálních počítačů, které se mají spustit. Pokud nezadáte ID instance, spustí se všechny instance virtuálních počítačů ve škálovací sadě. Následující příklad spustí instanci *1*:
+Pokud chcete spustit jednu nebo několik instancí virtuálních počítačů ve škálovací sadě, použijte příkaz [az vmss start](/cli/azure/vmss). Pomocí parametru `--instance-ids` můžete zadat jednu nebo několik instancí virtuálních počítačů, které se mají spustit. Pokud nezadáte ID instance, spustí se všechny instance virtuálních počítačů ve škálovací sadě. Následující příklad spustí instanci *1*:
 
 ```azurecli-interactive
 az vmss start --resource-group myResourceGroup --name myScaleSet --instance-ids 1
 ```
 
 ### <a name="restart-vm-instances-in-a-scale-set"></a>Restartování instancí virtuálních počítačů ve škálovací sadě
-Pokud chcete restartovat jednu nebo několik instancí virtuálních počítačů ve škálovací sadě, použijte příkaz [az vmss restart](/cli/azure/vmss#az_vm_restart). Pomocí parametru `--instance-ids` můžete zadat jednu nebo několik instancí virtuálních počítačů, které se mají restartovat. Pokud nezadáte ID instance, restartují se všechny instance virtuálních počítačů ve škálovací sadě. Následující příklad restartuje instanci *1*:
+Pokud chcete restartovat jednu nebo několik instancí virtuálních počítačů ve škálovací sadě, použijte příkaz [az vmss restart](/cli/azure/vmss). Pomocí parametru `--instance-ids` můžete zadat jednu nebo několik instancí virtuálních počítačů, které se mají restartovat. Pokud nezadáte ID instance, restartují se všechny instance virtuálních počítačů ve škálovací sadě. Následující příklad restartuje instanci *1*:
 
 ```azurecli-interactive
 az vmss restart --resource-group myResourceGroup --name myScaleSet --instance-ids 1

@@ -14,12 +14,12 @@ ms.topic: quickstart
 ms.date: 06/12/2018
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: edea614065d67bab23de29e5cef3b56c69905a90
-ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
+ms.openlocfilehash: a707ae6959b035ae0bcc05ead027dabd528e1b59
+ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54188603"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55747505"
 ---
 # <a name="create-and-use-an-internal-load-balancer-with-an-app-service-environment"></a>Vytvoření a používání interního nástroje pro vyrovnávání zatížení ve službě App Service Environment #
 
@@ -90,7 +90,7 @@ Při vytváření služby ASE s interním nástrojem pro vyrovnávání zatíže
 
 8. Vyberte **OK** a potom vyberte **Vytvořit**.
 
-    ! [Vytvoření služby ASE] [1]
+    ![Vytvoření služby ASE][1]
 
 V okně **Virtuální síť** najdete možnost **Konfigurace virtuální sítě**. U ní můžete vybrat virtuální IP adresu typu Externí nebo Interní. Výchozí hodnota je **Externí**. Pokud vyberete možnost **Externí**, vaše služba ASE bude používat virtuální IP adresu s přístupem na internet. Pokud vyberete možnost **Interní**, vaše služba ASE bude mít nakonfigurovaný interní nástroj pro vyrovnávání zatížení s IP adresou v rámci vaší virtuální sítě.
 
@@ -119,7 +119,7 @@ Aplikaci ve službě ASE s interním nástrojem pro vyrovnání zatížení vytv
 
 1. Vyberte **Vytvořit**. Pokud chcete, aby aplikace zobrazovala na řídicím panelu, vyberte **připnout na řídicí panel** zaškrtávací políčko.
 
-    ! [Vytvoření plánu služby app Service] [2]
+    ![Vytvoření plánu služby App Service][2]
 
     V části **Název aplikace** se aktualizuje název domény na doménu vaší služby ASE.
 
@@ -129,7 +129,7 @@ Služba ASE s interním nástrojem pro vyrovnávání zatížení se trochu liš
 
 Po vytvoření vaší služby ASE se v názvu domény zobrazí doména, kterou jste zadali. Vytvoření nové položky se zobrazí v **nastavení** nabídky s názvem **ILB certifikát**. Služba ASE se vytvoří s certifikátem, který nemá určenou doménu služby ASE s interním nástrojem pro vyrovnávání zatížení. Pokud službu ASE použijete s tímto certifikátem, váš prohlížeč bude hlásit, že je certifikát neplatný. Tento certifikát usnadňuje testování protokolu HTTPS, ale je potřeba nahrát váš vlastní certifikát spojený s vaší doménou služby ASE s interním nástrojem pro vyrovnávání zatížení. Tento krok je nutný bez ohledu na to, jestli máte certifikát podepsaný svým držitelem, nebo jste ho získali od certifikační autority.
 
-! [Název domény služba ASE s ILB] [3]
+![Název domény služby ASE s interním nástrojem pro vyrovnávání zatížení][3]
 
 Vaše služba ASE s interním nástrojem pro vyrovnávání zatížení potřebuje platný certifikát SSL. Použijte interní certifikační autority, kupte si certifikát od externího vystavitele nebo použijte certifikát podepsaný svým držitelem. Bez ohledu na zdroj certifikátu SSL musí být správně nakonfigurované následující atributy certifikátu:
 
@@ -150,7 +150,7 @@ Pokud chcete vytvořit certifikát podepsaný svým držitelem, můžete tady po
 
 Certifikát generovaný těmito příkazy prostředí PowerShell označují prohlížeče příznakem, protože certifikát nevytvořila certifikační autorita, která se nachází v řetězu certifikátů vašeho prohlížeče. Pokud chcete získat certifikát, kterému bude váš prohlížeč důvěřovat, opatřete si ho od komerční certifikační autority v řetězu certifikátů vašeho prohlížeče. 
 
-! [Sada ILB certifikátu] [4]
+![Nastavení certifikátu interního nástroje pro vyrovnávání zatížení][4]
 
 Pokud chcete nahrát vlastní certifikáty a otestovat přístup, postupujte takto:
 
@@ -180,7 +180,7 @@ Pokud chcete nahrát vlastní certifikáty a otestovat přístup, postupujte tak
 
     IP adresa vašeho interního nástroje pro vyrovnávání zatížení je uvedená v seznamu **IP adresy**. Tento seznam obsahuje také IP adresy používané externí virtuální IP adresou a k řízení příchozích přenosů.
 
-    ! [ILB IP address] [5]
+    ![IP adresa interního nástroje pro vyrovnávání zatížení][5]
 
 ## <a name="web-jobs-functions-and-the-ilb-ase"></a>Webové úlohy, služba Functions a služba ASE s interním nástrojem pro vyrovnávání zatížení ##
 
@@ -223,8 +223,13 @@ Další informace o konfiguraci služby ASE s interním nástrojem pro vyrovnáv
 
 * Pokud chcete začít používat službu ASE, prostudujte si téma [Úvod do služby App Service Environment][Intro].
  
+
 <!--Image references-->
-[1]:./media/creating_and_using_an_internal_load_balancer_with_app_service_environment/createilbase-network.png [2]: [3]./media/creating_and_using_an_internal_load_balancer_with_app_service_environment/createilbase-webapp.png:. / Media/creating_and_using_an_internal_load_balancer_with_app_service_environment/createilbase-Certificate.PNG [4]: [5./media/creating_and_using_an_internal_load_balancer_with_app_service_environment/createilbase-certificate2.png ]:./media/creating_and_using_an_internal_load_balancer_with_app_service_environment/createilbase-ipaddresses.png
+[1]: ./media/creating_and_using_an_internal_load_balancer_with_app_service_environment/createilbase-network.png
+[2]: ./media/creating_and_using_an_internal_load_balancer_with_app_service_environment/createilbase-webapp.png
+[3]: ./media/creating_and_using_an_internal_load_balancer_with_app_service_environment/createilbase-certificate.png
+[4]: ./media/creating_and_using_an_internal_load_balancer_with_app_service_environment/createilbase-certificate2.png
+[5]: ./media/creating_and_using_an_internal_load_balancer_with_app_service_environment/createilbase-ipaddresses.png
 
 <!--Links-->
 [Intro]: ./intro.md

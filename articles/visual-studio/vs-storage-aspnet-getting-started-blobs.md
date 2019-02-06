@@ -11,12 +11,12 @@ ms.workload: azure-vs
 ms.topic: conceptual
 ms.date: 12/07/2017
 ms.author: ghogen
-ms.openlocfilehash: 93859b3b6fcdad67d46604f2ab34bec4138feb2b
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 557b47aab5cdadef79427c4da9c18477daac0689
+ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52969613"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55745414"
 ---
 # <a name="get-started-with-azure-blob-storage-and-visual-studio-connected-services-aspnet"></a>Začínáme s Azure Blob storage a Visual Studio připojené služby (ASP.NET)
 
@@ -413,7 +413,7 @@ Tato část ukazuje, jak stáhnout objekt blob. Můžete zachovat do místního 
     }
     ```
     
-    Následující příklad zobrazuje kompletní `ListBlobs` – metoda (s plně kvalifikovanou cestu souboru místní vytváří):
+    Následující příklad zobrazuje kompletní `DownloadBlob` – metoda (s plně kvalifikovanou cestu souboru místní vytváří):
     
     ```csharp
     public string DownloadBlob()

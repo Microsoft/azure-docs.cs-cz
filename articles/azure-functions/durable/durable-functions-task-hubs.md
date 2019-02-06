@@ -10,18 +10,18 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 12/07/2017
 ms.author: azfuncdf
-ms.openlocfilehash: 4e48956e42942761abec0143ba2849601dbb1cf4
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: 596eedab39ff926fcdc880c82c49ac464b7ff23b
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53336896"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55753461"
 ---
 # <a name="task-hubs-in-durable-functions-azure-functions"></a>Centra úloh v Durable Functions (Azure Functions)
 
 A *centra úloh* v [Durable Functions](durable-functions-overview.md) je logický kontejner prostředků služby Azure Storage, které se používají pro Orchestrace. Funkce nástroje Orchestrator a aktivity pouze komunikovat mezi sebou když patří do stejné centra úloh.
 
-Každá aplikace function app má Centrum samostatné úlohy. Pokud se více aplikací funkcí sdílet účet úložiště, účet úložiště obsahuje více centra úloh. Následující diagram znázorňuje jedno Centrum úkolů na aplikace function app v účtech úložiště sdílené a vyhrazené.
+Pokud sdílet více aplikací funkcí účet úložiště, každá aplikace function app *musí* nakonfigurovat pomocí názvu centra samostatné úlohy. Účet úložiště může obsahovat více Center úloh. Následující diagram znázorňuje jedno Centrum úkolů na aplikace function app v účtech úložiště sdílené a vyhrazené.
 
 ![Diagram znázorňující sdílené a vyhrazené účty úložiště.](./media/durable-functions-task-hubs/task-hubs-storage.png)
 
@@ -41,24 +41,24 @@ Všechny tyto prostředky se vytvoří automaticky v účtu Azure Storage výcho
 
 Centra úloh je identifikována názvem, který je deklarován v *host.json* souboru, jak je znázorněno v následujícím příkladu:
 
-### <a name="hostjson-functions-1x"></a>Host.JSON (funkce 1.x)
+### <a name="hostjson-functions-1x"></a>host.json (Functions 1.x)
 
 ```json
 {
   "durableTask": {
-    "HubName": "MyTaskHub"
+    "hubName": "MyTaskHub"
   }
 }
 ```
 
-### <a name="hostjson-functions-2x"></a>Host.JSON (funkce 2.x)
+### <a name="hostjson-functions-2x"></a>host.json (Functions 2.x)
 
 ```json
 {
   "version": "2.0",
   "extensions": {
     "durableTask": {
-      "HubName": "MyTaskHub"
+      "hubName": "MyTaskHub"
     }
   }
 }
@@ -66,24 +66,24 @@ Centra úloh je identifikována názvem, který je deklarován v *host.json* sou
 
 Centra úloh lze také nastavit pomocí nastavení aplikace, jak je znázorněno v následujícím *host.json* ukázkového souboru:
 
-### <a name="hostjson-functions-1x"></a>Host.JSON (funkce 1.x)
+### <a name="hostjson-functions-1x"></a>host.json (Functions 1.x)
 
 ```json
 {
   "durableTask": {
-    "HubName": "%MyTaskHub%"
+    "hubName": "%MyTaskHub%"
   }
 }
 ```
 
-### <a name="hostjson-functions-2x"></a>Host.JSON (funkce 2.x)
+### <a name="hostjson-functions-2x"></a>host.json (Functions 2.x)
 
 ```json
 {
   "version": "2.0",
   "extensions": {
     "durableTask": {
-      "HubName": "%MyTaskHub%"
+      "hubName": "%MyTaskHub%"
     }
   }
 }
@@ -134,7 +134,7 @@ A tady je požadované konfigurace pro jazyk JavaScript. Vlastnosti centra úloh
 Centrum názvy úloh musí začínat písmenem a obsahovat jenom písmena a číslice. Pokud není zadán, výchozí název je **DurableFunctionsHub**.
 
 > [!NOTE]
-> Název je jedno Centrum úkolů co odlišuje od jiného existuje více centra úloh v účtu úložiště sdílené. Pokud máte více aplikací funkcí sdílení účet sdílené úložiště, budete muset nakonfigurovat jiné názvy jednotlivých úloh centra *host.json* soubory.
+> Název je jedno Centrum úkolů co odlišuje od jiného existuje více centra úloh v účtu úložiště sdílené. Pokud máte více aplikací funkcí sdílení účet sdílené úložiště, musí explicitně nakonfigurovat jiné názvy jednotlivých úloh centra *host.json* soubory. Více aplikací funkcí v opačném případě se mezi sebou soutěžit o zprávy, které může způsobit nedefinované chování.
 
 ## <a name="next-steps"></a>Další postup
 

@@ -12,14 +12,14 @@ ms.author: davidph
 ms.reviewer: ''
 manager: cgronlun
 ms.date: 11/30/2018
-ms.openlocfilehash: fc5398b4ffb0b9310b6ab13561830d8d3db7a611
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.openlocfilehash: fb45d5fe549966dbf1635ee23447f90080bbb627
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52725739"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55751289"
 ---
-# <a name="quickstart-use-machine-learning-services-with-r-in-azure-sql-database-preview"></a>Rychlý start: Použití služby Machine Learning Services (s jazykem R) ve službě Azure SQL Database (Preview)
+# <a name="quickstart-use-machine-learning-services-with-r-in-azure-sql-database-preview"></a>Rychlý start: Pomocí služby Machine Learning (s jazykem R) ve službě Azure SQL Database (preview)
 
 Tento článek vysvětluje, jak používat verzi Public Preview služby Machine Learning Services (s jazykem R) ve službě Azure SQL Database. Provede vás základy přesunu dat mezi databází SQL a jazykem R. Vysvětluje také, jak zabalit kód R ve správném formátu do uložené procedury [sp_execute_external_script](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-execute-external-script-transact-sql) pro vyváření, trénování a používání modelů strojového učení v databázi SQL.
 
@@ -47,7 +47,7 @@ K připojení ke službě SQL Database a spouštění skriptů R můžete použ�
 
 Pro účely cvičení [přidání balíčku](#add-package) bude také potřeba na místní počítač nainstalovat jazyk [R](https://www.r-project.org/) a aplikaci [RStudio Desktop](https://www.rstudio.com/products/rstudio/download/).
 
-Tento rychlý start dále vyžaduje, abyste nakonfigurovali pravidlo brány firewall na úrovni serveru. Rychlý start, který vám ukáže, jak to udělat, najdete v článku týkajícím se [vytvoření pravidla brány firewall na úrovni serveru](sql-database-get-started-portal-firewall.md).
+Tento rychlý start dále vyžaduje, abyste nakonfigurovali pravidlo brány firewall na úrovni serveru. Rychlý start, který vám ukáže, jak to udělat, najdete v článku týkajícím se [vytvoření pravidla brány firewall na úrovni serveru](sql-database-server-level-firewall-rule.md).
 
 ## <a name="different-from-sql-server"></a>Rozdíly oproti SQL Serveru
 
@@ -293,7 +293,7 @@ Pomocí jazyka R můžete natrénovat model a uložit ho do tabulky v databázi 
     - Poskytnutí vstupních dat pro použití při trénování modelu.
 
     > [!TIP]
-    > Pokud si potřebujete připomenout lineární modely, doporučujeme projít si tento kurz, který popisuje proces vytvoření modelu s použitím funkce rxLinMod: [Vytváření lineárních modelů](https://docs.microsoft.com/machine-learning-server/r/how-to-revoscaler-linear-model).
+    > Pokud potřebujete občerstvit lineární modelů, doporučujeme vám tento kurz, který popisuje postup přizpůsobení modelu pomocí rxLinMod: [Přizpůsobení lineární modelů](https://docs.microsoft.com/machine-learning-server/r/how-to-revoscaler-linear-model)
 
     Model sestavíte tak, že v kódu R definujete vzorec a jako vstupní parametr předáte data.
 
@@ -533,6 +533,6 @@ Pokud potřebujete použít balíček, který ještě ve vaší databázi SQL ne
 Další informace o službě Machine Learning Services najdete v následujících článcích o službě SQL Server Machine Learning Services. Přestože jsou tyto články určené pro SQL Server, většina uvedených informací platí také pro službu Machine Learning Services (s jazykem R) ve službě Azure SQL Database.
 
 - [SQL Server Machine Learning Services](https://docs.microsoft.com/sql/advanced-analytics/what-is-sql-server-machine-learning)
-- [Kurz: Seznámení s analýzou v databázi pomocí jazyka R na SQL Serveru](https://docs.microsoft.com/sql/advanced-analytics/tutorials/sqldev-in-database-r-for-sql-developers)
+- [Kurz: Zjistěte, analýza v databázi pomocí jazyka R na SQL serveru](https://docs.microsoft.com/sql/advanced-analytics/tutorials/sqldev-in-database-r-for-sql-developers)
 - [Ucelený průvodce datovými vědami pro jazyk R a SQL Server](https://docs.microsoft.com/sql/advanced-analytics/tutorials/walkthrough-data-science-end-to-end-walkthrough)
-- [Kurz: Použití funkcí R v RevoScaleR s daty SQL Serveru](https://docs.microsoft.com/sql/advanced-analytics/tutorials/deepdive-data-science-deep-dive-using-the-revoscaler-packages)
+- [Kurz: Funkce RevoScaleR R s daty formátu SQL Server](https://docs.microsoft.com/sql/advanced-analytics/tutorials/deepdive-data-science-deep-dive-using-the-revoscaler-packages)

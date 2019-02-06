@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 01/22/2018
 ms.author: ramamill
-ms.openlocfilehash: 0ab2105e00836d3f844f58ce41487a50d1bf9348
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
+ms.openlocfilehash: 1d5c2dccabbc2acdddec6176d9b52681d4a18e68
+ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55664008"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55744088"
 ---
 # <a name="deploy-a-configuration-server"></a>Nasazení konfiguračního serveru
 
@@ -122,7 +122,7 @@ Pokud chcete přidat další síťový adaptér ke konfiguračnímu serveru, př
 
 ## <a name="upgrade-the-configuration-server"></a>Upgradujte konfigurační server
 
-Konfigurační server upgradovat na nejnovější verzi, postupujte podle těchto [kroky](vmware-azure-manage-configuration-server.md#upgrade-the-configuration-server). Podrobné pokyny o tom, jak upgradovat všechny součásti Site Recovery, klikněte na tlačítko [tady](https://docs.microsoft.com/azure/site-recovery/service%20updates-how-to).
+Konfigurační server upgradovat na nejnovější verzi, postupujte podle těchto [kroky](vmware-azure-manage-configuration-server.md#upgrade-the-configuration-server). Podrobné pokyny o tom, jak upgradovat všechny součásti Site Recovery, klikněte na tlačítko [tady](service-updates-how-to.md).
 
 ## <a name="manage-the-configuration-server"></a>Správa konfiguračního serveru
 

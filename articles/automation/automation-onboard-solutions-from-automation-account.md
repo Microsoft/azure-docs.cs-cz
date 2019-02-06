@@ -9,12 +9,12 @@ ms.date: 10/16/2018
 ms.topic: conceptual
 manager: carmonm
 ms.custom: mvc
-ms.openlocfilehash: 7d79e7aca0e8aa506abba174668c60fcd2fd4bc2
-ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
+ms.openlocfilehash: d274642c8e35374dee2d584e6285165a15cd3128
+ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/07/2019
-ms.locfileid: "54065439"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55747029"
 ---
 # <a name="onboard-update-management-change-tracking-and-inventory-solutions"></a>Začlenění řešení Update Management, Change Tracking a Inventory
 
@@ -49,6 +49,7 @@ V následující tabulce jsou uvedeny podporované mapování:
 |UKSouth|UKSouth|
 |USGovVirginia|USGovVirginia|
 |EastUS2EUAP|CentralUSEUAP|
+|Západní USA 2|Západní USA 2|
 
 Řešení Change Tracking a Inventory poskytují možnost na virtuálních počítačích [sledovat změny](automation-vm-change-tracking.md) a [inventář](automation-vm-inventory.md). V tomto kroku povolíte řešení na virtuálním počítači.
 
@@ -66,9 +67,9 @@ Každé řešení používá konfiguraci oboru v pracovním prostoru pro cílov�
 
 Pokud vybraný pracovní prostor dosud nemá řešení Update Management nebo Change Tracking, vytvoří se následující konfigurace oboru:
 
-* **MicrosoftDefaultScopeConfig ChangeTracking**
+* **MicrosoftDefaultScopeConfig-ChangeTracking**
 
-* **MicrosoftDefaultScopeConfig aktualizace**
+* **MicrosoftDefaultScopeConfig-Updates**
 
 Pokud je vybraný pracovní prostor už řešení, se znovu nasadí řešení a konfigurace oboru se nepřidal do něj.
 

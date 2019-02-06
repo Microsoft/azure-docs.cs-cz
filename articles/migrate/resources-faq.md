@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 01/11/2019
 ms.author: snehaa
-ms.openlocfilehash: 2c89780722e1f3038f99ab0a4c85cd2d2ecbe624
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.openlocfilehash: 1e60ee5060f5f292ed6d03cf0680d9801a0c04f4
+ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55699481"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55746308"
 ---
 # <a name="azure-migrate---frequently-asked-questions-faq"></a>Azure Migrate – nejčastější dotazy (FAQ)
 
@@ -55,7 +55,7 @@ Azure Migrate aktuálně podporuje Evropa, Spojené státy a Azure Government ja
 Azure Government | USA (Gov) – Virginia
 Asie | Jihovýchodní Asie
 Evropa | Severní Evropa a západní Evropa
-Sjednotí stavy | Východní USA střed USA – západ
+Sjednotí stavy | USA – východ nebo USA (střed) – západ
 
 ### <a name="how-does-the-on-premises-site-connect-to-azure-migrate"></a>Jak v místní lokalitě připojit k Azure Migrate?
 

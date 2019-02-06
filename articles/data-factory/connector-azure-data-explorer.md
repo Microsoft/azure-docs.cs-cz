@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/01/2019
 ms.author: orspod
-ms.openlocfilehash: f492878ffcb888560d2aed269608950927cebd43
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
+ms.openlocfilehash: 8f2a7a953ce2964645c281d9454a73b0cf1a8ff6
+ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55570005"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55747184"
 ---
 # <a name="copy-data-to-or-from-azure-data-explorer-using-azure-data-factory"></a>Kopírování dat do nebo z Průzkumníku dat Azure pomocí Azure Data Factory
 
@@ -50,7 +50,7 @@ Průzkumník dat Azure, propojené služby jsou podporovány následující vlas
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
 | type | **Typ** musí být vlastnost nastavena na **AzureDataExplorer** | Ano |
-| endpoint | Adresa URL koncového bodu clusteru Průzkumník dat Azure, ve formátu jako `https://<clusterName>.kusto.windows.net`. | Ano |
+| endpoint | Adresa URL koncového bodu clusteru Průzkumník dat Azure, ve formátu jako `https://<clusterName>.<regionName>.kusto.windows.net `. | Ano |
 | databáze | Název databáze. | Ano |
 | tenant | Zadejte informace o tenantovi (domény ID tenanta nebo název) v rámci které se nachází vaše aplikace. Načtení ukázáním pomocí myši v pravém horním rohu webu Azure portal. | Ano |
 | servicePrincipalId | Zadejte ID klienta vaší aplikace. | Ano |
@@ -64,7 +64,7 @@ Průzkumník dat Azure, propojené služby jsou podporovány následující vlas
     "properties": {
         "type": "AzureDataExplorer",
         "typeProperties": {
-            "endpoint": "https://<clusterName>.kusto.windows.net",
+            "endpoint": "https://<clusterName>.<regionName>.kusto.windows.net ",
             "database": "<database name>",
             "tenant": "<tenant name/id e.g. microsoft.onmicrosoft.com>",
             "servicePrincipalId": "<service principal id>",
@@ -119,8 +119,8 @@ Ke zkopírování dat z Průzkumníka služby Azure Data, nastavte **typ** vlast
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
 | type | **Typ** vlastnost zdroje aktivity kopírování musí být nastavena na: **AzureDataExplorerSource** | Ano |
-| query | Použijte vlastní dotaz KQL číst data. | Ano |
-| queryTimeout | Zadejte dobu čekání před požadavkem dotazu vyprší časový limit. Výchozí hodnota je 10 minut (00:10:00); povolené maximum je 1 hodina (01: 00:00). | Ne |
+| query | Podle požadavku jen pro čtení [KQL formátu](/azure/kusto/query/). Použijte vlastní dotaz KQL jako odkaz. | Ano |
+| queryTimeout | Doba čekání před požadavkem dotazu vyprší časový limit. Výchozí hodnota je 10 minut (00:10:00); povolené maximum je 1 hodina (01: 00:00). | Ne |
 
 **Příklad:**
 
@@ -162,7 +162,7 @@ Pro kopírování dat do Průzkumníku dat Azure, nastavte vlastnost typ v jímk
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
 | type | **Typ** vlastnost jímky aktivity kopírování musí být nastavena na: **AzureDataExplorerSink** | Ano |
-| ingestionMappingName | Název [sdíleného svazku clusteru mapování](/azure/kusto/management/mappings#csv-mapping) v tabulce. Pokud chcete namapovat sloupce ze zdroje, které chcete prozkoumat Data Azure, můžete použít také aktivita kopírování [mapování sloupců](copy-activity-schema-and-type-mapping.md). | Ne |
+| ingestionMappingName | Název předem vytvořené [sdíleného svazku clusteru mapování](/azure/kusto/management/mappings#csv-mapping) v tabulce Kusto. Pokud chcete namapovat sloupce ze zdroje, které chcete prozkoumat Data Azure, můžete použít také aktivita kopírování [mapování sloupců](copy-activity-schema-and-type-mapping.md). | Ne |
 
 **Příklad:**
 

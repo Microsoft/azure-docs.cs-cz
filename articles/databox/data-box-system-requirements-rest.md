@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: article
-ms.date: 12/11/2018
+ms.date: 02/05/2019
 ms.author: alkohli
-ms.openlocfilehash: e7c2cc0c0ffaae11bd7bf5113c942cdb98397201
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: b36926365b85c576cbe2927c690a30cc64df23d8
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53551290"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55752768"
 ---
 # <a name="azure-data-box-blob-storage-requirements"></a>Požadavky na úložiště Azure Data Box Blob
 
@@ -30,7 +30,7 @@ Doporučujeme, abyste si informace o pečlivě před připojení k úložišti o
 |    Služba šifrování pro neaktivní uložená data                  |    256bitového šifrování AES                             |    256bitového šifrování AES |
 |    Typ účtu úložiště                                 |    Účty pro obecné účely a Azure blob storage    |    Pouze pro obecné účely v1|
 |    Název objektu blob                                            |    1 024 znaků (2 048 bajtů)                     |    880 znaků (1,760 bajty)|
-|    Maximální velikost objektu blob bloku                              |    4,75 TB (100 MB × 50 000 bloků)                   |    4,75 TB (100 MB × 50 000 bloků) technologie Azure Data Box v 1.7 a vyšší.|
+|    Maximální velikost objektu blob bloku                              |    4,75 TB (100 MB × 50 000 bloků)                   |    4,75 TB (100 MB × 50 000 bloků) pro zařízení Azure Data Box v verze 1.8.|
 |    Maximální velikost objektu blob stránky                               |    8 TB                                               |    1 TB                   |
 |    Velikost stránky objektu blob stránky                                  |    512 bajtů                                          |    4 KB                   |
 
@@ -38,8 +38,10 @@ Doporučujeme, abyste si informace o pečlivě před připojení k úložišti o
 
 S úložištěm objektů Blob Data pole jsou podporovány následující verze rozhraní API služby Azure Storage:
 
-Verze Public preview (Azure Data Box 1.7 a vyšší)
+Verze Public preview (Azure Data Box 1.8 a vyšší)
 
+- [2017-11-09](/rest/api/storageservices/version-2017-11-09)
+- [2017-07-29](/rest/api/storageservices/version-2017-07-29)
 - [2017-04-17](/rest/api/storageservices/version-2017-04-17)
 - [2016-05-31](/rest/api/storageservices/version-2016-05-31)
 - [2015-12-11](/rest/api/storageservices/version-2015-12-11)
@@ -60,11 +62,9 @@ Verze Public preview (Azure Data Box 1.7 a vyšší)
 
 ## <a name="supported-azure-client-libraries"></a>Podporované klientské knihovny Azure
 
-Pro úložiště objektů Blob pole dat jsou konkrétní klientské knihovny a požadavky na příponu určitého koncového bodu.
+Pro úložiště objektů Blob pole dat jsou konkrétní klientské knihovny a požadavky na příponu určitého koncového bodu. Koncové body pole datový objekt Blob úložiště nemají úplná parita s nejnovější verzí služby REST API služby Azure Blob Storage, najdete v článku [podporované verze pro Azure Data Box 1.8 a vyšší](#supported-api-versions). Klientské knihovny pro úložiště musíte mít na paměti, která je kompatibilní s rozhraním REST API verze.
 
-Podporované verze rozhraní REST API pro úložiště objektů Blob Data pole jsou 2017-04-17, 2016-05-31, 2015-12-11, 2015-07-08 a 2015-04-05 pro Azure Data Box verzi 1.7 a vyšší. Koncové body pole datový objekt Blob úložiště nemají úplná parita s nejnovější verzí služby REST API služby Azure Blob Storage. Klientské knihovny pro úložiště musíte mít na paměti, která je kompatibilní s rozhraním REST API verze.
-
-### <a name="azure-data-box-17-onwards"></a>Azure Data Box 1.7 a vyšší
+### <a name="azure-data-box-18-onwards"></a>Azure Data Box 1.8 a vyšší
 
 | Klientská knihovna     |Úložiště objektů Blob pole data podporovaná verze     | Odkaz   |     Koncový bod specifikace      |
 |--------------------|--------------------------------------------|--------|---------------------------------|

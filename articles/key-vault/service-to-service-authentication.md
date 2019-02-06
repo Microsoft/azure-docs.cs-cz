@@ -12,12 +12,12 @@ ms.prod: ''
 ms.service: key-vault
 ms.technology: ''
 ms.assetid: 4be434c4-0c99-4800-b775-c9713c973ee9
-ms.openlocfilehash: 216a2e31074f7afe944611de12fe2d45d9d236cf
-ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
+ms.openlocfilehash: f740e6b16426f34adf391af37d365e0d6d672dfe
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/19/2019
-ms.locfileid: "54413749"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55755097"
 ---
 # <a name="service-to-service-authentication-to-azure-key-vault-using-net"></a>Ověřování služba služba do služby Azure Key Vault pomocí rozhraní .NET
 
@@ -232,4 +232,4 @@ Podporovány jsou následující možnosti:
 ## <a name="next-steps"></a>Další postup
 
 - Další informace o [spravovaných identit pro prostředky Azure](/azure/active-directory/managed-identities-azure-resources/).
-- Další informace o [scénáře ověřování služby Azure AD](/azure/active-directory/develop/active-directory-authentication-scenarios#web-browser-to-web-application).
+- Další informace o [scénáře ověřování služby Azure AD](/azure/active-directory/develop/active-directory-authentication-scenarios).

@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 10/05/2018
 ms.author: sharadag
-ms.openlocfilehash: 3df96451838fe90b7d45d1aedd272fc10d798e57
-ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
-ms.translationtype: HT
+ms.openlocfilehash: b6e378263ac8bcd7cfee36209f70f26680988e6e
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2018
-ms.locfileid: "48883971"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55753794"
 ---
-# <a name="tutorial-configure-https-on-a-front-door-custom-domain"></a>Kurz: Konfigurace HTTPS pro vlastní doménu Front Dooru
+# <a name="tutorial-configure-https-on-a-front-door-custom-domain"></a>Kurz: Konfigurace HTTPS pro vlastní doménu branou
 
 V tomto kurzu se dozvíte, jak povolit protokol HTTPS pro vlastní doménu přidruženou ke Front Dooru v části hostitelů front-endu. Použitím protokolu HTTPS pro vlastní doménu (například https:\//www.contoso.com) zajistíte zabezpečené doručování citlivých dat prostřednictvím šifrování TLS/SSL při posílání přes internet. Když se webový prohlížeč připojí k webu přes HTTPS, ověří certifikát zabezpečení webu a to, že je vydán legitimní certifikační autoritou. Tento proces zajišťuje zabezpečení a chrání vaše webové aplikace před útoky.
 
@@ -27,11 +27,11 @@ Služba Azure Front Door Service standardně podporuje HTTPS ve výchozím názv
 
 Mezi klíčové atributy vlastní funkce HTTPS patří mimo jiné:
 
-- Žádné další náklady: Získání a obnovení certifikátů je bezplatné a za provoz protokolu HTTPS se neplatí žádné další poplatky. 
+- Bez dalších poplatků: Neexistují žádné náklady pro získání certifikátů nebo obnovení a bez dalších nákladů pro provoz protokolu HTTPS. 
 
-- Jednoduché povolení: Na webu [Azure Portal](https://portal.azure.com) je k dispozici zřízení jedním kliknutím. K povolení této funkce můžete použít také rozhraní REST API nebo jiné vývojářské nástroje.
+- Jednoduché povolení: Je k dispozici zřízení jedním kliknutím [webu Azure portal](https://portal.azure.com). K povolení této funkce můžete použít také rozhraní REST API nebo jiné vývojářské nástroje.
 
-- Kompletní správa certifikátů je dostupná: Veškeré nákupy a správu certifikátů zajišťujete sami. Certifikáty se zřizují automaticky a před vypršením platnosti se automaticky obnovují. Tím odpadá riziko přerušení služby kvůli vypršení platnosti certifikátu.
+- Kompletní správu certifikátů je k dispozici: Všechny certifikátů zajišťujete a management se postará služba za vás. Certifikáty se zřizují automaticky a před vypršením platnosti se automaticky obnovují. Tím odpadá riziko přerušení služby kvůli vypršení platnosti certifikátu.
 
 V tomto kurzu se naučíte:
 > [!div class="checklist"]
@@ -43,14 +43,14 @@ V tomto kurzu se naučíte:
 
 ## <a name="prerequisites"></a>Požadavky
 
-Před dokončením kroků v tomto kurzu musíte nejprve vytvořit Front Door s minimálně jednou začleněnou vlastní doménou. Další informace najdete v [kurzu přidání vlastní domény do Front Dooru](front-door-custom-domain.md).
+Před dokončením kroků v tomto kurzu musíte nejprve vytvořit Front Door s minimálně jednou začleněnou vlastní doménou. Další informace najdete v tématu [kurzu: Přidání vlastní domény na váš branou](front-door-custom-domain.md).
 
 ## <a name="ssl-certificates"></a>Certifikáty SSL
 
 Pokud chcete povolit protokol HTTPS, abyste mohli zabezpečeně dodávat obsah do vlastní domény Front Dooru, musíte použít certifikát SSL. Můžete použít certifikát, který je spravovaný službou Azure Front Door Service, nebo svůj vlastní certifikát.
 
 
-### <a name="option-1-default-use-a-certificate-managed-by-front-door"></a>Možnost 1 (výchozí): Použití certifikátu spravovaného službou Front Door
+### <a name="option-1-default-use-a-certificate-managed-by-front-door"></a>Možnost 1 (výchozí): Použít certifikát spravuje branou
 
 Když použijete certifikát spravovaný službou Azure Front Door, můžete funkci HTTPS zapnout několika kliknutími. Služba Azure Front Door Service se kompletně postará o úlohy správy certifikátů, jako je třeba nákup nebo obnovení. Jakmile funkci povolíte, proces se okamžitě zahájí. Pokud už je vlastní doména namapovaná na výchozího hostitele front-endu Front Dooru (`{hostname}.azurefd.net`), není potřeba žádná další akce. Front Door postup zpracuje a dokončí vaši žádost automaticky. Pokud je ale vaše vlastní doména namapovaná jinde, musíte vlastnictví domény ověřit prostřednictvím e-mailu.
 
@@ -67,15 +67,15 @@ Pokud chcete povolit HTTPS pro vlastní doménu, postupujte následovně:
 5. Pokračujte k části [Ověření domény](#validate-the-domain).
 
 
-### <a name="option-2-use-your-own-certificate"></a>Možnost 2: Použití vlastního certifikátu
+### <a name="option-2-use-your-own-certificate"></a>Option 2: Použít vlastní certifikát
 
 K povolení funkce HTTPS můžete použít vlastní certifikát. Tento proces se provádí prostřednictvím integrace s Azure Key Vault, která vám umožní bezpečně ukládat vaše certifikáty. Služba Azure Front Door Service používá tento zabezpečený mechanismus k získání vašeho certifikátu a vyžaduje několik dalších kroků. Když vytváříte svůj certifikát SSL, musíte ho vytvořit s povolenou certifikační autoritou (CA). Pokud použijete nepovolenou certifikační autoritu, vaše žádost se odmítne. Seznam povolených certifikačních autorit najdete v tématu s popisem [povolených certifikačních autorit pro umožnění vlastního HTTPS ve službě Azure Front Door Service](front-door-troubleshoot-allowed-ca.md).
 
 #### <a name="prepare-your-azure-key-vault-account-and-certificate"></a>Příprava účtu a certifikátu Azure Key Vault
  
-1. Azure Key Vault: Musíte mít účet Azure Key Vault běžící v rámci stejného předplatného jako Front Door, pro který chcete vlastní HTTPS povolit. Pokud účet Azure Key Vault nemáte, vytvořte ho.
+1. Azure Key Vault: Musíte mít spuštěný účet služby Azure Key Vault ve stejném předplatném jako přední dveře, který chcete povolit vlastní protokol HTTPS. Pokud účet Azure Key Vault nemáte, vytvořte ho.
  
-2. Certifikáty Azure Key Vault: Pokud už certifikát máte, můžete ho nahrát přímo do vašeho účtu Azure Key Vault, nebo můžete vytvořit nový certifikát přímo prostřednictvím služby Azure Key Vault z jedné z certifikačních autorit, se kterými se Azure Key Vault integruje.
+2. Azure Key Vault certificates: Pokud už máte certifikát, nahrajte ho přímo do vašeho účtu služby Azure Key Vault nebo vytvořit nový certifikát přímo prostřednictvím Azure Key Vault z některého z partnerů certifikační autority služby Azure Key Vault se integruje s.
 
 > [!WARNING]
 > </br> - Služba Azure Front Door Service v současnosti podporuje jen účty Key Vault v rámci stejného předplatného, jako je konfigurace Front Dooru. Pokud vyberete účet v rámci jiného předplatného, dojde k chybě.
@@ -143,7 +143,7 @@ Záznam CNAME by měl mít následující formát, kde *Název* je název vaší
 |-----------------|-------|-----------------------|
 | www.contoso.com | CNAME | contoso.azurefd.net |
 
-Další informace o záznamech CNAME najdete v tématu popisujícím [vytvoření záznamu DNS CNAME](https://docs.microsoft.com/azure/cdn/cdn-map-content-to-custom-domain#create-the-cname-dns-records).
+Další informace o záznamech CNAME najdete v tématu popisujícím [vytvoření záznamu DNS CNAME](https://docs.microsoft.com/azure/cdn/cdn-map-content-to-custom-domain).
 
 Pokud je váš záznam CNAME ve správném formátu, DigiCert automaticky ověří váš název vlastní domény a vytvoří pro váš název domény vyhrazený certifikát. DigiCert vám neodešle ověřovací e-mail a vy nebudete muset potvrzovat svou žádost. Certifikát je platný jeden rok a před vypršením platnosti se automaticky obnoví. Pokračujte k části [Čekání na rozšíření](#wait-for-propagation). 
 
@@ -259,7 +259,7 @@ Následující tabulka ukazuje průběh operace, která proběhne při zákazu H
     Ne, záznam CAA (Certificate Authority Authorization) se v současné době nevyžaduje. Pokud ho však máte, musí jako platnou certifikační autoritu zahrnovat DigiCert.
 
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
-- Přečtěte si, jak [vytvořit Front Door](quickstart-create-front-door.md).
-- Přečtěte si, [jak Front Door funguje](front-door-routing-architecture.md).
+- Přečtěte si, jak [vytvořit službu Front Door](quickstart-create-front-door.md).
+- Přečtěte si, [jak služba Front Door funguje](front-door-routing-architecture.md).

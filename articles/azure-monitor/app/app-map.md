@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 12/17/2018
 ms.reviewer: sdash
 ms.author: mbullwin
-ms.openlocfilehash: 238b75681ec525187ea27f60ac8b21b05b13954d
-ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
+ms.openlocfilehash: f2bd1d863a7900b50712eb23c1088c6b271befa3
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/07/2019
-ms.locfileid: "54063110"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55755885"
 ---
 # <a name="application-map-triage-distributed-applications"></a>Mapa aplikace: Třídění distribuovaných aplikací
 
@@ -191,7 +191,7 @@ Další informace o tom, jak přepsat vlastnost cloud_RoleName inicializátory t
 
 Pokud máte problémy dostat se mapa aplikace fungovat podle očekávání, proveďte následující kroky:
 
-1. Ujistěte se, že používáte oficiálně podporovaná sada SDK. Sady SDK nepodporuje/community nemusí podporovat korelace.
+1. Ujistěte se, že používáte oficiálně podporovanou sadu SDK. Nepodporované nebo komunitní sady SDK nemusí podporovat korelaci.
 
     Projít tento [článku](https://docs.microsoft.com/azure/application-insights/app-insights-platforms) seznam podporovaných sad SDK.
 
@@ -199,9 +199,9 @@ Pokud máte problémy dostat se mapa aplikace fungovat podle očekávání, prov
 
 3. Pokud používáte Azure Functions s C#, proveďte upgrade na [funkce V2](https://docs.microsoft.com/azure/azure-functions/functions-versions).
 
-4. Potvrďte [cloud_RoleName](app-map.md#Set-cloud-RoleName) je správně nakonfigurovaný.
+4. Potvrďte [cloud_RoleName](app-map.md#set-cloudrolename) je správně nakonfigurovaný.
 
-5. Pokud jste chybí závislost, ujistěte se, že je v seznamu [automaticky shromažďovaných závislostí](https://docs.microsoft.com/azure/application-insights/auto-collect-dependencies). Pokud ne, můžete dál sledovat ručně pomocí [sledování volání závislosti](https://docs.microsoft.com/azure/application-insights/app-insights-api-custom-events-metrics#trackdependency).
+5. Pokud vám chybí závislost, ujistěte se, že je v seznamu [automaticky shromažďovaných závislostí](https://docs.microsoft.com/azure/application-insights/auto-collect-dependencies). Pokud ne, můžete ji stále najít ručně pomocí [volání TrackDependency](https://docs.microsoft.com/azure/application-insights/app-insights-api-custom-events-metrics#trackdependency).
 
 ## <a name="portal-feedback"></a>Portálu zpětné vazby
 Pokud chcete poskytnout zpětnou vazbu, použijte možnost zpětnou vazbu.

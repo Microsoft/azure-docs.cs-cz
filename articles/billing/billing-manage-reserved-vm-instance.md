@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/08/2018
+ms.date: 01/30/2019
 ms.author: banders
-ms.openlocfilehash: 257e9f72f21d523dfa2390814b786d1963dd671c
-ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
+ms.openlocfilehash: 36800071d5e0080ef5d1d791eed12587b114df78
+ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/25/2019
-ms.locfileid: "54904000"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55743629"
 ---
 # <a name="manage-reservations-for-azure-resources"></a>Správa rezervací pro prostředky Azure
 
@@ -36,11 +36,11 @@ Chcete-li aktualizovat obor rezervace, rezervaci:
 2. Vyberte **všechny služby** > **rezervace**.
 3. Vyberte rezervace.
 4. Vyberte **Nastavení** > **Konfigurace**.
-5. Změna oboru. 
+5. Změna oboru.
 
 Pokud změníte z sdílí jeden obor, můžete vybrat pouze pokud jste vlastníkem předplatného. Jenom předplatná v rámci stejného kontextu fakturace jako rezervace, je možné vybrat.
 
-Obor se vztahuje pouze na nabídku průběžných plateb MS-AZR - 0003P, nabídka Enterprise MS-AZR - 0017P nebo typy předplatného poskytovatele CSP. Smlouvy enterprise předplatná pro vývoj/testování nejsou nárok na získání sleva za rezervaci.
+Obor se vztahuje pouze na nabídku průběžných plateb, které MS-AZR - 0003 P nebo MS-AZR - 0023 P, Enterprise nabízí MS-AZR - 0017 P nebo MS-AZR - 0148 P nebo typy předplatného poskytovatele CSP.
 
 ## <a name="add-or-change-users-who-can-manage-a-reservation"></a>Přidání nebo změna uživatelů, kteří můžou spravovat rezervace
 

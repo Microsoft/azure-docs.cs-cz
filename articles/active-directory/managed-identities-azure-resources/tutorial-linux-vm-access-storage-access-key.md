@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 11/20/2017
 ms.author: priyamo
-ms.openlocfilehash: 7617b19fe4f59b582b878d5dfe365810963ff51e
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 2b27553e16225a7bc0d9ca74c7ec013a231d64e6
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55158090"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55755464"
 ---
 # <a name="tutorial-use-a-linux-vm-system-assigned-managed-identity-to-access-azure-storage-via-access-key"></a>Kurz: Použití spravované identity systém přiřadil virtuálního počítače s Linuxem pro přístup k Azure Storage prostřednictvím přístupového klíče
 
@@ -198,4 +198,4 @@ Odpověď:
 V tomto kurzu jste se dozvěděli, jak použít spravovanou identitu přiřazenou systémem na virtuálním počítači s Linuxem pro přístup k Azure Storage pomocí přístupového klíče.  Další informace o přístupových klíčích Azure Storage:
 
 > [!div class="nextstepaction"]
->[Správa přístupových klíčů k úložišti](/azure/storage/common/storage-create-storage-account#manage-your-storage-access-keys)
+>[Správa přístupových klíčů k úložišti](/azure/storage/common/storage-create-storage-account)

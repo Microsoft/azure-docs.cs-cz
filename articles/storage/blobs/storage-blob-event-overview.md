@@ -8,12 +8,12 @@ ms.date: 01/30/2018
 ms.topic: article
 ms.service: storage
 ms.subservice: blobs
-ms.openlocfilehash: 6c2a642c30be79c907286e4ffac6bcea40d86fcd
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 4bc683908646a5c05fee14f721e2c26482518947
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55247744"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55751391"
 ---
 # <a name="reacting-to-blob-storage-events"></a>Reakce na události služby Blob storage
 
@@ -90,7 +90,7 @@ Tady je příklad BlobCreated události:
 Další informace najdete v tématu [schématu událostí úložiště objektů Blob](../../event-grid/event-schema-blob-storage.md).
 
 ## <a name="filtering-events"></a>Filtrování událostí
-Odběry událostí objektu BLOB je možné filtrovat podle typu události a tak, že název kontejneru a název objektu blob objektu, který byl vytvořen nebo odstranit.  Filtry lze použít u odběrů událostí buď během [vytváření](/cli/azure/eventgrid/event-subscription?view=azure-cli-latest#az_eventgrid_event_subscription_create) odběru události nebo [později](/cli/azure/eventgrid/event-subscription?view=azure-cli-latest#az_eventgrid_event_subscription_update). Předmět filtry ve službě Event Grid práci na základě "začíná řetězcem" a "končí řetězcem" shody, takže události s odpovídající předmětem doručovaly do odběratele. 
+Odběry událostí objektu BLOB je možné filtrovat podle typu události a tak, že název kontejneru a název objektu blob objektu, který byl vytvořen nebo odstranit.  Filtry lze použít u odběrů událostí buď během [vytváření](/cli/azure/eventgrid/event-subscription?view=azure-cli-latest) odběru události nebo [později](/cli/azure/eventgrid/event-subscription?view=azure-cli-latest). Předmět filtry ve službě Event Grid práci na základě "začíná řetězcem" a "končí řetězcem" shody, takže události s odpovídající předmětem doručovaly do odběratele. 
 
 Předmět události služby Blob storage používá formát:
 

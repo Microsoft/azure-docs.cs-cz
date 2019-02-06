@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.date: 07/03/2018
 ms.author: lahugh
 ms.custom: mvc
-ms.openlocfilehash: 10f84a758bdb2e01793aee06cba59a29b5639775
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: df56fd00d5a5ff2f9e9000b39939d0f33b3737d5
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55470956"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55752343"
 ---
 # <a name="quickstart-run-your-first-batch-job-with-the-azure-cli"></a>Rychlý start: Spuštění první úlohy služby Batch pomocí rozhraní příkazového řádku Azure
 
@@ -139,7 +139,7 @@ Výstup tohoto příkazu obsahuje řadu podrobností, ale poznamenejte si `exitC
 
 ## <a name="view-task-output"></a>Zobrazení výstupu úkolu
 
-K zobrazení seznamu souborů, které úkol vytvořil ve výpočetním uzlu, použijte příkaz [az batch task file list](/cli/azure/batch/task#az-batch-task-file-list). Následující příkaz zobrazí seznam souborů, které vytvořil úkol *mytask1*: 
+K zobrazení seznamu souborů, které úkol vytvořil ve výpočetním uzlu, použijte příkaz [az batch task file list](/cli/azure/batch/task). Následující příkaz zobrazí seznam souborů, které vytvořil úkol *mytask1*: 
 
 ```azurecli-interactive 
 az batch task file list \
@@ -160,7 +160,7 @@ stderr.txt  https://mybatchaccount.eastus2.batch.azure.com/jobs/myjob/tasks/myta
 
 ```
 
-Pokud chcete některý z výstupních souborů stáhnout do místního adresáře, použijte příkaz [az batch task file download](/cli/azure/batch/task#az-batch-task-file-download). V tomto příkladu je výstup úkolu v souboru `stdout.txt`. 
+Pokud chcete některý z výstupních souborů stáhnout do místního adresáře, použijte příkaz [az batch task file download](/cli/azure/batch/task). V tomto příkladu je výstup úkolu v souboru `stdout.txt`. 
 
 ```azurecli-interactive
 az batch task file download \

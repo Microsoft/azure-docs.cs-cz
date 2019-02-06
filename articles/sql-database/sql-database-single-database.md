@@ -11,17 +11,17 @@ author: CarlRabeler
 ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
-ms.date: 01/30/2019
-ms.openlocfilehash: f1a580b5c51ec589ef9a52b07d62e091ae712964
-ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
+ms.date: 02/04/2019
+ms.openlocfilehash: a2500988b174e49870f4da7087b3fa4c81f3c77a
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55513523"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55754978"
 ---
 # <a name="what-is-a-single-database-in-azure-sql-database"></a>Co je izolované databáze ve službě Azure SQL Database
 
-Izolovaná databáze je samostatná databáze ve službě Azure SQL Database s vlastní sadou prostředků a spravovat přes server SQL Database. Každá databáze s izolovanou databázi, je izolovaná od všech ostatních a, každá má svou vlastní úroveň služby v rámci [nákupní model založený na DTU](sql-database-service-tiers-dtu.md) nebo [nákupní model založený na virtuálních jádrech](sql-database-service-tiers-vcore.md) a garantovanou výpočty velikosti.
+Možnost nasazení izolovaná databáze vytvoří samostatná databáze ve službě Azure SQL Database s vlastní sadou prostředků a spravuje se přes server SQL Database. Každá databáze s izolovanou databázi, je izolovaná od všech ostatních a, každá má svou vlastní úroveň služby v rámci [nákupní model založený na DTU](sql-database-service-tiers-dtu.md) nebo [nákupní model založený na virtuálních jádrech](sql-database-service-tiers-vcore.md) a garantovanou výpočty velikosti.
 
 > [!IMPORTANT]
 > Izolovaná databáze je jednou tři možnosti nasazení pro službu Azure SQL Database. Další dvě [elastické fondy](sql-database-elastic-pool.md) a [spravovanou instanci](sql-database-managed-instance.md).
@@ -57,6 +57,6 @@ SQL Database nabízí celou řadu [integrované zabezpečení a dodržování p�
 
 ## <a name="next-steps"></a>Další postup
 
-- Pokud chcete rychle začít pracovat s izolovanou databázi, [jednotné guide.md rychlý start databáze](sql-database-quickstart-guide.md).
+- Pokud chcete rychle začít pracovat s izolovanou databázi, [jednotné guide.md rychlý start databáze](sql-database-single-database-quickstart-guide.md).
 - Další informace o migraci databáze SQL serveru do Azure najdete v tématu [migrace do služby Azure SQL Database](sql-database-cloud-migrate.md).
 - Informace o podporovaných funkcích najdete v tématu [Funkce](sql-database-features.md).

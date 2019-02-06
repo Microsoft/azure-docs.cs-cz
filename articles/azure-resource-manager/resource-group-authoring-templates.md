@@ -10,14 +10,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 02/04/2019
+ms.date: 02/05/2019
 ms.author: tomfitz
-ms.openlocfilehash: 77dda85c920fda90b8379445a79569413b2dd463
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.openlocfilehash: 07f4d170ec6f9d71ea3ecdabd88f4438fb7c1c69
+ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55691501"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55745585"
 ---
 # <a name="understand-the-structure-and-syntax-of-azure-resource-manager-templates"></a>Princip struktury a syntaxe šablon Azure Resource Manageru
 
@@ -318,22 +318,30 @@ Při nasazování šablony prostřednictvím portálu, text, který zadáte v po
 
 ![Zobrazit tip parametru](./media/resource-group-authoring-templates/show-parameter-tip.png)
 
-Pro **prostředky**, přidejte `comments` elementu.
+Pro **prostředky**, přidejte `comments` element nebo objekt metadat. Následující příklad ukazuje element komentáře a objekt metadat.
 
 ```json
 "resources": [
-    {
-      "comments": "Storage account used to store VM disks",
-      "type": "Microsoft.Storage/storageAccounts",
-      "name": "[variables('storageAccountName')]",
-      "apiVersion": "2018-07-01",
-      "location": "[parameters('location')]",
-      "sku": {
-        "name": "[variables('storageAccountType')]"
-      },
-      "kind": "Storage",
-      "properties": {}
+  {
+    "comments": "Storage account used to store VM disks",
+    "apiVersion": "2018-07-01",
+    "type": "Microsoft.Storage/storageAccounts",
+    "name": "[concat('storage', uniqueString(resourceGroup().id))]",
+    "location": "[parameters('location')]",
+    "metadata": {
+      "comments": "These tags are needed for policy compliance."
     },
+    "tags": {
+      "Dept": "[parameters('deptName')]",
+      "Environment": "[parameters('environment')]"
+    },
+    "sku": {
+      "name": "Standard_LRS"
+    },
+    "kind": "Storage",
+    "properties": {}
+  }
+]
 ```
 
 Můžete přidat `metadata` objekt skoro kdekoli ve vaší šabloně. Objekt ignoruje Resource Manageru, ale JSON editor možná by vás varovala, že vlastnost není platný. V objektu definujte vlastnosti, které potřebujete.
@@ -363,14 +371,27 @@ Pro **výstupy**, přidejte objekt metadat výstupní hodnotu.
 
 Objekt metadat nelze přidat do uživatelem definované funkce.
 
-Obecné komentáře můžete použít `//` však tato syntaxe způsobí chybu při nasazení šablony pomocí rozhraní příkazového řádku Azure.
+Vložené komentáře, můžete použít `//` , ale tato syntaxe nefunguje s všechny nástroje. Pokud chcete nasadit šablonu pomocí vložené komentáře nelze použít rozhraní příkazového řádku Azure. A editoru portálu šablony nelze použít pro práci na šablonách s vložené komentáře. Pokud chcete přidat tento styl komentář, ujistěte se, nástrojů, které používáte podporu vložené JSON komentáře.
 
 ```json
-"variables": {
-    // Create unique name for the storage account
-    "storageAccountName": "[concat('store', uniquestring(resourceGroup().id))]"
-},
+{
+  "type": "Microsoft.Compute/virtualMachines",
+  "name": "[variables('vmName')]", // to customize name, change it in variables
+  "location": "[parameters('location')]", //defaults to resource group location
+  "apiVersion": "2018-10-01",
+  "dependsOn": [ // storage account and network interface must be deployed first
+      "[resourceId('Microsoft.Storage/storageAccounts/', variables('storageAccountName'))]",
+      "[resourceId('Microsoft.Network/networkInterfaces/', variables('nicName'))]"
+  ],
 ```
+
+V nástroji VS Code můžete nastavit režim jazyka do formátu JSON s komentáři. Vložené komentáře se už nebude označena jako neplatná. Chcete-li změnit režim:
+
+1. Otevřete výběr jazyka režimu (Ctrl + K M)
+
+1. Vyberte **JSON s komentáři**.
+
+   ![Vybrat režim jazyka](./media/resource-group-authoring-templates/select-json-comments.png)
 
 ## <a name="template-limits"></a>Omezení šablony
 
@@ -393,4 +414,4 @@ Některá omezení šablony mohou překročit pomocí vnořené šablony. Dalš�
 * Podrobnosti o funkce, které můžete použít z v rámci šablony najdete v tématu [funkce šablon Azure Resource Manageru](resource-group-template-functions.md).
 * Pokud chcete sloučit několik šablon během nasazení, přečtěte si téma [použití propojených šablon s Azure Resource Managerem](resource-group-linked-templates.md).
 * Doporučení o vytváření šablon naleznete v tématu [osvědčené postupy pro šablony Azure Resource Manageru](template-best-practices.md).
-* Doporučení týkající se vytváření šablon Resource Manageru, které můžete používat v globálních oblastech Azure, suverénních cloudech Azure a ve službě Azure Stack, najdete v článku o [vývoji šablon Azure Resource Manageru pro konzistenci cloudu](templates-cloud-consistency.md).
+* Doporučení týkající se vytvoření šablony Resource Manageru, které můžete použít ve všech prostředích Azure a Azure Stack, najdete v tématu [šablon vývoj Azure Resource Manageru pro cloud konzistence](templates-cloud-consistency.md).

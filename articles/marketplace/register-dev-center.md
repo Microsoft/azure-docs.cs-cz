@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 10/05/2018
 ms.author: ellacroi
-ms.openlocfilehash: dacc2ca995bebd0ae65d9c8221fc1954687949ee
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 66daa71ffbe97e9f5374eedd7f51e5afe02f0b94
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55179833"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55755522"
 ---
 # <a name="register-in-dev-center"></a>Registrace ve službě Dev Center  
 K ověření, že nejste přihlášeni k účtu osobní prohlížeče, otevřete nový Internet Explorer InPrivate nebo Incognito Chrome relaci procházení.  
@@ -78,7 +78,7 @@ K ověření, že nejste přihlášeni k účtu osobní prohlížeče, otevřete
     | Model fakturace | Další postup |  
     |:--- |:--- |  
     | Free | Přejděte na portál partnerů cloudu.<ul> <li>K publikování na webu Azure Marketplace, navštivte portál partnerů cloudu stránky umístění [cloudpartner.azure.com](https://cloudpartner.azure.com).</li> </ul> |  
-    | Obchodní (transact) | Aktualizujte informace o vašem účtu.<ul> <li>Další informace o přidání informací o účtu, najdete [jak informace přidat bance a daň](#how-to-add-bank-and-tax-information) oddílu.</li> </ul> |  
+    | Obchodní (transact) | Aktualizujte informace o vašem účtu.<ul> <li>Další informace o přidání informací o účtu, najdete [jak informace přidat bance a daň](#add-bank-information) oddílu.</li> </ul> |  
 
     *   Příklad obchodní nabídka je nabídka virtuálního počítače s na hodinový model fakturace.  
 
@@ -146,7 +146,7 @@ Bankovní a daň informace jsou nezbytné pro všechny obchodní nabídky pomoc�
 > Vydavatele, kteří publikují v Transact typ seznamu: Virtuální počítač, aplikace Azure: řešení šablony a spravované aplikace.  
 
 *   **Proč je potřeba účet vývojáře pro?**
-> Je vyžaduje aby Microsoft mohl fakturovat zákazníka jménem vydavatele pro typ seznamu příkazů jazyka Transact účtu dev Center. Účtu centra vývojářů pro registraci umožňuje společnosti Microsoft pro ověření právní, daňové a bankovní informace pro vaši společnost. Další informace klikněte [tady.](https://docs.microsoft.com/azure/marketplace/become-publisher#register-in-dev-center)
+> Je vyžaduje aby Microsoft mohl fakturovat zákazníka jménem vydavatele pro typ seznamu příkazů jazyka Transact účtu dev Center. Účtu centra vývojářů pro registraci umožňuje společnosti Microsoft pro ověření právní, daňové a bankovní informace pro vaši společnost. Další informace klikněte [tady.](https://docs.microsoft.com/azure/marketplace/become-publisher)
 
 *   **Jak mám začít s registrací Dev Center?**
 > Aby se zabránilo duplikování, ověřte, že vaše společnost ještě nemá účet Dev Center zaregistrovaný. Musíte být přihlášeni pomocí účtu Microsoft, který chcete přidružit k svému vývojářskému účtu. Pokud ještě nemáte účet Microsoft, můžete vytvořit nový účet [tady.](https://signup.live.com/signup?contextid=AEB123C8F2B1DA7A&bk=1529968434&ru=https%3a%2f%2flogin.live.com%2flogin.srf%3fcontextid%3dAEB123C8F2B1DA7A%26mkt%3dEN-US%26lc%3d1033%26bk%3d1529968434&uiflavor=web&uaid=9987e727fedb459780d95c1b9e46c82c&mkt=EN-US&lc=1033&lic=1) (Příklad: contoso_marketplace@live.com) pro přihlášení a registraci, přejděte na https://dev.windows.com/en-us/registration?accountProgram=Azure
@@ -184,7 +184,7 @@ Bankovní a daň informace jsou nezbytné pro všechny obchodní nabídky pomoc�
 > Přiřazení názvu dočasného společnosti, kontaktujte podporu na [developer.microsoft.com/windows/support](https://developer.microsoft.com/windows/support) a poskytněte vaše firemní dokumenty registrace.
 
 *   **Jak mohu přidat informace o tomto výplata a daň?**
-> Nebude možné publikovat transact nabídky bez dokončení daňové a bankovní informace ve svém účtu centra vývojářů.  Další informace o přidání informací o účtu [jak informace přidat bance a daň.](https://docs.microsoft.com/azure/marketplace/register-dev-center#how-to-add-bank-and-tax-information)
+> Nebude možné publikovat transact nabídky bez dokončení daňové a bankovní informace ve svém účtu centra vývojářů.  Další informace o přidání informací o účtu [jak informace přidat bance a daň.](https://docs.microsoft.com/azure/marketplace/register-dev-center)
 
 *   **Můžete změnit přihlašovací účet Dev Center Microsoft?**
 > Ne. Po vytvoření Dev Center vlastníka účtu nejde změnit. Je třeba začít úplně účtu Dev Center s požadovaný účet Microsoft.

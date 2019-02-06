@@ -1,23 +1,26 @@
 ---
-title: Vytvoření objektu blob v Azure Storage pomocí sady Java SDK pro úložiště v7 | Dokumentace Microsoftu
+title: Jak vytvořit objekt blob ve službě Azure Storage pomocí klientské knihovny pro Javu v7 | Dokumentace Microsoftu
 description: V tomto rychlém startu vytvoříte v úložišti objektů (blob) účet úložiště a kontejner. Potom použijte klientskou knihovnu pro úložiště Azure pro Javu v7 nahrání objektu blob do služby Azure Storage, stažení objektu blob a výpisu objektů BLOB v kontejneru.
 services: storage
 author: roygara
 ms.custom: mvc
 ms.service: storage
 ms.topic: conceptual
-ms.date: 11/14/2018
+ms.date: 02/04/2019
 ms.author: rogarana
-ms.openlocfilehash: 18ba3d70951cd59f59b566c8bfff2403a32e4874
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
+ms.openlocfilehash: 3bf82f37752009a488512d720093bc9c595dff8e
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55730455"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55753210"
 ---
-# <a name="how-to-upload-download-and-list-blobs-using-java-sdk-v7"></a>Jak nahrávání, stahování a výpis objektů BLOB pomocí sady Java SDK v7
+# <a name="how-to-upload-download-and-list-blobs-using-the-client-library-for-java-v7"></a>Postup nahrání, stažení a výpis objektů BLOB pomocí klientské knihovny pro Javu v7
 
-V této příručce s postupy a zjistěte, jak můžete použít Javu k nahrání, stažení a výpis objektů BLOB bloku v kontejneru v úložišti objektů Blob v Azure.
+V této příručce s postupy a zjistěte, jak používat klientskou knihovnu pro Javu v7 k nahrávání, stahování a výpis objektů BLOB bloku v kontejneru v úložišti objektů Blob v Azure.
+
+> [!TIP]
+> Nejnovější verzi klientské knihovny Azure Storage pro Javu je v10. Společnost Microsoft doporučuje, že používáte nejnovější verzi klientské knihovny, pokud je to možné. Chcete-li začít používat v10, přečtěte si téma [rychlý start: Nahrávání, stahování a výpis objektů BLOB s využitím Java Storage SDK V10](storage-quickstart-blobs-java-v10.md).
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -206,8 +209,6 @@ sourceFile.deleteOnExit();
 V tomto článku jste zjistili, jak přenášet soubory mezi místním diskem a úložištěm objektů Blob v Azure pomocí Java. Další informace o práci s Javou najdete v našem úložišti zdrojového kódu na GitHubu.
 
 > [!div class="nextstepaction"]
-> [Sada SDK služby Azure Storage pro Javu](https://github.com/azure/azure-storage-java) 
-> [Referenční informace k rozhraní API](https://docs.microsoft.com/java/azure/?view=azure-java-stable)
-> [Vzorové kódy pro Javu](../common/storage-samples-java.md)
-
-* Další informace o Průzkumníku služby Storage a objektech blob najdete v tématu [Správa prostředků úložiště objektů blob v Azure pomocí Průzkumníka služby Storage](../../vs-azure-tools-storage-explorer-blobs.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json).
+> [Microsoft Azure Storage SDK pro Javu v10](https://github.com/azure/azure-storage-java) 
+> [Java API – referenční informace](https://docs.microsoft.com/java/azure/)
+> [ukázky kódu pro jazyk Java](../common/storage-samples-java.md)

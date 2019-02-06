@@ -11,18 +11,18 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/30/2019
 ms.author: tomfitz
-ms.openlocfilehash: 064cef04ac609b0e6db5f55d9973e3974af8e0cc
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.openlocfilehash: ce95406cbcb6d9514159d84d653a9ff361713aec
+ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55494880"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55744394"
 ---
 # <a name="create-resource-groups-and-resources-at-the-subscription-level"></a>Vytvoření skupiny prostředků a prostředků na úrovni předplatného
 
 Obvykle nasazení prostředků Azure do skupiny prostředků ve vašem předplatném Azure. Ale můžete také vytvářet skupiny prostředků Azure a vytvářet prostředky Azure na úrovni předplatného. K nasazení šablon na úrovni předplatného, použijte rozhraní příkazového řádku Azure a Azure Powershellu. Na webu Azure portal nepodporuje nasazení na úrovni předplatného.
 
-Chcete-li vytvořit skupinu prostředků v šabloně Azure Resource Manageru, definujte [ **Microsoft.Resources/resourceGroups** ](/azure/templates/microsoft.resources/allversions.md) prostředků s názvem a umístění pro skupinu prostředků. Můžete vytvořit skupinu prostředků a nasazování prostředků do této skupiny prostředků ve stejné šabloně. Prostředky, které můžete nasadit na úrovni předplatného patří: [Zásady](../azure-policy/azure-policy-introduction.md), a [řízení přístupu na základě rolí](../role-based-access-control/overview.md).
+Chcete-li vytvořit skupinu prostředků v šabloně Azure Resource Manageru, definujte [ **Microsoft.Resources/resourceGroups** ](/azure/templates/microsoft.resources/allversions) prostředků s názvem a umístění pro skupinu prostředků. Můžete vytvořit skupinu prostředků a nasazování prostředků do této skupiny prostředků ve stejné šabloně. Prostředky, které můžete nasadit na úrovni předplatného patří: [Zásady](../azure-policy/azure-policy-introduction.md), a [řízení přístupu na základě rolí](../role-based-access-control/overview.md).
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -101,7 +101,7 @@ Následující šablony vytvoří prázdné skupiny prostředků.
 }
 ```
 
-Schéma šablony lze nalézt v [tady](/azure/templates/microsoft.resources/allversions.md). Podobně jako šablony lze nalézt v [Githubu](https://github.com/Azure/azure-quickstart-templates/tree/master/subscription-level-deployments).
+Schéma šablony lze nalézt v [tady](/azure/templates/microsoft.resources/allversions). Podobně jako šablony lze nalézt v [Githubu](https://github.com/Azure/azure-quickstart-templates/tree/master/subscription-level-deployments).
 
 ## <a name="create-multiple-resource-groups"></a>Vytvořte více skupin prostředků
 

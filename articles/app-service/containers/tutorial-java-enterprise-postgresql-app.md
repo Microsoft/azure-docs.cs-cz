@@ -11,16 +11,16 @@ ms.topic: tutorial
 ms.date: 11/13/2018
 ms.author: jafreebe
 ms.custom: seodec18
-ms.openlocfilehash: 3a668783e8257ef9074d12b30ff0afc3a40325f4
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: a6e6dfb70182d8b4924a184dcebd1d06695911a5
+ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53539717"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55747002"
 ---
 # <a name="tutorial-build-a-java-ee-and-postgres-web-app-in-azure"></a>Kurz: Vytvoření webové aplikace v Azure platformě Java EE určený a Postgres
 
-Tomto kurzu se dozvíte, jak vytvořit webovou aplikaci Java Enterprise Edition (EE) ve službě Azure App Service a její připojení k databázi Postgres. Až budete hotovi, budete mít [WildFly](https://www.wildfly.org/about/) ukládající data ve [databáze Azure pro Postgres](https://azure.microsoft.com/services/postgresql/) běžící v Azure [služby App Service pro Linux](app-service-linux-intro.md).
+Tomto kurzu se dozvíte, jak vytvořit webovou aplikaci Java Enterprise Edition (EE) ve službě Azure App Service a její připojení k databázi Postgres. Až budete hotovi, budete mít [WildFly](https://www.wildfly.org/about/) ukládající data ve [databáze Azure pro Postgres](https://azure.microsoft.com/services/postgresql/) běžící v Azure [App Service v Linuxu](app-service-linux-intro.md).
 
 V tomto kurzu se naučíte, jak:
 > [!div class="checklist"]
@@ -50,40 +50,24 @@ git clone https://github.com/Azure-Samples/wildfly-petstore-quickstart.git
 
 ### <a name="update-the-maven-pom"></a>Aktualizace Maven POM
 
-Aktualizujte Maven POM požadovaný název a skupinu prostředků služby App Service. Tyto hodnoty budou vloženy do modul plug-in Azure, která je dále dolů v _pom.xml_ souboru. Nemusíte předem vytvářet v plánu služby App Service nebo instanci. Modul plug-in Maven vytvoří skupinu prostředků a App Service, pokud ještě neexistuje.
+Modul plug-in Maven Azure aktualizujte požadovaný název a skupinu prostředků služby App Service. Nemusíte předem vytvářet v plánu služby App Service nebo instanci. Modul plug-in Maven vytvoří skupinu prostředků a App Service, pokud ještě neexistuje. 
 
-Posuňte se dolů k `<plugins>` část _pom.xml_ ke kontrole modul plug-in Azure. Část `<plugin>` konfiguraci _pom.xml_ pro azure – webapp-maven-plugin by měl obsahovat následující konfigurace:
+Posuňte se dolů k `<plugins>` část _pom.xml_, řádek 200, aby se změny. 
 
 ```xml
-      <!--*************************************************-->
-      <!-- Deploy to WildFly in App Service Linux           -->
-      <!--*************************************************-->
- 
-      <plugin>
-        <groupId>com.microsoft.azure</groupId>
-        <artifactId>azure-webapp-maven-plugin</artifactId>
-        <version>1.5.0</version>
-        <configuration>
- 
-          <!-- Web App information -->
-          <resourceGroup>${RESOURCEGROUP_NAME}</resourceGroup>
-          <appServicePlanName>${WEBAPP_PLAN_NAME}</appServicePlanName>
-          <appName>${WEBAPP_NAME}</appName>
-          <region>${REGION}</region>
- 
-          <!-- Java Runtime Stack for Web App on Linux-->
-          <linuxRuntime>wildfly 14-jre8</linuxRuntime>
- 
-        </configuration>
-      </plugin>
+<!-- Azure App Service Maven plugin for deployment -->
+<plugin>
+  <groupId>com.microsoft.azure</groupId>
+  <artifactId>azure-webapp-maven-plugin</artifactId>
+  <version>${version.maven.azure.plugin}</version>
+  <configuration>
+    <appName>YOUR_APP_NAME</appName>
+    <resourceGroup>YOUR_RESOURCE_GROUP</resourceGroup>
+    <linuxRuntime>wildfly 14-jre8</linuxRuntime>
+  ...
+</plugin>  
 ```
-
-Nahraďte zástupné symboly názvy požadovaných prostředků:
-```xml
-<azure.plugin.appname>YOUR_APP_NAME</azure.plugin.appname>
-<azure.plugin.resourcegroup>YOUR_RESOURCE_GROUP</azure.plugin.resourcegroup>
-```
-
+Nahraďte `YOUR_APP_NAME` a `YOUR_RESOURCE_GROUP` s názvy vaší služby App Service a skupinu prostředků.
 
 ## <a name="build-and-deploy-the-application"></a>Sestavení a nasazení aplikace
 
@@ -139,12 +123,27 @@ Pro aplikace Java, který umožňuje používat naši databázi Postgres jsme te
 
 ### <a name="add-postgres-credentials-to-the-pom"></a>Přidat přihlašovací údaje Postgres POM
 
-V _pom.xml_ zástupné hodnoty nahraďte Postgres název serveru, přihlašovací jméno správce a heslo. Tyto hodnoty budou vloženy jako proměnné prostředí ve vaší instanci služby App Service při opětovném nasazování aplikace.
+V _pom.xml_, velká písmena zástupné hodnoty nahraďte Postgres název serveru, přihlašovací jméno správce a heslo. Tato pole jsou v rámci modulu plug-in Maven pro Azure. (Nezapomeňte nahradit `YOUR_SERVER_NAME`, `YOUR_PG_USERNAME`, a `YOUR_PG_PASSWORD` v `<value>` značky... není v rozsahu `<name>` značky!)
 
 ```xml
-<azure.plugin.postgres-server-name>SERVER_NAME</azure.plugin.postgres-server-name>
-<azure.plugin.postgres-username>USERNAME@FIRST_PART_OF_SERVER_NAME</azure.plugin.postgres-username>
-<azure.plugin.postgres-password>PASSWORD</azure.plugin.postgres-password>
+<plugin>
+      ...
+      <appSettings>
+      <property>
+        <name>POSTGRES_CONNECTIONURL</name>
+        <value>jdbc:postgresql://YOUR_SERVER_NAME:5432/postgres?ssl=true</value>
+      </property>
+      <property>
+        <name>POSTGRES_USERNAME</name>
+        <value>YOUR_PG_USERNAME</value>
+      </property>
+      <property>
+        <name>POSTGRES_PASSWORD</name>
+        <value>YOUR_PG_PASSWORD</value>
+      </property>
+    </appSettings>
+  </configuration>
+</plugin>
 ```
 
 ### <a name="update-the-java-transaction-api"></a>Aktualizovat transakce Java API
@@ -161,10 +160,10 @@ Dále musíme upravit konfiguraci naše Java transakcí API (JPA) tak, aby naše
 
 Před nasazením překonfigurovaná aplikace, musí aktualizujeme WildFly aplikačním serverem Postgres modul a jeho závislosti. Konfigurace serveru, potřebujeme čtyři soubory v `wildfly_config/` adresáře:
 
-- **postgresql 42.2.5.jar**: Tento soubor JAR je ovladač JDBC pro Postgres. Další informace najdete v tématu [oficiální web](https://jdbc.postgresql.org/index.html).
-- **postgres module.xml**: Tento soubor XML deklaruje název modulu Postgres (org.postgres). Určuje také prostředky a závislosti, které jsou nezbytné pro modul, který se má použít.
+- **postgresql-42.2.5.jar**: Tento soubor JAR je ovladač JDBC pro Postgres. Další informace najdete v tématu [oficiální web](https://jdbc.postgresql.org/index.html).
+- **postgres-module.xml**: Tento soubor XML deklaruje název modulu Postgres (org.postgres). Určuje také prostředky a závislosti, které jsou nezbytné pro modul, který se má použít.
 - **jboss_cli_commands.cl**: Tento soubor obsahuje konfiguračních příkazů, které budou spuštěny na JBoss rozhraní příkazového řádku. Příkazy přidejte modul Postgres WildFly aplikační server, zadejte přihlašovací údaje, deklarovat název JNDI, nastavit mezní hodnotu časového limitu, atd. Pokud nejste obeznámeni s JBoss CLI, přečtěte si článek [oficiální dokumentaci](https://access.redhat.com/documentation/red_hat_jboss_enterprise_application_platform/7.0/html-single/management_cli_guide/#how_to_cli).
-- **startup_script.SH**: Nakonec tento skript prostředí se spustí pokaždé, když je spuštěná instance vaší služby App Service. Skript provádí pouze jednu funkci: přesměrujete příkazy v `jboss_cli_commands.cli` JBoss rozhraní příkazového řádku.
+- **startup_script.sh**: Nakonec tento skript prostředí se spustí pokaždé, když je spuštěná instance vaší služby App Service. Skript provádí pouze jednu funkci: přesměrujete příkazy v `jboss_cli_commands.cli` JBoss rozhraní příkazového řádku.
 
 Důrazně doporučujeme čtení obsahu těchto souborů, zejména _jboss_cli_commands.cli_.
 

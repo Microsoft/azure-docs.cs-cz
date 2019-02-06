@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 03/20/2018
 ms.author: magoedte
-ms.openlocfilehash: 29b76620494fbb325f8c43bf90a07c9df0faff56
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.openlocfilehash: 21b44b1c739818206fdba9d10250a2976f1d90db
+ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54266329"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55746859"
 ---
 # <a name="gather-insights-about-your-dns-infrastructure-with-the-dns-analytics-preview-solution"></a>Získejte přehled o vaší infrastruktuře DNS s řešení DNS Analytics ve verzi Preview
 
@@ -105,7 +105,7 @@ Na řídicím panelu řešení zobrazuje následující listy:
 
 ![Okno zabezpečení DNS](./media/dns-analytics/dns-security-blade.png)
 
-Po kliknutí na IP adresu klienta do seznamu hledání v protokolu otevře a zobrazí podrobnosti vyhledávání odpovídajících dotazu. V následujícím příkladu DNS Analytics zjistil, že komunikaci provedenou pomocí [IRCbot](https://www.microsoft.com/security/portal/threat/encyclopedia/entry.aspx?Name=Win32/IRCbot):
+Po kliknutí na IP adresu klienta do seznamu hledání v protokolu otevře a zobrazí podrobnosti vyhledávání odpovídajících dotazu. V následujícím příkladu DNS Analytics zjistil, že komunikaci provedenou pomocí [IRCbot](https://www.microsoft.com/wdsi/threats/threat-search?query=Win32/IRCbot):
 
 ![Zobrazuje ircbot výsledků prohledávání protokolu](./media/dns-analytics/ircbot.png)
 

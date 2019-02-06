@@ -1,6 +1,6 @@
 ---
-title: Náklady na software rezervace Windows Azure | Dokumentace Microsoftu
-description: Zjistěte, jaké měření softwaru Windows nejsou zahrnuty v nákladů na rezervované Instance virtuálních počítačů Azure.
+title: Rezervace náklady na software pro Azure | Dokumentace Microsoftu
+description: Zjistěte, jaké měření softwaru nejsou součástí nákladů na rezervované Instance virtuálních počítačů Azure.
 services: billing
 documentationcenter: ''
 author: manish-shukla01
@@ -12,18 +12,18 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 05/09/2018
+ms.date: 01/30/2019
 ms.author: banders
-ms.openlocfilehash: de2aee36f20bd5142f398de7edb301e53ab42cae
-ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
+ms.openlocfilehash: 63b1e850cbcea089a6a115f53ea1ef579a16886f
+ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/25/2019
-ms.locfileid: "54902657"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55744976"
 ---
-# <a name="windows-software-costs-not-included-with-azure-reserved-vm-instances"></a>Náklady na software Windows, které nejsou součástí Azure Reserved VM Instances
+# <a name="software-costs-not-included-with-azure-reserved-vm-instances"></a>Náklady na software, které nejsou součástí Azure Reserved VM Instances
 
-Pokud nemáte Azure Hybrid Use Benefit na vaší rezervované instance virtuálních počítačů, pak bude vám účtována měření softwaru Windows uvedené v následující části.
+Pokud nemáte Azure Hybrid Use Benefit na vaší rezervované instance virtuálních počítačů, vám budeme účtovat softwaru měřiče uvedené v následujících částech.
 
 ## <a name="windows-software-meters-not-included-in-reservation-cost"></a>Není součástí náklady na rezervaci měření softwaru Windows
 
@@ -50,6 +50,22 @@ Pokud nemáte Azure Hybrid Use Benefit na vaší rezervované instance virtuáln
 | 904c5c71-1eb7-43a6-961c-d305a9681624 | Počítače s Windows rezervace serverem (256jádrové) | Všechna kromě řady B Series |
 | 6fdab81b-4284-4df9-8939-c237cc7462fe | Počítače s Windows rezervace serverem (96 jader) | Všechna kromě řady B Series |
 
+## <a name="cloud-services-software-meters-not-included-in-reservation-cost"></a>Software měřiče, které nejsou součástí náklady na rezervaci využití cloudových služeb
+
+| ID měřiče | MeterName v souboru využití |
+| ------- | ------------------------|
+|ac9d47ff-ff68-4afc-a145-0c321cf8d0d5|Cloud Services 1 vCPU licence|
+|e0434559-19ee-4132-9c46-05ad4044f3f7|Cloud Services 2 virtuální procesor licencí|
+|6ecc834e-39b3-48b3-8d10-cc5626bacb66|Cloud Services 4 virtuální procesory licence|
+|13103090-ca72-4825-ab12-7f16c4931d95|Cloud Services 8 virtuálních procesorů licence|
+|ecd2bb6e-45a5-49aa-a58b-3947ba21c364|Cloud Services 16 virtuálních procesorů licence|
+|de2c7f1d-06dc-4b16-bc8b-c2ec5f4c8aee|Cloud Services 20 virtuálních procesorů licence|
+|ca1af837-4b35-47f5-8d14-b1988149c4ca|Cloud Services 32 virtuálních procesorů licence|
+|dc72ee45-2ab7-4698-b435-e2cf10d1f9f6|Cloud Services 64 virtuálních procesorů licence|
+|7a803026-244c-4659-834c-11e6b2d6b76f|Cloud Services 80 vCPU licence|
+
+## <a name="rates-for-azure-meters"></a>Sazby za Azure měřiče
+
 Náklady na každý z těchto měřičů můžete získat pomocí Azure RateCard API. Informace o tom, jak získat sazby pro azure měřičů najdete v tématu [získání informací o cenách a metadat pro prostředky používané v rámci předplatného Azure](https://msdn.microsoft.com/library/azure/mt219004).
 
 ## <a name="next-steps"></a>Další postup
@@ -65,6 +81,3 @@ Další informace o rezervacích Azure, najdete v následujících článcích:
 ## <a name="need-help-contact-us"></a>Potřebujete pomoc? Kontaktujte nás.
 
 Pokud máte otázky nebo potřebujete pomoc, [vytvořit žádost o podporu](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest).
-
-
-

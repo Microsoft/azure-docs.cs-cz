@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: disk
 ms.topic: article
-ms.date: 01/09/2019
+ms.date: 02/05/2019
 ms.author: alkohli
-ms.openlocfilehash: 412727d79c194172f2855d014d1eaf18f44167f6
-ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
+ms.openlocfilehash: 6a7f7943e9d567a953c0e21697dfe4fdedd6e8f0
+ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54159345"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55744785"
 ---
 # <a name="azure-data-box-disk-limits"></a>Omezení disku Azure Data Box
 
@@ -66,8 +66,8 @@ Tady jsou velikosti Azure objekty, které je možné zapisovat. Ujistěte se, ž
 
 | Typ objektu Azure | Výchozí omezení                                             |
 |-------------------|-----------------------------------------------------------|
-| Objekt blob bloku        | ~ 8 TB                                                 |
-| Objekt blob stránky         | 1 TB <br> (Každý soubor odeslat ve formátu objektů Blob stránky musí být zarovnaná 512 bajtů (integrální více), jinak se odeslání nezdaří. <br> VHD a VHDX jsou 512 bajtů zarovnána.) |
+| Objekt blob bloku        | ~ 4,75 TB                                                 |
+| Objekt blob stránky         | 8 TiB <br> (Každý soubor odeslat ve formátu objektů Blob stránky musí být zarovnaná 512 bajtů (integrální více), jinak se odeslání nezdaří. <br> VHD a VHDX jsou 512 bajtů zarovnána.) |
 
 
 ## <a name="azure-block-blob-and-page-blob-naming-conventions"></a>Objekt blob bloku Azure a zásady vytváření názvů objektů blob stránky

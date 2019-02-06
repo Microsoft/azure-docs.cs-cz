@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 05/24/2018
 ms.author: luisca
 ms.custom: seodec2018
-ms.openlocfilehash: 091a165dacbf0e98532f343745e56c4acf765b84
-ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
+ms.openlocfilehash: 9369e076517e295a7d17011e024353614ec8ad46
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53320791"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55751969"
 ---
 # <a name="how-to-create-a-skillset-in-an-enrichment-pipeline"></a>Vytvoření dovedností v kanálu služby rozšíření
 
@@ -38,9 +38,9 @@ Doporučené prvního kroku je rozhodování o tom, jaká data extrahovat z nezp
 
 Předpokládejme, že máte zájem o zpracování sadu finanční analytik komentáře. Pro každý soubor budete chtít extrahovat názvy společnosti a obecné mínění komentáře. Můžete také napsat vlastní enricher, která používá službu Bingu pro vyhledávání entit najdete další informace o společnosti, jako je například jaké obchodních společnost provozuje v. V podstatě, které mají být extrahovány informace, například následující příkaz, indexovat pro každý dokument:
 
-| záznam text | Společnosti | mínění | popisy společnosti |
+| record-text | Společnosti | mínění | popisy společnosti |
 |--------|-----|-----|-----|
-|Ukázka záznamu| ["Microsoft", "LinkedIn"] | 0,99. | ["Microsoft Corporation je American nadnárodní technologická společnost...", "LinkedIn obchodní a pracovní orientovaných na sociálních sítí..."]
+|sample-record| ["Microsoft", "LinkedIn"] | 0,99. | ["Microsoft Corporation je American nadnárodní technologická společnost...", "LinkedIn obchodní a pracovní orientovaných na sociálních sítí..."]
 
 Následující diagram znázorňuje kanál hypotetické rozšíření:
 
@@ -142,11 +142,11 @@ Další část v zkušenostech je pole dovedností. Každou dovednosti můžete 
 
 ## <a name="add-predefined-skills"></a>Přidat předdefinované dovednosti
 
-Podívejme se na první dovedností, které je předdefinovaného [s názvem dovednosti rozpoznávání entit](cognitive-search-skill-named-entity-recognition.md):
+Podívejme se na první dovedností, které je předdefinovaného [dovednosti rozpoznávání entit](cognitive-search-skill-entity-recognition.md):
 
 ```json
     {
-      "@odata.type": "#Microsoft.Skills.Text.NamedEntityRecognitionSkill",
+      "@odata.type": "#Microsoft.Skills.Text.EntityRecognitionSkill",
       "context": "/document",
       "categories": [ "Organization" ],
       "defaultLanguageCode": "en",
@@ -155,7 +155,8 @@ Podívejme se na první dovedností, které je předdefinovaného [s názvem dov
           "name": "text",
           "source": "/document/content"
         }
-      ],      "outputs": [
+      ],
+      "outputs": [
         {
           "name": "organizations",
           "targetName": "organizations"
@@ -228,7 +229,7 @@ Odvolat struktura vlastní enricher vyhledávání entit Bingu:
     }
 ```
 
-Tato definice je vlastní dovednosti, která volá webové rozhraní API jako součást procesu rozšíření. Pro každou organizaci identifikovaný rozpoznávání pojmenovaných entit volá tento dovedností webového rozhraní API k vyhledání popisu dané organizace. Orchestrace nad tím, kdy k volání webového rozhraní API a o tom, které jsou předávány informace získané interně zpracována třídou modul rozšíření. Ve formátu JSON (například identifikátor uri, záhlaví HTTP a očekává vstupy) ale musí být zadaná potřeby pro vlastní rozhraní API nezavolá inicializace. Pokyny k vytvoření vlastního webového rozhraní API pro rozšíření kanálu, naleznete v tématu [jak definovat vlastní rozhraní](cognitive-search-custom-skill-interface.md).
+Tato definice [vlastních dovedností](cognitive-search-custom-skill-web-api.md) , která volá webové rozhraní API jako součást procesu rozšíření. Pro každou organizaci identifikovaný rozpoznávání pojmenovaných entit volá tento dovedností webového rozhraní API k vyhledání popisu dané organizace. Orchestrace nad tím, kdy k volání webového rozhraní API a o tom, které jsou předávány informace získané interně zpracována třídou modul rozšíření. Ve formátu JSON (například identifikátor uri, záhlaví HTTP a očekává vstupy) ale musí být zadaná potřeby pro vlastní rozhraní API nezavolá inicializace. Pokyny k vytvoření vlastního webového rozhraní API pro rozšíření kanálu, naleznete v tématu [jak definovat vlastní rozhraní](cognitive-search-custom-skill-interface.md).
 
 Všimněte si, že pole "kontext" nastavena na ```"/document/organizations/*"``` hvězdičkou, což znamená kroku rozšíření se nazývá *pro každou* organizace v rámci ```"/document/organizations"```. 
 

@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: 45f7913c5cc69f99b01ba1a911910273673856d3
-ms.sourcegitcommit: 5a1d601f01444be7d9f405df18c57be0316a1c79
+ms.openlocfilehash: 7cd7c0dbb375dad78927183dbaffe574a0dc10c2
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/10/2018
-ms.locfileid: "51513756"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55753535"
 ---
 # <a name="show-traffic-on-the-map"></a>Na mapě Zobrazit provoz
 
@@ -27,7 +27,7 @@ Tento článek ukazuje, jak zobrazit informace o provozu a incidentů na mapě.
 
 Ve výše uvedeném kódu první blok kódu vytvoří objekt Map. Můžete zobrazit [Vytvořte mapu](map-create.md) pokyny.
 
-Druhý blok kódu používá [setTraffic](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#settraffic) funkce v rámci mapy [naslouchací proces událostí](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#events) funkce k vykreslení přenosové toky a incidentů na mapě.
+Druhý blok kódu používá [setTraffic](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest) funkce v rámci mapy [naslouchací proces událostí](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#events) funkce k vykreslení přenosové toky a incidentů na mapě.
 
 ## <a name="next-steps"></a>Další postup
 

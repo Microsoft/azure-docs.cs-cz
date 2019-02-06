@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 11/13/2017
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 66c6a565fff81e1c0e39075502a6a7d3d8ffa7a6
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 1fce6292ffd7307ff0a294c6fa25412962acd1cc
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55162289"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55752836"
 ---
 # <a name="tutorial-load-balance-linux-virtual-machines-in-azure-to-create-a-highly-available-application-with-the-azure-cli"></a>Kurz: Vyrovnávání zatížení virtuálních počítačů s Linuxem v Azure za účelem vytvoření vysoce dostupné aplikace pomocí Azure CLI
 
@@ -60,7 +60,7 @@ az group create --name myResourceGroupLoadBalancer --location eastus
 ```
 
 ### <a name="create-a-public-ip-address"></a>Vytvoření veřejné IP adresy
-Pokud chcete mít k aplikaci přístup přes internet, potřebujete pro nástroj pro vyrovnávání zatížení veřejnou IP adresu. Vytvořte veřejnou IP adresu pomocí příkazu [az network public-ip create](/cli/azure/network/public-ip#az_network_public_ip_create). Následující příklad vytvoří veřejnou IP adresu s názvem *myPublicIP* ve skupině prostředků *myResourceGroupLoadBalancer*:
+Pokud chcete mít k aplikaci přístup přes internet, potřebujete pro nástroj pro vyrovnávání zatížení veřejnou IP adresu. Vytvořte veřejnou IP adresu pomocí příkazu [az network public-ip create](/cli/azure/network/public-ip). Následující příklad vytvoří veřejnou IP adresu s názvem *myPublicIP* ve skupině prostředků *myResourceGroupLoadBalancer*:
 
 ```azurecli-interactive 
 az network public-ip create \
@@ -69,7 +69,7 @@ az network public-ip create \
 ```
 
 ### <a name="create-a-load-balancer"></a>Vytvoření nástroje pro vyrovnávání zatížení
-Vytvořte nástroj pro vyrovnávání zatížení pomocí příkazu [az network lb create](/cli/azure/network/lb#az_network_lb_create). Následující příklad vytvoří nástroj pro vyrovnávání zatížení *myLoadBalancer* a přiřadí adresu *myPublicIP* ke konfiguraci front-end IP adres:
+Vytvořte nástroj pro vyrovnávání zatížení pomocí příkazu [az network lb create](/cli/azure/network/lb). Následující příklad vytvoří nástroj pro vyrovnávání zatížení *myLoadBalancer* a přiřadí adresu *myPublicIP* ke konfiguraci front-end IP adres:
 
 ```azurecli-interactive 
 az network lb create \
@@ -85,7 +85,7 @@ Pokud chcete nástroji pro vyrovnávání zatížení povolit monitorování sta
 
 Následující příklad vytvoří sondu protokolu TCP. Pokud potřebujete jemněji odstupňované kontroly stavu, můžete vytvářet i vlastní sondy protokolu HTTP. Pokud použijete vlastní sondu protokolu HTTP, musíte vytvořit stránku kontroly stavu, například *healthcheck.js*. Aby nástroj pro vyrovnávání zatížení udržel hostitele v oběhu, musí sonda vracet odpověď **HTTP 200 OK**.
 
-Sondu stavu protokolu TCP vytvoříte pomocí příkazu [az network lb probe create](/cli/azure/network/lb/probe#az_network_lb_probe_create). Následující příklad vytvoří sondu stavu *myHealthProbe*:
+Sondu stavu protokolu TCP vytvoříte pomocí příkazu [az network lb probe create](/cli/azure/network/lb/probe). Následující příklad vytvoří sondu stavu *myHealthProbe*:
 
 ```azurecli-interactive 
 az network lb probe create \
@@ -99,7 +99,7 @@ az network lb probe create \
 ### <a name="create-a-load-balancer-rule"></a>Vytvoření pravidla nástroje pro vyrovnávání zatížení
 Pravidlo nástroje pro vyrovnávání zatížení slouží k definování způsobu distribuce provozu do virtuálních počítačů. Nadefinujte konfiguraci front-endových IP adres pro příchozí provoz, back-endový fond IP adres pro příjem provozu a také požadovaný zdrojový a cílový port. Abyste zajistili, že provoz budou přijímat pouze virtuální počítače, které jsou v pořádku, nadefinujete také sondu stavu, která se má použít.
 
-Vytvořte pravidlo nástroje pro vyrovnávání zatížení pomocí příkazu [az network lb rule create](/cli/azure/network/lb/rule#az_network_lb_rule_create). Následující příklad vytvoří pravidlo *myLoadBalancerRule*, použije sondu stavu *myHealthProbe* a nastaví vyrovnávání provozu na portu *80*:
+Vytvořte pravidlo nástroje pro vyrovnávání zatížení pomocí příkazu [az network lb rule create](/cli/azure/network/lb/rule). Následující příklad vytvoří pravidlo *myLoadBalancerRule*, použije sondu stavu *myHealthProbe* a nastaví vyrovnávání provozu na portu *80*:
 
 ```azurecli-interactive 
 az network lb rule create \
@@ -119,7 +119,7 @@ az network lb rule create \
 Než nasadíte několik virtuálních počítačů a budete moci otestovat svůj nástroj pro vyrovnávání zatížení, vytvořte podpůrné prostředky virtuální sítě. Další informace o virtuálních sítích najdete v kurzu [Správa virtuálních sítí Azure](tutorial-virtual-network.md).
 
 ### <a name="create-network-resources"></a>Vytvoření síťových prostředků
-Vytvořte virtuální síť pomocí příkazu [az network vnet create](/cli/azure/network/vnet#az_network_vnet_create). Následující příklad vytvoří virtuální síť *myVnet* s podsítí *mySubnet*:
+Vytvořte virtuální síť pomocí příkazu [az network vnet create](/cli/azure/network/vnet). Následující příklad vytvoří virtuální síť *myVnet* s podsítí *mySubnet*:
 
 ```azurecli-interactive 
 az network vnet create \
@@ -128,7 +128,7 @@ az network vnet create \
     --subnet-name mySubnet
 ```
 
-Skupinu zabezpečení sítě přidáte pomocí příkazu [az network nsg create](/cli/azure/network/nsg#az_network_nsg_create). Následující příklad vytvoří skupinu zabezpečení sítě *myNetworkSecurityGroup*:
+Skupinu zabezpečení sítě přidáte pomocí příkazu [az network nsg create](/cli/azure/network/nsg). Následující příklad vytvoří skupinu zabezpečení sítě *myNetworkSecurityGroup*:
 
 ```azurecli-interactive 
 az network nsg create \
@@ -136,7 +136,7 @@ az network nsg create \
     --name myNetworkSecurityGroup
 ```
 
-Vytvořte pravidlo skupiny zabezpečení sítě pomocí příkazu [az network nsg rule create](/cli/azure/network/nsg/rule#az_network_nsg_rule_create). Následující příklad vytvoří pravidlo skupiny zabezpečení sítě *myNetworkSecurityGroupRule*:
+Vytvořte pravidlo skupiny zabezpečení sítě pomocí příkazu [az network nsg rule create](/cli/azure/network/nsg/rule). Následující příklad vytvoří pravidlo skupiny zabezpečení sítě *myNetworkSecurityGroupRule*:
 
 ```azurecli-interactive 
 az network nsg rule create \
@@ -218,7 +218,7 @@ runcmd:
 ### <a name="create-virtual-machines"></a>Vytvoření virtuálních počítačů
 Pokud chcete zlepšit vysokou dostupnost aplikace, umístěte své virtuální počítače do skupiny dostupnosti. Další informace o skupinách dostupnosti najdete v předchozím kurzu [Vytváření vysoce dostupných virtuálních počítačů](tutorial-availability-sets.md).
 
-Vytvořte skupinu dostupnosti pomocí příkazu [az vm availability-set create](/cli/azure/vm/availability-set#az_vm_availability_set_create). Následující příklad vytvoří skupinu dostupnosti *myAvailabilitySet*:
+Vytvořte skupinu dostupnosti pomocí příkazu [az vm availability-set create](/cli/azure/vm/availability-set). Následující příklad vytvoří skupinu dostupnosti *myAvailabilitySet*:
 
 ```azurecli-interactive 
 az vm availability-set create \
@@ -247,7 +247,7 @@ Jakmile vás Azure CLI vrátí na příkazový řádek, na pozadí stále pobě�
 
 
 ## <a name="test-load-balancer"></a>Test nástroje pro vyrovnávání zatížení
-Získejte veřejnou IP adresu svého nástroje pro vyrovnávání zatížení pomocí příkazu [az network public-ip show](/cli/azure/network/public-ip#az_network_public_ip_show). Následující příklad získá dříve vytvořenou IP adresu *myPublicIP*:
+Získejte veřejnou IP adresu svého nástroje pro vyrovnávání zatížení pomocí příkazu [az network public-ip show](/cli/azure/network/public-ip). Následující příklad získá dříve vytvořenou IP adresu *myPublicIP*:
 
 ```azurecli-interactive 
 az network public-ip show \
@@ -268,7 +268,7 @@ Pokud chcete zobrazit distribuci provozu nástrojem pro vyrovnávání zatížen
 Na virtuálních počítačích, na kterých je vaše aplikace spuštěná, možná budete potřebovat provést údržbu, například nainstalovat aktualizace operačního systému. Abyste si poradili se zvýšením provozu do vaší aplikace, možná budete muset přidat další virtuální počítače. V této části se dozvíte, jak z nástroje pro vyrovnávání zatížení odebrat virtuální počítač nebo ho do něj přidat.
 
 ### <a name="remove-a-vm-from-the-load-balancer"></a>Odebrání virtuálního počítače z nástroje pro vyrovnávání zatížení
-Virtuální počítač můžete odebrat z fondu back-end adres pomocí příkazu [az network nic ip-config address-pool remove](/cli/azure/network/nic/ip-config/address-pool#az_network_nic_ip_config_address_pool_remove). Následující příklad odebere virtuální síťovou kartu virtuálního počítače **myVM2** z nástroje pro vyrovnávání zatížení *myLoadBalancer*:
+Virtuální počítač můžete odebrat z fondu back-end adres pomocí příkazu [az network nic ip-config address-pool remove](/cli/azure/network/nic/ip-config/address-pool). Následující příklad odebere virtuální síťovou kartu virtuálního počítače **myVM2** z nástroje pro vyrovnávání zatížení *myLoadBalancer*:
 
 ```azurecli-interactive 
 az network nic ip-config address-pool remove \
@@ -281,7 +281,7 @@ az network nic ip-config address-pool remove \
 
 Pokud chcete zobrazit distribuci provozu nástrojem pro vyrovnávání zatížení mezi zbývající dva virtuální počítače, na kterých je vaše aplikace spuštěná, můžete vynutit aktualizaci webového prohlížeče. Teď můžete na virtuálním počítači provést údržbu, například nainstalovat aktualizace operačního systému nebo provést restartování virtuálního počítače.
 
-Pokud chcete zobrazit seznam virtuálních počítačů s virtuálními síťovými kartami připojenými k nástroji pro vyrovnávání zatížení, použijte příkaz [az network lb address-pool show](/cli/azure/network/lb/address-pool#az_network_lb_address_pool_show). Následujícím způsobem zadejte dotaz s filtrem podle ID virtuální síťové karty:
+Pokud chcete zobrazit seznam virtuálních počítačů s virtuálními síťovými kartami připojenými k nástroji pro vyrovnávání zatížení, použijte příkaz [az network lb address-pool show](/cli/azure/network/lb/address-pool). Následujícím způsobem zadejte dotaz s filtrem podle ID virtuální síťové karty:
 
 ```azurecli-interactive
 az network lb address-pool show \
@@ -300,7 +300,7 @@ Výstup bude podobný jako v následujícím příkladu, který ukazuje, že vir
 ```
 
 ### <a name="add-a-vm-to-the-load-balancer"></a>Přidání virtuálního počítače do nástroje pro vyrovnávání zatížení
-Po provedení údržby virtuálního počítače, nebo pokud potřebujete rozšířit kapacitu, můžete přidat virtuální počítač do fondu back-end adres pomocí příkazu [az network nic ip-config address-pool add](/cli/azure/network/nic/ip-config/address-pool#az_network_nic_ip_config_address_pool_add). Následující příklad přidá virtuální síťovou kartu virtuálního počítače **myVM2** do nástroje pro vyrovnávání zatížení *myLoadBalancer*:
+Po provedení údržby virtuálního počítače, nebo pokud potřebujete rozšířit kapacitu, můžete přidat virtuální počítač do fondu back-end adres pomocí příkazu [az network nic ip-config address-pool add](/cli/azure/network/nic/ip-config/address-pool). Následující příklad přidá virtuální síťovou kartu virtuálního počítače **myVM2** do nástroje pro vyrovnávání zatížení *myLoadBalancer*:
 
 ```azurecli-interactive 
 az network nic ip-config address-pool add \
@@ -311,7 +311,7 @@ az network nic ip-config address-pool add \
     --address-pool myBackEndPool
 ```
 
-Pokud chcete ověřit připojení virtuální síťové karty k fondu back-end adres, znovu použijte příkaz [az network lb address-pool show](/cli/azure/network/lb/address-pool#az_network_lb_address_pool_show) z předchozího kroku.
+Pokud chcete ověřit připojení virtuální síťové karty k fondu back-end adres, znovu použijte příkaz [az network lb address-pool show](/cli/azure/network/lb/address-pool) z předchozího kroku.
 
 
 ## <a name="next-steps"></a>Další postup

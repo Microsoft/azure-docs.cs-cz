@@ -11,14 +11,14 @@ ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 11/13/2018
+ms.date: 02/05/2019
 ms.author: magoedte
-ms.openlocfilehash: 6fd614a632945dbcc89c530df54b8416809029d1
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: 9cf64f98e0a06fc063340f39326fdc1c12645db8
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53194024"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55756440"
 ---
 # <a name="container-monitoring-solution-in-log-analytics"></a>Řešení pro monitorování kontejnerů ve službě Log Analytics
 
@@ -105,8 +105,8 @@ K instalaci a konfiguraci řešení můžete použít následující informace.
   - Orchestrace prostřednictvím Docker více hostitelů:
     - Pokud máte v prostředí Red Hat OpenShift, přečtěte si [konfigurace agenta Log Analytics pro Red Hat OpenShift](#configure-an-oms-agent-for-red-hat-openshift).
     - Pokud máte cluster Kubernetes pomocí služby Azure Container Service:
-       - Kontrola [konfigurace agenta Log Analytics Linux pro Kubernetes](#configure-an-oms-linux-agent-for-kubernetes).
-       - Kontrola [konfigurace agenta Log Analytics Windows pro Kubernetes](#configure-an-oms-windows-agent-for-kubernetes).
+       - Kontrola [konfigurace agenta Log Analytics Linux pro Kubernetes](#configure-a-log-analytics-linux-agent-for-kubernetes).
+       - Kontrola [konfigurace agenta Log Analytics Windows pro Kubernetes](#configure-a-log-analytics-windows-agent-for-kubernetes).
        - Kontrola [pomocí Helm nasadit agenta Log Analytics na Linux Kubernetes](#use-helm-to-deploy-oms-agent-on-linux-kubernetes).
     - Pokud máte cluster Azure Container Service DC/OS, další informace najdete na [monitorování clusteru služby Azure Container Service DC/OS pomocí Log Analytics](../../container-service/dcos-swarm/container-service-monitoring-oms.md).
     - Pokud máte prostředí s režimem Docker Swarm, další informace najdete na [konfigurace agenta Log Analytics pro Docker Swarm](#configure-an-oms-agent-for-docker-swarm).

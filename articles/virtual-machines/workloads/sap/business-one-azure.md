@@ -3,7 +3,7 @@ title: SAP Business jeden na Azure Virtual Machines | Dokumentace Microsoftu
 description: SAP Business jeden na Azure.
 services: virtual-machines-linux,virtual-machines-windows
 documentationcenter: ''
-author: juergent
+author: msjuergent
 manager: patfilot
 editor: ''
 tags: azure-resource-manager
@@ -14,14 +14,14 @@ ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 07/15/2018
-ms.author: msjuergent
+ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: e8bd5ddab4553807f59b7afdf32fbfc1703e3d75
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: bb3c2a9cfc1bccf4656be83c6babbe9c7ec139fb
+ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46949521"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55745346"
 ---
 # <a name="sap-business-one-on-azure-virtual-machines"></a>SAP Business jeden na Azure Virtual Machines
 Tento dokument obsahuje pokyny pro nasazení SAP Business One ve službě Azure Virtual Machines. V dokumentaci k není náhradou za dokumentaci k instalaci podnikání, jeden pro SAP. Základní pokyny pro plánování a nasazení pro infrastrukturu Azure a spustit jednu obchodní aplikace v by měly pokrývat v dokumentaci.
@@ -132,10 +132,10 @@ Jsou odhady přibližnou velikosti pro stranu DBMS pro SQL Server:
 
 | Počet uživatelů | vCPU | Memory (Paměť) | Příklad typy virtuálních počítačů |
 | --- | --- | --- | --- |
-| až 20 | 4 | 16 GB | D4s_v3 E4s_v3 |
-| až 40 | 8 | 32 GB | D8s_v3 E8s_v3 |
-| až 80 | 16 | 64 GB | D16s_v3 E16s_v3 |
-| až 150 | 32 | 128 GB | D32s_v3 E32s_v3 |
+| až 20 | 4 | 16 GB | D4s_v3, E4s_v3 |
+| až 40 | 8 | 32 GB | D8s_v3, E8s_v3 |
+| až 80 | 16 | 64 GB | D16s_v3, E16s_v3 |
+| až 150 | 32 | 128 GB | D32s_v3, E32s_v3 |
 
 Nastavení velikosti uvedené výše by měl získat představu tam, kde začít. Může být, že budete potřebovat méně nebo více prostředků, v takovém případě je snadné přizpůsobení v azure. Změna mezi typy virtuálních počítačů je možné s restartování virtuálního počítače.
 

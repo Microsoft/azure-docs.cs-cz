@@ -5,14 +5,14 @@ services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: article
-ms.date: 1/31/2019
+ms.date: 2/5/2019
 ms.author: victorh
-ms.openlocfilehash: d680634231b90e5d1cc036f43b96e05d66899e34
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.openlocfilehash: 880a6fc9d5636ff0ac67d24d0ef66c8f48ae22fb
+ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55487043"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55743646"
 ---
 # <a name="autoscaling-and-zone-redundant-application-gateway-public-preview"></a>Automatické škálování a zónově redundantní služba Application Gateway (Public Preview)
 
@@ -34,7 +34,7 @@ Služba Application Gateway a Firewall webových aplikací (WAF) jsou teď dostu
 
 ## <a name="supported-regions"></a>Podporované oblasti
 
-Automatické škálování SKU je k dispozici v následujících oblastech: eastus2, westus2, westeurope, southeastasia, centralus, francecentral, eastus, japaneast, northeurope, southcentralus, ukwest, northcentralus, westus, eastus, centralus, japanwest.
+Automatickým Škálováním SKU je k dispozici v následujících oblastech: USA (střed) – sever, střední část jihu USA, USA – Západ, USA – západ 2, USA – východ, USA – východ 2, střed USA, Severní Evropa, západní Evropa, jihovýchodní Asie, Francie – střed, Velká Británie – Západ, Japonsko – východ, Japonsko – západ.
 
 ## <a name="pricing"></a>Ceny
 

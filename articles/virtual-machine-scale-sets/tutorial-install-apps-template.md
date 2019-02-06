@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 03/27/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 81ab41518fea81b577738d30970d83f6d6d6f2bc
-ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
+ms.openlocfilehash: 262d7a6a4399a72e762c4ad3c87a878c54e22af4
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54883989"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55750388"
 ---
 # <a name="tutorial-install-applications-in-virtual-machine-scale-sets-with-an-azure-template"></a>Kurz: Instalace aplikací ve škálovacích sadách virtuálních počítačů pomocí šablony Azure
 Pokud chcete spouštět aplikace na instancích virtuálních počítačů ve škálovací sadě, musíte nejprve nainstalovat komponenty aplikace a požadované soubory. V předchozím kurzu jste zjistili, jak vytvořit a použít vlastní image virtuálního počítače k nasazení instancí virtuálních počítačů. Tato vlastní image zahrnovala ruční instalaci a konfiguraci aplikací. Můžete automatizovat také instalaci aplikací do škálovací sady po nasazení všech instancí virtuálních počítačů nebo aktualizaci aplikace, která je již ve škálovací sadě spuštěná. V tomto kurzu se naučíte:
@@ -77,13 +77,13 @@ Vlastnost *fileUris* slouží k definici zdrojových instalačních skriptů neb
 
 
 ## <a name="create-a-scale-set"></a>Vytvoření škálovací sady
-Pomocí ukázkové šablony teď vytvoříme škálovací sadu a použijeme rozšíření vlastních skriptů. Nejdřív vytvořte skupinu prostředků pomocí příkazu [az group create](/cli/azure/group#az_group_create). Následující příklad vytvoří skupinu prostředků *myResourceGroup* v umístění *eastus*:
+Pomocí ukázkové šablony teď vytvoříme škálovací sadu a použijeme rozšíření vlastních skriptů. Nejdřív vytvořte skupinu prostředků pomocí příkazu [az group create](/cli/azure/group). Následující příklad vytvoří skupinu prostředků *myResourceGroup* v umístění *eastus*:
 
 ```azurecli-interactive
 az group create --name myResourceGroup --location eastus
 ```
 
-Teď vytvořte škálovací sadu virtuálních počítačů pomocí příkazu [az group deployment create](/cli/azure/group/deployment#az_group_deployment_create). Po zobrazení výzvy zadejte své uživatelské jméno a heslo, které se používají jako přihlašovací údaje jednotlivých instancí virtuálních počítačů:
+Teď vytvořte škálovací sadu virtuálních počítačů pomocí příkazu [az group deployment create](/cli/azure/group/deployment). Po zobrazení výzvy zadejte své uživatelské jméno a heslo, které se používají jako přihlašovací údaje jednotlivých instancí virtuálních počítačů:
 
 ```azurecli-interactive
 az group deployment create \
@@ -97,7 +97,7 @@ Každá instance virtuálního počítače ve škálovací sadě stáhne a spust
 
 
 ## <a name="test-your-scale-set"></a>Test škálovací sady
-Pokud chcete vidět svůj webový server v akci, získejte veřejnou IP adresu vašeho nástroje pro vyrovnávání zatížení pomocí příkazu [az network public-ip show](/cli/azure/network/public-ip#show). Následující příklad získá IP adresu *myScaleSetPublicIP* vytvořenou jako součást škálovací sady:
+Pokud chcete vidět svůj webový server v akci, získejte veřejnou IP adresu vašeho nástroje pro vyrovnávání zatížení pomocí příkazu [az network public-ip show](/cli/azure/network/public-ip). Následující příklad získá IP adresu *myScaleSetPublicIP* vytvořenou jako součást škálovací sady:
 
 ```azurecli-interactive
 az network public-ip show \
@@ -141,7 +141,7 @@ Pokud chcete aktualizovat definici rozšíření vlastních skriptů, upravte sv
 }
 ```
 
-Opět použijte konfiguraci rozšíření vlastních skriptů na instance virtuálních počítačů ve škálovací sadě pomocí příkazu [az group deployment create](/cli/azure/group/deployment#az_group_deployment_create). Tato šablona *azuredeployv2.json* slouží k použití aktualizované verze aplikace. V praxi upravíte stávající šablonu *azuredeploy.json* tak, aby odkazovala na aktualizovaný instalační skript, jak je znázorněno v předchozí části. Po zobrazení výzvy zadejte stejné uživatelské jméno a heslo, které jste použili při počátečním vytvoření škálovací sady:
+Opět použijte konfiguraci rozšíření vlastních skriptů na instance virtuálních počítačů ve škálovací sadě pomocí příkazu [az group deployment create](/cli/azure/group/deployment). Tato šablona *azuredeployv2.json* slouží k použití aktualizované verze aplikace. V praxi upravíte stávající šablonu *azuredeploy.json* tak, aby odkazovala na aktualizovaný instalační skript, jak je znázorněno v předchozí části. Po zobrazení výzvy zadejte stejné uživatelské jméno a heslo, které jste použili při počátečním vytvoření škálovací sady:
 
 ```azurecli-interactive
 az group deployment create \
@@ -155,7 +155,7 @@ Na všech instancích virtuálních počítačů ve škálovací sadě se ukázk
 
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
-Pokud chcete odebrat škálovací sadu a další prostředky, odstraňte skupinu prostředků a všechny její prostředky pomocí příkazu [az group delete](/cli/azure/group#az_group_delete). Parametr `--no-wait` vrátí řízení na příkazový řádek bez čekání na dokončení operace. Parametr `--yes` potvrdí, že chcete prostředky odstranit, aniž by se na to zobrazoval další dotaz.
+Pokud chcete odebrat škálovací sadu a další prostředky, odstraňte skupinu prostředků a všechny její prostředky pomocí příkazu [az group delete](/cli/azure/group). Parametr `--no-wait` vrátí řízení na příkazový řádek bez čekání na dokončení operace. Parametr `--yes` potvrdí, že chcete prostředky odstranit, aniž by se na to zobrazoval další dotaz.
 
 ```azurecli-interactive
 az group delete --name myResourceGroup --no-wait --yes

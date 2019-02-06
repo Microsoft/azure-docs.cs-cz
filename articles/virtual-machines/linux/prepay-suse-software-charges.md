@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/29/2018
+ms.date: 01/18/2019
 ms.author: yashar
-ms.openlocfilehash: 44d23cf38eb1dca9ade94c5a8fd0ae495300be44
-ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
+ms.openlocfilehash: 4f70a34febcf0b39d051053a6ddd9abe5c9a6726
+ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52582186"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55745975"
 ---
 # <a name="prepay-for-suse-software-plans-from-azure-reservations"></a>Předplatíte plány softwaru SUSE z Azure rezervací
 
@@ -27,7 +27,7 @@ Předem pro vaše použití operačního systému SUSE a ušetřit peníze za va
 Můžete si koupit plány softwaru SUSE na webu Azure Portal. Koupit plán:
 
 - Musí být v roli vlastník pro alespoň jeden Enterprise nebo předplatné s průběžnými platbami.
-- Předplatné Enterprise, musí být v povoleno nákup rezervace [portál EA](https://ea.azure.com).
+- Předplatné Enterprise **přidat Reserved Instances** musí být povolená v [portál EA](https://ea.azure.com). Nebo, pokud je toto nastavení zakázané, musíte být správce EA na předplatné.
 - Programu Cloud Solution Provider (CSP) Správce agentů nebo obchodní zástupci zakoupit plány SUSE.
 
 ## <a name="buy-a-suse-software-plan"></a>Koupit plán softwaru SUSE
@@ -39,8 +39,8 @@ Můžete si koupit plány softwaru SUSE na webu Azure Portal. Koupit plán:
     | Pole      | Popis|
     |:------------|:--------------|
     |Název        |Název tento nákup.|
-    |Předplatné|Předplatné použité k úhradě tento plán. Způsob platby v rámci předplatného účtuje pořizovací náklady pro rezervaci. Musí se jednat o předplatné se smlouvou Enterprise (číslo nabídky: MS-AZR-0017P) nebo předplatné s průběžnými platbami (číslo nabídky: MS-AZR-0003P). V případě předplatného se smlouvou Enterprise se poplatky strhávají z peněžního zůstatku v rámci dané registrace nebo se účtují jako nadlimitní využití. V případě předplatného s průběžnými platbami se poplatky účtují na platební kartu nebo pomocí způsobu platby faktur určeného v předplatném.|
-    |Rozsah       |Rozsah může zahrnovat jeden nebo více odběrů (sdíleném oboru) jedno předplatné. Pokud vyberete: <ul><li>Jedno předplatné – slevy plán platí pro použití operačním systémem SUSE Linux v tomto předplatném. </li><li>Na úrovni Shared – slevy plán platí pro použití operačním systémem SUSE Linux v kterékoli předplatné v rámci vaší fakturační kontextu. Pro podnikové zákazníky sdílený obor je registraci a zahrnuje všechna předplatná (s výjimkou předplatná pro vývoj/testování) během registrace. Pro zákazníky s průběžnými platbami sdílený obor je Všechna předplatná s průběžnými platbami, vytváří správce účtu.</li></ul>|
+    |Předplatné|Předplatné použité k úhradě tento plán. Způsob platby v rámci předplatného účtuje pořizovací náklady pro rezervaci. Tento typ předplatného musí být smlouvu enterprise agreement (nabízejí čísla: MS-AZR-0017P nebo MS-AZR - 0148 P) nebo s průběžnými platbami (nabízejí čísla: MS-AZR-0003P nebo MS-AZR - 0023 P). V případě předplatného se smlouvou Enterprise se poplatky strhávají z peněžního zůstatku v rámci dané registrace nebo se účtují jako nadlimitní využití. V případě předplatného s průběžnými platbami se poplatky účtují na platební kartu nebo pomocí způsobu platby faktur určeného v předplatném.|
+    |Rozsah       |Rozsah může zahrnovat jeden nebo více odběrů (sdíleném oboru) jedno předplatné. Pokud vyberete: <ul><li>Jedno předplatné – slevy plán platí pro použití operačním systémem SUSE Linux v tomto předplatném. </li><li>Na úrovni Shared – slevy plán platí pro použití operačním systémem SUSE Linux v kterékoli předplatné v rámci vaší fakturační kontextu. Pro podnikové zákazníky sdílený obor je registrace a obsahuje všechna předplatná v rámci registrace. Pro zákazníky s průběžnými platbami sdílený obor je Všechna předplatná s průběžnými platbami, vytváří správce účtu.</li></ul>|
     |Plán softwaru     |Vyberte plán, SUSE Linux. Pomoc s určením, jaký plán koupit, najdete v tématu [Vysvětlení způsobu uplatňování slev za rezervaci softwaru SUSE Linux Enterprise](../../billing/billing-understand-suse-reservation-charges.md).|
     |Velikost virtuálního počítače     |SUSE Linux ceny závisí na počtu virtuálních procesorů na virtuálním počítači. Vyberte možnost, která představuje počet virtuálních procesorů na virtuální počítače s operačním systémem SUSE Linuxem.|
     |Označení        |Jeden nebo tři roky.|
@@ -70,6 +70,6 @@ Další informace naleznete v následujících článcích:
 - [Vysvětlení využití rezervace pro vaše předplatné s průběžnými platbami](../../billing/billing-understand-reserved-instance-usage.md)
 - [Vysvětlení využití rezervaci u prováděcí smlouvy Enterprise](../../billing/billing-understand-reserved-instance-usage-ea.md)
 
-## <a name="need-help-contact-us"></a>Potřebujete pomoct? Kontaktujte nás.
+## <a name="need-help-contact-us"></a>Potřebujete pomoc? Kontaktujte nás.
 
 Pokud máte otázky nebo potřebujete pomoc, [vytvořit žádost o podporu](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest).

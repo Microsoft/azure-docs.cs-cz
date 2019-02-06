@@ -1,28 +1,76 @@
 ---
-title: Datum a čas vzorů cest pro Azure Stream Analytics blob výstup (Preview)
-description: Tento článek popisuje funkce vzory cesta vlastní data a času pro výstup úložiště objektů blob z úloh Azure Stream Analytics.
+title: Výstup Azure Stream Analytics, vlastní blob dělení (Preview)
+description: Tento článek popisuje vlastní vzorů cest data a času a vlastní atributy pole nebo funkce pro výstup úložiště objektů blob z úloh Azure Stream Analytics.
 services: stream-analytics
 author: mamccrea
 ms.author: mamccrea
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 12/06/2018
+ms.date: 02/05/2019
 ms.custom: seodec18
-ms.openlocfilehash: ba386539c3f3c6740b843575bbccd4b028b8a5a7
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 23f632ea2ca66f973192fdc01cd84c4d0be3a668
+ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53090774"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55746519"
 ---
-# <a name="custom-datetime-path-patterns-for-azure-stream-analytics-blob-storage-output-preview"></a>Vlastní data a času vzorů cest pro Azure Stream Analytics služby blob storage výstup (Preview)
+# <a name="azure-stream-analytics-custom-blob-output-partitioning-preview"></a>Výstup Azure Stream Analytics, vlastní blob dělení (Preview)
 
-Azure Stream Analytics podporuje vlastní datum a čas specifikátory formátu v cestě k souboru pro výstupy úložiště objektů blob. Vlastní data a času vzorů cest vám umožňují určit výstupní formát, který souladu s konvencemi Hive streamování, že umožňuje posílat data do Azure HDInsight a Azure Databricks pro směru server-klient zpracování Azure Stream Analytics. Vlastní data a času vzorů cest se snadno implementují pomocí `datetime` – klíčové slovo v poli Předpona cesty objektu výstup, spolu s specifikátor formátu. Například, `{datetime:yyyy}`.
+Azure Stream Analytics podporuje dělení s vlastními poli nebo atributy a vlastní data a času vzorů cest výstupu vlastní objekt blob. 
+
+## <a name="custom-field-or-attributes"></a>Vlastní pole nebo atributy
+
+Vlastní pole nebo vstupní atributy zlepšit směru server-klient zpracování dat a vytváření sestav a pracovních postupů umožňující větší kontrolu nad výstup.
+
+### <a name="partition-key-options"></a>Klíč oddílu, možnosti
+
+Klíč oddílu, nebo název sloupce, umožňují rozdělit vstupní data mohou obsahovat alfanumerické znaky, pomlčky, podtržítka a mezery. Není možné používat vnořená pole jako klíč oddílu, není-li použít ve spojení s aliasy.
+
+### <a name="example"></a>Příklad:
+
+Předpokládejme, že úloha přijímá vstupní data z živé uživatelské relace, které jsou připojené ke službě videohru externí kde přijatých dat obsahuje sloupec **client_id** k identifikaci relace. Rozdělit data podle **client_id**, nastavit pole vzor cesty objektu Blob, které chcete zahrnout token oddílu **{client_id}** ve výstupní vlastnosti objektu blob při vytváření projektu. Jako data s využitím různých **client_id** hodnoty procházet skrz úlohy Stream Analytics, výstupní data se uloží do samostatné složky podle jedné **client_id** hodnotu na složku.
+
+![Vzor cesty s id klienta](./media/stream-analytics-custom-path-patterns-blob-storage-output/stream-analytics-path-pattern-client-id.png)
+
+Podobně pokud úloha vstup byl dat snímačů ze miliony senzorů, kde má každý ze senzorů **sensor_id**, bude vzor cesty **{sensor_id}** rozdělení jednotlivých data ze senzorů do různých složek.  
+
+
+Pomocí rozhraní REST API, výstupní sekce JSON soubor použitý pro tuto žádost může vypadat nějak takto:  
+
+![Výstup rozhraní REST API](./media/stream-analytics-custom-path-patterns-blob-storage-output/stream-analytics-rest-output.png)
+
+Po spuštění úlohy, *klienti* kontejner může vypadat třeba takto:  
+
+![Klienti kontejneru](./media/stream-analytics-custom-path-patterns-blob-storage-output/stream-analytics-clients-container.png)
+
+Všechny složky, může obsahovat více objektů BLOB, kde každý objekt blob obsahuje jeden nebo více záznamů. V předchozím příkladu je jeden objekt blob ve složce označené "06000000" s následujícím obsahem:
+
+![Obsah objektu BLOB](./media/stream-analytics-custom-path-patterns-blob-storage-output/stream-analytics-blob-contents.png)
+
+Všimněte si, že má každý záznam v objektu blob **client_id** název sloupce odpovídající složce od sloupec použitý k rozdělení výstupu do zadané výstupní cesty **client_id**.
+
+### <a name="limitations"></a>Omezení
+
+1. Ve vlastnosti blob výstup vzor cesty smí obsahovat pouze jeden vlastním klíčem oddílu. Všechny následující vzorů cest, které jsou platné:
+
+   * cluster1/{date}/{aFieldInMyData}  
+   * cluster1/{time}/{aFieldInMyData}  
+   * cluster1/{aFieldInMyData}  
+   * cluster1/{date}/{time}/{aFieldInMyData}  
+
+2. Klíče oddílů jsou malá a velká písmena, takže klíče oddílů, jako je "John" a "john" jsou ekvivalentní. Výrazy navíc nelze použít jako klíče oddílu. Například **{columnA + columnB}** nefunguje.  
+
+3. Pokud vstupní datový proud se skládá ze záznamů s kardinalitou klíče oddílu v části 8000, záznamy se připojí k existující objekty BLOB a vytvářet jenom nové objekty BLOB, pokud je to nezbytné. Pokud je Kardinalita přes 8000 neexistuje žádná záruka existující objekty BLOB se zapíšou do a nové objekty BLOB se nevytvoří pro libovolný počet záznamů se stejným klíčem oddílu.  
+
+## <a name="custom-datetime-path-patterns"></a>Vlastní data a času vzorů cest
+
+Vlastní data a času vzorů cest vám umožňují určit výstupní formát, který souladu s konvencemi Hive streamování, že umožňuje posílat data do Azure HDInsight a Azure Databricks pro směru server-klient zpracování Azure Stream Analytics. Vlastní data a času vzorů cest se snadno implementují pomocí `datetime` – klíčové slovo v poli Předpona cesty objektu výstup, spolu s specifikátor formátu. Například, `{datetime:yyyy}`.
 
 Pomocí tohoto odkazu pro [webu Azure Portal](https://portal.azure.com/?Microsoft_Azure_StreamAnalytics_bloboutputcustomdatetimeformats=true) Chcete-li přepnout příznak funkce, který umožňuje vlastní vzorů cest datum a čas pro náhled výstupu úložiště objektů blob. Tato funkce bude brzy povolená hlavní portálu.
 
-## <a name="supported-tokens"></a>Podporované tokeny
+### <a name="supported-tokens"></a>Podporované tokeny
 
 Následující klíčová slova specifikátoru formátu lze použít samostatně nebo v kombinaci k dosažení vlastní formáty data a času:
 
@@ -42,7 +90,7 @@ Pokud nechcete, aby využít vlastní data a času, můžete přidat {date} nebo
 
 ![Stream Analytics staré formáty data a času](./media/stream-analytics-custom-path-patterns-blob-storage-output/stream-analytics-old-date-time-formats.png)
 
-## <a name="extensibility-and-restrictions"></a>Rozšíření a omezení
+### <a name="extensibility-and-restrictions"></a>Rozšíření a omezení
 
 Můžete použít libovolný počet tokenů `{datetime:<specifier>}`, jak potřebujete v vzor cesty, dokud se nedostanete limit počtu znaků předpona cesty. Specifikátory formátu nejde kombinovat v rámci jednoho tokenu nad rámec kombinace již uveden v rozevíracích seznamech data a času. 
 
@@ -54,7 +102,7 @@ Pro rozdělení cesta `logs/MM/dd`:
 
 Můžete použít stejné specifikátor formátu více než jednou v předpona cesty. Pokaždé, když musíte opakovat token.
 
-## <a name="hive-streaming-conventions"></a>Vytváření datových proudů Hive
+### <a name="hive-streaming-conventions"></a>Vytváření datových proudů Hive
 
 Vlastní cesta vzory pro úložiště objektů blob je možné s konvence Hive datových proudů, která očekává složky, které mají být označené `column=` ve složce s názvem.
 

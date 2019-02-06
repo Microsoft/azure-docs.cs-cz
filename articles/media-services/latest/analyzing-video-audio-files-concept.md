@@ -11,12 +11,12 @@ ms.workload: ''
 ms.topic: article
 ms.date: 11/17/2018
 ms.author: juliako
-ms.openlocfilehash: 20aef7f971b4c4bf8dcff98c633aa0b0aa69811a
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: 9a96edbc70eeda8acee792a71d84b4a2c6c4fef8
+ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54828175"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55745380"
 ---
 # <a name="analyzing-video-and-audio-files"></a>Analýza videosouborů a zvukových souborů
 
@@ -33,7 +33,7 @@ Služba Media Services aktuálně podporuje následující předdefinované anal
 
 |**Název předvolby**|**Scénář**|**Podrobnosti**|
 |---|---|---|
-|**AudioAnalyzerPreset**|Analýza zvuku|Přednastavení platí předem definovanou sadu operace analýzy založené na AI včetně určené k transkripci řeči. V současné době podporuje přednastavení zpracování obsahu pomocí jednoho zvuková stopa. Vyberte jazyk datové části zvukový vstup ve formátu BCP-47 "jazyk oblast značky". Podporované jazyky jsou angličtina ("en US" a 'en-GB'), španělština ("es-ES" a "es-MX"), francouzština ("fr-FR"), italština ("it-IT"), japonština ("ja-JP"), portugalština ("pt-BR"), čínština ("zh-CN"), němčina ("de-DE"), arabština ("ar – např.), ruština ("ru-RU"), hindština ("hi v. ) a korejština ("ko-KR").<br/><br/> Pokud jazyk není zadaná nebo nastavená na hodnotu null a automatické zjišťování se použijí. Funkce detekce automatické jazyka aktuálně podporuje angličtina, čínština, francouzština, němčina, italština, japonština, španělština, ruština a portugalštině. Funkce detekce jazyka automatické funguje nejlépe s zvukové záznamy s jasně viditelné řeči. Pokud automatické rozpoznávání jazyka nenajde žádné jazyce, přepis přejde zpět na angličtinu.|
+|**AudioAnalyzerPreset**|Analýza zvuku|Přednastavení platí předdefinovanou sadu operace analýzy založené na AI včetně určené k transkripci řeči. Přednastavení v současné době podporuje zpracování obsahu pomocí jednoho zvuková stopa, která obsahuje řeči v jednom jazyce. Vyberte jazyk datové části zvukový vstup ve formátu BCP-47 "jazyk oblast značky". Podporované jazyky jsou angličtina ("en US" a 'en-GB'), španělština ("es-ES" a "es-MX"), francouzština ("fr-FR"), italština ("it-IT"), japonština ("ja-JP"), portugalština ("pt-BR"), čínština ("zh-CN"), němčina ("de-DE"), arabština ("ar – např.), ruština ("ru-RU"), hindština ("hi v. ) a korejština ("ko-KR").<br/><br/> Pokud jazyk není zadaná nebo nastavená na hodnotu null a automatické zjišťování bude zvolte první jazyk zjištěna a zpracovat vybraný jazyk po dobu trvání souboru. Funkce detekce automatické jazyka aktuálně podporuje angličtina, čínština, francouzština, němčina, italština, japonština, španělština, ruština a portugalštině. Nepodporuje aktuálně dynamicky přepínání mezi jazyky po první jazyk se detekuje. Funkce detekce jazyka automatické funguje nejlépe s zvukové záznamy s jasně jasně řeči. Pokud automatické rozpoznávání jazyka nenajde žádné jazyce, přepis přejde zpět na angličtinu.|
 |**VideoAnalyzerPreset**|Analýza zvuku a videa|Extrahuje insights (bohatých metadat) z audio a video a uloží soubor formátu JSON. Můžete určit, zda chcete pouze poznatky zvuku při zpracování souboru videa. Další informace najdete v tématu [analyzovat video](analyze-videos-tutorial-with-api.md).|
 
 ### <a name="audioanalyzerpreset"></a>AudioAnalyzerPreset

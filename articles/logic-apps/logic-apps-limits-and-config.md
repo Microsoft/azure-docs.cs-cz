@@ -9,12 +9,12 @@ ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: article
 ms.date: 11/16/2018
-ms.openlocfilehash: d59bc20ea745412f8f2549e0359483d1dd3e608d
-ms.sourcegitcommit: 97d0dfb25ac23d07179b804719a454f25d1f0d46
+ms.openlocfilehash: 494665e530104cd4711e8112f3a999e68c3485b8
+ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/25/2019
-ms.locfileid: "54912778"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55746376"
 ---
 # <a name="limits-and-configuration-information-for-azure-logic-apps"></a>Omezení a konfigurační informace pro Azure Logic Apps
 
@@ -85,13 +85,13 @@ Tady jsou limity pro běh aplikace logiky jeden:
 
 | Název | Omezení | Poznámky | 
 | ---- | ----- | ----- | 
-| Souběžnosti triggeru | 50, když omezíte souběžnosti | Když zapnete řízení souběžnosti pro aktivační událost, výchozí limit je 25. Tato omezení popisuje maximální počet instancí aplikace logiky, spuštěné ve stejnou dobu nebo paralelně. <p><p>Chcete-li změnit výchozí omezení na hodnotu mezi 1 až 50 znaků (včetně), [omezení souběžnosti aktivační události změnit](../logic-apps/logic-apps-workflow-actions-triggers.md#change-trigger-concurrency) nebo [aktivovat instance postupně](../logic-apps/logic-apps-workflow-actions-triggers.md#sequential-trigger). | 
-| Maximální čekací spuštění | Když omezíte souběžnosti 100 | Když zapnete řízení souběžnosti pro aktivační událost, výchozí limit je 10. Tato omezení popisuje maximální počet instancí aplikace logiky, které mohou čekat na spustit, když vaše aplikace logiky je již spuštěn maximální počet souběžných instancí. <p><p>Chcete-li změnit výchozí omezení na hodnotu mezi 0 a 100 (včetně), [omezit spuštění čekajících změn](../logic-apps/logic-apps-workflow-actions-triggers.md#change-waiting-runs). | 
-| Pole položek foreach | 100 000 | Tato omezení popisuje maximální počet položek pole, které může zpracovat smyčka "for each". <p><p>K filtrování větších polí, můžete použít [akce dotazu](../connectors/connectors-native-query.md). | 
-| Foreach souběžnosti | 50, když omezíte souběžnosti | Když zapnete řízení souběžnosti pro tuto smyčku, je výchozí limit 20. Popisuje tento limit maximálního počtu "pro každý" iterací, které lze spustit ve stejnou dobu nebo paralelní smyčky. <p><p>Chcete-li změnit výchozí omezení na hodnotu mezi 1 až 50 znaků (včetně), [změnit "for each" souběžnosti limit](../logic-apps/logic-apps-workflow-actions-triggers.md#change-for-each-concurrency) nebo [spuštění "for each" smyčky postupně](../logic-apps/logic-apps-workflow-actions-triggers.md#sequential-for-each). | 
-| Položky SplitOn | 100 000 | | 
-| Do iterací | 5 000 | | 
-|||| 
+| Souběžnosti triggeru | * Neomezené při vypnuté řízení souběžnosti <p><p>* 25 je výchozí omezení, pokud řízení souběžnosti je zapnuté, což nelze vrátit zpět po zapnutí ovládacího prvku. Výchozí nastavení můžete změnit na hodnotu mezi 1 až 50 znaků (včetně). | Tato omezení popisuje nejvyšší počet instancí aplikace logiky, spuštěné ve stejnou dobu nebo paralelně. <p><p>Chcete-li změnit výchozí omezení na hodnotu mezi 1 až 50 znaků (včetně), [omezení souběžnosti aktivační události změnit](../logic-apps/logic-apps-workflow-actions-triggers.md#change-trigger-concurrency) nebo [aktivovat instance postupně](../logic-apps/logic-apps-workflow-actions-triggers.md#sequential-trigger). | 
+| Maximální čekací spuštění | Pokud je zapnuté řízení souběžnosti, je minimální počet čekajících běhů 10 plus počet souběžných spuštění (souběžnosti aktivační události). Můžete změnit maximální počet až 100 (včetně). | Tato omezení popisuje nejvyšší počet instancí aplikace logiky, které můžete počkat a spouštět, když vaše aplikace logiky je již spuštěn maximální počet souběžných instancí. <p><p>Chcete-li změnit výchozí omezení, [omezit spuštění čekajících změn](../logic-apps/logic-apps-workflow-actions-triggers.md#change-waiting-runs). | 
+| Pole položek foreach | 100 000 | Tato omezení popisuje nejvyšší počet položek pole, které může zpracovat smyčka "for each". <p><p>K filtrování větších polí, můžete použít [akce dotazu](../connectors/connectors-native-query.md). | 
+| Foreach souběžnosti | 20 je výchozí omezení, když je vypnutý řízení souběžnosti. Výchozí nastavení můžete změnit na hodnotu mezi 1 až 50 znaků (včetně). | Toto omezení je nejvyšší počet "pro každý" iterací, které lze spustit ve stejnou dobu nebo paralelní smyčky. <p><p>Chcete-li změnit výchozí omezení na hodnotu mezi 1 až 50 znaků (včetně), [změnit "for each" souběžnosti limit](../logic-apps/logic-apps-workflow-actions-triggers.md#change-for-each-concurrency) nebo [spuštění "for each" smyčky postupně](../logic-apps/logic-apps-workflow-actions-triggers.md#sequential-for-each). | 
+| Položky SplitOn | 100 000 | Pro aktivační události, které vrací pole můžete zadat výraz, který se používá 'Vlastnost SplitOn' vlastnost, která [rozdělí nebo debatches položek pole do několika instancí pracovních postupů](../logic-apps/logic-apps-workflow-actions-triggers.md#split-on-debatch) pro zpracování, místo použití "Foreach" smyčky. Tento výraz odkazuje na pole, které chcete použít pro vytvoření a spuštění instance pracovního postupu pro každou položku pole. |
+| Do iterací | 5 000 | |
+||||
 
 <a name="throughput-limits"></a>
 

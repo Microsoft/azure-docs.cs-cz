@@ -9,99 +9,66 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 12/22/2018
+ms.date: 02/03/2019
 ms.author: juliako
-ms.openlocfilehash: d74ce913a2189dd1062b30f9def919cbbabe7b64
-ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
+ms.openlocfilehash: 10600d8f3ff4e08b8d90f28ec15d3cb0c56bcae0
+ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53742520"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55746740"
 ---
 # <a name="streaming-policies"></a>Zásady streamování
 
-V Azure Media Services v3 streamování zásady umožňují definovat protokolů streamování a možnosti šifrování pro vaše StreamingLocators. Můžete zadat název streamování zásady, které jste vytvořili, nebo použijte jednu z předdefinovaných zásad streamování. Předdefinované datové proudy zásady, které se aktuálně k dispozici jsou: "Predefined_DownloadOnly", "Predefined_ClearStreamingOnly", "Predefined_DownloadAndClearStreaming", "Predefined_ClearKey", "Predefined_MultiDrmCencStreaming" a "Predefined_MultiDrmStreaming".
+V Azure Media Services v3 [streamování zásady](https://docs.microsoft.com/rest/api/media/streamingpolicies) vám umožňují definovat protokolů streamování a možnosti šifrování pro vaše [lokátory streamování](streaming-locators-concept.md). Můžete buď použít jednu z předdefinovaných zásad streamování nebo vytvořit vlastní zásadu. Předdefinované datové proudy zásady, které se aktuálně k dispozici jsou: "Predefined_DownloadOnly", "Predefined_ClearStreamingOnly", "Predefined_DownloadAndClearStreaming", "Predefined_ClearKey", "Predefined_MultiDrmCencStreaming" a "Predefined_MultiDrmStreaming".
 
 > [!IMPORTANT]
-> Při použití vlastního [StreamingPolicy](https://docs.microsoft.com/rest/api/media/streamingpolicies), by měly omezenou sadu zásad návrhu pro svůj účet Media Service a znovu je použít pro vaše lokátory streamování pokaždé, když jsou potřeba stejné možnosti šifrování a protokoly. Kvóta pro počet položek streamování zásady, které má váš účet Media Service. By neměl být vytváření nových zásad streamování pro každý Lokátor streamování.
+> * Vlastnosti **streamování zásady** jsou DateTime typu jsou vždy ve formátu UTC.
+> * Navrhněte omezenou sadu zásad pro svůj účet Media Service a je znovu použít pro vaše lokátory streamování pokaždé, když jsou potřeba stejné možnosti. 
 
-## <a name="streamingpolicy-definition"></a>Definice StreamingPolicy
+## <a name="examples"></a>Příklady
 
-Následující tabulka uvádí vlastnosti StreamingPolicy a umožňuje jejich definice.
+### <a name="not-encrypted"></a>Není šifrováno
 
-|Název|Popis|
-|---|---|
-|id|Plně kvalifikované ID prostředku pro prostředek.|
-|jméno|Název prostředku.|
-|properties.commonEncryptionCbcs|Konfigurace CommonEncryptionCbcs|
-|properties.commonEncryptionCenc|Konfigurace CommonEncryptionCenc|
-|Properties.Created |Čas vytvoření datových proudů zásad|
-|properties.defaultContentKeyPolicyName |Výchozí ContentKey používá aktuální zásady streamování|
-|properties.envelopeEncryption  |Konfigurace EnvelopeEncryption|
-|properties.noEncryption|Konfigurace NoEncryption|
-|type|Typ prostředku.|
+Pokud chcete ke streamování vašeho souboru v the vymazat (nešifrované), nastavte předdefinované jasné zásady streamování: na "Predefined_ClearStreamingOnly" (v .NET, můžete použít PredefinedStreamingPolicy.ClearStreamingOnly).
 
-Kompletní definici, naleznete v tématu [streamování zásady](https://docs.microsoft.com/rest/api/media/streamingpolicies).
+```csharp
+StreamingLocator locator = await client.StreamingLocators.CreateAsync(
+    resourceGroup,
+    accountName,
+    locatorName,
+    new StreamingLocator
+    {
+        AssetName = assetName,
+        StreamingPolicyName = PredefinedStreamingPolicy.ClearStreamingOnly
+    });
+```
+
+### <a name="encrypted"></a>Šifrované 
+
+Pokud potřebujete k šifrování obsahu pomocí šifrování obálky a cenc, nastavte zásadu "Predefined_MultiDrmCencStreaming". Tato zásada udává, že chcete vygenerovat a nastavit v lokátoru dva symetrické klíče (obálku a CENC). Tím dojde k nastavení obálky a šifrování PlayReady a Widevine (klíč se doručí klientovi pro přehrávání na základě nakonfigurovaných licencí DRM).
+
+```csharp
+StreamingLocator locator = await client.StreamingLocators.CreateAsync(
+    resourceGroup,
+    accountName,
+    locatorName,
+    new StreamingLocator
+    {
+        AssetName = assetName,
+        StreamingPolicyName = "Predefined_MultiDrmCencStreaming",
+        DefaultContentKeyPolicyName = contentPolicyName
+    });
+```
+
+Pokud chcete zašifrovat datový proud s CBCS (FairPlay), použijte "Predefined_MultiDrmStreaming".
 
 ## <a name="filtering-ordering-paging"></a>Filtrování, řazení, stránkování
 
-Služba Media Services podporuje následující možnosti dotazu OData pro streamování zásady: 
-
-* $filter 
-* $orderby 
-* $top 
-* $skiptoken 
-
-Popis operátoru:
-
-* EQ = rovno
-* Ne = není rovno
-* Ge = větší než nebo rovno
-* Le = menší než nebo rovno
-* Gt = je větší než
-* Lt = menší než
-
-### <a name="filteringordering"></a>Filtrování a řazení
-
-Následující tabulka ukazuje, jak tyto možnosti může použít u vlastnosti StreamingPolicy: 
-
-|Název|Filtr|Objednání|
-|---|---|---|
-|id|||
-|jméno|Eq, ne, ge, le, gt, lt|Vzestupným a sestupným|
-|properties.commonEncryptionCbcs|||
-|properties.commonEncryptionCenc|||
-|Properties.Created |Eq, ne, ge, le, gt, lt|Vzestupným a sestupným|
-|properties.defaultContentKeyPolicyName |||
-|properties.envelopeEncryption|||
-|properties.noEncryption|||
-|type|||
-
-### <a name="pagination"></a>Stránkování
-
-Pro každý ze čtyř povoleno řazení je podporováno stránkování. V současné době je velikost stránky je 10.
-
-> [!TIP]
-> Odkaz na další vždy používejte k vytvoření výčtu kolekce a není závislý na konkrétní stránce velikost.
-
-Pokud odpovědi na dotaz obsahuje mnoho položek, tato služba vrátí "\@odata.nextLink" k získání další stránky výsledků. Tímto lze na stránku prostřednictvím úplná sada výsledků. Nelze konfigurovat velikost stránky. 
-
-Pokud StreamingPolicy jsou vytvořeny nebo odstranili stránkování prostřednictvím kolekce, změny se projeví v navrácených výsledcích (pokud tyto změny jsou součástí kolekce, která se nestáhla.) 
-
-Následující příklad jazyka C# ukazuje, jak zobrazit výčet prostřednictvím všech StreamingPolicies v účtu.
-
-```csharp
-var firstPage = await MediaServicesArmClient.StreamingPolicies.ListAsync(CustomerResourceGroup, CustomerAccountName);
-
-var currentPage = firstPage;
-while (currentPage.NextPageLink != null)
-{
-    currentPage = await MediaServicesArmClient.StreamingPolicies.ListNextAsync(currentPage.NextPageLink);
-}
-```
-
-ZBÝVAJÍCÍ příklady naleznete v tématu [streamování zásady – seznam](https://docs.microsoft.com/rest/api/media/streamingpolicies/list)
+Zobrazit [filtrování, řazení, stránkování, Media Services entit](entities-overview.md).
 
 ## <a name="next-steps"></a>Další postup
 
-[Streamování souboru](stream-files-dotnet-quickstart.md)
+* [Streamování souboru](stream-files-dotnet-quickstart.md)
+* [Použití dynamického šifrování AES-128 a doručení klíče služby](protect-with-aes128.md)
+* [Pomocí DRM dynamického šifrování a licence služby pro doručování](protect-with-drm.md)

@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 05/01/2018
 ms.author: luisca
 ms.custom: seodec2018
-ms.openlocfilehash: 8f87cb68aeea8b953b9883e92fd5080569c6cdd0
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: bf840dc00f36ee19f2e76ead6e61ae2377b97167
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55203687"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55749105"
 ---
 # <a name="predefined-skills-for-content-enrichment-azure-search"></a>Předdefinované dovednosti pro rozšiřování obsahu (Azure Search)
 
@@ -28,7 +28,7 @@ V tomto článku se dozvíte o kognitivní dovednosti s Azure Search. A *kogniti
 
 ## <a name="predefined-skills"></a>Předdefinované dovednosti
 
-Několik dovednosti jsou flexibilní v co se používají, nebo vytvořit. Obecně platí většina dovednosti podle předem natrénovaných modelů, které znamená, že nelze trénování modelu s použitím cvičných dat. Pokyny k vytváření vlastních dovedností, naleznete v tématu [jak definovat vlastní rozhraní](cognitive-search-custom-skill-interface.md) a [příklad: vytváření vlastních dovedností](cognitive-search-create-custom-skill-example.md). Následující tabulka uvádí a popisuje dovednosti od Microsoftu. 
+Několik dovednosti jsou flexibilní v co se používají, nebo vytvořit. Obecně platí většina dovednosti podle předem natrénovaných modelů, které znamená, že nelze trénování modelu s použitím cvičných dat. Následující tabulka uvádí a popisuje dovednosti od Microsoftu. 
 
 | Dovednosti | Popis |
 |-------|-------------|
@@ -41,6 +41,10 @@ Několik dovednosti jsou flexibilní v co se používají, nebo vytvořit. Obecn
 | [Microsoft.Skills.Vision.ImageAnalysisSkill](cognitive-search-skill-image-analysis.md) | Tato dovednosti používá algoritmus detekce bitové kopie k identifikaci obsahu obrázku a vygenerovat textový popis. |
 | [Microsoft.Skills.Vision.OcrSkill](cognitive-search-skill-ocr.md) | Optické rozpoznávání znaků. |
 | [Microsoft.Skills.Util.ShaperSkill](cognitive-search-skill-shaper.md) | Výstup mapy na komplexní typ (vícedílný datový typ, který může být použit k úplný název, adresu Víceřádkový nebo kombinaci příjmení a osobních identifikátorů.) |
+| [Microsoft.Skills.Custom.WebApiSkill](cognitive-search-custom-skill-web-api.md) | Umožňuje rozšíření kognitivního vyhledávání kanálu tak, že volání protokolu HTTP do vlastního webového rozhraní API |
+
+
+Pokyny k vytváření [vlastních dovedností](cognitive-search-custom-skill-web-api.md), naleznete v tématu [jak definovat vlastní rozhraní](cognitive-search-custom-skill-interface.md) a [příklad: vytváření vlastních dovedností](cognitive-search-create-custom-skill-example.md).
 
 ## <a name="see-also"></a>Další informace najdete v tématech
 

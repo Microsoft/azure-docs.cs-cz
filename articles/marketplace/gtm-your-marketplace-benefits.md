@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 01/12/2019
 ms.author: ellacroi
-ms.openlocfilehash: bf73c3226af5b2480d52d5010058f24d912bdab5
-ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
+ms.openlocfilehash: 0e324ae82a0223cf48f00b186f46e26840d4d655
+ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54355496"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55747522"
 ---
 # <a name="your-marketplace-benefits"></a>Výhody Marketplace
 
@@ -61,7 +61,7 @@ Vaše GTM podpora zahrnuje šablony, webového obsahu, školení a nástroje a p
 Chcete-li využít tyto výhody, budete muset:
 
 1. Publikování nabídky v Azure Marketplace nebo AppSource.
-2. Zkontrolujte zadané marketingových kontaktů v **kontaktní informace** část vaší nabídky. To by měl být vyhrazených marketingové prostředků, na rozdíl od alias pokrývající vše. (tj, nepoužívejte "podporu @", "informace o @", "marketing @" atd.)
+2. Zkontrolujte zadané marketingových kontaktů v **kontaktní informace** část vaší nabídky. To by měl být vyhrazených marketingové prostředků, na rozdíl od alias pokrývající vše. (tj, nepoužívejte "podporují\@", "informace o\@", "marketing\@" atd.)
 
 Na základě vašeho řešení stavu, zobrazí se vám e-mail s sami nebo jako pozvánku do volání konzultaci s vyhrazenou zapojení správce. Není potřeba dělat nic. iniciujte hovor – Marketplace Onboardingový tým vás bude kontaktovat na základě informací poskytují v [portál partnerů cloudu](https://cloudpartner.azure.com/).
 

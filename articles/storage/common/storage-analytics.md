@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 03/03/2017
 ms.author: rogarana
 ms.subservice: common
-ms.openlocfilehash: 9cd4845bcf107941f969255eb223567d4341ea41
-ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
+ms.openlocfilehash: 1b27bbaa3d8e570c8431708934edee564e994487
+ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55508500"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55745652"
 ---
 # <a name="storage-analytics"></a>Storage Analytics
 
@@ -43,7 +43,7 @@ Jsou zaznamenány následující typy ověřených požadavků:
 * Požadavky na použití sdílený přístupový podpis (SAS), včetně úspěšné a neúspěšné požadavky.
 * Požadavky na analytics data.
 
-Storage Analytics, jako je protokol vytvoření nebo odstranění, žádosti se neprotokolují. Úplný seznam dat protokolu jsou uvedené v [stavové zprávy a Storage Analytics protokolovanými operacemi](/rest/api/storageservices/storage-analytics-logged-operations-and-status-messages.md) a [formát Log Analytics úložiště](/rest/api/storageservices/storage-analytics-log-format.md) témata.
+Storage Analytics, jako je protokol vytvoření nebo odstranění, žádosti se neprotokolují. Úplný seznam dat protokolu jsou uvedené v [stavové zprávy a Storage Analytics protokolovanými operacemi](/rest/api/storageservices/storage-analytics-logged-operations-and-status-messages) a [formát Log Analytics úložiště](/rest/api/storageservices/storage-analytics-log-format) témata.
 
 ### <a name="logging-anonymous-requests"></a>Protokolování anonymních požadavků
 Jsou zaznamenány následující typy anonymních požadavků:
@@ -53,7 +53,7 @@ Jsou zaznamenány následující typy anonymních požadavků:
 * Chyby časového limitu pro klienta i serveru.
 * Neúspěšné požadavky GET s kódem chyby 304 (Neupraveno).
 
-Všechny ostatní neúspěšné anonymní žádosti se neprotokolují. Úplný seznam dat protokolu jsou uvedené v [stavové zprávy a Storage Analytics protokolovanými operacemi](/rest/api/storageservices/storage-analytics-logged-operations-and-status-messages.md) a [formát Log Analytics úložiště](/rest/api/storageservices/storage-analytics-log-format.md) témata.
+Všechny ostatní neúspěšné anonymní žádosti se neprotokolují. Úplný seznam dat protokolu jsou uvedené v [stavové zprávy a Storage Analytics protokolovanými operacemi](/rest/api/storageservices/storage-analytics-logged-operations-and-status-messages) a [formát Log Analytics úložiště](/rest/api/storageservices/storage-analytics-log-format) témata.
 
 ### <a name="how-logs-are-stored"></a>Jak se ukládají protokoly
 Všechny protokoly se ukládají v objektech BLOB bloku v kontejneru nazvaném $logs, které se automaticky vytvoří, když je pro účet úložiště povolená analytika úložiště. Kontejner $logs se nachází v oboru názvů objektů blob v účtu úložiště, například: `http://<accountname>.blob.core.windows.net/$logs`. Tento kontejner nejde odstranit, jakmile bylo povoleno Storage Analytics, i když je možné odstranit její obsah.
@@ -139,7 +139,7 @@ Kapacity dat je denně zaznamenána pro službu Blob service účtu úložiště
 * **ContainerCount**: Počet kontejnerů objektů blob ve službě Blob service účtu úložiště.
 * **ObjectCount**: Počet potvrzených a nepotvrzené bloku nebo stránky objekty BLOB ve službě Blob service účtu úložiště.
 
-Další informace o metriky kapacity najdete v tématu [tabulkovému schématu metrik Storage Analytics](/rest/api/storageservices/storage-analytics-metrics-table-schema.md).
+Další informace o metriky kapacity najdete v tématu [tabulkovému schématu metrik Storage Analytics](/rest/api/storageservices/storage-analytics-metrics-table-schema).
 
 ### <a name="how-metrics-are-stored"></a>Jak jsou uloženy metriky
 Všechna data metriky pro každou ze služeb úložiště se ukládají do tří tabulek vyhrazené pro tuto službu: jednu tabulku pro informace o transakcích, jednu tabulku pro minuty transakce informace a další tabulku pro informace o kapacitě. Informace o transakcích transakce a minuty se skládá z dat požadavků a odpovědí a obsahuje informace o kapacitě úložiště dat o využití. Hodinové metriky, minutové metriky a kapacity pro službu Blob service účtu úložiště je možný v tabulkách, které jsou pojmenovány podle popisu v následující tabulce.
@@ -171,7 +171,7 @@ Pokud jste nakonfigurovali zásady uchovávání dat, se neúčtuje transakce od
 ### <a name="understanding-billable-requests"></a>Principy fakturovatelných požadavků
 Každou žádost odeslanou účet služby storage je fakturovatelná nebo Nefakturovatelný. Analýza úložiště protokolů každý jednotlivý požadavek na službu, včetně stavovou zprávu, která určuje, jak se zpracovává žádost. Podobně analytika úložiště ukládá metriky pro službu a rozhraní API operace této služby, včetně procenta a počet určitých stavových zpráv. Společně tyto funkce vám pomohou analyzovat fakturovatelných požadavků, vylepšování na vaše aplikace a diagnostikovat problémy s žádostí o služby. Další informace o fakturaci najdete v tématu [Principy Azure Storage fakturace – šířka pásma, transakce a kapacita](https://blogs.msdn.com/b/windowsazurestorage/archive/2010/07/09/understanding-windows-azure-storage-billing-bandwidth-transactions-and-capacity.aspx).
 
-Při prohlížení dat Storage Analytics, můžete použít tabulky v [stavové zprávy a Storage Analytics protokolovanými operacemi](/rest/api/storageservices/storage-analytics-logged-operations-and-status-messages.md) tématu můžete určit, jaké požadavky se účtují. Pak můžete porovnat vaše protokoly a data metriky pro stavové zprávy zobrazíte, pokud se vám účtovat určité žádosti. Tabulky v předchozím tématu můžete použít také k nalezení dostupnosti pro službu úložiště nebo jednotlivé operace rozhraní API.
+Při prohlížení dat Storage Analytics, můžete použít tabulky v [stavové zprávy a Storage Analytics protokolovanými operacemi](/rest/api/storageservices/storage-analytics-logged-operations-and-status-messages) tématu můžete určit, jaké požadavky se účtují. Pak můžete porovnat vaše protokoly a data metriky pro stavové zprávy zobrazíte, pokud se vám účtovat určité žádosti. Tabulky v předchozím tématu můžete použít také k nalezení dostupnosti pro službu úložiště nebo jednotlivé operace rozhraní API.
 
 ## <a name="next-steps"></a>Další postup
 * [Monitorování účtu úložiště na webu Azure Portal](storage-monitor-storage-account.md)

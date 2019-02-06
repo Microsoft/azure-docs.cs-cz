@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 10/16/2018
 ms.author: iainfou
-ms.openlocfilehash: d71360d830ab7b90a8d91e6d17c7a3698d8fca5c
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.openlocfilehash: 624e49cb0b211139a70d0262fbb8500deef8bf5b
+ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55692575"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55744852"
 ---
 # <a name="network-concepts-for-applications-in-azure-kubernetes-service-aks"></a>Koncepty sítě pro aplikace ve službě Azure Kubernetes Service (AKS)
 
@@ -68,7 +68,7 @@ Ve službě AKS můžete nasadit cluster, který používá jednu z následujíc
 
 *Kubenet* sítě možnost je výchozí konfigurace pro vytvoření clusteru AKS. S *kubenet*, uzly získat IP adresu z podsítě virtuální sítě Azure. Podů obdrží IP adresu z logicky jiným adresním prostorem podsítě virtuální sítě Azure z uzlů. Překlad síťových adres (NAT) je nakonfigurovaný tak, aby tyto pody může mít přístup k prostředkům ve službě Azure virtual network. Síťový provoz na IP adresu zdrojového je že NAT by uzlu primární IP adresa.
 
-Použití uzlů [kubenet] [ kubenet] modulu plug-in Kubernetes. Můžete nechat na platformě Azure, vytvořit a konfigurovat virtuální sítě pro vás nebo zvolit pro nasazení clusteru AKS do existující podsítě virtuální sítě. Znovu pouze uzly přijímají směrovatelné IP adresy a podů komunikovat s ostatními prostředky mimo AKS cluster pomocí překladu adres. Tento přístup výrazně snižuje počet IP adres, které je nutné rezervovat v prostoru podů použití vaší sítě.
+Použití uzlů [kubenet] [ kubenet] modulu plug-in Kubernetes. Můžete nechat na platformě Azure, vytvořit a konfigurovat virtuální sítě pro vás nebo zvolit pro nasazení clusteru AKS do existující podsítě virtuální sítě. Pouze uzly přijímají směrovatelné IP adresy a podů opět pomocí NAT komunikovat s ostatními prostředky mimo AKS cluster. Tento přístup výrazně snižuje počet IP adres, které je nutné rezervovat v prostoru podů použití vaší sítě.
 
 Další informace najdete v tématu [konfigurace sítě pro AKS cluster kubenet][aks-configure-kubenet-networking].
 

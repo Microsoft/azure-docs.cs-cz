@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
 ms.author: barbkess
-ms.openlocfilehash: 441821ae422fb4cbddbca5b4c30d68484ce6bc1f
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 55632acf516198b5ad0b6430480836dcc62fd5a5
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55186973"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55755373"
 ---
 # <a name="unexpected-application-in-my-applications-list"></a>V seznamu aplikací neočekávaná aplikace
 
@@ -63,15 +63,15 @@ Při filtrování do **všechny aplikace**, **všechny aplikace** **seznamu** uk
 
 4.  Když přidáte tak, že vytvoříte vlastní aplikaci pomocí registrace nové aplikace [registru aplikace](https://docs.microsoft.com/azure/active-directory/active-directory-app-registration)
 
-5.  Když přidáte tak, že vytvoříte vlastní aplikaci pomocí registrace nové aplikace [portál pro registraci aplikace V2.0](https://docs.microsoft.com/azure/active-directory/develop/active-directory-v2-app-registration#visit-the-microsoft-app-registration-portal)
+5.  Když přidáte tak, že vytvoříte vlastní aplikaci pomocí registrace nové aplikace [portál pro registraci aplikace V2.0](https://docs.microsoft.com/azure/active-directory/develop/active-directory-v2-app-registration)
 
 6.  Pokud jste přidali aplikaci vyvíjíte pomocí sady Visual Studio [metody ověřování ASP.net](https://www.asp.net/visual-studio/overview/2013/creating-web-projects-in-visual-studio#orgauthoptions) nebo [připojené služby](https://blogs.msdn.com/b/visualstudio/archive/2014/11/19/connecting-to-cloud-services.aspx)
 
 7.  Když vytvoříte instanční objekt služby pomocí [modulu Azure AD PowerShell](/powershell/azure/install-adv2?view=azureadps-2.0)
 
-8.  Pokud jste [souhlas aplikace](https://docs.microsoft.com/azure/active-directory/develop/active-directory-devhowto-multi-tenant-overview#understanding-user-and-admin-consent) jako správce, aby používala data ve vašem tenantovi
+8.  Pokud jste [souhlas aplikace](https://docs.microsoft.com/azure/active-directory/develop/active-directory-devhowto-multi-tenant-overview) jako správce, aby používala data ve vašem tenantovi
 
-9.  Když [uživatel vyjádří souhlas aplikace](https://docs.microsoft.com/azure/active-directory/develop/active-directory-devhowto-multi-tenant-overview#understanding-user-and-admin-consent) používat data ve vašem tenantovi
+9.  Když [uživatel vyjádří souhlas aplikace](https://docs.microsoft.com/azure/active-directory/develop/active-directory-devhowto-multi-tenant-overview) používat data ve vašem tenantovi
 
 10. Když povolíte určité služby, které ukládají data ve vašem tenantovi. Jedním z příkladů je resetování hesel, která je modelovaná jako objekt služby k uložení hesla resetovat zásady bezpečně.
 
@@ -107,7 +107,7 @@ K **odstranit aplikaci**, postupujte podle těchto kroků:
 
 ## <a name="i-want-to-disable-all-future-user-consent-operations-to-any-application"></a>Chci zakázat všechny operace vyjádření souhlasu budoucí uživatele do žádné aplikace
 
-Zakázání souhlas uživatele, pro celý adresář zabrání koncovým uživatelům od vyjádření souhlasu s libovolnou aplikaci. Správci můžou udělit souhlas stále na behalves uživatele. Další informace o souhlasu s aplikací a proč může nebo nemusí chtít vyjádřit souhlas, přečtěte si [uživatele porozumění a souhlas správce](https://docs.microsoft.com/azure/active-directory/develop/active-directory-devhowto-multi-tenant-overview#understanding-user-and-admin-consent).
+Zakázání souhlas uživatele, pro celý adresář zabrání koncovým uživatelům od vyjádření souhlasu s libovolnou aplikaci. Správci můžou udělit souhlas stále na behalves uživatele. Další informace o souhlasu s aplikací a proč může nebo nemusí chtít vyjádřit souhlas, přečtěte si [uživatele porozumění a souhlas správce](https://docs.microsoft.com/azure/active-directory/develop/active-directory-devhowto-multi-tenant-overview).
 
 K **zakázat všechny operace vyjádření souhlasu budoucí uživatele v adresáři celý**, postupujte podle těchto kroků:
 

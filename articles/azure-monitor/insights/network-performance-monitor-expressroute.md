@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: abshamsft
-ms.openlocfilehash: 50819e1378187dda126f25298d8a2ac0a1b815c5
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: 2dcbe170a69c0c285cb6425427f94b5efced8712
+ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53188771"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55747454"
 ---
 # <a name="expressroute-monitor"></a>ExpressRoute Monitor
 
@@ -118,23 +118,12 @@ Můžete zobrazit kódy upozornění a nastavení upozornění na ně prostředn
 
 | Kód upozornění (protokoly) | Popis |
 | --- | --- |
-| 5101 | Vysoká latence ukazuje podrozhraní Microsoft Edge |
-| 5102 | Podrozhraní Microsoft Edge je vyřadit balíček | 
-| 5103 | Brána ExpressRoute není v pořádku | 
-| 5201 | Propojení poskytovatele služeb vykazuje vysokou latenci |
-| 5202 | Pakety nepřicházejí z zamýšlený okruh ExpressRoute |
-| 5301 | Hraniční směrovač zákazníka vykazuje vysokou latenci | 
-| 5302 | Příčinou latence je zařízení nebo propojení v prostředí zákazníka. Zřejmě není problém byl v okruhu ExpressRoute | 
 | 5501 | Není průchodné sekundární připojení okruhu ExpressRoute |
 | 5502 | Není průchodné primární připojení okruhu ExpressRoute |
 | 5503 | Pro předplatné propojené s pracovním prostorem se nenašel žádný okruh | 
-| 5506 | Využití se blíží maximální kapacitě | 
-| 5507 | Využití je nízké |
 | 5508 | Nejste schopni zjistit, jestli přenos prochází přes všechny okruhy pro cestu |
 | 5510 | Přenos neprochází přes zamýšlený okruh | 
 | 5511 | Přenos neprochází přes zamýšlenou virtuální síť | 
-| 5512 | Nepovedlo se určit, jestli přenos prochází přes zamýšlený okruh |
-
 
 **Okruh je mimo provoz.** Network Performance Monitor vás upozorní, jakmile dojde ke ztrátě připojení mezi virtuálními sítěmi Azure a místních prostředků. Toto oznámení vám pomůže přijmout proaktivní opatření předtím, než se zobrazí uživateli eskalací a snížit prostoje.
 

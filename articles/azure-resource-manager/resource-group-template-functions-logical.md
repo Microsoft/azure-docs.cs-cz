@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/24/2018
 ms.author: tomfitz
-ms.openlocfilehash: 8850ef68c665efcf9e66315af20b7d1e8492fc5f
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.openlocfilehash: 109bd1c987c86721c6064fc0294913c85fa3a901
+ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55493758"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55745567"
 ---
 # <a name="logical-functions-for-azure-resource-manager-templates"></a>Logické funkce pro šablony Azure Resource Manageru
 
@@ -34,9 +34,9 @@ Resource Manager poskytuje několik funkcí pro provádění porovnání v šabl
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="and"></a>a
-`and(arg1, arg2)`
+`and(arg1, arg2, ...)`
 
-Kontroluje, zda jsou splněny obě hodnoty parametru.
+Kontroluje, zda jsou splněny všechny hodnoty parametrů.
 
 ### <a name="parameters"></a>Parametry
 
@@ -44,10 +44,11 @@ Kontroluje, zda jsou splněny obě hodnoty parametru.
 |:--- |:--- |:--- |:--- |
 | arg1 |Ano |Boolean |První hodnota ke kontrole, jestli má hodnotu true. |
 | arg2 |Ano |Boolean |Druhá hodnota ke kontrole, jestli má hodnotu true. |
+| Další argumenty |Ne |Boolean |Další argumenty, které chcete zkontrolovat, zda jsou splněny. |
 
 ### <a name="return-value"></a>Návratová hodnota
 
-Vrátí **True** Pokud jsou obě hodnoty true; v opačném případě **False**.
+Vrátí **True** Pokud jsou všechny hodnoty true; v opačném případě **False**.
 
 ### <a name="examples"></a>Příklady
 
@@ -366,9 +367,9 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 ```
 
 ## <a name="or"></a>nebo
-`or(arg1, arg2)`
+`or(arg1, arg2, ...)`
 
-Kontroluje, zda je buď parametr hodnotu true.
+Kontroluje, zda je true kterákoli hodnota parametru.
 
 ### <a name="parameters"></a>Parametry
 
@@ -376,10 +377,11 @@ Kontroluje, zda je buď parametr hodnotu true.
 |:--- |:--- |:--- |:--- |
 | arg1 |Ano |Boolean |První hodnota ke kontrole, jestli má hodnotu true. |
 | arg2 |Ano |Boolean |Druhá hodnota ke kontrole, jestli má hodnotu true. |
+| Další argumenty |Ne |Boolean |Další argumenty, které chcete zkontrolovat, zda jsou splněny. |
 
 ### <a name="return-value"></a>Návratová hodnota
 
-Vrátí **True** Pokud buď hodnotu true; v opačném případě **False**.
+Vrátí **True** Pokud libovolná hodnota je true; v opačném případě **False**.
 
 ### <a name="examples"></a>Příklady
 

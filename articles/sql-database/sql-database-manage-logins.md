@@ -13,12 +13,12 @@ ms.author: vanto
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 01/25/2019
-ms.openlocfilehash: 7cb2e4214e868bdf9f585d6b0f4468a6c8375191
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 81ec99c5de94736d68392cc7cf0bc3e305e0ce7d
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55459226"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55754009"
 ---
 # <a name="controlling-and-granting-database-access-to-sql-database-and-sql-data-warehouse"></a>Řízení a udělování přístupu k databázi SQL Database a SQL Data Warehouse
 
@@ -49,13 +49,13 @@ Jako správce je možné nakonfigurovat jeden účet Azure Active Directory, a t
 - Tyto účty přistupují k uživatelským databázím jako uživatel `dbo` a mají pro ně veškerá oprávnění. (Vlastník databáze také k databázi přistupuje jako uživatel `dbo`.) 
 - Nezadávejte `master` databáze jako `dbo` uživatele a mají omezené oprávnění v hlavní větvi. 
 - Jsou **není** členy standard systému SQL Server `sysadmin` pevné role serveru, která není k dispozici ve službě SQL database.  
-- Můžete vytvořit, alter a drop databáze, přihlášení a uživatelů v pravidlech brány firewall na hlavní a úroveň serveru.
+- Můžete vytvořit, alter a drop databáze, přihlášení a uživatele v hlavní a úroveň serveru pravidla firewallu protokolu IP.
 - Můžete přidávat a odebírat členy `dbmanager` a `loginmanager` role.
 - Můžete zobrazit `sys.sql_logins` systémové tabulky.
 
 ### <a name="configuring-the-firewall"></a>Konfigurace brány firewall
 
-Pokud je nakonfigurovaná brána firewall na úrovni serveru pro určitou IP adresu nebo rozsah IP adres, může se **správce SQL serveru** a **správce Azure Active Directory** připojit k hlavní databázi a všem uživatelským databázím. Počáteční bránu firewall na úrovni serveru je možné nakonfigurovat na webu [Azure Portal](sql-database-get-started-portal.md), pomocí prostředí [PowerShell](sql-database-powershell-samples.md) nebo pomocí rozhraní [REST API](https://msdn.microsoft.com/library/azure/dn505712.aspx). Po vytvoření připojení můžete konfigurovat další pravidla brány firewall na úrovni serveru také pomocí jazyka [Transact-SQL](sql-database-configure-firewall-settings.md).
+Pokud je nakonfigurovaná brána firewall na úrovni serveru pro určitou IP adresu nebo rozsah IP adres, může se **správce SQL serveru** a **správce Azure Active Directory** připojit k hlavní databázi a všem uživatelským databázím. Počáteční bránu firewall na úrovni serveru je možné nakonfigurovat na webu [Azure Portal](sql-database-single-database-get-started.md), pomocí prostředí [PowerShell](sql-database-powershell-samples.md) nebo pomocí rozhraní [REST API](https://msdn.microsoft.com/library/azure/dn505712.aspx). Jakmile se vytvoří připojení, další pravidla brány firewall na úrovni serveru IP lze také nastavit pomocí [příkazů jazyka Transact-SQL](sql-database-configure-firewall-settings.md).
 
 ### <a name="administrator-access-path"></a>Cesta pro přístup správce
 
@@ -67,7 +67,7 @@ Při použití otevřeného portu brány firewall na úrovni serveru se můžou 
 
 ### <a name="connecting-to-a-database-by-using-sql-server-management-studio"></a>Připojení k databázi pomocí aplikace SQL Server Management Studio
 
-Návod, jak vytvořit server, databázi, pravidla brány firewall na úrovni serveru a pomocí aplikace SQL Server Management Studio odesílat dotazy na databázi, najdete v tématu [Začínáme se servery, databázemi a pravidly brány firewall služby Azure SQL Database s využitím webu Azure Portal a aplikace SQL Server Management Studio](sql-database-get-started-portal.md).
+Návod, jak vytvořit server, databázi, pravidla brány firewall na úrovni serveru IP a pomocí SQL Server Management Studio odesílat dotazy na databázi, naleznete v tématu [Začínáme se servery, databázemi a pravidly brány firewall Azure SQL Database pomocí webu Azure portal a SQL Server Management Studio](sql-database-single-database-get-started.md).
 
 > [!IMPORTANT]
 > Doporučujeme vám vždy používat nejnovější verzi aplikace Management Studio, aby se zajistila synchronizovanost s aktualizacemi Microsoft Azure a SQL Database. [Aktualizovat aplikaci SQL Server Management Studio](https://msdn.microsoft.com/library/mt238290.aspx).

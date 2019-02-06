@@ -9,101 +9,40 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 12/20/2018
+ms.date: 02/03/2019
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: f12632b20d516c81e21a50cfdda7e40d4163afc1
-ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
+ms.openlocfilehash: d9e86c45d535862e0c3d02b3f331bc40ebb7f6c7
+ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53742214"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55745117"
 ---
 # <a name="content-key-policies"></a>Zásady symetrických klíčů
 
-Azure Media Services můžete použít k zabezpečení médií od okamžiku opuštění počítače přes úložiště, zpracování a dodání. Pomocí služby Media Services můžete doručovat na vyžádání a živé obsah dynamicky šifrován Advanced Encryption Standard (AES-128) nebo některým z tři systémů hlavní digital rights management (DRM): Microsoft PlayReady, Google Widevine a Apple FairPlay. Služba Media Services také poskytuje službu k doručování klíčů AES a DRM (PlayReady, Widevine a FairPlay) licence autorizovaným klientům.
+Pomocí služby Media Services můžete doručovat na vyžádání a živé obsah dynamicky šifrován Advanced Encryption Standard (AES-128) nebo některým z tři systémů hlavní digital rights management (DRM): Microsoft PlayReady, Google Widevine a Apple FairPlay. Služba Media Services také poskytuje službu k doručování klíčů AES a DRM (PlayReady, Widevine a FairPlay) licence autorizovaným klientům.
 
-V Azure Media Services v3 [zásad klíče k obsahu](https://docs.microsoft.com/rest/api/media/contentkeypolicies) umožňuje určit, jak je doručen koncovým klientům prostřednictvím součást Media Services klíč doručení klíče k obsahu. Další informace najdete v tématu [obsahu Přehled služby Endpoint protection](content-protection-overview.md).
+Postup určení možností šifrování na datový proud, je potřeba vytvořit [obsahu zásad klíče](https://docs.microsoft.com/rest/api/media/contentkeypolicies) a přidružte jej k vaší **Lokátor streamování**. **Zásad klíče k obsahu** nakonfiguruje, jak je klíč k obsahu doručit koncovým klientům prostřednictvím součást doručení klíče služby Media Services. Služba Media Services můžete nechat automaticky vygenerovat klíče k obsahu. Obvykle by použít dlouhodobá klíč a provedení kontroly existence zásady pomocí Get. K získání klíče, je třeba volat metodu samostatnou akci pro tajné kódy a přihlašovací údaje, najdete v následujícím příkladu.
 
-Doporučuje se pro všechny své Assety znovu použít stejné ContentKeyPolicy. ContentKeyPolicies je možné aktualizovat, takže pokud ji chcete obměna klíčů pak můžete buď přidat nové ContentKeyPolicyOption na existující ContentKeyPolicy s omezení s tokenem pomocí nových klíčů. Nebo můžete aktualizovat primární ověřovací klíč a seznam klíčů alternativní ověření v existující zásady a možnost. Může trvat až 15 minut pro doručení klíče mezipaměti aktualizace a vyzvednutí aktualizované zásady.
+**Obsah zásady klíčů** je možné aktualizovat. Například můžete chtít aktualizovat zásady, pokud je třeba provést obměny klíče. Můžete aktualizovat primární ověřovací klíč a seznam klíčů alternativní ověření v existující zásady. Může trvat až 15 minut pro doručení klíče mezipaměti aktualizace a vyzvednutí aktualizované zásady. 
 
-## <a name="contentkeypolicy-definition"></a>Definice ContentKeyPolicy
+> [!IMPORTANT]
+> * Vlastnosti **obsahu zásady klíčů** jsou DateTime typu jsou vždy ve formátu UTC.
+> * Navrhněte omezenou sadu zásad pro svůj účet Media Service a znovu je použít pro vaše lokátory streamování pokaždé, když jsou potřeba stejné možnosti. 
 
-Následující tabulka uvádí vlastnosti ContentKeyPolicy a umožňuje jejich definice.
+## <a name="example"></a>Příklad:
 
-|Název|Popis|
-|---|---|
-|id|Plně kvalifikované ID prostředku pro prostředek.|
-|jméno|Název prostředku.|
-|Properties.Created |Datum vytvoření zásad|
-|Properties.Description |Popis zásady.|
-|properties.lastModified|Datum poslední změny zásad|
-|Properties.Options |Možnosti zásad klíče.|
-|properties.policyId|Starší verze ID zásad.|
-|type|Typ prostředku.|
+Chcete-li získat klíče, použijte **GetPolicyPropertiesWithSecretsAsync**, jak je znázorněno v následujícím příkladu.
 
-Kompletní definici, naleznete v tématu [obsahu zásady klíčů](https://docs.microsoft.com/rest/api/media/contentkeypolicies).
+[!code-csharp[Main](../../../media-services-v3-dotnet-tutorials/AMSV3Tutorials/EncryptWithDRM/Program.cs#GetOrCreateContentKeyPolicy)]
 
 ## <a name="filtering-ordering-paging"></a>Filtrování, řazení, stránkování
 
-Služba Media Services podporuje následující možnosti dotazu OData pro ContentKeyPolicies: 
-
-* $filter 
-* $orderby 
-* $top 
-* $skiptoken 
-
-Popis operátoru:
-
-* EQ = rovno
-* Ne = není rovno
-* Ge = větší než nebo rovno
-* Le = menší než nebo rovno
-* Gt = je větší než
-* Lt = menší než
-
-### <a name="filteringordering"></a>Filtrování a řazení
-
-Následující tabulka ukazuje, jak tyto možnosti může použít u vlastnosti ContentKeyPolicies: 
-
-|Název|Filtr|Objednání|
-|---|---|---|
-|id|||
-|jméno|Eq, ne, ge, le, gt, lt|Vzestupným a sestupným|
-|Properties.Created |Eq, ne, ge, le, gt, lt|Vzestupným a sestupným|
-|Properties.Description |Eq, ne, ge, le, gt, lt||
-|properties.lastModified|Eq, ne, ge, le, gt, lt|Vzestupným a sestupným|
-|Properties.Options |||
-|properties.policyId|Eq, ne||
-|type|||
-
-### <a name="pagination"></a>Stránkování
-
-Pro každý ze čtyř povoleno řazení je podporováno stránkování. V současné době je velikost stránky je 10.
-
-> [!TIP]
-> Odkaz na další vždy používejte k vytvoření výčtu kolekce a není závislý na konkrétní stránce velikost.
-
-Pokud odpovědi na dotaz obsahuje mnoho položek, tato služba vrátí "\@odata.nextLink" k získání další stránky výsledků. Tímto lze na stránku prostřednictvím úplná sada výsledků. Nelze konfigurovat velikost stránky. 
-
-Pokud ContentKeyPolicies jsou vytvořeny nebo odstranili stránkování prostřednictvím kolekce, změny se projeví v navrácených výsledcích (pokud tyto změny jsou součástí kolekce, která se nestáhla.) 
-
-Následující příklad jazyka C# ukazuje, jak zobrazit výčet prostřednictvím všech ContentKeyPolicies v účtu.
-
-```csharp
-var firstPage = await MediaServicesArmClient.ContentKeyPolicies.ListAsync(CustomerResourceGroup, CustomerAccountName);
-
-var currentPage = firstPage;
-while (currentPage.NextPageLink != null)
-{
-    currentPage = await MediaServicesArmClient.ContentKeyPolicies.ListNextAsync(currentPage.NextPageLink);
-}
-```
-
-ZBÝVAJÍCÍ příklady naleznete v tématu [obsahu klíč zásady – seznam](https://docs.microsoft.com/rest/api/media/contentkeypolicies/list)
+Zobrazit [filtrování, řazení, stránkování, Media Services entit](entities-overview.md).
 
 ## <a name="next-steps"></a>Další postup
 
-[Použití dynamického šifrování AES-128 a doručení klíče služby](protect-with-aes128.md)
-
-[Pomocí DRM dynamického šifrování a licence služby pro doručování](protect-with-drm.md)
+* [Použití dynamického šifrování AES-128 a doručení klíče služby](protect-with-aes128.md)
+* [Pomocí DRM dynamického šifrování a licence služby pro doručování](protect-with-drm.md)
+* [EncodeHTTPAndPublishAESEncrypted](https://github.com/Azure-Samples/media-services-v3-dotnet-core-tutorials/tree/master/NETCore/EncodeHTTPAndPublishAESEncrypted)

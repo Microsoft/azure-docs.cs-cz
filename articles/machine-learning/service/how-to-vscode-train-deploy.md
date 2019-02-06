@@ -10,12 +10,12 @@ ms.author: shwinne
 author: swinner95
 ms.date: 12/04/2018
 ms.custom: seodec18
-ms.openlocfilehash: 409d1bb30dc956bb19e9a37212d93990d1401e7b
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 6d190e4c5d283b9f803cf7287445d7591b5465db
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55240110"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55753108"
 ---
 # <a name="use-visual-studio-code-to-train-and-deploy-machine-learning-models"></a>Použití Visual Studio Code pro trénování a nasazovat modely machine learningu
 
@@ -108,9 +108,9 @@ Použití cílové výpočetní prostředí vzdálené při cvičení, budete mu
 
 #### <a name="the-conda-dependencies-file"></a>Souboru závislostí systému conda
 
-Ve výchozím nastavení vytvoří se pro vás nové prostředí conda a vaše instalace závislosti se spravují. Nicméně je nutné zadat v závislosti `aml_config/conda_dependencies.yml` souboru.
+Ve výchozím nastavení vytvoří se pro vás nové prostředí conda a vaše instalace závislosti se spravují. Ale musíte zadat závislostí a jejich verze `aml_config/conda_dependencies.yml` souboru. 
 
-To je fragment z výchozí aml_config/conda_dependencies.yml.
+To je fragment z výchozí aml_config/conda_dependencies.yml. Můžete například zadat "tensorflow = 1.12.0' jak vidíte níže. Pokud nezadáte verzi závislost, se používá nejnovější verzi.  
 Můžete přidat další závislosti v konfiguračním souboru.
 
 ```yaml
@@ -123,7 +123,7 @@ dependencies:
   # Currently Azure Machine Learning service only supports 3.5.2 and later.
 
 - python=3.6.2
-- tensorflow
+- tensorflow=1.12.0
 
 - pip:
     # Required packages for Azure Machine Learning service execution, history, and data preparation.

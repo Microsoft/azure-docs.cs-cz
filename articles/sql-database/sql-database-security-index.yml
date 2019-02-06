@@ -1,10 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: c869d129d901a5c8dee7ed09b907805980e5c573
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
+ms.openlocfilehash: 5b840b40895b14836a4fae0d84a947e3b41f9dc1
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55727190"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55753516"
 documentType: LandingData
 title: Azure SQL Database – rozšířené zabezpečení
 metadata:
@@ -76,9 +76,9 @@ sections:
       - href: 
     - title: Nastavení pravidel brány firewall serveru databáze na izolované databáze
       values:
-      - href: /azure/sql-database/sql-database-firewall-configure#manage-firewall-rules-using-the-azure-portal
-      - href: /azure/sql-database/sql-database-firewall-configure#manage-firewall-rules-using-azure-cli
-      - href: /azure/sql-database/sql-database-firewall-configure#manage-firewall-rules-using-azure-powershell
+      - href: /azure/sql-database/sql-database-firewall-configure#manage-ip-firewall-rules-using-the-azure-portal
+      - href: /azure/sql-database/sql-database-firewall-configure#manage-ip-firewall-rules-using-azure-cli
+      - href: /azure/sql-database/sql-database-firewall-configure#manage-ip-firewall-rules-using-azure-powershell
     - title: Spravovat pravidla posouzení ohrožení zabezpečení
       values:
       - href: 

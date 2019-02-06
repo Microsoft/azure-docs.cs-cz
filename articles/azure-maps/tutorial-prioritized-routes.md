@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 0a278eb1612ec9573c4d12611ccce2d1b5b971bc
-ms.sourcegitcommit: 275eb46107b16bfb9cf34c36cd1cfb000331fbff
+ms.openlocfilehash: 5458c7e74728952df89380a3649c6ed60eb6ea9a
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51705273"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55749759"
 ---
 # <a name="find-routes-for-different-modes-of-travel-using-azure-maps"></a>Vyhledání tras pro různé režimy dopravy s využitím Azure Maps
 
@@ -248,7 +248,7 @@ Tato část ukazuje způsob použití rozhraní API Maps Route Service k vyhled�
         datasource.add(routeLine, 0);
     });
     ```
-    Výše uvedený fragment kódu se dotazuje směrovací služby Azure Maps prostřednictvím metody [getRouteDirections](https://docs.microsoft.com/javascript/api/azure-maps-rest/services.route?view=azure-iot-typescript-latest#getroutedirections) a pak pomocí metody [getGeoJsonRouteDirectionsResponse](https://docs.microsoft.com/javascript/api/azure-maps-rest/atlas.service.geojson.geojsonroutedirectionsresponse?view=azure-iot-typescript-latest) parsuje odpověď do formátu GeoJSON. Pak pro vrácenou trasu vytvoří pole souřadnic a přidá ho ke zdroji dat. Přidá však také index 0, aby se zajistilo, že se vykreslí před všemi ostatními čárami ve zdroji dat. To se provádí proto, že výpočet trasy pro nákladní vůz bude často pomalejší než výpočet trasy pro auto, a kdyby se čára trasy pro nákladní vůz přidala ke zdroji dat až po čáře trasy pro auto, vykreslila by se nad ní. K čáře trasy pro nákladní vůz se přidají dvě vlastnosti – barva čáry v pěkném odstínu modré a tloušťka čáry 9 pixelů. 
+    Výše uvedený fragment kódu se dotazuje směrovací služby Azure Maps prostřednictvím metody [getRouteDirections](https://docs.microsoft.com/javascript/api/azure-maps-rest/services.route?view=azure-iot-typescript-latest) a pak pomocí metody [getGeoJsonRouteDirectionsResponse](https://docs.microsoft.com/javascript/api/azure-maps-rest/atlas.service.geojson.geojsonroutedirectionsresponse?view=azure-iot-typescript-latest) parsuje odpověď do formátu GeoJSON. Pak pro vrácenou trasu vytvoří pole souřadnic a přidá ho ke zdroji dat. Přidá však také index 0, aby se zajistilo, že se vykreslí před všemi ostatními čárami ve zdroji dat. To se provádí proto, že výpočet trasy pro nákladní vůz bude často pomalejší než výpočet trasy pro auto, a kdyby se čára trasy pro nákladní vůz přidala ke zdroji dat až po čáře trasy pro auto, vykreslila by se nad ní. K čáře trasy pro nákladní vůz se přidají dvě vlastnosti – barva čáry v pěkném odstínu modré a tloušťka čáry 9 pixelů. 
 
 4. Přidejte následující kód JavaScriptu, který si vyžádá trasu pro auto a zobrazí výsledky:
 
@@ -267,7 +267,7 @@ Tato část ukazuje způsob použití rozhraní API Maps Route Service k vyhled�
         datasource.add(routeLine);
     });
     ```
-    Tento fragment kódu používá stejný dotaz na trasu pro nákladní auto i pro auto. Dotazuje se směrovací služby Azure Maps prostřednictvím metody [getRouteDirections](https://docs.microsoft.com/javascript/api/azure-maps-rest/services.route?view=azure-iot-typescript-latest#getroutedirections) a pak pomocí metody [getGeoJsonRouteDirectionsResponse](https://docs.microsoft.com/javascript/api/azure-maps-rest/atlas.service.geojson.geojsonroutedirectionsresponse?view=azure-iot-typescript-latest) parsuje odpověď do formátu GeoJSON. Pak pro vrácenou trasu vytvoří pole souřadnic a přidá ho ke zdroji dat. K čáře trasy pro auto se přidají dvě vlastnosti – barva čáry v odstínu šedé a tloušťka čáry 5 pixelů. 
+    Tento fragment kódu používá stejný dotaz na trasu pro nákladní auto i pro auto. Dotazuje se směrovací služby Azure Maps prostřednictvím metody [getRouteDirections](https://docs.microsoft.com/javascript/api/azure-maps-rest/services.route?view=azure-iot-typescript-latest) a pak pomocí metody [getGeoJsonRouteDirectionsResponse](https://docs.microsoft.com/javascript/api/azure-maps-rest/atlas.service.geojson.geojsonroutedirectionsresponse?view=azure-iot-typescript-latest) parsuje odpověď do formátu GeoJSON. Pak pro vrácenou trasu vytvoří pole souřadnic a přidá ho ke zdroji dat. K čáře trasy pro auto se přidají dvě vlastnosti – barva čáry v odstínu šedé a tloušťka čáry 5 pixelů. 
 
 5. Uložte soubor **MapTruckRoute.html**, aktualizujte prohlížeč a prohlédněte si výsledek. V případě úspěšného připojení s použitím rozhraní Maps API by se měla zobrazit mapa podobná následující.
 
