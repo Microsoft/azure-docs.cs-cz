@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 02/01/2019
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: bc79379d1b893beffc085e79b7643fcb6e1dc26f
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
+ms.openlocfilehash: fbd4782d7fde089f9770e148564ec5941da3dc8e
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55657310"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55753584"
 ---
 # <a name="disaster-recovery-and-storage-account-failover-preview-in-azure-storage"></a>Po havárii pro obnovení a úložiště účtu převzetí služeb při selhání (preview) ve službě Azure Storage
 
@@ -158,15 +158,11 @@ Nespravované disky jsou uložené jako objekty BLOB stránky ve službě Azure 
 
 Uvědomte si, že všechna data uložená v dočasný disk je ztraceny, pokud je virtuální počítač vypnutý.
 
-#### <a name="azure-file-sync"></a>Synchronizace souborů Azure
-
-Azure File Sync podporuje účet převzetí služeb při selhání. Je však potřeba znovu nakonfigurovat všechna nastavení Azure File Sync po dokončení převzetí služeb.
-
 ### <a name="unsupported-features-or-services"></a>Nepodporované funkce nebo služby
-
 Následující funkce nebo služby se nepodporují u účtu převzetí služeb při selhání pro verzi preview:
 
-- Azure Data Lake Storage Gen2 hierarchické sdílené složky nemůže být převzetí služeb při selhání.
+- Azure File Sync nepodporuje úložiště účtu převzetí služeb při selhání. Účty úložiště obsahující sdílených složek Azure používá jako koncové body cloudu v Azure File Sync by neměl být převzetí služeb při selhání. To způsobí neočekávané ztráty dat v případě nově vrstvené soubory příčina synchronizaci zastavit pracovní a může také.  
+- Účty úložiště pomocí Azure Data Lake Storage Gen2 hierarchického oboru názvů nemůže být převzetí služeb při selhání.
 - Účet úložiště obsahující archivované objekty BLOB nemůže být převzetí služeb při selhání. Udržujte archivované objektů BLOB v účtu samostatného úložiště, který nemáte v plánu převzít služby při selhání.
 - Účet úložiště obsahující objekty BLOB bloku premium nejde převzít. Účty úložiště, které podporují objekty BLOB bloku premium aktuálně nepodporují geografickou redundancí.
 

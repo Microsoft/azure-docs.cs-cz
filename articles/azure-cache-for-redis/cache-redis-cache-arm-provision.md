@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: wesmc
-ms.openlocfilehash: c8aadcf7b37e28035e936a9f722ee832127e928d
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: 8e0b0572f0d728474c17b41a0f92948451f4ef3f
+ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54038581"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55746944"
 ---
 # <a name="create-an-azure-cache-for-redis-using-a-template"></a>Vytvoření Azure Cache pro Redis pomocí šablony
 V tomto tématu se dozvíte, jak vytvořit šablonu Azure Resource Manageru, který se nasazuje pro Redis Cache Azure. Mezipaměti můžete použít s existující účet úložiště k uložení diagnostických dat. Také zjistíte, jak definovat prostředků, které jsou nasazené a tom, jak definovat parametry, které jsou zadané při spuštění nasazení. Tuto šablonu můžete použít pro vlastní nasazení nebo ji upravit, aby splňovala vaše požadavky.
@@ -33,7 +33,7 @@ Další informace o vytváření šablon najdete v tématu [vytváření šablon
 > [!NOTE]
 > Šablony Resource Manageru pro nové [úroveň Premium](cache-premium-tier-intro.md) jsou k dispozici. 
 > 
-> * [Vytvoření Azure Cache úrovně Premium pro Redis s clusteringem](https://azure.microsoft.com/documentation/templates/201-redis-premium-cluster-diagnostics/)
+> * [Vytvoření Azure Cache úrovně Premium pro Redis s clusteringem](https://azure.microsoft.com/resources/templates/201-redis-premium-cluster-diagnostics/)
 > * [Vytvoření Azure Cache úrovně Premium pro Redis s trvalostí dat](https://azure.microsoft.com/documentation/templates/201-redis-premium-persistence/)
 > * [Vytvoření Azure Cache úrovně Premium pro Redis s virtuální sítí a volitelné clustering](https://azure.microsoft.com/documentation/templates/201-redis-premium-vnet-cluster-diagnostics/)
 > 

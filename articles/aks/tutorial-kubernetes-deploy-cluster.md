@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 12/19/2018
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: 7e5c78e1b30b311c6ce918453fe728ae86060dda
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: 54872a1c5a40cdb3f51c17362daed93c3892001e
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53720658"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55754553"
 ---
 # <a name="tutorial-deploy-an-azure-kubernetes-service-aks-cluster"></a>Kurz: Nasaďte cluster Azure Kubernetes Service (AKS)
 
@@ -67,10 +67,10 @@ Nejprve pomocí příkazu [az acr show][] získejte ID prostředku služby ACR. 
 az acr show --resource-group myResourceGroup --name <acrName> --query "id" --output tsv
 ```
 
-K udělení správného přístupu, aby cluster AKS používal image uložené v ACR, vytvořte přiřazení role pomocí příkazu [az role assignment create][]. Nahraďte `<appId`> a `<acrId>` hodnotami získanými v předchozích dvou krocích.
+Chcete-li udělit správný přístup pro cluster AKS tak, aby o přijetí změn imagí uložených v ACR, přiřaďte `AcrPull` role pomocí [vytvořit přiřazení role az][] příkazu. Nahraďte `<appId`> a `<acrId>` hodnotami získanými v předchozích dvou krocích.
 
 ```azurecli
-az role assignment create --assignee <appId> --scope <acrId> --role Reader
+az role assignment create --assignee <appId> --scope <acrId> --role acrpull
 ```
 
 ## <a name="create-a-kubernetes-cluster"></a>Vytvoření clusteru Kubernetes
@@ -143,7 +143,7 @@ V dalším kurzu se dozvíte, jak do clusteru nasadit aplikaci.
 [aks-tutorial-prepare-app]: ./tutorial-kubernetes-prepare-app.md
 [az ad sp create-for-rbac]: /cli/azure/ad/sp#az-ad-sp-create-for-rbac
 [az acr show]: /cli/azure/acr#az-acr-show
-[az role assignment create]: /cli/azure/role/assignment#az-role-assignment-create
+[vytvořit přiřazení role az]: /cli/azure/role/assignment#az-role-assignment-create
 [az aks create]: /cli/azure/aks#az-aks-create
 [az aks install-cli]: /cli/azure/aks#az-aks-install-cli
 [az aks get-credentials]: /cli/azure/aks#az-aks-get-credentials

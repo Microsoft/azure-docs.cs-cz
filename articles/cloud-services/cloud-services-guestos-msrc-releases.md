@@ -11,36 +11,35 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
-ms.date: 1/22/2019
+ms.date: 2/5/2019
 ms.author: raiye
-ms.openlocfilehash: 0a9b811f3781cd181c17b9ed92b9ca653ee91af0
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: 4c1b1b376493c77ae0f197d800ee0d00434b19c6
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54828447"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55752105"
 ---
 # <a name="azure-guest-os"></a>Azure hostovaného operačního systému
 Microsoft Security Response Center (MSRC) aktualizací nainstalovaných do hostovaného operačního systému Azure v následujících tabulkách. Hledání Tento článek k určení, pokud platí konkrétní aktualizace do hostovaného operačního systému, kterou používáte. Aktualizace vždy převést do dalšího období pro konkrétní [řady] [ family-explain] byly zavedeny v.
-
->[!NOTE]
->Leden hostovaného operačního systému je aktuálně nasazuje pro služby virtuálního počítače v cloudu, které jsou nakonfigurované pro automatické aktualizace. Po dokončení tohoto uvedení se tato verze bude k dispozici ruční aktualizace přes Azure portal a konfigurační soubory. Následující opravy jsou součástí hostovaného operačního systému. ledna. Tento seznam se může změnit.
 
 ## <a name="january-2019-guest-os"></a>2019 ledna hostovaného operačního systému
 
 | Kategorie produktů | Článek znalostní BÁZE nadřazené | Popis ohrožení zabezpečení | Hostovaný operační systém | Datum poprvé byla představena |
 | --- | --- | --- | --- | --- |
+| Rel 19-01 | [4480116] | Windows 10 Security | 6.3 | 8. ledna 2019 |
 | Rel 19-01 | [4480961] | Windows 10 Security | 5.27 | 8. ledna 2019 |
 | Rel 19-01 | [4480964] | Zabezpečení Windows | 4.62 | 8. ledna 2019 |
 | Rel 19-01 | [4480972] | Zabezpečení Windows | 3.69 | 8. ledna 2019 |
 | Rel 19-01 | [4480960] | Zabezpečení Windows | 2.82 | 8. ledna 2019 |
+| Rel 19-01 | [4480056] | Zabezpečení rozhraní .net | 6.3 | 8. ledna 2019 |
 | Rel 19-01 | [4480074] | Zabezpečení .net 4.x | 4.62 | 8. ledna 2019 |
 | Rel 19-01 | [4480075] | Zabezpečení .net 4.x | 3.69 | 8. ledna 2019 |
 | Rel 19-01 | [4480076] | Zabezpečení .net 4.x | 2.82 | 8. ledna 2019 |
 | Rel 19-01 | [4480086] | Zabezpečení .net 3.x | 4.62 | 8. ledna 2019 |
 | Rel 19-01 | [4480083] | Zabezpečení .net 3.x | 3.69 | 8. ledna 2019 |
 | Rel 19-01 | [4480085] | Zabezpečení .net 3.x | 2.82 | 8. ledna 2019 |
-| Rel 19-01 | [4480979] | Animace Flash | 3.69, 4.62, 5.27 | 8. ledna 2019 |
+| Rel 19-01 | [4480979] | Animace Flash | 3.69, 4.62, 5.27, 6.3 | 8. ledna 2019 |
 | Rel 19-01 | [4480965] | Internet Explorer | 2.82, 3.69, 4.62 | 8. ledna 2019 |
 | neuvedeno | [4471318] | Souhrn prosince Non-zabezpečení | 2.82 | 11. prosince 2018 |
 | neuvedeno | [4470641] | Souhrn bez zabezpečení prosince .NET 3.x | 2.82 | 11. prosince 2018 |
@@ -52,10 +51,12 @@ Microsoft Security Response Center (MSRC) aktualizací nainstalovaných do hosto
 | neuvedeno | [4470630] | Souhrn bez zabezpečení prosince .NET 3.x | 4.62 | 11. prosince 2018 |
 | neuvedeno | [4470622] | Souhrn bez zabezpečení prosince .NET 4.x | 4.62 | 11. prosince 2018 |
 
+[4480116]: http://support.microsoft.com/kb/4480116
 [4480961]: http://support.microsoft.com/kb/4480961
 [4480964]: http://support.microsoft.com/kb/4480964
 [4480972]: http://support.microsoft.com/kb/4480972
 [4480960]: http://support.microsoft.com/kb/4480960
+[4480056]: http://support.microsoft.com/kb/4480056
 [4480074]: http://support.microsoft.com/kb/4480074
 [4480075]: http://support.microsoft.com/kb/4480075
 [4480076]: http://support.microsoft.com/kb/4480076
