@@ -3,26 +3,25 @@ title: Azure Virtual Machines vysoká dostupnost pro SAP NetWeaver | Dokumentace
 description: Příručka pro vysokou dostupnost pro SAP NetWeaver na virtuálních počítačích Azure
 services: virtual-machines-windows,virtual-network,storage
 documentationcenter: saponazure
-author: goraco
-manager: jeconnoc
+author: msjuergent
+manager: patfilot
 editor: ''
 tags: azure-resource-manager
 keywords: ''
-ms.assetid: 5e514964-c907-4324-b659-16dd825f6f87
-ms.service: virtual-machines-windows
+ms.service: virtual-machines-linux
 ms.devlang: NA
 ms.topic: article
-ms.tgt_pltfrm: vm-windows
-ms.workload: infrastructure-services
-ms.date: 12/07/2016
-ms.author: goraco
+ms.tgt_pltfrm: vm-linux
+ms.workload: infrastructure
+ms.date: 01/24/2019
+ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 691bb0c5ea6d84bd67b8b1b1fd5a05c25f75ba40
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: 1cc322c0c303fec05c628915741dd32ea2ad5208
+ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54437024"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55747692"
 ---
 # <a name="high-availability-for-sap-netweaver-on-azure-vms"></a>Vysoká dostupnost pro SAP NetWeaver na virtuálních počítačích Azure
 
@@ -187,7 +186,6 @@ ms.locfileid: "54437024"
 [planning-guide-11]:planning-guide.md#7cf991a1-badd-40a9-944e-7baae842a058
 [planning-guide-11.4.1]:planning-guide.md#5d9d36f9-9058-435d-8367-5ad05f00de77
 [planning-guide-11.5]:planning-guide.md#4e165b58-74ca-474f-a7f4-5e695a93204f
-[planning-guide-2.1]:planning-guide.md#1625df66-4cc6-4d60-9202-de8a0b77f803
 [planning-guide-2.2]:planning-guide.md#f5b3b18c-302c-4bd8-9ab2-c388f1ab3d10
 [planning-guide-3.1]:planning-guide.md#be80d1b9-a463-4845-bd35-f4cebdb5424a
 [planning-guide-3.2.1]:planning-guide.md#df49dc09-141b-4f34-a4a2-990913b30358
@@ -473,7 +471,7 @@ Tyto články zahrnovat nasazení SAP v Azure:
 
 Tyto poznámky SAP se vztahují k tématu SAP v Azure:
 
-| Poznámka: číslo | Titul |
+| Poznámka: číslo | Název |
 | --- | --- |
 | [1928533] |Aplikace SAP v Azure: Podporované produkty a změna velikosti |
 | [2015553] |SAP v Microsoft Azure: Požadavky pro podporu |
@@ -871,7 +869,7 @@ Chcete-li nastavit požadované DNS IP adresy, proveďte následující kroky.
 2.  Vyberte nastavení na základě typu sítě, které máte. Další informace najdete v následujících materiálech:
     * [Připojení k podnikové síti (mezi různými místy)][planning-guide-2.2]: Přidejte IP adresy na místních serverech DNS.  
     Můžete rozšířit místní servery DNS pro virtuální počítače, na kterých běží v Azure. V tomto scénáři můžete přidat IP adresy virtuálních počítačů Azure na které spouštíte službu DNS.
-    * [Výhradně cloudový nasazení][planning-guide-2.1]: Nasaďte další virtuální počítač ve stejné virtuální síti instanci, která slouží jako DNS server. Přidejte IP adresy virtuálních počítačů Azure, které jste nastavili pro spuštění služby DNS.
+    * Pro nasazení v Azure izolovaný režim: Nasaďte další virtuální počítač ve stejné virtuální síti instanci, která slouží jako DNS server. Přidejte IP adresy virtuálních počítačů Azure, které jste nastavili pro spuštění služby DNS.
 
     ![Obrázek 12: Konfigurace serverů DNS pro Azure Virtual Network][sap-ha-guide-figure-3001]
 
