@@ -68,6 +68,8 @@ items:
       href: manage-certificates-for-federated-single-sign-on.md
     - name: Omezení tenanta
       href: tenant-restrictions.md
+    - name: Konfigurace šifrování tokenu SAML (Preview)
+      href: howto-saml-token-encryption.md
   - name: Jednotné přihlašování
     href: what-is-single-sign-on.md
   - name: Portály pro koncové uživatele
@@ -286,9 +288,9 @@ items:
     href: https://stackoverflow.com/questions/tagged/azure-active-directory
   - name: Videa
     href: https://azure.microsoft.com/documentation/videos/index/?services=active-directory
-ms.openlocfilehash: 28319f3c529491a7ae994ba9d323b66181d7486b
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: eaf3183f7640b874fe69d2b1b80d3d0368bde555
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54473329"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55751306"

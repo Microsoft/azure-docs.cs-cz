@@ -19,11 +19,13 @@ items:
   items:
   - name: 1 – Vytvoření tenanta B2C
     href: tutorial-create-tenant.md
-  - name: 2 – Registrace aplikací
+  - name: 2 – Registrace aplikace
     href: tutorial-register-applications.md
   - name: 3 – Vytvoření toků uživatele
     href: tutorial-create-user-flows.md
-  - name: 4 – Přizpůsobení uživatelského rozhraní
+  - name: Přidání zprostředkovatelů identity
+    href: tutorial-add-identity-providers.md
+  - name: Přizpůsobení uživatelského rozhraní
     href: tutorial-customize-ui.md
   - name: Ověření účtů
     items:
@@ -75,7 +77,11 @@ items:
   items:
   - name: Přístup k protokolům auditu
     href: active-directory-b2c-reference-audit-logs.md
-  - name: Ověřování věku
+  - name: Přidání aplikace webového rozhraní API
+    href: add-web-application.md
+  - name: Přidání nativní klientské aplikace
+    href: add-native-application.md
+  - name: Konfigurace ověřování věku
     href: basic-age-gating.md
   - name: Konfigurace tokenů
     href: active-directory-b2c-token-session-sso.md
@@ -318,9 +324,9 @@ items:
     href: active-directory-b2c-support.md
   - name: Videa
     href: https://azure.microsoft.com/documentation/videos/index/?services=active-directory-b2c
-ms.openlocfilehash: c7f7036e52c5c9d0f9d7c51a882474028ba63aef
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 8aa1d5bf118330f6f04cfd35a59f2b60ce6e1ee8
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55240841"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55751782"

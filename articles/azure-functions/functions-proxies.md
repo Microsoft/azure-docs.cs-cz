@@ -10,12 +10,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: alkarche
-ms.openlocfilehash: 507927934c442c8b217ed8fea371f505bb517d35
-ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
+ms.openlocfilehash: 4bfe4f9f97587b6791e73c2f04055b2dcf5d0f0d
+ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54198707"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55766210"
 ---
 # <a name="work-with-azure-functions-proxies"></a>Práce s proxy služby Azure Functions
 
@@ -81,16 +81,16 @@ Pokud proxy server má šablonu trasy, jako například `/pets/{petId}`, adresa 
 Kromě parametrů šablony trasy je možné v rozšíření konfiguračních hodnot následující hodnoty:
 
 * **{request.method}** : Metoda protokolu HTTP, který se používá u původního požadavku.
-* **{request.headers. \<HeaderName\>}**: Hlavičky, který může číst z původního požadavku. Nahraďte *\<HeaderName\>* s názvem záhlaví, který chcete číst. Pokud není k dispozici hlavičky v požadavku, hodnota bude prázdný řetězec.
+* **{request.headers.\<HeaderName\>}**: Hlavičky, který může číst z původního požadavku. Nahraďte *\<HeaderName\>* s názvem záhlaví, který chcete číst. Pokud není k dispozici hlavičky v požadavku, hodnota bude prázdný řetězec.
 * **{request.querystring. \<ParameterName\>}**: Parametr řetězce dotazu, který může číst z původního požadavku. Nahraďte *\<ParameterName\>* s názvem parametru, který chcete číst. Pokud parametr není k dispozici v požadavku, hodnota bude prázdný řetězec.
 
 ### <a name="response-parameters"></a>Odkaz na odpověď back-end parametry
 
 Parametry odpovědi může sloužit jako součást úpravy odpověď klientovi. V rozšíření konfiguračních hodnot je možné následující hodnoty:
 
-* **{backend.response.statusCode}** : Stavový kód HTTP vrácená v odpovědi back-end.
-* **{backend.response.statusReason}** : Fráze důvodu HTTP vrácená v odpovědi back-end.
-* **{backend.response.headers. \<HeaderName\>}**: Hlavičky, který může číst z odpovědi back-end. Nahraďte *\<HeaderName\>* s názvem záhlaví chcete číst. Pokud hlavičce nejsou zahrnuty v odpovědi, hodnota bude prázdný řetězec.
+* **{backend.response.statusCode}**: Stavový kód HTTP vrácená v odpovědi back-end.
+* **{backend.response.statusReason}**: Fráze důvodu HTTP vrácená v odpovědi back-end.
+* **{backend.response.headers.\<HeaderName\>}**: Hlavičky, který může číst z odpovědi back-end. Nahraďte *\<HeaderName\>* s názvem záhlaví chcete číst. Pokud hlavičce nejsou zahrnuty v odpovědi, hodnota bude prázdný řetězec.
 
 ### <a name="use-appsettings"></a>Nastavení odkazu na aplikaci
 
@@ -190,7 +190,7 @@ Objekt requestOverrides definuje změny provedené na požadavek při volání n
 
 * **backend.Request.Method**: Metoda protokolu HTTP, který se používá k volání back endu.
 * **backend.Request.QueryString. \<ParameterName\>**: Parametr řetězce dotazu, který lze nastavit pro volání do back endu. Nahraďte *\<ParameterName\>* s názvem parametru, který chcete nastavit. Pokud je zadán prázdný řetězec, parametr není zahrnutý v požadavku back-end.
-* **backend.Request.Headers. \<HeaderName\>**: Záhlaví, které lze nastavit pro volání do back endu. Nahraďte *\<HeaderName\>* s názvem záhlaví, který chcete nastavit. Pokud zadáte prázdný řetězec, záhlaví není zahrnutý v požadavku back-end.
+* **backend.request.headers.\<HeaderName\>**: Záhlaví, které lze nastavit pro volání do back endu. Nahraďte *\<HeaderName\>* s názvem záhlaví, který chcete nastavit. Pokud zadáte prázdný řetězec, záhlaví není zahrnutý v požadavku back-end.
 
 Hodnoty můžete odkazovat na parametry a nastavení aplikace z původního požadavku klienta.
 
@@ -222,7 +222,7 @@ Objekt requestOverrides definuje změny provedené v odpovědi, který je před�
 * **response.statusCode**: Stavový kód HTTP má být vrácena klientovi.
 * **response.statusReason**: Fráze důvodu HTTP má být vrácena klientovi.
 * **Response.body**: Řetězcové vyjádření abych mohl být vrácen do klienta.
-* **Response.Headers. \<HeaderName\>**: Záhlaví, které lze nastavit pro odpověď klientovi. Nahraďte *\<HeaderName\>* s názvem záhlaví, který chcete nastavit. Pokud zadáte prázdný řetězec, záhlaví není zahrnutý v odpovědi.
+* **response.headers.\<HeaderName\>**: Záhlaví, které lze nastavit pro odpověď klientovi. Nahraďte *\<HeaderName\>* s názvem záhlaví, který chcete nastavit. Pokud zadáte prázdný řetězec, záhlaví není zahrnutý v odpovědi.
 
 Hodnoty, se může odkazovat na nastavení aplikace, parametry z původního požadavku klienta a parametry z odpovědi back-end.
 
@@ -249,7 +249,7 @@ Příklad konfigurace může vypadat nějak takto:
 > V tomto příkladu tělo odpovědi nastavena přímo, takže ne `backendUri` vlastnost je potřeba. Příklad ukazuje, jak můžete použít proxy služby Azure Functions pro vytvoření modelu rozhraní API.
 
 [Azure Portal]: https://portal.azure.com
-[Aktivační události HTTP]: https://docs.microsoft.com/azure/azure-functions/functions-bindings-http-webhook#http-trigger
+[Aktivační události HTTP]: https://docs.microsoft.com/azure/azure-functions/functions-bindings-http-webhook
 [Modify the back-end request]: #modify-backend-request
 [Modify the response]: #modify-response
 [Definování requestOverrides objektu]: #requestOverrides

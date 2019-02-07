@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/14/2017
 ms.author: ashishth
-ms.openlocfilehash: 86dbb6137964c00f6b98365e4891538751f17922
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.openlocfilehash: 0ba3c7321b0771c839289abb7891cd8e6b280afe
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53438808"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55822676"
 ---
 # <a name="analyze-apache-hadoop-logs"></a>Analýza protokolů Apache Hadoopu
 
@@ -99,7 +99,7 @@ Teď můžete aplikaci Excel k filtrování a řazení podle potřeby. Můžete 
     Další informace o vytváření filtrů najdete v tématu [vytváření řetězce filtru pro návrháře tabulky](../../vs-azure-tools-table-designer-construct-filter-strings.md).
 
 ## <a name="logs-written-to-azure-blob-storage"></a>Protokoly se zapisují do úložiště objektů Blob v Azure
-[Protokoly zapisují do tabulek Azure](#log-written-to-azure-tables) poskytuje jednu úroveň přehled o tom, co se děje s clusterem HDInsight. Tyto tabulky však neposkytují úroveň úkolu protokoly, které mohou být užitečné při procházení k dalším potížím, které se objeví. Kvůli této další úroveň podrobností clustery HDInsight umožňují zapisovat protokoly úlohy do svého účtu úložiště objektů Blob pro úlohy, které je odeslána prostřednictvím Templeton. Prakticky to znamená, že pomocí rutin prostředí Azure PowerShell nebo rozhraní .NET API odeslání úlohy, není odeslaných přes RDP/příkazového řádku přístup ke clusteru úloh odeslaných úloh. 
+Protokoly zapisují do tabulek Azure poskytují jednu úroveň přehled o tom, co se děje s clusterem HDInsight. Tyto tabulky však neposkytují úroveň úkolu protokoly, které mohou být užitečné při procházení k dalším potížím, které se objeví. Kvůli této další úroveň podrobností clustery HDInsight umožňují zapisovat protokoly úlohy do svého účtu úložiště objektů Blob pro úlohy, které je odeslána prostřednictvím Templeton. Prakticky to znamená, že pomocí rutin prostředí Azure PowerShell nebo rozhraní .NET API odeslání úlohy, není odeslaných přes RDP/příkazového řádku přístup ke clusteru úloh odeslaných úloh. 
 
 Pokud chcete zobrazit protokoly, naleznete v tématu [protokolům aplikací přístup Apache Hadoop YARN v HDInsight se systémem Linux](../hdinsight-hadoop-access-yarn-app-logs-linux.md).
 
@@ -143,7 +143,7 @@ Některé z těchto chybových zpráv může také zobrazit na webu Azure Portal
 
 ### <a id="ClusterContainerRecordNotFound"></a>ClusterContainerRecordNotFound
 * **Popis**: Server nemohl najít záznam požadovaný cluster.  
-* **Zmírnění dopadů**: Zkuste operaci zopakovat.
+* **Zmírnění dopadů**: Opakujte operaci.
 
 ### <a id="ClusterDnsNameInvalidReservedWord"></a>ClusterDnsNameInvalidReservedWord
 * **Popis**: Název DNS clusteru *yourDnsName* je neplatný. Ujistěte se prosím název začíná a končí alfanumerický a může obsahovat pouze '-' speciální znak  
@@ -171,7 +171,7 @@ Některé z těchto chybových zpráv může také zobrazit na webu Azure Portal
 
 ### <a id="DataNodeDefinitionNotFound"></a>DataNodeDefinitionNotFound
 * **Popis**: Konfigurace clusteru neplatný. Nepovedlo se najít žádné definice data uzlu v velikost uzlu.  
-* **Zmírnění dopadů**: Zkuste operaci zopakovat.
+* **Zmírnění dopadů**: Opakujte operaci.
 
 ### <a id="DeploymentDeletionFailure"></a>DeploymentDeletionFailure
 * **Popis**: Nepovedlo se odstranit nasazení clusteru  
@@ -191,7 +191,7 @@ Některé z těchto chybových zpráv může také zobrazit na webu Azure Portal
 
 ### <a id="FailureToUpdateDeploymentStatus"></a>FailureToUpdateDeploymentStatus
 * **Popis**: Serveru se nepovedlo aktualizovat stav nasazení clusteru.  
-* **Zmírnění dopadů**: Zkuste operaci zopakovat. Pokud se to stane více než jednou, obraťte se na šablony stylů CSS.
+* **Zmírnění dopadů**: Opakujte operaci. Pokud se to stane více než jednou, obraťte se na šablony stylů CSS.
 
 ### <a id="HdiRestoreClusterAltered"></a>HdiRestoreClusterAltered
 * **Popis**: Cluster *yourClusterName* byla odstraněna jako součást údržby. Znovu prosím vytvořte cluster.
@@ -199,7 +199,7 @@ Některé z těchto chybových zpráv může také zobrazit na webu Azure Portal
 
 ### <a id="HeadNodeConfigNotFound"></a>HeadNodeConfigNotFound
 * **Popis**: Konfigurace clusteru neplatný. Požadované konfigurace hlavního uzlu se nenašla v velikosti uzlů.
-* **Zmírnění dopadů**: Zkuste operaci zopakovat.
+* **Zmírnění dopadů**: Opakujte operaci.
 
 ### <a id="HostedServiceCreationFailure"></a>HostedServiceCreationFailure
 * **Popis**: Nejde vytvořit hostovanou službu *nameOfYourHostedService*. Zkuste prosím žádost.  

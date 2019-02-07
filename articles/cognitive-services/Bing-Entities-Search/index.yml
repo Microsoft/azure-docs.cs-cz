@@ -1,14 +1,14 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: f1db6f04a7e7bf32f861fd2eaf193e3cd25d9e12
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 23c5ccd33e63f2cdc9a62925078c3d70d92e9165
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55167832"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55748977"
 documentType: LandingData
 title: Dokumentace k Vyhledávání entit Bingu
 metadata:
-  title: Dokumentace k Vyhledávání entit Bingu – kurzy, šablony Rychlý start, reference k rozhraní API | Microsoft Docs
+  title: Dokumentace k rozhraní API Bingu pro vyhledávání entit – kurzy, šablony rychlá zprovoznění, reference k rozhraní API | Microsoft Docs
   description: Naučte se používat rozhraní API Bingu pro vyhledávání entit k získání informací o lidech, místech nebo dalších definovaných subjektech. Kurzy vysvětlují, jak vytvářet aplikace, které tuto službu používají.
   services: cognitive-services
   author: mikedodaro
@@ -18,11 +18,32 @@ metadata:
   ms.tgt_pltfrm: na
   ms.devlang: na
   ms.topic: landing-page
-  ms.date: 02/07/2018
+  ms.date: 02/01/2019
   ms.author: v-gedod
 abstract:
-  description: Rozhraní API Bingu pro vyhledávání entit vrací informace o entitách, o kterých Bing rozhodne, že jsou pro dotaz uživatele relevantní.
+  description: Rozhraní API Bingu pro vyhledávání entit umožňuje vašim aplikacím získávat informace o entitách detekovaných ve vyhledávacích dotazech. Entitami mohou být lidé, místa, mediální tituly atd.
 sections:
+- items:
+  - type: list
+    style: cards
+    className: cardsM
+    columns: 3
+    items:
+    - href: /azure/cognitive-services/bing-entities-search/overview
+      html: <p>Další informace o rozhraní API Bingu pro vyhledávání entit</p>
+      image:
+        src: ../media/index/i_overview.svg
+      title: Hledání entit
+    - href: /azure/cognitive-services/bing-entities-search/concepts/search-for-entities
+      html: <p>Naučte se hledat entity pomocí rozhraní API Bingu pro vyhledávání entit.</p>
+      image:
+        src: ../media/index/i_guidelines.svg
+      title: Odesílání žádostí o vyhledávání
+    - href: /azure/cognitive-services/bing-custom-search/hosted-ui
+      html: <p>Naučte se odesílat žádosti o vyhledávání do rozhraní API.</p>
+      image:
+        src: ../media/index/i_guidelines.svg
+      title: Odesílání dotazů pro vyhledávání
 - title: Zprovoznění během 5 minut
   items:
   - type: paragraph
@@ -32,15 +53,15 @@ sections:
     items:
     - image:
         src: media/index/logo_csharp.svg
-      href: quickstarts/csharp
+      href: quickstarts/entity-sdk-csharp-quickstart
       text: C&#35;
     - image:
         src: media/index/logo_java.svg
-      href: quickstarts/java
+      href: quickstarts/entity-sdk-java-quickstart
       text: Java
     - image:
         src: media/index/logo_nodejs.svg
-      href: quickstarts/nodejs
+      href: quickstarts/entity-sdk-node-quickstart
       text: Node.js
     - image:
         src: media/index/logo_php.svg
@@ -48,7 +69,7 @@ sections:
       text: PHP
     - image:
         src: media/index/logo_python.svg
-      href: quickstarts/python
+      href: quickstarts/entity-sdk-python-quickstart
       text: Python
     - image:
         src: media/index/logo_ruby.svg
@@ -59,7 +80,7 @@ sections:
   - type: paragraph
     text: 'Naučte se vyvíjet aplikace s využitím rozhraní API Bingu pro vyhledávání entit:'
   - type: paragraph
-    text: <a href="tutorial-bing-entities-search-single-page-app">Jednostránková webová aplikace</a> &#124; <a href="tutorial-bing-entities-search-single-page-app-source">zdrojový kód</a>
+    text: <a href="tutorial-bing-entities-search-single-page-app">Jednostránková webová aplikace</a>
 - title: Ukázky
   items:
   - type: paragraph

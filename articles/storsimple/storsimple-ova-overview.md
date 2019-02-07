@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 08/02/2018
 ms.author: alkohli
-ms.openlocfilehash: 78ed53e5e2f5d04943e6c32ddfedf037cb9e1f73
-ms.sourcegitcommit: fc5555a0250e3ef4914b077e017d30185b4a27e6
+ms.openlocfilehash: a7aace89ad4323d6fad6942fe03c4240fb53c8fd
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39480950"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55811192"
 ---
 # <a name="introduction-to-the-storsimple-virtual-array"></a>Úvod do služby StorSimple Virtual Array
 
@@ -169,7 +169,7 @@ Kromě virtuální pole a další komponenty používá řešení StorSimple ná
 
 * [Automatické vrstvení](#automatic-storage-tiering) 
 * [Místně připojené sdílené složky a svazky](#locally-pinned-shares-and-volumes)
-* [Deduplikace a komprese dat vrstvené nebo zálohovat do cloudu](#deduplication-and-compression-for-data-tiered/backed-up-to-the-cloud) 
+* Deduplikace a komprese dat vrstvené nebo zálohovat do cloudu 
 * [Zálohování na vyžádání a plánované](#scheduled-and-on-demand-backups)
 
 ### <a name="automatic-storage-tiering"></a>Automatické vrstvení

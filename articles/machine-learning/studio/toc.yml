@@ -6,6 +6,8 @@ items:
   - name: Machine Learning Studio
     displayName: overview
     href: what-is-ml-studio.md
+  - name: Porovnání našich produktů ML
+    href: ../service/overview-more-machine-learning.md
   - name: Možnosti sady ML Studio
     displayName: overview
     href: studio-overview-diagram.md
@@ -93,10 +95,6 @@ items:
     - name: Experimentování v AI Gallery
       displayName: gallery
       href: sample-experiments.md
-    - name: Volba algoritmů
-      href: algorithm-choice.md
-    - name: Tahák s algoritmy
-      href: algorithm-cheat-sheet.md
     - name: Vyhodnocování a interpretace výsledků
       items:
       - name: Vyhodnocení výkonu
@@ -118,6 +116,12 @@ items:
         href: custom-r-modules.md
       - name: Spouštění skriptů Pythonu
         href: execute-python-scripts.md
+  - name: Výběr algoritmu
+    items:
+    - name: Volba algoritmů
+      href: algorithm-choice.md
+    - name: Tahák s algoritmy
+      href: algorithm-cheat-sheet.md
   - name: Modely nasazení
     items:
     - name: Nasazení webové služby
@@ -210,15 +214,11 @@ items:
     href: https://azure.microsoft.com/regions/services/
   - name: Ceny
     href: https://azure.microsoft.com/pricing/details/machine-learning/
-  - name: Příručka pro vývojáře v R
-    href: ../r-developers-guide.md
   - name: Vlastní neurální sítě (Net#)
     href: azure-ml-netsharp-reference-guide.md
-  - name: Porovnání našich produktů ML
-    href: ../service/overview-more-machine-learning.md
-ms.openlocfilehash: 400e6a2e98b8d29018b135204eaefa7ae3a7d965
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
+ms.openlocfilehash: d6d4020d76c8eab2418b3b7ac5d26eaf93363870
+ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 02/05/2019
-ms.locfileid: "55731423"
+ms.locfileid: "55746162"

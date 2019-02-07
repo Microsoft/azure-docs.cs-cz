@@ -1,10 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 0f5c60b25ad305b9e76eebcc72639a596b407801
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 7a6372f90cde75cb3314a049de41a4826510bd3f
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55457543"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55752241"
 documentType: LandingData
 title: Dokumentace ke službě Azure SQL Database
 metadata:
@@ -22,7 +22,7 @@ metadata:
   ms.date: 01/25/2019
   ms.author: carlrab
 abstract:
-  description: Azure SQL Database je relační databáze jako služba (DBaaS), která je založená na nejnovější stabilní verzi databázového stroje Microsoft SQL Server. SQL Database je vysoce výkonná, spolehlivá a zabezpečená databáze, kterou můžete použít k vytváření datových aplikací a webů v programovacím jazyce podle vašeho výběru, aniž by bylo potřeba zabývat se správou infrastruktury. Naučte se používat SQL Database prostřednictvím našich šablon Rychlý start, výukových kurzů a ukázek.
+  description: Azure SQL Database je relační databáze jako služba (DBaaS) pro obecné účely, která je založená na nejnovější stabilní verzi databázového stroje Microsoft SQL Server. SQL Database je vysoce výkonná, spolehlivá a zabezpečená cloudová databáze, kterou můžete použít k vytváření datových aplikací a webů v programovacím jazyce podle vašeho výběru, aniž by bylo potřeba zabývat se správou infrastruktury. Naučte se používat SQL Database prostřednictvím našich šablon Rychlý start, výukových kurzů a ukázek.
   aside:
     image:
       alt: 
@@ -106,10 +106,10 @@ sections:
     rows:
     - title: Vytvoření izolované databáze
       values:
-      - href: /azure/sql-database/sql-database-get-started-portal
+      - href: /azure/sql-database/sql-database-single-database-get-started
       - href: /azure/sql-database/scripts/sql-database-create-and-configure-database-cli
       - href: /azure/sql-database/scripts/sql-database-create-and-configure-database-powershell
-      - href: 
+      - href: https://github.com/Azure/azure-quickstart-templates/tree/master/201-sql-database-transparent-encryption-create
     - title: Vytvoření spravované instance
       values:
       - href: /azure/sql-database/sql-database-managed-instance-get-started
@@ -118,33 +118,10 @@ sections:
       - href: https://github.com/Azure/azure-quickstart-templates/tree/master/101-sqlmi-new-vnet
     - title: Vytvoření elastického fondu
       values:
-      - href: 
+      - href: /azure/sql-database/sql-database-elastic-pool-manage
       - href: /azure/sql-database/scripts/sql-database-move-database-between-pools-cli
       - href: /azure/sql-database/scripts/sql-database-move-database-between-pools-powershell
       - href: https://github.com/Azure/azure-quickstart-templates/tree/master/101-sql-elastic-pool-create
-    - title: Škálování izolované databáze
-      values:
-      - href: 
-      - href: /azure/sql-database/scripts/sql-database-monitor-and-scale-database-cli
-      - href: /azure/sql-database/scripts/sql-database-monitor-and-scale-database-powershell
-      - href: 
-    - title: Škálování elastického fondu
-      values:
-      - href: 
-      - href: /azure/sql-database/scripts/sql-database-scale-pool-cli
-      - href: /azure/sql-database/scripts/sql-database-monitor-and-scale-pool-powershell
-    - title: Škálování spravované instance
-      values:
-      - href: 
-      - href: https://medium.com/azure-sqldb-managed-instance/working-with-sql-managed-instance-using-azure-cli-611795fe0b44
-      - href: https://blogs.msdn.microsoft.com/sqlserverstorageengine/2018/05/31/change-size-azure-sql-managed-instance-using-powershell/
-      - href: 
-    - title: Konfigurace sítě Azure pro spravovanou instanci
-      values:
-      - href: /azure/sql-database/sql-database-managed-instance-get-started
-      - href: 
-      - href: https://blogs.msdn.microsoft.com/sqlserverstorageengine/2018/06/25/quick-start-script-setup-azure-network-environment-for-azure-sql-managed-instance/
-      - href: https://github.com/Azure/azure-quickstart-templates/tree/master/101-sql-managed-instance-azure-environment
 - title: Podrobné kurzy
   items:
   - type: paragraph
@@ -152,6 +129,7 @@ sections:
   - type: list
     style: ordered
     items:
+    - html: Naši průvodci rychlým zprovozněním vám pomohou začít s <a href="/azure/sql-database/sql-database-quickstart-guide">databází Singleton</a> a <a href="/azure/sql-database/sql-database-managed-instance-quickstart-guide">spravovanou instancí</a>.
     - html: Vytvoření a návrh schématu pro novou izolovanou databázi s využitím <a href="/azure/sql-database/sql-database-design-first-database">SSMS</a> nebo <a href="/azure/sql-database/sql-database-design-first-database-csharp">.NET</a>
     - html: Migrace existující databáze do Azure s využitím funkcí <a href="/azure/sql-database/sql-database-managed-instance-get-started-restore">Database RESTORE</a>, <a href="/azure/sql-database/sql-database-migrate-your-sql-server-database">Database Migration Assistant</a> nebo <a href="/azure/sql-database/sql-database-import">BACPAC Import</a>
     - html: <a href="/azure/sql-database/sql-database-security-tutorial">Zabezpečení SQL Database</a>

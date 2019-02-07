@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/24/2018
 ms.author: jdial;anavin
-ms.openlocfilehash: 9c03e0ced565daef01304e288b71c46aa0035384
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
+ms.openlocfilehash: fcd1d8c4dd1f9684db85514a80fea7022f52b0fa
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55730089"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55817083"
 ---
 # <a name="create-change-or-delete-a-virtual-network-peering"></a>Vytvoření, změna nebo odstranění partnerského vztahu virtuálních sítí
 
@@ -39,7 +39,7 @@ Před dokončením kroků v jakékoli části tohoto článku, proveďte násled
 
 ## <a name="create-a-peering"></a>Vytvoření partnerského vztahu
 
-Před vytvořením partnerského vztahu, seznamte se s [požadavky a omezení](#requirements-and-contstraints) a [potřebná oprávnění](#permissions).
+Před vytvořením partnerského vztahu, seznamte se s požadavky a omezení a [potřebná oprávnění](#permissions).
 
 1. Do vyhledávacího pole v horní části webu Azure portal, zadejte *virtuálních sítí* do vyhledávacího pole. Když **virtuální sítě** nezobrazí ve výsledcích hledání, vyberte ji. Nesmí být zvolen **virtuální sítě (klasické)** Pokud se zobrazí v seznamu, nelze vytvoříte partnerské připojení z virtuální sítě nasazené pomocí modelu nasazení classic.
 2. Vyberte v seznamu, který chcete vytvořit partnerský vztah virtuální sítě.
@@ -75,7 +75,7 @@ Podrobné pokyny k implementaci partnerský vztah mezi virtuálními sítěmi v 
 
 ## <a name="view-or-change-peering-settings"></a>Zobrazit nebo změnit nastavení partnerského vztahu
 
-Před změnou, partnerský vztah, seznamte se s [požadavky a omezení](#requirements-and-contstraints) a [potřebná oprávnění](#permissions).
+Před změnou, partnerský vztah, seznamte se s požadavky a omezení a [potřebná oprávnění](#permissions).
 
 1. Do vyhledávacího pole v horní části portálu zadejte *virtuálních sítí* do vyhledávacího pole. Když **virtuální sítě** nezobrazí ve výsledcích hledání, vyberte ji. Nesmí být zvolen **virtuální sítě (klasické)** Pokud se zobrazí v seznamu, nelze vytvoříte partnerské připojení z virtuální sítě nasazené pomocí modelu nasazení classic.
 2. V seznamu, který chcete změnit nastavení partnerského vztahu pro výběr virtuální sítě.

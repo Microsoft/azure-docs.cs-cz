@@ -9,6 +9,8 @@ items:
   items:
   - name: Vytvoření clusteru – Azure Portal
     href: create-cluster-database-portal.md
+  - name: Vytvoření clusteru – Azure CLI
+    href: create-cluster-database-cli.md
   - name: Ingestace dat
     items:
     - name: Streamování dat – centrum událostí
@@ -122,9 +124,9 @@ items:
     href: http://aka.ms/adecostestimator
   - name: Aktualizace služeb
     href: https://azure.microsoft.com/updates/?product=data-explorer
-ms.openlocfilehash: 298df030448f1410ef687405586d4e97827076e9
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
+ms.openlocfilehash: 161696689c6cb0e5aecc63d69d8e8c27c35552b8
+ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 02/05/2019
-ms.locfileid: "55727771"
+ms.locfileid: "55744207"

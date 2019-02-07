@@ -14,12 +14,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 09/24/2018
 ms.author: crdun
-ms.openlocfilehash: 62711ac094a10a9e4a0350319a316c5a293fd522
-ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
+ms.openlocfilehash: fb9725e18c53e9d42ae51418a1eb614aaa10fd12
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54157324"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55816777"
 ---
 # <a name="how-to-use-the-managed-client-for-azure-mobile-apps"></a>Jak používat spravovaného klienta pro Azure Mobile Apps
 [!INCLUDE [app-service-mobile-selector-client-library](../../includes/app-service-mobile-selector-client-library.md)]
@@ -103,7 +103,7 @@ Následující část podrobně popisuje, jak vyhledat a načíst záznamy a úp
 * [Vyhledání záznamu podle Id](#lookingup)
 * [Práce s netypové dotazy](#untypedqueries)
 * [Vkládání dat](#inserting)
-* [Aktualizace dat](#updating)
+* Aktualizace dat
 * [Odstranění dat](#deleting)
 * [Řešení konfliktů a optimistického řízení souběžnosti](#optimisticconcurrency)
 * [Vytvoření vazby na uživatelské rozhraní Windows](#binding)
@@ -338,7 +338,7 @@ jo.Add("id", Guid.NewGuid().ToString("N"));
 ```
 
 ### <a name="modifying"></a>Jak: Změna dat v back-end mobilní aplikace
-Následující kód ukazuje, jak používat [Metod UpdateAsync] metoda aktualizovat existující záznam se stejným ID se novými informacemi. Parametr obsahuje data, která mají být aktualizovány jako objekt .NET.
+Následující kód ukazuje, jak používat [UpdateAsync] metoda aktualizovat existující záznam se stejným ID se novými informacemi. Parametr obsahuje data, která mají být aktualizovány jako objekt .NET.
 
 ```csharp
 await todoTable.UpdateAsync(todoItem);
@@ -404,7 +404,7 @@ Aplikace pomocí netypové tabulky umožňují optimistického řízení soubě�
 todoTable.SystemProperties |= MobileServiceSystemProperties.Version;
 ```
 
-Kromě povolení optimistickou metodu souběžného, musí také catch `MobileServicePreconditionFailedException<T>` výjimka ve vašem kódu při volání metody [Metod UpdateAsync].  Vyřešte konflikt s použitím správné `version` aktualizovaný záznam a volání [Metod UpdateAsync] k vyřešení záznamu. Následující kód ukazuje, jak vyřešit jednou byl zjištěn konflikt zápisu:
+Kromě povolení optimistickou metodu souběžného, musí také catch `MobileServicePreconditionFailedException<T>` výjimka ve vašem kódu při volání metody [UpdateAsync].  Vyřešte konflikt s použitím správné `version` aktualizovaný záznam a volání [UpdateAsync] k vyřešení záznamu. Následující kód ukazuje, jak vyřešit jednou byl zjištěn konflikt zápisu:
 
 ```csharp
 private async void UpdateToDoItem(TodoItem item)
@@ -902,7 +902,7 @@ private async void InitNotificationsAsync()
 Pokud nabízíte službě nabízených oznámení Windows, je nutné [získat balíček Microsoft Store SID](#package-sid).  Další informace o aplikace pro Windows, včetně toho, jak zaregistrovat pro šablony registrace najdete v části [Přidání nabízených oznámení do aplikace].
 
 Vyžádání značky z klienta se nepodporuje.  Značka požadavky jsou vynechány tiše z registrace.
-Pokud si chcete zaregistrovat zařízení se značkami, vytvořte vlastní rozhraní API, která používá rozhraní API Notification Hubs k provedení registrace vaším jménem.  [Volání rozhraní API pro vlastní](#customapi) místo `RegisterNativeAsync()` metody.
+Pokud si chcete zaregistrovat zařízení se značkami, vytvořte vlastní rozhraní API, která používá rozhraní API Notification Hubs k provedení registrace vaším jménem.  Volání rozhraní API Custom namísto `RegisterNativeAsync()` metody.
 
 ### <a name="package-sid"></a>Jak: Získat identifikátor SID balíčku Microsoft Store
 SID balíčku je potřeba pro povolení nabízených oznámení v aplikacích pro Microsoft Store.  Pokud chcete přijímat SID balíčku, registrace aplikace pomocí Microsoft Store.
@@ -1065,7 +1065,7 @@ public class MyHandler : DelegatingHandler
 [Take]: https://msdn.microsoft.com/library/azure/dn250574(v=azure.10).aspx
 [Výběr]: https://msdn.microsoft.com/library/azure/dn250569(v=azure.10).aspx
 [Přeskočit]: https://msdn.microsoft.com/library/azure/dn250573(v=azure.10).aspx
-[Metod UpdateAsync]: https://msdn.microsoft.com/library/azure/dn250536.(v=azure.10)aspx
+[UpdateAsync]: https://msdn.microsoft.com/library/azure/dn250536.(v=azure.10)aspx
 [UserId]: https://msdn.microsoft.com/library/windowsazure/microsoft.windowsazure.mobileservices.mobileserviceuser.userid(v=azure.10).aspx
 [kde]: https://msdn.microsoft.com/library/azure/dn250579(v=azure.10).aspx
 [Azure Portal]: https://portal.azure.com/

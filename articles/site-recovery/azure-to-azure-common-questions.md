@@ -7,19 +7,30 @@ ms.service: site-recovery
 ms.date: 12/12/2018
 ms.topic: conceptual
 ms.author: asgang
-ms.openlocfilehash: a277e392acb8587e05bb78d1d8dacce40bf91f56
-ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
+ms.openlocfilehash: bfce998fbabb89d5e9e964bd504571756941afb4
+ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54449550"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55770482"
 ---
 # <a name="common-questions-azure-to-azure-replication"></a>Nejčastější dotazy: Replikace z Azure do Azure
 
 Tento článek obsahuje odpovědi na běžné dotazy týkající se nasazení zotavení po havárii (DR) virtuálních počítačů Azure do jiné oblasti Azure pomocí Azure Site Recovery. Pokud po přečtení tohoto článku máte dotazy, zveřejněte na [fórum služby Azure Recovery Services](https://social.msdn.microsoft.com/Forums/azure/home?forum=hypervrecovmgr).
 
 
+## <a name="in-this-article"></a>V tomto článku 
+1.  **[Obecné dotazy v Azure do Azure](#general)** 
+1.  **[Replikace](#replication)** 
+1.  **[Zásady replikace](#replication-policy)** 
+1.  **[Konzistence více virtuálních počítačů](#multi-vm-consistency)** 
+1.  **[Plán obnovení](#recovery-plan)** 
+1.  **[Opětovného nastavování ochrany a navrácení služeb po obnovení](#reprotection-and-failback)** 
+1.  **[Zabezpečení](#security)** 
+
+
 ## <a name="general"></a>Obecné
+
 ### <a name="how-is-site-recovery-priced"></a>Jak se účtuje Site Recovery?
 Kontrola [ceny za Azure Site Recovery](https://azure.microsoft.com/blog/know-exactly-how-much-it-will-cost-for-enabling-dr-to-your-azure-vm/) podrobnosti.
 
@@ -113,7 +124,7 @@ První bod obnovení, který je generován má úplnou kopii. Všechny body obno
 ### <a name="does-increasing-the-retention-period-of-recovery-points-increase-the-storage-cost"></a>Zvýší náklady na úložiště prodloužení doby uchovávání bodů obnovení?
 Ano. Pokud zvýšíte dobu uchování 24 hodin na 72 hodin, Site Recovery se uloží body obnovení pro další 48 hodin. Další čas budou účtovat poplatky za úložiště. Například pokud bod obnovení jeden má rozdílové změny na 10 GB a cena za GB je 0.16 $ za měsíc, bude účtovat další poplatky $1.6 * 48 za měsíc.
 
-## <a name="multi-vm-consistency"></a>Konzistence vzhledem k více virtuálním počítačům 
+## <a name="multi-vm-consistency"></a>Konzistence více virtuálních počítačů 
 
 ### <a name="what-is-multi-vm-consistency"></a>Co je konzistence více virtuálních počítačů?
 Znamená to, a ujistěte se, že je bod obnovení konzistentní vzhledem k aplikacím na všech replikovaných virtuálních počítačů.
@@ -198,7 +209,7 @@ To závisí na situace. Například pokud zdrojové oblasti virtuální počíta
 ### <a name="how-much-time-does-it-take-to-fail-back"></a>Kolik času udělá provést navrácení služeb po obnovení?
 Množství času pro navrácení služeb po obnovení po opětovného nastavování ochrany, je obvykle podobný čas potřebný pro převzetí služeb při selhání z primární oblasti do sekundární oblasti. 
 
-## <a name="security"></a>Zabezpečení
+## <a name="a-namesecuritysecurity"></a><a name="security">Zabezpečení
 ### <a name="is-replication-data-sent-to-the-site-recovery-service"></a>Posílají se replikační data do služby Site Recovery?
 Ne, Site Recovery nepodporuje nezachycuje replikovaná data a nemá žádné informace o co běží na virtuálních počítačích. Do služby Site Recovery se odesílají jen metadata, která jsou nezbytná k orchestraci replikace a převzetí služeb při selhání.  
 Site Recovery je ISO 27001: 2013, 27018, HIPAA, DPA certifikace a probíhá SOC2 a FedRAMP JAB.

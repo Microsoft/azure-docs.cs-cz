@@ -56,11 +56,10 @@ items:
       href: microsoft-authenticator-app-add-work-account.md
     - name: Přidání osobního účtu Microsoft
       href: microsoft-authenticator-app-add-personal-account.md
-    - name: Přidání jiného osobního účtu než Microsoft
+    - name: Přidání jiného účtu než Microsoft
       href: microsoft-authenticator-app-add-non-microsoft-account.md
     - name: Ruční přidání účtu
       href: microsoft-authenticator-app-add-account-manual.md
-    expanded: true
   - name: Přihlášení pomocí aplikace Microsoft Authenticator
     href: microsoft-authenticator-app-phone-signin-faq.md
   - name: Zálohování a obnovení vašich účtů
@@ -85,9 +84,9 @@ items:
     href: user-help-register-device-on-network.md
   - name: Řešení potíží se zprávami Nelze se tam dostat
     href: user-help-device-remediation.md
-ms.openlocfilehash: 9ccadb31ce331d3a9dc64aa26d5e8edab900cd1e
-ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
+ms.openlocfilehash: ed41c40adc0d09d60f43cf3826c6bb84a464c31f
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/25/2019
-ms.locfileid: "54904093"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55755267"

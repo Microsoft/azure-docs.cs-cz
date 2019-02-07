@@ -29,39 +29,37 @@ items:
     href: cli-samples.md
 - name: Koncepty
   items:
-  - name: Migrace z v2 v3
-    href: migrate-from-v2-to-v3.md
-  - name: Entity
-    href: entities-overview.md
+  - name: Ingestování
     items:
-    - name: Filtry účtů a prostředků
-      href: filters-dynamic-manifest-overview.md
     - name: Prostředky
       href: assets-concept.md
-    - name: Zásady symetrických klíčů
-      href: content-key-policy-concept.md
-    - name: Živé události a výstupy
-      href: live-events-outputs-concept.md
+  - name: Kódování
+    href: encoding-concept.md
+    items:
+    - name: Transformace a úlohy
+      href: transforms-jobs-concept.md
+    - name: Standardní formáty Media Encoderu
+      href: media-encoder-standard-formats.md
+    - name: Adaptivní žebříček přenosových rychlostí Autogen
+      href: autogen-bitrate-ladder.md
+  - name: Analýza
+    href: analyzing-video-audio-files-concept.md
+    items:
+    - name: Transformace a úlohy
+      href: transforms-jobs-concept.md
+  - name: Datový proud
+    items:
     - name: Koncové body streamování
       href: streaming-endpoint-concept.md
     - name: Lokátory streamování
       href: streaming-locators-concept.md
     - name: Zásady streamování
       href: streaming-policy-concept.md
-    - name: Transformace a úlohy
-      href: transforms-jobs-concept.md
-  - name: Kódování obsahu
-    href: encoding-concept.md
-    items:
-    - name: Standardní formáty Media Encoderu
-      href: media-encoder-standard-formats.md
-    - name: Adaptivní žebříček přenosových rychlostí Autogen
-      href: autogen-bitrate-ladder.md
-  - name: Analýza obsahu
-    href: analyzing-video-audio-files-concept.md
-  - name: Streamování živých událostí
+  - name: Živé streamování
     href: live-streaming-overview.md
     items:
+    - name: Živé události a výstupy
+      href: live-events-outputs-concept.md
     - name: Doporučené kodéry pro kódování v reálném čase
       href: recommended-on-premises-live-encoders.md
     - name: Použití cloudového DVR
@@ -72,13 +70,23 @@ items:
       href: live-event-states-billing.md
     - name: Latence
       href: live-event-latency.md
+  - name: Doručování
+    items:
+    - name: Filtry a dynamický manifest
+      href: filters-dynamic-manifest-overview.md
   - name: Monitorování
     items:
     - name: Event Grid
       href: reacting-to-media-services-events.md
-  - name: Ochrana obsahu
+  - name: Ochrana
     href: content-protection-overview.md
     items:
+    - name: Zásady symetrických klíčů
+      href: content-key-policy-concept.md
+    - name: Zásady streamování
+      href: streaming-policy-concept.md
+    - name: Lokátory streamování
+      href: streaming-locators-concept.md
     - name: Systém s více variantami DRM s řízením přístupu
       href: design-multi-drm-system-with-access-control.md
   - name: Přehrávání
@@ -89,6 +97,10 @@ items:
       href: limits-quotas-constraints.md
     - name: Účty úložiště
       href: storage-account-concept.md
+  - name: Filtrování, uspořádání, stránkování entit
+    href: entities-overview.md
+  - name: Migrace z v2 v3
+    href: migrate-from-v2-to-v3.md
 - name: Návody
   items:
   - name: Začínáme
@@ -199,15 +211,17 @@ items:
       href: https://aka.ms/ams-v3-nodejs-sdk
     - name: Ruby
       href: https://aka.ms/ams-v3-ruby-sdk
+  - name: AMSE
+    href: https://github.com/Azure/Azure-Media-Services-Explorer
   - name: Poznámky k verzi
     href: release-notes.md
   - name: Nejčastější dotazy
     href: frequently-asked-questions.md
   - name: Oblasti a cloudy Azure
     href: azure-clouds-regions.md
-ms.openlocfilehash: 0e748b32092ec9e27888c9fac039c27e6411b34a
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.openlocfilehash: cadf1d0b73c7d04b2748cb5fa60de7cca23beadc
+ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55693863"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55744802"

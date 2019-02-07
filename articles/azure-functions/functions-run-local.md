@@ -11,12 +11,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 10/29/2018
 ms.author: glenga
-ms.openlocfilehash: 214f32c4dc35661480b96477caf0cdf6243c75a8
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.openlocfilehash: 703b8a7a094d0ea6f5b5dedaf02a218b407269d3
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55094237"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55813799"
 ---
 # <a name="work-with-azure-functions-core-tools"></a>Práce s Azure Functions Core Tools
 
@@ -28,7 +28,7 @@ Nástroje Azure Functions Core můžete vyvíjet a testovat funkce v místním p
 
 Existují dvě verze nástrojů Azure Functions Core. Verze použijete, závisí na svoje místní vývojové prostředí [volba jazyka](supported-languages.md)a je vyžadována podpora na úrovni:
 
-+ [Verzi 1.x](#v1): podporuje verzi 1.x modulu runtime. Tato verze nástroje je podporována pouze na počítačích s Windows a je nainstalovaná ze [balíčku npm](https://docs.npmjs.com/getting-started/what-is-npm). S touto verzí můžete vytvořit funkce v následujících experimentálních jazyků, které nejsou oficiálně podporované. Další informace najdete v tématu [podporované jazyky ve službě Azure Functions](supported-languages.md)
++ Verzi 1.x: podporuje verzi 1.x modulu runtime. Tato verze nástroje je podporována pouze na počítačích s Windows a je nainstalovaná ze [balíčku npm](https://docs.npmjs.com/getting-started/what-is-npm). S touto verzí můžete vytvořit funkce v následujících experimentálních jazyků, které nejsou oficiálně podporované. Další informace najdete v tématu [podporované jazyky ve službě Azure Functions](supported-languages.md)
 
 + [Verze 2.x](#v2): podporuje [verze 2.x modulu runtime](functions-versions.md). Tato verze podporuje [Windows](#windows-npm), [macOS](#brew), a [Linux](#linux). Správce balíčků specifických pro platformu používá nebo npm pro instalaci.
 
