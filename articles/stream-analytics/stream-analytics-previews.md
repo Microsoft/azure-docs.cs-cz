@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 02/05/2019
-ms.openlocfilehash: 29997b2ff7d3834a91389790256cd0d075ce1ece
-ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
+ms.openlocfilehash: 09f1bdfa4c9a7a179bddf9473b553924bfb58fb7
+ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55744904"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55768558"
 ---
 # <a name="azure-stream-analytics-preview-features"></a>Funkce Azure Stream Analytics ve verzi preview
 
@@ -30,14 +30,6 @@ Azure Stream Analytics podporuje Azure SQL Database jako zdroj vstupu pro refere
 ### <a name="integration-with-azure-machine-learning"></a>Integrace s Azure Machine Learning
 
 Je možné škálovat úlohy Stream Analytics s funkcemi Machine Learning (ML). Další informace o použití funkce ML v úloze Stream Analytics, najdete v tématu [škálovat úlohy Stream Analytics s funkcemi Azure Machine Learning](stream-analytics-scale-with-machine-learning-functions.md). Podívejte se na skutečném scénáři s [provádět analýzu subjektivního hodnocení s využitím Azure Stream Analytics a Azure Machine Learning](stream-analytics-machine-learning-integration-tutorial.md).
-
-### <a name="blob-output-partitioning-by-custom-time"></a>Objekt BLOB výstup dělení podle vlastní čas
-
-Azure Stream Analytics můžete výstup do úložiště objektů blob založeného na vlastní atributy. Další informace najdete v článku [objektů blob Azure Stream Analytics, vlastní, výstup dělení](stream-analytics-custom-path-patterns-blob-storage-output.md).
-
-### <a name="blob-output-partitioning-by-field-or-attribute"></a>Dělení podle pole nebo atribut výstupní objekt BLOB
-
-Azure Stream Analytics můžete výstup do úložiště objektů blob na základě vlastních polí nebo atributy. Další informace najdete v článku [objektů blob Azure Stream Analytics, vlastní, výstup dělení](stream-analytics-custom-path-patterns-blob-storage-output.md).
 
 ### <a name="javascript-user-defined-aggregate"></a>Uživatelem definovaná agregace jazyka JavaScript
 

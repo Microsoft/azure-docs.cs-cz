@@ -14,12 +14,12 @@ ms.devlang: azurecli
 ms.topic: article
 ms.date: 11/29/2017
 ms.author: rclaus
-ms.openlocfilehash: 8e8950cbd7927cb6b0543866ab976b550c9ec043
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 4f65ebfd2e1ce508c5cf9b224871102a35b55fe0
+ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46959542"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55770313"
 ---
 # <a name="use-cloud-init-to-run-a-bash-script-in-a-linux-vm-in-azure"></a>Použití cloud-init pro spuštění skriptu bash v virtuálního počítače s Linuxem v Azure
 V tomto článku se dozvíte, jak používat [cloud-init](https://cloudinit.readthedocs.io) ke spuštění existujícího skriptu bash na virtuální počítač s Linuxem (VM) nebo škálovacích sad virtuálních počítačů (VMSS) při zřizování času v Azure. Tyto skripty cloud-init spustit při prvním spuštění, jakmile se zřizují prostředky Azure. Další informace o tom, jak funguje cloud-init nativně v Azure a podporovaných distribucích systému Linux, najdete v části [přehled cloud-init](using-cloud-init.md)
@@ -36,13 +36,13 @@ Pokud chcete zobrazit tuto funkci v akci, vytvořte skript jednoduché bash pro 
 echo "this has been written via cloud-init" + $(date) >> /tmp/myScript.txt
 ```
 
-Před nasazením této bitové kopie, je potřeba vytvořit skupinu prostředků pomocí [vytvořit skupiny az](/cli/azure/group#az_group_create) příkazu. Skupina prostředků Azure je logický kontejner, ve kterém se nasazují a spravují prostředky Azure. Následující příklad vytvoří skupinu prostředků *myResourceGroup* v umístění *eastus*.
+Před nasazením této bitové kopie, je potřeba vytvořit skupinu prostředků pomocí [vytvořit skupiny az](/cli/azure/group) příkazu. Skupina prostředků Azure je logický kontejner, ve kterém se nasazují a spravují prostředky Azure. Následující příklad vytvoří skupinu prostředků *myResourceGroup* v umístění *eastus*.
 
 ```azurecli-interactive 
 az group create --name myResourceGroup --location eastus
 ```
 
-Teď vytvořte virtuální počítač s [az vm vytvořit](/cli/azure/vm#az_vm_create) a zadat soubor skriptu bash s `--custom-data simple_bash.sh` následujícím způsobem:
+Teď vytvořte virtuální počítač s [az vm vytvořit](/cli/azure/vm) a zadat soubor skriptu bash s `--custom-data simple_bash.sh` následujícím způsobem:
 
 ```azurecli-interactive 
 az vm create \

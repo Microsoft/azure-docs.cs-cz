@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.date: 01/17/2019
 ms.author: luisca
 ms.custom: seodec2018
-ms.openlocfilehash: dbbff7644d0c9375a4d2a145769d09a786b01c25
-ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
+ms.openlocfilehash: 485837d6235f4868665df2907c01fa1bd26db357
+ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/19/2019
-ms.locfileid: "54412321"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55766363"
 ---
 # <a name="ocr-cognitive-skill"></a>OCR kognitivních dovedností
 
@@ -147,7 +147,6 @@ Následující příklad dovednosti vytvoří *merged_text* pole. Toto pole obsa
   "skills":
   [
     {
-        "name": "OCR skill",
         "description": "Extract text (plain and structured) from image.",
         "@odata.type": "#Microsoft.Skills.Vision.OcrSkill",
         "context": "/document/normalized_images/*",

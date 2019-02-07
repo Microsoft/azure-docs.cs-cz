@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: 917a551b8a187db6645e523d0189533e333d5371
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: a1b60bdf27e1a5f5cb6b9cfba72d78f8afa068eb
+ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53075162"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55768592"
 ---
 # <a name="features-and-terminology-in-azure-event-hubs"></a>Funkce a terminologii používané v Azure Event Hubs
 
@@ -169,7 +169,7 @@ Jednotky propustnosti se kupují předem a se účtuje po hodinách. Zakoupené 
 
 Můžete zakoupit další jednotky propustnosti v blocích po 20 až 100 jednotek propustnosti, kontaktujte podporu Azure. Nad rámec tohoto limitu můžete zakoupit bloky, které 100 jednotek propustnosti.
 
-Doporučujeme, abyste vyvážili jednotky propustnosti a oddíly, abyste dosáhli optimálního škálování. Škálování jednoho oddílu dovoluje maximálně jednu jednotku propustnosti. Počet jednotek propustnosti by měl být menší nebo roven počtu oddílů v centru událostí.
+Doporučujeme, abyste vyvážili jednotky propustnosti a oddíly, abyste dosáhli optimálního škálování. Jeden oddíl má minimální měřítko, jednu jednotku propustnosti. Počet jednotek propustnosti by měl být menší nebo roven počtu oddílů v centru událostí.
 
 Podrobné informace o cenách služby Event Hubs najdete na stránce [Ceny služby Event Hubs](https://azure.microsoft.com/pricing/details/event-hubs/).
 

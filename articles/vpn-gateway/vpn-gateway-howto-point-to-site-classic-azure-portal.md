@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/11/2018
 ms.author: cherylmc
-ms.openlocfilehash: 0482dfd5b7b09d5e66fb830caae654be3242a916
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.openlocfilehash: c133ba5a95e0476c6d992e53776b384fdc8c97ba
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55694071"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55809795"
 ---
 # <a name="configure-a-point-to-site-connection-by-using-certificate-authentication-classic"></a>Konfigurace připojení typu Point-to-Site s použitím ověření certifikátu (classic)
 
@@ -249,7 +249,7 @@ Důvěryhodný kořenový certifikát můžete do Azure přidat nebo ho z Azure 
 
 ### <a name="to-add-a-trusted-root-certificate"></a>Přidání důvěryhodného kořenového certifikátu
 
-Do Azure můžete přidat až 20 souborů .cer s důvěryhodnými kořenovými certifikáty. Pokyny najdete v tématu [nahrání souboru .cer kořenového certifikátu](#upload-the-root-certificate-.cer-file).
+Do Azure můžete přidat až 20 souborů .cer s důvěryhodnými kořenovými certifikáty. Pokyny najdete v tématu nahrání souboru .cer kořenového certifikátu.
 
 ### <a name="to-remove-a-trusted-root-certificate"></a>Odebrání důvěryhodného kořenového certifikátu
 

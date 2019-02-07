@@ -12,12 +12,12 @@ manager: cgronlun
 ms.topic: conceptual
 ms.date: 01/18/2019
 ms.custom: seodec18
-ms.openlocfilehash: 02d0afd18ad966baf8954ae5add180c970fe302e
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: b322ca0c3a19f0a832fe50b6cfbaaad287205d5e
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55247404"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55812901"
 ---
 # <a name="configure-a-development-environment-for-azure-machine-learning"></a>Konfigurace prostředí pro vývoj pro Azure Machine Learning
 
@@ -27,7 +27,7 @@ Jediným požadavkem pro vaše vývojové prostředí je Python 3, Conda (pro iz
 
 Tento článek se zaměřuje na tyto prostředí a nástroje:
 
-* [Azure Notebooks](#aznotebooks): Poznámkové bloky Jupyter služba, která je hostovaná v cloudu Azure. Je nejjednodušší způsob, jak začít, protože sada SDK Azure Machine Learning je už nainstalovaný.
+* Poznámkových bloků Azure: Poznámkové bloky Jupyter služba, která je hostovaná v cloudu Azure. Je nejjednodušší způsob, jak začít, protože sada SDK Azure Machine Learning je už nainstalovaný.
 
 * [Virtuální počítač pro datové vědy (DSVM)](#dsvm): Předem nakonfigurované vývoje služby experimentování ve službě prostředí nebo v cloudu Azure, která je navržená pro datové vědy práce a mohou být nasazeny na procesoru pouze instance virtuálních počítačů nebo instancí založený na grafickém procesoru. Python 3, Conda, poznámkové bloky Jupyter a sady SDK Azure Machine Learning jsou již nainstalovány. Virtuální počítač se dodává s oblíbenými strojové učení a obsáhlý learning architektur, nástrojů a editory pro vývoj řešení strojového učení. To je pravděpodobně nejkompletnější vývojové prostředí pro strojové učení na platformě Azure.
 
@@ -248,7 +248,7 @@ Příprava vašeho clusteru Databricks a ukázkové poznámkové bloky získat:
 
 1. Vytvoření [Databricks pro cluster](https://docs.microsoft.com/azure/azure-databricks/quickstart-create-databricks-workspace-portal) s následujícím nastavením:
 
-    | Nastavení | Value |
+    | Nastavení | Hodnota |
     |----|---|
     | Název clusteru | yourclustername |
     | Modul runtime Databricks | Any non ML runtime (non ML 4.x, 5.x) |
@@ -257,7 +257,7 @@ Příprava vašeho clusteru Databricks a ukázkové poznámkové bloky získat:
 
     Použijte tato nastavení jenom v případě, že budete používat automatizované strojového učení v Databricks:
     
-    |   Nastavení | Value |
+    |   Nastavení | Hodnota |
     |----|---|
     | Typy virtuálních počítačů uzlů pracovního procesu | Optimalizované pro paměť virtuálního počítače upřednostňované |
     | Povolení automatického škálování | Zrušte zaškrtnutí políčka |
@@ -271,13 +271,13 @@ Příprava vašeho clusteru Databricks a ukázkové poznámkové bloky získat:
     * [Vytvoření knihovny](https://docs.databricks.com/user-guide/libraries.html#create-a-library) s jedním z těchto nastavení (_pouze jednu z těchto možností zvolte_):
     
         * Chcete-li nainstalovat sadu SDK Azure Machine Learning _bez_ automatizované funkce machine learning:
-            | Nastavení | Value |
+            | Nastavení | Hodnota |
             |----|---|
             |Zdroj | Nahrát Python Egg nebo PyPI
             |Název PyPi | azureml-sdk[databricks]
     
         * Chcete-li nainstalovat sadu SDK Azure Machine Learning _s_ automatizované strojového učení:
-            | Nastavení | Value |
+            | Nastavení | Hodnota |
             |----|---|
             |Zdroj | Nahrát Python Egg nebo PyPI
             |Název PyPi | azureml-sdk[automl_databricks]

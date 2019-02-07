@@ -1,24 +1,24 @@
 ---
 title: Přehled Azure Maps | Microsoft Docs
 description: Seznámení s Azure Maps
-author: dsk-2015
-ms.author: dkshir
-ms.date: 09/12/2018
+author: walsehgal
+ms.author: v-musehg
+ms.date: 02/04/2019
 ms.topic: overview
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 9bf168a0f06d662526d172687e54327b55d50bd8
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ms.openlocfilehash: ce55185effc67709157ce6219c405bb8e32dd5db
+ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54104263"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55768575"
 ---
 # <a name="what-is-azure-maps"></a>Co je služba Azure Maps?
 
-Azure Maps je kolekce geoprostorových služeb založená na čerstvých mapových datech, takže můžete pro své webové a mobilní aplikace poskytovat přesný geografický kontext. Obsahuje rozhraní REST API pro vykreslování map a vyhledávání bodů zájmu. Rozhraní API také zjistí trasy k bodům zájmu, informace o aktuálním provozu, časová pásma a umístění z IP adresy. Tato rozhraní API spolupracují se známými nástroji k rychlému vývoji a škálování řešení, která integrují informace o poloze do vašich řešení v Azure. Kromě rozhraní REST API poskytuje webové [mapové ovládací prvky v JavaScriptu](https://docs.microsoft.com/javascript/api/azure-maps-control) pro zajištění snadného, flexibilního a přenositelného vývoje napříč různými médii.
+Azure Maps je kolekce geoprostorových služeb, nepřipnutých nejčerstvější mapování daty dostupnými poskytování přesných geografického kontextu pro webové a mobilní aplikace. Azure Maps se skládá z rozhraní REST API pro vykreslování **mapy** v několika – styly a satelitních snímků, **hledání** pro adresy, místa a body zájmu po celém světě; **Směrování** point-to-point, multipoint, multipoint optimalizace, isochrone, komerční vozidla, provoz k nim a matice směrování; zobrazení to nejlepší z vyvíjet toku provozu a incidenty; navazování polohu uživatele přes **Informace o zeměpisné poloze**; a umístění pro převod **časových pásem**, jakož i načítání čas do umístění. Kromě toho Azure Maps nabízí služby pro **monitorování geografických zón**, mapy **Data** úložiště – hostování informace o poloze v Azure; a **prostorových operace** umístění Chcete-li zobrazit Intelligence prostřednictvím geoprostorové analýzy. Služby Azure Maps jsou k dispozici přímo jako rozhraní REST API nebo prostřednictvím naší robustní **Web SDK** nebo **sady Android SDK**. Tyto nástroje umožňují vývojářům rychle vyvíjet a škálovat řešení schopná integrovat informace o poloze do řešení Azure z v rámci cloudu Azure. Zaregistrujte vaši bezplatnou [účet Azure Maps](https://azure.microsoft.com/services/azure-maps/) dnes a vývoj start!
 
 Následující video vysvětluje Azure Maps do hloubky:
 

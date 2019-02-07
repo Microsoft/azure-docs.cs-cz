@@ -14,12 +14,12 @@ ms.date: 01/19/2019
 ms.author: sethm
 ms.reviewer: sijuman
 ms.lastreviewed: 01/19/2019
-ms.openlocfilehash: fbca9eb3703777c0d20998e65bf446b5951c5091
-ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
+ms.openlocfilehash: 8e63b9854d9491ed2cbb2107c93237526a7f1ba8
+ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55745397"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55766937"
 ---
 # <a name="use-api-version-profiles-with-go-in-azure-stack"></a>Použití profilů verzí API s využitím Go ve službě Azure Stack
 
@@ -86,7 +86,7 @@ Spuštění ukázky kódu Go ve službě Azure Stack, postupujte podle těchto k
 
 3. Pokud není k dispozici, vytvořte předplatné a uložte ID předplatného pro pozdější použití. Informace o vytváření předplatného najdete v tématu [vytvářet předplatná na nabídky ve službě Azure Stack](../azure-stack-subscribe-plan-provision-vm.md).
 
-4. Vytvořit instanční objekt s **předplatné** oboru a **vlastníka** role. Uložení ID instančního objektu a tajného klíče. Informace o vytvoření instančního objektu pro Azure Stack najdete v tématu [vytvořit instanční objekt](azure-stack-create-service-principals.md#create-service-principal-for-azure-ad). Vaše prostředí Azure Stack je teď nastavené.
+4. Vytvořit instanční objekt s **předplatné** oboru a **vlastníka** role. Uložení ID instančního objektu a tajného klíče. Informace o vytvoření instančního objektu pro Azure Stack najdete v tématu [vytvořit instanční objekt](azure-stack-create-service-principals.md). Vaše prostředí Azure Stack je teď nastavené.
 
 5. Importujte modul služby z profilu Go SDK ve vašem kódu. Aktuální verze profilu služby Azure Stack je **2017-03-09**. Například naimportovat modul sítě z **2017-03-09** typ profilu, použijte následující kód:
 

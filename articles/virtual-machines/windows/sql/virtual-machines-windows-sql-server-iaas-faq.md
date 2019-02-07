@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 07/12/2018
 ms.author: v-shysun
-ms.openlocfilehash: 837c9d2b4b7dc0ce2c5ee3b25106eb5fea4ed7ea
-ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
+ms.openlocfilehash: 53c22222682e2a017f55cbd5af89671edb3eddaf
+ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54358979"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55767334"
 ---
 # <a name="frequently-asked-questions-for-sql-server-running-on-windows-virtual-machines-in-azure"></a>Nejčastější dotazy ke službě SQL Server běžící na virtuálních počítačích Windows v Azure
 
@@ -86,7 +86,7 @@ Tento článek obsahuje odpovědi na některé nejběžnější otázky o spušt
 
 1. **Můžete změnit virtuálního počítače používat vlastní licenci na SQL Server, pokud byl vytvořen z některou k imagí s průběžnými platbami Galerie?**
 
-   Ano. Můžete snadno přesouvat přesunout mezi těmito dvěma licenční modely, bez ohledu na obrázku, který byl původně nasazené. Další informace najdete v tématu [jak změnit licenční model virtuálního počítače SQL](virtual-machines-windows-sql-ahb.md).
+   Ano. Můžete snadno přesouvat přesunout mezi těmito dvěma licenční modely, pokud jste původně spustili pomocí image galerie s průběžnými platbami. Ale nebudete moci přepnout vaše licence na průběžné platby, pokud původně spustili pomocí BYOL image. Další informace najdete v tématu [jak chcete-li změnit licenční model virtuálního počítače s SQL serverem](virtual-machines-windows-sql-ahb.md).
 
 1. **Použít Image BYOL nebo RP virtuálního počítače SQL k vytvoření nového virtuálního počítače SQL?**
 
@@ -94,11 +94,11 @@ Tento článek obsahuje odpovědi na některé nejběžnější otázky o spušt
 
 1. **Bude vyžadovat přepínání licenční modely žádné výpadky pro SQL Server?**
 
-   Ne. [Změna licenční model](virtual-machines-windows-sql-ahb.md) nevyžaduje žádné výpadky pro SQL Server, jak tato změna je hned platná a nevyžaduje restartování virtuálního počítače. 
+   Ne. [Změna licenční model](virtual-machines-windows-sql-ahb.md) nevyžaduje žádné výpadky pro SQL Server, jak tato změna je hned platná a nevyžaduje restartování virtuálního počítače. Nicméně, k registraci virtuálního počítače s SQL serverem s poskytovatelem prostředků pro virtuální počítač s SQL [rozšíření SQL IaaS](virtual-machines-windows-sql-server-agent-extension.md) je předpokladem a instalace rozšíření SQL IaaS restartuje službu systému SQL Server. V důsledku toho pokud je třeba nainstalovat rozšíření SQL IaaS, pak je třeba jej provést během časového období údržby. 
 
 1. **Program Azure Hybrid Benefit aktivovat předplatných CSP?**
 
-   Ano. [Změna licenční model](virtual-machines-windows-sql-ahb.md) je dostupná pro předplatná CSP. 
+   Ano, je dostupná pro předplatná CSP zvýhodněné hybridní využití Azure. Zákazníci CSP by měly nejprve nasadit bitovou kopii s průběžnými platbami a potom [změnit licenční model](virtual-machines-windows-sql-ahb.md) k používání – vlastní licence.  
 
 1. **Dodatečné poplatky přinese registrace virtuálního počítače s poskytovatelem prostředků pro nový virtuální počítač SQL?**
 

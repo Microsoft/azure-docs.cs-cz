@@ -15,14 +15,14 @@ ms.workload: NA
 ms.date: 09/01/2018
 ms.author: suhuruli
 ms.custom: mvc
-ms.openlocfilehash: e4552157cab846356c57a135d4e273f5a545bce9
-ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
-ms.translationtype: HT
+ms.openlocfilehash: 619f77b6b50a005b4b5cc688bdbf32d1ce3dce26
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/04/2018
-ms.locfileid: "43667213"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55810810"
 ---
-# <a name="tutorial-create-an-application-with-a-java-web-api-front-end-service-and-a-stateful-back-end-service-on-service-fabric"></a>Kurz: Vytvoření aplikace s front-end službou webového rozhraní API pro Javu a stavovou back-end službou na platformě Service Fabric
+# <a name="tutorial-create-an-application-with-a-java-web-api-front-end-service-and-a-stateful-back-end-service-on-service-fabric"></a>Kurz: Vytvořte aplikaci s webovým front-endová služba rozhraní API Java a stavovou back-end služby v Service Fabric
 
 Tento kurz je první částí série. Až budete hotovi, budete mít hlasovací aplikaci s webovým front-endem v Javě, která ukládá výsledky hlasování do stavové back-end služby v clusteru. Tato série kurzů vyžaduje funkční vývojový počítač se systémem Mac OSX nebo Linuxem. Pokud nechcete hlasovací aplikaci vytvářet ručně, můžete si [stáhnout zdrojový kód dokončené aplikace](https://github.com/Azure-Samples/service-fabric-java-quickstart) a přeskočit k části [Prohlídka ukázkové hlasovací aplikace](service-fabric-tutorial-create-java-app.md#walk-through-the-voting-sample-application).
 
@@ -228,7 +228,7 @@ protected List<ServiceInstanceListener> createServiceInstanceListeners() {
 
 Naslouchací proces komunikace protokolu HTTP funguje jako kontroler, který nastaví server HTTP a zveřejní rozhraní API definující akce hlasování. Ve složce *VotingWeb/src/statelessservice* klikněte pravým tlačítkem na balíček *statelessservice* a potom vyberte **New -> File** (Nový -> Soubor).  Pojmenujte soubor *HttpCommunicationListener.java* a klikněte na **Finish** (Dokončit).
 
-Nahraďte obsah souboru následujícím kódem a pak uložte provedené změny.  V pozdější části [Aktualizace souboru HttpCommunicationListener.java](#updatelistener_anchor) se tento soubor upraví tak, aby vykresloval, načítal a zapisoval data hlasování z back-end služby.  Prozatím naslouchací událost jednoduše vrací statický kód HTML hlasovací aplikace.
+Nahraďte obsah souboru následujícím kódem a pak uložte provedené změny.  Aktualizace souboru HttpCommunicationListener.java je později, tento soubor upraví k vykreslení, přečtěte si a zapisoval data hlasování z back-end služby.  Prozatím naslouchací událost jednoduše vrací statický kód HTML hlasovací aplikace.
 
 ```java
 // ------------------------------------------------------------
@@ -891,7 +891,7 @@ V tuto chvíli je aplikace připravená k nasazení do místního clusteru Servi
 
 2. Spusťte místní cluster Service Fabric. Provedení tohoto kroku závisí na vašem vývojovém prostředí (Mac nebo Linux).
 
-    Pokud používáte počítač Mac, spustíte místní cluster pomocí následujícího příkazu. Příkaz předávaný v parametru **-v** nahraďte cestou k vašemu pracovnímu prostoru.
+    Pokud používáte počítač Mac, spustíte místní cluster pomocí následujícího příkazu: Nahradit příkaz předávaný **- v** parametr s cestou k vašemu pracovnímu prostoru.
 
     ```bash
     docker run -itd -p 19080:19080 -p 8080:8080 -p --name sfonebox servicefabricoss/service-fabric-onebox
@@ -907,7 +907,7 @@ V tuto chvíli je aplikace připravená k nasazení do místního clusteru Servi
 5. V okně **Publish Application** (Publikovat aplikaci) vyberte v rozevíracím seznamu soubor **Local.json** a klikněte na **Publish** (Publikovat).
 6. Ve webovém prohlížeči přejděte na adresu **http://localhost:8080** a zobrazte svou spuštěnou aplikaci na místním clusteru Service Fabric. 
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 V této části kurzu jste se naučili:
 

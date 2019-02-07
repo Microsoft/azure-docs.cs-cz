@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 12/11/2018
 ms.author: alkohli
 ms.subservice: common
-ms.openlocfilehash: 0480a8d4079a39c8e365dde893a9a1af2d7341aa
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 99e3abb1bedffdb5a7d49c033ebc8b4c46df1c03
+ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55453106"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55769269"
 ---
 # <a name="use-the-azure-importexport-service-to-export-data-from-azure-blob-storage"></a>Export dat z úložiště objektů Blob v Azure pomocí služby Azure Import/Export
 Tento článek obsahuje podrobné pokyny o tom, jak bezpečně export velkých objemů dat z úložiště objektů Blob v Azure pomocí služby Azure Import/Export. Služba vyžaduje, abyste zasílejte prázdné disky do datacentra Azure. Službu exportuje data z vašeho účtu úložiště do jednotky a potom odešle zpět jednotky.
@@ -145,7 +145,7 @@ To *volitelné* krok pomůže Určuje požadovaný počet jednotek nezbytný k d
     |**/sn:**|Povinná hodnota. Název účtu úložiště pro úlohu exportu.|  
     |**/Sk:**|Požadováno, pouze pokud není zadán sdíleného přístupového podpisu kontejneru. Klíč účtu pro účet úložiště pro úlohu exportu.|  
     |**/csas:**|Požadováno, pouze pokud není zadaný klíč účtu úložiště. Sdíleného přístupového podpisu kontejneru pro výpis objektů BLOB nelze exportovat do úlohy exportu.|  
-    |**/ ExportBlobListFile:**|Povinná hodnota. Cesta k souboru XML soubor obsahující seznam cesty k objektům blob nebo objekt blob předpony cesty pro objekty BLOB nelze exportovat. Formát souboru používaný v `BlobListBlobPath` prvek [úlohy umístit](/rest/api/storageimportexport/jobs#Jobs_CreateOrUpdate) operace rozhraní REST API služby Import/Export.|  
+    |**/ ExportBlobListFile:**|Povinná hodnota. Cesta k souboru XML soubor obsahující seznam cesty k objektům blob nebo objekt blob předpony cesty pro objekty BLOB nelze exportovat. Formát souboru používaný v `BlobListBlobPath` prvek [úlohy umístit](/rest/api/storageimportexport/jobs) operace rozhraní REST API služby Import/Export.|  
     |**/ DriveSize:**|Povinná hodnota. Velikost disků pro úlohu exportu *třeba*, 500 GB, 1,5 TB.|  
 
     Najdete v článku [příklad příkazu PreviewExport](#example-of-previewexport-command).

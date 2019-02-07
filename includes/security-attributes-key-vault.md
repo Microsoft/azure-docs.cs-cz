@@ -4,12 +4,12 @@ ms.service: key-vault
 ms.topic: include
 ms.date: 01/31/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 7ac0072b10489deb1b18ea737301ab698dce9f89
-ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
+ms.openlocfilehash: aba09012bf2e9d2741f598280add8b599a6f6d1a
+ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55513502"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55807214"
 ---
 ## <a name="preventative"></a>Preventivní
 
@@ -48,7 +48,7 @@ ms.locfileid: "55513502"
 
 | Atribut zabezpečení | Ano/Ne | Poznámky|
 |---|---|--|
-| Plánování a řízení protokolování a auditování| Ano | Používat službu Log Analytics. |
+| Řízení a rovinou protokolování a auditování| Ano | Používat službu Log Analytics. |
 | Protokolování a auditování RP roviny dat| Ano | Používat službu Log Analytics. |
 
 ## <a name="access-controls"></a>Ovládací prvky přístupu

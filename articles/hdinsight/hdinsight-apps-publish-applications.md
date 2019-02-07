@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/14/2018
 ms.author: hrasheed
-ms.openlocfilehash: 90ba4f2197dc1b00ad2a3d234f3e81e529ae7e4f
-ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
+ms.openlocfilehash: fd6d47d8300872f5bcdf36aec492289f93858504
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/20/2018
-ms.locfileid: "53653913"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55814181"
 ---
 # <a name="publish-an-hdinsight-application-in-the-azure-marketplace"></a>Publikování aplikace HDInsight na Azure Marketplace
 Aplikace Azure HDInsight můžete nainstalovat na clusteru HDInsight se systémem Linux. V tomto článku se dozvíte, jak k publikování aplikace HDInsight na Azure Marketplace. Obecné informace o publikování na webu Azure Marketplace najdete v tématu [publikování nabídky na webu Azure Marketplace](../marketplace/marketplace-publishers-guide.md).
@@ -75,9 +75,9 @@ Instalační skript, musí mít následující vlastnosti:
 * Pokud se skript spustí služby na uzlech, služby jsou sledovány a nakonfigurovat tak, aby se spouštěla automaticky, pokud dojde k restartování uzlu.
 
 ## <a name="package-the-application"></a>Balíček aplikace
-Vytvořte soubor .zip, který obsahuje všechny soubory, které jsou nutné k instalaci aplikace HDInsight. Použít soubor .zip [publikovat aplikaci](#publish-application). Soubor ZIP obsahuje následující soubory:
+Vytvořte soubor .zip, který obsahuje všechny soubory, které jsou nutné k instalaci aplikace HDInsight. Publikování aplikace pomocí souboru ZIP. Soubor ZIP obsahuje následující soubory:
 
-* [createUiDefinition.json](#define-application)
+* createUiDefinition.json
 * mainTemplate.json (ukázku najdete v tématu [instalace vlastních aplikací HDInsight](hdinsight-apps-install-custom-applications.md).)
 * Všechny požadované skripty
 
@@ -94,7 +94,7 @@ Chcete-li publikovat aplikace HDInsight:
 5. Vyberte **definovat některé topologie, abyste mohli začít**. Šablona řešení je "nadřazený objekt" všem svým topologiím. V jedné šabloně nabídky nebo řešení můžete definovat více topologií. Když se nabídka převede do přípravy, převede se se svým topologiím. 
 6. Zadejte název topologie a potom vyberte **+**.
 7. Zadejte novou verzi a pak vyberte **+**.
-8. Nahrání souboru ZIP, který jste vytvořili, když jste [zabalené aplikace](#package-application).  
+8. Nahrajte soubor ZIP, který jste vytvořili při balení aplikace.  
 9. Vyberte **žádost o certifikaci**. Tým certifikace společnosti Microsoft soubory zkontroluje a topologii certifikuje.
 
 ## <a name="next-steps"></a>Další postup

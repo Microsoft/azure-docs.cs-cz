@@ -1,5 +1,5 @@
 ---
-title: Výstup Azure Stream Analytics, vlastní blob dělení (Preview)
+title: Azure Stream Analytics, vlastní blob výstup dělení
 description: Tento článek popisuje vlastní vzorů cest data a času a vlastní atributy pole nebo funkce pro výstup úložiště objektů blob z úloh Azure Stream Analytics.
 services: stream-analytics
 author: mamccrea
@@ -7,16 +7,16 @@ ms.author: mamccrea
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 02/05/2019
+ms.date: 02/07/2019
 ms.custom: seodec18
-ms.openlocfilehash: 23f632ea2ca66f973192fdc01cd84c4d0be3a668
-ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
+ms.openlocfilehash: fc28ddd006e8a117dddd67a6d6668b9639dddec5
+ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55746519"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55765191"
 ---
-# <a name="azure-stream-analytics-custom-blob-output-partitioning-preview"></a>Výstup Azure Stream Analytics, vlastní blob dělení (Preview)
+# <a name="azure-stream-analytics-custom-blob-output-partitioning"></a>Azure Stream Analytics, vlastní blob výstup dělení
 
 Azure Stream Analytics podporuje dělení s vlastními poli nebo atributy a vlastní data a času vzorů cest výstupu vlastní objekt blob. 
 

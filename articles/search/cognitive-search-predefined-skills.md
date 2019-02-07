@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 05/01/2018
 ms.author: luisca
 ms.custom: seodec2018
-ms.openlocfilehash: bf840dc00f36ee19f2e76ead6e61ae2377b97167
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.openlocfilehash: eddbb41f346661e86c64b1dd703321f434c5bbb6
+ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 02/06/2019
-ms.locfileid: "55749105"
+ms.locfileid: "55770414"
 ---
 # <a name="predefined-skills-for-content-enrichment-azure-search"></a>Předdefinované dovednosti pro rozšiřování obsahu (Azure Search)
 
@@ -34,7 +34,7 @@ Několik dovednosti jsou flexibilní v co se používají, nebo vytvořit. Obecn
 |-------|-------------|
 | [Microsoft.Skills.Text.KeyPhraseSkill](cognitive-search-skill-keyphrases.md) | Tento dovednosti používá pretrained model rozpoznat důležité frází na základě umístění termín, jazykovou pravidel, blízkosti jiné podmínky a jak neobvyklé termín je v rámci zdrojová data. |
 | [Microsoft.Skills.Text.LanguageDetectionSkill](cognitive-search-skill-language-detection.md)  | Používá tento dovednosti pretrained model rozpoznat jazyk, který je použit (jedno ID jazyka v jednom dokumentu). V případě více jazyků používají v rámci stejné segmenty text, výstup je LCID převážně používá jazyk.|
-| [Microsoft.Skills.Text.MergerSkill](cognitive-search-skill-textmerger.md) | Konsoliduje text z kolekce polí do jednoho pole.  |
+| [Microsoft.Skills.Text.MergeSkill](cognitive-search-skill-textmerger.md) | Konsoliduje text z kolekce polí do jednoho pole.  |
 | [Microsoft.Skills.Text.EntityRecognitionSkill](cognitive-search-skill-entity-recognition.md) | Tato dovednosti pretrained modelu používá k vytvoření entity pro pevnou sadu kategorií: uživatelé, umístění, organizaci, e-mailem, adresy URL. pole data a času. |
 | [Microsoft.Skills.Text.SentimentSkill](cognitive-search-skill-sentiment.md)  | Tento dovednosti pomocí pretrained modelu na základě záznamu podle skóre mínění kladné nebo záporné. Je skóre mezi 0 a 1. Neutrální skóre dojde null případu nelze zjistit mínění, a pro text, který je považován za neutrální.  |
 | [Microsoft.Skills.Text.SplitSkill](cognitive-search-skill-textsplit.md) | Rozdělí text na stránky, takže můžete rozšiřovat nebo upravte obsah postupně. |

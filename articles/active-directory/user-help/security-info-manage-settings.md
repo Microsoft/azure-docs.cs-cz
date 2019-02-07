@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 07/30/2018
 ms.author: lizross
-ms.openlocfilehash: 36d1b4ef9501c94fe385c37f31ee7e8c9f57106e
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 80a78d12570e3da1371d2fc1cbb0270eb81fc6ce
+ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55197224"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55766839"
 ---
 # <a name="manage-your-security-info-preview"></a>Spravovat svoje bezpečnostní údaje (preview)
 
@@ -81,7 +81,7 @@ Tento článek pomůže vyřešit vaše bezpečnostní údaje, včetně dvoustup
 |Můžu dojde ke ztrátě mi na telefon nebo byla ukradena|Bohužel může dojít ztráty telefonu nebo jeho krádeže. V takovém případě důrazně doporučujeme nechat vaše organizace měla vědět tak, aby vaši pracovníci IT můžou resetovat hesla aplikací a zrušte všechny zapamatovaných zařízení ze seznamu důvěryhodných zařízení. Zapomenete důvěryhodných zařízeních můžete také pomocí následujících kroků v [spravovat vaše bezpečnostní údaje na ztracené nebo potenciálně napadeného zařízení](#manage-your-security-info-for-a-lost-or-potentially-compromised-device) oddílu.|
 |Zobrazilo se mi nové telefonní číslo|Existují dva způsoby, jak tento problém vyřešit. Můžete se přihlásit pomocí metody alternativní ověření, který nevyžaduje, aby vaše telefonní číslo, například e-mailu, nebo pokud to není možné, můžete kontaktovat vaše organizace IT oddělení společnosti a potom kliknul zrušte nastavení. Chcete-li přidat další metody ke svým bezpečnostním údajům, provedením kroků v [změnit své údaje](#change-your-info) oddílu.|
 |Výchozí metodu je nesprávný|V možnosti zabezpečení můžete aktualizovat vaše výchozí metoda. Pro konkrétní podrobnosti, můžete přejít na [změnit své údaje](#change-your-info) oddílu.|
-|Můžu doručována text nebo volání na mobilní zařízení.|Pokud v minulosti jste úspěšně přijata textů nebo telefonních hovorů na vaše mobilní zařízení, je tento problém nejpravděpodobnější s poskytovateli telefonní není váš účet. Ujistěte se, že máte dobré buňky signál a budete moct přijímat textové zprávy a telefonních hovorů. Můžete požádat o přítelem hovor nebo zprávu jako test.<br><br>Pokud se může úspěšně přijímat zprávy text a telefon, ale pořád ještě získali oznámení, můžete zkusit použít jinou metodu. Můžete přidat další metody ke svým bezpečnostním údajům podle postupu v [změnit své údaje](#change-your-info) oddílu. Pokud nemáte jinou metodu, chcete-li přidat, můžete obraťte na podporu společnosti a požádejte ho, aby zrušte nastavení, abyste mohli nastavit tak metody při příštím přihlášení.<br><br>Pokud máte problémy se často z důvodu chybné buňky příjem, doporučujeme že použít aplikaci Microsoft Authenticator na vašem mobilním zařízení. Aplikaci můžete vygenerovat náhodné zabezpečovací kódy, které používáte k přihlášení a tyto kódy nevyžadují žádné buňky signál nebo připojení k Internetu. Další informace o aplikaci Microsoft Authenticator, najdete v článku [Začínáme s aplikací Microsoft Authenticator](https://docs.microsoft.com/azure/multi-factor-authentication/end-user/microsoft-authenticator-app-how-to) článku.|
+|Můžu doručována text nebo volání na mobilní zařízení.|Pokud v minulosti jste úspěšně přijata textů nebo telefonních hovorů na vaše mobilní zařízení, je tento problém nejpravděpodobnější s poskytovateli telefonní není váš účet. Ujistěte se, že máte dobré buňky signál a budete moct přijímat textové zprávy a telefonních hovorů. Můžete požádat o přítelem hovor nebo zprávu jako test.<br><br>Pokud se může úspěšně přijímat zprávy text a telefon, ale pořád ještě získali oznámení, můžete zkusit použít jinou metodu. Můžete přidat další metody ke svým bezpečnostním údajům podle postupu v [změnit své údaje](#change-your-info) oddílu. Pokud nemáte jinou metodu, chcete-li přidat, můžete obraťte na podporu společnosti a požádejte ho, aby zrušte nastavení, abyste mohli nastavit tak metody při příštím přihlášení.<br><br>Pokud máte problémy se často z důvodu chybné buňky příjem, doporučujeme že použít aplikaci Microsoft Authenticator na vašem mobilním zařízení. Aplikaci můžete vygenerovat náhodné zabezpečovací kódy, které používáte k přihlášení a tyto kódy nevyžadují žádné buňky signál nebo připojení k Internetu. Další informace o aplikaci Microsoft Authenticator, najdete v článku [Začínáme s aplikací Microsoft Authenticator](https://docs.microsoft.com/azure/multi-factor-authentication/end-user/user-help-auth-app-download-install) článku.|
 |Žádnou z možností v této tabulce byl vyřešen problém|Pokud jste se pokusili tyto kroky pro řešení potíží, ale jsou stále narazíte na problémy. Obraťte se na svou firemní podporu, by měl mít vám pomůže.|
 
 ## <a name="next-steps"></a>Další postup

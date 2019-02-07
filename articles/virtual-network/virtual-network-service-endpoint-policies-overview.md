@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/18/2018
 ms.author: sumeet.mittal
-ms.openlocfilehash: 7a3a94e9759dfb3c525ffcf1e840d5bec18f4808
-ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
+ms.openlocfilehash: 6e5748f5a76ade9cc1bb91902eb0fddcec2a6daa
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54051307"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55812340"
 ---
 # <a name="virtual-network-service-endpoint-policies-preview"></a>Zásady koncových bodů služby Virtual Network (Preview)
 
@@ -154,7 +154,7 @@ Zásady koncových bodů služeb nepodporují centrální přihlašování. Info
 ### <a name="troubleshooting-scenarios"></a>Scénáře řešení potíží
 - Povolený přístup k účtům úložiště není uvedený v zásadách koncového bodu
   - Skupiny zabezpečení sítě můžou povolovat přístup k internetu nebo k účtům Azure Storage v jiných oblastech.
-  - Skupiny zabezpečení sítě by měly být nakonfigurovány tak, aby zakazovaly veškeré odchozí internetové přenosy a povolovaly jenom přenosy do určitých oblastí Azure Storage. Podrobné informace viz [Skupiny zabezpečení sítě](#network-security-groups).
+  - Skupiny zabezpečení sítě by měly být nakonfigurovány tak, aby zakazovaly veškeré odchozí internetové přenosy a povolovaly jenom přenosy do určitých oblastí Azure Storage. Podrobnosti najdete v tématu skupiny zabezpečení sítě.
 - Účty uvedené v zásadách koncových bodů mají zakázaný přístup
   - Přístup mohou blokovat skupiny zabezpečení sítě nebo filtry brány firewall.
   - Pokud odebrání nebo opětovné použití zásady vede ke ztrátě připojení:

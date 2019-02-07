@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 08/14/2018
 ms.author: alsin
-ms.openlocfilehash: 150147a0fe0fdfcf2e6c9f2b780587749af1ded0
-ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
+ms.openlocfilehash: e1013047bb66581e7f9d26854f2cd91655c8bd93
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48857903"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55810078"
 ---
 # <a name="use-serial-console-to-access-grub-and-single-user-mode"></a>Použít pro přístup k GRUB a Jednouživatelský režim konzoly sériového portu
 GRUB je součet spouštěcí zavaděč Unified. Z GRUB budete moci změnit konfiguraci spuštění pro spuštění do režimu jednoho uživatele, mimo jiné.
@@ -39,7 +39,7 @@ Můžete zajistit, že GRUB je povoleno na virtuálním počítači mohli do re�
 Restartování vašeho virtuálního počítače s otevřete okno konzoly sériového portu se provádí pomocí SysRq `'b'` příkaz Pokud [SysRq](./serial-console-nmi-sysrq.md) je povolená, nebo kliknutím na restartování tlačítko v okně Přehled (otevřít virtuální počítač na nové kartě prohlížeče restartovat bez zavření v okně konzoly sériového portu). Postupujte podle pokynů specifických distribuce níže se dozvíte, co můžete očekávat od GRUB po restartování.
 
 ## <a name="general-single-user-mode-access"></a>Obecné Jednouživatelský režim přístupu
-Ruční přístupu na Jednouživatelský režim může být nutné v situacích, kde nenakonfigurovali účet s ověřováním heslem. Je potřeba upravit konfigurace GRUB ručně vstoupit do režimu jednoho uživatele. Jakmile to uděláte, naleznete v tématu [použití Jednouživatelský režim na resetovat nebo přidáte heslo](#-Use-Single-User-Mode-to-reset-or-add-a-password) sdělil další pokyny.
+Ruční přístupu na Jednouživatelský režim může být nutné v situacích, kde nenakonfigurovali účet s ověřováním heslem. Je potřeba upravit konfigurace GRUB ručně vstoupit do režimu jednoho uživatele. Jakmile to uděláte, najdete v článku použití Jednouživatelský režim na resetovat nebo přidání hesla o další pokyny.
 
 V případech, kdy je virtuální počítač nelze spustit distribuce často automaticky vyřadí je v jednouživatelském režimu nebo nouzového režimu. Jiné, ale vyžadují další nastavení, předtím, než lze je přetáhnout do režimu jednoho uživatele nebo nouzové situace to automaticky (například nastavení kořenové heslo).
 
@@ -103,10 +103,10 @@ Pokud není projít výše uvedené kroky a povolit uživatel root, můžete st�
 
 ![](../media/virtual-machines-serial-console/virtual-machine-linux-serial-console-rhel-emergency-mount-no-root.gif)
 
-> Poznámka: Systémem pomocí výše uvedených pokynů vyřadí můžete do nouzový prostředí, tak můžete také provádět úlohy, jako jsou úpravy `fstab`. Obecně přijímané návrh je však k resetování kořenového hesla, který budete používat do režimu jednoho uživatele. 
+> Poznámka: Spuštění pomocí výše uvedených pokynů vyřadí můžete do nouzový prostředí, tak můžete také provádět úlohy, jako jsou úpravy `fstab`. Obecně přijímané návrh je však k resetování kořenového hesla, který budete používat do režimu jednoho uživatele. 
 
 
-## <a name="access-for-centos"></a>Přístup pro CentOS
+## <a name="access-for-centos"></a>Access for CentOS
 Mnohem jako je Red Hat Enterprise Linux, vyžaduje režimu jednoho uživatele v CentOS GRUB a uživatel root, aby byla povolená. 
 
 ### <a name="grub-access-in-centos"></a>GRUB přístup v CentOS
@@ -115,7 +115,7 @@ CentOS součástí GRUB povolené úprav. Pokud chcete zadat GRUB, restartu virt
 ### <a name="single-user-mode-in-centos"></a>Režimu jednoho uživatele v CentOS
 Postupujte podle pokynů pro RHEL výše pro povolení režimu jednoho uživatele v CentOS.
 
-## <a name="access-for-ubuntu"></a>Přístup k Ubuntu 
+## <a name="access-for-ubuntu"></a>Access for Ubuntu 
 Image Ubuntu nevyžadují kořenové heslo. Pokud systém spustí do režimu jednoho uživatele, můžete bez další přihlašovací údaje. 
 
 ### <a name="grub-access-in-ubuntu"></a>GRUB přístup v Ubuntu

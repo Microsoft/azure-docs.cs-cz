@@ -12,15 +12,15 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/10/2019
 ms.author: magoedte
-ms.openlocfilehash: e0f305d8200a6b78eb138d5a3c6d9cd99a095dbe
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.openlocfilehash: f9138ec06900f4a7f856cc90362d16496b7b4fed
+ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55486517"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55766008"
 ---
 # <a name="unify-multiple-azure-monitor-application-insights-resources"></a>Sjednocení několik prostředků Azure monitoru Application Insights 
-Tento článek popisuje, jak dotaz a zobrazit všechna data protokolů Application Insights aplikaci na jednom místě, i když se nachází v různých předplatných Azure, jako náhrada vyřazení Application Insights Connector.  
+Tento článek popisuje, jak dotaz a zobrazit všechna data protokolů Application Insights aplikaci na jednom místě, i když se nachází v různých předplatných Azure, jako náhrada vyřazení Application Insights Connector. Počet prostředků prostředky Application Insights, které mohou obsahovat v jediném dotazu je omezena na 100.  
 
 ## <a name="recommended-approach-to-query-multiple-application-insights-resources"></a>Doporučenému přístupu k dotazování více prostředky Application Insights 
 Výpis několika prostředky služby Application Insights v dotazu může být náročné a obtížné na správu. Místo toho můžete využít funkce rozdělte logiku dotazu z aplikací oborů.  

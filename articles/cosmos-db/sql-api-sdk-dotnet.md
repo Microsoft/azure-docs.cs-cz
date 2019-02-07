@@ -8,12 +8,12 @@ ms.devlang: dotnet
 ms.topic: reference
 ms.date: 03/09/2018
 ms.author: sngun
-ms.openlocfilehash: 470813b1a51db183476dd046dc102eb89d73debd
-ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
+ms.openlocfilehash: e9378fd1e7fd0d8c6b3f913ec3d8f629a2c3be37
+ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54354566"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55770682"
 ---
 # <a name="azure-cosmos-db-net-sdk-for-sql-api-download-and-release-notes"></a>Azure Cosmos DB .NET SDK pro rozhraní SQL API: Stáhněte si a poznámky k verzi
 > [!div class="op_single_selector"]
@@ -30,20 +30,14 @@ ms.locfileid: "54354566"
 > * [BulkExecutor – .NET](sql-api-sdk-bulk-executor-dot-net.md)
 > * [BulkExecutor – Java](sql-api-sdk-bulk-executor-java.md)
 
-<table>
-
-<tr><td>**Stažení sady SDK**</td><td>[NuGet](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB/)</td></tr>
-
-<tr><td>**Dokumentace k rozhraní API**</td><td>[Referenční dokumentace rozhraní API .NET](/dotnet/api/overview/azure/cosmosdb?view=azure-dotnet)</td></tr>
-
-<tr><td>**Ukázky**</td><td>[Ukázky kódu .NET](sql-api-dotnet-samples.md)</td></tr>
-
-<tr><td>**Začínáme**</td><td>[Začínáme s .NET SDK služby Azure Cosmos DB](sql-api-get-started.md)</td></tr>
-
-<tr><td>**Kurz vývoje webové aplikace**</td><td>[Vývoj webových aplikací pomocí služby Azure Cosmos DB](sql-api-dotnet-application.md)</td></tr>
-
-<tr><td>**Aktuální podporované architektury**</td><td>[Microsoft .NET Framework 4.5](https://www.microsoft.com/download/details.aspx?id=30653)</td></tr>
-</table></br>
+| |  |
+|---|---|
+|**Stažení sady SDK**|[NuGet](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB/)|
+|**Dokumentace k rozhraní API**|[Referenční dokumentace rozhraní API .NET](/dotnet/api/overview/azure/cosmosdb?view=azure-dotnet)|
+|**Ukázky**|[Ukázky kódu .NET](sql-api-dotnet-samples.md)|
+|**Začínáme**|[Začínáme s .NET SDK služby Azure Cosmos DB](sql-api-get-started.md)|
+|**Kurz vývoje webové aplikace**|[Vývoj webových aplikací pomocí služby Azure Cosmos DB](sql-api-dotnet-application.md)|
+|**Aktuální podporované architektury**|[Microsoft .NET Framework 4.5](https://www.microsoft.com/download/details.aspx?id=30653)|
 
 ## <a name="release-notes"></a>Poznámky k verzi
 

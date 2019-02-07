@@ -15,12 +15,12 @@ ms.date: 12/11/2018
 ms.author: mabrigg
 ms.reviewer: guanghu
 ms.lastreviewed: 12/11/2018
-ms.openlocfilehash: 331a71d4f807e1e596a91c1463064e3f6dcbd1e1
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 7d719ee6bdb8ce1f4131b474fe7602b492e69cd3
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55247030"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55810666"
 ---
 # <a name="deploy-azure-cognitive-services-to-azure-stack"></a>Nasazení služby Azure Cognitive Services k Azure Stack
 
@@ -144,7 +144,7 @@ Podrobnosti o klíčová pole:
 | ImageLocation | Určuje umístění konkrétní služby cognitive Services image kontejneru v ACR. Například služba pro rozpoznávání tváře: `aicpppe.azurecr.io/microsoft/cognitive-services-face` |
 | BillingURL |Adresa URL koncového bodu, které jste si poznamenali v kroku [vytvoření prostředků Azure](#create-azure-resources) |
 | ApiKey | Klíč předplatného jste si poznamenali v kroku [vytvoření prostředků Azure](#create-azure-resources) |
-| secretName | Název tajného kódu, který právě jste si poznamenali v kroku [vytvořit secrete získat přístup k registru kontejneru soukromého](#create-secrete-to-access-the-private-container-registry) |
+| secretName | Název tajného kódu, který jste právě jste si poznamenali v kroku vytvoření secrete získat přístup k registru kontejneru soukromého |
 
 ## <a name="deploy-the-cognitive-service"></a>Nasazení služby cognitive Services
 

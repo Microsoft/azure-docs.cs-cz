@@ -11,13 +11,13 @@ author: CarlRabeler
 ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
-ms.date: 01/25/2019
-ms.openlocfilehash: 5982fcee41dd8c99aaa781a8ff3cd55ff2489929
-ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
+ms.date: 02/06/2019
+ms.openlocfilehash: 3ee952f10cebe374767e0db4a592695eeb1b4417
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55511297"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55810061"
 ---
 # <a name="faq-about-azure-sql-hyperscale-databases"></a>Nejčastější dotazy týkající se databáze Azure SQL Hyperškálováním
 
@@ -222,7 +222,7 @@ Ano. Některé funkce služby Azure SQL Database nepodporuje Hyperškálovateln�
 
 Ano. Všechny existující technologie, které migrace můžete použít k migraci do hyperškálovatelný systém, včetně souboru BACPAC, transakční replikace, načítání dat logické. Viz také [Azure Database Migration Service](../dms/dms-overview.md).
 
-### <a name="what-is-my-downtown-during-migration-from-an-on-premises-or-virtual-machine-environment-to-hyperscale-and-how-can-i-minimize-it"></a>Co je Moje centru během migrace z místní nebo v prostředí virtuálního počítače na hyperškálovatelný systém a jak ho můžete minimalizovat
+### <a name="what-is-my-downtime-during-migration-from-an-on-premises-or-virtual-machine-environment-to-hyperscale-and-how-can-i-minimize-it"></a>Co je Moje prostoje během migrace z místní nebo v prostředí virtuálního počítače na hyperškálovatelný systém a jak ho můžete minimalizovat
 
 Výpadek je stejný jako výpadek při migraci databází do jediné databáze ve službě Azure SQL Database. Můžete použít [transakční replikace](replication-to-sql-database.md#data-migration-scenario
 ) minimalizovat prostoje migrace databází až po několik TB velikosti. Pro velmi rozsáhlé databáze (více než 10 TB), můžete zvážit k migraci dat pomocí ADF, Spark nebo jiné technologie pro přesun dat.

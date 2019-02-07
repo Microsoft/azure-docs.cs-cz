@@ -6,29 +6,16 @@ ms.topic: tutorial
 ms.date: 04/20/2018
 author: deborahc
 ms.author: dech
-ms.openlocfilehash: 559bdd479d02a8744f9b113c43c2c860d8218401
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: cbdc57489eb7ebd50e3ce7e2b4e0e4081aef8e27
+ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54038190"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55770380"
 ---
 # <a name="use-the-azure-cosmos-db-emulator-for-local-development-and-testing"></a>Použití emulátoru služby Azure Cosmos DB pro místní vývoj a testování
 
-<table>
-<tr>
-  <td><strong>Binární soubory</strong></td>
-  <td>[Stáhnout MSI](https://aka.ms/cosmosdb-emulator)</td>
-</tr>
-<tr>
-  <td><strong>Docker</strong></td>
-  <td>[Centrum Dockeru](https://hub.docker.com/r/microsoft/azure-cosmosdb-emulator/)</td>
-</tr>
-<tr>
-  <td><strong>Zdroj Dockeru</strong></td>
-  <td>[GitHub](https://github.com/Azure/azure-cosmos-db-emulator-docker)</td>
-</tr>
-</table>
+|**Binární soubory**|[stáhnout Instalační služby MSI](https://aka.ms/cosmosdb-emulator)|| **Docker**|[Docker Hubu](https://hub.docker.com/r/microsoft/azure-cosmosdb-emulator/)|| **Zdroj docker** | [Githubu](https://github.com/Azure/azure-cosmos-db-emulator-docker)|
 
 Emulátor služby Azure Cosmos DB zajistí místní prostředí, které emuluje službu Azure Cosmos DB pro účely vývoje. Pomocí emulátoru služby Azure Cosmos DB můžete vyvíjet a testovat aplikace místně bez vytváření předplatného Azure a bez jakýchkoli nákladů. Jakmile budete spokojeni s fungováním aplikace v emulátoru, můžete přejít na účet služby Azure Cosmos DB v cloudu.
 
@@ -162,133 +149,28 @@ Z umístění instalace můžete pomocí příkazového řádku spustit a zastav
 
 Pokud chcete zobrazit seznam možností, na příkazovém řádku zadejte `CosmosDB.Emulator.exe /?`.
 
-<table>
-<tr>
-  <td><strong>Možnost</strong></td>
-  <td><strong>Popis</strong></td>
-  <td><strong>Příkaz</strong></td>
-  <td><strong>Argumenty</strong></td>
-</tr>
-<tr>
-  <td>[Žádné argumenty]</td>
-  <td>Spustí emulátor služby Azure Cosmos DB s výchozím nastavením.</td>
-  <td>CosmosDB.Emulator.exe</td>
-  <td></td>
-</tr>
-<tr>
-  <td>[Nápověda]</td>
-  <td>Zobrazí seznam podporovaných argumentů příkazového řádku.</td>
-  <td>CosmosDB.Emulator.exe /?</td>
-  <td></td>
-</tr>
-<tr>
-  <td>GetStatus</td>
-  <td>Získá stav emulátoru služby Azure Cosmos DB. Stav je indikován ukončovací kód: 1 = od, 2 = spuštěný, 3 = zastavena. Záporný ukončovací kód označuje, že došlo k chybě. Žádný jiný výstup neexistuje.</td>
-  <td>CosmosDB.Emulator.exe /GetStatus</td>
-  <td></td>
-<tr>
-  <td>Shutdown</td>
-  <td>Ukončí emulátor služby Azure Cosmos DB.</td>
-  <td>CosmosDB.Emulator.exe /Shutdown</td>
-  <td></td>
-</tr>
-<tr>
-  <td>DataPath</td>
-  <td>Určuje cestu, do které chcete uložit datové soubory. Výchozí hodnota je %LocalAppdata%\CosmosDBEmulator.</td>
-  <td>CosmosDB.Emulator.exe /DataPath=&lt;cesta k datům&gt;</td>
-  <td>&lt;DataPath&gt;: Přístupná cesta</td>
-</tr>
-<tr>
-  <td>Port</td>
-  <td>Určuje číslo portu pro emulátor. Výchozí hodnota je 8081.</td>
-  <td>CosmosDB.Emulator.exe /Port=&lt;port&gt;</td>
-  <td>&lt;Port&gt;: Jeden port číslo</td>
-</tr>
-<tr>
-  <td>MongoPort</td>
-  <td>Určuje číslo portu, který chcete použít pro rozhraní API kompatibility MongoDB. Výchozí hodnota je 10255.</td>
-  <td>CosmosDB.Emulator.exe /MongoPort=&lt;mongo port&gt;</td>
-  <td>&lt;mongoport&gt;: Jeden port číslo</td>
-</tr>
-<tr>
-  <td>DirectPorts</td>
-  <td>Určuje porty, které chcete použít pro přímé připojení. Výchozí hodnoty jsou 10251,10252,10253,10254.</td>
-  <td>CosmosDB.Emulator.exe /DirectPorts:&lt;přímé porty&gt;</td>
-  <td>&lt;directports&gt;: Čárkami oddělený seznam portů 4</td>
-</tr>
-<tr>
-  <td>Klíč</td>
-  <td>Autorizační klíč pro emulátor. Klíč musí být 64bajtový vektor s kódováním base-64.</td>
-  <td>CosmosDB.Emulator.exe /Key:&lt;klíč&gt;</td>
-  <td>&lt;Klíč&gt;: Klíč musí být v kódování base-64 vektoru 64 bajtů</td>
-</tr>
-<tr>
-  <td>EnableRateLimiting</td>
-  <td>Určuje, že je povoleno chování omezující četnost požadavků.</td>
-  <td>CosmosDB.Emulator.exe /EnableRateLimiting</td>
-  <td></td>
-</tr>
-<tr>
-  <td>DisableRateLimiting</td>
-  <td>Určuje, že je zakázáno chování omezující četnost požadavků.</td>
-  <td>CosmosDB.Emulator.exe /DisableRateLimiting</td>
-  <td></td>
-</tr>
-<tr>
-  <td>NoUI</td>
-  <td>Nezobrazuje uživatelské rozhraní emulátoru.</td>
-  <td>CosmosDB.Emulator.exe /NoUI</td>
-  <td></td>
-</tr>
-<tr>
-  <td>NoExplorer</td>
-  <td>Nezobrazuje Průzkumníka dat při spuštění.</td>
-  <td>CosmosDB.Emulator.exe /NoExplorer</td>
-  <td></td>
-</tr>
-<tr>
-  <td>PartitionCount</td>
-  <td>Určuje maximální počet dělených kolekcí. Další informace získáte v části [Změna počtu kolekcí](#set-partitioncount).</td>
-  <td>CosmosDB.Emulator.exe /PartitionCount=&lt;počet oddílů&gt;</td>
-  <td>&lt;partitioncount&gt;: Maximální počet povolených jednoho oddílu kolekce. Výchozí hodnota je 25. Maximální povolený počet je 250.</td>
-</tr>
-<tr>
-  <td>DefaultPartitionCount</td>
-  <td>Určuje výchozí počet oddílů pro dělenou kolekci.</td>
-  <td>CosmosDB.Emulator.exe /DefaultPartitionCount=&lt;výchozí počet oddílů&gt;</td>
-  <td>&lt;výchozí počet oddílů&gt;: výchozí hodnota je 25.</td>
-</tr>
-<tr>
-  <td>AllowNetworkAccess</td>
-  <td>Povolí přístup k emulátoru přes síť. Pokud chcete povolit přístup k síti, je nutné předat taky možnosti /Key =&lt;řetězec_klíče&gt; nebo/KeyFile =&lt;název_souboru&gt;.</td>
-  <td>CosmosDB.Emulator.exe /AllowNetworkAccess /Key=&lt;řetězec_klíče&gt;<br><br>nebo<br><br>CosmosDB.Emulator.exe /AllowNetworkAccess /KeyFile=&lt;název_souboru&gt;</td>
-  <td></td>
-</tr>
-<tr>
-  <td>NoFirewall</td>
-  <td>Při použití možnosti /AllowNetworkAccess nejsou upravována pravidla brány firewall.</td>
-  <td>CosmosDB.Emulator.exe /NoFirewall</td>
-  <td></td>
-</tr>
-<tr>
-  <td>GenKeyFile</td>
-  <td>Vygeneruje nový autorizační klíč a uloží ho do zadaného souboru. Generovaný klíč lze použít s možností /Key nebo/KeyFile.</td>
-  <td>CosmosDB.Emulator.exe /GenKeyFile =&lt;cestu k souboru klíče&gt;</td>
-  <td></td>
-</tr>
-<tr>
-  <td>Konzistence</td>
-  <td>Nastaví výchozí úroveň konzistence pro účet.</td>
-  <td>CosmosDB.Emulator.exe /Consistency=&lt;konzistence&gt;</td>
-  <td>&lt;Konzistence&gt;: Hodnota musí být jedna z následujících [úrovně konzistence](consistency-levels.md): Relace, silné, konečný výsledek, nebo BoundedStaleness. Výchozí hodnota je Session.</td>
-</tr>
-<tr>
-  <td>?</td>
-  <td>Zobrazí zprávu nápovědy.</td>
-  <td></td>
-  <td></td>
-</tr>
-</table>
+|**Možnost** | **Popis** | **Příkaz**| **Argumenty**|
+|---|---|---|---|
+|[Žádné argumenty] | Spustí emulátor služby Azure Cosmos DB s výchozím nastavením. |CosmosDB.Emulator.exe| |
+|[Nápověda] |Zobrazí seznam podporovaných argumentů příkazového řádku.|CosmosDB.Emulator.exe /? | |
+| GetStatus |Získá stav emulátoru služby Azure Cosmos DB. Stav je indikován ukončovací kód: 1 = od, 2 = spuštěný, 3 = zastavena. Záporný ukončovací kód označuje, že došlo k chybě. Žádný jiný výstup neexistuje. | CosmosDB.Emulator.exe /GetStatus| |
+| Shutdown| Ukončí emulátor služby Azure Cosmos DB.| CosmosDB.Emulator.exe /Shutdown | |
+|DataPath | Určuje cestu, do které chcete uložit datové soubory. Výchozí hodnota je %LocalAppdata%\CosmosDBEmulator. | CosmosDB.Emulator.exe /DataPath=\<cesta k datům\> | \<DataPath\>: Přístupná cesta |
+|Port | Určuje číslo portu pro emulátor. Výchozí hodnota je 8081. |CosmosDB.Emulator.exe /Port=\<port\> | \<Port\>: Jeden port číslo |
+| MongoPort | Určuje číslo portu, který chcete použít pro rozhraní API kompatibility MongoDB. Výchozí hodnota je 10255. |CosmosDB.Emulator.exe /MongoPort= \<mongoport\>|\<mongoport\>: Jeden port číslo|
+| DirectPorts |Určuje porty, které chcete použít pro přímé připojení. Výchozí hodnoty jsou 10251,10252,10253,10254. | CosmosDB.Emulator.exe /DirectPorts:\<přímé porty\> | \<directports\>: Čárkami oddělený seznam portů 4 |
+| Klíč |Autorizační klíč pro emulátor. Klíč musí být 64bajtový vektor s kódováním base-64. | CosmosDB.Emulator.exe /Key:\<klíč\> | \<Klíč\>: Klíč musí být v kódování base-64 vektoru 64 bajtů|
+| EnableRateLimiting | Určuje, že je povoleno chování omezující četnost požadavků. |CosmosDB.Emulator.exe /EnableRateLimiting | |
+| DisableRateLimiting |Určuje, že je zakázáno chování omezující četnost požadavků. |CosmosDB.Emulator.exe /DisableRateLimiting | |
+| NoUI | Nezobrazuje uživatelské rozhraní emulátoru. | CosmosDB.Emulator.exe /NoUI | |
+| NoExplorer | Nezobrazuje Průzkumníka dat při spuštění. |CosmosDB.Emulator.exe /NoExplorer | | 
+| PartitionCount | Určuje maximální počet dělených kolekcí. Další informace získáte v části [Změna počtu kolekcí](#set-partitioncount). | CosmosDB.Emulator.exe /PartitionCount=\<počet oddílů\> | \<partitioncount\>: Maximální počet povolených jednoho oddílu kolekce. Výchozí hodnota je 25. Maximální povolený počet je 250.|
+| DefaultPartitionCount| Určuje výchozí počet oddílů pro dělenou kolekci. | CosmosDB.Emulator.exe /DefaultPartitionCount=\<výchozí počet oddílů\> | \<výchozí počet oddílů\>: výchozí hodnota je 25.|
+| AllowNetworkAccess | Povolí přístup k emulátoru přes síť. Pokud chcete povolit přístup k síti, je nutné předat taky možnosti /Key =\<řetězec_klíče\> nebo/KeyFile =\<název_souboru\>. | CosmosDB.Emulator.exe AllowNetworkAccess uveden =\<key_string\> nebo/keyfile /AllowNetworkAccess CosmosDB.Emulator.exe =\<název_souboru\>| |
+| NoFirewall | Při použití možnosti /AllowNetworkAccess nejsou upravována pravidla brány firewall. |CosmosDB.Emulator.exe /NoFirewall | |
+| GenKeyFile | Vygeneruje nový autorizační klíč a uloží ho do zadaného souboru. Generovaný klíč lze použít s možností /Key nebo/KeyFile. | CosmosDB.Emulator.exe /GenKeyFile =\<cestu k souboru klíče\> | |
+| Konzistence | Nastaví výchozí úroveň konzistence pro účet. | CosmosDB.Emulator.exe /Consistency=\<konzistence\> | \<Konzistence\>: Hodnota musí být jedna z následujících [úrovně konzistence](consistency-levels.md): Relace, silné, konečný výsledek, nebo BoundedStaleness. Výchozí hodnota je Session. |
+| ? | Zobrazí zprávu nápovědy.| | |
 
 ## <a id="set-partitioncount"></a>Změna počtu kolekcí
 

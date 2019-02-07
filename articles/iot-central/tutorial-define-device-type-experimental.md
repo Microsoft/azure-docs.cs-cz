@@ -9,12 +9,12 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: philmea
-ms.openlocfilehash: 02f09363e9f9a014ceaf63f375c4e417f8c09232
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
+ms.openlocfilehash: 2506137e03e8677827bb1e2a3914ee10ae24f368
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55666407"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55810112"
 ---
 # <a name="tutorial-define-a-new-device-type-in-your-azure-iot-central-application-new-ui-design"></a>Kurz: Definujte nový typ zařízení v aplikaci Azure IoT Central (návrh nové uživatelské rozhraní)
 
@@ -47,7 +47,7 @@ V tomto kurzu se naučíte:
 
 ## <a name="prerequisites"></a>Požadavky
 
-K dokončení tohoto kurzu potřebujete aplikaci Azure IoT Central. Pokud jste dokončili rychlý start [Vytvoření aplikace Azure IoT Central](quick-deploy-iot-central.md?toc=/azure/iot-central-experimental/toc.json&bc=/azure/iot-central-experimental/breadcrumb/toc.json), můžete znovu využít aplikaci, kterou jste v tomto rychlém startu vytvořili. Jinak použijte následující postup a vytvořte prázdnou aplikaci Azure IoT Central:
+K dokončení tohoto kurzu potřebujete aplikaci Azure IoT Central. Pokud jste dokončili rychlý start [Vytvoření aplikace Azure IoT Central](quick-deploy-iot-central-experimental.md?toc=/azure/iot-central-experimental/toc.json&bc=/azure/iot-central-experimental/breadcrumb/toc.json), můžete znovu využít aplikaci, kterou jste v tomto rychlém startu vytvořili. Jinak použijte následující postup a vytvořte prázdnou aplikaci Azure IoT Central:
 
 1. Přejděte na stránku [správce aplikací](https://aka.ms/iotcentral) Azure IoT Central.
 
@@ -63,7 +63,7 @@ K dokončení tohoto kurzu potřebujete aplikaci Azure IoT Central. Pokud jste d
     
     * Zvolte **Trial** (Zkušební verze). K vytvoření zkušební verze aplikace nepotřebujete předplatné Azure.
     
-       Další informace o adresářích a předplatných najdete v [rychlém startu k vytvoření aplikace](quick-deploy-iot-central.md?toc=/azure/iot-central-experimental/toc.json&bc=/azure/iot-central-experimental/breadcrumb/toc.json).
+       Další informace o adresářích a předplatných najdete v [rychlém startu k vytvoření aplikace](quick-deploy-iot-central-experimental.md?toc=/azure/iot-central-experimental/toc.json&bc=/azure/iot-central-experimental/breadcrumb/toc.json).
     
     * Zvolte **Vlastní aplikace**.
     
@@ -73,7 +73,7 @@ K dokončení tohoto kurzu potřebujete aplikaci Azure IoT Central. Pokud jste d
 
     ![Stránka vytvoření aplikace Azure IoT Central](./media/tutorial-define-device-type-experimental/iotcentralcreate.png)
 
-    Další informace najdete v [rychlém startu k vytvoření aplikace](quick-deploy-iot-central.md?toc=/azure/iot-central-experimental/toc.json&bc=/azure/iot-central-experimental/breadcrumb/toc.json).
+    Další informace najdete v [rychlém startu k vytvoření aplikace](quick-deploy-iot-central-experimental.md?toc=/azure/iot-central-experimental/toc.json&bc=/azure/iot-central-experimental/breadcrumb/toc.json).
 
 ## <a name="create-a-new-custom-device-template"></a>Vytvoření nové vlastní šablony zařízení
 
@@ -236,7 +236,7 @@ Nastavení, vlastnosti a příkazy jsou různé hodnoty definované v šabloně 
 
     * _Vlastnosti zařízení_ použijete k tomu, abyste zařízení umožnili odeslat hodnoty vlastností do vaší aplikace. Tyto vlastnosti může měnit jenom zařízení. Pro operátora jsou vlastnosti zařízení jen pro čtení. V tomto scénáři připojené klimatizace jsou verze firmwaru a sériové číslo zařízení vlastnosti zařízení odesílané zařízením.
     
-    Další informace najdete v tématu [vlastnosti](howto-set-up-template.md#properties) v Průvodci s postupy o nastavení zařízení šablony.
+    Další informace najdete v tématu [vlastnosti](howto-set-up-template-experimental.md#properties) v Průvodci s postupy o nastavení zařízení šablony.
 
 * _Příkazy_ použijete ke vzdálené správě zařízení z aplikace. Příkazy můžete spustit přímo na zařízení z cloudu a zařízení tak ovládat. Operátor například může spouštět příkazy, jako je třeba příkaz restartování, a okamžitě zařízení restartovat.
 

@@ -8,12 +8,12 @@ manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
 ms.date: 01/28/2019
-ms.openlocfilehash: 705d23a93b25c513d413f2115c47d52ff6ef2bac
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: 9fa711c86e3ef7f05e87504905ec642808d8f601
+ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55229500"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55770278"
 ---
 # <a name="deploy-the-ansible-solution-template-for-azure-to-centos"></a>Nasazení šablony Ansible řešení pro Azure a CentOS
 Ansible šablona řešení pro Azure slouží ke konfiguraci Ansible instance virtuálního počítače CentOS spolu s Ansible a sada nástrojů, které jsou nakonfigurovány pro práci s Azure. Mezi tyto nástroje patří:
@@ -53,7 +53,7 @@ Ansible šablona řešení pro Azure slouží ke konfiguraci Ansible instance vi
 1. V **další nastavení** kartu, zadejte požadované informace:
 
     - **Velikost** – Azure portal výchozí hodnota je standardní velikosti. Pokud chcete zadat jinou velikost, který přizpůsobuje váš konkrétní scénář, vyberte šipku a zobrazte seznam různých velikostí.
-    - **Velikost disku virtuálního počítače** – vyberte buď **SSD** (Premium Solid-State Drive) nebo **HDD** (pevný disk). Pro účely ukázky **SSD** je vybrán pro jeho výhody výkonu. Další informace o všech těchto typů diskové úložiště, naleznete v tématu v následujících článcích:
+    - **Typ disku virtuálního počítače** – vyberte buď **SSD** (Premium Solid-State Drive) nebo **HDD** (pevný disk). Pro účely ukázky **SSD** je vybrán pro jeho výhody výkonu. Další informace o všech těchto typů diskové úložiště, naleznete v tématu v následujících článcích:
         - [Vysoce výkonná služba Premium Storage a spravované disky pro virtuální počítače](/azure/virtual-machines/windows/premium-storage)
         - [Standardní spravované disky SSD pro úlohy Azure virtuálních počítačů](/azure/virtual-machines/windows/disks-standard-ssd)
     - **Veřejná IP adresa** – toto nastavení zadat, pokud chcete ke komunikaci s virtuálním počítačem mimo virtuální počítač. Výchozí hodnota je novou veřejnou IP adresu, která má název `ansible-pip`. Pokud chcete zadat jinou IP adresu, vyberte šipku určit atributy – například název, skladovou Položku a přiřazení této IP adresy. 

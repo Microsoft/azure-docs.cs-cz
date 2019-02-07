@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 07/13/2017
 ms.subservice: hybrid
 ms.author: billmath
-ms.openlocfilehash: 8ac8f2fe62898cdeb386fd3a8275fec1712c1728
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.openlocfilehash: 5e8d45a9bf9fdffc824994238add2b8541a878a5
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55491548"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55812715"
 ---
 # <a name="azure-ad-connect-sync-understanding-declarative-provisioning"></a>Synchronizace Azure AD Connect: Principy deklarativního zřizování
 Toto téma popisuje model konfigurace ve službě Azure AD Connect. Model se nazývá deklarativní zřizování a umožní vám provádět změny s lehkostí a elegancí konfigurace. Mnoho věcí, které jsou popsané v tomto tématu jsou rozšířené a nevyžaduje se pro většinu scénářů zákazníků.
@@ -37,7 +37,7 @@ Tento kanál obsahuje několik různých modulů. Každý z nich je zodpovědná
 * Zdroj, zdrojový objekt
 * [Obor](#scope), najde všechna synchronizační pravidla, které jsou v oboru
 * [Připojte se k](#join), určuje vztah mezi connector space a metaverse
-* [Transformace](#transform), jak by měl být atributy transformuje vypočte a flow
+* Transformace, jak by měl být atributy transformuje vypočte a flow
 * [Priorita](#precedence), řeší konfliktní atribut příspěvky
 * Cíl, cílový objekt
 

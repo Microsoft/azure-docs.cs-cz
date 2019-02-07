@@ -7,14 +7,14 @@ ms.author: jeanb
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 01/19/2019
+ms.date: 02/05/2019
 ms.custom: seodec18
-ms.openlocfilehash: 4c0d32a201da5befbc8b68148f0b051e283ec289
-ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
+ms.openlocfilehash: 52db8217cc1e1f84d25ab896be9b42db3bf6bd81
+ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/19/2019
-ms.locfileid: "54412383"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55769477"
 ---
 # <a name="set-up-alerts-for-azure-stream-analytics-jobs"></a>Nastavení upozornění pro úlohy Azure Stream Analytics
 
@@ -46,17 +46,17 @@ Následující příklad ukazuje, jak nastavit upozornění, pokud vaše úloha 
 
    ![Nastavení oznámení pro úlohu Azure Stream Analytics](./media/stream-analytics-set-up-alerts/stream-analytics-add-group-email-action.png)
 
-7. **Prostředků**, **PODMÍNKU**, a **skupiny akcí** mít položku.
+7. **Prostředků**, **PODMÍNKU**, a **skupiny akcí** mít položku. Všimněte si, že pro výstrahy, která se aktivuje, definované podmínky nutné splnit. Například lze změřit průměrnou hodnotu metriky za posledních 15 minut každých 5 minut.
 
    ![Vytvořit pravidlo upozornění Stream Analytics](./media/stream-analytics-set-up-alerts/stream-analytics-create-alert-rule-2.png)
 
    Přidat **název pravidla upozornění**, **popis**a vaše **skupiny prostředků** k **podrobnosti VÝSTRAHY** a klikněte na tlačítko **vytvořit upozornění pravidlo** a vytvořte pravidlo pro svou úlohu Stream Analytics.
 
    ![Vytvořit pravidlo upozornění Stream Analytics](./media/stream-analytics-set-up-alerts/stream-analytics-create-alert-rule.png)
-
+   
 ## <a name="scenarios-to-monitor"></a>Scénáře monitorování
 
-Tyto výstrahy se doporučují pro monitorování výkonu vaší úlohy Stream Analytics. Tyto metriky vyhodnocení každou minutu po dobu posledních 5 minut. Pokud vaše úloha vykazuje potíže s výkonem, vám pomůže využitím paralelizace dotazů byl více optimální a zkuste zvýšit počet jednotek streamování.
+Tyto výstrahy se doporučují pro monitorování výkonu vaší úlohy Stream Analytics. Tyto metriky vyhodnocení každou minutu po dobu posledních 5 minut.
 
 |Metrika|Podmínka|Časová agregace|Prahová hodnota|Nápravná opatření|
 |-|-|-|-|-|

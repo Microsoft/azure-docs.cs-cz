@@ -13,12 +13,12 @@ ms.subservice: user-help
 ms.topic: conceptual
 ms.date: 05/15/2017
 ms.author: lizross
-ms.openlocfilehash: 6a5a2fee11d785c7513b6c1d1e66bd8b80d80292
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.openlocfilehash: 9fd7a3c03c72a63f4163f85ac41248e200397206
+ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 02/06/2019
-ms.locfileid: "55749708"
+ms.locfileid: "55770716"
 ---
 # <a name="set-up-my-account-for-two-step-verification"></a>Nastavit účtu pro dvoustupňové ověřování.
 Dvoustupňové ověření je krok dodatečné zabezpečení, která pomáhá chránit váš účet kvůli tomu je těžší jinými lidmi, kteří možnost proniknout. Pokud čtete tento článek, pravděpodobně máte e-mailu ze svého pracovního nebo školního správce o ověřování službou Multi-Factor Authentication. Nebo možná jste zkoušeli přihlásit a zpráva s výzvou k nastavení dalšího ověření zabezpečení. Pokud je to tento případ **nemůžete se přihlásit před dokončením procesu automatické registrace**.
@@ -106,4 +106,4 @@ Pokud chcete přidat účet do mobilní aplikace ručně, namísto použití čt
 ## <a name="next-steps"></a>Další postup
 * Změňte upřednostňované možnosti a [spravovat nastavení pro dvoustupňové ověřování.](multi-factor-authentication-end-user-manage-settings.md)
 * Nastavit [hesla aplikací](multi-factor-authentication-end-user-app-passwords.md) nativní pro aplikace pro zařízení, ve kterých se dvoustupňové ověřování.
-* Podívejte se [aplikaci Microsoft Authenticator](microsoft-authenticator-app-how-to.md) rychlé, zabezpečené ověřování i v případě, že nemáte služby buňky.
+* Podívejte se [aplikaci Microsoft Authenticator](user-help-auth-app-download-install.md) rychlé, zabezpečené ověřování i v případě, že nemáte služby buňky.

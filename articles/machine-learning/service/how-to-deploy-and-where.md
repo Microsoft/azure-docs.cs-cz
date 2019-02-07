@@ -11,16 +11,16 @@ author: aashishb
 ms.reviewer: larryfr
 ms.date: 12/07/2018
 ms.custom: seodec18
-ms.openlocfilehash: a32cb694a18f8fff937f647804659efb71be415e
-ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
+ms.openlocfilehash: caafd5ac43ca94f8b01298b4e18e48065b7001b9
+ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55745713"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55766618"
 ---
 # <a name="deploy-models-with-the-azure-machine-learning-service"></a>Nasazujte modely pomocí služby Azure Machine Learning
 
-Služby Azure Machine Learning poskytuje několik způsobů, jak můžete nasadit trénovaného modelu pomocí sady SDK. V tomto dokumentu zjistěte, jak model nasadit jako webovou službu v cloudu Azure nebo na hraničních zařízeních IoT.
+Služby Azure Machine Learning poskytuje několik způsobů, jak můžete nasadit trénovaného modelu pomocí sady SDK. V tomto dokumentu zjistěte, jak model nasadit jako webovou službu v cloudu Azure nebo do zařízení IoT Edge.
 
 > [!IMPORTANT]
 > Nasazení modelu jako webové služby se momentálně nepodporuje prostředků mezi zdroji (CORS) pro sdílení obsahu.
@@ -119,7 +119,7 @@ Spuštění skriptu přijímá data odeslaná do nasazené bitové kopie a před
 
 #### <a name="working-with-json-data"></a>Práce s daty JSON
 
-Tady je ukázkový skript, který přijímá a vrací JSON data. `run` Funkce transformuje data z JSON do formátu, očekává, že model a potom transformuje před jeho vrácením odpovědi do formátu JSON:
+Následující ukázkový skript přijímá a vrací JSON data. `run` Funkce transformuje data z JSON do formátu, očekává, že model a potom transformuje před jeho vrácením odpovědi do formátu JSON:
 
 ```python
 # import things required by this script
@@ -149,7 +149,7 @@ def run(raw_data):
 
 #### <a name="working-with-binary-data"></a>Práce s binárními daty
 
-Pokud váš model přijímá __binární data__, použijte `AMLRequest`, `AMLResponse`, a `rawhttp`. Následuje příklad skriptu, který přijímá binárních dat a vrátí obrácený bajtů pro požadavky POST. Pro požadavky GET vrátí úplnou adresu URL v těle odpovědi:
+Pokud váš model přijímá __binární data__, použijte `AMLRequest`, `AMLResponse`, a `rawhttp`. Následující ukázkový skript přijímá binárních dat a vrátí obrácený bajtů pro požadavky POST. Pro požadavky GET vrátí úplnou adresu URL v těle odpovědi:
 
 ```python
 from azureml.contrib.services.aml_request  import AMLRequest, rawhttp
@@ -244,9 +244,6 @@ Pokud chcete nasadit do služby Azure Container Instances, postupujte následovn
 
     **Časový odhad**: Přibližně 3 minuty.
 
-    > [!TIP]
-    > Pokud nejsou chyby během nasazení, použijte `service.get_logs()` k zobrazení protokolů služby. Zaznamenané informace může ukazovat na příčinu chyby.
-
 Další informace najdete v tématu v referenční dokumentaci [AciWebservice](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.aciwebservice?view=azure-ml-py) a [webová služba](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.webservice?view=azure-ml-py) třídy.
 
 ### <a id="aks"></a> Nasazení do služby Azure Kubernetes
@@ -334,9 +331,6 @@ print(service.state)
 
 **Časový odhad**: Přibližně 3 minuty.
 
-> [!TIP]
-> Pokud nejsou chyby během nasazení, použijte `service.get_logs()` k zobrazení protokolů služby. Zaznamenané informace může ukazovat na příčinu chyby.
-
 Další informace najdete v tématu v referenční dokumentaci [AksWebservice](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.akswebservice?view=azure-ml-py) a [webová služba](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.webservice.webservice?view=azure-ml-py) třídy.
 
 ### <a id="fpga"></a> Nasazení do pole programmable gate Array (FPGA)
@@ -371,7 +365,7 @@ sudo ./createNregister <The Azure subscriptionID you want to use> <Resourcegroup
 
 Uložit výsledný řetězec připojení po "cs": "{zkopírovat tento řetězec}".
 
-Inicializovat zařízení stažením [tento skript](https://raw.githubusercontent.com/Azure/ai-toolkit-iot-edge/master/amliotedge/installIoTEdge) do UbuntuX64 IoT hraničního uzlu nebo DSVM spuštěním následujících příkazů:
+Inicializovat zařízení stažením [tento skript](https://raw.githubusercontent.com/Azure/ai-toolkit-iot-edge/master/amliotedge/installIoTEdge) do UbuntuX64 IoT Edge uzlu nebo DSVM spuštěním následujících příkazů:
 
 ```bash
 ssh <yourusername>@<yourdeviceip>
@@ -382,7 +376,7 @@ sudo ./installIoTEdge
 
 IoT Edge uzel je připraven přijmout připojovací řetězec služby IoT hub. Vyhledejte řádek ```device_connection_string:``` a vložte připojovací řetězec z výše mezi uvozovky.
 
-Můžete také zjistěte, jak zaregistrovat zařízení a nainstalovat modul runtime IoT krok za krokem podle [rychlý start: Nasazení prvního modulu IoT Edge do zařízení Linux x64](../../iot-edge/quickstart-linux.md) dokumentu.
+Můžete také zjistěte, jak zaregistrovat zařízení a nainstalovat modul runtime IoT podle [rychlý start: Nasazení prvního modulu IoT Edge do zařízení Linux x64](../../iot-edge/quickstart-linux.md) dokumentu.
 
 
 #### <a name="get-the-container-registry-credentials"></a>Získání přihlašovacích údajů registru kontejneru
@@ -469,7 +463,7 @@ Webové služby je rozhraní REST API, abyste mohli vytvořit klientských aplik
 
 ## <a id="update"></a> Aktualizovat webovou službu
 
-Pokud chcete aktualizovat webovou službu, použijte `update` metody. Následující kód ukazuje, jak aktualizovat webovou službu, která používá novou bitovou kopii:
+Když vytvoříte novou bitovou kopii, musí musíte ručně aktualizovat každou službu, kterou chcete použít novou bitovou kopii. Pokud chcete aktualizovat webovou službu, použijte `update` metody. Následující kód ukazuje, jak aktualizovat webovou službu, která používá novou bitovou kopii:
 
 ```python
 from azureml.core.webservice import Webservice
@@ -487,9 +481,6 @@ service.update(image = new_image)
 print(service.state)
 ```
 
-> [!NOTE]
-> Když aktualizujete bitovou kopii, webová služba se neaktualizuje automaticky. Každá služba, kterou chcete použít novou bitovou kopii je nutné ručně aktualizovat.
-
 Další informace najdete v tématu v referenční dokumentaci [webová služba](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice(class)?view=azure-ml-py) třídy.
 
 ## <a name="clean-up"></a>Vyčištění
@@ -501,6 +492,19 @@ Chcete-li odstranit bitovou kopii, použijte `image.delete()`.
 Chcete-li odstranit registrovaný model, použijte `model.delete()`.
 
 Další informace najdete v tématu v referenční dokumentaci [WebService.delete()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice(class)?view=azure-ml-py#delete--), [Image.delete()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.image.image(class)?view=azure-ml-py#delete--), a [Model.delete()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py#delete--).
+
+## <a name="troubleshooting"></a>Řešení potíží
+
+* __Pokud se vyskytnou chyby během nasazení__, použijte `service.get_logs()` k zobrazení protokolů služby. Zaznamenané informace může ukazovat na příčinu chyby.
+
+* Tyto protokoly mohou obsahovat chybu, která dává pokyn k __nastavení úrovně protokolování ladění__. Pokud chcete nastavit úroveň protokolování, přidejte následující řádky do hodnoticí skript, vytvořte image a pak vytvořit službu pomocí bitové kopie:
+
+    ```python
+    import logging
+    logging.basicConfig(level=logging.DEBUG)
+    ```
+
+    Tato změna umožňuje dodatečné protokolování a může vrátit další informace o Proč dochází k chybě.
 
 ## <a name="next-steps"></a>Další postup
 

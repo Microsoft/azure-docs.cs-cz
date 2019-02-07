@@ -4,7 +4,7 @@ description: Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: daveba
+manager: mtillman
 ms.reviewer: barbkess
 ms.assetid: 38a6ca75-7fd0-4cdc-9b9f-fae080c5a016
 ms.service: Azure-Active-Directory
@@ -12,14 +12,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 01/02/2019
+ms.date: 01/04/2019
 ms.author: jeedes
-ms.openlocfilehash: 4705bb8c93381a2487ba94f9dfe3a7e8820f2fd9
-ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
+ms.openlocfilehash: dd413f9a7eba60fd72e7cc29f44f49b72eaaf806
+ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/25/2019
-ms.locfileid: "54902461"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55769402"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-g-suite"></a>Kurz: Integrace Azure Active Directory s G Suite
 
@@ -75,11 +75,11 @@ Pokud chcete vyzkoušet kroky v tomto kurzu, postupujte podle těchto doporučen
 
     Odpověď: Pro toto nastavení je atribut e-mailové uživatelé moct přihlásit. Tento atribut nelze nastavit ručně.
 
-    Atribut e-mailu se vyplní automaticky pro každý uživatel s platnou licenci systému Exchange. Pokud uživatel není povoleným e-mailem, bude tato chyba přijmout, protože aplikace je potřeba získat tento atribut přístup.
+    Atribut e-mailu se vyplní automaticky pro každý uživatel s platnou licenci systému Exchange. Pokud uživatel není povolený e-mail, bude tato chyba přijmout, protože aplikace je potřeba získat tento atribut přístup.
 
-    Pokud budete chtít přiřaďte licenci pro Exchange, prosím přejít na portal.office.com pomocí účtu správce a pak klikněte na tlačítko v Centru pro správu, fakturace, předplatná, vyberte předplatné Office 365 a potom kliknout na přiřadit uživatelům, vyberte uživatele, kterého chcete zkontrolovat svoje předplatné a v pravém podokně klikněte na Upravit licence.
+    Můžete přejít na portal.office.com pomocí účtu správce, pak klikněte na tlačítko v Centru pro správu, fakturace, předplatnými, vyberte předplatné Office 365 a potom kliknutím na přiřadit uživatele, vyberte uživatele, které chcete zkontrolovat svoje předplatné a v pravém podokně klikněte na Úprava licence.
 
-    Po přiřazení licence Exchange, může trvat několik minut, který má být použita. Poté atribut user.mail se vyplní automaticky a problém by měly být opraveny.
+    Po přiřazení licence O365, může trvat několik minut, který má být použita. Poté atribut user.mail se vyplní automaticky a problém by měly být opraveny.
 
 ## <a name="scenario-description"></a>Popis scénáře
 
@@ -142,28 +142,45 @@ Ke konfiguraci Azure AD jednotné přihlašování s G Suite, proveďte následu
 
     ![Upravit konfiguraci základní SAML](common/edit-urls.png)
 
-4. Na **základní konfiguraci SAML** části, proveďte následující kroky:
+4. Na **základní konfiguraci SAML** části, pokud chcete nakonfigurovat pro **Gmail** proveďte následující kroky:
 
     ![G Suite domény a adresy URL jednotného přihlašování – informace](common/sp-identifier.png)
 
-    a. V **přihlašovací adresa URL** textové pole, zadejte adresu URL, pomocí následujícího vzorce: `https://www.google.com/a/<yourdomain.com>/ServiceLogin?continue=https://mail.google.com`
+    a. V **přihlašovací adresa URL** textového pole zadejte URL adresu URL pomocí následujícímu vzoru: `https://www.google.com/a/<yourdomain.com>/ServiceLogin?continue=https://mail.google.com`
 
-    b. V **identifikátor (Entity ID)** textové pole, zadejte adresu URL, pomocí následujícího vzorce:
+    b. V **identifikátor** textového pole zadejte adresu URL pomocí následujícímu vzoru:
     | |
     |--|
     | `google.com/a/<yourdomain.com>` |
     | `google.com` |
-    | `https://google.com` |
-    | `https://google.com/a/<yourdomain.com>` |
+    | `http://google.com` |
+    | `http://google.com/a/<yourdomain.com>` |
 
     > [!NOTE]
     > Tyto hodnoty nejsou skutečný. Tyto hodnoty aktualizujte s skutečné přihlašovací adresu URL a identifikátorem. Kontakt [tým podpory G Suite klienta](https://www.google.com/contact/) k získání těchto hodnot.
 
-5. G Suite aplikace očekává, že kontrolní výrazy SAML v určitém formátu, který je potřeba přidat vlastní atribut mapování konfigurace atributy tokenu SAML. Následující snímek obrazovky ukazuje příklad pro tuto. Výchozí hodnota **jedinečný identifikátor uživatele** je **user.userprincipalname** ale G Suite očekává, že to namapovat s e-mailovou adresu uživatele. K tomu můžete použít **user.mail** atribut ze seznamu nebo použijte hodnotu odpovídajícího atributu na základě vaší konfigurace organizace.
+5. Na **základní konfiguraci SAML** části, pokud chcete nakonfigurovat pro **Google Cloud Platform** proveďte následující kroky:
+
+    ![G Suite domény a adresy URL jednotného přihlašování – informace](common/sp-identifier.png)
+
+    a. V **přihlašovací adresa URL** textového pole zadejte URL adresu URL pomocí následujícímu vzoru: `https://www.google.com/a/<yourdomain.com>/ServiceLogin?continue=https://console.cloud.google.com `
+
+    b. V **identifikátor** textového pole zadejte adresu URL pomocí následujícímu vzoru:
+    | |
+    |--|
+    | `google.com/a/<yourdomain.com>` |
+    | `google.com` |
+    | `http://google.com` |
+    | `http://google.com/a/<yourdomain.com>` |
+    
+    > [!NOTE] 
+    > Tyto hodnoty nejsou skutečný. Tyto hodnoty aktualizujte s skutečné přihlašovací adresu URL a identifikátorem. Kontakt [tým podpory G Suite klienta](https://www.google.com/contact/) k získání těchto hodnot.
+
+6. G Suite aplikace očekává, že kontrolní výrazy SAML v určitém formátu, který je potřeba přidat vlastní atribut mapování konfigurace atributy tokenu SAML. Následující snímek obrazovky ukazuje příklad pro tuto. Výchozí hodnota **jedinečný identifikátor uživatele** je **user.userprincipalname** ale G Suite očekává, že to namapovat s e-mailovou adresu uživatele. K tomu můžete použít **user.mail** atribut ze seznamu nebo použijte hodnotu odpovídajícího atributu na základě vaší konfigurace organizace.
 
     ![image](common/edit-attribute.png)
 
-6. V **deklarace identity uživatelů** části na **atributy uživatele** dialogovém okně Upravit deklarace identity pomocí **ikonu pro úpravu** nebo přidání deklarace identity pomocí **přidat novou deklaraci**ke konfiguraci atribut tokenu SAML, jak je znázorněno na obrázku výše a proveďte následující kroky:
+7. V **deklarace identity uživatelů** části na **atributy uživatele** dialogovém okně Upravit deklarace identity pomocí **ikonu pro úpravu** nebo přidání deklarace identity pomocí **přidat novou deklaraci**ke konfiguraci atribut tokenu SAML, jak je znázorněno na obrázku výše a proveďte následující kroky:
 
     | Název | Zdrojový atribut |
     | ---------------| --------------- |
@@ -187,11 +204,11 @@ Ke konfiguraci Azure AD jednotné přihlašování s G Suite, proveďte následu
 
     g. Klikněte na **Uložit**.
 
-7. Na **nastavte si jednotné přihlašování pomocí SAML** stránku, **podpisový certifikát SAML** klikněte na tlačítko **Stáhnout** ke stažení **certifikát (Base64)** z se zadanými možnostmi podle vašich požadavků a uložit je ve vašem počítači.
+8. Na **nastavte si jednotné přihlašování pomocí SAML** stránku, **podpisový certifikát SAML** klikněte na tlačítko **Stáhnout** ke stažení **certifikát (Base64)** z se zadanými možnostmi podle vašich požadavků a uložit je ve vašem počítači.
 
     ![Odkaz ke stažení certifikátu](common/certificatebase64.png)
 
-8. Na **nastavení G Suite** tématu, zkopírujte příslušné adresy URL podle vašich požadavků.
+9. Na **nastavení G Suite** tématu, zkopírujte příslušné adresy URL podle vašich požadavků.
 
     ![Zkopírování adresy URL konfigurace](common/copy-configuration-urls.png)
 
@@ -203,7 +220,7 @@ Ke konfiguraci Azure AD jednotné přihlašování s G Suite, proveďte následu
 
 ### <a name="configure-g-suite-single-sign-on"></a>Konfigurace G Suite jednotného přihlašování
 
-1. Otevření nové záložky v prohlížeči a přihlaste se [konzoly pro správu G Suite](https://admin.google.com/) pomocí účtu správce.
+1. Otevření nové záložky v prohlížeči a přihlaste se [konzoly pro správu G Suite](http://admin.google.com/) pomocí účtu správce.
 
 2. Klikněte na tlačítko **zabezpečení**. Pokud nevidíte odkaz, mohou být skryty pod **další ovládací prvky** nabídce v dolní části obrazovky.
 

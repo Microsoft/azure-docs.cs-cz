@@ -9,13 +9,13 @@ ms.author: klam
 ms.reviewer: estfan, LADocs
 ms.assetid: 9fab1050-cfbc-4a8b-b1b3-5531bee92856
 ms.topic: article
-ms.date: 01/08/2019
-ms.openlocfilehash: a7d34b76eb6184e546c8217aa6b3723819be70be
-ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
+ms.date: 02/05/2019
+ms.openlocfilehash: c3057934d960efd0a846ef31c5fac5abd63a21f6
+ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54189526"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55768464"
 ---
 # <a name="secure-access-in-azure-logic-apps"></a>Zabezpečený přístup v Azure Logic Apps
 
@@ -120,7 +120,7 @@ Pokud chcete svou aplikaci logiky, která se aktivuje pouze jako vnořenou aplik
 
 #### <a name="set-ip-ranges---logic-app-deployment-template"></a>Nastavení rozsahů IP adres – šablony nasazení aplikace logiky
 
-Pokud používáte automatizaci nasazení aplikací logiky s použitím [šablony nasazení Azure Resource Manageru](logic-apps-create-deploy-template.md), rozsahy IP adres můžete nastavit v šabloně, například:
+Pokud používáte automatizaci nasazení aplikací logiky s použitím [šablony nasazení Azure Resource Manageru](../logic-apps/logic-apps-create-deploy-template.md), rozsahy IP adres můžete nastavit v šabloně, například:
 
 ``` json
 {
@@ -131,7 +131,7 @@ Pokud používáte automatizaci nasazení aplikací logiky s použitím [šablon
          "triggers": {
             "allowedCallerIpAddresses": [
                {
-               "addressRange": "192.168.12.0/23"
+                  "addressRange": "192.168.12.0/23"
                },
                {
                   "addressRange": "2001:0db8::/64"
@@ -176,13 +176,14 @@ Nastavit toto omezení na webu Azure Portal, přejděte do nastavení aplikace l
 1. V nabídce aplikace logiky podle **nastavení**vyberte **nastavení pracovního postupu**.
 
 1. V části **konfigurace řízení přístupu** > 
-**povolené příchozí IP adresy**vyberte **konkrétními rozsahy IP adres**.
+    **povolené příchozí IP adresy**vyberte **konkrétními rozsahy IP adres**.
 
-1. V části **rozsahy IP adres pro obsah**, zadejte rozsahy IP adres, které můžete přístup k obsahu z vstupy a výstupy. Platný rozsah IP adres používá tyto formáty: *x.x.x.x/x* nebo *x.x.x.x x.x.x.x.* 
+1. V části **rozsahy IP adres pro obsah**, zadejte rozsahy IP adres, které můžete přístup k obsahu z vstupy a výstupy. 
+   Platný rozsah IP adres používá tyto formáty: *x.x.x.x/x* nebo *x.x.x.x x.x.x.x.* 
 
 ### <a name="set-ip-ranges---logic-app-deployment-template"></a>Nastavení rozsahů IP adres – šablony nasazení aplikace logiky
 
-Pokud používáte automatizaci nasazení aplikací logiky s využitím [šablony nasazení Azure Resource Manageru](logic-apps-create-deploy-template.md), rozsahy IP adres můžete nastavit v šabloně, například:
+Pokud používáte automatizaci nasazení aplikací logiky s využitím [šablony nasazení Azure Resource Manageru](../logic-apps/logic-apps-create-deploy-template.md), rozsahy IP adres můžete nastavit v šabloně, například:
 
 ``` json
 {
@@ -193,7 +194,7 @@ Pokud používáte automatizaci nasazení aplikací logiky s využitím [šablon
          "contents": {
             "allowedCallerIpAddresses": [
                {
-               "addressRange": "192.168.12.0/23"
+                  "addressRange": "192.168.12.0/23"
                },
                {
                   "addressRange": "2001:0db8::/64"
@@ -210,44 +211,99 @@ Pokud používáte automatizaci nasazení aplikací logiky s využitím [šablon
 
 ## <a name="secure-action-parameters-and-inputs"></a>Zabezpečení parametry akce a vstupy
 
-Při nasazení v různých prostředích, můžete chtít parametrizovat konkrétní aspekty v definici pracovního postupu aplikace logiky. Například můžete zadat parametry v [šablony nasazení Azure Resource Manageru](../azure-resource-manager/resource-group-authoring-templates.md#parameters). Chcete-li získat přístup k prostředku hodnota parametru za běhu, můžete použít `@parameters('parameterName')` výraz, který je poskytován [jazyka definice pracovního postupu](https://aka.ms/logicappsdocs). 
+Při nasazení v různých prostředích, můžete chtít parametrizovat určité prvky v definici pracovního postupu aplikace logiky. Tímto způsobem je zadat vstupy založené na prostředí můžete použít a chránit citlivé informace. Například, pokud jste ověřování akce HTTP s [Azure Active Directory](../logic-apps/logic-apps-workflow-actions-triggers.md#connector-authentication), definovat a parametry, které přijímají ID klienta a tajný kód klienta používá k ověřování zabezpečení. Pro tyto parametry definici aplikace logiky má vlastní `parameters` oddílu.
+Chcete-li přistupovat k hodnotám parametrů za běhu, můžete použít `@parameters('parameterName')` výraz, který je poskytován [jazyka definice pracovního postupu](https://aka.ms/logicappsdocs). 
 
-Také můžete svázat konkrétní parametry, které nechcete zobrazí při úpravách pracovního postupu aplikace logiky, když použijete `securestring` typ parametru. Například můžete zabezpečit parametry, jako je například ID klienta a tajný kód klienta používá k ověřování akce HTTP s [Azure Active Directory](../connectors/connectors-native-http.md#authentication).
-Pokud zadáte parametr na typ jako `securestring`, parametr nevrátí s definicí prostředků a není přístupná zobrazením prostředek po nasazení. 
+Pokud chcete chránit, parametry a hodnoty, které nechcete zobrazit při úpravě vaší aplikaci logiky nebo historii spuštění zobrazení, můžete definovat parametry s `securestring` zadejte a používat kódování podle potřeby. Parametry, které obsahují tento typ nebudou zobrazeny s definicí prostředků a nejsou dostupné při prohlížení prostředku po nasazení.
 
 > [!NOTE]
-> Při použití parametru v záhlaví a text požadavku tento parametr může být viditelný, při přístupu k historii spuštění aplikace logiky a odchozí požadavek HTTP. Ujistěte se, že odpovídajícím způsobem nastavit zásady přístup k obsahu.
-> Autorizační hlavičky nejsou nikdy zobrazit vstupy nebo výstupy. Takže pokud tajného kódu je použita tam, není možné získat tajný kód.
+> Pokud použijete parametr v záhlaví a text požadavku, tento parametr může být viditelný, při přístupu k historii spuštění aplikace logiky a odchozí požadavek HTTP. Ujistěte se, že můžete také nastavit přístup k obsahu zásady odpovídajícím způsobem.
+> Autorizační hlavičky nejsou nikdy zobrazit vstupy nebo výstupy. Takže pokud tajného kódu je použita tam, není možné získat tento tajný kód.
 
-Tento příklad ukazuje šablonu nasazení Azure Resource Manageru, která používá více než jeden parametr modulu runtime s `securestring` typu: 
+Další informace o zabezpečení parametry v logice definic aplikací, najdete v části [zabezpečení parametry v logice aplikace definice](#secure-parameters-workflow) později na této stránce.
+
+Pokud používáte automatizaci nasazení s [šablony nasazení Azure Resource Manageru](../azure-resource-manager/resource-group-authoring-templates.md#parameters), můžete použít také zabezpečené parametry v těchto šablon. Například můžete použít parametry pro získání tajné kódy KeyVault při vytváření aplikace logiky. Vaše definice šablony nasazení má vlastní `parameters` oddílu, nezávisle na aplikaci logiky `parameters` oddílu. Další informace o zabezpečení parametrů v šablonách nasazení najdete v tématu [zabezpečení parametrů v šablonách nasazení](#secure-parameters-deployment-template) později na této stránce.
+
+<a name="secure-parameters-workflow"></a>
+
+### <a name="secure-parameters-in-logic-app-definitions"></a>Parametry v logice zabezpečení definic aplikací
+
+Kvůli ochraně citlivých informací v definici pracovního postupu aplikace logiky, používají zabezpečené parametry tak tyto informace není viditelný po uložení aplikace logiky. Předpokládejme například, že používáte `Basic` ověřování v definici akce HTTP. Tento příklad zahrnuje `parameters` oddíl, který definuje parametry pro definici akcí a navíc `authentication` oddíl, který přijímá `username` a `password` hodnoty parametrů. K poskytnutí hodnot pro tyto parametry, můžete použít soubor oddělené parametry, například:
+
+```json
+"definition": {
+   "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+   "actions": {
+      "HTTP": {
+         "type": "Http",
+         "inputs": {
+            "method": "GET",
+            "uri": "http://www.microsoft.com",
+            "authentication": {
+               "type": "Basic",
+               "username": "@parameters('usernameParam')",
+               "password": "@parameters('passwordParam')"
+            }
+         },
+         "runAfter": {}
+      }
+   },
+   "parameters": {
+      "passwordParam": {
+         "type": "securestring"
+      },
+      "userNameParam": {
+         "type": "securestring"
+      }
+   },
+   "triggers": {
+      "manual": {
+         "type": "Request",
+         "kind": "Http",
+         "inputs": {
+            "schema": {}
+         }
+      }
+   },
+   "contentVersion": "1.0.0.0",
+   "outputs": {}
+}
+```
+
+Pokud používáte tajné kódy, můžete získat tyto tajné kódy v době nasazení pomocí [trezor klíčů Azure Resource Manageru](../azure-resource-manager/resource-manager-keyvault-parameter.md).
+
+<a name="secure-parameters-deployment-template"></a>
+
+### <a name="secure-parameters-in-azure-resource-manager-deployment-templates"></a>Zabezpečené parametrů v šablonách nasazení Azure Resource Manageru
+
+Tento příklad ukazuje nasazení šablony Resource Manageru, která používá více než jeden parametr modulu runtime s `securestring` typu:
 
 * `armTemplatePasswordParam`, který je vstupem pro definici aplikace logiky `logicAppWfParam` parametr
 
 * `logicAppWfParam`, což je zadání údajů pro akce HTTP pomocí základního ověřování
 
-V souboru oddělené parametry můžete zadat hodnotu prostředí `armTemplatePasswordParam` parametr, nebo můžete načíst tajné kódy v době nasazení pomocí [trezor klíčů Azure Resource Manageru](../azure-resource-manager/resource-manager-keyvault-parameter.md).
-Vnitřní `parameters` části patří k definici pracovního postupu aplikace logiky, při vnější `parameters` části patří do šablony nasazení.
+Tento příklad obsahuje vnitřní `parameters` části, která patří do definice pracovního postupu aplikace logiky a vnějším `parameters` oddílu, který patří do šablony nasazení. K určení hodnoty prostředí pro parametry, můžete použít soubor oddělené parametry. 
 
 ```json
 {
    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
    "contentVersion": "1.0.0.0",
    "parameters": {
-      "logicAppName": {       
+      "logicAppName": {
          "type": "string",
          "minLength": 1,
          "maxLength": 80,
-         "metadata": {         
-            "description": "Name of the Logic App."       
-         }     
+         "metadata": {
+            "description": "Name of the Logic App."
+         }
       },
       "armTemplatePasswordParam": {
-         "type": "securestring"     
-      },     
-      "logicAppLocation": {       
+         "type": "securestring"
+      },
+      "logicAppLocation": {
          "type": "string",
          "defaultValue": "[resourceGroup().location]",
-         "allowedValues": [         
+         "allowedValues": [
             "[resourceGroup().location]",
             "eastasia",
             "southeastasia",
@@ -281,7 +337,7 @@ Vnitřní `parameters` části patří k definici pracovního postupu aplikace l
    },
    "variables": {},
    "resources": [
-      {       
+      {
          "name": "[parameters('logicAppName')]",
          "type": "Microsoft.Logic/workflows",
          "location": "[parameters('logicAppLocation')]",
@@ -300,15 +356,18 @@ Vnitřní `parameters` části patří k definici pracovního postupu aplikace l
                         "uri": "http://www.microsoft.com",
                         "authentication": {
                            "type": "Basic",
-                           "username": "username",
-                              "password": "@parameters('logicAppWfParam')"
+                           "username": "@parameters('usernameParam')",
+                           "password": "@parameters('logicAppWfParam')"
                         }
                      },
                   "runAfter": {}
                   }
                },
-               "parameters": { 
+               "parameters": {
                   "logicAppWfParam": {
+                     "type": "securestring"
+                  },
+                  "userNameParam": {
                      "type": "securestring"
                   }
                },
@@ -332,9 +391,11 @@ Vnitřní `parameters` části patří k definici pracovního postupu aplikace l
          }
       }
    ],
-   "outputs": {} 
-}   
+   "outputs": {}
+}
 ```
+
+Pokud používáte tajné kódy, můžete získat tyto tajné kódy v době nasazení pomocí [trezor klíčů Azure Resource Manageru](../azure-resource-manager/resource-manager-keyvault-parameter.md).
 
 <a name="secure-requests"></a>
 
@@ -344,7 +405,7 @@ Tady je několik způsobů, jak se dají zabezpečit libovolný koncový bod, kd
 
 ### <a name="add-authentication-on-outbound-requests"></a>Přidání ověřování pro odchozí požadavky
 
-Při práci s HTTP, HTTP + Swagger (Open API) nebo akce Webhooku, přidejte do žádosti odeslané aplikací logiky ověřování. Můžete například základní ověřování, ověřování pomocí certifikátu nebo ověřování Azure Active Directory. Další informace najdete v tématu [ověření aktivační události nebo akce](logic-apps-workflow-actions-triggers.md#connector-authentication) a [ověřování pro akce HTTP](../connectors/connectors-native-http.md#authentication).
+Při práci s HTTP, HTTP + Swagger (Open API) nebo akce Webhooku, přidejte do žádosti odeslané aplikací logiky ověřování. Můžete například základní ověřování, ověřování pomocí certifikátu nebo ověřování Azure Active Directory. Další informace najdete v tématu [ověření aktivační události nebo akce](../logic-apps/logic-apps-workflow-actions-triggers.md#connector-authentication).
 
 ### <a name="restrict-access-to-logic-app-ip-addresses"></a>Omezení přístupu na IP adresy aplikace logiky
 

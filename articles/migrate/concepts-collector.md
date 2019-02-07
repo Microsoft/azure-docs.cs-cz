@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 02/04/2019
 ms.author: snehaa
 services: azure-migrate
-ms.openlocfilehash: 7a17bed165a5a8ff15a122a1376d1a3a5e17d45f
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.openlocfilehash: 0568df92db2114c57a0aa027ade369e4b256af84
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55700923"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55813326"
 ---
 # <a name="about-the-collector-appliance"></a>Informace o zařízení Kolektoru
 
@@ -65,7 +65,7 @@ Kolekce musí úspěšně projít několik kontroly splnění podmínek se můž
 - **Zkontrolujte připojení k Internetu**: Kolektor může připojit k Internetu přímo nebo prostřednictvím proxy serveru.
     - Kontrola předpokladů ověří připojení k [povinné a nepovinné adresy URL](#urls-for-connectivity).
     - Pokud máte přímé připojení k Internetu, není žádná konkrétní akce požadované, než je zajistit, aby kolektor přístup požadované adresy URL.
-    - Pokud připojujete přes proxy server, Všimněte si, [níže uvedené požadavky](#connect-via-a-proxy).
+    - Pokud se připojujete přes proxy server, mějte na paměti následující požadavky.
 - **Zkontrolujte synchronizaci času**: Kolektor synchronizovat s internetovým časovým serverem k zajištění, že ověření požadavků na službu.
     - Adrese portal.azure.com. adresa url by měla být dosažitelný z Kolektoru, tak, aby čas může být ověřen.
     - Pokud počítač není synchronizovaný, musíte změnit čas na virtuálním počítači Kolektoru tak, aby odpovídaly aktuálním časem. Provedete to otevřete Správce řádek na virtuálním počítači, spusťte **w32tm /tz** ke kontrole časové pásmo. Spustit **w32tm/resync** synchronizovat čas.
@@ -75,7 +75,7 @@ Kolekce musí úspěšně projít několik kontroly splnění podmínek se můž
     - Služba Collector připojí k serveru vCenter, shromažďuje data metadata a výkonu virtuálních počítačů a odesílá je do služby Azure Migrate.
 - **Zkontrolovat VMware PowerCLI 6.5 je nainstalovaný**: Modul prostředí PowerShell VMware PowerCLI 6.5 musí nainstalovat na virtuálním počítači Kolektoru, tak, aby mohl komunikovat s vCenter Server.
     - Kolektor může získat přístup k adresám URL požadovaným pro instalaci modulu, je instalace automaticky během nasazení Kolektoru.
-    - Pokud kolekce nelze nainstalovat modul během nasazení, je nutné [nainstalujte ho ručně](#install-vwware-powercli-module-manually).
+    - Pokud kolekce nelze nainstalovat modul během nasazení, je nutné je nainstalovat ručně.
 - **Zkontrolujte připojení k serveru vCenter**: Kolekce musí být schopen systému vCenter Server a dotazy na virtuální počítače, jejich metadata a čítače výkonu. [Ověřte požadavky](#connect-to-vcenter-server) pro připojení.
 
 

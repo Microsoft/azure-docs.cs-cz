@@ -12,12 +12,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 07/31/2018
 ms.author: saysa
-ms.openlocfilehash: f381285d29d70d6f5da6a6cd319c682cd0c6a235
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 7abc15264a44c969f57071e84ffcedca30d326fb
+ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39444534"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55766312"
 ---
 # <a name="use-jenkins-to-build-and-deploy-your-linux-applications"></a>Použití Jenkinse k vytvoření a nasazení Linuxové aplikace
 Jenkins je oblíbený nástroj pro průběžnou integraci a nasazování aplikací. Tady je postup, kterým můžete sestavit a nasadit aplikaci Azure Service Fabric s využitím Jenkinse.
@@ -119,7 +119,7 @@ Jenkinse můžete nastavit uvnitř clusteru Service Fabric nebo mimo něj. Násl
 
 1. Připojení ke clusteru a instalaci aplikace typu kontejner.
 
-   **Zabezpečení clusteru**
+   **Secure Cluster**
    ```sh
    sfctl cluster select --endpoint https://PublicIPorFQDN:19080  --pem [Pem] --no-verify # cluster connect command
    bash Scripts/install.sh
@@ -229,11 +229,11 @@ Kroky v této části ukazují, jak konfigurace úlohy Jenkinse reagovat na změ
 1. Na **sestavit aktivační události** Jenkinse kartě, vyberte možnost, chcete, aby sestavení. V tomto příkladu chcete aktivovat sestavení při každém metodou push do úložiště, takže vyberte **GitHub hook trigger pro dotazování GITScm**. (Dřív se tato možnost nazývala **Build when a change is pushed to GitHub** (Sestavit při vložení změny metodou Push do GitHubu).
 1. Na **sestavení** kartu, proveďte jednu z následujících možností v závislosti na tom, ať už vytváříte aplikace v Javě nebo aplikaci .NET Core:
 
-   * **Pro aplikace Java:** z **přidat krok sestavení** rozevíracího seznamu, vyberte **vyvolání skriptu Gradle**. Klikněte na tlačítko **Advanced**. V nabídce Upřesnit, zadejte cestu k **kořenové sestavit skript** pro vaši aplikaci. Sestavení si ze zadané cesty vezme soubor build.gradle a bude pracovat odpovídajícím způsobem. Pro [ActorCounter aplikace](https://github.com/Azure-Samples/service-fabric-java-getting-started/tree/master/reliable-services-actor-sample/Actors/ActorCounter), toto je: `${WORKSPACE}/reliable-services-actor-sample/Actors/ActorCounter`.
+   * **Pro aplikace Java:** Z **přidat krok sestavení** rozevíracího seznamu, vyberte **vyvolání skriptu Gradle**. Klikněte na tlačítko **Advanced**. V nabídce Upřesnit, zadejte cestu k **kořenové sestavit skript** pro vaši aplikaci. Sestavení si ze zadané cesty vezme soubor build.gradle a bude pracovat odpovídajícím způsobem. Pro [ActorCounter aplikace](https://github.com/Azure-Samples/service-fabric-java-getting-started/tree/master/reliable-services-actor-sample/Actors/ActorCounter), toto je: `${WORKSPACE}/reliable-services-actor-sample/Actors/ActorCounter`.
 
      ![Akce sestavení v Jenkinsu pro Service Fabric][build-step]
 
-   * **Pro aplikace .NET Core:** z **přidat krok sestavení** rozevíracího seznamu, vyberte **spustit prostředí**. Do pole příkazu, který se zobrazí adresář nejprve musí změnit tak, aby cesta kde je umístěn soubor build.sh. Jakmile se změnil adresář, build.sh skript můžete spustit a sestaví aplikaci.
+   * **Pro aplikace .NET Core:** Z **přidat krok sestavení** rozevíracího seznamu, vyberte **spustit prostředí**. Do pole příkazu, který se zobrazí adresář nejprve musí změnit tak, aby cesta kde je umístěn soubor build.sh. Jakmile se změnil adresář, build.sh skript můžete spustit a sestaví aplikaci.
 
       ```sh
       cd /var/jenkins_home/workspace/[Job Name]/[Path to build.sh]  # change directory to location of build.sh file
@@ -246,13 +246,13 @@ Kroky v této části ukazují, jak konfigurace úlohy Jenkinse reagovat na změ
 
 1. Konfigurace Jenkinse k nasazení aplikace do clusteru Service Fabric v akcích po sestavení, je třeba umístění certifikátu daný cluster ve vašem kontejneru Jenkinse. Vyberte jednu z následujících možností v závislosti na tom, jestli váš kontejner s Jenkinsem běží uvnitř nebo vně vašeho clusteru a poznamenejte si umístění certifikátu clusteru:
 
-   * **Pro Jenkinse spuštěných ve vašem clusteru:** najdou cestu k certifikátu přečtou hodnotu *Certificates_JenkinsOnSF_Code_MyCert_PEM* proměnné prostředí z v rámci kontejneru.
+   * **Pro Jenkinse spuštěných ve vašem clusteru:** Cesta k certifikátu, můžete zobrazit tak přečtou hodnotu *Certificates_JenkinsOnSF_Code_MyCert_PEM* proměnné prostředí z v rámci kontejneru.
 
       ```sh
       echo $Certificates_JenkinsOnSF_Code_MyCert_PEM
       ```
    
-   * **Pro Jenkins běží mimo cluster:** zkopírujte certifikát clusteru do kontejneru pomocí těchto kroků:
+   * **Pro Jenkins běží mimo cluster:** Použijte následující postup zkopírujte certifikát clusteru do kontejneru:
       1. Certifikát musí být ve formátu PEM. Pokud nemáte soubor PEM, můžete vytvořit jednu ze souboru certifikátu PFX. Pokud váš soubor PFX není chráněn heslem, spusťte následující příkaz z hostitele:
 
          ```sh
@@ -298,10 +298,10 @@ Pro vývojová a testovací prostředí můžete nakonfigurovat přihlašovací 
 
 1. K vytvoření instančního objektu služby Azure Active Directory a přiřadit jí oprávnění ve vašem předplatném Azure, postupujte podle kroků v [použití portálu k vytvoření aplikace Azure Active Directory a instančního objektu](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-create-service-principal-portal). Věnujte pozornost následujícím:
 
-   * Během provádění kroků v tématu, nezapomeňte si zkopírujte a uložte následující hodnoty: *ID aplikace*, *klíč aplikace*, *ID adresáře (ID Tenanta)* a *ID předplatného*. Budete potřebovat ke konfiguraci přihlašovacích údajů Azure v Jenkinsu.
+   * Během provádění kroků v tématu, nezapomeňte zkopírovat a uložit následující hodnoty: *ID aplikace*, *klíč aplikace*, *ID adresáře (ID Tenanta)*, a *ID předplatného*. Budete potřebovat ke konfiguraci přihlašovacích údajů Azure v Jenkinsu.
    * Pokud nemáte k dispozici [požadovaná oprávnění](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-create-service-principal-portal#required-permissions) ve vašem adresáři, budete muset požádat správce, aby vám udělil oprávnění nebo vytvořit instanční objekt služby pro vás nebo budete muset nakonfigurovat koncový bod správy pro vašeho v clusteru **akcích po sestavení** pro vaše úlohy v Jenkinsu.
    * V [vytvoření aplikace Azure Active Directory](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-create-service-principal-portal#create-an-azure-active-directory-application) oddílu, můžete zadat libovolný ve správném formátu adresy URL pro **přihlašovací adresa URL**.
-   * V [přiřaďte aplikaci roli](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-create-service-principal-portal#assign-application-to-role) oddílu, můžete přiřadit aplikace *čtečky* role pro skupinu prostředků pro váš cluster.
+   * V [přiřaďte aplikaci roli](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-create-service-principal-portal) oddílu, můžete přiřadit aplikace *čtečky* role pro skupinu prostředků pro váš cluster.
 
 1. Zpět v rámci úlohy Jenkinse, klikněte na tlačítko **akcích po sestavení** kartu.
 1. V rozevírací nabídce **Post-Build Actions** (Akce po sestavení) vyberte **Deploy Service Fabric Project** (Nasazení projektu Service Fabric). 
@@ -310,7 +310,7 @@ Pro vývojová a testovací prostředí můžete nakonfigurovat přihlašovací 
 1. Použijte hodnoty, který jste uložili při nastavování nahoru instančního objektu služby v kroku 1, chcete-li nastavit následující pole:
 
    * **ID klienta**: *ID aplikace*
-   * **Tajný kód klienta**: *klíč aplikace*
+   * **Tajný kód klienta**: *Klíč aplikace*
    * **ID tenanta**: *ID adresáře*
    * **ID předplatného**: *ID předplatného*
 1. Zadejte popisný **ID** , můžete použít k výběru pověření v Jenkins a stručný **popis**. Pak klikněte na tlačítko **ověřte instanční objekt služby**. Pokud ověření úspěšné, klikněte na tlačítko **přidat**.
@@ -324,9 +324,9 @@ Pro vývojová a testovací prostředí můžete nakonfigurovat přihlašovací 
     ![Akce po sestavení Jenkinse prostředky infrastruktury služby nakonfigurovat přihlašovací údaje Azure](./media/service-fabric-cicd-your-linux-application-with-jenkins/post-build-credentials.png)
 1. Klikněte na tlačítko **ověřit konfiguraci**. Na úspěšné ověřování, klikněte na tlačítko **Uložit**. Úlohy kanálu Jenkins je teď plně nakonfigurované. Pokračovat k [další kroky](#next-steps) k otestování nasazení.
 
-## <a name="troubleshooting-the-jenkins-plugin"></a>Řešení potíží s modulu plug-in Jenkinse
+## <a name="troubleshooting-the-jenkins-plugin"></a>Řešení potíží s modulem plug-in Jenkinse
 
-Pokud narazíte na jakékoli chyby s moduly plug-in Jenkins, založte problém v [Jenkins JIRA](https://issues.jenkins-ci.org/) pro konkrétní komponentu.
+Pokud v modulech plug-in Jenkinse narazíte na nějaké chyby, založte problém na stránce [Jenkins JIRA](https://issues.jenkins-ci.org/) pro konkrétní komponentu.
 
 ## <a name="next-steps"></a>Další postup
 GitHub a Jenkins jsou teď nakonfigurované. Zvažte učinění nějaké ukázkové změny v `reliable-services-actor-sample/Actors/ActorCounter` projektu ve vašem forku úložiště, https://github.com/Azure-Samples/service-fabric-java-getting-started. Uložit změny do vzdáleného `master` větev (nebo jakékoli větve, kterou jste nakonfigurovali pro práci s). Tím se aktivuje nakonfigurovaná úloha Jenkinse `MyJob`. Úloha načte změny z Githubu, je k sestavení a nasadí aplikaci do clusteru, který jste zadali v akcích po sestavení.  
