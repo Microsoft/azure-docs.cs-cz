@@ -48,24 +48,25 @@ items:
   - name: Přehled
     href: user-help-auth-app-overview.md
   - name: Stažení a instalace aplikace
-    href: microsoft-authenticator-app-how-to.md
+    href: user-help-auth-app-download-install.md
   - name: Přidání přehledu účtů
-    href: microsoft-authenticator-app-add-accounts-overview.md
+    href: user-help-auth-app-add-account-overview.md
     items:
     - name: Přidání pracovního nebo školního účtu
-      href: microsoft-authenticator-app-add-work-account.md
+      href: user-help-auth-app-add-work-school-account.md
     - name: Přidání osobního účtu Microsoft
-      href: microsoft-authenticator-app-add-personal-account.md
+      href: user-help-auth-app-add-personal-ms-account.md
     - name: Přidání jiného účtu než Microsoft
-      href: microsoft-authenticator-app-add-non-microsoft-account.md
+      href: user-help-auth-app-add-non-ms-account.md
     - name: Ruční přidání účtu
-      href: microsoft-authenticator-app-add-account-manual.md
+      href: user-help-auth-app-add-account-manual.md
+    expanded: true
   - name: Přihlášení pomocí aplikace Microsoft Authenticator
-    href: microsoft-authenticator-app-phone-signin-faq.md
+    href: user-help-auth-app-sign-in.md
   - name: Zálohování a obnovení vašich účtů
-    href: microsoft-authenticator-app-backup-and-recovery.md
+    href: user-help-auth-app-backup-recovery.md
   - name: Nejčastější dotazy
-    href: microsoft-authenticator-app-faq.md
+    href: user-help-auth-app-faq.md
 - name: Nápověda k portálu Moje aplikace
   items:
   - name: Přehled
@@ -84,9 +85,9 @@ items:
     href: user-help-register-device-on-network.md
   - name: Řešení potíží se zprávami Nelze se tam dostat
     href: user-help-device-remediation.md
-ms.openlocfilehash: ed41c40adc0d09d60f43cf3826c6bb84a464c31f
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.openlocfilehash: 604b2c204f893bf0abaaec86f85e2159c17a8656
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55755267"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55816046"

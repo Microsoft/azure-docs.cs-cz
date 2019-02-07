@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 12/31/2018
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: e17ddb45143e03023c30b69ed314270ed97dc039
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: e3687ac5941d4f4fda70f96fa9df1ec1904e102e
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53973162"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55822472"
 ---
 # <a name="fail-over-and-fail-back-vmware-vms-and-physical-servers-replicated-to-azure"></a>Převzetí služeb při selhání a navrácení služeb po obnovení virtuálních počítačů VMware a fyzických serverů replikovaných do Azure
 
@@ -56,7 +56,7 @@ Ověřte vlastnosti virtuálního počítače a ujistěte se, že splňuje [pož
 
 2. V podokně **Replikovaná položka** se zobrazí souhrn informací o virtuálním počítači, jeho stav a nejnovější dostupné body obnovení. Kliknutím na **Vlastnosti** zobrazíte další podrobnosti.
 
-3. V části **Výpočty a síť** můžete upravit název Azure, skupinu prostředků, cílovou velikost, [skupinu dostupnosti](../virtual-machines/windows/tutorial-availability-sets.md) a [nastavení spravovaného disku](#managed-disk-considerations).
+3. V **výpočty a síť**, můžete upravit název Azure, skupinu prostředků, cílovou velikost, [dostupnosti](../virtual-machines/windows/tutorial-availability-sets.md)a nastavení spravovaného disku
 
 4. Můžete zobrazit a upravit nastavení sítě, včetně sítě a podsítě, do které se virtuální počítače Azure umístí po převzetí služeb při selhání, a IP adresy, která se jim přiřadí.
 

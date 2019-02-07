@@ -6,15 +6,15 @@ items:
 - name: Přehled
   items:
   - name: Co je Azure IoT Central
-    href: ../iot-central/overview-iot-central.md?toc=/azure/iot-central-experimental/toc.json&bc=/azure/iot-central-experimental/breadcrumb/toc.json
+    href: ../iot-central/overview-iot-central-experimental.md?toc=/azure/iot-central-experimental/toc.json&bc=/azure/iot-central-experimental/breadcrumb/toc.json
   - name: Možnosti řešení IoT
-    href: ../iot-central/overview-iot-options.md?toc=/azure/iot-central-experimental/toc.json&bc=/azure/iot-central-experimental/breadcrumb/toc.json
+    href: ../iot-central/overview-iot-options-experimental.md?toc=/azure/iot-central-experimental/toc.json&bc=/azure/iot-central-experimental/breadcrumb/toc.json
   - name: Prohlídka uživatelského rozhraní
     href: ../iot-central/overview-iot-central-tour-experimental.md?toc=/azure/iot-central-experimental/toc.json&bc=/azure/iot-central-experimental/breadcrumb/toc.json
 - name: Šablony Rychlý start
   items:
   - name: Vytvoření nové aplikace
-    href: ../iot-central/quick-deploy-iot-central.md?toc=/azure/iot-central-experimental/toc.json&bc=/azure/iot-central-experimental/breadcrumb/toc.json
+    href: ../iot-central/quick-deploy-iot-central-experimental.md?toc=/azure/iot-central-experimental/toc.json&bc=/azure/iot-central-experimental/breadcrumb/toc.json
   expanded: true
 - name: Kurzy
   items:
@@ -31,17 +31,17 @@ items:
 - name: Koncepty
   items:
   - name: Architektura
-    href: ../iot-central/concepts-architecture.md?toc=/azure/iot-central-experimental/toc.json&bc=/azure/iot-central-experimental/breadcrumb/toc.json
+    href: ../iot-central/concepts-architecture-experimental.md?toc=/azure/iot-central-experimental/toc.json&bc=/azure/iot-central-experimental/breadcrumb/toc.json
   - name: Připojení
-    href: ../iot-central/concepts-connectivity.md?toc=/azure/iot-central-experimental/toc.json&bc=/azure/iot-central-experimental/breadcrumb/toc.json
+    href: ../iot-central/concepts-connectivity-experimental.md?toc=/azure/iot-central-experimental/toc.json&bc=/azure/iot-central-experimental/breadcrumb/toc.json
 - name: Návody
   items:
   - name: Připojení zařízení
     items:
     - name: Příprava a připojení aplikace v Node.js (generické)
-      href: ../iot-central/howto-connect-nodejs.md?toc=/azure/iot-central-experimental/toc.json&bc=/azure/iot-central-experimental/breadcrumb/toc.json
+      href: ../iot-central/howto-connect-nodejs-experimental.md?toc=/azure/iot-central-experimental/toc.json&bc=/azure/iot-central-experimental/breadcrumb/toc.json
     - name: Příprava a připojení sady MXChip IoT DevKit
-      href: ../iot-central/howto-connect-devkit.md?toc=/azure/iot-central-experimental/toc.json&bc=/azure/iot-central-experimental/breadcrumb/toc.json
+      href: ../iot-central/howto-connect-devkit-experimental.md?toc=/azure/iot-central-experimental/toc.json&bc=/azure/iot-central-experimental/breadcrumb/toc.json
     - name: Příprava a připojení Raspberry Pi (Python)
       href: ../iot-central/howto-connect-raspberry-pi-python.md?toc=/azure/iot-central-experimental/toc.json&bc=/azure/iot-central-experimental/breadcrumb/toc.json
     - name: Příprava a připojení Raspberry Pi (C#)
@@ -49,7 +49,7 @@ items:
     - name: Příprava a připojení zařízení Windows IoT Core
       href: ../iot-central/howto-connect-windowsiotcore.md?toc=/azure/iot-central-experimental/toc.json&bc=/azure/iot-central-experimental/breadcrumb/toc.json
     - name: Monitorování připojení zařízení pomocí příkazového řádku
-      href: ../iot-central/howto-use-iotc-explorer.md?toc=/azure/iot-central-experimental/toc.json&bc=/azure/iot-central-experimental/breadcrumb/toc.json
+      href: ../iot-central/howto-use-iotc-explorer-experimental.md?toc=/azure/iot-central-experimental/toc.json&bc=/azure/iot-central-experimental/breadcrumb/toc.json
   - name: Správa zařízení
     items:
     - name: Nastavení šablony zařízení
@@ -57,9 +57,9 @@ items:
     - name: správu zařízení
       href: ../iot-central/howto-manage-devices-experimental.md?toc=/azure/iot-central-experimental/toc.json&bc=/azure/iot-central-experimental/breadcrumb/toc.json
     - name: Spuštění úlohy
-      href: ../iot-central/howto-run-a-job.md?toc=/azure/iot-central-experimental/toc.json&bc=/azure/iot-central-experimental/breadcrumb/toc.json
+      href: ../iot-central/howto-run-a-job-experimental.md?toc=/azure/iot-central-experimental/toc.json&bc=/azure/iot-central-experimental/breadcrumb/toc.json
     - name: Použití sad zařízení
-      href: ../iot-central/howto-use-device-sets.md?toc=/azure/iot-central-experimental/toc.json&bc=/azure/iot-central-experimental/breadcrumb/toc.json
+      href: ../iot-central/howto-use-device-sets-experimental.md?toc=/azure/iot-central-experimental/toc.json&bc=/azure/iot-central-experimental/breadcrumb/toc.json
     - name: Vytváření verzí šablon zařízení
       href: ../iot-central/howto-version-devicetemplate.md?toc=/azure/iot-central-experimental/toc.json&bc=/azure/iot-central-experimental/breadcrumb/toc.json
   - name: Sledování a analýza
@@ -69,19 +69,19 @@ items:
     - name: Vytvoření pravidla událostí
       href: ../iot-central/howto-create-event-rules-experimental.md?toc=/azure/iot-central-experimental/toc.json&bc=/azure/iot-central-experimental/breadcrumb/toc.json
     - name: Analýza dat zařízení
-      href: ../iot-central/howto-create-analytics.md?toc=/azure/iot-central-experimental/toc.json&bc=/azure/iot-central-experimental/breadcrumb/toc.json
+      href: ../iot-central/howto-create-analytics-experimental.md?toc=/azure/iot-central-experimental/toc.json&bc=/azure/iot-central-experimental/breadcrumb/toc.json
   - name: Akce a rozšiřitelnost
     items:
     - name: Vytváření akcí webhooků na základě pravidel
-      href: ../iot-central/howto-create-webhooks.md?toc=/azure/iot-central-experimental/toc.json&bc=/azure/iot-central-experimental/breadcrumb/toc.json
+      href: ../iot-central/howto-create-webhooks-experimental.md?toc=/azure/iot-central-experimental/toc.json&bc=/azure/iot-central-experimental/breadcrumb/toc.json
     - name: Sestavení pracovních postupů v Microsoft Flow
-      href: ../iot-central/howto-add-microsoft-flow.md?toc=/azure/iot-central-experimental/toc.json&bc=/azure/iot-central-experimental/breadcrumb/toc.json
+      href: ../iot-central/howto-add-microsoft-flow-experimental.md?toc=/azure/iot-central-experimental/toc.json&bc=/azure/iot-central-experimental/breadcrumb/toc.json
     - name: Sestavení pracovních postupů ve službě Azure Logic Apps
-      href: ../iot-central/howto-build-azure-logic-apps.md?toc=/azure/iot-central-experimental/toc.json&bc=/azure/iot-central-experimental/breadcrumb/toc.json
+      href: ../iot-central/howto-build-azure-logic-apps-experimental.md?toc=/azure/iot-central-experimental/toc.json&bc=/azure/iot-central-experimental/breadcrumb/toc.json
     - name: Aktivace Azure Functions
       href: ../iot-central/howto-trigger-azure-functions.md?toc=/azure/iot-central-experimental/toc.json&bc=/azure/iot-central-experimental/breadcrumb/toc.json
     - name: Export dat
-      href: ../iot-central/howto-export-data.md?toc=/azure/iot-central-experimental/toc.json&bc=/azure/iot-central-experimental/breadcrumb/toc.json
+      href: ../iot-central/howto-export-data-experimental.md?toc=/azure/iot-central-experimental/toc.json&bc=/azure/iot-central-experimental/breadcrumb/toc.json
       items:
       - name: Export do služeb Event Hubs a Service Bus
         href: ../iot-central/howto-export-data-event-hubs-service-bus.md?toc=/azure/iot-central-experimental/toc.json&bc=/azure/iot-central-experimental/breadcrumb/toc.json
@@ -94,9 +94,9 @@ items:
   - name: Správa
     items:
     - name: Správa vaší aplikace
-      href: ../iot-central/howto-administer.md?toc=/azure/iot-central-experimental/toc.json&bc=/azure/iot-central-experimental/breadcrumb/toc.json
+      href: ../iot-central/howto-administer-experimental.md?toc=/azure/iot-central-experimental/toc.json&bc=/azure/iot-central-experimental/breadcrumb/toc.json
     - name: Příprava a nahrávání image
-      href: ../iot-central/howto-prepare-images.md?toc=/azure/iot-central-experimental/toc.json&bc=/azure/iot-central-experimental/breadcrumb/toc.json
+      href: ../iot-central/howto-prepare-images-experimental.md?toc=/azure/iot-central-experimental/toc.json&bc=/azure/iot-central-experimental/breadcrumb/toc.json
     - name: Správa řešení IoT Central z Portálu pro správu Azure
       href: ../iot-central/howto-manage-iot-central-from-portal.md?toc=/azure/iot-central-experimental/toc.json&bc=/azure/iot-central-experimental/breadcrumb/toc.json
     - name: Správa řešení IoT Central z Azure PowerShellu
@@ -104,7 +104,7 @@ items:
     - name: Vytvoření a správa aplikace jako odběratel CSP
       href: ../iot-central/howto-create-and-manage-applications-as-CSP.md?toc=/azure/iot-central-experimental/toc.json&bc=/azure/iot-central-experimental/breadcrumb/toc.json
     - name: Konfigurace domovské stránky
-      href: ../iot-central/howto-configure-homepage.md?toc=/azure/iot-central-experimental/toc.json&bc=/azure/iot-central-experimental/breadcrumb/toc.json
+      href: ../iot-central/howto-configure-homepage-experimental.md?toc=/azure/iot-central-experimental/toc.json&bc=/azure/iot-central-experimental/breadcrumb/toc.json
   - name: Personalizace
     items:
     - name: Správa vašich předvoleb
@@ -141,9 +141,9 @@ items:
     href: ../iot-central/iot-central-customer-data-requests.md?toc=/azure/iot-central-experimental/toc.json&bc=/azure/iot-central-experimental/breadcrumb/toc.json
   - name: Podporované prohlížeče
     href: ../iot-central/iot-central-supported-browsers.md?toc=/azure/iot-central-experimental/toc.json&bc=/azure/iot-central-experimental/breadcrumb/toc.json
-ms.openlocfilehash: 5eef62e35c8927262c9f2e303cb697b5e63333eb
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
+ms.openlocfilehash: 7d431a6e71155ae7bcda87532042566460e39a2c
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55727156"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55818443"
