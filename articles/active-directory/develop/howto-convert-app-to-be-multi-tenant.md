@@ -17,12 +17,12 @@ ms.date: 09/24/2018
 ms.author: celested
 ms.reviewer: justhu, elisol
 ms.custom: aaddev
-ms.openlocfilehash: ae9412ed7c02d88e7d0c35c6ea0f95da755b84d4
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.openlocfilehash: f9a1b303fb66e71ffb1834c5b5fb4796867a0944
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55097040"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55819412"
 ---
 # <a name="how-to-sign-in-any-azure-active-directory-user-using-the-multi-tenant-application-pattern"></a>Postup: Přihlášení jakéhokoli uživatele Azure Active Directory pomocí vzoru aplikace s více tenanty
 
@@ -38,7 +38,7 @@ Existují čtyři jednoduché kroky k převedení vaší aplikace do aplikace v�
 1. [Aktualizace registrace vaší aplikace bude více tenantů](#update-registration-to-be-multi-tenant)
 2. [Aktualizujte svůj kód k odesílání požadavků / Common koncového bodu](#update-your-code-to-send-requests-to-common)
 3. [Aktualizujte svůj kód pro zpracování více hodnot vystavitele](#update-your-code-to-handle-multiple-issuer-values)
-4. [Principy souhlasu uživatele a správce a proveďte odpovídající kód změny](#understanding-user-and-admin-consent)
+4. Principy souhlasu uživatele a správce a proveďte odpovídající kód změny
 
 Podívejme se na každý krok v podrobností. Můžete také přejít přímo na [tento seznam s více tenanty ukázky][AAD-Samples-MT].
 

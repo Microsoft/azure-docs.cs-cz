@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: required
 ms.date: 09/20/2017
 ms.author: vturecek
-ms.openlocfilehash: b8abf7a0dc85d20e9075b51b8d42a068cf56846f
-ms.sourcegitcommit: eba6841a8b8c3cb78c94afe703d4f83bf0dcab13
+ms.openlocfilehash: 4110b8f1b336a604c89180ac44ad470132765830
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52620519"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55820670"
 ---
 # <a name="service-remoting-in-c-with-reliable-services"></a>Vzdálená komunikace služby v jazyce C# s využitím Reliable Services
 
@@ -239,7 +239,7 @@ Tento krok zajistí, že služba naslouchá jenom na naslouchací proces V2.
 
 ## <a name="use-the-remoting-v2-interface-compatible-stack"></a>Použití vzdálené komunikace V2 zásobníku (kompatibilní s rozhraní)
 
- Vzdálená komunikace V2 (rozhraní kompatibilní, označované jako V2_1) zásobník obsahuje všechny funkce zásobníku vzdálené komunikace V2. Svůj zásobník rozhraní je kompatibilní se zásobníkem V1 vzdálenou komunikaci, ale není zpětně kompatibilní s V2 a V1. Chcete-li upgradovat z V1 na V2_1 bez ovlivnění dostupnosti služby, postupujte podle kroků v článku [upgradovat z verze V1 na V2 (rozhraní kompatibilní)](#upgrade-from-remoting-v1-to-remoting-v2interfacecompatible).
+ Vzdálená komunikace V2 (rozhraní kompatibilní, označované jako V2_1) zásobník obsahuje všechny funkce zásobníku vzdálené komunikace V2. Svůj zásobník rozhraní je kompatibilní se zásobníkem V1 vzdálenou komunikaci, ale není zpětně kompatibilní s V2 a V1. Aktualizaci z V1 na V2_1 bez ovlivnění dostupnosti služby, postupujte podle kroků v článku o Upgrade z V1 na V2 (rozhraní kompatibilní).
 
 
 ### <a name="use-an-assembly-attribute-to-use-the-remoting-v2-interface-compatible-stack"></a>Použití vzdálené komunikace V2 zásobníku (rozhraní kompatibilní) pomocí atributu sestavení

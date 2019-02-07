@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 10/01/2018
+ms.date: 02/05/2019
 ms.author: kumud
-ms.openlocfilehash: d8ca70efd3b1ba77b1b1bb0e11a9234e5fd440c4
-ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
+ms.openlocfilehash: f0ebb5cc913dda99d7e927ccf45c0f1478fa86c5
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54201376"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55814822"
 ---
 # <a name="outbound-connections-in-azure"></a>Odchozích připojení v Azure
 
@@ -34,17 +34,17 @@ Azure používá k provedení této funkce překlad síťových adres zdroje (SN
 Existuje více [odchozí scénáře](#scenarios). Tyto scénáře můžete kombinovat podle potřeby. Seznamte se s nimi pečlivě pro pochopení možností, omezení a vzory, která je použita k modelu nasazení a scénář aplikace. Přečtěte si pokyny pro [Správa těchto scénářů](#snatexhaust).
 
 >[!IMPORTANT] 
->Load balancer úrovně Standard zavádí nové možnosti a různé chování odchozí připojení.   Například [scénář 3](#defaultsnat) neexistuje interní Load balanceru úrovně Standard je k dispozici a různé kroky je třeba provést.   Pečlivě si prostudujte vám pomohou pochopit celkový koncepty a rozdíly mezi skladovými položkami této celý dokument.
+>Standardní nástroj pro vyrovnávání zatížení a standardní veřejnou IP adresu představí nové možnosti a různé chování odchozí připojení.  Nejsou stejná jako základní SKU.  Pokud chcete odchozí připojení při práci s standardní SKU, je nutné explicitně definovat ho pomocí standardní veřejné IP adresy nebo veřejného Load Balanceru úrovně Standard.  To zahrnuje vytváření odchozího připojení při používání a interní Load balanceru úrovně Standard.  Doporučujeme že vždy používat odchozí pravidla veřejný Load balancer úrovně Standard.  [Scénář 3](#defaultsnat) není k dispozici standardní SKU.  To znamená, když se používá interní Load balanceru úrovně Standard, musíte provést kroky k vytvoření odchozí připojení pro virtuální počítače v back-endového fondu, v případě potřeby odchozí připojení.  V kontextu odchozí připojení, jeden samostatný virtuální počítač, všechny Virtuálního počítače ve skupině dostupnosti, všechny instance VMSS se chovají jako skupinu. To znamená, pokud jeden virtuální počítač do skupiny dostupnosti je přidružený standardní SKU všechny instance virtuálních počítačů v rámci této skupiny dostupnosti teď chovat podle stejných pravidel jako by šlo přidružený standardní SKU, i v případě, že jednotlivé instance není přímo k ní přidružena.  Pečlivě si prostudujte tento celý dokument, abyste celkové koncepce, projděte si [Load balanceru úrovně Standard](load-balancer-standard-overview.md) rozdílů mezi SKU a kontrola [odchozí pravidla](load-balancer-outbound-rules-overview.md).  Použití odchozí pravidla umožňuje podrobné kontrolu nad všemi aspekty odchozí připojení.
 
 ## <a name="scenarios"></a>Přehled scénářů
 
 Nástroj Azure Load Balancer a související prostředky nejsou explicitně definovány při použití [Azure Resource Manageru](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview).  Azure poskytuje aktuálně tří různých způsobů dosažení odchozí připojení pro prostředky Azure Resource Manageru. 
 
-| Scénář | Metoda | Protokoly IP | Popis |
-| --- | --- | --- | --- |
-| [1. Virtuální počítač s veřejnou IP adresu Instance úroveň adresou (s nebo bez nástroje pro vyrovnávání zatížení)](#ilpip) | SNAT, ho maskují portu se nepoužívá. | TCP, UDP, PROTOKOL ICMP, ESP | Azure používá veřejné IP adresy přiřazené ke konfiguraci IP adresy z instance NIC. Instance má všechny dočasné porty, které jsou k dispozici. |
-| [2. Veřejný nástroj pro vyrovnávání zatížení, které jsou přidružené k virtuálnímu počítači (žádné Instance úroveň veřejnou IP adresu na instanci)](#lb) | SNAT pomocí portu ho maskují (cesta) pomocí nástroje pro vyrovnávání zatížení front-endů | TCP, UDP |Veřejnou IP adresu veřejnou front-endů nástroje pro vyrovnávání zatížení Azure sdílí s více privátními IP adresami. Azure používá dočasných portů front-endů token pat. |
-| [3. Samostatný virtuální počítač (žádná služba Vyrovnávání zatížení, žádné Instance úroveň veřejnou IP adresu)](#defaultsnat) | SNAT pomocí portu ho maskují (cesta) | TCP, UDP | Azure automaticky označí veřejnou IP adresu pro SNAT, sdílí s více privátními IP adresami sady dostupnosti. Tato veřejná IP adresa a používá dočasné porty tuto veřejnou IP adresu. V tomto scénáři se používají jako základní pro předchozí scénáře. Pokud potřebujete viditelnosti a kontroly to nedoporučujeme. |
+| Skladové položky | Scénář | Metoda | Protokoly IP | Popis |
+| --- | --- | --- | --- | --- |
+| Standard, Basic | [1. Virtuální počítač s veřejnou IP adresu Instance úroveň adresou (s nebo bez nástroje pro vyrovnávání zatížení)](#ilpip) | SNAT, ho maskují portu se nepoužívá. | TCP, UDP, ICMP, ESP | Azure používá veřejné IP adresy přiřazené ke konfiguraci IP adresy z instance NIC. Instance má všechny dočasné porty, které jsou k dispozici. Při použití nástroje pro vyrovnávání zatížení, byste měli použít [odchozí pravidla](load-balancer-outbound-rules-overview.md) explicitně definovat odchozí připojení |
+| Standard, Basic | [2. Veřejný nástroj pro vyrovnávání zatížení, které jsou přidružené k virtuálnímu počítači (žádné Instance úroveň veřejnou IP adresu na instanci)](#lb) | SNAT pomocí portu ho maskují (cesta) pomocí nástroje pro vyrovnávání zatížení front-endů | TCP, UDP |Veřejnou IP adresu veřejnou front-endů nástroje pro vyrovnávání zatížení Azure sdílí s více privátními IP adresami. Azure používá dočasných portů front-endů token pat. |
+| žádné nebo základní | [3. Samostatný virtuální počítač (žádná služba Vyrovnávání zatížení, žádné Instance úroveň veřejnou IP adresu)](#defaultsnat) | SNAT pomocí portu ho maskují (cesta) | TCP, UDP | Azure automaticky označí veřejnou IP adresu pro SNAT, sdílí s více privátními IP adresami sady dostupnosti. Tato veřejná IP adresa a používá dočasné porty tuto veřejnou IP adresu. V tomto scénáři se používají jako základní pro předchozí scénáře. Pokud potřebujete viditelnosti a kontroly to nedoporučujeme. |
 
 Pokud nechcete, aby virtuální počítač komunikovat s koncovými body mimo Azure v veřejný prostor IP adres, můžete použít skupiny zabezpečení sítě (Nsg) k blokování přístupu podle potřeby. V části [brání odchozí připojení](#preventoutbound) podrobněji popisuje skupiny zabezpečení sítě. Pokyny k návrhu, implementaci a správu virtuální síť, bez jakékoli odchozí přístup je mimo rámec tohoto článku.
 
@@ -68,7 +68,7 @@ Dočasné porty nástroje pro vyrovnávání zatížení veřejnou IP adresu fro
 
 Porty SNAT přidělují předem podle popisu v [SNAT principy a token PAT](#snat) oddílu. Jsou to omezené prostředek, který může dojít k vyčerpání. Je důležité pochopit, jak jsou [spotřebované](#pat). Chcete-li pochopit, jak navrhnout za toto využití a zmírnit podle potřeby, zkontrolovat [Správa SNAT vyčerpání](#snatexhaust).
 
-Když [několik veřejných IP adres jsou spojeny s základní nástroje pro vyrovnávání zatížení](load-balancer-multivip-overview.md), všechny tyto veřejné IP adresy jsou [Release candidate pro odchozí toky](#multivipsnat), a jedna náhodně vybraná.  
+Když [několik veřejných IP adres jsou spojeny s základní nástroje pro vyrovnávání zatížení](load-balancer-multivip-overview.md), některé z těchto veřejné IP adresy jsou kandidátem pro odchozí toky a jedna náhodně vybraná.  
 
 Pokud chcete monitorovat stav odchozí připojení s základní nástroje pro vyrovnávání zatížení, můžete použít [Log Analytics pro nástroj pro vyrovnávání zatížení](load-balancer-monitor-log.md) a [upozornění protokolů událostí](load-balancer-monitor-log.md#alert-event-log) pro monitorování zpráv vyčerpání portů SNAT.
 
@@ -156,15 +156,15 @@ Následující tabulka uvádí preallocations SNAT port pro úrovně velikosti f
 
 | Velikost fondu (instance virtuálních počítačů) | Předběžně přidělené SNAT porty na konfiguraci IP adresy|
 | --- | --- |
-| 1 – 50 | 1,024 |
-| 51 – 100 | 512 |
-| 101 – 200 | 256 |
+| 1-50 | 1,024 |
+| 51-100 | 512 |
+| 101-200 | 256 |
 | 201-400 | 128 |
-| 401 800 | 64 |
-| 801 – 1 000 | 32 |
+| 401-800 | 64 |
+| 801-1,000 | 32 |
 
 >[!NOTE]
-> Při použití Load Balanceru úrovně Standard s [několik front-endů](load-balancer-multivip-overview.md), [každou IP adresu front-endu vynásobí počet dostupných portů SNAT](#multivipsnat) v předchozí tabulce. Back-endový fond 50 virtuálních počítačů s 2 pravidla Vyrovnávání zatížení, každý s samostatné front-endovou IP adresou, například bude používat porty SNAT 2048 (2 x 1 024) na konfiguraci IP adresy. Získáte v podrobnostech o [několik front-endů](#multife).
+> Při použití Load Balanceru úrovně Standard s [několik front-endů](load-balancer-multivip-overview.md), každou IP adresu front-endu vynásobí počet dostupných portů SNAT v předchozí tabulce. Back-endový fond 50 virtuálních počítačů s 2 pravidla Vyrovnávání zatížení, každý s samostatné front-endovou IP adresou, například bude používat porty SNAT 2048 (2 x 1 024) na konfiguraci IP adresy. Získáte v podrobnostech o [několik front-endů](#multife).
 
 Mějte na paměti, že počet dostupných portů SNAT nepřekládá přímo na počet toků. Jeden port SNAT můžete znovu použít pro více míst jedinečný. Porty se spotřebuje, pouze pokud je nutné vytvářet toky jedinečný. Pokyny k návrhu a zmírnění distribuovaných útoků, přečtěte si část o [jak ke správě tohoto prostředku vyčerpatelným](#snatexhaust) a v části popisující [token PAT](#pat).
 
@@ -257,7 +257,8 @@ Pokud skupinu NSG blokuje požadavky sondy stavu z výchozí značky AZURE_LOADB
 
 ## <a name="next-steps"></a>Další postup
 
-- Další informace o [nástroje pro vyrovnávání zatížení](load-balancer-overview.md).
 - Další informace o [Load Balanceru úrovně Standard](load-balancer-standard-overview.md).
+- Další informace o [odchozí pravidla](load-balancer-outbound-rules-overview.md) pro veřejný Load balancer úrovně Standard.
+- Další informace o [nástroje pro vyrovnávání zatížení](load-balancer-overview.md).
 - Další informace o [skupiny zabezpečení sítě](../virtual-network/security-overview.md).
 - Přečtěte si o některých dalších klíčových [možnostech sítě](../networking/networking-overview.md) v Azure.

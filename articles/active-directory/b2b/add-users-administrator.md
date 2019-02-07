@@ -5,17 +5,17 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: conceptual
-ms.date: 12/14/2018
+ms.date: 2/6/2019
 ms.author: mimart
 author: msmimart
 manager: daveba
 ms.reviewer: mal
-ms.openlocfilehash: 43cceeb9b65bcee97855f96c781c5d157b32346a
-ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
+ms.openlocfilehash: 001eb1946ff0fdc073baaa6da76f4bfa63fc3652
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/26/2019
-ms.locfileid: "55080919"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55810623"
 ---
 # <a name="add-azure-active-directory-b2b-collaboration-users-in-the-azure-portal"></a>Přidat uživatele spolupráce Azure Active Directory B2B na webu Azure Portal
 
@@ -45,7 +45,7 @@ Chcete-li přidat uživatele spolupráce B2B do adresáře, postupujte podle tě
    ![Ukazuje, kde je nový uživatel typu Host v uživatelském rozhraní](./media/add-users-administrator/InviteGuest.png) 
 
     > [!NOTE]
-    > Někteří poskytovatelé e-mailu umožňují uživatelům přidat plus symbol (+) a další text pro jejich e-mailové adresy, které vám pomůžou s věci, jako je filtrování doručené pošty. Nicméně, Azure AD nepodporuje aktuálně plus symboly v e-mailové adresy. Abyste předešli problémům s doručování, vynechejte na symbol plus a všechny znaky následující až @ symbol.
+    > Skupiny e-mailové adresy nejsou podporovány. Zadejte e-mailovou adresu pro jednotlivce. Kromě toho některé poskytovateli e-mailu umožňují uživatelům přidat plus symbol (+) a další text pro jejich e-mailové adresy, které vám pomůžou s věci, jako je filtrování doručené pošty. Nicméně, Azure AD nepodporuje aktuálně plus symboly v e-mailové adresy. Abyste předešli problémům s doručování, vynechejte na symbol plus a všechny znaky následující až @ symbol.
 
 6. Výběrem možnosti **Pozvat** automaticky odešlete uživateli typu host pozvánku. 
  

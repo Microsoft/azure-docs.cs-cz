@@ -11,16 +11,16 @@ ms.devlang: multiple
 ms.topic: reference
 ms.date: 11/21/2017
 ms.author: cshoe
-ms.openlocfilehash: 6748998e87de7f0d5ea41a10ba16600aa7b31505
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: 269ea0162f85c7bd632e0528680fc8b0e2885aa9
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53972035"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55818120"
 ---
 # <a name="azure-cosmos-db-bindings-for-azure-functions-2x"></a>Vazby Azure Cosmos DB pro službu Azure Functions 2.x
 
-> [!div class="op_single_selector" title1="Vyberte verzi programu Azure Functions, který používáte: "]
+> [!div class="op_single_selector" title1="Select the version of the Azure Functions runtime you are using: "]
 > * [Verze 1](functions-bindings-cosmosdb.md)
 > * [Verze 2](functions-bindings-cosmosdb-v2.md)
 
@@ -57,7 +57,7 @@ Podívejte se na příklad specifické pro jazyk:
 * [JavaScript](#trigger---javascript-example)
 * [Python](#trigger---python-example)
 
-[Příklady přeskočit triggeru](#trigger---attributes)
+Příklady přeskočit triggeru
 
 ### <a name="trigger---c-example"></a>Aktivační události – příklad v jazyce C#
 
@@ -93,7 +93,7 @@ namespace CosmosDBSamplesV2
 }
 ```
 
-[Příklady přeskočit triggeru](#trigger---attributes)
+Příklady přeskočit triggeru
 
 ### <a name="trigger---c-script-example"></a>Aktivační události – příklad skriptu jazyka C#
 
@@ -131,7 +131,7 @@ Tady je kód skriptu jazyka C#:
     }
 ```
 
-[Příklady přeskočit triggeru](#trigger---attributes)
+Příklady přeskočit triggeru
 
 ### <a name="trigger---javascript-example"></a>Aktivační události – příklad v jazyce JavaScript
 
@@ -199,7 +199,7 @@ Tady je kód Java:
 V [Java funkce knihovny prostředí runtime](/java/api/overview/azure/functions/runtime), použijte `@CosmosDBTrigger` poznámku o parametrech, jehož hodnota bude pocházet ze služby Cosmos DB.  Tato poznámka je možné s nativní typy v jazyce Java, objektů Pojo nebo s povolenou hodnotou Null hodnoty pomocí nepovinné<T>.
 
 
-[Příklady přeskočit triggeru](#trigger---attributes)
+Příklady přeskočit triggeru
 
 ### <a name="trigger---python-example"></a>Aktivační události – příklad v Pythonu
 
@@ -1727,7 +1727,7 @@ Následující tabulka popisuje vlastnosti konfigurace vazby, které jste nastav
 
 V C# a F# funkce, když funkce skončí úspěšně, všechny změny provedené vstupní dokument přes pojmenované vstupní parametry jsou automaticky trvalé.
 
-Do funkce jazyka JavaScript nejsou automaticky provedeny aktualizace při ukončení funkce. Místo toho použijte `context.bindings.<documentName>In` a `context.bindings.<documentName>Out` ke zpřístupnění aktualizací. Zobrazit [příklad v jazyce JavaScript](#input---javascript-example).
+Do funkce jazyka JavaScript nejsou automaticky provedeny aktualizace při ukončení funkce. Místo toho použijte `context.bindings.<documentName>In` a `context.bindings.<documentName>Out` ke zpřístupnění aktualizací. Podívejte se na příklad JavaScript.
 
 ## <a name="output"></a>Výstup
 

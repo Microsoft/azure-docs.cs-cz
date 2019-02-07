@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 09/10/2018
 ms.author: barbkess
 ms.reviewer: asteen
-ms.openlocfilehash: 4d75ab2328cbc18142742c3111ef1f5e7d8eb8f2
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
+ms.openlocfilehash: f67633ec62b28f54a97cccd0f27b43bdb626ee58
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55731474"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55822761"
 ---
 # <a name="problems-signing-in-to-a-microsoft-application"></a>Potíže při přihlašování k aplikaci Microsoftu
 
@@ -34,11 +34,11 @@ Existují tři hlavní způsoby, že uživatel může získat přístup k aplika
 
 -   Pro aplikace, které společnost Microsoft nebo 3. stran publikuje zpřístupněna bezplatně pro může je používat kdokoli, uživatelé mohou také být udělen přístup prostřednictvím **souhlas správce**. To znamená, že správce určil, že aplikace může je používat kdokoli v organizaci, přihlaste se k aplikaci pomocí účtu globálního správce a udělit přístup všem uživatelům v organizaci.
 
-Váš problém vyřešit, spusťte s [obecné problémových oblastí pomocí přístupu k aplikacím, které byste měli zvážit](#general-problem-areas-with-application-access-to-consider) a pak si můžete přečíst [názorný postup: Postup řešení potíží s přístupem Microsoft Application](#walkthrough-steps-to-troubleshoot-microsoft-application-access) k ponoříte do detailů.
+Váš problém vyřešit, začínat [obecné problémových oblastí pomocí přístupu k aplikacím, které byste měli zvážit](#general-problem-areas-with-application-access-to-consider) a pak si můžete přečíst návodu: Postup řešení potíží s přístupem Microsoft Application ponoříte do detailů.
 
 ## <a name="general-problem-areas-with-application-access-to-consider"></a>Obecné problémových oblastí pomocí přístupu k aplikacím, které je třeba zvážit
 
-Následuje seznam obecné problémových oblastí, které můžete zobrazit další podrobnosti Pokud máte představu, kde začít, ale doporučujeme, abyste že si přečíst Průvodce pro rychlé zahájení práce: [Návod: Postup řešení potíží s přístupem Microsoft Application](#walkthrough-steps-to-troubleshoot-microsoft-application-access).
+Následuje seznam obecné problémových oblastí, které můžete zobrazit další podrobnosti Pokud máte představu, kde začít, ale doporučujeme, abyste že si přečíst Průvodce pro rychlé zahájení práce: Průvodce: Postup řešení potíží s přístupem Microsoft Application.
 
 -   [Problémy s účtem uživatele](#problems-with-the-users-account)
 

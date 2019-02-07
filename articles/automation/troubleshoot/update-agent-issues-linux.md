@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: automation
 ms.subservice: update-management
 manager: carmonm
-ms.openlocfilehash: e1dca8655c6bf609bee255f183bcd2fe9b56bc55
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: aafed492e83066be20b4728a2617527351291a5b
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54437485"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55813105"
 ---
 # <a name="understand-the-linux-agent-check-results-in-update-management"></a>Vysvětlení výsledky kontroly systému Linux agenta v Update Management
 
@@ -28,7 +28,7 @@ V následujícím seznamu jsou tři připravenosti stavy, které počítač mů�
 
 ## <a name="start-the-troubleshooter"></a>Spustit Poradce při potížích
 
-Pro počítače Azure, kliknutím **Poradce při potížích** odkaz v části **připravenost agenta aktualizací** sloupec v portálu spustí **řešení potíží s aktualizací agenta** stránky. Pro počítače mimo Azure přináší na odkaz můžete k tomuto článku. Zobrazit [offline pokyny](#offline) řešení potíží s počítači mimo Azure.
+Pro počítače Azure, kliknutím **Poradce při potížích** odkaz v části **připravenost agenta aktualizací** sloupec v portálu spustí **řešení potíží s aktualizací agenta** stránky. Pro počítače mimo Azure přináší na odkaz můžete k tomuto článku. Offline pokyny k řešení potíží s počítači mimo Azure.
 
 ![Stránka seznamu virtuálních počítačů](../media/update-agent-issues-linux/vm-list.png)
 
@@ -39,7 +39,7 @@ Na **řešení potíží s aktualizací agenta** klikněte na **spuštění zkon
 
 ![Řešení potíží s stránky](../media/update-agent-issues-linux/troubleshoot-page.png)
 
-Jakmile budete hotovi, výsledky se vrátí v okně. [Zkontrolujte oddíly](#pre-requisistes-checks) poskytují informace o každé kontrole hledání.
+Jakmile budete hotovi, výsledky se vrátí v okně. Vrácení části poskytují informace o každé kontrole hledání.
 
 ![Stránka pro aktualizaci agenta kontroly](../media/update-agent-issues-linux/update-agent-checks.png)
 

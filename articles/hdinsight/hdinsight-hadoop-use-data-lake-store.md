@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 11/06/2018
-ms.openlocfilehash: a174ae5eb31620646167f36a6f3e13605db5eac6
-ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
+ms.openlocfilehash: 5ba12e48092c02f9628e15166c84e871310d7556
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54052764"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55816369"
 ---
 # <a name="use-data-lake-storage-with-azure-hdinsight-clusters"></a>Použití Data Lake Storage s clustery Azure HDInsight
 
@@ -69,7 +69,7 @@ Aby bylo možné používat jako výchozího úložiště Data Lake Storage, je 
 - Složka pro všechny složky clusteru.  Například: adl://mydatalakestore/clusters.
 - Složka pro cluster.  Například: adl://mydatalakestore/clusters/cluster1storage.
 
-Další informace o vytvoření instančního objektu a udělení přístupu služby, najdete v části [přístup konfigurovat Data Lake Storage](#configure-data-lake-store-access).
+Další informace o vytvoření instančního objektu a udělení přístupu služby, najdete v části Konfigurace Data Lake Storage přístup.
 
 ### <a name="extracting-a-certificate-from-azure-keyvault-for-use-in-cluster-creation"></a>Extrahování certifikátu z Azure Key Vaultu pro použití při vytváření clusteru
 
@@ -117,12 +117,12 @@ Aby bylo možné použít jako další úložiště Data Lake Storage, potřebuj
 
     adl://mydatalakestore.azuredatalakestore.net/<file_path>
 
-Další informace o vytvoření instančního objektu a udělení přístupu služby, najdete v části [přístup konfigurovat Data Lake Storage](#configure-data-lake-store-access).
+Další informace o vytvoření instančního objektu a udělení přístupu služby, najdete v části Konfigurace Data Lake Storage přístup.
 
 
 ## <a name="use-more-than-one-data-lake-storage-accounts"></a>Použití více účtů Data Lake Storage
 
-Přidání účtu Data Lake Storage jako další a přidávání více než jeden Data Lake Storage účty se provést tak, že udělíte oprávnění ke clusteru HDInsight s daty v jedné nebo více účtů Data Lake Storage. Zobrazit [přístup konfigurovat Data Lake Storage](#configure-data-lake-store-access).
+Přidání účtu Data Lake Storage jako další a přidávání více než jeden Data Lake Storage účty se provést tak, že udělíte oprávnění ke clusteru HDInsight s daty v jedné nebo více účtů Data Lake Storage. Přístup k úložišti Data Lake najdete v tématu Konfigurace.
 
 ## <a name="configure-data-lake-storage-access"></a>Konfigurace přístupu v Data Lake Storage
 
@@ -241,7 +241,7 @@ V tomto článku jste zjistili, jak používat HDFS kompatibilní s Azure Data L
 Další informace naleznete v tématu:
 
 * [Začínáme se službou Azure HDInsight][hdinsight-get-started]
-* [Rychlý start: Nastavení clusterů v HDInsight](../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md)
+* [Rychlé zprovoznění: Nastavení clusterů v HDInsight](../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md)
 * [Vytvoření clusteru HDInsight pro použití Data Lake Storage pomocí Azure Powershellu](../data-lake-store/data-lake-store-hdinsight-hadoop-use-powershell.md)
 * [Nahrání dat do služby HDInsight][hdinsight-upload-data]
 * [Použití Apache Hivu se službou HDInsight][hdinsight-use-hive]

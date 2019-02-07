@@ -10,12 +10,12 @@ ms.subservice: implement
 ms.date: 04/17/2018
 ms.author: jrj
 ms.reviewer: igorstan
-ms.openlocfilehash: a09037f2e33d87446696dd11477c4e8b45af4187
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 11d41f9839456020ab65f11661c21f1e679cd76f
+ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55474169"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55770648"
 ---
 # <a name="migrate-your-data"></a>Migrace dat
 Data můžete přesunout z různých zdrojů do služby SQL Data Warehouse pomocí různých nástrojů.  Kopírovat ADF, SSIS a bcp můžete použít k dosažení tohoto cíle. Ale jako objem data zvýšení byste uvažovat o rozdělení proces migrace dat do kroků. To nabízí příležitosti k optimalizaci každý krok, výkon i odolnost zajistit hladký průběh data migrace.
@@ -29,11 +29,7 @@ Pokud vaše data se spustí v ploché soubory, pak musíte nejdřív přeneste d
 
 PolyBase nabízí také možnost vysoce výkonné pro načítání dat. Nicméně to znamená pomocí dvou nástrojů místo jednoho. Pokud potřebujete nejlepšího výkonu dosáhnete pak pomocí PolyBase. Pokud chcete, aby zkušenost jediného nástroje (a data nejsou masivní) ADF je odpověď.
 
-
-> 
-> 
-
-Přejděte na následující článek pro některé skvělé [ukázky ADF] [ukázky ADF].
+Postupujte podle [v tomto kurzu]( /articles/data-factory/load-azure-sql-data-warehouse.md) se naučíte, jak načíst data do datového skladu pomocí ADF.
 
 ## <a name="integration-services"></a>Integrační služby
 Integration Services (SSIS) je výkonný a flexibilní extrakce, transformace a načítání (ETL) nástroj, který podporuje komplexní pracovní postupy, transformace dat a několik možností, jak načítá data. Pomocí služby SSIS jednoduše přenést data do Azure nebo v rámci širší migrace.
@@ -182,7 +178,7 @@ Další tipy pro vývoj najdete v části [přehled vývoje][development overvie
 
 <!--Article references-->
 [AzCopy]: ../storage/common/storage-use-azcopy.md
-[ADF Copy]: ../data-factory/copy-activity-overview.md 
+[ADF Copy]: ../data-factory/load-azure-sql-data-warehouse.md 
 [ADF Copy examples]: ../data-factory/quickstart-create-data-factory-dot-net.md
 [development overview]: sql-data-warehouse-overview-develop.md
 [migrujte svoje schéma]: sql-data-warehouse-migrate-schema.md

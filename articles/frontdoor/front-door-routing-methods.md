@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/10/2018
 ms.author: sharadag
-ms.openlocfilehash: 26b4e2b1bf2dc9e59bc41e1d9f0628a1f476d402
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: bd1278db43ba31ed78f13a826a330e16c3bc8d57
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47031473"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55820840"
 ---
 # <a name="front-door-routing-methods"></a>Metody směrování branou
 
@@ -24,12 +24,12 @@ Služba Azure branou podporuje různé metody směrování provozu a zjistěte, 
 
 Ve vstupní brána k dispozici jsou čtyři hlavní koncepty, které směrování provozu:
 
-* **[Latence](#latency):** směrování na základě latence zajistí, že jsou odesílány požadavky na nejnižší latenci, back-EndY přijatelné rozsahu citlivosti. V podstatě uživatelských požadavků se posílají "nejbližší" sadu back-EndY s ohledem na latenci sítě.
-* **[Priorita](#priority):** váš různé back-end můžete přiřadit priority, pokud chcete použít primární služby back-endu pro veškerý provoz a poskytovat zálohování v případě primární nebo zálohování back-EndY nejsou k dispozici.
-* **[Váha](#weighted):** váš různé back-end můžete přiřadit váhu, pokud chcete za účelem distribuce provozu mezi sadu back-EndY, rovnoměrně nebo podle váhy koeficienty.
-* **[Spřažení relace na](#sessionaffinity):** můžete nakonfigurovat spřažení relace pro front-endu hostitele nebo doménách, pokud chcete, následné žádosti od uživatele se odesílají do stejného back-endu jako relace uživatele je stále aktivní a instance back-endu stále hlásí v pořádku podle sondy stavu. 
+* **[Latence](#latency):** Směrování na základě latence zajistí, že jsou odesílány požadavky na nejnižší latenci, back-EndY přijatelné rozsahu citlivosti. V podstatě uživatelských požadavků se posílají "nejbližší" sadu back-EndY s ohledem na latenci sítě.
+* **[Priorita](#priority):** Váš různé back-end můžete přiřadit priority, pokud chcete použít primární služby back-endu pro veškerý provoz a poskytují zálohování v případě, že nejsou k dispozici primární nebo zálohování back-EndY.
+* **[Váha](#weighted):** Váhu můžete přiřadit váš různé back-end, pokud chcete za účelem distribuce provozu mezi sadu back-EndY, rovnoměrně nebo podle váhy koeficienty.
+* **Spřažení relace:** Můžete nakonfigurovat spřažení pro front-endu hostitelů nebo doménách, pokud chcete, následné žádosti od uživatele se odesílají do stejného back-endu, dokud je pořád aktivní relaci uživatele ukončí a instance back-endu stále hlásí v pořádku podle sond stavu relace. 
 
-Všech konfigurací s branou zahrnovat stav back-endu monitorování a automatické rychlé globální převzetí služeb při selhání. Další informace najdete v tématu [branou back-endu monitorování](front-door-health-probes.md). Vaše vstupní brána lze nakonfigurovat buď pro práci na základě toho, jedinou metodu směrování a v závislosti na vaší aplikace potřebuje slouží několik nebo všechny tyto metody směrování v kombinaci vytvářet optimální směrování topologie.
+Všechny konfigurace služby Front Door zahrnují monitorování stavu back-endu a automatické okamžité globální převzetí služeb při selhání. Další informace najdete v tématu [branou back-endu monitorování](front-door-health-probes.md). Vaše vstupní brána lze nakonfigurovat buď pro práci na základě toho, jedinou metodu směrování a v závislosti na vaší aplikace potřebuje slouží několik nebo všechny tyto metody směrování v kombinaci vytvářet optimální směrování topologie.
 
 ## <a name = "latency"></a>Směrování provozu na základě nejnižší latence
 
@@ -66,16 +66,16 @@ Mezi seznamu k dispozici back-endů v rámci přijatelných latence citlivosti (
 
 Metody váženého umožňuje některé užitečné scénáře:
 
-* **Postupné zavádění upgradu**: přidělit procento provoz směrovat na nový back-end a postupně zvyšovat provoz tak, aby pamětích jiných back-EndY.
-* **Migrace aplikací do Azure**: vytvoření fondu back-end s Azure a externí back-EndY. Nastavte váhu back-EndY preferovat nový back-EndY. Můžete postupně nastavit to počínaje nový back-EndY zakázáno, s přiřazením je nejnižší váhy pomalu zvýšení úrovně, kde přebírají největším provozem. Potom nakonec zakázání méně upřednostňované back-EndY a odebírá z fondu.  
-* **Shlukování cloudu pro další kapacitu**: rychle vložením za branou rozbalte možnost místního nasazení do cloudu. Pokud potřebujete víc kapacity v cloudu, můžete přidat nebo povolit další back-EndY a určit, jaká část provoz směrován na každý back-end.
+* **Postupné zavádění upgradu**: Přidělení procenta provoz směrovat na nový back-end a postupně zvyšovat provoz tak, aby pamětích jiných back-EndY.
+* **Migrace aplikací do Azure**: Vytvořte fond back-end s Azure a externí back-EndY. Nastavte váhu back-EndY preferovat nový back-EndY. Můžete postupně nastavit to počínaje nový back-EndY zakázáno, s přiřazením je nejnižší váhy pomalu zvýšení úrovně, kde přebírají největším provozem. Potom nakonec zakázání méně upřednostňované back-EndY a odebírá z fondu.  
+* **Shlukování cloudu pro další kapacitu**: Vložením za branou rychle rozbalte místní nasazení do cloudu. Pokud potřebujete víc kapacity v cloudu, můžete přidat nebo povolit další back-EndY a určit, jaká část provoz směrován na každý back-end.
 
 ## <a name = "affinity"></a>Spřažení relace
-Ve výchozím nastavení, aniž by spřažení relace na branou směruje požadavky pocházejí ze stejného klienta na různé back-EndY podle zvlášť, jak změnit latenci na různé back-EndY, nebo pokud konfiguraci Vyrovnávání zatížení různé požadavky od stejného uživatele území na jiné prostředí branou. Nicméně některé stavových aplikací nebo u některých dalších scénářů, dáváte přednost, následné žádosti z stejný uživatel přejít na stejnou back-endu, počáteční požadavek zpracoval. Funkce spřažení relace na základě souborů cookie je užitečná, pokud chcete zachovat uživatelskou relaci na stejném backendu. Pomocí souborů cookie spravovaných branou branou služby Azure může směrovat následný provoz z uživatelské relace do stejného back-endu ke zpracování jako back-end je v pořádku a nevypršela platnost relace uživatele. 
+Ve výchozím nastavení, aniž by spřažení relace na branou směruje požadavky pocházejí ze stejného klienta na různé back-EndY podle zvlášť, jak změnit latenci na různé back-EndY, nebo pokud konfiguraci Vyrovnávání zatížení různé požadavky od stejného uživatele území na jiné prostředí branou. Pro některé stavové aplikace nebo v určitých jiných scénářích je však žádoucí, aby další požadavky od stejného uživatele přicházely do stejného back-endu, který zpracoval počáteční požadavek. Funkce spřažení relací na základě souborů cookie je užitečná v případě, že chcete zachovat uživatelskou relaci na stejném back-endu. Pomocí souborů cookie spravovaných branou branou služby Azure může směrovat následný provoz z uživatelské relace do stejného back-endu ke zpracování jako back-end je v pořádku a nevypršela platnost relace uživatele. 
 
-Je možné povolit spřažení relace na úrovni hostitele front-endu, který je pro všechny nakonfigurované domény (nebo subdomény). Po povolení branou přidá soubor cookie relace uživatele. Spřažení relace na základě souborů cookie umožňuje přední dveře k identifikaci různých uživatelů i v případě, že za stejnou IP adresu, která v zapnout umožňuje rovnoměrnější distribuci přenosů mezi vaší různé back-EndY.
+Spřažení relací je možné povolit na úrovni hostitele front-endu, to znamená pro všechny nakonfigurované domény (nebo subdomény). Po povolení přidá služba Front Door k relaci uživatele soubor cookie. Spřažení relací na základě souborů cookie umožňuje službě Front Door identifikovat různé uživatele i v případě, že jsou skryti za stejnou IP adresou. Díky tomu je možné rovnoměrněji distribuovat provoz mezi různé back-endy.
 
-Doba života souboru cookie, který je stejný jako uživatelské relace, jak přední dveře aktuálně podporuje pouze souboru cookie relace. 
+Doba života souboru cookie je stejná jako doba života relace uživatele, protože služba Front Door v současné době podporuje pouze soubor cookie relace. 
 
 > [!NOTE]
 > Veřejné servery proxy může kolidovat s spřažení relace. Je to proto, že vytvoření relace vyžaduje vstupní brána k přidání souboru cookie spřažení relace na odpověď, nejde provést, pokud odpověď je možné ukládat do mezipaměti, protože by to narušit soubory cookie z jiných klientů, žádosti o stejný prostředek. Abyste tomu předešli, spřažení relace bude **není** navázat back-endu odešle odpověď možné ukládat do mezipaměti při pokusu o to. Pokud relace už bylo navázáno, není důležitá, pokud odpověď z back-end je možné ukládat do mezipaměti.
@@ -86,5 +86,5 @@ Doba života souboru cookie, který je stejný jako uživatelské relace, jak p�
 
 ## <a name="next-steps"></a>Další postup
 
-- Zjistěte, jak [vytvořit přední dveře](quickstart-create-front-door.md).
-- Přečtěte si [fungování branou](front-door-routing-architecture.md).
+- Přečtěte si, jak [vytvořit službu Front Door](quickstart-create-front-door.md).
+- Přečtěte si, [jak služba Front Door funguje](front-door-routing-architecture.md).

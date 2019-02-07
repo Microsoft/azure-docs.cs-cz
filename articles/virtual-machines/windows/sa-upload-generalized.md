@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 05/18/2017
 ms.author: cynthn
 ROBOTS: NOINDEX
-ms.openlocfilehash: 199343fce4774ea643bc22c879efc6717aa0a510
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 658cee95d695a310291d5b7180815c89bc2f0401
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51244725"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55818103"
 ---
 # <a name="upload-a-generalized-vhd-to-azure-to-create-a-new-vm"></a>Nahrání generalizovaného virtuálního pevného disku do Azure a vytvořte nový virtuální počítač
 
@@ -41,7 +41,7 @@ Generalizovaného virtuálního pevného disku byla všechny informace vašeho o
   * Generalizace virtuálního počítače pomocí nástroje Sysprep
 
 ### <a name="generalize-a-windows-virtual-machine-using-sysprep"></a>Generalizace virtuálního počítače s Windows pomocí nástroje Sysprep
-Tato část ukazuje, jak zobecnit pro použití jako image virtuálního počítače Windows. Nástroj Sysprep kromě jiného odebere všechny informace o vašich osobních účtech a připraví počítač, aby se dal použít jako image. Další informace o nástroji Sysprep najdete v článku věnovaném [úvodu do použití nástroje Sysprep](https://technet.microsoft.com/library/bb457073.aspx).
+Tato část ukazuje, jak zobecnit pro použití jako image virtuálního počítače Windows. Nástroj Sysprep kromě jiného odebere všechny informace o vašich osobních účtech a připraví počítač, aby se dal použít jako image. Podrobnosti o nástroji Sysprep najdete v tématu [použití nástroje Sysprep: Úvod](https://technet.microsoft.com/library/bb457073.aspx).
 
 Ujistěte se, že na počítači spuštěná role serveru jsou podporované pomocí nástroje Sysprep. Další informace najdete v tématu [podpory nástroje Sysprep pro role serveru](https://msdn.microsoft.com/windows/hardware/commercialize/manufacture/desktop/sysprep-support-for-server-roles)
 
@@ -97,7 +97,7 @@ Pokud chcete zobrazit účty úložiště k dispozici, zadejte:
 Get-AzureRmStorageAccount
 ```
 
-Pokud chcete použít existující účet úložiště, pokračujte [nahrání image virtuálního počítače](#upload-the-vm-vhd-to-your-storage-account) oddílu.
+Pokud chcete použít existující účet úložiště, pokračujte k nahrávání oddíl image virtuálního počítače.
 
 Pokud potřebujete vytvořit účet úložiště, postupujte podle těchto kroků:
 

@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 07/31/2018
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: d437c6e2327fc9771f9567a37bfbf8ad82713b2b
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 79440cf69f921e5933ed410e276cdf304e94fa4f
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55452639"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55817270"
 ---
 # <a name="monitor-a-storage-account-in-the-azure-portal"></a>Monitorování účtu úložiště na webu Azure Portal
 
@@ -46,7 +46,7 @@ ms.locfileid: "55452639"
 
 1. Jakmile dokončíte konfiguraci monitorování, vyberte **Uložit**.
 
-Výchozí sada metriky se zobrazí v grafech v okně účtu úložiště, stejně jako okna konkrétní službu (objektu blob, fronty, tabulky a souboru). Po povolení metriky pro službu, může trvat až hodinu, se zobrazí v grafech jeho data. Můžete vybrat **upravit** na libovolný graf metrik pro [konfigurace, které metriky](#how-to-customize-metrics-charts) jsou zobrazeny v grafu.
+Výchozí sada metriky se zobrazí v grafech v okně účtu úložiště, stejně jako okna konkrétní službu (objektu blob, fronty, tabulky a souboru). Po povolení metriky pro službu, může trvat až hodinu, se zobrazí v grafech jeho data. Můžete vybrat **upravit** na libovolný graf metrik konfigurace, které metriky se zobrazí v grafu.
 
 Shromažďování metrik a protokolování lze zakázat nastavením **stav** k **vypnout**.
 
@@ -116,7 +116,7 @@ Grafy metrik Azure Storage pro všechny vaše účty úložiště můžete přid
    ![Galerie dlaždic na webu Azure portal](./media/storage-monitor-storage-account/storage-customize-dashboard.png)
 1. Vyberte **přizpůsobení dokončeno** v horní části řídicího panelu po dokončení přidávání grafů.
 
-Po přidání grafů na řídicí panel, můžete dále přizpůsobit jejich jak je popsáno v [přizpůsobení grafů metrik](#how-to-customize-metrics-charts).
+Po přidání grafů na řídicí panel, můžete dále přizpůsobit jejich jak je popsáno v grafu vlastní metriky.
 
 ## <a name="configure-logging"></a>Konfigurace protokolování
 

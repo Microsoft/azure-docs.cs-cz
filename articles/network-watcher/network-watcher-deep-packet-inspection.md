@@ -14,18 +14,18 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: jdial
-ms.openlocfilehash: 7af14143e8ce4924c17a41c6bb1ff33954f4b583
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.openlocfilehash: 1c30e679b250c2d6c6b03a1fe5d70dbd06acf052
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51568722"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55818358"
 ---
 # <a name="packet-inspection-with-azure-network-watcher"></a>Kontrolu paketů pomocí služby Azure Network Watcher
 
 Funkce zachytávání paketů služby Network Watcher můžete spustit a spravovat relace zachycení snímku na virtuálních počítačích Azure na portálu, Powershellu, rozhraní příkazového řádku a programově prostřednictvím sady SDK a rozhraní REST API. Zachytávání paketů se můžete k řešení scénářů, které vyžadují dat na úrovni paketů tím, že poskytuje informace ve snadno použitelného formátu. Využívání volně dostupných nástrojů ke kontrole dat, můžete prozkoumat komunikace do a z vašich virtuálních počítačů a získat přehled o provozu vaší sítě. Mezi příklad použití paketů zachycení dat patří: zkoumání potíží s sítě nebo aplikace, zjišťování sítě pokusy o zneužití a narušení nebo udržování dodržování legislativních předpisů. V tomto článku vám ukážeme, jak otevřít soubor zachycení paketu poskytuje sledovací proces sítě pomocí nástroje, Oblíbené open source. Poskytneme také příklady ukazující, jak vypočítat latence připojení, identifikovat abnormální provoz a zkontrolovat sítě statistiky.
 
-## <a name="before-you-begin"></a>Než začnete
+## <a name="before-you-begin"></a>Před zahájením
 
 Tento článek probírá některé předkonfigurovaných scénářů v zachytávání paketů, které bylo předchozí spuštění úspěšné. Tyto scénáře ukazují možnosti, které mohou být přístupné kontrolou zachytávání paketů. Tento scénář využívá [WireShark](https://www.wireshark.org/) ke kontrole zachytávání paketů.
 
@@ -61,7 +61,7 @@ Chcete-li zobrazit snadněji první dva pakety v třícestné TCP, jsme budou vy
 
 Použijte filtr v WireShark, rozbalte segmentu "Transmission Control Protocol" [SYN] paketu na vaše snímku a zkontrolujte nastavení příznaků v hlavičce protokolu TCP.
 
-Protože chceme filtrovat podle všech [SYN] a [SYN ACK] paketů, v části Příznaky cofirm, že je Syn bit nastaven na hodnotu 1 a pak klikněte pravým tlačítkem na Syn bit -> použít jako filtr -> vybrané.
+Protože chceme filtrovat podle všech [SYN] a [SYN ACK] paketů, v části Příznaky potvrďte, že je Syn bit nastaven na hodnotu 1 a pak klikněte pravým tlačítkem na Syn bit -> použít jako filtr -> vybrané.
 
 ![Obrázek 7][7]
 

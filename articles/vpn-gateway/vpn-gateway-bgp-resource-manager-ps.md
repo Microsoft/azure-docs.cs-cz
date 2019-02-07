@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/12/2017
 ms.author: yushwang
-ms.openlocfilehash: 97b33ed76776ae00c109e891b3d91638080ed778
-ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
+ms.openlocfilehash: b48382c8f429576a3d15c624c9c9028cffec3872
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55508398"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55813020"
 ---
 # <a name="how-to-configure-bgp-on-azure-vpn-gateways-using-powershell"></a>Postup konfigurace protokolu BGP na Azure VPN Gateway pomocí Powershellu
 Tento článek vás provede kroky k povolení protokolu BGP pro připojení VPN typu Site-to-Site (S2S) mezi místními a připojení typu VNet-to-VNet pomocí modelu nasazení Resource Manageru a Powershellu.
@@ -35,7 +35,7 @@ Zobrazit [přehled protokolu BGP s bránami Azure VPN Gateway](vpn-gateway-bgp-o
 Tento článek vás provede kroky a proveďte následující úlohy:
 
 * [Část 1 – povolit protokol BGP na bráně Azure VPN](#enablebgp)
-* [Část 2 – Vytvoření připojení mezi různými místy pomocí protokolu BGP](#crossprembgp)
+* Část 2 – Vytvoření připojení mezi různými místy pomocí protokolu BGP
 * [Část 3 – vytvoření připojení VNet-to-VNet s protokolem BGP](#v2vbgp)
 
 Každá část pokynů tvoří základní stavební blok pro povolení protokolu BGP v připojení k síti. Jestliže dokončíte všechny tři části, jak je znázorněno v následujícím diagramu vytvářet topologie:

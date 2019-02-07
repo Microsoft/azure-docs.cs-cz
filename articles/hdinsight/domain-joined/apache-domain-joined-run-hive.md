@@ -9,14 +9,14 @@ ms.reviewer: mamccrea
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: 51e9d12d9f8801102997266cfd6699a367b11126
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.openlocfilehash: 8effa84c9d7adc14060fb00fae9915a04c1d04cc
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53435511"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55821214"
 ---
-# <a name="configure-apache-hive-policies-in-hdinsight-with-enterprise-security-package"></a>Nakonfigurovat zásady Apache Hive v HDInsight s balíčkem Enterprise Security Package
+# <a name="configure-apache-hive-policies-in-hdinsight-with-enterprise-security-package"></a>Konfigurace zásad Apache Hivu ve službě HDInsight s balíčkem zabezpečení podniku
 Zjistěte, jak nakonfigurovat zásady Apache Rangeru pro Apache Hive. V tomto článku vytvoříte dvě zásady Ranger pro omezení přístupu k hivesampletable. Hivesampletable je součástí clusterů HDInsight. Po nakonfigurování zásad použijete Excel nebo ovladač ODBC a připojíte se k tabulkám Hivu ve službě HDInsight.
 
 ## <a name="prerequisites"></a>Požadavky
@@ -45,7 +45,7 @@ V této části vytvoříte dvě zásady Ranger pro přistupování k hivesample
 
 **Vytvoření zásad Ranger**
 
-1. Otevřete uživatelské rozhraní správce Ranger. Viz [Připojení k uživatelskému rozhraní správce Apache Ranger](#connect-to-apache-ranager-admin-ui).
+1. Otevřete uživatelské rozhraní správce Ranger. Zobrazit připojení k uživatelskému rozhraní správce Apache Ranger.
 2. V části **Hive** klikněte na **&lt;název_clusteru>_hive**. Měly by se zobrazit dvě předem nakonfigurované zásady.
 3. Klikněte na **Add New Policy (Přidat novou zásadu)** a pak zadejte následující hodnoty:
 

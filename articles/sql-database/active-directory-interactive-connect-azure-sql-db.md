@@ -12,16 +12,16 @@ ms.author: MirekS
 ms.reviewer: GeneMi
 ms.date: 01/25/2019
 manager: craigg
-ms.openlocfilehash: def50aecbcf9186af9d0b9c781c3141ad2dcee59
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.openlocfilehash: a7f2dbdb089df8035d18db25b3968d63a3c97c0f
+ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 02/06/2019
-ms.locfileid: "55753669"
+ms.locfileid: "55767495"
 ---
 # <a name="connect-to-azure-sql-database-with-active-directory-mfa"></a>Připojení k Azure SQL Database pomocí služby Active Directory MFA
 
-Tento článek obsahuje C# program, který se připojuje k Microsoft Azure SQL Database. Program používá interaktivní režim ověřování, která podporuje [Azure Active Directory (AD) vícefaktorové ověřování (MFA)](https://docs.microsoft.com/azure/active-directory/authentication/concept-mfa-howitworks).
+Tento článek obsahuje C# program, který se připojuje k Microsoft Azure SQL Database. Program používá interaktivní režim ověřování, která podporuje [Azure Active Directory (Azure AD) vícefaktorové ověřování (MFA)](https://docs.microsoft.com/azure/active-directory/authentication/concept-mfa-howitworks).
 
 Další informace o podpoře vícefaktorové ověřování pro nástroje systému SQL najdete v tématu [podpora služby Azure Active Directory v SQL Server Data Tools (SSDT)](https://docs.microsoft.com/sql/ssdt/azure-active-directory).
 
@@ -29,15 +29,15 @@ Další informace o podpoře vícefaktorové ověřování pro nástroje systém
 
 Počínaje rozhraním .NET Framework verze 4.7.2, výčtového typu [ `SqlAuthenticationMethod` ](https://docs.microsoft.com/dotnet/api/system.data.sqlclient.sqlauthenticationmethod) má nová hodnota - `ActiveDirectoryInteractive`. V klientovi C# programu, hodnota výčtu určí, že systém použít interaktivní režim Azure AD podporuje vícefaktorové ověřování pro připojení ke službě Azure SQL Database. Uživatel, který spouští program zobrazí dialogových oknech následující:
 
-1. Dialogové okno, které zobrazí uživatelské jméno Azure AD a vyzve k zadání hesla.
+* Dialogové okno, které zobrazí uživatelské jméno Azure AD a vyzve k zadání hesla.
 
    Pokud doména uživatele je Federovaná pomocí služby Azure AD, pak toto dialogové okno nezobrazí podle potřeby bez hesla.
 
    Pokud zásady Azure AD MFA ukládá na uživatele, se zobrazí další dvě dialogových oknech.
 
-2. Při prvním uživatel prochází MFA, systém zobrazí dialogové okno s žádostí o mobilní telefonní číslo neposílali textové zprávy na. Každá zpráva obsahuje *ověřovací kód* , které uživatel musí zadat v dialogovém okně Další.
+* Při prvním uživatel prochází MFA, systém zobrazí dialogové okno s žádostí o mobilní telefonní číslo neposílali textové zprávy na. Každá zpráva obsahuje *ověřovací kód* , které uživatel musí zadat v dialogovém okně Další.
 
-3. Dialogové okno s žádostí o ověřovací kód vícefaktorové ověřování, které systém odeslala na mobilní telefon.
+* Dialogové okno s žádostí o ověřovací kód vícefaktorové ověřování, které systém odeslala na mobilní telefon.
 
 Informace o tom, jak nakonfigurovat tak, aby vyžadovala vícefaktorové ověřování Azure AD najdete v tématu [Začínáme se službou Azure Multi-Factor Authentication v cloudu](https://docs.microsoft.com/azure/multi-factor-authentication/multi-factor-authentication-get-started-cloud).
 
@@ -59,7 +59,7 @@ Než začnete, měli byste [serveru Azure SQL Database](sql-database-get-started
 ### <a name="register-your-app-and-set-permissions"></a>Registrace aplikace a nastavení oprávnění
 
 
-Použití ověřování Azure AD vaší C# program se má zaregistrovat jako aplikaci AD. Postup pro registraci aplikace, musíte být správce AD nebo uživatel přiřazenou AD *vývojář aplikace* role. Další informace o přiřazování rolí najdete v tématu [přiřazení rolí správce a bez oprávnění správce uživatelům v Azure Active Directory.](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-users-assign-role-azure-portal)
+Použití ověřování Azure AD vaší C# program se má zaregistrovat jako aplikaci Azure AD. Postup pro registraci aplikace, musíte být správce Azure AD nebo Azure AD přiřadit uživatele *vývojář aplikace* role. Další informace o přiřazování rolí najdete v tématu [přiřazení rolí správce a bez oprávnění správce uživatelům v Azure Active Directory.](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-users-assign-role-azure-portal)
 
  Dokončuje se registrace aplikace vygeneruje a zobrazí **ID aplikace**. Program musí obsahovat toto ID se má připojit.
 
@@ -147,7 +147,7 @@ Spusťte aplikaci SSMS znovu, tentokrát s **ověřování** nastavena na **univ
 Další informace najdete v tématu [ověřování službou Multi-Factor Authentication konfigurovat pro aplikace SSMS a Azure AD](sql-database-ssms-mfa-authentication-configure.md).
 
 > [!NOTE]
-> Pokud jste uživatel typu Host v databázi, musíte také zadat název domény AD pro databázi - **možnosti** > **ID tenanta nebo název domény AD**. Chcete-li najít název domény na webu Azure Portal, vyberte **Azure Active Directory** > **vlastní názvy domén**. V C# ukázkový program, poskytnutí názvu domény není nutné.
+> Pokud jste uživatel typu Host v databázi, musíte také zadat název domény Azure AD pro databázi - **možnosti** > **ID tenanta nebo název domény AD**. Chcete-li najít název domény na webu Azure Portal, vyberte **Azure Active Directory** > **vlastní názvy domén**. V C# ukázkový program, poskytnutí názvu domény není nutné.
 
 ## <a name="c-code-example"></a>Příklad kódu jazyka C#
 
@@ -161,7 +161,7 @@ Chcete-li nainstalovat tento balíček v sadě Visual Studio, vyberte **projektu
 
 using System;
 
-// Reference to AD authentication assembly
+// Reference to Azure AD authentication assembly
 using Microsoft.IdentityModel.Clients.ActiveDirectory;
 
 using DA = System.Data;

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: multiple
 ms.date: 06/11/2018
 ms.author: ryanwi
-ms.openlocfilehash: 9cb41bfde38d9b47f5db994c0ca39c64b453ef1d
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 548c05963b0b99ba3434d600b19f80cef6a09d6a
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55171452"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55813343"
 ---
 # <a name="reliable-services-application-and-service-manifest-examples"></a>Příklady manifestu služeb a aplikace Reliable Services
 Následují příklady manifestů aplikace a služby pro aplikaci Service Fabric s front-endového webového rozhraní ASP.NET Core a stavovým back endem. Účelem těchto příkladech je zobrazit nastavení, které jsou k dispozici a jak je používat. Tyto aplikace a služby manifestů jsou založeny na [rychlý úvod k Service Fabric .NET](https://github.com/Azure-Samples/service-fabric-dotnet-quickstart/) manifesty.
@@ -28,8 +28,8 @@ Jsou zobrazeny následující funkce:
 |Manifest|Funkce|
 |---|---|
 |[Manifest aplikace](#application-manifest)| [zásady správného řízení prostředků](service-fabric-resource-governance.md), [spuštění služby jako účet místního správce](service-fabric-application-runas-security.md), [výchozí zásady platí pro všechny balíčky kódu služby](service-fabric-application-runas-security.md#apply-a-default-policy-to-all-service-code-packages), [vytvoření uživatelů a skupin objektů zabezpečení](service-fabric-application-runas-security.md), sdílené složky balíčku dat mezi instancemi služeb [přepsat koncové body služby](service-fabric-service-manifest-resources.md#overriding-endpoints-in-servicemanifestxml)| 
-|[Manifest služby FrontEndService](#frontendservice-service-manifest)| [Spuštění skriptu při spuštění služby](service-fabric-run-script-at-service-startup.md), [definovat koncový bod HTTPS](service-fabric-tutorial-dotnet-app-enable-https-endpoint.md#define-an-https-endpoint-in-the-service-manifest) | 
-|[Manifest služby BackEndService](#backendservice-service-manifest)| [Deklarovat konfigurační balíček](service-fabric-application-and-service-manifests.md), [deklarovat balíček dat](service-fabric-application-and-service-manifests.md), [konfigurace koncového bodu](service-fabric-service-manifest-resources.md)| 
+|Manifest služby FrontEndService| [Spuštění skriptu při spuštění služby](service-fabric-run-script-at-service-startup.md), [definovat koncový bod HTTPS](service-fabric-tutorial-dotnet-app-enable-https-endpoint.md#define-an-https-endpoint-in-the-service-manifest) | 
+|Manifest služby BackEndService| [Deklarovat konfigurační balíček](service-fabric-application-and-service-manifests.md), [deklarovat balíček dat](service-fabric-application-and-service-manifests.md), [konfigurace koncového bodu](service-fabric-service-manifest-resources.md)| 
 
 Naleznete v tématu [elementy manifestu aplikace](#application-manifest-elements), [elementy manifestu služby VotingWeb](#votingweb-service-manifest-elements), a [manifestu prvky služeb VotingData](#votingdata-service-manifest-elements) Další informace o konkrétní XML elementy.
 

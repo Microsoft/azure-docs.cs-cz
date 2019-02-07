@@ -11,12 +11,12 @@ ms.subservice: bing-image-search
 ms.topic: article
 ms.date: 04/15/2017
 ms.author: scottwhi
-ms.openlocfilehash: f0f3396852720bbbb31e46f7a9913d9d1bdc4a6c
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 8798ecd15c673c26c5b1be0920887ff493cc6a85
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55157237"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55818681"
 ---
 # <a name="get-image-insights-with-the-bing-image-search-api"></a>Získání přehledů image pomocí rozhraní API Bingu pro vyhledávání obrázků
 
@@ -221,7 +221,7 @@ Hodnoty obdélník jsou relativní vzhledem k šířku a výšku původní bitov
 -   Right: 290 / 300 = 0.9667...  
 -   Dole: 150 / 200 = 0.75  
 
-Můžete použít oblast, která vrací Bingu ve voláních další přehledy. Chcete-li například získat vizuálně podobné obrázky rozpoznaný entity. Další informace najdete v tématu [oříznutí Image na použití s moduly rozpoznávání entit a vizuálně podobné](#croppingimages). Následuje ukázka mapování polí oblast a parametry dotazu, můžete použít k oříznutí obrázků.  
+Můžete použít oblast, která vrací Bingu ve voláních další přehledy. Chcete-li například získat vizuálně podobné obrázky rozpoznaný entity. Další informace najdete v tématu oříznutí Image na použití s moduly rozpoznávání entit a vizuálně podobné. Následuje ukázka mapování polí oblast a parametry dotazu, můžete použít k oříznutí obrázků.  
 
 -   Vlevo se mapuje na [cal](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#cal)  
 -   TOP mapuje [cat](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#cat)  

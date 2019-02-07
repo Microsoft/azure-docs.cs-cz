@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 04/23/2018
 ms.author: hrasheed
-ms.openlocfilehash: 03b4cc919086ff2a8eb038ad9c4f45200e9a6246
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: 79bc9310eb3f7c8dd2b295405cea70c514d343d3
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53715100"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55820859"
 ---
 # <a name="manage-hdinsight-clusters-by-using-the-apache-ambari-rest-api"></a>Správa clusterů HDInsight pomocí rozhraní Apache Ambari REST API
 
@@ -132,7 +132,7 @@ $respObj.Clusters.health_report
 ```
 
 > [!NOTE]  
-> Přestože většina příkladů v tomto dokumentu využívají `ConvertFrom-Json` zobrazíte prvky z dokumentu odpovědi [Ambari aktualizace konfigurace](#example-update-ambari-configuration) příkladu jq. Jq v tomto příkladu slouží k vytvoření nové šablony z dokumentu JSON odpovědi.
+> Přestože většina příkladů v tomto dokumentu využívají `ConvertFrom-Json` prvky z dokumentu odpověď zobrazíte používá příklad konfigurace aktualizace Ambari jq. Jq v tomto příkladu slouží k vytvoření nové šablony z dokumentu JSON odpovědi.
 
 Úplný popis rozhraní REST API najdete v části [Apache Ambari API Reference V1](https://github.com/apache/ambari/blob/trunk/ambari-server/docs/api/v1/index.md).
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 02/08/2017
 ms.author: alkohli
-ms.openlocfilehash: 76b89c15a12810f98e6324ca93cf581f9b852c88
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: f2c726fd4159bcb47088e814fd60e054e50a1315
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51259934"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55814278"
 ---
 # <a name="storsimple-for-cloud-solutions-provider-program-frequently-asked-questions"></a>StorSimple pro Cloud Solutions Provider Program: Nejčastější dotazy
 
@@ -31,7 +31,7 @@ Otázky a odpovědi jsou uspořádány do následujících kategorií:
 
  - [Model StorSimple a řešení poskytovatele programu CSP (Cloud)](#storsimple-and-csp-model)
  - [Nasadit a spravovat virtuální pole jako partner](#deploy-and-manage-storsimple-as-a-partner)
- - [Podpora pro partnery StorSimple pro CSP](#support-for-storsimple-partners)
+ - Podpora pro partnery StorSimple pro CSP
 
 ## <a name="storsimple-and-csp-model"></a>Model StorSimple a CSP
 
@@ -94,7 +94,7 @@ Model podpory StorSimple in CSP je stejné jako u jiných služeb Azure in CSP. 
 Další informace o StorSimple pro CSP přejděte na:
 
 - [Program Microsoft Cloud Solution Provider](https://partner.microsoft.com/Membership)
-- [Partnerské centrum](https://partnercenter.microsoft.com/) 
+- [Partner Center](https://partnercenter.microsoft.com/) 
 
 
 ## <a name="next-steps"></a>Další postup

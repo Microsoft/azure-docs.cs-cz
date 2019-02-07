@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/07/2018
 ms.author: cherylmc
-ms.openlocfilehash: 0d915592053c256d3640d0f0de7bb94bf109f2c8
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.openlocfilehash: 8fc2c487a374a34cd9a7642a45fd59c04061b398
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55700158"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55817814"
 ---
 # <a name="create-and-install-vpn-client-configuration-files-for-p2s-radius-authentication"></a>Vytvoření a instalace konfiguračních souborů klienta VPN pro ověřování P2S pomocí protokolu RADIUS
 
@@ -260,7 +260,7 @@ Použijte následující postup ke konfiguraci nativního klienta VPN v systému
 
 Použít jiný typ ověřování (například ověřování jednorázovým HESLEM) nebo použít jinou ověřovací protokol (například přes protokol PEAP-MSCHAPv2 místo protokolu EAP-MSCHAPv2), musíte vytvořit vlastní profil konfigurace klienta VPN. Vytvořte profil, budete potřebovat informace, například IP adresa brány virtuální sítě, Typ tunelového propojení a děleného tunelového propojení trasy. Tyto informace můžete získat pomocí následujících kroků:
 
-1. Použití `Get-AzureRmVpnClientConfiguration` rutiny pro generování konfigurace klienta VPN pro EapMSChapv2. Pokyny najdete v tématu [v této části](#ccradius) tohoto článku.
+1. Použití `Get-AzureRmVpnClientConfiguration` rutiny pro generování konfigurace klienta VPN pro EapMSChapv2. Pokyny najdete v této části tohoto článku.
 
 2. Rozbalte soubor VpnClientConfiguration.zip a hledejte **GenericDevice** složky. Ignorujte složky, které obsahují Windows instalačních programů pro 64bitové a 32bitové architektury.
  

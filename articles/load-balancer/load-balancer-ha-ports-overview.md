@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/11/2018
 ms.author: kumud
-ms.openlocfilehash: f1d95534fb553c6a6d1be4d72a3251ad6a573f20
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: 328471292ea6cbe07e96cc18af7f9c524407de3d
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53317188"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55809466"
 ---
 # <a name="high-availability-ports-overview"></a>Přehledu portů s vysokou dostupností
 
@@ -100,7 +100,7 @@ Můžete nakonfigurovat *jeden* prostředků veřejného Load balanceru úrovně
 
 - Funkce porty HA není k dispozici pro protokol IPv6.
 
-- Tok symetrie (hlavně pro scénáře síťové virtuální zařízení) se podporuje s back-end instance a jednu síťovou kartu (a konfigurací jedné IP) pouze při použití, jak je znázorněno [diagram](#diagram) výše a pomocí porty s vysokou DOSTUPNOSTÍ zatížení, pravidel vyrovnávání. To není k dispozici ve všech scénářích. To znamená, že dva nebo více prostředků nástroje pro vyrovnávání zatížení a jejich odpovídajících pravidel nezávislé rozhodování a nejsou nikdy koordinované. Zobrazit popis a diagram pro [síťových virtuálních zařízení](#nva). Pokud používáte více síťových rozhraní nebo sandwiching síťové virtuální zařízení mezi veřejné a vnitřní nástroji pro vyrovnávání zatížení, symetrie flow není k dispozici.  Bude pravděpodobně možné vyřešit podle zdroje NAT'ing příchozí tok na IP adresu zařízení povolit odpovědi můžete přejít na stejné síťové virtuální zařízení.  Však důrazně doporučujeme použít jednu síťovou kartu a pomocí referenční architektura ukazuje [diagram](#diagram) výše.
+- Tok symetrie (hlavně pro scénáře síťové virtuální zařízení) se podporuje s back-end instance a jednu síťovou kartu (a konfigurací jedné IP) pouze při použití, jak je znázorněno v diagramu výše a pomocí porty s vysokou DOSTUPNOSTÍ pravidla Vyrovnávání zatížení. To není k dispozici ve všech scénářích. To znamená, že dva nebo více prostředků nástroje pro vyrovnávání zatížení a jejich odpovídajících pravidel nezávislé rozhodování a nejsou nikdy koordinované. Zobrazit popis a diagram pro [síťových virtuálních zařízení](#nva). Pokud používáte více síťových rozhraní nebo sandwiching síťové virtuální zařízení mezi veřejné a vnitřní nástroji pro vyrovnávání zatížení, symetrie flow není k dispozici.  Bude pravděpodobně možné vyřešit podle zdroje NAT'ing příchozí tok na IP adresu zařízení povolit odpovědi můžete přejít na stejné síťové virtuální zařízení.  Však důrazně doporučujeme použít jednu síťovou kartu a pomocí referenční architektuře, která je ve výše uvedeném diagramu.
 
 
 ## <a name="next-steps"></a>Další postup

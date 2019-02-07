@@ -8,12 +8,12 @@ ms.service: iot-hub
 ms.topic: conceptual
 ms.date: 01/15/2019
 ms.author: rezas
-ms.openlocfilehash: 426c8995e5c3d98e42d0ad334b8ae52171556dce
-ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
+ms.openlocfilehash: ea50902a557e8bd7aa18fbc03fca8fc4a99ac2e2
+ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54884958"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55770784"
 ---
 # <a name="iot-hub-device-streams-preview"></a>IoT Hub zařízení datové proudy (preview)
 
@@ -82,8 +82,22 @@ Zařízení i ze strany služby stream zařízení musí být schopen vytvořit 
 Můžete také informace koncové body pomocí se dají načíst pomocí rozhraní příkazového řádku Azure v části Vlastnosti centra konkrétně `property.hostname` a `property.deviceStreams` klíče.
 
 ```azurecli-interactive
-az iot hub show --name <YourIoTHubName>
+az iot hub devicestream show --name <YourIoTHubName>
 ```
+
+Výstup je objekt JSON všechny koncové body, které vaše Centrum zařízení a služeb může být nutné připojit ke vytvořit datový proud zařízení.
+
+```json
+{
+  "streamingEndpoints": [
+    "https://<YourIoTHubName>.<region-stamp>.streams.azure-devices.net"
+  ]
+}
+```
+
+> [!NOTE]
+> Ověřte instalaci Azure CLI verze 2.0.57 nebo novější. Nejnovější verzi můžete stáhnout [tady](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest).
+> 
 
 ## <a name="whitelist-device-streaming-endpoints"></a>Koncové body streamování povolených zařízení
 
@@ -92,9 +106,14 @@ Jak už bylo zmíněno [starší](#Overview), vaše zařízení vytvoří odchoz
 Název hostitele koncového bodu streamování zařízení můžete najít na portálu Azure IoT Hub na kartě Přehled. ![Alternativní text](./media/iot-hub-device-streams-overview/device-stream-portal.PNG "koncové body služby stream zařízení")
 
 Alternativně můžete najít tyto informace pomocí Azure CLI:
-```cmd/sh
-az iot hub show --name <YourIoTHubName>
+
+```azurecli-interactive
+az iot hub devicestream show --name <YourIoTHubName>
 ```
+
+> [!NOTE]
+> Ověřte instalaci Azure CLI verze 2.0.57 nebo novější. Nejnovější verzi můžete stáhnout [tady](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest).
+> 
 
 ## <a name="troubleshoot-via-device-streams-activity-logs"></a>Řešení potíží pomocí datové proudy zařízení protokolů aktivit
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: tbd
 ms.date: 07/18/2017
 ms.author: jeconnoc
-ms.openlocfilehash: 78a073ec7ee8432ba7804daef150afcbbca23ef6
-ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
+ms.openlocfilehash: a2af7ffde336016ae89a1ab03d753ed11b901e05
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50095565"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55818698"
 ---
 # <a name="sizes-for-cloud-services"></a>Velikosti pro Cloud Services
 Toto téma popisuje dostupné velikosti a možnosti pro instance rolí cloudové služby (webové role a role pracovního procesu). Také poskytuje důležité informace o nasazení je potřeba vědět při plánování použití těchto prostředků. Jednotlivé velikosti má ID, kam si ukládáte váš [definiční soubor služby](cloud-services-model-and-package.md#csdef). Ceny platné pro jednotlivé velikosti jsou k dispozici na [ceny Cloud Services](https://azure.microsoft.com/pricing/details/cloud-services/) stránky.
@@ -63,9 +63,9 @@ Jsme vytvořili koncept výpočetní jednotky Azure (ACU) poskytnout způsob por
 | [ExtraLarge (krátkodobé používání)](#a-series) |100 |
 | [A5-7](#a-series) |100 |
 | [A8-A11](#a-series) |225* |
-| [V2](#av2-series) |100 |
+| [A v2](#av2-series) |100 |
 | [D](#d-series) |160 |
-| [D verze 2](#dv2-series) |160 - 190* |
+| [D v2](#dv2-series) |160 - 190* |
 | [D v3](#dv3-series) |160 - 190* |
 | [E v3](#ev3-series) |160 - 190* |
 | [G](#g-series) |180 - 240* |
@@ -195,7 +195,7 @@ Virtuální počítače Azure H-series jsou další generací počítačů s vys
 ## <a name="configure-sizes-for-cloud-services"></a>Konfigurace velikosti pro Cloud Services
 Velikost instance role virtuálního počítače můžete zadat jako součást modelu služby popsaného [definiční soubor služby](cloud-services-model-and-package.md#csdef). Velikost role určuje počet jader procesoru, kapacita paměti a velikost místního systému souborů, který je přidělen spuštěné instance. Zvolte velikost role, které jsou založené na požadavku prostředek vaší aplikace.
 
-Tady je příklad pro nastavení velikosti role bude [Standard_D2](#general-purpose-d) instance webové Role:
+Tady je příklad pro nastavení velikosti role bude Standard_D2 instance webové Role:
 
 ```xml
 <WorkerRole name="Worker1" vmsize="Standard_D2">

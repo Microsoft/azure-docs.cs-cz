@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/24/2017
 ms.author: jdial
-ms.openlocfilehash: 93534cf80a007dbb848a515ec4ec165c67e3b456
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
+ms.openlocfilehash: deca97b0749ceab9f2dfaf3c3940ac6b02b9c104
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55730692"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55822183"
 ---
 # <a name="create-change-or-delete-a-network-interface"></a>Vytvoření, změna nebo odstranění síťového rozhraní
 
@@ -52,7 +52,7 @@ Při vytváření virtuálního počítače pomocí webu Azure portal, na portá
     |Přidělení privátní IP adresy|Ano| V tomto nastavení, abyste dokázali vybrat metody přiřazení pro IPv4 adresu. Zvolte jednu z následujících metod přiřazení: **Dynamické:** Když vyberete tuto možnost, Azure automaticky přiřadí další dostupnou adresou z adresního prostoru podsítě, kterou jste vybrali. **Statické:** Když vyberete tuto možnost, musíte ručně přiřadit dostupnou IP adresu z v rámci adresního prostoru podsítě, kterou jste vybrali. Statické a dynamické adresy se nezmění, dokud je změna nebo odstranění síťového rozhraní. Metodu přiřazování můžete změnit po vytvoření síťového rozhraní. Server Azure DHCP přiřadí tuto adresu k síťovému rozhraní v operačním systému virtuálního počítače.|
     |Skupina zabezpečení sítě|Ne| Ponechejte nastavený na hodnotu **žádný**, vyberte existující [skupinu zabezpečení sítě](security-overview.md), nebo [vytvořte skupinu zabezpečení sítě](tutorial-filter-network-traffic.md). Skupiny zabezpečení sítě vám umožní filtrovat síťový provoz do a z síťové rozhraní. Můžete provést žádnou nebo jednu skupinu zabezpečení sítě k síťovému rozhraní. Žádnou nebo jednu skupinu zabezpečení sítě můžete také použít pro podsíť, ve které je přiřazeno síťové rozhraní. Při použití skupinu zabezpečení sítě u síťových rozhraní a podsítě, přiřazené k síťovému rozhraní, dojde k někdy neočekávané výsledky. Řešení potíží se skupinami zabezpečení sítě u síťových rozhraní a podsítí, najdete v článku [řešení potíží se skupinami zabezpečení sítě](diagnose-network-traffic-filter-problem.md).|
     |Předplatné|Ano|Vyberte jednu z Azure [předplatná](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#subscription). Virtuální počítač připojit síťové rozhraní a propojte jej s virtuální síť musí existovat ve stejném předplatném.|
-    |Privátní IP adresa (IPv6)|Ne| Pokud zaškrtnete toto políčko, adresa protokolu IPv6 je přiřazené k síťovému rozhraní, kromě IPv4 adresu přiřazenou k síťovému rozhraní. Zobrazit [IPv6](#IPv6) části tohoto článku důležité informace o použití protokolu IPv6 se síťovými rozhraními. Nelze vybrat metodu přiřazení pro adresu IPv6. Pokud se rozhodnete přiřadit adresu protokolu IPv6, je přiřazen s dynamickou metodu.
+    |Privátní IP adresa (IPv6)|Ne| Pokud zaškrtnete toto políčko, adresa protokolu IPv6 je přiřazené k síťovému rozhraní, kromě IPv4 adresu přiřazenou k síťovému rozhraní. IPv6 části tohoto článku důležité informace o použití protokolu IPv6 se síťovými rozhraními. Nelze vybrat metodu přiřazení pro adresu IPv6. Pokud se rozhodnete přiřadit adresu protokolu IPv6, je přiřazen s dynamickou metodu.
     |Název protokolu IPv6 (se zobrazí pouze tehdy, když **privátní IP adresa (IPv6)** je zaškrtnuté políčko) |Ano, pokud **privátní IP adresa (IPv6)** je zaškrtnuté políčko.| Tento název je přiřazen k sekundární konfigurace IP adresy pro síťové rozhraní. Další informace o konfigurací protokolu IP, naleznete v tématu [zobrazení nastavení síťového rozhraní](#view-network-interface-settings).|
     |Skupina prostředků|Ano|Vyberte existující [skupiny prostředků](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#resource-group) nebo ji vytvořte. Síťové rozhraní může existovat ve skupině prostředků stejného nebo jiného než virtuální počítač, který připojí, nebo virtuální sítě, můžete připojit k.|
     |Umístění|Ano|Virtuální počítač připojit síťové rozhraní a připojte ho k virtuální síti musí existovat ve stejném [umístění](https://azure.microsoft.com/regions), která se také označují jako oblast.|

@@ -10,12 +10,12 @@ ms.subservice: translator-speech
 ms.topic: overview
 ms.date: 3/5/2018
 ms.author: v-jansko
-ms.openlocfilehash: e2fd6f88f34ac34ea304b5298940f317b4c0d37e
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 1983ecbdee3d15efc73ad395fd07cbc7cd4f279c
+ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55472486"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55769721"
 ---
 # <a name="what-is-translator-speech-api"></a>Co je rozhraní Translator Speech API?
 
@@ -23,7 +23,7 @@ ms.locfileid: "55472486"
 
 Rozhraní Translator Speech API se dá využít k přidání kompletních překladů řeči v reálném čase do aplikací, nástrojů nebo řešení, které vyžadují překlad řeči ve více jazycích, a to bez ohledu na cílový operační systém nebo vývojářský jazyk. Toto rozhraní API lze použít pro překlad řeči na řeč i řeči na text.
 
-Translator Text API je služba Azure, která je součástí [kolekce Azure Cognitive Services API](https://docs.microsoft.com/azure/#pivot=products&panel=cognitive) obsahující algoritmy strojového učení a umělé inteligence v cloudu a je připravená k použití ve vašich vývojových projektech.
+Translator Text API je služba Azure, která je součástí [kolekce Azure Cognitive Services API](https://docs.microsoft.com/azure/) obsahující algoritmy strojového učení a umělé inteligence v cloudu a je připravená k použití ve vašich vývojových projektech.
 
 Pomocí rozhraní Translator Speech API streamují klientské aplikace do služby mluvený zvuk a dostávají zpět výsledný textový a zvukový stream, který obsahuje rozpoznaný text ve zdrojovém jazyku a jeho překlad do cílového jazyka. Výsledný text se vytváří tak, že se pro příchozí zvukový stream použije automatické rozpoznávání řeči (ASR) na bázi neuronových sítí. Základní výstup ASR se pomocí nové technologie TrueText dále vylepšuje, aby přesněji vyjadřoval záměr uživatele. TrueText například z textu odebírá nepravidelnosti (třeba citoslovce jako hm a zakašlání) a opakovaná slova a nastavuje správnou interpunkci a malá a velká písmena. K dispozici je také možnost maskování nebo vyloučení neslušných slov. Moduly pro rozpoznávání a překlad jsou speciálně natrénované tak, aby zvládly zpracování hovorové řeči. 
 
@@ -66,6 +66,6 @@ Další informace o tom, [jak NMT funguje](https://www.microsoft.com/en-us/trans
 > [Pustit se do psaní kódu](quickstarts/csharp.md)
 
 ## <a name="see-also"></a>Další informace najdete v tématech
-- [Stránka dokumentace ke službám Cognitive Services](https://docs.microsoft.com/azure/#pivot=products&panel=cognitive)
+- [Stránka dokumentace ke službám Cognitive Services](https://docs.microsoft.com/azure/)
 - [Produktová stránka služeb Cognitive Services](https://azure.microsoft.com/services/cognitive-services/)
 - [Informace o řešení a cenách](https://www.microsoft.com/en-us/translator/home.aspx) 

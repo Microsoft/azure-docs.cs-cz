@@ -13,12 +13,12 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 01/24/2019
 ms.author: juliako
-ms.openlocfilehash: 139f6283c2b59aee53afa3f0dd52e06e2b0eff4c
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.openlocfilehash: 9c463740acf6ef464880a43e0e68de683b97f64f
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55695215"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55813413"
 ---
 # <a name="filters-and-dynamic-manifests"></a>Filtrů a dynamických manifestů
 
@@ -34,13 +34,13 @@ Filtry jsou pravidla na straně serveru, které umožňují zákazníkům prová
 - Dodávejte pouze zadaný interpretace nebo zadané jazykové stopy, které podporuje zařízení, která se používá k přehrávání obsahu ("verze filtrování"). 
 - Upravte prezentace okno (DVR) aby bylo možné poskytovat omezenou délku okna DVR v přehrávači ("okno s úpravou prezentace").
 
-Toto téma popisuje [koncepty](#concepts) a [ukazuje filtry definice](#definitions). Poté přiřadí podrobnosti o běžných scénářích. Na konci tohoto článku najdete odkazy, které ukazují, jak programově vytvářet filtry.  
+Toto téma popisuje [koncepty](#concepts) a ukazuje filtry definice. Poté přiřadí podrobnosti o běžných scénářích. Na konci tohoto článku najdete odkazy, které ukazují, jak programově vytvářet filtry.  
 
 ## <a name="concepts"></a>Koncepty
 
 ### <a name="dynamic-manifests"></a>Dynamických manifestů
 
-Media Services nabízí **dynamických manifestů** založené na předem definované [filtry](#filters). Jakmile definujete filtry, klienty je použít k streamování konkrétní verze nebo dílčích klipů vašeho videa. V adrese URL streamování, zadejte filtry. Filtry můžete uplatnit adaptivní přenosové rychlosti streamování protokolů: Apple HTTP Live Streaming (HLS), MPEG-DASH a Smooth Streaming. 
+Media Services nabízí **dynamických manifestů** na základě předdefinovaných filtrů. Jakmile definujete filtry, klienty je použít k streamování konkrétní verze nebo dílčích klipů vašeho videa. V adrese URL streamování, zadejte filtry. Filtry můžete uplatnit adaptivní přenosové rychlosti streamování protokolů: Apple HTTP Live Streaming (HLS), MPEG-DASH a Smooth Streaming. 
 
 V následující tabulce jsou uvedeny příklady adresy URL s filtry:
 

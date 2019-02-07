@@ -1,6 +1,6 @@
 ---
-title: Spravovat svazky zařízení StorSimple (Update 3) | Microsoft Docs
-description: Vysvětluje, jak přidat, upravit, sledovat a odstraňovat svazky zařízení StorSimple a jak je převést do režimu offline, v případě potřeby.
+title: Správa svazků StorSimple (Update 3) | Dokumentace Microsoftu
+description: Vysvětluje, jak přidat, upravit, monitorovat a odstraňte svazky zařízení StorSimple a jak je převést do režimu offline, v případě potřeby.
 services: storsimple
 documentationcenter: NA
 author: alkohli
@@ -14,85 +14,85 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 12/08/2017
 ms.author: alkohli
-ms.openlocfilehash: c9c575f42e6c8730b9404c62fb60e710d9d3bc80
-ms.sourcegitcommit: 094061b19b0a707eace42ae47f39d7a666364d58
+ms.openlocfilehash: b748e203e3bf769eef8ce728bbb9471b8d13fb9a
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2017
-ms.locfileid: "26578869"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55822302"
 ---
-# <a name="use-the-storsimple-device-manager-service-to-manage-volumes-update-3-or-later"></a>Použít službu StorSimple Manager zařízení ke správě svazky (Update 3 nebo novější)
+# <a name="use-the-storsimple-device-manager-service-to-manage-volumes-update-3-or-later"></a>Použití služby Správce zařízení StorSimple pro správu svazků (aktualizace 3 nebo novější)
 
 ## <a name="overview"></a>Přehled
 
-Tento kurz vysvětluje, jak používat službu StorSimple Manager zařízení k vytváření a správě svazky na řadu zařízení StorSimple 8000 verzi Update 3 nebo novější.
+Tento kurz vysvětluje, jak pomocí služby Správce zařízení StorSimple můžete vytvářet a spravovat svazcích zařízeních StorSimple řady 8000 s aktualizací 3 nebo novějším.
 
-Služba Správce zařízení StorSimple je rozšíření na portálu Azure, která umožňuje spravovat z jedné webové rozhraní vašeho řešení StorSimple. Použití portálu Azure ke správě svazky na všech zařízeních. Můžete také vytvořit a spravovat služby StorSimple, spravovat zařízení, zásady zálohování a zálohování katalogu a zobrazovat výstrahy.
+Služba Správce zařízení StorSimple je rozšíření na webu Azure Portal, který umožňuje spravovat řešení StorSimple v jediném webovém rozhraní. Správa svazků na všechna svá zařízení pomocí webu Azure portal. Můžete také vytvořit a spravovat služby StorSimple, spravovat zařízení, zásady zálohování a katalog záloh a zobrazovat výstrahy.
 
-## <a name="volume-types"></a>Typy svazku
+## <a name="volume-types"></a>Typy svazků
 
 Svazky zařízení StorSimple může být:
 
-* **Místně vázaný svazky**: Data v těchto svazcích zůstane na místním zařízení StorSimple za všech okolností.
-* **Zřízeny vrstvené svazky**: Data v těchto svazků můžete distribuována do cloudu.
+* **Místně připojené svazky**: Data v těchto svazcích zůstanou na místním zařízení StorSimple za všech okolností.
+* **Vrstvené svazky**: Data v těchto svazků můžete uložená v cloudu.
 
-Archivace svazek je typ vrstvený svazek. Použít pro archivaci svazky větší velikost bloku odstranění duplicitních dat umožňuje zařízení k přenosu větší segmenty dat do cloudu.
+Archivace svazek je typ vrstveného svazku. Větší velikost bloku odstranění duplicit použít pro archivní svazky umožňuje, aby zařízení přenášet větší segmenty dat do cloudu.
 
-Pokud potřeby můžete změnit svazek typu z místní pro vrstvené nebo z vrstvené na místní. Další informace, přejděte na [změnit typ svazku](#change-the-volume-type).
+Pokud třeba, můžete změnit svazek typ z místního na vrstvený nebo z vrstveného na místní. Další informace najdete v části [změnu typu svazku](#change-the-volume-type).
 
-### <a name="locally-pinned-volumes"></a>Místně vázaných svazků
+### <a name="locally-pinned-volumes"></a>Místně připojené svazky
 
-Místně vázaných svazků jsou zcela zřizované svazky, které provádějí není dat vrstev do cloudu, a zajistí tak místní záruky pro primární data, nezávisle na cloudu připojení. Není data na místně vázaných svazků s odstraněním duplicitních dat a komprimované; Nicméně jsou odstranění duplicit snímky místně vázaných svazků. 
+Místně připojené svazky jsou zcela zřizované svazky, které nejsou úrovně dat do cloudu, a zajistí tak místní záruky pro primární data, nezávisle na připojení ke cloudu. Není data na místně připojených svazků s odstraněním duplicitních dat a komprimované; Nicméně jsou odstranění duplicit snímky místně vázaných svazků. 
 
-Místně vázaných svazků jsou plně zřízený; proto musí mít dostatek místa na vašem zařízení, při jejich vytváření. Můžete zřídit místně vázaných svazků až maximální velikosti 8 TB zařízení StorSimple 8100 a 20 TB na zařízení 8600. StorSimple si vyhrazuje zbývající volné místo na zařízení pro snímky, metadata a data zpracování. Můžete zvýšit velikost místně vázaný svazek na maximální místo k dispozici, ale nelze snížit velikost svazku po vytvoření.
+Místně připojené svazky jsou plně zřízený; proto musí mít dostatek místa na vašem zařízení při jejich vytváření. Můžete zřídit místně připojené svazky až do maximální velikosti 8 TB na zařízení StorSimple 8100 a 20 TB zařízení 8600. StorSimple rezervuje zbývající volné místo v zařízení pro zpracování dat, snímky a metadata. Můžete zvýšit velikost místně vázaný svazek na maximální místo k dispozici, ale nedá snížit velikost svazku po vytvoření.
 
-Když vytvoříte místně vázaný svazek, dostupné místo pro vytvoření vrstvené svazky se snižuje. Platí to i naopak: Pokud máte vrstvené svazky, volné místo dostupné pro vytváření místně připojené svazky bude nižší než maximální limit uvedené výše. Další informace o místní svazky, najdete v části [nejčastější dotazy na místně vázaných svazků](storsimple-8000-local-volume-faq.md).
+Pokud vytvoříte místně vázaný svazek, se snižuje dostupný prostor pro vytváření vrstvených svazků. Platí to i naopak: Pokud máte stávající vrstvené svazky, volné místo dostupné pro vytváření místně připojené svazky bude nižší než maximální limity výše. Další informace na místních svazcích [– nejčastější dotazy na místně připojených svazků](storsimple-8000-local-volume-faq.md).
 
 ### <a name="tiered-volumes"></a>Vrstvené svazky
 
-Vrstvené svazky jsou dynamicky zřizované svazky, ve kterých často používaná data zůstává místní na zařízení a automaticky vrstveny méně často používaná data do cloudu. Dynamické zajišťování je technologie virtualizace, ve kterém se zobrazuje dostupné úložiště delší než fyzické prostředky. StorSimple používá k přidělení právě dostatek místa, aby splňovala aktuální požadavky místo rezervování dostatečné úložiště předem, dynamické zajišťování. Elastické povaha cloudového úložiště usnadňuje tento přístup, protože StorSimple můžete zvýšit nebo snížit úložiště v cloudu splňovat požadavky na změny.
+Vrstvené svazky se dynamicky zřizované svazky, ve kterých často používaná data zůstanou místní na zařízení a méně často používaná data se automaticky Vrstvená do cloudu. Dynamické zajišťování je technologie virtualizace, ve kterém se zobrazí dostupné úložiště překročí fyzické prostředky. Místo předem rezervace dostatečné úložiště StorSimple používá dynamické zajišťování přidělit jenom dostatek místa, aby splňovala aktuální požadavky. K elastické povaze cloudu úložiště usnadňuje tento přístup, protože StorSimple můžete zvýšit nebo snížit cloudové úložiště s cílem splnit měnící požadavky.
 
-Pokud používáte vrstvený svazek pro archivní data, vyberte **použít tento svazek pro archivní data s méně často používaná** zaškrtávací políčko, chcete-li změnit velikost bloku odstranění duplicitních dat pro svazek na 512 KB. Pokud tuto možnost nevyberete, příslušný vrstvený svazek bude používat velikost bloku dat 64 KB. Větší velikost deduplikačního bloku dat umožňuje zařízení urychlit přenos velkých objemů archivních dat do cloudu.
+Pokud používáte vrstvený svazek pro archivní data, vyberte **použít tento svazek pro archivní data s méně častým** zaškrtávací políčko, chcete-li změnit velikost bloku odstranění duplicit vašeho svazku na 512 KB. Pokud tuto možnost nevyberete, příslušný vrstvený svazek bude používat velikost bloku dat 64 KB. Větší velikost deduplikačního bloku dat umožňuje zařízení urychlit přenos velkých objemů archivních dat do cloudu.
 
 
 ### <a name="provisioned-capacity"></a>Zřízená kapacita
 
-Naleznete v následující tabulce maximální zřízená kapacita pro každý typ zařízení a svazku. (Všimněte si, že nejsou dostupné na virtuálním zařízení místně vázaných svazků.)
+Naleznete v následující tabulce pro maximální zřízená kapacita pro každý typ zařízení a svazku. (Všimněte si, že se místně připojené svazky nejsou k dispozici na virtuálním zařízení.)
 
-|  | Vrstvený svazek maximální velikost | Maximální místně připnutý velikost svazku |
+|  | Vrstvený svazek maximální velikost | Maximální počet místně připnuté velikost svazku |
 | --- | --- | --- |
 | **Fyzické zařízení** | | |
 | 8100 |64 TB |8 TB |
 | 8600 |64 TB |20 TB |
 | **Virtuální zařízení** | | |
-| 8010 |30 TB |Není k dispozici |
-| 8020 |64 TB |Není k dispozici |
+| 8010 |30 TB |neuvedeno |
+| 8020 |64 TB |neuvedeno |
 
 ## <a name="the-volumes-blade"></a>V okně svazky
 
-**Svazky** okno umožňuje správu svazků úložiště, které jsou zřízené v Microsoft Azure StorSimple zařízení pro vaše iniciátorů (serverů). Zobrazuje seznam svazků v zařízení StorSimple připojené k vaší službě.
+**Svazky** okno umožňuje spravovat svazky úložiště, které jsou zřízené v Microsoft Azure StorSimple zařízení pro vaše iniciátorů (serverů). Zobrazí seznam svazků na zařízení StorSimple připojené k vaší službě.
 
- ![Stránka svazky](./media/storsimple-8000-manage-volumes-u2/volumeslist.png)
+ ![Stejnojmennou stránku](./media/storsimple-8000-manage-volumes-u2/volumeslist.png)
 
 Svazek se skládá z řady atributy:
 
-* **Název svazku** – popisný název, který musí být jedinečný a pomáhá identifikovat svazku. Tento název se také používá v monitorování sestavy při filtrování na konkrétním svazku. Po vytvoření svazku nelze přejmenovat.
-* **Stav** – může být online nebo offline. Pokud je svazek offline, není viditelná pro iniciátorů (serverů), které jsou povoleny přístup k použití svazku.
-* **Kapacita** – Určuje celkový objem dat, která mohou být uloženy iniciátor (server). Místně vázaný svazky jsou plně zřízený a jsou umístěny v zařízení StorSimple. Vrstvené svazky jsou tence zřízený a data se odstraňují. S dynamicky zřizované svazky nebude zařízení předem přidělit kapacity fyzického úložiště, interně, nebo v cloudu podle kapacita nakonfigurované svazku. Kapacita svazku je přidělené a využívat na vyžádání.
-* **Typ** – Určuje, zda je svazek **nastavování** (výchozí) nebo **místně vázaný**.
+* **Název svazku** – popisný název, který musí být jedinečný a pomáhá identifikovat svazku. Tento název se používá také v monitorování sestavy při filtrování na konkrétním svazku. Po vytvoření svazku se nedá přejmenovat.
+* **Stav** – může být online nebo offline. Pokud je svazek offline, není viditelné pro iniciátorů (serverů), které mají povolený přístup ke svazku.
+* **Kapacita** – určuje celkové množství dat, která mohou být uloženy iniciátor (server). Místně připojené svazky jsou plně zřízený a jsou umístěny na zařízení StorSimple. Vrstvených svazků je zřizovaný dynamicky a data se odstraňují duplicity. Se dynamicky zřizované svazky nebude zařízení předem přidělit kapacitu fyzického úložiště, interně nebo v cloudu podle nakonfigurovaného kapacitě. Kapacita svazku je přidělena a využívat na vyžádání.
+* **Typ** – Určuje, zda je svazek **Vrstvená** (výchozí) nebo **místně připnuté**.
 
-Postupujte podle pokynů v tomto kurzu k provádění následujících úloh:
+Postupujte podle pokynů v tomto kurzu provádět následující úlohy:
 
-* Přidání svazku 
-* Upravit svazku 
+* Přidat svazek 
+* Upravit svazek 
 * Změnit typ svazku
 * Odstranění svazku 
 * Svazek převést do režimu offline 
 * Monitorování svazku 
 
-## <a name="add-a-volume"></a>Přidání svazku
+## <a name="add-a-volume"></a>Přidat svazek
 
-Můžete [vytvořili svazek](storsimple-8000-deployment-walkthrough-u2.md#step-6-create-a-volume) během nasazování zařízení řady StorSimple 8000. Přidání svazku je podobným způsobem.
+Můžete [vytvořili svazek](storsimple-8000-deployment-walkthrough-u2.md#step-6-create-a-volume) během nasazování zařízení řady StorSimple 8000. Přidání svazku je podobný postup.
 
 #### <a name="to-add-a-volume"></a>Chcete-li přidat svazek
 
@@ -106,7 +106,7 @@ Můžete [vytvořili svazek](storsimple-8000-deployment-walkthrough-u2.md#step-6
 
     2. Z rozevíracího seznamu vyberte kontejner svazků, do kterého potřebujete přidat svazek.
 
-    3.  Zadejte **Název** svazku. Po vytvoření svazku nelze přejmenovat svazku.
+    3.  Zadejte **Název** svazku. Po vytvoření svazku se už nedá přejmenovat svazku.
 
     4. V rozevíracím seznamu vyberte **Typ** svazku. Pro úlohy, které vyžadují místní záruky, nízkou latenci a vyšší výkon, vyberte typ svazku **Místně vázaný**. Pro ostatní typy dat vyberte typ svazku **Vrstvený**. Pokud tento svazek používáte k archivaci dat, zaškrtněte políčko **Použít tento svazek pro archivní data s méně častým přístupem**.
       
@@ -120,213 +120,213 @@ Můžete [vytvořili svazek](storsimple-8000-deployment-walkthrough-u2.md#step-6
       
        Pokud v zařízení 8100 zřídíte místně vázaný svazek o velikosti 8.5 TB (maximální možná velikost), vyčerpáte tím veškeré volné místo dostupné v zařízení. Od této chvíle už nebudete moct vytvořit žádné vrstvené svazky, protože v zařízení už nebude žádné volné místo k hostování pracovní sady vrstveného svazku. Objem dostupného volného místa ovlivňují také vrstvené svazky. Pokud například používáte zařízení 8100, ve kterém jsou už zřízeny vrstvené svazky o velikosti zhruba 106 TB, k vytváření místně vázaných svazků zbude už jenom 4 TB dostupného volného místa.
 
-    6. V poli **Připojení hostitelé** klikněte na šipku. V **připojení hostitele** okně zvolte existující ACR nebo přidat nový ACR. Pokud si zvolíte nové ACR, potom zadejte **název** acr, zadejte **iSCSI Qualified Name** (IQN) hostitele s Windows. Pokud název IQN nemáte, přejděte do části [Získání názvu hostitele se systémem Windows Server](#get-the-iqn-of-a-windows-server-host). Klikněte na možnost **Vytvořit**. Vytvoří se svazek se zadaným nastavením.
+    6. V poli **Připojení hostitelé** klikněte na šipku. V **připojení hostitelé** okně zvolte existující záznam ACR nebo přidejte nový záznam ACR. Pokud se rozhodnete nový záznam ACR, pak poskytnete **název** záznamu acr, zadejte **iSCSI Qualified Name** (IQN) vašeho hostitele Windows. Pokud je identifikátor IQN nemáte, přejděte k získání názvu IQN hostitele se Windows Server. Klikněte na možnost **Vytvořit**. Vytvoří se svazek se zadaným nastavením.
 
         ![Kliknutí na Vytvořit](./media/storsimple-8000-manage-volumes-u2/step5createvol3.png)
 
-Nový svazek je nyní připraven k použití.
+Nový svazek je teď připravený k použití.
 
 > [!NOTE]
-> Pokud vytvoříte místně vázaný svazek a pak vytvořit jiné místně vázaný svazek okamžitě později, vytvoření svazku, postupně spuštění úlohy. První úloha vytvoření svazku se musí ukončit předtím, než můžete začít další úloha vytvoření svazku.
+> Pokud vytvoříte místně vázaný svazek a pak vytvořit jiné místně připojený svazek okamžitě poté, vytvořit svazek, ve kterém úlohy se spouští sekvenčně. První úloha vytvoření svazku musí dokončit před zahájením další úloha vytvoření svazku.
 
-## <a name="modify-a-volume"></a>Upravit svazku
+## <a name="modify-a-volume"></a>Upravit svazek
 
-Upravte svazek, když je potřeba ho rozšířit nebo změnit hostitelů, které přístup ke svazku.
+Pokud je potřeba ho rozšířit nebo změnit hostitele, kteří přístup ke svazku, upravte svazku.
 
 > [!IMPORTANT]
-> * Pokud změníte velikost svazku v zařízení, je potřeba změnit na hostitele a velikost svazku.
-> * Hostitelské kroků popsaných v tomto poli se pro Windows Server 2012 (2012 R2). Postupy pro Linux nebo jiných hostitelských operačních systémech se liší. Vyhledejte vaše hostitele operačního systému při úpravě svazek na hostitele s jiným operačním systémem.
+> * Pokud změníte velikost svazku na zařízení, je potřeba změnit na hostitele a velikost svazku.
+> * Hostitelské kroky, je zde popsáno, jsou určené pro Windows Server 2012 (2012 R2). Postupy pro systém Linux nebo jiných hostitelských operačních systémech se liší. Při úpravě svazek na hostiteli s jiným operačním systémem najdete pokyny operačního systému hostitele.
 
-#### <a name="to-modify-a-volume"></a>Chcete-li upravit svazku
+#### <a name="to-modify-a-volume"></a>Chcete-li změnit svazek
 
-1. Přejděte do služby Správce zařízení StorSimple a klikněte na **Zařízení**. Tabulkový seznam zařízení, vyberte zařízení, která obsahuje svazek, který chcete upravit. Klikněte na tlačítko **Nastavení > svazky**.
+1. Přejděte do služby Správce zařízení StorSimple a klikněte na **Zařízení**. V tabulkovém výpisu zařízení vyberte zařízení, která má svazek, který máte v úmyslu změnit. Klikněte na tlačítko **Nastavení > svazky**.
 
     ![Přejděte do okna svazky](./media/storsimple-8000-manage-volumes-u2/modifyvol2.png)
 
-2. Tabulkový seznam svazků, vyberte svazek a klikněte pravým tlačítkem na má být vyvolán v místní nabídce. Vyberte **převést do režimu offline** uvedení svazku upravíte do režimu offline.
+2. V tabulkovém výpisu svazků vyberte svazek a klikněte pravým tlačítkem myši vyvolejte místní nabídku. Vyberte **převést do režimu offline** svazku upravíte uvedení do režimu offline.
 
-    ![Vyberte a do offline režimu svazku](./media/storsimple-8000-manage-volumes-u2/modifyvol4.png)
+    ![Vyberte a svazek převést do režimu offline](./media/storsimple-8000-manage-volumes-u2/modifyvol4.png)
 
-3. V **převést do režimu offline** okně zkontrolovat dopad svazku přepnutím do režimu offline a zaškrtněte odpovídající políčko. Zajistěte, aby byl odpovídající svazek na hostiteli offline nejdřív. Informace o tom, jak provést offline svazku na serveru hostitele připojené k StorSimple postupujte podle pokynů pro konkrétní operační systém. Klikněte na tlačítko **převést do režimu offline**.
+3. V **převést do režimu offline** okně zkontrolujte dopad převodu svazku do režimu offline a zaškrtněte odpovídající políčko. Ujistěte se, že je příslušný svazek na hostiteli nejdříve offline. Informace o tom, jak provést offline svazku na serveru hostitele připojené k řešení StorSimple najdete pokyny pro konkrétní operační systém. Klikněte na tlačítko **převést do režimu offline**.
 
-    ![Zkontrolujte dopad svazku přepnutím do režimu offline](./media/storsimple-8000-manage-volumes-u2/modifyvol5.png)
+    ![Zkontrolujte dopad převodu svazku do režimu offline](./media/storsimple-8000-manage-volumes-u2/modifyvol5.png)
 
-4. Po svazek je offline (jak ukazují stav svazku), vyberte svazek a klikněte pravým tlačítkem na má být vyvolán v místní nabídce. Vyberte **upravit svazek**.
+4. Jakmile je svazek offline (jak je znázorněno podle stavu svazku), vyberte svazek a klikněte pravým tlačítkem myši vyvolejte místní nabídku. Vyberte **změnu svazku se**.
 
-    ![Vyberte Změnit svazku](./media/storsimple-8000-manage-volumes-u2/modifyvol9.png)
+    ![Vyberte možnost změnit svazek](./media/storsimple-8000-manage-volumes-u2/modifyvol9.png)
 
 
-5. V **upravit svazek** okno, můžete provést následující změny:
+5. V **změnu svazku se** okně můžete provádět následující změny:
    
    1. Svazek **název** nelze upravit.
-   2. Převést **typ** z místně vázaný k vrstvené nebo z vrstvené pro místně vázaný (najdete v části [změnit typ svazku](#change-the-volume-type) informace).
-   3. Zvýšit **zřídit kapacitu**. **Zřízená kapacita** může být pouze zvýšena. Po vytvoření, nelze zmenšit svazek.
-   4. V části **připojení hostitele**, můžete upravit ACR. Pokud chcete upravit ACR, musí být svazek offline.
+   2. Převést **typ** z místně připnuté na vrstvené nebo z vrstveného na místně připnutý (naleznete v tématu [změnu typu svazku](#change-the-volume-type) Další informace).
+   3. Zvětšit **zřízené kapacity**. **Zřízená kapacita** může být pouze zvýšena. Po vytvoření nedá zmenšit svazek.
+   4. V části **připojení hostitelé**, můžete upravit ACR. Pokud chcete upravit ACR, musí být svazek offline.
 
-       ![Zkontrolujte dopad svazku přepnutím do režimu offline](./media/storsimple-8000-manage-volumes-u2/modifyvol11.png)
+       ![Zkontrolujte dopad převodu svazku do režimu offline](./media/storsimple-8000-manage-volumes-u2/modifyvol11.png)
 
-5. Klikněte na tlačítko **Uložit** uložte provedené změny. Po zobrazení výzvy k potvrzení klikněte na **Ano**. Portál Azure se zobrazí zprávu aktualizací svazku. Zpráva o úspěšném provedení zobrazí při svazku byla úspěšně aktualizována.
+5. Klikněte na tlačítko **Uložit** uložte provedené změny. Po zobrazení výzvy k potvrzení klikněte na **Ano**. Na webu Azure portal zobrazí zpráva o aktualizaci svazku. Zpráva o úspěchu zobrazí při svazku se úspěšně aktualizoval.
 
-    ![Zkontrolujte dopad svazku přepnutím do režimu offline](./media/storsimple-8000-manage-volumes-u2/modifyvol5.png)
+    ![Zkontrolujte dopad převodu svazku do režimu offline](./media/storsimple-8000-manage-volumes-u2/modifyvol5.png)
 
-7. Pokud se rozšířit svazek, proveďte následující kroky v hostitelském počítači Windows:
+7. Pokud se chystáte se rozšířit svazek, proveďte následující kroky v hostitelském počítači Windows:
    
-   1. Přejděte na **Správa počítače** ->**disku správu**.
-   2. Klikněte pravým tlačítkem na **Správa disků** a vyberte **Prohledat disky**.
-   3. V seznamu disků, vyberte svazek, který jste aktualizaci, klikněte pravým tlačítkem a pak vyberte **rozšířit svazek**. Spustí se Průvodce rozšířit svazek. Klikněte na **Další**.
-   4. Dokončete průvodce, přijetím výchozích hodnot. Po dokončení průvodce by se zobrazit vyšší velikost svazku.
+   1. Přejděte na **Správa počítače** ->**nástroji Správa disků**.
+   2. Klikněte pravým tlačítkem na **Správa disků** a vyberte **znovu prohledat disky**.
+   3. V seznamu disků, vyberte svazek, který jste aktualizovali, klikněte pravým tlačítkem a pak vyberte **rozšířit svazek**. Spustí se Průvodce rozšířit svazek. Klikněte na **Další**.
+   4. Dokončete Průvodce přijetím výchozích hodnot. Po dokončení průvodce by se zobrazit zvětšení velikosti svazku.
       
       > [!NOTE]
-      > Pokud rozbalte místně vázaný svazek a potom rozbalte jiné místně připnuli svazku okamžitě později, úlohy rozšíření svazku spouští sekvenčně. První úloha rozšíření svazku se musí ukončit předtím, než můžete začít další úlohy rozšíření svazku.
+      > Pokud rozbalte místně vázaný svazek a potom rozbalte jiné místně připnutý svazek hned potom úlohy rozšíření svazku se spouští sekvenčně. První úloha rozšíření svazků musí dokončit před zahájením další úlohy rozšíření svazku.
       
 
 ## <a name="change-the-volume-type"></a>Změnit typ svazku
 
-Můžete změnit typ svazku z vrstvené pro místně vázaný nebo z místně vázaný na vrstvené. Tento převod však by neměl být časté výskyt.
+Můžete změnit typ svazku z vrstveného na místně připnutý nebo z místně připnuté na vrstvený. Tento převod ale by neměly být časté výskyt.
 
-### <a name="tiered-to-local-volume-conversion-considerations"></a>Víceúrovňová aspektech převod místního svazku
+### <a name="tiered-to-local-volume-conversion-considerations"></a>Vrstveného na místní svazek hlediska převodů
 
-Důvody pro převod svazku z vrstvené pro místně vázaný zahrnují:
+Mezi důvody pro převod svazku z vrstveného na místně připnutý jsou:
 
-* Místní záruky týkající se data dostupnosti a výkonu
-* Odstranění cloudu latenci a problémy s připojením k cloudu.
+* Místní záruky týkající se dat, dostupnost a výkon
+* Odstranění cloudové latenci a problémy s připojením cloudu.
 
-Obvykle jsou malé existující svazky, které chcete pro přístup k často. Když je vytvořeno místně vázaný svazek plně zřízený. 
+Obvykle jsou malé existující svazky, které chcete získat přístup k často. Místně vázaný svazek je plně zřízený při jeho vytvoření. 
 
-Při převodu vrstvený svazek k místně vázaný svazek, StorSimple ověřuje mít dostatek místa na zařízení, než začne převod. Pokud máte dostatek místa, dojde k chybě a operace bude zrušena. 
-
-> [!NOTE]
-> Před zahájením převodu z vrstvené pro místně vázaný, ujistěte se, vezměte v úvahu požadavky na místo vašich dalších zatížení. 
-
-Převod vrstvené na místně vázaný svazek může nepříznivě ovlivnit výkon zařízení. Kromě toho následující faktory může se prodloužit doba potřebná k dokončení převodu:
-
-* Není k dispozici dostatečná šířka pásma.
-* Není žádná aktuální záloha.
-
-Chcete-li minimalizovat účinky, které může mít tyto faktory:
-
-* Zkontrolujte vaše zásady omezení šířky pásma a ujistěte se, že vyhrazené šířky pásma 40 MB/s je k dispozici.
-* Plánování převod hodiny mimo špičku.
-* Pořízení snímku cloudu před zahájením převodu.
-
-Pokud převádíte více svazků (Podpora různých zátěží), by měl tak, aby vyšší prioritu svazky se převedou nejprve upřednostňovat převodu svazku. Například je třeba převést svazky, které jsou hostiteli virtuálních počítačů (VM) nebo svazky s úlohami SQL před převodem svazky s úlohami sdílené složky souborů.
-
-### <a name="local-to-tiered-volume-conversion-considerations"></a>Místní vrstvený svazek převod aspektech
-
-Můžete změnit místně vázaný svazek na vrstvený svazek, pokud potřebujete další místa pro zřízení jiných svazků. Při převodu místně vázaný svazek k vrstvené dostupné kapacity na zařízení zvyšuje velikost vydaná kapacitu. Pokud problémy s připojením k zabránit převod svazku místního typu vrstvené typ, místní svazek bude mít květy vlastnosti vrstvený svazek, až po dokončení převodu. Je to proto, že některá data mohou přesahovat do cloudu. Tato spilled data i nadále zabírají volné místo na zařízení, které nelze uvolnit, dokud je restartovat a dokončit operaci.
+Pokud vytvoříte vrstvený svazek se převod na místně vázaný svazek, StorSimple ověřuje, že máte dostatek místa na vašem zařízení před zahájením převodu. Pokud máte dost místa, dojde k chybě a operace se zrušila. 
 
 > [!NOTE]
-> Převod svazku může určitou dobu trvat a nelze zrušit převodu z po jeho spuštění. Zachování svazku online během převodu a můžete provést zálohování, ale nelze rozbalit nebo obnovit svazek během probíhající převod.
+> Před zahájením konverze z vrstveného na místně připnutý, nezapomeňte brát v úvahu požadavky na místo vašich dalších zatížení. 
+
+Převod vrstveného na místně vázaný svazek může nepříznivě ovlivnit výkon zařízení. Kromě toho těchto faktorů může zvýšit čas potřebný k dokončení převodu:
+
+* Je dostatečná šířka pásma.
+* Neexistuje žádná aktuální záloha.
+
+Chcete-li minimalizovat efekty, které mohou mít tyto faktory:
+
+* Zkontrolujte omezení zásad šířky pásma a ujistěte se, že je k dispozici vyhrazené šířky pásma 40 MB/s.
+* Plánování je převod hodiny mimo špičku.
+* Pořídit snímek v cloudu, před zahájením převodu.
+
+Pokud převádíte více svazků (podporují různé úlohy), měli byste tak, aby vyšší prioritu svazky jsou nejprve převést prioritně převodu svazku. Například byste měli převést svazky, které jsou hostiteli virtuálních počítačů (VM) nebo svazky s úlohami SQL před zahájením převodu svazků s úlohami sdílené složky souboru.
+
+### <a name="local-to-tiered-volume-conversion-considerations"></a>Z místního na vrstvený svazek hlediska převodů
+
+Můžete chtít změnit místně vázaný svazek vrstvený svazek, pokud potřebujete další místa pro zřízení jiných svazků. Při převodu místně vázaný svazek do vrstev, dostupná kapacita na zařízení se zvýší o velikosti vydané kapacity. Problémy s připojením zabránit převod svazku z místního typu na typ vrstvené, místní svazek produkovány vlastnosti vrstvené svazky až do dokončení převodu. Je to proto, že některá data mohou přesahovat do cloudu. Tato spilled data i nadále zabírat místní prostor zařízení, která nemůže být uvolněna až po restartování a dokončit operaci.
+
+> [!NOTE]
+> Převedení svazku může nějakou dobu trvat a nelze zrušit převod po jeho spuštění. Zachování svazku online při převodu a můžete provádět zálohování, ale nelze rozbalit nebo obnovte svazek, zatímco probíhá převod.
 
 
 #### <a name="to-change-the-volume-type"></a>Chcete-li změnit typ svazku
 
-1. Přejděte do služby Správce zařízení StorSimple a klikněte na **Zařízení**. Tabulkový seznam zařízení, vyberte zařízení, která obsahuje svazek, který chcete upravit. Klikněte na tlačítko **Nastavení > svazky**.
+1. Přejděte do služby Správce zařízení StorSimple a klikněte na **Zařízení**. V tabulkovém výpisu zařízení vyberte zařízení, která má svazek, který máte v úmyslu změnit. Klikněte na tlačítko **Nastavení > svazky**.
 
     ![Přejděte do okna svazky](./media/storsimple-8000-manage-volumes-u2/modifyvol2.png)
 
-3. Tabulkový seznam svazků, vyberte svazek a klikněte pravým tlačítkem na má být vyvolán v místní nabídce. Vyberte **upravit**.
+3. V tabulkovém výpisu svazků vyberte svazek a klikněte pravým tlačítkem myši vyvolejte místní nabídku. Vyberte **upravit**.
 
-    ![Vyberte změnit z kontextové nabídky](./media/storsimple-8000-manage-volumes-u2/changevoltype2.png)
+    ![Vyberte možnost změnit z místní nabídky](./media/storsimple-8000-manage-volumes-u2/changevoltype2.png)
 
-4. Na **upravit svazek** okně změnit typ svazku výběrem nového typu z **typ** rozevíracího seznamu.
+4. Na **změnu svazku se** okně změnit tak, že vyberete nový typ z typu svazku **typ** rozevíracího seznamu.
    
-   * Pokud chcete změnit typ, který má **místně vázaný**, StorSimple zkontroluje, jestli je dostatečnou kapacitu.
-   * Pokud chcete změnit typ, který má **nastavování** a použije tento svazek pro archivní data, vyberte **použít tento svazek pro archivní data s méně často používaná** zaškrtávací políčko.
+   * Pokud chcete změnit typ, který má **místně připnuté**, StorSimple zkontroluje, jestli je dostatečnou kapacitu.
+   * Pokud chcete změnit typ, který má **Vrstvená** a použije se tento svazek pro archivní data, vyberte **použít tento svazek pro archivní data s méně častým** zaškrtávací políčko.
    * Pokud konfigurujete místně vázaný svazek jako vrstvené nebo _naopak_, zobrazí se následující zpráva.
    
-    ![Změna svazek zadejte text zprávy.](./media/storsimple-8000-manage-volumes-u2/changevoltype3.png)
+    ![Změnit svazek typ zprávy](./media/storsimple-8000-manage-volumes-u2/changevoltype3.png)
 
-7. Kliknutím na **Uložit** uložte změny. Po zobrazení výzvy k potvrzení, klikněte na tlačítko **Ano** zahájíte proces převodu. 
+7. Kliknutím na **Uložit** uložte změny. Po zobrazení výzvy k potvrzení, klikněte na tlačítko **Ano** spustit proces převodu. 
 
     ![Uložte a potvrďte](./media/storsimple-8000-manage-volumes-u2/modifyvol11.png)
 
-8. Portál Azure zobrazí oznámení pro vytvoření úlohy, které by aktualizaci svazku. Kliknutím na oznámení k monitorování stavu úlohy převod svazku.
+8. Na webu Azure portal zobrazí oznámení o vytvoření úlohy, které by aktualizaci svazku. Klikněte na oznámení s monitorováním stavu úloha převodu svazků.
 
-    ![Úlohy pro převod svazku](./media/storsimple-8000-manage-volumes-u2/changevoltype5.png)
+    ![Úloha převodu svazků](./media/storsimple-8000-manage-volumes-u2/changevoltype5.png)
 
 ## <a name="take-a-volume-offline"></a>Svazek převést do režimu offline
 
-Potřebujete do offline režimu svazku při plánování k úpravě nebo odstranění svazku. Pokud je svazek offline, není k dispozici pro přístup pro čtení a zápis. Je třeba provést svazek offline na hostiteli a zařízení.
+Budete muset převést svazek do režimu offline, když máte v úmyslu změnit nebo Odstranit svazek. Pokud je svazek offline, není k dispozici pro přístup pro čtení a zápis. Je nutné provést svazek do režimu offline na tomto hostiteli a zařízení.
 
 #### <a name="to-take-a-volume-offline"></a>Uvedení svazku do režimu offline
 
-1. Ujistěte se, že dotyčný svazek není používána před přepnutím do režimu offline.
-2. Proveďte offline svazek na hostiteli první. Tím se eliminuje všechny potenciální riziko poškození dat na svazku. Konkrétní kroky přečtěte si pokyny pro operační systém hostitele.
-3. Až bude hostitel v režimu offline, proveďte svazek v zařízení do offline režimu provedením následujících kroků:
+1. Ujistěte se, že svazek dotyčný není používán před přepnutím do režimu offline.
+2. Převedení svazku do režimu offline v hostiteli první. Tím se eliminují všechny potenciální riziko poškození dat na svazku. Konkrétní kroky použijte pokyny pro váš operační systém hostitele.
+3. Jakmile je hostitel v režimu offline, trvat, než svazku na zařízení do offline režimu provedením následujících kroků:
    
-    1. Přejděte do služby Správce zařízení StorSimple a klikněte na **Zařízení**. Tabulkový seznam zařízení, vyberte zařízení, která obsahuje svazek, který chcete upravit. Klikněte na tlačítko **Nastavení > svazky**.
+    1. Přejděte do služby Správce zařízení StorSimple a klikněte na **Zařízení**. V tabulkovém výpisu zařízení vyberte zařízení, která má svazek, který máte v úmyslu změnit. Klikněte na tlačítko **Nastavení > svazky**.
 
         ![Přejděte do okna svazky](./media/storsimple-8000-manage-volumes-u2/modifyvol2.png)
 
-    2. Tabulkový seznam svazků, vyberte svazek a klikněte pravým tlačítkem na má být vyvolán v místní nabídce. Vyberte **převést do režimu offline** uvedení svazku upravíte do režimu offline.
+    2. V tabulkovém výpisu svazků vyberte svazek a klikněte pravým tlačítkem myši vyvolejte místní nabídku. Vyberte **převést do režimu offline** svazku upravíte uvedení do režimu offline.
 
-        ![Vyberte a do offline režimu svazku](./media/storsimple-8000-manage-volumes-u2/modifyvol4.png)
+        ![Vyberte a svazek převést do režimu offline](./media/storsimple-8000-manage-volumes-u2/modifyvol4.png)
 
-3. V **převést do režimu offline** okně zkontrolovat dopad svazku přepnutím do režimu offline a zaškrtněte odpovídající políčko. Klikněte na tlačítko **převést do režimu offline**. 
+3. V **převést do režimu offline** okně zkontrolujte dopad převodu svazku do režimu offline a zaškrtněte odpovídající políčko. Klikněte na tlačítko **převést do režimu offline**. 
 
-    ![Zkontrolujte dopad svazku přepnutím do režimu offline](./media/storsimple-8000-manage-volumes-u2/modifyvol5.png)
+    ![Zkontrolujte dopad převodu svazku do režimu offline](./media/storsimple-8000-manage-volumes-u2/modifyvol5.png)
       
-      Budete upozorněni, když je svazek offline. Stav svazku se také aktualizace Offline.
+      Pokud je svazek offline, se zobrazí oznámení. Stav svazku se rovněž aktualizuje na Offline.
       
 4. Jakmile je svazek offline, pokud vyberete svazek a klikněte pravým tlačítkem, **přepnout do režimu Online** bude k dispozici v místní nabídce.
 
 > [!NOTE]
-> **Přepnout do režimu Offline** příkaz odešle požadavek na zařízení do offline režimu svazku. Pokud svazek stále používají hostitelé, to vede k přerušení připojení, ale nebudou svazku přepnutím do režimu offline.
+> **Přepnout do režimu Offline** příkaz odešle požadavek do zařízení a svazek převést do režimu offline. Pokud hostitelích stále používají svazek, výsledkem je přerušená připojení, ale přepínat do offline režimu svazek k selhání.
 
 ## <a name="delete-a-volume"></a>Odstranění svazku
 
 > [!IMPORTANT]
-> Svazek můžete odstranit pouze v případě, že je offline.
+> Svazku můžete odstranit pouze v případě, že je offline.
 
-Proveďte následující kroky odstranění svazku.
+Proveďte následující kroky k odstranění svazku.
 
-#### <a name="to-delete-a-volume"></a>Odstranění svazku
+#### <a name="to-delete-a-volume"></a>Chcete-li odstranit svazek
 
-1. Přejděte do služby Správce zařízení StorSimple a klikněte na **Zařízení**. Tabulkový seznam zařízení, vyberte zařízení, která obsahuje svazek, který chcete upravit. Klikněte na tlačítko **Nastavení > svazky**.
+1. Přejděte do služby Správce zařízení StorSimple a klikněte na **Zařízení**. V tabulkovém výpisu zařízení vyberte zařízení, která má svazek, který máte v úmyslu změnit. Klikněte na tlačítko **Nastavení > svazky**.
 
     ![Přejděte do okna svazky](./media/storsimple-8000-manage-volumes-u2/modifyvol2.png)
 
-3. Zkontrolujte stav svazku, který chcete odstranit. Pokud na svazek, který chcete odstranit není v režimu offline, odpojte jej nejprve. Postupujte podle kroků v [do offline režimu svazku](#take-a-volume-offline).
-4. Jakmile je svazek offline, vyberte svazek, klikněte pravým tlačítkem na vyvolání v místní nabídce a potom vyberte **odstranit**.
+3. Zkontrolujte stav svazku, který chcete odstranit. Pokud svazek, který chcete odstranit není v režimu offline, odpojit, ji nejprve. Postupujte podle kroků v [svazek převést do režimu offline](#take-a-volume-offline).
+4. Jakmile je svazek offline, vyberte svazek, kliknutím pravým tlačítkem myši vyvolejte místní nabídku a zvolte **odstranit**.
 
-    ![Vyberte možnost odstranit z kontextové nabídky](./media/storsimple-8000-manage-volumes-u2/deletevol1.png)
+    ![Vyberte odstranit z místní nabídky](./media/storsimple-8000-manage-volumes-u2/deletevol1.png)
 
-5. V **odstranit** okně zkontrolovat a zaškrtněte políčko proti důsledcích odstranění svazku. Pokud odstraníte svazek, dojde ke ztrátě všechna data, která se nachází na svazku. 
+5. V **odstranit** okno, zkontrolujte a zaškrtněte políčko proti následky odstranění svazku. Když odstraníte svazek, dojde ke ztrátě všech dat, která se nacházejí na svazku. 
 
     ![Uložte a potvrďte změny](./media/storsimple-8000-manage-volumes-u2/deletevol2.png)
 
-6. Po odstranění svazku tabulkového seznamu svazků aktualizuje označit pro odstranění.
+6. Po odstranění svazku tabulkový seznam svazků aktualizuje k označení odstranění.
 
-    ![Seznam aktualizované svazků](./media/storsimple-8000-manage-volumes-u2/deletevol3.png)
+    ![Seznam aktualizovaných svazků](./media/storsimple-8000-manage-volumes-u2/deletevol3.png)
    
    > [!NOTE]
-   > Pokud odstraníte místně vázaný svazek, místa na disku pro nové svazky nemusí být okamžitě aktualizován. Volné místo dostupné aktualizace služby StorSimple Manager zařízení pravidelně. Doporučujeme, že Počkejte několik minut, než se pokusíte vytvořit nový svazek.
+   > Pokud odstraníte místně vázaný svazek, volné místo dostupné pro nové svazky nemusí aktualizovat okamžitě. Volné místo dostupné aktualizace služby StorSimple Device Manager pravidelně. Doporučujeme, abyste pro že Počkejte několik minut, než se pokusíte vytvořit nového svazku.
    >
-   > Kromě toho pokud odstraníte místně vázaný svazek a potom odstraňte jiné místně připnuli svazku okamžitě později, postupně spuštění úlohy odstranění svazku. První úlohy odstranění svazku se musí ukončit předtím, než můžete začít další úlohy odstranění svazku.
+   > Navíc pokud odstraníte místně vázaný svazek a potom odstraňte jiné místně připnutý svazek okamžitě později, odstranění svazku, ve kterém úlohy se spouští sekvenčně. První úloha odstranění svazků musí dokončit před zahájením další úlohy odstranění svazku.
 
 ## <a name="monitor-a-volume"></a>Monitorování svazku
 
-Svazek monitorování umožňuje shromažďování statistik I/E-související pro svazek. Monitorování je povoleno ve výchozím nastavení nejprve 32 svazků, které vytvoříte. Ve výchozím nastavení vypnutá monitorování další svazky. 
+Monitorování svazku umožňuje shromažďovat I O souvisejícím s/Statistika pro svazek. Monitorování je povoleno standardně pro prvních 32 svazků, které vytvoříte. Monitorování další svazky je ve výchozím nastavení zakázáno. 
 
 > [!NOTE]
-> Monitorování klonovaný svazků je ve výchozím nastavení zakázáno.
+> Monitorování naklonované svazků je ve výchozím nastavení zakázáno.
 
 
-Proveďte následující kroky, které chcete povolit nebo zakázat monitorování pro svazek.
+Proveďte následující kroky k povolení nebo zakázání monitorování svazku.
 
-#### <a name="to-enable-or-disable-volume-monitoring"></a>Chcete povolit nebo zakázat monitorování svazku
+#### <a name="to-enable-or-disable-volume-monitoring"></a>K povolení nebo zakázání monitorování svazku
 
-1. Přejděte do služby Správce zařízení StorSimple a klikněte na **Zařízení**. Tabulkový seznam zařízení, vyberte zařízení, která obsahuje svazek, který chcete upravit. Klikněte na tlačítko **Nastavení > svazky**.
-2. Tabulkový seznam svazků, vyberte svazek a klikněte pravým tlačítkem na má být vyvolán v místní nabídce. Vyberte **upravit**.
-3. V **upravit svazek** okně pro **monitorování** vyberte **povolit** nebo **zakázat** chcete povolit nebo zakázat monitorování.
+1. Přejděte do služby Správce zařízení StorSimple a klikněte na **Zařízení**. V tabulkovém výpisu zařízení vyberte zařízení, která má svazek, který máte v úmyslu změnit. Klikněte na tlačítko **Nastavení > svazky**.
+2. V tabulkovém výpisu svazků vyberte svazek a klikněte pravým tlačítkem myši vyvolejte místní nabídku. Vyberte **upravit**.
+3. V **změnu svazku se** okně pro **monitorování** vyberte **povolit** nebo **zakázat** k povolení nebo zakázání monitorování.
 
-    ![Zakázání sledování](./media/storsimple-8000-manage-volumes-u2/monitorvol1.png) 
+    ![Zákaz monitorování](./media/storsimple-8000-manage-volumes-u2/monitorvol1.png) 
 
-4. Klikněte na tlačítko **Uložit** a po zobrazení výzvy k potvrzení, klikněte na tlačítko **Ano**. Portál Azure zobrazí oznámení pro aktualizaci svazek a potom zpráva o úspěšném provedení po úspěšné aktualizaci svazku.
+4. Klikněte na tlačítko **Uložit** a po zobrazení výzvy k potvrzení, klikněte na tlačítko **Ano**. Na webu Azure portal zobrazí oznámení o aktualizaci svazku a pak zprávu o úspěšném dokončení po úspěšné aktualizaci svazku.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 * Zjistěte, jak [klonovat svazek StorSimple](storsimple-8000-clone-volume-u2.md).
-* Zjistěte, jak [použít službu StorSimple Manager zařízení ke správě zařízení StorSimple](storsimple-8000-manager-service-administration.md).
+* Zjistěte, jak [použití služby Správce zařízení StorSimple ke správě zařízení StorSimple](storsimple-8000-manager-service-administration.md).
 

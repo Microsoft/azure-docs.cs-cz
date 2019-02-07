@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: 690c2769e129d5661e7d66cb3f9f968643c0dbdb
-ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
+ms.openlocfilehash: af90a946f12e11602d45300a2796787f839dcf02
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55746996"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55811082"
 ---
 # <a name="datasets-in-azure-data-factory"></a>Datové sady ve službě Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -86,7 +86,7 @@ Následující tabulka popisuje vlastnosti v výše uvedený text JSON:
 | Struktura |Schéma datové sady.<br/><br/>Podrobnosti najdete v tématu [struktury datové sady](#Structure). |Ne |Není k dispozici |
 | typeProperties | Vlastnosti typu se liší pro každý typ (například: Azure Blob, tabulky Azure SQL). Podrobnosti o podporovaných typech a jejich vlastností najdete v tématu [typ datové sady](#Type). |Ano |Není k dispozici |
 | external | Logický příznak k určení, zda datové sady je explicitně vytvořen kanál datové továrny nebo ne. Pokud není aktuální kanál vytvoří vstupní datovou sadu pro aktivitu, můžete tento příznak nastavte na hodnotu true. Tento příznak nastavte na hodnotu true pro vstupní datové sady první aktivity v kanálu.  |Ne |false (nepravda) |
-| dostupnosti | Definuje okno zpracování (například každou hodinu nebo každý den) nebo řezů model pro produkční prostředí datové sady. Každá jednotka data využívaná a produkovaná spuštění aktivity se nazývá datový řez. Pokud dostupnost výstupní datovou sadu je nastavena na hodnotu denně (frekvence - den, interval - 1), řez každý den. <br/><br/>Podrobnosti najdete v tématu [dostupnosti datové sady](#Availability). <br/><br/>Podrobnosti o datové sady, model dělení časového, najdete v článku [plánování a provádění](data-factory-scheduling-and-execution.md) článku. |Ano |Není k dispozici |
+| dostupnosti | Definuje okno zpracování (například každou hodinu nebo každý den) nebo řezů model pro produkční prostředí datové sady. Každá jednotka data využívaná a produkovaná spuštění aktivity se nazývá datový řez. Pokud dostupnost výstupní datovou sadu je nastavena na hodnotu denně (frekvence - den, interval - 1), řez každý den. <br/><br/>Podrobnosti najdete v tématu dostupnosti datové sady. <br/><br/>Podrobnosti o datové sady, model dělení časového, najdete v článku [plánování a provádění](data-factory-scheduling-and-execution.md) článku. |Ano |Není k dispozici |
 | policy |Definuje kritéria nebo podmínky, které musí splnit řezy datové sady. <br/><br/>Podrobnosti najdete v tématu [datovou sadu zásad](#Policy) oddílu. |Ne |Není k dispozici |
 
 ## <a name="dataset-example"></a>Příklad datové sady

@@ -15,12 +15,12 @@ ms.workload: big-compute
 ms.date: 12/05/2018
 ms.author: lahugh
 ms.custom: seodec18
-ms.openlocfilehash: 02129fbddae2e3a82299eb3b03d6e73030b44c4d
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 6fb8166893f0dada019ca633933833d17b95fee9
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55477875"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55811456"
 ---
 # <a name="batch-metrics-alerts-and-logs-for-diagnostic-evaluation-and-monitoring"></a>Batch metriky, výstrahy a protokoly pro diagnostické hodnocení a monitorování
 
@@ -37,7 +37,7 @@ Metriky jsou:
 
 * Povolené ve výchozím nastavení v každém účtu Batch bez další konfigurace
 * Vygeneruje každou 1 minutu
-* Není trvalý automaticky, ale historie se zajištěním provozu na 30 dnů. Je možné zachovat metriky aktivity v rámci [protokolování diagnostiky](#work-with-diagnostic-logs).
+* Není trvalý automaticky, ale historie se zajištěním provozu na 30 dnů. Je možné zachovat metriky aktivity jako součást protokolování diagnostiky.
 
 ### <a name="view-metrics"></a>Zobrazit metriky
 

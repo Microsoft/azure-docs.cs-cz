@@ -9,12 +9,12 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: peterpr
-ms.openlocfilehash: 0789f113a68d98ff0d70fd3e9b3c8528122c2fc2
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
+ms.openlocfilehash: d8a5ca6285624720e23a4986917ab5e715f6ebfa
+ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55729162"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55768009"
 ---
 # <a name="tutorial-configure-rules-and-actions-for-your-device-in-azure-iot-central-new-ui-design"></a>Kurz: Konfigurace pravidla a akce pro vaše zařízení v Azure IoT Central (návrh nové uživatelské rozhraní)
 
@@ -77,7 +77,7 @@ Když definujete pravidlo, také definujete akci, kterou chcete spustit, když j
     | Poznámky     | Teplota klimatizace překročila prahovou hodnotu. |
 
     > [!NOTE]
-    > Pokud chcete dostávat e-mailové oznámení, e-mailová adresa musí být [ID uživatele v aplikaci](howto-administer.md?toc=/azure/iot-central-experimental/toc.json&bc=/azure/iot-central-experimental/breadcrumb/toc.json) a tento uživatel se musel k aplikaci alespoň jednou přihlásit.
+    > Pokud chcete dostávat e-mailové oznámení, e-mailová adresa musí být [ID uživatele v aplikaci](howto-administer-experimental.md?toc=/azure/iot-central-experimental/toc.json&bc=/azure/iot-central-experimental/breadcrumb/toc.json) a tento uživatel se musel k aplikaci alespoň jednou přihlásit.
 
     ![Akce teploty](media/tutorial-configure-rules-experimental/temperatureaction.png)
 

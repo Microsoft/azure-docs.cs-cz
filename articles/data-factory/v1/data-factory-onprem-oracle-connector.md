@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 05/15/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: aa6f891cc68d19e638bb2b7281f4b332de26bd26
-ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
+ms.openlocfilehash: 6b97968540914bf1edf5624d04e8f47956de7f0d
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54332638"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55822251"
 ---
 # <a name="copy-data-to-or-from-oracle-on-premises-by-using-azure-data-factory"></a>Kopírování dat do nebo z Oracle místní pomocí služby Azure Data Factory
 
@@ -92,7 +92,7 @@ Ať už používáte, nástrojů nebo rozhraní API, proveďte následující kr
 3. Vytvoření **datových sad** k představují vstupní a výstupní data pro operaci kopírování. V příkladu v předchozím kroku vytvoříte datovou sadu, která určit tabulku v databázi Oracle, který obsahuje vstupní data. Můžete vytvořit jinou datovou sadu, která zadejte kontejner objektů blob a složku obsahující data zkopírovaná z databáze Oracle. Vlastnosti datové sady, které jsou specifické pro Oracle, najdete v části [vlastnosti datové sady](#dataset-properties).
 4. Vytvoření **kanálu** , který obsahuje aktivitu kopírování, která přijímá jako vstupní datovou sadu a datovou sadu jako výstup. V předchozím příkladu použijete **OracleSource** jako zdroj a **BlobSink** jako jímka pro aktivitu kopírování. Podobně pokud kopírujete z úložiště objektů Blob v Azure k databázi Oracle, pomocí **BlobSource** a **třídě OracleSink** v aktivitě kopírování. Aktivita kopírování vlastností, které jsou specifické pro databáze Oracle, najdete v části [vlastnosti aktivity kopírování](#copy-activity-properties). Podrobnosti o tom, jak používat úložiště dat jako zdroj nebo jímku vyberte odkaz pro vaše úložiště dat v předchozí části.
 
-Při použití průvodce jsou definice JSON pro tyto entity služby Data Factory automaticky vytvoří za vás: propojené služby, datových sad a kanálu. Při použití nástroje nebo rozhraní API (s výjimkou rozhraní .NET API), můžete definovat tyto entity služby Data Factory ve formátu JSON. Ukázky, které mají definice JSON entit služby Data Factory, které používáte pro kopírování dat do nebo z místní databáze Oracle najdete v tématu [JSON příklady](#json-examples-for-copying-data-to-and-from-oracle-database).
+Při použití průvodce jsou definice JSON pro tyto entity služby Data Factory automaticky vytvoří za vás: propojené služby, datových sad a kanálu. Při použití nástroje nebo rozhraní API (s výjimkou rozhraní .NET API), můžete definovat tyto entity služby Data Factory ve formátu JSON. Ukázky, které mají definice JSON entit služby Data Factory, které používáte pro kopírování dat do nebo z místní databáze Oracle najdete v tématu příklady JSON.
 
 Následující části obsahují podrobnosti o vlastnostech JSON, které slouží k definování entit služby Data Factory.
 
@@ -597,29 +597,29 @@ Při přesunu dat od Oraclu, se od Oracle datového typu na typ formátu .NET a 
 
 | Oracle datového typu | Datový typ rozhraní .NET framework |
 | --- | --- |
-| BFILE |Byte] |
-| BLOB |Byte]<br/>(podporováno pouze ve Oracle 10g a novějších verzích při použití ovladač Microsoft) |
-| CHAR |Řetězec |
-| DATOVÝ TYP CLOB |Řetězec |
+| BFILE |Byte[] |
+| BLOB |Byte[]<br/>(podporováno pouze ve Oracle 10g a novějších verzích při použití ovladač Microsoft) |
+| CHAR |String |
+| DATOVÝ TYP CLOB |String |
 | DATE (Datum) |DateTime |
 | PLOVOUCÍ DESETINNOU ČÁRKOU |Desetinné číslo, řetězec (Pokud přesnost > 28) |
 | CELÉ ČÍSLO |Desetinné číslo, řetězec (Pokud přesnost > 28) |
-| INTERVAL ROK MĚSÍC |Datový typ Int32 |
-| DEN INTERVALU SEKUNDY. |Časový interval |
-| LONG |Řetězec |
-| DLOUHO NEZPRACOVANÉ |Byte] |
-| NCHAR |Řetězec |
-| NCLOB |Řetězec |
+| INTERVAL ROK MĚSÍC |Int32 |
+| DEN INTERVALU SEKUNDY. |TimeSpan |
+| LONG |String |
+| DLOUHO NEZPRACOVANÉ |Byte[] |
+| NCHAR |String |
+| NCLOB |String |
 | ČÍSLO |Desetinné číslo, řetězec (Pokud přesnost > 28) |
-| NVARCHAR2 |Řetězec |
-| RAW |Byte] |
-| ID ŘÁDKU |Řetězec |
+| NVARCHAR2 |String |
+| RAW |Byte[] |
+| ID ŘÁDKU |String |
 | ČASOVÉ RAZÍTKO |DateTime |
 | ČASOVÉ RAZÍTKO S MÍSTNÍM ČASOVÉM PÁSMU |DateTime |
 | ČASOVÉ RAZÍTKO S ČASOVÝM PÁSMEM |DateTime |
 | CELÉ ČÍSLO BEZ ZNAMÉNKA |Číslo |
-| VARCHAR2 |Řetězec |
-| XML |Řetězec |
+| VARCHAR2 |String |
+| XML |String |
 
 > [!NOTE]
 > Datové typy **INTERVALU roku a měsíce na** a **INTERVALU dne do druhé** nejsou podporovány při použití ovladače Microsoft.

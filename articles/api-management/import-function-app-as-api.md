@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 08/28/2018
 ms.author: apimpm
-ms.openlocfilehash: b5a38b9f16224c8b2b128b464106fe83d018b308
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
-ms.translationtype: HT
+ms.openlocfilehash: e86bd797774448d8e4821ff02d358d420a099442
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46129756"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55810775"
 ---
 # <a name="import-an-azure-function-app-as-an-api-in-azure-api-management"></a>Import aplikace Azure Function App jako rozhraní API ve službě Azure API Management
 
@@ -160,7 +160,7 @@ Operace můžete volat přímo z webu Azure Portal. Web Azure Portal nabízí po
 
 Operace pro testování rozhraní API můžete volat taky z portálu pro vývojáře. 
 
-1. Vyberte rozhraní API, které jste vytvořili v kroku [Import a publikování back-endového rozhraní API](#create-api).
+1. Vyberte rozhraní API, které jste vytvořili v Import a publikování back endového rozhraní API.
 
 2. Vyberte **Portál pro vývojáře**.
 
@@ -178,7 +178,7 @@ Operace pro testování rozhraní API můžete volat taky z portálu pro vývoj�
 
 [!INCLUDE [api-management-define-api-topics.md](../../includes/api-management-define-api-topics.md)]
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 > [!div class="nextstepaction"]
 > [Transformace a ochrana publikovaného rozhraní API](transform-api.md)

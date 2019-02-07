@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: mbullwin
-ms.openlocfilehash: 48e20df61844d83deb8ac992f783cf227e658aaf
-ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
+ms.openlocfilehash: d86df171de807c23aad6dd2cb8e2128098dede81
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54119981"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55812445"
 ---
 # <a name="set-up-application-insights-dependency-tracking"></a>Nastavení Application Insights: Sledování závislostí
 A *závislost* je externí komponenta, která volá vaši aplikaci. Obvykle se jedná o službu volána pomocí protokolu HTTP, nebo databázi nebo systému souborů. [Application Insights](../../azure-monitor/app/app-insights-overview.md) měří jak dlouho aplikaci čeká závislosti a jak často závislosti volání selže. Můžete prozkoumat konkrétní volání a spojit je žádosti a výjimky.
@@ -52,7 +52,7 @@ Závislost částečné informace jsou shromažďovány automaticky [Application
 * [Mapa aplikace](#application-map) vizualizuje závislosti mezi vaší aplikací a sousední komponenty.
 * [Výkon, prohlížeče a selhání oken](#performance-and-blades) zobrazit závislosti dat serveru.
 * [Okno prohlížečů](#ajax-calls) ukazuje volání AJAX z prohlížečů uživatelů.
-* [Kliknutím přejít z pomalý nebo neúspěšné požadavky](#diagnose-slow-requests) ke kontrole jejich závislosti volání.
+* Klikněte na z pomalý nebo neúspěšné žádosti ke kontrole jejich voláním závislostí.
 * [Analytics](#analytics) slouží k dotazování na data závislostí.
 
 ## <a name="application-map"></a>Mapa aplikace
@@ -210,7 +210,7 @@ Naleznete v následující tabulce a zajistit, že jste zvolili správnou konfig
 | Server služby IIS |Buď [nainstalujte na server monitorování stavu](../../azure-monitor/app/monitor-performance-live-website-now.md). Nebo [Upgrade vaší aplikace na rozhraní .NET framework 4.6 nebo novější](https://go.microsoft.com/fwlink/?LinkId=528259) a nainstalujte [Application Insights SDK](asp-net.md) ve vaší aplikaci. |
 | Služba IIS Express |Místo toho použijte Server služby IIS. |
 | Webové aplikace Azure |V váš řídicí panel webové aplikace [otevřete okno Application Insights v ovládacím panelu webové aplikace](../../azure-monitor/app/azure-web-apps.md) a možnost instalace, pokud se zobrazí výzva. |
-| Cloudové služby Azure |[Úlohy po spuštění použijte](../../azure-monitor/app/cloudservices.md) nebo [nainstalovat rozhraní .NET framework 4.6 +](../../cloud-services/cloud-services-dotnet-install-dotnet.md). |
+| Cloudová služba Azure |[Úlohy po spuštění použijte](../../azure-monitor/app/cloudservices.md) nebo [nainstalovat rozhraní .NET framework 4.6 +](../../cloud-services/cloud-services-dotnet-install-dotnet.md). |
 
 ## <a name="video"></a>Video
 

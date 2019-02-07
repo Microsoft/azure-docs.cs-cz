@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 13e00acaf287a9e153aaa8e5ce7d630f8d198f02
-ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
+ms.openlocfilehash: a7789f9a3f3da46305a9d8cd7cda24019658f2ad
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54330411"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55811474"
 ---
 # <a name="copy-data-to-and-from-azure-sql-database-using-azure-data-factory"></a>Kopírování dat do a z Azure SQL Database pomocí Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -199,7 +199,7 @@ Ukázka zkopíruje data časových řad (každou hodinu, denně, atd.) z tabulky
   }
 }
 ```
-Zobrazit [propojená služba Azure SQL](#linked-service) části seznamu vlastností podporuje tuto propojenou službu.
+Naleznete v části propojená služba Azure SQL v seznamu vlastností podporuje tuto propojenou službu.
 
 **Propojená služba Azure Blob storage:**
 
@@ -248,7 +248,7 @@ Nastavení "externí": "PRAVDA" informuje službu Azure Data Factory, že datov�
 }
 ```
 
-Zobrazit [vlastnosti typu datová sada Azure SQL](#dataset) naleznete seznam vlastností podporovaných tímto typem datové sady.
+V části Azure SQL datové sady typu vlastnosti pro seznam vlastností podporovaných tímto typem datové sady.
 
 **Výstupní datová sada Azure Blob:**
 
@@ -391,7 +391,7 @@ Ukázka zkopíruje časových řad dat (každou hodinu, denně, atd.) z Azure bl
   }
 }
 ```
-Zobrazit [propojená služba Azure SQL](#linked-service) části seznamu vlastností podporuje tuto propojenou službu.
+Naleznete v části propojená služba Azure SQL v seznamu vlastností podporuje tuto propojenou službu.
 
 **Propojená služba Azure Blob storage:**
 
@@ -499,7 +499,7 @@ Ukázce kopíruje data do tabulky s názvem "MyTable" ve službě Azure SQL. Vyt
   }
 }
 ```
-Zobrazit [vlastnosti typu datová sada Azure SQL](#dataset) naleznete seznam vlastností podporovaných tímto typem datové sady.
+V části Azure SQL datové sady typu vlastnosti pro seznam vlastností podporovaných tímto typem datové sady.
 
 **Aktivita kopírování v kanálu s Blob zdroje a jímky SQL:**
 

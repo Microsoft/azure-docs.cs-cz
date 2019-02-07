@@ -9,14 +9,14 @@ ms.topic: conceptual
 ms.reviewer: jmartens
 ms.author: aashishb
 author: aashishb
-ms.date: 10/02/2018
+ms.date: 02/05/2019
 ms.custom: seodec18
-ms.openlocfilehash: 2c82c39de9b403e2e35f40c0290c8642c702790f
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 2f21c54100a46d2f6ba28d2063bea91b84ea06d4
+ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55248057"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55769317"
 ---
 # <a name="use-ssl-to-secure-web-services-with-azure-machine-learning-service"></a>Použití protokolu SSL pro zabezpečení webové služby pomocí služby Azure Machine Learning
 
@@ -103,5 +103,6 @@ V dalším kroku je nutné aktualizovat DNS tak, aby odkazoval na webovou služb
 Použití protokolu SSL se službami nasazenými do FPGA se momentálně nepodporuje.
 
 ## <a name="next-steps"></a>Další postup
-
-Zjistěte, jak [využívání modelu ML nasadit jako webovou službu](how-to-consume-web-service.md).
+Naučte se:
++ [Využívání služby machine learning model nasadit jako webovou službu](how-to-consume-web-service.md)
++ [Bezpečné spuštění experimentů a odvozování uvnitř virtuální sítě Azure](how-to-enable-virtual-network.md)

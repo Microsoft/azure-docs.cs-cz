@@ -8,12 +8,12 @@ ms.author: tarcher
 manager: jeconnoc
 ms.topic: tutorial
 ms.date: 11/15/2018
-ms.openlocfilehash: 3554151490215f128efc6725b7aaa0628d503366
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.openlocfilehash: b0f909bb7f4b59e083f0ef1c8a19c11d5d9fb312
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54260110"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55821299"
 ---
 # <a name="tutorial-deploy-from-github-to-azure-app-service-with-jenkins-continuous-integration-and-deployment"></a>Kurz: Nasazení z Githubu do služby Azure App Service pomocí Jenkinse průběžnou integraci a nasazování
 
@@ -45,7 +45,7 @@ K dokončení tohoto kurzu, budete potřebovat tyto položky:
 
   Pokud nemáte Jenkins server, proveďte tyto kroky teď na webu Azure portal: [Vytvoření serveru Jenkins na virtuálním počítači Azure s Linuxem](/azure/jenkins/install-jenkins-solution-template)
 
-* A [Githubu](https://github.com) účtem, takže můžete získat pracovní kopie ([forku](#fork)) pro ukázkovou webovou aplikaci Java. 
+* A [Githubu](https://github.com) účtem, takže pro ukázkovou webovou aplikaci Java můžete získat pracovní kopie (fork). 
 
 * [Azure CLI](/cli/azure/install-azure-cli), který můžete spustit buď z místního příkazového řádku nebo [Azure Cloud Shell](/azure/cloud-shell/overview)
 

@@ -8,12 +8,12 @@ ms.topic: get-started-article
 ms.date: 09/19/2017
 ms.author: renash
 ms.subservice: files
-ms.openlocfilehash: c393942112f42dc0d56388b8beac44b4287bca23
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 86224b90f7a93eae41c127d4ba87f685f895e15a
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55475700"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55820398"
 ---
 # <a name="mount-azure-file-share-over-smb-with-macos"></a>Připojení sdílené složky Azure přes protokol SMB v systému macOS
 Služba [Soubory Azure](storage-files-introduction.md) je snadno použitelný cloudový systém souborů od Microsoftu. Sdílené složky Azure je možné připojit v systému macOS El Capitan 10.11 a novějším s použitím standardního protokolu SMB 3. Tento článek ukazuje dva různé způsoby připojení sdílené složky Azure v systému macOS: pomocí uživatelského rozhraní Finder a pomocí Terminálu.
@@ -38,7 +38,7 @@ Služba [Soubory Azure](storage-files-introduction.md) je snadno použitelný cl
 1. **Otevřete Finder**: Finder je otevřít v systému macOS ve výchozím nastavení, ale můžete zajistit, že je aktuálně vybranou aplikaci kliknutím "ikona obličeje macOS" do doku:  
     ![Ikona obličeje macOS](./media/storage-how-to-use-files-mac/mount-via-finder-1.png)
 
-2. **Vyberte "Připojení k serveru" v nabídce "Go"**: Použijte cestu UNC z [požadavky](#preq), převeďte počáteční dvojité zpětné lomítko (`\\`) k `smb://` a všechna ostatní zpětná lomítka (`\`) na lomítka (`/`). Odkaz by měl vypadat nějak takto: ![Dialogové okno "Připojení k serveru"](./media/storage-how-to-use-files-mac/mount-via-finder-2.png)
+2. **Vyberte "Připojení k serveru" v nabídce "Go"**: Použijte cestu UNC z požadovaných součástí, převeďte počáteční dvojité zpětné lomítko (`\\`) k `smb://` a všechna ostatní zpětná lomítka (`\`) na lomítka (`/`). Odkaz by měl vypadat nějak takto: ![Dialogové okno "Připojení k serveru"](./media/storage-how-to-use-files-mac/mount-via-finder-2.png)
 
 3. **Použijte název účtu úložiště a klíč účtu úložiště po zobrazení výzvy k zadání uživatelského jména a hesla**: Po kliknutí na "Připojit" v dialogovém okně "Připojení k serveru", zobrazí se výzva k zadání uživatelského jména a hesla (automaticky se vyplní uživatelské jméno macOS). Máte možnost uložit název účtu úložiště a klíč účtu úložiště do klíčenky macOS.
 

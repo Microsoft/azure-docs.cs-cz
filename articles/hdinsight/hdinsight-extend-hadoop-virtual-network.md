@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/06/2018
-ms.openlocfilehash: a2731397ece833adcedc4ebab640fa1b3ab2fc05
-ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
+ms.openlocfilehash: 2e986e26f22e41e1cbf7b8d1c1af694522a01d06
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/26/2019
-ms.locfileid: "55076822"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55821571"
 ---
 # <a name="extend-azure-hdinsight-using-an-azure-virtual-network"></a>Rozšíření Azure HDInsight pomocí Azure Virtual Network
 
@@ -70,7 +70,7 @@ Pomocí kroků v této části zjistíte, jak přidat nové HDInsight do existuj
 
     HDInsight je spravovaná služba, vyžaduje neomezený přístup k několika IP adresami v datovém centru Azure. Povolit komunikaci se tyto IP adresy, aktualizujte všechny existující skupiny zabezpečení sítě nebo trasy definované uživatelem.
 
-    HDInsight je hostitelem více služeb, které používají různé porty. Neblokujete provoz na těchto portech. Seznam portů, aby přes virtuální zařízení brány firewall, najdete v článku [zabezpečení](#security) oddílu.
+    HDInsight je hostitelem více služeb, které používají různé porty. Neblokujete provoz na těchto portech. Seznam portů, aby přes virtuální zařízení brány firewall najdete v části zabezpečení.
 
     Najít existující konfiguraci zabezpečení, použijte následující příkazy prostředí Azure PowerShell nebo rozhraní příkazového řádku Azure Classic:
 

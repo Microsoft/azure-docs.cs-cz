@@ -8,12 +8,12 @@ manager: jeconnoc
 ms.author: tarcher
 ms.date: 09/22/2018
 ms.topic: article
-ms.openlocfilehash: 5265b6f6ebf779c83792ab2569c1b613d11070da
-ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
+ms.openlocfilehash: 149f37d0231ecc0547e8dc7937d22a9cc38b7df3
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54051522"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55810214"
 ---
 # <a name="ansible-module-and-version-matrix"></a>Modul a verzi matice Ansible
 
@@ -21,7 +21,7 @@ ms.locfileid: "54051522"
 Ansible se dodává se počet modulů, které mohou být provedeny přímo na vzdáleného hostitele nebo prostřednictvím playbooky.
 Tento článek uvádí Ansible moduly pro Azure, která můžete zřizovat prostředky cloudu Azure, jako jsou virtuální počítače, sítě a služby kontejneru. Tyto moduly můžete získat z oficiálním vydáním Ansible nebo z následující role playbooku vydávaný microsoftem.
 
-| Ansible modul pro Azure                   |  Ansible 2.4 |  Ansible 2.5 |  Ansible 2.6 | Ansible 2.7 | [Ansible Role](#introduction-to-azurepreviewmodule) | 
+| Ansible modul pro Azure                   |  Ansible 2.4 |  Ansible 2.5 |  Ansible 2.6 | Ansible 2.7 | Ansible Role | 
 |---------------------------------------------|--------------|--------------|-----------------------------|-------------------------------------|-------------------------------------| 
 | **Compute**                    |           |                          |                          |                            |                                | 
 | azure_rm_availabilityset                    | Ano          | Ano                         | Ano          | Ano          | Ano                                 | 
@@ -123,7 +123,7 @@ Tento článek uvádí Ansible moduly pro Azure, která můžete zřizovat prost
 | azure_rm_trafficmanagerendpoint_facts            | -            | -                         | -          | Ano          | Ano                                 | 
 | azure_rm_trafficmanagerprofile                   | -            | -                         | -          | Ano          | Ano                                 | 
 | azure_rm_trafficmanagerprofile_facts             | -            | -                         | -          | Ano          | Ano                                 | 
-| **Automatické škálování**                    |           |                          |                          |                             |                               | 
+| **AutoScale**                    |           |                          |                          |                             |                               | 
 | azure_rm_autoscale                  | -            | -                         | -          | Ano          | Ano                                 | 
 | azure_rm_autoscale_facts            | -            | -                         | -          | Ano          | Ano                                 | 
 

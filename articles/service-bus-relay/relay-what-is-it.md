@@ -13,12 +13,12 @@ ms.devlang: multiple
 ms.topic: get-started-article
 ms.date: 11/13/2018
 ms.author: spelluru
-ms.openlocfilehash: 132fca9c8904c4f64fffe167e3a3f2c6bb0d2cfe
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: 2937d1f665dae03795892f9ff0e8a93a894e1992
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51621017"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55818035"
 ---
 # <a name="what-is-azure-relay"></a>Co je Azure Relay?
 Služba Azure Relay umožňuje bezpečně zpřístupnit služby spuštěné v podnikové síti pro veřejný cloud. Jde to provést bez otevření portu v bráně firewall nebo nežádoucí změny infrastruktury podnikové sítě. 
@@ -44,7 +44,7 @@ Přenos dat s předáváním zahrnuje následující základní kroky:
 Azure Relay má dvě funkce:
 
 - [Hybridní připojení](#hybrid-connections) – Pomocí otevřených webových soketů umožňuje scénáře s podporou více platforem.
-- [Přenosy WCF](#wcf-relays) – Pomocí technologie Windows Communication Foundation (WCF) umožňuje vzdálená volání procedur. WCF Relay je starší verze nabídky přenosu, kterou již mnozí uživatelé používají ve svých programovacích modelech WCF.
+- Přenosy WCF – používá Windows Communication Foundation (WCF) k umožnění vzdálených volání procedur. WCF Relay je starší verze nabídky přenosu, kterou již mnozí uživatelé používají ve svých programovacích modelech WCF.
 
 ## <a name="hybrid-connections"></a>Hybridní připojení
 
@@ -70,7 +70,7 @@ Hybrid Connections i WCF Relay umožňují zabezpečené připojení k prostřed
 | **Otevřený protokol založený na standardech** | |x |
 | **Programovacích modelů protokolu RPC** | |x |
 
-## <a name="architecture-processing-of-incoming-relay-requests"></a>Architektura: Zpracování příchozích požadavků na předání
+## <a name="architecture-processing-of-incoming-relay-requests"></a>Architektura: Zpracování příchozích událostí požadavků na předání
 Následující diagram ukazuje, jak služba Azure Relay zpracovává příchozí požadavky na předání:
 
 ![Zpracování příchozích událostí požadavků na předání WCF](./media/relay-what-is-it/ic690645.png)

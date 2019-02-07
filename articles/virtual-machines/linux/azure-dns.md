@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/19/2016
 ms.author: rclaus
-ms.openlocfilehash: 93614d4889c9c884f25c5e05cd620e8303226323
-ms.sourcegitcommit: 99a6a439886568c7ff65b9f73245d96a80a26d68
+ms.openlocfilehash: ae8315b2a484cddc500b5c2dd02a019cb4f46d8e
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2018
-ms.locfileid: "39357762"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55819140"
 ---
 # <a name="dns-name-resolution-options-for-linux-virtual-machines-in-azure"></a>Možnosti překladu názvů DNS pro virtuální počítače s Linuxem v Azure
 Azure poskytuje překlad názvů DNS ve výchozím nastavení pro všechny virtuální počítače, které jsou v jedné virtuální sítě. Vašeho vlastního řešení DNS název řešení můžete implementovat podle konfigurace služby DNS na virtuálních počítačích Azure, který je hostitelem. Následující scénáře byste mohli vybrat ten, který se dá použít pro vaše konkrétní potřeby.
@@ -33,7 +33,7 @@ Následující tabulka popisuje scénáře a řešení rozlišení odpovídajíc
 
 | **Scénář** | **Řešení** | **Přípona** |
 | --- | --- | --- |
-| Překlad mezi instancemi role nebo virtuálními počítači ve stejné virtuální síti |[Překlad názvů, který poskytuje Azure](#azure-provided-name-resolution) |název hostitele nebo plně kvalifikovaný název domény (FQDN) |
+| Překlad mezi instancemi role nebo virtuálními počítači ve stejné virtuální síti |Překlad názvů, který poskytuje Azure |název hostitele nebo plně kvalifikovaný název domény (FQDN) |
 | Překlad mezi instancemi role nebo virtuálními počítači v různých virtuálních sítí |Spravované zákazníkem servery DNS, které dotazy mezi virtuálními sítěmi pro překlad Azure (DNS proxy). Zobrazit [překladu IP adresy serveru DNS](#name-resolution-using-your-own-dns-server). |Pouze plně kvalifikovaný název domény |
 | Překlad místních počítačů a názvy služeb z instancí rolí nebo virtuálních počítačů v Azure |Spravované zákazníkem serverů DNS (například místní řadič domény, řadiče místní domény jen pro čtení nebo sekundární DNS synchronizované s použitím přenosů zóny). Zobrazit [překladu IP adresy serveru DNS](#name-resolution-using-your-own-dns-server). |Pouze plně kvalifikovaný název domény |
 | Řešení Azure názvy hostitelů z místních počítačů |Předávání dotazů na zákazníkem spravovaný DNS proxy serveru v příslušné virtuální sítě. Proxy server předává dotazy k Azure pro řešení. Zobrazit [překladu IP adresy serveru DNS](#name-resolution-using-your-own-dns-server). |Pouze plně kvalifikovaný název domény |

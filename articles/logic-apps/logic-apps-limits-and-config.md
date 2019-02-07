@@ -9,12 +9,12 @@ ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: article
 ms.date: 11/16/2018
-ms.openlocfilehash: 494665e530104cd4711e8112f3a999e68c3485b8
-ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
+ms.openlocfilehash: d77cdd7781f3a371d6089573a16ba642fb1c774c
+ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55746376"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55769864"
 ---
 # <a name="limits-and-configuration-information-for-azure-logic-apps"></a>Omezení a konfigurační informace pro Azure Logic Apps
 
@@ -195,53 +195,58 @@ Tady je omezený počet artefaktů pro každý účet integrace. Další informa
 
 | Artefakt | Omezení | Poznámky | 
 |----------|-------|-------| 
-| Obchodní partneři EDI | 25 | | 
-| Obchodní smluv EDI | 10 | | 
-| Maps | 25 | | 
-| Schémata | 25 | 
 | Sestavení | 10 | | 
 | Konfigurace dávek | 5 | 
 | Certifikáty | 25 | | 
+| Obchodní smluv EDI | 10 | | 
+| Obchodní partneři EDI | 25 | | 
+| Maps | 25 | | 
+| Schémata | 25 | 
 |||| 
 
 *Úroveň Basic*
 
 | Artefakt | Omezení | Poznámky | 
 |----------|-------|-------| 
-| Obchodní partneři EDI | 2 | | 
-| Obchodní smluv EDI | 1 | | 
-| Maps | 500 | | 
-| Schémata | 500 | 
 | Sestavení | 25 | | 
 | Konfigurace dávek | 1 | | 
 | Certifikáty | 2 | | 
+| Obchodní smluv EDI | 1 | | 
+| Obchodní partneři EDI | 2 | | 
+| Maps | 500 | | 
+| Schémata | 500 | 
 |||| 
 
 *Úroveň Standard*
 
 | Artefakt | Omezení | Poznámky | 
 |----------|-------|-------| 
-| Obchodní partneři EDI | 500 | | 
-| Obchodní smluv EDI | 500 | | 
-| Maps | 500 | | 
-| Schémata | 500 | 
 | Sestavení | 50 | | 
 | Konfigurace dávek | 5 |  
 | Certifikáty | 50 | | 
+| Obchodní smluv EDI | 500 | | 
+| Obchodní partneři EDI | 500 | | 
+| Maps | 500 | | 
+| Schémata | 500 | 
 |||| 
 
 <a name="artifact-capacity-limits"></a>
 
 ### <a name="artifact-capacity-limits"></a>Limity kapacity artefaktu
 
-| Název | Omezení | Poznámky | 
-| ---- | ----- | ----- | 
-| Schéma | 8 MB | Pokud chcete nahrát soubory větší než 2 MB, použijte [identifikátor URI objektu blob](../logic-apps/logic-apps-enterprise-integration-schemas.md). | 
-| Mapu (soubor XSLT) | 2 MB | | 
-| Koncový bod modulu runtime: Čtení volání za 5 minut | 60,000 | Distribuuje úlohy mezi víc než jeden účet podle potřeby. | 
-| Koncový bod modulu runtime: Vyvolání volání za 5 minut | 45,000 | Distribuuje úlohy mezi víc než jeden účet podle potřeby. | 
-| Koncový bod modulu runtime: Sledovací volání za 5 minut | 45,000 | Distribuuje úlohy mezi víc než jeden účet podle potřeby. | 
-| Koncový bod modulu runtime: Blokování souběžných volání | ~1,000 | Můžete snížit počet souběžných požadavků nebo zkrátit dobu trvání podle potřeby. | 
+| Artefakt | Omezení | Poznámky | 
+| -------- | ----- | ----- | 
+| Sestavení | 8 MB | Pokud chcete nahrát soubory větší než 2 MB, použijte [účet a objektů blob v kontejneru úložiště Azure](../logic-apps/logic-apps-enterprise-integration-schemas.md). | 
+| Mapu (soubor XSLT) | 8 MB | Pokud chcete nahrát soubory větší než 2 MB, použijte [Azure Logic Apps REST API – mapuje](https://docs.microsoft.com/rest/api/logic/maps/createorupdate). | 
+| Schéma | 8 MB | Pokud chcete nahrát soubory větší než 2 MB, použijte [účet a objektů blob v kontejneru úložiště Azure](../logic-apps/logic-apps-enterprise-integration-schemas.md). | 
+||||
+
+| Koncový bod modulu runtime | Omezení | Poznámky |
+|------------------|-------|-------|
+| Čtení volání za 5 minut | 60,000 | Distribuuje úlohy mezi víc než jeden účet podle potřeby. | 
+| Vyvolání volání za 5 minut | 45,000 | Distribuuje úlohy mezi víc než jeden účet podle potřeby. | 
+| Sledovací volání za 5 minut | 45,000 | Distribuuje úlohy mezi víc než jeden účet podle potřeby. | 
+| Blokování souběžných volání | ~1,000 | Můžete snížit počet souběžných požadavků nebo zkrátit dobu trvání podle potřeby. | 
 ||||  
 
 <a name="b2b-protocol-limits"></a>

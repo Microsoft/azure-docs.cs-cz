@@ -13,12 +13,12 @@ ms.subservice: user-help
 ms.topic: conceptual
 ms.date: 05/23/2017
 ms.author: lizross
-ms.openlocfilehash: ab3de9b010c0356dea17520b497235e0bf7c818e
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 2129b1f70ea19bdb2144f0f2a9ca4a6dbac0acbd
+ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55181312"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55766808"
 ---
 # <a name="manage-your-settings-for-two-step-verification"></a>Správa nastavení pro dvoustupňové ověřování.
 Tento článek obsahuje odpovědi na otázky o tom, jak aktualizovat nastavení pro dvoustupňové ověření nebo vícefaktorové ověřování. Pokud máte potíže s přihlášením k účtu, podívejte se na [potíže s dvoustupňovým ověřováním](multi-factor-authentication-end-user-troubleshoot.md) pomoc při řešení potíží.
@@ -74,7 +74,7 @@ V závislosti na nastavení vaší organizace může mít zaškrtávací políč
 2. Při příštím přihlášení na libovolném zařízení, budete vyzváni k provedení dvoustupňového ověření.
 
 ## <a name="how-do-i-clean-up-microsoft-authenticator-from-my-old-device-and-move-to-a-new-one"></a>Jak vyčistit prostředky z původní zařízení aplikaci Microsoft Authenticator a přesunout do nového?
-Při odinstalaci aplikace ze zařízení nebo obnovení zařízení neodebere aktivace na back-endu. Další informace najdete v tématu [Microsoft Authenticator](microsoft-authenticator-app-how-to.md).
+Při odinstalaci aplikace ze zařízení nebo obnovení zařízení neodebere aktivace na back-endu. Další informace najdete v tématu [Microsoft Authenticator](user-help-auth-app-download-install.md).
 
 ## <a name="next-steps"></a>Další postup
 * Získejte tipy pro řešení potíží a Nápověda k [potíže s dvoustupňovým ověřováním](multi-factor-authentication-end-user-troubleshoot.md)

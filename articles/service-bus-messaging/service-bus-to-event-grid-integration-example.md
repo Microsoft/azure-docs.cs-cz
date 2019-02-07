@@ -14,20 +14,20 @@ ms.devlang: multiple
 ms.topic: get-started-article
 ms.date: 09/15/2018
 ms.author: spelluru
-ms.openlocfilehash: 55798af8d8e2b50614a3eee51b330c5b4fa0f918
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
-ms.translationtype: HT
+ms.openlocfilehash: a1c0078cf2359de7fa018af749c61880caa8fcdd
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47409572"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55821802"
 ---
 # <a name="azure-service-bus-to-azure-event-grid-integration-examples"></a>Příklady integrace služby Azure Service Bus do služby Azure Event Grid
 
 V tomto článku zjistíte, jak nastavit funkci Azure a aplikaci logiky, které přijímají zprávy na základě přijetí události ze služby Azure Event Grid. Provedete následující:
  
-* Vytvoříte jednoduchou [testovací funkci Azure](#test-function-setup) pro účely ladění a zobrazení počátečního toku událostí ze služby Event Grid. Tento krok proveďte bez ohledu na to, jestli provedete i ostatní kroky.
-* Vytvoříte [funkci Azure pro příjem a zpracování zpráv služby Azure Service Bus](#receive-messages-using-azure-function) na základě událostí služby Event Grid.
-* Využijete [funkci Logic Apps služby Azure App Service](#receive-messages-using-azure-logic-app).
+* Vytvořte jednoduchou testovací funkci Azure pro účely ladění a zobrazení počátečního toku událostí ze služby Event Grid. Tento krok proveďte bez ohledu na to, jestli provedete i ostatní kroky.
+* Vytvořte funkci Azure pro příjem a zpracování zpráv služby Azure Service Bus na základě událostí služby Event Grid.
+* Využijte funkci Logic Apps služby Azure App Service.
 
 Příklad, který vytvoříte, předpokládá, že má téma služby Service dva odběry. Příklad také předpokládá, že odběr služby Event Grid byl vytvořený k odesílání událostí pouze pro jeden odběr služby Service Bus. 
 
@@ -217,7 +217,7 @@ Následujícím způsobem propojte se službami Azure Service Bus a Azure Event 
 
     ![18][]
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 * Další informace o službě [Azure Event Grid](https://docs.microsoft.com/azure/event-grid/).
 * Další informace o službě [Azure Functions](https://docs.microsoft.com/azure/azure-functions/).

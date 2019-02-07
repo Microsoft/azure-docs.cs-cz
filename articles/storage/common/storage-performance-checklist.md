@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 12/08/2016
 ms.author: rogarana
 ms.subservice: common
-ms.openlocfilehash: 49e9a057e52d46fd18e13c43d0f6024201499685
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.openlocfilehash: 010a9f4e5be34986c1098f403e4df0ccf569838c
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55493384"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55821658"
 ---
 # <a name="microsoft-azure-storage-performance-and-scalability-checklist"></a>Kontrolní seznam pro výkon a škálovatelnost Microsoft Azure Storage
 ## <a name="overview"></a>Přehled
@@ -92,7 +92,7 @@ Každou ze služeb Azure Storage má cíle škálovatelnosti pro kapacita (GB), 
 * [Fronta zpráv za sekundu](#subheading39)  
 
 #### <a name="sub1bandwidth"></a>Cíle škálovatelnosti šířky pásma pro všechny služby
-V době psaní cíle šířky pásma v USA pro účet geograficky redundantní úložiště (GRS) jsou 10 gigabitů za sekundu (GB/s) pro příchozí přenos dat (data odeslaná do účtu úložiště) a 20 GB/s pro výchozí přenos dat (data odeslaná z účtu úložiště). Pro účet místně redundantního úložiště (LRS), omezení jsou vyšší – 20 GB/s pro příchozí přenos dat a 30 GB/s pro výchozí přenos.  Omezení šířky pásma mezinárodní může být nižší a můžete najít na naší [stránky cíle škálovatelnosti](https://msdn.microsoft.com/library/azure/dn249410.aspx).  Další informace o možnostech redundance úložiště, najdete v článku odkazy v [užitečné zdroje](#sub1useful) níže.  
+V době psaní cíle šířky pásma v USA pro účet geograficky redundantní úložiště (GRS) jsou 10 gigabitů za sekundu (GB/s) pro příchozí přenos dat (data odeslaná do účtu úložiště) a 20 GB/s pro výchozí přenos dat (data odeslaná z účtu úložiště). Pro účet místně redundantního úložiště (LRS), omezení jsou vyšší – 20 GB/s pro příchozí přenos dat a 30 GB/s pro výchozí přenos.  Omezení šířky pásma mezinárodní může být nižší a můžete najít na naší [stránky cíle škálovatelnosti](https://msdn.microsoft.com/library/azure/dn249410.aspx).  Další informace o možnostech redundance úložiště najdete v článku odkazy v užitečné zdroje informací.  
 
 #### <a name="what-to-do-when-approaching-a-scalability-target"></a>Co dělat, když se blíží cíle škálovatelnosti
 Pokud se blíží se limit účty úložiště, které můžete použít v kombinaci konkrétní předplatné nebo oblast, vyhodnoťte svoje aplikace a používání účtů úložiště a určit, pokud platí kterákoli z těchto podmínek.

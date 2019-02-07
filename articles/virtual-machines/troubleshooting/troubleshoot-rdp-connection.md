@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 03/23/2018
 ms.author: roiyz
-ms.openlocfilehash: b73cdc7e55a60fbefc294a54f70daa9b2a11ced1
-ms.sourcegitcommit: f31bfb398430ed7d66a85c7ca1f1cc9943656678
+ms.openlocfilehash: 2613584e336243128067a76ce424e640ebdf94e0
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47452446"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55817322"
 ---
 # <a name="troubleshoot-remote-desktop-connections-to-an-azure-virtual-machine"></a>Řešení potíží s připojením ke vzdálené ploše na virtuálním počítači Azure
 Připojení protokolu RDP (Remote Desktop) k založené na Windows Azure virtuálnímu počítači (VM) může selhat z různých důvodů, poskytne vám nelze získat přístup k vašemu virtuálnímu počítači. Pomocí služby Vzdálená plocha na virtuální počítač, síťové připojení nebo klient vzdálené plochy na hostitelském počítači může být problém. Tento článek vás provede některé z nejběžnějších metody k řešení problémů s připojením RDP. 
@@ -50,8 +50,8 @@ Pokud potřebujete podrobnější kroky a vysvětlení pokračujte ve čtení. O
 ## <a name="ways-to-troubleshoot-rdp-issues"></a>Způsoby řešení potíží s RDP
 Řešení potíží s virtuální počítače vytvořené pomocí modelu nasazení Resource Manager pomocí jedné z následujících metod:
 
-* [Azure portal](#using-the-azure-portal) – oceníte, pokud potřebujete rychle resetovat přihlašovací údaje pro konfiguraci nebo uživatel RDP a nemáte nainstalované Azure nástroje.
-* [Prostředí Azure PowerShell](#using-azure-powershell) – Pokud umíte pracovat se příkazový řádek Powershellu, rychle obnovit protokol RDP konfigurace nebo přihlašovací údaje uživatele pomocí rutin Azure Powershellu.
+* Azure portal – nemají výborné Pokud potřebujete rychle resetovat přihlašovací údaje pro konfiguraci nebo uživatel RDP a nástroje Azure, nainstalované.
+* Azure PowerShell – Pokud umíte pracovat se příkazový řádek Powershellu, rychle resetovat protokol RDP konfigurace nebo přihlašovací údaje uživatele pomocí rutin Azure Powershellu.
 
 Můžete také vyhledat kroky pro řešení potíží virtuální počítače vytvořené pomocí [model nasazení Classic](#troubleshoot-vms-created-using-the-classic-deployment-model).
 
@@ -236,10 +236,10 @@ Při pokusu o připojení k vašemu virtuálnímu počítači pomocí protokolu 
 * [Vzdálená relace byla odpojena, protože nejsou žádné vzdálené plochy licenční servery mohly poskytnout licenci k dispozici](troubleshoot-specific-rdp-errors.md#rdplicense).
 * [Vzdálená plocha nenašla počítač "name"](troubleshoot-specific-rdp-errors.md#rdpname).
 * [Došlo k chybě ověřování. Místní úřad zabezpečení nelze kontaktovat](troubleshoot-specific-rdp-errors.md#rdpauth).
-* [Chyba zabezpečení Windows: vaše přihlašovací údaje nefungovala](troubleshoot-specific-rdp-errors.md#wincred).
+* [Chyba zabezpečení Windows: Vaše přihlašovací údaje nefungovala](troubleshoot-specific-rdp-errors.md#wincred).
 * [Počítač se nemůže připojit ke vzdálenému počítači](troubleshoot-specific-rdp-errors.md#rdpconnect).
 
-## <a name="additional-resources"></a>Další zdroje informací:
+## <a name="additional-resources"></a>Další materiály
 Pokud žádná z těchto chyb došlo k chybě a se pořád nemůžete připojit k virtuálnímu počítači přes vzdálenou plochu, přečtěte si na podrobné [Průvodce odstraňováním potíží pro vzdálenou plochu](detailed-troubleshoot-rdp.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 * Řešení potíží s kroky k používání aplikace běžící na virtuálním počítači, naleznete v tématu [řešení potíží s přístupem k aplikaci spuštěné na Virtuálním počítači Azure](../linux/troubleshoot-app-connection.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
 * Pokud máte problémy s použitím Secure Shell (SSH) k připojení k virtuálnímu počítači s Linuxem v Azure, najdete v článku [řešení potíží s připojení SSH k virtuálnímu počítači s Linuxem v Azure](../linux/troubleshoot-ssh-connection.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).

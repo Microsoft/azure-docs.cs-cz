@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/13/2017
 ms.author: wesmc
-ms.openlocfilehash: 746e1c082d370cdcf1fca6597923b0e38b9a6d62
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ms.openlocfilehash: ffbd785126bbc204191554e5d62d642a582a3c8d
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54105232"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55822557"
 ---
 # <a name="manage-azure-cache-for-redis-with-azure-powershell"></a>Spravovat Azure mezipaměti Redis pomocí Azure Powershellu
 > [!div class="op_single_selector"]
@@ -137,21 +137,21 @@ Následující tabulka obsahuje vlastnosti a popisy pro běžně používané pa
 | StaticIP |Při hostování mezipaměti ve virtuální síti, určuje jedinečnou IP adresu v podsíti pro ukládání do mezipaměti. Pokud se nezadá, jeden je vybrán pro vás z podsítě. | |
 | Podsíť |Při hostování mezipaměti ve virtuální síti, určuje název podsítě, ve které se má nasadit do mezipaměti. | |
 | VirtualNetwork |Při hostování mezipaměti ve virtuální síti, určuje Identifikátor prostředku virtuální sítě, ve které se má nasadit do mezipaměti. | |
-| Typ klíče |Určuje, které přístupový klíč se znovu vygenerovat při obnovování přístupových klíčů. Platné hodnoty jsou: Primární, sekundární | |
+| KeyType |Určuje, které přístupový klíč se znovu vygenerovat při obnovování přístupových klíčů. Platné hodnoty jsou: Primární, sekundární | |
 
 ### <a name="redisconfiguration-properties"></a>Vlastnosti RedisConfiguration
 | Vlastnost | Popis | Cenové úrovně |
 | --- | --- | --- |
 | povolené zálohování RDB |Zda [trvalost dat Redis](cache-how-to-premium-persistence.md) je povoleno |Jenom úrovně Premium |
-| RDB-storage-connection-string |Připojovací řetězec pro účet úložiště pro [trvalost dat Redis](cache-how-to-premium-persistence.md) |Jenom úrovně Premium |
-| četnost zálohování RDB |Četnost záloh pro [trvalost dat Redis](cache-how-to-premium-persistence.md) |Jenom úrovně Premium |
-| vyhrazené maxmemory. |Konfiguruje [paměti vyhrazená](cache-configure.md#maxmemory-policy-and-maxmemory-reserved) pro procesy nesouvisející s mezipamětí |Standard a Premium |
-| zásady maxmemory. |Konfiguruje [zásadu vyřazení](cache-configure.md#maxmemory-policy-and-maxmemory-reserved) pro ukládání do mezipaměti |Všechny cenové úrovně |
-| oznámení události prostor klíčů |Nakonfiguruje [oznámení keyspace](cache-configure.md#keyspace-notifications-advanced-settings) |Standard a Premium |
-| Hodnota hash maximální ziplist položky |Nakonfiguruje [optimalizace paměti](https://redis.io/topics/memory-optimization) pro malé datové agregační typy |Standard a Premium |
-| max-ziplist – hodnoty hash |Nakonfiguruje [optimalizace paměti](https://redis.io/topics/memory-optimization) pro malé datové agregační typy |Standard a Premium |
-| set-max-intset – položky |Nakonfiguruje [optimalizace paměti](https://redis.io/topics/memory-optimization) pro malé datové agregační typy |Standard a Premium |
-| zset maximální ziplist položky |Nakonfiguruje [optimalizace paměti](https://redis.io/topics/memory-optimization) pro malé datové agregační typy |Standard a Premium |
+| rdb-storage-connection-string |Připojovací řetězec pro účet úložiště pro [trvalost dat Redis](cache-how-to-premium-persistence.md) |Jenom úrovně Premium |
+| rdb-backup-frequency |Četnost záloh pro [trvalost dat Redis](cache-how-to-premium-persistence.md) |Jenom úrovně Premium |
+| maxmemory-reserved |Konfiguruje [paměti vyhrazená](cache-configure.md#maxmemory-policy-and-maxmemory-reserved) pro procesy nesouvisející s mezipamětí |Standard a Premium |
+| maxmemory-policy |Konfiguruje [zásadu vyřazení](cache-configure.md#maxmemory-policy-and-maxmemory-reserved) pro ukládání do mezipaměti |Všechny cenové úrovně |
+| notify-keyspace-events |Nakonfiguruje [oznámení keyspace](cache-configure.md#keyspace-notifications-advanced-settings) |Standard a Premium |
+| hash-max-ziplist-entries |Nakonfiguruje [optimalizace paměti](https://redis.io/topics/memory-optimization) pro malé datové agregační typy |Standard a Premium |
+| hash-max-ziplist-value |Nakonfiguruje [optimalizace paměti](https://redis.io/topics/memory-optimization) pro malé datové agregační typy |Standard a Premium |
+| set-max-intset-entries |Nakonfiguruje [optimalizace paměti](https://redis.io/topics/memory-optimization) pro malé datové agregační typy |Standard a Premium |
+| zset-max-ziplist-entries |Nakonfiguruje [optimalizace paměti](https://redis.io/topics/memory-optimization) pro malé datové agregační typy |Standard a Premium |
 | zset-max-ziplist-value |Nakonfiguruje [optimalizace paměti](https://redis.io/topics/memory-optimization) pro malé datové agregační typy |Standard a Premium |
 | databáze |Konfiguruje počet databází. Tuto vlastnost lze nastavit pouze při vytvoření mezipaměti. |Standard a Premium |
 
@@ -260,7 +260,7 @@ Můžete zadat hodnoty pro `RedisConfiguration` parametr, uzavřete hodnoty uvni
 
     New-AzureRmRedisCache -ResourceGroupName myGroup -Name mycache -Location "North Central US" -Sku Premium -Size P3 -RedisConfiguration @{"databases" = "48"}
 
-Další informace o `databases` vlastnost, naleznete v tématu [výchozí mezipaměti Azure pro konfiguraci serveru Redis](cache-configure.md#default-redis-server-configuration). Další informace o vytváření potřebnou mezipaměť [New-AzureRmRedisCache](https://docs.microsoft.com/powershell/module/azurerm.rediscache/new-azurermrediscache?view=azurermps-6.6.0) rutiny, najdete v předchozím [vytvoření Azure Cache pro Redis](#to-create-a-redis-cache) oddílu.
+Další informace o `databases` vlastnost, naleznete v tématu [výchozí mezipaměti Azure pro konfiguraci serveru Redis](cache-configure.md#default-redis-server-configuration). Další informace o vytváření potřebnou mezipaměť [New-AzureRmRedisCache](https://docs.microsoft.com/powershell/module/azurerm.rediscache/new-azurermrediscache?view=azurermps-6.6.0) rutiny, najdete v předchozím vytvoření Azure Cache pro oddíl Redis.
 
 ## <a name="to-update-an-azure-cache-for-redis"></a>Aktualizace pro Redis Azure Cache
 Mezipaměť Azure Redis instance se aktualizují pomocí [Set-AzureRmRedisCache](https://docs.microsoft.com/powershell/module/azurerm.rediscache/Set-AzureRmRedisCache?view=azurermps-6.6.0) rutiny.

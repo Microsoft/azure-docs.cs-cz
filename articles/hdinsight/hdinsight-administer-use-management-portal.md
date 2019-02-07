@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 05/25/2017
 ms.author: hrasheed
 ROBOTS: NOINDEX
-ms.openlocfilehash: 4210528003cdb1f584bec3dea80c1aa1db2f86df
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.openlocfilehash: dd94330835c52b27c61c484d44991152d092fbe7
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53632011"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55811694"
 ---
 # <a name="manage-windows-based-apache-hadoop-clusters-in-hdinsight-by-using-the-azure-portal"></a>Spravovat clustery založené na Windows Apache Hadoop v HDInsight pomocí webu Azure portal
 
@@ -203,7 +203,7 @@ Existuje mnoho způsobů, které můžete naprogramovat procesu:
 Informace o cenách najdete v části [ceny HDInsight](https://azure.microsoft.com/pricing/details/hdinsight/). Pokud chcete odstranit cluster z portálu, přečtěte si téma [odstranění clusterů](#delete-clusters)
 
 ## <a name="change-cluster-username"></a>Změnit uživatelské jméno clusteru
-HDInsight cluster může mít dva uživatelské účty. Uživatelský účet clusteru HDInsight se vytvoří během procesu vytváření. Můžete také vytvořit uživatelský účet protokolu RDP pro přístup ke clusteru pomocí protokolu RDP. Zobrazit [povolit vzdálenou plochu](#connect-to-hdinsight-clusters-by-using-rdp).
+HDInsight cluster může mít dva uživatelské účty. Uživatelský účet clusteru HDInsight se vytvoří během procesu vytváření. Můžete také vytvořit uživatelský účet protokolu RDP pro přístup ke clusteru pomocí protokolu RDP. V tématu Povolení vzdálené plochy.
 
 **Chcete-li změnit uživatelské jméno clusteru HDInsight a heslo**
 
@@ -257,7 +257,7 @@ Konzole pro dotazy na HDInsight zahrnuje následující funkce:
 * **Hive Editor**: Webové rozhraní grafického uživatelského rozhraní pro odesílání úloh Hive.  Zobrazit [spouštění Apache dotazů Hive pomocí konzoly pro dotazy](hadoop/apache-hadoop-use-hive-query-console.md).
 
     ![Editor portálu hive v HDInsight](./media/hdinsight-administer-use-management-portal/hdinsight-hive-editor.png)
-* **Historie úlohy**: Monitorování úloh Hadoopu.  
+* **Historie úlohy**: Monitor Hadoop jobs.  
 
     ![Historie úlohy portálu HDInsight](./media/hdinsight-administer-use-management-portal/hdinsight-job-history.png)
 
@@ -293,7 +293,7 @@ Můžete také použít **procházení systémem souborů** nástroje z **uživa
 > [!IMPORTANT]  
 > Pokud chcete monitorovat služby poskytované clusteru HDInsight, musíte použít Ambari Web nebo Ambari REST API. Další informace o použití Ambari, naleznete v tématu [HDInsight Správa clusterů pomocí nástroje Apache Ambari](hdinsight-hadoop-manage-ambari.md).
 
-## <a name="open-hadoop-ui"></a>Otevřete uživatelské rozhraní systému Hadoop
+## <a name="open-hadoop-ui"></a>Open Hadoop UI
 Monitorování clusteru, procházení systému souborů a v protokolech, klikněte na tlačítko **uživatelského rozhraní systému Hadoop** v konzole pro dotazy na HDInsight. Zobrazit [konzoly otevřete dotaz HDInsight](#open-hdinsight-query-console).
 
 ## <a name="open-yarn-ui"></a>Otevřete uživatelské rozhraní Yarn

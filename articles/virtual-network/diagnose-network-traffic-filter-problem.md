@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/29/2018
 ms.author: jdial
-ms.openlocfilehash: d05adabc9bbabdb9f6d1af9831dbb33afe63cf87
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: 8b494e3f289d7b3a850a77f7f388cee542c088ed
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54424638"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55821860"
 ---
 # <a name="diagnose-a-virtual-machine-network-traffic-filter-problem"></a>Diagnostika potíží s filtrováním na provoz sítě virtuálního počítače
 
@@ -181,7 +181,7 @@ Po vytvoření pravidla, port 80 je povolený příchozí provoz z Internetu, pr
 
 Když Azure zpracují příchozí provoz, zpracovává pravidla skupiny zabezpečení sítě přidruženou k podsíti (pokud existuje přidruženou skupinu NSG) a pak ho zpracuje pravidla zabezpečení sítě přidruženou k síťovému rozhraní. Pokud je skupina zabezpečení sítě přidružené k síťovému rozhraní a podsítě, port musí být otevřen v obou skupin zabezpečení sítě pro přenosy na virtuální počítač. K usnadnění správy a komunikační problémy, doporučujeme vám, že přidružíte skupinu NSG k podsíti, nikoli jednotlivým síťovým rozhraním. Pokud virtuální počítače v podsíti, pravidla zabezpečení, můžete Zkontrolujte síťový rozhraní členy skupiny zabezpečení aplikací (ASG) a zadat ASG jako zdroj a cíl pravidla zabezpečení. Další informace o [skupiny zabezpečení aplikací](security-overview.md#application-security-groups).
 
-Pokud stále máte problémy s komunikací, přečtěte si téma [aspekty](#considerations) a [další diagnostiky](#additional-dignosis).
+Pokud stále máte problémy s komunikací, přečtěte si téma [aspekty](#considerations) a další diagnostiku.
 
 ## <a name="considerations"></a>Požadavky
 

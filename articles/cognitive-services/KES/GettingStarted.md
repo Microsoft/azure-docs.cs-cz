@@ -10,12 +10,12 @@ ms.subservice: knowledge-exploration
 ms.topic: sample
 ms.date: 03/26/2016
 ms.author: paulhsu
-ms.openlocfilehash: 14dc1ca90ecd342330425db840776fa67caa80b0
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: e2bb5550cfe07064d595151305955d87f9c61050
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55208138"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55819531"
 ---
 # <a name="get-started-with-the-knowledge-exploration-service"></a>Začínáme se službou Knowledge Exploration Service
 
@@ -100,7 +100,7 @@ Až budete mít soubor schématu a datový soubor, můžete sestavit komprimovan
 
 `kes.exe build_index Academic.schema Academic.data Academic.index`
 
-Při rychlém vytváření prototypů mimo Azure můžete příkazem [`kes.exe build_index`](CommandLine.md#build_index-command) sestavit malé indexy místně – z datových souborů obsahujících maximálně 10 000 objektů. Pro větší datové soubory můžete příkaz spustit v rámci [virtuálního počítače s Windows v Azure](../../../articles/virtual-machines/windows/quick-create-portal.md) nebo provést vzdálené sestavení indexu v Azure. Podrobnosti najdete v části o [vertikálním navýšení kapacity](#scaling-up).
+Při rychlém vytváření prototypů mimo Azure můžete příkazem [`kes.exe build_index`](CommandLine.md#build_index-command) sestavit malé indexy místně – z datových souborů obsahujících maximálně 10 000 objektů. Pro větší datové soubory můžete příkaz spustit v rámci [virtuálního počítače s Windows v Azure](../../../articles/virtual-machines/windows/quick-create-portal.md) nebo provést vzdálené sestavení indexu v Azure. Podrobnosti najdete v tématu škálování nahoru.
 
 ## <a name="use-an-xml-grammar-specification"></a>Použití XML specifikace gramatiky
 
@@ -211,7 +211,7 @@ Při rychlém vytváření prototypů můžete gramatiku a index hostovat ve web
 
 `kes.exe host_service Academic.grammar Academic.index --port 8000`
 
-Tím se iniciuje místní instance webové služby. Když navštívíte `http::localhost:<port>` z prohlížeče, můžete službu interaktivně testovat. Další informace najdete v části [Testování služby](#testing-service).
+Tím se iniciuje místní instance webové služby. Když navštívíte `http::localhost:<port>` z prohlížeče, můžete službu interaktivně testovat. Další informace najdete v tématu otestování služby.
 
 Můžete také přímo volat různá [webová rozhraní API](WebAPI.md) a testovat interpretaci přirozeného jazyka, kompletaci dotazu, vyhodnocení strukturovaného dotazu a výpočet histogramu. Pokud chcete službu zastavit, zadejte na příkazovém řádku `kes.exe host_service` „quit“ nebo stiskněte Ctrl+C. Zde je několik příkladů:
 
@@ -220,7 +220,7 @@ Můžete také přímo volat různá [webová rozhraní API](WebAPI.md) a testov
 * [http://localhost:8000/evaluate?expr=Composite(Author.Name=='susan t dumais')&attributes=Title,Year,Author.Name,Author.Id&count=2](http://localhost:8000/evaluate?expr=Composite%28Author.Name==%27susan%20t%20dumais%27%29&attributes=Title,Year,Author.Name,Author.Id&count=2)
 * [http://localhost:8000/calchistogram?expr=And(Composite(Author.Name=='susan t dumais'),Year>=2013)&attributes=Year,Keyword&count=4](http://localhost:8000/calchistogram?expr=And%28Composite%28Author.Name=='susan%20t%20dumais'%29,Year>=2013%29&attributes=Year,Keyword&count=4)
 
-Mimo Azure je příkaz [`kes.exe host_service`](CommandLine.md#host_service-command) omezený na indexy s maximálně 10 000 objekty. K dalším omezením patří rychlost rozhraní API maximálně 10 žádostí za sekundu a automatické ukončení procesu po celkovém počtu 1 000 žádostí. Pokud chcete tato omezení obejít, spusťte příkaz v rámci [virtuálního počítače s Windows v Azure](../../../articles/virtual-machines/windows/quick-create-portal.md) nebo službu nasaďte do cloudové služby Azure pomocí příkazu [`kes.exe deploy_service`](CommandLine.md#deploy_service-command). Podrobnosti najdete v části [Nasazení služby](#deploying-service).
+Mimo Azure je příkaz [`kes.exe host_service`](CommandLine.md#host_service-command) omezený na indexy s maximálně 10 000 objekty. K dalším omezením patří rychlost rozhraní API maximálně 10 žádostí za sekundu a automatické ukončení procesu po celkovém počtu 1 000 žádostí. Pokud chcete tato omezení obejít, spusťte příkaz v rámci [virtuálního počítače s Windows v Azure](../../../articles/virtual-machines/windows/quick-create-portal.md) nebo službu nasaďte do cloudové služby Azure pomocí příkazu [`kes.exe deploy_service`](CommandLine.md#deploy_service-command). Podrobnosti najdete v tématu nasazení služby.
 
 ## <a name="scale-up-to-host-larger-indices"></a>Vertikální navýšení kapacity pro hostování větších indexů
 
@@ -262,7 +262,7 @@ Po nasazení služby můžete volat různá [webová rozhraní API](WebAPI.md) a
 
 ## <a name="test-the-service"></a>Testování služby
 
-Když chcete ladit živou službu, přejděte ve webovém prohlížeči na hostitelský počítač. Přístup k místní službě nasazené prostřednictvím [host_service](#hosting-service) získáte, když navštívíte `http://localhost:<port>/`.  Přístup ke cloudové službě Azure nasazené prostřednictvím [deploy_service](#deploying-service) získáte, když navštívíte `http://<serviceName>.cloudapp.net/`.
+Když chcete ladit živou službu, přejděte ve webovém prohlížeči na hostitelský počítač. Pro místní služby nasazené prostřednictvím host_service, navštivte `http://localhost:<port>/`.  Pro cloudové služby Azure nasazené prostřednictvím deploy_service, navštivte `http://<serviceName>.cloudapp.net/`.
 
 Tato stránka obsahuje odkaz na informace o základní statistice volání rozhraní API a také gramatiku a index, které jsou hostované u této služby. Tato stránka obsahuje také rozhraní pro interaktivní hledání, které ukazuje použití webových rozhraní API. Do vyhledávacího pole zadejte dotazy, aby se zobrazily výsledky volání metod rozhraní API [interpret](interpretMethod.md), [evaluate](evaluateMethod.md) a [calchistogram](calchistogramMethod.md). Podkladový zdroj HTML této stránky také slouží jako příklad, jak webová rozhraní API integrovat do aplikace a vytvořit bohaté prostředí pro interaktivní hledání.
 

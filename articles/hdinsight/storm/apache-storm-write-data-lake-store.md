@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/27/2018
-ms.openlocfilehash: 91e6c2d400fa7add33a6c8e8856a3b9f8cfef4a3
-ms.sourcegitcommit: 97d0dfb25ac23d07179b804719a454f25d1f0d46
+ms.openlocfilehash: 53f81a06a0a10d4526816b5117eb12f01d75e25a
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/25/2019
-ms.locfileid: "54912829"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55819157"
 ---
 # <a name="write-to-apache-hadoop-hdfs-from-apache-storm-on-hdinsight"></a>Zápis do Apache Hadoop HDFS z Apache Storm v HDInsight
 
@@ -45,7 +45,7 @@ Když na svoji vývojářskou pracovní stanici nainstalujete Javu a JDK, mohou 
 ## <a name="how-to-use-the-hdfsbolt-with-hdinsight"></a>Jak používat HdfsBolt s HDInsight
 
 > [!IMPORTANT]  
-> Před použitím HdfsBolt se Stormem v HDInsight, musíte nejprve použít akci skriptu ke kopírování souborů vyžaduje soubor jar do `extpath` pro Storm. Další informace najdete v tématu [konfigurace clusteru](#configure) oddílu.
+> Před použitím HdfsBolt se Stormem v HDInsight, musíte nejprve použít akci skriptu ke kopírování souborů vyžaduje soubor jar do `extpath` pro Storm. Další informace najdete v části konfigurace clusteru oddíl.
 
 HdfsBolt používá schéma souboru, které poskytují návod k zápisu do rozhraní HDFS. S HDInsight použijte jednu z následujících schémat:
 

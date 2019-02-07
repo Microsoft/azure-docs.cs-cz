@@ -14,12 +14,12 @@ ms.devlang: azurecli
 ms.topic: article
 ms.date: 04/20/2018
 ms.author: rclaus
-ms.openlocfilehash: c958e4e11ba5eb88a8357c8ab373b6501e3eac6a
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: d5f4dc7f4abc13f253a206a63e65faf1106f9c7c
+ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55189914"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55766176"
 ---
 # <a name="use-cloud-init-to-update-and-install-packages-in-a-linux-vm-in-azure"></a>Použití cloud-init k aktualizaci a nainstalujte balíčky do virtuálního počítače s Linuxem v Azure
 V tomto článku se dozvíte, jak používat [cloud-init](https://cloudinit.readthedocs.io) aktualizovat balíčky v Linuxu virtuálních počítačů (VM) nebo virtuální počítač škálovací nastaví (VMSS) při zřizování času v Azure. Tyto skripty cloud-init spustit při prvním spuštění, jakmile se zřizují prostředky Azure. Další informace o tom, jak funguje cloud-init nativně v Azure a podporovaných distribucích systému Linux, najdete v části [přehled cloud-init](using-cloud-init.md)
@@ -42,7 +42,7 @@ Před nasazením této bitové kopie, je potřeba vytvořit skupinu prostředků
 az group create --name myResourceGroup --location eastus
 ```
 
-Teď vytvořte virtuální počítač s [az vm vytvořit](/cli/azure/vm#az_vm_create) a zadejte soubor cloud-init s `--custom-data cloud_init_upgrade.txt` následujícím způsobem:
+Teď vytvořte virtuální počítač s [az vm vytvořit](/cli/azure/vm) a zadejte soubor cloud-init s `--custom-data cloud_init_upgrade.txt` následujícím způsobem:
 
 ```azurecli-interactive 
 az vm create \

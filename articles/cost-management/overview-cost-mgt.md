@@ -5,21 +5,21 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 12/05/2018
+ms.date: 02/05/2018
 ms.topic: overview
 ms.service: cost-management
 manager: benshy
 ms.custom: ''
-ms.openlocfilehash: a90ef531cedb5e4c32a8f0af8b6cca86a93fb39a
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: e526d7fac3c66c5eaf9686db3c9f9f9506d6fc6b
+ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52997126"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55768653"
 ---
 # <a name="what-is-azure-cost-management"></a>Co je Azure Cost Management?
 
-Správa nákladů je proces, při kterém efektivně plánujete a řídíte náklady svého podniku. Úlohy správy nákladů obvykle provádějí finanční týmy, týmy správy účtů a týmy aplikací. Azure Cost Management pomáhá organizacím, které mají smlouvy Microsoft Enterprise, plánovat s ohledem na náklady. Pomáhá také efektivně analyzovat náklady a optimalizovat útratu za cloud. Další informace o tom, jak organizace mohou využít správu nákladů, najdete v článku, který se věnuje [osvědčeným postupům pro Azure Cost Management](cost-mgt-best-practices.md).
+Správa nákladů je proces, při kterém efektivně plánujete a řídíte náklady svého podniku. Úlohy správy nákladů obvykle provádějí finanční týmy, týmy správy účtů a týmy aplikací. Azure Cost Management pomáhá organizacím plánování nákladů v úvahu. Pomáhá také efektivně analyzovat náklady a optimalizovat útratu za cloud. Další informace o tom, jak organizace mohou využít správu nákladů, najdete v článku, který se věnuje [osvědčeným postupům pro Azure Cost Management](cost-mgt-best-practices.md).
 
 Přestože spolu souvisejí, fakturace se od správy nákladů liší. Fakturace je proces, při kterém vystavujete faktury za zboží a služby zákazníkům a spravujete komerční vztahy.  O fakturační úlohy se obvykle starají zásobovací a finanční týmy.
 
@@ -29,7 +29,7 @@ K automatizaci exportu můžete využít web Azure Portal nebo různá rozhraní
 
 ## <a name="plan-and-control-expenses"></a>Plánování a řízení nákladů
 
-Způsoby, kterými služba Cost Management usnadňuje plánování a řízení nákladů, zahrnují analýzu nákladů, rozpočty, doporučení a export dat správy nákladů.
+Způsoby, které zahrnují náklady na správu vám pomůžou při plánování a řídit své náklady: Cost analysis, rozpočty, doporučení a export datům služby cost management.
 
 Prostřednictvím analýzy nákladů můžete prozkoumat a analyzovat výdaje organizace. Můžete se podívat na agregované náklady na úrovni organizace, abyste porozuměli tomu, kde se náklady generují, a mohli identifikovat trendy útrat. Můžete si také zobrazit souhrnné náklady v průběhu času, abyste mohli odhadnout měsíční, čtvrtletní a dokonce i roční trendy nákladů oproti rozpočtu.
 
@@ -45,7 +45,7 @@ Pokud pro přístup k datům správy nákladů nebo jejich kontrole používáte
 
 ## <a name="additional-azure-tools"></a>Další nástroje Azure
 
-Azure má další nástroje, které nejsou součástí sady funkcí Azure Cost Management. Hrají ale důležitou roli v procesu správy nákladů. Další informace o těchto nástrojích si můžete přečíst po kliknutí na následující odkazy.
+Azure má další nástroje, které nejsou součástí sady funkcí Azure Cost Management. Ale hrají důležitou roli v procesu správy nákladů. Další informace o těchto nástrojích si můžete přečíst po kliknutí na následující odkazy.
 
 - [Cenová kalkulačka Azure](https://azure.microsoft.com/pricing/calculator/) – tento nástroj slouží k odhadování počátečních nákladů na cloud.
 - [Azure Migrate](../migrate/migrate-overview.md) – umožňuje zhodnotit aktuální úlohy datacentra a zjistit, co je třeba využít z náhradního řešení Azure.

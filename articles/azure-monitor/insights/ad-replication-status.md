@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 01/24/2018
 ms.author: magoedte
-ms.openlocfilehash: c8cc6ccae59b8ee530ad679c492419a348423553
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: 8d597a3491f80bc09c3e0676d17971f2509ba47a
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53184114"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55818732"
 ---
 # <a name="monitor-active-directory-replication-status-with-log-analytics"></a>Monitorování stavu replikace služby Active Directory pomocí služby Log Analytics
 
@@ -49,7 +49,7 @@ Pokud nechcete, aby na všech řadičích domény připojit přímo k Log Analyt
 2. [Připojte počítač Windows ke službě Log Analytics](../../azure-monitor/platform/om-agents.md) nebo [připojte se pomocí svého stávajícího prostředí Operations Manageru k Log Analytics](../../azure-monitor/platform/om-agents.md), pokud už není připojený.
 3. V tomto počítači nastavte následující klíč registru:
 
-   * Klíč: **Skupiny HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\HealthService\Parameters\Management\<ManagementGroupName > \Solutions\ADReplication**
+   * Klíč: **HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\HealthService\Parameters\Management Groups\<ManagementGroupName>\Solutions\ADReplication**
    * Hodnota: **IsTarget**
    * Údaj hodnoty: **true**
 
@@ -117,39 +117,39 @@ Můžete také kliknout na **exportovat** exportovat výsledky do Excelu. Export
 ![exportované chyby stavu replikace AD v aplikaci Excel](./media/ad-replication-status/oms-ad-replication-export.png)
 
 ## <a name="ad-replication-status-faq"></a>Stav replikace AD – nejčastější dotazy
-**DOTAZ: Jak často se data Stav replikace AD aktualizovat?**
-ODPOVĚĎ: Informace jsou aktualizovány každých pět dní.
+**Otázka: Jak často se data Stav replikace AD aktualizovat?**
+Odpověď: Informace jsou aktualizovány každých pět dní.
 
-**DOTAZ: Existuje způsob, jak konfigurovat, jak často tato data se aktualizují?**
-ODPOVĚĎ: V tuto chvíli to není možné.
+**Otázka: Existuje způsob, jak konfigurovat, jak často tato data se aktualizují?**
+Odpověď: V tuto chvíli to není možné.
 
-**DOTAZ: Je nutné přidat všechny moje řadičů domény do pracovního prostoru Log Analytics Chcete-li zobrazit stav replikace?**
-ODPOVĚĎ: Ne, je nutné přidat jenom jeden řadič domény. Pokud máte víc řadičů domény ve vašem pracovním prostoru Log Analytics, data ze všech z nich odesílají do Log Analytics.
+**Otázka: Je nutné přidat všechny moje řadičů domény do pracovního prostoru Log Analytics Chcete-li zobrazit stav replikace?**
+Odpověď: Ne, je nutné přidat jenom jeden řadič domény. Pokud máte víc řadičů domény ve vašem pracovním prostoru Log Analytics, data ze všech z nich odesílají do Log Analytics.
 
-**DOTAZ: Nechcete přidat žádné řadiče domény do pracovního prostoru Log Analytics Použití řešení stav replikace AD**
-ODPOVĚĎ: Ano. Můžete nastavit jako hodnotu klíče registru, aby je. Zobrazit [povolit řadiči domény k odesílání dat AD do služby Log Analytics](#to-enable-a-non-domain-controller-to-send-ad-data-to-oms).
+**Otázka: Nechcete přidat žádné řadiče domény do pracovního prostoru Log Analytics Použití řešení stav replikace AD**
+Odpověď: Ano. Můžete nastavit jako hodnotu klíče registru, aby je. Informace naleznete v tématu Povolení řadičem domény k odesílání dat AD do služby Log Analytics.
 
-**DOTAZ: Jaký je název procesu, která provádí sběr dat?**
-ODPOVĚĎ: AdvisorAssessment.exe
+**Otázka: Jaký je název procesu, která provádí sběr dat?**
+Odpověď: AdvisorAssessment.exe
 
-**DOTAZ: Jak dlouho trvá shromažďování dat?**
-ODPOVĚĎ: Doba shromažďování dat závisí na velikosti prostředí služby Active Directory, ale obvykle trvá méně než 15 minut.
+**Otázka: Jak dlouho trvá shromažďování dat?**
+Odpověď: Doba shromažďování dat závisí na velikosti prostředí služby Active Directory, ale obvykle trvá méně než 15 minut.
 
-**DOTAZ: Jaký typ dat se shromažďují?**
-ODPOVĚĎ: Replikace informace jsou shromažďovány prostřednictvím protokolu LDAP.
+**Otázka: Jaký typ dat se shromažďují?**
+Odpověď: Replikace informace jsou shromažďovány prostřednictvím protokolu LDAP.
 
-**DOTAZ: Existuje způsob, jak konfigurovat, když se shromažďují data?**
-ODPOVĚĎ: V tuto chvíli to není možné.
+**Otázka: Existuje způsob, jak konfigurovat, když se shromažďují data?**
+Odpověď: V tuto chvíli to není možné.
 
-**DOTAZ: Jaká oprávnění potřebuji pro shromažďování dat?**
-ODPOVĚĎ: Postačují oprávněními běžných uživatelů do služby Active Directory.
+**Otázka: Jaká oprávnění potřebuji pro shromažďování dat?**
+Odpověď: Postačují oprávněními běžných uživatelů do služby Active Directory.
 
 ## <a name="troubleshoot-data-collection-problems"></a>Poradce při potížích kolekce dat
 Aby bylo možné shromažďovat data, balíček řešení stav replikace AD vyžaduje aspoň jeden řadič domény k připojení k pracovnímu prostoru Log Analytics. Až se připojíte řadič domény, zobrazí se zpráva označující, že **data se stále shromažďují**.
 
 Pokud potřebujete pomoc s připojením jeden z řadičů domény, můžete zobrazit dokumentaci na [počítače Windows se připojit ke službě Log Analytics](../../azure-monitor/platform/om-agents.md). Případně, pokud vaše řadiče domény je již připojen do existujícího prostředí System Center Operations Manager, dokumentaci si můžete prohlédnout v [připojení System Center Operations Manageru k Log Analytics](../../azure-monitor/platform/om-agents.md).
 
-Pokud nechcete, aby všechny řadiče domény připojit přímo ke službě Log Analytics nebo System Center Operations Manager, najdete v článku [povolit řadiči domény k odesílání dat AD do služby Log Analytics](#to-enable-a-non-domain-controller-to-send-ad-data-to-oms).
+Pokud nechcete, aby všechny řadiče domény připojit přímo ke službě Log Analytics nebo System Center Operations Manager, naleznete v části Povolit řadiči domény k odesílání dat AD do služby Log Analytics.
 
 ## <a name="next-steps"></a>Další postup
 * Použití [prohledávání protokolů v Log Analytics](../../azure-monitor/log-query/log-query-overview.md) zobrazíte podrobné údaje o stavu replikace služby Active Directory.

@@ -10,12 +10,12 @@ ms.subservice: implement
 ms.date: 04/17/2018
 ms.author: jrj
 ms.reviewer: igorstan
-ms.openlocfilehash: f36ee3ce6a8d678cdd846474576fc049df0b4f88
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 14b3d62235cfcc8bbc8a929757a16cf99b860753
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55472299"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55815757"
 ---
 # <a name="migrate-your-sql-code-to-sql-data-warehouse"></a>Migrace kódu SQL do služby SQL Data Warehouse
 Tento článek vysvětluje změny kódu, bude pravděpodobně nutné provést při migraci vašeho kódu z jiné databáze do SQL Data Warehouse. Některé funkce SQL Data Warehouse může výrazně zlepšit výkon, jako jsou navrženy pro práci v distribuované způsobem. Ale pokud chcete zachovat výkon a škálování, některé funkce nejsou také k dispozici.
@@ -32,7 +32,7 @@ Následující seznam shrnuje nejběžnějším funkcím, které SQL Data Wareho
 * klauzuli Output
 * vložené funkce definované uživatelem
 * vícepříkazové funkce
-* [běžné tabulkové výrazy](#Common-table-expressions)
+* běžné tabulkové výrazy
 * [rekurzivní běžné tabulkové výrazy (CTE)] (#Recursive-common-table-expressions-(CTE)
 * Funkce modulu CLR a postupy
 * $partition – funkce

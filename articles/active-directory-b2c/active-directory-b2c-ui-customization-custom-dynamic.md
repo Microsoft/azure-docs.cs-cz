@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 09/20/2017
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: 7c17b873daf3cf77760f934b6c8a591f232b0c7b
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
+ms.openlocfilehash: 54d98c02ee9e5202c09e333843f8c16955f4e2d4
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55658194"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55819243"
 ---
 # <a name="azure-active-directory-b2c-configure-the-ui-with-dynamic-content-by-using-custom-policies"></a>Azure Active Directory B2C: Konfigurace uživatelského rozhraní s dynamickým obsahem pomocí vlastních zásad
 
@@ -247,16 +247,18 @@ Změnit na pozadí podle parametru řetězce dotazu s názvem _campaignId_. Vaš
 Přidat `ContentDefinitionParameters` element následujícím způsobem:
 1. Otevřít *SignUpOrSignin* soubor zásad (například *SignUpOrSignin.xml*).
 
-2. Hledat `<DefaultUserJourney>` uzlu. 
-
-3. V `<DefaultUserJourney>` uzel, přidejte následující fragment kódu XML:  
+2. V části `<DefaultUserJourney>` uzel, přidejte `UserJourneyBehaviors` uzlu:  
 
     ```XML
-    <UserJourneyBehaviors>
+    <RelyingParty>
+      <DefaultUserJourney ReferenceId="SignUpOrSignIn" />
+      <UserJourneyBehaviors>
         <ContentDefinitionParameters>
-            <Parameter Name="campaignId">{OAUTH-KV:campaignId}</Parameter>
+          <Parameter Name="campaignId">{OAUTH-KV:campaignId}</Parameter>
         </ContentDefinitionParameters>
-    </UserJourneyBehaviors>
+      </UserJourneyBehaviors>
+      ...
+    </RelyingParty>
     ```
 
 ### <a name="step-82-change-your-code-to-accept-a-query-string-parameter-and-replace-the-background-image"></a>Krok 8.2: Změňte kód tak, aby přijímal parametru řetězce dotazu a nahraďte obrázek pozadí

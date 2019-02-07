@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/15/2018
 ms.author: yagup;jdial
-ms.openlocfilehash: 3b0db93d44827e3f5d0543f28a6f4b5fb0c4818e
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: 4f1ce84dba4e9f35e7884ebd9058781eb30c3ec4
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54429085"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55815842"
 ---
 # <a name="traffic-analytics"></a>Analýza provozu
 
@@ -164,7 +164,7 @@ Vyberte následující možnosti, jak je znázorněno na obrázku:
 2. Vyberte existující účet úložiště pro ukládání protokolů toku v. Pokud chcete uložit data navždy, nastavte hodnotu na *0*. Se vám účtovat žádné poplatky za úložiště Azure pro účet úložiště.
 3. Nastavte **uchování** na počet dní, které chcete uložit data.
 4. Vyberte *na* pro **Traffic Analytics stav**.
-5. Vyberte existující pracovní prostor Log Analytics nebo **vytvořit nový pracovní prostor** vytvořit nový certifikát. Pracovní prostor Log Analytics používá k ukládání agregované a indexaci dat, která se pak použije k vygenerování analýzy analýzu provozu. Pokud vyberete existující pracovní prostor, musí existovat v jednom z [podporované oblasti](#traffic-analytics-supported-regions) a se upgradovaly na nový dotazovací jazyk. Pokud nechcete, aby existující pracovní prostor, nebo nemáte pracovní prostor v podporované oblasti, vytvořte novou. Další informace o dotazovací jazyky, naleznete v tématu [Azure Log Analytics upgradovat na nové prohledávání protokolů](../log-analytics/log-analytics-log-search-upgrade.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json).
+5. Vyberte existující pracovní prostor Log Analytics nebo **vytvořit nový pracovní prostor** vytvořit nový certifikát. Pracovní prostor Log Analytics používá k ukládání agregované a indexaci dat, která se pak použije k vygenerování analýzy analýzu provozu. Pokud vyberete existující pracovní prostor, musí existovat v jednom z podporovaných oblastí a se upgradovaly na nový dotazovací jazyk. Pokud nechcete, aby existující pracovní prostor, nebo nemáte pracovní prostor v podporované oblasti, vytvořte novou. Další informace o dotazovací jazyky, naleznete v tématu [Azure Log Analytics upgradovat na nové prohledávání protokolů](../log-analytics/log-analytics-log-search-upgrade.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json).
 
     Pracovní prostor log analytics hostování řešení pro analýzu provozu a skupiny zabezpečení sítě, nemusí být ve stejné oblasti. Například možná analýza provozu v pracovním prostoru v oblasti západní Evropa, dokud máte skupiny zabezpečení sítě v oblastech východní USA a západní USA. Více skupin zabezpečení sítě je možné nakonfigurovat ve stejném pracovním prostoru.
 6. Vyberte **Uložit**.

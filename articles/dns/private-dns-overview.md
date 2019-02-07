@@ -7,12 +7,12 @@ ms.service: dns
 ms.topic: article
 ms.date: 1/23/2019
 ms.author: victorh
-ms.openlocfilehash: 4b5b98b5695901ca6d136682e454f059f157b743
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: f88cc44890277604411f482779a83ee266820ac8
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54826475"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55816318"
 ---
 # <a name="use-azure-dns-for-private-domains"></a>Použití Azure DNS pro privátní domény
 
@@ -32,7 +32,7 @@ Azure DNS poskytuje následující výhody:
 
 * **Eliminuje nutnost vlastního řešení DNS**. Mnoho zákazníků vytvořili vlastní DNS řešení ke správě zón DNS v jejich virtuální sítě. Můžete teď provádět správa zóny DNS pomocí nativní infrastrukturu Azure, který odstraní starosti související s vytvořením a správou vlastního řešení DNS.
 
-* **Použít všechny běžné typy záznamů DNS**. Azure DNS podporuje záznamy A, AAAA, CNAME, MX, NS, PTR, SOA, SRV a TXT.
+* **Použít všechny běžné typy záznamů DNS**. Azure DNS podporuje záznamy A, AAAA, CNAME, MX, PTR, SOA, SRV a TXT.
 
 * **Správa záznamů automatické hostname**. Spolu s hostitelem vašich vlastních záznamů DNS, Azure automaticky uchovávat záznamy názvů hostitelů pro virtuální počítače v zadané virtuální sítě. V tomto scénáři můžete optimalizovat názvy domén, které používáte, bez nutnosti vytvoření vlastního řešení DNS nebo úprava aplikací.
 

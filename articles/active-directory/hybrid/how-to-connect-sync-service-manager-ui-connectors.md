@@ -16,12 +16,12 @@ ms.date: 07/13/2017
 ms.subservice: hybrid
 ms.author: billmath
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: c1c6d5754af7455a4e4cf864062a1c29dd32c88b
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.openlocfilehash: 40e519495b8a245f72e51167f5807f9c585cb344
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55492840"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55817542"
 ---
 # <a name="using-connectors-with-the-azure-ad-connect-sync-service-manager"></a>Používání konektorů s Azure AD Connect Sync Service Manager
 
@@ -42,7 +42,7 @@ Na kartě konektory slouží ke správě všech systémů, který synchronizačn
 | Konektor pro import |Nepoužívejte. |
 | Aktualizovat konektor |Nepoužívejte. |
 | Aktualizovat schéma |Aktualizuje v mezipaměti schématu. Je upřednostňována před místo toho použijte možnost v Průvodci instalací od, který také aktualizace synchronizovat pravidla. |
-| [Hledání prostoru konektoru](#search-connector-space) |Používá k nalezení objektů a [postupujte podle objektu a jeho data prostřednictvím systému](#follow-an-object-and-its-data-through-the-system). |
+| [Hledání prostoru konektoru](#search-connector-space) |Používá k nalezení objektů a postupujte podle objektu a jeho data prostřednictvím systému. |
 
 ### <a name="delete"></a>Odstranění
 Pro dvě různé věci se nepoužije akce odstranění.  

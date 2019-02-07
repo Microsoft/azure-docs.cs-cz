@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 01/15/2018
 ms.subservice: hybrid
 ms.author: billmath
-ms.openlocfilehash: b32369000e7f300beaed98d7f832a5d11659f3f2
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.openlocfilehash: f4a9b4aba54f3968584187e108e87177c44bbc8e
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55487067"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55815792"
 ---
 # <a name="identity-synchronization-and-duplicate-attribute-resiliency"></a>Synchronizace identit a odolnost duplicitních atributů
 Odolnost duplicitních atributů je funkce v Azure Active Directory, ke které dojde k odstranění řešit zádrhele spojené s způsobené **UserPrincipalName** a **ProxyAddress** je v konfliktu při spuštění jedné od Microsoftu Nástroje pro synchronizaci.
@@ -81,7 +81,7 @@ Potom použijte následující rutiny a operátory k zobrazení chyb různými z
 2. [Podle typu vlastnosti](#by-property-type)
 3. [Konfliktní hodnota](#by-conflicting-value)
 4. [Hledání řetězce](#using-a-string-search)
-5. [Řazení](#sorted)
+5. Řazení
 6. [V omezené množství nebo vše](#in-a-limited-quantity-or-all)
 
 #### <a name="see-all"></a>Zobrazit všechno

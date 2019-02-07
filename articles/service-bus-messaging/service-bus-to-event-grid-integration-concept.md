@@ -14,12 +14,12 @@ ms.devlang: multiple
 ms.topic: get-started-article
 ms.date: 09/15/2018
 ms.author: aschhab
-ms.openlocfilehash: 41514ca5911544da8608e0c7ebad18b33c33b494
-ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
+ms.openlocfilehash: 640c01b2c73509ac897218fdea3841d016767a49
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54856906"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55818257"
 ---
 # <a name="azure-service-bus-to-event-grid-integration-overview"></a>Přehled integrace služby Azure Service Bus do služby Event Grid
 
@@ -43,7 +43,7 @@ Přejděte do svého oboru názvů služby Service Bus a vyberte **řízení př
 Service Bus v současné době odesílá události pro dva scénáře:
 
 * [ActiveMessagesWithNoListenersAvailable](#active-messages-available-event)
-* [DeadletterMessagesAvailable](#dead-lettered-messages-available-event)
+* DeadletterMessagesAvailable
 
 Kromě toho využívá Service Bus standardní [mechanismy ověřování](https://docs.microsoft.com/azure/event-grid/security-authentication) a zabezpečení služby Event Grid.
 
@@ -115,7 +115,7 @@ Pokud chcete přijímat události například pouze z jedné fronty nebo jednoho
 
 Odběry služby Event Grid pro obory názvů služby Service Bus můžete vytvořit třemi různými způsoby:
 
-* Na webu [Azure Portal](#portal-instructions)
+* Na webu Azure Portal
 * V [Azure CLI](#azure-cli-instructions)
 * V [PowerShellu](#powershell-instructions)
 
@@ -168,7 +168,7 @@ mespaceName "<YOUR NAMESPACE NAME>").Id
 New-AzureRmEVentGridSubscription -EventSubscriptionName “<YOUR EVENT GRID SUBSCRIPTION NAME (CAN BE ANY NOT EXISTING)>” -ResourceId $NSID -Endpoint "<YOUR FUNCTION URL>” -SubjectEndsWith “<YOUR SERVICE BUS SUBSCRIPTION NAME>”
 ```
 
-Teď můžete prozkoumat další možnosti instalace nebo [otestovat tok událostí](#test-that-events-are-flowing).
+Z tohoto místa můžete prozkoumat další možnosti instalace nebo otestovat tok událostí.
 
 ## <a name="next-steps"></a>Další postup
 

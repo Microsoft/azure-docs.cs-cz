@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: nitinme
-ms.openlocfilehash: b81916de0940aa56eda97df94527fa6adc208285
-ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
+ms.openlocfilehash: 23a1b2853423dd9f2a62c32792e27e3174495aff
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49955826"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55817032"
 ---
 # <a name="create-hdinsight-clusters-with-azure-data-lake-storage-gen1-by-using-the-azure-portal"></a>Vytvoření clusterů HDInsight s Azure Data Lake Storage Gen1 pomocí webu Azure portal
 > [!div class="op_single_selector"]
@@ -57,8 +57,8 @@ V této části vytvoříte HDInsight cluster s účty Data Lake Storage Gen1 ja
 
     - **Vyberte Data Lake Store účtu**: Vyberte existující účet Data Lake Storage Gen1. Existující účet Data Lake Storage Gen1 je povinný.  Viz [Požadavky](#prerequisites).
     - **Kořenová cesta**: Zadejte cestu, kam se mají ukládat soubory specifických pro cluster. Na snímku obrazovky, je __/clusterů/myhdiadlcluster/__, ve kterém __/clusterů__ složka musí existovat a portál vytvoří *myhdicluster* složky.  *Myhdicluster* je název clusteru.
-    - **Přístup k data Lake Store**: nakonfigurovat přístup mezi účtem Data Lake Storage Gen1 a HDInsight cluster. Pokyny najdete v tématu [přístup konfigurovat Data Lake Storage Gen1](#configure-data-lake-store-access).
-    - **Další účty úložiště**: účty úložiště Azure přidat jako další účty úložiště pro cluster. Chcete-li přidat další účty Data Lake Storage Gen1 se provádí tak, že udělíte oprávnění clusteru na datech z další účty Data Lake Storage Gen1 při konfiguraci účtu Data Lake Storage Gen1 jako typ primárního úložiště. Zobrazit [přístup konfigurovat Data Lake Storage Gen1](#configure-data-lake-store-access).
+    - **Přístup k data Lake Store**: Nakonfigurujte přístup mezi účtem Data Lake Storage Gen1 a HDInsight cluster. Pokyny najdete v tématu Konfigurace Gen1 úložiště Data Lake přístup.
+    - **Další účty úložiště**: Přidáte účty služby Azure storage jako další účty úložiště pro cluster. Chcete-li přidat další účty Data Lake Storage Gen1 se provádí tak, že udělíte oprávnění clusteru na datech z další účty Data Lake Storage Gen1 při konfiguraci účtu Data Lake Storage Gen1 jako typ primárního úložiště. Viz konfigurovat Data Lake Storage Gen1 přístup.
 
 4. Na **přístupu k Data Lake Store**, klikněte na tlačítko **vyberte**a poté pokračovat ve vytváření clusteru, jak je popsáno v [vytváření clusterů Hadoop v HDInsight](../hdinsight/hdinsight-hadoop-create-linux-clusters-portal.md).
 
@@ -207,7 +207,7 @@ Spark cluster můžete použít ke spuštění úlohy Spark na data, která je u
 
 ## <a name="see-also"></a>Další informace najdete v tématech
 * [Pomocí Data Lake Storage Gen1 s využitím clusterů Azure HDInsight](../hdinsight/hdinsight-hadoop-use-data-lake-store.md)
-* [Prostředí PowerShell: Vytvoření clusteru HDInsight pro použití Data Lake Storage Gen1](data-lake-store-hdinsight-hadoop-use-powershell.md)
+* [PowerShell: Vytvoření clusteru HDInsight pro použití Data Lake Storage Gen1](data-lake-store-hdinsight-hadoop-use-powershell.md)
 
 [makecert]: https://msdn.microsoft.com/library/windows/desktop/ff548309(v=vs.85).aspx
 [pvk2pfx]: https://msdn.microsoft.com/library/windows/desktop/ff550672(v=vs.85).aspx

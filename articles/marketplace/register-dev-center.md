@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 10/05/2018
 ms.author: ellacroi
-ms.openlocfilehash: 66daa71ffbe97e9f5374eedd7f51e5afe02f0b94
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.openlocfilehash: 479278400aa056a7cebcefaa2eedee3d98bc9a15
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55755522"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55815230"
 ---
 # <a name="register-in-dev-center"></a>Registrace ve službě Dev Center  
 K ověření, že nejste přihlášeni k účtu osobní prohlížeče, otevřete nový Internet Explorer InPrivate nebo Incognito Chrome relaci procházení.  
@@ -98,7 +98,7 @@ Pokud máte problémy s registrací Dev Center, postupujte podle těchto kroků 
     
     Klikněte na tlačítko Start e-mailu.  
 1.  Na stránce přihlášení Přihlaste se pomocí jakékoli Microsoft ID. Pokud nemáte aplikaci Microsoft ID, pak vytvořte.  
-    *   Další informace o vytváření a Microsoft ID [pokyny k tvorbě a Microsoft ID na Spravovat účet Azure Marketplace](#guidelines-for-creating-a-microsoft-id-to-manage-an-azure-marketplace-account) oddílu.  
+    *   Další informace o vytváření a Microsoft ID najdete pokyny k tvorbě ID Microsoftu ke správě části účtu Azure Marketplace.  
 2.  Vyplňte podrobnosti o problému.  
 3.  K odeslání-the-ticket, klikněte na tlačítko Odeslat. 
 

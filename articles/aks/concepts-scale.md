@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 10/16/2018
 ms.author: iainfou
-ms.openlocfilehash: 3e460df8c4841a23c76ef8d7b254938ce46a2b45
-ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
+ms.openlocfilehash: f464b6411e1375fa005980454a9b61d2d6c05b0b
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49380943"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55819106"
 ---
 # <a name="scaling-options-for-applications-in-azure-kubernetes-service-aks"></a>Škálování možností pro aplikace ve službě Azure Kubernetes Service (AKS)
 
@@ -23,7 +23,7 @@ Tento článek představuje základní koncepty, které vám pomůžou škálova
 - [Ruční škálování](#manually-scale-pods-or-nodes)
 - [Vodorovné pod automatického škálování (HPA)](#horizontal-pod-autoscaler)
 - [Automatického škálování clusteru](#cluster-autoscaler)
-- [Integrace služby Azure Container Instance (ACI) s AKS](#burst-to-azure-container-instance)
+- Integrace služby Azure Container Instance (ACI) s AKS
 
 ## <a name="manually-scale-pods-or-nodes"></a>Ruční škálování podů nebo uzly
 
@@ -65,7 +65,7 @@ Pokud uzel nemá dostatečný výpočetní prostředky, které spustit požadova
 
 Při oznámení automatického škálování clusteru podů, které kvůli omezením prostředku fondu uzel se nedá naplánovat, se zvýší počet uzlů v rámci fondu uzel k poskytnutí dalších výpočetních prostředků. Pokud tyto další uzly jsou úspěšně nasazen a dostupný pro použití v rámci uzlu fondu, jsou podů pak naplánovány ke spuštění na ně.
 
-Pokud vaše aplikace potřebuje rychle škálovat, může několik podů zůstanou ve stavu čekání na naplánované, dokud další uzly, které jsou nasazeny pomocí automatického škálování clusteru můžete přijímat plánované pody. U aplikací, které mají vysokou burst nároky, můžete [škálování pomocí virtuálních uzlů a Azure Container Instances](#burst-to-azure-container-instance).
+Pokud vaše aplikace potřebuje rychle škálovat, může několik podů zůstanou ve stavu čekání na naplánované, dokud další uzly, které jsou nasazeny pomocí automatického škálování clusteru můžete přijímat plánované pody. Pro aplikace, které mají vysokou burst požadavky je možné škálovat s virtuálními uzly a Azure Container Instances.
 
 ### <a name="scale-down-events"></a>Vertikálně snížit kapacitu události
 

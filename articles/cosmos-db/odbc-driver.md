@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 03/22/2018
 ms.author: sngun
-ms.openlocfilehash: f51ce90d9349d345bb1e77ca5e254315c20c1b1d
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: 95811459ff51b71153fb5ceef804a64c8b6a9be6
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54034468"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55816624"
 ---
 # <a name="connect-to-azure-cosmos-db-using-bi-analytics-tools-with-the-odbc-driver"></a>Připojení ke službě Azure Cosmos DB pomocí nástroje pro analýzu BI pomocí ovladače ODBC
 
@@ -59,7 +59,7 @@ Pusťme se do práce pomocí ovladače ODBC.
     ![Azure Cosmos DB ODBC ovladač DSN okno](./media/odbc-driver/odbc-driver-dsn-setup.png)
     - **Název zdroje dat**: Vlastní popisný název DSN rozhraní ODBC. Tento název je jedinečný pro váš účet Azure Cosmos DB, tak pojmenujte ho správně Pokud máte více účtů.
     - **Popis**: Stručný popis datového zdroje.
-    - **Hostitel**: Identifikátor URI pro váš účet Azure Cosmos DB. Můžete načíst to ze stránky klíče služby Azure Cosmos DB na webu Azure Portal, jak je znázorněno na následujícím snímku obrazovky. 
+    - **Host**: Identifikátor URI pro váš účet Azure Cosmos DB. Můžete načíst to ze stránky klíče služby Azure Cosmos DB na webu Azure Portal, jak je znázorněno na následujícím snímku obrazovky. 
     - **Přístup ke klíči**: Primární nebo sekundární, čtení a zápis nebo jen pro čtení klíče ze stránky klíče služby Azure Cosmos DB na webu Azure portal, jak je znázorněno na následujícím snímku obrazovky. Doporučujeme že použít klíč jen pro čtení, pokud název zdroje dat se používá pro zpracování dat jen pro čtení a vytváření sestav.
     ![Stránka služby Azure Cosmos DB klíče](./media/odbc-driver/odbc-driver-keys.png)
     - **Přístupový klíč pro šifrování**: Vyberte nejlepší volbou založená na uživatelích tohoto počítače. 
@@ -71,8 +71,8 @@ Pusťme se do práce pomocí ovladače ODBC.
     - **Počet opakovaných pokusů**: Zadejte počet pokusů o zopakování operace, pokud v prvotní žádosti z důvodu omezení rychlosti služby nedokončí.
     - **Soubor schématu**: Zde máte několik možností.
         - Ve výchozím nastavení, byste museli opustit tuto položku jako (prázdné) ovladač prohledá první stránka data pro všechny kolekce k určení schéma každé z kolekcí. To se označuje jako kolekce mapování. Bez souboru schématu definice ovladač nemá k provedení kontroly pro každou relaci ovladač a může mít za následek vyšší dobu spuštění aplikace pomocí DSN. Doporučujeme vždy přiřadit soubor schématu pro zdroje dat DSN.
-        - Pokud už máte soubor schématu (může být takový, který jste vytvořili pomocí [Editor schémat](#schema-editor)), můžete kliknout na **Procházet**, přejděte k souboru, klikněte na tlačítko **Uložit**a potom klikněte na **OK**.
-        - Pokud chcete vytvořit nové schéma, klikněte na tlačítko **OK**a potom klikněte na tlačítko **Editor schémat** v hlavním okně. Pokračujte [Editor schémat](#schema-editor) informace. Po vytvoření nového souboru schématu, nezapomeňte přejít zpět **rozšířené možnosti** okna k zahrnutí souboru nově vytvořeného schématu.
+        - Pokud již máte soubor schématu (může být jeden, kterou jste vytvořili pomocí editoru schéma), můžete kliknout na **Procházet**, přejděte k souboru, klikněte na tlačítko **Uložit**a potom klikněte na tlačítko **OK**.
+        - Pokud chcete vytvořit nové schéma, klikněte na tlačítko **OK**a potom klikněte na tlačítko **Editor schémat** v hlavním okně. Přejděte k informace Editor schémat. Po vytvoření nového souboru schématu, nezapomeňte přejít zpět **rozšířené možnosti** okna k zahrnutí souboru nově vytvořeného schématu.
 
 1. Po dokončení a zavření **Azure Cosmos DB ODBC – ovladače DSN nastavení** okně Nový uživatelský název DSN se přidá na kartu uživatelské DSN.
 

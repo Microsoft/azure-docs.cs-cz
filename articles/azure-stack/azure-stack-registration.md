@@ -16,12 +16,12 @@ ms.date: 01/16/2019
 ms.author: jeffgilb
 ms.reviewer: brbartle
 ms.lastreviewed: 01/16/2019
-ms.openlocfilehash: d9ab89afba2b83f99bfbf432d033cd0546a25a9d
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 36699acab7a10a11ae60c62bab8e5130362ddfc7
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55247387"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55817253"
 ---
 # <a name="register-azure-stack-with-azure"></a>Registrace Azure Stack s Azure
 
@@ -142,7 +142,7 @@ Propojené prostředí můžete přístup k Internetu a z Azure. U těchto prost
    Register-AzureRmResourceProvider -ProviderNamespace Microsoft.AzureStack
    ```
 
-5. Spusťte prostředí PowerShell ISE jako správce a přejděte do **registrace** složky v **AzureStack-Tools-master** vytvořen adresář, kdy jste [stáhnout nástroje Azure Stack](#bkmk_tools). Import **RegisterWithAzure.psm1** modulu pomocí prostředí PowerShell:
+5. Spusťte ISE Powershellu jako správce a přejděte do **registrace** složky **AzureStack-Tools-master** adresář vytvořený při stažení nástroje Azure Stack. Import **RegisterWithAzure.psm1** modulu pomocí prostředí PowerShell:
 
    ```PowerShell  
    Import-Module .\RegisterWithAzure.psm1
@@ -206,7 +206,7 @@ Propojené prostředí můžete přístup k Internetu a z Azure. U těchto prost
    Register-AzureRmResourceProvider -ProviderNamespace Microsoft.AzureStack
    ```
 
-5. Spusťte prostředí PowerShell ISE jako správce a přejděte do **registrace** složky v **AzureStack-Tools-master** vytvořen adresář, kdy jste [stáhnout nástroje Azure Stack](#bkmk_tools). Import **RegisterWithAzure.psm1** modulu pomocí prostředí PowerShell:
+5. Spusťte ISE Powershellu jako správce a přejděte do **registrace** složky **AzureStack-Tools-master** adresář vytvořený při stažení nástroje Azure Stack. Import **RegisterWithAzure.psm1** modulu pomocí prostředí PowerShell:
 
   ```PowerShell  
   $CloudAdminCred = Get-Credential -UserName <Privileged endpoint credentials> -Message "Enter the cloud domain credentials to access the privileged endpoint."
@@ -225,11 +225,11 @@ Propojené prostředí můžete přístup k Internetu a z Azure. U těchto prost
 
 ## <a name="register-disconnected-with-capacity-billing"></a>Registrace odpojeného s využitím fakturace kapacity
 
-Pokud při registraci služby Azure Stack v odpojeném prostředí (bez připojení k Internetu), musíte k získání tokenu registrace z prostředí Azure Stack a pak pomocí tohoto tokenu v počítači, který se můžete připojit k Azure a má [prostředí PowerShell pro službu Azure Stack nainstalované](#bkmk_powershell).  
+Pokud při registraci služby Azure Stack v odpojeném prostředí (bez připojení k Internetu), musíte k získání tokenu registrace z prostředí Azure Stack a pak pomocí tohoto tokenu v počítači, který se můžete připojit k Azure a nabízí prostředí PowerShell pro Azure Stack nainstalovat.  
 
 ### <a name="get-a-registration-token-from-the-azure-stack-environment"></a>Získání tokenu registrace z prostředí Azure Stack
 
-1. Spusťte prostředí PowerShell ISE jako správce a přejděte do **registrace** složky v **AzureStack-Tools-master** vytvořen adresář, kdy jste [stáhnout nástroje Azure Stack](#bkmk_tools). Import **RegisterWithAzure.psm1** modul:  
+1. Spusťte ISE Powershellu jako správce a přejděte do **registrace** složky **AzureStack-Tools-master** adresář vytvořený při stažení nástroje Azure Stack. Import **RegisterWithAzure.psm1** modul:  
 
    ```PowerShell  
    Import-Module .\RegisterWithAzure.psm1
@@ -448,15 +448,15 @@ Pokud chcete spustit rutinu, budete potřebovat:
 | Parametr | Type | Popis |
 |-------------------------------|--------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | PrivilegedEndpointCredential | PSCredential | Pověření používaná k [přístup k privilegovaným koncový bod](azure-stack-privileged-endpoint.md#access-the-privileged-endpoint). Uživatelské jméno je ve formátu **AzureStackDomain\CloudAdmin**. |
-| PrivilegedEndpoint | Řetězec | Předem nakonfigurované vzdálenou konzolu Powershellu, který vám poskytne funkce, jako je shromažďování protokolů a další příspěvek úlohy nasazení. Další informace najdete [pomocí privilegovaných koncového bodu](azure-stack-privileged-endpoint.md#access-the-privileged-endpoint) článku. |
+| PrivilegedEndpoint | String | Předem nakonfigurované vzdálenou konzolu Powershellu, který vám poskytne funkce, jako je shromažďování protokolů a další příspěvek úlohy nasazení. Další informace najdete [pomocí privilegovaných koncového bodu](azure-stack-privileged-endpoint.md#access-the-privileged-endpoint) článku. |
 | AzureContext | PSObject |  |
-| ResourceGroupName | Řetězec |  |
-| ResourceGroupLocation | Řetězec |  |
-| BillingModel | Řetězec | Model fakturace předplatného používá. Povolené hodnoty tohoto parametru jsou: Kapacita, PayAsYouUse a vývoj. |
+| ResourceGroupName | String |  |
+| ResourceGroupLocation | String |  |
+| BillingModel | String | Model fakturace předplatného používá. Povolené hodnoty tohoto parametru jsou: Kapacita, PayAsYouUse a vývoj. |
 | MarketplaceSyndicationEnabled | True nebo False | Určuje, zda funkce pro správu webu marketplace je k dispozici na portálu. Nastavte na hodnotu true, pokud se registrace s připojením k Internetu. Nastavte na hodnotu false, pokud se registrace v odpojených prostředích. Pro odpojený registrace [nástroj v režimu offline syndikace](azure-stack-download-azure-marketplace-item.md#disconnected-or-a-partially-connected-scenario) lze použít pro stažení položek z marketplace. |
 | UsageReportingEnabled | True nebo False | Azure Stack sestavy metriky využití ve výchozím nastavení. Operátory se používá kapacity nebo podpora odpojené prostředí je potřeba vypnout generování sestav o využívání. Povolené hodnoty tohoto parametru jsou: Hodnota TRUE, False. |
-| AgreementNumber | Řetězec |  |
-| RegistrationName | Řetězec | Nastavit jedinečný název pro registraci, pokud používáte skript registrace na více než jednu instanci služby Azure Stack pomocí stejného předplatného Azure ID. Parametr má výchozí hodnotu **AzureStackRegistration**. Pokud však použijete stejný název ve více než jednu instanci služby Azure Stack, skript selže. |
+| AgreementNumber | String |  |
+| RegistrationName | String | Nastavit jedinečný název pro registraci, pokud používáte skript registrace na více než jednu instanci služby Azure Stack pomocí stejného předplatného Azure ID. Parametr má výchozí hodnotu **AzureStackRegistration**. Pokud však použijete stejný název ve více než jednu instanci služby Azure Stack, skript selže. |
 
 ### <a name="get-azsregistrationtoken"></a>Get-AzsRegistrationToken
 
@@ -470,14 +470,14 @@ Get-AzsRegistrationToken vygeneruje registrační token ze vstupních parametrů
 | Parametr | Type | Popis |
 |-------------------------------|--------------|-------------|
 | PrivilegedEndpointCredential | PSCredential | Pověření používaná k [přístup k privilegovaným koncový bod](azure-stack-privileged-endpoint.md#access-the-privileged-endpoint). Uživatelské jméno je ve formátu **AzureStackDomain\CloudAdmin**. |
-| PrivilegedEndpoint | Řetězec |  Předem nakonfigurované vzdálenou konzolu Powershellu, který vám poskytne funkce, jako je shromažďování protokolů a další příspěvek úlohy nasazení. Další informace najdete [pomocí privilegovaných koncového bodu](azure-stack-privileged-endpoint.md#access-the-privileged-endpoint) článku. |
+| PrivilegedEndpoint | String |  Předem nakonfigurované vzdálenou konzolu Powershellu, který vám poskytne funkce, jako je shromažďování protokolů a další příspěvek úlohy nasazení. Další informace najdete [pomocí privilegovaných koncového bodu](azure-stack-privileged-endpoint.md#access-the-privileged-endpoint) článku. |
 | AzureContext | PSObject |  |
-| ResourceGroupName | Řetězec |  |
-| ResourceGroupLocation | Řetězec |  |
-| BillingModel | Řetězec | Model fakturace předplatného používá. Povolené hodnoty tohoto parametru jsou: Kapacita, PayAsYouUse a vývoj. |
+| ResourceGroupName | String |  |
+| ResourceGroupLocation | String |  |
+| BillingModel | String | Model fakturace předplatného používá. Povolené hodnoty tohoto parametru jsou: Kapacita, PayAsYouUse a vývoj. |
 | MarketplaceSyndicationEnabled | True nebo False |  |
 | UsageReportingEnabled | True nebo False | Azure Stack sestavy metriky využití ve výchozím nastavení. Operátory se používá kapacity nebo podpora odpojené prostředí je potřeba vypnout generování sestav o využívání. Povolené hodnoty tohoto parametru jsou: Hodnota TRUE, False. |
-| AgreementNumber | Řetězec |  |
+| AgreementNumber | String |  |
 
 
 ## <a name="next-steps"></a>Další postup

@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/17/2019
 ms.author: spelluru
-ms.openlocfilehash: 2f34b6c71c448f7273ba7477f18f5abb8f89cdec
-ms.sourcegitcommit: 9f07ad84b0ff397746c63a085b757394928f6fc0
+ms.openlocfilehash: d0942d3465811687937ce113e664fbf3f91277d0
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54391188"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55815240"
 ---
 # <a name="create-and-manage-a-classroom-template-in-azure-lab-services"></a>Vytvářet a spravovat šablony classroom ve službě Azure Lab Services
 Šablona v testovacím prostředí je základní image virtuálního počítače, ze které se vytváří všechny virtuální počítače uživatelů. Nastavte virtuální počítač šablony tak, aby byl nakonfigurovaný přesně podle toho, co chcete uživatelům testovacího prostředí poskytnout. Můžete zadat název a popis šablony, které uvidí uživatelé testovacího prostředí. Potom můžete publikovat šablony, která má instance šablony virtuálního počítače zpřístupnit uživatelům testovacího prostředí. Jakmile publikujete šablonu, vytvoří služba Azure Lab Services pomocí této šablony virtuální počítače v testovacím prostředí. Počet virtuálních počítačů, které se v tomto procesu vytvoří, se rovná maximálnímu počtu uživatelů, kteří mohou k testovacímu prostředí přistupovat. Tento počet můžete nastavit v zásadách používání testovacího prostředí. Všechny virtuální počítače mají stejnou konfiguraci jako šablona.
@@ -72,7 +72,7 @@ Nejprve můžete nastavit a publikovat šablony při vytváření testovacího p
 
         > [!WARNING]
         > Publikování nejde vrátit zpět. 
-    2. Pokud chcete publikování provést později, vyberte **Save for later** (Uložit na později). Virtuální počítač šablony můžete publikovat i po dokončení průvodce. Podrobnosti o tom, jak nakonfigurovat a publikování po dokončení průvodce, přečtěte si další informace o tom, jak konfigurace a publikování po dokončení průvodce najdete v tématu [publikovat šablony](#publish-the-template) tématu [Správa testovacích prostředí v učebnách ](how-to-manage-classroom-labs.md) článku.
+    2. Pokud chcete publikování provést později, vyberte **Save for later** (Uložit na později). Virtuální počítač šablony můžete publikovat i po dokončení průvodce. Podrobnosti o tom, jak konfigurace a publikování po dokončení průvodce, naleznete v části Podrobnosti o tom, jak konfigurace a publikování po dokončení průvodce, najdete v části publikování v oddílu šablony [Správa testovacích prostředí v učebnách](how-to-manage-classroom-labs.md) článku.
 
         ![Publikování šablony](../media/tutorial-setup-classroom-lab/publish-template.png)
 11. Zobrazí se **průběh publikování** šablony. Tento proces může trvat až hodinu. 

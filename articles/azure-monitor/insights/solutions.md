@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 12/07/2018
 ms.author: bwren
-ms.openlocfilehash: 0103225803ca98cb9d8e27eb57f150e0660cd7ab
-ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
+ms.openlocfilehash: 8a6a679aaf43e4a92eb380368f3d68704853d3a3
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55299117"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55816811"
 ---
 # <a name="management-solutions-in-azure-monitor"></a>Řešení pro správu ve službě Azure Monitor
 Využijte řešení pro správu služby v Azure a poskytuje další informace o provozu určitá aplikace nebo služby. Tento článek poskytuje stručný přehled o řešení pro správu v Azure a podrobnosti o používání a jejich instalace.
@@ -101,7 +101,7 @@ Propojení pracovního prostoru Log Analytics a účet Automation pomocí násle
 1. Pokud **pracovní prostor** nastavení povolené, pak tento účet je propojený s pracovním prostorem Log Analytics. Můžete kliknout na **pracovní prostor** zobrazíte podrobnosti o pracovním prostoru.
 
 ## <a name="remove-a-management-solution"></a>Odebrat řešení pro správu
-Odebrání nainstalované řešení, vyhledejte ho [seznam nainstalovaných řešení](#list-installed-monitoring-solutions). Klikněte na název řešení, otevřete jeho souhrnnou stránku a potom klikněte na **odstranit**.
+Odebrání nainstalované řešení, vyhledejte ho v seznamu nainstalovaných řešení. Klikněte na název řešení, otevřete jeho souhrnnou stránku a potom klikněte na **odstranit**.
 
 
 

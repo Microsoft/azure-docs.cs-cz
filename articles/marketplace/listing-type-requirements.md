@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 12/19/2018
 ms.author: ellacroi
-ms.openlocfilehash: c02bc75a978325f8cb0dc8733fb8d296e8710975
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.openlocfilehash: 8232a197b7916c069ef17393e44a4f9a512a7598
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54264678"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55818528"
 ---
 # <a name="requirements-by-listing-type"></a>Požadavky na uvedením typu  
 Obsahu požadavky na technickou a marketingovou se liší podle z prodejních míst, typ nabídky a výpis typu. Projděte si následující specifikace k ověření vaší dodržování předpisů.  
@@ -64,17 +64,17 @@ V seznamu typ seznamu zahrnuje následující typy nabídek na prodejní místa 
 
 | Typ nabídky | Prodejní místo | Podrobnosti |  
 |:---        |:---        |:---     |  
-| Konzultační služby | AppSource | [Požadavky: AppSource: Seznam: Konzultační služby](#requirements-appsource-list-consulting-services) |  
-| Konzultační služby | Azure Marketplace | [Požadavky: Azure Marketplace: Seznam: Konzultační služby](#requirements-azure-marketplace-list-consulting-services) |  
+| Konzultační služby | AppSource | Požadavky: AppSource: Seznam: Konzultační služby |  
+| Konzultační služby | Azure Marketplace | Požadavky: Azure Marketplace: Seznam: Konzultační služby |  
 | Kontaktujte mě | AppSource | [](#) |  
-| Kontaktujte mě | Azure Marketplace | [Požadavky: AppSource: Seznam: Kontaktujte mě](#requirements-azure-marketplace-list-contact-me) |  
+| Kontaktujte mě | Azure Marketplace | Požadavky: AppSource: Seznam: Kontaktujte mě |  
 
 #### <a name="requirements-appsource-list-consulting-service"></a>Požadavky: AppSource: Seznam: Konzultační služby  
 
 | Požadavky | Podrobnosti |  
 |:--- |:--- |  
 | Vlastnosti nabídky služeb | Konzultační služby, musí splňovat následující kritéria.<ul> <li>Dodávejte engagement-oboru, dobou trvání, pevnou cenou (nebo zdarma).</li> <li>Orient především pro před prodejem.</li> <li>Omezení pro jediného zákazníka.</li> <li>Proveďte na webu.</li> </ul> |  
-| Požadavky na partnera pro konzultační služby | Splňují kritéria v příslušné oblasti pro vaši službu.<table><tr><th>Oblast řešení</th><th>Kritéria</th></tr><tr><td>Dynamics 365 for Customer Engagement</td><td>Máte kompetenci stříbrné nebo zlaté řízení vztahů se cloudové zákazníky.</td></tr><tr><td>Dynamics 365 pro Finance and Operations, Enterprise edition</td><td>Máte kompetenci stříbrné nebo zlaté podnikového plánování zdrojů a výnosy z vašich cloudových operací v konci 12měsíčního období $ 25 000 nebo více.</td></tr><tr><td>Dynamics 365 pro Finance and Operations, verze Business edition</td><td>Slouží jako služby poskytovatele CSP (Cloud) nebo digitální DPOR Partner of Record () pro jeden nebo více zákazníků.</td></tr><tr><td>Power BI</td><td>Kritériím partnerských řešení.</td></tr><tr><td>PowerApps</td><td>Máte prezentaci partnerských řešení.</td></tr></table><ul> <li>Další informace o řízení vztahů se zákazníky, najdete v cloudu řízení vztahů se zákazníky stránky umístěného v [partner.microsoft.com/membership/cloud-customer-relationship-management-competency](https://partner.microsoft.com/membership/cloud-customer-relationship-management-competency).</li> <li>Další informace o plánování prostředků najdete plánování podnikových zdrojů stránky umístění [partner.microsoft.com/membership/enterprise-resource-planning-competency](https://partner.microsoft.com/membership/enterprise-resource-planning-competency).</li> <li>Další informace o CSP najdete poskytovatel cloudových služeb, stránka umístění [partner.microsoft.com/cloud-solution-provider](https://partner.microsoft.com/cloud-solution-provider).</li> <li>Další informace o partnera DPOR, navštivte Digital Partner of Record a přidružení partnera stránky umístěného v [partner.microsoft.com/membership/digital-partner-of-record](https://partner.microsoft.com/membership/digital-partner-of-record).</li> <li>Další informace o kritériích partnerských řešení, najdete přehled partnerských řešení a umístění dokumentu pobídky [www.microsoftpartnerserverandcloud.com/_layouts/download.aspx? SourceUrl=Hosted%20Documents/Power%20BI%20Program%20Overview%20%26%20Incentives.pdf](https://www.microsoftpartnerserverandcloud.com/_layouts/download.aspx?SourceUrl=Hosted%20Documents/Power%20BI%20Program%20Overview%20%26%20Incentives.pdf).</li> <li>Další informace o prezentaci partnerů, navštivte prezentaci partnerů stránky umístěného v [powerapps.microsoft.com/partner-showcase](https://powerapps.microsoft.com/partner-showcase).</li> </ul> |  
+| Požadavky na partnera pro konzultační služby | Splňují kritéria v příslušné oblasti pro vaši službu.<table><tr><th>Oblast řešení</th><th>Kritéria</th></tr><tr><td>Dynamics 365 for Customer Engagement</td><td>Máte kompetenci stříbrné nebo zlaté řízení vztahů se cloudové zákazníky.</td></tr><tr><td>Dynamics 365 pro Finance and Operations, Enterprise edition</td><td>Máte kompetenci stříbrné nebo zlaté podnikového plánování zdrojů a výnosy z vašich cloudových operací v konci 12měsíčního období $ 25 000 nebo více.</td></tr><tr><td>Dynamics 365 pro Finance and Operations, verze Business edition</td><td>Slouží jako služby poskytovatele CSP (Cloud) nebo digitální DPOR Partner of Record () pro jeden nebo více zákazníků.</td></tr><tr><td>Power BI</td><td>Kritériím partnerských řešení.</td></tr><tr><td>PowerApps</td><td>Máte prezentaci partnerských řešení.</td></tr></table><ul> <li>Další informace o řízení vztahů se zákazníky, najdete v cloudu řízení vztahů se zákazníky stránky umístěného v [partner.microsoft.com/membership/cloud-customer-relationship-management-competency](https://partner.microsoft.com/membership/cloud-customer-relationship-management-competency).</li> <li>Další informace o plánování prostředků najdete plánování podnikových zdrojů stránky umístění [partner.microsoft.com/membership/enterprise-resource-planning-competency](https://partner.microsoft.com/membership/enterprise-resource-planning-competency).</li> <li>Další informace o CSP najdete poskytovatel cloudových služeb, stránka umístění [partner.microsoft.com/cloud-solution-provider](https://partner.microsoft.com/cloud-solution-provider).</li> <li>Další informace o partnera DPOR, navštivte Digital Partner of Record a přidružení partnera stránky umístěného v [partner.microsoft.com/membership/digital-partner-of-record](https://partner.microsoft.com/membership/digital-partner-of-record).</li> <li>Další informace o kritériích partnerských řešení, najdete přehled partnerských řešení a umístění dokumentu pobídky [www.microsoftpartnerserverandcloud.com/_layouts/download.aspx?SourceUrl=Hosted%20Documents/Power%20BI%20Program%20Overview%20%26%20Incentives.pdf](https://www.microsoftpartnerserverandcloud.com/_layouts/download.aspx?SourceUrl=Hosted%20Documents/Power%20BI%20Program%20Overview%20%26%20Incentives.pdf).</li> <li>Další informace o prezentaci partnerů, navštivte prezentaci partnerů stránky umístěného v [powerapps.microsoft.com/partner-showcase](https://powerapps.microsoft.com/partner-showcase).</li> </ul> |  
 
 #### <a name="requirements-azure-marketplace-list-consulting-service"></a>Požadavky: Azure Marketplace: Seznam: Konzultační služby  
 
@@ -91,11 +91,11 @@ V seznamu typ seznamu zahrnuje následující typy nabídek na prodejní místa 
 
 | Typ nabídky | Prodejní místo | Podrobnosti |  
 |:---        |:---        |:---     |  
-| Bezplatné a zkušební verze SaaS | AppSource | [Požadavky na typ výpisu: Zkušební verze](#listing-type-requirements-trial) |  
-| Bezplatné a zkušební verze SaaS | Azure Marketplace | [Požadavky: Azure Marketplace: Zkušební verze: Bezplatná zkušební verze nebo zkušební verze SaaS](#requirements-azure-marketplace-trial-free-trial-/-saas-trial) |  
-| Interaktivní ukázka | AppSource | [Požadavky na typ výpisu: Zkušební verze](#listing-type-requirements-trial) |  
+| Bezplatné a zkušební verze SaaS | AppSource | Požadavky na typ výpisu: Zkušební verze |  
+| Bezplatné a zkušební verze SaaS | Azure Marketplace | Požadavky: Azure Marketplace: Zkušební verze: Bezplatná zkušební verze nebo zkušební verze SaaS |  
+| Interaktivní ukázka | AppSource | Požadavky na typ výpisu: Zkušební verze |  
 | Interaktivní ukázka | Azure Marketplace | [Požadavky: Azure Marketplace: Zkušební verze: Interaktivní ukázka](#requirements-azure-marketplace-trial-interactive-demo) |  
-| Testovací verze | AppSource | [Požadavky na typ výpisu: Zkušební verze](#listing-type-requirements-trial) |  
+| Testovací verze | AppSource | Požadavky na typ výpisu: Zkušební verze |  
 | Testovací verze | Azure Marketplace | [Požadavky: Azure Marketplace: Zkušební verze: Testovací verze](#requirements-azure-marketplace-trial-test-drive) |  
 
 #### <a name="requirements-azure-marketplace-trial"></a>Požadavky: Azure Marketplace: Zkušební verze  
@@ -133,8 +133,8 @@ V seznamu typ seznamu zahrnuje následující typy nabídek na prodejní místa 
 
 | Typ nabídky | Prodejní místo | Podrobnosti |   
 |:---        |:---        | :--- |  
-| Aplikace Azure: Spravované aplikace | Azure Marketplace | [Požadavky: Azure Marketplace: Příkaz Transact: Aplikace Azure: Spravované aplikace](#requirements-azure-marketplace-transact-azure-apps-managed-app) |  
-| Aplikace Azure: Šablona řešení | Azure Marketplace | [Požadavky: Azure Marketplace: Příkaz Transact: Aplikace Azure: Šablona řešení](#requirements-azure-marketplace-transact-azure-apps-solution-template) |  
+| Aplikace Azure: Spravované aplikace | Azure Marketplace | Požadavky: Azure Marketplace: Příkaz Transact: Aplikace Azure: Spravované aplikace |  
+| Aplikace Azure: Šablona řešení | Azure Marketplace | Požadavky: Azure Marketplace: Příkaz Transact: Aplikace Azure: Šablona řešení |  
 | Containers | Azure Marketplace | [Požadavky: Azure Marketplace: Příkaz Transact: Kontejner](#requirements-azure-marketplace-transact-container) |  
 | Aplikace SaaS  | Azure Marketplace | [Požadavky: Azure Marketplace: Příkaz Transact: Aplikace SaaS](#requirements-azure-marketplace-transact-saas-app) |  
 | Virtuální počítač | Azure Marketplace | [Požadavky: Azure Marketplace: Příkaz Transact: Virtuální počítač](#requirements-azure-marketplace-transact-virtual-machine) |  

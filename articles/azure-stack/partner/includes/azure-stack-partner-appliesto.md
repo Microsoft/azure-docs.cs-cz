@@ -4,11 +4,13 @@ ms.service: azure-stack
 ms.topic: include
 ms.date: 11/26/2018
 ms.author: mabrigg
-ms.openlocfilehash: 76fc8afaf8a3891c5c83cc6d845e0817f771fad7
-ms.sourcegitcommit: 922f7a8b75e9e15a17e904cc941bdfb0f32dc153
+ms.reviewer: johnhas
+ms.lastreviewed: 11/26/2018
+ms.openlocfilehash: cd325b2ab76cfe0e193b5037d84b92e1d2a0e576
+ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52335925"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55807083"
 ---
-*Platí pro: integrované systémy Azure Stack.*
+*Platí pro: Integrované systémy Azure Stack.*

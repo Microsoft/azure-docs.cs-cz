@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/04/2018
 ms.author: spelluru
-ms.openlocfilehash: 655159185a6011d79b927fd16d2957e2a59c8376
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: a58ebe14749add30deb229f1b7e30fbb6e9921d7
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54437788"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55814882"
 ---
 # <a name="test-your-app-in-azure"></a>Testování aplikace v Azure 
 Tento článek popisuje kroky pro testování vašich aplikací v Azure DevTest Labs pomocí. Nejprve nastavení sdílené složky v testovacím prostředí a připojit jako disk na svém místním vývojovém počítači a virtuálních počítačů v testovacím prostředí. Pak Nasaďte aplikaci do sdílené složky tak, aby aplikaci můžete spustit na virtuálním počítači v testovacím prostředí pomocí sady Visual Studio 2017.  
@@ -57,7 +57,7 @@ Tento článek popisuje kroky pro testování vašich aplikací v Azure DevTest 
     ![Vyberte testovací virtuální počítač](media/test-app-in-azure/select-lab-vm.png)
 2. Vyberte **připojit** na panelu nástrojů pro připojení k virtuálnímu počítači. 
 3. [Nainstalovat Azure PowerShell](https://azure.microsoft.com/downloads/) pomocí **nainstalovat Windows** odkaz v **nástroje příkazového řádku** oddílu. Další způsoby instalace Azure Powershellu najdete v části [v tomto článku](/powershell/azure/azurerm/install-azurerm-ps?view=azurermps-6.8.1).
-4. Postupujte podle pokynů [připojení sdílené složky](#mount-the-file-share) oddílu. 
+4. Postupujte podle pokynů v připojení oddílu sdílené složky souboru. 
 
 ## <a name="publish-your-app-from-visual-studio"></a>Publikování aplikace ze sady Visual Studio
 V této části publikování aplikace ze sady Visual Studio do testovacího virtuálního počítače v cloudu.

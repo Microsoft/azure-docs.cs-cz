@@ -16,12 +16,12 @@ ms.workload: iaas-sql-server
 ms.date: 06/01/2017
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: df3f4dc163f94ddab08ecdad7f8d4cc625b8917d
-ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
+ms.openlocfilehash: cbb15ff084c3639be801458d071f3966873c2509
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55300264"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55815646"
 ---
 # <a name="use-azure-premium-storage-with-sql-server-on-virtual-machines"></a>Použití Azure Premium Storage s SQL Serverem na virtuálních počítačích
 ## <a name="overview"></a>Přehled
@@ -1191,7 +1191,7 @@ Pokud máte jenom dva servery SQL a chcete migrovat na novou cloudovou službu, 
 
 Po zařazení nahoru migrovaná sekundární a přidá nový prostředek IP adresu pro novou cloudovou službu před převzetí služeb při selhání existující primární, byste měli provést tyto kroky v rámci Správce clusteru převzetí služeb při selhání:
 
-Pokud chcete přidat IP adresu, najdete v článku [příloha](#appendix-migrating-a-multisite-alwayson-cluster-to-premium-storage), kroku 14.
+Pokud chcete přidat IP adresu, naleznete v tématu dodatku kroku 14.
 
 1. Aktuální IP adresu prostředku změňte možných vlastníků "Existující primární SQL Server", v tomto příkladu "dansqlams4":
 

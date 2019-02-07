@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 06/02/2017
 ms.author: rogarana
 ms.subservice: common
-ms.openlocfilehash: d815bae2478d8853c63cd773cbfeaf5d3e90458c
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
+ms.openlocfilehash: f485f38d4c580937b027bb76d0c34c98f699ed93
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55659759"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55816845"
 ---
 # <a name="using-the-azure-cli-with-azure-storage"></a>Použití Azure CLI s Azure Storage
 
@@ -173,7 +173,7 @@ Done
 ## <a name="manage-storage-accounts"></a>Správa účtů úložiště
 
 ### <a name="create-a-new-storage-account"></a>Vytvoření nového účtu úložiště
-Pokud chcete vyzkoušet službu Azure Storage, potřebujete účet úložiště. Můžete vytvořit nový účet Azure Storage po dokončení konfigurace počítače [připojení k vašemu předplatnému](#connect-to-your-azure-subscription).
+Pokud chcete vyzkoušet službu Azure Storage, potřebujete účet úložiště. Po dokončení konfigurace počítače pro připojení k vašemu předplatnému, můžete vytvořit nový účet úložiště Azure.
 
 ```azurecli
 az storage account create \
@@ -277,7 +277,7 @@ az storage blob download \
 
 ### <a name="list-the-blobs-in-a-container"></a>Zobrazí seznam objektů blob v kontejneru
 
-Výpis objektů BLOB v kontejneru s [az storage blob list](/cli/azure/storage/blob#az_storage_blob_list) příkazu.
+Výpis objektů BLOB v kontejneru s [az storage blob list](/cli/azure/storage/blob) příkazu.
 
 ```azurecli
 az storage blob list \

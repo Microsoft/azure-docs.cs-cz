@@ -4,17 +4,17 @@ description: Azure hodnocení zásad a efekty určení dodržování předpisů.
 services: azure-policy
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 01/31/2019
+ms.date: 02/01/2019
 ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: 7925bc8a9f7cb65d0e92c943aa0a54d48611e286
-ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
+ms.openlocfilehash: 9fc22e35b2e435b6452f0f36c34687a15bee39c2
+ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55508982"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55766403"
 ---
 # <a name="getting-compliance-data"></a>Získávání dat o dodržování předpisů
 
@@ -141,6 +141,26 @@ Události (připojit, audit, odepření, nasazení) aktivuje požadavek na vytvo
 Klikněte pravým tlačítkem na řadu událostí, které chcete shromažďovat další podrobnosti o a vyberte **zobrazit protokoly aktivit**. Na stránce Protokol aktivit se otevře a je předem vyfiltrované na hledání zobrazující podrobnosti pro přiřazení a události. Protokol aktivit obsahuje další kontext a informace o těchto událostech.
 
 ![Protokol aktivit zásad dodržování předpisů](../media/getting-compliance-data/compliance-activitylog.png)
+
+### <a name="change-history-preview"></a>Historie změn (Preview)
+
+Jako součást nového **ve verzi public preview**, za posledních 14 dní historie změn jsou k dispozici pro prostředek nedodržující předpisy. Historie změn při byla zjištěna změna a poskytuje podrobnosti o _visual diff_ pro každou změnu. Detekce změn se aktivuje při přidání, odebrání nebo změnit vlastnosti neodpovídajících prostředků Resource Manageru.
+
+1. Spusťte službu Azure Policy na webu Azure Portal tak, že kliknete na **Všechny služby** a pak vyhledáte a vyberete **Zásady**.
+
+1. Na **přehled** nebo **dodržování předpisů** vyberte zásadu, která je _nekompatibilní_.
+
+1. V části **dodržování předpisů prostředkem** karty **dodržování zásad** vyberte prostředek, to je _nekompatibilní_.
+
+1. Vyberte **historii změn (preview)** kartě **dodržování předpisů prostředkem** stránky. Seznam zjistila změny, pokud jsou zobrazeny všechny existují.
+
+   ![Historie změn zásad – karta](../media/getting-compliance-data/change-history-tab.png)
+
+1. Vyberte jednu z nalezenými změnami. _Visual diff_ pro neodpovídajících prostředků se zobrazí na **historii změn** stránky.
+
+   ![Historie změn zásad - Visual Diff](../media/getting-compliance-data/change-history-visual-diff.png)
+
+_Visual diff_ formě identifikovat změny prostředku. Byly zjištěny změny nemusí vztahovat na tom, co způsobilo prostředek, který se jako nevyhovující pro vybranou zásadu.
 
 ## <a name="command-line"></a>Příkazový řádek
 

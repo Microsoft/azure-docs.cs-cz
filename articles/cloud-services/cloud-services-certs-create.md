@@ -14,15 +14,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/19/2017
 ms.author: jeconnoc
-ms.openlocfilehash: 9cf37e611dce5705a4c866f25afa59e5c1602ec4
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.openlocfilehash: b2e87b2855ac1d76fe2ad544c17c33bfa14f635a
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51282199"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55812374"
 ---
 # <a name="certificates-overview-for-azure-cloud-services"></a>Přehled certifikátů pro Azure Cloud Services
-Certifikáty se používají v Azure pro cloudové služby ([služby certifikátů](#what-are-service-certificates)) a pro ověřování pomocí rozhraní API pro správu ([certifikáty pro správu](#what-are-management-certificates)). Toto téma obsahuje obecný přehled o oba typy certifikátů, jak k [vytvořit](#create) a [nasazení](#deploy) do Azure.
+Certifikáty se používají v Azure pro cloudové služby ([služby certifikátů](#what-are-service-certificates)) a pro ověřování pomocí rozhraní API pro správu ([certifikáty pro správu](#what-are-management-certificates)). Toto téma obsahuje obecný přehled o oba typy certifikátů, jak k [vytvořit](#create) a jejich nasazení do Azure.
 
 Certifikáty používané v Azure jsou x.509 v3 certifikáty a může být podepsány jiný certifikát pro důvěryhodného nebo mohou být podepsaný svým držitelem. Certifikát podepsaný svým držitelem je podepsaný vlastním creator, proto není důvěryhodný ve výchozím nastavení. Většina prohlížečů můžete ignorovat tento problém. Byste měli používat jenom certifikáty podepsané svým držitelem při vývoji a testování vašich cloudových služeb. 
 
@@ -64,7 +64,7 @@ Můžete použít jakýkoli nástroj k vytvoření certifikátu podepsaného sv�
     > Nelze získat certifikát SSL pro cloudapp.net (nebo pro všechny související s Azure) domény. Název subjektu certifikátu musí odpovídat názvu vlastní domény pro přístup k aplikaci. Například **contoso.net**, nikoli **contoso.cloudapp.net**.
 
 * Minimálně 2048bitové šifrování.
-* **Služba certifikátu pouze**: certifikát na straně klienta se musí nacházet v *osobní* úložiště certifikátů.
+* **Certifikát služby pouze**: Certifikát na straně klienta se musí nacházet v *osobní* úložiště certifikátů.
 
 Existují dva snadných způsobů, jak vytvořit certifikát na Windows, se `makecert.exe` nástroj nebo službu IIS.
 

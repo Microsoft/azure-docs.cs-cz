@@ -9,16 +9,16 @@ ms.author: divswa
 ms.reviewer: jonfan, estfan, LADocs
 ms.topic: article
 ms.date: 10/23/2018
-ms.openlocfilehash: d5425cf7c2ea39770bbc3e9368f34d57d7279842
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: e3d2b377df6a3ed8312ca8b2563fe466236c2741
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53534872"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55818290"
 ---
 # <a name="monitor-b2b-messages-with-azure-log-analytics-in-azure-logic-apps"></a>Monitorování zpráv B2B s Azure Log Analytics v Azure Logic Apps
 
-Po nastavení komunikace B2B mezi obchodními partnery v účtu integrace těchto partnerů si mohou vyměňovat zprávy mezi sebou. Chcete-li zkontrolovat, že tato komunikace funguje očekávaným způsobem, AS2, X12, můžete monitorovat a zprávy EDIFACT a nastavit Diagnostika protokolování pro váš účet integrace s [Azure Log Analytics](../log-analytics/log-analytics-overview.md). Tato služba monitoruje cloudové a místní prostředí, umožňují zachovat jejich dostupnost a výkon a shromažďuje podrobnosti modulu CLR a události pro rozsáhlejší ladění. Můžete také [pomocí těchto dat s jinými službami](#extend-diagnostic-data) jako je například Azure Storage a Azure Event Hubs.
+Po nastavení komunikace B2B mezi obchodními partnery v účtu integrace těchto partnerů si mohou vyměňovat zprávy mezi sebou. Chcete-li zkontrolovat, že tato komunikace funguje očekávaným způsobem, AS2, X12, můžete monitorovat a zprávy EDIFACT a nastavit Diagnostika protokolování pro váš účet integrace s [Azure Log Analytics](../log-analytics/log-analytics-overview.md). Tato služba monitoruje cloudové a místní prostředí, umožňují zachovat jejich dostupnost a výkon a shromažďuje podrobnosti modulu CLR a události pro rozsáhlejší ladění. Tato data můžete použít také s ostatními službami, jako je například Azure Storage a Azure Event Hubs.
 
 > [!NOTE]
 > Tato stránka pravděpodobně stále odkazy k Microsoft Operations Management Suite (OMS), což je [vyřazení z provozu v lednu 2019](../azure-monitor/platform/oms-portal-transition.md), ale nahradí tyto kroky pomocí Azure Log Analytics, kde je to možné. 
@@ -49,7 +49,7 @@ Jakmile budete hotovi, zvolte **přidejte nastavení diagnostiky**.
    | **Předplatné** | <*název_předplatného_Azure*> | Předplatné Azure, přidružené k účtu pro integraci | 
    | **Skupina prostředků** | <*Azure-resource-group-name*> | Skupina prostředků Azure pro váš účet integrace | 
    | **Typ prostředku** | **Účty pro integraci** | Typ pro prostředky Azure, ve které chcete zapnout protokolování | 
-   | **Prostředek** | <*název účtu integrace*> | Název pro váš prostředek Azure, ve které chcete zapnout protokolování | 
+   | **Prostředek** | <*integration-account-name*> | Název pro váš prostředek Azure, ve které chcete zapnout protokolování | 
    ||||  
 
    Příklad:
@@ -91,7 +91,7 @@ Jakmile budete hotovi, zvolte **přidejte nastavení diagnostiky**.
    | **Předplatné** | <*název_předplatného_Azure*> | Předplatné Azure, přidružené k účtu pro integraci | 
    | **Skupina prostředků** | <*Azure-resource-group-name*> | Skupina prostředků Azure pro váš účet integrace | 
    | **Typ prostředku** | **Účty pro integraci** | Typ pro prostředky Azure, ve které chcete zapnout protokolování | 
-   | **Prostředek** | <*název účtu integrace*> | Název pro váš prostředek Azure, ve které chcete zapnout protokolování | 
+   | **Prostředek** | <*integration-account-name*> | Název pro váš prostředek Azure, ve které chcete zapnout protokolování | 
    ||||  
 
    Příklad:

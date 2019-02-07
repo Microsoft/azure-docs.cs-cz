@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/03/2018
 ms.author: cherylmc
-ms.openlocfilehash: 245710d1ae3e7af4db5286a5db985fe35549ad3a
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 0646488c3dde4b0702d58bbd8905f4ae6bee1485
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53098766"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55821662"
 ---
 # <a name="configure-a-vnet-to-vnet-vpn-gateway-connection-by-using-the-azure-portal"></a>Konfigurace připojení brány VPN typu VNet-to-VNet pomocí webu Azure portal
 
@@ -86,25 +86,25 @@ Tento článek ukazuje, jak propojit virtuální sítě s použitím typu připo
     - **Název**: Zadejte *virtuální sítě TestVNet1*.
     - **Adresní prostor**: Zadejte *10.11.0.0/16*.
     - **Předplatné**: Vyberte předplatné, které chcete použít.
-    - **Skupina prostředků**: Zadejte *TestRG1*.
-    - **Umístění**: vyberte **USA – východ**.
+    - **Skupina prostředků**: Enter *TestRG1*.
+    - **Umístění**: Vyberte **USA – východ**.
     - **Podsíť**
         - **Název**: Zadejte *front-endu*.
         - **Rozsah adres**: Zadejte *10.11.0.0/24*.
     - **Podsíť brány**:
         - **Název**: *GatewaySubnet* je autofilled.
         - **Rozsah adres**: Zadejte *10.11.255.0/27*.
-    - **DNS server**: vyberte **vlastní** a zadejte IP adresu serveru DNS.
+    - **DNS server**: Vyberte **vlastní** a zadejte IP adresu serveru DNS.
 
 - **Nastavení brány virtuální sítě** 
     - **Název**: Zadejte *TestVNet1GW*.
     - **Typ brány**: Vyberte **VPN**.
-    - **Typ sítě VPN**: vyberte **založené na trasách**.
-    - **Skladová položka**: vybrat bránu SKU, kterou chcete použít.
+    - **Typ sítě VPN**: Vyberte **založené na trasách**.
+    - **SKLADOVÁ POLOŽKA**: Vyberte bránu SKU, kterou chcete použít.
     - **Název veřejné IP adresy**: Zadejte *TestVNet1GWIP*
     - **připojení** 
        - **Název**: Zadejte *TestVNet1toTestVNet4*.
-       - **Sdílený klíč**: Zadejte *abc123*. Sdílený klíč můžete vytvořit sami. Když vytvoříte připojení mezi virtuálními sítěmi, hodnoty musí odpovídat.
+       - **Sdílený klíč**: Enter *abc123*. Sdílený klíč můžete vytvořit sami. Když vytvoříte připojení mezi virtuálními sítěmi, hodnoty musí odpovídat.
 
 **Hodnoty pro virtuální síť TestVNet4:**
 
@@ -112,28 +112,28 @@ Tento článek ukazuje, jak propojit virtuální sítě s použitím typu připo
    - **Název**: Zadejte *virtuální sítě TestVNet4*.
    - **Adresní prostor**: Zadejte *10.41.0.0/16*.
    - **Předplatné**: Vyberte předplatné, které chcete použít.
-   - **Skupina prostředků**: Zadejte *TestRG4*.
-   - **Umístění**: vyberte **USA – západ**.
+   - **Skupina prostředků**: Enter *TestRG4*.
+   - **Umístění**: Vyberte **USA – západ**.
    - **Podsíť** 
       - **Název**: Zadejte *front-endu*.
       - **Rozsah adres**: Zadejte *10.41.0.0/24*.
    - **Podsíť brány** 
       - **Název**: *GatewaySubnet* je autofilled.
       - **Rozsah adres**: Zadejte *10.41.255.0/27*.
-   - **DNS server**: vyberte **vlastní** a zadejte IP adresu serveru DNS.
+   - **DNS server**: Vyberte **vlastní** a zadejte IP adresu serveru DNS.
 
 - **Nastavení brány virtuální sítě** 
     - **Název**: Zadejte *TestVNet4GW*.
     - **Typ brány**: Vyberte **VPN**.
-    - **Typ sítě VPN**: vyberte **založené na trasách**.
-    - **Skladová položka**: vybrat bránu SKU, kterou chcete použít.
+    - **Typ sítě VPN**: Vyberte **založené na trasách**.
+    - **SKLADOVÁ POLOŽKA**: Vyberte bránu SKU, kterou chcete použít.
     - **Název veřejné IP adresy**: Zadejte *TestVNet4GWIP*.
     - **připojení** 
        - **Název**: Zadejte *TestVNet4toTestVNet1*.
-       - **Sdílený klíč**: Zadejte *abc123*. Sdílený klíč můžete vytvořit sami. Když vytvoříte připojení mezi virtuálními sítěmi, hodnoty musí odpovídat.
+       - **Sdílený klíč**: Enter *abc123*. Sdílený klíč můžete vytvořit sami. Když vytvoříte připojení mezi virtuálními sítěmi, hodnoty musí odpovídat.
 
 ## <a name="create-and-configure-testvnet1"></a>Vytvoření a konfigurace virtuální sítě TestVNet1
-Pokud již máte virtuální síť vytvořenou, ověřte, zda jsou nastavení kompatibilní s vaším návrhem brány VPN. Věnujte zvláštní pozornost všem podsítím, které by se mohly překrývat s jinými sítěmi. Vaše připojení nebude fungovat správně, pokud máte překrývající se podsítí. Jakmile vaše virtuální síť nakonfigurována se správným nastavením, můžete začít s kroky v [určení serveru DNS](#dns) oddílu.
+Pokud již máte virtuální síť vytvořenou, ověřte, zda jsou nastavení kompatibilní s vaším návrhem brány VPN. Věnujte zvláštní pozornost všem podsítím, které by se mohly překrývat s jinými sítěmi. Vaše připojení nebude fungovat správně, pokud máte překrývající se podsítí. Poté, co vaše virtuální síť nakonfigurována se správným nastavením, můžete začít kroky v části zadejte část serveru DNS.
 
 ### <a name="to-create-a-virtual-network"></a>Chcete-li vytvořit virtuální síť
 [!INCLUDE [vpn-gateway-basic-vnet-rm-portal](../../includes/vpn-gateway-basic-vnet-rm-portal-include.md)]
@@ -180,9 +180,9 @@ Po dokončení vytváření bran virtuálních sítí pro TestVNet1 a TestVNet4 
 
    - **Název**: Zadejte název vašeho připojení. Například *TestVNet1toTestVNet4*.
 
-   - **Typ připojení**: vyberte **připojení typu VNet-to-VNet** z rozevíracího seznamu.
+   - **Typ připojení**: Vyberte **připojení typu VNet-to-VNet** z rozevíracího seznamu.
 
-   - **První Brána virtuální sítě**: Tato hodnota pole se automaticky vyplní, protože toto připojení vytváříte ze zadané virtuální sítě brány.
+   - **První Brána virtuální sítě**: Hodnota tohoto pole je automaticky vyplněno vzhledem k tomu, že toto připojení vytváříte ze zadané virtuální sítě brány.
 
    - **Druhá Brána virtuální sítě**: Toto pole je Brána virtuální sítě, kterou chcete vytvořit připojení k virtuální síti. Vyberte **vybrat jinou bránu virtuální sítě** otevřít **vybrat bránu virtuální sítě** stránky.
 
@@ -190,7 +190,7 @@ Po dokončení vytváření bran virtuálních sítí pro TestVNet1 a TestVNet4 
 
     - Vyberte bránu virtuální sítě, ke kterému chcete připojit.
 
-    - **Sdílený klíč (PSK)**: do tohoto pole zadejte sdílený klíč pro vaše připojení. Tento klíč si můžete vygenerovat nebo vytvořit sami. Klíč, který používáte v připojení site-to-site, je stejný pro místní zařízení i pro připojení brány virtuální sítě. Tady platí podobný, akorát se místo připojování k zařízení VPN, se připojujete k jiné bráně virtuální sítě.
+    - **Sdílený klíč (PSK)**: V tomto poli zadejte sdílený klíč pro vaše připojení. Tento klíč si můžete vygenerovat nebo vytvořit sami. Klíč, který používáte v připojení site-to-site, je stejný pro místní zařízení i pro připojení brány virtuální sítě. Tady platí podobný, akorát se místo připojování k zařízení VPN, se připojujete k jiné bráně virtuální sítě.
     
 4. Vyberte **OK** uložte provedené změny.
 

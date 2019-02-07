@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 03/13/2017
 ms.subservice: hybrid
 ms.author: billmath
-ms.openlocfilehash: c87b6791ea2d90ed302d796f17727a0338104beb
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 5339b0c77a69a915e58118888f8b82d095a43e38
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55174988"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55817780"
 ---
 # <a name="troubleshoot-password-hash-synchronization-with-azure-ad-connect-sync"></a>Řešení potíží s synchronizaci hodnot hash hesel pomocí synchronizace Azure AD Connect
 Toto téma popisuje kroky pro řešení potíží s synchronizaci hodnot hash hesel. Pokud hesla se nesynchronizují podle očekávání, může být pro podmnožinu uživatelů nebo pro všechny uživatele.
@@ -237,7 +237,7 @@ Postupujte podle následujících kroků zjistěte, proč hesla se nesynchronizu
 
 5. Pokud se žádný prezenční signál nebo pokud nic jiného nepracovali, spusťte [aktivovat úplná synchronizace všech hesel](#trigger-a-full-sync-of-all-passwords). Spusťte skript pouze jednou.
 
-6. Zobrazit [Poradce při potížích s jeden objekt, který se nesynchronizuje hesla](#one-object-is-not-synchronizing-passwords) části.
+6. V tématu Poradce při potížích jeden objekt, který se nesynchronizuje hesla části.
 
 ### <a name="connectivity-problems"></a>Problémy s připojením
 
@@ -303,7 +303,7 @@ Snadno můžete řešit problémy synchronizace hodnoty hash hesla kontrolou sta
 
     ![Podrobnosti protokolu objektu](./media/tshoot-connect-password-hash-synchronization/csobjectlog.png)  
 
-    Pokud objekt protokolu je prázdný, Azure AD Connect nelze číst hodnotu hash hesla ze služby Active Directory. Pokračovat v odstraňování problémů s [k chybám připojení](#connectivity-errors). Pokud se zobrazí jakákoli jiná hodnota než **úspěch**, naleznete v tabulce v [protokol synchronizace hesla](#password-sync-log).
+    Pokud objekt protokolu je prázdný, Azure AD Connect nelze číst hodnotu hash hesla ze služby Active Directory. Pokračujte v řešení potíží s chybami připojení. Pokud se zobrazí jakákoli jiná hodnota než **úspěch**, naleznete v tabulce v [protokol synchronizace hesla](#password-sync-log).
 
     h. Vyberte **rodokmenu** kartu a ujistěte se, že tento aspoň jedna synchronizační pravidlo v **PasswordSync** sloupec je **True**. Ve výchozím nastavení je název pravidla synchronizace **v ze služby AD - uživatel AccountEnabled**.  
 

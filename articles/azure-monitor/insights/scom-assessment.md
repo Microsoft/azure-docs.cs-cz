@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/25/2018
 ms.author: magoedte
-ms.openlocfilehash: fc625192464dce174b4c2a6d8a2a98343519699f
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: 7ae87763d280e129bab96c604f9118ecf088ea2f
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53186119"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55819854"
 ---
 # <a name="optimize-your-environment-with-the-system-center-operations-manager-health-check-preview-solution"></a>Optimalizujete si prostředí díky řešení System Center Operations Manager kontroly stavu (Preview)
 
@@ -55,7 +55,7 @@ K instalaci a konfiguraci řešení můžete použít následující informace.
 
  Hodnocení můžete nakonfigurovat prostřednictvím Operations console Operations Manageru, proveďte následující kroky v uvedeném pořadí:
 1. [Nastavení účtu spustit jako pro kontroly systému System Center Operations Manager Health](#operations-manager-run-as-accounts-for-log-analytics)  
-2. [Konfigurace pravidla kontroly systému System Center Operations Manager Health](#configure-the-assessment-rule)
+2. Konfigurace pravidla kontroly systému System Center Operations Manager Health
 
 ## <a name="system-center-operations-manager-assessment-data-collection-details"></a>Podrobnosti o systému System Center Operations Manager assessment dat kolekce
 

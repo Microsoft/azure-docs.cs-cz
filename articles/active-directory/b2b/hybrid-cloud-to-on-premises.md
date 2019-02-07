@@ -10,12 +10,12 @@ ms.author: mimart
 author: msmimart
 manager: daveba
 ms.reviewer: sasubram
-ms.openlocfilehash: ef70b9e58a669695f3bdec7ad8ea4bab93e7e4b9
-ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
+ms.openlocfilehash: 084784af256fdf31cf1661109c0535cb91ef1db5
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/26/2019
-ms.locfileid: "55082040"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55817407"
 ---
 # <a name="grant-b2b-users-in-azure-ad-access-to-your-on-premises-applications"></a>Uživatelům udělit B2B v Azure AD přístup k místním aplikacím
 
@@ -43,7 +43,7 @@ K uživatelům B2B přístup k místním aplikacím, které jsou zabezpečené p
 
    Pro uživatelský scénář B2B existují dvě metody, které jsou k dispozici, můžete použít k vytvoření objektů uživatele typu Host, které jsou požadovány pro autorizaci v místním adresáři:
 
-   - Microsoft Identity Manageru (MIM) a [agenta pro správu MIM pro Microsoft Graph](#create-b2b-guest-user-objects-through-mim-preview). 
+   - Microsoft Identity Manageru (MIM) a agenta pro správu MIM pro Microsoft Graph. 
    - [Skript prostředí PowerShell](#create-b2b-guest-user-objects-through-a-script-preview). Pomocí skriptu je více jednoduché řešení, která nevyžaduje MIM. 
 
 Následující diagram představuje podrobný přehled Azure AD Application Proxy a jeho generaci objekt uživatele B2B v místní pracovní adresář dohromady a udělit uživatelům B2B přístup k vašim místním IWA a KCD aplikacím. Číslované kroky jsou podrobně popsány v následující diagram.

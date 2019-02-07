@@ -11,18 +11,18 @@ ms.service: log-analytics
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 05/04/2017
+ms.date: 02/06/2019
 ms.author: magoedte
-ms.openlocfilehash: 8730070e1b235324a53ad81957339f4ef17db6dc
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: 61d0f74f59b4d6f59b3fbc87556b260751d33baa
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53193685"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55809625"
 ---
 # <a name="take-action-with-an-automation-runbook-from-a-log-analytics-log-search-result"></a>Provést akci s Runbook Automation z výsledků na vyhledávacím protokolu Log Analytics
 
-Ve výsledku hledání protokolů ve službě Azure Log Analytics, můžete teď vybrat **provést akci** spustit runbook služby Automation.  Sada runbook lze napravit problém nebo provést jiné akce, jak shromažďovat informace o odstraňování potíží, odeslat e-mailu nebo vytvořit žádost o službu. 
+Ve výsledku hledání protokolů ve službě Azure Log Analytics, můžete teď vybrat **provést akci** spustit runbook služby Automation. Sada runbook lze napravit problém nebo provést jiné akce, jak shromažďovat informace o odstraňování potíží, odeslat e-mailu nebo vytvořit žádost o službu. 
 
 ## <a name="components-and-features-used"></a>Použité komponenty a funkce
 * [Účet Azure Automation](../../automation/automation-quickstart-create-account.md)
@@ -30,11 +30,11 @@ Ve výsledku hledání protokolů ve službě Azure Log Analytics, můžete teď
 
 ## <a name="to-initiate-runbook-from-log-search"></a>K zahájení sady runbook z prohledávání protokolů
 
-Reagovat na události a zahájit z výsledků vyhledávání protokolu sady runbook, začněte vytvořením prohledávání protokolu a z výsledků můžete vyvolat sadu runbook na vyžádání.  Toho lze dosáhnout z protokolu vyhledávací funkce [webu Azure portal](../../azure-monitor/log-query/log-query-overview.md).  V tomto příkladu budeme provádět prohledávání protokolů z webu Azure portal pomocí základní ukázku této funkce.
+Reagovat na události a zahájit z výsledků vyhledávání protokolu sady runbook, začněte vytvořením prohledávání protokolu a z výsledků můžete vyvolat sadu runbook na vyžádání. Toho lze dosáhnout z klasického protokolu vyhledávací funkce [webu Azure portal](../../azure-monitor/log-query/log-query-overview.md). V tomto příkladu budeme provádět prohledávání protokolů z webu Azure portal pomocí základní ukázku této funkce.
 
 1. Na webu Azure Portal, klikněte na tlačítko **všechny služby** a vyberte **Log Analytics**.  
 2. Vyberte pracovní prostor Log Analytics.
-3. V pracovním prostoru vyberte **prohledávání protokolů**.  
+3. V pracovním prostoru vyberte **protokoly (classic)**.  
 4. Na stránce hledání v protokolu proveďte hledání v protokolu.  
 5. Z výsledků prohledávání protokolu, klikněte na tlačítko se třemi tečkami nalevo od polí a v místní nabídce vyberte **provádět akce na**.<br><br> ![Vyberte akci přijmout z výsledku hledání](./media/take-action/log-search-takeaction-menuoption.png) 
 6. Vyberte **spuštění sady runbook** a vyberte spuštění sady runbook.  Můžete vybrat jakoukoli sadu runbook v účtu Automation, který je propojený s pracovním prostorem Log Analytics.  Je třeba počítat s následujícím:

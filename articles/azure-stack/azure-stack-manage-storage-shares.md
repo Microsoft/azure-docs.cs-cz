@@ -15,12 +15,12 @@ ms.date: 01/14/2019
 ms.author: mabrigg
 ms.reviewer: xiaofmao
 ms.lastreviewed: 01/14/2019
-ms.openlocfilehash: 96145906d40e465d2427a8100b3ad9333eec3f29
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 7536913817e10fbc2b46eadd1cebdfb98079c759
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55249091"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55819514"
 ---
 # <a name="manage-storage-capacity-for-azure-stack"></a>Správa kapacity úložiště pro službu Azure Stack 
 
@@ -51,7 +51,7 @@ Vzhledem k tomu složky služby úložiště pro výhradní použití služby ú
 
 Sdílené složky ve svazcích uchovávání dat tenanta. Data tenanta zahrnuje objekty BLOB stránky, objekty BLOB bloku, doplňovací objekty BLOB, tabulky, fronty, databází a související metadata úložiště. Protože objekty úložiště (objekty BLOB, atd.) jsou jednotlivě obsaženy v rámci jediné sdílené složky, maximální velikost každého objektu nesmí překročit velikost sdílené složky. Maximální velikost nové objekty závisí na kapacitě, která zůstává ve sdílené složce, jako nevyužité místo při vytvoření nového objektu.
 
-Když sdílenou složku není dostatek volného místa a akce, které [uvolnit](#reclaim-capacity) místa nejsou úspěšné, nebo k dispozici, může operátor cloudu Azure Stack [migrovat](#migrate-a-container-between) kontejnery objektů blob z jedné sdílené složky do jiné.
+Když sdílenou složku není dostatek volného místa a akce, které [uvolnit](#reclaim-capacity) místa nejsou úspěšné, nebo k dispozici, operátor cloudu Azure Stack můžete migrovat kontejnery objektů blob z jedné sdílené složky do jiné.
 
 - Další informace o kontejnerům a objektům BLOB najdete v tématu [úložiště objektů Blob](azure-stack-key-features.md#blob-storage) v klíč funkcích a konceptech v Azure stacku.
 - Informace o tom, jak tenanta uživatelé pracují s úložištěm objektů blob ve službě Azure Stack najdete v tématu [služby Azure Stack úložiště](/azure/azure-stack/user/azure-stack-storage-overview#azure-stack-storage-services).

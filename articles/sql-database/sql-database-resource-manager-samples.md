@@ -12,12 +12,12 @@ ms.author: jovanpop
 ms.reviewer: ''
 manager: craigg
 ms.date: 02/04/2019
-ms.openlocfilehash: af802a459777e8c3b10f7d1a5d84f4b87e011f0a
-ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
+ms.openlocfilehash: 71bdfb28a251a815775dc77c55986a10ea550ef7
+ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55747929"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55770244"
 ---
 # <a name="azure-resource-manager-templates-for-azure-sql-database"></a>Šablony Azure Resource Manageru pro službu Azure SQL Database
 
@@ -40,7 +40,7 @@ Následující tabulka obsahuje odkazy na šablony Azure Resource Manageru pro s
 | [Webové aplikace Azure s SQL Database](https://github.com/Azure/azure-quickstart-templates/tree/master/201-web-app-sql-database) | Tato ukázka vytvoří bezplatná webová aplikace Azure a SQL Database na úrovni "Základní" služby.|
 | [Webové aplikace Azure a Redis Cache s využitím SQL Database](https://github.com/Azure/azure-quickstart-templates/tree/master/201-web-app-redis-cache-sql-database) | Tato šablona vytvoří webovou aplikaci, Redis Cache a SQL Database ve stejné skupině prostředků a vytvoří dva připojovací řetězce ve webové aplikaci pro SQL Database a Redis Cache.|
 | [Umožňuje importovat data z úložiště objektů blob pomocí ADF V2](https://github.com/Azure/azure-quickstart-templates/tree/master/101-data-factory-v2-blob-to-sql-copy) | Azure Data Factory V2, který kopíruje data z Azure Blob Storage do SQL Database vytvoří tato šablona Azure Resource Manageru.|
-| [Clusteru HDInsight se službou SQL Database](https://github.com/Azure/azure-quickstart-templates/tree/master/101-hdinsight-linux-with-sql-database) | Tato šablona umožňuje vytvořit HDInsight cluster, server služby SQL Database, SQL Database a dvě tabulky. Tato šablona používá pomocí Sqoop se systémem Hadoop v HDInsight článku https://docs.microsoft.com/azure/hdinsight/hadoop/hdinsight-use-sqoop |
+| [Clusteru HDInsight se službou SQL Database](https://github.com/Azure/azure-quickstart-templates/tree/master/101-hdinsight-linux-with-sql-database) | Tato šablona umožňuje vytvořit HDInsight cluster, server služby SQL Database, SQL Database a dvě tabulky. Tato šablona používá [pomocí Sqoop se systémem Hadoop v HDInsight článku](https://docs.microsoft.com/azure/hdinsight/hadoop/hdinsight-use-sqoop) |
 | [Azure Logic App, na kterém běží SQL uložená procedura podle plánu](https://github.com/Azure/azure-quickstart-templates/tree/master/101-logic-app-sql-proc) | Tato šablona umožňuje vytvořit aplikaci logiky, která uložené procedury SQL se spouštět podle plánu. Všechny argumenty pro proceduru můžou být přepnuté do části textu šablony.|
 
 ## <a name="managed-instance"></a>MI

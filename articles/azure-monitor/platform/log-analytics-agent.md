@@ -11,18 +11,18 @@ ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 11/13/2018
+ms.date: 02/05/2019
 ms.author: magoedte
-ms.openlocfilehash: f68e2d9c303b6df0d4a2a355dd9d41ac1616be9f
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: 5af403b2d75a552719088daa17259f0771b77a94
+ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53185966"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55765670"
 ---
 # <a name="collect-log-data-with-the-azure-log-analytics-agent"></a>Shromažďovat data protokolu s agentem Azure Log Analytics
 
-Agent Azure Log Analytics (OMS), dříve označované jako agenta Microsoft Monitoring Agent (MMA) nebo OMS Linux byla vyvinuta pro komplexní správu napříč místních počítačů, počítačů monitorovaných [nástroje System Center Operations Správce](https://docs.microsoft.com/system-center/scom/), virtuálních počítačů a v kterémkoliv cloudu. Agenti Windows a Linux připojení k pracovnímu prostoru Log Analytics ke shromažďování dat z různých zdrojů, jakož i všech jedinečných protokolů nebo metrik jako definovaný v řešení pro monitorování. 
+Agenta Azure Log Analytics, dříve označované jako agenta Microsoft Monitoring Agent (MMA) nebo OMS Linux byla vyvinuta pro komplexní správu napříč místním počítačům počítačů monitorovaných [System Center Operations Manager ](https://docs.microsoft.com/system-center/scom/), virtuálních počítačů a v kterémkoliv cloudu. Agenti Windows a Linux připojení k pracovnímu prostoru Log Analytics ke shromažďování dat z různých zdrojů, jakož i všech jedinečných protokolů nebo metrik jako definovaný v řešení pro monitorování. 
 
 Tento článek obsahuje podrobný přehled o agent, system a požadavky na síť a různých metodách nasazení.   
 
@@ -41,7 +41,7 @@ Agenta pro Linux a Windows není jenom pro připojení ke službě Log Analytics
 ## <a name="supported-windows-operating-systems"></a>Podporované operační systémy Windows
 Pro agenta Windows se oficiálně podporuje následující verze operačního systému Windows:
 
-* Windows Server 2008 Service Pack 1 (SP1) nebo novější
+* Windows Server 2008 R2 nebo novější
 * Windows 7 SP1 a novější.
 
 ## <a name="supported-linux-operating-systems"></a>Podporované operační systémy a Linux

@@ -13,12 +13,12 @@ ms.subservice: report-monitor
 ms.date: 11/13/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 9c7560dc6c3c5237a056a9468d3ab4f440e8e6dc
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: bc726f63ea5c8473601623024e18c1402cbebb51
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55190781"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55820313"
 ---
 # <a name="find-activity-reports-in-the-azure-portal"></a>Vyhledávání sestav aktivit na webu Azure Portal
 
@@ -49,8 +49,6 @@ Sestava protokolů auditu konsoliduje následující sestavy:
 
 Rozšířené filtrování sestavy auditu můžete použít pro přístup k určité kategorie dat auditu tak, že ho zadáte **kategorie aktivit** filtru. Například, chcete-li zobrazit všechny aktivity související se samoobslužné resetování hesla, vyberte **Samoobslužná správa hesel** kategorie. 
 
-    ![Category options on the Filter Audit Logs page](./media/howto-find-activity-reports/06.png "Category options on the Filter Audit Logs page")
-
 Kategorie aktivit patří:
 
 - Základní adresář
@@ -62,8 +60,6 @@ Kategorie aktivit patří:
 ## <a name="sign-ins-report"></a>Sestava přihlášení 
 
 **Přihlášení** zobrazení obsahuje všechny uživatele přihlášení, stejně jako **využití aplikace** sestavy. Také můžete zobrazit informace o použití aplikace v **spravovat** část **podnikové aplikace** Přehled.
-
-    ![Enterprise applications](./media/howto-find-activity-reports/484.png "Enterprise applications")
 
 Pro přístup k sestavě přihlášení:
 

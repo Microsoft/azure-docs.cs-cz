@@ -16,12 +16,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 03/29/2018
 ms.author: mikeray
-ms.openlocfilehash: 11e255c8cc32f17efa9fc9e8f39e869fba032d75
-ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
+ms.openlocfilehash: ff2031bd4c4fdc3d3ed8447a08ef29f0f89ea1d8
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54359829"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55818018"
 ---
 # <a name="complete-the-prerequisites-for-creating-always-on-availability-groups-on-azure-virtual-machines"></a>Zajistěte splnění požadavků pro vytváření skupin dostupnosti AlwaysOn na virtuálních počítačích Azure
 
@@ -85,7 +85,7 @@ Vytvoření virtuální sítě:
    | --- | --- |
    | **Název** |autoHAVNET |
    | **Adresní prostor** |10.33.0.0/24 |
-   | **Název podsítě** |Správa |
+   | **Název podsítě** |Správce |
    | **Rozsah adres podsítě** |10.33.0.0/29 |
    | **Předplatné** |Určete předplatné, kterou chcete použít. **Předplatné** je prázdné, pokud máte pouze jedno předplatné. |
    | **Skupina prostředků** |Zvolte **použít existující** a vyberte název skupiny prostředků. |
@@ -413,7 +413,7 @@ Po restartování každý virtuální počítač jako člena domény, přidejte 
 
 ### <a name="setServiceAccount"></a>Nastavení účtů služby SQL Server
 
-Na každém virtuálním počítači SQL serveru nastavte účet služby SQL Server. Používání účtů, které jste vytvořili při vám [nakonfigurované účty domény](#DomainAccounts).
+Na každém virtuálním počítači SQL serveru nastavte účet služby SQL Server. Používání účtů, které jste vytvořili při konfiguraci účtů domény.
 
 1. Otevřít **Správce konfigurace systému SQL Server**.
 2. Klikněte pravým tlačítkem na službu systému SQL Server a potom klikněte na tlačítko **vlastnosti**.

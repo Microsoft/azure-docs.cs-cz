@@ -12,12 +12,12 @@ manager: cgronlun
 ms.reviewer: jmartens
 ms.date: 12/04/2018
 ms.custom: seodec18
-ms.openlocfilehash: f02d511c5afa6d515f29b9fc557be3b49223c501
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 4291f6083cfe07d689ef9377df57c3e9a41772fc
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55243279"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55812204"
 ---
 # <a name="transform-data-with-the-azure-machine-learning-data-prep-sdk"></a>Transformace dat pomocí sady SDK pro Azure Machine Learning Data Prep
 
@@ -25,7 +25,7 @@ V tomto článku se dozvíte, načítání dat pomocí různých metod [sady SDK
 
 Aktuálně jsou dostupné funkce pro následující úlohy:
 
-- [Přidání sloupce pomocí výrazu](#column)
+- Přidání sloupce pomocí výrazu
 - [Dává chybějící hodnoty](#impute-missing-values)
 - [Odvození sloupce podle příkladu](#derive-column-by-example)
 - [Filtrování](#filtering)

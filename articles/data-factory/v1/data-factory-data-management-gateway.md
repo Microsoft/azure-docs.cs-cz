@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: abnarain
 robots: noindex
-ms.openlocfilehash: 728adae62677eb2edb1e203df9b0d9f11f6acecf
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 101385b23d8ea683dc5762d491e6a4bef91bbed4
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54022304"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55813755"
 ---
 # <a name="data-management-gateway"></a>Brána správy dat
 > [!NOTE]
@@ -246,7 +246,7 @@ Pokud používáte bránu firewall jiného dodavatele, můžete ručně otevřet
 
     msiexec /q /i DataManagementGateway.msi NOFIREWALL=1
 
-Pokud zvolíte ne pro otevření portu 8050 na počítači brány, použijte mechanismy pro zaslání než pomocí **nastavení přihlašovacích údajů** nakonfigurovat přihlašovací údaje úložiště dat aplikace. Například můžete použít [New-AzureRmDataFactoryEncryptValue](https://docs.microsoft.com/powershell/module/azurerm.datafactories/new-azurermdatafactoryencryptvalue) rutiny Powershellu. Zobrazit [nastavení přihlašovacích údajů a zabezpečení](#set-credentials-and-securityy) věnované jak přihlašovací údaje úložiště dat je možné nastavit.
+Pokud zvolíte ne pro otevření portu 8050 na počítači brány, použijte mechanismy pro zaslání než pomocí **nastavení přihlašovacích údajů** nakonfigurovat přihlašovací údaje úložiště dat aplikace. Například můžete použít [New-AzureRmDataFactoryEncryptValue](https://docs.microsoft.com/powershell/module/azurerm.datafactories/new-azurermdatafactoryencryptvalue) rutiny Powershellu. Najdete v části Nastavení přihlašovacích údajů a zabezpečení na tom, jak data uložených přihlašovacích údajů může být nastavena.
 
 ## <a name="update"></a>Aktualizace
 Ve výchozím nastavení se Brána pro správu dat automaticky aktualizuje při je dostupná novější verze brány. Brána není aktualizován, dokud všechny naplánované úlohy se provádějí. Žádné další úlohy jsou zpracovány brány, dokud se nedokončí operaci aktualizace. Pokud se aktualizace nezdaří, brána se vrátí zpět na předchozí verzi aplikace.
@@ -306,7 +306,7 @@ Můžete zakázat nebo povolit funkci Automatické aktualizace provedením násl
 Po instalaci brány, můžete spustit Správce konfigurace brány správy dat v jednom z následujících způsobů:
 
 1. V **hledání** okno, zadejte **brána správy dat** pro přístup k tohoto nástroje.
-2. Spuštění spustitelného souboru **ConfigManager.exe** ve složce: **C:\Program Files\Microsoft Data správy Gateway\2.0\Shared**
+2. Spuštění spustitelného souboru **ConfigManager.exe** ve složce: **C:\Program Files\Microsoft Data Management Gateway\2.0\Shared**
 
 ### <a name="home-page"></a>Domovská stránka
 Na domovské stránce umožňuje provádět následující akce:

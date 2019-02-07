@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 09/16/2018
 ms.author: mbullwin
-ms.openlocfilehash: d0e549f0da5eb30dd11992518789d76c0892bca3
-ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
+ms.openlocfilehash: d67085d2e90e318a8f134103f0798554b8967d6d
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55747471"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55814414"
 ---
 # <a name="application-insights-api-for-custom-events-and-metrics"></a>Rozhraní API pro Application Insights pro vlastní události a metriky
 
@@ -774,7 +774,7 @@ Můžete připojit vlastnosti a hodnoty pro události (a také na metriky, strá
 
 *Vlastnosti* jsou řetězcové hodnoty, které můžete použít k filtrování telemetrických dat v sestavách využití. Například pokud vaše aplikace obsahuje několik her, můžete připojit název hry pro každou událost, kde můžete zobrazit her, které jsou další oblíbené.
 
-Platí omezení na délku řetězce 8192. (Pokud chcete odeslat velké množství dat, použijte parametr zprávy z [TrackTrace](#track-trace).)
+Platí omezení na délku řetězce 8192. (Pokud chcete odesílat velké množství dat, použijte parametr zpráva TrackTrace.)
 
 *Metriky* jsou číselné hodnoty, které lze zobrazit graficky. Můžete třeba chtít zjistit, jestli postupný nárůst skóre, které se svými uživateli dosáhnout. Grafy mohou být segmentovány podle vlastnosti, které jsou odesílány události, tak, aby vám samostatné nebo Skládané grafy pro různé hry.
 
@@ -992,7 +992,7 @@ gameTelemetry.TrackEvent({name: "WinGame"});
 
 Jednotlivé telemetrické volání můžete přepsat výchozí hodnoty v jejich vlastnost slovníky.
 
-*Pro jazyk JavaScript webových klientů*, [pomocí jazyka JavaScript telemetrie inicializátory](#js-initializer).
+*Pro jazyk JavaScript webových klientů*, použijte inicializátory telemetrických dat jazyka JavaScript.
 
 *Přidání vlastnosti do všech telemetrie*, včetně dat z modulů standardního shromažďování [implementovat `ITelemetryInitializer` ](../../azure-monitor/app/api-filtering-sampling.md#add-properties).
 

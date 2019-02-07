@@ -9,14 +9,14 @@ ms.topic: conceptual
 ms.tgt_pltfrm: arduino
 ms.date: 04/04/2018
 ms.author: liydu
-ms.openlocfilehash: 6bc1255c5bbb9cf74c97b88600f34e7fcd90ae4f
-ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
+ms.openlocfilehash: e955d21132dda6caa137ad3b5de9d00ccf7ed1b4
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/30/2018
-ms.locfileid: "39343143"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55811048"
 ---
-# <a name="mxchip-iot-devkit"></a>MXChip IoT DevKit
+# <a name="mxchip-iot-devkit"></a>Sada MXChip IoT DevKit
 
 V tomto příkladu můžete použít ke sledování stavů informace a senzor MXChip IoT DevKit Wi-Fi a řídit barev uživatelské LED s využitím dvojčat zařízení Azure IoT Hub.
 
@@ -55,13 +55,13 @@ V tomto příkladu můžete použít ke sledování stavů informace a senzor MX
 
 6. Podobně jako *aplikace function app: názvem aplikace function app: xxx*, se zobrazí. Poznamenejte si název aplikace funkcí; použije se v pozdějším kroku.
 
-7. Počkejte pro nasazení šablony Azure Resource Manageru k dokončení, což je uvedeno, kdy zprávy *nasazení šablony Resource Manageru: Hotovo* se zobrazí.
+7. Čekat pro nasazení šablony Azure Resource Manageru k dokončení, což je uvedeno, kdy se zpráva *nasazení šablony Resource Manageru: Provádí* se zobrazí.
 
 ## <a name="deploy-function-app"></a>Nasadit aplikaci Function App
 
 1. Klikněte na tlačítko **úlohy** rozevírací nabídky v aplikaci Visual Studio Code a vyberte **spustit úlohu...**   -  **nasazení cloudu**.
 
-2. Počkejte na dokončení; procesu nahrávání kódu aplikace – funkce zpráva *nasadí aplikaci function app: Hotovo* se zobrazí.
+2. Počkejte na dokončení; procesu nahrávání kódu aplikace – funkce zpráva *nasadí aplikaci function app: Provádí* se zobrazí.
 
 ## <a name="configure-iot-hub-device-connection-string-in-devkit"></a>Nakonfigurovat připojovací řetězec zařízení služby IoT Hub v DevKit
 
@@ -83,7 +83,7 @@ S MXChip IoT DevKit připojíte k počítači:
 
 ## <a name="monitor-devkit-state-in-browser"></a>Stav DevKit sledování v prohlížeči
 
-1. Ve webovém prohlížeči otevřete `DevKitState\web\index.html` souboru –, který jste vytvořili během [budete potřebovat](#whatyouneed) kroku.
+1. Ve webovém prohlížeči otevřete `DevKitState\web\index.html` souboru –, který byl vytvořen při co budete potřebovat kroku.
 
 2. Zobrazí se na následující stránce webu:![Zadejte název aplikace funkcí.](media/iot-hub-arduino-iot-devkit-az3166-devkit-state/devkit-state-function-app-name.png)
 
@@ -106,7 +106,7 @@ S MXChip IoT DevKit připojíte k počítači:
 ![Příklad postupu testu](media/iot-hub-arduino-iot-devkit-az3166-devkit-state/devkit-state.gif)
 
 > [!NOTE]
-> Zobrazí se nezpracovaná data objektu dvojče zařízení na webu Azure portal: služby IoT Hub -\> zařízení IoT –\> *\<zařízení\>*  - \> dvojče zařízení.
+> Zobrazí se nezpracovaná data objektu dvojče zařízení na webu Azure portal: IoT Hub -\> zařízení IoT –\> *\<zařízení\>*  - \> dvojče zařízení.
 
 ## <a name="next-steps"></a>Další postup
 

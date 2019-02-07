@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/12/2018
 ms.author: jeedes
-ms.openlocfilehash: a68ffb867a738e11c9895416bbdf2009b268c0c6
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 69ae32f63005d3d5ea83dce5aa349bb6c0c92e0c
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55155807"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55818426"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-tableau-server"></a>Kurz: Integrace Azure Active Directory s Tableau Server
 
@@ -215,7 +215,7 @@ Cílem této části je vytvoření zkušebního uživatele na webu Azure Portal
 
 Cílem této části je vytvořte uživatele Britta Simon v Tableau Server. Budete muset zřídit všechny uživatele v Tableau server. 
 
-Tímto uživatelským jménem uživatele by měl odpovídat hodnotě, které jste nakonfigurovali v vlastní atribut Azure AD **uživatelské jméno**. Pomocí správné mapování by mělo fungovat integrace [konfigurace služby Azure AD Single Sign-On](#configuring-azure-ad-single-sign-on).
+Tímto uživatelským jménem uživatele by měl odpovídat hodnotě, které jste nakonfigurovali v vlastní atribut Azure AD **uživatelské jméno**. Integrace správné mapování by měl pracovat konfigurace služby Azure AD Single Sign-On.
 
 >[!NOTE]
 >Pokud je potřeba ručně vytvořit uživatele, budete muset kontaktovat správce Tableau serveru ve vaší organizaci.

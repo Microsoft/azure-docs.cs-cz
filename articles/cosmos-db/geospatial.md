@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 11/01/2017
 ms.author: sngun
-ms.openlocfilehash: 5f096d016b2fa82e3b340a4a6b6c7e1fd6420216
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: 9c6ea982d9a605696dad0c943aa6dd2ae155d6bd
+ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54037187"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55770733"
 ---
 # <a name="use-geospatial-and-geojson-location-data-with-azure-cosmos-db-sql-api-account"></a>Použití geoprostorových a GeoJSON umístění dat pomocí účtu rozhraní SQL API služby Azure Cosmos DB
 
@@ -150,32 +150,13 @@ Teď, když jsme měli podívat, jak vložit Geoprostorová data, Pojďme se pod
 ### <a name="spatial-sql-built-in-functions"></a>Prostorové integrované funkce SQL
 Azure Cosmos DB podporuje následující předdefinované funkce Otevřít geoprostorové W3c (OGC) pro geoprostorové dotazování. Další informace o kompletní sadu integrovaných funkcí v jazyce SQL najdete v tématu [dotazů Azure Cosmos DB](how-to-sql-query.md).
 
-<table>
-<tr>
-  <td><strong>Použití</strong></td>
-  <td><strong>Popis</strong></td>
-</tr>
-<tr>
-  <td>ST_DISTANCE (spatial_expr, spatial_expr)</td>
-  <td>Vrací vzdálenost mezi dvěma GeoJSON bodu mnohoúhelníku či LineString výrazy.</td>
-</tr>
-<tr>
-  <td>ST_WITHIN (spatial_expr, spatial_expr)</td>
-  <td>Vrací výraz Boolean určující, zda je první objekt GeoJSON (bodu, mnohoúhelník nebo LineString) v rámci druhého objektu GeoJSON (bodu, mnohoúhelník nebo LineString).</td>
-</tr>
-<tr>
-  <td>ST_INTERSECTS (spatial_expr, spatial_expr)</td>
-  <td>Vrátí hodnotu určující, zda dvě zadané GeoJSON objekty (bodu, mnohoúhelník nebo LineString) intersect logický výraz.</td>
-</tr>
-<tr>
-  <td>ST_ISVALID</td>
-  <td>Vrátí logickou hodnotu označující, zda je zadaný výraz GeoJSON bodu mnohoúhelníku či LineString platný.</td>
-</tr>
-<tr>
-  <td>ST_ISVALIDDETAILED</td>
-  <td>Vrátí hodnotu JSON obsahující logická hodnota, pokud zadaný výraz GeoJSON bodu mnohoúhelníku či LineString je platný a pokud není platný, kromě důvod jako hodnotu řetězce.</td>
-</tr>
-</table>
+|**Použití**|**Popis**|
+|---|---|
+| ST_DISTANCE (spatial_expr, spatial_expr) | Vrací vzdálenost mezi dvěma GeoJSON bodu mnohoúhelníku či LineString výrazy.|
+|ST_WITHIN (spatial_expr, spatial_expr) | Vrací výraz Boolean určující, zda je první objekt GeoJSON (bodu, mnohoúhelník nebo LineString) v rámci druhého objektu GeoJSON (bodu, mnohoúhelník nebo LineString).|
+|ST_INTERSECTS (spatial_expr, spatial_expr)| Vrátí hodnotu určující, zda dvě zadané GeoJSON objekty (bodu, mnohoúhelník nebo LineString) intersect logický výraz.|
+|ST_ISVALID| Vrátí logickou hodnotu označující, zda je zadaný výraz GeoJSON bodu mnohoúhelníku či LineString platný.|
+| ST_ISVALIDDETAILED| Vrátí hodnotu JSON obsahující logická hodnota, pokud zadaný výraz GeoJSON bodu mnohoúhelníku či LineString je platný a pokud není platný, kromě důvod jako hodnotu řetězce.|
 
 Prostorové funkce lze použít k provádění dotazů blízkosti prostorová data. Například tady je dotaz, který vrátí všechny rodiny dokumenty, které jsou v rámci 30 km pomocí integrované funkce ST_DISTANCE zadaného umístění. 
 
@@ -238,7 +219,7 @@ Azure Cosmos DB podporuje také provádí inverzní dotazy, to znamená, můžet
 
 ST_ISVALID a ST_ISVALIDDETAILED umožňuje zkontrolujte, jestli je platný prostorových objektů. Například následující dotaz ověří platnost bod mimo rozsah hodnoty zeměpisné šířky (-132.8). ST_ISVALID vrátí jenom logickou hodnotu a ST_ISVALIDDETAILED vrátí logickou hodnotu a řetězec obsahující důvod, proč bude považován za neplatný.
 
-** Dotazování **
+**Dotaz**
 
     SELECT ST_ISVALID({ "type": "Point", "coordinates": [31.9, -132.8] })
 

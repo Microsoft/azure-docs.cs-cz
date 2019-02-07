@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/06/2018
 ms.author: hrasheed
-ms.openlocfilehash: 1b145b1162dcba5653c962f0af1969c1aa017f57
-ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
+ms.openlocfilehash: d40d3b32f3af8e50079de0a5988584427ea6777c
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54054635"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55819803"
 ---
 # <a name="create-apache-hadoop-clusters-in-hdinsight-by-using-resource-manager-templates"></a>Vytvořte clustery systému Apache Hadoop v HDInsight pomocí šablon Resource Manageru
 [!INCLUDE [selector](../../includes/hdinsight-create-linux-cluster-selector.md)]
@@ -38,11 +38,12 @@ V šabloně definujte prostředky, které jsou potřeba pro aplikaci. Zadejte ta
 
 Můžete najít ukázkové šablony HDInsight v [šablony pro rychlý start Azure](https://azure.microsoft.com/resources/templates/?term=hdinsight). Používat různé platformy [Visual Studio Code](https://code.visualstudio.com/#alt-downloads) s [rozšíření Resource Manageru](https://marketplace.visualstudio.com/items?itemName=msazurermtools.azurerm-vscode-tools) nebo textovém editoru a uložte šablonu do souboru na pracovní stanici. 
 
-Další informace o šablonách Resource Manageru najdete v následujících článcích:
+Další informace o šablonách Resource Manageru najdete v následujících článcích a příklady:
 
 * [Tvorba šablon Azure Resource Manageru](../azure-resource-manager/resource-group-authoring-templates.md)
 * [Nasazení aplikace pomocí šablon Azure Resource Manageru](../azure-resource-manager/resource-group-template-deploy.md)
-* [Microsoft.HDInsight/clusters](/azure/templates/microsoft.hdinsight/clusters) referenčními informacemi k šablonám
+* [Microsoft.HDInsight/clusters](/azure/templates/microsoft.hdinsight/allversions) referenčními informacemi k šablonám
+* [Šablony Azure pro rychlý start](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Hdinsight&pageNumber=1&sort=Popular)
 
 ## <a name="generate-templates"></a>Generování šablon
 
@@ -51,7 +52,6 @@ Resource Manager vám umožňuje exportovat šablonu Resource Manageru z existuj
 - Azure portal: Zobrazit [Export šablony Azure Resource Manageru z existujících prostředků](../azure-resource-manager/resource-manager-export-template.md).
 - Azure PowerShell: Zobrazit [šablon exportovat Azure Resource Manageru pomocí Powershellu](../azure-resource-manager/resource-manager-export-template-powershell.md).
 - Klasické rozhraní příkazového řádku Azure: Zobrazit [šablon exportovat Azure Resource Manageru pomocí rozhraní příkazového řádku Azure Classic](../azure-resource-manager/resource-manager-export-template-cli.md).
-
 
 ## <a name="deploy-using-the-portal"></a>Nasazení pomocí portálu
 

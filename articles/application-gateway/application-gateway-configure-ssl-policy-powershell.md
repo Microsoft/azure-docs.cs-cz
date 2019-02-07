@@ -8,16 +8,16 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 12/3/2018
 ms.author: victorh
-ms.openlocfilehash: a93a3db3010fb9e9d2270414cadeae86b70bb8d0
-ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
+ms.openlocfilehash: 5f5b389c66821282668f0b4fce9e0b67af028e9a
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54157458"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55816947"
 ---
 # <a name="configure-ssl-policy-versions-and-cipher-suites-on-application-gateway"></a>Konfigurace protokolu SSL verze zásad a šifer sady ve službě Application Gateway
 
-Zjistěte, jak nakonfigurovat verze zásad SSL a sady ve službě Application Gateway šifer. Můžete vybrat [seznam předdefinovaných zásad](#predefined-ssl-policies) , které obsahují různé konfigurace protokolu SSL verze zásad a povolené šifrovací sady. Máte také možnost definovat [vlastní zásady protokolu SSL](#configure-a-custom-ssl-policy) na základě vašich požadavků.
+Zjistěte, jak nakonfigurovat verze zásad SSL a sady ve službě Application Gateway šifer. Můžete vybrat ze seznamu předdefinovaných zásad, které obsahují různé konfigurace protokolu SSL verze zásad a povolené šifrovací sady. Máte také možnost definovat [vlastní zásady protokolu SSL](#configure-a-custom-ssl-policy) na základě vašich požadavků.
 
 ## <a name="get-available-ssl-options"></a>Získání dostupných možností protokolu SSL
 

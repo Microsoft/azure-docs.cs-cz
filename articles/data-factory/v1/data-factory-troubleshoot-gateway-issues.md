@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 10/01/2017
 ms.author: abnarain
 robots: noindex
-ms.openlocfilehash: b39fb3ed6dbcf8fde2dadf0de59d154285eb8587
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: dcbf011d6e5f035a1934b69f94cf95b2318491f0
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54022534"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55813836"
 ---
 # <a name="troubleshoot-issues-with-using-data-management-gateway"></a>Řešení potíží při použití Brány pro správu dat
 Tento článek obsahuje informace o odstraňování potíží s pomocí brány správy dat.
@@ -138,7 +138,7 @@ Zobrazí se pravděpodobně následující chybová zpráva.
 K této chybě dochází, když vaše brána je v prostředí, které vyžaduje proxy server HTTP pro přístup k internetovým prostředkům nebo váš proxy server ověřování heslo se změnilo, ale není příslušným způsobem aktualizuje v bráně.
 
 #### <a name="resolution"></a>Řešení
-Postupujte podle pokynů [důležité informace o Proxy serveru](#proxy-server-considerations) části tohoto článku a konfigurace nastavení proxy serveru pomocí Data Management Gateway Configuration Manager.
+Postupujte podle pokynů v části aspekty Proxy serveru tohoto článku a konfigurace nastavení proxy serveru pomocí Data Management Gateway Configuration Manager.
 
 ## <a name="gateway-is-online-with-limited-functionality"></a>Brána je online s omezenou funkčností
 ### <a name="1-problem"></a>1. Problém
@@ -169,8 +169,8 @@ Brána se nemůže připojit ke cloudové službě prostřednictvím služby Ser
 Následujícím postupem získejte bránu zpět do režimu online:
 
 1. Odchozí pravidla na počítači brány a podnikové brány firewall povolit IP adresy. IP adresy můžete najít v protokolu událostí Windows (ID == 401): Byl proveden pokus o přístup k soketu tak její přístupová oprávnění XX připojení zakázáno. XX. XX. XX:9350.
-* Konfigurace nastavení proxy serveru na bráně. Zobrazit [důležité informace o Proxy serveru](#proxy-server-considerations) podrobné informace.
-* Povolte Odchozí porty firewallu Windows na počítači brány a podnikové brány firewall 9350-9354 a 5671. Zobrazit [porty a brány firewall](#ports-and-firewall) podrobné informace. Tento krok je volitelný, ale doporučujeme ho pro posouzení výkonu.
+* Konfigurace nastavení proxy serveru na bráně. Najdete v části aspekty Proxy serveru podrobnosti.
+* Povolte Odchozí porty firewallu Windows na počítači brány a podnikové brány firewall 9350-9354 a 5671. Najdete v části porty a brány firewall pro podrobnosti. Tento krok je volitelný, ale doporučujeme ho pro posouzení výkonu.
 
 ### <a name="3-problem"></a>3. Problém
 Zobrazí následující chyba.

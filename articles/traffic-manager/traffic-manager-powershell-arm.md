@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/16/2017
 ms.author: kumud
-ms.openlocfilehash: fe647f96d8b992d8d5c1682d588bbdbba0ddf43b
-ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
+ms.openlocfilehash: 921788d1cd3ff24140bdff0c9b6a181e4ab7f0a8
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54055128"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55816202"
 ---
 # <a name="using-powershell-to-manage-traffic-manager"></a>Použití Powershellu ke správě Traffic Manageru
 
@@ -59,14 +59,14 @@ Následující tabulka popisuje parametry:
 | --- | --- |
 | Název |Název prostředku pro prostředek profilu Traffic Manageru. Profily ve stejné skupině prostředků musí mít jedinečné názvy. Tento název se liší od názvu DNS pro dotazy DNS. |
 | ResourceGroupName |Název skupiny prostředků obsahující profil prostředek. |
-| Trafficroutingmethod funkce |Určuje metodu směrování provozu umožňuje určit, který koncový bod je vrácený v odpovědi dotazu DNS. Možné hodnoty jsou "Výkonu", "Vážená" nebo "Priority". |
+| TrafficRoutingMethod |Určuje metodu směrování provozu umožňuje určit, který koncový bod je vrácený v odpovědi dotazu DNS. Možné hodnoty jsou "Výkonu", "Vážená" nebo "Priority". |
 | RelativeDnsName |Určuje název hostitele část názvu DNS, který poskytuje tento profil služby Traffic Manager. Tato hodnota je v kombinaci s názvem domény DNS, použitá pro zformování plně kvalifikovaný název domény (FQDN) profilu Azure Traffic Manager. Například nastavení hodnoty "contoso" stane "contoso.trafficmanager.net." |
 | TTL |DNS Time-to-Live (TTL), určuje v sekundách. Tato hodnota TTL informuje překladače místního DNS a klienty DNS, jak dlouho se má mezipaměti odpovědí DNS pro tento profil služby Traffic Manager. |
 | MonitorProtocol |Určuje protokol, který slouží k monitorování stavu koncového bodu. Možné hodnoty jsou 'HTTP' a 'HTTPS'. |
 | MonitorPort |Určuje port TCP používá k monitorování koncových bodů. |
 | MonitorPath |Určuje cestu relativní vzhledem k názvu domény koncový bod pro sběr dat pro koncový bod stavu. |
 
-Rutina vytvoří profil služby Traffic Manager v Azure a vrátí odpovídající objekt profilu do prostředí PowerShell. V tomto okamžiku profil neobsahuje žádné koncové body. Další informace o přidání koncových bodů do profilu Traffic Manageru najdete v tématu [přidat koncové body Traffic Manageru](#adding-traffic-manager-endpoints).
+Rutina vytvoří profil služby Traffic Manager v Azure a vrátí odpovídající objekt profilu do prostředí PowerShell. V tomto okamžiku profil neobsahuje žádné koncové body. Další informace o přidání koncových bodů do profilu služby Traffic Manager naleznete v tématu Přidání koncových bodů Traffic Manageru.
 
 ## <a name="get-a-traffic-manager-profile"></a>Získat profil Traffic Manageru
 

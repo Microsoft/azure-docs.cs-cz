@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 11/08/2018
 ms.author: barbkess
-ms.openlocfilehash: d5ff6b05df74cd73fb374bbd7cf27b8fc7d69493
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.openlocfilehash: ef752d2f9d57ee8674d91fd14b56b804ccf50d22
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55697967"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55814180"
 ---
 # <a name="choosing-the-application-type-when-adding-an-application-in-azure-active-directory"></a>Volba typu aplikace, při přidávání aplikace v Azure Active Directory
 Další informace o čtyři typy aplikací, které můžete přidat do služby Azure Active Directory (Azure AD). Při přidávání aplikace v Azure Active Directory, zobrazí se výzva k výběru jednoho typu čtyři aplikace. 
@@ -95,7 +95,7 @@ Toto jsou podporované **jednotného přihlašování** režimy pro aplikace Azu
 
 ## <a name="single-sign-on-modes-for-custom-developed-applications"></a>Režimy jednotné přihlašování pro vlastní aplikace
 
-Aplikace mají vlastní vznikaly [vlastní vyvinuté aplikaci](#_Custom-Developed_Applications) prostředí také podporují další jednotné přihlašování režimy uvedli, mezi které patří:
+V aplikacích, které máte vlastní vznikaly po vlastní vyvinuté aplikaci docházet také podporu další jednotné přihlašování režimy uvedli, mezi které patří:
 
 -   [OAuth 2.0](https://docs.microsoft.com/azure/active-directory/develop/active-directory-protocols-oauth-code) přihlašování založené na
 

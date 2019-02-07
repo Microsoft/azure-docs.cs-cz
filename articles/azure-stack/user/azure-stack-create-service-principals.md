@@ -14,12 +14,12 @@ ms.date: 12/12/2018
 ms.author: mabrigg
 ms.reviewer: thoroet
 ms.lastreviewed: 12/12/2018
-ms.openlocfilehash: 6ac5a44f941f8ebcecc3a1d7e6b5e9dccf5704de
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: da75d829ccb74f7be675501b601ad3e6375bfb70
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55242200"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55813156"
 ---
 # <a name="give-applications-access-to-azure-stack-resources-by-creating-service-principals"></a>Přístup aplikací k prostředkům Azure Stack tak, že vytvoříte instanční objekty
 
@@ -73,7 +73,7 @@ Při přihlašování prostřednictvím kódu programu, použijte ID pro vaše a
 
 1. Z **registrace aplikací** ve službě Active Directory, vyberte svou aplikaci.
 
-2. Zkopírujte **ID aplikace** a uložte ho v kódu aplikace. Aplikací [ukázkové aplikace](#sample-applications) použít **id klienta** k odkazování na **ID aplikace**.
+2. Zkopírujte **ID aplikace** a uložte ho v kódu aplikace. Aplikace v ukázkových aplikací používají **id klienta** k odkazování na **ID aplikace**.
 
      ![ID aplikace pro aplikaci](./media/azure-stack-create-service-principal/image12.png)
 3. Pokud chcete generovat ověřovací klíč, vyberte **Klíče**.

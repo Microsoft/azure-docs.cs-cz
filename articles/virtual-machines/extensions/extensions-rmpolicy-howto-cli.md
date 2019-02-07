@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 03/23/2018
 ms.author: roiyz;cynthn
-ms.openlocfilehash: 5054fdc08c7a0a1b3833ed95784f6018ac5c697e
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
+ms.openlocfilehash: 536239a9ff98c76badfc042a2d59d19b8fb6f04a
+ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55659248"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55770580"
 ---
 # <a name="use-azure-policy-to-restrict-extensions-installation-on-linux-vms"></a>K omezení instalace rozšíření na virtuální počítače s Linuxem pomocí služby Azure Policy
 
@@ -98,7 +98,7 @@ Jakmile budete hotovi, klikněte **Esc** klíče a pak zadejte **: QW** uložte 
 
 ## <a name="create-the-policy"></a>Vytvoření zásad
 
-Definice zásad není objekt použitý k uložení konfigurace, který chcete použít. Definice zásady používá k definování zásady souborů pravidel a parametry. Vytvořit definici zásady pomocí [vytvoření definice zásady az](/cli/azure/role/assignment?view=azure-cli-latest#az_role_assignment_create).
+Definice zásad není objekt použitý k uložení konfigurace, který chcete použít. Definice zásady používá k definování zásady souborů pravidel a parametry. Vytvořit definici zásady pomocí [vytvoření definice zásady az](/cli/azure/role/assignment?view=azure-cli-latest).
 
 V tomto příkladu jsou pravidla a parametry soubory vytvořeny a uloženy jako soubory .json ve službě cloud shell.
 
@@ -117,7 +117,7 @@ az policy definition create \
 
 Tento příklad přiřadí zásady skupiny prostředků pomocí [vytvoření přiřazení zásady az](/cli/azure/policy/assignment). Jakýkoli virtuální počítač vytvořený v **myResourceGroup** skupinu prostředků, nebude možné nainstalovat přístup k virtuálnímu počítači Linux nebo rozšíření vlastních skriptů pro Linux. Skupina prostředků musí existovat, abyste mohli přiřadit zásady.
 
-Použít [seznam účtů az](/cli/azure/account?view=azure-cli-latest#az_account_list) získat ID vašeho předplatného oznamujícím v příkladu.
+Použít [seznam účtů az](/cli/azure/account?view=azure-cli-latest) získat ID vašeho předplatného oznamujícím v příkladu.
 
 
 ```azurecli-interactive

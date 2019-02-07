@@ -10,12 +10,12 @@ ms.subservice: bing-speech
 ms.topic: article
 ms.date: 09/18/2018
 ms.author: zhouwang
-ms.openlocfilehash: 4f96302f1035500a10cebaa24efd4b8db329fdff
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: b5e6853653bab96cd11196ba03fbeadbdc6b337f
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55219766"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55816204"
 ---
 # <a name="basic-concepts"></a>Základní koncepty
 
@@ -92,7 +92,7 @@ Službu rozpoznávání řeči Microsoft poskytuje dva způsoby, jak vývojáři
 Existují tři režimy rozpoznávání: `interactive`, `conversation`, a `dictation`. Režim rozpoznávání upraví na základě toho, jak se uživatelé mohou mluvit rozpoznávání řeči. Zvolte odpovídající rozpoznávání režim pro vaši aplikaci.
 
 > [!NOTE]
-> Rozpoznávání režimy může mít různé chování [protokolu REST](#rest-speech-recognition-api) než [protokol WebSocket](#webSocket-speech-recognition-api). Například rozhraní REST API nepodporuje průběžné rozpoznávání i v režimu takovou konverzaci či diktování.
+> Rozpoznávání režimy může mít různé chování v protokolu REST, než v protokolu WebSocket. Například rozhraní REST API nepodporuje průběžné rozpoznávání i v režimu takovou konverzaci či diktování.
 > [!NOTE]
 > Tyto režimy platí při přímo použít protokol REST nebo pomocí protokolu WebSocket. [Klientské knihovny](GetStarted/GetStartedClientLibraries.md) použít jiné parametry pro určení režimu rozpoznávání. Další informace najdete v klientské knihovně podle vašeho výběru.
 

@@ -16,12 +16,12 @@ ms.date: 09/24/2018
 ms.author: celested
 ms.reviewer: saeeda, jmprieur, andret
 ms.custom: aaddev
-ms.openlocfilehash: b507e6630e5b0b0e73edad1815825e70ed90ec4d
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.openlocfilehash: 58cff9be154e693a378f55941e8662563c366b27
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55097295"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55820211"
 ---
 # <a name="web-api"></a>Web API
 
@@ -47,7 +47,7 @@ Identita aplikace i delegovaný uživatel identity typy jsou popsány v níže t
 
 ### <a name="delegated-user-identity-with-openid-connect"></a>Delegovaný uživatel identity s OpenID Connect
 
-1. Uživatel je přihlášený do webové aplikace pomocí Azure AD (viz [webového prohlížeče a webové aplikace](#web-browser-to-web-application) výše). Pokud uživatel webové aplikace nevyjádřil dosud povolení webové aplikace k volání webového rozhraní API na jejím jménem, uživateli muset vyjádřit souhlas. Aplikace se zobrazí oprávnění, která vyžaduje, a pokud některý z těchto oprávnění na úrovni správce, běžného uživatele v adresáři, nebude možné vyjádřit souhlas. Tento proces souhlasu platí jenom pro aplikace s více tenanty, aplikace není jednoho tenanta, protože aplikace se už máte potřebná oprávnění. Když uživatel přihlášen, webové aplikace dostala token ID s informacemi o uživateli, jakož i autorizační kód.
+1. Uživatel je přihlášený do webové aplikace pomocí Azure AD (viz webový prohlížeč na výše uvedeném oddílu webová aplikace). Pokud uživatel webové aplikace nevyjádřil dosud povolení webové aplikace k volání webového rozhraní API na jejím jménem, uživateli muset vyjádřit souhlas. Aplikace se zobrazí oprávnění, která vyžaduje, a pokud některý z těchto oprávnění na úrovni správce, běžného uživatele v adresáři, nebude možné vyjádřit souhlas. Tento proces souhlasu platí jenom pro aplikace s více tenanty, aplikace není jednoho tenanta, protože aplikace se už máte potřebná oprávnění. Když uživatel přihlášen, webové aplikace dostala token ID s informacemi o uživateli, jakož i autorizační kód.
 1. Použití autorizační kód vydané službou Azure AD, webová aplikace odešle požadavek na token koncového bodu Azure AD, který obsahuje autorizační kód, podrobnosti o aplikaci klienta (ID aplikace a identifikátor URI pro přesměrování) a požadovaný prostředek (ID aplikace Identifikátor URI pro webové rozhraní API).
 1. Autorizační kód a informace o webové aplikace a webového rozhraní API jsou ověření pomocí Azure AD. Po úspěšném ověření Azure AD vrací dva tokeny: přístupový token JWT a aktualizační token JWT.
 1. Přes protokol HTTPS webová aplikace používá vrácené přístupový token JWT přidat token JWT řetězec s označením "Nosiče" v hlavičce autorizace požadavku do webového rozhraní API. Webové rozhraní API pak ověří JWT token a pokud je ověření úspěšné, vrátí požadovaný prostředek.

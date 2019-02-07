@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 03/14/2017
 ms.author: mbullwin
-ms.openlocfilehash: 1b0c991c09d1235215dc9b930c529a219d492a8c
-ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
+ms.openlocfilehash: afbf2bc32aa737eb5f6dde41035b206d6e260252
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54117073"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55813754"
 ---
 # <a name="navigation-and-dashboards-in-the-application-insights-portal"></a>Navigace a řídicí panely na portálu Application Insights
 Až budete mít [nastavení Application Insights v projektu](../../azure-monitor/app/app-insights-overview.md), telemetrická data o výkonu a využití vaší aplikace se zobrazí v projektu prostředek Application Insights [webu Azure portal](https://portal.azure.com).
@@ -62,7 +62,7 @@ Grafu se automaticky aktualizují s frekvencí, která závisí na grafu časov�
 * Časový rozsah vyšší než 24 hodin: (Časový rozsah) / 60.
 
 ### <a name="pin-any-query-in-analytics"></a>Připnout libovolný dotaz v Analytics
-Můžete také [připnout Analytics](../../azure-monitor/log-query/get-started-portal.md) grafů k [sdílené](#share-dashboards-with-your-team) řídicího panelu. To umožňuje přidávat diagramy z jakéhokoli libovolného dotazu vedle standardních metrik. 
+Můžete také [připnout Analytics](../../azure-monitor/log-query/get-started-portal.md) grafy na sdílený řídicí panel. To umožňuje přidávat diagramy z jakéhokoli libovolného dotazu vedle standardních metrik. 
 
 Výsledky se automaticky přepočítají, každou hodinu. Klikněte na ikonu aktualizace v grafu tak, aby přepočítat okamžitě. (Obnovit v prohlížeči nezměněný.)
 

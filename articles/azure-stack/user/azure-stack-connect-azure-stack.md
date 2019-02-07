@@ -15,19 +15,19 @@ ms.topic: get-started-article
 ms.date: 01/14/2019
 ms.author: mabrigg
 ms.lastreviewed: 01/14/2019
-ms.openlocfilehash: b7f9bda37d63956ea672528c28b81eaaac9891a6
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 4bc4387dd56de96edd17fcd8e5672cfda96cf67b
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55243762"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55816403"
 ---
 # <a name="connect-to-azure-stack"></a>Připojení ke službě Azure Stack
 
 Ke správě prostředků, musíte se připojit k Azure Stack Development Kit. Tento článek podrobně popisuje kroky potřebné pro připojení k sadě pro vývoj. Můžete použít kteroukoli z následujících možností připojení:
 
-* [Vzdálená plocha](#connect-with-remote-desktop): umožňuje jeden souběžný uživatel rychle připojit ze development kit.
-* [Virtuální privátní sítě (VPN)](#connect-with-vpn): umožňuje připojení několika souběžných uživatelů z klientů mimo infrastruktury služby Azure Stack (vyžaduje konfiguraci).
+* Vzdálená plocha: umožňuje jeden souběžný uživatel rychle připojit ze development kit.
+* Virtuální privátní síť (VPN): umožňuje více souběžných uživatelů připojení od klientů mimo infrastruktury služby Azure Stack (vyžaduje konfiguraci).
 
 ## <a name="connect-to-azure-stack-with-remote-desktop"></a>Připojení k Azure Stack pomocí vzdálené plochy
 Připojení ke vzdálené ploše jeden souběžný uživatel umožňuje pracovat s portálem pro správu prostředků.

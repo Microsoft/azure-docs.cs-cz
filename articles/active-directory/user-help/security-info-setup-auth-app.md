@@ -11,12 +11,12 @@ ms.subservice: user-help
 ms.topic: conceptual
 ms.date: 07/30/2018
 ms.author: lizross
-ms.openlocfilehash: 191afec8733258519370d11942c0f6d18da6b603
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 6ee75b0ee465e330d78b166b0da12232b7915ae7
+ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55180394"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55766057"
 ---
 # <a name="set-up-security-info-to-use-an-authenticator-app-preview"></a>Upravit informace o zabezpečení tak, aby pomocí ověřovací aplikace (preview)
 
@@ -28,7 +28,7 @@ Nastavení bezpečnostních údajů vyžaduje, abyste pro přihlášení ke své
 
 V závislosti na nastavení vaší organizace můžete být vyzváni k nastavení aplikace Microsoft Authenticator při přihlášení. V opačném případě k nastavení aplikace Microsoft Authenticator bezpečnostních údajů začít, postupujte podle kroků v [spravovat svoje bezpečnostní údaje](security-info-manage-settings.md).
 
-Ke stažení a další informace o aplikaci Microsoft Authenticator, naleznete v tématu [Začínáme s aplikací Microsoft Authenticator](microsoft-authenticator-app-how-to.md).
+Ke stažení a další informace o aplikaci Microsoft Authenticator, naleznete v tématu [Začínáme s aplikací Microsoft Authenticator](user-help-auth-app-download-install.md).
 
 >[!Note]
 >Pokud nechcete použít aplikaci Microsoft Authenticator, můžete různé aplikace během nastavení. Tento článek používá aplikaci Microsoft Authenticator. Pokud nevidíte možnost aplikace authenticator, je možné, že vaše organizace nepovoluje budete moci použít ověřovací aplikaci pro ověření. Pokud je to tento případ, budete muset zvolit jinou metodu, nebo požádejte správce o další pomoc.

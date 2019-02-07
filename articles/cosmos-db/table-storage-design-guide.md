@@ -8,12 +8,12 @@ ms.date: 12/07/2018
 author: wmengmsft
 ms.author: wmeng
 ms.custom: seodec18
-ms.openlocfilehash: bb759c0b21287f8198f2f4e0dac10020a3b31d62
-ms.sourcegitcommit: 97d0dfb25ac23d07179b804719a454f25d1f0d46
+ms.openlocfilehash: 433f99d72feb7dc697050049817478a8c8b679e6
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/25/2019
-ms.locfileid: "54913593"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55820959"
 ---
 # <a name="azure-storage-table-design-guide-designing-scalable-and-performant-tables"></a>Průvodce návrhem tabulky Azure Storage: Návrh škálovatelných a výkonných tabulek
 
@@ -205,9 +205,9 @@ Následující příklady předpokládají, že služba table service je uklád�
 | **Jméno** |Řetězec |
 | **LastName** |Řetězec |
 | **Stáří** |Integer |
-| **EmailAddress** |Řetězec |
+| **EmailAddress** |String |
 
-V dřívější části [Přehled služby Azure Table](#overview) popisuje některé klíčové funkce služby Azure Table service, které mají přímý vliv na návrh pro dotaz. Tyto za následek následující obecné pokyny pro návrh služby dotazy na tabulku. Syntaxe filtru použít v následujících příkladech je z rozhraní REST API služby tabulky pro další informace najdete v tématu [dotazu entity](https://msdn.microsoft.com/library/azure/dd179421.aspx).  
+Předchozí Přehled služby Azure Table část popisuje některé klíčové funkce služby Azure Table service, které mají přímý vliv na návrh pro dotaz. Tyto za následek následující obecné pokyny pro návrh služby dotazy na tabulku. Syntaxe filtru použít v následujících příkladech je z rozhraní REST API služby tabulky pro další informace najdete v tématu [dotazu entity](https://msdn.microsoft.com/library/azure/dd179421.aspx).  
 
 * A ***dotazu bodu*** je nejúčinnější vyhledávání používat a doporučuje se použít pro vyhledávání velkého rozsahu nebo vyhledávání, které vyžadují nejnižší latenci. Takový dotaz lze použít indexy, které k vyhledání jednotlivých entit efektivně tak, že určíte, jak **PartitionKey** a **RowKey** hodnoty. Příklad: $filter = (PartitionKey eq "Prodeje") a (RowKey eq '2')  
 * Za druhé nejlepší je ***dotazu na rozsah*** , která používá **PartitionKey** a filtry na mnoha různých **RowKey** hodnoty k vrácení více než jednu entitu. **PartitionKey** hodnota označuje konkrétní oddíl a **RowKey** hodnoty identifikaci podmnožiny entity v tomto oddílu. Příklad: $filter = PartitionKey eq "Prodeje a RowKey ge" a RowKey lt 'T'  
@@ -1294,7 +1294,7 @@ Každá entita musí mít stále **PartitionKey**, **RowKey**, a **časové raz�
 
 Typ první možnost předřazení subjektem, který **RowKey**, je užitečné, pokud je možné, že dvě entity, které různých typů může mít stejnou hodnotu klíče. Také skupin entit stejného typu společně v oddílu.  
 
-Techniky popsané v této části jsou obzvláště důležité pro diskuse [vztahy dědičnosti](#inheritance-relationships) výše v tomto průvodci v části [modelovat vztahy](#modelling-relationships).  
+Techniky popsané v této části jsou obzvláště důležité pro diskuse [vztahy dědičnosti](#inheritance-relationships) dříve v tomto průvodci v části modelovat vztahy.  
 
 > [!NOTE]
 > Měli byste zvážit, včetně číslo verze v hodnotě entity typu umožňují klientským aplikacím se vyvíjet objektů POCO a pracovat s různými verzemi aplikací.  

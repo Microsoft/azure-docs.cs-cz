@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 09/24/2018
 ms.author: andret
-ms.openlocfilehash: aeb9f1ba460a009daacf3090c75573dd5d69b813
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.openlocfilehash: d23110f341cdc76306c5cc4c78ab5d6afb5dd2b3
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55095851"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55816267"
 ---
 # <a name="quickstart-add-sign-in-with-microsoft-to-an-aspnet-web-app"></a>Rychlý start: Přidání přihlašování s Microsoftem do webové aplikace ASP.NET
 
@@ -64,7 +64,7 @@ Tento postup ukazuje, jak nainstalovat a nakonfigurovat kanál ověřování pro
 
 Pokud si místo toho chcete stáhnout projekt sady Visual Studio této ukázky, postupujte takto:
 1. [Stáhněte si projekt z GitHubu](https://github.com/AzureADQuickStarts/WebApp-OpenIdConnect-DotNet/archive/GuidedSetup.zip).
-1. Přejděte na [krok konfigurace](#configure-your-webconfig-and-register-an-application) a před spuštěním nakonfigurujte vzorek kódu.
+1. Pokračujte krokem konfigurace před provedením konfigurace vzorový kód.
 
 ## <a name="step-2-create-your-aspnet-project"></a>Krok 2: Vytvoření projektu ASP.NET
 
@@ -286,9 +286,9 @@ Výběrem odkazu zobrazíte deklarace identity uživatele. Tato akce vás převe
 
  Měli byste vidět tabulku obsahující základní vlastnosti přihlášeného uživatele:
 
-| Vlastnost | Value | Popis |
+| Vlastnost | Hodnota | Popis |
 |---|---|---|
-| Name | {User Full Name} | Jméno a příjmení uživatele |
+| Název | {User Full Name} | Jméno a příjmení uživatele |
 | Uživatelské jméno | <span>user@domain.com</span> | Uživatelské jméno identifikující přihlášeného uživatele |
 | Subjekt| {Subject} |Řetězec pro jednoznačnou identifikaci přihlášení uživatele na webu |
 | ID tenanta | {Guid} | Identifikátor *guid*, který jedinečně identifikuje organizaci Azure AD uživatele |

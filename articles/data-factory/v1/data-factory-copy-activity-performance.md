@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 05/25/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 572f4535044e077ed245b0a231ccc9fa973a8a9b
-ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
+ms.openlocfilehash: ec8c58e4ced0d8df958e242b9c1671aeed8c2ee6
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54331636"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55812085"
 ---
 # <a name="copy-activity-performance-and-tuning-guide"></a>Průvodce laděním a výkonem aktivity kopírování
 
@@ -176,7 +176,7 @@ Odkazuje na mějte na paměti:
 >
 >
 
-Pro lepší využití tyto dvě vlastnosti a vylepšit propustnost přesunu dat najdete v tématu [vzorové případy použití](#case-study-use-parallel-copy). Není nutné konfigurovat **parallelCopies** využít výchozí chování. Pokud nakonfigurujete a **parallelCopies** je příliš malá, více cloudu DMUs nemusí plně využít.
+Pro lepší využití těchto dvou vlastností a vylepšit propustnost přesunu dat najdete v ukázce případy použití. Není nutné konfigurovat **parallelCopies** využít výchozí chování. Pokud nakonfigurujete a **parallelCopies** je příliš malá, více cloudu DMUs nemusí plně využít.
 
 ### <a name="billing-impact"></a>Dopad fakturace
 Má **důležité** pamatovat, že se vám účtuje podle celkové doby trvání operace kopírování. Pokud úloha kopírování používá k trvat jednu hodinu jednotku na jeden cloud a teď trvá 15 minut s čtyři jednotky cloudu, bude celkové vyúčtování skoro stejné zůstane. Například použití čtyř jednotek v cloudu. První Cloudová jednotka stráví 10 minut, je druhý řádek 10 minut, třetí příkaz 5 minut a čtvrtý, ten 5 minut, poběží v jednou aktivitou kopírování. Bude vám účtována čas celkový kopírování (přesunu dat), což je 10 + 10 + 5 + 5 = 30 minut. Pomocí **parallelCopies** nemá vliv na fakturaci.
@@ -297,7 +297,7 @@ Pokud se kopírování dat z Blob storage do SQL Data Warehouse, zvažte použit
 
 * **Vzorek dat**: Schéma tabulky ovlivňuje kopírování propustnost. Velký řádek velikosti poskytuje lepší výkon než velikost malých řádku ke zkopírování stejné množství dat. Důvodem je, že databáze můžete efektivněji načíst menší počet dávek dat, které obsahují menší počet řádků.
 * **Dotaz nebo uloženou proceduru**: Optimalizujte logiku dotazu nebo uložené procedury, které zadáte v zdroje aktivity kopírování se načíst data efektivněji.
-* Pro **místních relačních databází**, jako je například SQL Server a Oracle, které vyžadují použití **brána správy dat**, najdete v článku [důležité informace týkající se Brána pro správu dat](#considerations-on-data-management-gateway) oddílu.
+* Pro **místních relačních databází**, jako je například SQL Server a Oracle, které vyžadují použití **brána správy dat**, naleznete v tématu důležité informace týkající se Brána pro správu dat oddílu.
 
 ## <a name="considerations-for-the-sink"></a>Důležité informace pro jímku
 ### <a name="general"></a>Obecné

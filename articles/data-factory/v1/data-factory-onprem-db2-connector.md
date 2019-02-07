@@ -13,15 +13,15 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: c7a3893c35031d05ea8aade0ad5d30b5a56176fd
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 0e190faca778f4a65a3bd4a29d05c01a89ee7e11
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54015130"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55816726"
 ---
 # <a name="move-data-from-db2-by-using-azure-data-factory-copy-activity"></a>Přesun dat z databáze DB2 pomocí aktivity kopírování objekt pro vytváření dat Azure
-> [!div class="op_single_selector" title1="Vyberte verzi služby Data Factory, kterou používáte:"]
+> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
 > * [Verze 1](data-factory-onprem-db2-connector.md)
 > * [Verze 2 (aktuální verze)](../connector-db2.md)
 
@@ -57,7 +57,7 @@ Konektor Data Factory DB2 podporuje následující platformy IBM DB2 a verze s v
 
 > [!TIP]
 > Pokud se zobrazí chybová zpráva "balíček, který odpovídá na žádost o spuštění příkazu SQL nebyl nalezen. SQLSTATE = 51002 SQLCODE =-805, "důvod je potřebný balíček není vytvořena pro běžného uživatele v operačním systému. Chcete-li vyřešit tento problém, postupujte podle těchto pokynů pro DB2 typu serveru:
-> - Pro DB2 i (AS400): Umožnit power users vytvoří kolekci pro běžného uživatele před spuštěním aktivity kopírování. Chcete-li vytvořit kolekci, použijte příkaz: `create collection <username>`
+> - DB2 for i (AS400): Umožnit power users vytvoří kolekci pro běžného uživatele před spuštěním aktivity kopírování. Chcete-li vytvořit kolekci, použijte příkaz: `create collection <username>`
 > - DB2 z/OS nebo LUW: Používejte účet vysoká oprávnění--power users nebo správce, který má autority balíčku a VAZBU, BINDADD, udělení provést na veřejné oprávnění – jednou spustit kopii. Potřebný balíček se automaticky vytvoří během kopírování. Následně můžete přepnout zpět na normální uživatele pro spuštění další kopie.
 
 ## <a name="getting-started"></a>Začínáme
@@ -72,7 +72,7 @@ Ať už používáte, nástrojů nebo rozhraní API, proveďte následující kr
 2. Vytvoření datové sady, které představují vstupní a výstupní data pro operaci kopírování. 
 3. Vytvoření kanálu s aktivitou kopírování, která přijímá jako vstupní datovou sadu a datovou sadu jako výstup. 
 
-Při použití Průvodce kopírováním, definice JSON pro Data Factory propojené služby, datové sady a kanál entity se automaticky vytvoří za vás. Při použití rozhraní API (s výjimkou rozhraní .NET API) nebo nástroje pro definování entit služby Data Factory ve formátu JSON. [Příklad JSON: Kopírování dat z databáze DB2 do úložiště objektů Blob v Azure](#json-example-copy-data-from-db2-to-azure-blob) ukazuje definice JSON entit služby Data Factory, které se používají ke kopírování dat z úložiště dat DB2 lokálně.
+Při použití Průvodce kopírováním, definice JSON pro Data Factory propojené služby, datové sady a kanál entity se automaticky vytvoří za vás. Při použití rozhraní API (s výjimkou rozhraní .NET API) nebo nástroje pro definování entit služby Data Factory ve formátu JSON. Příklad JSON: Kopírování dat z databáze DB2 do úložiště objektů Blob v Azure ukazuje definice JSON entit služby Data Factory, které se používají ke kopírování dat z úložiště dat DB2 lokálně.
 
 Následující části obsahují podrobnosti o vlastnostech JSON, které se používají k definování entit služby Data Factory, které jsou specifické pro úložiště dat DB2.
 
@@ -82,10 +82,10 @@ V následující tabulce jsou uvedeny vlastnosti JSON, které jsou specifické p
 | Vlastnost | Popis | Požaduje se |
 | --- | --- | --- |
 | **type** |Tato vlastnost musí být nastavená na **OnPremisesDb2**. |Ano |
-| **Server** |Název serveru DB2. |Ano |
+| **server** |Název serveru DB2. |Ano |
 | **database** |Název databáze DB2. |Ano |
 | **schema** |Název schématu v databázi DB2. Tato vlastnost je velká a malá písmena. |Ne |
-| **authenticationType.** |Typ ověřování, který se používá pro připojení k databázi DB2. Možné hodnoty jsou: Anonymní, základní a Windows. |Ano |
+| **authenticationType** |Typ ověřování, který se používá pro připojení k databázi DB2. Možné hodnoty jsou: Anonymní, základní a Windows. |Ano |
 | **uživatelské jméno** |Název pro uživatelský účet, pokud používáte ověřování Basic nebo Windows. |Ne |
 | **Heslo** |Heslo pro uživatelský účet. |Ne |
 | **gatewayName** |Název brány, který služba Data Factory měla použít pro připojení k místní databázi DB2. |Ano |
@@ -309,45 +309,45 @@ Aktivitu kopírování, která převádí data z databáze DB2 typu na typ .NET 
 | Typ databáze DB2. | Typ rozhraní .NET framework |
 | --- | --- |
 | SmallInt |Int16 |
-| Integer |Datový typ Int32 |
+| Integer |Int32 |
 | BigInt |Int64 |
-| Real |Jednoduchá |
+| Real |Single |
 | Double |Double |
 | Float |Double |
-| Decimal |Desítkově |
-| DecimalFloat |Desítkově |
-| Čísla |Desítkově |
+| Decimal |Decimal |
+| DecimalFloat |Decimal |
+| Čísla |Decimal |
 | Datum |DateTime |
-| Čas |Časový interval |
+| Čas |TimeSpan |
 | Časové razítko |DateTime |
-| XML |Byte] |
-| Char |Řetězec |
-| VarChar |Řetězec |
-| LongVarChar |Řetězec |
-| DB2DynArray |Řetězec |
-| Binární hodnota |Byte] |
-| VarBinary |Byte] |
-| LongVarBinary |Byte] |
-| Obrázek |Řetězec |
-| VarGraphic |Řetězec |
-| LongVarGraphic |Řetězec |
-| Datový typ CLOB |Řetězec |
-| Objekt blob |Byte] |
-| DbClob |Řetězec |
+| XML |Byte[] |
+| Char |String |
+| VarChar |String |
+| LongVarChar |String |
+| DB2DynArray |String |
+| Binární hodnota |Byte[] |
+| VarBinary |Byte[] |
+| LongVarBinary |Byte[] |
+| Obrázek |String |
+| VarGraphic |String |
+| LongVarGraphic |String |
+| Clob |String |
+| Objekt blob |Byte[] |
+| DbClob |String |
 | SmallInt |Int16 |
-| Integer |Datový typ Int32 |
+| Integer |Int32 |
 | BigInt |Int64 |
-| Real |Jednoduchá |
+| Real |Single |
 | Double |Double |
 | Float |Double |
-| Decimal |Desítkově |
-| DecimalFloat |Desítkově |
-| Čísla |Desítkově |
+| Decimal |Decimal |
+| DecimalFloat |Decimal |
+| Čísla |Decimal |
 | Datum |DateTime |
-| Čas |Časový interval |
+| Čas |TimeSpan |
 | Časové razítko |DateTime |
-| XML |Byte] |
-| Char |Řetězec |
+| XML |Byte[] |
+| Char |String |
 
 ## <a name="map-source-to-sink-columns"></a>Mapování zdroje do jímky sloupce
 Další postup mapování sloupců v datové sadě zdroje do sloupců v datové sadě jímky najdete v tématu [mapování sloupců v datové sadě ve službě Azure Data Factory](data-factory-map-columns.md).

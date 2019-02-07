@@ -9,12 +9,12 @@ ms.topic: reference
 ms.date: 05/15/2017
 ms.author: robb
 ms.subservice: diagnostic-extension
-ms.openlocfilehash: 0e1a0919975253e24318bb8029249958cbc50d62
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: 36b9e6c97a10f7608a4faaef005ca4eeb1fc09c6
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54473159"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55811524"
 ---
 # <a name="azure-diagnostics-10-configuration-schema"></a>Schéma konfigurace Azure Diagnostics 1.0
 > [!NOTE]
@@ -101,7 +101,7 @@ Element nejvyšší úrovně diagnostického konfiguračního souboru.
 
 Atributy:
 
-|Atribut  |Typ   |Požaduje se| Výchozí | Popis|  
+|Atribut  |Type   |Požaduje se| Výchozí | Popis|  
 |-----------|-------|--------|---------|------------|  
 |**configurationChangePollInterval**|doba trvání|Nepovinné | PT1M| Určuje interval, ve kterém se monitorování diagnostiky dotazuje změny v konfiguraci diagnostiky.|  
 |**overallQuotaInMB**|unsignedInt|Nepovinné| 4000 MB. Pokud zadáte hodnotu, nesmí být delší než toto množství |Celkové množství přidělené vyrovnávací paměti všech protokolování úložiště v systému souborů.|  
@@ -109,11 +109,11 @@ Atributy:
 ## <a name="diagnosticinfrastructurelogs-element"></a>DiagnosticInfrastructureLogs – Element  
 Definuje konfiguraci vyrovnávací paměti pro protokoly, které jsou generovány základní diagnostické infrastruktury.
 
-Nadřazený Element: [DiagnosticMonitorConfiguration Element](#DiagnosticMonitorConfiguration).  
+Nadřazený Element: DiagnosticMonitorConfiguration Element.  
 
 Atributy:
 
-|Atribut|Typ|Popis|  
+|Atribut|Type|Popis|  
 |---------|----|-----------------|  
 |**bufferQuotaInMB**|unsignedInt|Volitelné. Určuje maximální velikost úložiště v systému souborů, která je k dispozici pro zadaná data.<br /><br /> Výchozí hodnota je 0.|  
 |**scheduledTransferLogLevelFilter**|řetězec|Volitelné. Určuje minimální úroveň závažnosti pro položky protokolu, které byly převedeny. Výchozí hodnota je **Nedefinováno**. Další možné hodnoty jsou **Verbose**, **informace**, **upozornění**, **chyba**, a **kritický**.|  
@@ -122,11 +122,11 @@ Atributy:
 ## <a name="logs-element"></a>Protokoly – Element  
  Definuje konfiguraci vyrovnávací paměti pro základní protokolů Azure.
 
- Nadřazený element: [DiagnosticMonitorConfiguration Element](#DiagnosticMonitorConfiguration).  
+ Nadřazený element: DiagnosticMonitorConfiguration Element.  
 
 Atributy:  
 
-|Atribut|Typ|Popis|  
+|Atribut|Type|Popis|  
 |---------------|----------|-----------------|  
 |**bufferQuotaInMB**|unsignedInt|Volitelné. Určuje maximální velikost úložiště v systému souborů, která je k dispozici pro zadaná data.<br /><br /> Výchozí hodnota je 0.|  
 |**scheduledTransferLogLevelFilter**|řetězec|Volitelné. Určuje minimální úroveň závažnosti pro položky protokolu, které byly převedeny. Výchozí hodnota je **Nedefinováno**. Další možné hodnoty jsou **Verbose**, **informace**, **upozornění**, **chyba**, a **kritický**.|  
@@ -135,12 +135,12 @@ Atributy:
 ## <a name="directories-element"></a>Prvek adresáře  
 Definuje konfiguraci vyrovnávací paměti založené na souborech protokolů, které můžete definovat.
 
-Nadřazený element: [DiagnosticMonitorConfiguration Element](#DiagnosticMonitorConfiguration).  
+Nadřazený element: DiagnosticMonitorConfiguration Element.  
 
 
 Atributy:  
 
-|Atribut|Typ|Popis|  
+|Atribut|Type|Popis|  
 |---------------|----------|-----------------|  
 |**bufferQuotaInMB**|unsignedInt|Volitelné. Určuje maximální velikost úložiště v systému souborů, která je k dispozici pro zadaná data.<br /><br /> Výchozí hodnota je 0.|  
 |**scheduledTransferPeriod**|doba trvání|Volitelné. Určuje interval mezi naplánované přenosů dat, zaokrouhluje nahoru na nejbližší minutu.<br /><br /> Výchozí hodnota je PT0S.|  
@@ -148,11 +148,11 @@ Atributy:
 ## <a name="crashdumps-element"></a>Element havarijního výpisu  
  Definuje adresář výpisy při selhání.
 
- Nadřazený Element: [Element adresáře](#Directories).  
+ Nadřazený Element: Element adresáře.  
 
 Atributy:  
 
-|Atribut|Typ|Popis|  
+|Atribut|Type|Popis|  
 |---------------|----------|-----------------|  
 |**container**|řetězec|Název kontejneru, ve kterém se přenášet obsah adresáře.|  
 |**directoryQuotaInMB**|unsignedInt|Volitelné. Určuje maximální velikost adresáře v megabajtech.<br /><br /> Výchozí hodnota je 0.|  
@@ -160,11 +160,11 @@ Atributy:
 ## <a name="failedrequestlogs-element"></a>FailedRequestLogs – Element  
  Definuje adresář protokolu chybných požadavků.
 
- Nadřazený Element [adresáře Element](#Directories).  
+ Nadřazený prvek adresáře prvku.  
 
 Atributy:  
 
-|Atribut|Typ|Popis|  
+|Atribut|Type|Popis|  
 |---------------|----------|-----------------|  
 |**container**|řetězec|Název kontejneru, ve kterém se přenášet obsah adresáře.|  
 |**directoryQuotaInMB**|unsignedInt|Volitelné. Určuje maximální velikost adresáře v megabajtech.<br /><br /> Výchozí hodnota je 0.|  
@@ -172,11 +172,11 @@ Atributy:
 ##  <a name="iislogs-element"></a>IISLogs – Element  
  Definuje adresář protokolu služby IIS.
 
- Nadřazený Element [adresáře Element](#Directories).  
+ Nadřazený prvek adresáře prvku.  
 
 Atributy:  
 
-|Atribut|Typ|Popis|  
+|Atribut|Type|Popis|  
 |---------------|----------|-----------------|  
 |**container**|řetězec|Název kontejneru, ve kterém se přenášet obsah adresáře.|  
 |**directoryQuotaInMB**|unsignedInt|Volitelné. Určuje maximální velikost adresáře v megabajtech.<br /><br /> Výchozí hodnota je 0.|  
@@ -184,16 +184,16 @@ Atributy:
 ## <a name="datasources-element"></a>Element zdroje dat  
  Definuje nula nebo více adresářů, dalších protokolů.
 
- Nadřazený Element: [Element adresáře](#Directories).
+ Nadřazený Element: Element adresáře.
 
 ## <a name="directoryconfiguration-element"></a>DirectoryConfiguration – Element  
  Definuje adresář souborů protokolu sledování.
 
- Nadřazený Element: [Element zdroje dat](#DataSources).
+ Nadřazený Element: Element datových zdrojů.
 
 Atributy:
 
-|Atribut|Typ|Popis|  
+|Atribut|Type|Popis|  
 |---------------|----------|-----------------|  
 |**container**|řetězec|Název kontejneru, ve kterém se přenášet obsah adresáře.|  
 |**directoryQuotaInMB**|unsignedInt|Volitelné. Určuje maximální velikost adresáře v megabajtech.<br /><br /> Výchozí hodnota je 0.|  
@@ -201,11 +201,11 @@ Atributy:
 ## <a name="absolute-element"></a>Absolutní – Element  
  Definuje absolutní cesta adresáře ke sledování s rozšíření prostředí volitelné.
 
- Nadřazený Element: [DirectoryConfiguration Element](#DirectoryConfiguration).  
+ Nadřazený Element: DirectoryConfiguration Element.  
 
 Atributy:  
 
-|Atribut|Typ|Popis|  
+|Atribut|Type|Popis|  
 |---------------|----------|-----------------|  
 |**Cesta**|řetězec|Povinná hodnota. Absolutní cesta k adresáři pro monitorování.|  
 |**expandEnvironment**|Boolean|Povinná hodnota. Pokud hodnotu **true**, proměnné prostředí v cestě jsou rozbaleny.|  
@@ -213,11 +213,11 @@ Atributy:
 ## <a name="localresource-element"></a>LocalResource – Element  
  Definuje cestu relativní vzhledem k místní prostředek definovaný v definici služby.
 
- Nadřazený Element: [DirectoryConfiguration Element](#DirectoryConfiguration).  
+ Nadřazený Element: DirectoryConfiguration Element.  
 
 Atributy:  
 
-|Atribut|Typ|Popis|  
+|Atribut|Type|Popis|  
 |---------------|----------|-----------------|  
 |**Jméno**|řetězec|Povinná hodnota. Název místního prostředku, která obsahuje adresář, který chcete monitorovat.|  
 |**relativePath**|řetězec|Povinná hodnota. Cesta relativní k místní prostředek, který chcete monitorovat.|  
@@ -225,12 +225,12 @@ Atributy:
 ## <a name="performancecounters-element"></a>PerformanceCounters – Element  
  Definuje cestu k čítači výkonu pro shromažďování.
 
- Nadřazený Element: [DiagnosticMonitorConfiguration Element](#DiagnosticMonitorConfiguration).
+ Nadřazený Element: DiagnosticMonitorConfiguration Element.
 
 
  Atributy:  
 
-|Atribut|Typ|Popis|  
+|Atribut|Type|Popis|  
 |---------------|----------|-----------------|  
 |**bufferQuotaInMB**|unsignedInt|Volitelné. Určuje maximální velikost úložiště v systému souborů, která je k dispozici pro zadaná data.<br /><br /> Výchozí hodnota je 0.|  
 |**scheduledTransferPeriod**|doba trvání|Volitelné. Určuje interval mezi naplánované přenosů dat, zaokrouhluje nahoru na nejbližší minutu.<br /><br /> Výchozí hodnota je PT0S.|  
@@ -238,11 +238,11 @@ Atributy:
 ## <a name="performancecounterconfiguration-element"></a>PerformanceCounterConfiguration – Element  
  Definuje čítač výkonu ke shromažďování.
 
- Nadřazený Element: [PerformanceCounters – Element](#PerformanceCounters).  
+ Nadřazený Element: PerformanceCounters – Element.  
 
  Atributy:  
 
-|Atribut|Typ|Popis|  
+|Atribut|Type|Popis|  
 |---------------|----------|-----------------|  
 |**counterSpecifier**|řetězec|Povinná hodnota. Cesta k čítači výkonu pro shromažďování.|  
 |**sampleRate**|doba trvání|Povinná hodnota. Rychlost, jakou mají shromažďovat čítač výkonu.|  
@@ -250,11 +250,11 @@ Atributy:
 ## <a name="windowseventlog-element"></a>WindowsEventLog – Element  
  Definuje protokoly událostí k monitorování.
 
- Nadřazený Element: [DiagnosticMonitorConfiguration Element](#DiagnosticMonitorConfiguration).
+ Nadřazený Element: DiagnosticMonitorConfiguration Element.
 
   Atributy:
 
-|Atribut|Typ|Popis|  
+|Atribut|Type|Popis|  
 |---------------|----------|-----------------|  
 |**bufferQuotaInMB**|unsignedInt|Volitelné. Určuje maximální velikost úložiště v systému souborů, která je k dispozici pro zadaná data.<br /><br /> Výchozí hodnota je 0.|  
 |**scheduledTransferLogLevelFilter**|řetězec|Volitelné. Určuje minimální úroveň závažnosti pro položky protokolu, které byly převedeny. Výchozí hodnota je **Nedefinováno**. Další možné hodnoty jsou **Verbose**, **informace**, **upozornění**, **chyba**, a **kritický**.|  
@@ -263,11 +263,11 @@ Atributy:
 ## <a name="datasource-element"></a>Zdroj dat – Element  
  Definuje protokolu události monitorování.
 
- Nadřazený Element: [WindowsEventLog Element](#windowsEventLog).  
+ Nadřazený Element: WindowsEventLog Element.  
 
  Atributy:
 
-|Atribut|Typ|Popis|  
+|Atribut|Type|Popis|  
 |---------------|----------|-----------------|  
 |**Jméno**|řetězec|Povinná hodnota. Výraz XPath zadání protokolu ke shromažďování.|  
 

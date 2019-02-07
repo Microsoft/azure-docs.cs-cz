@@ -16,12 +16,12 @@ ms.date: 10/20/2018
 ms.author: celested
 ms.reviewer: paulgarn, hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 6174dd210cf85bfa6a3daf38965d1da65801321c
-ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
+ms.openlocfilehash: d137f2217575bfddec5a2bc2ead4e210b8cf1865
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/26/2019
-ms.locfileid: "55076328"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55815333"
 ---
 # <a name="signing-key-rollover-in-azure-active-directory"></a>Výměna podpisových klíčů ve službě Azure Active Directory
 Tento článek popisuje, co potřebujete vědět o veřejných klíčů, které se používají ve službě Azure Active Directory (Azure AD) k podepisování tokenů zabezpečení. Je důležité si uvědomit, že tyto výměny klíčů a v pravidelných intervalech a ve stavu nouze, může být převracet okamžitě. Všechny aplikace, které používají službu Azure AD by možné programově zpracovávat procesu výměny klíčů nebo vytvořit proces periodické ruční výměna. Pokračujte ve čtení pochopit, jak fungují klíče, jak posoudit dopad efekt přechodu do vaší aplikace a jak aktualizovat vaše aplikace nebo vytvoření procesu periodické ruční výměna zpracování výměny klíčů, v případě potřeby.
@@ -44,7 +44,7 @@ Způsob, jakým aplikace zpracovává výměny klíčů, závisí na proměnné,
 * [Webová aplikace / Ochrana prostředků pomocí Node.js passport-azure-ad modulu rozhraní API](#passport)
 * [Webová aplikace / rozhraní API Ochrana prostředků a vytvořené pomocí sady Visual Studio 2015 nebo Visual Studio 2017](#vs2015)
 * [Webové aplikace Ochrana prostředků a vytvořené pomocí sady Visual Studio 2013](#vs2013)
-* [Webové rozhraní API v ochraně prostředků a vytvořené pomocí sady Visual Studio 2013](#vs2013_webapi)
+* Webové rozhraní API v ochraně prostředků a vytvořené pomocí sady Visual Studio 2013
 * [Webové aplikace Ochrana prostředků a vytvořené pomocí sady Visual Studio 2012](#vs2012)
 * [Webové aplikace Ochrana prostředků a vytvořené sadou Visual Studio 2010, o 2008 pomocí technologie Windows Identity Foundation](#vs2010)
 * [Webová aplikace / Ochrana prostředků pomocí jiné knihovny nebo některý z podporovaných protokolů ručně implementaci rozhraní API](#other)

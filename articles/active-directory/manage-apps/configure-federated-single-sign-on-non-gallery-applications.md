@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 07/11/2017
 ms.author: barbkess
-ms.openlocfilehash: d88f44a202ee8def017698dfa8ac40d32bcae4d1
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: d79076a0669f725c3f1864a979812ede1020cd75
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55168579"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55812119"
 ---
 # <a name="how-to-configure-federated-single-sign-on-for-a-non-gallery-application"></a>Jak nakonfigurovat federované jednotné přihlašování pro aplikaci mimo Galerii
 
@@ -36,7 +36,7 @@ Tady je přehled kroky potřebnými ke konfiguraci federované jednotné přihla
 
 -   [Nakonfigurujte hodnoty metadat služby Azure AD v aplikaci (přihlašování adresu URL, Vystavitel, odhlašovací adresa URL a certifikát)](#_Configuring_single_sign-on)
 
--   [Přiřazení uživatelů k aplikaci](#_Assign_users_to_the_application)
+-   Přiřazení uživatelů k aplikaci
 
 ## <a name="configuring-single-sign-on-to-non-gallery-applications"></a>Konfigurace jednotného přihlašování pro aplikace mimo Galerii
 

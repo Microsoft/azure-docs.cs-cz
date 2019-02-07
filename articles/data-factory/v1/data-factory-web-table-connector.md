@@ -13,15 +13,15 @@ ms.topic: conceptual
 ms.date: 01/05/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 1ba8db3ebe2caf4c37d147f744326b6e631cb556
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 81b7bf7c230c66087bf286ebd9369d992e93be90
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54022049"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55814346"
 ---
 # <a name="move-data-from-a-web-table-source-using-azure-data-factory"></a>Přesun dat z tabulky webovému zdroji pomocí Azure Data Factory
-> [!div class="op_single_selector" title1="Vyberte verzi služby Data Factory, kterou používáte:"]
+> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
 > * [Verze 1](data-factory-web-table-connector.md)
 > * [Verze 2 (aktuální verze)](../connector-web-table.md)
 
@@ -236,7 +236,7 @@ Data se zapisují do nového objektu blob každou hodinu (frekvence: hodina, int
 
 Kanálu obsahujícího aktivitu kopírování, který je nakonfigurován na použití vstupních a výstupních datových sad a je naplánováno spuštění každou hodinu. V definici JSON kanálu **zdroj** je typ nastaven na **WebSource** a **jímky** je typ nastaven na **BlobSink**.
 
-Zobrazit [vlastnosti typu WebSource](#copy-activity-type-properties) pro seznam vlastností, které jsou podporovány WebSource.
+Zobrazit vlastnosti typu WebSource seznamu vlastností podporuje WebSource.
 
 ```json
 {  

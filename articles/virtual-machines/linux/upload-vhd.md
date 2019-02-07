@@ -15,12 +15,12 @@ ms.devlang: azurecli
 ms.topic: article
 ms.date: 10/17/2018
 ms.author: cynthn
-ms.openlocfilehash: 47227b1f9ceb4ba9e35180aa0cb171d1edd5bb9a
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.openlocfilehash: edebd2efda7d8217c9b554f2d1f54135203502cb
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55696842"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55821554"
 ---
 # <a name="create-a-linux-vm-from-a-custom-disk-with-the-azure-cli"></a>Vytvoření virtuálního počítače s Linuxem z vlastního disku pomocí rozhraní příkazového řádku Azure
 
@@ -31,8 +31,8 @@ V tomto článku se dozvíte, jak nahrát vlastní virtuální pevný disk (VHD)
 K vytvoření několika virtuálních počítačů z vlastní disku, nejprve vytvořte image z virtuálního počítače nebo virtuální pevný disk. Další informace najdete v tématu [vytvořit vlastní image virtuálního počítače Azure pomocí rozhraní příkazového řádku](tutorial-custom-images.md).
 
 Máte dvě možnosti, jak vytvořit vlastní disk:
-* [Nahrání virtuálního pevného disku](#option-1-upload-a-specialized-vhd)
-* [Zkopírovat existující virtuální počítač Azure](#option-2-copy-an-existing-azure-vm)
+* Nahrání virtuálního pevného disku
+* Zkopírovat existující virtuální počítač Azure
 
 ## <a name="quick-commands"></a>Rychlé příkazy
 

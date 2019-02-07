@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/01/2019
 ms.author: magoedte
-ms.openlocfilehash: be068904d7aa935d722c59b08c36a1cf4904e933
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
+ms.openlocfilehash: 37e2da00ecbecdddcc8757e64c57b03774092e14
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55664127"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55814985"
 ---
 # <a name="deploy-azure-monitor-for-vms-preview"></a>Nasazení Azure Monitor pro virtuální počítače (preview)
 Tento článek popisuje, jak nastavit monitorování Azure pro virtuální počítače. Služba monitoruje stav operačního systému Azure virtuální počítače (VM) a škálovací sady virtuálních počítačů a virtuálních počítačů ve vašem prostředí. Toto monitorování zahrnuje zjišťování a mapování závislostí aplikace, které mohou být hostovány na nich. 
@@ -62,7 +62,7 @@ Pokud chcete povolit řešení pro scénář ve velkém měřítku, nejprve nako
 * Nainstalujte řešení ServiceMap a InfrastructureInsights. Dokončení této instalace pouze s použitím šablony Azure Resource Manageru, která je k dispozici v tomto článku.
 * Konfigurovat pracovní prostor Log Analytics ke shromažďování čítačů výkonu.
 
-Proveďte konfiguraci pracovního prostoru pro scénář ve velkém měřítku, naleznete v tématu [nastavení pracovního prostoru Log Analytics pro nasazení ve velkém měřítku](#setup-log-analytics-workspace).
+Proveďte konfiguraci pracovního prostoru pro scénář ve velkém měřítku, v tématu nastavení vytvořit pracovní prostor Log Analytics pro nasazení ve velkém měřítku.
 
 ### <a name="supported-operating-systems"></a>Podporované operační systémy
 

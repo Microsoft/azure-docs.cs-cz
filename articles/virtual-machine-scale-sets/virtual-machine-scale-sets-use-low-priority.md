@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/01/2018
 ms.author: memccror
-ms.openlocfilehash: c0b4e3e0a924c1353f7732737670dee7ed45a62a
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 85b974e954fd99f6f10426f1961ea9f4a5343c59
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46953867"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55811099"
 ---
 # <a name="low-priority-vms-on-scale-sets-preview"></a>Virtuální počítače s nízkou prioritou ve škálovacích sadách (preview)
 
@@ -43,13 +43,13 @@ Pokud chcete virtuální počítače ve s nízkou prioritou škálovací sadě, 
 
 Pokud chcete nasadit s nízkou prioritou virtuálních počítačů ve škálovacích sadách, můžete nastavit nové *Priority* příznak, který *nízká*. Všechny virtuální počítače ve škálovací sadě se nastaví na nízkou prioritu. Pokud chcete vytvořit škálovací sadu virtuálních počítačů s nízkou prioritou, použijte jednu z následujících metod:
 - [Azure Portal](#use-the-azure-portal)
-- [Azure CLI](#use-the-azure-cli-20)
+- Azure CLI
 - [Azure PowerShell](#use-azure-powershell)
 - [Šablony Azure Resource Manageru](#use-azure-resource-manager-templates)
 
 ## <a name="use-the-azure-portal"></a>Použití webu Azure Portal
 
-Proces vytvořit škálovací sadu, která používá virtuální počítače s nízkou prioritou je stejný, jak je uvedeno v [Začínáme článku](quick-create-portal.md). Když nasadíte škálovací sadu, můžete nastavit příznak s nízkou prioritou a zásady vyřazení: ![vytvoření škálovací sady virtuálních počítačů s nízkou prioritou](media/virtual-machine-scale-sets-use-low-priority/vmss-low-priority-portal.png)
+Proces vytvořit škálovací sadu, která používá virtuální počítače s nízkou prioritou je stejný, jak je uvedeno v [Začínáme článku](quick-create-portal.md). Když nasadíte škálovací sadu, můžete nastavit příznak s nízkou prioritou a zásady vyřazení: ![Vytvoření škálovací sady virtuálních počítačů s nízkou prioritou](media/virtual-machine-scale-sets-use-low-priority/vmss-low-priority-portal.png)
 
 ## <a name="use-the-azure-cli"></a>Použití Azure CLI
 

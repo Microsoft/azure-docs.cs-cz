@@ -7,12 +7,12 @@ ms.service: event-grid
 ms.topic: conceptual
 ms.date: 01/07/2019
 ms.author: spelluru
-ms.openlocfilehash: fa7deb8a1ef536ef0c2b7fbb0a184a950821aebf
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: 95a0d1b8afba71f6c8226dfe1ad5268d9e6f24e1
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54477332"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55816913"
 ---
 # <a name="filter-events-for-event-grid"></a>Filtr událostí služby Event Grid
 
@@ -20,7 +20,7 @@ Tento článek ukazuje, jak filtrovat události při vytváření odběr služby
 
 ## <a name="filter-by-event-type"></a>Filtrovat podle typu události
 
-Když vytváříte odběr Event gridu, určení [typy událostí](event-schema.md) odeslat ke koncovému bodu. Příklady v této části vytvořit odběry událostí pro skupinu prostředků, ale omezení událostí, které se pošlou `Microsoft.Resources.ResourceWriteFailure` a `Microsoft.Resources.ResourceWriteSuccess`. Pokud potřebujete větší flexibilitu při filtrování události podle typů událostí, přečtěte si [filtrovat podle rozšířené operátory a datové pole](#filter-by-advanced-operators-and-data-fields).
+Když vytváříte odběr Event gridu, určení [typy událostí](event-schema.md) odeslat ke koncovému bodu. Příklady v této části vytvořit odběry událostí pro skupinu prostředků, ale omezení událostí, které se pošlou `Microsoft.Resources.ResourceWriteFailure` a `Microsoft.Resources.ResourceWriteSuccess`. Pokud potřebujete větší flexibilitu při filtrování události podle typů událostí, naleznete v tématu filtrovat podle rozšířené operátory a datová pole.
 
 Pokud používáte PowerShell, použijte `-IncludedEventType` parametr při vytváření odběru.
 
@@ -77,7 +77,7 @@ az eventgrid event-subscription create \
 
 ## <a name="filter-by-subject"></a>Filtrovat podle předmětu
 
-Můžete filtrovat události podle předmětu v datech události. Můžete určit hodnotu tak, aby odpovídaly začátku nebo konci předmět. Pokud potřebujete větší flexibilitu při filtrování událostí podle předmětu, přečtěte si [filtrovat podle rozšířené operátory a datové pole](#filter-by-advanced-operators-and-data-fields).
+Můžete filtrovat události podle předmětu v datech události. Můžete určit hodnotu tak, aby odpovídaly začátku nebo konci předmět. Pokud potřebujete větší flexibilitu při filtrování událostí podle předmětu, najdete v článku filtrovat podle rozšířené operátory a datová pole.
 
 V následujícím příkladu Powershellu vytvoříte odběr událostí, který filtruje podle začátku předmětu. Můžete použít `-SubjectBeginsWith` parametr, chcete-li omezit události, které pro určitý prostředek. Můžete předat ID prostředku, skupiny zabezpečení sítě.
 

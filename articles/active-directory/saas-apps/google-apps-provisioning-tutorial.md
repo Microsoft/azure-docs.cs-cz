@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/26/2018
 ms.author: jeedes
-ms.openlocfilehash: 515b21c6854620a6bd1af53af8b1778d70613622
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 1dd1cf143d66fec2ab8c12ee28a61bb3b8a83ade
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55203942"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55821819"
 ---
 # <a name="tutorial-configure-g-suite-for-automatic-user-provisioning"></a>Kurz: Konfigurace G Suite pro automatické zřizování uživatelů
 
@@ -127,7 +127,7 @@ Tato část vás provede procesu připojování k uživatelskému účtu API G S
     e. Zopakujte předchozí kroky pro všechny další domény, které chcete přidat ke Google Apps.
      
      > [!WARNING]
-     > Pokud změníte primární doménou pro vašeho tenanta G Suite, a pokud už máte nakonfigurované jednotné přihlašování s Azure AD, pak budete muset opakovat krok #3 v části [krok 2: Povolit jednotné přihlašování](#step-two-enable-single-sign-on).
+     > Pokud změníte primární doménou pro vašeho tenanta G Suite a pokud jste už nakonfigurovali jednotné přihlašování s Azure AD, budete muset opakovat krok #3 v části Krok 2: Povolte jednotné přihlašování.
        
 1. V [konzoly pro správu služby Google Apps](https://admin.google.com/)vyberte **rolí administrátora**.
    

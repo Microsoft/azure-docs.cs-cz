@@ -14,18 +14,18 @@ ms.custom: H1Hack27Feb2017
 ms.workload: infrastructure-services
 ms.date: 12/21/2016
 ms.author: victorh
-ms.openlocfilehash: b89b7885989a5e93d3d292e5cdcff733fed657af
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: c60dded96df091b1a715fb7b972e9d7a23608d44
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46990174"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55818817"
 ---
 # <a name="manage-dns-records-and-recordsets-in-azure-dns-using-azure-powershell"></a>Správa DNS záznamů a sad záznamů v DNS Azure pomocí Azure Powershellu
 
 > [!div class="op_single_selector"]
 > * [Azure Portal](dns-operations-recordsets-portal.md)
-> * [Klasické rozhraní příkazového řádku Azure](dns-operations-recordsets-cli-nodejs.md)
+> * [Azure Classic CLI](dns-operations-recordsets-cli-nodejs.md)
 > * [Azure CLI](dns-operations-recordsets-cli.md)
 > * [PowerShell](dns-operations-recordsets.md)
 
@@ -50,7 +50,7 @@ Pokud má nový záznam stejný název a typ jako existující záznam, budete m
 
 Sady záznamů vytvoříte pomocí rutiny `New-AzureRmDnsRecordSet`. Při vytváření sady záznamů, je třeba zadat záznam nastavte název, zónu, čas na live (TTL), typ záznamu a záznamy, který se má vytvořit.
 
-Parametry pro přidání záznamů do sady záznamů se liší podle typu sady záznamů. Například pokud používáte sadu záznamů typu "A", je třeba zadat IP adresu pomocí parametru `-IPv4Address`. Další parametry jsou používány pro další typy záznamů. Zobrazit [Příklady dalších typů záznamu](#additional-record-type-examples) podrobnosti.
+Parametry pro přidání záznamů do sady záznamů se liší podle typu sady záznamů. Například pokud používáte sadu záznamů typu "A", je třeba zadat IP adresu pomocí parametru `-IPv4Address`. Další parametry jsou používány pro další typy záznamů. Příklady dalších typů záznamu podrobnosti.
 
 Následující příklad vytvoří záznam s relativním názvem "www" nastavit v zóně DNS "contoso.com". Plně kvalifikovaný název sady záznamů je "www.contoso.com". Typ záznamu je "A", a hodnota TTL je 3 600 sekund. Sada záznamů obsahuje jediný záznam, s IP adresou "1.2.3.4".
 
@@ -236,7 +236,7 @@ Tato posloupnost operací může být také *směrované*, což znamená, přede
 Get-AzureRmDnsRecordSet -Name "www" –ZoneName "contoso.com" -ResourceGroupName "MyResourceGroup" -RecordType A | Add-AzureRmDnsRecordConfig -Ipv4Address "5.6.7.8" | Set-AzureRmDnsRecordSet
 ```
 
-Výše uvedené příklady ukazují, jak přidat záznam "A" do existující sady záznamů typu "A". Podobně jako posloupnost operací se používá k přidání záznamů do sad záznamů z ostatních typů, přičemž nahradíte `-Ipv4Address` parametr `Add-AzureRmDnsRecordConfig` s další parametry, které jsou specifické pro jednotlivé typy záznamů. Parametry pro každý typ záznamu jsou stejné jako v případě `New-AzureRmDnsRecordConfig` rutiny, jak je znázorněno v [Příklady dalších typů záznamu](#additional-record-type-examples) výše.
+Výše uvedené příklady ukazují, jak přidat záznam "A" do existující sady záznamů typu "A". Podobně jako posloupnost operací se používá k přidání záznamů do sad záznamů z ostatních typů, přičemž nahradíte `-Ipv4Address` parametr `Add-AzureRmDnsRecordConfig` s další parametry, které jsou specifické pro jednotlivé typy záznamů. Parametry pro každý typ záznamu jsou stejné jako v případě `New-AzureRmDnsRecordConfig` rutiny, jak je znázorněno výše uvedené příklady dalších typů záznamu.
 
 Sady záznamů typu "CNAME" nebo "SOA" nemůže obsahovat více než jeden záznam. Toto omezení mohou nastat z norem DNS. Není omezení Azure DNS.
 
@@ -270,7 +270,7 @@ Podobně pro přidání záznamů do sady záznamů, posloupnost operací odebra
 Get-AzureRmDnsRecordSet -Name www –ZoneName "contoso.com" -ResourceGroupName "MyResourceGroup" -RecordType A | Remove-AzureRmDnsRecordConfig -Ipv4Address "5.6.7.8" | Set-AzureRmDnsRecordSet
 ```
 
-Podporuje různé typy záznamů předávání do příslušné parametry specifické pro typ. `Remove-AzureRmDnsRecordSet`. Parametry pro každý typ záznamu jsou stejné jako v případě `New-AzureRmDnsRecordConfig` rutiny, jak je znázorněno v [Příklady dalších typů záznamu](#additional-record-type-examples) výše.
+Podporuje různé typy záznamů předávání do příslušné parametry specifické pro typ. `Remove-AzureRmDnsRecordSet`. Parametry pro každý typ záznamu jsou stejné jako v případě `New-AzureRmDnsRecordConfig` rutiny, jak je znázorněno výše uvedené příklady dalších typů záznamu.
 
 
 ## <a name="modify-an-existing-record-set"></a>Upravit existující sady záznamů

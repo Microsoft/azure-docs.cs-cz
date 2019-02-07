@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: e36e718d35f652c139958388491642e98469ecaf
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: c9a9b6f0127bba4efda6e691a2b7126935d81c0d
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53548836"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55817695"
 ---
 # <a name="backup-and-restore-in-azure-database-for-mariadb"></a>Zálohování a obnovení ve službě Azure Database pro MariaDB
 
@@ -52,7 +52,7 @@ K dispozici jsou dva typy obnovení:
 Odhadovaný čas obnovení závisí na několika faktorech včetně velikosti databáze, velikost protokolu transakcí, šířky pásma sítě a celkový počet obnovovaných databází ve stejné oblasti ve stejnou dobu. Čas obnovení je obvykle méně než 12 hodin.
 
 > [!IMPORTANT]
-> Odstranit servery **nelze** obnovit. Při odstranění serveru, odstraní se také všechny databáze, které patří k serveru a nelze ji obnovit.
+> Odstranit servery **nelze** obnovit. Při odstranění serveru, odstraní se také všechny databáze, které patří k serveru a nelze ji obnovit. Pokud chcete chránit prostředky serveru, po nasazení, z náhodnému odstranění nebo neočekávaným změnám, správci můžou využívat [zámky pro správu](https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-group-lock-resources).
 
 ### <a name="point-in-time-restore"></a>Obnovení k určitému bodu v čase
 

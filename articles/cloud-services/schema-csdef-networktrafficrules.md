@@ -13,14 +13,14 @@ caps.latest.revision: 17
 author: jpconnock
 ms.author: jeconnoc
 manager: timlt
-ms.openlocfilehash: 71c791c9ac6f679f0f67b014c8fb5dd915d1a3e3
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: 8925943b0a5d151d55adedcfe3f01b5a14c63c1b
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39004400"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55821676"
 ---
-# <a name="azure-cloud-services-definition-networktrafficrules-schema"></a>Schéma NetworkTrafficRules definice služby Azure Cloud Services
+# <a name="azure-cloud-services-definition-networktrafficrules-schema"></a>Azure Cloud Services Definition NetworkTrafficRules Schema
 `NetworkTrafficRules` Uzlu je volitelný prvek v souboru definice služby, která určuje způsob komunikace rolí mezi sebou. Omezuje rolí můžete přístup ke koncovým bodům s interním konkrétní role. `NetworkTrafficRules` Není samostatný prvek; se zkombinuje s dvěma nebo více rolí v definičním souboru služby.
 
 Výchozí přípona pro definiční soubor služby je .csdef.
@@ -52,13 +52,13 @@ Základní formát souboru definice služby obsahující definice provozu sítě
 
 [NetworkTrafficRules Element](#NetworkTrafficRules)
 
-[OnlyAllowTrafficTo – Element](#OnlyAllowTrafficTo)
+[OnlyAllowTrafficTo Element](#OnlyAllowTrafficTo)
 
 [Element cíle](#Destinations)
 
 [RoleEndpoint – Element](#RoleEndpoint)
 
-[AllowAllTraffic – Element](#AllowAllTraffic)
+AllowAllTraffic – Element
 
 [WhenSource – Element](#WhenSource)
 
@@ -76,7 +76,7 @@ Základní formát souboru definice služby obsahující definice provozu sítě
 ##  <a name="RoleEndpoint"></a> RoleEndpoint – Element
 `RoleEndpoint` Element popisuje role a povolit komunikaci s koncový bod. Lze zadat více `RoleEndpoint` elementů, pokud existuje více než jeden koncový bod v roli.
 
-| Atribut      | Typ     | Popis |
+| Atribut      | Type     | Popis |
 | -------------- | -------- | ----------- |
 | `endpointName` | `string` | Povinná hodnota. Název koncového bodu, která umožňují přenosy na.|
 | `roleName`     | `string` | Povinná hodnota. Název webové role pro byla povolena komunikace s.|
@@ -87,14 +87,14 @@ Základní formát souboru definice služby obsahující definice provozu sítě
 ##  <a name="WhenSource"></a> WhenSource – Element
 `WhenSource` Element popisuje kolekci rolí, než může komunikovat s koncovými body, definované v `Destinations` uzlu.
 
-| Atribut | Typ     | Popis |
+| Atribut | Type     | Popis |
 | --------- | -------- | ----------- |
 | `matches` | `string` | Povinná hodnota. Určuje pravidlo platit při povolení komunikace. Jediná platná hodnota je aktuálně `AnyRule`.|
   
 ##  <a name="FromRole"></a> FromRole – Element
 `FromRole` Prvek určuje role, které mohou komunikovat s koncovými body, definované v `Destinations` uzlu. Lze zadat více `FromRole` elementů, pokud existuje více než jednu roli, který může komunikovat s koncovými body.
 
-| Atribut  | Typ     | Popis |
+| Atribut  | Type     | Popis |
 | ---------- | -------- | ----------- |
 | `roleName` | `string` | Povinná hodnota. Název role, ze kterého chcete povolit komunikaci.|
 

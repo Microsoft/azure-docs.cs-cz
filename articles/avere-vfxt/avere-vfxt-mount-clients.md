@@ -6,19 +6,19 @@ ms.service: avere-vfxt
 ms.topic: conceptual
 ms.date: 10/31/2018
 ms.author: v-erkell
-ms.openlocfilehash: 5d55879a5a8487636e2252abd359accf07e60ce6
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: 41065b4ac6bc486e204c2bfd72b78ba8722270c4
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50633801"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55809157"
 ---
-# <a name="mount-the-avere-vfxt-cluster"></a>Připojení ke clusteru vFXT Avere  
+# <a name="mount-the-avere-vfxt-cluster"></a>Připojení clusteru Avere vFXT  
 
 Postupujte podle těchto kroků se připojíte ke svému clusteru vFXT klientské počítače.
 
 1. Rozhodněte, jak vyrovnávat zatížení klientského provozu mezi uzly clusteru. Čtení [Vyrovnávání zatížení klienta](#balance-client-load)níže, pro podrobnosti. 
-1. Identifikujte [IP adresy a spojovací cesty](#identify-ip-addresses-and-paths-to-mount) připojit.
+1. Určete IP adresu a spojení cestu pro připojení.
 1. Problém [příkaz připojení](#mount-command-arguments), s příslušnými argumenty.
 
 ## <a name="balance-client-load"></a>Vyrovnání zatížení klienta
@@ -28,7 +28,7 @@ Abychom požadavky klientů rovnováhu mezi všechny uzly v clusteru, by měl p�
 > [!TIP] 
 > Jiné metody vyrovnávání zatížení může být vhodné pro velký nebo komplikovaný systémů: [vytvořit lístek podpory](avere-vfxt-open-ticket.md#open-a-support-ticket-for-your-avere-vfxt) nápovědu.)
 > 
-> Pokud chcete použít DNS server pro vyrovnávání zatížení automatické na straně serveru, musíte nastavit a spravovat vlastní server DNS v rámci Azure. V takovém případě můžete nakonfigurovat kruhové dotazování DNS pro cluster vFXT podle tohoto dokumentu: [konfigurace DNS clusteru Avere](avere-vfxt-configure-dns.md).
+> Pokud chcete použít DNS server pro vyrovnávání zatížení automatické na straně serveru, musíte nastavit a spravovat vlastní server DNS v rámci Azure. V takovém případě můžete nakonfigurovat kruhové dotazování DNS pro cluster vFXT podle tohoto dokumentu: [Konfigurace DNS clusteru Avere](avere-vfxt-configure-dns.md).
 
 ### <a name="sample-balanced-client-mounting-script"></a>Ukázka vyvážené klienta připojení skriptu
 
@@ -68,7 +68,7 @@ Z klienta ``mount`` příkazu mapování virtuálního serveru (vserver) na clus
 
 Existují tři elementy pro tento příkaz: 
 
-* Cesta vFXT - (kombinaci IP adresy a obor názvů spojovací cesty popsané [níže](#junction-and-ip-address))
+* Cesta vFXT - (kombinaci IP adresy a obor názvů spojovací cesty popsaných níže)
 * místní cesta - cesta na straně klienta 
 * příkaz Možnosti - připojení (uvedené v [připojit argumenty příkazu](#mount-command-arguments))
 

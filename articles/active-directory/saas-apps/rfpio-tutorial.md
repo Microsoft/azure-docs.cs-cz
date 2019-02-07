@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/16/2017
 ms.author: jeedes
-ms.openlocfilehash: 0b216d8a8a2c6e1ab7c7b71eedfca9cbd6dbd5cf
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 23d745e084bf3439d8400b0cd6ac43bac75c7751
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55197343"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55815689"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-rfpio"></a>Kurz: Integrace Azure Active Directory s RFPIO
 
@@ -88,11 +88,11 @@ V RFPIO, přiřaďte hodnotu **uživatelské jméno** ve službě Azure AD jako 
 
 Nakonfigurovat a otestovat Azure AD jednotné přihlašování s RFPIO, které potřebujete k dokončení následujících stavebních bloků:
 
-1. **[Konfigurovat Azure AD Single Sign-On](#configuring-azure-ad-single-sign-on)**– aby uživatelé mohli tuto funkci používat.
-1. **[Vytvořit testovacího uživatele Azure AD](#creating-an-azure-ad-test-user)**– k otestování služby Azure AD jednotné přihlašování s Britta Simon.
-1. **[Vytvoření zkušebního uživatele RFPIO](#creating-a-rfpio-test-user)**  – obsahovat protějšek Britta Simon RFPIO, který je propojený s Azure AD reprezentace uživatele.
-1. **[Přiřadit uživatele Azure AD](#assigning-the-azure-ad-test-user)**– povolit Britta Simon používat Azure AD jednotného přihlašování.
-1. **[Otestovat jednotné přihlašování](#testing-single-sign-on)**  – Chcete-li ověřit, pokud konfigurace funguje.
+1. **Konfigurovat Azure AD Single Sign-On**– aby uživatelé mohli tuto funkci používat.
+1. **Vytvořit testovacího uživatele Azure AD**– k otestování služby Azure AD jednotné přihlašování s Britta Simon.
+1. **Vytvoření zkušebního uživatele RFPIO** – obsahovat protějšek Britta Simon RFPIO, který je propojený s Azure AD reprezentace uživatele.
+1. **Přiřadit uživatele Azure AD**– povolit Britta Simon používat Azure AD jednotného přihlašování.
+1. **Otestovat jednotné přihlašování** – Chcete-li ověřit, pokud konfigurace funguje.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Konfigurace služby Azure AD jednotného přihlašování
 

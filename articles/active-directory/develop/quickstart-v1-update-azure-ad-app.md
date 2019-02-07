@@ -16,12 +16,12 @@ ms.date: 09/24/2018
 ms.author: celested
 ms.custom: aaddev
 ms.reviewer: lenalepa, sureshja
-ms.openlocfilehash: 437217bdd3cc2ae8724d6bf24134d8fe725daac7
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.openlocfilehash: 34d0c4054273babcc56516d290857c4ddb554bf7
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55093304"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55819089"
 ---
 # <a name="quickstart-update-an-application-in-azure-active-directory"></a>Rychlý start: Aktualizace aplikace v Azure Active Directory
 
@@ -156,7 +156,7 @@ Při registraci aplikace v Azure AD možná budete chtít svou aplikaci zpříst
 Je důležité uvědomit si rozdíly mezi aplikací s jedním a více tenanty:  
 
 - Aplikace s jedním tenantem je určená k použití v jedné organizaci. Obvykle se jedná o podnikovou aplikaci napsanou podnikovým vývojářem. K aplikaci s jedním tenantem mají přístup pouze uživatelé s účty ve stejném tenantovi, ve kterém je i registrace aplikace. Proto je potřeba ji zřídit pouze v jednom adresáři.
-- Aplikace s více tenanty je určená k použití ve více organizacích. Obvykle jde o aplikaci napsanou nezávislým výrobcem softwaru (ISV) a označuje se jako webová aplikace softwaru jako služby (SaaS). Aplikace s více klienty se musí zřizovat v každém tenantovi, do kterého potřebují uživatelé získat přístup. U všech tenantů (kromě tenanta, ve kterém je aplikace zaregistrovaná) je potřeba souhlas uživatele nebo správce, aby se aplikace mohla zaregistrovat. Nativní klientské aplikace mají ve výchozím nastavení více tenantů, protože jsou nainstalované na zařízení vlastníka prostředku. Podrobnosti o udělení souhlasu najdete v předchozí části s [přehledem rozhraní pro udělování souhlasu](#overview-of-the-consent-framework).
+- Aplikace s více tenanty je určená k použití ve více organizacích. Obvykle jde o aplikaci napsanou nezávislým výrobcem softwaru (ISV) a označuje se jako webová aplikace softwaru jako služby (SaaS). Aplikace s více klienty se musí zřizovat v každém tenantovi, do kterého potřebují uživatelé získat přístup. U všech tenantů (kromě tenanta, ve kterém je aplikace zaregistrovaná) je potřeba souhlas uživatele nebo správce, aby se aplikace mohla zaregistrovat. Nativní klientské aplikace mají ve výchozím nastavení více tenantů, protože jsou nainstalované na zařízení vlastníka prostředku. Zobrazit předchozí přehled oddíl framework souhlasu podrobnosti na rozhraní pro udělování souhlasu.
 
 Převedení aplikace na aplikaci s více tenanty vyžaduje jak změny v registraci aplikace, tak i změny v samotné webové aplikaci. Následující část se věnuje oběma změnám.
 
@@ -184,7 +184,7 @@ Podpora aplikací s více tenanty do značné míry závisí na rozhraní pro ud
 Webová aplikace může také nabízet:
 
 - Možnost pro správce „přihlásit svou společnost“. Tomu se zase říká „souhlas správce“, který dává správci možnost udělit souhlas jménem *všech uživatelů* v organizaci. Souhlas správce může poskytnout pouze uživatel, který provede ověření pomocí účtu patřícímu roli globálního správce. Ostatním se zobrazí chyba.
-- Registrační prostředí pro uživatele. Očekává se, že se uživatelům zobrazí tlačítko k zaregistrování, které je přesměruje na koncový bod OAuth 2.0 `/authorize` nebo OpenID Connect `/userinfo`. Tyto koncové body umožňují aplikaci získat informace o novém uživateli zkontrolováním tokenu id_token. Po fázi registrace se uživateli zobrazí dialogové okno pro vyjádření souhlasu podobné tomu v části s [přehledem rozhraní pro udělování souhlasu](#overview-of-the-consent-framework).
+- Registrační prostředí pro uživatele. Očekává se, že se uživatelům zobrazí tlačítko k zaregistrování, které je přesměruje na koncový bod OAuth 2.0 `/authorize` nebo OpenID Connect `/userinfo`. Tyto koncové body umožňují aplikaci získat informace o novém uživateli zkontrolováním tokenu id_token. Následující fáze registrace uživateli zobrazí s výzvou souhlasu, podobný tomu vidíte v přehledu vyjádření souhlasu oddíl framework.
 
 Pro další informace o změnách aplikace, které se vyžadují pro podporu přístupu s více tenanty a prostředí pro přihlášení a registraci, si pročtěte:
 

@@ -10,16 +10,16 @@ ms.devlang: multiple
 ms.topic: overview
 ms.date: 12/22/2018
 ms.author: azfuncdf, glenga
-ms.openlocfilehash: caeeaae4dca99a2522d767a5a4a18f0818a2fa7f
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: 4c7b4733d05f18d3c30e45fd08c3cf9c50354ebc
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54044106"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55816085"
 ---
-# <a name="what-is-durable-functions"></a>Co je odolná služba Functions?
+# <a name="what-are-durable-functions"></a>Co jsou odolná služba Functions?
 
-*Odolná služba Functions* je rozšířením [Azure Functions](../functions-overview.md) , který umožňuje zapisovat stavové funkce v prostředí bez serveru. Rozšíření spravuje stav, kontrolní body a restartuje za vás.
+*Odolná služba Functions* jsou rozšíření [Azure Functions](../functions-overview.md) , který umožňuje zapisovat stavové funkce v prostředí bez serveru. Toto rozšíření za vás spravuje stav, kontrolní body a restartování.
 
 ## <a name="benefits"></a>Výhody
 
@@ -35,7 +35,7 @@ Případem primárního použití pro Durable Functions je zjednodušuje složit
 
 * [Řetězení](durable-functions-concepts.md#chaining)
 * [FAN odesílací/fan v](durable-functions-concepts.md#fan-in-out)
-* [Asynchronní rozhraní API HTTP](durable-functions-concepts.md#async-http)
+* [Async HTTP APIs](durable-functions-concepts.md#async-http)
 * [Monitorování](durable-functions-concepts.md#monitoring)
 * [Lidská interakce](durable-functions-concepts.md#human)
 

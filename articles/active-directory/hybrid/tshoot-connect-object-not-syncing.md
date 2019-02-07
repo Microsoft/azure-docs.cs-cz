@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 08/10/2018
 ms.subservice: hybrid
 ms.author: billmath
-ms.openlocfilehash: 7b43b0e0676cc31938bf64cf84f9e6799c2dd3dd
-ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
+ms.openlocfilehash: 4336cabd256e492981e1bbff8d1b3b9e4ef07df1
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55296592"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55820517"
 ---
 # <a name="troubleshoot-an-object-that-is-not-synchronizing-to-azure-ad"></a>Řešení potíží s objekt, který se nesynchronizuje do Azure AD
 
@@ -143,7 +143,7 @@ Můžete si prohlédnout objekt a které pravidlo použito pro konkrétní atrib
 Na stránce protokol umožňuje zobrazit stav synchronizace hesla a historie. Další informace najdete v tématu [řešit synchronizaci hodnot hash hesel](tshoot-connect-password-hash-synchronization.md).
 
 ## <a name="metaverse-object-properties"></a>Vlastnosti objektu úložiště Metaverse
-Je obvykle vhodnější spustit vyhledávání od zdroje služby Active Directory [prostoru konektoru](#connector-space). Ale můžete také spustit vyhledávání od úložiště metaverse.
+Je obvykle vhodnější spustit hledání ze zdrojové prostoru konektoru Active Directory. Ale můžete také spustit vyhledávání od úložiště metaverse.
 
 ### <a name="search-for-an-object-in-the-mv"></a>Vyhledání objektu v MV
 V **Synchronization Service Manager**, klikněte na tlačítko **vyhledávání Metaverse**. Vytvořte dotaz, které už znáte, vyhledá uživatele. Můžete vyhledat společné atributy, jako je například accountName (sAMAccountName) ani atribut userPrincipalName. Další informace najdete v tématu [vyhledávání Metaverse](how-to-connect-sync-service-manager-ui-mvsearch.md).
@@ -195,6 +195,5 @@ Pokud vám chybí konektor ke službě Azure AD, pak si můžete přečíst [MV 
 Na této kartě můžete také přejít na [objekt prostoru konektoru](#connector-space-object-properties). Vyberte řádek a klikněte na tlačítko **vlastnosti**.
 
 ## <a name="next-steps"></a>Další postup
-Další informace o [synchronizace Azure AD Connect](how-to-connect-sync-whatis.md) konfigurace.
-
-Přečtěte si další informace o [Integrování místních identit do služby Azure Active Directory](whatis-hybrid-identity.md).
+- [Synchronizace Azure AD Connect](how-to-connect-sync-whatis.md).
+- [Co je hybridní identitu? ](whatis-hybrid-identity.md).

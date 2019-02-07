@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/17/2018
 ms.author: bwren
-ms.openlocfilehash: 034c82c2f52f0a4dbc19b49308d1ba4308716d45
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: 5b01b55c8b2367861459069cc255840e883b9fc5
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53186799"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55817379"
 ---
 # <a name="reference-guide-to-view-designer-tiles-in-log-analytics"></a>Referenční příručka pro dlaždice Návrhář zobrazení v Log Analytics
 Pomocí návrháře zobrazení v Azure Log Analytics můžete vytvořit vlastní zobrazení na webu Azure Portal, který k dispozici různé vizualizace dat ve vašem pracovním prostoru Log Analytics. Tento článek je referenční příručka k nastavení pro dlaždice, které jsou k dispozici do vlastních zobrazení.
@@ -36,7 +36,7 @@ K dispozici Návrhář zobrazení dlaždic jsou popsány v následující tabulc
 | [Číslo](#number-tile) |Počet záznamů z dotazu. |
 | [Dvou čísel.](#two-numbers-tile) |Počty záznamy ze dvou různých dotazů. |
 | [Prstencový](#donut-tile) | Graf, který je založena na dotazu, s souhrnnou hodnotu v centru. |
-| [Spojnicový graf a popisek](#line-chart-amp-callout-tile) | Spojnicový graf, který je založen na dotaz a popisek s souhrnnou hodnotu. |
+| Spojnicový graf a popisek | Spojnicový graf, který je založen na dotaz a popisek s souhrnnou hodnotu. |
 | [Spojnicový graf](#line-chart-tile) |Spojnicový graf, která je založena na dotazu. |
 | [Dvě časové osy](#two-timelines-tile) | Sloupcový graf s dvou řad, každou na základě samostatný dotaz. |
 
@@ -92,7 +92,7 @@ Tuto dlaždici se zobrazuje počet záznamů z dotazů na dva různé protokoly 
 | Popis |Text, který se zobrazí v části název této dlaždice. |
 | **Prstencový** | |
 | Dotaz |Dotaz, který se spouští pro prstencovém. Textová hodnota, která je první vlastnost a druhá vlastnost je číselná hodnota. Tento dotaz se obvykle používá *míru* – klíčové slovo slouží ke shrnutí výsledků. |
-| **Prstencový** |**> System center** |
+| **Prstencový** |**> Center** |
 | Text |Text, který se zobrazí v části v prstencovém hodnotu. |
 | Operace |Operace, která se provádí na vlastnost value slouží ke shrnutí jako jedinou hodnotu.<ul><li>Součet: Přidejte hodnoty všech záznamů s hodnotou vlastnosti.</li><li>Procento: Procento sečtené hodnoty ze záznamů s hodnotou vlastnosti v porovnání s sečtené hodnoty všechny záznamy.</li></ul> |
 | Hodnoty výsledku, které se zobrazí ve středu |Volitelně vyberte znaménko plus (+) přidejte jednu nebo více hodnot. Výsledky dotazu jsou omezené na záznamy s hodnotami vlastností, které zadáte. Pokud jsou přidány žádné hodnoty, jsou zahrnuty všechny záznamy v dotazu. |
@@ -137,7 +137,7 @@ Tuto dlaždici má oba řádek graf této zobrazí více řad z protokolu dotaz 
 | Popis |Text, který se zobrazí v části název této dlaždice. |
 | **Spojnicový graf** | |
 | Dotaz |Dotaz, který se spouští pro spojnicový graf. Textová hodnota, která je první vlastnost a druhá vlastnost je číselná hodnota. Tento dotaz se obvykle používá *míru* – klíčové slovo slouží ke shrnutí výsledků. Pokud dotaz používá *interval* – klíčové slovo, osu x používá tento časový interval. Pokud dotaz nepoužívá *interval* – klíčové slovo, hodinových intervalech používá osy x. |
-| **Spojnicový graf** |**> Popis obrázku** |
+| **Spojnicový graf** |**> Callout** |
 | Název popisku | Text, který se zobrazí nad hodnotou popisku. |
 | Název řady |Hodnota vlastnosti řady má být použit jako hodnota popisku. Pokud je k dispozici žádné řady, použijí se všechny záznamy z dotazu. |
 | Operace |Operace, která se provádí na vlastnost value slouží ke shrnutí jako jednu hodnotu pro popisek.<ul><li>Průměr: Průměr hodnot ze všech záznamů.</li><li>Počet: Počet všech záznamů, které jsou vrácené dotazem.</li><li>Poslední vzorek: Hodnota posledního intervalu, který je součástí grafu.</li><li>Max: Maximální hodnota intervalů, které jsou zahrnuty v grafu.</li><li>Min: Minimální hodnota intervalů, které jsou zahrnuty v grafu.</li><li>Součet: Součet hodnot ze všech záznamů.</li></ul> |

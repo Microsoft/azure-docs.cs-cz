@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 05/25/2017
 ms.author: hrasheed
 ROBOTS: NOINDEX
-ms.openlocfilehash: fada29145334a45872aa64b3cc0fe2e859b52568
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.openlocfilehash: 311e2ee65b2c24eb1c288a2161bf371732aea452
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53632887"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55817656"
 ---
 # <a name="analyze-flight-delay-data-by-using-apache-hive-in-hdinsight"></a>Analyzovat zpoždění letů pomocí Apache Hive v HDInsight
 [Apache Hive](https://hive.apache.org/) poskytuje způsob spuštění [Apache Hadoop MapReduce](https://hadoop.apache.org/docs/r1.2.1/mapred_tutorial.html) úlohy prostřednictvím skriptovacím jazyce podobném SQL volat *[HiveQL] [ hadoop-hiveql]*, který je možné použít ke shrnutí, dotazování a analýze velkých objemů dat.
@@ -30,7 +30,7 @@ Jeden z největších výhod Azure HDInsight je oddělení dat úložiště a v�
 
 Následující diagram znázorňuje tento scénář a struktura v tomto kurzu:
 
-![HDI. FlightDelays.flow][img-hdi-flightdelays-flow]
+![HDI.FlightDelays.flow][img-hdi-flightdelays-flow]
 
 Všimněte si, že čísla v diagramu odpovídají nadpisy oddílů. **M** zastupuje hlavní proces. **A** zkratka pro obsah v dodatku.
 
@@ -232,7 +232,7 @@ Další informace o vytváření clusteru služby HDInsight a spouštění úloh
     ```
 3. Připojení k SQL database a zpoždění letů průměrné podle měst v tabulce AvgDelays naleznete v tématu:
 
-    ![HDI. FlightDelays.AvgDelays.Dataset][image-hdi-flightdelays-avgdelays-dataset]
+    ![HDI.FlightDelays.AvgDelays.Dataset][image-hdi-flightdelays-avgdelays-dataset]
 
 - - -
 
@@ -240,7 +240,7 @@ Další informace o vytváření clusteru služby HDInsight a spouštění úloh
 Nahrání datového souboru a [HiveQL](https://cwiki.apache.org/confluence/display/Hive/LanguageManual) soubory skriptů (viz [dodatku B](#appendix-b)) vyžaduje plánování. Cílem je ukládat datové soubory a soubor HiveQL před vytvořením clusteru služby HDInsight a spuštění úlohy Hive. Máte dvě možnosti:
 
 * **Použijte stejný účet Azure Storage, který se použije jako výchozí systém souborů v clusteru HDInsight.** Vzhledem k tomu, že HDInsight cluster bude mít přístupový klíč účtu úložiště, není nutné provádět žádné další změny.
-* **Použijte jiný účet služby Azure Storage z výchozího systému souborů clusteru HDInsight.** Pokud je to tento případ, je třeba upravit vytváření součástí prostředí Windows PowerShell skriptu najdete v [clusteru HDInsight vytvořit a spouštět úlohy Apache Hive a Sqoop](#runjob) propojit účet úložiště jako další účet úložiště. Pokyny najdete v tématu [vytvořit Apache Hadoop clusterů v HDInsight][hdinsight-provision]. HDInsight cluster pak zná přístupový klíč pro účet úložiště.
+* **Použijte jiný účet služby Azure Storage z výchozího systému souborů clusteru HDInsight.** Pokud je to tento případ, je třeba upravit vytváření součástí prostředí Windows PowerShell skriptu se v clusteru HDInsight vytvořit a spouštět úlohy Apache Hive a Sqoop k propojení účtu úložiště jako další účet úložiště. Pokyny najdete v tématu [vytvořit Apache Hadoop clusterů v HDInsight][hdinsight-provision]. HDInsight cluster pak zná přístupový klíč pro účet úložiště.
 
 > [!NOTE]  
 > Cesta objektu Blob úložiště pro datový soubor je zakódovaný v souboru skript HiveQL. Je třeba jej aktualizovat odpovídajícím způsobem.
@@ -254,7 +254,7 @@ Nahrání datového souboru a [HiveQL](https://cwiki.apache.org/confluence/displ
     <tr><th>Název</th><th>Hodnota</th></tr>
     <tr><td>Filter Year (Filtr roku)</td><td>2013 </td></tr>
     <tr><td>Filter Period (Filtr období)</td><td>January (Leden)</td></tr>
-    <tr><td>Fields (Pole)</td><td>*Rok*, *FlightDate*, *UniqueCarrier*, *dopravce*, *FlightNum*, *OriginAirportID*, *Původu*, *OriginCityName*, *OriginState*, *DestAirportID*, *Dest*, *DestCityName*, *DestState*, *DepDelayMinutes*, *ArrDelay*,  *ArrDelayMinutes*, *CarrierDelay*, *WeatherDelay*, *NASDelay*, *SecurityDelay*,  *LateAircraftDelay* (zrušte zaškrtnutí všech ostatních polí)</td></tr>
+    <tr><td>Pole</td><td>*Rok*, *FlightDate*, *UniqueCarrier*, *dopravce*, *FlightNum*, *OriginAirportID*, *Původu*, *OriginCityName*, *OriginState*, *DestAirportID*, *Dest*, *DestCityName*, *DestState*, *DepDelayMinutes*, *ArrDelay*,  *ArrDelayMinutes*, *CarrierDelay*, *WeatherDelay*, *NASDelay*, *SecurityDelay*,  *LateAircraftDelay* (zrušte zaškrtnutí všech ostatních polí)</td></tr>
     </table>
 
 3. Klikněte na **Stáhnout**.

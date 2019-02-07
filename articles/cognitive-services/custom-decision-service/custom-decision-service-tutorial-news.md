@@ -10,12 +10,12 @@ ms.subservice: custom-decision-service
 ms.topic: tutorial
 ms.date: 05/08/2018
 ms.author: slivkins
-ms.openlocfilehash: 1589ef94946a6396ee51b8fecfe2ed3e80db08e5
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: fce90c05fb2e79be23cfd7a58875f8cb6b3ddbf7
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55212218"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55819769"
 ---
 # <a name="tutorial-article-personalization-for-contextual-decision-making"></a>Kurz: Přizpůsobení článku kontextové rozhodování
 
@@ -44,7 +44,7 @@ Každý informační kanál poskytuje seznam článků. V RSS je každý z nich 
 </channel></rss>
 ```
 
-Pořadí článků je důležité. Určuje výchozí pořadí, což je váš nejlepší odhad pro uspořádání článků. Výchozí pořadí se pak použije k porovnání výkonu na [řídicím panelu](#performance-dashboard).
+Pořadí článků je důležité. Určuje výchozí pořadí, což je váš nejlepší odhad pro uspořádání článků. Výchozí pořadí se pak použije k porovnání výkonu na řídicím panelu.
 
 Další informace o formátu informačního kanálu najdete v [referenčních informacích k rozhraní API](custom-decision-service-api-reference.md#action-set-api-customer-provided).
 

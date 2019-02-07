@@ -8,12 +8,12 @@ ms.subservice: gateway
 ms.topic: article
 ms.date: 01/15/2019
 ms.author: alkohli
-ms.openlocfilehash: f01fb88bf0ea726b421111a262bdfdd68cd3d38c
-ms.sourcegitcommit: 9f07ad84b0ff397746c63a085b757394928f6fc0
+ms.openlocfilehash: acf455bff739666712917008dc8090c6a95c6dc4
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54388428"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55815639"
 ---
 # <a name="azure-data-box-gateway-limits-preview"></a>Omezení pro Azure Data Box brány (Preview)
 
@@ -26,7 +26,7 @@ Jak nasadit a provozovat řešení Microsoft Azure Data Box brány vezměte v ú
 
 ## <a name="data-box-gateway-service-limits"></a>Omezení služby data Box brány
 
-- V této verzi služba je k dispozici pouze v určitých oblastech v USA, Evropa a Asie a Tichomoří. Další informace najdete v části věnované [dostupnosti v oblastech](#data-box-gateway-overview#region-availability). Účet úložiště by měl být fyzicky nejblíž k oblasti, které se nasadí zařízení (může se lišit od služby geograficky).
+- V této verzi služba je k dispozici pouze v určitých oblastech v USA, Evropa a Asie a Tichomoří. Další informace přejděte na dostupnost v oblastech. Účet úložiště by měl být fyzicky nejblíž k oblasti, které se nasadí zařízení (může se lišit od služby geograficky).
 - Přesunutí prostředku brány dat pole jiné předplatné nebo skupinu prostředků se nepodporuje. Další podrobnosti najdete v části [přesunutí prostředků do nové skupiny prostředků nebo předplatného](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-move-resources).
 
 ## <a name="data-box-gateway-device-limits"></a>Omezení zařízení data Box Gateway

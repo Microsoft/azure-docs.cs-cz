@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/18/2018
 ms.author: juliako
-ms.openlocfilehash: 06ecdf31c2627eda5bf651667703ddcf39c9d307
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.openlocfilehash: 24ee0083ec79265f0ac4dfc0a2e235bc72522831
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53604095"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55813887"
 ---
 # <a name="configure-postman-for-media-services-rest-api-calls"></a>Konfigurace nástroje Postman pro volání REST API služby Media Services
 
@@ -57,7 +57,7 @@ Tato část popisuje konfiguraci nástroje Postman.
     > [!Note]
     > Aktualizujte přístupové proměnné pomocí hodnot, které jste získali výše v části **Přístup k rozhraní API služby Media Services**.
 
-7. Poklikejte na vybraný soubor a zadejte hodnoty, které jste získali v postupu pro [přístup k rozhraní API](#access-the-media-services-api).
+7. Dvakrát klikněte na vybraný soubor a zadejte hodnoty, které jste získali podle pokynů přístup k rozhraní API.
 8. Zavřete dialogové okno.
 9. Z rozevíracího seznamu vyberte prostředí **Azure Media Service v3 Environment**.
 

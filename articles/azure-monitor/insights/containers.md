@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 02/05/2019
 ms.author: magoedte
-ms.openlocfilehash: 9cf64f98e0a06fc063340f39326fdc1c12645db8
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.openlocfilehash: 7d538695fe7c920bbd22fcfb0e097220aa249f07
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55756440"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55811813"
 ---
 # <a name="container-monitoring-solution-in-log-analytics"></a>Řešení pro monitorování kontejnerů ve službě Log Analytics
 
@@ -100,16 +100,16 @@ K instalaci a konfiguraci řešení můžete použít následující informace.
 2. Nainstalovat a používat Docker pomocí agenta Log Analytics. Na základě vašeho operačního systému a orchestrátor Docker, můžete použít následující metody konfigurace agenta.
   - Pro samostatné hostitele:
     - Na podporovaných operačních systémech Linux, instalace a spuštění Dockeru a pak nainstalujte a nakonfigurujte [agenta Log Analytics pro Linux](../../azure-monitor/learn/quick-collect-linux-computer.md).  
-    - V systému CoreOS nelze spustit agenta Log Analytics pro Linux. Místo toho spustíte kontejnerizovaných verzi agenta Log Analytics pro Linux. Kontrola [hostitelé kontejneru s Linuxem včetně CoreOS](#for-all-linux-container-hosts-including-coreos) nebo [hostitelích kontejnerů Azure Government s Linuxem, včetně CoreOS](#for-all-azure-government-linux-container-hosts-including-coreos) při práci s kontejnery v cloudu Azure Government.
+    - V systému CoreOS nelze spustit agenta Log Analytics pro Linux. Místo toho spustíte kontejnerizovaných verzi agenta Log Analytics pro Linux. Projděte si včetně CoreOS hostitelé kontejneru s Linuxem nebo hostitelích kontejnerů Azure Government s Linuxem, včetně CoreOS při práci s kontejnery v cloudu Azure Government.
     - V systému Windows Server 2016 a Windows 10 nainstalujte klienta a modul Docker potom připojit agenta k shromažďování informací a jejich odesílání do Log Analytics. Kontrola [instalace a konfigurace hostitelů Windows kontejneru](#install-and-configure-windows-container-hosts) Pokud používáte prostředí Windows.
   - Orchestrace prostřednictvím Docker více hostitelů:
-    - Pokud máte v prostředí Red Hat OpenShift, přečtěte si [konfigurace agenta Log Analytics pro Red Hat OpenShift](#configure-an-oms-agent-for-red-hat-openshift).
+    - Pokud máte v prostředí Red Hat OpenShift, zkontrolujte konfigurace agenta Log Analytics pro Red Hat OpenShift.
     - Pokud máte cluster Kubernetes pomocí služby Azure Container Service:
        - Kontrola [konfigurace agenta Log Analytics Linux pro Kubernetes](#configure-a-log-analytics-linux-agent-for-kubernetes).
        - Kontrola [konfigurace agenta Log Analytics Windows pro Kubernetes](#configure-a-log-analytics-windows-agent-for-kubernetes).
-       - Kontrola [pomocí Helm nasadit agenta Log Analytics na Linux Kubernetes](#use-helm-to-deploy-oms-agent-on-linux-kubernetes).
+       - Zkontrolujte použití Helm nasadit agenta Log Analytics v Kubernetes s Linuxem.
     - Pokud máte cluster Azure Container Service DC/OS, další informace najdete na [monitorování clusteru služby Azure Container Service DC/OS pomocí Log Analytics](../../container-service/dcos-swarm/container-service-monitoring-oms.md).
-    - Pokud máte prostředí s režimem Docker Swarm, další informace najdete na [konfigurace agenta Log Analytics pro Docker Swarm](#configure-an-oms-agent-for-docker-swarm).
+    - Pokud máte prostředí s režimem Docker Swarm, další informace v konfigurace agenta Log Analytics pro Docker Swarm.
     - Pokud máte cluster Service Fabric, další informace najdete na [monitorování kontejnerů pomocí Log Analytics Log Analytics](../../service-fabric/service-fabric-diagnostics-oms-containers.md).
 
 Zkontrolujte [modul Docker na Windows](https://docs.microsoft.com/virtualization/windowscontainers/manage-docker/configure-docker-daemon) Další informace o tom, jak nainstalovat a nakonfigurovat váš moduly Docker v počítačích se systémem Windows.

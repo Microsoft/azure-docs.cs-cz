@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: 05ec5d1915c1b831e5c42a7a9ff0c0e79ad2f037
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
+ms.openlocfilehash: 8655265f5f793741c2d563d1e79d4565700e0128
+ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55735701"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55768514"
 ---
 # <a name="create-an-event-rule-and-set-up-notifications-in-your-azure-iot-central-application"></a>Vytvoření události pravidla a nastavení oznámení v aplikaci Azure IoT Central
 
@@ -89,7 +89,7 @@ V této části se dozvíte, jak vytvořit akce má provést, když se aktivuje 
 1. Zvolte **e-mailu** akce, zadejte platnou e-mailovou adresu **k** pole a zadejte poznámku vložit do těla e-mailu, když se pravidlo aktivuje.
 
     > [!NOTE]
-    > E-mailů se odesílají pouze pro uživatele, které byly přidány do aplikace a nejméně jednou přihlásili. Další informace o [Správa uživatelů](howto-administer.md?toc=/azure/iot-central-experimental/toc.json&bc=/azure/iot-central-experimental/breadcrumb/toc.json) v Azure IoT Central.
+    > E-mailů se odesílají pouze pro uživatele, které byly přidány do aplikace a nejméně jednou přihlásili. Další informace o [Správa uživatelů](howto-administer-experimental.md?toc=/azure/iot-central-experimental/toc.json&bc=/azure/iot-central-experimental/breadcrumb/toc.json) v Azure IoT Central.
 
    ![Konfigurace akce](media/howto-create-event-rules-experimental/Configure_Action.png)
 
@@ -97,8 +97,8 @@ V této části se dozvíte, jak vytvořit akce má provést, když se aktivuje 
 
 Pravidla, jako je Microsoft Flow a webhooky, můžete přidat další akce. Můžete přidat až 5 akcí na jedno pravidlo.
 
-- [Microsoft Flow akce](howto-add-microsoft-flow.md?toc=/azure/iot-central-experimental/toc.json&bc=/azure/iot-central-experimental/breadcrumb/toc.json) aktivovala pracovního postupu v Microsoft Flow, když se aktivuje pravidlo 
-- [Akce Webhooku](howto-create-webhooks.md?toc=/azure/iot-central-experimental/toc.json&bc=/azure/iot-central-experimental/breadcrumb/toc.json) upozornit jiné služby, když se aktivuje pravidlo
+- [Microsoft Flow akce](howto-add-microsoft-flow-experimental.md?toc=/azure/iot-central-experimental/toc.json&bc=/azure/iot-central-experimental/breadcrumb/toc.json) aktivovala pracovního postupu v Microsoft Flow, když se aktivuje pravidlo 
+- [Akce Webhooku](howto-create-webhooks-experimental.md?toc=/azure/iot-central-experimental/toc.json&bc=/azure/iot-central-experimental/breadcrumb/toc.json) upozornit jiné služby, když se aktivuje pravidlo
 
 ## <a name="parameterize-the-rule"></a>Parametrizovat pravidlo
 
@@ -120,6 +120,6 @@ Přejděte do zařízení a vyberte pravidlo, které chcete povolit nebo zakáza
 
 Teď, když jste se naučili, jak vytvořit pravidla v aplikaci Azure IoT Central, tady jsou některé další krok:
 
-- [Přidání akce Microsoft Flow v pravidlech](howto-add-microsoft-flow.md?toc=/azure/iot-central-experimental/toc.json&bc=/azure/iot-central-experimental/breadcrumb/toc.json)
-- [Přidání akce Webhooku v pravidlech](howto-create-webhooks.md?toc=/azure/iot-central-experimental/toc.json&bc=/azure/iot-central-experimental/breadcrumb/toc.json)
-- [Jak spravovat vaše zařízení](howto-manage-devices.md?toc=/azure/iot-central-experimental/toc.json&bc=/azure/iot-central-experimental/breadcrumb/toc.json)
+- [Přidání akce Microsoft Flow v pravidlech](howto-add-microsoft-flow-experimental.md?toc=/azure/iot-central-experimental/toc.json&bc=/azure/iot-central-experimental/breadcrumb/toc.json)
+- [Přidání akce Webhooku v pravidlech](howto-create-webhooks-experimental.md?toc=/azure/iot-central-experimental/toc.json&bc=/azure/iot-central-experimental/breadcrumb/toc.json)
+- [Jak spravovat vaše zařízení](howto-manage-devices-experimental.md?toc=/azure/iot-central-experimental/toc.json&bc=/azure/iot-central-experimental/breadcrumb/toc.json)

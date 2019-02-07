@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: conceptual
 ms.date: 01/15/2019
 ms.author: jamesbak
-ms.openlocfilehash: a3c6474c6b1c27c3b413d98d86cdadbcb61e2040
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: d49c8a8434dfa7202707731f46ea31c77d32541d
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55247285"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55812255"
 ---
 # <a name="quickstart-set-up-clusters-in-hdinsight"></a>Rychlý start: Nastavení clusterů v HDInsight
 
@@ -189,11 +189,11 @@ Další informace najdete v tématu [velikosti virtuálních počítačů](../..
 
 Sestavení vlastního clusteru instalační program na rychlé vytvoření nastavení a přidá následující možnosti:
 
-- [Aplikace HDInsight](#hdinsight-applications)
-- [Velikost clusteru](#cluster-size)
+- Aplikace HDInsight
+- Velikost clusteru
 - Upřesnit nastavení
-  - [Akce skriptů](#customize-clusters-using-script-action)
-  - [Virtuální síť](#use-virtual-network)
+  - Akce skriptů
+  - Virtuální síť
 
 ## <a name="install-hdinsight-applications-on-clusters"></a>Instalace aplikací HDInsight v clusterech
 

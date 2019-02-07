@@ -7,19 +7,19 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: mayg
-ms.openlocfilehash: b5f0a2a418c53a5049ebff9bba9188219a9aeb13
-ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
+ms.openlocfilehash: 16c37f5ccaed7c161ecaae65a07c5da7400aad3c
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2019
-ms.locfileid: "54321173"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55815064"
 ---
 # <a name="run-the-azure-site-recovery-deployment-planner-for-hyper-v-disaster-recovery-to-azure"></a>Spuštění plánovače nasazení služby Azure Site Recovery pro zotavení po havárii Hyper-V do Azure
 
 Site Recovery můžete spustit nástroj Plánovač nasazení příkazového řádku (ASRDeploymentPlanner.exe) v některém z těchto čtyř režimů: 
--   [Získání seznamu virtuálních počítačů](#get-vm-list-for-profiling-hyper-v-vms)
+-   Získání seznamu virtuálních počítačů (VM)
 -   [Profil](#profile-hyper-v-vms)
--   [Generování sestav](#generate-report)
+-   Generování sestav
 -   [Zjištění propustnosti](#get-throughput)
 
 Nejdřív nástroj spusťte pro získání seznamu virtuálních počítačů z jednoho nebo několika hostitelů Hyper-V. Potom nástroj spusťte v režimu profilace, aby shromáždil četnost změn dat a počet IOPS virtuálních počítačů. Dále spusťte nástroj v režimu generování sestav, abyste zjistili požadavky na šířku pásma sítě a na úložiště.
@@ -74,7 +74,7 @@ Nástroj provádí dotazování hostitele Hyper-V každých 15 sekund, aby se za
 Nástroj bezproblémově zpracovává migraci virtuálních počítačů mezi uzly v clusteru a migraci úložiště v rámci hostitele.
 
 ### <a name="getting-the-vm-list-to-profile"></a>Získání seznamu virtuálních počítačů pro profilaci
-Informace o vytvoření seznamu virtuálních počítačů pro profilaci najdete v operaci [GetVMList](#get-vm-list-for-profiling-hyper-v-vms).
+Vytvoření seznamu virtuálních počítačů pro profilaci najdete operace GetVMList.
 
 Jakmile budete mít seznam virtuálních počítačů určených k profilaci, můžete nástroj spustit v režimu profilace. 
 

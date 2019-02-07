@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 02/27/2017
 ms.author: alkohli
-ms.openlocfilehash: 6466dc1ec0dcaae6045fadfae7f3a552345be2e8
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.openlocfilehash: c0a86b76622862b477d539c25dd98c925f09192c
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54267281"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55812034"
 ---
 # <a name="deploy-storsimple-virtual-array--set-up-as-an-iscsi-server-via-azure-portal"></a>Nasazení virtuálních polí StorSimple – sady nahoru jako serveru iSCSI prostřednictvím portálu Azure portal
 
@@ -44,7 +44,7 @@ Než začnete konfigurovat a nastavit StorSimple Virtual Array, ujistěte se, ž
 Nastavit a nakonfigurovat StorSimple Virtual Array pomocí následujících kroků:
 
 * [Krok 1: Dokončete instalaci místního webového uživatelského rozhraní a zaregistrujte zařízení](#step-1-complete-the-local-web-ui-setup-and-register-your-device)
-* [Krok 2: Dokončení instalace požadované zařízení](#step-2-complete-the-required-device-setup)
+* Krok 2: Dokončení instalace požadované zařízení
 * [Krok 3: Přidat svazek](#step-3-add-a-volume)
 * [Krok 4: Připojení, inicializace a formátování svazků](#step-4-mount-initialize-and-format-a-volume)
 

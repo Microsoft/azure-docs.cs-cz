@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/29/2019
 ms.author: tomfitz
-ms.openlocfilehash: e47334a20072f4b9f4d1401b5dd1f848fa99df5a
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.openlocfilehash: 84f8d8ecbeacc5acb6b19462096e6fbd1aa45816
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55497311"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55810282"
 ---
 # <a name="move-resources-to-new-resource-group-or-subscription"></a>Přesunutí prostředků do nové skupiny prostředků nebo předplatného
 
@@ -239,7 +239,7 @@ Při přesouvání prostředků z jedné skupiny prostředků do jiné skupiny p
 * Pouze jeden účet úložiště (classic) je možné přesunout najednou.
 * Účet úložiště (classic) se nedají přesouvat v rámci jedné operace se virtuální počítač nebo cloudovou službu.
 
-Přesouvání klasických prostředků do nové skupiny prostředků v rámci stejného předplatného, můžete přesunout standardní operace, ať už [portál](#use-portal), [prostředí Azure PowerShell](#use-powershell), [rozhraní příkazového řádku Azure](#use-azure-cli), nebo [rozhraní REST API](#use-rest-api). Můžete použít stejné operace jako při přesouvání prostředků Resource Manageru.
+Přesouvání klasických prostředků do nové skupiny prostředků v rámci stejného předplatného, můžete přesunout standardní operace, ať už [portál](#use-portal), Azure Powershellu, rozhraní příkazového řádku Azure nebo rozhraní REST API. Můžete použít stejné operace jako při přesouvání prostředků Resource Manageru.
 
 #### <a name="new-subscription"></a>Nové předplatné
 

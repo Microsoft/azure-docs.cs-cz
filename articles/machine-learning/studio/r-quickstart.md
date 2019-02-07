@@ -10,12 +10,12 @@ author: ericlicoding
 ms.author: amlstudiodocs
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 01/06/2017
-ms.openlocfilehash: d56c44e299125b6b7d8aff429aa6352b8e653a16
-ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
+ms.openlocfilehash: 9fcdcc5f4e3e7a6aadb3749459562eb575deca2b
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55508653"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55822370"
 ---
 # <a name="quickstart-tutorial-for-the-r-programming-language-for-azure-machine-learning-studio"></a>Rychlý úvodní kurz pro programovací jazyk pro Azure Machine Learning Studio R
 
@@ -745,7 +745,7 @@ K provedení analýzy korelace musíme zrušit trend i standardizovat proměnné
 
 Je v poměrně bit děje `ts.detrend()` funkce. Většina tento kód kontroluje potenciální problémy s argumenty nebo nakládání s výjimkami, které můžou stále nastat během výpočtů. Stačí několik řádků tohoto kódu dělají výpočtů.
 
-Mít jsme již probírali příkladem obranné programování v [hodnoty transformace](#valuetransformations). Obě výpočtu bloky jsou zabaleny v `tryCatch()`. Některé chyby smysl vraťte původního vstupního vektoru a v jiných případech lze vrátit vektor nulami.  
+Už jsme projednat příkladem obranné programování v transformacích hodnotu. Obě výpočtu bloky jsou zabaleny v `tryCatch()`. Některé chyby smysl vraťte původního vstupního vektoru a v jiných případech lze vrátit vektor nulami.  
 
 Všimněte si, že lineární regrese, použít pro zrušení vzroste zájem o času řady regrese. Prediktivní proměnná je time series objekt.  
 

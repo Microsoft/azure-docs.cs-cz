@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 07/06/2016
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 1491068248d20a917e28db5a75dee3d4b3753f5c
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: 1c58574a96c07dcb4008682efdf96fba111d7b61
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53730926"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55810333"
 ---
 # <a name="back-up-your-app-in-azure"></a>Zálohování aplikace v Azure
 Funkce zálohování a obnovení v [služby Azure App Service](overview.md) umožňuje snadno vytvářet zálohy aplikací ručně, nebo podle plánu. Aplikaci můžete obnovit na snímek v předchozím stavu tak přepsání existující aplikace nebo při obnovování do jiné aplikace. 
@@ -52,7 +52,7 @@ Podporují se následující řešení databáze s funkcí zálohování:
 ## <a name="requirements-and-restrictions"></a>Požadavky a omezení
 * Funkce zálohování a obnovení vyžaduje plán služby App Service v **standardní** vrstvy nebo **Premium** vrstvy. Další informace o škálování plánu služby App Service na vyšší úroveň můžete použít, najdete v části [vertikální navýšení kapacity aplikace v Azure](web-sites-scale.md).  
   **Premium** úroveň umožňuje větší počet denních zpět ups než **standardní** vrstvy.
-* Potřebujete účet úložiště Azure a kontejnerů ve stejném předplatném jako aplikace, které chcete zálohovat. Další informace o účtech Azure storage, najdete v článku [odkazy](#moreaboutstorage) na konci tohoto článku.
+* Potřebujete účet úložiště Azure a kontejnerů ve stejném předplatném jako aplikace, které chcete zálohovat. Další informace o účtech Azure storage najdete v odkazech na konci tohoto článku.
 * Zálohování může být až 10 GB aplikaci a databázi obsahu. Pokud velikost zálohování překračuje tento limit, dojde k chybě.
 * Zálohy protokolu SSL povoleno databáze Azure pro MySQL se nepodporuje. Pokud zálohování se nenakonfiguruje, zobrazí se Nezdařená zálohování.
 * Zálohy protokolu SSL povoleno – Azure Database for postgresql – není podporované. Pokud zálohování se nenakonfiguruje, zobrazí se Nezdařená zálohování.

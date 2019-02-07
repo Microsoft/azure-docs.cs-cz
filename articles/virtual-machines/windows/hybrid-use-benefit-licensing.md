@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 4/22/2018
 ms.author: xujing-ms
-ms.openlocfilehash: 757891a6968313c1a31ce67b399d6aa052abfa21
-ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
+ms.openlocfilehash: 7bd228a01cd3841772750882d13c33459385cc21
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "53999947"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55817712"
 ---
 # <a name="azure-hybrid-benefit-for-windows-server"></a>Azure Hybrid Benefit pro Windows Server
 Pro zákazníky s programem Software Assurance programu Azure Hybrid Benefit pro Windows Server vám umožní využít vaše licence v místním systému Windows Server a spusťte Windows virtual machines v Azure s nižšími náklady. Azure Hybrid Benefit pro Windows Server můžete použít k nasazení nových virtuálních počítačů s operačním systémem Windows. Tento článek prochází přes všechny kroky v tom, jak nasadit nové virtuální počítače s programem Azure Hybrid Benefit pro Windows Server a jak můžete aktualizovat existující spouštění virtuálních počítačů. Další informace o programu Azure Hybrid Benefit pro Windows Server najdete v článku úspory licencování a náklady [stránky licencování programu Azure Hybrid Benefit pro Windows Server](https://azure.microsoft.com/pricing/hybrid-use-benefit/).
@@ -40,7 +40,7 @@ Pro zákazníky s programem Software Assurance programu Azure Hybrid Benefit pro
 ## <a name="ways-to-use-azure-hybrid-benefit-for-windows-server"></a>Možnosti využití programu Azure Hybrid Benefit pro Windows Server
 Využijte virtuální počítače s Windows s programem Azure Hybrid Benefit několika způsoby:
 
-1. Můžete nasazovat virtuální počítače z jednoho ze zadaných [Image Windows serveru na Azure Marketplace](# https://azuremarketplace.microsoft.com/en-us/marketplace/apps/Microsoft.WindowsServer?tab=Overview)
+1. Můžete nasazovat virtuální počítače z jedné zadané Image Windows serveru na Azure Marketplace
 2. Můžete nahrát vlastní virtuální počítač a nasazení pomocí šablony Resource Manageru nebo Azure Powershellu
 3. Přepnout, převod stávajícího virtuálního počítače mezi systémem s programem Azure Hybrid Benefit a platit náklady na vyžádání pro systém Windows Server
 4. Můžete také použít Azure Hybrid Benefit pro Windows Server na škálovací sadu a virtuálních počítačů

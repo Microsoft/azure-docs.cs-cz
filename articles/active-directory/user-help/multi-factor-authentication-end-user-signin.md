@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 04/02/2017
 ms.author: lizross
 ms.reviewer: librown
-ms.openlocfilehash: aafc960c0c26a94a8be672d0d72a46dfcb559013
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 13b82aa4f256bf0ec2d0805e85241d72e115d737
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55157002"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55810197"
 ---
 # <a name="the-sign-in-experience-with-azure-multi-factor-authentication"></a>Přihlašovací prostředí s ověřováním Azure Multi-Factor Authentication
 > [!NOTE]
@@ -31,8 +31,8 @@ Vaše přihlášení se liší v závislosti na tom, co si přejete použít jak
 | --- |
 | [Pomocí telefonního hovoru na telefon Můj mobilní telefon nebo office](#signing-in-with-a-phone-call) |
 | [S textem do mi na mobilní telefon](#signing-in-with-a-text-message)
-| [Oznámení z aplikace Microsoft Authenticator](#signing-in-with-the-microsoft-authenticator-app-using-notification) |
-| [Pomocí ověřovacích kódů z aplikace Microsoft Authenticator](#signing-in-with-the-microsoft-authenticator-app-using-verification-code) |
+| Oznámení z aplikace Microsoft Authenticator |
+| Pomocí ověřovacích kódů z aplikace Microsoft Authenticator |
 | [S alternativní metodu protože nelze použít upřednostňovanou metodu hned teď](#signing-in-with-an-alternate-method) |
 
 ## <a name="signing-in-with-a-phone-call"></a>Přihlášení pomocí telefonního hovoru
@@ -87,4 +87,4 @@ Pokud máte potíže při přihlašování pomocí dvoustupňového ověření, 
 
 Zjistěte, jak [spravovat nastavení dvoustupňového ověření](multi-factor-authentication-end-user-manage-settings.md).
 
-Zjistěte, jak [Začínáme s aplikací Microsoft Authenticator](microsoft-authenticator-app-how-to.md) tak, aby oznámení můžete použít k přihlášení, místo texty a telefonních hovorů.
+Zjistěte, jak [Začínáme s aplikací Microsoft Authenticator](user-help-auth-app-download-install.md) tak, aby oznámení můžete použít k přihlášení, místo texty a telefonních hovorů.

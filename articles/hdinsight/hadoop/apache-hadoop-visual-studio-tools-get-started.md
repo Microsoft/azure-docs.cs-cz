@@ -10,12 +10,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017,seodec18
 ms.topic: conceptual
 ms.date: 12/06/2018
-ms.openlocfilehash: dc93d0b44d6d99e8418d4333ca8698bc9ebf3a96
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.openlocfilehash: a23a2f536f765c62919960f3c582d04543b1f49a
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53629675"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55820823"
 ---
 # <a name="use-data-lake-tools-for-visual-studio-to-connect-to-azure-hdinsight-and-run-apache-hive-queries"></a>Pomocí nástrojů Data Lake pro Visual Studio pro připojení k Azure HDInsight a spouštět dotazy Apache Hive
 
@@ -250,11 +250,11 @@ Pomocí zobrazení spouštění úlohy pro Hive na úlohách Tez můžete získa
 ![Snímek obrazovky s oknem Zobrazení spouštění úlohy ve Visual Studio Tools pro Data Lake](./media/apache-hadoop-visual-studio-tools-get-started/hdinsight.visual.studio.tools.task.execution.view.png "Zobrazení spouštění úlohy")
 
 ## <a name="run-hive-batch-jobs"></a>Spouštění dávkových úloh Hive
-Testování skriptu Hive na clusteru HDInsight může být časově náročné (s výjimkou clusteru Interactive Query). Tento proces může trvat několik minut nebo i déle. Nástroje Data Lake pro Visual Studio dokáží ověřovat skript Hive místně bez připojení k živému clusteru. Další informace o spouštění interaktivních dotazů najdete v části [Spouštění interaktivních dotazů Hive](#run-interactive-hive-queries).
+Testování skriptu Hive na clusteru HDInsight může být časově náročné (s výjimkou clusteru Interactive Query). Tento proces může trvat několik minut nebo i déle. Nástroje Data Lake pro Visual Studio dokáží ověřovat skript Hive místně bez připojení k živému clusteru. Další informace o spouštění interaktivních dotazů najdete v tématu spuštění interaktivních dotazů Hive.
 
 Pomocí nástrojů Data Lake pro Visual Studio můžete díky shromažďování a zpřístupňování protokolů Yarn konkrétních úloh Hive zobrazit, co se nachází uvnitř úlohy Hive.
 
-Další informace o spouštění dávkových úloh Hive najdete v části [Spouštění interaktivních dotazů Hive](#run-interactive-hive-queries). Informace v této části se týkají spouštění déletrvajících dávkových úloh Hive.
+Další informace o spouštění dávkových úloh Hive najdete v tématu spuštění interaktivních dotazů Hive. Informace v této části se týkají spouštění déletrvajících dávkových úloh Hive.
 
 ## <a name="run-apache-pig-scripts"></a>Spouštění skriptů Apache Pig
 Pomocí nástrojů Data Lake pro Visual Studio můžete vytvářet a odesílat skripty Pig do clusterů HDInsight. Nejprve vytvořte projekt Pig ze šablony. Pak odešlete skript do clusterů HDInsight.

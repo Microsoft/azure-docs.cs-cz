@@ -15,12 +15,12 @@ ms.workload: big-compute
 ms.date: 12/18/2018
 ms.author: lahugh
 ms.custom: seodec18
-ms.openlocfilehash: bdb7b1477725235ca88e9cf527c7f711fd6f6b73
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
+ms.openlocfilehash: b4d0ee26cb9f7283cac871c70737cd701fb74c91
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55732256"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55818579"
 ---
 # <a name="develop-large-scale-parallel-compute-solutions-with-batch"></a>Vývoj rozsáhlých paralelních výpočetních řešení pomocí služby Batch
 
@@ -62,7 +62,7 @@ Některé z následujících prostředků – účty, výpočetní uzly, fondy, 
   * [Spouštěcí úkol](#start-task)
   * [Úkol správce úloh](#job-manager-task)
   * [Úkoly přípravy a uvolnění úloh](#job-preparation-and-release-tasks)
-  * [Úkoly s více instancemi (MPI)](#multi-instance-tasks)
+  * Úkoly s více instancemi (MPI)
   * [Závislosti úkolů](#task-dependencies)
 * [Balíčky aplikací](#application-packages)
 
@@ -215,7 +215,7 @@ Můžete určit [balíčky aplikací](#application-packages) pro nasazení do v�
 
 ### <a name="network-configuration"></a>Konfigurace sítě
 
-Můžete zadat podsíť [virtuální sítě (VNet)](../virtual-network/virtual-networks-overview.md) Azure, ve které se mají výpočetní uzly fondu vytvářet. Další informace najdete v části [Konfigurace sítě fondu](#pool-network-configuration).
+Můžete zadat podsíť [virtuální sítě (VNet)](../virtual-network/virtual-networks-overview.md) Azure, ve které se mají výpočetní uzly fondu vytvářet. Najdete v části Konfigurace sítě fondu pro další informace.
 
 
 ## <a name="job"></a>Úloha
@@ -271,7 +271,7 @@ Vedle úkolů, které definujete pro provádění výpočtů na uzlu, poskytuje 
 * [Spouštěcí úkol](#start-task)
 * [Úkol správce úloh](#job-manager-task)
 * [Úkoly přípravy a uvolnění úloh](#job-preparation-and-release-tasks)
-* [Úkoly s více instancemi (MPI)](#multi-instance-tasks)
+* Úkoly s více instancemi (MPI)
 * [Závislosti úkolů](#task-dependencies)
 
 ### <a name="start-task"></a>Spouštěcí úkol

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/24/2017
 ms.author: jeedes
-ms.openlocfilehash: bb03506bac22c8c82e856f403710a4908af6f9de
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 7d77d72264580e4cde83f6cbb9f83bf7030d941e
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55149250"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55820041"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-hr2day-by-merces"></a>Kurz: Integrace Azure Active Directory s HR2day podle Merces
 
@@ -88,11 +88,11 @@ V HR2day podle Merces přiřadit **uživatelské jméno** ve službě Azure AD *
 
 Nakonfigurovat a otestovat Azure AD jednotné přihlašování s HR2day podle Merces, které potřebujete k dokončení následujících stavebních bloků:
 
-1. [Konfigurace služby Azure AD jednotného přihlašování](#configuring-azure-ad-single-sign-on): Umožní vašim uživatelům tuto funkci používat.
-1. [Vytvořit testovacího uživatele Azure AD](#creating-an-azure-ad-test-user): Vyzkoušejte Azure AD jednotné přihlašování s Britta Simon.
-1. [Vytvoření HR2day Merces testovací uživatel](#creating-an-hr2day-by-merces-test-user): Vytvoření protějšek Britta Simon v HR2day podle Merces, který je propojený s Azure AD reprezentace uživatele.
-1. [Přiřadit uživatele Azure AD](#assigning-the-azure-ad-test-user): Povolte Britta Simon používat Azure AD jednotného přihlašování.
-1. [Otestovat jednotné přihlašování](#testing-single-sign-on): Zkontrolujte, jestli funguje v konfiguraci.
+1. Konfigurace služby Azure AD jednotné přihlašování: Umožní vašim uživatelům tuto funkci používat.
+1. Vytvořte testovacího uživatele Azure AD: Vyzkoušejte Azure AD jednotné přihlašování s Britta Simon.
+1. Vytvoření HR2day Merces testovací uživatel: Vytvoření protějšek Britta Simon v HR2day podle Merces, který je propojený s Azure AD reprezentace uživatele.
+1. Přiřadíte uživatele Azure AD: Povolte Britta Simon používat Azure AD jednotného přihlašování.
+1. Otestovat jednotné přihlašování: Zkontrolujte, jestli funguje v konfiguraci.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Konfigurace služby Azure AD jednotného přihlašování
 

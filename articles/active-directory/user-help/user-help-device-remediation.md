@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 10/10/2018
 ms.author: lizross
 ms.reviewer: jairoc
-ms.openlocfilehash: 97d35eb3442b63736b40d51dda57b872813293ad
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 668d69921fd2001cd52bc864e5ee272d179a7bbc
+ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55164057"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55770465"
 ---
 # <a name="potential-reasons-for-the-you-cant-get-there-from-here-error-message"></a>Možné důvody chybová zpráva "Se tam nelze dostat z tohoto"
 Při přístupu k interním webu aplikacím nebo službám vaší organizace, může se zobrazit chybová zpráva s upozorněním, **se tam nelze dostat z tohoto**. Tato zpráva znamená, že vaše organizace má zavést zásady zařízení brání v přístupu k prostředkům vaší organizace. Zatímco může skončit by bylo nutné kontaktovat Helpdesk chcete tento problém vyřešit, tady je pár věcí, které můžete nejdřív vyzkoušet.
@@ -68,4 +68,4 @@ Pokud zařízení není připojené k síti vaší organizace, můžete provést
 ## <a name="next-steps"></a>Další postup
 - [Co je na portálu MyApps?](active-directory-saas-access-panel-introduction.md)
 
-- [Přihlášení pomocí telefonu, ne pomocí hesla](microsoft-authenticator-app-phone-signin-faq.md)
+- [Přihlášení pomocí telefonu, ne pomocí hesla](user-help-auth-app-sign-in.md)

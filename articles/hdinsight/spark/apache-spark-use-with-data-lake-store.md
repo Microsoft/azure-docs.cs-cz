@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/21/2018
-ms.openlocfilehash: 29fef9177e40bd89dd0f179b028d2f044af8addb
-ms.sourcegitcommit: 97d0dfb25ac23d07179b804719a454f25d1f0d46
+ms.openlocfilehash: e33ec52a2546100a043a78f66c2232c3c1ad264e
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/25/2019
-ms.locfileid: "54913085"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55821354"
 ---
 # <a name="use-hdinsight-spark-cluster-to-analyze-data-in-data-lake-storage"></a>Použití clusteru Spark v HDInsight k analýze dat v Data Lake Storage
 
@@ -30,7 +30,7 @@ V tomto kurzu použijete [Poznámkový blok Jupyter](https://jupyter.org/) s clu
 ## <a name="prepare-the-data"></a>Příprava dat
 
 > [!NOTE]  
-> Není potřeba tento krok proveďte, pokud jste vytvořili HDInsight cluster s Data Lake Storage jako výchozí úložiště. V procesu vytváření clusteru přidá nějaká ukázková data v účtu Data Lake Storage, který zadáte při vytváření clusteru. Přeskočit k části [clusteru používejte HDInsight Spark s Data Lake Storage](#use-an-hdinsight-spark-cluster-with-data-lake-store).
+> Není potřeba tento krok proveďte, pokud jste vytvořili HDInsight cluster s Data Lake Storage jako výchozí úložiště. V procesu vytváření clusteru přidá nějaká ukázková data v účtu Data Lake Storage, který zadáte při vytváření clusteru. Přejděte ke clusteru HDInsight Spark pomocí oddílu s Data Lake Storage.
 
 Pokud jste vytvořili cluster služby HDInsight s Data Lake Storage jako další úložiště a Azure Storage Blob jako výchozím úložištěm, měli byste nejprve zkopírovat přes nějaká ukázková data do účtu Data Lake Storage. Můžete tak ukázku, kterou data z Azure Storage Blob přidružené ke clusteru HDInsight. Můžete použít [ADLCopy nástroj](https://aka.ms/downloadadlcopy) Uděláte to tak. Stáhněte a nainstalujte nástroj z odkazu.
 

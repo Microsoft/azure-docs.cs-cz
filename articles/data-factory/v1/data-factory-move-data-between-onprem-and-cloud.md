@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: abnarain
 robots: noindex
-ms.openlocfilehash: bd9df4553a50f162a4fb2142b7085f813311754f
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 77eaa6a642e02206eac319b76666bed8ae1fd165
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54015827"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55822421"
 ---
 # <a name="move-data-between-on-premises-sources-and-the-cloud-with-data-management-gateway"></a>Přesun dat mezi místním zdrojům a cloudem pomocí brány správy dat
 > [!NOTE]
@@ -105,7 +105,7 @@ V tomto kroku použijete Azure portal k vytvoření instance služby Azure Data 
 
     ![Gateway – stránka konfigurace](./media/data-factory-move-data-between-onprem-and-cloud/OnPremGatewayConfigureBlade.png)
 
-    Tímto způsobem je nejjednodušší způsob (jedním kliknutím) stáhnout, nainstalovat, konfigurace a registrace brány v jednom jednoho kroku. Zobrazí se **Microsoft Data Management Gateway Configuration Manager** aplikace je nainstalována v počítači. Můžete také najít spustitelný soubor **ConfigManager.exe** ve složce: **C:\Program Files\Microsoft Data správy Gateway\2.0\Shared**.
+    Tímto způsobem je nejjednodušší způsob (jedním kliknutím) stáhnout, nainstalovat, konfigurace a registrace brány v jednom jednoho kroku. Zobrazí se **Microsoft Data Management Gateway Configuration Manager** aplikace je nainstalována v počítači. Můžete také najít spustitelný soubor **ConfigManager.exe** ve složce: **C:\Program Files\Microsoft Data Management Gateway\2.0\Shared**.
 
     Můžete také stáhnout a nainstalovat bránu ručně pomocí odkazů na této stránce a zaregistrujte ho pomocí klíče je znázorněno **nový klíč** textového pole.
 
@@ -118,7 +118,7 @@ V tomto kroku použijete Azure portal k vytvoření instance služby Azure Data 
 5. Počkejte několik minut nebo počkejte, až se zobrazí následující zpráva upozornění:
 
     ![Úspěšná instalace brány](./media/data-factory-move-data-between-onprem-and-cloud/gateway-install-success.png)
-6. Spuštění **Data Management Gateway Configuration Manager** aplikace ve vašem počítači. V **hledání** okno, zadejte **brána správy dat** pro přístup k tohoto nástroje. Můžete také najít spustitelný soubor **ConfigManager.exe** ve složce: **C:\Program Files\Microsoft Data správy Gateway\2.0\Shared**
+6. Spuštění **Data Management Gateway Configuration Manager** aplikace ve vašem počítači. V **hledání** okno, zadejte **brána správy dat** pro přístup k tohoto nástroje. Můžete také najít spustitelný soubor **ConfigManager.exe** ve složce: **C:\Program Files\Microsoft Data Management Gateway\2.0\Shared**
 
     ![Správce konfigurace brány](./media/data-factory-move-data-between-onprem-and-cloud/OnPremDMGConfigurationManager.png)
 7. Zkontrolujte, jestli se `adftutorialgateway is connected to the cloud service` zprávy. Na stavovém řádku zobrazí dolní **připojená ke cloudové službě** spolu s **zelená značka zaškrtnutí**.
@@ -172,7 +172,7 @@ V tomto kroku vytvoříte dvě propojené služby: **AzureStorageLinkedService**
       4. V **nastavení přihlašovacích údajů** dialogové okno, zadejte typ ověřování, uživatelské jméno a heslo a klikněte na tlačítko **OK**. Pokud je připojení úspěšné, zašifrované přihlašovací údaje jsou uložené v kódu JSON a dialog se zavře.
       5. Zavřete kartu prohlížeče prázdné, pokud není uzavřený automaticky spustit dialogové okno a potom na kartě pomocí webu Azure portal.
 
-         Na počítači brány, tyto přihlašovací údaje jsou **šifrované** pomocí certifikátu, který služba Data Factory vlastní. Pokud chcete použít certifikát, který je přidružený k brána správy dat místo toho naleznete v tématu [nastavení přihlašovacích údajů, bezpečně](#set-credentials-and-security).    
+         Na počítači brány, tyto přihlašovací údaje jsou **šifrované** pomocí certifikátu, který služba Data Factory vlastní. Pokud chcete použít certifikát, který je přidružený k brána správy dat místo toho, bezpečně najdete v nastavení přihlašovacích údajů.    
    3. Klikněte na tlačítko **nasadit** na panelu příkazů pro nasazení SQL serveru propojená služba. Měli byste vidět propojené služby ve stromovém zobrazení.
 
       ![Propojené služby SQL serveru ve stromovém zobrazení](./media/data-factory-move-data-between-onprem-and-cloud/sql-linked-service-in-tree-view.png)    
@@ -280,7 +280,7 @@ V tomto kroku vytvoříte vstupní a výstupní datové sady, které představuj
    * **folderPath** je nastavena na **adftutorial/outfromonpremdf** kde outfromonpremdf je složka v kontejneru adftutorial. Vytvořte **adftutorial** kontejner, pokud ještě neexistuje.
    * Vlastnost **availability** je nastavená na **hourly** (**frequency** je nastavená na **hour** a **interval** je nastavená na **1**).  Služba Data Factory každou hodinu vygeneruje řez výstupních dat **emp** tabulky ve službě Azure SQL Database.
 
-   Pokud nezadáte **fileName** pro **výstupní tabulky**, generované soubory v **folderPath** jsou pojmenovány v následujícím formátu: Data. <Guid>.txt (například:: Data.0a405f8a-93ff-4C6F-B3BE-f69616f1df7a.txt.).
+   Pokud nezadáte **fileName** pro **výstupní tabulky**, generované soubory v **folderPath** jsou pojmenovány v následujícím formátu: Data. <Guid>.txt (například:: Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt.).
 
    Chcete-li nastavit **folderPath** a **fileName** dynamicky podle **SliceStart** čas, použijte vlastnost partitionedBy. V následujícím příkladu folderPath používá rok, měsíc a den z vlastnosti SliceStart (čas zahájení zpracování řezu) a fileName používá hodinu z vlastnosti SliceStart. Pokud například začne být řez vytvářen v době 2014-10-20T08:00:00, vlastnost folderName je nastavená na wikidatagateway/wikisampledataout/2014/10/20 a vlastnost fileName je nastavená na 08.csv.
 
@@ -389,7 +389,7 @@ V tomto kroku budete pomocí webu Azure Portal monitorovat, co se děje v objekt
 
 1. V diagramu, klikněte dvakrát na **EmpOnPremSQLTable**.  
 
-    ![Kolekce obsahuje nějaké řezy EmpOnPremSQLTable](./media/data-factory-move-data-between-onprem-and-cloud/OnPremSQLTableSlicesBlade.png)
+    ![EmpOnPremSQLTable slices](./media/data-factory-move-data-between-onprem-and-cloud/OnPremSQLTableSlicesBlade.png)
 2. Všimněte si, že všechny řezy dat nahoru v **připravené** stavu, protože doba trvání kanálu (čas zahájení koncového času) je v minulosti. Je také vzhledem k tomu, že jste tam vložili data v databázi serveru SQL Server a je pořád existuje. Potvrďte, že žádné řezy nezobrazují v **problémové řezy** oblast v dolní části. Chcete-li zobrazit všechny řezy, klikněte na tlačítko **zobrazit další** v dolní části Seznam řezů.
 3. Teď v **datových sad** klikněte na **OutputBlobTable**.
 

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/06/2017
 ms.author: wesmc
-ms.openlocfilehash: 58c1af860c5ccc87f4396c698b432f47f0ea7c65
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.openlocfilehash: d513825cad397763792fdc9ffb833ba54e957e7d
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55096955"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55822659"
 ---
 # <a name="how-to-troubleshoot-azure-cache-for-redis"></a>Řešení potíží s Azure Cache pro Redis
 Tento článek obsahuje pokyny pro řešení potíží s následující kategorie mezipaměti Azure Redis problémů.
@@ -131,7 +131,7 @@ Zobrazit [co se stalo se data v Redis?](https://gist.github.com/JonCole/b6354d92
 Tato část popisuje řešení problémů, ke kterým dochází z důvodu stavu na serveru mezipaměti.
 
 * [Přetížení paměti na serveru](#memory-pressure-on-the-server)
-* [Vysoké využití procesoru / zátěž serveru](#high-cpu-usage-server-load)
+* Vysoké využití procesoru / zátěž serveru
 * [Překročení šířky pásma na straně serveru](#server-side-bandwidth-exceeded)
 
 ### <a name="memory-pressure-on-the-server"></a>Přetížení paměti na serveru
@@ -230,7 +230,7 @@ Tato chybová zpráva obsahuje metriky, který vám pomůže odkazovat na pří�
 5. Existují příkazů trvá dlouhou dobu zpracování na serveru? Dlouho běžící příkazy, které trvá dlouhou dobu zpracování na serveru redis může způsobit vypršení časového limitu. Tady je několik příkladů příkazů dlouho běžící `mget` s velkým počtem klíče, `keys *` nebo chybně napsané skripty lua. Můžete připojit ke své mezipaměti Azure pro instanci Redis pomocí klienta redis rozhraní příkazového řádku nebo můžete použít [konzola Redis](cache-configure.md#redis-console) a spustit [SlowLog](https://redis.io/commands/slowlog) příkazu zkontrolujte, jestli požadavků trvá déle, než se očekávalo. Redis Server a StackExchange.Redis jsou optimalizované pro velký počet malých požadavků spíše než méně velkých požadavků. Rozdělení dat do menších bloků zvýšit zde věci. 
    
     Informace o připojení k mezipaměti Azure redis Cache SSL koncový bod pomocí rozhraní příkazového řádku redis a stunnelu, najdete v článku [oznamujeme zprostředkovatel stavu relací ASP.NET pro redis Cache ve verzi Preview](https://blogs.msdn.com/b/webdev/archive/2014/05/12/announcing-asp-net-session-state-provider-for-redis-preview-release.aspx) blogový příspěvek. Další informace najdete v tématu [SlowLog](https://redis.io/commands/slowlog).
-6. Vysoké zatížení serveru Redis může způsobit vypršení časového limitu. Zatížení serveru můžete monitorovat pomocí monitorování `Redis Server Load` [mezipaměti metrika výkonu](cache-how-to-monitor.md#available-metrics-and-reporting-intervals). Zatížení serveru 100 (maximální hodnota) znamená, že redis server byla zaneprázdněno žádné určitou dobu nečinné, zpracování požadavků. Pokud chcete zobrazit, pokud některé požadavky spotřebovávají všechny funkce serveru, spusťte příkaz SlowLog, jak je popsáno v předchozím odstavci. Další informace najdete v tématu [vysoké využití procesoru / Server načíst](#high-cpu-usage-server-load).
+6. Vysoké zatížení serveru Redis může způsobit vypršení časového limitu. Zatížení serveru můžete monitorovat pomocí monitorování `Redis Server Load` [mezipaměti metrika výkonu](cache-how-to-monitor.md#available-metrics-and-reporting-intervals). Zatížení serveru 100 (maximální hodnota) znamená, že redis server byla zaneprázdněno žádné určitou dobu nečinné, zpracování požadavků. Pokud chcete zobrazit, pokud některé požadavky spotřebovávají všechny funkce serveru, spusťte příkaz SlowLog, jak je popsáno v předchozím odstavci. Další informace najdete v tématu vysoké využití procesoru / zátěž serveru.
 7. Pokusil se jakákoli jiná událost na straně klienta, která by mohla způsobit blip sítě? Na straně klienta (web, role pracovního procesu nebo Virtuálním počítači IaaS) zkontrolujte, jestli došlo k události, jako je počet instancí klientů, kteří škálování směrem nahoru nebo dolů, nebo nasazení nové verze klienta nebo automatické škálování je povolené? V našich testech jsme našli tento automatické škálování nebo vertikální navýšení kapacity/dolů můžete příčina odchozího síťového připojení může dojít ke ztrátě několik sekund. Kód StackExchange.Redis je odolný vůči tyto události a znovu připojí. Během této doby opětovného připojení všech požadavků ve frontě můžete vypršení časového limitu.
 8. Pokusil se žádost o velké objemy před několika malých požadavků do mezipaměti Azure pro Redis, který vypršel časový limit? Parametr `qs` v chybě se zpráva, že počet požadavků odeslaných z klienta na server, ale ještě zpracovány odpověď. Tuto hodnotu můžete pořád rostou, protože StackExchange.Redis používá jedno připojení TCP a může číst pouze jednu odpověď najednou. I v případě, že první operace vypršení časového limitu, ale nezastaví datech odesílaných ze serveru a další požadavky jsou blokovány, dokud velké žádosti o dokončení, způsobí časové limity. Jedním z řešení je minimalizovat riziko vypršení časového limitu pro zajištění, že vaše mezipaměť je příliš velká pro vaše úlohy a rozdělení do menších bloků velké hodnoty. Další možnou příčinou je použití fondu `ConnectionMultiplexer` objekty v klientovi a zvolte nejméně načíst `ConnectionMultiplexer` při odeslání nového požadavku. To by měl jeden časový limit zabránit v způsobí ostatní požadavky také vypršení časového limitu.
 9. Pokud používáte `RedisSessionStateProvider`, ujistěte se, jste správně nastavili časový limit opakování. `retryTimeoutInMilliseconds` musí být vyšší než `operationTimeoutInMilliseconds`, jinak dojde k žádné opakování. V následujícím příkladu `retryTimeoutInMilliseconds` je nastavena na 3000. Další informace najdete v tématu [zprostředkovatel stavu relací ASP.NET pro Azure Cache pro Redis](cache-aspnet-session-state-provider.md) a [jak používat parametry konfigurace zprostředkovatele stavu relace a poskytovatel výstupní mezipaměti](https://github.com/Azure/aspnet-redis-providers/wiki/Configuration).

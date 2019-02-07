@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 04/23/2018
 ms.author: sngun
 ms.subservice: tables
-ms.openlocfilehash: 7f629ceb9fe5bd19c0558d1fde45d0bddcee744e
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 5d83e61282d2f21a3016997e324d0f58eff15e78
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55458869"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55813003"
 ---
 # <a name="modeling-relationships"></a>Modelování relací
 Tento článek popisuje proces modelování při návrhu řešení Azure Table storage.
@@ -101,7 +101,7 @@ Doménových modelů může obsahovat mezi entitami relace 1: 1. Pokud potřebuj
 Existují také důležité informace o implementaci, které by mohly vést k implementaci relace 1: 1 ve službě Table service:  
 
 * Zpracování velkých entit (Další informace najdete v tématu [velkých entit vzor](table-storage-design-patterns.md#large-entities-pattern)).  
-* Implementace řízení přístupu (Další informace najdete v tématu [řízení přístupu se sdílenými přístupovými podpisy](#controlling-access-with-shared-access-signatures)).  
+* Implementace řízení přístupu (Další informace najdete v tématu řízení přístupu s podpisy sdíleného přístupu).  
 
 ## <a name="join-in-the-client"></a>Připojte se k v klientovi
 I když existují způsoby pro modelování vztahů ve službě Table service, by neměla zapomenete, že jsou dva primární důvody pro použití služby Table service škálovatelnost a výkon. Pokud zjistíte, že jsou modelována mnoho vztahů, které ohrožují výkon a škálovatelnost řešení, které by měl položte si otázku: Pokud je potřeba vytvořit všechny vztahy mezi daty do návrhu tabulky. Je možné, zjednodušuje návrh a zlepšit škálovatelnost a výkon vašeho řešení, pokud jste povolili klientské aplikace provádět žádné nezbytné spojení.  
@@ -117,7 +117,7 @@ Je možné zachovat instancemi dvou tříd konkrétní ve službě Table service
 
 ![Tabulka osoby](media/storage-table-design-guide/storage-table-design-IMAGE04.png)
 
-Další informace o práci s více typy entit ve stejné tabulce v kódu klienta najdete v části [práce s typy entit heterogenní](#working-with-heterogeneous-entity-types) dále v tomto průvodci. To poskytuje příklady toho, jak rozpoznat typ entity v klientském kódu.  
+Další informace o práci s více typy entit ve stejné tabulce v kódu klienta najdete v části Práce s typy entit heterogenní dál v této příručce. To poskytuje příklady toho, jak rozpoznat typ entity v klientském kódu.  
 
 
 ## <a name="next-steps"></a>Další postup

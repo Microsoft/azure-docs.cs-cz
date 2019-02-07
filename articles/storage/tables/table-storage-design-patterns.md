@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 04/23/2018
 ms.author: sngun
 ms.subservice: tables
-ms.openlocfilehash: 3ba2009ef1ea8fdf5916baab296c7ff5eee953db
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 40062cfb2e646fd6befef1e746f9493f3e4b20f9
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55469188"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55821353"
 ---
 # <a name="table-design-patterns"></a>Způsoby návrhu tabulek
 Tento článek popisuje některé vzory, které jsou vhodné pro použití s řešeními služby tabulky. Uvidíte také, jak se prakticky vyřešit některé problémy a kompromisy popsané v dalších článcích návrh tabulky úložiště. Následující diagram obsahuje souhrn vztahy mezi různé vzorce:  
@@ -73,7 +73,7 @@ Při implementaci tohoto modelu můžou být relevantní také následující mo
 
 * [Model mezi oddílu sekundárních indexů](#inter-partition-secondary-index-pattern)
 * [Složené sekvence klíče](#compound-key-pattern)
-* [Transakcí skupin entit](#entity-group-transactions)
+* Transakcí skupin entit
 * [Práce s typy heterogenní entit](#working-with-heterogeneous-entity-types)
 
 ## <a name="inter-partition-secondary-index-pattern"></a>Model mezi oddílu sekundárních indexů
@@ -128,7 +128,7 @@ Při implementaci tohoto modelu můžou být relevantní také následující mo
 * [Vzor konečnou konzistenci transakcí](#eventually-consistent-transactions-pattern)  
 * [Model sekundárních indexů uvnitř oddílu](#intra-partition-secondary-index-pattern)  
 * [Složené sekvence klíče](#compound-key-pattern)  
-* [Transakcí skupin entit](#entity-group-transactions)  
+* Transakcí skupin entit  
 * [Práce s typy heterogenní entit](#working-with-heterogeneous-entity-types)  
 
 ## <a name="eventually-consistent-transactions-pattern"></a>Vzor konečnou konzistenci transakcí
@@ -172,7 +172,7 @@ Tento model použijte, pokud chcete zajistit konečnou konzistenci mezi entitami
 ### <a name="related-patterns-and-guidance"></a>Související modely a pokyny
 Při implementaci tohoto modelu můžou být relevantní také následující modely a pokyny:  
 
-* [Transakcí skupin entit](#entity-group-transactions)  
+* Transakcí skupin entit  
 * [Sloučení nebo nahradit](#merge-or-replace)  
 
 > [!NOTE]
@@ -212,7 +212,7 @@ Pro druhou možnost použijte index entity, které ukládat následující data:
 Následující kroky popisují proces, kterým byste měli postupovat při přidávání nového zaměstnance Pokud používáte druhou možnost. V tomto příkladu přidáváme zaměstnance s Id 000152 a příjmení Jones prodejního oddělení:  
 
 1. Načtení entity index s **PartitionKey** hodnotu "Prodeje" a **RowKey** hodnotu "Jones." Uložte ETag tuto entitu pro použití v kroku 2.  
-2. Vytvoření skupiny transakce entity (to znamená, dávkové operace), která vloží nové zaměstnance entity (**PartitionKey** hodnotu "Prodeje" a **RowKey** hodnotu "000152") a aktualizuje index entity (**PartitionKey** hodnotu "Prodeje" a **RowKey** hodnotu "Novák") tak, že přidáte do seznamu v poli EmployeeIDs nové ID zaměstnance. Další informace o transakcí skupin entit najdete v tématu [transakcí skupin entit](#entity-group-transactions).  
+2. Vytvoření skupiny transakce entity (to znamená, dávkové operace), která vloží nové zaměstnance entity (**PartitionKey** hodnotu "Prodeje" a **RowKey** hodnotu "000152") a aktualizuje index entity (**PartitionKey** hodnotu "Prodeje" a **RowKey** hodnotu "Novák") tak, že přidáte do seznamu v poli EmployeeIDs nové ID zaměstnance. Další informace o transakcí skupin entit najdete v tématu transakcí skupin entit.  
 3. Pokud transakce skupiny entit selže z důvodu chyby optimistického řízení souběžnosti (někdo právě změnil index entity), budete muset začít v kroku 1.  
 
 Podobný přístup se odstraňuje zaměstnanec, pokud používáte druhou možnost můžete použít. Změna zaměstnance příjmení je o něco složitější, protože budete muset provést transakci skupiny entity, která aktualizuje entity tři: entity zaměstnance, index entity pro staré příjmení a index entitu pro nové příjmení. Každá entita musí získat před provedením jakýchkoli změn získat značku ETag hodnoty, které pak můžete provádět aktualizace pomocí optimistického řízení souběžnosti.  
@@ -251,7 +251,7 @@ Při implementaci tohoto modelu můžou být relevantní také následující mo
 
 * [Složené sekvence klíče](#compound-key-pattern)  
 * [Vzor konečnou konzistenci transakcí](#eventually-consistent-transactions-pattern)  
-* [Transakcí skupin entit](#entity-group-transactions)  
+* Transakcí skupin entit  
 * [Práce s typy heterogenní entit](#working-with-heterogeneous-entity-types)  
 
 ## <a name="denormalization-pattern"></a>Vzor denormalizace
@@ -282,7 +282,7 @@ Tento model použijte, když je často potřeba vyhledat související informace
 Při implementaci tohoto modelu můžou být relevantní také následující modely a pokyny:  
 
 * [Složené sekvence klíče](#compound-key-pattern)  
-* [Transakcí skupin entit](#entity-group-transactions)  
+* Transakcí skupin entit  
 * [Práce s typy heterogenní entit](#working-with-heterogeneous-entity-types)
 
 ## <a name="compound-key-pattern"></a>Složené sekvence klíče
@@ -325,7 +325,7 @@ Tento model použijte, když potřebujete ukládat jeden nebo více souvisejíc�
 ### <a name="related-patterns-and-guidance"></a>Související modely a pokyny
 Při implementaci tohoto modelu můžou být relevantní také následující modely a pokyny:  
 
-* [Transakcí skupin entit](#entity-group-transactions)  
+* Transakcí skupin entit  
 * [Práce s typy heterogenní entit](#working-with-heterogeneous-entity-types)  
 * [Vzor konečnou konzistenci transakcí](#eventually-consistent-transactions-pattern)  
 
@@ -394,7 +394,7 @@ Tento model použijte v případě, že máte velký počet entit, které je nut
 ### <a name="related-patterns-and-guidance"></a>Související modely a pokyny
 Při implementaci tohoto modelu můžou být relevantní také následující modely a pokyny:  
 
-* [Transakcí skupin entit](#entity-group-transactions)
+* Transakcí skupin entit
 * [Úprava entit](#modifying-entities)  
 
 ## <a name="data-series-pattern"></a>Vzor data řady
@@ -454,7 +454,7 @@ Tento model použijte v případě potřeba ukládat entity, jejichž velikost n
 ### <a name="related-patterns-and-guidance"></a>Související modely a pokyny
 Při implementaci tohoto modelu můžou být relevantní také následující modely a pokyny:  
 
-* [Transakcí skupin entit](#entity-group-transactions)
+* Transakcí skupin entit
 * [Sloučení nebo nahradit](#merge-or-replace)
 
 ## <a name="large-entities-pattern"></a>Vzor velkých entit
@@ -556,7 +556,7 @@ Při rozhodování o tom, jak ukládat data protokolu, zvažte následující bo
 Tato část popisuje některé důležité informace k berte v úvahu při implementaci vzorce popsané v předchozích částech. Většinu této části se používají příklady napsané v jazyce C#, které použijte klientskou knihovnu pro úložiště (verze 4.3.0 v době psaní).  
 
 ## <a name="retrieving-entities"></a>Načítání entit
-Jak je popsáno v části [návrhu pro dotazování](#design-for-querying), efektivní dotaz je dotaz bodu. Nicméně v některých případech budete muset načíst více entit. Tato část popisuje některé běžné přístupy k načítání entit s využitím klientskou knihovnu pro úložiště.  
+Jak je popsáno v části návrhu pro dotazování, nejúčinnější dotaz je dotaz bodu. Nicméně v některých případech budete muset načíst více entit. Tato část popisuje některé běžné přístupy k načítání entit s využitím klientskou knihovnu pro úložiště.  
 
 ### <a name="executing-a-point-query-using-the-storage-client-library"></a>Provádění dotazu bodu pomocí klientskou knihovnu pro úložiště
 Nejjednodušší způsob, jak provést dotaz bod je použít **načíst** operace tabulky, jak je znázorněno v následující jazyka C# fragment kódu, která načte entity **PartitionKey** hodnoty "Prodeje" a  **RowKey** hodnoty "212":  

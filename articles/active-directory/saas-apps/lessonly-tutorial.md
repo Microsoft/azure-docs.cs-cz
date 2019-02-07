@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/23/2017
 ms.author: jeedes
-ms.openlocfilehash: c911a53f16e07b67a1ec22a9e0592df06c192325
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 1e5b23269c8c9d5aecd7ef8ba58100f17cc7973c
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55188180"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55809415"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-lessonlycom"></a>Kurz: Integrace Azure Active Directory s Lessonly.com
 
@@ -90,7 +90,7 @@ Nakonfigurovat a otestovat Azure AD jednotné přihlašování s Lessonly.com, k
 
 1. **[Konfigurace Azure AD Single Sign-On](#configuring-azure-ad-single-sign-on)**  – Pokud chcete, aby uživatelé mohli tuto funkci používat.
 1. **[Vytváří se testovací uživatele služby Azure AD](#creating-an-azure-ad-test-user)**  – Pokud chcete otestovat Azure AD jednotné přihlašování s Britta Simon.
-1. **[Vytvoření zkušebního uživatele Lessonly.com](#creating-a-lessonly-test-user)**  – Pokud chcete mít protějšek Britta Simon Lessonly.com, který je propojený s Azure AD reprezentace uživatele.
+1. **Vytvoření zkušebního uživatele Lessonly.com** – Pokud chcete mít protějšek Britta Simon Lessonly.com, který je propojený s Azure AD reprezentace uživatele.
 1. **[Přiřazení testovacího uživatele Azure AD](#assigning-the-azure-ad-test-user)**  – Pokud chcete povolit Britta Simon používat Azure AD jednotného přihlašování.
 1. **[Testování Single Sign-On](#testing-single-sign-on)**  – Pokud chcete ověřit, jestli funguje v konfiguraci.
 

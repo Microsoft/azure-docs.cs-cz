@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: sample
 ms.date: 11/15/2018
 ms.author: mjbrown
-ms.openlocfilehash: 5884295e93a14d74a125c27ea597f2311478042a
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: f8b23533127b9798e5a677f646f94ae0a53fcde8
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55459022"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55822404"
 ---
 # <a name="sql-query-examples-for-azure-cosmos-db"></a>Příklady dotazů SQL pro službu Azure Cosmos DB
 
@@ -1365,29 +1365,29 @@ Matematické funkce provádí výpočet, založené na vstupní hodnoty, které 
 
 | Využití | Popis |
 |----------|--------|
-| [[ABS (num_expr)](#bk_abs) | Vrátí absolutní hodnotu (pozitivní) zadaný číselný výraz. |
-| [Horní MEZ (num_expr)](#bk_ceiling) | Vrátí nejmenší hodnotu celé číslo větší než nebo rovna zadané číselný výraz. |
-| [Dolní MEZ (num_expr)](#bk_floor) | Vrátí největší celé číslo menší nebo rovna zadané číselný výraz. |
-| [EXP (num_expr)](#bk_exp) | Vrátí exponent zadaný číselný výraz. |
+| [ABS (num_expr) | Vrátí absolutní hodnotu (pozitivní) zadaný číselný výraz. |
+| Horní MEZ (num_expr) | Vrátí nejmenší hodnotu celé číslo větší než nebo rovna zadané číselný výraz. |
+| Dolní MEZ (num_expr) | Vrátí největší celé číslo menší nebo rovna zadané číselný výraz. |
+| EXP (num_expr) | Vrátí exponent zadaný číselný výraz. |
 | [LOG (num_expr [,base])](#bk_log) | Vrátí přirozený logaritmus zadaného číselný výraz nebo pomocí zadaném základu logaritmu |
-| [LOG10 (num_expr)](#bk_log10) | Vrátí hodnotu logaritmu základu 10 zadaný číselný výraz. |
-| [ROUND (num_expr)](#bk_round) | Vrátí číselnou hodnotu, zaokrouhlený na nejbližší celočíselnou hodnotu. |
-| [TRUNC (num_expr)](#bk_trunc) | Vrátí číselnou hodnotu, zkrácen na nejbližší celočíselnou hodnotu. |
-| [SQRT (num_expr)](#bk_sqrt) | Vrátí druhou odmocninu určeného číselného výrazu. |
-| [HRANATÉ (num_expr)](#bk_square) | Vrátí druhou mocninu zadaný číselný výraz. |
+| LOG10 (num_expr) | Vrátí hodnotu logaritmu základu 10 zadaný číselný výraz. |
+| ROUND (num_expr) | Vrátí číselnou hodnotu, zaokrouhlený na nejbližší celočíselnou hodnotu. |
+| TRUNC (num_expr) | Vrátí číselnou hodnotu, zkrácen na nejbližší celočíselnou hodnotu. |
+| SQRT (num_expr) | Vrátí druhou odmocninu určeného číselného výrazu. |
+| HRANATÉ (num_expr) | Vrátí druhou mocninu zadaný číselný výraz. |
 | [NAPÁJENÍ (num_expr, num_expr)](#bk_power) | Vrátí sílu zadaný číselný výraz na zadanou hodnotu. |
-| [SIGN (num_expr)](#bk_sign) | Vrátí hodnotu znaménko (-1, 0, 1) zadaný číselný výraz. |
-| [ACOS (num_expr)](#bk_acos) | Vrací úhel v radiánech, jehož kosinus je zadaný číselný výraz. Zkratka Arkus kosinus. |
-| [ASIN (num_expr)](#bk_asin) | Vrací úhel v radiánech, jehož sinus je zadaný číselný výraz. Arkus sinus je také voláním této funkce. |
-| [ATAN (num_expr)](#bk_atan) | Vrací úhel v radiánech, jehož tangens odpovídá zadané číselný výraz. Označuje se také Arkus tangens. |
-| [ATN2 (num_expr)](#bk_atn2) | Vrací úhel v radiánech mezi kladnou osy x a ray ze zdroje do bodu (y, x), kde x a y jsou hodnoty ze dvou výrazů zadaného typu float. |
-| [COS (num_expr)](#bk_cos) | Vrátí trigonometrických kosinus úhlu určeného v radiánech v zadaným výrazem. |
-| [COT (num_expr)](#bk_cot) | Vrátí trigonometrických kotangens úhlu určeného v radiánech v zadané číselný výraz. |
-| [DEGREES (num_expr)](#bk_degrees) | Vrátí odpovídající úhel ve stupních, kterým je úhel zadaný v radiánech. |
-| [PI ()](#bk_pi) | Vrátí konstantní hodnotu čísla PÍ. |
-| [RADIANS (num_expr)](#bk_radians) | Radians vrátí, pokud je zadán číselný výraz ve stupních. |
-| [SIN (num_expr)](#bk_sin) | Vrátí trigonometrických sinus úhlu určeného v radiánech v zadaným výrazem. |
-| [TAN (num_expr)](#bk_tan) | Vrátí tangens vstupní výraz zadaným výrazem. |
+| SIGN (num_expr) | Vrátí hodnotu znaménko (-1, 0, 1) zadaný číselný výraz. |
+| ACOS (num_expr) | Vrací úhel v radiánech, jehož kosinus je zadaný číselný výraz. Zkratka Arkus kosinus. |
+| ASIN (num_expr) | Vrací úhel v radiánech, jehož sinus je zadaný číselný výraz. Arkus sinus je také voláním této funkce. |
+| ATAN (num_expr) | Vrací úhel v radiánech, jehož tangens odpovídá zadané číselný výraz. Označuje se také Arkus tangens. |
+| ATN2 (num_expr) | Vrací úhel v radiánech mezi kladnou osy x a ray ze zdroje do bodu (y, x), kde x a y jsou hodnoty ze dvou výrazů zadaného typu float. |
+| COS (num_expr) | Vrátí trigonometrických kosinus úhlu určeného v radiánech v zadaným výrazem. |
+| COT (num_expr) | Vrátí trigonometrických kotangens úhlu určeného v radiánech v zadané číselný výraz. |
+| DEGREES (num_expr) | Vrátí odpovídající úhel ve stupních, kterým je úhel zadaný v radiánech. |
+| PI () | Vrátí konstantní hodnotu čísla PÍ. |
+| RADIANS (num_expr) | Radians vrátí, pokud je zadán číselný výraz ve stupních. |
+| SIN (num_expr) | Vrátí trigonometrických sinus úhlu určeného v radiánech v zadaným výrazem. |
+| TAN (num_expr) | Vrátí tangens vstupní výraz zadaným výrazem. |
 
 Například nyní můžete spustit dotazy jak je znázorněno v následujícím příkladu:
 

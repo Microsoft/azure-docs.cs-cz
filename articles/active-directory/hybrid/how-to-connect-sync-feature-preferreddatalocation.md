@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 07/30/2018
 ms.subservice: hybrid
 ms.author: billmath
-ms.openlocfilehash: f03fc201c1bce3187fdbd25c1de3567170478d30
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.openlocfilehash: 38bb0840269d4b7bacbb0101590b389c8542a9b1
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55488425"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55814227"
 ---
 # <a name="azure-active-directory-connect-sync-configure-preferred-data-location-for-office-365-resources"></a>Synchronizace Azure Active Directory Connect: Nakonfigurovat upřednostňované umístění dat pro prostředky služeb Office 365
 Účelem tohoto tématu je pro vás provedou postupem konfigurace atribut upřednostňované umístění dat ve službě Azure Active Directory (Azure AD) Connect sync. Při použití možnosti geografickým oblastem v Office 365, můžete použít tento atribut k určení geografické umístění dat uživatele v Office 365. (Podmínky *oblasti* a *geograficky* zaměňují.)
@@ -238,7 +238,7 @@ Povolte Plánovač integrované synchronizace:
 ## <a name="step-8-verify-the-result"></a>Krok 8: Ověřte výsledek
 Nyní je čas potřebný k ověření konfigurace nebo ji povolit pro vaše uživatele.
 
-1. Přidáte vybraný atribut uživatele zeměpisné oblasti. Seznam dostupných zeměpisných oblastech najdete v [Tato tabulka](#enable-synchronization-of-preferreddatalocation).  
+1. Přidáte vybraný atribut uživatele zeměpisné oblasti. V této tabulce najdete seznam dostupných zeměpisných oblastech.  
 ![Snímek obrazovky atribut AD přidat uživatele](./media/how-to-connect-sync-feature-preferreddatalocation/preferreddatalocation-adattribute.png)
 2. Počkejte, atributy, které mají být synchronizovány do Azure AD.
 3. Pomocí Powershellu v Exchangi Online, ověřte, že oblast poštovní schránky byla nastavena správně.  

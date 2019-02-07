@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/14/2017
 ms.author: ashishth
-ms.openlocfilehash: c6a47448fc99c2f58b315898c1b6af65f894da8d
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.openlocfilehash: 0e17fa877bc2e1e4f72891315d940546a11e674d
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53436683"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55812489"
 ---
 # <a name="deep-dive---advanced-analytics"></a>Podrobné informace – pokročilé analýzy
 
@@ -56,10 +56,10 @@ Společně s výběrem nejlepší těsně algoritmy, je potřeba zvážit, jestl
 
 HDInsight obsahuje několik strojového učení možnosti pro pokročilou analýzu pracovní postup:
 
-* [Machine Learning a Apache Sparku](#machine-learning-and-spark)
-* [R a služby ML](#r-and-r-server)
-* [Azure Machine Learning a Apache Hive](#azure-machine-learning-and-hive)
-* [Apache Spark a obsáhlého learningu](#spark-and-deep-learning)
+* Machine Learning a Apache Sparku
+* R a služby ML
+* Azure Machine Learning a Apache Hive
+* Apache Spark a obsáhlého learningu
 
 ### <a name="machine-learning-and-apache-spark"></a>Machine Learning a Apache Sparku
 

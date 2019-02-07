@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 7/10/2018
 ms.author: geetha
-ms.openlocfilehash: a5b0e6d700ce64a25c20b23738508d2796fc6caa
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.openlocfilehash: 676c6a45f4a3930d350bbcbdcbb1a0fb47880407
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55487553"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55809993"
 ---
 # <a name="back-up-and-restore-encrypted-virtual-machines-with-azure-backup"></a>Zálohování a obnovení šifrovaných virtuálních počítačů pomocí služby Azure Backup
 Tento článek se hovoří o tom, jak zálohovat a obnovovat virtuální počítače (VM) s využitím Azure Backup. Poskytuje také informace o podporované scénáře, požadavky a kroky při řešení potíží pro případy chyb.
@@ -36,7 +36,7 @@ Tento článek se hovoří o tom, jak zálohovat a obnovovat virtuální počít
 
 * Vytvoření trezoru služby Recovery Services a úložiště replikace byla nastavena podle postupu v [Příprava prostředí pro zálohování](backup-azure-arm-vms-prepare.md).
 
-* Předal se zálohování [oprávnění pro přístup k trezoru klíčů](#provide-permissions-to-backup) obsahující klíče a tajné kódy pro šifrované virtuální počítače.
+* Zálohování byla udělena oprávnění pro přístup k trezoru klíčů, který obsahuje klíče a tajné kódy pro šifrované virtuální počítače.
 
 ## <a name="backup-encrypted-vm"></a>Zálohování šifrovaných virtuálních počítačů
 Pomocí následujících kroků pro nastavení cíle zálohování, definovat zásady, konfigurace položky a aktivujte zálohování.
@@ -76,7 +76,7 @@ Pokud jste **uživatel členem**, proces povolení zálohování bude bez probl�
 
    ![Zprávy šifrované virtuální počítače](./media/backup-azure-vms-encryption/member-user-encrypted-vm-warning-message.png)
 
-   Pro **uživatele typu Host**, je nutné zadat oprávnění ke službě zálohování přístup k trezoru klíčů pro zálohy do práce. Tato oprávnění můžete zadat pomocí následujících [kroky uvedené v následující části](#provide-permissions-to-backup)
+   Pro **uživatele typu Host**, je nutné zadat oprávnění ke službě zálohování přístup k trezoru klíčů pro zálohy do práce. Tato oprávnění můžete zadat pomocí následujících kroků uvedených v následující části
 
    ![Zprávy šifrované virtuální počítače](./media/backup-azure-vms-encryption/guest-user-encrypted-vm-warning-message.png)
 

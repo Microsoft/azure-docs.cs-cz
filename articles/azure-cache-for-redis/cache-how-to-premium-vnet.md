@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/15/2017
 ms.author: wesmc
-ms.openlocfilehash: 6c92b71a8f2b9fbeae9afc5f06b6d5412f6421a6
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: e71d92b2cf7888fd9e3c560beb6e0e7f18e7add0
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53019400"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55822642"
 ---
 # <a name="how-to-configure-virtual-network-support-for-a-premium-azure-cache-for-redis"></a>Jak nakonfigurovat podpora služby Virtual Network pro mezipaměť Azure Premium pro Redis
 Mezipaměti Redis Azure má různé mezipaměti nabídek, které poskytují flexibilitu při výběru velikosti mezipaměti a funkcí, včetně novými funkcemi úrovně Premium jako je clustering, trvalé a podpory služby virtual network. Virtuální síť je privátní síť v cloudu. Když Azure pro instanci Redis Cache má nakonfigurovanou virtuální síť, není veřejně adresovatelný a je přístupný pouze z virtuálních počítačů a aplikací v rámci virtuální sítě. Tento článek popisuje postup konfigurace podpory služby virtual network pro Azure Cache úrovně premium pro instanci Redis.
@@ -83,11 +83,11 @@ Pro připojení k mezipaměti Azure pro instanci Redis při používání virtu�
 ## <a name="azure-cache-for-redis-vnet-faq"></a>Mezipaměť Azure pro virtuální síť Redis – nejčastější dotazy
 Následující seznam obsahuje odpovědi na nejčastější dotazy o ukládání do mezipaměti Azure Redis škálování.
 
-* [Jaké jsou některé běžné chybné konfigurace problémy s mezipamětí Azure Redis a virtuální sítě?](#what-are-some-common-misconfiguration-issues-with-azure-redis-cache-and-vnets)
+* Jaké jsou některé běžné chybné konfigurace problémy s mezipamětí Azure Redis a virtuální sítě?
 * [Jak ověřit, že mezipaměť funguje ve virtuální síti?](#how-can-i-verify-that-my-cache-is-working-in-a-vnet)
 * [Při pokusu o připojení pro mezipaměť Azure redis Cache ve virtuální síti, proč se zobrazuje chyba oznamující, že vzdálený certifikát není platná?](#when-trying-to-connect-to-my-redis-cache-in-a-vnet-why-am-i-getting-an-error-stating-the-remote-certificate-is-invalid)
 * [Můžete použít virtuální sítě s mezipamětí standard nebo basic?](#can-i-use-vnets-with-a-standard-or-basic-cache)
-* [Proč vytvoření Azure Cache pro Redis selže v některých podsítě, ale ne pro jiné?](#why-does-creating-a-redis-cache-fail-in-some-subnets-but-not-others)
+* Proč vytvoření Azure Cache pro Redis selže v některých podsítě, ale ne pro jiné?
 * [Jaké jsou požadavky na místo adres podsítě?](#what-are-the-subnet-address-space-requirements)
 * [Fungují všechny funkce mezipaměti při hostování mezipaměti ve virtuální síti?](#do-all-cache-features-work-when-hosting-a-cache-in-a-vnet)
 

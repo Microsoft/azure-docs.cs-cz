@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/07/2019
 ms.author: ambapat
-ms.openlocfilehash: 9877698c8c6af68c5ffd88dab37150274ce87b37
-ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
+ms.openlocfilehash: 8a0300eeda49d85ffc08db8f285550e217613dcf
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54077330"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55821610"
 ---
 # <a name="secure-your-key-vault"></a>Zabezpečení trezoru klíčů
 
@@ -34,7 +34,7 @@ K ověření využívají rovina správy i rovina dat službu Azure Active Direc
 
 Stručný přehled tímto článkem pokrytých témat:
 
-[Ověření s použitím Azure Active Directory](#authentication-using-azure-active-directory): Tato část vysvětluje, jak se volající ověřuje ve službě Azure Active Directory za účelem přístupu k trezoru klíčů prostřednictvím roviny správy i roviny dat. 
+Ověřování pomocí Azure Active Directory – Tato část vysvětluje, jak se volající ověřuje ve službě Azure Active Directory pro přístup k trezoru klíčů prostřednictvím roviny správy i rovina dat. 
 
 Obě roviny pro ověřování pomocí Azure Active Directory (Azure AD). K autorizaci ale rovina správy používá řízení přístupu na základě rolí (RBAC), zatímco rovina dat používá zásady přístupu trezoru klíčů.
 
@@ -116,7 +116,7 @@ Kromě použití zásady přístupu, můžete taky omezit přístup k rovině da
 
 Zde je uveden seznam typy klíče a tajné kódy uložené:
 
-* **Certifikát SSL**: Používá se pro protokol SSL.
+* **SSL Cert**: Používá se pro protokol SSL.
 * **Klíč úložiště**: Použít k získání přístupu k účtu úložiště.
 * **2048bitový klíč RSA**: Použít pro podpisové operace.
 * **Zaváděcího certifikátu**: Používá k ověřování pomocí Azure AD. Po udělení přístupu můžete načíst klíč úložiště a použije klíč RSA k podpisu.

@@ -11,14 +11,14 @@ ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 02/05/2019
+ms.date: 02/06/2019
 ms.author: magoedte
-ms.openlocfilehash: e4ea964600c03ce3f3b5b276ed02d12f573814bf
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.openlocfilehash: e1c225eb77a76015520690916db0399487ffe9e7
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55756491"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55822608"
 ---
 # <a name="connect-computers-without-internet-access-using-the-log-analytics-gateway"></a>Připojit počítače bez připojení k Internetu pomocí brány Log Analytics
 
@@ -34,7 +34,7 @@ Log Analytics gateway podporuje:
 * Azure Automation Hybrid Runbook Worker  
 * Počítače s Windows pomocí agenta Microsoft Monitoring Agent přímo připojené k pracovnímu prostoru Log Analytics
 * Počítačů s Linuxem pomocí agenta Log Analytics pro Linux přímo připojený k pracovnímu prostoru Log Analytics  
-* System Center Operations Manager 2012 SP1 s UR7, Operations Manager 2012 R2 UR3, Operations Manager 2016 a skupiny pro správu nástroje Operations Manager verzi 1801 integrované se službou Log Analytics.  
+* System Center Operations Manager 2012 SP1 s UR7, Operations Manager 2012 R2 UR3, Operations Manager 2016 nebo novější skupiny pro správu integrované se službou Log Analytics.  
 
 Pokud zásady zabezpečení IT neumožňují počítačů ve vaší síti pro připojení k Internetu, jako je například bod terminálů zařízení nebo serverů podporující IT služby, ale budete muset připojit je ke službě Azure Automation nebo Log Analytics, spravovat a monitorovat jejich , se dají konfigurovat přímo komunikovat s Log Analytics brány na konfigurace a předávání dat jejich jménem.  Pokud tyto počítače jsou nakonfigurované pomocí agenta Log Analytics k přímému připojení k pracovnímu prostoru Log Analytics, všechny počítače se místo toho komunikovat s Log Analytics gateway.  Brána přenáší data z agentů do služby přímo, nebudou analyzované žádné přenášená data.
 

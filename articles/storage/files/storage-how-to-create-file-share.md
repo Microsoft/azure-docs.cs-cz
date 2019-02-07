@@ -8,16 +8,16 @@ ms.topic: get-started-article
 ms.date: 09/19/2017
 ms.author: renash
 ms.subservice: files
-ms.openlocfilehash: ac9af046675cf868f158ee3af71e6c968c6ba98a
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 084a5c8113e73590e3e7b9603542a0d866606f96
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55463136"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55818953"
 ---
 # <a name="create-a-file-share-in-azure-files"></a>Vytvoření sdílené složky ve službě Soubory Azure
 Můžete vytvořit sdílené složky Azure pomocí [webu Azure portal](https://portal.azure.com/), rutin Powershellu pro Azure Storage, klientských knihoven Azure Storage nebo REST API služby Azure Storage. V tomto kurzu se dozvíte:
-* [Jak vytvořit sdílenou složku Azure pomocí webu Azure Portal](#create-file-share-through-the-azure-portal)
+* Postup vytvoření sdílené složky Azure pomocí webu Azure portal
 * [Jak vytvořit sdílenou složku Azure pomocí PowerShellu](#create-file-share-through-powershell)
 * [Postup vytvoření sdílené složky Azure pomocí rozhraní příkazového řádku](#create-file-share-through-command-line-interface-cli)
 

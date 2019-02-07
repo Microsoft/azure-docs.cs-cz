@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 07/11/2017
 ms.author: barbkess
 ms.reviewer: asteen
-ms.openlocfilehash: 2d1a449511ce944783c8d93b79d59be263b20fa3
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 38075c9216eab955a023fee53aad74f3768d783c
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55163939"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55822268"
 ---
 # <a name="problem-configuring-user-provisioning-to-an-azure-ad-gallery-application"></a>Potíže s konfigurací zřizování uživatelů pro aplikaci Galerie Azure AD
 
@@ -41,7 +41,7 @@ Po nakonfigurování služby lze většinu přehled o fungování služby rozli�
 Níže je seznam obecné problémových oblastí, které můžete zobrazit další podrobnosti Pokud máte představu, kde začít.
 
 * [Služba zřizování se nezobrazí spuštění](#provisioning-service-does-not-appear-to-start)
-* [Nelze uložit konfiguraci z důvodu přihlašovacích údajů aplikace nefunguje](#can’t-save-configuration-due-to-app-credentials-not-working)
+* Nelze uložit konfiguraci z důvodu přihlašovacích údajů aplikace nefunguje
 * [Protokoly auditu Řekněme, že uživatelé jsou "vynecháno" a není zřízený, i když jsou přiřazeny](#audit-logs-say-users-are-skipped-and-not-provisioned-even-though-they-are-assigned)
 
 ## <a name="provisioning-service-does-not-appear-to-start"></a>Služba zřizování se nezobrazí spuštění

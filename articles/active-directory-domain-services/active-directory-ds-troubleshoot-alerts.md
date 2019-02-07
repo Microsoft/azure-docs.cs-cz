@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/02/2018
 ms.author: ergreenl
-ms.openlocfilehash: 494acc55001bd3180d345801ef8d62800dd5e837
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 492b15bddad598d65c15c48f04d3148c41cd3c7e
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55174024"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55817525"
 ---
 # <a name="azure-ad-domain-services---troubleshoot-alerts"></a>Azure AD Domain Services – řešení výstrah
 Tento článek obsahuje Průvodce řešením potíží pro všechny výstrahy, které mohou nastat ve vaší spravované doméně.
@@ -42,7 +42,7 @@ Vyberte kroků pro řešení problémů, které odpovídají ID nebo zprávy ve 
 | AADDS108 | *Předplatné, které používá služba Azure AD Domain Services se přesunul do jiného adresáře. Azure AD Domain Services musí mít aktivní předplatné ve stejném adresáři, aby správně fungoval.* | [Přesunout předplatné adresáře](#aadds108-subscription-moved-directories) |
 | AADDS109 | *Prostředek, který se používá pro vaše spravovaná doména se odstranil. Tento prostředek je potřeba pro Azure AD Domain Services, aby správně fungoval.* | [Prostředek se odstranil.](#aadds109-resources-for-your-managed-domain-cannot-be-found) |
 | AADDS110 | *Podsíť vybraná pro nasazení služby Azure AD Domain Services je plný a nemá žádné místo pro další řadič domény, který je potřeba vytvořit.* | [Podsíť je plná](#aadds110-the-subnet-associated-with-your-managed-domain-is-full) |
-| AADDS111 | * A instanční objekt, který používá Azure AD Domain Services pro vaši doménu služby nemá oprávnění ke správě prostředků předplatného Azure. Instanční objekt je potřeba získat oprávnění pro služby spravované domény. * | [Instanční objekt není autorizovaný.](#aadds111-service-principal-unauthorized) |
+| AADDS111 | * A instanční objekt, který používá Azure AD Domain Services pro vaši doménu služby nemá oprávnění ke správě prostředků předplatného Azure. Instanční objekt je potřeba získat oprávnění pro služby spravované domény. * | Instanční objekt není autorizovaný. |
 | AADDS112 | *Zjistili jsme, že podsíť virtuální sítě v této doméně nemá dostatek IP adres. Azure AD Domain Services potřebuje alespoň dvě dostupné IP adresy v podsíti, ve které je povolený v. Doporučujeme mít alespoň 3 až 5 náhradních adres IP v rámci podsítě. To mohly nastat, pokud jsou ostatní virtuální počítače nasazené v rámci podsítě, tedy vyčerpáním počet dostupných IP adres nebo pokud je omezení počtu dostupných IP adres v podsíti.* | [Není k dispozici dostatek IP adres](#aadds112-not-enough-ip-address-in-the-managed-domain) |
 | AADDS113 | *Prostředky používané službou Azure AD Domain Services byly zjištěny v neočekávaném stavu a nelze jej obnovit.* | [Prostředky neopravitelné](#aadds113-resources-are-unrecoverable) |
 | AADDS114 | * Podsíť vybraná pro nasazení služby Azure AD Domain Services je neplatný a nelze použít. * | [Neplatná podsíť](#aadds114-subnet-invalid) |
@@ -67,7 +67,7 @@ Tato chyba je obvykle způsobeno nesprávně přesun předplatného Azure na nov
 
 Tato chyba Neopravitelná. Pokud chcete vyřešit, je nutné [odstranit svoji existující spravovanou doménu](active-directory-ds-disable-aadds.md) a znovu ho vytvořte v novém adresáři. Pokud máte potíže při odstraňování, kontaktujte produktový tým na Azure Active Directory Domain Services [pro podporu](active-directory-ds-contact-us.md).
 
-## <a name="aadds101-azure-ad-b2c-is-running-in-this-directory"></a>AADDS101: Azure AD B2C běží v tomto adresáři
+## <a name="aadds101-azure-ad-b2c-is-running-in-this-directory"></a>AADDS101: Azure AD B2C je spuštěna v tomto adresáři
 **Zpráva s výstrahou:**
 
 *Azure AD Domain Services nelze povolit v adresáři Azure AD B2C.*
@@ -114,7 +114,7 @@ Ve virtuální síti může být počítače požadavky na prostředky Azure, kt
 4. Připojení k doméně virtuálních počítačů, aby vaše nová doména, postupujte podle [Tato příručka](active-directory-ds-admin-guide-join-windows-vm-portal.md).
 8. K zajištění, že výstraha vyřeší, zkontrolujte stav vaší domény do dvou hodin.
 
-## <a name="aadds106-your-azure-subscription-is-not-found"></a>AADDS106: Předplatné Azure se nenašlo
+## <a name="aadds106-your-azure-subscription-is-not-found"></a>AADDS106: Vaše předplatné Azure se nenašel.
 
 **Zpráva s výstrahou:**
 
@@ -128,7 +128,7 @@ Azure AD Domain Services vyžaduje předplatné funkce a nelze jej přesunout do
 2. [Odstranit vaši spravovanou doménu](active-directory-ds-disable-aadds.md) z existujícího adresáře Azure AD.
 3. Postupujte podle [Začínáme](active-directory-ds-getting-started.md) průvodce znovu vytvořit spravovanou doménu.
 
-## <a name="aadds107-your-azure-subscription-is-disabled"></a>AADDS107: Předplatné Azure se zakázalo
+## <a name="aadds107-your-azure-subscription-is-disabled"></a>AADDS107: Vaše předplatné Azure je deaktivované
 
 **Zpráva s výstrahou:**
 
@@ -150,7 +150,7 @@ Azure AD Domain Services vyžaduje předplatné funkce a nelze jej přesunout do
 
 Přesuňte předplatné spojené s zpět na předchozí adresář Azure AD Domain Services, nebo je potřeba [odstranit vaši spravovanou doménu](active-directory-ds-disable-aadds.md) z existujícího adresáře a znovu ho vytvořte v adresáři zvolené (buď nové předplatné nebo změnit adresář Azure AD Domain Services je vaše instance ve).
 
-## <a name="aadds109-resources-for-your-managed-domain-cannot-be-found"></a>AADDS109: Nepovedlo se najít prostředky pro spravovanou doménu
+## <a name="aadds109-resources-for-your-managed-domain-cannot-be-found"></a>AADDS109: Prostředky pro vaše spravovaná doména se nenašel.
 
 **Zpráva s výstrahou:**
 
@@ -193,7 +193,7 @@ Naše instanční objekty potřebují přístup k mohli spravovat a vytvářet p
 2. Zkontrolovat přístup, který instanční objekt s ID ```abba844e-bc0e-44b0-947a-dc74e5d09022``` a udělit přístup, který byl odepřen v dřívějšímu datu.
 
 
-## <a name="aadds112-not-enough-ip-address-in-the-managed-domain"></a>AADDS112: Ve spravované doméně není dostatek IP adres
+## <a name="aadds112-not-enough-ip-address-in-the-managed-domain"></a>AADDS112: Není k dispozici dostatek IP adres ve spravované doméně
 
 **Zpráva s výstrahou:**
 
@@ -201,7 +201,7 @@ Naše instanční objekty potřebují přístup k mohli spravovat a vytvářet p
 
 **Řešení:**
 
-1. [Odstranit vaši spravovanou doménu](#active-directory-ds-disable-aadds.md) z vašeho tenanta.
+1. Odstraňte vaši spravovanou doménu z vašeho tenanta.
 2. Odstranit rozsah IP adres podsítě
   1. Přejděte [stránce virtuální sítě na portálu Azure portal](https://portal.azure.com/?feature.canmodifystamps=true&Microsoft_AAD_DomainServices=preview#blade/HubsExtension/Resources/resourceType/Microsoft.Network%2FvirtualNetworks).
   2. Vyberte virtuální síť, kterou chcete použít pro službu Azure AD Domain Services.

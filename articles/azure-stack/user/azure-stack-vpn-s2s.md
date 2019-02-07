@@ -14,16 +14,19 @@ ms.topic: article
 ms.date: 01/19/2019
 ms.author: sethm
 ms.lastreviewed: 01/19/2019
-ms.openlocfilehash: 9a14c819acbc46d8a281f73fd4f3185caa8a1e02
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 96cb07ca4ede26e9bf0e5ceba28f1549061d0bf3
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55478147"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55815672"
 ---
 # <a name="configure-ipsecike-policy-for-site-to-site-vpn-connections"></a>Konfigurace zásad IPsec/IKE pro připojení VPN typu site-to-site
 
 Tento článek vás provede kroky ke konfiguraci zásad IPsec/IKE pro site-to-site (S2S) VPN připojení ve službě Azure Stack.
+
+>[!NOTE]
+> Musíte používat Azure Stack sestavení **1809** nebo později, aby bylo možné tuto funkci používat.  Pokud aktuálně používáte sestavení před 1809, aktualizujte prosím váš systém Azure Stack na nejnovější verzi před pokusem o tuto funkci používat, nebo postupujte podle kroků v tomto článku.
 
 ## <a name="ipsec-and-ike-policy-parameters-for-vpn-gateways"></a>Parametry zásad protokolu IPsec a IKE pro brány VPN Gateway
 

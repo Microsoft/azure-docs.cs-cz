@@ -1,11 +1,14 @@
 items:
-- name: Dokumentace ke službě Azure Table Storage
+- name: Dokumentace k Azure Storage
+  href: /azure/storage/
+- name: Přehled
   items:
   - name: Přehled služby Azure Table Storage
     href: table-storage-overview.md
   - name: Volba Table Storage nebo Table API
     href: /azure/cosmos-db/table-support
     maintainContext: true
+  expanded: true
 - name: Šablony Rychlý start
   items:
   - name: vytvořit účet úložiště
@@ -85,9 +88,9 @@ items:
   - name: Rozhraní REST API služby Table Storage
     href: https://docs.microsoft.com/rest/api/storageservices/table-service-rest-api
     maintainContext: true
-ms.openlocfilehash: 721bf797bcd280c67908aa53d62e82b2a0844cda
-ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
+ms.openlocfilehash: a3eec16119b8689f9745e6d6f3002bf6b28a50e4
+ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55507225"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55770533"

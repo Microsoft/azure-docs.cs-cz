@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/30/2018
 ms.author: magattus
-ms.openlocfilehash: 563c073e781e2a2bee88b4ecdcdc82541c21ec4f
-ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
+ms.openlocfilehash: f82675f1e93a5471f98c1778e9394f9eaec1a07b
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49092383"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55813037"
 ---
 # <a name="how-caching-works"></a>Jak funguje ukládání do mezipaměti
 
@@ -35,10 +35,10 @@ Dynamické prostředky, které často mění nebo jsou jedinečné pro jednotliv
 
 Ukládání do mezipaměti dojít na více úrovních mezi zdrojový server a rozhraní koncového uživatele:
 
-- Webový server: používá sdílené mezipaměti (pro více uživatelů).
-- Síť content delivery network: používá sdílené mezipaměti (pro více uživatelů).
-- Poskytovatele internetových služeb (ISP): pomocí sdílené mezipaměti (pro více uživatelů).
-- Webový prohlížeč: používá soukromé mezipaměti (pro jednoho uživatele).
+- Webový server: Používá sdílené mezipaměti (pro více uživatelů).
+- Síť pro doručování obsahu: Používá sdílené mezipaměti (pro více uživatelů).
+- Poskytovatele internetových služeb (ISP): Používá sdílené mezipaměti (pro více uživatelů).
+- Webový prohlížeč: Používá soukromé mezipaměti (pro jednoho uživatele).
 
 Každá mezipaměť obvykle spravuje svou vlastní prostředek aktuálnosti a provede ověření, když je soubor zastaralé. Toto chování je definována v protokolu HTTP, ukládání do mezipaměti specifikace, [RFC 7234](https://tools.ietf.org/html/rfc7234).
 
@@ -76,9 +76,9 @@ Azure CDN podporuje následující hlavičky direktiv pro mezipaměť protokolu 
 - Při použití v odpovědi HTTP od klienta k CDN POP:
      - **Azure CDN Standard nebo Premium od Verizonu** a **Azure CDN Standard od společnosti Microsoft** podporují všechny `Cache-Control` direktivy.
      - **Azure CDN Standard od Akamai** podporuje pouze následující `Cache-Control` direktivy; všechny další se ignorují:
-         - `max-age`: Počet sekund zadaného mezipaměť můžete ukládat obsah. Například, `Cache-Control: max-age=5`. Tato direktiva určuje maximální množství času, které se považuje za čerstvý obsah.
-         - `no-cache`: Obsah do mezipaměti, ale ověřit obsah pokaždé, když se před doručením z mezipaměti. Ekvivalentní `Cache-Control: max-age=0`.
-         - `no-store`: Nikdy mezipaměť obsahu. Odeberte obsah, pokud byla dříve uložena.
+         - `max-age`: Mezipaměti můžete ukládat obsah počtu sekund zadaného. Například, `Cache-Control: max-age=5`. Tato direktiva určuje maximální množství času, které se považuje za čerstvý obsah.
+         - `no-cache`: Uloží obsah do mezipaměti, ale ověřit obsah pokaždé, když se před doručením z mezipaměti. Ekvivalentní `Cache-Control: max-age=0`.
+         - `no-store`: Nikdy uloží obsah do mezipaměti. Odeberte obsah, pokud byla dříve uložena.
 
 **Vypršení platnosti:**
 - Starší verze záhlaví zavedené v HTTP 1.0; podporováno pro zpětnou kompatibilitu.
@@ -116,7 +116,7 @@ Ne všechny prostředky můžete uložit do mezipaměti. V následující tabulc
 |-------------------|-----------------------------------|------------------------|------------------------------|
 | Stavové kódy HTTP | 200, 203, 206, 300, 301, 410, 416 | 200                    | 200, 203, 300, 301, 302, 401 |
 | Metody HTTP      | GET, HEAD                         | GET                    | GET                          |
-| Omezení velikosti souborů  | 300 GB                            | 300 GB                 | -Optimalizace obecného doručování webu: 1,8 GB<br />-Streamování médií optimalizace: 1,8 GB<br />-Optimalizace velkých souborů: 150 GB |
+| Omezení velikosti souborů  | 300 GB                            | 300 GB                 | -Optimalizace obecného doručování webu: 1,8 GB<br />– Optimalizace streamování média: 1,8 GB<br />-Optimalizace velkých souborů: 150 GB |
 
 Pro **Azure CDN Standard od společnosti Microsoft** ukládání do mezipaměti pro práci na prostředek, je zdrojový server musí podporovat všechny hlavní a požadavky GET HTTP a hodnoty content-length musí být stejný pro všechny hlavní a GET HTTP odpovědí pro prostředek. Pro požadavek HEAD zdrojový server musí podporovat požadavek HEAD a musí odpovědět s záhlaví stejné, jako by se v minulosti obdržel požadavek GET.
 
@@ -124,12 +124,12 @@ Pro **Azure CDN Standard od společnosti Microsoft** ukládání do mezipaměti 
 
 Následující tabulka popisuje výchozí chování pro produkty Azure CDN a jejich optimalizace ukládání do mezipaměti.
 
-|    | Společnosti Microsoft: Obecné doručování webu | Verizon: Obecné doručování webu | Verizon: DSA | Akamai: Obecné doručování webu | Akamai: DSA | Akamai: Stahování velkých souborů | Akamai: Obecné nebo streamování médií videa na Vyžádání |
+|    | Microsoft: Obecné doručování webu | Verizon: Obecné doručování webu | Verizon: DSA | Akamai: Obecné doručování webu | Akamai: DSA | Akamai: Stahování velkých souborů | Akamai: Obecné nebo streamování médií videa na Vyžádání |
 |------------------------|--------|-------|------|--------|------|-------|--------|
 | **Případném dalším sdílení dodržovat původu**       | Ano    | Ano   | Ne   | Ano    | Ne   | Ano   | Ano    |
 | **Doba trvání mezipaměti CDN** | 2 dny |7 dní | Žádný | 7 dní | Žádný | 1 den | 1 rok |
 
-**Případném dalším sdílení dodržovat původu**: Určuje, zda případném dalším sdílení dodržovat [podporované hlaviček direktiv pro mezipaměť](#http-cache-directive-headers) Pokud ovšem existují v odpovědi HTTP ze zdrojového serveru.
+**Případném dalším sdílení dodržovat původu**: Určuje, zda případném dalším sdílení dodržovat podporovaných hlaviček direktiv pro mezipaměť, pokud existují v odpovědi HTTP ze zdrojového serveru.
 
 **Doba trvání mezipaměti CDN**: Určuje množství času, u kterého se uloží do mezipaměti prostředek ve službě Azure CDN. Ale pokud **případném dalším sdílení dodržovat původu** Ano a odpovědi HTTP ze zdrojového serveru zahrnuje hlaviček direktiv pro mezipaměť `Expires` nebo `Cache-Control: max-age`, doba trvání hodnota zadaná v hlavičce místo toho používá Azure CDN. 
 

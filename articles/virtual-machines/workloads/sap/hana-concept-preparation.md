@@ -14,12 +14,12 @@ ms.workload: infrastructure
 ms.date: 09/10/2018
 ms.author: saghorpa
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: ff214460d919eff5c3c1a2e608958673867ddc55
-ms.sourcegitcommit: 794bfae2ae34263772d1f214a5a62ac29dcec3d2
+ms.openlocfilehash: 73643cd6954932f933e200baad09e4301300aac2
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44392229"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55822540"
 ---
 # <a name="disaster-recovery-principles"></a>Zásady pro zotavení po havárii
 
@@ -48,7 +48,7 @@ V případech, kdy použít systémové replikace HANA jako funkce vysoké dostu
 
 
 >[!NOTE]
->Funkce replikace úložiště velká Instance HANA je zrcadlení a replikace snímků úložiště. Pokud úložiště snímků nechcete provést, protože počínaje [zálohování a obnovení](#backup-and-restore) části tohoto článku, nesmí být žádné replikace na lokalitu pro obnovení po havárii. Provedením snímku úložiště je předpokladem pro replikaci úložiště do lokality pro obnovení po havárii.
+>Funkce replikace úložiště velká Instance HANA je zrcadlení a replikace snímků úložiště. Pokud úložiště snímků nechcete provést, protože představíme v části zálohování a obnovení tohoto článku, nemůže být jakoukoli replikaci do lokality pro obnovení po havárii. Provedením snímku úložiště je předpokladem pro replikaci úložiště do lokality pro obnovení po havárii.
 
 
 
@@ -81,7 +81,7 @@ V dalším kroku nastavení, nebo upravte plán zálohování snímku úložišt
 - Pro svazek zálohování protokolu transakce (typ snímku **protokoly**), sada k replikaci každé 3 minuty na svazku cíle ekvivalentní úložiště v lokalitě zotavení po havárii.
 
 Chcete-li minimalizovat cíl bodu obnovení, nastavte následující:
-- Provést **hana** typ úložiště snímku (naleznete v tématu "krok 7: provést snímky") každých 30 minut na 1 hodinu.
+- Provést **hana** typ úložiště snímku (naleznete v tématu "krok 7: Provést snímky") každých 30 minut na 1 hodinu.
 - Proveďte zálohování protokolu transakce SAP HANA každých 5 minut.
 - Provést **protokoly** zadejte úložiště snímků každých 5 až 15 minut. Pomocí tohoto intervalu dosáhnout plánovaný bod obnovení přibližně 15 25 minut.
 

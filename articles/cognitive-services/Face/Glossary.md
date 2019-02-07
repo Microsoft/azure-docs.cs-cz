@@ -10,12 +10,12 @@ ms.subservice: face-api
 ms.topic: conceptual
 ms.date: 03/01/2018
 ms.author: sbowles
-ms.openlocfilehash: 17167271df81914c76882fc4d06717043e1befc1
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: 06c385b1ca43277b59c337646c41cae360ce48a5
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55214292"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55816556"
 ---
 # <a name="glossary"></a>Glosář
 
@@ -23,14 +23,14 @@ ms.locfileid: "55214292"
 
 #### <a name="attributes"></a>Atributy
 
-Atributy jsou volitelné v [detekce](#Detection-Face-Detection) výsledky, jako například [stáří](#Age-Attribute), [pohlaví](#Gender-Attribute), [hlavní póza](#Head-Pose-Attribute), [vousy](#Facial-Hair-Attribute), [usmívající se](#Smile-Attribute).
-Získáte na [detekce](#Detection-Face-Detection) rozhraní API tak, že zadáte parametry dotazu: returnFaceAttributes. Atributy poskytují další informace týkající se vybraných [tváří](#Face); kromě [face ID](#Face-ID) a [obdélník](#Face-Rectangle).
+Atributy, jako jsou volitelné ve výsledcích zjišťování [stáří](#Age-Attribute), [pohlaví](#Gender-Attribute), [hlavní póza](#Head-Pose-Attribute), [vousy](#Facial-Hair-Attribute), [usmívající se ](#Smile-Attribute).
+Může být získána z rozhraní API pro detekci tak, že zadáte parametry dotazu: returnFaceAttributes. Atributy poskytují další informace týkající se vybraných [tváří](#Face); kromě [face ID](#Face-ID) a [obdélník](#Face-Rectangle).
 
 Další podrobnosti najdete v průvodci [pro rozpoznávání tváře – zjišťovat](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236).
 
 #### <a name="age-attribute"></a>Stáří (atribut)
 
-Stáří je jedním z [atributy](#Attributes) , který popisuje stáří konkrétní tváře. Stáří atribut je volitelný v [detekce](#Detection-Face-Detection) výsledky a je možné řídit pomocí [detekce](#Detection-Face-Detection) požadavku tak, že zadáte parametr returnFaceAttributes.
+Stáří je jedním z [atributy](#Attributes) , který popisuje stáří konkrétní tváře. Stáří atribut je volitelný ve výsledcích zjišťování a lze ovládat pomocí požadavku zjišťování tak, že zadáte parametr returnFaceAttributes.
 
 Další podrobnosti najdete v průvodci [pro rozpoznávání tváře – zjišťovat](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236).
 
@@ -64,13 +64,13 @@ Další podrobnosti najdete v průvodci [pro rozpoznávání tváře – zjišť
 
 #### <a name="face"></a>Tvář
 
-Rozpoznávání tváře je jednotný termín pro výsledky odvozen z rozhraní API pro rozpoznávání tváře související s zjištěné tváří. Nakonec pro rozpoznávání tváře je reprezentována jednotné identity ([Face ID](#Face-ID)), určité oblasti do bitové kopie ([obdélník pro rozpoznávání tváře](#Face-Rectangle)) a další související [atributy](#Face-Attributes-Facial-Attributes), jako je například [stáří](#Age-Attribute), [pohlaví](#Gender-Attribute), [památek](#Face-Landmarks-Facial-Landmarks) a [hlavní póza](#Head-Pose-Attribute). Kromě toho mohou být vráceny tváří z [detekce](#Detection-Face-Detection).
+Rozpoznávání tváře je jednotný termín pro výsledky odvozen z rozhraní API pro rozpoznávání tváře související s zjištěné tváří. Nakonec pro rozpoznávání tváře je reprezentována jednotné identity ([Face ID](#Face-ID)), určité oblasti do bitové kopie ([obdélník pro rozpoznávání tváře](#Face-Rectangle)) a navíc pro rozpoznávání tváře vztahující se atributy, jako například [stáří](#Age-Attribute), [pohlaví](#Gender-Attribute), orientačních bodů a [hlavní póza](#Head-Pose-Attribute). Kromě toho mohou být vráceny tváří z detekce.
 
 Další podrobnosti najdete v průvodci [pro rozpoznávání tváře – zjišťovat](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236).
 
 #### <a name="face-api"></a>Rozhraní API pro rozpoznávání tváře
 
-Rozhraní API pro rozpoznávání tváře je rozhraní API založené na cloudu, které poskytuje špičkové algoritmy pro rozpoznávání tváře a uznání. Hlavní funkce rozhraní API pro rozpoznávání tváře je možné rozdělit do dvou kategorií: pro rozpoznávání tváře [detekce](#Detection-Face-Detection) s [atributy](#Face-Attributes-Facial-Attributes)a rozpoznávání tváře [rozpoznávání](#Recognition).
+Rozhraní API pro rozpoznávání tváře je rozhraní API založené na cloudu, které poskytuje špičkové algoritmy pro rozpoznávání tváře a uznání. Hlavní funkce rozhraní API pro rozpoznávání tváře je možné rozdělit do dvou kategorií: rozpoznávání s atributy a rozpoznávání tváře [rozpoznávání](#Recognition).
 
 Další podrobnosti najdete v následujících příručkách: [Přehled rozhraní API pro rozpoznávání tváře](./Overview.md), [pro rozpoznávání tváře – zjišťovat](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236), [pro rozpoznávání tváře – vyhledání podobných](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395237), [pro rozpoznávání tváře – seskupit](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395238), [pro rozpoznávání tváře – identifikace](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395239), [ Rozpoznávání tváře – ověření](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523a).
 
@@ -80,13 +80,13 @@ Podrobnosti najdete na [atributy](#Attributes).
 
 #### <a name="face-id"></a>ID tváře
 
-Face ID je odvozen z [detekce](#Detection-Face-Detection) výsledky, které představuje [pro rozpoznávání tváře](#Face) v [API pro rozpoznávání tváře](#Face-API).
+Face ID je odvozena z výsledků zjišťování, ve kterých představuje [pro rozpoznávání tváře](#Face) v [API pro rozpoznávání tváře](#Face-API).
 
 Další podrobnosti najdete v průvodci [pro rozpoznávání tváře – zjišťovat](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236).
 
 #### <a name="face-landmarksfacial-landmarks"></a>Zajímavá památek/Facial pro rozpoznávání tváře
 
-Památek jsou nepovinné v [detekce](#Detection-Face-Detection) výsledků, které jsou sémantické tváře body, jako je například oči, nos a přidržte (znázorněný na následujícím obrázku). Zajímavá se dá řídit pomocí [detekce](#Detection-Face-Detection) žádost logická returnFaceLandmarks čísla. Pokud returnFaceLandmarks je nastavená na hodnotu true, bude mít vrácené tváří památek atributy.
+Památek jsou volitelné ve výsledcích zjišťování; sémantické tváře bodů, například oči, nos a přidržte (znázorněný na následujícím obrázku), které jsou. Zajímavá mohou být požadavku zjišťování řízena logická returnFaceLandmarks čísla. Pokud returnFaceLandmarks je nastavená na hodnotu true, bude mít vrácené tváří památek atributy.
 
 Další podrobnosti najdete v průvodci [pro rozpoznávání tváře – zjišťovat](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236).
 
@@ -94,19 +94,19 @@ Další podrobnosti najdete v průvodci [pro rozpoznávání tváře – zjišť
 
 #### <a name="face-rectangle"></a>Rámeček pro rozpoznávání tváře
 
-Rozpoznávání tváře obdélníku je odvozen z [detekce](#Detection-Face-Detection) výsledky, které je svislé obdélník (vlevo, horní, šířka, výška) na obrázcích v pixelech. Levého horního rohu [pro rozpoznávání tváře](#Face) (levý, horní), kromě šířku a výšku, určuje velikost pro rozpoznávání tváře ve x a y OS v uvedeném pořadí.
+Rozpoznávání tváře obdélníku je odvozen z výsledky vyhledávání se svislé obdélníku, (vlevo, horní, šířka, výška) v obrázku v pixelech. Levého horního rohu [pro rozpoznávání tváře](#Face) (levý, horní), kromě šířku a výšku, určuje velikost pro rozpoznávání tváře ve x a y OS v uvedeném pořadí.
 
 Další podrobnosti najdete v průvodci [pro rozpoznávání tváře – zjišťovat](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236).
 
 #### <a name="facial-hair-attribute"></a>Vousy (atribut)
 
-Vousy je jedním z [atributy](#Attributes) používají k popisu vousy délka k dispozici tváří. Vousy atribut je volitelný v [detekce](#Detection-Face-Detection) výsledky a je možné řídit pomocí [detekce](#Detection-Face-Detection) žádost returnFaceAttributes. Obsahuje-li returnFaceAttributes "facialHair", bude mít vrácené tváří vousy atributy.
+Vousy je jedním z [atributy](#Attributes) používají k popisu vousy délka k dispozici tváří. Vousy atribut je volitelný ve výsledcích zjišťování a mohou být s žádostí o detekci řízena returnFaceAttributes. Obsahuje-li returnFaceAttributes "facialHair", bude mít vrácené tváří vousy atributy.
 
 Další podrobnosti najdete v průvodci [pro rozpoznávání tváře – zjišťovat](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236).
 
 #### <a name="facelist"></a>FaceList
 
-FaceList je kolekce [PersistedFace](#PersistedFace) a je jednotka [Najít podobné](#Find-Similar). FaceList dodává se [FaceList ID](#FaceList-ID), stejně jako ostatní atributy, jako [název](#Name) a [uživatelská Data](#UserData-User-Data).
+FaceList je kolekce [PersistedFace](#PersistedFace) a je jednotka [Najít podobné](#Find-Similar). FaceList dodává se [FaceList ID](#FaceList-ID), stejně jako ostatní atributy jako jsou název a uživatelská Data.
 
 Další podrobnosti najdete v následujících příručkách: [FaceList - vytvořit](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039524b), [FaceList - Get](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039524c).
 
@@ -118,7 +118,7 @@ Další podrobnosti najdete v následujících příručkách: [FaceList - vytvo
 
 #### <a name="find-similar"></a>Vyhledání podobných
 
-Toto rozhraní API se používá k hledání nebo dotaz podobných tváří na základě kolekce tváří. Dotaz tváří a rozpoznávání tváře kolekce jsou reprezentovány ve formě [face ID](#Face-ID) nebo [FceList ID](#FaceList-ID)/[LargeFaceList ID](#LargeFaceList-ID) v požadavku. Vrátí prohledávaném podobných tváří reprezentována jsou výsledky [face ID](#Face-ID) nebo [PersistedFace ID](#PersistedFace-ID).
+Toto rozhraní API se používá k hledání nebo dotaz podobných tváří na základě kolekce tváří. Dotaz tváří a rozpoznávání tváře kolekce jsou reprezentovány ve formě [face ID](#Face-ID) nebo [FceList ID](#FaceList-ID)/[LargeFaceList ID](#LargeFaceList-ID) v požadavku. Vrátí prohledávaném podobných tváří reprezentována jsou výsledky [face ID](#Face-ID) nebo PersistedFace identifikátory.
 
 Další podrobnosti najdete v následujících příručkách: [Rozpoznávání tváře – vyhledání podobných](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395237), [LargeFaceList – vytvořit](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/5a157b68d2de3616c086f2cc), [FaceList – vytvořit](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039524b).
 
@@ -126,7 +126,7 @@ Další podrobnosti najdete v následujících příručkách: [Rozpoznávání 
 
 #### <a name="gender-attribute"></a>Pohlaví (atribut)
 
-Pohlaví je jedním z [atributy](#Attributes) používají k popisu pohlaví dostupné tváří. Pohlaví atribut je volitelný v [detekce](#Detection-Face-Detection) výsledky a je možné řídit pomocí [detekce](#Detection-Face-Detection) žádost returnFaceAttributes. Obsahuje-li returnfaceAttributes "pohlaví", vrácený tváří bude mít atributy pohlaví.
+Pohlaví je jedním z [atributy](#Attributes) používají k popisu pohlaví dostupné tváří. Pohlaví atribut je volitelný ve výsledcích zjišťování a mohou být s žádostí o detekci řízena returnFaceAttributes. Obsahuje-li returnfaceAttributes "pohlaví", vrácený tváří bude mít atributy pohlaví.
 
 Další podrobnosti najdete v průvodci [pro rozpoznávání tváře – zjišťovat](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236).
 
@@ -146,7 +146,7 @@ Další podrobnosti najdete v průvodci [pro rozpoznávání tváře – seskupi
 
 #### <a name="head-pose-attribute"></a>Hlavní představovat (atribut)
 
-Pozice HEAD je jedním z [atributy](#Attributes) , představuje pro rozpoznávání tváře orientace v 3D prostoru podle vrácení, výšku a úhlu natočení úhly, jak je znázorněno na následujícím obrázku. Rozsahy hodnot z vrátit a yaw jsou [-180, 180] a [-90, 90] ve stupních. V aktuální verzi rozteč hodnota vrácená z detekce je vždy 0. Hlavní póza atribut je volitelný v [detekce](#Detection-Face-Detection) výsledky a je možné řídit pomocí [detekce](#Detection-Face-Detection) žádost returnFaceAttributes parametr. Pokud returnFaceAttributes parametru obsahuje "headPose", vrácený tváří bude mít hlavní představovat atributy.
+Pozice HEAD je jedním z [atributy](#Attributes) , představuje pro rozpoznávání tváře orientace v 3D prostoru podle vrácení, výšku a úhlu natočení úhly, jak je znázorněno na následujícím obrázku. Rozsahy hodnot z vrátit a yaw jsou [-180, 180] a [-90, 90] ve stupních. V aktuální verzi rozteč hodnota vrácená z detekce je vždy 0. Hlavní póza atribut je volitelný ve výsledcích zjišťování a lze ovládat pomocí žádosti o zjištění returnFaceAttributes parametrem. Pokud returnFaceAttributes parametru obsahuje "headPose", vrácený tváří bude mít hlavní představovat atributy.
 
 Další podrobnosti najdete v průvodci [pro rozpoznávání tváře – zjišťovat](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236).
 
@@ -182,11 +182,11 @@ Další podrobnosti najdete v průvodci [pro rozpoznávání tváře – ověře
 
 #### <a name="landmarks"></a>Zajímavá
 
-Podrobnosti najdete na [orientačních bodů pro rozpoznávání tváře](#Face-Landmarks-Facial-Landmarks).
+Podrobnosti najdete na orientačních bodů pro rozpoznávání tváře.
 
 #### <a name="largefacelist"></a>LargeFaceList
 
-LargeFaceList je kolekce [PersistedFace](#PersistedFace) a je jednotka [Najít podobné](#Find-Similar). LargeFaceList dodává se [LargeFaceList ID](#LargeFaceList-ID), stejně jako ostatní atributy, jako [název](#Name) a [uživatelská Data](#UserData-User-Data).
+LargeFaceList je kolekce [PersistedFace](#PersistedFace) a je jednotka [Najít podobné](#Find-Similar). LargeFaceList dodává se [LargeFaceList ID](#LargeFaceList-ID), stejně jako ostatní atributy jako jsou název a uživatelská Data.
 
 Další podrobnosti najdete v následujících příručkách: [LargeFaceList – vytvořit](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/5a157b68d2de3616c086f2cc), [LargeFaceList – Get](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/5a15827cd2de3616c086f2ce), [LargeFaceList – Face seznamu](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/5a158db4d2de3616c086f2d6).
 
@@ -198,7 +198,7 @@ Další podrobnosti najdete v následujících příručkách: [LargeFaceList �
 
 #### <a name="largepersongroup"></a>LargePersonGroup
 
-LargePersonGroup je kolekce [osoby](#Person) a je jednotka [identifikace](#Identification). LargePersonGroup dodává se [LargePersonGroup ID](#LargePersonGroup-ID), stejně jako ostatní atributy, jako [název](#Name) a [uživatelská Data](#UserData-User-Data).
+LargePersonGroup je kolekce [osoby](#Person) a je jednotka [identifikace](#Identification). LargePersonGroup dodává se [LargePersonGroup ID](#LargePersonGroup-ID), stejně jako ostatní atributy jako jsou název a uživatelská Data.
 
 Další podrobnosti najdete v následujících příručkách: [LargePersonGroup – vytvořit](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/599acdee6ac60f11b48b5a9d), [LargePersonGroup – Get](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/599acebb6ac60f11b48b5a9e), [osoba LargePersonGroup – seznam](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/599adda06ac60f11b48b5aa1).
 
@@ -236,7 +236,7 @@ Další podrobnosti najdete v následujících příručkách: [LargePersonGroup
 
 #### <a name="persistedface"></a>PersistedFace
 
-PersistedFace je datová struktura v rozhraní API pro rozpoznávání tváře. PersistedFace dodává se [PersistedFace ID](#PersistedFace-ID), stejně jako ostatní atributy, jako [název](#Name), a [uživatelská Data](#UserData-User-Data).
+PersistedFace je datová struktura v rozhraní API pro rozpoznávání tváře. PersistedFace se dodává s PersistedFace ID, jakož i další atributy, například název a dat uživatele.
 
 Další podrobnosti najdete v následujících příručkách: [LargeFaceList – přidání rozpoznávání tváře](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/5a158c10d2de3616c086f2d3), [FaceList – přidání rozpoznávání tváře](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395250), [osoba LargePersonGroup – přidání rozpoznávání tváře](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/599adf2a3a7b9412a4d53f42), [jeden objekt PersonGroup uživatele – přidání rozpoznávání tváře](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523b).
 
@@ -248,7 +248,7 @@ Další podrobnosti najdete v následujících příručkách: [LargeFaceList �
 
 #### <a name="person"></a>Person (Osoba)
 
-Uživatel je datová struktura, spravované v rozhraní API pro rozpoznávání tváře. Součástí osoba [ID osoby](#Person-ID), stejně jako ostatní atributy, jako [název](#Name), kolekce [PersistedFace](#PersistedFace), a [uživatelská Data](#UserData-User-Data).
+Uživatel je datová struktura, spravované v rozhraní API pro rozpoznávání tváře. Součástí osoba [ID osoby](#Person-ID), stejně jako ostatní atributy, jako je například název, kolekci [PersistedFace](#PersistedFace)a dat uživatele.
 
 Další podrobnosti najdete v následujících příručkách: [Vytvořit uživatele LargePersonGroup –](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/599adcba3a7b9412a4d53f40), [osoba LargePersonGroup – získání](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/599add376ac60f11b48b5aa0), [vytvořit jeden objekt PersonGroup uživatele –](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523c), [získat jeden objekt PersonGroup uživatele –](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523f).
 
@@ -260,7 +260,7 @@ Další podrobnosti najdete v následujících příručkách: [Vytvořit uživa
 
 #### <a name="persongroup"></a>PersonGroup
 
-Jeden objekt PersonGroup je kolekce [osoby](#Person) a je jednotka [identifikace](#Identification). Jeden objekt PersonGroup dodává se [jeden objekt PersonGroup ID](#PersonGroup-ID), stejně jako ostatní atributy, jako [název](#Name) a [uživatelská Data](#UserData-User-Data).
+Jeden objekt PersonGroup je kolekce [osoby](#Person) a je jednotka [identifikace](#Identification). Jeden objekt PersonGroup dodává se [jeden objekt PersonGroup ID](#PersonGroup-ID), stejně jako ostatní atributy jako jsou název a uživatelská Data.
 
 Další podrobnosti najdete v následujících příručkách: [Jeden objekt PersonGroup – vytvořit](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395244), [jeden objekt PersonGroup - Get](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395246), [jeden objekt PersonGroup uživatele – seznam](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395241).
 
@@ -290,19 +290,25 @@ Podrobnosti najdete na [pro rozpoznávání tváře obdélník](#Face-Rectangle)
 
 ## <a name="s"></a>S
 
-#### <a name="smile-attribute"></a>Usmívejte (atribut)
-
-Úsměv je jedním z [atributy](#Attributes) používají k popisu úsměv výrazu tváře k dispozici. Úsměv atribut je volitelný v [detekce](#Detection-Face-Detection) výsledky a je možné řídit pomocí [detekce](#Detection-Face-Detection) žádost returnFaceAttributes. Obsahuje-li returnFaceAttributes "usmívejte", bude mít vrácené tváří smajlíka atributy.
-
-Další podrobnosti najdete v průvodci [pro rozpoznávání tváře – zjišťovat](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236).
-
 #### <a name="similar-face-searching"></a>Vyhledávání podobných tváří
 
 Podrobnosti najdete na [Najít podobné](#Find-Similar).
 
+#### <a name="smile-attribute"></a>Usmívejte (atribut)
+
+Úsměv je jedním z [atributy](#Attributes) používají k popisu úsměv výrazu tváře k dispozici. Úsměv atribut je volitelný ve výsledcích zjišťování a mohou být s žádostí o detekci řízena returnFaceAttributes. Obsahuje-li returnFaceAttributes "usmívejte", bude mít vrácené tváří smajlíka atributy.
+
+Další podrobnosti najdete v průvodci [pro rozpoznávání tváře – zjišťovat](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236).
+
+#### <a name="snapshot"></a>Snímek
+
+Snímek je dočasný vzdálené úložiště pro některé typy dat pro rozpoznávání tváře. Funguje jako typ schránky pro kopírování dat z jednoho předplatného do druhého. První uživatel "přebírá" snímek dat ve zdrojovém předplatném, a potom "použijí" je nový datový objekt v cílovém předplatném. 
+
+Další podrobnosti najdete v tématu [Průvodce migrací pro rozpoznávání tváře](./face-api-how-to-topics/how-to-migrate-face-data.md) také [snímku - trvat](https://docs.microsoft.com/rest/api/cognitiveservices/face/snapshot/take) a [snímku - použít](https://docs.microsoft.com/rest/api/cognitiveservices/face/snapshot/apply) referenční dokumentace (REST).
+
 #### <a name="status-train"></a>Stav (regrese)
 
-Stav je řetězec sloužící k popisují postup [školení LargeFaceList/LargePersonGroups/objektů Persongroup](#Train), včetně 'notstarted","spuštěna","úspěšné","se nezdařilo".
+Stav je řetězec, slouží k popisu postup pro školení LargeFaceList/LargePersonGroups/objektů Persongroup, včetně 'notstarted","spuštěna","bylo úspěšné","se nezdařilo".
 
 Další podrobnosti najdete v průvodci [LargeFaceList – Train](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/5a158422d2de3616c086f2d1), [LargePersonGroup – Train](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/599ae2d16ac60f11b48b5aa4), [jeden objekt PersonGroup – Train](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395249).
 
@@ -330,7 +336,7 @@ Další podrobnosti najdete v následujících příručkách: [LargePersonGroup
 
 #### <a name="verification"></a>Ověření
 
-Toto rozhraní API se používá k ověření, jestli dvě tváře jsou stejné, nebo ne. Obě tváří jsou zastoupeny EDT face ID v požadavku. Ověřit výsledky obsahují pole Boolean ([isIdentical](#Is-Identical)) stejný označující, pokud je hodnota true a pole čísla ([spolehlivosti](#Confidence)) označující úroveň spolehlivosti.
+Toto rozhraní API se používá k ověření, jestli dvě tváře jsou stejné, nebo ne. Obě tváří jsou zastoupeny EDT face ID v požadavku. Ověřit výsledky obsahují pole Boolean (isIdentical) stejný označující, pokud je hodnota true a pole čísla ([spolehlivosti](#Confidence)) označující úroveň spolehlivosti.
 
 Další podrobnosti najdete v průvodci [pro rozpoznávání tváře – ověření](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523a).
 

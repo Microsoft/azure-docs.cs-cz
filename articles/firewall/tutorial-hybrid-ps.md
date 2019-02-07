@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 1/30/2019
 ms.author: victorh
 customer intent: As an administrator, I want to control network access from an on-premises network to an Azure virtual network.
-ms.openlocfilehash: 29af70988cf77b9fad47e5c2478e5c86529fe9cf
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: cf3c691553f2bc7ae8f10345daee92a8380aba25
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55458211"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55815740"
 ---
 # <a name="tutorial-deploy-and-configure-azure-firewall-in-a-hybrid-network-using-azure-powershell"></a>Kurz: Nasazení a konfigurace služby Azure Firewall v hybridní síti pomocí Azure PowerShellu
 
@@ -54,7 +54,7 @@ Předpokladem správného fungování tohoto scénáře jsou tři klíčové po�
 - Žádné uživatelem definovaná TRASA se vyžaduje v podsíti brány Firewall Azure jako zjišťuje směrování z protokolu BGP.
 - Při vytváření partnerského vztahu virtuální sítě VNet-Hub s virtuální sítí VNet-Spoke nezapomeňte nastavit **AllowGatewayTransit** a při vytváření partnerského vztahu virtuální sítě VNet-Spoke s virtuální sítí VNet-Hub nezapomeňte nastavit **UseRemoteGateways**.
 
-Postup vytvoření těchto tras najdete v části [Vytvoření pravidel](#create-routes) v tomto kurzu.
+V tomto kurzu, chcete-li zjistit, jak tyto trasy vytvářejí naleznete v části Vytvoření trasy.
 
 >[!NOTE]
 >Azure brány Firewall musí mít přímé připojení k Internetu. Pokud jste povolili vynuceného tunelování k místnímu přes ExpressRoute nebo služby Application Gateway, budete muset nakonfigurovat 0.0.0.0/0 uživatelem definovaná TRASA s **NextHopType** hodnota nastavená na **Internet**a pak ji přiřaďte  **AzureFirewallSubnet**.

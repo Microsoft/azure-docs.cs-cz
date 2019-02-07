@@ -5,30 +5,37 @@ services: notification-hubs
 author: spelluru
 ms.service: notification-hubs
 ms.topic: include
-ms.date: 01/04/2019
+ms.date: 02/05/2019
 ms.author: spelluru
 ms.custom: include file
-ms.openlocfilehash: f00ca7ddf44a9d5b850cd47520970a0396a0c1b5
-ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
+ms.openlocfilehash: bc920493b32d500602a5b683c098d23aff855150
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54453083"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55823122"
 ---
-1. Kliknutím na příslušnou ikonu na panelu nástrojů v Android Studiu nebo kliknutím na možnosti **Tools**(Nástroje)  > **Android** > **SDK Manager** v nabídce otevřete Android SDK Manager. Vyhledejte cílovou verzi sady Android SDK, kterou používá váš projekt, otevřete ji kliknutím na **Show Package Details** (Zobrazit podrobnosti balíčku) a vyberte možnost **Google APIs** (Rozhraní API Google), pokud ještě není nainstalovaná.
-2. Klikněte na kartu **SDK Tools** (Nástroje SDK). Pokud jste ještě nenainstalovali služby Google Play, klikněte na položku **Google Play Services**, jak vidíte níže. Potom spusťte instalaci kliknutím na **Apply** (Použít). Poznamenejte si cestu k sadě SDK, abyste ji mohli použít později.
+1. V **Android Studio**vyberte **nástroje** v nabídce a vyberte **správce sady SDK**. 
+2. Vyberte cílovou verzi sady SDK pro Android, který se používá v projektu a vyberte **zobrazit podrobnosti balíčku**. 
 
-    ![](./media/notification-hubs-android-studio-add-google-play-services/notification-hubs-android-studio-sdk-manager.png)
-3. Otevřít `build.gradle` soubor v adresáři aplikace.
+    ![Správce sady Android SDK – vyberte cílovou verzi](./media/notification-hubs-android-studio-add-google-play-services/notification-hubs-android-studio-sdk-manager.png)
+3. Vyberte **rozhraní Google API**, pokud ještě není nainstalovaná.
 
-    ![](./media/notification-hubs-android-studio-add-google-play-services/notification-hubs-android-studio-add-google-play-dependency.png)
-4. Přidejte tento řádek pod `dependencies`:
+    ![Správce sady Android SDK – vybrané rozhraní API Google](./media/notification-hubs-android-studio-add-google-play-services/googole-apis-selected.png)
+4. Přepněte **SDK Tools** kartu. Pokud jste ještě nenainstalovali služby Google Play, vyberte **služby Google Play** jak je znázorněno na následujícím obrázku. Potom spusťte instalaci kliknutím na **Apply** (Použít). Poznamenejte si cestu k sadě SDK, abyste ji mohli použít později.
+
+    ![Správce sady Android SDK - služby Google Play vybrané](./media/notification-hubs-android-studio-add-google-play-services/google-play-services-selected.png)
+3. Pokud se zobrazí **Potvrdit změnu** dialogu **OK**. Součást instalační program nainstaluje požadované součásti. Vyberte **Dokončit** po instalaci komponenty.
+4. Vyberte **OK** zavřete **nastavení pro nové projekty** dialogové okno.  
+5. Otevřít `build.gradle` soubor **aplikace** adresáře a přidejte tento řádek pod `dependencies`. 
 
     ```text
-    compile 'com.google.android.gms:play-services-gcm:12.0.0'
+    implementation 'com.google.android.gms:play-services-gcm:16.0.0'
     ```
-5. Klikněte na ikonu **Sync Project with Gradle Files** (Synchronizovat projekt se soubory Gradle) na panelu nástrojů.
-6. Otevřete soubor **AndroidManifest.xml** a ke značce *application* přidejte následující značku.
+5. Vyberte **synchronizovat nyní** ikonu na panelu nástrojů.
+
+    ![Synchronizaci s Gradlem](./media/notification-hubs-android-studio-add-google-play-services/gradle-sync.png)
+1. Otevřete soubor **AndroidManifest.xml** a ke značce *application* přidejte následující značku.
 
     ```xml
     <meta-data android:name="com.google.android.gms.version"

@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 06/05/2018
 ms.author: anshan
 ms.custom: seodec18
-ms.openlocfilehash: f231fa7624a2babea2a3d91076ad0348b3c9e976
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: 8ed3213a40370b1ab2beb15a989a22017b058d65
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53540368"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55812068"
 ---
 # <a name="tutorial-explore-the-azure-time-series-insights-javascript-client-library"></a>Kurz: Zkoumání javascriptové klientské knihovny pro službu Azure Time Series Insights
 
@@ -147,7 +147,7 @@ Naplňování a vykreslování ovládacích prvků grafů se řídí obecným vz
    | `splitByObject`   | Řetězcová vlastnost, podle které chcete provést rozdělení (volitelné – může být null) | `{property: 'Station', type: 'String'}` |
    | `color`         | Barva objektů, které chcete vykreslit | `'pink'` |
    | `alias`           | Popisný název agregačního výrazu. | `'Factory3Temperature'` |
-   | `contextMenuActions` | Pole akcí, které se navážou na objekty časové řady ve vizualizaci (volitelné). | Další informace najdete v části [Automaticky otevírané místní nabídky v oddílu Pokročilé funkce](#popup-context-menus). |
+   | `contextMenuActions` | Pole akcí, které se navážou na objekty časové řady ve vizualizaci (volitelné). | Další informace najdete v tématu rozbalovací kontextové nabídky v části pokročilé funkce. |
 
 3. Vyžádejte agregovaná data zavoláním dotazu na TSI pomocí rozhraní API `TsiClient.Server`.
 
@@ -260,7 +260,7 @@ Snímek obrazovky ukazuje grafy s odpovídajícími automaticky otevíranými m�
 
 Pomocí štětců můžete omezit časový rozsah a definovat akce, jako jsou přiblížení a prozkoumání.
 
-Kód sloužící k ilustraci štětců je zobrazený také v předchozím příkladu spojnicového grafu s místní nabídkou pro vytvoření výsečového nebo pruhového grafu, který popisoval [automaticky otevírané místní nabídky](#popup-context-menus-section).
+Kód, který se používá ke znázornění štětce se zobrazí v předchozím příkladu "Řádku grafu s místní nabídky k vytvořit výsečový/pruhový graf", která popisuje místní kontextové nabídky.
 
 1. Akce štětců jsou podobné místní nabídce v tom, že pro štětec definují řadu vlastních akcí. Každá akce obsahuje pole s jedním nebo více elementy. Každý element definuje jednu položku místní nabídky:
    - `name`: Text, který se používá pro položku nabídky: "Print parametry do konzoly."

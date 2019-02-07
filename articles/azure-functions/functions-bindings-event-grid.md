@@ -11,12 +11,12 @@ ms.devlang: multiple
 ms.topic: reference
 ms.date: 09/04/2018
 ms.author: cshoe
-ms.openlocfilehash: 78290f6d1b31788c3f2de99996739cc8e7b20419
-ms.sourcegitcommit: 9f87a992c77bf8e3927486f8d7d1ca46aa13e849
+ms.openlocfilehash: d865028a2ddc7315192030b704a77a332dab14aa
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/28/2018
-ms.locfileid: "53810930"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55822697"
 ---
 # <a name="event-grid-trigger-for-azure-functions"></a>Trigger služby Event Grid pro službu Azure Functions
 
@@ -103,7 +103,7 @@ namespace Company.Function
 }
 ```
 
-Další informace najdete v tématu [balíčky](#packages), [atributy](#attributes), [konfigurace](#configuration), a [využití](#usage).
+Další informace najdete v tématu balíčky, [atributy](#attributes), [konfigurace](#configuration), a [využití](#usage).
 
 ### <a name="c-script-example"></a>Ukázkový skript jazyka C#
 
@@ -155,7 +155,7 @@ public static void Run(EventGridEvent eventGridEvent, ILogger log)
 }
 ```
 
-Další informace najdete v tématu [balíčky](#packages), [atributy](#attributes), [konfigurace](#configuration), a [využití](#usage).
+Další informace najdete v tématu balíčky, [atributy](#attributes), [konfigurace](#configuration), a [využití](#usage).
 
 ### <a name="javascript-example"></a>Příklad v jazyce JavaScript
 

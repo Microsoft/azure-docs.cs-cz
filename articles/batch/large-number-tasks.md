@@ -15,12 +15,12 @@ ms.workload: big-compute
 ms.date: 08/24/2018
 ms.author: lahugh
 ms.custom: ''
-ms.openlocfilehash: 3e20aeb0e21eca5e4ac25206d638036f94a58202
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.openlocfilehash: ed04774969f72f1d6037a350f019d81d812d73f6
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55749691"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55809295"
 ---
 # <a name="submit-a-large-number-of-tasks-to-a-batch-job"></a>Odeslání velkého počtu úkolů pro úlohu služby Batch
 
@@ -164,7 +164,7 @@ except Exception as e:
     raise e
 ```
 
-Rozšíření služby Batch Python SDK podporuje taky přidávání parametrů úkolů do úlohy pomocí specifikace formátu JSON pro objekt pro vytváření úloh. Například nakonfigurovat parametry úlohy pro čištění parametrů podobně jako v předchozím [šablony rozhraní příkazového řádku služby Batch](#example-batch-cli-template) příkladu:
+Rozšíření služby Batch Python SDK podporuje taky přidávání parametrů úkolů do úlohy pomocí specifikace formátu JSON pro objekt pro vytváření úloh. Například nakonfigurujte parametry úlohy pro čištění parametrů podobně jako v předchozím příkladu šablony rozhraní příkazového řádku služby Batch:
 
 ```python
 parameter_sweep = {

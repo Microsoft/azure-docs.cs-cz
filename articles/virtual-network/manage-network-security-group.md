@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/05/2018
 ms.author: jdial
-ms.openlocfilehash: 28b73a70ef9ffd4e73117d599448434823747eca
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
+ms.openlocfilehash: 21a3efb67f837a05f3c070d0805aa033f86efbd5
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55567396"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55822438"
 ---
 # <a name="create-change-or-delete-a-network-security-group"></a>Vytvořit, změnit nebo odstranit skupinu zabezpečení sítě
 
@@ -92,7 +92,7 @@ Přidružení skupiny zabezpečení sítě k nebo zrušit přidružení skupiny 
 
 ### <a name="delete-a-network-security-group"></a>Odstranit skupinu zabezpečení sítě
 
-Pokud je skupina zabezpečení sítě přidružené k podsítím nebo síťová rozhraní, nelze odstranit. [Zrušit přidružení](#associate-or-dissociate-a-network-security-group-to-or-from-a-resource) ze všech podsítí a síťových rozhraní než se pokusíte odstranit skupinu zabezpečení sítě.
+Pokud je skupina zabezpečení sítě přidružené k podsítím nebo síťová rozhraní, nelze odstranit. Zrušit přidružení skupiny zabezpečení sítě ze všech podsítí a síťových rozhraní než se pokusíte odstranit.
 
 1. Do vyhledávacího pole v horní části portálu zadejte *skupiny zabezpečení sítě* do vyhledávacího pole. Když **skupiny zabezpečení sítě** nezobrazí ve výsledcích hledání, vyberte ji.
 2. Vyberte skupinu zabezpečení sítě, kterou chcete odstranit ze seznamu.

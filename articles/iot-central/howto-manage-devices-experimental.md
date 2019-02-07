@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: 5e423478e894487795b376340b13155950b4ef8d
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
+ms.openlocfilehash: 69c7da1a529e46c054d9c824c2aee71fa67bd8ff
+ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55667042"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55768636"
 ---
 # <a name="manage-devices-in-your-azure-iot-central-application-new-ui-design"></a>Správa zařízení v aplikaci Azure IoT Central (návrh nové uživatelské rozhraní)
 
@@ -180,6 +180,6 @@ Vlastnosti jsou metadata zařízení přidružená k zařízení, jako je např�
 Teď, když jste zjistili, jak spravovat zařízení v aplikaci Azure IoT Central, tady je navrhované další krok:
 
 > [!div class="nextstepaction"]
-> [Použití sady zařízení](howto-use-device-sets.md?toc=/azure/iot-central-experimental/toc.json&bc=/azure/iot-central-experimental/breadcrumb/toc.json)
+> [Použití sady zařízení](howto-use-device-sets-experimental.md?toc=/azure/iot-central-experimental/toc.json&bc=/azure/iot-central-experimental/breadcrumb/toc.json)
 
 <!-- Next how-tos in the sequence -->

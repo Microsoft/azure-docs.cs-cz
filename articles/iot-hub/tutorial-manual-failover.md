@@ -9,14 +9,14 @@ ms.topic: tutorial
 ms.date: 07/11/2018
 ms.author: robinsh
 ms.custom: mvc
-ms.openlocfilehash: f0e8bf922f142b795dd1a2ded4b3ec265c43481a
-ms.sourcegitcommit: 156364c3363f651509a17d1d61cf8480aaf72d1a
+ms.openlocfilehash: bd9cb76557c65832de5d249cdccdc36101edf646
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/25/2018
-ms.locfileid: "39249937"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55821282"
 ---
-# <a name="tutorial-perform-manual-failover-for-an-iot-hub-public-preview"></a>Kurz: Ruční převzetí služeb při selhání služby IoT Hub (Public Preview)
+# <a name="tutorial-perform-manual-failover-for-an-iot-hub-public-preview"></a>Kurz: Proveďte ruční převzetí služeb při selhání pro službu IoT hub (verze public preview)
 
 Ruční převzetí služeb při selhání je funkce služby IoT Hub, která zákazníkům umožňuje [převzetí služeb při selhání](https://en.wikipedia.org/wiki/Failover) provozu jejich centra z primární oblasti do odpovídající geograficky spárované oblasti Azure. Ruční převzetí služeb při selhání se dá provést v případě havárie nebo delšího výpadku služeb v oblasti. Můžete také provést plánované převzetí služeb při selhání a otestovat si své možnosti zotavení po havárii, doporučujeme ale použít spíš IoT Hub v testovacím prostředí, ne v produkčním. Funkci ručního převzetí služeb při selhání mají zákazníci k dispozici bez dalších poplatků.
 
@@ -50,7 +50,7 @@ V tomto kurzu provedete následující úlohy:
     **Oblast:** Vyberte oblast ve vaší blízkosti, která je součástí verze Preview. Tento kurz používá oblast `westus2`. Převzetí služeb při selhání se dá provést jenom mezi geograficky spárovanými oblastmi Azure. S oblastí westus2 je geograficky spárovaná oblast WestCentralUS.
     
    > [!NOTE]
-   > Ruční převzetí služeb při selhání je momentálně ve verzi Public Preview a *není* dostupné v těchto oblastech Azure: USA – východ, Západní USA, Severní Evropa, Západní Evropa, Brazílie – jih a Střed USA – jih.
+   > Ruční převzetí služeb při selhání je aktuálně ve verzi public preview a je *není* k dispozici v následujících oblastech Azure: Východní USA, západní USA, Severní Evropa, západní Evropa, Brazílie – jih a střední část jihu USA.
 
    **Název centra IoT Hub:** Zadejte název vašeho IoT Hubu. Název centra musí být globálně jedinečný. 
 
@@ -112,7 +112,7 @@ Navrácení služeb po obnovení se provádí stejným způsobem jako ruční p�
 
    ![Snímek obrazovky s požadavkem na navrácení služeb po obnovení](./media/tutorial-manual-failover/trigger-failback-01-regions.png)
 
-   Zobrazují se podobné zprávy jako ty, které jsou popsané v části [Převzetí služeb při selhání](#perform-a-failover). Po dokončení navrácení služeb po obnovení se jako primární umístění znovu zobrazí `westus2` a jako sekundární umístění `WestCentralUS`.
+   Do hlaviček se zobrazí, jak je vysvětleno v provést převzetí služeb při selhání oddílu. Po dokončení navrácení služeb po obnovení se jako primární umístění znovu zobrazí `westus2` a jako sekundární umístění `WestCentralUS`.
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků 
 
@@ -124,7 +124,7 @@ Pokud chcete odebrat prostředky, které jste v tomto kurzu vytvořili, odstraň
 
 3. Klikněte na **Odstranit skupinu prostředků**. Po zobrazení výzvy zadejte název skupiny prostředků a potvrďte volbu kliknutím na **Odstranit**. 
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 V tomto kurzu jste se dozvěděli, jak nakonfigurovat a provést ruční převzetí služeb při selhání a jak požádat o navrácení služeb po obnovení. Provedli jste při tom tyto úlohy:
 

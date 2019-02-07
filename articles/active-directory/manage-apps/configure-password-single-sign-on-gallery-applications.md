@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 07/11/2017
 ms.author: barbkess
-ms.openlocfilehash: 02c25490ba19521715b48dc7ec92861078332a48
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
+ms.openlocfilehash: 236ba7e2a76e95f3a78457fbdb0b49fd82e20b36
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55731780"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55815400"
 ---
 # <a name="how-to-configure-password-single-sign-on-for-an-azure-ad-gallery-application"></a>Postup konfigurace hesel jednotného přihlašování pro aplikaci Galerie Azure AD
 
@@ -50,7 +50,7 @@ Konfigurace aplikace z Galerie Azure AD, které je potřeba:
 
 -   [Konfigurace aplikace pro heslo jednotného přihlašování](#configure-the-application-for-password-single-sign-on)
 
--   [Přiřazení aplikace k uživateli nebo skupině](#assign-the-application-to-a-user-or-a-group)
+-   Přiřazení aplikace k uživateli nebo skupině
 
     -   [Přiřadit uživatele k aplikaci přímo](#assign-a-user-to-an-application-directly)
 

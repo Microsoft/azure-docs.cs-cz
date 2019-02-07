@@ -15,12 +15,12 @@ ms.topic: quickstart
 ms.date: 03/26/2018
 ms.author: wesmc
 ms.custom: mvc
-ms.openlocfilehash: fd5a995bf03d530ccbcf9b839ccc840d202b47d6
-ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
+ms.openlocfilehash: d80a10bea58fdcd5b20e24f9f8ba633f2714d55c
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53556183"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55822574"
 ---
 # <a name="quickstart-create-an-aspnet-web-app"></a>Rychlý start: Vytvoření webové aplikace ASP.NET 
 
@@ -98,9 +98,9 @@ V dalším kroku vytvoříte pro aplikaci mezipaměť.
 V této části aktualizujete aplikaci, aby podporovala nové zobrazení, které zobrazí jednoduchý test mezipaměti Azure Redis.
 
 * [Aktualizace souboru web.config o nastavení aplikace pro mezipaměť](#Update-the-webconfig-file-with-an-app-setting-for-the-cache)
-* [Konfigurace aplikace pro používání klienta StackExchange.Redis](#configure-the-application-to-use-stackexchangeredis)
-* [Aktualizace souboru HomeController a rozložení](#update-the-homecontroller-and-layout)
-* [Přidání nového zobrazení RedisCache](#add-a-new-rediscache-view)
+* Konfigurace aplikace pro použití klienta StackExchange.Redis
+* Aktualizace souboru HomeController a rozložení
+* Přidání nového zobrazení RedisCache
 
 ### <a name="update-the-webconfig-file-with-an-app-setting-for-the-cache"></a>Aktualizace souboru web.config o nastavení aplikace pro mezipaměť
 

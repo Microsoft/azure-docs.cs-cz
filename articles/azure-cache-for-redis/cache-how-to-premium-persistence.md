@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/24/2017
 ms.author: wesmc
-ms.openlocfilehash: 60f9baf7fb54706dc9d31c6920c0df24173d7b35
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ms.openlocfilehash: 903fd465ce2a88e94b821c9a1b4c6c531083180a
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54105832"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55819055"
 ---
 # <a name="how-to-configure-data-persistence-for-a-premium-azure-cache-for-redis"></a>Postup konfigurace trvalosti dat pro Azure Cache úrovně Premium pro Redis
 Mezipaměti Redis Azure má různé mezipaměti nabídek, které poskytují flexibilitu při výběru velikosti mezipaměti a funkcí, včetně novými funkcemi úrovně Premium jako je clustering, trvalé a podpory služby virtual network. Tento článek popisuje postup konfigurace trvalosti v Azure Cache úrovně premium pro instanci Redis.
@@ -133,7 +133,7 @@ RDB a AOF trvalosti:
 * Pokud provedete škálování menší velikost a menší velikost pro uložení všech dat z poslední zálohy není dostatek místa, během procesu obnovení, obvykle s využitím bude vyloučena klíče [allkeys lru](https://redis.io/topics/lru-cache) zásady vyřazení.
 
 ### <a name="can-i-change-the-rdb-backup-frequency-after-i-create-the-cache"></a>Můžete změnit po vytvoření mezipaměti požadovanou četnost zálohování RDB?
-Ano, můžete změnit četnost zálohování RDB trvalosti na **trvalost dat Redis** okno. Pokyny najdete v tématu [konfigurovat Redis persistence](#configure-redis-persistence).
+Ano, můžete změnit četnost zálohování RDB trvalosti na **trvalost dat Redis** okno. Pokyny najdete v tématu Konfigurace Redis trvalosti.
 
 ### <a name="why-if-i-have-an-rdb-backup-frequency-of-60-minutes-there-is-more-than-60-minutes-between-backups"></a>Proč mám četnost zálohování v RDB 60 minut existuje více než 60 minut mezi zálohy?
 Interval četnosti zálohování RDB trvalost nespustí, dokud se předchozí proces zálohování byla úspěšně dokončena. Pokud trvá 15 minut pro proces zálohování a úspěšně dokončete požadovanou četnost zálohování je 60 minut, další zálohování začnou účtovat až 75 minut po času zahájení předchozí zálohy.

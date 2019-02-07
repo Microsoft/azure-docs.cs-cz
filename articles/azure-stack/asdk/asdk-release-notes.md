@@ -15,12 +15,12 @@ ms.date: 12/21/2018
 ms.author: sethm
 ms.reviewer: misainat
 ms.lastreviewed: 12/21/2018
-ms.openlocfilehash: d3d776def9e031ca2bcc76d1b60a19f67a74b35a
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: c60ba4f4106ddd0c3fc643288894fb55d3d27f8c
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55240340"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55816454"
 ---
 # <a name="asdk-release-notes"></a>Zpráva k vydání verze ASDK 
  
@@ -60,7 +60,7 @@ Toto sestavení obsahuje následující vylepšení a oprav pro Azure Stack:
 - Opravili jsme problém, která bránila použití zásady RBAC pro skupinu uživatelů při použití služby AD FS.
 
 <!--3463840 - IS, ASDK --> 
-- Oprava potíží s infrastruktura zálohování nedaří zálohovat z důvodu nedostupná souborového serveru od veřejnou síť virtuálních IP adres. Tato oprava infrastruktura zálohování služba přejde zpět k síti infrastruktury veřejných. Pokud se použije nejnovější [Azure Stack oprava hotfix pro 1809](#azure-stack-hotfixes) , která řeší tento problém, 1811 aktualizace nebude provádět žádné další změny. 
+- Oprava potíží s infrastruktura zálohování nedaří zálohovat z důvodu nedostupná souborového serveru od veřejnou síť virtuálních IP adres. Tato oprava infrastruktura zálohování služba přejde zpět k síti infrastruktury veřejných. Pokud jste nainstalovali nejnovější Azure Stack opravu hotfix pro 1809, která řeší tento problém, 1811 aktualizace nebude provádět žádné další změny. 
 
 <!-- 2967387 – IS, ASDK --> 
 - Opravili jsme problém, ve kterém se účet použitý k přihlášení k portálu správce nebo uživatele služby Azure Stack zobrazovat jako **neidentifikovaný uživatel**. Tato zpráva se zobrazí, když účet buď neměl *první* nebo *poslední* zadaný název.   

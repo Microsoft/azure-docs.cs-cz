@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 11/28/2018
 ms.author: lastcoolnameleft
-ms.openlocfilehash: 36e87550c90c1a5d4b05aa62f2fbe79b04b25445
-ms.sourcegitcommit: ba9f95cf821c5af8e24425fd8ce6985b998c2982
+ms.openlocfilehash: 9958f5f0f1435af231c1426a249c745f4a2352c5
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54382435"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55816607"
 ---
 # <a name="best-practices-for-business-continuity-and-disaster-recovery-in-azure-kubernetes-service-aks"></a>Osvědčené postupy pro obchodní kontinuity podnikových procesů a zotavení po havárii ve službě Azure Kubernetes Service (AKS)
 
@@ -21,11 +21,11 @@ Při správě clusterů ve službě Azure Kubernetes Service (AKS) je důležit�
 Tento článek se zaměřuje na aspekty, které vám pomůžou doporučené postupy plán obchodní kontinuity podnikových procesů a zotavení po havárii ve službě AKS. Získáte informace o těchto tématech:
 
 > [!div class="checklist"]
-* [Plán pro AKS clustery ve více oblastech](#region-planning)
-* [Směrování přenosu napříč více clusterů pomocí Azure Traffic Manageru](#ingress-traffic)
-* [Použití geografické replikace pro vaše registry imagí kontejneru](#container-registry)
-* [Plán pro stav aplikace napříč více clusterů](#managing-application-state)
-* [Replikace úložiště napříč několika oblastmi](#storage)
+* Plán pro AKS clustery ve více oblastech
+* Směrování přenosu napříč více clusterů pomocí Azure Traffic Manageru
+* Použití geografické replikace pro vaše registry imagí kontejneru
+* Plán pro stav aplikace napříč více clusterů
+* Replikace úložiště napříč několika oblastmi
 
 ## <a name="plan-for-multi-region-deployment"></a>Plán pro nasazení v různých oblastech
 

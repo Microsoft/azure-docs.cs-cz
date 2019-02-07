@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 07/16/2018
 ms.author: lizross
 ms.reviewer: kexia
-ms.openlocfilehash: 2b8a0db21ab4beb2128ae0a1cebbf9fb42691f3c
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 2ede7a172eda1122b0668984cc8e11937b3ae852
+ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55177403"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55768179"
 ---
 # <a name="get-help-with-two-step-verification"></a>Získat pomoc s dvoustupňovým ověřováním
 
@@ -36,7 +36,7 @@ Tady je několik důvodů, proč budete muset použít metodu alternativní ově
 
 - **Ztratí telefon nebo máte nové telefonní číslo.** Pokud jste ztratíte telefon nebo získali nové číslo, můžete přihlásit pomocí jiné metody nebo požádejte správce, aby zrušte nastavení. Důrazně doporučujeme umožňuje vašemu správci vědět, pokud byl váš telefon ztráty nebo odcizení, proto příslušné aktualizace můžete nastavit ke svému účtu. Po nastavení jsou vymazány, budete vyzváni k [zaregistrovat k dvoustupňovému ověřování](multi-factor-authentication-end-user-first-time.md) při příštím přihlášení.
 
-- **Nedokáže získat text ověřování nebo telefonní hovor.** Tady je několik důvodů, proč nemusí získat text nebo telefonní hovor. Pokud úspěšně jste začali textů nebo telefonních hovorů v minulosti, je to pravděpodobně problém s poskytovateli telefonní není váš účet. Pokud máte zpoždění z důvodu chybné signál, doporučujeme použít [aplikaci Microsoft Authenticator](microsoft-authenticator-app-how-to.md) na svém mobilním zařízení. Tuto aplikaci můžete vygenerovat náhodné zabezpečovací kódy pro přihlášení, bez vyžadování jakéhokoli buňky signál nebo připojení k Internetu.<br><br>Pokud se snažíte bude doručena zpráva SMS, požádejte přítelem text jako test, abyste měli jistotu, můžete získat a pokud jsme získali několik zpráv, ujistěte se, že jste používejte kód, než je aktuální.
+- **Nedokáže získat text ověřování nebo telefonní hovor.** Tady je několik důvodů, proč nemusí získat text nebo telefonní hovor. Pokud úspěšně jste začali textů nebo telefonních hovorů v minulosti, je to pravděpodobně problém s poskytovateli telefonní není váš účet. Pokud máte zpoždění z důvodu chybné signál, doporučujeme použít [aplikaci Microsoft Authenticator](user-help-auth-app-download-install.md) na svém mobilním zařízení. Tuto aplikaci můžete vygenerovat náhodné zabezpečovací kódy pro přihlášení, bez vyžadování jakéhokoli buňky signál nebo připojení k Internetu.<br><br>Pokud se snažíte bude doručena zpráva SMS, požádejte přítelem text jako test, abyste měli jistotu, můžete získat a pokud jsme získali několik zpráv, ujistěte se, že jste používejte kód, než je aktuální.
 
 - **Hesla aplikací nefungují.** Hesla aplikací nahradit normální heslo pro starší desktopové aplikace, ve kterých se dvoustupňové ověřování. Nejprve zkontrolujte, zda že jste správně zadali heslo. Pokud, který se neodstraní, zkuste se přihlásit k [vytvořit nové heslo aplikace](multi-factor-authentication-end-user-app-passwords.md) nebo můžete požádat správce, aby [odstranit stávající hesla aplikací](../authentication/howto-mfa-userdevicesettings.md) tak můžete vytvořit nový.
 
@@ -61,4 +61,4 @@ Pokud jste se pokusili tyto kroky, ale jsou stále narazíte na problémy, pož�
 
 * [Správa nastavení pro dvoustupňové ověřování.](multi-factor-authentication-end-user-manage-settings.md)
 
-* [Nejčastější dotazy k aplikaci Microsoft Authenticator](microsoft-authenticator-app-faq.md)
+* [Nejčastější dotazy k aplikaci Microsoft Authenticator](user-help-auth-app-faq.md)

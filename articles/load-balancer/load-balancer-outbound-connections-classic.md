@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/13/2018
 ms.author: kumud
-ms.openlocfilehash: 006d8e28413e0893cafe351577f8a018d13fd268
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: ec3fcc0301083e6cd5eff34c111586ef6463f8fd
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53189995"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55821503"
 ---
 # <a name="outbound-connections-classic"></a>Odchozí připojení (Classic)
 
@@ -39,7 +39,7 @@ Azure nabízí tři různých způsobů dosažení klasickými nasazeními odcho
 
 | Scénář | Metoda | Protokoly IP | Popis | Webová Role pracovního procesu | IaaS | 
 | --- | --- | --- | --- | --- | --- |
-| [1. Virtuální počítač s veřejnou IP adresu Instance úroveň adresou](#ilpip) | SNAT, ho maskují portu se nepoužívá. | TCP, UDP, PROTOKOL ICMP, ESP | Azure používá veřejné IP adresy přiřazené virtuálního počítače. Instance má všechny dočasné porty, které jsou k dispozici. | Ne | Ano |
+| [1. Virtuální počítač s veřejnou IP adresu Instance úroveň adresou](#ilpip) | SNAT, ho maskují portu se nepoužívá. | TCP, UDP, ICMP, ESP | Azure používá veřejné IP adresy přiřazené virtuálního počítače. Instance má všechny dočasné porty, které jsou k dispozici. | Ne | Ano |
 | [2. veřejný koncový bod s vyrovnáváním zatížení](#publiclbendpoint) | SNAT s ho maskují port (cesta) k veřejnému koncovému bodu | TCP, UDP | Azure sdílí s několika koncovými body privátní veřejné IP adresy veřejného koncového bodu. Azure používá pro token PAT dočasné porty veřejného koncového bodu. | Ano | Ano |
 | [3. Samostatný virtuální počítač ](#defaultsnat) | SNAT pomocí portu ho maskují (cesta) | TCP, UDP | Azure automaticky označí veřejnou IP adresu pro SNAT, sdílí tuto veřejnou IP adresu s celého nasazení a používá dočasné porty koncový bod veřejné IP adresy pro token PAT. Toto je základní scénář pro předchozí scénáře. Pokud potřebujete viditelnosti a kontroly to nedoporučujeme. | Ano | Ano |
 
@@ -54,7 +54,7 @@ Jiné nasazení v modelu Classic mají různé funkce:
 
 [Zmírnění dopadů strategie](#snatexhaust) mít také stejný rozdíly.
 
-[Algoritmem použitým pro předběžné přidělování dočasné porty](#ephemeralports) pro token PAT pro nasazení classic je stejný jako u nasazení prostředků Azure Resource Manageru.
+Algoritmus používaný pro předběžné přidělování dočasné porty pro token PAT pro nasazení classic je stejná jako nasazení prostředků Azure Resource Manageru.
 
 ### <a name="ilpip"></a>Scénář 1: Virtuální počítač s veřejnou IP adresu Instance úroveň adresou
 
@@ -74,13 +74,13 @@ Dočasné porty nástroje pro vyrovnávání zatížení veřejnou IP adresu fro
 
 SNAT porty jsou předpřidělené, jak je popsáno v [SNAT principy a token PAT](#snat) oddílu. Jsou to omezené prostředek, který může dojít k vyčerpání. Je důležité pochopit, jak jsou [spotřebované](#pat). Chcete-li pochopit, jak navrhnout za toto využití a zmírnit podle potřeby, zkontrolovat [Správa SNAT vyčerpání](#snatexhaust).
 
-Při [několik veřejných koncových s vyrovnáváním zatížení bodů](load-balancer-multivip.md) neexistuje, některý z těchto veřejné IP adresy [Release candidate odchozích toků](#multivipsnat), a jedna náhodně vybraná.  
+Když [několik veřejných koncových s vyrovnáváním zatížení bodů](load-balancer-multivip.md) existují některé z těchto veřejné IP adresy jsou kandidátem pro odchozí toky a jedna náhodně vybraná.  
 
 ### <a name="defaultsnat"></a>Scénář 3: Přidružená žádná veřejná IP adresa
 
 V tomto případě virtuální počítač nebo webová ROle pracovního procesu není součástí veřejný koncový bod s vyrovnáváním zatížení.  A v případě virtuálních počítačů, nemá ILPIP adresu přiřazenou. Když virtuální počítač vytvoří odchozí tok, přeloží Azure privátní zdrojové IP adresy odchozí tok veřejné Zdrojová IP adresa. Veřejnou IP adresu použít pro tento odchozí tok není Konfigurovatelný a nepočítá s limitem předplatného veřejný IP prostředek.  Platforma Azure automaticky přiřadí tuto adresu.
 
-Azure používá SNAT s ho maskují port ([token PAT](#pat)) k provedení této funkce. Tento scénář je podobný [scénář 2](#lb), s výjimkou není žádnou kontrolu nad tím IP adresa používá. Toto je základní scénář pro při scénáře 1 a 2 neexistují. Pokud chcete řídit odchozí adresy nedoporučujeme tento scénář. Pokud odchozí připojení jsou důležitou součástí vaší aplikace, byste zvolili jiný scénář.
+Azure používá SNAT s ho maskují port ([token PAT](#pat)) k provedení této funkce. Tento scénář je podobný scénáři 2, s výjimkou není žádnou kontrolu nad tím IP adresa používá. Toto je základní scénář pro při scénáře 1 a 2 neexistují. Pokud chcete řídit odchozí adresy nedoporučujeme tento scénář. Pokud odchozí připojení jsou důležitou součástí vaší aplikace, byste zvolili jiný scénář.
 
 SNAT porty jsou předpřidělené, jak je popsáno v [SNAT principy a token PAT](#snat) oddílu.  Počet virtuálních počítačů nebo sdílení veřejné IP adresy webových rolí pracovního procesu určuje počet předběžně přidělené dočasné porty.   Je důležité pochopit, jak jsou [spotřebované](#pat). Chcete-li pochopit, jak navrhnout za toto využití a zmírnit podle potřeby, zkontrolovat [Správa SNAT vyčerpání](#snatexhaust).
 
@@ -104,15 +104,15 @@ Vzory podmínky, které běžně vedou k vyčerpání portů SNAT zmírnit, najd
 
 Azure používá algoritmus k určení počtu předpřidělené SNAT portů jsou k dispozici na základě velikosti fondu back-endu při použití portu maskování SNAT ([token PAT](#pat)). SNAT porty jsou dočasné porty, které jsou k dispozici pro konkrétní veřejné zdrojové adresy IP.
 
-Azure preallocates SNAT porty při nasazení podle počtu instancí virtuálního počítače nebo Role pracovního procesu webové sdílet dané veřejné IP adresy instance.  Při vytváření odchozích toků [token PAT](#pat) dynamicky využívá (až do limitu předběžně přidělené) a uvolní tyto porty po zavření toku nebo [vypršení časového limitu nečinnosti](#ideltimeout) stát.
+Azure preallocates SNAT porty při nasazení podle počtu instancí virtuálního počítače nebo Role pracovního procesu webové sdílet dané veřejné IP adresy instance.  Při vytváření odchozích toků [token PAT](#pat) dynamicky využívá (až do limitu předběžně přidělené) a po tok zavře nebo dochází k vypršení časového limitu nečinnosti uvolní tyto porty.
 
 Následující tabulka uvádí preallocations SNAT port pro úrovně velikosti fondů back-endu:
 
 | Instance | Předběžně přidělené SNAT porty na instanci |
 | --- | --- |
-| 1 – 50 | 1,024 |
-| 51 – 100 | 512 |
-| 101 – 200 | 256 |
+| 1-50 | 1,024 |
+| 51-100 | 512 |
+| 101-200 | 256 |
 | 201-400 | 128 |
 
 Mějte na paměti, že počet dostupných portů SNAT nepřekládá přímo na počet toků. Jeden port SNAT můžete znovu použít pro více míst jedinečný. Porty se spotřebuje, pouze pokud je nutné vytvářet toky jedinečný. Pokyny k návrhu a zmírnění distribuovaných útoků, přečtěte si část o [jak ke správě tohoto prostředku vyčerpatelným](#snatexhaust) a v části popisující [token PAT](#pat).

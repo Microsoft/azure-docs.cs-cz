@@ -15,12 +15,12 @@ ms.workload: big-compute
 ms.date: 05/22/2017
 ms.author: lahugh
 ms.custom: seodec18
-ms.openlocfilehash: b59bb835c9858c6e47b8bb3a3518086e887d0d84
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: ba64ecc334d93c8ff973345cfd10ed12436d3fb6
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53542828"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55813904"
 ---
 # <a name="run-tasks-under-user-accounts-in-batch"></a>Spouštění úloh v rámci uživatelských účtů ve službě Batch
 
@@ -66,7 +66,7 @@ Uživatelský účet zvýšení úrovně označuje, zda je spuštěna úloha s p
 
 Ve výchozím nastavení úlohy spuštěny ve službě Batch v rámci automatického uživatelský účet jako standardní uživatel bez přístupu se zvýšenými oprávněními a s rozsahem úloh. Pokud specifikaci uživatele automaticky je nakonfigurovaná pro obor úloh, služba Batch vytvoří automaticky uživatelský účet pro tuto úlohu pouze.
 
-Alternativa k úkolu oboru je rozsah fondu. Když uživatele automaticky specifikace pro úlohy je nakonfigurována pro rozsah fondu, je úloha spuštěna automaticky – uživatelský účet, který je k dispozici pro všechny úlohy ve fondu. Další informace o rozsahu fondu najdete v části s názvem [spuštění úlohy jako uživatel automaticky s rozsahem fondu](#run-a-task-as-the-autouser-with-pool-scope).   
+Alternativa k úkolu oboru je rozsah fondu. Když uživatele automaticky specifikace pro úlohy je nakonfigurována pro rozsah fondu, je úloha spuštěna automaticky – uživatelský účet, který je k dispozici pro všechny úlohy ve fondu. Další informace o rozsahu fondu najdete v části s názvem spustit úkol jako uživatel automaticky s rozsahem fondu.   
 
 Výchozí obor se liší na uzlech Windows a Linux:
 

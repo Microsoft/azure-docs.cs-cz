@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/01/2019
 ms.author: bwren
-ms.openlocfilehash: 8457334e00f7c8dfbaee75a12d6bb71b760e60d9
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.openlocfilehash: 60c43475fc044b0847e5d9bd495c0d53b562114e
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55696989"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55822696"
 ---
 # <a name="configure-service-map-in-azure"></a>Konfigurace řešení Service Map v Azure
 Service Map automaticky rozpozná komponenty aplikace v systémech Windows a Linux a mapuje komunikaci mezi službami. Můžete ho zobrazit servery přirozeným způsobem – propojené systémy, které doručují důležité služby. Service Map ukazuje propojení mezi servery, procesy a porty v jakékoli architektuře propojené TCP žádnou konfiguraci kromě instalace agenta vyžaduje.
@@ -134,8 +134,8 @@ Následující část obsahuje seznam podporovaných operačních systémech pro
 
 | Připojený zdroj | Podporováno | Popis |
 |:--|:--|:--|
-| Agenti systému Windows | Ano | Řešení Service Map analyzuje a shromažďuje data z počítačů s Windows. <br><br>Kromě [agenta Log Analytics pro Windows](../../azure-monitor/platform/log-analytics-agent.md), agenti Windows vyžadují agent služby Microsoft Dependency. Úplný seznam verzí operačních systémů najdete v [podporovaných operačních systémech](#supported-operating-systems). |
-| Agenti systému Linux | Ano | Řešení Service Map analyzuje a shromažďuje data z počítačů s Linuxem. <br><br>Kromě [agenta Log Analytics pro Linux](../../azure-monitor/platform/log-analytics-agent.md), vyžadují agent služby Microsoft Dependency agenti systému Linux. Úplný seznam verzí operačních systémů najdete v [podporovaných operačních systémech](#supported-operating-systems). |
+| Agenti systému Windows | Ano | Řešení Service Map analyzuje a shromažďuje data z počítačů s Windows. <br><br>Kromě [agenta Log Analytics pro Windows](../../azure-monitor/platform/log-analytics-agent.md), agenti Windows vyžadují agent služby Microsoft Dependency. V tématu podporované operační systémy pro úplný seznam všech verzí operačního systému. |
+| Agenti systému Linux | Ano | Řešení Service Map analyzuje a shromažďuje data z počítačů s Linuxem. <br><br>Kromě [agenta Log Analytics pro Linux](../../azure-monitor/platform/log-analytics-agent.md), vyžadují agent služby Microsoft Dependency agenti systému Linux. V tématu podporované operační systémy pro úplný seznam všech verzí operačního systému. |
 | Skupina pro správu nástroje System Center Operations Manager | Ano | Řešení Service Map analyzuje a shromažďuje data z agentů Windows a Linux v připojeného [skupiny pro správu System Center Operations Manager](../../azure-monitor/platform/om-agents.md). <br><br>Vyžaduje se přímé připojení z počítače s agentem nástroje System Center Operations Manager ke službě Log Analytics. |
 | Účet služby Azure Storage | Ne | Řešení Service Map shromažďuje data z počítačů s agenty, takže není žádná data z něj získat ze služby Azure Storage. |
 

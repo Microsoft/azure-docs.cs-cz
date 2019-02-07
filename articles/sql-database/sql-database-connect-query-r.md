@@ -11,37 +11,30 @@ author: dphansen
 ms.author: davidph
 ms.reviewer: ''
 manager: cgronlun
-ms.date: 11/30/2018
-ms.openlocfilehash: fb45d5fe549966dbf1635ee23447f90080bbb627
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.date: 01/31/2019
+ms.openlocfilehash: 84017e95d41f8934de248065a2b66792628b41d2
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55751289"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55815537"
 ---
 # <a name="quickstart-use-machine-learning-services-with-r-in-azure-sql-database-preview"></a>Rychlý start: Pomocí služby Machine Learning (s jazykem R) ve službě Azure SQL Database (preview)
 
-Tento článek vysvětluje, jak používat verzi Public Preview služby Machine Learning Services (s jazykem R) ve službě Azure SQL Database. Provede vás základy přesunu dat mezi databází SQL a jazykem R. Vysvětluje také, jak zabalit kód R ve správném formátu do uložené procedury [sp_execute_external_script](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-execute-external-script-transact-sql) pro vyváření, trénování a používání modelů strojového učení v databázi SQL.
+Tento článek vysvětluje, jak můžete pomocí verze public preview [Machine Learning Services (s jazykem R) ve službě Azure SQL Database](sql-database-machine-learning-services-overview.md). Provede vás základy přesunu dat mezi databází SQL a jazykem R. Vysvětluje také, jak zabalit kód R ve správném formátu do uložené procedury [sp_execute_external_script](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-execute-external-script-transact-sql) pro vyváření, trénování a používání modelů strojového učení v databázi SQL.
 
-Strojové učení ve službě SQL Database slouží ke spouštění kódu a funkcí R a tento kód je plně dostupný pro relační data v podobě uložených procedur, jako skript T-SQL obsahující příkazy R nebo jako kód R obsahující T-SQL. Využijte výkon podnikových balíčků R k poskytování pokročilých analýz ve velkém měřítku a možnost přenést výpočty a zpracování do umístění uložení dat a eliminovat tak potřebu přenášení dat přes síť.
+Využijte sílu jazyka R k poskytování pokročilých analýz a strojového učení v databázi. Tato schopnost přináší výpočty a zpracování, kde jsou data uložená, takže odpadá potřeba k získání dat přes síť. Také využijte možnosti balíčky R organizace k poskytování pokročilé analýzy ve velkém měřítku.
 
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
+Služby Machine Learning zahrnuje základní distribuci R překrývající se balíčky jazyka R enterprise od Microsoftu. Funkce jazyka R a algoritmy Microsoftu jsou navržené pro škálování a nástroj pro prediktivní analýzy, statistické modelování, vizualizace dat a špičkový algoritmů strojového učení.
 
-## <a name="sign-up-for-the-preview"></a>Registrace verze Preview
+Pokud nemáte předplatné Azure, [vytvořit účet](https://azure.microsoft.com/free/) předtím, než začnete.
 
-Služba Machine Learning Services (s jazykem R) verze Public Preview ve službě SQL Database není ve výchozím nastavení povolená. Odeslání e-mailu společnosti Microsoft na [ sqldbml@microsoft.com ](mailto:sqldbml@microsoft.com) zaregistrovat verzi public preview.
-
-Jakmile jste zaregistrováni v programu, Microsoft bude připojení je verze public Preview a buď migrovat stávající databázi, nebo vytvořit novou databázi na službě jazyka R povolena.
-
-Služba Machine Learning Services (s jazykem R) ve službě SQL Database je momentálně dostupná pouze v nákupním modelu založeném na virtuálních jádrech na úrovních služby **Pro obecné účely** a **Pro důležité obchodní informace** pro jednoúčelové databáze a databáze ve fondu. V této počáteční verzi Public Preview se nepodporuje úroveň služby **Hyperškálování** ani **Spravovaná instance**. Během období Public Preview byste službu Machine Learning Services s jazykem R neměli používat pro produkční úlohy.
-
-Po povolení služby Machine Learning Services (s jazykem R) pro vaši databázi SQL se vraťte na tuto stránku a přečtěte si, jak spouštět skripty R v kontextu uložené procedury.
-
-V současné době je R jediným podporovaným jazykem. Python se momentálně nepodporuje.
+> [!NOTE]
+> Machine Learning Services (s jazykem R) ve službě Azure SQL Database je aktuálně ve verzi public preview. [Zaregistrujte si verzi preview](sql-database-machine-learning-services-overview.md#signup).
 
 ## <a name="prerequisites"></a>Požadavky
 
-Abyste mohli spustit ukázkový kód v těchto cvičeních, musíte nejprve mít databázi SQL s povolenou službou Machine Learning Services (s jazykem R). Během období Public Preview vás Microsoft připojí a povolí strojové učení pro vaši stávající nebo novou databázi, jak je popsáno výše.
+Abyste mohli spustit ukázkový kód v těchto cvičeních, musíte nejprve mít databázi SQL s povolenou službou Machine Learning Services (s jazykem R). Ve verzi public preview, společnost Microsoft bude připojit je a povolit strojového učení pro existující nebo nové databáze. Postupujte podle kroků v [zaregistrovat verzi preview](sql-database-machine-learning-services-overview.md#signup).
 
 K připojení ke službě SQL Database a spouštění skriptů R můžete použít jakýkoli nástroj pro správu databáze nebo dotazování, pokud umožňuje připojení ke službě SQL Database a spuštění dotazu T-SQL nebo uložené procedury. V tomto rychlém startu se používá [SQL Server Management Studio](sql-database-connect-query-ssms.md).
 
@@ -49,20 +42,11 @@ Pro účely cvičení [přidání balíčku](#add-package) bude také potřeba n
 
 Tento rychlý start dále vyžaduje, abyste nakonfigurovali pravidlo brány firewall na úrovni serveru. Rychlý start, který vám ukáže, jak to udělat, najdete v článku týkajícím se [vytvoření pravidla brány firewall na úrovni serveru](sql-database-server-level-firewall-rule.md).
 
-## <a name="different-from-sql-server"></a>Rozdíly oproti SQL Serveru
-
-Funkce služby Machine Learning Services (s jazykem R) ve službě Azure SQL Database jsou podobné jako ve službě [SQL Server Machine Learning Services](https://docs.microsoft.com/sql/advanced-analytics/what-is-sql-server-machine-learning). Existuje však několik rozdílů:
-
-- Pouze jazyk R. Python se v současné době nepodporuje.
-- Není nutné konfigurovat `external scripts enabled` prostřednictvím příkazu `sp_configure`.
-- Balíčky se musí instalovat pomocí nástroje **sqlmlutils**.
-- Neexistují žádné samostatné zásady správného řízení externích prostředků. Prostředky R tvoří určité procento prostředků SQL v závislosti na úrovni.
-
 ## <a name="verify-r-exists"></a>Ověření existence jazyka R
 
 Můžete ověřit, že je pro vaši databázi SQL povolená služba Machine Learning Services (s jazykem R). Postupujte následovně.
 
-1. Otevřete aplikaci SQL Server Management Studio a připojte se ke své databázi SQL.
+1. Otevřete aplikaci SQL Server Management Studio a připojte se ke své databázi SQL. Další informace o tom, jak připojit najdete v tématu [rychlý start: Pomocí SQL Server Management Studio k připojení a dotazování Azure SQL database](sql-database-connect-query-ssms.md).
 
 1. Spusťte následující kód. 
 
@@ -262,7 +246,6 @@ Microsoft poskytuje v rámci služby Machine Learning Services v databázi SQL �
     **Results**
 
     ![Nainstalované balíčky v jazyce R](./media/sql-database-connect-query-r/r-installed-packages.png)
-
 
 ## <a name="create-a-predictive-model"></a>Vytvoření prediktivního modelu
 
@@ -530,8 +513,9 @@ Pokud potřebujete použít balíček, který ještě ve vaší databázi SQL ne
 
 ## <a name="next-steps"></a>Další postup
 
-Další informace o službě Machine Learning Services najdete v následujících článcích o službě SQL Server Machine Learning Services. Přestože jsou tyto články určené pro SQL Server, většina uvedených informací platí také pro službu Machine Learning Services (s jazykem R) ve službě Azure SQL Database.
+Další informace o Machine Learning Services najdete v níže uvedených článků. I když některé z těchto článků pro SQL Server, většina informace platí také pro Machine Learning Services (s jazykem R) ve službě Azure SQL Database.
 
+- [Azure SQL Database služby Machine Learning (s jazykem R)](sql-database-machine-learning-services-overview.md)
 - [SQL Server Machine Learning Services](https://docs.microsoft.com/sql/advanced-analytics/what-is-sql-server-machine-learning)
 - [Kurz: Zjistěte, analýza v databázi pomocí jazyka R na SQL serveru](https://docs.microsoft.com/sql/advanced-analytics/tutorials/sqldev-in-database-r-for-sql-developers)
 - [Ucelený průvodce datovými vědami pro jazyk R a SQL Server](https://docs.microsoft.com/sql/advanced-analytics/tutorials/walkthrough-data-science-end-to-end-walkthrough)

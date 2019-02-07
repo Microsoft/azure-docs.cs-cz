@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: e053fa52b7b7cea1c35b68a0f2079eb5a590a76a
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: adb9fb649d934d08ea546759bcf4733a1c6d9080
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54021573"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55822744"
 ---
 # <a name="process-large-scale-datasets-by-using-data-factory-and-batch"></a>Zpracování rozsáhlých datových sad pomocí Data Factory a Batch
 > [!NOTE]
@@ -26,7 +26,7 @@ ms.locfileid: "54021573"
 
 Tento článek popisuje architekturu ukázkové řešení, která přesunu a zpracování rozsáhlých datových sad automatické a naplánovaným způsobem. Také poskytuje návod začátku do konce implementovat řešení pomocí služby Data Factory a Azure Batch.
 
-Tento článek je delší než typické článek, protože obsahuje návod, celé ukázkové řešení. Pokud jste služby Batch a Data Factory teprve začínáte, můžete další informace o těchto službách, a jak spolu fungují. Pokud něco o službách, které znáte a jsou návrh/aplikační architektura založená na řešení, můžete se soustředit na [části architektura](#architecture-of-sample-solution) tohoto článku. Pokud vytváříte prototyp nebo řešení, můžete chtít vyzkoušet podrobných pokynů v [návod](#implementation-of-sample-solution). Zveme komentář k tomuto obsahu a jak je používáte.
+Tento článek je delší než typické článek, protože obsahuje návod, celé ukázkové řešení. Pokud jste služby Batch a Data Factory teprve začínáte, můžete další informace o těchto službách, a jak spolu fungují. Pokud něco o službách, které znáte a jsou návrh/aplikační architektura založená na řešení, můžete se zaměřit na architekturu části tohoto článku. Pokud vytváříte prototyp nebo řešení, můžete chtít vyzkoušet podrobných pokynů v tomto návodu. Zveme komentář k tomuto obsahu a jak je používáte.
 
 Nejprve Podívejme se na jak služby Data Factory a Batch vám může pomoci zpracování velkých datových sad v cloudu.     
 
@@ -177,7 +177,7 @@ Tato metoda má několik klíčových komponent, které je třeba porozumět:
 #### <a name="procedure-create-the-custom-activity"></a>Postup: Vytvoření vlastní aktivity
 1. Vytvořte projekt knihovny tříd .NET v sadě Visual Studio.
 
-   a. Spusťte Visual Studio 2012/2013/2015.
+   a. Start Visual Studio 2012/2013/2015.
 
    b. Vyberte **Soubor** > **Nový** > **Projekt**.
 
@@ -969,7 +969,7 @@ Po zpracování dat můžete použít pomocí online nástrojů, jako je Power B
   * [Úvod do služby Data Factory](data-factory-introduction.md)
   * [Začínáme s Data Factory](data-factory-build-your-first-pipeline.md)
   * [Použití vlastních aktivit v kanálech Data Factory](data-factory-use-custom-activities.md)
-* [Služba Azure Batch](https://azure.microsoft.com/documentation/services/batch/)
+* [Azure Batch](https://azure.microsoft.com/documentation/services/batch/)
 
   * [Základy služby Batch](../../batch/batch-technical-overview.md)
   * [Přehled funkcí Batch](../../batch/batch-api-basics.md)

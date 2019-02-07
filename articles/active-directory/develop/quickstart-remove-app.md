@@ -16,12 +16,12 @@ ms.date: 10/25/2018
 ms.author: celested
 ms.custom: aaddev
 ms.reviewer: lenalepa, sureshja
-ms.openlocfilehash: 61da59fd570b9acc58dce89907eb5a1726a28de9
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.openlocfilehash: 55866d5ff28c707c26141683bb90c8f2873b17c8
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55104373"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55818902"
 ---
 # <a name="quickstart-remove-an-application-registered-with-the-microsoft-identity-platform-preview"></a>Rychlý start: Odebrat aplikaci registrovanou pomocí Microsoft identity platform (Preview)
 
@@ -29,8 +29,8 @@ Podnikoví vývojáři a poskytovatelé softwaru jako služby (SaaS), kteří ma
 
 V tomto rychlém startu se naučíte:
 
-* [Odebrání aplikace vytvořené vámi nebo vaší organizací](#remove-an-application-authored-by-your-organization)
-* [Odebrání aplikace vytvořené jinou organizací](#remove-an-application-authoried-by-another-organization)
+* Odebrání aplikace vytvořené vámi nebo vaší organizací
+* Odebrání aplikace vytvořené jinou organizací
 
 ## <a name="prerequisites"></a>Požadavky
 

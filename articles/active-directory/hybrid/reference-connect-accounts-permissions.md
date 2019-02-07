@@ -16,12 +16,12 @@ ms.topic: reference
 ms.date: 01/24/2019
 ms.subservice: hybrid
 ms.author: billmath
-ms.openlocfilehash: b05f10068cb747f19266683779352f21ec01bff9
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.openlocfilehash: abfdf75c6460efe50dcc9959ffb297f77a72f8c4
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55491684"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55813207"
 ---
 # <a name="azure-ad-connect-accounts-and-permissions"></a>Azure AD Connect: Účty a oprávnění
 
@@ -67,10 +67,10 @@ V nastavení Express Průvodce instalací vyzve k zadání následujících akc�
 Pokud provádíte upgrade z nástroje DirSync, AD DS Enterprise Admins přihlašovací údaje se používají k resetování hesla pro účet, která nástroj DirSync používá. Budete také potřebovat přihlašovací údaje globálního správce Azure AD.
 
 ### <a name="azure-ad-global-admin-credentials"></a>Přihlašovací údaje Azure AD globálního správce
-Tyto přihlašovací údaje se používají jenom při instalaci a nepoužívají se po dokončení instalace. Používá se k vytvoření [účtu Azure AD Connector](#azure-ad-service-account) používají k synchronizaci změn do služby Azure AD. Účet také umožňuje synchronizaci jako funkci v Azure AD.
+Tyto přihlašovací údaje se používají jenom při instalaci a nepoužívají se po dokončení instalace. Používá se k vytvoření konektoru služby Azure AD účet použitý pro synchronizaci změn do služby Azure AD. Účet také umožňuje synchronizaci jako funkci v Azure AD.
 
 ### <a name="ad-ds-connector-account-required-permissions-for-express-settings"></a>Účet AD DS konektoru požadovaná oprávnění pro expresní nastavení
-[Účet AD DS konektoru](#active-directory-account) se vytvoří pro čtení a zápis do systému Windows Server AD a tato oprávnění při vytvoření pomocí expresního nastavení:
+Konektor služby AD DS účet je vytvořený pro čtení a zápis do systému Windows Server AD a tato oprávnění při vytvoření pomocí expresního nastavení:
 
 | Oprávnění | Používá pro |
 | --- | --- |
@@ -89,9 +89,9 @@ Následuje souhrn stránkách průvodce Expresní instalace, přihlašovací úd
 
 | Stránka Průvodce | Přihlašovací údaje shromážděné | Oprávnění vyžadovaná | Používá pro |
 | --- | --- | --- | --- |
-| neuvedeno |Uživatel, který spouští Průvodce instalací |Správce místního serveru |<li>Vytvoří [účet služby ADSync](#azure-ad-connect-sync-service-account) účet, který se používá ke spuštění synchronizační služby. |
-| Připojení k Azure AD |Přihlašovací údaje Azure AD directory |Roli globálního správce ve službě Azure AD |<li>Povoluje se synchronizace v adresáři Azure AD.</li>  <li>Vytváření [účtu Azure AD Connector](#azure-ad-service-account) , který se používá pro operace probíhající synchronizace ve službě Azure AD.</li> |
-| Připojení ke službě AD DS |Místní přihlašovací údaje služby Active Directory |Člen skupiny Enterprise Admins (EA) ve službě Active Directory |<li>Vytvoří [účet AD DS konektoru](#active-directory-account) v Active Directory a udělí oprávnění k němu. Vytvoření účtu slouží ke čtení a zápisu informací adresáře během synchronizace.</li> |
+| neuvedeno |Uživatel, který spouští Průvodce instalací |Správce místního serveru |<li>Vytvoří ADSync účet účet služby, který se používá ke spuštění synchronizační služby. |
+| Připojení k Azure AD |Přihlašovací údaje Azure AD directory |Roli globálního správce ve službě Azure AD |<li>Povoluje se synchronizace v adresáři Azure AD.</li>  <li>Vytvoření účtu Azure AD konektoru, který se používá pro operace probíhající synchronizace ve službě Azure AD.</li> |
+| Připojení ke službě AD DS |Místní přihlašovací údaje služby Active Directory |Člen skupiny Enterprise Admins (EA) ve službě Active Directory |<li>Vytvoří účet konektoru služby AD DS ve službě Active Directory a udělí oprávnění k němu. Vytvoření účtu slouží ke čtení a zápisu informací adresáře během synchronizace.</li> |
 
 
 ## <a name="custom-installation-settings"></a>Nastavení vlastní instalace
@@ -106,10 +106,10 @@ Následuje souhrn stránkách Průvodce vlastní instalaci, přihlašovací úda
 
 | Stránka Průvodce | Přihlašovací údaje shromážděné | Oprávnění vyžadovaná | Používá pro |
 | --- | --- | --- | --- |
-| neuvedeno |Uživatel, který spouští Průvodce instalací |<li>Správce místního serveru</li><li>Pokud používáte plnou instalaci systému SQL Server, uživatel musí být správce systému (SA) v SQL</li> |Ve výchozím nastavení, vytvoří místní účet, který se používá jako [synchronizovat účet služby engine](#azure-ad-connect-sync-service-account). Účet je vytvořen pouze při správce neurčuje konkrétního účtu. |
+| neuvedeno |Uživatel, který spouští Průvodce instalací |<li>Správce místního serveru</li><li>Pokud používáte plnou instalaci systému SQL Server, uživatel musí být správce systému (SA) v SQL</li> |Ve výchozím nastavení vytvoří místní účet, který se používá jako účet synchronizační služby engine. Účet je vytvořen pouze při správce neurčuje konkrétního účtu. |
 | Nainstalovat synchronizační služby, možnost účet služby |AD nebo přihlašovací údaje místního uživatelského účtu |Uživatel, jsou udělena oprávnění pomocí Průvodce instalací |Pokud správce zadá účtu, tento účet se používá jako účet služby pro službu synchronizace. |
-| Připojení k Azure AD |Přihlašovací údaje Azure AD directory |Roli globálního správce ve službě Azure AD |<li>Povoluje se synchronizace v adresáři Azure AD.</li>  <li>Vytváření [účtu Azure AD Connector](#azure-ad-service-account) , který se používá pro operace probíhající synchronizace ve službě Azure AD.</li> |
-| Připojení adresářů |Místní přihlašovací údaje služby Active Directory pro každou doménovou strukturu, která je připojená ke službě Azure AD |Oprávnění závisí na funkcí, které slouží k povolení a lze nalézt v [vytvořit účet AD DS konektoru](#create-the-ad-dso-connector-account) |Tento účet slouží ke čtení a zápisu informací adresáře během synchronizace. |
+| Připojení k Azure AD |Přihlašovací údaje Azure AD directory |Roli globálního správce ve službě Azure AD |<li>Povoluje se synchronizace v adresáři Azure AD.</li>  <li>Vytvoření účtu Azure AD konektoru, který se používá pro operace probíhající synchronizace ve službě Azure AD.</li> |
+| Připojení adresářů |Místní přihlašovací údaje služby Active Directory pro každou doménovou strukturu, která je připojená ke službě Azure AD |Oprávnění závisí na funkcí, které slouží k povolení a lze nalézt v vytvořit účet AD DS konektoru |Tento účet slouží ke čtení a zápisu informací adresáře během synchronizace. |
 | Servery služby AD FS |Pro každý server v seznamu Průvodce shromažďuje přihlašovací údaje, když jsou přihlašovací údaje uživatel spustí průvodce k připojení |Správce domény |Instalace a konfigurace role serveru AD FS. |
 | Proxy servery webových aplikací |Pro každý server v seznamu Průvodce shromažďuje přihlašovací údaje, když jsou přihlašovací údaje uživatel spustí průvodce k připojení |Místní správce na cílovém počítači |Instalace a konfigurace role serveru WAP. |
 | Přihlašovací údaje pro vztah důvěryhodnosti proxy |Služba FS důvěřovat pověření (přihlašovací údaje proxy serveru používá k registraci pro důvěryhodný certifikát z služby FS |Účet domény, který slouží jako místní správce serveru služby AD FS |Počáteční registraci FS WAP důvěřovat certifikátu. |
@@ -157,7 +157,7 @@ Pokud používáte expresního nastavení, účet se vytvoří ve službě Activ
 
 ![Účet AD](./media/reference-connect-accounts-permissions/adsyncserviceaccount.png)
 
-Pokud použijete vlastní nastavení, pak budete muset pro vytvoření účtu před zahájením instalace.  Zobrazit [vytvořit účet AD DS konektoru](#create-the-ad-dso-connector-account).
+Pokud použijete vlastní nastavení, pak budete muset pro vytvoření účtu před zahájením instalace.  V části Vytvoření konektoru služby AD DS účtu.
 
 ### <a name="adsync-service-account"></a>Účet služby ADSync
 Synchronizační služba může běžet pod různými účty. Můžou běžet pod **účet virtuální služby** (Atribut) **skupinový účet spravované služby** (gMSA nebo sMSA) nebo běžný uživatelský účet. Podporované možnosti byly změněny 2017 dubna verze služby Connect při instalaci. Pokud upgradujete ze starší verze služby Azure AD Connect, nejsou k dispozici tyto možnosti.
@@ -198,7 +198,7 @@ Legenda:
 
 ![VSA](./media/reference-connect-accounts-permissions/aadsyncvsa.png)
 
-Atribut je určena pro použití se scénáři technické podpory kde jsou synchronizační modul a SQL na stejném serveru. Pokud používáte vzdálený server SQL, pak doporučujeme používat [skupinový účet spravované služby](#managed-service-account) místo.
+Atribut je určena pro použití se scénáři technické podpory kde jsou synchronizační modul a SQL na stejném serveru. Pokud používáte vzdálený server SQL, pak doporučujeme místo toho použít skupinový účet spravované služby.
 
 Tato funkce vyžaduje Windows Server 2008 R2 nebo novější. Pokud Azure AD Connect instalujete na Windows Server 2008, pak instalace přejde k použití [uživatelský účet](#user-account) místo.
 

@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 05/11/2018
 ms.author: tdsp
 ms.custom: seodec18, previous-author=fboylu, previous-ms.author=fboylu
-ms.openlocfilehash: 860d24bf9de02d1b2ca46f05f1e09843a826aaf9
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: ebf376f0bdba8c41f88d6f97cef2c17ecd259022
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55466825"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55816641"
 ---
 # <a name="azure-ai-guide-for-predictive-maintenance-solutions"></a>Průvodce Azure AI pro řešení prediktivní údržby
 
@@ -325,7 +325,7 @@ Když časových řad bez pohybu a snadno předvídatelné, generovat přístupy
 ### <a name="time-dependent-split"></a>Rozdělení závislá na čase
 Tato část popisuje osvědčené postupy pro implementaci rozdělení závislá na čase. Níže je popsána závislá na čase obousměrný rozdělení mezi trénovací a testovací sady.
 
-Předpokládejme datový proud časovým razítkem události, například měření z různých senzory. Definování funkcí a označení trénovací a testovací příklady časových intervalů, které obsahují více událostí. Pro binární klasifikaci, například vytvoření funkce na základě posledních událostí a vytváření popisků na základě budoucích událostí v rámci "jednotky čas v budoucnosti X" (na najdete v částech [konstruování](#Feature-engineering) a [modelování techniky](#Modeling-techniques-applied-to-PdM-use-cases)). Popisování časový rámec příklad proto proběhne později než časový rámec jeho funkcí.
+Předpokládejme datový proud časovým razítkem události, například měření z různých senzory. Definování funkcí a označení trénovací a testovací příklady časových intervalů, které obsahují více událostí. Pro binární klasifikaci, například vytvoření funkce na základě posledních událostí a vytváření popisků na základě budoucích událostí v rámci "jednotky čas v budoucnosti X" (na najdete v částech [konstruování](#Feature-engineering) techniky pro modelování a). Popisování časový rámec příklad proto proběhne později než časový rámec jeho funkcí.
 
 Pro rozdělení závislá na čase, vyberte _školení času přerušení T<sub>c</sub>_  jakou pro trénování modelu, s hyperparameters, která je vyladěná pomocí historických dat až po T<sub>c</sub>. Aby se zabránilo úniku budoucí popisky, které jsou nad rámec T<sub>c</sub> do trénovací data, zvolte nejnovější čas příklady školení popisek bude X jednotky před T<sub>c</sub>. V příkladu je vidět na obrázku 7 představuje každý čtvereček záznam v datové sadě, ve kterém funkce a popisky se vypočítávají jak je popsáno výše. Obrázek zobrazuje záznamy, které by měly patřit do trénování a testování sad pro X = 2 a W = 3:
 

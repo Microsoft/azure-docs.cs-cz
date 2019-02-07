@@ -8,12 +8,12 @@ ms.devlang: java
 ms.topic: reference
 ms.date: 11/29/2018
 ms.author: sngun
-ms.openlocfilehash: cf011558ab984ecaf8181a4dc4ffcb80851f24fb
-ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
+ms.openlocfilehash: ebb6fe9f583c2658f187d3cca1185f1525fb1bf5
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54352950"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55811031"
 ---
 # <a name="azure-cosmos-db-java-sdk-for-sql-api-release-notes-and-resources"></a>Azure Cosmos DB Java SDK pro rozhraní SQL API: Zpráva k vydání verze a prostředky
 > [!div class="op_single_selector"]
@@ -32,20 +32,14 @@ ms.locfileid: "54352950"
 
 Java SDK pro rozhraní API SQL podporuje synchronní operace. Pro asynchronní podporu, použijte [SQL API asynchronní Java SDK](sql-api-sdk-async-java.md). 
 
-<table>
-
-<tr><td>**Stažení sady SDK**</td><td>[Maven](https://search.maven.org/#search%7Cgav%7C1%7Cg%3A%22com.microsoft.azure%22%20AND%20a%3A%22azure-documentdb%22)</td></tr>
-
-<tr><td>**Dokumentace k rozhraní API**</td><td>[Dokumentace k rozhraní Java API](/java/api/com.microsoft.azure.documentdb)</td></tr>
-
-<tr><td>**Přispívat k sadě SDK**</td><td>[GitHub](https://github.com/Azure/azure-documentdb-java/)</td></tr>
-
-<tr><td>**Začínáme**</td><td>[Začínáme se sadou Java SDK](sql-api-java-get-started.md)</td></tr>
-
-<tr><td>**Kurz vývoje webové aplikace**</td><td>[Vývoj webových aplikací pomocí služby Azure Cosmos DB](sql-api-java-application.md)</td></tr>
-
-<tr><td>**Minimální podporovaný modul runtime**</td><td>[Java Development Kit (JDK) 7 +](https://aka.ms/azure-jdks)</td></tr>
-</table></br>
+| |  |
+|---|---|
+|**Stažení sady SDK**|[Maven](https://search.maven.org/#search%7Cgav%7C1%7Cg%3A%22com.microsoft.azure%22%20AND%20a%3A%22azure-documentdb%22)|
+|**Dokumentace k rozhraní API**|[Dokumentace k rozhraní Java API](/java/api/com.microsoft.azure.documentdb)|
+|**Přispívat k sadě SDK**|[GitHub](https://github.com/Azure/azure-documentdb-java/)|
+|**Začínáme**|[Začínáme se sadou Java SDK](sql-api-java-get-started.md)|
+|**Kurz vývoje webové aplikace**|[Vývoj webových aplikací pomocí služby Azure Cosmos DB](sql-api-java-application.md)|
+|**Minimální podporovaný modul runtime**|[Java Development Kit (JDK) 7 +](https://aka.ms/azure-jdks)|
 
 ## <a name="release-notes"></a>Poznámky k verzi
 
@@ -218,7 +212,7 @@ Jakoukoli žádost do služby Cosmos DB pomocí vyřazeno sady SDK budou odmítn
 
 | Verze | Datum vydání | Datum vyřazení z provozu |
 | --- | --- | --- |
-| [2.1.1](#2.1.1) |21. listopadu 2018 |--- |
+| 2.1.1 |21. listopadu 2018 |--- |
 | [2.0.0](#2.0.0) |21. září 2018 |--- |
 | [1.16.4](#1.16.4) |10. září 2018 |--- |
 | [1.16.3](#1.16.3) |09. září 2018 |--- |
@@ -249,7 +243,7 @@ Jakoukoli žádost do služby Cosmos DB pomocí vyřazeno sady SDK budou odmítn
 | [1.3.0](#1.3.0) |05. října 2015 |--- |
 | [1.2.0](#1.2.0) |05. srpna 2015 |--- |
 | [1.1.0](#1.1.0) |09. července 2015 |--- |
-| [1.0.1](#1.0.1) |12. května 2015 |--- |
+| 1.0.1 |12. května 2015 |--- |
 | [1.0.0](#1.0.0) |07. dubna 2015 |--- |
 | 0.9.5-prelease |09 března 2015 |29. února 2016 |
 | 0.9.4-prelease |17. února 2015 |29. února 2016 |

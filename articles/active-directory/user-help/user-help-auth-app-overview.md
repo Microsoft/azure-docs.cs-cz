@@ -11,18 +11,15 @@ ms.workload: identity
 ms.topic: overview
 ms.date: 01/24/2019
 ms.author: lizross
-ms.openlocfilehash: fa37ed942158ecc0f58aa5884ff93ce27bc42745
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.openlocfilehash: 67265636b26a0eec3c40ee1f95872cc870099de7
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55751068"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55809674"
 ---
 # <a name="what-is-the-microsoft-authenticator-app"></a>Co je aplikace Microsoft Authenticator?
 Aplikace Microsoft Authenticator přispívá k přihlášení k účtům používáte dvojúrovňového ověřování. Dvoufaktorové ověření vám umožní přístup k účtům bezpečněji, zejména při zobrazování citlivé informace. Protože hesla mohou být vymazány, někdo je ukradne nebo ohrožení zabezpečení, dvojúrovňového ověřování je krok dodatečné zabezpečení, která pomáhá chránit váš účet kvůli tomu je těžší jinými lidmi, kteří možnost proniknout.
-
->[!Important]
->Aplikace Microsoft Authenticator funguje s každou aplikaci, která používá dvojúrovňového ověřování a jakýkoli účet, který podporuje podle času jednorázového hesla (TOTP) normami.
 
 Můžete použít aplikaci Microsoft Authenticator několika různými způsoby, včetně:
 
@@ -31,7 +28,11 @@ Můžete použít aplikaci Microsoft Authenticator několika různými způsoby,
 - Zajištění přihlášení bez hesla, vaše uživatelské jméno a vašeho mobilního zařízení pomocí otisků prstů, rozpoznávání tváře nebo PIN kód.
 
 >[!Important]
->Tento obsah je určený pro uživatele. Pokud jste správce, najdete další informace o nastavení a správě vašeho prostředí Azure Active Directory (Azure AD) v [dokumentaci k Azure Active Directory](https://docs.microsoft.com/azure/active-directory).<br><br>Pokud máte potíže s přihlášením k účtu, najdete v článku [když nemůžete se přihlásit ke svému účtu Microsoft](https://support.microsoft.com/help/12429) nápovědu.  Získat další informace o tom, jak postupovat, když se zobrazí ["Tento účet Microsoft neexistuje"](https://support.microsoft.com/help/13811) zpráva při pokusu o přihlášení k účtu Microsoft.
+>Aplikace Microsoft Authenticator funguje s každou aplikaci, která používá dvojúrovňového ověřování a jakýkoli účet, který podporuje podle času jednorázového hesla (TOTP) normami.
+
+>Tento obsah je určený pro uživatele. Pokud jste správce, najdete další informace o nastavení a správě vašeho prostředí Azure Active Directory (Azure AD) v [dokumentaci k Azure Active Directory](https://docs.microsoft.com/azure/active-directory).
+
+>Pokud máte potíže s přihlášením k účtu, najdete v článku [když nemůžete se přihlásit ke svému účtu Microsoft](https://support.microsoft.com/help/12429) nápovědu. Získat další informace o tom, jak postupovat, když se zobrazí ["Tento účet Microsoft neexistuje"](https://support.microsoft.com/help/13811) zpráva při pokusu o přihlášení k účtu Microsoft.
 
 ## <a name="terminology"></a>Terminologie
 |Označení|Popis|
@@ -67,11 +68,10 @@ V závislosti na typu účtu vaší organizace rozhodnout, že je nutné použí
 
 |Článek |Popis |
 |------|------------|
-|[Stažení a instalace aplikace](microsoft-authenticator-app-how-to.md)|Popisuje, kde a jak získat a nainstalovat aplikaci Microsoft Authenticator pro zařízení s Androidem a iOS.|
-|[Přidejte svůj pracovní nebo školní účet](microsoft-authenticator-app-add-work-account.md)|Popisuje, jak přidat různé pracovní nebo školní a osobní účty do aplikace Microsoft Authenticator.|
-|[Přidat osobního účtu Microsoft](microsoft-authenticator-app-add-personal-account.md)|Popisuje, jak přidat váš osobní účet Microsoft pro aplikaci Microsoft Authenticator.|
-|[Přidat účet jiného subjektu než Microsoft](microsoft-authenticator-app-add-non-microsoft-account.md)|Popisuje, jak přidat své účty jiných společností než Microsoft k aplikaci Microsoft Authenticator.|
-|[Ručně přidejte vaše účty](microsoft-authenticator-app-add-account-manual.md)|Pokud nemůžete poskytnutý kód QR naskenovat a popisuje, jak ručně přidat do aplikace Microsoft Authenticator, vaše účty.|
-|[Přihlášení pomocí aplikace](microsoft-authenticator-app-phone-signin-faq.md)|Popisuje, jak se přihlásit k různým účtům, pomocí aplikace Microsoft Authenticator.|
-|[Zálohování a obnovení přihlašovacích údajů k účtu](microsoft-authenticator-app-backup-and-recovery.md)| Poskytuje informace o tom, jak zálohovat a obnovit přihlašovací údaje k účtu pomocí aplikace Microsoft Authenticator.|
-|[Nejčastější dotazy k aplikaci Microsoft Authenticator](microsoft-authenticator-app-faq.md)|Poskytuje odpovědi na nejčastější dotazy ohledně této aplikace.|
+|[Stažení a instalace aplikace](user-help-auth-app-download-install.md)|Popisuje, kde a jak získat a nainstalovat aplikaci Microsoft Authenticator pro zařízení s Androidem a iOS.|
+|[Přidat pracovní nebo školní účty](user-help-auth-app-add-work-school-account.md)|Popisuje, jak přidat různé pracovní nebo školní a osobní účty do aplikace Microsoft Authenticator.|
+|[Přidat osobním účtům](user-help-auth-app-add-personal-ms-account.md)|Popisuje, jak přidat do aplikace Microsoft Authenticator osobních společnosti Microsoft a účty jiných společností než Microsoft.|
+|[Ručně přidejte vaše účty](user-help-auth-app-add-account-manual.md)|Pokud nemůžete poskytnutý kód QR naskenovat a popisuje, jak ručně přidat do aplikace Microsoft Authenticator, vaše účty.|
+|[Přihlášení pomocí aplikace](user-help-auth-app-sign-in.md)|Popisuje, jak se přihlásit k různým účtům, pomocí aplikace Microsoft Authenticator.|
+|[Zálohování a obnovení přihlašovacích údajů k účtu](user-help-auth-app-backup-recovery.md)| Poskytuje informace o tom, jak zálohovat a obnovit přihlašovací údaje k účtu pomocí aplikace Microsoft Authenticator.|
+|[Nejčastější dotazy k aplikaci Microsoft Authenticator](user-help-auth-app-faq.md)|Poskytuje odpovědi na nejčastější dotazy ohledně této aplikace.|

@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 12/05/2017
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 3d0a3014fa224d6b5c85142e492afb0679f9f0b1
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: c188c23f87715b6ba5b90f6015b59f2a347ec0cf
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54014677"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55821316"
 ---
 # <a name="move-data-by-using-copy-activity"></a>Přesun dat pomocí aktivity kopírování
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -209,7 +209,7 @@ Různých úložišť dat mají různé nativní typ systémy. Aktivita kopírov
 1. Převeďte na typ .NET typy nativní zdroje.
 2. Převeďte na typ jímky nativní typ formátu .NET.
 
-Mapování ze systému nativní typ na typ .NET pro úložiště dat je v článku příslušné datové úložiště. (Klikněte na odkaz v [podporovanými úložišti dat](#supported-data-stores) tabulky). Tato mapování můžete použít k určení odpovídající typy při vytváření tabulek, takže aktivita kopírování provádí převody vpravo.
+Mapování ze systému nativní typ na typ .NET pro úložiště dat je v článku příslušné datové úložiště. (Klikněte na odkaz v tabulce úložiště dat podporované). Tato mapování můžete použít k určení odpovídající typy při vytváření tabulek, takže aktivita kopírování provádí převody vpravo.
 
 ## <a name="next-steps"></a>Další postup
 * Další informace o aktivitě kopírování najdete v tématu [kopírování dat z Azure Blob storage do Azure SQL Database](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md).

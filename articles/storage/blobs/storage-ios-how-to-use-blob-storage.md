@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 11/20/2018
 ms.author: michaelhauss
 ms.subservice: blobs
-ms.openlocfilehash: 9e4c717b3b205d6c8fdd309dada918eb6df35181
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 65ecaaea09c28c31d76f31dc447108273b379f9e
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55244755"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55811660"
 ---
 # <a name="how-to-use-blob-storage-from-ios"></a>Používání úložiště Blob z iOS
 
@@ -162,7 +162,7 @@ Následující příklad ukazuje, jak vytvořit kontejner s **kontejneru** pří
 ```
 
 ## <a name="upload-a-blob-into-a-container"></a>Nahrání objektu blob do kontejneru
-Jak je uvedeno v [koncepty služby Blob](#blob-service-concepts) oddílu, úložiště objektů Blob nabízí tři různé typy objektů blob: objekty BLOB bloku, doplňovací objekty BLOB a objekty BLOB stránky. Knihovna pro iOS služby Azure Storage podporuje všechny tři typy objektů BLOB. Ve většině případů se jako vhodný typ k použití doporučuje objekt blob bloku.
+Jak je uvedeno v části koncepty služby Blob, úložiště objektů Blob nabízí tři různé typy objektů blob: objekty BLOB bloku, doplňovací objekty BLOB a objekty BLOB stránky. Knihovna pro iOS služby Azure Storage podporuje všechny tři typy objektů BLOB. Ve většině případů se jako vhodný typ k použití doporučuje objekt blob bloku.
 
 Následující příklad ukazuje, jak nahrát objekt blob bloku ze NSString. Pokud se objekt blob se stejným názvem už v tomto kontejneru existuje, obsah tohoto objektu blob bude přepsán.
 

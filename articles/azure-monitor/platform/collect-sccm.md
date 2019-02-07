@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 03/22/2018
 ms.author: magoedte
-ms.openlocfilehash: b13e92369168a43f529ed0b83c10bc65893da83d
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: 79539e05e1623b153a8fad817918cfb56a521db1
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53193310"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55814159"
 ---
 # <a name="connect-configuration-manager-to-log-analytics"></a>Propojení Configuration Manageru k Log Analytics
 Můžete svoje prostředí System Center Configuration Manager připojit ke službě Azure Log Analytics k synchronizaci zařízení shromažďování dat a odkazují na tyto kolekce v Log Analytics a Azure Automation.  
@@ -32,8 +32,8 @@ Následující kroky shrnují postup konfigurace integrace nástroje Configurati
 
 1. Na webu Azure Portal zaregistrujte se jako webovou aplikaci nebo webové rozhraní API aplikace nástroje Configuration Manager a ujistěte se, že máte ID klienta a tajný klíč klienta z registrace ze služby Azure Active Directory. Zobrazit [použití portálu k vytvoření služby Active Directory a instančního objektu, který má přístup k prostředkům](../../active-directory/develop/howto-create-service-principal-portal.md) podrobné informace o tom, k provedení tohoto kroku.
 2. Na webu Azure Portal [udělit Configuration Manageru (zaregistrovanou webovou aplikaci) pomocí oprávnění pro přístup k Log Analytics](#grant-configuration-manager-with-permissions-to-log-analytics).
-3. V nástroji Configuration Manager [přidat připojení pomocí Průvodce přidáním připojení OMS](#add-an-oms-connection-to-configuration-manager).
-4. V nástroji Configuration Manager [aktualizovat vlastnosti připojení](#update-oms-connection-properties) Pokud tajný klíč klienta nebo hesla nikdy vyprší platnost nebo dojde ke ztrátě.
+3. V nástroji Configuration Manager, přidejte připojení pomocí Průvodce přidáním připojení OMS.
+4. V nástroji Configuration Manager, aktualizujte vlastnosti připojení, pokud tajný klíč klienta nebo hesla nikdy vyprší platnost nebo dojde ke ztrátě.
 5. [Stáhnout a nainstalovat agenta Microsoft Monitoring Agent](#download-and-install-the-agent) v počítači s aplikací nástroji Configuration Manager service připojení role systému lokality bodu. Agent odesílá data Configuration Manageru k pracovnímu prostoru Log Analytics.
 6. Ve službě Log Analytics [importovat kolekce z nástroje Configuration Manager](#import-collections) jako skupiny počítačů.
 7. V Log Analytics, zobrazení dat z nástroje Configuration Manager jako [skupiny počítačů](../../azure-monitor/platform/computer-groups.md).

@@ -7,12 +7,12 @@ ms.service: container-registry
 ms.topic: article
 ms.date: 11/13/2018
 ms.author: danlep
-ms.openlocfilehash: e91b4e881c0f39304e3042d556f111db2089f7de
-ms.sourcegitcommit: 922f7a8b75e9e15a17e904cc941bdfb0f32dc153
+ms.openlocfilehash: c9b4a27ff1b5467eb752e8cfc09f697ca1a966ba
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52334478"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55820381"
 ---
 # <a name="acr-tasks-reference-yaml"></a>Referenční dokumentace úlohy ACR: YAML
 
@@ -83,10 +83,10 @@ az configure --defaults acr=myregistry
 
 Vlastnosti úlohy se obvykle zobrazuje v horní části `acr-task.yaml` souborů a jsou globální vlastnosti, které se vztahují během úplné spuštění úlohy. Některé z těchto globálních vlastností mohou přepsat v rámci jednoho kroku.
 
-| Vlastnost | Typ | Nepovinné | Popis | Přepsání podporována | Výchozí hodnota |
+| Vlastnost | Type | Nepovinné | Popis | Přepsání podporována | Výchozí hodnota |
 | -------- | ---- | -------- | ----------- | ------------------ | ------------- |
 | `version` | řetězec | Ne | Verze `acr-task.yaml` sdílené, jak analyzovat služba ACR úkoly. Během úlohy služby ACR se snaží udržovat zpětnou kompatibilitu, tato hodnota umožňuje ACR úkoly pro zachování kompatibility v rámci definovaných verze. | Ne | Žádný |
-| `stepTimeout` | int (sekundy) | Ano | Maximální počet sekund, po které můžete spustit krok. Tato vlastnost může být přepsána v kroku nastavení v kroku [vypršení časového limitu](#timeout) vlastnost. | Ano | 600 (10 minut) |
+| `stepTimeout` | int (sekundy) | Ano | Maximální počet sekund, po které můžete spustit krok. Tato vlastnost může být přepsána v kroku nastavení vlastnosti timeout v kroku. | Ano | 600 (10 minut) |
 | `totalTimeout` | int (sekundy) | Ano | Maximální počet sekund, po které může spustit úlohu. "Spustit" zahrnuje spuštění a dokončení všech kroků v úloze, ať už úspěšně nebo se nezdařilo. Taky je tiskových úloh výstup jako závislosti zjištěné image a stav provádění úlohy. | Ne | 3600 (1 hodina) |
 
 ## <a name="task-step-types"></a>Krok typy úloh
@@ -315,7 +315,7 @@ S použitím standardu `docker run` obrázku referenční konvence `cmd` můžet
 
 Každý typ kroku podporuje několik vlastností, které jsou vhodné pro její typ. Následující tabulka definuje všechny vlastnosti k dispozici krok. Ne všechny typy krok podporují všechny vlastnosti. Které z těchto vlastností jsou dostupné pro každý typ kroku najdete v tématu [cmd](#cmd), [sestavení](#build), a [nabízených](#push) krok oddíly typu odkazu.
 
-| Vlastnost | Typ | Nepovinné | Popis |
+| Vlastnost | Type | Nepovinné | Popis |
 | -------- | ---- | -------- | ----------- |
 | `detach` | BOOL | Ano | Určuje, zda by měl kontejneru odpojit při spuštění. |
 | `entryPoint` | řetězec | Ano | Přepsání `[ENTRYPOINT]` o krok kontejneru. |

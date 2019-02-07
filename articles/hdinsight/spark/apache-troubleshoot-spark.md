@@ -8,12 +8,12 @@ ms.author: hrasheed
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.custom: seodec18
-ms.openlocfilehash: 2108de8988e973644e0622a4b76a04408949298e
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.openlocfilehash: f6e9641d106c40c061752b57744eda09aac157a5
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53635138"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55821962"
 ---
 # <a name="troubleshoot-apache-spark-by-using-azure-hdinsight"></a>Řešení potíží s Apache Sparku s využitím Azure HDInsight
 
@@ -23,7 +23,7 @@ Další informace o nejčastější problémy a jejich řešení při práci s [
 
 ### <a name="resolution-steps"></a>Postup řešení
 
-Hodnoty konfigurace pro tento postup byly dříve nastavené v HDInsight. Chcete-li určit, které Spark konfigurace muset nastavit a jaké hodnoty, najdete v tématu [co způsobí, že výjimka OutofMemoryError aplikací Apache Spark](#what-causes-a-spark-application-outofmemoryerror-exception). 
+Hodnoty konfigurace pro tento postup byly dříve nastavené v HDInsight. Chcete-li určit, které Spark konfigurace muset nastavit a jaké hodnoty, najdete v tématu co způsobí, že výjimka OutofMemoryError aplikací Apache Spark. 
 
 1. Vyberte v seznamu clusterů **Spark2**.
 
@@ -92,7 +92,7 @@ Tyto změny jsou platné pro celý cluster, ale lze přepsat při odesílání �
 
 ### <a name="resolution-steps"></a>Postup řešení
 
-1. Chcete-li určit, které Spark konfigurace muset nastavit a jaké hodnoty, najdete v tématu [co způsobí, že výjimka OutofMemoryError aplikací Apache Spark](#what-causes-a-spark-application-outofmemoryerror-exception).
+1. Chcete-li určit, které Spark konfigurace muset nastavit a jaké hodnoty, najdete v tématu co způsobí, že výjimka OutofMemoryError aplikací Apache Spark.
 
 2. V první buňky Poznámkový blok Jupyter po **%% konfigurace** směrnice, určení konfigurací Sparku v platném formátu JSON. Podle potřeby změňte skutečnými hodnotami:
 
@@ -107,7 +107,7 @@ Tyto změny jsou platné pro celý cluster, ale lze přepsat při odesílání �
 
 ### <a name="resolution-steps"></a>Postup řešení
 
-1. Chcete-li určit, které Spark konfigurace muset nastavit a jaké hodnoty, najdete v tématu [co způsobí, že výjimka OutofMemoryError aplikací Apache Spark](#what-causes-a-spark-application-outofmemoryerror-exception). 
+1. Chcete-li určit, které Spark konfigurace muset nastavit a jaké hodnoty, najdete v tématu co způsobí, že výjimka OutofMemoryError aplikací Apache Spark. 
 
 2. Odeslání aplikace Spark na Livy pomocí klienta REST jako cURL. Použijte příkaz podobný následujícímu. Podle potřeby změňte skutečnými hodnotami:
 
@@ -124,7 +124,7 @@ Tyto změny jsou platné pro celý cluster, ale lze přepsat při odesílání �
 
 ### <a name="resolution-steps"></a>Postup řešení
 
-1. Chcete-li určit, které Spark konfigurace muset nastavit a jaké hodnoty, najdete v tématu [co způsobí, že výjimka OutofMemoryError aplikací Apache Spark](#what-causes-a-spark-application-outofmemoryerror-exception).
+1. Chcete-li určit, které Spark konfigurace muset nastavit a jaké hodnoty, najdete v tématu co způsobí, že výjimka OutofMemoryError aplikací Apache Spark.
 
 2. Spusťte prostředí sparku s využitím příkaz podobný následujícímu. Podle potřeby změňte skutečné hodnoty konfigurace: 
 

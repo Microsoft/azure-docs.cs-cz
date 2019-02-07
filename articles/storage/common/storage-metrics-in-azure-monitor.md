@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 09/05/2017
 ms.author: fryu
 ms.subservice: common
-ms.openlocfilehash: 4b71c5818ee6eade526134ab1b2508ed55f0c400
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.openlocfilehash: aabd0ab55c061c9d2cdc27b4ab5a241ad9e9793c
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55699937"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55811763"
 ---
 # <a name="azure-storage-metrics-in-azure-monitor"></a>Metriky Azure Storage na platformě Azure Monitor
 
@@ -39,7 +39,7 @@ Metrika podporuje dimenze můžete filtrovat metriky s hodnotou požadované dim
 
 ### <a name="access-metrics-with-the-rest-api"></a>Metriky přístup pomocí rozhraní REST API
 
-Platforma Azure Monitor poskytuje [rozhraní REST API](/rest/api/monitor/) číst definice metriky a hodnoty. Tato část ukazuje, jak číst metriky pro úložiště. ID prostředku se používá v všechna rozhraní REST API. Další informace, přečtěte si prosím [Principy ID prostředku pro služby ve službě Storage](#understanding-resource-id-for-services-in-storage).
+Platforma Azure Monitor poskytuje [rozhraní REST API](/rest/api/monitor/) číst definice metriky a hodnoty. Tato část ukazuje, jak číst metriky pro úložiště. ID prostředku se používá v všechna rozhraní REST API. Další informace přečtěte si vysvětlení ID prostředku pro služby ve službě Storage.
 
 Následující příklad ukazuje, jak používat [ArmClient](https://github.com/projectkudu/ARMClient) příkazového řádku pro zjednodušení testování pomocí rozhraní REST API.
 
@@ -136,7 +136,7 @@ Následující odpověď obsahuje hodnoty metrik ve formátu JSON:
 
 ### <a name="access-metrics-with-the-net-sdk"></a>Přístup metriky pomocí sady .net SDK
 
-Platforma Azure Monitor poskytuje [.Net SDK](https://www.nuget.org/packages/Microsoft.Azure.Management.Monitor/) číst definice metriky a hodnoty. [Ukázkový kód](https://azure.microsoft.com/resources/samples/monitor-dotnet-metrics-api/) ukazuje, jak používat sadu SDK s různými parametry. Je třeba použít `0.18.0-preview` nebo novější verzi pro metrik úložiště. ID prostředku se používá v sadě .net SDK. Další informace, přečtěte si prosím [Principy ID prostředku pro služby ve službě Storage](#understanding-resource-id-for-services-in-storage).
+Platforma Azure Monitor poskytuje [.Net SDK](https://www.nuget.org/packages/Microsoft.Azure.Management.Monitor/) číst definice metriky a hodnoty. [Ukázkový kód](https://azure.microsoft.com/resources/samples/monitor-dotnet-metrics-api/) ukazuje, jak používat sadu SDK s různými parametry. Je třeba použít `0.18.0-preview` nebo novější verzi pro metrik úložiště. ID prostředku se používá v sadě .net SDK. Další informace přečtěte si vysvětlení ID prostředku pro služby ve službě Storage.
 
 Následující příklad ukazuje, jak používat Azure Monitor .net SDK číst metriky pro úložiště.
 

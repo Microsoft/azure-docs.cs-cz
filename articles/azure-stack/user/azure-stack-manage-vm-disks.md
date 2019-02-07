@@ -15,12 +15,12 @@ ms.date: 01/18/2019
 ms.author: mabrigg
 ms.reviewer: jiahan
 ms.lastreviewed: 01/18/2019
-ms.openlocfilehash: 022dd937ae0557ca848a329039703f3b94ad0885
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: b5254b45fcd71901876d9e77d1f29c0a0d40ce3f
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55245350"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55813870"
 ---
 # <a name="create-virtual-machine-disk-storage-in-azure-stack"></a>Vytvoření disku úložiště virtuálního počítače ve službě Azure Stack
 
@@ -50,7 +50,7 @@ Následující tabulka shrnuje, jak přidat disky pomocí portálu a pomocí pro
 
 | Metoda | Možnosti
 |-|-|
-|[Portál User portal](#use-the-portal-to-add-additional-disks-to-a-vm)|-Přidáte nové datové disky existujícího virtuálního počítače. Nové disky, které jsou vytvořeny ve službě Azure Stack. </br> </br>-Přidáte existující soubor disku (VHD) do dříve vytvořeného virtuálního počítače. Provedete to tak, musíte připravit VHD a pak nahrajte soubor do služby Azure Stack. |
+|User Portal|-Přidáte nové datové disky existujícího virtuálního počítače. Nové disky, které jsou vytvořeny ve službě Azure Stack. </br> </br>-Přidáte existující soubor disku (VHD) do dříve vytvořeného virtuálního počítače. Provedete to tak, musíte připravit VHD a pak nahrajte soubor do služby Azure Stack. |
 |[PowerShell](#use-powershell-to-add-multiple-unmanaged-disks-to-a-vm) | -Vytvořit nový virtuální počítač s diskem operačního systému a ve stejnou dobu jeden nebo více datových disků k tomuto virtuálnímu počítači. |
 
 ## <a name="use-the-portal-to-add-disks-to-a-vm"></a>Přidejte disky do virtuálního počítače pomocí portálu

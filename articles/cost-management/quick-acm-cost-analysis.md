@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 01/31/2019
+ms.date: 02/05/2019
 ms.topic: quickstart
 ms.service: cost-management
 manager: dougeby
 ms.custom: seodec18
-ms.openlocfilehash: 5f15a7d7a49724fda56cecd36e92cb40ced59b81
-ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
+ms.openlocfilehash: 931732c047a5ffe22ad456a115c36d7c882d01bc
+ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55510489"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55769847"
 ---
 # <a name="quickstart-explore-and-analyze-costs-with-cost-analysis"></a>Rychlý start: Zkoumání a analýzy náklady pomocí Cost analysis
 
@@ -32,7 +32,9 @@ V tomto rychlém startu se naučíte:
 
 ## <a name="prerequisites"></a>Požadavky
 
-Analýza nákladů je dostupná pro všechny zákazníky se [smlouvou Enterprise (EA)](https://azure.microsoft.com/pricing/enterprise-agreement/). Abyste mohli zobrazit data nákladů, musíte mít alespoň přístup pro čtení k nejméně jednomu z následujících oborů. Další informace o přiřazování přístupu k datům služby Cost Management najdete v tématu [přiřazení přístupu k datům](assign-access-acm-data.md).
+Analýza nákladů, podporuje různé typy účtů Azure. Chcete-li zobrazit úplný seznam typů podporovaných účtů, najdete v článku [datům Cost managementu pochopit](understand-cost-mgt-data.md). K zobrazení dat na náklady, potřebujete alespoň přístup čtení ke svému účtu Azure.
+
+Pro [Enterprise Agreement (EA)](https://azure.microsoft.com/pricing/enterprise-agreement/) zákazníků, můžete musí mít alespoň čtení přístup k jednomu nebo více z následujících oborů zobrazení datům služby cost.
 
 - Fakturační účet
 - Oddělení
@@ -41,7 +43,9 @@ Analýza nákladů je dostupná pro všechny zákazníky se [smlouvou Enterprise
 - Předplatné
 - Skupina prostředků
 
-## <a name="sign-in-to-azure"></a>Přihlášení k Azure
+Další informace o přiřazování přístupu k datům služby Cost Management najdete v tématu [přiřazení přístupu k datům](assign-access-acm-data.md).
+
+## <a name="sign-in-to-azure"></a>Přihlásit se k Azure
 
 - Přihlaste se k webu Azure Portal na adrese https://portal.azure.com.
 

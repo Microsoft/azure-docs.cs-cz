@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/14/2018
 ms.author: subsarma
-ms.openlocfilehash: e63db9dd5dcd48e19c75608c39c4c0b62db24527
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: 89984335d40d7f58d39e77736c06a9ff137d7a51
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55221194"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55811253"
 ---
 # <a name="name-resolution-for-resources-in-azure-virtual-networks"></a>Překlad názvů pro prostředky ve virtuálních sítích Azure
 
@@ -40,7 +40,7 @@ Typ překladu adres, které používáte závisí na tom, jak vaše prostředky 
 | Překlad mezi virtuálními počítači v různých virtuálních sítích nebo instance rolí v rámci různých cloudových služeb. |[Azure DNS Private Zones](../dns/private-dns-overview.md) nebo servery DNS spravovanými zákazníka předávání dotazů mezi virtuálními sítěmi pro překlad Azure (DNS proxy). Zobrazit [překladu IP adresy serveru DNS](#name-resolution-that-uses-your-own-dns-server). |Pouze plně kvalifikovaný název domény |
 | Překlad ze služby Azure App Service (webové aplikace, funkce nebo Bot) pomocí integrace služby virtual network a instance rolí virtuálních počítačů ve stejné virtuální síti. |Spravované zákazníkem servery DNS předávání dotazů mezi virtuálními sítěmi pro překlad Azure (DNS proxy). Zobrazit [překladu IP adresy serveru DNS](#name-resolution-that-uses-your-own-dns-server). |Pouze plně kvalifikovaný název domény |
 | Název řešení z aplikace App Service Web Apps k virtuálním počítačům ve stejné virtuální síti. |Spravované zákazníkem servery DNS předávání dotazů mezi virtuálními sítěmi pro překlad Azure (DNS proxy). Zobrazit [překladu IP adresy serveru DNS](#name-resolution-that-uses-your-own-dns-server). |Pouze plně kvalifikovaný název domény |
-| Název řešení z aplikace App Service Web Apps v jedné virtuální sítě pro virtuální počítače v jiné virtuální sítě. |Spravované zákazníkem servery DNS předávání dotazů mezi virtuálními sítěmi pro překlad Azure (DNS proxy). Zobrazit [překladu IP adresy serveru DNS](#name-resolution-that-uses-your-own-dns-server-for-web-apps). |Pouze plně kvalifikovaný název domény |
+| Název řešení z aplikace App Service Web Apps v jedné virtuální sítě pro virtuální počítače v jiné virtuální sítě. |Spravované zákazníkem servery DNS předávání dotazů mezi virtuálními sítěmi pro překlad Azure (DNS proxy). Podívejte se na překlad názvů pomocí vlastního serveru DNS. |Pouze plně kvalifikovaný název domény |
 | Rozlišení názvů místní počítače a služby z virtuálních počítačů nebo instancí role v Azure. |Spravované zákazníkem serverů DNS (místní řadič domény, řadiče místní domény jen pro čtení nebo sekundární DNS synchronizované, například pomocí přenosů zóny). Zobrazit [překladu IP adresy serveru DNS](#name-resolution-that-uses-your-own-dns-server). |Pouze plně kvalifikovaný název domény |
 | Řešení Azure názvy hostitelů z místních počítačů. |Předávaly dotazy na zákazníkem spravovaný DNS proxy serveru v příslušné virtuální síti proxy server předává dotazy do Azure pro řešení. Zobrazit [překladu IP adresy serveru DNS](#name-resolution-that-uses-your-own-dns-server). |Pouze plně kvalifikovaný název domény |
 | Zpětné vyhledávání DNS pro interní IP adresy. |[Překlad názvů pomocí vlastního serveru DNS](#name-resolution-that-uses-your-own-dns-server). |Neuvedeno |

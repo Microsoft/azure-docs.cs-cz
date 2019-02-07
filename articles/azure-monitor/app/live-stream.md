@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/28/2019
 ms.reviewer: sdash
 ms.author: mbullwin
-ms.openlocfilehash: f369eb6241a8eb3d44a0a38e243c533da47103e1
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.openlocfilehash: b741528b2770314be7e851f38817611d6908352b
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55104605"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55814941"
 ---
 # <a name="live-metrics-stream-monitor--diagnose-with-1-second-latency"></a>Live Metrics Stream: Monitorování a Diagnostika s latencí 1 sekundu
 
@@ -64,7 +64,7 @@ Zkontrolujte [výchozí porty pro Live Metrics Stream](../../azure-monitor/app/i
 |Na vyžádání|Streamování dat, zatímco otevřete Live Metrics|Data se odesílají pokaždé, když je nainstalován a povolen sady SDK|
 |Free|Neexistuje žádné poplatky za data Live Stream|Podléhají [ceny](../../azure-monitor/app/pricing.md)
 |Vzorkování|Všechny vybrané metriky a čítače přenosu. Chyby a trasování zásobníku jsou vzorkovány. TelemetryProcessors se nepoužijí.|Události mohou být [vzorkováno](../../azure-monitor/app/api-filtering-sampling.md)|
-|Řídicí kanál|Signály ovládací prvek filtru se odesílají do sady SDK. Doporučujeme [zabezpečení v tomto kanálu](#secure-channel).|Komunikace je jednosměrná k portálu|
+|Řídicí kanál|Signály ovládací prvek filtru se odesílají do sady SDK. Doporučujeme, abyste že zabezpečení tohoto kanálu.|Komunikace je jednosměrná k portálu|
 
 
 ## <a name="select-and-filter-your-metrics"></a>Výběr a filtrování metriky

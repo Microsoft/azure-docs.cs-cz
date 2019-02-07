@@ -15,12 +15,12 @@ ms.workload: big-compute
 ms.date: 11/14/2018
 ms.author: lahugh
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 970cab2c782e71defbda828a42273f317dee80e4
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: ede0b7cbeee9227a7023e5c0550a951897cc43e4
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55472979"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55821180"
 ---
 # <a name="persist-job-and-task-data-to-azure-storage-with-the-batch-file-conventions-library-for-net"></a>Uchování úloh a dat do služby Azure Storage pomocí knihovny File Conventions služby Batch pro .NET
 
@@ -112,7 +112,7 @@ await taskOutputStorage.SaveAsync(TaskOutputKind.TaskPreview, "frame_low_res.jpg
 
 `kind` Parametr [TaskOutputStorage](https://msdn.microsoft.com/library/microsoft.azure.batch.conventions.files.taskoutputstorage.aspx).[ SaveAsync](https://msdn.microsoft.com/library/microsoft.azure.batch.conventions.files.taskoutputstorage.saveasync.aspx) metoda kategorizuje trvalé soubory. Existují čtyři předdefinované [TaskOutputKind] [ net_taskoutputkind] typy: `TaskOutput`, `TaskPreview`, `TaskLog`, a `TaskIntermediate.` můžete také definovat vlastní kategorie výstupu.
 
-Tyto typy výstupu bylo možné určit typ výstupy do seznamu při později dotazování služby Batch pro trvalé výstupy dané úlohy. Jinými slovy zobrazením výstupy pro úkol můžete filtrovat seznam na jednom z formátů výstupu. Například "uvést *ve verzi preview* výstup pro úlohu *109*." Další informace o zobrazení a načítání výstupů se zobrazí v [načíst výstup](#retrieve-output) dále v tomto článku.
+Tyto typy výstupu bylo možné určit typ výstupy do seznamu při později dotazování služby Batch pro trvalé výstupy dané úlohy. Jinými slovy zobrazením výstupy pro úkol můžete filtrovat seznam na jednom z formátů výstupu. Například "uvést *ve verzi preview* výstup pro úlohu *109*." Další informace o zobrazení a načítání výstupů se zobrazí ve výstupu načíst později v tomto článku.
 
 > [!TIP]
 > Druh výstupu také určuje, kde na webu Azure Portal zobrazuje určitého souboru: *TaskOutput*-zařazená do kategorie soubory se zobrazí v části **výstupní soubory úloh**, a *TaskLog* soubory se zobrazí v části **úkolů protokoly**.
@@ -197,7 +197,7 @@ Na webu Azure portal zobrazuje výstupní soubory úlohy a protokoly, které jso
 
 Chcete-li zobrazit výstupní soubory na portálu, musí splňovat následující požadavky:
 
-1. [Propojit účet Azure Storage](#requirement-linked-storage-account) k účtu Batch.
+1. Propojení účtu služby Azure Storage s účtem Batch.
 1. Při trvalém ukládání výstupů proto zavázala dodržovat předdefinované zásady vytváření názvů pro kontejnery úložiště a soubory. Definice těchto konvence můžete najít v knihovny File Conventions [README][github_file_conventions_readme]. Pokud používáte [Azure Batch File Conventions] [ nuget_package] knihovny k uchování vašich výstupní soubory jsou trvalé podle standardu File Conventions.
 
 Chcete-li zobrazit výstupní soubory úloh a protokolů na webu Azure Portal, přejděte na úlohu, jejíž výstup, který vás zajímá, pak klikněte na možnost **uložené výstupní soubory** nebo **uloženy protokoly**. Tento obrázek ukazuje, **uložené výstupní soubory** pro úlohu s ID "007":

@@ -13,25 +13,25 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 10/08/2018
 ms.author: genli
-ms.openlocfilehash: d8140966f3ba8674938a4e21b0990371390d3516
-ms.sourcegitcommit: 7b0778a1488e8fd70ee57e55bde783a69521c912
+ms.openlocfilehash: 8a711596140340b5e6e69d04959abfef36332869
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49071142"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55813785"
 ---
 # <a name="windows-shows-critical-service-failed-on-blue-screen-when-booting-an-azure-vm"></a>Windows zobrazí "Kritické služby se nezdařilo" modré obrazovky při dalším spuštění virtuálního počítače Azure
 Tento článek popisuje chybu "Kritické služby se nezdařilo", které můžete narazit při spuštění Windows virtuální počítač (VM) v Microsoft Azure. Poskytuje řešení problémů s kroky pro řešení problémů. 
 
 > [!NOTE] 
-> Azure nabízí dva různé modely nasazení pro vytváření a práci s prostředky: [nástroj Resource Manager a klasický režim](../../azure-resource-manager/resource-manager-deployment-model.md). Tento článek popisuje pomocí modelu nasazení Resource Manageru, který vám doporučujeme používat pro nová nasazení namísto modelu nasazení classic.
+> Azure má dva různé modely nasazení pro vytváření a práci s prostředky: [Resource Manager a classic](../../azure-resource-manager/resource-manager-deployment-model.md). Tento článek popisuje pomocí modelu nasazení Resource Manageru, který vám doporučujeme používat pro nová nasazení namísto modelu nasazení classic.
 
 ## <a name="symptom"></a>Příznak 
 
 Virtuální počítač Windows nespustí. Když vrátíte se změnami na snímcích obrazovky spouštěcí [Diagnostika spouštění](./boot-diagnostics.md), uvidíte jednu z následujících chybových zpráv na modrá obrazovka:
 
-- "Počítač narazili na problém a vyžaduje restartování. Je možné restartovat. Další informace o tomto problému a je to možné opravy http://windows.com/stopcode. Při volání pracovníci technické podpory, poskytnout jim tyto informace: kód zastavení: kritické služby se nezdařilo " 
-- "Počítač narazili na problém a vyžaduje restartování. Právě Shromáždíme některé informace o chybě, a jsme budete restartujte za vás. Pokud se chcete dozvědět víc, můžete hledat online později pro tuto chybu: CRITICAL_SERVICE_FAILED "
+- "Počítač narazili na problém a vyžaduje restartování. Je možné restartovat. Další informace o tomto problému a je to možné opravy http://windows.com/stopcode. Při volání pracovníci technické podpory, můžete svým uživatelům umožnit tyto údaje: Zastavte kód: KRITICKÉ SLUŽBY SE NEZDAŘILO" 
+- "Počítač narazili na problém a vyžaduje restartování. Právě Shromáždíme některé informace o chybě, a jsme budete restartujte za vás. Pokud se chcete dozvědět víc, můžete hledat online později pro tuto chybu: CRITICAL_SERVICE_FAILED"
 
 ## <a name="cause"></a>Příčina
 
@@ -93,7 +93,7 @@ Pokud chcete povolit protokoly s výpisem paměti a konzoly sériového portu, s
 
         bcdedit /store F: boot\bcd /set {default} safeboot minimal
 
-2. [Odpojit disk s operačním systémem a znovu připojte disk s operačním systémem k virtuálnímu počítači ovlivněné](troubleshoot-recovery-disks-portal-windows.md). Virtuální počítač se spustí v nouzovém režimu. Pokud stále dochází k chybě, přejděte [volitelný krok](#optional-analysis-the-dump-logs-in-boot-debug-mode).
+2. [Odpojit disk s operačním systémem a znovu připojte disk s operačním systémem k virtuálnímu počítači ovlivněné](troubleshoot-recovery-disks-portal-windows.md). Virtuální počítač se spustí v nouzovém režimu. Pokud stále dochází k chybě, přejděte na volitelný krok.
 3. Otevřít **spustit** pole a spusťte **verifier** spustit nástroj Správce ověřování ovladačů.
 4. Vyberte **automaticky vybrat nepodepsaných ovladačů**a potom klikněte na tlačítko **Další**.
 5. Zobrazí se seznam soubory ovladačů, které jsou bez znaménka. Mějte na paměti názvy souborů.

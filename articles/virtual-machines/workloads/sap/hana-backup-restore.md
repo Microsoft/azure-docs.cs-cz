@@ -14,12 +14,12 @@ ms.workload: infrastructure
 ms.date: 09/28/2018
 ms.author: saghorpa
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 2a72fade57b070ac2ac1aea28cbec92700c3797f
-ms.sourcegitcommit: f31bfb398430ed7d66a85c7ca1f1cc9943656678
+ms.openlocfilehash: e71e4ea56bfe467e03be59d6a855272baafc4235
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47452543"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55822727"
 ---
 # <a name="backup-and-restore"></a>Zálohování a obnovení
 
@@ -34,7 +34,7 @@ Zálohování databáze, možnost obnovit do libovolného bodu v čase (napřík
 
 Pro dosažení co nejlepších výsledků se musí provádět dva typy záloh:
 
-- Zálohování databáze: úplné, přírůstkové nebo rozdílové zálohy
+- Zálohování databází: Plný, přírůstkové nebo rozdílové zálohy
 - Zálohy transakčního protokolu
 
 Kromě zálohování úplné databáze provádí na úrovni aplikace můžete provádět zálohování pomocí snímků úložiště. Snímky úložiště nenahrazují zálohy transakčního protokolu. Zálohy transakčního protokolu zůstanou důležité obnovení databáze do určitého bodu v čase nebo na prázdný protokoly z již potvrzené transakce. Snímků úložiště lze však rychlejší zotavení rychle poskytnutím vpřed snímek databáze. 
@@ -177,15 +177,15 @@ Ujistěte se, že veřejný klíč byl opraven podle očekávání tím, že zm�
 
 V tomto okamžiku obraťte se na SAP HANA v Azure Service Management a poskytnout veřejný klíč. Zástupce služby používá k registraci v základní infrastruktuře úložiště, který je pro vašeho tenanta velká Instance HANA ubírat veřejný klíč.
 
-### <a name="step-4-create-an-sap-hana-user-account"></a>Krok 4: Vytvoření uživatelského účtu SAP HANA
+### <a name="step-4-create-an-sap-hana-user-account"></a>Krok 4: Vytvořit uživatelský účet SAP HANA
 
-K zahájení vytváření snímků SAP HANA, musíte vytvořit uživatelský účet v SAP HANA, můžete použít skripty snímků úložiště. Vytvořte uživatelský účet SAP HANA v rámci SAP HANA Studio pro tento účel. Uživatel musí být vytvořená v rámci SYSTEMDB a není v databázi identifikátor SID pro MDC. V prostředí jednoho kontejneru je uživatel v rámci databáze tenantů. Tento účet musí mít následující oprávnění: **správce zálohování** a **katalogu čtení**. V tomto příkladu je uživatelské jméno **SCADMIN**. Název uživatelského účtu v HANA Studio vytvořili rozlišuje velká a malá písmena. Je nutné vybrat **ne** pro by uživatel musel změnit heslo při jeho příštím přihlášení.
+K zahájení vytváření snímků SAP HANA, musíte vytvořit uživatelský účet v SAP HANA, můžete použít skripty snímků úložiště. Vytvořte uživatelský účet SAP HANA v rámci SAP HANA Studio pro tento účel. Uživatel musí být vytvořená v rámci SYSTEMDB a není v databázi identifikátor SID pro MDC. V prostředí jednoho kontejneru je uživatel v rámci databáze tenantů. Tento účet musí mít následující oprávnění: **Správce zálohování** a **katalogu čtení**. V tomto příkladu je uživatelské jméno **SCADMIN**. Název uživatelského účtu v HANA Studio vytvořili rozlišuje velká a malá písmena. Je nutné vybrat **ne** pro by uživatel musel změnit heslo při jeho příštím přihlášení.
 
 ![Vytvoření uživatele v HANA Studio](./media/hana-overview-high-availability-disaster-recovery/image3-creating-user.png)
 
 Pokud používáte MCOD nasazení s více instancí SAP HANA na jednu jednotku, musíte tento krok opakujte pro každou instanci SAP HANA.
 
-### <a name="step-5-authorize-the-sap-hana-user-account"></a>Krok 5: Autorizaci uživatelského účtu SAP HANA
+### <a name="step-5-authorize-the-sap-hana-user-account"></a>Krok 5: Povolit uživatelský účet SAP HANA
 
 V tomto kroku povolíte SAP HANA uživatelský účet, který jste vytvořili, tak, aby skripty nemusíte odeslání hesla za běhu. Příkaz SAP HANA `hdbuserstore` umožňuje vytvořit uživatelský klíč SAP HANA, který je uložený na jeden nebo více uzlů SAP HANA. Uživatelský klíč mu umožní přístup SAP HANA bez nutnosti spravovat hesla z v rámci skriptovací procesu. Skriptovací proces je popsán dále v tomto článku.
 
@@ -246,9 +246,9 @@ Při práci se skripty jazyka Perl:
 
 Účelem jiné skripty a soubory je následujícím způsobem:
 
-- **Azure\_hana\_backup.pl**: Tento skript je naplánován pomocí nástroje pro plánování procesu Cron systému Linux ke spuštění úložiště snímků pro dat HANA a sdílených svazků, svazky logbackups/hana/nebo operačního systému.
-- **Azure\_hana\_replikace\_status.pl**: Tento skript nabízí základní podrobnosti o stavu replikace ze produkční lokality do lokality pro obnovení po havárii. Skript monitoruje zajistíte, že probíhá replikace a zobrazuje velikost položek, které se replikují. Také obsahuje pokyny, pokud replikace trvá moc dlouho, nebo pokud odkaz je mimo provoz.
-- **Azure\_hana\_snímku\_details.pl**: Tento skript obsahuje seznam základními podrobnostmi o všechny snímky, jeden svazek, které existují ve vašem prostředí. Tento skript můžete spustit na primárním serveru nebo na jednotce serveru v umístění pro obnovení po havárii. Skript obsahuje následující informace rozepsané podle jednotlivých svazek, který obsahuje snímky:
+- **azure\_hana\_backup.pl**: Tento skript je naplánován pomocí nástroje pro plánování procesu Cron systému Linux ke spuštění úložiště snímků pro dat HANA a sdílených svazků, svazky /hana/logbackups nebo operačního systému.
+- **azure\_hana\_replication\_status.pl**: Tento skript nabízí základní podrobnosti o stavu replikace ze produkční lokality do lokality pro obnovení po havárii. Skript monitoruje zajistíte, že probíhá replikace a zobrazuje velikost položek, které se replikují. Také obsahuje pokyny, pokud replikace trvá moc dlouho, nebo pokud odkaz je mimo provoz.
+- **azure\_hana\_snapshot\_details.pl**: Tento skript obsahuje seznam základními podrobnostmi o všechny snímky, jeden svazek, které existují ve vašem prostředí. Tento skript můžete spustit na primárním serveru nebo na jednotce serveru v umístění pro obnovení po havárii. Skript obsahuje následující informace rozepsané podle jednotlivých svazek, který obsahuje snímky:
    * Velikost celkový počet snímků na svazku
    * Následující podrobnosti v jednotlivých snímků v tomto svazku: 
       - Název snímku 
@@ -256,11 +256,11 @@ Při práci se skripty jazyka Perl:
       - Velikost snímku
       - Frekvence snímku
       - ID HANA zálohování přidružené k tomuto snímku, pokud je to potřeba
-- **Azure\_hana\_snímku\_delete.pl**: Tento skript odstraní snímek úložiště nebo sadu snímky. Můžete použít buď ID zálohování SAP HANA jak se nachází v HANA Studio, nebo název snímku úložiště. ID zálohy je v současné době pouze vázán na snímky vytvořené pro HANA data/log/sdílené svazky. Jinak Pokud je zadaný Identifikátor snímku, usiluje všechny snímky, které odpovídají zadané snímku ID.  
+- **azure\_hana\_snapshot\_delete.pl**: Tento skript odstraní snímek úložiště nebo sadu snímky. Můžete použít buď ID zálohování SAP HANA jak se nachází v HANA Studio, nebo název snímku úložiště. ID zálohy je v současné době pouze vázán na snímky vytvořené pro HANA data/log/sdílené svazky. Jinak Pokud je zadaný Identifikátor snímku, usiluje všechny snímky, které odpovídají zadané snímku ID.  
 - **testHANAConnection.pl**: Tento skript Otestuje připojení k instanci SAP HANA a je nutný k nastavení úložiště snímků.
 - **testStorageSnapshotConnection.pl**: Tento skript má dva účely. Za prvé zajišťuje, že velká Instance HANA jednotky, které spouští skripty má přístup k přiřazené úložiště virtuálního počítače a na rozhraní úložiště snímku velkých instancích HANA. Druhým účelem je vytvořit dočasný snímků pro instance HANA, kterou testujete. Tento skript by měl spustit pro každou instanci HANA na serveru k zajištění, že skripty zálohování fungovat podle očekávání.
 - **removeTestStorageSnapshot.pl**: Tento skript odstraní snímek testu vytvořený pomocí skriptu **testStorageSnapshotConnection.pl**.
-- **Azure\_hana\_zotavení po havárii\_failover.pl**: Tento skript spustí zotavení po Havárii převzetí služeb při selhání do jiné oblasti. Je nutné provést na jednotce velká Instance HANA v oblasti zotavení po Havárii, nebo na jednotku, kterou chcete pro převzetí služeb při selhání. Tento skript zastaví se replikace úložiště z primární strany na stranu sekundární, obnoví nejnovější snímek na svazcích zotavení po Havárii a poskytuje přípojné body pro DR svazky.
+- **azure\_hana\_dr\_failover.pl**: Tento skript spustí zotavení po Havárii převzetí služeb při selhání do jiné oblasti. Je nutné provést na jednotce velká Instance HANA v oblasti zotavení po Havárii, nebo na jednotku, kterou chcete pro převzetí služeb při selhání. Tento skript zastaví se replikace úložiště z primární strany na stranu sekundární, obnoví nejnovější snímek na svazcích zotavení po Havárii a poskytuje přípojné body pro DR svazky.
 - **Azure\_hana\_testování\_zotavení po havárii\_failover.pl**: Tento skript provádí testovací převzetí služeb při selhání v lokalitě zotavení po Havárii. Na rozdíl od azure_hana_dr_failover.pl skriptu toto spuštění nepřeruší úložiště replikace z primární na sekundární. Místo toho klony svazky replikované úložiště jsou vytvořené na straně zotavení po Havárii a přípojné body naklonované svazků jsou k dispozici. 
 - **HANABackupCustomerDetails.txt**: Tento soubor je upravitelná konfigurační soubor, který budete muset upravit pro přizpůsobení konfigurace SAP HANA. *HANABackupCustomerDetails.txt* soubor je ovládací prvek a konfigurační soubor pro skript, který spouští snímků úložiště. Upravte soubor pro účely a instalační program. Zobrazí **název úložiště zálohování** a **úložiště IP adresu** ze SAP HANA v Azure Service Management při nasazení vaší instance. Nelze změnit pořadí, řazení nebo mezery u všech proměnných v tomto souboru. Pokud tak učiníte, skriptů nebudou pracovat správně. Kromě toho se zobrazí IP adresa uzlu vertikálně navýšit kapacitu nebo hlavní uzel (Pokud horizontální navýšení kapacity) ze SAP HANA v Azure Service Management. Znáte i číslo instance HANA, abyste získali během instalace SAP HANA. Teď budete muset přidat název zálohy do konfiguračního souboru.
 
@@ -381,14 +381,14 @@ Snapshot created successfully.
 Pokud test snímek byl úspěšně proveden pomocí skriptu, budete pokračovat v konfiguraci skutečného úložiště snímků. Pokud není úspěšné, prozkoumejte problémy před v budoucnu. Snímek testu by mělo zůstat kolem až do dokončení prvních skutečné snímků.
 
 
-### <a name="step-7-perform-snapshots"></a>Krok 7: Proveďte snímky
+### <a name="step-7-perform-snapshots"></a>Krok 7: Provedení snímky
 
 Po dokončení postupu přípravy, můžete začít konfigurovat konfiguraci skutečného úložiště snímků. Skript, který chcete naplánovat funguje vertikálně navýšit kapacitu a horizontální navýšení kapacity konfigurací SAP HANA. Pro pravidelné a pravidelné spouštění skriptu zálohování plánování skriptu pomocí nástroje cron. 
 
 Můžete vytvořit tři typy zálohy snímků:
-- **HANA**: zálohy kombinované snímku, ve kterém svazků, které obsahují/hana/dat a/hana/sdílené (který obsahuje také /usr/sap) se vztahují koordinované snímku. Obnovení jednoho souboru je možné z tohoto snímku.
-- **Protokoly**: zálohy snímku svazku logbackups/hana /. Žádný snímek HANA se aktivuje, chcete-li spustit tento snímek úložiště. Tento svazek úložiště je určená tak, aby obsahovala zálohy protokolu transakce SAP HANA. Toto omezení protokolu růst a zabránit ztrátě dat probíhají častěji. Obnovení jednoho souboru je možné z tohoto snímku. Není nižší četnost méně než 3 minut.
-- **Spouštěcí**: snímku svazku, který obsahuje velké instance HANA spouštěcí číslo logické jednotky (LUN). Tato záloha snímku je možné jenom s typu I skladové položky z velkých instancích HANA. Obnovení nelze provést jediný soubor ze snímku svazku, který obsahuje spouštěcí logickou jednotku.
+- **HANA**: Zálohy kombinované snímku, ve kterém svazků, které obsahují/hana/dat a/hana/sdílené (který obsahuje také /usr/sap) se vztahují koordinované snímku. Obnovení jednoho souboru je možné z tohoto snímku.
+- **Protokoly**: Zálohy snímku svazku logbackups/hana /. Žádný snímek HANA se aktivuje, chcete-li spustit tento snímek úložiště. Tento svazek úložiště je určená tak, aby obsahovala zálohy protokolu transakce SAP HANA. Toto omezení protokolu růst a zabránit ztrátě dat probíhají častěji. Obnovení jednoho souboru je možné z tohoto snímku. Není nižší četnost méně než 3 minut.
+- **Spouštěcí**: Snímek svazku, který obsahuje velké instance HANA spouštěcí číslo logické jednotky (LUN). Tato záloha snímku je možné jenom s typu I skladové položky z velkých instancích HANA. Obnovení nelze provést jediný soubor ze snímku svazku, který obsahuje spouštěcí logickou jednotku.
 
 
 >[!NOTE]
@@ -532,7 +532,7 @@ Command completed successfully.
 Na konkrétní úložiště svazku můžete sledovat počet snímků a využití úložiště těchto snímků. `ls` Příkaz nezobrazí snímek adresáře nebo souborů. Nicméně příkaz operačních systémů Linux `du` zobrazuje podrobnosti o těchto snímků úložiště, protože se ukládají na stejném svazku. Tento příkaz lze použít s těmito možnostmi:
 
 - `du –sh .snapshot`: Tato možnost poskytuje celkový počet všechny snímky v adresáři snímku.
-- `du –sh --max-depth=1`: Uvádí všechny snímky, které jsou uloženy v tuto možnost **.snapshot** složky a velikost jednotlivých snímků.
+- `du –sh --max-depth=1`: Tato možnost uvádí všechny snímky, které jsou uloženy v **.snapshot** složky a velikost jednotlivých snímků.
 - `du –hc`: Tato možnost poskytuje celkovou velikost používané všechny snímky.
 
 Používejte tyto příkazy, abyste měli jistotu, že snímky, které jsou přijatá a uložená nejsou využívání všech úložiště na svazcích.
@@ -687,7 +687,7 @@ Následující proces obnoví HANA snímek, který je součástí úložiště s
 >[!IMPORTANT]
 >Než budete pokračovat, ujistěte se, že máte kompletní a souvislý řetězec zálohy protokolu transakce. Bez tyto zálohy nejde obnovit aktuální stav databáze.
 
-1. Proveďte kroky 1 až 6 v [obnovit na nejnovější snímek HANA](#recovering-to-the-most-recent-hana-snapshot).
+1. Proveďte kroky 1 až 6 v obnovení na nejnovější snímek HANA.
 
 1. Vyberte **obnovit databázi do stavu posledního**.
 
@@ -713,7 +713,7 @@ Následující proces obnoví HANA snímek, který je součástí úložiště s
 Chcete-li provést obnovení do bodu v čase mezi HANA snímku (zahrnutý ve snímku úložiště) a ten, který je pozdější než obnovení bodu v čase HANA snímků, postupujte následovně:
 
 1. Ujistěte se, že máte všechny zálohy transakčního protokolu ze snímku HANA po dobu, kterou chcete obnovit.
-1. Začněte postup v části [obnovit na nejnovější stav](#recovering-to-the-most-recent-state).
+1. Začněte postup v části obnovení na nejnovější stav.
 1. V kroku 2 postupu v **zadejte typ obnovení** okně **obnovit databázi do následující bod v čase**a pak určete bod v čase. 
 1. Proveďte kroky 3 až 6.
 

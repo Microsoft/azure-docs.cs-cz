@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 11/28/2018
 ms.author: jingwang
-ms.openlocfilehash: b0cb72b8a9c1710b2b22d987c2818a490a2ea553
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.openlocfilehash: 068929bbde8e4c1411004b45fc77f0188de43ff8
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55753355"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55814196"
 ---
 # <a name="azure-data-factory-service-identity"></a>Identita služby Azure Data Factory
 
@@ -44,7 +44,7 @@ Pokud nenajdete své datové továrny nemá identitu služby přidružené násl
 
 - [Vygenerovat identitu služby pomocí Powershellu](#generate-service-identity-using-powershell)
 - [Vygenerovat identitu služby pomocí rozhraní REST API](#generate-service-identity-using-rest-api)
-- [Vygenerovat identitu služby pomocí šablony Azure Resource Manageru](#generate-service-identity-using-azure-resource-manager-template)
+- Vygenerovat identitu služby pomocí šablony Azure Resource Manageru
 - [Vygenerovat identitu služby pomocí sady SDK](#generate-service-identity-using-sdk)
 
 >[!NOTE]

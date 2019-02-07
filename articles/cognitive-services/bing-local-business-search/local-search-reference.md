@@ -10,12 +10,12 @@ ms.subservice: bing-local-business
 ms.topic: article
 ms.date: 11/01/2018
 ms.author: rosh, v-gedod
-ms.openlocfilehash: 22d83eb617c544a374f1f6b502803d4ead214492
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 1a55a4e3f25bc5afef30e325ccdd38615ba7cc2b
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55182230"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55820738"
 ---
 # <a name="bing-local-business-search-api-v7-reference"></a>Odkaz na místní firmy hledání rozhraní API Bingu v7
 
@@ -53,7 +53,7 @@ Níže jsou hlavičky, které mohou zahrnovat požadavek a odpověď.
 |Hlavička|Popis|  
 |------------|-----------------|  
 |Přijmout|Nepovinná hlavička požadavku.<br /><br /> Výchozí typ média je application/json. Určující, že odpověď [JSON-LD](http://json-ld.org/), nastavit hlavičku Accept application/ld + json.|  
-|<a name="acceptlanguage" />Accept-Language|Nepovinná hlavička požadavku.<br /><br /> Čárkami oddělený seznam jazyků pro řetězce uživatelského rozhraní. Seznam je v sestupném pořadí podle priority. Další informace včetně očekávaného formátu najdete v [RFC2616](http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html).<br /><br /> Tato hlavička a parametr dotazu [setLang](#setlang) se vzájemně vylučují &mdash; nezadávejte obojí.<br /><br /> Pokud tuto hlavičku nastavíte, musíte zadat také parametr dotazu [cc](#cc). K určení trhu, pro který se mají vracet výsledky, Bing použije první podporovaný jazyk, který najde v seznamu, a zkombinuje ho s hodnotou parametru `cc`. Pokud seznam jazyků podporovaný jazyk neobsahuje, Bing najde nejbližší jazyk a trh, který požadavek podporuje, nebo pro výsledky použije agregovaný nebo výchozí trh. Pokud chcete zjistit, který trh Bing použil, podívejte se do hlavičky BingAPIs-Market.<br /><br /> Tuto hlavičku a parametr dotazu `cc` použijte jenom v případě, že zadáte více jazyků. Jinak použijte parametry dotazu [mkt](#mkt) a [setLang](#setlang).<br /><br /> Řetězec uživatelského rozhraní je řetězec, který se používá jako popisek v uživatelském rozhraní. V objektech odpovědí JSON je několik řetězců uživatelského rozhraní. Zadaný jazyk použijí všechny odkazy na vlastnosti Bing.com v objektech odpovědi.|  
+|<a name="acceptlanguage" />Accept-Language|Nepovinná hlavička požadavku.<br /><br /> Čárkami oddělený seznam jazyků pro řetězce uživatelského rozhraní. Seznam je v sestupném pořadí podle priority. Další informace včetně očekávaného formátu najdete v [RFC2616](http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html).<br /><br /> Tato hlavička a parametr dotazu [setLang](#setlang) se vzájemně vylučují &mdash; nezadávejte obojí.<br /><br /> Pokud nastavíte tuto hlavičku, musíte zadat také parametr dotazu kopie. K určení trhu, pro který se mají vracet výsledky, Bing použije první podporovaný jazyk, který najde v seznamu, a zkombinuje ho s hodnotou parametru `cc`. Pokud seznam jazyků podporovaný jazyk neobsahuje, Bing najde nejbližší jazyk a trh, který požadavek podporuje, nebo pro výsledky použije agregovaný nebo výchozí trh. Pokud chcete zjistit, který trh Bing použil, podívejte se do hlavičky BingAPIs-Market.<br /><br /> Tuto hlavičku a parametr dotazu `cc` použijte jenom v případě, že zadáte více jazyků. Jinak použijte parametry dotazu [mkt](#mkt) a [setLang](#setlang).<br /><br /> Řetězec uživatelského rozhraní je řetězec, který se používá jako popisek v uživatelském rozhraní. V objektech odpovědí JSON je několik řetězců uživatelského rozhraní. Zadaný jazyk použijí všechny odkazy na vlastnosti Bing.com v objektech odpovědi.|  
 |<a name="market" />BingAPIs-Market|Hlavička odpovědi.<br /><br /> Trh používaný požadavkem. Forma je \<kódJazyka\>-\<kódZemě\>. Například cs-CZ.|  
 |<a name="traceid" />BingAPIs-TraceId|Hlavička odpovědi.<br /><br /> ID položky protokolu obsahující podrobnosti požadavku. Pokud dojde k chybě, toto ID zachyťte. Pokud problém nedokážete určit a vyřešit, uveďte toto ID spolu s dalšími informacemi, které poskytnete týmu podpory.|  
 |<a name="subscriptionkey" />Ocp-Apim-Subscription-Key|Povinná hlavička požadavku.<br /><br /> Klíč předplatného, který jste dostali při registraci k této službě v [Cognitive Services](https://www.microsoft.com/cognitive-services/).|  
@@ -71,16 +71,16 @@ Níže jsou hlavičky, které mohou zahrnovat požadavek a odpověď.
 Žádost mohou zahrnovat tyto parametry dotazu. Zobrazte požadovaný sloupec pro požadované parametry. Adresa URL musíte zakódovat parametry dotazu.  
   
   
-|Name|Value|Type|Požaduje se|  
+|Název|Hodnota|Type|Požaduje se|  
 |----------|-----------|----------|--------------|
-|<a name="count" />Počet|Počet výsledků k vrácení, počínaje indexem určené `offset` parametru.|Řetězec|Ne|   
-|<a name="localCategories" />localCategories|Seznam možností, které definují vyhledávání podle kategorie business.  Zobrazit [prohledávat místní firmy kategorie](local-categories.md)|Řetězec|Ne|  
-|<a name="mkt" />mkt|Trh, odkud pochází výsledky. <br /><br />Seznam možných hodnot na trhu, najdete v tématu [trhu kódy](#market-codes).<br /><br /> **POZNÁMKA:** Rozhraní API pro vyhledávání místní firmy aktuálně podporuje pouze en-nám vstup na trh a jazyk.<br /><br />|Řetězec|Ano|
+|<a name="count" />Počet|Počet výsledků k vrácení, počínaje indexem určené `offset` parametru.|String|Ne|   
+|<a name="localCategories" />localCategories|Seznam možností, které definují vyhledávání podle kategorie business.  Zobrazit [prohledávat místní firmy kategorie](local-categories.md)|String|Ne|  
+|<a name="mkt" />mkt|Trh, odkud pochází výsledky. <br /><br />Seznam možných hodnot na trhu najdete v článku kódy na trhu.<br /><br /> **POZNÁMKA:** Rozhraní API pro vyhledávání místní firmy aktuálně podporuje pouze en-nám vstup na trh a jazyk.<br /><br />|String|Ano|
 |<a name="offset"/>Posun|Index spustit výsledky určené `count` parametru.|Integer|Ne|  
-|<a name="query" />q|Hledaný termín daného uživatele.|Řetězec|Ne|  
-|<a name="responseformat" />responseFormat|Typ média určený pro odpověď. Níže jsou uvedeny možné hodnoty velká a malá písmena.<br /><ul><li>JSON</li><li>JSONLD</li></ul><br /> Výchozí hodnota je JSON. Informace o JSON objektů, že odpověď obsahuje, naleznete v tématu [objekty odpovědi](#response-objects).<br /><br />  Pokud chcete zadat JsonLd, tělo odpovědi obsahuje objekty JSON-LD, obsahující výsledky hledání. Informace o JSON-LD, naleznete v tématu [JSON-LD](http://json-ld.org/).|Řetězec|Ne|  
-|<a name="safesearch" />safeSearch|Filtr, který slouží k filtrování obsahu pro dospělé. Následují možné hodnoty filtru s rozlišováním velkých a malých písmen.<br /><ul><li>Vypnout&mdash;vrátit webových stránek s dospělé textu, obrázků nebo videa.<br /><br/></li><li>Střední&mdash;vrátit webových stránek s dospělé text, ale nezletilý imagí nebo videa.<br /><br/></li><li>Striktní&mdash;nevrátí webových stránek s dospělé textu, obrázků nebo videa.</li></ul><br /> Výchozí hodnota je Moderate.<br /><br /> **POZNÁMKA:** Pokud požadavek pochází z na trhu této Bing pro dospělé zásad vyžaduje, aby `safeSearch` je nastavena na Strict, ignoruje Bing `safeSearch` hodnotu a používá Strict.<br/><br/>**POZNÁMKA:** Pokud používáte `site:` – operátor dotazu, je pravděpodobné, že odpovědi může obsahovat obsah pro dospělé bez ohledu na to, co `safeSearch` parametr dotazu je nastaven na. `site:` použijte jenom v případě, že znáte obsah příslušného webu a váš scénář podporuje možnost zobrazení obsahu pro dospělé. |Řetězec|Ne|  
-|<a name="setlang" />setLang|Jazyk, který se má použít pro řetězce uživatelského rozhraní. Jazyk zadejte pomocí dvoupísmenného kódu jazyka ISO 639-1. Například kód jazyka pro češtinu je CS. Výchozí hodnota je EN (angličtina).<br /><br /> I když je jazyk volitelný, měli byste ho vždy zadat. Obvykle se `setLang` nastavuje na stejný jazyk, jaký určuje parametr `mkt`, pokud uživatel nechce řetězce uživatelského rozhraní zobrazené v jiném jazyce.<br /><br /> Tento parametr a hlavička [Accept-Language](#acceptlanguage) se vzájemně vylučují &mdash; nezadávejte obojí.<br /><br /> Řetězec uživatelského rozhraní je řetězec, který se používá jako popisek v uživatelském rozhraní. V objektech odpovědí JSON je několik řetězců uživatelského rozhraní. Zadaný jazyk použijí také všechny odkazy na vlastnosti Bing.com v objektech odpovědi.|Řetězec|Ne| 
+|<a name="query" />q|Hledaný termín daného uživatele.|String|Ne|  
+|<a name="responseformat" />responseFormat|Typ média určený pro odpověď. Níže jsou uvedeny možné hodnoty velká a malá písmena.<br /><ul><li>JSON</li><li>JSONLD</li></ul><br /> Výchozí hodnota je JSON. Informace o JSON objektů, že odpověď obsahuje, naleznete v tématu [objekty odpovědi](#response-objects).<br /><br />  Pokud chcete zadat JsonLd, tělo odpovědi obsahuje objekty JSON-LD, obsahující výsledky hledání. Informace o JSON-LD, naleznete v tématu [JSON-LD](http://json-ld.org/).|String|Ne|  
+|<a name="safesearch" />safeSearch|Filtr, který slouží k filtrování obsahu pro dospělé. Následují možné hodnoty filtru s rozlišováním velkých a malých písmen.<br /><ul><li>Vypnout&mdash;vrátit webových stránek s dospělé textu, obrázků nebo videa.<br /><br/></li><li>Střední&mdash;vrátit webových stránek s dospělé text, ale nezletilý imagí nebo videa.<br /><br/></li><li>Striktní&mdash;nevrátí webových stránek s dospělé textu, obrázků nebo videa.</li></ul><br /> Výchozí hodnota je Moderate.<br /><br /> **POZNÁMKA:** Pokud požadavek pochází z na trhu této Bing pro dospělé zásad vyžaduje, aby `safeSearch` je nastavena na Strict, ignoruje Bing `safeSearch` hodnotu a používá Strict.<br/><br/>**POZNÁMKA:** Pokud používáte `site:` – operátor dotazu, je pravděpodobné, že odpovědi může obsahovat obsah pro dospělé bez ohledu na to, co `safeSearch` parametr dotazu je nastaven na. `site:` použijte jenom v případě, že znáte obsah příslušného webu a váš scénář podporuje možnost zobrazení obsahu pro dospělé. |String|Ne|  
+|<a name="setlang" />setLang|Jazyk, který se má použít pro řetězce uživatelského rozhraní. Jazyk zadejte pomocí dvoupísmenného kódu jazyka ISO 639-1. Například kód jazyka pro češtinu je CS. Výchozí hodnota je EN (angličtina).<br /><br /> I když je jazyk volitelný, měli byste ho vždy zadat. Obvykle se `setLang` nastavuje na stejný jazyk, jaký určuje parametr `mkt`, pokud uživatel nechce řetězce uživatelského rozhraní zobrazené v jiném jazyce.<br /><br /> Tento parametr a hlavička [Accept-Language](#acceptlanguage) se vzájemně vylučují &mdash; nezadávejte obojí.<br /><br /> Řetězec uživatelského rozhraní je řetězec, který se používá jako popisek v uživatelském rozhraní. V objektech odpovědí JSON je několik řetězců uživatelského rozhraní. Zadaný jazyk použijí také všechny odkazy na vlastnosti Bing.com v objektech odpovědi.|String|Ne| 
 
 
 ## <a name="response-objects"></a>Objekty odpovědi  
@@ -97,20 +97,20 @@ Definuje chyby, ke které došlo k chybě.
   
 |Element|Popis|Type|  
 |-------------|-----------------|----------|  
-|<a name="error-code" />kód|Kód chyby, který určuje kategorii chyby. Seznam možných kódů najdete v tématu [kódy chyb](#error-codes).|Řetězec|  
-|<a name="error-message" />Zpráva|Popis chyby.|Řetězec|  
-|<a name="error-moredetails" />moreDetails|Popis, který poskytuje další informace o této chybě.|Řetězec|  
-|<a name="error-parameter" />Parametr|Parametr dotazu v žádosti, která způsobila chybu.|Řetězec|  
-|<a name="error-subcode" />subCode|Kód chyby: identifikující chybu. Například pokud `code` je InvalidRequest, `subCode` může být ParameterInvalid nebo ParameterInvalidValue. |Řetězec|  
-|<a name="error-value" />Hodnota|Hodnota parametru dotazu, která nebyla platná.|Řetězec|  
+|<a name="error-code" />kód|Kód chyby, který určuje kategorii chyby. Seznam možných kódů najdete v tématu [kódy chyb](#error-codes).|String|  
+|<a name="error-message" />Zpráva|Popis chyby.|String|  
+|<a name="error-moredetails" />moreDetails|Popis, který poskytuje další informace o této chybě.|String|  
+|<a name="error-parameter" />Parametr|Parametr dotazu v žádosti, která způsobila chybu.|String|  
+|<a name="error-subcode" />subCode|Kód chyby: identifikující chybu. Například pokud `code` je InvalidRequest, `subCode` může být ParameterInvalid nebo ParameterInvalidValue. |String|  
+|<a name="error-value" />Hodnota|Hodnota parametru dotazu, která nebyla platná.|String|  
   
 
 ### <a name="errorresponse"></a>ErrorResponse  
 Objekt nejvyšší úrovně, který obsahuje odpověď, pokud požadavek selže.  
   
-|Name|Value|Type|  
+|Název|Hodnota|Type|  
 |----------|-----------|----------|  
-|_type|Pomocný parametr typu.|Řetězec|  
+|_type|Pomocný parametr typu.|String|  
 |<a name="errors" />Chyby|Seznam chyb, které popisují důvody, proč žádost selhala.|[Chyba](#error)]|  
 
   
@@ -118,20 +118,20 @@ Objekt nejvyšší úrovně, který obsahuje odpověď, pokud požadavek selže.
 ### <a name="license"></a>Licence  
 Definuje licence, pod kterým mohou být použity text nebo fotografie.  
   
-|Name|Value|Type|  
+|Název|Hodnota|Type|  
 |----------|-----------|----------|  
-|jméno|Název licence.|Řetězec|  
-|url|Adresa URL webu, kde uživatel získat další informace o licenci.<br /><br /> Vytvoření hypertextového odkazu, použijte název a adresu URL.|Řetězec|  
+|jméno|Název licence.|String|  
+|url|Adresa URL webu, kde uživatel získat další informace o licenci.<br /><br /> Vytvoření hypertextového odkazu, použijte název a adresu URL.|String|  
 
 
 ### <a name="link"></a>Odkaz  
 Definuje komponenty hypertextový odkaz.  
   
-|Name|Value|Type|  
+|Název|Hodnota|Type|  
 |----------|-----------|----------|  
-|_type|Pomocný parametr typu.|Řetězec|  
-|text|Zobrazení textu.|Řetězec|  
-|url|ADRESA URL. Použijte adresu URL a zobrazit text Vytvoření hypertextového odkazu.|Řetězec|  
+|_type|Pomocný parametr typu.|String|  
+|text|Zobrazení textu.|String|  
+|url|ADRESA URL. Použijte adresu URL a zobrazit text Vytvoření hypertextového odkazu.|String|  
   
 
 
@@ -141,25 +141,25 @@ Definuje vydavatele.
   
 Všimněte si, že vydavatel může zadat jeho název nebo jejich webu nebo obojí.  
   
-|Name|Value|Type|  
+|Název|Hodnota|Type|  
 |----------|-----------|----------|  
-|jméno|Název vydavatele.|Řetězec|  
-|url|Adresa URL webu vydavatele.<br /><br /> Všimněte si, že vydavatel nemusí poskytnout webu.|Řetězec|  
+|jméno|Název vydavatele.|String|  
+|url|Adresa URL webu vydavatele.<br /><br /> Všimněte si, že vydavatel nemusí poskytnout webu.|String|  
   
   
 
 ### <a name="place"></a>Místo  
 Definuje informace o místní firmy, jako je například restaurace nebo hotelu.  
   
-|Name|Value|Type|  
+|Název|Hodnota|Type|  
 |----------|-----------|----------|  
-|_type|Zadejte pokyn, který může být nastaven na jednu z následujících akcí:<br /><br /><ul><li>Hotel</li><li>LocalBusiness<br /></li><li>Restaurace</ul><li>|Řetězec|  
-|Adresa|Poštovní adresa ve kterém se entita nachází.|[PostalAddress](#postaladdress)|  
-|entityPresentationInfo|Další informace o entitě, jako je například pomocné parametry, které můžete použít k určení typu entity. Například zda je restaurace nebo hotelu. `entityScenario` Je nastaveno na ListItem.|[EntityPresentationInfo](#entitypresentationinfo)|  
-|jméno|Název entity.|Řetězec|  
-|Telefon|Entity telefonní číslo.|Řetězec|  
-|url|Adresa URL webu entity.<br /><br /> Pomocí této adresy URL spolu s názvem subjektu k vytvoření hypertextového odkazu, který po kliknutí uživatele na web entity.|Řetězec|  
-|webSearchUrl|Adresa URL na výsledky hledání na Bingu pro toto umístění.|Řetězec| 
+|_type|Zadejte pokyn, který může být nastaven na jednu z následujících akcí:<br /><br /><ul><li>Hotel</li><li>LocalBusiness<br /></li><li>Restaurace</ul><li>|String|  
+|Adresa|Poštovní adresa ve kterém se entita nachází.|PostalAddress služby Active Directory|  
+|entityPresentationInfo|Další informace o entitě, jako je například pomocné parametry, které můžete použít k určení typu entity. Například zda je restaurace nebo hotelu. `entityScenario` Je nastaveno na ListItem.|EntityPresentationInfo|  
+|jméno|Název entity.|String|  
+|Telefon|Entity telefonní číslo.|String|  
+|url|Adresa URL webu entity.<br /><br /> Pomocí této adresy URL spolu s názvem subjektu k vytvoření hypertextového odkazu, který po kliknutí uživatele na web entity.|String|  
+|webSearchUrl|Adresa URL na výsledky hledání na Bingu pro toto umístění.|String| 
   
   
 ### <a name="querycontext"></a>QueryContext  
@@ -168,35 +168,35 @@ Definuje kontext dotazu, který používá Bing pro daný požadavek.
 |Element|Popis|Type|  
 |-------------|-----------------|----------|  
 |adultIntent|Logická hodnota, která určuje, zda má zadaný dotaz dospělé. Hodnota je **true** Pokud dotaz obsahuje dospělé; v opačném případě **false**.|Logická hodnota|  
-|alterationOverrideQuery|Řetězec dotazu, který se má použít k vynucení Bingu použít původní řetězec. Například, pokud je řetězec dotazu *saling po směru větru*, bude přepsání řetězce dotazu *+ saling po směru větru*. Nezapomeňte zakódujte řetězec dotazu, což vede k *% 2Bsaling + po směru větru*.<br /><br /> Toto pole je zahrnuta pouze v případě, že původní řetězec dotazu obsahuje pravopisné chyby.|Řetězec|  
-|alteredQuery|Řetězec dotazu použitý bingem k provedení dotazu. Bing používá řetězec upravený dotaz, pokud původní řetězce dotazu obsažené pravopisné chyby hned. Například, pokud je řetězec dotazu `saling downwind`, řetězec upravený dotaz bude `sailing downwind`.<br /><br /> Toto pole je zahrnuta pouze v případě, že původní řetězec dotazu obsahuje pravopisné chyby.|Řetězec|  
+|alterationOverrideQuery|Řetězec dotazu, který se má použít k vynucení Bingu použít původní řetězec. Například, pokud je řetězec dotazu *saling po směru větru*, bude přepsání řetězce dotazu *+ saling po směru větru*. Nezapomeňte zakódujte řetězec dotazu, což vede k *% 2Bsaling + po směru větru*.<br /><br /> Toto pole je zahrnuta pouze v případě, že původní řetězec dotazu obsahuje pravopisné chyby.|String|  
+|alteredQuery|Řetězec dotazu použitý bingem k provedení dotazu. Bing používá řetězec upravený dotaz, pokud původní řetězce dotazu obsažené pravopisné chyby hned. Například, pokud je řetězec dotazu `saling downwind`, řetězec upravený dotaz bude `sailing downwind`.<br /><br /> Toto pole je zahrnuta pouze v případě, že původní řetězec dotazu obsahuje pravopisné chyby.|String|  
 |askUserForLocation|Logická hodnota, která určuje, zda vyžaduje Bing podle umístění uživatele poskytnou přesné výsledky. Pokud jste zadali umístění uživatele pomocí [X-MSEdge ClientIP](#clientip) a [X-Search-umístění](#location) záhlaví, můžete ignorovat toto pole.<br /><br /> Umístění vědět dotazů, jako je například "dnešní počasí" nebo "restaurace v okolí", které je třeba podle umístění uživatele poskytnou přesné výsledky, toto pole je nastaven na **true**.<br /><br /> Umístění vědět dotazů, které obsahují umístění (například "Seattle počasí"), toto pole je nastaven na **false**. Toto pole je také nastavena na **false** pro dotazy, které nejsou místem, jako je například "nejpopulárnější".|Logická hodnota|  
-|originalQuery|Řetězec dotazu jako zadaný v požadavku.|Řetězec|  
+|originalQuery|Řetězec dotazu jako zadaný v požadavku.|String|  
 
 ### <a name="identifiable"></a>Údaje
-|Name|Value|Type|  
+|Název|Hodnota|Type|  
 |-------------|-----------------|----------|
-|id|Identifikátor prostředku|Řetězec|
+|id|Identifikátor prostředku|String|
  
 ### <a name="rankinggroup"></a>RankingGroup
 Definuje skupinu výsledky, jako například mainline.
-|Name|Value|Type|  
+|Název|Hodnota|Type|  
 |-------------|-----------------|----------|
 |položek|Seznam výsledků hledání pro zobrazení ve skupině.|RankingItem|
 
 ### <a name="rankingitem"></a>RankingItem
 Definuje položku výsledek vyhledávání k zobrazení.
-|Name|Value|Type|  
+|Název|Hodnota|Type|  
 |-------------|-----------------|----------|
 |resultIndex|Z nuly vycházející index položky v odpovědi na dotaz k zobrazení. Pokud položka neobsahuje toto pole, zobrazí všechny položky v odpovědi na dotaz. Například zobrazte všechny články o novinkách v zpráv odpovědí.|Integer|
-|answerType|Odpověď obsahující položku k zobrazení. Například příspěvky.<br /><br />Použijte typ odpovědi SearchResponse objektu. Typ je název SearchResponse pole.<br /><br /> Pouze v případě, že tento objekt obsahuje pole hodnoty; však použijte typ odpovědi v opačném případě ji ignorujte.|Řetězec|
+|answerType|Odpověď obsahující položku k zobrazení. Například příspěvky.<br /><br />Použijte typ odpovědi SearchResponse objektu. Typ je název SearchResponse pole.<br /><br /> Pouze v případě, že tento objekt obsahuje pole hodnoty; však použijte typ odpovědi v opačném případě ji ignorujte.|String|
 |textualIndex|Index odpovědí v textualAnswers k zobrazení.| Celé číslo bez znaménka|
 |hodnota|Identifikátor, který identifikuje odpověď zobrazíte nebo položku odpověď zobrazíte. Pokud ID identifikuje odpověď, zobrazení všech položek odpovědi.|Údaje|
 
 ### <a name="rankingresponse"></a>RankingResponse  
 Definuje, kde na hledání by měl být umístěn obsah stránky výsledků a v jakém pořadí.  
   
-|Name|Value|  
+|Název|Hodnota|  
 |----------|-----------|  
 |<a name="ranking-mainline" />mainline|Výsledky hledání pro zobrazení v hlavní linii.|  
 |<a name="ranking-pole" />pole|Výsledky hledání, které by měl být poskytnuta nejviditelnější zpracování (například zobrazený nad hlavní linie a boční panel).|  
@@ -207,9 +207,9 @@ Definuje objekt nejvyšší úrovně, který obsahuje odpověď po úspěšném 
   
 Všimněte si, že pokud služba má podezření útoku DOS, požadavek bude úspěšné (stavový kód protokolu HTTP je 200 OK); text odpovědi však bude prázdný.  
   
-|Name|Value|Type|  
+|Název|Hodnota|Type|  
 |----------|-----------|----------|  
-|_type|Pomocný parametr typu, který je nastaven na SearchResponse.|Řetězec|  
+|_type|Pomocný parametr typu, který je nastaven na SearchResponse.|String|  
 |Místa|Seznam entit, které odpovídají vyhledávacímu dotazu.|JSON – objekt|  
 |queryContext|Objekt, který obsahuje řetězec dotazu, který používá Bing pro daný požadavek.<br /><br /> Tento objekt obsahuje řetězec dotazu jako zadané uživatelem. Může také obsahovat řetězec upravený dotaz, který Bingu použitá pro dotaz, pokud řetězec dotazu obsahuje pravopisné chyby.|[QueryContext](#querycontext)|  
 

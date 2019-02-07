@@ -5,27 +5,31 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 02/01/2019
+ms.date: 02/05/2019
 ms.topic: conceptual
 ms.service: cost-management
 manager: vitavor
 ms.custom: secdec18
-ms.openlocfilehash: a64a1e35811b8bcdf721425580fe66641cb8ebe2
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
+ms.openlocfilehash: 267919900fe68271365a73c3cbea7b1f0befc8a7
+ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55660999"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55766809"
 ---
 # <a name="assign-access-to-cost-management-data"></a>Přiřazení přístupu k datům služby Cost Management
 
-Kombinace oprávnění udělená na webu Azure portal a na portálu Enterprise (EA) pro většinu uživatelů, definovat uživatele úroveň přístupu k datům Azure Cost Management. Tento článek vás provede přiřazuje se přístup k datům služby Cost Management. Po přiřazení kombinace oprávnění na základě zobrazení dat uživatele ve službě Cost Management oboru, aby měli přístup k a v oboru, vyberte na portálu Azure portal.
+Kombinace oprávnění udělená na webu Azure portal a na portálu Enterprise (EA) pro uživatele s smlouvy Azure Enterprise, definovat uživatele úroveň přístupu k datům Azure Cost Management. Pro uživatele s jinými typy účtu Azure, úroveň přístupu uživatele je k datům Cost managementu je jednodušší. Tento článek vás provede přiřazuje se přístup k datům služby Cost Management. Po přiřazení kombinace oprávnění na základě zobrazení dat uživatele ve službě Cost Management oboru, aby měli přístup k a v oboru, vyberte na portálu Azure portal.
 
 Obor, který uživatel vybere se používá v celém Cost Management k poskytování konsolidace dat a k řízení přístupu na informace o nákladech. Při použití rozsahů, uživatelé není vícenásobný výběr je. Místo toho vyberte větší rozsah, který až vrátit podřízených oborech a pak se filtr seznamu na to, co chtějí zobrazit. Konsolidace dat je důležité pochopit, protože někteří uživatelé neměli mít přístup, který podřízené obory vrátit až nadřazený obor.
 
 ## <a name="cost-management-scopes"></a>Cost Management obory
 
-K zobrazení dat na náklady, uživatel musí mít alespoň čtení přístup do jedné nebo více z následujících oborů.
+Služba Cost management podporuje celou řadu typů účtu Azure. Chcete-li zobrazit úplný seznam typů podporovaných účtů, najdete v článku [datům Cost managementu pochopit](understand-cost-mgt-data.md). Určuje typ účtu dostupné obory.
+
+### <a name="azure-ea-subscription-scopes"></a>Obory předplatného Azure EA
+
+Chcete-li zobrazit náklady dat pro předplatná Azure EA, uživatel musí mít alespoň čtení přístup do jedné nebo více z následujících oborů.
 
 | **Rozsah** | **Definovaný na** | **Požadovaný přístup k zobrazení dat** | **Požadované nastavení EA** | **Konsoliduje data** |
 | --- | --- | --- | --- | --- |
@@ -47,6 +51,14 @@ Následující diagram znázorňuje vztah mezi náklady na správu oborů s rol�
 Když **DA zobrazit náklady** jsou zakázány na portálu EA, zobrazí se vám zpráva s oznámením *náklady na vaší organizaci zakázaná* při pokusu o zobrazení nákladů pro oddělení a účty.
 
 Podobně, když **AO zobrazit náklady** jsou zakázány na portálu EA, zobrazí se vám zpráva s oznámením *náklady na vaší organizaci zakázaná* při pokusu o zobrazení nákladů pro registračních účtů, skupin pro správu, předplatná a skupiny prostředků.
+
+## <a name="other-azure-account-scopes"></a>Další obory účtu Azure
+
+Zobrazit náklady na data pro jiná předplatná Azure, uživatel musí mít alespoň přístup pro čtení do jedné nebo více z následujících oborů:
+
+- Účet Azure
+- Skupina pro správu
+- Skupina prostředků
 
 ## <a name="enable-access-to-costs-in-the-ea-portal"></a>Povolení přístupu k náklady na portálu EA
 
@@ -113,7 +125,7 @@ Po dokončení výše uvedených kroků, uživatelský účet stane registraci �
 
 ## <a name="assign-management-group-scope-access"></a>Přiřazení přístupu obor skupiny správy
 
-Přístup k oboru skupiny pro správu vyžaduje alespoň oprávnění Čtenář náklady na správu (nebo Čtenář). Na webu Azure Portal můžete nakonfigurovat oprávnění pro skupinu pro správu. Musíte mít alespoň oprávnění správce přístupu uživatelů (nebo vlastník) pro skupinu pro správu umožňující přístup pro ostatní uživatele. A musí také povolíte **AO zobrazit náklady** nastavení na portálu EA.
+Přístup k oboru skupiny pro správu vyžaduje alespoň oprávnění Čtenář náklady na správu (nebo Čtenář). Na webu Azure Portal můžete nakonfigurovat oprávnění pro skupinu pro správu. Musíte mít alespoň oprávnění správce přístupu uživatelů (nebo vlastník) pro skupinu pro správu umožňující přístup pro ostatní uživatele. A pro účty Azure EA, musíte také povolíte **AO zobrazit náklady** nastavení na portálu EA.
 
 1. Přihlaste se k webu Azure Portal na adrese [https://portal.azure.com](https://portal.azure.com).
 2. Vyberte **všechny služby** na bočním panelu vyhledejte _skupin pro správu_a pak vyberte **skupin pro správu**.
@@ -129,7 +141,7 @@ Přístup k oboru skupiny pro správu vyžaduje alespoň oprávnění Čtenář 
 
 ## <a name="assign-subscription-scope-access"></a>Přiřazení předplatného obor přístupu
 
-Přístup k předplatnému vyžaduje alespoň oprávnění Čtenář náklady na správu (nebo Čtenář). Na webu Azure Portal můžete nakonfigurovat oprávnění k předplatnému. Musíte mít alespoň oprávnění správce přístupu uživatelů (nebo vlastník) pro předplatné, které chcete povolit přístup pro ostatní uživatele. A musí také povolíte **AO zobrazit náklady** nastavení na portálu EA.
+Přístup k předplatnému vyžaduje alespoň oprávnění Čtenář náklady na správu (nebo Čtenář). Na webu Azure Portal můžete nakonfigurovat oprávnění k předplatnému. Musíte mít alespoň oprávnění správce přístupu uživatelů (nebo vlastník) pro předplatné, které chcete povolit přístup pro ostatní uživatele. A pro účty Azure EA, musíte také povolíte **AO zobrazit náklady** nastavení na portálu EA.
 
 1. Přihlaste se k webu Azure Portal na adrese [https://portal.azure.com](https://portal.azure.com).
 2. Vyberte **všechny služby** na bočním panelu vyhledejte _předplatná_a pak vyberte **předplatná**.
@@ -143,7 +155,7 @@ Přístup k předplatnému vyžaduje alespoň oprávnění Čtenář náklady na
 
 ## <a name="assign-resource-group-scope-access"></a>Přiřazení přístupu oboru skupiny prostředků
 
-Přístup do skupiny prostředků vyžaduje alespoň oprávnění Čtenář náklady na správu (nebo Čtenář). Na webu Azure Portal můžete nakonfigurovat oprávnění pro skupinu prostředků. Musíte mít alespoň oprávnění správce přístupu uživatelů (nebo vlastník) pro skupinu prostředků pro povolení přístupu pro ostatní uživatele. A musí také povolíte **AO zobrazit náklady** nastavení na portálu EA.
+Přístup do skupiny prostředků vyžaduje alespoň oprávnění Čtenář náklady na správu (nebo Čtenář). Na webu Azure Portal můžete nakonfigurovat oprávnění pro skupinu prostředků. Musíte mít alespoň oprávnění správce přístupu uživatelů (nebo vlastník) pro skupinu prostředků pro povolení přístupu pro ostatní uživatele. A pro účty Azure EA, musíte také povolíte **AO zobrazit náklady** nastavení na portálu EA.
 
 1. Přihlaste se k webu Azure Portal na adrese [https://portal.azure.com](https://portal.azure.com).
 2. Vyberte **všechny služby** na bočním panelu vyhledejte _skupiny prostředků_a pak vyberte **skupiny prostředků**.

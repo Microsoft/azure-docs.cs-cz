@@ -11,12 +11,12 @@ ms.assetid: eccfd87c-c5fe-4cf7-b564-9752775fd667
 tags: connectors
 ms.topic: article
 ms.date: 07/18/2016
-ms.openlocfilehash: e96e271fbb50a2485a22fab061ea160dc00cf3d6
-ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
+ms.openlocfilehash: bb89c76fb19bff74d39d919c8d2e65d430cb0566
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43123168"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55817746"
 ---
 # <a name="call-rest-endpoints-with-http--swagger-connector-in-azure-logic-apps"></a>Koncové body REST s HTTP + Swagger pro volání konektoru v Azure Logic Apps
 
@@ -40,7 +40,7 @@ Tady je příklad toho, jak pomocí HTTP + Swagger operace jako akci v pracovní
 4. Zadejte adresu URL pro dokument Swagger:
    
    * Pro práci v návrháři aplikace logiky, musí být adresa URL koncového bodu HTTPS a povolili CORS.
-   * Pokud dokument Swagger nesplňuje tento požadavek, můžete použít [služby Azure Storage s povolením CORS](#hosting-swagger-from-storage) má dokument uložit.
+   * Pokud dokument Swagger nesplňuje tento požadavek, můžete použít Azure Storage s povolením má dokument uložit CORS.
 5. Klikněte na tlačítko **Další** ke čtení a vykreslení z dokumentu Swagger.
 6. Přidejte všechny parametry, které jsou požadovány pro volání HTTP.
    
@@ -95,8 +95,8 @@ Hvězdička (*) znamená, že požadované pole.
 | Zobrazované jméno | Název vlastnosti | Popis |
 | --- | --- | --- |
 | Metoda * |method |Příkaz HTTP použít. |
-| IDENTIFIKÁTOR URI * |identifikátor uri |Identifikátor URI pro požadavek HTTP. |
-| Záhlaví |hlavičky |Objekt JSON záhlaví HTTP, které chcete zahrnout. |
+| URI* |identifikátor uri |Identifikátor URI pro požadavek HTTP. |
+| Hlavičky |Záhlaví |Objekt JSON záhlaví HTTP, které chcete zahrnout. |
 | Tělo |hlavní část |Požadavku HTTP. |
 | Authentication |Ověřování |Ověřování pro žádosti. Další informace najdete v tématu [konektor HTTP](connectors-native-http.md#authentication). |
 
@@ -106,9 +106,9 @@ Odpověď protokolu HTTP
 
 | Název vlastnosti | Typ dat | Popis |
 | --- | --- | --- |
-| Záhlaví |objekt |Hlavičky odpovědi |
+| Hlavičky |objekt |Hlavičky odpovědi |
 | Tělo |objekt |Objekt odpovědi |
-| Stavový kód |int |Stavový kód HTTP |
+| Kód stavu |int |Stavový kód HTTP |
 
 ### <a name="http-responses"></a>Odpovědi protokolu HTTP
 Při volání různé akce, může se zobrazit některé odpovědi. Následuje tabulka, která bude uvádět odpovídající odpovědí a popisy.

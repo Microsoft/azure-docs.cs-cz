@@ -12,16 +12,16 @@ ms.author: mathoma
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 01/25/2019
-ms.openlocfilehash: 548bc9afb37f8c4a1c6c208a8741d1e3da0a784c
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 1c542c1e906b078b76b78ed30af8bdf67110199c
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55469392"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55814108"
 ---
 # <a name="transactional-replication-with-standalone-pooled-and-instance-databases-in-azure-sql-database"></a>Transakční replikace se samostatným, ve fondu a instanci databáze ve službě Azure SQL Database
 
-Transakční replikace je funkce Azure SQL Database Managed Instance a SQL Server, který umožňuje replikovat data z tabulky ve službě Azure SQL Database nebo SQL Server do tabulek umístit do vzdálené databáze. Tato funkce umožňuje synchronizovat více tabulek v různých databázích.
+Transakční replikace je funkce služby Azure SQL Database a SQL Server, který umožňuje replikovat data z tabulky ve službě Azure SQL Database nebo SQL Server do tabulek umístit do vzdálené databáze. Tato funkce umožňuje synchronizovat více tabulek v různých databázích.
 
 ## <a name="when-to-use-transactional-replication"></a>Použití transakční replikace
 
@@ -38,15 +38,15 @@ Klíčové komponenty v transakční replikaci můžete vidět na následující
 ![Replikace SQL Database](media/replication-to-sql-database/replication-to-sql-database.png)
 
 
-**Vydavatele** odesláním aktualizací k distributorovi je instance nebo serveru, který publikuje změny provedené na některé tabulky (články). Publikování do služby Azure SQL Database z místního SQL serveru je podporována v následujících verzích systému SQL Server:
+**Vydavatele** odesláním aktualizací k distributorovi je instance nebo serveru, který publikuje změny provedené na některé tabulky (články). Publikování do jakékoli SQL Azure je databáze z SQL serveru v místním podporuje následující verze systému SQL Server:
 
-    - SQL Server 2019 (preview)
-    - SQL Server 2016 na SQL 2017
-    - SQL Server 2014 SP1 CU3 nebo větší (12.00.4427)
-    - SQL Server 2014 RTM CU10 (12.00.2556)
-    - SQL Server 2012 SP3 nebo větší (11.0.6020)
-    - SQL Server 2012 SP2 CU8 (11.0.5634.0)
-    - Pro jiné verze systému SQL Server, které nepodporují publikování na objekty v Azure, je možné využívat [znovu publikovat data](https://docs.microsoft.com/sql/relational-databases/replication/republish-data) metody pro přesun dat do novější verze systému SQL Server. 
+   - SQL Server 2019 (preview)
+   - SQL Server 2016 na SQL 2017
+   - SQL Server 2014 SP1 CU3 nebo větší (12.00.4427)
+   - SQL Server 2014 RTM CU10 (12.00.2556)
+   - SQL Server 2012 SP3 nebo větší (11.0.6020)
+   - SQL Server 2012 SP2 CU8 (11.0.5634.0)
+   - Pro jiné verze systému SQL Server, které nepodporují publikování na objekty v Azure, je možné využívat [znovu publikovat data](https://docs.microsoft.com/sql/relational-databases/replication/republish-data) metody pro přesun dat do novější verze systému SQL Server. 
 
 **Distributora** je instance nebo serveru, který shromažďuje údaje o změnách v článcích od vydavatele a distribuuje je pro předplatitele. Distributor může být Azure SQL Database Managed Instance nebo SQL Server (libovolná verze jak dlouhé je se rovná nebo je vyšší než verze, vydavatel). 
 

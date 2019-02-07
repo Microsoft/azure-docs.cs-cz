@@ -14,12 +14,12 @@ ms.tgt_pltfrm: azure-cache-for-redis
 ms.workload: tbd
 ms.date: 08/22/2017
 ms.author: wesmc
-ms.openlocfilehash: 8a78823a208a5310e62714de7b1a3cd2e35eaa8f
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ms.openlocfilehash: 67cc7d0dc162f2b36e38f1068f46079f46120f1c
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54104671"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55819837"
 ---
 # <a name="how-to-configure-azure-cache-for-redis"></a>Postup konfigurace mezipaměti Azure Redis
 Toto téma popisuje dostupné konfigurace pro mezipaměť Azure pro instance Redis. Toto téma také popisuje výchozí konfigurace serveru Redis pro mezipaměť Azure pro instance Redis.
@@ -46,7 +46,7 @@ Můžete zobrazit a nakonfigurovat následující nastavení použití **nabídc
 * [Nastavení](#settings)
     * [Přístupové klíče](#access-keys)
     * [Upřesňující nastavení](#advanced-settings)
-    * [Mezipaměť Azure pro Redis Advisor](#azure-cache-for-redis-advisor)
+    * [Azure Cache for Redis Advisor](#azure-cache-for-redis-advisor)
     * [Škálování](#scale)
     * [Velikost clusteru redis](#cluster-size)
     * [Trvalost dat Redis](#redis-data-persistence)
@@ -57,7 +57,7 @@ Můžete zobrazit a nakonfigurovat následující nastavení použití **nabídc
     * [Vlastnosti](#properties)
     * [Zámky](#locks)
     * [Automatizační skript](#automation-script)
-* [Správa](#administration)
+* Správa
     * [Import dat](#importexport)
     * [Export dat](#importexport)
     * [Restartování](#reboot)
@@ -65,7 +65,7 @@ Můžete zobrazit a nakonfigurovat následující nastavení použití **nabídc
     * [Metrika mezipaměti redis](#redis-metrics)
     * [Pravidla upozornění](#alert-rules)
     * [Diagnostika](#diagnostics)
-* [Podpora a řešení potíží nastavení](#support-amp-troubleshooting-settings)
+* Podpora a řešení potíží nastavení
     * [Služba Resource health](#resource-health)
     * [Nová žádost o podporu](#new-support-request)
 
@@ -98,7 +98,7 @@ Klikněte na tlačítko **diagnostikovat a řešit problémy** poskytnuty čast�
 
 * [Přístupové klíče](#access-keys)
 * [Upřesňující nastavení](#advanced-settings)
-* [Mezipaměť Azure pro Redis Advisor](#azure-cache-for-redis-advisor)
+* [Azure Cache for Redis Advisor](#azure-cache-for-redis-advisor)
 * [Škálování](#scale)
 * [Velikost clusteru redis](#cluster-size)
 * [Trvalost dat Redis](#redis-data-persistence)
@@ -174,7 +174,7 @@ Další informace najdete v tématu [Redis oznámení Keyspace](https://redis.io
 
 
 <a name="recommendations"></a>
-## <a name="azure-cache-for-redis-advisor"></a>Mezipaměť Azure pro Redis Advisor
+## <a name="azure-cache-for-redis-advisor"></a>Azure Cache for Redis Advisor
 **Mezipaměti Azure redis Cache Advisoru** okně zobrazí doporučení ke svojí mezipaměti. Při běžném provozu se žádná doporučení týkající se zobrazují. 
 
 ![Doporučení](./media/cache-configure/redis-cache-no-recommendations.png)

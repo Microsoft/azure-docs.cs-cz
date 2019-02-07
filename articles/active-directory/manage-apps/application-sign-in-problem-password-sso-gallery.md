@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 07/11/2017
 ms.author: barbkess
 ms.reviewer: asteen
-ms.openlocfilehash: 5ae7643123552eaa17d51e6cd1ed9c0293292ed0
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 734169a0bce546ee2492d100b2abcb2ba8b6ffc9
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55184967"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55822523"
 ---
 # <a name="problems-signing-in-to-an-azure-ad-gallery-application-configured-for-password-single-sign-on"></a>Potíže při přihlašování k aplikaci Galerie Azure AD konfigurované pro heslo jednotného přihlašování
 
@@ -88,7 +88,7 @@ Postupujte podle [řešení potíží s rozšířením Panel přístupu pro apli
 
 Konfigurace aplikace z Galerie Azure AD, které je potřeba:
 
--   [Přidat aplikaci z Galerie Azure AD](#_Add_an_application)
+-   Přidat aplikaci z Galerie Azure AD
 
 -   [Konfigurace aplikace pro heslo jednotného přihlašování](#configure-the-application-for-password-single-sign-on)
 
@@ -140,7 +140,7 @@ Pokud chcete nakonfigurovat jednotné přihlašování pro aplikaci, postupujte 
 
 8.  Vyberte režim **přihlašování na základě heslo.**
 
-9.  [Přiřazení uživatelů k aplikaci](#_How_to_assign).
+9.  Přiřazení uživatelů k aplikaci.
 
 10. Kromě toho můžete také zadat přihlašovací údaje jménem uživatele výběr řádků uživatele a kliknutím na **aktualizaci přihlašovacích údajů** a zadáním uživatelského jména a hesla jménem uživatele. V opačném případě uživatelé vyzváni k zadání samotné přihlašovací údaje při spuštění.
 

@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 11/12/2018
 ms.author: barbkess
-ms.openlocfilehash: f549c748c87405b47868c75cc01af81efd202af2
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.openlocfilehash: 934996f1573520a6fba92ce09f8a14fc4795de6c
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55755352"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55812455"
 ---
 # <a name="how-to-configure-password-single-sign-on-for-a-non-gallery-application"></a>Postup konfigurace hesel jednotného přihlašování pro aplikaci mimo Galerii
 
@@ -43,7 +43,7 @@ To je skvělý způsob, jak začít rychle integrace jakékoliv aplikaci do slu�
 
 -   Povolit **členem skupiny business** zadat uživatelská jména a hesla, které jsou přiřazeny uživateli přes [samoobslužný přístup k aplikacím](https://docs.microsoft.com/azure/active-directory/active-directory-self-service-application-access) funkce
 
--   Povolit **správce** k určení uživatelských jmen a hesel přiřazena uživateli s použitím přihlašovacích údajů aktualizace funkcí při [přiřazení uživatele k aplikaci](#_How_to_configure_1)
+-   Povolit **správce** k určení uživatelských jmen a hesel uživateli přidělena pomocí funkce aktualizace přihlašovacích údajů při přiřazení uživatele k aplikaci
 
 -   Povolit **správce** k určení sdílené uživatelské jméno nebo heslo používané skupinou uživatelů pomocí přihlašovacích údajů pro aktualizace funkcí při [přiřazení skupiny k aplikaci](#assign-an-application-to-a-group-directly)
 
@@ -57,7 +57,7 @@ Konfigurace aplikace z Galerie Azure AD, které je potřeba:
 
 -   [Konfigurace aplikace pro heslo jednotného přihlašování](#configure-the-application-for-password-single-sign-on)
 
--   [Přiřazení aplikace k uživateli nebo skupině](#assign-the-application-to-a-user-or-a-group)
+-   Přiřazení aplikace k uživateli nebo skupině
 
     -   [Přiřadit uživatele k aplikaci přímo](#assign-a-user-to-an-application-directly)
 

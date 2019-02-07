@@ -8,12 +8,12 @@ ms.reviewer: orspod
 ms.service: data-explorer
 ms.topic: howto
 ms.date: 1/31/2019
-ms.openlocfilehash: 8c035524adebcb131872c700280201aaac07c52b
-ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
+ms.openlocfilehash: a4c9156ef80f05e247b1cfef0acd56b601a2db65
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55747939"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55812680"
 ---
 # <a name="create-an-azure-data-explorer-cluster-and-a-database-using-cli"></a>Vytvoření clusteru Průzkumník dat Azure a databázi pomocí rozhraní příkazového řádku
 
@@ -48,12 +48,11 @@ az kusto cluster create --name azureclitest --sku D11_v2 --resource-group testrg
 
 Zadejte následující hodnoty
 
-    **Nastavení** | **Navrhovaná hodnota** | **Popis pole**
-    |---|---|---|
-    | jméno | *azureclitest* | Požadovaný název vašeho clusteru.|
-    | SKU | *D13_v2* | SKU, které se použije pro váš cluster. |
-    | resource-group | *testrg* | Název skupiny prostředků, ve kterém by se vytvořil cluster. |
-    | | |
+   |**Nastavení** | **Navrhovaná hodnota** | **Popis pole**|
+   |---|---|---|
+   | jméno | *azureclitest* | Požadovaný název vašeho clusteru.|
+   | SKU | *D13_v2* | SKU, které se použije pro váš cluster. |
+   | resource-group | *testrg* | Název skupiny prostředků, ve kterém by se vytvořil cluster. |
 
 Pokud chcete, existují další volitelné parametry, které můžete použít, jako je například kapacita clusteru atd.
 
@@ -75,14 +74,13 @@ az kusto database create --cluster-name azureclitest --name clidatabase --resour
 
 Zadejte následující hodnoty
 
-    **Nastavení** | **Navrhovaná hodnota** | **Popis pole**
-    |---|---|---|
-    | Název clusteru | *azureclitest* | Název vašeho clusteru kde má vytvořit.|
-    | jméno | *clidatabase* | Požadovaný název vaší databáze.|
-    | resource-group | *testrg* | Název skupiny prostředků, ve kterém by se vytvořil cluster. |
-    | Konfigurace soft-delete období | *3650:00:00:00* | Množství času, které se mají data ukládat tak, aby byl k dispozici pro dotazy. |
-    | Horká doby uložení v mezipaměti | *3650:00:00:00* | Množství času, které se mají data ukládat v mezipaměti. |
-    | | |
+   |**Nastavení** | **Navrhovaná hodnota** | **Popis pole**|
+   |---|---|---|
+   | Název clusteru | *azureclitest* | Název vašeho clusteru kde má vytvořit.|
+   | jméno | *clidatabase* | Požadovaný název vaší databáze.|
+   | resource-group | *testrg* | Název skupiny prostředků, ve kterém by se vytvořil cluster. |
+   | Konfigurace soft-delete období | *3650:00:00:00* | Množství času, které se mají data ukládat tak, aby byl k dispozici pro dotazy. |
+   | Horká doby uložení v mezipaměti | *3650:00:00:00* | Množství času, které se mají data ukládat v mezipaměti. |
 
 Zobrazí databáze, kterou jste vytvořili spuštěním
 

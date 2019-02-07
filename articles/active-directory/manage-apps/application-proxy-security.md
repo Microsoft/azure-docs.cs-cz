@@ -15,12 +15,12 @@ ms.date: 09/08/2017
 ms.author: barbkess
 ms.reviewer: japere
 ms.custom: it-pro
-ms.openlocfilehash: f74dc441016a0064aca388ce4881eeae9e7bc6d0
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
+ms.openlocfilehash: 3e8d9cc44e4e83dac963b3d85f7dd4d058323bf6
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55657854"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55813819"
 ---
 # <a name="security-considerations-for-accessing-apps-remotely-with-azure-ad-application-proxy"></a>Informace o zabezpečení pro přístup k aplikacím s využitím Azure AD Application Proxy
 
@@ -128,11 +128,11 @@ Pokaždé, když se Proxy aplikací služby aktualizuje nastavení konfigurace, 
 
 Při přístupu uživatelů k publikované aplikaci, tyto události probíhat až konektor Proxy aplikací služby Proxy aplikace:
 
-1. [Služba ověřuje uživatele pro aplikaci](#the-service-checks-the-configuration-settings-for-the-app)
-2. [Službu umístí požadavek ve frontě connector](#The-service-places-a-request-in-the-connector-queue)
-3. [Konektor zpracuje žádosti z fronty](#the-connector-receives-the-request-from-the-queue)
-4. [Konektor čeká na odpověď](#the-connector-waits-for-a-response)
-5. [Služby streamování dat pro uživatele](#the-service-streams-data-to-the-user)
+1. Služba ověřuje uživatele pro aplikaci
+2. Službu umístí požadavek ve frontě connector
+3. Konektor zpracuje žádosti z fronty
+4. Konektor čeká na odpověď
+5. Služby streamování dat pro uživatele
 
 Další informace o co se provádí v každém z těchto kroků, pokračujte ve čtení.
 

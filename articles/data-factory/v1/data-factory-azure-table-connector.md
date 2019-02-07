@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 6ab3e918feda3dcf898928f159ebf8e317a95527
-ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
+ms.openlocfilehash: 7156249e720416161cd56af7589ed85827c6034b
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54331839"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55812544"
 ---
 # <a name="move-data-to-and-from-azure-table-using-azure-data-factory"></a>Přesun dat do a z Azure Table pomocí Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -137,7 +137,7 @@ Následující příklad ukazuje:
 1. Propojené služby typu [AzureStorage](data-factory-azure-blob-connector.md#linked-service-properties) (používá se pro tabulek a objektů blob).
 2. Vstupní hodnota [datovou sadu](data-factory-create-datasets.md) typu [AzureTable](#dataset-properties).
 3. Výstup [datovou sadu](data-factory-create-datasets.md) typu [AzureBlob](data-factory-azure-blob-connector.md#dataset-properties).
-4. [Kanálu](data-factory-create-pipelines.md) s aktivitou kopírování, která používá [AzureTableSource](#activity-properties) a [BlobSink](data-factory-azure-blob-connector.md#copy-activity-properties).
+4. [Kanálu](data-factory-create-pipelines.md) s aktivitou kopírování, která používá AzureTableSource a [BlobSink](data-factory-azure-blob-connector.md#copy-activity-properties).
 
 Ukázka zkopíruje data patřící do výchozí oddíl v tabulce Azure do objektu blob každou hodinu. Vlastnostech JSON použitých v tyto ukázky jsou popsány v části podle ukázky.
 
@@ -480,9 +480,9 @@ Při přesunu dat do a z Azure Table, následující [mapování, které jsou de
 | Edm.DateTime |DateTime |Hodnota 64-bit, vyjádřené jako koordinovaný univerzální čas (UTC). Podporovaný rozsah data a času počínaje 12:00 hodin 1 dne 1601 N.L. (C.E.), UTC. Rozsah končí 31. prosince 9999. |
 | Edm.Double |double |Bod hodnotu s plovoucí desetinnou čárkou 64bitové. |
 | Edm.Guid |Guid |128bitové globálně jedinečný identifikátor. |
-| Edm.Int32 |Datový typ Int32 |32bitové celé číslo. |
+| Edm.Int32 |Int32 |32bitové celé číslo. |
 | Edm.Int64 |Int64 |64bitové celé číslo. |
-| Edm.String |Řetězec |Hodnota kódování UTF-16. Řetězcové hodnoty může mít až 64 KB. |
+| Edm.String |String |Hodnota kódování UTF-16. Řetězcové hodnoty může mít až 64 KB. |
 
 ### <a name="type-conversion-sample"></a>Ukázka typ převodu
 Následující příklad je pro kopírování dat z objektu Blob Azure do Azure Table s převody typu.
@@ -533,7 +533,7 @@ Zadané mapování typu z Azure Table OData typu na typ .NET, byste definovali v
 
 **Schéma tabulky Azure:**
 
-| Název sloupce | Typ |
+| Název sloupce | Type |
 | --- | --- |
 | ID uživatele |Edm.Int64 |
 | jméno |Edm.String |

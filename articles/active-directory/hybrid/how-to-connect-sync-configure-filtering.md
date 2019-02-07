@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 07/12/2017
 ms.subservice: hybrid
 ms.author: billmath
-ms.openlocfilehash: c9e3a26f1ca8a577b883baacaf672cf73c8c5656
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.openlocfilehash: 6198d16b25330fb02cf5642addba0093ec437cab
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55488649"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55811480"
 ---
 # <a name="azure-ad-connect-sync-configure-filtering"></a>Synchronizace Azure AD Connect: Konfigurace filtrování
 Pomocí filtrování, můžete řídit objektů, které se zobrazí ve službě Azure Active Directory (Azure AD) z místního adresáře. Výchozí konfigurace přijímá všechny objekty ve všech doménách nakonfigurovaných doménových struktur. Obecně platí toto je doporučená konfigurace. Uživatele, kteří používají úlohy Office 365, jako je Exchange Online a Skype pro firmy, těžit z globální seznam adresu odeslání e-mailu a volat všem uživatelům. Ve výchozí konfiguraci bylo by nutné stejným způsobem, který by měla s implementací místní Exchange nebo Lync.
@@ -93,8 +93,8 @@ Pokud si nejste schopni spustit Průvodce instalací z nějakého důvodu, by m�
 
 Založený na doméně filtrování konfigurace se skládá z následujících kroků:
 
-1. [Vybrat domény](#select-domains-to-be-synchronized) , který chcete zahrnout do synchronizace.
-2. Pro každý přidat nebo odebrat domény, upravte [profily spuštění](#update-run-profiles).
+1. Vyberte domény, které chcete zahrnout do synchronizace.
+2. Pro každou doménu přidání a odebrání upravte profily spuštění.
 3. [Použít a ověřit změny](#apply-and-verify-changes).
 
 ### <a name="select-the-domains-to-be-synchronized"></a>Vybrat domény, které se mají synchronizovat
@@ -110,7 +110,7 @@ Pokud chcete nastavit filtr domény, proveďte následující kroky:
    Pokud jste změnili vaši místní infrastrukturu služby Active Directory a přidání nebo odebrání domén z doménové struktury, klikněte **aktualizovat** tlačítko zobrazit aktualizovaný seznam. Při aktualizaci se vám výzva k zadání přihlašovacích údajů. Zadejte všechny přihlašovací údaje s oprávněním ke čtení na Windows Server Active Directory. Nemusí být uživatel, který je předem v dialogovém okně.  
    ![Je potřeba aktualizace](./media/how-to-connect-sync-configure-filtering/refreshneeded.png)  
 6. Až budete hotovi, zavřete **vlastnosti** dialogové okno kliknutím **OK**. Pokud odebrání domén z doménové struktury se místní zpráva, že byla odebrána domény a tuto konfiguraci se vymažou.
-7. Pokračujte v nastavení [profily spuštění](#update-run-profiles).
+7. Dál Upravit profily spuštění.
 
 ### <a name="update-the-run-profiles"></a>Aktualizovat profilů spuštění
 Pokud jste aktualizovali filtr domény, musíte také aktualizovat profily spuštění.

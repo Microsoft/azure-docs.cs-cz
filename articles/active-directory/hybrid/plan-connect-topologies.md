@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 11/27/2018
 ms.subservice: hybrid
 ms.author: billmath
-ms.openlocfilehash: 15ecd594dea9251b64cdfcba3bf620bc101504ec
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.openlocfilehash: 988e72a20fdd80e41ce8fc1ef568d90d4283a848
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55486091"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55813496"
 ---
 # <a name="topologies-for-azure-ad-connect"></a>Topologie pro Azure AD Connect
 Tento článek popisuje různé místní a topologie služby Azure Active Directory (Azure AD), ve kterých pomocí synchronizace Azure AD Connect jako klíče integrační řešení. Tento článek popisuje podporované a nepodporované konfigurace.
@@ -63,7 +63,7 @@ Pokud máte několik doménových struktur, všechny doménové struktury musí 
 
 Průvodce instalací Azure AD Connect nabízí několik možností, jak konsolidovat uživatelé, kteří jsou reprezentovány ve více doménových strukturách. Cílem je, že uživatel je reprezentován jenom jednou ve službě Azure AD. Zde jsou některé běžné topologie, ve kterých můžete nakonfigurovat vlastní instalační cestě v Průvodci instalací. Na **Jednoznačná identifikace uživatelů** vyberte odpovídající možnost, která představuje topologii. Sloučení je nakonfigurován pouze pro uživatele. Duplicitní skupiny nejsou konsolidovat s výchozí konfigurací.
 
-Běžné topologie jsou popsány v oddílech o [samostatné topologie](#multiple-forests-separate-topologies), [úplné síť](#multiple-forests-full-mesh-with-optional-galsync), a [topologie prostředek účtu](#multiple-forests-account-resource-forest).
+Běžné topologie jsou popsány v oddílech o samostatné topologie [úplné síť](#multiple-forests-full-mesh-with-optional-galsync), a [topologie prostředek účtu](#multiple-forests-account-resource-forest).
 
 Předpokládá se výchozí konfigurace ve službě Azure AD Connect sync:
 

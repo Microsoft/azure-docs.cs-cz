@@ -11,12 +11,12 @@ ms.topic: overview
 ms.date: 08/10/2017
 ms.author: kefre
 ms.custom: seodec18
-ms.openlocfilehash: 57388b4e2f74a1e9e8d9c322020077dfd67e89c1
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 1ee28d04bfce00a6fe47d6914b75cfd7b18e634d
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55198142"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55816539"
 ---
 # <a name="what-is-computer-vision-api-version-10"></a>Co je rozhraní API pro počítačové zpracování obrazu verze 1.0?
 
@@ -26,17 +26,17 @@ ms.locfileid: "55198142"
 >- [Rozhraní API pro počítačové zpracování obrazu verze 2.0](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44)
 
 Cloudové rozhraní API pro počítačové zpracování obrazu poskytuje vývojářům přístup k pokročilým algoritmům pro zpracování obrázků a vrácení informací. Na základě nahrání obrázku nebo zadání adresy URL obrázku mohou algoritmy Microsoftu pro počítačové zpracování obrazu různými způsoby analyzovat vizuální obsah, a to v závislosti na vstupech a volbách uživatelů. Jaké možnosti mají uživatelé rozhraní API pro počítačové zpracování obrazu při analýze obrázků:
-* [Můžou označovat obrázky podle obsahu.](#Tagging)
-* [Můžou zařazovat obrázky do kategorií.](#Categorizing)
-* [Můžou určovat typ a kvalitu obrázků.](#Identifying)
+* Označit Image na základě obsahu.
+* Kategorizace obrázků.
+* Určete typ a kvalitu imagí.
 * [Můžou zjišťovat lidské tváře a získávat jejich souřadnice.](#Faces)
-* [Můžou rozpoznávat obsah určité domény.](#Domain-Specific)
-* [Můžou generovat popisy obsahu.](#Descriptions)
-* [Můžou používat optické rozpoznávání písma k identifikaci vytištěného textu na obrázcích.](#OCR)
-* [Můžou rozpoznávat rukopis.](#RecognizeText)
-* [Můžou rozlišovat barevná schémata.](#Color)
-* [Můžou označovat obsah pro dospělé.](#Adult)
-* [Můžou ořezávat fotky používané jako miniatury.](#Thumbnails)
+* Rozpoznávání obsahu specifického pro doménu.
+* Generovat popisy obsahu.
+* Optické rozpoznávání znaků na slouží k identifikaci tištěný text nalezeno v obrázcích.
+* Rozpoznávání rukopisného textu.
+* Rozlišení barevná schémata.
+* Příznak obsahu pro dospělé.
+* Oříznutí fotografie má být použit jako miniatury.
 
 ## <a name="requirements"></a>Požadavky
 * Podporované metody zadávání znaků: Nezpracovaná binární ve formě application/octet-stream adresa URL obrázku nebo image.
@@ -113,7 +113,7 @@ Existují různé způsoby zařazování obrázku do kategorií. Rozhraní API p
 ### <a name="clip-art-type"></a>Typ klipart
 Zjistí, jestli je obrázek klipart.  
 
-Value | Význam
+Hodnota | Význam
 ----- | --------------
 0     | Není klipart
 1     | Nejednoznačné

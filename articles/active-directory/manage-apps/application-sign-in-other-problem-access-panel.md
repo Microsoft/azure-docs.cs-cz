@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 07/11/2017
 ms.author: barbkess
 ms.reviewer: japere
-ms.openlocfilehash: 529191cf867b6003b0c2eab5ed919087277c7095
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 6dfc0f80285dfd7da6e78d7cbf9c993fed388a2b
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55178031"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55813530"
 ---
 # <a name="problems-signing-in-to-an-application-from-the-access-panel"></a>Potíže při přihlašování do aplikace na přístupovém panelu
 
@@ -104,7 +104,7 @@ Všechny aplikace v galerii Azure AD povolit možnost Enterprise Single Sign-On 
 
 Konfigurace aplikace z Galerie Azure AD, které je potřeba:
 
--   [Přidat aplikaci z Galerie Azure AD](#add-an-application)
+-   Přidat aplikaci z Galerie Azure AD
 
 -   [Nakonfigurujte hodnoty metadat aplikace ve službě Azure AD (přihlašování adresu URL, identifikátoru, adresa URL odpovědi)](#configure-single-sign-on-for-an-application-from-the-azure-ad-gallery)
 
@@ -114,7 +114,7 @@ Konfigurace aplikace z Galerie Azure AD, které je potřeba:
 
 -   [Nakonfigurujte hodnoty metadat služby Azure AD v aplikaci (přihlašování adresu URL, Vystavitel, odhlašovací adresa URL a certifikát)](#configure-single-sign-on-for-an-application-from-the-azure-ad-gallery)
 
--   [Přiřazení uživatelů k aplikaci](#assign-users-to-the-application)
+-   Přiřazení uživatelů k aplikaci
 
 ### <a name="add-an-application-from-the-azure-ad-gallery"></a>Přidat aplikaci z Galerie Azure AD
 
@@ -362,9 +362,9 @@ Stáhnout metadata aplikace nebo certifikát z Azure AD, postupujte podle násle
 
 Konfigurace aplikace z Galerie Azure AD, které je potřeba:
 
--   [Přidat aplikaci z Galerie Azure AD](#add-an-application)
+-   Přidat aplikaci z Galerie Azure AD
 
--   [Konfigurace aplikace pro heslo jednotného přihlašování](#configure-the-application)
+-   Konfigurace aplikace pro heslo jednotného přihlašování
 
 ### <a name="add-an-application-from-the-azure-ad-gallery"></a>Přidat aplikaci z Galerie Azure AD
 

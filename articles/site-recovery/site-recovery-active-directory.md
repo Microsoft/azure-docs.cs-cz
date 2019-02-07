@@ -9,12 +9,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: mayg
-ms.openlocfilehash: 84cc99bac9ae5fa1743ed151e5bf8c3043cf5869
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: f4da0a4672bc50688d0a25bbd2db1f3be984ee8b
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52851008"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55821384"
 ---
 # <a name="set-up-disaster-recovery-for-active-directory-and-dns"></a>Nastavení zotavení po havárii pro Active Directory a DNS
 
@@ -31,10 +31,10 @@ Tento článek vysvětluje, jak vytvořit řešení zotavení po havárii pro sl
 
 ## <a name="replicate-the-domain-controller"></a>Replikace řadiče domény
 
-- Musíte nastavit [replikace Site Recovery](#enable-protection-using-site-recovery), na alespoň jeden virtuální počítač, který je hostitelem řadiče domény nebo DNS.
-- Pokud máte [několika řadičů domény](#environment-with-multiple-domain-controllers) ve vašem prostředí, je třeba také nastavit [další řadič domény](#protect-active-directory-with-active-directory-replication) v cílové lokalitě. Další řadič domény může být v Azure, nebo sekundárního místního datového centra.
+- Musíte nastavit replikace Site Recovery na alespoň jeden virtuální počítač, který je hostitelem řadiče domény nebo DNS.
+- Pokud máte víc řadičů domény ve vašem prostředí, také musíte vytvořit další řadič domény v cílové lokalitě. Další řadič domény může být v Azure, nebo sekundárního místního datového centra.
 - Pokud máte pouze několik aplikací a jeden řadič domény, můžete převzetí služeb při selhání celé lokality společně. V takovém případě vám doporučujeme používat Site Recovery pro replikaci řadiče domény do cílového webu (buď v Azure nebo sekundárního místního datového centra). Můžete použít stejné řadič domény replikovaný nebo DNS virtuálního počítače pro [testovací převzetí služeb při selhání](#test-failover-considerations).
-- - Pokud máte mnoho aplikací a více než jeden řadič domény ve vašem prostředí, nebo pokud máte v plánu převzetí služeb při selhání několik aplikací najednou, navíc k replikaci virtuálního počítače řadiče domény s využitím Site Recovery, doporučujeme, abyste nastavili [další řadič domény](#protect-active-directory-with-active-directory-replication) v cílové lokalitě (buď v Azure nebo sekundárního místního datového centra). Pro [testovací převzetí služeb při selhání](#test-failover-considerations), můžete použít řadič domény, který se replikuje pomocí Site Recovery. Pro převzetí služeb při selhání můžete použít další řadič domény v cílové lokalitě.
+- - Pokud máte mnoho aplikací a více než jeden řadič domény ve vašem prostředí, nebo pokud máte v plánu převzetí služeb při selhání několik aplikací najednou, navíc k replikaci virtuálního počítače řadiče domény s využitím Site Recovery, doporučujeme, abyste nastavili Další řadič domény v cílové lokalitě (buď v Azure nebo sekundárního místního datového centra). Pro [testovací převzetí služeb při selhání](#test-failover-considerations), můžete použít řadič domény, který se replikuje pomocí Site Recovery. Pro převzetí služeb při selhání můžete použít další řadič domény v cílové lokalitě.
 
 ## <a name="enable-protection-with-site-recovery"></a>Povolit ochranu pomocí služby Site Recovery
 
@@ -165,7 +165,7 @@ Pokud předchozí podmínky splněny, je pravděpodobné, že řadič domény sp
 1. Proveďte autoritativním obnovením řadiče domény. Mějte tyto informace:
     * Ale nedoporučujeme [FRS replikace](https://blogs.technet.microsoft.com/filecab/2014/06/25/the-end-is-nigh-for-frs/), pokud používáte služby FRS replikaci, postupujte podle kroků pro autoritativním obnovením. Proces je popsán v [pomocí klíče registru BurFlags k inicializaci služby replikace souborů](https://support.microsoft.com/kb/290762).
 
-        Další informace o BurFlags, naleznete v příspěvku blogu [D2 a D4: co je to pro?](https://blogs.technet.microsoft.com/janelewis/2006/09/18/d2-and-d4-what-is-it-for/).
+        Další informace o BurFlags, naleznete v příspěvku blogu [D2 a D4: Co je to pro? ](https://blogs.technet.microsoft.com/janelewis/2006/09/18/d2-and-d4-what-is-it-for/).
     * Pokud používáte replikace DFSR, proveďte kroky pro autoritativním obnovením. Proces je popsán v [vynutit autoritativní a neautoritativní synchronizaci adresáře SYSVOL replikovaného DFSR (jako "D4/D2 u služby FRS)](https://support.microsoft.com/kb/2218556).
 
         Můžete také použít funkce Powershellu. Další informace najdete v tématu [funkce Powershellu autoritativní a neautoritativní obnovení DFSR SYSVOL](https://blogs.technet.microsoft.com/thbouche/2013/08/28/dfsr-sysvol-authoritative-non-authoritative-restore-powershell-functions/).
@@ -174,7 +174,7 @@ Pokud předchozí podmínky splněny, je pravděpodobné, že řadič domény sp
 
     `HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\NTDS\Parameters\Repl Perform Initial Synchronizations`
 
-    Další informace najdete v tématu [Poradce při potížích s DNS Event ID 4013: DNS server se nepodařilo načíst AD integrované zóny DNS](https://support.microsoft.com/kb/2001093).
+    Další informace najdete v tématu [Poradce při potížích s 4013 ID události DNS: DNS server se nepodařilo načíst AD integrované zóny DNS](https://support.microsoft.com/kb/2001093).
 
 3. Zakažte požadavek na server globálního katalogu se ověření přihlášení uživatele k dispozici. K tomu, v místní řadič domény, nastavte následující klíč registru na **1**. Pokud DWORD neexistuje, můžete ho v části vytvořit **Lsa** uzlu.
 

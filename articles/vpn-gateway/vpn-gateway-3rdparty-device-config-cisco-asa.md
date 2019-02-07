@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: article
 ms.date: 10/19/2018
 ms.author: yushwang
-ms.openlocfilehash: f51a97e1493803998cfbdd81523e4e479b50346d
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.openlocfilehash: e575fac61a1c5d9351391d39d200b87e34ff26cd
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55697101"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55817236"
 ---
 # <a name="sample-configuration-cisco-asa-device-ikev2no-bgp"></a>Ukázková konfigurace: Zařízení Cisco ASA (IKEv2, bez BGP)
 Tento článek poskytuje ukázkové konfigurace pro připojení zařízení Cisco adaptivní zabezpečení zařízení (ASA) branám Azure VPN. V příkladu platí pro zařízení Cisco ASA s IKEv2 bez protokol BGP (Border Gateway). 
@@ -44,7 +44,7 @@ Azure VPN Gateway pomocí standardní sady protokolu IPsec/IKE navažte tunelech
 > Volitelně můžete zadat přesný kombinací kryptografické algoritmy a síly klíče pro konkrétní připojení, jak je popsáno v [informace o kryptografických požadavcích](vpn-gateway-about-compliance-crypto.md). Pokud chcete zadat přesné kombinací algoritmy a síly klíče, nezapomeňte použít odpovídající specifikace pro vaše zařízení VPN.
 
 ## <a name="single-vpn-tunnel"></a>Jedno tunelové propojení sítě VPN
-Tato konfigurace se skládá z jednoho tunelu S2S VPN mezi službou Azure VPN gateway a místní zařízení VPN. Volitelně můžete nakonfigurovat [protokolu BGP přes tunel VPN](#bgp).
+Tato konfigurace se skládá z jednoho tunelu S2S VPN mezi službou Azure VPN gateway a místní zařízení VPN. Volitelně můžete nakonfigurovat protokol BGP přes tunel VPN.
 
 ![Jeden tunel S2S VPN](./media/vpn-gateway-3rdparty-device-config-cisco-asa/singletunnel.png)
 

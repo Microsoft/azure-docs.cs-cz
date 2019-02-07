@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 05/25/2017
 ms.author: hrasheed
 ROBOTS: NOINDEX
-ms.openlocfilehash: cf7ef6f8e5dc157d3c3e89c9dfe3735c255694fa
-ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
+ms.openlocfilehash: 0a174c3de33b01f936eec599c1de68e2cebbf9c5
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53745053"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55820415"
 ---
 # <a name="run-mapreduce-samples-in-windows-based-hdinsight"></a>Spuštění ukázek MapReduce v HDInsight se systémem Windows
 [!INCLUDE [samples-selector](../../includes/hdinsight-run-samples-selector.md)]
@@ -54,7 +54,7 @@ V současné době mnoho lidí zvolte Apache Hivu a Apache Pig přes MapReduce. 
 ## <a name="hdinsight-sample-wordcount"></a>Word počet – Java
 K odeslání projektu MapReduce, nejprve vytvoříte definici úlohy MapReduce. V definici úlohy určete soubor jar program MapReduce a umístění souboru jar, který je **wasb:///example/jars/hadoop-mapreduce-examples.jar**, název třídy a argumentů.  Wordcount MapReduce program přebírá dva argumenty: zdrojový soubor, který slouží ke zjištění počtu slov a umístění pro výstup.
 
-Zdrojový kód najdete v [příloha A](#apendix-a---the-word-count-MapReduce-program-in-java).
+Zdrojový kód můžete najít v dodatku A.
 
 Postup vývoje MapReduce v Javě programu, najdete v článku – [programů MapReduce v Javě vyvíjet pro Apache Hadoop v HDInsight](hadoop/apache-hadoop-develop-deploy-java-mapreduce-linux.md)
 
@@ -135,7 +135,7 @@ Do té doby redukční funkci shromažďuje výstup řádkový [stdout] [ stdin-
 
 **Odeslání aplikace word count úloha streamování jazyka C#**
 
-* Postupujte podle pokynů v [Word počet – Java](#word-count-java)a nahraďte definici úlohy následující řádek:
+* Postupujte podle pokynů v počet slov – Java a nahraďte definici úlohy následující řádek:
 
     ```powershell
     $mrJobDefinition = New-AzureRmHDInsightStreamingMapReduceJobDefinition `
@@ -157,7 +157,7 @@ Skript uvedený pro tuto ukázku odešle soubor jar úlohy Hadoopu a nastavit a�
 
 **Odeslání úlohy estimator pi**
 
-* Postupujte podle pokynů v [Word počet – Java](#word-count-java)a nahraďte definici úlohy následující řádek:
+* Postupujte podle pokynů v počet slov – Java a nahraďte definici úlohy následující řádek:
 
     ```powershell
     $mrJobJobDefinition = New-AzureRmHDInsightMapReduceJobDefinition `
@@ -185,7 +185,7 @@ Ukázka každý odpovídá jedné z programů MapReduce popsané v úvodu vyžad
 
 **Odeslání úlohy**
 
-* Postupujte podle pokynů v [Word počet – Java](#word-count-java)a použijte následující definice úloh:
+* Postupujte podle pokynů v počet slov – Java a použijte následující definice úloh:
 
     ```powershell
     $teragen = New-AzureRmHDInsightMapReduceJobDefinition `

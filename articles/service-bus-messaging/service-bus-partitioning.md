@@ -7,14 +7,14 @@ manager: timlt
 editor: spelluru
 ms.service: service-bus-messaging
 ms.topic: article
-ms.date: 09/06/2018
+ms.date: 02/06/2019
 ms.author: aschhab
-ms.openlocfilehash: 48b7d7450503b27b5515e655be3f048f57c2238d
-ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
+ms.openlocfilehash: aaa8615c0358b89c02aad8241262320771e426a8
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54856583"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55818069"
 ---
 # <a name="partitioned-queues-and-topics"></a>Dělené fronty a témata
 
@@ -39,7 +39,7 @@ Dělené fronty a témata službou Azure Service Bus, pomocí sady Azure SDK ver
 
 ### <a name="standard"></a>Standard
 
-V zasílání zpráv úrovně Standard můžete vytvořit front služby Service Bus a témat v 1, 2, 3, 4 nebo velikosti 5 GB (výchozí hodnota je 1 GB). Service Bus s dělením povolená, vytvoří 4 kopie (4 oddíly) entity za každý GB zadáte. V důsledku toho pokud vytvoříte frontu, která velikost je 5 GB, s 4 oddíly maximální velikost fronty se stane (5 \* 4) = 20 GB. Zobrazí maximální velikost dělená fronta nebo téma zobrazením vstupu [webu Azure portal][Azure portal]v **přehled** okno pro danou entitu.
+V zasílání zpráv úrovně Standard můžete vytvořit front služby Service Bus a témat v 1, 2, 3, 4 nebo velikosti 5 GB (výchozí hodnota je 1 GB). S dělením povolený, Service Bus vytváří 16 kopie (16 oddíly) entity za každý GB zadáte. V důsledku toho pokud vytvoříte frontu, která velikost je 5 GB, s 16 oddíly maximální velikost fronty se stane (5 \* 16) = 80 GB. Zobrazí maximální velikost dělená fronta nebo téma zobrazením vstupu [webu Azure portal][Azure portal]v **přehled** okno pro danou entitu.
 
 ### <a name="premium"></a>Premium
 

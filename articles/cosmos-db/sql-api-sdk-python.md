@@ -8,12 +8,12 @@ ms.devlang: python
 ms.topic: reference
 ms.date: 11/29/2018
 ms.author: sngun
-ms.openlocfilehash: 01f6fe3ef309f19896befe61512d524a8543745f
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: 9a240e15049d1acd7344f3ecf7dbf41ff2c3850d
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54041454"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55818783"
 ---
 # <a name="azure-cosmos-db-python-sdk-for-sql-api-release-notes-and-resources"></a>Azure Cosmos DB Python SDK pro rozhraní SQL API: Zpráva k vydání verze a prostředky
 > [!div class="op_single_selector"]
@@ -30,20 +30,14 @@ ms.locfileid: "54041454"
 > * [BulkExecutor – .NET](sql-api-sdk-bulk-executor-dot-net.md)
 > * [BulkExecutor – Java](sql-api-sdk-bulk-executor-java.md)
 
-<table>
-
-<tr><td>**Stáhnout sadu SDK**</td><td>[PyPI](https://pypi.org/project/azure-cosmos)</td></tr>
-
-<tr><td>**Dokumentace k rozhraní API**</td><td>[Referenční dokumentace rozhraní Python API](https://docs.microsoft.com/python/api/overview/azure/cosmosdb?view=azure-python)</td></tr>
-
-<tr><td>**Pokyny k instalaci sady SDK**</td><td>[Pokyny k instalaci sady Python SDK](https://github.com/Azure/azure-cosmos-python)</td></tr>
-
-<tr><td>**Přispívat k sadě SDK**</td><td>[GitHub](https://github.com/Azure/azure-cosmos-python)</td></tr>
-
-<tr><td>**Začínáme**</td><td>[Začínáme s využitím Python SDK](sql-api-python-application.md)</td></tr>
-
-<tr><td>**Aktuální podporovanou platformu**</td><td>[Python 2.7](https://www.python.org/downloads/) a [Python 3.5](https://www.python.org/downloads/)</td></tr>
-</table></br>
+| |  |
+|---|---|
+|**Stáhnout sadu SDK**|[PyPI](https://pypi.org/project/azure-cosmos)|
+|**Dokumentace k rozhraní API**|[Referenční dokumentace rozhraní Python API](https://docs.microsoft.com/python/api/overview/azure/cosmosdb?view=azure-python)|
+|**Pokyny k instalaci sady SDK**|[Pokyny k instalaci sady Python SDK](https://github.com/Azure/azure-cosmos-python)|
+|**Přispívat k sadě SDK**|[GitHub](https://github.com/Azure/azure-cosmos-python)|
+|**Začínáme**|[Začínáme s využitím Python SDK](sql-api-python-application.md)|
+|**Aktuální podporovanou platformu**|[Python 2.7](https://www.python.org/downloads/) a [Python 3.5](https://www.python.org/downloads/)|
 
 ## <a name="release-notes"></a>Poznámky k verzi
 
@@ -177,7 +171,7 @@ Služba odmítne všechny žádosti do služby Cosmos DB pomocí vyřazeno sady 
 | [1.6.0](#1.6.0) |29. března 2016 |--- |
 | [1.5.0](#1.5.0) |03. ledna 2016 |--- |
 | [1.4.2](#1.4.2) |06. října 2015 |--- |
-| [1.4.1](#1.4.1) |06. října 2015 |--- |
+| 1.4.1 |06. října 2015 |--- |
 | [1.2.0](#1.2.0) |06. srpna 2015 |--- |
 | [1.1.0](#1.1.0) |09. července 2015 |--- |
 | [1.0.1](#1.0.1) |25. května 2015 |--- |

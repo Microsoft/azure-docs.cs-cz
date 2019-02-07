@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 07/12/2017
 ms.author: robb
 ms.subservice: diagnostic-extension
-ms.openlocfilehash: 305aa28127e453c01de9b55ab6cb0ff3471afad9
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: f92b2589afc8bf4eba1bfdf421ab27300b41aa91
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54473805"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55822132"
 ---
 # <a name="azure-diagnostics-troubleshooting"></a>Řešení potíží diagnostiky Azure
 Tento článek popisuje informace o odstraňování potíží, které se týkají pomocí Azure Diagnostics. Další informace o diagnostice Azure najdete v tématu [přehled Azure Diagnostics](diagnostics-extension-overview.md).
@@ -105,7 +105,7 @@ Nejčastější příčinou, které vůbec neobjeví data událostí je, že inf
 
 Řešení: Opravit konfiguraci diagnostiky a znovu nainstalujte diagnostiky.
 
-Pokud účet úložiště je správně nakonfigurované, vzdálený přístup k počítači a ověřte, zda jsou spuštěny DiagnosticsPlugin.exe a MonAgentCore.exe. Pokud neběží, postupujte podle kroků v [Azure Diagnostics nespouští](#azure-diagnostics-is-not-starting).
+Pokud účet úložiště je správně nakonfigurované, vzdálený přístup k počítači a ověřte, zda jsou spuštěny DiagnosticsPlugin.exe a MonAgentCore.exe. Pokud neběží, postupujte podle kroků v diagnostice Azure nespouští.
 
 Pokud jsou spuštěné procesy, přejděte na [data získávání zachytávají v místním prostředí?](#is-data-getting-captured-locally) a postupujte podle pokynů.
 
@@ -119,7 +119,7 @@ Konfigurace diagnostiky obsahuje pokyny pro určitý typ dat, které se mají sh
 - **Čítače výkonu**: Otevřete perfmon a čítač.
 
 - **Protokoly trasování**:  Vzdálený přístup k virtuálnímu počítači a přidejte TextWriterTraceListener do konfiguračního souboru aplikace.  Zobrazit https://msdn.microsoft.com/library/sk36c28t.aspx nastavení naslouchacího procesu text.  Ujistěte se, `<trace>` element má `<trace autoflush="true">`.<br />
-Pokud nevidíte protokoly trasování se generuje, přečtěte si téma [Další informace o protokolech trasování chybí](#more-about-trace-logs-missing).
+Pokud nevidíte protokoly trasování se generuje, další informace o protokolech trasování chybí.
 
 - **Trasování ETW**: Vzdálený přístup k virtuálnímu počítači a nainstalujte nástroje PerfView.  V PerfView, spusťte **souboru** > **uživatelský příkaz** > **naslouchání etwprovder1** > **etwprovider2**, a tak dále. **Naslouchání** příkaz je velká a malá písmena a nesmí být mezery mezi čárkou oddělený seznam zprostředkovatelů trasování událostí pro Windows. Příkaz selže-li, můžete vybrat **protokolu** tlačítko v pravém dolním rohu nástroje Perfview naleznete v tématu co proběhl pokus o spuštění a jaké výsledkem bylo.  Za předpokladu, že je správný vstup, otevře nové okno. Během několika sekund můžete začít zobrazení trasování ETW.
 
@@ -127,13 +127,13 @@ Pokud nevidíte protokoly trasování se generuje, přečtěte si téma [Další
 
 #### <a name="is-data-getting-captured-locally"></a>Je dat získávání zachytávají v místním prostředí?
 V dalším kroku zkontrolujte, zda že je získat data zachytávají v místním prostředí.
-Jsou data uložená místně v `*.tsf` soubory [místní úložiště pro diagnostická data](#log-artifacts-path). Získat shromažďují různé druhy protokoly v různých `.tsf` soubory. Názvy se podobají názvy tabulek ve službě Azure Storage.
+Jsou data uložená místně v `*.tsf` souborů pro diagnostická data v místním úložišti. Získat shromažďují různé druhy protokoly v různých `.tsf` soubory. Názvy se podobají názvy tabulek ve službě Azure Storage.
 
 Například `Performance Counters` získat shromážděných v `PerformanceCountersTable.tsf`. Získání protokolů událostí shromažďovaných `WindowsEventLogsTable.tsf`. Postupujte podle pokynů v [místního protokolu extrakce](#local-log-extraction) oddílu otevřete soubory místního shromažďování dat a ověřte, jestli je získání shromažďují na disku.
 
 Pokud nevidíte získávání místně shromažďovaných protokolů a už jste ověřili, že hostitel generuje data, máte pravděpodobně problém konfigurace. Pečlivě zkontrolujte konfiguraci.
 
-Projděte si také konfigurace, který byl vygenerován pro MonitoringAgent [MaConfig.xml](#log-artifacts-path). Ověřte, zda je oddíl, který popisuje zdroj relevantní protokolu. Ověřte, že není ztraceno v překladu mezi konfiguraci diagnostiky a konfiguraci agenta monitorování.
+Také zkontrolujte konfiguraci, která byla vygenerována MonitoringAgent MaConfig.xml. Ověřte, zda je oddíl, který popisuje zdroj relevantní protokolu. Ověřte, že není ztraceno v překladu mezi konfiguraci diagnostiky a konfiguraci agenta monitorování.
 
 #### <a name="is-data-getting-transferred"></a>Získávání přenosu dat?
 Pokud jste ověřili, že data se získávání zachytávají v místním prostředí, ale stále nevidíte ji v účtu úložiště, proveďte následující kroky:
@@ -142,10 +142,10 @@ Pokud jste ověřili, že data se získávání zachytávají v místním prost�
 
 - Ověřte, zda je účet úložiště zadaný správný. Ujistěte se, že nemáte omezení sítě, které součásti zabránit v dosažení koncové body veřejného úložiště. Jedním ze způsobů, který je pro vzdálený přístup k počítači a zkuste psát do stejného účtu úložiště sami.
 
-- A konečně můžete si prohlédnout jaké chyby byly hlášeny pomocí agenta monitorování. Agent monitorování zapsalo protokolům `maeventtable.tsf`, který se nachází v [místní úložiště pro diagnostická data](#log-artifacts-path). Postupujte podle pokynů [místního protokolu extrakce](#local-log-extraction) části pro otevření tohoto souboru. Potom se pokuste určete, jestli jsou `errors` označující selhání pro čtení k místním souborům zápis do úložiště.
+- A konečně můžete si prohlédnout jaké chyby byly hlášeny pomocí agenta monitorování. Agent monitorování zapsalo protokolům `maeventtable.tsf`, který se nachází v místním úložišti pro diagnostická data. Postupujte podle pokynů [místního protokolu extrakce](#local-log-extraction) části pro otevření tohoto souboru. Potom se pokuste určete, jestli jsou `errors` označující selhání pro čtení k místním souborům zápis do úložiště.
 
 ### <a name="capturing-and-archiving-logs"></a>Zaznamenávání a archivace protokoly
-Pokud přemýšlíte o kontaktovat podporu, je první věcí, kterou můžete být požádáni shromažďování protokolů z vašeho počítače. Tímto způsobem, že sami, můžete ušetřit čas. Spustit `CollectGuestLogs.exe` nástroj na [cesta nástroje protokolu kolekce](#log-artifacts-path). Generuje soubor .zip soubor s všechny příslušné Azure protokoly ve stejné složce.
+Pokud přemýšlíte o kontaktovat podporu, je první věcí, kterou můžete být požádáni shromažďování protokolů z vašeho počítače. Tímto způsobem, že sami, můžete ušetřit čas. Spustit `CollectGuestLogs.exe` nástroj v cestě nástroje protokolu kolekce. Generuje soubor .zip soubor s všechny příslušné Azure protokoly ve stejné složce.
 
 ## <a name="diagnostics-data-tables-not-found"></a>Tabulky diagnostiky dat nebyl nalezen
 Pomocí následujícího kódu se s názvem tabulky ve službě Azure storage, které obsahují události trasování událostí pro Windows:
@@ -213,7 +213,7 @@ Tento kód vytvoří čtyři tabulky:
 ### <a name="how-to-check-diagnostics-extension-configuration"></a>Návod k ověření konfigurace diagnostického rozšíření
 Nejjednodušší způsob, jak zkontrolovat konfiguraci rozšíření je přejít k [Azure Resource Exploreru](http://resources.azure.com), a potom přejděte na virtuální počítače nebo cloudové služby where rozšíření Azure Diagnostics (IaaSDiagnostics / PaaDiagnostics) je.
 
-Alternativně použijte vzdálenou plochu do počítače a podívejte se, která je popsána v souboru konfigurace diagnostiky Azure [protokolu část cesty artefaktů](#log-artifacts-path).
+Alternativně použijte vzdálenou plochu do počítače a podívejte se na soubor konfigurace diagnostiky Azure, který je popsaný v části cesta protokolu artefakty.
 
 V obou případech vyhledejte **Microsoft.Azure.Diagnostics**a potom **xmlCfg** nebo **WadCfg** pole.
 

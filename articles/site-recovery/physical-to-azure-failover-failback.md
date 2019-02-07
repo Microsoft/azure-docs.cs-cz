@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 11/27/2018
 ms.author: raynew
-ms.openlocfilehash: d105968d13960409a60e2fde9c811a042f444d8f
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 4e787ab134caee1a7f9a26e46f698f2fe9807d83
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52848625"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55813671"
 ---
 # <a name="fail-over-and-fail-back-physical-servers-replicated-to-azure"></a>Převzetí služeb při selhání a navrácení služeb po obnovení fyzických serverů replikovaných do Azure
 
@@ -24,10 +24,10 @@ Fyzických serverů replikovaných do Azure pomocí Site Recovery můžete před
 
 Převzetí služeb při selhání a navrácení služeb po obnovení probíhá ve čtyřech fázích:
 
-1. **Převzetí služeb při selhání do Azure:** Převezmou se služby při selhání počítačů z místní lokality do Azure.
-2. **Znovunastavení ochrany virtuálních počítačů Azure**: znovunastavení ochrany virtuálních počítačů Azure tak, aby se začaly replikovat zpět do místních virtuálních počítačů VMware.
-3. **Převzetí služeb při selhání do místní lokality:** Spustí se převzetí služeb při selhání, které zajistí navrácení služeb po obnovení z Azure.
-4. **Znovunastavení ochrany místních virtuálních počítačů**: po zpět navrácení dat znovunastavení ochrany virtuálních počítačů VMware v místním při selhání zpátky do tak, aby se začaly replikovat do Azure.
+1. **Převzetí služeb při selhání do Azure**: Selhání počítačů z místní lokality do Azure.
+2. **Znovunastavení ochrany virtuálních počítačů Azure**: Znovunastavení ochrany virtuálních počítačů Azure tak, aby se začaly replikovat zpět do místních virtuálních počítačů VMware.
+3. **Převzetí služeb při selhání do místního**: Spuštění převzetí služeb při selhání, selhání obnovení z Azure.
+4. **Znovunastavení ochrany místních virtuálních počítačů**: Po zpět navrácení dat znovunastavení ochrany virtuálních počítačů VMware v místním při selhání zpátky do tak, aby se začaly replikovat do Azure.
 
 ## <a name="verify-server-properties"></a>Zkontrolujte vlastnosti serveru
 
@@ -36,7 +36,7 @@ Zkontrolujte vlastnosti serveru a ujistěte se, že je v souladu s [požadavky s
 1. V **chráněné položky**, klikněte na tlačítko **replikované položky**a vyberte počítač.
 
 2. V **replikovaná položka** podokně je souhrn informací o počítači, stav, a nejnovější dostupné body obnovení. Kliknutím na **Vlastnosti** zobrazíte další podrobnosti.
-3. V části **Výpočty a síť** můžete upravit název Azure, skupinu prostředků, cílovou velikost, [skupinu dostupnosti](../virtual-machines/windows/tutorial-availability-sets.md) a [nastavení spravovaného disku](#managed-disk-considerations).
+3. V **výpočty a síť**, můžete upravit název Azure, skupinu prostředků, cílovou velikost, [dostupnosti](../virtual-machines/windows/tutorial-availability-sets.md)a nastavení spravovaného disku
 4. Můžete zobrazit a upravit nastavení sítě, včetně sítě a podsítě, do které se virtuální počítače Azure umístí po převzetí služeb při selhání, a IP adresy, která se jim přiřadí.
 5. V **disky**, zobrazí se informace o počítači operačního systému a datové disky.
 
@@ -44,10 +44,10 @@ Zkontrolujte vlastnosti serveru a ujistěte se, že je v souladu s [požadavky s
 
 1. V části **Nastavení** > **Replikované položky** klikněte na počítač a pak na **Převzetí služeb při selhání**.
 2. V části **Převzetí služeb při selhání** vyberte **Bod obnovení**, ke kterému se mají převzít služby při selhání. Můžete použít jednu z následujících možností:
-   - **Nejnovější:** Tato možnost nejprve zpracuje veškerá data odeslaná do Site Recovery. Poskytuje nejnižší cíl bodu obnovení (RPO), protože se virtuální počítač Azure vytvoří teprve tehdy, až převzetí služeb při selhání bude mít veškerá data, která se do Site Recovery replikovala při aktivaci převzetí služeb při selhání.
+   - **Nejnovější**: Tato možnost nejprve zpracuje veškerá data odeslaná do Site Recovery. Poskytuje nejnižší cíl bodu obnovení (RPO), protože se virtuální počítač Azure vytvoří teprve tehdy, až převzetí služeb při selhání bude mít veškerá data, která se do Site Recovery replikovala při aktivaci převzetí služeb při selhání.
    - **Nejnovější zpracovaný**: Tato možnost převezme služby při selhání počítače k nejnovějšímu bodu obnovení zpracovanému službou Site Recovery. Tato možnost poskytuje nízkou plánovanou dobu obnovení (RTO), protože se neztrácí žádný čas zpracováním nezpracovaných dat.
    - **Nejnovější konzistentní vzhledem k**: Tato možnost převezme služby při selhání počítače do bodu nejnovější konzistentní vzhledem k obnovení zpracovanému službou Site Recovery.
-   - **Vlastní:** Zadáte vlastní bod obnovení.
+   - **Vlastní**: Zadejte bod obnovení.
 
 3. Vyberte **před spuštěním převzetí služeb při selhání vypnout počítač** Pokud chcete, aby Site Recovery se pokouší vypnout zdrojový počítač, před aktivací převzetí služeb. Převzetí služeb při selhání bude pokračovat i v případě, že se vypnutí nepovede. Průběh převzetí služeb při selhání můžete sledovat na stránce **Úlohy**.
 4. Pokud jste připraveni na připojení k virtuálnímu počítači Azure, připojte se k němu, abyste ho po převzetí služeb při selhání ověřili.

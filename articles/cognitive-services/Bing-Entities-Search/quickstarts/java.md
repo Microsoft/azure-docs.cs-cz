@@ -10,12 +10,12 @@ ms.subservice: bing-entity-search
 ms.topic: quickstart
 ms.date: 02/01/2019
 ms.author: aahi
-ms.openlocfilehash: befcdca4dc98e3c69868834daf77d8d7810af3dd
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.openlocfilehash: 5adf40648118f8eb6c33df80ba3e30208f1b2059
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55749112"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55813394"
 ---
 # <a name="quickstart-send-a-search-request-to-the-bing-entity-search-rest-api-using-java"></a>Rychlý start: Odeslat žádost o vyhledávání Bingu Entity Search REST API pomocí Javy
 
@@ -215,7 +215,7 @@ Aplikace je sice napsaná v Javě, ale rozhraní API je webová služba RESTful 
 }
 ```
 
-[Zpět na začátek](#HOLTop)
+[Zpět na začátek](#main)
 
 ## <a name="next-steps"></a>Další postup
 

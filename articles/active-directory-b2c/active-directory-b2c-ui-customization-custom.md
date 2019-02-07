@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 12/18/2018
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: 3c3b7d73de9a0e7e72351687af16b98b11f9581b
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 4cf7c0cdd066879edccf7869ae3c8de0191f1d2b
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55188487"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55818868"
 ---
 # <a name="customize-the-user-interface-of-your-application-using-a-custom-policy-in-azure-active-directory-b2c"></a>Přizpůsobení uživatelského rozhraní aplikace pomocí vlastních zásad v Azure Active Directory B2C
 
@@ -86,7 +86,7 @@ Vytvoření veřejného kontejneru v úložišti objektů Blob, postupujte takto
 5. Klikněte na tlačítko **$root** otevřete nový kontejner.
 6. Klikněte na **Odeslat**.
 7. Klikněte na ikonu složky vedle **vyberte soubor**.
-8. Přejděte na **přizpůsobit ui.html**, který jste vytvořili dříve v [přizpůsobení uživatelského rozhraní stránky](#the-page-ui-customization-feature) oddílu.
+8. Přejděte na **přizpůsobit ui.html**, který jste vytvořili dříve v části vlastní nastavení uživatelského rozhraní stránky.
 9. Klikněte na **Odeslat**.
 10. Vyberte vlastní ui.html objekt blob, který jste nahráli.
 11. Vedle položky **URL**, klikněte na tlačítko **kopírování**.
@@ -175,7 +175,7 @@ Složka sample_templates/wingtip obsahuje následující soubory HTML:
 | *unified.html* | Tento soubor můžete použijte jako šablonu pro jednotné stránku registrace nebo přihlášení. |
 | *updateprofile.html* | Tento soubor můžete použijte jako šablonu pro stránku aktualizace profilu. |
 
-V [upravit vaše vlastní zásady registrace / přihlášení oddíl](#modify-your-sign-up-or-sign-in-custom-policy), nakonfigurovat definici obsahu pro `api.idpselections`. Kompletní obsah ID definice, které jsou rozpoznány modulem pro architekturu rozhraní identit Azure AD B2C a jejich popisy jsou v následující tabulce:
+V změnit váš vlastní zásady registrace / přihlášení části jste nakonfigurovali definici obsahu pro `api.idpselections`. Kompletní obsah ID definice, které jsou rozpoznány modulem pro architekturu rozhraní identit Azure AD B2C a jejich popisy jsou v následující tabulce:
 
 | ID obsahu definice | Popis | 
 |-----------------------|-------------|

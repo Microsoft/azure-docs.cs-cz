@@ -10,16 +10,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 01/24/2019
+ms.date: 02/06/2019
 ms.author: mabrigg
 ms.reviewer: xiaofmao
 ms.lastreviewed: 01/24/2019
-ms.openlocfilehash: d1bddc8331fc1a9ded37949a8065636947074852
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 9debcd121cbbde626758abccfe838abda12ad840
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55246725"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55822829"
 ---
 # <a name="connect-storage-explorer-to-an-azure-stack-subscription-or-a-storage-account"></a>Připojení Průzkumníka služby storage k předplatnému Azure Stack nebo účet úložiště
 
@@ -45,20 +45,15 @@ Pro Azure Stack Development Kit (ASDK), je potřeba vyexportovat kořenový cert
 
 ### <a name="export-and-then-import-the-azure-stack-certificate"></a>Exportovat a importovat certifikát služby Azure Stack
 
+Exportovat a importovat pro ASDK certifikátu služby Azure Stack. Pro integrovaný systém je veřejně podepsaný certifikát. Tento krok není tedy nutné při nastavování připojení Průzkumníka služby Storage do služby Azure Stack integrovaný systém.
+
 1. Otevřít `mmc.exe` na hostitelském počítači Azure Stack nebo místním počítači pomocí připojení VPN ke službě Azure Stack. 
 
 2. V **souboru**vyberte **Přidat/odebrat modul Snap-in**a pak přidejte **certifikáty** ke správě **Můj uživatelský účet**.
 
-3.  V části **Console Root\Certificated (Local Computer) \Trusted Root Certification Authorities\Certificates**.
+3.  V části **Console Root\Certificated (Local Computer) \Trusted Root Certification Authorities\Certificates**. Najít **AzureStackSelfSignedRootCert**.
 
-    - ASDK, Najít **AzureStackSelfSignedRootCert**.
-
-        ![Načtení kořenového certifikátu služby Azure Stack pomocí mmc.exe](./media/azure-stack-storage-connect-se/add-certificate-azure-stack.png)
-
-    - Integrovaný systém vyhledejte kořenový certifikát externí certifikáty. 
-    
-        ![Načtení kořenového certifikátu služby Azure Stack pomocí mmc.exe](./media/azure-stack-storage-connect-se/azure-stack-storage-cert-location-is.png)
-        
+    ![Načtení kořenového certifikátu služby Azure Stack pomocí mmc.exe](./media/azure-stack-storage-connect-se/add-certificate-azure-stack.png)
 
 4. Klikněte pravým tlačítkem na certifikát, vyberte **všechny úkoly** > **exportovat**a pak postupujte podle pokynů a vyexportujte certifikát s **kódování Base-64 X.509 (. CER)**.
 

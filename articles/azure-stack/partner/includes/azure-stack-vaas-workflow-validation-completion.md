@@ -4,11 +4,13 @@ ms.service: azure-stack
 ms.topic: include
 ms.date: 11/26/2018
 ms.author: mabrigg
-ms.openlocfilehash: 4c49a69080661b6659335cf48e32a15e99e89fbf
-ms.sourcegitcommit: 922f7a8b75e9e15a17e904cc941bdfb0f32dc153
+ms.reviewer: johnhas
+ms.lastreviewed: 11/26/2018
+ms.openlocfilehash: 21035f8099510253dea5adcb62105f4f7ee2ac2c
+ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52336097"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55807126"
 ---
 Řešení se považuje za ověření po dokončení všechny testy s výsledkem **Succeeded**. Pokud jakýkoli test skončí s výsledkem **neúspěšné**, chybu v [Microsoft Collaborate](https://aka.ms/collaborate) a uvědomit společnost Microsoft odesláním e-mailu [ vaashelp@microsoft.com ](mailto:vaashelp@microsoft.com).

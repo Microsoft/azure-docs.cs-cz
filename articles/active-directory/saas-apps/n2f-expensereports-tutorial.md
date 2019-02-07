@@ -1,5 +1,5 @@
 ---
-title: 'Kurz: Integrace Azure Active Directory s N2F - výdajů sestavy | Dokumentace Microsoftu'
+title: 'Kurz: Integrace Azure Active Directory s N2F - sestavy výdajů | Dokumentace Microsoftu'
 description: Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a N2F - sestavy výdajů.
 services: active-directory
 documentationCenter: na
@@ -14,14 +14,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/08/2018
 ms.author: jeedes
-ms.openlocfilehash: 27fb299bc3bbbbf75bdf40ae02eac627763ce6d4
-ms.sourcegitcommit: d0ea925701e72755d0b62a903d4334a3980f2149
+ms.openlocfilehash: d8d3d9c14ee1eaa5e5d6dc3245c0d4071306f12a
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/09/2018
-ms.locfileid: "40006326"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55811626"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-n2f---expense-reports"></a>Kurz: Integrace Azure Active Directory s N2F - výdajů sestavy
+# <a name="tutorial-azure-active-directory-integration-with-n2f---expense-reports"></a>Kurz: Integrace Azure Active Directory s N2F - sestavy výdajů
 
 V tomto kurzu se dozvíte, jak integrovat N2F - sestavy výdajů se službou Azure Active Directory (Azure AD).
 
@@ -61,7 +61,7 @@ Konfigurace integrace N2F - vyúčtování do služby Azure AD, budete muset př
 
 **Chcete-li přidat N2F - vyúčtování z galerie, postupujte následovně:**
 
-1. V ** [webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu. 
+1. V **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu. 
 
     ![Tlačítko Azure Active Directory][1]
 
@@ -85,11 +85,11 @@ Pro jednotné přihlašování pro práci služba Azure AD potřebuje vědět, c
 
 Nakonfigurovat a otestovat Azure AD jednotné přihlašování s N2F - sestavy výdajů, které potřebujete k dokončení následujících stavebních bloků:
 
-1. **[Konfigurovat Azure AD Single Sign-On](#configure-azure-ad-single-sign-on) ** – Pokud chcete, aby uživatelé mohli tuto funkci používat.
-2. **[Vytvořit testovacího uživatele Azure AD](#create-an-azure-ad-test-user) ** – Pokud chcete otestovat Azure AD jednotné přihlašování s Britta Simon.
-3. **[Vytvoření N2F – vyúčtování testovací uživatele](#create-a-n2f---expense-reports-test-use) ** – aby protějšek Britta Simon v N2F - sestavy výdajů připojený k Azure AD reprezentace uživatele.
-4. **[Přiřadit uživatele Azure AD](#assign-the-azure-ad-test-user) ** – Pokud chcete povolit Britta Simon používat Azure AD jednotného přihlašování.
-5. **[Otestovat jednotné přihlašování](#test-single-sign-on) ** – Pokud chcete ověřit, jestli funguje v konfiguraci.
+1. **[Konfigurovat Azure AD Single Sign-On](#configure-azure-ad-single-sign-on)**  – Pokud chcete, aby uživatelé mohli tuto funkci používat.
+2. **[Vytvořit testovacího uživatele Azure AD](#create-an-azure-ad-test-user)**  – Pokud chcete otestovat Azure AD jednotné přihlašování s Britta Simon.
+3. **Vytvoření N2F – vyúčtování testovací uživatele** – aby protějšek Britta Simon v N2F - sestavy výdajů připojený k Azure AD reprezentace uživatele.
+4. **[Přiřadit uživatele Azure AD](#assign-the-azure-ad-test-user)**  – Pokud chcete povolit Britta Simon používat Azure AD jednotného přihlašování.
+5. **[Otestovat jednotné přihlašování](#test-single-sign-on)**  – Pokud chcete ověřit, jestli funguje v konfiguraci.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Konfigurace služby Azure AD jednotného přihlašování
 
@@ -211,7 +211,7 @@ Přihlaste se k N2F - vyúčtování, Azure AD uživatelům umožnit, musí být
 
     ![N2F - vyúčtování konfigurace](./media/n2f-expensereports-tutorial/user3.png)
 
-    a. V **e-mailová adresa** textového pole zadejte e-mailovou adresu uživatele, jako je ** brittasimon@contoso.com **.
+    a. V **e-mailová adresa** textového pole zadejte e-mailovou adresu uživatele, jako je **brittasimon@contoso.com**.
 
     b. V **křestní jméno** textového pole zadejte jméno uživatele, jako je **Britta**.
 
@@ -254,7 +254,7 @@ V této části povolíte Britta Simon používat jednotné přihlašování Azu
 
 7. Klikněte na tlačítko **přiřadit** tlačítko **přidat přiřazení** dialogového okna.
 
-### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování
+### <a name="test-single-sign-on"></a>Test jednotného přihlašování
 
 V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 

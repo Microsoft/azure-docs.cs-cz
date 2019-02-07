@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 01/11/2017
 ms.author: maghan
-ms.openlocfilehash: 32be473ab93231805cdae097e3e984a2e74da973
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 8c12190e3c34c3294d2735fdd228aafbf6073f12
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51233078"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55820109"
 ---
 # <a name="use-powershell-to-create-an-azure-vm-with-a-native-mode-report-server"></a>Použití PowerShellu k vytvoření virtuálního počítače Azure se serverem sestav v nativním režimu
 > [!IMPORTANT] 
@@ -38,7 +38,7 @@ Toto téma popisuje a provede nasazení a konfigurace serveru sestav v nativním
   
   * Ověření základní limitu vašeho předplatného na webu Azure Portal, klikněte na nastavení v levém podokně a pak klikněte na využití v horní nabídce.
   * Chcete-li zvýšit kvótu jader, obraťte se na [podpory Azure](https://azure.microsoft.com/support/options/). Informace o velikosti virtuálních počítačů, naleznete v tématu [velikostí virtuálních počítačů pro Azure](../sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
-* **Skripty Windows Powershellu**: tématu se předpokládá, že máte praktické znalosti základní prostředí Windows PowerShell. Další informace o použití prostředí Windows PowerShell naleznete v následujících tématech:
+* **Skripty Windows Powershellu**: V tématu se předpokládá, že máte praktické znalosti základní prostředí Windows PowerShell. Další informace o použití prostředí Windows PowerShell naleznete v následujících tématech:
   
   * [Spuštění Windows Powershellu v systému Windows Server](https://docs.microsoft.com/powershell/scripting/setup/starting-windows-powershell)
   * [Začínáme s prostředím Windows PowerShell](https://technet.microsoft.com/library/hh857337.aspx)
@@ -56,14 +56,14 @@ Toto téma popisuje a provede nasazení a konfigurace serveru sestav v nativním
     ![nový virtuální počítač z Galerie](./media/virtual-machines-windows-classic-ps-sql-report/IC692020.gif)
 5. Klikněte na tlačítko **SQL Server 2014 RTM Standard – Windows Server 2012 R2** a poté klikněte na šipku pokračujte.
    
-    ![další](./media/virtual-machines-windows-classic-ps-sql-report/IC692021.gif)
+    ![Další](./media/virtual-machines-windows-classic-ps-sql-report/IC692021.gif)
    
     Pokud potřebujete data služby Reporting Services řízené funkce předplatných, zvolte **SQL serveru 2014 RTM Enterprise, Windows Server 2012 R2**. Další informace o edicích systému SQL Server a podporovaných funkcích najdete v tématu [funkce, které jsou podporovány edice systému SQL Server 2012](https://msdn.microsoft.com/library/cc645993.aspx#Reporting).
 6. Na **konfigurace virtuálního počítače** stránky, upravte následující pole:
    
    * Pokud existuje více než jeden **datum vydání verze**, vyberte nejnovější verzi.
-   * **Název virtuálního počítače**: název počítače se také používá na další stránce konfiguraci jako výchozí název cloudové služby DNS. Název DNS musí být jedinečný ve službě Azure. Vezměte v úvahu konfigurace virtuálního počítače s názvem, který popisuje, co se virtuální počítač používat. Například ssrsnativecloud.
-   * **Úroveň**: Standard
+   * **Název virtuálního počítače**: Název počítače se také používá na další stránce konfigurace jako výchozí název cloudové služby DNS. Název DNS musí být jedinečný ve službě Azure. Vezměte v úvahu konfigurace virtuálního počítače s názvem, který popisuje, co se virtuální počítač používat. Například ssrsnativecloud.
+   * **Tier**: Standard
    * **Velikost: A3** je doporučená velikost virtuálního počítače pro úlohy SQL serveru. Pokud virtuální počítač slouží pouze jako serveru sestav, je dostatečná velikost virtuálního počítače pro A2, pokud server sestav vyskytne velkých úloh. Informace o cenách virtuálních počítačů, naleznete v tématu [ceny Virtual Machines](https://azure.microsoft.com/pricing/details/virtual-machines/).
    * **Nové uživatelské jméno**: název zadáte je vytvořen jako správce na virtuálním počítači.
    * **Nové heslo** a **potvrďte**. Toto heslo se používá pro nový účet správce a je doporučeno používat silné heslo.
@@ -72,14 +72,14 @@ Toto téma popisuje a provede nasazení a konfigurace serveru sestav v nativním
    
    * **Cloudová služba**: vyberte **vytvořit novou Cloudovou službu**.
    * **Název DNS služby v cloudu**: Toto je veřejný název DNS cloudové služby, která souvisí s virtuálním Počítačem. Výchozí název je název, který jste zadali pro název virtuálního počítače. Pokud v dalších krocích tohoto tématu vytvořit důvěryhodný certifikát SSL a potom název DNS se používá pro hodnotu vlastnosti "**vydat**" certifikátu.
-   * **Oblast/spřažení skupiny/virtuální síť**: Vyberte oblast nejbližší vašim koncovým uživatelům.
-   * **Účet úložiště**: použít účet automaticky generované úložiště.
-   * **Skupina dostupnosti**: žádné.
+   * **Oblast nebo skupina vztahů/virtuální sítě**: Vyberte oblast nejbližší vašim koncovým uživatelům.
+   * **Účet úložiště**: Použijte účet automaticky generované úložiště.
+   * **Skupina dostupnosti**: Žádné.
    * **Koncové body** zachovat **vzdálené plochy** a **Powershellu** koncových bodů a potom přidat buď HTTP nebo HTTPS koncového bodu, v závislosti na vašem prostředí.
      
-     * **HTTP**: výchozí veřejné a soukromé porty jsou **80**. Všimněte si, že používáte privátní port než 80, upravte **$HTTPport = 80** ve skriptu http.
-     * **HTTPS**: výchozí veřejné a soukromé porty jsou **443**. Osvědčeným postupem zabezpečení je změnit privátní port a konfiguraci brány firewall a server sestav použít privátní port. Další informace o koncových bodech najdete v tématu [jak nastavit komunikaci s virtuálním počítačem](../classic/setup-endpoints.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json). Všimněte si, že pokud používáte jiný port než 443, změňte parametr **$HTTPsport = 443** ve skriptu HTTPS.
-   * Klikněte na tlačítko Další. ![další](./media/virtual-machines-windows-classic-ps-sql-report/IC692021.gif)
+     * **HTTP**: Výchozí veřejné a soukromé porty jsou **80**. Všimněte si, že používáte privátní port než 80, upravte **$HTTPport = 80** ve skriptu http.
+     * **HTTPS**: Výchozí veřejné a soukromé porty jsou **443**. Osvědčeným postupem zabezpečení je změnit privátní port a konfiguraci brány firewall a server sestav použít privátní port. Další informace o koncových bodech najdete v tématu [jak nastavit komunikaci s virtuálním počítačem](../classic/setup-endpoints.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json). Všimněte si, že pokud používáte jiný port než 443, změňte parametr **$HTTPsport = 443** ve skriptu HTTPS.
+   * Klikněte na tlačítko Další. ![Další](./media/virtual-machines-windows-classic-ps-sql-report/IC692021.gif)
 8. Na poslední stránce průvodce, ponechte výchozí **nainstalujte agenta virtuálního počítače** vybrané. Kroky v tomto tématu Neuvedeno agenta virtuálního počítače, ale pokud budete chtít zachovat tento virtuální počítač, agent virtuálního počítače a rozšíření vám umožní zajistit, že CM.  Další informace o agenta virtuálního počítače najdete v tématu [agenta virtuálního počítače a rozšíření – část 1](https://azure.microsoft.com/blog/2014/04/11/vm-agent-and-extensions-part-1/). Jednou z výchozí nainstalovaná rozšíření služby ad s je rozšíření "BGINFO", který zobrazuje na ploše virtuálního počítače, systémové informace, například interní IP adresa a volného místa na disku.
 9. Klikněte na dokončení. ![OK](./media/virtual-machines-windows-classic-ps-sql-report/IC660122.gif)
 10. **Stav** virtuálního počítače se zobrazí jako **spuštění (zřizování)** během procesu zřizování a potom zobrazí jako **systémem** když virtuální počítač je zřízená a připravený k použití.
@@ -125,7 +125,7 @@ Certifikát podepsaný svým držitelem byl vytvořen ve virtuálním počítač
        Například na následujícím obrázku je název virtuálního počítače **ssrsnativecloud** a uživatelské jméno je **testuser**.
       
        ![název virtuálního počítače zahrnuje přihlášení](./media/virtual-machines-windows-classic-ps-sql-report/IC764111.png)
-   2. Spusťte mmc.exe. Další informace najdete v tématu [postupy: zobrazení certifikátů pomocí modulu Snap-in konzoly MMC](https://msdn.microsoft.com/library/ms788967.aspx).
+   2. Spusťte mmc.exe. Další informace najdete v tématu [jak: Zobrazení certifikátů pomocí modulu Snap-in konzoly MMC](https://msdn.microsoft.com/library/ms788967.aspx).
    3. V konzolové aplikaci **souboru** nabídky, přidejte **certifikáty** modul snap-in, vyberte **účet počítače** při zobrazení výzvy a potom klikněte na **Další**.
    4. Vyberte **místního počítače** ke správě a potom klikněte na tlačítko **Dokončit**.
    5. Klikněte na tlačítko **Ok** a potom rozbalte **certifikáty – osobní** uzly a pak klikněte na tlačítko **certifikáty**. Certifikát má stejný název jako název DNS virtuálního počítače a končí **cloudapp.net**. Klikněte pravým tlačítkem na název certifikátu a klikněte na tlačítko **kopírování**.
@@ -133,7 +133,7 @@ Certifikát podepsaný svým držitelem byl vytvořen ve virtuálním počítač
    7. Pokud chcete ověřit, dvakrát klikněte na název certifikátu v části **důvěryhodných kořenových certifikačních autorit** a ověřte, zda zde nejsou žádné chyby a se zobrazí váš certifikát. Pokud chcete použít ke konfiguraci serveru sestav, hodnota certifikáty HTTPS skript dodaný s tímto tématem **kryptografický otisk** se vyžaduje jako parametr tohoto skriptu. **Chcete-li získat hodnotu kryptografického otisku**, proveďte následující kroky. Je taky ukázku prostředí PowerShell k načtení kryptografického otisku v části [použít skript ke konfiguraci serveru sestav a HTTPS](#use-script-to-configure-the-report-server-and-HTTPS).
       
       1. Dvakrát klikněte na název certifikátu, třeba ssrsnativecloud.cloudapp.net.
-      2. Klikněte na tlačítko **podrobnosti** kartu.
+      2. Klikněte na kartu **Podrobnosti** .
       3. Klikněte na tlačítko **kryptografický otisk**. Hodnota kryptografického otisku se zobrazí v poli podrobnosti, například a6 08 3c df f9 0b f7 e3 7c 25 ed a4 ed 7e ac 91 9c 2c fb 2f.
       4. Zkopírujte kryptografický otisk a uložte hodnoty pro pozdější nebo upravte skript nyní.
       5. (*) Před spuštěním skriptu odeberte mezery mezi dvojice hodnot. Příklad kryptografického otisku jste si poznamenali před by nyní a6083cdff90bf7e37c25eda4ed7eac919c2cfb2f.
@@ -149,7 +149,7 @@ Tato část vás provede konfigurací virtuálního počítače jako server sest
 
 Podrobné kroky, najdete v části [připojení k virtuálnímu počítači a spusťte Správce konfigurace služby Reporting Services](virtual-machines-windows-classic-ps-sql-bi.md#connect-to-the-virtual-machine-and-start-the-reporting-services-configuration-manager).
 
-**Poznámka: ověřování:** doporučená metoda ověřování je ověření Windows a je výchozí ověřování služby Reporting Services. Jenom uživatelé, kteří jsou nakonfigurované na virtuálním počítači můžete přístup ke službě Reporting Services a přiřadit k rolím služby Reporting Services.
+**Poznámka: ověřování:** Ověřování Windows je doporučená metoda ověřování a je výchozí ověřování služby Reporting Services. Jenom uživatelé, kteří jsou nakonfigurované na virtuálním počítači můžete přístup ke službě Reporting Services a přiřadit k rolím služby Reporting Services.
 
 ### <a name="use-script-to-configure-the-report-server-and-http"></a>Použijte skript pro konfiguraci serveru sestav a HTTP
 Konfigurace serveru sestav pomocí skriptu prostředí Windows PowerShell, proveďte následující kroky. Konfigurace zahrnuje HTTP, nikoli HTTPS:
@@ -469,7 +469,7 @@ Konfigurace serveru sestav pomocí Windows Powershellu, proveďte následující
      NEBO
    * Na virtuálním počítači spusťte mmc.exe a pak přidejte **certifikáty** modul snap-in.
    * V části **důvěryhodných kořenových certifikačních autorit** uzel, klikněte dvakrát na název vašeho certifikátu. Pokud používáte certifikát podepsaný svým držitelem virtuálního počítače, certifikát má stejný název jako název DNS virtuálního počítače a končí **cloudapp.net**.
-   * Klikněte na tlačítko **podrobnosti** kartu.
+   * Klikněte na kartu **Podrobnosti** .
    * Klikněte na tlačítko **kryptografický otisk**. Hodnota kryptografického otisku se zobrazí v poli podrobnosti, například af 11 60 b6 4b 28 8 d 89 0a 82 12 ff 6b a9 c3 66 4f 31 90 48
    * **Před spuštěním skriptu**, odebrat mezery mezi dvojice hodnot. Například af1160b64b288d890a8212ff6ba9c3664f319048
 7. Upravit **$httpsport** parametr: 
@@ -483,7 +483,7 @@ Konfigurace serveru sestav pomocí Windows Powershellu, proveďte následující
 9. Skript je aktuálně nakonfigurován pro službu Reporting Services. Pokud chcete spustit skript pro službu Reporting Services, upravte část verze cestu k oboru názvů "v11", na příkaz Get-WmiObject.
 10. Spusťte skript.
 
-**Ověření**: Ověřte, zda je funkční základní sestavu funkce serveru, najdete v článku [ověřit konfiguraci](#verify-the-connection) později v tomto tématu. Ověřit certifikát vazby otevřete příkazový řádek s oprávněními správce a spusťte následující příkaz:
+**Ověření**: Ověřte, zda je funkční základní sestavu funkce serveru, naleznete v článku ověřit konfigurační oddíl dále v tomto tématu. Ověřit certifikát vazby otevřete příkazový řádek s oprávněními správce a spusťte následující příkaz:
 
     netsh http show sslcert
 
@@ -503,9 +503,9 @@ Pokud nechcete spustit skript prostředí PowerShell ke konfiguraci serveru sest
 3. Z nabídky Start ve virtuálním počítači, zadejte **služby Reporting Services** a otevřete **Správce konfigurace služby Reporting Services**.
 4. Ponechte výchozí hodnoty pro **název serveru** a **Instance serveru sestav**. Klikněte na **Připojit**.
 5. V levém podokně klikněte na tlačítko **adresa URL webové služby**.
-6. Ve výchozím nastavení RS je nakonfigurovaný pro protokol HTTP port 80 s IP Adresou "Všechny přiřazené". Chcete-li přidat HTTPS:
+6. Ve výchozím nastavení RS je nakonfigurovaný pro protokol HTTP port 80 s IP Adresou "Všechny přiřazené". To add HTTPS:
    
-   1. V **certifikát SSL**: Vyberte certifikát, který chcete použít, například [název_virtuálního_počítače]. cloudapp.net. Pokud nejsou uvedeny žádné certifikáty, najdete v části **krok 2: vytvoření certifikátu serveru** informace o tom, jak nainstalovat a důvěřovat certifikátu na virtuálním počítači.
+   1. V **certifikát SSL**: Vyberte certifikát, který chcete použít, například [název_virtuálního_počítače]. cloudapp.net. Pokud nejsou uvedeny žádné certifikáty, najdete v části **krok 2: Vytvoření certifikátu serveru** informace o tom, jak nainstalovat a důvěřovat certifikátu na virtuálním počítači.
    2. V části **SSL Port**: Zvolte 443. Pokud jste nakonfigurovali privátního koncového bodu HTTPS do virtuálního počítače s jiným privátním portem, použijte tuto hodnotu tady.
    3. Klikněte na tlačítko **použít** a počkejte na dokončení operace.
 7. V levém podokně klikněte na tlačítko **databáze**.
@@ -520,7 +520,7 @@ Pokud nechcete spustit skript prostředí PowerShell ke konfiguraci serveru sest
 8. V levém podokně klikněte na tlačítko **adresa URL správce sestav**. Ponechte výchozí nastavení **virtuální adresář** jako **sestavy** a klikněte na tlačítko **použít**.
 9. Klikněte na tlačítko **ukončovací** zavřete Správce konfigurace služby Reporting Services.
 
-## <a name="step-4-open-windows-firewall-port"></a>Krok 4: Otevřít Windows Firewall Port
+## <a name="step-4-open-windows-firewall-port"></a>Krok 4: Otevřít Port brány Firewall na Windows
 > [!NOTE]
 > Pokud jste použili jedno z skripty ke konfiguraci serveru sestav, můžete tuto část přeskočit. Skript zahrnout krok pro otevření portu brány firewall. Výchozí hodnota je port 80 pro protokol HTTP a port 443 pro protokol HTTPS.
 > 
@@ -573,24 +573,24 @@ Běžné úlohy správy po konfigurace a ověření na serveru sestav, je vytvo�
 ## <a name="to-create-and-publish-reports-to-the-azure-virtual-machine"></a>Vytvoření a publikování sestav na virtuálním počítači Azure
 Následující tabulka shrnuje některé z možností dostupných pro existující sestavy z místního počítače na server sestav, které jsou hostované v Azure virtuální počítač Microsoftu pro publikování:
 
-* **Skript RS.exe**: použití RS.exe skript ke kopírování položky sestavy z existujícího serveru sestav do vašeho virtuálního počítače Microsoft Azure. Další informace najdete v části "Nativní režim na nativní režim – virtuálním počítači Microsoft Azure" v [ukázky Reporting Services rs.exe skriptu pro migraci obsahu mezi servery sestav](https://msdn.microsoft.com/library/dn531017.aspx).
-* **Tvůrce sestav**: virtuální počítač obsahuje kliknutím na-jednou verzi Tvůrce sestav Microsoft SQL Server. Spuštění sestavy Tvůrce první na virtuálním počítači:
+* **Skript RS.exe**: Pomocí skriptu RS.exe ke kopírování položky sestavy z existujícího serveru sestav do vašeho virtuálního počítače Microsoft Azure. Další informace najdete v části "Nativní režim na nativní režim – virtuálním počítači Microsoft Azure" v [ukázky Reporting Services rs.exe skriptu pro migraci obsahu mezi servery sestav](https://msdn.microsoft.com/library/dn531017.aspx).
+* **Tvůrce sestav**: Virtuální počítač obsahuje kliknutím na-jednou verzi Tvůrce sestav Microsoft SQL Server. Spuštění sestavy Tvůrce první na virtuálním počítači:
   
   1. Spusťte prohlížeč s oprávněními správce.
   2. Přejděte do Správce sestav na virtuálním počítači a klikněte na tlačítko **Tvůrce sestav** na pásu karet.
      
      Další informace najdete v tématu [instalace, odinstalace a Tvůrce sestav podporuje](https://technet.microsoft.com/library/dd207038.aspx).
-* **SQL Server Data Tools: Virtuální počítač**: Pokud jste vytvořili virtuální počítač s SQL serverem 2012, pak SQL Server Data Tools je nainstalovaná na virtuálním počítači a slouží k vytvoření **projektů serveru sestav** a sestavy na virtuálním počítači. SQL Server Data Tools můžete publikovat sestavy na server sestav na virtuálním počítači.
+* **SQL Server Data Tools: VM**:  Pokud jste vytvořili virtuální počítač s SQL serverem 2012, pak SQL Server Data Tools je nainstalovaná na virtuálním počítači a slouží k vytvoření **projektů serveru sestav** a sestavy na virtuálním počítači. SQL Server Data Tools můžete publikovat sestavy na server sestav na virtuálním počítači.
   
     Pokud jste vytvořili virtuální počítač s SQL serverem 2014, můžete nainstalovat SQL Server Data Tools – BI pro sadu visual Studio. Další informace naleznete v následujících tématech:
   
   * [Nástroje Microsoft SQL Server Data Tools – Business Intelligence pro Visual Studio 2013](https://www.microsoft.com/download/details.aspx?id=42313)
   * [Nástroje Microsoft SQL Server Data Tools – Business Intelligence pro sadu Visual Studio 2012](https://www.microsoft.com/download/details.aspx?id=36843)
   * [SQL Server Data Tools a SQL Server Business Intelligence (SSDT BI)](https://docs.microsoft.com/sql/ssdt/previous-releases-of-sql-server-data-tools-ssdt-and-ssdt-bi)
-* **SQL Server Data Tools: Vzdálený**: V místním počítači, vytvořte projekt služby Reporting Services v SQL Server Data Tools, obsahující sestavy služby Reporting Services. Konfigurace projektu pro připojení k adresu URL webové služby.
+* **SQL Server Data Tools: Vzdálené**:  V místním počítači vytvořte projekt služby Reporting Services v SQL Server Data Tools, obsahující sestavy služby Reporting Services. Konfigurace projektu pro připojení k adresu URL webové služby.
   
     ![Vlastnosti projektu rozšíření SSDT pro projekt služby SSRS](./media/virtual-machines-windows-classic-ps-sql-report/IC650114.gif)
-* **Použít skript**: pomocí skriptu pro zkopírování obsahu serveru sestav. Další informace najdete v tématu [ukázky Reporting Services rs.exe skriptu pro migraci obsahu mezi servery sestav](https://msdn.microsoft.com/library/dn531017.aspx).
+* **Použít skript**: Pomocí skriptu pro zkopírování obsahu serveru sestav. Další informace najdete v tématu [ukázky Reporting Services rs.exe skriptu pro migraci obsahu mezi servery sestav](https://msdn.microsoft.com/library/dn531017.aspx).
 
 ## <a name="minimize-cost-if-you-are-not-using-the-vm"></a>Minimalizace nákladů, pokud nepoužíváte virtuální počítač
 > [!NOTE]

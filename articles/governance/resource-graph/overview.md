@@ -4,16 +4,16 @@ description: Azure Resource Graph je služba v Azure, která umožňuje komplexn
 services: resource-graph
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 10/22/2018
+ms.date: 02/06/2019
 ms.topic: overview
 ms.service: resource-graph
 manager: carmonm
-ms.openlocfilehash: ed64f6317fefb9e82dbe14e806499965d926d434
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: 6b3bad4e4619f8909f5c6d71111b4fad9ddb3098
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53316195"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55813275"
 ---
 # <a name="what-is-azure-resource-graph"></a>Co je Azure Resource Graph
 
@@ -45,6 +45,10 @@ Nejprve se podívejte na podrobnosti o operacích a funkcích, které lze použ�
 ## <a name="permissions-in-azure-resource-graph"></a>Oprávnění v Azure Resource Graph
 
 Pokud chcete používat Resource Graph, musíte mít odpovídající oprávnění v [řízení přístupu na základě role](../../role-based-access-control/overview.md), a to alespoň oprávnění ke čtení pro prostředky, které chcete dotazovat. Pokud pro objekt nebo skupinu objektů Azure nemáte alespoň oprávnění `read`, nevrátí se žádné výsledky.
+
+## <a name="throttling"></a>Throttling
+
+Dotazy do grafu prostředků jsou omezené na poskytují nejlepší prostředí a odpovědi na všechny zákazníky. Pokud vaše organizace chce používat rozhraní Graph API prostředku ve velkém měřítku a častých dotazů, použijte prosím portál "Názory" na stránce prostředků grafu. Nezapomeňte zadat váš obchodní případ a zaškrtněte políčko "Microsoft může poslat e-mail o svůj názor" v pořadí pro tým, který se vás kontaktovat.
 
 ## <a name="running-your-first-query"></a>Spusťte váš první dotaz
 

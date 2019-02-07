@@ -16,12 +16,12 @@ ms.date: 10/25/2018
 ms.author: celested
 ms.custom: aaddev
 ms.reviewer: lenalepa, sureshja
-ms.openlocfilehash: 3f38162fd4d95127ddf7797638bc9af21e6aaf20
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.openlocfilehash: 5b72bd45299f636a208ab39be5b7eaade2730183
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55095690"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55814007"
 ---
 # <a name="quickstart-configure-an-application-to-expose-web-apis-preview"></a>Rychlý start: Konfigurace aplikace k vystavení webové rozhraní API (Preview)
 
@@ -116,7 +116,7 @@ Zveřejnění nového oboru prostřednictvím manifestu aplikace:
 ## <a name="verify-the-web-api-is-exposed-to-other-applications"></a>Ověření, že je webové rozhraní API zveřejněné ostatním aplikacím
 
 1. Vraťte se do svého tenanta Azure AD, vyberte **Registrace aplikací** a vyhledejte a vyberte klientskou aplikaci, kterou chcete nakonfigurovat.
-1. Zopakujte postup popsaný v části [Konfigurace klientské aplikace pro přístup k webovým rozhraním API](#configure-a-client-application-to-access-web-apis).
+1. Opakujte že kroky popsané v konfigurovat klientskou aplikaci pro přístup k webovým rozhraním API.
 1. Když se dostanete ke kroku **Výběr rozhraní API**, vyberte váš prostředek. Měl by se zobrazit nový obor, který je k dispozici pro žádosti o oprávnění klientů.
 
 ## <a name="more-on-the-application-manifest"></a>Další informace o manifestu aplikace

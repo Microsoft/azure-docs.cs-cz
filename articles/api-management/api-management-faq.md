@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/19/2017
 ms.author: apimpm
-ms.openlocfilehash: 760feae2c9b58e162dae487e240dda72099ed91b
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 5fe2cab3ac9f9e5f3bbba17b8ab9467a298b24ea
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51227973"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55817678"
 ---
 # <a name="azure-api-management-faqs"></a>Nejčastější dotazy k Azure API Management
 Získejte odpovědi na běžné dotazy, vzory a osvědčené postupy pro službu Azure API Management.
@@ -37,7 +37,7 @@ Získejte odpovědi na běžné dotazy, vzory a osvědčené postupy pro službu
 * [Jak můžu nastavit více prostředí v jediné rozhraní API?](#how-do-i-set-up-multiple-environments-in-a-single-api)
 * [Můžete použít protokol SOAP službou API Management?](#can-i-use-soap-with-api-management)
 * [Je konstanta IP adresa brány API Management? Můžete použít ho v pravidlech brány firewall?](#is-the-api-management-gateway-ip-address-constant-can-i-use-it-in-firewall-rules)
-* [Můžete nakonfigurovat serveru ověřování OAuth 2.0 se zabezpečení služby AD FS?](#can-i-configure-an-oauth-20-authorization-server-with-adfs-security)
+* Můžete nakonfigurovat serveru ověřování OAuth 2.0 se zabezpečení služby AD FS?
 * [V nasazení do několika geografických umístěních jaké metody směrování používá rozhraní API Management?](#what-routing-method-does-api-management-use-in-deployments-to-multiple-geographic-locations)
 * [Můžete použít šablony Azure Resource Manageru k vytvoření instance služby API Management?](#can-i-use-an-azure-resource-manager-template-to-create-an-api-management-service-instance)
 * [Můžete použít certifikát podepsaný svým držitelem SSL pro back-end?](#can-i-use-a-self-signed-ssl-certificate-for-a-back-end)

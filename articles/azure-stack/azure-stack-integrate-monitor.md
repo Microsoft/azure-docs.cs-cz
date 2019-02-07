@@ -11,16 +11,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: PowerShell
 ms.topic: article
-ms.date: 10/15/2018
+ms.date: 02/06/2019
 ms.author: jeffgilb
 ms.reviewer: thoroet
-ms.lastreviewed: 10/15/2018
-ms.openlocfilehash: 419b7c436e79b00d8f49d9e3801886f4e37e2c32
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.lastreviewed: 02/06/2019
+ms.openlocfilehash: ff28fbb52b33308967051a37fdaa3c6c273fc282
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55241640"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55816083"
 ---
 # <a name="integrate-external-monitoring-solution-with-azure-stack"></a>Integrace externí řešení pro monitorování pomocí služby Azure Stack
 
@@ -38,6 +38,9 @@ Každé řešení Azure Stack se dodává s hostiteli životního cyklu hardwaru
 Následující diagram znázorňuje tok přenosů mezi systémech pro Azure Stack integrované, životní cyklus hostitelský hardware, externí řešení monitorování a systém kolekce externí zpracování lístků nebo data.
 
 ![Diagram znázorňující provoz mezi Azure Stack, monitorování a vytváření tiketů řešení.](media/azure-stack-integrate-monitor/MonitoringIntegration.png)  
+
+> [!NOTE]
+> Externí integraci přímo s fyzickými servery a síťová zařízení monitorování není povolené a blokované aktivně pomocí seznamů řízení přístupu (ACL). 
 
 Tento článek vysvětluje, jak Azure Stack integrujte externí monitorovacích řešení, jako je System Center Operations Manager a Nagios. Zahrnuje také tom, jak pracovat s výstrahami prostřednictvím kódu programu pomocí Powershellu nebo pomocí volání rozhraní REST API.
 

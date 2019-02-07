@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: af528f210f4464c973d88fab7eeb1572effc87bc
-ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
+ms.openlocfilehash: 54e78496b98fffefd2932a2ce7625f8b325fb32a
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54330383"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55812646"
 ---
 # <a name="move-data-to-and-from-azure-cosmos-db-using-azure-data-factory"></a>Přesun dat do a ze služby Azure Cosmos DB pomocí Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -301,11 +301,11 @@ Následující kanál kopíruje data z kolekce osoby v databázi Azure Cosmos DB
 ## <a name="example-copy-data-from-azure-blob-to-azure-cosmos-db"></a>Příklad: Kopírování dat z Azure Blob do služby Azure Cosmos DB
 Následující příklad ukazuje:
 
-1. Propojené služby typu [DocumentDb](#azure-documentdb-linked-service-properties).
+1. Propojené služby typu DocumentDb.
 2. Propojené služby typu [AzureStorage](data-factory-azure-blob-connector.md#linked-service-properties).
 3. Vstupní hodnota [datovou sadu](data-factory-create-datasets.md) typu [AzureBlob](data-factory-azure-blob-connector.md#dataset-properties).
-4. Výstup [datovou sadu](data-factory-create-datasets.md) typu [DocumentDbCollection](#azure-documentdb-dataset-type-properties).
-5. A [kanálu](data-factory-create-pipelines.md) s aktivitou kopírování, která používá [BlobSource](data-factory-azure-blob-connector.md#copy-activity-properties) a [DocumentDbCollectionSink](#azure-documentdb-copy-activity-type-properties).
+4. Výstup [datovou sadu](data-factory-create-datasets.md) typu DocumentDbCollection.
+5. A [kanálu](data-factory-create-pipelines.md) s aktivitou kopírování, která používá [BlobSource](data-factory-azure-blob-connector.md#copy-activity-properties) a DocumentDbCollectionSink.
 
 Ukázce kopíruje data z Azure blob do služby Azure Cosmos DB. Vlastnostech JSON použitých v tyto ukázky jsou popsány v části podle ukázky.
 

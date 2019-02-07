@@ -13,12 +13,12 @@ ms.workload: na
 ms.date: 12/18/2018
 ms.author: sethm
 ms.lastreviewed: 12/18/2018
-ms.openlocfilehash: 5ff2ee3ed271d8c32e2d41f40a56f71aa4c6c67c
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 3c36bca12a16a796a964c4447b47265eecd756be
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55245265"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55809244"
 ---
 # <a name="provide-applications-access-to-azure-stack"></a>Poskytnutí přístupu aplikací do Azure Stack
 
@@ -38,10 +38,10 @@ Instanční objekty jsou upřednostňovány vůči spuštění aplikace pod svý
 
 V závislosti na tom, jak nasadíte Azure Stack začnete tím, že vytváření instančního objektu. Tento dokument popisuje vytváření instančního objektu pro:
 
-- [Azure Active Directory (Azure AD):](#create-service-principal-for-azure-ad) Azure AD je více tenantů, cloudový adresář a služba pro správu identit. Azure AD můžete pomocí připojené služby Azure Stack.
-- [Active Directory Federation Services (AD FS)](#create-service-principal-for-ad-fs). Služba AD FS poskytuje zjednodušenou zabezpečenou federaci identit a webových – možnosti jednotného přihlašování (SSO). Služba AD FS můžete použít s instancemi Azure Stack připojené a odpojené.
+- Azure Active Directory (Azure AD). Azure AD je více tenantů, cloudový adresář a služba pro správu identit. Azure AD můžete pomocí připojené služby Azure Stack.
+- Active Directory Federation Services (AD FS). Služba AD FS poskytuje zjednodušenou zabezpečenou federaci identit a webových – možnosti jednotného přihlašování (SSO). Služba AD FS můžete použít s instancemi Azure Stack připojené a odpojené.
 
-Jakmile vytvoříte instanční objekt služby, se používají pro sadu kroků běžné služby AD FS a Azure Active Directory [delegovat oprávnění](#assign-role-to-service-principal) k roli.
+Jakmile vytvoříte instanční objekt služby, se používají sady kroků běžné služby AD FS a Azure Active Directory delegovat oprávnění na roli.
 
 ## <a name="manage-service-principal-for-azure-ad"></a>Správa instanční objekt služby pro službu Azure AD
 
@@ -63,7 +63,7 @@ Při programovém přihlášení pomocí ID je pro vaši aplikaci a webové apli
 
 1. Z **registrace aplikací** ve službě Active Directory, vyberte svou aplikaci.
 
-2. Zkopírujte **ID aplikace** a uložte ho v kódu aplikace. Aplikací [ukázkové aplikace](#sample-applications) části odkazují na tuto hodnotu jako ID klienta.
+2. Zkopírujte **ID aplikace** a uložte ho v kódu aplikace. Aplikace v sekci ukázkové aplikace se tato hodnota označuje jako ID klienta.
 
      ![ID klienta](./media/azure-stack-create-service-principal/image12.png)
 3. Chcete-li generovat ověřovací klíč pro webovou aplikaci / rozhraní API, vyberte **nastavení** > **klíče**. 
@@ -74,7 +74,7 @@ Jakmile klíč uložíte, zobrazí se jeho hodnota. Zkopírujte tuto hodnotu do 
 
 ![uložený klíč](./media/azure-stack-create-service-principal/image15.png)
 
-Jakmile budete hotovi, můžete [přiřazení role aplikace](#assign-role-to-service-principal).
+Jakmile budete hotovi, můžete aplikace přiřadit roli.
 
 ## <a name="manage-service-principal-for-ad-fs"></a>Správa instančního objektu služby AD FS
 
@@ -116,7 +116,7 @@ Tyto informace se vyžaduje jako vstup pro automatizaci parametry:
 
 |Parametr|Popis|Příklad:|
 |---------|---------|---------|
-|Name|Název pro účet hlavní název služby|MyAPP|
+|Název|Název pro účet hlavní název služby|MyAPP|
 |ClientCertificates|Pole objektů certifikátu|X509 certifikátu|
 |ClientRedirectUris<br>(Volitelné)|Identifikátor URI přesměrování aplikace|-|
 
@@ -203,7 +203,7 @@ Tyto informace se vyžaduje jako vstup pro automatizaci parametry:
 
 |Parametr|Popis|Příklad:|
 |---------|---------|---------|
-|Name|Název pro účet hlavní název služby|MyAPP|
+|Název|Název pro účet hlavní název služby|MyAPP|
 |ApplicationIdentifier|Jedinečný identifikátor|S-1-5-21-1634563105-1224503876-2692824315-2119|
 |ClientCertificate|Pole objektů certifikátu|X509 certifikátu|
 
@@ -247,7 +247,7 @@ Tyto informace se vyžaduje jako vstup pro automatizaci parametry:
 
 | Parametr | Popis | Příklad: |
 |----------------------|--------------------------|---------|
-| Name | Název pro účet hlavní název služby | MyAPP |
+| Název | Název pro účet hlavní název služby | MyAPP |
 | GenerateClientSecret | Vytvoření tajného kódu |  |
 
 #### <a name="use-the-ercs-privilegedendpoint-to-create-the-service-principal"></a>Použít ERCS PrivilegedEndpoint k vytvoření instančního objektu služby
