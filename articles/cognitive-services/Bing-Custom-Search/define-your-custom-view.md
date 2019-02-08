@@ -4,18 +4,18 @@ titlesuffix: Azure Cognitive Services
 description: Popisuje, jak vytvořit web a vertikální vyhledávací služby
 services: cognitive-services
 author: aahill
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-custom-search
 ms.topic: conceptual
 ms.date: 09/28/2017
 ms.author: aahi
-ms.openlocfilehash: 58830e3391cb6f794cfd8911e97b0c6dbb3cd2c1
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 85ac778a8b0beaf6ecee186e6904f4a2e5b36f45
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55193637"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55882892"
 ---
 # <a name="configure-your-bing-custom-search-experience"></a>Konfigurace prostředí pro vlastní vyhledávání Bingu
 

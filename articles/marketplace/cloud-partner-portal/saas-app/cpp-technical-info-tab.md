@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: pbutlerm
-ms.openlocfilehash: 7a49e69b2e27a38b1a89fedbd6bbd70066b37dc2
-ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
+ms.openlocfilehash: f0f6bbf5f235d6ae3e86114e583d55c502296470
+ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54451217"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55895393"
 ---
 # <a name="saas-application-technical-info-tab"></a>Karta technické informace o SaaS aplikace
 
@@ -42,7 +42,7 @@ Při rozhodování, jaký typ aplikace SaaS, kterou vytváříte, přečtěte si
 K vytvoření tohoto prostředí budete muset nakonfigurovat následující:
 
 - Připojte svůj web služby SaaS s rozhraními API SaaS společnosti Microsoft. [Zákazník SaaS pomocí Azure – rozhraní API](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-saas-subscription-apis) článek vysvětluje, jak vytvořit toto připojení.
-- Povolit dá prodávat prostřednictvím Azure na portál partnerů cloudu v podobě technických konfigurace a zadejte požadované informace. Další informace o tomto modelu fakturace a jak je implementován najdete v tématu [SaaS – prodávat prostřednictvím Azure](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-saas-offer-subscriptions#overview).
+- Povolit dá prodávat prostřednictvím Azure na portál partnerů cloudu v podobě technických konfigurace a zadejte požadované informace. Další informace o tomto modelu fakturace a jak je implementován najdete v tématu [SaaS – prodávat prostřednictvím Azure](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-saas-offer-subscriptions).
 
  ![Prodej přes Microsoft formuláře](./media/saas-techinfo-sellthrough-ms.png)
 

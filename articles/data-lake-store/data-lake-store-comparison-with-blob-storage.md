@@ -12,22 +12,18 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/26/2018
 ms.author: nitinme
-ms.openlocfilehash: 4bdebe415bcd86867bebeb7f03dc6dafa8480169
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.openlocfilehash: 3f37b996caa60a54c18388cb1f65873bf0aa4ed9
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54259780"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55877690"
 ---
 # <a name="comparing-azure-data-lake-storage-gen1-and-azure-blob-storage"></a>Porovnání Azure Data Lake Storage Gen1 a Azure Blob Storage
-  >[!NOTE] 
-    >[Azure Data Lake Storage Gen2 Preview](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-introduction) byla nedávno jsme oznámili. Verzi Preview služby data Lake Storage Gen2 je výsledkem slučuje možnosti naše dva existující služby storage, Azure Blob Storage a [Azure Data Lake Storage Gen1](https://docs.microsoft.com/azure/data-lake-store/index). Funkce z Azure Data Lake Storage Gen1, jako je například sémantiku systému souborů, souboru zabezpečení na úrovni a škálování se sloučí s s nízkými náklady, vrstveného úložiště, možnosti obnovení vysoká dostupnost/zotavení po havárii z [Azure Blob Storage](https://docs.microsoft.com/azure/storage/blobs/storage-blobs-introduction). <br> Důrazně doporučujeme začít používat Data Lake Storage Gen2 Preview jako základ pro vytváření podniku datová jezera a získáte to nejlepší z úložiště objektů Blob v Azure, stejně jako Azure Data Lake Storage Gen1.
+
+[!INCLUDE [data-lake-storage-gen1-rename-note.md](../../includes/data-lake-storage-gen1-rename-note.md)] 
 
 Tabulky v tomto článku shrnuje rozdíly mezi Azure Data Lake Storage Gen1 a Azure Blob Storage podél některé klíčové aspekty zpracování velkých objemů dat. Azure Blob Storage je obecný, škálovatelné úložiště objektů, která je navržená pro širokou škálu scénářů úložiště. Azure Data Lake Storage Gen1 je vysoce škálovatelné úložiště, která je optimalizována pro úlohy analýzy velkých objemů dat.
-
-
-
-
 
 |  | Azure Data Lake Storage Gen1 | Azure Blob Storage |
 | --- | --- | --- |

@@ -11,12 +11,12 @@ ms.service: application-insights
 ms.custom: mvc
 ms.topic: quickstart
 manager: carmonm
-ms.openlocfilehash: c79f25eff553c359d969cd80a10eabbaaf50067d
-ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
+ms.openlocfilehash: 25335081e594c64b8d8cee02eebec6119e609618
+ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54081244"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55891494"
 ---
 # <a name="start-monitoring-your-java-web-application"></a>Zahájení monitorování webové aplikace v Javě
 
@@ -82,6 +82,8 @@ Application Insights může shromažďovat telemetrická data ze všech aplikac�
 4. Zaškrtněte **Enable telemetry with Application Insights** (Povolit telemetrii s Application Insights). Vyberte prostředek App Insights a přidružený **instrumentační klíč**, který chcete propojit k aplikaci v Javě.
 
    ![Konfigurační nabídka Azure Eclipse](./media/java-quick-start/0007-j.png)
+
+5. Po konfiguraci modulu plug-in Application Insights je nutné [publikování/znovu](https://docs.microsoft.com/azure/app-service/app-service-web-get-started-java#publish-the-web-app-to-azure) aplikace znovu, než ji budete moci začalo odesílat telemetrii.
 
 > [!NOTE]
 > Sada Application Insights SDK for Java dokáže zachycovat a vizualizovat živé metriky, ale když shromažďování telemetrických údajů povolíte poprvé, může to trvat několik minut, že se data začnou na portálu zobrazovat. Pokud používáte testovací aplikaci s nízkým provozem, nezapomínejte, že většina metrik se zachycuje, jenom když jsou nějaké aktivní požadavky nebo operace.

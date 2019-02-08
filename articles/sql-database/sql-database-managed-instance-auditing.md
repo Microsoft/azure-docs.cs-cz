@@ -13,13 +13,13 @@ author: vainolo
 ms.author: arib
 ms.reviewer: vanto
 manager: craigg
-ms.date: 02/04/2019
-ms.openlocfilehash: f82c96b972baa161658f4a864572bfcb791939ed
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
+ms.date: 02/07/2019
+ms.openlocfilehash: 452811cae74253570591e5ffe2c58708fe632b39
+ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55728993"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55894390"
 ---
 # <a name="get-started-with-azure-sql-database-managed-instance-auditing"></a>Začínáme s auditováním služby Azure SQL Database managed instance
 
@@ -154,7 +154,7 @@ Následující část popisuje konfiguraci auditování pro spravovanou instanci
 
 Další informace:
 
-- [Auditování rozdíly mezi izolované databáze, elastický fond, s a spravované instance Azure SQL Database a databází v systému SQL Server](#auditing-differences-between-managed-instance-azure-sql-database-and-sql-server)
+- [Auditování rozdíly mezi izolované databáze, elastický fond, s a spravované instance Azure SQL Database a databází v systému SQL Server](#auditing-differences-between-databases-in-azure-sql-database-and-databases-in-sql-server)
 - [VYTVOŘIT SERVER AUDIT](https://docs.microsoft.com/sql/t-sql/statements/create-server-audit-transact-sql)
 - [PŘÍKAZ ALTER SERVER AUDIT](https://docs.microsoft.com/sql/t-sql/statements/alter-server-audit-transact-sql)
 
@@ -223,13 +223,13 @@ Log Analytics nabízí provozní informace v reálném čase pomocí integrovan�
 
 Hlavní rozdíly mezi auditování v databázích v Azure SQL Database a databází v systému SQL Server jsou:
 
-- S možností nasazení spravované instance Azure SQL Database, auditování funguje na úrovni serveru nebo úložišti `.xel` soubory protokolu na účet úložiště objektů blob v Azure.
+- S možností nasazení spravované instance Azure SQL Database, auditování funguje na úrovni serveru nebo úložišti `.xel` soubory protokolů ve službě Azure Blob storage.
 - Izolované databáze a elastický fond možnosti nasazení ve službě Azure SQL Database auditování funguje na úrovni databáze.
 - V místním SQL serverem / virtuální počítače, audit funguje na serveru úrovně, ale ukládá události do protokolů událostí systému a soubory.
 
-Auditování ve spravované instanci relace XEvent podporuje cíle úložiště objektů blob v Azure. Souborová služba a windows protokoly jsou **nepodporuje**.
+Relace XEvent auditování ve spravované instanci podporuje cíle úložiště objektů Blob v Azure. Souborová služba a windows protokoly jsou **nepodporuje**.
 
-Klíč rozdíly v `CREATE AUDIT` syntaxe pro auditování do Azure blob storage jsou:
+Klíč rozdíly v `CREATE AUDIT` syntaxe pro auditování objektů Blob v Azure storage jsou:
 
 - Novou syntaxi `TO URL` je k dispozici a umožní vám zadat adresu URL kontejneru objektů blob v Azure Storage, kde `.xel` soubory jsou umístěny.
 - Novou syntaxi `TO EXTERNAL MONITOR` je k dispozici pro povolení cíle i centra a Log Analytics.

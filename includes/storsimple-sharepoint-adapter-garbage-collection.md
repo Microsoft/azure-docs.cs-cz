@@ -4,15 +4,13 @@ ms.service: storsimple
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
-ms.openlocfilehash: 0d2fde4ce80e09db19f65134697ba0ba379e1824
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.openlocfilehash: 0b5d9deacdd4266da30f17c95b6e575a652d2f76
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50164696"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55889540"
 ---
-<!--author=SharS last changed: 9/17/15-->
-
 V tomto postupu provedete následující:
 
 1. [Příprava ke spuštění spustitelného souboru Funkce Maintainer](#to-prepare-to-run-the-maintainer) .

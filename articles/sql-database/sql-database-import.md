@@ -12,23 +12,23 @@ ms.author: douglasl
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 01/25/2019
-ms.openlocfilehash: c1b6c55475c1600c89c1ac1cae9dee0068b92070
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 5b717e26e61a6633ea51817bcb21ebeb15a20969
+ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55478215"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55891999"
 ---
 # <a name="quickstart-import-a-bacpac-file-to-a-new-azure-sql-database"></a>Rychlý start: Import souboru BACPAC do nové databáze SQL Azure
 
-Můžete migrovat databáze SQL serveru do Azure SQL database pomocí [BACPAC](https://msdn.microsoft.com/library/ee210546.aspx#Anchor_4) file (soubor zip s `.bacpac` rozšíření, která obsahuje metadata a data databáze). Můžete import souboru BACPAC z úložiště objektů blob v Azure (jenom standardní úložiště) nebo z místního úložiště do místního umístění. Maximalizovat rychlost importu, můžete zadat na vyšší úroveň služby a vypočítat velikost (například P6). Můžete pak vertikálně snížit kapacitu po úspěšném importu. Úroveň kompatibility databáze importované je založená na úrovni kompatibility databáze zdroje.
+Můžete migrovat databáze SQL serveru do Azure SQL database pomocí [BACPAC](https://msdn.microsoft.com/library/ee210546.aspx#Anchor_4) file (soubor zip s `.bacpac` rozšíření, která obsahuje metadata a data databáze). Můžete import souboru BACPAC z úložiště objektů Blob v Azure (jenom standardní úložiště) nebo z místního úložiště do místního umístění. Maximalizovat rychlost importu, můžete zadat na vyšší úroveň služby a vypočítat velikost (například P6). Můžete pak vertikálně snížit kapacitu po úspěšném importu. Úroveň kompatibility databáze importované je založená na úrovni kompatibility databáze zdroje.
 
 > [!IMPORTANT]
 > Po importu vaší databáze, můžete k provozu databáze na její aktuální úroveň kompatibility (úroveň 100 pro databázi AdventureWorks2008R2) nebo vyšší úrovni. Další informace o důsledcích a možnostech provozu databáze na konkrétní úrovni kompatibility najdete v tématu [Úroveň kompatibility ALTER DATABASE](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql-compatibility-level). V tématu věnovaném příkazu [ALTER DATABASE SCOPED CONFIGURATION](https://docs.microsoft.com/sql/t-sql/statements/alter-database-scoped-configuration-transact-sql) najdete také informace o dalších nastaveních na úrovni databáze souvisejících s úrovněmi kompatibility.
 
 ## <a name="import-from-a-bacpac-file-in-the-azure-portal"></a>Importovat ze souboru BACPAC na webu Azure Portal
 
-Tato část ukazuje, jak v [webu Azure portal](https://portal.azure.com), chcete-li vytvořit Azure SQL database ze souboru BACPAC uložené ve službě Azure blob storage. Na portálu *pouze* podporuje import souboru BACPAC z Azure blob storage.
+Tato část ukazuje, jak v [webu Azure portal](https://portal.azure.com), chcete-li vytvořit Azure SQL database ze souboru BACPAC ukládají ve službě Azure Blob storage. Na portálu *pouze* podporuje import souboru BACPAC z úložiště objektů Blob v Azure.
 
 > [!NOTE]
 > [Azure SQL Database Managed Instance](sql-database-managed-instance.md) podporuje import ze souboru BACPAC s použitím jiné metody v tomto článku, ale aktuálně nepodporuje migraci na webu Azure Portal.

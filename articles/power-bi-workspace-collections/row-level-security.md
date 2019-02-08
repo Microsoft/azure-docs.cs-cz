@@ -9,12 +9,12 @@ ms.topic: article
 ms.workload: powerbi
 ms.date: 09/20/2017
 ms.author: maghan
-ms.openlocfilehash: 80208c83c96ba78db052017c2baa3bc0db63953f
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: f8a5c12bb57a8f59960320c6227174b240bcbc3d
+ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51258846"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55892231"
 ---
 # <a name="row-level-security-with-power-bi-workspace-collections"></a>Zabezpečení na úrovni řádků s kolekcemi pracovních prostorů Power BI
 
@@ -48,7 +48,7 @@ Zabezpečení na úrovni řádků se vytváří v Power BI Desktopu. Po otevřen
 Tady je několik věcí, Všimněte si, že se toto schéma:
 
 * Všechny míry, například **celkový prodej**, jsou uloženy v **Sales** tabulka faktů.
-* Existují čtyři další související tabulky dimenzí: **položky**, **čas**, **Store**, a **District**.
+* Existují čtyři další související tabulky dimenzí: **Položka**, **čas**, **Store**, a **District**.
 * Šipky na vztahu čáry označují, kterým směrem filtry můžete tok z jedné tabulky do druhé. Například, pokud filtr je umístěn na **čas [Date]**, v aktuálním schématu bude pouze filtrovat seznam hodnot v **Sales** tabulky. Žádné další tabulky by tímto filtrem ovlivněné, protože všechny šipky na čárách vztah bod registrace k tabulce prodeje a neukazuje.
 * **District** tabulka udává, kdo je manažerem každé oblasti:
   
@@ -56,7 +56,7 @@ Tady je několik věcí, Všimněte si, že se toto schéma:
 
 Na základě tohoto schématu, pokud použijeme filtr na **District Manager** sloupec v tabulce District a pokud tento filtr odpovídá uživatel zobrazující sestavu, která vyfiltrovat také filtry **Store** a  **Prodej** tabulky pouze zobrazit data pro tento konkrétní district manager.
 
-Tady je způsob:
+Uděláte to takto:
 
 1. Na kartě modelování, klikněte na tlačítko **spravovat role**.  
    ![Správa rolí tlačítka pásu karet modelování](media/row-level-security/modeling-tab-5.png)
@@ -94,7 +94,7 @@ Tím končí naše shrnutí všechnu práci, kterou je potřeba udělat v Power 
 * **uživatelské jméno** (volitelné) – použít s zabezpečení na úrovni řádků, toto je řetězec, který slouží k identifikaci uživatele při použití pravidel zabezpečení na úrovni řádků. Podívejte se, využívá řádek zabezpečení na úrovni pomocí Power BI Embedded
 * **role** – řetězec obsahující role, které chcete vybrat při použití pravidel zabezpečení na úrovni řádků. Pokud předáváte více než jednu roli, měli byste je předat jako pole řetězců.
 
-Vytvořit token prostřednictvím [CreateReportEmbedToken](https://docs.microsoft.com/dotnet/api/microsoft.powerbi.security.powerbitoken?redirectedfrom=MSDN#Microsoft_PowerBI_Security_PowerBIToken_CreateReportEmbedToken_System_String_System_String_System_String_System_DateTime_System_String_System_Collections_Generic_IEnumerable_System_String__) metody. Pokud vlastnost username má k dispozici, musíte předat také alespoň jednu hodnotu v rolích.
+Vytvořit token prostřednictvím [CreateReportEmbedToken](https://docs.microsoft.com/dotnet/api/microsoft.powerbi.security.powerbitoken?redirectedfrom=MSDN) metody. Pokud vlastnost username má k dispozici, musíte předat také alespoň jednu hodnotu v rolích.
 
 Například můžete změnit EmbedSample. DashboardController řádku 55 byste mohli aktualizovat z:
 

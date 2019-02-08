@@ -4,18 +4,18 @@ titlesuffix: Azure Cognitive Services
 description: Použijte metodu Translator Text API slovníku vyhledávání.
 services: cognitive-services
 author: Jann-Skotdal
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: reference
 ms.date: 03/29/2018
 ms.author: v-jansko
-ms.openlocfilehash: b6178c4e9c197539359058347b2409210d976569
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: e97d308bca585cdb26ccc2f20e125436707c481e
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55458920"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55876330"
 ---
 # <a name="translator-text-api-30-dictionary-lookup"></a>Translator Text API 3.0: Slovníkové vyhledávání
 

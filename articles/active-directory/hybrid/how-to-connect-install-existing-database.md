@@ -16,12 +16,12 @@ ms.topic: conceptual
 ms.date: 08/30/2017
 ms.subservice: hybrid
 ms.author: billmath
-ms.openlocfilehash: f863c4b115616ff709634f3c68955c3be3241707
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.openlocfilehash: 2f1b6cec49507c5106434bf42743aadd1b3230aa
+ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55494183"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55894968"
 ---
 # <a name="install-azure-ad-connect-using-an-existing-adsync-database"></a>Instalace Azure AD Connect pomocí existující databáze ADSync
 Azure AD Connect vyžaduje databázi SQL serveru ukládat data. Můžete buď použít výchozí nastavení, které SQL Server 2012 Express LocalDB nainstalované pomocí služby Azure AD Connect, nebo použijte vlastní plnou verzi SQL. Dříve při instalaci Azure AD Connect vytvoří nová databáze s názvem ADSync byla vždy. S Azure AD Connect verze 1.1.613.0 (nebo po) máte možnost nainstalovat Azure AD Connect kliknutím na existující databáze ADSync.
@@ -59,6 +59,10 @@ Důležité poznámky vzít si předtím, než budete pokračovat:
 2.  Po dokončení instalace MSI se spustí průvodce Azure AD Connect v režimu expresní instalace. Zavřete obrazovku kliknutím na ikonu Ukončit.
 ![Uvítání](./media/how-to-connect-install-existing-database/db1.png)
 3.  Spusťte nový příkazový řádek nebo novou relaci PowerShellu. Přejděte do složky <drive>\Program Files\Microsoft Azure AD Connect. Spuštěním příkazu .\AzureADConnect.exe /useexistingdatabase spusťte průvodce Azure AD Connect v režimu instalace Použít stávající databázi.
+
+> [!NOTE]
+> Použijte přepínač **/useexistingdatabase** pouze pokud databáze již obsahuje data z předchozí instalace služby Azure AD Connect. Pokud přecházíte z místní databáze na úplné databáze serveru SQL Server nebo pokud byl znovu sestaven serveru služby Azure AD Connect a obnovit zálohu SQL databáze ADSync z předchozí instalace služby Azure AD Connect. Pokud jste vytvořili prázdnou databázi a použít pro instalaci, tento krok přeskočte.
+
 ![PowerShell](./media/how-to-connect-install-existing-database/db2.png)
 4.  Zobrazí se obrazovka Vítá vás Azure AD Connect. Jakmile odsouhlasíte licenční podmínky a oznámení o ochraně osobních údajů, klikněte na **Pokračovat**.
 ![Uvítání](./media/how-to-connect-install-existing-database/db3.png)

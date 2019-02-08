@@ -6,23 +6,29 @@ manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
 ms.author: ramamill
-ms.date: 01/18/2019
-ms.openlocfilehash: e397540d33df8a509e10f52fde41fc178cdba67e
-ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
+ms.date: 02/07/2019
+ms.openlocfilehash: 3de5996f574bf076b856a4d0cf7e18d77b1a9e5d
+ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/19/2019
-ms.locfileid: "54411743"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55895682"
 ---
 # <a name="troubleshoot-mobility-service-push-installation-issues"></a>Řešení potíží s nabízenou instalací služby Mobility
 
 Instalace služby Mobility je klíče krokem při povolení replikace. Úspěch tento krok závisí výhradně na splnění požadavků a práci s podporovanou konfigurací. Většina běžných chyb, které se zabývají během instalace služby Mobility se z důvodu:
 
-* Přihlašovací údaje nebo oprávnění chyby
-* Neúspěšná přihlášení
-* Chyby připojení
-* Nepodporovaný operační systémy
-* Chyby při instalaci stínové kopie svazku
+* [Přihlašovací údaje nebo oprávnění chyby](#credentials-check-errorid-95107--95108)
+* [Neúspěšná přihlášení](#login-failures-errorid-95519-95520-95521-95522)
+* [Chyby připojení](#connectivity-failure-errorid-95117--97118)
+* [Chyby sdílení souborů a tiskáren](#file-and-printer-sharing-services-check-errorid-95105--95106)
+* [Chyby rozhraní WMI](#windows-management-instrumentation-wmi-configuration-check-error-code-95103)
+* [Nepodporovaný operační systémy](#unsupported-operating-systems)
+* [Nepodporované konfigurace spuštění](#unsupported-boot-disk-configurations-errorid-95309-95310-95311)
+* [Selhání instalace VSS](#vss-installation-failures)
+* [Název zařízení v konfiguraci GRUB, takže nemusíte zařízení UUID](#enable-protection-failed-as-device-name-mentioned-in-the-grub-configuration-instead-of-uuid-errorid-95320)
+* [Svazek LVM](#lvm-support-from-920-version)
+* [Restartovat upozornění](#install-mobility-service-completed-with-warning-to-reboot-errorid-95265--95266)
 
 Při povolení replikace Azure Site Recovery se pokusí vložit instalace agenta služby mobility na virtuálním počítači. Jako součást tohoto konfiguračního serveru pokusí připojit k virtuálnímu počítači a zkopírujte agenta. Pokud chcete povolit úspěšnou instalaci, postupujte podrobné pokyny k odstraňování uvedena níže.
 
@@ -56,12 +62,14 @@ Když zařízení vztah důvěryhodnosti domény mezi primární doménou a prac
 
 Pokud chcete upravit přihlašovací údaje účtu pro vybrané uživatele, postupujte podle pokynů [tady](vmware-azure-manage-configuration-server.md#modify-credentials-for-mobility-service-installation).
 
-## <a name="login-failure-errorid-95519"></a>Selhání přihlášení (ID chyby: 95519)
+## <a name="login-failures-errorid-95519-95520-95521-95522"></a>Neúspěšná přihlášení (ID chyby: 95519, 95520, 95521, 95522)
+
+### <a name="credentials-of-the-user-account-have-been-disabled-errorid-95519"></a>Přihlašovací údaje uživatelského účtu se zakázaly. (ID chyby: 95519)
 
 Uživatelský účet vybrána při povolení replikace se zakázalo. Chcete-li uživatelský účet, najdete v článku [tady](https://aka.ms/enable_login_user) nebo spusťte následující příkaz tak, že nahradíte text *uživatelské jméno* s skutečné uživatelské jméno.
 `net user 'username' /active:yes`
 
-## <a name="login-failure-errorid-95520"></a>Selhání přihlášení (ID chyby: 95520)
+### <a name="credentials-locked-out-due-to-multiple-failed-login-attempts-errorid-95520"></a>Přihlašovací údaje uzamčen kvůli více neúspěšných pokusů o přihlášení (ID chyby: 95520)
 
 Více neúspěšných opakování úsilí pro přístup k počítači dojde k uzamčení uživatelského účtu. Selhání možné příčiny:
 
@@ -70,11 +78,11 @@ Více neúspěšných opakování úsilí pro přístup k počítači dojde k uz
 
 Ano, měnit přihlašovací údaje zvolí podle pokynů [tady](vmware-azure-manage-configuration-server.md#modify-credentials-for-mobility-service-installation) a zkuste operaci zopakovat za nějakou dobu.
 
-## <a name="login-failure-errorid-95521"></a>Selhání přihlášení (ID chyby: 95521)
+### <a name="logon-servers-are-not-available-on-the-source-machine-errorid-95521"></a>Přihlašovací servery nejsou k dispozici na zdrojovém počítači (ID chyby: 95521)
 
 K této chybě dochází, pokud nejsou k dispozici na zdrojovém počítači přihlašovací servery. Nedostupnost přihlašovací servery povede k selhání žádosti o přihlášení, a proto není možné nainstalovat agenta mobility. Pro úspěšné přihlášení Ujistěte se, že přihlašovací servery jsou k dispozici na zdrojovém počítači a spuštění služby přihlašování. Podrobné pokyny, klikněte na tlačítko [tady](https://support.microsoft.com/en-in/help/139410/err-msg-there-are-currently-no-logon-servers-available).
 
-## <a name="login-failure-errorid-95522"></a>Selhání přihlášení (ID chyby: 95522)
+### <a name="logon-service-isnt-running-on-the-source-machine-errorid-95522"></a>Na zdrojovém počítači neběží služba přihlášení (ID chyby: 95522)
 
 Přihlášení služby na zdrojovém počítači není spuštěná a způsobila chybu při žádosti o přihlášení. Proto nelze nainstalovat agenta mobility. Pokud chcete vyřešit, ujistěte se, že je pro úspěšné přihlášení přihlašovací služba běží na zdrojovém počítači. Spustit službu přihlášení, spusťte příkaz "net start přihlášení" z příkazového řádku nebo službu "NetLogon" spustit Správce úloh.
 
@@ -138,15 +146,17 @@ Další články pro řešení problémů WMI nelze nalézt v následujících �
 Další nejčastější příčinou selhání může být způsobeno nepodporovaný operační systém. Ujistěte se, že používáte podporovanou verzi operačního systému nebo jádra pro úspěšnou instalaci služby Mobility. Vyhněte se použití privátní opravy.
 Chcete-li zobrazit seznam operační systémy a verze jádra, které Azure Site Recovery podporuje, najdete v našich [dokument matice podpory](vmware-physical-azure-support-matrix.md#replicated-machines).
 
-## <a name="boot-and-system-partitions--volumes-are-not-the-same-disk-errorid-95309"></a>Spouštěcí a systémové oddíly nebo svazky nejsou stejném disku (ID chyby: 95309)
+## <a name="unsupported-boot-disk-configurations-errorid-95309-95310-95311"></a>Nepodporované konfigurace spouštěcího disku (ID chyby: 95309, 95310, 95311)
+
+### <a name="boot-and-system-partitions--volumes-are-not-the-same-disk-errorid-95309"></a>Spouštěcí a systémové oddíly nebo svazky nejsou stejném disku (ID chyby: 95309)
 
 Před 9.20 verze, spouštěcí a systémové oddíly nebo svazky na různých discích was má nepodporovanou konfiguraci. Z [9.20 verze](https://support.microsoft.com/en-in/help/4478871/update-rollup-31-for-azure-site-recovery), tato konfigurace je podporovaná. Tato podpora používali nejnovější verzi.
 
-## <a name="boot-disk-not-found-errorid-95310"></a>Spouštěcí disk nebyl nalezen (ID chyby: 95310)
+### <a name="the-boot-disk-is-not-available-errorid-95310"></a>Spouštěcí disk není k dispozici (ID chyby: 95310)
 
 Virtuální počítač bez spouštěcí disk nejde chránit. To je zajistit hladký průběh obnovení virtuálního počítače během operace převzetí služeb při selhání. Neexistence spouštěcí disk má za následek selhání ke spuštění počítače po převzetí služeb při selhání. Ujistěte se, že virtuální počítač obsahuje spouštěcí disk a operaci opakujte. Všimněte si také, že se nepodporuje více spouštěcích disků na stejném počítači.
 
-## <a name="multiple-boot-disks-found-errorid-95311"></a>Nalezeno více spouštěcí disky (ID chyby: 95311)
+### <a name="multiple-boot-disks-present-on-the-source-machine-errorid-95311"></a>Na zdrojovém počítači k dispozici více spouštěcích disků (ID chyby: 95311)
 
 Virtuální počítač s více spouštěcí disk není [podporované konfigurace](vmware-physical-azure-support-matrix.md#linux-file-systemsguest-storage).
 
@@ -154,9 +164,45 @@ Virtuální počítač s více spouštěcí disk není [podporované konfigurace
 
 Dříve než ve verzi 9.20 kořenovém oddílu nebo svazku rozdělený na několik disků se má nepodporovanou konfiguraci. Z [9.20 verze](https://support.microsoft.com/en-in/help/4478871/update-rollup-31-for-azure-site-recovery), tato konfigurace je podporovaná. Tato podpora používali nejnovější verzi.
 
-## <a name="grub-uuid-failure-errorid-95320"></a>Selhání kontrole UUID (ID chyby: 95320)
+## <a name="enable-protection-failed-as-device-name-mentioned-in-the-grub-configuration-instead-of-uuid-errorid-95320"></a>Povolení ochrany se nezdařila, protože podle konfigurace GRUB místo UUID název zařízení (ID chyby: 95320)
 
-Pokud GRUB zdrojového počítače používá místo UUID název zařízení, instalace agenta mobility se nezdaří. Kontaktujte správce systému provést změny do souboru GRUB.
+**Možné příčiny:** </br>
+Konfigurační soubory GRUB ("/ boot/grub/menu.lst", "/ boot/grub/grub.cfg", "/ boot/grub2/grub.cfg" nebo "/ etc/výchozí/grub") může obsahovat hodnotu pro parametry **kořenové** a **obnovit** jako zařízení skutečné názvy místo UUID. Site Recovery určuje UUID přístup podle názvu zařízení můžou změnit napříč restartování virtuálního počítače, protože virtuální počítač nemusí přijde up se stejným názvem na převzetí služeb při selhání, což vede k problémům. Příklad: </br>
+
+
+- Následující řádek je ze souboru GRUB **/boot/grub2/grub.cfg**. <br>
+*Linux /boot/vmlinuz-3.12.49-11-default **root = / dev/sda2** ${extra_cmdline} **obnovit = / dev/sda1** splash = silent bezobslužný showopts*
+
+
+- Následující řádek je ze souboru GRUB **/boot/grub/menu.lst**
+*jádra /boot/vmlinuz-3.0.101-63-default **root = / dev/sda2** **obnovit = / dev/sda1 ** splash = tiché crashkernel = 256M-:128M showopts vga = 0x314*
+
+Pokud zjistíte tučné řetězec výše, GRUB má skutečné zařízení názvy parametrů "root" a "obnovit" místo UUID.
+ 
+**Jak vyřešit:**<br>
+Názvy zařízení mělo být nahrazeno s odpovídající identifikátor UUID.<br>
+
+
+1. Najít identifikátor UUID zařízení spuštěním příkazu "blkid <device name>". Příklad:<br>
+```
+blkid /dev/sda1
+/dev/sda1: UUID="6f614b44-433b-431b-9ca1-4dd2f6f74f6b" TYPE="swap"
+blkid /dev/sda2 
+/dev/sda2: UUID="62927e85-f7ba-40bc-9993-cc1feeb191e4" TYPE="ext3" 
+```
+
+2. Nyní nahraďte její identifikátor UUID v následujícím formátu název zařízení "kořenový = UUID =<UUID>". Například, pokud jsme nahradit názvy zařízení UUID pro kořenové a pokračovat v parametru zmíněné v souborech "/ boot/grub2/grub.cfg", "/ boot/grub2/grub.cfg" nebo "/ etc/výchozí/grub: pak řádků v souborech bude vypadat takto. <br>
+*jádra /boot/vmlinuz-3.0.101-63-default **kořenové = UUID = 62927e85 f7ba-40bc-9993-cc1feeb191e4** **obnovit = UUID = 6f614b44 433b-431b-9ca1-4dd2f6f74f6b** splash = tiché crashkernel = 256M-:128M showopts vga = 0x314*
+3. Opětné spuštění ochrany znovu
+
+## <a name="install-mobility-service-completed-with-warning-to-reboot-errorid-95265--95266"></a>Nainstalovat službu Mobility dokončeno s upozorněním restartování (ID chyby: 95265 & 95266)
+
+Službu mobility Site Recovery má spoustu součástí, z nichž jeden je volána ovladač filtru. Ovladač filtru získá načtou do systémové paměti pouze po jednom restartování systému. To znamená, že opravy ovladač filtru pouze se dají realizovat nový ovladač filtru je načtena; které může dojít pouze v době restartování systému.
+
+**Mějte prosím na paměti** , toto je upozornění a stávající replikaci budou fungovat i po nová aktualizace agenta. Je možné restartovat, kdykoli budete chtít získat výhody nový ovladač filtru, ale pokud nemáte restartovat než také starý filtru ovladačů udržuje o práci. Ano, po aktualizaci bez restartování, kromě ovladač filtru **získá realizované výhody další vylepšení a oprav ve službě mobility**. Takže i když doporučuje, není to povinné restartování po každém upgradu. Informace o tom, kdy je povinný restart, klikněte na tlačítko [tady](https://aka.ms/v2a_asr_reboot).
+
+> [!TIP]
+>Doporučených postupech ohledně plánování upgrady období údržby, najdete v tématu [tady](https://aka.ms/v2a_asr_upgrade_practice).
 
 ## <a name="lvm-support-from-920-version"></a>Podpora LVM z 9.20 verze
 

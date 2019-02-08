@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 10/25/2018
 ms.author: hrasheed
-ms.openlocfilehash: 8f22885d67537194342115f07e4d04bc4b5c66da
-ms.sourcegitcommit: 97d0dfb25ac23d07179b804719a454f25d1f0d46
+ms.openlocfilehash: 3e1d5ed05b7acc8f7e0fcc772a4124984c6cba45
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/25/2019
-ms.locfileid: "54911740"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55884524"
 ---
 # <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight---storage-best-practices"></a>Migrace s místními clustery systému Apache Hadoop do HDInsight Azure - storage osvědčené postupy
 
@@ -50,7 +50,7 @@ Azure Storage nabízí [obnovitelného odstranění pro objekty blob](../../stor
 Můžete vytvořit [snímků objektů blob](https://docs.microsoft.com/rest/api/storageservices/creating-a-snapshot-of-a-blob). Snímek je verze jen pro čtení objektu blob, která je provedena v bodě v čase a poskytuje způsob, jak zálohovat objekt blob. Po vytvoření snímku, lze je číst, zkopírovat, nebo odstranit, ale nedojde ke změně.
 
 > [!Note]
-> Pro starší verze místních místních Hadoop distribucí, který nemá certifikát "wasbs" musí být naimportovány do úložiště důvěryhodných Java.
+> Pro starší verze v místním Hadoop distribucí, které nemají certifikát "wasbs" musí být naimportovány do úložiště důvěryhodných Java.
 
 Import certifikátů do úložiště důvěryhodných Java je možné následující metody:
 

@@ -5,18 +5,18 @@ description: Vytvoříte aplikaci LUIS, která používá předem připravenou d
 services: cognitive-services
 author: diberry
 ms.custom: seodec18
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: quickstart
 ms.date: 01/09/2019
 ms.author: diberry
-ms.openlocfilehash: 1dc7c0d8f5b55b9fcbe2680470dcb1e8d352bcd2
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: 347de9b575e3b47ee795026115fd2452c28b866b
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55222623"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55877333"
 ---
 # <a name="quickstart-use-prebuilt-home-automation-app"></a>Rychlý start: Použití předem připravené aplikace automatizace Domovská stránka
 

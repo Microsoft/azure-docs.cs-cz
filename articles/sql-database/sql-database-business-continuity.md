@@ -12,13 +12,13 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
 manager: craigg
-ms.date: 01/25/2019
-ms.openlocfilehash: 998d4f45a2d4956e0e230bcf00636a965c35dd97
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.date: 02/07/2019
+ms.openlocfilehash: 90d95d7ad1ffb3200a69e0e7980dae2d7ed97470
+ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55755165"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55894322"
 ---
 # <a name="overview-of-business-continuity-with-azure-sql-database"></a>Přehled provozní kontinuity se službou Azure SQL Database
 
@@ -132,7 +132,7 @@ Pokud používáte automatizovaných záloh s geograficky redundantní úložiš
 Po obnovení s použitím libovolného mechanismu musíte provést následující dodatečné úlohy, abyste pro uživatele zprovoznili své aplikace:
 
 - Přesměrujte klienty a klientské aplikace na nový server a obnovenou databázi.
-- Zajistěte příslušná pravidla brány firewall na úrovni serveru IP jsou nastavené pro uživatele, aby připojení nebo použít [brány firewall na úrovni databáze](sql-database-firewall-configure.md#manage-ip-firewall-rules-using-the-azure-portal) umožňující příslušných pravidel.
+- Zajistěte příslušná pravidla brány firewall na úrovni serveru IP jsou nastavené pro uživatele, aby připojení nebo použít [brány firewall na úrovni databáze](sql-database-firewall-configure.md#manage-server-level-ip-firewall-rules-using-the-azure-portal) umožňující příslušných pravidel.
 - Ujistěte se, že se používají odpovídající přihlášení a oprávnění na úrovni hlavní databáze (nebo použijte [obsažené uživatelé](https://docs.microsoft.com/sql/relational-databases/security/contained-database-users-making-your-database-portable))
 - Podle potřeby nakonfigurujte auditování.
 - Podle potřeby nakonfigurujte výstrahy.

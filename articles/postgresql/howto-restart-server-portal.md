@@ -5,16 +5,16 @@ author: ajlam
 ms.author: andrela
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 11/16/2018
-ms.openlocfilehash: 7d409db839f94e27ac036550c22302188f37cc90
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.date: 2/7/2019
+ms.openlocfilehash: 28e99f64fdee414549c55f9666bfd53f07fb3efb
+ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53545863"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55892690"
 ---
 # <a name="restart-azure-database-for-postgresql-server-using-azure-portal"></a>Restartovat – Azure Database for PostgreSQL pomocí webu Azure portal
-Toto téma popisuje, jak je možné restartovat server Azure Database for PostgreSQL. Budete muset restartovat server z důvodů údržby, což způsobuje krátké výpadky, jak server provádí operaci.
+Toto téma popisuje, jak je možné restartovat serveru Azure Database for PostgreSQL. Budete muset restartovat server z důvodů údržby, což způsobuje krátké výpadky, jak server provádí operaci.
 
 Restartování serveru se zablokuje, pokud služba je zaneprázdněna. Například služba může zpracovávat dříve požadovaná operace, jako je například škálování virtuálních jader.
  
@@ -48,4 +48,4 @@ PostgreSQL server restartovat následující kroky:
 
 ## <a name="next-steps"></a>Další postup
 
-[Rychlý start: Vytvoření Azure Database for PostgreSQL pomocí webu Azure portal](./quickstart-create-server-database-portal.md)
+[Rychlé zprovoznění: Vytvoření Azure Database for PostgreSQL pomocí webu Azure portal](./quickstart-create-server-database-portal.md)

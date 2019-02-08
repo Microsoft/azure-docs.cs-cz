@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 01/17/2019
 ms.author: spelluru
-ms.openlocfilehash: 93d7a6e884cf02fa41838d4a07644c122a43823b
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: e2831191905da1b9e0ad55131be9eaa7aa13950e
+ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54823823"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55894356"
 ---
 # <a name="tutorial-track-usage-of-a-lab-in-azure-lab-service"></a>Kurz: Sledování využití tohoto prostředí ve službě Azure Lab
 V tomto kurzu se dozvíte, jak může autor nebo vlastník testovacího prostředí sledovat jeho využití.
@@ -55,6 +55,9 @@ Když najedete myší řádek v seznamu virtuálních počítačů, se zobrazí 
 - Spuštění virtuálního počítače
 - Zastavení virtuálního počítače
 - Odstranění virtuálního počítače
+
+
+![Ovládací prvky virtuálního počítače](../media/tutorial-track-usage/vm-controls.png)
 
 Tlačítka panelu nástrojů můžete také ke spuštění, zastavení nebo odstranění virtuálního počítače. 
 

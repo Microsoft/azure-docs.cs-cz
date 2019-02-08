@@ -1,38 +1,40 @@
 ---
-title: Upravit přihlášení do vlastní zásady a nakonfigurovat vlastní s prohlašovanou poskytovatele | Dokumentace Microsoftu
-description: Postup přidání deklarace identity se zaregistrovat a konfigurace uživatelského vstupu
+title: Přidání deklarace identity a přizpůsobení vstupu uživatele s použitím vlastní zásady – Azure Active Directory B2C | Dokumentace Microsoftu
+description: Zjistěte, jak upravit vstup uživatele a přidání deklarace identity na cestě registrace nebo přihlašování v Azure Active Directory B2C.
 services: active-directory-b2c
 author: davidmu1
 manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 04/29/2017
+ms.date: 02/07/2019
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: 2989af12407bdddf6e55e8967a0a574fff690208
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 3e48ce4adc64f434b80210ff8aa36a983ba88c26
+ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55179204"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55894914"
 ---
-# <a name="azure-active-directory-b2c-modify-sign-up-to-add-new-claims-and-configure-user-input"></a>Azure Active Directory B2C: Upravte přihlašování k přidání nových deklarací identity a konfigurace uživatelského vstupu.
+#  <a name="add-claims-and-customize-user-input-using-custom-policies-in-azure-active-directory-b2c"></a>Přidání deklarace identity a přizpůsobení vstupu uživatele s použitím vlastních zásad v Azure Active Directory B2C
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-V tomto článku se přidá nový záznam zadaného uživatelem (deklarace identity) na vaší cestě registrace uživatele.  Bude nakonfigurujte položka rozevíracího seznamu a definovat, jestli je povinné.
+V tomto článku můžete přidat novou položku poskytnutého uživatelem (deklarace identity) na vaší cestě registrace uživatele v Azure Active Directory (Azure AD) B2C.  Nakonfigurujte položka rozevíracího seznamu a definujte, jestli je to požadováno.
 
 ## <a name="prerequisites"></a>Požadavky
 
-* Proveďte kroky v následujícím článku [Začínáme se zásadami vlastní](active-directory-b2c-get-started-custom.md).  Otestujte cestu registrace/přihlášení uživatele k registraci nový místní účet, než budete pokračovat.
+Proveďte kroky v následujícím článku [Začínáme se zásadami vlastní](active-directory-b2c-get-started-custom.md). Otestujte cestu registrace / přihlášení uživatele k registraci nový místní účet, než budete pokračovat.
+
+## <a name="add-claims"></a>Přidání deklarace identity
+
+Shromažďování počáteční data od uživatelů je dosaženo pomocí cesty registrace / přihlášení uživatele. Další deklarace identity se dají shromáždit později pomocí cesty uživatele úpravy profilu. Kdykoli Azure AD B2C interaktivně shromažďuje informace přímo od uživatele, používá architekturu rozhraní identit jeho selfasserted poskytovatele.
 
 
-Shromažďování počáteční data od uživatelů se dosahuje prostřednictvím registrace/přihlášení.  Další deklarace identity se dají shromáždit později pomocí cesty uživatele úpravy profilu. Když Azure AD B2C interaktivně shromažďuje informace přímo od uživatele, používá architekturu rozhraní identit jeho `selfasserted provider`. Následující postup použít, kdykoli se používá tento zprostředkovatel.
+### <a name="define-the-claim"></a>Definování deklarace identity
 
-
-## <a name="define-the-claim-its-display-name-and-the-user-input-type"></a>Zadejte deklaraci identity, její zobrazovaný název a typ uživatelského vstupu
-Umožňuje požádat uživatele o jejich město.  Přidejte následující prvek k `<ClaimsSchema>` element v souboru TrustFrameworkBase zásad:
+Umožňuje požádat uživatele o jejich město. Přidejte následující prvek k **ClaimsSchema** element v souboru TrustFrameworkBase zásad:
 
 ```xml
 <ClaimType Id="city">
@@ -42,14 +44,15 @@ Umožňuje požádat uživatele o jejich město.  Přidejte následující prvek
   <UserInputType>TextBox</UserInputType>
 </ClaimType>
 ```
-Existují další možnosti, můžete tady provedené přizpůsobení deklarace identity.  Úplného schématu, najdete **Identity prostředí Framework technické referenční příručka**.  Tento průvodce bude brzy zveřejníme v referenční části.
 
-* `<DisplayName>` řetězec, který definuje uživatele přístupných *popisek*
+Tyto prvky se používají k definování deklarace identity:
 
-* `<UserHelpText>` pomáhá uživatelům pochopit, co je potřeba
+- **DisplayName** – řetězec, který definuje uživatelského popisku.
+- **UserHelpText** – pomáhá uživatelům pochopit, co je potřeba.
+- **UserInputType** -může být textové pole, výběr přepínačů, rozevíracího seznamu nebo vícenásobného výběru.
 
-* `<UserInputType>` obsahuje následující čtyři možnosti jejichž přehled najdete níže:
-    * `TextBox`
+#### <a name="textbox"></a>TextBox
+
 ```xml
 <ClaimType Id="city">
   <DisplayName>city where you work</DisplayName>
@@ -59,7 +62,8 @@ Existují další možnosti, můžete tady provedené přizpůsobení deklarace 
 </ClaimType>
 ```
 
-    * `RadioSingleSelectduration` -Vynucuje jeden výběr.
+#### <a name="radiosingleselect"></a>RadioSingleSelect
+
 ```xml
 <ClaimType Id="city">
   <DisplayName>city where you work</DisplayName>
@@ -73,10 +77,9 @@ Existují další možnosti, můžete tady provedené přizpůsobení deklarace 
 </ClaimType>
 ```
 
-    * `DropdownSingleSelect` – Umožňuje vybrat pouze platná hodnota.
+#### <a name="dropdownsingleselect"></a>DropdownSingleSelect
 
 ![Snímek obrazovky s rozevírací seznam možností](./media/active-directory-b2c-configure-signup-self-asserted-custom/dropdown-menu-example.png)
-
 
 ```xml
 <ClaimType Id="city">
@@ -91,11 +94,9 @@ Existují další možnosti, můžete tady provedené přizpůsobení deklarace 
 </ClaimType>
 ```
 
-
-* `CheckboxMultiSelect` Umožňuje vybrat jednu nebo více hodnot.
+#### <a name="checkboxmultiselect"></a>CheckboxMultiSelect
 
 ![Snímek obrazovky s možností vícenásobného výběru](./media/active-directory-b2c-configure-signup-self-asserted-custom/multiselect-menu-example.png)
-
 
 ```xml
 <ClaimType Id="city">
@@ -110,142 +111,169 @@ Existují další možnosti, můžete tady provedené přizpůsobení deklarace 
 </ClaimType>
 ```
 
-## <a name="add-the-claim-to-the-sign-upsign-in-user-journey"></a>Přidá deklaraci k znaménko up/sign v cestě uživatele
+### <a name="add-the-claim-to-the-user-journey"></a>Přidat deklaraci identity pro cestu uživatele
 
-1. Přidání deklarace identity jako `<OutputClaim ClaimTypeReferenceId="city"/>` na technický profil `LocalAccountSignUpWithLogonEmail` (tuto možnost najdete v souboru zásad TrustFrameworkBase).  Všimněte si, že tento technický profil používá SelfAssertedAttributeProvider.
+1. Přidání deklarace identity jako `<OutputClaim ClaimTypeReferenceId="city"/>` k `LocalAccountSignUpWithLogonEmail` technický profil nachází v souboru TrustFrameworkBase zásad. Tento technický profil používá SelfAssertedAttributeProvider.
 
-  ```xml
-  <TechnicalProfile Id="LocalAccountSignUpWithLogonEmail">
-    <DisplayName>Email signup</DisplayName>
-    <Protocol Name="Proprietary" Handler="Web.TPEngine.Providers.SelfAssertedAttributeProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
-    <Metadata>
-      <Item Key="IpAddressClaimReferenceId">IpAddress</Item>
-      <Item Key="ContentDefinitionReferenceId">api.localaccountsignup</Item>
-      <Item Key="language.button_continue">Create</Item>
-    </Metadata>
-    <CryptographicKeys>
-      <Key Id="issuer_secret" StorageReferenceId="TokenSigningKeyContainer" />
-    </CryptographicKeys>
-    <InputClaims>
-      <InputClaim ClaimTypeReferenceId="email" />
-    </InputClaims>
-    <OutputClaims>
-      <OutputClaim ClaimTypeReferenceId="objectId" />
-      <OutputClaim ClaimTypeReferenceId="email" PartnerClaimType="Verified.Email" Required="true" />
-      <OutputClaim ClaimTypeReferenceId="newPassword" Required="true" />
-      <OutputClaim ClaimTypeReferenceId="reenterPassword" Required="true" />
-      <OutputClaim ClaimTypeReferenceId="executed-SelfAsserted-Input" DefaultValue="true" />
-      <OutputClaim ClaimTypeReferenceId="authenticationSource" />
-      <OutputClaim ClaimTypeReferenceId="newUser" />
-      <!-- Optional claims, to be collected from the user -->
-      <OutputClaim ClaimTypeReferenceId="givenName" />
-      <OutputClaim ClaimTypeReferenceId="surName" />
-      <OutputClaim ClaimTypeReferenceId="city"/>
-    </OutputClaims>
-    <ValidationTechnicalProfiles>
-      <ValidationTechnicalProfile ReferenceId="AAD-UserWriteUsingLogonEmail" />
-    </ValidationTechnicalProfiles>
-    <UseTechnicalProfileForSessionManagement ReferenceId="SM-AAD" />
-  </TechnicalProfile>
-  ```
-
-2. Přidá deklaraci k UserWriteUsingLogonEmail AAD jako `<PersistedClaim ClaimTypeReferenceId="city" />` zápis deklarace identity do služby AAD po shromáždění od uživatele. Pokud nechcete zachovat pro budoucí použití deklarací identity v adresáři, může tento krok přeskočit.
-
-  ```xml
-  <!-- Technical profiles for local accounts -->
-  <TechnicalProfile Id="AAD-UserWriteUsingLogonEmail">
-    <Metadata>
-      <Item Key="Operation">Write</Item>
-      <Item Key="RaiseErrorIfClaimsPrincipalAlreadyExists">true</Item>
-    </Metadata>
-    <IncludeInSso>false</IncludeInSso>
-    <InputClaims>
-      <InputClaim ClaimTypeReferenceId="email" PartnerClaimType="signInNames.emailAddress" Required="true" />
-    </InputClaims>
-    <PersistedClaims>
-      <!-- Required claims -->
-      <PersistedClaim ClaimTypeReferenceId="email" PartnerClaimType="signInNames.emailAddress" />
-      <PersistedClaim ClaimTypeReferenceId="newPassword" PartnerClaimType="password" />
-      <PersistedClaim ClaimTypeReferenceId="displayName" DefaultValue="unknown" />
-      <PersistedClaim ClaimTypeReferenceId="passwordPolicies" DefaultValue="DisablePasswordExpiration" />
-      <!-- Optional claims. -->
-      <PersistedClaim ClaimTypeReferenceId="givenName" />
-      <PersistedClaim ClaimTypeReferenceId="surname" />
-      <PersistedClaim ClaimTypeReferenceId="city" />
-    </PersistedClaims>
-    <OutputClaims>
-      <OutputClaim ClaimTypeReferenceId="objectId" />
-      <OutputClaim ClaimTypeReferenceId="newUser" PartnerClaimType="newClaimsPrincipalCreated" />
-      <OutputClaim ClaimTypeReferenceId="authenticationSource" DefaultValue="localAccountAuthentication" />
-      <OutputClaim ClaimTypeReferenceId="userPrincipalName" />
-      <OutputClaim ClaimTypeReferenceId="signInNames.emailAddress" />
-    </OutputClaims>
-    <IncludeTechnicalProfile ReferenceId="AAD-Common" />
-    <UseTechnicalProfileForSessionManagement ReferenceId="SM-AAD" />
-  </TechnicalProfile>
-  ```
-
-3. Přidá deklaraci k technický profil, který čte z adresáře, když se uživatel přihlásí na jako `<OutputClaim ClaimTypeReferenceId="city" />`
-
-  ```xml
-  <TechnicalProfile Id="AAD-UserReadUsingEmailAddress">
-    <Metadata>
-      <Item Key="Operation">Read</Item>
-      <Item Key="RaiseErrorIfClaimsPrincipalDoesNotExist">true</Item>
-      <Item Key="UserMessageIfClaimsPrincipalDoesNotExist">An account could not be found for the provided user ID.</Item>
-    </Metadata>
-    <IncludeInSso>false</IncludeInSso>
-    <InputClaims>
-      <InputClaim ClaimTypeReferenceId="email" PartnerClaimType="signInNames" Required="true" />
-    </InputClaims>
-    <OutputClaims>
-      <!-- Required claims -->
-      <OutputClaim ClaimTypeReferenceId="objectId" />
-      <OutputClaim ClaimTypeReferenceId="authenticationSource" DefaultValue="localAccountAuthentication" />
-      <!-- Optional claims -->
-      <OutputClaim ClaimTypeReferenceId="userPrincipalName" />
-      <OutputClaim ClaimTypeReferenceId="displayName" />
-      <OutputClaim ClaimTypeReferenceId="otherMails" />
-      <OutputClaim ClaimTypeReferenceId="signInNames.emailAddress" />
-      <OutputClaim ClaimTypeReferenceId="city" />
-    </OutputClaims>
-    <IncludeTechnicalProfile ReferenceId="AAD-Common" />
-  </TechnicalProfile>
-  ```
-
-4. Přidat `<OutputClaim ClaimTypeReferenceId="city" />` RP zásad souborů SignUporSignIn.xml, takže tato deklarace identity se odešlou do aplikace v tokenu po cesty uživatele úspěšné.
-
-  ```xml
-  <RelyingParty>
-    <DefaultUserJourney ReferenceId="SignUpOrSignIn" />
-    <TechnicalProfile Id="PolicyProfile">
-      <DisplayName>PolicyProfile</DisplayName>
-      <Protocol Name="OpenIdConnect" />
+    ```xml
+    <TechnicalProfile Id="LocalAccountSignUpWithLogonEmail">
+      <DisplayName>Email signup</DisplayName>
+      <Protocol Name="Proprietary" Handler="Web.TPEngine.Providers.SelfAssertedAttributeProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
+      <Metadata>
+        <Item Key="IpAddressClaimReferenceId">IpAddress</Item>
+        <Item Key="ContentDefinitionReferenceId">api.localaccountsignup</Item>
+        <Item Key="language.button_continue">Create</Item>
+      </Metadata>
+      <CryptographicKeys>
+        <Key Id="issuer_secret" StorageReferenceId="TokenSigningKeyContainer" />
+      </CryptographicKeys>
+      <InputClaims>
+        <InputClaim ClaimTypeReferenceId="email" />
+      </InputClaims>
       <OutputClaims>
-        <OutputClaim ClaimTypeReferenceId="displayName" />
+        <OutputClaim ClaimTypeReferenceId="objectId" />
+        <OutputClaim ClaimTypeReferenceId="email" PartnerClaimType="Verified.Email" Required="true" />
+        <OutputClaim ClaimTypeReferenceId="newPassword" Required="true" />
+        <OutputClaim ClaimTypeReferenceId="reenterPassword" Required="true" />
+        <OutputClaim ClaimTypeReferenceId="executed-SelfAsserted-Input" DefaultValue="true" />
+        <OutputClaim ClaimTypeReferenceId="authenticationSource" />
+        <OutputClaim ClaimTypeReferenceId="newUser" />
+        <!-- Optional claims, to be collected from the user -->
         <OutputClaim ClaimTypeReferenceId="givenName" />
-        <OutputClaim ClaimTypeReferenceId="surname" />
-        <OutputClaim ClaimTypeReferenceId="email" />
-        <OutputClaim ClaimTypeReferenceId="objectId" PartnerClaimType="sub"/>
-        <OutputClaim ClaimTypeReferenceId="identityProvider" />
+        <OutputClaim ClaimTypeReferenceId="surName" />
+        <OutputClaim ClaimTypeReferenceId="city"/>
+      </OutputClaims>
+      <ValidationTechnicalProfiles>
+        <ValidationTechnicalProfile ReferenceId="AAD-UserWriteUsingLogonEmail" />
+      </ValidationTechnicalProfiles>
+      <UseTechnicalProfileForSessionManagement ReferenceId="SM-AAD" />
+    </TechnicalProfile>
+    ```
+
+2. Přidá deklaraci k AAD UserWriteUsingLogonEmail technický profil jako `<PersistedClaim ClaimTypeReferenceId="city" />` zápis deklarace identity do služby AAD po shromáždění od uživatele. Pokud nechcete zachovat pro budoucí použití deklarací identity v adresáři, může tento krok přeskočit.
+
+    ```xml
+    <!-- Technical profiles for local accounts -->
+    <TechnicalProfile Id="AAD-UserWriteUsingLogonEmail">
+      <Metadata>
+        <Item Key="Operation">Write</Item>
+        <Item Key="RaiseErrorIfClaimsPrincipalAlreadyExists">true</Item>
+      </Metadata>
+      <IncludeInSso>false</IncludeInSso>
+      <InputClaims>
+        <InputClaim ClaimTypeReferenceId="email" PartnerClaimType="signInNames.emailAddress" Required="true" />
+      </InputClaims>
+      <PersistedClaims>
+        <!-- Required claims -->
+        <PersistedClaim ClaimTypeReferenceId="email" PartnerClaimType="signInNames.emailAddress" />
+        <PersistedClaim ClaimTypeReferenceId="newPassword" PartnerClaimType="password" />
+        <PersistedClaim ClaimTypeReferenceId="displayName" DefaultValue="unknown" />
+        <PersistedClaim ClaimTypeReferenceId="passwordPolicies" DefaultValue="DisablePasswordExpiration" />
+        <!-- Optional claims. -->
+        <PersistedClaim ClaimTypeReferenceId="givenName" />
+        <PersistedClaim ClaimTypeReferenceId="surname" />
+        <PersistedClaim ClaimTypeReferenceId="city" />
+      </PersistedClaims>
+      <OutputClaims>
+        <OutputClaim ClaimTypeReferenceId="objectId" />
+        <OutputClaim ClaimTypeReferenceId="newUser" PartnerClaimType="newClaimsPrincipalCreated" />
+        <OutputClaim ClaimTypeReferenceId="authenticationSource" DefaultValue="localAccountAuthentication" />
+        <OutputClaim ClaimTypeReferenceId="userPrincipalName" />
+        <OutputClaim ClaimTypeReferenceId="signInNames.emailAddress" />
+      </OutputClaims>
+      <IncludeTechnicalProfile ReferenceId="AAD-Common" />
+      <UseTechnicalProfileForSessionManagement ReferenceId="SM-AAD" />
+    </TechnicalProfile>
+    ```
+
+3. Přidat `<OutputClaim ClaimTypeReferenceId="city" />` deklarace identity do technické profily, které čtou z adresáře, když se uživatel přihlásí.
+
+    ```xml
+    <TechnicalProfile Id="AAD-UserReadUsingEmailAddress">
+      <Metadata>
+        <Item Key="Operation">Read</Item>
+        <Item Key="RaiseErrorIfClaimsPrincipalDoesNotExist">true</Item>
+        <Item Key="UserMessageIfClaimsPrincipalDoesNotExist">An account could not be found for the provided user ID.</Item>
+      </Metadata>
+      <IncludeInSso>false</IncludeInSso>
+      <InputClaims>
+        <InputClaim ClaimTypeReferenceId="email" PartnerClaimType="signInNames" Required="true" />
+      </InputClaims>
+      <OutputClaims>
+        <!-- Required claims -->
+        <OutputClaim ClaimTypeReferenceId="objectId" />
+        <OutputClaim ClaimTypeReferenceId="authenticationSource" DefaultValue="localAccountAuthentication" />
+        <!-- Optional claims -->
+        <OutputClaim ClaimTypeReferenceId="userPrincipalName" />
+        <OutputClaim ClaimTypeReferenceId="displayName" />
+        <OutputClaim ClaimTypeReferenceId="otherMails" />
+        <OutputClaim ClaimTypeReferenceId="signInNames.emailAddress" />
         <OutputClaim ClaimTypeReferenceId="city" />
       </OutputClaims>
-      <SubjectNamingInfo ClaimType="sub" />
+      <IncludeTechnicalProfile ReferenceId="AAD-Common" />
     </TechnicalProfile>
-  </RelyingParty>
-  ```
+    ```
 
-## <a name="test-the-custom-policy-using-run-now"></a>Vlastní zásady "Spustit nyní" pomocí testování
+    ```xml
+    <TechnicalProfile Id="AAD-UserReadUsingObjectId">
+      <Metadata>
+        <Item Key="Operation">Read</Item>
+        <Item Key="RaiseErrorIfClaimsPrincipalDoesNotExist">true</Item>
+      </Metadata>
+      <IncludeInSso>false</IncludeInSso>
+      <InputClaims>
+        <InputClaim ClaimTypeReferenceId="objectId" Required="true" />
+      </InputClaims>
+      <OutputClaims>
+        <!-- Optional claims -->
+        <OutputClaim ClaimTypeReferenceId="signInNames.emailAddress" />
+        <OutputClaim ClaimTypeReferenceId="displayName" />
+        <OutputClaim ClaimTypeReferenceId="otherMails" />
+        <OutputClaim ClaimTypeReferenceId="givenName" />
+        <OutputClaim ClaimTypeReferenceId="city" />
+      </OutputClaims>
+      <IncludeTechnicalProfile ReferenceId="AAD-Common" />
+    </TechnicalProfile>
+    ```
+   
+4. Přidat `<OutputClaim ClaimTypeReferenceId="city" />` deklaraci identity pro soubor SignUporSignIn.xml tak, aby tento požadavek je odeslat do aplikace v tokenu po cesty uživatele úspěšné.
 
-1. Otevřít **okno Azure AD B2C** a přejděte do **architekturu rozhraní identit > vlastní zásady**.
-2. Vyberte vlastní zásady, které jste nahráli a klikněte na tlačítko **spustit nyní** tlačítko.
+    ```xml
+    <RelyingParty>
+      <DefaultUserJourney ReferenceId="SignUpOrSignIn" />
+      <TechnicalProfile Id="PolicyProfile">
+        <DisplayName>PolicyProfile</DisplayName>
+        <Protocol Name="OpenIdConnect" />
+        <OutputClaims>
+          <OutputClaim ClaimTypeReferenceId="displayName" />
+          <OutputClaim ClaimTypeReferenceId="givenName" />
+          <OutputClaim ClaimTypeReferenceId="surname" />
+          <OutputClaim ClaimTypeReferenceId="email" />
+          <OutputClaim ClaimTypeReferenceId="objectId" PartnerClaimType="sub"/>
+          <OutputClaim ClaimTypeReferenceId="identityProvider" />
+          <OutputClaim ClaimTypeReferenceId="city" />
+        </OutputClaims>
+        <SubjectNamingInfo ClaimType="sub" />
+      </TechnicalProfile>
+    </RelyingParty>
+    ```
+
+## <a name="test-the-custom-policy"></a>Testování vlastní zásady
+
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+2. Ujistěte se, že používáte adresáře, který obsahuje váš tenant Azure AD kliknutím **filtr adresářů a předplatných** v horní nabídce a výběrem adresáře, který obsahuje váš tenant Azure AD.
+3. Zvolte **všechny služby** v horním levém horním rohu webu Azure portal a poté vyhledejte a vyberte **registrace aplikací**.
+4. Vyberte **architekturu rozhraní identit (Preview)**.
+5. Vyberte **nahrát vlastní zásady**a pak nahrajte soubory dvou zásad, které jste změnili.
+2. Vyberte zásadu registrace nebo přihlášení, který jste nahráli a klikněte na tlačítko **spustit nyní** tlačítko.
 3. Měli byste být schopni registrace pomocí e-mailovou adresu.
 
-Obrazovka registrace v režimu testu by měla vypadat nějak takto:
+Obrazovka registrace by měla vypadat nějak takto:
 
 ![Snímek obrazovky s upravenou možnost registrace](./media/active-directory-b2c-configure-signup-self-asserted-custom/signup-with-city-claim-dropdown-example.png)
 
-  Teď bude zahrnovat token zpět do aplikace `city` deklarace identity, jak je znázorněno níže
+Obsahuje token odesílaných zpět do aplikace `city` deklarací identity.
+
 ```json
 {
   "exp": 1493596822,
@@ -266,19 +294,16 @@ Obrazovka registrace v režimu testu by měla vypadat nějak takto:
 }
 ```
 
-## <a name="optional-remove-email-verification-from-signup-journey"></a>Volitelné: Odebrání cesty registrace ověření e-mailu
+## <a name="optional-remove-email-verification"></a>Volitelné: Odebrat ověření e-mailu
 
-Chcete-li přeskočit ověření e-mailu, Autor zásad můžete odebrat `PartnerClaimType="Verified.Email"`. E-mailová adresa se vyžaduje, ale nebyla ověřena, není-li "Required" = true se odebere.  Pečlivě zvažte, jestli tato možnost je vhodná pro vaše případy použití!
+Chcete-li přeskočit ověření e-mailu, můžete k odebrání `PartnerClaimType="Verified.Email"`. V takovém případě by e-mailová adresa je vyžadována, ale nebyla ověřena, není-li "Required" = true se odebere.  Pečlivě zvažte, jestli tato možnost je vhodná pro vaše případy použití.
 
-Ověřit e-mailu je povolena ve výchozím nastavení `<TechnicalProfile Id="LocalAccountSignUpWithLogonEmail">` TrustFrameworkBase souboru zásad v starter pack:
+Ověřit e-mailu je povolena ve výchozím nastavení `<TechnicalProfile Id="LocalAccountSignUpWithLogonEmail">` TrustFrameworkBase souboru zásad:
+
 ```xml
 <OutputClaim ClaimTypeReferenceId="email" PartnerClaimType="Verified.Email" Required="true" />
 ```
 
 ## <a name="next-steps"></a>Další postup
 
-Pokud vaše zásady podporuje účty sociálních sítí, přidejte novou deklaraci do toků pro přihlášení účtu na sociální síti tak, že změníte technické profilů uvedených níže. Tyto deklarace používají přihlašovací údaje účtu na sociální síti shromažďuje a zapisuje data od uživatele.
-
-1. Vyhledejte technický profil **SelfAsserted sociálního** a přidá deklaraci výstupu. Pořadí deklarace identity v **OutputClaims** určuje pořadí, že Azure AD B2C vykreslí deklarace identity na obrazovce. Například, `<OutputClaim ClaimTypeReferenceId="city" />`.
-2. Vyhledejte technický profil **AAD UserWriteUsingAlternativeSecurityId** a přidá deklaraci persist. Například, `<PersistedClaim ClaimTypeReferenceId="city" />`.
-3. Vyhledejte technický profil **AAD UserReadUsingAlternativeSecurityId** a přidá deklaraci výstupu. Například, `<OutputClaim ClaimTypeReferenceId="city" />`.
+Zjistěte, jak [použití vlastních atributů ve vlastním profilu upravit zásadu](active-directory-b2c-create-custom-attributes-profile-edit-custom.md).

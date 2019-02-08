@@ -4,19 +4,19 @@ titleSuffix: Azure Cognitive Services
 description: Použít tento rychlý start k odesílání požadavků na Bingu Web Search REST API pomocí Node.js a přijetí odpovědi JSON
 services: cognitive-services
 author: aahill
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-web-search
 ms.topic: quickstart
 ms.date: 9/26/2018
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: e07b38c74e4ed815d5ec52be97c2b6a8e7b6ddb0
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 9a8c927eacf9bb42cdac5541958ce7cb4bb47947
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55166233"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55878897"
 ---
 # <a name="search-the-web-using-the-bing-web-search-rest-api-and-nodejs"></a>Vyhledávání na webu pomocí rozhraní API REST webové vyhledávání Bingu a Node.js
 

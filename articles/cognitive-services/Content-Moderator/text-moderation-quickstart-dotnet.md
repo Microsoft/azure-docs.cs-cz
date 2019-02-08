@@ -4,18 +4,18 @@ titlesuffix: Azure Cognitive Services
 description: Postup analýzy různého problematického materiálu v obsahu textu pomocí sady Content Moderator SDK pro .NET
 services: cognitive-services
 author: sanjeev3
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: quickstart
 ms.date: 01/10/2019
 ms.author: sajagtap
-ms.openlocfilehash: fbbb58d4dc3774e3142787894ab6dfe0580c25b7
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: 6383a495ed3e3876e96b1249cb7b2286b240a481
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55224611"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55884592"
 ---
 # <a name="quickstart-analyze-text-content-for-objectionable-material-in-c"></a>Rychlý start: Analýza pro nežádoucím v textový obsahC# 
 

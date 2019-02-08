@@ -12,16 +12,16 @@ ms.author: douglasl
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 01/25/2019
-ms.openlocfilehash: e980ec81f66e1045a4d9df33b3392589f5c1a668
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: d00d9b4a945b139ed7b930609fdab24e4a211551
+ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55463748"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55891093"
 ---
 # <a name="export-an-azure-sql-database-to-a-bacpac-file"></a>Exportovat databázi Azure SQL do souboru BACPAC
 
-Když je potřeba vyexportovat databázi pro archivaci nebo pro přesun do jiné platformy, můžete exportovat schéma databáze a dat [BACPAC](https://msdn.microsoft.com/library/ee210546.aspx#Anchor_4) souboru. Soubor BACPAC je soubor ZIP s příponou souboru BACPAC, který obsahuje metadata i data z databáze SQL serveru. Do souboru BACPAC můžete uložená v úložišti objektů blob v Azure nebo v místním úložišti v místním umístěním a později importovat zpátky do Azure SQL Database nebo místní instalace SQL serveru.
+Když je potřeba vyexportovat databázi pro archivaci nebo pro přesun do jiné platformy, můžete exportovat schéma databáze a dat [BACPAC](https://msdn.microsoft.com/library/ee210546.aspx#Anchor_4) souboru. Soubor BACPAC je soubor ZIP s příponou souboru BACPAC, který obsahuje metadata i data z databáze SQL serveru. Soubor BACPAC mohou být uloženy v úložišti objektů Blob v Azure nebo v místním úložišti v místním umístěním a později importované zpět do Azure SQL Database nebo do systému SQL Server na místní instalace.
 
 > [!IMPORTANT]
 > Azure SQL Database automatický Export skončil na 1. března 2017. Můžete použít [dlouhodobého uchovávání záloh](sql-database-long-term-retention.md

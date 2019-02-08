@@ -4,15 +4,13 @@ ms.service: storsimple
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
-ms.openlocfilehash: 8a349916d0c0efc0f7895368a614897e3c6a15dc
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
-ms.translationtype: HT
+ms.openlocfilehash: db05ce33a9fb602d6d48d1a1606f48a7fbde246e
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50964546"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55889619"
 ---
-<!--author=alkohli last changed: 12/15/15-->
-
 | Identifikátor omezení | Omezení | Komentáře |
 | --- | --- | --- |
 | Maximální počet přihlašovací údaje účtu úložiště |64 | |
@@ -20,8 +18,8 @@ ms.locfileid: "50964546"
 | Maximální počet svazků |255 | |
 | Maximální počet plánů na šablonu šířky pásma |168 |Plán pro každou hodinu, každý den v týdnu (24 * 7). |
 | Maximální velikost vrstveného svazku na fyzických zařízeních |64 TB pro 8100 a 8600 |8100 a 8600 jsou fyzické zařízení. |
-| Maximální velikost vrstveného svazku na virtuální zařízení v Azure |30 TB pro 8010 <br></br> 64 TB pro 8020 |8010 a 8020 je virtuální zařízení v Azure, které používají úložiště úrovně Standard a Premium Storage v uvedeném pořadí. |
-| Maximální velikost místně vázaný svazek na fyzických zařízeních |9 TB pro 8100 <br></br> 24 TB pro 8600 |8100 a 8600 jsou fyzické zařízení. |
+| Maximální velikost vrstveného svazku na virtuální zařízení v Azure |30 TB for 8010 <br></br> 64 TB for 8020 |8010 a 8020 je virtuální zařízení v Azure, které používají úložiště úrovně Standard a Premium Storage v uvedeném pořadí. |
+| Maximální velikost místně vázaný svazek na fyzických zařízeních |9 TB for 8100 <br></br> 24 TB pro 8600 |8100 a 8600 jsou fyzické zařízení. |
 | Maximální počet připojení iSCSI |512 | |
 | Maximální počet připojení iniciátorů iSCSI |512 | |
 | Maximální počet záznamy řízení přístupu podle zařízení |64 | |

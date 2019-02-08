@@ -4,19 +4,19 @@ titleSuffix: Azure Cognitive Services
 description: Zjistěte, jak se zaregistrovat pro rozhraní Translator Text API a získat klíč předplatného.
 services: cognitive-services
 author: erhopf
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: erhopf
 ms.custom: seodec18
-ms.openlocfilehash: 74a0a15490164cfdbc97529bec63a74ef63dbfc9
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 9781dd69db7c9065c36c33d9ce0fde7d9358fa10
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55458461"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55884847"
 ---
 # <a name="how-to-sign-up-for-the-translator-text-api"></a>Jak se zaregistrovat pro rozhraní Translator Text API
 

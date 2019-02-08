@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: reference
 ms.date: 09/17/2018
 ms.author: pbutlerm
-ms.openlocfilehash: c09816d45169ce9bb6c926b8b17b075ea1059ec7
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.openlocfilehash: e56169d74d1669c3bb7adda06590145d2ca31b72
+ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55695368"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55893336"
 ---
 # <a name="saas-sell-through-azure---apis"></a>Zákazník SaaS pomocí Azure – rozhraní API
 
@@ -68,7 +68,7 @@ Registrace nové aplikace pomocí webu Azure portal, postupujte následovně:
     -   **Adresa URL přihlašování**: Pro webové aplikace nebo rozhraní API aplikace zadejte základní adresu URL vaší aplikace. Například **http://localhost:31544** může být adresa URL pro webovou aplikaci spuštěnou na místním počítači. Uživatelé by pak pomocí této adresy URL pro přihlášení k webové klientské aplikace.
     -   **Identifikátor URI pro přesměrování**: U nativních aplikací zadejte identifikátor URI používá Azure AD k vracení odpovědí na tokeny. Zadejte hodnotu specifickou pro vaši aplikaci, například **http://MyFirstAADApp**.
 
-        ![Registrace aplikací SaaS AD](./media/saas-offer-app-registration-2.png) konkrétní příklady webových nebo nativních aplikací, podívejte se na rychlý start na základě nastavení, které jsou k dispozici v části Začínáme [příručku pro vývojáře v Azure AD](https://docs.microsoft.com/azure/active-directory/develop/active-directory-developers-guide#get-started).
+        ![Registrace aplikací SaaS AD](./media/saas-offer-app-registration-2.png) konkrétní příklady webových nebo nativních aplikací, podívejte se na rychlý start na základě nastavení, které jsou k dispozici v části Začínáme [příručku pro vývojáře v Azure AD](https://docs.microsoft.com/azure/active-directory/develop/active-directory-developers-guide).
 
 5.  Jakmile budete hotovi, klikněte na **Vytvořit**. Azure AD jedinečný Identifikátor aplikace přiřadí vaší aplikaci a\'znovu provést do vaší aplikace\'s hlavním registrační stránku. V závislosti na tom, jestli je vaše aplikace webová nebo nativní, jsou k dispozici různé volby pro přidání dalších možností do vaší aplikace.
 
@@ -148,7 +148,9 @@ Aktuální verze rozhraní API je `api-version=2017-04-15`.
 
 ### <a name="resolve-subscription"></a>Vyřešit předplatného
 
-Akce POST na vyřešit koncový bod umožňuje uživatelům vyřešit token trvalého ID prostředku.
+Akce POST na vyřešit koncový bod umožňuje uživatelům vyřešit marketplace token trvalého ID prostředku.  ID prostředku je jedinečný identifikátor pro předplatné SAAS. 
+
+Když uživatel se přesměruje na web nezávislých výrobců softwaru, adresa URL obsahuje token v parametry dotazu. Výrobci má používat tento token a požádat o jeho vyřešení. Odpověď obsahuje ID předplatného SAAS jedinečný název, ID nabídky a plán pro prostředek. Tento token je platný pouze jedna hodina.
 
 *Požadavek*
 

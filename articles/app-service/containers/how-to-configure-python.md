@@ -15,12 +15,12 @@ ms.topic: quickstart
 ms.date: 01/29/2019
 ms.author: astay;cephalin;kraigb
 ms.custom: seodec18
-ms.openlocfilehash: 416566ac52e8df6324cbf6146919df160deb0f98
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: 6965379aadefd110ce6e46e105bbde10626b63c1
+ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55220990"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55892163"
 ---
 # <a name="configure-your-python-app-for-azure-app-service"></a>Konfigurace vaší aplikace v Pythonu pro Azure App Service
 Tento článek popisuje, jak [služby Azure App Service](app-service-linux-intro.md) spouští aplikace v Pythonu a jak můžete přizpůsobit chování služby App Service v případě potřeby. Aplikace v Pythonu, musí být nasazený s všechny požadované [pip](https://pypi.org/project/pip/) moduly. Modul pro nasazení služby App Service (Kudu) automaticky aktivuje virtuální prostředí a spustí `pip install -r requirements.txt` za vás při nasazování [úložiště Git](../deploy-local-git.md), nebo [zazipovaný balíček s](../deploy-zip.md) s procesy sestavení zapnuté.
@@ -82,7 +82,7 @@ Služba App Service hledá pro aplikace Django soubory se jménem `wsgi.py` v k�
 gunicorn --bind=0.0.0.0 --timeout 600 <module>.wsgi
 ```
 
-Pokud chcete mít přesnější kontrolu nad spouštěcími příkazy, použijte [vlastní spouštěcí příkaz](#custom-startup-command) a nahraďte `<module>` názvem modulu obsahujícího *wsgi.py*.
+Pokud chcete mít podrobnější kontrolu nad spouštěcí příkaz, použijte vlastní spouštěcí příkaz a nahraďte `<module>` s názvem modulu, který obsahuje *wsgi.py*.
 
 ### <a name="flask-app"></a>Aplikace Flask
 
@@ -95,7 +95,7 @@ gunicorn --bind=0.0.0.0 --timeout 600 application:app
 gunicorn --bind=0.0.0.0 --timeout 600 app:app
 ```
 
-Pokud je hlavní modul aplikace v jiném souboru, použijte jiný název objektu aplikace. Když chcete zadat další argumenty serveru Gunicorn, použijte [vlastní spouštěcí příkaz](#custom-startup-command).
+Pokud modul hlavní aplikace je obsažen v jiném souboru, použijte jiný název pro objekt aplikace nebo chcete zadat další argumenty Gunicorn, použijte vlastní spouštěcí příkaz.
 
 ### <a name="default-behavior"></a>Výchozí chování
 
@@ -160,7 +160,7 @@ Oblíbené webové architektury umožněte přístup `X-Forwarded-*` informace o
 - Restartujte službu App Service, počkejte 15-20 sekund a znovu zkontrolujte aplikaci.
 - Ujistěte se, že používáte App Service pro Linux, a ne instanci založenou na Windows. V Azure CLI spusťte příkaz `az webapp show --resource-group <resource_group_name> --name <app_service_name> --query kind` a hodnoty `<resource_group_name>` a `<app_service_name>` nahraďte odpovídajícím způsobem. Jako výstup by se mělo zobrazit `app,linux`. Pokud ne, vytvořte službu App Service znovu a zvolte Linux.
 - Připojte se přímo ke službě App Service pomocí SSH nebo konzoly Kudu a ověřte, že vaše soubory v *site/wwwroot* existují. Pokud soubory neexistují, zopakujte proces nasazení a aplikaci znovu nasaďte.
-- Pokud soubory existují, neidentifikovala služba App Service konkrétní spouštěcí soubor. Zkontrolujte, že má aplikace strukturu, kterou služba App Service očekává u aplikací [Django](#django-app) nebo [Flask](#flask-app), nebo použijte [vlastní spouštěcí příkaz](#custom-startup-command).
+- Pokud soubory existují, neidentifikovala služba App Service konkrétní spouštěcí soubor. Zkontrolujte, že vaše aplikace je strukturované jako očekává, že služby App Service pro [Django](#django-app) nebo [Flask](#flask-app), nebo použijte vlastní spouštěcí příkaz.
 - **V prohlížeči se zobrazí zpráva „Služba není dostupná“.** Vypršel časový limit čekání prohlížeče na odpověď služby App Service. To naznačuje, že služba App Service sice spustila server Gunicorn, ale argumenty, které specifikuje kód aplikace, jsou nesprávné.
 - Aktualizujte okno prohlížeče, zejména v případě, že používáte nejnižší cenové úrovně v Plánu služby App Service. Aplikace se může spouštět pomaleji (když používáte například úrovně free) a po aktualizaci okna prohlížeče začne znovu odpovídat.
 - Zkontrolujte, že má aplikace strukturu, kterou služba App Service očekává u aplikací [Django](#django-app) nebo [Flask](#flask-app), nebo použijte [vlastní spouštěcí příkaz](#customize-startup-command).

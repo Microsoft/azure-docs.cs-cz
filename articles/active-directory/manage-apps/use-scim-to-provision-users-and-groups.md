@@ -16,12 +16,12 @@ ms.date: 12/12/2017
 ms.author: barbkess
 ms.reviewer: asmalser
 ms.custom: aaddev;it-pro;seohack1
-ms.openlocfilehash: e16598a10cbbe4cfa65e6b5394e749bfee99dbdc
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
+ms.openlocfilehash: faebf6c5e7b32ec842c19af07e36a1120156e103
+ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55732579"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55894118"
 ---
 # <a name="using-system-for-cross-domain-identity-management-scim-to-automatically-provision-users-and-groups-from-azure-active-directory-to-applications"></a>Automatické zřizování uživatelů a skupin ze služby Azure Active Directory do aplikací pomocí systému pro mezi doménami Identity Management (SCIM)
 
@@ -38,7 +38,7 @@ Tuto funkci lze použít ve spojení s možností "přineste si vlastní aplikac
 
 Existují dva případy použití pro pomocí SCIM ve službě Azure Active Directory:
 
-* **Zřizování uživatelů a skupin a aplikace s podporou SCIM** – aplikace, které podporují SCIM 2.0 a používala tokeny nosičů OAuth pro ověřování pracuje s Azure AD bez konfigurace.
+* **Zřizování uživatelů a skupin a aplikace s podporou SCIM** – aplikací, které podporují SCIM 2.0 a používala tokeny nosičů OAuth pro ověřování fungují s Azure AD bez konfigurace.
   
 * **Vytváření vlastních řešení pro zřizování pro aplikace, které podporují jiné založené na rozhraní API zřizování** – pro aplikace bez SCIM vytvoříte SCIM koncový bod pro převod mezi koncového bodu Azure AD SCIM a jakéhokoli rozhraní API podporuje aplikace pro zřizování uživatelů. A pomohou vám vytvořit koncový bod SCIM, jsou knihovny společné jazykové infrastruktury (CLI) spolu s ukázek kódu, které ukazují, jak zadat koncový bod SCIM a překládat SCIM zprávy.  
 
@@ -74,7 +74,7 @@ Aplikace s podporou SCIM profilu je popsáno v tomto článku můžou být přip
    *Obrázek 3: Konfigurace zřizování na webu Azure Portal*
     
 6. V **adresy URL Tenanta** zadejte adresu URL koncového bodu SCIM vaší aplikace. Příklad: https://api.contoso.com/scim/v2/
-7. Pokud koncový bod SCIM vyžaduje tokenu nosiče OAuth z vystavitele než Azure AD, zkopírujte požadované tokenu nosiče OAuth nepovinný **tajný klíč tokenu** pole. Pokud toto pole necháte prázdné, Azure AD zahrnuté vydané ze služby Azure AD s každou žádostí tokenu nosiče OAuth. Aplikace, které používají Azure AD jako zprostředkovatele identity můžete ověřit této služby Azure AD – vydaný token.
+7. Pokud koncový bod SCIM vyžaduje tokenu nosiče OAuth z vystavitele než Azure AD, zkopírujte požadované tokenu nosiče OAuth nepovinný **tajný klíč tokenu** pole. Pokud toto pole necháte prázdné, Azure AD zahrnuje vydané ze služby Azure AD s každou žádostí tokenu nosiče OAuth. Aplikace, které používají Azure AD jako zprostředkovatele identity můžete ověřit tento Azure AD vystavený token.
 8. Klikněte na tlačítko **Test připojení** tlačítko s Azure Active Directory, pokus o připojení ke koncovému bodu SCIM. Pokud se nezdaří pokusy, zobrazí se informace o chybě.  
 
     >[!NOTE]
@@ -86,7 +86,7 @@ Aplikace s podporou SCIM profilu je popsáno v tomto článku můžou být přip
     >[!NOTE]
     >Volitelně můžete zakázat synchronizaci objektů skupiny zakázáním "groups" mapování. 
 
-11. V části **nastavení**, **oboru** pole určuje, kteří uživatelé nebo skupiny synchronizované. Výběr "Synchronizovat jenom přiřazené uživatele a skupiny" (doporučeno) bude synchronizovat jenom uživatelé a skupiny přiřazení v **uživatelů a skupin** kartu.
+11. V části **nastavení**, **oboru** pole určuje, kteří uživatelé a skupiny synchronizované. Výběr "Synchronizovat jenom přiřazené uživatele a skupiny" (doporučeno) bude synchronizovat jenom uživatelé a skupiny přiřazení v **uživatelů a skupin** kartu.
 12. Po dokončení konfigurace se změnit **stavu zřizování** k **na**.
 13. Klikněte na tlačítko **Uložit** spustit služba zřizování Azure AD. 
 14. Je-li synchronizovat jenom přiřazené uživatele a skupiny (doporučeno), je potřeba vybrat možnost **uživatelů a skupin** kartu a přiřaďte uživatele a/nebo skupiny, kterou chcete synchronizovat.
@@ -153,7 +153,7 @@ Nejjednodušší způsob, jak implementovat SCIM koncový bod, který může př
    ![][2]
    *Obrázek 4: Konfigurace zřizování na webu Azure Portal*
     
-6. V **adresy URL Tenanta** pole, zadejte adresu URL a port koncového bodu SCIM vystavený Internetu. Položka je něco jako http://testmachine.contoso.com:9000 nebo http://<ip-address>:9000/, kde < adresa > je Internetu vystaven IP adresu.  
+6. V **adresy URL Tenanta** pole, zadejte adresu URL a port koncového bodu SCIM vystavený Internetu. Položka je něco jako http://testmachine.contoso.com:9000 nebo http://\<ip-address >: 9000 /, kde \<ip-address > je vystavený Internetu IP adresu.  
 7. Pokud koncový bod SCIM vyžaduje tokenu nosiče OAuth z vystavitele než Azure AD, zkopírujte požadované tokenu nosiče OAuth nepovinný **tajný klíč tokenu** pole. Pokud toto pole necháte prázdné, bude obsahovat Azure AD z Azure AD s každou žádostí vydány tokenu nosiče OAuth. Aplikace, které používají Azure AD jako zprostředkovatele identity můžete ověřit této služby Azure AD – vydaný token.
 8. Klikněte na tlačítko **Test připojení** tlačítko s Azure Active Directory, pokus o připojení ke koncovému bodu SCIM. Pokud se nezdaří pokusy, zobrazí se informace o chybě.  
 

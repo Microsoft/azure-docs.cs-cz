@@ -5,24 +5,27 @@ services: dns
 author: vhorne
 ms.service: dns
 ms.topic: article
-ms.date: 1/22/2019
+ms.date: 2/7/2019
 ms.author: victorh
-ms.openlocfilehash: 87a80703c473245660a850645ca3fef21bbd80f6
-ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
+ms.openlocfilehash: 31543db8e177701ddfe6beaaa3091d6465b0e9cd
+ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54452713"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55895476"
 ---
 # <a name="delegate-an-azure-dns-subdomain"></a>Delegate an Azure DNS subdomain
 
-Na webu Azure portal můžete použít pro delegování subdoméně DNS. Například pokud jste vlastníkem domény contoso.com, můžete subdoménu delegovat volá *engineering* jiný, samostatný zóny, který může být spravována odděleně od zónu contoso.com.
+Na webu Azure portal můžete použít pro delegování subdoméně DNS. Například pokud jste vlastníkem domény contoso.com, můžete subdoménu delegovat volá *engineering* jiný, samostatný zóny, který budete moct spravovat samostatně na zónu contoso.com.
+
+Pokud dáváte přednost, můžete delegovat subdoménu pomocí [prostředí Azure PowerShell](delegate-subdomain-ps.md).
 
 ## <a name="prerequisites"></a>Požadavky
 
 Delegovat subdoménu Azure DNS, musí nejprve přenést svoji veřejnou doménu do Azure DNS. Zobrazit [delegování domény do Azure DNS](./dns-delegate-domain-azure-dns.md) pokyny ke konfiguraci vaší názvové servery pro delegování. Once your domain is delegated to your Azure DNS zone, you can delegate your subdomain.
 
-V příkladech v tomto článku se používá doménu contoso.com. Při použití těchto postupů musíte nahradit vlastní domény.
+> [!NOTE]
+> Contoso.com slouží jako příklad v tomto článku. Doménu contoso.com nahraďte vlastním názvem domény.
 
 ## <a name="create-a-zone-for-your-subdomain"></a>Create a zone for your subdomain
 
@@ -38,10 +41,13 @@ Nejprve vytvořit zónu **engineering** subdomény.
 
 ## <a name="note-the-name-servers"></a>Mějte na paměti názvové servery
 
-Next, copy the four name servers for your subdomain.
+V dalším kroku mějte na paměti čtyři názvové servery pro technický subdomény.
 
-1. Na **engineering** zóna podokně, mějte na paměti čtyři názvové servery pro zónu. Tyto názvové servery budete používat později.
-2. Vytvoření **A** záznam, který chcete použít pro testování. Například vytvořit **www** A zaznamenávat a u něho nakonfigurujte **10.10.10.10** IP adresu.
+Na **engineering** zóna podokně, mějte na paměti čtyři názvové servery pro zónu. Tyto názvové servery budete používat později.
+
+## <a name="create-a-test-record"></a>Vytvořit záznam testu
+
+Vytvoření **A** záznam, který chcete použít pro testování. Například vytvořit **www** A zaznamenávat a u něho nakonfigurujte **10.10.10.10** IP adresu.
 
 ## <a name="create-an-ns-record"></a>Vytvoření záznamů NS
 
@@ -59,10 +65,8 @@ V dalším kroku vytvoření záznamu názvového serveru (NS) pro **engineering
 Nslookup použijte k otestování delegování.
 
 1. Otevřete okno Powershellu.
-2. Na příkazovém řádku zadejte `nslookup www.engineering.<your domain name>.`
+2. Na příkazovém řádku zadejte `nslookup www.engineering.contoso.com.`
 3. Měli byste obdržet neautoritativní odpovědí, který zobrazuje adresu **10.10.10.10**.
-
-
 
 ## <a name="next-steps"></a>Další postup
 

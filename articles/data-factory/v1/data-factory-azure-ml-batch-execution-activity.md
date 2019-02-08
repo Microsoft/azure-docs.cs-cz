@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: c280a1f7e060ab7637e8d0b2484951f72b58a89c
-ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
+ms.openlocfilehash: fe671dec730cd1a593c6413c38625677c3f9d164
+ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/26/2019
-ms.locfileid: "55081190"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55894101"
 ---
 # <a name="create-predictive-pipelines-using-azure-machine-learning-and-azure-data-factory"></a>Vytváření prediktivních kanálů pomocí Azure Machine Learning a Azure Data Factory
 
@@ -54,7 +54,7 @@ Služba Data Factory umožňuje vytvářet datové kanály, které přesouvají 
 Zobrazit [Úvod do služby Azure Data Factory](data-factory-introduction.md) a [sestavit svůj první kanál](data-factory-build-your-first-pipeline.md) články rychle začít se službou Azure Data Factory.
 
 ### <a name="data-factory-and-machine-learning-together"></a>Objekt pro vytváření dat a strojové učení najednou
-Azure Data Factory umožňuje snadno vytvářet kanály, které používají publikování [Azure Machine Learning] [ azure-machine-learning] webová služba pro prediktivní analýzy. Použití **aktivita provedení dávky služby** v kanálu Azure Data Factory, můžete vyvolat webové služby Azure Machine Learning studio k vytvoření predikcí data ve službě batch. Zobrazit [vyvolání Azure Machine Learning studio webové služby pomocí aktivita provedení dávky služby](#invoking-an-azure-ml-web-service-using-the-batch-execution-activity) podrobné informace.
+Azure Data Factory umožňuje snadno vytvářet kanály, které používají publikování [Azure Machine Learning] [ azure-machine-learning] webová služba pro prediktivní analýzy. Použití **aktivita provedení dávky služby** v kanálu Azure Data Factory, můžete vyvolat webové služby Azure Machine Learning studio k vytvoření predikcí data ve službě batch. Azure Machine Learning studio webové služby pomocí části Aktivita provedení dávky služby informace naleznete v tématu vyvolání.
 
 V průběhu času prediktivních modelů v Azure Machine Learning studio hodnocení experimentů musí být retrained pomocí nové vstupní datové sady. Model Azure Machine Learning studio z kanálu Data Factory mohou uchovávat provedením následujících kroků:
 

@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 01/24/2019
 ms.author: lizross
 ms.reviewer: olhaun
-ms.openlocfilehash: afcac73af84010f37eccd018f39852712e495b84
-ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
+ms.openlocfilehash: f0f0e32ccbb8fdac934f81e2f90132f63a91f069
+ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55773216"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55892112"
 ---
 # <a name="add-your-non-microsoft-accounts"></a>Přidat své účty jiných společností než Microsoft
 Přidáte vaše účty jiných společností než Microsoft, jako pro Google, Facebook nebo Githubu do aplikace Microsoft Authenticator pro dvoufaktorové ověřování. Aplikace Microsoft Authenticator funguje s každou aplikaci, která používá dvojúrovňového ověřování a jakýkoli účet, který podporuje podle času jednorázového hesla (TOTP) normami.
@@ -55,7 +55,7 @@ Zapnutí dvojúrovňového ověřování a následným přidáním účtu do apl
 4. Naskenování kódu QR pomocí fotoaparátu v zařízení **nastavit ověřovací** stránky ve vašem počítači.
 
     >[!Note]
-    >Pokud vaše kamera nepracuje správně, můžete si [QR kód a adresu URL zadat ručně](#add-an-account-to-the-app-manually).
+    >Pokud vaše kamera nepracuje správně, můžete zadat kód QR a adresu URL ručně.
 
 5. Zkontrolujte **účty** stránka aplikace Microsoft Authenticator na vašem zařízení, abyste měli jistotu, informace o vašem účtu je práva a je k přidružené ověřovací šestimístný kód.
 
@@ -94,7 +94,7 @@ Zapnutí dvojúrovňového ověřování a následným přidáním účtu do apl
 3. Naskenování kódu QR pomocí fotoaparátu v zařízení **dvoufaktorové ověřování** stránky ve vašem počítači.
 
     >[!Note]
-    >Pokud vaše kamera nepracuje správně, můžete si [QR kód a adresu URL zadat ručně](#add-an-account-to-the-app-manually).
+    >Pokud vaše kamera nepracuje správně, můžete zadat kód QR a adresu URL ručně.
 
 4. Zkontrolujte **účty** stránka aplikace Microsoft Authenticator na vašem zařízení, abyste měli jistotu, informace o vašem účtu je práva a je k přidružené ověřovací šestimístný kód.
 
@@ -165,7 +165,7 @@ Zapnutí dvojúrovňového ověřování a následným přidáním účtu do apl
 6. Naskenování kódu QR pomocí fotoaparátu v zařízení **zvolte, jak budete dostávat kódy** stránky ve vašem počítači.
 
     >[!Note]
-    >Pokud vaše kamera nepracuje správně, můžete si [QR kód a adresu URL zadat ručně](#add-an-account-to-the-app-manually).
+    >Pokud vaše kamera nepracuje správně, můžete zadat kód QR a adresu URL ručně.
 
 5. Zkontrolujte **účty** stránka aplikace Microsoft Authenticator na vašem zařízení, abyste měli jistotu, informace o vašem účtu je práva a je k přidružené ověřovací šestimístný kód.
 

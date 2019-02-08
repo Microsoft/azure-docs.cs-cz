@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/03/2019
 ms.author: cephalin
-ms.openlocfilehash: 1d0f89285095e7edd67883a2bad1411f6e8942d2
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ms.openlocfilehash: 2a5ff771064c860447427c9e3cc1345a03a69634
+ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54107190"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55893746"
 ---
 # <a name="set-up-staging-environments-in-azure-app-service"></a>Nastavení přípravných prostředí ve službě Azure App Service
 <a name="Overview"></a>
@@ -89,7 +89,7 @@ Při klonování konfiguraci z jiného slot nasazení klonovaného konfigurace j
 **Nastavení, která nejsou Prohodit**:
 
 * Publikování koncových bodů
-* Vlastní názvy domén
+* Custom Domain Names
 * Privátní certifikáty a vazby SSL
 * Nastavení škálování
 * WebJobs plánovače
@@ -163,7 +163,7 @@ Prohození s náhledem, postupujte podle těchto kroků.
 
 4. Jakmile budete hotovi, zavřete dialogové okno kliknutím **zavřete**.
 
-K automatizaci prohození více fázích, najdete v článku [automatizace pomocí prostředí PowerShell](#automate-with-azure-powershell).
+K automatizaci prohození více fázích, najdete v článku automatizace pomocí prostředí PowerShell.
 
 <a name="Rollback"></a>
 
@@ -306,7 +306,7 @@ Get-AzureRmLog -ResourceGroup [resource group name] -StartTime 2018-03-07 -Calle
 
 - - -
 ### <a name="delete-slot"></a>Odstranit slot
-```
+```PowerShell
 Remove-AzureRmResource -ResourceGroupName [resource group name] -ResourceType Microsoft.Web/sites/slots –Name [app name]/[slot name] -ApiVersion 2015-07-01
 ```
 

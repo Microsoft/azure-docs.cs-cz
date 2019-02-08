@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 12/03/2018
-ms.openlocfilehash: e611c5e11d3c86474a7775971918ba95b8487da4
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.date: 02/07/2019
+ms.openlocfilehash: 79d6e185b64fdaf332f877718487809ba6273441
+ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53970280"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55895784"
 ---
 # <a name="limitations-in-azure-database-for-mariadb"></a>Omezení ve službě Azure Database pro MariaDB
 Následující části popisují kapacitu, podpora modulu úložiště, oprávnění podpory, podpora příkaz manipulace dat a funkční omezení v databázi služby.
@@ -34,7 +34,7 @@ Maximální počet připojení na cenová úroveň a virtuálními jádry jsou n
 |Paměťově optimalizované| 16| 5000|
 
 Při připojení překročí limit, může se zobrazit následující chyba:
-> CHYBA 1040 (08004): Příliš mnoho připojení
+> ERROR 1040 (08004): Příliš mnoho připojení
 
 ## <a name="storage-engine-support"></a>Podpora modulu úložiště
 
@@ -52,6 +52,7 @@ Při připojení překročí limit, může se zobrazit následující chyba:
 ### <a name="unsupported"></a>Nepodporovaný
 - DBA role: Mnoho parametrů serveru a nastavení můžete neúmyslně snížit výkon serveru nebo negate kyseliny vlastnosti správce databáze. V důsledku toho pro zajištění integrity služby a smlouvě SLA na úrovni produktu, tato služba nevystavuje DBA role. Výchozí uživatelský účet, který je vytvořen při vytvoření nové instance databáze, umožňuje provádět většinu příkazů DDL a jazyk DML instance spravované databáze.
 - SUPER oprávnění: Podobně [SUPER oprávnění](https://mariadb.com/kb/en/library/grant/#global-privileges) je také omezen.
+- DEFINER: Vyžaduje super oprávnění k vytváření a je omezený. Pokud importujete data pomocí zálohy, odeberte `CREATE DEFINER` ručně nebo pomocí příkazů `--skip-definer` příkaz při provádění mysqldump.
 
 ## <a name="data-manipulation-statement-support"></a>Podpora příkaz manipulace dat
 
@@ -76,6 +77,9 @@ Při připojení překročí limit, může se zobrazit následující chyba:
 
 ### <a name="subscription-management"></a>Správa předplatného
 - Dynamicky přesunutí předem vytvořené servery v předplatném a skupině prostředků se momentálně nepodporuje.
+
+### <a name="vnet-service-endpoints"></a>Koncové body služby virtuální sítě
+- Podpora pro koncové body služby virtuální sítě je pouze pro servery pro obecné účely a optimalizovaný pro paměť.
 
 ## <a name="current-known-issues"></a>Aktuální známé problémy
 - Instance serveru MariaDB zobrazuje nesprávná verze po navázání připojení. Chcete-li získat správný server verze modulu instance, použijte `select version();` příkazu.

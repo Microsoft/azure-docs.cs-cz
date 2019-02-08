@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 01/28/2019
 ms.author: rajanaki
 ms.custom: MVC
-ms.openlocfilehash: 70229a0b211acd08d285ad7a943f39285fad8012
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: f6713326045ebd84f1cd484803fbc725ad798d7b
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 02/07/2019
-ms.locfileid: "55810418"
+ms.locfileid: "55882263"
 ---
 # <a name="move-azure-vms-to-another-region"></a>Přesun virtuálních počítačů Azure do jiné oblasti
 
@@ -31,7 +31,7 @@ V tomto kurzu se dozvíte, jak přesunout virtuální počítače Azure do jiné
 > * [Zahodit prostředky ve zdrojové oblasti](#discard-the-resource-in-the-source-region) 
 
 > [!IMPORTANT]
-> Tento dokument vás přesunout virtuální počítače Azure z jedné oblasti do jiného, jak je, pokud váš požadavek je kvůli zlepšení dostupnosti díky přesunu virtuálních počítačů ve skupině dostupnosti do zóny připnuté virtuálních počítačů v jiné oblasti, podívejte se na kurz tady.
+> Tento dokument přesunout virtuální počítače Azure z jedné oblasti do jiného, jak je, pokud váš požadavek je kvůli zlepšení dostupnosti díky přesunu virtuálních počítačů ve skupině dostupnosti do zóny připnuté virtuálních počítačů v jiné oblasti, podívejte se na tento kurz vás provede [tady](move-azure-VMs-AVset-Azone.md).
 
 ## <a name="verify-prerequisites"></a>Ověřte požadavky
 

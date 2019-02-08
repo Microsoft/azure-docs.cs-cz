@@ -4,18 +4,18 @@ titlesuffix: Azure Cognitive Services
 description: Přehled koncového bodu rozhraní API hledání zpráv.
 services: cognitive-services
 author: mikedodaro
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-news-search
 ms.topic: conceptual
 ms.date: 1/10/2019
 ms.author: v-gedod
-ms.openlocfilehash: a41886927fcc34d7549cbf160dd2e7aa2e9a21c4
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: a3badf7772c6be6509608fbdb305dc3bc225acc0
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55203670"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55879984"
 ---
 # <a name="bing-news-search-api-endpoints"></a>Koncové body rozhraní API pro vyhledávání zpráv Bingu
 

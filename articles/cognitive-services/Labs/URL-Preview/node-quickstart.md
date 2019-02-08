@@ -4,18 +4,18 @@ titlesuffix: Azure Cognitive Services
 description: Začněte používat funkci náhledu adresy URL ve službě Microsoft Cognitive Services v Azure.
 services: cognitive-services
 author: mikedodaro
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: url-preview
 ms.topic: quickstart
 ms.date: 03/16/2018
 ms.author: rosh
-ms.openlocfilehash: 33bc6cd74dc0dd61f727a7ebcbbfc1d0bb85506f
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: 5c373505cd381108366206c21ff09f25516d7969
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55209073"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55884280"
 ---
 # <a name="quickstart-url-preview-with-nodejs"></a>Rychlý start: Náhled adresy URL s využitím Node.js 
 

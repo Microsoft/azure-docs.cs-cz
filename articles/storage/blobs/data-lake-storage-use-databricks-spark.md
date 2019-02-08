@@ -1,5 +1,5 @@
 ---
-title: 'Kurz: Přístup k datům v Azure Data Lake Storage Gen2 Preview v Azure Databricks pomocí Sparku | Microsoft Docs'
+title: 'Kurz: Přístup k Azure Data Lake Storage Gen2 dat pomocí Azure Databricks pomocí Spark | Dokumentace Microsoftu'
 description: Tento kurz ukazuje, jak spustit dotazy Spark na clusteru Azure Databricks pro přístup k datům v účtu úložiště Azure Data Lake Storage Gen2.
 services: storage
 author: dineshmurthy
@@ -8,16 +8,16 @@ ms.service: storage
 ms.topic: tutorial
 ms.date: 01/29/2019
 ms.author: dineshm
-ms.openlocfilehash: 533665ebfa3d35ed5f03326cf5614e37056b7713
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: e448ef0de9ef5560c1b4ea0df5c02e8efd8c0ea9
+ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55813598"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55891653"
 ---
-# <a name="tutorial-access-data-lake-storage-gen2-preview-data-with-azure-databricks-using-spark"></a>Kurz: Přístup k verzi Preview služby Data Lake Storage Gen2 dat pomocí Azure Databricks pomocí Spark
+# <a name="tutorial-access-data-lake-storage-gen2-data-with-azure-databricks-using-spark"></a>Kurz: Data Lake Storage Gen2 pro přístup k datům Azure Databricks pomocí Spark
 
-V tomto kurzu se dozvíte, jak se připojit k datům uloženým v účtu úložiště Azure s Azure Data Lake Storage Gen2 cluster Azure Databricks (Preview) povolena. Toto připojení vám umožňuje nativně dotazy a analýzy můžete spouštět z clusteru s vašimi daty.
+V tomto kurzu se dozvíte, jak se připojit k datům uloženým v účtu úložiště Azure s Azure Data Lake Storage Gen2 povolené cluster Azure Databricks. Toto připojení vám umožňuje nativně dotazy a analýzy můžete spouštět z clusteru s vašimi daty.
 
 V tomto kurzu provedete následující:
 
@@ -145,7 +145,7 @@ V této části vytvoříte systém souborů a složky v účtu úložiště.
     mount_point = "/mnt/flightdata",
     extra_configs = configs)
     ```
-18. V tomto bloku kódu, nahraďte `storage-account-name`, `application-id`, `authentication-id`, a `tenant-id` zástupné hodnoty hodnotami, které jste shromáždili, když jste dokončili kroky v v tomto bloku kódu [vyhradit účet úložiště konfigurace](#config) a [vytvoření instančního objektu](#service-principal) částech tohoto článku. Nahradit `file-system-name` zástupný symbol libovolný název, který chcete udělit systému souborů.
+18. V tomto bloku kódu, nahraďte `storage-account-name`, `application-id`, `authentication-id`, a `tenant-id` hodnoty zástupných symbolů v tomto bloku kódu nahraďte hodnotami, které jste shromáždili, když jste dokončili kroky v konfiguraci účtu úložiště sady aside a [Vytvoření instančního objektu](#service-principal) částech tohoto článku. Nahradit `file-system-name` zástupný symbol libovolný název, který chcete udělit systému souborů.
 
 19. Stisknutím klávesy **SHIFT + ENTER** klíče pro spuštění kódu v tomto bloku. 
 

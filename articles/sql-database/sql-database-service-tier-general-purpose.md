@@ -1,6 +1,6 @@
 ---
-title: Úrovni obecné účely – služba Azure SQL Database | Dokumentace Microsoftu
-description: Další informace o úrovni Azure SQL Database pro obecné účely
+title: Obecné úrovni služby – Azure SQL Database | Dokumentace Microsoftu
+description: Další informace o úrovni general purpose Azure SQL Database
 services: sql-database
 ms.service: sql-database
 ms.subservice: service
@@ -11,38 +11,39 @@ author: jovanpop-msft
 ms.author: jovanpop-msft
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 12/04/2018
-ms.openlocfilehash: 943982b056a83488426c48763deac14fd5347b8e
-ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
+ms.date: 02/07/2019
+ms.openlocfilehash: d8a7ffd680ab38d78fa3675f49569dd79b91efe4
+ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55508992"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55895104"
 ---
-# <a name="general-purpose-tier---azure-sql-database"></a>Úrovni obecné účely – Azure SQL Database
+# <a name="general-purpose-service-tier---azure-sql-database"></a>Obecné úrovni služby – Azure SQL Database
 
 > [!NOTE]
-> Ve model nákupu DTU nazývá obecné účely úrovně Standard. Porovnání nákupní model s založený na DTU nákupní model založený na virtuálních jádrech najdete v tématu [nákupu modely a prostředků Azure SQL Database](sql-database-service-tiers.md).
+> Služba úrovni general purpose v nákupní model založený na virtuálních jádrech je volána v nákupní model založený na DTU úrovně služeb standard. Porovnání nákupní model s založený na DTU nákupní model založený na virtuálních jádrech najdete v tématu [nákupu modely a prostředků Azure SQL Database](sql-database-service-tiers.md).
 
-Azure SQL Database je založené na architektuře databázový stroj SQL serveru upravené pro cloudovém prostředí, aby bylo možné zajistit 99,99 % dostupnost i v případě selhání infrastruktury. Existují tři modely architektury, které se používají ve službě Azure SQL Database:
-- Obecné použití 
+Azure SQL Database je založené na architektuře modul databáze serveru SQL Server upravené pro cloudovém prostředí, aby bylo možné zajistit 99,99 % dostupnost i v případě selhání infrastruktury. Existují tři úrovně služby, které se používají ve službě Azure SQL Database, každý s různými modely architektury. Tyto úrovně služby jsou:
+
+- Obecné účely 
 - Pro důležité obchodní informace
 - Hyperškálování
 
-Obecné účely model je založen na oddělení výpočetního výkonu a úložiště. Tento Architektonický model spoléhá na vysokou dostupnost a spolehlivost Azure Premium Storage, který transparentně replikuje soubory databáze a pokud základní infrastruktury selhání zaručuje ztrátě dojde.
+Oddělení výpočetního výkonu a úložiště podle architektury modelu pro danou vrstvu služeb pro obecné účely. Tento Architektonický model spoléhá na vysokou dostupnost a spolehlivost služby Azure Blob storage, který transparentně replikuje soubory databáze a pokud základní infrastruktury selhání zaručuje ztrátě dojde.
 
 Následující obrázek znázorňuje čtyři uzly ve standardní Architektonický model s oddělenými výpočetní a úložnou vrstvu.
 
 ![Oddělení výpočetního výkonu a úložiště](media/sql-database-managed-instance/general-purpose-service-tier.png)
 
-V modelu obecné účely jsou dvě vrstvy:
+V architektuře modelu pro danou vrstvu služeb pro obecné účely existují dvě vrstvy:
 
 - Bezstavové výpočetní vrstvě, na kterém běží `sqlserver.exe` zpracování a obsahuje pouze přechodné a uložená v mezipaměti dat (například – mezipaměti plánu, fondu vyrovnávací paměti, fondu úložiště sloupce). Azure Service Fabric, který inicializuje procesu, řídí stav uzlu a provede převzetí služeb při selhání na jiné místo v případě potřeby je provozována této bezstavové uzlu serveru SQL Server.
-- Stavová data vrstvy se soubory databáze (.mdf/.ldf), které jsou uložené ve službě Azure Premium Storage. Azure Storage zaručuje, že bude bez ztráty dat u všech záznamů, který je umístěn v žádném souboru databáze. Azure Storage má předdefinované datové dostupnost a redundance, který zajistí, že každý záznam v souboru protokolu nebo stránky v datovém souboru budou zachovány, i když dojde k chybě procesu serveru SQL Server.
+- Stavová data vrstvy se soubory databáze (.mdf/.ldf), které jsou uloženy v úložišti objektů Blob v Azure. Azure Blob storage zaručuje, že bude bez ztráty dat u všech záznamů, který je umístěn v žádném souboru databáze. Azure Storage má předdefinované datové dostupnost a redundance, který zajistí, že každý záznam v souboru protokolu nebo stránky v datovém souboru budou zachovány, i když dojde k chybě procesu serveru SQL Server.
 
-Pokaždé, když se upgraduje operační systém nebo databázový stroj, některá část základní infrastruktury selže nebo pokud se zjistí některé kritický problém v procesu serveru SQL Server, Azure Service Fabric se přesune bezstavové procesu serveru SQL Server na jiný bezstavové výpočetní uzel. Je sada uzlů za chodu, který čeká na spuštění nové výpočetní služby, pokud převzetí služeb při selhání z primárního uzlu se stane, aby se minimalizoval čas převzetí služeb při selhání. Data ve vrstvě služby Azure Storage to neovlivní a data/log soubory jsou připojeny k nově inicializované procesu serveru SQL Server. Tento postup zaručuje 99,99 % dostupnost, ale může mít některé vliv na funkčnost v případě velkého zatížení, které běží kvůli čas přechodu a fakt nový uzel SQL serveru začíná studenou mezipaměti.
+Pokaždé, když se upgraduje operační systém nebo databázový stroj, některá část základní infrastruktury selže nebo pokud se zjistí některé kritický problém v procesu serveru SQL Server, Azure Service Fabric se přesune bezstavové procesu serveru SQL Server na jiný bezstavové výpočetní uzel. Je sada uzlů za chodu, který čeká na spuštění nové výpočetní služby, pokud převzetí služeb při selhání z primárního uzlu se stane, aby se minimalizoval čas převzetí služeb při selhání. Data ve vrstvě úložiště Azure nebudou ovlivněna a data/log soubory jsou připojeny k nově inicializované procesu serveru SQL Server. Tento postup zaručuje 99,99 % dostupnost, ale může mít některé vliv na funkčnost v případě velkého zatížení, které běží kvůli čas přechodu a fakt nový uzel SQL serveru začíná studenou mezipaměti.
 
-## <a name="when-to-choose-this-service-tier"></a>Kdy zvolit tuto úroveň služeb?
+## <a name="when-to-choose-this-service-tier"></a>Kdy zvolit této vrstvy služeb
 
 Obecné účely úrovně služeb je výchozí úroveň služby ve službě Azure SQL Database, která je navržená pro většinu obecných úloh. Pokud potřebujete modul je plně spravovaná databáze s 99,99 % smlouva SLA s latencí úložiště mezi 5 až 10 ms, které odpovídá Azure SQL IaaS ve většině případů, úrovni General Purpose je možnost za vás.
 

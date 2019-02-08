@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 09/09/2018
 ms.author: barbkess
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: eaf6890223526b213ac4ec1180288b95fe6eaa29
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: c32b24007a041b9eb2cc1a5418c221239f3267b6
+ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55149858"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55893863"
 ---
 # <a name="customizing-user-provisioning-attribute-mappings-for-saas-applications-in-azure-active-directory"></a>Přizpůsobení mapování atributů zřizování pro aplikace SaaS ve službě Azure Active Directory uživatelů
 Microsoft Azure AD poskytuje podporu pro zřizování uživatelů pro aplikace SaaS třetích stran, jako je například Salesforce, Google Apps a jiná. Pokud máte zřizování uživatelů pro aplikace SaaS třetích stran povoleno, řídí na webu Azure portal jeho hodnoty atributů ve formě mapování atributů.
@@ -102,7 +102,7 @@ Aplikace a systémy, které podporují přizpůsobení seznamu atributů patří
 * Aplikace, které podporují [SCIM 2.0](https://tools.ietf.org/html/rfc7643), kde atributy definované ve [základní schéma](https://tools.ietf.org/html/rfc7643) je potřeba přidat
 
 >[!NOTE]
->Úpravy v seznamu podporovaných atributů se doporučuje jenom pro správce, kteří si přizpůsobili schématu jejich aplikací a systémů a znalosti zblízka jak jejich vlastní atributy definované. V některých případech to vyžaduje znalost nástroje rozhraní API a vývojáři aplikace nebo systému k dispozici. 
+>Úpravy v seznamu podporovaných atributů se doporučuje jenom pro správce, kteří si přizpůsobili schématu jejich aplikací a systémů a znalosti zblízka jak jejich vlastní atributy definované. V některých případech to vyžaduje znalost rozhraní API a vývojářské nástroje poskytované subsystémem aplikace nebo systému. 
 
 ![Editor](./media/customize-application-attributes/25.png) 
 

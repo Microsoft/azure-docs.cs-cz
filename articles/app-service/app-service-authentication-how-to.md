@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 11/08/2018
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 34902016578d92847bd83a7dede8ef73bb640b3e
-ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
+ms.openlocfilehash: da3c90579dafebf1b5b362c7129e681663a0a7ab
+ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55301573"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55891874"
 ---
 # <a name="advanced-usage-of-authentication-and-authorization-in-azure-app-service"></a>Rozšířené využití ověřování a autorizace ve službě Azure App Service
 
@@ -174,7 +174,7 @@ Z kódu serveru jsou specifické pro zprostředkovatele tokenů vloženy do hlav
 Z klientského kódu (například mobilní aplikace nebo jazyka JavaScript v prohlížeči), odeslat HTTP `GET` žádat o `/.auth/me`. Vrácený JSON obsahuje tokeny specifickým pro zprostředkovatele.
 
 > [!NOTE]
-> Přístupové tokeny jsou určené pro přístup k prostředkům zprostředkovatele, takže jsou k dispozici pouze v případě, že nakonfigurujete poskytovatele s tajným klíčem klienta. Jak získat tokeny obnovení najdete v tématu [aktualizaci přístupových tokenů](#refresh-access-tokens).
+> Přístupové tokeny jsou určené pro přístup k prostředkům zprostředkovatele, takže jsou k dispozici pouze v případě, že nakonfigurujete poskytovatele s tajným klíčem klienta. Jak získat tokeny obnovení, najdete v sekci aktualizaci přístupových tokenů.
 
 ## <a name="refresh-identity-provider-tokens"></a>Obnovovacích tokenů zprostředkovatele identity
 

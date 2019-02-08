@@ -11,12 +11,12 @@ author: aashishb
 ms.reviewer: larryfr
 ms.date: 12/07/2018
 ms.custom: seodec18
-ms.openlocfilehash: caafd5ac43ca94f8b01298b4e18e48065b7001b9
-ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
+ms.openlocfilehash: c83342e5eb0e6c1f45daa54ea3c4f3c602ff7a39
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55766618"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55878608"
 ---
 # <a name="deploy-models-with-the-azure-machine-learning-service"></a>Nasazujte modely pomocí služby Azure Machine Learning
 
@@ -463,7 +463,7 @@ Webové služby je rozhraní REST API, abyste mohli vytvořit klientských aplik
 
 ## <a id="update"></a> Aktualizovat webovou službu
 
-Když vytvoříte novou bitovou kopii, musí musíte ručně aktualizovat každou službu, kterou chcete použít novou bitovou kopii. Pokud chcete aktualizovat webovou službu, použijte `update` metody. Následující kód ukazuje, jak aktualizovat webovou službu, která používá novou bitovou kopii:
+Když vytvoříte novou bitovou kopii, je nutné ručně aktualizovat každou službu, kterou chcete použít novou bitovou kopii. Pokud chcete aktualizovat webovou službu, použijte `update` metody. Následující kód ukazuje, jak aktualizovat webovou službu, která používá novou bitovou kopii:
 
 ```python
 from azureml.core.webservice import Webservice

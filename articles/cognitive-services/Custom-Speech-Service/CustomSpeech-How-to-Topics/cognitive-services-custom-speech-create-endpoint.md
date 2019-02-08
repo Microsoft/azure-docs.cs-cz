@@ -8,13 +8,13 @@ ms.service: cognitive-services
 ms.subservice: custom-speech
 ms.topic: article
 ms.date: 07/08/2017
-ms.author: panosper
-ms.openlocfilehash: f9aca8529bf0407022ff3683c1cd73b87045f2f2
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.author: nitinme
+ms.openlocfilehash: efd88a3f222b229fcd10432fc011d5ffa68cd414
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55216660"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55883946"
 ---
 # <a name="create-a-custom-speech-to-text-endpoint"></a>Vytvoření vlastního koncového bodu pro převod řeči na text
 

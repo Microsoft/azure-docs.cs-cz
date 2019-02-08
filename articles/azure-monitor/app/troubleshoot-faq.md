@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 12/17/2018
 ms.author: mbullwin
-ms.openlocfilehash: 115be0ad1b7dec44f036f6d50c2ac30ceba37ba7
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 4400873e337c6003d2115afd77c40a31db1d5889
+ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55457084"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55895954"
 ---
 # <a name="application-insights-frequently-asked-questions"></a>Application Insights: Nejčastější dotazy
 
@@ -246,12 +246,12 @@ Doporučujeme použít naše sady SDK a použít [rozhraní API sady SDK](../../
 ## <a name="can-i-monitor-an-intranet-web-server"></a>Můžete monitorovat webový server intranetu?
 
 Ano, ale budete muset povolit provoz do našich služeb výjimky brány firewall nebo proxy přesměrování.
-- QuickPulse `rt.services.visualstudio.com:443` 
+- QuickPulse `https://rt.services.visualstudio.com:443` 
 - ApplicationIdProvider `https://dc.services.visualstudio.com:443` 
 - TelemetryChannel `https://dc.services.visualstudio.com:443` 
 
 
-Projděte si náš seznam služeb a IP adres [tady](../../azure-monitor/app/ip-addresses.md).
+Projděte si náš úplný seznam služeb a IP adres [tady](../../azure-monitor/app/ip-addresses.md).
 
 ### <a name="firewall-exception"></a>Výjimka brány firewall
 

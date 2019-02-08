@@ -6,14 +6,14 @@ author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.service: storage
 ms.topic: conceptual
-ms.date: 12/05/2018
+ms.date: 02/07/2018
 ms.author: normesta
-ms.openlocfilehash: 5677649b8f002490900ec32bee954348b2f444e6
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
+ms.openlocfilehash: ff158b726c57f4aa5b7822dc0273ab42c350522c
+ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55731542"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55895529"
 ---
 # <a name="known-issues-with-azure-data-lake-storage-gen2"></a>Známé problémy s Azure Data Lake Storage Gen2
 
@@ -23,7 +23,7 @@ Tento článek obsahuje známé problémy a omezení s Azure Data Lake Storage G
 
 Rozhraní API služby BLOB Storage a Azure Data Lake Gen2 API nejsou interoperabilní mezi sebou.
 
-Pokud máte vlastní nástroje, aplikace nebo skripty, které používají rozhraní API služby Blob, a chcete použít pro práci se veškerý obsah, který nahrajete do vašeho účtu, potom nepovolí hierarchické obory názvů v účtu Blob storage než stane interoperabilní rozhraní API služby Blob s rozhraními API služby Azure Data Lake Gen2. Použití účtu úložiště bez hierarchického oboru názvů pak nebudete mít přístup k Data Lake Storage Gen2 konkrétní funkce, jako je například adresář a systém souborů znamená seznamy řízení přístupu.
+Pokud máte nástroje, aplikace, služby nebo skripty, které používají rozhraní API služby Blob, a chcete použít pro práci se veškerý obsah, který nahrajete do vašeho účtu, potom nepovolí hierarchického oboru názvů na svůj účet Blob storage než stane rozhraní API služby Blob vzájemná spolupráce s Gen2 API služby Azure Data Lake. Použití účtu úložiště bez hierarchického oboru názvů pak nebudete mít přístup k Data Lake Storage Gen2 konkrétní funkce, jako je například adresář a systém souborů znamená seznamy řízení přístupu.
 
 ## <a name="blob-storage-apis"></a>Úložiště objektů BLOB rozhraní API
 
@@ -41,15 +41,15 @@ Pokud jste použili tato rozhraní API k načtení dat, než byly zakázány, ab
 
 * I když nejsou aktivně vliv v produkčním prostředí, dejte nám vědět, jestli tato data, které se mají zkopírovat do jiného účtu úložiště z nějakého důvodu potřebujete a pokud ano, proč?
 
-Za těchto okolností abychom mohli obnovit přístup k rozhraní API objektů Blob po omezenou dobu tak, aby tato data můžete zkopírovat do účtu úložiště, který nemá povolené hierarchické obory názvů.
+Za těchto okolností abychom mohli obnovit přístup k rozhraní API objektů Blob po omezenou dobu tak, aby tato data můžete zkopírovat do účtu úložiště, který nemá povolenou funkci hierarchického oboru názvů.
 
-Nespravované disky virtuálních počítačů (VM) závisí na zakázaném rozhraní API úložiště objektů Blob, takže pokud chcete povolit hierarchické obory názvů v účtu úložiště, vezměte v úvahu umístění nespravované disky virtuálních počítačů do účtu úložiště, který nemá povolené hierarchické obory názvů.
+Nespravované disky virtuálních počítačů (VM) závisí na zakázaném rozhraní API úložiště objektů Blob, takže pokud chcete povolit hierarchického oboru názvů na účet úložiště, vezměte v úvahu umístění nespravované disky virtuálních počítačů do účtu úložiště, který nemá funkci hierarchického oboru názvů povolené.
 
 ## <a name="azure-storage-explorer"></a>Azure Storage Explorer
 
 K zobrazení nebo Správa účtů Data Lake Storage Gen2 pomocí Průzkumníka služby Azure Storage, potřebujete alespoň verzi `1.6.0` nástroje, která je k dispozici jako [zdarma ke stažení](https://azure.microsoft.com/features/storage-explorer/).
 
-Všimněte si, že verze Průzkumníka služby Storage, který je vložen do portálu Azure Portal se aktuálně podporují zobrazení a Správa účtů Data Lake Storage Gen2 s povolenými hierarchické obory názvů.
+Všimněte si, že verze Průzkumníka služby Storage, který je vložen do portálu Azure Portal se aktuálně podporují zobrazení a Správa účtů Data Lake Storage Gen2 s povolenou funkci hierarchického oboru názvů.
 
 ## <a name="blob-viewing-tool"></a>Nástroj pro zobrazení objektů BLOB
 
@@ -75,17 +75,17 @@ Místo toho použijte nejnovější verzi AzCopy ve verzi preview ( [AzCopy v10]
 
 Nejsou k dispozici pro účty Azure Data Lake Storage Gen2 obnovitelného odstranění a snímků.
 
-Všechny funkce správy verzí, včetně [snímky](https://docs.microsoft.com/rest/api/storageservices/creating-a-snapshot-of-a-blob) a [obnovitelné odstranění](https://docs.microsoft.com/azure/storage/blobs/storage-blob-soft-delete) zatím nejsou k dispozici pro účty úložiště, které mají povolené hierarchické obory názvů.
+Všechny funkce správy verzí, včetně [snímky](https://docs.microsoft.com/rest/api/storageservices/creating-a-snapshot-of-a-blob) a [obnovitelné odstranění](https://docs.microsoft.com/azure/storage/blobs/storage-blob-soft-delete) zatím nejsou k dispozici pro účty úložiště, které mají povolenou funkci hierarchického oboru názvů.
 
 ## <a name="object-level-storage-tiers"></a>Vrstvy úložiště na úrovni objektu
 
-Objekt vrstvy úrovně úložiště (Hot, studené a archivní) zatím nejsou k dispozici pro účty Azure Data Lake Storage Gen 2, ale jsou dostupné pro účty úložiště, které nemají povolené hierarchické obory názvů.
+Objekt vrstvy úrovně úložiště (Hot, studené a archivní) zatím nejsou k dispozici pro účty Azure Data Lake Storage Gen 2, ale jsou dostupné pro účty úložiště, které nemají povolenou funkci hierarchického oboru názvů.
 
-## <a name="azure-blob-storage-lifecycle-management-preview-policies"></a>Zásady Správa (Preview) životního cyklu Azure Blob Storage
+## <a name="azure-blob-storage-lifecycle-management-policies"></a>Zásady správy životního cyklu Azure Blob Storage
 
-Zatím nejsou k dispozici pro účty Azure Data Lake Storage Gen2 zásady Správa (Preview) životního cyklu Azure Blob Storage.
+Zatím nejsou k dispozici pro účty Azure Data Lake Storage Gen2 zásady správy životního cyklu Azure Blob Storage.
 
-Tyto zásady jsou dostupné pro účty úložiště, které nemají povolené hierarchické obory názvů.
+Tyto zásady jsou dostupné pro účty úložiště, které nemají povolenou funkci hierarchického oboru názvů.
 
 ## <a name="diagnostic-logs"></a>Diagnostické protokoly
 

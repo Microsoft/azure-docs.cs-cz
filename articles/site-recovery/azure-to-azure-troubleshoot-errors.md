@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 11/27/2018
 ms.author: sujayt
-ms.openlocfilehash: e0f6fcd3886ca26b51011c1d7416b942bcec5c19
-ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
+ms.openlocfilehash: 289d9f9398816f6ec9774eb6326da4d22bcd649e
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55768495"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55882161"
 ---
 # <a name="troubleshoot-azure-to-azure-vm-replication-issues"></a>Řešení potíží s replikací virtuálních počítačů Azure do Azure
 
@@ -293,7 +293,7 @@ Můžete otevřít konzolu "Služby" a zajistit "Aplikace COM + systému" a Stí
 
 **Kód chyby:** | **Možné příčiny** | **Recommendations** (Doporučení)
 --- | --- | ---
-150172<br></br>**Zpráva**: Nebylo možné povolit ochranu pro virtuální počítač je na něm (DiskName) s velikostí (DiskSize), která je menší než minimální podporovaná velikost 10 GB. | – Disk je menší než podporovaná velikost 1 024 MB| Zajistěte, aby velikost disku spadají do rozsahu podporovaných velikostí a zkuste operaci zopakovat. 
+150172<br></br>**Zpráva**: Nebylo možné povolit ochranu pro virtuální počítač je na něm (DiskName) s velikostí (DiskSize), která je menší než minimální podporovaná velikost 1024 MB. | – Disk je menší než podporovaná velikost 1 024 MB| Zajistěte, aby velikost disku spadají do rozsahu podporovaných velikostí a zkuste operaci zopakovat. 
 
 ## <a name="enable-protection-failed-as-device-name-mentioned-in-the-grub-configuration-instead-of-uuid-error-code-151126"></a>Povolení ochrany se nezdařila, protože název zařízení podle konfigurace GRUB místo UUID (kód chyby: 151126)
 
@@ -329,7 +329,7 @@ blkid /dev/sda1
 *kernel /boot/vmlinuz-3.0.101-63-default **root=UUID=62927e85-f7ba-40bc-9993-cc1feeb191e4** **resume=UUID=6f614b44-433b-431b-9ca1-4dd2f6f74f6b** splash=silent crashkernel=256M-:128M showopts vga=0x314*
 1. Restart the protection again
 
-## Enable protection failed as device name mentioned in the GRUB configuration instead of UUID (error code 151126)
+## Enable protection failed as device mentioned in the GRUB configuration doesn't exist(error code 151124)
 **Possible Cause:** </br>
 The GRUB configuration files ("/boot/grub/menu.lst", "/boot/grub/grub.cfg", "/boot/grub2/grub.cfg" or "/etc/default/grub") may contain the parameters "rd.lvm.lv" or "rd_LVM_LV" to indicate the LVM device that should be discovered at the time of booting. If these LVM devices doesn't exist, then the protected system itself will not boot and stuck in the boot process. Even the same will be observed with the failover VM. Below are few examples: 
 

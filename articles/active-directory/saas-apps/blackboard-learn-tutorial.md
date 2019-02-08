@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 01/17/2019
 ms.author: jeedes
-ms.openlocfilehash: 3b57bea85b76b69b1826a81aa582f5326db588cb
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: f1d1ad091f08545225b1f9aa195329df19c4194d
+ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54811566"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55893035"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-blackboard-learn"></a>Kurz: Integrace Azure Active Directory s další Tabule
 
@@ -211,7 +211,7 @@ V této části je povolit Britta Simon používat jednotné přihlašování Az
 
 ### <a name="create-blackboard-learn-test-user"></a>Vytvořte další Tabule testovacího uživatele
 
-V této části vytvořte uživatele Britta Simon v další Tabule. Tabule další aplikace podporovat zřizování uživatelů čas. Ujistěte se, že jste nakonfigurovali deklarace identity, jak je popsáno v části  **[konfigurace služby Azure AD jednotného přihlašování](#configuring-azure-ad-single-sign-on)**
+V této části vytvořte uživatele Britta Simon v další Tabule. Tabule další aplikace podporovat zřizování uživatelů čas. Ujistěte se, že jste nakonfigurovali deklarace identity, jak je popsáno v části **konfigurace služby Azure AD jednotného přihlašování**
 
 ### <a name="test-single-sign-on"></a>Test jednotného přihlašování
 
